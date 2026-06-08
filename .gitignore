@@ -1,0 +1,15 @@
+# build
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# pagefind
+**/.pagefind/
+
+# env & système
+.env
+.env.*
+.DS_Store
+*.log

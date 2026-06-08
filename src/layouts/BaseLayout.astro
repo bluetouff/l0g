@@ -1,0 +1,107 @@
+---
+import '../styles/global.css';
+import TickerTape from '../components/TickerTape.astro';
+import Sidebar from '../components/Sidebar.astro';
+import SidebarMobile from '../components/SidebarMobile.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title = 'l0g.fr',
+  description = 'Macro, crypto, finance — analyses, données et signaux faibles. Par Bluetouff.',
+  ogType = 'website',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const fullTitle = title === 'l0g.fr' ? title : `${title} — l0g.fr`;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="l0g.fr" href="/rss.xml" />
+  </head>
+
+  <body>
+    <TickerTape />
+
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+      <div class="terminal-frame px-5 py-6 sm:px-9 sm:py-8">
+        <!-- Header -->
+        <header
+          class="flex flex-wrap items-center justify-between gap-3 border-b border-dashed border-line pb-4"
+        >
+          <a href="/" class="font-display text-3xl leading-none tracking-wider glow">
+            l0g<span class="blink" aria-hidden="true">_</span>
+          </a>
+          <div class="flex items-center gap-5">
+            <span class="mono-label hidden sm:inline">[ sys: ok ]</span>
+            <nav class="mono-label flex items-center gap-4">
+              <a href="/" class="link-term">journal</a>
+              <a href="/rss.xml" class="link-term">rss</a>
+              <a href="https://github.com/bluetouff" rel="me noopener" class="link-term">github</a>
+            </nav>
+          </div>
+        </header>
+
+        <!-- Nav dashboards -->
+        <nav class="mono-label flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-dashed border-line py-3">
+          <span class="text-muted">// dashboards :</span>
+          <a href="/btc/" class="link-term">btc</a>
+          <a href="/usd/" class="link-term">usd</a>
+          <a href="/marches-us/" class="link-term">marchés us</a>
+          <a href="/mag7/" class="link-term">mag7</a>
+          <a href="/hard-commodities/" class="link-term">commodities</a>
+          <a href="/calendrier-eco/" class="link-term">calendrier éco</a>
+        </nav>
+
+        <!-- Contenu + colonne de droite -->
+        <div class="py-4 lg:grid lg:grid-cols-[minmax(0,1fr)_270px] lg:gap-10">
+          <main class="min-w-0">
+            <slot />
+            <!-- Colonne sur mobile : contenu réagencé sous le texte -->
+            <div class="lg:hidden">
+              <SidebarMobile />
+            </div>
+          </main>
+
+          <!-- Colonne sur desktop : collante, masquée sur mobile -->
+          <aside class="hidden lg:block">
+            <div class="sticky top-8 border-l border-dashed border-line pl-8">
+              <Sidebar />
+            </div>
+          </aside>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 border-t border-dashed border-line pt-4 text-center">
+          <p class="mono-label">handcrafted with vim-like vibes — l0g.fr &copy; {year}</p>
+          <p class="mono-label mt-1">statique · auto-hébergé · aucun cookie · aucun tracker maison</p>
+          <p class="mono-label mt-1"><a href="/rgpd/" class="link-term">mentions légales &amp; rgpd</a></p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

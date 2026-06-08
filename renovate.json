@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":dependencyDashboard", ":semanticCommits"],
+  "timezone": "Europe/Paris",
+  "schedule": ["after 6am and before 9am on monday"],
+
+  "pinDigests": true,
+
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 9am on monday"]
+  },
+
+  "packageRules": [
+    {
+      "description": "Patch + minor : fusion automatique si la CI est verte",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "GitHub Actions : pin au SHA + fusion auto",
+      "matchManagers": ["github-actions"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "Majeures : PR manuelle, on regarde avant de fusionner",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ],
+
+  "vulnerabilityAlerts": {
+    "automerge": true,
+    "labels": ["security"]
+  }
+}

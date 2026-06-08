@@ -1,0 +1,26 @@
+[Unit]
+Description=Deploy l0g.fr static site from GitHub built branch
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=l0gdeploy
+Group=l0gdeploy
+ExecStart=/usr/local/bin/l0g-deploy.sh
+
+# Durcissement
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/www/html/l0g
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM

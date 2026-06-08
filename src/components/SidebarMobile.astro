@@ -1,0 +1,20 @@
+---
+/**
+ * Colonne de droite — version MOBILE (affichée en bloc compact sous le
+ * contenu, uniquement sur petit écran). Pas de graphe lourd ici : on
+ * privilégie l'ergonomie et la légèreté. Même source que la version desktop.
+ */
+import { sidebarLinks, sidebarAbout } from '../config/sidebar.ts';
+---
+
+<aside class="mt-12 border-t border-dashed border-line pt-6 text-sm">
+  <h3 class="mono-label glow mb-3">// liens</h3>
+  <ul class="flex flex-wrap gap-x-5 gap-y-2">
+    {sidebarLinks.map((l) => (
+      <li>
+        <a href={l.href} class="link-term" rel="noopener">{l.label}</a>
+      </li>
+    ))}
+  </ul>
+  <p class="mt-5 leading-relaxed text-muted">{sidebarAbout}</p>
+</aside>

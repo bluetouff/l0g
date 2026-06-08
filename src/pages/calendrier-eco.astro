@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EconomicCalendar from '../components/EconomicCalendar.astro';
+---
+
+<BaseLayout title="Calendrier éco" description="Calendrier économique : publications macro à venir (US, zone euro, France, UK, Japon, Chine).">
+  <section class="mb-4">
+    <p class="mono-label">// dashboard</p>
+    <h1 class="mt-2 font-display text-5xl leading-none tracking-wider glow sm:text-6xl">Calendrier éco</h1>
+    <p class="mt-3 max-w-2xl text-muted">
+      Les publications macro à surveiller : CPI, PPI, NFP, décisions de taux, PIB.
+      États-Unis, zone euro, France, Royaume-Uni, Japon, Chine.
+    </p>
+  </section>
+
+  <EconomicCalendar countries="us,eu,fr,gb,jp,cn" importanceFilter="0,1" height={640} />
+</BaseLayout>

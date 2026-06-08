@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TradingViewChart from '../components/TradingViewChart.astro';
+import SymbolOverview from '../components/SymbolOverview.astro';
+---
+
+<BaseLayout title="Hard commodities" description="Dashboard matières premières : métaux précieux et industriels, énergie.">
+  <section class="mb-4">
+    <p class="mono-label">// dashboard</p>
+    <h1 class="mt-2 font-display text-5xl leading-none tracking-wider glow sm:text-6xl">Hard commodities</h1>
+    <p class="mt-3 max-w-2xl text-muted">
+      Métaux précieux et industriels, énergie. Les matières premières extraites qui
+      mènent les cycles macro.
+    </p>
+  </section>
+
+
+  <h2 class="mono-label glow mb-1 mt-8">// métaux</h2>
+  <SymbolOverview
+    symbols={[
+      { label: 'Or', ticker: 'TVC:GOLD' },
+      { label: 'Argent', ticker: 'TVC:SILVER' },
+      { label: 'Platine', ticker: 'TVC:PLATINUM' },
+    ]}
+    height={400}
+  />
+
+  <h2 class="mono-label glow mb-1 mt-8">// énergie</h2>
+  <SymbolOverview
+    symbols={[
+      { label: 'WTI', ticker: 'TVC:USOIL' },
+      { label: 'Brent', ticker: 'TVC:UKOIL' },
+    ]}
+    height={400}
+  />
+</BaseLayout>

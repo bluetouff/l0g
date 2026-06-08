@@ -1,0 +1,11 @@
+[Unit]
+Description=Poll GitHub for new l0g.fr build
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+RandomizedDelaySec=30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

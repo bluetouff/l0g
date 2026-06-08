@@ -1,0 +1,25 @@
+---
+title: "Point de situation sur le détroit d'Ormuz, avril 2026 : l'« art of the deal » de Trump qui a failli transformer le Golfe en barbecue nucléaire"
+description: "Cessez-le-feu « de deux semaines » mais avec péages iraniens à la carte, négociations à Islamabad, et un choc pétrolier qui propulse l'inflation US. État des lieux d'un détroit non rouvert mais « géré »."
+pubDate: 2026-04-10
+tags: ["géopolitique", "énergie", "macro"]
+draft: false
+---
+
+En temps normal, le détroit d'Ormuz, c'est l'autoroute du brut : 84 % des flux partent vers l'Asie, et tout le monde fait comme si c'était une voie internationale paisible. Sauf qu'en 2026, on est en pleine guerre US-Israël-Iran lancée en février, et l'Iran a décidé de transformer ce chokepoint en péage privé avec mines et gardes révolutionnaires. Résultat ? La plus grosse disruption de l'histoire du marché pétrolier, dixit l'IEA.
+
+**Statut actuel (10 avril 2026) : cessez-le-feu « de deux semaines »… mais avec des conditions iraniennes à la carte.**
+
+Le 7-8 avril, après des semaines de blocus sélectif (seulement 11 navires AIS le 31 mars, dont beaucoup en mode furtif), Trump annonce un cessez-le-feu « double-sided » avec l'Iran. L'Iran accepte de « rouvrir » le détroit… à condition de gérer le trafic, d'exiger des permissions de la marine des Gardiens de la Révolution et, cerise sur le gâteau, de facturer des péages « supérieurs à 1 million de dollars par navire » selon certains rapports. Résultat ? Le 9 avril, seulement 5 vraquiers passent (aucun tanker pétrole/gaz), l'Iran annonce des « routes alternatives » à cause de « mines », et les armateurs (Maersk, Hapag-Lloyd) restent en mode « on attend de voir ». Le cessez-le-feu est déjà sous pression : frappes israéliennes au Liban, menaces iraniennes, et le Golfe qui ressemble à un embouteillage flottant avec 6 porte-conteneurs bloqués. Trump tweete qu'il va « aider au trafic »… pendant que l'Iran maintient son contrôle. Poétique.
+
+**Les négociations en cours : Islamabad, le nouveau Davos du Golfe.**
+
+Les pourparlers sérieux commencent ce vendredi (11 avril) au Pakistan, avec JD Vance en tête de la délégation US, Kushner et compagnie en renfort. L'Iran propose son « plan en 10 points » : passage contrôlé par Téhéran, fin de la guerre contre l'« axe de la résistance », levée des sanctions et reconstruction. Trump, lui, exige « circulation libre, sans limitations ni retards ». Traduction : l'Iran veut garder la main sur Ormuz comme levier stratégique post-guerre, et Washington crie au scandale. Le cessez-le-feu de 14 jours est censé « tester la bonne foi »… mais l'Iran a déjà dit que le détroit n'est « pas un outil pour mettre fin à la guerre » mais un atout permanent. Bref, on est à deux doigts de la reprise des hostilités si un tanker se fait bloquer de travers.
+
+**L'impact macro-éco : l'inflation US vous dit merci (et les prix à la pompe aussi).**
+
+Depuis le blocus (mi-mars), le Brent a flambé jusqu'à +15 % en quelques jours, dépassant les 100-120 $ par baril selon les pics, avant de plonger un peu avec l'annonce du cessez-le-feu (mais toujours au-dessus de 90 $). L'EIA a révisé sa prévision 2026 à 96 $/baril (contre 79 $ avant). Shortfall net : environ 11 Mb/j après offsets (stocks IEA, diversions saoudiennes). Conséquence directe ? L'énergie a explosé aux US (+12,5 % sur un an, essence +18,9 % en mars), propulsant le CPI à 3,3 % annuel – le plus haut depuis mai 2024. L'Asie prend 80 % du choc, mais l'Europe et les émergents morflent via le GNL et les chaînes d'approvisionnement. UNCTAD et Oxford Economics parlent d'inflation structurelle persistante : +0,6-0,7 point de PIB mondial si ça dure, avec un risque de récession si le détroit reste à moitié fermé. Les réserves stratégiques (1,2 milliard de barils publics + 600 M privés) couvrent au mieux 70-120 jours de shortfall net. Après ? C'est la fête aux prix.
+
+Et maintenant, le moment préféré : le Trump Show. Le génie autoproclamé de l'« art du deal » qui, il y a quelques jours, tweetait : « Tuesday will be Power Plant Day, and Bridge Day […] Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell » et promettait que « toute une civilisation va mourir ce soir ». Résultat ? Un cessez-le-feu de pacotille où l'Iran continue à jouer au douanier et à facturer le passage comme un Uber en période de grève. Bravo, Donnie. Toi qui avais promis de « régler l'Iran en un claquement de doigts » avec ta « maximum pressure » version 2.0, tu finis par supplier Islamabad de négocier pendant que les tankers font la queue et que ton propre CPI te pète à la gueule. Les marchés ont applaudi le « deal »… en plongeant le dollar et en faisant grimper l'or. Classique.
+
+En résumé, Ormuz n'est pas rouvert, il est « géré ». Le cessez-le-feu est un bout de papier qui tient avec du scotch iranien. Les négociations risquent de durer des mois, et l'inflation 2026 est déjà cuite. Trump a transformé une crise régionale en masterclass de chaos géopolitique… et nous, on paye l'essence.

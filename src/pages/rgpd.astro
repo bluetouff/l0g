@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '8 juin 2026';
+---
+
+<BaseLayout
+  title="Mentions légales & RGPD"
+  description="Éditeur, hébergement, et recensement de tout ce qui sort de ce site vers des tiers."
+>
+  <article class="prose max-w-2xl" data-pagefind-ignore>
+    <h2>Mentions légales &amp; confidentialité</h2>
+    <p class="text-muted">Dernière mise à jour : {updated}.</p>
+
+    <h3>Éditeur</h3>
+    <p>
+      Ce site est un site personnel édité par <strong>Bluetouff</strong>, à titre
+      individuel et non commercial.
+    </p>
+    <ul>
+      <li>Statut : site personnel, sans finalité commerciale.</li>
+      <li>Contact / directeur de la publication : <a href="mailto:admin@toonux.com">admin@toonux.com</a></li>
+    </ul>
+
+    <h3>Hébergement</h3>
+    <p>
+      Le site est auto-hébergé par l'éditeur sur un serveur dédié qu'il administre.
+      Il est entièrement statique : aucune base de données, aucun compte
+      utilisateur, aucun formulaire.
+    </p>
+
+    <h3>Ce qui sort de ce site (transferts vers des tiers)</h3>
+    <p>
+      Par principe, ce site limite au strict minimum les connexions vers
+      l'extérieur. Voici la liste exhaustive de ce qui peut quitter votre
+      navigateur lors de la consultation.
+    </p>
+
+    <h4>1. Graphiques et cotations TradingView</h4>
+    <p>
+      Les graphiques de marché, le bandeau de cotations, les mini-aperçus de la
+      colonne latérale, ainsi que les comparateurs, heatmaps et le calendrier
+      économique des pages dashboards sont fournis par <strong>TradingView</strong>
+      (TradingView, Inc., États-Unis) sous forme de composants embarqués. Lorsqu'une
+      page contenant l'un de ces éléments se charge, votre navigateur contacte
+      directement les serveurs de TradingView (notamment
+      <code>s3.tradingview.com</code>, <code>*.tradingview.com</code> et
+      <code>*.tradingview-widget.com</code>).
+    </p>
+    <p>Ce contact transmet à TradingView, sans que l'éditeur puisse l'empêcher :</p>
+    <ul>
+      <li>votre adresse IP ;</li>
+      <li>votre type de navigateur et d'appareil (user-agent) ;</li>
+      <li>la page consultée (référent) ;</li>
+      <li>des cookies et/ou du stockage local déposés par TradingView sur votre appareil.</li>
+    </ul>
+    <p>
+      Ces traitements relèvent de la seule responsabilité de TradingView et de sa
+      politique de confidentialité (<a href="https://www.tradingview.com/privacy-policy/" rel="noopener nofollow">tradingview.com/privacy-policy</a>).
+      L'éditeur n'a aucun contrôle sur les données collectées par ce tiers, ni sur
+      leur transfert hors de l'Union européenne. Si vous ne souhaitez pas que ces
+      données soient transmises, bloquez les scripts tiers (extension de blocage,
+      navigateur durci) ou évitez les pages contenant des graphiques.
+    </p>
+
+    <h4>2. Journaux du serveur</h4>
+    <p>
+      Comme tout serveur web, l'hébergement enregistre des journaux techniques
+      contenant l'adresse IP, l'horodatage, la page demandée et l'user-agent. Ces
+      journaux ont une finalité strictement technique et de sécurité (détection
+      d'abus), ne sont pas exploités à des fins de profilage, et sont conservés
+      pour une durée limitée.
+    </p>
+
+    <h4>3. Liens sortants</h4>
+    <p>
+      Le site contient des liens vers des sites externes (dashboards, projets,
+      réseaux). Ces sites ne sont contactés que si vous cliquez volontairement sur
+      le lien, et sont alors régis par leurs propres politiques de confidentialité.
+    </p>
+
+    <h3>Ce que ce site NE fait PAS</h3>
+    <ul>
+      <li>Aucune régie publicitaire, aucun pixel de tracking, aucun réseau social embarqué.</li>
+      <li>Aucun outil de mesure d'audience tiers (pas de Google Analytics ni équivalent).</li>
+      <li>Aucune police chargée depuis un CDN tiers : les polices sont auto-hébergées.</li>
+      <li>Aucune recherche déportée : le moteur de recherche fonctionne entièrement dans votre navigateur, sans appel externe.</li>
+      <li>Aucun cookie déposé par le site lui-même. Seul TradingView, le cas échéant, peut en déposer.</li>
+    </ul>
+
+    <h3>Vos droits (RGPD)</h3>
+    <p>
+      Le site ne constitue, par lui-même, aucun fichier de données personnelles à
+      des fins commerciales. Pour toute demande relative aux journaux techniques
+      (accès, rectification, effacement, opposition), écrivez à
+      <a href="mailto:admin@toonux.com">admin@toonux.com</a>. Pour les données
+      collectées par TradingView, adressez-vous directement à ce tiers via sa
+      politique de confidentialité.
+    </p>
+
+    <hr class="hairline" />
+    <a href="/" class="mono-label link-term inline-block">$ cd ..</a>
+  </article>
+</BaseLayout>

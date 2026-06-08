@@ -1,0 +1,35 @@
+---
+/**
+ * Colonne de droite — version DESKTOP (affichée en colonne collante sur lg+).
+ * Le contenu se règle dans src/config/sidebar.ts.
+ */
+import MiniSymbol from './MiniSymbol.astro';
+import { sidebarMarketSymbol, sidebarLinks, sidebarAbout } from '../config/sidebar.ts';
+---
+
+<div class="space-y-8 text-sm">
+  {
+    sidebarMarketSymbol && (
+      <section>
+        <h3 class="mono-label glow mb-3">// marche</h3>
+        <MiniSymbol symbol={sidebarMarketSymbol} dateRange="3M" height={200} />
+      </section>
+    )
+  }
+
+  <section>
+    <h3 class="mono-label glow mb-3">// liens</h3>
+    <ul class="space-y-2">
+      {sidebarLinks.map((l) => (
+        <li>
+          <a href={l.href} class="link-term" rel="noopener">{l.label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h3 class="mono-label glow mb-3">// about</h3>
+    <p class="leading-relaxed text-muted">{sidebarAbout}</p>
+  </section>
+</div>

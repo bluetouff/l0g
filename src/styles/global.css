@@ -1,0 +1,210 @@
+/* ============================================================
+   l0g.fr — thème terminal, aligné sur bluetouff.com
+   Palette CRT cyan, polices VT323 (titres) + Share Tech Mono (corps),
+   auto-hébergées via Fontsource : zéro appel CDN.
+   ============================================================ */
+
+@import '@fontsource/vt323';
+@import '@fontsource/share-tech-mono';
+@import 'tailwindcss';
+
+/* --- Tokens exposés à Tailwind v4 ---------------------------------- */
+@theme {
+  --font-display: 'VT323', 'Courier New', monospace;
+  --font-body: 'Share Tech Mono', 'Courier New', monospace;
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+
+  --color-ink: #1a1a1a;          /* fond (bluetouff) */
+  --color-surface: #0d0d0d;
+  --color-surface-2: #131313;
+  --color-line: rgba(0, 240, 208, 0.22); /* filet cyan atténué */
+  --color-paper: #b8fff5;        /* corps (bluetouff p) */
+  --color-bright: #d9fff9;
+  --color-muted: rgba(184, 255, 245, 0.55);
+  --color-signal: #00f0d0;       /* accent cyan (bluetouff) */
+  --color-accent: #ff6b9d;       /* prompt rose (bluetouff) */
+  --color-down: #ff6b9d;
+}
+
+/* --- Base ---------------------------------------------------------- */
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+
+html {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  line-height: 1.65;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Scanlines CRT (valeurs bluetouff) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Vignettage */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+::selection { background: var(--color-signal); color: var(--color-ink); }
+
+a { color: inherit; text-decoration: none; }
+
+/* --- Composants maison --------------------------------------------- */
+
+/* Cadre terminal (echo du .container de bluetouff.com) */
+.terminal-frame {
+  border: 1px solid var(--color-signal);
+  background: rgba(10, 10, 10, 0.6);
+  box-shadow:
+    0 0 20px rgba(0, 240, 208, 0.2),
+    inset 0 0 30px rgba(0, 240, 208, 0.05);
+}
+
+.glow { text-shadow: 0 0 8px rgba(0, 240, 208, 0.6); }
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.hairline { border: 0; border-top: 1px dashed var(--color-line); }
+
+/* Lien terminal : pointillé + inversion au survol (bluetouff) */
+.link-term {
+  border-bottom: 1px dotted var(--color-signal);
+  color: var(--color-signal);
+  transition: all 0.2s;
+}
+.link-term:hover { background: var(--color-signal); color: var(--color-ink); }
+
+/* Curseur clignotant */
+.blink { animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+/* Apparition échelonnée */
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.6s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .blink, .rise { animation: none; }
+}
+
+/* ============================================================
+   .prose — rendu markdown / MDX (style terminal)
+   ============================================================ */
+.prose { font-size: 1.02rem; line-height: 1.75; color: var(--color-paper); }
+.prose > * + * { margin-top: 1.15em; }
+
+.prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  color: var(--color-bright);
+  text-shadow: 0 0 5px rgba(0, 240, 208, 0.5);
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+}
+.prose h2 {
+  font-size: 2.1rem;
+  border-left: 4px solid var(--color-signal);
+  padding-left: 12px;
+}
+.prose h2::before { content: "> "; opacity: 0.6; }
+.prose h3 { font-size: 1.6rem; }
+.prose h4 { font-size: 1.3rem; }
+
+.prose p { color: var(--color-paper); }
+
+.prose a {
+  color: var(--color-signal);
+  border-bottom: 1px dotted var(--color-signal);
+  transition: all 0.2s;
+}
+.prose a:hover { background: var(--color-signal); color: var(--color-ink); }
+
+.prose strong { color: var(--color-bright); font-weight: 400; text-shadow: 0 0 5px rgba(0, 240, 208, 0.4); }
+.prose em { color: var(--color-accent); font-style: normal; }
+
+.prose ul { list-style: none; padding-left: 0; }
+.prose ul li { padding: 4px 0 4px 28px; position: relative; }
+.prose ul li::before { content: "[*]"; position: absolute; left: 0; color: var(--color-signal); }
+.prose ol { padding-left: 1.5em; }
+.prose ol li { margin-top: 0.3em; }
+.prose ol li::marker { color: var(--color-signal); }
+
+.prose blockquote {
+  margin-left: 0;
+  padding: 0.4em 0 0.4em 1.1em;
+  border-left: 2px dashed var(--color-signal);
+  color: var(--color-bright);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  background: rgba(0, 240, 208, 0.1);
+  border: 1px solid rgba(0, 240, 208, 0.3);
+  padding: 2px 8px;
+  color: var(--color-bright);
+  font-size: 0.95em;
+}
+.prose pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-signal);
+  box-shadow: inset 0 0 20px rgba(0, 240, 208, 0.05);
+  padding: 1.1em 1.25em;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+.prose pre code { background: none; border: 0; padding: 0; color: var(--color-paper); }
+
+.prose hr { margin: 2.4em 0; border: 0; border-top: 1px dashed var(--color-line); }
+.prose img { border: 1px solid var(--color-signal); }
+
+.prose table { width: 100%; border-collapse: collapse; }
+.prose th, .prose td { text-align: left; padding: 0.5em 0.8em; border-bottom: 1px dashed var(--color-line); }
+.prose th { color: var(--color-signal); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.08em; }
+
+/* --- Recherche Pagefind, accordée au thème ------------------------- */
+:root {
+  --pagefind-ui-scale: 0.85;
+  --pagefind-ui-primary: #00f0d0;
+  --pagefind-ui-text: #b8fff5;
+  --pagefind-ui-background: #0d0d0d;
+  --pagefind-ui-border: #00f0d0;
+  --pagefind-ui-tag: #131313;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0px;
+  --pagefind-ui-font: 'Share Tech Mono', monospace;
+}

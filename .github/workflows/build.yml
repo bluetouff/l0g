@@ -1,0 +1,49 @@
+name: build
+
+# Le build et toute la toolchain npm vivent ici, sur un runner éphémère
+# détruit après chaque exécution. zen ne build jamais et ne détient aucun
+# secret de déploiement.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write # nécessaire uniquement pour pousser sur la branche `built`
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions officielles uniquement. Renovate (pinDigests) remplacera ces
+      # tags par des digests SHA dès sa première PR — voir renovate.json.
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install (lockfile strict)
+        run: npm ci
+
+      - name: Build (Astro + Pagefind)
+        run: npm run build
+
+      - name: Publish to `built` branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "build ${GITHUB_SHA::8}"
+          git branch -M built
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" built
