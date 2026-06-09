@@ -6,7 +6,7 @@ tags: ["finance", "ia", "politique us"]
 draft: false
 ---
 
-Donc voilà. Vendredi, à bord d'Air Force One, Donald Trump lâche devant les journalistes que son équipe « étudie » l'idée que les labos d'IA offrent au grand public américain une participation dans leurs boîtes, que l'État fédéral deviendrait « essentiellement un partenaire » des entreprises, et qu'il y a « quelque chose de très intéressant là-dedans ». Citation complète du dispositif programmatique : *« On va regarder ça ».*
+Donc voilà. Vendredi, à bord d'Air Force One, Donald Trump lâche devant les journalistes que son équipe « étudie » l'idée que les labos d'IA offrent au grand public américain une participation dans leurs boîtes, que l'État fédéral deviendrait « essentiellement un partenaire » des entreprises, et qu'il y a « quelque chose de très intéressant là-dedans ». Citation complète du dispositif programmatique : *« On va regarder ça »...*
 
 Lundi matin, en préouverture, Nvidia +1 %, Marvell et Micron entre +4 % et +7 %, AMD +1 %. Une phrase en l'air dans un avion a fait bouger plusieurs dizaines de milliards de capitalisation. Voilà le seul mécanisme qui a réellement fonctionné ici. Et c'est exactement le sujet.
 
