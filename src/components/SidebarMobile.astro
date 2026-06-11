@@ -1,20 +1,49 @@
 ---
 /**
- * Colonne de droite — version MOBILE (affichée en bloc compact sous le
- * contenu, uniquement sur petit écran). Pas de graphe lourd ici : on
- * privilégie l'ergonomie et la légèreté. Même source que la version desktop.
+ * Colonne de droite — MOBILE. Mêmes boutons, en bloc sous le contenu.
  */
-import { sidebarLinks, sidebarAbout } from '../config/sidebar.ts';
+import { dashboards } from '../config/sidebar.ts';
+
+const accentVar: Record<string, string> = {
+  teal: 'var(--color-signal)',
+  blue: '#7aa2f7',
+  pink: 'var(--color-accent)',
+  amber: 'var(--color-amber)',
+};
 ---
 
-<aside class="mt-12 border-t border-dashed border-line pt-6 text-sm">
-  <h3 class="mono-label glow mb-3">// liens</h3>
-  <ul class="flex flex-wrap gap-x-5 gap-y-2">
-    {sidebarLinks.map((l) => (
-      <li>
-        <a href={l.href} class="link-term" rel="noopener">{l.label}</a>
-      </li>
-    ))}
-  </ul>
-  <p class="mt-5 leading-relaxed text-muted">{sidebarAbout}</p>
+<aside class="mt-12 border-t border-line pt-6">
+  <h2 class="mono-label mb-3">// dashboards</h2>
+  <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+    {
+      dashboards.map((d) => (
+        <a
+          href={d.href}
+          target="_blank"
+          rel="noopener"
+          class="dash-card group flex items-center gap-3 rounded-xl border border-line p-3"
+          style={`--a:${accentVar[d.accent]}`}
+        >
+          <span class="dash-tile flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg">
+            {d.glyph}
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="block truncate text-sm font-semibold text-bright">{d.label}</span>
+            <span class="block truncate text-xs text-muted">{d.sub}</span>
+          </span>
+        </a>
+      ))
+    }
+  </div>
 </aside>
+
+<style>
+  .dash-card:hover {
+    border-color: color-mix(in srgb, var(--a) 55%, transparent);
+    background: color-mix(in srgb, var(--a) 6%, transparent);
+  }
+  .dash-tile {
+    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+    background: color-mix(in srgb, var(--a) 10%, transparent);
+  }
+</style>

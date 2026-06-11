@@ -1,35 +1,60 @@
 ---
 /**
- * Colonne de droite — version DESKTOP (affichée en colonne collante sur lg+).
- * Le contenu se règle dans src/config/sidebar.ts.
+ * Colonne de droite — DESKTOP. Boutons vers les apps l0g (cartes terminal,
+ * accent par application). Contenu dans src/config/sidebar.ts.
  */
-import MiniSymbol from './MiniSymbol.astro';
-import { sidebarMarketSymbol, sidebarLinks, sidebarAbout } from '../config/sidebar.ts';
+import { dashboards, sidebarAbout } from '../config/sidebar.ts';
+
+const accentVar: Record<string, string> = {
+  teal: 'var(--color-signal)',
+  blue: '#7aa2f7',
+  pink: 'var(--color-accent)',
+  amber: 'var(--color-amber)',
+};
 ---
 
-<div class="space-y-8 text-sm">
-  {
-    sidebarMarketSymbol && (
-      <section>
-        <h3 class="mono-label glow mb-3">// marche</h3>
-        <MiniSymbol symbol={sidebarMarketSymbol} dateRange="3M" height={200} />
-      </section>
-    )
-  }
-
+<div class="space-y-6">
   <section>
-    <h3 class="mono-label glow mb-3">// liens</h3>
-    <ul class="space-y-2">
-      {sidebarLinks.map((l) => (
-        <li>
-          <a href={l.href} class="link-term" rel="noopener">{l.label}</a>
-        </li>
-      ))}
-    </ul>
+    <h2 class="mono-label glow mb-3">// dashboards</h2>
+    <div class="space-y-2.5">
+      {
+        dashboards.map((d) => (
+          <a
+            href={d.href}
+            target="_blank"
+            rel="noopener"
+            class="dash-card group flex items-center gap-3 rounded-xl border border-line p-3"
+            style={`--a:${accentVar[d.accent]}`}
+          >
+            <span class="dash-tile flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg text-lg">
+              {d.glyph}
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-[0.92rem] font-semibold text-bright">{d.label}</span>
+              <span class="block truncate text-xs text-muted">{d.sub}</span>
+            </span>
+            <span class="dash-chevron text-muted transition-transform group-hover:translate-x-0.5">›</span>
+          </a>
+        ))
+      }
+    </div>
   </section>
 
   <section>
-    <h3 class="mono-label glow mb-3">// about</h3>
-    <p class="leading-relaxed text-muted">{sidebarAbout}</p>
+    <h2 class="mono-label glow mb-2">// about</h2>
+    <p class="text-sm leading-relaxed text-muted">{sidebarAbout}</p>
   </section>
 </div>
+
+<style>
+  .dash-card { transition: border-color 0.2s, background 0.2s; }
+  .dash-card:hover {
+    border-color: color-mix(in srgb, var(--a) 55%, transparent);
+    background: color-mix(in srgb, var(--a) 6%, transparent);
+  }
+  .dash-tile {
+    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+    background: color-mix(in srgb, var(--a) 10%, transparent);
+  }
+  .dash-chevron { color: var(--a); }
+</style>

@@ -17,9 +17,9 @@ const isFirst = page.currentPage === 1;
 <BaseLayout>
   {isFirst && (
     <section class="rise border-b border-dashed border-line pb-12">
-      <p class="mono-label">$ cat /macro /crypto /finance --signaux-faibles</p>
+      <p class="mono-label" style="color: var(--color-signal)">$ cat /macro /crypto /finance --signaux-faibles</p>
       <h1 class="mt-5 font-display text-6xl leading-none tracking-wider glow sm:text-7xl">
-        Lire les marchés sans filtre, sources primaires en main.
+        Le dashboard d'un <span style="color: var(--color-accent)">plancton</span>
       </h1>
       <p class="mt-5 max-w-xl text-muted">
         Le journal de Bluetouff. Données brutes, lecture critique des annonces, et
@@ -47,6 +47,7 @@ const isFirst = page.currentPage === 1;
     }
   </section>
 
+  <!-- Pagination -->
   <nav class="mono-label flex items-center justify-between border-t border-dashed border-line py-6">
     {page.url.prev ? (
       <a href={page.url.prev} class="link-term">← précédent</a>

@@ -1,21 +1,22 @@
 /**
- * Contenu de la colonne de droite — édite UNIQUEMENT ce fichier.
- * Il alimente la version desktop (Sidebar.astro) et la version mobile
- * (SidebarMobile.astro) à partir de la même source.
+ * Colonne de droite : boutons vers les applications l0g.
+ * Édite UNIQUEMENT ce fichier. Alimente Sidebar.astro (desktop) et
+ * SidebarMobile.astro. `accent` ∈ teal | blue | pink | amber.
  */
+export interface Dashboard {
+  label: string;
+  sub: string;
+  href: string;
+  glyph: string;
+  accent: 'teal' | 'blue' | 'pink' | 'amber';
+}
 
-// Mini-graphe en haut de colonne (desktop). null = pas de graphe.
-export const sidebarMarketSymbol: string | null = null;
-
-// Liens listés dans la colonne.
-export const sidebarLinks: { label: string; href: string }[] = [
-  { label: 'US macro dashboard', href: 'https://us.l0g.fr' },
-  { label: 'EU macro dashboard', href: 'https://euro.l0g.fr' },
-  { label: 'Yen Carry Monitor', href: 'https://yct.l0g.fr' },
-  { label: 'Energie Monitor', href: 'https://energie.l0g.fr' },
-  { label: 'bluetouff.com', href: 'https://bluetouff.com' },
+export const dashboards: Dashboard[] = [
+  { label: 'US Macro Dashboard', sub: 'Indicateurs macro & risque', href: 'https://us.l0g.fr', glyph: '🇺🇸', accent: 'teal' },
+  { label: 'EU Macro Dashboard', sub: 'Macro européenne & risque', href: 'https://euro.l0g.fr', glyph: '🇪🇺', accent: 'blue' },
+  { label: 'Yen Carry Monitor', sub: 'Suivi du yen carry trade', href: 'https://yct.l0g.fr', glyph: '¥', accent: 'pink' },
+  { label: 'Energie Monitor', sub: "Marchés de l'énergie", href: 'https://energie.l0g.fr', glyph: '⚡', accent: 'amber' },
 ];
 
-// Bloc « about » en bas de colonne.
 export const sidebarAbout =
   "Journal de Bluetouff. Macro, crypto, finance. Sources primaires, lecture critique des annonces, et un peu de code pour rendre l'opacite lisible.";
