@@ -221,3 +221,24 @@ a { color: inherit; text-decoration: none; }
   border-radius: 2px;
   padding: 0 2px;
 }
+
+/* Champ de recherche : fond gris très foncé + contour cyan fin */
+.pagefind-ui__search-input {
+  background-color: var(--color-surface) !important;
+  color: var(--color-paper) !important;
+  border: 1px solid var(--color-signal) !important;
+  box-shadow: none !important;
+}
+.pagefind-ui__search-input::placeholder { color: var(--color-muted) !important; }
+.pagefind-ui__search-input:focus,
+.pagefind-ui__search-input:focus-visible {
+  outline: none !important;
+  border-color: var(--color-signal) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-signal) 22%, transparent) !important;
+}
+.pagefind-ui__search-clear {
+  color: var(--color-muted) !important;
+  background: transparent !important;
+}
+/* Loupe : recolorée en cyan (si rendue via un masque) */
+.pagefind-ui__form::before { background-color: var(--color-signal) !important; }
