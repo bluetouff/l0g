@@ -28,11 +28,7 @@ const isFirst = page.currentPage === 1;
     </section>
   )}
 
-  <section class="py-6">
-    <div id="search" data-pagefind-ignore></div>
-  </section>
-
-  <section class="pb-4">
+  <section class="pb-4 pt-2">
     <p class="mono-label mb-2">page {page.currentPage} / {page.lastPage} · {page.total} entrées</p>
     {
       page.data.map((post) => (
@@ -62,13 +58,3 @@ const isFirst = page.currentPage === 1;
     )}
   </nav>
 </BaseLayout>
-
-<link rel="stylesheet" href="/pagefind/pagefind-ui.css" onerror="this.remove()" is:inline />
-<script is:inline>
-  (async () => {
-    try {
-      const { PagefindUI } = await import('/pagefind/pagefind-ui.js');
-      new PagefindUI({ element: '#search', showSubResults: true, translations: { placeholder: 'Rechercher dans le journal…' } });
-    } catch {}
-  })();
-</script>

@@ -16,7 +16,7 @@ const accentVar: Record<string, string> = {
 <div class="space-y-6">
   <section>
     <h2 class="mono-label glow mb-3">// recherche</h2>
-    <div id="sidebar-search" data-pagefind-ignore></div>
+    <div class="pf-search" data-pagefind-ignore></div>
   </section>
 
   <section>
@@ -68,19 +68,6 @@ const accentVar: Record<string, string> = {
   </section>
 </div>
 
-<link rel="stylesheet" href="/pagefind/pagefind-ui.css" onerror="this.remove()" is:inline />
-<script is:inline>
-  (async () => {
-    try {
-      const { PagefindUI } = await import('/pagefind/pagefind-ui.js');
-      new PagefindUI({
-        element: '#sidebar-search',
-        showSubResults: true,
-        translations: { placeholder: 'Rechercher…' },
-      });
-    } catch {}
-  })();
-</script>
 
 <style>
   .dash-card { transition: border-color 0.2s, background 0.2s; }
