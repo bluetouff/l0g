@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-12T14:00:00Z",
+  "updated": "2026-06-12T17:15:00Z",
   "indices": [
-    { "key": "us", "value": 58, "scale": 100, "level": "ÉLEVÉ", "tone": "elevated" },
-    { "key": "eu", "value": 47, "scale": 100, "level": "MODÉRÉ", "tone": "moderate" },
-    { "key": "yen", "value": 41, "scale": 100, "level": "MODÉRÉ", "tone": "moderate" },
-    { "key": "energie", "value": 46, "scale": 100, "level": "NORMAL", "tone": "calm" }
+    { "key": "us", "value": 58, "scale": 100, "level": "Élevé", "tone": "elevated" },
+    { "key": "eu", "value": 47, "scale": 100, "level": "Modéré", "tone": "moderate" },
+    { "key": "yen", "value": 41, "scale": 100, "level": "Modéré", "tone": "moderate" },
+    { "key": "energie", "value": 58, "scale": 100, "level": "Tendu", "tone": "elevated" }
   ]
 }
