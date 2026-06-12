@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import RiskBand from '../components/RiskBand.astro';
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
@@ -27,6 +28,8 @@ const isFirst = page.currentPage === 1;
       </p>
     </section>
   )}
+
+  {isFirst && <RiskBand />}
 
   <section class="pb-4 pt-2">
     <p class="mono-label mb-2">page {page.currentPage} / {page.lastPage} · {page.total} entrées</p>

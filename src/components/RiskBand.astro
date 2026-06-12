@@ -1,0 +1,63 @@
+---
+/**
+ * Bandeau « risque consolidé » : 4 indices repris des dashboards.
+ * Les valeurs sont lues côté navigateur dans /risk.json (origine self,
+ * aucun appel externe). Couleur par niveau de risque pour que ça saute aux yeux.
+ */
+const items = [
+  { key: 'us', label: 'US Macro', href: 'https://us.l0g.fr' },
+  { key: 'eu', label: 'EU Macro', href: 'https://euro.l0g.fr' },
+  { key: 'yen', label: 'Yen Carry', href: 'https://yct.l0g.fr' },
+  { key: 'energie', label: 'Énergie', href: 'https://energie.l0g.fr' },
+];
+---
+
+<section class="rise my-8" data-pagefind-ignore>
+  <div class="mb-3 flex items-baseline justify-between gap-3">
+    <h2 class="mono-label glow">// risque consolidé</h2>
+    <span class="mono-label" id="risk-updated"></span>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    {
+      items.map((it) => (
+        <a
+          href={it.href}
+          target="_blank"
+          rel="noopener"
+          class="risk-tile card group block p-4"
+          data-risk={it.key}
+        >
+          <div class="flex items-center justify-between">
+            <span class="mono-label">{it.label}</span>
+            <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">›</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span class="risk-value font-display text-4xl leading-none glow" data-value>—</span>
+            <span class="risk-level mono-label" data-level></span>
+          </div>
+          <div class="risk-track mt-3"><div class="risk-fill" data-fill></div></div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<script src="/risk.js" is:inline></script>
+
+<style>
+  .risk-track {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+  .risk-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: var(--color-muted);
+    transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .risk-value { color: var(--color-muted); }
+</style>
