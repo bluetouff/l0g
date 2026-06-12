@@ -213,3 +213,11 @@ a { color: inherit; text-decoration: none; }
   --pagefind-ui-border-radius: 8px;
   --pagefind-ui-font: 'JetBrains Mono Variable', monospace;
 }
+
+/* Surlignage des termes trouvés : rose (au lieu du jaune par défaut) */
+.pagefind-ui mark {
+  background-color: var(--color-accent) !important;
+  color: var(--color-ink) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+}
