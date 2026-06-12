@@ -8,8 +8,6 @@ draft: false
 
 # Risque inflationniste persistant en 2026 : le choc énergétique du conflit au Moyen-Orient et les révisions haussières des prévisions
 
-**Par un analyste financier senior – Juin 2026**
-
 L'inflation, que l'on croyait sur une trajectoire de désinflation durable vers les cibles des banques centrales (2 % pour la Fed et l'ECB), a connu un rebond marqué au printemps 2026. Porté par un choc géopolitique majeur, le conflit Iran/Israël et les perturbations du détroit d'Hormuz, les données de mai 2026 confirment une accélération des prix à la consommation, tant aux États-Unis qu'en zone euro. Les prévisions sont systématiquement révisées à la hausse. Ce phénomène, qualifié de « contagion silencieuse » des pressions énergétiques vers le cœur de l'inflation (core), pose un risque tangible pour le reste de l'année 2026 et au-delà.
 
 Cet article examine les dernières données chiffrées (BLS, Eurostat, ECB, Fed, enquêtes de prévisionnistes), identifie les canaux de transmission et esquisse des scénarios réalistes pour le second semestre 2026, sans extrapolation excessive.
