@@ -46,6 +46,25 @@ const accentVar: Record<string, string> = {
   </section>
 
   <section>
+    <h2 class="mono-label glow mb-3">// publication</h2>
+    <a
+      href="https://bluetouff.com/auditer-l-opacite.html"
+      target="_blank"
+      rel="noopener"
+      class="pub-link card group block overflow-hidden p-0"
+      aria-label="Auditer l'opacité — l'essai de Bluetouff"
+    >
+      <img
+        src="/auditer-opacite.jpg"
+        alt="Auditer l'opacité — Anatomie d'une crise qu'on ne veut pas voir, par Bluetouff"
+        class="pub-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  </section>
+
+  <section>
     <div class="mb-2 flex items-center justify-between gap-2">
       <h2 class="mono-label glow">// about</h2>
       <div class="flex items-center gap-3">
@@ -87,4 +106,14 @@ const accentVar: Record<string, string> = {
     display: inline-flex;
   }
   .social-link:hover { color: var(--color-signal); transform: translateY(-1px); }
+
+  .pub-link { display: block; }
+  .pub-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    transition: transform 0.25s, filter 0.25s;
+  }
+  .pub-link:hover .pub-cover { transform: scale(1.015); filter: brightness(1.07); }
 </style>
