@@ -15,6 +15,11 @@ const accentVar: Record<string, string> = {
 
 <div class="space-y-6">
   <section>
+    <h2 class="mono-label glow mb-3">// recherche</h2>
+    <div id="sidebar-search" data-pagefind-ignore></div>
+  </section>
+
+  <section>
     <h2 class="mono-label glow mb-3">// dashboards</h2>
     <div class="space-y-2.5">
       {
@@ -57,8 +62,25 @@ const accentVar: Record<string, string> = {
       </div>
     </div>
     <p class="text-sm leading-relaxed text-muted text-justify">{sidebarAbout}</p>
+    <p class="mt-3 text-xs leading-relaxed" style="color: var(--color-accent)">
+      Les contenus de ce site ne constituent en aucun cas un conseil en investissement.
+    </p>
   </section>
 </div>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" onerror="this.remove()" is:inline />
+<script is:inline>
+  (async () => {
+    try {
+      const { PagefindUI } = await import('/pagefind/pagefind-ui.js');
+      new PagefindUI({
+        element: '#sidebar-search',
+        showSubResults: true,
+        translations: { placeholder: 'Rechercher…' },
+      });
+    } catch {}
+  })();
+</script>
 
 <style>
   .dash-card { transition: border-color 0.2s, background 0.2s; }
