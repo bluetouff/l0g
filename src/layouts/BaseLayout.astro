@@ -105,26 +105,9 @@ const year = new Date().getFullYear();
       </footer>
     </div>
 
-    <!-- Recherche Pagefind : chargée une fois, initialise tous les champs .pf-search -->
-    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" is:inline onerror="this.remove()" />
+    <!-- Recherche Pagefind : 3 ressources, toutes servies par le site (self) -->
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" is:inline />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
-    <script is:inline>
-      (function () {
-        function init() {
-          if (!window.PagefindUI) return;
-          document.querySelectorAll('.pf-search').forEach(function (el) {
-            if (el.dataset.pfReady) return;
-            el.dataset.pfReady = '1';
-            new window.PagefindUI({
-              element: el,
-              showSubResults: true,
-              translations: { placeholder: 'Rechercher…' },
-            });
-          });
-        }
-        if (document.readyState !== 'loading') init();
-        else document.addEventListener('DOMContentLoaded', init);
-      })();
-    </script>
+    <script src="/pagefind-init.js" is:inline></script>
   </body>
 </html>
