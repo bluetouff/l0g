@@ -135,7 +135,7 @@ La « désinflation » n'est pas morte, mais elle est reportée et rendue plus c
 ## Sources et liens (toutes vérifiées juin 2026)
 
 1. **US CPI May 2026** – Bureau of Labor Statistics : [https://www.bls.gov/news.release/cpi.nr0.htm](https://www.bls.gov/news.release/cpi.nr0.htm) et PDF détaillé.
-2. **Eurosystem Staff Projections June 2026** – Banque centrale européenne : [https://www.ecb.europa.eu/press/projections/html/ecb.projections202606_eurosystemstaff~a495110f8d.en.html](https://www.ecb.europa.eu/press/projections/html/ecb.projections202606_eurosystemstaff~a495110f8d.en.html)
+2. **[Eurosystem Staff Projections June 2026](https://www.ecb.europa.eu/press/projections/html/ecb.projections202606_eurosystemstaff~a495110f8d.en.html)** – Banque centrale européenne
 3. **World Economic Outlook April 2026** – Fonds monétaire international : [https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026](https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026)
 4. **Trading Economics / données agrégées** – US Inflation Rate, Euro Area Inflation (mises à jour juin 2026).
 5. **Reuters, CNBC, Bloomberg** – Couverture temps réel du conflit Iran, prix du pétrole et réactions marchés (mai-juin 2026).
