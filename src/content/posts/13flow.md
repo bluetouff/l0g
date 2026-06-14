@@ -20,6 +20,6 @@ Deux partis pris méthodologiques font la qualité de l'ensemble. Le temps, d'ab
 
 ## Données et surface
 
-La donnée vient directement des 13F-HR et des Form 4 sur EDGAR, lue à la source, sans agrégateur intercalé. Le mapping CUSIP vers ticker passe par OpenFIGI. Cinq écrans organisent l'outil : Consensus, Funds, Compare, Alerts, et le tableau Confluence qui ordonne l'univers par convergence. Le socle est gratuit (écrans, historique de valorisation et de conviction, alertes de dépôt) ; l'offre Pro à 12 euros par mois ouvre les alertes en temps réel par email ou webhook dès qu'un filing arrive, et le suivi de 50 fonds. L'outil est en ligne sur [13flow.eu](https://13flow.eu) et son code est public sur [GitHub](https://github.com/bluetouff/13flow).
+La donnée vient directement des 13F-HR et des Form 4 sur EDGAR, lue à la source, sans agrégateur intercalé. Le mapping CUSIP vers ticker passe par OpenFIGI. Quatre écrans organisent l'outil : Consensus, Funds, Compare, et le tableau Confluence qui ordonne l'univers par convergence. L'outil est en ligne sur [13flow.eu](https://13flow.eu) et son code est public sur [GitHub](https://github.com/bluetouff/13flow).
 
 Reste le cadre, posé sans détour : 13FLOW est un écran, pas un conseil en investissement, et le croisement de deux signaux publics ne garantit aucune performance. Ce qu'il produit, c'est une réduction d'univers défendable sur des données vérifiables. L'analyse commence là où l'outil s'arrête.
