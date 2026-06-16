@@ -12,14 +12,14 @@ interface Props {
 
 const {
   title = 'l0g.fr',
-  description = 'Macro, crypto, finance — analyses, données et signaux faibles. Par Bluetouff.',
+  description = 'La finance opaque, mise en données. Macro, crédit privé, crypto sur données publiques : analyses aux sources primaires et outils de monitoring en accès libre, par Bluetouff.',
   ogType = 'website',
   sidebar = true,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const fullTitle = title === 'l0g.fr'
-  ? 'l0g.fr — Macro, crypto, finance décryptées aux sources primaires'
+  ? 'l0g.fr — La finance opaque, mise en données'
   : `${title} — l0g.fr`;
 const year = new Date().getFullYear();
 ---
@@ -56,7 +56,7 @@ const year = new Date().getFullYear();
             <a href="/" class="text-2xl font-bold tracking-tight">
               <span class="text-paper">l</span><span class="text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
             </a>
-            <span class="mono-label hidden sm:inline">macro · crypto · finance</span>
+            <span class="mono-label hidden sm:inline">la finance opaque, mise en données</span>
           </div>
           <nav class="mono-label flex items-center gap-4">
             <a href="/" class="link-term">journal</a>
