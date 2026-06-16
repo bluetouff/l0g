@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '16 juin 2026';
+---
+
+<BaseLayout
+  title="Méthodologie"
+  description="Comment sont calculés le bandeau de risque consolidé (US, Euro, Yen, Énergie) et le classement de confluence 13F x Form 4 affiché depuis 13FLOW. Formules, seuils et limites assumées."
+>
+  <article class="prose max-w-2xl" data-pagefind-ignore>
+    <p class="mono-label" style="color: var(--color-signal)">// méthodologie</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Comment c'est calculé
+    </h1>
+    <p class="mt-4 text-muted">Dernière mise à jour : {updated}.</p>
+
+    <p>
+      Cette page documente les deux indicateurs agrégés affichés sur le site : le bandeau
+      de risque consolidé en page d'accueil, et le classement de confluence repris de
+      13FLOW dans la colonne de droite. Tout est calculé sur des données publiques,
+      côté serveur, et figé dans des fichiers JSON servis depuis l0g.fr. Le navigateur
+      ne contacte aucun tiers.
+    </p>
+
+    <h2>Le bandeau de risque consolidé</h2>
+    <p>
+      Quatre tableaux de bord indépendants produisent chacun un indice, ramené sur une
+      échelle 0-100 où un chiffre plus élevé signale un risque plus marqué. Un agrégateur
+      lit les quatre sources, les normalise et écrit un seul fichier. Aucune des quatre
+      applications n'est modifiée : on lit ce qu'elles exposent déjà.
+    </p>
+
+    <h3>Yen (carry trade)</h3>
+    <p>
+      Mesure le risque de débouclage du carry trade sur le yen. Le score recombine trois
+      composantes, recalculées à la source depuis le positionnement CFTC, le taux USD/JPY
+      et le différentiel de taux directeurs.
+    </p>
+    <pre><code>risque = 0.45 x surcharge_shorts
+       + 0.35 x appréciation_yen_4s
+       + 0.20 x compression_différentiel
+
+surcharge_shorts   = position nette courte / minimum historique
+appréciation_yen_4s = -(variation USD/JPY sur ~28 jours) x 22
+compression_diff    = (5.25 - (taux_Fed - taux_BoJ)) / 5.25 x 100
+bandes : &lt;30 Faible · &lt;55 Modéré · &lt;78 Élevé · sinon Critique</code></pre>
+    <p>
+      Le positionnement CFTC est dédupliqué par date pour éliminer le double comptage entre
+      contrat standard et micro-contrat, qui sinon fausse la position nette.
+    </p>
+
+    <h3>Euro (risque macro zone euro)</h3>
+    <p>
+      Score composite issu d'une trentaine d'indicateurs z-scorés (CISS, spreads BTP-Bund
+      et OAT-Bund, pente de la courbe, M1 réel, ESI, chômage). L'application publie déjà
+      son score global et son régime ; on les reprend tels quels, et la couleur de la
+      pastille suit la couleur native de l'application.
+    </p>
+
+    <h3>US (risque macro américain)</h3>
+    <p>
+      Moyenne pondérée de 47 séries FRED z-scorées, calibrée sur les récessions NBER. Le
+      résultat est un z-score signé centré sur 0, pas une échelle 0-100. On le convertit en
+      calant les seuils d'alerte de l'application sur les bornes de couleur du bandeau.
+    </p>
+    <pre><code>z = moyenne pondérée des stress par série (stress_final x poids)
+0   -> 30      (neutre)
+1.5 -> 55      (seuil d'alerte de l'app)
+2.5 -> 75      (seuil de danger)
+interpolation linéaire entre ces points, borné 0-100</code></pre>
+
+    <h3>Énergie (stress énergétique)</h3>
+    <p>
+      L'application expose directement un score composite et un régime (détendu, normal,
+      tendu, crise). On lit le score, et le régime donne le libellé et la couleur.
+    </p>
+
+    <h2>La confluence 13F x Form 4 (13FLOW)</h2>
+    <p>
+      Le classement vient de <a href="https://13flow.eu" target="_blank" rel="noopener">13FLOW</a>,
+      un outil distinct, dont le code est
+      <a href="https://github.com/bluetouff/13flow" target="_blank" rel="noopener">public</a>.
+      L'idée : croiser deux déclarations publiques de la SEC qui, prises seules, sont
+      faibles, mais dont l'intersection est rare et difficile à truquer. Le 13F expose
+      trimestriellement les positions des grands fonds (avec un retard pouvant atteindre
+      45 jours). Le Form 4 capture, sous deux jours ouvrés, les achats et ventes des
+      dirigeants sur le titre de leur propre société. Un titre que plusieurs fonds
+      accumulent et que des initiés achètent dans la même fenêtre, c'est la coïncidence de
+      deux populations indépendantes.
+    </p>
+
+    <h3>Le Confluence Score</h3>
+    <p>
+      Un score de 0 à 100 agrège quatre composantes explicites, et chaque ligne du tableau
+      expose sa décomposition.
+    </p>
+    <ul>
+      <li>Largeur institutionnelle : nombre de fonds qui accumulent, pondéré par leur conviction.</li>
+      <li>Conviction des initiés : nombre d'acheteurs distincts, séniorité (un achat de CEO ou de CFO pèse plus qu'un administrateur), montant.</li>
+      <li>Dollars effectivement engagés des deux côtés.</li>
+      <li>Terme d'accord : un bonus quand les deux signaux pointent dans le même sens.</li>
+    </ul>
+
+    <h3>Hygiène du signal</h3>
+    <p>Trois partis pris font la qualité de l'ensemble.</p>
+    <ul>
+      <li>
+        Décroissance temporelle : chaque achat d'initié perd du poids avec une demi-vie
+        d'environ 30 jours. Un dépôt de 3 jours pèse bien plus qu'un dépôt de 80.
+      </li>
+      <li>
+        Clusters : plusieurs initiés qui achètent dans une fenêtre de 14 jours forment un
+        cluster, le signal le plus fort.
+      </li>
+      <li>
+        Codes de transaction : seuls les ordres au prix du marché comptent, achats (P) et
+        ventes (S). Les attributions et exercices d'options (M) et les retenues fiscales (F)
+        sont lus mais exclus du score, car ils ne traduisent aucune décision discrétionnaire.
+      </li>
+    </ul>
+
+    <h3>Deux exemples concrets</h3>
+    <p>
+      Au moment de la rédaction, le tableau plaçait <strong>TSM</strong> en tête avec un
+      score de 90, mais en quadrant divergent : 7 fonds accumulaient pendant que 6
+      allégeaient, et 31 transactions d'initiés tiraient le score. Le chiffre est élevé,
+      mais le signal institutionnel est partagé. À l'inverse, <strong>EQPT</strong> sortait
+      à 73 en quadrant conviction : moins d'initiés (2), mais 5 fonds alignés dans le même
+      sens et aucune dispersion. C'est l'illustration du point clé : un score élevé ne veut
+      pas dire conviction. Le quadrant qualifie la nature du signal, le score n'en mesure
+      que l'intensité.
+    </p>
+
+    <h3>Périmètre et limites</h3>
+    <p>
+      Pour rester rapide et fiable, la confluence n'interroge les Form 4 que des titres
+      détenus par au moins 5 fonds suivis. En dessous, le signal institutionnel est trop
+      mince pour produire une confluence sérieuse, et on ne perd donc aucun titre réellement
+      accumulé. L'univers se limite aux superinvestisseurs suivis par 13FLOW, le 13F reste
+      trimestriel et en retard, et rien de tout cela ne capture les positions vendeuses.
+    </p>
+
+    <hr />
+    <p class="text-muted">
+      Ces indicateurs ne constituent en aucun cas un conseil en investissement. Ce sont des
+      écrans : ils réduisent un univers sur des données vérifiables, l'analyse reste la vôtre.
+    </p>
+  </article>
+</BaseLayout>

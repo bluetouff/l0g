@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Confluence 13F x Form 4"
+  description="Le classement de confluence repris de 13FLOW : les titres où des fonds accumulent et où des dirigeants achètent dans la même fenêtre. Tableau triable, mis à jour quotidiennement depuis SEC EDGAR."
+  sidebar={false}
+>
+  <section data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// confluence</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      13F <span style="color: var(--color-accent)">&times;</span> Form 4
+    </h1>
+    <p class="mt-4 max-w-2xl text-paper">
+      Les titres où deux populations indépendantes misent dans le même sens : des fonds qui
+      accumulent (déclarations 13F) et des dirigeants qui achètent leurs propres actions
+      (Form 4). Classement repris de
+      <a href="https://13flow.eu" target="_blank" rel="noopener" class="link-term" style="color: var(--color-signal)">13FLOW</a>,
+      code <a href="https://github.com/bluetouff/13flow" target="_blank" rel="noopener" class="link-term" style="color: var(--color-signal)">public</a>,
+      recalculé chaque jour depuis SEC EDGAR. Détail du calcul sur la
+      <a href="/methodologie/" class="link-term" style="color: var(--color-signal)">page méthodologie</a>.
+    </p>
+    <p class="mono-label mt-3 text-muted" data-conf-updated></p>
+  </section>
+
+  <div class="mt-6 overflow-x-auto rounded-xl border border-line" data-pagefind-ignore>
+    <table class="conf-table w-full text-sm">
+      <thead>
+        <tr class="mono-label text-muted">
+          <th class="px-3 py-2 text-left">#</th>
+          <th class="sortable px-3 py-2 text-left"  data-key="ticker"   data-type="str">ticker</th>
+          <th class="sortable px-3 py-2 text-right" data-key="score"    data-type="num" data-active="desc">score</th>
+          <th class="px-3 py-2 text-left">quadrant</th>
+          <th class="sortable px-3 py-2 text-right" data-key="funds"    data-type="num">fonds +</th>
+          <th class="sortable px-3 py-2 text-right" data-key="trimming" data-type="num">fonds -</th>
+          <th class="sortable px-3 py-2 text-right" data-key="insiders" data-type="num">initiés</th>
+          <th class="sortable px-3 py-2 text-right" data-key="csuite"   data-type="num">c-suite</th>
+          <th class="sortable px-3 py-2 text-right" data-key="age"      data-type="num">âge moy. (j)</th>
+        </tr>
+      </thead>
+      <tbody data-conf-body>
+        <tr><td colspan="9" class="px-3 py-6 text-center text-muted">Chargement…</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="mt-4 max-w-2xl text-xs leading-relaxed text-muted" data-pagefind-ignore>
+    Fonds + : nombre de fonds suivis qui accumulent le titre. Fonds - : qui allègent.
+    Initiés : dirigeants ayant acheté au prix du marché sur la fenêtre, dont c-suite (PDG,
+    directeur financier...). Âge moyen : ancienneté moyenne des achats d'initiés, en jours
+    (plus c'est bas, plus le signal est frais). Un score élevé n'implique pas une conviction :
+    le quadrant qualifie la nature du signal, le score son intensité.
+  </p>
+  <p class="mt-3 text-xs" style="color: var(--color-accent)" data-pagefind-ignore>
+    Ceci n'est pas un conseil en investissement.
+  </p>
+
+  <script src="/confluence-table.js" is:inline></script>
+
+  <style>
+    .conf-table { border-collapse: collapse; }
+    .conf-table th, .conf-table td { border-bottom: 1px solid var(--color-line); white-space: nowrap; }
+    .conf-table tbody tr:last-child td { border-bottom: 0; }
+    .conf-table tbody tr:hover { background: color-mix(in srgb, var(--color-signal) 5%, transparent); }
+    .conf-table td.tk { font-weight: 600; color: var(--color-bright); }
+    .conf-table td.sc { font-family: var(--font-display); font-size: 1.05rem; }
+    .conf-table .q { font-size: 0.72rem; padding: 0.1rem 0.45rem; border-radius: 999px; border: 1px solid; }
+    .sortable { cursor: pointer; user-select: none; transition: color 0.15s; }
+    .sortable:hover { color: var(--color-signal); }
+    .sortable[data-active]::after { content: " ↓"; color: var(--color-signal); }
+    .sortable[data-active="asc"]::after { content: " ↑"; }
+    .conf-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  </style>
+</BaseLayout>

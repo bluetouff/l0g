@@ -23,8 +23,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <div class="prose mt-8 max-w-2xl">
     <p>Je suis Olivier Laurelli, alias Bluetouff. Expert en cybersécurité et hacktiviste, j'ai cofondé Reflets.info en 2010 avec le journaliste Kitetoa. Ce média indépendant traite du numérique, de la surveillance et de la sécurité informatique.</p>
+    <p>En 2012, j'ai accédé via Google à des documents internes de l'ANSES librement exposés sur un extranet défaillant et les ai publiés. Cela a conduit à une condamnation définitive en 2015 par la Cour de cassation à 3 000 € d'amende pour maintien frauduleux dans un système automatisé de données et vol de fichiers. Cette décision a fait jurisprudence en confirmant que l'exploitation d'une faille technique pour accéder et télécharger des données peut être qualifiée pénalement de vol, même en l'absence de contournement d'authentification.</p>
     <p>Très versé dans le logiciel libre et presque 15 ans passés aux côtés de Bearstech, j'aime administrer mes machines sur Debian, l'auto-hébergement et diverses geekeries avec des agents-IA ou du hardware ouvert.</p>
     <p>Aujourd'hui auteur et investisseur, je co-signe un livre disponible sur Amazon (« 100 questions et réponses pour vous mettre en cybersécurité ») ainsi que l'essai « Auditer l'opacité (Anatomie d'une crise qu'on ne veut pas voir) ». Je développe par ailleurs des outils de monitoring et d'analyse macro orientés finance et investissement, et j'enseigne ponctuellement à Grenoble École de Management (GEM) et à l'Université de technologie de Troyes. Engagé pour la transparence et les libertés numériques, je commente régulièrement l'actualité sur X (@bluetouff).</p>
+
+    <h2>Philosophie &amp; biais assumés</h2>
+    <p>
+      Autant le dire d'emblée : je suis un investisseur particulier qui construit ses
+      propres outils. Pas d'équipe de quants, pas de terminal Bloomberg, pas de flux de
+      données payant. Tout ce que vous voyez ici est bâti sur des sources publiques et
+      gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC), assemblé sur un serveur que
+      j'administre moi-même, et servi en statique sans tracker.
+    </p>
+    <p>
+      C'est une force et une limite. Une force, parce que tout est vérifiable : les sources
+      sont citées, le code est ouvert, les méthodes sont documentées sur la
+      <a href="/methodologie/">page méthodologie</a>. Vous pouvez refaire les calculs. Une
+      limite, parce que je travaille avec les moyens du bord, et il vaut mieux connaître les
+      angles morts que de les découvrir en s'y appuyant.
+    </p>
+    <p>Les principaux, que j'assume :</p>
+    <ul>
+      <li>
+        Les données 13F sont trimestrielles et arrivent avec un retard pouvant atteindre
+        45 jours. Ce qu'un fonds détenait fin mars, on ne le sait qu'à la mi-mai. C'est une
+        photo, pas un flux temps réel.
+      </li>
+      <li>
+        L'univers est volontairement restreint : une sélection de superinvestisseurs suivis,
+        et pour la confluence, les seuls titres détenus par au moins cinq fonds. Je préfère
+        un signal étroit mais propre à un univers large et bruité.
+      </li>
+      <li>
+        Tout est vu du côté long. Les positions vendeuses, les dérivés complexes, les
+        montages hors 13F m'échappent par construction.
+      </li>
+      <li>
+        Les indices de risque sont des modèles, donc des simplifications. Ils résument des
+        dizaines de séries en un chiffre : utile pour situer un régime, insuffisant pour
+        décider seul.
+      </li>
+    </ul>
+    <p>
+      Rien de tout cela n'est un conseil en investissement, et je n'ai aucun intérêt à vous
+      vendre quoi que ce soit. Ce sont les outils que j'utilise pour ma propre gouverne, que
+      je partage parce que la transparence des méthodes vaut mieux que l'opacité des
+      certitudes. Le reste du travail, le jugement, reste à faire, par vous comme par moi.
+    </p>
   </div>
 </BaseLayout>
 
