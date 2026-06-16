@@ -141,7 +141,7 @@ Le canal probablement le plus systémique — et le plus paradoxal — passe par
 
 Les stablecoins ne sont plus des acteurs périphériques. **USDT (Tether) est le plus gros stablecoin en circulation à 186 milliards de dollars en janvier 2026, dont 63 % des réserves en T-bills selon la BIS**. USDC (Circle) détient environ 32 % de ses réserves en T-bills, et environ 43 % en reverse repos d'après les disclosures de Circle.
 
-Au Q3 2025, l'ensemble des stablecoins détenait environ 170 milliards de dollars en U.S. Treasuries. La Federal Reserve Bank of Kansas City projette que ce chiffre pourrait atteindre 450 milliards d'ici 2028, en partie sous l'effet du **GENIUS Act** adopté en juillet 2025, qui mandate les émetteurs de payment stablecoins à détenir leurs réserves en HQLA (High-Quality Liquid Assets) — typiquement des T-bills à maturité inférieure à 93 jours, du cash, et des reverse repos.
+Au Q3 2025, l'ensemble des stablecoins détenait environ 170 milliards de dollars en U.S. Treasuries. La Federal Reserve Bank of Kansas City projette que ce chiffre pourrait atteindre 450 milliards d'ici 2028, en partie sous l'effet du **GENIUS Act** adopté en juillet 2025, qui mandate les émetteurs de payment stablecoins à détenir leurs réserves en HQLA (High-Quality Liquid Assets) — typiquement des T-bills à maturité inférieure à 93 jours, du cash, et des reverse repos. Ce cadre s'inscrit dans le mouvement plus large de régulation crypto américaine que je détaille à propos du [CLARITY Act](/posts/clarity-act-regulation-crypto-etats-unis/).
 
 ### L'asymétrie BIS : pourquoi un outflow fait 2 à 3 fois plus mal qu'un inflow
 

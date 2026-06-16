@@ -6,7 +6,7 @@ tags: ["finance", "ia", "politique us"]
 draft: false
 ---
 
-Donc voilà. Vendredi, à bord d'Air Force One, Donald Trump lâche devant les journalistes que son équipe « étudie » l'idée que les labos d'IA offrent au grand public américain une participation dans leurs boîtes, que l'État fédéral deviendrait « essentiellement un partenaire » des entreprises, et qu'il y a « quelque chose de très intéressant là-dedans ». Citation complète du dispositif programmatique : *« On va regarder ça »...*
+Donc voilà. Vendredi, à bord d'Air Force One, Donald Trump lâche devant les journalistes que son équipe « étudie » l'idée que les labos d'IA offrent au grand public américain une participation dans leurs boîtes, que l'État fédéral deviendrait « essentiellement un partenaire » des entreprises, et qu'il y a « quelque chose de très intéressant là-dedans ». Citation complète du dispositif programmatique : *« On va regarder ça ».*
 
 Lundi matin, en préouverture, Nvidia +1 %, Marvell et Micron entre +4 % et +7 %, AMD +1 %. Une phrase en l'air dans un avion a fait bouger plusieurs dizaines de milliards de capitalisation. Voilà le seul mécanisme qui a réellement fonctionné ici. Et c'est exactement le sujet.
 
@@ -31,7 +31,7 @@ C'est le template. Et la « participation à l'IA » coche les mêmes cases.
 
 **3. Cette administration n'arrive même pas à signer un décret IA.** Rappel utile, dans le même article : la cérémonie de signature du décret sur l'IA du 21 mai a été **annulée à la dernière minute** parce que l'industrie tech s'y opposait. La version revue et corrigée se contente de demander des tests de cybersécurité **volontaires**. Quand tu n'arrives pas à imposer un audit volontaire, tu ne nationalises pas un bout d'OpenAI le lundi suivant.
 
-**4. Les boîtes visées sont en train d'entrer en bourse.** Anthropic, OpenAI, SpaceX visent des IPO à des valos en milliers de milliards. Diluer ces deals en collant l'État au capital juste avant l'introduction ? Les conseillers VC de Trump, David Sacks en tête, qui a déjà éreinté la proposition Sanders, ne laisseront pas passer. Le rapport de force est connu.
+**4. Les boîtes visées sont en train d'entrer en bourse.** Anthropic, OpenAI, [SpaceX](/posts/spacex-ipo-tapis-rouge-sec/) visent des IPO à des valos en milliers de milliards. Diluer ces deals en collant l'État au capital juste avant l'introduction ? Les conseillers VC de Trump, David Sacks en tête, qui a déjà éreinté la proposition Sanders, ne laisseront pas passer. Le rapport de force est connu.
 
 ## L'objection honnête : « mais Intel, MP Materials… »
 
