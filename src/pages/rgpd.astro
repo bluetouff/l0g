@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '8 juin 2026';
+const updated = '16 juin 2026';
 ---
 
 <BaseLayout
@@ -63,14 +63,25 @@ const updated = '8 juin 2026';
       navigateur durci) ou évitez les pages contenant des graphiques.
     </p>
 
-    <h4>2. Journaux du serveur</h4>
+    <h4>2. Journaux du serveur et mesure d'audience</h4>
     <p>
       Comme tout serveur web, l'hébergement enregistre des journaux techniques
       contenant l'adresse IP, l'horodatage, la page demandée et l'user-agent. Ces
-      journaux ont une finalité strictement technique et de sécurité (détection
-      d'abus), ne sont pas exploités à des fins de profilage, et sont conservés
-      pour une durée limitée.
+      journaux ont une finalité technique et de sécurité (détection d'abus) ainsi
+      que de mesure d'audience. Ils sont conservés 14 jours, puis supprimés
+      automatiquement par rotation.
     </p>
+    <p>
+      La mesure d'audience est réalisée à partir de ces seuls journaux, au moyen de
+      l'outil libre <strong>GoAccess</strong> exécuté localement sur le serveur.
+      Concrètement, cela signifie :
+    </p>
+    <ul>
+      <li>aucun script de mesure n'est chargé dans votre navigateur, aucun cookie ni stockage local n'est déposé à cette fin ;</li>
+      <li>aucune donnée n'est envoyée à un service tiers : tout reste sur le serveur de l'éditeur ;</li>
+      <li>les adresses IP sont anonymisées avant traitement (le dernier octet est masqué), de sorte qu'aucune personne n'est identifiable dans les statistiques ;</li>
+      <li>les statistiques produites sont agrégées (pages vues, pays, navigateurs, sites référents) et ne servent jamais au profilage individuel.</li>
+    </ul>
 
     <h4>3. Liens sortants</h4>
     <p>
@@ -82,7 +93,7 @@ const updated = '8 juin 2026';
     <h3>Ce que ce site NE fait PAS</h3>
     <ul>
       <li>Aucune régie publicitaire, aucun pixel de tracking, aucun réseau social embarqué.</li>
-      <li>Aucun outil de mesure d'audience tiers (pas de Google Analytics ni équivalent).</li>
+      <li>Aucun outil de mesure d'audience tiers (pas de Google Analytics ni équivalent). La fréquentation est mesurée localement à partir des seuls journaux du serveur, avec IP anonymisées (voir ci-dessus).</li>
       <li>Aucune police chargée depuis un CDN tiers : les polices sont auto-hébergées.</li>
       <li>Aucune recherche déportée : le moteur de recherche fonctionne entièrement dans votre navigateur, sans appel externe.</li>
       <li>Aucun cookie déposé par le site lui-même. Seul TradingView, le cas échéant, peut en déposer.</li>
