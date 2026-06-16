@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Entry { sigle: string; nom: string; def: string; }
+interface Section { titre: string; accent: string; entries: Entry[]; }
+
+const sections: Section[] = [
+  {
+    titre: 'Macro & banques centrales',
+    accent: 'var(--color-signal)',
+    entries: [
+      { sigle: 'CPI', nom: 'Consumer Price Index', def: "Indice des prix à la consommation américain, publié par le BLS. Mesure l'évolution du panier de biens et services des ménages. Équivalent de l'IPC français." },
+      { sigle: 'IPC', nom: 'Indice des prix à la consommation', def: "Mesure française et européenne de l'inflation vécue par les ménages. Pendant du CPI américain." },
+      { sigle: 'PIB', nom: 'Produit intérieur brut', def: "Valeur totale des biens et services produits dans un pays sur une période. Mesure de référence de l'activité économique." },
+      { sigle: 'BCE', nom: 'Banque centrale européenne', def: "Institution qui conduit la politique monétaire de la zone euro : fixation des taux directeurs, contrôle de l'inflation." },
+      { sigle: 'FMI', nom: 'Fonds monétaire international', def: "Institution multilatérale qui surveille le système monétaire mondial et prête aux États en difficulté de balance des paiements." },
+      { sigle: 'BIS', nom: 'Bank for International Settlements', def: "Banque des règlements internationaux, à Bâle. La « banque centrale des banques centrales », référence pour les statistiques bancaires et de dette mondiales." },
+      { sigle: 'OAT', nom: 'Obligation assimilable du Trésor', def: "Titre de dette émis par l'État français à moyen et long terme. Son taux sert de référence au coût d'emprunt de la France." },
+      { sigle: 'INSEE', nom: "Institut national de la statistique et des études économiques", def: "Producteur officiel des statistiques économiques et démographiques françaises (inflation, croissance, emploi)." },
+      { sigle: 'EIA', nom: 'Energy Information Administration', def: "Agence statistique du département américain de l'Énergie. Référence pour les données pétrole, gaz et énergie." },
+      { sigle: 'IEA', nom: 'International Energy Agency', def: "Agence internationale de l'énergie, basée à Paris. Analyses et projections sur les marchés énergétiques mondiaux." },
+    ],
+  },
+  {
+    titre: 'Crédit privé & marchés',
+    accent: '#ff4d87',
+    entries: [
+      { sigle: 'BDC', nom: 'Business Development Company', def: "Véhicule coté américain qui prête aux entreprises de taille moyenne. Pilier du crédit privé, souvent à effet de levier." },
+      { sigle: 'NAV', nom: 'Net Asset Value', def: "Valeur nette d'inventaire : valeur des actifs d'un fonds moins ses dettes. Pour les fonds privés, elle est estimée et non cotée, d'où des questions d'opacité." },
+      { sigle: 'AUM', nom: 'Assets Under Management', def: "Encours sous gestion : montant total des actifs gérés par un fonds ou une société de gestion." },
+      { sigle: 'PIK', nom: 'Payment In Kind', def: "Paiement en nature : intérêts d'une dette versés non en cash mais en dette supplémentaire. Signal de tension sur la trésorerie de l'emprunteur." },
+      { sigle: 'LP', nom: 'Limited Partner', def: "Investisseur commanditaire d'un fonds (assureur, fonds de pension, family office) qui apporte le capital sans gérer." },
+      { sigle: 'ETF', nom: 'Exchange-Traded Fund', def: "Fonds indiciel coté en bourse, qui réplique un indice ou un panier d'actifs et se négocie comme une action." },
+      { sigle: 'IPO', nom: 'Initial Public Offering', def: "Introduction en bourse : première mise sur le marché des actions d'une société auprès du public." },
+      { sigle: 'NDFI', nom: 'Non-Depository Financial Institution', def: "Institution financière non bancaire (fonds de crédit privé, assureurs). Au cœur du « shadow banking » car peu régulée comme les banques." },
+      { sigle: 'AIMA', nom: 'Alternative Investment Management Association', def: "Association professionnelle mondiale des gérants d'actifs alternatifs (hedge funds, crédit privé)." },
+      { sigle: 'FSB', nom: 'Financial Stability Board', def: "Conseil de stabilité financière, qui coordonne au niveau international la surveillance des risques systémiques." },
+    ],
+  },
+  {
+    titre: 'Crypto & stablecoins',
+    accent: 'var(--color-amber)',
+    entries: [
+      { sigle: 'BTC', nom: 'Bitcoin', def: "Première cryptomonnaie, décentralisée, à offre plafonnée à 21 millions d'unités. Distincte de l'écosystème DeFi par sa conception." },
+      { sigle: 'ETH', nom: 'Ether', def: "Cryptomonnaie native de la blockchain Ethereum, qui sert à payer les transactions et fait tourner les contrats intelligents." },
+      { sigle: 'USDT', nom: 'Tether', def: "Plus grand stablecoin en circulation, censé valoir un dollar. Émis par Tether, souvent au cœur des débats sur la transparence des réserves." },
+      { sigle: 'USDC', nom: 'USD Coin', def: "Stablecoin adossé au dollar émis par Circle, présenté comme plus transparent sur ses réserves que l'USDT." },
+      { sigle: 'RLUSD', nom: 'Ripple USD', def: "Stablecoin dollar émis par Ripple, plus récent, adossé à des liquidités et bons du Trésor." },
+      { sigle: 'TVL', nom: 'Total Value Locked', def: "Valeur totale verrouillée dans un protocole DeFi : montant des actifs déposés. Mesure d'adoption, mais sensible aux effets de levier." },
+      { sigle: 'DAO', nom: 'Decentralized Autonomous Organization', def: "Organisation autonome décentralisée : structure gouvernée par des votes on-chain plutôt que par une hiérarchie classique." },
+      { sigle: 'RWA', nom: 'Real World Assets', def: "Actifs du monde réel (obligations, immobilier) tokenisés sur une blockchain pour être échangés on-chain." },
+      { sigle: 'DeFi', nom: 'Decentralized Finance', def: "Finance décentralisée : services financiers (prêt, échange) opérés par des contrats intelligents sans intermédiaire bancaire." },
+    ],
+  },
+  {
+    titre: 'Énergie & géopolitique',
+    accent: 'var(--color-amber)',
+    entries: [
+      { sigle: 'WTI', nom: 'West Texas Intermediate', def: "Pétrole brut de référence américain, coté à New York. Avec le Brent, l'un des deux prix de référence mondiaux." },
+      { sigle: 'GNL', nom: 'Gaz naturel liquéfié', def: "Gaz refroidi à l'état liquide pour le transport par méthanier. Permet d'exporter le gaz hors gazoducs." },
+      { sigle: 'OPEP', nom: 'Organisation des pays exportateurs de pétrole', def: "Cartel de producteurs (Arabie saoudite, etc.) qui coordonne les quotas de production pour influencer le prix du baril." },
+      { sigle: 'IRGC', nom: 'Islamic Revolutionary Guard Corps', def: "Gardiens de la révolution islamique : force armée d'élite iranienne, acteur clé des tensions dans le détroit d'Ormuz." },
+      { sigle: 'FAO', nom: "Food and Agriculture Organization", def: "Organisation des Nations unies pour l'alimentation et l'agriculture. Référence sur les prix alimentaires mondiaux et la sécurité alimentaire." },
+      { sigle: 'WFP', nom: 'World Food Programme', def: "Programme alimentaire mondial de l'ONU, en charge de l'aide alimentaire d'urgence." },
+    ],
+  },
+  {
+    titre: 'Régulation & institutions US',
+    accent: '#7aa2f7',
+    entries: [
+      { sigle: 'SEC', nom: 'Securities and Exchange Commission', def: "Gendarme boursier américain. Supervise les marchés, les introductions en bourse et les obligations de transparence des sociétés cotées." },
+      { sigle: 'CFTC', nom: 'Commodity Futures Trading Commission', def: "Régulateur américain des marchés de dérivés et de matières premières. Publie le rapport de positionnement « Commitment of Traders »." },
+      { sigle: 'OFAC', nom: 'Office of Foreign Assets Control', def: "Bureau du Trésor américain chargé d'appliquer les sanctions économiques (gel d'avoirs, listes noires)." },
+      { sigle: 'EDGAR', nom: 'Electronic Data Gathering, Analysis, and Retrieval', def: "Base de données publique de la SEC où sont déposés tous les documents réglementaires (10-K, 13F, S-1)." },
+      { sigle: 'BLS', nom: 'Bureau of Labor Statistics', def: "Agence statistique américaine du travail. Publie le CPI, l'emploi, et les indices de prix import/export." },
+      { sigle: 'CLARITY', nom: 'CLARITY Act', def: "Projet de loi américain visant à clarifier la répartition de la régulation crypto entre SEC et CFTC." },
+      { sigle: 'GENIUS', nom: 'GENIUS Act', def: "Projet de loi américain encadrant les stablecoins de paiement (réserves, émetteurs agréés)." },
+      { sigle: 'NASAA', nom: 'North American Securities Administrators Association', def: "Association des régulateurs boursiers des États américains, du Canada et du Mexique." },
+      { sigle: 'USAID', nom: 'U.S. Agency for International Development', def: "Agence américaine pour le développement international, en charge de l'aide étrangère." },
+      { sigle: 'SWIFT', nom: 'Society for Worldwide Interbank Financial Telecommunication', def: "Réseau de messagerie interbancaire mondial pour les transferts. Exclure un pays de SWIFT est une arme de sanction majeure." },
+      { sigle: 'CIPS', nom: 'Cross-Border Interbank Payment System', def: "Système de paiement transfrontalier chinois, présenté comme une alternative à SWIFT." },
+    ],
+  },
+];
+
+const total = sections.reduce((n, s) => n + s.entries.length, 0);
+---
+
+<BaseLayout
+  title="Glossaire"
+  description="Tous les sigles et acronymes du journal expliqués en français clair : CPI, SEC, BDC, NAV, USDT, OAT, CFTC, OFAC, stablecoins, crédit privé, macro et régulation."
+>
+  <section class="rise" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// glossaire</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Décoder les sigles
+    </h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      La finance et la macro adorent les acronymes. En voici {total}, tous croisés dans les
+      articles de ce journal, expliqués en français clair. Pas de jargon pour le jargon.
+    </p>
+  </section>
+
+  {
+    sections.map((s) => (
+      <section class="mt-10" data-pagefind-ignore>
+        <h2 class="mono-label mb-4 text-lg" style={`color:${s.accent}`}>// {s.titre}</h2>
+        <dl class="glossary">
+          {s.entries.map((e) => (
+            <div class="gentry" id={e.sigle.toLowerCase()}>
+              <dt>
+                <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
+                <span class="nom">{e.nom}</span>
+              </dt>
+              <dd>{e.def}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    ))
+  }
+
+  <style>
+    .glossary { display: flex; flex-direction: column; gap: 0; }
+    .gentry { padding: 0.9rem 0; border-bottom: 1px solid var(--color-line); }
+    .gentry:last-child { border-bottom: 0; }
+    .gentry dt { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
+    .gentry .sigle { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em; }
+    .gentry .nom { color: var(--color-bright); font-size: 0.9rem; }
+    .gentry dd { margin: 0.35rem 0 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.6; max-width: 60ch; }
+    .gentry:target { background: color-mix(in srgb, var(--color-signal) 8%, transparent); border-radius: 8px; padding-left: 0.6rem; padding-right: 0.6rem; }
+  </style>
+</BaseLayout>
