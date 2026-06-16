@@ -7,6 +7,7 @@ interface Props {
   title?: string;
   description?: string;
   ogType?: 'website' | 'article';
+  ogImage?: string;
   sidebar?: boolean;
 }
 
@@ -14,10 +15,12 @@ const {
   title = 'l0g.fr',
   description = 'La finance opaque, mise en données. Macro, crédit privé, crypto sur données publiques : analyses aux sources primaires et outils de monitoring en accès libre, par Bluetouff.',
   ogType = 'website',
+  ogImage = '/og-default.png',
   sidebar = true,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const fullTitle = title === 'l0g.fr'
   ? 'l0g.fr — La finance opaque, mise en données'
   : `${title} — l0g.fr`;
@@ -41,7 +44,12 @@ const year = new Date().getFullYear();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="l0g.fr" />
+    <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="l0g.fr" href="/rss.xml" />
