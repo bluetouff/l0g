@@ -45,6 +45,38 @@ const accentVar: Record<string, string> = {
     </div>
   </section>
 
+  <section data-pagefind-ignore>
+    <a
+      href="https://13flow.eu/dashboard.html#confluence"
+      target="_blank"
+      rel="noopener"
+      class="conf-head group mb-3 flex items-baseline justify-between gap-2"
+    >
+      <h2 class="mono-label glow">// confluence</h2>
+      <span class="text-xs text-muted transition-colors group-hover:text-bright">13F &times; Form 4 ›</span>
+    </a>
+    <div class="space-y-1.5" data-confluence>
+      {
+        [0, 1, 2, 3, 4].map((i) => (
+          <a
+            href="https://13flow.eu/dashboard.html#confluence"
+            target="_blank"
+            rel="noopener"
+            class="conf-row flex items-center gap-2 rounded-lg border border-line px-2.5 py-1.5"
+            data-slot={i}
+            style="display:none"
+          >
+            <span class="conf-ticker text-sm font-semibold tabular-nums text-bright" data-ticker>
+              —
+            </span>
+            <span class="conf-ctx ml-auto truncate text-xs text-muted" data-ctx />
+            <span class="conf-score font-display text-lg leading-none glow" data-score />
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
   <section>
     <h2 class="mono-label glow mb-3">// publication</h2>
     <a
@@ -87,8 +119,16 @@ const accentVar: Record<string, string> = {
   </section>
 </div>
 
+<script src="/confluence.js" is:inline></script>
 
 <style>
+  .conf-head:hover .mono-label { color: var(--color-signal); }
+  .conf-row { transition: border-color 0.2s, background 0.2s; }
+  .conf-row:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+    background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+  }
+  .conf-score { color: var(--color-signal); }
   .dash-card { transition: border-color 0.2s, background 0.2s; }
   .dash-card:hover {
     border-color: color-mix(in srgb, var(--a) 55%, transparent);
