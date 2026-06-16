@@ -6,12 +6,14 @@
    ============================================================ */
 
 @import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/inter';
 @import 'tailwindcss';
 
 @theme {
   --font-display: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
   --font-body: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+  --font-read: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --color-ink: #0c0d10;          /* fond */
   --color-surface: #121419;      /* carte / surface */
@@ -132,7 +134,7 @@ a { color: inherit; text-decoration: none; }
 /* ============================================================
    .prose — articles (markdown / mdx), monospace lisible
    ============================================================ */
-.prose { font-size: 0.98rem; line-height: 1.78; color: #d6d9df; }
+.prose { font-family: var(--font-read); font-size: 1.05rem; line-height: 1.75; color: #d6d9df; letter-spacing: -0.003em; }
 .prose > * + * { margin-top: 1.15em; }
 
 .prose h2, .prose h3, .prose h4 {
