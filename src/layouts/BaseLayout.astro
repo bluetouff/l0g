@@ -18,7 +18,9 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
-const fullTitle = title === 'l0g.fr' ? title : `${title} — l0g.fr`;
+const fullTitle = title === 'l0g.fr'
+  ? 'l0g.fr — Macro, crypto, finance décryptées aux sources primaires'
+  : `${title} — l0g.fr`;
 const year = new Date().getFullYear();
 ---
 
@@ -58,6 +60,7 @@ const year = new Date().getFullYear();
           </div>
           <nav class="mono-label flex items-center gap-4">
             <a href="/" class="link-term">journal</a>
+            <a href="/sujets/" class="link-term">sujets</a>
             <a href="/confluence/" class="link-term">confluence</a>
             <a href="/methodologie/" class="link-term">méthodo</a>
             <a href="/rss.xml" class="link-term">rss</a>
@@ -68,7 +71,7 @@ const year = new Date().getFullYear();
 
         <!-- Nav dashboards -->
         <nav class="mono-label mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-3">
-          <span style="color: var(--color-accent)">// dashboards :</span>
+          <span style="color: var(--color-accent)">// marchés :</span>
           <a href="/btc/" class="link-term">btc</a>
           <a href="/usd/" class="link-term">usd</a>
           <a href="/marches-us/" class="link-term">marchés us</a>
@@ -103,6 +106,7 @@ const year = new Date().getFullYear();
       <!-- Footer -->
       <footer class="mt-10 border-t border-line pt-5 text-center">
         <p class="mono-label flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <a href="/sujets/" class="link-term">sujets</a>
           <a href="/confluence/" class="link-term">confluence</a>
           <a href="/methodologie/" class="link-term">méthodologie</a>
           <a href="/about/" class="link-term">about</a>

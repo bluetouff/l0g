@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { topics, postMatchesTopic } from '../config/topics.ts';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const accentVar: Record<string, string> = {
+  teal: 'var(--color-signal)',
+  blue: '#7aa2f7',
+  pink: 'var(--color-accent)',
+  amber: 'var(--color-amber)',
+};
+
+const cards = topics
+  .map((t) => ({ ...t, n: posts.filter((p) => postMatchesTopic(p.data.tags, t)).length }))
+  .sort((a, b) => b.n - a.n);
+---
+
+<BaseLayout
+  title="Sujets"
+  description="Les grands dossiers du journal : crédit privé, macro et banques centrales, géopolitique et énergie, crypto, marchés et valorisations, politique US."
+>
+  <section class="rise" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// sujets</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Les dossiers
+    </h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      Le journal n'est pas qu'un flux. Voici les grands fils que je suis dans la durée,
+      chacun regroupant les articles qui s'y rattachent.
+    </p>
+  </section>
+
+  <section class="mt-8 grid gap-3 sm:grid-cols-2" data-pagefind-ignore>
+    {
+      cards.map((t) => (
+        <a
+          href={`/sujet/${t.slug}/`}
+          class="topic-card group block rounded-xl border border-line p-5"
+          style={`--a:${accentVar[t.accent]}`}
+        >
+          <div class="flex items-baseline justify-between gap-3">
+            <h2 class="text-lg font-semibold text-bright transition-colors group-hover:text-signal">
+              {t.label}
+            </h2>
+            <span class="mono-label whitespace-nowrap text-muted">{t.n} art.</span>
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{t.blurb}</p>
+        </a>
+      ))
+    }
+  </section>
+
+  <style>
+    .topic-card { transition: border-color 0.2s, background 0.2s; }
+    .topic-card:hover {
+      border-color: color-mix(in srgb, var(--a) 55%, transparent);
+      background: color-mix(in srgb, var(--a) 6%, transparent);
+    }
+  </style>
+</BaseLayout>

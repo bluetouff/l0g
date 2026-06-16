@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { topicForTag } from '../../config/topics.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -26,7 +27,12 @@ const iso = post.data.pubDate.toISOString();
     <header class="mb-10">
       <div class="mono-label flex flex-wrap items-center gap-3">
         <time datetime={iso} data-pagefind-meta="date">{dateLabel}</time>
-        {post.data.tags.map((t) => <span class="text-signal">#{t}</span>)}
+        {post.data.tags.map((t) => {
+          const slug = topicForTag(t);
+          return slug
+            ? <a href={`/sujet/${slug}/`} class="link-term text-signal">#{t}</a>
+            : <span class="text-signal">#{t}</span>;
+        })}
       </div>
       <h1 class="mt-4 font-display text-5xl leading-none tracking-wider glow sm:text-6xl">
         {post.data.title}

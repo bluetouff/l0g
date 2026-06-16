@@ -19,4 +19,4 @@ export const dashboards: Dashboard[] = [
 ];
 
 export const sidebarAbout =
-  "Journal de Bluetouff. Macro, crypto, finance. Sources primaires, lecture critique des annonces, et un peu de code pour rendre l'opacite lisible.";
+  "Journal de Bluetouff. Macro, crypto, finance. Sources primaires, lecture critique des annonces, et un peu de code pour rendre l'opacité lisible.";
