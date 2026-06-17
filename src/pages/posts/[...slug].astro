@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content } = await render(post);
 
 const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
@@ -38,7 +39,7 @@ const share = {
   title={post.data.title}
   description={post.data.description}
   ogType="article"
-  ogImage={post.data.ogImage}
+  ogImage={ogImage}
 >
   <article class="rise max-w-2xl" data-pagefind-body>
     <header class="mb-10">
