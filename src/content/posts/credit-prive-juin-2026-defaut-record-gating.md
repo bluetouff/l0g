@@ -1,7 +1,7 @@
 ---
 title: "Crédit privé, juin 2026 : un record de défaut, et la liquidité qui se referme"
 description: "Le taux de défaut élargi de Fitch reste coincé à 6 % en mai, les fonds semi-liquides plafonnent les rachats pour le deuxième trimestre consécutif, et les régulateurs passent de l'observation à la vigilance. Lecture froide, sur sources primaires, de l'état du crédit privé américain à la mi-2026."
-pubDate: 2026-06-17
+pubDate: 2026-06-17T09:30:00+02:00
 tags: ["crédit privé", "gating", "hlend", "blackstone", "bdc", "valorisation", "fed"]
 draft: false
 ---

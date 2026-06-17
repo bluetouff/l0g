@@ -1,7 +1,7 @@
 ---
 title: "Premier FOMC de Warsh : le statu quo facile, le reste beaucoup moins"
 description: "La Fed devrait laisser ses taux inchangés ce 17 juin, pour le premier FOMC présidé par Kevin Warsh. Le vrai enjeu est ailleurs : un dot plot coincé entre une baisse de principe et une inflation à 4,2 %, un marché obligataire qui price déjà une hausse, et un président qui veut dégonfler le bilan. Analyse froide, sur données."
-pubDate: 2026-06-17
+pubDate: 2026-06-17T16:00:00+02:00
 tags: ["fed", "warsh", "fomc", "inflation", "taux", "obligataire", "qt"]
 draft: false
 ---
