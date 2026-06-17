@@ -19,22 +19,22 @@ Le détail compte plus que le chiffre. Les événements de défaut recensés par
 Le marché public des prêts à effet de levier offre la meilleure illustration de cet écart, parce qu'on y dispose de deux mesures côte à côte. Sur l'indice Morningstar LSTA, au 31 mai, le taux de défaut de paiement par émetteur ressort à 1,42 %, contre 1,24 % en avril. Mais le taux dual-track, qui ajoute les échanges sous contrainte et les opérations de gestion de passif, grimpe à 3,11 %, contre 2,84 % le mois précédent. Sur les douze mois, ces opérations de gestion de passif représentent 54 % du total des défauts, et elles dépassent les défauts de paiement classiques chaque mois depuis janvier 2024. La norme s'est inversée : restructurer hors tribunal est devenu le mode par défaut.
 
 <figure>
-<svg viewBox="0 0 720 312" width="100%" role="img" aria-label="Comparaison des taux de défaut selon le périmètre retenu" xmlns="http://www.w3.org/2000/svg" font-family="'Share Tech Mono', ui-monospace, monospace">
-<text x="40" y="26" fill="#00f0d0" font-size="17">Le défaut, selon ce qu'on accepte d'y mettre (mai 2026)</text>
+<svg viewBox="0 0 720 312" width="100%" role="img" aria-label="Comparaison des taux de défaut selon le périmètre retenu" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<text x="40" y="26" fill="#5eead4" font-size="17">Le défaut, selon ce qu'on accepte d'y mettre (mai 2026)</text>
 <g font-size="14">
-<text x="40" y="62" fill="#b8fff5">Défaut de paiement, leveraged loans (par émetteur)</text>
-<rect x="40" y="70" width="91" height="16" fill="#00f0d0"/>
-<text x="139" y="83" fill="#b8fff5">1,42 %</text>
-<text x="40" y="118" fill="#b8fff5">Taux dual-track, avec gestion de passif (LME)</text>
-<rect x="40" y="126" width="199" height="16" fill="#00f0d0"/>
-<text x="247" y="139" fill="#b8fff5">3,11 %</text>
-<text x="40" y="174" fill="#b8fff5">Crédit privé, indice large Fitch (PCDR)</text>
-<rect x="40" y="182" width="384" height="16" fill="#ff6b9d"/>
-<text x="432" y="195" fill="#b8fff5">6,0 %</text>
-<text x="40" y="230" fill="#b8fff5">Crédit privé, gros emprunteurs sous LBO (PMR)</text>
-<rect x="40" y="238" width="608" height="16" fill="#ff6b9d"/>
-<text x="40" y="278" fill="#7aa6a0" font-size="12">En cyan, ce que montre le compteur visible. En rose, ce qu'on y voit en élargissant le périmètre.</text>
-<text x="40" y="296" fill="#7aa6a0" font-size="12">Sources : Fitch Ratings (mai 2026) ; Morningstar LSTA / PitchBook LCD (au 31 mai 2026).</text>
+<text x="40" y="62" fill="#e7e9ee">Défaut de paiement, leveraged loans (par émetteur)</text>
+<rect x="40" y="70" width="91" height="16" fill="#5eead4"/>
+<text x="139" y="83" fill="#e7e9ee">1,42 %</text>
+<text x="40" y="118" fill="#e7e9ee">Taux dual-track, avec gestion de passif (LME)</text>
+<rect x="40" y="126" width="199" height="16" fill="#5eead4"/>
+<text x="247" y="139" fill="#e7e9ee">3,11 %</text>
+<text x="40" y="174" fill="#e7e9ee">Crédit privé, indice large Fitch (PCDR)</text>
+<rect x="40" y="182" width="384" height="16" fill="#ff4d87"/>
+<text x="432" y="195" fill="#e7e9ee">6,0 %</text>
+<text x="40" y="230" fill="#e7e9ee">Crédit privé, gros emprunteurs sous LBO (PMR)</text>
+<rect x="40" y="238" width="608" height="16" fill="#ff4d87"/>
+<text x="40" y="278" fill="#8b909b" font-size="12">En cyan, ce que montre le compteur visible. En rose, ce qu'on y voit en élargissant le périmètre.</text>
+<text x="40" y="296" fill="#8b909b" font-size="12">Sources : Fitch Ratings (mai 2026) ; Morningstar LSTA / PitchBook LCD (au 31 mai 2026).</text>
 </g>
 </svg>
 </figure>
@@ -42,22 +42,22 @@ Le marché public des prêts à effet de levier offre la meilleure illustration 
 Cette mécanique a un carburant identifiable. Lincoln International, qui valorise environ un tiers des portefeuilles de crédit privé américains, mesure la part des prêts en PIK : elle a doublé, passant d'environ 5 % du marché début 2022 à 11 % fin 2025. Plus parlant encore, le « bad PIK », c'est-à-dire les prêts initialement payés en cash et convertis en PIK parce que l'emprunteur ne suit plus, est passé de 2 % à 6,4 % sur la même période. Le PIK n'est pas un défaut en soi. C'est un report. Mais un report généralisé est un signal sur la capacité réelle des emprunteurs à servir leur dette dans un environnement de taux qui reste élevé.
 
 <figure>
-<svg viewBox="0 0 720 260" width="100%" role="img" aria-label="Évolution de la part des prêts PIK entre 2022 et fin 2025" xmlns="http://www.w3.org/2000/svg" font-family="'Share Tech Mono', ui-monospace, monospace">
-<text x="40" y="26" fill="#00f0d0" font-size="17">La normalisation du report d'intérêts (PIK)</text>
+<svg viewBox="0 0 720 260" width="100%" role="img" aria-label="Évolution de la part des prêts PIK entre 2022 et fin 2025" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<text x="40" y="26" fill="#5eead4" font-size="17">La normalisation du report d'intérêts (PIK)</text>
 <g font-size="14">
-<text x="40" y="62" fill="#b8fff5">PIK, part du marché, début 2022</text>
-<rect x="40" y="70" width="120" height="16" fill="#3f6f6a"/>
-<text x="168" y="83" fill="#b8fff5">5 %</text>
-<text x="40" y="106" fill="#b8fff5">PIK, part du marché, fin 2025</text>
-<rect x="40" y="114" width="264" height="16" fill="#ff6b9d"/>
-<text x="312" y="127" fill="#b8fff5">11 %</text>
-<text x="40" y="156" fill="#b8fff5">« Bad PIK » (cash converti en PIK), début 2022</text>
-<rect x="40" y="164" width="48" height="16" fill="#3f6f6a"/>
-<text x="96" y="177" fill="#b8fff5">2 %</text>
-<text x="40" y="200" fill="#b8fff5">« Bad PIK » (cash converti en PIK), fin 2025</text>
-<rect x="40" y="208" width="154" height="16" fill="#ff6b9d"/>
-<text x="202" y="221" fill="#b8fff5">6,4 %</text>
-<text x="40" y="248" fill="#7aa6a0" font-size="12">Source : Lincoln International (valorise environ un tiers des portefeuilles de crédit privé US).</text>
+<text x="40" y="62" fill="#e7e9ee">PIK, part du marché, début 2022</text>
+<rect x="40" y="70" width="120" height="16" fill="#8b909b"/>
+<text x="168" y="83" fill="#e7e9ee">5 %</text>
+<text x="40" y="106" fill="#e7e9ee">PIK, part du marché, fin 2025</text>
+<rect x="40" y="114" width="264" height="16" fill="#ff4d87"/>
+<text x="312" y="127" fill="#e7e9ee">11 %</text>
+<text x="40" y="156" fill="#e7e9ee">« Bad PIK » (cash converti en PIK), début 2022</text>
+<rect x="40" y="164" width="48" height="16" fill="#8b909b"/>
+<text x="96" y="177" fill="#e7e9ee">2 %</text>
+<text x="40" y="200" fill="#e7e9ee">« Bad PIK » (cash converti en PIK), fin 2025</text>
+<rect x="40" y="208" width="154" height="16" fill="#ff4d87"/>
+<text x="202" y="221" fill="#e7e9ee">6,4 %</text>
+<text x="40" y="248" fill="#8b909b" font-size="12">Source : Lincoln International (valorise environ un tiers des portefeuilles de crédit privé US).</text>
 </g>
 </svg>
 </figure>
@@ -71,25 +71,25 @@ Le cas le plus suivi est HLEND, le fonds de 26 milliards de dollars hérité par
 HLEND n'est pas seul. Le fonds de crédit de Blackstone, BCRED, après avoir honoré un record de 7,9 % de rachats au premier trimestre en injectant 400 millions de dollars de capital propre, a fini par plafonner à son tour. Cliffwater a vu 14 % de demandes sur son fonds phare de 33 milliards de dollars et a gaté pour le deuxième trimestre consécutif. Morgan Stanley a plafonné un de ses véhicules après des demandes à 10,9 %. Et Blue Owl est allé plus loin en février, en fermant purement et simplement la fenêtre de rachat de son fonds OBDC II. Moody's a abaissé sa perspective sur le secteur des BDC à négative début avril, en notant que les BDC perpétuels non cotés ont enregistré leur toute première décollecte nette au premier trimestre.
 
 <figure>
-<svg viewBox="0 0 720 280" width="100%" role="img" aria-label="Demandes de rachat sur les principaux fonds semi-liquides comparées au plafond de 5 pourcent" xmlns="http://www.w3.org/2000/svg" font-family="'Share Tech Mono', ui-monospace, monospace">
-<text x="40" y="26" fill="#00f0d0" font-size="17">Demandes de rachat vs plafond de 5 % (2026)</text>
+<svg viewBox="0 0 720 280" width="100%" role="img" aria-label="Demandes de rachat sur les principaux fonds semi-liquides comparées au plafond de 5 pourcent" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono Variable', ui-monospace, monospace">
+<text x="40" y="26" fill="#5eead4" font-size="17">Demandes de rachat vs plafond de 5 % (2026)</text>
 <g font-size="14">
-<line x1="240" y1="44" x2="240" y2="214" stroke="#00f0d0" stroke-width="1.5" stroke-dasharray="4 4"/>
-<text x="246" y="56" fill="#00f0d0" font-size="12">plafond 5 %</text>
-<text x="40" y="78" fill="#b8fff5">Cliffwater (fonds phare)</text>
-<rect x="40" y="86" width="560" height="16" fill="#ff6b9d"/>
-<text x="608" y="99" fill="#b8fff5">14 %</text>
-<text x="40" y="122" fill="#b8fff5">HLEND (BlackRock / HPS), T2</text>
-<rect x="40" y="130" width="532" height="16" fill="#ff6b9d"/>
-<text x="580" y="143" fill="#b8fff5">13,3 %</text>
-<text x="40" y="166" fill="#b8fff5">Morgan Stanley (North Haven)</text>
-<rect x="40" y="174" width="436" height="16" fill="#ff6b9d"/>
-<text x="484" y="187" fill="#b8fff5">10,9 %</text>
-<text x="40" y="210" fill="#b8fff5">Blackstone (BCRED), T1</text>
-<rect x="40" y="218" width="316" height="16" fill="#ffcc66"/>
-<text x="364" y="231" fill="#b8fff5">7,9 %</text>
-<text x="40" y="258" fill="#7aa6a0" font-size="12">Demandes de rachat, et non rachats effectifs (plafonnés à 5 %). Trimestres T1 et T2 2026 mêlés.</text>
-<text x="40" y="276" fill="#7aa6a0" font-size="12">Sources : Reuters, Financial Times, Bloomberg, ZeroHedge (mars à juin 2026).</text>
+<line x1="240" y1="44" x2="240" y2="214" stroke="#5eead4" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="246" y="56" fill="#5eead4" font-size="12">plafond 5 %</text>
+<text x="40" y="78" fill="#e7e9ee">Cliffwater (fonds phare)</text>
+<rect x="40" y="86" width="560" height="16" fill="#ff4d87"/>
+<text x="608" y="99" fill="#e7e9ee">14 %</text>
+<text x="40" y="122" fill="#e7e9ee">HLEND (BlackRock / HPS), T2</text>
+<rect x="40" y="130" width="532" height="16" fill="#ff4d87"/>
+<text x="580" y="143" fill="#e7e9ee">13,3 %</text>
+<text x="40" y="166" fill="#e7e9ee">Morgan Stanley (North Haven)</text>
+<rect x="40" y="174" width="436" height="16" fill="#ff4d87"/>
+<text x="484" y="187" fill="#e7e9ee">10,9 %</text>
+<text x="40" y="210" fill="#e7e9ee">Blackstone (BCRED), T1</text>
+<rect x="40" y="218" width="316" height="16" fill="#f5b13d"/>
+<text x="364" y="231" fill="#e7e9ee">7,9 %</text>
+<text x="40" y="258" fill="#8b909b" font-size="12">Demandes de rachat, et non rachats effectifs (plafonnés à 5 %). Trimestres T1 et T2 2026 mêlés.</text>
+<text x="40" y="276" fill="#8b909b" font-size="12">Sources : Reuters, Financial Times, Bloomberg, ZeroHedge (mars à juin 2026).</text>
 </g>
 </svg>
 </figure>
