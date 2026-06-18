@@ -28,15 +28,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <table class="conf-table w-full text-sm">
       <thead>
         <tr class="mono-label text-muted">
-          <th class="px-3 py-2 text-left">#</th>
-          <th class="sortable px-3 py-2 text-left"  data-key="ticker"   data-type="str">ticker</th>
-          <th class="sortable px-3 py-2 text-right" data-key="score"    data-type="num" data-active="desc">score</th>
-          <th class="px-3 py-2 text-left">quadrant</th>
-          <th class="sortable px-3 py-2 text-right" data-key="funds"    data-type="num">fonds +</th>
-          <th class="sortable px-3 py-2 text-right" data-key="trimming" data-type="num">fonds -</th>
-          <th class="sortable px-3 py-2 text-right" data-key="insiders" data-type="num">initiés</th>
-          <th class="sortable px-3 py-2 text-right" data-key="csuite"   data-type="num">c-suite</th>
-          <th class="sortable px-3 py-2 text-right" data-key="age"      data-type="num">âge moy. (j)</th>
+          <th class="text-right">#</th>
+          <th class="sortable text-left"  data-key="ticker"   data-type="str">ticker</th>
+          <th class="sortable text-left"  data-key="score"    data-type="num" data-active="desc">score</th>
+          <th class="text-left">quadrant</th>
+          <th class="sortable text-right" data-key="funds"    data-type="num">fonds +</th>
+          <th class="sortable text-right" data-key="trimming" data-type="num">fonds -</th>
+          <th class="sortable text-right" data-key="insiders" data-type="num">initiés</th>
+          <th class="sortable text-right" data-key="csuite"   data-type="num">c-suite</th>
+          <th class="sortable text-right" data-key="age"      data-type="num">âge moy. (j)</th>
         </tr>
       </thead>
       <tbody data-conf-body>
@@ -59,48 +59,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <script src="/confluence-table.js" is:inline></script>
 
   <style>
-    .conf-table { border-collapse: collapse; width: 100%; }
+    .conf-table { border-collapse: separate; border-spacing: 0; width: 100%; }
 
-    /* En-tête marqué */
+    /* En-tête */
     .conf-table thead th {
       background: var(--color-surface);
       border-bottom: 1px solid var(--color-line-strong);
-      padding-top: 0.7rem;
-      padding-bottom: 0.7rem;
+      padding: 0.7rem 0.9rem;
+      white-space: nowrap;
+      vertical-align: bottom;
     }
 
-    /* Lignes : plus d'air, zébrage discret, survol */
+    /* Lignes */
     .conf-table tbody td {
       border-bottom: 1px solid var(--color-line);
+      padding: 0.7rem 0.9rem;
       white-space: nowrap;
-      padding-top: 0.7rem;
-      padding-bottom: 0.7rem;
+      vertical-align: middle;
     }
     .conf-table tbody tr { transition: background 0.15s; }
-    .conf-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.015); }
-    .conf-table tbody tr:hover td { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
+    .conf-table tbody tr:hover td { background: color-mix(in srgb, var(--q, var(--color-signal)) 8%, transparent); }
     .conf-table tbody tr:last-child td { border-bottom: 0; }
 
+    /* Rail couleur quadrant à gauche de chaque ligne (--q posé en inline par le JS) */
+    .conf-table tbody td:first-child {
+      box-shadow: inset 3px 0 0 color-mix(in srgb, var(--q) 50%, transparent);
+      transition: box-shadow 0.15s;
+    }
+    .conf-table tbody tr:hover td:first-child { box-shadow: inset 3px 0 0 var(--q); }
+
     /* Rang */
-    .conf-table td:first-child { font-variant-numeric: tabular-nums; }
+    .cf-rank { color: var(--color-muted); width: 1%; }
 
     /* Ticker */
-    .conf-table td.tk { font-weight: 700; color: var(--color-bright); letter-spacing: 0.02em; }
+    .cf-tk { font-weight: 700; color: var(--color-bright); letter-spacing: 0.02em; }
 
-    /* Score : gros, halo à la couleur du quadrant (color posé en inline par le JS) */
-    .conf-table td.sc {
+    /* Score : valeur + barre de progression */
+    .cf-score { width: 8.5rem; }
+    .cf-score-wrap { display: flex; flex-direction: column; gap: 0.32rem; }
+    .cf-score-val {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
-      text-shadow: 0 0 16px color-mix(in srgb, currentColor 35%, transparent);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
+    .cf-bar {
+      display: block;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--color-line);
+      overflow: hidden;
+    }
+    .cf-bar-fill { display: block; height: 100%; border-radius: 999px; }
 
     /* Badge quadrant : pastille teintée (currentColor = couleur du quadrant) */
     .conf-table .q {
       display: inline-block;
       font-family: var(--font-mono);
       font-size: 0.64rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       padding: 0.18rem 0.55rem;
       border-radius: 999px;
@@ -108,14 +126,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       background: color-mix(in srgb, currentColor 13%, transparent);
     }
 
+    /* Numériques alignés à droite */
+    .conf-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .cf-pos { color: #5ec98b; }   /* fonds + : accumulation */
+    .cf-neg { color: #f5876b; }   /* fonds - : réduction */
+    .cf-sig { color: var(--color-bright); font-weight: 600; } /* initiés / c-suite actifs */
+    .cf-muted { color: var(--color-muted); }
+
     /* Tri */
     .sortable { cursor: pointer; user-select: none; transition: color 0.15s; }
     .sortable:hover { color: var(--color-signal); }
     .sortable[data-active] { color: var(--color-signal); }
     .sortable[data-active]::after { content: " ↓"; }
     .sortable[data-active="asc"]::after { content: " ↑"; }
-
-    /* Nombres alignés à droite */
-    .conf-table .num { text-align: right; font-variant-numeric: tabular-nums; }
   </style>
 </BaseLayout>

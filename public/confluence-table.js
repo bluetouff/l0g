@@ -45,28 +45,59 @@
     body.textContent = '';
     sorted.forEach(function (it, i) {
       var tr = document.createElement('tr');
-      tr.appendChild(cell('td', String(i + 1), 'px-3 py-2 text-muted'));
+      var color = qColor(it.quadrant);
+      tr.style.setProperty('--q', color);
 
-      var tk = cell('td', it.ticker || '\u2014', 'px-3 py-2 tk');
-      tr.appendChild(tk);
+      tr.appendChild(cell('td', String(i + 1), 'cf-rank num'));
+      tr.appendChild(cell('td', it.ticker || '\u2014', 'cf-tk'));
 
-      var sc = cell('td', it.score != null ? it.score : '\u2014', 'px-3 py-2 sc num');
-      sc.style.color = qColor(it.quadrant);
-      tr.appendChild(sc);
+      // Score : valeur + barre de progression
+      var std = document.createElement('td');
+      std.className = 'cf-score';
+      var wrap = document.createElement('div');
+      wrap.className = 'cf-score-wrap';
+      var val = cell('span', it.score != null ? it.score : '\u2014', 'cf-score-val');
+      val.style.color = color;
+      var bar = document.createElement('span');
+      bar.className = 'cf-bar';
+      var fill = document.createElement('span');
+      fill.className = 'cf-bar-fill';
+      var pct = it.score != null ? Math.max(0, Math.min(100, Number(it.score))) : 0;
+      fill.style.width = pct + '%';
+      fill.style.background = color;
+      bar.appendChild(fill);
+      wrap.appendChild(val);
+      wrap.appendChild(bar);
+      std.appendChild(wrap);
+      tr.appendChild(std);
 
+      // Quadrant
       var qtd = document.createElement('td');
-      qtd.className = 'px-3 py-2';
+      qtd.className = 'cf-quad';
       var badge = cell('span', (it.quadrant || '\u2014'), 'q');
-      badge.style.color = qColor(it.quadrant);
-      badge.style.borderColor = qColor(it.quadrant);
+      badge.style.color = color;
+      badge.style.borderColor = color;
       qtd.appendChild(badge);
       tr.appendChild(qtd);
 
-      tr.appendChild(cell('td', fmt(it.funds), 'px-3 py-2 num'));
-      tr.appendChild(cell('td', fmt(it.trimming), 'px-3 py-2 num text-muted'));
-      tr.appendChild(cell('td', fmt(it.insiders), 'px-3 py-2 num'));
-      tr.appendChild(cell('td', fmt(it.csuite), 'px-3 py-2 num'));
-      tr.appendChild(cell('td', fmt(it.age), 'px-3 py-2 num text-muted'));
+      // Flux de fonds et signaux initiés
+      var fp = cell('td', fmt(it.funds), 'num');
+      if (Number(it.funds) > 0) fp.classList.add('cf-pos');
+      tr.appendChild(fp);
+
+      var fn = cell('td', fmt(it.trimming), 'num');
+      if (Number(it.trimming) > 0) fn.classList.add('cf-neg');
+      tr.appendChild(fn);
+
+      var ins = cell('td', fmt(it.insiders), 'num');
+      if (Number(it.insiders) > 0) ins.classList.add('cf-sig');
+      tr.appendChild(ins);
+
+      var cs = cell('td', fmt(it.csuite), 'num');
+      if (Number(it.csuite) > 0) cs.classList.add('cf-sig');
+      tr.appendChild(cs);
+
+      tr.appendChild(cell('td', fmt(it.age), 'num cf-muted'));
       body.appendChild(tr);
     });
   }
