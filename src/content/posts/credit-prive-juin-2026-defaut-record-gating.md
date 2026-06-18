@@ -1,6 +1,6 @@
 ---
 title: "Crédit privé, juin 2026 : un record de défaut, et la liquidité qui se referme"
-description: "Le taux de défaut élargi de Fitch reste coincé à 6 % en mai, les fonds semi-liquides plafonnent les rachats pour le deuxième trimestre consécutif, et les régulateurs passent de l'observation à la vigilance. Lecture froide, sur sources primaires, de l'état du crédit privé américain à la mi-2026."
+description: "Le taux de défaut élargi de Fitch reste coincé à 6 % en mai, les fonds semi-liquides plafonnent les rachats pour le deuxième trimestre consécutif, et les régulateurs passent de l'observation à la vigilance. État des lieux du crédit privé américain à la mi-2026, sur sources primaires."
 pubDate: 2026-06-17T09:30:00+02:00
 tags: ["crédit privé", "gating", "hlend", "blackstone", "bdc", "valorisation", "fed"]
 draft: false
@@ -96,7 +96,7 @@ HLEND n'est pas seul. Le fonds de crédit de Blackstone, BCRED, après avoir hon
 
 Il faut ici une précision froide, parce qu'elle sépare le signal du bruit. Ce qui explose, ce sont les demandes de rachat, pas les rachats effectifs. Les sorties réelles restent plafonnées à 5 % par construction. La distinction est cruciale : un pic de demandes est un signal de sentiment, l'aveu que des particuliers veulent récupérer leur argent. Ce n'est pas, en soi, la preuve d'une dégradation du crédit sous-jacent. Confondre les deux, c'est lire une panique là où il y a, pour l'instant, une nervosité contenue par le design même des fonds. Aucune vente forcée d'actifs, aucune spirale baissière sur les valorisations n'a été observée.
 
-Reste que le plafond protège le fonds, pas l'épargnant. Et il pose la question que le crédit privé évite depuis des années : celle de la fraîcheur des valorisations. Quand 19 % du portefeuille de HLEND est logé dans le logiciel, secteur frappé par la thèse de la disruption par l'IA, la valeur inscrite à l'actif net est-elle la valeur de marché ? C'est exactement le terrain des [zombie funds et des valorisations privées](/posts/zombie-funds-valorisations-privees/) : tant qu'on ne vend pas, la NAV reste lisse, et la stabilité affichée est en partie une fonction de l'absence de transaction.
+Reste que le plafond protège le fonds, pas l'épargnant. Et il pose la question que le crédit privé évite depuis des années : celle de la fraîcheur des valorisations. Quand 19 % du portefeuille de HLEND est logé dans le logiciel, secteur frappé par la thèse de la disruption par l'IA, la valeur inscrite à l'actif net est-elle la valeur de marché ? On est en plein sur le terrain des [zombie funds et des valorisations privées](/posts/zombie-funds-valorisations-privees/) : tant qu'on ne vend pas, la NAV reste lisse, et la stabilité affichée est en partie une fonction de l'absence de transaction.
 
 ## Le canal systémique : les banques, sous l'œil de la Fed
 
@@ -114,11 +114,11 @@ C'est la même logique d'ingénierie financière que celle observée sur [le ref
 
 L'arrière-plan macro pèse sur les deux extrémités. La guerre entre les États-Unis, Israël et l'Iran a poussé les rendements du Trésor à la hausse, et comme les prêts du crédit privé sont à taux variable, le refinancement coûte plus cher, ce qui resserre encore l'étau sur les emprunteurs fragiles. Le contexte de taux que [la Fed et le débat sur son bilan](/posts/warsh-bilan-qt/) viennent compliquer n'est pas une toile de fond neutre : c'est le multiplicateur du stress.
 
-## Lecture froide
+## L'image au 17 juin
 
 Au 17 juin 2026, l'image est cohérente et sans drame immédiat. Le taux de défaut élargi est à son record et y reste, à 6 %. Le vrai taux, celui qui intègre la gestion de passif, est mécaniquement plus haut que le compteur visible, parce que la façon de gérer la détresse a changé : on reporte et on échange plutôt qu'on ne fait défaut. Le test en cours porte sur la liquidité des véhicules grand public, où les demandes de sortie montent et où les barrières tombent, mais où les rachats effectifs restent plafonnés et où aucune vente forcée n'a eu lieu. Le canal bancaire, lui, est surveillé de près, bénin sur les données, mais le ton réglementaire a viré à la vigilance.
 
-Ce qu'il faut regarder dans les prochains trimestres tient en quatre points. La trajectoire des demandes de rachat, pour savoir si la nervosité se transforme en sortie durable. La fraîcheur des valorisations, en particulier sur les portefeuilles exposés au logiciel et à l'IA, là où l'écart entre NAV et marché serait le plus probable. Les pratiques de gestion des sûretés des banques, qui sont l'indicateur avancé du moment où le non-bancaire devient un problème bancaire. Et enfin la remontée, ou non, du stress des petits emprunteurs vers les plus gros. Rien de tout cela n'annonce 2008 : il n'y a pas, dans le système bancaire, le levier à grande vitesse qui avait fait l'effet domino. Mais l'opacité, elle, est intacte, et c'est elle qui empêche de répondre avec certitude à la seule question qui compte : que valent vraiment ces portefeuilles le jour où il faudra les vendre ? Tant que la réponse reste « on verra quand on vendra », le record de défaut n'est que la partie du compteur qu'on a bien voulu allumer.
+Les prochains trimestres se jugeront sur quatre éléments. La trajectoire des demandes de rachat, pour savoir si la nervosité se transforme en sortie durable. La fraîcheur des valorisations, en particulier sur les portefeuilles exposés au logiciel et à l'IA, là où l'écart entre NAV et marché serait le plus probable. Les pratiques de gestion des sûretés des banques, qui sont l'indicateur avancé du moment où le non-bancaire devient un problème bancaire. Et enfin la remontée, ou non, du stress des petits emprunteurs vers les plus gros. Rien de tout cela n'annonce 2008 : il n'y a pas, dans le système bancaire, le levier à grande vitesse qui avait fait l'effet domino. Mais l'opacité, elle, est intacte, et c'est elle qui empêche de répondre avec certitude à la seule question qui compte : que valent vraiment ces portefeuilles le jour où il faudra les vendre ? Tant que la réponse reste « on verra quand on vendra », le record de défaut n'est que la partie du compteur qu'on a bien voulu allumer.
 
 ## Sources
 

@@ -20,7 +20,7 @@ La raison de cet arrêt n'est pas idéologique, elle est plombière. Les réserv
 
 ## Ce que veut Warsh
 
-La doctrine de Warsh va dans le sens inverse de ce statu quo. Dès juillet 2025, sur CNBC, il appelait à un regime change et dénonçait un déficit de crédibilité des dirigeants en place. Sa vision du bilan tient en trois points.
+La doctrine de Warsh va dans le sens inverse de ce statu quo. Dès juillet 2025, sur CNBC, il appelait à un regime change et dénonçait un déficit de crédibilité des dirigeants en place. Sa vision du bilan repose sur trois points.
 
 Premier point : substituer une réduction active à la simple décrue passive. Là où Powell attendait que les titres arrivent à échéance, Warsh a évoqué la possibilité de vendre des actifs, instrument plus rapide et plus brutal, jamais utilisé par la Fed dans ses deux épisodes de QT.
 

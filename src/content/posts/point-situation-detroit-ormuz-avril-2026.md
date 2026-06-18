@@ -6,7 +6,7 @@ tags: ["géopolitique", "énergie", "macro"]
 draft: false
 ---
 
-En temps normal, le détroit d'Ormuz, c'est l'autoroute du brut : 84 % des flux partent vers l'Asie, et tout le monde fait comme si c'était une voie internationale paisible. Sauf qu'en 2026, on est en pleine guerre US-Israël-Iran lancée en février, et l'Iran a décidé de transformer ce chokepoint en péage privé avec mines et gardes révolutionnaires. Résultat ? La plus grosse disruption de l'histoire du marché pétrolier, dixit l'IEA.
+En temps normal, le détroit d'Ormuz, c'est l'autoroute du brut : 84 % des flux partent vers l'Asie, et tout le monde fait comme si c'était une voie internationale paisible. Sauf qu'en 2026, on est en pleine guerre US-Israël-Iran lancée en février, et l'Iran a décidé de transformer ce chokepoint en péage privé avec mines et gardes révolutionnaires. Résultat ? Une disruption pétrolière sans équivalent, dixit l'IEA.
 
 **Statut actuel (10 avril 2026) : cessez-le-feu « de deux semaines »… mais avec des conditions iraniennes à la carte.**
 

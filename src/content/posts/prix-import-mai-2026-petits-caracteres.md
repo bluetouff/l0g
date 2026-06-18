@@ -80,7 +80,7 @@ Les indices de prix import/export mesurent les prix des biens **à la frontière
 
 Ce que les prix à l'import apportent réellement, c'est un signal **avancé** : ils captent les pressions sur les coûts des intrants avant qu'elles ne se répercutent dans les prix à la consommation. À ce titre, ils sont précieux pour anticiper, et la hausse hors énergie de 3,7 % sur un an mérite l'attention, car elle peut nourrir le CPI dans les mois qui viennent. C'est d'ailleurs un complément utile à ce que je décrivais dans [le grand come-back de l'inflation US](/posts/inflation-us-grand-come-back/). Mais un indicateur avancé n'est pas une mesure « plus juste » de l'inflation vécue. C'est un autre instrument, à lire pour ce qu'il est.
 
-## Ce qu'il faut retenir
+## Au-delà du titre
 
 Les chiffres de la publication sont exacts, et c'est tout à l'honneur de ceux qui les relaient. Mais la lecture honnête est plus nuancée que le titre. La hausse mensuelle est massivement portée par le carburant, un poste volatil ; l'annualisation à 25 % est un artifice ; la vraie information est la fermeté des prix hors énergie et la force des prix à l'export ; et ces indices complètent le CPI, ils ne le remplacent pas.
 

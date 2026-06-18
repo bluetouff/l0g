@@ -12,7 +12,7 @@ Ce vendredi 12 juin 2026, Space Exploration Technologies Corp. fait ses premiers
 
 ## Une revue accélérée et un prix à prendre ou à laisser
 
-SpaceX a déposé son S-1 confidentiel le 1er avril 2026, puis sa version publique sur EDGAR le 20 mai (registration 333-296070). Entre les deux, la SEC a bouclé son examen plus vite que prévu, ce qui a permis d'avancer le calendrier d'une introduction initialement calée fin juin, d'après trois sources citées par Reuters. Pour le plus gros dossier de l'histoire du marché actions, l'instruction express interroge.
+SpaceX a déposé son S-1 confidentiel le 1er avril 2026, puis sa version publique sur EDGAR le 20 mai (registration 333-296070). Entre les deux, la SEC a bouclé son examen plus vite que prévu, ce qui a permis d'avancer le calendrier d'une introduction initialement calée fin juin, d'après trois sources citées par Reuters. Pour l'introduction la plus lourde du marché actions américain, l'instruction express interroge.
 
 Deux anomalies de structure accompagnent ce traitement de faveur. D'abord, SpaceX a fixé un prix unique de 135 dollars, à prendre ou à laisser, au lieu de la fourchette indicative qui bouge avec la demande, comme le veut l'usage. Ensuite, jusqu'à 30 pour cent de l'offre, soit environ 22,5 milliards de dollars, sont réservés au retail, contre 5 à 10 pour cent en temps normal. On expose donc l'épargnant ordinaire, en masse, à la cotation la plus opaque et la plus chère du marché.
 

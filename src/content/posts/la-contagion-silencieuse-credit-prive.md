@@ -10,7 +10,7 @@ draft: false
 
 ## Un marché qui n'a jamais traversé un cycle complet
 
-Le narratif rassurant dominant — porté entre autres par Jamie Dimon, PDG de JPMorgan, et David Solomon, PDG de Goldman Sachs, lors des publications trimestrielles d'octobre 2025 — tient en une phrase : le crédit privé est trop petit pour être systémique. L'argument est paresseux. Il l'est pour trois raisons que cet article propose de démonter méthodiquement.
+Le narratif rassurant dominant — porté entre autres par Jamie Dimon, PDG de JPMorgan, et David Solomon, PDG de Goldman Sachs, lors des publications trimestrielles d'octobre 2025 — se résume à un argument : le crédit privé est trop petit pour être systémique. L'argument est paresseux. Il l'est pour trois raisons que cet article propose de démonter méthodiquement.
 
 Premièrement, la **taille brute** n'a jamais été le bon indicateur d'un risque financier. Les subprimes pesaient environ 1,3 trillion de dollars en 2007 et ont déclenché la pire crise financière depuis 1929. Deuxièmement, le crédit privé n'est plus, depuis longtemps, un univers parallèle isolé : il est *financé, garanti, refinancé et redistribué* via des canaux qui passent par les banques régulées, les assureurs-vie contrôlés par le private equity, les fonds de pension, les BDC cotées et — dernière passerelle en date — l'écosystème crypto via les stablecoins yield-bearing et le crédit privé tokenisé. Troisièmement, et c'est probablement le point le plus important, **le crédit privé à sa taille et son périmètre actuels n'a jamais été testé pendant un retournement économique sévère**, comme le rappelle explicitement le Financial Stability Board dans son rapport de mai 2026.
 
@@ -52,7 +52,7 @@ Côté chiffres révélés : **trois des six plus grandes banques américaines o
 
 ### 2. Les prêts syndiqués et asset-backed structurés
 
-Sur les financements structurés (asset-backed loans, securitization vehicles, CLO), banques et fonds privés coexistent dans la même structure — souvent sans pleine transparence sur qui détient quelle tranche. C'est exactement le mécanisme qui a piégé JPMorgan et Fifth Third sur Tricolor en septembre 2025.
+Sur les financements structurés (asset-backed loans, securitization vehicles, CLO), banques et fonds privés coexistent dans la même structure — souvent sans pleine transparence sur qui détient quelle tranche. C'est le mécanisme même qui a piégé JPMorgan et Fifth Third sur Tricolor en septembre 2025.
 
 Tricolor, prêteur subprime spécialisé dans l'auto chez les communautés latinos texanes, a déposé le bilan le 10 septembre 2025 dans une procédure de liquidation. JPMorgan a inscrit 170 millions de dollars de charge-off au troisième trimestre 2025 liés à des prêts wholesale accordés à Tricolor. Fifth Third a annoncé une dépréciation comprise entre 170 et 200 millions de dollars sur un prêt asset-backed à Tricolor. Jamie Dimon a qualifié l'épisode de « not our finest moment » et a sorti la formule devenue célèbre : « when you see one cockroach, there's probably more ».
 
@@ -72,7 +72,7 @@ Cette retailisation crée un risque psychologique qu'on n'avait pas dans le marc
 
 ### 5. Les BDC cotées comme baromètre instantané
 
-Apollo, Ares, Blackstone, Blue Owl, KKR ont tous leurs propres BDC cotées en Bourse. Quand le sentiment se dégrade, leurs actions plongent de 15 à 25 % en quelques semaines — c'est exactement ce qui s'est passé sur octobre-novembre 2025. Cette chute contamine immédiatement le sentiment équity, déclenche des analyses de short sellers (Burry, Ackman, Einhorn ont tous pris des positions ou commenté), et nourrit la défiance globale envers la classe d'actifs.
+Apollo, Ares, Blackstone, Blue Owl, KKR ont tous leurs propres BDC cotées en Bourse. Quand le sentiment se dégrade, leurs actions plongent de 15 à 25 % en quelques semaines, comme on l'a vu sur octobre-novembre 2025. Cette chute contamine immédiatement le sentiment équity, déclenche des analyses de short sellers (Burry, Ackman, Einhorn ont tous pris des positions ou commenté), et nourrit la défiance globale envers la classe d'actifs.
 
 La conclusion de cette première analyse est claire : la thèse « crédit privé isolé » est intenable. Les passerelles avec le système bancaire régulé sont nombreuses, profondes et croissent à grande vitesse. La vraie question n'est pas binaire (isolé contre contagieux), mais plutôt : à quel point ces canaux peuvent-ils s'auto-renforcer en cas de récession synchronisée ?
 
@@ -92,7 +92,7 @@ Trois plateformes structurent ce marché :
 
 Au total, selon les données RWA.xyz de novembre 2025, **le crédit privé on-chain actif s'élève à 18,91 milliards de dollars, avec des originations cumulées de 33,66 milliards depuis le lancement de ces protocoles**. Le rapport BeInCrypto de septembre 2025 indique que le marché RWA tokenisé total a atteint 30,26 milliards en 2025, dont 7,3 milliards en Treasuries et 15,9 milliards en private credit — c'est-à-dire que le crédit privé tokenisé représente déjà plus de deux fois le volume des Treasuries tokenisées.
 
-Le mouvement de fond est explicite : *le capital « grimpe la courbe de rendement »*, passant des Treasuries sûres (4 à 5 % de yield) vers le crédit privé plus risqué (10 à 16 %). C'est exactement le pattern classique de fin de cycle : la recherche de yield pousse à monter sur le spectre du risque, jusqu'au moment où la marée descend et révèle qui nageait nu.
+Le mouvement de fond est explicite : *le capital « grimpe la courbe de rendement »*, passant des Treasuries sûres (4 à 5 % de yield) vers le crédit privé plus risqué (10 à 16 %). C'est le schéma classique de fin de cycle : la recherche de yield pousse à monter sur le spectre du risque, jusqu'au moment où la marée descend et révèle qui nageait nu.
 
 ### Le cas Ethena / USDe : le maillon le plus fragile
 

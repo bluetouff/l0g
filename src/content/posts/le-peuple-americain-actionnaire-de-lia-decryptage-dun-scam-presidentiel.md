@@ -8,7 +8,7 @@ draft: false
 
 Donc voilà. Vendredi, à bord d'Air Force One, Donald Trump lâche devant les journalistes que son équipe « étudie » l'idée que les labos d'IA offrent au grand public américain une participation dans leurs boîtes, que l'État fédéral deviendrait « essentiellement un partenaire » des entreprises, et qu'il y a « quelque chose de très intéressant là-dedans ». Citation complète du dispositif programmatique : *« On va regarder ça ».*
 
-Lundi matin, en préouverture, Nvidia +1 %, Marvell et Micron entre +4 % et +7 %, AMD +1 %. Une phrase en l'air dans un avion a fait bouger plusieurs dizaines de milliards de capitalisation. Voilà le seul mécanisme qui a réellement fonctionné ici. Et c'est exactement le sujet.
+Lundi matin, en préouverture, Nvidia +1 %, Marvell et Micron entre +4 % et +7 %, AMD +1 %. Une phrase en l'air dans un avion a fait bouger plusieurs dizaines de milliards de capitalisation. Voilà le seul mécanisme qui a réellement fonctionné ici. Et c'est tout le sujet.
 
 ## Le précédent qui dit tout : la « réserve stratégique de Bitcoin »
 
@@ -47,7 +47,7 @@ Donc l'État **sait** prendre des stakes. Mais regardez la nature de ces opérat
 
 ## Le vrai produit vendu : une option sur un narratif
 
-Ce qu'il faut comprendre, c'est que l'annonce **est** le livrable. Elle ne coûte rien, n'engage à rien, et elle produit immédiatement deux effets : elle fait grimper les semis et elle vole à Sanders son drapeau « l'IA pour tous ». Le coût politique du non-suivi ? Nul… comme pour la réserve Bitcoin, dans douze mois personne ne demandera de comptes sur « le partenariat avec le peuple ».
+Tout est là : l'annonce **est** le livrable. Elle ne coûte rien, n'engage à rien, et elle produit immédiatement deux effets : elle fait grimper les semis et elle vole à Sanders son drapeau « l'IA pour tous ». Le coût politique du non-suivi ? Nul… comme pour la réserve Bitcoin, dans douze mois personne ne demandera de comptes sur « le partenariat avec le peuple ».
 
 C'est une **opération de communication monétisée par le marché**, pas une politique. Le tell est toujours le même : pas de mécanisme, pas de base légale, pas de calendrier, juste un conditionnel prononcé devant une caméra. Exactement comme les États-Unis ne se sont jamais mis à *acheter* du Bitcoin pour leurs réserves, ils ont rebaptisé un tas de saisies et interdit de les vendre.
 
