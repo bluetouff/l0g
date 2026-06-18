@@ -20,7 +20,10 @@ const accentVar: Record<string, string> = {
   </section>
 
   <section>
-    <h2 class="mono-label glow mb-3">// dashboards</h2>
+    <a href="/dashboards/" class="group mb-3 flex items-baseline justify-between gap-2">
+      <h2 class="mono-label glow">// dashboards</h2>
+      <span class="text-xs text-muted transition-colors group-hover:text-bright">tout voir ›</span>
+    </a>
     <div class="space-y-2.5">
       {
         dashboards.map((d) => (

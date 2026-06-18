@@ -1,7 +1,11 @@
 /**
- * Colonne de droite : boutons vers les applications l0g.
- * Édite UNIQUEMENT ce fichier. Alimente Sidebar.astro (desktop) et
- * SidebarMobile.astro. `accent` ∈ teal | blue | pink | amber.
+ * Colonne de droite + page /dashboards/ : applications l0g.
+ * Édite UNIQUEMENT ce fichier. Alimente Sidebar.astro (desktop),
+ * SidebarMobile.astro et la page Dashboards.astro.
+ * `accent` ∈ teal | blue | pink | amber.
+ *
+ * Champs « fiche produit » (question, sources, cadence, stack, repo,
+ * preview) : utilisés par /dashboards/. Optionnels pour les sidebars.
  */
 export interface Dashboard {
   label: string;
@@ -9,13 +13,69 @@ export interface Dashboard {
   href: string;
   glyph: string;
   accent: 'teal' | 'blue' | 'pink' | 'amber';
+  // --- fiche produit (/dashboards/) ---
+  slug: string;            // ancre stable
+  question: string;        // la question à laquelle l'outil répond (1 phrase)
+  sources: string[];       // sources primaires
+  cadence: string;         // fréquence / nature des données
+  stack: string;           // techno
+  repo?: string;           // dépôt public (lien « code »)
+  preview?: string;        // capture, ex. /dash/us.png — placeholder si absent
 }
 
 export const dashboards: Dashboard[] = [
-  { label: 'US Macro Dashboard', sub: 'Indicateurs macro & risque', href: 'https://us.l0g.fr', glyph: '🇺🇸', accent: 'teal' },
-  { label: 'EU Macro Dashboard', sub: 'Macro européenne & risque', href: 'https://euro.l0g.fr', glyph: '🇪🇺', accent: 'blue' },
-  { label: 'Yen Carry Monitor', sub: 'Suivi du yen carry trade', href: 'https://yct.l0g.fr', glyph: '¥', accent: 'pink' },
-  { label: 'Energie Monitor', sub: "Marchés de l'énergie", href: 'https://energie.l0g.fr', glyph: '⚡', accent: 'amber' },
+  {
+    label: 'US Macro Dashboard',
+    sub: 'Indicateurs macro & risque',
+    href: 'https://us.l0g.fr',
+    glyph: '🇺🇸',
+    accent: 'teal',
+    slug: 'us-macro',
+    question: 'Croissance, inflation, emploi, conditions financières : où pointe le risque macro américain ?',
+    sources: ['FRED — Federal Reserve Bank of St. Louis'],
+    cadence: 'Données FRED, à chaque consultation',
+    stack: 'Streamlit · Python',
+    repo: 'https://github.com/bluetouff/macro_dashboard',
+  },
+  {
+    label: 'EU Macro Dashboard',
+    sub: 'Macro européenne & risque',
+    href: 'https://euro.l0g.fr',
+    glyph: '🇪🇺',
+    accent: 'blue',
+    slug: 'eu-macro',
+    question: 'La zone euro glisse-t-elle vers le stress macro, indicateur par indicateur ?',
+    sources: ['BCE — Statistical Data Warehouse', 'Eurostat'],
+    cadence: 'Instantané statique, sans clé API',
+    stack: 'Python · architecture snapshot',
+    repo: 'https://github.com/bluetouff/euro-macro-dashboard',
+  },
+  {
+    label: 'Yen Carry Monitor',
+    sub: 'Suivi du yen carry trade',
+    href: 'https://yct.l0g.fr',
+    glyph: '¥',
+    accent: 'pink',
+    slug: 'yen-carry',
+    question: 'Le positionnement spéculatif sur le yen approche-t-il du point de débouclage ?',
+    sources: ['CFTC — Commitments of Traders (hebdo)', 'BCE', 'FRED'],
+    cadence: 'Instantané statique · COT hebdomadaire',
+    stack: 'Snapshot statique · licence MIT',
+    repo: 'https://github.com/bluetouff/carry-yen-monitor',
+  },
+  {
+    label: 'Energie Monitor',
+    sub: "Marchés de l'énergie",
+    href: 'https://energie.l0g.fr',
+    glyph: '⚡',
+    accent: 'amber',
+    slug: 'energie',
+    question: 'Pétrole, gaz, électricité : quel niveau de stress sur les marchés de l\'énergie ?',
+    sources: ['Sources primaires énergie — pétrole, gaz, électricité'],
+    cadence: 'Instantané statique',
+    stack: 'Python · builder stdlib durci',
+    repo: 'https://github.com/bluetouff/energie-stress-monitor',
+  },
 ];
 
 export const sidebarAbout =
