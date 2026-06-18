@@ -59,17 +59,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <script src="/confluence-table.js" is:inline></script>
 
   <style>
-    .conf-table { border-collapse: collapse; }
-    .conf-table th, .conf-table td { border-bottom: 1px solid var(--color-line); white-space: nowrap; }
+    .conf-table { border-collapse: collapse; width: 100%; }
+
+    /* En-tête marqué */
+    .conf-table thead th {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-line-strong);
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+
+    /* Lignes : plus d'air, zébrage discret, survol */
+    .conf-table tbody td {
+      border-bottom: 1px solid var(--color-line);
+      white-space: nowrap;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+    .conf-table tbody tr { transition: background 0.15s; }
+    .conf-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.015); }
+    .conf-table tbody tr:hover td { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
     .conf-table tbody tr:last-child td { border-bottom: 0; }
-    .conf-table tbody tr:hover { background: color-mix(in srgb, var(--color-signal) 5%, transparent); }
-    .conf-table td.tk { font-weight: 600; color: var(--color-bright); }
-    .conf-table td.sc { font-family: var(--font-display); font-size: 1.05rem; }
-    .conf-table .q { font-size: 0.72rem; padding: 0.1rem 0.45rem; border-radius: 999px; border: 1px solid; }
+
+    /* Rang */
+    .conf-table td:first-child { font-variant-numeric: tabular-nums; }
+
+    /* Ticker */
+    .conf-table td.tk { font-weight: 700; color: var(--color-bright); letter-spacing: 0.02em; }
+
+    /* Score : gros, halo à la couleur du quadrant (color posé en inline par le JS) */
+    .conf-table td.sc {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-shadow: 0 0 16px color-mix(in srgb, currentColor 35%, transparent);
+    }
+
+    /* Badge quadrant : pastille teintée (currentColor = couleur du quadrant) */
+    .conf-table .q {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid;
+      background: color-mix(in srgb, currentColor 13%, transparent);
+    }
+
+    /* Tri */
     .sortable { cursor: pointer; user-select: none; transition: color 0.15s; }
     .sortable:hover { color: var(--color-signal); }
-    .sortable[data-active]::after { content: " ↓"; color: var(--color-signal); }
+    .sortable[data-active] { color: var(--color-signal); }
+    .sortable[data-active]::after { content: " ↓"; }
     .sortable[data-active="asc"]::after { content: " ↑"; }
+
+    /* Nombres alignés à droite */
     .conf-table .num { text-align: right; font-variant-numeric: tabular-nums; }
   </style>
 </BaseLayout>

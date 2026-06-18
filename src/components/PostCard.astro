@@ -5,19 +5,58 @@ interface Props {
   description: string;
   pubDate: Date;
   tags?: string[];
+  readingTime?: number;
 }
-const { url, title, description, pubDate, tags = [] } = Astro.props;
+const { url, title, description, pubDate, tags = [], readingTime } = Astro.props;
 const dateLabel = pubDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
 const iso = pubDate.toISOString();
 ---
 
-<a href={url} class="card group mb-3 block p-5">
-  <div class="flex flex-wrap items-center gap-3">
+<a href={url} class="post-card card group mb-4 block p-6">
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
     <time datetime={iso} class="mono-label" style="color: var(--color-signal)">{dateLabel}</time>
-    {tags.map((t) => <span class="badge">{t}</span>)}
+    {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
+    {
+      tags.length > 0 && (
+        <span class="ml-auto flex flex-wrap items-center gap-1.5">
+          {tags.slice(0, 3).map((t) => <span class="badge">{t}</span>)}
+        </span>
+      )
+    }
   </div>
-  <h2 class="mt-3 text-xl font-bold leading-snug tracking-tight text-bright transition-colors group-hover:text-signal sm:text-[1.4rem]">
+
+  <h2 class="post-title mt-4 text-xl font-bold leading-snug tracking-tight text-bright sm:text-[1.4rem]">
     {title}
   </h2>
-  <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{description}</p>
+
+  <p class="mt-2 line-clamp-2 text-[0.92rem] leading-relaxed text-muted">{description}</p>
+
+  <span class="post-more mono-label mt-4 inline-flex items-center gap-1.5" aria-hidden="true">
+    lire l'article <span class="post-arrow">&rsaquo;</span>
+  </span>
 </a>
+
+<style>
+  .post-card { position: relative; }
+  .post-card:hover { transform: translateY(-2px); }
+
+  .post-title { transition: color 0.18s; }
+  .post-card:hover .post-title { color: var(--color-signal); }
+
+  .post-more {
+    color: var(--color-muted);
+    opacity: 0;
+    transition: opacity 0.18s, color 0.18s;
+  }
+  .post-card:hover .post-more { opacity: 1; color: var(--color-signal); }
+  .post-arrow { transition: transform 0.18s; }
+  .post-card:hover .post-arrow { transform: translateX(3px); }
+
+  @media (hover: none) {
+    .post-more { opacity: 1; color: var(--color-signal); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .post-card:hover { transform: none; }
+    .post-arrow { transition: none; }
+  }
+</style>
