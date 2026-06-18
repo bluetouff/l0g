@@ -58,7 +58,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <script src="/confluence-table.js" is:inline></script>
 
-  <style>
+  <style is:global>
     .conf-table { border-collapse: separate; border-spacing: 0; width: 100%; }
 
     /* En-tête */
@@ -89,29 +89,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .conf-table tbody tr:hover td:first-child { box-shadow: inset 3px 0 0 var(--q); }
 
     /* Rang */
-    .cf-rank { color: var(--color-muted); width: 1%; }
+    .conf-table .cf-rank { color: var(--color-muted); width: 1%; }
 
     /* Ticker */
-    .cf-tk { font-weight: 700; color: var(--color-bright); letter-spacing: 0.02em; }
+    .conf-table .cf-tk { font-weight: 700; color: var(--color-bright); letter-spacing: 0.02em; }
 
     /* Score : valeur + barre de progression */
-    .cf-score { width: 8.5rem; }
-    .cf-score-wrap { display: flex; flex-direction: column; gap: 0.32rem; }
-    .cf-score-val {
+    .conf-table .cf-score { width: 8.5rem; }
+    .conf-table .cf-score-wrap { display: flex; flex-direction: column; gap: 0.32rem; }
+    .conf-table .cf-score-val {
       font-family: var(--font-display);
       font-size: 1.1rem;
       font-weight: 600;
       line-height: 1;
       font-variant-numeric: tabular-nums;
     }
-    .cf-bar {
+    .conf-table .cf-bar {
       display: block;
-      height: 4px;
+      height: 5px;
       border-radius: 999px;
       background: var(--color-line);
       overflow: hidden;
     }
-    .cf-bar-fill { display: block; height: 100%; border-radius: 999px; }
+    .conf-table .cf-bar-fill { display: block; height: 100%; border-radius: 999px; }
 
     /* Badge quadrant : pastille teintée (currentColor = couleur du quadrant) */
     .conf-table .q {
@@ -128,16 +128,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     /* Numériques alignés à droite */
     .conf-table .num { text-align: right; font-variant-numeric: tabular-nums; }
-    .cf-pos { color: #5ec98b; }   /* fonds + : accumulation */
-    .cf-neg { color: #f5876b; }   /* fonds - : réduction */
-    .cf-sig { color: var(--color-bright); font-weight: 600; } /* initiés / c-suite actifs */
-    .cf-muted { color: var(--color-muted); }
+    .conf-table .cf-pos { color: #5ec98b; }   /* fonds + : accumulation */
+    .conf-table .cf-neg { color: #f5876b; }   /* fonds - : réduction */
+    .conf-table .cf-sig { color: var(--color-bright); font-weight: 600; } /* initiés / c-suite actifs */
+    .conf-table .cf-muted { color: var(--color-muted); }
 
     /* Tri */
-    .sortable { cursor: pointer; user-select: none; transition: color 0.15s; }
-    .sortable:hover { color: var(--color-signal); }
-    .sortable[data-active] { color: var(--color-signal); }
-    .sortable[data-active]::after { content: " ↓"; }
-    .sortable[data-active="asc"]::after { content: " ↑"; }
+    .conf-table .sortable { cursor: pointer; user-select: none; transition: color 0.15s; }
+    .conf-table .sortable:hover { color: var(--color-signal); }
+    .conf-table .sortable[data-active] { color: var(--color-signal); }
+    .conf-table .sortable[data-active]::after { content: " ↓"; }
+    .conf-table .sortable[data-active="asc"]::after { content: " ↑"; }
   </style>
 </BaseLayout>
