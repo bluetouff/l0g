@@ -36,6 +36,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Données FRED, à chaque consultation',
     stack: 'Streamlit · Python',
     repo: 'https://github.com/bluetouff/macro_dashboard',
+    preview: '/preview/us.png',
   },
   {
     label: 'EU Macro Dashboard',
@@ -49,6 +50,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique, sans clé API',
     stack: 'Python · architecture snapshot',
     repo: 'https://github.com/bluetouff/euro-macro-dashboard',
+    preview: '/preview/eu.png',
   },
   {
     label: 'Yen Carry Monitor',
@@ -62,6 +64,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique · COT hebdomadaire',
     stack: 'Snapshot statique · licence MIT',
     repo: 'https://github.com/bluetouff/carry-yen-monitor',
+    preview: '/preview/yct.png',
   },
   {
     label: 'Energie Monitor',
@@ -75,6 +78,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique',
     stack: 'Python · builder stdlib durci',
     repo: 'https://github.com/bluetouff/energie-stress-monitor',
+    preview: '/preview/ener.png',
   },
 ];
 
