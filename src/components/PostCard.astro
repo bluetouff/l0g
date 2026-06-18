@@ -6,57 +6,123 @@ interface Props {
   pubDate: Date;
   tags?: string[];
   readingTime?: number;
+  index?: number;
+  accent?: string;
+  accentLabel?: string;
 }
-const { url, title, description, pubDate, tags = [], readingTime } = Astro.props;
+const {
+  url, title, description, pubDate, tags = [],
+  readingTime, index, accent = 'var(--color-signal)', accentLabel,
+} = Astro.props;
 const dateLabel = pubDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
 const iso = pubDate.toISOString();
+const nn = index != null ? String(index).padStart(2, '0') : null;
 ---
 
-<a href={url} class="post-card card group mb-4 block p-6">
-  <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-    <time datetime={iso} class="mono-label" style="color: var(--color-signal)">{dateLabel}</time>
-    {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
-    {
-      tags.length > 0 && (
-        <span class="ml-auto flex flex-wrap items-center gap-1.5">
-          {tags.slice(0, 3).map((t) => <span class="badge">{t}</span>)}
-        </span>
-      )
-    }
-  </div>
-
-  <h2 class="post-title mt-4 text-xl font-bold leading-snug tracking-tight text-bright sm:text-[1.4rem]">
-    {title}
-  </h2>
-
-  <p class="mt-2 line-clamp-2 text-[0.92rem] leading-relaxed text-muted">{description}</p>
-
-  <span class="post-more mono-label mt-4 inline-flex items-center gap-1.5" aria-hidden="true">
-    lire l'article <span class="post-arrow">&rsaquo;</span>
+<a href={url} class="feed-item group" style={`--a:${accent}`}>
+  {nn && <span class="feed-index mono-label" aria-hidden="true">{nn}</span>}
+  <span class="feed-rail" aria-hidden="true"></span>
+  <span class="feed-body">
+    <span class="feed-meta">
+      <time datetime={iso} class="mono-label feed-date">{dateLabel}</time>
+      {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
+      {accentLabel && <span class="topic-chip">{accentLabel}</span>}
+    </span>
+    <span class="feed-title">{title}</span>
+    <span class="feed-desc">{description}</span>
   </span>
+  <span class="feed-arrow" aria-hidden="true">&rsaquo;</span>
 </a>
 
 <style>
-  .post-card { position: relative; }
-  .post-card:hover { transform: translateY(-2px); }
-
-  .post-title { transition: color 0.18s; }
-  .post-card:hover .post-title { color: var(--color-signal); }
-
-  .post-more {
-    color: var(--color-muted);
-    opacity: 0;
-    transition: opacity 0.18s, color 0.18s;
+  .feed-item {
+    --a: var(--color-signal);
+    display: grid;
+    grid-template-columns: auto 2px 1fr auto;
+    align-items: start;
+    column-gap: 1rem;
+    padding: 1.05rem 0.75rem 1.05rem 0.25rem;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 8px;
+    transition: background 0.16s;
   }
-  .post-card:hover .post-more { opacity: 1; color: var(--color-signal); }
-  .post-arrow { transition: transform 0.18s; }
-  .post-card:hover .post-arrow { transform: translateX(3px); }
+  .feed-item:hover { background: color-mix(in srgb, var(--a) 7%, transparent); }
 
+  .feed-index {
+    min-width: 1.8rem;
+    padding-top: 0.15rem;
+    color: var(--color-line-strong);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.16s;
+  }
+  .feed-item:hover .feed-index { color: var(--a); }
+
+  .feed-rail {
+    align-self: stretch;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--a) 30%, transparent);
+    transition: background 0.16s;
+  }
+  .feed-item:hover .feed-rail { background: var(--a); }
+
+  .feed-body { min-width: 0; }
+  .feed-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .feed-date { color: var(--a); }
+
+  .topic-chip {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--a);
+    padding: 0.1rem 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+    background: color-mix(in srgb, var(--a) 12%, transparent);
+    border-radius: 999px;
+  }
+
+  .feed-title {
+    display: block;
+    margin-top: 0.45rem;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--color-bright);
+    transition: color 0.16s;
+  }
+  .feed-item:hover .feed-title { color: var(--a); }
+
+  .feed-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 0.35rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+
+  .feed-arrow {
+    align-self: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-line-strong);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.16s, transform 0.16s, color 0.16s;
+  }
+  .feed-item:hover .feed-arrow { opacity: 1; transform: translateX(0); color: var(--a); }
+
+  @media (max-width: 640px) {
+    .feed-desc { -webkit-line-clamp: 2; }
+    .feed-arrow { display: none; }
+  }
   @media (hover: none) {
-    .post-more { opacity: 1; color: var(--color-signal); }
+    .feed-rail { background: color-mix(in srgb, var(--a) 55%, transparent); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .post-card:hover { transform: none; }
-    .post-arrow { transition: none; }
+    .feed-arrow { transition: opacity 0.16s; transform: none; }
   }
 </style>

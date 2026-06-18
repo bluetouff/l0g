@@ -107,3 +107,39 @@ export function postMatchesTopic(postTags: string[], topic: Topic): boolean {
   const set = new Set(topic.tags.map(norm));
   return (postTags || []).some((t) => set.has(norm(t)));
 }
+
+/** Sujet principal d'un article : premier sujet (dans l'ordre) qui matche ses tags. */
+export function primaryTopic(postTags: string[]): Topic | undefined {
+  return topics.find((t) => postMatchesTopic(postTags || [], t));
+}
+
+/** Accents de la charte → valeur CSS (aligné sur sidebar / dashboards). */
+export const ACCENT_HEX: Record<string, string> = {
+  teal: '#5eead4',
+  blue: '#7aa2f7',
+  pink: '#ff4d87',
+  amber: '#f5b13d',
+};
+
+/** Couleur CSS du sujet principal d'un article (teal par défaut). */
+export function accentForTags(postTags: string[]): string {
+  const t = primaryTopic(postTags);
+  return ACCENT_HEX[t?.accent ?? 'teal'] ?? ACCENT_HEX.teal;
+}
+
+/** Libellés courts pour les pastilles du flux. */
+const SHORT_LABEL: Record<string, string> = {
+  'credit-prive': 'crédit privé',
+  'macro-banques-centrales': 'macro',
+  'geopolitique-energie': 'géopolitique',
+  crypto: 'crypto',
+  'marches-valorisations': 'marchés',
+  'politique-us': 'politique us',
+};
+
+/** Libellé du sujet principal d'un article (court par défaut pour les pastilles). */
+export function topicLabelForTags(postTags: string[], short = true): string | undefined {
+  const t = primaryTopic(postTags || []);
+  if (!t) return undefined;
+  return short ? SHORT_LABEL[t.slug] ?? t.label : t.label;
+}

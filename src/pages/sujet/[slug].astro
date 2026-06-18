@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
-import { topics, postMatchesTopic } from '../../config/topics.ts';
+import { topics, postMatchesTopic, ACCENT_HEX, topicLabelForTags } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { topic, matched } = Astro.props;
+const topicAccent = ACCENT_HEX[topic.accent] ?? ACCENT_HEX.teal;
 ---
 
 <BaseLayout title={`${topic.label} — sujet`} description={topic.blurb}>
@@ -33,7 +34,7 @@ const { topic, matched } = Astro.props;
 
   <section class="pb-4 pt-8">
     {
-      matched.map((post) => (
+      matched.map((post, i) => (
         <PostCard
           url={`/posts/${post.id}/`}
           title={post.data.title}
@@ -41,6 +42,9 @@ const { topic, matched } = Astro.props;
           pubDate={post.data.pubDate}
           tags={post.data.tags}
           readingTime={readingTime(post.body)}
+          index={i + 1}
+          accent={topicAccent}
+          accentLabel={topicLabelForTags(post.data.tags || [])}
         />
       ))
     }

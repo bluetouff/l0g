@@ -1,0 +1,113 @@
+---
+interface Props {
+  url: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
+  readingTime?: number;
+  accent?: string;
+  accentLabel?: string;
+}
+const {
+  url, title, description, pubDate,
+  readingTime, accent = 'var(--color-signal)', accentLabel,
+} = Astro.props;
+const dateLabel = pubDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+const iso = pubDate.toISOString();
+---
+
+<a href={url} class="post-hero group mb-8 block" style={`--a:${accent}`}>
+  <article class="post-hero-inner">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <span class="hero-mark mono-label">// à la une</span>
+      {accentLabel && <span class="topic-chip">{accentLabel}</span>}
+    </div>
+
+    <h2 class="hero-title mt-4 font-display tracking-wider">{title}</h2>
+
+    <p class="hero-desc mt-4 max-w-2xl">{description}</p>
+
+    <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <time datetime={iso} class="mono-label hero-date">{dateLabel}</time>
+      {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
+      <span class="hero-cta mono-label">lire l'analyse <span class="hero-arrow">&rsaquo;</span></span>
+    </div>
+  </article>
+</a>
+
+<style>
+  .post-hero { --a: var(--color-signal); }
+  .post-hero-inner {
+    position: relative;
+    overflow: hidden;
+    padding: 1.75rem 1.75rem 1.75rem 2rem;
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    background:
+      radial-gradient(120% 130% at 0% 0%, color-mix(in srgb, var(--a) 9%, transparent), transparent 55%),
+      var(--color-surface);
+    transition: border-color 0.18s, transform 0.18s;
+  }
+  .post-hero-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--a);
+    opacity: 0.5;
+    transition: opacity 0.18s;
+  }
+  .post-hero:hover .post-hero-inner {
+    border-color: color-mix(in srgb, var(--a) 45%, var(--color-line));
+    transform: translateY(-2px);
+  }
+  .post-hero:hover .post-hero-inner::before { opacity: 1; }
+
+  @media (min-width: 640px) {
+    .post-hero-inner { padding: 2.25rem 2.5rem 2.25rem 2.75rem; }
+  }
+
+  .hero-mark { color: var(--a); }
+
+  .topic-chip {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--a);
+    padding: 0.12rem 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+    background: color-mix(in srgb, var(--a) 12%, transparent);
+    border-radius: 999px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 4.2vw, 2.5rem);
+    line-height: 1.08;
+    color: var(--color-bright);
+    transition: color 0.18s;
+  }
+  .post-hero:hover .hero-title { color: var(--a); }
+
+  .hero-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--font-read);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--color-paper);
+  }
+
+  .hero-date { color: var(--a); }
+  .hero-cta { color: var(--a); margin-left: auto; display: inline-flex; align-items: center; gap: 0.35rem; }
+  .hero-arrow { transition: transform 0.18s; }
+  .post-hero:hover .hero-arrow { transform: translateX(3px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-hero:hover .post-hero-inner { transform: none; }
+    .hero-arrow { transition: none; }
+  }
+</style>
