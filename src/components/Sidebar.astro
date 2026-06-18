@@ -156,7 +156,14 @@ const accentVar: Record<string, string> = {
     width: 100%;
     height: auto;
     border-radius: inherit;
-    transition: transform 0.25s, filter 0.25s;
+    filter: grayscale(0.55) brightness(0.82) contrast(0.96);
+    transition: transform 0.3s, filter 0.3s;
   }
-  .pub-link:hover .pub-cover { transform: scale(1.015); filter: brightness(1.07); }
+  .pub-link:hover .pub-cover {
+    transform: scale(1.015);
+    filter: grayscale(0) brightness(1) contrast(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pub-link:hover .pub-cover { transform: none; }
+  }
 </style>
