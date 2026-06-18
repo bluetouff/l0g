@@ -1,0 +1,72 @@
+import type { APIRoute } from 'astro';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+/**
+ * API publique l0g — v1. Sortie statique : le corps est généré au build à partir
+ * des snapshots (/risk.json, /confluence.json). Les en-têtes CORS sont posés par
+ * Apache sur /api/ (voir docs), car en statique les headers de Response sont ignorés.
+ * Aucun indice « global » fabriqué : on n'expose que les sous-indices réels des outils.
+ */
+
+const META: Record<string, { label: string; source: string }> = {
+  us: { label: 'US Macro Dashboard', source: 'https://us.l0g.fr' },
+  eu: { label: 'EU Macro Dashboard', source: 'https://euro.l0g.fr' },
+  yen: { label: 'Yen Carry Monitor', source: 'https://yct.l0g.fr' },
+  energie: { label: 'Energie Monitor', source: 'https://energie.l0g.fr' },
+};
+
+function readJSON(rel: string): any {
+  return JSON.parse(readFileSync(join(process.cwd(), rel), 'utf-8'));
+}
+
+export const GET: APIRoute = () => {
+  const risk = readJSON('public/risk.json');
+
+  const indices: Record<string, unknown> = {};
+  for (const it of risk.indices || []) {
+    const m = META[it.key] || { label: undefined, source: undefined };
+    indices[it.key] = {
+      value: it.value,
+      scale: it.scale ?? 100,
+      level: it.level,
+      tone: it.tone,
+      label: m.label,
+      source: m.source,
+    };
+  }
+
+  let confluence: unknown = null;
+  try {
+    const conf = readJSON('public/confluence.json');
+    const items: any[] = Array.isArray(conf.items) ? conf.items : [];
+    const top = items.reduce<any>((a, b) => (b.score > (a?.score ?? -1) ? b : a), null);
+    confluence = {
+      updated: conf.updated ?? null,
+      count: items.length,
+      conviction: items.filter((i) => String(i.quadrant).toLowerCase() === 'conviction').length,
+      top: top ? { ticker: top.ticker, score: top.score, quadrant: top.quadrant } : null,
+      source: 'https://l0g.fr/confluence/',
+    };
+  } catch {
+    /* confluence optionnel */
+  }
+
+  const payload = {
+    schema: 'https://l0g.fr/api/',
+    version: '1',
+    generated: new Date().toISOString(),
+    snapshot: risk.updated ?? null,
+    indices,
+    confluence,
+    feed: 'https://l0g.fr/api/v1/risk.xml',
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
+    note:
+      "Indices repris des outils l0g, à la cadence des snapshots (pas de temps réel strict). Best-effort, pas un conseil en investissement.",
+  };
+
+  return new Response(JSON.stringify(payload, null, 2) + '\n', {
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  });
+};

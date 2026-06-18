@@ -1,0 +1,7 @@
+{
+  "updated": "2026-06-16T08:16:13Z",
+  "events": [
+    { "ts": "2026-06-08T17:15:00Z", "key": "yen",     "label": "Yen Carry", "from": "Détendu", "to": "Modéré", "value": 41, "tone": "moderate", "source": "https://yct.l0g.fr" },
+    { "ts": "2026-06-12T17:15:00Z", "key": "energie", "label": "Énergie",   "from": "Modéré",  "to": "Tendu",  "value": 58, "tone": "elevated", "source": "https://energie.l0g.fr" }
+  ]
+}

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="API publique"
+  description="API publique l0g : indices de risque (US Macro, EU Macro, Yen Carry, Énergie) et synthèse 13FLOW au format JSON, plus un flux Atom des changements de niveau. CORS ouvert, licence CC BY 4.0."
+  sidebar={false}
+>
+  <section data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// api</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      API <span style="color: var(--color-accent)">publique</span>
+    </h1>
+    <p class="mt-4 max-w-2xl text-paper">
+      Les indices de risque consolidés sur l0g sont exposés en JSON, et leurs changements de
+      niveau en flux Atom. De quoi les intégrer dans vos propres dashboards de veille, vos bots
+      d'alerte (Matrix, Signal, Telegram) ou un SIEM. CORS ouvert, aucune clé, aucune
+      authentification, aucun pistage.
+    </p>
+  </section>
+
+  <section class="mt-10 space-y-6" data-pagefind-ignore>
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
+      <p class="mt-3 text-paper">Deux points d'accès, versionnés sous <code class="apic">/v1/</code> :</p>
+      <ul class="api-list mt-3">
+        <li><code class="apic">GET /api/v1/risk.json</code> — état courant des indices (JSON).</li>
+        <li><code class="apic">GET /api/v1/risk.xml</code> — flux Atom des changements de niveau.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// exemple</h2>
+      <pre class="apipre"><code>curl -s https://l0g.fr/api/v1/risk.json</code></pre>
+      <pre class="apipre"><code>{`{
+  "version": "1",
+  "generated": "2026-06-18T08:00:00Z",
+  "snapshot": "2026-06-16T08:16:13Z",
+  "indices": {
+    "us":      { "value": 58, "scale": 100, "level": "Élevé",  "tone": "elevated", "label": "US Macro Dashboard", "source": "https://us.l0g.fr" },
+    "eu":      { "value": 47, "scale": 100, "level": "Modéré", "tone": "moderate", "label": "EU Macro Dashboard", "source": "https://euro.l0g.fr" },
+    "yen":     { "value": 41, "scale": 100, "level": "Modéré", "tone": "moderate", "label": "Yen Carry Monitor",  "source": "https://yct.l0g.fr" },
+    "energie": { "value": 58, "scale": 100, "level": "Tendu",  "tone": "elevated", "label": "Energie Monitor",    "source": "https://energie.l0g.fr" }
+  },
+  "confluence": { "updated": "...", "count": 15, "conviction": 1, "top": { "ticker": "TSM", "score": 90, "quadrant": "divergent" } },
+  "license": "CC BY 4.0", "attribution": "l0g.fr"
+}`}</code></pre>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// champs</h2>
+      <ul class="api-list mt-3">
+        <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur de l'indice (0 à <code class="apic">scale</code>, généralement 100).</li>
+        <li><code class="apic">level</code> — libellé lisible (Détendu, Modéré, Élevé/Tendu, Crise).</li>
+        <li><code class="apic">tone</code> — code machine : <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code>, <code class="apic">crisis</code>.</li>
+        <li><code class="apic">snapshot</code> — horodatage (ISO 8601 UTC) des données ; <code class="apic">generated</code> — date de génération du fichier.</li>
+        <li><code class="apic">confluence</code> — synthèse 13FLOW : nombre de titres, quadrant conviction, meilleur score.</li>
+      </ul>
+      <p class="mt-3 text-muted">
+        Pas d'« indice global » : on n'expose que les sous-indices réellement mesurés par chaque
+        outil. Agréger les quatre en un seul chiffre serait un nombre dérivé non mesuré — on ne le
+        fait pas.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// notes</h2>
+      <ul class="api-list mt-3">
+        <li><strong class="text-bright">CORS</strong> : <code class="apic">Access-Control-Allow-Origin: *</code> — consommable depuis n'importe quel domaine.</li>
+        <li><strong class="text-bright">Cadence</strong> : régénéré à chaque snapshot des outils. Ce n'est pas du temps réel strict ; fiez-vous au champ <code class="apic">snapshot</code>.</li>
+        <li><strong class="text-bright">Versionnement</strong> : la forme de <code class="apic">/v1/</code> reste stable ; toute rupture passera par <code class="apic">/v2/</code>.</li>
+        <li><strong class="text-bright">Licence</strong> : CC BY 4.0. Réutilisation libre avec attribution à l0g.fr.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="mt-8 text-xs" style="color: var(--color-accent)" data-pagefind-ignore>
+    Best-effort. Ceci n'est pas un conseil en investissement.
+  </p>
+
+  <style>
+    .apic {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      color: var(--color-signal);
+      background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+      padding: 0.05rem 0.35rem;
+      border-radius: 5px;
+    }
+    .api-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .api-list li { padding-left: 1rem; position: relative; color: var(--color-paper); }
+    .api-list li::before { content: '·'; position: absolute; left: 0; color: var(--color-signal); }
+    .apipre {
+      margin-top: 0.75rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--color-line);
+      border-radius: 12px;
+      background: var(--color-surface);
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--color-paper);
+    }
+  </style>
+</BaseLayout>
