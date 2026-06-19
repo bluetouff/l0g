@@ -100,6 +100,10 @@ const sections: Section[] = [
 ];
 
 const total = sections.reduce((n, s) => n + s.entries.length, 0);
+
+const slugify = (s: string) =>
+  s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+   .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 ---
 
 <BaseLayout
@@ -117,33 +121,179 @@ const total = sections.reduce((n, s) => n + s.entries.length, 0);
     </p>
   </section>
 
-  {
-    sections.map((s) => (
-      <section class="mt-10" data-pagefind-ignore>
-        <h2 class="mono-label mb-4 text-lg" style={`color:${s.accent}`}>// {s.titre}</h2>
-        <dl class="glossary">
-          {s.entries.map((e) => (
-            <div class="gentry" id={e.sigle.toLowerCase().replace(/\s+/g, '-')}>
-              <dt>
-                <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
-                <span class="nom">{e.nom}</span>
-              </dt>
-              <dd>{e.def}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-    ))
-  }
+  <div class="gloss-tools" data-pagefind-ignore>
+    <div class="gloss-search">
+      <span class="gloss-prompt" aria-hidden="true">/</span>
+      <input
+        id="gloss-filter"
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="filtrer : sigle, terme, définition…"
+        aria-label="Filtrer le glossaire"
+      />
+      <kbd class="gloss-kbd" aria-hidden="true">/</kbd>
+    </div>
+    <nav class="gloss-chips" aria-label="Sections du glossaire">
+      {
+        sections.map((s) => (
+          <a class="gloss-chip" href={`#sec-${slugify(s.titre)}`} data-chip={slugify(s.titre)} style={`--c:${s.accent}`}>
+            {s.titre}<span class="gloss-chip-n">{s.entries.length}</span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+
+  <div id="gloss-root">
+    {
+      sections.map((s) => (
+        <section class="gloss-sec mt-10" id={`sec-${slugify(s.titre)}`} data-section={slugify(s.titre)} data-pagefind-ignore>
+          <h2 class="mono-label mb-4 text-lg" style={`color:${s.accent}`}>
+            // {s.titre}<span class="gloss-sec-n">{s.entries.length}</span>
+          </h2>
+          <dl class="glossary">
+            {s.entries.map((e) => (
+              <div class="gentry" id={e.sigle.toLowerCase().replace(/\s+/g, '-')} data-term={(e.sigle + ' ' + e.nom + ' ' + e.def).toLowerCase()}>
+                <dt>
+                  <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
+                  <span class="nom">{e.nom}</span>
+                </dt>
+                <dd>{e.def}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ))
+    }
+  </div>
+
+  <p id="gloss-empty" class="gloss-empty" hidden>Aucune entrée pour ce filtre.</p>
 
   <style>
+    .gloss-tools {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 0.7rem 0 0.75rem;
+      margin-top: 1.75rem;
+      background: color-mix(in srgb, var(--color-ink) 90%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-line);
+    }
+    .gloss-search {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      background: var(--color-surface);
+      padding: 0.5rem 0.7rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .gloss-search:focus-within {
+      border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-signal) 12%, transparent);
+    }
+    .gloss-prompt { color: var(--color-signal); font-family: var(--font-mono); font-weight: 600; }
+    #gloss-filter {
+      flex: 1; min-width: 0;
+      background: transparent; border: 0; outline: none;
+      color: var(--color-paper); font-family: var(--font-mono); font-size: 0.95rem;
+    }
+    #gloss-filter::placeholder { color: var(--color-muted); }
+    .gloss-kbd {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-muted);
+      border: 1px solid var(--color-line); border-radius: 5px; padding: 1px 6px;
+    }
+    .gloss-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.65rem; }
+    .gloss-chip {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--color-muted); border: 1px solid var(--color-line); border-radius: 999px;
+      padding: 0.28rem 0.7rem; transition: color 0.18s, border-color 0.18s, background 0.18s;
+    }
+    .gloss-chip:hover { color: var(--color-bright); border-color: color-mix(in srgb, var(--c) 55%, transparent); }
+    .gloss-chip.is-active {
+      color: var(--c);
+      border-color: color-mix(in srgb, var(--c) 60%, transparent);
+      background: color-mix(in srgb, var(--c) 10%, transparent);
+    }
+    .gloss-chip.is-empty { opacity: 0.3; pointer-events: none; }
+    .gloss-chip-n { font-size: 0.66rem; color: color-mix(in srgb, var(--c) 75%, var(--color-muted)); }
+
+    .gloss-sec { scroll-margin-top: 6rem; }
+    .gloss-sec-n { font-size: 0.7rem; color: var(--color-muted); margin-left: 0.45rem; letter-spacing: normal; }
+
     .glossary { display: flex; flex-direction: column; gap: 0; }
-    .gentry { padding: 0.9rem 0; border-bottom: 1px solid var(--color-line); }
+    .gentry { padding: 0.8rem 0.6rem; border-bottom: 1px solid var(--color-line); border-radius: 8px; transition: background 0.15s; }
     .gentry:last-child { border-bottom: 0; }
+    .gentry:hover { background: rgba(255, 255, 255, 0.018); }
     .gentry dt { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
-    .gentry .sigle { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em; }
+    .gentry .sigle {
+      font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em;
+      border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+      border-radius: 6px; padding: 1px 8px;
+    }
     .gentry .nom { color: var(--color-bright); font-size: 0.9rem; }
-    .gentry dd { margin: 0.35rem 0 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.6; max-width: 60ch; }
-    .gentry:target { background: color-mix(in srgb, var(--color-signal) 8%, transparent); border-radius: 8px; padding-left: 0.6rem; padding-right: 0.6rem; }
+    .gentry dd { margin: 0.4rem 0 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.6; max-width: 62ch; }
+    .gentry:target { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
+
+    .gloss-empty { margin-top: 2rem; color: var(--color-muted); font-family: var(--font-mono); }
+    .gloss-empty::before { content: "// "; color: var(--color-accent); }
   </style>
+
+  <script is:inline>
+    (() => {
+      const input = document.getElementById('gloss-filter');
+      const root = document.getElementById('gloss-root');
+      const empty = document.getElementById('gloss-empty');
+      if (!input || !root) return;
+      const secs = Array.from(root.querySelectorAll('.gloss-sec'));
+      const chips = Array.from(document.querySelectorAll('.gloss-chip'));
+      const chipBySec = new Map(chips.map((c) => [c.dataset.chip, c]));
+      const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+      function apply() {
+        const q = norm(input.value.trim());
+        let total = 0;
+        secs.forEach((sec) => {
+          let shown = 0;
+          sec.querySelectorAll('.gentry').forEach((el) => {
+            const hit = !q || norm(el.dataset.term).indexOf(q) !== -1;
+            el.hidden = !hit;
+            if (hit) shown++;
+          });
+          sec.hidden = shown === 0;
+          const chip = chipBySec.get(sec.dataset.section);
+          if (chip) chip.classList.toggle('is-empty', shown === 0);
+          total += shown;
+        });
+        if (empty) empty.hidden = total !== 0;
+      }
+      input.addEventListener('input', apply);
+
+      document.addEventListener('keydown', (e) => {
+        const tag = (document.activeElement && document.activeElement.tagName) || '';
+        if (e.key === '/' && document.activeElement !== input && !/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) {
+          e.preventDefault(); input.focus();
+        } else if (e.key === 'Escape' && document.activeElement === input) {
+          input.value = ''; apply(); input.blur();
+        }
+      });
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((ents) => {
+          ents.forEach((en) => {
+            if (en.isIntersecting) {
+              const id = en.target.dataset.section;
+              chips.forEach((c) => c.classList.toggle('is-active', c.dataset.chip === id));
+            }
+          });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        secs.forEach((s) => io.observe(s));
+      }
+    })();
+  </script>
 </BaseLayout>
