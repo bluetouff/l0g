@@ -9,9 +9,22 @@
       el.dataset.pfReady = '1';
       new window.PagefindUI({
         element: el,
+        showImages: false,
         showSubResults: true,
         translations: { placeholder: 'Rechercher\u2026' },
       });
+      // Entrée -> page de résultats dédiée (sauf sur /recherche elle-même).
+      if (!el.classList.contains('pf-page')) {
+        el.addEventListener('keydown', function (e) {
+          if (e.key !== 'Enter') return;
+          var input = el.querySelector('.pagefind-ui__search-input');
+          var q = input && input.value.trim();
+          if (q) {
+            e.preventDefault();
+            window.location.href = '/recherche/?q=' + encodeURIComponent(q);
+          }
+        });
+      }
     });
   }
   if (document.readyState !== 'loading') initPagefind();
