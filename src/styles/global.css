@@ -269,3 +269,15 @@ a { color: inherit; text-decoration: none; }
 }
 /* Loupe : recolorée en cyan (si rendue via un masque) */
 .pagefind-ui__form::before { background-color: var(--color-signal) !important; }
+
+/* Item de nav "API" : aligné à droite, accent rose */
+.nav-tab.nav-api { margin-left: auto; color: var(--color-accent); }
+.nav-tab.nav-api:hover {
+  color: var(--color-accent);
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+.nav-tab.nav-api[aria-current="page"] {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  text-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}

@@ -119,6 +119,9 @@ function isActive(tab: Tab): boolean {
               </a>
             ))
           }
+          <a href="/api/" class="nav-tab nav-api" aria-current={Astro.url.pathname.startsWith('/api') ? 'page' : undefined}>
+            api
+          </a>
         </nav>
       </header>
 
