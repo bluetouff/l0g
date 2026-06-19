@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { topicForTag } from '../../config/topics.ts';
+import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -21,6 +22,7 @@ const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
   year: 'numeric',
 });
 const iso = post.data.pubDate.toISOString();
+const rt = readingTime(post.body);
 
 // Partage : URL absolue + textes encodés. Liens HTML purs, aucun script tiers.
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
@@ -41,21 +43,34 @@ const share = {
   ogType="article"
   ogImage={ogImage}
 >
+  <div class="read-progress" aria-hidden="true"><span></span></div>
+
   <article class="rise max-w-2xl" data-pagefind-body>
-    <header class="mb-10">
-      <div class="mono-label flex flex-wrap items-center gap-3">
-        <time datetime={iso} data-pagefind-meta="date">{dateLabel}</time>
-        {post.data.tags.map((t) => {
-          const slug = topicForTag(t);
-          return slug
-            ? <a href={`/sujet/${slug}/`} class="link-term text-signal">#{t}</a>
-            : <span class="text-signal">#{t}</span>;
-        })}
-      </div>
-      <h1 class="mt-4 font-display text-[clamp(1.9rem,4.5vw,3rem)] leading-tight tracking-wider glow">
+    <header class="post-head mb-10">
+      <p class="mono-label glow post-kicker">// analyse</p>
+
+      <h1 class="post-title mt-3 font-display text-[clamp(1.9rem,4.5vw,3rem)] leading-tight tracking-wider glow">
         {post.data.title}
       </h1>
-      <p class="mt-4 text-lg text-muted">{post.data.description}</p>
+
+      <p class="post-lede mt-5">{post.data.description}</p>
+
+      <div class="post-meta mono-label mt-6">
+        <time datetime={iso} data-pagefind-meta="date">{dateLabel}</time>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>{rt} min de lecture</span>
+        {post.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
+        <span class="post-tags">
+          {post.data.tags.map((tag) => {
+            const slug = topicForTag(tag);
+            return slug
+              ? <a href={`/sujet/${slug}/`} class="link-term text-signal">#{tag}</a>
+              : <span class="text-signal">#{tag}</span>;
+          })}
+        </span>
+      </div>
+
+      <div class="post-rule" aria-hidden="true"></div>
     </header>
 
     <div class="prose">
@@ -112,7 +127,61 @@ const share = {
     });
   </script>
 
+  <script is:inline>
+    (function () {
+      var bar = document.querySelector('.read-progress > span');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var p = max > 0 ? h.scrollTop / max : 0;
+        bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        ticking = false;
+      }
+      function onScroll() {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+  </script>
+
   <style>
+    /* Barre de progression de lecture */
+    .read-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 2px;
+      z-index: 60; pointer-events: none; background: transparent;
+    }
+    .read-progress > span {
+      display: block; height: 100%; width: 100%;
+      transform: scaleX(0); transform-origin: 0 50%;
+      background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-signal) 45%, var(--color-accent)));
+      box-shadow: 0 0 8px color-mix(in srgb, var(--color-signal) 50%, transparent);
+    }
+
+    /* En-tête d'article */
+    .post-kicker { color: var(--color-signal); }
+    .post-lede {
+      font-size: 1.18rem;
+      line-height: 1.6;
+      color: var(--color-paper);
+      border-left: 2px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
+      padding-left: 0.9rem;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
+      color: var(--color-muted);
+    }
+    .post-meta .sep { opacity: 0.45; }
+    .post-meta time { color: var(--color-muted); }
+    .post-tags { display: inline-flex; flex-wrap: wrap; gap: 0.7rem; }
+    .post-rule {
+      margin-top: 1.5rem; height: 2px; width: 72px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--color-signal), transparent);
+    }
+
     .share { border-top: 1px solid var(--color-line); padding-top: 1.2rem; }
     .share-label { color: var(--color-signal); display: block; margin-bottom: 0.7rem; }
     .share-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
