@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Recherche"
+  description="Rechercher dans les analyses, dashboards, méthodologie et glossaire de l0g. Index local, aucun service tiers."
+  sidebar={false}
+>
+  <section class="rise" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// recherche</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Rechercher
+    </h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      Toutes les analyses, pages et entrées de glossaire, indexées en local sur le site.
+      Aucun service tiers : la recherche tourne entièrement dans votre navigateur.
+    </p>
+
+    <div class="suggest">
+      <span class="suggest-label">essayez :</span>
+      <button class="s-chip" type="button" data-q="crédit privé">crédit privé</button>
+      <button class="s-chip" type="button" data-q="Ormuz">Ormuz</button>
+      <button class="s-chip" type="button" data-q="FOMC">FOMC</button>
+      <button class="s-chip" type="button" data-q="stablecoins">stablecoins</button>
+      <button class="s-chip" type="button" data-q="carry trade">carry trade</button>
+      <button class="s-chip" type="button" data-q="13F">13F</button>
+    </div>
+
+    <div class="pf-search pf-page mt-7" data-pagefind-ignore></div>
+  </section>
+
+  <style>
+    .suggest { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin-top: 1.5rem; }
+    .suggest-label {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--color-muted);
+    }
+    .s-chip {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--color-muted); background: transparent;
+      border: 1px solid var(--color-line); border-radius: 999px; padding: 0.3rem 0.75rem;
+      cursor: pointer; transition: color 0.16s, border-color 0.16s, background 0.16s;
+    }
+    .s-chip:hover {
+      color: var(--color-bright);
+      border-color: color-mix(in srgb, var(--color-signal) 50%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 8%, transparent);
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      function input() { return document.querySelector('.pf-page .pagefind-ui__search-input'); }
+      function runSearch(q, push) {
+        var el = input();
+        if (!el) { setTimeout(function () { runSearch(q, push); }, 60); return; }
+        el.value = q;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.focus();
+        if (push) history.replaceState(null, '', '/recherche/?q=' + encodeURIComponent(q));
+      }
+      function start() {
+        var q = new URLSearchParams(location.search).get('q');
+        if (q) runSearch(q, false);
+        document.querySelectorAll('.s-chip').forEach(function (b) {
+          b.addEventListener('click', function () { runSearch(b.dataset.q, true); });
+        });
+      }
+      if (document.readyState !== 'loading') start();
+      else document.addEventListener('DOMContentLoaded', start);
+    })();
+  </script>
+</BaseLayout>

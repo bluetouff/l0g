@@ -281,3 +281,75 @@ a { color: inherit; text-decoration: none; }
   border-bottom-color: var(--color-accent);
   text-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 35%, transparent);
 }
+
+/* --- Recherche Pagefind : thème sombre, contraste, surlignage doux --- */
+.pf-search {
+  --pagefind-ui-primary: var(--color-signal);
+  --pagefind-ui-text: var(--color-paper);
+  --pagefind-ui-background: var(--color-surface);
+  --pagefind-ui-border: var(--color-line);
+  --pagefind-ui-tag: var(--color-ink);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 10px;
+  --pagefind-ui-font: inherit;
+}
+.pf-search .pagefind-ui__search-input { color: var(--color-bright); }
+.pf-search .pagefind-ui__message {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+.pf-search .pagefind-ui__result { border-top: 1px solid var(--color-line); }
+.pf-search .pagefind-ui__result-link { color: var(--color-bright); font-weight: 600; }
+.pf-search .pagefind-ui__result-link:hover { color: var(--color-signal); }
+.pf-search .pagefind-ui__result-excerpt { color: var(--color-muted); line-height: 1.55; }
+.pf-search .pagefind-ui__result-nested .pagefind-ui__result-link {
+  color: var(--color-paper);
+  font-weight: 500;
+}
+.pf-search mark {
+  background: color-mix(in srgb, var(--color-signal) 22%, transparent);
+  color: var(--color-bright);
+  border-radius: 3px;
+  padding: 0 0.15em;
+}
+/* Pastille "Date:" : on la masque pour désencombrer la liste */
+.pf-search .pagefind-ui__result-tags { display: none; }
+
+/* Page de recherche dédiée : largeur de lecture confortable */
+.pf-page { max-width: 44rem; }
+
+/* --- Recherche : on garde la date, restylée en sombre (écrase le display:none) --- */
+.pf-search .pagefind-ui__result-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.pf-search .pagefind-ui__result-tag {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.05em;
+  color: var(--color-muted); background: var(--color-ink);
+  border: 1px solid var(--color-line); border-radius: 999px; padding: 0.12rem 0.55rem;
+}
+
+/* --- Page /recherche : grand champ + résultats en cartes --- */
+.pf-page { max-width: 46rem; }
+.pf-page .pagefind-ui__search-input {
+  font-size: 1.05rem; padding: 0.85rem 1rem;
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: 12px; color: var(--color-bright);
+}
+.pf-page .pagefind-ui__search-input:focus {
+  border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-signal) 12%, transparent);
+  outline: none;
+}
+.pf-page .pagefind-ui__results { margin-top: 0.6rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.pf-page .pagefind-ui__result {
+  border: 1px solid var(--color-line); border-radius: 12px; padding: 1rem 1.1rem;
+  transition: background 0.16s, border-color 0.16s;
+}
+.pf-page .pagefind-ui__result:hover {
+  background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+  border-color: color-mix(in srgb, var(--color-signal) 30%, transparent);
+}
+.pf-page .pagefind-ui__result-nested {
+  margin-top: 0.55rem; padding-left: 0.9rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-signal) 30%, transparent);
+}
