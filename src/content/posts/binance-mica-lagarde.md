@@ -10,9 +10,9 @@ draft: false
 
 ## MiCA, où en est le cadre
 
-[MiCA](/glossaire/#mica) — le règlement (UE) 2023/1114, adopté en juin 2023 — est le cadre unifié de l'Union pour les crypto-actifs non couverts par la réglementation financière existante. Il s'applique par étapes : les règles sur les stablecoins ([ART](/glossaire/#art) et [EMT](/glossaire/#emt)) depuis le 30 juin 2024, le régime des prestataires de services ([CASP](/glossaire/#casp)) depuis le 30 décembre 2024, avec une fenêtre transitoire prévue à l'article 143 qui se referme le **1er juillet 2026**. Le principe central tient à un mécanisme : un agrément délivré par une autorité nationale compétente ([NCA](/glossaire/#nca)) ouvre un « passeport » vers les 27 États membres. L'[ESMA](/glossaire/#esma) coordonne l'application, l'EBA supervise les stablecoins.
+[MiCA](/glossaire/#mica), le règlement (UE) 2023/1114 adopté en juin 2023, est le cadre unifié de l'Union pour les crypto-actifs non couverts par la réglementation financière existante. Il s'applique par étapes : les règles sur les stablecoins ([ART](/glossaire/#art) et [EMT](/glossaire/#emt)) depuis le 30 juin 2024, le régime des prestataires de services ([CASP](/glossaire/#casp)) depuis le 30 décembre 2024, avec une fenêtre transitoire prévue à l'article 143 qui se referme le **1er juillet 2026**. Le principe central tient à un mécanisme : un agrément délivré par une autorité nationale compétente ([NCA](/glossaire/#nca)) ouvre un « passeport » vers les 27 États membres. L'[ESMA](/glossaire/#esma) coordonne l'application, l'EBA supervise les stablecoins.
 
-L'état des lieux, à la mi-2026, est celui d'une conversion lente. Selon les décomptes établis à partir du registre ESMA et des suivis sectoriels, environ **210 des plus de 1 200 entités** enregistrées sous les anciens régimes nationaux ont obtenu l'agrément CASP complet — de l'ordre de **17 %**. Les grandes plateformes agréées comptent Coinbase, Kraken, Bitstamp, OKX, Crypto.com et Bitpanda. Côté stablecoins, seuls l'USDC et l'EURC de Circle figurent parmi les grands jetons conformes ; l'USDT de Tether reste exclu des marchés régulés de l'UE, l'émetteur ayant refusé de s'y soumettre. Dix juridictions n'ont encore délivré aucun agrément, et la Pologne n'a toujours pas adopté sa loi d'application, son président ayant opposé son veto à plusieurs reprises.
+L'état des lieux, à la mi-2026, est celui d'une conversion lente. Selon les décomptes établis à partir du registre ESMA et des suivis sectoriels, environ **210 des plus de 1 200 entités** enregistrées sous les anciens régimes nationaux ont obtenu l'agrément CASP complet, soit de l'ordre de **17 %**. Les grandes plateformes agréées comptent Coinbase, Kraken, Bitstamp, OKX, Crypto.com et Bitpanda. Côté stablecoins, seuls l'USDC et l'EURC de Circle figurent parmi les grands jetons conformes ; l'USDT de Tether reste exclu des marchés régulés de l'UE, l'émetteur ayant refusé de s'y soumettre. Dix juridictions n'ont encore délivré aucun agrément, et la Pologne n'a toujours pas adopté sa loi d'application, son président ayant opposé son veto à plusieurs reprises.
 
 <figure class="infographic">
 <svg viewBox="0 0 720 200" role="img" aria-label="Calendrier d'application de MiCA" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
@@ -47,7 +47,7 @@ L'état des lieux, à la mi-2026, est celui d'une conversion lente. Selon les d�
 
 Binance a déposé sa demande en janvier 2026 via une filiale grecque, Binary Greece, auprès de la Hellenic Capital Market Commission (HCMC). Athènes avait été choisie comme base européenne ; le co-directeur général Richard Teng en vantait en février la main-d'œuvre et le profil de sécurité. Le 16 juin 2026, **Reuters**, citant deux personnes au fait du dossier, rapporte que la HCMC s'apprête à rejeter la demande. Le régulateur ne commente pas, invoquant la confidentialité. Binance, de son côté, affirme avoir travaillé dix-huit mois avec les régulateurs, estime son dossier conforme à MiCA, indique que la HCMC l'aurait jugé tel et qu'il aurait été examiné au niveau de l'ESMA, et soutient n'avoir reçu **aucune notification formelle de refus**.
 
-L'enjeu est mécanique. Sans agrément dans un seul État membre, pas de passeport ; et sans passeport, l'arrêt des services régulés aux résidents de l'UE au 1er juillet, ou la présentation d'un plan de liquidation ordonnée. La plateforme se reporte désormais sur la France et l'AMF, présentée par les comptes rendus comme la seule voie encore tenable dans les délais — aucune demande n'y aurait toutefois été formellement déposée à ce stade.
+L'enjeu est mécanique. Sans agrément dans un seul État membre, pas de passeport ; et sans passeport, l'arrêt des services régulés aux résidents de l'UE au 1er juillet, ou la présentation d'un plan de liquidation ordonnée. La plateforme se reporte désormais sur la France et l'AMF, présentée par les comptes rendus comme la seule voie encore tenable dans les délais ; aucune demande n'y aurait toutefois été formellement déposée à ce stade.
 
 <figure class="infographic">
 <svg viewBox="0 0 720 290" role="img" aria-label="Séquence du dossier Binance en Grèce" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
@@ -64,7 +64,7 @@ L'enjeu est mécanique. Sans agrément dans un seul État membre, pas de passepo
     <circle cx="150" cy="92" r="5" fill="#f5b13d"/>
     <text x="138" y="96" text-anchor="end" fill="#8b909b">mai 2026</text>
     <text x="166" y="90" fill="#f5f6f8">Réunion Lagarde-Mitsotakis : « Binance pas bienvenu »</text>
-    <text x="166" y="106" fill="#f5b13d" font-size="10.5">RAPPORTÉ — The Big Whale</text>
+    <text x="166" y="106" fill="#f5b13d" font-size="10.5">RAPPORTÉ · The Big Whale</text>
     <!-- 3 -->
     <circle cx="150" cy="144" r="5" fill="#f5b13d"/>
     <text x="138" y="148" text-anchor="end" fill="#8b909b">7-15 juin</text>
@@ -74,12 +74,12 @@ L'enjeu est mécanique. Sans agrément dans un seul État membre, pas de passepo
     <circle cx="150" cy="196" r="5" fill="#f5b13d"/>
     <text x="138" y="200" text-anchor="end" fill="#8b909b">16 juin</text>
     <text x="166" y="194" fill="#f5f6f8">Reuters : rejet attendu (2 sources)</text>
-    <text x="166" y="210" fill="#f5b13d" font-size="10.5">RAPPORTÉ — Reuters</text>
+    <text x="166" y="210" fill="#f5b13d" font-size="10.5">RAPPORTÉ · Reuters</text>
     <!-- 5 -->
     <circle cx="150" cy="248" r="5" fill="#ff4d87"/>
     <text x="138" y="252" text-anchor="end" fill="#8b909b">avant 30 juin</text>
     <text x="166" y="246" fill="#f5f6f8">France / AMF, dernière voie envisagée</text>
-    <text x="166" y="262" fill="#8b909b" font-size="10.5">EN COURS — BCE et Athènes : aucune confirmation</text>
+    <text x="166" y="262" fill="#8b909b" font-size="10.5">EN COURS · BCE et Athènes : aucune confirmation</text>
   </g>
 </svg>
 <figcaption>Chronologie du dossier, par statut épistémique. Sources : Reuters (16/06/2026) ; The Big Whale, Cointelegraph (17/06/2026) ; communication de Binance. La BCE et le gouvernement grec n'ont pas confirmé les éléments « rapportés ».</figcaption>
@@ -87,7 +87,7 @@ L'enjeu est mécanique. Sans agrément dans un seul État membre, pas de passepo
 
 ## L'hypothèse Lagarde, et ce qu'on peut en dire
 
-L'angle vient de deux sources concordantes mais non officielles. *The Big Whale* a rapporté le 17 juin, en citant des personnes au fait du dossier, que Christine Lagarde aurait joué un rôle déterminant dans le déraillement de la demande grecque, après un message au Premier ministre Kyriakos Mitsotakis en mai indiquant que Binance n'était pas le bienvenu en Europe, consigne ensuite relayée à la HCMC via le ministère des Finances — lequel, lui, soutenait l'agrément. Le journaliste Gareth Jenkinson (Cointelegraph) a affirmé sur X avoir été « informé de source fiable » qu'elle aurait directement ordonné le rejet. Ni la BCE ni le gouvernement grec ne l'ont confirmé, et aucune décision écrite ne l'établit. À ce stade, c'est un récit cohérent, pas un fait prouvé.
+L'angle vient de deux sources concordantes mais non officielles. *The Big Whale* a rapporté le 17 juin, en citant des personnes au fait du dossier, que Christine Lagarde aurait joué un rôle déterminant dans le déraillement de la demande grecque, après un message au Premier ministre Kyriakos Mitsotakis en mai indiquant que Binance n'était pas le bienvenu en Europe, consigne ensuite relayée à la HCMC via le ministère des Finances, qui soutenait pourtant l'agrément. Le journaliste Gareth Jenkinson (Cointelegraph) a affirmé sur X avoir été « informé de source fiable » qu'elle aurait directement ordonné le rejet. Ni la BCE ni le gouvernement grec ne l'ont confirmé, et aucune décision écrite ne l'établit. À ce stade, c'est un récit cohérent, pas un fait prouvé.
 
 Les motivations qu'on lui prête se lisent à la lumière de positions, elles, publiques et vérifiables. Lagarde est ouvertement réservée sur les stablecoins : lors d'un forum de la Banco de España en mai, elle a jugé l'argumentaire en faveur des stablecoins libellés en euro plus fragile qu'il n'y paraît, mettant en garde contre l'érosion de la capacité des banques à prêter et du contrôle de la politique monétaire. Le 1er juin, la membre du directoire Isabel Schnabel a insisté sur la domination des stablecoins en dollar et le risque d'ancrage de l'influence monétaire américaine. En toile de fond, la BCE pousse l'euro numérique. Une plateforme de la taille de Binance, vecteur de stablecoins en dollar, coche précisément les cases de ce que la présidente dit vouloir contenir. Le mobile est plausible ; il ne vaut pas démonstration.
 
