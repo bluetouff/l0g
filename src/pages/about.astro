@@ -2,14 +2,64 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="Olivier Laurelli, alias Bluetouff — expert cybersécurité, hacktiviste, cofondateur de Reflets.info, auteur.">
-  <section class="rise">
-    <p class="mono-label" style="color: var(--color-signal)">// about</p>
-    <h1 class="mt-4 font-display text-5xl leading-none tracking-wider glow sm:text-6xl">
-      Olivier Laurelli <span style="color: var(--color-accent)">/ bluetouff</span>
+<BaseLayout title="About" description="l0g — mesurer les zones d'opacité où émergent les risques systémiques. Laboratoire de recherche appliquée, plateforme d'intelligence économique, observatoire du risque systémique et projet open source, par Olivier Laurelli (Bluetouff).">
+  <section class="rise" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// à propos</p>
+
+    <h1 class="about-lede mt-5 font-display glow">
+      <span class="wm"><span>l</span><span class="wm0">0</span><span>g</span></span> mesure les zones d'<span style="color: var(--color-accent)">opacité</span> où émergent les risques systémiques.
     </h1>
 
-    <div class="mt-7 flex flex-wrap items-center gap-4">
+    <p class="about-intro mt-6 max-w-2xl text-paper">
+      Le projet est né de l'écriture d'<a class="link-term" href="https://bluetouff.com/auditer-l-opacite.html" target="_blank" rel="noopener">Auditer l'opacité</a>,
+      l'essai consacré aux angles morts des systèmes financiers. Il en prolonge la démarche
+      par l'outil et la donnée, à la croisée de quatre approches :
+    </p>
+
+    <div class="facets">
+      <div class="facet card" style="--c: var(--color-signal)">
+        <span class="facet-k">01</span>
+        <span class="facet-t">Laboratoire de recherche appliquée</span>
+        <span class="facet-d">Indices, méthodes et backtests construits et documentés sur des données publiques.</span>
+      </div>
+      <div class="facet card" style="--c: var(--color-accent)">
+        <span class="facet-k">02</span>
+        <span class="facet-t">Plateforme d'intelligence économique</span>
+        <span class="facet-d">Dashboards et signaux pour lire la macro, les marchés et les flux institutionnels.</span>
+      </div>
+      <div class="facet card" style="--c: var(--color-amber)">
+        <span class="facet-k">03</span>
+        <span class="facet-t">Observatoire du risque systémique</span>
+        <span class="facet-d">Suivi des points de fragilité : crédit privé, carry trade, énergie, stablecoins.</span>
+      </div>
+      <div class="facet card" style="--c: #7aa2f7">
+        <span class="facet-k">04</span>
+        <span class="facet-t">Projet open source</span>
+        <span class="facet-d">Code ouvert, sources citées, serveur auto-hébergé, aucun tracker.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// ce site en bref</p>
+    <div class="specs card mt-4">
+      <div class="spec"><span class="spec-k">Statut</span><span class="spec-v">Statique, auto-hébergé sur Debian</span></div>
+      <div class="spec"><span class="spec-k">Données</span><span class="spec-v">Sources publiques et gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC…)</span></div>
+      <div class="spec"><span class="spec-k">Vie privée</span><span class="spec-v">Zéro cookie, zéro tracker, aucun tiers contacté par le navigateur</span></div>
+      <div class="spec"><span class="spec-k">Code</span><span class="spec-v"><a class="link-term" href="https://github.com/bluetouff" target="_blank" rel="noopener">github.com/bluetouff</a></span></div>
+      <div class="spec"><span class="spec-k">Licence</span><span class="spec-v">API &amp; données en CC BY 4.0</span></div>
+    </div>
+  </section>
+
+  <hr class="hairline mt-14" />
+
+  <section class="mt-12">
+    <p class="mono-label glow" style="color: var(--color-signal)">// l'auteur</p>
+    <h2 class="mt-3 font-display text-3xl leading-none tracking-wider glow">
+      Olivier Laurelli <span style="color: var(--color-accent)">/ bluetouff</span>
+    </h2>
+
+    <div class="mt-6 flex flex-wrap items-center gap-4">
       <a class="app-link" href="https://x.com/bluetouff" target="_blank" rel="me noopener" aria-label="X — @bluetouff">
         <span class="app-icon app-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
         <span class="app-handle">@bluetouff</span>
@@ -19,72 +69,110 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="app-handle">bluetouff</span>
       </a>
     </div>
+
+    <div class="prose mt-8 max-w-2xl">
+      <p>Ce site vous est proposé par Olivier Laurelli, alias Bluetouff. Expert en cybersécurité et hacktiviste, j'ai cofondé Reflets.info en 2010 avec le journaliste Kitetoa. Ce média indépendant traite du numérique, de la surveillance et de la sécurité informatique.</p>
+      <p>Très versé dans le logiciel libre et presque 15 ans passés aux côtés de Bearstech, j'aime administrer mes machines sur Debian, l'auto-hébergement et diverses geekeries avec des agents-IA ou du hardware ouvert.</p>
+      <p>Aujourd'hui auteur et investisseur, je co-signe un livre disponible sur Amazon (« 100 questions et réponses pour vous mettre en cybersécurité ») ainsi que l'essai « Auditer l'opacité (Anatomie d'une crise qu'on ne veut pas voir) ». Je développe par ailleurs des outils de monitoring et d'analyse macro orientés finance et investissement, et j'enseigne ponctuellement à Grenoble École de Management (GEM) et à l'Université de technologie de Troyes. Engagé pour la transparence et les libertés numériques, je commente régulièrement l'actualité sur X (@bluetouff).</p>
+
+      <h2>Philosophie &amp; biais assumés</h2>
+      <p>
+        Autant le dire d'emblée : je suis un investisseur particulier qui construit ses
+        propres outils. Pas d'équipe de quants, pas de terminal Bloomberg, pas de flux de
+        données payant. Tout ce que vous voyez ici est bâti sur des sources publiques et
+        gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC), assemblé sur un serveur que
+        j'administre moi-même, et servi en statique sans tracker.
+      </p>
+      <p>
+        C'est une force et une limite. Une force, parce que tout est vérifiable : les sources
+        sont citées, le code est ouvert, les méthodes sont documentées sur la
+        <a href="/methodologie/">page méthodologie</a>. Vous pouvez refaire les calculs. Une
+        limite, parce que je travaille avec les moyens du bord, et il vaut mieux connaître les
+        angles morts que de les découvrir en s'y appuyant.
+      </p>
+      <p>Les principaux, que j'assume :</p>
+      <ul>
+        <li>
+          Les données 13F sont trimestrielles et arrivent avec un retard pouvant atteindre
+          45 jours. Ce qu'un fonds détenait fin mars, on ne le sait qu'à la mi-mai. C'est une
+          photo, pas un flux temps réel.
+        </li>
+        <li>
+          L'univers est volontairement restreint : une sélection de superinvestisseurs suivis,
+          et pour la confluence, les seuls titres détenus par au moins cinq fonds. Je préfère
+          un signal étroit mais propre à un univers large et bruité.
+        </li>
+        <li>
+          Tout est vu du côté long. Les positions vendeuses, les dérivés complexes, les
+          montages hors 13F m'échappent par construction.
+        </li>
+        <li>
+          Les indices de risque sont des modèles, donc des simplifications. Ils résument des
+          dizaines de séries en un chiffre : utile pour situer un régime, insuffisant pour
+          décider seul.
+        </li>
+      </ul>
+      <p>
+        Rien de tout cela n'est un conseil en investissement. Ce sont les outils que j'utilise pour ma propre gouverne, que
+        je partage parce que la transparence des méthodes vaut mieux que l'opacité des
+        certitudes. Le reste du travail, le jugement, reste à faire, par vous comme par moi.
+      </p>
+    </div>
   </section>
-
-  <div class="prose mt-8 max-w-2xl">
-    <p>Ce site vous est proposé par Olivier Laurelli, alias Bluetouff. Expert en cybersécurité et hacktiviste, j'ai cofondé Reflets.info en 2010 avec le journaliste Kitetoa. Ce média indépendant traite du numérique, de la surveillance et de la sécurité informatique.</p>
-    <p>Très versé dans le logiciel libre et presque 15 ans passés aux côtés de Bearstech, j'aime administrer mes machines sur Debian, l'auto-hébergement et diverses geekeries avec des agents-IA ou du hardware ouvert.</p>
-    <p>Aujourd'hui auteur et investisseur, je co-signe un livre disponible sur Amazon (« 100 questions et réponses pour vous mettre en cybersécurité ») ainsi que l'essai « Auditer l'opacité (Anatomie d'une crise qu'on ne veut pas voir) ». Je développe par ailleurs des outils de monitoring et d'analyse macro orientés finance et investissement, et j'enseigne ponctuellement à Grenoble École de Management (GEM) et à l'Université de technologie de Troyes. Engagé pour la transparence et les libertés numériques, je commente régulièrement l'actualité sur X (@bluetouff).</p>
-
-    <h2>Philosophie &amp; biais assumés</h2>
-    <p>
-      Autant le dire d'emblée : je suis un investisseur particulier qui construit ses
-      propres outils. Pas d'équipe de quants, pas de terminal Bloomberg, pas de flux de
-      données payant. Tout ce que vous voyez ici est bâti sur des sources publiques et
-      gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC), assemblé sur un serveur que
-      j'administre moi-même, et servi en statique sans tracker.
-    </p>
-    <p>
-      C'est une force et une limite. Une force, parce que tout est vérifiable : les sources
-      sont citées, le code est ouvert, les méthodes sont documentées sur la
-      <a href="/methodologie/">page méthodologie</a>. Vous pouvez refaire les calculs. Une
-      limite, parce que je travaille avec les moyens du bord, et il vaut mieux connaître les
-      angles morts que de les découvrir en s'y appuyant.
-    </p>
-    <p>Les principaux, que j'assume :</p>
-    <ul>
-      <li>
-        Les données 13F sont trimestrielles et arrivent avec un retard pouvant atteindre
-        45 jours. Ce qu'un fonds détenait fin mars, on ne le sait qu'à la mi-mai. C'est une
-        photo, pas un flux temps réel.
-      </li>
-      <li>
-        L'univers est volontairement restreint : une sélection de superinvestisseurs suivis,
-        et pour la confluence, les seuls titres détenus par au moins cinq fonds. Je préfère
-        un signal étroit mais propre à un univers large et bruité.
-      </li>
-      <li>
-        Tout est vu du côté long. Les positions vendeuses, les dérivés complexes, les
-        montages hors 13F m'échappent par construction.
-      </li>
-      <li>
-        Les indices de risque sont des modèles, donc des simplifications. Ils résument des
-        dizaines de séries en un chiffre : utile pour situer un régime, insuffisant pour
-        décider seul.
-      </li>
-    </ul>
-    <p>
-      Rien de tout cela n'est un conseil en investissement. Ce sont les outils que j'utilise pour ma propre gouverne, que
-      je partage parce que la transparence des méthodes vaut mieux que l'opacité des
-      certitudes. Le reste du travail, le jugement, reste à faire, par vous comme par moi.
-    </p>
-  </div>
 </BaseLayout>
 
 <style>
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--color-paper);
-    transition: color 0.2s;
+  /* --- Manifeste --- */
+  .about-lede {
+    font-size: clamp(1.85rem, 4.4vw, 2.95rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    max-width: 24ch;
+    color: var(--color-bright);
   }
-  .app-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
+  .wm { font-weight: 800; letter-spacing: -0.02em; }
+  .wm .wm0 { color: var(--color-signal); }
+  .about-intro { line-height: 1.7; }
+
+  /* --- Facettes --- */
+  .facets {
     display: grid;
-    place-items: center;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    margin-top: 1.6rem;
+    max-width: 52rem;
+  }
+  @media (min-width: 640px) { .facets { grid-template-columns: 1fr 1fr; } }
+  .facet {
+    padding: 1rem 1.1rem 1.05rem 1.2rem;
+    box-shadow: inset 3px 0 0 color-mix(in srgb, var(--c) 55%, transparent);
+  }
+  .facet:hover { box-shadow: inset 3px 0 0 var(--c); }
+  .facet-k {
+    font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.14em; color: var(--c);
+  }
+  .facet-t { display: block; margin-top: 0.35rem; font-weight: 600; color: var(--color-bright); }
+  .facet-d { display: block; margin-top: 0.3rem; font-size: 0.86rem; line-height: 1.5; color: var(--color-muted); }
+
+  /* --- Carte specs --- */
+  .specs { padding: 0.3rem 1.1rem; max-width: 40rem; }
+  .spec { display: flex; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--color-line); }
+  .spec:last-child { border-bottom: 0; }
+  .spec-k {
+    flex: 0 0 7.5rem; font-family: var(--font-mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); padding-top: 0.15rem;
+  }
+  .spec-v { color: var(--color-paper); font-size: 0.92rem; line-height: 1.45; }
+  @media (max-width: 480px) {
+    .spec { flex-direction: column; gap: 0.15rem; }
+    .spec-k { flex: none; }
+  }
+
+  /* --- Tuiles réseaux (inchangé) --- */
+  .app-link { display: inline-flex; align-items: center; gap: 0.75rem; color: var(--color-paper); transition: color 0.2s; }
+  .app-icon {
+    width: 60px; height: 60px; border-radius: 16px; display: grid; place-items: center;
     border: 1px solid var(--color-line);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 16px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -92,15 +180,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .app-icon svg { width: 30px; height: 30px; fill: #fff; }
   .app-x { background: linear-gradient(155deg, #2a2a2a 0%, #050505 100%); }
   .app-gh { background: linear-gradient(155deg, #30353d 0%, #14171b 100%); }
-  .app-handle {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--color-muted);
-    transition: color 0.2s;
-  }
+  .app-handle { font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-muted); transition: color 0.2s; }
   .app-link:hover .app-icon {
-    transform: translateY(-2px);
-    border-color: var(--color-line-strong);
+    transform: translateY(-2px); border-color: var(--color-line-strong);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 26px rgba(0, 0, 0, 0.5);
   }
   .app-link:hover .app-handle { color: var(--color-signal); }
