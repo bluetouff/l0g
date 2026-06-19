@@ -27,6 +27,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <ul class="api-list mt-3">
         <li><code class="apic">GET /api/v1/risk.json</code> — état courant des indices (JSON).</li>
         <li><code class="apic">GET /api/v1/risk.xml</code> — flux Atom des changements de niveau.</li>
+		<li><code class="apic">GET /api/v1/history.csv</code> — historique complet à plat (pandas/R/Excel).</li>
+		<li><code class="apic">GET /api/v1/history.ndjson</code> — historique, une ligne JSON par snapshot.</li>
+		<li><code class="apic">GET /api/v1/history/index.json</code> — manifest : couverture, colonnes, nombre de lignes.</li>
       </ul>
     </div>
 
@@ -46,6 +49,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   "confluence": { "updated": "...", "count": 15, "conviction": 1, "top": { "ticker": "TSM", "score": 90, "quadrant": "divergent" } },
   "license": "CC BY 4.0", "attribution": "l0g.fr"
 }`}</code></pre>
+    </div>
+
+   <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// historique &amp; backtest</h2>
+      <p class="mt-3 text-paper">
+        L'historique est <strong class="text-bright">point-in-time</strong> : chaque snapshot publié
+        est figé, jamais révisé a posteriori. Vous backtestez sur ce qui était réellement affiché à
+        l'instant T, sans look-ahead bias.
+      </p>
+      <pre class="apipre"><code>{`import pandas as pd
+df = pd.read_csv("https://l0g.fr/api/v1/history.csv", parse_dates=["snapshot"])
+df = df.set_index("snapshot").sort_index()`}</code></pre>
+      <p class="mt-3 text-muted">
+        Les colonnes <code class="apic">conf_*</code> (synthèse 13FLOW) sont vides sur les premiers
+        points, antérieurs à l'intégration de la confluence dans l'agrégat. Les quatre sous-indices,
+        eux, couvrent toute la période.
+      </p>
     </div>
 
     <div>
