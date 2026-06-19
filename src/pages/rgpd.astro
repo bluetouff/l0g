@@ -6,110 +6,186 @@ const updated = '16 juin 2026';
 
 <BaseLayout
   title="Mentions légales & RGPD"
-  description="Éditeur, hébergement, et recensement de tout ce qui sort de ce site vers des tiers."
+  description="Éditeur, hébergement, et recensement exhaustif de tout ce qui sort de ce site vers des tiers. Version courte : presque rien."
 >
-  <article class="prose max-w-2xl" data-pagefind-ignore>
-    <h2>Mentions légales &amp; confidentialité</h2>
-    <p class="text-muted">Dernière mise à jour : {updated}.</p>
-
-    <h3>Éditeur</h3>
-    <p>
-      Ce site est un site personnel édité par <strong>Bluetouff</strong>, à titre
-      individuel et non commercial.
+  <section class="rise" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// mentions légales &amp; rgpd</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Transparence, ligne par ligne
+    </h1>
+    <p class="rgpd-lede">
+      Cette page recense, de façon exhaustive, tout ce qui peut quitter votre navigateur
+      quand vous consultez le site. Version courte : presque rien.
     </p>
-    <ul>
-      <li>Statut : site personnel, sans finalité commerciale.</li>
-      <li>Contact / directeur de la publication : <a href="mailto:admin@toonux.com">admin@toonux.com</a></li>
-    </ul>
+    <span class="rgpd-meta">Dernière mise à jour : {updated}</span>
+  </section>
 
-    <h3>Hébergement</h3>
-    <p>
-      Le site est auto-hébergé par l'éditeur sur un serveur dédié qu'il administre.
-      Il est entièrement statique : aucune base de données, aucun compte
-      utilisateur, aucun formulaire.
-    </p>
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// éditeur &amp; hébergement</p>
+    <div class="specs card mt-4">
+      <div class="spec"><span class="spec-k">Éditeur</span><span class="spec-v">Bluetouff, à titre individuel et non commercial</span></div>
+      <div class="spec"><span class="spec-k">Statut</span><span class="spec-v">Site personnel, sans finalité commerciale</span></div>
+      <div class="spec"><span class="spec-k">Contact</span><span class="spec-v"><a class="link-term" href="mailto:admin@toonux.com">admin@toonux.com</a> · directeur de la publication</span></div>
+      <div class="spec"><span class="spec-k">Hébergement</span><span class="spec-v">Auto-hébergé par l'éditeur sur un serveur dédié qu'il administre</span></div>
+      <div class="spec"><span class="spec-k">Nature</span><span class="spec-v">Entièrement statique : aucune base de données, aucun compte, aucun formulaire</span></div>
+    </div>
+  </section>
 
-    <h3>Ce qui sort de ce site (transferts vers des tiers)</h3>
-    <p>
-      Par principe, ce site limite au strict minimum les connexions vers
-      l'extérieur. Voici la liste exhaustive de ce qui peut quitter votre
-      navigateur lors de la consultation.
-    </p>
-
-    <h4>1. Graphiques et cotations TradingView</h4>
-    <p>
-      Les graphiques de marché, le bandeau de cotations, les mini-aperçus de la
-      colonne latérale, ainsi que les comparateurs, heatmaps et le calendrier
-      économique des pages dashboards sont fournis par <strong>TradingView</strong>
-      (TradingView, Inc., États-Unis) sous forme de composants embarqués. Lorsqu'une
-      page contenant l'un de ces éléments se charge, votre navigateur contacte
-      directement les serveurs de TradingView (notamment
-      <code>s3.tradingview.com</code>, <code>*.tradingview.com</code> et
-      <code>*.tradingview-widget.com</code>).
-    </p>
-    <p>Ce contact transmet à TradingView, sans que l'éditeur puisse l'empêcher :</p>
-    <ul>
-      <li>votre adresse IP ;</li>
-      <li>votre type de navigateur et d'appareil (user-agent) ;</li>
-      <li>la page consultée (référent) ;</li>
-      <li>des cookies et/ou du stockage local déposés par TradingView sur votre appareil.</li>
-    </ul>
-    <p>
-      Ces traitements relèvent de la seule responsabilité de TradingView et de sa
-      politique de confidentialité (<a href="https://www.tradingview.com/privacy-policy/" rel="noopener nofollow">tradingview.com/privacy-policy</a>).
-      L'éditeur n'a aucun contrôle sur les données collectées par ce tiers, ni sur
-      leur transfert hors de l'Union européenne. Si vous ne souhaitez pas que ces
-      données soient transmises, bloquez les scripts tiers (extension de blocage,
-      navigateur durci) ou évitez les pages contenant des graphiques.
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// ce qui sort vers des tiers</p>
+    <p class="m-p">
+      Par principe, ce site limite au strict minimum les connexions vers l'extérieur. Voici
+      la liste exhaustive de ce qui peut quitter votre navigateur lors de la consultation.
     </p>
 
-    <h4>2. Journaux du serveur et mesure d'audience</h4>
-    <p>
-      Comme tout serveur web, l'hébergement enregistre des journaux techniques
-      contenant l'adresse IP, l'horodatage, la page demandée et l'user-agent. Ces
-      journaux ont une finalité technique et de sécurité (détection d'abus) ainsi
-      que de mesure d'audience. Ils sont conservés 14 jours, puis supprimés
-      automatiquement par rotation.
-    </p>
-    <p>
-      La mesure d'audience est réalisée à partir de ces seuls journaux, au moyen de
-      l'outil libre <strong>GoAccess</strong> exécuté localement sur le serveur.
-      Concrètement, cela signifie :
-    </p>
-    <ul>
-      <li>aucun script de mesure n'est chargé dans votre navigateur, aucun cookie ni stockage local n'est déposé à cette fin ;</li>
-      <li>aucune donnée n'est envoyée à un service tiers : tout reste sur le serveur de l'éditeur ;</li>
-      <li>les adresses IP sont anonymisées avant traitement (le dernier octet est masqué), de sorte qu'aucune personne n'est identifiable dans les statistiques ;</li>
-      <li>les statistiques produites sont agrégées (pages vues, pays, navigateurs, sites référents) et ne servent jamais au profilage individuel.</li>
-    </ul>
+    <div class="leak-list">
+      <article class="leak card" style="--c: var(--color-amber)">
+        <span class="leak-h">TradingView · graphiques &amp; cotations</span>
+        <p class="leak-d">
+          Les graphiques de marché, le bandeau de cotations, les mini-aperçus de la colonne
+          latérale, ainsi que les comparateurs, heatmaps et le calendrier économique des pages
+          dashboards sont des composants embarqués de <strong class="text-bright">TradingView</strong>
+          (TradingView, Inc., États-Unis). Au chargement d'une page contenant l'un de ces
+          éléments, votre navigateur contacte directement les serveurs de TradingView
+          (<code class="rgpd-code">s3.tradingview.com</code>, <code class="rgpd-code">*.tradingview.com</code>,
+          <code class="rgpd-code">*.tradingview-widget.com</code>).
+        </p>
+        <p class="leak-sub-label">Transmis à TradingView, sans que l'éditeur puisse l'empêcher :</p>
+        <ul class="leak-sub">
+          <li>votre adresse IP ;</li>
+          <li>votre type de navigateur et d'appareil (user-agent) ;</li>
+          <li>la page consultée (référent) ;</li>
+          <li>des cookies et/ou du stockage local déposés par TradingView.</li>
+        </ul>
+        <p class="leak-note">
+          Ces traitements relèvent de la seule responsabilité de TradingView
+          (<a class="link-term" href="https://www.tradingview.com/privacy-policy/" rel="noopener nofollow">politique de confidentialité</a>).
+          Pour les éviter : bloquer les scripts tiers (extension de blocage, navigateur durci)
+          ou éviter les pages contenant des graphiques.
+        </p>
+      </article>
 
-    <h4>3. Liens sortants</h4>
-    <p>
-      Le site contient des liens vers des sites externes (dashboards, projets,
-      réseaux). Ces sites ne sont contactés que si vous cliquez volontairement sur
-      le lien, et sont alors régis par leurs propres politiques de confidentialité.
-    </p>
+      <article class="leak card" style="--c: var(--color-signal)">
+        <span class="leak-h">Journaux serveur &amp; mesure d'audience</span>
+        <p class="leak-d">
+          Comme tout serveur web, l'hébergement enregistre des journaux techniques (adresse IP,
+          horodatage, page demandée, user-agent), à finalité technique, de sécurité et de mesure
+          d'audience. Ils sont conservés <strong class="text-bright">14 jours</strong>, puis
+          supprimés automatiquement par rotation. La mesure d'audience utilise l'outil libre
+          <strong class="text-bright">GoAccess</strong>, exécuté localement sur le serveur.
+        </p>
+        <ul class="leak-sub">
+          <li>aucun script de mesure chargé dans votre navigateur, aucun cookie ni stockage local à cette fin ;</li>
+          <li>aucune donnée envoyée à un service tiers : tout reste sur le serveur de l'éditeur ;</li>
+          <li>adresses IP anonymisées avant traitement (dernier octet masqué) : aucune personne n'est identifiable ;</li>
+          <li>statistiques agrégées (pages vues, pays, navigateurs, référents), jamais de profilage individuel.</li>
+        </ul>
+      </article>
 
-    <h3>Ce que ce site NE fait PAS</h3>
-    <ul>
+      <article class="leak card" style="--c: #7aa2f7">
+        <span class="leak-h">Liens sortants</span>
+        <p class="leak-d">
+          Le site contient des liens vers des sites externes (dashboards, projets, réseaux).
+          Ces sites ne sont contactés que si vous cliquez volontairement sur le lien, et sont
+          alors régis par leurs propres politiques de confidentialité.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// ce que ce site ne fait pas</p>
+    <ul class="nope">
       <li>Aucune régie publicitaire, aucun pixel de tracking, aucun réseau social embarqué.</li>
-      <li>Aucun outil de mesure d'audience tiers (pas de Google Analytics ni équivalent). La fréquentation est mesurée localement à partir des seuls journaux du serveur, avec IP anonymisées (voir ci-dessus).</li>
+      <li>Aucun outil de mesure d'audience tiers (pas de Google Analytics ni équivalent) : la fréquentation est mesurée localement, IP anonymisées.</li>
       <li>Aucune police chargée depuis un CDN tiers : les polices sont auto-hébergées.</li>
-      <li>Aucune recherche déportée : le moteur de recherche fonctionne entièrement dans votre navigateur, sans appel externe.</li>
+      <li>Aucune recherche déportée : le moteur fonctionne entièrement dans votre navigateur, sans appel externe.</li>
       <li>Aucun cookie déposé par le site lui-même. Seul TradingView, le cas échéant, peut en déposer.</li>
     </ul>
+  </section>
 
-    <h3>Vos droits (RGPD)</h3>
-    <p>
-      Le site ne constitue, par lui-même, aucun fichier de données personnelles à
-      des fins commerciales. Pour toute demande relative aux journaux techniques
-      (accès, rectification, effacement, opposition), écrivez à
-      <a href="mailto:admin@toonux.com">admin@toonux.com</a>. Pour les données
-      collectées par TradingView, adressez-vous directement à ce tiers via sa
-      politique de confidentialité.
-    </p>
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// vos droits (RGPD)</p>
+    <div class="rgpd-note">
+      Le site ne constitue, par lui-même, aucun fichier de données personnelles à des fins
+      commerciales. Pour toute demande relative aux journaux techniques (accès, rectification,
+      effacement, opposition), écrivez à
+      <a class="link-term" href="mailto:admin@toonux.com">admin@toonux.com</a>. Pour les données
+      collectées par TradingView, adressez-vous directement à ce tiers via sa politique de
+      confidentialité.
+    </div>
+  </section>
 
-    <hr class="hairline" />
-    <a href="/" class="mono-label link-term inline-block">$ cd ..</a>
-  </article>
+  <hr class="hairline mt-12" />
+  <a href="/" class="mono-label link-term inline-block mt-5">$ cd ..</a>
+
+  <style>
+    .rgpd-lede {
+      margin-top: 1.6rem; max-width: 42rem;
+      padding: 0.9rem 1.15rem;
+      font-size: 1.1rem; line-height: 1.6; color: var(--color-bright);
+      border-left: 2px solid var(--color-signal);
+      background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+      border-radius: 0 10px 10px 0;
+    }
+    .rgpd-meta {
+      display: inline-block; margin-top: 1.2rem;
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em;
+      color: var(--color-muted); border: 1px solid var(--color-line);
+      border-radius: 999px; padding: 0.25rem 0.75rem;
+    }
+    .m-p { margin-top: 0.95rem; max-width: 42rem; color: var(--color-paper); line-height: 1.7; }
+    .rgpd-code {
+      font-family: var(--font-mono); font-size: 0.82em; color: var(--color-signal);
+      background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+      padding: 0.05rem 0.3rem; border-radius: 4px;
+    }
+
+    /* Fiche éditeur */
+    .specs { padding: 0.3rem 1.1rem; max-width: 44rem; }
+    .spec { display: flex; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--color-line); }
+    .spec:last-child { border-bottom: 0; }
+    .spec-k {
+      flex: 0 0 7.5rem; font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); padding-top: 0.15rem;
+    }
+    .spec-v { color: var(--color-paper); font-size: 0.92rem; line-height: 1.45; }
+    @media (max-width: 480px) { .spec { flex-direction: column; gap: 0.15rem; } .spec-k { flex: none; } }
+
+    /* Cartes « ce qui sort » */
+    .leak-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.4rem; max-width: 46rem; }
+    .leak { padding: 1.1rem 1.2rem; box-shadow: inset 3px 0 0 color-mix(in srgb, var(--c) 55%, transparent); }
+    .leak:hover { box-shadow: inset 3px 0 0 var(--c); }
+    .leak-h {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--c);
+    }
+    .leak-d { margin-top: 0.55rem; color: var(--color-paper); font-size: 0.92rem; line-height: 1.6; }
+    .leak-sub-label { margin-top: 0.7rem; color: var(--color-muted); font-size: 0.86rem; }
+    .leak-sub { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.5rem; }
+    .leak-sub li { position: relative; padding-left: 1.1rem; color: var(--color-muted); font-size: 0.88rem; line-height: 1.5; }
+    .leak-sub li::before { content: '·'; position: absolute; left: 0; color: var(--c); font-weight: 700; }
+    .leak-note { margin-top: 0.8rem; color: var(--color-muted); font-size: 0.84rem; line-height: 1.55; }
+
+    /* Liste « ne fait pas » */
+    .nope { display: flex; flex-direction: column; gap: 0.55rem; margin-top: 1.3rem; max-width: 46rem; }
+    .nope li {
+      position: relative; padding-left: 1.7rem; color: var(--color-paper); line-height: 1.55;
+    }
+    .nope li::before {
+      content: '✓'; position: absolute; left: 0; top: 0.05rem;
+      color: var(--color-signal); font-weight: 700;
+    }
+
+    /* Encadré droits */
+    .rgpd-note {
+      margin-top: 1rem; max-width: 46rem;
+      padding: 0.95rem 1.15rem;
+      border: 1px solid var(--color-line);
+      border-left: 2px solid color-mix(in srgb, var(--color-signal) 60%, transparent);
+      border-radius: 0 10px 10px 0;
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+      color: var(--color-muted); font-size: 0.92rem; line-height: 1.6;
+    }
+  </style>
 </BaseLayout>
