@@ -86,7 +86,7 @@ const accentVar: Record<string, string> = {
       href="https://bluetouff.com/auditer-l-opacite.html"
       target="_blank"
       rel="noopener"
-      class="pub-link card group block overflow-hidden p-0"
+      class="pub-link card group flex items-center gap-3 p-3"
       aria-label="Auditer l'opacité — l'essai de Bluetouff"
     >
       <img
@@ -96,6 +96,13 @@ const accentVar: Record<string, string> = {
         loading="lazy"
         decoding="async"
       />
+      <span class="min-w-0 flex-1">
+        <span class="block text-[0.92rem] font-semibold leading-tight text-bright">Auditer l'opacité</span>
+        <span class="mt-0.5 block text-xs leading-snug text-muted">Anatomie d'une crise qu'on ne veut pas voir</span>
+        <span class="mt-1.5 block text-[0.7rem] leading-tight text-muted">Printemps 2026</span>
+        <span class="block text-[0.7rem] leading-tight text-muted">Par Bluetouff</span>
+        <span class="pub-cta mt-1.5 block text-xs">Lire l'essai →</span>
+      </span>
     </a>
   </section>
 
@@ -150,15 +157,16 @@ const accentVar: Record<string, string> = {
   }
   .social-link:hover { color: var(--color-signal); transform: translateY(-1px); }
 
-  .pub-link { display: block; }
+  .pub-link { display: flex; }
   .pub-cover {
-    display: block;
-    width: 100%;
+    flex: 0 0 auto;
+    width: 78px;
     height: auto;
-    border-radius: inherit;
+    border-radius: 4px;
     filter: grayscale(0.55) brightness(0.82) contrast(0.96);
     transition: transform 0.3s, filter 0.3s;
   }
+  .pub-cta { color: var(--color-signal); transition: color 0.2s; }
   .pub-link:hover .pub-cover {
     transform: scale(1.015);
     filter: grayscale(0) brightness(1) contrast(1);
