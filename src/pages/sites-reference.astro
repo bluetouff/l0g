@@ -43,22 +43,10 @@ const categories = [
         "url": "https://creditbubblebulletin.blogspot.com/"
       },
       {
-        "nom": "MacroAlf",
-        "auteur": null,
-        "desc": "Analyses sur les cycles de liquidité, les banques centrales, les taux et le crédit.",
-        "url": "https://www.macroalf.com/"
-      },
-      {
         "nom": "The Financial Investigator",
         "auteur": "Marc Rubinstein",
         "desc": "Enquêtes et analyses approfondies sur les dysfonctionnements des marchés financiers et les risques cachés.",
         "url": "https://www.netinterest.co/"
-      },
-      {
-        "nom": "Robin Brooks",
-        "auteur": null,
-        "desc": "Analyse des déséquilibres mondiaux, du dollar, des sanctions et de leurs impacts macroéconomiques.",
-        "url": "https://robinbrooks.substack.com/"
       }
     ]
   },
@@ -83,12 +71,6 @@ const categories = [
         "auteur": null,
         "desc": "Suivi mondial des banques systémiques, du shadow banking et des risques émergents.",
         "url": "https://www.fsb.org/"
-      },
-      {
-        "nom": "Zoltan Pozsar Archive",
-        "auteur": null,
-        "desc": "Travaux de référence sur les marchés repo, le collateral, les eurodollars et les infrastructures monétaires.",
-        "url": "https://www.zoltanpozsar.com/"
       },
       {
         "nom": "New York Fed · Liberty Street Economics",
@@ -130,7 +112,7 @@ const categories = [
         "nom": "Research Affiliates",
         "auteur": null,
         "desc": "Études quantitatives sur les ETF, les valorisations, les facteurs et les comportements de marché.",
-        "url": "https://www.researchaffiliates.com/insights"
+        "url": "https://www.researchaffiliates.com/home"
       }
     ]
   },
@@ -214,7 +196,7 @@ const categories = [
         "nom": "Kpler Insights",
         "auteur": null,
         "desc": "Analyses des flux pétroliers, du LNG, du transport maritime et des sanctions.",
-        "url": "https://www.kpler.com/insights"
+        "url": "https://www.kpler.com/"
       },
       {
         "nom": "Bison Interests",
@@ -250,7 +232,7 @@ const categories = [
         "nom": "Castle Island Ventures Research",
         "auteur": null,
         "desc": "Travaux très sérieux sur les stablecoins, les paiements numériques et l'évolution monétaire.",
-        "url": "https://www.castleisland.vc/research"
+        "url": "https://castleisland.vc/"
       },
       {
         "nom": "Visa Crypto & Digital Currency Research",
@@ -318,6 +300,15 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
       meilleures analyses indépendantes, classées par domaine. {total} références, sélection ouverte.
     </p>
 
+    <div class="ref-tools">
+      <div class="ref-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
+        <input id="ref-q" type="search" placeholder="Filtrer les sources…  ( / )" autocomplete="off" spellcheck="false" aria-label="Filtrer les sources" />
+        <button id="ref-clear" type="button" aria-label="Effacer le filtre">×</button>
+      </div>
+      <span id="ref-count" class="ref-count"></span>
+    </div>
+
     <nav class="cat-nav" aria-label="Catégories">
       {categories.map((c) => (
         <a class="cat-chip" href={`#${slug(c.titre)}`} style={`--cat: ${c.accent}`}>{c.titre}</a>
@@ -330,7 +321,7 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
       <h2 class="cat-h mono-label">// {c.titre}</h2>
       <div class="ref-grid">
         {c.sources.map((s) => (
-          <a class="ref-card" href={s.url} target="_blank" rel="noopener noreferrer">
+          <a class="ref-card" href={s.url} target="_blank" rel="noopener noreferrer" data-ref={(s.nom + ' ' + (s.auteur || '') + ' ' + s.desc + ' ' + hostOf(s.url) + ' ' + c.titre).toLowerCase()}>
             <div class="ref-head">
               <span class="ref-name">{s.nom}{s.auteur ? <span class="ref-auth"> · {s.auteur}</span> : null}</span>
               <svg class="ref-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M19 13.5V18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4.5"/></svg>
@@ -398,5 +389,78 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
       font-family: var(--font-mono); font-size: 0.69rem; letter-spacing: 0.04em;
       color: color-mix(in srgb, var(--cat) 70%, var(--color-muted));
     }
+    .ref-tools {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1.2rem;
+      margin-top: 1.8rem;
+    }
+    .ref-search {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      flex: 1; min-width: 240px; max-width: 30rem;
+      border: 1px solid var(--color-line); border-radius: 10px;
+      background: var(--color-surface); padding: 0.55rem 0.8rem;
+      transition: border-color 0.16s, box-shadow 0.16s;
+    }
+    .ref-search:focus-within {
+      border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-signal) 12%, transparent);
+    }
+    .ref-search svg { width: 15px; height: 15px; flex: none; color: var(--color-muted); }
+    .ref-search input {
+      flex: 1; min-width: 0; border: 0; background: transparent; outline: none;
+      color: var(--color-bright); font-family: var(--font-mono); font-size: 0.85rem;
+    }
+    .ref-search input::placeholder { color: var(--color-muted); }
+    .ref-search input::-webkit-search-cancel-button { display: none; }
+    #ref-clear {
+      border: 0; background: transparent; color: var(--color-muted); cursor: pointer;
+      font-size: 1.15rem; line-height: 1; padding: 0 0.15rem; visibility: hidden;
+    }
+    #ref-clear:hover { color: var(--color-bright); }
+    .ref-count {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--color-muted); white-space: nowrap;
+    }
   </style>
+  <script>
+    const q = document.getElementById('ref-q');
+    if (q) {
+      const cards = Array.from(document.querySelectorAll('.ref-card'));
+      const sections = Array.from(document.querySelectorAll('.ref-section'));
+      const chips = Array.from(document.querySelectorAll('.cat-chip'));
+      const count = document.getElementById('ref-count');
+      const clear = document.getElementById('ref-clear');
+      const total = cards.length;
+      const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+      function apply() {
+        const term = norm(q.value.trim());
+        let shown = 0;
+        cards.forEach((c) => {
+          const hit = !term || norm(c.dataset.ref || '').includes(term);
+          c.style.display = hit ? '' : 'none';
+          if (hit) shown++;
+        });
+        sections.forEach((sec) => {
+          let n = 0;
+          sec.querySelectorAll('.ref-card').forEach((c) => { if (c.style.display !== 'none') n++; });
+          sec.style.display = n ? '' : 'none';
+        });
+        chips.forEach((chip) => {
+          const id = decodeURIComponent((chip.getAttribute('href') || '').slice(1));
+          const sec = document.getElementById(id);
+          chip.style.display = sec && sec.style.display !== 'none' ? '' : 'none';
+        });
+        count.textContent = term ? shown + ' / ' + total : total + ' références';
+        clear.style.visibility = term ? 'visible' : 'hidden';
+      }
+
+      q.addEventListener('input', apply);
+      clear.addEventListener('click', () => { q.value = ''; apply(); q.focus(); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+        else if (e.key === 'Escape' && document.activeElement === q) { q.value = ''; apply(); q.blur(); }
+      });
+      apply();
+    }
+  </script>
 </BaseLayout>
