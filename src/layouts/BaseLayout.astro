@@ -90,23 +90,27 @@ function isActive(tab: Tab): boolean {
     <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
       <!-- Header -->
       <header>
-        <!-- Marque + marchés (aligné à droite) -->
-        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <a href="/" class="text-2xl font-bold tracking-tight">
-              <span class="text-paper">l</span><span class="text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
-            </a>
-            <span class="mono-label hidden sm:inline">risk intelligence</span>
-          </div>
-          <nav class="mono-label flex flex-wrap items-center gap-x-4 gap-y-2" aria-label="Marchés">
-            <span style="color: var(--color-accent)">// marchés :</span>
-            {
-              marketTabs.map((t) => (
-                <a href={t.href} class="link-term" aria-current={isActive(t) ? 'page' : undefined}>
-                  {t.label}
-                </a>
-              ))
-            }
+        <!-- Marque + ticker marchés -->
+        <div class="header-top">
+          <a href="/" class="brand" aria-label="l0g, accueil">
+            <span class="brand-mark">
+              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-tag mono-label">risk intelligence</span>
+          </a>
+
+          <nav class="markets" aria-label="Marchés">
+            <span class="markets-label">// marchés</span>
+            <span class="markets-list">
+              {
+                marketTabs.map((t) => (
+                  <a href={t.href} class="market-link" aria-current={isActive(t) ? 'page' : undefined}>
+                    {t.label}
+                  </a>
+                ))
+              }
+            </span>
           </nav>
         </div>
 
@@ -225,6 +229,45 @@ function isActive(tab: Tab): boolean {
       .footer-ethos { color: var(--color-muted); }
       .footer-legal { margin-left: auto; }
       @media (max-width: 520px) { .footer-legal { margin-left: 0; } }
+
+      /* En-tête : lockup de marque + ticker marchés */
+      .header-top {
+        display: flex; flex-wrap: wrap; align-items: center;
+        justify-content: space-between; gap: 0.5rem 1.75rem;
+      }
+      .brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+      .brand-mark { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+      .brand-0 { text-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 45%, transparent); }
+      .brand-sep { width: 1px; height: 1rem; background: var(--color-line); }
+      .brand-tag { color: var(--color-muted); }
+      @media (max-width: 380px) { .brand-sep, .brand-tag { display: none; } }
+
+      .markets { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; }
+      .markets-label {
+        font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.13em;
+        text-transform: uppercase; color: var(--color-accent);
+      }
+      .markets-list { display: inline-flex; flex-wrap: wrap; align-items: baseline; }
+      .market-link {
+        font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em;
+        text-transform: uppercase; color: var(--color-muted);
+        text-decoration: none; transition: color 0.15s;
+      }
+      .market-link:hover { color: var(--color-signal); }
+      .market-link[aria-current="page"] { color: var(--color-bright); }
+      .market-link:not(:first-child)::before {
+        content: "·"; margin: 0 0.5rem; color: var(--color-muted); opacity: 0.55;
+      }
+
+      /* Filet bas du header en dégradé, en écho au footer */
+      .main-nav { border-bottom: 0; position: relative; }
+      .main-nav::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+        background: linear-gradient(90deg,
+          color-mix(in srgb, var(--color-signal) 50%, transparent),
+          color-mix(in srgb, var(--color-accent) 28%, transparent) 45%,
+          transparent 85%);
+      }
     </style>
   </body>
 </html>
