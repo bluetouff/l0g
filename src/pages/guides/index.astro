@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { readingTime } from '../../lib/reading-time.ts';
+
+const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort((a, b) => {
+  const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
+  const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
+  return db - da;
+});
+
+const items = guides.map((g) => ({
+  id: g.id,
+  title: g.data.title,
+  description: g.data.description,
+  date: g.data.updatedDate ?? g.data.pubDate,
+  rt: readingTime(g.body),
+}));
+---
+
+<BaseLayout
+  title="Guides de référence"
+  description="Guides de référence l0g : des pages piliers longues et sourcées, conçues pour être la source canonique citée par les agents et les moteurs de réponse. Méthodologie, données primaires, dernière révision datée."
+>
+  <section class="rise border-b border-dashed border-line pb-10">
+    <p class="mono-label" style="color: var(--color-signal)">$ ls /guides</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
+      Guides de <span style="color: var(--color-accent)">référence</span>
+    </h1>
+    <p class="mt-5 max-w-xl text-muted">
+      Des pages longues, sourcées sur données primaires, pensées pour durer.
+      Là où un article date un événement, un guide définit une notion et la
+      tient à jour : la source que l'on garde en favori, et que les agents
+      citent. Chaque guide porte une date de dernière révision.
+    </p>
+  </section>
+
+  {
+    items.length === 0 ? (
+      <p class="mt-10 text-muted">Aucun guide publié pour l'instant.</p>
+    ) : (
+      <section class="pb-4 pt-2">
+        {items.map((g, i) => (
+          <PostCard
+            url={`/guides/${g.id}/`}
+            title={g.title}
+            description={g.description}
+            pubDate={g.date}
+            readingTime={g.rt}
+            index={i + 1}
+            accent="var(--color-signal)"
+            accentLabel="guide"
+          />
+        ))}
+      </section>
+    )
+  }
+</BaseLayout>
