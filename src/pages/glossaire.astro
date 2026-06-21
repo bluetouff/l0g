@@ -15,6 +15,7 @@ const sections: Section[] = [
       { sigle: 'BCE', nom: 'Banque centrale européenne', def: "Institution qui conduit la politique monétaire de la zone euro : fixation des taux directeurs, contrôle de l'inflation." },
       { sigle: 'FMI', nom: 'Fonds monétaire international', def: "Institution multilatérale qui surveille le système monétaire mondial et prête aux États en difficulté de balance des paiements." },
       { sigle: 'BIS', nom: 'Bank for International Settlements', def: "Banque des règlements internationaux, à Bâle. La « banque centrale des banques centrales », référence pour les statistiques bancaires et de dette mondiales." },
+      { sigle: 'ADB', nom: 'Asian Development Bank', def: "Banque asiatique de développement, à Manille. Référence pour les prévisions de croissance et d'inflation de la région Asie-Pacifique." },
       { sigle: 'OAT', nom: 'Obligation assimilable du Trésor', def: "Titre de dette émis par l'État français à moyen et long terme. Son taux sert de référence au coût d'emprunt de la France." },
       { sigle: 'INSEE', nom: "Institut national de la statistique et des études économiques", def: "Producteur officiel des statistiques économiques et démographiques françaises (inflation, croissance, emploi)." },
       { sigle: 'EIA', nom: 'Energy Information Administration', def: "Agence statistique du département américain de l'Énergie. Référence pour les données pétrole, gaz et énergie." },
@@ -81,11 +82,15 @@ const sections: Section[] = [
     accent: 'var(--color-amber)',
     entries: [
       { sigle: 'WTI', nom: 'West Texas Intermediate', def: "Pétrole brut de référence américain, coté à New York. Avec le Brent, l'un des deux prix de référence mondiaux." },
+      { sigle: 'Brent', nom: 'Brent Crude', def: "Pétrole brut de référence mondial, issu de la mer du Nord et coté à Londres. Avec le WTI, l'un des deux prix de référence du marché pétrolier." },
       { sigle: 'GNL', nom: 'Gaz naturel liquéfié', def: "Gaz refroidi à l'état liquide pour le transport par méthanier. Permet d'exporter le gaz hors gazoducs." },
+      { sigle: 'GPL', nom: 'Gaz de pétrole liquéfié', def: "Mélange de propane et de butane liquéfié sous pression, utilisé pour le chauffage, la cuisson et certains transports. Distinct du GNL." },
       { sigle: 'OPEP', nom: 'Organisation des pays exportateurs de pétrole', def: "Cartel de producteurs (Arabie saoudite, etc.) qui coordonne les quotas de production pour influencer le prix du baril." },
       { sigle: 'IRGC', nom: 'Islamic Revolutionary Guard Corps', def: "Gardiens de la révolution islamique : force armée d'élite iranienne, acteur clé des tensions dans le détroit d'Ormuz." },
+      { sigle: 'MOU', nom: 'Memorandum of Understanding', def: "Mémorandum d'entente : accord écrit fixant des engagements entre parties, sans toujours la force contraignante d'un traité. Exemple : le MOU USA-Iran du 17 juin 2026." },
       { sigle: 'FAO', nom: "Food and Agriculture Organization", def: "Organisation des Nations unies pour l'alimentation et l'agriculture. Référence sur les prix alimentaires mondiaux et la sécurité alimentaire." },
       { sigle: 'WFP', nom: 'World Food Programme', def: "Programme alimentaire mondial de l'ONU, en charge de l'aide alimentaire d'urgence." },
+      { sigle: 'PNUD', nom: 'Programme des Nations unies pour le développement', def: "Agence de l'ONU pilotant l'aide au développement ; publie des estimations sur la pauvreté et l'impact économique des crises." },
     ],
   },
   {
@@ -120,7 +125,7 @@ const slugify = (s: string) =>
 
 <BaseLayout
   title="Glossaire"
-  description="Le jargon de la macro, du crédit et de la crypto décodé en français clair : CPI, SEC, NAV, BDC, OFAC, stablecoins. Plus de 60 sigles, un clic par terme."
+  description="Tous les sigles et acronymes du journal expliqués en français clair : CPI, SEC, BDC, NAV, USDT, OAT, CFTC, OFAC, stablecoins, crédit privé, macro et régulation."
 >
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// glossaire</p>
