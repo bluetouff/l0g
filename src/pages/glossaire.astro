@@ -32,8 +32,11 @@ const sections: Section[] = [
     titre: 'Crédit privé & marchés',
     accent: '#ff4d87',
     entries: [
+      { sigle: 'Crédit privé', nom: 'Private credit', def: "Prêts accordés directement par des gérants non bancaires à des entreprises, sans cotation ni marché secondaire actif. Marché illiquide, peu réglementé et valorisé au modèle, de l'ordre de 1 300 milliards de dollars aux États-Unis.", guide: '/guides/analyser-credit-prive/' },
       { sigle: 'BDC', nom: 'Business Development Company', def: "Véhicule coté américain qui prête aux entreprises de taille moyenne. Pilier du crédit privé, souvent à effet de levier." },
+      { sigle: 'Interval fund', nom: 'Fonds à intervalle', def: "Fonds semi-liquide qui n'autorise les rachats que par fenêtres périodiques et plafonnées. Tout en détenant des actifs illiquides, d'où un risque de gating en cas d'afflux de sorties." },
       { sigle: 'NAV', nom: 'Net Asset Value', def: "Valeur nette d'inventaire : valeur des actifs d'un fonds moins ses dettes. Pour les fonds privés, elle est estimée et non cotée, d'où des questions d'opacité." },
+      { sigle: 'NAV loan', nom: 'Prêt sur valeur liquidative', def: "Emprunt contracté par un fonds contre la valeur liquidative de l'ensemble de son portefeuille, souvent pour financer distributions ou rachats. Levier ajouté au niveau du fonds, peu visible." },
       { sigle: 'AUM', nom: 'Assets Under Management', def: "Encours sous gestion : montant total des actifs gérés par un fonds ou une société de gestion." },
       { sigle: 'PIK', nom: 'Payment In Kind', def: "Paiement en nature : intérêts d'une dette versés non en cash mais en dette supplémentaire. Signal de tension sur la trésorerie de l'emprunteur." },
       { sigle: 'LP', nom: 'Limited Partner', def: "Investisseur commanditaire d'un fonds (assureur, fonds de pension, family office) qui apporte le capital sans gérer." },
