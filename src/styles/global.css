@@ -253,15 +253,15 @@ a { color: inherit; text-decoration: none; }
 .pagefind-ui__search-input {
   background-color: var(--color-surface) !important;
   color: var(--color-paper) !important;
-  border: 1px solid var(--color-signal) !important;
+  border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line)) !important;
   box-shadow: none !important;
 }
 .pagefind-ui__search-input::placeholder { color: var(--color-muted) !important; }
 .pagefind-ui__search-input:focus,
 .pagefind-ui__search-input:focus-visible {
   outline: none !important;
-  border-color: var(--color-signal) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-signal) 22%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-signal) 55%, transparent) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-signal) 12%, transparent) !important;
 }
 .pagefind-ui__search-clear {
   color: var(--color-muted) !important;
@@ -357,3 +357,13 @@ a { color: inherit; text-decoration: none; }
 /* Recherche : aucune vignette d'image sur les résultats */
 .pf-search .pagefind-ui__result-thumb,
 .pf-search .pagefind-ui__result-image { display: none !important; }
+
+/* Infographies d'article : plus d'air sous le graphe */
+.prose .infographic { margin-top: 2rem; margin-bottom: 3.25rem; }
+.prose .infographic svg { display: block; }
+.prose .infographic figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
