@@ -36,7 +36,6 @@ const accentVar: Record<string, string> = {
           style={`--a:${accentVar[d.accent]}`}
         >
           <div class="fiche-preview">
-            <span class="mono-label">// aperçu</span>
             {d.preview ? (
               <img src={d.preview} alt={`Aperçu — ${d.label}`} loading="lazy" decoding="async" />
             ) : (
@@ -116,10 +115,6 @@ const accentVar: Record<string, string> = {
       background: radial-gradient(120% 150% at 50% 0%, color-mix(in srgb, var(--a) 13%, transparent), transparent 68%);
     }
     .fiche-preview img { width: 100%; height: 100%; object-fit: cover; }
-    .fiche-preview .mono-label {
-      position: absolute; top: 0.6rem; left: 0.8rem;
-      color: color-mix(in srgb, var(--a) 70%, var(--color-muted));
-    }
     .fiche-glyph {
       font-size: 3.2rem; line-height: 1; opacity: 0.55;
       filter: drop-shadow(0 0 20px color-mix(in srgb, var(--a) 45%, transparent));
