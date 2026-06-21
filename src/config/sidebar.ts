@@ -80,6 +80,20 @@ export const dashboards: Dashboard[] = [
     repo: 'https://github.com/bluetouff/energie-stress-monitor',
     preview: '/preview/ener.png',
   },
+  {
+    label: 'Orbit',
+    sub: 'Heatmap crypto temps réel',
+    href: 'https://orbit.l0g.fr',
+    glyph: '◎',
+    accent: 'amber',
+    slug: 'orbit',
+    question: 'Quelles cryptos bougent, accumulent ou décrochent — et où sont les anomalies ?',
+    sources: ['CoinGecko — prix & marché', 'FRED — macro (10Y, USD)'],
+    cadence: 'Instantané statique · refresh 2 min',
+    stack: 'Python · builder stdlib · architecture snapshot',
+    repo: 'https://github.com/bluetouff/orbit',
+    preview: '/preview/orbit.png',
+  },
 ];
 
 export const sidebarAbout =
