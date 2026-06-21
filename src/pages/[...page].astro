@@ -6,7 +6,6 @@ import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
 import { readingTime } from '../lib/reading-time.ts';
 import { accentForTags, topicLabelForTags } from '../config/topics.ts';
-import OrbitCard from '../components/OrbitCard.astro';
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
@@ -46,10 +45,6 @@ const feed = isFirst ? items.slice(1) : items;
 
   {isFirst && <div aria-hidden="true" style="height:4px; background:linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-signal) 55%, transparent) 28%, color-mix(in srgb, var(--color-accent) 50%, transparent) 50%, color-mix(in srgb, var(--color-amber) 55%, transparent) 72%, transparent 100%); opacity:0.7;"></div>}
   {isFirst && <RiskBand />}
-
-  {isFirst && (
-    <div class="my-8"><OrbitCard /></div>
-  )}
 
   {hero && (
     <PostHero
