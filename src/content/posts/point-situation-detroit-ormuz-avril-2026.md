@@ -1,25 +1,62 @@
 ---
-title: "Point de situation sur le détroit d'Ormuz, avril 2026 : l'« art of the deal » de Trump qui a failli transformer le Golfe en barbecue nucléaire"
-description: "Cessez-le-feu « de deux semaines » mais avec péages iraniens à la carte, négociations à Islamabad, et un choc pétrolier qui propulse l'inflation US. État des lieux d'un détroit non rouvert mais « géré »."
-pubDate: 2026-04-10
+title: "Détroit d'Ormuz, avril 2026 : état des lieux d'un chokepoint bloqué"
+description: "Depuis le 28 février 2026, le détroit d'Ormuz est de facto fermé. Ce que disent les sources officielles (EIA, IEA, CRS) sur le blocus, le choc pétrolier et les amortisseurs, au 10 avril, avec une mise à jour sur la sortie de crise."
+pubDate: 2026-04-10T11:00:00+02:00
 tags: ["géopolitique", "énergie", "macro"]
 draft: false
 ---
 
-En temps normal, le détroit d'Ormuz, c'est l'autoroute du brut : 84 % des flux partent vers l'Asie, et tout le monde fait comme si c'était une voie internationale paisible. Sauf qu'en 2026, on est en pleine guerre US-Israël-Iran lancée en février, et l'Iran a décidé de transformer ce chokepoint en péage privé avec mines et gardes révolutionnaires. Résultat ? Une disruption pétrolière sans équivalent, dixit l'IEA.
+*Depuis le 28 février 2026, le détroit d'Ormuz est de facto fermé. Cet article fait le point, au 10 avril, sur ce que les sources officielles documentent : l'état du trafic, l'ampleur du choc pétrolier et les amortisseurs mobilisés. Il se clôt par une mise à jour sur la sortie de crise, intervenue depuis.*
 
-**Statut actuel (10 avril 2026) : cessez-le-feu « de deux semaines »… mais avec des conditions iraniennes à la carte.**
+## La situation au 10 avril
 
-Le 7-8 avril, après des semaines de blocus sélectif (seulement 11 navires AIS le 31 mars, dont beaucoup en mode furtif), Trump annonce un cessez-le-feu « double-sided » avec l'Iran. L'Iran accepte de « rouvrir » le détroit… à condition de gérer le trafic, d'exiger des permissions de la marine des Gardiens de la Révolution et, cerise sur le gâteau, de facturer des péages « supérieurs à 1 million de dollars par navire » selon certains rapports. Résultat ? Le 9 avril, seulement 5 vraquiers passent (aucun tanker pétrole/gaz), l'Iran annonce des « routes alternatives » à cause de « mines », et les armateurs (Maersk, Hapag-Lloyd) restent en mode « on attend de voir ». Le cessez-le-feu est déjà sous pression : frappes israéliennes au Liban, menaces iraniennes, et le Golfe qui ressemble à un embouteillage flottant avec 6 porte-conteneurs bloqués. Trump tweete qu'il va « aider au trafic »… pendant que l'Iran maintient son contrôle. Poétique.
+Le 28 février 2026, les États-Unis et Israël ont lancé une campagne aérienne contre l'Iran, au cours de laquelle le guide suprême Ali Khamenei a été tué. En représailles, l'Iran a visé des navires, posé des mines et interdit le passage du détroit par la voix du Corps des gardiens de la révolution. En temps normal, environ 20 % du pétrole mondial et une part comparable du gaz naturel liquéfié transitent par Ormuz, l'essentiel à destination de l'Asie (EIA, IEA).
 
-**Les négociations en cours : Islamabad, le nouveau Davos du Golfe.**
+L'effet a été immédiat. Le trafic a d'abord chuté d'environ 70 %, et plus de 150 navires se sont mis à l'ancre de part et d'autre du détroit ; avant la guerre, environ 138 navires y transitaient chaque jour. L'Iran a ouvert sa propre route au nord de l'île de Larak et a soumis le passage à autorisation, facturant des péages allant jusqu'à 2 millions de dollars par navire, réglés en yuans selon Lloyd's List. Au 10 avril, un cessez-le-feu a été annoncé mais reste conditionnel, et des pourparlers américano-iraniens sont attendus à Islamabad.
 
-Les pourparlers sérieux commencent ce vendredi (11 avril) au Pakistan, avec JD Vance en tête de la délégation US, Kushner et compagnie en renfort. L'Iran propose son « plan en 10 points » : passage contrôlé par Téhéran, fin de la guerre contre l'« axe de la résistance », levée des sanctions et reconstruction. Trump, lui, exige « circulation libre, sans limitations ni retards ». Traduction : l'Iran veut garder la main sur Ormuz comme levier stratégique post-guerre, et Washington crie au scandale. Le cessez-le-feu de 14 jours est censé « tester la bonne foi »… mais l'Iran a déjà dit que le détroit n'est « pas un outil pour mettre fin à la guerre » mais un atout permanent. Bref, on est à deux doigts de la reprise des hostilités si un tanker se fait bloquer de travers.
+## Le choc pétrolier, chiffré
 
-**L'impact macro-éco : l'inflation US vous dit merci (et les prix à la pompe aussi).**
+Le prix du Brent illustre l'ampleur de la rupture. Après une moyenne d'environ 71 dollars le baril en février, il est monté à 103 dollars en moyenne en mars, soit 32 dollars de plus, et le cours quotidien a atteint près de 128 dollars le 2 avril (EIA). Dans son Short-Term Energy Outlook du 7 avril, l'EIA a relevé sa prévision de Brent 2026 à 96 dollars le baril, contre 78,84 dollars un mois plus tôt, et celle du WTI à 87,41 dollars contre 73,61, anticipant un pic à 115 dollars au deuxième trimestre. Les arrêts de production dans le Golfe, estimés à 7,5 millions de barils par jour en mars, devaient culminer autour de 9,1 millions en avril selon la même source. L'Agence internationale de l'énergie a qualifié l'évènement de plus grande perturbation d'offre de l'histoire du marché pétrolier, avec des pays du Golfe réduisant leur production d'au moins 10 millions de barils par jour.
 
-Depuis le blocus (mi-mars), le Brent a flambé jusqu'à +15 % en quelques jours, dépassant les 100-120 $ par baril selon les pics, avant de plonger un peu avec l'annonce du cessez-le-feu (mais toujours au-dessus de 90 $). L'EIA a révisé sa prévision 2026 à 96 $/baril (contre 79 $ avant). Shortfall net : environ 11 Mb/j après offsets (stocks IEA, diversions saoudiennes). Conséquence directe ? L'énergie a explosé aux US (+12,5 % sur un an, essence +18,9 % en mars), propulsant le CPI à 3,3 % annuel – le plus haut depuis mai 2024. C'est tout le sujet de [l'inflation US qui fait son grand come-back](/posts/inflation-us-grand-come-back/). L'Asie prend 80 % du choc, mais l'Europe et les émergents morflent via le GNL et les chaînes d'approvisionnement. UNCTAD et Oxford Economics parlent d'inflation structurelle persistante : +0,6-0,7 point de PIB mondial si ça dure, avec un risque de récession si le détroit reste à moitié fermé. Les réserves stratégiques (1,2 milliard de barils publics + 600 M privés) couvrent au mieux 70-120 jours de shortfall net. Après ? C'est la fête aux prix.
+<figure class="infographic">
+<svg viewBox="0 0 720 240" role="img" aria-label="Trajectoire du prix du Brent, février à avril 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect x="0" y="0" width="720" height="240" fill="#0c0d10"/>
+  <text x="20" y="28" fill="#8b909b" font-size="12">Brent, prix moyen mensuel et pic quotidien (dollars / baril)</text>
+  <line x1="60" y1="190" x2="680" y2="190" stroke="rgba(255,255,255,0.15)"/>
+  <line x1="60" y1="50" x2="60" y2="190" stroke="rgba(255,255,255,0.15)"/>
+  <!-- barres : fev 71, mars 103, avril pic 128 ; echelle 0..140 -> y 190..50 (140px pour 140) -->
+  <rect x="110" y="119" width="70" height="71" fill="#5eead4" opacity="0.30"/>
+  <text x="145" y="112" text-anchor="middle" fill="#f5f6f8" font-size="12">71</text>
+  <text x="145" y="208" text-anchor="middle" fill="#8b909b" font-size="11">févr.</text>
+  <rect x="250" y="87" width="70" height="103" fill="#f5b13d" opacity="0.35"/>
+  <text x="285" y="80" text-anchor="middle" fill="#f5f6f8" font-size="12">103</text>
+  <text x="285" y="208" text-anchor="middle" fill="#8b909b" font-size="11">mars</text>
+  <rect x="390" y="62" width="70" height="128" fill="#ff4d87" opacity="0.40"/>
+  <text x="425" y="55" text-anchor="middle" fill="#f5f6f8" font-size="12">128</text>
+  <text x="425" y="208" text-anchor="middle" fill="#8b909b" font-size="11">pic 2 avr.</text>
+  <!-- prevision EIA 2026 -->
+  <line x1="520" y1="94" x2="660" y2="94" stroke="#5eead4" stroke-dasharray="5 4"/>
+  <text x="590" y="86" text-anchor="middle" fill="#5eead4" font-size="12">prév. 2026 : 96</text>
+  <text x="590" y="208" text-anchor="middle" fill="#8b909b" font-size="11">EIA, STEO 7 avr.</text>
+  <text x="20" y="230" fill="#8b909b" font-size="10">Source : EIA, Short-Term Energy Outlook (7 avril 2026). Pic quotidien de ~138 $ atteint le 7 avril.</text>
+</svg>
+<figcaption>Le Brent passe d'environ 71 $ en février à un pic quotidien proche de 128 $ début avril. L'EIA relève sa moyenne 2026 de 79 à 96 $.</figcaption>
+</figure>
 
-Et maintenant, le moment préféré : le Trump Show. Le génie autoproclamé de l'« art du deal » qui, il y a quelques jours, tweetait : « Tuesday will be Power Plant Day, and Bridge Day […] Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell » et promettait que « toute une civilisation va mourir ce soir ». Résultat ? Un cessez-le-feu de pacotille où l'Iran continue à jouer au douanier et à facturer le passage comme un Uber en période de grève. Bravo, Donnie. Toi qui avais promis de « régler l'Iran en un claquement de doigts » avec ta « maximum pressure » version 2.0, tu finis par supplier Islamabad de négocier pendant que les tankers font la queue et que ton propre CPI te pète à la gueule. Les marchés ont applaudi le « deal »… en plongeant le dollar et en faisant grimper l'or. Classique.
+## Les amortisseurs
 
-En résumé, Ormuz n'est pas rouvert, il est « géré ». Le cessez-le-feu est un bout de papier qui tient avec du scotch iranien. Les négociations risquent de durer des mois, et l'inflation 2026 est déjà cuite. Trump a transformé une crise régionale en masterclass de chaos géopolitique… et nous, on paye l'essence. Pour le tableau d'ensemble du conflit, voir [l'anatomie du séisme économique de la guerre d'Iran](/posts/la-guerre-diran-2026-seisme-economique-politique/) ; pour la suite, [les trois scénarios de normalisation](/posts/accord-paix-ormuz-rouvre-scenarios/) après l'accord de juin.
+Face à la rupture, les stocks stratégiques ont été mobilisés. Le 11 mars, les pays membres de l'IEA ont décidé de libérer 400 millions de barils de leurs réserves d'urgence, une ampleur inédite. Les stocks d'urgence de l'OCDE comptent environ 1,25 milliard de barils détenus par les gouvernements et 600 millions supplémentaires d'obligation industrielle. Côté américain, une vente de la réserve stratégique a été annoncée le 11 mars, assortie d'une dérogation de 60 jours au Jones Act pour autoriser des navires étrangers à transporter des produits entre ports américains. L'EIA prévoyait alors un pic du prix de détail de l'essence autour de 4,30 dollars le gallon en avril, et du diesel au-dessus de 5,80 dollars. L'IEA prévenait toutefois que ces réserves restent un palliatif, dont l'effet dépend de la durée du blocage.
+
+## La transmission à l'inflation
+
+Ce choc énergétique se répercute directement sur les prix à la consommation américains, dont l'énergie est une composante volatile. C'est l'objet d'un point distinct sur [le retour de l'inflation américaine](/posts/inflation-us-grand-come-back/).
+
+## Mise à jour, depuis avril
+
+Le cessez-le-feu d'avril n'a pas tenu. Les pourparlers d'Islamabad ont échoué le 12 avril, et les États-Unis ont imposé le 13 avril un blocus naval des ports iraniens, maintenu jusqu'au 29 mai. Le Brent a culminé à 117 dollars en moyenne en avril, son plus haut niveau mensuel depuis juin 2022, avant de refluer à 107 dollars en mai (EIA). La guerre s'est achevée à la mi-juin : un mémorandum d'entente entre Washington et Téhéran a été signé le 17 juin, ouvrant la réouverture du détroit et une période de passage sans péage de soixante jours. Pour le détail de la sortie de crise, voir [les scénarios de normalisation](/posts/accord-paix-ormuz-rouvre-scenarios/) ; pour le tableau d'ensemble, [l'anatomie du séisme économique](/posts/la-guerre-diran-2026-seisme-economique-politique/).
+
+---
+
+*Cet article ne constitue en aucun cas un conseil en investissement.*
+
+**Sources principales :** EIA, Short-Term Energy Outlook (avril, mai et juin 2026) et communiqué du 7 avril 2026 ; IEA, Oil Market Report (mars 2026) ; Congressional Research Service, « Iran Conflict and the Strait of Hormuz » ; Lloyd's List ; Kpler ; CNBC.
