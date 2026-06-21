@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "og": "node scripts/og-generate.mjs",
     "post": "node scripts/new-post.mjs",
-    "prebuild": "node scripts/og-generate.mjs",
+    "prebuild": "node scripts/og-generate.mjs && POSTS_DIR=src/content/guides node scripts/og-generate.mjs",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "check": "astro check",

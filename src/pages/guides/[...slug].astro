@@ -1,0 +1,144 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { topicForTag } from '../../config/topics.ts';
+import { readingTime } from '../../lib/reading-time.ts';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', ({ data }) => !data.draft);
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const ogImage = guide.data.ogImage ?? `/og/${guide.id}.png`;
+const { Content } = await render(guide);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+const pubLabel = fmt(guide.data.pubDate);
+const updated = guide.data.updatedDate ?? guide.data.pubDate;
+const updatedLabel = fmt(updated);
+const isoPub = guide.data.pubDate.toISOString();
+const isoUpd = updated.toISOString();
+const rt = readingTime(guide.body);
+
+const url = new URL(`/guides/${guide.id}/`, Astro.site).toString();
+
+// JSON-LD honnête : décrit ce qu'est la page, sans note ni HowTo fabriqués.
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: guide.data.title,
+      description: guide.data.description,
+      datePublished: isoPub,
+      dateModified: isoUpd,
+      inLanguage: 'fr',
+      author: { '@type': 'Organization', name: 'l0g', url: 'https://l0g.fr' },
+      publisher: { '@type': 'Organization', name: 'l0g', url: 'https://l0g.fr' },
+      mainEntityOfPage: url,
+      ...(guide.data.summary
+        ? { about: { '@type': 'DefinedTerm', name: guide.data.title, description: guide.data.summary } }
+        : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: new URL('/', Astro.site).toString() },
+        { '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+        { '@type': 'ListItem', position: 3, name: guide.data.title, item: url },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={guide.data.title}
+  description={guide.data.description}
+  ogType="article"
+  ogImage={ogImage}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+
+  <div class="read-progress" aria-hidden="true"><span></span></div>
+
+  <article class="rise max-w-2xl" data-pagefind-body>
+    <header class="post-head mb-10">
+      <p class="mono-label glow post-kicker">// guide de référence</p>
+
+      <h1 class="post-title mt-3 font-display text-[clamp(1.9rem,4.5vw,3rem)] leading-tight tracking-wider glow">
+        {guide.data.title}
+      </h1>
+
+      <p class="post-lede mt-5">{guide.data.description}</p>
+
+      <div class="post-meta mono-label mt-6">
+        <time datetime={isoUpd} data-pagefind-meta="date">dernière révision le {updatedLabel}</time>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>{rt} min de lecture</span>
+        {guide.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
+        <span class="post-tags">
+          {guide.data.tags.map((tag) => {
+            const slug = topicForTag(tag);
+            return slug
+              ? <a href={`/sujet/${slug}/`} class="link-term text-signal">#{tag}</a>
+              : <span class="text-signal">#{tag}</span>;
+          })}
+        </span>
+      </div>
+
+      <div class="post-rule" aria-hidden="true"></div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <hr class="hairline mt-12" />
+    <a href="/glossaire/" class="mono-label link-term mt-6 inline-block">$ cd ../glossaire</a>
+  </article>
+
+  <script is:inline>
+    (function () {
+      var bar = document.querySelector('.read-progress > span');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var p = max > 0 ? h.scrollTop / max : 0;
+        bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        ticking = false;
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+  </script>
+
+  <style>
+    .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
+    .read-progress > span {
+      display: block; height: 100%; width: 100%;
+      transform: scaleX(0); transform-origin: 0 50%;
+      background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-signal) 45%, var(--color-accent)));
+      box-shadow: 0 0 8px color-mix(in srgb, var(--color-signal) 50%, transparent);
+    }
+    .post-kicker { color: var(--color-signal); }
+    .post-lede {
+      font-size: 1.18rem; line-height: 1.6; color: var(--color-paper);
+      border-left: 2px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
+      padding-left: 0.9rem;
+    }
+    .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; color: var(--color-muted); }
+    .post-meta .sep { opacity: 0.45; }
+    .post-tags { display: inline-flex; flex-wrap: wrap; gap: 0.7rem; }
+    .post-rule { margin-top: 1.5rem; height: 2px; width: 72px; border-radius: 2px; background: linear-gradient(90deg, var(--color-signal), transparent); }
+  </style>
+</BaseLayout>
