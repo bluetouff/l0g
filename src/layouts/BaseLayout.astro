@@ -26,6 +26,35 @@ const fullTitle = title === 'l0g.fr'
   : `${title} · l0g.fr`;
 const year = new Date().getFullYear();
 
+// --- Structured data : entite editrice du site (presente sur toutes les pages) ---
+// Honnete par construction : decrit l'editeur et le site, sans SearchAction
+// (la sitelinks search box de Google est depreciee depuis novembre 2024).
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#org`,
+      name: 'l0g',
+      alternateName: 'l0g.fr',
+      url: `${SITE}/`,
+      logo: `${SITE}/favicon.svg`,
+      description:
+        "Risk intelligence : mettre en donnees la finance opaque, le risque systemique et la geopolitique financiere.",
+      sameAs: ['https://github.com/bluetouff', 'https://x.com/bluetouff'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: 'l0g',
+      inLanguage: 'fr',
+      publisher: { '@id': `${SITE}/#org` },
+    },
+  ],
+};
+
 // --- Navigation (éditable ici) ---------------------------------------
 type Tab = { href: string; label: string; match?: string[] };
 
@@ -85,6 +114,7 @@ function isActive(tab: Tab): boolean {
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="l0g.fr" href="/rss.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
   </head>
 
   <body>

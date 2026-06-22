@@ -38,8 +38,8 @@ const ld = {
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'fr',
-      author: { '@type': 'Organization', name: 'l0g', url: 'https://l0g.fr' },
-      publisher: { '@type': 'Organization', name: 'l0g', url: 'https://l0g.fr' },
+      author: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
+      publisher: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
       mainEntityOfPage: url,
       ...(guide.data.summary
         ? { about: { '@type': 'DefinedTerm', name: guide.data.title, description: guide.data.summary } }
