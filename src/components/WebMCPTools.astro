@@ -13,13 +13,30 @@
  * chargé paresseusement à la première invocation (aucun coût au chargement de page,
  * dégradation propre en dev où /pagefind/ n'existe pas encore).
  *
- * Étape 1 (ici) : search_content. Les tools suivants (get_article, list_recent,
- * search_by_topic) s'ajoutent dans le même bloc, sur le même modèle.
+ * Tools :
+ *   - search_content        : recherche plein texte (Pagefind, index local).
+ *   - list_recent_analyses  : derniers articles, depuis le frontmatter (données fiables).
+ * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
  */
+import { getCollection } from 'astro:content';
+
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+
+// Liste des analyses publiées, même tri et même filtre que la home (pubDate desc, hors brouillons).
+// Sérialisée vers le script : données fiables, sans dépendre de l'index de recherche.
+const recent = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 20)
+  .map((p) => ({
+    title: p.data.title,
+    url: `${site}/posts/${p.id}/`,
+    date: p.data.pubDate.toISOString().slice(0, 10),
+    description: p.data.description,
+    tags: p.data.tags ?? [],
+  }));
 ---
 
-<script define:vars={{ site }}>
+<script define:vars={{ site, recent }}>
   (function () {
     if (typeof navigator === 'undefined') return;
     // WebMCP n'existe qu'en contexte sécurisé (HTTPS) et sur navigateur compatible.
@@ -113,6 +130,39 @@ const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
       });
     } catch (e) {
       // L'enregistrement d'un tool ne doit jamais casser la page.
+    }
+
+    // --- Tool : derniers articles ---
+    try {
+      mc.registerTool({
+        name: 'list_recent_analyses',
+        description:
+          "Liste les analyses (articles) les plus récentes de l0g.fr, de la plus récente à la plus ancienne, " +
+          "avec titre, URL absolue, date de publication (AAAA-MM-JJ), description et thèmes. " +
+          "Ne couvre pas les guides de référence ni le glossaire ; utiliser search_content pour ceux-ci.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            limit: {
+              type: 'integer',
+              description: "Nombre d'analyses à renvoyer (1 à 20).",
+              minimum: 1,
+              maximum: 20,
+              default: 5
+            }
+          }
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          let limit = parseInt((input && input.limit) || 5, 10);
+          if (!Number.isFinite(limit)) limit = 5;
+          limit = Math.max(1, Math.min(20, limit));
+          const analyses = (recent || []).slice(0, limit);
+          return reply({ count: analyses.length, analyses: analyses });
+        }
+      });
+    } catch (e) {
+      // idem : ne jamais casser la page.
     }
   })();
 </script>
