@@ -123,6 +123,37 @@ function isActive(tab: Tab): boolean {
             <span class="brand-sep" aria-hidden="true"></span>
             <span class="brand-tag mono-label">risk intelligence</span>
           </a>
+
+          <div class="header-signal" aria-hidden="true" role="presentation">
+            <svg viewBox="0 0 480 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="hs-stroke" x1="0" y1="0" x2="480" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#5eead4" stop-opacity="0"/>
+                  <stop offset="0.32" stop-color="#5eead4" stop-opacity="0.85"/>
+                  <stop offset="0.68" stop-color="#ff4d87" stop-opacity="0.9"/>
+                  <stop offset="1" stop-color="#f5b13d"/>
+                </linearGradient>
+                <radialGradient id="hs-glow" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="#f5b13d" stop-opacity="0.9"/>
+                  <stop offset="1" stop-color="#f5b13d" stop-opacity="0"/>
+                </radialGradient>
+                <pattern id="hs-dots" width="22" height="11" patternUnits="userSpaceOnUse">
+                  <circle cx="1.4" cy="1.4" r="1.1" fill="#8b909b"/>
+                </pattern>
+                <linearGradient id="hs-fade" x1="0" y1="0" x2="480" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+                  <stop offset="0.55" stop-color="#fff" stop-opacity="0.7"/>
+                  <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <mask id="hs-mask"><rect x="0" y="0" width="480" height="46" fill="url(#hs-fade)"/></mask>
+              </defs>
+              <rect x="0" y="9" width="480" height="30" fill="url(#hs-dots)" opacity="0.13" mask="url(#hs-mask)"/>
+              <path d="M2 27 C 56 27 84 15 132 17 S 214 33 274 25 S 360 13 412 21 S 462 25 474 21"
+                    stroke="url(#hs-stroke)" stroke-width="1.6" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+              <circle class="hs-glow" cx="474" cy="21" r="10" fill="url(#hs-glow)"/>
+              <circle cx="474" cy="21" r="2.4" fill="#f5b13d"/>
+            </svg>
+          </div>
         </div>
 
         <!-- Menu principal : onglets -->
@@ -305,6 +336,14 @@ function isActive(tab: Tab): boolean {
       .brand-sep { width: 1px; height: 1rem; background: var(--color-line); }
       .brand-tag { color: var(--color-muted); }
       @media (max-width: 380px) { .brand-sep, .brand-tag { display: none; } }
+
+      /* Motif décoratif du header : tracé de signal abstrait, à droite du lockup */
+      .header-signal { margin-left: auto; height: 46px; line-height: 0; flex-shrink: 1; min-width: 0; }
+      .header-signal svg { height: 100%; width: auto; max-width: 100%; display: block; }
+      .header-signal .hs-glow { animation: hs-pulse 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      @keyframes hs-pulse { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.06); } }
+      @media (prefers-reduced-motion: reduce) { .header-signal .hs-glow { animation: none; } }
+      @media (max-width: 680px) { .header-signal { display: none; } }
 
       /* Filet bas du header en dégradé, en écho au footer */
       .main-nav { border-bottom: 0; position: relative; }
