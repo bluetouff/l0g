@@ -30,7 +30,7 @@ const feed = isFirst ? items.slice(1) : items;
 
 <BaseLayout>
   {isFirst && (
-    <section class="rise border-b border-dashed border-line pb-12">
+    <section class="rise">
       <p class="mono-label" style="color: var(--color-signal)">$ cat /risque | cartographie</p>
       <h1 class="mt-5 font-display text-[clamp(2.2rem,5.5vw,3.5rem)] leading-tight tracking-wider glow">
         Cartographier le <span style="color: var(--color-accent)">risque</span> des systèmes économiques
@@ -41,6 +41,15 @@ const feed = isFirst ? items.slice(1) : items;
         signaux de marché et d'indicateurs de confluence.
       </p>
     </section>
+  )}
+
+  {isFirst && (
+    <div
+      class="rise mt-12"
+      aria-hidden="true"
+      style="height: 4px; width: 100%; opacity: 0.7; background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-signal) 55%, transparent) 28%, color-mix(in srgb, var(--color-accent) 50%, transparent) 50%, color-mix(in srgb, var(--color-amber) 55%, transparent) 72%, transparent 100%);"
+    >
+    </div>
   )}
 
   {isFirst && <RiskBand />}
