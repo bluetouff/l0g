@@ -1,0 +1,118 @@
+---
+/*
+ * WebMCPTools.astro
+ * Expose les capacités de l0g.fr comme « tools » WebMCP (navigator.modelContext),
+ * pour que des agents IA puissent les appeler directement plutôt que de scraper la page.
+ *
+ * Spec : W3C Web Machine Learning CG, WebMCP (Draft Community Group Report, 2026).
+ * API utilisée : navigator.modelContext.registerTool / unregisterTool.
+ * On n'utilise PAS window.agent ni provideContext() (dépréciés / retirés en 2026).
+ *
+ * Sans effet pour les visiteurs humains : tout est encapsulé dans un test de
+ * disponibilité (navigator.modelContext + SecureContext). Le bundle Pagefind est
+ * chargé paresseusement à la première invocation (aucun coût au chargement de page,
+ * dégradation propre en dev où /pagefind/ n'existe pas encore).
+ *
+ * Étape 1 (ici) : search_content. Les tools suivants (get_article, list_recent,
+ * search_by_topic) s'ajoutent dans le même bloc, sur le même modèle.
+ */
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+---
+
+<script define:vars={{ site }}>
+  (function () {
+    if (typeof navigator === 'undefined') return;
+    // WebMCP n'existe qu'en contexte sécurisé (HTTPS) et sur navigateur compatible.
+    if (!('modelContext' in navigator) || !window.isSecureContext) return;
+    const mc = navigator.modelContext;
+    if (!mc || typeof mc.registerTool !== 'function') return;
+
+    // --- Pagefind : import dynamique paresseux, mémoïsé ---
+    let pagefindPromise = null;
+    function loadPagefind() {
+      if (!pagefindPromise) {
+        pagefindPromise = import('/pagefind/pagefind.js').catch(function () { return null; });
+      }
+      return pagefindPromise;
+    }
+
+    // --- helpers ---
+    function stripTags(s) {
+      return String(s || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    }
+    // Réponse au format « content blocks » MCP, le plus interopérable pour la distillation.
+    function reply(payload) {
+      return { content: [{ type: 'text', text: JSON.stringify(payload) }] };
+    }
+
+    // --- Tool : recherche plein texte ---
+    try {
+      mc.registerTool({
+        name: 'search_content',
+        description:
+          "Recherche plein texte dans tout l0g.fr : analyses, guides de référence et glossaire. " +
+          "Renvoie les meilleurs résultats avec titre, URL absolue, extrait et sous-sections pertinentes. " +
+          "Index local Pagefind, sans service tiers. Exemples de requêtes : « crédit privé », « GENIUS Act », « OFAC », « liquidité du Trésor ».",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: {
+              type: 'string',
+              description: 'Termes de recherche en français ou en anglais.'
+            },
+            limit: {
+              type: 'integer',
+              description: 'Nombre maximum de résultats à renvoyer (1 à 10).',
+              minimum: 1,
+              maximum: 10,
+              default: 5
+            }
+          },
+          required: ['query']
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          // Entrées agent = non fiables : on borne tout.
+          const q = String((input && input.query) || '').trim().slice(0, 200);
+          let limit = parseInt((input && input.limit) || 5, 10);
+          if (!Number.isFinite(limit)) limit = 5;
+          limit = Math.max(1, Math.min(10, limit));
+          if (!q) return reply({ query: '', count: 0, results: [], note: 'requête vide' });
+
+          const pf = await loadPagefind();
+          if (!pf || typeof pf.search !== 'function') {
+            return reply({ query: q, count: 0, results: [], note: 'index de recherche indisponible' });
+          }
+
+          let search;
+          try {
+            search = await pf.search(q);
+          } catch (e) {
+            return reply({ query: q, count: 0, results: [], note: 'erreur de recherche' });
+          }
+
+          const slice = (search.results || []).slice(0, limit);
+          const data = await Promise.all(slice.map(function (r) { return r.data(); }));
+          const results = data.map(function (d) {
+            return {
+              title: (d.meta && d.meta.title) || stripTags(d.excerpt).slice(0, 80),
+              url: site + (d.url || ''),
+              excerpt: stripTags(d.excerpt),
+              sections: (d.sub_results || []).slice(0, 3).map(function (s) {
+                return {
+                  title: s.title,
+                  url: site + (s.url || ''),
+                  excerpt: stripTags(s.excerpt)
+                };
+              })
+            };
+          });
+
+          return reply({ query: q, count: results.length, results: results });
+        }
+      });
+    } catch (e) {
+      // L'enregistrement d'un tool ne doit jamais casser la page.
+    }
+  })();
+</script>
