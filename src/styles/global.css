@@ -353,6 +353,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 0.55rem; padding-left: 1.35rem;
   border-left: 2px solid color-mix(in srgb, var(--color-signal) 30%, transparent);
 }
+.pf-page .pagefind-ui__result-tags { margin-left: 0.35rem; }
 
 /* Recherche : aucune vignette d'image sur les résultats */
 .pf-search .pagefind-ui__result-thumb,
