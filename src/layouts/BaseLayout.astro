@@ -22,8 +22,8 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const fullTitle = title === 'l0g.fr'
-  ? 'l0g.fr — Cartographier le risque des systèmes économiques'
-  : `${title} — l0g.fr`;
+  ? 'l0g.fr · Cartographier le risque des systèmes économiques'
+  : `${title} · l0g.fr`;
 const year = new Date().getFullYear();
 
 // --- Navigation (éditable ici) ---------------------------------------
@@ -34,11 +34,10 @@ const mainTabs: Tab[] = [
   { href: '/sujets/', label: 'sujets', match: ['/sujets', '/sujet'] },
   { href: '/dashboards/', label: 'dashboards' },
   { href: '/confluence/', label: 'confluence' },
-  { href: 'https://orbit.l0g.fr', label: 'orbit' },
-  { href: '/methodologie/', label: 'méthodo' },
+  { href: '/methodologie/', label: 'méthodologie' },
   { href: '/glossaire/', label: 'glossaire' },
   { href: '/guides/', label: 'guides' },
-  { href: '/about/', label: 'à propos' },
+  { href: '/recherche/', label: 'recherche' },
 ];
 
 const marketTabs: Tab[] = [
@@ -89,26 +88,31 @@ function isActive(tab: Tab): boolean {
   </head>
 
   <body>
+    <div class="topbar" aria-hidden="true"></div>
     <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
       <!-- Header -->
       <header>
-        <!-- Marque + marchés (aligné à droite) -->
-        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <a href="/" class="text-2xl font-bold tracking-tight">
-              <span class="text-paper">l</span><span class="text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
-            </a>
-            <span class="mono-label hidden sm:inline">risk intelligence</span>
-          </div>
-          <nav class="mono-label flex flex-wrap items-center gap-x-4 gap-y-2" aria-label="Marchés">
-            <span style="color: var(--color-accent)">// marchés :</span>
-            {
-              marketTabs.map((t) => (
-                <a href={t.href} class="link-term" aria-current={isActive(t) ? 'page' : undefined}>
-                  {t.label}
-                </a>
-              ))
-            }
+        <!-- Marque + ticker marchés -->
+        <div class="header-top">
+          <a href="/" class="brand" aria-label="l0g, accueil">
+            <span class="brand-mark">
+              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-tag mono-label">risk intelligence</span>
+          </a>
+
+          <nav class="markets" aria-label="Marchés">
+            <span class="markets-label">// marchés</span>
+            <span class="markets-list">
+              {
+                marketTabs.map((t) => (
+                  <a href={t.href} class="market-link" aria-current={isActive(t) ? 'page' : undefined}>
+                    {t.label}
+                  </a>
+                ))
+              }
+            </span>
           </nav>
         </div>
 
@@ -148,28 +152,152 @@ function isActive(tab: Tab): boolean {
         </main>
       )}
 
-      <!-- Footer -->
-      <footer class="mt-10 border-t border-line pt-5 text-center">
-        <p class="mono-label flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-          <a href="/sujets/" class="link-term">sujets</a>
-          <a href="/dashboards/" class="link-term">dashboards</a>
-          <a href="/confluence/" class="link-term">confluence</a>
-          <a href="/methodologie/" class="link-term">méthodologie</a>
-          <a href="/glossaire/" class="link-term">glossaire</a>
-          <a href="/about/" class="link-term">à propos</a>
-          <a href="/recherche/" class="link-term">recherche</a>
-          <a href="/rss.xml" class="link-term">rss</a>
-          <a href="/api/" class="link-term">api</a>
-          <a href="https://github.com/bluetouff" rel="me noopener" class="link-term">github</a>
-          <a href="/rgpd/" class="link-term">mentions légales &amp; rgpd</a>
-        </p>
-        <p class="mono-label mt-2">l0g.fr &copy; {year} · statique · auto-hébergé · aucun cookie · aucun tracker maison</p>
-      </footer>
     </div>
+
+    <!-- Footer pleine largeur -->
+    <footer class="site-footer">
+      <div class="footer-grad" aria-hidden="true"></div>
+      <div class="footer-inner mx-auto max-w-6xl px-5">
+        <nav class="footer-grid" aria-label="Pied de page">
+          <div class="foot-col">
+            <h2 class="foot-h mono-label">// naviguer</h2>
+            <a href="/" class="foot-link">journal</a>
+            <a href="/sujets/" class="foot-link">sujets</a>
+            <a href="/dashboards/" class="foot-link">dashboards</a>
+            <a href="/confluence/" class="foot-link">confluence</a>
+          </div>
+          <div class="foot-col">
+            <h2 class="foot-h mono-label">// comprendre</h2>
+            <a href="/about/" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.7" fill="currentColor" stroke="none"/></svg>
+              à propos
+            </a>
+            <a href="/methodologie/" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5.2 9.1A1 1 0 0 0 5.7 20h12.6a1 1 0 0 0 .9-1.9L14 9V3"/></svg>
+              méthodologie
+            </a>
+            <a href="/glossaire/" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H17a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a2 2 0 0 0-2 2V5.5z"/><line x1="8" y1="8" x2="14" y2="8"/></svg>
+              glossaire
+            </a>
+            <a href="/sites-reference/" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1z"/></svg>
+              sites de référence
+            </a>
+          </div>
+          <div class="foot-col">
+            <h2 class="foot-h mono-label">// données &amp; outils</h2>
+            <a href="/recherche/" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
+              recherche
+            </a>
+            <a href="/api/" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4c-2 0-2.5 1-2.5 3v1.8c0 1.2-1 2.2-2.2 2.2 1.2 0 2.2 1 2.2 2.2V17c0 2 .5 3 2.5 3"/><path d="M16 4c2 0 2.5 1 2.5 3v1.8c0 1.2 1 2.2 2.2 2.2-1.2 0-2.2 1-2.2 2.2V17c0 2-.5 3-2.5 3"/></svg>
+              api
+            </a>
+            <a href="/rss.xml" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a8 8 0 0 1 8 8"/><path d="M5 5a14 14 0 0 1 14 14"/><circle cx="5.6" cy="18.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+              rss
+            </a>
+            <a href="https://github.com/bluetouff" rel="me noopener" class="foot-link">
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+              github
+            </a>
+          </div>
+          <!-- Future rubrique (ex. bibliographie) : ajouter un .foot-col ici,
+               puis passer .footer-grid a repeat(4, ...) au-dela de 860px. -->
+        </nav>
+
+        <div class="footer-bottom">
+          <a href="/" class="footer-wm" aria-label="l0g, accueil">l<span class="text-signal">0</span>g</a>
+          <p class="footer-ethos mono-label">l0g.fr &copy; {year} · statique · auto-hébergé · aucun cookie · aucun tracker maison</p>
+          <a href="/rgpd/" class="link-term mono-label footer-legal">mentions légales &amp; rgpd</a>
+        </div>
+      </div>
+    </footer>
 
     <!-- Recherche Pagefind : 3 ressources, toutes servies par le site (self) -->
     <link rel="stylesheet" href="/pagefind/pagefind-ui.css" is:inline />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
     <script src="/pagefind-init.js" is:inline></script>
+    <style>
+      .topbar, .footer-grad {
+        height: 2px; width: 100%;
+        background: linear-gradient(90deg,
+          transparent 0%,
+          color-mix(in srgb, var(--color-signal) 55%, transparent) 28%,
+          color-mix(in srgb, var(--color-accent) 50%, transparent) 50%,
+          color-mix(in srgb, var(--color-amber) 55%, transparent) 72%,
+          transparent 100%);
+        opacity: 0.7;
+      }
+      .topbar { height: 4px; }
+      .site-footer {
+        margin-top: 5rem;
+        background: radial-gradient(120% 120% at 50% 0%, color-mix(in srgb, var(--color-signal) 4%, transparent) 0%, transparent 60%);
+      }
+      .footer-inner { padding-top: 3rem; padding-bottom: 2.5rem; }
+      .footer-grid { display: grid; gap: 2rem 2.5rem; grid-template-columns: 1fr; }
+      @media (min-width: 560px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 860px) { .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+      .foot-col { display: flex; flex-direction: column; gap: 0.55rem; }
+      .foot-h { color: var(--color-signal); margin-bottom: 0.3rem; }
+      .foot-link {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-muted);
+        text-decoration: none; width: fit-content; transition: color 0.15s;
+      }
+      .foot-link:hover { color: var(--color-bright); }
+      .foot-ico { width: 14px; height: 14px; flex: none; opacity: 0.6; transition: opacity 0.15s; }
+      .foot-link:hover .foot-ico { opacity: 1; }
+      .footer-bottom {
+        margin-top: 2.75rem; padding-top: 1.5rem;
+        border-top: 1px solid var(--color-line);
+        display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem;
+      }
+      .footer-wm { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-paper); text-decoration: none; }
+      .footer-ethos { color: var(--color-muted); }
+      .footer-legal { margin-left: auto; }
+      @media (max-width: 520px) { .footer-legal { margin-left: 0; } }
+
+      /* En-tête : lockup de marque + ticker marchés */
+      .header-top {
+        display: flex; flex-wrap: wrap; align-items: center;
+        justify-content: space-between; gap: 0.5rem 1.75rem;
+      }
+      .brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+      .brand-mark { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+      .brand-0 { text-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 45%, transparent); }
+      .brand-sep { width: 1px; height: 1rem; background: var(--color-line); }
+      .brand-tag { color: var(--color-muted); }
+      @media (max-width: 380px) { .brand-sep, .brand-tag { display: none; } }
+
+      .markets { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; }
+      .markets-label {
+        font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.13em;
+        text-transform: uppercase; color: var(--color-accent);
+      }
+      .markets-list { display: inline-flex; flex-wrap: wrap; align-items: baseline; }
+      .market-link {
+        font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em;
+        text-transform: uppercase; color: var(--color-muted);
+        text-decoration: none; transition: color 0.15s;
+      }
+      .market-link:hover { color: var(--color-signal); }
+      .market-link[aria-current="page"] { color: var(--color-bright); }
+      .market-link:not(:first-child)::before {
+        content: "·"; margin: 0 0.5rem; color: var(--color-muted); opacity: 0.55;
+      }
+
+      /* Filet bas du header en dégradé, en écho au footer */
+      .main-nav { border-bottom: 0; position: relative; }
+      .main-nav::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+        background: linear-gradient(90deg,
+          color-mix(in srgb, var(--color-signal) 50%, transparent),
+          color-mix(in srgb, var(--color-accent) 28%, transparent) 45%,
+          transparent 85%);
+      }
+    </style>
   </body>
 </html>
