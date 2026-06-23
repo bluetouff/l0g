@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const ENDPOINT = `${SITE}/api/mcp`;
+
+const tools = [
+  ['get_risk_indices', 'aucun', 'Indices de risque consolidés (US Macro, EU Macro, Yen Carry, Énergie) et synthèse de confluence 13F.'],
+  ['search_content', 'query, limit', 'Recherche dans les analyses et les guides par titre, description, thèmes et sujets.'],
+  ['list_recent_analyses', 'limit', 'Dernières analyses publiées, de la plus récente à la plus ancienne.'],
+  ['list_guides', 'aucun', 'Guides de référence (pages piliers durables).'],
+  ['search_by_topic', 'topic, limit', 'Analyses rattachées à un sujet (hub thématique).'],
+  ['get_article', 'slug', "Texte complet d'une analyse ou d'un guide."],
+];
+
+const appLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebAPI',
+  '@id': `${SITE}/mcp/#mcp`,
+  name: 'Serveur MCP l0g',
+  description:
+    "Serveur Model Context Protocol en lecture seule pour l0g.fr : indices de risque, analyses, guides et sujets, via le transport Streamable HTTP.",
+  documentation: `${SITE}/mcp`,
+  url: ENDPOINT,
+  provider: { '@id': `${SITE}/#org` },
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+};
+---
+
+<BaseLayout
+  title="Serveur MCP"
+  description="Serveur Model Context Protocol de l0g.fr : indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP. Sans clé, sans authentification, sans pistage."
+  sidebar={false}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(appLd)} />
+
+  <section data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// mcp</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Serveur <span style="color: var(--color-accent)">MCP</span>
+    </h1>
+    <p class="mt-4 max-w-2xl text-paper">
+      l0g expose ses données aux agents IA via le Model Context Protocol, en lecture seule.
+      Un agent peut interroger les indices de risque, chercher dans les analyses et les guides,
+      lister les publications récentes ou récupérer le texte complet d'un article, sans scraper
+      le site. Aucune clé, aucune authentification, aucun pistage.
+    </p>
+  </section>
+
+  <section class="mt-10 space-y-8" data-pagefind-ignore>
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoint</h2>
+      <p class="mt-3 text-paper">
+        Transport Streamable HTTP (spec MCP <strong>2025-11-25</strong>), mode requête/réponse JSON.
+      </p>
+      <pre class="mcp-code mt-3"><code>{ENDPOINT}</code></pre>
+      <p class="mt-2 text-muted">
+        Lecture seule. Validation d'origine, limitation de débit et accès en lecture stricte
+        côté serveur. Le code et la procédure de déploiement sont publics sur le
+        <a class="link-term text-signal" href="https://github.com/bluetouff/l0g">dépôt GitHub</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// tools</h2>
+      <div class="mcp-table mt-3">
+        <table>
+          <thead>
+            <tr><th>Tool</th><th>Arguments</th><th>Renvoie</th></tr>
+          </thead>
+          <tbody>
+            {tools.map(([name, args, desc]) => (
+              <tr>
+                <td><code>{name}</code></td>
+                <td class="text-muted">{args}</td>
+                <td>{desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// se connecter</h2>
+      <p class="mt-3 text-paper">Avec l'inspecteur officiel, en pointant l'endpoint ci-dessus :</p>
+      <pre class="mcp-code mt-2"><code>npx @modelcontextprotocol/inspector</code></pre>
+      <p class="mt-3 text-paper">Pour un client qui ne parle que le transport local :</p>
+      <pre class="mcp-code mt-2"><code>npx mcp-remote {ENDPOINT}</code></pre>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// autres accès machine</h2>
+      <ul class="mt-3 space-y-2 text-paper">
+        <li>
+          <a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque et flux Atom des changements de niveau.
+        </li>
+        <li>
+          <a class="link-term text-signal" href="/api/v1/catalog.json">catalog.json</a> : articles, guides et sujets.
+        </li>
+        <li>
+          <a class="link-term text-signal" href="/llms.txt">llms.txt</a> : carte concise du site, et
+          <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a> pour le corpus intégral.
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .mcp-code {
+    background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-bright);
+  }
+  .mcp-table { overflow-x: auto; }
+  .mcp-table table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .mcp-table th, .mcp-table td {
+    text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-line); vertical-align: top;
+  }
+  .mcp-table th {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--color-muted);
+  }
+  .mcp-table code, .mcp-code code { font-family: var(--font-mono); }
+</style>
