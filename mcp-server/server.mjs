@@ -48,8 +48,14 @@ function rateLimited(ip) {
   return b.n > RATE_MAX;
 }
 function clientIp(req) {
+  // Derriere un unique proxy de confiance (Apache), la vraie IP cliente est la
+  // DERNIERE entree de X-Forwarded-For, celle ajoutee par Apache. Prendre la
+  // premiere serait spoofable par le client pour contourner le rate-limit.
   const xff = req.headers['x-forwarded-for'];
-  if (xff) return String(xff).split(',')[0].trim();
+  if (xff) {
+    const parts = String(xff).split(',').map((s) => s.trim()).filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
   return req.socket.remoteAddress || 'unknown';
 }
 setInterval(() => {
