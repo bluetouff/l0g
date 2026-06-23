@@ -1,0 +1,16 @@
+{
+  "name": "l0g-mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Serveur MCP en lecture seule pour l0g.fr (Streamable HTTP, stateless).",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "node-html-parser": "^7.0.1",
+    "zod": "^3.25.0"
+  }
+}
