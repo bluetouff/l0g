@@ -30,7 +30,7 @@ const appLd = {
 
 <BaseLayout
   title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP. Sans clé, sans authentification, sans pistage."
+  description="Serveur Model Context Protocol de l0g.fr : indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP. Sans clé, sans authentification, sans pistage. Ce qu'on a fait, pourquoi, et comment l'utiliser."
   sidebar={false}
 >
   <script type="application/ld+json" set:html={JSON.stringify(appLd)} />
@@ -48,7 +48,52 @@ const appLd = {
     </p>
   </section>
 
-  <section class="mt-10 space-y-8" data-pagefind-ignore>
+  <section class="mt-12 space-y-10" data-pagefind-ignore>
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// pourquoi</h2>
+      <div class="mt-3 max-w-2xl space-y-3 text-paper">
+        <p>
+          Les agents IA lisent de plus en plus le web à la place des humains, et ils le font mal :
+          ils aplatissent le HTML, perdent le contexte et citent de travers. Pour un site dont
+          toute la valeur tient à la rigueur du sourcing, c'est un risque. Plutôt que de subir un
+          scraping approximatif, l0g publie des surfaces lisibles par machine, propres et
+          attribuables, pour que les données soient reprises exactement.
+        </p>
+        <p>
+          Le choix du Model Context Protocol prolonge la philosophie du site : statique,
+          auto-hébergé, sans CDN ni proxy tiers, sans pistage. L'accès machine est ouvert,
+          en lecture seule, sous licence CC BY 4.0. Un agent obtient la donnée juste, avec sa
+          source et son URL canonique, plutôt qu'une approximation extraite d'une page.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// ce que nous avons construit</h2>
+      <p class="mt-3 max-w-2xl text-paper">
+        Quatre couches d'accès machine, de la plus simple à la plus riche, toutes générées
+        à partir des mêmes contenus et des mêmes données vérifiées :
+      </p>
+      <ul class="mt-4 space-y-2 text-paper">
+        <li>
+          une <a class="link-term text-signal" href="/api/">API JSON publique</a> pour les indices
+          de risque, avec un flux Atom des changements de niveau ;
+        </li>
+        <li>
+          un <a class="link-term text-signal" href="/api/v1/catalog.json">catalogue</a> machine des
+          articles, guides et sujets ;
+        </li>
+        <li>
+          deux fichiers <a class="link-term text-signal" href="/llms.txt">llms.txt</a> et
+          <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a>, carte concise
+          et corpus intégral, pour les agents qui les recherchent ;
+        </li>
+        <li>
+          ce serveur MCP, qui transforme tout cela en tools appelables par un agent, sans scraping.
+        </li>
+      </ul>
+    </div>
+
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoint</h2>
       <p class="mt-3 text-paper">
@@ -56,8 +101,7 @@ const appLd = {
       </p>
       <pre class="mcp-code mt-3"><code>{ENDPOINT}</code></pre>
       <p class="mt-2 text-muted">
-        Lecture seule. Validation d'origine, limitation de débit et accès en lecture stricte
-        côté serveur. Le code et la procédure de déploiement sont publics sur le
+        Lecture seule. Le code et la procédure de déploiement sont publics sur le
         <a class="link-term text-signal" href="https://github.com/bluetouff/l0g">dépôt GitHub</a>.
       </p>
     </div>
@@ -84,25 +128,52 @@ const appLd = {
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// se connecter</h2>
-      <p class="mt-3 text-paper">Avec l'inspecteur officiel, en pointant l'endpoint ci-dessus :</p>
+      <p class="mt-3 text-paper">Inspecter les tools avec l'outil officiel, en renseignant l'endpoint :</p>
       <pre class="mcp-code mt-2"><code>npx @modelcontextprotocol/inspector</code></pre>
-      <p class="mt-3 text-paper">Pour un client qui ne parle que le transport local :</p>
+
+      <p class="mt-4 text-paper">Brancher un client de bureau via le pont local :</p>
       <pre class="mcp-code mt-2"><code>npx mcp-remote {ENDPOINT}</code></pre>
+
+      <p class="mt-4 text-paper">Exemple de configuration pour un client compatible :</p>
+      <pre class="mcp-code mt-2"><code>{`{
+  "mcpServers": {
+    "l0g": {
+      "command": "npx",
+      "args": ["mcp-remote", "${ENDPOINT}"]
+    }
+  }
+}`}</code></pre>
+
+      <p class="mt-4 text-paper">Vérifier l'endpoint en une requête brute :</p>
+      <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'`}</code></pre>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// sécurité et conception</h2>
+      <ul class="mt-3 space-y-2 text-paper">
+        <li><strong>Lecture seule.</strong> Aucun tool n'écrit quoi que ce soit, et l'accès aux articles passe par une liste blanche de slugs, sans récupération d'URL arbitraire.</li>
+        <li><strong>Jamais exposé en direct.</strong> Le service n'écoute qu'en local, derrière Apache qui assure le TLS et le proxy.</li>
+        <li><strong>Anti détournement.</strong> Validation des en-têtes Host et Origin à chaque requête, contre les attaques par DNS rebinding, comme l'exige la spec.</li>
+        <li><strong>Bridé.</strong> Limitation de débit par IP, taille de requête bornée, et un service système durci (utilisateur éphémère, système de fichiers en lecture seule, capacités vidées).</li>
+        <li><strong>Sans donnée sensible.</strong> Tout est public, donc ni clé ni authentification, et aucun pistage.</li>
+      </ul>
+      <p class="mt-4 max-w-2xl text-muted">
+        En toute honnêteté, peu de clients grand public consomment encore nativement les serveurs
+        MCP distants : le protocole est récent. Cet accès est donc autant un pari sur l'usage à
+        venir qu'un outil immédiat, dans la continuité de l'API et des fichiers pour agents.
+      </p>
     </div>
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// autres accès machine</h2>
       <ul class="mt-3 space-y-2 text-paper">
-        <li>
-          <a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque et flux Atom des changements de niveau.
-        </li>
-        <li>
-          <a class="link-term text-signal" href="/api/v1/catalog.json">catalog.json</a> : articles, guides et sujets.
-        </li>
-        <li>
-          <a class="link-term text-signal" href="/llms.txt">llms.txt</a> : carte concise du site, et
-          <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a> pour le corpus intégral.
-        </li>
+        <li><a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque et flux Atom des changements de niveau.</li>
+        <li><a class="link-term text-signal" href="/api/v1/catalog.json">catalog.json</a> : articles, guides et sujets.</li>
+        <li><a class="link-term text-signal" href="/llms.txt">llms.txt</a> et <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a> : carte concise et corpus intégral.</li>
+        <li><a class="link-term text-signal" href="/methodologie/">méthodologie</a> et <a class="link-term text-signal" href="/glossaire/">glossaire</a> pour le cadre et les définitions.</li>
       </ul>
     </div>
   </section>
@@ -118,6 +189,7 @@ const appLd = {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--color-bright);
+    white-space: pre;
   }
   .mcp-table { overflow-x: auto; }
   .mcp-table table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
