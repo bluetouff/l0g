@@ -19,24 +19,43 @@
  * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
  */
 import { getCollection } from 'astro:content';
+import { topics, postMatchesTopic } from '../config/topics.ts';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 
-// Liste des analyses publiées, même tri et même filtre que la home (pubDate desc, hors brouillons).
-// Sérialisée vers le script : données fiables, sans dépendre de l'index de recherche.
-const recent = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 20)
-  .map((p) => ({
-    title: p.data.title,
-    url: `${site}/posts/${p.id}/`,
-    date: p.data.pubDate.toISOString().slice(0, 10),
-    description: p.data.description,
-    tags: p.data.tags ?? [],
-  }));
+// Articles publiés, même tri et même filtre que la home (pubDate desc, hors brouillons).
+const published = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const dateOf = (p) => p.data.pubDate.toISOString().slice(0, 10);
+
+// Liste des dernières analyses (avec description) pour list_recent_analyses.
+const recent = published.slice(0, 20).map((p) => ({
+  title: p.data.title,
+  url: `${site}/posts/${p.id}/`,
+  date: dateOf(p),
+  description: p.data.description,
+  tags: p.data.tags ?? [],
+}));
+
+// Sujets canoniques et articles rattachés (même logique que les hubs /sujets/).
+// Réfs légères (sans description) pour ne pas alourdir chaque page ; la description
+// complète reste disponible via list_recent_analyses ou get_article.
+const topicsList = topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb }));
+const byTopic = Object.fromEntries(
+  topics.map((t) => [
+    t.slug,
+    published
+      .filter((p) => postMatchesTopic(p.data.tags ?? [], t))
+      .map((p) => ({ title: p.data.title, url: `${site}/posts/${p.id}/`, date: dateOf(p) })),
+  ])
+);
+
+// Allowlist de slugs : get_article ne récupère qu'un article connu, jamais une URL arbitraire.
+const articleSlugs = published.map((p) => p.id);
 ---
 
-<script define:vars={{ site, recent }}>
+<script define:vars={{ site, recent, topicsList, byTopic, articleSlugs }}>
   (function () {
     if (typeof navigator === 'undefined') return;
     // WebMCP n'existe qu'en contexte sécurisé (HTTPS) et sur navigateur compatible.
@@ -163,6 +182,98 @@ const recent = (await getCollection('posts', ({ data }) => !data.draft))
       });
     } catch (e) {
       // idem : ne jamais casser la page.
+    }
+
+    // --- Tool : contenu complet d'un article ---
+    try {
+      mc.registerTool({
+        name: 'get_article',
+        description:
+          "Renvoie le contenu texte complet d'une analyse de l0g.fr à partir de son slug " +
+          "(le dernier segment de l'URL /posts/.../, par ex. « clarity-act-trump-obstacle-conflit-interets »). " +
+          "Récupérer les slugs via list_recent_analyses, search_content ou search_by_topic.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            slug: { type: 'string', description: "Slug de l'article, dernier segment de son URL." }
+          },
+          required: ['slug']
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          // Normalisation puis allowlist stricte : jamais de fetch d'URL arbitraire.
+          var slug = String((input && input.slug) || '')
+            .trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
+          if (articleSlugs.indexOf(slug) === -1) {
+            return reply({ error: 'slug inconnu', slug: slug, note: 'utiliser list_recent_analyses ou search_content pour obtenir un slug valide' });
+          }
+          var url = site + '/posts/' + slug + '/';
+          try {
+            var res = await fetch('/posts/' + slug + '/', { credentials: 'omit' });
+            if (!res.ok) return reply({ error: 'article introuvable', slug: slug, url: url });
+            var doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+            var titleEl = doc.querySelector('article h1') || doc.querySelector('h1');
+            var bodyEl = doc.querySelector('.prose') || doc.querySelector('[data-pagefind-body]') || doc.querySelector('article');
+            var body = stripTags(bodyEl ? bodyEl.textContent : '');
+            var MAX = 16000;
+            var truncated = body.length > MAX;
+            if (truncated) body = body.slice(0, MAX);
+            return reply({
+              slug: slug,
+              url: url,
+              title: titleEl ? stripTags(titleEl.textContent) : slug,
+              words: body ? body.split(/\s+/).length : 0,
+              truncated: truncated,
+              text: body
+            });
+          } catch (e) {
+            return reply({ error: 'erreur de récupération', slug: slug, url: url });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
+    }
+
+    // --- Tool : articles d'un sujet (hub thématique) ---
+    try {
+      var topicCatalog = topicsList.map(function (t) { return t.slug + ' : ' + t.label; }).join(' ; ');
+      mc.registerTool({
+        name: 'search_by_topic',
+        description:
+          "Liste les analyses rattachées à un sujet (hub thématique) de l0g.fr, du plus récent au plus ancien, " +
+          "avec titre, URL et date. Sujets disponibles (slug : libellé) : " + topicCatalog + ". " +
+          "Accepte le slug exact ou un libellé approchant.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            topic: { type: 'string', description: "Slug ou libellé du sujet, par ex. « crypto », « credit-prive », « géopolitique »." },
+            limit: { type: 'integer', description: "Nombre maximum d'analyses (1 à 20).", minimum: 1, maximum: 20, default: 10 }
+          },
+          required: ['topic']
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var raw = String((input && input.topic) || '').trim().toLowerCase();
+          var limit = parseInt((input && input.limit) || 10, 10);
+          if (!Number.isFinite(limit)) limit = 10;
+          limit = Math.max(1, Math.min(20, limit));
+          if (!raw) return reply({ error: 'sujet vide', topics: topicsList });
+          // Résolution : slug exact, sinon rapprochement par libellé ou slug.
+          var match = topicsList.find(function (t) { return t.slug === raw; });
+          if (!match) {
+            match = topicsList.find(function (t) {
+              var lbl = t.label.toLowerCase();
+              return lbl.indexOf(raw) !== -1 || t.slug.indexOf(raw) !== -1 || raw.indexOf(t.slug) !== -1;
+            });
+          }
+          if (!match) return reply({ error: 'sujet inconnu', requested: raw, topics: topicsList });
+          var analyses = (byTopic[match.slug] || []).slice(0, limit);
+          return reply({ topic: match.slug, label: match.label, count: analyses.length, analyses: analyses });
+        }
+      });
+    } catch (e) {
+      // idem.
     }
   })();
 </script>
