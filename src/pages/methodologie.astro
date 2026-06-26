@@ -1,7 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
 
-const updated = '16 juin 2026';
+const updated = '26 juin 2026';
+
+const accentVar: Record<string, string> = {
+  teal: 'var(--color-signal)',
+  blue: '#7aa2f7',
+  pink: 'var(--color-accent)',
+  amber: 'var(--color-amber)',
+};
 ---
 
 <BaseLayout
@@ -28,6 +36,31 @@ const updated = '16 juin 2026';
     </p>
 
     <span class="methodo-meta">Dernière mise à jour : {updated}</span>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// fiches d'instrument</p>
+    <p class="m-p">
+      Chaque outil a maintenant sa fiche de lecture : question couverte, sources primaires,
+      méthode de calcul, limites assumées et cas d'usage. L'objectif n'est pas de promettre
+      un signal parfait, mais de rendre l'instrument auditable.
+    </p>
+
+    <div class="tool-grid">
+      {
+        methodologyPages.map((page) => (
+          <a
+            class="tool-card card"
+            href={methodologyUrl(page.slug)}
+            style={`--c:${accentVar[page.accent]}`}
+          >
+            <span class="tool-k">{page.shortLabel}</span>
+            <span class="tool-t">{page.question}</span>
+            <span class="tool-a">Lire la fiche</span>
+          </a>
+        ))
+      }
+    </div>
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
@@ -211,6 +244,50 @@ interpolation linéaire entre ces points, borné 0-100</code></pre>
     }
 
     .m-p { margin-top: 0.95rem; max-width: 42rem; color: var(--color-paper); line-height: 1.7; }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-top: 1.25rem;
+      max-width: 48rem;
+    }
+    @media (min-width: 720px) {
+      .tool-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .tool-card {
+      --c: var(--color-signal);
+      display: flex;
+      flex-direction: column;
+      min-height: 10rem;
+      padding: 1rem 1.1rem;
+      border-top: 2px solid color-mix(in srgb, var(--c) 52%, transparent);
+    }
+    .tool-card:hover { border-top-color: var(--c); }
+    .tool-k {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--c);
+    }
+    .tool-t {
+      margin-top: 0.7rem;
+      font-family: var(--font-read);
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: var(--color-paper);
+    }
+    .tool-a {
+      margin-top: auto;
+      padding-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .tool-card:hover .tool-a { color: var(--c); }
 
     /* Indices en cartes */
     .idx-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.4rem; max-width: 46rem; }

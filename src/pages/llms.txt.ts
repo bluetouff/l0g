@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { topics } from '../config/topics.ts';
+import { methodologyPages } from '../config/methodology.ts';
 
 /**
  * /llms.txt — carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -50,6 +51,13 @@ export const GET: APIRoute = async () => {
   lines.push('## Sujets');
   for (const t of topics) {
     lines.push(`- [${t.label}](${SITE}/sujet/${t.slug}/): ${t.blurb}`);
+  }
+  lines.push('');
+
+  lines.push('## Methodologie des outils');
+  lines.push(`- [Hub méthodologie](${SITE}/methodologie/): synthèse des indicateurs l0g, limites et accès aux fiches d'instrument.`);
+  for (const page of methodologyPages) {
+    lines.push(`- [${page.label}](${SITE}/methodologie/${page.slug}/): ${page.question}`);
   }
   lines.push('');
 

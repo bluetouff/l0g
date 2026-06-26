@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { topics, postMatchesTopic } from '../../../config/topics.ts';
+import { methodologyPages } from '../../../config/methodology.ts';
 
 /**
  * Catalogue machine de l0g.fr — v1. Sortie statique générée au build.
@@ -44,14 +45,33 @@ export const GET: APIRoute = async () => {
     tags: g.data.tags ?? [],
   }));
 
+  const methodologies = methodologyPages.map((m) => ({
+    slug: m.slug,
+    url: `${SITE}/methodologie/${m.slug}/`,
+    title: m.title,
+    label: m.label,
+    description: m.description,
+    question: m.question,
+    dashboard: m.dashboardUrl,
+    repo: m.repoUrl,
+    updated: m.updated,
+    sources: m.sources.map((s) => ({ name: s.name, url: s.url, role: s.role })),
+  }));
+
   const payload = {
     schema: 'https://l0g.fr/api/',
     version: '1',
     generated: new Date().toISOString(),
-    counts: { articles: articles.length, guides: guides.length, topics: topics.length },
+    counts: {
+      articles: articles.length,
+      guides: guides.length,
+      topics: topics.length,
+      methodologies: methodologies.length,
+    },
     topics: topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb })),
     articles,
     guides,
+    methodologies,
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
     note: 'Catalogue best-effort. Le texte complet des analyses est servi par les pages /posts/.',

@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { methodologyPages, type MethodologyPage } from '../../config/methodology.ts';
+
+export function getStaticPaths() {
+  return methodologyPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: MethodologyPage;
+}
+
+const { page } = Astro.props;
+
+const accentVar: Record<string, string> = {
+  teal: 'var(--color-signal)',
+  blue: '#7aa2f7',
+  pink: 'var(--color-accent)',
+  amber: 'var(--color-amber)',
+};
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  '@id': `${site}/methodologie/${page.slug}/#methodology`,
+  headline: page.title,
+  description: page.description,
+  inLanguage: 'fr',
+  dateModified: '2026-06-26',
+  publisher: { '@id': `${site}/#org` },
+  about: page.label,
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  url: `${site}/methodologie/${page.slug}/`,
+};
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="method-page" style={`--a:${accentVar[page.accent]}`}>
+    <section class="rise">
+      <p class="mono-label glow" style="color: var(--a)">{page.eyebrow}</p>
+      <h1 class="method-title mt-3 font-display glow">{page.title}</h1>
+      <p class="method-question">{page.question}</p>
+      <div class="method-actions" data-pagefind-ignore>
+        <a class="method-action primary" href={page.dashboardUrl} target="_blank" rel="noopener">ouvrir l'outil</a>
+        <a class="method-action" href={page.repoUrl} target="_blank" rel="noopener">code source</a>
+        <a class="method-action" href="/methodologie/">hub méthodo</a>
+      </div>
+      <p class="method-updated" data-pagefind-ignore>Dernière mise à jour : {page.updated}</p>
+    </section>
+
+    <section class="method-section" id="lecture">
+      <p class="mono-label glow" style="color: var(--a)">// lecture rapide</p>
+      <div class="quick-grid">
+        {page.quickRead.map((item, index) => (
+          <div class="quick card">
+            <span class="quick-n">{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="method-section" id="sources">
+      <p class="mono-label glow" style="color: var(--a)">// sources primaires</p>
+      <p class="method-p">
+        Le tableau ne liste que les sources qui structurent le signal. Les agrégateurs sont évités
+        quand une source primaire publique est disponible.
+      </p>
+      <div class="source-table-wrap">
+        <table class="source-table">
+          <thead>
+            <tr>
+              <th>source</th>
+              <th>rôle</th>
+              <th>cadence</th>
+              <th>délai</th>
+            </tr>
+          </thead>
+          <tbody>
+            {page.sources.map((source) => (
+              <tr>
+                <td>
+                  <a href={source.url} target="_blank" rel="noopener" class="link-term">{source.name}</a>
+                </td>
+                <td>{source.role}</td>
+                <td>{source.cadence}</td>
+                <td>{source.delay}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="method-section" id="calcul">
+      <p class="mono-label glow" style="color: var(--a)">// méthode de calcul</p>
+      <ol class="method-steps">
+        {page.calculation.map((item) => <li>{item}</li>)}
+      </ol>
+      {page.formula && (
+        <pre class="formula"><code>{page.formula}</code></pre>
+      )}
+    </section>
+
+    <section class="method-section" id="interpreter">
+      <p class="mono-label glow" style="color: var(--a)">// comment interpréter</p>
+      <div class="split">
+        <div>
+          <h2 class="method-h">Ce que le signal dit</h2>
+          <ul class="method-list">
+            {page.interpretation.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="method-h">Ce qu'il ne dit pas</h2>
+          <ul class="method-list muted">
+            {page.limits.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="method-section" id="usages">
+      <p class="mono-label glow" style="color: var(--a)">// cas d'usage</p>
+      <div class="split">
+        <div>
+          <h2 class="method-h">À utiliser pour</h2>
+          <ul class="method-list">
+            {page.useFor.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="method-h">À ne pas utiliser pour</h2>
+          <ul class="method-list muted">
+            {page.notFor.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="method-section" id="reproductibilite">
+      <p class="mono-label glow" style="color: var(--a)">// reproductibilité</p>
+      <ul class="method-list repro">
+        {page.reproducibility.map((item) => <li>{item}</li>)}
+      </ul>
+      <p class="method-disclaimer" data-pagefind-ignore>
+        Cette fiche décrit un instrument de lecture, pas un système de décision. Les scores
+        réduisent le bruit ; ils ne remplacent ni les sources primaires ni le jugement.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .method-page {
+      --a: var(--color-signal);
+      max-width: 58rem;
+    }
+
+    .method-title {
+      max-width: 42rem;
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      line-height: 1.25;
+      letter-spacing: 0.05em;
+      color: var(--color-bright);
+    }
+
+    .method-question {
+      margin-top: 1.25rem;
+      max-width: 45rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      line-height: 1.6;
+      color: var(--color-paper);
+      border-left: 2px solid var(--a);
+      padding-left: 1rem;
+    }
+
+    .method-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.3rem;
+    }
+
+    .method-action {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.1rem;
+      border: 1px solid var(--color-line);
+      border-radius: 7px;
+      padding: 0.45rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .method-action:hover {
+      color: var(--color-bright);
+      border-color: color-mix(in srgb, var(--a) 55%, transparent);
+      background: color-mix(in srgb, var(--a) 7%, transparent);
+    }
+    .method-action.primary {
+      color: var(--a);
+      border-color: color-mix(in srgb, var(--a) 45%, transparent);
+    }
+
+    .method-updated {
+      margin-top: 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-muted);
+    }
+
+    .method-section {
+      margin-top: 3.6rem;
+    }
+
+    .method-p {
+      margin-top: 0.8rem;
+      max-width: 43rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      line-height: 1.7;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 760px) {
+      .quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .quick {
+      min-height: 9rem;
+      padding: 1rem;
+      border-top: 2px solid color-mix(in srgb, var(--a) 45%, transparent);
+    }
+    .quick-n {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      color: var(--a);
+    }
+    .quick p {
+      margin-top: 0.55rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .source-table-wrap {
+      margin-top: 1rem;
+      overflow-x: auto;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+    }
+    .source-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+    .source-table th,
+    .source-table td {
+      padding: 0.75rem 0.85rem;
+      border-bottom: 1px solid var(--color-line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .source-table th {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      background: var(--color-surface);
+    }
+    .source-table td {
+      font-family: var(--font-read);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--color-paper);
+    }
+    .source-table tr:last-child td { border-bottom: 0; }
+
+    .method-steps {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      padding-left: 1.3rem;
+      max-width: 46rem;
+      font-family: var(--font-read);
+      color: var(--color-paper);
+    }
+    .method-steps li { padding-left: 0.25rem; line-height: 1.65; }
+    .method-steps li::marker { color: var(--a); font-family: var(--font-mono); }
+
+    .formula {
+      margin: 1rem 0 0;
+      padding: 1rem 1.05rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: var(--color-surface);
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.55;
+      color: var(--color-paper);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 820px) {
+      .split { grid-template-columns: 1fr 1fr; }
+    }
+
+    .method-h {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 650;
+      color: var(--color-bright);
+    }
+    .method-h::before { content: '› '; color: var(--a); }
+
+    .method-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 0.75rem;
+      max-width: 42rem;
+      font-family: var(--font-read);
+    }
+    .method-list li {
+      position: relative;
+      padding-left: 1.05rem;
+      color: var(--color-paper);
+      line-height: 1.58;
+    }
+    .method-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--a);
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+    .method-list.muted li { color: var(--color-muted); }
+    .method-list.repro {
+      border-left: 2px solid color-mix(in srgb, var(--a) 55%, transparent);
+      padding-left: 1rem;
+    }
+
+    .method-disclaimer {
+      margin-top: 1.5rem;
+      max-width: 44rem;
+      border-top: 1px solid var(--color-line);
+      padding-top: 1rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--color-muted);
+    }
+  </style>
+</BaseLayout>

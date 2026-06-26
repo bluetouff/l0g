@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { dashboards } from '../config/sidebar.ts';
+import { methodologyBySlug, methodologyUrl } from '../config/methodology.ts';
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -8,6 +9,11 @@ const accentVar: Record<string, string> = {
   pink: 'var(--color-accent)',
   amber: 'var(--color-amber)',
 };
+
+const dashboardCards = dashboards.map((dashboard) => ({
+  ...dashboard,
+  methodologyHref: methodologyBySlug.has(dashboard.slug) ? methodologyUrl(dashboard.slug) : null,
+}));
 ---
 
 <BaseLayout
@@ -29,7 +35,7 @@ const accentVar: Record<string, string> = {
 
   <div class="mt-9 grid gap-5 sm:grid-cols-2">
     {
-      dashboards.map((d) => (
+      dashboardCards.map((d) => (
         <article
           id={d.slug}
           class="fiche card flex flex-col overflow-hidden"
@@ -75,6 +81,11 @@ const accentVar: Record<string, string> = {
               <a href={d.href} target="_blank" rel="noopener" class="fiche-cta">
                 Ouvrir l'outil <span aria-hidden="true">›</span>
               </a>
+              {d.methodologyHref && (
+                <a href={d.methodologyHref} class="link-term text-xs">
+                  méthode
+                </a>
+              )}
               {d.repo && (
                 <a href={d.repo} target="_blank" rel="noopener" class="link-term text-xs">
                   code
