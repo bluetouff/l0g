@@ -1,0 +1,453 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const commands = [
+  'help',
+  'ls',
+  'cat manifeste',
+  'open dashboards',
+  'open methodologie',
+  'open api',
+  'curl risk',
+  'whoami',
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://l0g.fr/terminal/#terminal',
+  name: 'Terminal l0g',
+  description:
+    'Interface terminal de navigation dans l0g : manifeste, méthodologie, dashboards, API, sources et corpus machine.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  publisher: { '@id': 'https://l0g.fr/#org' },
+  url: 'https://l0g.fr/terminal/',
+};
+---
+
+<BaseLayout
+  title="Terminal"
+  description="Interface terminal de navigation dans l0g : manifeste, méthodologie, dashboards, API, sources, corpus machine et raccourcis utiles."
+  ogImage="/og-terminal.png"
+  ogImageAlt="Terminal l0g : interface de navigation en ligne de commande"
+  sidebar={false}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="terminal-page rise" data-pagefind-body>
+    <div class="terminal-shell" data-pagefind-ignore>
+      <header class="terminal-bar">
+        <span class="terminal-lights" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span class="terminal-title">bluetouff@l0g:/risk</span>
+        <span class="terminal-status">static · no tracker</span>
+      </header>
+
+      <div class="terminal-screen" id="terminal-screen" aria-live="polite">
+        <p><span class="prompt">bluetouff@l0g:~$</span> <span class="cmd">boot l0g</span></p>
+        <p class="out">risk intelligence shell · build statique · sources publiques</p>
+        <p class="out muted">help · ls · cat manifeste · open dashboards · curl risk</p>
+      </div>
+
+      <form class="terminal-input" id="terminal-form" autocomplete="off">
+        <label for="terminal-command" class="prompt">bluetouff@l0g:~$</label>
+        <input
+          id="terminal-command"
+          name="command"
+          type="text"
+          inputmode="text"
+          spellcheck="false"
+          value="help"
+          aria-label="Commande terminal"
+        />
+        <button type="submit">run</button>
+      </form>
+    </div>
+
+    <div class="command-dock" data-pagefind-ignore>
+      {commands.map((command) => (
+        <button type="button" data-command={command}>{command}</button>
+      ))}
+    </div>
+
+    <section class="terminal-links">
+      <p class="mono-label glow">// accès directs</p>
+      <div class="terminal-grid">
+        <a href="/manifeste/">
+          <span>manifeste</span>
+          <strong>pacte de lecture</strong>
+        </a>
+        <a href="/methodologie/">
+          <span>méthodologie</span>
+          <strong>formules & limites</strong>
+        </a>
+        <a href="/dashboards/">
+          <span>dashboards</span>
+          <strong>outils de monitoring</strong>
+        </a>
+        <a href="/api/">
+          <span>api</span>
+          <strong>données machine</strong>
+        </a>
+      </div>
+    </section>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var screen = document.getElementById('terminal-screen');
+      var form = document.getElementById('terminal-form');
+      var input = document.getElementById('terminal-command');
+      if (!screen || !form || !input) return;
+
+      var routes = {
+        about: '/about/',
+        api: '/api/',
+        dashboards: '/dashboards/',
+        guides: '/guides/',
+        journal: '/',
+        manifeste: '/manifeste/',
+        methodologie: '/methodologie/',
+        recherche: '/recherche/',
+        sources: '/sites-reference/',
+      };
+
+      var docs = {
+        help: [
+          'help             affiche les commandes',
+          'ls               liste les espaces l0g',
+          'cat manifeste    résume le pacte de lecture',
+          'open <cible>     ouvre manifeste, dashboards, methodologie, api, sources',
+          'curl risk        pointe vers /api/v1/risk.json',
+          'whoami           identifie le projet',
+          'clear            nettoie le terminal',
+        ],
+        ls: [
+          '<a href="/manifeste/">manifeste</a>      pacte de lecture',
+          '<a href="/dashboards/">dashboards</a>    instruments de monitoring',
+          '<a href="/methodologie/">methodologie</a> formules, seuils, limites',
+          '<a href="/guides/">guides</a>          pages de référence',
+          '<a href="/api/">api</a>             endpoints JSON, XML, catalogue',
+          '<a href="/sites-reference/">sources</a>         bibliothèque de sources',
+        ],
+        'cat manifeste': [
+          'sources primaires avant agrégateurs',
+          'méthodes visibles avant scores séduisants',
+          'code ouvert quand le calcul compte',
+          'pas de cookie, pas de pixel, pas de conseil en investissement',
+        ],
+        'curl risk': [
+          '<a href="/api/v1/risk.json">GET /api/v1/risk.json</a>',
+          '<a href="/api/v1/catalog.json">GET /api/v1/catalog.json</a>',
+          '<a href="/api/v1/risk.xml">GET /api/v1/risk.xml</a>',
+        ],
+        whoami: [
+          'l0g.fr · audit open source des narratifs économiques',
+          'éditeur : Bluetouff · github.com/bluetouff · x.com/bluetouff',
+          'mode : statique, auto-hébergé, sans tracker maison',
+        ],
+      };
+
+      function escapeText(value) {
+        return String(value).replace(/[&<>"']/g, function (char) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char];
+        });
+      }
+
+      function lineText(text, className) {
+        var p = document.createElement('p');
+        p.className = className || 'out';
+        p.textContent = text;
+        screen.appendChild(p);
+      }
+
+      function lineTrusted(html, className) {
+        var p = document.createElement('p');
+        p.className = className || 'out';
+        p.innerHTML = html;
+        screen.appendChild(p);
+      }
+
+      function prompt(command) {
+        var p = document.createElement('p');
+        var promptSpan = document.createElement('span');
+        var cmdSpan = document.createElement('span');
+        promptSpan.className = 'prompt';
+        promptSpan.textContent = 'bluetouff@l0g:~$';
+        cmdSpan.className = 'cmd';
+        cmdSpan.textContent = command;
+        p.appendChild(promptSpan);
+        p.appendChild(document.createTextNode(' '));
+        p.appendChild(cmdSpan);
+        screen.appendChild(p);
+      }
+
+      function print(lines) {
+        lines.forEach(function (item) { lineTrusted(item, 'out'); });
+      }
+
+      function printText(lines) {
+        lines.forEach(function (item) { lineText(item, 'out'); });
+      }
+
+      function run(raw) {
+        var command = String(raw || '').trim().toLowerCase();
+        if (!command) return;
+        if (command === 'clear') {
+          screen.replaceChildren();
+          return;
+        }
+
+        prompt(command);
+
+        if (docs[command]) {
+          print(docs[command]);
+          return;
+        }
+
+        if (command.indexOf('open ') === 0) {
+          var target = command.replace(/^open\s+/, '').trim();
+          var href = routes[target];
+          if (href) {
+            print(['open <a href="' + href + '">' + escapeText(href) + '</a>']);
+            window.location.href = href;
+          } else {
+            printText(['cible inconnue : ' + target, 'essayez : open manifeste · open dashboards · open api']);
+          }
+          return;
+        }
+
+        printText(['commande inconnue : ' + command, 'help']);
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        run(input.value);
+        input.value = '';
+        screen.scrollTop = screen.scrollHeight;
+      });
+
+      document.querySelectorAll('[data-command]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var command = button.getAttribute('data-command') || '';
+          input.value = command;
+          run(command);
+          input.value = '';
+          screen.scrollTop = screen.scrollHeight;
+          input.focus();
+        });
+      });
+    })();
+  </script>
+
+  <style>
+    .terminal-page {
+      max-width: 64rem;
+    }
+
+    .terminal-shell {
+      border: 1px solid color-mix(in srgb, var(--color-signal) 22%, var(--color-line));
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        radial-gradient(900px 420px at 10% 0%, color-mix(in srgb, var(--color-signal) 8%, transparent), transparent 62%),
+        var(--color-ink);
+      box-shadow: 0 22px 80px rgba(0, 0, 0, 0.34);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-height: 2.6rem;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0 1rem;
+      background: color-mix(in srgb, var(--color-surface) 76%, transparent);
+    }
+
+    .terminal-lights {
+      display: inline-flex;
+      gap: 0.35rem;
+      flex: 0 0 auto;
+    }
+
+    .terminal-lights span {
+      width: 0.62rem;
+      height: 0.62rem;
+      border-radius: 999px;
+      background: var(--color-line-strong);
+    }
+
+    .terminal-lights span:nth-child(1) { background: var(--color-accent); }
+    .terminal-lights span:nth-child(2) { background: var(--color-amber); }
+    .terminal-lights span:nth-child(3) { background: var(--color-signal); }
+
+    .terminal-title {
+      min-width: 0;
+      color: var(--color-paper);
+      font-size: 0.78rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .terminal-status {
+      margin-left: auto;
+      color: var(--color-muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .terminal-screen {
+      height: clamp(21rem, 58vh, 30rem);
+      overflow: auto;
+      padding: 1.1rem 1.2rem;
+      font-size: clamp(0.82rem, 2vw, 0.98rem);
+      line-height: 1.58;
+    }
+
+    .terminal-screen p {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .terminal-screen p + p { margin-top: 0.35rem; }
+    .terminal-screen a {
+      color: var(--color-signal);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--color-signal) 38%, transparent);
+      text-underline-offset: 3px;
+    }
+    .terminal-screen a:hover { text-decoration-color: var(--color-signal); }
+
+    .prompt { color: var(--color-signal); }
+    .cmd { color: var(--color-bright); }
+    .out { color: var(--color-paper); }
+    .out.muted,
+    .muted { color: var(--color-muted); }
+
+    .terminal-input {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.65rem;
+      border-top: 1px solid var(--color-line);
+      padding: 0.8rem 0.95rem;
+      background: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    }
+
+    .terminal-input input {
+      min-width: 0;
+      border: 0;
+      background: transparent;
+      color: var(--color-bright);
+      font: inherit;
+      outline: none;
+    }
+
+    .terminal-input button,
+    .command-dock button {
+      border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line));
+      border-radius: 6px;
+      background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.16s, background 0.16s, color 0.16s;
+    }
+
+    .terminal-input button {
+      min-height: 2rem;
+      padding: 0 0.7rem;
+    }
+
+    .terminal-input button:hover,
+    .command-dock button:hover {
+      border-color: var(--color-signal);
+      background: color-mix(in srgb, var(--color-signal) 11%, transparent);
+      color: var(--color-bright);
+    }
+
+    .command-dock {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .command-dock button {
+      min-height: 1.8rem;
+      padding: 0.25rem 0.62rem;
+    }
+
+    .terminal-links {
+      margin-top: 3rem;
+    }
+
+    .terminal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      .terminal-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .terminal-grid a {
+      min-height: 6.4rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      padding: 0.9rem;
+      background: color-mix(in srgb, var(--color-surface) 38%, transparent);
+      transition: border-color 0.16s, background 0.16s, transform 0.16s;
+    }
+
+    .terminal-grid span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-signal);
+    }
+
+    .terminal-grid strong {
+      display: block;
+      margin-top: 1.1rem;
+      color: var(--color-paper);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+
+    .terminal-grid a:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 44%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 560px) {
+      .terminal-status { display: none; }
+      .terminal-input {
+        grid-template-columns: 1fr auto;
+      }
+      .terminal-input label {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .terminal-grid a,
+      .terminal-input button,
+      .command-dock button { transition: none; }
+      .terminal-grid a:hover { transform: none; }
+    }
+  </style>
+</BaseLayout>

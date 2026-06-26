@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "og": "node scripts/og-default.mjs && OUT=public/og-manifeste.png TITLE='Manifeste l0g' SUBTITLE='Sources primaires, code ouvert, auto-hébergement et limites assumées.' EYEBROW='manifeste' COMMAND='cat manifeste.md' CHIPS='sources primaires,code ouvert,aucun tracker' node scripts/og-default.mjs && node scripts/og-generate.mjs && POSTS_DIR=src/content/guides node scripts/og-generate.mjs",
+    "og": "node scripts/og-default.mjs && OUT=public/og-manifeste.png TITLE='Manifeste l0g' SUBTITLE='Sources primaires, code ouvert, auto-hébergement et limites assumées.' EYEBROW='manifeste' COMMAND='cat manifeste.md' CHIPS='sources primaires,code ouvert,aucun tracker' node scripts/og-default.mjs && OUT=public/og-terminal.png TITLE='Terminal l0g' SUBTITLE='Interface de navigation : manifeste, méthodologie, dashboards, API et corpus machine.' EYEBROW='terminal' COMMAND='ssh l0g.fr' CHIPS='terminal,api,llms.txt' node scripts/og-default.mjs && node scripts/og-generate.mjs && POSTS_DIR=src/content/guides node scripts/og-generate.mjs",
     "post": "node scripts/new-post.mjs",
     "prebuild": "npm run og",
     "build": "astro build && pagefind --site dist",

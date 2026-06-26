@@ -52,6 +52,13 @@ export const GET: APIRoute = async () => {
   out.push(
     "l0g est un atelier de risk intelligence construit sur une idee simple : une analyse utile doit pouvoir etre interrogee, refaite, contredite et datee. Le projet rend l'opacite lisible a partir de sources primaires, expose ses methodes, assume ses limites et refuse les signaux magiques, le conseil en investissement, les boites noires et le tracking inutile."
   );
+  out.push(SEP);
+  out.push('TERMINAL : Terminal l0g');
+  out.push(`URL : ${SITE}/terminal/`);
+  out.push('-'.repeat(76));
+  out.push(
+    "Interface de navigation en ligne de commande pour explorer l0g : help, ls, cat manifeste, open dashboards, open methodologie, open api, curl risk. Elle donne un acces rapide aux pages de methode, aux outils, aux sources, a l'API et au corpus machine."
+  );
 
   for (const g of guides) {
     let body = toPlain(g.body ?? '');

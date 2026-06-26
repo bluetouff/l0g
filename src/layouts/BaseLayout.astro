@@ -84,6 +84,11 @@ function isActive(tab: Tab): boolean {
   const bases = (tab.match ?? [tab.href]).map(norm);
   return bases.some((b) => p === b || p.startsWith(b + '/'));
 }
+function isCurrentHref(href: string): boolean {
+  const p = norm(path);
+  const h = norm(href);
+  return h === '/' ? p === '/' : p === h || p.startsWith(h + '/');
+}
 ---
 
 <!doctype html>
@@ -134,6 +139,10 @@ function isActive(tab: Tab): boolean {
             </span>
             <span class="brand-sep" aria-hidden="true"></span>
             <span class="brand-tag mono-label">risk intelligence</span>
+          </a>
+
+          <a href="/terminal/" class="header-terminal" aria-current={isCurrentHref('/terminal/') ? 'page' : undefined}>
+            <span aria-hidden="true">$</span> terminal
           </a>
 
           <div class="header-signal" aria-hidden="true" role="presentation">
@@ -279,6 +288,10 @@ function isActive(tab: Tab): boolean {
           </div>
           <div class="foot-col">
             <h2 class="foot-h mono-label">// données &amp; outils</h2>
+            <a href="/terminal/" class="foot-link" aria-current={isCurrentHref('/terminal/') ? 'page' : undefined}>
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10l3 2-3 2"/><path d="M13 15h3"/></svg>
+              terminal
+            </a>
             <a href="/recherche/" class="foot-link">
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
               recherche
@@ -305,6 +318,11 @@ function isActive(tab: Tab): boolean {
         <div class="footer-bottom">
           <a href="/" class="footer-wm" aria-label="l0g, accueil">l<span class="text-signal">0</span>g</a>
           <p class="footer-ethos mono-label">l0g.fr &copy; {year} · statique · auto-hébergé · aucun cookie · aucun tracker maison</p>
+          <div class="footer-mini" aria-label="Raccourcis machine">
+            <a href="/terminal/">terminal</a>
+            <a href="/llms.txt">llms.txt</a>
+            <a href="/rss.xml">rss</a>
+          </div>
           <a href="/rgpd/" class="link-term mono-label footer-legal">mentions légales &amp; rgpd</a>
         </div>
       </div>
@@ -355,9 +373,11 @@ function isActive(tab: Tab): boolean {
         font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-muted);
         text-decoration: none; width: fit-content; transition: color 0.15s;
       }
-      .foot-link:hover { color: var(--color-bright); }
+      .foot-link:hover,
+      .foot-link[aria-current="page"] { color: var(--color-bright); }
       .foot-ico { width: 14px; height: 14px; flex: none; opacity: 0.6; transition: opacity 0.15s; }
       .foot-link:hover .foot-ico { opacity: 1; }
+      .foot-link[aria-current="page"] .foot-ico { opacity: 1; color: var(--color-signal); }
       .footer-bottom {
         margin-top: 2.75rem; padding-top: 1.5rem;
         border-top: 1px solid var(--color-line);
@@ -365,6 +385,13 @@ function isActive(tab: Tab): boolean {
       }
       .footer-wm { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-paper); text-decoration: none; }
       .footer-ethos { color: var(--color-muted); }
+      .footer-mini {
+        display: inline-flex; flex-wrap: wrap; gap: 0.65rem;
+        font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .footer-mini a { color: var(--color-muted); transition: color 0.15s; }
+      .footer-mini a:hover { color: var(--color-signal); }
       .footer-legal { margin-left: auto; }
       @media (max-width: 520px) { .footer-legal { margin-left: 0; } }
 
@@ -379,9 +406,29 @@ function isActive(tab: Tab): boolean {
       .brand-sep { width: 1px; height: 1rem; background: var(--color-line); }
       .brand-tag { color: var(--color-muted); }
       @media (max-width: 380px) { .brand-sep, .brand-tag { display: none; } }
+      .header-terminal {
+        display: inline-flex; align-items: center; gap: 0.38rem;
+        margin-left: auto;
+        border: 1px solid color-mix(in srgb, var(--color-signal) 28%, var(--color-line));
+        border-radius: 999px;
+        padding: 0.32rem 0.72rem;
+        font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+        background: color-mix(in srgb, var(--color-surface) 45%, transparent);
+        transition: color 0.16s, border-color 0.16s, background 0.16s;
+      }
+      .header-terminal span { color: var(--color-signal); }
+      .header-terminal:hover,
+      .header-terminal[aria-current="page"] {
+        color: var(--color-bright);
+        border-color: color-mix(in srgb, var(--color-signal) 58%, transparent);
+        background: color-mix(in srgb, var(--color-signal) 8%, transparent);
+      }
+      @media (max-width: 760px) { .header-terminal { display: none; } }
 
       /* Motif décoratif du header : tracé de signal abstrait, à droite du lockup */
-      .header-signal { margin-left: auto; height: 46px; line-height: 0; flex-shrink: 1; min-width: 0; }
+      .header-signal { height: 46px; line-height: 0; flex-shrink: 1; min-width: 0; }
       .header-signal svg { height: 100%; width: auto; max-width: 100%; display: block; }
       .header-signal .hs-glow { animation: hs-pulse 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
       @keyframes hs-pulse { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.06); } }
