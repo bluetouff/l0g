@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { topics, postMatchesTopic } from '../../../config/topics.ts';
 import { methodologyPages } from '../../../config/methodology.ts';
+import { glossaryEntries, glossarySections } from '../../../config/glossary.ts';
 
 /**
  * Catalogue machine de l0g.fr — v1. Sortie statique générée au build.
@@ -58,6 +59,16 @@ export const GET: APIRoute = async () => {
     sources: m.sources.map((s) => ({ name: s.name, url: s.url, role: s.role })),
   }));
 
+  const glossary = glossaryEntries.map((term) => ({
+    slug: term.slug,
+    url: `${SITE}${term.url}`,
+    sigle: term.sigle,
+    name: term.nom,
+    definition: term.def,
+    category: term.sectionTitle,
+    guide: term.guide ? `${SITE}${term.guide}` : null,
+  }));
+
   const payload = {
     schema: 'https://l0g.fr/api/',
     version: '1',
@@ -67,11 +78,14 @@ export const GET: APIRoute = async () => {
       guides: guides.length,
       topics: topics.length,
       methodologies: methodologies.length,
+      glossary: glossary.length,
     },
     topics: topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb })),
+    glossaryCategories: glossarySections.map((s) => ({ slug: s.slug, title: s.titre, count: s.entries.length })),
     articles,
     guides,
     methodologies,
+    glossary,
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
     note: 'Catalogue best-effort. Le texte complet des analyses est servi par les pages /posts/.',

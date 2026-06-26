@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { topics } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
+import { glossaryEntries } from '../config/glossary.ts';
 
 /**
  * /llms.txt — carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -70,6 +71,13 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Hub méthodologie](${SITE}/methodologie/): synthèse des indicateurs l0g, limites et accès aux fiches d'instrument.`);
   for (const page of methodologyPages) {
     lines.push(`- [${page.label}](${SITE}/methodologie/${page.slug}/): ${page.question}`);
+  }
+  lines.push('');
+
+  lines.push('## Glossaire');
+  lines.push(`- [Glossaire l0g](${SITE}/glossaire/): ${glossaryEntries.length} sigles et notions de macro, finance, crypto, energie et regulation, chacun avec une page dediee.`);
+  for (const term of glossaryEntries) {
+    lines.push(`- [${term.sigle}](${SITE}${term.url}): ${term.nom} — ${term.def}`);
   }
   lines.push('');
 

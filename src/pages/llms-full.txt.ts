@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { glossaryEntries } from '../config/glossary.ts';
 
 /**
  * /llms-full.txt — corpus integral pour agents IA (convention llmstxt.org).
@@ -66,6 +67,18 @@ export const GET: APIRoute = async () => {
   out.push(
     "Page de controle public du site : date de build statique, compte des articles et guides, presence des snapshots risk.json, confluence.json et risk-events.json, liste des endpoints API et corpus machine, garanties zero tracker maison et limites de fraicheur des donnees."
   );
+  out.push(SEP);
+  out.push('GLOSSAIRE : Sigles et notions');
+  out.push(`URL : ${SITE}/glossaire/`);
+  out.push('-'.repeat(76));
+  for (const term of glossaryEntries) {
+    out.push(`${term.sigle} (${term.nom})`);
+    out.push(`URL : ${SITE}${term.url}`);
+    out.push(`Categorie : ${term.sectionTitle}`);
+    out.push(term.def);
+    if (term.guide) out.push(`Guide lie : ${SITE}${term.guide}`);
+    out.push('');
+  }
 
   for (const g of guides) {
     let body = toPlain(g.body ?? '');

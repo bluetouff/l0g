@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { glossaryEntries } from '../../config/glossary.ts';
+
+export function getStaticPaths() {
+  return glossaryEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const related = glossaryEntries
+  .filter((candidate) => candidate.sectionSlug === entry.sectionSlug && candidate.slug !== entry.slug)
+  .slice(0, 6);
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const canonical = `${SITE}${entry.url}`;
+const title = `${entry.sigle} — ${entry.nom}`;
+const description = `${entry.sigle} (${entry.nom}) : ${entry.def}`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'DefinedTerm',
+      '@id': `${canonical}#term`,
+      name: entry.nom,
+      termCode: entry.sigle,
+      description: entry.def,
+      url: canonical,
+      inLanguage: 'fr',
+      inDefinedTermSet: {
+        '@type': 'DefinedTermSet',
+        '@id': `${SITE}/glossaire/#glossary`,
+        name: 'Glossaire l0g',
+        url: `${SITE}/glossaire/`,
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Glossaire', item: `${SITE}/glossaire/` },
+        { '@type': 'ListItem', position: 3, name: entry.sigle, item: canonical },
+      ],
+    },
+  ],
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  ogImageAlt={`Définition ${entry.sigle} sur le glossaire l0g.fr`}
+>
+  <script type="application/ld+json" set:html={safeJsonLd} />
+
+  <nav class="term-breadcrumb mono-label" aria-label="Fil d'Ariane" data-pagefind-ignore>
+    <a href="/">l0g</a>
+    <span>/</span>
+    <a href="/glossaire/">glossaire</a>
+    <span>/</span>
+    <span aria-current="page">{entry.slug}</span>
+  </nav>
+
+  <article class="term-page rise" data-pagefind-body>
+    <p class="mono-label glow" style={`color:${entry.accent}`}>// définition</p>
+    <header class="term-head">
+      <div>
+        <h1 id="term" class="font-display text-3xl leading-tight tracking-wider glow sm:text-4xl">
+          {entry.sigle}
+        </h1>
+        <p class="term-name">{entry.nom}</p>
+      </div>
+      <a class="term-family" style={`--term-accent:${entry.accent}`} href={`/glossaire/#sec-${entry.sectionSlug}`}>
+        {entry.sectionTitle}
+      </a>
+    </header>
+
+    <section class="term-definition" aria-labelledby="definition-title">
+      <h2 id="definition-title" class="mono-label">Définition courte</h2>
+      <p>{entry.def}</p>
+    </section>
+
+    <div class="term-actions" data-pagefind-ignore>
+      {entry.guide && <a class="term-action" href={entry.guide}>Lire le guide complet</a>}
+      <a class="term-action ghost" href="/glossaire/">Retour au glossaire</a>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="term-related mt-12" aria-labelledby="related-title" data-pagefind-ignore>
+      <h2 id="related-title" class="mono-label mb-4" style={`color:${entry.accent}`}>
+        // termes voisins
+      </h2>
+      <div class="related-grid">
+        {related.map((item) => (
+          <a class="related-term" href={item.url}>
+            <span class="related-sigle" style={`color:${item.accent}`}>{item.sigle}</span>
+            <span class="related-name">{item.nom}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <style>
+    .term-breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--color-muted);
+      margin-bottom: 2.5rem;
+    }
+    .term-breadcrumb a {
+      color: var(--color-signal);
+      transition: color 0.18s;
+    }
+    .term-breadcrumb a:hover { color: var(--color-bright); }
+
+    .term-page {
+      max-width: 780px;
+    }
+    .term-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-top: 0.8rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .term-name {
+      margin-top: 0.45rem;
+      color: var(--color-bright);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .term-family {
+      flex: 0 0 auto;
+      margin-top: 0.25rem;
+      border: 1px solid color-mix(in srgb, var(--term-accent) 45%, transparent);
+      border-radius: 999px;
+      color: var(--term-accent);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      max-width: 18rem;
+      padding: 0.35rem 0.7rem;
+      text-transform: uppercase;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .term-family:hover {
+      background: color-mix(in srgb, var(--term-accent) 9%, transparent);
+      border-color: var(--term-accent);
+    }
+    .term-definition {
+      margin-top: 2rem;
+    }
+    .term-definition p {
+      margin-top: 0.8rem;
+      color: var(--color-paper);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      max-width: 66ch;
+    }
+    .term-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 2rem;
+    }
+    .term-action {
+      border: 1px solid color-mix(in srgb, var(--color-signal) 50%, transparent);
+      border-radius: 8px;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 0.55rem 0.85rem;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .term-action:hover {
+      background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+      border-color: var(--color-signal);
+      color: var(--color-bright);
+    }
+    .term-action.ghost {
+      border-color: var(--color-line);
+      color: var(--color-muted);
+    }
+    .term-action.ghost:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      color: var(--color-bright);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--color-line);
+    }
+    .related-term {
+      display: grid;
+      gap: 0.25rem;
+      padding: 0.85rem 0.65rem;
+      border-bottom: 1px solid var(--color-line);
+      border-radius: 8px;
+      transition: background 0.18s;
+    }
+    .related-term:hover { background: rgba(255, 255, 255, 0.018); }
+    .related-sigle {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .related-name {
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 640px) {
+      .term-head {
+        display: grid;
+      }
+      .term-family {
+        width: fit-content;
+        max-width: 100%;
+      }
+      .term-definition p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>
