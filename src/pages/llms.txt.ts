@@ -36,6 +36,12 @@ export const GET: APIRoute = async () => {
   );
   lines.push('');
 
+  lines.push('## Manifeste');
+  lines.push(
+    `- [Manifeste l0g](${SITE}/manifeste/): pacte de lecture du projet : sources primaires, code ouvert, auto-hebergement, limites assumees, zero tracker.`
+  );
+  lines.push('');
+
   lines.push('## Guides de reference');
   for (const g of guides) {
     lines.push(`- [${g.data.title}](${SITE}/guides/${g.id}/): ${g.data.summary ?? g.data.description}`);

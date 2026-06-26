@@ -45,6 +45,13 @@ export const GET: APIRoute = async () => {
   out.push('');
   out.push(`Genere le ${new Date().toISOString()}. ${guides.length} guides, ${posts.length} analyses.`);
   out.push(`Carte concise : ${SITE}/llms.txt`);
+  out.push(SEP);
+  out.push('MANIFESTE : Manifeste l0g');
+  out.push(`URL : ${SITE}/manifeste/`);
+  out.push('-'.repeat(76));
+  out.push(
+    "l0g est un atelier de risk intelligence construit sur une idee simple : une analyse utile doit pouvoir etre interrogee, refaite, contredite et datee. Le projet rend l'opacite lisible a partir de sources primaires, expose ses methodes, assume ses limites et refuse les signaux magiques, le conseil en investissement, les boites noires et le tracking inutile."
+  );
 
   for (const g of guides) {
     let body = toPlain(g.body ?? '');

@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "og": "node scripts/og-generate.mjs",
+    "og": "node scripts/og-default.mjs && OUT=public/og-manifeste.png TITLE='Manifeste l0g' SUBTITLE='Sources primaires, code ouvert, auto-hébergement et limites assumées.' EYEBROW='manifeste' COMMAND='cat manifeste.md' CHIPS='sources primaires,code ouvert,aucun tracker' node scripts/og-default.mjs && node scripts/og-generate.mjs && POSTS_DIR=src/content/guides node scripts/og-generate.mjs",
     "post": "node scripts/new-post.mjs",
-    "prebuild": "node scripts/og-generate.mjs && POSTS_DIR=src/content/guides node scripts/og-generate.mjs",
+    "prebuild": "npm run og",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "check": "astro check",

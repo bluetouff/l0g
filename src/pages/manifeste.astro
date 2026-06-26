@@ -1,0 +1,380 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+const title = 'Manifeste';
+const description =
+  "Ce que l0g promet, ce qu'il refuse et ce qu'il expose : sources primaires, code ouvert, auto-hébergement, limites assumées et absence de tracking.";
+
+const trustItems = [
+  { label: 'sources primaires', href: '/sites-reference/' },
+  { label: 'code ouvert', href: 'https://github.com/bluetouff' },
+  { label: 'auto-hébergé', href: '/rgpd/' },
+  { label: 'limites assumées', href: '/methodologie/' },
+];
+
+const principles = [
+  {
+    k: '01',
+    t: 'Rendre l’opacité lisible',
+    d: "l0g ne prétend pas supprimer l'incertitude. Le projet transforme des signaux dispersés en instruments lisibles, sourcés et critiquables.",
+  },
+  {
+    k: '02',
+    t: 'Préférer les sources primaires',
+    d: "Quand une source institutionnelle ou réglementaire existe, elle passe avant l'agrégateur, le résumé ou le récit de marché.",
+  },
+  {
+    k: '03',
+    t: 'Montrer la méthode',
+    d: "Un score sans formule est une opinion maquillée. Les pages méthodologie exposent les données, les calculs, les seuils et les angles morts.",
+  },
+  {
+    k: '04',
+    t: 'Refuser la capture',
+    d: "Pas de cookie, pas de pixel, pas de réseau social embarqué. Le site doit rester lisible sans vendre l'attention de son lecteur.",
+  },
+];
+
+const refusals = [
+  'Pas de signal magique.',
+  'Pas de conseil en investissement.',
+  'Pas de boîte noire quand une formule peut être publiée.',
+  'Pas de dépendance inutile à un tiers dans le navigateur.',
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  '@id': 'https://l0g.fr/manifeste/#manifesto',
+  name: 'Manifeste l0g',
+  description,
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  publisher: { '@id': 'https://l0g.fr/#org' },
+  url: 'https://l0g.fr/manifeste/',
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage="/og-manifeste.png"
+  ogImageAlt="Manifeste l0g : sources primaires, code ouvert, limites assumées"
+  sidebar={false}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="manifest-page rise" data-pagefind-body>
+    <section class="manifest-hero" data-pagefind-ignore>
+      <p class="mono-label glow" style="color: var(--color-signal)">// manifeste</p>
+      <h1 class="manifest-title font-display glow">
+        Le risque se lit mieux quand la méthode reste <span>visible</span>.
+      </h1>
+      <p class="manifest-lede">
+        l0g est un atelier de risk intelligence construit sur une idée simple :
+        une analyse utile doit pouvoir être interrogée, refaite, contredite et datée.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="manifest-strip" aria-label="Positionnement">
+      <div>
+        <span class="strip-k">objet</span>
+        <span class="strip-v">audit open source des narratifs économiques</span>
+      </div>
+      <div>
+        <span class="strip-k">matière</span>
+        <span class="strip-v">données publiques, marchés, flux, réglementation</span>
+      </div>
+      <div>
+        <span class="strip-k">sortie</span>
+        <span class="strip-v">articles, guides, dashboards, API, MCP</span>
+      </div>
+    </section>
+
+    <section class="manifest-section">
+      <p class="mono-label glow">// principes</p>
+      <div class="principle-grid">
+        {principles.map((p) => (
+          <article class="principle">
+            <span class="principle-k">{p.k}</span>
+            <h2>{p.t}</h2>
+            <p>{p.d}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="manifest-section two-col">
+      <div>
+        <p class="mono-label glow">// pacte de lecture</p>
+        <h2 class="manifest-h">Ce que l0g promet</h2>
+        <p class="manifest-p">
+          Les chiffres importants doivent pointer vers une source. Les méthodes doivent être
+          séparées des conclusions. Les limites doivent être lisibles avant que le signal ne
+          devienne trop séduisant.
+        </p>
+        <p class="manifest-p">
+          Le projet assume son point de vue : chercher les endroits où le discours économique
+          devient trop propre pour être honnête, et y remettre de la friction vérifiable.
+        </p>
+      </div>
+      <div>
+        <p class="mono-label glow">// refus</p>
+        <h2 class="manifest-h">Ce que l0g refuse</h2>
+        <ul class="refusal-list">
+          {refusals.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="manifest-section manifest-proof">
+      <p class="mono-label glow">// preuves plutôt que promesses</p>
+      <div class="proof-grid">
+        <a href="/methodologie/" class="proof-link">
+          <span>méthodologie</span>
+          <strong>formules, seuils, limites</strong>
+        </a>
+        <a href="/sites-reference/" class="proof-link">
+          <span>sources</span>
+          <strong>bibliothèque vérifiable</strong>
+        </a>
+        <a href="/api/" class="proof-link">
+          <span>données</span>
+          <strong>JSON, XML, catalogues</strong>
+        </a>
+        <a href="/rgpd/" class="proof-link">
+          <span>hygiène</span>
+          <strong>zéro tracker maison</strong>
+        </a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .manifest-page {
+      max-width: 58rem;
+    }
+
+    .manifest-hero {
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .manifest-title {
+      margin-top: 1rem;
+      max-width: 46rem;
+      font-size: clamp(2rem, 4.6vw, 3.1rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+
+    .manifest-title span { color: var(--color-accent); }
+
+    .manifest-lede {
+      margin-top: 1.25rem;
+      max-width: 44rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.08rem, 2vw, 1.24rem);
+      line-height: 1.65;
+      color: var(--color-paper);
+    }
+
+    .manifest-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 1.6rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--color-surface) 55%, transparent);
+    }
+
+    .manifest-strip > div {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .manifest-strip > div:last-child { border-bottom: 0; }
+
+    .strip-k {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-signal);
+    }
+
+    .strip-v {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-paper);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    @media (min-width: 760px) {
+      .manifest-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .manifest-strip > div {
+        border-bottom: 0;
+        border-right: 1px solid var(--color-line);
+      }
+      .manifest-strip > div:last-child { border-right: 0; }
+    }
+
+    .manifest-section {
+      margin-top: 3.6rem;
+    }
+
+    .principle-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      margin-top: 1.1rem;
+    }
+
+    @media (min-width: 760px) {
+      .principle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .principle {
+      min-height: 13rem;
+      border: 1px solid var(--color-line);
+      border-top: 2px solid color-mix(in srgb, var(--color-signal) 55%, transparent);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      background: color-mix(in srgb, var(--color-surface) 36%, transparent);
+    }
+
+    .principle-k {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      color: var(--color-signal);
+    }
+
+    .principle h2 {
+      margin-top: 0.6rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      line-height: 1.35;
+      color: var(--color-bright);
+    }
+
+    .principle p {
+      margin-top: 0.55rem;
+      font-family: var(--font-read);
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: var(--color-muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 820px) {
+      .two-col { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    .manifest-h {
+      margin-top: 0.8rem;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      line-height: 1.25;
+      color: var(--color-bright);
+    }
+
+    .manifest-p {
+      margin-top: 0.85rem;
+      font-family: var(--font-read);
+      line-height: 1.72;
+      color: var(--color-paper);
+    }
+
+    .refusal-list {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1rem;
+      font-family: var(--font-read);
+    }
+
+    .refusal-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      color: var(--color-paper);
+      line-height: 1.55;
+    }
+
+    .refusal-list li::before {
+      content: "×";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    .manifest-proof {
+      border-top: 1px solid var(--color-line);
+      padding-top: 1.7rem;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      .proof-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .proof-link {
+      display: flex;
+      min-height: 6rem;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      padding: 0.9rem;
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+      transition: border-color 0.16s, background 0.16s, transform 0.16s;
+    }
+
+    .proof-link span {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-signal);
+    }
+
+    .proof-link strong {
+      margin-top: 0.7rem;
+      color: var(--color-paper);
+      font-size: 0.86rem;
+      line-height: 1.35;
+    }
+
+    .proof-link:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 8%, transparent);
+      transform: translateY(-1px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .proof-link { transition: border-color 0.16s, background 0.16s; }
+      .proof-link:hover { transform: none; }
+    }
+  </style>
+</BaseLayout>
