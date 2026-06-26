@@ -292,6 +292,10 @@ function isCurrentHref(href: string): boolean {
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10l3 2-3 2"/><path d="M13 15h3"/></svg>
               terminal
             </a>
+            <a href="/status/" class="foot-link" aria-current={isCurrentHref('/status/') ? 'page' : undefined}>
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h4l2-5 4 10 2-5h4"/><path d="M4 5h16v14H4z"/></svg>
+              statut
+            </a>
             <a href="/recherche/" class="foot-link">
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
               recherche
@@ -320,6 +324,7 @@ function isCurrentHref(href: string): boolean {
           <p class="footer-ethos mono-label">l0g.fr &copy; {year} · statique · auto-hébergé · aucun cookie · aucun tracker maison</p>
           <div class="footer-mini" aria-label="Raccourcis machine">
             <a href="/terminal/">terminal</a>
+            <a href="/status/">status</a>
             <a href="/llms.txt">llms.txt</a>
             <a href="/rss.xml">rss</a>
           </div>

@@ -43,6 +43,9 @@ export const GET: APIRoute = async () => {
   lines.push(
     `- [Terminal l0g](${SITE}/terminal/): interface de navigation en ligne de commande vers manifeste, methodologie, dashboards, API, sources et corpus machine.`
   );
+  lines.push(
+    `- [Statut & intégrité](${SITE}/status/): état public du build statique, des snapshots, des endpoints, du corpus machine et des garanties de tracking.`
+  );
   lines.push('');
 
   lines.push('## Guides de reference');

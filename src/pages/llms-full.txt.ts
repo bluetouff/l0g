@@ -59,6 +59,13 @@ export const GET: APIRoute = async () => {
   out.push(
     "Interface de navigation en ligne de commande pour explorer l0g : help, ls, cat manifeste, open dashboards, open methodologie, open api, curl risk. Elle donne un acces rapide aux pages de methode, aux outils, aux sources, a l'API et au corpus machine."
   );
+  out.push(SEP);
+  out.push('STATUS : Statut & intégrité');
+  out.push(`URL : ${SITE}/status/`);
+  out.push('-'.repeat(76));
+  out.push(
+    "Page de controle public du site : date de build statique, compte des articles et guides, presence des snapshots risk.json, confluence.json et risk-events.json, liste des endpoints API et corpus machine, garanties zero tracker maison et limites de fraicheur des donnees."
+  );
 
   for (const g of guides) {
     let body = toPlain(g.body ?? '');
