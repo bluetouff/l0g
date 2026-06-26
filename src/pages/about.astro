@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+const trustItems = [
+  { label: 'open source', href: 'https://github.com/bluetouff' },
+  { label: 'auto-hébergé', href: '/rgpd/' },
+  { label: 'sources citées', href: '/sites-reference/' },
+  { label: 'aucun tracker', href: '/rgpd/' },
+];
 ---
 
 <BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et l'éthique zéro tiers du projet.">
@@ -16,6 +24,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       par l'outil et la donnée, à la croisée de quatre approches :
     </p>
 
+    <TrustBar items={trustItems} />
     <div class="facets">
       <div class="facet card" style="--c: var(--color-signal)">
         <span class="facet-k">01</span>

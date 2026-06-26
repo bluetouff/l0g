@@ -1,0 +1,116 @@
+---
+export type TrustItem = {
+  label: string;
+  href?: string;
+  note?: string;
+};
+
+interface Props {
+  items: TrustItem[];
+  accent?: string;
+  ariaLabel?: string;
+  variant?: 'default' | 'compact';
+  class?: string;
+}
+
+const {
+  items,
+  accent = 'var(--color-signal)',
+  ariaLabel = 'Garanties de lecture',
+  variant = 'default',
+} = Astro.props;
+
+const className = Astro.props.class;
+const classes = ['trust-bar', variant === 'compact' ? 'is-compact' : '', className]
+  .filter(Boolean)
+  .join(' ');
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+---
+
+<div class={classes} style={`--trust-a:${accent}`} aria-label={ariaLabel} data-pagefind-ignore>
+  {
+    items.map((item) => (
+      item.href ? (
+        <a
+          href={item.href}
+          class="trust-item"
+          title={item.note}
+          target={isExternal(item.href) ? '_blank' : undefined}
+          rel={isExternal(item.href) ? 'noopener' : undefined}
+        >
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>{item.label}</span>
+        </a>
+      ) : (
+        <span class="trust-item" title={item.note}>
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>{item.label}</span>
+        </span>
+      )
+    ))
+  }
+</div>
+
+<style>
+  .trust-bar {
+    --trust-a: var(--color-signal);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.15rem;
+    max-width: 48rem;
+  }
+
+  .trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    min-height: 1.75rem;
+    border: 1px solid color-mix(in srgb, var(--trust-a) 28%, var(--color-line));
+    border-radius: 999px;
+    padding: 0.28rem 0.68rem;
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--trust-a) 7%, transparent), transparent 86%),
+      color-mix(in srgb, var(--color-surface) 45%, transparent);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--trust-a) 76%, var(--color-paper));
+    transition: border-color 0.18s, color 0.18s, background 0.18s;
+  }
+
+  a.trust-item:hover {
+    border-color: color-mix(in srgb, var(--trust-a) 60%, transparent);
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--trust-a) 10%, transparent), transparent 86%),
+      color-mix(in srgb, var(--color-surface) 55%, transparent);
+    color: var(--color-bright);
+  }
+
+  .trust-dot {
+    width: 0.36rem;
+    height: 0.36rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--trust-a);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--trust-a) 40%, transparent);
+  }
+
+  .is-compact {
+    gap: 0.42rem;
+    margin-top: 0.85rem;
+  }
+
+  .is-compact .trust-item {
+    min-height: 1.55rem;
+    padding: 0.2rem 0.56rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .is-compact .trust-dot {
+    width: 0.3rem;
+    height: 0.3rem;
+  }
+</style>

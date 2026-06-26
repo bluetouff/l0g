@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
 import { topicForTag } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
@@ -26,6 +27,12 @@ const isoUpd = updated.toISOString();
 const rt = readingTime(guide.body);
 
 const url = new URL(`/guides/${guide.id}/`, Astro.site).toString();
+const trustItems = [
+  { label: 'révision datée', note: updatedLabel },
+  { label: 'page canonique', href: `/guides/${guide.id}/` },
+  { label: 'sources primaires', href: '/sites-reference/' },
+  { label: 'aucun tracker', href: '/rgpd/' },
+];
 
 // JSON-LD honnête : décrit ce qu'est la page, sans note ni HowTo fabriqués.
 const ld = {
@@ -92,6 +99,7 @@ const ld = {
         </span>
       </div>
 
+      <TrustBar items={trustItems} variant="compact" />
       <div class="post-rule" aria-hidden="true"></div>
     </header>
 

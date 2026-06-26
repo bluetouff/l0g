@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
 import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
 
 const updated = '26 juin 2026';
@@ -10,6 +11,13 @@ const accentVar: Record<string, string> = {
   pink: 'var(--color-accent)',
   amber: 'var(--color-amber)',
 };
+
+const trustItems = [
+  { label: 'formules exposées', href: '#le-bandeau-de-risque-consolide' },
+  { label: 'sources primaires', href: '/sites-reference/' },
+  { label: 'limites assumées', href: '#la-confluence-13f-form-4' },
+  { label: 'pas un conseil' },
+];
 ---
 
 <BaseLayout
@@ -35,10 +43,11 @@ const accentVar: Record<string, string> = {
       ne contacte aucun tiers.
     </p>
 
+    <TrustBar items={trustItems} />
     <span class="methodo-meta">Dernière mise à jour : {updated}</span>
   </section>
 
-  <section class="mt-14" data-pagefind-ignore>
+  <section class="mt-14" id="fiches-instrument" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// fiches d'instrument</p>
     <p class="m-p">
       Chaque outil a maintenant sa fiche de lecture : question couverte, sources primaires,
@@ -63,7 +72,7 @@ const accentVar: Record<string, string> = {
     </div>
   </section>
 
-  <section class="mt-14" data-pagefind-ignore>
+  <section class="mt-14" id="le-bandeau-de-risque-consolide" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// le bandeau de risque consolidé</p>
     <p class="m-p">
       Quatre tableaux de bord indépendants produisent chacun un indice, ramené sur une
@@ -128,7 +137,7 @@ interpolation linéaire entre ces points, borné 0-100</code></pre>
     </div>
   </section>
 
-  <section class="mt-14" data-pagefind-ignore>
+  <section class="mt-14" id="la-confluence-13f-form-4" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// la confluence 13F × Form 4</p>
     <p class="m-p">
       Le classement vient de <a class="link-term" href="https://13flow.eu" target="_blank" rel="noopener">13FLOW</a>,

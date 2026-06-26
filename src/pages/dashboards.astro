@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
 import { dashboards } from '../config/sidebar.ts';
 import { methodologyBySlug, methodologyUrl } from '../config/methodology.ts';
 
@@ -14,6 +15,13 @@ const dashboardCards = dashboards.map((dashboard) => ({
   ...dashboard,
   methodologyHref: methodologyBySlug.has(dashboard.slug) ? methodologyUrl(dashboard.slug) : null,
 }));
+
+const trustItems = [
+  { label: 'snapshots statiques', href: '/methodologie/' },
+  { label: 'sources publiques', href: '/sites-reference/' },
+  { label: 'code ouvert', href: 'https://github.com/bluetouff' },
+  { label: 'zéro tracker', href: '/rgpd/' },
+];
 ---
 
 <BaseLayout
@@ -31,6 +39,7 @@ const dashboardCards = dashboards.map((dashboard) => ({
       sources, écrit un instantané, et votre navigateur ne contacte aucun tiers : pas de CDN,
       pas de tracker, aucune clé exposée. Chaque outil est documenté et son code est ouvert.
     </p>
+    <TrustBar items={trustItems} />
   </section>
 
   <div class="mt-9 grid gap-5 sm:grid-cols-2">
