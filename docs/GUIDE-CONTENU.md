@@ -43,7 +43,7 @@ Choisis l'extension selon le besoin :
 ---
 title: "Titre de l'article"
 description: "Résumé court : sert à la liste, au SEO et au flux RSS."
-pubDate: 2026-06-09
+pubDate: 2026-06-09T14:30:00+02:00
 tags: ["macro", "private credit"]
 draft: false
 ---
@@ -53,7 +53,7 @@ draft: false
 |---------------|-------------------------------------------------------------|
 | `title`       | Titre affiché.                                              |
 | `description` | Résumé (liste d'accueil + RSS + partage).                  |
-| `pubDate`     | Date (format `AAAA-MM-JJ`). Tri du plus récent au plus ancien. |
+| `pubDate`     | Date de publication. Utilise de préférence le format complet `AAAA-MM-JJTHH:mm:ss+02:00` pour trier correctement plusieurs articles publiés le même jour. Le format court `AAAA-MM-JJ` reste accepté. |
 | `updatedDate` | Optionnel, date de mise à jour.                            |
 | `tags`        | Liste de tags.                                              |
 | `draft`       | `true` = invisible sur le site (brouillon). `false` = publié. |
