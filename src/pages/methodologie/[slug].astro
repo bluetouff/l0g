@@ -37,6 +37,13 @@ const jsonLd = {
   license: 'https://creativecommons.org/licenses/by/4.0/',
   url: `${site}/methodologie/${page.slug}/`,
 };
+
+const trustItems = [
+  { label: 'sources primaires', href: '#sources' },
+  { label: 'code ouvert', href: page.repoUrl },
+  { label: 'limites assumées', href: '#interpreter' },
+  { label: 'pas un conseil', href: '#reproductibilite' },
+];
 ---
 
 <BaseLayout title={page.title} description={page.description}>
@@ -47,6 +54,19 @@ const jsonLd = {
       <p class="mono-label glow" style="color: var(--a)">{page.eyebrow}</p>
       <h1 class="method-title mt-3 font-display glow">{page.title}</h1>
       <p class="method-question">{page.question}</p>
+      <div class="method-trust" aria-label="Garanties de lecture">
+        {trustItems.map((item) => (
+          <a
+            href={item.href}
+            class="method-trust-item"
+            target={item.href.startsWith('http') ? '_blank' : undefined}
+            rel={item.href.startsWith('http') ? 'noopener' : undefined}
+          >
+            <span class="method-trust-dot" aria-hidden="true"></span>
+            {item.label}
+          </a>
+        ))}
+      </div>
       <div class="method-actions" data-pagefind-ignore>
         <a class="method-action primary" href={page.dashboardUrl} target="_blank" rel="noopener">ouvrir l'outil</a>
         <a class="method-action" href={page.repoUrl} target="_blank" rel="noopener">code source</a>
@@ -180,6 +200,43 @@ const jsonLd = {
       color: var(--color-paper);
       border-left: 2px solid var(--a);
       padding-left: 1rem;
+    }
+
+    .method-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.15rem;
+      max-width: 46rem;
+    }
+
+    .method-trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      min-height: 1.75rem;
+      border: 1px solid color-mix(in srgb, var(--a) 28%, var(--color-line));
+      border-radius: 999px;
+      padding: 0.28rem 0.68rem;
+      background: color-mix(in srgb, var(--a) 5%, transparent);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--a) 76%, var(--color-paper));
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .method-trust-item:hover {
+      border-color: color-mix(in srgb, var(--a) 60%, transparent);
+      background: color-mix(in srgb, var(--a) 8%, transparent);
+      color: var(--color-bright);
+    }
+    .method-trust-dot {
+      width: 0.36rem;
+      height: 0.36rem;
+      border-radius: 50%;
+      background: var(--a);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--a) 40%, transparent);
     }
 
     .method-actions {
