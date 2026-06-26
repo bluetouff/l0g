@@ -321,12 +321,12 @@ function isActive(tab: Tab): boolean {
       @media (min-width: 560px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
       @media (min-width: 920px) { .footer-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
       .foot-col { display: flex; flex-direction: column; gap: 0.55rem; }
-      .footer-profile-col { justify-content: flex-start; }
+      .footer-profile-col { justify-content: flex-start; padding-top: 0.1rem; }
       .footer-profile-link {
         display: block;
-        width: clamp(3.5rem, 8vw, 4.75rem);
-        height: clamp(3.5rem, 8vw, 4.75rem);
-        opacity: 0.86;
+        width: clamp(4.8rem, 8.5vw, 6rem);
+        height: clamp(4.8rem, 8.5vw, 6rem);
+        opacity: 0.9;
         transition: opacity 0.18s, filter 0.18s, transform 0.18s;
       }
       .footer-profile-link:hover {
