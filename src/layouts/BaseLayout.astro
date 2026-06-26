@@ -236,6 +236,17 @@ function isActive(tab: Tab): boolean {
             </a>
           </div>
           <div class="foot-col">
+            <h2 class="foot-h mono-label">// méthodologie</h2>
+            {
+              methodologyPages.map((page) => (
+                <a href={methodologyUrl(page.slug)} class="foot-link">
+                  <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15l3-4 3 2 5-7"/><path d="M16 6h2.5v2.5"/></svg>
+                  {page.shortLabel}
+                </a>
+              ))
+            }
+          </div>
+          <div class="foot-col">
             <h2 class="foot-h mono-label">// comprendre</h2>
             <a href="/about/" class="foot-link">
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.7" fill="currentColor" stroke="none"/></svg>
@@ -253,17 +264,6 @@ function isActive(tab: Tab): boolean {
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1z"/></svg>
               sites de référence
             </a>
-          </div>
-          <div class="foot-col">
-            <h2 class="foot-h mono-label">// méthodologie</h2>
-            {
-              methodologyPages.map((page) => (
-                <a href={methodologyUrl(page.slug)} class="foot-link">
-                  <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15l3-4 3 2 5-7"/><path d="M16 6h2.5v2.5"/></svg>
-                  {page.shortLabel}
-                </a>
-              ))
-            }
           </div>
           <div class="foot-col">
             <h2 class="foot-h mono-label">// données &amp; outils</h2>
