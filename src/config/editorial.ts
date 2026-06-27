@@ -163,6 +163,17 @@ export const editorialProtocol = {
 export const editorialChangelog: EditorialChangelogEntry[] = [
   {
     date: '2026-06-27',
+    title: 'Clarification de l’échelle 0-100 des dashboards',
+    kind: 'méthode',
+    summary:
+      'Le bandeau est désormais présenté comme un tableau consolidé de signaux de risque : les scores 0-100 sont une normalisation d’affichage par instrument, pas un indice unique ni une probabilité comparable.',
+    links: [
+      { label: 'méthodologie', href: '/methodologie/' },
+      { label: 'api risk', href: '/api/v1/risk.json' },
+    ],
+  },
+  {
+    date: '2026-06-27',
     title: 'Échelle de profondeur de preuve',
     kind: 'traçabilité',
     summary:

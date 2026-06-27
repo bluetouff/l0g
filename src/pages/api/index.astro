@@ -33,7 +33,7 @@ const datasetLd = {
 
 <BaseLayout
   title="API publique"
-  description="API publique l0g : indices de risque (US Macro, EU Macro, Yen Carry, Énergie) et synthèse 13FLOW au format JSON, plus un flux Atom des changements de niveau. CORS ouvert, licence CC BY 4.0."
+  description="API publique l0g : signaux de risque (US Macro, EU Macro, Yen Carry, Énergie) et synthèse 13FLOW au format JSON, plus un flux Atom des changements de niveau. CORS ouvert, licence CC BY 4.0."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(datasetLd)} />
@@ -43,8 +43,9 @@ const datasetLd = {
       API <span style="color: var(--color-accent)">publique</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
-      Les indices de risque consolidés sur l0g sont exposés en JSON, et leurs changements de
-      niveau en flux Atom. De quoi les intégrer dans vos propres dashboards de veille, vos bots
+      Les signaux de risque l0g sont exposés en JSON, et leurs changements de
+      niveau en flux Atom. Les scores 0-100 sont normalisés par instrument : ils ne forment
+      pas un indice global ni une probabilité comparable. De quoi les intégrer dans vos propres dashboards de veille, vos bots
       d'alerte (Matrix, Signal, Telegram) ou un SIEM. CORS ouvert, aucune clé, aucune
       authentification, aucun pistage.
     </p>
@@ -66,7 +67,7 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/risk.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">État courant des quatre indices et synthèse confluence.</span>
+          <span class="ep-desc">État courant des quatre signaux et synthèse confluence.</span>
         </a>
         <a class="ep card" href="/api/v1/risk.xml" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
@@ -113,6 +114,7 @@ const datasetLd = {
     "yen":     { "value": 41, "scale": 100, "level": "Modéré", "tone": "moderate", "label": "Yen Carry Monitor",  "source": "https://yct.l0g.fr" },
     "energie": { "value": 58, "scale": 100, "level": "Tendu",  "tone": "elevated", "label": "Energie Monitor",    "source": "https://energie.l0g.fr" }
   },
+  "scaleCaveat": { "title": "Normalisation d’affichage, pas indice unique" },
   "confluence": { "updated": "...", "count": 15, "conviction": 1, "top": { "ticker": "TSM", "score": 90, "quadrant": "divergent" } },
   "license": "CC BY 4.0", "attribution": "l0g.fr"
 }`}</code></pre>
@@ -134,7 +136,7 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
       </div>
       <p class="mt-3 text-muted">
         Les colonnes <code class="apic">conf_*</code> (synthèse 13FLOW) sont vides sur les premiers
-        points, antérieurs à l'intégration de la confluence dans l'agrégat. Les quatre sous-indices,
+        points, antérieurs à l'intégration de la confluence dans le snapshot. Les quatre sous-signaux,
         eux, couvrent toute la période.
       </p>
     </div>
@@ -142,14 +144,14 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// champs</h2>
       <ul class="api-list mt-3">
-        <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur de l'indice (0 à <code class="apic">scale</code>, généralement 100).</li>
+        <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur du signal (0 à <code class="apic">scale</code>, généralement 100), normalisée par instrument.</li>
         <li><code class="apic">level</code> — libellé lisible (Détendu, Modéré, Élevé/Tendu, Crise).</li>
         <li><code class="apic">tone</code> — code machine : <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code>, <code class="apic">crisis</code>.</li>
         <li><code class="apic">snapshot</code> — horodatage (ISO 8601 UTC) des données ; <code class="apic">generated</code> — date de génération du fichier.</li>
         <li><code class="apic">confluence</code> — synthèse 13FLOW : nombre de titres, quadrant conviction, meilleur score.</li>
       </ul>
       <p class="mt-3 text-muted">
-        Pas d'« indice global » : on n'expose que les sous-indices réellement mesurés par chaque
+        Pas d'« indice global » : on n'expose que les sous-signaux réellement mesurés par chaque
         outil. Agréger les quatre en un seul chiffre serait un nombre dérivé non mesuré — on ne le
         fait pas.
       </p>

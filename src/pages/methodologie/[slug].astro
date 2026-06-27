@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
-import { methodologyPages, methodologyUpdatedIso, type MethodologyPage } from '../../config/methodology.ts';
+import { methodologyPages, methodologyUpdatedIso, riskBandScaleCaveat, type MethodologyPage } from '../../config/methodology.ts';
 
 export function getStaticPaths() {
   return methodologyPages.map((page) => ({
@@ -18,6 +18,7 @@ interface Props {
 
 const { page } = Astro.props;
 const updatedDate = new Date(`${methodologyUpdatedIso}T00:00:00+02:00`);
+const isRiskBandInstrument = page.slug !== '13flow';
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -82,6 +83,16 @@ const trustItems = [
           </div>
         ))}
       </div>
+      {isRiskBandInstrument && (
+        <div class="scale-note">
+          <p class="mono-label">normalisation 0-100</p>
+          <p>
+            {riskBandScaleCaveat.summary} Ici, le score doit être lu comme une position dans
+            le régime propre à <strong>{page.shortLabel}</strong>, pas comme une probabilité
+            ni comme une mesure directement comparable aux autres instruments.
+          </p>
+        </div>
+      )}
     </section>
 
     <section class="method-section" id="sources">
@@ -282,6 +293,27 @@ const trustItems = [
       font-family: var(--font-read);
       font-size: 0.95rem;
       line-height: 1.55;
+    }
+    .scale-note {
+      margin-top: 1rem;
+      max-width: 46rem;
+      border: 1px solid var(--color-line);
+      border-left: 2px solid color-mix(in srgb, var(--a) 55%, transparent);
+      border-radius: 0 8px 8px 0;
+      background: color-mix(in srgb, var(--a) 5%, transparent);
+      padding: 0.85rem 1rem;
+    }
+    .scale-note .mono-label {
+      color: var(--a);
+    }
+    .scale-note p:not(.mono-label) {
+      margin-top: 0.45rem;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .scale-note strong {
+      color: var(--color-paper);
     }
 
     .source-table-wrap {

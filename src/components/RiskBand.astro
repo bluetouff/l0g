@@ -1,6 +1,6 @@
 ---
 /**
- * Bandeau « risque consolidé » : 4 indices repris des dashboards.
+ * Bandeau consolidé de signaux : 4 indices repris des dashboards.
  * Les valeurs sont lues côté navigateur dans /risk.json (origine self,
  * aucun appel externe). Couleur par niveau de risque pour que ça saute aux yeux.
  */
@@ -14,7 +14,7 @@ const items = [
 
 <section class="rise my-8" data-pagefind-ignore>
   <div class="mb-3 flex items-baseline justify-between gap-3">
-    <h2 class="mono-label glow">// risque consolidé</h2>
+    <h2 class="mono-label glow">// signaux de risque</h2>
     <span class="mono-label" id="risk-updated"></span>
   </div>
 
@@ -41,6 +41,11 @@ const items = [
       ))
     }
   </div>
+  <p class="risk-caveat">
+    Scores 0-100 normalisés par instrument : ils ne mesurent ni le même phénomène,
+    ni le même horizon. À lire comme un tableau de bord de signaux, pas comme un indice
+    unique de risque systémique.
+  </p>
 </section>
 
 <script src="/risk.js" is:inline></script>
@@ -60,4 +65,11 @@ const items = [
     transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   .risk-value { color: var(--color-muted); }
+  .risk-caveat {
+    margin-top: 0.75rem;
+    max-width: 48rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
 </style>

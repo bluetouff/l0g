@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
-import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
+import { methodologyPages, methodologyUrl, methodologyUpdated, riskBandScaleCaveat } from '../config/methodology.ts';
 
-const updated = '26 juin 2026';
+const updated = methodologyUpdated;
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -13,7 +13,7 @@ const accentVar: Record<string, string> = {
 };
 
 const trustItems = [
-  { label: 'formules exposées', href: '#le-bandeau-de-risque-consolide' },
+  { label: 'formules exposées', href: '#bandeau-signaux-risque' },
   { label: 'sources primaires', href: '/sites-reference/' },
   { label: 'limites assumées', href: '#la-confluence-13f-form-4' },
   { label: 'pas un conseil' },
@@ -22,7 +22,7 @@ const trustItems = [
 
 <BaseLayout
   title="Méthodologie"
-  description="Comment l0g calcule le risque consolidé (US, Euro, Yen, Énergie) et le score de confluence 13F x Form 4 : formules, seuils et limites assumées."
+  description="Comment l0g calcule ses signaux de risque : bandeau consolidé de signaux, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
 >
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// méthodologie</p>
@@ -36,8 +36,8 @@ const trustItems = [
     </p>
 
     <p class="m-p">
-      Cette page documente les deux indicateurs agrégés affichés sur le site : le bandeau
-      de risque consolidé en page d'accueil, et le classement de confluence repris de
+      Cette page documente les deux familles de signaux affichées sur le site : le bandeau
+      consolidé de signaux de risque en page d'accueil, et le classement de confluence repris de
       13FLOW dans la colonne de droite. Tout est calculé sur des données publiques,
       côté serveur, et figé dans des fichiers JSON servis depuis l0g.fr. Le navigateur
       ne contacte aucun tiers.
@@ -72,14 +72,34 @@ const trustItems = [
     </div>
   </section>
 
-  <section class="mt-14" id="le-bandeau-de-risque-consolide" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// le bandeau de risque consolidé</p>
+  <section class="mt-14" id="bandeau-signaux-risque" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// le bandeau consolidé de signaux</p>
     <p class="m-p">
       Quatre tableaux de bord indépendants produisent chacun un indice, ramené sur une
-      échelle 0-100 où un chiffre plus élevé signale un risque plus marqué. Un agrégateur
+      échelle 0-100 où un chiffre plus élevé signale un risque plus marqué dans son propre
+      instrument. Un agrégateur
       lit les quatre sources, les normalise et écrit un seul fichier. Aucune des quatre
       applications n'est modifiée : on lit ce qu'elles exposent déjà.
     </p>
+
+    <div class="scale-note">
+      <p class="scale-k mono-label">// limite de lecture</p>
+      <h2>{riskBandScaleCaveat.title}</h2>
+      <p>{riskBandScaleCaveat.summary}</p>
+      <div class="scale-contrast">
+        <div>
+          <span>bonne lecture</span>
+          <strong>{riskBandScaleCaveat.correctLabel}</strong>
+        </div>
+        <div>
+          <span>à éviter</span>
+          <strong>{riskBandScaleCaveat.wrongLabel}</strong>
+        </div>
+      </div>
+      <ul>
+        {riskBandScaleCaveat.details.map((detail) => <li>{detail}</li>)}
+      </ul>
+    </div>
 
     <div class="idx-list">
       <article class="idx card" style="--c: var(--color-accent)">
@@ -253,6 +273,66 @@ interpolation linéaire entre ces points, borné 0-100</code></pre>
     }
 
     .m-p { margin-top: 0.95rem; max-width: 42rem; color: var(--color-paper); line-height: 1.7; }
+
+    .scale-note {
+      margin-top: 1.2rem;
+      max-width: 46rem;
+      border: 1px solid var(--color-line);
+      border-left: 2px solid color-mix(in srgb, var(--color-amber) 65%, transparent);
+      border-radius: 0 8px 8px 0;
+      background: color-mix(in srgb, var(--color-amber) 5%, transparent);
+      padding: 1rem 1.1rem;
+    }
+    .scale-k {
+      color: var(--color-amber);
+    }
+    .scale-note h2 {
+      margin-top: 0.45rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+    .scale-note p:not(.scale-k) {
+      margin-top: 0.55rem;
+      color: var(--color-paper);
+      line-height: 1.65;
+    }
+    .scale-contrast {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 0.85rem;
+    }
+    @media (min-width: 680px) {
+      .scale-contrast { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .scale-contrast div {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      padding: 0.75rem;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    }
+    .scale-contrast span {
+      display: block;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scale-contrast strong {
+      display: block;
+      margin-top: 0.3rem;
+      color: var(--color-bright);
+      line-height: 1.4;
+    }
+    .scale-note ul {
+      display: grid;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+      padding-left: 1rem;
+      color: var(--color-muted);
+      line-height: 1.55;
+    }
 
     .tool-grid {
       display: grid;

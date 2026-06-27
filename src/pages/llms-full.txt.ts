@@ -76,6 +76,9 @@ export const GET: APIRoute = async () => {
   out.push(
     "Inventaire des snapshots publics et endpoints l0g : risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
   );
+  out.push(
+    "Le fichier risk.json expose un tableau de bord consolide de signaux, pas un indice unique de risque systemique : les scores 0-100 sont normalises par instrument et ne sont pas statistiquement equivalents entre US Macro, Euro Macro, Yen Carry et Energie."
+  );
   out.push(SEP);
   out.push('PREUVES : Changelog et artefacts verifiables');
   out.push(`URL : ${SITE}/preuves/`);

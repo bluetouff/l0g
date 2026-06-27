@@ -75,7 +75,7 @@ const commits = gitLog();
 const latestCommit = commits[0];
 
 const artefacts = [
-  fileMeta('public/risk.json', '/api/v1/risk.json', 'risk.json', 'Indices de risque publiés en JSON.'),
+  fileMeta('public/risk.json', '/api/v1/risk.json', 'risk.json', 'Signaux de risque publiés en JSON, normalisés par instrument.'),
   fileMeta('public/confluence.json', '/confluence.json', 'confluence.json', 'Snapshot 13FLOW exposé publiquement.'),
   fileMeta('public/risk-events.json', '/risk-events.json', 'risk-events.json', 'Journal des changements de niveau.'),
   fileMeta('public/.well-known/security.txt', '/.well-known/security.txt', 'security.txt', 'Contact vulnérabilités et canal de disclosure.'),

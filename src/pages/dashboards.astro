@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { dashboards } from '../config/sidebar.ts';
-import { methodologyBySlug, methodologyUrl } from '../config/methodology.ts';
+import { methodologyBySlug, methodologyUrl, riskBandScaleCaveat } from '../config/methodology.ts';
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -40,6 +40,13 @@ const trustItems = [
       pas de tracker, aucune clé exposée. Chaque outil est documenté et son code est ouvert.
     </p>
     <TrustBar items={trustItems} />
+    <div class="dash-note">
+      <span class="mono-label">// lecture des scores</span>
+      <p>
+        {riskBandScaleCaveat.summary} Un score proche sur deux outils différents ne signifie
+        pas une équivalence statistique : il faut lire la fiche de chaque instrument.
+      </p>
+    </div>
   </section>
 
   <div class="mt-9 grid gap-5 sm:grid-cols-2">
@@ -122,6 +129,23 @@ const trustItems = [
       --a: var(--color-signal);
       border-top: 2px solid color-mix(in srgb, var(--a) 60%, transparent);
     }
+    .dash-note {
+      margin-top: 1rem;
+      max-width: 46rem;
+      border-left: 2px solid color-mix(in srgb, var(--color-amber) 65%, transparent);
+      padding: 0.8rem 0 0.8rem 1rem;
+      background: color-mix(in srgb, var(--color-amber) 4%, transparent);
+    }
+    .dash-note span {
+      color: var(--color-amber);
+    }
+    .dash-note p {
+      margin-top: 0.35rem;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
     .fiche:hover { border-top-color: var(--a); }
 
     .fiche-preview {

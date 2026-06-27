@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { riskBandScaleCaveat } from '../../../config/methodology.ts';
 
 /**
  * API publique l0g — v1. Sortie statique : le corps est généré au build à partir
@@ -58,12 +59,13 @@ export const GET: APIRoute = () => {
     generated: new Date().toISOString(),
     snapshot: risk.updated ?? null,
     indices,
+    scaleCaveat: riskBandScaleCaveat,
     confluence,
     feed: 'https://l0g.fr/api/v1/risk.xml',
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
     note:
-      "Indices repris des outils l0g, à la cadence des snapshots (pas de temps réel strict). Best-effort, pas un conseil en investissement.",
+      "Signaux repris des outils l0g, à la cadence des snapshots (pas de temps réel strict). L’échelle 0-100 est une normalisation d’affichage par instrument, pas un indice global ni une probabilité. Best-effort, pas un conseil en investissement.",
   };
 
   return new Response(JSON.stringify(payload, null, 2) + '\n', {

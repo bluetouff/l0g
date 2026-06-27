@@ -123,7 +123,7 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Acces machine');
-  lines.push(`- [API indices de risque](${SITE}/api/v1/risk.json): indices US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON.`);
+  lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
   lines.push(`- [Serveur MCP](${SITE}/api/mcp): endpoint Model Context Protocol en lecture seule (transport Streamable HTTP). Doc : ${SITE}/mcp`);

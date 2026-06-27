@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { topics, postMatchesTopic } from '../../../config/topics.ts';
-import { methodologyPages } from '../../../config/methodology.ts';
+import { methodologyPages, riskBandScaleCaveat } from '../../../config/methodology.ts';
 import { glossaryEntries, glossarySections } from '../../../config/glossary.ts';
 import { primaryInstitutions } from '../../../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol } from '../../../config/editorial.ts';
@@ -77,6 +77,7 @@ export const GET: APIRoute = async () => {
     dashboard: m.dashboardUrl,
     repo: m.repoUrl,
     updated: m.updated,
+    scaleCaveat: m.slug === '13flow' ? null : riskBandScaleCaveat,
     sources: m.sources.map((s) => ({ name: s.name, url: s.url, role: s.role })),
   }));
 
@@ -142,6 +143,7 @@ export const GET: APIRoute = async () => {
     articles,
     guides,
     methodologies,
+    riskBandScaleCaveat,
     editorial,
     primarySources,
     glossary,

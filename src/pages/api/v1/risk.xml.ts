@@ -5,7 +5,7 @@ import { join } from 'node:path';
 /**
  * Flux Atom des changements de niveau de risque (franchissements de seuil).
  * Lit /risk-events.json — alimenté par le builder zen : à chaque snapshot, si le
- * `level`/`tone` d'un indice change vs le snapshot précédent, on append un événement.
+ * `level`/`tone` d'un signal change vs le snapshot précédent, on append un événement.
  * Pour bots (Matrix/Signal/Telegram), agrégateurs de veille, SIEM.
  */
 
@@ -46,7 +46,7 @@ export const GET: APIRoute = () => {
     <updated>${esc(e.ts)}</updated>
     <link href="${esc(link)}"/>
     <category term="${esc(e.tone)}"/>
-    <summary>Indice ${esc(e.label || e.key)} passé de ${esc(e.from)} à ${esc(e.to)} (valeur ${esc(e.value)}/100).</summary>
+    <summary>Signal ${esc(e.label || e.key)} passé de ${esc(e.from)} à ${esc(e.to)} (valeur ${esc(e.value)}/100, normalisée par instrument).</summary>
   </entry>`;
     })
     .join('\n');
@@ -54,7 +54,7 @@ export const GET: APIRoute = () => {
   const feed = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>l0g — changements de niveau de risque</title>
-  <subtitle>Franchissements de seuil des indices l0g : US Macro, EU Macro, Yen Carry, Énergie.</subtitle>
+  <subtitle>Franchissements de seuil des signaux l0g : US Macro, EU Macro, Yen Carry, Énergie.</subtitle>
   <link href="${SITE}/api/v1/risk.xml" rel="self"/>
   <link href="${SITE}/api/"/>
   <id>${SITE}/api/v1/risk.xml</id>

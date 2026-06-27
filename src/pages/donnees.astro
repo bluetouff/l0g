@@ -59,7 +59,7 @@ const datasets = [
     format: 'JSON',
     updated: risk.updated ? new Date(risk.updated) : null,
     count: `${risk.indices?.length ?? 0} indices`,
-    role: 'État courant des indices US Macro, EU Macro, Yen Carry et Énergie.',
+    role: 'État courant des signaux US Macro, EU Macro, Yen Carry et Énergie, normalisés par instrument.',
   },
   {
     label: 'confluence.json',

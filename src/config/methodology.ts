@@ -31,8 +31,21 @@ export interface MethodologyPage {
   reproducibility: string[];
 }
 
-export const methodologyUpdated = '26 juin 2026';
-export const methodologyUpdatedIso = '2026-06-26';
+export const methodologyUpdated = '27 juin 2026';
+export const methodologyUpdatedIso = '2026-06-27';
+
+export const riskBandScaleCaveat = {
+  title: 'Normalisation d’affichage, pas indice unique',
+  summary:
+    'Les quatre indicateurs du bandeau utilisent une échelle commune 0-100 pour rendre les signaux lisibles côte à côte. Ils ne mesurent ni le même phénomène, ni la même fréquence, ni le même horizon.',
+  correctLabel: 'tableau de bord consolidé de signaux de risque',
+  wrongLabel: 'indice consolidé de risque systémique',
+  details: [
+    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45 ou Énergie de 47.',
+    'Le chiffre sert à comparer un instrument à son propre régime, pas à comparer directement les instruments entre eux.',
+    'Le libellé et la fiche méthodologique de chaque dashboard priment sur le chiffre isolé.',
+  ],
+};
 
 export const methodologyPages: MethodologyPage[] = [
   {
@@ -105,6 +118,7 @@ export const methodologyPages: MethodologyPage[] = [
       "Le retard de publication interdit toute lecture temps réel des portefeuilles institutionnels.",
       "L'univers dépend des fonds suivis et des tickers résolus avec assez de confiance.",
       "Un achat d'initié peut avoir des raisons personnelles ou fiscales que le formulaire ne révèle pas.",
+      "Le score 13FLOW n'est pas comparable aux scores macro, yen ou énergie : il mesure une intensité de confluence sur actions.",
     ],
     useFor: [
       "Repérer des dossiers qui méritent une analyse fondamentale plus poussée.",
@@ -192,6 +206,7 @@ export const methodologyPages: MethodologyPage[] = [
       "Le taux BoJ est maintenu en configuration ; une décision mal reportée peut fausser temporairement le différentiel.",
       "Un débouclage peut être déclenché par un choc exogène absent du score.",
       "La liquidité intrajournalière du change n'est pas mesurée.",
+      "Le score 0-100 est propre au risque de débouclage yen ; il ne se compare pas directement aux scores macro ou énergie.",
     ],
     useFor: [
       "Surveiller l'encombrement d'un trade macro très consensuel.",
@@ -286,6 +301,7 @@ export const methodologyPages: MethodologyPage[] = [
       "Certaines séries gratuites ont des trous, délais ou changements de format.",
       "Le TTF européen propre est difficile à obtenir en API gratuite robuste.",
       "Les pondérations résument un régime de marché ; elles ne capturent pas tous les chocs locaux.",
+      "Le score 0-100 mesure le stress énergétique relatif au régime de ses propres séries, pas une probabilité de crise comparable aux autres dashboards.",
     ],
     useFor: [
       "Suivre si un choc énergie se transmet réellement aux marchés observables.",
@@ -366,6 +382,7 @@ export const methodologyPages: MethodologyPage[] = [
       "Les révisions statistiques peuvent modifier la lecture historique.",
       "Un z-score à cinq ans peut banaliser une tension durable si le régime a changé.",
       "Le score global peut masquer des divergences fortes entre pays de la zone euro.",
+      "Le score 0-100 est une échelle interne au dashboard euro ; il ne vaut pas équivalence statistique avec US Macro, Yen Carry ou Énergie.",
     ],
     useFor: [
       "Situer rapidement le régime macro zone euro.",
@@ -441,6 +458,7 @@ export const methodologyPages: MethodologyPage[] = [
       "Les récessions NBER sont datées ex post ; elles ne constituent pas une vérité temps réel.",
       "Un choc de marché peut précéder les séries macro mensuelles.",
       "La conversion 0-100 est une normalisation l0g, pas l'échelle native du dashboard.",
+      "Le score 0-100 sert au bandeau de lecture ; il ne rend pas le risque US statistiquement équivalent aux autres instruments.",
     ],
     useFor: [
       "Situer le régime macro américain en un coup d'œil.",

@@ -5,7 +5,7 @@ const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ENDPOINT = `${SITE}/api/mcp`;
 
 const tools = [
-  ['get_risk_indices', 'aucun', 'Indices de risque consolidés (US Macro, EU Macro, Yen Carry, Énergie) et synthèse de confluence 13F.'],
+  ['get_risk_indices', 'aucun', 'Signaux de risque normalisés par instrument (US Macro, EU Macro, Yen Carry, Énergie) et synthèse de confluence 13F.'],
   ['search_content', 'query, limit', 'Recherche dans les analyses et les guides par titre, description, thèmes et sujets.'],
   ['list_recent_analyses', 'limit', 'Dernières analyses publiées, de la plus récente à la plus ancienne.'],
   ['list_guides', 'aucun', 'Guides de référence (pages piliers durables).'],

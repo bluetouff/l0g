@@ -1,4 +1,4 @@
-/* Remplit le bandeau de risque depuis /risk.json.
+/* Remplit le bandeau de signaux depuis /risk.json.
    Servi depuis l'origine du site (self) -> compatible CSP stricte.
    Aucun appel tiers : le navigateur ne lit qu'un fichier local de l0g.fr. */
 (function () {
