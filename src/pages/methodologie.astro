@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
+import { editorialProtocol } from '../config/editorial.ts';
 import { methodologyPages, methodologyUrl, methodologyUpdated, riskBandScaleCaveat } from '../config/methodology.ts';
 
 const updated = methodologyUpdated;
@@ -99,6 +100,16 @@ const trustItems = [
       <ul>
         {riskBandScaleCaveat.details.map((detail) => <li>{detail}</li>)}
       </ul>
+    </div>
+
+    <div class="precision-note">
+      <p class="mono-label">// garde-fou</p>
+      <h2>{editorialProtocol.precisionGuard.title}</h2>
+      <p>{editorialProtocol.precisionGuard.summary}</p>
+      <div class="precision-tags">
+        {editorialProtocol.precisionGuard.requirements.map((item) => <span>{item}</span>)}
+      </div>
+      <p>{editorialProtocol.precisionGuard.warning}</p>
     </div>
 
     <div class="idx-list">
@@ -332,6 +343,45 @@ interpolation linéaire entre ces points, borné 0-100</code></pre>
       padding-left: 1rem;
       color: var(--color-muted);
       line-height: 1.55;
+    }
+    .precision-note {
+      margin-top: 1rem;
+      max-width: 46rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      padding: 1rem 1.1rem;
+    }
+    .precision-note .mono-label {
+      color: var(--color-amber);
+    }
+    .precision-note h2 {
+      margin-top: 0.4rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+    .precision-note p:not(.mono-label) {
+      margin-top: 0.55rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+    .precision-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+    .precision-tags span {
+      border: 1px solid color-mix(in srgb, var(--color-amber) 35%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-amber) 6%, transparent);
+      color: var(--color-amber);
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      padding: 0.28rem 0.55rem;
+      text-transform: uppercase;
     }
 
     .tool-grid {

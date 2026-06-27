@@ -115,6 +115,7 @@ const datasetLd = {
     "energie": { "value": 58, "scale": 100, "level": "Tendu",  "tone": "elevated", "label": "Energie Monitor",    "source": "https://energie.l0g.fr" }
   },
   "scaleCaveat": { "title": "Normalisation d’affichage, pas indice unique" },
+  "precisionGuard": { "title": "Illusion de précision" },
   "confluence": { "updated": "...", "count": 15, "conviction": 1, "top": { "ticker": "TSM", "score": 90, "quadrant": "divergent" } },
   "license": "CC BY 4.0", "attribution": "l0g.fr"
 }`}</code></pre>
@@ -145,6 +146,7 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// champs</h2>
       <ul class="api-list mt-3">
         <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur du signal (0 à <code class="apic">scale</code>, généralement 100), normalisée par instrument.</li>
+        <li><code class="apic">scaleCaveat</code> et <code class="apic">precisionGuard</code> — limites de lecture : normalisation d’affichage, couverture, fraîcheur, incertitude et reproductibilité.</li>
         <li><code class="apic">level</code> — libellé lisible (Détendu, Modéré, Élevé/Tendu, Crise).</li>
         <li><code class="apic">tone</code> — code machine : <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code>, <code class="apic">crisis</code>.</li>
         <li><code class="apic">snapshot</code> — horodatage (ISO 8601 UTC) des données ; <code class="apic">generated</code> — date de génération du fichier.</li>

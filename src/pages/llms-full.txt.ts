@@ -106,6 +106,11 @@ export const GET: APIRoute = async () => {
   for (const level of editorialProtocol.proofDepthLevels) {
     out.push(`- ${level.label} : ${level.meaning} Statut : ${level.status}.`);
   }
+  out.push('');
+  out.push('Garde-fou contre l illusion de precision :');
+  out.push(editorialProtocol.precisionGuard.summary);
+  out.push(`Exigences : ${editorialProtocol.precisionGuard.requirements.join(', ')}.`);
+  out.push(editorialProtocol.precisionGuard.warning);
   out.push(SEP);
   out.push('CHANGELOG EDITORIAL : Changements structurants');
   out.push(`URL : ${SITE}/changelog-editorial/`);

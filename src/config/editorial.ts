@@ -23,6 +23,13 @@ export type EditorialProofDepthLevel = {
   status: 'automatique' | 'semi-structuré' | 'objectif';
 };
 
+export type EditorialPrecisionGuard = {
+  title: string;
+  summary: string;
+  requirements: string[];
+  warning: string;
+};
+
 export type EditorialChangelogEntry = {
   date: string;
   title: string;
@@ -46,7 +53,7 @@ export const editorialProtocol = {
       id: 'method-visible',
       title: 'Méthode visible',
       text:
-        'Les dashboards, scores, seuils et hypothèses doivent pointer vers une fiche méthodologique ou un bloc de preuve lisible. Une simple mention d’autorité ne vaut pas preuve directe.',
+        'Les dashboards, scores, seuils et hypothèses doivent pointer vers une fiche méthodologique ou un bloc de preuve lisible. Une simple mention d’autorité ne vaut pas preuve directe, et un chiffre précis ne vaut pas connaissance précise.',
     },
     {
       id: 'uncertainty-explicit',
@@ -158,9 +165,35 @@ export const editorialProtocol = {
       status: 'objectif',
     },
   ] satisfies EditorialProofDepthLevel[],
+  precisionGuard: {
+    title: 'Illusion de précision',
+    summary:
+      'Les scores numériques et les badges donnent une impression de rigueur. Cette impression doit toujours être soutenue par des éléments vérifiables.',
+    requirements: [
+      'données complètes',
+      'calcul reproductible',
+      'couverture',
+      'fraîcheur',
+      'incertitude',
+      'performance historique',
+    ],
+    warning:
+      'Sinon, la mise en forme peut devenir plus précise que la connaissance sous-jacente.',
+  } satisfies EditorialPrecisionGuard,
 };
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
+  {
+    date: '2026-06-27',
+    title: 'Garde-fou contre l’illusion de précision',
+    kind: 'protocole',
+    summary:
+      'Le protocole explicite que scores et badges doivent être soutenus par données complètes, calcul reproductible, couverture, fraîcheur, incertitude et performance historique.',
+    links: [
+      { label: 'protocole', href: '/protocole-editorial/' },
+      { label: 'méthodologie', href: '/methodologie/' },
+    ],
+  },
   {
     date: '2026-06-27',
     title: 'Clarification de l’échelle 0-100 des dashboards',

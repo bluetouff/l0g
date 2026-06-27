@@ -75,6 +75,9 @@ export const GET: APIRoute = async () => {
   for (const level of editorialProtocol.proofDepthLevels) {
     lines.push(`  - ${level.label}: ${level.meaning} (${level.status})`);
   }
+  lines.push(
+    `- Garde-fou precision: ${editorialProtocol.precisionGuard.summary} Exigences: ${editorialProtocol.precisionGuard.requirements.join(', ')}. ${editorialProtocol.precisionGuard.warning}`
+  );
   lines.push('');
 
   lines.push('## Changelog editorial');

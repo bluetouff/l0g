@@ -109,6 +109,20 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     </section>
 
     <section class="protocol-section">
+      <p class="mono-label glow">// illusion de précision</p>
+      <div class="precision-box">
+        <div>
+          <h2>{editorialProtocol.precisionGuard.title}</h2>
+          <p>{editorialProtocol.precisionGuard.summary}</p>
+        </div>
+        <ul>
+          {editorialProtocol.precisionGuard.requirements.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="precision-warning">{editorialProtocol.precisionGuard.warning}</p>
+      </div>
+    </section>
+
+    <section class="protocol-section">
       <p class="mono-label glow">// types de preuve</p>
       <div class="evidence-grid">
         {editorialProtocol.evidenceLevels.map((level) => (
@@ -187,6 +201,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     .principle-card,
     .step-row,
     .depth-table,
+    .precision-box,
     .evidence-card,
     .note-block,
     .change-list {
@@ -312,6 +327,51 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     }
     .depth-row em {
       color: var(--color-muted);
+    }
+    .precision-box {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+      border-left: 2px solid color-mix(in srgb, var(--color-amber) 65%, transparent);
+      padding: 1rem;
+      background: color-mix(in srgb, var(--color-amber) 5%, transparent);
+    }
+    .precision-box h2 {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+    .precision-box p {
+      margin-top: 0.45rem;
+      color: var(--color-paper);
+      line-height: 1.62;
+    }
+    .precision-box ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    @media (min-width: 680px) {
+      .precision-box ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .precision-box li {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      padding: 0.55rem 0.7rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .precision-box .precision-warning {
+      margin: 0;
+      color: var(--color-amber);
+      font-family: var(--font-read);
     }
     .split {
       display: grid;

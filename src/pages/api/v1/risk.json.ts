@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { editorialProtocol } from '../../../config/editorial.ts';
 import { riskBandScaleCaveat } from '../../../config/methodology.ts';
 
 /**
@@ -60,6 +61,7 @@ export const GET: APIRoute = () => {
     snapshot: risk.updated ?? null,
     indices,
     scaleCaveat: riskBandScaleCaveat,
+    precisionGuard: editorialProtocol.precisionGuard,
     confluence,
     feed: 'https://l0g.fr/api/v1/risk.xml',
     license: 'CC BY 4.0',

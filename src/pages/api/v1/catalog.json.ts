@@ -118,6 +118,7 @@ export const GET: APIRoute = async () => {
       steps: editorialProtocol.steps,
       evidenceLevels: editorialProtocol.evidenceLevels,
       proofDepthLevels: editorialProtocol.proofDepthLevels,
+      precisionGuard: editorialProtocol.precisionGuard,
     },
     changelog: editorialChangelog.map((entry) => ({
       ...entry,
