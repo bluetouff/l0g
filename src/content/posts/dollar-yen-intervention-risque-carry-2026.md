@@ -4,6 +4,7 @@ description: "USD/JPY au-dessus de 161, BoJ plus restrictive, menace d'intervent
 pubDate: 2026-06-27T13:35:00+02:00
 tags: ["yen", "boj", "dollar", "carry trade", "macro", "marchés"]
 draft: false
+ogImage: "/og/dollar-yen-intervention-risque-carry-2026.png?v=20260627"
 ---
 
 Le dollar-yen est revenu dans une zone politiquement inflammable. La série officielle [FRED DEXJPUS](https://fred.stlouisfed.org/series/DEXJPUS) donne **161,37 yens pour un dollar au 18 juin 2026** ; les cotations [WSJ/LSEG](https://www.wsj.com/market-data/quotes/fx/USDJPY/historical-prices) plaçaient encore l'USD/JPY autour de **161,94 le 25 juin** puis **161,65 le 26 juin**. Ce n'est pas seulement un chiffre rond. C'est une zone où le Japon a déjà montré qu'il pouvait vendre des dollars pour acheter du yen.
