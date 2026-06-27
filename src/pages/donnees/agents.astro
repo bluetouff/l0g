@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const trustItems = [
+  { label: 'JSON statique', href: '/agents.json' },
+  { label: 'OpenAPI', href: '/openapi.json' },
+  { label: 'claims datées', href: '/api/v1/claims.json' },
+  { label: 'correction policy', href: '/protocole-editorial/' },
+];
+
+const endpoints = [
+  {
+    path: '/agents.json',
+    label: 'Découverte',
+    role: 'Manifeste des capacités, règles d’usage, endpoints et politique de preuve.',
+  },
+  {
+    path: '/openapi.json',
+    label: 'Contrat',
+    role: 'Description OpenAPI 3.1 des endpoints consommables par agents et clients M2M.',
+  },
+  {
+    path: '/api/v1/claims.json',
+    label: 'Claims',
+    role: 'Graphe affirmation-source : fait, estimation, inférence ou scénario, avec références datées.',
+  },
+  {
+    path: '/api/v1/sources.json',
+    label: 'Sources',
+    role: 'Registre des sources primaires et des hôtes effectivement cités dans les articles.',
+  },
+  {
+    path: '/api/v1/freshness.json',
+    label: 'Fraîcheur',
+    role: 'Derniers contenus, compteurs de corpus, endpoints disponibles et politique de fraîcheur.',
+  },
+  {
+    path: '/api/v1/catalog.json',
+    label: 'Catalogue',
+    role: 'Carte complète du corpus : articles, guides, méthodologies, glossaire, sources et protocole.',
+  },
+];
+
+const flow = [
+  'Découvrir la surface avec /agents.json.',
+  'Lire /api/v1/freshness.json pour dater le snapshot.',
+  'Chercher le contenu dans /api/v1/catalog.json ou /llms.txt.',
+  'Citer une affirmation via /api/v1/claims.json quand la réponse dépend d’un fait précis.',
+  'Conserver l’URL canonique, la date et le type de claim dans la réponse générée.',
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  '@id': `${site}/donnees/agents/#agent-surface`,
+  headline: 'Agent Surface v1',
+  description:
+    'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, claims, sources, fraîcheur et règles de citation.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  publisher: { '@id': `${site}/#org` },
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Agent Surface v1"
+  description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, claims sourcées, sources, fraîcheur et règles de citation."
+  ogImage="/og-donnees.png"
+  ogImageAlt="Agent Surface v1 l0g.fr : API, claims, sources et fraîcheur"
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="agent-page rise" data-pagefind-body>
+    <section class="agent-hero">
+      <p class="mono-label glow">// agent surface v1</p>
+      <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
+      <p class="agent-lede">
+        Agent Surface v1 expose le corpus l0g sous forme de JSON statique : catalogue,
+        claims sourcées, sources primaires, fraîcheur et contrat OpenAPI. La promesse est
+        simple : un agent doit pouvoir citer une affirmation sans perdre la source, la date
+        et le niveau de lecture.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="agent-section">
+      <p class="mono-label glow">// endpoints</p>
+      <div class="endpoint-grid">
+        {endpoints.map((endpoint) => (
+          <a class="endpoint-card" href={endpoint.path}>
+            <span>{endpoint.label}</span>
+            <code>{endpoint.path}</code>
+            <p>{endpoint.role}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="agent-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// flux conseillé</p>
+        <ol class="flow-list">
+          {flow.map((item) => <li>{item}</li>)}
+        </ol>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// garde-fous</p>
+        <p>
+          Les champs <code>kind</code>, <code>dateLabel</code>, <code>references</code> et
+          <code>confidence</code> ne sont pas décoratifs. Ils évitent de transformer une
+          estimation ou un scénario en fait observé, et rappellent qu’une relation extraite
+          automatiquement reste vérifiable dans la page canonique.
+        </p>
+      </div>
+    </section>
+
+    <section class="agent-section">
+      <p class="mono-label glow">// contrat minimal</p>
+      <div class="contract-grid">
+        <div><span>Attribution</span><strong>l0g.fr</strong></div>
+        <div><span>Licence</span><strong>CC BY 4.0</strong></div>
+        <div><span>Version</span><strong>v1 stable</strong></div>
+        <div><span>Format</span><strong>JSON statique</strong></div>
+        <div><span>Preuve</span><strong>claim-source</strong></div>
+        <div><span>Temps réel</span><strong>non strict</strong></div>
+      </div>
+    </section>
+
+    <section class="agent-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// exemple</p>
+        <pre><code>curl -s https://l0g.fr/api/v1/claims.json</code></pre>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// intégration</p>
+        <p>
+          Pour un agent RAG, utiliser <code>/api/v1/catalog.json</code> pour découvrir
+          les documents, puis <code>/api/v1/claims.json</code> pour les assertions
+          sensibles. Pour une intégration typée, partir de <code>/openapi.json</code>.
+        </p>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .agent-page { max-width: 64rem; }
+    .agent-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .agent-title {
+      margin-top: 1rem;
+      max-width: 50rem;
+      color: var(--color-bright);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+    }
+    .agent-lede {
+      margin-top: 1.15rem;
+      max-width: 48rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.66;
+    }
+    .agent-section { margin-top: 3rem; }
+    .endpoint-grid,
+    .contract-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 760px) {
+      .endpoint-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contract-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .endpoint-card,
+    .contract-grid div,
+    .note-block {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 54%, transparent);
+      padding: 0.95rem;
+    }
+    .endpoint-card {
+      display: grid;
+      gap: 0.45rem;
+      text-decoration: none;
+      transition: border-color 0.16s, background 0.16s;
+    }
+    .endpoint-card:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 48%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+    }
+    .endpoint-card span,
+    .contract-grid span {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .endpoint-card code,
+    .note-block code,
+    .note-block pre {
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      overflow-wrap: anywhere;
+    }
+    .endpoint-card p,
+    .note-block p,
+    .flow-list {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .flow-list {
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.8rem;
+      padding-left: 1.25rem;
+    }
+    .contract-grid div {
+      display: grid;
+      gap: 0.3rem;
+    }
+    .contract-grid strong {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+    }
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 760px) {
+      .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .note-block pre {
+      margin-top: 0.8rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: var(--color-bg);
+      padding: 0.75rem;
+      font-size: 0.82rem;
+    }
+  </style>
+</BaseLayout>

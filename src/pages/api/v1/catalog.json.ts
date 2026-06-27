@@ -1,11 +1,18 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { topics, postMatchesTopic } from '../../../config/topics.ts';
+import { topics } from '../../../config/topics.ts';
 import { methodologyPages, riskBandScaleCaveat } from '../../../config/methodology.ts';
 import { glossaryEntries, glossarySections } from '../../../config/glossary.ts';
 import { primaryInstitutions } from '../../../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol } from '../../../config/editorial.ts';
-import { buildArticleEvidence } from '../../../lib/article-evidence.ts';
+import {
+  AGENT_SITE as SITE,
+  buildArticleRecord,
+  buildGuideRecord,
+  jsonResponse,
+  sortGuides,
+  sortPosts,
+} from '../../../lib/agent-surface.ts';
 
 /**
  * Catalogue machine de l0g.fr — v1. Sortie statique générée au build.
@@ -15,84 +22,12 @@ import { buildArticleEvidence } from '../../../lib/article-evidence.ts';
  * Pas de corps d'article ici (poids) : le texte complet est servi par /posts/.../.
  */
 
-const SITE = 'https://l0g.fr';
-
 export const GET: APIRoute = async () => {
-  const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
-  const allGuides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
+  const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
+  const allGuides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
 
-  const iso = (d?: Date) => (d ? d.toISOString().slice(0, 10) : null);
-
-  const articles = posts.map((p) => ({
-    slug: p.id,
-    url: `${SITE}/posts/${p.id}/`,
-    title: p.data.title,
-    date: iso(p.data.pubDate),
-    updated: iso(p.data.updatedDate),
-    description: p.data.description,
-    tags: p.data.tags ?? [],
-    topics: topics.filter((t) => postMatchesTopic(p.data.tags ?? [], t)).map((t) => t.slug),
-    evidence: (() => {
-      const evidence = buildArticleEvidence(p.body ?? '', {
-        published: p.data.pubDate,
-        updated: p.data.updatedDate,
-        url: `${SITE}/posts/${p.id}/`,
-        title: p.data.title,
-      });
-      return {
-        claims: evidence.claims.map((claim) => ({
-          id: claim.id,
-          kind: claim.kind,
-          claim: claim.claim,
-          date: claim.dateIso ?? null,
-          dateLabel: claim.dateLabel,
-          confidence: claim.confidence,
-          references: claim.references.map((ref) => ({
-            label: ref.label,
-            href: ref.href,
-            host: ref.host ?? null,
-            kind: ref.kind ?? null,
-            date: ref.dateIso ?? null,
-            dateLabel: ref.dateLabel ?? claim.dateLabel,
-          })),
-        })),
-        depth: evidence.depth,
-        badges: evidence.badges.map((badge) => ({
-          id: badge.id,
-          label: badge.label,
-          detail: badge.detail,
-        })),
-        primarySources: evidence.primary.map((item) => ({
-          slug: item.source.slug,
-          name: item.source.name,
-          url: `${SITE}/sources/${item.source.slug}/`,
-          reason: item.reason,
-        })),
-        counts: evidence.stats,
-      };
-    })(),
-    revisions: {
-      published: iso(p.data.pubDate),
-      updated: iso(p.data.updatedDate),
-      policy: `${SITE}/protocole-editorial/`,
-      changelog: `${SITE}/changelog-editorial/`,
-    },
-  }));
-
-  const guides = allGuides.map((g) => ({
-    slug: g.id,
-    url: `${SITE}/guides/${g.id}/`,
-    title: g.data.title,
-    date: iso(g.data.pubDate),
-    updated: iso(g.data.updatedDate),
-    description: g.data.description,
-    summary: g.data.summary ?? null,
-    tags: g.data.tags ?? [],
-  }));
+  const articles = posts.map(buildArticleRecord);
+  const guides = allGuides.map(buildGuideRecord);
 
   const methodologies = methodologyPages.map((m) => ({
     slug: m.slug,
@@ -181,7 +116,5 @@ export const GET: APIRoute = async () => {
     note: 'Catalogue best-effort. Le texte complet des analyses est servi par les pages /posts/.',
   };
 
-  return new Response(JSON.stringify(payload, null, 2) + '\n', {
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-  });
+  return jsonResponse(payload);
 };

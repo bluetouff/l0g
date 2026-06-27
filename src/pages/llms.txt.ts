@@ -53,6 +53,9 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
+    `- [Agent Surface v1](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, claims sourcées, sources et fraîcheur.`
+  );
+  lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
   );
   lines.push(
@@ -132,6 +135,11 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Acces machine');
+  lines.push(`- [Agent manifest](${SITE}/agents.json): découverte des capacités, endpoints, règles d'usage et politique de preuve pour agents.`);
+  lines.push(`- [OpenAPI](${SITE}/openapi.json): contrat OpenAPI 3.1 des endpoints publics.`);
+  lines.push(`- [Claims](${SITE}/api/v1/claims.json): graphe affirmation-source avec faits, estimations, inférences et scénarios, références cliquables et datées.`);
+  lines.push(`- [Sources](${SITE}/api/v1/sources.json): registre sources primaires et hôtes effectivement cités.`);
+  lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus, derniers contenus et endpoints disponibles.`);
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);

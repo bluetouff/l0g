@@ -77,6 +77,9 @@ export const GET: APIRoute = async () => {
     "Inventaire des snapshots publics et endpoints l0g : risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
   );
   out.push(
+    `Agent Surface v1 : ${SITE}/donnees/agents/ documente la surface M2M statique. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/sources.json pour le registre sources et ${SITE}/api/v1/freshness.json pour la fraicheur.`
+  );
+  out.push(
     "Le fichier risk.json expose un tableau de bord consolide de signaux, pas un indice unique de risque systemique : les scores 0-100 sont normalises par instrument et ne sont pas statistiquement equivalents entre US Macro, Euro Macro, Yen Carry et Energie."
   );
   out.push(SEP);

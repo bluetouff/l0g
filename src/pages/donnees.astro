@@ -85,6 +85,30 @@ const datasets = [
     count: `${posts.length + guides.length + glossaryEntries.length} objets`,
     role: 'Catalogue machine : analyses, guides, sujets, méthodologies et glossaire.',
   },
+  {
+    label: 'claims.json',
+    href: '/api/v1/claims.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: `${posts.length} articles`,
+    role: 'Graphe affirmation-source : faits, estimations, inférences et scénarios avec références datées.',
+  },
+  {
+    label: 'sources.json',
+    href: '/api/v1/sources.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: 'sources + hôtes',
+    role: 'Registre des sources primaires et des hôtes effectivement cités par les claims.',
+  },
+  {
+    label: 'freshness.json',
+    href: '/api/v1/freshness.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: 'fraîcheur',
+    role: 'Derniers contenus, compteurs de corpus, endpoints disponibles et politique de fraîcheur.',
+  },
 ];
 
 const files = [
@@ -98,7 +122,7 @@ const trustItems = [
   { label: 'CORS ouvert', href: '/api/' },
   { label: 'licence CC BY 4.0', href: '/manifeste/' },
   { label: 'build statique', href: '/status/' },
-  { label: 'corpus agents', href: '/llms.txt' },
+  { label: 'Agent Surface v1', href: '/donnees/agents/' },
 ];
 
 const jsonLd = {
@@ -196,7 +220,13 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="mono-label glow">// accès machine</p>
       <div class="access-grid">
         <a href="/api/" class="access-link"><span>API</span><strong>documentation humaine</strong></a>
+        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1</strong></a>
+        <a href="/agents.json" class="access-link"><span>JSON</span><strong>manifeste agent</strong></a>
+        <a href="/openapi.json" class="access-link"><span>OPENAPI</span><strong>contrat machine</strong></a>
         <a href="/api/v1/catalog.json" class="access-link"><span>JSON</span><strong>catalogue complet</strong></a>
+        <a href="/api/v1/claims.json" class="access-link"><span>JSON</span><strong>claims sourcées</strong></a>
+        <a href="/api/v1/sources.json" class="access-link"><span>JSON</span><strong>sources citées</strong></a>
+        <a href="/api/v1/freshness.json" class="access-link"><span>JSON</span><strong>fraîcheur corpus</strong></a>
         <a href="/llms.txt" class="access-link"><span>TXT</span><strong>carte concise agents</strong></a>
         <a href="/llms-full.txt" class="access-link"><span>TXT</span><strong>corpus intégral</strong></a>
         <a href="/rss.xml" class="access-link"><span>RSS</span><strong>flux éditorial</strong></a>

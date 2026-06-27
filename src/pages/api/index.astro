@@ -60,9 +60,45 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
       <p class="mt-3 text-paper">
-        Cinq points d'accès, versionnés sous <code class="apic">/v1/</code>, sans clé ni authentification :
+        Les points d'accès publics, sans clé ni authentification :
       </p>
       <div class="ep-list mt-4">
+        <a class="ep card" href="/agents.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/agents.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Manifeste de découverte pour agents : capacités, endpoints, règles d'usage et politique de preuve.</span>
+        </a>
+        <a class="ep card" href="/openapi.json" target="_blank" rel="noopener" style="--t: var(--color-accent)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/openapi.json</code>
+          <span class="ep-type">OPENAPI</span>
+          <span class="ep-desc">Contrat OpenAPI 3.1 des endpoints M2M de l0g.</span>
+        </a>
+        <a class="ep card" href="/api/v1/claims.json" target="_blank" rel="noopener" style="--t: #7aa2f7">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/claims.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Graphe affirmation-source : claims typées, références cliquables et datées.</span>
+        </a>
+        <a class="ep card" href="/api/v1/sources.json" target="_blank" rel="noopener" style="--t: var(--color-amber)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/sources.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Sources primaires et hôtes effectivement cités par le corpus.</span>
+        </a>
+        <a class="ep card" href="/api/v1/freshness.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/freshness.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Fraîcheur du corpus, derniers contenus et endpoints disponibles.</span>
+        </a>
+        <a class="ep card" href="/api/v1/catalog.json" target="_blank" rel="noopener" style="--t: var(--color-accent)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/catalog.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Catalogue machine complet : articles, guides, sources, glossaire et protocole.</span>
+        </a>
         <a class="ep card" href="/api/v1/risk.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/risk.json</code>
