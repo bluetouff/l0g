@@ -17,6 +17,7 @@ export interface PrimaryEvidence {
 }
 
 export interface ArticleEvidence {
+  badges: EvidenceBadge[];
   primary: PrimaryEvidence[];
   secondary: EvidenceLink[];
   internalData: EvidenceLink[];
@@ -26,6 +27,13 @@ export interface ArticleEvidence {
     internalLinks: number;
     primarySources: number;
   };
+}
+
+export interface EvidenceBadge {
+  id: 'primary-source' | 'public-data' | 'secondary-source' | 'scenario' | 'internal-context';
+  label: string;
+  detail: string;
+  tone: 'strong' | 'data' | 'secondary' | 'scenario' | 'context';
 }
 
 const SITE_HOSTS = new Set(['l0g.fr', 'www.l0g.fr']);
@@ -152,6 +160,61 @@ function dedupeByHost(links: EvidenceLink[]) {
   return out;
 }
 
+function detectScenario(markdown: string) {
+  return /(^|[^a-zà-ÿ])(hypoth[eè]se|sc[eé]nario|projection|estimation|probabilit[eé]|fourchette|conditionnel|[àa] surveiller)([^a-zà-ÿ]|$)/iu.test(markdown);
+}
+
+function buildBadges(args: {
+  primary: PrimaryEvidence[];
+  secondary: EvidenceLink[];
+  internalData: EvidenceLink[];
+  context: EvidenceLink[];
+  markdown: string;
+}): EvidenceBadge[] {
+  const badges: EvidenceBadge[] = [];
+  if (args.primary.length > 0) {
+    badges.push({
+      id: 'primary-source',
+      label: 'source primaire',
+      detail: `${args.primary.length} institution${args.primary.length > 1 ? 's' : ''} détectée${args.primary.length > 1 ? 's' : ''}`,
+      tone: 'strong',
+    });
+  }
+  if (args.internalData.length > 0) {
+    badges.push({
+      id: 'public-data',
+      label: 'donnée publique',
+      detail: `${args.internalData.length} lien${args.internalData.length > 1 ? 's' : ''} dataset/dashboard`,
+      tone: 'data',
+    });
+  }
+  if (args.secondary.length > 0) {
+    badges.push({
+      id: 'secondary-source',
+      label: 'source secondaire',
+      detail: `${args.secondary.length} domaine${args.secondary.length > 1 ? 's' : ''} externe${args.secondary.length > 1 ? 's' : ''}`,
+      tone: 'secondary',
+    });
+  }
+  if (detectScenario(args.markdown)) {
+    badges.push({
+      id: 'scenario',
+      label: 'hypothèse / scénario',
+      detail: 'langage conditionnel détecté',
+      tone: 'scenario',
+    });
+  }
+  if (args.context.length > 0) {
+    badges.push({
+      id: 'internal-context',
+      label: 'contexte l0g',
+      detail: `${args.context.length} renvoi${args.context.length > 1 ? 's' : ''} interne${args.context.length > 1 ? 's' : ''}`,
+      tone: 'context',
+    });
+  }
+  return badges;
+}
+
 export function buildArticleEvidence(markdown: string): ArticleEvidence {
   const links = extractLinks(markdown);
   const primary: PrimaryEvidence[] = [];
@@ -193,6 +256,7 @@ export function buildArticleEvidence(markdown: string): ArticleEvidence {
     .slice(0, 12);
 
   return {
+    badges: buildBadges({ primary, secondary, internalData, context, markdown }),
     primary,
     secondary,
     internalData,

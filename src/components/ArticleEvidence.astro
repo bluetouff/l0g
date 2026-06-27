@@ -11,6 +11,7 @@ const primaryShown = evidence.primary.slice(0, 6);
 const secondaryShown = evidence.secondary.slice(0, 8);
 const dataShown = evidence.internalData.slice(0, 6);
 const contextShown = evidence.context.slice(0, 10);
+const badges = evidence.badges;
 ---
 
 <aside class="evidence-box" aria-labelledby="evidence-title" data-pagefind-ignore>
@@ -28,6 +29,17 @@ const contextShown = evidence.context.slice(0, 10);
       <span>{evidence.stats.internalLinks} internes</span>
     </div>
   </div>
+
+  {badges.length > 0 && (
+    <div class="evidence-badges" aria-label="Niveaux de preuve détectés">
+      {badges.map((badge) => (
+        <span class={`proof-badge proof-${badge.tone}`} title={badge.detail}>
+          <span aria-hidden="true"></span>
+          {badge.label}
+        </span>
+      ))}
+    </div>
+  )}
 
   <div class="evidence-grid">
     <section class="evidence-panel">
@@ -144,6 +156,40 @@ const contextShown = evidence.context.slice(0, 10);
     padding: 0.28rem 0.55rem;
     text-transform: uppercase;
   }
+  .evidence-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+  .proof-badge {
+    --proof-color: var(--color-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--proof-color) 38%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--proof-color) 8%, transparent);
+    color: var(--proof-color);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 0.35rem 0.58rem;
+    text-transform: uppercase;
+  }
+  .proof-badge span {
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 999px;
+    background: var(--proof-color);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--proof-color) 45%, transparent);
+  }
+  .proof-strong { --proof-color: var(--color-signal); }
+  .proof-data { --proof-color: #7aa2f7; }
+  .proof-secondary { --proof-color: var(--color-muted); }
+  .proof-scenario { --proof-color: var(--color-amber); }
+  .proof-context { --proof-color: var(--color-accent); }
   .evidence-grid {
     display: grid;
     grid-template-columns: 1fr;

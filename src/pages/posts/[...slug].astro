@@ -30,6 +30,7 @@ const refDate = post.data.updatedDate ?? post.data.pubDate;
 const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
 const evidence = buildArticleEvidence(post.body ?? '');
+const proofBadges = evidence.badges.slice(0, 5);
 
 // Partage : URL absolue + textes encodés. Liens HTML purs, aucun script tiers.
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
@@ -92,6 +93,16 @@ const trustItems = [
       </div>
 
       <TrustBar items={trustItems} variant="compact" />
+      {proofBadges.length > 0 && (
+        <div class="proof-strip" aria-label="Niveaux de preuve détectés" data-pagefind-ignore>
+          {proofBadges.map((badge) => (
+            <span class={`proof-pill proof-${badge.tone}`} title={badge.detail}>
+              <span aria-hidden="true"></span>
+              {badge.label}
+            </span>
+          ))}
+        </div>
+      )}
       <div class="post-rule" aria-hidden="true"></div>
     </header>
 
@@ -215,6 +226,40 @@ const trustItems = [
       margin-top: 1.5rem; height: 2px; width: 72px; border-radius: 2px;
       background: linear-gradient(90deg, var(--color-signal), transparent);
     }
+    .proof-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1rem;
+    }
+    .proof-pill {
+      --proof-color: var(--color-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid color-mix(in srgb, var(--proof-color) 38%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--proof-color) 8%, transparent);
+      color: var(--proof-color);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      padding: 0.35rem 0.58rem;
+      text-transform: uppercase;
+    }
+    .proof-pill span {
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 999px;
+      background: var(--proof-color);
+      box-shadow: 0 0 9px color-mix(in srgb, var(--proof-color) 45%, transparent);
+    }
+    .proof-strong { --proof-color: var(--color-signal); }
+    .proof-data { --proof-color: #7aa2f7; }
+    .proof-secondary { --proof-color: var(--color-muted); }
+    .proof-scenario { --proof-color: var(--color-amber); }
+    .proof-context { --proof-color: var(--color-accent); }
 
     .share { border-top: 1px solid var(--color-line); padding-top: 1.2rem; }
     .share-label { color: var(--color-signal); display: block; margin-bottom: 0.7rem; }

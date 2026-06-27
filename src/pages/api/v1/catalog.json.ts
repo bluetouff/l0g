@@ -38,6 +38,11 @@ export const GET: APIRoute = async () => {
     evidence: (() => {
       const evidence = buildArticleEvidence(p.body ?? '');
       return {
+        badges: evidence.badges.map((badge) => ({
+          id: badge.id,
+          label: badge.label,
+          detail: badge.detail,
+        })),
         primarySources: evidence.primary.map((item) => ({
           slug: item.source.slug,
           name: item.source.name,
