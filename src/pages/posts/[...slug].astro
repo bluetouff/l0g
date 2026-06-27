@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CitationBox from '../../components/CitationBox.astro';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { topicForTag } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
@@ -22,6 +24,7 @@ const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
   month: 'long',
   year: 'numeric',
 });
+const refDate = post.data.updatedDate ?? post.data.pubDate;
 const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
 
@@ -64,8 +67,16 @@ const trustItems = [
 
       <div class="post-meta mono-label mt-6">
         <time datetime={iso} data-pagefind-meta="date">{dateLabel}</time>
+        {post.data.updatedDate && (
+          <>
+            <span class="sep" aria-hidden="true">·</span>
+            <time datetime={post.data.updatedDate.toISOString()}>revu le {post.data.updatedDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}</time>
+          </>
+        )}
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min de lecture</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <FreshnessBadge date={refDate} />
         {post.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
         <span class="post-tags">
           {post.data.tags.map((tag) => {
@@ -84,6 +95,14 @@ const trustItems = [
     <div class="prose">
       <Content />
     </div>
+
+    <CitationBox
+      title={post.data.title}
+      url={shareUrl}
+      kind="analyse"
+      published={post.data.pubDate}
+      updated={post.data.updatedDate}
+    />
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// partager</span>

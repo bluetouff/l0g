@@ -1,0 +1,403 @@
+---
+import { getCollection } from 'astro:content';
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FreshnessBadge from '../components/FreshnessBadge.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { glossaryEntries } from '../config/glossary.ts';
+import { methodologyPages } from '../config/methodology.ts';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const guides = await getCollection('guides', ({ data }) => !data.draft);
+
+function readJSON<T>(rel: string, fallback: T): T {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), rel), 'utf-8')) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function fileMeta(rel: string) {
+  const abs = join(process.cwd(), rel);
+  if (!existsSync(abs)) return { rel, ok: false, size: null, mtime: null };
+  const st = statSync(abs);
+  return { rel, ok: true, size: st.size, mtime: st.mtime };
+}
+
+function bytes(n: number | null) {
+  if (n == null) return 'n/a';
+  if (n < 1024) return `${n} o`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} Ko`;
+  return `${(n / 1024 / 1024).toFixed(1)} Mo`;
+}
+
+function fr(value?: string | Date | null) {
+  if (!value) return 'n/a';
+  const d = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(d.getTime())) return 'n/a';
+  return d.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+const risk = readJSON<{ updated?: string; indices?: unknown[] }>('public/risk.json', { indices: [] });
+const confluence = readJSON<{ updated?: string; items?: unknown[] }>('public/confluence.json', { items: [] });
+const events = readJSON<{ updated?: string; events?: unknown[] }>('public/risk-events.json', { events: [] });
+
+const datasets = [
+  {
+    label: 'risk.json',
+    href: '/api/v1/risk.json',
+    format: 'JSON',
+    updated: risk.updated ? new Date(risk.updated) : null,
+    count: `${risk.indices?.length ?? 0} indices`,
+    role: 'État courant des indices US Macro, EU Macro, Yen Carry et Énergie.',
+  },
+  {
+    label: 'confluence.json',
+    href: '/confluence.json',
+    format: 'JSON',
+    updated: confluence.updated ? new Date(confluence.updated) : null,
+    count: `${confluence.items?.length ?? 0} lignes`,
+    role: 'Synthèse publique de confluence 13FLOW exposée sur le site.',
+  },
+  {
+    label: 'risk-events.json',
+    href: '/risk-events.json',
+    format: 'JSON',
+    updated: events.updated ? new Date(events.updated) : null,
+    count: `${events.events?.length ?? 0} événements`,
+    role: 'Journal des derniers changements de niveau des indices de risque.',
+  },
+  {
+    label: 'catalog.json',
+    href: '/api/v1/catalog.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: `${posts.length + guides.length + glossaryEntries.length} objets`,
+    role: 'Catalogue machine : analyses, guides, sujets, méthodologies et glossaire.',
+  },
+];
+
+const files = [
+  fileMeta('public/risk.json'),
+  fileMeta('public/confluence.json'),
+  fileMeta('public/risk-events.json'),
+  fileMeta('public/robots.txt'),
+];
+
+const trustItems = [
+  { label: 'CORS ouvert', href: '/api/' },
+  { label: 'licence CC BY 4.0', href: '/manifeste/' },
+  { label: 'build statique', href: '/status/' },
+  { label: 'corpus agents', href: '/llms.txt' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site}/donnees/#datasets`,
+  name: 'Données l0g',
+  description:
+    'Inventaire des jeux de données publics de l0g.fr : snapshots, API JSON, corpus machine, licence, cadence et limites de fraîcheur.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  publisher: { '@id': `${site}/#org` },
+  mainEntity: datasets.map((dataset) => ({
+    '@type': 'Dataset',
+    name: dataset.label,
+    description: dataset.role,
+    encodingFormat: dataset.format,
+    url: `${site}${dataset.href}`,
+    dateModified: dataset.updated?.toISOString(),
+    isAccessibleForFree: true,
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+  })),
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Données"
+  description="Inventaire des données publiques l0g : snapshots, API JSON, corpus machine, licence, cadence de mise à jour et limites de fraîcheur."
+  sidebar={false}
+>
+  <script type="application/ld+json" set:html={safeJsonLd} />
+
+  <article class="data-page rise" data-pagefind-body>
+    <section class="data-hero">
+      <p class="mono-label glow">// données</p>
+      <h1 class="data-title font-display glow">Ce que l0g publie, et ce que ça vaut.</h1>
+      <p class="data-lede">
+        Cette page inventorie les jeux de données exposés par l0g.fr : fichiers statiques,
+        endpoints générés, corpus pour agents, licence et limites de fraîcheur. L’objectif :
+        rendre les données citables, réutilisables et contestables.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="data-section">
+      <p class="mono-label glow">// inventaire</p>
+      <div class="dataset-grid">
+        {datasets.map((dataset) => (
+          <a class="dataset-card" href={dataset.href}>
+            <span class="dataset-top">
+              <strong>{dataset.label}</strong>
+              <span>{dataset.format}</span>
+            </span>
+            <span class="dataset-role">{dataset.role}</span>
+            <span class="dataset-meta">
+              <em>{dataset.count}</em>
+              {dataset.updated && <FreshnessBadge date={dataset.updated} compact />}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="data-section split">
+      <div>
+        <p class="mono-label glow">// fichiers publiés</p>
+        <div class="file-list">
+          {files.map((file) => (
+            <div class="file-row">
+              <span class={`file-dot ${file.ok ? 'ok' : 'warn'}`} aria-hidden="true"></span>
+              <code>{file.rel.replace('public/', '/')}</code>
+              <span>{file.ok ? bytes(file.size) : 'absent'}</span>
+              <time datetime={file.mtime?.toISOString()}>{file.mtime ? fr(file.mtime) : 'n/a'}</time>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p class="mono-label glow">// corpus</p>
+        <div class="corpus-box">
+          <div><span>analyses</span><strong>{posts.length}</strong></div>
+          <div><span>guides</span><strong>{guides.length}</strong></div>
+          <div><span>méthodologies</span><strong>{methodologyPages.length}</strong></div>
+          <div><span>glossaire</span><strong>{glossaryEntries.length}</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="data-section">
+      <p class="mono-label glow">// accès machine</p>
+      <div class="access-grid">
+        <a href="/api/" class="access-link"><span>API</span><strong>documentation humaine</strong></a>
+        <a href="/api/v1/catalog.json" class="access-link"><span>JSON</span><strong>catalogue complet</strong></a>
+        <a href="/llms.txt" class="access-link"><span>TXT</span><strong>carte concise agents</strong></a>
+        <a href="/llms-full.txt" class="access-link"><span>TXT</span><strong>corpus intégral</strong></a>
+        <a href="/rss.xml" class="access-link"><span>RSS</span><strong>flux éditorial</strong></a>
+        <a href="/api/v1/risk.xml" class="access-link"><span>ATOM</span><strong>changements de risque</strong></a>
+      </div>
+    </section>
+
+    <section class="data-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// licence</p>
+        <p>
+          Les contenus et données publiques de l0g sont réutilisables sous CC BY 4.0 avec
+          attribution à <strong>l0g.fr</strong>. Les sources externes conservent leurs propres
+          conditions.
+        </p>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// limites</p>
+        <p>
+          Les snapshots reflètent la dernière publication disponible. Ce n’est pas du temps réel
+          strict : la date utile est toujours le champ <code>updated</code>, pas l’heure de lecture.
+        </p>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .data-page { max-width: 64rem; }
+    .data-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .data-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .data-lede {
+      margin-top: 1.15rem;
+      max-width: 46rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.66;
+      color: var(--color-paper);
+    }
+    .data-section { margin-top: 3rem; }
+    .dataset-grid,
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 720px) {
+      .dataset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .access-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .dataset-card,
+    .access-link,
+    .file-list,
+    .corpus-box,
+    .note-block {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    }
+    .dataset-card {
+      display: grid;
+      gap: 0.7rem;
+      min-height: 10rem;
+      padding: 1rem;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .dataset-card:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+    }
+    .dataset-top,
+    .dataset-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+    .dataset-top strong {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+    }
+    .dataset-top span,
+    .dataset-meta em {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .dataset-role {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .split {
+      display: grid;
+      gap: 1.2rem;
+    }
+    @media (min-width: 820px) {
+      .split { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); }
+    }
+    .file-list { overflow: hidden; }
+    .file-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      gap: 0.7rem;
+      align-items: center;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.75rem 0.85rem;
+      color: var(--color-muted);
+      font-size: 0.82rem;
+    }
+    .file-row:last-child { border-bottom: 0; }
+    .file-row code {
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      overflow-wrap: anywhere;
+    }
+    .file-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: var(--color-amber);
+    }
+    .file-dot.ok {
+      background: var(--color-signal);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--color-signal) 45%, transparent);
+    }
+    .corpus-box {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      overflow: hidden;
+    }
+    .corpus-box div {
+      min-height: 6rem;
+      border-bottom: 1px solid var(--color-line);
+      padding: 1rem;
+    }
+    .corpus-box div:nth-child(odd) { border-right: 1px solid var(--color-line); }
+    .corpus-box span,
+    .access-link span {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .corpus-box strong {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-signal);
+      font-size: 1.6rem;
+    }
+    .access-link {
+      display: grid;
+      gap: 0.25rem;
+      padding: 0.9rem;
+      transition: border-color 0.18s, color 0.18s;
+    }
+    .access-link strong {
+      color: var(--color-paper);
+      font-size: 0.95rem;
+    }
+    .access-link:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+    }
+    .access-link:hover strong { color: var(--color-signal); }
+    .note-block {
+      padding: 1rem;
+    }
+    .note-block p:not(.mono-label) {
+      margin-top: 0.7rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      line-height: 1.68;
+    }
+    .note-block code {
+      color: var(--color-amber);
+      font-family: var(--font-mono);
+    }
+    @media (max-width: 640px) {
+      .file-row {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+      .file-row span:not(.file-dot),
+      .file-row time {
+        grid-column: 2;
+      }
+    }
+  </style>
+</BaseLayout>

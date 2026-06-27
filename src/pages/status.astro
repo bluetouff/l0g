@@ -85,6 +85,7 @@ const endpoints = [
   { href: '/api/v1/risk.xml', label: 'risk.xml', type: 'Atom', role: 'changements de niveau' },
   { href: '/llms.txt', label: 'llms.txt', type: 'TXT', role: 'carte agents IA' },
   { href: '/llms-full.txt', label: 'llms-full.txt', type: 'TXT', role: 'corpus texte complet' },
+  { href: '/.well-known/security.txt', label: 'security.txt', type: 'TXT', role: 'contact vulnérabilités' },
   { href: '/rss.xml', label: 'rss.xml', type: 'RSS', role: 'flux éditorial' },
 ];
 
@@ -211,6 +212,7 @@ const jsonLd = {
         <ul>
           <li>Site généré statiquement : pas de session applicative côté l0g.fr.</li>
           <li>Recherche locale Pagefind, servie depuis le domaine.</li>
+          <li>CSP Apache déclarée : self par défaut, TradingView explicitement isolé.</li>
           <li>Aucun cookie ni tracker maison.</li>
           <li>Les embeds TradingView restent les seuls scripts tiers fonctionnels.</li>
         </ul>

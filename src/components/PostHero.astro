@@ -1,20 +1,24 @@
 ---
+import FreshnessBadge from './FreshnessBadge.astro';
+
 interface Props {
   url: string;
   title: string;
   description: string;
   pubDate: Date;
+  updatedDate?: Date;
   tags?: string[];
   readingTime?: number;
   accent?: string;
   accentLabel?: string;
 }
 const {
-  url, title, description, pubDate,
+  url, title, description, pubDate, updatedDate,
   readingTime, accent = 'var(--color-signal)', accentLabel,
 } = Astro.props;
-const dateLabel = pubDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
-const iso = pubDate.toISOString();
+const refDate = updatedDate ?? pubDate;
+const dateLabel = refDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+const iso = refDate.toISOString();
 ---
 
 <a href={url} class="post-hero group mb-8 block" style={`--a:${accent}`}>
@@ -31,6 +35,7 @@ const iso = pubDate.toISOString();
     <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1">
       <time datetime={iso} class="mono-label hero-date">{dateLabel}</time>
       {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
+      <FreshnessBadge date={refDate} compact />
       <span class="hero-cta mono-label">lire l'analyse <span class="hero-arrow">&rsaquo;</span></span>
     </div>
   </article>

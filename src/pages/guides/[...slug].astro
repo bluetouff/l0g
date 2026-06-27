@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CitationBox from '../../components/CitationBox.astro';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { topicForTag } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
@@ -19,7 +21,6 @@ const { Content } = await render(guide);
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
-const pubLabel = fmt(guide.data.pubDate);
 const updated = guide.data.updatedDate ?? guide.data.pubDate;
 const updatedLabel = fmt(updated);
 const isoPub = guide.data.pubDate.toISOString();
@@ -62,6 +63,7 @@ const ld = {
     },
   ],
 };
+const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
@@ -70,7 +72,7 @@ const ld = {
   ogType="article"
   ogImage={ogImage}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  <script type="application/ld+json" set:html={safeLd} />
 
   <div class="read-progress" aria-hidden="true"><span></span></div>
 
@@ -88,6 +90,8 @@ const ld = {
         <time datetime={isoUpd} data-pagefind-meta="date">dernière révision le {updatedLabel}</time>
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min de lecture</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <FreshnessBadge date={updated} />
         {guide.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
         <span class="post-tags">
           {guide.data.tags.map((tag) => {
@@ -106,6 +110,14 @@ const ld = {
     <div class="prose">
       <Content />
     </div>
+
+    <CitationBox
+      title={guide.data.title}
+      url={url}
+      kind="guide"
+      published={guide.data.pubDate}
+      updated={updated}
+    />
 
     <hr class="hairline mt-12" />
     <a href="/glossaire/" class="mono-label link-term mt-6 inline-block">$ cd ../glossaire</a>

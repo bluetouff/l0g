@@ -32,6 +32,7 @@ export interface MethodologyPage {
 }
 
 export const methodologyUpdated = '26 juin 2026';
+export const methodologyUpdatedIso = '2026-06-26';
 
 export const methodologyPages: MethodologyPage[] = [
   {

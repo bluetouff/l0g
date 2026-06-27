@@ -68,6 +68,13 @@ export const GET: APIRoute = async () => {
     "Page de controle public du site : date de build statique, compte des articles et guides, presence des snapshots risk.json, confluence.json et risk-events.json, liste des endpoints API et corpus machine, garanties zero tracker maison et limites de fraicheur des donnees."
   );
   out.push(SEP);
+  out.push('DONNEES : Inventaire des jeux de donnees');
+  out.push(`URL : ${SITE}/donnees/`);
+  out.push('-'.repeat(76));
+  out.push(
+    "Inventaire des snapshots publics et endpoints l0g : risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
+  );
+  out.push(SEP);
   out.push('GLOSSAIRE : Sigles et notions');
   out.push(`URL : ${SITE}/glossaire/`);
   out.push('-'.repeat(76));

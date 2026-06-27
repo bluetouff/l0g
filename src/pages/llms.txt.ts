@@ -47,6 +47,9 @@ export const GET: APIRoute = async () => {
   lines.push(
     `- [Statut & intégrité](${SITE}/status/): état public du build statique, des snapshots, des endpoints, du corpus machine et des garanties de tracking.`
   );
+  lines.push(
+    `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
+  );
   lines.push('');
 
   lines.push('## Guides de reference');

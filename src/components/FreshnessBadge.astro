@@ -1,0 +1,60 @@
+---
+import { formatDateFr, freshnessFor } from '../lib/freshness.ts';
+
+interface Props {
+  date: Date;
+  label?: string;
+  compact?: boolean;
+}
+
+const { date, label = 'fraîcheur', compact = false } = Astro.props;
+const info = freshnessFor(date);
+const dateLabel = formatDateFr(date);
+---
+
+<span
+  class={`freshness freshness-${info.tone} ${compact ? 'is-compact' : ''}`}
+  title={`${label} : ${dateLabel} · ${info.detail}`}
+>
+  <span class="fresh-dot" aria-hidden="true"></span>
+  <span>{info.label}</span>
+  {!compact && <span class="fresh-detail">{info.detail}</span>}
+</span>
+
+<style>
+  .freshness {
+    --fresh-color: var(--color-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    border: 1px solid color-mix(in srgb, var(--fresh-color) 40%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--fresh-color) 8%, transparent);
+    color: var(--fresh-color);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    padding: 0.18rem 0.55rem;
+    text-transform: uppercase;
+  }
+  .freshness.is-compact {
+    padding-inline: 0.46rem;
+  }
+  .fresh-fresh { --fresh-color: var(--color-signal); }
+  .fresh-current { --fresh-color: #7aa2f7; }
+  .fresh-watch { --fresh-color: var(--color-amber); }
+  .fresh-archive { --fresh-color: var(--color-muted); }
+  .fresh-dot {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: currentColor;
+    box-shadow: 0 0 9px color-mix(in srgb, currentColor 55%, transparent);
+  }
+  .fresh-detail {
+    color: color-mix(in srgb, currentColor 68%, var(--color-muted));
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+</style>

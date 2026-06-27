@@ -1,0 +1,57 @@
+---
+import { formatDateFr } from '../lib/freshness.ts';
+
+interface Props {
+  title: string;
+  url: string;
+  kind?: string;
+  published?: Date;
+  updated?: Date;
+}
+
+const { title, url, kind = 'page', published, updated } = Astro.props;
+const date = updated ?? published;
+const datePart = date ? `, ${updated ? 'revu le' : 'publié le'} ${formatDateFr(date)}` : '';
+const citation = `l0g.fr, « ${title} » (${kind}${datePart}), ${url}`;
+const md = `[${title}](${url}) — l0g.fr`;
+---
+
+<aside class="citation-box" aria-labelledby="citation-title" data-pagefind-ignore>
+  <p id="citation-title" class="mono-label">// citer cette page</p>
+  <p class="citation-line">{citation}</p>
+  <code>{md}</code>
+</aside>
+
+<style>
+  .citation-box {
+    margin-top: 3rem;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    padding: 1rem 0;
+  }
+  .citation-box .mono-label {
+    color: var(--color-signal);
+    margin-bottom: 0.55rem;
+  }
+  .citation-line {
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+  .citation-box code {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 0.7rem;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    padding: 0.45rem 0.6rem;
+  }
+</style>

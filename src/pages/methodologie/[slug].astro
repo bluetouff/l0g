@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CitationBox from '../../components/CitationBox.astro';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
-import { methodologyPages, type MethodologyPage } from '../../config/methodology.ts';
+import { methodologyPages, methodologyUpdatedIso, type MethodologyPage } from '../../config/methodology.ts';
 
 export function getStaticPaths() {
   return methodologyPages.map((page) => ({
@@ -15,6 +17,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const updatedDate = new Date(`${methodologyUpdatedIso}T00:00:00+02:00`);
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -24,20 +27,22 @@ const accentVar: Record<string, string> = {
 };
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pageUrl = `${site}/methodologie/${page.slug}/`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
-  '@id': `${site}/methodologie/${page.slug}/#methodology`,
+  '@id': `${pageUrl}#methodology`,
   headline: page.title,
   description: page.description,
   inLanguage: 'fr',
-  dateModified: '2026-06-26',
+  dateModified: methodologyUpdatedIso,
   publisher: { '@id': `${site}/#org` },
   about: page.label,
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
-  url: `${site}/methodologie/${page.slug}/`,
+  url: pageUrl,
 };
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
 const trustItems = [
   { label: 'sources primaires', href: '#sources' },
@@ -48,7 +53,7 @@ const trustItems = [
 ---
 
 <BaseLayout title={page.title} description={page.description}>
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={safeJsonLd} />
 
   <article class="method-page" style={`--a:${accentVar[page.accent]}`}>
     <section class="rise">
@@ -61,7 +66,10 @@ const trustItems = [
         <a class="method-action" href={page.repoUrl} target="_blank" rel="noopener">code source</a>
         <a class="method-action" href="/methodologie/">hub méthodo</a>
       </div>
-      <p class="method-updated" data-pagefind-ignore>Dernière mise à jour : {page.updated}</p>
+      <p class="method-updated" data-pagefind-ignore>
+        Dernière mise à jour : {page.updated}
+        <FreshnessBadge date={updatedDate} />
+      </p>
     </section>
 
     <section class="method-section" id="lecture">
@@ -164,6 +172,8 @@ const trustItems = [
         réduisent le bruit ; ils ne remplacent ni les sources primaires ni le jugement.
       </p>
     </section>
+
+    <CitationBox title={page.title} url={pageUrl} kind="fiche méthodologique" updated={updatedDate} />
   </article>
 
   <style>
@@ -223,6 +233,10 @@ const trustItems = [
     }
 
     .method-updated {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
       margin-top: 0.9rem;
       font-family: var(--font-mono);
       font-size: 0.7rem;
