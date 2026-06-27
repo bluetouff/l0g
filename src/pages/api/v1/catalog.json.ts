@@ -37,8 +37,29 @@ export const GET: APIRoute = async () => {
     tags: p.data.tags ?? [],
     topics: topics.filter((t) => postMatchesTopic(p.data.tags ?? [], t)).map((t) => t.slug),
     evidence: (() => {
-      const evidence = buildArticleEvidence(p.body ?? '');
+      const evidence = buildArticleEvidence(p.body ?? '', {
+        published: p.data.pubDate,
+        updated: p.data.updatedDate,
+        url: `${SITE}/posts/${p.id}/`,
+        title: p.data.title,
+      });
       return {
+        claims: evidence.claims.map((claim) => ({
+          id: claim.id,
+          kind: claim.kind,
+          claim: claim.claim,
+          date: claim.dateIso ?? null,
+          dateLabel: claim.dateLabel,
+          confidence: claim.confidence,
+          references: claim.references.map((ref) => ({
+            label: ref.label,
+            href: ref.href,
+            host: ref.host ?? null,
+            kind: ref.kind ?? null,
+            date: ref.dateIso ?? null,
+            dateLabel: ref.dateLabel ?? claim.dateLabel,
+          })),
+        })),
         depth: evidence.depth,
         badges: evidence.badges.map((badge) => ({
           id: badge.id,
@@ -54,6 +75,12 @@ export const GET: APIRoute = async () => {
         counts: evidence.stats,
       };
     })(),
+    revisions: {
+      published: iso(p.data.pubDate),
+      updated: iso(p.data.updatedDate),
+      policy: `${SITE}/protocole-editorial/`,
+      changelog: `${SITE}/changelog-editorial/`,
+    },
   }));
 
   const guides = allGuides.map((g) => ({
@@ -119,6 +146,7 @@ export const GET: APIRoute = async () => {
       evidenceLevels: editorialProtocol.evidenceLevels,
       proofDepthLevels: editorialProtocol.proofDepthLevels,
       precisionGuard: editorialProtocol.precisionGuard,
+      correctionPolicy: editorialProtocol.correctionPolicy,
     },
     changelog: editorialChangelog.map((entry) => ({
       ...entry,

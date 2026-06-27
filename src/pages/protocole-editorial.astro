@@ -138,12 +138,26 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     <section class="protocol-section split">
       <div class="note-block">
         <p class="mono-label glow">// corrections</p>
-        <p>
-          Une correction éditoriale substantielle doit être visible : changement de source,
-          modification d’un seuil, révision d’une interprétation ou ajout d’une limite importante.
-          Les corrections structurantes entrent dans le changelog éditorial.
-        </p>
+        <h2>{editorialProtocol.correctionPolicy.title}</h2>
+        <p>{editorialProtocol.correctionPolicy.summary}</p>
+        <ul class="correction-list">
+          {editorialProtocol.correctionPolicy.correctionTypes.map((item) => (
+            <li>
+              <strong>{item.label}</strong>
+              <span>{item.description}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+      <div class="note-block">
+        <p class="mono-label glow">// historique des révisions</p>
+        <ul class="revision-rules">
+          {editorialProtocol.correctionPolicy.revisionRules.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="protocol-section">
       <div class="note-block">
         <p class="mono-label glow">// limites</p>
         <p>
@@ -220,6 +234,12 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       color: var(--color-paper);
       font-family: var(--font-read);
       line-height: 1.68;
+    }
+    .note-block h2 {
+      margin-top: 0.45rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
     }
     .principle-grid,
     .evidence-grid {
@@ -372,6 +392,33 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       margin: 0;
       color: var(--color-amber);
       font-family: var(--font-read);
+    }
+    .correction-list,
+    .revision-rules {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+      padding: 0;
+      list-style: none;
+    }
+    .correction-list li,
+    .revision-rules li {
+      border-top: 1px solid var(--color-line);
+      padding-top: 0.6rem;
+      color: var(--color-muted);
+      line-height: 1.55;
+    }
+    .correction-list strong {
+      display: block;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .correction-list span {
+      display: block;
+      margin-top: 0.25rem;
     }
     .split {
       display: grid;

@@ -111,6 +111,15 @@ export const GET: APIRoute = async () => {
   out.push(editorialProtocol.precisionGuard.summary);
   out.push(`Exigences : ${editorialProtocol.precisionGuard.requirements.join(', ')}.`);
   out.push(editorialProtocol.precisionGuard.warning);
+  out.push('');
+  out.push('Relations affirmation-source :');
+  out.push('Les articles generent automatiquement des relations entre passages references et sources cliquables. Chaque relation est typee : fait, estimation, inference ou scenario. Les references exposent une date utile extraite du passage ou, a defaut, la date de publication de l article.');
+  out.push('');
+  out.push('Politique de correction :');
+  out.push(editorialProtocol.correctionPolicy.summary);
+  for (const rule of editorialProtocol.correctionPolicy.revisionRules) {
+    out.push(`- ${rule}`);
+  }
   out.push(SEP);
   out.push('CHANGELOG EDITORIAL : Changements structurants');
   out.push(`URL : ${SITE}/changelog-editorial/`);

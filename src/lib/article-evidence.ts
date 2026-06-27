@@ -8,12 +8,26 @@ export interface EvidenceLink {
   href: string;
   host?: string;
   kind?: string;
+  dateLabel?: string;
+  dateIso?: string;
 }
 
 export interface PrimaryEvidence {
   source: PrimarySourceInstitution;
-  reason: 'lien' | 'mention';
+  reason: 'source-liée';
   links: EvidenceLink[];
+}
+
+export type ClaimKind = 'fait' | 'estimation' | 'inférence' | 'scénario';
+
+export interface ClaimEvidence {
+  id: string;
+  kind: ClaimKind;
+  claim: string;
+  dateLabel: string;
+  dateIso?: string;
+  references: EvidenceLink[];
+  confidence: 'auto-backfill' | 'structurée';
 }
 
 export interface EvidenceDepth {
@@ -27,6 +41,7 @@ export interface EvidenceDepth {
 export interface ArticleEvidence {
   badges: EvidenceBadge[];
   depth: EvidenceDepth;
+  claims: ClaimEvidence[];
   primary: PrimaryEvidence[];
   secondary: EvidenceLink[];
   internalData: EvidenceLink[];
@@ -35,7 +50,15 @@ export interface ArticleEvidence {
     externalLinks: number;
     internalLinks: number;
     primarySources: number;
+    claimRelations: number;
   };
+}
+
+interface ArticleEvidenceOptions {
+  published?: Date;
+  updated?: Date;
+  url?: string;
+  title?: string;
 }
 
 export interface EvidenceBadge {
@@ -74,10 +97,6 @@ function isSameOrSubHost(host: string, base: string) {
   return host === base || host.endsWith(`.${base}`);
 }
 
-function escapeRegExp(value: string) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 function normalizeHref(raw: string) {
   return raw
     .trim()
@@ -111,6 +130,36 @@ function extractLinks(markdown: string): EvidenceLink[] {
   return [...links.values()];
 }
 
+function stripMarkdown(value: string) {
+  return String(value || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/<figure[\s\S]*?<\/figure>/gi, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[`*_>#]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function splitEvidenceBlocks(markdown: string) {
+  return String(markdown || '')
+    .replace(/```[\s\S]*?```/g, '\n')
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter((block) => block && /(?:\[[^\]]+\]\([^)]+\)|https?:\/\/|href=["'])/i.test(block));
+}
+
+function firstMeaningfulBlock(markdown: string) {
+  return String(markdown || '')
+    .replace(/```[\s\S]*?```/g, '\n')
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .map(stripMarkdown)
+    .filter((block) => block.length > 80 && !/^tags?\b/i.test(block))
+    .at(0);
+}
+
 function sourceHosts(source: PrimarySourceInstitution) {
   return new Set(
     [source.url, ...source.datasets.map((dataset) => dataset.url)]
@@ -119,16 +168,120 @@ function sourceHosts(source: PrimarySourceInstitution) {
   );
 }
 
-function mentioned(source: PrimarySourceInstitution, text: string) {
-  const tokens = new Set<string>();
-  tokens.add(source.name);
-  tokens.add(source.shortName);
-  for (const part of source.shortName.split('/')) tokens.add(part.trim());
-  for (const dataset of source.datasets) tokens.add(dataset.name);
+function classifyClaim(text: string): ClaimKind {
+  const value = text.toLowerCase();
+  if (/(sc[eé]nario|hypoth[eè]se|projection|conditionnel|pourrait|pourraient|[àa] surveiller|si |dans ce cas|trajectoire)/iu.test(value)) {
+    return 'scénario';
+  }
+  if (/(estime|estimation|pr[eé]vision|environ|autour de|fourchette|probabilit[eé]|consensus|table sur|selon)/iu.test(value)) {
+    return 'estimation';
+  }
+  if (/(donc|sugg[eè]re|implique|signale|indique|lecture|interpr[eè]te|ce qui veut dire|en clair|j'en d[eé]duis)/iu.test(value)) {
+    return 'inférence';
+  }
+  return 'fait';
+}
 
-  return [...tokens]
-    .filter((token) => token.length >= 3)
-    .some((token) => new RegExp(`(^|[^\\p{L}\\p{N}])${escapeRegExp(token)}([^\\p{L}\\p{N}]|$)`, 'iu').test(text));
+function monthNumber(raw: string) {
+  const months: Record<string, string> = {
+    janvier: '01',
+    février: '02',
+    fevrier: '02',
+    mars: '03',
+    avril: '04',
+    mai: '05',
+    juin: '06',
+    juillet: '07',
+    août: '08',
+    aout: '08',
+    septembre: '09',
+    octobre: '10',
+    novembre: '11',
+    décembre: '12',
+    decembre: '12',
+  };
+  return months[raw.toLowerCase()];
+}
+
+function formatDate(value: Date) {
+  return value.toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+function publicationDate(fallback?: Date) {
+  return fallback
+    ? { label: `publication ${formatDate(fallback)}`, iso: fallback.toISOString().slice(0, 10) }
+    : { label: 'date non indiquée' };
+}
+
+function extractDateFromText(text: string): { label: string; iso?: string } | null {
+  const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
+  if (iso) return { label: `${iso[3]}/${iso[2]}/${iso[1]}`, iso: `${iso[1]}-${iso[2]}-${iso[3]}` };
+
+  const full = text.match(/\b([0-3]?\d)\s+(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(20\d{2})\b/iu);
+  if (full) {
+    const month = monthNumber(full[2].normalize('NFD').replace(/\p{Diacritic}/gu, '')) || monthNumber(full[2]);
+    const day = full[1].padStart(2, '0');
+    return { label: `${day}/${month}/${full[3]}`, iso: `${full[3]}-${month}-${day}` };
+  }
+
+  const monthYear = text.match(/\b(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(20\d{2})\b/iu);
+  if (monthYear) {
+    const month = monthNumber(monthYear[1].normalize('NFD').replace(/\p{Diacritic}/gu, '')) || monthNumber(monthYear[1]);
+    return { label: `${monthYear[1]} ${monthYear[2]}`, iso: `${monthYear[2]}-${month}-01` };
+  }
+
+  const quarter = text.match(/\bT([1-4])\s+(20\d{2})\b/i);
+  if (quarter) return { label: `T${quarter[1]} ${quarter[2]}`, iso: `${quarter[2]}-${String((Number(quarter[1]) - 1) * 3 + 1).padStart(2, '0')}-01` };
+
+  const year = text.match(/\b(20\d{2})\b/);
+  if (year) return { label: year[1], iso: `${year[1]}-01-01` };
+
+  return null;
+}
+
+function dateForBlock(block: string, fallback?: Date) {
+  const found = extractDateFromText(stripMarkdown(block));
+  if (found) return found;
+  return publicationDate(fallback);
+}
+
+function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): ClaimEvidence[] {
+  const claim = firstMeaningfulBlock(markdown);
+  if (!claim || !opts.url) return [];
+  const date = publicationDate(opts.published);
+
+  return [
+    {
+      id: 'claim-backfill-1',
+      kind: classifyClaim(claim),
+      claim: claim.slice(0, 340),
+      dateLabel: date.label,
+      dateIso: date.iso,
+      references: [
+        {
+          label: opts.title ? `Article l0g : ${opts.title}` : 'Article l0g',
+          href: opts.url,
+          host: hostOf(opts.url),
+          kind: 'publication interne',
+          dateLabel: date.label,
+          dateIso: date.iso,
+        },
+      ],
+      confidence: 'auto-backfill',
+    },
+  ];
+}
+
+function relationKind(link: EvidenceLink, primaryHosts: Set<string>) {
+  if (link.host && [...primaryHosts].some((host) => isSameOrSubHost(link.host!, host))) return 'source primaire';
+  if (link.kind === 'dashboard' || link.kind === 'donnée' || link.kind === 'méthode') return link.kind;
+  if (isInternal(link)) return 'contexte';
+  return 'source secondaire';
 }
 
 function internalKind(href: string) {
@@ -225,14 +378,26 @@ function buildBadges(args: {
 }
 
 function buildEvidenceDepth(args: {
+  claims: ClaimEvidence[];
   primary: PrimaryEvidence[];
   secondary: EvidenceLink[];
   internalData: EvidenceLink[];
   context: EvidenceLink[];
 }): EvidenceDepth {
-  const hasPrimaryLink = args.primary.some((item) => item.reason === 'lien' && item.links.length > 0);
+  const hasPrimaryLink = args.primary.some((item) => item.links.length > 0);
+  const hasClaimRelations = args.claims.length > 0;
   const hasDocumentLink = hasPrimaryLink || args.secondary.length > 0 || args.internalData.length > 0;
   const hasReference = args.primary.length > 0 || args.context.length > 0 || hasDocumentLink;
+
+  if (hasClaimRelations && hasPrimaryLink) {
+    return {
+      id: 'direct-proof',
+      label: 'preuve directe',
+      detail: 'relation affirmation → source primaire cliquable détectée automatiquement ; validation humaine recommandée',
+      score: 4,
+      automated: true,
+    };
+  }
 
   if (hasPrimaryLink || args.internalData.length > 0) {
     return {
@@ -263,18 +428,22 @@ function buildEvidenceDepth(args: {
   };
 }
 
-export function buildArticleEvidence(markdown: string): ArticleEvidence {
-  const links = extractLinks(markdown);
+export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOptions = {}): ArticleEvidence {
+  const defaultDate = publicationDate(opts.published);
+  const links = extractLinks(markdown).map((link) => ({
+    ...link,
+    dateLabel: link.dateLabel ?? defaultDate.label,
+    dateIso: link.dateIso ?? defaultDate.iso,
+  }));
   const primary: PrimaryEvidence[] = [];
 
   for (const source of primaryInstitutions) {
     const hosts = sourceHosts(source);
     const matchedLinks = links.filter((link) => link.host && [...hosts].some((host) => isSameOrSubHost(link.host!, host)));
-    const hasMention = mentioned(source, markdown);
-    if (matchedLinks.length || hasMention) {
+    if (matchedLinks.length) {
       primary.push({
         source,
-        reason: matchedLinks.length ? 'lien' : 'mention',
+        reason: 'source-liée',
         links: matchedLinks.slice(0, 3),
       });
     }
@@ -303,9 +472,48 @@ export function buildArticleEvidence(markdown: string): ArticleEvidence {
     .filter((link) => ['glossaire', 'guide', 'source', 'fil', 'article'].includes(link.kind || ''))
     .slice(0, 12);
 
+  const linkClaims = splitEvidenceBlocks(markdown)
+    .map((block, index): ClaimEvidence | null => {
+      const blockLinks = extractLinks(block)
+        .map((link) => {
+          const local = isInternal(link) ? { ...link, href: toLocalPath(link), kind: internalKind(toLocalPath(link)) } : link;
+          const dashboard = local.host && DASHBOARD_HOSTS.has(local.host)
+            ? { ...local, label: DASHBOARD_HOSTS.get(local.host) || local.label, kind: 'dashboard' }
+            : local;
+          const date = dateForBlock(block, opts.published);
+          return {
+            ...dashboard,
+            kind: relationKind(dashboard, primaryHosts),
+            dateLabel: date.label,
+            dateIso: date.iso,
+          };
+        })
+        .filter((link) => !link.href.startsWith('#'));
+
+      if (!blockLinks.length) return null;
+
+      const claim = stripMarkdown(block).slice(0, 340);
+      if (!claim) return null;
+      const date = dateForBlock(block, opts.published);
+      return {
+        id: `claim-${index + 1}`,
+        kind: classifyClaim(claim),
+        claim,
+        dateLabel: date.label,
+        dateIso: date.iso,
+        references: blockLinks.slice(0, 5),
+        confidence: 'auto-backfill',
+      };
+    })
+    .filter((claim): claim is ClaimEvidence => Boolean(claim))
+    .slice(0, 24);
+
+  const claims = linkClaims.length ? linkClaims : buildFallbackClaim(markdown, opts);
+
   return {
     badges: buildBadges({ primary, secondary, internalData, context, markdown }),
-    depth: buildEvidenceDepth({ primary, secondary, internalData, context }),
+    depth: buildEvidenceDepth({ claims, primary, secondary, internalData, context }),
+    claims,
     primary,
     secondary,
     internalData,
@@ -314,6 +522,7 @@ export function buildArticleEvidence(markdown: string): ArticleEvidence {
       externalLinks: externalLinks.length,
       internalLinks: internal.length,
       primarySources: primary.length,
+      claimRelations: claims.length,
     },
   };
 }

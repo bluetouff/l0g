@@ -78,6 +78,12 @@ export const GET: APIRoute = async () => {
   lines.push(
     `- Garde-fou precision: ${editorialProtocol.precisionGuard.summary} Exigences: ${editorialProtocol.precisionGuard.requirements.join(', ')}. ${editorialProtocol.precisionGuard.warning}`
   );
+  lines.push(
+    `- Relations affirmation-source: les articles backfillent les passages référencés en fait, estimation, inférence ou scénario ; chaque référence exposée est cliquable et datée.`
+  );
+  lines.push(
+    `- Politique de correction: ${editorialProtocol.correctionPolicy.summary}`
+  );
   lines.push('');
 
   lines.push('## Changelog editorial');

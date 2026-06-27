@@ -30,6 +30,13 @@ export type EditorialPrecisionGuard = {
   warning: string;
 };
 
+export type EditorialCorrectionPolicy = {
+  title: string;
+  summary: string;
+  correctionTypes: Array<{ label: string; description: string }>;
+  revisionRules: string[];
+};
+
 export type EditorialChangelogEntry = {
   date: string;
   title: string;
@@ -136,8 +143,8 @@ export const editorialProtocol = {
   proofDepthLevels: [
     {
       id: 'mention',
-      label: 'Mention',
-      meaning: "L’institution est nommée, sans document directement attaché.",
+      label: 'Mention non probante',
+      meaning: 'Signal historique faible : une autorité est nommée sans relation affirmation-source. Ce niveau ne vaut pas preuve article.',
       status: 'automatique',
     },
     {
@@ -180,9 +187,44 @@ export const editorialProtocol = {
     warning:
       'Sinon, la mise en forme peut devenir plus précise que la connaissance sous-jacente.',
   } satisfies EditorialPrecisionGuard,
+  correctionPolicy: {
+    title: 'Politique de correction',
+    summary:
+      'Une correction est publiée quand elle change la lecture d’un fait, d’une source, d’un calcul, d’une limite ou d’une conclusion. Les micro-corrections typographiques restent dans Git.',
+    correctionTypes: [
+      {
+        label: 'Correction factuelle',
+        description: 'Erreur de chiffre, date, attribution, citation, lien ou qualification d’une source.',
+      },
+      {
+        label: 'Révision méthodologique',
+        description: 'Changement de formule, seuil, classification, périmètre ou limite d’un instrument.',
+      },
+      {
+        label: 'Mise à jour éditoriale',
+        description: 'Ajout de contexte, source nouvelle, changement de scénario ou clarification de conclusion.',
+      },
+    ],
+    revisionRules: [
+      'Chaque article expose sa date de publication et, si elle existe, sa date de révision.',
+      'Les changements structurants sont consignés dans le changelog éditorial.',
+      'Les modifications techniques restent vérifiables dans l’historique Git public.',
+    ],
+  } satisfies EditorialCorrectionPolicy,
 };
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
+  {
+    date: '2026-06-27',
+    title: 'Relations affirmation-source et historique des révisions',
+    kind: 'traçabilité',
+    summary:
+      'Les articles exposent désormais des relations affirmation-source datées, typées en fait, estimation, inférence ou scénario, avec historique de publication et politique de correction.',
+    links: [
+      { label: 'protocole', href: '/protocole-editorial/' },
+      { label: 'catalogue', href: '/api/v1/catalog.json' },
+    ],
+  },
   {
     date: '2026-06-27',
     title: 'Garde-fou contre l’illusion de précision',
@@ -210,7 +252,7 @@ export const editorialChangelog: EditorialChangelogEntry[] = [
     title: 'Échelle de profondeur de preuve',
     kind: 'traçabilité',
     summary:
-      'Le protocole distingue désormais mention, référence, source liée, preuve directe et reproduction afin de ne pas confondre présence lexicale d’une autorité et preuve d’une affirmation.',
+      'Le protocole distingue désormais relation affirmation-source, référence, source liée, preuve directe et reproduction afin de ne pas confondre présence lexicale d’une autorité et preuve d’une affirmation.',
     links: [
       { label: 'protocole', href: '/protocole-editorial/' },
       { label: 'catalogue', href: '/api/v1/catalog.json' },

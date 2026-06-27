@@ -11,8 +11,15 @@ const primaryShown = evidence.primary.slice(0, 6);
 const secondaryShown = evidence.secondary.slice(0, 8);
 const dataShown = evidence.internalData.slice(0, 6);
 const contextShown = evidence.context.slice(0, 10);
+const claimsShown = evidence.claims.slice(0, 12);
 const badges = evidence.badges;
 const depth = evidence.depth;
+const claimTone: Record<string, string> = {
+  fait: 'claim-fact',
+  estimation: 'claim-estimate',
+  inférence: 'claim-inference',
+  scénario: 'claim-scenario',
+};
 ---
 
 <aside class="evidence-box" aria-labelledby="evidence-title" data-pagefind-ignore>
@@ -20,14 +27,15 @@ const depth = evidence.depth;
     <div>
       <p id="evidence-title" class="mono-label">// preuves utilisées</p>
       <p class="evidence-note">
-        Lecture automatique des liens et mentions de l'article : sources primaires,
-        sources secondaires, données internes et renvois de contexte.
+        Backfill automatique des passages référencés : chaque ligne relie une affirmation
+        à une ou plusieurs sources cliquables et datées.
       </p>
     </div>
     <div class="evidence-counts" aria-label="Résumé de traçabilité">
       <span>{evidence.stats.primarySources} primaires</span>
       <span>{evidence.stats.externalLinks} externes</span>
       <span>{evidence.stats.internalLinks} internes</span>
+      <span>{evidence.stats.claimRelations} relations</span>
     </div>
   </div>
 
@@ -53,6 +61,34 @@ const depth = evidence.depth;
     demandent une relation structurée entre une affirmation précise et sa source.
   </p>
 
+  <section class="claim-section">
+    <h2 class="evidence-h">Affirmations sourcées</h2>
+    {claimsShown.length > 0 ? (
+      <ol class="claim-list">
+        {claimsShown.map((claim) => (
+          <li class={`claim-item ${claimTone[claim.kind]}`}>
+            <div class="claim-top">
+              <span>{claim.kind}</span>
+              <time datetime={claim.dateIso}>{claim.dateLabel}</time>
+            </div>
+            <p>{claim.claim}</p>
+            <div class="claim-refs">
+              {claim.references.map((ref) => (
+                <a href={ref.href} target={ref.href.startsWith('http') ? '_blank' : undefined} rel={ref.href.startsWith('http') ? 'noopener' : undefined}>
+                  <span>{ref.kind ?? ref.host ?? 'référence'}</span>
+                  <strong>{ref.label}</strong>
+                  <time datetime={ref.dateIso ?? claim.dateIso}>{ref.dateLabel ?? claim.dateLabel}</time>
+                </a>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <p class="evidence-empty">Aucune relation affirmation-source détectée automatiquement.</p>
+    )}
+  </section>
+
   <div class="evidence-grid">
     <section class="evidence-panel">
       <h2 class="evidence-h">Sources primaires</h2>
@@ -61,7 +97,17 @@ const depth = evidence.depth;
           {primaryShown.map((item) => (
             <li>
               <a href={primarySourceUrl(item.source.slug)}>{item.source.shortName}</a>
-              <span>{item.reason === 'lien' ? 'lien direct détecté' : 'mention détectée'}</span>
+              <span>source liée à au moins une référence cliquable</span>
+              {item.links.length > 0 && (
+                <span class="primary-links">
+                  {item.links.map((link) => (
+                    <a href={link.href} target="_blank" rel="noopener">
+                      <span>{link.label}</span>
+                      {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
+                    </a>
+                  ))}
+                </span>
+              )}
             </li>
           ))}
         </ul>
@@ -78,6 +124,7 @@ const depth = evidence.depth;
             <li>
               <a href={link.href} target="_blank" rel="noopener">{link.host ?? link.label}</a>
               <span>{link.label}</span>
+              {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
             </li>
           ))}
         </ul>
@@ -94,6 +141,7 @@ const depth = evidence.depth;
             <li>
               <a href={link.href}>{link.label}</a>
               <span>{link.kind}</span>
+              {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
             </li>
           ))}
         </ul>
@@ -110,6 +158,7 @@ const depth = evidence.depth;
             <li>
               <a href={link.href}>{link.label}</a>
               <span>{link.kind}</span>
+              {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
             </li>
           ))}
         </ul>
@@ -234,6 +283,94 @@ const depth = evidence.depth;
   .proof-secondary { --proof-color: var(--color-muted); }
   .proof-scenario { --proof-color: var(--color-amber); }
   .proof-context { --proof-color: var(--color-accent); }
+  .claim-section {
+    margin-top: 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    padding: 0.8rem;
+  }
+  .claim-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 0.7rem;
+    padding: 0;
+    list-style: none;
+  }
+  .claim-item {
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.7rem;
+  }
+  .claim-item:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .claim-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .claim-top span,
+  .claim-top time,
+  .claim-refs span,
+  .claim-refs time {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .claim-top span {
+    color: var(--color-signal);
+  }
+  .claim-estimate .claim-top span { color: var(--color-amber); }
+  .claim-inference .claim-top span { color: var(--color-accent); }
+  .claim-scenario .claim-top span { color: #7aa2f7; }
+  .claim-top time {
+    color: var(--color-muted);
+  }
+  .claim-item p {
+    margin-top: 0.4rem;
+    color: var(--color-paper);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .claim-refs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    margin-top: 0.65rem;
+  }
+  @media (min-width: 680px) {
+    .claim-refs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .claim-refs a {
+    display: grid;
+    gap: 0.2rem;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    padding: 0.55rem 0.65rem;
+    text-decoration: none;
+    background: color-mix(in srgb, var(--color-bg) 35%, transparent);
+    transition: border-color 0.16s, background 0.16s;
+  }
+  .claim-refs a:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+    background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+  }
+  .claim-refs span {
+    color: var(--color-signal);
+  }
+  .claim-refs strong {
+    color: var(--color-paper);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+  .claim-refs time {
+    color: var(--color-muted);
+  }
   .evidence-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -274,12 +411,39 @@ const depth = evidence.depth;
     overflow-wrap: anywhere;
   }
   .evidence-list span,
+  .evidence-list time,
   .evidence-empty {
     color: var(--color-muted);
     font-size: 0.78rem;
     line-height: 1.45;
   }
+  .evidence-list time,
+  .primary-links time {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
   .evidence-empty {
     margin-top: 0.7rem;
+  }
+  .primary-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .primary-links a {
+    display: inline-grid;
+    gap: 0.1rem;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+  }
+  .primary-links span {
+    color: inherit;
+    font-size: inherit;
+  }
+  .primary-links time {
+    color: var(--color-muted);
   }
 </style>
