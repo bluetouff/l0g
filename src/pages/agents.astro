@@ -1,0 +1,369 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+
+const trustItems = [
+  { label: 'agents.json', href: '/agents.json' },
+  { label: 'OpenAPI', href: '/openapi.json' },
+  { label: 'MCP public', href: '/mcp/' },
+  { label: 'preuves', href: '/preuves/' },
+];
+
+const surfaces = [
+  {
+    need: 'Découvrir le site',
+    endpoint: '/agents.json',
+    use: 'Point de départ : capacités, endpoints, règles d’usage, attribution et limites.',
+  },
+  {
+    need: 'Construire un client',
+    endpoint: '/openapi.json',
+    use: 'Contrat OpenAPI 3.1 pour intégrer les endpoints JSON sans deviner les champs.',
+  },
+  {
+    need: 'Ingestion RAG',
+    endpoint: '/api/v1/catalog.ndjson',
+    use: 'Catalogue ligne à ligne, plus robuste qu’un scraping HTML complet.',
+  },
+  {
+    need: 'Audit de preuve',
+    endpoint: '/api/v1/evidence-graph.json',
+    use: 'Graphe articles, claims, références, hôtes, sources primaires et datasets.',
+  },
+  {
+    need: 'Citation précise',
+    endpoint: '/api/v1/claims.json',
+    use: 'Assertions typées : fait, estimation, inférence ou scénario, avec références datées.',
+  },
+  {
+    need: 'Veille incrémentale',
+    endpoint: '/api/v1/changes.ndjson',
+    use: 'Flux machine pour suivre publications, révisions et changements éditoriaux.',
+  },
+  {
+    need: 'Fraîcheur',
+    endpoint: '/api/v1/freshness.json',
+    use: 'Date du snapshot, derniers contenus et endpoints disponibles.',
+  },
+  {
+    need: 'Intégrité',
+    endpoint: '/api/v1/integrity.json',
+    use: 'Empreintes SHA-256 canoniques des surfaces publiques.',
+  },
+  {
+    need: 'Tool calling',
+    endpoint: '/api/mcp',
+    use: 'Serveur MCP public en lecture seule, adapté aux agents qui préfèrent appeler des outils.',
+  },
+];
+
+const flow = [
+  'Lire /agents.json pour comprendre les capacités et les règles d’usage.',
+  'Vérifier /api/v1/freshness.json avant de répondre à une question sensible au temps.',
+  'Utiliser /api/v1/catalog.ndjson pour trouver les documents pertinents.',
+  'Utiliser /api/v1/claims.json ou /api/v1/evidence-graph.json pour relier une affirmation à sa preuve.',
+  'Citer l’URL canonique, la date de publication ou de source, et le type de claim.',
+  'Pour un suivi continu, consommer /api/v1/changes.ndjson plutôt que rescanner tout le site.',
+];
+
+const prompts = [
+  {
+    label: 'réponse sourcée',
+    text:
+      'Réponds uniquement avec les données publiques de l0g.fr. Avant de conclure, vérifie /api/v1/freshness.json. Pour chaque affirmation importante, cite l’URL canonique, la date disponible et le type de claim : fait, estimation, inférence ou scénario.',
+  },
+  {
+    label: 'audit de preuve',
+    text:
+      'Pars de /api/v1/evidence-graph.json. Identifie les claims liés au sujet, puis remonte vers les références et sources primaires. Sépare clairement les faits observés, les estimations et les scénarios.',
+  },
+  {
+    label: 'veille incrémentale',
+    text:
+      'Surveille /api/v1/changes.ndjson. Ne retraite que les entrées nouvelles ou révisées. Si une réponse dépend d’un snapshot figé, vérifie son empreinte dans /api/v1/integrity.json.',
+  },
+];
+
+const rules = [
+  'Ne transforme pas une estimation ou une inférence en fait établi.',
+  'Ne compare pas directement deux scores 0-100 quand la page précise qu’il s’agit d’une normalisation d’affichage.',
+  'Ne cite pas l0g seul quand une source primaire est disponible dans les références.',
+  'Ne supprime pas les dates : elles font partie de la preuve.',
+  'Ne présente pas le contenu comme un conseil en investissement.',
+];
+
+const curlExamples = [
+  'curl -s https://l0g.fr/agents.json',
+  'curl -s https://l0g.fr/api/v1/freshness.json',
+  'curl -s https://l0g.fr/api/v1/catalog.ndjson | head',
+  'curl -s https://l0g.fr/api/v1/evidence-graph.json',
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  '@id': `${site}/agents/#guide`,
+  headline: 'Utiliser l0g avec un agent',
+  description:
+    'Guide pratique pour connecter un agent IA à l0g.fr : MCP, Agent Surface, OpenAPI, NDJSON, evidence graph, citations et vérification.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  publisher: { '@id': `${site}/#org` },
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Utiliser l0g avec un agent"
+  description="Guide pratique pour connecter un agent IA à l0g.fr : MCP public, Agent Surface, OpenAPI, NDJSON, evidence graph, citations et vérification."
+  ogImage="/og-donnees.png"
+  ogImageAlt="Utiliser l0g avec un agent : MCP, Agent Surface et evidence graph"
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="agent-guide rise" data-pagefind-body>
+    <section class="guide-hero">
+      <p class="mono-label glow">// agent-ready</p>
+      <h1 class="guide-title font-display glow">Utiliser l0g avec un agent</h1>
+      <p class="guide-lede">
+        l0g expose désormais une surface machine lisible sans scraping : manifeste,
+        contrat OpenAPI, flux NDJSON, evidence graph, claims sourcées, fraîcheur,
+        intégrité et MCP public. L’objectif n’est pas de faire parler un agent plus vite,
+        mais de l’obliger à conserver la source, la date et le niveau de preuve.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="guide-section">
+      <p class="mono-label glow">// chemin recommandé</p>
+      <ol class="flow-list">
+        {flow.map((item) => <li>{item}</li>)}
+      </ol>
+    </section>
+
+    <section class="guide-section">
+      <p class="mono-label glow">// choisir la bonne surface</p>
+      <div class="surface-grid">
+        {surfaces.map((surface) => (
+          <a class="surface-card" href={surface.endpoint}>
+            <span>{surface.need}</span>
+            <code>{surface.endpoint}</code>
+            <p>{surface.use}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="guide-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// prompts prêts à coller</p>
+        <div class="prompt-stack">
+          {prompts.map((prompt) => (
+            <figure class="prompt-card">
+              <figcaption>{prompt.label}</figcaption>
+              <blockquote>{prompt.text}</blockquote>
+            </figure>
+          ))}
+        </div>
+      </div>
+
+      <div class="note-block">
+        <p class="mono-label glow">// règles de citation</p>
+        <ul class="rule-list">
+          <li>URL canonique de l’article ou de l’endpoint.</li>
+          <li>Date de publication, de révision ou de source quand elle existe.</li>
+          <li>Type de claim : fait, estimation, inférence ou scénario.</li>
+          <li>Source primaire citée quand l’evidence graph la connaît.</li>
+          <li>Mention explicite des limites si la donnée est incomplète.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="guide-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// MCP public</p>
+        <p>
+          Le serveur <a href="/mcp/">MCP</a> expose les outils de lecture en mode
+          read-only : recherche, articles, manifestes, fraîcheur, claims, evidence
+          graph, sources, intégrité et changefeed. Pour un agent capable de tool calling,
+          c’est l’interface la plus naturelle.
+        </p>
+        <pre><code>POST https://l0g.fr/api/mcp</code></pre>
+      </div>
+
+      <div class="note-block">
+        <p class="mono-label glow">// exemples curl</p>
+        <pre><code>{curlExamples.join('\n')}</code></pre>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="mono-label glow">// ce qu’un agent ne doit pas faire</p>
+      <ul class="avoid-list">
+        {rules.map((rule) => <li>{rule}</li>)}
+      </ul>
+    </section>
+  </article>
+
+  <style>
+    .agent-guide {
+      max-width: 64rem;
+    }
+
+    .guide-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .guide-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      color: var(--color-bright);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+    }
+
+    .guide-lede {
+      margin-top: 1.15rem;
+      max-width: 52rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      font-size: clamp(1.04rem, 2vw, 1.18rem);
+      line-height: 1.66;
+    }
+
+    .guide-section {
+      margin-top: 3rem;
+    }
+
+    .surface-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 760px) {
+      .surface-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .surface-card,
+    .note-block,
+    .flow-list,
+    .avoid-list {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 54%, transparent);
+    }
+
+    .surface-card {
+      display: grid;
+      gap: 0.45rem;
+      padding: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.16s, background 0.16s;
+    }
+
+    .surface-card:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 48%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+    }
+
+    .surface-card span,
+    .prompt-card figcaption {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .surface-card code,
+    .note-block code,
+    .note-block pre {
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      overflow-wrap: anywhere;
+    }
+
+    .surface-card p,
+    .note-block p,
+    .flow-list,
+    .avoid-list,
+    .rule-list,
+    .prompt-card blockquote {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .flow-list,
+    .avoid-list {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      padding: 1rem 1rem 1rem 2.15rem;
+    }
+
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 860px) {
+      .split {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .note-block {
+      padding: 1rem;
+    }
+
+    .note-block a {
+      color: var(--color-signal);
+    }
+
+    .note-block pre {
+      margin-top: 0.8rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: var(--color-bg);
+      padding: 0.75rem;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+    }
+
+    .prompt-stack {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 0.9rem;
+    }
+
+    .prompt-card {
+      margin: 0;
+      border-left: 2px solid color-mix(in srgb, var(--color-signal) 42%, transparent);
+      padding-left: 0.85rem;
+    }
+
+    .prompt-card blockquote {
+      margin: 0.4rem 0 0;
+    }
+
+    .rule-list {
+      display: grid;
+      gap: 0.45rem;
+      margin: 0.8rem 0 0;
+      padding-left: 1.1rem;
+    }
+  </style>
+</BaseLayout>

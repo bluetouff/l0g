@@ -5,8 +5,15 @@ const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ENDPOINT = `${SITE}/api/mcp`;
 
 const tools = [
+  ['get_agent_manifest', 'aucun', "Manifeste Agent Surface : capacités, endpoints, règles d'usage, politiques de preuve et compteurs."],
   ['get_risk_indices', 'aucun', 'Signaux de risque normalisés par instrument (US Macro, EU Macro, Yen Carry, Énergie) et synthèse de confluence 13F.'],
+  ['get_freshness', 'limit', 'Fraîcheur du corpus : derniers contenus, compteurs, endpoints et politique de fraîcheur.'],
   ['search_content', 'query, limit', 'Recherche dans les analyses et les guides par titre, description, thèmes et sujets.'],
+  ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables et datées.'],
+  ['get_evidence_graph', 'articleSlug, nodeType, limit', 'Sous-graphe articles → claims → références → hôtes → sources primaires → datasets.'],
+  ['list_sources', 'mode, limit', 'Sources primaires institutionnelles et hôtes effectivement cités par les claims.'],
+  ['get_integrity', 'path', 'Empreintes SHA-256 canoniques des surfaces Agent Surface, JSON et NDJSON.'],
+  ['get_changefeed', 'contentType, limit', 'Dernières publications, révisions déclarées et changements éditoriaux structurants.'],
   ['list_recent_analyses', 'limit', 'Dernières analyses publiées, de la plus récente à la plus ancienne.'],
   ['list_guides', 'aucun', 'Guides de référence (pages piliers durables).'],
   ['search_by_topic', 'topic, limit', 'Analyses rattachées à un sujet (hub thématique).'],
@@ -19,7 +26,7 @@ const appLd = {
   '@id': `${SITE}/mcp/#mcp`,
   name: 'Serveur MCP l0g',
   description:
-    "Serveur Model Context Protocol en lecture seule pour l0g.fr : indices de risque, analyses, guides et sujets, via le transport Streamable HTTP.",
+    "Serveur Model Context Protocol en lecture seule pour l0g.fr : Agent Surface, claims, evidence graph, sources, indices de risque, analyses, guides et sujets, via le transport Streamable HTTP.",
   documentation: `${SITE}/mcp`,
   url: ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
@@ -30,7 +37,7 @@ const appLd = {
 
 <BaseLayout
   title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP. Sans clé, sans authentification, sans pistage. Ce qu'on a fait, pourquoi, et comment l'utiliser."
+  description="Serveur Model Context Protocol de l0g.fr : Agent Surface, claims, evidence graph, sources, indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
@@ -42,8 +49,8 @@ const appLd = {
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
       l0g expose ses données aux agents IA via le Model Context Protocol, en lecture seule.
-      Un agent peut interroger les indices de risque, chercher dans les analyses et les guides,
-      lister les publications récentes ou récupérer le texte complet d'un article, sans scraper
+      Un agent peut interroger l'Agent Surface, les claims, l'evidence graph, les sources,
+      la fraîcheur, les indices de risque ou récupérer le texte complet d'un article, sans scraper
       le site. Aucune clé, aucune authentification, aucun pistage.
     </p>
   </section>
@@ -71,7 +78,7 @@ const appLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// ce que nous avons construit</h2>
       <p class="mt-3 max-w-2xl text-paper">
-        Quatre couches d'accès machine, de la plus simple à la plus riche, toutes générées
+        Cinq couches d'accès machine, de la plus simple à la plus riche, toutes générées
         à partir des mêmes contenus et des mêmes données vérifiées :
       </p>
       <ul class="mt-4 space-y-2 text-paper">
@@ -82,6 +89,10 @@ const appLd = {
         <li>
           un <a class="link-term text-signal" href="/api/v1/catalog.json">catalogue</a> machine des
           articles, guides et sujets ;
+        </li>
+        <li>
+          une <a class="link-term text-signal" href="/donnees/agents/">Agent Surface</a> avec
+          claims, evidence graph, intégrité, changefeed et flux NDJSON ;
         </li>
         <li>
           deux fichiers <a class="link-term text-signal" href="/llms.txt">llms.txt</a> et
@@ -170,8 +181,11 @@ const appLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// autres accès machine</h2>
       <ul class="mt-3 space-y-2 text-paper">
+        <li><a class="link-term text-signal" href="/agents/">utiliser l0g avec un agent</a> : prompts, ordre de lecture et règles d'attribution.</li>
+        <li><a class="link-term text-signal" href="/donnees/agents/">Agent Surface</a> : manifeste, OpenAPI, claims, evidence graph, intégrité, changefeed et NDJSON.</li>
         <li><a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque et flux Atom des changements de niveau.</li>
         <li><a class="link-term text-signal" href="/api/v1/catalog.json">catalog.json</a> : articles, guides et sujets.</li>
+        <li><a class="link-term text-signal" href="/api/v1/evidence-graph.json">evidence-graph.json</a> : relation articles, claims, sources et datasets.</li>
         <li><a class="link-term text-signal" href="/llms.txt">llms.txt</a> et <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a> : carte concise et corpus intégral.</li>
         <li><a class="link-term text-signal" href="/methodologie/">méthodologie</a> et <a class="link-term text-signal" href="/glossaire/">glossaire</a> pour le cadre et les définitions.</li>
       </ul>

@@ -10,7 +10,7 @@
  *   - lecture seule : aucune écriture, slugs en allowlist, taille de corps bornée.
  *   - un serveur + un transport neufs par requête (mode stateless, isolation).
  *
- * Données : lues sur le disque, dans le site déjà déployé (catalog.json + risk.json
+ * Données : lues sur le disque, dans le site déjà déployé (Agent Surface + risk.json
  * générés au build), avec un petit cache TTL. Le texte complet d'un article est
  * extrait à la demande depuis le HTML construit.
  */
@@ -63,16 +63,26 @@ setInterval(() => {
 }, 5 * RATE_WIN).unref();
 
 // --- cache des données du site ---
-let cache = { at: 0, catalog: null, risk: null };
+let cache = { at: 0, agent: null, catalog: null, claims: null, sources: null, freshness: null, integrity: null, changes: null, evidenceGraph: null, risk: null };
+async function readJson(rel) {
+  return JSON.parse(await readFile(join(DATA_DIR, rel), 'utf-8'));
+}
 async function loadData() {
   const now = Date.now();
   if (cache.catalog && now - cache.at < CACHE_TTL) return cache;
-  const catalog = JSON.parse(await readFile(join(DATA_DIR, 'api/v1/catalog.json'), 'utf-8'));
+  const agent = await readJson('agents.json');
+  const catalog = await readJson('api/v1/catalog.json');
+  const claims = await readJson('api/v1/claims.json');
+  const sources = await readJson('api/v1/sources.json');
+  const freshness = await readJson('api/v1/freshness.json');
+  const integrity = await readJson('api/v1/integrity.json');
+  const changes = await readJson('api/v1/changes.json');
+  const evidenceGraph = await readJson('api/v1/evidence-graph.json');
   let risk = null;
   try {
-    risk = JSON.parse(await readFile(join(DATA_DIR, 'api/v1/risk.json'), 'utf-8'));
+    risk = await readJson('api/v1/risk.json');
   } catch { /* risk optionnel */ }
-  cache = { at: now, catalog, risk };
+  cache = { at: now, agent, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk };
   return cache;
 }
 
@@ -91,15 +101,69 @@ function score(item, tokens) {
 function reply(payload) {
   return { content: [{ type: 'text', text: JSON.stringify(payload, null, 2) }] };
 }
+function compactClaim(claim) {
+  return {
+    id: claim.id,
+    articleSlug: claim.articleSlug,
+    articleTitle: claim.articleTitle,
+    articleUrl: claim.articleUrl,
+    kind: claim.kind,
+    claim: claim.claim,
+    date: claim.date,
+    dateLabel: claim.dateLabel,
+    confidence: claim.confidence,
+    references: (claim.references || []).map((r) => ({
+      label: r.label,
+      href: r.href,
+      host: r.host,
+      kind: r.kind,
+      date: r.date,
+      dateLabel: r.dateLabel,
+    })),
+  };
+}
+function compactSnapshot(snapshot) {
+  return {
+    path: snapshot.path,
+    url: snapshot.url,
+    role: snapshot.role,
+    mediaType: snapshot.mediaType,
+    canonicalSha256: snapshot.canonicalSha256,
+    canonicalBytes: snapshot.canonicalBytes,
+  };
+}
 
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
-  const server = new McpServer({ name: 'l0g.fr', version: '1.0.0' });
-  const { catalog, risk } = data;
+  const server = new McpServer({ name: 'l0g.fr', version: '1.2.0' });
+  const { agent, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk } = data;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
   const topicsList = catalog.topics || [];
   const slugs = new Set([...articles.map((a) => a.slug), ...guides.map((g) => g.slug)]);
+  const claimKinds = ['fait', 'estimation', 'inférence', 'scénario'];
+
+  server.registerTool(
+    'get_agent_manifest',
+    {
+      description:
+        "Renvoie le manifeste Agent Surface de l0g.fr : capacités, endpoints, règles d'usage, politiques de preuve et compteurs. " +
+        "Point d'entrée recommandé pour découvrir les surfaces machine sans scraper.",
+      inputSchema: {},
+      annotations: { readOnlyHint: true },
+    },
+    async () => reply({
+      version: agent.version,
+      name: agent.name,
+      description: agent.description,
+      capabilities: agent.capabilities,
+      endpoints: agent.endpoints,
+      preferredUse: agent.preferredUse,
+      prohibitedUse: agent.prohibitedUse,
+      counts: agent.counts,
+      proofPolicy: agent.proofPolicy,
+    })
+  );
 
   server.registerTool(
     'get_risk_indices',
@@ -120,6 +184,27 @@ function buildServer(data) {
         source: SITE + '/api/',
       });
     }
+  );
+
+  server.registerTool(
+    'get_freshness',
+    {
+      description:
+        "Renvoie la fraîcheur du corpus l0g : derniers contenus, compteurs, endpoints disponibles et politique de fraîcheur. " +
+        "À appeler avant de présenter un snapshot comme actuel.",
+      inputSchema: {
+        limit: z.number().int().min(1).max(20).default(10).describe('Nombre de derniers contenus à renvoyer.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ limit }) => reply({
+      version: freshness.version,
+      generated: freshness.generated,
+      latest: (freshness.latest || []).slice(0, limit),
+      corpus: freshness.corpus,
+      endpoints: freshness.endpoints,
+      freshnessPolicy: freshness.freshnessPolicy,
+    })
   );
 
   server.registerTool(
@@ -151,6 +236,193 @@ function buildServer(data) {
           date: x.it.date, description: x.it.description, score: x.s,
         }));
       return reply({ query, count: ranked.length, results: ranked });
+    }
+  );
+
+  server.registerTool(
+    'get_claims',
+    {
+      description:
+        "Interroge les relations affirmation-source extraites des articles l0g. Filtrage par article, type de claim " +
+        "(fait, estimation, inférence, scénario) et texte. Renvoie les références cliquables et datées.",
+      inputSchema: {
+        articleSlug: z.string().optional().describe("Slug d'article optionnel."),
+        kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
+        query: z.string().optional().describe('Filtre texte optionnel dans la claim ou le titre article.'),
+        limit: z.number().int().min(1).max(50).default(10).describe('Nombre maximum de claims.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ articleSlug, kind, query, limit }) => {
+      let list = claims.claims || [];
+      if (articleSlug) {
+        const clean = String(articleSlug).trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
+        list = list.filter((claim) => claim.articleSlug === clean);
+      }
+      if (kind) list = list.filter((claim) => claim.kind === kind);
+      if (query) {
+        const tokens = norm(query).split(/\s+/).filter(Boolean);
+        list = list.filter((claim) => tokens.every((tok) => norm(`${claim.claim} ${claim.articleTitle}`).includes(tok)));
+      }
+      list = list.slice(0, limit).map(compactClaim);
+      return reply({
+        version: claims.version,
+        count: list.length,
+        filters: { articleSlug: articleSlug || null, kind: kind || null, query: query || null },
+        claimKinds,
+        claims: list,
+        policy: claims.policy,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_evidence_graph',
+    {
+      description:
+        "Renvoie un sous-graphe de preuve l0g : articles, claims, références, hôtes, sources primaires et datasets. " +
+        "Limiter par articleSlug ou nodeType pour éviter les payloads trop larges.",
+      inputSchema: {
+        articleSlug: z.string().optional().describe("Slug d'article optionnel pour extraire son voisinage de graphe."),
+        nodeType: z.enum(['article', 'claim', 'reference', 'host', 'primarySource', 'dataset']).optional().describe('Type de nœud optionnel.'),
+        limit: z.number().int().min(1).max(200).default(80).describe('Nombre maximum de nœuds renvoyés.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ articleSlug, nodeType, limit }) => {
+      let nodes = evidenceGraph.nodes || [];
+      const edges = evidenceGraph.edges || [];
+      let selected = null;
+      if (articleSlug) {
+        const clean = String(articleSlug).trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
+        const articleId = `article:${clean}`;
+        selected = new Set([articleId]);
+        let changed = true;
+        while (changed && selected.size < 800) {
+          changed = false;
+          for (const edge of edges) {
+            if (selected.has(edge.from) && !selected.has(edge.to)) { selected.add(edge.to); changed = true; }
+            if (selected.has(edge.to) && !selected.has(edge.from)) { selected.add(edge.from); changed = true; }
+          }
+        }
+        nodes = nodes.filter((node) => selected.has(node.id));
+      }
+      if (nodeType) nodes = nodes.filter((node) => node.type === nodeType);
+      const candidateIds = new Set(nodes.map((node) => node.id));
+      const candidateEdges = edges.filter((edge) => candidateIds.has(edge.from) && candidateIds.has(edge.to));
+      let selectedEdges = [];
+      let selectedIds = new Set();
+      if (!nodeType && candidateEdges.length) {
+        const articleId = articleSlug
+          ? `article:${String(articleSlug).trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '')}`
+          : null;
+        const rank = (edge) => {
+          if (articleId && (edge.from === articleId || edge.to === articleId)) return 0;
+          if (edge.type === 'contains') return 1;
+          if (edge.type === 'cites') return 2;
+          if (edge.type === 'hostedBy') return 3;
+          if (edge.type === 'matchesPrimarySource') return 4;
+          return 5;
+        };
+        for (const edge of [...candidateEdges].sort((a, b) => rank(a) - rank(b))) {
+          const next = new Set(selectedIds);
+          next.add(edge.from);
+          next.add(edge.to);
+          if (next.size > limit && selectedEdges.length > 0) continue;
+          selectedIds = next;
+          selectedEdges.push(edge);
+          if (selectedIds.size >= limit) break;
+        }
+        nodes = nodes.filter((node) => selectedIds.has(node.id));
+      } else {
+        selectedIds = new Set(nodes.slice(0, limit).map((node) => node.id));
+        selectedEdges = candidateEdges.filter((edge) => selectedIds.has(edge.from) && selectedIds.has(edge.to));
+        nodes = nodes.slice(0, limit);
+      }
+      selectedEdges = selectedEdges.slice(0, Math.max(limit * 3, 20));
+      return reply({
+        version: evidenceGraph.version,
+        generated: evidenceGraph.generated,
+        counts: evidenceGraph.counts,
+        returned: { nodes: selectedIds.size, edges: selectedEdges.length },
+        filters: { articleSlug: articleSlug || null, nodeType: nodeType || null },
+        graphPolicy: evidenceGraph.graphPolicy,
+        nodes: nodes.slice(0, limit),
+        edges: selectedEdges,
+      });
+    }
+  );
+
+  server.registerTool(
+    'list_sources',
+    {
+      description:
+        "Liste les sources primaires institutionnelles suivies par l0g et les hôtes effectivement cités par les claims. " +
+        "Utile pour auditer l'origine des preuves.",
+      inputSchema: {
+        mode: z.enum(['primary', 'hosts', 'both']).default('both').describe('Type de sources à renvoyer.'),
+        limit: z.number().int().min(1).max(100).default(30).describe('Nombre maximum de sources ou hôtes.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ mode, limit }) => reply({
+      version: sources.version,
+      counts: sources.counts,
+      sourcePolicy: sources.sourcePolicy,
+      primarySources: mode === 'hosts' ? [] : (sources.primarySources || []).slice(0, limit),
+      referenceHosts: mode === 'primary' ? [] : (sources.referenceHosts || []).slice(0, limit),
+    })
+  );
+
+  server.registerTool(
+    'get_integrity',
+    {
+      description:
+        "Renvoie les empreintes SHA-256 canoniques des surfaces Agent Surface, JSON et NDJSON. " +
+        "Utile pour vérifier qu'un agent a ingéré un snapshot précis.",
+      inputSchema: {
+        path: z.string().optional().describe('Chemin optionnel, par exemple /api/v1/claims.ndjson.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ path }) => {
+      let snapshots = integrity.snapshots || [];
+      if (path) snapshots = snapshots.filter((snapshot) => snapshot.path === path);
+      return reply({
+        version: integrity.version,
+        generated: integrity.generated,
+        algorithm: integrity.algorithm,
+        canonicalization: integrity.canonicalization,
+        count: snapshots.length,
+        snapshots: snapshots.map(compactSnapshot),
+        verification: integrity.verification,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_changefeed',
+    {
+      description:
+        "Renvoie les dernières publications, révisions déclarées et changements éditoriaux structurants de l0g. " +
+        "À utiliser pour surveiller le corpus sans tout rescanner.",
+      inputSchema: {
+        contentType: z.enum(['article', 'guide', 'policy']).optional().describe('Type de contenu optionnel.'),
+        limit: z.number().int().min(1).max(100).default(20).describe("Nombre maximum d'entrées."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ contentType, limit }) => {
+      let entries = changes.entries || [];
+      if (contentType) entries = entries.filter((entry) => entry.contentType === contentType);
+      entries = entries.slice(0, limit);
+      return reply({
+        version: changes.version,
+        generated: changes.generated,
+        count: entries.length,
+        feedPolicy: changes.feedPolicy,
+        entries,
+      });
     }
   );
 

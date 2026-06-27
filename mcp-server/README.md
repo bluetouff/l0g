@@ -1,10 +1,10 @@
 # Serveur MCP de l0g.fr
 
 Serveur **Model Context Protocol** en lecture seule, qui expose les données de l0g.fr
-(indices de risque, analyses, guides de référence, sujets) à des agents IA via le
+(Agent Surface, evidence graph, claims, sources, indices de risque, analyses, guides) à des agents IA via le
 transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié).
 
-Endpoint public visé : `https://l0g.fr/mcp`
+Endpoint public visé : `https://l0g.fr/api/mcp`
 
 ## Architecture
 
@@ -16,15 +16,15 @@ agent / client MCP
                                                      |
                                                      | lit (lecture seule)
                                                      v
-                          /var/www/html/l0g/current/api/v1/catalog.json
-                          /var/www/html/l0g/current/api/v1/risk.json
+                          /var/www/html/l0g/current/agents.json
+                          /var/www/html/l0g/current/api/v1/*.json
                           /var/www/html/l0g/current/posts|guides/<slug>/index.html
 ```
 
 - Le service Node **n'écoute qu'en 127.0.0.1**, jamais exposé directement.
-- Les données proviennent du **site déjà déployé** : `catalog.json` (généré au build par
-  `src/pages/api/v1/catalog.json.ts`) et `risk.json` (API existante). Le service ne
-  fait que **lire** ces fichiers, avec un cache TTL de 60 s.
+- Les données proviennent du **site déjà déployé** : `agents.json`, `catalog.json`,
+  `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
+  `changes.json` et `risk.json`. Le service ne fait que **lire** ces fichiers, avec un cache TTL de 60 s.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
   transport neufs par requête.
 
@@ -32,8 +32,15 @@ agent / client MCP
 
 | Tool | Arguments | Renvoie |
 |------|-----------|---------|
+| `get_agent_manifest` | aucun | capacités, endpoints, règles d'usage et politiques de preuve |
 | `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie) + résumé confluence |
+| `get_freshness` | `limit?` | derniers contenus, compteurs et politique de fraîcheur |
 | `search_content` | `query`, `limit?` | analyses et guides correspondants |
+| `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables/datées |
+| `get_evidence_graph` | `articleSlug?`, `nodeType?`, `limit?` | sous-graphe articles → claims → références → sources |
+| `list_sources` | `mode?`, `limit?` | sources primaires et hôtes effectivement cités |
+| `get_integrity` | `path?` | empreintes SHA-256 canoniques des surfaces Agent Surface |
+| `get_changefeed` | `contentType?`, `limit?` | publications, révisions et changements éditoriaux |
 | `list_recent_analyses` | `limit?` | dernières analyses |
 | `list_guides` | aucun | guides de référence |
 | `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |
@@ -110,14 +117,14 @@ sudo systemctl reload apache2
 ### 6. Vérifier de l'extérieur
 
 ```bash
-curl -s -X POST https://l0g.fr/mcp \
+curl -s -X POST https://l0g.fr/api/mcp \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | head -c 400
 ```
 
 Ou pointer un client compatible (Claude Desktop via `mcp-remote`, l'inspecteur MCP, etc.)
-sur `https://l0g.fr/mcp`.
+sur `https://l0g.fr/api/mcp`.
 
 ## Mises à jour
 

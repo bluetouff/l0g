@@ -16,6 +16,10 @@
  * Tools :
  *   - search_content        : recherche plein texte (Pagefind, index local).
  *   - list_recent_analyses  : derniers articles, depuis le frontmatter (données fiables).
+ *   - get_agent_manifest    : manifeste agents.json.
+ *   - get_freshness         : fraîcheur du corpus et derniers contenus.
+ *   - get_claims            : claims typées et références datées.
+ *   - get_evidence_graph    : sous-graphe articles, claims et sources.
  * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
  */
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -79,6 +83,16 @@ const articleSlugs = published.map((p) => p.id);
     // Réponse au format « content blocks » MCP, le plus interopérable pour la distillation.
     function reply(payload) {
       return { content: [{ type: 'text', text: JSON.stringify(payload) }] };
+    }
+    function clampLimit(value, fallback, max) {
+      var limit = parseInt(value || fallback, 10);
+      if (!Number.isFinite(limit)) limit = fallback;
+      return Math.max(1, Math.min(max, limit));
+    }
+    async function readPublicJson(path) {
+      var res = await fetch(path, { credentials: 'omit' });
+      if (!res.ok) throw new Error('fetch failed');
+      return res.json();
     }
 
     // --- Tool : recherche plein texte ---
@@ -182,6 +196,191 @@ const articleSlugs = published.map((p) => p.id);
       });
     } catch (e) {
       // idem : ne jamais casser la page.
+    }
+
+    // --- Tool : manifeste Agent Surface ---
+    try {
+      mc.registerTool({
+        name: 'get_agent_manifest',
+        description:
+          "Renvoie le manifeste Agent Surface de l0g.fr : capacités, endpoints, règles d'usage, attribution et politique de preuve.",
+        inputSchema: { type: 'object', properties: {} },
+        annotations: { readOnlyHint: true },
+        execute: async function () {
+          try {
+            var manifest = await readPublicJson('/agents.json');
+            return reply(manifest);
+          } catch (e) {
+            return reply({ error: 'manifeste indisponible', url: site + '/agents.json' });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
+    }
+
+    // --- Tool : fraîcheur du corpus ---
+    try {
+      mc.registerTool({
+        name: 'get_freshness',
+        description:
+          "Renvoie la fraîcheur du corpus l0g : derniers contenus, compteurs, endpoints disponibles et politique de fraîcheur.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            limit: { type: 'integer', description: 'Nombre de contenus récents à renvoyer (1 à 20).', minimum: 1, maximum: 20, default: 10 }
+          }
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var limit = clampLimit(input && input.limit, 10, 20);
+          try {
+            var freshness = await readPublicJson('/api/v1/freshness.json');
+            return reply({
+              schema: freshness.schema,
+              version: freshness.version,
+              generated: freshness.generated,
+              latest: (freshness.latest || []).slice(0, limit),
+              corpus: freshness.corpus,
+              endpoints: freshness.endpoints,
+              freshnessPolicy: freshness.freshnessPolicy
+            });
+          } catch (e) {
+            return reply({ error: 'freshness indisponible', url: site + '/api/v1/freshness.json' });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
+    }
+
+    // --- Tool : claims sourcées ---
+    try {
+      mc.registerTool({
+        name: 'get_claims',
+        description:
+          "Renvoie les claims typées de l0g.fr, filtrables par article, type de claim ou requête texte, avec références cliquables et datées.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            articleSlug: { type: 'string', description: "Slug d'article facultatif." },
+            kind: { type: 'string', description: 'fait, estimation, inférence ou scénario.' },
+            query: { type: 'string', description: 'Filtre texte facultatif.' },
+            limit: { type: 'integer', minimum: 1, maximum: 50, default: 10 }
+          }
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var articleSlug = String((input && input.articleSlug) || '').trim().slice(0, 120);
+          var kind = String((input && input.kind) || '').trim().toLowerCase().slice(0, 40);
+          var query = String((input && input.query) || '').trim().toLowerCase().slice(0, 200);
+          var limit = clampLimit(input && input.limit, 10, 50);
+          try {
+            var surface = await readPublicJson('/api/v1/claims.json');
+            var claims = Array.isArray(surface.claims) ? surface.claims : [];
+            if (articleSlug) claims = claims.filter(function (claim) { return claim.articleSlug === articleSlug; });
+            if (kind) claims = claims.filter(function (claim) { return String(claim.kind || '').toLowerCase() === kind; });
+            if (query) {
+              claims = claims.filter(function (claim) {
+                return [claim.claim, claim.articleTitle, claim.articleSlug].join(' ').toLowerCase().indexOf(query) !== -1;
+              });
+            }
+            return reply({
+              generated: surface.generated,
+              count: Math.min(claims.length, limit),
+              totalMatches: claims.length,
+              claims: claims.slice(0, limit)
+            });
+          } catch (e) {
+            return reply({ error: 'claims indisponibles', url: site + '/api/v1/claims.json' });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
+    }
+
+    // --- Tool : evidence graph ---
+    try {
+      mc.registerTool({
+        name: 'get_evidence_graph',
+        description:
+          "Renvoie un sous-graphe de preuve : articles, claims, références, hôtes, sources primaires et datasets. Filtrage possible par slug d'article ou type de nœud.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            articleSlug: { type: 'string', description: "Slug d'article facultatif." },
+            nodeType: { type: 'string', description: 'article, claim, reference, host, primarySource ou dataset.' },
+            limit: { type: 'integer', minimum: 1, maximum: 120, default: 40 }
+          }
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var articleSlug = String((input && input.articleSlug) || '').trim().slice(0, 120);
+          var nodeType = String((input && input.nodeType) || '').trim().slice(0, 40);
+          var limit = clampLimit(input && input.limit, 40, 120);
+          try {
+            var graph = await readPublicJson('/api/v1/evidence-graph.json');
+            var nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
+            var edges = Array.isArray(graph.edges) ? graph.edges : [];
+            var articleId = articleSlug ? 'article:' + articleSlug : '';
+            if (articleSlug) {
+              var keep = new Set([articleId]);
+              edges.forEach(function (edge) {
+                if (edge.from === articleId || edge.to === articleId || keep.has(edge.from) || keep.has(edge.to)) {
+                  keep.add(edge.from);
+                  keep.add(edge.to);
+                }
+              });
+              edges.forEach(function (edge) {
+                if (keep.has(edge.from) || keep.has(edge.to)) {
+                  keep.add(edge.from);
+                  keep.add(edge.to);
+                }
+              });
+              nodes = nodes.filter(function (node) { return keep.has(node.id); });
+              edges = edges.filter(function (edge) { return keep.has(edge.from) && keep.has(edge.to); });
+            }
+            if (nodeType) nodes = nodes.filter(function (node) { return node.type === nodeType; });
+            var candidateIds = new Set(nodes.map(function (node) { return node.id; }));
+            var candidateEdges = edges.filter(function (edge) { return candidateIds.has(edge.from) && candidateIds.has(edge.to); });
+            var nodeIds = new Set();
+            var keptEdges = [];
+            if (!nodeType && candidateEdges.length) {
+              function rank(edge) {
+                if (articleId && (edge.from === articleId || edge.to === articleId)) return 0;
+                if (edge.type === 'contains') return 1;
+                if (edge.type === 'cites') return 2;
+                if (edge.type === 'hostedBy') return 3;
+                if (edge.type === 'matchesPrimarySource') return 4;
+                return 5;
+              }
+              candidateEdges.sort(function (a, b) { return rank(a) - rank(b); }).forEach(function (edge) {
+                if (nodeIds.size >= limit) return;
+                nodeIds.add(edge.from);
+                nodeIds.add(edge.to);
+                keptEdges.push(edge);
+              });
+              nodes = nodes.filter(function (node) { return nodeIds.has(node.id); });
+            } else {
+              nodes = nodes.slice(0, limit);
+              nodeIds = new Set(nodes.map(function (node) { return node.id; }));
+              keptEdges = candidateEdges.filter(function (edge) { return nodeIds.has(edge.from) && nodeIds.has(edge.to); });
+            }
+            keptEdges = keptEdges.slice(0, limit * 2);
+            return reply({
+              generated: graph.generated,
+              returned: { nodes: nodeIds.size, edges: keptEdges.length },
+              nodes: nodes.slice(0, limit),
+              edges: keptEdges
+            });
+          } catch (e) {
+            return reply({ error: 'evidence graph indisponible', url: site + '/api/v1/evidence-graph.json' });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
     }
 
     // --- Tool : contenu complet d'un article ---

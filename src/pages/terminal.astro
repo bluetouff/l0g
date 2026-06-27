@@ -7,6 +7,7 @@ const commands = [
   'cat manifeste',
   'open dashboards',
   'open donnees',
+  'open agents',
   'open preuves',
   'open sources-primaires',
   'open methodologie',
@@ -112,6 +113,7 @@ const jsonLd = {
       var routes = {
         about: '/about/',
         api: '/api/',
+        agents: '/agents/',
         dashboards: '/dashboards/',
         donnees: '/donnees/',
         guides: '/guides/',
@@ -130,8 +132,8 @@ const jsonLd = {
           'help             affiche les commandes',
           'ls               liste les espaces l0g',
           'cat manifeste    résume le pacte de lecture',
-          'open <cible>     ouvre manifeste, dashboards, donnees, preuves, methodologie, api, sources, sources-primaires, status',
-          'curl risk        pointe vers /api/v1/risk.json',
+          'open <cible>     ouvre manifeste, dashboards, donnees, agents, preuves, methodologie, api, sources, sources-primaires, status',
+          'curl risk        pointe vers les endpoints JSON principaux',
           'whoami           identifie le projet',
           'clear            nettoie le terminal',
         ],
@@ -139,6 +141,7 @@ const jsonLd = {
           '<a href="/manifeste/">manifeste</a>      pacte de lecture',
           '<a href="/dashboards/">dashboards</a>    instruments de monitoring',
           '<a href="/donnees/">donnees</a>       inventaire des datasets',
+          '<a href="/agents/">agents</a>        utiliser l0g avec un agent',
           '<a href="/preuves/">preuves</a>       changelog et artefacts',
           '<a href="/methodologie/">methodologie</a> formules, seuils, limites',
           '<a href="/guides/">guides</a>          pages de référence',
@@ -155,6 +158,8 @@ const jsonLd = {
         'curl risk': [
           '<a href="/api/v1/risk.json">GET /api/v1/risk.json</a>',
           '<a href="/api/v1/catalog.json">GET /api/v1/catalog.json</a>',
+          '<a href="/api/v1/evidence-graph.json">GET /api/v1/evidence-graph.json</a>',
+          '<a href="/api/v1/changes.ndjson">GET /api/v1/changes.ndjson</a>',
           '<a href="/api/v1/risk.xml">GET /api/v1/risk.xml</a>',
         ],
         whoami: [
@@ -228,7 +233,7 @@ const jsonLd = {
             print(['open <a href="' + href + '">' + escapeText(href) + '</a>']);
             window.location.href = href;
           } else {
-            printText(['cible inconnue : ' + target, 'essayez : open manifeste · open dashboards · open api']);
+            printText(['cible inconnue : ' + target, 'essayez : open manifeste · open dashboards · open agents · open api']);
           }
           return;
         }

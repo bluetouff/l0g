@@ -4,6 +4,7 @@ import TrustBar from '../../components/TrustBar.astro';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const trustItems = [
+  { label: 'Guide agent', href: '/agents/' },
   { label: 'JSON statique', href: '/agents.json' },
   { label: 'OpenAPI', href: '/openapi.json' },
   { label: 'SHA-256', href: '/api/v1/integrity.json' },

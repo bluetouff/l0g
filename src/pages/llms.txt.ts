@@ -135,6 +135,7 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Acces machine');
+  lines.push(`- [Utiliser l0g avec un agent](${SITE}/agents/): guide pratique MCP, Agent Surface, prompts, citations et verification.`);
   lines.push(`- [Agent manifest](${SITE}/agents.json): découverte des capacités, endpoints, règles d'usage et politique de preuve pour agents.`);
   lines.push(`- [OpenAPI](${SITE}/openapi.json): contrat OpenAPI 3.1 des endpoints publics.`);
   lines.push(`- [Claims](${SITE}/api/v1/claims.json): graphe affirmation-source avec faits, estimations, inférences et scénarios, références cliquables et datées.`);
