@@ -94,6 +94,38 @@ const datasets = [
     role: 'Graphe affirmation-source : faits, estimations, inférences et scénarios avec références datées.',
   },
   {
+    label: 'evidence-graph.json',
+    href: '/api/v1/evidence-graph.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: 'nodes + edges',
+    role: 'Graphe articles, claims, références, hôtes, sources primaires et datasets.',
+  },
+  {
+    label: 'catalog.ndjson',
+    href: '/api/v1/catalog.ndjson',
+    format: 'NDJSON',
+    updated: new Date(),
+    count: 'ligne à ligne',
+    role: 'Catalogue complet en flux ligne à ligne pour ingestion RAG et pipelines agents.',
+  },
+  {
+    label: 'claims.ndjson',
+    href: '/api/v1/claims.ndjson',
+    format: 'NDJSON',
+    updated: new Date(),
+    count: 'ligne à ligne',
+    role: 'Claims typées en flux ligne à ligne, avec références embarquées.',
+  },
+  {
+    label: 'evidence-graph.ndjson',
+    href: '/api/v1/evidence-graph.ndjson',
+    format: 'NDJSON',
+    updated: new Date(),
+    count: 'nodes + edges',
+    role: 'Evidence graph en flux ligne à ligne : nœuds puis arêtes.',
+  },
+  {
     label: 'sources.json',
     href: '/api/v1/sources.json',
     format: 'JSON',
@@ -125,6 +157,14 @@ const datasets = [
     count: 'changefeed',
     role: 'Flux machine des publications, révisions déclarées et changements éditoriaux structurants.',
   },
+  {
+    label: 'changes.ndjson',
+    href: '/api/v1/changes.ndjson',
+    format: 'NDJSON',
+    updated: new Date(),
+    count: 'ligne à ligne',
+    role: 'Changefeed machine en flux ligne à ligne pour watchers et agents de veille.',
+  },
 ];
 
 const files = [
@@ -138,7 +178,7 @@ const trustItems = [
   { label: 'CORS ouvert', href: '/api/' },
   { label: 'licence CC BY 4.0', href: '/manifeste/' },
   { label: 'build statique', href: '/status/' },
-  { label: 'Agent Surface v1.1', href: '/donnees/agents/' },
+  { label: 'Agent Surface v1.2', href: '/donnees/agents/' },
 ];
 
 const jsonLd = {
@@ -236,15 +276,20 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="mono-label glow">// accès machine</p>
       <div class="access-grid">
         <a href="/api/" class="access-link"><span>API</span><strong>documentation humaine</strong></a>
-        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.1</strong></a>
+        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.2</strong></a>
         <a href="/agents.json" class="access-link"><span>JSON</span><strong>manifeste agent</strong></a>
         <a href="/openapi.json" class="access-link"><span>OPENAPI</span><strong>contrat machine</strong></a>
         <a href="/api/v1/catalog.json" class="access-link"><span>JSON</span><strong>catalogue complet</strong></a>
         <a href="/api/v1/claims.json" class="access-link"><span>JSON</span><strong>claims sourcées</strong></a>
+        <a href="/api/v1/evidence-graph.json" class="access-link"><span>JSON</span><strong>evidence graph</strong></a>
+        <a href="/api/v1/catalog.ndjson" class="access-link"><span>NDJSON</span><strong>catalogue stream</strong></a>
+        <a href="/api/v1/claims.ndjson" class="access-link"><span>NDJSON</span><strong>claims stream</strong></a>
+        <a href="/api/v1/evidence-graph.ndjson" class="access-link"><span>NDJSON</span><strong>graph stream</strong></a>
         <a href="/api/v1/sources.json" class="access-link"><span>JSON</span><strong>sources citées</strong></a>
         <a href="/api/v1/freshness.json" class="access-link"><span>JSON</span><strong>fraîcheur corpus</strong></a>
         <a href="/api/v1/integrity.json" class="access-link"><span>JSON</span><strong>intégrité snapshots</strong></a>
         <a href="/api/v1/changes.json" class="access-link"><span>JSON</span><strong>changefeed machine</strong></a>
+        <a href="/api/v1/changes.ndjson" class="access-link"><span>NDJSON</span><strong>changefeed stream</strong></a>
         <a href="/llms.txt" class="access-link"><span>TXT</span><strong>carte concise agents</strong></a>
         <a href="/llms-full.txt" class="access-link"><span>TXT</span><strong>corpus intégral</strong></a>
         <a href="/rss.xml" class="access-link"><span>RSS</span><strong>flux éditorial</strong></a>

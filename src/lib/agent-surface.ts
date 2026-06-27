@@ -8,7 +8,7 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.1.0';
+export const AGENT_VERSION = '1.2.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 
@@ -18,6 +18,16 @@ export type GuideEntry = CollectionEntry<'guides'>;
 export function jsonResponse(payload: unknown) {
   return new Response(JSON.stringify(payload, null, 2) + '\n', {
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  });
+}
+
+export function toNdjson(rows: unknown[]) {
+  return rows.map((row) => JSON.stringify(row)).join('\n') + '\n';
+}
+
+export function ndjsonResponse(rows: unknown[]) {
+  return new Response(toNdjson(rows), {
+    headers: { 'Content-Type': 'application/x-ndjson; charset=utf-8' },
   });
 }
 
@@ -62,6 +72,29 @@ function shortRevisionId(parts: string[]) {
   return sha256(parts.join('|')).slice(0, 16);
 }
 
+function graphSafeId(value: string) {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 96) || 'unknown';
+}
+
+function hostFromHref(href: string) {
+  if (href.startsWith('/')) return 'l0g.fr';
+  try {
+    return new URL(href).hostname.replace(/^www\./, '');
+  } catch {
+    return 'unknown';
+  }
+}
+
+function absoluteHref(href: string) {
+  return href.startsWith('/') ? `${AGENT_SITE}${href}` : href;
+}
+
 const openApiEndpoint = (summary: string, description: string, schemaName: string) => ({
   get: {
     summary,
@@ -80,6 +113,23 @@ const openApiEndpoint = (summary: string, description: string, schemaName: strin
   },
 });
 
+const openApiNdjsonEndpoint = (summary: string, description: string) => ({
+  get: {
+    summary,
+    description,
+    responses: {
+      '200': {
+        description: 'Flux NDJSON statique généré au build, une ligne JSON par objet.',
+        content: {
+          'application/x-ndjson': {
+            schema: { type: 'string' },
+          },
+        },
+      },
+    },
+  },
+});
+
 export function buildOpenApiContract() {
   return {
     openapi: '3.1.0',
@@ -87,18 +137,23 @@ export function buildOpenApiContract() {
       title: 'l0g.fr Agent Surface API',
       version: AGENT_VERSION,
       description:
-        'Contrat public pour agents IA : manifeste, catalogue, graphe affirmation-source, registre de sources, fraîcheur, intégrité, changefeed, risque et corpus.',
+        'Contrat public pour agents IA : manifeste, catalogue, graphe affirmation-source, evidence graph, NDJSON, registre de sources, fraîcheur, intégrité, changefeed, risque et corpus.',
       license: { name: 'CC BY 4.0', url: 'https://creativecommons.org/licenses/by/4.0/' },
     },
     servers: [{ url: AGENT_SITE }],
     paths: {
       '/agents.json': openApiEndpoint('Manifeste agent', 'Découverte des capacités, endpoints, règles d’usage et politiques de preuve.', 'AgentManifest'),
       '/api/v1/catalog.json': openApiEndpoint('Catalogue complet', 'Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.', 'Catalog'),
+      '/api/v1/catalog.ndjson': openApiNdjsonEndpoint('Catalogue NDJSON', 'Catalogue en lignes NDJSON : articles, guides, méthodologies, glossaire, sources primaires et protocole.'),
       '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables et datées.', 'ClaimsSurface'),
+      '/api/v1/claims.ndjson': openApiNdjsonEndpoint('Claims NDJSON', 'Claims en lignes NDJSON, une affirmation typée par ligne avec références.'),
+      '/api/v1/evidence-graph.json': openApiEndpoint('Evidence graph', 'Graphe articles, claims, références, hôtes, institutions et datasets, exprimé en nœuds et arêtes.', 'EvidenceGraphSurface'),
+      '/api/v1/evidence-graph.ndjson': openApiNdjsonEndpoint('Evidence graph NDJSON', 'Evidence graph en lignes NDJSON : nœuds puis arêtes, pour ingestion streaming.'),
       '/api/v1/sources.json': openApiEndpoint('Registre sources', 'Sources primaires institutionnelles, hôtes cités, règles de citation et limites.', 'SourcesSurface'),
       '/api/v1/freshness.json': openApiEndpoint('Fraîcheur', 'Derniers contenus, compteurs de corpus, endpoints et politique de fraîcheur.', 'FreshnessSurface'),
       '/api/v1/integrity.json': openApiEndpoint('Intégrité', 'Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérification de snapshot.', 'IntegritySurface'),
       '/api/v1/changes.json': openApiEndpoint('Changefeed', 'Flux machine des publications, révisions déclarées et changements éditoriaux structurants.', 'ChangefeedSurface'),
+      '/api/v1/changes.ndjson': openApiNdjsonEndpoint('Changefeed NDJSON', 'Changefeed machine en lignes NDJSON, une publication ou révision par ligne.'),
       '/api/v1/risk.json': openApiEndpoint('Signaux de risque', 'Snapshots des dashboards de risque et caveats de normalisation.', 'RiskSnapshot'),
       '/llms.txt': {
         get: {
@@ -160,6 +215,41 @@ export function buildOpenApiContract() {
           },
         },
         SourcesSurface: { type: 'object', additionalProperties: true },
+        EvidenceGraphNode: {
+          type: 'object',
+          required: ['id', 'type', 'label'],
+          properties: {
+            id: { type: 'string' },
+            type: { enum: ['article', 'claim', 'reference', 'host', 'primarySource', 'dataset'] },
+            label: { type: 'string' },
+            url: { type: ['string', 'null'] },
+            meta: { type: 'object', additionalProperties: true },
+          },
+        },
+        EvidenceGraphEdge: {
+          type: 'object',
+          required: ['id', 'from', 'to', 'type'],
+          properties: {
+            id: { type: 'string' },
+            from: { type: 'string' },
+            to: { type: 'string' },
+            type: { enum: ['contains', 'cites', 'hostedBy', 'matchesPrimarySource', 'providesDataset'] },
+            meta: { type: 'object', additionalProperties: true },
+          },
+        },
+        EvidenceGraphSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'counts', 'nodes', 'edges'],
+          properties: {
+            schema: { type: 'string' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            counts: { type: 'object', additionalProperties: true },
+            graphPolicy: { type: 'object', additionalProperties: true },
+            nodes: { type: 'array', items: { $ref: '#/components/schemas/EvidenceGraphNode' } },
+            edges: { type: 'array', items: { $ref: '#/components/schemas/EvidenceGraphEdge' } },
+          },
+        },
         FreshnessSurface: { type: 'object', additionalProperties: true },
         IntegritySurface: {
           type: 'object',
@@ -507,6 +597,223 @@ export function buildSourcesSurface(posts: PostEntry[]) {
   };
 }
 
+export function buildEvidenceGraphSurface(posts: PostEntry[]) {
+  const claimsSurface = buildClaimsSurface(posts);
+  const nodeMap = new Map<string, {
+    id: string;
+    type: 'article' | 'claim' | 'reference' | 'host' | 'primarySource' | 'dataset';
+    label: string;
+    url: string | null;
+    meta: Record<string, unknown>;
+  }>();
+  const edgeMap = new Map<string, {
+    id: string;
+    from: string;
+    to: string;
+    type: 'contains' | 'cites' | 'hostedBy' | 'matchesPrimarySource' | 'providesDataset';
+    meta: Record<string, unknown>;
+  }>();
+
+  const addNode = (node: {
+    id: string;
+    type: 'article' | 'claim' | 'reference' | 'host' | 'primarySource' | 'dataset';
+    label: string;
+    url?: string | null;
+    meta?: Record<string, unknown>;
+  }) => {
+    if (!nodeMap.has(node.id)) {
+      nodeMap.set(node.id, {
+        id: node.id,
+        type: node.type,
+        label: node.label,
+        url: node.url ?? null,
+        meta: node.meta ?? {},
+      });
+    }
+  };
+
+  const addEdge = (edge: {
+    from: string;
+    to: string;
+    type: 'contains' | 'cites' | 'hostedBy' | 'matchesPrimarySource' | 'providesDataset';
+    meta?: Record<string, unknown>;
+  }) => {
+    const id = `edge:${edge.type}:${edge.from}:${edge.to}`;
+    if (!edgeMap.has(id)) edgeMap.set(id, { id, from: edge.from, to: edge.to, type: edge.type, meta: edge.meta ?? {} });
+  };
+
+  for (const source of primaryInstitutions) {
+    const sourceId = `primarySource:${source.slug}`;
+    addNode({
+      id: sourceId,
+      type: 'primarySource',
+      label: source.shortName,
+      url: `${AGENT_SITE}/sources/${source.slug}/`,
+      meta: {
+        name: source.name,
+        category: source.category,
+        officialUrl: source.url,
+      },
+    });
+
+    for (const dataset of source.datasets) {
+      const datasetId = `dataset:${source.slug}:${graphSafeId(dataset.name)}`;
+      addNode({
+        id: datasetId,
+        type: 'dataset',
+        label: dataset.name,
+        url: dataset.url,
+        meta: {
+          sourceSlug: source.slug,
+          role: dataset.role,
+          cadence: dataset.cadence,
+          delay: dataset.delay,
+        },
+      });
+      addEdge({ from: sourceId, to: datasetId, type: 'providesDataset', meta: { cadence: dataset.cadence } });
+    }
+  }
+
+  for (const claim of claimsSurface.claims) {
+    const articleId = `article:${claim.articleSlug}`;
+    const claimId = `claim:${claim.id}`;
+    addNode({
+      id: articleId,
+      type: 'article',
+      label: claim.articleTitle,
+      url: claim.articleUrl,
+      meta: {
+        slug: claim.articleSlug,
+      },
+    });
+    addNode({
+      id: claimId,
+      type: 'claim',
+      label: claim.claim,
+      url: `${claim.articleUrl}#${claim.localId}`,
+      meta: {
+        localId: claim.localId,
+        articleSlug: claim.articleSlug,
+        kind: claim.kind,
+        date: claim.date,
+        dateLabel: claim.dateLabel,
+        confidence: claim.confidence,
+      },
+    });
+    addEdge({ from: articleId, to: claimId, type: 'contains', meta: { kind: claim.kind } });
+
+    for (const reference of claim.references) {
+      const refUrl = absoluteHref(reference.href);
+      const refHash = sha256(refUrl).slice(0, 16);
+      const refId = `reference:${refHash}`;
+      const host = reference.host || hostFromHref(reference.href);
+      const hostId = `host:${graphSafeId(host)}`;
+
+      addNode({
+        id: refId,
+        type: 'reference',
+        label: reference.label,
+        url: refUrl,
+        meta: {
+          href: reference.href,
+          host,
+          kind: reference.kind,
+          date: reference.date,
+          dateLabel: reference.dateLabel,
+        },
+      });
+      addNode({
+        id: hostId,
+        type: 'host',
+        label: host,
+        url: host === 'l0g.fr' ? AGENT_SITE : `https://${host}`,
+        meta: {},
+      });
+      addEdge({ from: claimId, to: refId, type: 'cites', meta: { kind: reference.kind, dateLabel: reference.dateLabel } });
+      addEdge({ from: refId, to: hostId, type: 'hostedBy' });
+
+      for (const source of primaryInstitutions) {
+        const sourceHosts = [source.url, ...source.datasets.map((dataset) => dataset.url)]
+          .map((url) => hostFromHref(url))
+          .filter(Boolean);
+        if (sourceHosts.some((sourceHost) => host === sourceHost || host.endsWith(`.${sourceHost}`))) {
+          addEdge({
+            from: refId,
+            to: `primarySource:${source.slug}`,
+            type: 'matchesPrimarySource',
+            meta: { source: source.shortName },
+          });
+        }
+      }
+    }
+  }
+
+  const nodes = [...nodeMap.values()].sort((a, b) => a.type.localeCompare(b.type) || a.id.localeCompare(b.id));
+  const edges = [...edgeMap.values()].sort((a, b) => a.type.localeCompare(b.type) || a.id.localeCompare(b.id));
+
+  return {
+    schema: `${OPENAPI_SCHEMA_BASE}/EvidenceGraphSurface`,
+    version: AGENT_VERSION,
+    generated: generatedAt(),
+    counts: {
+      nodes: nodes.length,
+      edges: edges.length,
+      articles: nodes.filter((node) => node.type === 'article').length,
+      claims: nodes.filter((node) => node.type === 'claim').length,
+      references: nodes.filter((node) => node.type === 'reference').length,
+      hosts: nodes.filter((node) => node.type === 'host').length,
+      primarySources: nodes.filter((node) => node.type === 'primarySource').length,
+      datasets: nodes.filter((node) => node.type === 'dataset').length,
+    },
+    graphPolicy: {
+      relation: 'Graphe dérivé des relations article → claim → référence, enrichi par hôtes, sources primaires et datasets.',
+      caveat: 'Extraction automatique best-effort : une arête signale une relation exploitable, pas une validation humaine exhaustive.',
+      correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
+    },
+    nodes,
+    edges,
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
+  };
+}
+
+export function buildCatalogNdjsonRows(posts: PostEntry[], guides: GuideEntry[]) {
+  const catalog = buildCatalogSurface(posts, guides);
+  return [
+    { recordType: 'meta', version: catalog.version, counts: catalog.counts, license: catalog.license, attribution: catalog.attribution },
+    ...catalog.articles.map((article) => ({ recordType: 'article', ...article })),
+    ...catalog.guides.map((guide) => ({ recordType: 'guide', ...guide })),
+    ...catalog.methodologies.map((methodology) => ({ recordType: 'methodology', ...methodology })),
+    ...catalog.primarySources.map((source) => ({ recordType: 'primarySource', ...source })),
+    ...catalog.glossary.map((term) => ({ recordType: 'glossaryTerm', ...term })),
+  ];
+}
+
+export function buildClaimsNdjsonRows(posts: PostEntry[]) {
+  const claimsSurface = buildClaimsSurface(posts);
+  return [
+    { recordType: 'meta', version: claimsSurface.version, counts: claimsSurface.counts, license: claimsSurface.license, attribution: claimsSurface.attribution },
+    ...claimsSurface.claims.map((claim) => ({ recordType: 'claim', ...claim })),
+  ];
+}
+
+export function buildEvidenceGraphNdjsonRows(posts: PostEntry[]) {
+  const graph = buildEvidenceGraphSurface(posts);
+  return [
+    { recordType: 'meta', version: graph.version, counts: graph.counts, license: graph.license, attribution: graph.attribution },
+    ...graph.nodes.map((node) => ({ recordType: 'node', ...node })),
+    ...graph.edges.map((edge) => ({ recordType: 'edge', ...edge })),
+  ];
+}
+
+export function buildChangesNdjsonRows(posts: PostEntry[], guides: GuideEntry[]) {
+  const changes = buildChangefeedSurface(posts, guides);
+  return [
+    { recordType: 'meta', version: changes.version, counts: changes.counts, license: changes.license, attribution: changes.attribution },
+    ...changes.entries.map((entry) => ({ recordType: 'change', ...entry })),
+  ];
+}
+
 export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[]) {
   const sortedPosts = sortPosts(posts);
   const sortedGuides = sortGuides(guides);
@@ -538,11 +845,16 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[]) 
       { path: '/agents.json', role: 'Manifeste de découverte agent', update: 'à chaque build' },
       { path: '/openapi.json', role: 'Contrat OpenAPI public', update: 'à chaque build' },
       { path: '/api/v1/catalog.json', role: 'Catalogue machine complet', update: 'à chaque build' },
+      { path: '/api/v1/catalog.ndjson', role: 'Catalogue machine en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/claims.json', role: 'Graphe affirmation-source', update: 'à chaque build' },
+      { path: '/api/v1/claims.ndjson', role: 'Claims en NDJSON', update: 'à chaque build' },
+      { path: '/api/v1/evidence-graph.json', role: 'Evidence graph en nœuds et arêtes', update: 'à chaque build' },
+      { path: '/api/v1/evidence-graph.ndjson', role: 'Evidence graph en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/sources.json', role: 'Registre sources et hôtes cités', update: 'à chaque build' },
       { path: '/api/v1/freshness.json', role: 'Fraîcheur et derniers contenus', update: 'à chaque build' },
       { path: '/api/v1/integrity.json', role: 'Empreintes SHA-256 des surfaces M2M', update: 'à chaque build' },
       { path: '/api/v1/changes.json', role: 'Changefeed machine des publications et révisions', update: 'à chaque build' },
+      { path: '/api/v1/changes.ndjson', role: 'Changefeed machine en NDJSON', update: 'à chaque build' },
       { path: '/llms.txt', role: 'Carte concise pour agents', update: 'à chaque build' },
       { path: '/llms-full.txt', role: 'Corpus textuel étendu', update: 'à chaque build' },
     ],
@@ -571,7 +883,9 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     language: 'fr',
     capabilities: [
       'search-ready catalog',
+      'streamable ndjson feeds',
       'claim-source graph',
+      'evidence graph',
       'dated clickable references',
       'freshness manifest',
       'primary-source registry',
@@ -583,11 +897,16 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     endpoints: {
       openapi: `${AGENT_SITE}/openapi.json`,
       catalog: `${AGENT_SITE}/api/v1/catalog.json`,
+      catalogNdjson: `${AGENT_SITE}/api/v1/catalog.ndjson`,
       claims: `${AGENT_SITE}/api/v1/claims.json`,
+      claimsNdjson: `${AGENT_SITE}/api/v1/claims.ndjson`,
+      evidenceGraph: `${AGENT_SITE}/api/v1/evidence-graph.json`,
+      evidenceGraphNdjson: `${AGENT_SITE}/api/v1/evidence-graph.ndjson`,
       sources: `${AGENT_SITE}/api/v1/sources.json`,
       freshness: `${AGENT_SITE}/api/v1/freshness.json`,
       integrity: `${AGENT_SITE}/api/v1/integrity.json`,
       changes: `${AGENT_SITE}/api/v1/changes.json`,
+      changesNdjson: `${AGENT_SITE}/api/v1/changes.ndjson`,
       risk: `${AGENT_SITE}/api/v1/risk.json`,
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
@@ -597,6 +916,8 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     preferredUse: [
       'Citer les URL canoniques des articles, guides ou sources.',
       'Utiliser claims.json pour relier une affirmation à une source datée.',
+      'Utiliser evidence-graph.json pour parcourir articles, claims, références, hôtes, sources et datasets.',
+      'Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
       'Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.',
       'Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.',
@@ -743,10 +1064,34 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       payload: buildCatalogSurface(posts, guides),
     },
     {
+      path: '/api/v1/catalog.ndjson',
+      role: 'Catalogue machine en NDJSON',
+      mediaType: 'application/x-ndjson',
+      body: toNdjson(buildCatalogNdjsonRows(posts, guides)),
+    },
+    {
       path: '/api/v1/claims.json',
       role: 'Graphe affirmation-source',
       mediaType: 'application/json',
       payload: buildClaimsSurface(posts),
+    },
+    {
+      path: '/api/v1/claims.ndjson',
+      role: 'Claims en NDJSON',
+      mediaType: 'application/x-ndjson',
+      body: toNdjson(buildClaimsNdjsonRows(posts)),
+    },
+    {
+      path: '/api/v1/evidence-graph.json',
+      role: 'Evidence graph',
+      mediaType: 'application/json',
+      payload: buildEvidenceGraphSurface(posts),
+    },
+    {
+      path: '/api/v1/evidence-graph.ndjson',
+      role: 'Evidence graph en NDJSON',
+      mediaType: 'application/x-ndjson',
+      body: toNdjson(buildEvidenceGraphNdjsonRows(posts)),
     },
     {
       path: '/api/v1/sources.json',
@@ -766,10 +1111,18 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       mediaType: 'application/json',
       payload: buildChangefeedSurface(posts, guides),
     },
+    {
+      path: '/api/v1/changes.ndjson',
+      role: 'Changefeed machine en NDJSON',
+      mediaType: 'application/x-ndjson',
+      body: toNdjson(buildChangesNdjsonRows(posts, guides)),
+    },
   ];
 
   const snapshots = resources.map((resource) => {
-    const canonical = canonicalJson(resource.payload);
+    const canonical = 'body' in resource && typeof resource.body === 'string'
+      ? resource.body
+      : canonicalJson('payload' in resource ? resource.payload : null);
     return {
       path: resource.path,
       url: `${AGENT_SITE}${resource.path}`,
@@ -787,6 +1140,7 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
     algorithm: 'sha-256',
     canonicalization: {
       format: 'JSON stable : clés triées récursivement, sans espaces, champ generated ignoré.',
+      ndjson: 'NDJSON : lignes JSON dans l’ordre publié, séparées par LF, avec LF final ; les lignes meta NDJSON n’incluent pas generated.',
       omittedFields: ['generated'],
       reason: 'Le champ generated varie à chaque build ; les empreintes visent le contenu utile du snapshot.',
     },

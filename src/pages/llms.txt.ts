@@ -53,7 +53,7 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
-    `- [Agent Surface v1.1](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, claims sourcées, sources, fraîcheur, intégrité et changefeed.`
+    `- [Agent Surface v1.2](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité et changefeed.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -138,10 +138,15 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Agent manifest](${SITE}/agents.json): découverte des capacités, endpoints, règles d'usage et politique de preuve pour agents.`);
   lines.push(`- [OpenAPI](${SITE}/openapi.json): contrat OpenAPI 3.1 des endpoints publics.`);
   lines.push(`- [Claims](${SITE}/api/v1/claims.json): graphe affirmation-source avec faits, estimations, inférences et scénarios, références cliquables et datées.`);
+  lines.push(`- [Evidence graph](${SITE}/api/v1/evidence-graph.json): articles, claims, références, hôtes, sources primaires et datasets en nœuds/arêtes.`);
+  lines.push(`- [Catalogue NDJSON](${SITE}/api/v1/catalog.ndjson): catalogue complet ligne à ligne pour ingestion streaming ou RAG.`);
+  lines.push(`- [Claims NDJSON](${SITE}/api/v1/claims.ndjson): claims typées ligne à ligne, avec références embarquées.`);
+  lines.push(`- [Evidence graph NDJSON](${SITE}/api/v1/evidence-graph.ndjson): graph de preuves en flux ligne à ligne.`);
   lines.push(`- [Sources](${SITE}/api/v1/sources.json): registre sources primaires et hôtes effectivement cités.`);
   lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus, derniers contenus et endpoints disponibles.`);
   lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
   lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine des publications, révisions déclarées et changements éditoriaux.`);
+  lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille.`);
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);

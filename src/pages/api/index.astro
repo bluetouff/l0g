@@ -40,6 +40,21 @@ const datasetLd = {
     {
       '@type': 'DataDownload',
       encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/evidence-graph.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/x-ndjson',
+      contentUrl: `${ASITE}/api/v1/catalog.ndjson`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/x-ndjson',
+      contentUrl: `${ASITE}/api/v1/claims.ndjson`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
       contentUrl: `${ASITE}/api/v1/integrity.json`,
     },
     {
@@ -106,6 +121,30 @@ const datasetLd = {
           <span class="ep-type">JSON</span>
           <span class="ep-desc">Graphe affirmation-source : claims typées, références cliquables et datées.</span>
         </a>
+        <a class="ep card" href="/api/v1/evidence-graph.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/evidence-graph.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Evidence graph : articles, claims, références, hôtes, sources primaires et datasets en nœuds/arêtes.</span>
+        </a>
+        <a class="ep card" href="/api/v1/catalog.ndjson" target="_blank" rel="noopener" style="--t: var(--color-accent)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/catalog.ndjson</code>
+          <span class="ep-type">NDJSON</span>
+          <span class="ep-desc">Catalogue complet ligne à ligne pour ingestion streaming, RAG ou indexation incrémentale.</span>
+        </a>
+        <a class="ep card" href="/api/v1/claims.ndjson" target="_blank" rel="noopener" style="--t: #7aa2f7">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/claims.ndjson</code>
+          <span class="ep-type">NDJSON</span>
+          <span class="ep-desc">Claims typées en flux NDJSON, avec références embarquées.</span>
+        </a>
+        <a class="ep card" href="/api/v1/evidence-graph.ndjson" target="_blank" rel="noopener" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/evidence-graph.ndjson</code>
+          <span class="ep-type">NDJSON</span>
+          <span class="ep-desc">Evidence graph ligne à ligne : nœuds puis arêtes.</span>
+        </a>
         <a class="ep card" href="/api/v1/sources.json" target="_blank" rel="noopener" style="--t: var(--color-amber)">
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/sources.json</code>
@@ -129,6 +168,12 @@ const datasetLd = {
           <code class="ep-path">/api/v1/changes.json</code>
           <span class="ep-type">JSON</span>
           <span class="ep-desc">Changefeed machine : publications, révisions déclarées et changements éditoriaux structurants.</span>
+        </a>
+        <a class="ep card" href="/api/v1/changes.ndjson" target="_blank" rel="noopener" style="--t: var(--color-amber)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/changes.ndjson</code>
+          <span class="ep-type">NDJSON</span>
+          <span class="ep-desc">Changefeed en flux ligne à ligne, pratique pour watchers et agents de veille.</span>
         </a>
         <a class="ep card" href="/api/v1/catalog.json" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
