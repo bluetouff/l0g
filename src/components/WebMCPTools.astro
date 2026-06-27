@@ -18,7 +18,7 @@
  *   - list_recent_analyses  : derniers articles, depuis le frontmatter (données fiables).
  * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
  */
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { topics, postMatchesTopic } from '../config/topics.ts';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -27,7 +27,7 @@ const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const published = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const dateOf = (p) => p.data.pubDate.toISOString().slice(0, 10);
+const dateOf = (p: CollectionEntry<'posts'>) => p.data.pubDate.toISOString().slice(0, 10);
 
 // Liste des dernières analyses (avec description) pour list_recent_analyses.
 const recent = published.slice(0, 20).map((p) => ({
@@ -55,7 +55,7 @@ const byTopic = Object.fromEntries(
 const articleSlugs = published.map((p) => p.id);
 ---
 
-<script define:vars={{ site, recent, topicsList, byTopic, articleSlugs }}>
+<script is:inline define:vars={{ site, recent, topicsList, byTopic, articleSlugs }}>
   (function () {
     if (typeof navigator === 'undefined') return;
     // WebMCP n'existe qu'en contexte sécurisé (HTTPS) et sur navigateur compatible.

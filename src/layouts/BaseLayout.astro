@@ -123,7 +123,7 @@ function isCurrentHref(href: string): boolean {
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="l0g.fr" href="/rss.xml" />
-    <script type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(siteJsonLd)} />
   </head>
 
   <body>
@@ -339,7 +339,7 @@ function isCurrentHref(href: string): boolean {
     </footer>
 
     <!-- Recherche Pagefind : 3 ressources, toutes servies par le site (self) -->
-    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" is:inline />
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
     <script src="/pagefind-init.js" is:inline></script>
     <style>

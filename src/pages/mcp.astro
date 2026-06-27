@@ -33,7 +33,7 @@ const appLd = {
   description="Serveur Model Context Protocol de l0g.fr : indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP. Sans clé, sans authentification, sans pistage. Ce qu'on a fait, pourquoi, et comment l'utiliser."
   sidebar={false}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(appLd)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
 
   <section data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// mcp</p>

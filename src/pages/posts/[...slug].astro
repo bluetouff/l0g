@@ -139,17 +139,19 @@ const trustItems = [
       btn.addEventListener('click', function () {
         var url = btn.getAttribute('data-copy-url');
         var label = btn.querySelector('[data-copy-label]');
-        var done = function () {
-          if (label) { var o = label.textContent; label.textContent = 'Lien copié'; setTimeout(function () { label.textContent = o; }, 1800); }
+        var flash = function (text) {
+          if (!label) return;
+          var original = label.textContent;
+          label.textContent = text;
+          setTimeout(function () { label.textContent = original; }, 1800);
         };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(url).then(done).catch(done);
-        } else {
-          var ta = document.createElement('textarea');
-          ta.value = url; document.body.appendChild(ta); ta.select();
-          try { document.execCommand('copy'); } catch (e) {}
-          document.body.removeChild(ta); done();
+        if (!url || !window.isSecureContext || !navigator.clipboard || !navigator.clipboard.writeText) {
+          flash('Copie indisponible');
+          return;
         }
+        navigator.clipboard.writeText(url)
+          .then(function () { flash('Lien copié'); })
+          .catch(function () { flash('Copie indisponible'); });
       });
     });
   </script>

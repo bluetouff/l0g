@@ -72,7 +72,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   ogType="article"
   ogImage={ogImage}
 >
-  <script type="application/ld+json" set:html={safeLd} />
+  <script type="application/ld+json" is:inline set:html={safeLd} />
 
   <div class="read-progress" aria-hidden="true"><span></span></div>
 

@@ -33,6 +33,8 @@
     "vite": "^7.3.2"
   },
   "overrides": {
-    "vite": "$vite"
+    "esbuild": "0.28.1",
+    "vite": "$vite",
+    "volar-service-yaml": "0.0.71"
   }
 }

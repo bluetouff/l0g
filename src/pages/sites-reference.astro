@@ -280,8 +280,8 @@ const categories = [
   }
 ];
 
-const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return u; } };
+const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return u; } };
 const total = categories.reduce((n, c) => n + c.sources.length, 0);
 ---
 
@@ -421,7 +421,7 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
       text-transform: uppercase; color: var(--color-muted); white-space: nowrap;
     }
   </style>
-  <script>
+  <script is:inline>
     const q = document.getElementById('ref-q');
     if (q) {
       const cards = Array.from(document.querySelectorAll('.ref-card'));

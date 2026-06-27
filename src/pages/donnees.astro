@@ -131,7 +131,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   description="Inventaire des données publiques l0g : snapshots, API JSON, corpus machine, licence, cadence de mise à jour et limites de fraîcheur."
   sidebar={false}
 >
-  <script type="application/ld+json" set:html={safeJsonLd} />
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="data-page rise" data-pagefind-body>
     <section class="data-hero">

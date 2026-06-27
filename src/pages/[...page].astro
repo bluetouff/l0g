@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
@@ -7,17 +7,30 @@ import RiskBand from '../components/RiskBand.astro';
 import { readingTime } from '../lib/reading-time.ts';
 import { accentForTags, topicLabelForTags } from '../config/topics.ts';
 
-export async function getStaticPaths({ paginate }) {
+type PostEntry = CollectionEntry<'posts'>;
+type PaginatedPosts = {
+  data: PostEntry[];
+  start: number;
+  currentPage: number;
+  lastPage: number;
+  total: number;
+  url: {
+    prev?: string;
+    next?: string;
+  };
+};
+
+export async function getStaticPaths({ paginate }: { paginate: (data: PostEntry[], options: { pageSize: number }) => unknown }) {
   const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
     (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
   );
   return paginate(posts, { pageSize: 10 });
 }
 
-const { page } = Astro.props;
+const { page } = Astro.props as { page: PaginatedPosts };
 const isFirst = page.currentPage === 1;
 
-const items = page.data.map((post, i) => ({
+const items = page.data.map((post: PostEntry, i: number) => ({
   post,
   absIndex: page.start + i + 1,
   accent: accentForTags(post.data.tags || []),
@@ -70,7 +83,7 @@ const feed = isFirst ? items.slice(1) : items;
   <section class="pb-4 pt-2">
     <p class="mono-label mb-3">page {page.currentPage} / {page.lastPage} · {page.total} entrées</p>
     {
-      feed.map((it) => (
+      feed.map((it: (typeof items)[number]) => (
         <PostCard
           url={`/posts/${it.post.id}/`}
           title={it.post.data.title}

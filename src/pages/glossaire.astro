@@ -32,7 +32,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
   title="Glossaire"
   description="Tous les sigles et acronymes du journal expliqués en français clair : CPI, SEC, BDC, NAV, USDT, OAT, CFTC, OFAC, stablecoins, crédit privé, macro et régulation."
 >
-  <script type="application/ld+json" set:html={glossaryJsonLd} />
+  <script type="application/ld+json" is:inline set:html={glossaryJsonLd} />
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// glossaire</p>
     <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">

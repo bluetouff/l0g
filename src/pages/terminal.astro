@@ -34,7 +34,7 @@ const jsonLd = {
   ogImageAlt="Terminal l0g : interface de navigation en ligne de commande"
   sidebar={false}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
   <section class="terminal-page rise" data-pagefind-body>
     <div class="terminal-shell" data-pagefind-ignore>

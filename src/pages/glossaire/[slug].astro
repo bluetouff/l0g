@@ -60,7 +60,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   ogType="article"
   ogImageAlt={`Définition ${entry.sigle} sur le glossaire l0g.fr`}
 >
-  <script type="application/ld+json" set:html={safeJsonLd} />
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <nav class="term-breadcrumb mono-label" aria-label="Fil d'Ariane" data-pagefind-ignore>
     <a href="/">l0g</a>

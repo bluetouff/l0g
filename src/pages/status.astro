@@ -127,7 +127,7 @@ const jsonLd = {
   ogImageAlt="Statut et intégrité l0g : build statique, API publique, zéro tracker"
   sidebar={false}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
   <article class="status-page rise" data-pagefind-body>
     <section class="status-hero" data-pagefind-ignore>

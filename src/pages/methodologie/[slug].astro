@@ -53,7 +53,7 @@ const trustItems = [
 ---
 
 <BaseLayout title={page.title} description={page.description}>
-  <script type="application/ld+json" set:html={safeJsonLd} />
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="method-page" style={`--a:${accentVar[page.accent]}`}>
     <section class="rise">
