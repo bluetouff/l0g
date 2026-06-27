@@ -1,10 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { topicForTag } from '../../config/topics.ts';
+import { buildArticleEvidence } from '../../lib/article-evidence.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
@@ -27,6 +29,7 @@ const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
 const refDate = post.data.updatedDate ?? post.data.pubDate;
 const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
+const evidence = buildArticleEvidence(post.body ?? '');
 
 // Partage : URL absolue + textes encodés. Liens HTML purs, aucun script tiers.
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
@@ -95,6 +98,8 @@ const trustItems = [
     <div class="prose">
       <Content />
     </div>
+
+    <ArticleEvidence evidence={evidence} />
 
     <CitationBox
       title={post.data.title}

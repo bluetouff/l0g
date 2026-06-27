@@ -1,0 +1,195 @@
+---
+import type { ArticleEvidence } from '../lib/article-evidence.ts';
+import { primarySourceUrl } from '../config/primary-sources.ts';
+
+interface Props {
+  evidence: ArticleEvidence;
+}
+
+const { evidence } = Astro.props;
+const primaryShown = evidence.primary.slice(0, 6);
+const secondaryShown = evidence.secondary.slice(0, 8);
+const dataShown = evidence.internalData.slice(0, 6);
+const contextShown = evidence.context.slice(0, 10);
+---
+
+<aside class="evidence-box" aria-labelledby="evidence-title" data-pagefind-ignore>
+  <div class="evidence-head">
+    <div>
+      <p id="evidence-title" class="mono-label">// preuves utilisées</p>
+      <p class="evidence-note">
+        Lecture automatique des liens et mentions de l'article : sources primaires,
+        sources secondaires, données internes et renvois de contexte.
+      </p>
+    </div>
+    <div class="evidence-counts" aria-label="Résumé de traçabilité">
+      <span>{evidence.stats.primarySources} primaires</span>
+      <span>{evidence.stats.externalLinks} externes</span>
+      <span>{evidence.stats.internalLinks} internes</span>
+    </div>
+  </div>
+
+  <div class="evidence-grid">
+    <section class="evidence-panel">
+      <h2 class="evidence-h">Sources primaires</h2>
+      {primaryShown.length > 0 ? (
+        <ul class="evidence-list">
+          {primaryShown.map((item) => (
+            <li>
+              <a href={primarySourceUrl(item.source.slug)}>{item.source.shortName}</a>
+              <span>{item.reason === 'lien' ? 'lien direct détecté' : 'mention détectée'}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="evidence-empty">Aucune institution primaire du registre l0g détectée automatiquement.</p>
+      )}
+    </section>
+
+    <section class="evidence-panel">
+      <h2 class="evidence-h">Sources secondaires</h2>
+      {secondaryShown.length > 0 ? (
+        <ul class="evidence-list">
+          {secondaryShown.map((link) => (
+            <li>
+              <a href={link.href} target="_blank" rel="noopener">{link.host ?? link.label}</a>
+              <span>{link.label}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="evidence-empty">Pas de source secondaire externe isolée.</p>
+      )}
+    </section>
+
+    <section class="evidence-panel">
+      <h2 class="evidence-h">Données internes</h2>
+      {dataShown.length > 0 ? (
+        <ul class="evidence-list">
+          {dataShown.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+              <span>{link.kind}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="evidence-empty">Aucun dataset ou dashboard l0g lié explicitement.</p>
+      )}
+    </section>
+
+    <section class="evidence-panel">
+      <h2 class="evidence-h">Contexte l0g</h2>
+      {contextShown.length > 0 ? (
+        <ul class="evidence-list">
+          {contextShown.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+              <span>{link.kind}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="evidence-empty">Aucun renvoi interne de contexte détecté.</p>
+      )}
+    </section>
+  </div>
+</aside>
+
+<style>
+  .evidence-box {
+    margin-top: 3rem;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    padding: 1.2rem 0;
+  }
+  .evidence-head {
+    display: grid;
+    gap: 0.9rem;
+  }
+  @media (min-width: 720px) {
+    .evidence-head {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+    }
+  }
+  .evidence-head .mono-label {
+    color: var(--color-signal);
+  }
+  .evidence-note {
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .evidence-counts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  @media (min-width: 720px) {
+    .evidence-counts {
+      justify-content: flex-end;
+      max-width: 14rem;
+    }
+  }
+  .evidence-counts span {
+    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    padding: 0.28rem 0.55rem;
+    text-transform: uppercase;
+  }
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  @media (min-width: 760px) {
+    .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .evidence-panel {
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    padding: 0.8rem;
+  }
+  .evidence-h {
+    color: var(--color-bright);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .evidence-list {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.7rem;
+    padding: 0;
+    list-style: none;
+  }
+  .evidence-list li {
+    display: grid;
+    gap: 0.18rem;
+  }
+  .evidence-list a {
+    color: var(--color-signal);
+    font-size: 0.88rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+  .evidence-list span,
+  .evidence-empty {
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+  .evidence-empty {
+    margin-top: 0.7rem;
+  }
+</style>

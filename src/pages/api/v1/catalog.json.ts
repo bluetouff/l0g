@@ -4,6 +4,7 @@ import { topics, postMatchesTopic } from '../../../config/topics.ts';
 import { methodologyPages } from '../../../config/methodology.ts';
 import { glossaryEntries, glossarySections } from '../../../config/glossary.ts';
 import { primaryInstitutions } from '../../../config/primary-sources.ts';
+import { buildArticleEvidence } from '../../../lib/article-evidence.ts';
 
 /**
  * Catalogue machine de l0g.fr — v1. Sortie statique générée au build.
@@ -34,6 +35,18 @@ export const GET: APIRoute = async () => {
     description: p.data.description,
     tags: p.data.tags ?? [],
     topics: topics.filter((t) => postMatchesTopic(p.data.tags ?? [], t)).map((t) => t.slug),
+    evidence: (() => {
+      const evidence = buildArticleEvidence(p.body ?? '');
+      return {
+        primarySources: evidence.primary.map((item) => ({
+          slug: item.source.slug,
+          name: item.source.name,
+          url: `${SITE}/sources/${item.source.slug}/`,
+          reason: item.reason,
+        })),
+        counts: evidence.stats,
+      };
+    })(),
   }));
 
   const guides = allGuides.map((g) => ({
