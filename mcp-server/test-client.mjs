@@ -19,6 +19,13 @@ for (const required of [
   'get_openapi_schema',
   'get_ndjson_feed',
   'get_signal_history',
+  'get_claim',
+  'get_claim_evidence',
+  'list_article_claims',
+  'find_claims_by_source',
+  'get_source',
+  'verify_artifact',
+  'get_changes',
 ]) {
   const tool = tools.find((item) => item.name === required);
   if (!tool) throw new Error(`tool manquant: ${required}`);
@@ -100,6 +107,21 @@ console.log('search_by_topic(crypto) ->', byTopic.count, '; label:', byTopic.lab
 const claims = await call('get_claims', { kind: 'fait', limit: 3 });
 console.log('get_claims(fait) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
 
+const claim = await call('get_claim', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1' });
+console.log('get_claim ->', claim.claimId, '| kind:', claim.claim?.kind);
+
+const claimEvidence = await call('get_claim_evidence', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1', limit: 40 });
+console.log('get_claim_evidence -> depth:', claimEvidence.evidence?.proofDepth, '| nodes:', claimEvidence.returned?.nodes);
+
+const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
+console.log('list_article_claims ->', articleClaims.count, '| #1:', articleClaims.claims?.[0]?.id);
+
+const claimsBySource = await call('find_claims_by_source', { sourceId: 'fred.stlouisfed.org', limit: 3 });
+console.log('find_claims_by_source(fred) ->', claimsBySource.count);
+
+const source = await call('get_source', { sourceId: 'federal-reserve-fred', limit: 3 });
+console.log('get_source(federal-reserve-fred) ->', source.sourceType, '| claims:', source.claimsCount);
+
 const graph = await call('get_evidence_graph', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 30 });
 console.log('get_evidence_graph -> nodes:', graph.returned?.nodes, '| edges:', graph.returned?.edges);
 
@@ -112,8 +134,14 @@ console.log('get_freshness -> latest:', freshness.latest?.length);
 const integrity = await call('get_integrity', { path: '/api/v1/evidence-graph.json' });
 console.log('get_integrity -> snapshots:', integrity.count, '| algo:', integrity.algorithm);
 
+const verified = await call('verify_artifact', { path: '/api/v1/evidence-graph.json' });
+console.log('verify_artifact -> expected:', Boolean(verified.expectedSha256), '| verified:', verified.verified);
+
 const changefeed = await call('get_changefeed', { contentType: 'article', limit: 3 });
 console.log('get_changefeed(article) ->', changefeed.count);
+
+const changes = await call('get_changes', { contentType: 'article', since: '2026-06-27', limit: 3 });
+console.log('get_changes(article) ->', changes.count);
 
 const art = await call('get_article', { slug: 'clarity-act-trump-obstacle-conflit-interets' });
 console.log('get_article -> title:', art.title, '| words:', art.words, '| truncated:', art.truncated);

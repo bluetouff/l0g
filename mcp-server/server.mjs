@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.5.0';
+const MCP_VERSION = '1.6.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -254,8 +254,69 @@ const ArticleOutput = ToolOutput.extend({
   truncated: z.boolean().optional(),
   text: z.string().optional(),
 }).passthrough();
+const ClaimOutput = ToolOutput.extend({
+  claimId: z.string().optional(),
+  claim: z.any().optional(),
+  resource: z.string().optional(),
+  articleResource: z.string().optional(),
+  evidenceResource: z.string().optional(),
+}).passthrough();
+const ClaimEvidenceOutput = ToolOutput.extend({
+  claimId: z.string().optional(),
+  claim: z.any().optional(),
+  evidence: AnyRecord.optional(),
+  references: z.array(z.any()).optional(),
+  nodes: z.array(z.any()).optional(),
+  edges: z.array(z.any()).optional(),
+  returned: AnyRecord.optional(),
+}).passthrough();
+const ArticleClaimsOutput = ToolOutput.extend({
+  articleSlug: z.string().optional(),
+  article: z.any().optional(),
+  count: z.number().optional(),
+  filters: AnyRecord.optional(),
+  claims: z.array(z.any()).optional(),
+  resources: z.array(z.string()).optional(),
+}).passthrough();
+const ClaimsBySourceOutput = ToolOutput.extend({
+  sourceId: z.string().optional(),
+  source: z.any().optional(),
+  count: z.number().optional(),
+  filters: AnyRecord.optional(),
+  claims: z.array(z.any()).optional(),
+}).passthrough();
+const SourceOutput = ToolOutput.extend({
+  sourceId: z.string().optional(),
+  sourceType: z.string().optional(),
+  source: z.any().optional(),
+  claimsCount: z.number().optional(),
+  claims: z.array(z.any()).optional(),
+}).passthrough();
+const VerifyArtifactOutput = ToolOutput.extend({
+  path: z.string().optional(),
+  verified: z.boolean().nullable().optional(),
+  algorithm: z.string().optional(),
+  expectedSha256: z.string().optional(),
+  providedSha256: z.string().nullable().optional(),
+  snapshot: z.any().optional(),
+  canonicalization: AnyRecord.optional(),
+  verification: AnyRecord.optional(),
+  knownPaths: z.array(z.string()).optional(),
+}).passthrough();
+const ChangesOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  count: z.number().optional(),
+  filters: AnyRecord.optional(),
+  feedPolicy: AnyRecord.optional(),
+  entries: z.array(z.any()).optional(),
+}).passthrough();
 function summarizePayload(payload) {
   if (payload?.error) return `Erreur : ${payload.error}.`;
+  if (payload?.claim && payload?.evidence) return `Preuve de claim : ${payload.claim.id} (${payload.evidence.proofDepth}).`;
+  if (payload?.claim && payload?.claimId) return `Claim ${payload.claimId} : ${payload.claim.kind}.`;
+  if (payload?.source && payload?.claims) return `${payload.claimsCount ?? payload.count ?? payload.claims.length} claim(s) liées à cette source.`;
+  if (payload?.verified !== undefined && payload?.path) return `Artefact ${payload.path} : ${payload.verified === null ? 'empreinte publiée' : payload.verified ? 'empreinte vérifiée' : 'empreinte différente'}.`;
   if (payload?.indices) {
     const parts = Object.entries(payload.indices)
       .map(([key, item]) => `${key}: ${item?.value ?? 'n/a'} (${item?.level ?? item?.tone ?? 'n/a'})`);
@@ -400,6 +461,138 @@ function buildServer(data) {
       truncated,
       text,
     };
+  }
+
+  function cleanSlug(value) {
+    return String(value || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+  }
+
+  function normalizeId(value, prefix) {
+    return uriValue(value).replace(new RegExp(`^l0g://${prefix}/`, 'i'), '');
+  }
+
+  function hostFromUrl(value) {
+    try {
+      return new URL(value).hostname.replace(/^www\./, '').toLowerCase();
+    } catch {
+      return '';
+    }
+  }
+
+  function findClaimById(claimId) {
+    const id = normalizeId(claimId, 'claims');
+    return { id, claim: claimsList.find((item) => item.id === id) };
+  }
+
+  function findSource(sourceId) {
+    const id = normalizeId(sourceId, 'sources');
+    const raw = norm(id);
+    if (!raw) return { id, sourceType: null, source: null };
+    const primary = primarySources.find((source) => {
+      const aliases = [source.slug, source.name, source.shortName, hostFromUrl(source.officialUrl)];
+      return aliases.some((alias) => norm(alias) === raw);
+    }) || primarySources.find((source) => {
+      const aliases = [source.slug, source.name, source.shortName, source.officialUrl, hostFromUrl(source.officialUrl)];
+      return aliases.some((alias) => norm(alias).includes(raw) || raw.includes(norm(alias)));
+    });
+    if (primary) return { id, sourceType: 'primarySource', source: primary };
+    const host = referenceHosts.find((item) => norm(item.host) === raw)
+      || referenceHosts.find((item) => norm(item.host).includes(raw) || raw.includes(norm(item.host)));
+    if (host) return { id, sourceType: 'referenceHost', source: host };
+    return { id, sourceType: null, source: null };
+  }
+
+  function referenceMatchesSource(reference, sourceId, resolvedSource) {
+    const raw = norm(sourceId);
+    if (!raw) return false;
+    const refHost = norm(reference.host || hostFromUrl(reference.href));
+    const refUrlHost = norm(hostFromUrl(reference.href));
+    const haystack = norm([reference.label, reference.href, reference.host, reference.kind].filter(Boolean).join(' '));
+    if (raw && (refHost === raw || refUrlHost === raw || haystack.includes(raw))) return true;
+    if (resolvedSource?.sourceType === 'primarySource') {
+      const source = resolvedSource.source;
+      const sourceHost = norm(hostFromUrl(source.officialUrl));
+      const aliases = [source.slug, source.name, source.shortName, sourceHost].map(norm).filter(Boolean);
+      return aliases.some((alias) => refHost === alias || refUrlHost === alias || haystack.includes(alias));
+    }
+    if (resolvedSource?.sourceType === 'referenceHost') {
+      const host = norm(resolvedSource.source.host);
+      return refHost === host || refUrlHost === host || haystack.includes(host);
+    }
+    return false;
+  }
+
+  function claimsForSource(sourceId, options = {}) {
+    const { kind, limit = 20 } = options;
+    const resolved = findSource(sourceId);
+    const list = [];
+    for (const claim of claimsList) {
+      if (kind && claim.kind !== kind) continue;
+      const matchingReferences = (claim.references || []).filter((reference) => referenceMatchesSource(reference, resolved.id, resolved));
+      if (!matchingReferences.length) continue;
+      list.push({ ...compactClaim(claim), matchingReferences });
+      if (list.length >= limit) break;
+    }
+    return { resolved, claims: list };
+  }
+
+  function proofDepthForClaim(claim) {
+    const refs = claim.references || [];
+    const linked = refs.filter((reference) => reference.href).length;
+    const primary = refs.filter((reference) => norm(reference.kind).includes('primaire')).length;
+    const dated = refs.filter((reference) => reference.date || reference.dateLabel).length;
+    const hosts = new Set(refs.map((reference) => reference.host || hostFromUrl(reference.href)).filter(Boolean));
+    let label = 'mention';
+    if (primary && linked && dated) label = 'preuve directe';
+    else if (linked && dated) label = 'source liée et datée';
+    else if (linked) label = 'source liée';
+    else if (refs.length) label = 'référence';
+    return {
+      proofDepth: label,
+      references: refs.length,
+      linkedReferences: linked,
+      datedReferences: dated,
+      primaryReferences: primary,
+      uniqueHosts: hosts.size,
+      claimKind: claim.kind,
+      confidence: claim.confidence || null,
+    };
+  }
+
+  function graphNeighborhood(startId, limit = 80) {
+    const allNodes = evidenceGraph.nodes || [];
+    const allEdges = evidenceGraph.edges || [];
+    const selected = new Set([startId]);
+    let changed = true;
+    while (changed && selected.size < limit) {
+      changed = false;
+      for (const edge of allEdges) {
+        if (selected.has(edge.from) && !selected.has(edge.to)) {
+          selected.add(edge.to);
+          changed = true;
+        }
+        if (selected.has(edge.to) && !selected.has(edge.from)) {
+          selected.add(edge.from);
+          changed = true;
+        }
+        if (selected.size >= limit) break;
+      }
+    }
+    const nodes = allNodes.filter((node) => selected.has(node.id)).slice(0, limit);
+    const ids = new Set(nodes.map((node) => node.id));
+    const edges = allEdges.filter((edge) => ids.has(edge.from) && ids.has(edge.to)).slice(0, Math.max(limit * 3, 20));
+    return { nodes, edges };
+  }
+
+  function filterChanges({ contentType, slug, since, limit }) {
+    let entries = changes.entries || [];
+    if (contentType) entries = entries.filter((entry) => entry.contentType === contentType);
+    if (slug) entries = entries.filter((entry) => entry.slug === cleanSlug(slug));
+    if (since) {
+      const sinceDate = new Date(since);
+      if (!Number.isNaN(sinceDate.getTime())) entries = entries.filter((entry) => new Date(entry.date).getTime() >= sinceDate.getTime());
+    }
+    return entries.slice(0, limit);
   }
 
   function registerStaticResource(name, uri, config, payload) {
@@ -835,6 +1028,217 @@ function buildServer(data) {
         claimKinds,
         claims: list,
         policy: claims.policy,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_claim',
+    {
+      description:
+        "Renvoie une claim précise par identifiant, avec ses références cliquables et datées. " +
+        "Utiliser list_article_claims ou get_claims pour découvrir les identifiants.",
+      inputSchema: {
+        claimId: z.string().min(1).describe("Identifiant de claim, par exemple dollar-yen-intervention-risque-carry-2026:claim-1."),
+      },
+      outputSchema: ClaimOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ claimId }) => {
+      const { id, claim } = findClaimById(claimId);
+      if (!claim) return reply({ error: 'claim inconnue', claimId: id });
+      return reply({
+        claimId: id,
+        claim: compactClaim(claim),
+        resource: `l0g://claims/${encodeURIComponent(id)}`,
+        articleResource: `l0g://articles/${encodeURIComponent(claim.articleSlug)}`,
+        evidenceResource: `l0g://claims/${encodeURIComponent(id)}#evidence`,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_claim_evidence',
+    {
+      description:
+        "Renvoie la preuve d'une claim : affirmation, type, références, profondeur de preuve et voisinage du graphe " +
+        "article -> claim -> référence -> source.",
+      inputSchema: {
+        claimId: z.string().min(1).describe("Identifiant de claim."),
+        limit: z.number().int().min(10).max(160).default(80).describe('Nombre maximum de nœuds dans le voisinage de preuve.'),
+      },
+      outputSchema: ClaimEvidenceOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ claimId, limit }) => {
+      const { id, claim } = findClaimById(claimId);
+      if (!claim) return reply({ error: 'claim inconnue', claimId: id });
+      const graph = graphNeighborhood(`claim:${id}`, limit);
+      return reply({
+        claimId: id,
+        claim: compactClaim(claim),
+        evidence: proofDepthForClaim(claim),
+        references: (claim.references || []).map((reference) => ({
+          label: reference.label,
+          href: reference.href,
+          host: reference.host,
+          kind: reference.kind,
+          date: reference.date,
+          dateLabel: reference.dateLabel,
+        })),
+        returned: { nodes: graph.nodes.length, edges: graph.edges.length },
+        nodes: graph.nodes,
+        edges: graph.edges,
+      });
+    }
+  );
+
+  server.registerTool(
+    'list_article_claims',
+    {
+      description:
+        "Liste les claims d'un article donné, avec filtrage optionnel par type. " +
+        "C'est le chemin recommandé pour passer d'un article à ses affirmations vérifiables.",
+      inputSchema: {
+        articleSlug: z.string().min(1).describe("Slug d'article."),
+        kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
+        limit: z.number().int().min(1).max(100).default(50).describe('Nombre maximum de claims.'),
+      },
+      outputSchema: ArticleClaimsOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ articleSlug, kind, limit }) => {
+      const slug = cleanSlug(articleSlug);
+      const article = articles.find((item) => item.slug === slug);
+      if (!article) return reply({ error: 'article inconnu', articleSlug: slug });
+      let list = claimsList.filter((claim) => claim.articleSlug === slug);
+      if (kind) list = list.filter((claim) => claim.kind === kind);
+      list = list.slice(0, limit).map(compactClaim);
+      return reply({
+        articleSlug: slug,
+        article,
+        count: list.length,
+        filters: { kind: kind || null },
+        claims: list,
+        resources: list.map((claim) => `l0g://claims/${encodeURIComponent(claim.id)}`),
+      });
+    }
+  );
+
+  server.registerTool(
+    'find_claims_by_source',
+    {
+      description:
+        "Trouve les claims liées à une source primaire ou à un hôte cité. Accepte un slug de source l0g " +
+        "(ex: federal-reserve-fred), un nom ou un host (ex: fred.stlouisfed.org).",
+      inputSchema: {
+        sourceId: z.string().min(1).describe('Slug de source, nom ou host.'),
+        kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
+        limit: z.number().int().min(1).max(100).default(20).describe('Nombre maximum de claims.'),
+      },
+      outputSchema: ClaimsBySourceOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ sourceId, kind, limit }) => {
+      const { resolved, claims: sourceClaims } = claimsForSource(sourceId, { kind, limit });
+      return reply({
+        sourceId: resolved.id,
+        source: resolved.source ? { type: resolved.sourceType, ...resolved.source } : null,
+        count: sourceClaims.length,
+        filters: { kind: kind || null },
+        claims: sourceClaims,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_source',
+    {
+      description:
+        "Renvoie une source primaire l0g ou un hôte cité, puis les claims qui s'y rattachent. " +
+        "Complète list_sources quand un agent veut auditer une institution ou un domaine précis.",
+      inputSchema: {
+        sourceId: z.string().min(1).describe('Slug de source, nom ou host.'),
+        limit: z.number().int().min(1).max(50).default(10).describe('Nombre maximum de claims liées.'),
+      },
+      outputSchema: SourceOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ sourceId, limit }) => {
+      const { resolved, claims: sourceClaims } = claimsForSource(sourceId, { limit });
+      if (!resolved.source && !sourceClaims.length) return reply({ error: 'source inconnue', sourceId: resolved.id });
+      return reply({
+        sourceId: resolved.id,
+        sourceType: resolved.sourceType || 'referenceMatch',
+        source: resolved.source,
+        claimsCount: sourceClaims.length,
+        claims: sourceClaims,
+      });
+    }
+  );
+
+  server.registerTool(
+    'verify_artifact',
+    {
+      description:
+        "Vérifie un artefact Agent Surface à partir du manifeste d'intégrité publié. " +
+        "Le chemin doit correspondre à un snapshot connu ; aucune lecture de chemin arbitraire n'est faite.",
+      inputSchema: {
+        path: z.string().min(1).describe('Chemin public, par exemple /api/v1/evidence-graph.json.'),
+        sha256: z.string().optional().describe('Empreinte SHA-256 optionnelle à comparer au snapshot canonique.'),
+      },
+      outputSchema: VerifyArtifactOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ path, sha256 }) => {
+      const cleanPath = String(path || '').trim();
+      const snapshot = (integrity.snapshots || []).find((item) => item.path === cleanPath);
+      if (!snapshot) {
+        return reply({
+          error: 'artefact inconnu',
+          path: cleanPath,
+          knownPaths: (integrity.snapshots || []).map((item) => item.path),
+        });
+      }
+      const expected = String(snapshot.canonicalSha256 || '').toLowerCase();
+      const provided = sha256 ? String(sha256).trim().toLowerCase() : null;
+      return reply({
+        path: cleanPath,
+        verified: provided ? provided === expected : null,
+        algorithm: integrity.algorithm,
+        expectedSha256: expected,
+        providedSha256: provided,
+        snapshot: compactSnapshot(snapshot),
+        canonicalization: integrity.canonicalization,
+        verification: integrity.verification,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_changes',
+    {
+      description:
+        "Interroge le changefeed machine avec filtres de type, slug et date minimale. " +
+        "C'est l'interface MCP dédiée pour surveiller publications, révisions et politiques éditoriales.",
+      inputSchema: {
+        contentType: z.enum(['article', 'guide', 'policy']).optional().describe('Type de contenu optionnel.'),
+        slug: z.string().optional().describe('Slug optionnel pour cibler un contenu.'),
+        since: z.string().optional().describe('Date ISO optionnelle, incluse, par exemple 2026-06-27.'),
+        limit: z.number().int().min(1).max(100).default(20).describe("Nombre maximum d'entrées."),
+      },
+      outputSchema: ChangesOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ contentType, slug, since, limit }) => {
+      const entries = filterChanges({ contentType, slug, since, limit });
+      return reply({
+        version: changes.version,
+        generated: changes.generated,
+        count: entries.length,
+        filters: { contentType: contentType || null, slug: slug ? cleanSlug(slug) : null, since: since || null },
+        feedPolicy: changes.feedPolicy,
+        entries,
       });
     }
   );

@@ -31,10 +31,17 @@ const tools = [
   ['get_freshness', 'limit', 'Fraîcheur du corpus : derniers contenus, compteurs, endpoints et politique de fraîcheur.'],
   ['search_content', 'query, limit', 'Recherche dans les analyses et les guides par titre, description, thèmes et sujets.'],
   ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables et datées.'],
+  ['get_claim', 'claimId', 'Claim précise, liens ressource et article parent.'],
+  ['get_claim_evidence', 'claimId, limit', "Preuve d'une claim : type, références, profondeur et voisinage de graphe."],
+  ['list_article_claims', 'articleSlug, kind, limit', "Claims d'un article, utilisables comme points d'entrée du graphe de preuve."],
+  ['find_claims_by_source', 'sourceId, kind, limit', 'Claims liées à une source primaire, un nom ou un host cité.'],
+  ['get_source', 'sourceId, limit', 'Source primaire ou hôte cité, avec claims associées.'],
   ['get_evidence_graph', 'articleSlug, nodeType, limit', 'Sous-graphe articles → claims → références → hôtes → sources primaires → datasets.'],
   ['list_sources', 'mode, limit', 'Sources primaires institutionnelles et hôtes effectivement cités par les claims.'],
   ['get_integrity', 'path', 'Empreintes SHA-256 canoniques des surfaces Agent Surface, JSON et NDJSON.'],
+  ['verify_artifact', 'path, sha256', "Vérification allowlistée d'un artefact via le manifeste d'intégrité."],
   ['get_changefeed', 'contentType, limit', 'Dernières publications, révisions déclarées et changements éditoriaux structurants.'],
+  ['get_changes', 'contentType, slug, since, limit', 'Changefeed filtrable par type, slug et date minimale.'],
   ['list_recent_analyses', 'limit', 'Dernières analyses publiées, de la plus récente à la plus ancienne.'],
   ['list_guides', 'aucun', 'Guides de référence (pages piliers durables).'],
   ['search_by_topic', 'topic, limit', 'Analyses rattachées à un sujet (hub thématique).'],
@@ -73,6 +80,8 @@ const appLd = {
       Un agent peut interroger l'Agent Surface, le contrat OpenAPI, les flux NDJSON,
       les claims, l'evidence graph, les sources, la fraîcheur, l'intégrité, le changefeed,
       l'historique des signaux ou récupérer le texte complet d'un article, sans scraper le site.
+      Le graphe de preuve devient interrogeable directement : article, affirmation, type,
+      source, date et profondeur de preuve.
       Aucune clé, aucune authentification, aucun pistage.
     </p>
   </section>
@@ -128,6 +137,7 @@ const appLd = {
         </li>
         <li>
           ce serveur MCP, qui transforme tout cela en resources lisibles et tools appelables par un agent, sans scraping.
+          Les opérations fines sur claims, sources, preuves, changements et intégrité sont exposées comme tools structurés.
         </li>
       </ul>
     </div>

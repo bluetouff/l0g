@@ -85,10 +85,17 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_freshness` | `limit?` | derniers contenus, compteurs et politique de fraîcheur |
 | `search_content` | `query`, `limit?` | analyses et guides correspondants |
 | `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables/datées |
+| `get_claim` | `claimId` | une claim précise, ses liens ressource et son article |
+| `get_claim_evidence` | `claimId`, `limit?` | preuve d'une claim : type, références, profondeur et voisinage de graphe |
+| `list_article_claims` | `articleSlug`, `kind?`, `limit?` | claims d'un article, utilisables comme points d'entrée du graphe |
+| `find_claims_by_source` | `sourceId`, `kind?`, `limit?` | claims rattachées à une source primaire, un nom ou un host cité |
+| `get_source` | `sourceId`, `limit?` | source primaire ou hôte cité, plus claims associées |
 | `get_evidence_graph` | `articleSlug?`, `nodeType?`, `limit?` | sous-graphe articles → claims → références → sources |
 | `list_sources` | `mode?`, `limit?` | sources primaires et hôtes effectivement cités |
 | `get_integrity` | `path?` | empreintes SHA-256 canoniques des surfaces Agent Surface |
+| `verify_artifact` | `path`, `sha256?` | vérification allowlistée d'un artefact via le manifeste d'intégrité |
 | `get_changefeed` | `contentType?`, `limit?` | publications, révisions et changements éditoriaux |
+| `get_changes` | `contentType?`, `slug?`, `since?`, `limit?` | changefeed filtrable par type, slug et date minimale |
 | `list_recent_analyses` | `limit?` | dernières analyses |
 | `list_guides` | aucun | guides de référence |
 | `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |
