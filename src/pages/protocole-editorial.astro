@@ -92,6 +92,24 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
     <section class="protocol-section">
       <p class="mono-label glow">// niveaux de preuve</p>
+      <div class="depth-table" aria-label="Échelle de profondeur de preuve">
+        <div class="depth-row depth-head">
+          <span>Niveau</span>
+          <span>Signification</span>
+          <span>Statut</span>
+        </div>
+        {editorialProtocol.proofDepthLevels.map((level) => (
+          <div class="depth-row">
+            <strong>{level.label}</strong>
+            <span class="depth-meaning">{level.meaning}</span>
+            <em>{level.status}</em>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="protocol-section">
+      <p class="mono-label glow">// types de preuve</p>
       <div class="evidence-grid">
         {editorialProtocol.evidenceLevels.map((level) => (
           <article class="evidence-card">
@@ -168,6 +186,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     .promise-box,
     .principle-card,
     .step-row,
+    .depth-table,
     .evidence-card,
     .note-block,
     .change-list {
@@ -257,6 +276,43 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       color: var(--color-muted);
       line-height: 1.58;
     }
+    .depth-table {
+      display: grid;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+    .depth-row {
+      display: grid;
+      grid-template-columns: minmax(7rem, 0.75fr) minmax(0, 1.65fr) minmax(7rem, 0.6fr);
+      gap: 0.8rem;
+      align-items: start;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.82rem 0.95rem;
+    }
+    .depth-row:last-child { border-bottom: 0; }
+    .depth-head span,
+    .depth-row strong,
+    .depth-row em {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .depth-head span {
+      color: var(--color-bright);
+    }
+    .depth-row strong {
+      color: var(--color-signal);
+    }
+    .depth-meaning {
+      color: var(--color-paper);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .depth-row em {
+      color: var(--color-muted);
+    }
     .split {
       display: grid;
       gap: 1rem;
@@ -289,6 +345,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     @media (max-width: 640px) {
       .change-row { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
       .evidence-grid { grid-template-columns: 1fr; }
+      .depth-row { grid-template-columns: 1fr; gap: 0.35rem; }
     }
   </style>
 </BaseLayout>

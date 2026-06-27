@@ -16,8 +16,17 @@ export interface PrimaryEvidence {
   links: EvidenceLink[];
 }
 
+export interface EvidenceDepth {
+  id: 'mention' | 'reference' | 'linked-source' | 'direct-proof' | 'reproduction';
+  label: string;
+  detail: string;
+  score: 1 | 2 | 3 | 4 | 5;
+  automated: boolean;
+}
+
 export interface ArticleEvidence {
   badges: EvidenceBadge[];
+  depth: EvidenceDepth;
   primary: PrimaryEvidence[];
   secondary: EvidenceLink[];
   internalData: EvidenceLink[];
@@ -215,6 +224,45 @@ function buildBadges(args: {
   return badges;
 }
 
+function buildEvidenceDepth(args: {
+  primary: PrimaryEvidence[];
+  secondary: EvidenceLink[];
+  internalData: EvidenceLink[];
+  context: EvidenceLink[];
+}): EvidenceDepth {
+  const hasPrimaryLink = args.primary.some((item) => item.reason === 'lien' && item.links.length > 0);
+  const hasDocumentLink = hasPrimaryLink || args.secondary.length > 0 || args.internalData.length > 0;
+  const hasReference = args.primary.length > 0 || args.context.length > 0 || hasDocumentLink;
+
+  if (hasPrimaryLink || args.internalData.length > 0) {
+    return {
+      id: 'linked-source',
+      label: 'source liée',
+      detail: 'document, dataset ou dashboard accessible par URL ; relation exacte à l’affirmation non garantie automatiquement',
+      score: 3,
+      automated: true,
+    };
+  }
+
+  if (hasDocumentLink || hasReference) {
+    return {
+      id: 'reference',
+      label: 'référence',
+      detail: 'document, institution ou contexte identifiable cité ; lien direct primaire non systématique',
+      score: 2,
+      automated: true,
+    };
+  }
+
+  return {
+    id: 'mention',
+    label: 'mention',
+    detail: 'aucune source primaire liée détectée automatiquement dans le registre l0g',
+    score: 1,
+    automated: true,
+  };
+}
+
 export function buildArticleEvidence(markdown: string): ArticleEvidence {
   const links = extractLinks(markdown);
   const primary: PrimaryEvidence[] = [];
@@ -257,6 +305,7 @@ export function buildArticleEvidence(markdown: string): ArticleEvidence {
 
   return {
     badges: buildBadges({ primary, secondary, internalData, context, markdown }),
+    depth: buildEvidenceDepth({ primary, secondary, internalData, context }),
     primary,
     secondary,
     internalData,

@@ -71,6 +71,10 @@ export const GET: APIRoute = async () => {
   for (const principle of editorialProtocol.principles) {
     lines.push(`- ${principle.title}: ${principle.text}`);
   }
+  lines.push('- Echelle de profondeur de preuve :');
+  for (const level of editorialProtocol.proofDepthLevels) {
+    lines.push(`  - ${level.label}: ${level.meaning} (${level.status})`);
+  }
   lines.push('');
 
   lines.push('## Changelog editorial');

@@ -98,6 +98,11 @@ export const GET: APIRoute = async () => {
   for (const level of editorialProtocol.evidenceLevels) {
     out.push(`- ${level.rank} · ${level.label} : ${level.description}`);
   }
+  out.push('');
+  out.push('Profondeur de preuve :');
+  for (const level of editorialProtocol.proofDepthLevels) {
+    out.push(`- ${level.label} : ${level.meaning} Statut : ${level.status}.`);
+  }
   out.push(SEP);
   out.push('CHANGELOG EDITORIAL : Changements structurants');
   out.push(`URL : ${SITE}/changelog-editorial/`);

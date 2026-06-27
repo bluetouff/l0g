@@ -31,6 +31,7 @@ const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
 const evidence = buildArticleEvidence(post.body ?? '');
 const proofBadges = evidence.badges.slice(0, 5);
+const proofDepth = evidence.depth;
 
 // Partage : URL absolue + textes encodés. Liens HTML purs, aucun script tiers.
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
@@ -93,16 +94,22 @@ const trustItems = [
       </div>
 
       <TrustBar items={trustItems} variant="compact" />
-      {proofBadges.length > 0 && (
-        <div class="proof-strip" aria-label="Niveaux de preuve détectés" data-pagefind-ignore>
+      <div class="proof-strip" aria-label="Niveaux de preuve détectés" data-pagefind-ignore>
+        <span class="proof-depth" title={proofDepth.detail}>
+          <span aria-hidden="true">{proofDepth.score}</span>
+          {proofDepth.label}
+        </span>
+        {proofBadges.length > 0 && (
+          <>
           {proofBadges.map((badge) => (
             <span class={`proof-pill proof-${badge.tone}`} title={badge.detail}>
               <span aria-hidden="true"></span>
               {badge.label}
             </span>
           ))}
-        </div>
-      )}
+          </>
+        )}
+      </div>
       <div class="post-rule" aria-hidden="true"></div>
     </header>
 
@@ -247,6 +254,31 @@ const trustItems = [
       line-height: 1;
       padding: 0.35rem 0.58rem;
       text-transform: uppercase;
+    }
+    .proof-depth {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      border: 1px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-signal) 9%, transparent);
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      padding: 0.35rem 0.58rem;
+      text-transform: uppercase;
+    }
+    .proof-depth span {
+      display: grid;
+      place-items: center;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-signal) 18%, transparent);
+      color: var(--color-bright);
+      font-size: 0.58rem;
     }
     .proof-pill span {
       width: 0.38rem;

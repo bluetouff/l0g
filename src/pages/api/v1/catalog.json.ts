@@ -39,6 +39,7 @@ export const GET: APIRoute = async () => {
     evidence: (() => {
       const evidence = buildArticleEvidence(p.body ?? '');
       return {
+        depth: evidence.depth,
         badges: evidence.badges.map((badge) => ({
           id: badge.id,
           label: badge.label,
@@ -115,6 +116,7 @@ export const GET: APIRoute = async () => {
       principles: editorialProtocol.principles,
       steps: editorialProtocol.steps,
       evidenceLevels: editorialProtocol.evidenceLevels,
+      proofDepthLevels: editorialProtocol.proofDepthLevels,
     },
     changelog: editorialChangelog.map((entry) => ({
       ...entry,

@@ -16,6 +16,13 @@ export type EditorialEvidenceLevel = {
   description: string;
 };
 
+export type EditorialProofDepthLevel = {
+  id: 'mention' | 'reference' | 'linked-source' | 'direct-proof' | 'reproduction';
+  label: string;
+  meaning: string;
+  status: 'automatique' | 'semi-structuré' | 'objectif';
+};
+
 export type EditorialChangelogEntry = {
   date: string;
   title: string;
@@ -39,7 +46,7 @@ export const editorialProtocol = {
       id: 'method-visible',
       title: 'Méthode visible',
       text:
-        'Les dashboards, scores, seuils et hypothèses doivent pointer vers une fiche méthodologique ou un bloc de preuve lisible.',
+        'Les dashboards, scores, seuils et hypothèses doivent pointer vers une fiche méthodologique ou un bloc de preuve lisible. Une simple mention d’autorité ne vaut pas preuve directe.',
     },
     {
       id: 'uncertainty-explicit',
@@ -119,9 +126,52 @@ export const editorialProtocol = {
       description: 'Lien interne vers méthode, glossaire, données, preuve, statut ou historique l0g.',
     },
   ] satisfies EditorialEvidenceLevel[],
+  proofDepthLevels: [
+    {
+      id: 'mention',
+      label: 'Mention',
+      meaning: "L’institution est nommée, sans document directement attaché.",
+      status: 'automatique',
+    },
+    {
+      id: 'reference',
+      label: 'Référence',
+      meaning: 'Un document, dataset ou organisme identifiable est cité dans le texte.',
+      status: 'automatique',
+    },
+    {
+      id: 'linked-source',
+      label: 'Source liée',
+      meaning: 'Le document ou dataset est accessible par URL vérifiable.',
+      status: 'automatique',
+    },
+    {
+      id: 'direct-proof',
+      label: 'Preuve directe',
+      meaning: 'La source soutient précisément une affirmation donnée, avec relation claim → source.',
+      status: 'semi-structuré',
+    },
+    {
+      id: 'reproduction',
+      label: 'Reproduction',
+      meaning: 'La donnée, le calcul ou la transformation peut être reproduit par le lecteur.',
+      status: 'objectif',
+    },
+  ] satisfies EditorialProofDepthLevel[],
 };
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
+  {
+    date: '2026-06-27',
+    title: 'Échelle de profondeur de preuve',
+    kind: 'traçabilité',
+    summary:
+      'Le protocole distingue désormais mention, référence, source liée, preuve directe et reproduction afin de ne pas confondre présence lexicale d’une autorité et preuve d’une affirmation.',
+    links: [
+      { label: 'protocole', href: '/protocole-editorial/' },
+      { label: 'catalogue', href: '/api/v1/catalog.json' },
+    ],
+  },
   {
     date: '2026-06-27',
     title: 'Badges de niveau de preuve',
