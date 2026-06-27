@@ -22,17 +22,14 @@ Le [FSB](/glossaire/#fsb) tient le décompte de référence, sur 29 juridictions
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La taille du système non bancaire</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Part des actifs financiers mondiaux, fin 2024. Source : FSB.</text>
-
   <text x="32" y="100" fill="#8b909b" font-size="11">ACTIFS FINANCIERS MONDIAUX</text>
   <rect x="32" y="110" width="420" height="40" fill="#5eead4" opacity="0.85"/>
   <rect x="452" y="110" width="236" height="40" fill="#2a2c33"/>
   <text x="242" y="135" fill="#0c0d10" font-size="13" text-anchor="middle" font-weight="700">non bancaire : 51 %</text>
   <text x="570" y="135" fill="#d6d9df" font-size="13" text-anchor="middle">banques : 49 %</text>
-
   <text x="32" y="188" fill="#8b909b" font-size="11">DONT MESURE ÉTROITE (RISQUE BANCAIRE)</text>
   <rect x="32" y="198" width="126" height="34" fill="#ff4d87" opacity="0.85"/>
   <text x="170" y="220" fill="#f5f6f8" font-size="12">76 300 Md$ · 15,4 %</text>
-
   <text x="32" y="270" fill="#d6d9df" font-size="12">Total non bancaire : 256 800 Md$, en hausse de 9,4 % sur un an,</text>
   <text x="32" y="288" fill="#d6d9df" font-size="12">soit deux fois le rythme des banques (4,7 %).</text>
 </svg>
@@ -50,26 +47,19 @@ C'est ce dernier point, le nexus banques et non-banques, que le FSB a particuli�
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le nexus banques / non-banques</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Trois canaux qui deviennent des vecteurs de contagion en cas de stress.</text>
-
   <rect x="50" y="110" width="180" height="90" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="140" y="158" fill="#f5f6f8" font-size="14" text-anchor="middle">Banques</text>
-
   <rect x="490" y="110" width="180" height="90" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="580" y="150" fill="#f5f6f8" font-size="14" text-anchor="middle">Non-banques</text>
   <text x="580" y="170" fill="#8b909b" font-size="10" text-anchor="middle">fonds, assureurs, HF</text>
-
   <line x1="230" y1="130" x2="490" y2="130" stroke="#8b909b" stroke-width="1.4" marker-end="url(#n1)"/>
   <text x="360" y="124" fill="#5eead4" font-size="11" text-anchor="middle">crédit, repo, expositions →</text>
-
   <line x1="490" y1="155" x2="230" y2="155" stroke="#8b909b" stroke-width="1.4" marker-end="url(#n2)"/>
   <text x="360" y="172" fill="#ff4d87" font-size="11" text-anchor="middle">← dépôts placés</text>
-
   <line x1="490" y1="180" x2="230" y2="180" stroke="#8b909b" stroke-width="1.4" marker-end="url(#n2)"/>
   <text x="360" y="197" fill="#f5b13d" font-size="11" text-anchor="middle">← détention de titres bancaires</text>
-
   <text x="32" y="258" fill="#d6d9df" font-size="12">En Europe, fonds et autres intermédiaires sont déjà plus de 20 % plus gros</text>
   <text x="32" y="276" fill="#d6d9df" font-size="12">que le secteur bancaire, et fournissent près de 23 % du crédit aux entreprises.</text>
-
   <defs>
     <marker id="n1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#8b909b"/></marker>
     <marker id="n2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#8b909b"/></marker>
