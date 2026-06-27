@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const kinds = Array.from(new Set(editorialChangelog.map((entry) => entry.kind)));
+
+const trustItems = [
+  { label: 'protocole éditorial', href: '/protocole-editorial/' },
+  { label: 'preuves git', href: '/preuves/' },
+  { label: 'catalogue machine', href: '/api/v1/catalog.json' },
+  { label: 'statut', href: '/status/' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site}/changelog-editorial/#log`,
+  name: 'Changelog éditorial l0g',
+  description:
+    'Journal des changements éditoriaux structurants de l0g.fr : protocole, sources, données, méthode, sécurité et traçabilité.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  dateModified: editorialProtocol.updated,
+  publisher: { '@id': `${site}/#org` },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: editorialChangelog.map((entry, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: entry.title,
+      description: entry.summary,
+      datePublished: entry.date,
+      url: `${site}/changelog-editorial/#${entry.date}-${entry.kind}`,
+    })),
+  },
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Changelog éditorial"
+  description="Journal des changements éditoriaux structurants de l0g : protocole, sources, données, méthode, sécurité et traçabilité."
+  ogImage="/og-changelog-editorial.png"
+  ogImageAlt="Changelog éditorial l0g : protocole, sources, données et traçabilité"
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="elog-page rise" data-pagefind-body>
+    <section class="elog-hero">
+      <p class="mono-label glow">// changelog éditorial</p>
+      <h1 class="elog-title font-display glow">Ce qui change dans la manière de publier.</h1>
+      <p class="elog-lede">
+        Ce journal ne remplace pas l’historique Git : il documente les changements qui affectent
+        la lecture, la preuve, les sources, les limites ou le protocole éditorial de l0g.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="elog-section">
+      <p class="mono-label glow">// typologie</p>
+      <div class="kind-strip" aria-label="Types de changements éditoriaux">
+        {kinds.map((kind) => <span>{kind}</span>)}
+      </div>
+    </section>
+
+    <section class="elog-section">
+      <p class="mono-label glow">// journal</p>
+      <div class="timeline">
+        {editorialChangelog.map((entry) => (
+          <article class="timeline-entry" id={`${entry.date}-${entry.kind}`}>
+            <div class="entry-meta">
+              <time datetime={entry.date}>{entry.date}</time>
+              <span>{entry.kind}</span>
+            </div>
+            <div class="entry-body">
+              <h2>{entry.title}</h2>
+              <p>{entry.summary}</p>
+              <div class="entry-links">
+                {entry.links.map((link) => <a href={link.href}>{link.label}</a>)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="elog-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// ce qui entre ici</p>
+        <p>
+          Changement de protocole, ajout d’un niveau de preuve, modification d’une source
+          structurante, nouvelle page de transparence, correction méthodologique ou clarification
+          importante sur les limites d’un contenu.
+        </p>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// ce qui reste dans git</p>
+        <p>
+          Les micro-ajustements de style, corrections typographiques, refactors techniques et
+          détails de build restent traçables dans GitHub, via la page preuves et l’historique
+          du dépôt.
+        </p>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .elog-page { max-width: 64rem; }
+    .elog-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .elog-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .elog-lede {
+      margin-top: 1.15rem;
+      max-width: 48rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.66;
+      color: var(--color-paper);
+    }
+    .elog-section { margin-top: 3rem; }
+    .kind-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .kind-strip span,
+    .entry-meta,
+    .entry-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .kind-strip span {
+      border: 1px solid color-mix(in srgb, var(--color-signal) 38%, var(--color-line));
+      border-radius: 999px;
+      padding: 0.28rem 0.55rem;
+      color: var(--color-signal);
+      background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+    }
+    .timeline {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+    .timeline-entry,
+    .note-block {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    }
+    .timeline-entry {
+      display: grid;
+      grid-template-columns: minmax(8rem, 0.28fr) minmax(0, 1fr);
+      overflow: hidden;
+    }
+    .entry-meta {
+      display: grid;
+      align-content: start;
+      gap: 0.35rem;
+      border-right: 1px solid var(--color-line);
+      padding: 1rem;
+      color: var(--color-muted);
+    }
+    .entry-meta time { color: var(--color-signal); }
+    .entry-body {
+      padding: 1rem;
+    }
+    .entry-body h2 {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+    .entry-body p,
+    .note-block p:not(.mono-label) {
+      margin-top: 0.55rem;
+      color: var(--color-muted);
+      line-height: 1.62;
+    }
+    .entry-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+    .entry-links a {
+      border-bottom: 1px solid color-mix(in srgb, var(--color-signal) 65%, transparent);
+      color: var(--color-signal);
+      text-decoration: none;
+    }
+    .entry-links a:hover { color: var(--color-bright); }
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 760px) {
+      .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .note-block {
+      padding: 1rem;
+    }
+    .note-block p:not(.mono-label) {
+      margin-bottom: 0;
+      font-family: var(--font-read);
+      color: var(--color-paper);
+    }
+    @media (max-width: 680px) {
+      .timeline-entry { grid-template-columns: 1fr; }
+      .entry-meta {
+        border-right: 0;
+        border-bottom: 1px solid var(--color-line);
+      }
+    }
+  </style>
+</BaseLayout>

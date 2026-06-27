@@ -4,6 +4,7 @@ import { topics, postMatchesTopic } from '../../../config/topics.ts';
 import { methodologyPages } from '../../../config/methodology.ts';
 import { glossaryEntries, glossarySections } from '../../../config/glossary.ts';
 import { primaryInstitutions } from '../../../config/primary-sources.ts';
+import { editorialChangelog, editorialProtocol } from '../../../config/editorial.ts';
 import { buildArticleEvidence } from '../../../lib/article-evidence.ts';
 
 /**
@@ -106,6 +107,21 @@ export const GET: APIRoute = async () => {
     limits: source.limits,
   }));
 
+  const editorial = {
+    protocol: {
+      url: `${SITE}/protocole-editorial/`,
+      updated: editorialProtocol.updated,
+      promise: editorialProtocol.promise,
+      principles: editorialProtocol.principles,
+      steps: editorialProtocol.steps,
+      evidenceLevels: editorialProtocol.evidenceLevels,
+    },
+    changelog: editorialChangelog.map((entry) => ({
+      ...entry,
+      url: `${SITE}/changelog-editorial/`,
+    })),
+  };
+
   const payload = {
     schema: 'https://l0g.fr/api/',
     version: '1',
@@ -117,12 +133,14 @@ export const GET: APIRoute = async () => {
       methodologies: methodologies.length,
       glossary: glossary.length,
       primarySources: primarySources.length,
+      editorialChangelog: editorial.changelog.length,
     },
     topics: topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb })),
     glossaryCategories: glossarySections.map((s) => ({ slug: s.slug, title: s.titre, count: s.entries.length })),
     articles,
     guides,
     methodologies,
+    editorial,
     primarySources,
     glossary,
     license: 'CC BY 4.0',

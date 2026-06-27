@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
+import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 
 /**
  * /llms-full.txt — corpus integral pour agents IA (convention llmstxt.org).
@@ -82,6 +83,30 @@ export const GET: APIRoute = async () => {
   out.push(
     "Page de tracabilite publique : derniers commits Git, artefacts publies, security.txt, lockfile, configuration Apache durcie, fraicheur des snapshots et liens de verification vers GitHub."
   );
+  out.push(SEP);
+  out.push('PROTOCOLE EDITORIAL : Sources, verification, preuve, correction');
+  out.push(`URL : ${SITE}/protocole-editorial/`);
+  out.push('-'.repeat(76));
+  out.push(editorialProtocol.promise);
+  out.push('');
+  out.push('Principes :');
+  for (const principle of editorialProtocol.principles) {
+    out.push(`- ${principle.title} : ${principle.text}`);
+  }
+  out.push('');
+  out.push('Niveaux de preuve :');
+  for (const level of editorialProtocol.evidenceLevels) {
+    out.push(`- ${level.rank} · ${level.label} : ${level.description}`);
+  }
+  out.push(SEP);
+  out.push('CHANGELOG EDITORIAL : Changements structurants');
+  out.push(`URL : ${SITE}/changelog-editorial/`);
+  out.push('-'.repeat(76));
+  for (const entry of editorialChangelog) {
+    out.push(`${entry.date} · ${entry.kind} · ${entry.title}`);
+    out.push(entry.summary);
+    out.push('');
+  }
   out.push(SEP);
   out.push('SOURCES PRIMAIRES : Institutions et limites');
   out.push(`URL : ${SITE}/sources/`);

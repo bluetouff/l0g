@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const latestChanges = editorialChangelog.slice(0, 4);
+
+const trustItems = [
+  { label: 'sources primaires', href: '/sources/' },
+  { label: 'preuves', href: '/preuves/' },
+  { label: 'données', href: '/donnees/' },
+  { label: 'changelog éditorial', href: '/changelog-editorial/' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  '@id': `${site}/protocole-editorial/#protocol`,
+  name: 'Protocole éditorial l0g',
+  description:
+    'Protocole éditorial de l0g.fr : sources, vérification, rédaction, niveaux de preuve, corrections et limites de lecture.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  dateModified: editorialProtocol.updated,
+  publisher: { '@id': `${site}/#org` },
+  url: `${site}/protocole-editorial/`,
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Protocole éditorial"
+  description="Protocole éditorial l0g : sources, vérification, rédaction, niveaux de preuve, corrections et limites de lecture."
+  ogImage="/og-protocole-editorial.png"
+  ogImageAlt="Protocole éditorial l0g : sources, vérification, preuve et correction"
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="protocol-page rise" data-pagefind-body>
+    <section class="protocol-hero">
+      <p class="mono-label glow">// protocole éditorial</p>
+      <h1 class="protocol-title font-display glow">Comment l0g transforme une source en analyse lisible.</h1>
+      <p class="protocol-lede">
+        Le protocole éditorial décrit la chaîne de travail attendue pour publier une analyse :
+        repérer la source, vérifier les données, séparer les faits des hypothèses, exposer les
+        limites et corriger publiquement ce qui doit l’être.
+      </p>
+      <TrustBar items={trustItems} />
+      <p class="protocol-updated mono-label">
+        protocole mis à jour : <time datetime={editorialProtocol.updated}>{editorialProtocol.updated}</time>
+      </p>
+    </section>
+
+    <section class="protocol-section">
+      <p class="mono-label glow">// promesse</p>
+      <div class="promise-box">
+        <p>{editorialProtocol.promise}</p>
+      </div>
+    </section>
+
+    <section class="protocol-section">
+      <p class="mono-label glow">// principes</p>
+      <div class="principle-grid">
+        {editorialProtocol.principles.map((principle, index) => (
+          <article class="principle-card">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h2>{principle.title}</h2>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="protocol-section">
+      <p class="mono-label glow">// chaîne de publication</p>
+      <div class="step-list">
+        {editorialProtocol.steps.map((step, index) => (
+          <article class="step-row">
+            <div class="step-index">{String(index + 1).padStart(2, '0')}</div>
+            <div>
+              <h2>{step.title}</h2>
+              <ul>
+                {step.checks.map((check) => <li>{check}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="protocol-section">
+      <p class="mono-label glow">// niveaux de preuve</p>
+      <div class="evidence-grid">
+        {editorialProtocol.evidenceLevels.map((level) => (
+          <article class="evidence-card">
+            <span>{level.rank}</span>
+            <h2>{level.label}</h2>
+            <p>{level.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="protocol-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// corrections</p>
+        <p>
+          Une correction éditoriale substantielle doit être visible : changement de source,
+          modification d’un seuil, révision d’une interprétation ou ajout d’une limite importante.
+          Les corrections structurantes entrent dans le changelog éditorial.
+        </p>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// limites</p>
+        <p>
+          l0g ne publie pas de conseil en investissement. Les analyses documentent un état
+          de lecture à une date donnée ; les sources publiques peuvent être révisées, retardées
+          ou incomplètes.
+        </p>
+      </div>
+    </section>
+
+    <section class="protocol-section">
+      <p class="mono-label glow">// derniers changements éditoriaux</p>
+      <div class="change-list">
+        {latestChanges.map((entry) => (
+          <a class="change-row" href="/changelog-editorial/">
+            <span>{entry.date}</span>
+            <strong>{entry.title}</strong>
+            <em>{entry.kind}</em>
+          </a>
+        ))}
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .protocol-page { max-width: 64rem; }
+    .protocol-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .protocol-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .protocol-lede {
+      margin-top: 1.15rem;
+      max-width: 48rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.66;
+      color: var(--color-paper);
+    }
+    .protocol-updated {
+      margin-top: 1rem;
+      color: var(--color-muted);
+    }
+    .protocol-section { margin-top: 3rem; }
+    .promise-box,
+    .principle-card,
+    .step-row,
+    .evidence-card,
+    .note-block,
+    .change-list {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    }
+    .promise-box {
+      margin-top: 1rem;
+      padding: 1.1rem;
+      border-left: 2px solid var(--color-signal);
+    }
+    .promise-box p,
+    .note-block p:not(.mono-label) {
+      margin: 0;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      line-height: 1.68;
+    }
+    .principle-grid,
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 760px) {
+      .principle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .evidence-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    }
+    .principle-card,
+    .evidence-card,
+    .note-block {
+      padding: 1rem;
+    }
+    .principle-card span,
+    .evidence-card span,
+    .change-row span,
+    .change-row em {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .principle-card h2,
+    .evidence-card h2,
+    .step-row h2 {
+      margin-top: 0.45rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+    .principle-card p,
+    .evidence-card p {
+      margin-top: 0.55rem;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.58;
+    }
+    .step-list {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.9rem;
+      padding: 1rem;
+    }
+    .step-index {
+      width: 2.1rem;
+      height: 2.1rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--color-signal) 42%, transparent);
+      border-radius: 999px;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+    .step-row ul {
+      margin: 0.65rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--color-muted);
+      line-height: 1.58;
+    }
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 760px) {
+      .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .change-list {
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+    .change-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 0.75rem;
+      align-items: center;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.75rem 0.85rem;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .change-row:last-child { border-bottom: 0; }
+    .change-row:hover { background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
+    .change-row strong {
+      color: var(--color-paper);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .change-row em { color: var(--color-muted); }
+    @media (max-width: 640px) {
+      .change-row { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+      .evidence-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

@@ -4,6 +4,7 @@ import { topics } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
+import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 
 /**
  * /llms.txt — carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -57,6 +58,25 @@ export const GET: APIRoute = async () => {
   lines.push(
     `- [Preuves & changelog](${SITE}/preuves/): derniers commits, artefacts publiés, surfaces sécurité et liens de vérification.`
   );
+  lines.push(
+    `- [Protocole éditorial](${SITE}/protocole-editorial/): chaîne source, vérification, rédaction, publication, niveaux de preuve et corrections.`
+  );
+  lines.push(
+    `- [Changelog éditorial](${SITE}/changelog-editorial/): journal des changements de protocole, sources, données, méthode et traçabilité.`
+  );
+  lines.push('');
+
+  lines.push('## Protocole editorial');
+  lines.push(`- [Protocole éditorial](${SITE}/protocole-editorial/): ${editorialProtocol.promise}`);
+  for (const principle of editorialProtocol.principles) {
+    lines.push(`- ${principle.title}: ${principle.text}`);
+  }
+  lines.push('');
+
+  lines.push('## Changelog editorial');
+  for (const entry of editorialChangelog) {
+    lines.push(`- ${entry.date} · ${entry.kind} · [${entry.title}](${SITE}/changelog-editorial/): ${entry.summary}`);
+  }
   lines.push('');
 
   lines.push('## Guides de reference');

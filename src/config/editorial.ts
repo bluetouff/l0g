@@ -1,0 +1,191 @@
+export type EditorialPrinciple = {
+  id: string;
+  title: string;
+  text: string;
+};
+
+export type EditorialStep = {
+  id: string;
+  title: string;
+  checks: string[];
+};
+
+export type EditorialEvidenceLevel = {
+  label: string;
+  rank: string;
+  description: string;
+};
+
+export type EditorialChangelogEntry = {
+  date: string;
+  title: string;
+  kind: 'protocole' | 'traçabilité' | 'sources' | 'données' | 'sécurité' | 'méthode';
+  summary: string;
+  links: Array<{ label: string; href: string }>;
+};
+
+export const editorialProtocol = {
+  updated: '2026-06-27',
+  promise:
+    "Séparer les faits, les sources, les hypothèses et les conclusions afin que chaque analyse l0g puisse être relue, contestée et corrigée.",
+  principles: [
+    {
+      id: 'source-first',
+      title: 'Source avant récit',
+      text:
+        "Une source primaire ou réglementaire passe avant une synthèse de marché quand elle existe. Les sources secondaires servent à contextualiser, pas à remplacer l'archive d'origine.",
+    },
+    {
+      id: 'method-visible',
+      title: 'Méthode visible',
+      text:
+        'Les dashboards, scores, seuils et hypothèses doivent pointer vers une fiche méthodologique ou un bloc de preuve lisible.',
+    },
+    {
+      id: 'uncertainty-explicit',
+      title: 'Incertitude explicite',
+      text:
+        'Les scénarios, estimations et signaux faibles sont signalés comme tels. Une projection ne doit pas être présentée comme un fait observé.',
+    },
+    {
+      id: 'correction-public',
+      title: 'Correction publique',
+      text:
+        'Les changements importants de protocole, de sources ou de lecture éditoriale doivent être inscrits dans le changelog éditorial.',
+    },
+  ] satisfies EditorialPrinciple[],
+  steps: [
+    {
+      id: 'collecte',
+      title: 'Collecte',
+      checks: [
+        'Identifier la source primaire disponible.',
+        'Noter la date de publication et la fenêtre de fraîcheur utile.',
+        'Isoler les agrégateurs et commentaires comme sources secondaires.',
+      ],
+    },
+    {
+      id: 'verification',
+      title: 'Vérification',
+      checks: [
+        'Contrôler les chiffres critiques sur la source d’origine.',
+        'Repérer les révisions, délais de publication et ruptures de série.',
+        'Comparer le narratif public aux données observables.',
+      ],
+    },
+    {
+      id: 'redaction',
+      title: 'Rédaction',
+      checks: [
+        'Distinguer fait, interprétation, hypothèse et scénario.',
+        'Ajouter les citations internes et les badges de niveau de preuve.',
+        'Préserver les liens vers méthodologie, données et sources primaires.',
+      ],
+    },
+    {
+      id: 'publication',
+      title: 'Publication',
+      checks: [
+        'Vérifier build statique, métadonnées sociales et accessibilité de base.',
+        'Exposer les artefacts utiles dans le catalogue machine.',
+        'Documenter les changements éditoriaux structurants.',
+      ],
+    },
+  ] satisfies EditorialStep[],
+  evidenceLevels: [
+    {
+      label: 'Source primaire',
+      rank: 'niveau 1',
+      description: 'Institution, régulateur, dépôt officiel, base publique ou document légal directement cité.',
+    },
+    {
+      label: 'Donnée publique',
+      rank: 'niveau 2',
+      description: 'Snapshot, API, série statistique ou fichier public dont la date utile est lisible.',
+    },
+    {
+      label: 'Source secondaire',
+      rank: 'niveau 3',
+      description: 'Média, recherche, commentaire ou analyse externe utilisé pour situer un débat.',
+    },
+    {
+      label: 'Hypothèse / scénario',
+      rank: 'niveau 4',
+      description: 'Projection, lecture conditionnelle, estimation ou risque à surveiller.',
+    },
+    {
+      label: 'Contexte l0g',
+      rank: 'niveau 5',
+      description: 'Lien interne vers méthode, glossaire, données, preuve, statut ou historique l0g.',
+    },
+  ] satisfies EditorialEvidenceLevel[],
+};
+
+export const editorialChangelog: EditorialChangelogEntry[] = [
+  {
+    date: '2026-06-27',
+    title: 'Badges de niveau de preuve',
+    kind: 'traçabilité',
+    summary:
+      'Les articles affichent désormais les niveaux de preuve détectés : source primaire, donnée publique, source secondaire, hypothèse ou contexte l0g.',
+    links: [
+      { label: 'preuves', href: '/preuves/' },
+      { label: 'catalogue', href: '/api/v1/catalog.json' },
+    ],
+  },
+  {
+    date: '2026-06-27',
+    title: 'Traçabilité des articles v2',
+    kind: 'traçabilité',
+    summary:
+      'Ajout d’un bloc de preuves par article : sources primaires détectées, citations internes, statistiques et liens de vérification.',
+    links: [
+      { label: 'articles', href: '/' },
+      { label: 'sources primaires', href: '/sources/' },
+    ],
+  },
+  {
+    date: '2026-06-27',
+    title: 'Pages sources primaires par institution',
+    kind: 'sources',
+    summary:
+      'Chaque grande institution suivie par l0g dispose d’une page dédiée : rôle, jeux de données, cadence, limites et lien officiel.',
+    links: [
+      { label: 'sources', href: '/sources/' },
+      { label: 'sites de référence', href: '/sites-reference/' },
+    ],
+  },
+  {
+    date: '2026-06-27',
+    title: 'Données, citations internes et surfaces sécurité',
+    kind: 'données',
+    summary:
+      'Formalisation de l’inventaire des données publiques, des citations internes, du security.txt et de la CSP déclarée côté déploiement.',
+    links: [
+      { label: 'données', href: '/donnees/' },
+      { label: 'statut', href: '/status/' },
+    ],
+  },
+  {
+    date: '2026-06-27',
+    title: 'Méthodologies dashboards v2',
+    kind: 'méthode',
+    summary:
+      'Les dashboards ont reçu des fiches fonctionnelles pour expliquer leur lecture, leurs signaux, leurs limites et leurs sources.',
+    links: [
+      { label: 'méthodologie', href: '/methodologie/' },
+      { label: 'dashboards', href: '/dashboards/' },
+    ],
+  },
+  {
+    date: '2026-06-27',
+    title: 'Protocole éditorial public',
+    kind: 'protocole',
+    summary:
+      'Publication du protocole éditorial : chaîne source → vérification → rédaction → publication, niveaux de preuve et politique de correction.',
+    links: [
+      { label: 'protocole', href: '/protocole-editorial/' },
+      { label: 'changelog éditorial', href: '/changelog-editorial/' },
+    ],
+  },
+];
