@@ -7,6 +7,9 @@ const ENDPOINT = `${SITE}/api/mcp`;
 const tools = [
   ['get_agent_manifest', 'aucun', "Manifeste Agent Surface : capacités, endpoints, règles d'usage, politiques de preuve et compteurs."],
   ['get_risk_indices', 'aucun', 'Signaux de risque normalisés par instrument (US Macro, EU Macro, Yen Carry, Énergie) et synthèse de confluence 13F.'],
+  ['get_signal_history', 'key, limit', 'Historique des franchissements de niveau, état courant des signaux et confluence 13FLOW.'],
+  ['get_openapi_schema', 'mode, path', 'Contrat OpenAPI résumé, ciblé par endpoint ou complet pour générer un client.'],
+  ['get_ndjson_feed', 'feed, recordType, limit', 'Flux NDJSON allowlistés : catalogue, claims, evidence graph et changefeed.'],
   ['get_freshness', 'limit', 'Fraîcheur du corpus : derniers contenus, compteurs, endpoints et politique de fraîcheur.'],
   ['search_content', 'query, limit', 'Recherche dans les analyses et les guides par titre, description, thèmes et sujets.'],
   ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables et datées.'],
@@ -26,7 +29,7 @@ const appLd = {
   '@id': `${SITE}/mcp/#mcp`,
   name: 'Serveur MCP l0g',
   description:
-    "Serveur Model Context Protocol en lecture seule pour l0g.fr : Agent Surface, claims, evidence graph, sources, indices de risque, analyses, guides et sujets, via le transport Streamable HTTP.",
+    "Serveur Model Context Protocol en lecture seule pour l0g.fr : Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides, via le transport Streamable HTTP.",
   documentation: `${SITE}/mcp`,
   url: ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
@@ -37,7 +40,7 @@ const appLd = {
 
 <BaseLayout
   title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : Agent Surface, claims, evidence graph, sources, indices de risque, analyses, guides et sujets exposés en lecture seule aux agents IA via Streamable HTTP."
+  description="Serveur Model Context Protocol de l0g.fr : Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides exposés en lecture seule aux agents IA via Streamable HTTP."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
@@ -49,9 +52,10 @@ const appLd = {
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
       l0g expose ses données aux agents IA via le Model Context Protocol, en lecture seule.
-      Un agent peut interroger l'Agent Surface, les claims, l'evidence graph, les sources,
-      la fraîcheur, les indices de risque ou récupérer le texte complet d'un article, sans scraper
-      le site. Aucune clé, aucune authentification, aucun pistage.
+      Un agent peut interroger l'Agent Surface, le contrat OpenAPI, les flux NDJSON,
+      les claims, l'evidence graph, les sources, la fraîcheur, l'intégrité, le changefeed,
+      l'historique des signaux ou récupérer le texte complet d'un article, sans scraper le site.
+      Aucune clé, aucune authentification, aucun pistage.
     </p>
   </section>
 
@@ -78,7 +82,7 @@ const appLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// ce que nous avons construit</h2>
       <p class="mt-3 max-w-2xl text-paper">
-        Cinq couches d'accès machine, de la plus simple à la plus riche, toutes générées
+        Six couches d'accès machine, de la plus simple à la plus riche, toutes générées
         à partir des mêmes contenus et des mêmes données vérifiées :
       </p>
       <ul class="mt-4 space-y-2 text-paper">
@@ -93,6 +97,11 @@ const appLd = {
         <li>
           une <a class="link-term text-signal" href="/donnees/agents/">Agent Surface</a> avec
           claims, evidence graph, intégrité, changefeed et flux NDJSON ;
+        </li>
+        <li>
+          un contrat <a class="link-term text-signal" href="/openapi.json">OpenAPI</a> et des
+          flux <a class="link-term text-signal" href="/api/v1/catalog.ndjson">NDJSON</a> exposés
+          directement comme tools MCP ;
         </li>
         <li>
           deux fichiers <a class="link-term text-signal" href="/llms.txt">llms.txt</a> et

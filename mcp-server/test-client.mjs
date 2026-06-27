@@ -8,7 +8,18 @@ await client.connect(transport);
 
 const { tools } = await client.listTools();
 console.log('TOOLS:', tools.map((t) => t.name).join(', '));
-for (const required of ['get_agent_manifest', 'get_claims', 'get_evidence_graph', 'list_sources', 'get_freshness', 'get_integrity', 'get_changefeed']) {
+for (const required of [
+  'get_agent_manifest',
+  'get_claims',
+  'get_evidence_graph',
+  'list_sources',
+  'get_freshness',
+  'get_integrity',
+  'get_changefeed',
+  'get_openapi_schema',
+  'get_ndjson_feed',
+  'get_signal_history',
+]) {
   if (!tools.some((tool) => tool.name === required)) throw new Error(`tool manquant: ${required}`);
 }
 
@@ -22,8 +33,17 @@ async function call(name, args) {
 const risk = await call('get_risk_indices');
 console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join(','), '| snapshot:', risk.snapshot);
 
+const signalHistory = await call('get_signal_history', { key: 'yen', limit: 5 });
+console.log('get_signal_history(yen) -> events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.yen));
+
 const manifest = await call('get_agent_manifest');
 console.log('get_agent_manifest -> version:', manifest.version, '| endpoints:', Object.keys(manifest.endpoints || {}).length);
+
+const openapi = await call('get_openapi_schema', { mode: 'path', path: '/api/v1/claims.json' });
+console.log('get_openapi_schema(path) -> paths:', openapi.paths?.length, '| schemas:', openapi.schemas?.length);
+
+const ndjson = await call('get_ndjson_feed', { feed: 'claims', recordType: 'claim', limit: 3 });
+console.log('get_ndjson_feed(claims) ->', ndjson.count, '| path:', ndjson.path);
 
 const search = await call('search_content', { query: 'stablecoins', limit: 3 });
 console.log('search_content(stablecoins) ->', search.count, 'résultats; #1:', search.results?.[0]?.title);

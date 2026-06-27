@@ -1,7 +1,7 @@
 # Serveur MCP de l0g.fr
 
 Serveur **Model Context Protocol** en lecture seule, qui expose les données de l0g.fr
-(Agent Surface, evidence graph, claims, sources, indices de risque, analyses, guides) à des agents IA via le
+(Agent Surface, OpenAPI, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via le
 transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié).
 
 Endpoint public visé : `https://l0g.fr/api/mcp`
@@ -17,14 +17,18 @@ agent / client MCP
                                                      | lit (lecture seule)
                                                      v
                           /var/www/html/l0g/current/agents.json
-                          /var/www/html/l0g/current/api/v1/*.json
+                          /var/www/html/l0g/current/openapi.json
+                          /var/www/html/l0g/current/api/v1/*.json|*.ndjson
+                          /var/www/html/l0g/current/risk-events.json
+                          /var/www/html/l0g/current/confluence.json
                           /var/www/html/l0g/current/posts|guides/<slug>/index.html
 ```
 
 - Le service Node **n'écoute qu'en 127.0.0.1**, jamais exposé directement.
 - Les données proviennent du **site déjà déployé** : `agents.json`, `catalog.json`,
   `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
-  `changes.json` et `risk.json`. Le service ne fait que **lire** ces fichiers, avec un cache TTL de 60 s.
+  `changes.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `risk-events.json`
+  et `confluence.json`. Le service ne fait que **lire** ces fichiers, avec un cache TTL de 60 s.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
   transport neufs par requête.
 
@@ -34,6 +38,9 @@ agent / client MCP
 |------|-----------|---------|
 | `get_agent_manifest` | aucun | capacités, endpoints, règles d'usage et politiques de preuve |
 | `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie) + résumé confluence |
+| `get_signal_history` | `key?`, `limit?` | historique des franchissements de niveau + état courant + confluence |
+| `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |
+| `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes |
 | `get_freshness` | `limit?` | derniers contenus, compteurs et politique de fraîcheur |
 | `search_content` | `query`, `limit?` | analyses et guides correspondants |
 | `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables/datées |

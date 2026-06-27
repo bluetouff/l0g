@@ -36,6 +36,13 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
+const MCP_VERSION = '1.3.0';
+const NDJSON_FEEDS = {
+  catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
+  claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
+  evidenceGraph: { path: 'api/v1/evidence-graph.ndjson', role: 'evidence graph en nœuds et arêtes ligne à ligne' },
+  changes: { path: 'api/v1/changes.ndjson', role: 'changefeed machine incrémental' },
+};
 
 // --- limiteur de débit par IP (fenêtre glissante simple, en mémoire) ---
 const buckets = new Map();
@@ -63,14 +70,32 @@ setInterval(() => {
 }, 5 * RATE_WIN).unref();
 
 // --- cache des données du site ---
-let cache = { at: 0, agent: null, catalog: null, claims: null, sources: null, freshness: null, integrity: null, changes: null, evidenceGraph: null, risk: null };
+let cache = {
+  at: 0,
+  agent: null,
+  openapi: null,
+  catalog: null,
+  claims: null,
+  sources: null,
+  freshness: null,
+  integrity: null,
+  changes: null,
+  evidenceGraph: null,
+  risk: null,
+  riskEvents: null,
+  confluence: null,
+};
 async function readJson(rel) {
   return JSON.parse(await readFile(join(DATA_DIR, rel), 'utf-8'));
+}
+async function readText(rel) {
+  return readFile(join(DATA_DIR, rel), 'utf-8');
 }
 async function loadData() {
   const now = Date.now();
   if (cache.catalog && now - cache.at < CACHE_TTL) return cache;
   const agent = await readJson('agents.json');
+  const openapi = await readJson('openapi.json');
   const catalog = await readJson('api/v1/catalog.json');
   const claims = await readJson('api/v1/claims.json');
   const sources = await readJson('api/v1/sources.json');
@@ -82,7 +107,15 @@ async function loadData() {
   try {
     risk = await readJson('api/v1/risk.json');
   } catch { /* risk optionnel */ }
-  cache = { at: now, agent, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk };
+  let riskEvents = null;
+  try {
+    riskEvents = await readJson('risk-events.json');
+  } catch { /* historique optionnel */ }
+  let confluence = null;
+  try {
+    confluence = await readJson('confluence.json');
+  } catch { /* confluence optionnelle */ }
+  cache = { at: now, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence };
   return cache;
 }
 
@@ -132,11 +165,49 @@ function compactSnapshot(snapshot) {
     canonicalBytes: snapshot.canonicalBytes,
   };
 }
+function summarizeOpenapi(openapi, path) {
+  const paths = openapi.paths || {};
+  const selectedPaths = path ? Object.fromEntries(Object.entries(paths).filter(([key]) => key === path)) : paths;
+  return {
+    openapi: openapi.openapi,
+    info: openapi.info,
+    servers: openapi.servers || [],
+    pathCount: Object.keys(paths).length,
+    paths: Object.entries(selectedPaths).map(([key, value]) => ({
+      path: key,
+      methods: Object.keys(value || {}).map((method) => method.toUpperCase()),
+      summary: Object.values(value || {})[0]?.summary || Object.values(value || {})[0]?.description || null,
+    })),
+    schemas: Object.keys(openapi.components?.schemas || {}),
+  };
+}
+async function readNdjsonFeed(feed, limit, recordType) {
+  const spec = NDJSON_FEEDS[feed];
+  const raw = await readText(spec.path);
+  const records = [];
+  let total = 0;
+  let matches = 0;
+  for (const line of raw.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    total++;
+    let parsed;
+    try {
+      parsed = JSON.parse(trimmed);
+    } catch {
+      parsed = { parseError: true, raw: trimmed.slice(0, 500) };
+    }
+    if (recordType && parsed.recordType !== recordType) continue;
+    matches++;
+    if (records.length < limit) records.push(parsed);
+  }
+  return { spec, totalLines: total, totalMatches: matches, records };
+}
 
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
-  const server = new McpServer({ name: 'l0g.fr', version: '1.2.0' });
-  const { agent, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk } = data;
+  const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
+  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence } = data;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
   const topicsList = catalog.topics || [];
@@ -182,6 +253,92 @@ function buildServer(data) {
         indices: risk.indices ?? {},
         confluence: risk.confluence ?? null,
         source: SITE + '/api/',
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_signal_history',
+    {
+      description:
+        "Renvoie l'historique des changements de niveau des signaux l0g, l'état courant des scores et la confluence 13FLOW. " +
+        "À utiliser pour distinguer niveau courant, franchissement de seuil et signal de marché historisé.",
+      inputSchema: {
+        key: z.enum(['us', 'eu', 'yen', 'energie']).optional().describe('Signal optionnel : us, eu, yen ou energie.'),
+        limit: z.number().int().min(1).max(50).default(20).describe("Nombre maximum d'événements historiques."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ key, limit }) => {
+      const current = risk?.indices || {};
+      let events = Array.isArray(riskEvents?.events) ? riskEvents.events.slice() : [];
+      if (key) events = events.filter((event) => event.key === key);
+      events.sort((a, b) => String(b.ts).localeCompare(String(a.ts)));
+      return reply({
+        updated: riskEvents?.updated || risk?.snapshot || risk?.generated || null,
+        filters: { key: key || null },
+        current: key ? { [key]: current[key] ?? null } : current,
+        events: events.slice(0, limit),
+        confluence: {
+          updated: confluence?.updated || risk?.confluence?.updated || null,
+          items: (confluence?.items || []).slice(0, 20),
+          summary: risk?.confluence || null,
+        },
+        caveat: "Les scores 0-100 sont normalisés par instrument ; l'historique signale surtout les franchissements de niveau.",
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_openapi_schema',
+    {
+      description:
+        "Expose le contrat OpenAPI public de l'Agent Surface l0g. Permet à un agent de découvrir les chemins, méthodes et schémas " +
+        "sans récupérer tout le fichier si un résumé suffit.",
+      inputSchema: {
+        mode: z.enum(['summary', 'path', 'full']).default('summary').describe('summary pour index, path pour un endpoint, full pour le contrat complet.'),
+        path: z.string().optional().describe('Chemin OpenAPI exact, par exemple /api/v1/claims.json, utilisé avec mode=path.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ mode, path }) => {
+      if (mode === 'full') return reply(openapi);
+      if (mode === 'path') {
+        const clean = String(path || '').trim();
+        if (!clean.startsWith('/')) return reply({ error: 'path invalide', note: 'utiliser un chemin exact commençant par /' });
+        const summary = summarizeOpenapi(openapi, clean);
+        if (!summary.paths.length) return reply({ error: 'path inconnu', path: clean, knownPaths: Object.keys(openapi.paths || {}) });
+        return reply(summary);
+      }
+      return reply(summarizeOpenapi(openapi));
+    }
+  );
+
+  server.registerTool(
+    'get_ndjson_feed',
+    {
+      description:
+        "Lit les variantes NDJSON publiques de l'Agent Surface : catalog, claims, evidenceGraph ou changes. " +
+        "Le feed est allowlisté ; aucun chemin arbitraire n'est accepté.",
+      inputSchema: {
+        feed: z.enum(['catalog', 'claims', 'evidenceGraph', 'changes']).describe('Flux NDJSON à lire.'),
+        recordType: z.string().optional().describe('Filtre recordType optionnel, par exemple claim, article, node, edge ou change.'),
+        limit: z.number().int().min(1).max(200).default(50).describe('Nombre maximum de lignes renvoyées.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ feed, recordType, limit }) => {
+      const { spec, totalLines, totalMatches, records } = await readNdjsonFeed(feed, limit, recordType);
+      return reply({
+        feed,
+        path: `/${spec.path}`,
+        role: spec.role,
+        totalLines,
+        totalMatches,
+        count: records.length,
+        truncated: records.length < totalMatches,
+        recordType: recordType || null,
+        records,
       });
     }
   );
