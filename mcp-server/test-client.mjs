@@ -20,7 +20,9 @@ for (const required of [
   'get_ndjson_feed',
   'get_signal_history',
 ]) {
-  if (!tools.some((tool) => tool.name === required)) throw new Error(`tool manquant: ${required}`);
+  const tool = tools.find((item) => item.name === required);
+  if (!tool) throw new Error(`tool manquant: ${required}`);
+  if (!tool.outputSchema) throw new Error(`outputSchema manquant: ${required}`);
 }
 
 const { resources } = await client.listResources();
@@ -58,9 +60,14 @@ await client.unsubscribeResource({ uri: 'l0g://changes/latest' });
 
 async function call(name, args) {
   const r = await client.callTool({ name, arguments: args || {} });
+  if (!r.structuredContent || typeof r.structuredContent !== 'object') {
+    throw new Error(`structuredContent manquant pour ${name}`);
+  }
   const txt = (r.content || []).map((c) => c.text || '').join('');
-  let parsed; try { parsed = JSON.parse(txt); } catch { parsed = txt; }
-  return parsed;
+  if (txt.trim().startsWith('{') || txt.trim().startsWith('[')) {
+    throw new Error(`content.text contient encore du JSON pour ${name}`);
+  }
+  return r.structuredContent;
 }
 
 const risk = await call('get_risk_indices');

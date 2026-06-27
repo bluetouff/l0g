@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.4.0';
+const MCP_VERSION = '1.5.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -132,8 +132,151 @@ function score(item, tokens) {
   }
   return s;
 }
-function reply(payload) {
-  return { content: [{ type: 'text', text: JSON.stringify(payload, null, 2) }] };
+const AnyRecord = z.record(z.string(), z.any());
+const ToolOutput = z.object({ error: z.string().optional() }).passthrough();
+const AgentManifestOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  name: z.string().optional(),
+  description: z.string().optional(),
+  capabilities: z.array(z.string()).optional(),
+  endpoints: AnyRecord.optional(),
+  counts: AnyRecord.optional(),
+  proofPolicy: AnyRecord.optional(),
+}).passthrough();
+const RiskIndicesOutput = ToolOutput.extend({
+  snapshot: z.string().nullable().optional(),
+  generated: z.string().nullable().optional(),
+  indices: AnyRecord.optional(),
+  confluence: z.any().optional(),
+  source: z.string().optional(),
+}).passthrough();
+const SignalHistoryOutput = ToolOutput.extend({
+  updated: z.string().nullable().optional(),
+  filters: AnyRecord.optional(),
+  current: AnyRecord.optional(),
+  events: z.array(z.any()).optional(),
+  confluence: AnyRecord.optional(),
+  caveat: z.string().optional(),
+}).passthrough();
+const OpenapiOutput = ToolOutput.extend({
+  openapi: z.string().optional(),
+  info: AnyRecord.optional(),
+  servers: z.array(z.any()).optional(),
+  pathCount: z.number().optional(),
+  paths: z.any().optional(),
+  schemas: z.array(z.string()).optional(),
+}).passthrough();
+const NdjsonOutput = ToolOutput.extend({
+  feed: z.string().optional(),
+  path: z.string().optional(),
+  role: z.string().optional(),
+  totalLines: z.number().optional(),
+  totalMatches: z.number().optional(),
+  count: z.number().optional(),
+  truncated: z.boolean().optional(),
+  recordType: z.string().nullable().optional(),
+  records: z.array(z.any()).optional(),
+}).passthrough();
+const FreshnessOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  latest: z.array(z.any()).optional(),
+  corpus: AnyRecord.optional(),
+  endpoints: z.array(z.any()).optional(),
+  freshnessPolicy: AnyRecord.optional(),
+}).passthrough();
+const SearchOutput = ToolOutput.extend({
+  query: z.string().optional(),
+  count: z.number().optional(),
+  results: z.array(z.any()).optional(),
+}).passthrough();
+const ClaimsOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  count: z.number().optional(),
+  filters: AnyRecord.optional(),
+  claimKinds: z.array(z.string()).optional(),
+  claims: z.array(z.any()).optional(),
+  policy: AnyRecord.optional(),
+}).passthrough();
+const EvidenceGraphOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  counts: AnyRecord.optional(),
+  returned: AnyRecord.optional(),
+  filters: AnyRecord.optional(),
+  graphPolicy: AnyRecord.optional(),
+  nodes: z.array(z.any()).optional(),
+  edges: z.array(z.any()).optional(),
+}).passthrough();
+const SourcesOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  counts: AnyRecord.optional(),
+  sourcePolicy: AnyRecord.optional(),
+  primarySources: z.array(z.any()).optional(),
+  referenceHosts: z.array(z.any()).optional(),
+}).passthrough();
+const IntegrityOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  algorithm: z.string().optional(),
+  canonicalization: AnyRecord.optional(),
+  count: z.number().optional(),
+  snapshots: z.array(z.any()).optional(),
+  verification: AnyRecord.optional(),
+}).passthrough();
+const ChangefeedOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  count: z.number().optional(),
+  feedPolicy: AnyRecord.optional(),
+  entries: z.array(z.any()).optional(),
+}).passthrough();
+const AnalysisListOutput = ToolOutput.extend({
+  count: z.number().optional(),
+  analyses: z.array(z.any()).optional(),
+}).passthrough();
+const GuideListOutput = ToolOutput.extend({
+  count: z.number().optional(),
+  guides: z.array(z.any()).optional(),
+}).passthrough();
+const TopicOutput = AnalysisListOutput.extend({
+  topic: z.string().optional(),
+  label: z.string().optional(),
+  requested: z.string().optional(),
+  topics: z.array(z.any()).optional(),
+}).passthrough();
+const ArticleOutput = ToolOutput.extend({
+  slug: z.string().optional(),
+  type: z.string().optional(),
+  url: z.string().optional(),
+  title: z.string().optional(),
+  words: z.number().optional(),
+  truncated: z.boolean().optional(),
+  text: z.string().optional(),
+}).passthrough();
+function summarizePayload(payload) {
+  if (payload?.error) return `Erreur : ${payload.error}.`;
+  if (payload?.indices) {
+    const parts = Object.entries(payload.indices)
+      .map(([key, item]) => `${key}: ${item?.value ?? 'n/a'} (${item?.level ?? item?.tone ?? 'n/a'})`);
+    return `Signaux l0g : ${parts.join(', ')}.`;
+  }
+  if (payload?.claims) return `${payload.count ?? payload.claims.length} claim(s) structurée(s) avec références.`;
+  if (payload?.nodes && payload?.edges) return `Sous-graphe de preuve : ${payload.returned?.nodes ?? payload.nodes.length} nœud(s), ${payload.returned?.edges ?? payload.edges.length} arête(s).`;
+  if (payload?.entries) return `${payload.count ?? payload.entries.length} changement(s) dans le changefeed.`;
+  if (payload?.analyses) return `${payload.count ?? payload.analyses.length} analyse(s) trouvée(s).`;
+  if (payload?.guides) return `${payload.count ?? payload.guides.length} guide(s) disponible(s).`;
+  if (payload?.records) return `${payload.count ?? payload.records.length} ligne(s) NDJSON structurée(s).`;
+  if (payload?.latest) return `${payload.latest.length} contenu(s) récent(s), snapshot ${payload.generated ?? 'non daté'}.`;
+  if (payload?.snapshots) return `${payload.count ?? payload.snapshots.length} empreinte(s) d’intégrité.`;
+  if (payload?.text && payload?.title) return `${payload.title} — ${payload.words ?? 0} mots${payload.truncated ? ' (tronqué)' : ''}.`;
+  return 'Réponse structurée disponible dans structuredContent.';
+}
+function reply(payload, text) {
+  return {
+    content: [{ type: 'text', text: text || summarizePayload(payload) }],
+    structuredContent: payload,
+  };
 }
 function compactClaim(claim) {
   return {
@@ -476,6 +619,7 @@ function buildServer(data) {
         "Renvoie le manifeste Agent Surface de l0g.fr : capacités, endpoints, règles d'usage, politiques de preuve et compteurs. " +
         "Point d'entrée recommandé pour découvrir les surfaces machine sans scraper.",
       inputSchema: {},
+      outputSchema: AgentManifestOutput,
       annotations: { readOnlyHint: true },
     },
     async () => reply({
@@ -498,6 +642,7 @@ function buildServer(data) {
         "Indices de risque publiés par l0g.fr (tableaux de bord macro US et zone euro, Yen Carry, Energie) " +
         "à la cadence des snapshots, plus un résumé de la confluence 13F. Pas de temps réel strict, pas un conseil en investissement.",
       inputSchema: {},
+      outputSchema: RiskIndicesOutput,
       annotations: { readOnlyHint: true },
     },
     async () => {
@@ -522,6 +667,7 @@ function buildServer(data) {
         key: z.enum(['us', 'eu', 'yen', 'energie']).optional().describe('Signal optionnel : us, eu, yen ou energie.'),
         limit: z.number().int().min(1).max(50).default(20).describe("Nombre maximum d'événements historiques."),
       },
+      outputSchema: SignalHistoryOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ key, limit }) => {
@@ -554,6 +700,7 @@ function buildServer(data) {
         mode: z.enum(['summary', 'path', 'full']).default('summary').describe('summary pour index, path pour un endpoint, full pour le contrat complet.'),
         path: z.string().optional().describe('Chemin OpenAPI exact, par exemple /api/v1/claims.json, utilisé avec mode=path.'),
       },
+      outputSchema: OpenapiOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ mode, path }) => {
@@ -580,6 +727,7 @@ function buildServer(data) {
         recordType: z.string().optional().describe('Filtre recordType optionnel, par exemple claim, article, node, edge ou change.'),
         limit: z.number().int().min(1).max(200).default(50).describe('Nombre maximum de lignes renvoyées.'),
       },
+      outputSchema: NdjsonOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ feed, recordType, limit }) => {
@@ -607,6 +755,7 @@ function buildServer(data) {
       inputSchema: {
         limit: z.number().int().min(1).max(20).default(10).describe('Nombre de derniers contenus à renvoyer.'),
       },
+      outputSchema: FreshnessOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ limit }) => reply({
@@ -629,6 +778,7 @@ function buildServer(data) {
         query: z.string().describe('Termes de recherche.'),
         limit: z.number().int().min(1).max(10).default(5).describe('Nombre maximum de résultats.'),
       },
+      outputSchema: SearchOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ query, limit }) => {
@@ -663,6 +813,7 @@ function buildServer(data) {
         query: z.string().optional().describe('Filtre texte optionnel dans la claim ou le titre article.'),
         limit: z.number().int().min(1).max(50).default(10).describe('Nombre maximum de claims.'),
       },
+      outputSchema: ClaimsOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ articleSlug, kind, query, limit }) => {
@@ -699,6 +850,7 @@ function buildServer(data) {
         nodeType: z.enum(['article', 'claim', 'reference', 'host', 'primarySource', 'dataset']).optional().describe('Type de nœud optionnel.'),
         limit: z.number().int().min(1).max(200).default(80).describe('Nombre maximum de nœuds renvoyés.'),
       },
+      outputSchema: EvidenceGraphOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ articleSlug, nodeType, limit }) => {
@@ -775,6 +927,7 @@ function buildServer(data) {
         mode: z.enum(['primary', 'hosts', 'both']).default('both').describe('Type de sources à renvoyer.'),
         limit: z.number().int().min(1).max(100).default(30).describe('Nombre maximum de sources ou hôtes.'),
       },
+      outputSchema: SourcesOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ mode, limit }) => reply({
@@ -795,6 +948,7 @@ function buildServer(data) {
       inputSchema: {
         path: z.string().optional().describe('Chemin optionnel, par exemple /api/v1/claims.ndjson.'),
       },
+      outputSchema: IntegrityOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ path }) => {
@@ -822,6 +976,7 @@ function buildServer(data) {
         contentType: z.enum(['article', 'guide', 'policy']).optional().describe('Type de contenu optionnel.'),
         limit: z.number().int().min(1).max(100).default(20).describe("Nombre maximum d'entrées."),
       },
+      outputSchema: ChangefeedOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ contentType, limit }) => {
@@ -847,6 +1002,7 @@ function buildServer(data) {
       inputSchema: {
         limit: z.number().int().min(1).max(20).default(5).describe("Nombre d'analyses à renvoyer."),
       },
+      outputSchema: AnalysisListOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ limit }) => {
@@ -864,6 +1020,7 @@ function buildServer(data) {
         "Liste les guides de référence de l0g.fr (pages piliers durables : 13F, Form 4, GENIUS Act, OFAC, MiCA...), " +
         "avec titre, URL, description et résumé définitionnel.",
       inputSchema: {},
+      outputSchema: GuideListOutput,
       annotations: { readOnlyHint: true },
     },
     async () => {
@@ -884,6 +1041,7 @@ function buildServer(data) {
         topic: z.string().describe('Slug ou libellé du sujet.'),
         limit: z.number().int().min(1).max(20).default(10).describe("Nombre maximum d'analyses."),
       },
+      outputSchema: TopicOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ topic, limit }) => {
@@ -909,6 +1067,7 @@ function buildServer(data) {
       inputSchema: {
         slug: z.string().describe("Slug de l'article ou du guide."),
       },
+      outputSchema: ArticleOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ slug }) => {

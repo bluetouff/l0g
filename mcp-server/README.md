@@ -67,6 +67,14 @@ push live nécessiteront une variante sessionnée. Pour surveiller le corpus auj
 
 ## Tools exposés (tous `readOnlyHint`)
 
+Tous les tools renvoient désormais :
+
+- un résumé humain court dans `content`;
+- les données exploitables dans `structuredContent`;
+- un `outputSchema` déclaré et validé par le SDK.
+
+Le JSON n'est donc plus caché dans un bloc texte à reparser.
+
 | Tool | Arguments | Renvoie |
 |------|-----------|---------|
 | `get_agent_manifest` | aucun | capacités, endpoints, règles d'usage et politiques de preuve |
