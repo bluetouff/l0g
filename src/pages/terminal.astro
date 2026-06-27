@@ -8,6 +8,7 @@ const commands = [
   'open dashboards',
   'open donnees',
   'open preuves',
+  'open sources-primaires',
   'open methodologie',
   'open api',
   'curl risk',
@@ -120,6 +121,7 @@ const jsonLd = {
         preuves: '/preuves/',
         recherche: '/recherche/',
         sources: '/sites-reference/',
+        'sources-primaires': '/sources/',
         status: '/status/',
       };
 
@@ -128,7 +130,7 @@ const jsonLd = {
           'help             affiche les commandes',
           'ls               liste les espaces l0g',
           'cat manifeste    résume le pacte de lecture',
-          'open <cible>     ouvre manifeste, dashboards, donnees, preuves, methodologie, api, sources, status',
+          'open <cible>     ouvre manifeste, dashboards, donnees, preuves, methodologie, api, sources, sources-primaires, status',
           'curl risk        pointe vers /api/v1/risk.json',
           'whoami           identifie le projet',
           'clear            nettoie le terminal',
@@ -142,6 +144,7 @@ const jsonLd = {
           '<a href="/guides/">guides</a>          pages de référence',
           '<a href="/api/">api</a>             endpoints JSON, XML, catalogue',
           '<a href="/sites-reference/">sources</a>         bibliothèque de sources',
+          '<a href="/sources/">sources-primaires</a> institutions et limites',
         ],
         'cat manifeste': [
           'sources primaires avant agrégateurs',

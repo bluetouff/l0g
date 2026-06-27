@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { primaryInstitutions, primarySourceUrl } from '../config/primary-sources.ts';
 
 const categories = [
   {
@@ -310,10 +311,35 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
     </div>
 
     <nav class="cat-nav" aria-label="Catégories">
+      <a class="cat-chip primary-source-chip" href="/sources/" style="--cat: var(--color-signal)">Sources primaires par institution</a>
       {categories.map((c) => (
         <a class="cat-chip" href={`#${slug(c.titre)}`} style={`--cat: ${c.accent}`}>{c.titre}</a>
       ))}
     </nav>
+  </section>
+
+  <section class="primary-source-section">
+    <div class="primary-source-head">
+      <div>
+        <p class="mono-label glow" style="color: var(--color-signal)">// sources primaires</p>
+        <h2 class="primary-source-title font-display glow">Pages institutionnelles</h2>
+      </div>
+      <a href="/sources/" class="primary-source-all">tout voir</a>
+    </div>
+    <p class="primary-source-lede">
+      La bibliothèque ci-dessous reste volontairement large. Pour les institutions qui
+      ancrent directement les calculs et les analyses, l0g expose maintenant une fiche
+      dédiée : quoi lire, cadence, limites et méthode de vérification.
+    </p>
+    <div class="primary-source-grid">
+      {primaryInstitutions.slice(0, 8).map((source) => (
+        <a class="primary-source-card" href={primarySourceUrl(source.slug)} style={`--cat:${source.accent}`}>
+          <span>{source.shortName}</span>
+          <strong>{source.name}</strong>
+          <em>{source.category}</em>
+        </a>
+      ))}
+    </div>
   </section>
 
   {categories.map((c) => (
@@ -358,6 +384,90 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
     }
 
     .ref-section { margin-top: 3.2rem; scroll-margin-top: 1.5rem; }
+    .primary-source-chip {
+      color: var(--color-signal);
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+    }
+    .primary-source-section {
+      margin-top: 3rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 38%, transparent);
+      padding: 1rem;
+    }
+    .primary-source-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .primary-source-title {
+      margin-top: 0.35rem;
+      color: var(--color-bright);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+    .primary-source-all {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+    .primary-source-all:hover { color: var(--color-signal); }
+    .primary-source-lede {
+      margin-top: 0.9rem;
+      max-width: 48rem;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.62;
+    }
+    .primary-source-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 760px) {
+      .primary-source-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .primary-source-card {
+      display: grid;
+      gap: 0.35rem;
+      min-height: 7.4rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: var(--color-ink);
+      padding: 0.8rem;
+      transition: border-color 0.16s, background 0.16s;
+    }
+    .primary-source-card:hover {
+      border-color: color-mix(in srgb, var(--cat) 45%, transparent);
+      background: color-mix(in srgb, var(--cat) 5%, transparent);
+    }
+    .primary-source-card span,
+    .primary-source-card em {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .primary-source-card span { color: var(--cat); }
+    .primary-source-card strong {
+      color: var(--color-paper);
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+    .primary-source-card em {
+      align-self: end;
+      color: var(--color-muted);
+      font-style: normal;
+      line-height: 1.4;
+    }
     .cat-h {
       color: var(--cat);
       text-shadow: 0 0 16px color-mix(in srgb, var(--cat) 30%, transparent);

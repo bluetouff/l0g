@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import {
+  primaryInstitutions,
+  primarySourcesUpdated,
+  primarySourcesUpdatedIso,
+  primarySourceUrl,
+} from '../../config/primary-sources.ts';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site}/sources/#primary-sources`,
+  name: 'Sources primaires l0g',
+  description:
+    'Pages de lecture des institutions primaires utilisées par l0g : SEC, Fed, BIS, FMI, FSB, BCE, CFTC, EIA, Treasury TIC, BLS et BEA.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  dateModified: primarySourcesUpdatedIso,
+  publisher: { '@id': `${site}/#org` },
+  mainEntity: primaryInstitutions.map((source) => ({
+    '@type': 'Organization',
+    name: source.name,
+    url: source.url,
+    description: source.description,
+  })),
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+
+const trustItems = [
+  { label: 'institutions vérifiables', note: `${primaryInstitutions.length}` },
+  { label: 'bibliothèque complète', href: '/sites-reference/' },
+  { label: 'méthodes liées', href: '/methodologie/' },
+  { label: 'mis à jour', note: primarySourcesUpdated },
+];
+---
+
+<BaseLayout
+  title="Sources primaires"
+  description="Les institutions que l0g utilise comme points d'ancrage : quoi lire, pourquoi, limites, cadence et liens de vérification."
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="sources-page rise" data-pagefind-body>
+    <section class="sources-hero">
+      <p class="mono-label glow">// sources primaires</p>
+      <h1 class="sources-title font-display glow">Les institutions qui ancrent la preuve.</h1>
+      <p class="sources-lede">
+        Cette section documente les sources primaires que l0g utilise vraiment :
+        ce qu'elles publient, ce qu'elles permettent de vérifier, leurs cadences,
+        et leurs limites. Une source primaire n'est pas magique ; elle est seulement
+        le meilleur endroit pour commencer à contredire un récit.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="sources-section">
+      <p class="mono-label glow">// institutions</p>
+      <div class="institution-grid">
+        {primaryInstitutions.map((source) => (
+          <a class="institution-card" href={primarySourceUrl(source.slug)} style={`--accent:${source.accent}`}>
+            <span class="institution-k">{source.shortName}</span>
+            <strong>{source.name}</strong>
+            <span>{source.category}</span>
+            <p>{source.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .sources-page { max-width: 64rem; }
+    .sources-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .sources-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .sources-lede {
+      margin-top: 1.15rem;
+      max-width: 48rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.66;
+      color: var(--color-paper);
+    }
+    .sources-section { margin-top: 3rem; }
+    .institution-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 760px) {
+      .institution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .institution-card {
+      --accent: var(--color-signal);
+      display: grid;
+      gap: 0.45rem;
+      min-height: 13rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      padding: 1rem;
+      text-decoration: none;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .institution-card:hover {
+      border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+      transform: translateY(-1px);
+    }
+    .institution-k,
+    .institution-card span:not(.institution-k) {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .institution-k { color: var(--accent); }
+    .institution-card strong {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+    .institution-card span:not(.institution-k) {
+      color: var(--color-muted);
+    }
+    .institution-card p {
+      margin: 0.3rem 0 0;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+  </style>
+</BaseLayout>

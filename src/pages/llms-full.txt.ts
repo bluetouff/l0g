@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { glossaryEntries } from '../config/glossary.ts';
+import { primaryInstitutions } from '../config/primary-sources.ts';
 
 /**
  * /llms-full.txt — corpus integral pour agents IA (convention llmstxt.org).
@@ -81,6 +82,19 @@ export const GET: APIRoute = async () => {
   out.push(
     "Page de tracabilite publique : derniers commits Git, artefacts publies, security.txt, lockfile, configuration Apache durcie, fraicheur des snapshots et liens de verification vers GitHub."
   );
+  out.push(SEP);
+  out.push('SOURCES PRIMAIRES : Institutions et limites');
+  out.push(`URL : ${SITE}/sources/`);
+  out.push('-'.repeat(76));
+  for (const source of primaryInstitutions) {
+    out.push(`${source.shortName} (${source.name})`);
+    out.push(`URL : ${SITE}/sources/${source.slug}/`);
+    out.push(`Source officielle : ${source.url}`);
+    out.push(source.description);
+    out.push(`Lecture l0g : ${source.why}`);
+    out.push(`Limites : ${source.limits.join(' ')}`);
+    out.push('');
+  }
   out.push(SEP);
   out.push('GLOSSAIRE : Sigles et notions');
   out.push(`URL : ${SITE}/glossaire/`);

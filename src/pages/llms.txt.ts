@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { topics } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
 import { glossaryEntries } from '../config/glossary.ts';
+import { primaryInstitutions } from '../config/primary-sources.ts';
 
 /**
  * /llms.txt — carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -51,6 +52,9 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
+    `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
+  );
+  lines.push(
     `- [Preuves & changelog](${SITE}/preuves/): derniers commits, artefacts publiés, surfaces sécurité et liens de vérification.`
   );
   lines.push('');
@@ -77,6 +81,13 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Hub méthodologie](${SITE}/methodologie/): synthèse des indicateurs l0g, limites et accès aux fiches d'instrument.`);
   for (const page of methodologyPages) {
     lines.push(`- [${page.label}](${SITE}/methodologie/${page.slug}/): ${page.question}`);
+  }
+  lines.push('');
+
+  lines.push('## Sources primaires');
+  lines.push(`- [Hub sources primaires](${SITE}/sources/): institutions, cadences, limites et liens de verification.`);
+  for (const source of primaryInstitutions) {
+    lines.push(`- [${source.shortName}](${SITE}/sources/${source.slug}/): ${source.description}`);
   }
   lines.push('');
 

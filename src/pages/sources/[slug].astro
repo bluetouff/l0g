@@ -1,0 +1,333 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CitationBox from '../../components/CitationBox.astro';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import {
+  primaryInstitutions,
+  primarySourcesUpdatedIso,
+  primarySourceUrl,
+  type PrimarySourceInstitution,
+} from '../../config/primary-sources.ts';
+
+export function getStaticPaths() {
+  return primaryInstitutions.map((source) => ({
+    params: { slug: source.slug },
+    props: { source },
+  }));
+}
+
+interface Props {
+  source: PrimarySourceInstitution;
+}
+
+const { source } = Astro.props;
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const canonical = `${site}${primarySourceUrl(source.slug)}`;
+const updatedDate = new Date(`${primarySourcesUpdatedIso}T00:00:00+02:00`);
+
+const trustItems = [
+  { label: 'source primaire', href: source.url },
+  { label: 'cadences listées', href: '#datasets' },
+  { label: 'limites explicites', href: '#limites' },
+  { label: 'vérification', href: '#verification' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  '@id': `${canonical}#source`,
+  headline: `${source.shortName} : comment l0g lit cette source primaire`,
+  description: source.description,
+  inLanguage: 'fr',
+  dateModified: primarySourcesUpdatedIso,
+  isAccessibleForFree: true,
+  publisher: { '@id': `${site}/#org` },
+  about: {
+    '@type': 'Organization',
+    name: source.name,
+    url: source.url,
+  },
+  url: canonical,
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title={`${source.shortName} · source primaire`}
+  description={`${source.name} : ce que l0g lit, comment vérifier, cadences, limites et usages dans les analyses.`}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <nav class="source-breadcrumb mono-label" aria-label="Fil d'Ariane" data-pagefind-ignore>
+    <a href="/">l0g</a>
+    <span>/</span>
+    <a href="/sources/">sources</a>
+    <span>/</span>
+    <span aria-current="page">{source.slug}</span>
+  </nav>
+
+  <article class="source-page rise" style={`--accent:${source.accent}`} data-pagefind-body>
+    <section class="source-hero">
+      <p class="mono-label glow" style="color: var(--accent)">// source primaire</p>
+      <h1 class="source-title font-display glow">{source.name}</h1>
+      <p class="source-category mono-label">{source.category}</p>
+      <p class="source-lede">{source.why}</p>
+      <TrustBar items={trustItems} accent={source.accent} />
+      <div class="source-actions" data-pagefind-ignore>
+        <a class="source-action primary" href={source.url} target="_blank" rel="noopener">ouvrir la source</a>
+        <a class="source-action" href="/sources/">hub sources</a>
+        <a class="source-action" href="/sites-reference/">bibliothèque complète</a>
+      </div>
+      <p class="source-updated" data-pagefind-ignore>
+        Dernière mise à jour : <time datetime={primarySourcesUpdatedIso}>{primarySourcesUpdatedIso}</time>
+        <FreshnessBadge date={updatedDate} compact />
+      </p>
+    </section>
+
+    <section class="source-section">
+      <p class="mono-label glow" style="color: var(--accent)">// ce que l0g lit ici</p>
+      <ul class="read-list">
+        {source.readFor.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <section class="source-section" id="datasets">
+      <p class="mono-label glow" style="color: var(--accent)">// datasets & publications</p>
+      <div class="dataset-table-wrap">
+        <table class="dataset-table">
+          <thead>
+            <tr>
+              <th>source</th>
+              <th>rôle</th>
+              <th>cadence</th>
+              <th>délai</th>
+            </tr>
+          </thead>
+          <tbody>
+            {source.datasets.map((dataset) => (
+              <tr>
+                <td><a class="link-term" href={dataset.url} target="_blank" rel="noopener">{dataset.name}</a></td>
+                <td>{dataset.role}</td>
+                <td>{dataset.cadence}</td>
+                <td>{dataset.delay}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="source-section split" id="verification">
+      <div>
+        <p class="mono-label glow" style="color: var(--accent)">// comment vérifier</p>
+        <ul class="source-list">
+          {source.verification.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div id="limites">
+        <p class="mono-label glow" style="color: var(--accent)">// limites</p>
+        <ul class="source-list muted">
+          {source.limits.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    {source.related.length > 0 && (
+      <section class="source-section" data-pagefind-ignore>
+        <p class="mono-label glow" style="color: var(--accent)">// utilisé dans l0g</p>
+        <div class="related-grid">
+          {source.related.map((item) => (
+            <a class="related-link" href={item.href}>
+              <span>{item.label}</span>
+              <strong>ouvrir</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <CitationBox title={`${source.shortName} · source primaire`} url={canonical} kind="fiche source" updated={updatedDate} />
+  </article>
+
+  <style>
+    .source-breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--color-muted);
+      margin-bottom: 2.5rem;
+    }
+    .source-breadcrumb a {
+      color: var(--color-signal);
+      transition: color 0.18s;
+    }
+    .source-breadcrumb a:hover { color: var(--color-bright); }
+
+    .source-page {
+      --accent: var(--color-signal);
+      max-width: 62rem;
+    }
+    .source-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .source-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      font-size: clamp(2rem, 4.6vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .source-category {
+      margin-top: 0.75rem;
+      color: var(--accent);
+    }
+    .source-lede {
+      margin-top: 1.15rem;
+      max-width: 48rem;
+      border-left: 2px solid var(--accent);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      line-height: 1.66;
+      color: var(--color-paper);
+    }
+    .source-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.3rem;
+    }
+    .source-action {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.1rem;
+      border: 1px solid var(--color-line);
+      border-radius: 7px;
+      padding: 0.45rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .source-action:hover {
+      color: var(--color-bright);
+      border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      background: color-mix(in srgb, var(--accent) 7%, transparent);
+    }
+    .source-action.primary {
+      color: var(--accent);
+      border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+    }
+    .source-updated {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 1rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+    }
+    .source-section { margin-top: 3rem; }
+    .read-list,
+    .source-list {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      padding: 0;
+      list-style: none;
+    }
+    .read-list li,
+    .source-list li {
+      border-left: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      background: color-mix(in srgb, var(--color-surface) 50%, transparent);
+      padding: 0.8rem 0.95rem;
+      color: var(--color-paper);
+      line-height: 1.6;
+    }
+    .source-list.muted li {
+      border-left-color: var(--color-line);
+      color: var(--color-muted);
+    }
+    .dataset-table-wrap {
+      margin-top: 1rem;
+      overflow-x: auto;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    }
+    .dataset-table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .dataset-table th,
+    .dataset-table td {
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.85rem;
+      vertical-align: top;
+    }
+    .dataset-table tr:last-child td { border-bottom: 0; }
+    .dataset-table th {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .dataset-table td {
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .split {
+      display: grid;
+      gap: 1.2rem;
+    }
+    @media (min-width: 820px) {
+      .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 720px) {
+      .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .related-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      padding: 0.8rem 0.9rem;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .related-link:hover {
+      border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+    }
+    .related-link span {
+      color: var(--color-paper);
+    }
+    .related-link strong {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+  </style>
+</BaseLayout>

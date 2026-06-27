@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { topics, postMatchesTopic } from '../../../config/topics.ts';
 import { methodologyPages } from '../../../config/methodology.ts';
 import { glossaryEntries, glossarySections } from '../../../config/glossary.ts';
+import { primaryInstitutions } from '../../../config/primary-sources.ts';
 
 /**
  * Catalogue machine de l0g.fr — v1. Sortie statique générée au build.
@@ -69,6 +70,24 @@ export const GET: APIRoute = async () => {
     guide: term.guide ? `${SITE}${term.guide}` : null,
   }));
 
+  const primarySources = primaryInstitutions.map((source) => ({
+    slug: source.slug,
+    url: `${SITE}/sources/${source.slug}/`,
+    name: source.name,
+    shortName: source.shortName,
+    category: source.category,
+    officialUrl: source.url,
+    description: source.description,
+    datasets: source.datasets.map((dataset) => ({
+      name: dataset.name,
+      role: dataset.role,
+      cadence: dataset.cadence,
+      delay: dataset.delay,
+      url: dataset.url,
+    })),
+    limits: source.limits,
+  }));
+
   const payload = {
     schema: 'https://l0g.fr/api/',
     version: '1',
@@ -79,12 +98,14 @@ export const GET: APIRoute = async () => {
       topics: topics.length,
       methodologies: methodologies.length,
       glossary: glossary.length,
+      primarySources: primarySources.length,
     },
     topics: topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb })),
     glossaryCategories: glossarySections.map((s) => ({ slug: s.slug, title: s.titre, count: s.entries.length })),
     articles,
     guides,
     methodologies,
+    primarySources,
     glossary,
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
