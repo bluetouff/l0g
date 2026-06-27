@@ -29,7 +29,7 @@ const tools = [
   ['get_openapi_schema', 'mode, path', 'Contrat OpenAPI résumé, ciblé par endpoint ou complet pour générer un client.'],
   ['get_ndjson_feed', 'feed, recordType, limit', 'Flux NDJSON allowlistés : catalogue, claims, evidence graph et changefeed.'],
   ['get_freshness', 'limit', 'Fraîcheur du corpus : derniers contenus, compteurs, endpoints et politique de fraîcheur.'],
-  ['search_content', 'query, limit', 'Recherche dans les analyses et les guides par titre, description, thèmes et sujets.'],
+  ['search_content', 'query, mode, limit', 'Recherche plein texte locale sur HTML généré, avec mode catalogue disponible pour audit.'],
   ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables et datées.'],
   ['get_claim', 'claimId', 'Claim précise, liens ressource et article parent.'],
   ['get_claim_evidence', 'claimId, limit', "Preuve d'une claim : type, références, profondeur et voisinage de graphe."],
@@ -207,7 +207,8 @@ const appLd = {
       <h2 class="mono-label glow" style="color: var(--color-signal)">// tools</h2>
       <p class="mt-3 max-w-2xl text-paper">
         Les tools sont réservés aux opérations : recherche, filtrage, historique, extraction
-        de sous-graphe ou lecture ciblée. Chaque réponse expose un résumé humain dans
+        de sous-graphe ou lecture ciblée. La recherche plein texte reste locale et déterministe,
+        sans base vectorielle ni fournisseur externe. Chaque réponse expose un résumé humain dans
         <code>content</code> et les données exploitables dans <code>structuredContent</code>,
         avec un <code>outputSchema</code> déclaré.
       </p>

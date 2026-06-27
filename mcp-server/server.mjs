@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.6.0';
+const MCP_VERSION = '1.7.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -86,6 +86,11 @@ let cache = {
   riskEvents: null,
   confluence: null,
 };
+let searchIndexCache = {
+  at: 0,
+  dataDir: null,
+  index: null,
+};
 async function readJson(rel) {
   return JSON.parse(await readFile(join(DATA_DIR, rel), 'utf-8'));
 }
@@ -131,6 +136,153 @@ function score(item, tokens) {
     if (d.includes(tok)) s += 1;
   }
   return s;
+}
+function tokensOf(query) {
+  return norm(query).split(/[^\p{L}\p{N}]+/u).filter((token) => token.length > 1).slice(0, 12);
+}
+function countToken(haystack, token) {
+  let count = 0;
+  let index = haystack.indexOf(token);
+  while (index !== -1 && count < 20) {
+    count++;
+    index = haystack.indexOf(token, index + token.length);
+  }
+  return count;
+}
+function textOf(node) {
+  return (node ? node.text : '').replace(/\s+/g, ' ').trim();
+}
+function excerptFor(text, tokens, fallback) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!clean) return fallback || '';
+  const normalized = norm(clean);
+  const positions = tokens.map((token) => normalized.indexOf(token)).filter((index) => index >= 0);
+  const first = positions.length ? Math.min(...positions) : 0;
+  const start = Math.max(0, first - 160);
+  const end = Math.min(clean.length, first + 360);
+  const prefix = start > 0 ? '...' : '';
+  const suffix = end < clean.length ? '...' : '';
+  return `${prefix}${clean.slice(start, end).trim()}${suffix}`;
+}
+async function readSearchDocument(candidate) {
+  let bodyText = '';
+  let pageTitle = candidate.title;
+  try {
+    const html = await readText(candidate.rel);
+    const root = parseHtml(html);
+    const titleEl = root.querySelector('article h1') || root.querySelector('h1') || root.querySelector('title');
+    const body = root.querySelector('[data-pagefind-body]') || root.querySelector('.prose') || root.querySelector('article') || root.querySelector('main');
+    pageTitle = textOf(titleEl) || candidate.title;
+    bodyText = textOf(body);
+  } catch {
+    bodyText = '';
+  }
+  const description = candidate.description || '';
+  const tags = candidate.tags || [];
+  const topics = candidate.topics || [];
+  const text = [description, bodyText].filter(Boolean).join(' ');
+  return {
+    ...candidate,
+    title: pageTitle,
+    description,
+    tags,
+    topics,
+    text,
+    normTitle: norm(pageTitle),
+    normDescription: norm(description),
+    normMeta: norm([...tags, ...topics, candidate.category, candidate.shortName, candidate.name].filter(Boolean).join(' ')),
+    normText: norm(text),
+  };
+}
+async function buildSearchIndex(catalog) {
+  const now = Date.now();
+  if (searchIndexCache.index && searchIndexCache.dataDir === DATA_DIR && now - searchIndexCache.at < CACHE_TTL) {
+    return searchIndexCache.index;
+  }
+  const candidates = [
+    ...(catalog.articles || []).map((item) => ({
+      ...item,
+      type: 'article',
+      rel: `posts/${item.slug}/index.html`,
+    })),
+    ...(catalog.guides || []).map((item) => ({
+      ...item,
+      type: 'guide',
+      rel: `guides/${item.slug}/index.html`,
+    })),
+    ...(catalog.glossary || []).map((item) => ({
+      ...item,
+      type: 'glossary',
+      title: `${item.sigle || item.name} - ${item.name || item.sigle}`,
+      description: item.definition,
+      tags: [item.category, item.sigle, item.name].filter(Boolean),
+      rel: `glossaire/${item.slug}/index.html`,
+    })),
+    ...(catalog.methodologies || []).map((item) => ({
+      ...item,
+      type: 'methodology',
+      tags: [item.label, item.dashboard].filter(Boolean),
+      rel: `methodologie/${item.slug}/index.html`,
+    })),
+    ...(catalog.primarySources || []).map((item) => ({
+      ...item,
+      type: 'source',
+      title: item.shortName ? `${item.shortName} - ${item.name}` : item.name,
+      tags: [item.category, item.shortName, item.officialUrl].filter(Boolean),
+      rel: `sources/${item.slug}/index.html`,
+    })),
+  ];
+  const index = [];
+  for (const candidate of candidates) {
+    index.push(await readSearchDocument(candidate));
+  }
+  searchIndexCache = { at: now, dataDir: DATA_DIR, index };
+  return index;
+}
+function rankSearchDocument(doc, tokens, queryNorm) {
+  let value = 0;
+  const matched = [];
+  const fields = new Set();
+  for (const token of tokens) {
+    let tokenScore = 0;
+    if (doc.normTitle.includes(token)) { tokenScore += 30; fields.add('title'); }
+    if (doc.normMeta.includes(token)) { tokenScore += 12; fields.add('tags'); }
+    if (doc.normDescription.includes(token)) { tokenScore += 8; fields.add('description'); }
+    const bodyCount = countToken(doc.normText, token);
+    if (bodyCount) {
+      tokenScore += Math.min(bodyCount, 12);
+      fields.add('body');
+    }
+    if (tokenScore) matched.push(token);
+    value += tokenScore;
+  }
+  if (!value) return null;
+  if (queryNorm && doc.normTitle.includes(queryNorm)) value += 80;
+  if (queryNorm && doc.normText.includes(queryNorm)) value += 40;
+  value += Math.min(matched.length, 6) * 3;
+  return { value, matched, fields: [...fields] };
+}
+async function searchFullText(catalog, query, limit) {
+  const tokens = tokensOf(query);
+  if (!tokens.length) return [];
+  const queryNorm = tokens.join(' ');
+  const index = await buildSearchIndex(catalog);
+  return index
+    .map((doc) => ({ doc, ranking: rankSearchDocument(doc, tokens, queryNorm) }))
+    .filter((item) => item.ranking)
+    .sort((a, b) => b.ranking.value - a.ranking.value || String(b.doc.date || '').localeCompare(String(a.doc.date || '')))
+    .slice(0, limit)
+    .map(({ doc, ranking }) => ({
+      type: doc.type,
+      title: doc.title,
+      url: doc.url,
+      date: doc.date || doc.updated || null,
+      description: doc.description,
+      excerpt: excerptFor(doc.text, tokens, doc.description),
+      score: ranking.value,
+      matchedTerms: ranking.matched,
+      matchedFields: ranking.fields,
+    }));
 }
 const AnyRecord = z.record(z.string(), z.any());
 const ToolOutput = z.object({ error: z.string().optional() }).passthrough();
@@ -187,6 +339,9 @@ const FreshnessOutput = ToolOutput.extend({
 }).passthrough();
 const SearchOutput = ToolOutput.extend({
   query: z.string().optional(),
+  mode: z.string().optional(),
+  backend: z.string().optional(),
+  coverage: z.array(z.string()).optional(),
   count: z.number().optional(),
   results: z.array(z.any()).optional(),
 }).passthrough();
@@ -965,18 +1120,31 @@ function buildServer(data) {
     'search_content',
     {
       description:
-        "Recherche dans le catalogue de l0g.fr (analyses et guides de référence) par titre, description, thèmes et sujets. " +
-        "Renvoie titre, type, URL, date et description. Pour le texte complet, enchaîner avec get_article.",
+        "Recherche plein texte locale dans l0g.fr : analyses, guides, glossaire, fiches méthodologiques et sources primaires. " +
+        "Par défaut, le serveur lit les HTML construits et score titre, métadonnées, description et corps de page, sans fournisseur externe. " +
+        "Le mode catalog conserve l'ancien scoring léger sur titre, tags, topics et description.",
       inputSchema: {
-        query: z.string().describe('Termes de recherche.'),
+        query: z.string().min(1).max(200).describe('Termes de recherche.'),
+        mode: z.enum(['fulltext', 'catalog']).default('fulltext').describe('fulltext pour le corps des pages, catalog pour le scoring catalogue historique.'),
         limit: z.number().int().min(1).max(10).default(5).describe('Nombre maximum de résultats.'),
       },
       outputSchema: SearchOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ query, limit }) => {
+    async ({ query, mode, limit }) => {
       const tokens = norm(query).split(/\s+/).filter(Boolean);
-      if (!tokens.length) return reply({ query, count: 0, results: [] });
+      if (!tokens.length) return reply({ query, mode: mode || 'fulltext', count: 0, results: [] });
+      if ((mode || 'fulltext') === 'fulltext') {
+        const results = await searchFullText(catalog, query, limit);
+        return reply({
+          query,
+          mode: 'fulltext',
+          backend: 'local-html-index',
+          coverage: ['title', 'tags', 'topics', 'description', 'body'],
+          count: results.length,
+          results,
+        });
+      }
       const pool = [
         ...articles.map((a) => ({ ...a, type: 'article' })),
         ...guides.map((g) => ({ ...g, type: 'guide' })),
@@ -990,7 +1158,14 @@ function buildServer(data) {
           type: x.it.type, title: x.it.title, url: x.it.url,
           date: x.it.date, description: x.it.description, score: x.s,
         }));
-      return reply({ query, count: ranked.length, results: ranked });
+      return reply({
+        query,
+        mode: 'catalog',
+        backend: 'catalog-weighted-lexical',
+        coverage: ['title', 'tags', 'topics', 'description'],
+        count: ranked.length,
+        results: ranked,
+      });
     }
   );
 

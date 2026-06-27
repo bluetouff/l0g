@@ -83,7 +83,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |
 | `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes |
 | `get_freshness` | `limit?` | derniers contenus, compteurs et politique de fraîcheur |
-| `search_content` | `query`, `limit?` | analyses et guides correspondants |
+| `search_content` | `query`, `mode?`, `limit?` | recherche plein texte locale sur HTML généré, ou scoring catalogue historique |
 | `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables/datées |
 | `get_claim` | `claimId` | une claim précise, ses liens ressource et son article |
 | `get_claim_evidence` | `claimId`, `limit?` | preuve d'une claim : type, références, profondeur et voisinage de graphe |

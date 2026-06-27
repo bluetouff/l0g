@@ -92,8 +92,12 @@ console.log('get_openapi_schema(path) -> paths:', openapi.paths?.length, '| sche
 const ndjson = await call('get_ndjson_feed', { feed: 'claims', recordType: 'claim', limit: 3 });
 console.log('get_ndjson_feed(claims) ->', ndjson.count, '| path:', ndjson.path);
 
-const search = await call('search_content', { query: 'stablecoins', limit: 3 });
-console.log('search_content(stablecoins) ->', search.count, 'résultats; #1:', search.results?.[0]?.title);
+const search = await call('search_content', { query: 'trilemme bilan', limit: 3 });
+if (!search.results?.[0]?.excerpt) throw new Error('search_content plein texte sans excerpt');
+console.log('search_content(trilemme bilan) ->', search.count, 'résultats; mode:', search.mode, '; #1:', search.results?.[0]?.title);
+
+const catalogSearch = await call('search_content', { query: 'stablecoins', mode: 'catalog', limit: 3 });
+console.log('search_content(stablecoins,catalog) ->', catalogSearch.count, 'résultats; #1:', catalogSearch.results?.[0]?.title);
 
 const recent = await call('list_recent_analyses', { limit: 3 });
 console.log('list_recent_analyses ->', recent.count, '; #1:', recent.analyses?.[0]?.title);
