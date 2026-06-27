@@ -7,6 +7,7 @@ const commands = [
   'cat manifeste',
   'open dashboards',
   'open donnees',
+  'open preuves',
   'open methodologie',
   'open api',
   'curl risk',
@@ -92,6 +93,10 @@ const jsonLd = {
           <span>api</span>
           <strong>données machine</strong>
         </a>
+        <a href="/preuves/">
+          <span>preuves</span>
+          <strong>changelog & artefacts</strong>
+        </a>
       </div>
     </section>
   </section>
@@ -112,6 +117,7 @@ const jsonLd = {
         journal: '/',
         manifeste: '/manifeste/',
         methodologie: '/methodologie/',
+        preuves: '/preuves/',
         recherche: '/recherche/',
         sources: '/sites-reference/',
         status: '/status/',
@@ -122,7 +128,7 @@ const jsonLd = {
           'help             affiche les commandes',
           'ls               liste les espaces l0g',
           'cat manifeste    résume le pacte de lecture',
-          'open <cible>     ouvre manifeste, dashboards, donnees, methodologie, api, sources, status',
+          'open <cible>     ouvre manifeste, dashboards, donnees, preuves, methodologie, api, sources, status',
           'curl risk        pointe vers /api/v1/risk.json',
           'whoami           identifie le projet',
           'clear            nettoie le terminal',
@@ -131,6 +137,7 @@ const jsonLd = {
           '<a href="/manifeste/">manifeste</a>      pacte de lecture',
           '<a href="/dashboards/">dashboards</a>    instruments de monitoring',
           '<a href="/donnees/">donnees</a>       inventaire des datasets',
+          '<a href="/preuves/">preuves</a>       changelog et artefacts',
           '<a href="/methodologie/">methodologie</a> formules, seuils, limites',
           '<a href="/guides/">guides</a>          pages de référence',
           '<a href="/api/">api</a>             endpoints JSON, XML, catalogue',

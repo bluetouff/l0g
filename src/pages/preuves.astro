@@ -1,0 +1,395 @@
+---
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import { execFileSync } from 'node:child_process';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FreshnessBadge from '../components/FreshnessBadge.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const buildTime = new Date();
+
+function readJSON<T>(rel: string, fallback: T): T {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), rel), 'utf-8')) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function fileMeta(rel: string, href: string, label: string, role: string) {
+  const abs = join(process.cwd(), rel);
+  if (!existsSync(abs)) return { rel, href, label, role, ok: false, size: null, mtime: null };
+  const st = statSync(abs);
+  return { rel, href, label, role, ok: true, size: st.size, mtime: st.mtime };
+}
+
+function bytes(n: number | null) {
+  if (n == null) return 'n/a';
+  if (n < 1024) return `${n} o`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} Ko`;
+  return `${(n / 1024 / 1024).toFixed(1)} Mo`;
+}
+
+function fr(value?: string | Date | null) {
+  if (!value) return 'n/a';
+  const d = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(d.getTime())) return 'n/a';
+  return d.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+function gitLog() {
+  try {
+    const raw = execFileSync('git', [
+      'log',
+      '-n',
+      '12',
+      '--date=short',
+      '--pretty=format:%H%x1f%h%x1f%ad%x1f%s',
+    ], { cwd: process.cwd(), encoding: 'utf-8' });
+    return raw
+      .split('\n')
+      .filter(Boolean)
+      .map((line) => {
+        const [hash, shortHash, date, subject] = line.split('\x1f');
+        return { hash, shortHash, date, subject };
+      });
+  } catch {
+    return [];
+  }
+}
+
+const risk = readJSON<{ updated?: string }>('public/risk.json', {});
+const confluence = readJSON<{ updated?: string }>('public/confluence.json', {});
+const events = readJSON<{ updated?: string }>('public/risk-events.json', {});
+const pkg = readJSON<{ overrides?: Record<string, string> }>('package.json', {});
+
+const commits = gitLog();
+const latestCommit = commits[0];
+
+const artefacts = [
+  fileMeta('public/risk.json', '/api/v1/risk.json', 'risk.json', 'Indices de risque publiés en JSON.'),
+  fileMeta('public/confluence.json', '/confluence.json', 'confluence.json', 'Snapshot 13FLOW exposé publiquement.'),
+  fileMeta('public/risk-events.json', '/risk-events.json', 'risk-events.json', 'Journal des changements de niveau.'),
+  fileMeta('public/.well-known/security.txt', '/.well-known/security.txt', 'security.txt', 'Contact vulnérabilités et canal de disclosure.'),
+  fileMeta('package-lock.json', 'https://github.com/bluetouff/l0g/blob/main/package-lock.json', 'package-lock.json', 'Verrou de dépendances auditable.'),
+  fileMeta('deploy/l0g.fr.apache.conf', 'https://github.com/bluetouff/l0g/blob/main/deploy/l0g.fr.apache.conf', 'vhost Apache', 'En-têtes CSP, HSTS et protections statiques.'),
+];
+
+const guarantees = [
+  {
+    label: 'build statique',
+    value: 'Astro génère du HTML statique ; pas de PHP, pas de session serveur côté site.',
+    href: '/status/',
+  },
+  {
+    label: 'dépendances verrouillées',
+    value: `Overrides sécurité actifs : ${Object.entries(pkg.overrides ?? {}).map(([k, v]) => `${k}@${v}`).join(', ') || 'n/a'}.`,
+    href: 'https://github.com/bluetouff/l0g/blob/main/package.json',
+  },
+  {
+    label: 'surface données',
+    value: 'Snapshots datés, endpoints JSON/Atom/RSS et corpus llms exposés comme artefacts citables.',
+    href: '/donnees/',
+  },
+  {
+    label: 'zéro tracker maison',
+    value: 'Pas de cookie applicatif, pas de mesure comportementale maison, partage social sans script tiers.',
+    href: '/rgpd/',
+  },
+];
+
+const dataFreshness = [
+  { label: 'risk.json', date: risk.updated ? new Date(risk.updated) : null },
+  { label: 'confluence.json', date: confluence.updated ? new Date(confluence.updated) : null },
+  { label: 'risk-events.json', date: events.updated ? new Date(events.updated) : null },
+  { label: 'build', date: buildTime },
+];
+
+const trustItems = [
+  { label: 'changelog git', href: 'https://github.com/bluetouff/l0g/commits/main' },
+  { label: 'audits npm', href: 'https://github.com/bluetouff/l0g/blob/main/package-lock.json' },
+  { label: 'security.txt', href: '/.well-known/security.txt' },
+  { label: 'statut public', href: '/status/' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site}/preuves/#changelog`,
+  name: 'Preuves et changelog l0g',
+  description:
+    'Journal public de traçabilité l0g : derniers commits, artefacts publiés, fichiers de sécurité, snapshots et liens de vérification.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  publisher: { '@id': `${site}/#org` },
+  dateModified: buildTime.toISOString(),
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: commits.map((commit, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://github.com/bluetouff/l0g/commit/${commit.hash}`,
+      name: commit.subject,
+    })),
+  },
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Preuves & changelog"
+  description="Journal public de traçabilité l0g : commits récents, artefacts publiés, surfaces sécurité, snapshots et liens de vérification."
+  ogImage="/og-status.png"
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="proof-page rise" data-pagefind-body>
+    <section class="proof-hero">
+      <p class="mono-label glow">// preuves</p>
+      <h1 class="proof-title font-display glow">Changements, artefacts, vérifications.</h1>
+      <p class="proof-lede">
+        Cette page rassemble les preuves opérationnelles du site : derniers commits,
+        fichiers publiés, surfaces sécurité, fraîcheur des snapshots et liens de contrôle.
+        Elle ne remplace pas le dépôt GitHub ; elle rend sa lecture plus directe.
+      </p>
+      <TrustBar items={trustItems} />
+      <p class="proof-build mono-label">
+        build observé : <time datetime={buildTime.toISOString()}>{fr(buildTime)}</time>
+        {latestCommit && <> · dernier commit : <a href={`https://github.com/bluetouff/l0g/commit/${latestCommit.hash}`}>{latestCommit.shortHash}</a></>}
+      </p>
+    </section>
+
+    <section class="proof-section split">
+      <div>
+        <p class="mono-label glow">// changelog récent</p>
+        <div class="commit-list">
+          {commits.length > 0 ? commits.map((commit) => (
+            <a class="commit-row" href={`https://github.com/bluetouff/l0g/commit/${commit.hash}`}>
+              <span class="commit-hash">{commit.shortHash}</span>
+              <strong>{commit.subject}</strong>
+              <time datetime={commit.date}>{commit.date}</time>
+            </a>
+          )) : (
+            <p class="empty">Historique Git indisponible dans cet environnement de build.</p>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <p class="mono-label glow">// fraîcheur</p>
+        <div class="fresh-list">
+          {dataFreshness.map((item) => (
+            <div class="fresh-row">
+              <span>{item.label}</span>
+              {item.date ? <FreshnessBadge date={item.date} compact /> : <em>n/a</em>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-section">
+      <p class="mono-label glow">// artefacts vérifiables</p>
+      <div class="artefact-grid">
+        {artefacts.map((artefact) => (
+          <a class="artefact-card" href={artefact.href}>
+            <span class={`proof-dot ${artefact.ok ? 'ok' : 'warn'}`} aria-hidden="true"></span>
+            <strong>{artefact.label}</strong>
+            <span>{artefact.role}</span>
+            <em>{artefact.ok ? `${bytes(artefact.size)} · ${fr(artefact.mtime)}` : 'absent'}</em>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="proof-section">
+      <p class="mono-label glow">// garanties lisibles</p>
+      <div class="guarantee-grid">
+        {guarantees.map((item) => (
+          <a class="guarantee-card" href={item.href}>
+            <span>{item.label}</span>
+            <p>{item.value}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .proof-page { max-width: 64rem; }
+    .proof-hero {
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .proof-title {
+      margin-top: 1rem;
+      max-width: 48rem;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .proof-lede {
+      margin-top: 1.15rem;
+      max-width: 48rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.66;
+      color: var(--color-paper);
+    }
+    .proof-build {
+      margin-top: 1rem;
+      color: var(--color-muted);
+    }
+    .proof-build a { color: var(--color-signal); }
+    .proof-section { margin-top: 3rem; }
+    .split {
+      display: grid;
+      gap: 1.2rem;
+    }
+    @media (min-width: 820px) {
+      .split { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); }
+    }
+    .commit-list,
+    .fresh-list {
+      margin-top: 1rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      overflow: hidden;
+    }
+    .commit-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 0.8rem;
+      align-items: center;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.75rem 0.85rem;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .commit-row:last-child { border-bottom: 0; }
+    .commit-row:hover {
+      background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+    }
+    .commit-hash,
+    .commit-row time,
+    .fresh-row span,
+    .fresh-row em,
+    .artefact-card em,
+    .guarantee-card span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .commit-hash { color: var(--color-signal); }
+    .commit-row strong {
+      color: var(--color-paper);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .commit-row time,
+    .fresh-row span,
+    .fresh-row em,
+    .artefact-card em {
+      color: var(--color-muted);
+    }
+    .empty {
+      padding: 1rem;
+      color: var(--color-muted);
+    }
+    .fresh-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.78rem 0.85rem;
+    }
+    .fresh-row:last-child { border-bottom: 0; }
+    .artefact-grid,
+    .guarantee-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 760px) {
+      .artefact-grid,
+      .guarantee-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .artefact-card,
+    .guarantee-card {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      padding: 1rem;
+      text-decoration: none;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .artefact-card {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.45rem 0.7rem;
+      align-items: start;
+    }
+    .artefact-card:hover,
+    .guarantee-card:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+    }
+    .proof-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.42rem;
+      border-radius: 999px;
+      background: var(--color-amber);
+    }
+    .proof-dot.ok {
+      background: var(--color-signal);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--color-signal) 45%, transparent);
+    }
+    .artefact-card strong {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+    }
+    .artefact-card span:not(.proof-dot),
+    .artefact-card em {
+      grid-column: 2;
+    }
+    .artefact-card span:not(.proof-dot),
+    .guarantee-card p {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .guarantee-card {
+      display: grid;
+      gap: 0.55rem;
+    }
+    .guarantee-card span {
+      color: var(--color-signal);
+    }
+    .guarantee-card p {
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .commit-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.35rem;
+      }
+    }
+  </style>
+</BaseLayout>

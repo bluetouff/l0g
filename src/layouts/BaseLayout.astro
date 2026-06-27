@@ -300,6 +300,10 @@ function isCurrentHref(href: string): boolean {
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h4l2-5 4 10 2-5h4"/><path d="M4 5h16v14H4z"/></svg>
               statut
             </a>
+            <a href="/preuves/" class="foot-link" aria-current={isCurrentHref('/preuves/') ? 'page' : undefined}>
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/><path d="M8.5 8.5l1.2 1.2 2.2-2.4"/></svg>
+              preuves
+            </a>
             <a href="/recherche/" class="foot-link">
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
               recherche
@@ -329,6 +333,7 @@ function isCurrentHref(href: string): boolean {
           <div class="footer-mini" aria-label="Raccourcis machine">
             <a href="/terminal/">terminal</a>
             <a href="/status/">status</a>
+            <a href="/preuves/">preuves</a>
             <a href="/donnees/">données</a>
             <a href="/llms.txt">llms.txt</a>
             <a href="/rss.xml">rss</a>

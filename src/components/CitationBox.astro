@@ -11,47 +11,150 @@ interface Props {
 
 const { title, url, kind = 'page', published, updated } = Astro.props;
 const date = updated ?? published;
+const year = date?.getFullYear();
 const datePart = date ? `, ${updated ? 'revu le' : 'publié le'} ${formatDateFr(date)}` : '';
+const accessed = formatDateFr(new Date());
 const citation = `l0g.fr, « ${title} » (${kind}${datePart}), ${url}`;
-const md = `[${title}](${url}) — l0g.fr`;
+const md = `[${title}](${url}) — l0g.fr${date ? `, ${formatDateFr(date)}` : ''}.`;
+const bibKey = `l0g-${title
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '')
+  .slice(0, 48) || 'page'}${year ? `-${year}` : ''}`;
+const bibtex = `@online{${bibKey},
+  title = {${title.replace(/[{}]/g, '')}},
+  author = {{l0g.fr}},
+  year = {${year ?? new Date().getFullYear()}},
+  url = {${url}},
+  note = {${kind}${datePart}; consulté le ${accessed}}
+}`;
+const formats = [
+  { label: 'canonique', value: citation },
+  { label: 'markdown', value: md },
+  { label: 'bibtex', value: bibtex },
+];
 ---
 
 <aside class="citation-box" aria-labelledby="citation-title" data-pagefind-ignore>
-  <p id="citation-title" class="mono-label">// citer cette page</p>
-  <p class="citation-line">{citation}</p>
-  <code>{md}</code>
+  <div class="citation-head">
+    <p id="citation-title" class="mono-label">// citer cette page</p>
+    <a href={url} class="citation-permalink">permalien</a>
+  </div>
+  <div class="citation-formats">
+    {formats.map((format) => (
+      <div class="citation-format">
+        <div class="citation-format-head">
+          <span>{format.label}</span>
+          <button type="button" data-copy-citation={format.value}>
+            copier
+          </button>
+        </div>
+        <code>{format.value}</code>
+      </div>
+    ))}
+  </div>
 </aside>
+
+<script is:inline>
+  document.querySelectorAll('[data-copy-citation]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var value = btn.getAttribute('data-copy-citation');
+      var original = btn.textContent;
+      var flash = function (text) {
+        btn.textContent = text;
+        setTimeout(function () { btn.textContent = original; }, 1600);
+      };
+      if (!value || !window.isSecureContext || !navigator.clipboard || !navigator.clipboard.writeText) {
+        flash('indisponible');
+        return;
+      }
+      navigator.clipboard.writeText(value)
+        .then(function () { flash('copié'); })
+        .catch(function () { flash('indisponible'); });
+    });
+  });
+</script>
 
 <style>
   .citation-box {
     margin-top: 3rem;
     border-top: 1px solid var(--color-line);
     border-bottom: 1px solid var(--color-line);
-    padding: 1rem 0;
+    padding: 1.1rem 0 1.2rem;
   }
-  .citation-box .mono-label {
+  .citation-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .citation-head .mono-label {
     color: var(--color-signal);
-    margin-bottom: 0.55rem;
   }
-  .citation-line {
-    color: var(--color-paper);
-    font-family: var(--font-read);
-    font-size: 0.96rem;
-    line-height: 1.6;
+  .citation-permalink {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .citation-permalink:hover {
+    color: var(--color-signal);
+  }
+  .citation-formats {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .citation-format {
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    overflow: hidden;
+  }
+  .citation-format-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.45rem 0.65rem;
+  }
+  .citation-format-head span,
+  .citation-format-head button {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .citation-format-head span {
+    color: var(--color-signal);
+  }
+  .citation-format-head button {
+    border: 0;
+    background: transparent;
+    color: var(--color-muted);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+  }
+  .citation-format-head button:hover {
+    color: var(--color-bright);
   }
   .citation-box code {
     display: block;
-    width: fit-content;
-    max-width: 100%;
-    margin-top: 0.7rem;
-    border: 1px solid var(--color-line);
-    border-radius: 6px;
-    background: var(--color-surface);
+    border: 0;
+    background: transparent;
     color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.78rem;
     line-height: 1.5;
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
-    padding: 0.45rem 0.6rem;
+    padding: 0.65rem;
   }
 </style>

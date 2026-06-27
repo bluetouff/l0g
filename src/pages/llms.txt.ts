@@ -50,6 +50,9 @@ export const GET: APIRoute = async () => {
   lines.push(
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
+  lines.push(
+    `- [Preuves & changelog](${SITE}/preuves/): derniers commits, artefacts publiés, surfaces sécurité et liens de vérification.`
+  );
   lines.push('');
 
   lines.push('## Guides de reference');

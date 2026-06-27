@@ -129,6 +129,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 <BaseLayout
   title="Données"
   description="Inventaire des données publiques l0g : snapshots, API JSON, corpus machine, licence, cadence de mise à jour et limites de fraîcheur."
+  ogImage="/og-donnees.png"
+  ogImageAlt="Inventaire des données publiques l0g.fr"
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />

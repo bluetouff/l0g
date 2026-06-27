@@ -75,6 +75,13 @@ export const GET: APIRoute = async () => {
     "Inventaire des snapshots publics et endpoints l0g : risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
   );
   out.push(SEP);
+  out.push('PREUVES : Changelog et artefacts verifiables');
+  out.push(`URL : ${SITE}/preuves/`);
+  out.push('-'.repeat(76));
+  out.push(
+    "Page de tracabilite publique : derniers commits Git, artefacts publies, security.txt, lockfile, configuration Apache durcie, fraicheur des snapshots et liens de verification vers GitHub."
+  );
+  out.push(SEP);
   out.push('GLOSSAIRE : Sigles et notions');
   out.push(`URL : ${SITE}/glossaire/`);
   out.push('-'.repeat(76));
