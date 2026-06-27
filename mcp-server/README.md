@@ -1,7 +1,7 @@
 # Serveur MCP de l0g.fr
 
 Serveur **Model Context Protocol** en lecture seule, qui expose les données de l0g.fr
-(Agent Surface, OpenAPI, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via le
+(Agent Surface, OpenAPI, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via resources, resource templates et tools, avec le
 transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié).
 
 Endpoint public visé : `https://l0g.fr/api/mcp`
@@ -31,6 +31,39 @@ agent / client MCP
   et `confluence.json`. Le service ne fait que **lire** ces fichiers, avec un cache TTL de 60 s.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
   transport neufs par requête.
+
+## Resources exposées
+
+Les documents et datasets stables sont exposés comme **resources MCP**. Les tools restent réservés
+aux opérations de recherche, filtrage et synthèse.
+
+### Resources statiques
+
+| URI | Contenu |
+|-----|---------|
+| `l0g://agent-manifest` | manifeste Agent Surface |
+| `l0g://openapi` | contrat OpenAPI complet |
+| `l0g://freshness` | fraîcheur du corpus |
+| `l0g://integrity` | empreintes SHA-256 canoniques |
+| `l0g://changes/latest` | dernières publications et révisions |
+| `l0g://signals/current` | état courant des signaux |
+
+### Resource templates
+
+| Template | Contenu |
+|----------|---------|
+| `l0g://articles/{slug}` | article avec métadonnées et texte |
+| `l0g://guides/{slug}` | guide avec métadonnées et texte |
+| `l0g://claims/{claim_id}` | relation affirmation-source |
+| `l0g://sources/{source_id}` | source primaire ou hôte cité |
+| `l0g://signals/{instrument}/current` | signal courant + historique de franchissement |
+| `l0g://methodologies/{instrument}` | fiche méthodologique |
+
+`resources/list` énumère aussi les instances connues via les templates. Les variables principales
+ont des callbacks de complétion. `resources/subscribe` et `resources/unsubscribe` sont acceptés pour
+compatibilité MCP ; le service public actuel est stateless en requête/réponse, donc les notifications
+push live nécessiteront une variante sessionnée. Pour surveiller le corpus aujourd’hui, lire
+`l0g://changes/latest` ou appeler `get_changefeed`.
 
 ## Tools exposés (tous `readOnlyHint`)
 

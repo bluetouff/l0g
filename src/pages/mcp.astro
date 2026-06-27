@@ -4,6 +4,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ENDPOINT = `${SITE}/api/mcp`;
 
+const resources = [
+  ['l0g://agent-manifest', 'Manifeste Agent Surface'],
+  ['l0g://openapi', 'Contrat OpenAPI complet'],
+  ['l0g://freshness', 'Fraîcheur du corpus'],
+  ['l0g://integrity', 'Empreintes SHA-256 canoniques'],
+  ['l0g://changes/latest', 'Derniers changements éditoriaux et publications'],
+  ['l0g://signals/current', 'État courant des signaux'],
+];
+
+const templates = [
+  ['l0g://articles/{slug}', 'Article avec métadonnées et texte'],
+  ['l0g://guides/{slug}', 'Guide de référence avec métadonnées et texte'],
+  ['l0g://claims/{claim_id}', 'Relation affirmation-source'],
+  ['l0g://sources/{source_id}', 'Source primaire ou hôte cité'],
+  ['l0g://signals/{instrument}/current', 'Signal courant et historique'],
+  ['l0g://methodologies/{instrument}', 'Fiche méthodologique'],
+];
+
 const tools = [
   ['get_agent_manifest', 'aucun', "Manifeste Agent Surface : capacités, endpoints, règles d'usage, politiques de preuve et compteurs."],
   ['get_risk_indices', 'aucun', 'Signaux de risque normalisés par instrument (US Macro, EU Macro, Yen Carry, Énergie) et synthèse de confluence 13F.'],
@@ -29,7 +47,7 @@ const appLd = {
   '@id': `${SITE}/mcp/#mcp`,
   name: 'Serveur MCP l0g',
   description:
-    "Serveur Model Context Protocol en lecture seule pour l0g.fr : Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides, via le transport Streamable HTTP.",
+    "Serveur Model Context Protocol en lecture seule pour l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides, via le transport Streamable HTTP.",
   documentation: `${SITE}/mcp`,
   url: ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
@@ -40,7 +58,7 @@ const appLd = {
 
 <BaseLayout
   title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides exposés en lecture seule aux agents IA via Streamable HTTP."
+  description="Serveur Model Context Protocol de l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
@@ -109,7 +127,7 @@ const appLd = {
           et corpus intégral, pour les agents qui les recherchent ;
         </li>
         <li>
-          ce serveur MCP, qui transforme tout cela en tools appelables par un agent, sans scraping.
+          ce serveur MCP, qui transforme tout cela en resources lisibles et tools appelables par un agent, sans scraping.
         </li>
       </ul>
     </div>
@@ -123,6 +141,55 @@ const appLd = {
       <p class="mt-2 text-muted">
         Lecture seule. Le code et la procédure de déploiement sont publics sur le
         <a class="link-term text-signal" href="https://github.com/bluetouff/l0g">dépôt GitHub</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// resources</h2>
+      <p class="mt-3 max-w-2xl text-paper">
+        Les documents et datasets sont exposés comme ressources MCP. Les agents peuvent les lister
+        avec <code>resources/list</code>, lire leur contenu avec <code>resources/read</code>, et
+        découvrir les URI paramétrées avec <code>resources/templates/list</code>.
+      </p>
+      <div class="mcp-table mt-3">
+        <table>
+          <thead>
+            <tr><th>URI</th><th>Contenu</th></tr>
+          </thead>
+          <tbody>
+            {resources.map(([uri, desc]) => (
+              <tr>
+                <td><code>{uri}</code></td>
+                <td>{desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// resource templates</h2>
+      <div class="mcp-table mt-3">
+        <table>
+          <thead>
+            <tr><th>Template</th><th>Contenu</th></tr>
+          </thead>
+          <tbody>
+            {templates.map(([uri, desc]) => (
+              <tr>
+                <td><code>{uri}</code></td>
+                <td>{desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 max-w-2xl text-muted">
+        Les templates énumèrent les instances connues et proposent des complétions de variables.
+        Les souscriptions MCP sont acceptées pour compatibilité ; le service public actuel reste
+        stateless, donc la veille opérationnelle passe par <code>l0g://changes/latest</code> ou
+        <code>get_changefeed</code>.
       </p>
     </div>
 

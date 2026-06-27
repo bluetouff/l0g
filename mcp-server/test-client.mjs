@@ -23,6 +23,39 @@ for (const required of [
   if (!tools.some((tool) => tool.name === required)) throw new Error(`tool manquant: ${required}`);
 }
 
+const { resources } = await client.listResources();
+console.log('RESOURCES:', resources.length, '| #1:', resources[0]?.uri);
+for (const required of ['l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://signals/current']) {
+  if (!resources.some((resource) => resource.uri === required)) throw new Error(`resource manquante: ${required}`);
+}
+
+const { resourceTemplates } = await client.listResourceTemplates();
+console.log('RESOURCE_TEMPLATES:', resourceTemplates.map((template) => template.uriTemplate).join(', '));
+for (const required of [
+  'l0g://articles/{slug}',
+  'l0g://guides/{slug}',
+  'l0g://claims/{claim_id}',
+  'l0g://sources/{source_id}',
+  'l0g://signals/{instrument}/current',
+  'l0g://methodologies/{instrument}',
+]) {
+  if (!resourceTemplates.some((template) => template.uriTemplate === required)) throw new Error(`resource template manquant: ${required}`);
+}
+
+const freshnessResource = await client.readResource({ uri: 'l0g://freshness' });
+console.log('readResource(freshness) -> contents:', freshnessResource.contents?.length);
+
+const articleResource = await client.readResource({ uri: 'l0g://articles/repo-collateral-fabrique-liquidite' });
+const articleText = articleResource.contents?.[0]?.text || '{}';
+console.log('readResource(article) -> title:', JSON.parse(articleText).title);
+
+const signalResource = await client.readResource({ uri: 'l0g://signals/yen/current' });
+console.log('readResource(signal) -> instrument:', JSON.parse(signalResource.contents?.[0]?.text || '{}').instrument);
+
+const subscription = await client.subscribeResource({ uri: 'l0g://changes/latest' });
+console.log('subscribeResource(changes) -> accepted:', subscription._meta?.accepted === true);
+await client.unsubscribeResource({ uri: 'l0g://changes/latest' });
+
 async function call(name, args) {
   const r = await client.callTool({ name, arguments: args || {} });
   const txt = (r.content || []).map((c) => c.text || '').join('');

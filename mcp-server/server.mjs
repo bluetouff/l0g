@@ -17,8 +17,9 @@
 import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
+import { SubscribeRequestSchema, UnsubscribeRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
 
@@ -36,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.3.0';
+const MCP_VERSION = '1.4.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -165,6 +166,21 @@ function compactSnapshot(snapshot) {
     canonicalBytes: snapshot.canonicalBytes,
   };
 }
+function resourceJson(uri, payload) {
+  return {
+    contents: [{
+      uri,
+      mimeType: 'application/json',
+      text: JSON.stringify(payload, null, 2),
+    }],
+  };
+}
+function uriValue(value) {
+  return decodeURIComponent(String(value || '').trim());
+}
+function resourceSummary(uri, name, description, mimeType = 'application/json') {
+  return { uri, name, description, mimeType };
+}
 function summarizeOpenapi(openapi, path) {
   const paths = openapi.paths || {};
   const selectedPaths = path ? Object.fromEntries(Object.entries(paths).filter(([key]) => key === path)) : paths;
@@ -213,6 +229,245 @@ function buildServer(data) {
   const topicsList = catalog.topics || [];
   const slugs = new Set([...articles.map((a) => a.slug), ...guides.map((g) => g.slug)]);
   const claimKinds = ['fait', 'estimation', 'inférence', 'scénario'];
+  const claimsList = claims.claims || [];
+  const methodologies = catalog.methodologies || [];
+  const primarySources = sources.primarySources || [];
+  const referenceHosts = sources.referenceHosts || [];
+  const signals = risk?.indices || {};
+
+  async function readDocument(slug, type) {
+    const clean = uriValue(slug).replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+    const pool = type === 'guide' ? guides : articles;
+    const record = pool.find((item) => item.slug === clean);
+    if (!record) return { error: `${type} inconnu`, slug: clean };
+    const section = type === 'guide' ? 'guides' : 'posts';
+    const html = await readFile(join(DATA_DIR, section, clean, 'index.html'), 'utf-8');
+    const root = parseHtml(html);
+    const titleEl = root.querySelector('article h1') || root.querySelector('h1');
+    const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
+    let text = (body ? body.text : '').replace(/\s+/g, ' ').trim();
+    const MAX = 30000;
+    const truncated = text.length > MAX;
+    if (truncated) text = text.slice(0, MAX);
+    return {
+      ...record,
+      type,
+      title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : record.title,
+      words: text ? text.split(/\s+/).length : 0,
+      truncated,
+      text,
+    };
+  }
+
+  function registerStaticResource(name, uri, config, payload) {
+    server.registerResource(name, uri, config, async () => resourceJson(uri, typeof payload === 'function' ? payload() : payload));
+  }
+
+  registerStaticResource('agent-manifest', 'l0g://agent-manifest', {
+    title: 'Agent manifest',
+    description: 'Manifeste Agent Surface : capacités, endpoints, règles d’usage et politiques de preuve.',
+    mimeType: 'application/json',
+  }, () => agent);
+  registerStaticResource('openapi', 'l0g://openapi', {
+    title: 'OpenAPI',
+    description: 'Contrat OpenAPI 3.1 public de l’Agent Surface.',
+    mimeType: 'application/json',
+  }, () => openapi);
+  registerStaticResource('freshness', 'l0g://freshness', {
+    title: 'Freshness',
+    description: 'Fraîcheur du corpus, derniers contenus, compteurs et endpoints disponibles.',
+    mimeType: 'application/json',
+  }, () => freshness);
+  registerStaticResource('integrity', 'l0g://integrity', {
+    title: 'Integrity',
+    description: 'Empreintes SHA-256 canoniques des surfaces JSON et NDJSON.',
+    mimeType: 'application/json',
+  }, () => integrity);
+  registerStaticResource('changes-latest', 'l0g://changes/latest', {
+    title: 'Latest changes',
+    description: 'Dernières publications, révisions et changements éditoriaux structurants.',
+    mimeType: 'application/json',
+  }, () => ({ ...changes, entries: (changes.entries || []).slice(0, 50) }));
+  registerStaticResource('signals-current', 'l0g://signals/current', {
+    title: 'Current signals',
+    description: 'État courant des signaux de risque normalisés par instrument.',
+    mimeType: 'application/json',
+  }, () => ({
+    snapshot: risk?.snapshot ?? null,
+    generated: risk?.generated ?? null,
+    indices: signals,
+    confluence: risk?.confluence ?? null,
+    caveat: "Les scores 0-100 sont normalisés par instrument et ne sont pas comparables comme probabilités.",
+  }));
+
+  server.registerResource(
+    'article',
+    new ResourceTemplate('l0g://articles/{slug}', {
+      list: async () => ({
+        resources: articles.map((article) => resourceSummary(
+          `l0g://articles/${encodeURIComponent(article.slug)}`,
+          article.title,
+          article.description,
+        )),
+      }),
+      complete: { slug: (value) => articles.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Article',
+      description: 'Analyse l0g lue comme document ressource, avec métadonnées et texte.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article')),
+  );
+
+  server.registerResource(
+    'guide',
+    new ResourceTemplate('l0g://guides/{slug}', {
+      list: async () => ({
+        resources: guides.map((guide) => resourceSummary(
+          `l0g://guides/${encodeURIComponent(guide.slug)}`,
+          guide.title,
+          guide.description,
+        )),
+      }),
+      complete: { slug: (value) => guides.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Guide',
+      description: 'Guide de référence l0g lu comme document ressource.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide')),
+  );
+
+  server.registerResource(
+    'claim',
+    new ResourceTemplate('l0g://claims/{claim_id}', {
+      list: async () => ({
+        resources: claimsList.map((claim) => resourceSummary(
+          `l0g://claims/${encodeURIComponent(claim.id)}`,
+          claim.claim.slice(0, 90),
+          `${claim.kind} · ${claim.articleTitle}`,
+        )),
+      }),
+      complete: { claim_id: (value) => claimsList.map((claim) => claim.id).filter((id) => id.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Claim',
+      description: 'Relation affirmation-source avec références datées et cliquables.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => {
+      const id = uriValue(variables.claim_id);
+      const claim = claimsList.find((item) => item.id === id);
+      return resourceJson(uri.toString(), claim ? compactClaim(claim) : { error: 'claim inconnue', id });
+    },
+  );
+
+  server.registerResource(
+    'source',
+    new ResourceTemplate('l0g://sources/{source_id}', {
+      list: async () => ({
+        resources: [
+          ...primarySources.map((source) => resourceSummary(
+            `l0g://sources/${encodeURIComponent(source.slug)}`,
+            source.shortName || source.name,
+            source.description,
+          )),
+          ...referenceHosts.map((host) => resourceSummary(
+            `l0g://sources/${encodeURIComponent(host.host)}`,
+            host.host,
+            `${host.references} référence(s), ${host.articles} article(s)`,
+          )),
+        ],
+      }),
+      complete: {
+        source_id: (value) => [
+          ...primarySources.map((source) => source.slug),
+          ...referenceHosts.map((host) => host.host),
+        ].filter((id) => id.startsWith(value)).slice(0, 20),
+      },
+    }),
+    {
+      title: 'Source',
+      description: 'Source primaire suivie par l0g ou hôte effectivement cité par les claims.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => {
+      const id = uriValue(variables.source_id);
+      const source = primarySources.find((item) => item.slug === id) || referenceHosts.find((item) => item.host === id);
+      return resourceJson(uri.toString(), source ? { id, ...source } : { error: 'source inconnue', id });
+    },
+  );
+
+  server.registerResource(
+    'signal-current',
+    new ResourceTemplate('l0g://signals/{instrument}/current', {
+      list: async () => ({
+        resources: Object.keys(signals).map((instrument) => resourceSummary(
+          `l0g://signals/${encodeURIComponent(instrument)}/current`,
+          `${instrument} current signal`,
+          `Signal courant ${instrument}`,
+        )),
+      }),
+      complete: { instrument: (value) => Object.keys(signals).filter((key) => key.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Current signal',
+      description: 'Signal de risque courant pour un instrument.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => {
+      const instrument = uriValue(variables.instrument);
+      return resourceJson(uri.toString(), {
+        instrument,
+        snapshot: risk?.snapshot ?? null,
+        generated: risk?.generated ?? null,
+        current: signals[instrument] ?? null,
+        history: (riskEvents?.events || []).filter((event) => event.key === instrument),
+        caveat: "Signal normalisé par instrument ; ne pas lire comme probabilité ou indice global comparable.",
+      });
+    },
+  );
+
+  server.registerResource(
+    'methodology',
+    new ResourceTemplate('l0g://methodologies/{instrument}', {
+      list: async () => ({
+        resources: methodologies.map((methodology) => resourceSummary(
+          `l0g://methodologies/${encodeURIComponent(methodology.slug)}`,
+          methodology.title,
+          methodology.description,
+        )),
+      }),
+      complete: { instrument: (value) => methodologies.map((item) => item.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Methodology',
+      description: 'Fiche méthodologique d’un dashboard ou signal l0g.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => {
+      const instrument = uriValue(variables.instrument);
+      const methodology = methodologies.find((item) => item.slug === instrument);
+      return resourceJson(uri.toString(), methodology || { error: 'méthodologie inconnue', instrument });
+    },
+  );
+
+  server.server.registerCapabilities({ resources: { subscribe: true, listChanged: true } });
+  const subscriptionNote = {
+    mode: 'stateless-http',
+    accepted: true,
+    liveNotifications: false,
+    note:
+      "Souscription acceptée pour compatibilité MCP. Le service actuel est stateless en requête/réponse ; surveiller l0g://changes/latest ou get_changefeed pour détecter les mises à jour. Les notifications push nécessitent une variante sessionnée.",
+  };
+  server.server.setRequestHandler(SubscribeRequestSchema, async (request) => ({
+    _meta: { ...subscriptionNote, uri: request.params.uri },
+  }));
+  server.server.setRequestHandler(UnsubscribeRequestSchema, async (request) => ({
+    _meta: { mode: 'stateless-http', accepted: true, uri: request.params.uri },
+  }));
 
   server.registerTool(
     'get_agent_manifest',
