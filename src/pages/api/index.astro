@@ -24,6 +24,31 @@ const datasetLd = {
     },
     {
       '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/agents.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/openapi.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/claims.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/integrity.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/changes.json`,
+    },
+    {
+      '@type': 'DataDownload',
       encodingFormat: 'application/atom+xml',
       contentUrl: `${ASITE}/api/v1/risk.xml`,
     },
@@ -92,6 +117,18 @@ const datasetLd = {
           <code class="ep-path">/api/v1/freshness.json</code>
           <span class="ep-type">JSON</span>
           <span class="ep-desc">Fraîcheur du corpus, derniers contenus et endpoints disponibles.</span>
+        </a>
+        <a class="ep card" href="/api/v1/integrity.json" target="_blank" rel="noopener" style="--t: #7aa2f7">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/integrity.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Empreintes SHA-256 canoniques des surfaces Agent Surface, pour vérifier un snapshot.</span>
+        </a>
+        <a class="ep card" href="/api/v1/changes.json" target="_blank" rel="noopener" style="--t: var(--color-amber)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/changes.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Changefeed machine : publications, révisions déclarées et changements éditoriaux structurants.</span>
         </a>
         <a class="ep card" href="/api/v1/catalog.json" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>

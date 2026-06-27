@@ -53,7 +53,7 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
-    `- [Agent Surface v1](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, claims sourcées, sources et fraîcheur.`
+    `- [Agent Surface v1.1](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, claims sourcées, sources, fraîcheur, intégrité et changefeed.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -140,6 +140,8 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Claims](${SITE}/api/v1/claims.json): graphe affirmation-source avec faits, estimations, inférences et scénarios, références cliquables et datées.`);
   lines.push(`- [Sources](${SITE}/api/v1/sources.json): registre sources primaires et hôtes effectivement cités.`);
   lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus, derniers contenus et endpoints disponibles.`);
+  lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
+  lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine des publications, révisions déclarées et changements éditoriaux.`);
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);

@@ -30,6 +30,7 @@ const refDate = post.data.updatedDate ?? post.data.pubDate;
 const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const evidence = buildArticleEvidence(post.body ?? '', {
   published: post.data.pubDate,
   updated: post.data.updatedDate,
@@ -38,6 +39,108 @@ const evidence = buildArticleEvidence(post.body ?? '', {
 });
 const proofBadges = evidence.badges.slice(0, 5);
 const proofDepth = evidence.depth;
+const evidenceRefs = evidence.claims.flatMap((claim) =>
+  claim.references.map((reference) => ({
+    ...reference,
+    claimId: claim.id,
+    claimKind: claim.kind,
+    claimText: claim.claim,
+    claimDate: claim.dateIso,
+  }))
+);
+const sourceWorks = Array.from(
+  new Map(
+    evidenceRefs
+      .filter((reference) => reference.href)
+      .map((reference) => [
+        reference.href,
+        {
+          '@type': 'CreativeWork',
+          '@id': reference.href.startsWith('http') ? reference.href : `${site}${reference.href}`,
+          name: reference.label,
+          url: reference.href.startsWith('http') ? reference.href : `${site}${reference.href}`,
+          datePublished: reference.dateIso ?? reference.claimDate ?? post.data.pubDate.toISOString().slice(0, 10),
+          publisher: reference.host ? { '@type': 'Organization', name: reference.host } : undefined,
+          additionalType: reference.kind ?? undefined,
+        },
+      ])
+  ).values()
+).slice(0, 24);
+const claimReviews = evidence.claims.slice(0, 12).map((claim) => ({
+  '@type': 'ClaimReview',
+  '@id': `${shareUrl}#claim-review-${claim.id}`,
+  url: shareUrl,
+  datePublished: claim.dateIso ?? post.data.pubDate.toISOString().slice(0, 10),
+  claimReviewed: claim.claim,
+  author: { '@id': `${site}/#org` },
+  itemReviewed: {
+    '@type': 'CreativeWork',
+    '@id': `${shareUrl}#claim-${claim.id}`,
+    text: claim.claim,
+    datePublished: claim.dateIso ?? post.data.pubDate.toISOString().slice(0, 10),
+    isPartOf: { '@id': `${shareUrl}#article` },
+  },
+  reviewAspect: 'relation affirmation-source',
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: proofDepth.score,
+    bestRating: 5,
+    worstRating: 1,
+    alternateName: claim.kind,
+    ratingExplanation:
+      'Score de profondeur de preuve l0g : il décrit la relation entre une affirmation et ses sources, pas une probabilité ni une certification absolue.',
+  },
+  citation: claim.references.map((reference) =>
+    reference.href.startsWith('http') ? reference.href : `${site}${reference.href}`
+  ),
+}));
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${shareUrl}#article`,
+      mainEntityOfPage: { '@id': shareUrl },
+      headline: post.data.title,
+      description: post.data.description,
+      url: shareUrl,
+      image: ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`,
+      datePublished: post.data.pubDate.toISOString(),
+      dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+      inLanguage: 'fr',
+      isAccessibleForFree: true,
+      license: 'https://creativecommons.org/licenses/by/4.0/',
+      author: { '@id': `${site}/#org` },
+      publisher: { '@id': `${site}/#org` },
+      about: post.data.tags.map((tag) => ({ '@type': 'Thing', name: tag })),
+      keywords: post.data.tags,
+      wordCount: post.body ? post.body.split(/\s+/).filter(Boolean).length : undefined,
+      timeRequired: `PT${rt}M`,
+      citation: sourceWorks.map((source) => ({ '@id': source['@id'] })),
+      isBasedOn: sourceWorks.map((source) => ({ '@id': source['@id'] })),
+      mentions: [
+        ...sourceWorks.map((source) => ({ '@id': source['@id'] })),
+        ...claimReviews.map((claim) => ({ '@id': claim['@id'] })),
+      ],
+      additionalProperty: [
+        {
+          '@type': 'PropertyValue',
+          name: 'proofDepth',
+          value: proofDepth.label,
+          description: proofDepth.detail,
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'proofDepthScore',
+          value: proofDepth.score,
+        },
+      ],
+    },
+    ...sourceWorks,
+    ...claimReviews,
+  ],
+};
+const safeArticleJsonLd = JSON.stringify(articleJsonLd).replace(/</g, '\\u003c');
 
 // Partage : URL absolue + textes encodés. Liens HTML purs, aucun script tiers.
 const shareTitle = post.data.title;
@@ -63,6 +166,8 @@ const trustItems = [
   ogType="article"
   ogImage={ogImage}
 >
+  <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
+
   <div class="read-progress" aria-hidden="true"><span></span></div>
 
   <article class="rise max-w-2xl" data-pagefind-body>

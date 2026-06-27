@@ -6,7 +6,7 @@ const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const trustItems = [
   { label: 'JSON statique', href: '/agents.json' },
   { label: 'OpenAPI', href: '/openapi.json' },
-  { label: 'claims datées', href: '/api/v1/claims.json' },
+  { label: 'SHA-256', href: '/api/v1/integrity.json' },
   { label: 'correction policy', href: '/protocole-editorial/' },
 ];
 
@@ -37,6 +37,16 @@ const endpoints = [
     role: 'Derniers contenus, compteurs de corpus, endpoints disponibles et politique de fraîcheur.',
   },
   {
+    path: '/api/v1/integrity.json',
+    label: 'Intégrité',
+    role: 'Empreintes SHA-256 canoniques des surfaces M2M, pour vérifier un snapshot sans dépendre du timestamp de build.',
+  },
+  {
+    path: '/api/v1/changes.json',
+    label: 'Changefeed',
+    role: 'Flux machine des publications, révisions déclarées et changements éditoriaux structurants.',
+  },
+  {
     path: '/api/v1/catalog.json',
     label: 'Catalogue',
     role: 'Carte complète du corpus : articles, guides, méthodologies, glossaire, sources et protocole.',
@@ -46,6 +56,8 @@ const endpoints = [
 const flow = [
   'Découvrir la surface avec /agents.json.',
   'Lire /api/v1/freshness.json pour dater le snapshot.',
+  'Vérifier les empreintes avec /api/v1/integrity.json si la réponse dépend d’un corpus figé.',
+  'Surveiller /api/v1/changes.json pour suivre les nouveaux contenus et révisions.',
   'Chercher le contenu dans /api/v1/catalog.json ou /llms.txt.',
   'Citer une affirmation via /api/v1/claims.json quand la réponse dépend d’un fait précis.',
   'Conserver l’URL canonique, la date et le type de claim dans la réponse générée.',
@@ -55,7 +67,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/donnees/agents/#agent-surface`,
-  headline: 'Agent Surface v1',
+  headline: 'Agent Surface v1.1',
   description:
     'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, claims, sources, fraîcheur et règles de citation.',
   inLanguage: 'fr',
@@ -67,8 +79,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title="Agent Surface v1"
-  description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, claims sourcées, sources, fraîcheur et règles de citation."
+  title="Agent Surface v1.1"
+  description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, claims sourcées, sources, fraîcheur, intégrité, changefeed et règles de citation."
   ogImage="/og-donnees.png"
   ogImageAlt="Agent Surface v1 l0g.fr : API, claims, sources et fraîcheur"
   sidebar={false}
@@ -77,11 +89,11 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1</p>
+      <p class="mono-label glow">// agent surface v1.1</p>
       <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
       <p class="agent-lede">
-        Agent Surface v1 expose le corpus l0g sous forme de JSON statique : catalogue,
-        claims sourcées, sources primaires, fraîcheur et contrat OpenAPI. La promesse est
+        Agent Surface v1.1 expose le corpus l0g sous forme de JSON statique : catalogue,
+        claims sourcées, sources primaires, fraîcheur, empreintes et contrat OpenAPI. La promesse est
         simple : un agent doit pouvoir citer une affirmation sans perdre la source, la date
         et le niveau de lecture.
       </p>
@@ -124,10 +136,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>Licence</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1 stable</strong></div>
+        <div><span>Version</span><strong>v1.1</strong></div>
         <div><span>Format</span><strong>JSON statique</strong></div>
         <div><span>Preuve</span><strong>claim-source</strong></div>
-        <div><span>Temps réel</span><strong>non strict</strong></div>
+        <div><span>Intégrité</span><strong>SHA-256</strong></div>
       </div>
     </section>
 
@@ -141,7 +153,9 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <p>
           Pour un agent RAG, utiliser <code>/api/v1/catalog.json</code> pour découvrir
           les documents, puis <code>/api/v1/claims.json</code> pour les assertions
-          sensibles. Pour une intégration typée, partir de <code>/openapi.json</code>.
+          sensibles. <code>/api/v1/changes.json</code> évite de rescanner tout le corpus,
+          et <code>/api/v1/integrity.json</code> permet de vérifier les empreintes du snapshot.
+          Pour une intégration typée, partir de <code>/openapi.json</code>.
         </p>
       </div>
     </section>

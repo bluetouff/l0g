@@ -109,6 +109,22 @@ const datasets = [
     count: 'fraîcheur',
     role: 'Derniers contenus, compteurs de corpus, endpoints disponibles et politique de fraîcheur.',
   },
+  {
+    label: 'integrity.json',
+    href: '/api/v1/integrity.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: 'hashes',
+    role: 'Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérifier les snapshots.',
+  },
+  {
+    label: 'changes.json',
+    href: '/api/v1/changes.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: 'changefeed',
+    role: 'Flux machine des publications, révisions déclarées et changements éditoriaux structurants.',
+  },
 ];
 
 const files = [
@@ -122,7 +138,7 @@ const trustItems = [
   { label: 'CORS ouvert', href: '/api/' },
   { label: 'licence CC BY 4.0', href: '/manifeste/' },
   { label: 'build statique', href: '/status/' },
-  { label: 'Agent Surface v1', href: '/donnees/agents/' },
+  { label: 'Agent Surface v1.1', href: '/donnees/agents/' },
 ];
 
 const jsonLd = {
@@ -220,13 +236,15 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="mono-label glow">// accès machine</p>
       <div class="access-grid">
         <a href="/api/" class="access-link"><span>API</span><strong>documentation humaine</strong></a>
-        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1</strong></a>
+        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.1</strong></a>
         <a href="/agents.json" class="access-link"><span>JSON</span><strong>manifeste agent</strong></a>
         <a href="/openapi.json" class="access-link"><span>OPENAPI</span><strong>contrat machine</strong></a>
         <a href="/api/v1/catalog.json" class="access-link"><span>JSON</span><strong>catalogue complet</strong></a>
         <a href="/api/v1/claims.json" class="access-link"><span>JSON</span><strong>claims sourcées</strong></a>
         <a href="/api/v1/sources.json" class="access-link"><span>JSON</span><strong>sources citées</strong></a>
         <a href="/api/v1/freshness.json" class="access-link"><span>JSON</span><strong>fraîcheur corpus</strong></a>
+        <a href="/api/v1/integrity.json" class="access-link"><span>JSON</span><strong>intégrité snapshots</strong></a>
+        <a href="/api/v1/changes.json" class="access-link"><span>JSON</span><strong>changefeed machine</strong></a>
         <a href="/llms.txt" class="access-link"><span>TXT</span><strong>carte concise agents</strong></a>
         <a href="/llms-full.txt" class="access-link"><span>TXT</span><strong>corpus intégral</strong></a>
         <a href="/rss.xml" class="access-link"><span>RSS</span><strong>flux éditorial</strong></a>

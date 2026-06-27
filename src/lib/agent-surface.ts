@@ -1,13 +1,15 @@
 import type { CollectionEntry } from 'astro:content';
+import { createHash } from 'node:crypto';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
-import { glossaryEntries } from '../config/glossary.ts';
+import { glossaryEntries, glossarySections } from '../config/glossary.ts';
 import { methodologyPages, riskBandScaleCaveat } from '../config/methodology.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
 import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.0.0';
+export const AGENT_VERSION = '1.1.0';
+export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 
 export type PostEntry = CollectionEntry<'posts'>;
@@ -19,8 +21,205 @@ export function jsonResponse(payload: unknown) {
   });
 }
 
+export function generatedAt() {
+  return AGENT_GENERATED_AT;
+}
+
 export function isoDate(value?: Date) {
   return value ? value.toISOString().slice(0, 10) : null;
+}
+
+function stableStringify(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map((item) => stableStringify(item)).join(',')}]`;
+  const record = value as Record<string, unknown>;
+  return `{${Object.keys(record)
+    .sort()
+    .map((key) => `${JSON.stringify(key)}:${stableStringify(record[key])}`)
+    .join(',')}}`;
+}
+
+function stripVolatileGenerated(value: unknown): unknown {
+  if (value === null || typeof value !== 'object') return value;
+  if (Array.isArray(value)) return value.map(stripVolatileGenerated);
+  const out: Record<string, unknown> = {};
+  for (const [key, item] of Object.entries(value as Record<string, unknown>)) {
+    if (key === 'generated') continue;
+    out[key] = stripVolatileGenerated(item);
+  }
+  return out;
+}
+
+export function canonicalJson(value: unknown) {
+  return stableStringify(stripVolatileGenerated(value));
+}
+
+export function sha256(value: string) {
+  return createHash('sha256').update(value, 'utf8').digest('hex');
+}
+
+function shortRevisionId(parts: string[]) {
+  return sha256(parts.join('|')).slice(0, 16);
+}
+
+const openApiEndpoint = (summary: string, description: string, schemaName: string) => ({
+  get: {
+    summary,
+    description,
+    operationId: schemaName.charAt(0).toLowerCase() + schemaName.slice(1),
+    responses: {
+      '200': {
+        description: 'Réponse JSON statique générée au build.',
+        content: {
+          'application/json': {
+            schema: { $ref: `#/components/schemas/${schemaName}` },
+          },
+        },
+      },
+    },
+  },
+});
+
+export function buildOpenApiContract() {
+  return {
+    openapi: '3.1.0',
+    info: {
+      title: 'l0g.fr Agent Surface API',
+      version: AGENT_VERSION,
+      description:
+        'Contrat public pour agents IA : manifeste, catalogue, graphe affirmation-source, registre de sources, fraîcheur, intégrité, changefeed, risque et corpus.',
+      license: { name: 'CC BY 4.0', url: 'https://creativecommons.org/licenses/by/4.0/' },
+    },
+    servers: [{ url: AGENT_SITE }],
+    paths: {
+      '/agents.json': openApiEndpoint('Manifeste agent', 'Découverte des capacités, endpoints, règles d’usage et politiques de preuve.', 'AgentManifest'),
+      '/api/v1/catalog.json': openApiEndpoint('Catalogue complet', 'Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.', 'Catalog'),
+      '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables et datées.', 'ClaimsSurface'),
+      '/api/v1/sources.json': openApiEndpoint('Registre sources', 'Sources primaires institutionnelles, hôtes cités, règles de citation et limites.', 'SourcesSurface'),
+      '/api/v1/freshness.json': openApiEndpoint('Fraîcheur', 'Derniers contenus, compteurs de corpus, endpoints et politique de fraîcheur.', 'FreshnessSurface'),
+      '/api/v1/integrity.json': openApiEndpoint('Intégrité', 'Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérification de snapshot.', 'IntegritySurface'),
+      '/api/v1/changes.json': openApiEndpoint('Changefeed', 'Flux machine des publications, révisions déclarées et changements éditoriaux structurants.', 'ChangefeedSurface'),
+      '/api/v1/risk.json': openApiEndpoint('Signaux de risque', 'Snapshots des dashboards de risque et caveats de normalisation.', 'RiskSnapshot'),
+      '/llms.txt': {
+        get: {
+          summary: 'Carte concise agents',
+          responses: { '200': { description: 'Texte brut.', content: { 'text/plain': { schema: { type: 'string' } } } } },
+        },
+      },
+      '/llms-full.txt': {
+        get: {
+          summary: 'Corpus agents étendu',
+          responses: { '200': { description: 'Texte brut.', content: { 'text/plain': { schema: { type: 'string' } } } } },
+        },
+      },
+    },
+    components: {
+      schemas: {
+        EvidenceReference: {
+          type: 'object',
+          required: ['label', 'href', 'dateLabel'],
+          properties: {
+            label: { type: 'string' },
+            href: { type: 'string' },
+            host: { type: ['string', 'null'] },
+            kind: { type: ['string', 'null'] },
+            date: { type: ['string', 'null'], format: 'date' },
+            dateLabel: { type: 'string' },
+          },
+        },
+        Claim: {
+          type: 'object',
+          required: ['id', 'articleSlug', 'kind', 'claim', 'dateLabel', 'references'],
+          properties: {
+            id: { type: 'string' },
+            localId: { type: 'string' },
+            articleSlug: { type: 'string' },
+            articleUrl: { type: 'string', format: 'uri' },
+            articleTitle: { type: 'string' },
+            kind: { enum: ['fait', 'estimation', 'inférence', 'scénario'] },
+            claim: { type: 'string' },
+            date: { type: ['string', 'null'], format: 'date' },
+            dateLabel: { type: 'string' },
+            confidence: { enum: ['auto-backfill', 'structurée'] },
+            references: { type: 'array', items: { $ref: '#/components/schemas/EvidenceReference' } },
+          },
+        },
+        AgentManifest: { type: 'object', additionalProperties: true },
+        Catalog: { type: 'object', additionalProperties: true },
+        ClaimsSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'counts', 'claims', 'references'],
+          properties: {
+            schema: { type: 'string' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            counts: { type: 'object', additionalProperties: true },
+            policy: { type: 'object', additionalProperties: true },
+            claims: { type: 'array', items: { $ref: '#/components/schemas/Claim' } },
+            references: { type: 'array', items: { type: 'object', additionalProperties: true } },
+          },
+        },
+        SourcesSurface: { type: 'object', additionalProperties: true },
+        FreshnessSurface: { type: 'object', additionalProperties: true },
+        IntegritySurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'algorithm', 'canonicalization', 'snapshots'],
+          properties: {
+            schema: { type: 'string' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            algorithm: { const: 'sha-256' },
+            canonicalization: { type: 'object', additionalProperties: true },
+            snapshots: {
+              type: 'array',
+              items: {
+                type: 'object',
+                required: ['path', 'url', 'canonicalSha256'],
+                properties: {
+                  path: { type: 'string' },
+                  url: { type: 'string', format: 'uri' },
+                  role: { type: 'string' },
+                  mediaType: { type: 'string' },
+                  canonicalSha256: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+                  canonicalBytes: { type: 'integer' },
+                },
+              },
+            },
+          },
+        },
+        ChangefeedSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'counts', 'entries'],
+          properties: {
+            schema: { type: 'string' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            counts: { type: 'object', additionalProperties: true },
+            feedPolicy: { type: 'object', additionalProperties: true },
+            entries: {
+              type: 'array',
+              items: {
+                type: 'object',
+                required: ['id', 'date', 'type', 'contentType', 'slug', 'title', 'url', 'changedFields', 'summary'],
+                properties: {
+                  id: { type: 'string' },
+                  date: { type: 'string', format: 'date-time' },
+                  type: { enum: ['article-published', 'article-revised', 'guide-published', 'guide-revised', 'editorial-change'] },
+                  contentType: { enum: ['article', 'guide', 'policy'] },
+                  slug: { type: 'string' },
+                  title: { type: 'string' },
+                  url: { type: 'string', format: 'uri' },
+                  changedFields: { type: 'array', items: { type: 'string' } },
+                  summary: { type: 'string' },
+                },
+              },
+            },
+          },
+        },
+        RiskSnapshot: { type: 'object', additionalProperties: true },
+      },
+    },
+  };
 }
 
 export function postUrl(post: PostEntry) {
@@ -117,6 +316,98 @@ export function buildGuideRecord(guide: GuideEntry) {
   };
 }
 
+export function buildCatalogSurface(posts: PostEntry[], guides: GuideEntry[]) {
+  const articles = sortPosts(posts).map(buildArticleRecord);
+  const sortedGuides = sortGuides(guides).map(buildGuideRecord);
+
+  const methodologies = methodologyPages.map((methodology) => ({
+    slug: methodology.slug,
+    url: `${AGENT_SITE}/methodologie/${methodology.slug}/`,
+    title: methodology.title,
+    label: methodology.label,
+    description: methodology.description,
+    question: methodology.question,
+    dashboard: methodology.dashboardUrl,
+    repo: methodology.repoUrl,
+    updated: methodology.updated,
+    scaleCaveat: methodology.slug === '13flow' ? null : riskBandScaleCaveat,
+    sources: methodology.sources.map((source) => ({ name: source.name, url: source.url, role: source.role })),
+  }));
+
+  const glossary = glossaryEntries.map((term) => ({
+    slug: term.slug,
+    url: `${AGENT_SITE}${term.url}`,
+    sigle: term.sigle,
+    name: term.nom,
+    definition: term.def,
+    category: term.sectionTitle,
+    guide: term.guide ? `${AGENT_SITE}${term.guide}` : null,
+  }));
+
+  const primarySources = primaryInstitutions.map((source) => ({
+    slug: source.slug,
+    url: `${AGENT_SITE}/sources/${source.slug}/`,
+    name: source.name,
+    shortName: source.shortName,
+    category: source.category,
+    officialUrl: source.url,
+    description: source.description,
+    datasets: source.datasets.map((dataset) => ({
+      name: dataset.name,
+      role: dataset.role,
+      cadence: dataset.cadence,
+      delay: dataset.delay,
+      url: dataset.url,
+    })),
+    limits: source.limits,
+  }));
+
+  const editorial = {
+    protocol: {
+      url: `${AGENT_SITE}/protocole-editorial/`,
+      updated: editorialProtocol.updated,
+      promise: editorialProtocol.promise,
+      principles: editorialProtocol.principles,
+      steps: editorialProtocol.steps,
+      evidenceLevels: editorialProtocol.evidenceLevels,
+      proofDepthLevels: editorialProtocol.proofDepthLevels,
+      precisionGuard: editorialProtocol.precisionGuard,
+      correctionPolicy: editorialProtocol.correctionPolicy,
+    },
+    changelog: editorialChangelog.map((entry) => ({
+      ...entry,
+      url: `${AGENT_SITE}/changelog-editorial/`,
+    })),
+  };
+
+  return {
+    schema: 'https://l0g.fr/api/',
+    version: '1',
+    generated: generatedAt(),
+    counts: {
+      articles: articles.length,
+      guides: sortedGuides.length,
+      topics: topics.length,
+      methodologies: methodologies.length,
+      glossary: glossary.length,
+      primarySources: primarySources.length,
+      editorialChangelog: editorial.changelog.length,
+    },
+    topics: topics.map((topic) => ({ slug: topic.slug, label: topic.label, blurb: topic.blurb })),
+    glossaryCategories: glossarySections.map((section) => ({ slug: section.slug, title: section.titre, count: section.entries.length })),
+    articles,
+    guides: sortedGuides,
+    methodologies,
+    riskBandScaleCaveat,
+    editorial,
+    primarySources,
+    glossary,
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
+    note: 'Catalogue best-effort. Le texte complet des analyses est servi par les pages /posts/.',
+  };
+}
+
 export function buildClaimsSurface(posts: PostEntry[]) {
   const articles = sortPosts(posts).map((post) => ({
     ...buildArticleRecord(post),
@@ -137,7 +428,7 @@ export function buildClaimsSurface(posts: PostEntry[]) {
   return {
     schema: `${OPENAPI_SCHEMA_BASE}/ClaimsSurface`,
     version: AGENT_VERSION,
-    generated: new Date().toISOString(),
+    generated: generatedAt(),
     counts: {
       articles: articles.length,
       claims: claims.length,
@@ -181,7 +472,7 @@ export function buildSourcesSurface(posts: PostEntry[]) {
   return {
     schema: `${OPENAPI_SCHEMA_BASE}/SourcesSurface`,
     version: AGENT_VERSION,
-    generated: new Date().toISOString(),
+    generated: generatedAt(),
     counts: {
       primarySources: primaryInstitutions.length,
       referenceHosts: referenceHosts.length,
@@ -227,7 +518,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[]) 
   return {
     schema: `${OPENAPI_SCHEMA_BASE}/FreshnessSurface`,
     version: AGENT_VERSION,
-    generated: new Date().toISOString(),
+    generated: generatedAt(),
     latest: latestContent.slice(0, 20).map((item) => ({
       type: item.type,
       slug: item.slug,
@@ -250,6 +541,8 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[]) 
       { path: '/api/v1/claims.json', role: 'Graphe affirmation-source', update: 'à chaque build' },
       { path: '/api/v1/sources.json', role: 'Registre sources et hôtes cités', update: 'à chaque build' },
       { path: '/api/v1/freshness.json', role: 'Fraîcheur et derniers contenus', update: 'à chaque build' },
+      { path: '/api/v1/integrity.json', role: 'Empreintes SHA-256 des surfaces M2M', update: 'à chaque build' },
+      { path: '/api/v1/changes.json', role: 'Changefeed machine des publications et révisions', update: 'à chaque build' },
       { path: '/llms.txt', role: 'Carte concise pour agents', update: 'à chaque build' },
       { path: '/llms-full.txt', role: 'Corpus textuel étendu', update: 'à chaque build' },
     ],
@@ -270,7 +563,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     version: AGENT_VERSION,
     name: 'l0g.fr Agent Surface',
     url: AGENT_SITE,
-    generated: new Date().toISOString(),
+    generated: generatedAt(),
     description:
       'Surface statique de données, preuves et méthodes pour agents IA : articles, claims sourcées, sources primaires, glossaire, dashboards et fraîcheur.',
     license: 'CC BY 4.0',
@@ -283,6 +576,8 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'freshness manifest',
       'primary-source registry',
       'editorial correction policy',
+      'verifiable snapshot hashes',
+      'machine-readable changefeed',
       'MCP-compatible corpus',
     ],
     endpoints: {
@@ -291,6 +586,8 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       claims: `${AGENT_SITE}/api/v1/claims.json`,
       sources: `${AGENT_SITE}/api/v1/sources.json`,
       freshness: `${AGENT_SITE}/api/v1/freshness.json`,
+      integrity: `${AGENT_SITE}/api/v1/integrity.json`,
+      changes: `${AGENT_SITE}/api/v1/changes.json`,
       risk: `${AGENT_SITE}/api/v1/risk.json`,
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
@@ -301,6 +598,8 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Citer les URL canoniques des articles, guides ou sources.',
       'Utiliser claims.json pour relier une affirmation à une source datée.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
+      'Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.',
+      'Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.',
       'Lire les champs caveat, limits et correctionPolicy avant synthèse.',
     ],
     prohibitedUse: [
@@ -323,5 +622,185 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       changelog: `${AGENT_SITE}/changelog-editorial/`,
       riskBandScaleCaveat,
     },
+  };
+}
+
+export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[]) {
+  const contentEntries = [
+    ...sortPosts(posts).flatMap((post) => {
+      const url = postUrl(post);
+      const published = {
+        id: shortRevisionId(['article-published', post.id, post.data.pubDate.toISOString()]),
+        date: post.data.pubDate.toISOString(),
+        type: 'article-published',
+        contentType: 'article',
+        slug: post.id,
+        title: post.data.title,
+        url,
+        changedFields: ['title', 'description', 'body', 'evidence'],
+        summary: `Publication de l’analyse : ${post.data.title}.`,
+      };
+      const revised = post.data.updatedDate && post.data.updatedDate.getTime() !== post.data.pubDate.getTime()
+        ? [{
+            id: shortRevisionId(['article-revised', post.id, post.data.updatedDate.toISOString()]),
+            date: post.data.updatedDate.toISOString(),
+            type: 'article-revised',
+            contentType: 'article',
+            slug: post.id,
+            title: post.data.title,
+            url,
+            changedFields: ['updatedDate', 'body', 'sources', 'evidence'],
+            summary: `Révision publiée pour l’analyse : ${post.data.title}.`,
+          }]
+        : [];
+      return [published, ...revised];
+    }),
+    ...sortGuides(guides).flatMap((guide) => {
+      const url = guideUrl(guide);
+      const published = {
+        id: shortRevisionId(['guide-published', guide.id, guide.data.pubDate.toISOString()]),
+        date: guide.data.pubDate.toISOString(),
+        type: 'guide-published',
+        contentType: 'guide',
+        slug: guide.id,
+        title: guide.data.title,
+        url,
+        changedFields: ['title', 'description', 'body'],
+        summary: `Publication du guide : ${guide.data.title}.`,
+      };
+      const revised = guide.data.updatedDate && guide.data.updatedDate.getTime() !== guide.data.pubDate.getTime()
+        ? [{
+            id: shortRevisionId(['guide-revised', guide.id, guide.data.updatedDate.toISOString()]),
+            date: guide.data.updatedDate.toISOString(),
+            type: 'guide-revised',
+            contentType: 'guide',
+            slug: guide.id,
+            title: guide.data.title,
+            url,
+            changedFields: ['updatedDate', 'body', 'sources'],
+            summary: `Révision publiée pour le guide : ${guide.data.title}.`,
+          }]
+        : [];
+      return [published, ...revised];
+    }),
+  ];
+
+  const editorialEntries = editorialChangelog.map((entry) => ({
+    id: shortRevisionId(['editorial-change', entry.date, entry.kind, entry.title]),
+    date: `${entry.date}T00:00:00.000Z`,
+    type: 'editorial-change',
+    contentType: 'policy',
+    slug: `${entry.date}-${entry.kind}`,
+    title: entry.title,
+    url: `${AGENT_SITE}/changelog-editorial/`,
+    changedFields: ['protocol', 'methodology', 'source-policy'],
+    summary: entry.summary,
+  }));
+
+  const entries = [...contentEntries, ...editorialEntries]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime() || a.id.localeCompare(b.id));
+
+  return {
+    schema: `${OPENAPI_SCHEMA_BASE}/ChangefeedSurface`,
+    version: AGENT_VERSION,
+    generated: generatedAt(),
+    counts: {
+      entries: entries.length,
+      articles: posts.length,
+      guides: guides.length,
+      editorialChanges: editorialEntries.length,
+    },
+    feedPolicy: {
+      scope: 'Publications, révisions déclarées par updatedDate et changements éditoriaux structurants.',
+      caveat: 'Le changefeed signale les changements publiés ; il ne remplace pas l’historique Git ligne à ligne.',
+      correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
+      changelog: `${AGENT_SITE}/changelog-editorial/`,
+    },
+    entries,
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
+  };
+}
+
+export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) {
+  const resources = [
+    {
+      path: '/agents.json',
+      role: 'Manifeste de découverte agent',
+      mediaType: 'application/json',
+      payload: buildAgentManifest(posts, guides),
+    },
+    {
+      path: '/openapi.json',
+      role: 'Contrat OpenAPI public',
+      mediaType: 'application/json',
+      payload: buildOpenApiContract(),
+    },
+    {
+      path: '/api/v1/catalog.json',
+      role: 'Catalogue machine complet',
+      mediaType: 'application/json',
+      payload: buildCatalogSurface(posts, guides),
+    },
+    {
+      path: '/api/v1/claims.json',
+      role: 'Graphe affirmation-source',
+      mediaType: 'application/json',
+      payload: buildClaimsSurface(posts),
+    },
+    {
+      path: '/api/v1/sources.json',
+      role: 'Registre sources et hôtes cités',
+      mediaType: 'application/json',
+      payload: buildSourcesSurface(posts),
+    },
+    {
+      path: '/api/v1/freshness.json',
+      role: 'Fraîcheur corpus',
+      mediaType: 'application/json',
+      payload: buildFreshnessSurface(posts, guides),
+    },
+    {
+      path: '/api/v1/changes.json',
+      role: 'Changefeed machine',
+      mediaType: 'application/json',
+      payload: buildChangefeedSurface(posts, guides),
+    },
+  ];
+
+  const snapshots = resources.map((resource) => {
+    const canonical = canonicalJson(resource.payload);
+    return {
+      path: resource.path,
+      url: `${AGENT_SITE}${resource.path}`,
+      role: resource.role,
+      mediaType: resource.mediaType,
+      canonicalSha256: sha256(canonical),
+      canonicalBytes: Buffer.byteLength(canonical, 'utf8'),
+    };
+  });
+
+  return {
+    schema: `${OPENAPI_SCHEMA_BASE}/IntegritySurface`,
+    version: AGENT_VERSION,
+    generated: generatedAt(),
+    algorithm: 'sha-256',
+    canonicalization: {
+      format: 'JSON stable : clés triées récursivement, sans espaces, champ generated ignoré.',
+      omittedFields: ['generated'],
+      reason: 'Le champ generated varie à chaque build ; les empreintes visent le contenu utile du snapshot.',
+    },
+    counts: {
+      snapshots: snapshots.length,
+      articles: posts.length,
+      guides: guides.length,
+    },
+    snapshots,
+    verification: {
+      rule: 'Récupérer le JSON, supprimer récursivement les champs generated, trier les clés, sérialiser sans espaces, puis calculer SHA-256.',
+      caveat: 'Ces empreintes vérifient les surfaces Agent Surface ; les fichiers externes conservent leur propre politique de version.',
+    },
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
   };
 }
