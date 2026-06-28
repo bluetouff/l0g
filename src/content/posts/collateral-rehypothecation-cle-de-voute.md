@@ -78,6 +78,4 @@ Tout se rejoint ici. Le repo est l'opération par laquelle le collatéral circul
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Fonds monétaire international, Manmohan Singh, « Velocity of Pledged Collateral: Analysis and Implications » (Working Paper 11/256, 2011), « Collateral Reuse and Balance Sheet Space » (WP 17/113, 2017), « Collateral and Financial Plumbing » (Risk Books) et, avec Goel, « The Pledged Collateral Market's Role in Transmission to Short-Term Market Rates » (2019) ; Singh et Aitken, « The Sizable Role of Rehypothecation in the Shadow Banking System » (2010) ; Réserve fédérale, FEDS Notes, « The Ins and Outs of Collateral Re-use » (2018, Infante, Press, Strauss) ; Pozsar et Singh, « The Nonbank-Bank Nexus and the Shadow Banking System ». Chiffres et repères vérifiés un à un.

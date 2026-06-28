@@ -57,6 +57,4 @@ Le cessez-le-feu d'avril n'a pas tenu. Les pourparlers d'Islamabad ont échoué 
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** EIA, Short-Term Energy Outlook (avril, mai et juin 2026) et communiqué du 7 avril 2026 ; IEA, Oil Market Report (mars 2026) ; Congressional Research Service, « Iran Conflict and the Strait of Hormuz » ; Lloyd's List ; Kpler ; CNBC.

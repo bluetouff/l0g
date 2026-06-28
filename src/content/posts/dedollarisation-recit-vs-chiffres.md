@@ -85,6 +85,4 @@ Mises bout à bout, les données dessinent une diversification à la marge, vers
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** FMI, COFER (T3 2025) et blog « Dollar's Share of Reserves Held Steady When Adjusted for FX Moves » (octobre 2025) ; CEPR, « The dollar's status through the lens of foreign exchange reserves » (mai 2026) ; SWIFT, Global Currency Tracker (janvier 2026) ; BIS, Triennial Central Bank Survey (2022) ; World Gold Council, Gold Demand Trends ; Brookings, « How important are central bank holdings of gold ? » (février 2026) ; Arslanalp, Eichengreen et Simpson-Bell.

@@ -79,6 +79,4 @@ La tension, si elle monte, se lira d'abord dans les bilans des fournisseurs d'in
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** communiqués et déclarations des sociétés (OpenAI, Nvidia, Oracle, Microsoft, CoreWeave, Amazon Web Services, AMD, Broadcom) ; Reuters et Bloomberg pour les montants et la chronologie des accords (Oracle environ 300 milliards de dollars sur cinq ans, Nvidia jusqu'à 100 milliards d'investissement, CoreWeave 22,4 milliards, AWS 38 milliards, backstop Nvidia-CoreWeave de 6,3 milliards) ; UBS Chief Investment Office (part de l'accord OpenAI-Nvidia dans le chiffre d'affaires 2026 de Nvidia, estimé autour de 272 milliards) ; estimations de presse sur le chiffre d'affaires d'environ 13 milliards et la perte attendue d'OpenAI en 2026. Engagements et dates vérifiés un à un ; les montants sont des engagements annoncés, non des dépenses constatées.

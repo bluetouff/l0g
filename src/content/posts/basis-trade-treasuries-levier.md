@@ -104,6 +104,4 @@ L'effet est à double tranchant. En interposant une chambre de compensation, on 
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** FMI, Global Financial Stability Report (avril 2026, taille du trade estimée autour de 1 000 milliards de dollars via proxys CFTC et OFR) ; CFTC, Market Risk Advisory Committee, « The Treasury Cash-Futures Basis Trade and Effective Risk Management » (10 décembre 2024) ; Office of Financial Research, Hedge Fund Monitor et collecte sur le repo compensé ; Réserve fédérale, FEDS Notes sur les positions des hedge funds et la note Barth et Kahn ; BIS, Schrimpf, Shin et Sushko, « Leverage and Margin Spirals in Fixed Income Markets during the COVID-19 Crisis » (2020) ; remarques de la gouverneure Lisa Cook (20 novembre 2025) ; SEC, règle de compensation des Treasuries et calendrier de mise en conformité (extensions du 25 février 2025, échéances des 31 décembre 2026 et 30 juin 2027) ; Federal Reserve Bank of Chicago sur l'effet du mandat de compensation. Chiffres et dates vérifiés un à un.

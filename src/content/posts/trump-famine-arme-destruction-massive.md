@@ -73,6 +73,4 @@ Aucun bilan chiffré précis de cette superposition ne peut être établi aujour
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Lancet, Cavalcanti et al. (2025) et Lancet Global Health (février 2026) ; Center for Global Development ; WFP Global Outlook et Global Report on Food Crises 2026 (FSIN / GNAFC, 24 avril 2026) ; SOFI 2025 (FAO, IFAD, UNICEF, WFP, OMS) ; déclarations publiques du Département d'État américain sur le périmètre des coupes de l'USAID.

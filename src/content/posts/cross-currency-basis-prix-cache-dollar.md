@@ -69,6 +69,4 @@ Le cross-currency basis est donc le prix affiché de la plomberie décrite dans 
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Bank for International Settlements, Borio, McCauley, McGuire et Sushko, « Covered interest parity lost: understanding the cross-currency basis » (Quarterly Review, septembre 2016) et BIS Working Papers no 590, « The failure of covered interest parity: FX hedging demand and costly balance sheets » ; Fonds monétaire international, Dao et Gourinchas, « Covered Interest Parity in Emerging Markets » (Working Paper, 2025) et WP/19/169 sur les déviations de CIP en Asie (won coréen jusqu'à environ 597 points de base en 2008) ; Réserve fédérale, FEDS, « Quantities and Covered-Interest Parity » (2024) ; Du, Tepper et Verdelhan sur les déviations post-crise. Chiffres et repères vérifiés un à un.

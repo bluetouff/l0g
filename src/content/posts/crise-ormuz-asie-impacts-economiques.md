@@ -87,6 +87,4 @@ L'onde de choc restera tangible même après la signature : pénuries de carbura
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Banque asiatique de développement, mise à jour spéciale des prévisions (29 avril 2026) et Asian Development Outlook (avril 2026) ; FMI, *World Economic Outlook : Global Economy in the Shadow of War* (avril 2026) ; Banque mondiale, *Commodity Markets Outlook* (28 avril 2026) ; PNUD, estimations des coûts de la crise ; Reuters, décompte des coûts pour les entreprises cotées ; S&P Global Ratings, *Economic Outlook Asia-Pacific Q2 2026* ; Moody's Analytics, *Asia-Pacific Outlook* ; Oxford Economics ; U.S. Energy Information Administration, *World Oil Transit Chokepoints* ; House of Commons Library, *Israel/US-Iran conflict 2026: Reopening the Strait of Hormuz* (juin 2026) ; PBS NewsHour et RFE/RL pour la chronologie du mémorandum du 17 juin et de la réouverture (juin 2026). Les chiffres de croissance, d'inflation et de prix proviennent de ces sources et n'ont pas été recalculés ; les estimations de production perdue et de pauvreté sont des fourchettes, sensibles à la durée du blocage et à la tenue de la trêve.

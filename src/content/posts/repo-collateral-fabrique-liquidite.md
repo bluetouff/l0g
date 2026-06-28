@@ -120,6 +120,4 @@ La leçon durable est là. La liquidité n'est pas un stock posé quelque part, 
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Réserve fédérale de New York, discours de Roberto Perli « Money Market Conditions and the Federal Reserve's Balance Sheet » (12 novembre 2025), « Reflections on the Early Days of Reserve Management Purchases » (26 mars 2026) et remarques à l'Atlanta Fed (19 mai 2026) ; FOMC, implementation note et minutes des 9-10 décembre 2025, statements de l'Open Market Trading Desk sur la facilité permanente (10 décembre 2025) ; Board of Governors, FEDS Note « The Central Bank Balance-Sheet Trilemma » (14 janvier 2026) et publication H.4.1 ; Congressional Research Service, « The Federal Reserve's Balance Sheet » ; Treasury, Quarterly Refunding Statement (4 février 2026) ; Wolf Street pour les tirages de fin d'année. Chiffres et dates vérifiés un à un. Pour le cadre conceptuel, travaux de référence de la New York Fed (Liberty Street Economics), du BIS, de l'OFR et l'archive Zoltan Pozsar sur le repo et le collatéral.

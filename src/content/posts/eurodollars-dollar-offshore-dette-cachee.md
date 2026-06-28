@@ -72,6 +72,4 @@ L'eurodollar ne vit pas à part. Il se finance sur les mêmes marchés que le [r
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Bank for International Settlements, indicateurs de liquidité mondiale, données à fin décembre 2025 (crédit dollar aux non-banques hors US à 14 300 milliards de dollars, plus forte croissance depuis 2014 ; crédit euro et yen hors zone) ; BIS, Quarterly Review de décembre 2022, Borio, McCauley et McGuire, « Dollar debt in FX swaps and forwards: huge, missing and growing » (dette dollar hors bilan estimée à environ 26 000 milliards pour les non-banques hors US et plus de 39 000 milliards pour les banques non américaines, sur données 2022) ; BIS, « FX swaps and forwards: missing global debt? » (Quarterly Review, septembre 2017) ; McGuire et von Peter, « The US dollar shortage in global banking and the international policy response » (BIS Working Papers, 2009). Chiffres et dates vérifiés un à un.

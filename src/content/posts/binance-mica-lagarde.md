@@ -99,6 +99,4 @@ Reste une objection institutionnelle qui mérite mieux qu'un haussement d'épaul
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Règlement (UE) 2023/1114 (MiCA), art. 143 ; registre intérimaire ESMA ; Reuters (16 juin 2026) ; *The Big Whale* et Cointelegraph / G. Jenkinson (17 juin 2026) ; déclarations publiques de C. Lagarde (forum Banco de España, mai 2026) et d'I. Schnabel (1er juin 2026) ; communication de Binance (juin 2026).

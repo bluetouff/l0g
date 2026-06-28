@@ -82,6 +82,4 @@ Les analystes ne tranchent pas. La société d'investissement Galaxy estime les 
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** commission bancaire du Sénat (communiqué du 14 mai 2026, adoption 15-9) ; Congress.gov (H.R. 3633, 119e Congrès) ; CoinDesk (déroulé du markup, amendements, calendrier, mai et juin 2026) ; Fortune et Elliptic (markup et amendement Van Hollen) ; Reuters (revenus crypto de la famille Trump estimés à 2,3 milliards de dollars, pertes des investisseurs à 2,25 milliards, mai 2026) ; rapport du sénateur Jamie Raskin, démocrates de la commission judiciaire de la Chambre, « Trump, Crypto, and a New Age of Corruption » (25 novembre 2025) ; Public Citizen (entrelacs avec Binance et intérêts étrangers, mai 2026) ; Galaxy Research et Astraea Law (pronostics). Les chiffres et dates ont été vérifiés un à un.

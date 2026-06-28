@@ -58,6 +58,4 @@ Le choc ne s'est pas refermé en un mois. L'inflation annuelle a continué de mo
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** US Bureau of Labor Statistics, Consumer Price Index (rapports de mars, avril et mai 2026) ; EIA, Short-Term Energy Outlook (avril 2026) ; analyses du Center for Commercial Agriculture (Purdue) sur la transmission du choc.

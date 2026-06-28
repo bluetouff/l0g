@@ -111,6 +111,4 @@ La leçon durable est là. Quand des dizaines de banques centrales se mettent, a
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** World Gold Council, Gold Demand Trends, année pleine 2025 et statistiques mensuelles des banques centrales (achats nets de 863 tonnes en 2025, moyenne 2010-2021 de 473 tonnes, records de 1 136 tonnes en 2022, 1 051 en 2023 et 1 045 en 2024, part non déclarée d'environ 57 %, enquête annuelle auprès des banques centrales) ; Banque centrale européenne, « The international role of the euro » (juin 2025) et l'encadré « Gold demand: the role of the official sector and geopolitics » (part de l'or à environ 20 % des réserves officielles fin 2024, devant l'euro, derrière le dollar ; lien entre sanctions et accumulation) ; Fonds monétaire international, base COFER (part du dollar dans les réserves de change) et International Financial Statistics ; Arslanalp, Eichengreen et Simpson-Bell, « Gold as international reserves: a barbarous relic no more? » (2023). Chiffres et dates vérifiés un à un ; les données déclarées sont sujettes à révision et à une part d'achats non rapportés.

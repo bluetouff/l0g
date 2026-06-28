@@ -87,8 +87,6 @@ Ce n’est donc pas seulement une histoire de volumes en baisse. C’est le sign
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :**
 
 - [General Administration of Customs of China, « China’s Major Imports by Quantity and Value, Mar 2026 »](https://english.customs.gov.cn/Statics/0b1880ef-115e-4b63-ab88-4e07a4826f10.html), 8 avril 2026.

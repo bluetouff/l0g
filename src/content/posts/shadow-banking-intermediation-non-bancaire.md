@@ -78,6 +78,4 @@ Le système non bancaire n'est pas un mal en soi. Il a élargi l'accès au créd
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Financial Stability Board, Global Monitoring Report on Non-Bank Financial Intermediation 2025, publié en décembre 2025 sur données 2024 (mesure large à 256 800 milliards de dollars et 51 pour cent des actifs mondiaux, autres intermédiaires financiers à 169 400 milliards, mesure étroite à 76 300 milliards, croissance des hedge funds et nexus banques et non-banques) ; Banque centrale européenne et ESRB, EU Non-bank Financial Intermediation Risk Monitor 2025 ; Congressional Research Service, « Nonbank Financial Intermediation (NBFI or Shadow Banking) Policy Issues » ; Bank for International Settlements, Aramonte, Schrimpf et Shin, « Non-bank financial intermediaries and financial stability ». Chiffres et dates vérifiés un à un.
