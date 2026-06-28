@@ -9,7 +9,7 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.7.0';
+export const AGENT_VERSION = '1.8.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -318,7 +318,7 @@ export function buildOpenApiContract() {
       schemas: {
         EvidenceReference: {
           type: 'object',
-          required: ['label', 'href', 'dateLabel'],
+          required: ['label', 'href', 'dateLabel', 'indexedAt'],
           additionalProperties: false,
           properties: {
             label: { type: 'string' },
@@ -330,6 +330,7 @@ export function buildOpenApiContract() {
             sourcePublicationDate: { type: ['string', 'null'], format: 'date' },
             sourcePublicationDateLabel: { type: ['string', 'null'] },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            indexedAt: { type: ['string', 'null'], format: 'date-time' },
           },
         },
         ClaimClassifier: {
@@ -931,6 +932,7 @@ export function buildOpenApiContract() {
             'observationDate',
             'sourcePublicationDate',
             'retrievedAt',
+            'indexedAt',
           ],
           additionalProperties: false,
           properties: {
@@ -946,6 +948,7 @@ export function buildOpenApiContract() {
             observationDate: { type: ['string', 'null'], format: 'date' },
             sourcePublicationDate: { type: ['string', 'null'], format: 'date' },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            indexedAt: { type: ['string', 'null'], format: 'date-time' },
           },
         },
         SourcesSurface: {
@@ -1057,6 +1060,7 @@ export function buildOpenApiContract() {
             observationDate: { type: ['string', 'null'], format: 'date' },
             sourcePublicationDate: { type: ['string', 'null'], format: 'date' },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            indexedAt: { type: ['string', 'null'], format: 'date-time' },
             confidence: { enum: ['auto-backfill', 'structurée'] },
             reviewStatus: { enum: ['unreviewed', 'reviewed'] },
             href: { type: 'string' },
@@ -1541,7 +1545,7 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
           dateLabel: claim.dateLabel,
           claimDate: claim.claimDateIso ?? claim.dateIso ?? null,
           claimDateLabel: claim.claimDateLabel ?? claim.dateLabel,
-          observationDate: claim.observationDateIso ?? claim.dateIso ?? null,
+          observationDate: claim.observationDateIso ?? null,
           observationDateLabel: claim.observationDateLabel ?? claim.dateLabel,
           confidence: claim.confidence,
           reviewStatus: review ? 'reviewed' : claim.reviewStatus,
@@ -1565,6 +1569,7 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
             sourcePublicationDate: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
             sourcePublicationDateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? null,
             retrievedAt: ref.retrievedAt ?? null,
+            indexedAt: ref.indexedAt ?? null,
           })),
         };
       })(),
@@ -1729,6 +1734,7 @@ export function buildClaimsSurface(posts: PostEntry[]) {
     observationDate: claim.observationDate,
     sourcePublicationDate: reference.sourcePublicationDate,
     retrievedAt: reference.retrievedAt,
+    indexedAt: reference.indexedAt,
   })));
 
   return {
@@ -1757,7 +1763,7 @@ export function buildClaimsSurface(posts: PostEntry[]) {
       review:
         'Les claims générées automatiquement portent reviewStatus=unreviewed tant qu’aucune validation humaine par claim n’est encodée dans src/config/claim-reviews.ts.',
       dateModel:
-        'claimDate décrit la date portée par l’affirmation ; observationDate décrit l’horizon observé quand il est détectable ; sourcePublicationDate appartient à la référence et reste null si elle n’est pas détectée dans le lien ou son libellé.',
+        'claimDate décrit la date portée par l’affirmation ; observationDate décrit l’horizon observé quand il est détectable ; sourcePublicationDate appartient à la référence ; retrievedAt reste null sans fetch réel de la source ; indexedAt indique l’indexation du lien dans le snapshot.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
     },
     claims,
@@ -1967,6 +1973,7 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
           observationDate: claim.observationDate,
           sourcePublicationDate: reference.sourcePublicationDate,
           retrievedAt: reference.retrievedAt,
+          indexedAt: reference.indexedAt,
         },
       });
       addNode({
@@ -2110,7 +2117,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
     signalFreshness: buildSignalFreshness(risk),
     freshnessPolicy: {
       rule: 'Les agents doivent privilégier date/updated pour le contenu éditorial, observedAt pour les signaux, puis computedAt/generated pour la fraîcheur du fichier.',
-      caveat: 'l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile. Les champs sourcePublishedAt et retrievedAt restent explicites et peuvent être null quand la source amont ne les expose pas.',
+      caveat: 'l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile. Les champs sourcePublishedAt et retrievedAt restent explicites et peuvent être null quand la source amont ne les expose pas ; indexedAt décrit seulement l’indexation du lien dans l’artefact.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
       changelog: `${AGENT_SITE}/changelog-editorial/`,
     },
@@ -2137,7 +2144,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'claim-source graph',
       'evidence graph',
       'clickable references with explicit source dates when detected',
-      'retrieval timestamps on every evidence reference',
+      'indexing timestamps on every evidence reference',
       'freshness manifest',
       'primary-source registry',
       'editorial correction policy',
@@ -2168,7 +2175,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     preferredUse: [
       'Citer les URL canoniques des articles, guides ou sources.',
       'Utiliser claims.json pour relier une affirmation à une source datée quand détectable.',
-      'Lire séparément claimDate, observationDate, sourcePublicationDate et retrievedAt.',
+      'Lire séparément claimDate, observationDate, sourcePublicationDate, retrievedAt et indexedAt.',
       'Utiliser evidence-graph.json pour parcourir articles, claims, références, hôtes, sources et datasets.',
       'Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',

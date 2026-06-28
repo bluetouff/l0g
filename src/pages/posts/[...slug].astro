@@ -47,7 +47,7 @@ const evidenceRefs = evidence.claims.flatMap((claim) =>
     claimKind: claim.kind,
     claimText: claim.claim,
     claimDate: claim.claimDateIso ?? claim.dateIso,
-    observationDate: claim.observationDateIso ?? claim.dateIso,
+    observationDate: claim.observationDateIso,
     sourcePublicationDate: reference.sourcePublicationDateIso ?? reference.dateIso,
   }))
 );

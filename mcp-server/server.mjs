@@ -38,7 +38,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.12.0';
+const MCP_VERSION = '1.13.0';
 function activeGitSha() {
   if (process.env.MCP_GIT_SHA) return process.env.MCP_GIT_SHA;
   if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
@@ -396,6 +396,7 @@ const EvidenceReferenceSchema = z.object({
   sourcePublicationDate: NullableString,
   sourcePublicationDateLabel: NullableString,
   retrievedAt: NullableString,
+  indexedAt: NullableString,
 }).strict();
 const CompactClaimSchema = z.object({
   id: z.string(),
@@ -795,6 +796,7 @@ function compactClaim(claim) {
       sourcePublicationDate: r.sourcePublicationDate,
       sourcePublicationDateLabel: r.sourcePublicationDateLabel,
       retrievedAt: r.retrievedAt,
+      indexedAt: r.indexedAt,
     })),
   };
 }
@@ -904,6 +906,7 @@ function buildServer(data) {
           sourcePublicationDate: reference.sourcePublicationDate,
           sourcePublicationDateLabel: reference.sourcePublicationDateLabel,
           retrievedAt: reference.retrievedAt,
+          indexedAt: reference.indexedAt,
         });
       }
     }
@@ -1022,7 +1025,7 @@ function buildServer(data) {
     const refs = claim.references || [];
     const linked = refs.filter((reference) => reference.href).length;
     const primary = refs.filter((reference) => norm(reference.kind).includes('primaire')).length;
-    const dated = refs.filter((reference) => reference.date || reference.dateLabel).length;
+    const dated = refs.filter((reference) => reference.sourcePublicationDate || reference.date).length;
     const hosts = new Set(refs.map((reference) => reference.host || hostFromUrl(reference.href)).filter(Boolean));
     const reviewedDirect = claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof';
     const reviewedReproduction = claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'reproduction';
@@ -1699,7 +1702,7 @@ function buildServer(data) {
         "Renvoie une claim précise par identifiant, avec ses références cliquables, datées quand détectable. " +
         "Utiliser list_article_claims ou get_claims pour découvrir les identifiants.",
       inputSchema: {
-        claimId: z.string().min(1).describe("Identifiant de claim, par exemple dollar-yen-intervention-risque-carry-2026:claim-1."),
+        claimId: z.string().min(1).describe("Identifiant de claim, par exemple dollar-yen-intervention-risque-carry-2026:claim-a1b2c3d4e5f6a7."),
       },
       outputSchema: ClaimOutput,
       annotations: { readOnlyHint: true },
@@ -1749,6 +1752,7 @@ function buildServer(data) {
           sourcePublicationDate: reference.sourcePublicationDate,
           sourcePublicationDateLabel: reference.sourcePublicationDateLabel,
           retrievedAt: reference.retrievedAt,
+          indexedAt: reference.indexedAt,
           })),
         returned: {
           directEvidence: direct.section.returned,

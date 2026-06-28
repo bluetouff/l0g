@@ -71,13 +71,19 @@ for (const claim of claims.claims || []) {
   assert(claim.classifier?.method === 'lexical-heuristic-v1', `classifier manquant: ${claim.id}`);
   assert(claim.classifier?.matchedRule !== 'default-fact', `default-fact interdit: ${claim.id}`);
   assert(claim.kind !== 'fait' || claim.reviewStatus === 'reviewed', `fait automatique interdit sans revue: ${claim.id}`);
+  assert(!/:claim-\d+$/.test(claim.id), `claim id positionnel instable: ${claim.id}`);
+  assert(!/^sources?\s+principales?\b/iu.test(claim.claim), `section bibliographique extraite en claim: ${claim.id}`);
   assert(Object.prototype.hasOwnProperty.call(claim, 'claimDate'), `claimDate manquant: ${claim.id}`);
   assert(Object.prototype.hasOwnProperty.call(claim, 'observationDate'), `observationDate manquant: ${claim.id}`);
+  if (claim.observationDateLabel === 'observation non détectée') {
+    assert(claim.observationDate === null, `observationDate doit rester null si non detectee: ${claim.id}`);
+  }
 
   for (const reference of claim.references || []) {
     assert(Object.prototype.hasOwnProperty.call(reference, 'sourcePublicationDate'), `sourcePublicationDate manquant: ${claim.id}`);
     assert(Object.prototype.hasOwnProperty.call(reference, 'retrievedAt'), `retrievedAt manquant: ${claim.id}`);
-    assert(reference.retrievedAt, `retrievedAt non alimente: ${claim.id} -> ${reference.href}`);
+    assert(Object.prototype.hasOwnProperty.call(reference, 'indexedAt'), `indexedAt manquant: ${claim.id}`);
+    assert(reference.indexedAt, `indexedAt non alimente: ${claim.id} -> ${reference.href}`);
     if (reference.sourcePublicationDate === null) {
       assert(reference.date === null, `date de reference fallback suspect: ${claim.id} -> ${reference.href}`);
     }

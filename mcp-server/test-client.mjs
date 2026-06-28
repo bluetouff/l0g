@@ -172,7 +172,12 @@ console.log('search_by_topic(crypto) ->', byTopic.count, '; label:', byTopic.lab
 const claims = await call('get_claims', { kind: 'unclassified-assertion', limit: 3 });
 console.log('get_claims(unclassified-assertion) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
 
-const claim = await call('get_claim', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1' });
+const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
+const dollarYenClaimId = articleClaims.claims?.[0]?.id;
+if (!dollarYenClaimId) throw new Error('list_article_claims ne renvoie aucune claim dollar-yen');
+console.log('list_article_claims ->', articleClaims.count, '| #1:', dollarYenClaimId);
+
+const claim = await call('get_claim', { claimId: dollarYenClaimId });
 if (claim.evidenceResource) throw new Error('get_claim ne doit pas exposer une URI evidence non enregistrée');
 if (claim.evidenceTool?.name !== 'get_claim_evidence') throw new Error('get_claim doit orienter vers get_claim_evidence');
 console.log('get_claim ->', claim.claimId, '| kind:', claim.claim?.kind);
@@ -180,12 +185,13 @@ console.log('get_claim ->', claim.claimId, '| kind:', claim.claim?.kind);
 const unknownClaim = await callExpectError('get_claim', { claimId: 'claim-inconnue' });
 console.log('get_claim(error) ->', unknownClaim.error);
 
-const claimEvidence = await call('get_claim_evidence', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1', limit: 40 });
+const claimEvidence = await call('get_claim_evidence', { claimId: dollarYenClaimId, limit: 40 });
 if (claimEvidence.evidence?.proofDepth === 'preuve directe') {
   throw new Error('get_claim_evidence ne doit pas attribuer preuve directe automatiquement');
 }
-if (claimEvidence.evidence?.proofDepth !== 'source primaire liée et datée') {
-  throw new Error(`niveau de preuve inattendu: ${claimEvidence.evidence?.proofDepth}`);
+const claimEvidenceHasDate = (claimEvidence.references || []).some((reference) => reference.sourcePublicationDate || reference.date);
+if (!claimEvidenceHasDate && /datée/.test(claimEvidence.evidence?.proofDepth || '')) {
+  throw new Error(`niveau de preuve daté sans date source: ${claimEvidence.evidence?.proofDepth}`);
 }
 if (!claimEvidence.directEvidence?.nodes?.length) throw new Error('get_claim_evidence sans section directEvidence');
 if (!claimEvidence.relatedContent?.nodes) throw new Error('get_claim_evidence sans section relatedContent');
@@ -197,9 +203,6 @@ console.log(
   '| related:',
   claimEvidence.relatedContent?.nodes?.length
 );
-
-const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
-console.log('list_article_claims ->', articleClaims.count, '| #1:', articleClaims.claims?.[0]?.id);
 
 const claimsBySource = await call('find_claims_by_source', { sourceId: 'fred.stlouisfed.org', limit: 3 });
 console.log('find_claims_by_source(fred) ->', claimsBySource.count);

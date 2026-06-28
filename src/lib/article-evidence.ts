@@ -3,6 +3,7 @@ import {
   type PrimarySourceInstitution,
 } from '../config/primary-sources.ts';
 import { claimReviewById } from '../config/claim-reviews.ts';
+import { createHash } from 'node:crypto';
 
 export interface EvidenceLink {
   label: string;
@@ -14,6 +15,7 @@ export interface EvidenceLink {
   sourcePublicationDateLabel?: string;
   sourcePublicationDateIso?: string;
   retrievedAt?: string | null;
+  indexedAt?: string | null;
 }
 
 export interface PrimaryEvidence {
@@ -96,7 +98,7 @@ const DASHBOARD_HOSTS = new Map([
   ['energie.l0g.fr', 'Énergie'],
   ['yct.l0g.fr', 'Yen Carry'],
 ]);
-const EVIDENCE_RETRIEVED_AT = new Date().toISOString();
+const EVIDENCE_INDEXED_AT = new Date().toISOString();
 
 function cleanLabel(value: string | undefined, fallback: string) {
   return String(value || fallback)
@@ -164,21 +166,94 @@ function stripMarkdown(value: string) {
 }
 
 function splitEvidenceBlocks(markdown: string) {
-  return String(markdown || '')
+  return removeBibliographySections(markdown)
     .replace(/```[\s\S]*?```/g, '\n')
     .split(/\n{2,}/)
     .map((block) => block.trim())
-    .filter((block) => block && /(?:\[[^\]]+\]\([^)]+\)|https?:\/\/|href=["'])/i.test(block));
+    .filter((block) => block && hasEvidenceLink(block) && !isBibliographyBlock(block));
 }
 
 function firstMeaningfulBlock(markdown: string) {
-  return String(markdown || '')
+  return removeBibliographySections(markdown)
     .replace(/```[\s\S]*?```/g, '\n')
     .split(/\n{2,}/)
     .map((block) => block.trim())
     .map(stripMarkdown)
     .filter((block) => block.length > 80 && !/^tags?\b/i.test(block))
     .at(0);
+}
+
+function hasEvidenceLink(value: string) {
+  return /(?:\[[^\]]+\]\([^)]+\)|https?:\/\/|href=["'])/i.test(value);
+}
+
+function isBibliographyHeading(value: string) {
+  return /^(?:#{1,6}\s*)?(?:sources?(?:\s+principales?)?|références|references|bibliographie|pour aller plus loin)\b/iu.test(
+    stripMarkdown(value).replace(/^[:\s-]+/, '').trim()
+  );
+}
+
+function isBibliographyBlock(value: string) {
+  return isBibliographyHeading(value) || /^\s*\*\*(?:sources?(?:\s+principales?)?|références|references|bibliographie)\s*:/iu.test(value);
+}
+
+function removeBibliographySections(markdown: string) {
+  const lines = String(markdown || '').split('\n');
+  const out: string[] = [];
+  let inBibliography = false;
+
+  for (const line of lines) {
+    if (isBibliographyHeading(line) || isBibliographyBlock(line)) {
+      inBibliography = true;
+      continue;
+    }
+    if (inBibliography && /^#{1,3}\s+\S/.test(line) && !isBibliographyHeading(line)) {
+      inBibliography = false;
+    }
+    if (!inBibliography) out.push(line);
+  }
+
+  return out.join('\n');
+}
+
+function splitClaimFragments(block: string) {
+  return block
+    .split(/(?<=[.!?])\s+(?=(?:["«(]*\p{Lu}|[0-9]))/u)
+    .map((fragment) => fragment.trim())
+    .filter((fragment) => fragment.length > 20 && hasEvidenceLink(fragment) && !isBibliographyBlock(fragment));
+}
+
+function normalizeClaimText(value: string) {
+  return stripMarkdown(value)
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function truncateOnSentenceBoundary(value: string, max = 340) {
+  const text = stripMarkdown(value);
+  if (text.length <= max) return text;
+  const boundary = Math.max(
+    text.lastIndexOf('.', max),
+    text.lastIndexOf('!', max),
+    text.lastIndexOf('?', max),
+    text.lastIndexOf(';', max)
+  );
+  const cut = boundary > 160 ? boundary + 1 : text.lastIndexOf(' ', max);
+  return `${text.slice(0, cut > 160 ? cut : max).trim()}...`;
+}
+
+function explicitClaimId(block: string) {
+  const marker = block.match(/<!--\s*claim-id:\s*([a-z0-9][a-z0-9-]{3,80})\s*-->/i);
+  return marker?.[1]?.toLowerCase();
+}
+
+function stableClaimId(block: string, claimText: string) {
+  const explicit = explicitClaimId(block);
+  if (explicit) return `claim-${explicit}`;
+  const hash = createHash('sha256').update(normalizeClaimText(claimText)).digest('hex').slice(0, 14);
+  return `claim-${hash}`;
 }
 
 function sourceHosts(source: PrimarySourceInstitution) {
@@ -303,12 +378,13 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
   if (!claim || !opts.url) return [];
   const date = publicationDate(opts.published);
   const observation = observationDateForBlock(claim);
+  const claimText = truncateOnSentenceBoundary(claim);
 
   return [
     {
-      id: 'claim-backfill-1',
-      kind: classifyClaim(claim),
-      claim: claim.slice(0, 340),
+      id: stableClaimId(claim, claimText),
+      kind: classifyClaim(claimText),
+      claim: claimText,
       dateLabel: observation.iso ? observation.label : date.label,
       dateIso: observation.iso ?? date.iso,
       claimDateLabel: date.label,
@@ -325,7 +401,8 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
           dateIso: date.iso,
           sourcePublicationDateLabel: date.label,
           sourcePublicationDateIso: date.iso,
-          retrievedAt: EVIDENCE_RETRIEVED_AT,
+          retrievedAt: null,
+          indexedAt: EVIDENCE_INDEXED_AT,
         },
       ],
       confidence: 'auto-backfill',
@@ -334,7 +411,7 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
       reviewedBy: null,
       reviewNote: null,
       reviewedProofDepth: null,
-      classifier: claimClassifier(claim),
+      classifier: claimClassifier(claimText),
     },
   ];
 }
@@ -501,7 +578,8 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
       dateIso: sourceDate?.iso,
       sourcePublicationDateLabel: sourceDate?.label,
       sourcePublicationDateIso: sourceDate?.iso,
-      retrievedAt: EVIDENCE_RETRIEVED_AT,
+      retrievedAt: null,
+      indexedAt: EVIDENCE_INDEXED_AT,
     };
   });
   const primary: PrimaryEvidence[] = [];
@@ -542,8 +620,9 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
     .slice(0, 12);
 
   const linkClaims = splitEvidenceBlocks(markdown)
-    .map((block, index): ClaimEvidence | null => {
-      const blockLinks = extractLinks(block)
+    .flatMap((block) => splitClaimFragments(block).map((fragment) => ({ block, fragment })))
+    .map(({ block, fragment }): ClaimEvidence | null => {
+      const blockLinks = extractLinks(fragment)
         .map((link) => {
           const local = isInternal(link) ? { ...link, href: toLocalPath(link), kind: internalKind(toLocalPath(link)) } : link;
           const dashboard = local.host && DASHBOARD_HOSTS.has(local.host)
@@ -557,20 +636,21 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
             dateIso: sourceDate?.iso,
             sourcePublicationDateLabel: sourceDate?.label,
             sourcePublicationDateIso: sourceDate?.iso,
-            retrievedAt: EVIDENCE_RETRIEVED_AT,
+            retrievedAt: null,
+            indexedAt: EVIDENCE_INDEXED_AT,
           };
         })
         .filter((link) => !link.href.startsWith('#'));
 
       if (!blockLinks.length) return null;
 
-      const claim = stripMarkdown(block).slice(0, 340);
+      const claim = truncateOnSentenceBoundary(fragment);
       if (!claim) return null;
       const claimDate = publicationDate(opts.published);
-      const observationDate = observationDateForBlock(block);
+      const observationDate = observationDateForBlock(fragment);
       const classification = classifyClaimWithRule(claim);
       return {
-        id: `claim-${index + 1}`,
+        id: stableClaimId(block, claim),
         kind: classification.kind,
         claim,
         dateLabel: observationDate.iso ? observationDate.label : claimDate.label,
