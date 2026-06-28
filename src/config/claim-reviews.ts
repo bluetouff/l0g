@@ -1,4 +1,5 @@
 import type { ClaimKind, EvidenceDepth } from '../lib/article-evidence.ts';
+import registryData from './claim-reviews.json';
 
 export type ClaimReviewEntry = {
   claimId: string;
@@ -14,12 +15,14 @@ export type ClaimReviewEntry = {
   reproductionArtifact?: string;
 };
 
+const entries = registryData.entries as ClaimReviewEntry[];
+
 export const claimReviewRegistry = {
-  version: '2026-06-28',
-  updated: '2026-06-28',
+  version: registryData.version,
+  updated: registryData.updated,
   policy:
     'Une claim ne devient reviewed que si son identifiant global articleSlug:claim-id est inscrit dans ce registre avec reviewer, date et note. Les niveaux direct-proof et reproduction exigent aussi evidenceLocator ; reproduction exige reproductionArtifact.',
-  entries: [] as ClaimReviewEntry[],
+  entries,
 };
 
-export const claimReviewById = new Map(claimReviewRegistry.entries.map((entry) => [entry.claimId, entry]));
+export const claimReviewById = new Map(entries.map((entry) => [entry.claimId, entry]));

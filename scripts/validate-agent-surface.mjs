@@ -104,6 +104,16 @@ for (const claim of claims.claims || []) {
   }
 }
 
+// claim-review-registry-integrity
+const reviewEntries = claims.reviewRegistry?.entries || [];
+const reviewIds = new Set();
+for (const review of reviewEntries) {
+  assert(!reviewIds.has(review.claimId), `review dupliquee: ${review.claimId}`);
+  reviewIds.add(review.claimId);
+  assert(claimIds.has(review.claimId), `review orpheline: ${review.claimId}`);
+}
+assert(reviewEntries.length === claims.counts.reviewedClaims, 'reviewedClaims ne correspond pas au registre');
+
 assert(
   (claims.claims || []).some((claim) => claim.observationDate && claim.observationDate !== claim.claimDate),
   'aucune observationDate distincte de claimDate detectee'

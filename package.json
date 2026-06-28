@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "test:agent-surface": "node scripts/validate-agent-surface.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "review": "node scripts/review-claims.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.0",
