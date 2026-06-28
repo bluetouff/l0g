@@ -9,7 +9,7 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.8.0';
+export const AGENT_VERSION = '1.9.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;

@@ -6,7 +6,7 @@ import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { topicForTag } from '../../config/topics.ts';
-import { buildArticleEvidence } from '../../lib/article-evidence.ts';
+import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evidence.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
@@ -69,11 +69,37 @@ const sourceWorks = Array.from(
       ])
   ).values()
 ).slice(0, 24);
-const claimReviews = evidence.claims.slice(0, 12).map((claim) => ({
+const claimProofDepthScore = (claim: ClaimEvidence) => {
+  if (claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'reproduction') return 5;
+  if (claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof') return 4;
+  if (claim.references.some((reference) => reference.href)) return 3;
+  if (claim.references.length) return 2;
+  return 1;
+};
+const automaticClaimWorks = evidence.claims
+  .filter((claim) => claim.reviewStatus !== 'reviewed')
+  .slice(0, 12)
+  .map((claim) => ({
+    '@type': 'CreativeWork',
+    '@id': `${shareUrl}#claim-${claim.id}`,
+    text: claim.claim,
+    datePublished: claim.claimDateIso ?? post.data.pubDate.toISOString().slice(0, 10),
+    isPartOf: { '@id': `${shareUrl}#article` },
+    additionalType: 'automated claim-source relation',
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: 'reviewStatus', value: claim.reviewStatus },
+      { '@type': 'PropertyValue', name: 'classifier', value: claim.classifier?.matchedRule },
+      { '@type': 'PropertyValue', name: 'classificationCaveat', value: claim.classifier?.caveat },
+    ],
+    citation: claim.references.map((reference) =>
+      reference.href.startsWith('http') ? reference.href : `${site}${reference.href}`
+    ),
+  }));
+const claimReviews = evidence.claims.filter((claim) => claim.reviewStatus === 'reviewed').slice(0, 12).map((claim) => ({
   '@type': 'ClaimReview',
   '@id': `${shareUrl}#claim-review-${claim.id}`,
   url: shareUrl,
-  datePublished: claim.dateIso ?? post.data.pubDate.toISOString().slice(0, 10),
+  datePublished: claim.reviewedAt ?? claim.claimDateIso ?? post.data.pubDate.toISOString().slice(0, 10),
   claimReviewed: claim.claim,
   author: { '@id': `${site}/#org` },
   itemReviewed: {
@@ -86,7 +112,7 @@ const claimReviews = evidence.claims.slice(0, 12).map((claim) => ({
   reviewAspect: 'relation affirmation-source',
   reviewRating: {
     '@type': 'Rating',
-    ratingValue: proofDepth.score,
+    ratingValue: claimProofDepthScore(claim),
     bestRating: 5,
     worstRating: 1,
     alternateName: claim.kind,
@@ -123,6 +149,7 @@ const articleJsonLd = {
       isBasedOn: sourceWorks.map((source) => ({ '@id': source['@id'] })),
       mentions: [
         ...sourceWorks.map((source) => ({ '@id': source['@id'] })),
+        ...automaticClaimWorks.map((claim) => ({ '@id': claim['@id'] })),
         ...claimReviews.map((claim) => ({ '@id': claim['@id'] })),
       ],
       additionalProperty: [
@@ -140,6 +167,7 @@ const articleJsonLd = {
       ],
     },
     ...sourceWorks,
+    ...automaticClaimWorks,
     ...claimReviews,
   ],
 };

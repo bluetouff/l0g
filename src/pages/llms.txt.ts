@@ -53,7 +53,7 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
-    `- [Agent Surface v1.8.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, intégrité attestée, revue humaine et changefeed versionné.`
+    `- [Agent Surface v1.9.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, intégrité attestée, revue humaine et changefeed versionné.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`

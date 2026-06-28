@@ -150,7 +150,7 @@ npm ci --omit=dev          # ou : npm install --omit=dev
 
 ```bash
 L0G_DATA_DIR=/var/www/html/l0g/current node server.mjs &
-curl -s http://127.0.0.1:8848/healthz       # -> {"ok":true}
+curl -s http://127.0.0.1:8848/healthz       # -> versions MCP/Agent Surface, SHA et fraîcheur chargée
 node test-client.mjs                          # liste les tools et teste chaque appel
 kill %1
 ```
@@ -163,7 +163,7 @@ sudo cp /opt/l0g-mcp/mcp-server/deploy/l0g-mcp.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now l0g-mcp
 systemctl status l0g-mcp --no-pager
-curl -s http://127.0.0.1:8848/healthz        # -> {"ok":true}
+curl -s http://127.0.0.1:8848/healthz        # -> versions MCP/Agent Surface, SHA et fraîcheur chargée
 ```
 
 ### 5. Brancher Apache (reverse proxy)

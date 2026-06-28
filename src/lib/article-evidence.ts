@@ -266,10 +266,11 @@ function sourceHosts(source: PrimarySourceInstitution) {
 
 function classifyClaimWithRule(text: string): { kind: ClaimKind; matchedRule: string } {
   const value = text.toLowerCase();
-  if (/(sc[eé]nario|hypoth[eè]se|projection|conditionnel|pourrait|pourraient|[àa] surveiller|si |dans ce cas|trajectoire)/iu.test(value)) {
+  const scenarioValue = value.replace(/\bm[eê]me\s+si\b/giu, '');
+  if (/(sc[eé]nario|hypoth[eè]se|projection|conditionnel|pourrait|pourraient|[àa] surveiller|dans ce cas|trajectoire|\bsi\s+(?:les?|la|l'|un|une|des|ce|cette|ces|on|nous|le\s+march[eé]|la\s+fed|la\s+bce)\b)/iu.test(scenarioValue)) {
     return { kind: 'scénario', matchedRule: 'scenario-marker' };
   }
-  if (/(estime|estimation|pr[eé]vision|environ|autour de|fourchette|probabilit[eé]|consensus|table sur|selon)/iu.test(value)) {
+  if (/(estime|estimation|pr[eé]vision|environ|fourchette|probabilit[eé]|consensus|table sur|selon)/iu.test(value)) {
     return { kind: 'estimation', matchedRule: 'estimate-marker' };
   }
   if (/(donc|sugg[eè]re|implique|signale|indique|lecture|interpr[eè]te|ce qui veut dire|en clair|j'en d[eé]duis)/iu.test(value)) {
@@ -527,8 +528,21 @@ function buildEvidenceDepth(args: {
   const hasReviewedDirectProof = args.claims.some(
     (claim) => claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof'
   );
+  const hasReviewedReproduction = args.claims.some(
+    (claim) => claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'reproduction'
+  );
   const hasDocumentLink = hasPrimaryLink || args.secondary.length > 0 || args.internalData.length > 0;
   const hasReference = args.primary.length > 0 || args.context.length > 0 || hasDocumentLink;
+
+  if (hasReviewedReproduction) {
+    return {
+      id: 'reproduction',
+      label: 'reproduction',
+      detail: 'donnée ou calcul reproduit explicitement par revue humaine',
+      score: 5,
+      automated: false,
+    };
+  }
 
   if (hasReviewedDirectProof) {
     return {

@@ -71,7 +71,15 @@ const claimTone: Record<string, string> = {
             <div class="claim-top">
               <span>{claim.kind}</span>
               <time datetime={claim.dateIso}>{claim.dateLabel}</time>
+              <span class={`review-badge ${claim.reviewStatus === 'reviewed' ? 'reviewed' : 'unreviewed'}`}>
+                {claim.reviewStatus === 'reviewed' ? 'revue humaine' : 'classification heuristique'}
+              </span>
             </div>
+            <p class="claim-review-note">
+              {claim.reviewStatus === 'reviewed'
+                ? claim.reviewNote ?? 'Relation relue dans le registre éditorial.'
+                : 'Non relue : type et relation source-affirmation produits par heuristique lexicale.'}
+            </p>
             <p>{claim.claim}</p>
             <div class="claim-refs">
               {claim.references.map((ref) => (
@@ -333,8 +341,24 @@ const claimTone: Record<string, string> = {
   .claim-inference .claim-top span { color: var(--color-accent); }
   .claim-scenario .claim-top span { color: #7aa2f7; }
   .claim-unclassified .claim-top span { color: var(--color-muted); }
+  .claim-top .review-badge {
+    border: 1px solid color-mix(in srgb, var(--color-amber) 42%, transparent);
+    border-radius: 999px;
+    color: var(--color-amber);
+    padding: 0.18rem 0.42rem;
+  }
+  .claim-top .review-badge.reviewed {
+    border-color: color-mix(in srgb, var(--color-signal) 48%, transparent);
+    color: var(--color-signal);
+  }
   .claim-top time {
     color: var(--color-muted);
+  }
+  .claim-review-note {
+    margin-top: 0.35rem;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    line-height: 1.45;
   }
   .claim-item p {
     margin-top: 0.4rem;

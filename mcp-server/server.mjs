@@ -38,7 +38,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.13.0';
+const MCP_VERSION = '1.14.0';
 function activeGitSha() {
   if (process.env.MCP_GIT_SHA) return process.env.MCP_GIT_SHA;
   if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
@@ -52,11 +52,13 @@ function activeGitSha() {
     return 'unknown';
   }
 }
+const CURRENT_SHA = activeGitSha();
+const SHA_STATUS = /^[0-9a-f]{40}$/i.test(CURRENT_SHA) ? 'verified-hex' : 'unknown';
 const MCP_SERVER_INFO = {
   name: 'l0g.fr',
   version: MCP_VERSION,
-  sha: activeGitSha(),
-  dataDir: DATA_DIR,
+  sha: CURRENT_SHA,
+  shaStatus: SHA_STATUS,
   transport: 'streamable-http',
   path: MCP_PATH,
 };
@@ -2238,7 +2240,31 @@ const httpServer = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
   // sonde de santé
-  if (req.method === 'GET' && url.pathname === '/healthz') return send(res, 200, { ok: true });
+  if (req.method === 'GET' && url.pathname === '/healthz') {
+    try {
+      const data = await loadData();
+      return send(res, 200, {
+        ok: true,
+        server: MCP_SERVER_INFO,
+        agentSurface: {
+          version: data.agent?.version || null,
+          generated: data.agent?.generated || null,
+        },
+        data: {
+          freshnessVersion: data.freshness?.version || null,
+          freshnessGenerated: data.freshness?.generated || null,
+          claimsVersion: data.claims?.version || null,
+          claimsGenerated: data.claims?.generated || null,
+        },
+      });
+    } catch (error) {
+      return send(res, 503, {
+        ok: false,
+        server: MCP_SERVER_INFO,
+        error: error instanceof Error ? error.message : 'healthz failed',
+      });
+    }
+  }
 
   if (url.pathname !== MCP_PATH) return send(res, 404, { error: 'not found' });
   if (!hostAllowed(req)) return send(res, 421, { error: 'host non autorisé' });

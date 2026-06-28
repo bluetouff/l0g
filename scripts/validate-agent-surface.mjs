@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import Ajv from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
@@ -22,7 +23,8 @@ const sources = readJson('dist/api/v1/sources.json');
 const integrity = readJson('dist/api/v1/integrity.json');
 
 function validateOpenapiArtifacts() {
-  const ajv = new Ajv({ strict: false, allErrors: true, validateFormats: false });
+  const ajv = new Ajv({ strict: false, allErrors: true });
+  addFormats(ajv);
   for (const [name, schema] of Object.entries(openapi.components?.schemas || {})) {
     ajv.addSchema(schema, `#/components/schemas/${name}`);
   }
@@ -95,11 +97,34 @@ assert(
   'aucune observationDate distincte de claimDate detectee'
 );
 
+const semanticGoldenClaims = [
+  {
+    articleSlug: 'dollar-yen-intervention-risque-carry-2026',
+    includes: 'autour de 161,94',
+    expectedKind: 'unclassified-assertion',
+    note: 'une observation de marche contenant autour de ne doit pas devenir estimation automatiquement',
+  },
+  {
+    articleSlug: 'dollar-yen-intervention-risque-carry-2026',
+    includes: 'même si la banque centrale',
+    expectedKind: 'unclassified-assertion',
+    note: 'meme si ne doit pas declencher scenario automatiquement',
+  },
+];
+
+for (const golden of semanticGoldenClaims) {
+  const claim = (claims.claims || []).find(
+    (item) => item.articleSlug === golden.articleSlug && item.claim.includes(golden.includes)
+  );
+  assert(claim, `golden claim introuvable: ${golden.note}`);
+  assert(claim.kind === golden.expectedKind, `golden claim invalide: ${golden.note} -> ${claim.kind}`);
+}
+
 for (const article of catalog.articles || []) {
-  if (article.evidence?.depth?.id !== 'direct-proof') continue;
+  if (article.evidence?.depth?.id !== 'direct-proof' && article.evidence?.depth?.id !== 'reproduction') continue;
   assert(
-    (article.evidence.claims || []).some((claim) => claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof'),
-    `direct-proof sans revue humaine explicite: ${article.slug}`
+    (article.evidence.claims || []).some((claim) => claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === article.evidence.depth.id),
+    `${article.evidence.depth.id} sans revue humaine explicite: ${article.slug}`
   );
 }
 

@@ -12,6 +12,14 @@ if (serverCapabilities.resources?.subscribe || serverCapabilities.resources?.lis
 }
 console.log('CAPABILITIES resources:', JSON.stringify(serverCapabilities.resources || {}));
 
+const healthUrl = new URL('/healthz', URL_).toString();
+const health = await fetch(healthUrl).then((res) => res.json());
+if (!health.ok || !health.server?.version || !health.server?.shaStatus || health.server?.dataDir) {
+  throw new Error('healthz incomplet ou fuite dataDir');
+}
+if (!health.agentSurface?.version) throw new Error('healthz sans version Agent Surface');
+console.log('healthz -> MCP:', health.server.version, '| Agent:', health.agentSurface.version, '| shaStatus:', health.server.shaStatus);
+
 const { tools } = await client.listTools();
 console.log('TOOLS:', tools.map((t) => t.name).join(', '));
 for (const required of [
@@ -46,8 +54,14 @@ for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity'
 
 const mcpServerResource = await client.readResource({ uri: 'l0g://mcp/server' });
 const mcpServerInfo = JSON.parse(mcpServerResource.contents?.[0]?.text || '{}');
-if (!mcpServerInfo.version || !mcpServerInfo.sha) throw new Error('readResource(mcp/server) sans version/SHA');
-console.log('readResource(mcp/server) -> version:', mcpServerInfo.version, '| sha:', mcpServerInfo.sha.slice(0, 12));
+if (!mcpServerInfo.version || !mcpServerInfo.sha || !mcpServerInfo.shaStatus) {
+  throw new Error('readResource(mcp/server) sans version/SHA/shaStatus');
+}
+if (mcpServerInfo.dataDir) throw new Error('readResource(mcp/server) expose dataDir');
+if (mcpServerInfo.shaStatus === 'verified-hex' && !/^[0-9a-f]{40}$/i.test(mcpServerInfo.sha)) {
+  throw new Error('readResource(mcp/server) shaStatus verified-hex sans SHA hexadécimal');
+}
+console.log('readResource(mcp/server) -> version:', mcpServerInfo.version, '| sha:', mcpServerInfo.sha.slice(0, 12), '| status:', mcpServerInfo.shaStatus);
 
 const { resourceTemplates } = await client.listResourceTemplates();
 console.log('RESOURCE_TEMPLATES:', resourceTemplates.map((template) => template.uriTemplate).join(', '));
