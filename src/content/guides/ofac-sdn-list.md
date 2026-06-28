@@ -54,6 +54,4 @@ Ce guide s'appuie sur des sources primaires : les ressources de l'OFAC sur la SD
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** U.S. Department of the Treasury, Office of Foreign Assets Control, ressources sur la *Specially Designated Nationals and Blocked Persons List* et guidance sur la règle des 50 % ; International Emergency Economic Powers Act (IEEPA, 1977) ; OFAC, communiqué de délistage de Tornado Cash du 21 mars 2025 ; United States Court of Appeals for the Fifth Circuit, *Van Loon v. Department of the Treasury*, 122 F.4th 549 (26 novembre 2024) ; United States District Court for the Western District of Texas, injonction d'avril 2025 ; couverture de référence (CoinDesk, analyses de cabinets spécialisés) pour le déroulé et le gel de stablecoins liés à des adresses sanctionnées.

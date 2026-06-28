@@ -54,6 +54,4 @@ Ce guide s'appuie sur des sources primaires : le règlement MiCA et ses titres, 
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** règlement (UE) 2023/1114 sur les marchés de crypto-actifs (MiCA) et ses titres II à VII ; ESMA, page et registre MiCA, et statements de mise en œuvre ; EBA, normes techniques relatives aux émetteurs d'ART et d'EMT significatifs ; calendriers d'application (stablecoins au 30 juin 2024, régime complet au 30 décembre 2024) et clause de transition de l'article 143 (échéance maximale au 1er juillet 2026). Les seuils et plafonds cités proviennent de ces sources.

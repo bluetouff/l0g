@@ -74,6 +74,4 @@ Ce guide s'appuie sur des sources primaires : la section 16 du Securities Exchan
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** SEC, section 16 du Securities Exchange Act de 1934, formulaires 3, 4 et 5 et leurs instructions ; Investor.gov, *Insider Transactions and Forms 3, 4, and 5* ; SEC, communiqué et guide de conformité sur les amendements à la règle 10b5-1 (adoptés le 14 décembre 2022, conformité des formulaires 4 et 5 à compter du 1er avril 2023) ; SEC, règle finale du 27 février 2026 étendant la section 16 aux dirigeants et administrateurs des émetteurs privés étrangers (Holding Foreign Insiders Accountable Act), en vigueur le 18 mars 2026 ; Lauren Cohen, Christopher Malloy et Lukasz Pomorski, « Decoding Inside Information », *The Journal of Finance*, vol. 67, 2012, p. 1009 à 1043 ; Lakonishok et Lee, « Are insiders' trades informative ? », *Review of Financial Studies*, 2001 ; Jeng, Metrick et Zeckhauser, « Estimating the Returns to Insider Trading », *Review of Economics and Statistics*, 2003.

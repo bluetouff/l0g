@@ -66,6 +66,4 @@ Ce guide s'appuie sur des sources institutionnelles primaires : le rapport du Co
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Financial Stability Board, *Report on Vulnerabilities in Private Credit* (6 mai 2026) ; FMI, *Global Financial Stability Report*, chapitre « The Rise and Risks of Private Credit » (avril 2024) et édition d'octobre 2025 ; Federal Reserve, *Financial Stability Report* et FEDS Note *Bank Lending to Private Credit* (mai 2025) ; Moody's, *Private Credit Outlook 2026* ; Bank for International Settlements sur le financement des entreprises d'intelligence artificielle ; indice Cliffwater Direct Lending et déclarations de son dirigeant sur les rendements et pertes 2025 ; couverture de presse de référence (Financial Times, Bloomberg, Reuters, CNBC) sur les faillites de First Brands et Tricolor, l'avertissement de Jamie Dimon du 15 octobre 2025 et la vague de rachats du premier trimestre 2026 ; dépôts SEC des BDC sur EDGAR.

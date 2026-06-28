@@ -70,6 +70,4 @@ Ce guide s'appuie exclusivement sur des sources primaires : le texte de la secti
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** SEC, Division of Investment Management, *Frequently Asked Questions About Form 13F* ; SEC, section 13(f) du Securities Exchange Act de 1934 et règle 13f-1 ; Investor.gov, *Form 13F* ; SEC, *Short Position and Short Activity Reporting by Institutional Investment Managers* (règle 13f-2 et Form SHO, adoptées le 13 octobre 2023) ; SEC, ordonnance d'exemption du 7 février 2025 et ordonnance du 3 décembre 2025 repoussant les premiers dépôts Form SHO à 2028 ; United States Court of Appeals for the Fifth Circuit, renvoi du 25 août 2025. La liste des titres éligibles est l'*Official List of Section 13(f) Securities*, mise à jour chaque trimestre par la SEC.

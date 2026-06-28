@@ -70,6 +70,4 @@ Ce guide décrit le fonctionnement public du Commitments of Traders à partir de
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Commodity Futures Trading Commission, page Commitments of Traders et notes explicatives (quatre familles de rapports : Legacy, désagrégé, Traders in Financial Futures, supplémentaire CIT ; catégories de traders ; seuil de 20 traders) ; CFTC, Release Schedule (publication le vendredi à 15 h 30, heure de l'Est, sur données du mardi) ; CFTC, FAQ et historiques (Legacy depuis 1986, désagrégé et TFF depuis 2006, CIT depuis 2006) ; Federal Register, « Review of the Commitments of Traders Reporting Program » (5 mai 2026), sur la classification via le Form 40 et la consultation en cours ; Office of Financial Research et CME Group pour les définitions des catégories financières. Dates, seuils et catégories vérifiés sur les documents de la CFTC.

@@ -56,6 +56,4 @@ Ce guide s'appuie sur des sources primaires : les communiqués et le tableau heb
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** Federal Reserve, tableau H.4.1 *Factors Affecting Reserve Balances* et communiqués de politique monétaire ; Federal Reserve, FEDS Note *The Central Bank Balance-Sheet Trilemma* (14 janvier 2026) ; Congressional Research Service, *The Federal Reserve's Balance Sheet* ; Federal Reserve Bank of New York, taux de référence (taux des fed funds effectif, taux ON RRP, SOFR, TGCR) et opérations de la facilité permanente de pension ; U.S. Department of the Treasury, Bureau of the Fiscal Service, *Daily Treasury Statement* ; FRED (Federal Reserve Bank of St. Louis) pour les séries agrégées. Les niveaux cités sont datés de fin 2025 et début 2026.

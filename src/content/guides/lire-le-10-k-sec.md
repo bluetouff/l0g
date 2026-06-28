@@ -50,6 +50,4 @@ Ce guide s'appuie sur des sources primaires : le formulaire 10-K et les règleme
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** SEC, formulaire 10-K et instructions ; SEC, Regulation S-K (dont rubrique 303 pour la discussion de la direction et rubrique 106 pour la cybersécurité) et Regulation S-X ; définitions des catégories de déposants (large accelerated, accelerated, non-accelerated) de la règle 12b-2 de l'Exchange Act ; actions de la SEC relatives aux facteurs de risque trompeurs (Mylan, Yahoo, SolarWinds). Les délais et seuils cités proviennent de ces sources.

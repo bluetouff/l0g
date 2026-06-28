@@ -52,6 +52,4 @@ Ce guide s'appuie sur des sources primaires : les sections 13(d) et 13(g) du Sec
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** SEC, sections 13(d) et 13(g) du Securities Exchange Act de 1934 et schedules 13D et 13G ; SEC, communiqué *SEC Adopts Amendments to Rules Governing Beneficial Ownership Reporting* (10 octobre 2023, communiqué 2023-219) et règles finales associées ; calendriers de conformité de la SEC (13D au 5 février 2024, 13G au 30 septembre 2024, format structuré au 18 décembre 2024). Les délais et seuils cités proviennent de ces sources.

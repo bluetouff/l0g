@@ -62,6 +62,4 @@ Ce guide s'appuie sur des sources primaires : le texte du GENIUS Act et son anal
 
 ---
 
-*Cet article ne constitue en aucun cas un conseil en investissement.*
-
 **Sources principales :** GENIUS Act (S. 1582, Public Law 119-27, promulgué le 18 juillet 2025) et son analyse par le Congressional Research Service ; Federal Reserve Bank of Richmond, *Stablecoins and the GENIUS Act: An Overview* (novembre 2025) ; Bank for International Settlements, *Stablecoins and safe asset prices*, Working Paper n° 1270 (2026) ; Banque centrale européenne sur la part du dollar dans l'offre de stablecoins ; déclaration du secrétaire au Trésor sur le GENIUS Act ; rapports de réserves publics de Tether et Circle ; règlement MiCA de l'Union européenne pour la comparaison des régimes. Les capitalisations de marché, parts et réserves sont datées de début 2026 et issues de données publiques agrégées.
