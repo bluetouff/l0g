@@ -60,9 +60,8 @@ aux opérations de recherche, filtrage et synthèse.
 | `l0g://methodologies/{instrument}` | fiche méthodologique |
 
 `resources/list` énumère aussi les instances connues via les templates. Les variables principales
-ont des callbacks de complétion. `resources/subscribe` et `resources/unsubscribe` sont acceptés pour
-compatibilité MCP ; le service public actuel est stateless en requête/réponse, donc les notifications
-push live nécessiteront une variante sessionnée. Pour surveiller le corpus aujourd’hui, lire
+ont des callbacks de complétion. Le service public actuel est stateless en requête/réponse et
+n’annonce pas `resources.subscribe` ni `resources.listChanged` : pour surveiller le corpus, lire
 `l0g://changes/latest` ou appeler `get_changefeed`.
 
 ## Tools exposés (tous `readOnlyHint`)

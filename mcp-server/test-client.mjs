@@ -6,6 +6,12 @@ const transport = new StreamableHTTPClientTransport(new URL(URL_));
 const client = new Client({ name: 'l0g-test', version: '1.0.0' });
 await client.connect(transport);
 
+const serverCapabilities = client.getServerCapabilities?.() || {};
+if (serverCapabilities.resources?.subscribe || serverCapabilities.resources?.listChanged) {
+  throw new Error('Le serveur annonce des souscriptions resources sans notifications live');
+}
+console.log('CAPABILITIES resources:', JSON.stringify(serverCapabilities.resources || {}));
+
 const { tools } = await client.listTools();
 console.log('TOOLS:', tools.map((t) => t.name).join(', '));
 for (const required of [
@@ -60,10 +66,6 @@ console.log('readResource(article) -> title:', JSON.parse(articleText).title);
 
 const signalResource = await client.readResource({ uri: 'l0g://signals/yen/current' });
 console.log('readResource(signal) -> instrument:', JSON.parse(signalResource.contents?.[0]?.text || '{}').instrument);
-
-const subscription = await client.subscribeResource({ uri: 'l0g://changes/latest' });
-console.log('subscribeResource(changes) -> accepted:', subscription._meta?.accepted === true);
-await client.unsubscribeResource({ uri: 'l0g://changes/latest' });
 
 async function call(name, args) {
   const r = await client.callTool({ name, arguments: args || {} });

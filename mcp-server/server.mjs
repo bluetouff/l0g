@@ -19,7 +19,6 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
-import { SubscribeRequestSchema, UnsubscribeRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
 
@@ -37,7 +36,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.11.0';
+const MCP_VERSION = '1.11.1';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -777,6 +776,15 @@ async function readNdjsonFeed(feed, limit, recordType) {
   return { spec, totalLines: total, totalMatches: matches, records };
 }
 
+function removeLiveNotificationCapabilities(server) {
+  const capabilities = server.server.getCapabilities();
+  for (const scope of ['resources', 'tools', 'prompts']) {
+    if (!capabilities[scope]) continue;
+    delete capabilities[scope].listChanged;
+  }
+  if (capabilities.resources) delete capabilities.resources.subscribe;
+}
+
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
   const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
@@ -1243,21 +1251,6 @@ function buildServer(data) {
       return resourceJson(uri.toString(), methodology || { error: 'méthodologie inconnue', instrument });
     },
   );
-
-  server.server.registerCapabilities({ resources: { subscribe: true, listChanged: true } });
-  const subscriptionNote = {
-    mode: 'stateless-http',
-    accepted: true,
-    liveNotifications: false,
-    note:
-      "Souscription acceptée pour compatibilité MCP. Le service actuel est stateless en requête/réponse ; surveiller l0g://changes/latest ou get_changefeed pour détecter les mises à jour. Les notifications push nécessitent une variante sessionnée.",
-  };
-  server.server.setRequestHandler(SubscribeRequestSchema, async (request) => ({
-    _meta: { ...subscriptionNote, uri: request.params.uri },
-  }));
-  server.server.setRequestHandler(UnsubscribeRequestSchema, async (request) => ({
-    _meta: { mode: 'stateless-http', accepted: true, uri: request.params.uri },
-  }));
 
   server.registerTool(
     'get_agent_manifest',
@@ -2017,6 +2010,7 @@ function buildServer(data) {
     }
   );
 
+  removeLiveNotificationCapabilities(server);
   return server;
 }
 
