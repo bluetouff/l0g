@@ -910,7 +910,8 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       risk: `${AGENT_SITE}/api/v1/risk.json`,
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
-      mcp: `${AGENT_SITE}/mcp`,
+      mcpEndpoint: `${AGENT_SITE}/api/mcp`,
+      mcpDocumentation: `${AGENT_SITE}/mcp/`,
       docs: `${AGENT_SITE}/donnees/agents/`,
     },
     preferredUse: [

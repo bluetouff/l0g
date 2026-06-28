@@ -147,8 +147,18 @@ console.log('get_changefeed(article) ->', changefeed.count);
 const changes = await call('get_changes', { contentType: 'article', since: '2026-06-27', limit: 3 });
 console.log('get_changes(article) ->', changes.count);
 
-const art = await call('get_article', { slug: 'clarity-act-trump-obstacle-conflit-interets' });
-console.log('get_article -> title:', art.title, '| words:', art.words, '| truncated:', art.truncated);
+const art = await call('get_article', { slug: 'economie-des-intentions', length: 5000 });
+if (!art.nextOffset || !art.truncated) throw new Error('get_article ne fournit pas de continuation sur article long');
+console.log('get_article(page 1) -> title:', art.title, '| chars:', art.textChars, '/', art.totalChars, '| next:', art.nextOffset);
+
+const artNext = await call('get_article', { slug: 'economie-des-intentions', offset: art.nextOffset, length: 5000 });
+console.log('get_article(page 2) -> offset:', artNext.offset, '| chars:', artNext.textChars, '| next:', artNext.nextOffset);
+
+const artSources = await call('get_article', { slug: 'economie-des-intentions', section: 'sources', length: 12000 });
+if (!artSources.sectionFound || !artSources.text?.toLowerCase().includes('sources principales')) {
+  throw new Error('get_article(section=sources) ne retrouve pas les sources');
+}
+console.log('get_article(sources) -> offset:', artSources.offset, '| chars:', artSources.textChars);
 
 const bad = await call('get_article', { slug: '../../etc/passwd' });
 console.log('get_article(path traversal) -> error:', bad.error);

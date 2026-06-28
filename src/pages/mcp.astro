@@ -45,7 +45,7 @@ const tools = [
   ['list_recent_analyses', 'limit', 'Dernières analyses publiées, de la plus récente à la plus ancienne.'],
   ['list_guides', 'aucun', 'Guides de référence (pages piliers durables).'],
   ['search_by_topic', 'topic, limit', 'Analyses rattachées à un sujet (hub thématique).'],
-  ['get_article', 'slug', "Texte complet d'une analyse ou d'un guide."],
+  ['get_article', 'slug, offset, length, section', "Texte paginé d'une analyse ou d'un guide, avec continuation et accès direct tail/sources."],
 ];
 
 const appLd = {
@@ -208,7 +208,8 @@ const appLd = {
       <p class="mt-3 max-w-2xl text-paper">
         Les tools sont réservés aux opérations : recherche, filtrage, historique, extraction
         de sous-graphe ou lecture ciblée. La recherche plein texte reste locale et déterministe,
-        sans base vectorielle ni fournisseur externe. Chaque réponse expose un résumé humain dans
+        sans base vectorielle ni fournisseur externe. Les articles longs sont paginables, avec
+        curseur de continuation et accès direct aux sources. Chaque réponse expose un résumé humain dans
         <code>content</code> et les données exploitables dans <code>structuredContent</code>,
         avec un <code>outputSchema</code> déclaré.
       </p>

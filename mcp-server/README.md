@@ -99,7 +99,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `list_recent_analyses` | `limit?` | dernières analyses |
 | `list_guides` | aucun | guides de référence |
 | `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |
-| `get_article` | `slug` | texte complet d'une analyse ou d'un guide |
+| `get_article` | `slug`, `offset?`, `length?`, `section?` | texte paginé d'une analyse ou d'un guide, avec `nextOffset` et accès direct `tail`/`sources` |
 
 ## Sécurité
 

@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.7.0';
+const MCP_VERSION = '1.8.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -163,6 +163,50 @@ function excerptFor(text, tokens, fallback) {
   const prefix = start > 0 ? '...' : '';
   const suffix = end < clean.length ? '...' : '';
   return `${prefix}${clean.slice(start, end).trim()}${suffix}`;
+}
+function articleChunk(text, options = {}) {
+  const full = String(text || '');
+  const totalChars = full.length;
+  const totalWords = full ? full.split(/\s+/).filter(Boolean).length : 0;
+  const section = options.section || 'body';
+  const requestedLength = Number.isFinite(options.length) ? options.length : 16000;
+  const length = Math.max(1000, Math.min(50000, requestedLength));
+  let offset = Math.max(0, Math.min(Number.isFinite(options.offset) ? options.offset : 0, totalChars));
+  let sectionFound = true;
+
+  if (section === 'head') {
+    offset = 0;
+  } else if (section === 'tail') {
+    offset = Math.max(0, totalChars - length);
+  } else if (section === 'sources') {
+    const normalized = norm(full);
+    const markers = ['sources principales', 'sources', 'references', 'références'];
+    const positions = markers.map((marker) => normalized.lastIndexOf(norm(marker))).filter((index) => index >= 0);
+    if (positions.length) {
+      offset = Math.min(...positions);
+    } else {
+      sectionFound = false;
+      offset = Math.max(0, totalChars - length);
+    }
+  }
+
+  const end = Math.min(totalChars, offset + length);
+  const chunk = full.slice(offset, end);
+  const nextOffset = end < totalChars ? end : null;
+  return {
+    text: chunk,
+    section,
+    sectionFound,
+    totalChars,
+    totalWords,
+    textChars: chunk.length,
+    words: chunk ? chunk.split(/\s+/).filter(Boolean).length : 0,
+    offset,
+    length,
+    nextOffset,
+    hasMore: nextOffset !== null,
+    truncated: nextOffset !== null,
+  };
 }
 async function readSearchDocument(candidate) {
   let bodyText = '';
@@ -406,6 +450,15 @@ const ArticleOutput = ToolOutput.extend({
   url: z.string().optional(),
   title: z.string().optional(),
   words: z.number().optional(),
+  totalWords: z.number().optional(),
+  totalChars: z.number().optional(),
+  textChars: z.number().optional(),
+  offset: z.number().optional(),
+  length: z.number().optional(),
+  nextOffset: z.number().nullable().optional(),
+  hasMore: z.boolean().optional(),
+  section: z.string().optional(),
+  sectionFound: z.boolean().optional(),
   truncated: z.boolean().optional(),
   text: z.string().optional(),
 }).passthrough();
@@ -604,16 +657,14 @@ function buildServer(data) {
     const root = parseHtml(html);
     const titleEl = root.querySelector('article h1') || root.querySelector('h1');
     const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
-    let text = (body ? body.text : '').replace(/\s+/g, ' ').trim();
-    const MAX = 30000;
-    const truncated = text.length > MAX;
-    if (truncated) text = text.slice(0, MAX);
+    const text = (body ? body.text : '').replace(/\s+/g, ' ').trim();
     return {
       ...record,
       type,
       title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : record.title,
       words: text ? text.split(/\s+/).length : 0,
-      truncated,
+      totalChars: text.length,
+      truncated: false,
       text,
     };
   }
@@ -1641,15 +1692,20 @@ function buildServer(data) {
     'get_article',
     {
       description:
-        "Renvoie le texte complet d'une analyse ou d'un guide de l0g.fr à partir de son slug " +
-        "(dernier segment de l'URL). Récupérer les slugs via search_content, list_recent_analyses ou list_guides.",
+        "Renvoie le texte d'une analyse ou d'un guide l0g à partir de son slug. " +
+        "Le résultat est paginable par offset/length et expose nextOffset pour récupérer la suite. " +
+        "Utiliser section=tail ou section=sources pour atteindre rapidement conclusion, limites, méthodologie et sources. " +
+        "Pour lire le document complet comme objet, utiliser aussi la ressource l0g://articles/{slug} ou l0g://guides/{slug}.",
       inputSchema: {
-        slug: z.string().describe("Slug de l'article ou du guide."),
+        slug: z.string().min(1).describe("Slug de l'article ou du guide."),
+        offset: z.number().int().min(0).default(0).describe('Position de départ en caractères pour paginer le texte.'),
+        length: z.number().int().min(1000).max(50000).default(16000).describe('Longueur maximale du segment renvoyé.'),
+        section: z.enum(['body', 'head', 'tail', 'sources']).default('body').describe('Section pratique : body avec offset, head, tail ou sources.'),
       },
       outputSchema: ArticleOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ slug }) => {
+    async ({ slug, offset, length, section: requestedSection }) => {
       const clean = String(slug || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
       if (!slugs.has(clean)) return reply({ error: 'slug inconnu', slug: clean });
       const isGuide = guides.some((g) => g.slug === clean);
@@ -1660,14 +1716,12 @@ function buildServer(data) {
         const root = parseHtml(html);
         const titleEl = root.querySelector('article h1') || root.querySelector('h1');
         const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
-        let text = (body ? body.text : '').replace(/\s+/g, ' ').trim();
-        const MAX = 16000;
-        const truncated = text.length > MAX;
-        if (truncated) text = text.slice(0, MAX);
+        const fullText = (body ? body.text : '').replace(/\s+/g, ' ').trim();
+        const chunk = articleChunk(fullText, { offset, length, section: requestedSection || 'body' });
         return reply({
           slug: clean, type: isGuide ? 'guide' : 'article', url,
           title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : clean,
-          words: text ? text.split(/\s+/).length : 0, truncated, text,
+          ...chunk,
         });
       } catch {
         return reply({ error: 'contenu introuvable', slug: clean, url });
