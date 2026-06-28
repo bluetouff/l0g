@@ -249,11 +249,24 @@ const appLd = {
   }
 }`}</code></pre>
 
-      <p class="mt-4 text-paper">Vérifier l'endpoint en une requête brute :</p>
+      <p class="mt-4 text-paper">
+        Cycle MCP minimal en JSON-RPC brut : initialisation, notification <code>initialized</code>,
+        puis appel ordinaire. Pour une session complète, préférer l'inspecteur ou <code>mcp-remote</code>.
+      </p>
       <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'`}</code></pre>
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
+
+curl -s -X POST ${ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
+
+curl -s -X POST ${ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`}</code></pre>
     </div>
 
     <div>
