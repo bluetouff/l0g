@@ -8,7 +8,7 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.4.1';
+export const AGENT_VERSION = '1.5.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -140,6 +140,82 @@ function shortRevisionId(parts: string[]) {
   return sha256(parts.join('|')).slice(0, 16);
 }
 
+function versionHash(value: unknown) {
+  return sha256(stableStringify(value));
+}
+
+function changeObjectId(contentType: 'article' | 'guide' | 'policy', slug: string) {
+  return `${contentType}:${slug}`;
+}
+
+function contentVersionHash(entry: PostEntry | GuideEntry, contentType: 'article' | 'guide') {
+  const base = {
+    contentType,
+    slug: entry.id,
+    title: entry.data.title,
+    description: entry.data.description,
+    pubDate: entry.data.pubDate.toISOString(),
+    updatedDate: entry.data.updatedDate?.toISOString() ?? null,
+    tags: entry.data.tags,
+    body: entry.body ?? '',
+  };
+
+  if (contentType === 'article') {
+    return versionHash({
+      ...base,
+      evidence: buildArticleEvidenceRecord(entry as PostEntry, { globalClaimIds: true }),
+    });
+  }
+
+  return versionHash(base);
+}
+
+function editorialVersionHash(entry: (typeof editorialChangelog)[number]) {
+  return versionHash({
+    contentType: 'policy',
+    date: entry.date,
+    kind: entry.kind,
+    title: entry.title,
+    summary: entry.summary,
+    links: entry.links,
+  });
+}
+
+function semanticChangeFor(fields: string[], type: string) {
+  if (type.endsWith('published')) return 'publication';
+  if (fields.includes('protocol') || fields.includes('methodology') || fields.includes('source-policy')) return 'editorial-policy-change';
+  if (fields.includes('evidence')) return 'evidence-update';
+  if (fields.includes('sources')) return 'source-update';
+  return 'content-revision';
+}
+
+function diffMetadata(input: {
+  contentType: 'article' | 'guide' | 'policy';
+  slug: string;
+  type: string;
+  date: string;
+  currentHash: string | null;
+  changedFields: string[];
+  previousVersion?: string | null;
+  correctionReason?: string | null;
+  diffStatus?: 'current-only' | 'previous-version-known-without-hash' | 'historical-version-without-hash' | 'full-diff';
+}) {
+  const objectId = changeObjectId(input.contentType, input.slug);
+  const previousVersion = input.previousVersion ?? null;
+
+  return {
+    objectId,
+    previousVersion,
+    currentVersion: input.date,
+    previousHash: null,
+    currentHash: input.currentHash,
+    replaces: previousVersion ? { objectId, version: previousVersion, hash: null } : null,
+    semanticChange: semanticChangeFor(input.changedFields, input.type),
+    correctionReason: input.correctionReason ?? null,
+    diffStatus: input.diffStatus ?? (previousVersion ? 'previous-version-known-without-hash' : 'current-only'),
+  };
+}
+
 function graphSafeId(value: string) {
   return value
     .toLowerCase()
@@ -220,7 +296,7 @@ export function buildOpenApiContract() {
       '/api/v1/sources.json': openApiEndpoint('Registre sources', 'Sources primaires institutionnelles, hôtes cités, règles de citation et limites.', 'SourcesSurface'),
       '/api/v1/freshness.json': openApiEndpoint('Fraîcheur', 'Derniers contenus, compteurs de corpus, endpoints et politique de fraîcheur.', 'FreshnessSurface'),
       '/api/v1/integrity.json': openApiEndpoint('Intégrité', 'Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérification de snapshot.', 'IntegritySurface'),
-      '/api/v1/changes.json': openApiEndpoint('Changefeed', 'Flux machine des publications, révisions déclarées et changements éditoriaux structurants.', 'ChangefeedSurface'),
+      '/api/v1/changes.json': openApiEndpoint('Changefeed', 'Flux machine des publications, révisions et politiques, avec version courante, hash, statut de diff et changement sémantique.', 'ChangefeedSurface'),
       '/api/v1/changes.ndjson': openApiNdjsonEndpoint('Changefeed NDJSON', 'Changefeed machine en lignes NDJSON, une publication ou révision par ligne.'),
       '/api/v1/risk.json': openApiEndpoint('Signaux de risque', 'Snapshots des dashboards de risque et caveats de normalisation.', 'RiskSnapshot'),
       '/llms.txt': {
@@ -694,22 +770,62 @@ export function buildOpenApiContract() {
             feedPolicy: { type: 'object', additionalProperties: true },
             entries: {
               type: 'array',
-              items: {
-                type: 'object',
-                required: ['id', 'date', 'type', 'contentType', 'slug', 'title', 'url', 'changedFields', 'summary'],
-                properties: {
-                  id: { type: 'string' },
-                  date: { type: 'string', format: 'date-time' },
-                  type: { enum: ['article-published', 'article-revised', 'guide-published', 'guide-revised', 'editorial-change'] },
-                  contentType: { enum: ['article', 'guide', 'policy'] },
-                  slug: { type: 'string' },
-                  title: { type: 'string' },
-                  url: { type: 'string', format: 'uri' },
-                  changedFields: { type: 'array', items: { type: 'string' } },
-                  summary: { type: 'string' },
-                },
-              },
+              items: { $ref: '#/components/schemas/ChangefeedEntry' },
             },
+          },
+        },
+        ChangefeedReplacement: {
+          type: 'object',
+          required: ['objectId', 'version', 'hash'],
+          additionalProperties: false,
+          properties: {
+            objectId: { type: 'string' },
+            version: { type: 'string', format: 'date-time' },
+            hash: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
+          },
+        },
+        ChangefeedEntry: {
+          type: 'object',
+          required: [
+            'id',
+            'objectId',
+            'date',
+            'type',
+            'contentType',
+            'slug',
+            'title',
+            'url',
+            'changedFields',
+            'summary',
+            'previousVersion',
+            'currentVersion',
+            'previousHash',
+            'currentHash',
+            'replaces',
+            'semanticChange',
+            'correctionReason',
+            'diffStatus',
+          ],
+          additionalProperties: false,
+          properties: {
+            id: { type: 'string' },
+            objectId: { type: 'string' },
+            date: { type: 'string', format: 'date-time' },
+            type: { enum: ['article-published', 'article-revised', 'guide-published', 'guide-revised', 'editorial-change'] },
+            contentType: { enum: ['article', 'guide', 'policy'] },
+            slug: { type: 'string' },
+            title: { type: 'string' },
+            url: { type: 'string', format: 'uri' },
+            changedFields: { type: 'array', items: { type: 'string' } },
+            summary: { type: 'string' },
+            previousVersion: { type: ['string', 'null'], format: 'date-time' },
+            currentVersion: { type: 'string', format: 'date-time' },
+            previousHash: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
+            currentHash: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
+            replaces: { anyOf: [{ $ref: '#/components/schemas/ChangefeedReplacement' }, { type: 'null' }] },
+            semanticChange: { enum: ['publication', 'content-revision', 'source-update', 'evidence-update', 'editorial-policy-change'] },
+            correctionReason: { type: ['string', 'null'] },
+            diffStatus: { enum: ['current-only', 'previous-version-known-without-hash', 'historical-version-without-hash', 'full-diff'] },
           },
         },
         RiskSignal: {
@@ -1401,9 +1517,12 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
   const contentEntries = [
     ...sortPosts(posts).flatMap((post) => {
       const url = postUrl(post);
+      const currentHash = contentVersionHash(post, 'article');
+      const publishedDate = post.data.pubDate.toISOString();
+      const hasRevision = Boolean(post.data.updatedDate && post.data.updatedDate.getTime() !== post.data.pubDate.getTime());
       const published = {
-        id: shortRevisionId(['article-published', post.id, post.data.pubDate.toISOString()]),
-        date: post.data.pubDate.toISOString(),
+        id: shortRevisionId(['article-published', post.id, publishedDate]),
+        date: publishedDate,
         type: 'article-published',
         contentType: 'article',
         slug: post.id,
@@ -1411,27 +1530,52 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
         url,
         changedFields: ['title', 'description', 'body', 'evidence'],
         summary: `Publication de l’analyse : ${post.data.title}.`,
+        ...diffMetadata({
+          contentType: 'article',
+          slug: post.id,
+          type: 'article-published',
+          date: publishedDate,
+          currentHash: hasRevision ? null : currentHash,
+          changedFields: ['title', 'description', 'body', 'evidence'],
+          diffStatus: hasRevision ? 'historical-version-without-hash' : 'current-only',
+        }),
       };
-      const revised = post.data.updatedDate && post.data.updatedDate.getTime() !== post.data.pubDate.getTime()
-        ? [{
-            id: shortRevisionId(['article-revised', post.id, post.data.updatedDate.toISOString()]),
-            date: post.data.updatedDate.toISOString(),
-            type: 'article-revised',
-            contentType: 'article',
-            slug: post.id,
-            title: post.data.title,
-            url,
-            changedFields: ['updatedDate', 'body', 'sources', 'evidence'],
-            summary: `Révision publiée pour l’analyse : ${post.data.title}.`,
-          }]
+      const revised = hasRevision
+        ? (() => {
+            const revisedDate = post.data.updatedDate!.toISOString();
+            const changedFields = ['updatedDate', 'body', 'sources', 'evidence'];
+            return [{
+              id: shortRevisionId(['article-revised', post.id, revisedDate]),
+              date: revisedDate,
+              type: 'article-revised',
+              contentType: 'article',
+              slug: post.id,
+              title: post.data.title,
+              url,
+              changedFields,
+              summary: `Révision publiée pour l’analyse : ${post.data.title}.`,
+              ...diffMetadata({
+                contentType: 'article',
+                slug: post.id,
+                type: 'article-revised',
+                date: revisedDate,
+                currentHash,
+                changedFields,
+                previousVersion: publishedDate,
+              }),
+            }];
+          })()
         : [];
       return [published, ...revised];
     }),
     ...sortGuides(guides).flatMap((guide) => {
       const url = guideUrl(guide);
+      const currentHash = contentVersionHash(guide, 'guide');
+      const publishedDate = guide.data.pubDate.toISOString();
+      const hasRevision = Boolean(guide.data.updatedDate && guide.data.updatedDate.getTime() !== guide.data.pubDate.getTime());
       const published = {
-        id: shortRevisionId(['guide-published', guide.id, guide.data.pubDate.toISOString()]),
-        date: guide.data.pubDate.toISOString(),
+        id: shortRevisionId(['guide-published', guide.id, publishedDate]),
+        date: publishedDate,
         type: 'guide-published',
         contentType: 'guide',
         slug: guide.id,
@@ -1439,35 +1583,70 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
         url,
         changedFields: ['title', 'description', 'body'],
         summary: `Publication du guide : ${guide.data.title}.`,
+        ...diffMetadata({
+          contentType: 'guide',
+          slug: guide.id,
+          type: 'guide-published',
+          date: publishedDate,
+          currentHash: hasRevision ? null : currentHash,
+          changedFields: ['title', 'description', 'body'],
+          diffStatus: hasRevision ? 'historical-version-without-hash' : 'current-only',
+        }),
       };
-      const revised = guide.data.updatedDate && guide.data.updatedDate.getTime() !== guide.data.pubDate.getTime()
-        ? [{
-            id: shortRevisionId(['guide-revised', guide.id, guide.data.updatedDate.toISOString()]),
-            date: guide.data.updatedDate.toISOString(),
-            type: 'guide-revised',
-            contentType: 'guide',
-            slug: guide.id,
-            title: guide.data.title,
-            url,
-            changedFields: ['updatedDate', 'body', 'sources'],
-            summary: `Révision publiée pour le guide : ${guide.data.title}.`,
-          }]
+      const revised = hasRevision
+        ? (() => {
+            const revisedDate = guide.data.updatedDate!.toISOString();
+            const changedFields = ['updatedDate', 'body', 'sources'];
+            return [{
+              id: shortRevisionId(['guide-revised', guide.id, revisedDate]),
+              date: revisedDate,
+              type: 'guide-revised',
+              contentType: 'guide',
+              slug: guide.id,
+              title: guide.data.title,
+              url,
+              changedFields,
+              summary: `Révision publiée pour le guide : ${guide.data.title}.`,
+              ...diffMetadata({
+                contentType: 'guide',
+                slug: guide.id,
+                type: 'guide-revised',
+                date: revisedDate,
+                currentHash,
+                changedFields,
+                previousVersion: publishedDate,
+              }),
+            }];
+          })()
         : [];
       return [published, ...revised];
     }),
   ];
 
-  const editorialEntries = editorialChangelog.map((entry) => ({
-    id: shortRevisionId(['editorial-change', entry.date, entry.kind, entry.title]),
-    date: `${entry.date}T00:00:00.000Z`,
-    type: 'editorial-change',
-    contentType: 'policy',
-    slug: `${entry.date}-${entry.kind}`,
-    title: entry.title,
-    url: `${AGENT_SITE}/changelog-editorial/`,
-    changedFields: ['protocol', 'methodology', 'source-policy'],
-    summary: entry.summary,
-  }));
+  const editorialEntries = editorialChangelog.map((entry) => {
+    const date = `${entry.date}T00:00:00.000Z`;
+    const slug = `${entry.date}-${entry.kind}`;
+    const changedFields = ['protocol', 'methodology', 'source-policy'];
+    return {
+      id: shortRevisionId(['editorial-change', entry.date, entry.kind, entry.title]),
+      date,
+      type: 'editorial-change',
+      contentType: 'policy',
+      slug,
+      title: entry.title,
+      url: `${AGENT_SITE}/changelog-editorial/`,
+      changedFields,
+      summary: entry.summary,
+      ...diffMetadata({
+        contentType: 'policy',
+        slug,
+        type: 'editorial-change',
+        date,
+        currentHash: editorialVersionHash(entry),
+        changedFields,
+      }),
+    };
+  });
 
   const entries = [...contentEntries, ...editorialEntries]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime() || a.id.localeCompare(b.id));
@@ -1484,6 +1663,8 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
     },
     feedPolicy: {
       scope: 'Publications, révisions déclarées par updatedDate et changements éditoriaux structurants.',
+      diffModel:
+        'Chaque entrée expose objectId, version courante, hash courant et, si disponible, version remplacée. Les hashes antérieurs restent null tant qu’aucun snapshot historique canonique n’est publié.',
       caveat: 'Le changefeed signale les changements publiés ; il ne remplace pas l’historique Git ligne à ligne.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
       changelog: `${AGENT_SITE}/changelog-editorial/`,

@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.10.1';
+const MCP_VERSION = '1.11.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -401,16 +401,30 @@ const SnapshotSchema = z.object({
   canonicalSha256: z.string(),
   canonicalBytes: z.number().optional(),
 }).strict();
+const ChangefeedReplacementSchema = z.object({
+  objectId: z.string(),
+  version: z.string(),
+  hash: z.string().nullable(),
+}).strict();
 const ChangeEntrySchema = z.object({
   id: z.string(),
+  objectId: z.string(),
   date: z.string(),
-  type: z.string(),
+  type: z.enum(['article-published', 'article-revised', 'guide-published', 'guide-revised', 'editorial-change']),
   contentType: z.enum(['article', 'guide', 'policy']),
   slug: z.string(),
   title: z.string(),
   url: UrlString,
   changedFields: z.array(z.string()),
   summary: z.string(),
+  previousVersion: z.string().nullable(),
+  currentVersion: z.string(),
+  previousHash: z.string().nullable(),
+  currentHash: z.string().nullable(),
+  replaces: ChangefeedReplacementSchema.nullable(),
+  semanticChange: z.enum(['publication', 'content-revision', 'source-update', 'evidence-update', 'editorial-policy-change']),
+  correctionReason: z.string().nullable(),
+  diffStatus: z.enum(['current-only', 'previous-version-known-without-hash', 'historical-version-without-hash', 'full-diff']),
 }).strict();
 const PrimarySourceSchema = z.object({
   type: z.literal('primarySource').optional(),
@@ -1687,7 +1701,7 @@ function buildServer(data) {
     {
       description:
         "Interroge le changefeed machine avec filtres de type, slug et date minimale. " +
-        "C'est l'interface MCP dédiée pour surveiller publications, révisions et politiques éditoriales.",
+        "Inclut objectId, version/hash courant, statut de diff et type de changement sémantique.",
       inputSchema: {
         contentType: z.enum(['article', 'guide', 'policy']).optional().describe('Type de contenu optionnel.'),
         slug: z.string().optional().describe('Slug optionnel pour cibler un contenu.'),
@@ -1874,7 +1888,7 @@ function buildServer(data) {
     'get_changefeed',
     {
       description:
-        "Renvoie les dernières publications, révisions déclarées et changements éditoriaux structurants de l0g. " +
+        "Renvoie les dernières publications, révisions et politiques avec objectId, version/hash courant, statut de diff et changement sémantique. " +
         "À utiliser pour surveiller le corpus sans tout rescanner.",
       inputSchema: {
         contentType: z.enum(['article', 'guide', 'policy']).optional().describe('Type de contenu optionnel.'),

@@ -94,8 +94,8 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `list_sources` | `mode?`, `limit?` | sources primaires et hôtes effectivement cités |
 | `get_integrity` | `path?` | empreintes SHA-256 canoniques des surfaces Agent Surface |
 | `verify_artifact` | `path`, `sha256?` | vérification allowlistée d'un artefact via le manifeste d'intégrité |
-| `get_changefeed` | `contentType?`, `limit?` | publications, révisions et changements éditoriaux |
-| `get_changes` | `contentType?`, `slug?`, `since?`, `limit?` | changefeed filtrable par type, slug et date minimale |
+| `get_changefeed` | `contentType?`, `limit?` | derniers changements avec objectId, version/hash courant et statut de diff |
+| `get_changes` | `contentType?`, `slug?`, `since?`, `limit?` | changefeed filtrable avec métadonnées de version |
 | `list_recent_analyses` | `limit?` | dernières analyses |
 | `list_guides` | aucun | guides de référence |
 | `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |

@@ -159,10 +159,14 @@ const verified = await call('verify_artifact', { path: '/api/v1/evidence-graph.j
 console.log('verify_artifact -> expected:', Boolean(verified.expectedSha256), '| verified:', verified.verified);
 
 const changefeed = await call('get_changefeed', { contentType: 'article', limit: 3 });
-console.log('get_changefeed(article) ->', changefeed.count);
+if (!changefeed.entries?.[0]?.objectId || !changefeed.entries?.[0]?.currentVersion) {
+  throw new Error('get_changefeed sans métadonnées de version');
+}
+console.log('get_changefeed(article) ->', changefeed.count, '| diff:', changefeed.entries?.[0]?.diffStatus);
 
 const changes = await call('get_changes', { contentType: 'article', since: '2026-06-27', limit: 3 });
-console.log('get_changes(article) ->', changes.count);
+if (!changes.entries?.[0]?.semanticChange) throw new Error('get_changes sans semanticChange');
+console.log('get_changes(article) ->', changes.count, '| semantic:', changes.entries?.[0]?.semanticChange);
 
 const art = await call('get_article', { slug: 'economie-des-intentions', length: 5000 });
 if (!art.nextOffset || !art.truncated) throw new Error('get_article ne fournit pas de continuation sur article long');

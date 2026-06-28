@@ -53,7 +53,7 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
-    `- [Agent Surface v1.2](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité et changefeed.`
+    `- [Agent Surface v1.5.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité et changefeed versionné.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -146,8 +146,8 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Sources](${SITE}/api/v1/sources.json): registre sources primaires et hôtes effectivement cités.`);
   lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus et des signaux, avec observedAt, computedAt, staleAfter, expiresAt et statut de couverture.`);
   lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
-  lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine des publications, révisions déclarées et changements éditoriaux.`);
-  lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille.`);
+  lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine avec objectId, version courante, hash courant, statut de diff et changement sémantique.`);
+  lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille, mêmes métadonnées de version.`);
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
