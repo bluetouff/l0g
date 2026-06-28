@@ -37,6 +37,30 @@ jobs:
       - name: Build (Astro + Agent Surface test + Pagefind)
         run: npm run build
 
+      - name: Test MCP server against built Agent Surface
+        env:
+          L0G_DATA_DIR: ${{ github.workspace }}/dist
+          MCP_ALLOWED_HOSTS: 127.0.0.1,localhost
+          MCP_ALLOWED_ORIGINS: http://127.0.0.1:8851
+          MCP_GIT_SHA: ${{ github.sha }}
+          MCP_HOST: 127.0.0.1
+          MCP_PORT: 8851
+          URL: http://127.0.0.1:8851/mcp
+        run: |
+          cd mcp-server
+          npm ci --omit=dev
+          node server.mjs &
+          MCP_PID=$!
+          trap 'kill "$MCP_PID" 2>/dev/null || true' EXIT
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8851/healthz >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8851/healthz
+          node test-client.mjs
+
       - name: Attest Agent Surface manifests
         uses: actions/attest-build-provenance@v4
         with:

@@ -16,7 +16,7 @@
  */
 import http from 'node:http';
 import { execFileSync } from 'node:child_process';
-import { readFile } from 'node:fs/promises';
+import { readFile, realpath } from 'node:fs/promises';
 import { join } from 'node:path';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
@@ -97,6 +97,7 @@ setInterval(() => {
 // --- cache des données du site ---
 let cache = {
   at: 0,
+  dataDir: null,
   agent: null,
   openapi: null,
   catalog: null,
@@ -115,37 +116,45 @@ let searchIndexCache = {
   dataDir: null,
   index: null,
 };
-async function readJson(rel) {
-  return JSON.parse(await readFile(join(DATA_DIR, rel), 'utf-8'));
+async function resolveDataDir() {
+  try {
+    return await realpath(DATA_DIR);
+  } catch {
+    return DATA_DIR;
+  }
 }
-async function readText(rel) {
-  return readFile(join(DATA_DIR, rel), 'utf-8');
+async function readJson(baseDir, rel) {
+  return JSON.parse(await readFile(join(baseDir, rel), 'utf-8'));
+}
+async function readText(baseDir, rel) {
+  return readFile(join(baseDir, rel), 'utf-8');
 }
 async function loadData() {
   const now = Date.now();
-  if (cache.catalog && now - cache.at < CACHE_TTL) return cache;
-  const agent = await readJson('agents.json');
-  const openapi = await readJson('openapi.json');
-  const catalog = await readJson('api/v1/catalog.json');
-  const claims = await readJson('api/v1/claims.json');
-  const sources = await readJson('api/v1/sources.json');
-  const freshness = await readJson('api/v1/freshness.json');
-  const integrity = await readJson('api/v1/integrity.json');
-  const changes = await readJson('api/v1/changes.json');
-  const evidenceGraph = await readJson('api/v1/evidence-graph.json');
+  const dataDir = await resolveDataDir();
+  if (cache.catalog && cache.dataDir === dataDir && now - cache.at < CACHE_TTL) return cache;
+  const agent = await readJson(dataDir, 'agents.json');
+  const openapi = await readJson(dataDir, 'openapi.json');
+  const catalog = await readJson(dataDir, 'api/v1/catalog.json');
+  const claims = await readJson(dataDir, 'api/v1/claims.json');
+  const sources = await readJson(dataDir, 'api/v1/sources.json');
+  const freshness = await readJson(dataDir, 'api/v1/freshness.json');
+  const integrity = await readJson(dataDir, 'api/v1/integrity.json');
+  const changes = await readJson(dataDir, 'api/v1/changes.json');
+  const evidenceGraph = await readJson(dataDir, 'api/v1/evidence-graph.json');
   let risk = null;
   try {
-    risk = await readJson('api/v1/risk.json');
+    risk = await readJson(dataDir, 'api/v1/risk.json');
   } catch { /* risk optionnel */ }
   let riskEvents = null;
   try {
-    riskEvents = await readJson('risk-events.json');
+    riskEvents = await readJson(dataDir, 'risk-events.json');
   } catch { /* historique optionnel */ }
   let confluence = null;
   try {
-    confluence = await readJson('confluence.json');
+    confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { at: now, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence };
+  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence };
   return cache;
 }
 
@@ -255,11 +264,11 @@ function articleChunk(text, options = {}) {
     truncated: nextOffset !== null,
   };
 }
-async function readSearchDocument(candidate) {
+async function readSearchDocument(dataDir, candidate) {
   let bodyText = '';
   let pageTitle = candidate.title;
   try {
-    const html = await readText(candidate.rel);
+    const html = await readText(dataDir, candidate.rel);
     const root = parseHtml(html);
     const titleEl = root.querySelector('article h1') || root.querySelector('h1') || root.querySelector('title');
     const body = root.querySelector('[data-pagefind-body]') || root.querySelector('.prose') || root.querySelector('article') || root.querySelector('main');
@@ -285,9 +294,9 @@ async function readSearchDocument(candidate) {
     normText: norm(text),
   };
 }
-async function buildSearchIndex(catalog) {
+async function buildSearchIndex(dataDir, catalog) {
   const now = Date.now();
-  if (searchIndexCache.index && searchIndexCache.dataDir === DATA_DIR && now - searchIndexCache.at < CACHE_TTL) {
+  if (searchIndexCache.index && searchIndexCache.dataDir === dataDir && now - searchIndexCache.at < CACHE_TTL) {
     return searchIndexCache.index;
   }
   const candidates = [
@@ -325,9 +334,9 @@ async function buildSearchIndex(catalog) {
   ];
   const index = [];
   for (const candidate of candidates) {
-    index.push(await readSearchDocument(candidate));
+    index.push(await readSearchDocument(dataDir, candidate));
   }
-  searchIndexCache = { at: now, dataDir: DATA_DIR, index };
+  searchIndexCache = { at: now, dataDir, index };
   return index;
 }
 function rankSearchDocument(doc, tokens, queryNorm) {
@@ -353,11 +362,11 @@ function rankSearchDocument(doc, tokens, queryNorm) {
   value += Math.min(matched.length, 6) * 3;
   return { value, matched, fields: [...fields] };
 }
-async function searchFullText(catalog, query, limit) {
+async function searchFullText(dataDir, catalog, query, limit) {
   const tokens = tokensOf(query);
   if (!tokens.length) return [];
   const queryNorm = tokens.join(' ');
-  const index = await buildSearchIndex(catalog);
+  const index = await buildSearchIndex(dataDir, catalog);
   return index
     .map((doc) => ({ doc, ranking: rankSearchDocument(doc, tokens, queryNorm) }))
     .filter((item) => item.ranking)
@@ -856,9 +865,9 @@ function summarizeOpenapi(openapi, path) {
     schemas: Object.keys(openapi.components?.schemas || {}),
   };
 }
-async function readNdjsonFeed(feed, limit, recordType) {
+async function readNdjsonFeed(dataDir, feed, limit, recordType) {
   const spec = NDJSON_FEEDS[feed];
-  const raw = await readText(spec.path);
+  const raw = await readText(dataDir, spec.path);
   const records = [];
   let total = 0;
   let matches = 0;
@@ -892,6 +901,7 @@ function removeLiveNotificationCapabilities(server) {
 function buildServer(data) {
   const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
   const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence } = data;
+  const dataDir = data.dataDir || DATA_DIR;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
   const topicsList = catalog.topics || [];
@@ -948,7 +958,7 @@ function buildServer(data) {
     const record = pool.find((item) => item.slug === clean);
     if (!record) resourceNotFound(type, clean);
     const section = type === 'guide' ? 'guides' : 'posts';
-    const html = await readFile(join(DATA_DIR, section, clean, 'index.html'), 'utf-8');
+    const html = await readFile(join(dataDir, section, clean, 'index.html'), 'utf-8');
     const root = parseHtml(html);
     const titleEl = root.querySelector('article h1') || root.querySelector('h1');
     const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
@@ -1584,7 +1594,7 @@ function buildServer(data) {
       annotations: { readOnlyHint: true },
     },
     async ({ feed, recordType, limit }) => {
-      const { spec, totalLines, totalMatches, records } = await readNdjsonFeed(feed, limit, recordType);
+      const { spec, totalLines, totalMatches, records } = await readNdjsonFeed(dataDir, feed, limit, recordType);
       return reply({
         feed,
         path: `/${spec.path}`,
@@ -1641,7 +1651,7 @@ function buildServer(data) {
       const tokens = norm(query).split(/\s+/).filter(Boolean);
       if (!tokens.length) return reply({ query, mode: mode || 'fulltext', count: 0, results: [] });
       if ((mode || 'fulltext') === 'fulltext') {
-        const results = await searchFullText(catalog, query, limit);
+        const results = await searchFullText(dataDir, catalog, query, limit);
         return reply({
           query,
           mode: 'fulltext',
@@ -2212,7 +2222,7 @@ function buildServer(data) {
       const section = isGuide ? 'guides' : 'posts';
       const url = `${SITE}/${section}/${clean}/`;
       try {
-        const html = await readFile(join(DATA_DIR, section, clean, 'index.html'), 'utf-8');
+        const html = await readFile(join(dataDir, section, clean, 'index.html'), 'utf-8');
         const root = parseHtml(html);
         const titleEl = root.querySelector('article h1') || root.querySelector('h1');
         const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
