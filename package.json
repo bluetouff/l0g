@@ -11,6 +11,7 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "check": "astro check",
+    "test:agent-surface": "node scripts/validate-agent-surface.mjs",
     "astro": "astro"
   },
   "dependencies": {

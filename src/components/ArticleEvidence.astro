@@ -28,7 +28,7 @@ const claimTone: Record<string, string> = {
       <p id="evidence-title" class="mono-label">// preuves utilisées</p>
       <p class="evidence-note">
         Backfill automatique des passages référencés : chaque ligne relie une affirmation
-        à une ou plusieurs sources cliquables et datées.
+        à une ou plusieurs sources cliquables, datées quand détectable.
       </p>
     </div>
     <div class="evidence-counts" aria-label="Résumé de traçabilité">
@@ -77,7 +77,11 @@ const claimTone: Record<string, string> = {
                 <a href={ref.href} target={ref.href.startsWith('http') ? '_blank' : undefined} rel={ref.href.startsWith('http') ? 'noopener' : undefined}>
                   <span>{ref.kind ?? ref.host ?? 'référence'}</span>
                   <strong>{ref.label}</strong>
-                  <time datetime={ref.dateIso ?? claim.dateIso}>{ref.dateLabel ?? claim.dateLabel}</time>
+                  {ref.sourcePublicationDateIso || ref.dateIso ? (
+                    <time datetime={ref.sourcePublicationDateIso ?? ref.dateIso}>{ref.sourcePublicationDateLabel ?? ref.dateLabel}</time>
+                  ) : (
+                    <span>{ref.sourcePublicationDateLabel ?? ref.dateLabel ?? 'date source non détectée'}</span>
+                  )}
                 </a>
               ))}
             </div>

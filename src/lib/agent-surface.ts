@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 import { glossaryEntries, glossarySections } from '../config/glossary.ts';
 import { methodologyPages, riskBandScaleCaveat } from '../config/methodology.ts';
-import { primaryInstitutions } from '../config/primary-sources.ts';
+import { primaryInstitutions, primarySourcesUpdatedIso } from '../config/primary-sources.ts';
 import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
@@ -289,7 +289,7 @@ export function buildOpenApiContract() {
       '/agents.json': openApiEndpoint('Manifeste agent', 'Découverte des capacités, endpoints, règles d’usage et politiques de preuve.', 'AgentManifest'),
       '/api/v1/catalog.json': openApiEndpoint('Catalogue complet', 'Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.', 'Catalog'),
       '/api/v1/catalog.ndjson': openApiNdjsonEndpoint('Catalogue NDJSON', 'Catalogue en lignes NDJSON : articles, guides, méthodologies, glossaire, sources primaires et protocole.'),
-      '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables et datées.', 'ClaimsSurface'),
+      '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables, datées quand détectable.', 'ClaimsSurface'),
       '/api/v1/claims.ndjson': openApiNdjsonEndpoint('Claims NDJSON', 'Claims en lignes NDJSON, une affirmation typée par ligne avec références.'),
       '/api/v1/evidence-graph.json': openApiEndpoint('Evidence graph', 'Graphe articles, claims, références, hôtes, institutions et datasets, exprimé en nœuds et arêtes.', 'EvidenceGraphSurface'),
       '/api/v1/evidence-graph.ndjson': openApiNdjsonEndpoint('Evidence graph NDJSON', 'Evidence graph en lignes NDJSON : nœuds puis arêtes, pour ingestion streaming.'),
@@ -325,11 +325,37 @@ export function buildOpenApiContract() {
             kind: { type: ['string', 'null'] },
             date: { type: ['string', 'null'], format: 'date' },
             dateLabel: { type: 'string' },
+            sourcePublicationDate: { type: ['string', 'null'], format: 'date' },
+            sourcePublicationDateLabel: { type: ['string', 'null'] },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+          },
+        },
+        ClaimClassifier: {
+          type: 'object',
+          required: ['method', 'matchedRule', 'caveat'],
+          additionalProperties: false,
+          properties: {
+            method: { const: 'lexical-heuristic-v1' },
+            matchedRule: { enum: ['scenario-marker', 'estimate-marker', 'inference-marker', 'default-fact'] },
+            caveat: { type: 'string' },
           },
         },
         Claim: {
           type: 'object',
-          required: ['id', 'articleSlug', 'kind', 'claim', 'dateLabel', 'references'],
+          required: [
+            'id',
+            'articleSlug',
+            'kind',
+            'claim',
+            'dateLabel',
+            'claimDate',
+            'claimDateLabel',
+            'observationDate',
+            'observationDateLabel',
+            'reviewStatus',
+            'classifier',
+            'references',
+          ],
           additionalProperties: false,
           properties: {
             id: { type: 'string' },
@@ -341,7 +367,15 @@ export function buildOpenApiContract() {
             claim: { type: 'string' },
             date: { type: ['string', 'null'], format: 'date' },
             dateLabel: { type: 'string' },
+            claimDate: { type: ['string', 'null'], format: 'date' },
+            claimDateLabel: { type: 'string' },
+            observationDate: { type: ['string', 'null'], format: 'date' },
+            observationDateLabel: { type: 'string' },
             confidence: { enum: ['auto-backfill', 'structurée'] },
+            reviewStatus: { enum: ['unreviewed', 'reviewed'] },
+            reviewedAt: { type: ['string', 'null'], format: 'date-time' },
+            reviewedBy: { type: ['string', 'null'] },
+            classifier: { $ref: '#/components/schemas/ClaimClassifier' },
             references: { type: 'array', items: { $ref: '#/components/schemas/EvidenceReference' } },
           },
         },
@@ -837,17 +871,33 @@ export function buildOpenApiContract() {
         },
         ClaimsPolicy: {
           type: 'object',
-          required: ['relation', 'caveat', 'correctionPolicy'],
+          required: ['relation', 'caveat', 'classification', 'review', 'dateModel', 'correctionPolicy'],
           additionalProperties: false,
           properties: {
             relation: { type: 'string' },
             caveat: { type: 'string' },
+            classification: { type: 'string' },
+            review: { type: 'string' },
+            dateModel: { type: 'string' },
             correctionPolicy: { type: 'string', format: 'uri' },
           },
         },
         ClaimReference: {
           type: 'object',
-          required: ['claimId', 'articleSlug', 'label', 'href', 'host', 'kind', 'date', 'dateLabel'],
+          required: [
+            'claimId',
+            'articleSlug',
+            'label',
+            'href',
+            'host',
+            'kind',
+            'date',
+            'dateLabel',
+            'claimDate',
+            'observationDate',
+            'sourcePublicationDate',
+            'retrievedAt',
+          ],
           additionalProperties: false,
           properties: {
             claimId: { type: 'string' },
@@ -858,16 +908,21 @@ export function buildOpenApiContract() {
             kind: { type: ['string', 'null'] },
             date: { type: ['string', 'null'], format: 'date' },
             dateLabel: { type: 'string' },
+            claimDate: { type: ['string', 'null'], format: 'date' },
+            observationDate: { type: ['string', 'null'], format: 'date' },
+            sourcePublicationDate: { type: ['string', 'null'], format: 'date' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
           },
         },
         SourcesSurface: {
           type: 'object',
-          required: ['schema', 'version', 'generated', 'counts', 'sourcePolicy', 'primarySources', 'referenceHosts'],
+          required: ['schema', 'version', 'generated', 'registry', 'counts', 'sourcePolicy', 'primarySources', 'referenceHosts'],
           additionalProperties: false,
           properties: {
             schema: { type: 'string', format: 'uri' },
             version: { type: 'string' },
             generated: { type: 'string', format: 'date-time' },
+            registry: { $ref: '#/components/schemas/PrimarySourceRegistry' },
             counts: {
               type: 'object',
               required: ['primarySources', 'referenceHosts', 'references'],
@@ -892,6 +947,18 @@ export function buildOpenApiContract() {
             referenceHosts: { type: 'array', items: { $ref: '#/components/schemas/ReferenceHost' } },
             license: { type: 'string' },
             attribution: { type: 'string' },
+          },
+        },
+        PrimarySourceRegistry: {
+          type: 'object',
+          required: ['version', 'updated', 'scope', 'testPolicy', 'caveat'],
+          additionalProperties: false,
+          properties: {
+            version: { type: 'string' },
+            updated: { type: 'string', format: 'date' },
+            scope: { type: 'string' },
+            testPolicy: { type: 'string' },
+            caveat: { type: 'string' },
           },
         },
         ReferenceHost: {
@@ -951,7 +1018,12 @@ export function buildOpenApiContract() {
             },
             date: { type: ['string', 'null'], format: 'date' },
             dateLabel: { type: 'string' },
+            claimDate: { type: ['string', 'null'], format: 'date' },
+            observationDate: { type: ['string', 'null'], format: 'date' },
+            sourcePublicationDate: { type: ['string', 'null'], format: 'date' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
             confidence: { enum: ['auto-backfill', 'structurée'] },
+            reviewStatus: { enum: ['unreviewed', 'reviewed'] },
             href: { type: 'string' },
             host: { type: 'string' },
             sourceSlug: { type: 'string' },
@@ -1150,7 +1222,7 @@ export function buildOpenApiContract() {
         },
         IntegritySurface: {
           type: 'object',
-          required: ['schema', 'version', 'generated', 'algorithm', 'canonicalization', 'counts', 'snapshots', 'verification'],
+          required: ['schema', 'version', 'generated', 'algorithm', 'canonicalization', 'counts', 'snapshots', 'verification', 'externalAuthenticity'],
           additionalProperties: false,
           properties: {
             schema: { type: 'string' },
@@ -1160,6 +1232,7 @@ export function buildOpenApiContract() {
             canonicalization: { $ref: '#/components/schemas/IntegrityCanonicalization' },
             counts: { $ref: '#/components/schemas/IntegrityCounts' },
             verification: { $ref: '#/components/schemas/IntegrityVerification' },
+            externalAuthenticity: { $ref: '#/components/schemas/ExternalAuthenticityPolicy' },
             license: { type: 'string' },
             attribution: { type: 'string' },
             snapshots: {
@@ -1208,6 +1281,17 @@ export function buildOpenApiContract() {
           properties: {
             rule: { type: 'string' },
             caveat: { type: 'string' },
+          },
+        },
+        ExternalAuthenticityPolicy: {
+          type: 'object',
+          required: ['status', 'currentGuarantee', 'missingGuarantee', 'recommendedNextSteps'],
+          additionalProperties: false,
+          properties: {
+            status: { const: 'not-externally-signed' },
+            currentGuarantee: { type: 'string' },
+            missingGuarantee: { type: 'string' },
+            recommendedNextSteps: { type: 'array', items: { type: 'string' } },
           },
         },
         ChangefeedSurface: {
@@ -1409,14 +1493,25 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
       claim: claim.claim,
       date: claim.dateIso ?? null,
       dateLabel: claim.dateLabel,
+      claimDate: claim.claimDateIso ?? claim.dateIso ?? null,
+      claimDateLabel: claim.claimDateLabel ?? claim.dateLabel,
+      observationDate: claim.observationDateIso ?? claim.dateIso ?? null,
+      observationDateLabel: claim.observationDateLabel ?? claim.dateLabel,
       confidence: claim.confidence,
+      reviewStatus: claim.reviewStatus,
+      reviewedAt: claim.reviewedAt ?? null,
+      reviewedBy: claim.reviewedBy ?? null,
+      classifier: claim.classifier,
       references: claim.references.map((ref) => ({
         label: ref.label,
         href: ref.href,
         host: ref.host ?? null,
         kind: ref.kind ?? null,
-        date: ref.dateIso ?? claim.dateIso ?? null,
-        dateLabel: ref.dateLabel ?? claim.dateLabel,
+        date: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
+        dateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? 'date source non détectée',
+        sourcePublicationDate: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
+        sourcePublicationDateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? null,
+        retrievedAt: ref.retrievedAt ?? null,
       })),
     })),
     depth: evidence.depth,
@@ -1575,6 +1670,10 @@ export function buildClaimsSurface(posts: PostEntry[]) {
     kind: reference.kind,
     date: reference.date,
     dateLabel: reference.dateLabel,
+    claimDate: claim.claimDate,
+    observationDate: claim.observationDate,
+    sourcePublicationDate: reference.sourcePublicationDate,
+    retrievedAt: reference.retrievedAt,
   })));
 
   return {
@@ -1588,8 +1687,14 @@ export function buildClaimsSurface(posts: PostEntry[]) {
       claimKinds: [...new Set(claims.map((claim) => claim.kind))].sort(),
     },
     policy: {
-      relation: 'Chaque entrée relie une affirmation textuelle à une ou plusieurs références cliquables et datées.',
+      relation: 'Chaque entrée relie une affirmation textuelle à une ou plusieurs références cliquables, datées quand détectable.',
       caveat: 'Extraction automatique best-effort : la relation exacte doit rester vérifiable dans la page source.',
+      classification:
+        'Les types fait/estimation/inférence/scénario sont produits par un classifieur lexical heuristique v1, exposé par claim.classifier.',
+      review:
+        'Les claims générées automatiquement portent reviewStatus=unreviewed tant qu’aucune validation humaine par claim n’est encodée.',
+      dateModel:
+        'claimDate décrit la date portée par l’affirmation ; observationDate décrit l’horizon observé quand il est détectable ; sourcePublicationDate appartient à la référence et reste null si elle n’est pas détectée dans le lien ou son libellé.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
     },
     claims,
@@ -1625,6 +1730,16 @@ export function buildSourcesSurface(posts: PostEntry[]) {
     schema: `${OPENAPI_SCHEMA_BASE}/SourcesSurface`,
     version: AGENT_VERSION,
     generated: generatedAt(),
+    registry: {
+      version: primarySourcesUpdatedIso,
+      updated: primarySourcesUpdatedIso,
+      scope:
+        'Référentiel éditorial versionné des institutions reconnues comme sources primaires par l0g ; les hôtes non présents peuvent rester classés comme sources secondaires.',
+      testPolicy:
+        'Chaque entrée doit conserver slug stable, URL officielle, au moins un dataset, limites et règles de vérification ; les builds Agent Surface valident le schéma public.',
+      caveat:
+        'La reconnaissance primaire est déterministe mais non exhaustive : une institution officielle absente du registre n’est pas automatiquement promue en source primaire.',
+    },
     counts: {
       primarySources: primaryInstitutions.length,
       referenceHosts: referenceHosts.length,
@@ -1759,7 +1874,10 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
         kind: claim.kind,
         date: claim.date,
         dateLabel: claim.dateLabel,
+        claimDate: claim.claimDate,
+        observationDate: claim.observationDate,
         confidence: claim.confidence,
+        reviewStatus: claim.reviewStatus,
       },
     });
     addEdge({ from: articleId, to: claimId, type: 'contains', meta: { kind: claim.kind } });
@@ -1782,6 +1900,10 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
           kind: reference.kind,
           date: reference.date,
           dateLabel: reference.dateLabel,
+          claimDate: claim.claimDate,
+          observationDate: claim.observationDate,
+          sourcePublicationDate: reference.sourcePublicationDate,
+          retrievedAt: reference.retrievedAt,
         },
       });
       addNode({
@@ -1951,7 +2073,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'streamable ndjson feeds',
       'claim-source graph',
       'evidence graph',
-      'dated clickable references',
+      'clickable references with explicit source dates when detected',
       'freshness manifest',
       'primary-source registry',
       'editorial correction policy',
@@ -1981,7 +2103,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     },
     preferredUse: [
       'Citer les URL canoniques des articles, guides ou sources.',
-      'Utiliser claims.json pour relier une affirmation à une source datée.',
+      'Utiliser claims.json pour relier une affirmation à une source datée quand détectable.',
       'Utiliser evidence-graph.json pour parcourir articles, claims, références, hôtes, sources et datasets.',
       'Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
@@ -2284,6 +2406,18 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
     verification: {
       rule: 'Récupérer le JSON, supprimer récursivement les champs generated, trier les clés, sérialiser sans espaces, puis calculer SHA-256.',
       caveat: 'Ces empreintes vérifient les surfaces Agent Surface ; les fichiers externes conservent leur propre politique de version.',
+    },
+    externalAuthenticity: {
+      status: 'not-externally-signed',
+      currentGuarantee:
+        'Les hashes publiés sur l0g.fr vérifient la cohérence canonique des artefacts servis et permettent de comparer deux copies ou deux builds.',
+      missingGuarantee:
+        'Ils ne prouvent pas, seuls, qu’un artefact vient authentiquement de l0g après compromission de l’origine qui sert à la fois les fichiers et leurs hashes.',
+      recommendedNextSteps: [
+        'Publier une signature Minisign ou Sigstore des snapshots Agent Surface.',
+        'Attacher les hashes à une release GitHub signée.',
+        'Publier périodiquement les empreintes dans un journal externe ou un canal social vérifié.',
+      ],
     },
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',

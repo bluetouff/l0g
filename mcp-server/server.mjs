@@ -371,6 +371,9 @@ const EvidenceReferenceSchema = z.object({
   kind: NullableString,
   date: NullableString,
   dateLabel: NullableString,
+  sourcePublicationDate: NullableString,
+  sourcePublicationDateLabel: NullableString,
+  retrievedAt: NullableString,
 }).strict();
 const CompactClaimSchema = z.object({
   id: z.string(),
@@ -381,7 +384,15 @@ const CompactClaimSchema = z.object({
   claim: z.string(),
   date: NullableString,
   dateLabel: NullableString,
+  claimDate: NullableString,
+  claimDateLabel: NullableString,
+  observationDate: NullableString,
+  observationDateLabel: NullableString,
   confidence: z.string().optional(),
+  reviewStatus: z.enum(['unreviewed', 'reviewed']).optional(),
+  reviewedAt: NullableString,
+  reviewedBy: NullableString,
+  classifier: AnyRecord.optional(),
   references: z.array(EvidenceReferenceSchema),
 }).strict();
 const SearchResultSchema = z.object({
@@ -738,7 +749,15 @@ function compactClaim(claim) {
     claim: claim.claim,
     date: claim.date,
     dateLabel: claim.dateLabel,
+    claimDate: claim.claimDate,
+    claimDateLabel: claim.claimDateLabel,
+    observationDate: claim.observationDate,
+    observationDateLabel: claim.observationDateLabel,
     confidence: claim.confidence,
+    reviewStatus: claim.reviewStatus,
+    reviewedAt: claim.reviewedAt,
+    reviewedBy: claim.reviewedBy,
+    classifier: claim.classifier,
     references: (claim.references || []).map((r) => ({
       label: r.label,
       href: r.href,
@@ -746,6 +765,9 @@ function compactClaim(claim) {
       kind: r.kind,
       date: r.date,
       dateLabel: r.dateLabel,
+      sourcePublicationDate: r.sourcePublicationDate,
+      sourcePublicationDateLabel: r.sourcePublicationDateLabel,
+      retrievedAt: r.retrievedAt,
     })),
   };
 }
@@ -852,6 +874,9 @@ function buildServer(data) {
           kind: reference.kind,
           date: reference.date,
           dateLabel: reference.dateLabel,
+          sourcePublicationDate: reference.sourcePublicationDate,
+          sourcePublicationDateLabel: reference.sourcePublicationDateLabel,
+          retrievedAt: reference.retrievedAt,
         });
       }
     }
@@ -1275,7 +1300,7 @@ function buildServer(data) {
     }),
     {
       title: 'Claim',
-      description: 'Relation affirmation-source avec références datées et cliquables.',
+      description: 'Relation affirmation-source avec références datées quand détectable et cliquables.',
       mimeType: 'application/json',
     },
     async (uri, variables) => {
@@ -1594,7 +1619,7 @@ function buildServer(data) {
     {
       description:
         "Interroge les relations affirmation-source extraites des articles l0g. Filtrage par article, type de claim " +
-        "(fait, estimation, inférence, scénario) et texte. Renvoie les références cliquables et datées.",
+        "(fait, estimation, inférence, scénario) et texte. Renvoie les références cliquables, datées quand détectable.",
       inputSchema: {
         articleSlug: z.string().optional().describe("Slug d'article optionnel."),
         kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
@@ -1631,7 +1656,7 @@ function buildServer(data) {
     'get_claim',
     {
       description:
-        "Renvoie une claim précise par identifiant, avec ses références cliquables et datées. " +
+        "Renvoie une claim précise par identifiant, avec ses références cliquables, datées quand détectable. " +
         "Utiliser list_article_claims ou get_claims pour découvrir les identifiants.",
       inputSchema: {
         claimId: z.string().min(1).describe("Identifiant de claim, par exemple dollar-yen-intervention-risque-carry-2026:claim-1."),
@@ -1680,7 +1705,10 @@ function buildServer(data) {
           host: reference.host,
           kind: reference.kind,
           date: reference.date,
-            dateLabel: reference.dateLabel,
+          dateLabel: reference.dateLabel,
+          sourcePublicationDate: reference.sourcePublicationDate,
+          sourcePublicationDateLabel: reference.sourcePublicationDateLabel,
+          retrievedAt: reference.retrievedAt,
           })),
         returned: {
           directEvidence: direct.section.returned,

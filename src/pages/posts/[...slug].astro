@@ -45,7 +45,9 @@ const evidenceRefs = evidence.claims.flatMap((claim) =>
     claimId: claim.id,
     claimKind: claim.kind,
     claimText: claim.claim,
-    claimDate: claim.dateIso,
+    claimDate: claim.claimDateIso ?? claim.dateIso,
+    observationDate: claim.observationDateIso ?? claim.dateIso,
+    sourcePublicationDate: reference.sourcePublicationDateIso ?? reference.dateIso,
   }))
 );
 const sourceWorks = Array.from(
@@ -59,7 +61,7 @@ const sourceWorks = Array.from(
           '@id': reference.href.startsWith('http') ? reference.href : `${site}${reference.href}`,
           name: reference.label,
           url: reference.href.startsWith('http') ? reference.href : `${site}${reference.href}`,
-          datePublished: reference.dateIso ?? reference.claimDate ?? post.data.pubDate.toISOString().slice(0, 10),
+          datePublished: reference.sourcePublicationDate ?? undefined,
           publisher: reference.host ? { '@type': 'Organization', name: reference.host } : undefined,
           additionalType: reference.kind ?? undefined,
         },

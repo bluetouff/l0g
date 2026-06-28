@@ -10,6 +10,9 @@ export interface EvidenceLink {
   kind?: string;
   dateLabel?: string;
   dateIso?: string;
+  sourcePublicationDateLabel?: string;
+  sourcePublicationDateIso?: string;
+  retrievedAt?: string | null;
 }
 
 export interface PrimaryEvidence {
@@ -26,8 +29,20 @@ export interface ClaimEvidence {
   claim: string;
   dateLabel: string;
   dateIso?: string;
+  claimDateLabel: string;
+  claimDateIso?: string;
+  observationDateLabel: string;
+  observationDateIso?: string;
   references: EvidenceLink[];
   confidence: 'auto-backfill' | 'structurée';
+  reviewStatus: 'unreviewed' | 'reviewed';
+  reviewedAt?: string | null;
+  reviewedBy?: string | null;
+  classifier: {
+    method: 'lexical-heuristic-v1';
+    matchedRule: string;
+    caveat: string;
+  };
 }
 
 export interface EvidenceDepth {
@@ -168,18 +183,22 @@ function sourceHosts(source: PrimarySourceInstitution) {
   );
 }
 
-function classifyClaim(text: string): ClaimKind {
+function classifyClaimWithRule(text: string): { kind: ClaimKind; matchedRule: string } {
   const value = text.toLowerCase();
   if (/(sc[eé]nario|hypoth[eè]se|projection|conditionnel|pourrait|pourraient|[àa] surveiller|si |dans ce cas|trajectoire)/iu.test(value)) {
-    return 'scénario';
+    return { kind: 'scénario', matchedRule: 'scenario-marker' };
   }
   if (/(estime|estimation|pr[eé]vision|environ|autour de|fourchette|probabilit[eé]|consensus|table sur|selon)/iu.test(value)) {
-    return 'estimation';
+    return { kind: 'estimation', matchedRule: 'estimate-marker' };
   }
   if (/(donc|sugg[eè]re|implique|signale|indique|lecture|interpr[eè]te|ce qui veut dire|en clair|j'en d[eé]duis)/iu.test(value)) {
-    return 'inférence';
+    return { kind: 'inférence', matchedRule: 'inference-marker' };
   }
-  return 'fait';
+  return { kind: 'fait', matchedRule: 'default-fact' };
+}
+
+export function classifyClaim(text: string): ClaimKind {
+  return classifyClaimWithRule(text).kind;
 }
 
 function monthNumber(raw: string) {
@@ -250,6 +269,20 @@ function dateForBlock(block: string, fallback?: Date) {
   return publicationDate(fallback);
 }
 
+function sourcePublicationDateForLink(link: EvidenceLink) {
+  return extractDateFromText(`${link.label} ${link.href}`);
+}
+
+function claimClassifier(text: string): ClaimEvidence['classifier'] {
+  const { matchedRule } = classifyClaimWithRule(text);
+  return {
+    method: 'lexical-heuristic-v1',
+    matchedRule,
+    caveat:
+      'Classification automatique par marqueurs lexicaux ; elle doit être relue avant d’être traitée comme annotation éditoriale validée.',
+  };
+}
+
 function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): ClaimEvidence[] {
   const claim = firstMeaningfulBlock(markdown);
   if (!claim || !opts.url) return [];
@@ -262,6 +295,10 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
       claim: claim.slice(0, 340),
       dateLabel: date.label,
       dateIso: date.iso,
+      claimDateLabel: date.label,
+      claimDateIso: date.iso,
+      observationDateLabel: date.label,
+      observationDateIso: date.iso,
       references: [
         {
           label: opts.title ? `Article l0g : ${opts.title}` : 'Article l0g',
@@ -270,9 +307,16 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
           kind: 'publication interne',
           dateLabel: date.label,
           dateIso: date.iso,
+          sourcePublicationDateLabel: date.label,
+          sourcePublicationDateIso: date.iso,
+          retrievedAt: null,
         },
       ],
       confidence: 'auto-backfill',
+      reviewStatus: 'unreviewed',
+      reviewedAt: null,
+      reviewedBy: null,
+      classifier: claimClassifier(claim),
     },
   ];
 }
@@ -429,12 +473,17 @@ function buildEvidenceDepth(args: {
 }
 
 export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOptions = {}): ArticleEvidence {
-  const defaultDate = publicationDate(opts.published);
-  const links = extractLinks(markdown).map((link) => ({
-    ...link,
-    dateLabel: link.dateLabel ?? defaultDate.label,
-    dateIso: link.dateIso ?? defaultDate.iso,
-  }));
+  const links = extractLinks(markdown).map((link) => {
+    const sourceDate = sourcePublicationDateForLink(link);
+    return {
+      ...link,
+      dateLabel: sourceDate?.label,
+      dateIso: sourceDate?.iso,
+      sourcePublicationDateLabel: sourceDate?.label,
+      sourcePublicationDateIso: sourceDate?.iso,
+      retrievedAt: null,
+    };
+  });
   const primary: PrimaryEvidence[] = [];
 
   for (const source of primaryInstitutions) {
@@ -480,12 +529,15 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
           const dashboard = local.host && DASHBOARD_HOSTS.has(local.host)
             ? { ...local, label: DASHBOARD_HOSTS.get(local.host) || local.label, kind: 'dashboard' }
             : local;
-          const date = dateForBlock(block, opts.published);
+          const sourceDate = sourcePublicationDateForLink(dashboard);
           return {
             ...dashboard,
             kind: relationKind(dashboard, primaryHosts),
-            dateLabel: date.label,
-            dateIso: date.iso,
+            dateLabel: sourceDate?.label ?? 'date source non détectée',
+            dateIso: sourceDate?.iso,
+            sourcePublicationDateLabel: sourceDate?.label,
+            sourcePublicationDateIso: sourceDate?.iso,
+            retrievedAt: null,
           };
         })
         .filter((link) => !link.href.startsWith('#'));
@@ -495,14 +547,28 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
       const claim = stripMarkdown(block).slice(0, 340);
       if (!claim) return null;
       const date = dateForBlock(block, opts.published);
+      const classification = classifyClaimWithRule(claim);
       return {
         id: `claim-${index + 1}`,
-        kind: classifyClaim(claim),
+        kind: classification.kind,
         claim,
         dateLabel: date.label,
         dateIso: date.iso,
+        claimDateLabel: date.label,
+        claimDateIso: date.iso,
+        observationDateLabel: date.label,
+        observationDateIso: date.iso,
         references: blockLinks.slice(0, 5),
         confidence: 'auto-backfill',
+        reviewStatus: 'unreviewed',
+        reviewedAt: null,
+        reviewedBy: null,
+        classifier: {
+          method: 'lexical-heuristic-v1',
+          matchedRule: classification.matchedRule,
+          caveat:
+            'Classification automatique par marqueurs lexicaux ; elle doit être relue avant d’être traitée comme annotation éditoriale validée.',
+        },
       };
     })
     .filter((claim): claim is ClaimEvidence => Boolean(claim))

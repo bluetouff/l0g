@@ -34,7 +34,7 @@ const tools = [
   ['get_ndjson_feed', 'feed, recordType, limit', 'Flux NDJSON allowlistés : catalogue, claims, evidence graph et changefeed.'],
   ['get_freshness', 'limit', 'Fraîcheur du corpus et des signaux : observedAt, computedAt, expiration, couverture et politique de fraîcheur.'],
   ['search_content', 'query, mode, limit', 'Recherche plein texte locale sur HTML généré, avec mode catalogue disponible pour audit.'],
-  ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables et datées.'],
+  ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables, datées quand détectable.'],
   ['get_claim', 'claimId', 'Claim précise, liens ressource et article parent.'],
   ['get_claim_evidence', 'claimId, limit', "Preuve directe d'une claim, contenus reliés séparés par hôte/source commune."],
   ['list_article_claims', 'articleSlug, kind, limit', "Claims d'un article, utilisables comme points d'entrée du graphe de preuve."],

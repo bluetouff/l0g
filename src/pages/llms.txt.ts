@@ -138,7 +138,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Utiliser l0g avec un agent](${SITE}/agents/): guide pratique MCP, Agent Surface, prompts, citations et verification.`);
   lines.push(`- [Agent manifest](${SITE}/agents.json): découverte des capacités, endpoints, règles d'usage et politique de preuve pour agents.`);
   lines.push(`- [OpenAPI](${SITE}/openapi.json): contrat OpenAPI 3.1 des endpoints publics.`);
-  lines.push(`- [Claims](${SITE}/api/v1/claims.json): graphe affirmation-source avec faits, estimations, inférences et scénarios, références cliquables et datées.`);
+  lines.push(`- [Claims](${SITE}/api/v1/claims.json): graphe affirmation-source avec faits, estimations, inférences et scénarios, références cliquables, datées quand détectable.`);
   lines.push(`- [Evidence graph](${SITE}/api/v1/evidence-graph.json): articles, claims, références, hôtes, sources primaires et datasets en nœuds/arêtes.`);
   lines.push(`- [Catalogue NDJSON](${SITE}/api/v1/catalog.ndjson): catalogue complet ligne à ligne pour ingestion streaming ou RAG.`);
   lines.push(`- [Claims NDJSON](${SITE}/api/v1/claims.ndjson): claims typées ligne à ligne, avec références embarquées.`);
