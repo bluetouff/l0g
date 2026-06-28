@@ -413,12 +413,20 @@ const CompactClaimSchema = z.object({
   claimDateLabel: NullableString,
   observationDate: NullableString,
   observationDateLabel: NullableString,
+  observationStart: NullableString,
+  observationEnd: NullableString,
+  temporalPrecision: z.enum(['day', 'month', 'quarter', 'year', 'range', 'unknown']).optional(),
   confidence: z.string().optional(),
   reviewStatus: z.enum(['unreviewed', 'reviewed']).optional(),
   reviewedAt: NullableString,
   reviewedBy: NullableString,
   reviewNote: NullableString,
   reviewedProofDepth: z.enum(['direct-proof', 'reproduction']).nullable().optional(),
+  evidenceLocator: z.object({
+    type: z.enum(['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other']),
+    value: z.string(),
+  }).nullable().optional(),
+  reproductionArtifact: NullableString,
   classifier: AnyRecord.optional(),
   references: z.array(EvidenceReferenceSchema),
 }).strict();
@@ -781,12 +789,17 @@ function compactClaim(claim) {
     claimDateLabel: claim.claimDateLabel,
     observationDate: claim.observationDate,
     observationDateLabel: claim.observationDateLabel,
+    observationStart: claim.observationStart,
+    observationEnd: claim.observationEnd,
+    temporalPrecision: claim.temporalPrecision,
     confidence: claim.confidence,
     reviewStatus: claim.reviewStatus,
     reviewedAt: claim.reviewedAt,
     reviewedBy: claim.reviewedBy,
     reviewNote: claim.reviewNote,
     reviewedProofDepth: claim.reviewedProofDepth,
+    evidenceLocator: claim.evidenceLocator,
+    reproductionArtifact: claim.reproductionArtifact,
     classifier: claim.classifier,
     references: (claim.references || []).map((r) => ({
       label: r.label,
@@ -1025,17 +1038,19 @@ function buildServer(data) {
 
   function proofDepthForClaim(claim) {
     const refs = claim.references || [];
-    const linked = refs.filter((reference) => reference.href).length;
-    const primary = refs.filter((reference) => norm(reference.kind).includes('primaire')).length;
-    const dated = refs.filter((reference) => reference.sourcePublicationDate || reference.date).length;
+    const externallyLinkedRefs = refs.filter((reference) => reference.href && reference.kind !== 'publication interne');
+    const linked = externallyLinkedRefs.length;
+    const primaryRefs = refs.filter((reference) => norm(reference.kind).includes('primaire'));
+    const datedRefs = refs.filter((reference) => reference.sourcePublicationDate || reference.date);
+    const datedPrimaryRefs = primaryRefs.filter((reference) => reference.href && (reference.sourcePublicationDate || reference.date));
     const hosts = new Set(refs.map((reference) => reference.host || hostFromUrl(reference.href)).filter(Boolean));
     const reviewedDirect = claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof';
     const reviewedReproduction = claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'reproduction';
     let label = 'mention';
     if (reviewedReproduction) label = 'reproduction';
     else if (reviewedDirect) label = 'preuve directe';
-    else if (primary && linked && dated) label = 'source primaire liée et datée';
-    else if (linked && dated) label = 'source liée et datée';
+    else if (datedPrimaryRefs.length) label = 'source primaire liée et datée';
+    else if (linked && datedRefs.length) label = 'source liée et datée';
     else if (linked) label = 'source liée';
     else if (refs.length) label = 'référence';
     return {
@@ -1051,8 +1066,9 @@ function buildServer(data) {
         "Une source primaire liée et datée indique une proximité documentaire vérifiable ; elle ne prouve pas automatiquement que la source soutient précisément la proposition.",
       references: refs.length,
       linkedReferences: linked,
-      datedReferences: dated,
-      primaryReferences: primary,
+      datedReferences: datedRefs.length,
+      primaryReferences: primaryRefs.length,
+      datedPrimaryReferences: datedPrimaryRefs.length,
       uniqueHosts: hosts.size,
       claimKind: claim.kind,
       confidence: claim.confidence || null,

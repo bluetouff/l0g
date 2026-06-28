@@ -36,6 +36,9 @@ export interface ClaimEvidence {
   claimDateIso?: string;
   observationDateLabel: string;
   observationDateIso?: string;
+  observationStartIso?: string;
+  observationEndIso?: string;
+  temporalPrecision: 'day' | 'month' | 'quarter' | 'year' | 'range' | 'unknown';
   references: EvidenceLink[];
   confidence: 'auto-backfill' | 'structurée';
   reviewStatus: 'unreviewed' | 'reviewed';
@@ -43,6 +46,11 @@ export interface ClaimEvidence {
   reviewedBy?: string | null;
   reviewNote?: string | null;
   reviewedProofDepth?: Extract<EvidenceDepth['id'], 'direct-proof' | 'reproduction'> | null;
+  evidenceLocator?: {
+    type: 'page' | 'section' | 'table' | 'series' | 'cell' | 'form' | 'calculation' | 'other';
+    value: string;
+  } | null;
+  reproductionArtifact?: string | null;
   classifier: {
     method: 'lexical-heuristic-v1';
     matchedRule: string;
@@ -220,7 +228,18 @@ function splitClaimFragments(block: string) {
   return block
     .split(/(?<=[.!?])\s+(?=(?:["«(]*\p{Lu}|[0-9]))/u)
     .map((fragment) => fragment.trim())
-    .filter((fragment) => fragment.length > 20 && hasEvidenceLink(fragment) && !isBibliographyBlock(fragment));
+    .filter((fragment) => fragment.length > 20 && hasEvidenceLink(fragment) && !isBibliographyBlock(fragment) && !isNavigationFragment(fragment));
+}
+
+function isNavigationFragment(value: string) {
+  const text = normalizeClaimText(value);
+  if (/^(?:pour le contexte|voir aussi|lire aussi|lire également|à lire aussi|a lire aussi|voir également|à consulter|a consulter)\b/u.test(text)) {
+    return true;
+  }
+  const links = extractLinks(value);
+  const words = text.split(/\s+/).filter(Boolean).length;
+  const onlyInternalLinks = links.length > 0 && links.every((link) => isInternal(link));
+  return onlyInternalLinks && words <= Math.max(18, links.length * 8);
 }
 
 function normalizeClaimText(value: string) {
@@ -315,48 +334,70 @@ function formatDate(value: Date) {
 
 function publicationDate(fallback?: Date) {
   return fallback
-    ? { label: `publication ${formatDate(fallback)}`, iso: fallback.toISOString().slice(0, 10) }
-    : { label: 'date non indiquée' };
+    ? { label: `publication ${formatDate(fallback)}`, iso: fallback.toISOString().slice(0, 10), precision: 'day' as const }
+    : { label: 'date non indiquée', precision: 'unknown' as const };
 }
 
 function undetectedObservationDate() {
-  return { label: 'observation non détectée', iso: undefined };
+  return { label: 'observation non détectée', iso: undefined, startIso: undefined, endIso: undefined, precision: 'unknown' as const };
 }
 
-function extractDateFromText(text: string): { label: string; iso?: string } | null {
+function extractDateFromText(text: string): { label: string; iso?: string; precision: ClaimEvidence['temporalPrecision'] } | null {
   const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
-  if (iso) return { label: `${iso[3]}/${iso[2]}/${iso[1]}`, iso: `${iso[1]}-${iso[2]}-${iso[3]}` };
+  if (iso) return { label: `${iso[3]}/${iso[2]}/${iso[1]}`, iso: `${iso[1]}-${iso[2]}-${iso[3]}`, precision: 'day' };
 
   const full = text.match(/\b([0-3]?\d)\s+(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(20\d{2})\b/iu);
   if (full) {
     const month = monthNumber(full[2].normalize('NFD').replace(/\p{Diacritic}/gu, '')) || monthNumber(full[2]);
     const day = full[1].padStart(2, '0');
-    return { label: `${day}/${month}/${full[3]}`, iso: `${full[3]}-${month}-${day}` };
+    return { label: `${day}/${month}/${full[3]}`, iso: `${full[3]}-${month}-${day}`, precision: 'day' };
   }
 
   const monthYear = text.match(/\b(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(20\d{2})\b/iu);
   if (monthYear) {
     const month = monthNumber(monthYear[1].normalize('NFD').replace(/\p{Diacritic}/gu, '')) || monthNumber(monthYear[1]);
-    return { label: `${monthYear[1]} ${monthYear[2]}`, iso: `${monthYear[2]}-${month}-01` };
+    return { label: `${monthYear[1]} ${monthYear[2]}`, iso: `${monthYear[2]}-${month}-01`, precision: 'month' };
   }
 
   const quarter = text.match(/\b[QT]([1-4])\s+(20\d{2})\b/i);
-  if (quarter) return { label: `T${quarter[1]} ${quarter[2]}`, iso: `${quarter[2]}-${String((Number(quarter[1]) - 1) * 3 + 1).padStart(2, '0')}-01` };
+  if (quarter) return { label: `T${quarter[1]} ${quarter[2]}`, iso: `${quarter[2]}-${String((Number(quarter[1]) - 1) * 3 + 1).padStart(2, '0')}-01`, precision: 'quarter' };
 
   const year = text.match(/\b(20\d{2})\b/);
-  if (year) return { label: year[1], iso: `${year[1]}-01-01` };
+  if (year) return { label: year[1], iso: `${year[1]}-01-01`, precision: 'year' };
 
   return null;
 }
 
 function observationDateForBlock(block: string) {
   const text = stripMarkdown(block);
+  const interval = text.match(/\b(?:entre|du)\s+(?:le\s+)?([0-3]?\d\s+(?:janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)(?:\s+20\d{2})?)\s+(?:et|au)\s+(?:le\s+)?([0-3]?\d\s+(?:janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+20\d{2})\b/iu);
+  if (interval) {
+    const end = extractDateFromText(interval[2]);
+    const year = end?.iso?.slice(0, 4);
+    const startText = /\b20\d{2}\b/.test(interval[1]) || !year ? interval[1] : `${interval[1]} ${year}`;
+    const start = extractDateFromText(startText);
+    if (start?.iso && end?.iso) {
+      return {
+        label: `${start.label} → ${end.label}`,
+        iso: end.iso,
+        startIso: start.iso,
+        endIso: end.iso,
+        precision: 'range' as const,
+      };
+    }
+  }
   const cue = text.match(
     /\b(?:au|à fin|a fin|fin|début|debut|depuis|en|pour|sur|d['’]ici|lors de|pendant|au cours de)\s+(.{0,80}?(?:20\d{2}|T[1-4]\s+20\d{2}|Q[1-4]\s+20\d{2}))/iu
   );
-  if (cue) return extractDateFromText(cue[0]) ?? undetectedObservationDate();
+  if (cue) {
+    const found = extractDateFromText(cue[0]);
+    return found ? { ...found, startIso: found.iso, endIso: found.iso } : undetectedObservationDate();
+  }
   const quarter = text.match(/\b[QT][1-4]\s+20\d{2}\b/i);
-  if (quarter) return extractDateFromText(quarter[0]) ?? undetectedObservationDate();
+  if (quarter) {
+    const found = extractDateFromText(quarter[0]);
+    return found ? { ...found, startIso: found.iso, endIso: found.iso } : undetectedObservationDate();
+  }
   return undetectedObservationDate();
 }
 
@@ -392,6 +433,9 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
       claimDateIso: date.iso,
       observationDateLabel: observation.label,
       observationDateIso: observation.iso,
+      observationStartIso: observation.startIso,
+      observationEndIso: observation.endIso,
+      temporalPrecision: observation.precision,
       references: [
         {
           label: opts.title ? `Article l0g : ${opts.title}` : 'Article l0g',
@@ -412,6 +456,8 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
       reviewedBy: null,
       reviewNote: null,
       reviewedProofDepth: null,
+      evidenceLocator: null,
+      reproductionArtifact: null,
       classifier: claimClassifier(claimText),
     },
   ];
@@ -673,6 +719,9 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
         claimDateIso: claimDate.iso,
         observationDateLabel: observationDate.label,
         observationDateIso: observationDate.iso,
+        observationStartIso: observationDate.startIso,
+        observationEndIso: observationDate.endIso,
+        temporalPrecision: observationDate.precision,
         references: blockLinks.slice(0, 5),
         confidence: 'auto-backfill',
         reviewStatus: 'unreviewed',
@@ -680,6 +729,8 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
         reviewedBy: null,
         reviewNote: null,
         reviewedProofDepth: null,
+        evidenceLocator: null,
+        reproductionArtifact: null,
         classifier: {
           method: 'lexical-heuristic-v1',
           matchedRule: classification.matchedRule,
@@ -702,6 +753,8 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
       reviewedBy: review.reviewedBy,
       reviewNote: review.note,
       reviewedProofDepth: review.proofDepth ?? null,
+      evidenceLocator: review.evidenceLocator ?? null,
+      reproductionArtifact: review.reproductionArtifact ?? null,
       classifier: {
         ...claim.classifier,
         reviewedOverride: `${review.reviewedAt} ${review.reviewedBy}`,

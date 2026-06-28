@@ -11,6 +11,7 @@ const resources = [
   ['l0g://integrity', 'Empreintes SHA-256 canoniques'],
   ['l0g://changes/latest', 'Derniers changements éditoriaux et publications'],
   ['l0g://signals/current', 'État courant des signaux'],
+  ['l0g://mcp/server', 'Version MCP, SHA actif et capacités serveur'],
 ];
 
 const templates = [
@@ -36,7 +37,7 @@ const tools = [
   ['search_content', 'query, mode, limit', 'Recherche plein texte locale sur HTML généré, avec mode catalogue disponible pour audit.'],
   ['get_claims', 'articleSlug, kind, query, limit', 'Relations affirmation-source filtrables, avec références cliquables, datées quand détectable.'],
   ['get_claim', 'claimId', 'Claim précise, liens ressource et article parent.'],
-  ['get_claim_evidence', 'claimId, limit', "Preuve directe d'une claim, contenus reliés séparés par hôte/source commune."],
+  ['get_claim_evidence', 'claimId, limit', "Niveau de preuve prudent d'une claim, avec preuve directe seulement si revue humaine ; contenus reliés séparés par hôte/source commune."],
   ['list_article_claims', 'articleSlug, kind, limit', "Claims d'un article, utilisables comme points d'entrée du graphe de preuve."],
   ['find_claims_by_source', 'sourceId, kind, limit', 'Claims liées à une source primaire, un nom ou un host cité.'],
   ['get_source', 'sourceId, limit', 'Source primaire ou hôte cité, avec claims associées.'],

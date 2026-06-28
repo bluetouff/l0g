@@ -14,6 +14,7 @@ const contextShown = evidence.context.slice(0, 10);
 const claimsShown = evidence.claims.slice(0, 12);
 const badges = evidence.badges;
 const depth = evidence.depth;
+const depthMode = depth.automated ? 'Profondeur automatique' : 'Profondeur relue';
 const claimTone: Record<string, string> = {
   fait: 'claim-fact',
   estimation: 'claim-estimate',
@@ -58,7 +59,7 @@ const claimTone: Record<string, string> = {
   </div>
 
   <p class="depth-note">
-    Profondeur automatique : {depth.detail}. Les niveaux “preuve directe” et “reproduction”
+    {depthMode} : {depth.detail}. Les niveaux “preuve directe” et “reproduction”
     demandent une relation relue entre une affirmation précise et sa source.
   </p>
 
