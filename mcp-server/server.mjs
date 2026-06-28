@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.9.1';
+const MCP_VERSION = '1.10.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -468,12 +468,37 @@ const NdjsonOutput = ToolOutput.extend({
   recordType: z.string().nullable().optional(),
   records: z.array(z.any()).optional(),
 }).passthrough();
+const SignalFreshnessSchema = z.object({
+  key: z.enum(['us', 'eu', 'yen', 'energie']),
+  label: z.string(),
+  source: z.string().url(),
+  methodology: z.string().url(),
+  observedAt: z.string().datetime().nullable(),
+  sourcePublishedAt: z.string().datetime().nullable(),
+  retrievedAt: z.string().datetime().nullable(),
+  computedAt: z.string().datetime(),
+  staleAfter: z.string(),
+  expiresAt: z.string().datetime().nullable(),
+  timelinessStatus: z.enum(['fresh', 'stale', 'unknown']),
+  coverageStatus: z.enum(['complete', 'partial', 'missing']),
+  coverage: z.object({
+    signalPresent: z.boolean(),
+    observedAt: z.boolean(),
+    sourcePublishedAt: z.boolean(),
+    retrievedAt: z.boolean(),
+    computedAt: z.boolean(),
+    staleAfter: z.boolean(),
+  }).strict(),
+  missing: z.array(z.enum(['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'computedAt', 'staleAfter'])),
+  note: z.string(),
+}).strict();
 const FreshnessOutput = ToolOutput.extend({
   version: z.string().optional(),
   generated: z.string().optional(),
   latest: z.array(z.any()).optional(),
   corpus: AnyRecord.optional(),
   endpoints: z.array(z.any()).optional(),
+  signalFreshness: z.array(SignalFreshnessSchema).optional(),
   freshnessPolicy: AnyRecord.optional(),
 }).passthrough();
 const SearchOutput = ToolOutput.extend({
@@ -1267,6 +1292,7 @@ function buildServer(data) {
       latest: (freshness.latest || []).slice(0, limit),
       corpus: freshness.corpus,
       endpoints: freshness.endpoints,
+      signalFreshness: freshness.signalFreshness,
       freshnessPolicy: freshness.freshnessPolicy,
     })
   );

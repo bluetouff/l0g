@@ -144,7 +144,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Claims NDJSON](${SITE}/api/v1/claims.ndjson): claims typées ligne à ligne, avec références embarquées.`);
   lines.push(`- [Evidence graph NDJSON](${SITE}/api/v1/evidence-graph.ndjson): graph de preuves en flux ligne à ligne.`);
   lines.push(`- [Sources](${SITE}/api/v1/sources.json): registre sources primaires et hôtes effectivement cités.`);
-  lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus, derniers contenus et endpoints disponibles.`);
+  lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus et des signaux, avec observedAt, computedAt, staleAfter, expiresAt et statut de couverture.`);
   lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
   lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine des publications, révisions déclarées et changements éditoriaux.`);
   lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille.`);

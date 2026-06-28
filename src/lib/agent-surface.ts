@@ -8,9 +8,22 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.3.0';
+export const AGENT_VERSION = '1.4.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
+const SIGNAL_STALE_AFTER_DAYS = 7;
+
+const RISK_SIGNAL_META: Record<string, { label: string; source: string; methodology: string }> = {
+  us: { label: 'US Macro Dashboard', source: 'https://us.l0g.fr', methodology: `${AGENT_SITE}/methodologie/us-macro/` },
+  eu: { label: 'EU Macro Dashboard', source: 'https://euro.l0g.fr', methodology: `${AGENT_SITE}/methodologie/euro-macro/` },
+  yen: { label: 'Yen Carry Monitor', source: 'https://yct.l0g.fr', methodology: `${AGENT_SITE}/methodologie/yen-carry/` },
+  energie: { label: 'Energie Monitor', source: 'https://energie.l0g.fr', methodology: `${AGENT_SITE}/methodologie/energie/` },
+};
+
+type RiskSnapshotInput = {
+  updated?: string | null;
+  indices?: Array<{ key?: string; value?: number; scale?: number; level?: string; tone?: string }>;
+};
 
 export type PostEntry = CollectionEntry<'posts'>;
 export type GuideEntry = CollectionEntry<'guides'>;
@@ -37,6 +50,61 @@ export function generatedAt() {
 
 export function isoDate(value?: Date) {
   return value ? value.toISOString().slice(0, 10) : null;
+}
+
+function isoDateTimeOrNull(value?: string | null) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toISOString();
+}
+
+function addDaysIso(value: string, days: number) {
+  const date = new Date(value);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString();
+}
+
+function buildSignalFreshness(risk?: RiskSnapshotInput | null) {
+  const computedAt = generatedAt();
+  const observedAt = isoDateTimeOrNull(risk?.updated ?? null);
+  const expiresAt = observedAt ? addDaysIso(observedAt, SIGNAL_STALE_AFTER_DAYS) : null;
+  const timelinessStatus = expiresAt && Date.parse(computedAt) > Date.parse(expiresAt) ? 'stale' : observedAt ? 'fresh' : 'unknown';
+  const indexedKeys = new Set((risk?.indices ?? []).map((item) => item.key).filter(Boolean));
+
+  return Object.entries(RISK_SIGNAL_META).map(([key, meta]) => {
+    const present = indexedKeys.has(key);
+    const coverage = {
+      signalPresent: present,
+      observedAt: Boolean(observedAt),
+      sourcePublishedAt: false,
+      retrievedAt: false,
+      computedAt: true,
+      staleAfter: true,
+    };
+    const missing = Object.entries(coverage)
+      .filter(([, isCovered]) => !isCovered)
+      .map(([field]) => field);
+
+    return {
+      key,
+      label: meta.label,
+      source: meta.source,
+      methodology: meta.methodology,
+      observedAt,
+      sourcePublishedAt: null,
+      retrievedAt: null,
+      computedAt,
+      staleAfter: `P${SIGNAL_STALE_AFTER_DAYS}D`,
+      expiresAt,
+      timelinessStatus,
+      coverageStatus: missing.length === 0 ? 'complete' : present ? 'partial' : 'missing',
+      coverage,
+      missing,
+      note:
+        'Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas.',
+    };
+  });
 }
 
 function stableStringify(value: unknown): string {
@@ -488,7 +556,7 @@ export function buildOpenApiContract() {
         },
         FreshnessSurface: {
           type: 'object',
-          required: ['schema', 'version', 'generated', 'latest', 'corpus', 'endpoints', 'freshnessPolicy', 'license', 'attribution'],
+          required: ['schema', 'version', 'generated', 'latest', 'corpus', 'endpoints', 'signalFreshness', 'freshnessPolicy', 'license', 'attribution'],
           additionalProperties: false,
           properties: {
             schema: { type: 'string', format: 'uri' },
@@ -497,6 +565,7 @@ export function buildOpenApiContract() {
             latest: { type: 'array', items: { $ref: '#/components/schemas/FreshnessItem' } },
             corpus: { type: 'object', additionalProperties: { type: 'integer' } },
             endpoints: { type: 'array', items: { $ref: '#/components/schemas/FreshnessEndpoint' } },
+            signalFreshness: { type: 'array', items: { $ref: '#/components/schemas/SignalFreshness' } },
             freshnessPolicy: {
               type: 'object',
               required: ['rule', 'caveat', 'correctionPolicy', 'changelog'],
@@ -510,6 +579,60 @@ export function buildOpenApiContract() {
             },
             license: { type: 'string' },
             attribution: { type: 'string' },
+          },
+        },
+        SignalFreshnessCoverage: {
+          type: 'object',
+          required: ['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'computedAt', 'staleAfter'],
+          additionalProperties: false,
+          properties: {
+            signalPresent: { type: 'boolean' },
+            observedAt: { type: 'boolean' },
+            sourcePublishedAt: { type: 'boolean' },
+            retrievedAt: { type: 'boolean' },
+            computedAt: { type: 'boolean' },
+            staleAfter: { type: 'boolean' },
+          },
+        },
+        SignalFreshness: {
+          type: 'object',
+          required: [
+            'key',
+            'label',
+            'source',
+            'methodology',
+            'observedAt',
+            'sourcePublishedAt',
+            'retrievedAt',
+            'computedAt',
+            'staleAfter',
+            'expiresAt',
+            'timelinessStatus',
+            'coverageStatus',
+            'coverage',
+            'missing',
+            'note',
+          ],
+          additionalProperties: false,
+          properties: {
+            key: { enum: ['us', 'eu', 'yen', 'energie'] },
+            label: { type: 'string' },
+            source: { type: 'string', format: 'uri' },
+            methodology: { type: 'string', format: 'uri' },
+            observedAt: { type: ['string', 'null'], format: 'date-time' },
+            sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            computedAt: { type: 'string', format: 'date-time' },
+            staleAfter: { type: 'string', pattern: '^P\\d+D$' },
+            expiresAt: { type: ['string', 'null'], format: 'date-time' },
+            timelinessStatus: { enum: ['fresh', 'stale', 'unknown'] },
+            coverageStatus: { enum: ['complete', 'partial', 'missing'] },
+            coverage: { $ref: '#/components/schemas/SignalFreshnessCoverage' },
+            missing: {
+              type: 'array',
+              items: { enum: ['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'computedAt', 'staleAfter'] },
+            },
+            note: { type: 'string' },
           },
         },
         FreshnessItem: {
@@ -1138,7 +1261,7 @@ export function buildChangesNdjsonRows(posts: PostEntry[], guides: GuideEntry[])
   ];
 }
 
-export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[]) {
+export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], risk?: RiskSnapshotInput | null) {
   const sortedPosts = sortPosts(posts);
   const sortedGuides = sortGuides(guides);
   const latestContent = [
@@ -1182,9 +1305,10 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[]) 
       { path: '/llms.txt', role: 'Carte concise pour agents', update: 'à chaque build' },
       { path: '/llms-full.txt', role: 'Corpus textuel étendu', update: 'à chaque build' },
     ],
+    signalFreshness: buildSignalFreshness(risk),
     freshnessPolicy: {
-      rule: 'Les agents doivent privilégier le champ date ou updated du contenu, puis generated pour la fraîcheur du fichier.',
-      caveat: 'l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile.',
+      rule: 'Les agents doivent privilégier date/updated pour le contenu éditorial, observedAt pour les signaux, puis computedAt/generated pour la fraîcheur du fichier.',
+      caveat: 'l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile. Les champs sourcePublishedAt et retrievedAt restent explicites et peuvent être null quand la source amont ne les expose pas.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
       changelog: `${AGENT_SITE}/changelog-editorial/`,
     },

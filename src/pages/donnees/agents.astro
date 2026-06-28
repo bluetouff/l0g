@@ -50,7 +50,7 @@ const endpoints = [
   {
     path: '/api/v1/freshness.json',
     label: 'Fraîcheur',
-    role: 'Derniers contenus, compteurs de corpus, endpoints disponibles et politique de fraîcheur.',
+    role: 'Derniers contenus, endpoints, politique de fraîcheur et temporalité par signal de dashboard.',
   },
   {
     path: '/api/v1/integrity.json',
@@ -71,7 +71,7 @@ const endpoints = [
 
 const flow = [
   'Découvrir la surface avec /agents.json.',
-  'Lire /api/v1/freshness.json pour dater le snapshot.',
+  'Lire /api/v1/freshness.json pour dater le corpus et les signaux de dashboards.',
   'Vérifier les empreintes avec /api/v1/integrity.json si la réponse dépend d’un corpus figé.',
   'Surveiller /api/v1/changes.json pour suivre les nouveaux contenus et révisions.',
   'Utiliser /api/v1/evidence-graph.json quand il faut parcourir la relation article → claim → source.',

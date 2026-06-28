@@ -45,7 +45,7 @@ const surfaces = [
   {
     need: 'Fraîcheur',
     endpoint: '/api/v1/freshness.json',
-    use: 'Date du snapshot, derniers contenus et endpoints disponibles.',
+    use: 'Derniers contenus, endpoints et temporalité des signaux : observedAt, computedAt, expiration et couverture.',
   },
   {
     need: 'Intégrité',
@@ -61,7 +61,7 @@ const surfaces = [
 
 const flow = [
   'Lire /agents.json pour comprendre les capacités et les règles d’usage.',
-  'Vérifier /api/v1/freshness.json avant de répondre à une question sensible au temps.',
+  'Vérifier /api/v1/freshness.json avant de répondre à une question sensible au temps ou aux signaux de marché.',
   'Utiliser /api/v1/catalog.ndjson pour trouver les documents pertinents.',
   'Utiliser /api/v1/claims.json ou /api/v1/evidence-graph.json pour relier une affirmation à sa preuve.',
   'Citer l’URL canonique, la date de publication ou de source, et le type de claim.',

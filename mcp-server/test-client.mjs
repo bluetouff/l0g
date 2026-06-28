@@ -139,7 +139,8 @@ const sources = await call('list_sources', { mode: 'both', limit: 3 });
 console.log('list_sources -> primary:', sources.primarySources?.length, '| hosts:', sources.referenceHosts?.length);
 
 const freshness = await call('get_freshness', { limit: 3 });
-console.log('get_freshness -> latest:', freshness.latest?.length);
+if (!freshness.signalFreshness?.length) throw new Error('get_freshness sans fraîcheur par signal');
+console.log('get_freshness -> latest:', freshness.latest?.length, '| signals:', freshness.signalFreshness?.length);
 
 const integrity = await call('get_integrity', { path: '/api/v1/evidence-graph.json' });
 console.log('get_integrity -> snapshots:', integrity.count, '| algo:', integrity.algorithm);
