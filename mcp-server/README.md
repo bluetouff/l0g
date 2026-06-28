@@ -52,8 +52,12 @@ aux opérations de recherche, filtrage et synthèse.
 
 | Template | Contenu |
 |----------|---------|
-| `l0g://articles/{slug}` | article avec métadonnées et texte |
-| `l0g://guides/{slug}` | guide avec métadonnées et texte |
+| `l0g://articles/{slug}` | première page d'un article avec métadonnées, références et texte |
+| `l0g://articles/{slug}{?section,offset,limit}` | page ciblée d'un article (`body`, `head`, `tail`, `sources`) |
+| `l0g://articles/{slug}{?cursor}` | continuation d'article via `nextCursor` |
+| `l0g://guides/{slug}` | première page d'un guide avec métadonnées et texte |
+| `l0g://guides/{slug}{?section,offset,limit}` | page ciblée d'un guide (`body`, `head`, `tail`, `sources`) |
+| `l0g://guides/{slug}{?cursor}` | continuation de guide via `nextCursor` |
 | `l0g://claims/{claim_id}` | relation affirmation-source |
 | `l0g://sources/{source_id}` | source primaire ou hôte cité |
 | `l0g://signals/{instrument}/current` | signal courant + historique de franchissement |
@@ -98,7 +102,12 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `list_recent_analyses` | `limit?` | dernières analyses |
 | `list_guides` | aucun | guides de référence |
 | `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |
-| `get_article` | `slug`, `offset?`, `length?`, `section?` | texte paginé d'une analyse ou d'un guide, avec `nextOffset` et accès direct `tail`/`sources` |
+| `get_article` | `slug`, `offset?`, `cursor?`, `limit?`, `length?`, `section?` | texte paginé d'une analyse ou d'un guide, avec `nextCursor`, références séparées et accès direct `tail`/`sources` |
+
+Les documents longs exposent `section`, `offset`, `limit`, `nextOffset` et `nextCursor`. Exemple :
+`l0g://articles/economie-des-intentions?section=sources&offset=0&limit=12000`.
+Les références structurées sont aussi renvoyées séparément dans `references`, afin de ne pas dépendre
+du chunk de texte courant.
 
 `get_claim` ne publie pas d’URI fragmentée de preuve : il renvoie la ressource `l0g://claims/{claim_id}`
 et oriente vers le tool `get_claim_evidence`. Les tools marquent les identifiants inconnus avec `isError: true`.

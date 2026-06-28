@@ -48,7 +48,11 @@ const { resourceTemplates } = await client.listResourceTemplates();
 console.log('RESOURCE_TEMPLATES:', resourceTemplates.map((template) => template.uriTemplate).join(', '));
 for (const required of [
   'l0g://articles/{slug}',
+  'l0g://articles/{slug}{?section,offset,limit}',
+  'l0g://articles/{slug}{?cursor}',
   'l0g://guides/{slug}',
+  'l0g://guides/{slug}{?section,offset,limit}',
+  'l0g://guides/{slug}{?cursor}',
   'l0g://claims/{claim_id}',
   'l0g://sources/{source_id}',
   'l0g://signals/{instrument}/current',
@@ -60,9 +64,29 @@ for (const required of [
 const freshnessResource = await client.readResource({ uri: 'l0g://freshness' });
 console.log('readResource(freshness) -> contents:', freshnessResource.contents?.length);
 
-const articleResource = await client.readResource({ uri: 'l0g://articles/repo-collateral-fabrique-liquidite' });
+const articleResource = await client.readResource({ uri: 'l0g://articles/economie-des-intentions' });
 const articleText = articleResource.contents?.[0]?.text || '{}';
-console.log('readResource(article) -> title:', JSON.parse(articleText).title);
+const articleDocument = JSON.parse(articleText);
+if (!articleDocument.nextCursor || !articleDocument.truncated) throw new Error('readResource(article) sans continuation');
+if (articleDocument.textChars > 16000) throw new Error('readResource(article) renvoie une page trop grande par défaut');
+if (!Array.isArray(articleDocument.references)) throw new Error('readResource(article) sans références séparées');
+console.log('readResource(article) -> title:', articleDocument.title, '| chars:', articleDocument.textChars, '| nextCursor:', Boolean(articleDocument.nextCursor));
+
+const articleSourcesResource = await client.readResource({
+  uri: 'l0g://articles/economie-des-intentions?section=sources&offset=0&limit=12000',
+});
+const articleSourcesDocument = JSON.parse(articleSourcesResource.contents?.[0]?.text || '{}');
+if (!articleSourcesDocument.sectionFound || !articleSourcesDocument.text?.toLowerCase().includes('sources principales')) {
+  throw new Error('readResource(article section=sources) ne retrouve pas les sources');
+}
+console.log('readResource(article sources) -> offset:', articleSourcesDocument.offset, '| chars:', articleSourcesDocument.textChars);
+
+const articleCursorResource = await client.readResource({
+  uri: `l0g://articles/economie-des-intentions?cursor=${articleDocument.nextCursor}`,
+});
+const articleCursorDocument = JSON.parse(articleCursorResource.contents?.[0]?.text || '{}');
+if (articleCursorDocument.offset !== articleDocument.nextOffset) throw new Error('readResource(article cursor) ne reprend pas au bon offset');
+console.log('readResource(article cursor) -> offset:', articleCursorDocument.offset, '| chars:', articleCursorDocument.textChars);
 
 const signalResource = await client.readResource({ uri: 'l0g://signals/yen/current' });
 console.log('readResource(signal) -> instrument:', JSON.parse(signalResource.contents?.[0]?.text || '{}').instrument);
@@ -199,14 +223,16 @@ const changes = await call('get_changes', { contentType: 'article', since: '2026
 if (!changes.entries?.[0]?.semanticChange) throw new Error('get_changes sans semanticChange');
 console.log('get_changes(article) ->', changes.count, '| semantic:', changes.entries?.[0]?.semanticChange);
 
-const art = await call('get_article', { slug: 'economie-des-intentions', length: 5000 });
-if (!art.nextOffset || !art.truncated) throw new Error('get_article ne fournit pas de continuation sur article long');
-console.log('get_article(page 1) -> title:', art.title, '| chars:', art.textChars, '/', art.totalChars, '| next:', art.nextOffset);
+const art = await call('get_article', { slug: 'economie-des-intentions', limit: 5000 });
+if (!art.nextOffset || !art.nextCursor || !art.truncated) throw new Error('get_article ne fournit pas de continuation sur article long');
+if (!Array.isArray(art.references)) throw new Error('get_article ne renvoie pas les références séparées');
+console.log('get_article(page 1) -> title:', art.title, '| chars:', art.textChars, '/', art.totalChars, '| next:', art.nextOffset, '| cursor:', Boolean(art.nextCursor));
 
-const artNext = await call('get_article', { slug: 'economie-des-intentions', offset: art.nextOffset, length: 5000 });
+const artNext = await call('get_article', { slug: 'economie-des-intentions', cursor: art.nextCursor });
+if (artNext.offset !== art.nextOffset) throw new Error('get_article(cursor) ne reprend pas au bon offset');
 console.log('get_article(page 2) -> offset:', artNext.offset, '| chars:', artNext.textChars, '| next:', artNext.nextOffset);
 
-const artSources = await call('get_article', { slug: 'economie-des-intentions', section: 'sources', length: 12000 });
+const artSources = await call('get_article', { slug: 'economie-des-intentions', section: 'sources', limit: 12000 });
 if (!artSources.sectionFound || !artSources.text?.toLowerCase().includes('sources principales')) {
   throw new Error('get_article(section=sources) ne retrouve pas les sources');
 }

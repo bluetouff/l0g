@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.11.2';
+const MCP_VERSION = '1.11.3';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -164,14 +164,34 @@ function excerptFor(text, tokens, fallback) {
   const suffix = end < clean.length ? '...' : '';
   return `${prefix}${clean.slice(start, end).trim()}${suffix}`;
 }
+function encodeCursor(cursor) {
+  return Buffer.from(JSON.stringify(cursor), 'utf8').toString('base64url');
+}
+function decodeCursor(cursor) {
+  if (!cursor) return null;
+  try {
+    const parsed = JSON.parse(Buffer.from(String(cursor), 'base64url').toString('utf8'));
+    if (!parsed || typeof parsed !== 'object') return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
 function articleChunk(text, options = {}) {
   const full = String(text || '');
   const totalChars = full.length;
   const totalWords = full ? full.split(/\s+/).filter(Boolean).length : 0;
-  const section = options.section || 'body';
-  const requestedLength = Number.isFinite(options.length) ? options.length : 16000;
+  const cursor = decodeCursor(options.cursor);
+  const section = cursor?.section || options.section || 'body';
+  const requestedLength = Number.isFinite(cursor?.limit)
+    ? cursor.limit
+    : Number.isFinite(options.limit)
+      ? options.limit
+      : Number.isFinite(options.length)
+        ? options.length
+        : 16000;
   const length = Math.max(1000, Math.min(50000, requestedLength));
-  let offset = Math.max(0, Math.min(Number.isFinite(options.offset) ? options.offset : 0, totalChars));
+  let offset = Math.max(0, Math.min(Number.isFinite(cursor?.offset) ? cursor.offset : Number.isFinite(options.offset) ? options.offset : 0, totalChars));
   let sectionFound = true;
 
   if (section === 'head') {
@@ -193,6 +213,7 @@ function articleChunk(text, options = {}) {
   const end = Math.min(totalChars, offset + length);
   const chunk = full.slice(offset, end);
   const nextOffset = end < totalChars ? end : null;
+  const nextCursor = nextOffset === null ? null : encodeCursor({ section, offset: nextOffset, limit: length });
   return {
     text: chunk,
     section,
@@ -202,8 +223,10 @@ function articleChunk(text, options = {}) {
     textChars: chunk.length,
     words: chunk ? chunk.split(/\s+/).filter(Boolean).length : 0,
     offset,
+    limit: length,
     length,
     nextOffset,
+    nextCursor,
     hasMore: nextOffset !== null,
     truncated: nextOffset !== null,
   };
@@ -597,13 +620,16 @@ const ArticleOutput = ToolOutput.extend({
   totalChars: z.number().optional(),
   textChars: z.number().optional(),
   offset: z.number().optional(),
+  limit: z.number().optional(),
   length: z.number().optional(),
   nextOffset: z.number().nullable().optional(),
+  nextCursor: z.string().nullable().optional(),
   hasMore: z.boolean().optional(),
   section: z.enum(['body', 'head', 'tail', 'sources']).optional(),
   sectionFound: z.boolean().optional(),
   truncated: z.boolean().optional(),
   text: z.string().optional(),
+  references: z.array(EvidenceReferenceSchema).optional(),
 }).strict();
 const ClaimOutput = ToolOutput.extend({
   claimId: z.string().optional(),
@@ -811,8 +837,43 @@ function buildServer(data) {
   const referenceHosts = sources.referenceHosts || [];
   const signals = risk?.indices || {};
 
-  async function readDocument(slug, type) {
-    const clean = uriValue(slug).replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+  function referencesForArticle(slug) {
+    const seen = new Set();
+    const references = [];
+    for (const claim of claimsList.filter((item) => item.articleSlug === slug)) {
+      for (const reference of claim.references || []) {
+        const key = `${reference.href || ''}|${reference.label || ''}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        references.push({
+          label: reference.label,
+          href: reference.href,
+          host: reference.host,
+          kind: reference.kind,
+          date: reference.date,
+          dateLabel: reference.dateLabel,
+        });
+      }
+    }
+    return references;
+  }
+
+  function readOptionsFromUri(uri, variables = {}) {
+    const query = uri?.searchParams;
+    const section = uriValue(variables.section || query?.get('section') || 'body');
+    const offset = Number.parseInt(uriValue(variables.offset || query?.get('offset') || '0'), 10);
+    const limit = Number.parseInt(uriValue(variables.limit || query?.get('limit') || ''), 10);
+    const cursor = uriValue(variables.cursor || query?.get('cursor') || '');
+    return {
+      section: ['body', 'head', 'tail', 'sources'].includes(section) ? section : 'body',
+      offset: Number.isFinite(offset) ? offset : 0,
+      limit: Number.isFinite(limit) ? limit : undefined,
+      cursor: cursor || undefined,
+    };
+  }
+
+  async function readDocument(slug, type, options = {}) {
+    const clean = uriValue(slug).replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
     const pool = type === 'guide' ? guides : articles;
     const record = pool.find((item) => item.slug === clean);
     if (!record) resourceNotFound(type, clean);
@@ -822,19 +883,18 @@ function buildServer(data) {
     const titleEl = root.querySelector('article h1') || root.querySelector('h1');
     const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
     const text = (body ? body.text : '').replace(/\s+/g, ' ').trim();
+    const chunk = articleChunk(text, options);
     return {
       ...record,
       type,
       title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : record.title,
-      words: text ? text.split(/\s+/).length : 0,
-      totalChars: text.length,
-      truncated: false,
-      text,
+      ...chunk,
+      references: referencesForArticle(clean),
     };
   }
 
   function cleanSlug(value) {
-    return String(value || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+    return String(value || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
   }
 
   function normalizeId(value, prefix) {
@@ -1123,10 +1183,36 @@ function buildServer(data) {
     }),
     {
       title: 'Article',
-      description: 'Analyse l0g lue comme document ressource, avec métadonnées et texte.',
+      description: 'Analyse l0g lue comme document ressource paginé, avec métadonnées, références et texte.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article')),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', readOptionsFromUri(uri, variables))),
+  );
+
+  server.registerResource(
+    'article-page',
+    new ResourceTemplate('l0g://articles/{slug}{?section,offset,limit}', {
+      complete: { slug: (value) => articles.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Article page',
+      description: 'Page ciblée d’une analyse l0g : section, offset et limit explicites.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', readOptionsFromUri(uri, variables))),
+  );
+
+  server.registerResource(
+    'article-cursor',
+    new ResourceTemplate('l0g://articles/{slug}{?cursor}', {
+      complete: { slug: (value) => articles.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Article cursor',
+      description: 'Continuation opaque d’une analyse l0g via nextCursor.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', readOptionsFromUri(uri, variables))),
   );
 
   server.registerResource(
@@ -1143,10 +1229,36 @@ function buildServer(data) {
     }),
     {
       title: 'Guide',
-      description: 'Guide de référence l0g lu comme document ressource.',
+      description: 'Guide de référence l0g lu comme document ressource paginé.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide')),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', readOptionsFromUri(uri, variables))),
+  );
+
+  server.registerResource(
+    'guide-page',
+    new ResourceTemplate('l0g://guides/{slug}{?section,offset,limit}', {
+      complete: { slug: (value) => guides.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Guide page',
+      description: 'Page ciblée d’un guide l0g : section, offset et limit explicites.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', readOptionsFromUri(uri, variables))),
+  );
+
+  server.registerResource(
+    'guide-cursor',
+    new ResourceTemplate('l0g://guides/{slug}{?cursor}', {
+      complete: { slug: (value) => guides.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    {
+      title: 'Guide cursor',
+      description: 'Continuation opaque d’un guide l0g via nextCursor.',
+      mimeType: 'application/json',
+    },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', readOptionsFromUri(uri, variables))),
   );
 
   server.registerResource(
@@ -1995,14 +2107,16 @@ function buildServer(data) {
       inputSchema: {
         slug: z.string().min(1).describe("Slug de l'article ou du guide."),
         offset: z.number().int().min(0).default(0).describe('Position de départ en caractères pour paginer le texte.'),
+        cursor: z.string().optional().describe('Curseur opaque nextCursor renvoyé par un appel précédent.'),
+        limit: z.number().int().min(1000).max(50000).optional().describe('Alias de length, recommandé pour les clients agents.'),
         length: z.number().int().min(1000).max(50000).default(16000).describe('Longueur maximale du segment renvoyé.'),
         section: z.enum(['body', 'head', 'tail', 'sources']).default('body').describe('Section pratique : body avec offset, head, tail ou sources.'),
       },
       outputSchema: ArticleOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ slug, offset, length, section: requestedSection }) => {
-      const clean = String(slug || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+    async ({ slug, offset, cursor, limit, length, section: requestedSection }) => {
+      const clean = String(slug || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
       if (!slugs.has(clean)) return errorReply({ error: 'slug inconnu', slug: clean });
       const isGuide = guides.some((g) => g.slug === clean);
       const section = isGuide ? 'guides' : 'posts';
@@ -2013,10 +2127,11 @@ function buildServer(data) {
         const titleEl = root.querySelector('article h1') || root.querySelector('h1');
         const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
         const fullText = (body ? body.text : '').replace(/\s+/g, ' ').trim();
-        const chunk = articleChunk(fullText, { offset, length, section: requestedSection || 'body' });
+        const chunk = articleChunk(fullText, { offset, cursor, limit: limit ?? length, section: requestedSection || 'body' });
         return reply({
           slug: clean, type: isGuide ? 'guide' : 'article', url,
           title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : clean,
+          references: referencesForArticle(clean),
           ...chunk,
         });
       } catch {

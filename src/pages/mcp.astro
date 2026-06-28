@@ -14,8 +14,12 @@ const resources = [
 ];
 
 const templates = [
-  ['l0g://articles/{slug}', 'Article avec métadonnées et texte'],
-  ['l0g://guides/{slug}', 'Guide de référence avec métadonnées et texte'],
+  ['l0g://articles/{slug}', 'Première page article avec métadonnées, références et texte'],
+  ['l0g://articles/{slug}{?section,offset,limit}', 'Page ciblée article par section, offset et limit'],
+  ['l0g://articles/{slug}{?cursor}', 'Continuation article via nextCursor'],
+  ['l0g://guides/{slug}', 'Première page guide avec métadonnées et texte'],
+  ['l0g://guides/{slug}{?section,offset,limit}', 'Page ciblée guide par section, offset et limit'],
+  ['l0g://guides/{slug}{?cursor}', 'Continuation guide via nextCursor'],
   ['l0g://claims/{claim_id}', 'Relation affirmation-source'],
   ['l0g://sources/{source_id}', 'Source primaire ou hôte cité'],
   ['l0g://signals/{instrument}/current', 'Signal courant et historique'],
@@ -45,7 +49,7 @@ const tools = [
   ['list_recent_analyses', 'limit', 'Dernières analyses publiées, de la plus récente à la plus ancienne.'],
   ['list_guides', 'aucun', 'Guides de référence (pages piliers durables).'],
   ['search_by_topic', 'topic, limit', 'Analyses rattachées à un sujet (hub thématique).'],
-  ['get_article', 'slug, offset, length, section', "Texte paginé d'une analyse ou d'un guide, avec continuation et accès direct tail/sources."],
+  ['get_article', 'slug, offset, cursor, limit, length, section', "Texte paginé d'une analyse ou d'un guide, avec nextCursor, références séparées et accès direct tail/sources."],
 ];
 
 const appLd = {
@@ -209,7 +213,7 @@ const appLd = {
         Les tools sont réservés aux opérations : recherche, filtrage, historique, extraction
         de sous-graphe ou lecture ciblée. La recherche plein texte reste locale et déterministe,
         sans base vectorielle ni fournisseur externe. Les articles longs sont paginables, avec
-        curseur de continuation et accès direct aux sources. Chaque réponse expose un résumé humain dans
+        curseur de continuation, accès direct aux sources et références séparées. Chaque réponse expose un résumé humain dans
         <code>content</code> et les données exploitables dans <code>structuredContent</code>,
         avec un <code>outputSchema</code> déclaré. Les identifiants inconnus sont marqués par
         <code>isError: true</code> côté tools ; les resources inexistantes renvoient une erreur
