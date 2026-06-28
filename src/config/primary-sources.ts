@@ -27,8 +27,8 @@ export interface PrimarySourceInstitution {
   related: PrimarySourceLink[];
 }
 
-export const primarySourcesUpdated = '27 juin 2026';
-export const primarySourcesUpdatedIso = '2026-06-27';
+export const primarySourcesUpdated = '28 juin 2026';
+export const primarySourcesUpdatedIso = '2026-06-28';
 
 export const primaryInstitutions: PrimarySourceInstitution[] = [
   {
@@ -568,6 +568,226 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
       { label: 'Glossaire BLS', href: '/glossaire/bls/' },
       { label: 'Glossaire CPI', href: '/glossaire/cpi/' },
       { label: 'Glossaire PCE', href: '/glossaire/pce/' },
+    ],
+  },
+  {
+    slug: 'bank-of-japan-mof',
+    name: 'Bank of Japan & Ministry of Finance Japan',
+    shortName: 'BoJ / MOF',
+    category: 'Japon, yen & interventions de change',
+    accent: 'var(--color-signal)',
+    url: 'https://www.boj.or.jp/en/',
+    description:
+      'Banque du Japon et ministère japonais des Finances : politique monétaire, opérations de marché, statistiques du yen et interventions de change.',
+    why:
+      "Le risque yen ne se lit pas seulement dans USD/JPY : il dépend aussi des décisions BoJ, du discours du MOF et des données officielles d'intervention.",
+    readFor: [
+      'Suivre les décisions de politique monétaire de la BoJ et les communiqués associés.',
+      'Vérifier les interventions de change et les opérations du MOF sur le yen.',
+      'Relier positionnement, taux japonais et risque de débouclage du carry trade.',
+    ],
+    datasets: [
+      {
+        name: 'BoJ monetary policy',
+        role: 'Décisions, statements, minutes et outlook reports de la Banque du Japon.',
+        cadence: 'Selon calendrier BoJ',
+        delay: 'Publication officielle',
+        url: 'https://www.boj.or.jp/en/mopo/index.htm',
+      },
+      {
+        name: 'BoJ statistics',
+        role: 'Taux, opérations, bilan, marchés monétaires et statistiques financières japonaises.',
+        cadence: 'Quotidienne à mensuelle',
+        delay: 'Variable selon série',
+        url: 'https://www.boj.or.jp/en/statistics/index.htm',
+      },
+      {
+        name: 'Foreign exchange intervention operations',
+        role: 'Données du MOF sur interventions de change japonaises.',
+        cadence: 'Mensuelle / opérationnelle selon publication',
+        delay: 'Publication MOF',
+        url: 'https://www.mof.go.jp/english/policy/international_policy/reference/feio/index.htm',
+      },
+    ],
+    limits: [
+      "Le MOF décide les interventions, la BoJ les exécute comme agent : il faut distinguer les rôles.",
+      "Les données d'intervention sont publiées avec délai et ne donnent pas toujours le détail intrajournalier.",
+      "Un discours officiel peut viser le signal politique sans annoncer une opération effective.",
+    ],
+    verification: [
+      'Citer séparément statement BoJ, donnée statistique BoJ et donnée MOF.',
+      "Vérifier la date de publication et la date d'opération quand il s'agit d'interventions.",
+      'Recouper avec CFTC, taux et USD/JPY avant de conclure sur un débouclage forcé.',
+    ],
+    related: [
+      { label: 'Yen Carry', href: '/methodologie/yen-carry/' },
+      { label: 'Glossaire BoJ', href: '/glossaire/boj/' },
+      { label: 'Glossaire MOF', href: '/glossaire/mof/' },
+    ],
+  },
+  {
+    slug: 'treasury-fiscal-data',
+    name: 'U.S. Treasury Fiscal Data',
+    shortName: 'Treasury Fiscal Data',
+    category: 'Trésor US, liquidité & dette',
+    accent: 'var(--color-amber)',
+    url: 'https://fiscaldata.treasury.gov/',
+    description:
+      'Portail officiel du Trésor américain pour dette fédérale, cash balance, Daily Treasury Statement, recettes, dépenses et datasets fiscaux.',
+    why:
+      'Fiscal Data complète TIC : l’un regarde les flux internationaux, l’autre les comptes quotidiens du Trésor, le TGA et la mécanique de liquidité publique.',
+    readFor: [
+      'Suivre le TGA, les recettes et les dépenses dans le Daily Treasury Statement.',
+      'Vérifier dette, émissions et séries fiscales sans passer par un agrégateur.',
+      'Relier liquidité du Trésor, réserves bancaires et impulsion budgétaire.',
+    ],
+    datasets: [
+      {
+        name: 'Daily Treasury Statement',
+        role: 'Cash balance, recettes, dépenses et opérations quotidiennes du Trésor.',
+        cadence: 'Quotidienne jours ouvrés',
+        delay: 'Publication officielle',
+        url: 'https://fiscaldata.treasury.gov/datasets/daily-treasury-statement/operating-cash-balance',
+      },
+      {
+        name: 'Debt to the Penny',
+        role: 'Dette fédérale américaine au jour le jour.',
+        cadence: 'Quotidienne jours ouvrés',
+        delay: 'Publication officielle',
+        url: 'https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny',
+      },
+      {
+        name: 'Treasury securities auctions',
+        role: 'Calendrier, adjudications et caractéristiques des émissions du Trésor.',
+        cadence: 'Selon adjudications',
+        delay: 'Publication officielle',
+        url: 'https://www.treasurydirect.gov/auctions/announcements-data-results/',
+      },
+    ],
+    limits: [
+      'Le DTS est très utile mais bruité au jour le jour.',
+      'La donnée fiscale ne suffit pas à elle seule pour mesurer les réserves bancaires.',
+      'Les calendriers d’émission doivent être lus avec conditions de marché et politique de la Fed.',
+    ],
+    verification: [
+      'Conserver dataset, date de reporting et unité.',
+      'Distinguer cash balance, dette brute et flux budgétaires.',
+      'Recouper avec H.4.1/Fed, RRP et réserves pour une lecture de liquidité nette.',
+    ],
+    related: [
+      { label: 'Liquidité', href: '/guides/liquidite-tresor-dts-tga-rrp/' },
+      { label: 'Glossaire TGA', href: '/glossaire/tga/' },
+      { label: 'Glossaire DTS', href: '/glossaire/dts/' },
+    ],
+  },
+  {
+    slug: 'congress-govinfo-cbo',
+    name: 'Congress.gov, GovInfo & CBO',
+    shortName: 'Congress / CBO',
+    category: 'politique US, lois & budget',
+    accent: '#7aa2f7',
+    url: 'https://www.congress.gov/',
+    description:
+      'Sources officielles américaines pour textes de loi, débats, documents fédéraux, scoring budgétaire et analyses du Congressional Budget Office.',
+    why:
+      'Pour la politique US, les communiqués et récits partisans ne suffisent pas : il faut remonter au texte, au calendrier législatif et au scoring budgétaire.',
+    readFor: [
+      'Lire le texte exact d’un bill, son statut et ses amendements.',
+      'Vérifier les documents publiés au Federal Register ou dans GovInfo.',
+      'Quantifier les effets budgétaires via les analyses du CBO.',
+    ],
+    datasets: [
+      {
+        name: 'Congress.gov legislation',
+        role: 'Textes de loi, amendements, sponsors, statuts et historique législatif.',
+        cadence: 'Au fil des procédures',
+        delay: 'Publication officielle',
+        url: 'https://www.congress.gov/',
+      },
+      {
+        name: 'GovInfo',
+        role: 'Federal Register, Congressional Record, lois publiques et documents gouvernementaux.',
+        cadence: 'Au fil des publications',
+        delay: 'Publication officielle',
+        url: 'https://www.govinfo.gov/',
+      },
+      {
+        name: 'CBO cost estimates',
+        role: 'Estimations budgétaires et analyses économiques des textes.',
+        cadence: 'Au fil des estimations',
+        delay: 'Variable',
+        url: 'https://www.cbo.gov/cost-estimates',
+      },
+    ],
+    limits: [
+      'Un texte peut changer rapidement entre versions, amendements et conférences.',
+      'Le scoring CBO arrive parfois après la bataille politique.',
+      'Un bill déposé ne signifie pas adoption, ni application effective.',
+    ],
+    verification: [
+      'Citer numéro de bill, chambre, version et date.',
+      'Séparer statut procédural, texte adopté et règle finale publiée.',
+      'Vérifier le CBO quand une affirmation porte sur déficit, dépenses ou recettes.',
+    ],
+    related: [
+      { label: 'Politique US', href: '/sujet/politique-us/' },
+      { label: 'CLARITY Act', href: '/posts/clarity-act-regulation-crypto-etats-unis/' },
+      { label: 'GENIUS Act', href: '/guides/stablecoins-genius-act/' },
+    ],
+  },
+  {
+    slug: 'world-bank-oecd',
+    name: 'World Bank Open Data & OECD Data',
+    shortName: 'World Bank / OECD',
+    category: 'macro internationale & développement',
+    accent: 'var(--color-accent)',
+    url: 'https://data.worldbank.org/',
+    description:
+      'Banque mondiale et OCDE : séries macro, développement, commerce, productivité, dette, revenus, énergie et comparaisons internationales.',
+    why:
+      "Ces bases complètent FMI et BIS pour comparer pays, revenus, productivité, commerce et indicateurs structurels avec des définitions documentées.",
+    readFor: [
+      'Comparer des pays sur des séries longues et documentées.',
+      'Vérifier indicateurs de développement, commerce, dette et productivité.',
+      'Éviter de tirer une conclusion globale à partir d’une seule source nationale.',
+    ],
+    datasets: [
+      {
+        name: 'World Bank Open Data',
+        role: 'Indicateurs macro, développement, commerce, dette et énergie par pays.',
+        cadence: 'Selon indicateur',
+        delay: 'Variable',
+        url: 'https://data.worldbank.org/',
+      },
+      {
+        name: 'World Development Indicators',
+        role: 'Base structurée de séries pays et indicateurs de développement.',
+        cadence: 'Variable',
+        delay: 'Variable',
+        url: 'https://databank.worldbank.org/source/world-development-indicators',
+      },
+      {
+        name: 'OECD Data Explorer',
+        role: 'Statistiques OCDE : productivité, comptes nationaux, emploi, prix, commerce et dette.',
+        cadence: 'Selon série',
+        delay: 'Variable',
+        url: 'https://data-explorer.oecd.org/',
+      },
+    ],
+    limits: [
+      'Les séries peuvent provenir de sources nationales avec révisions et ruptures méthodologiques.',
+      'Les délais sont parfois longs pour les pays émergents.',
+      'Les comparaisons internationales exigent de vérifier unité, année de base et parité de pouvoir d’achat.',
+    ],
+    verification: [
+      'Citer code indicateur, pays, période et unité.',
+      'Distinguer donnée observée, estimation et projection.',
+      'Recouper avec FMI, banques centrales ou agences statistiques nationales sur les points sensibles.',
+    ],
+    related: [
+      { label: 'Dédollarisation', href: '/posts/dedollarisation-recit-vs-chiffres/' },
+      { label: 'Macro banques centrales', href: '/sujet/macro-banques-centrales/' },
+      { label: 'Sources primaires', href: '/sources/' },
     ],
   },
 ];

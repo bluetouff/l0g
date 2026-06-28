@@ -9,7 +9,7 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.6.0';
+export const AGENT_VERSION = '1.7.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -1321,12 +1321,15 @@ export function buildOpenApiContract() {
         },
         ExternalAuthenticityPolicy: {
           type: 'object',
-          required: ['status', 'currentGuarantee', 'missingGuarantee', 'recommendedNextSteps'],
+          required: ['status', 'mechanism', 'subjects', 'currentGuarantee', 'missingGuarantee', 'verification', 'recommendedNextSteps'],
           additionalProperties: false,
           properties: {
-            status: { const: 'not-externally-signed' },
+            status: { enum: ['github-sigstore-attestation-configured'] },
+            mechanism: { type: 'string' },
+            subjects: { type: 'array', items: { type: 'string' } },
             currentGuarantee: { type: 'string' },
             missingGuarantee: { type: 'string' },
+            verification: { type: 'string' },
             recommendedNextSteps: { type: 'array', items: { type: 'string' } },
           },
         },
@@ -2134,6 +2137,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'claim-source graph',
       'evidence graph',
       'clickable references with explicit source dates when detected',
+      'retrieval timestamps on every evidence reference',
       'freshness manifest',
       'primary-source registry',
       'editorial correction policy',
@@ -2164,6 +2168,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     preferredUse: [
       'Citer les URL canoniques des articles, guides ou sources.',
       'Utiliser claims.json pour relier une affirmation à une source datée quand détectable.',
+      'Lire séparément claimDate, observationDate, sourcePublicationDate et retrievedAt.',
       'Utiliser evidence-graph.json pour parcourir articles, claims, références, hôtes, sources et datasets.',
       'Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
@@ -2468,15 +2473,19 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       caveat: 'Ces empreintes vérifient les surfaces Agent Surface ; les fichiers externes conservent leur propre politique de version.',
     },
     externalAuthenticity: {
-      status: 'not-externally-signed',
+      status: 'github-sigstore-attestation-configured',
+      mechanism: 'GitHub Artifact Attestations / Sigstore, émises par le workflow de build avec OIDC GitHub Actions.',
+      subjects: ['/agents.json', '/openapi.json', '/api/v1/integrity.json'],
       currentGuarantee:
-        'Les hashes publiés sur l0g.fr vérifient la cohérence canonique des artefacts servis et permettent de comparer deux copies ou deux builds.',
+        'Les hashes publiés sur l0g.fr vérifient la cohérence canonique des artefacts servis ; le workflow GitHub signe extérieurement les manifests principaux par attestation Sigstore.',
       missingGuarantee:
-        'Ils ne prouvent pas, seuls, qu’un artefact vient authentiquement de l0g après compromission de l’origine qui sert à la fois les fichiers et leurs hashes.',
+        'Une copie locale construite hors CI peut ne pas avoir d’attestation distante ; l’attestation doit être vérifiée côté GitHub pour le commit publié.',
+      verification:
+        'Vérifier les attestations GitHub du commit publié sur le dépôt bluetouff/l0g pour les sujets /agents.json, /openapi.json et /api/v1/integrity.json, puis comparer les SHA-256 canoniques exposés.',
       recommendedNextSteps: [
-        'Publier une signature Minisign ou Sigstore des snapshots Agent Surface.',
-        'Attacher les hashes à une release GitHub signée.',
-        'Publier périodiquement les empreintes dans un journal externe ou un canal social vérifié.',
+        'Publier un lien de vérification des attestations depuis la page données.',
+        'Étendre l’attestation à tous les snapshots JSON et NDJSON si le volume reste acceptable.',
+        'Publier périodiquement les empreintes dans un canal social vérifié.',
       ],
     },
     license: 'CC BY 4.0',

@@ -11,6 +11,8 @@ on:
 
 permissions:
   contents: write # nécessaire uniquement pour pousser sur la branche `built`
+  id-token: write # nécessaire pour les attestations Sigstore/GitHub OIDC
+  attestations: write
 
 concurrency:
   group: build-${{ github.ref }}
@@ -34,6 +36,14 @@ jobs:
 
       - name: Build (Astro + Agent Surface test + Pagefind)
         run: npm run build
+
+      - name: Attest Agent Surface manifests
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: |
+            dist/agents.json
+            dist/openapi.json
+            dist/api/v1/integrity.json
 
       - name: Publish to `built` branch
         env:

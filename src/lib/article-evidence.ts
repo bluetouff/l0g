@@ -96,6 +96,7 @@ const DASHBOARD_HOSTS = new Map([
   ['energie.l0g.fr', 'Énergie'],
   ['yct.l0g.fr', 'Yen Carry'],
 ]);
+const EVIDENCE_RETRIEVED_AT = new Date().toISOString();
 
 function cleanLabel(value: string | undefined, fallback: string) {
   return String(value || fallback)
@@ -242,6 +243,10 @@ function publicationDate(fallback?: Date) {
     : { label: 'date non indiquée' };
 }
 
+function undetectedObservationDate() {
+  return { label: 'observation non détectée', iso: undefined };
+}
+
 function extractDateFromText(text: string): { label: string; iso?: string } | null {
   const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
   if (iso) return { label: `${iso[3]}/${iso[2]}/${iso[1]}`, iso: `${iso[1]}-${iso[2]}-${iso[3]}` };
@@ -259,7 +264,7 @@ function extractDateFromText(text: string): { label: string; iso?: string } | nu
     return { label: `${monthYear[1]} ${monthYear[2]}`, iso: `${monthYear[2]}-${month}-01` };
   }
 
-  const quarter = text.match(/\bT([1-4])\s+(20\d{2})\b/i);
+  const quarter = text.match(/\b[QT]([1-4])\s+(20\d{2})\b/i);
   if (quarter) return { label: `T${quarter[1]} ${quarter[2]}`, iso: `${quarter[2]}-${String((Number(quarter[1]) - 1) * 3 + 1).padStart(2, '0')}-01` };
 
   const year = text.match(/\b(20\d{2})\b/);
@@ -268,10 +273,15 @@ function extractDateFromText(text: string): { label: string; iso?: string } | nu
   return null;
 }
 
-function dateForBlock(block: string, fallback?: Date) {
-  const found = extractDateFromText(stripMarkdown(block));
-  if (found) return found;
-  return publicationDate(fallback);
+function observationDateForBlock(block: string) {
+  const text = stripMarkdown(block);
+  const cue = text.match(
+    /\b(?:au|à fin|a fin|fin|début|debut|depuis|en|pour|sur|d['’]ici|lors de|pendant|au cours de)\s+(.{0,80}?(?:20\d{2}|T[1-4]\s+20\d{2}|Q[1-4]\s+20\d{2}))/iu
+  );
+  if (cue) return extractDateFromText(cue[0]) ?? undetectedObservationDate();
+  const quarter = text.match(/\b[QT][1-4]\s+20\d{2}\b/i);
+  if (quarter) return extractDateFromText(quarter[0]) ?? undetectedObservationDate();
+  return undetectedObservationDate();
 }
 
 function sourcePublicationDateForLink(link: EvidenceLink) {
@@ -292,18 +302,19 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
   const claim = firstMeaningfulBlock(markdown);
   if (!claim || !opts.url) return [];
   const date = publicationDate(opts.published);
+  const observation = observationDateForBlock(claim);
 
   return [
     {
       id: 'claim-backfill-1',
       kind: classifyClaim(claim),
       claim: claim.slice(0, 340),
-      dateLabel: date.label,
-      dateIso: date.iso,
+      dateLabel: observation.iso ? observation.label : date.label,
+      dateIso: observation.iso ?? date.iso,
       claimDateLabel: date.label,
       claimDateIso: date.iso,
-      observationDateLabel: date.label,
-      observationDateIso: date.iso,
+      observationDateLabel: observation.label,
+      observationDateIso: observation.iso,
       references: [
         {
           label: opts.title ? `Article l0g : ${opts.title}` : 'Article l0g',
@@ -314,7 +325,7 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
           dateIso: date.iso,
           sourcePublicationDateLabel: date.label,
           sourcePublicationDateIso: date.iso,
-          retrievedAt: null,
+          retrievedAt: EVIDENCE_RETRIEVED_AT,
         },
       ],
       confidence: 'auto-backfill',
@@ -490,7 +501,7 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
       dateIso: sourceDate?.iso,
       sourcePublicationDateLabel: sourceDate?.label,
       sourcePublicationDateIso: sourceDate?.iso,
-      retrievedAt: null,
+      retrievedAt: EVIDENCE_RETRIEVED_AT,
     };
   });
   const primary: PrimaryEvidence[] = [];
@@ -546,7 +557,7 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
             dateIso: sourceDate?.iso,
             sourcePublicationDateLabel: sourceDate?.label,
             sourcePublicationDateIso: sourceDate?.iso,
-            retrievedAt: null,
+            retrievedAt: EVIDENCE_RETRIEVED_AT,
           };
         })
         .filter((link) => !link.href.startsWith('#'));
@@ -555,18 +566,19 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
 
       const claim = stripMarkdown(block).slice(0, 340);
       if (!claim) return null;
-      const date = dateForBlock(block, opts.published);
+      const claimDate = publicationDate(opts.published);
+      const observationDate = observationDateForBlock(block);
       const classification = classifyClaimWithRule(claim);
       return {
         id: `claim-${index + 1}`,
         kind: classification.kind,
         claim,
-        dateLabel: date.label,
-        dateIso: date.iso,
-        claimDateLabel: date.label,
-        claimDateIso: date.iso,
-        observationDateLabel: date.label,
-        observationDateIso: date.iso,
+        dateLabel: observationDate.iso ? observationDate.label : claimDate.label,
+        dateIso: observationDate.iso ?? claimDate.iso,
+        claimDateLabel: claimDate.label,
+        claimDateIso: claimDate.iso,
+        observationDateLabel: observationDate.label,
+        observationDateIso: observationDate.iso,
         references: blockLinks.slice(0, 5),
         confidence: 'auto-backfill',
         reviewStatus: 'unreviewed',
