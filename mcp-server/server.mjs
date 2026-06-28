@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.8.0';
+const MCP_VERSION = '1.9.0';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -328,8 +328,103 @@ async function searchFullText(catalog, query, limit) {
       matchedFields: ranking.fields,
     }));
 }
-const AnyRecord = z.record(z.string(), z.any());
-const ToolOutput = z.object({ error: z.string().optional() }).passthrough();
+const JsonValue = z.lazy(() => z.union([
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.null(),
+  z.array(JsonValue),
+  z.record(JsonValue),
+]));
+const AnyRecord = z.record(z.string(), JsonValue);
+const ToolOutput = z.object({ error: z.string().optional() }).catchall(JsonValue);
+const UrlString = z.string();
+const NullableString = z.string().nullable().optional();
+const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario']);
+const EvidenceReferenceSchema = z.object({
+  label: z.string(),
+  href: z.string(),
+  host: NullableString,
+  kind: NullableString,
+  date: NullableString,
+  dateLabel: NullableString,
+}).strict();
+const CompactClaimSchema = z.object({
+  id: z.string(),
+  articleSlug: z.string(),
+  articleTitle: z.string().optional(),
+  articleUrl: UrlString.optional(),
+  kind: ClaimKindSchema,
+  claim: z.string(),
+  date: NullableString,
+  dateLabel: NullableString,
+  confidence: z.string().optional(),
+  references: z.array(EvidenceReferenceSchema),
+}).strict();
+const SearchResultSchema = z.object({
+  type: z.enum(['article', 'guide', 'glossary', 'methodology', 'source']),
+  title: z.string(),
+  url: UrlString.optional(),
+  date: NullableString,
+  description: z.string().optional(),
+  excerpt: z.string().optional(),
+  score: z.number(),
+  matchedTerms: z.array(z.string()).optional(),
+  matchedFields: z.array(z.enum(['title', 'tags', 'description', 'body'])).optional(),
+}).strict();
+const EvidenceGraphNodeSchema = z.object({
+  id: z.string(),
+  type: z.enum(['article', 'claim', 'reference', 'host', 'primarySource', 'dataset']),
+  label: z.string(),
+  url: z.string().nullable().optional(),
+  meta: AnyRecord.optional(),
+}).strict();
+const EvidenceGraphEdgeSchema = z.object({
+  id: z.string(),
+  from: z.string(),
+  to: z.string(),
+  type: z.enum(['contains', 'cites', 'hostedBy', 'matchesPrimarySource', 'providesDataset']),
+  meta: AnyRecord.optional(),
+}).strict();
+const SnapshotSchema = z.object({
+  path: z.string(),
+  url: UrlString.optional(),
+  role: z.string().optional(),
+  mediaType: z.string().optional(),
+  canonicalSha256: z.string(),
+  canonicalBytes: z.number().optional(),
+}).strict();
+const ChangeEntrySchema = z.object({
+  id: z.string(),
+  date: z.string(),
+  type: z.string(),
+  contentType: z.enum(['article', 'guide', 'policy']),
+  slug: z.string(),
+  title: z.string(),
+  url: UrlString,
+  changedFields: z.array(z.string()),
+  summary: z.string(),
+}).strict();
+const PrimarySourceSchema = z.object({
+  type: z.literal('primarySource').optional(),
+  slug: z.string(),
+  url: UrlString.optional(),
+  name: z.string(),
+  shortName: z.string().optional(),
+  category: z.string().optional(),
+  officialUrl: UrlString.optional(),
+  description: z.string().optional(),
+  datasets: z.array(AnyRecord).optional(),
+  limits: z.array(z.string()).optional(),
+  verification: z.array(z.string()).optional(),
+}).catchall(JsonValue);
+const ReferenceHostSchema = z.object({
+  type: z.literal('referenceHost').optional(),
+  host: z.string(),
+  references: z.number().optional(),
+  articles: z.number().optional(),
+  kinds: z.array(z.string()).optional(),
+}).strict();
 const AgentManifestOutput = ToolOutput.extend({
   version: z.string().optional(),
   name: z.string().optional(),
@@ -383,20 +478,20 @@ const FreshnessOutput = ToolOutput.extend({
 }).passthrough();
 const SearchOutput = ToolOutput.extend({
   query: z.string().optional(),
-  mode: z.string().optional(),
-  backend: z.string().optional(),
-  coverage: z.array(z.string()).optional(),
+  mode: z.enum(['fulltext', 'catalog']).optional(),
+  backend: z.enum(['local-html-index', 'catalog-weighted-lexical']).optional(),
+  coverage: z.array(z.enum(['title', 'tags', 'topics', 'description', 'body'])).optional(),
   count: z.number().optional(),
-  results: z.array(z.any()).optional(),
-}).passthrough();
+  results: z.array(SearchResultSchema).optional(),
+}).strict();
 const ClaimsOutput = ToolOutput.extend({
   version: z.string().optional(),
   count: z.number().optional(),
   filters: AnyRecord.optional(),
-  claimKinds: z.array(z.string()).optional(),
-  claims: z.array(z.any()).optional(),
+  claimKinds: z.array(ClaimKindSchema).optional(),
+  claims: z.array(CompactClaimSchema).optional(),
   policy: AnyRecord.optional(),
-}).passthrough();
+}).strict();
 const EvidenceGraphOutput = ToolOutput.extend({
   version: z.string().optional(),
   generated: z.string().optional(),
@@ -404,32 +499,32 @@ const EvidenceGraphOutput = ToolOutput.extend({
   returned: AnyRecord.optional(),
   filters: AnyRecord.optional(),
   graphPolicy: AnyRecord.optional(),
-  nodes: z.array(z.any()).optional(),
-  edges: z.array(z.any()).optional(),
-}).passthrough();
+  nodes: z.array(EvidenceGraphNodeSchema).optional(),
+  edges: z.array(EvidenceGraphEdgeSchema).optional(),
+}).strict();
 const SourcesOutput = ToolOutput.extend({
   version: z.string().optional(),
   counts: AnyRecord.optional(),
   sourcePolicy: AnyRecord.optional(),
-  primarySources: z.array(z.any()).optional(),
-  referenceHosts: z.array(z.any()).optional(),
-}).passthrough();
+  primarySources: z.array(PrimarySourceSchema).optional(),
+  referenceHosts: z.array(ReferenceHostSchema).optional(),
+}).strict();
 const IntegrityOutput = ToolOutput.extend({
   version: z.string().optional(),
   generated: z.string().optional(),
   algorithm: z.string().optional(),
   canonicalization: AnyRecord.optional(),
   count: z.number().optional(),
-  snapshots: z.array(z.any()).optional(),
+  snapshots: z.array(SnapshotSchema).optional(),
   verification: AnyRecord.optional(),
-}).passthrough();
+}).strict();
 const ChangefeedOutput = ToolOutput.extend({
   version: z.string().optional(),
   generated: z.string().optional(),
   count: z.number().optional(),
   feedPolicy: AnyRecord.optional(),
-  entries: z.array(z.any()).optional(),
-}).passthrough();
+  entries: z.array(ChangeEntrySchema).optional(),
+}).strict();
 const AnalysisListOutput = ToolOutput.extend({
   count: z.number().optional(),
   analyses: z.array(z.any()).optional(),
@@ -446,7 +541,7 @@ const TopicOutput = AnalysisListOutput.extend({
 }).passthrough();
 const ArticleOutput = ToolOutput.extend({
   slug: z.string().optional(),
-  type: z.string().optional(),
+  type: z.enum(['article', 'guide']).optional(),
   url: z.string().optional(),
   title: z.string().optional(),
   words: z.number().optional(),
@@ -457,68 +552,68 @@ const ArticleOutput = ToolOutput.extend({
   length: z.number().optional(),
   nextOffset: z.number().nullable().optional(),
   hasMore: z.boolean().optional(),
-  section: z.string().optional(),
+  section: z.enum(['body', 'head', 'tail', 'sources']).optional(),
   sectionFound: z.boolean().optional(),
   truncated: z.boolean().optional(),
   text: z.string().optional(),
-}).passthrough();
+}).strict();
 const ClaimOutput = ToolOutput.extend({
   claimId: z.string().optional(),
-  claim: z.any().optional(),
+  claim: CompactClaimSchema.optional(),
   resource: z.string().optional(),
   articleResource: z.string().optional(),
   evidenceResource: z.string().optional(),
-}).passthrough();
+}).strict();
 const ClaimEvidenceOutput = ToolOutput.extend({
   claimId: z.string().optional(),
-  claim: z.any().optional(),
+  claim: CompactClaimSchema.optional(),
   evidence: AnyRecord.optional(),
-  references: z.array(z.any()).optional(),
-  nodes: z.array(z.any()).optional(),
-  edges: z.array(z.any()).optional(),
+  references: z.array(EvidenceReferenceSchema).optional(),
+  nodes: z.array(EvidenceGraphNodeSchema).optional(),
+  edges: z.array(EvidenceGraphEdgeSchema).optional(),
   returned: AnyRecord.optional(),
-}).passthrough();
+}).strict();
 const ArticleClaimsOutput = ToolOutput.extend({
   articleSlug: z.string().optional(),
-  article: z.any().optional(),
+  article: AnyRecord.optional(),
   count: z.number().optional(),
   filters: AnyRecord.optional(),
-  claims: z.array(z.any()).optional(),
+  claims: z.array(CompactClaimSchema).optional(),
   resources: z.array(z.string()).optional(),
-}).passthrough();
+}).strict();
 const ClaimsBySourceOutput = ToolOutput.extend({
   sourceId: z.string().optional(),
-  source: z.any().optional(),
+  source: z.union([PrimarySourceSchema, ReferenceHostSchema]).nullable().optional(),
   count: z.number().optional(),
   filters: AnyRecord.optional(),
-  claims: z.array(z.any()).optional(),
-}).passthrough();
+  claims: z.array(CompactClaimSchema.extend({ matchingReferences: z.array(EvidenceReferenceSchema) })).optional(),
+}).strict();
 const SourceOutput = ToolOutput.extend({
   sourceId: z.string().optional(),
-  sourceType: z.string().optional(),
-  source: z.any().optional(),
+  sourceType: z.enum(['primarySource', 'referenceHost', 'referenceMatch']).optional(),
+  source: z.union([PrimarySourceSchema, ReferenceHostSchema]).nullable().optional(),
   claimsCount: z.number().optional(),
-  claims: z.array(z.any()).optional(),
-}).passthrough();
+  claims: z.array(CompactClaimSchema.extend({ matchingReferences: z.array(EvidenceReferenceSchema) })).optional(),
+}).strict();
 const VerifyArtifactOutput = ToolOutput.extend({
   path: z.string().optional(),
   verified: z.boolean().nullable().optional(),
   algorithm: z.string().optional(),
   expectedSha256: z.string().optional(),
   providedSha256: z.string().nullable().optional(),
-  snapshot: z.any().optional(),
+  snapshot: SnapshotSchema.optional(),
   canonicalization: AnyRecord.optional(),
   verification: AnyRecord.optional(),
   knownPaths: z.array(z.string()).optional(),
-}).passthrough();
+}).strict();
 const ChangesOutput = ToolOutput.extend({
   version: z.string().optional(),
   generated: z.string().optional(),
   count: z.number().optional(),
   filters: AnyRecord.optional(),
   feedPolicy: AnyRecord.optional(),
-  entries: z.array(z.any()).optional(),
-}).passthrough();
+  entries: z.array(ChangeEntrySchema).optional(),
+}).strict();
 function summarizePayload(payload) {
   if (payload?.error) return `Erreur : ${payload.error}.`;
   if (payload?.claim && payload?.evidence) return `Preuve de claim : ${payload.claim.id} (${payload.evidence.proofDepth}).`;
