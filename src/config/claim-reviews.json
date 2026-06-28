@@ -1,5 +1,139 @@
 {
   "version": "2026-06-28",
   "updated": "2026-06-28",
-  "entries": []
+  "entries": [
+    {
+      "claimId": "chine-importations-petrole-brut-chute-2026:claim-617f0c5b6887c7",
+      "reviewedAt": "2026-06-28T07:25:55.868Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "chine-importations-petrole-brut-chute-2026:claim-dba0e036364aa8",
+      "reviewedAt": "2026-06-28T07:25:32.268Z",
+      "reviewedBy": "bluetouff",
+      "kind": "inférence",
+      "note": "check ok"
+    },
+    {
+      "claimId": "collateral-rehypothecation-cle-de-voute:claim-b046e5dcaa6614",
+      "reviewedAt": "2026-06-28T07:20:25.279Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cross-currency-basis-prix-cache-dollar:claim-3f8649e162f528",
+      "reviewedAt": "2026-06-28T07:26:20.997Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-24a4dba17ef846",
+      "reviewedAt": "2026-06-28T07:20:48.785Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-32a9d6b5aaa8f5",
+      "reviewedAt": "2026-06-28T07:24:41.821Z",
+      "reviewedBy": "bluetouff",
+      "kind": "scénario",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-407ea295053139",
+      "reviewedAt": "2026-06-28T07:22:20.535Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-45c8a3da860316",
+      "reviewedAt": "2026-06-28T07:21:37.828Z",
+      "reviewedBy": "bluetouff",
+      "kind": "estimation",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-4b2765994e2dab",
+      "reviewedAt": "2026-06-28T07:21:07.094Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-b2947cac98307f",
+      "reviewedAt": "2026-06-28T07:25:07.033Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-b74f29ebd1f3ed",
+      "reviewedAt": "2026-06-28T07:22:58.243Z",
+      "reviewedBy": "bluetouff",
+      "kind": "estimation",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-d2da42dfafa444",
+      "reviewedAt": "2026-06-28T07:23:36.535Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-d5fb8ecc4bfb4a",
+      "reviewedAt": "2026-06-28T07:22:02.127Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "cuivre-shortage-ormuz-el-nino-2026:claim-e32f905b71ef6e",
+      "reviewedAt": "2026-06-28T07:23:56.250Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "dollar-yen-intervention-risque-carry-2026:claim-5fd613b6105a3b",
+      "reviewedAt": "2026-06-28T07:19:16.594Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "dollar-yen-intervention-risque-carry-2026:claim-a622081519e44a",
+      "reviewedAt": "2026-06-28T07:20:07.050Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "dollar-yen-intervention-risque-carry-2026:claim-d83e454169d426",
+      "reviewedAt": "2026-06-28T07:19:40.293Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "eurodollars-dollar-offshore-dette-cachee:claim-5f34013c718f08",
+      "reviewedAt": "2026-06-28T07:26:44.092Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    },
+    {
+      "claimId": "financement-circulaire-ia:claim-56c9571b29c460",
+      "reviewedAt": "2026-06-28T07:18:54.453Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "check ok"
+    }
+  ]
 }
