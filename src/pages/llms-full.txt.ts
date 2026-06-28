@@ -77,7 +77,7 @@ export const GET: APIRoute = async () => {
     "Inventaire des snapshots publics et endpoints l0g : risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
   );
   out.push(
-    `Agent Surface v1.5.0 : ${SITE}/donnees/agents/ documente la surface M2M statique. Le guide pratique ${SITE}/agents/ explique comment utiliser l0g avec un agent : choix des endpoints, prompts, citations, verification et MCP public. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/evidence-graph.json pour le graphe articles-claims-sources, ${SITE}/api/v1/sources.json pour le registre sources, ${SITE}/api/v1/freshness.json pour la fraicheur du corpus et des signaux, ${SITE}/api/v1/integrity.json pour les empreintes SHA-256 canoniques et ${SITE}/api/v1/changes.json pour le changefeed machine avec objectId, version/hash courant, statut de diff et changement semantique. Les variantes NDJSON principales sont ${SITE}/api/v1/catalog.ndjson, ${SITE}/api/v1/claims.ndjson, ${SITE}/api/v1/evidence-graph.ndjson et ${SITE}/api/v1/changes.ndjson.`
+    `Agent Surface v1.6.0 : ${SITE}/donnees/agents/ documente la surface M2M statique. Le guide pratique ${SITE}/agents/ explique comment utiliser l0g avec un agent : choix des endpoints, prompts, citations, verification, revue humaine et MCP public. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/evidence-graph.json pour le graphe articles-claims-sources, ${SITE}/api/v1/sources.json pour le registre sources, ${SITE}/api/v1/freshness.json pour la fraicheur du corpus et des signaux, ${SITE}/api/v1/integrity.json pour les empreintes SHA-256 canoniques et ${SITE}/api/v1/changes.json pour le changefeed machine avec objectId, version/hash courant, statut de diff et changement semantique. Les variantes NDJSON principales sont ${SITE}/api/v1/catalog.ndjson, ${SITE}/api/v1/claims.ndjson, ${SITE}/api/v1/evidence-graph.ndjson et ${SITE}/api/v1/changes.ndjson.`
   );
   out.push(
     "Le fichier risk.json expose un tableau de bord consolide de signaux, pas un indice unique de risque systemique : les scores 0-100 sont normalises par instrument et ne sont pas statistiquement equivalents entre US Macro, Euro Macro, Yen Carry et Energie."
@@ -116,7 +116,7 @@ export const GET: APIRoute = async () => {
   out.push(editorialProtocol.precisionGuard.warning);
   out.push('');
   out.push('Relations affirmation-source :');
-  out.push('Les articles generent automatiquement des relations entre passages references et sources cliquables. Chaque relation est typee : fait, estimation, inference ou scenario. Les references exposent une date utile extraite du passage ou, a defaut, la date de publication de l article.');
+  out.push('Les articles generent automatiquement des relations entre passages references et sources cliquables. Chaque relation est typee : fait revu, estimation, inference, scenario ou assertion non classee. Les references exposent une date utile extraite du passage ou, a defaut, la date de publication de l article.');
   out.push('');
   out.push('Politique de correction :');
   out.push(editorialProtocol.correctionPolicy.summary);

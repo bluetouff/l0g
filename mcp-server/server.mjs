@@ -15,6 +15,7 @@
  * extrait à la demande depuis le HTML construit.
  */
 import http from 'node:http';
+import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
@@ -37,7 +38,28 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.11.3';
+const MCP_VERSION = '1.12.0';
+function activeGitSha() {
+  if (process.env.MCP_GIT_SHA) return process.env.MCP_GIT_SHA;
+  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
+  try {
+    return execFileSync('git', ['rev-parse', 'HEAD'], {
+      cwd: process.cwd(),
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    return 'unknown';
+  }
+}
+const MCP_SERVER_INFO = {
+  name: 'l0g.fr',
+  version: MCP_VERSION,
+  sha: activeGitSha(),
+  dataDir: DATA_DIR,
+  transport: 'streamable-http',
+  path: MCP_PATH,
+};
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -363,7 +385,7 @@ const AnyRecord = z.record(z.string(), JsonValue);
 const ToolOutput = z.object({ error: z.string().optional() }).catchall(JsonValue);
 const UrlString = z.string();
 const NullableString = z.string().nullable().optional();
-const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario']);
+const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
 const EvidenceReferenceSchema = z.object({
   label: z.string(),
   href: z.string(),
@@ -392,6 +414,8 @@ const CompactClaimSchema = z.object({
   reviewStatus: z.enum(['unreviewed', 'reviewed']).optional(),
   reviewedAt: NullableString,
   reviewedBy: NullableString,
+  reviewNote: NullableString,
+  reviewedProofDepth: z.enum(['direct-proof', 'reproduction']).nullable().optional(),
   classifier: AnyRecord.optional(),
   references: z.array(EvidenceReferenceSchema),
 }).strict();
@@ -488,6 +512,7 @@ const AgentManifestOutput = ToolOutput.extend({
   endpoints: AnyRecord.optional(),
   counts: AnyRecord.optional(),
   proofPolicy: AnyRecord.optional(),
+  server: AnyRecord.optional(),
 }).passthrough();
 const RiskIndicesOutput = ToolOutput.extend({
   snapshot: z.string().nullable().optional(),
@@ -757,6 +782,8 @@ function compactClaim(claim) {
     reviewStatus: claim.reviewStatus,
     reviewedAt: claim.reviewedAt,
     reviewedBy: claim.reviewedBy,
+    reviewNote: claim.reviewNote,
+    reviewedProofDepth: claim.reviewedProofDepth,
     classifier: claim.classifier,
     references: (claim.references || []).map((r) => ({
       label: r.label,
@@ -852,7 +879,7 @@ function buildServer(data) {
   const guides = catalog.guides || [];
   const topicsList = catalog.topics || [];
   const slugs = new Set([...articles.map((a) => a.slug), ...guides.map((g) => g.slug)]);
-  const claimKinds = ['fait', 'estimation', 'inférence', 'scénario'];
+  const claimKinds = ['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion'];
   const claimsList = claims.claims || [];
   const methodologies = catalog.methodologies || [];
   const primarySources = sources.primarySources || [];
@@ -997,14 +1024,18 @@ function buildServer(data) {
     const primary = refs.filter((reference) => norm(reference.kind).includes('primaire')).length;
     const dated = refs.filter((reference) => reference.date || reference.dateLabel).length;
     const hosts = new Set(refs.map((reference) => reference.host || hostFromUrl(reference.href)).filter(Boolean));
+    const reviewedDirect = claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof';
+    const reviewedReproduction = claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'reproduction';
     let label = 'mention';
-    if (primary && linked && dated) label = 'source primaire liée et datée';
+    if (reviewedReproduction) label = 'reproduction';
+    else if (reviewedDirect) label = 'preuve directe';
+    else if (primary && linked && dated) label = 'source primaire liée et datée';
     else if (linked && dated) label = 'source liée et datée';
     else if (linked) label = 'source liée';
     else if (refs.length) label = 'référence';
     return {
       proofDepth: label,
-      proofDepthStatus: 'automatique',
+      proofDepthStatus: reviewedDirect || reviewedReproduction ? 'revue humaine' : 'automatique',
       directProofReservedFor: [
         'relation explicitement encodée',
         'relecture humaine',
@@ -1020,6 +1051,9 @@ function buildServer(data) {
       uniqueHosts: hosts.size,
       claimKind: claim.kind,
       confidence: claim.confidence || null,
+      reviewStatus: claim.reviewStatus || 'unreviewed',
+      reviewedProofDepth: claim.reviewedProofDepth || null,
+      reviewNote: claim.reviewNote || null,
     };
   }
 
@@ -1162,6 +1196,11 @@ function buildServer(data) {
     description: 'Manifeste Agent Surface : capacités, endpoints, règles d’usage et politiques de preuve.',
     mimeType: 'application/json',
   }, () => agent);
+  registerStaticResource('mcp-server', 'l0g://mcp/server', {
+    title: 'MCP server runtime',
+    description: 'Version, SHA et transport du serveur MCP actif.',
+    mimeType: 'application/json',
+  }, () => MCP_SERVER_INFO);
   registerStaticResource('openapi', 'l0g://openapi', {
     title: 'OpenAPI',
     description: 'Contrat OpenAPI 3.1 public de l’Agent Surface.',
@@ -1424,6 +1463,7 @@ function buildServer(data) {
       prohibitedUse: agent.prohibitedUse,
       counts: agent.counts,
       proofPolicy: agent.proofPolicy,
+      server: MCP_SERVER_INFO,
     })
   );
 
@@ -1619,10 +1659,10 @@ function buildServer(data) {
     {
       description:
         "Interroge les relations affirmation-source extraites des articles l0g. Filtrage par article, type de claim " +
-        "(fait, estimation, inférence, scénario) et texte. Renvoie les références cliquables, datées quand détectable.",
+        "(fait, estimation, inférence, scénario, assertion non classée) et texte. Renvoie les références cliquables, datées quand détectable.",
       inputSchema: {
         articleSlug: z.string().optional().describe("Slug d'article optionnel."),
-        kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
+        kind: ClaimKindSchema.optional().describe('Type de claim optionnel.'),
         query: z.string().optional().describe('Filtre texte optionnel dans la claim ou le titre article.'),
         limit: z.number().int().min(1).max(50).default(10).describe('Nombre maximum de claims.'),
       },
@@ -1730,7 +1770,7 @@ function buildServer(data) {
         "C'est le chemin recommandé pour passer d'un article à ses affirmations vérifiables.",
       inputSchema: {
         articleSlug: z.string().min(1).describe("Slug d'article."),
-        kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
+        kind: ClaimKindSchema.optional().describe('Type de claim optionnel.'),
         limit: z.number().int().min(1).max(100).default(50).describe('Nombre maximum de claims.'),
       },
       outputSchema: ArticleClaimsOutput,
@@ -1762,7 +1802,7 @@ function buildServer(data) {
         "(ex: federal-reserve-fred), un nom ou un host (ex: fred.stlouisfed.org).",
       inputSchema: {
         sourceId: z.string().min(1).describe('Slug de source, nom ou host.'),
-        kind: z.enum(['fait', 'estimation', 'inférence', 'scénario']).optional().describe('Type de claim optionnel.'),
+        kind: ClaimKindSchema.optional().describe('Type de claim optionnel.'),
         limit: z.number().int().min(1).max(100).default(20).describe('Nombre maximum de claims.'),
       },
       outputSchema: ClaimsBySourceOutput,

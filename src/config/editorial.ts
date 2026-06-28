@@ -219,7 +219,7 @@ export const editorialChangelog: EditorialChangelogEntry[] = [
     title: 'Relations affirmation-source et historique des révisions',
     kind: 'traçabilité',
     summary:
-      'Les articles exposent désormais des relations affirmation-source typées en fait, estimation, inférence ou scénario, avec dates séparées quand elles sont détectables, historique de publication et politique de correction.',
+      'Les articles exposent désormais des relations affirmation-source typées en fait relu, estimation, inférence, scénario ou assertion non classée, avec dates séparées quand elles sont détectables, historique de publication et politique de correction.',
     links: [
       { label: 'protocole', href: '/protocole-editorial/' },
       { label: 'catalogue', href: '/api/v1/catalog.json' },

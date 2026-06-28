@@ -36,6 +36,7 @@ const evidence = buildArticleEvidence(post.body ?? '', {
   updated: post.data.updatedDate,
   url: shareUrl,
   title: post.data.title,
+  articleSlug: post.id,
 });
 const proofBadges = evidence.badges.slice(0, 5);
 const proofDepth = evidence.depth;

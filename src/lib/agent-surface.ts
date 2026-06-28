@@ -1,5 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import { createHash } from 'node:crypto';
+import { claimReviewById, claimReviewRegistry } from '../config/claim-reviews.ts';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 import { glossaryEntries, glossarySections } from '../config/glossary.ts';
 import { methodologyPages, riskBandScaleCaveat } from '../config/methodology.ts';
@@ -8,10 +9,11 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.5.0';
+export const AGENT_VERSION = '1.6.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
+const CLAIM_KIND_ENUM = ['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion'];
 
 const RISK_SIGNAL_META: Record<string, { label: string; source: string; methodology: string }> = {
   us: { label: 'US Macro Dashboard', source: 'https://us.l0g.fr', methodology: `${AGENT_SITE}/methodologie/us-macro/` },
@@ -336,8 +338,9 @@ export function buildOpenApiContract() {
           additionalProperties: false,
           properties: {
             method: { const: 'lexical-heuristic-v1' },
-            matchedRule: { enum: ['scenario-marker', 'estimate-marker', 'inference-marker', 'default-fact'] },
+            matchedRule: { enum: ['scenario-marker', 'estimate-marker', 'inference-marker', 'unclassified-assertion'] },
             caveat: { type: 'string' },
+            reviewedOverride: { type: 'string' },
           },
         },
         Claim: {
@@ -363,7 +366,7 @@ export function buildOpenApiContract() {
             articleSlug: { type: 'string' },
             articleUrl: { type: 'string', format: 'uri' },
             articleTitle: { type: 'string' },
-            kind: { enum: ['fait', 'estimation', 'inférence', 'scénario'] },
+            kind: { enum: CLAIM_KIND_ENUM },
             claim: { type: 'string' },
             date: { type: ['string', 'null'], format: 'date' },
             dateLabel: { type: 'string' },
@@ -375,6 +378,8 @@ export function buildOpenApiContract() {
             reviewStatus: { enum: ['unreviewed', 'reviewed'] },
             reviewedAt: { type: ['string', 'null'], format: 'date-time' },
             reviewedBy: { type: ['string', 'null'] },
+            reviewNote: { type: ['string', 'null'] },
+            reviewedProofDepth: { anyOf: [{ enum: ['direct-proof', 'reproduction'] }, { type: 'null' }] },
             classifier: { $ref: '#/components/schemas/ClaimClassifier' },
             references: { type: 'array', items: { $ref: '#/components/schemas/EvidenceReference' } },
           },
@@ -598,7 +603,7 @@ export function buildOpenApiContract() {
           required: ['claimKinds', 'depthScale', 'precisionGuard', 'correctionPolicy', 'changelog', 'riskBandScaleCaveat'],
           additionalProperties: false,
           properties: {
-            claimKinds: { type: 'array', items: { enum: ['fait', 'estimation', 'inférence', 'scénario'] } },
+            claimKinds: { type: 'array', items: { enum: CLAIM_KIND_ENUM } },
             depthScale: { type: 'array', items: { $ref: '#/components/schemas/ProofDepthLevel' } },
             precisionGuard: { $ref: '#/components/schemas/EditorialPrecisionGuard' },
             correctionPolicy: { type: 'string', format: 'uri' },
@@ -844,7 +849,7 @@ export function buildOpenApiContract() {
         },
         ClaimsSurface: {
           type: 'object',
-          required: ['schema', 'version', 'generated', 'counts', 'claims', 'references'],
+          required: ['schema', 'version', 'generated', 'counts', 'policy', 'reviewRegistry', 'claims', 'references'],
           additionalProperties: false,
           properties: {
             schema: { type: 'string' },
@@ -852,6 +857,7 @@ export function buildOpenApiContract() {
             generated: { type: 'string', format: 'date-time' },
             counts: { $ref: '#/components/schemas/ClaimsCounts' },
             policy: { $ref: '#/components/schemas/ClaimsPolicy' },
+            reviewRegistry: { $ref: '#/components/schemas/ClaimReviewRegistry' },
             claims: { type: 'array', items: { $ref: '#/components/schemas/Claim' } },
             references: { type: 'array', items: { $ref: '#/components/schemas/ClaimReference' } },
             license: { type: 'string' },
@@ -860,13 +866,41 @@ export function buildOpenApiContract() {
         },
         ClaimsCounts: {
           type: 'object',
-          required: ['articles', 'claims', 'references', 'claimKinds'],
+          required: ['articles', 'claims', 'reviewedClaims', 'references', 'claimKinds'],
           additionalProperties: false,
           properties: {
             articles: { type: 'integer' },
             claims: { type: 'integer' },
+            reviewedClaims: { type: 'integer' },
             references: { type: 'integer' },
-            claimKinds: { type: 'array', items: { enum: ['fait', 'estimation', 'inférence', 'scénario'] } },
+            claimKinds: { type: 'array', items: { enum: CLAIM_KIND_ENUM } },
+          },
+        },
+        ClaimReviewRegistry: {
+          type: 'object',
+          required: ['version', 'updated', 'policy', 'reviewedClaims', 'entries'],
+          additionalProperties: false,
+          properties: {
+            version: { type: 'string' },
+            updated: { type: 'string', format: 'date' },
+            policy: { type: 'string' },
+            reviewedClaims: { type: 'integer' },
+            entries: {
+              type: 'array',
+              items: {
+                type: 'object',
+                required: ['claimId', 'reviewedAt', 'reviewedBy', 'note'],
+                additionalProperties: false,
+                properties: {
+                  claimId: { type: 'string' },
+                  reviewedAt: { type: 'string', format: 'date-time' },
+                  reviewedBy: { type: 'string' },
+                  kind: { enum: CLAIM_KIND_ENUM },
+                  note: { type: 'string' },
+                  proofDepth: { enum: ['direct-proof', 'reproduction'] },
+                },
+              },
+            },
           },
         },
         ClaimsPolicy: {
@@ -1009,6 +1043,7 @@ export function buildOpenApiContract() {
                 'estimation',
                 'inférence',
                 'scénario',
+                'unclassified-assertion',
                 'source primaire',
                 'source secondaire',
                 'contexte',
@@ -1047,6 +1082,7 @@ export function buildOpenApiContract() {
                     'estimation',
                     'inférence',
                     'scénario',
+                    'unclassified-assertion',
                     'source primaire',
                     'source secondaire',
                     'contexte',
@@ -1480,39 +1516,55 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
     updated: post.data.updatedDate,
     url: postUrl(post),
     title: post.data.title,
+    articleSlug: post.id,
   });
 
   return {
     claims: evidence.claims.map((claim) => ({
-      id: opts.globalClaimIds ? `${post.id}:${claim.id}` : claim.id,
-      localId: claim.id,
-      articleSlug: post.id,
-      articleUrl: postUrl(post),
-      articleTitle: post.data.title,
-      kind: claim.kind,
-      claim: claim.claim,
-      date: claim.dateIso ?? null,
-      dateLabel: claim.dateLabel,
-      claimDate: claim.claimDateIso ?? claim.dateIso ?? null,
-      claimDateLabel: claim.claimDateLabel ?? claim.dateLabel,
-      observationDate: claim.observationDateIso ?? claim.dateIso ?? null,
-      observationDateLabel: claim.observationDateLabel ?? claim.dateLabel,
-      confidence: claim.confidence,
-      reviewStatus: claim.reviewStatus,
-      reviewedAt: claim.reviewedAt ?? null,
-      reviewedBy: claim.reviewedBy ?? null,
-      classifier: claim.classifier,
-      references: claim.references.map((ref) => ({
-        label: ref.label,
-        href: ref.href,
-        host: ref.host ?? null,
-        kind: ref.kind ?? null,
-        date: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
-        dateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? 'date source non détectée',
-        sourcePublicationDate: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
-        sourcePublicationDateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? null,
-        retrievedAt: ref.retrievedAt ?? null,
-      })),
+      ...(() => {
+        const globalId = `${post.id}:${claim.id}`;
+        const review = claimReviewById.get(globalId);
+        const id = opts.globalClaimIds ? globalId : claim.id;
+        const kind = review?.kind ?? claim.kind;
+        return {
+          id,
+          localId: claim.id,
+          articleSlug: post.id,
+          articleUrl: postUrl(post),
+          articleTitle: post.data.title,
+          kind,
+          claim: claim.claim,
+          date: claim.dateIso ?? null,
+          dateLabel: claim.dateLabel,
+          claimDate: claim.claimDateIso ?? claim.dateIso ?? null,
+          claimDateLabel: claim.claimDateLabel ?? claim.dateLabel,
+          observationDate: claim.observationDateIso ?? claim.dateIso ?? null,
+          observationDateLabel: claim.observationDateLabel ?? claim.dateLabel,
+          confidence: claim.confidence,
+          reviewStatus: review ? 'reviewed' : claim.reviewStatus,
+          reviewedAt: review?.reviewedAt ?? claim.reviewedAt ?? null,
+          reviewedBy: review?.reviewedBy ?? claim.reviewedBy ?? null,
+          reviewNote: review?.note ?? claim.reviewNote ?? null,
+          reviewedProofDepth: review?.proofDepth ?? claim.reviewedProofDepth ?? null,
+          classifier: {
+            ...claim.classifier,
+            reviewedOverride: review
+              ? 'Type et niveau de preuve éventuellement corrigés par le registre humain claim-reviews.ts.'
+              : undefined,
+          },
+          references: claim.references.map((ref) => ({
+            label: ref.label,
+            href: ref.href,
+            host: ref.host ?? null,
+            kind: ref.kind ?? null,
+            date: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
+            dateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? 'date source non détectée',
+            sourcePublicationDate: ref.sourcePublicationDateIso ?? ref.dateIso ?? null,
+            sourcePublicationDateLabel: ref.sourcePublicationDateLabel ?? ref.dateLabel ?? null,
+            retrievedAt: ref.retrievedAt ?? null,
+          })),
+        };
+      })(),
     })),
     depth: evidence.depth,
     badges: evidence.badges.map((badge) => ({
@@ -1683,16 +1735,24 @@ export function buildClaimsSurface(posts: PostEntry[]) {
     counts: {
       articles: articles.length,
       claims: claims.length,
+      reviewedClaims: claims.filter((claim) => claim.reviewStatus === 'reviewed').length,
       references: references.length,
       claimKinds: [...new Set(claims.map((claim) => claim.kind))].sort(),
+    },
+    reviewRegistry: {
+      version: claimReviewRegistry.version,
+      updated: claimReviewRegistry.updated,
+      policy: claimReviewRegistry.policy,
+      reviewedClaims: claimReviewRegistry.entries.length,
+      entries: claimReviewRegistry.entries,
     },
     policy: {
       relation: 'Chaque entrée relie une affirmation textuelle à une ou plusieurs références cliquables, datées quand détectable.',
       caveat: 'Extraction automatique best-effort : la relation exacte doit rester vérifiable dans la page source.',
       classification:
-        'Les types fait/estimation/inférence/scénario sont produits par un classifieur lexical heuristique v1, exposé par claim.classifier.',
+        'Les types fait/estimation/inférence/scénario/unclassified-assertion sont produits par un classifieur lexical heuristique v1, exposé par claim.classifier. Le fallback automatique est unclassified-assertion, jamais fait.',
       review:
-        'Les claims générées automatiquement portent reviewStatus=unreviewed tant qu’aucune validation humaine par claim n’est encodée.',
+        'Les claims générées automatiquement portent reviewStatus=unreviewed tant qu’aucune validation humaine par claim n’est encodée dans src/config/claim-reviews.ts.',
       dateModel:
         'claimDate décrit la date portée par l’affirmation ; observationDate décrit l’horizon observé quand il est détectable ; sourcePublicationDate appartient à la référence et reste null si elle n’est pas détectée dans le lien ou son libellé.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
@@ -2124,7 +2184,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       primarySources: primaryInstitutions.length,
     },
     proofPolicy: {
-      claimKinds: ['fait', 'estimation', 'inférence', 'scénario'],
+      claimKinds: CLAIM_KIND_ENUM,
       depthScale: editorialProtocol.proofDepthLevels,
       precisionGuard: editorialProtocol.precisionGuard,
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,

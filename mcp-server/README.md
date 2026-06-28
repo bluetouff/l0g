@@ -89,7 +89,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `search_content` | `query`, `mode?`, `limit?` | recherche plein texte locale sur HTML généré, ou scoring catalogue historique |
 | `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables, datées quand détectable |
 | `get_claim` | `claimId` | une claim précise, ses liens ressource et son article |
-| `get_claim_evidence` | `claimId`, `limit?` | preuve directe d'une claim, avec contenus reliés isolés dans `relatedContent` |
+| `get_claim_evidence` | `claimId`, `limit?` | preuve et références d'une claim, avec contenus reliés isolés dans `relatedContent` |
 | `list_article_claims` | `articleSlug`, `kind?`, `limit?` | claims d'un article, utilisables comme points d'entrée du graphe |
 | `find_claims_by_source` | `sourceId`, `kind?`, `limit?` | claims rattachées à une source primaire, un nom ou un host cité |
 | `get_source` | `sourceId`, `limit?` | source primaire ou hôte cité, plus claims associées |

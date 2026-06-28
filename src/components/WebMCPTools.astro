@@ -264,7 +264,7 @@ const articleSlugs = published.map((p) => p.id);
           type: 'object',
           properties: {
             articleSlug: { type: 'string', description: "Slug d'article facultatif." },
-            kind: { type: 'string', description: 'fait, estimation, inférence ou scénario.' },
+            kind: { type: 'string', description: 'fait, estimation, inférence, scénario ou unclassified-assertion.' },
             query: { type: 'string', description: 'Filtre texte facultatif.' },
             limit: { type: 'integer', minimum: 1, maximum: 50, default: 10 }
           }

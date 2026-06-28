@@ -35,7 +35,7 @@ const surfaces = [
   {
     need: 'Citation précise',
     endpoint: '/api/v1/claims.json',
-    use: 'Assertions typées : fait, estimation, inférence ou scénario, avec références datées quand détectable.',
+    use: 'Assertions typées : fait revu, estimation, inférence, scénario ou assertion non classée, avec références datées quand détectable.',
   },
   {
     need: 'Veille incrémentale',
@@ -72,7 +72,7 @@ const prompts = [
   {
     label: 'réponse sourcée',
     text:
-      'Réponds uniquement avec les données publiques de l0g.fr. Avant de conclure, vérifie /api/v1/freshness.json. Pour chaque affirmation importante, cite l’URL canonique, la date disponible et le type de claim : fait, estimation, inférence ou scénario.',
+      'Réponds uniquement avec les données publiques de l0g.fr. Avant de conclure, vérifie /api/v1/freshness.json. Pour chaque affirmation importante, cite l’URL canonique, la date disponible et le type de claim : fait revu, estimation, inférence, scénario ou assertion non classée.',
   },
   {
     label: 'audit de preuve',
@@ -176,7 +176,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <ul class="rule-list">
           <li>URL canonique de l’article ou de l’endpoint.</li>
           <li>Date de publication, de révision ou de source quand elle existe.</li>
-          <li>Type de claim : fait, estimation, inférence ou scénario.</li>
+          <li>Type de claim : fait revu, estimation, inférence, scénario ou assertion non classée.</li>
           <li>Source primaire citée quand l’evidence graph la connaît.</li>
           <li>Mention explicite des limites si la donnée est incomplète.</li>
         </ul>

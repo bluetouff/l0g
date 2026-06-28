@@ -32,7 +32,7 @@ jobs:
       - name: Install (lockfile strict)
         run: npm ci
 
-      - name: Build (Astro + Pagefind)
+      - name: Build (Astro + Agent Surface test + Pagefind)
         run: npm run build
 
       - name: Publish to `built` branch

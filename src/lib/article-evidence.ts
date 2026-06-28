@@ -2,6 +2,7 @@ import {
   primaryInstitutions,
   type PrimarySourceInstitution,
 } from '../config/primary-sources.ts';
+import { claimReviewById } from '../config/claim-reviews.ts';
 
 export interface EvidenceLink {
   label: string;
@@ -21,7 +22,7 @@ export interface PrimaryEvidence {
   links: EvidenceLink[];
 }
 
-export type ClaimKind = 'fait' | 'estimation' | 'inférence' | 'scénario';
+export type ClaimKind = 'fait' | 'estimation' | 'inférence' | 'scénario' | 'unclassified-assertion';
 
 export interface ClaimEvidence {
   id: string;
@@ -38,10 +39,13 @@ export interface ClaimEvidence {
   reviewStatus: 'unreviewed' | 'reviewed';
   reviewedAt?: string | null;
   reviewedBy?: string | null;
+  reviewNote?: string | null;
+  reviewedProofDepth?: Extract<EvidenceDepth['id'], 'direct-proof' | 'reproduction'> | null;
   classifier: {
     method: 'lexical-heuristic-v1';
     matchedRule: string;
     caveat: string;
+    reviewedOverride?: string;
   };
 }
 
@@ -74,6 +78,7 @@ interface ArticleEvidenceOptions {
   updated?: Date;
   url?: string;
   title?: string;
+  articleSlug?: string;
 }
 
 export interface EvidenceBadge {
@@ -194,7 +199,7 @@ function classifyClaimWithRule(text: string): { kind: ClaimKind; matchedRule: st
   if (/(donc|sugg[eè]re|implique|signale|indique|lecture|interpr[eè]te|ce qui veut dire|en clair|j'en d[eé]duis)/iu.test(value)) {
     return { kind: 'inférence', matchedRule: 'inference-marker' };
   }
-  return { kind: 'fait', matchedRule: 'default-fact' };
+  return { kind: 'unclassified-assertion', matchedRule: 'unclassified-assertion' };
 }
 
 export function classifyClaim(text: string): ClaimKind {
@@ -316,6 +321,8 @@ function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): Cla
       reviewStatus: 'unreviewed',
       reviewedAt: null,
       reviewedBy: null,
+      reviewNote: null,
+      reviewedProofDepth: null,
       classifier: claimClassifier(claim),
     },
   ];
@@ -429,17 +436,19 @@ function buildEvidenceDepth(args: {
   context: EvidenceLink[];
 }): EvidenceDepth {
   const hasPrimaryLink = args.primary.some((item) => item.links.length > 0);
-  const hasClaimRelations = args.claims.length > 0;
+  const hasReviewedDirectProof = args.claims.some(
+    (claim) => claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof'
+  );
   const hasDocumentLink = hasPrimaryLink || args.secondary.length > 0 || args.internalData.length > 0;
   const hasReference = args.primary.length > 0 || args.context.length > 0 || hasDocumentLink;
 
-  if (hasClaimRelations && hasPrimaryLink) {
+  if (hasReviewedDirectProof) {
     return {
       id: 'direct-proof',
       label: 'preuve directe',
-      detail: 'relation affirmation → source primaire cliquable détectée automatiquement ; validation humaine recommandée',
+      detail: 'relation affirmation → source validée explicitement par revue humaine',
       score: 4,
-      automated: true,
+      automated: false,
     };
   }
 
@@ -563,6 +572,8 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
         reviewStatus: 'unreviewed',
         reviewedAt: null,
         reviewedBy: null,
+        reviewNote: null,
+        reviewedProofDepth: null,
         classifier: {
           method: 'lexical-heuristic-v1',
           matchedRule: classification.matchedRule,
@@ -574,7 +585,25 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
     .filter((claim): claim is ClaimEvidence => Boolean(claim))
     .slice(0, 24);
 
-  const claims = linkClaims.length ? linkClaims : buildFallbackClaim(markdown, opts);
+  const claims = (linkClaims.length ? linkClaims : buildFallbackClaim(markdown, opts)).map((claim) => {
+    const review = opts.articleSlug ? claimReviewById.get(`${opts.articleSlug}:${claim.id}`) : undefined;
+    if (!review) return claim;
+    return {
+      ...claim,
+      kind: review.kind ?? claim.kind,
+      reviewStatus: 'reviewed' as const,
+      reviewedAt: review.reviewedAt,
+      reviewedBy: review.reviewedBy,
+      reviewNote: review.note,
+      reviewedProofDepth: review.proofDepth ?? null,
+      classifier: {
+        ...claim.classifier,
+        reviewedOverride: `${review.reviewedAt} ${review.reviewedBy}`,
+        caveat:
+          'Classification initiale par marqueurs lexicaux ; type ou profondeur éventuellement corrigés par revue humaine encodée.',
+      },
+    };
+  });
 
   return {
     badges: buildBadges({ primary, secondary, internalData, context, markdown }),

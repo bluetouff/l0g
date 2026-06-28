@@ -15,6 +15,7 @@ function walk(value, visit, path = []) {
 }
 
 const openapi = readJson('dist/openapi.json');
+const catalog = readJson('dist/api/v1/catalog.json');
 const claims = readJson('dist/api/v1/claims.json');
 const sources = readJson('dist/api/v1/sources.json');
 const integrity = readJson('dist/api/v1/integrity.json');
@@ -31,10 +32,15 @@ assert(looseSchemas === 0, 'OpenAPI contient encore des schemas permissifs');
 assert(claims.policy?.classification, 'claims.policy.classification manquant');
 assert(claims.policy?.review, 'claims.policy.review manquant');
 assert(claims.policy?.dateModel, 'claims.policy.dateModel manquant');
+assert(claims.reviewRegistry?.version, 'claims.reviewRegistry.version manquant');
+assert(typeof claims.counts?.reviewedClaims === 'number', 'claims.counts.reviewedClaims manquant');
+assert((claims.counts?.claimKinds || []).includes('unclassified-assertion'), 'claimKinds ne declare pas unclassified-assertion');
 
 for (const claim of claims.claims || []) {
   assert(claim.reviewStatus === 'unreviewed' || claim.reviewStatus === 'reviewed', `reviewStatus invalide: ${claim.id}`);
   assert(claim.classifier?.method === 'lexical-heuristic-v1', `classifier manquant: ${claim.id}`);
+  assert(claim.classifier?.matchedRule !== 'default-fact', `default-fact interdit: ${claim.id}`);
+  assert(claim.kind !== 'fait' || claim.reviewStatus === 'reviewed', `fait automatique interdit sans revue: ${claim.id}`);
   assert(Object.prototype.hasOwnProperty.call(claim, 'claimDate'), `claimDate manquant: ${claim.id}`);
   assert(Object.prototype.hasOwnProperty.call(claim, 'observationDate'), `observationDate manquant: ${claim.id}`);
 
@@ -45,6 +51,14 @@ for (const claim of claims.claims || []) {
       assert(reference.date === null, `date de reference fallback suspect: ${claim.id} -> ${reference.href}`);
     }
   }
+}
+
+for (const article of catalog.articles || []) {
+  if (article.evidence?.depth?.id !== 'direct-proof') continue;
+  assert(
+    (article.evidence.claims || []).some((claim) => claim.reviewStatus === 'reviewed' && claim.reviewedProofDepth === 'direct-proof'),
+    `direct-proof sans revue humaine explicite: ${article.slug}`
+  );
 }
 
 assert(sources.registry?.version, 'sources.registry.version manquant');

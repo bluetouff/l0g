@@ -53,7 +53,7 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
-    `- [Agent Surface v1.5.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité et changefeed versionné.`
+    `- [Agent Surface v1.6.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité, revue humaine et changefeed versionné.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -82,7 +82,7 @@ export const GET: APIRoute = async () => {
     `- Garde-fou precision: ${editorialProtocol.precisionGuard.summary} Exigences: ${editorialProtocol.precisionGuard.requirements.join(', ')}. ${editorialProtocol.precisionGuard.warning}`
   );
   lines.push(
-    `- Relations affirmation-source: les articles backfillent les passages référencés en fait, estimation, inférence ou scénario ; chaque référence exposée est cliquable et datée.`
+    `- Relations affirmation-source: les articles backfillent les passages référencés en fait revu, estimation, inférence, scénario ou assertion non classée ; chaque référence exposée est cliquable et datée.`
   );
   lines.push(
     `- Politique de correction: ${editorialProtocol.correctionPolicy.summary}`

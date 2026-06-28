@@ -19,6 +19,7 @@ const claimTone: Record<string, string> = {
   estimation: 'claim-estimate',
   inférence: 'claim-inference',
   scénario: 'claim-scenario',
+  'unclassified-assertion': 'claim-unclassified',
 };
 ---
 
@@ -58,7 +59,7 @@ const claimTone: Record<string, string> = {
 
   <p class="depth-note">
     Profondeur automatique : {depth.detail}. Les niveaux “preuve directe” et “reproduction”
-    demandent une relation structurée entre une affirmation précise et sa source.
+    demandent une relation relue entre une affirmation précise et sa source.
   </p>
 
   <section class="claim-section">
@@ -331,6 +332,7 @@ const claimTone: Record<string, string> = {
   .claim-estimate .claim-top span { color: var(--color-amber); }
   .claim-inference .claim-top span { color: var(--color-accent); }
   .claim-scenario .claim-top span { color: #7aa2f7; }
+  .claim-unclassified .claim-top span { color: var(--color-muted); }
   .claim-top time {
     color: var(--color-muted);
   }

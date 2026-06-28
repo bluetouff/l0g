@@ -40,9 +40,14 @@ for (const required of [
 
 const { resources } = await client.listResources();
 console.log('RESOURCES:', resources.length, '| #1:', resources[0]?.uri);
-for (const required of ['l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://signals/current']) {
+for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://signals/current']) {
   if (!resources.some((resource) => resource.uri === required)) throw new Error(`resource manquante: ${required}`);
 }
+
+const mcpServerResource = await client.readResource({ uri: 'l0g://mcp/server' });
+const mcpServerInfo = JSON.parse(mcpServerResource.contents?.[0]?.text || '{}');
+if (!mcpServerInfo.version || !mcpServerInfo.sha) throw new Error('readResource(mcp/server) sans version/SHA');
+console.log('readResource(mcp/server) -> version:', mcpServerInfo.version, '| sha:', mcpServerInfo.sha.slice(0, 12));
 
 const { resourceTemplates } = await client.listResourceTemplates();
 console.log('RESOURCE_TEMPLATES:', resourceTemplates.map((template) => template.uriTemplate).join(', '));
@@ -131,7 +136,16 @@ const signalHistory = await call('get_signal_history', { key: 'yen', limit: 5 })
 console.log('get_signal_history(yen) -> events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.yen));
 
 const manifest = await call('get_agent_manifest');
-console.log('get_agent_manifest -> version:', manifest.version, '| endpoints:', Object.keys(manifest.endpoints || {}).length);
+if (!manifest.server?.version || !manifest.server?.sha) throw new Error('get_agent_manifest sans version/SHA serveur MCP');
+console.log(
+  'get_agent_manifest -> version:',
+  manifest.version,
+  '| endpoints:',
+  Object.keys(manifest.endpoints || {}).length,
+  '| MCP:',
+  manifest.server.version,
+  manifest.server.sha.slice(0, 12)
+);
 
 const openapi = await call('get_openapi_schema', { mode: 'path', path: '/api/v1/claims.json' });
 console.log('get_openapi_schema(path) -> paths:', openapi.paths?.length, '| schemas:', openapi.schemas?.length);
@@ -155,8 +169,8 @@ console.log('list_guides ->', gd.count, 'guides');
 const byTopic = await call('search_by_topic', { topic: 'crypto', limit: 3 });
 console.log('search_by_topic(crypto) ->', byTopic.count, '; label:', byTopic.label);
 
-const claims = await call('get_claims', { kind: 'fait', limit: 3 });
-console.log('get_claims(fait) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
+const claims = await call('get_claims', { kind: 'unclassified-assertion', limit: 3 });
+console.log('get_claims(unclassified-assertion) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
 
 const claim = await call('get_claim', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1' });
 if (claim.evidenceResource) throw new Error('get_claim ne doit pas exposer une URI evidence non enregistrée');
