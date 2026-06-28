@@ -8,7 +8,7 @@ import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.4.0';
+export const AGENT_VERSION = '1.4.1';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -1214,7 +1214,9 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
     },
     graphPolicy: {
       relation: 'Graphe dérivé des relations article → claim → référence, enrichi par hôtes, sources primaires et datasets.',
-      caveat: 'Extraction automatique best-effort : une arête signale une relation exploitable, pas une validation humaine exhaustive.',
+      traversal:
+        'Le parcours de preuve direct doit rester directionnel : article → claim → référence → hôte/source primaire → dataset. Les autres claims partageant un hôte, une source ou un dataset relèvent du contexte relié.',
+      caveat: 'Extraction automatique best-effort : une arête signale une relation exploitable, pas une validation humaine exhaustive ni une preuve directe par simple hôte partagé.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
     },
     nodes,

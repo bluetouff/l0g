@@ -121,7 +121,16 @@ if (claimEvidence.evidence?.proofDepth === 'preuve directe') {
 if (claimEvidence.evidence?.proofDepth !== 'source primaire liée et datée') {
   throw new Error(`niveau de preuve inattendu: ${claimEvidence.evidence?.proofDepth}`);
 }
-console.log('get_claim_evidence -> depth:', claimEvidence.evidence?.proofDepth, '| nodes:', claimEvidence.returned?.nodes);
+if (!claimEvidence.directEvidence?.nodes?.length) throw new Error('get_claim_evidence sans section directEvidence');
+if (!claimEvidence.relatedContent?.nodes) throw new Error('get_claim_evidence sans section relatedContent');
+console.log(
+  'get_claim_evidence -> depth:',
+  claimEvidence.evidence?.proofDepth,
+  '| direct:',
+  claimEvidence.directEvidence?.nodes?.length,
+  '| related:',
+  claimEvidence.relatedContent?.nodes?.length
+);
 
 const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
 console.log('list_article_claims ->', articleClaims.count, '| #1:', articleClaims.claims?.[0]?.id);
@@ -133,7 +142,8 @@ const source = await call('get_source', { sourceId: 'federal-reserve-fred', limi
 console.log('get_source(federal-reserve-fred) ->', source.sourceType, '| claims:', source.claimsCount);
 
 const graph = await call('get_evidence_graph', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 30 });
-console.log('get_evidence_graph -> nodes:', graph.returned?.nodes, '| edges:', graph.returned?.edges);
+if (!graph.directEvidence?.nodes?.length) throw new Error('get_evidence_graph sans section directEvidence');
+console.log('get_evidence_graph -> nodes:', graph.returned?.nodes, '| edges:', graph.returned?.edges, '| related:', graph.relatedContent?.nodes?.length);
 
 const sources = await call('list_sources', { mode: 'both', limit: 3 });
 console.log('list_sources -> primary:', sources.primarySources?.length, '| hosts:', sources.referenceHosts?.length);

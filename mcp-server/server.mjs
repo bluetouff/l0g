@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.10.0';
+const MCP_VERSION = '1.10.1';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -386,6 +386,13 @@ const EvidenceGraphEdgeSchema = z.object({
   type: z.enum(['contains', 'cites', 'hostedBy', 'matchesPrimarySource', 'providesDataset']),
   meta: AnyRecord.optional(),
 }).strict();
+const GraphSectionSchema = z.object({
+  scope: z.enum(['directEvidence', 'relatedContent']),
+  policy: z.string(),
+  returned: AnyRecord.optional(),
+  nodes: z.array(EvidenceGraphNodeSchema),
+  edges: z.array(EvidenceGraphEdgeSchema),
+}).strict();
 const SnapshotSchema = z.object({
   path: z.string(),
   url: UrlString.optional(),
@@ -524,6 +531,8 @@ const EvidenceGraphOutput = ToolOutput.extend({
   returned: AnyRecord.optional(),
   filters: AnyRecord.optional(),
   graphPolicy: AnyRecord.optional(),
+  directEvidence: GraphSectionSchema.optional(),
+  relatedContent: GraphSectionSchema.optional(),
   nodes: z.array(EvidenceGraphNodeSchema).optional(),
   edges: z.array(EvidenceGraphEdgeSchema).optional(),
 }).strict();
@@ -594,6 +603,8 @@ const ClaimEvidenceOutput = ToolOutput.extend({
   claim: CompactClaimSchema.optional(),
   evidence: AnyRecord.optional(),
   references: z.array(EvidenceReferenceSchema).optional(),
+  directEvidence: GraphSectionSchema.optional(),
+  relatedContent: GraphSectionSchema.optional(),
   nodes: z.array(EvidenceGraphNodeSchema).optional(),
   edges: z.array(EvidenceGraphEdgeSchema).optional(),
   returned: AnyRecord.optional(),
@@ -894,29 +905,123 @@ function buildServer(data) {
     };
   }
 
-  function graphNeighborhood(startId, limit = 80) {
-    const allNodes = evidenceGraph.nodes || [];
-    const allEdges = evidenceGraph.edges || [];
-    const selected = new Set([startId]);
-    let changed = true;
-    while (changed && selected.size < limit) {
-      changed = false;
-      for (const edge of allEdges) {
-        if (selected.has(edge.from) && !selected.has(edge.to)) {
-          selected.add(edge.to);
-          changed = true;
+  const graphNodesById = new Map((evidenceGraph.nodes || []).map((node) => [node.id, node]));
+  const graphEdges = evidenceGraph.edges || [];
+
+  function graphSection(scope, policy, nodes, edges, limit) {
+    const limitedNodes = nodes.slice(0, limit);
+    const ids = new Set(limitedNodes.map((node) => node.id));
+    const limitedEdges = edges
+      .filter((edge) => ids.has(edge.from) && ids.has(edge.to))
+      .slice(0, Math.max(limit * 3, 20));
+    return {
+      scope,
+      policy,
+      returned: {
+        nodes: limitedNodes.length,
+        edges: limitedEdges.length,
+        truncated: nodes.length > limitedNodes.length || edges.length > limitedEdges.length,
+      },
+      nodes: limitedNodes,
+      edges: limitedEdges,
+    };
+  }
+
+  function graphNodesFromIds(ids) {
+    return [...ids].map((id) => graphNodesById.get(id)).filter(Boolean);
+  }
+
+  function claimArticleEdge(claimId) {
+    return graphEdges.find((edge) => edge.type === 'contains' && edge.to === claimId);
+  }
+
+  function addEdgeToScope(edge, ids, edgeMap) {
+    if (!edge) return;
+    ids.add(edge.from);
+    ids.add(edge.to);
+    edgeMap.set(edge.id, edge);
+  }
+
+  function directEvidenceForClaims(claimIds, limit = 80) {
+    const ids = new Set();
+    const edgeMap = new Map();
+    const anchors = { hosts: new Set(), primarySources: new Set(), datasets: new Set(), references: new Set(), claims: new Set(), articles: new Set() };
+
+    for (const claimId of claimIds) {
+      ids.add(claimId);
+      anchors.claims.add(claimId);
+      const contains = claimArticleEdge(claimId);
+      if (contains) {
+        addEdgeToScope(contains, ids, edgeMap);
+        anchors.articles.add(contains.from);
+      }
+
+      for (const cites of graphEdges.filter((edge) => edge.type === 'cites' && edge.from === claimId)) {
+        addEdgeToScope(cites, ids, edgeMap);
+        anchors.references.add(cites.to);
+
+        for (const hostedBy of graphEdges.filter((edge) => edge.type === 'hostedBy' && edge.from === cites.to)) {
+          addEdgeToScope(hostedBy, ids, edgeMap);
+          anchors.hosts.add(hostedBy.to);
         }
-        if (selected.has(edge.to) && !selected.has(edge.from)) {
-          selected.add(edge.from);
-          changed = true;
+        for (const sourceMatch of graphEdges.filter((edge) => edge.type === 'matchesPrimarySource' && edge.from === cites.to)) {
+          addEdgeToScope(sourceMatch, ids, edgeMap);
+          anchors.primarySources.add(sourceMatch.to);
+          for (const dataset of graphEdges.filter((edge) => edge.type === 'providesDataset' && edge.from === sourceMatch.to)) {
+            addEdgeToScope(dataset, ids, edgeMap);
+            anchors.datasets.add(dataset.to);
+          }
         }
-        if (selected.size >= limit) break;
       }
     }
-    const nodes = allNodes.filter((node) => selected.has(node.id)).slice(0, limit);
-    const ids = new Set(nodes.map((node) => node.id));
-    const edges = allEdges.filter((edge) => ids.has(edge.from) && ids.has(edge.to)).slice(0, Math.max(limit * 3, 20));
-    return { nodes, edges };
+
+    return {
+      section: graphSection(
+        'directEvidence',
+        'Sous-graphe directionnel limité à article -> claim -> référence -> hôte/source primaire -> dataset. Aucune autre claim attirée par hôte commun.',
+        graphNodesFromIds(ids),
+        [...edgeMap.values()],
+        limit
+      ),
+      anchors,
+    };
+  }
+
+  function relatedContentForAnchors(anchors, limit = 80) {
+    const ids = new Set();
+    const edgeMap = new Map();
+    const excludedClaims = anchors.claims || new Set();
+    const excludedArticles = anchors.articles || new Set();
+    const addRelatedClaimPath = (referenceEdge, anchorEdge) => {
+      for (const cites of graphEdges.filter((edge) => edge.type === 'cites' && edge.to === referenceEdge.from)) {
+        if (excludedClaims.has(cites.from)) continue;
+        const contains = claimArticleEdge(cites.from);
+        if (contains && excludedArticles.has(contains.from)) continue;
+        addEdgeToScope(anchorEdge, ids, edgeMap);
+        addEdgeToScope(cites, ids, edgeMap);
+        addEdgeToScope(contains, ids, edgeMap);
+      }
+    };
+
+    for (const hostId of anchors.hosts || []) {
+      for (const hostedBy of graphEdges.filter((edge) => edge.type === 'hostedBy' && edge.to === hostId)) {
+        if ((anchors.references || new Set()).has(hostedBy.from)) continue;
+        addRelatedClaimPath(hostedBy, hostedBy);
+      }
+    }
+    for (const sourceId of anchors.primarySources || []) {
+      for (const sourceMatch of graphEdges.filter((edge) => edge.type === 'matchesPrimarySource' && edge.to === sourceId)) {
+        if ((anchors.references || new Set()).has(sourceMatch.from)) continue;
+        addRelatedClaimPath(sourceMatch, sourceMatch);
+      }
+    }
+    return graphSection(
+      'relatedContent',
+      'Claims et articles reliés par le même hôte, la même source primaire ou le même dataset. Ce contexte n’est pas une preuve directe de la claim initiale.',
+      graphNodesFromIds(ids),
+      [...edgeMap.values()],
+      limit
+    );
   }
 
   function filterChanges({ contentType, slug, since, limit }) {
@@ -1418,7 +1523,7 @@ function buildServer(data) {
     {
       description:
         "Renvoie la preuve d'une claim : affirmation, type, références, profondeur de preuve et voisinage du graphe " +
-        "article -> claim -> référence -> source.",
+        "article -> claim -> référence -> source. Les contenus reliés par hôte/source commune sont séparés de la preuve directe.",
       inputSchema: {
         claimId: z.string().min(1).describe("Identifiant de claim."),
         limit: z.number().int().min(10).max(160).default(80).describe('Nombre maximum de nœuds dans le voisinage de preuve.'),
@@ -1429,7 +1534,8 @@ function buildServer(data) {
     async ({ claimId, limit }) => {
       const { id, claim } = findClaimById(claimId);
       if (!claim) return reply({ error: 'claim inconnue', claimId: id });
-      const graph = graphNeighborhood(`claim:${id}`, limit);
+      const direct = directEvidenceForClaims([`claim:${id}`], limit);
+      const related = relatedContentForAnchors(direct.anchors, limit);
       return reply({
         claimId: id,
         claim: compactClaim(claim),
@@ -1440,11 +1546,16 @@ function buildServer(data) {
           host: reference.host,
           kind: reference.kind,
           date: reference.date,
-          dateLabel: reference.dateLabel,
-        })),
-        returned: { nodes: graph.nodes.length, edges: graph.edges.length },
-        nodes: graph.nodes,
-        edges: graph.edges,
+            dateLabel: reference.dateLabel,
+          })),
+        returned: {
+          directEvidence: direct.section.returned,
+          relatedContent: related.returned,
+        },
+        directEvidence: direct.section,
+        relatedContent: related,
+        nodes: direct.section.nodes,
+        edges: direct.section.edges,
       });
     }
   );
@@ -1604,7 +1715,7 @@ function buildServer(data) {
     {
       description:
         "Renvoie un sous-graphe de preuve l0g : articles, claims, références, hôtes, sources primaires et datasets. " +
-        "Limiter par articleSlug ou nodeType pour éviter les payloads trop larges.",
+        "Avec articleSlug, la preuve directe est séparée des contenus reliés par hôte/source/dataset commun.",
       inputSchema: {
         articleSlug: z.string().optional().describe("Slug d'article optionnel pour extraire son voisinage de graphe."),
         nodeType: z.enum(['article', 'claim', 'reference', 'host', 'primarySource', 'dataset']).optional().describe('Type de nœud optionnel.'),
@@ -1616,20 +1727,53 @@ function buildServer(data) {
     async ({ articleSlug, nodeType, limit }) => {
       let nodes = evidenceGraph.nodes || [];
       const edges = evidenceGraph.edges || [];
-      let selected = null;
+      let directSection = null;
+      let relatedSection = null;
       if (articleSlug) {
         const clean = String(articleSlug).trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
         const articleId = `article:${clean}`;
-        selected = new Set([articleId]);
-        let changed = true;
-        while (changed && selected.size < 800) {
-          changed = false;
-          for (const edge of edges) {
-            if (selected.has(edge.from) && !selected.has(edge.to)) { selected.add(edge.to); changed = true; }
-            if (selected.has(edge.to) && !selected.has(edge.from)) { selected.add(edge.from); changed = true; }
-          }
+        const articleClaimIds = edges
+          .filter((edge) => edge.type === 'contains' && edge.from === articleId)
+          .map((edge) => edge.to);
+        const direct = directEvidenceForClaims(articleClaimIds, limit);
+        directSection = direct.section;
+        relatedSection = relatedContentForAnchors(direct.anchors, limit);
+        nodes = directSection.nodes;
+        if (nodeType) {
+          nodes = nodes.filter((node) => node.type === nodeType);
+          const typedIds = new Set(nodes.map((node) => node.id));
+          const typedEdges = directSection.edges.filter((edge) => typedIds.has(edge.from) && typedIds.has(edge.to));
+          directSection = graphSection(
+            'directEvidence',
+            directSection.policy,
+            nodes,
+            typedEdges,
+            limit
+          );
         }
-        nodes = nodes.filter((node) => selected.has(node.id));
+        const selectedIds = new Set(directSection.nodes.map((node) => node.id));
+        const selectedEdges = directSection.edges.filter((edge) => selectedIds.has(edge.from) && selectedIds.has(edge.to));
+        return reply({
+          version: evidenceGraph.version,
+          generated: evidenceGraph.generated,
+          counts: evidenceGraph.counts,
+          returned: {
+            nodes: selectedIds.size,
+            edges: selectedEdges.length,
+            directEvidence: directSection.returned,
+            relatedContent: relatedSection.returned,
+          },
+          filters: { articleSlug: clean, nodeType: nodeType || null },
+          graphPolicy: {
+            ...evidenceGraph.graphPolicy,
+            traversal:
+              'Le filtre articleSlug renvoie uniquement la preuve directe de l’article. Les contenus reliés par hôte/source/dataset commun sont isolés dans relatedContent.',
+          },
+          directEvidence: directSection,
+          relatedContent: relatedSection,
+          nodes: directSection.nodes.slice(0, limit),
+          edges: selectedEdges,
+        });
       }
       if (nodeType) nodes = nodes.filter((node) => node.type === nodeType);
       const candidateIds = new Set(nodes.map((node) => node.id));
