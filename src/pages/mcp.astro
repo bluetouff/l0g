@@ -211,7 +211,9 @@ const appLd = {
         sans base vectorielle ni fournisseur externe. Les articles longs sont paginables, avec
         curseur de continuation et accès direct aux sources. Chaque réponse expose un résumé humain dans
         <code>content</code> et les données exploitables dans <code>structuredContent</code>,
-        avec un <code>outputSchema</code> déclaré.
+        avec un <code>outputSchema</code> déclaré. Les identifiants inconnus sont marqués par
+        <code>isError: true</code> côté tools ; les resources inexistantes renvoient une erreur
+        protocolaire MCP.
       </p>
       <div class="mcp-table mt-3">
         <table>

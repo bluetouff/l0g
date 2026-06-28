@@ -79,6 +79,27 @@ async function call(name, args) {
   return r.structuredContent;
 }
 
+async function callExpectError(name, args) {
+  const r = await client.callTool({ name, arguments: args || {} });
+  if (r.isError !== true) throw new Error(`${name} devrait renvoyer isError=true`);
+  if (!r.structuredContent?.error) throw new Error(`${name} devrait conserver un structuredContent.error`);
+  const txt = (r.content || []).map((c) => c.text || '').join('');
+  if (txt.trim().startsWith('{') || txt.trim().startsWith('[')) {
+    throw new Error(`content.text contient encore du JSON pour ${name}`);
+  }
+  return r.structuredContent;
+}
+
+async function expectReadResourceFailure(uri) {
+  try {
+    await client.readResource({ uri });
+  } catch (error) {
+    console.log('readResource(error) ->', uri, '|', error.message);
+    return;
+  }
+  throw new Error(`readResource aurait dû échouer pour ${uri}`);
+}
+
 const risk = await call('get_risk_indices');
 console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join(','), '| snapshot:', risk.snapshot);
 
@@ -114,7 +135,12 @@ const claims = await call('get_claims', { kind: 'fait', limit: 3 });
 console.log('get_claims(fait) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
 
 const claim = await call('get_claim', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1' });
+if (claim.evidenceResource) throw new Error('get_claim ne doit pas exposer une URI evidence non enregistrée');
+if (claim.evidenceTool?.name !== 'get_claim_evidence') throw new Error('get_claim doit orienter vers get_claim_evidence');
 console.log('get_claim ->', claim.claimId, '| kind:', claim.claim?.kind);
+
+const unknownClaim = await callExpectError('get_claim', { claimId: 'claim-inconnue' });
+console.log('get_claim(error) ->', unknownClaim.error);
 
 const claimEvidence = await call('get_claim_evidence', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1', limit: 40 });
 if (claimEvidence.evidence?.proofDepth === 'preuve directe') {
@@ -142,6 +168,9 @@ console.log('find_claims_by_source(fred) ->', claimsBySource.count);
 
 const source = await call('get_source', { sourceId: 'federal-reserve-fred', limit: 3 });
 console.log('get_source(federal-reserve-fred) ->', source.sourceType, '| claims:', source.claimsCount);
+
+const unknownSource = await callExpectError('get_source', { sourceId: 'source-inconnue' });
+console.log('get_source(error) ->', unknownSource.error);
 
 const graph = await call('get_evidence_graph', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 30 });
 if (!graph.directEvidence?.nodes?.length) throw new Error('get_evidence_graph sans section directEvidence');
@@ -183,8 +212,14 @@ if (!artSources.sectionFound || !artSources.text?.toLowerCase().includes('source
 }
 console.log('get_article(sources) -> offset:', artSources.offset, '| chars:', artSources.textChars);
 
-const bad = await call('get_article', { slug: '../../etc/passwd' });
-console.log('get_article(path traversal) -> error:', bad.error);
+const badArticle = await callExpectError('get_article', { slug: '../../etc/passwd' });
+console.log('get_article(path traversal) -> error:', badArticle.error);
+
+await expectReadResourceFailure('l0g://claims/claim-inconnue');
+await expectReadResourceFailure('l0g://sources/source-inconnue');
+await expectReadResourceFailure('l0g://articles/article-inconnu');
+await expectReadResourceFailure('l0g://signals/signal-inconnu/current');
+await expectReadResourceFailure('l0g://methodologies/methodologie-inconnue');
 
 await client.close();
 console.log('OK');

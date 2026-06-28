@@ -100,6 +100,10 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |
 | `get_article` | `slug`, `offset?`, `length?`, `section?` | texte paginé d'une analyse ou d'un guide, avec `nextOffset` et accès direct `tail`/`sources` |
 
+`get_claim` ne publie pas d’URI fragmentée de preuve : il renvoie la ressource `l0g://claims/{claim_id}`
+et oriente vers le tool `get_claim_evidence`. Les tools marquent les identifiants inconnus avec `isError: true`.
+Les resources inexistantes renvoient une erreur protocolaire MCP, pas un document JSON avec champ `error`.
+
 ## Sécurité
 
 - Écoute **127.0.0.1** uniquement ; TLS et exposition gérés par Apache.

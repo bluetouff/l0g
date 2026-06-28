@@ -19,6 +19,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
+import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
 
@@ -36,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.11.1';
+const MCP_VERSION = '1.11.2';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -609,7 +610,7 @@ const ClaimOutput = ToolOutput.extend({
   claim: CompactClaimSchema.optional(),
   resource: z.string().optional(),
   articleResource: z.string().optional(),
-  evidenceResource: z.string().optional(),
+  evidenceTool: AnyRecord.optional(),
 }).strict();
 const ClaimEvidenceOutput = ToolOutput.extend({
   claimId: z.string().optional(),
@@ -690,6 +691,16 @@ function reply(payload, text) {
     content: [{ type: 'text', text: text || summarizePayload(payload) }],
     structuredContent: payload,
   };
+}
+function errorReply(payload, text) {
+  return {
+    content: [{ type: 'text', text: text || summarizePayload(payload) }],
+    structuredContent: payload,
+    isError: true,
+  };
+}
+function resourceNotFound(kind, id) {
+  throw new McpError(ErrorCode.InvalidParams, `${kind} introuvable`, { id });
 }
 function compactClaim(claim) {
   return {
@@ -804,7 +815,7 @@ function buildServer(data) {
     const clean = uriValue(slug).replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
     const pool = type === 'guide' ? guides : articles;
     const record = pool.find((item) => item.slug === clean);
-    if (!record) return { error: `${type} inconnu`, slug: clean };
+    if (!record) resourceNotFound(type, clean);
     const section = type === 'guide' ? 'guides' : 'posts';
     const html = await readFile(join(DATA_DIR, section, clean, 'index.html'), 'utf-8');
     const root = parseHtml(html);
@@ -1158,7 +1169,8 @@ function buildServer(data) {
     async (uri, variables) => {
       const id = uriValue(variables.claim_id);
       const claim = claimsList.find((item) => item.id === id);
-      return resourceJson(uri.toString(), claim ? compactClaim(claim) : { error: 'claim inconnue', id });
+      if (!claim) resourceNotFound('claim', id);
+      return resourceJson(uri.toString(), compactClaim(claim));
     },
   );
 
@@ -1194,7 +1206,8 @@ function buildServer(data) {
     async (uri, variables) => {
       const id = uriValue(variables.source_id);
       const source = primarySources.find((item) => item.slug === id) || referenceHosts.find((item) => item.host === id);
-      return resourceJson(uri.toString(), source ? { id, ...source } : { error: 'source inconnue', id });
+      if (!source) resourceNotFound('source', id);
+      return resourceJson(uri.toString(), { id, ...source });
     },
   );
 
@@ -1217,11 +1230,12 @@ function buildServer(data) {
     },
     async (uri, variables) => {
       const instrument = uriValue(variables.instrument);
+      if (!signals[instrument]) resourceNotFound('signal', instrument);
       return resourceJson(uri.toString(), {
         instrument,
         snapshot: risk?.snapshot ?? null,
         generated: risk?.generated ?? null,
-        current: signals[instrument] ?? null,
+        current: signals[instrument],
         history: (riskEvents?.events || []).filter((event) => event.key === instrument),
         caveat: "Signal normalisé par instrument ; ne pas lire comme probabilité ou indice global comparable.",
       });
@@ -1248,7 +1262,8 @@ function buildServer(data) {
     async (uri, variables) => {
       const instrument = uriValue(variables.instrument);
       const methodology = methodologies.find((item) => item.slug === instrument);
-      return resourceJson(uri.toString(), methodology || { error: 'méthodologie inconnue', instrument });
+      if (!methodology) resourceNotFound('méthodologie', instrument);
+      return resourceJson(uri.toString(), methodology);
     },
   );
 
@@ -1286,7 +1301,7 @@ function buildServer(data) {
       annotations: { readOnlyHint: true },
     },
     async () => {
-      if (!risk) return reply({ error: 'indices indisponibles' });
+      if (!risk) return errorReply({ error: 'indices indisponibles' });
       return reply({
         snapshot: risk.snapshot ?? null,
         generated: risk.generated ?? null,
@@ -1347,9 +1362,9 @@ function buildServer(data) {
       if (mode === 'full') return reply(openapi);
       if (mode === 'path') {
         const clean = String(path || '').trim();
-        if (!clean.startsWith('/')) return reply({ error: 'path invalide', note: 'utiliser un chemin exact commençant par /' });
+        if (!clean.startsWith('/')) return errorReply({ error: 'path invalide', note: 'utiliser un chemin exact commençant par /' });
         const summary = summarizeOpenapi(openapi, clean);
-        if (!summary.paths.length) return reply({ error: 'path inconnu', path: clean, knownPaths: Object.keys(openapi.paths || {}) });
+        if (!summary.paths.length) return errorReply({ error: 'path inconnu', path: clean, knownPaths: Object.keys(openapi.paths || {}) });
         return reply(summary);
       }
       return reply(summarizeOpenapi(openapi));
@@ -1514,13 +1529,13 @@ function buildServer(data) {
     },
     async ({ claimId }) => {
       const { id, claim } = findClaimById(claimId);
-      if (!claim) return reply({ error: 'claim inconnue', claimId: id });
+      if (!claim) return errorReply({ error: 'claim inconnue', claimId: id });
       return reply({
         claimId: id,
         claim: compactClaim(claim),
         resource: `l0g://claims/${encodeURIComponent(id)}`,
         articleResource: `l0g://articles/${encodeURIComponent(claim.articleSlug)}`,
-        evidenceResource: `l0g://claims/${encodeURIComponent(id)}#evidence`,
+        evidenceTool: { name: 'get_claim_evidence', arguments: { claimId: id } },
       });
     }
   );
@@ -1540,7 +1555,7 @@ function buildServer(data) {
     },
     async ({ claimId, limit }) => {
       const { id, claim } = findClaimById(claimId);
-      if (!claim) return reply({ error: 'claim inconnue', claimId: id });
+      if (!claim) return errorReply({ error: 'claim inconnue', claimId: id });
       const direct = directEvidenceForClaims([`claim:${id}`], limit);
       const related = relatedContentForAnchors(direct.anchors, limit);
       return reply({
@@ -1584,7 +1599,7 @@ function buildServer(data) {
     async ({ articleSlug, kind, limit }) => {
       const slug = cleanSlug(articleSlug);
       const article = articles.find((item) => item.slug === slug);
-      if (!article) return reply({ error: 'article inconnu', articleSlug: slug });
+      if (!article) return errorReply({ error: 'article inconnu', articleSlug: slug });
       let list = claimsList.filter((claim) => claim.articleSlug === slug);
       if (kind) list = list.filter((claim) => claim.kind === kind);
       list = list.slice(0, limit).map(compactClaim);
@@ -1640,7 +1655,7 @@ function buildServer(data) {
     },
     async ({ sourceId, limit }) => {
       const { resolved, claims: sourceClaims } = claimsForSource(sourceId, { limit });
-      if (!resolved.source && !sourceClaims.length) return reply({ error: 'source inconnue', sourceId: resolved.id });
+      if (!resolved.source && !sourceClaims.length) return errorReply({ error: 'source inconnue', sourceId: resolved.id });
       return reply({
         sourceId: resolved.id,
         sourceType: resolved.sourceType || 'referenceMatch',
@@ -1957,10 +1972,10 @@ function buildServer(data) {
     },
     async ({ topic, limit }) => {
       const raw = norm(topic);
-      if (!raw) return reply({ error: 'sujet vide', topics: topicsList });
+      if (!raw) return errorReply({ error: 'sujet vide', topics: topicsList });
       let match = topicsList.find((t) => t.slug === raw);
       if (!match) match = topicsList.find((t) => norm(t.label).includes(raw) || t.slug.includes(raw) || raw.includes(t.slug));
-      if (!match) return reply({ error: 'sujet inconnu', requested: topic, topics: topicsList });
+      if (!match) return errorReply({ error: 'sujet inconnu', requested: topic, topics: topicsList });
       const list = articles
         .filter((a) => (a.topics || []).includes(match.slug))
         .slice(0, limit)
@@ -1988,7 +2003,7 @@ function buildServer(data) {
     },
     async ({ slug, offset, length, section: requestedSection }) => {
       const clean = String(slug || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
-      if (!slugs.has(clean)) return reply({ error: 'slug inconnu', slug: clean });
+      if (!slugs.has(clean)) return errorReply({ error: 'slug inconnu', slug: clean });
       const isGuide = guides.some((g) => g.slug === clean);
       const section = isGuide ? 'guides' : 'posts';
       const url = `${SITE}/${section}/${clean}/`;
@@ -2005,7 +2020,7 @@ function buildServer(data) {
           ...chunk,
         });
       } catch {
-        return reply({ error: 'contenu introuvable', slug: clean, url });
+        return errorReply({ error: 'contenu introuvable', slug: clean, url });
       }
     }
   );
