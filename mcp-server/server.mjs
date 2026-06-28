@@ -37,7 +37,7 @@ const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.9.0';
+const MCP_VERSION = '1.9.1';
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -844,12 +844,21 @@ function buildServer(data) {
     const dated = refs.filter((reference) => reference.date || reference.dateLabel).length;
     const hosts = new Set(refs.map((reference) => reference.host || hostFromUrl(reference.href)).filter(Boolean));
     let label = 'mention';
-    if (primary && linked && dated) label = 'preuve directe';
+    if (primary && linked && dated) label = 'source primaire liée et datée';
     else if (linked && dated) label = 'source liée et datée';
     else if (linked) label = 'source liée';
     else if (refs.length) label = 'référence';
     return {
       proofDepth: label,
+      proofDepthStatus: 'automatique',
+      directProofReservedFor: [
+        'relation explicitement encodée',
+        'relecture humaine',
+        'localisation précise dans la source',
+        'calcul ou donnée reproductible',
+      ],
+      caveat:
+        "Une source primaire liée et datée indique une proximité documentaire vérifiable ; elle ne prouve pas automatiquement que la source soutient précisément la proposition.",
       references: refs.length,
       linkedReferences: linked,
       datedReferences: dated,

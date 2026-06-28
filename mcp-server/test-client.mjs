@@ -115,6 +115,12 @@ const claim = await call('get_claim', { claimId: 'dollar-yen-intervention-risque
 console.log('get_claim ->', claim.claimId, '| kind:', claim.claim?.kind);
 
 const claimEvidence = await call('get_claim_evidence', { claimId: 'dollar-yen-intervention-risque-carry-2026:claim-1', limit: 40 });
+if (claimEvidence.evidence?.proofDepth === 'preuve directe') {
+  throw new Error('get_claim_evidence ne doit pas attribuer preuve directe automatiquement');
+}
+if (claimEvidence.evidence?.proofDepth !== 'source primaire liée et datée') {
+  throw new Error(`niveau de preuve inattendu: ${claimEvidence.evidence?.proofDepth}`);
+}
 console.log('get_claim_evidence -> depth:', claimEvidence.evidence?.proofDepth, '| nodes:', claimEvidence.returned?.nodes);
 
 const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
