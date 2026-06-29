@@ -21,6 +21,24 @@ const { post } = Astro.props;
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content } = await render(post);
 
+// On sépare la bibliographie (« Sources principales ») du corps rendu pour la
+// replacer en fin d'article, après le disclaimer et le bloc de partage.
+const renderedHtml = post.rendered?.html ?? '';
+const hasRendered = renderedHtml.length > 0;
+let bodyHtml = renderedHtml;
+let biblioHtml = '';
+if (hasRendered) {
+  const biblioMatch = [
+    ...renderedHtml.matchAll(
+      /<(?:p|h[1-6])\b[^>]*>(?:\s|<strong>|<em>)*(?:Sources(?:\s+principales)?|Références|References|Bibliographie|Pour aller plus loin)\b/gi
+    ),
+  ].pop();
+  if (biblioMatch && typeof biblioMatch.index === 'number') {
+    bodyHtml = renderedHtml.slice(0, biblioMatch.index).replace(/<hr[^>]*>\s*$/i, '');
+    biblioHtml = renderedHtml.slice(biblioMatch.index);
+  }
+}
+
 const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
   day: '2-digit',
   month: 'long',
@@ -255,8 +273,12 @@ const trustItems = [
     </header>
 
     <div class="prose">
-      <Content />
+      {hasRendered ? <Fragment set:html={bodyHtml} /> : <Content />}
     </div>
+
+    <p class="post-disclaimer" data-pagefind-ignore>
+      <em>Cet article ne constitue en aucun cas un conseil en investissement.</em>
+    </p>
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// partager</span>
@@ -284,9 +306,9 @@ const trustItems = [
       </div>
     </div>
 
-    <p class="post-disclaimer" data-pagefind-ignore>
-      <em>Cet article ne constitue en aucun cas un conseil en investissement.</em>
-    </p>
+    {biblioHtml && (
+      <div class="prose article-sources mt-12" set:html={biblioHtml}></div>
+    )}
 
     <ArticleEvidence evidence={evidence} />
 
