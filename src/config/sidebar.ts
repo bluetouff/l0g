@@ -21,6 +21,8 @@ export interface Dashboard {
   stack: string;           // techno
   repo?: string;           // dépôt public (lien « code »)
   preview?: string;        // capture, ex. /dash/us.png — placeholder si absent
+  methodologySlug?: string; // slug méthodologie si différent de l'ancre slug
+  beta?: boolean;          // affiche un badge « beta » sur la fiche
 }
 
 export const dashboards: Dashboard[] = [
@@ -45,6 +47,7 @@ export const dashboards: Dashboard[] = [
     glyph: '🇪🇺',
     accent: 'blue',
     slug: 'eu-macro',
+    methodologySlug: 'euro-macro',
     question: 'La zone euro glisse-t-elle vers le stress macro, indicateur par indicateur ?',
     sources: ['BCE — Statistical Data Warehouse', 'Eurostat'],
     cadence: 'Instantané statique, sans clé API',
@@ -81,12 +84,26 @@ export const dashboards: Dashboard[] = [
     preview: '/preview/ener.png',
   },
   {
+    label: '13FLOW',
+    sub: 'Confluence 13F × Form 4',
+    href: 'https://13flow.eu',
+    glyph: '∩',
+    accent: 'teal',
+    slug: '13flow',
+    question: "Quels titres concentrent à la fois une accumulation de fonds suivis et des achats récents d'initiés ?",
+    sources: ['SEC EDGAR — 13F-HR & Form 4', 'OpenFIGI — mapping CUSIP'],
+    cadence: 'Instantané statique · 13F trimestriel, Form 4 sous 2 jours',
+    stack: 'Python · ingest EDGAR · architecture snapshot',
+    repo: 'https://github.com/bluetouff/13flow',
+  },
+  {
     label: 'Orbit',
     sub: 'Heatmap crypto temps réel',
     href: 'https://orbit.l0g.fr',
     glyph: '◎',
     accent: 'amber',
     slug: 'orbit',
+    beta: true,
     question: 'Quelles cryptos bougent, accumulent ou décrochent — et où sont les anomalies ?',
     sources: ['CoinGecko — prix & marché', 'FRED — macro (10Y, USD)'],
     cadence: 'Instantané statique · refresh 2 min',

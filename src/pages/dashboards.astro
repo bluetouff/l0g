@@ -11,10 +11,13 @@ const accentVar: Record<string, string> = {
   amber: 'var(--color-amber)',
 };
 
-const dashboardCards = dashboards.map((dashboard) => ({
-  ...dashboard,
-  methodologyHref: methodologyBySlug.has(dashboard.slug) ? methodologyUrl(dashboard.slug) : null,
-}));
+const dashboardCards = dashboards.map((dashboard) => {
+  const methodologySlug = dashboard.methodologySlug ?? dashboard.slug;
+  return {
+    ...dashboard,
+    methodologyHref: methodologyBySlug.has(methodologySlug) ? methodologyUrl(methodologySlug) : null,
+  };
+});
 
 const trustItems = [
   { label: 'snapshots statiques', href: '/methodologie/' },
@@ -71,7 +74,10 @@ const trustItems = [
                 {d.glyph}
               </span>
               <span class="min-w-0">
-                <span class="block text-[0.98rem] font-semibold text-bright">{d.label}</span>
+                <span class="block text-[0.98rem] font-semibold text-bright">
+                  {d.label}
+                  {d.beta && <span class="beta-badge">beta</span>}
+                </span>
                 <span class="block text-xs text-muted">{d.sub}</span>
               </span>
             </header>
@@ -128,6 +134,21 @@ const trustItems = [
     .fiche {
       --a: var(--color-signal);
       border-top: 2px solid color-mix(in srgb, var(--a) 60%, transparent);
+    }
+    .beta-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      border: 1px solid color-mix(in srgb, var(--color-amber) 55%, transparent);
+      background: color-mix(in srgb, var(--color-amber) 12%, transparent);
+      border-radius: 6px;
+      padding: 0.1rem 0.4rem;
     }
     .dash-note {
       margin-top: 1rem;
