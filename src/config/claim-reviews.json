@@ -1,6 +1,6 @@
 {
-  "version": "2026-06-28",
-  "updated": "2026-06-28",
+  "version": "2026-06-29",
+  "updated": "2026-06-29",
   "entries": [
     {
       "claimId": "13flow:claim-53b32247e6add3",
@@ -92,6 +92,20 @@
       "reviewedBy": "bluetouff",
       "kind": "unclassified-assertion",
       "note": "check ok"
+    },
+    {
+      "claimId": "boom-ia-bis-fragilite-financiere:claim-e3603be4179fd4",
+      "reviewedAt": "2026-06-29T18:14:42.706Z",
+      "reviewedBy": "bluetouff",
+      "kind": "unclassified-assertion",
+      "note": "Chiffres vérifiés"
+    },
+    {
+      "claimId": "boom-ia-bis-fragilite-financiere:claim-fde669da43bb9e",
+      "reviewedAt": "2026-06-29T18:16:16.912Z",
+      "reviewedBy": "bluetouff",
+      "kind": "scénario",
+      "note": "Hypothèse pertinente, à confirmer dans le temps."
     },
     {
       "claimId": "chine-importations-petrole-brut-chute-2026:claim-617f0c5b6887c7",
