@@ -31,8 +31,8 @@ export interface MethodologyPage {
   reproducibility: string[];
 }
 
-export const methodologyUpdated = '27 juin 2026';
-export const methodologyUpdatedIso = '2026-06-27';
+export const methodologyUpdated = '29 juin 2026';
+export const methodologyUpdatedIso = '2026-06-29';
 
 export const riskBandScaleCaveat = {
   title: 'Normalisation d’affichage, pas indice unique',
@@ -317,6 +317,118 @@ export const methodologyPages: MethodologyPage[] = [
       "Builder Python sans dépendance externe, bibliothèque standard uniquement.",
       "Écriture atomique du snapshot pour éviter les fichiers servis à moitié.",
       "Les clés éventuelles restent côté serveur et ne sont jamais exposées au navigateur.",
+    ],
+  },
+  {
+    slug: 'debt-risk-radar',
+    label: 'Debt Risk Radar',
+    shortLabel: 'Debt Risk',
+    eyebrow: '// dette souveraine et spreads',
+    accent: 'blue',
+    title: 'Debt Risk Radar : lire la dette comme un système de risque',
+    description:
+      'Méthodologie de Debt Risk Radar : dette publique, projections budgétaires, crédit privé, spreads et signaux de marché à partir de sources ouvertes et d’API gratuites.',
+    question:
+      'Dette publique, crédit privé, projections budgétaires et signaux de marché : où le risque de dette se tend-il ?',
+    dashboardUrl: 'https://debt.l0g.fr',
+    repoUrl: 'https://github.com/bluetouff/debt-risk-radar',
+    updated: methodologyUpdated,
+    quickRead: [
+      'Le dashboard ne mesure pas une crise de dette unique ; il surveille plusieurs canaux qui peuvent se renforcer.',
+      'Les séries institutionnelles donnent la structure lente : dette, déficit, intérêts, crédit privé, service de la dette.',
+      'Les séries de marché donnent la partie nerveuse : taux, courbe, spreads, ETF et actifs sensibles au risque de refinancement.',
+    ],
+    sources: [
+      {
+        name: 'US Treasury Fiscal Data',
+        role: 'Dette publique fédérale quotidienne, notamment Debt to the Penny.',
+        cadence: 'Quotidienne',
+        delay: 'Faible, selon publication Treasury',
+        url: 'https://fiscaldata.treasury.gov/',
+      },
+      {
+        name: 'FRED · Federal Reserve Bank of St. Louis',
+        role: 'Dette / PIB, dette détenue par le public, déficit, intérêts, taux, courbe, spreads IG et HY.',
+        cadence: 'Selon séries',
+        delay: 'Variable',
+        url: 'https://fred.stlouisfed.org/',
+      },
+      {
+        name: 'BIS Data Portal',
+        role: 'Credit-to-GDP gap et debt service ratios pour suivre le levier privé et la charge de dette.',
+        cadence: 'Trimestrielle à annuelle selon série',
+        delay: 'Variable',
+        url: 'https://data.bis.org/',
+      },
+      {
+        name: 'CBO Open Data',
+        role: 'Projections budgétaires long terme : dette détenue par le public, dette brute, déficit et intérêts.',
+        cadence: 'Selon publication CBO',
+        delay: 'Publication officielle',
+        url: 'https://www.cbo.gov/data/budget-economic-data',
+      },
+      {
+        name: 'Eurostat',
+        role: 'Dette Maastricht et solde public pour comparer la zone européenne sur base institutionnelle.',
+        cadence: 'Trimestrielle',
+        delay: 'Publication Eurostat',
+        url: 'https://ec.europa.eu/eurostat',
+      },
+      {
+        name: 'Massive Market Data',
+        role: 'Prix et ratios de marché : ETF obligataires, actions bancaires, spreads proxy et actifs sensibles au stress de dette.',
+        cadence: 'À chaque consultation si clé configurée',
+        delay: 'Selon couverture de marché',
+        url: 'https://massive.com/',
+      },
+      {
+        name: 'World Bank Open Data',
+        role: 'Comparables internationaux annuels, notamment dette, croissance et agrégats macro.',
+        cadence: 'Annuelle',
+        delay: 'Variable selon pays et indicateur',
+        url: 'https://data.worldbank.org/',
+      },
+    ],
+    calculation: [
+      'Chaque connecteur récupère les séries depuis l’API source, puis les convertit en séries temporelles comparables.',
+      'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO, Eurostat et prix Massive.',
+      'Chaque série est transformée en z-score glissant sur cinq ans quand l’historique le permet, puis orientée dans le sens du risque.',
+      'Les scores sont bornés de 0 à 100, puis agrégés par famille avec des pondérations explicites.',
+      'Les connecteurs optionnels ne bloquent pas le dashboard : FRED et Massive sont ignorés si les clés serveur ne sont pas configurées.',
+    ],
+    formula:
+      'z = (valeur - moyenne_5_ans) / ecart_type_5_ans\n' +
+      'score_serie = clip(50 + z_oriente_risque x 15, 0, 100)\n' +
+      'score_famille = moyenne ponderee des series disponibles\n' +
+      'score_global = somme des familles ponderees, renormalisee si une famille manque',
+    interpretation: [
+      'Un score bas indique que les séries suivies restent proches de leur régime récent ou orientées dans un sens moins risqué.',
+      'Un score intermédiaire signale que certains canaux se tendent, sans stress large.',
+      'Au-dessus des seuils watch et stress, il faut lire quelles familles portent le signal : fiscal, marché, crédit privé ou projections.',
+      'La trajectoire compte autant que le niveau : un score qui monte vite peut signaler un changement de régime avant que les ratios publics annuels ne bougent.',
+    ],
+    limits: [
+      'Les séries fiscales et budgétaires sont lentes, révisées et parfois publiées avec retard.',
+      'Les projections CBO ne sont pas des prévisions de marché ; elles reposent sur hypothèses légales, macroéconomiques et budgétaires.',
+      'Les données BIS et World Bank améliorent la comparaison internationale mais ne sont pas temps réel.',
+      'Les prix de marché via Massive Market Data ajoutent de la réactivité, mais ne remplacent pas une analyse de liquidité, duration et bilan.',
+      'Le score 0-100 est une lecture interne du risque de dette ; il ne se compare pas directement aux scores US Macro, Yen Carry ou Énergie.',
+    ],
+    useFor: [
+      'Surveiller si le risque de dette vient plutôt de la solvabilité publique, des taux, du crédit privé ou du marché.',
+      'Mettre les projections CBO et les ratios institutionnels face aux signaux plus rapides des spreads et prix de marché.',
+      'Construire une lecture de risque avant d’ouvrir les séries sources et les rapports budgétaires détaillés.',
+    ],
+    notFor: [
+      'Prédire un défaut souverain ou un downgrade à date fixe.',
+      'Remplacer une analyse pays, duration, devise, maturité ou structure de détenteurs.',
+      'Produire un signal d’achat ou de vente sur obligations, ETF, banques ou devises.',
+    ],
+    reproducibility: [
+      'Le code est publié dans un dépôt GitHub public.',
+      'Les sources institutionnelles principales sont gratuites et documentées.',
+      'Les clés FRED et Massive restent côté serveur dans l’environnement systemd, jamais dans le dépôt ni dans le navigateur.',
+      'Streamlit écoute uniquement en local derrière Apache, avec service systemd dédié et port applicatif non exposé.',
     ],
   },
   {
