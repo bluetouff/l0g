@@ -19,24 +19,6 @@ const { guide } = Astro.props;
 const ogImage = guide.data.ogImage ?? `/og/${guide.id}.png`;
 const { Content } = await render(guide);
 
-// Bibliographie (« Sources principales ») séparée du corps pour la replacer
-// en fin de guide, après le disclaimer et le bloc de partage.
-const renderedHtml = guide.rendered?.html ?? '';
-const hasRendered = renderedHtml.length > 0;
-let bodyHtml = renderedHtml;
-let biblioHtml = '';
-if (hasRendered) {
-  const biblioMatch = [
-    ...renderedHtml.matchAll(
-      /<(?:p|h[1-6])\b[^>]*>(?:\s|<strong>|<em>)*(?:Sources(?:\s+principales)?|Références|References|Bibliographie|Pour aller plus loin)\b/gi
-    ),
-  ].pop();
-  if (biblioMatch && typeof biblioMatch.index === 'number') {
-    bodyHtml = renderedHtml.slice(0, biblioMatch.index).replace(/<hr[^>]*>\s*$/i, '');
-    biblioHtml = renderedHtml.slice(biblioMatch.index);
-  }
-}
-
 const fmt = (d: Date) =>
   d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
 const updated = guide.data.updatedDate ?? guide.data.pubDate;
@@ -137,12 +119,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     </header>
 
     <div class="prose">
-      {hasRendered ? <Fragment set:html={bodyHtml} /> : <Content />}
+      <Content />
     </div>
-
-    <p class="post-disclaimer" data-pagefind-ignore>
-      <em>Cet article ne constitue en aucun cas un conseil en investissement.</em>
-    </p>
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// partager</span>
@@ -170,9 +148,9 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       </div>
     </div>
 
-    {biblioHtml && (
-      <div class="prose article-sources mt-12" set:html={biblioHtml}></div>
-    )}
+    <p class="post-disclaimer" data-pagefind-ignore>
+      <em>Cet article ne constitue en aucun cas un conseil en investissement.</em>
+    </p>
 
     <CitationBox
       title={guide.data.title}
