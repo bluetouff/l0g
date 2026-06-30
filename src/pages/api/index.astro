@@ -25,6 +25,11 @@ const datasetLd = {
     {
       '@type': 'DataDownload',
       encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/debt-risk.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
       contentUrl: `${ASITE}/agents.json`,
     },
     {
@@ -185,7 +190,13 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/risk.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">État courant des signaux et synthèse confluence.</span>
+          <span class="ep-desc">État courant des signaux consolidés et synthèse confluence.</span>
+        </a>
+        <a class="ep card" href="/api/v1/debt-risk.json" target="_blank" rel="noopener" style="--t: #7aa2f7">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/debt-risk.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json : score, buckets, sources et top signaux.</span>
         </a>
         <a class="ep card" href="/api/v1/risk.xml" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
@@ -219,6 +230,10 @@ const datasetLd = {
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
         <pre class="apipre"><code>curl -s https://l0g.fr/api/v1/risk.json</code></pre>
+      </div>
+      <div class="codeblock">
+        <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
+        <pre class="apipre"><code>curl -s https://l0g.fr/api/v1/debt-risk.json</code></pre>
       </div>
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
@@ -265,6 +280,7 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// champs</h2>
       <ul class="api-list mt-3">
         <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur du signal (0 à <code class="apic">scale</code>, généralement 100), normalisée par instrument.</li>
+        <li><code class="apic">/api/v1/debt-risk.json</code> — source canonique du signal Dette US : <code class="apic">signal.value</code> est l'arrondi de <code class="apic">provenance.scoreRaw</code>, lui-même repris de <code class="apic">https://debt.l0g.fr/latest.json</code>.</li>
         <li><code class="apic">scaleCaveat</code> et <code class="apic">precisionGuard</code> — limites de lecture : normalisation d’affichage, couverture, fraîcheur, incertitude et reproductibilité.</li>
         <li><code class="apic">level</code> — libellé lisible (Détendu, Modéré, Élevé/Tendu, Crise).</li>
         <li><code class="apic">tone</code> — code machine : <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code>, <code class="apic">crisis</code>.</li>

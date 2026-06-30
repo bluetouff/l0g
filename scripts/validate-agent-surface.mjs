@@ -38,6 +38,7 @@ function validateOpenapiArtifacts() {
     ['IntegritySurface', 'dist/api/v1/integrity.json'],
     ['ChangefeedSurface', 'dist/api/v1/changes.json'],
     ['RiskSnapshot', 'dist/api/v1/risk.json'],
+    ['DebtRiskSnapshot', 'dist/api/v1/debt-risk.json'],
   ];
 
   for (const [schemaName, path] of artifacts) {

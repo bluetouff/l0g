@@ -120,7 +120,7 @@ const appLd = {
       <ul class="mt-4 space-y-2 text-paper">
         <li>
           une <a class="link-term text-signal" href="/api/">API JSON publique</a> pour les indices
-          de risque, avec un flux Atom des changements de niveau ;
+          de risque, le snapshot canonique Dette US et le flux Atom des changements de niveau ;
         </li>
         <li>
           un <a class="link-term text-signal" href="/api/v1/catalog.json">catalogue</a> machine des
@@ -297,7 +297,8 @@ curl -s -X POST ${ENDPOINT} \\
       <ul class="mt-3 space-y-2 text-paper">
         <li><a class="link-term text-signal" href="/agents/">utiliser l0g avec un agent</a> : prompts, ordre de lecture et règles d'attribution.</li>
         <li><a class="link-term text-signal" href="/donnees/agents/">Agent Surface</a> : manifeste, OpenAPI, claims, evidence graph, intégrité, changefeed et NDJSON.</li>
-        <li><a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque et flux Atom des changements de niveau.</li>
+        <li><a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque, snapshot Dette US et flux Atom des changements de niveau.</li>
+        <li><a class="link-term text-signal" href="/api/v1/debt-risk.json">debt-risk.json</a> : valeur Dette US calculée depuis Debt Risk Radar latest.json, avec provenance.</li>
         <li><a class="link-term text-signal" href="/api/v1/catalog.json">catalog.json</a> : articles, guides et sujets.</li>
         <li><a class="link-term text-signal" href="/api/v1/evidence-graph.json">evidence-graph.json</a> : relation articles, claims, sources et datasets.</li>
         <li><a class="link-term text-signal" href="/llms.txt">llms.txt</a> et <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a> : carte concise et corpus intégral.</li>
