@@ -1473,7 +1473,7 @@ export function buildOpenApiContract() {
         },
         RiskSignal: {
           type: 'object',
-          required: ['value', 'scale', 'level', 'tone', 'label', 'source'],
+          required: ['value', 'scale', 'level', 'tone', 'label', 'source', 'methodology'],
           additionalProperties: false,
           properties: {
             value: { type: 'number' },
@@ -1482,6 +1482,49 @@ export function buildOpenApiContract() {
             tone: { enum: ['low', 'normal', 'moderate', 'elevated', 'stress', 'risk-on', 'risk-off'] },
             label: { type: 'string' },
             source: { type: 'string', format: 'uri' },
+            methodology: { type: 'string', format: 'uri' },
+            calculation: {
+              anyOf: [
+                {
+                  type: 'object',
+                  required: ['summary'],
+                  additionalProperties: false,
+                  properties: {
+                    summary: { type: 'string' },
+                    sourceCode: { type: 'string', format: 'uri' },
+                    sourceRevision: { type: 'string' },
+                    formula: { type: 'array', items: { type: 'string' } },
+                    buckets: {
+                      type: 'array',
+                      items: {
+                        type: 'object',
+                        required: ['key', 'label', 'weight'],
+                        additionalProperties: false,
+                        properties: {
+                          key: { type: 'string' },
+                          label: { type: 'string' },
+                          weight: { type: 'number' },
+                        },
+                      },
+                    },
+                    thresholds: {
+                      type: 'array',
+                      items: {
+                        type: 'object',
+                        required: ['label', 'value'],
+                        additionalProperties: false,
+                        properties: {
+                          label: { type: 'string' },
+                          value: { type: 'number' },
+                        },
+                      },
+                    },
+                    notes: { type: 'array', items: { type: 'string' } },
+                  },
+                },
+                { type: 'null' },
+              ],
+            },
           },
         },
         RiskSnapshot: {

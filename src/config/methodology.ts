@@ -31,8 +31,8 @@ export interface MethodologyPage {
   reproducibility: string[];
 }
 
-export const methodologyUpdated = '29 juin 2026';
-export const methodologyUpdatedIso = '2026-06-29';
+export const methodologyUpdated = '30 juin 2026';
+export const methodologyUpdatedIso = '2026-06-30';
 
 export const riskBandScaleCaveat = {
   title: 'Normalisation d’affichage, pas indice unique',
@@ -390,17 +390,20 @@ export const methodologyPages: MethodologyPage[] = [
       },
     ],
     calculation: [
-      'Chaque connecteur récupère les séries depuis l’API source, puis les convertit en séries temporelles comparables.',
-      'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO, Eurostat et prix Massive.',
-      'Chaque série est transformée en z-score glissant sur cinq ans quand l’historique le permet, puis orientée dans le sens du risque.',
-      'Les scores sont bornés de 0 à 100, puis agrégés par famille avec des pondérations explicites.',
-      'Les connecteurs optionnels ne bloquent pas le dashboard : FRED et Massive sont ignorés si les clés serveur ne sont pas configurées.',
+      'Le score publié par l0g reprend le score global calculé par Debt Risk Radar, pas une valeur codée côté navigateur.',
+      'Dans le code du radar, les séries sont converties par zscore_latest(), notées par risk_points_from_z() ou risk_points_from_level(), regroupées par bucket_scores(), puis agrégées par overall_score().',
+      'Chaque série est transformée en z-score glissant, cinq ans par défaut, dix ou trente ans pour certaines séries lentes BIS, World Bank ou CBO, puis orientée dans le sens du risque.',
+      'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO et prix Massive.',
+      'Les familles sont agrégées avec les poids du radar : fiscal 22 %, taux et marché 18 %, levier privé 12 %, liquidité 10 %, Treasury daily 10 %, World Bank 4 %, BIS 10 %, CBO 10 %, Massive 4 %.',
+      'Les connecteurs optionnels ne bloquent pas le dashboard : FRED et Massive sont ignorés si les clés serveur ne sont pas configurées, puis le score est renormalisé sur les familles disponibles.',
     ],
     formula:
       'z = (valeur - moyenne_5_ans) / ecart_type_5_ans\n' +
-      'score_serie = clip(50 + z_oriente_risque x 15, 0, 100)\n' +
-      'score_famille = moyenne ponderee des series disponibles\n' +
-      'score_global = somme des familles ponderees, renormalisee si une famille manque',
+      'signed_z = z si une hausse augmente le risque, -z si une baisse augmente le risque\n' +
+      'score_serie = clip(50 + signed_z x 15, 0, 100)\n' +
+      'score_famille = moyenne ponderee des series disponibles dans la famille\n' +
+      'score_global = moyenne ponderee des familles disponibles\n' +
+      'seuils Debt Risk Radar : 50 elevated, 65 watch, 80 stress',
     interpretation: [
       'Un score bas indique que les séries suivies restent proches de leur régime récent ou orientées dans un sens moins risqué.',
       'Un score intermédiaire signale que certains canaux se tendent, sans stress large.',

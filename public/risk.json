@@ -6,5 +6,15 @@
     { "key": "yen", "value": 41, "scale": 100, "level": "Modéré", "tone": "moderate" },
     { "key": "energie", "value": 58, "scale": 100, "level": "Tendu", "tone": "elevated" },
     { "key": "debt", "value": 61, "scale": 100, "level": "Élevé", "tone": "elevated" }
-  ]
+  ],
+  "provenance": {
+    "debt": {
+      "label": "Debt Risk Radar",
+      "source": "https://debt.l0g.fr",
+      "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
+      "calculator": "https://github.com/bluetouff/debt-risk-radar",
+      "calculatorRevision": "40db8f9e9989d7060dceefa25334ca110c5610ad",
+      "calculation": "score_global = overall_score(bucket_scores(metrics)); families are weighted after per-series risk_score normalization."
+    }
+  }
 }

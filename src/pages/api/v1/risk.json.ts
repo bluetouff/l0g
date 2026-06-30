@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { editorialProtocol } from '../../../config/editorial.ts';
 import { riskBandScaleCaveat } from '../../../config/methodology.ts';
+import { riskSignalMeta } from '../../../config/risk-signals.ts';
 
 /**
  * API publique l0g — v1. Sortie statique : le corps est généré au build à partir
@@ -10,14 +11,6 @@ import { riskBandScaleCaveat } from '../../../config/methodology.ts';
  * Apache sur /api/ (voir docs), car en statique les headers de Response sont ignorés.
  * Aucun indice « global » fabriqué : on n'expose que les sous-indices réels des outils.
  */
-
-const META: Record<string, { label: string; source: string }> = {
-  us: { label: 'US Macro Dashboard', source: 'https://us.l0g.fr' },
-  eu: { label: 'EU Macro Dashboard', source: 'https://euro.l0g.fr' },
-  yen: { label: 'Yen Carry Monitor', source: 'https://yct.l0g.fr' },
-  energie: { label: 'Energie Monitor', source: 'https://energie.l0g.fr' },
-  debt: { label: 'Debt Risk Radar', source: 'https://debt.l0g.fr' },
-};
 
 function readJSON(rel: string): any {
   return JSON.parse(readFileSync(join(process.cwd(), rel), 'utf-8'));
@@ -28,7 +21,7 @@ export const GET: APIRoute = () => {
 
   const indices: Record<string, unknown> = {};
   for (const it of risk.indices || []) {
-    const m = META[it.key] || { label: undefined, source: undefined };
+    const m = riskSignalMeta[it.key] || { label: undefined, source: undefined, methodology: undefined };
     indices[it.key] = {
       value: it.value,
       scale: it.scale ?? 100,
@@ -36,6 +29,8 @@ export const GET: APIRoute = () => {
       tone: it.tone,
       label: m.label,
       source: m.source,
+      methodology: m.methodology,
+      calculation: m.calculation,
     };
   }
 
