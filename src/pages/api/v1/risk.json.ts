@@ -22,6 +22,7 @@ export const GET: APIRoute = () => {
   const indices: Record<string, unknown> = {};
   for (const it of risk.indices || []) {
     const m = riskSignalMeta[it.key] || { label: undefined, source: undefined, methodology: undefined };
+    const provenance = risk.provenance?.[it.key] ?? null;
     indices[it.key] = {
       value: it.value,
       scale: it.scale ?? 100,
@@ -31,6 +32,7 @@ export const GET: APIRoute = () => {
       source: m.source,
       methodology: m.methodology,
       calculation: m.calculation,
+      provenance,
     };
   }
 

@@ -6,6 +6,7 @@
     calm: '#5eead4',     // teal — détendu
     moderate: '#f5b13d', // ambre — modéré
     elevated: '#ff8a3d', // orange — tendu
+    stress: '#ff4d87',   // rose — stress
     crisis: '#ff4d87',   // rose — crise
   };
 

@@ -390,7 +390,7 @@ export const methodologyPages: MethodologyPage[] = [
       },
     ],
     calculation: [
-      'Le score publié par l0g reprend le score global calculé par Debt Risk Radar, pas une valeur codée côté navigateur.',
+      'Le score publié par l0g reprend le score global exposé par https://debt.l0g.fr/latest.json, pas une valeur codée côté navigateur.',
       'Dans le code du radar, les séries sont converties par zscore_latest(), notées par risk_points_from_z() ou risk_points_from_level(), regroupées par bucket_scores(), puis agrégées par overall_score().',
       'Chaque série est transformée en z-score glissant, cinq ans par défaut, dix ou trente ans pour certaines séries lentes BIS, World Bank ou CBO, puis orientée dans le sens du risque.',
       'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO et prix Massive.',

@@ -28,4 +28,15 @@ if (/\bFALLBACK\b|render\s*\(\s*\{/.test(riskScript)) {
   throw new Error('public/risk.js ne doit pas embarquer de valeur de fallback pour les signaux.');
 }
 
+const debtProvenance = risk.provenance?.debt;
+if (!debtProvenance || debtProvenance.latestJsonUrl !== 'https://debt.l0g.fr/latest.json') {
+  throw new Error('Signal debt: provenance.latestJsonUrl doit pointer vers https://debt.l0g.fr/latest.json.');
+}
+if (typeof debtProvenance.scoreRaw !== 'number' || typeof debtProvenance.scoreRounded !== 'number') {
+  throw new Error('Signal debt: provenance.scoreRaw et scoreRounded sont requis.');
+}
+if (byKey.get('debt').value !== debtProvenance.scoreRounded) {
+  throw new Error('Signal debt: value doit etre egal a provenance.scoreRounded.');
+}
+
 console.log(`Risk snapshot OK: ${requiredSignals.join(', ')}`);

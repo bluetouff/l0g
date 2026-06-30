@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-30T10:47:37Z",
+  "updated": "2026-06-30T12:22:06Z",
   "events": [
     { "ts": "2026-06-08T17:15:00Z", "key": "yen",     "label": "Yen Carry", "from": "Détendu", "to": "Modéré", "value": 41, "tone": "moderate", "source": "https://yct.l0g.fr" },
     { "ts": "2026-06-12T17:15:00Z", "key": "energie", "label": "Énergie",   "from": "Modéré",  "to": "Tendu",  "value": 58, "tone": "elevated", "source": "https://energie.l0g.fr" },
-    { "ts": "2026-06-30T10:47:37Z", "key": "debt",    "label": "Dette US",  "from": "Non suivi", "to": "Élevé", "value": 61, "tone": "elevated", "source": "https://debt.l0g.fr" }
+    { "ts": "2026-06-30T12:22:06Z", "key": "debt",    "label": "Dette US",  "from": "Non suivi", "to": "Élevé", "value": 57, "tone": "elevated", "source": "https://debt.l0g.fr/latest.json" }
   ]
 }

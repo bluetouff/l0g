@@ -44,7 +44,6 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
       summary:
         'Score global Debt Risk Radar calcule par bucket_scores(metrics) puis overall_score(buckets) dans debt-risk-radar/data.py.',
       sourceCode: 'https://github.com/bluetouff/debt-risk-radar',
-      sourceRevision: '40db8f9e9989d7060dceefa25334ca110c5610ad',
       formula: [
         'z = (valeur - moyenne_fenetre) / ecart_type_fenetre',
         'signed_z = z si direction=up, -z si direction=down',
@@ -69,6 +68,7 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
         { label: 'Stress', value: 80 },
       ],
       notes: [
+        'La valeur publiee par l0g est importee depuis https://debt.l0g.fr/latest.json au moment du build.',
         'Sources institutionnelles principales : Treasury Fiscal Data, FRED, BIS, CBO, World Bank.',
         'Les prix, ETF et ratios de marche passent par Massive Market Data quand MASSIVE_API_KEY est configuree cote serveur.',
         'Les sources optionnelles absentes sont exclues du score, avec renormalisation par familles disponibles.',
