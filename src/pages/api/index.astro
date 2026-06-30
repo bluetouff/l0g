@@ -9,13 +9,13 @@ const datasetLd = {
   '@id': `${ASITE}/api/#dataset`,
   name: 'Indices de risque l0g',
   description:
-    "Indices de risque consolides de l0g (US Macro, EU Macro, Yen Carry, Energie) et synthese de confluence 13FLOW, exposes en JSON, avec un flux Atom des changements de niveau.",
+    "Indices de risque consolides de l0g (US Macro, EU Macro, Yen Carry, Energie, Dette US) et synthese de confluence 13FLOW, exposes en JSON, avec un flux Atom des changements de niveau.",
   url: `${ASITE}/api/`,
   inLanguage: 'fr',
   license: 'https://creativecommons.org/licenses/by/4.0/',
   isAccessibleForFree: true,
   creator: { '@id': `${ASITE}/#org` },
-  keywords: ['risque macro', 'yen carry', 'energie', 'confluence 13F', 'indices de risque'],
+  keywords: ['risque macro', 'yen carry', 'energie', 'dette US', 'confluence 13F', 'indices de risque'],
   distribution: [
     {
       '@type': 'DataDownload',
@@ -73,7 +73,7 @@ const datasetLd = {
 
 <BaseLayout
   title="API publique"
-  description="API publique l0g : signaux de risque (US Macro, EU Macro, Yen Carry, Énergie) et synthèse 13FLOW au format JSON, plus un flux Atom des changements de niveau. CORS ouvert, licence CC BY 4.0."
+  description="API publique l0g : signaux de risque (US Macro, EU Macro, Yen Carry, Énergie, Dette US) et synthèse 13FLOW au format JSON, plus un flux Atom des changements de niveau. CORS ouvert, licence CC BY 4.0."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(datasetLd)} />
@@ -185,7 +185,7 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/risk.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">État courant des quatre signaux et synthèse confluence.</span>
+          <span class="ep-desc">État courant des signaux et synthèse confluence.</span>
         </a>
         <a class="ep card" href="/api/v1/risk.xml" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
@@ -230,7 +230,8 @@ const datasetLd = {
     "us":      { "value": 58, "scale": 100, "level": "Élevé",  "tone": "elevated", "label": "US Macro Dashboard", "source": "https://us.l0g.fr" },
     "eu":      { "value": 47, "scale": 100, "level": "Modéré", "tone": "moderate", "label": "EU Macro Dashboard", "source": "https://euro.l0g.fr" },
     "yen":     { "value": 41, "scale": 100, "level": "Modéré", "tone": "moderate", "label": "Yen Carry Monitor",  "source": "https://yct.l0g.fr" },
-    "energie": { "value": 58, "scale": 100, "level": "Tendu",  "tone": "elevated", "label": "Energie Monitor",    "source": "https://energie.l0g.fr" }
+    "energie": { "value": 58, "scale": 100, "level": "Tendu",  "tone": "elevated", "label": "Energie Monitor",    "source": "https://energie.l0g.fr" },
+    "debt":    { "value": 61, "scale": 100, "level": "Élevé",  "tone": "elevated", "label": "Debt Risk Radar",    "source": "https://debt.l0g.fr" }
   },
   "scaleCaveat": { "title": "Normalisation d’affichage, pas indice unique" },
   "precisionGuard": { "title": "Illusion de précision" },
@@ -255,8 +256,8 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
       </div>
       <p class="mt-3 text-muted">
         Les colonnes <code class="apic">conf_*</code> (synthèse 13FLOW) sont vides sur les premiers
-        points, antérieurs à l'intégration de la confluence dans le snapshot. Les quatre sous-signaux,
-        eux, couvrent toute la période.
+        points, antérieurs à l'intégration de la confluence dans le snapshot. Chaque nouveau
+        sous-signal démarre à sa date d'intégration.
       </p>
     </div>
 
@@ -272,7 +273,7 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
       </ul>
       <p class="mt-3 text-muted">
         Pas d'« indice global » : on n'expose que les sous-signaux réellement mesurés par chaque
-        outil. Agréger les quatre en un seul chiffre serait un nombre dérivé non mesuré — on ne le
+        outil. Agréger les signaux en un seul chiffre serait un nombre dérivé non mesuré — on ne le
         fait pas.
       </p>
     </div>

@@ -37,11 +37,11 @@ export const methodologyUpdatedIso = '2026-06-29';
 export const riskBandScaleCaveat = {
   title: 'Normalisation d’affichage, pas indice unique',
   summary:
-    'Les quatre indicateurs du bandeau utilisent une échelle commune 0-100 pour rendre les signaux lisibles côte à côte. Ils ne mesurent ni le même phénomène, ni la même fréquence, ni le même horizon.',
+    'Les indicateurs du bandeau utilisent une échelle commune 0-100 pour rendre les signaux lisibles côte à côte. Ils ne mesurent ni le même phénomène, ni la même fréquence, ni le même horizon.',
   correctLabel: 'tableau de bord consolidé de signaux de risque',
   wrongLabel: 'indice consolidé de risque systémique',
   details: [
-    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45 ou Énergie de 47.',
+    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45, Énergie de 47 ou Dette US de 61.',
     'Le chiffre sert à comparer un instrument à son propre régime, pas à comparer directement les instruments entre eux.',
     'Le libellé et la fiche méthodologique de chaque dashboard priment sur le chiffre isolé.',
   ],

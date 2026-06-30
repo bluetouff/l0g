@@ -81,7 +81,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | Tool | Arguments | Renvoie |
 |------|-----------|---------|
 | `get_agent_manifest` | aucun | capacités, endpoints, règles d'usage et politiques de preuve |
-| `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie) + résumé confluence |
+| `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie, Dette US) + résumé confluence |
 | `get_signal_history` | `key?`, `limit?` | historique des franchissements de niveau + état courant + confluence |
 | `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |
 | `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes |

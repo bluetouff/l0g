@@ -16,6 +16,7 @@ const META: Record<string, { label: string; source: string }> = {
   eu: { label: 'EU Macro Dashboard', source: 'https://euro.l0g.fr' },
   yen: { label: 'Yen Carry Monitor', source: 'https://yct.l0g.fr' },
   energie: { label: 'Energie Monitor', source: 'https://energie.l0g.fr' },
+  debt: { label: 'Debt Risk Radar', source: 'https://debt.l0g.fr' },
 };
 
 function readJSON(rel: string): any {

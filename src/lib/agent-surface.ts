@@ -20,6 +20,7 @@ const RISK_SIGNAL_META: Record<string, { label: string; source: string; methodol
   eu: { label: 'EU Macro Dashboard', source: 'https://euro.l0g.fr', methodology: `${AGENT_SITE}/methodologie/euro-macro/` },
   yen: { label: 'Yen Carry Monitor', source: 'https://yct.l0g.fr', methodology: `${AGENT_SITE}/methodologie/yen-carry/` },
   energie: { label: 'Energie Monitor', source: 'https://energie.l0g.fr', methodology: `${AGENT_SITE}/methodologie/energie/` },
+  debt: { label: 'Debt Risk Radar', source: 'https://debt.l0g.fr', methodology: `${AGENT_SITE}/methodologie/debt-risk-radar/` },
 };
 
 type RiskSnapshotInput = {
@@ -1256,7 +1257,7 @@ export function buildOpenApiContract() {
           ],
           additionalProperties: false,
           properties: {
-            key: { enum: ['us', 'eu', 'yen', 'energie'] },
+            key: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
             label: { type: 'string' },
             source: { type: 'string', format: 'uri' },
             methodology: { type: 'string', format: 'uri' },
@@ -1494,13 +1495,14 @@ export function buildOpenApiContract() {
             snapshot: { type: 'string', format: 'date-time' },
             indices: {
               type: 'object',
-              required: ['us', 'eu', 'yen', 'energie'],
+              required: ['us', 'eu', 'yen', 'energie', 'debt'],
               additionalProperties: false,
               properties: {
                 us: { $ref: '#/components/schemas/RiskSignal' },
                 eu: { $ref: '#/components/schemas/RiskSignal' },
                 yen: { $ref: '#/components/schemas/RiskSignal' },
                 energie: { $ref: '#/components/schemas/RiskSignal' },
+                debt: { $ref: '#/components/schemas/RiskSignal' },
               },
             },
             confluence: { anyOf: [{ $ref: '#/components/schemas/RiskConfluence' }, { type: 'null' }] },

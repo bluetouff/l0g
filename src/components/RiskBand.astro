@@ -1,6 +1,6 @@
 ---
 /**
- * Bandeau consolidé de signaux : 4 indices repris des dashboards.
+ * Bandeau consolidé de signaux : indices repris des dashboards.
  * Les valeurs sont lues côté navigateur dans /risk.json (origine self,
  * aucun appel externe). Couleur par niveau de risque pour que ça saute aux yeux.
  */
@@ -9,6 +9,7 @@ const items = [
   { key: 'eu', label: 'EU Macro', href: 'https://euro.l0g.fr' },
   { key: 'yen', label: 'Yen Carry', href: 'https://yct.l0g.fr' },
   { key: 'energie', label: 'Énergie', href: 'https://energie.l0g.fr' },
+  { key: 'debt', label: 'Dette US', href: 'https://debt.l0g.fr' },
 ];
 ---
 
@@ -18,7 +19,7 @@ const items = [
     <span class="mono-label" id="risk-updated"></span>
   </div>
 
-  <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+  <div class="grid grid-cols-2 gap-3 lg:grid-cols-5">
     {
       items.map((it) => (
         <a

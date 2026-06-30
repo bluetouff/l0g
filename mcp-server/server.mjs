@@ -1502,7 +1502,7 @@ function buildServer(data) {
     'get_risk_indices',
     {
       description:
-        "Indices de risque publiés par l0g.fr (tableaux de bord macro US et zone euro, Yen Carry, Energie) " +
+        "Indices de risque publiés par l0g.fr (tableaux de bord macro US et zone euro, Yen Carry, Energie, Dette US) " +
         "à la cadence des snapshots, plus un résumé de la confluence 13F. Pas de temps réel strict, pas un conseil en investissement.",
       inputSchema: {},
       outputSchema: RiskIndicesOutput,

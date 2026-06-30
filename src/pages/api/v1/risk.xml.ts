@@ -54,7 +54,7 @@ export const GET: APIRoute = () => {
   const feed = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>l0g — changements de niveau de risque</title>
-  <subtitle>Franchissements de seuil des signaux l0g : US Macro, EU Macro, Yen Carry, Énergie.</subtitle>
+  <subtitle>Franchissements de seuil des signaux l0g : US Macro, EU Macro, Yen Carry, Énergie, Dette US.</subtitle>
   <link href="${SITE}/api/v1/risk.xml" rel="self"/>
   <link href="${SITE}/api/"/>
   <id>${SITE}/api/v1/risk.xml</id>
