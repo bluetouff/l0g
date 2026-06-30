@@ -569,7 +569,7 @@ const NdjsonOutput = ToolOutput.extend({
   records: z.array(z.any()).optional(),
 }).passthrough();
 const SignalFreshnessSchema = z.object({
-  key: z.enum(['us', 'eu', 'yen', 'energie']),
+  key: z.enum(['us', 'eu', 'yen', 'energie', 'debt']),
   label: z.string(),
   source: z.string().url(),
   methodology: z.string().url(),
@@ -1527,7 +1527,7 @@ function buildServer(data) {
         "Renvoie l'historique des changements de niveau des signaux l0g, l'état courant des scores et la confluence 13FLOW. " +
         "À utiliser pour distinguer niveau courant, franchissement de seuil et signal de marché historisé.",
       inputSchema: {
-        key: z.enum(['us', 'eu', 'yen', 'energie']).optional().describe('Signal optionnel : us, eu, yen ou energie.'),
+        key: z.enum(['us', 'eu', 'yen', 'energie', 'debt']).optional().describe('Signal optionnel : us, eu, yen, energie ou debt.'),
         limit: z.number().int().min(1).max(50).default(20).describe("Nombre maximum d'événements historiques."),
       },
       outputSchema: SignalHistoryOutput,
