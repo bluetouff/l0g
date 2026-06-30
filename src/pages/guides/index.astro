@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { readingTime } from '../../lib/reading-time.ts';
@@ -18,7 +19,9 @@ const all = (await getCollection('guides', ({ data }) => !data.draft)).sort((a, 
   return db - da;
 });
 
-const toItem = (g) => ({
+type GuideEntry = CollectionEntry<'guides'>;
+
+const toItem = (g: GuideEntry) => ({
   id: g.id,
   title: g.data.title,
   description: g.data.description,
@@ -32,7 +35,7 @@ const groups = CATEGORIES
 
 // Filet de sécurité : tout guide sans famille connue est regroupé en fin de page.
 const known = new Set(CATEGORIES.map((c) => c.key));
-const others = all.filter((g) => !known.has(g.data.category)).map(toItem);
+const others = all.filter((g) => !g.data.category || !known.has(g.data.category)).map(toItem);
 if (others.length) {
   groups.push({ key: 'autres', label: 'Autres', dir: 'autres', accent: 'var(--color-muted)', items: others });
 }

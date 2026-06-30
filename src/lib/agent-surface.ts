@@ -7,9 +7,15 @@ import { methodologyPages, riskBandScaleCaveat } from '../config/methodology.ts'
 import { primaryInstitutions, primarySourcesUpdatedIso } from '../config/primary-sources.ts';
 import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
+import {
+  buildSignalHistoryCsv,
+  buildSignalHistoryNdjsonRows,
+  buildSignalHistorySurface,
+  buildSignalSchemaSurface,
+} from './signal-history.ts';
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.9.0';
+export const AGENT_VERSION = '1.10.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -303,6 +309,17 @@ export function buildOpenApiContract() {
       '/api/v1/changes.ndjson': openApiNdjsonEndpoint('Changefeed NDJSON', 'Changefeed machine en lignes NDJSON, une publication ou révision par ligne.'),
       '/api/v1/risk.json': openApiEndpoint('Signaux de risque', 'Snapshots des dashboards de risque et caveats de normalisation.', 'RiskSnapshot'),
       '/api/v1/debt-risk.json': openApiEndpoint('Dette US', 'Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json, avec score, provenance, buckets, sources et top signaux.', 'DebtRiskSnapshot'),
+      '/api/v1/signals/current.json': openApiEndpoint('Signaux courants', 'Dernières observations point-in-time par instrument, dérivées de l’historique public.', 'SignalCurrentSurface'),
+      '/api/v1/signals/history.json': openApiEndpoint('Historique des signaux', 'Observations point-in-time, alertes de franchissement, couverture et politique de backtest.', 'SignalHistorySurface'),
+      '/api/v1/signals/history.ndjson': openApiNdjsonEndpoint('Historique des signaux NDJSON', 'Historique des signaux ligne à ligne : meta, observations puis événements de seuil.'),
+      '/api/v1/signals/history.csv': {
+        get: {
+          summary: 'Historique des signaux CSV',
+          description: 'Observations point-in-time à plat pour pandas, R, DuckDB ou tableur.',
+          responses: { '200': { description: 'CSV statique généré au build.', content: { 'text/csv': { schema: { type: 'string' } } } } },
+        },
+      },
+      '/api/v1/signals/schema.json': openApiEndpoint('Schéma des signaux', 'Schéma JSON des lignes meta, observation et level-change.', 'SignalLineSchema'),
       '/llms.txt': {
         get: {
           summary: 'Carte concise agents',
@@ -650,6 +667,11 @@ export function buildOpenApiContract() {
             'changesNdjson',
             'risk',
             'debtRisk',
+            'signalCurrent',
+            'signalHistory',
+            'signalHistoryNdjson',
+            'signalHistoryCsv',
+            'signalSchema',
             'llms',
             'llmsFull',
             'mcpEndpoint',
@@ -672,6 +694,11 @@ export function buildOpenApiContract() {
             'changesNdjson',
             'risk',
             'debtRisk',
+            'signalCurrent',
+            'signalHistory',
+            'signalHistoryNdjson',
+            'signalHistoryCsv',
+            'signalSchema',
             'llms',
             'llmsFull',
             'mcpEndpoint',
@@ -1473,6 +1500,130 @@ export function buildOpenApiContract() {
             correctionReason: { type: ['string', 'null'] },
             diffStatus: { enum: ['current-only', 'previous-version-known-without-hash', 'historical-version-without-hash', 'full-diff'] },
           },
+        },
+        SignalObservation: {
+          type: 'object',
+          required: ['recordType', 'recordId', 'instrument', 'observedAt', 'value', 'scale', 'level', 'tone', 'snapshotHash', 'backtestUsable'],
+          additionalProperties: false,
+          properties: {
+            recordType: { const: 'observation' },
+            schemaVersion: { type: 'string' },
+            recordId: { type: 'string' },
+            instrument: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
+            label: { type: 'string' },
+            observedAt: { type: ['string', 'null'], format: 'date-time' },
+            sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            computedAt: { type: 'string', format: 'date-time' },
+            value: { type: ['number', 'null'] },
+            rawValue: { type: ['number', 'null'] },
+            scale: { type: 'number' },
+            level: { type: ['string', 'null'] },
+            tone: { type: ['string', 'null'] },
+            sourceUrl: { type: 'string', format: 'uri' },
+            methodologyUrl: { type: 'string', format: 'uri' },
+            sourceSnapshotUrl: { type: 'string', format: 'uri' },
+            calculatorRepo: { type: ['string', 'null'], format: 'uri' },
+            calculatorRevision: { type: ['string', 'null'] },
+            snapshotHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            pointInTime: { type: 'boolean' },
+            backtestUsable: { const: true },
+            limitations: { type: 'array', items: { type: 'string' } },
+          },
+        },
+        SignalLevelChange: {
+          type: 'object',
+          required: ['recordType', 'eventId', 'instrument', 'observedAt', 'previousLevel', 'currentLevel', 'backtestUsable'],
+          additionalProperties: false,
+          properties: {
+            recordType: { const: 'level-change' },
+            schemaVersion: { type: 'string' },
+            eventId: { type: 'string' },
+            instrument: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
+            label: { type: 'string' },
+            observedAt: { type: ['string', 'null'], format: 'date-time' },
+            previousLevel: { type: ['string', 'null'] },
+            currentLevel: { type: ['string', 'null'] },
+            value: { type: ['number', 'null'] },
+            tone: { type: ['string', 'null'] },
+            sourceUrl: { type: 'string', format: 'uri' },
+            pointInTime: { type: 'boolean' },
+            backtestUsable: { const: false },
+            limitations: { type: 'array', items: { type: 'string' } },
+          },
+        },
+        SignalCoverage: {
+          type: 'object',
+          required: ['observations', 'levelChanges', 'instruments', 'firstObservedAt', 'lastObservedAt', 'pointInTime'],
+          additionalProperties: false,
+          properties: {
+            observations: { type: 'integer' },
+            levelChanges: { type: 'integer' },
+            instruments: { type: 'array', items: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] } },
+            firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
+            lastObservedAt: { type: ['string', 'null'], format: 'date-time' },
+            pointInTime: { type: 'boolean' },
+          },
+        },
+        SignalHistoryPolicy: {
+          type: 'object',
+          required: ['purpose', 'appendOnlyTarget', 'dateDiscipline', 'backtestRule', 'caveat', 'license', 'attribution'],
+          additionalProperties: false,
+          properties: {
+            purpose: { type: 'string' },
+            appendOnlyTarget: { type: 'string' },
+            dateDiscipline: { type: 'string' },
+            backtestRule: { type: 'string' },
+            caveat: { type: 'string' },
+            license: { type: 'string' },
+            attribution: { type: 'string' },
+          },
+        },
+        SignalInstrument: {
+          type: 'object',
+          required: ['key', 'label', 'source', 'methodology'],
+          additionalProperties: false,
+          properties: {
+            key: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
+            label: { type: 'string' },
+            source: { type: 'string', format: 'uri' },
+            methodology: { type: 'string', format: 'uri' },
+          },
+        },
+        SignalHistorySurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'coverage', 'policy', 'instruments', 'current', 'observations', 'levelChanges'],
+          additionalProperties: false,
+          properties: {
+            schema: { type: 'string', format: 'uri' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            coverage: { $ref: '#/components/schemas/SignalCoverage' },
+            policy: { $ref: '#/components/schemas/SignalHistoryPolicy' },
+            instruments: { type: 'array', items: { $ref: '#/components/schemas/SignalInstrument' } },
+            current: { type: 'object', additionalProperties: { $ref: '#/components/schemas/SignalObservation' } },
+            observations: { type: 'array', items: { $ref: '#/components/schemas/SignalObservation' } },
+            levelChanges: { type: 'array', items: { $ref: '#/components/schemas/SignalLevelChange' } },
+          },
+        },
+        SignalCurrentSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'coverage', 'current', 'policy'],
+          additionalProperties: false,
+          properties: {
+            schema: { type: 'string', format: 'uri' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            coverage: { $ref: '#/components/schemas/SignalCoverage' },
+            current: { type: 'object', additionalProperties: { $ref: '#/components/schemas/SignalObservation' } },
+            policy: { $ref: '#/components/schemas/SignalHistoryPolicy' },
+          },
+        },
+        SignalLineSchema: {
+          anyOf: [
+            { $ref: '#/components/schemas/SignalObservation' },
+            { $ref: '#/components/schemas/SignalLevelChange' },
+          ],
         },
         RiskSignal: {
           type: 'object',
@@ -2373,6 +2524,11 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/api/v1/changes.json', role: 'Changefeed machine des publications et révisions', update: 'à chaque build' },
       { path: '/api/v1/changes.ndjson', role: 'Changefeed machine en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/debt-risk.json', role: 'Snapshot Dette US avec provenance Debt Risk Radar', update: 'à chaque build' },
+      { path: '/api/v1/signals/current.json', role: 'Dernières observations point-in-time par instrument', update: 'à chaque build' },
+      { path: '/api/v1/signals/history.json', role: 'Historique des signaux pour audit et backtest', update: 'à chaque build et archive append-only' },
+      { path: '/api/v1/signals/history.ndjson', role: 'Historique des signaux en NDJSON', update: 'à chaque build et archive append-only' },
+      { path: '/api/v1/signals/history.csv', role: 'Observations de signaux à plat pour backtest', update: 'à chaque build et archive append-only' },
+      { path: '/api/v1/signals/schema.json', role: 'Schéma des lignes historiques de signaux', update: 'à chaque changement de contrat' },
       { path: '/llms.txt', role: 'Carte concise pour agents', update: 'à chaque build' },
       { path: '/llms-full.txt', role: 'Corpus textuel étendu', update: 'à chaque build' },
     ],
@@ -2412,6 +2568,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'editorial correction policy',
       'verifiable snapshot hashes',
       'machine-readable changefeed',
+      'point-in-time signal history for backtests',
       'MCP-compatible corpus',
     ],
     endpoints: {
@@ -2429,6 +2586,11 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       changesNdjson: `${AGENT_SITE}/api/v1/changes.ndjson`,
       risk: `${AGENT_SITE}/api/v1/risk.json`,
       debtRisk: `${AGENT_SITE}/api/v1/debt-risk.json`,
+      signalCurrent: `${AGENT_SITE}/api/v1/signals/current.json`,
+      signalHistory: `${AGENT_SITE}/api/v1/signals/history.json`,
+      signalHistoryNdjson: `${AGENT_SITE}/api/v1/signals/history.ndjson`,
+      signalHistoryCsv: `${AGENT_SITE}/api/v1/signals/history.csv`,
+      signalSchema: `${AGENT_SITE}/api/v1/signals/schema.json`,
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
       mcpEndpoint: `${AGENT_SITE}/api/mcp`,
@@ -2444,6 +2606,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
       'Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.',
       'Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.',
+      'Utiliser signals/history.csv ou signals/history.ndjson pour rejouer les signaux point-in-time sans look-ahead bias.',
       'Lire les champs caveat, limits et correctionPolicy avant synthèse.',
     ],
     prohibitedUse: [
@@ -2632,6 +2795,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
 }
 
 export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) {
+  const signalHistory = buildSignalHistorySurface();
   const resources = [
     {
       path: '/agents.json',
@@ -2704,6 +2868,43 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       role: 'Changefeed machine en NDJSON',
       mediaType: 'application/x-ndjson',
       body: toNdjson(buildChangesNdjsonRows(posts, guides)),
+    },
+    {
+      path: '/api/v1/signals/current.json',
+      role: 'Dernières observations point-in-time par instrument',
+      mediaType: 'application/json',
+      payload: {
+        schema: `${AGENT_SITE}/api/v1/signals/schema.json`,
+        version: signalHistory.version,
+        generated: signalHistory.generated,
+        coverage: signalHistory.coverage,
+        current: signalHistory.current,
+        policy: signalHistory.policy,
+      },
+    },
+    {
+      path: '/api/v1/signals/history.json',
+      role: 'Historique des signaux',
+      mediaType: 'application/json',
+      payload: signalHistory,
+    },
+    {
+      path: '/api/v1/signals/history.ndjson',
+      role: 'Historique des signaux en NDJSON',
+      mediaType: 'application/x-ndjson',
+      body: toNdjson(buildSignalHistoryNdjsonRows()),
+    },
+    {
+      path: '/api/v1/signals/history.csv',
+      role: 'Historique des signaux en CSV',
+      mediaType: 'text/csv',
+      body: buildSignalHistoryCsv(),
+    },
+    {
+      path: '/api/v1/signals/schema.json',
+      role: 'Schéma historique des signaux',
+      mediaType: 'application/json',
+      payload: buildSignalSchemaSurface(),
     },
   ];
 

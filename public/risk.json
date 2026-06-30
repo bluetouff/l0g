@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T15:33:44Z",
+  "updated": "2026-06-30T19:40:41Z",
   "indices": [
     {
       "key": "us",
@@ -45,13 +45,19 @@
       "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
       "calculator": "https://github.com/bluetouff/debt-risk-radar",
       "calculatorRevision": null,
-      "generatedAt": "2026-06-30T15:33:44Z",
-      "retrievedAt": "2026-06-30T15:34:00.239Z",
+      "generatedAt": "2026-06-30T19:40:41Z",
+      "retrievedAt": "2026-06-30T19:51:03.434Z",
       "schemaVersion": "1.0",
-      "scoreRaw": 57.16279912968447,
+      "scoreRaw": 57.384825037362816,
       "scoreRounded": 57,
       "status": "Elevated",
-      "issues": [],
+      "issues": [
+        "Massive Market Data: TLT: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"415aa322fe4c711e02b774ed4a533277\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
+        "Massive Market Data: HYG: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"730b1dd8cebd8677591a63c05affe9dc\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
+        "Massive Market Data: LQD: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"ef3a738dcc21235b4e608e640776f92a\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
+        "Massive Market Data: SHY: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"84dd6d300ec53f226b3ef09cd8e89038\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
+        "Massive Market Data: SPY: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"7d71244295246a39671819c47e3ef780\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr"
+      ],
       "thresholds": {
         "stress": 80,
         "watch": 65
@@ -110,14 +116,6 @@
           "metrics": 4
         },
         {
-          "key": "market_prices",
-          "label": "Massive market prices",
-          "score": 51.660304688512795,
-          "status": "Elevated",
-          "weight": 0.04,
-          "metrics": 9
-        },
-        {
           "key": "rates_market",
           "label": "Rates and market stress",
           "score": 48.18800375500618,
@@ -128,7 +126,7 @@
         {
           "key": "liquidity",
           "label": "Liquidity plumbing",
-          "score": 46.73419875747787,
+          "score": 46.664649694721156,
           "status": "Calm",
           "weight": 0.1,
           "metrics": 4
@@ -144,16 +142,16 @@
       ],
       "sources": [
         {
-          "source": "Massive Market Data",
-          "latestDate": "2026-06-29",
-          "metrics": 9,
-          "maxRisk": 63.96601880189782
-        },
-        {
           "source": "FRED/Fed",
-          "latestDate": "2026-06-29",
+          "latestDate": "2026-06-30",
           "metrics": 5,
           "maxRisk": 74.24371187943021
+        },
+        {
+          "source": "CBO Open Data",
+          "latestDate": "2056-09-30",
+          "metrics": 4,
+          "maxRisk": 90.74685714285714
         },
         {
           "source": "FRED/Treasury",
@@ -168,22 +166,10 @@
           "maxRisk": 76.56763372822563
         },
         {
-          "source": "CBO Open Data",
-          "latestDate": "2056-09-30",
-          "metrics": 4,
-          "maxRisk": 90.74685714285714
-        },
-        {
           "source": "World Bank",
           "latestDate": "2024-12-31",
           "metrics": 4,
           "maxRisk": 82.22274169433395
-        },
-        {
-          "source": "US Treasury Fiscal Data",
-          "latestDate": "2026-06-26",
-          "metrics": 3,
-          "maxRisk": 76.22981756289181
         },
         {
           "source": "BIS Data Portal",
@@ -192,16 +178,16 @@
           "maxRisk": 55.23113917922602
         },
         {
+          "source": "US Treasury Fiscal Data",
+          "latestDate": "2026-06-26",
+          "metrics": 3,
+          "maxRisk": 76.22981756289181
+        },
+        {
           "source": "FRED/ICE BofA",
           "latestDate": "2026-06-29",
           "metrics": 2,
           "maxRisk": 36.565506988294736
-        },
-        {
-          "source": "FRED/Chicago Fed",
-          "latestDate": "2026-06-19",
-          "metrics": 1,
-          "maxRisk": 38.14272278394138
         },
         {
           "source": "FRED/BEA",
@@ -210,16 +196,22 @@
           "maxRisk": 68.08957520083872
         },
         {
-          "source": "FRED/St. Louis Fed",
+          "source": "FRED/Chicago Fed",
           "latestDate": "2026-06-19",
           "metrics": 1,
-          "maxRisk": 28.635515753595467
+          "maxRisk": 38.14272278394138
         },
         {
           "source": "FRED/Fed Z.1",
           "latestDate": "2026-01-01",
           "metrics": 1,
           "maxRisk": 32.15136673881235
+        },
+        {
+          "source": "FRED/St. Louis Fed",
+          "latestDate": "2026-06-19",
+          "metrics": 1,
+          "maxRisk": 28.635515753595467
         }
       ],
       "topSignals": [

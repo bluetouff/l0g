@@ -63,6 +63,21 @@ const endpoints = [
     role: 'Flux machine des publications, révisions et politiques, avec version courante, hash et statut de diff.',
   },
   {
+    path: '/api/v1/signals/history.json',
+    label: 'Signal history',
+    role: 'Historique point-in-time des signaux : observations backtestables, alertes de seuil, couverture et politique.',
+  },
+  {
+    path: '/api/v1/signals/history.ndjson',
+    label: 'Signal NDJSON',
+    role: 'Flux ligne à ligne des signaux pour agents, watchers et ingestion incrémentale.',
+  },
+  {
+    path: '/api/v1/signals/history.csv',
+    label: 'Signal CSV',
+    role: 'Observations de signaux à plat pour pandas, R, DuckDB ou tableur.',
+  },
+  {
     path: '/api/v1/catalog.json',
     label: 'Catalogue',
     role: 'Carte complète du corpus : articles, guides, méthodologies, glossaire, sources et protocole.',
@@ -74,6 +89,7 @@ const flow = [
   'Lire /api/v1/freshness.json pour dater le corpus et les signaux de dashboards.',
   'Vérifier les empreintes avec /api/v1/integrity.json si la réponse dépend d’un corpus figé.',
   'Surveiller /api/v1/changes.json pour suivre les nouveaux contenus et révisions.',
+  'Lire /api/v1/signals/history.csv ou .ndjson pour rejouer les signaux point-in-time sans look-ahead bias.',
   'Utiliser /api/v1/evidence-graph.json quand il faut parcourir la relation article → claim → source.',
   'Basculer sur les variantes .ndjson pour une ingestion ligne à ligne.',
   'Chercher le contenu dans /api/v1/catalog.json ou /llms.txt.',
@@ -85,7 +101,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/donnees/agents/#agent-surface`,
-  headline: 'Agent Surface v1.9.0',
+  headline: 'Agent Surface v1.10.0',
   description:
     'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, claims, sources, fraîcheur et règles de citation.',
   inLanguage: 'fr',
@@ -97,21 +113,22 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title="Agent Surface v1.9.0"
+  title="Agent Surface v1.10.0"
   description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité, changefeed et règles de citation."
   ogImage="/og-donnees.png"
-  ogImageAlt="Agent Surface v1.9.0 l0g.fr : API, evidence graph, NDJSON, claims et sources"
+  ogImageAlt="Agent Surface v1.10.0 l0g.fr : API, evidence graph, NDJSON, claims et sources"
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.9.0</p>
+      <p class="mono-label glow">// agent surface v1.10.0</p>
       <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
       <p class="agent-lede">
-        Agent Surface v1.9.0 expose le corpus l0g sous forme de JSON statique et NDJSON : catalogue,
-        evidence graph, claims sourcées, sources primaires, fraîcheur, empreintes et contrat OpenAPI. La promesse est
+        Agent Surface v1.10.0 expose le corpus l0g sous forme de JSON statique et NDJSON : catalogue,
+        evidence graph, claims sourcées, sources primaires, fraîcheur, historique des signaux,
+        empreintes et contrat OpenAPI. La promesse est
         simple : un agent doit pouvoir citer une affirmation sans perdre la source, claimDate,
         observationDate, sourcePublicationDate, retrievedAt, indexedAt et le niveau de lecture.
       </p>
@@ -154,7 +171,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>Licence</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.9.0</strong></div>
+        <div><span>Version</span><strong>v1.10.0</strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Preuve</span><strong>claim-source</strong></div>
         <div><span>Intégrité</span><strong>SHA-256</strong></div>

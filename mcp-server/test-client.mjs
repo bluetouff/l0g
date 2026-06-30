@@ -48,7 +48,7 @@ for (const required of [
 
 const { resources } = await client.listResources();
 console.log('RESOURCES:', resources.length, '| #1:', resources[0]?.uri);
-for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://signals/current']) {
+for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://signals/current', 'l0g://signals/history']) {
   if (!resources.some((resource) => resource.uri === required)) throw new Error(`resource manquante: ${required}`);
 }
 

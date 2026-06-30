@@ -48,6 +48,7 @@ aux opérations de recherche, filtrage et synthèse.
 | `l0g://integrity` | empreintes SHA-256 canoniques |
 | `l0g://changes/latest` | dernières publications et révisions |
 | `l0g://signals/current` | état courant des signaux |
+| `l0g://signals/history` | observations point-in-time et alertes de seuil |
 
 ### Resource templates
 
@@ -85,7 +86,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie, Dette US) + résumé confluence |
 | `get_signal_history` | `key?`, `limit?` | historique des franchissements de niveau + état courant + confluence |
 | `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |
-| `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes |
+| `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes, signalHistory |
 | `get_freshness` | `limit?` | derniers contenus, compteurs, temporalité par signal et politique de fraîcheur |
 | `search_content` | `query`, `mode?`, `limit?` | recherche plein texte locale sur HTML généré, ou scoring catalogue historique |
 | `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables, datées quand détectable |

@@ -1,0 +1,431 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import FreshnessBadge from '../components/FreshnessBadge.astro';
+import { buildSignalHistorySurface } from '../lib/signal-history.ts';
+
+const history = buildSignalHistorySurface();
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const observations = history.observations;
+const changes = history.levelChanges;
+const instruments = history.instruments.map((instrument) => {
+  const rows = observations.filter((row) => row.instrument === instrument.key);
+  const current = history.current[instrument.key];
+  return {
+    ...instrument,
+    observations: rows.length,
+    current,
+    changes: changes.filter((row) => row.instrument === instrument.key).length,
+  };
+});
+
+const trustItems = [
+  { label: 'point-in-time', href: '#contrat' },
+  { label: 'CSV + NDJSON', href: '#exports' },
+  { label: 'hashes', href: '/api/v1/integrity.json' },
+  { label: 'méthodes', href: '/methodologie/' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${site}/backtests/#dataset`,
+  name: 'Historique des signaux l0g',
+  description:
+    'Observations point-in-time des signaux l0g, exposees en JSON, NDJSON et CSV pour audit et backtest.',
+  url: `${site}/backtests/`,
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@id': `${site}/#org` },
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${site}/api/v1/signals/history.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/x-ndjson',
+      contentUrl: `${site}/api/v1/signals/history.ndjson`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/csv',
+      contentUrl: `${site}/api/v1/signals/history.csv`,
+    },
+  ],
+};
+const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  title="Backtests"
+  description="Historique point-in-time des signaux l0g : observations, changements de niveau, formats CSV, NDJSON et JSON pour audit et backtest."
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={safeJsonLd} />
+
+  <article class="bt-page rise" data-pagefind-body>
+    <section class="bt-hero">
+      <p class="mono-label glow">// backtests</p>
+      <h1 class="bt-title font-display glow">Les signaux doivent pouvoir être rejoués.</h1>
+      <p class="bt-lede">
+        Un indicateur qui ne garde pas son historique demande qu'on lui fasse confiance.
+        l0g publie les observations point-in-time de ses signaux pour que chacun puisse
+        vérifier, rejouer, casser ou améliorer les lectures de marché.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="bt-section bt-split" id="contrat">
+      <div>
+        <p class="mono-label glow">// contrat</p>
+        <p class="bt-p">
+          La règle est simple : un backtest doit utiliser ce qui était observable à une date donnée,
+          pas ce que l'on sait après coup. Le format sépare donc <code>observedAt</code>,
+          <code>sourcePublishedAt</code>, <code>retrievedAt</code> et <code>computedAt</code>.
+        </p>
+        <p class="bt-p">
+          Les lignes <code>observation</code> sont les points de série utilisables. Les lignes
+          <code>level-change</code> sont des alertes de franchissement, utiles pour l'audit,
+          mais pas des observations complètes.
+        </p>
+      </div>
+      <div class="bt-metrics">
+        <div>
+          <span>observations</span>
+          <strong>{history.coverage.observations}</strong>
+        </div>
+        <div>
+          <span>signaux</span>
+          <strong>{history.coverage.instruments.length}</strong>
+        </div>
+        <div>
+          <span>alertes</span>
+          <strong>{history.coverage.levelChanges}</strong>
+        </div>
+        <div>
+          <span>dernier point</span>
+          <strong class="date">
+            {history.coverage.lastObservedAt ? <FreshnessBadge date={new Date(history.coverage.lastObservedAt)} compact /> : 'n/a'}
+          </strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="bt-section" aria-label="Schema visuel de l archive">
+      <p class="mono-label glow">// pipeline public</p>
+      <svg class="bt-flow" viewBox="0 0 920 220" role="img" aria-label="Sources, snapshot, archive, backtest">
+        <defs>
+          <linearGradient id="btLine" x1="0" x2="1">
+            <stop offset="0" stop-color="#5eead4" />
+            <stop offset="1" stop-color="#ff4d87" />
+          </linearGradient>
+        </defs>
+        <rect x="20" y="34" width="180" height="106" rx="8" fill="rgba(94,234,212,.08)" stroke="#5eead4" />
+        <text x="42" y="70" fill="#e7fff9" font-size="17" font-family="monospace">sources</text>
+        <text x="42" y="102" fill="#9aa3af" font-size="13" font-family="monospace">FRED · BCE · CFTC</text>
+        <text x="42" y="124" fill="#9aa3af" font-size="13" font-family="monospace">Treasury · Massive</text>
+
+        <rect x="270" y="34" width="180" height="106" rx="8" fill="rgba(122,162,247,.08)" stroke="#7aa2f7" />
+        <text x="292" y="70" fill="#e7fff9" font-size="17" font-family="monospace">snapshot</text>
+        <text x="292" y="102" fill="#9aa3af" font-size="13" font-family="monospace">risk.json</text>
+        <text x="292" y="124" fill="#9aa3af" font-size="13" font-family="monospace">debt-risk.json</text>
+
+        <rect x="520" y="34" width="180" height="106" rx="8" fill="rgba(255,209,102,.08)" stroke="#ffd166" />
+        <text x="542" y="70" fill="#e7fff9" font-size="17" font-family="monospace">archive</text>
+        <text x="542" y="102" fill="#9aa3af" font-size="13" font-family="monospace">observations</text>
+        <text x="542" y="124" fill="#9aa3af" font-size="13" font-family="monospace">hash + dates</text>
+
+        <rect x="720" y="34" width="180" height="106" rx="8" fill="rgba(255,77,135,.08)" stroke="#ff4d87" />
+        <text x="742" y="70" fill="#e7fff9" font-size="17" font-family="monospace">backtest</text>
+        <text x="742" y="102" fill="#9aa3af" font-size="13" font-family="monospace">CSV · NDJSON</text>
+        <text x="742" y="124" fill="#9aa3af" font-size="13" font-family="monospace">replay public</text>
+
+        <path d="M 205 86 L 264 86" stroke="url(#btLine)" stroke-width="3" />
+        <path d="M 455 86 L 514 86" stroke="url(#btLine)" stroke-width="3" />
+        <path d="M 705 86 L 714 86" stroke="url(#btLine)" stroke-width="3" />
+        <path d="M 75 174 L 845 174" stroke="#2f3640" stroke-width="1" />
+        <circle cx="170" cy="174" r="5" fill="#5eead4" />
+        <circle cx="360" cy="174" r="5" fill="#7aa2f7" />
+        <circle cx="610" cy="174" r="5" fill="#ffd166" />
+        <circle cx="810" cy="174" r="5" fill="#ff4d87" />
+      </svg>
+    </section>
+
+    <section class="bt-section" id="exports">
+      <p class="mono-label glow">// exports</p>
+      <div class="bt-export-grid">
+        <a href="/api/v1/signals/history.json" class="bt-export">
+          <span>JSON</span>
+          <strong>/api/v1/signals/history.json</strong>
+          <em>surface complète : politique, couverture, observations, alertes</em>
+        </a>
+        <a href="/api/v1/signals/history.ndjson" class="bt-export">
+          <span>NDJSON</span>
+          <strong>/api/v1/signals/history.ndjson</strong>
+          <em>flux ligne à ligne pour ingestion, agents et watchers</em>
+        </a>
+        <a href="/api/v1/signals/history.csv" class="bt-export">
+          <span>CSV</span>
+          <strong>/api/v1/signals/history.csv</strong>
+          <em>observations à plat pour pandas, R, DuckDB ou tableur</em>
+        </a>
+        <a href="/api/v1/signals/schema.json" class="bt-export">
+          <span>SCHEMA</span>
+          <strong>/api/v1/signals/schema.json</strong>
+          <em>contrat machine des lignes publiées</em>
+        </a>
+      </div>
+    </section>
+
+    <section class="bt-section">
+      <p class="mono-label glow">// signaux</p>
+      <div class="bt-table">
+        <div class="bt-row head">
+          <span>instrument</span>
+          <span>valeur</span>
+          <span>observations</span>
+          <span>alertes</span>
+          <span>méthode</span>
+        </div>
+        {instruments.map((item) => (
+          <div class="bt-row">
+            <span>
+              <strong>{item.label}</strong>
+              <em>{item.key}</em>
+            </span>
+            <span>{item.current?.value ?? 'n/a'}{item.current ? `/${item.current.scale}` : ''}</span>
+            <span>{item.observations}</span>
+            <span>{item.changes}</span>
+            <a href={item.methodology}>fiche</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bt-section bt-split">
+      <div>
+        <p class="mono-label glow">// exemple pandas</p>
+        <pre class="bt-code"><code>{`import pandas as pd
+
+url = "https://l0g.fr/api/v1/signals/history.csv"
+df = pd.read_csv(url, parse_dates=["observedAt", "retrievedAt"])
+df = df[df["instrument"] == "debt"].sort_values("observedAt")
+
+# Exemple volontairement minimal :
+# signal observe a T, rendement futur calcule hors de l'archive.
+signal = df[["observedAt", "value", "level", "snapshotHash"]]`}</code></pre>
+      </div>
+      <div class="bt-note">
+        <p class="mono-label">// garde-fou</p>
+        <p>
+          Les rendements, prix ou benchmarks utilisés pour évaluer un signal doivent être
+          ajoutés depuis une source de marché datée. L'archive l0g dit ce que l'indicateur
+          affichait, pas ce que le marché a fait ensuite.
+        </p>
+      </div>
+    </section>
+
+    <section class="bt-section bt-note wide">
+      <p class="mono-label">// état de la brique</p>
+      <p>
+        Cette première version expose le snapshot courant et les franchissements déjà collectés.
+        La cible durable est une archive append-only alimentée à chaque collecte par
+        <code>public/signals-history.ndjson</code>. Les clients peuvent déjà coder contre le contrat,
+        puis bénéficier automatiquement de l'allongement de l'historique.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .bt-page { max-width: 68rem; }
+    .bt-hero {
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .bt-title {
+      margin-top: 1rem;
+      max-width: 54rem;
+      font-size: clamp(2.15rem, 5vw, 3.5rem);
+      line-height: 1.06;
+      letter-spacing: 0.02em;
+      color: var(--color-bright);
+    }
+    .bt-lede {
+      margin-top: 1.15rem;
+      max-width: 50rem;
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      line-height: 1.7;
+      color: var(--color-paper);
+    }
+    .bt-section { margin-top: 3rem; }
+    .bt-split {
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 860px) {
+      .bt-split { grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr); }
+    }
+    .bt-p {
+      margin-top: 0.8rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      line-height: 1.72;
+    }
+    .bt-p code,
+    .bt-note code {
+      color: var(--color-amber);
+      font-family: var(--font-mono);
+    }
+    .bt-metrics,
+    .bt-export-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .bt-metrics div,
+    .bt-export,
+    .bt-note {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 45%, transparent);
+    }
+    .bt-metrics div {
+      min-height: 7rem;
+      padding: 1rem;
+    }
+    .bt-metrics span,
+    .bt-export span,
+    .bt-note .mono-label {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .bt-metrics strong {
+      display: block;
+      margin-top: 0.4rem;
+      color: var(--color-signal);
+      font-size: 1.65rem;
+    }
+    .bt-metrics .date {
+      font-size: 0.9rem;
+    }
+    .bt-flow {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 1rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 36%, transparent);
+      padding-bottom: 0.75rem;
+    }
+    .bt-export-grid {
+      margin-top: 1rem;
+    }
+    @media (min-width: 820px) {
+      .bt-export-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .bt-export {
+      display: grid;
+      gap: 0.45rem;
+      padding: 1rem;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .bt-export:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+    }
+    .bt-export strong {
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      overflow-wrap: anywhere;
+    }
+    .bt-export em {
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      font-style: normal;
+      line-height: 1.45;
+    }
+    .bt-table {
+      margin-top: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+    }
+    .bt-row {
+      display: grid;
+      grid-template-columns: minmax(12rem, 1.6fr) repeat(3, minmax(5.5rem, 0.55fr)) minmax(4rem, 0.45fr);
+      gap: 0.75rem;
+      align-items: center;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.8rem 1rem;
+      color: var(--color-paper);
+      font-size: 0.9rem;
+    }
+    .bt-row:last-child { border-bottom: 0; }
+    .bt-row.head {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .bt-row strong {
+      display: block;
+      color: var(--color-bright);
+    }
+    .bt-row em {
+      display: block;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-style: normal;
+    }
+    .bt-row a {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+    .bt-code {
+      margin-top: 1rem;
+      overflow-x: auto;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: var(--color-surface);
+      padding: 1rem;
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 0.83rem;
+      line-height: 1.55;
+    }
+    .bt-note {
+      padding: 1rem;
+    }
+    .bt-note p:not(.mono-label) {
+      margin-top: 0.7rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      line-height: 1.7;
+    }
+    .bt-note.wide {
+      max-width: 54rem;
+    }
+    @media (max-width: 760px) {
+      .bt-metrics,
+      .bt-export-grid {
+        grid-template-columns: 1fr;
+      }
+      .bt-table { overflow-x: auto; }
+      .bt-row { min-width: 46rem; }
+    }
+  </style>
+</BaseLayout>

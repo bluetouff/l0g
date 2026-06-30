@@ -87,6 +87,30 @@ const datasets = [
     role: 'Journal des derniers changements de niveau des indices de risque.',
   },
   {
+    label: 'signals/history.json',
+    href: '/api/v1/signals/history.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: 'observations + alertes',
+    role: 'Historique point-in-time des signaux l0g pour audit, replay et backtest.',
+  },
+  {
+    label: 'signals/history.ndjson',
+    href: '/api/v1/signals/history.ndjson',
+    format: 'NDJSON',
+    updated: new Date(),
+    count: 'ligne à ligne',
+    role: 'Flux historique des signaux : meta, observations backtestables et franchissements de seuil.',
+  },
+  {
+    label: 'signals/history.csv',
+    href: '/api/v1/signals/history.csv',
+    format: 'CSV',
+    updated: new Date(),
+    count: 'table plate',
+    role: 'Observations de signaux prêtes pour pandas, R, DuckDB ou tableur.',
+  },
+  {
     label: 'catalog.json',
     href: '/api/v1/catalog.json',
     format: 'JSON',
@@ -188,7 +212,7 @@ const trustItems = [
   { label: 'CORS ouvert', href: '/api/' },
   { label: 'licence CC BY 4.0', href: '/manifeste/' },
   { label: 'build statique', href: '/status/' },
-  { label: 'Agent Surface v1.9.0', href: '/donnees/agents/' },
+  { label: 'Agent Surface v1.10.0', href: '/donnees/agents/' },
 ];
 
 const jsonLd = {
@@ -287,7 +311,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="access-grid">
         <a href="/api/" class="access-link"><span>API</span><strong>documentation humaine</strong></a>
         <a href="/agents/" class="access-link"><span>AGENTS</span><strong>guide d'utilisation</strong></a>
-        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.9.0</strong></a>
+        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.10.0</strong></a>
         <a href="/agents.json" class="access-link"><span>JSON</span><strong>manifeste agent</strong></a>
         <a href="/openapi.json" class="access-link"><span>OPENAPI</span><strong>contrat machine</strong></a>
         <a href="/api/v1/catalog.json" class="access-link"><span>JSON</span><strong>catalogue complet</strong></a>
@@ -301,6 +325,12 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <a href="/api/v1/integrity.json" class="access-link"><span>JSON</span><strong>intégrité snapshots</strong></a>
         <a href="/api/v1/changes.json" class="access-link"><span>JSON</span><strong>changefeed machine</strong></a>
         <a href="/api/v1/changes.ndjson" class="access-link"><span>NDJSON</span><strong>changefeed stream</strong></a>
+        <a href="/backtests/" class="access-link"><span>HTML</span><strong>backtests publics</strong></a>
+        <a href="/api/v1/signals/current.json" class="access-link"><span>JSON</span><strong>signaux courants</strong></a>
+        <a href="/api/v1/signals/history.json" class="access-link"><span>JSON</span><strong>historique signaux</strong></a>
+        <a href="/api/v1/signals/history.ndjson" class="access-link"><span>NDJSON</span><strong>historique stream</strong></a>
+        <a href="/api/v1/signals/history.csv" class="access-link"><span>CSV</span><strong>historique table</strong></a>
+        <a href="/api/v1/signals/schema.json" class="access-link"><span>JSON</span><strong>schéma signaux</strong></a>
         <a href="/llms.txt" class="access-link"><span>TXT</span><strong>carte concise agents</strong></a>
         <a href="/llms-full.txt" class="access-link"><span>TXT</span><strong>corpus intégral</strong></a>
         <a href="/rss.xml" class="access-link"><span>RSS</span><strong>flux éditorial</strong></a>

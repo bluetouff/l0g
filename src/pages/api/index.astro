@@ -72,6 +72,21 @@ const datasetLd = {
       encodingFormat: 'application/atom+xml',
       contentUrl: `${ASITE}/api/v1/risk.xml`,
     },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/signals/history.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/x-ndjson',
+      contentUrl: `${ASITE}/api/v1/signals/history.ndjson`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/csv',
+      contentUrl: `${ASITE}/api/v1/signals/history.csv`,
+    },
   ],
 };
 ---
@@ -204,23 +219,35 @@ const datasetLd = {
           <span class="ep-type">Atom</span>
           <span class="ep-desc">Flux des changements de niveau, pour bots d'alerte et SIEM.</span>
         </a>
-        <a class="ep card" href="/api/v1/history.csv" target="_blank" rel="noopener" style="--t: var(--color-amber)">
+        <a class="ep card" href="/api/v1/signals/current.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
           <span class="ep-method">GET</span>
-          <code class="ep-path">/api/v1/history.csv</code>
-          <span class="ep-type">CSV</span>
-          <span class="ep-desc">Historique complet à plat, prêt pour pandas / R / Excel.</span>
-        </a>
-        <a class="ep card" href="/api/v1/history.ndjson" target="_blank" rel="noopener" style="--t: var(--color-amber)">
-          <span class="ep-method">GET</span>
-          <code class="ep-path">/api/v1/history.ndjson</code>
-          <span class="ep-type">NDJSON</span>
-          <span class="ep-desc">Historique, une ligne JSON par snapshot.</span>
-        </a>
-        <a class="ep card" href="/api/v1/history/index.json" target="_blank" rel="noopener" style="--t: #7aa2f7">
-          <span class="ep-method">GET</span>
-          <code class="ep-path">/api/v1/history/index.json</code>
+          <code class="ep-path">/api/v1/signals/current.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">Manifest : couverture, colonnes, nombre de lignes.</span>
+          <span class="ep-desc">Dernières observations point-in-time par instrument, dérivées de l'historique public.</span>
+        </a>
+        <a class="ep card" href="/api/v1/signals/history.json" target="_blank" rel="noopener" style="--t: var(--color-amber)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/signals/history.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Historique des signaux : observations backtestables, alertes de seuil, couverture et politique.</span>
+        </a>
+        <a class="ep card" href="/api/v1/signals/history.ndjson" target="_blank" rel="noopener" style="--t: var(--color-amber)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/signals/history.ndjson</code>
+          <span class="ep-type">NDJSON</span>
+          <span class="ep-desc">Historique ligne à ligne : meta, observations, puis événements de franchissement.</span>
+        </a>
+        <a class="ep card" href="/api/v1/signals/history.csv" target="_blank" rel="noopener" style="--t: #7aa2f7">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/signals/history.csv</code>
+          <span class="ep-type">CSV</span>
+          <span class="ep-desc">Observations à plat pour pandas, R, DuckDB ou tableur.</span>
+        </a>
+        <a class="ep card" href="/api/v1/signals/schema.json" target="_blank" rel="noopener" style="--t: #7aa2f7">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/signals/schema.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Schéma machine des lignes meta, observation et level-change.</span>
         </a>
       </div>
     </div>
@@ -265,13 +292,13 @@ const datasetLd = {
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
         <pre class="apipre"><code>{`import pandas as pd
-df = pd.read_csv("https://l0g.fr/api/v1/history.csv", parse_dates=["snapshot"])
-df = df.set_index("snapshot").sort_index()`}</code></pre>
+df = pd.read_csv("https://l0g.fr/api/v1/signals/history.csv", parse_dates=["observedAt", "retrievedAt"])
+df = df.set_index("observedAt").sort_index()`}</code></pre>
       </div>
       <p class="mt-3 text-muted">
-        Les colonnes <code class="apic">conf_*</code> (synthèse 13FLOW) sont vides sur les premiers
-        points, antérieurs à l'intégration de la confluence dans le snapshot. Chaque nouveau
-        sous-signal démarre à sa date d'intégration.
+        Le backtest doit utiliser <code class="apic">observedAt</code> pour la date du signal et
+        <code class="apic">retrievedAt</code> pour vérifier quand l0g l'a collecté. Les alertes
+        <code class="apic">level-change</code> servent à l'audit, pas au calcul de performance.
       </p>
     </div>
 
@@ -438,12 +465,12 @@ df = df.set_index("snapshot").sort_index()`}</code></pre>
           const n = data.indices ? Object.keys(data.indices).length : 0;
           let line = 'live · snapshot ' + fmt(data.snapshot) + ' UTC · ' + n + ' indices';
           try {
-            const h = await fetch('/api/v1/history/index.json', { cache: 'no-store' });
+            const h = await fetch('/api/v1/signals/history.json', { cache: 'no-store' });
             if (h.ok) {
               const m = await h.json();
-              if (m && m.rows) {
-                const since = (m.coverage && m.coverage.first) ? fmt(m.coverage.first) : null;
-                line += ' · historique ' + m.rows + ' points' + (since ? ' depuis le ' + since : '');
+              if (m && m.coverage && m.coverage.observations) {
+                const since = m.coverage.firstObservedAt ? fmt(m.coverage.firstObservedAt) : null;
+                line += ' · historique ' + m.coverage.observations + ' points' + (since ? ' depuis le ' + since : '');
               }
             }
           } catch (e) { /* historique indisponible */ }

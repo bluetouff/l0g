@@ -67,6 +67,7 @@ const NDJSON_FEEDS = {
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
   evidenceGraph: { path: 'api/v1/evidence-graph.ndjson', role: 'evidence graph en nœuds et arêtes ligne à ligne' },
   changes: { path: 'api/v1/changes.ndjson', role: 'changefeed machine incrémental' },
+  signalHistory: { path: 'api/v1/signals/history.ndjson', role: 'historique point-in-time des signaux pour backtests' },
 };
 
 // --- limiteur de débit par IP (fenêtre glissante simple, en mémoire) ---
@@ -109,6 +110,7 @@ let cache = {
   evidenceGraph: null,
   risk: null,
   debtRisk: null,
+  signalHistory: null,
   riskEvents: null,
   confluence: null,
 };
@@ -151,6 +153,10 @@ async function loadData() {
   try {
     debtRisk = await readJson(dataDir, 'api/v1/debt-risk.json');
   } catch { /* dette US optionnelle */ }
+  let signalHistory = null;
+  try {
+    signalHistory = await readJson(dataDir, 'api/v1/signals/history.json');
+  } catch { /* historique signaux optionnel */ }
   let riskEvents = null;
   try {
     riskEvents = await readJson(dataDir, 'risk-events.json');
@@ -159,7 +165,7 @@ async function loadData() {
   try {
     confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, riskEvents, confluence };
+  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
   return cache;
 }
 
@@ -905,7 +911,7 @@ function removeLiveNotificationCapabilities(server) {
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
   const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
-  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, riskEvents, confluence } = data;
+  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence } = data;
   const dataDir = data.dataDir || DATA_DIR;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
@@ -1277,6 +1283,16 @@ function buildServer(data) {
     confluence: risk?.confluence ?? null,
     caveat: "Les scores 0-100 sont normalisés par instrument et ne sont pas comparables comme probabilités.",
   }));
+  registerStaticResource('signals-history', 'l0g://signals/history', {
+    title: 'Signal history',
+    description: 'Historique point-in-time des signaux l0g pour audit, replay et backtests.',
+    mimeType: 'application/json',
+  }, () => signalHistory || {
+    schema: `${SITE}/api/v1/signals/schema.json`,
+    observations: [],
+    levelChanges: riskEvents?.events || [],
+    caveat: 'Historique signaux non disponible dans ce build.',
+  });
 
   server.registerResource(
     'article',
@@ -1597,10 +1613,10 @@ function buildServer(data) {
     'get_ndjson_feed',
     {
       description:
-        "Lit les variantes NDJSON publiques de l'Agent Surface : catalog, claims, evidenceGraph ou changes. " +
+        "Lit les variantes NDJSON publiques de l'Agent Surface : catalog, claims, evidenceGraph, changes ou signalHistory. " +
         "Le feed est allowlisté ; aucun chemin arbitraire n'est accepté.",
       inputSchema: {
-        feed: z.enum(['catalog', 'claims', 'evidenceGraph', 'changes']).describe('Flux NDJSON à lire.'),
+        feed: z.enum(['catalog', 'claims', 'evidenceGraph', 'changes', 'signalHistory']).describe('Flux NDJSON à lire.'),
         recordType: z.string().optional().describe('Filtre recordType optionnel, par exemple claim, article, node, edge ou change.'),
         limit: z.number().int().min(1).max(200).default(50).describe('Nombre maximum de lignes renvoyées.'),
       },

@@ -82,6 +82,17 @@ function compactTopSignal(signal) {
   };
 }
 
+function compactIssue(issue) {
+  if (typeof issue === 'string') return issue;
+  if (!issue || typeof issue !== 'object') return String(issue);
+  const parts = [
+    issue.source || issue.provider || issue.family || issue.name,
+    issue.error || issue.message || issue.reason || issue.detail,
+  ].filter(Boolean);
+  if (parts.length) return parts.map(String).join(': ');
+  return JSON.stringify(issue);
+}
+
 async function fetchDebtSnapshot() {
   const response = await fetch(debtUrl, {
     headers: {
@@ -139,7 +150,7 @@ function updateRiskSnapshot(risk, latest) {
       scoreRaw: overall,
       scoreRounded: rounded,
       status,
-      issues: Array.isArray(latest.issues) ? latest.issues.map((issue) => String(issue)) : [],
+      issues: Array.isArray(latest.issues) ? latest.issues.map(compactIssue) : [],
       thresholds: latest.thresholds || null,
       refresh: latest.refresh || null,
       scope: latest.scope || null,
