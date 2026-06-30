@@ -1,0 +1,311 @@
+{
+  "schema": "https://l0g.fr/schemas/debt-risk-snapshot.json",
+  "version": "1",
+  "generated": "2026-06-30T15:05:32Z",
+  "retrievedAt": "2026-06-30T15:06:55.490Z",
+  "signal": {
+    "key": "debt",
+    "value": 57,
+    "scale": 100,
+    "level": "Élevé",
+    "tone": "elevated"
+  },
+  "provenance": {
+    "label": "Debt Risk Radar",
+    "source": "https://debt.l0g.fr/",
+    "latestJsonUrl": "https://debt.l0g.fr/latest.json",
+    "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
+    "calculator": "https://github.com/bluetouff/debt-risk-radar",
+    "calculatorRevision": null,
+    "generatedAt": "2026-06-30T15:05:32Z",
+    "retrievedAt": "2026-06-30T15:06:55.490Z",
+    "schemaVersion": "1.0",
+    "scoreRaw": 57.16279912968447,
+    "scoreRounded": 57,
+    "status": "Elevated",
+    "issues": [],
+    "thresholds": {
+      "stress": 80,
+      "watch": 65
+    },
+    "refresh": {
+      "auto_refresh_seconds": 900,
+      "source_ttl_seconds": {
+        "institutional": 86400,
+        "market": 21600
+      }
+    },
+    "scope": {
+      "country": "USA",
+      "focus": "US sovereign debt, fiscal projections, private credit, liquidity and market stress.",
+      "market_data": "FRED and Massive Market Data are used when server-side keys are configured."
+    },
+    "buckets": [
+      {
+        "key": "cbo_projection",
+        "label": "CBO projections",
+        "score": 85.89828165107457,
+        "status": "Stress",
+        "weight": 0.1,
+        "metrics": 4
+      },
+      {
+        "key": "treasury_daily",
+        "label": "Treasury daily debt",
+        "score": 66.3986981356298,
+        "status": "Watch",
+        "weight": 0.1,
+        "metrics": 3
+      },
+      {
+        "key": "fiscal",
+        "label": "Fiscal solvency",
+        "score": 64.48029914517166,
+        "status": "Elevated",
+        "weight": 0.22,
+        "metrics": 4
+      },
+      {
+        "key": "world_bank",
+        "label": "Global comparables",
+        "score": 64.3654004824321,
+        "status": "Elevated",
+        "weight": 0.04,
+        "metrics": 4
+      },
+      {
+        "key": "private_leverage",
+        "label": "Private leverage",
+        "score": 57.09890950322818,
+        "status": "Elevated",
+        "weight": 0.12,
+        "metrics": 4
+      },
+      {
+        "key": "market_prices",
+        "label": "Massive market prices",
+        "score": 51.660304688512795,
+        "status": "Elevated",
+        "weight": 0.04,
+        "metrics": 9
+      },
+      {
+        "key": "rates_market",
+        "label": "Rates and market stress",
+        "score": 48.18800375500618,
+        "status": "Calm",
+        "weight": 0.18,
+        "metrics": 7
+      },
+      {
+        "key": "liquidity",
+        "label": "Liquidity plumbing",
+        "score": 46.73419875747787,
+        "status": "Calm",
+        "weight": 0.1,
+        "metrics": 4
+      },
+      {
+        "key": "global_credit",
+        "label": "BIS global credit",
+        "score": 29.072774402022088,
+        "status": "Calm",
+        "weight": 0.1,
+        "metrics": 3
+      }
+    ],
+    "sources": [
+      {
+        "source": "Massive Market Data",
+        "latestDate": "2026-06-29",
+        "metrics": 9,
+        "maxRisk": 63.96601880189782
+      },
+      {
+        "source": "FRED/Fed",
+        "latestDate": "2026-06-29",
+        "metrics": 5,
+        "maxRisk": 74.24371187943021
+      },
+      {
+        "source": "FRED/Treasury",
+        "latestDate": "2026-06-29",
+        "metrics": 4,
+        "maxRisk": 64.10882665034862
+      },
+      {
+        "source": "FRED",
+        "latestDate": "2026-06-29",
+        "metrics": 4,
+        "maxRisk": 76.56763372822563
+      },
+      {
+        "source": "CBO Open Data",
+        "latestDate": "2056-09-30",
+        "metrics": 4,
+        "maxRisk": 90.74685714285714
+      },
+      {
+        "source": "World Bank",
+        "latestDate": "2024-12-31",
+        "metrics": 4,
+        "maxRisk": 82.22274169433395
+      },
+      {
+        "source": "US Treasury Fiscal Data",
+        "latestDate": "2026-06-26",
+        "metrics": 3,
+        "maxRisk": 76.22981756289181
+      },
+      {
+        "source": "BIS Data Portal",
+        "latestDate": "2025-12-31",
+        "metrics": 3,
+        "maxRisk": 55.23113917922602
+      },
+      {
+        "source": "FRED/ICE BofA",
+        "latestDate": "2026-06-29",
+        "metrics": 2,
+        "maxRisk": 36.565506988294736
+      },
+      {
+        "source": "FRED/Chicago Fed",
+        "latestDate": "2026-06-19",
+        "metrics": 1,
+        "maxRisk": 38.14272278394138
+      },
+      {
+        "source": "FRED/BEA",
+        "latestDate": "2026-01-01",
+        "metrics": 1,
+        "maxRisk": 68.08957520083872
+      },
+      {
+        "source": "FRED/St. Louis Fed",
+        "latestDate": "2026-06-19",
+        "metrics": 1,
+        "maxRisk": 28.635515753595467
+      },
+      {
+        "source": "FRED/Fed Z.1",
+        "latestDate": "2026-01-01",
+        "metrics": 1,
+        "maxRisk": 32.15136673881235
+      }
+    ],
+    "topSignals": [
+      {
+        "family": "CBO projections",
+        "name": "Projected debt held by the public / GDP",
+        "source": "CBO Open Data",
+        "date": "2056-09-30",
+        "current": 175.076,
+        "unit": "% GDP",
+        "riskScore": 90.74685714285714,
+        "signedZ": 1.8272082730070323,
+        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
+      },
+      {
+        "family": "CBO projections",
+        "name": "Projected net interest outlays / GDP",
+        "source": "CBO Open Data",
+        "date": "2056-09-30",
+        "current": 6.93,
+        "unit": "% GDP",
+        "riskScore": 86.975,
+        "signedZ": 1.6914269814043807,
+        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
+      },
+      {
+        "family": "CBO projections",
+        "name": "Projected federal deficit / GDP",
+        "source": "CBO Open Data",
+        "date": "2056-09-30",
+        "current": -9.134,
+        "unit": "% GDP",
+        "riskScore": 86.804,
+        "signedZ": 1.8102562259727726,
+        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
+      },
+      {
+        "family": "Global comparables",
+        "name": "Interest payments / revenue",
+        "source": "World Bank",
+        "date": "2024-12-31",
+        "current": 20.2909241993276,
+        "unit": "% revenue",
+        "riskScore": 82.22274169433395,
+        "signedZ": 2.148182779622263,
+        "rationale": "Annual cross-country comparable indicator."
+      },
+      {
+        "family": "CBO projections",
+        "name": "Projected gross federal debt / GDP",
+        "source": "CBO Open Data",
+        "date": "2056-09-30",
+        "current": 190.2,
+        "unit": "% GDP",
+        "riskScore": 77.98988252819218,
+        "signedZ": 1.8659921685461454,
+        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
+      },
+      {
+        "family": "Fiscal solvency",
+        "name": "Federal debt held by the public / GDP",
+        "source": "FRED",
+        "date": "2026-01-01",
+        "current": 98.7105,
+        "unit": "% GDP",
+        "riskScore": 76.56763372822563,
+        "signedZ": 1.7711755818817083,
+        "rationale": "Market-facing federal debt burden."
+      },
+      {
+        "family": "Treasury daily debt",
+        "name": "Total public debt outstanding",
+        "source": "US Treasury Fiscal Data",
+        "date": "2026-06-26",
+        "current": 39337.50370697653,
+        "unit": "USD bn",
+        "riskScore": 76.22981756289181,
+        "signedZ": 1.748654504192788,
+        "rationale": "Daily Treasury debt stock."
+      },
+      {
+        "family": "Private leverage",
+        "name": "Business loan delinquency rate",
+        "source": "FRED/Fed",
+        "date": "2026-01-01",
+        "current": 1.34,
+        "unit": "%",
+        "riskScore": 74.24371187943021,
+        "signedZ": 1.6162474586286804,
+        "rationale": "Business loan stress can migrate into banks and employment."
+      },
+      {
+        "family": "Treasury daily debt",
+        "name": "Debt held by the public share",
+        "source": "US Treasury Fiscal Data",
+        "date": "2026-06-26",
+        "current": 80.38352567769677,
+        "unit": "%",
+        "riskScore": 72.92135576741613,
+        "signedZ": 1.5280903844944085,
+        "rationale": "Market-facing share of Treasury debt."
+      },
+      {
+        "family": "Fiscal solvency",
+        "name": "Federal debt, total public debt / GDP",
+        "source": "FRED",
+        "date": "2026-01-01",
+        "current": 122.59387,
+        "unit": "% GDP",
+        "riskScore": 70.46688535147425,
+        "signedZ": 1.3644590234316158,
+        "rationale": "Debt stock relative to economic base."
+      }
+    ],
+    "calculation": "score_global = overall_score(bucket_scores(metrics)); value is Math.round(score.overall) from Debt Risk Radar latest.json."
+  }
+}

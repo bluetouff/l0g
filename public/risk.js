@@ -55,10 +55,57 @@
     }
   }
 
+  function hasSignal(data, key) {
+    if (!data || !Array.isArray(data.indices)) return false;
+    return data.indices.some(function (it) {
+      return it && it.key === key && it.value != null;
+    });
+  }
+
+  function mergeSignal(data, signal, updated) {
+    var base = data && typeof data === 'object' ? data : {};
+    var indices = Array.isArray(base.indices) ? base.indices.slice() : [];
+    var found = false;
+    indices = indices.map(function (it) {
+      if (it && it.key === signal.key) {
+        found = true;
+        return signal;
+      }
+      return it;
+    });
+    if (!found) indices.push(signal);
+    return {
+      updated: base.updated || updated,
+      indices: indices,
+    };
+  }
+
+  function snapshotUpdated(snapshot) {
+    if (!snapshot) return null;
+    return snapshot.generated || (snapshot.provenance && snapshot.provenance.generatedAt) || null;
+  }
+
+  function loadDebtSnapshot(data) {
+    return fetch('/debt-latest.json', { cache: 'no-store' })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (snapshot) {
+        var signal = snapshot && snapshot.signal;
+        if (!signal || signal.key !== 'debt' || signal.value == null) return data;
+        return mergeSignal(data, signal, snapshotUpdated(snapshot));
+      });
+  }
+
   fetch('/risk.json', { cache: 'no-store' })
     .then(function (r) {
       return r.ok ? r.json() : null;
     })
+    .then(function (data) {
+      return hasSignal(data, 'debt') ? data : loadDebtSnapshot(data);
+    })
     .then(render)
-    .catch(function () {});
+    .catch(function () {
+      loadDebtSnapshot(null).then(render).catch(function () {});
+    });
 })();

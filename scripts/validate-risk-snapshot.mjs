@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 
 const requiredSignals = ['us', 'eu', 'yen', 'energie', 'debt'];
 const risk = JSON.parse(readFileSync('public/risk.json', 'utf8'));
+const debtSnapshot = JSON.parse(readFileSync('public/debt-latest.json', 'utf8'));
 const riskScript = readFileSync('public/risk.js', 'utf8');
 
 if (!Array.isArray(risk.indices)) {
@@ -37,6 +38,15 @@ if (typeof debtProvenance.scoreRaw !== 'number' || typeof debtProvenance.scoreRo
 }
 if (byKey.get('debt').value !== debtProvenance.scoreRounded) {
   throw new Error('Signal debt: value doit etre egal a provenance.scoreRounded.');
+}
+if (debtSnapshot.signal?.key !== 'debt') {
+  throw new Error('public/debt-latest.json doit exposer signal.key=debt.');
+}
+if (debtSnapshot.signal.value !== debtProvenance.scoreRounded) {
+  throw new Error('public/debt-latest.json: signal.value doit etre egal a provenance.scoreRounded.');
+}
+if (debtSnapshot.provenance?.latestJsonUrl !== 'https://debt.l0g.fr/latest.json') {
+  throw new Error('public/debt-latest.json: provenance.latestJsonUrl doit pointer vers latest.json.');
 }
 
 console.log(`Risk snapshot OK: ${requiredSignals.join(', ')}`);

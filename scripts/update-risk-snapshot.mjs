@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const RISK_PATH = 'public/risk.json';
+const DEBT_SNAPSHOT_PATH = 'public/debt-latest.json';
 const DEFAULT_DEBT_URL = 'https://debt.l0g.fr/latest.json';
 const debtUrl = process.env.DEBT_RISK_LATEST_URL || DEFAULT_DEBT_URL;
 
@@ -159,4 +160,21 @@ const updated = updateRiskSnapshot(risk, latest);
 writeFileSync(RISK_PATH, `${JSON.stringify(updated, null, 2)}\n`);
 
 const debt = updated.indices.find((item) => item.key === 'debt');
+const debtProvenance = updated.provenance.debt;
+writeFileSync(
+  DEBT_SNAPSHOT_PATH,
+  `${JSON.stringify(
+    {
+      schema: 'https://l0g.fr/schemas/debt-risk-snapshot.json',
+      version: '1',
+      generated: debtProvenance.generatedAt,
+      retrievedAt: debtProvenance.retrievedAt,
+      signal: debt,
+      provenance: debtProvenance,
+    },
+    null,
+    2,
+  )}\n`,
+);
+
 console.log(`Debt Risk Radar -> ${debt.value}/100 (${debt.level}) from ${debtUrl}`);
