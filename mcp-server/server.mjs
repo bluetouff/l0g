@@ -10,8 +10,8 @@
  *   - lecture seule : aucune écriture, slugs en allowlist, taille de corps bornée.
  *   - un serveur + un transport neufs par requête (mode stateless, isolation).
  *
- * Données : lues sur le disque, dans le site déjà déployé (Agent Surface + risk.json
- * générés au build), avec un petit cache TTL. Le texte complet d'un article est
+ * Données : lues sur le disque, dans le site déjà déployé (Agent Surface, risk.json
+ * et debt-risk.json générés au build), avec un petit cache TTL. Le texte complet d'un article est
  * extrait à la demande depuis le HTML construit.
  */
 import http from 'node:http';
@@ -108,6 +108,7 @@ let cache = {
   changes: null,
   evidenceGraph: null,
   risk: null,
+  debtRisk: null,
   riskEvents: null,
   confluence: null,
 };
@@ -146,6 +147,10 @@ async function loadData() {
   try {
     risk = await readJson(dataDir, 'api/v1/risk.json');
   } catch { /* risk optionnel */ }
+  let debtRisk = null;
+  try {
+    debtRisk = await readJson(dataDir, 'api/v1/debt-risk.json');
+  } catch { /* dette US optionnelle */ }
   let riskEvents = null;
   try {
     riskEvents = await readJson(dataDir, 'risk-events.json');
@@ -154,7 +159,7 @@ async function loadData() {
   try {
     confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence };
+  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, riskEvents, confluence };
   return cache;
 }
 
@@ -900,7 +905,7 @@ function removeLiveNotificationCapabilities(server) {
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
   const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
-  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, riskEvents, confluence } = data;
+  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, riskEvents, confluence } = data;
   const dataDir = data.dataDir || DATA_DIR;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
@@ -911,7 +916,16 @@ function buildServer(data) {
   const methodologies = catalog.methodologies || [];
   const primarySources = sources.primarySources || [];
   const referenceHosts = sources.referenceHosts || [];
-  const signals = risk?.indices || {};
+  const signals = { ...(risk?.indices || {}) };
+  if (debtRisk?.signal?.key === 'debt') {
+    signals.debt = {
+      ...debtRisk.signal,
+      label: debtRisk.provenance?.label || 'Debt Risk Radar',
+      source: debtRisk.provenance?.source || `${SITE}/api/v1/debt-risk.json`,
+      methodology: debtRisk.provenance?.methodology || `${SITE}/methodologie/debt-risk-radar/`,
+      provenance: debtRisk.provenance || null,
+    };
+  }
 
   function referencesForArticle(slug) {
     const seen = new Set();
@@ -1534,7 +1548,7 @@ function buildServer(data) {
       annotations: { readOnlyHint: true },
     },
     async ({ key, limit }) => {
-      const current = risk?.indices || {};
+      const current = signals;
       let events = Array.isArray(riskEvents?.events) ? riskEvents.events.slice() : [];
       if (key) events = events.filter((event) => event.key === key);
       events.sort((a, b) => String(b.ts).localeCompare(String(a.ts)));

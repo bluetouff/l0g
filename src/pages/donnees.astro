@@ -49,6 +49,7 @@ function fr(value?: string | Date | null) {
 }
 
 const risk = readJSON<{ updated?: string; indices?: unknown[] }>('public/risk.json', { indices: [] });
+const debtRisk = readJSON<{ generated?: string }>('public/debt-latest.json', {});
 const confluence = readJSON<{ updated?: string; items?: unknown[] }>('public/confluence.json', { items: [] });
 const events = readJSON<{ updated?: string; events?: unknown[] }>('public/risk-events.json', { events: [] });
 
@@ -59,7 +60,15 @@ const datasets = [
     format: 'JSON',
     updated: risk.updated ? new Date(risk.updated) : null,
     count: `${risk.indices?.length ?? 0} indices`,
-    role: 'État courant des signaux US Macro, EU Macro, Yen Carry, Énergie et Dette US, normalisés par instrument.',
+    role: 'État courant des signaux US Macro, EU Macro, Yen Carry et Énergie, normalisés par instrument.',
+  },
+  {
+    label: 'debt-risk.json',
+    href: '/api/v1/debt-risk.json',
+    format: 'JSON',
+    updated: debtRisk.generated ? new Date(debtRisk.generated) : null,
+    count: '1 signal',
+    role: 'Snapshot canonique Dette US calculé par Debt Risk Radar, avec score, provenance, buckets, sources et top signaux.',
   },
   {
     label: 'confluence.json',
@@ -169,6 +178,7 @@ const datasets = [
 
 const files = [
   fileMeta('public/risk.json'),
+  fileMeta('public/debt-latest.json'),
   fileMeta('public/confluence.json'),
   fileMeta('public/risk-events.json'),
   fileMeta('public/robots.txt'),

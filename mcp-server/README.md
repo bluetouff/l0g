@@ -27,8 +27,9 @@ agent / client MCP
 - Le service Node **n'écoute qu'en 127.0.0.1**, jamais exposé directement.
 - Les données proviennent du **site déjà déployé** : `agents.json`, `catalog.json`,
   `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
-  `changes.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `risk-events.json`
-  et `confluence.json`. Le service ne fait que **lire** ces fichiers, avec un cache TTL de 60 s.
+  `changes.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `debt-risk.json`,
+  `risk-events.json` et `confluence.json`. Le service ne fait que **lire** ces fichiers,
+  avec un cache TTL de 60 s.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
   transport neufs par requête.
 
@@ -208,7 +209,7 @@ sur `https://l0g.fr/api/mcp`.
 ## Mises à jour
 
 - **Données** (nouvel article, indices) : automatique. Le site se redéploie, le service
-  relit `catalog.json` / `risk.json` au plus tard 60 s après.
+  relit `catalog.json`, `risk.json` et `debt-risk.json` au plus tard 60 s après.
 - **Code du serveur** :
 
 ```bash

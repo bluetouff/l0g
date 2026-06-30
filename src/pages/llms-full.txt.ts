@@ -67,20 +67,20 @@ export const GET: APIRoute = async () => {
   out.push(`URL : ${SITE}/status/`);
   out.push('-'.repeat(76));
   out.push(
-    "Page de controle public du site : date de build statique, compte des articles et guides, presence des snapshots risk.json, confluence.json et risk-events.json, liste des endpoints API et corpus machine, garanties zero tracker maison et limites de fraicheur des donnees."
+    "Page de controle public du site : date de build statique, compte des articles et guides, presence des snapshots risk.json, debt-risk.json, confluence.json et risk-events.json, liste des endpoints API et corpus machine, garanties zero tracker maison et limites de fraicheur des donnees."
   );
   out.push(SEP);
   out.push('DONNEES : Inventaire des jeux de donnees');
   out.push(`URL : ${SITE}/donnees/`);
   out.push('-'.repeat(76));
   out.push(
-    "Inventaire des snapshots publics et endpoints l0g : risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
+    "Inventaire des snapshots publics et endpoints l0g : risk.json, debt-risk.json, confluence.json, risk-events.json, catalog.json, llms.txt, llms-full.txt, rss.xml et risk.xml. Precise licence CC BY 4.0, attribution, cadence best-effort et limites de fraicheur."
   );
   out.push(
-    `Agent Surface v1.9.0 : ${SITE}/donnees/agents/ documente la surface M2M statique. Le guide pratique ${SITE}/agents/ explique comment utiliser l0g avec un agent : choix des endpoints, prompts, citations, verification, dates separees, retrievedAt nullable, indexedAt, revue humaine et MCP public. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/evidence-graph.json pour le graphe articles-claims-sources, ${SITE}/api/v1/sources.json pour le registre sources, ${SITE}/api/v1/freshness.json pour la fraicheur du corpus et des signaux, ${SITE}/api/v1/integrity.json pour les empreintes SHA-256 canoniques attestees en CI et ${SITE}/api/v1/changes.json pour le changefeed machine avec objectId, version/hash courant, statut de diff et changement semantique. Les variantes NDJSON principales sont ${SITE}/api/v1/catalog.ndjson, ${SITE}/api/v1/claims.ndjson, ${SITE}/api/v1/evidence-graph.ndjson et ${SITE}/api/v1/changes.ndjson.`
+    `Agent Surface v1.9.0 : ${SITE}/donnees/agents/ documente la surface M2M statique. Le guide pratique ${SITE}/agents/ explique comment utiliser l0g avec un agent : choix des endpoints, prompts, citations, verification, dates separees, retrievedAt nullable, indexedAt, revue humaine et MCP public. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/evidence-graph.json pour le graphe articles-claims-sources, ${SITE}/api/v1/sources.json pour le registre sources, ${SITE}/api/v1/freshness.json pour la fraicheur du corpus et des signaux, ${SITE}/api/v1/debt-risk.json pour le snapshot Dette US, ${SITE}/api/v1/integrity.json pour les empreintes SHA-256 canoniques attestees en CI et ${SITE}/api/v1/changes.json pour le changefeed machine avec objectId, version/hash courant, statut de diff et changement semantique. Les variantes NDJSON principales sont ${SITE}/api/v1/catalog.ndjson, ${SITE}/api/v1/claims.ndjson, ${SITE}/api/v1/evidence-graph.ndjson et ${SITE}/api/v1/changes.ndjson.`
   );
   out.push(
-    "Le fichier risk.json expose un tableau de bord consolide de signaux, pas un indice unique de risque systemique : les scores 0-100 sont normalises par instrument et ne sont pas statistiquement equivalents entre US Macro, Euro Macro, Yen Carry, Energie et Dette US."
+    "Le fichier risk.json expose un tableau de bord consolide de signaux, pas un indice unique de risque systemique : les scores 0-100 sont normalises par instrument et ne sont pas statistiquement equivalents entre US Macro, Euro Macro, Yen Carry et Energie. Le signal Dette US est expose par debt-risk.json, calcule depuis Debt Risk Radar latest.json avec provenance."
   );
   out.push(SEP);
   out.push('PREUVES : Changelog et artefacts verifiables');

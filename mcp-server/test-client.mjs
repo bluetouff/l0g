@@ -144,10 +144,12 @@ async function expectReadResourceFailure(uri) {
 }
 
 const risk = await call('get_risk_indices');
+if (!risk.indices?.debt) throw new Error('get_risk_indices doit exposer le signal debt.');
 console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join(','), '| snapshot:', risk.snapshot);
 
-const signalHistory = await call('get_signal_history', { key: 'yen', limit: 5 });
-console.log('get_signal_history(yen) -> events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.yen));
+const signalHistory = await call('get_signal_history', { key: 'debt', limit: 5 });
+if (!signalHistory.current?.debt) throw new Error('get_signal_history(debt) doit exposer le signal courant debt.');
+console.log('get_signal_history(debt) -> events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.debt));
 
 const manifest = await call('get_agent_manifest');
 if (!manifest.server?.version || !manifest.server?.sha) throw new Error('get_agent_manifest sans version/SHA serveur MCP');
