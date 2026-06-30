@@ -21,6 +21,7 @@ const catalog = readJson('dist/api/v1/catalog.json');
 const claims = readJson('dist/api/v1/claims.json');
 const sources = readJson('dist/api/v1/sources.json');
 const integrity = readJson('dist/api/v1/integrity.json');
+const llmsFull = readFileSync('dist/llms-full.txt', 'utf8');
 
 function validateOpenapiArtifacts() {
   const ajv = new Ajv({ strict: false, allErrors: true });
@@ -166,5 +167,14 @@ for (const article of catalog.articles || []) {
 assert(sources.registry?.version, 'sources.registry.version manquant');
 assert(sources.registry?.testPolicy, 'sources.registry.testPolicy manquant');
 assert(integrity.externalAuthenticity?.status === 'github-sigstore-attestation-configured', 'politique externalAuthenticity Sigstore manquante');
+
+const malformedGuideLinks = llmsFull
+  .split('\n')
+  .filter((line) => line.startsWith('Guide lie : '))
+  .filter((line) => !line.startsWith('Guide lie : https://l0g.fr/guides/'));
+assert(
+  malformedGuideLinks.length === 0,
+  `liens Guide lie invalides dans llms-full.txt: ${malformedGuideLinks.slice(0, 5).join(' | ')}`
+);
 
 console.log(`Agent Surface OK: ${claims.claims?.length ?? 0} claims, ${sources.primarySources?.length ?? 0} sources primaires.`);

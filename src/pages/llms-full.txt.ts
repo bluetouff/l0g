@@ -14,6 +14,19 @@ import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 const SITE = 'https://l0g.fr';
 const MAX_PER_DOC = 24000; // garde-fou par document
 
+function guideUrl(value: string): string {
+  const raw = String(value || '').trim();
+  if (/^https?:\/\//i.test(raw)) return raw;
+  const withoutLeadingSlash = raw.replace(/^\/+/, '');
+  const path = withoutLeadingSlash.startsWith('guides/')
+    ? withoutLeadingSlash
+    : `guides/${withoutLeadingSlash}`;
+  const match = path.match(/^([^?#]*)(.*)$/);
+  const base = (match?.[1] || path).replace(/\/+$/, '');
+  const suffix = match?.[2] || '';
+  return `${SITE}/${base}/${suffix}`;
+}
+
 function toPlain(md: string): string {
   return String(md || '')
     .replace(/<figure[\s\S]*?<\/figure>/gi, '') // infographies SVG
@@ -154,7 +167,7 @@ export const GET: APIRoute = async () => {
     out.push(`URL : ${SITE}${term.url}`);
     out.push(`Categorie : ${term.sectionTitle}`);
     out.push(term.def);
-    if (term.guide) out.push(`Guide lie : ${SITE}${term.guide}`);
+    if (term.guide) out.push(`Guide lie : ${guideUrl(term.guide)}`);
     out.push('');
   }
 
