@@ -5,6 +5,7 @@ summary: "La donnée on-chain regroupe les transactions et soldes inscrits publi
 pubDate: 2026-06-29T19:30:00+02:00
 updatedDate: 2026-06-29T19:30:00+02:00
 tags: ["crypto", "on-chain", "data"]
+category: crypto
 draft: false
 ---
 

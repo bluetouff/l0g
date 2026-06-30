@@ -5,6 +5,7 @@ summary: "Le rapport emploi américain (Employment Situation), publié par le BL
 pubDate: 2026-06-30T14:00:00+02:00
 updatedDate: 2026-06-30T14:00:00+02:00
 tags: ["macro", "emploi", "banques centrales"]
+category: macro
 draft: false
 ---
 

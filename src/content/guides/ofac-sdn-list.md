@@ -4,6 +4,7 @@ description: "Guide de référence sur l'OFAC et la liste des Specially Designat
 pubDate: 2026-06-21T17:00:00+02:00
 updatedDate: 2026-06-21T17:00:00+02:00
 tags: ["géopolitique", "sanctions", "crypto", "régulation", "méthodologie"]
+category: crypto
 summary: "L'OFAC est le bureau du Trésor américain qui administre les sanctions économiques. Sa liste des Specially Designated Nationals (SDN) recense les personnes et entités avec lesquelles tout ressortissant américain a interdiction de traiter, et dont les avoirs sont gelés."
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "Guide de référence sur le formulaire 4 : qui le dépose, sous qu
 pubDate: 2026-06-21T11:00:00+02:00
 updatedDate: 2026-06-21T11:00:00+02:00
 tags: ["marchés", "régulation", "flux institutionnels", "méthodologie"]
+category: marches
 summary: "Le formulaire 4 est une déclaration que les dirigeants, administrateurs et actionnaires à plus de 10 % d'une société cotée américaine doivent déposer auprès de la SEC dans les deux jours ouvrés suivant tout changement de leurs avoirs. C'est la fenêtre la plus fraîche sur les transactions d'initiés."
 draft: false
 ---

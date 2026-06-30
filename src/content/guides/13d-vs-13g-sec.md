@@ -4,6 +4,7 @@ description: "Guide de référence sur les schedules 13D et 13G de la SEC : le m
 pubDate: 2026-06-21T15:00:00+02:00
 updatedDate: 2026-06-21T15:00:00+02:00
 tags: ["marchés", "régulation", "flux institutionnels", "activisme", "méthodologie"]
+category: marches
 summary: "Les schedules 13D et 13G sont les déclarations de franchissement du seuil de 5 % du capital d'une société cotée américaine imposées par la SEC. Le 13D signale une intention d'influence, souvent activiste ; le 13G, une détention passive. La différence tient à l'intention."
 draft: false
 ---

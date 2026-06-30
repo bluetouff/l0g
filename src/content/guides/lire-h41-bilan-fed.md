@@ -4,6 +4,7 @@ description: "Guide de référence sur le H.4.1, le relevé hebdomadaire qui dé
 pubDate: 2026-06-28T17:30:00+02:00
 updatedDate: 2026-06-28T17:30:00+02:00
 tags: ["macro", "banques centrales", "liquidité", "méthodologie"]
+category: fed
 summary: "Le H.4.1 est le relevé statistique hebdomadaire de la Réserve fédérale, intitulé « Factors Affecting Reserve Balances ». Publié chaque jeudi à 16 h 30 heure de New York, sur données arrêtées au mercredi, il présente le bilan de la banque centrale : ce qu'elle détient à l'actif, ce qui absorbe la liquidité au passif, et les réserves bancaires qui en résultent."
 draft: false
 ---

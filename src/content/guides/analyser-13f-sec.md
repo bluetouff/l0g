@@ -4,6 +4,7 @@ description: "Guide de référence sur le formulaire 13F : qui dépose, quand, s
 pubDate: 2026-06-21T10:00:00+02:00
 updatedDate: 2026-06-21T10:00:00+02:00
 tags: ["marchés", "régulation", "flux institutionnels", "méthodologie"]
+category: marches
 summary: "Le formulaire 13F est une déclaration trimestrielle que la SEC impose aux gérants institutionnels exerçant un pouvoir de décision sur plus de 100 millions de dollars de titres américains éligibles. Il liste leurs positions longues, dans les 45 jours suivant la fin du trimestre."
 draft: false
 ---

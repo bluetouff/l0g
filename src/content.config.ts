@@ -29,6 +29,8 @@ const guides = defineCollection({
     ogImage: z.string().optional(),
     // Réponse définitionnelle courte, réutilisée dans le JSON-LD DefinedTerm.
     summary: z.string().optional(),
+    // Famille de classement sur la page index des guides.
+    category: z.enum(['macro', 'fed', 'marches', 'crypto']).optional(),
   }),
 });
 

@@ -4,6 +4,7 @@ description: "Guide de référence sur MiCA : les trois catégories d'actifs (EM
 pubDate: 2026-06-21T18:00:00+02:00
 updatedDate: 2026-06-21T18:00:00+02:00
 tags: ["crypto", "régulation", "stablecoins", "europe", "méthodologie"]
+category: crypto
 summary: "MiCA est le règlement européen sur les marchés de crypto-actifs, premier cadre complet au monde. Il classe les crypto-actifs en trois catégories, encadre les stablecoins (EMT et ART), impose une licence aux prestataires de services (CASP) et répartit la supervision entre autorités nationales, EBA et ESMA."
 draft: false
 ---

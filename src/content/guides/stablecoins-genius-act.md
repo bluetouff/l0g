@@ -4,6 +4,7 @@ description: "Guide de référence sur les stablecoins et le GENIUS Act : commen
 pubDate: 2026-06-21T13:00:00+02:00
 updatedDate: 2026-06-21T13:00:00+02:00
 tags: ["crypto", "stablecoins", "régulation", "macro", "méthodologie"]
+category: crypto
 summary: "Un stablecoin de paiement est un jeton numérique adossé un pour un à une monnaie, le dollar dans près de 99 % des cas, remboursable au pair. Sa valeur ne tient qu'à ses réserves. Le GENIUS Act, promulgué en juillet 2025, en fixe les règles aux États-Unis."
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "Guide de référence sur le crédit privé : sa nature, les raison
 pubDate: 2026-06-21T12:00:00+02:00
 updatedDate: 2026-06-21T12:00:00+02:00
 tags: ["crédit privé", "macro", "shadow banking", "régulation", "méthodologie"]
+category: marches
 summary: "Le crédit privé désigne les prêts accordés directement par des gérants non bancaires à des entreprises, sans cotation ni marché secondaire actif. Marché de l'ordre de 1 300 milliards de dollars aux États-Unis, il échange de la transparence et de la liquidité contre du rendement."
 draft: false
 ---

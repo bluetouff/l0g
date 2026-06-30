@@ -5,6 +5,7 @@ summary: "Les données TIC (Treasury International Capital) sont le relevé du T
 pubDate: 2026-06-30T11:00:00+02:00
 updatedDate: 2026-06-30T11:00:00+02:00
 tags: ["macro", "dette", "dédollarisation"]
+category: fed
 draft: false
 ---
 

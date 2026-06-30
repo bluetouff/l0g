@@ -4,24 +4,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { readingTime } from '../../lib/reading-time.ts';
 
-const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort((a, b) => {
+// Familles de guides : ordre d'affichage, libellé, dossier (label terminal) et couleur de charte.
+const CATEGORIES = [
+  { key: 'macro',   label: 'Données macro',                 dir: 'macro',   accent: 'var(--color-signal)' },
+  { key: 'fed',     label: 'Fed, dette & liquidité',        dir: 'fed',     accent: 'var(--color-amber)' },
+  { key: 'marches', label: 'Marchés, SEC & positionnement', dir: 'marches', accent: 'var(--color-muted)' },
+  { key: 'crypto',  label: 'Crypto & régulation',           dir: 'crypto',  accent: 'var(--color-accent)' },
+];
+
+const all = (await getCollection('guides', ({ data }) => !data.draft)).sort((a, b) => {
   const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
   const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
   return db - da;
 });
 
-const items = guides.map((g) => ({
+const toItem = (g) => ({
   id: g.id,
   title: g.data.title,
   description: g.data.description,
   date: g.data.updatedDate ?? g.data.pubDate,
   rt: readingTime(g.body),
-}));
+});
+
+const groups = CATEGORIES
+  .map((c) => ({ ...c, items: all.filter((g) => g.data.category === c.key).map(toItem) }))
+  .filter((g) => g.items.length > 0);
+
+// Filet de sécurité : tout guide sans famille connue est regroupé en fin de page.
+const known = new Set(CATEGORIES.map((c) => c.key));
+const others = all.filter((g) => !known.has(g.data.category)).map(toItem);
+if (others.length) {
+  groups.push({ key: 'autres', label: 'Autres', dir: 'autres', accent: 'var(--color-muted)', items: others });
+}
+
+const total = all.length;
 ---
 
 <BaseLayout
   title="Guides de référence"
-  description="Guides de référence l0g : des pages piliers longues et sourcées, conçues pour être la source canonique citée par les agents et les moteurs de réponse. Méthodologie, données primaires, dernière révision datée."
+  description="Guides de référence l0g : des pages piliers longues et sourcées, conçues pour être la source canonique citée par les agents et les moteurs de réponse. Rangées par famille : données macro, Fed et liquidité, marchés et SEC, crypto et régulation."
 >
   <section class="rise border-b border-dashed border-line pb-10">
     <p class="mono-label" style="color: var(--color-signal)">$ ls /guides</p>
@@ -32,28 +53,59 @@ const items = guides.map((g) => ({
       Des pages longues, sourcées sur données primaires, pensées pour durer.
       Là où un article date un événement, un guide définit une notion et la
       tient à jour : la source que l'on garde en favori, et que les agents
-      citent. Chaque guide porte une date de dernière révision.
+      citent. {total} guides, rangés par famille, chacun daté de sa dernière
+      révision.
     </p>
   </section>
 
   {
-    items.length === 0 ? (
+    groups.length === 0 ? (
       <p class="mt-10 text-muted">Aucun guide publié pour l'instant.</p>
     ) : (
-      <section class="pb-4 pt-2">
-        {items.map((g, i) => (
-          <PostCard
-            url={`/guides/${g.id}/`}
-            title={g.title}
-            description={g.description}
-            pubDate={g.date}
-            readingTime={g.rt}
-            index={i + 1}
-            accent="var(--color-signal)"
-            accentLabel="guide"
-          />
-        ))}
-      </section>
+      groups.map((cat) => (
+        <section class="cat rise">
+          <header class="cat-head">
+            <p class="mono-label cat-cmd" style={`color:${cat.accent}`}>
+              $ ls /guides/{cat.dir}
+            </p>
+            <span class="mono-label cat-count">
+              {cat.items.length} {cat.items.length > 1 ? 'guides' : 'guide'}
+            </span>
+          </header>
+          <p class="cat-label">{cat.label}</p>
+          {cat.items.map((g, i) => (
+            <PostCard
+              url={`/guides/${g.id}/`}
+              title={g.title}
+              description={g.description}
+              pubDate={g.date}
+              readingTime={g.rt}
+              index={i + 1}
+              accent={cat.accent}
+              accentLabel="guide"
+            />
+          ))}
+        </section>
+      ))
     )
   }
 </BaseLayout>
+
+<style>
+  .cat { padding-top: 2.6rem; }
+  .cat-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .cat-count { color: var(--color-muted); }
+  .cat-label {
+    margin: 0.35rem 0 0.4rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px dashed var(--color-line);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+  }
+</style>

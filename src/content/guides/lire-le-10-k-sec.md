@@ -4,6 +4,7 @@ description: "Guide de référence pour lire un formulaire 10-K : la carte du do
 pubDate: 2026-06-21T16:00:00+02:00
 updatedDate: 2026-06-21T16:00:00+02:00
 tags: ["marchés", "régulation", "analyse fondamentale", "méthodologie"]
+category: marches
 summary: "Le formulaire 10-K est le rapport annuel qu'une société cotée américaine dépose auprès de la SEC. Document dense et normalisé, il se lit par priorités : discussion de la direction, facteurs de risque, notes aux comptes."
 draft: false
 ---

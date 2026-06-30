@@ -5,6 +5,7 @@ summary: "Le dot plot est le nuage de points du Summary of Economic Projections 
 pubDate: 2026-06-30T12:30:00+02:00
 updatedDate: 2026-06-30T12:30:00+02:00
 tags: ["macro", "banques centrales", "Fed"]
+category: fed
 draft: false
 ---
 

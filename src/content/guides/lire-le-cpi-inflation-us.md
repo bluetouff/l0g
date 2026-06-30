@@ -5,6 +5,7 @@ summary: "Le CPI (Consumer Price Index) est l'indice des prix à la consommation
 pubDate: 2026-06-29T18:00:00+02:00
 updatedDate: 2026-06-29T18:00:00+02:00
 tags: ["macro", "inflation", "banques centrales"]
+category: macro
 draft: false
 ---
 

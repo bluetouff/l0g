@@ -4,6 +4,7 @@ description: "Guide de référence sur la liquidité du système financier : les
 pubDate: 2026-06-21T14:00:00+02:00
 updatedDate: 2026-06-21T14:00:00+02:00
 tags: ["macro", "banques centrales", "liquidité", "trésor", "méthodologie"]
+category: fed
 summary: "La liquidité nette est un indicateur que suivent les marchés, construit à partir du bilan de la Réserve fédérale diminué du compte du Trésor américain (TGA) et des prises en pension inversées (RRP). C'est un proxy utile de la liquidité disponible, à condition d'en connaître les limites."
 draft: false
 ---

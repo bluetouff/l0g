@@ -5,6 +5,7 @@ summary: "La M2 est l'agrégat monétaire large de la Fed : la monnaie et les d�
 pubDate: 2026-06-29T15:30:00+02:00
 updatedDate: 2026-06-29T15:30:00+02:00
 tags: ["macro", "banques centrales", "crypto", "liquidité"]
+category: macro
 draft: false
 ---
 

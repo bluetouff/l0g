@@ -4,6 +4,7 @@ description: "Guide de référence sur le Commitments of Traders, le relevé heb
 pubDate: 2026-06-28T15:00:00+02:00
 updatedDate: 2026-06-28T15:00:00+02:00
 tags: ["marchés", "flux institutionnels", "matières premières", "méthodologie"]
+category: marches
 summary: "Le Commitments of Traders est un relevé hebdomadaire publié par la CFTC qui détaille, par catégorie d'intervenant, les positions ouvertes sur les marchés à terme américains. Il est publié chaque vendredi à 15 h 30, heure de New York, sur des données arrêtées au mardi précédent. Bien lu, il montre où se tient l'argent spéculatif et où se tiennent les couvreurs ; mal lu, il induit en erreur."
 draft: false
 ---
