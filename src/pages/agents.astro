@@ -7,6 +7,7 @@ const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const trustItems = [
   { label: 'agents.json', href: '/agents.json' },
   { label: 'OpenAPI', href: '/openapi.json' },
+  { label: 'backtests', href: '/backtests/' },
   { label: 'MCP public', href: '/mcp/' },
   { label: 'preuves', href: '/preuves/' },
 ];
@@ -43,6 +44,11 @@ const surfaces = [
     use: 'Flux machine pour suivre publications, révisions et changements éditoriaux.',
   },
   {
+    need: 'Backtester les signaux',
+    endpoint: '/api/v1/signals/history.csv',
+    use: 'Observations point-in-time à plat, plus exports JSON et NDJSON, pour rejouer les signaux sans look-ahead bias.',
+  },
+  {
     need: 'Fraîcheur',
     endpoint: '/api/v1/freshness.json',
     use: 'Derniers contenus, endpoints et temporalité des signaux : observedAt, computedAt, expiration et couverture.',
@@ -64,6 +70,7 @@ const flow = [
   'Vérifier /api/v1/freshness.json avant de répondre à une question sensible au temps ou aux signaux de marché.',
   'Utiliser /api/v1/catalog.ndjson pour trouver les documents pertinents.',
   'Utiliser /api/v1/claims.json ou /api/v1/evidence-graph.json pour relier une affirmation à sa preuve.',
+  'Utiliser /api/v1/signals/history.csv ou .ndjson pour backtester les signaux point-in-time.',
   'Citer l’URL canonique, la date de publication ou de source, et le type de claim.',
   'Pour un suivi continu, consommer /api/v1/changes.ndjson plutôt que rescanner tout le site.',
 ];
@@ -84,6 +91,11 @@ const prompts = [
     text:
       'Surveille /api/v1/changes.ndjson. Ne retraite que les entrées nouvelles ou révisées. Si une réponse dépend d’un snapshot figé, vérifie son empreinte dans /api/v1/integrity.json.',
   },
+  {
+    label: 'backtest',
+    text:
+      'Pour évaluer un signal l0g dans le temps, utilise /api/v1/signals/history.csv ou /api/v1/signals/history.ndjson. Ne reconstitue pas une valeur après coup : conserve observedAt, retrievedAt, computedAt, level et levelChange.',
+  },
 ];
 
 const rules = [
@@ -97,6 +109,7 @@ const rules = [
 const curlExamples = [
   'curl -s https://l0g.fr/agents.json',
   'curl -s https://l0g.fr/api/v1/freshness.json',
+  'curl -s https://l0g.fr/api/v1/signals/history.ndjson | head',
   'curl -s https://l0g.fr/api/v1/catalog.ndjson | head',
   'curl -s https://l0g.fr/api/v1/evidence-graph.json',
 ];
@@ -107,7 +120,7 @@ const jsonLd = {
   '@id': `${site}/agents/#guide`,
   headline: 'Utiliser l0g avec un agent',
   description:
-    'Guide pratique pour connecter un agent IA à l0g.fr : MCP, Agent Surface, OpenAPI, NDJSON, evidence graph, citations et vérification.',
+    'Guide pratique pour connecter un agent IA à l0g.fr : MCP, Agent Surface, OpenAPI, NDJSON, evidence graph, historique des signaux, citations et vérification.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -118,7 +131,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
 <BaseLayout
   title="Utiliser l0g avec un agent"
-  description="Guide pratique pour connecter un agent IA à l0g.fr : MCP public, Agent Surface, OpenAPI, NDJSON, evidence graph, citations et vérification."
+  description="Guide pratique pour connecter un agent IA à l0g.fr : MCP public, Agent Surface, OpenAPI, NDJSON, evidence graph, historique des signaux, citations et vérification."
   ogImage="/og-donnees.png"
   ogImageAlt="Utiliser l0g avec un agent : MCP, Agent Surface et evidence graph"
   sidebar={false}
@@ -131,7 +144,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <h1 class="guide-title font-display glow">Utiliser l0g avec un agent</h1>
       <p class="guide-lede">
         l0g expose désormais une surface machine lisible sans scraping : manifeste,
-        contrat OpenAPI, flux NDJSON, evidence graph, claims sourcées, fraîcheur,
+        contrat OpenAPI, flux NDJSON, evidence graph, claims sourcées, historique
+        point-in-time des signaux, fraîcheur,
         intégrité et MCP public. L’objectif n’est pas de faire parler un agent plus vite,
         mais de l’obliger à conserver la source, la date et le niveau de preuve.
       </p>

@@ -11,6 +11,7 @@ const commands = [
   'open preuves',
   'open sources-primaires',
   'open methodologie',
+  'open backtests',
   'open api',
   'curl risk',
   'whoami',
@@ -22,7 +23,7 @@ const jsonLd = {
   '@id': 'https://l0g.fr/terminal/#terminal',
   name: 'Terminal l0g',
   description:
-    'Interface terminal de navigation dans l0g : manifeste, méthodologie, dashboards, API, sources et corpus machine.',
+    'Interface terminal de navigation dans l0g : manifeste, méthodologie, backtests, dashboards, API, sources et corpus machine.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
   publisher: { '@id': 'https://l0g.fr/#org' },
@@ -32,7 +33,7 @@ const jsonLd = {
 
 <BaseLayout
   title="Terminal"
-  description="Interface terminal de navigation dans l0g : manifeste, méthodologie, dashboards, API, sources, corpus machine et raccourcis utiles."
+  description="Interface terminal de navigation dans l0g : manifeste, méthodologie, backtests, dashboards, API, sources, corpus machine et raccourcis utiles."
   ogImage="/og-terminal.png"
   ogImageAlt="Terminal l0g : interface de navigation en ligne de commande"
   sidebar={false}
@@ -52,7 +53,7 @@ const jsonLd = {
       <div class="terminal-screen" id="terminal-screen" aria-live="polite">
         <p><span class="prompt">bluetouff@l0g:~$</span> <span class="cmd">boot l0g</span></p>
         <p class="out">risk intelligence shell · build statique · sources publiques</p>
-        <p class="out muted">help · ls · cat manifeste · open dashboards · curl risk</p>
+        <p class="out muted">help · ls · cat manifeste · open backtests · curl risk</p>
       </div>
 
       <form class="terminal-input" id="terminal-form" autocomplete="off">
@@ -87,6 +88,10 @@ const jsonLd = {
           <span>méthodologie</span>
           <strong>formules & limites</strong>
         </a>
+        <a href="/backtests/">
+          <span>backtests</span>
+          <strong>historique signaux</strong>
+        </a>
         <a href="/dashboards/">
           <span>dashboards</span>
           <strong>outils de monitoring</strong>
@@ -114,6 +119,7 @@ const jsonLd = {
         about: '/about/',
         api: '/api/',
         agents: '/agents/',
+        backtests: '/backtests/',
         dashboards: '/dashboards/',
         donnees: '/donnees/',
         guides: '/guides/',
@@ -132,7 +138,7 @@ const jsonLd = {
           'help             affiche les commandes',
           'ls               liste les espaces l0g',
           'cat manifeste    résume le pacte de lecture',
-          'open <cible>     ouvre manifeste, dashboards, donnees, agents, preuves, methodologie, api, sources, sources-primaires, status',
+          'open <cible>     ouvre manifeste, dashboards, donnees, agents, preuves, methodologie, backtests, api, sources, sources-primaires, status',
           'curl risk        pointe vers les endpoints JSON principaux',
           'whoami           identifie le projet',
           'clear            nettoie le terminal',
@@ -144,6 +150,7 @@ const jsonLd = {
           '<a href="/agents/">agents</a>        utiliser l0g avec un agent',
           '<a href="/preuves/">preuves</a>       changelog et artefacts',
           '<a href="/methodologie/">methodologie</a> formules, seuils, limites',
+          '<a href="/backtests/">backtests</a>    historique point-in-time des signaux',
           '<a href="/guides/">guides</a>          pages de référence',
           '<a href="/api/">api</a>             endpoints JSON, XML, catalogue',
           '<a href="/sites-reference/">sources</a>         bibliothèque de sources',
@@ -160,6 +167,7 @@ const jsonLd = {
           '<a href="/api/v1/catalog.json">GET /api/v1/catalog.json</a>',
           '<a href="/api/v1/evidence-graph.json">GET /api/v1/evidence-graph.json</a>',
           '<a href="/api/v1/changes.ndjson">GET /api/v1/changes.ndjson</a>',
+          '<a href="/api/v1/signals/history.csv">GET /api/v1/signals/history.csv</a>',
           '<a href="/api/v1/risk.xml">GET /api/v1/risk.xml</a>',
         ],
         whoami: [
@@ -233,7 +241,7 @@ const jsonLd = {
             print(['open <a href="' + href + '">' + escapeText(href) + '</a>']);
             window.location.href = href;
           } else {
-            printText(['cible inconnue : ' + target, 'essayez : open manifeste · open dashboards · open agents · open api']);
+            printText(['cible inconnue : ' + target, 'essayez : open manifeste · open dashboards · open backtests · open api']);
           }
           return;
         }

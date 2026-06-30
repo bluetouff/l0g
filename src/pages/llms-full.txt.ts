@@ -60,7 +60,7 @@ export const GET: APIRoute = async () => {
   out.push(`URL : ${SITE}/terminal/`);
   out.push('-'.repeat(76));
   out.push(
-    "Interface de navigation en ligne de commande pour explorer l0g : help, ls, cat manifeste, open dashboards, open methodologie, open api, curl risk. Elle donne un acces rapide aux pages de methode, aux outils, aux sources, a l'API et au corpus machine."
+    "Interface de navigation en ligne de commande pour explorer l0g : help, ls, cat manifeste, open dashboards, open methodologie, open backtests, open api, curl risk. Elle donne un acces rapide aux pages de methode, a l'historique des signaux, aux outils, aux sources, a l'API et au corpus machine."
   );
   out.push(SEP);
   out.push('STATUS : Statut & intégrité');

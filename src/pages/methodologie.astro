@@ -15,6 +15,7 @@ const accentVar: Record<string, string> = {
 
 const trustItems = [
   { label: 'formules exposées', href: '#bandeau-signaux-risque' },
+  { label: 'backtests', href: '/backtests/' },
   { label: 'sources primaires', href: '/sites-reference/' },
   { label: 'limites assumées', href: '#la-confluence-13f-form-4' },
   { label: 'pas un conseil' },
@@ -23,7 +24,7 @@ const trustItems = [
 
 <BaseLayout
   title="Méthodologie"
-  description="Comment l0g calcule ses signaux de risque : bandeau consolidé de signaux, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
+  description="Comment l0g calcule ses signaux de risque : bandeau consolidé, historique point-in-time pour backtests, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
 >
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// méthodologie</p>
@@ -41,7 +42,9 @@ const trustItems = [
       consolidé de signaux de risque en page d'accueil, et le classement de confluence repris de
       13FLOW dans la colonne de droite. Tout est calculé sur des données publiques,
       côté serveur, et figé dans des fichiers JSON servis depuis l0g.fr. Le navigateur
-      ne contacte aucun tiers.
+      ne contacte aucun tiers. La page <a class="link-term" href="/backtests/">backtests</a>
+      expose aussi les observations point-in-time en JSON, NDJSON et CSV pour rejouer ce qui
+      était visible à une date donnée.
     </p>
 
     <TrustBar items={trustItems} />
@@ -70,6 +73,38 @@ const trustItems = [
           </a>
         ))
       }
+    </div>
+  </section>
+
+  <section class="mt-14" id="historique-backtests" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// historique & backtests</p>
+    <p class="m-p">
+      Les signaux publiés ne sont pas seulement des valeurs courantes. l0g conserve un
+      historique d'observations horodatées pour permettre l'audit, le replay et les backtests
+      sans biais de regard vers le futur. La granularité est celle des snapshots disponibles :
+      on teste donc ce qui était exposé publiquement, pas une série reconstruite après coup.
+    </p>
+    <div class="history-grid">
+      <a class="history-card" href="/backtests/">
+        <span>page publique</span>
+        <strong>/backtests/</strong>
+        <em>lecture humaine, couverture, garde-fous et exemples pandas</em>
+      </a>
+      <a class="history-card" href="/api/v1/signals/history.csv">
+        <span>table plate</span>
+        <strong>/api/v1/signals/history.csv</strong>
+        <em>format pratique pour R, pandas, DuckDB ou tableur</em>
+      </a>
+      <a class="history-card" href="/api/v1/signals/history.ndjson">
+        <span>flux agents</span>
+        <strong>/api/v1/signals/history.ndjson</strong>
+        <em>observations et événements ligne à ligne</em>
+      </a>
+      <a class="history-card" href="/api/v1/signals/schema.json">
+        <span>contrat</span>
+        <strong>/api/v1/signals/schema.json</strong>
+        <em>types, champs et conventions de dates</em>
+      </a>
     </div>
   </section>
 
@@ -452,6 +487,51 @@ valeur bandeau = arrondi(score.overall depuis latest.json)</code></pre>
       color: var(--color-muted);
     }
     .tool-card:hover .tool-a { color: var(--c); }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+      max-width: 48rem;
+    }
+    @media (min-width: 760px) {
+      .history-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .history-card {
+      display: grid;
+      gap: 0.4rem;
+      min-height: 8.8rem;
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      padding: 0.95rem 1rem;
+      background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+      transition: border-color 0.16s, background 0.16s, transform 0.16s;
+    }
+    .history-card:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 50%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+      transform: translateY(-1px);
+    }
+    .history-card span {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-signal);
+    }
+    .history-card strong {
+      color: var(--color-bright);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      overflow-wrap: anywhere;
+    }
+    .history-card em {
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      font-style: normal;
+      line-height: 1.5;
+    }
 
     /* Indices en cartes */
     .idx-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.4rem; max-width: 46rem; }

@@ -47,6 +47,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
 const trustItems = [
   { label: 'sources primaires', href: '#sources' },
+  { label: 'backtests', href: '/backtests/' },
   { label: 'code ouvert', href: page.repoUrl },
   { label: 'limites assumées', href: '#interpreter' },
   { label: 'pas un conseil', href: '#reproductibilite' },
@@ -65,6 +66,7 @@ const trustItems = [
       <div class="method-actions" data-pagefind-ignore>
         <a class="method-action primary" href={page.dashboardUrl} target="_blank" rel="noopener">ouvrir l'outil</a>
         <a class="method-action" href={page.repoUrl} target="_blank" rel="noopener">code source</a>
+        <a class="method-action" href="/backtests/">backtests</a>
         <a class="method-action" href="/methodologie/">hub méthodo</a>
       </div>
       <p class="method-updated" data-pagefind-ignore>
@@ -178,6 +180,14 @@ const trustItems = [
       <ul class="method-list repro">
         {page.reproducibility.map((item) => <li>{item}</li>)}
       </ul>
+      <p class="method-p">
+        L'historique public des signaux est disponible sur
+        <a class="link-term" href="/backtests/">/backtests/</a>, avec exports
+        <a class="link-term" href="/api/v1/signals/history.csv">CSV</a>,
+        <a class="link-term" href="/api/v1/signals/history.ndjson">NDJSON</a> et
+        <a class="link-term" href="/api/v1/signals/schema.json">schéma JSON</a>
+        pour auditer les observations point-in-time.
+      </p>
       <p class="method-disclaimer" data-pagefind-ignore>
         Cette fiche décrit un instrument de lecture, pas un système de décision. Les scores
         réduisent le bruit ; ils ne remplacent ni les sources primaires ni le jugement.

@@ -44,7 +44,7 @@ export const GET: APIRoute = async () => {
     `- [Manifeste l0g](${SITE}/manifeste/): pacte de lecture du projet : sources primaires, code ouvert, auto-hebergement, limites assumees, zero tracker.`
   );
   lines.push(
-    `- [Terminal l0g](${SITE}/terminal/): interface de navigation en ligne de commande vers manifeste, methodologie, dashboards, API, sources et corpus machine.`
+    `- [Terminal l0g](${SITE}/terminal/): interface de navigation en ligne de commande vers manifeste, methodologie, backtests, dashboards, API, sources et corpus machine.`
   );
   lines.push(
     `- [Statut & intégrité](${SITE}/status/): état public du build statique, des snapshots, des endpoints, du corpus machine et des garanties de tracking.`
