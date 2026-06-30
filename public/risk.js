@@ -2,6 +2,17 @@
    Servi depuis l'origine du site (self) -> compatible CSP stricte.
    Aucun appel tiers : le navigateur ne lit qu'un fichier local de l0g.fr. */
 (function () {
+  var FALLBACK = {
+    updated: '2026-06-30T10:47:37Z',
+    indices: [
+      { key: 'us', value: 58, scale: 100, level: 'Élevé', tone: 'elevated' },
+      { key: 'eu', value: 47, scale: 100, level: 'Modéré', tone: 'moderate' },
+      { key: 'yen', value: 41, scale: 100, level: 'Modéré', tone: 'moderate' },
+      { key: 'energie', value: 58, scale: 100, level: 'Tendu', tone: 'elevated' },
+      { key: 'debt', value: 61, scale: 100, level: 'Élevé', tone: 'elevated' },
+    ],
+  };
+
   var TONE = {
     calm: '#5eead4',     // teal — détendu
     moderate: '#f5b13d', // ambre — modéré
@@ -16,8 +27,26 @@
     return Math.max(0, Math.min(100, p));
   }
 
+  function mergeWithFallback(data) {
+    var byKey = {};
+    FALLBACK.indices.forEach(function (it) {
+      byKey[it.key] = it;
+    });
+    if (data && Array.isArray(data.indices)) {
+      data.indices.forEach(function (it) {
+        if (it && it.key) byKey[it.key] = it;
+      });
+    }
+    return {
+      updated: data && data.updated ? data.updated : FALLBACK.updated,
+      indices: FALLBACK.indices.map(function (it) {
+        return byKey[it.key];
+      }),
+    };
+  }
+
   function render(data) {
-    if (!data || !Array.isArray(data.indices)) return;
+    data = mergeWithFallback(data);
     data.indices.forEach(function (it) {
       var tile = document.querySelector('[data-risk="' + it.key + '"]');
       if (!tile) return;
@@ -53,6 +82,8 @@
       } catch (e) {}
     }
   }
+
+  render(FALLBACK);
 
   fetch('/risk.json', { cache: 'no-store' })
     .then(function (r) {
