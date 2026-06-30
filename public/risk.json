@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T12:22:06Z",
+  "updated": "2026-06-30T14:52:18Z",
   "indices": [
     {
       "key": "us",
@@ -45,10 +45,10 @@
       "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
       "calculator": "https://github.com/bluetouff/debt-risk-radar",
       "calculatorRevision": null,
-      "generatedAt": "2026-06-30T12:22:06Z",
-      "retrievedAt": "2026-06-30T12:26:35.039Z",
+      "generatedAt": "2026-06-30T14:52:18Z",
+      "retrievedAt": "2026-06-30T14:54:07.554Z",
       "schemaVersion": "1.0",
-      "scoreRaw": 57.21859856467192,
+      "scoreRaw": 57.16279912968447,
       "scoreRounded": 57,
       "status": "Elevated",
       "issues": [],
@@ -120,7 +120,7 @@
         {
           "key": "rates_market",
           "label": "Rates and market stress",
-          "score": 48.498000616047555,
+          "score": 48.18800375500618,
           "status": "Calm",
           "weight": 0.18,
           "metrics": 7
@@ -193,9 +193,9 @@
         },
         {
           "source": "FRED/ICE BofA",
-          "latestDate": "2026-06-26",
+          "latestDate": "2026-06-29",
           "metrics": 2,
-          "maxRisk": 37.5332808411829
+          "maxRisk": 36.565506988294736
         },
         {
           "source": "FRED/Chicago Fed",

@@ -41,7 +41,7 @@ export const riskBandScaleCaveat = {
   correctLabel: 'tableau de bord consolidé de signaux de risque',
   wrongLabel: 'indice consolidé de risque systémique',
   details: [
-    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45, Énergie de 47 ou Dette US de 61.',
+    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45, Énergie de 47 ou Dette US de 57.',
     'Le chiffre sert à comparer un instrument à son propre régime, pas à comparer directement les instruments entre eux.',
     'Le libellé et la fiche méthodologique de chaque dashboard priment sur le chiffre isolé.',
   ],
