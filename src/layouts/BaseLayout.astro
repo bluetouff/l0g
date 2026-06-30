@@ -99,6 +99,22 @@ function isCurrentHref(href: string): boolean {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
+    {/* Thème clair/sombre : résolution avant le premier paint (anti-flash). */}
+    <script is:inline>
+      (function () {
+        try {
+          var k = 'l0g-theme';
+          var s = localStorage.getItem(k);
+          var t = (s === 'light' || s === 'dark')
+            ? s
+            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -144,6 +160,16 @@ function isCurrentHref(href: string): boolean {
           <a href="/terminal/" class="header-terminal" aria-current={isCurrentHref('/terminal/') ? 'page' : undefined}>
             <span aria-hidden="true">$</span> terminal
           </a>
+
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre" aria-pressed="false">
+            <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
 
           <div class="header-signal" aria-hidden="true" role="presentation">
             <svg viewBox="0 0 480 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -368,6 +394,25 @@ function isCurrentHref(href: string): boolean {
     <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
     <script src="/pagefind-init.js" is:inline></script>
+
+    {/* Bascule de thème : addEventListener (CSP script-src-attr 'none'). */}
+    <script is:inline>
+      (function () {
+        var k = 'l0g-theme';
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        function cur() {
+          return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        }
+        btn.setAttribute('aria-pressed', cur() === 'light' ? 'true' : 'false');
+        btn.addEventListener('click', function () {
+          var next = cur() === 'light' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', next);
+          btn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+          try { localStorage.setItem(k, next); } catch (e) {}
+        });
+      })();
+    </script>
     <style>
       .topbar, .footer-grad {
         height: 2px; width: 100%;
