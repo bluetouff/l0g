@@ -96,6 +96,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'APIs ouvertes et marché, à chaque consultation',
     stack: 'Streamlit · Python · systemd · Apache',
     repo: 'https://github.com/bluetouff/debt-risk-radar',
+    preview: '/preview/debt.png',
   },
   {
     label: '13FLOW',
