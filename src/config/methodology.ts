@@ -368,11 +368,11 @@ export const methodologyPages: MethodologyPage[] = [
         url: 'https://www.cbo.gov/data/budget-economic-data',
       },
       {
-        name: 'Eurostat',
-        role: 'Dette Maastricht et solde public pour comparer la zone européenne sur base institutionnelle.',
-        cadence: 'Trimestrielle',
-        delay: 'Publication Eurostat',
-        url: 'https://ec.europa.eu/eurostat',
+        name: 'World Bank Open Data',
+        role: 'Comparables internationaux annuels, notamment dette, croissance et agrégats macro.',
+        cadence: 'Annuelle',
+        delay: 'Variable selon pays et indicateur',
+        url: 'https://data.worldbank.org/',
       },
       {
         name: 'Massive Market Data',
@@ -380,13 +380,6 @@ export const methodologyPages: MethodologyPage[] = [
         cadence: 'À chaque consultation si clé configurée',
         delay: 'Selon couverture de marché',
         url: 'https://massive.com/',
-      },
-      {
-        name: 'World Bank Open Data',
-        role: 'Comparables internationaux annuels, notamment dette, croissance et agrégats macro.',
-        cadence: 'Annuelle',
-        delay: 'Variable selon pays et indicateur',
-        url: 'https://data.worldbank.org/',
       },
     ],
     calculation: [

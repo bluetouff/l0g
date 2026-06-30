@@ -92,7 +92,7 @@ export const dashboards: Dashboard[] = [
     slug: 'debt-risk-radar',
     beta: true,
     question: 'Dette publique, crédit privé, projections budgétaires et signaux de marché : où le risque de dette se tend-il ?',
-    sources: ['US Treasury Fiscal Data', 'FRED', 'BIS', 'CBO', 'Eurostat', 'Massive Market Data'],
+    sources: ['US Treasury Fiscal Data', 'FRED', 'BIS', 'CBO', 'World Bank Open Data', 'Massive Market Data'],
     cadence: 'APIs ouvertes et marché, à chaque consultation',
     stack: 'Streamlit · Python · systemd · Apache',
     repo: 'https://github.com/bluetouff/debt-risk-radar',
