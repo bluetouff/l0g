@@ -1,8 +1,9 @@
 ---
 /**
  * Bandeau consolidé de signaux : indices repris des dashboards.
- * Les valeurs sont lues côté navigateur dans /risk.json (origine self,
- * aucun appel externe). Couleur par niveau de risque pour que ça saute aux yeux.
+ * Les valeurs sont lues côté navigateur dans /risk.json et /debt-latest.json
+ * (origine self, aucun appel externe). Couleur par niveau de risque pour que
+ * ça saute aux yeux.
  */
 const items = [
   { key: 'us', label: 'US Macro', href: 'https://us.l0g.fr' },
@@ -49,7 +50,7 @@ const items = [
   </p>
 </section>
 
-<script src="/risk.js" is:inline></script>
+<script src="/risk.js?v=20260630-debt" is:inline></script>
 
 <style>
   .risk-track {
