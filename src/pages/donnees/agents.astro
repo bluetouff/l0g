@@ -131,6 +131,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         empreintes et contrat OpenAPI. La promesse est
         simple : un agent doit pouvoir citer une affirmation sans perdre la source, claimDate,
         observationDate, sourcePublicationDate, retrievedAt, indexedAt et le niveau de lecture.
+        Pour les signaux de risque, le contrat conserve aussi les limites de modèle : Dette US publie
+        un stress courant hors CBO et une couverture de buckets lorsque le snapshot amont la fournit.
       </p>
       <TrustBar items={trustItems} />
     </section>

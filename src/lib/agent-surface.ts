@@ -308,7 +308,7 @@ export function buildOpenApiContract() {
       '/api/v1/changes.json': openApiEndpoint('Changefeed', 'Flux machine des publications, révisions et politiques, avec version courante, hash, statut de diff et changement sémantique.', 'ChangefeedSurface'),
       '/api/v1/changes.ndjson': openApiNdjsonEndpoint('Changefeed NDJSON', 'Changefeed machine en lignes NDJSON, une publication ou révision par ligne.'),
       '/api/v1/risk.json': openApiEndpoint('Signaux de risque', 'Snapshots des dashboards de risque et caveats de normalisation.', 'RiskSnapshot'),
-      '/api/v1/debt-risk.json': openApiEndpoint('Dette US', 'Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json, avec score, provenance, buckets, sources et top signaux.', 'DebtRiskSnapshot'),
+      '/api/v1/debt-risk.json': openApiEndpoint('Dette US', 'Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json, avec stress courant hors CBO, couverture, provenance, buckets, sources et top signaux.', 'DebtRiskSnapshot'),
       '/api/v1/signals/current.json': openApiEndpoint('Signaux courants', 'Dernières observations point-in-time par instrument, dérivées de l’historique public.', 'SignalCurrentSurface'),
       '/api/v1/signals/history.json': openApiEndpoint('Historique des signaux', 'Observations point-in-time, alertes de franchissement, couverture et politique de backtest.', 'SignalHistorySurface'),
       '/api/v1/signals/history.ndjson': openApiNdjsonEndpoint('Historique des signaux NDJSON', 'Historique des signaux ligne à ligne : meta, observations puis événements de seuil.'),
@@ -1777,6 +1777,8 @@ export function buildOpenApiContract() {
             scoreRaw: { type: 'number' },
             scoreRounded: { type: 'number' },
             status: { type: 'string' },
+            coverage: { type: ['number', 'null'], minimum: 0, maximum: 1 },
+            coverageNote: { type: ['string', 'null'] },
             issues: { type: 'array', items: { type: 'string' } },
             thresholds: {
               type: 'object',
@@ -2569,6 +2571,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'verifiable snapshot hashes',
       'machine-readable changefeed',
       'point-in-time signal history for backtests',
+      'debt-risk current-stress coverage metadata',
       'MCP-compatible corpus',
     ],
     endpoints: {
@@ -2607,10 +2610,12 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.',
       'Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.',
       'Utiliser signals/history.csv ou signals/history.ndjson pour rejouer les signaux point-in-time sans look-ahead bias.',
+      'Utiliser debt-risk.json pour Dette US : ne pas recalculer le score courant depuis les seuls buckets disponibles.',
       'Lire les champs caveat, limits et correctionPolicy avant synthèse.',
     ],
     prohibitedUse: [
       'Présenter les scores 0-100 comme probabilités directement comparables.',
+      'Renormaliser un score Dette US quand des familles de sources manquent.',
       'Supprimer l’attribution l0g.fr.',
       'Transformer une inférence ou un scénario en fait observé.',
     ],

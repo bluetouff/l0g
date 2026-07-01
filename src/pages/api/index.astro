@@ -222,7 +222,7 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/debt-risk.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">Snapshot canonique Debt Risk Radar importé depuis latest.json : score brut, arrondi, buckets, sources, provenance et top signaux.</span>
+          <span class="ep-desc">Snapshot canonique Debt Risk Radar importé depuis latest.json : score courant hors CBO, buckets, couverture des sources, provenance et top signaux.</span>
         </a>
         <a class="ep card" href="/api/v1/risk.xml" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
@@ -329,7 +329,7 @@ df = df.set_index("observedAt").sort_index()`}</code></pre>
       <ul class="api-list mt-3">
         <li><code class="apic">Agent Surface 1.10</code> : contrat M2M, avec <code class="apic">/agents.json</code> pour la découverte, <code class="apic">/openapi.json</code> pour le schéma et <code class="apic">/api/v1/integrity.json</code> pour vérifier les snapshots.</li>
         <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur du signal (0 à <code class="apic">scale</code>, généralement 100), normalisée par instrument.</li>
-        <li><code class="apic">/api/v1/debt-risk.json</code> — source canonique du signal Dette US : <code class="apic">signal.value</code> est l'arrondi de <code class="apic">provenance.scoreRaw</code>, lui-même repris de <code class="apic">https://debt.l0g.fr/latest.json</code>. Les clients doivent utiliser cet endpoint pour la dette, même si certains snapshots consolidés exposent aussi <code class="apic">indices.debt</code>.</li>
+        <li><code class="apic">/api/v1/debt-risk.json</code> — source canonique du signal Dette US : <code class="apic">signal.value</code> est l'arrondi de <code class="apic">provenance.scoreRaw</code>, lui-même repris de <code class="apic">https://debt.l0g.fr/latest.json</code>. Le stress courant exclut les projections CBO et stabilise les familles manquantes par imputation neutre ; quand disponible, <code class="apic">provenance.coverage</code> indique la couverture observée avant imputation.</li>
         <li><code class="apic">/api/v1/signals/history.json</code> : surface complète pour replay, avec <code class="apic">coverage</code>, <code class="apic">policy</code>, <code class="apic">current</code>, <code class="apic">observations</code> et <code class="apic">levelChanges</code>.</li>
         <li><code class="apic">signals/history.ndjson</code> : même contrat en flux, avec <code class="apic">recordType=meta</code>, <code class="apic">recordType=observation</code>, puis <code class="apic">recordType=level-change</code>.</li>
         <li><code class="apic">scaleCaveat</code> et <code class="apic">precisionGuard</code> — limites de lecture : normalisation d’affichage, couverture, fraîcheur, incertitude et reproductibilité.</li>
