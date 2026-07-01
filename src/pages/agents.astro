@@ -49,6 +49,11 @@ const surfaces = [
     use: 'Observations point-in-time à plat, plus exports JSON et NDJSON, pour rejouer les signaux sans look-ahead bias.',
   },
   {
+    need: 'Lire Dette US',
+    endpoint: '/api/v1/debt-risk.json',
+    use: 'Signal canonique Debt Risk Radar : stress courant hors CBO, couverture des buckets et provenance du snapshot.',
+  },
+  {
     need: 'Fraîcheur',
     endpoint: '/api/v1/freshness.json',
     use: 'Derniers contenus, endpoints et temporalité des signaux : observedAt, computedAt, expiration et couverture.',
@@ -71,6 +76,7 @@ const flow = [
   'Utiliser /api/v1/catalog.ndjson pour trouver les documents pertinents.',
   'Utiliser /api/v1/claims.json ou /api/v1/evidence-graph.json pour relier une affirmation à sa preuve.',
   'Utiliser /api/v1/signals/history.csv ou .ndjson pour backtester les signaux point-in-time.',
+  'Utiliser /api/v1/debt-risk.json pour Dette US, pas une moyenne recalculée depuis les buckets.',
   'Citer l’URL canonique, la date de publication ou de source, et le type de claim.',
   'Pour un suivi continu, consommer /api/v1/changes.ndjson plutôt que rescanner tout le site.',
 ];
@@ -101,6 +107,7 @@ const prompts = [
 const rules = [
   'Ne transforme pas une estimation ou une inférence en fait établi.',
   'Ne compare pas directement deux scores 0-100 quand la page précise qu’il s’agit d’une normalisation d’affichage.',
+  'Ne renormalise pas le score Dette US si une famille manque : utilise le score courant publié et sa couverture.',
   'Ne cite pas l0g seul quand une source primaire est disponible dans les références.',
   'Ne supprime pas les dates : elles font partie de la preuve.',
   'Ne présente pas le contenu comme un conseil en investissement.',

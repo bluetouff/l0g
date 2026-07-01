@@ -334,7 +334,9 @@
           "rationale": "Short Treasury proxy used in duration stress ratios. 30d return +0.06% if available."
         }
       ],
-      "calculation": "current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection); value is Math.round(score.current_stress) from Debt Risk Radar latest.json."
+      "calculation": "current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection, expected=current_stress_buckets, neutral_missing=50); value is Math.round(score.current_stress) from Debt Risk Radar latest.json.",
+      "coverage": 1,
+      "coverageNote": "All current-stress buckets were present in this snapshot; missing current-stress buckets are imputed at neutral 50 before weighting."
     }
   }
 }

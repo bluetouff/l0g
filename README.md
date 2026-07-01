@@ -21,6 +21,42 @@ npm run build        # astro build + indexation pagefind
 npm run preview
 ```
 
+## Surfaces publiques
+
+l0g publie aussi des surfaces lisibles par machine, utilisées par les agents IA
+et par les dashboards :
+
+- `/agents.json` : manifeste de découverte pour agents.
+- `/openapi.json` : contrat OpenAPI 3.1 de l'API publique.
+- `/api/v1/risk.json` : signaux de risque normalisés par instrument.
+- `/api/v1/debt-risk.json` : snapshot canonique Dette US repris de Debt Risk
+  Radar `latest.json`, avec provenance, buckets et couverture lorsque disponible.
+- `/api/v1/signals/history.*` : historique point-in-time pour backtests et
+  replay sans look-ahead bias.
+- `/llms.txt` et `/llms-full.txt` : cartes textuelles pour agents et RAG.
+
+Les détails de calcul et les limites de modèle sont dans
+[`docs/MODELES-RISQUE.md`](docs/MODELES-RISQUE.md) et dans
+`/methodologie/`.
+
+## Modèles de risque
+
+Deux corrections de modèle sont maintenant reflétées dans les surfaces l0g :
+
+- **Debt Risk Radar** : les projections CBO restent isolées comme vulnérabilité
+  structurelle. Le stress courant exclut CBO et impute les familles courantes
+  absentes à `50`, au lieu de renormaliser tout le score sur les seules sources
+  disponibles. Le prochain snapshot généré depuis `latest.json` expose
+  `score.coverage`.
+- **US Macro Dashboard** : le moteur ne retient plus mécaniquement le signal le
+  plus élevé entre z-score, drift et momentum. Il combine les composantes par
+  moyenne pondérée et pénalise les séries qui alertent trop souvent hors fenêtre
+  de récession NBER.
+
+Après modification d'un moteur amont, régénérer les artefacts l0g avec
+`npm run risk:update`, puis `npm run test:risk-snapshot`,
+`npm run test:agent-surface` et `npm run build`.
+
 ## Écrire un article
 
 Créer un fichier dans `src/content/posts/`, en `.md` (texte) ou `.mdx` (texte +
