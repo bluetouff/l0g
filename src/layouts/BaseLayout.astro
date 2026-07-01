@@ -291,6 +291,10 @@ function isCurrentHref(href: string): boolean {
           </div>
           <div class="foot-col">
             <h2 class="foot-h mono-label">// comprendre</h2>
+            <a href="/demarrer/" class="foot-link" aria-current={isCurrentHref('/demarrer/') ? 'page' : undefined}>
+              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
+              démarrer
+            </a>
             <a href="/manifeste/" class="foot-link">
               <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v4h4"/><path d="M8 12h8M8 16h6"/></svg>
               manifeste
