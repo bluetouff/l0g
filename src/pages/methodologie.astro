@@ -209,7 +209,8 @@ score_global  = moyenne pondérée des familles disponibles
 poids : fiscal 22 % · taux/marché 18 % · levier privé 12 %
         liquidité 10 % · Treasury daily 10 % · BIS 10 %
         CBO 10 % · World Bank 4 % · Massive 4 %
-valeur bandeau = arrondi(score.overall depuis latest.json)</code></pre>
+score_courant = score_global hors projections CBO (structurelles)
+valeur bandeau = arrondi(score.current_stress depuis latest.json)</code></pre>
         <p class="idx-d">
           La provenance publiée avec le snapshot conserve le score brut, les buckets, les sources,
           les signaux les plus tendus et l'heure de génération. Les clés FRED et Massive restent

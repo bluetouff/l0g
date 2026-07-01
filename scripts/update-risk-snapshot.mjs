@@ -107,7 +107,10 @@ async function fetchDebtSnapshot() {
 }
 
 function updateRiskSnapshot(risk, latest) {
-  const overall = assertNumber(latest?.score?.overall, 'score.overall');
+  const overall = assertNumber(
+    latest?.score?.current_stress ?? latest?.score?.overall,
+    'score.current_stress',
+  );
   const rounded = Math.round(overall);
   const status = latest?.score?.status || statusFromScore(overall);
   const generatedAt = latest?.generated_at;
@@ -158,7 +161,7 @@ function updateRiskSnapshot(risk, latest) {
       sources: Array.isArray(latest.sources) ? latest.sources.map(compactSource) : [],
       topSignals: Array.isArray(latest.top_signals) ? latest.top_signals.slice(0, 10).map(compactTopSignal) : [],
       calculation:
-        'score_global = overall_score(bucket_scores(metrics)); value is Math.round(score.overall) from Debt Risk Radar latest.json.',
+        'current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection); value is Math.round(score.current_stress) from Debt Risk Radar latest.json.',
     },
   };
 
