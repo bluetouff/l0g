@@ -198,18 +198,19 @@ interpolation linéaire entre ces points, borné 0-100</code></pre>
         <p class="idx-d">
           Le bandeau lit le snapshot machine publié par Debt Risk Radar sur
           <a class="link-term" href="https://debt.l0g.fr/latest.json" target="_blank" rel="noopener">latest.json</a>.
-          Le score global agrège des familles de signaux : solvabilité fiscale, taux et marché,
+          Le score courant agrège les familles de stress disponibles : solvabilité fiscale, taux et marché,
           levier privé, liquidité, dette Treasury quotidienne, comparables World Bank, crédit BIS,
-          projections CBO et prix Massive Market Data.
+          et prix Massive Market Data. Les projections CBO restent publiées séparément comme vulnérabilité
+          structurelle de long terme.
         </p>
         <pre class="formula"><code>score_serie   = clip(50 + signed_z x 15, 0, 100)
 score_famille = moyenne pondérée des séries disponibles
-score_global  = moyenne pondérée des familles disponibles
+score_cbo     = projections CBO long terme, publiées à part
 
 poids : fiscal 22 % · taux/marché 18 % · levier privé 12 %
         liquidité 10 % · Treasury daily 10 % · BIS 10 %
-        CBO 10 % · World Bank 4 % · Massive 4 %
-score_courant = score_global hors projections CBO (structurelles)
+        World Bank 4 % · Massive 4 %
+score_courant = moyenne pondérée hors projections CBO
 valeur bandeau = arrondi(score.current_stress depuis latest.json)</code></pre>
         <p class="idx-d">
           La provenance publiée avec le snapshot conserve le score brut, les buckets, les sources,

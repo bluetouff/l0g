@@ -42,14 +42,15 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
     methodology: 'https://l0g.fr/methodologie/debt-risk-radar/',
     calculation: {
       summary:
-        'Score global Debt Risk Radar calcule par bucket_scores(metrics) puis overall_score(buckets) dans debt-risk-radar/data.py.',
+        'Score de stress courant Debt Risk Radar calcule par bucket_scores(metrics) puis overall_score(buckets, exclude=cbo_projection). Les projections CBO restent publiees comme vulnerabilite structurelle de long terme.',
       sourceCode: 'https://github.com/bluetouff/debt-risk-radar',
       formula: [
         'z = (valeur - moyenne_fenetre) / ecart_type_fenetre',
         'signed_z = z si direction=up, -z si direction=down',
         'risk_score = clip(50 + signed_z * 15, 0, 100)',
         'score_famille = moyenne ponderee des risk_score disponibles dans la famille',
-        'score_global = moyenne ponderee des score_famille disponibles',
+        'score_structurel_cbo = score_famille des projections CBO',
+        'score_courant = moyenne ponderee des score_famille disponibles hors cbo_projection',
       ],
       buckets: [
         { key: 'fiscal', label: 'Fiscal solvency', weight: 0.22 },
@@ -68,7 +69,8 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
         { label: 'Stress', value: 80 },
       ],
       notes: [
-        'La valeur publiee par l0g est importee depuis https://debt.l0g.fr/latest.json au moment du build.',
+        'La valeur publiee par l0g est importee depuis score.current_stress dans https://debt.l0g.fr/latest.json au moment du build.',
+        'Le bucket cbo_projection est conserve dans la provenance, mais il ne contribue pas au score courant affiche.',
         'Sources institutionnelles principales : Treasury Fiscal Data, FRED, BIS, CBO, World Bank.',
         'Les prix, ETF et ratios de marche passent par Massive Market Data quand MASSIVE_API_KEY est configuree cote serveur.',
         'Les sources optionnelles absentes sont exclues du score, avec renormalisation par familles disponibles.',
