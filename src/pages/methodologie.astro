@@ -185,9 +185,9 @@ bandes : &lt;30 Faible · &lt;55 Modéré · &lt;78 Élevé · sinon Critique</c
           Moyenne pondérée de 47 séries FRED z-scorées, calibrée sur les récessions NBER. Le
           résultat est un z-score signé centré sur 0, pas une échelle 0-100. On le convertit en
           calant les seuils d'alerte de l'application sur les bornes de couleur du bandeau.
-          La calibration repose sur quatre récessions et le moteur retient le maximum entre
-          z-score, drift et momentum ; il favorise donc les alertes précoces et ne mesure pas
-          explicitement les faux positifs hors récession.
+          La calibration repose sur quatre récessions. Le moteur combine z-score, drift et
+          momentum par moyenne pondérée, puis pénalise les séries qui alertent trop souvent
+          hors fenêtre de récession.
         </p>
         <pre class="formula"><code>z = moyenne pondérée des stress par série (stress_final x poids)
 0   -> 30      (neutre)
@@ -213,15 +213,15 @@ score_cbo     = projections CBO long terme, publiées à part
 poids : fiscal 22 % · taux/marché 18 % · levier privé 12 %
         liquidité 10 % · Treasury daily 10 % · BIS 10 %
         World Bank 4 % · Massive 4 %
-score_courant = moyenne pondérée hors projections CBO
+score_courant = moyenne pondérée hors CBO, familles absentes = 50
 valeur bandeau = arrondi(score.current_stress depuis latest.json)</code></pre>
         <p class="idx-d">
           La provenance publiée avec le snapshot conserve le score brut, les buckets, les sources,
           les signaux les plus tendus et l'heure de génération. Les clés FRED et Massive restent
           côté serveur ; le navigateur ne lit que le JSON public de synthèse. La copie stable
           exposée par l0g est <a class="link-term" href="/api/v1/debt-risk.json">/api/v1/debt-risk.json</a>.
-          Restent à valider : les pondérations, les horizons hétérogènes et la stabilité du score
-          en cas de sources manquantes.
+          Les sources manquantes ne renormalisent plus tout le score : les familles courantes
+          absentes sont imputées à 50 et la couverture est publiée avec le snapshot.
         </p>
       </article>
 

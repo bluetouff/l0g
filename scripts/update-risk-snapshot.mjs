@@ -153,6 +153,8 @@ function updateRiskSnapshot(risk, latest) {
       scoreRaw: overall,
       scoreRounded: rounded,
       status,
+      coverage: typeof latest?.score?.coverage === 'number' ? latest.score.coverage : null,
+      coverageNote: latest?.score?.coverage_note || null,
       issues: Array.isArray(latest.issues) ? latest.issues.map(compactIssue) : [],
       thresholds: latest.thresholds || null,
       refresh: latest.refresh || null,
@@ -161,7 +163,7 @@ function updateRiskSnapshot(risk, latest) {
       sources: Array.isArray(latest.sources) ? latest.sources.map(compactSource) : [],
       topSignals: Array.isArray(latest.top_signals) ? latest.top_signals.slice(0, 10).map(compactTopSignal) : [],
       calculation:
-        'current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection); value is Math.round(score.current_stress) from Debt Risk Radar latest.json.',
+        'current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection, expected=current_stress_buckets, neutral_missing=50); value is Math.round(score.current_stress) from Debt Risk Radar latest.json.',
     },
   };
 

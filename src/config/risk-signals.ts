@@ -42,7 +42,7 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
     methodology: 'https://l0g.fr/methodologie/debt-risk-radar/',
     calculation: {
       summary:
-        'Score de stress courant Debt Risk Radar calcule par bucket_scores(metrics) puis overall_score(buckets, exclude=cbo_projection). Les projections CBO restent publiees comme vulnerabilite structurelle de long terme.',
+        'Score de stress courant Debt Risk Radar calcule par bucket_scores(metrics) puis overall_score(buckets, exclude=cbo_projection, expected=current_stress_buckets, neutral_missing=50). Les projections CBO restent publiees comme vulnerabilite structurelle de long terme.',
       sourceCode: 'https://github.com/bluetouff/debt-risk-radar',
       formula: [
         'z = (valeur - moyenne_fenetre) / ecart_type_fenetre',
@@ -50,7 +50,7 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
         'risk_score = clip(50 + signed_z * 15, 0, 100)',
         'score_famille = moyenne ponderee des risk_score disponibles dans la famille',
         'score_structurel_cbo = score_famille des projections CBO',
-        'score_courant = moyenne ponderee des score_famille disponibles hors cbo_projection',
+        'score_courant = moyenne ponderee des score_famille disponibles hors cbo_projection, avec score neutre 50 pour les familles courantes absentes',
       ],
       buckets: [
         { key: 'fiscal', label: 'Fiscal solvency', weight: 0.22 },
@@ -71,9 +71,10 @@ export const riskSignalMeta: Record<string, RiskSignalMeta> = {
       notes: [
         'La valeur publiee par l0g est importee depuis score.current_stress dans https://debt.l0g.fr/latest.json au moment du build.',
         'Le bucket cbo_projection est conserve dans la provenance, mais il ne contribue pas au score courant affiche.',
+        'Les buckets courants absents ne renormalisent plus tout le score : ils sont imputes a 50 et la couverture est exposee dans latest.json.',
         'Sources institutionnelles principales : Treasury Fiscal Data, FRED, BIS, CBO, World Bank.',
         'Les prix, ETF et ratios de marche passent par Massive Market Data quand MASSIVE_API_KEY est configuree cote serveur.',
-        'Les sources optionnelles absentes sont exclues du score, avec renormalisation par familles disponibles.',
+        'Les sources optionnelles absentes sont visibles dans issues et amorties par imputation neutre si leur famille courante manque.',
       ],
     },
   },

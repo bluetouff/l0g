@@ -389,7 +389,7 @@ export const methodologyPages: MethodologyPage[] = [
       'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO et prix Massive.',
       'Le stress courant agrège les familles rapides et institutionnelles hors projections CBO : fiscal 22 %, taux et marché 18 %, levier privé 12 %, liquidité 10 %, Treasury daily 10 %, World Bank 4 %, BIS 10 %, Massive 4 %.',
       'Les projections CBO restent publiées comme vulnérabilité structurelle de long terme, mais elles ne tirent plus le score courant affiché dans le bandeau l0g.',
-      'Les connecteurs optionnels ne bloquent pas le dashboard : FRED et Massive sont ignorés si les clés serveur ne sont pas configurées, puis le score est renormalisé sur les familles disponibles.',
+      'Les connecteurs optionnels ne bloquent pas le dashboard : si une famille courante manque, elle est imputée à 50 au lieu de renormaliser tout le score sur les seules familles disponibles.',
     ],
     formula:
       'z = (valeur - moyenne_5_ans) / ecart_type_5_ans\n' +
@@ -397,7 +397,7 @@ export const methodologyPages: MethodologyPage[] = [
       'score_serie = clip(50 + signed_z x 15, 0, 100)\n' +
       'score_famille = moyenne ponderee des series disponibles dans la famille\n' +
       'score_structurel_cbo = score_famille des projections CBO\n' +
-      'score_courant = moyenne ponderee des familles disponibles hors CBO\n' +
+      'score_courant = moyenne ponderee des familles hors CBO, familles absentes = 50\n' +
       'seuils Debt Risk Radar : 50 elevated, 65 watch, 80 stress',
     interpretation: [
       'Un score bas indique que les séries suivies restent proches de leur régime récent ou orientées dans un sens moins risqué.',
@@ -408,7 +408,7 @@ export const methodologyPages: MethodologyPage[] = [
     limits: [
       'Les séries fiscales et budgétaires sont lentes, révisées et parfois publiées avec retard.',
       'Les projections CBO ne sont pas des prévisions de marché ; elles reposent sur hypothèses légales, macroéconomiques et budgétaires, et sont lues séparément du stress courant.',
-      'Restent à valider : les pondérations, les horizons hétérogènes et la stabilité du score en cas de sources manquantes.',
+      'La stabilité en cas de sources manquantes est traitée par imputation neutre et couverture publiée ; les pondérations restent des choix de modèle explicites, pas des coefficients optimisés.',
       'Les données BIS et World Bank améliorent la comparaison internationale mais ne sont pas temps réel.',
       'Les prix de marché via Massive Market Data ajoutent de la réactivité, mais ne remplacent pas une analyse de liquidité, duration et bilan.',
       'Le score 0-100 est une lecture interne du risque de dette ; il ne se compare pas directement aux scores US Macro, Yen Carry ou Énergie.',
@@ -550,7 +550,8 @@ export const methodologyPages: MethodologyPage[] = [
       "Les séries sont téléchargées depuis FRED, mises en cache, puis transformées selon les règles du catalogue local.",
       "Chaque indicateur contribue à un stress signé, pondéré par famille macro.",
       "Le score est calibré sur l'historique et les récessions NBER pour vérifier sa capacité à signaler les régimes passés.",
-      "Le moteur retient le stress le plus fort entre écart à la normale, drift et momentum, ce qui favorise volontairement les alertes précoces.",
+      "Le moteur combine écart à la normale, drift et momentum par moyenne pondérée des composantes disponibles, au lieu de retenir mécaniquement le signal le plus élevé.",
+      "Le backtest mesure aussi les alertes hors fenêtre de récession et pénalise les séries qui produisent trop de faux positifs.",
       "Pour l'API l0g, le z-score source est projeté sur une échelle 0-100 en respectant les seuils d'alerte de l'application.",
     ],
     formula:
@@ -568,8 +569,8 @@ export const methodologyPages: MethodologyPage[] = [
     limits: [
       "FRED agrège des séries dont les calendriers, révisions et définitions varient.",
       "Les récessions NBER sont datées ex post ; elles ne constituent pas une vérité temps réel.",
-      "La calibration repose sur quatre récessions seulement et ne mesure pas explicitement les faux positifs hors récession.",
-      "Le maximum entre z-score, drift et momentum rend le moteur asymétrique : il préfère manquer moins d'alertes au prix d'un bruit potentiel plus élevé.",
+      "La calibration repose sur quatre récessions seulement ; la pénalité de faux positifs réduit le sur-apprentissage mais ne transforme pas l'échantillon en preuve statistique large.",
+      "La moyenne pondérée z-score, drift et momentum réduit le biais d'alerte, mais reste sensible au choix des poids de composantes.",
       "Un choc de marché peut précéder les séries macro mensuelles.",
       "La conversion 0-100 est une normalisation l0g, pas l'échelle native du dashboard.",
       "Le score 0-100 sert au bandeau de lecture ; il ne rend pas le risque US statistiquement équivalent aux autres instruments.",
