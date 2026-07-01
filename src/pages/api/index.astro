@@ -7,16 +7,21 @@ const datasetLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
   '@id': `${ASITE}/api/#dataset`,
-  name: 'Indices de risque l0g',
+  name: 'API publique l0g et Agent Surface 1.10',
   description:
-    "Indices de risque consolides de l0g (US Macro, EU Macro, Yen Carry, Energie), snapshot canonique Dette US et synthese de confluence 13FLOW, exposes en JSON, avec un flux Atom des changements de niveau.",
+    "Surface M2M publique de l0g : Agent Surface 1.10, claims sourcées, evidence graph, snapshots de risque, debt-risk canonique et historique point-in-time des signaux.",
   url: `${ASITE}/api/`,
   inLanguage: 'fr',
   license: 'https://creativecommons.org/licenses/by/4.0/',
   isAccessibleForFree: true,
   creator: { '@id': `${ASITE}/#org` },
-  keywords: ['risque macro', 'yen carry', 'energie', 'dette US', 'confluence 13F', 'indices de risque'],
+  keywords: ['Agent Surface', 'API publique', 'risk intelligence', 'dette US', 'signals history', 'evidence graph'],
   distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/html',
+      contentUrl: `${ASITE}/donnees/agents/`,
+    },
     {
       '@type': 'DataDownload',
       encodingFormat: 'application/json',
@@ -93,7 +98,7 @@ const datasetLd = {
 
 <BaseLayout
   title="API publique"
-  description="API publique l0g : signaux de risque (US Macro, EU Macro, Yen Carry, Énergie), snapshot Dette US et synthèse 13FLOW au format JSON, plus un flux Atom des changements de niveau. CORS ouvert, licence CC BY 4.0."
+  description="API publique l0g : Agent Surface 1.10, claims sourcées, evidence graph, snapshot Debt Risk Radar, signaux courants et historique point-in-time en JSON, NDJSON et CSV. CORS ouvert, licence CC BY 4.0."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(datasetLd)} />
@@ -103,11 +108,10 @@ const datasetLd = {
       API <span style="color: var(--color-accent)">publique</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
-      Les signaux de risque l0g sont exposés en JSON, avec un endpoint canonique séparé pour
-      Dette US, et leurs changements de niveau en flux Atom. Les scores 0-100 sont normalisés par instrument : ils ne forment
-      pas un indice global ni une probabilité comparable. De quoi les intégrer dans vos propres dashboards de veille, vos bots
-      d'alerte (Matrix, Signal, Telegram) ou un SIEM. CORS ouvert, aucune clé, aucune
-      authentification, aucun pistage.
+      Cette page inventorie la surface machine de l0g : <a class="link-term" href="/donnees/agents/">Agent Surface 1.10</a>,
+      claims sourcées, evidence graph, snapshots de risque, endpoint canonique
+      <code class="apic">debt-risk.json</code> et historique <code class="apic">signals/history</code>
+      pour replay et backtest. CORS ouvert, aucune clé, aucune authentification, aucun pistage.
     </p>
 
     <div id="api-status" class="api-status" hidden>
@@ -120,9 +124,16 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
       <p class="mt-3 text-paper">
-        Les points d'accès publics, sans clé ni authentification :
+        Les points d'accès publics, sans clé ni authentification. Agent Surface 1.10 est le contrat
+        de lecture pour agents ; les endpoints de risque restent des snapshots spécialisés.
       </p>
       <div class="ep-list mt-4">
+        <a class="ep card" href="/donnees/agents/" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/donnees/agents/</code>
+          <span class="ep-type">HTML</span>
+          <span class="ep-desc">Documentation Agent Surface 1.10 : règles de citation, flux recommandé, garde-fous, champs temporels et endpoints M2M.</span>
+        </a>
         <a class="ep card" href="/agents.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
           <span class="ep-method">GET</span>
           <code class="ep-path">/agents.json</code>
@@ -211,7 +222,7 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/debt-risk.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json : score, buckets, sources et top signaux.</span>
+          <span class="ep-desc">Snapshot canonique Debt Risk Radar importé depuis latest.json : score brut, arrondi, buckets, sources, provenance et top signaux.</span>
         </a>
         <a class="ep card" href="/api/v1/risk.xml" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
@@ -229,13 +240,13 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/signals/history.json</code>
           <span class="ep-type">JSON</span>
-          <span class="ep-desc">Historique des signaux : observations backtestables, alertes de seuil, couverture et politique.</span>
+          <span class="ep-desc">Surface complète de l'historique : coverage, policy, current, observations backtestables et levelChanges d'audit.</span>
         </a>
         <a class="ep card" href="/api/v1/signals/history.ndjson" target="_blank" rel="noopener" style="--t: var(--color-amber)">
           <span class="ep-method">GET</span>
           <code class="ep-path">/api/v1/signals/history.ndjson</code>
           <span class="ep-type">NDJSON</span>
-          <span class="ep-desc">Historique ligne à ligne : meta, observations, puis événements de franchissement.</span>
+          <span class="ep-desc">Historique ligne à ligne : une ligne meta, puis observations, puis événements level-change.</span>
         </a>
         <a class="ep card" href="/api/v1/signals/history.csv" target="_blank" rel="noopener" style="--t: #7aa2f7">
           <span class="ep-method">GET</span>
@@ -256,11 +267,19 @@ const datasetLd = {
       <h2 class="mono-label glow" style="color: var(--color-signal)">// exemple</h2>
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
+        <pre class="apipre"><code>curl -s https://l0g.fr/agents.json</code></pre>
+      </div>
+      <div class="codeblock">
+        <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
         <pre class="apipre"><code>curl -s https://l0g.fr/api/v1/risk.json</code></pre>
       </div>
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
         <pre class="apipre"><code>curl -s https://l0g.fr/api/v1/debt-risk.json</code></pre>
+      </div>
+      <div class="codeblock">
+        <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
+        <pre class="apipre"><code>curl -s https://l0g.fr/api/v1/signals/history.ndjson | head</code></pre>
       </div>
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
@@ -285,9 +304,11 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// historique &amp; backtest</h2>
       <p class="mt-3 text-paper">
-        L'historique est <strong class="text-bright">point-in-time</strong> : chaque snapshot publié
-        est figé, jamais révisé a posteriori. Vous backtestez sur ce qui était réellement affiché à
-        l'instant T, sans look-ahead bias.
+        L'historique <code class="apic">signals/history</code> est <strong class="text-bright">point-in-time</strong> :
+        chaque observation conserve <code class="apic">observedAt</code>, <code class="apic">sourcePublishedAt</code>,
+        <code class="apic">retrievedAt</code>, <code class="apic">computedAt</code> et
+        <code class="apic">snapshotHash</code>. Vous backtestez sur ce qui était réellement publié ou
+        collecté à l'instant T, sans look-ahead bias.
       </p>
       <div class="codeblock">
         <button class="copy-btn" type="button" aria-label="Copier le code">copier</button>
@@ -297,16 +318,20 @@ df = df.set_index("observedAt").sort_index()`}</code></pre>
       </div>
       <p class="mt-3 text-muted">
         Le backtest doit utiliser <code class="apic">observedAt</code> pour la date du signal et
-        <code class="apic">retrievedAt</code> pour vérifier quand l0g l'a collecté. Les alertes
-        <code class="apic">level-change</code> servent à l'audit, pas au calcul de performance.
+        <code class="apic">retrievedAt</code> pour vérifier quand l0g l'a collecté. Les lignes
+        <code class="apic">observation</code> sont backtestables ; les événements
+        <code class="apic">level-change</code> servent à l'audit et aux alertes, pas au calcul de performance.
       </p>
     </div>
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// champs</h2>
       <ul class="api-list mt-3">
+        <li><code class="apic">Agent Surface 1.10</code> : contrat M2M, avec <code class="apic">/agents.json</code> pour la découverte, <code class="apic">/openapi.json</code> pour le schéma et <code class="apic">/api/v1/integrity.json</code> pour vérifier les snapshots.</li>
         <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur du signal (0 à <code class="apic">scale</code>, généralement 100), normalisée par instrument.</li>
         <li><code class="apic">/api/v1/debt-risk.json</code> — source canonique du signal Dette US : <code class="apic">signal.value</code> est l'arrondi de <code class="apic">provenance.scoreRaw</code>, lui-même repris de <code class="apic">https://debt.l0g.fr/latest.json</code>. Les clients doivent utiliser cet endpoint pour la dette, même si certains snapshots consolidés exposent aussi <code class="apic">indices.debt</code>.</li>
+        <li><code class="apic">/api/v1/signals/history.json</code> : surface complète pour replay, avec <code class="apic">coverage</code>, <code class="apic">policy</code>, <code class="apic">current</code>, <code class="apic">observations</code> et <code class="apic">levelChanges</code>.</li>
+        <li><code class="apic">signals/history.ndjson</code> : même contrat en flux, avec <code class="apic">recordType=meta</code>, <code class="apic">recordType=observation</code>, puis <code class="apic">recordType=level-change</code>.</li>
         <li><code class="apic">scaleCaveat</code> et <code class="apic">precisionGuard</code> — limites de lecture : normalisation d’affichage, couverture, fraîcheur, incertitude et reproductibilité.</li>
         <li><code class="apic">level</code> — libellé lisible (Détendu, Modéré, Élevé/Tendu, Crise).</li>
         <li><code class="apic">tone</code> — code machine : <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code>, <code class="apic">crisis</code>.</li>
