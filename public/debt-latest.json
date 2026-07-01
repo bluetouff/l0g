@@ -1,11 +1,11 @@
 {
   "schema": "https://l0g.fr/schemas/debt-risk-snapshot.json",
   "version": "1",
-  "generated": "2026-06-30T19:40:41Z",
-  "retrievedAt": "2026-06-30T19:51:03.434Z",
+  "generated": "2026-07-01T08:06:54Z",
+  "retrievedAt": "2026-07-01T08:07:42.610Z",
   "signal": {
     "key": "debt",
-    "value": 57,
+    "value": 54,
     "scale": 100,
     "level": "Élevé",
     "tone": "elevated"
@@ -17,19 +17,13 @@
     "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
     "calculator": "https://github.com/bluetouff/debt-risk-radar",
     "calculatorRevision": null,
-    "generatedAt": "2026-06-30T19:40:41Z",
-    "retrievedAt": "2026-06-30T19:51:03.434Z",
+    "generatedAt": "2026-07-01T08:06:54Z",
+    "retrievedAt": "2026-07-01T08:07:42.610Z",
     "schemaVersion": "1.0",
-    "scoreRaw": 57.384825037362816,
-    "scoreRounded": 57,
+    "scoreRaw": 53.977214461235675,
+    "scoreRounded": 54,
     "status": "Elevated",
-    "issues": [
-      "Massive Market Data: TLT: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"415aa322fe4c711e02b774ed4a533277\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
-      "Massive Market Data: HYG: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"730b1dd8cebd8677591a63c05affe9dc\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
-      "Massive Market Data: LQD: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"ef3a738dcc21235b4e608e640776f92a\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
-      "Massive Market Data: SHY: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"84dd6d300ec53f226b3ef09cd8e89038\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr",
-      "Massive Market Data: SPY: HTTP 429: {\"status\":\"ERROR\",\"request_id\":\"7d71244295246a39671819c47e3ef780\",\"error\":\"You've exceeded the maximum requests per minute, please wait or upgrade your subscription to continue. https://massive.com/pr"
-    ],
+    "issues": [],
     "thresholds": {
       "stress": 80,
       "watch": 65
@@ -58,10 +52,18 @@
       {
         "key": "treasury_daily",
         "label": "Treasury daily debt",
-        "score": 66.3986981356298,
+        "score": 65.92824972675564,
         "status": "Watch",
         "weight": 0.1,
         "metrics": 3
+      },
+      {
+        "key": "world_bank",
+        "label": "Global comparables",
+        "score": 65.43652243024123,
+        "status": "Watch",
+        "weight": 0.04,
+        "metrics": 4
       },
       {
         "key": "fiscal",
@@ -69,14 +71,6 @@
         "score": 64.48029914517166,
         "status": "Elevated",
         "weight": 0.22,
-        "metrics": 4
-      },
-      {
-        "key": "world_bank",
-        "label": "Global comparables",
-        "score": 64.3654004824321,
-        "status": "Elevated",
-        "weight": 0.04,
         "metrics": 4
       },
       {
@@ -88,9 +82,17 @@
         "metrics": 4
       },
       {
+        "key": "market_prices",
+        "label": "Massive market prices",
+        "score": 51.5568751809097,
+        "status": "Elevated",
+        "weight": 0.04,
+        "metrics": 9
+      },
+      {
         "key": "rates_market",
         "label": "Rates and market stress",
-        "score": 48.18800375500618,
+        "score": 48.30919319995018,
         "status": "Calm",
         "weight": 0.18,
         "metrics": 7
@@ -114,10 +116,28 @@
     ],
     "sources": [
       {
+        "source": "Massive Market Data",
+        "latestDate": "2026-06-30",
+        "metrics": 9,
+        "maxRisk": 66.34654288426623
+      },
+      {
         "source": "FRED/Fed",
         "latestDate": "2026-06-30",
         "metrics": 5,
         "maxRisk": 74.24371187943021
+      },
+      {
+        "source": "FRED/Treasury",
+        "latestDate": "2026-06-30",
+        "metrics": 4,
+        "maxRisk": 63.9363552785384
+      },
+      {
+        "source": "FRED",
+        "latestDate": "2026-06-30",
+        "metrics": 4,
+        "maxRisk": 76.56763372822563
       },
       {
         "source": "CBO Open Data",
@@ -126,22 +146,16 @@
         "maxRisk": 90.74685714285714
       },
       {
-        "source": "FRED/Treasury",
-        "latestDate": "2026-06-29",
-        "metrics": 4,
-        "maxRisk": 64.10882665034862
-      },
-      {
-        "source": "FRED",
-        "latestDate": "2026-06-29",
-        "metrics": 4,
-        "maxRisk": 76.56763372822563
-      },
-      {
         "source": "World Bank",
-        "latestDate": "2024-12-31",
+        "latestDate": "2025-12-31",
         "metrics": 4,
         "maxRisk": 82.22274169433395
+      },
+      {
+        "source": "US Treasury Fiscal Data",
+        "latestDate": "2026-06-29",
+        "metrics": 3,
+        "maxRisk": 76.22248511141359
       },
       {
         "source": "BIS Data Portal",
@@ -150,22 +164,10 @@
         "maxRisk": 55.23113917922602
       },
       {
-        "source": "US Treasury Fiscal Data",
-        "latestDate": "2026-06-26",
-        "metrics": 3,
-        "maxRisk": 76.22981756289181
-      },
-      {
         "source": "FRED/ICE BofA",
         "latestDate": "2026-06-29",
         "metrics": 2,
         "maxRisk": 36.565506988294736
-      },
-      {
-        "source": "FRED/BEA",
-        "latestDate": "2026-01-01",
-        "metrics": 1,
-        "maxRisk": 68.08957520083872
       },
       {
         "source": "FRED/Chicago Fed",
@@ -174,52 +176,25 @@
         "maxRisk": 38.14272278394138
       },
       {
-        "source": "FRED/Fed Z.1",
+        "source": "FRED/BEA",
         "latestDate": "2026-01-01",
         "metrics": 1,
-        "maxRisk": 32.15136673881235
+        "maxRisk": 68.08957520083872
       },
       {
         "source": "FRED/St. Louis Fed",
         "latestDate": "2026-06-19",
         "metrics": 1,
         "maxRisk": 28.635515753595467
+      },
+      {
+        "source": "FRED/Fed Z.1",
+        "latestDate": "2026-01-01",
+        "metrics": 1,
+        "maxRisk": 32.15136673881235
       }
     ],
     "topSignals": [
-      {
-        "family": "CBO projections",
-        "name": "Projected debt held by the public / GDP",
-        "source": "CBO Open Data",
-        "date": "2056-09-30",
-        "current": 175.076,
-        "unit": "% GDP",
-        "riskScore": 90.74685714285714,
-        "signedZ": 1.8272082730070323,
-        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
-      },
-      {
-        "family": "CBO projections",
-        "name": "Projected net interest outlays / GDP",
-        "source": "CBO Open Data",
-        "date": "2056-09-30",
-        "current": 6.93,
-        "unit": "% GDP",
-        "riskScore": 86.975,
-        "signedZ": 1.6914269814043807,
-        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
-      },
-      {
-        "family": "CBO projections",
-        "name": "Projected federal deficit / GDP",
-        "source": "CBO Open Data",
-        "date": "2056-09-30",
-        "current": -9.134,
-        "unit": "% GDP",
-        "riskScore": 86.804,
-        "signedZ": 1.8102562259727726,
-        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
-      },
       {
         "family": "Global comparables",
         "name": "Interest payments / revenue",
@@ -230,17 +205,6 @@
         "riskScore": 82.22274169433395,
         "signedZ": 2.148182779622263,
         "rationale": "Annual cross-country comparable indicator."
-      },
-      {
-        "family": "CBO projections",
-        "name": "Projected gross federal debt / GDP",
-        "source": "CBO Open Data",
-        "date": "2056-09-30",
-        "current": 190.2,
-        "unit": "% GDP",
-        "riskScore": 77.98988252819218,
-        "signedZ": 1.8659921685461454,
-        "rationale": "Latest CBO long-term projection vintage; terminal projected value."
       },
       {
         "family": "Fiscal solvency",
@@ -257,11 +221,11 @@
         "family": "Treasury daily debt",
         "name": "Total public debt outstanding",
         "source": "US Treasury Fiscal Data",
-        "date": "2026-06-26",
-        "current": 39337.50370697653,
+        "date": "2026-06-29",
+        "current": 39345.34078796972,
         "unit": "USD bn",
-        "riskScore": 76.22981756289181,
-        "signedZ": 1.748654504192788,
+        "riskScore": 76.22248511141359,
+        "signedZ": 1.7481656740942393,
         "rationale": "Daily Treasury debt stock."
       },
       {
@@ -279,11 +243,11 @@
         "family": "Treasury daily debt",
         "name": "Debt held by the public share",
         "source": "US Treasury Fiscal Data",
-        "date": "2026-06-26",
-        "current": 80.38352567769677,
+        "date": "2026-06-29",
+        "current": 80.36867688033031,
         "unit": "%",
-        "riskScore": 72.92135576741613,
-        "signedZ": 1.5280903844944085,
+        "riskScore": 72.59900336513493,
+        "signedZ": 1.5066002243423284,
         "rationale": "Market-facing share of Treasury debt."
       },
       {
@@ -296,8 +260,52 @@
         "riskScore": 70.46688535147425,
         "signedZ": 1.3644590234316158,
         "rationale": "Debt stock relative to economic base."
+      },
+      {
+        "family": "Fiscal solvency",
+        "name": "Federal government interest payments",
+        "source": "FRED/BEA",
+        "date": "2026-01-01",
+        "current": 1218.938,
+        "unit": "USD bn SAAR",
+        "riskScore": 68.08957520083872,
+        "signedZ": 1.2059716800559146,
+        "rationale": "Interest expense is the fiscal transmission channel."
+      },
+      {
+        "family": "Liquidity plumbing",
+        "name": "Reserve balances with Federal Reserve Banks",
+        "source": "FRED/Fed",
+        "date": "2026-06-24",
+        "current": 2951416,
+        "unit": "USD mn",
+        "riskScore": 67.71050726180125,
+        "signedZ": 1.1807004841200834,
+        "rationale": "Falling reserves can tighten money-market plumbing."
+      },
+      {
+        "family": "Liquidity plumbing",
+        "name": "Overnight reverse repo facility",
+        "source": "FRED/Fed",
+        "date": "2026-06-30",
+        "current": 26.9,
+        "unit": "USD bn",
+        "riskScore": 66.69674401639482,
+        "signedZ": 1.1131162677596544,
+        "rationale": "Shrinking RRP reduces an important liquidity buffer."
+      },
+      {
+        "family": "Massive market prices",
+        "name": "iShares 1-3 Year Treasury Bond ETF",
+        "source": "Massive Market Data",
+        "date": "2026-06-30",
+        "current": 82.11,
+        "unit": "USD",
+        "riskScore": 66.34654288426623,
+        "signedZ": 1.089769525617748,
+        "rationale": "Short Treasury proxy used in duration stress ratios. 30d return +0.06% if available."
       }
     ],
-    "calculation": "score_global = overall_score(bucket_scores(metrics)); value is Math.round(score.overall) from Debt Risk Radar latest.json."
+    "calculation": "current_stress = overall_score(bucket_scores(metrics), exclude=cbo_projection); value is Math.round(score.current_stress) from Debt Risk Radar latest.json."
   }
 }

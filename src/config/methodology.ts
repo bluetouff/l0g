@@ -41,7 +41,7 @@ export const riskBandScaleCaveat = {
   correctLabel: 'tableau de bord consolidé de signaux de risque',
   wrongLabel: 'indice consolidé de risque systémique',
   details: [
-    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45, Énergie de 47 ou Dette US de 57.',
+    'Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45, Énergie de 47 ou Dette US de 54.',
     'Le chiffre sert à comparer un instrument à son propre régime, pas à comparer directement les instruments entre eux.',
     'Le libellé et la fiche méthodologique de chaque dashboard priment sur le chiffre isolé.',
   ],
@@ -383,11 +383,12 @@ export const methodologyPages: MethodologyPage[] = [
       },
     ],
     calculation: [
-      'Le score publié par l0g reprend le score global exposé par https://debt.l0g.fr/latest.json, pas une valeur codée côté navigateur.',
+      'Le score publié par l0g reprend le score de stress courant exposé par https://debt.l0g.fr/latest.json, pas une valeur codée côté navigateur.',
       'Dans le code du radar, les séries sont converties par zscore_latest(), notées par risk_points_from_z() ou risk_points_from_level(), regroupées par bucket_scores(), puis agrégées par overall_score().',
       'Chaque série est transformée en z-score glissant, cinq ans par défaut, dix ou trente ans pour certaines séries lentes BIS, World Bank ou CBO, puis orientée dans le sens du risque.',
       'Les indicateurs sont classés par familles : solvabilité fiscale, stress de taux et marché, levier privé, liquidité, comparables globaux, BIS, CBO et prix Massive.',
-      'Les familles sont agrégées avec les poids du radar : fiscal 22 %, taux et marché 18 %, levier privé 12 %, liquidité 10 %, Treasury daily 10 %, World Bank 4 %, BIS 10 %, CBO 10 %, Massive 4 %.',
+      'Le stress courant agrège les familles rapides et institutionnelles hors projections CBO : fiscal 22 %, taux et marché 18 %, levier privé 12 %, liquidité 10 %, Treasury daily 10 %, World Bank 4 %, BIS 10 %, Massive 4 %.',
+      'Les projections CBO restent publiées comme vulnérabilité structurelle de long terme, mais elles ne tirent plus le score courant affiché dans le bandeau l0g.',
       'Les connecteurs optionnels ne bloquent pas le dashboard : FRED et Massive sont ignorés si les clés serveur ne sont pas configurées, puis le score est renormalisé sur les familles disponibles.',
     ],
     formula:
@@ -395,24 +396,25 @@ export const methodologyPages: MethodologyPage[] = [
       'signed_z = z si une hausse augmente le risque, -z si une baisse augmente le risque\n' +
       'score_serie = clip(50 + signed_z x 15, 0, 100)\n' +
       'score_famille = moyenne ponderee des series disponibles dans la famille\n' +
-      'score_global = moyenne ponderee des familles disponibles\n' +
+      'score_structurel_cbo = score_famille des projections CBO\n' +
+      'score_courant = moyenne ponderee des familles disponibles hors CBO\n' +
       'seuils Debt Risk Radar : 50 elevated, 65 watch, 80 stress',
     interpretation: [
       'Un score bas indique que les séries suivies restent proches de leur régime récent ou orientées dans un sens moins risqué.',
       'Un score intermédiaire signale que certains canaux se tendent, sans stress large.',
-      'Au-dessus des seuils watch et stress, il faut lire quelles familles portent le signal : fiscal, marché, crédit privé ou projections.',
+      'Au-dessus des seuils watch et stress, il faut lire quelles familles portent le signal courant : fiscal, marché, crédit privé, liquidité ou comparables institutionnels.',
       'La trajectoire compte autant que le niveau : un score qui monte vite peut signaler un changement de régime avant que les ratios publics annuels ne bougent.',
     ],
     limits: [
       'Les séries fiscales et budgétaires sont lentes, révisées et parfois publiées avec retard.',
-      'Les projections CBO ne sont pas des prévisions de marché ; elles reposent sur hypothèses légales, macroéconomiques et budgétaires.',
+      'Les projections CBO ne sont pas des prévisions de marché ; elles reposent sur hypothèses légales, macroéconomiques et budgétaires, et sont lues séparément du stress courant.',
       'Les données BIS et World Bank améliorent la comparaison internationale mais ne sont pas temps réel.',
       'Les prix de marché via Massive Market Data ajoutent de la réactivité, mais ne remplacent pas une analyse de liquidité, duration et bilan.',
       'Le score 0-100 est une lecture interne du risque de dette ; il ne se compare pas directement aux scores US Macro, Yen Carry ou Énergie.',
     ],
     useFor: [
       'Surveiller si le risque de dette vient plutôt de la solvabilité publique, des taux, du crédit privé ou du marché.',
-      'Mettre les projections CBO et les ratios institutionnels face aux signaux plus rapides des spreads et prix de marché.',
+      'Comparer la vulnérabilité CBO de long terme aux signaux plus rapides des spreads, taux, prix de marché et données Treasury.',
       'Construire une lecture de risque avant d’ouvrir les séries sources et les rapports budgétaires détaillés.',
     ],
     notFor: [
