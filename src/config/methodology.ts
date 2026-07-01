@@ -408,6 +408,7 @@ export const methodologyPages: MethodologyPage[] = [
     limits: [
       'Les séries fiscales et budgétaires sont lentes, révisées et parfois publiées avec retard.',
       'Les projections CBO ne sont pas des prévisions de marché ; elles reposent sur hypothèses légales, macroéconomiques et budgétaires, et sont lues séparément du stress courant.',
+      'Restent à valider : les pondérations, les horizons hétérogènes et la stabilité du score en cas de sources manquantes.',
       'Les données BIS et World Bank améliorent la comparaison internationale mais ne sont pas temps réel.',
       'Les prix de marché via Massive Market Data ajoutent de la réactivité, mais ne remplacent pas une analyse de liquidité, duration et bilan.',
       'Le score 0-100 est une lecture interne du risque de dette ; il ne se compare pas directement aux scores US Macro, Yen Carry ou Énergie.',
