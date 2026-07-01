@@ -549,6 +549,7 @@ export const methodologyPages: MethodologyPage[] = [
       "Les séries sont téléchargées depuis FRED, mises en cache, puis transformées selon les règles du catalogue local.",
       "Chaque indicateur contribue à un stress signé, pondéré par famille macro.",
       "Le score est calibré sur l'historique et les récessions NBER pour vérifier sa capacité à signaler les régimes passés.",
+      "Le moteur retient le stress le plus fort entre écart à la normale, drift et momentum, ce qui favorise volontairement les alertes précoces.",
       "Pour l'API l0g, le z-score source est projeté sur une échelle 0-100 en respectant les seuils d'alerte de l'application.",
     ],
     formula:
@@ -566,6 +567,8 @@ export const methodologyPages: MethodologyPage[] = [
     limits: [
       "FRED agrège des séries dont les calendriers, révisions et définitions varient.",
       "Les récessions NBER sont datées ex post ; elles ne constituent pas une vérité temps réel.",
+      "La calibration repose sur quatre récessions seulement et ne mesure pas explicitement les faux positifs hors récession.",
+      "Le maximum entre z-score, drift et momentum rend le moteur asymétrique : il préfère manquer moins d'alertes au prix d'un bruit potentiel plus élevé.",
       "Un choc de marché peut précéder les séries macro mensuelles.",
       "La conversion 0-100 est une normalisation l0g, pas l'échelle native du dashboard.",
       "Le score 0-100 sert au bandeau de lecture ; il ne rend pas le risque US statistiquement équivalent aux autres instruments.",
