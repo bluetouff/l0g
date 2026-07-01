@@ -131,6 +131,11 @@ const jsonLd = {
     </section>
 
     <section class="start-section">
+      <p class="start-identity">
+        l0g est un laboratoire indépendant de risk intelligence. Il cartographie les
+        vulnérabilités de la finance, vérifie les narratifs sur les données publiques
+        et publie ses méthodes, son code et ses limites.
+      </p>
       <p class="mono-label glow">// par où commencer</p>
       <div class="profil-grid">
         {profils.map((p) => (
@@ -365,6 +370,18 @@ const jsonLd = {
     }
 
     .start-section { margin-top: 3.4rem; }
+
+    .start-identity {
+      max-width: 49rem;
+      margin-bottom: 1.1rem;
+      border-left: 2px solid var(--color-accent);
+      padding-left: 1rem;
+      font-family: var(--font-read);
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      line-height: 1.68;
+      color: var(--color-accent);
+      text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 20%, transparent);
+    }
 
     .start-p {
       margin-top: 0.9rem;
