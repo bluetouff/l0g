@@ -1,0 +1,407 @@
+{
+  "schema": "https://l0g.fr/openapi.json#/components/schemas/FreshnessSurface",
+  "version": "1.10.0",
+  "generated": "2026-07-02T07:04:00.373Z",
+  "latest": [
+    {
+      "type": "guide",
+      "slug": "qui-applique-le-genius-act",
+      "title": "GENIUS Act : qui applique quoi ? L'architecture d'application des stablecoins",
+      "url": "https://l0g.fr/guides/qui-applique-le-genius-act/",
+      "date": "2026-07-01"
+    },
+    {
+      "type": "article",
+      "slug": "banques-regionales-us-liquidite-lcr",
+      "title": "Banques régionales américaines : de la panique de 2023 à la réforme de la liquidité",
+      "url": "https://l0g.fr/posts/banques-regionales-us-liquidite-lcr/",
+      "date": "2026-06-30"
+    },
+    {
+      "type": "article",
+      "slug": "strategy-pari-bitcoin-saylor",
+      "title": "Strategy : le pari bitcoin de Saylor",
+      "url": "https://l0g.fr/posts/strategy-pari-bitcoin-saylor/",
+      "date": "2026-06-30"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-le-rapport-emploi-nfp",
+      "title": "Lire le rapport emploi américain : le NFP et ses pièges",
+      "url": "https://l0g.fr/guides/lire-le-rapport-emploi-nfp/",
+      "date": "2026-06-30"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-le-dot-plot-sep",
+      "title": "Lire le dot plot et le SEP : les projections de la Fed, mode d'emploi",
+      "url": "https://l0g.fr/guides/lire-le-dot-plot-sep/",
+      "date": "2026-06-30"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-les-donnees-tic",
+      "title": "Lire les données TIC : qui finance vraiment la dette américaine",
+      "url": "https://l0g.fr/guides/lire-les-donnees-tic/",
+      "date": "2026-06-30"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-la-donnee-on-chain",
+      "title": "Lire la donnée on-chain : ce que la blockchain montre, et ce qu'elle masque",
+      "url": "https://l0g.fr/guides/lire-la-donnee-on-chain/",
+      "date": "2026-06-29"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-le-cpi-inflation-us",
+      "title": "Lire le CPI : l'inflation américaine, mesure par mesure",
+      "url": "https://l0g.fr/guides/lire-le-cpi-inflation-us/",
+      "date": "2026-06-29"
+    },
+    {
+      "type": "guide",
+      "slug": "m2-masse-monetaire-risk-on",
+      "title": "Lire la masse monétaire M2 : signal de liquidité, lectures erronées et lien avec le risk-on",
+      "url": "https://l0g.fr/guides/m2-masse-monetaire-risk-on/",
+      "date": "2026-06-29"
+    },
+    {
+      "type": "article",
+      "slug": "boom-ia-bis-fragilite-financiere",
+      "title": "Le boom de l'IA au crible de la BIS : révolution réelle, financement opaque, surcapacité possible",
+      "url": "https://l0g.fr/posts/boom-ia-bis-fragilite-financiere/",
+      "date": "2026-06-29"
+    },
+    {
+      "type": "article",
+      "slug": "hyperliquid-bourse-onchain-tradfi",
+      "title": "Hyperliquid : la bourse on-chain qui rachète son propre token et frappe à la porte de la tradfi",
+      "url": "https://l0g.fr/posts/hyperliquid-bourse-onchain-tradfi/",
+      "date": "2026-06-28"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-h41-bilan-fed",
+      "title": "Lire le H.4.1 : le bilan de la Fed, ligne par ligne",
+      "url": "https://l0g.fr/guides/lire-h41-bilan-fed/",
+      "date": "2026-06-28"
+    },
+    {
+      "type": "guide",
+      "slug": "lire-cot-cftc",
+      "title": "Lire le COT de la CFTC : qui est positionné, et comment le savoir",
+      "url": "https://l0g.fr/guides/lire-cot-cftc/",
+      "date": "2026-06-28"
+    },
+    {
+      "type": "article",
+      "slug": "or-banques-centrales-dedollarisation-tonnes",
+      "title": "L'or et les banques centrales : la dédollarisation silencieuse qui se compte en tonnes",
+      "url": "https://l0g.fr/posts/or-banques-centrales-dedollarisation-tonnes/",
+      "date": "2026-06-28"
+    },
+    {
+      "type": "article",
+      "slug": "financement-circulaire-ia",
+      "title": "Le financement circulaire de l'IA : quand le même dollar tourne en rond et ressort en chiffre d'affaires",
+      "url": "https://l0g.fr/posts/financement-circulaire-ia/",
+      "date": "2026-06-27"
+    },
+    {
+      "type": "article",
+      "slug": "dollar-yen-intervention-risque-carry-2026",
+      "title": "Dollar-yen : le risque n'est pas seulement le niveau, c'est le débouclage",
+      "url": "https://l0g.fr/posts/dollar-yen-intervention-risque-carry-2026/",
+      "date": "2026-06-27"
+    },
+    {
+      "type": "article",
+      "slug": "collateral-rehypothecation-cle-de-voute",
+      "title": "Collatéral et réhypothécation : un même titre, plusieurs propriétaires, et la clé de toute la plomberie",
+      "url": "https://l0g.fr/posts/collateral-rehypothecation-cle-de-voute/",
+      "date": "2026-06-27"
+    },
+    {
+      "type": "article",
+      "slug": "cuivre-shortage-ormuz-el-nino-2026",
+      "title": "Cuivre : le shortage qui arrive par Ormuz et El Niño",
+      "url": "https://l0g.fr/posts/cuivre-shortage-ormuz-el-nino-2026/",
+      "date": "2026-06-26"
+    },
+    {
+      "type": "article",
+      "slug": "chine-importations-petrole-brut-chute-2026",
+      "title": "Chine : derrière la chute des importations de brut, un nouveau pouvoir de marché",
+      "url": "https://l0g.fr/posts/chine-importations-petrole-brut-chute-2026/",
+      "date": "2026-06-26"
+    },
+    {
+      "type": "article",
+      "slug": "cross-currency-basis-prix-cache-dollar",
+      "title": "Cross-currency basis : le prix caché du dollar, quand la loi de la finance internationale se brise",
+      "url": "https://l0g.fr/posts/cross-currency-basis-prix-cache-dollar/",
+      "date": "2026-06-24"
+    }
+  ],
+  "corpus": {
+    "articles": 44,
+    "guides": 18,
+    "methodologies": 6,
+    "glossary": 179,
+    "primarySources": 14,
+    "editorialChangelog": 10
+  },
+  "endpoints": [
+    {
+      "path": "/agents.json",
+      "role": "Manifeste de découverte agent",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/openapi.json",
+      "role": "Contrat OpenAPI public",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/catalog.json",
+      "role": "Catalogue machine complet",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/catalog.ndjson",
+      "role": "Catalogue machine en NDJSON",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/claims.json",
+      "role": "Graphe affirmation-source",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/claims.ndjson",
+      "role": "Claims en NDJSON",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/evidence-graph.json",
+      "role": "Evidence graph en nœuds et arêtes",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/evidence-graph.ndjson",
+      "role": "Evidence graph en NDJSON",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/sources.json",
+      "role": "Registre sources et hôtes cités",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/freshness.json",
+      "role": "Fraîcheur et derniers contenus",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/integrity.json",
+      "role": "Empreintes SHA-256 des surfaces M2M",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/changes.json",
+      "role": "Changefeed machine des publications et révisions",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/changes.ndjson",
+      "role": "Changefeed machine en NDJSON",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/debt-risk.json",
+      "role": "Snapshot Dette US avec provenance Debt Risk Radar",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/signals/current.json",
+      "role": "Dernières observations point-in-time par instrument",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/api/v1/signals/history.json",
+      "role": "Historique des signaux pour audit et backtest",
+      "update": "à chaque build et archive append-only"
+    },
+    {
+      "path": "/api/v1/signals/history.ndjson",
+      "role": "Historique des signaux en NDJSON",
+      "update": "à chaque build et archive append-only"
+    },
+    {
+      "path": "/api/v1/signals/history.csv",
+      "role": "Observations de signaux à plat pour backtest",
+      "update": "à chaque build et archive append-only"
+    },
+    {
+      "path": "/api/v1/signals/schema.json",
+      "role": "Schéma des lignes historiques de signaux",
+      "update": "à chaque changement de contrat"
+    },
+    {
+      "path": "/llms.txt",
+      "role": "Carte concise pour agents",
+      "update": "à chaque build"
+    },
+    {
+      "path": "/llms-full.txt",
+      "role": "Corpus textuel étendu",
+      "update": "à chaque build"
+    }
+  ],
+  "signalFreshness": [
+    {
+      "key": "us",
+      "label": "US Macro Dashboard",
+      "source": "https://us.l0g.fr",
+      "methodology": "https://l0g.fr/methodologie/us-macro/",
+      "observedAt": "2026-07-02T07:02:51.000Z",
+      "sourcePublishedAt": null,
+      "retrievedAt": null,
+      "computedAt": "2026-07-02T07:04:00.373Z",
+      "staleAfter": "P7D",
+      "expiresAt": "2026-07-09T07:02:51.000Z",
+      "timelinessStatus": "fresh",
+      "coverageStatus": "partial",
+      "coverage": {
+        "signalPresent": true,
+        "observedAt": true,
+        "sourcePublishedAt": false,
+        "retrievedAt": false,
+        "computedAt": true,
+        "staleAfter": true
+      },
+      "missing": [
+        "sourcePublishedAt",
+        "retrievedAt"
+      ],
+      "note": "Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas."
+    },
+    {
+      "key": "eu",
+      "label": "EU Macro Dashboard",
+      "source": "https://euro.l0g.fr",
+      "methodology": "https://l0g.fr/methodologie/euro-macro/",
+      "observedAt": "2026-07-02T07:02:51.000Z",
+      "sourcePublishedAt": null,
+      "retrievedAt": null,
+      "computedAt": "2026-07-02T07:04:00.373Z",
+      "staleAfter": "P7D",
+      "expiresAt": "2026-07-09T07:02:51.000Z",
+      "timelinessStatus": "fresh",
+      "coverageStatus": "partial",
+      "coverage": {
+        "signalPresent": true,
+        "observedAt": true,
+        "sourcePublishedAt": false,
+        "retrievedAt": false,
+        "computedAt": true,
+        "staleAfter": true
+      },
+      "missing": [
+        "sourcePublishedAt",
+        "retrievedAt"
+      ],
+      "note": "Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas."
+    },
+    {
+      "key": "yen",
+      "label": "Yen Carry Monitor",
+      "source": "https://yct.l0g.fr",
+      "methodology": "https://l0g.fr/methodologie/yen-carry/",
+      "observedAt": "2026-07-02T07:02:51.000Z",
+      "sourcePublishedAt": null,
+      "retrievedAt": null,
+      "computedAt": "2026-07-02T07:04:00.373Z",
+      "staleAfter": "P7D",
+      "expiresAt": "2026-07-09T07:02:51.000Z",
+      "timelinessStatus": "fresh",
+      "coverageStatus": "partial",
+      "coverage": {
+        "signalPresent": true,
+        "observedAt": true,
+        "sourcePublishedAt": false,
+        "retrievedAt": false,
+        "computedAt": true,
+        "staleAfter": true
+      },
+      "missing": [
+        "sourcePublishedAt",
+        "retrievedAt"
+      ],
+      "note": "Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas."
+    },
+    {
+      "key": "energie",
+      "label": "Energie Monitor",
+      "source": "https://energie.l0g.fr",
+      "methodology": "https://l0g.fr/methodologie/energie/",
+      "observedAt": "2026-07-02T07:02:51.000Z",
+      "sourcePublishedAt": null,
+      "retrievedAt": null,
+      "computedAt": "2026-07-02T07:04:00.373Z",
+      "staleAfter": "P7D",
+      "expiresAt": "2026-07-09T07:02:51.000Z",
+      "timelinessStatus": "fresh",
+      "coverageStatus": "partial",
+      "coverage": {
+        "signalPresent": true,
+        "observedAt": true,
+        "sourcePublishedAt": false,
+        "retrievedAt": false,
+        "computedAt": true,
+        "staleAfter": true
+      },
+      "missing": [
+        "sourcePublishedAt",
+        "retrievedAt"
+      ],
+      "note": "Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas."
+    },
+    {
+      "key": "debt",
+      "label": "Debt Risk Radar",
+      "source": "https://debt.l0g.fr",
+      "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
+      "observedAt": "2026-07-02T07:02:51.000Z",
+      "sourcePublishedAt": null,
+      "retrievedAt": null,
+      "computedAt": "2026-07-02T07:04:00.373Z",
+      "staleAfter": "P7D",
+      "expiresAt": "2026-07-09T07:02:51.000Z",
+      "timelinessStatus": "fresh",
+      "coverageStatus": "partial",
+      "coverage": {
+        "signalPresent": true,
+        "observedAt": true,
+        "sourcePublishedAt": false,
+        "retrievedAt": false,
+        "computedAt": true,
+        "staleAfter": true
+      },
+      "missing": [
+        "sourcePublishedAt",
+        "retrievedAt"
+      ],
+      "note": "Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas."
+    }
+  ],
+  "freshnessPolicy": {
+    "rule": "Les agents doivent privilégier date/updated pour le contenu éditorial, observedAt pour les signaux, puis computedAt/generated pour la fraîcheur du fichier.",
+    "caveat": "l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile. Les champs sourcePublishedAt et retrievedAt restent explicites et peuvent être null quand la source amont ne les expose pas ; indexedAt décrit seulement l’indexation du lien dans l’artefact.",
+    "correctionPolicy": "https://l0g.fr/protocole-editorial/",
+    "changelog": "https://l0g.fr/changelog-editorial/"
+  },
+  "license": "CC BY 4.0",
+  "attribution": "l0g.fr"
+}

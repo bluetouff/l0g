@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>l0g — changements de niveau de risque</title>
+  <subtitle>Franchissements de seuil des signaux l0g : US Macro, EU Macro, Yen Carry, Énergie, Dette US.</subtitle>
+  <link href="https://l0g.fr/api/v1/risk.xml" rel="self"/>
+  <link href="https://l0g.fr/api/"/>
+  <id>https://l0g.fr/api/v1/risk.xml</id>
+  <updated>2026-06-30T12:22:06Z</updated>
+  <author><name>l0g.fr</name></author>
+  <rights>CC BY 4.0 — l0g.fr</rights>
+  <entry>
+    <title>Dette US : Non suivi → Élevé (57)</title>
+    <id>tag:l0g.fr,2026:risk/debt/2026-06-30T12:22:06Z</id>
+    <updated>2026-06-30T12:22:06Z</updated>
+    <link href="https://debt.l0g.fr/latest.json"/>
+    <category term="elevated"/>
+    <summary>Signal Dette US passé de Non suivi à Élevé (valeur 57/100, normalisée par instrument).</summary>
+  </entry>
+  <entry>
+    <title>Énergie : Modéré → Tendu (58)</title>
+    <id>tag:l0g.fr,2026:risk/energie/2026-06-12T17:15:00Z</id>
+    <updated>2026-06-12T17:15:00Z</updated>
+    <link href="https://energie.l0g.fr"/>
+    <category term="elevated"/>
+    <summary>Signal Énergie passé de Modéré à Tendu (valeur 58/100, normalisée par instrument).</summary>
+  </entry>
+  <entry>
+    <title>Yen Carry : Détendu → Modéré (41)</title>
+    <id>tag:l0g.fr,2026:risk/yen/2026-06-08T17:15:00Z</id>
+    <updated>2026-06-08T17:15:00Z</updated>
+    <link href="https://yct.l0g.fr"/>
+    <category term="moderate"/>
+    <summary>Signal Yen Carry passé de Détendu à Modéré (valeur 41/100, normalisée par instrument).</summary>
+  </entry>
+</feed>

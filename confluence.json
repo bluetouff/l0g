@@ -1,0 +1,10 @@
+{
+  "updated": "2026-06-16T08:16:13Z",
+  "items": [
+    { "ticker": "TSM",  "score": 90, "quadrant": "divergent",     "funds": 7, "trimming": 6, "net": 1, "insiders": 31, "csuite": 4, "age": 22, "buy_usd": 29163646 },
+    { "ticker": "EQPT", "score": 73, "quadrant": "conviction",    "funds": 5, "trimming": 0, "net": 5, "insiders": 2,  "csuite": 1, "age": 11, "buy_usd": 5200000 },
+    { "ticker": "AVGO", "score": 64, "quadrant": "divergent",     "funds": 8, "trimming": 5, "net": 3, "insiders": 1,  "csuite": 0, "age": 41, "buy_usd": 980000 },
+    { "ticker": "ASML", "score": 30, "quadrant": "institutional", "funds": 7, "trimming": 2, "net": 5, "insiders": 0,  "csuite": 0, "age": null, "buy_usd": 0 },
+    { "ticker": "JBS",  "score": 28, "quadrant": "institutional", "funds": 5, "trimming": 1, "net": 4, "insiders": 0,  "csuite": 0, "age": null, "buy_usd": 0 }
+  ]
+}

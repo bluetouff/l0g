@@ -1,0 +1,180 @@
+{
+  "schema": "https://l0g.fr/openapi.json#/components/schemas/IntegritySurface",
+  "version": "1.10.0",
+  "generated": "2026-07-02T07:04:00.373Z",
+  "algorithm": "sha-256",
+  "canonicalization": {
+    "format": "JSON stable : clés triées récursivement, sans espaces, champ generated ignoré.",
+    "ndjson": "NDJSON : lignes JSON dans l’ordre publié, séparées par LF, avec LF final ; les lignes meta NDJSON n’incluent pas generated.",
+    "omittedFields": [
+      "generated"
+    ],
+    "reason": "Le champ generated varie à chaque build ; les empreintes visent le contenu utile du snapshot."
+  },
+  "counts": {
+    "snapshots": 17,
+    "articles": 44,
+    "guides": 18
+  },
+  "snapshots": [
+    {
+      "path": "/agents.json",
+      "url": "https://l0g.fr/agents.json",
+      "role": "Manifeste de découverte agent",
+      "mediaType": "application/json",
+      "canonicalSha256": "465f6dad6630d93a83ecec55a234367c61769b2e612cdf720395b3c49f60b315",
+      "canonicalBytes": 5744
+    },
+    {
+      "path": "/openapi.json",
+      "url": "https://l0g.fr/openapi.json",
+      "role": "Contrat OpenAPI public",
+      "mediaType": "application/json",
+      "canonicalSha256": "2f9b2524c1ff7d3bd768e9c634d2a08beadbc76db1758bacd0787cb1376af825",
+      "canonicalBytes": 52219
+    },
+    {
+      "path": "/api/v1/catalog.json",
+      "url": "https://l0g.fr/api/v1/catalog.json",
+      "role": "Catalogue machine complet",
+      "mediaType": "application/json",
+      "canonicalSha256": "436bbe873d980c82674b451091b7d230793fd48a87eaf04c730b1838728d5b58",
+      "canonicalBytes": 399786
+    },
+    {
+      "path": "/api/v1/catalog.ndjson",
+      "url": "https://l0g.fr/api/v1/catalog.ndjson",
+      "role": "Catalogue machine en NDJSON",
+      "mediaType": "application/x-ndjson",
+      "canonicalSha256": "38b396cc849092cb66ea726dfd02ec62f15ca51ca4f21a5f1f3865c6d5f37949",
+      "canonicalBytes": 394351
+    },
+    {
+      "path": "/api/v1/claims.json",
+      "url": "https://l0g.fr/api/v1/claims.json",
+      "role": "Graphe affirmation-source",
+      "mediaType": "application/json",
+      "canonicalSha256": "60b0c0e02cfdec284eb870513b26a539c4204a7ee33f3a55469ec7bd302d5acf",
+      "canonicalBytes": 311619
+    },
+    {
+      "path": "/api/v1/claims.ndjson",
+      "url": "https://l0g.fr/api/v1/claims.ndjson",
+      "role": "Claims en NDJSON",
+      "mediaType": "application/x-ndjson",
+      "canonicalSha256": "5be90cc5c7cdb4a7fe069f3ba5a7182c5500fad3875bd4b948bc0b97117ce123",
+      "canonicalBytes": 218024
+    },
+    {
+      "path": "/api/v1/evidence-graph.json",
+      "url": "https://l0g.fr/api/v1/evidence-graph.json",
+      "role": "Evidence graph",
+      "mediaType": "application/json",
+      "canonicalSha256": "2ba0cab8650c811f9ce725467e4fba0a54c90d1185809377afe97a8c7bf7cb67",
+      "canonicalBytes": 282974
+    },
+    {
+      "path": "/api/v1/evidence-graph.ndjson",
+      "url": "https://l0g.fr/api/v1/evidence-graph.ndjson",
+      "role": "Evidence graph en NDJSON",
+      "mediaType": "application/x-ndjson",
+      "canonicalSha256": "f1c4b4a20e907662ff3fe883519827834e00ed5c70e9a7c8578c1e1cb5040bac",
+      "canonicalBytes": 297656
+    },
+    {
+      "path": "/api/v1/sources.json",
+      "url": "https://l0g.fr/api/v1/sources.json",
+      "role": "Registre sources et hôtes cités",
+      "mediaType": "application/json",
+      "canonicalSha256": "65a1958a7fa9e41178e0741bd9116bf10eb090f162fc1cb4a1f0c60977f78355",
+      "canonicalBytes": 23993
+    },
+    {
+      "path": "/api/v1/freshness.json",
+      "url": "https://l0g.fr/api/v1/freshness.json",
+      "role": "Fraîcheur corpus",
+      "mediaType": "application/json",
+      "canonicalSha256": "395b7b1b792ec0d499138757bee5443259cb149d039680882e9cb61cbbac7e4d",
+      "canonicalBytes": 11175
+    },
+    {
+      "path": "/api/v1/changes.json",
+      "url": "https://l0g.fr/api/v1/changes.json",
+      "role": "Changefeed machine",
+      "mediaType": "application/json",
+      "canonicalSha256": "89b954f744e1b753adc5735c6c2c528a3e8775aac82c668f6a3d984e8119edf0",
+      "canonicalBytes": 57880
+    },
+    {
+      "path": "/api/v1/changes.ndjson",
+      "url": "https://l0g.fr/api/v1/changes.ndjson",
+      "role": "Changefeed machine en NDJSON",
+      "mediaType": "application/x-ndjson",
+      "canonicalSha256": "4378b971077457fd02e626b34b42bebbfa63bb94ca379964348131557cc490f7",
+      "canonicalBytes": 58841
+    },
+    {
+      "path": "/api/v1/signals/current.json",
+      "url": "https://l0g.fr/api/v1/signals/current.json",
+      "role": "Dernières observations point-in-time par instrument",
+      "mediaType": "application/json",
+      "canonicalSha256": "dc74eb1aed60668d684ccff0bf1741294a7c2b04a91f8df72afbbbe45518cd76",
+      "canonicalBytes": 5723
+    },
+    {
+      "path": "/api/v1/signals/history.json",
+      "url": "https://l0g.fr/api/v1/signals/history.json",
+      "role": "Historique des signaux",
+      "mediaType": "application/json",
+      "canonicalSha256": "f089dc3db34a79da7296465d3273b5937bbb4328470467336e7c0c71aef8cf07",
+      "canonicalBytes": 12778
+    },
+    {
+      "path": "/api/v1/signals/history.ndjson",
+      "url": "https://l0g.fr/api/v1/signals/history.ndjson",
+      "role": "Historique des signaux en NDJSON",
+      "mediaType": "application/x-ndjson",
+      "canonicalSha256": "a3a532fc9161da680875b890437fcc8a0863ff39c2a987b71800fd3ba3b0a4b1",
+      "canonicalBytes": 7236
+    },
+    {
+      "path": "/api/v1/signals/history.csv",
+      "url": "https://l0g.fr/api/v1/signals/history.csv",
+      "role": "Historique des signaux en CSV",
+      "mediaType": "text/csv",
+      "canonicalSha256": "eb4b4c8f868b848e74009b1a35564e88c1563ebc1c1f3ec6b1c687e42215b124",
+      "canonicalBytes": 1612
+    },
+    {
+      "path": "/api/v1/signals/schema.json",
+      "url": "https://l0g.fr/api/v1/signals/schema.json",
+      "role": "Schéma historique des signaux",
+      "mediaType": "application/json",
+      "canonicalSha256": "5d9194340c8efc90520cf413fbac32dc57240fe87a3a36a4066689b185493365",
+      "canonicalBytes": 1325
+    }
+  ],
+  "verification": {
+    "rule": "Récupérer le JSON, supprimer récursivement les champs generated, trier les clés, sérialiser sans espaces, puis calculer SHA-256.",
+    "caveat": "Ces empreintes vérifient les surfaces Agent Surface ; les fichiers externes conservent leur propre politique de version."
+  },
+  "externalAuthenticity": {
+    "status": "github-sigstore-attestation-configured",
+    "mechanism": "GitHub Artifact Attestations / Sigstore, émises par le workflow de build avec OIDC GitHub Actions.",
+    "subjects": [
+      "/agents.json",
+      "/openapi.json",
+      "/api/v1/integrity.json"
+    ],
+    "currentGuarantee": "Les hashes publiés sur l0g.fr vérifient la cohérence canonique des artefacts servis ; le workflow GitHub signe extérieurement les manifests principaux par attestation Sigstore.",
+    "missingGuarantee": "Une copie locale construite hors CI peut ne pas avoir d’attestation distante ; l’attestation doit être vérifiée côté GitHub pour le commit publié.",
+    "verification": "Vérifier les attestations GitHub du commit publié sur le dépôt bluetouff/l0g pour les sujets /agents.json, /openapi.json et /api/v1/integrity.json, puis comparer les SHA-256 canoniques exposés.",
+    "recommendedNextSteps": [
+      "Publier un lien de vérification des attestations depuis la page données.",
+      "Étendre l’attestation à tous les snapshots JSON et NDJSON si le volume reste acceptable.",
+      "Publier périodiquement les empreintes dans un canal social vérifié."
+    ]
+  },
+  "license": "CC BY 4.0",
+  "attribution": "l0g.fr"
+}

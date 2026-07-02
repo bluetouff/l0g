@@ -1,0 +1,4609 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "l0g.fr Agent Surface API",
+    "version": "1.10.0",
+    "description": "Contrat public pour agents IA : manifeste, catalogue, graphe affirmation-source, evidence graph, NDJSON, registre de sources, fraîcheur, intégrité, changefeed, risque et corpus.",
+    "license": {
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://l0g.fr"
+    }
+  ],
+  "paths": {
+    "/agents.json": {
+      "get": {
+        "summary": "Manifeste agent",
+        "description": "Découverte des capacités, endpoints, règles d’usage et politiques de preuve.",
+        "operationId": "agentManifest",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentManifest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/catalog.json": {
+      "get": {
+        "summary": "Catalogue complet",
+        "description": "Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.",
+        "operationId": "catalog",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/catalog.ndjson": {
+      "get": {
+        "summary": "Catalogue NDJSON",
+        "description": "Catalogue en lignes NDJSON : articles, guides, méthodologies, glossaire, sources primaires et protocole.",
+        "responses": {
+          "200": {
+            "description": "Flux NDJSON statique généré au build, une ligne JSON par objet.",
+            "content": {
+              "application/x-ndjson": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/claims.json": {
+      "get": {
+        "summary": "Graphe affirmation-source",
+        "description": "Affirmations typées reliées à des références cliquables, datées quand détectable.",
+        "operationId": "claimsSurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimsSurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/claims.ndjson": {
+      "get": {
+        "summary": "Claims NDJSON",
+        "description": "Claims en lignes NDJSON, une affirmation typée par ligne avec références.",
+        "responses": {
+          "200": {
+            "description": "Flux NDJSON statique généré au build, une ligne JSON par objet.",
+            "content": {
+              "application/x-ndjson": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/evidence-graph.json": {
+      "get": {
+        "summary": "Evidence graph",
+        "description": "Graphe articles, claims, références, hôtes, institutions et datasets, exprimé en nœuds et arêtes.",
+        "operationId": "evidenceGraphSurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceGraphSurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/evidence-graph.ndjson": {
+      "get": {
+        "summary": "Evidence graph NDJSON",
+        "description": "Evidence graph en lignes NDJSON : nœuds puis arêtes, pour ingestion streaming.",
+        "responses": {
+          "200": {
+            "description": "Flux NDJSON statique généré au build, une ligne JSON par objet.",
+            "content": {
+              "application/x-ndjson": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sources.json": {
+      "get": {
+        "summary": "Registre sources",
+        "description": "Sources primaires institutionnelles, hôtes cités, règles de citation et limites.",
+        "operationId": "sourcesSurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesSurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/freshness.json": {
+      "get": {
+        "summary": "Fraîcheur",
+        "description": "Derniers contenus, compteurs de corpus, endpoints et politique de fraîcheur.",
+        "operationId": "freshnessSurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreshnessSurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/integrity.json": {
+      "get": {
+        "summary": "Intégrité",
+        "description": "Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérification de snapshot.",
+        "operationId": "integritySurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegritySurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/changes.json": {
+      "get": {
+        "summary": "Changefeed",
+        "description": "Flux machine des publications, révisions et politiques, avec version courante, hash, statut de diff et changement sémantique.",
+        "operationId": "changefeedSurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangefeedSurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/changes.ndjson": {
+      "get": {
+        "summary": "Changefeed NDJSON",
+        "description": "Changefeed machine en lignes NDJSON, une publication ou révision par ligne.",
+        "responses": {
+          "200": {
+            "description": "Flux NDJSON statique généré au build, une ligne JSON par objet.",
+            "content": {
+              "application/x-ndjson": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/risk.json": {
+      "get": {
+        "summary": "Signaux de risque",
+        "description": "Snapshots des dashboards de risque et caveats de normalisation.",
+        "operationId": "riskSnapshot",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskSnapshot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/debt-risk.json": {
+      "get": {
+        "summary": "Dette US",
+        "description": "Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json, avec stress courant hors CBO, couverture, provenance, buckets, sources et top signaux.",
+        "operationId": "debtRiskSnapshot",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DebtRiskSnapshot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/signals/current.json": {
+      "get": {
+        "summary": "Signaux courants",
+        "description": "Dernières observations point-in-time par instrument, dérivées de l’historique public.",
+        "operationId": "signalCurrentSurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignalCurrentSurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/signals/history.json": {
+      "get": {
+        "summary": "Historique des signaux",
+        "description": "Observations point-in-time, alertes de franchissement, couverture et politique de backtest.",
+        "operationId": "signalHistorySurface",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignalHistorySurface"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/signals/history.ndjson": {
+      "get": {
+        "summary": "Historique des signaux NDJSON",
+        "description": "Historique des signaux ligne à ligne : meta, observations puis événements de seuil.",
+        "responses": {
+          "200": {
+            "description": "Flux NDJSON statique généré au build, une ligne JSON par objet.",
+            "content": {
+              "application/x-ndjson": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/signals/history.csv": {
+      "get": {
+        "summary": "Historique des signaux CSV",
+        "description": "Observations point-in-time à plat pour pandas, R, DuckDB ou tableur.",
+        "responses": {
+          "200": {
+            "description": "CSV statique généré au build.",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/signals/schema.json": {
+      "get": {
+        "summary": "Schéma des signaux",
+        "description": "Schéma JSON des lignes meta, observation et level-change.",
+        "operationId": "signalLineSchema",
+        "responses": {
+          "200": {
+            "description": "Réponse JSON statique générée au build.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignalLineSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Carte concise agents",
+        "responses": {
+          "200": {
+            "description": "Texte brut.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms-full.txt": {
+      "get": {
+        "summary": "Corpus agents étendu",
+        "responses": {
+          "200": {
+            "description": "Texte brut.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EvidenceReference": {
+        "type": "object",
+        "required": [
+          "label",
+          "href",
+          "dateLabel",
+          "indexedAt"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "host": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "dateLabel": {
+            "type": "string"
+          },
+          "sourcePublicationDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "sourcePublicationDateLabel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "retrievedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "indexedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "ClaimClassifier": {
+        "type": "object",
+        "required": [
+          "method",
+          "matchedRule",
+          "caveat"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "method": {
+            "const": "lexical-heuristic-v1"
+          },
+          "matchedRule": {
+            "enum": [
+              "scenario-marker",
+              "estimate-marker",
+              "inference-marker",
+              "unclassified-assertion"
+            ]
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "reviewedOverride": {
+            "type": "string"
+          }
+        }
+      },
+      "Claim": {
+        "type": "object",
+        "required": [
+          "id",
+          "articleSlug",
+          "kind",
+          "claim",
+          "dateLabel",
+          "claimDate",
+          "claimDateLabel",
+          "observationDate",
+          "observationDateLabel",
+          "temporalPrecision",
+          "reviewStatus",
+          "classifier",
+          "references"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "localId": {
+            "type": "string"
+          },
+          "articleSlug": {
+            "type": "string"
+          },
+          "articleUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "articleTitle": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "fait",
+              "estimation",
+              "inférence",
+              "scénario",
+              "unclassified-assertion"
+            ]
+          },
+          "claim": {
+            "type": "string"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "dateLabel": {
+            "type": "string"
+          },
+          "claimDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "claimDateLabel": {
+            "type": "string"
+          },
+          "observationDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationDateLabel": {
+            "type": "string"
+          },
+          "observationStart": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationEnd": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "temporalPrecision": {
+            "enum": [
+              "day",
+              "month",
+              "quarter",
+              "year",
+              "range",
+              "unknown"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "auto-backfill",
+              "structurée"
+            ]
+          },
+          "reviewStatus": {
+            "enum": [
+              "unreviewed",
+              "reviewed"
+            ]
+          },
+          "reviewedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "reviewedBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reviewNote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reviewedProofDepth": {
+            "anyOf": [
+              {
+                "enum": [
+                  "direct-proof",
+                  "reproduction"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidenceLocator": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "value"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "page",
+                      "section",
+                      "table",
+                      "series",
+                      "cell",
+                      "form",
+                      "calculation",
+                      "other"
+                    ]
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reproductionArtifact": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "classifier": {
+            "$ref": "#/components/schemas/ClaimClassifier"
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceReference"
+            }
+          }
+        }
+      },
+      "ArticleEvidenceCounts": {
+        "type": "object",
+        "required": [
+          "externalLinks",
+          "internalLinks",
+          "primarySources",
+          "claimRelations"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "externalLinks": {
+            "type": "integer"
+          },
+          "internalLinks": {
+            "type": "integer"
+          },
+          "primarySources": {
+            "type": "integer"
+          },
+          "claimRelations": {
+            "type": "integer"
+          }
+        }
+      },
+      "EvidenceDepth": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "detail",
+          "score",
+          "automated"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "enum": [
+              "mention",
+              "reference",
+              "linked-source",
+              "direct-proof",
+              "reproduction"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "automated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "EvidenceBadge": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "detail"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "enum": [
+              "primary-source",
+              "public-data",
+              "secondary-source",
+              "scenario",
+              "internal-context"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      },
+      "PrimarySourceMention": {
+        "type": "object",
+        "required": [
+          "slug",
+          "name",
+          "url",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "reason": {
+            "enum": [
+              "source-liée"
+            ]
+          }
+        }
+      },
+      "ArticleEvidenceSummary": {
+        "type": "object",
+        "required": [
+          "claims",
+          "depth",
+          "badges",
+          "primarySources",
+          "counts"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            }
+          },
+          "depth": {
+            "$ref": "#/components/schemas/EvidenceDepth"
+          },
+          "badges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceBadge"
+            }
+          },
+          "primarySources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrimarySourceMention"
+            }
+          },
+          "counts": {
+            "$ref": "#/components/schemas/ArticleEvidenceCounts"
+          }
+        }
+      },
+      "ArticleRevisionPolicy": {
+        "type": "object",
+        "required": [
+          "published",
+          "updated",
+          "policy",
+          "changelog"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "published": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "updated": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "policy": {
+            "type": "string",
+            "format": "uri"
+          },
+          "changelog": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "ContentSummary": {
+        "type": "object",
+        "required": [
+          "slug",
+          "url",
+          "title",
+          "date",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "updated": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "description": {
+            "type": "string"
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/ArticleEvidenceSummary"
+          },
+          "revisions": {
+            "$ref": "#/components/schemas/ArticleRevisionPolicy"
+          }
+        }
+      },
+      "GlossaryEntry": {
+        "type": "object",
+        "required": [
+          "slug",
+          "url",
+          "name",
+          "definition",
+          "category"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "sigle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "guide": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "Topic": {
+        "type": "object",
+        "required": [
+          "slug",
+          "label",
+          "blurb"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "blurb": {
+            "type": "string"
+          }
+        }
+      },
+      "Dataset": {
+        "type": "object",
+        "required": [
+          "name",
+          "role",
+          "url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "cadence": {
+            "type": "string"
+          },
+          "delay": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "RiskBandScaleCaveat": {
+        "type": "object",
+        "required": [
+          "title",
+          "summary",
+          "correctLabel",
+          "wrongLabel",
+          "details"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "correctLabel": {
+            "type": "string"
+          },
+          "wrongLabel": {
+            "type": "string"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MethodologySource": {
+        "type": "object",
+        "required": [
+          "name",
+          "role",
+          "url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "cadence": {
+            "type": "string"
+          },
+          "delay": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "PrimarySource": {
+        "type": "object",
+        "required": [
+          "slug",
+          "url",
+          "name",
+          "category",
+          "officialUrl",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "name": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "officialUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": {
+            "type": "string"
+          },
+          "datasets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Dataset"
+            }
+          },
+          "limits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verification": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MethodologySummary": {
+        "type": "object",
+        "required": [
+          "slug",
+          "url",
+          "title",
+          "label",
+          "description",
+          "question",
+          "updated"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "dashboard": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "repo": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "updated": {
+            "type": "string"
+          },
+          "scaleCaveat": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RiskBandScaleCaveat"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MethodologySource"
+            }
+          }
+        }
+      },
+      "ProofDepthLevel": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "meaning",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "enum": [
+              "mention",
+              "reference",
+              "linked-source",
+              "direct-proof",
+              "reproduction"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "automatique",
+              "semi-structuré",
+              "objectif"
+            ]
+          }
+        }
+      },
+      "EditorialPrecisionGuard": {
+        "type": "object",
+        "required": [
+          "title",
+          "summary",
+          "requirements",
+          "warning"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warning": {
+            "type": "string"
+          }
+        }
+      },
+      "AgentCounts": {
+        "type": "object",
+        "required": [
+          "articles",
+          "guides",
+          "methodologies",
+          "glossary",
+          "primarySources"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "articles": {
+            "type": "integer"
+          },
+          "guides": {
+            "type": "integer"
+          },
+          "methodologies": {
+            "type": "integer"
+          },
+          "glossary": {
+            "type": "integer"
+          },
+          "primarySources": {
+            "type": "integer"
+          }
+        }
+      },
+      "AgentProofPolicy": {
+        "type": "object",
+        "required": [
+          "claimKinds",
+          "depthScale",
+          "precisionGuard",
+          "correctionPolicy",
+          "changelog",
+          "riskBandScaleCaveat"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "claimKinds": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "fait",
+                "estimation",
+                "inférence",
+                "scénario",
+                "unclassified-assertion"
+              ]
+            }
+          },
+          "depthScale": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProofDepthLevel"
+            }
+          },
+          "precisionGuard": {
+            "$ref": "#/components/schemas/EditorialPrecisionGuard"
+          },
+          "correctionPolicy": {
+            "type": "string",
+            "format": "uri"
+          },
+          "changelog": {
+            "type": "string",
+            "format": "uri"
+          },
+          "riskBandScaleCaveat": {
+            "$ref": "#/components/schemas/RiskBandScaleCaveat"
+          }
+        }
+      },
+      "AgentEndpointMap": {
+        "type": "object",
+        "required": [
+          "openapi",
+          "catalog",
+          "catalogNdjson",
+          "claims",
+          "claimsNdjson",
+          "evidenceGraph",
+          "evidenceGraphNdjson",
+          "sources",
+          "freshness",
+          "integrity",
+          "changes",
+          "changesNdjson",
+          "risk",
+          "debtRisk",
+          "signalCurrent",
+          "signalHistory",
+          "signalHistoryNdjson",
+          "signalHistoryCsv",
+          "signalSchema",
+          "llms",
+          "llmsFull",
+          "mcpEndpoint",
+          "mcpDocumentation",
+          "docs"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "openapi": {
+            "type": "string",
+            "format": "uri"
+          },
+          "catalog": {
+            "type": "string",
+            "format": "uri"
+          },
+          "catalogNdjson": {
+            "type": "string",
+            "format": "uri"
+          },
+          "claims": {
+            "type": "string",
+            "format": "uri"
+          },
+          "claimsNdjson": {
+            "type": "string",
+            "format": "uri"
+          },
+          "evidenceGraph": {
+            "type": "string",
+            "format": "uri"
+          },
+          "evidenceGraphNdjson": {
+            "type": "string",
+            "format": "uri"
+          },
+          "sources": {
+            "type": "string",
+            "format": "uri"
+          },
+          "freshness": {
+            "type": "string",
+            "format": "uri"
+          },
+          "integrity": {
+            "type": "string",
+            "format": "uri"
+          },
+          "changes": {
+            "type": "string",
+            "format": "uri"
+          },
+          "changesNdjson": {
+            "type": "string",
+            "format": "uri"
+          },
+          "risk": {
+            "type": "string",
+            "format": "uri"
+          },
+          "debtRisk": {
+            "type": "string",
+            "format": "uri"
+          },
+          "signalCurrent": {
+            "type": "string",
+            "format": "uri"
+          },
+          "signalHistory": {
+            "type": "string",
+            "format": "uri"
+          },
+          "signalHistoryNdjson": {
+            "type": "string",
+            "format": "uri"
+          },
+          "signalHistoryCsv": {
+            "type": "string",
+            "format": "uri"
+          },
+          "signalSchema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "llms": {
+            "type": "string",
+            "format": "uri"
+          },
+          "llmsFull": {
+            "type": "string",
+            "format": "uri"
+          },
+          "mcpEndpoint": {
+            "type": "string",
+            "format": "uri"
+          },
+          "mcpDocumentation": {
+            "type": "string",
+            "format": "uri"
+          },
+          "docs": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "AgentManifest": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "name",
+          "url",
+          "description",
+          "license",
+          "attribution",
+          "language",
+          "capabilities",
+          "endpoints",
+          "preferredUse",
+          "prohibitedUse",
+          "counts",
+          "proofPolicy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "endpoints": {
+            "$ref": "#/components/schemas/AgentEndpointMap"
+          },
+          "preferredUse": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prohibitedUse": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "counts": {
+            "$ref": "#/components/schemas/AgentCounts"
+          },
+          "proofPolicy": {
+            "$ref": "#/components/schemas/AgentProofPolicy"
+          }
+        }
+      },
+      "CatalogCounts": {
+        "type": "object",
+        "required": [
+          "articles",
+          "guides",
+          "topics",
+          "methodologies",
+          "glossary",
+          "primarySources",
+          "editorialChangelog"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "articles": {
+            "type": "integer"
+          },
+          "guides": {
+            "type": "integer"
+          },
+          "topics": {
+            "type": "integer"
+          },
+          "methodologies": {
+            "type": "integer"
+          },
+          "glossary": {
+            "type": "integer"
+          },
+          "primarySources": {
+            "type": "integer"
+          },
+          "editorialChangelog": {
+            "type": "integer"
+          }
+        }
+      },
+      "GlossaryCategory": {
+        "type": "object",
+        "required": [
+          "slug",
+          "title",
+          "count"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "EditorialLink": {
+        "type": "object",
+        "required": [
+          "label",
+          "href"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          }
+        }
+      },
+      "EditorialPrinciple": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "EditorialStep": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "checks"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EditorialEvidenceLevel": {
+        "type": "object",
+        "required": [
+          "label",
+          "rank",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "EditorialCorrectionType": {
+        "type": "object",
+        "required": [
+          "label",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "EditorialCorrectionPolicy": {
+        "type": "object",
+        "required": [
+          "title",
+          "summary",
+          "correctionTypes",
+          "revisionRules"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "correctionTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EditorialCorrectionType"
+            }
+          },
+          "revisionRules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EditorialProtocol": {
+        "type": "object",
+        "required": [
+          "url",
+          "updated",
+          "promise",
+          "principles",
+          "steps",
+          "evidenceLevels",
+          "proofDepthLevels",
+          "precisionGuard",
+          "correctionPolicy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date"
+          },
+          "promise": {
+            "type": "string"
+          },
+          "principles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EditorialPrinciple"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EditorialStep"
+            }
+          },
+          "evidenceLevels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EditorialEvidenceLevel"
+            }
+          },
+          "proofDepthLevels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProofDepthLevel"
+            }
+          },
+          "precisionGuard": {
+            "$ref": "#/components/schemas/EditorialPrecisionGuard"
+          },
+          "correctionPolicy": {
+            "$ref": "#/components/schemas/EditorialCorrectionPolicy"
+          }
+        }
+      },
+      "EditorialChangelogItem": {
+        "type": "object",
+        "required": [
+          "date",
+          "title",
+          "kind",
+          "summary",
+          "links",
+          "url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "title": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "protocole",
+              "traçabilité",
+              "sources",
+              "données",
+              "sécurité",
+              "méthode"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EditorialLink"
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "CatalogEditorial": {
+        "type": "object",
+        "required": [
+          "protocol",
+          "changelog"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "protocol": {
+            "$ref": "#/components/schemas/EditorialProtocol"
+          },
+          "changelog": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EditorialChangelogItem"
+            }
+          }
+        }
+      },
+      "Catalog": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "counts",
+          "articles",
+          "guides",
+          "topics",
+          "methodologies",
+          "glossary",
+          "primarySources"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "note": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/CatalogCounts"
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentSummary"
+            }
+          },
+          "guides": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentSummary"
+            }
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Topic"
+            }
+          },
+          "methodologies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MethodologySummary"
+            }
+          },
+          "glossary": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlossaryEntry"
+            }
+          },
+          "glossaryCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlossaryCategory"
+            }
+          },
+          "primarySources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrimarySource"
+            }
+          },
+          "editorial": {
+            "$ref": "#/components/schemas/CatalogEditorial"
+          },
+          "riskBandScaleCaveat": {
+            "$ref": "#/components/schemas/RiskBandScaleCaveat"
+          }
+        }
+      },
+      "ClaimsSurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "counts",
+          "policy",
+          "reviewRegistry",
+          "claims",
+          "references"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/ClaimsCounts"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ClaimsPolicy"
+          },
+          "reviewRegistry": {
+            "$ref": "#/components/schemas/ClaimReviewRegistry"
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            }
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimReference"
+            }
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "ClaimsCounts": {
+        "type": "object",
+        "required": [
+          "articles",
+          "claims",
+          "reviewedClaims",
+          "references",
+          "claimKinds"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "articles": {
+            "type": "integer"
+          },
+          "claims": {
+            "type": "integer"
+          },
+          "reviewedClaims": {
+            "type": "integer"
+          },
+          "references": {
+            "type": "integer"
+          },
+          "claimKinds": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "fait",
+                "estimation",
+                "inférence",
+                "scénario",
+                "unclassified-assertion"
+              ]
+            }
+          }
+        }
+      },
+      "ClaimReviewRegistry": {
+        "type": "object",
+        "required": [
+          "version",
+          "updated",
+          "policy",
+          "reviewedClaims",
+          "entries"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date"
+          },
+          "policy": {
+            "type": "string"
+          },
+          "reviewedClaims": {
+            "type": "integer"
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "claimId",
+                "reviewedAt",
+                "reviewedBy",
+                "note"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "claimId": {
+                  "type": "string"
+                },
+                "reviewedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "reviewedBy": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "fait",
+                    "estimation",
+                    "inférence",
+                    "scénario",
+                    "unclassified-assertion"
+                  ]
+                },
+                "note": {
+                  "type": "string"
+                },
+                "proofDepth": {
+                  "enum": [
+                    "direct-proof",
+                    "reproduction"
+                  ]
+                },
+                "evidenceLocator": {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "value"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "page",
+                        "section",
+                        "table",
+                        "series",
+                        "cell",
+                        "form",
+                        "calculation",
+                        "other"
+                      ]
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "reproductionArtifact": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ClaimsPolicy": {
+        "type": "object",
+        "required": [
+          "relation",
+          "caveat",
+          "classification",
+          "review",
+          "dateModel",
+          "correctionPolicy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string"
+          },
+          "review": {
+            "type": "string"
+          },
+          "dateModel": {
+            "type": "string"
+          },
+          "correctionPolicy": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "ClaimReference": {
+        "type": "object",
+        "required": [
+          "claimId",
+          "articleSlug",
+          "label",
+          "href",
+          "host",
+          "kind",
+          "date",
+          "dateLabel",
+          "claimDate",
+          "observationDate",
+          "observationStart",
+          "observationEnd",
+          "temporalPrecision",
+          "sourcePublicationDate",
+          "retrievedAt",
+          "indexedAt"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "claimId": {
+            "type": "string"
+          },
+          "articleSlug": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "host": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "dateLabel": {
+            "type": "string"
+          },
+          "claimDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationStart": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationEnd": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "temporalPrecision": {
+            "enum": [
+              "day",
+              "month",
+              "quarter",
+              "year",
+              "range",
+              "unknown"
+            ]
+          },
+          "sourcePublicationDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "retrievedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "indexedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "SourcesSurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "registry",
+          "counts",
+          "sourcePolicy",
+          "primarySources",
+          "referenceHosts"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registry": {
+            "$ref": "#/components/schemas/PrimarySourceRegistry"
+          },
+          "counts": {
+            "type": "object",
+            "required": [
+              "primarySources",
+              "referenceHosts",
+              "references"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "primarySources": {
+                "type": "integer"
+              },
+              "referenceHosts": {
+                "type": "integer"
+              },
+              "references": {
+                "type": "integer"
+              }
+            }
+          },
+          "sourcePolicy": {
+            "type": "object",
+            "required": [
+              "preferred",
+              "fallback",
+              "citationRule"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "preferred": {
+                "type": "string"
+              },
+              "fallback": {
+                "type": "string"
+              },
+              "citationRule": {
+                "type": "string"
+              }
+            }
+          },
+          "primarySources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrimarySource"
+            }
+          },
+          "referenceHosts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReferenceHost"
+            }
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "PrimarySourceRegistry": {
+        "type": "object",
+        "required": [
+          "version",
+          "updated",
+          "scope",
+          "testPolicy",
+          "caveat"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "testPolicy": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          }
+        }
+      },
+      "ReferenceHost": {
+        "type": "object",
+        "required": [
+          "host",
+          "references",
+          "articles",
+          "kinds"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "references": {
+            "type": "integer"
+          },
+          "articles": {
+            "type": "integer"
+          },
+          "kinds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EvidenceGraphNode": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "article",
+              "claim",
+              "reference",
+              "host",
+              "primarySource",
+              "dataset"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EvidenceGraphNodeMeta"
+          }
+        }
+      },
+      "EvidenceGraphEdge": {
+        "type": "object",
+        "required": [
+          "id",
+          "from",
+          "to",
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "contains",
+              "cites",
+              "hostedBy",
+              "matchesPrimarySource",
+              "providesDataset"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EvidenceGraphEdgeMeta"
+          }
+        }
+      },
+      "EvidenceGraphNodeMeta": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "localId": {
+            "type": "string"
+          },
+          "articleSlug": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "fait",
+              "estimation",
+              "inférence",
+              "scénario",
+              "unclassified-assertion",
+              "source primaire",
+              "source secondaire",
+              "contexte",
+              "dashboard",
+              "publication interne"
+            ]
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "dateLabel": {
+            "type": "string"
+          },
+          "claimDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationStart": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "observationEnd": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "temporalPrecision": {
+            "enum": [
+              "day",
+              "month",
+              "quarter",
+              "year",
+              "range",
+              "unknown"
+            ]
+          },
+          "sourcePublicationDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "retrievedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "indexedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "confidence": {
+            "enum": [
+              "auto-backfill",
+              "structurée"
+            ]
+          },
+          "reviewStatus": {
+            "enum": [
+              "unreviewed",
+              "reviewed"
+            ]
+          },
+          "href": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string"
+          },
+          "sourceSlug": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "cadence": {
+            "type": "string"
+          },
+          "delay": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "officialUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EvidenceGraphEdgeMeta": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "anyOf": [
+              {
+                "enum": [
+                  "fait",
+                  "estimation",
+                  "inférence",
+                  "scénario",
+                  "unclassified-assertion",
+                  "source primaire",
+                  "source secondaire",
+                  "contexte",
+                  "dashboard",
+                  "publication interne"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "dateLabel": {
+            "type": "string"
+          },
+          "cadence": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      },
+      "EvidenceGraphSurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "counts",
+          "nodes",
+          "edges"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/EvidenceGraphCounts"
+          },
+          "graphPolicy": {
+            "$ref": "#/components/schemas/EvidenceGraphPolicy"
+          },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceGraphNode"
+            }
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceGraphEdge"
+            }
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "EvidenceGraphCounts": {
+        "type": "object",
+        "required": [
+          "nodes",
+          "edges",
+          "articles",
+          "claims",
+          "references",
+          "hosts",
+          "primarySources",
+          "datasets"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "nodes": {
+            "type": "integer"
+          },
+          "edges": {
+            "type": "integer"
+          },
+          "articles": {
+            "type": "integer"
+          },
+          "claims": {
+            "type": "integer"
+          },
+          "references": {
+            "type": "integer"
+          },
+          "hosts": {
+            "type": "integer"
+          },
+          "primarySources": {
+            "type": "integer"
+          },
+          "datasets": {
+            "type": "integer"
+          }
+        }
+      },
+      "EvidenceGraphPolicy": {
+        "type": "object",
+        "required": [
+          "relation",
+          "traversal",
+          "caveat",
+          "correctionPolicy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "traversal": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "correctionPolicy": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "FreshnessSurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "latest",
+          "corpus",
+          "endpoints",
+          "signalFreshness",
+          "freshnessPolicy",
+          "license",
+          "attribution"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latest": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FreshnessItem"
+            }
+          },
+          "corpus": {
+            "$ref": "#/components/schemas/FreshnessCorpus"
+          },
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FreshnessEndpoint"
+            }
+          },
+          "signalFreshness": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalFreshness"
+            }
+          },
+          "freshnessPolicy": {
+            "type": "object",
+            "required": [
+              "rule",
+              "caveat",
+              "correctionPolicy",
+              "changelog"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "rule": {
+                "type": "string"
+              },
+              "caveat": {
+                "type": "string"
+              },
+              "correctionPolicy": {
+                "type": "string",
+                "format": "uri"
+              },
+              "changelog": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "FreshnessCorpus": {
+        "type": "object",
+        "required": [
+          "articles",
+          "guides",
+          "methodologies",
+          "glossary",
+          "primarySources",
+          "editorialChangelog"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "articles": {
+            "type": "integer"
+          },
+          "guides": {
+            "type": "integer"
+          },
+          "methodologies": {
+            "type": "integer"
+          },
+          "glossary": {
+            "type": "integer"
+          },
+          "primarySources": {
+            "type": "integer"
+          },
+          "editorialChangelog": {
+            "type": "integer"
+          }
+        }
+      },
+      "SignalFreshnessCoverage": {
+        "type": "object",
+        "required": [
+          "signalPresent",
+          "observedAt",
+          "sourcePublishedAt",
+          "retrievedAt",
+          "computedAt",
+          "staleAfter"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "signalPresent": {
+            "type": "boolean"
+          },
+          "observedAt": {
+            "type": "boolean"
+          },
+          "sourcePublishedAt": {
+            "type": "boolean"
+          },
+          "retrievedAt": {
+            "type": "boolean"
+          },
+          "computedAt": {
+            "type": "boolean"
+          },
+          "staleAfter": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SignalFreshness": {
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "source",
+          "methodology",
+          "observedAt",
+          "sourcePublishedAt",
+          "retrievedAt",
+          "computedAt",
+          "staleAfter",
+          "expiresAt",
+          "timelinessStatus",
+          "coverageStatus",
+          "coverage",
+          "missing",
+          "note"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "enum": [
+              "us",
+              "eu",
+              "yen",
+              "energie",
+              "debt"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          },
+          "methodology": {
+            "type": "string",
+            "format": "uri"
+          },
+          "observedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "sourcePublishedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "retrievedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "computedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "staleAfter": {
+            "type": "string",
+            "pattern": "^P\\d+D$"
+          },
+          "expiresAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "timelinessStatus": {
+            "enum": [
+              "fresh",
+              "stale",
+              "unknown"
+            ]
+          },
+          "coverageStatus": {
+            "enum": [
+              "complete",
+              "partial",
+              "missing"
+            ]
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/SignalFreshnessCoverage"
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "signalPresent",
+                "observedAt",
+                "sourcePublishedAt",
+                "retrievedAt",
+                "computedAt",
+                "staleAfter"
+              ]
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "FreshnessItem": {
+        "type": "object",
+        "required": [
+          "type",
+          "slug",
+          "title",
+          "url",
+          "date"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "article",
+              "guide"
+            ]
+          },
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "FreshnessEndpoint": {
+        "type": "object",
+        "required": [
+          "path",
+          "role",
+          "update"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "update": {
+            "type": "string"
+          }
+        }
+      },
+      "IntegritySurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "algorithm",
+          "canonicalization",
+          "counts",
+          "snapshots",
+          "verification",
+          "externalAuthenticity"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "algorithm": {
+            "const": "sha-256"
+          },
+          "canonicalization": {
+            "$ref": "#/components/schemas/IntegrityCanonicalization"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/IntegrityCounts"
+          },
+          "verification": {
+            "$ref": "#/components/schemas/IntegrityVerification"
+          },
+          "externalAuthenticity": {
+            "$ref": "#/components/schemas/ExternalAuthenticityPolicy"
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          },
+          "snapshots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "url",
+                "canonicalSha256"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "mediaType": {
+                  "type": "string"
+                },
+                "canonicalSha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "canonicalBytes": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "IntegrityCounts": {
+        "type": "object",
+        "required": [
+          "snapshots",
+          "articles",
+          "guides"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "snapshots": {
+            "type": "integer"
+          },
+          "articles": {
+            "type": "integer"
+          },
+          "guides": {
+            "type": "integer"
+          }
+        }
+      },
+      "IntegrityCanonicalization": {
+        "type": "object",
+        "required": [
+          "format",
+          "ndjson",
+          "omittedFields",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "format": {
+            "type": "string"
+          },
+          "ndjson": {
+            "type": "string"
+          },
+          "omittedFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "IntegrityVerification": {
+        "type": "object",
+        "required": [
+          "rule",
+          "caveat"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "rule": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          }
+        }
+      },
+      "ExternalAuthenticityPolicy": {
+        "type": "object",
+        "required": [
+          "status",
+          "mechanism",
+          "subjects",
+          "currentGuarantee",
+          "missingGuarantee",
+          "verification",
+          "recommendedNextSteps"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "enum": [
+              "github-sigstore-attestation-configured"
+            ]
+          },
+          "mechanism": {
+            "type": "string"
+          },
+          "subjects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "currentGuarantee": {
+            "type": "string"
+          },
+          "missingGuarantee": {
+            "type": "string"
+          },
+          "verification": {
+            "type": "string"
+          },
+          "recommendedNextSteps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ChangefeedSurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "counts",
+          "entries"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/ChangefeedCounts"
+          },
+          "feedPolicy": {
+            "$ref": "#/components/schemas/ChangefeedPolicy"
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChangefeedEntry"
+            }
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "ChangefeedCounts": {
+        "type": "object",
+        "required": [
+          "entries",
+          "articles",
+          "guides",
+          "editorialChanges"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "entries": {
+            "type": "integer"
+          },
+          "articles": {
+            "type": "integer"
+          },
+          "guides": {
+            "type": "integer"
+          },
+          "editorialChanges": {
+            "type": "integer"
+          }
+        }
+      },
+      "ChangefeedPolicy": {
+        "type": "object",
+        "required": [
+          "scope",
+          "diffModel",
+          "caveat",
+          "correctionPolicy",
+          "changelog"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "scope": {
+            "type": "string"
+          },
+          "diffModel": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "correctionPolicy": {
+            "type": "string",
+            "format": "uri"
+          },
+          "changelog": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "ChangefeedReplacement": {
+        "type": "object",
+        "required": [
+          "objectId",
+          "version",
+          "hash"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "objectId": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hash": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      },
+      "ChangefeedEntry": {
+        "type": "object",
+        "required": [
+          "id",
+          "objectId",
+          "date",
+          "type",
+          "contentType",
+          "slug",
+          "title",
+          "url",
+          "changedFields",
+          "summary",
+          "previousVersion",
+          "currentVersion",
+          "previousHash",
+          "currentHash",
+          "replaces",
+          "semanticChange",
+          "correctionReason",
+          "diffStatus"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "objectId": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "enum": [
+              "article-published",
+              "article-revised",
+              "guide-published",
+              "guide-revised",
+              "editorial-change"
+            ]
+          },
+          "contentType": {
+            "enum": [
+              "article",
+              "guide",
+              "policy"
+            ]
+          },
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "changedFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "summary": {
+            "type": "string"
+          },
+          "previousVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "currentVersion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "previousHash": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "currentHash": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "replaces": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChangefeedReplacement"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "semanticChange": {
+            "enum": [
+              "publication",
+              "content-revision",
+              "source-update",
+              "evidence-update",
+              "editorial-policy-change"
+            ]
+          },
+          "correctionReason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "diffStatus": {
+            "enum": [
+              "current-only",
+              "previous-version-known-without-hash",
+              "historical-version-without-hash",
+              "full-diff"
+            ]
+          }
+        }
+      },
+      "SignalObservation": {
+        "type": "object",
+        "required": [
+          "recordType",
+          "recordId",
+          "instrument",
+          "observedAt",
+          "value",
+          "scale",
+          "level",
+          "tone",
+          "snapshotHash",
+          "backtestUsable"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "recordType": {
+            "const": "observation"
+          },
+          "schemaVersion": {
+            "type": "string"
+          },
+          "recordId": {
+            "type": "string"
+          },
+          "instrument": {
+            "enum": [
+              "us",
+              "eu",
+              "yen",
+              "energie",
+              "debt"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "observedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "sourcePublishedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "retrievedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "computedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "rawValue": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "scale": {
+            "type": "number"
+          },
+          "level": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "methodologyUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "sourceSnapshotUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "calculatorRepo": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "calculatorRevision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "snapshotHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "pointInTime": {
+            "type": "boolean"
+          },
+          "backtestUsable": {
+            "const": true
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SignalLevelChange": {
+        "type": "object",
+        "required": [
+          "recordType",
+          "eventId",
+          "instrument",
+          "observedAt",
+          "previousLevel",
+          "currentLevel",
+          "backtestUsable"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "recordType": {
+            "const": "level-change"
+          },
+          "schemaVersion": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "instrument": {
+            "enum": [
+              "us",
+              "eu",
+              "yen",
+              "energie",
+              "debt"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "observedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "previousLevel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "currentLevel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "pointInTime": {
+            "type": "boolean"
+          },
+          "backtestUsable": {
+            "const": false
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SignalCoverage": {
+        "type": "object",
+        "required": [
+          "observations",
+          "levelChanges",
+          "instruments",
+          "firstObservedAt",
+          "lastObservedAt",
+          "pointInTime"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "observations": {
+            "type": "integer"
+          },
+          "levelChanges": {
+            "type": "integer"
+          },
+          "instruments": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "us",
+                "eu",
+                "yen",
+                "energie",
+                "debt"
+              ]
+            }
+          },
+          "firstObservedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "lastObservedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "pointInTime": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SignalHistoryPolicy": {
+        "type": "object",
+        "required": [
+          "purpose",
+          "appendOnlyTarget",
+          "dateDiscipline",
+          "backtestRule",
+          "caveat",
+          "license",
+          "attribution"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "purpose": {
+            "type": "string"
+          },
+          "appendOnlyTarget": {
+            "type": "string"
+          },
+          "dateDiscipline": {
+            "type": "string"
+          },
+          "backtestRule": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "SignalInstrument": {
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "source",
+          "methodology"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "enum": [
+              "us",
+              "eu",
+              "yen",
+              "energie",
+              "debt"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          },
+          "methodology": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "SignalHistorySurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "coverage",
+          "policy",
+          "instruments",
+          "current",
+          "observations",
+          "levelChanges"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/SignalCoverage"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/SignalHistoryPolicy"
+          },
+          "instruments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalInstrument"
+            }
+          },
+          "current": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/SignalObservation"
+            }
+          },
+          "observations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalObservation"
+            }
+          },
+          "levelChanges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalLevelChange"
+            }
+          }
+        }
+      },
+      "SignalCurrentSurface": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "coverage",
+          "current",
+          "policy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/SignalCoverage"
+          },
+          "current": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/SignalObservation"
+            }
+          },
+          "policy": {
+            "$ref": "#/components/schemas/SignalHistoryPolicy"
+          }
+        }
+      },
+      "SignalLineSchema": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/SignalObservation"
+          },
+          {
+            "$ref": "#/components/schemas/SignalLevelChange"
+          }
+        ]
+      },
+      "RiskSignal": {
+        "type": "object",
+        "required": [
+          "value",
+          "scale",
+          "level",
+          "tone",
+          "label",
+          "source",
+          "methodology"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "scale": {
+            "type": "number"
+          },
+          "level": {
+            "type": "string"
+          },
+          "tone": {
+            "enum": [
+              "low",
+              "normal",
+              "calm",
+              "moderate",
+              "elevated",
+              "stress",
+              "risk-on",
+              "risk-off"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          },
+          "methodology": {
+            "type": "string",
+            "format": "uri"
+          },
+          "calculation": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "summary"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "summary": {
+                    "type": "string"
+                  },
+                  "sourceCode": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "sourceRevision": {
+                    "type": "string"
+                  },
+                  "formula": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "buckets": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "key",
+                        "label",
+                        "weight"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "weight": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "thresholds": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "label",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "label": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "provenance": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RiskSignalProvenance"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "DebtRiskTileSignal": {
+        "type": "object",
+        "required": [
+          "key",
+          "value",
+          "scale",
+          "level",
+          "tone"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "const": "debt"
+          },
+          "value": {
+            "type": "number"
+          },
+          "scale": {
+            "type": "number"
+          },
+          "level": {
+            "type": "string"
+          },
+          "tone": {
+            "enum": [
+              "calm",
+              "moderate",
+              "elevated",
+              "stress",
+              "crisis"
+            ]
+          }
+        }
+      },
+      "RiskSignalProvenanceBucket": {
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "score",
+          "status",
+          "weight",
+          "metrics"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "metrics": {
+            "type": "integer"
+          }
+        }
+      },
+      "RiskSignalProvenanceSource": {
+        "type": "object",
+        "required": [
+          "source",
+          "latestDate",
+          "metrics",
+          "maxRisk"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "latestDate": {
+            "type": "string"
+          },
+          "metrics": {
+            "type": "integer"
+          },
+          "maxRisk": {
+            "type": "number"
+          }
+        }
+      },
+      "RiskSignalProvenanceTopSignal": {
+        "type": "object",
+        "required": [
+          "family",
+          "name",
+          "source",
+          "date",
+          "current",
+          "unit",
+          "riskScore",
+          "signedZ",
+          "rationale"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "family": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "current": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "riskScore": {
+            "type": "number"
+          },
+          "signedZ": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "rationale": {
+            "type": "string"
+          }
+        }
+      },
+      "RiskSignalProvenance": {
+        "type": "object",
+        "required": [
+          "label",
+          "source",
+          "latestJsonUrl",
+          "methodology",
+          "calculator",
+          "calculatorRevision",
+          "generatedAt",
+          "retrievedAt",
+          "schemaVersion",
+          "scoreRaw",
+          "scoreRounded",
+          "status",
+          "issues",
+          "thresholds",
+          "refresh",
+          "scope",
+          "buckets",
+          "sources",
+          "topSignals",
+          "calculation"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          },
+          "latestJsonUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "methodology": {
+            "type": "string",
+            "format": "uri"
+          },
+          "calculator": {
+            "type": "string",
+            "format": "uri"
+          },
+          "calculatorRevision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "retrievedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "schemaVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scoreRaw": {
+            "type": "number"
+          },
+          "scoreRounded": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "coverage": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "coverageNote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "thresholds": {
+            "type": "object",
+            "required": [
+              "stress",
+              "watch"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "stress": {
+                "type": "number"
+              },
+              "watch": {
+                "type": "number"
+              }
+            }
+          },
+          "refresh": {
+            "type": "object",
+            "required": [
+              "auto_refresh_seconds",
+              "source_ttl_seconds"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "auto_refresh_seconds": {
+                "type": "integer"
+              },
+              "source_ttl_seconds": {
+                "type": "object",
+                "required": [
+                  "institutional",
+                  "market"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "institutional": {
+                    "type": "integer"
+                  },
+                  "market": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "scope": {
+            "type": "object",
+            "required": [
+              "country",
+              "focus",
+              "market_data"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "focus": {
+                "type": "string"
+              },
+              "market_data": {
+                "type": "string"
+              }
+            }
+          },
+          "buckets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RiskSignalProvenanceBucket"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RiskSignalProvenanceSource"
+            }
+          },
+          "topSignals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RiskSignalProvenanceTopSignal"
+            }
+          },
+          "calculation": {
+            "type": "string"
+          }
+        }
+      },
+      "RiskSnapshot": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "snapshot",
+          "indices",
+          "note",
+          "license",
+          "attribution"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "snapshot": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "indices": {
+            "type": "object",
+            "required": [
+              "us",
+              "eu",
+              "yen",
+              "energie",
+              "debt"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "us": {
+                "$ref": "#/components/schemas/RiskSignal"
+              },
+              "eu": {
+                "$ref": "#/components/schemas/RiskSignal"
+              },
+              "yen": {
+                "$ref": "#/components/schemas/RiskSignal"
+              },
+              "energie": {
+                "$ref": "#/components/schemas/RiskSignal"
+              },
+              "debt": {
+                "$ref": "#/components/schemas/RiskSignal"
+              }
+            }
+          },
+          "confluence": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RiskConfluence"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "feed": {
+            "type": "string",
+            "format": "uri"
+          },
+          "note": {
+            "type": "string"
+          },
+          "precisionGuard": {
+            "$ref": "#/components/schemas/EditorialPrecisionGuard"
+          },
+          "scaleCaveat": {
+            "$ref": "#/components/schemas/RiskBandScaleCaveat"
+          },
+          "license": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          }
+        }
+      },
+      "DebtRiskSnapshot": {
+        "type": "object",
+        "required": [
+          "schema",
+          "version",
+          "generated",
+          "retrievedAt",
+          "signal",
+          "provenance"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "version": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "retrievedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "signal": {
+            "$ref": "#/components/schemas/DebtRiskTileSignal"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/RiskSignalProvenance"
+          }
+        }
+      },
+      "RiskConfluenceTop": {
+        "type": "object",
+        "required": [
+          "ticker",
+          "score",
+          "quadrant"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "ticker": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "quadrant": {
+            "type": "string"
+          }
+        }
+      },
+      "RiskConfluence": {
+        "type": "object",
+        "required": [
+          "updated",
+          "count",
+          "conviction",
+          "top",
+          "source"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "updated": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "conviction": {
+            "type": "integer"
+          },
+          "top": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RiskConfluenceTop"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}

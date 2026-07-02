@@ -1,0 +1,146 @@
+{
+  "schema": "https://l0g.fr/openapi.json#/components/schemas/AgentManifest",
+  "version": "1.10.0",
+  "name": "l0g.fr Agent Surface",
+  "url": "https://l0g.fr",
+  "generated": "2026-07-02T07:04:00.373Z",
+  "description": "Surface statique de données, preuves et méthodes pour agents IA : articles, claims sourcées, sources primaires, glossaire, dashboards et fraîcheur.",
+  "license": "CC BY 4.0",
+  "attribution": "l0g.fr",
+  "language": "fr",
+  "capabilities": [
+    "search-ready catalog",
+    "streamable ndjson feeds",
+    "claim-source graph",
+    "evidence graph",
+    "clickable references with explicit source dates when detected",
+    "indexing timestamps on every evidence reference",
+    "freshness manifest",
+    "primary-source registry",
+    "editorial correction policy",
+    "verifiable snapshot hashes",
+    "machine-readable changefeed",
+    "point-in-time signal history for backtests",
+    "debt-risk current-stress coverage metadata",
+    "MCP-compatible corpus"
+  ],
+  "endpoints": {
+    "openapi": "https://l0g.fr/openapi.json",
+    "catalog": "https://l0g.fr/api/v1/catalog.json",
+    "catalogNdjson": "https://l0g.fr/api/v1/catalog.ndjson",
+    "claims": "https://l0g.fr/api/v1/claims.json",
+    "claimsNdjson": "https://l0g.fr/api/v1/claims.ndjson",
+    "evidenceGraph": "https://l0g.fr/api/v1/evidence-graph.json",
+    "evidenceGraphNdjson": "https://l0g.fr/api/v1/evidence-graph.ndjson",
+    "sources": "https://l0g.fr/api/v1/sources.json",
+    "freshness": "https://l0g.fr/api/v1/freshness.json",
+    "integrity": "https://l0g.fr/api/v1/integrity.json",
+    "changes": "https://l0g.fr/api/v1/changes.json",
+    "changesNdjson": "https://l0g.fr/api/v1/changes.ndjson",
+    "risk": "https://l0g.fr/api/v1/risk.json",
+    "debtRisk": "https://l0g.fr/api/v1/debt-risk.json",
+    "signalCurrent": "https://l0g.fr/api/v1/signals/current.json",
+    "signalHistory": "https://l0g.fr/api/v1/signals/history.json",
+    "signalHistoryNdjson": "https://l0g.fr/api/v1/signals/history.ndjson",
+    "signalHistoryCsv": "https://l0g.fr/api/v1/signals/history.csv",
+    "signalSchema": "https://l0g.fr/api/v1/signals/schema.json",
+    "llms": "https://l0g.fr/llms.txt",
+    "llmsFull": "https://l0g.fr/llms-full.txt",
+    "mcpEndpoint": "https://l0g.fr/api/mcp",
+    "mcpDocumentation": "https://l0g.fr/mcp/",
+    "docs": "https://l0g.fr/donnees/agents/"
+  },
+  "preferredUse": [
+    "Citer les URL canoniques des articles, guides ou sources.",
+    "Utiliser claims.json pour relier une affirmation à une source datée quand détectable.",
+    "Lire séparément claimDate, observationDate, sourcePublicationDate, retrievedAt et indexedAt.",
+    "Utiliser evidence-graph.json pour parcourir articles, claims, références, hôtes, sources et datasets.",
+    "Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.",
+    "Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.",
+    "Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.",
+    "Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.",
+    "Utiliser signals/history.csv ou signals/history.ndjson pour rejouer les signaux point-in-time sans look-ahead bias.",
+    "Utiliser debt-risk.json pour Dette US : ne pas recalculer le score courant depuis les seuls buckets disponibles.",
+    "Lire les champs caveat, limits et correctionPolicy avant synthèse."
+  ],
+  "prohibitedUse": [
+    "Présenter les scores 0-100 comme probabilités directement comparables.",
+    "Renormaliser un score Dette US quand des familles de sources manquent.",
+    "Supprimer l’attribution l0g.fr.",
+    "Transformer une inférence ou un scénario en fait observé."
+  ],
+  "counts": {
+    "articles": 44,
+    "guides": 18,
+    "methodologies": 6,
+    "glossary": 179,
+    "primarySources": 14
+  },
+  "proofPolicy": {
+    "claimKinds": [
+      "fait",
+      "estimation",
+      "inférence",
+      "scénario",
+      "unclassified-assertion"
+    ],
+    "depthScale": [
+      {
+        "id": "mention",
+        "label": "Mention non probante",
+        "meaning": "Signal historique faible : une autorité est nommée sans relation affirmation-source. Ce niveau ne vaut pas preuve article.",
+        "status": "automatique"
+      },
+      {
+        "id": "reference",
+        "label": "Référence",
+        "meaning": "Un document, dataset ou organisme identifiable est cité dans le texte.",
+        "status": "automatique"
+      },
+      {
+        "id": "linked-source",
+        "label": "Source liée",
+        "meaning": "Le document ou dataset est accessible par URL vérifiable.",
+        "status": "automatique"
+      },
+      {
+        "id": "direct-proof",
+        "label": "Preuve directe",
+        "meaning": "La source soutient précisément une affirmation donnée, avec relation claim → source.",
+        "status": "semi-structuré"
+      },
+      {
+        "id": "reproduction",
+        "label": "Reproduction",
+        "meaning": "La donnée, le calcul ou la transformation peut être reproduit par le lecteur.",
+        "status": "objectif"
+      }
+    ],
+    "precisionGuard": {
+      "title": "Illusion de précision",
+      "summary": "Les scores numériques et les badges donnent une impression de rigueur. Cette impression doit toujours être soutenue par des éléments vérifiables.",
+      "requirements": [
+        "données complètes",
+        "calcul reproductible",
+        "couverture",
+        "fraîcheur",
+        "incertitude",
+        "performance historique"
+      ],
+      "warning": "Sinon, la mise en forme peut devenir plus précise que la connaissance sous-jacente."
+    },
+    "correctionPolicy": "https://l0g.fr/protocole-editorial/",
+    "changelog": "https://l0g.fr/changelog-editorial/",
+    "riskBandScaleCaveat": {
+      "title": "Normalisation d’affichage, pas indice unique",
+      "summary": "Les indicateurs du bandeau utilisent une échelle commune 0-100 pour rendre les signaux lisibles côte à côte. Ils ne mesurent ni le même phénomène, ni la même fréquence, ni le même horizon.",
+      "correctLabel": "tableau de bord consolidé de signaux de risque",
+      "wrongLabel": "indice consolidé de risque systémique",
+      "details": [
+        "Un score US Macro de 43 n’est pas statistiquement équivalent à un score Yen Carry de 45, Énergie de 47 ou Dette US de 54.",
+        "Le chiffre sert à comparer un instrument à son propre régime, pas à comparer directement les instruments entre eux.",
+        "Le libellé et la fiche méthodologique de chaque dashboard priment sur le chiffre isolé."
+      ]
+    }
+  }
+}

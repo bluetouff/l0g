@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l0g.fr/api/v1/signals/schema.json",
+  "title": "l0g signal history",
+  "description": "Contrat des observations point-in-time et evenements de franchissement des signaux l0g.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/meta"
+    },
+    {
+      "$ref": "#/$defs/observation"
+    },
+    {
+      "$ref": "#/$defs/levelChange"
+    }
+  ],
+  "$defs": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "recordType",
+        "version",
+        "generated",
+        "coverage",
+        "policy"
+      ],
+      "properties": {
+        "recordType": {
+          "const": "meta"
+        }
+      },
+      "additionalProperties": true
+    },
+    "observation": {
+      "type": "object",
+      "required": [
+        "recordType",
+        "recordId",
+        "instrument",
+        "observedAt",
+        "value",
+        "snapshotHash",
+        "backtestUsable"
+      ],
+      "properties": {
+        "recordType": {
+          "const": "observation"
+        },
+        "instrument": {
+          "enum": [
+            "us",
+            "eu",
+            "yen",
+            "energie",
+            "debt"
+          ]
+        },
+        "observedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "rawValue": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "backtestUsable": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "levelChange": {
+      "type": "object",
+      "required": [
+        "recordType",
+        "eventId",
+        "instrument",
+        "observedAt",
+        "previousLevel",
+        "currentLevel",
+        "backtestUsable"
+      ],
+      "properties": {
+        "recordType": {
+          "const": "level-change"
+        },
+        "instrument": {
+          "enum": [
+            "us",
+            "eu",
+            "yen",
+            "energie",
+            "debt"
+          ]
+        },
+        "observedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "backtestUsable": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

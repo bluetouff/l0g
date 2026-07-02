@@ -1,0 +1,714 @@
+{
+  "schema": "https://l0g.fr/openapi.json#/components/schemas/SourcesSurface",
+  "version": "1.10.0",
+  "generated": "2026-07-02T07:04:00.373Z",
+  "registry": {
+    "version": "2026-06-28",
+    "updated": "2026-06-28",
+    "scope": "Référentiel éditorial versionné des institutions reconnues comme sources primaires par l0g ; les hôtes non présents peuvent rester classés comme sources secondaires.",
+    "testPolicy": "Chaque entrée doit conserver slug stable, URL officielle, au moins un dataset, limites et règles de vérification ; les builds Agent Surface valident le schéma public.",
+    "caveat": "La reconnaissance primaire est déterministe mais non exhaustive : une institution officielle absente du registre n’est pas automatiquement promue en source primaire."
+  },
+  "counts": {
+    "primarySources": 14,
+    "referenceHosts": 13,
+    "references": 148
+  },
+  "primarySources": [
+    {
+      "slug": "sec-edgar",
+      "url": "https://l0g.fr/sources/sec-edgar/",
+      "name": "SEC EDGAR",
+      "shortName": "SEC",
+      "category": "marchés, filings & disclosure",
+      "officialUrl": "https://www.sec.gov/edgar",
+      "description": "Source primaire des déclarations réglementaires américaines : 13F, Form 4, 10-K, 8-K, S-1 et documents d'émetteurs.",
+      "datasets": [
+        {
+          "name": "13F-HR",
+          "role": "Positions longues trimestrielles de gérants institutionnels.",
+          "cadence": "Trimestrielle",
+          "delay": "Jusqu'à 45 jours après la fin du trimestre",
+          "url": "https://www.sec.gov/edgar/search/"
+        },
+        {
+          "name": "Form 4",
+          "role": "Transactions déclarées par dirigeants, administrateurs et actionnaires à plus de 10 %.",
+          "cadence": "Au fil des dépôts",
+          "delay": "Deux jours ouvrés en régime normal",
+          "url": "https://www.sec.gov/edgar/search/"
+        },
+        {
+          "name": "10-K / 10-Q / 8-K",
+          "role": "Rapports périodiques, risques, états financiers et événements significatifs.",
+          "cadence": "Selon obligations de reporting",
+          "delay": "Variable selon dépôt",
+          "url": "https://www.sec.gov/edgar/search/"
+        },
+        {
+          "name": "company_tickers.json",
+          "role": "Résolution CIK, nom d'émetteur et ticker.",
+          "cadence": "Mise à jour SEC",
+          "delay": "Variable",
+          "url": "https://www.sec.gov/files/company_tickers.json"
+        }
+      ],
+      "limits": [
+        "Le 13F ne montre ni les shorts, ni les dérivés complexes, ni les positions non américaines hors périmètre.",
+        "Les dépôts peuvent arriver en retard ou être amendés : il faut vérifier la date et le type de formulaire.",
+        "Un dépôt réglementaire décrit ce qui est déclaré ; il ne donne pas toujours l'intention économique complète."
+      ],
+      "verification": [
+        "Toujours conserver le type de formulaire, le CIK et la date de dépôt.",
+        "Comparer les amendements avec le dépôt initial quand une valeur change fortement.",
+        "Préférer le document SEC original à la reprise par une base de données commerciale."
+      ]
+    },
+    {
+      "slug": "federal-reserve-fred",
+      "url": "https://l0g.fr/sources/federal-reserve-fred/",
+      "name": "Federal Reserve & FRED",
+      "shortName": "Fed / FRED",
+      "category": "macro américaine & liquidité",
+      "officialUrl": "https://fred.stlouisfed.org/",
+      "description": "Réserve fédérale, FRED et publications associées : taux, inflation, emploi, bilan, liquidité, conditions financières et séries macro américaines.",
+      "datasets": [
+        {
+          "name": "FRED series",
+          "role": "Catalogue macro, taux, inflation, activité, emploi et conditions financières.",
+          "cadence": "Selon série",
+          "delay": "Variable selon publication source",
+          "url": "https://fred.stlouisfed.org/"
+        },
+        {
+          "name": "Federal Reserve statistical releases",
+          "role": "Communiqués, bilan et statistiques monétaires officielles.",
+          "cadence": "Quotidienne à mensuelle",
+          "delay": "Variable",
+          "url": "https://www.federalreserve.gov/data.htm"
+        },
+        {
+          "name": "Liberty Street Economics",
+          "role": "Analyses de la New York Fed sur repo, money markets et stabilité financière.",
+          "cadence": "Au fil des publications",
+          "delay": "Éditorial",
+          "url": "https://libertystreeteconomics.newyorkfed.org/"
+        }
+      ],
+      "limits": [
+        "FRED est souvent un agrégateur de sources officielles : il faut lire la source et l'unité de chaque série.",
+        "Les séries macro sont révisées ; un backtest doit distinguer donnée temps réel et donnée révisée.",
+        "Une donnée mensuelle peut réagir trop tard à un choc financier intrajournalier."
+      ],
+      "verification": [
+        "Citer le code de série FRED et la date d'observation.",
+        "Contrôler l'unité, la fréquence et le traitement saisonnier avant comparaison.",
+        "Identifier les séries révisables quand l'analyse dépend du temps réel."
+      ]
+    },
+    {
+      "slug": "bis",
+      "url": "https://l0g.fr/sources/bis/",
+      "name": "Bank for International Settlements",
+      "shortName": "BIS",
+      "category": "stabilité financière globale",
+      "officialUrl": "https://www.bis.org/",
+      "description": "Banque des règlements internationaux : stabilité financière, banques centrales, marchés de dette, dérivés, dollar funding et finance non bancaire.",
+      "datasets": [
+        {
+          "name": "BIS statistics",
+          "role": "Statistiques bancaires internationales, dette, dérivés et paiements.",
+          "cadence": "Trimestrielle à annuelle",
+          "delay": "Variable",
+          "url": "https://www.bis.org/statistics/index.htm"
+        },
+        {
+          "name": "BIS Quarterly Review",
+          "role": "Analyse des marchés financiers globaux et des vulnérabilités.",
+          "cadence": "Trimestrielle",
+          "delay": "Éditorial",
+          "url": "https://www.bis.org/publ/qtrpdf.htm"
+        },
+        {
+          "name": "Working Papers",
+          "role": "Travaux de recherche sur stabilité, monnaie, crédit et infrastructures financières.",
+          "cadence": "Au fil des publications",
+          "delay": "Éditorial",
+          "url": "https://www.bis.org/list/wpapers/index.htm"
+        }
+      ],
+      "limits": [
+        "Les statistiques BIS sont puissantes mais souvent agrégées, avec granularité limitée.",
+        "Les délais de publication peuvent être longs pour lire une crise en temps réel.",
+        "Une lecture BIS est structurelle : elle complète, mais ne remplace pas, la donnée de marché fraîche."
+      ],
+      "verification": [
+        "Identifier le tableau statistique et la période de référence.",
+        "Distinguer analyse BIS, working paper et donnée statistique brute.",
+        "Comparer les ordres de grandeur avec FMI, FSB ou données nationales quand c'est possible."
+      ]
+    },
+    {
+      "slug": "imf",
+      "url": "https://l0g.fr/sources/imf/",
+      "name": "International Monetary Fund",
+      "shortName": "FMI",
+      "category": "macro mondiale & dette",
+      "officialUrl": "https://www.imf.org/en/Data",
+      "description": "FMI : données macro internationales, dette, balance des paiements, réserves, stabilité financière et surveillance pays.",
+      "datasets": [
+        {
+          "name": "IMF Data",
+          "role": "Portail de séries macro et financières internationales.",
+          "cadence": "Selon base",
+          "delay": "Variable",
+          "url": "https://www.imf.org/en/Data"
+        },
+        {
+          "name": "Global Financial Stability Report",
+          "role": "Analyse des vulnérabilités financières mondiales.",
+          "cadence": "Semestrielle",
+          "delay": "Éditorial",
+          "url": "https://www.imf.org/en/Publications/GFSR"
+        },
+        {
+          "name": "World Economic Outlook",
+          "role": "Projections macro et scénarios pays.",
+          "cadence": "Semestrielle",
+          "delay": "Éditorial",
+          "url": "https://www.imf.org/en/Publications/WEO"
+        }
+      ],
+      "limits": [
+        "Les données FMI peuvent être révisées et dépendre de déclarations nationales.",
+        "Les projections sont des scénarios institutionnels, pas des faits observés.",
+        "La comparabilité internationale exige de vérifier définitions et périmètres."
+      ],
+      "verification": [
+        "Citer la base FMI utilisée, la période et l'édition éventuelle.",
+        "Séparer donnée observée, projection et commentaire analytique.",
+        "Recouper les points sensibles avec banques centrales, trésors nationaux ou BIS."
+      ]
+    },
+    {
+      "slug": "fsb-ofr",
+      "url": "https://l0g.fr/sources/fsb-ofr/",
+      "name": "Financial Stability Board & OFR",
+      "shortName": "FSB / OFR",
+      "category": "risque systémique & shadow banking",
+      "officialUrl": "https://www.fsb.org/",
+      "description": "FSB et Office of Financial Research : surveillance du risque systémique, finance non bancaire, interconnexions, levier et vulnérabilités.",
+      "datasets": [
+        {
+          "name": "FSB publications",
+          "role": "Rapports sur finance non bancaire, stabilité et régulation globale.",
+          "cadence": "Au fil des rapports",
+          "delay": "Éditorial",
+          "url": "https://www.fsb.org/publications/"
+        },
+        {
+          "name": "OFR data & monitors",
+          "role": "Données et outils américains de surveillance du risque financier.",
+          "cadence": "Variable",
+          "delay": "Variable",
+          "url": "https://www.financialresearch.gov/"
+        },
+        {
+          "name": "Annual reports",
+          "role": "Cartographie institutionnelle des vulnérabilités systémiques.",
+          "cadence": "Annuelle",
+          "delay": "Éditorial",
+          "url": "https://www.fsb.org/work-of-the-fsb/financial-innovation-and-structural-change/non-bank-financial-intermediation/"
+        }
+      ],
+      "limits": [
+        "Les rapports sont souvent synthétiques : ils montrent le risque, rarement toutes les positions sous-jacentes.",
+        "La donnée de stabilité financière arrive avec retard par rapport au marché.",
+        "Le périmètre global masque parfois des fragilités locales ou sectorielles."
+      ],
+      "verification": [
+        "Identifier le rapport et son millésime, surtout pour le crédit privé.",
+        "Distinguer constats quantitatifs et recommandations de régulation.",
+        "Recouper avec BIS, FMI, SEC ou données nationales selon le sujet."
+      ]
+    },
+    {
+      "slug": "ecb-eurostat",
+      "url": "https://l0g.fr/sources/ecb-eurostat/",
+      "name": "ECB Data Portal & Eurostat",
+      "shortName": "BCE / Eurostat",
+      "category": "zone euro",
+      "officialUrl": "https://data.ecb.europa.eu/",
+      "description": "BCE et Eurostat : taux, monnaie, crédit, stress financier, inflation, activité, emploi, sentiment et indicateurs européens.",
+      "datasets": [
+        {
+          "name": "ECB Data Portal",
+          "role": "Taux, €STR, CISS, monnaie, crédit, rendements souverains et variables financières.",
+          "cadence": "Selon série",
+          "delay": "Variable",
+          "url": "https://data.ecb.europa.eu/"
+        },
+        {
+          "name": "Eurostat",
+          "role": "HICP, production industrielle, ventes de détail, chômage, faillites et sentiment.",
+          "cadence": "Mensuelle à trimestrielle",
+          "delay": "Variable selon publication",
+          "url": "https://ec.europa.eu/eurostat"
+        },
+        {
+          "name": "ECB reference exchange rates",
+          "role": "Taux de change de référence utilisés notamment pour USD/JPY via BCE.",
+          "cadence": "Quotidienne les jours ouvrés",
+          "delay": "Jour ouvré",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
+        }
+      ],
+      "limits": [
+        "Les séries réelles européennes arrivent souvent tard et sont révisées.",
+        "La zone euro agrège des pays hétérogènes : un score global peut masquer des divergences.",
+        "Les indicateurs financiers réagissent plus vite que les indicateurs macro officiels."
+      ],
+      "verification": [
+        "Conserver le code série BCE ou Eurostat et la fréquence.",
+        "Contrôler si la série est corrigée des variations saisonnières.",
+        "Lire les révisions avant de comparer deux snapshots éloignés."
+      ]
+    },
+    {
+      "slug": "cftc",
+      "url": "https://l0g.fr/sources/cftc/",
+      "name": "Commodity Futures Trading Commission",
+      "shortName": "CFTC",
+      "category": "positionnement futures",
+      "officialUrl": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "description": "CFTC Commitments of Traders : positionnement déclaré sur futures, notamment devises, pétrole, gaz naturel et matières premières.",
+      "datasets": [
+        {
+          "name": "Commitments of Traders",
+          "role": "Positions agrégées par catégorie de participants sur marchés futures.",
+          "cadence": "Hebdomadaire",
+          "delay": "Quelques jours",
+          "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+        },
+        {
+          "name": "Historical Compressed",
+          "role": "Fichiers historiques téléchargeables pour backtests et séries longues.",
+          "cadence": "Hebdomadaire",
+          "delay": "Quelques jours",
+          "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm"
+        }
+      ],
+      "limits": [
+        "Le COT couvre les marchés déclarés, pas toutes les positions OTC ou bilans bancaires.",
+        "La donnée est hebdomadaire et publiée avec délai.",
+        "Les catégories CFTC sont utiles mais imparfaites pour inférer l'intention économique."
+      ],
+      "verification": [
+        "Vérifier contrat, marché, date de report et format legacy/disaggregated.",
+        "Éviter de mélanger micro-contrats et contrats standards sans déduplication.",
+        "Lire le positionnement avec le prix et la volatilité, pas isolément."
+      ]
+    },
+    {
+      "slug": "eia-energy",
+      "url": "https://l0g.fr/sources/eia-energy/",
+      "name": "U.S. Energy Information Administration",
+      "shortName": "EIA",
+      "category": "énergie",
+      "officialUrl": "https://www.eia.gov/",
+      "description": "EIA : statistiques publiques américaines sur pétrole, gaz, stocks, production, consommation, prix et perspectives énergétiques.",
+      "datasets": [
+        {
+          "name": "Petroleum & other liquids",
+          "role": "Stocks, production, consommation et prix pétrole.",
+          "cadence": "Hebdomadaire à mensuelle",
+          "delay": "Variable",
+          "url": "https://www.eia.gov/petroleum/"
+        },
+        {
+          "name": "Natural gas",
+          "role": "Production, stockage, consommation et prix gaz naturel.",
+          "cadence": "Hebdomadaire à mensuelle",
+          "delay": "Variable",
+          "url": "https://www.eia.gov/naturalgas/"
+        },
+        {
+          "name": "Short-Term Energy Outlook",
+          "role": "Scénarios EIA de court terme sur prix, offre et demande.",
+          "cadence": "Mensuelle",
+          "delay": "Éditorial",
+          "url": "https://www.eia.gov/outlooks/steo/"
+        }
+      ],
+      "limits": [
+        "L'EIA couvre très bien les États-Unis ; le marché mondial exige d'autres sources en complément.",
+        "Les séries physiques ont leurs propres délais et révisions.",
+        "Un scénario STEO reste une projection, pas une donnée observée."
+      ],
+      "verification": [
+        "Identifier la série EIA ou le rapport exact avant citation.",
+        "Séparer prix observés, stocks publiés et projection STEO.",
+        "Recouper un choc international avec IEA, GIE, Kpler ou données nationales si disponible."
+      ]
+    },
+    {
+      "slug": "treasury-tic",
+      "url": "https://l0g.fr/sources/treasury-tic/",
+      "name": "U.S. Treasury TIC",
+      "shortName": "TIC",
+      "category": "flux internationaux & Treasuries",
+      "officialUrl": "https://home.treasury.gov/data/treasury-international-capital-tic-system",
+      "description": "Treasury International Capital : flux de capitaux transfrontaliers, détention étrangère de Treasuries et mouvements financiers internationaux.",
+      "datasets": [
+        {
+          "name": "Major foreign holders",
+          "role": "Détention étrangère de titres du Trésor américain par pays.",
+          "cadence": "Mensuelle",
+          "delay": "Variable",
+          "url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.html"
+        },
+        {
+          "name": "TIC flows",
+          "role": "Achats et ventes transfrontaliers de titres américains.",
+          "cadence": "Mensuelle",
+          "delay": "Variable",
+          "url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Pages/ticsec2.aspx"
+        },
+        {
+          "name": "Treasury TIC system",
+          "role": "Documentation officielle du système Treasury International Capital.",
+          "cadence": "Documentation",
+          "delay": "Selon publication Treasury",
+          "url": "https://home.treasury.gov/data/treasury-international-capital-tic-system"
+        }
+      ],
+      "limits": [
+        "Les détenteurs sont souvent attribués par juridiction de garde, pas toujours par bénéficiaire final.",
+        "Les données mensuelles ne montrent pas tous les arbitrages intramensuels.",
+        "Les centres financiers peuvent brouiller la lecture géopolitique directe."
+      ],
+      "verification": [
+        "Toujours préciser s'il s'agit de stock ou de flux.",
+        "Éviter de lire une juridiction de garde comme un acteur final sans prudence.",
+        "Recouper avec Fed, FMI COFER et données de marché quand l'analyse porte sur le dollar."
+      ]
+    },
+    {
+      "slug": "bls-bea",
+      "url": "https://l0g.fr/sources/bls-bea/",
+      "name": "BLS & BEA",
+      "shortName": "BLS / BEA",
+      "category": "inflation, emploi & PIB US",
+      "officialUrl": "https://www.bls.gov/",
+      "description": "Bureau of Labor Statistics et Bureau of Economic Analysis : inflation, emploi, salaires, productivité, PIB, revenus et comptes nationaux américains.",
+      "datasets": [
+        {
+          "name": "BLS CPI / Employment",
+          "role": "Inflation consommateurs, emploi, chômage, salaires et productivité.",
+          "cadence": "Mensuelle à trimestrielle",
+          "delay": "Calendrier officiel",
+          "url": "https://www.bls.gov/data/"
+        },
+        {
+          "name": "BEA NIPA / PCE / GDP",
+          "role": "Comptes nationaux, PIB, PCE, revenus et consommation.",
+          "cadence": "Mensuelle à trimestrielle",
+          "delay": "Calendrier officiel",
+          "url": "https://www.bea.gov/data"
+        }
+      ],
+      "limits": [
+        "Les données sont révisées, parfois substantiellement.",
+        "Les effets de composition peuvent brouiller les lectures rapides de salaires ou inflation.",
+        "Un chiffre headline doit souvent être lu avec sa méthodologie et ses composantes."
+      ],
+      "verification": [
+        "Citer la table ou la série exacte, pas seulement le communiqué.",
+        "Séparer données préliminaires, révisions et séries finales.",
+        "Lire composantes et ajustements saisonniers avant de tirer une conclusion macro."
+      ]
+    },
+    {
+      "slug": "bank-of-japan-mof",
+      "url": "https://l0g.fr/sources/bank-of-japan-mof/",
+      "name": "Bank of Japan & Ministry of Finance Japan",
+      "shortName": "BoJ / MOF",
+      "category": "Japon, yen & interventions de change",
+      "officialUrl": "https://www.boj.or.jp/en/",
+      "description": "Banque du Japon et ministère japonais des Finances : politique monétaire, opérations de marché, statistiques du yen et interventions de change.",
+      "datasets": [
+        {
+          "name": "BoJ monetary policy",
+          "role": "Décisions, statements, minutes et outlook reports de la Banque du Japon.",
+          "cadence": "Selon calendrier BoJ",
+          "delay": "Publication officielle",
+          "url": "https://www.boj.or.jp/en/mopo/index.htm"
+        },
+        {
+          "name": "BoJ statistics",
+          "role": "Taux, opérations, bilan, marchés monétaires et statistiques financières japonaises.",
+          "cadence": "Quotidienne à mensuelle",
+          "delay": "Variable selon série",
+          "url": "https://www.boj.or.jp/en/statistics/index.htm"
+        },
+        {
+          "name": "Foreign exchange intervention operations",
+          "role": "Données du MOF sur interventions de change japonaises.",
+          "cadence": "Mensuelle / opérationnelle selon publication",
+          "delay": "Publication MOF",
+          "url": "https://www.mof.go.jp/english/policy/international_policy/reference/feio/index.htm"
+        }
+      ],
+      "limits": [
+        "Le MOF décide les interventions, la BoJ les exécute comme agent : il faut distinguer les rôles.",
+        "Les données d'intervention sont publiées avec délai et ne donnent pas toujours le détail intrajournalier.",
+        "Un discours officiel peut viser le signal politique sans annoncer une opération effective."
+      ],
+      "verification": [
+        "Citer séparément statement BoJ, donnée statistique BoJ et donnée MOF.",
+        "Vérifier la date de publication et la date d'opération quand il s'agit d'interventions.",
+        "Recouper avec CFTC, taux et USD/JPY avant de conclure sur un débouclage forcé."
+      ]
+    },
+    {
+      "slug": "treasury-fiscal-data",
+      "url": "https://l0g.fr/sources/treasury-fiscal-data/",
+      "name": "U.S. Treasury Fiscal Data",
+      "shortName": "Treasury Fiscal Data",
+      "category": "Trésor US, liquidité & dette",
+      "officialUrl": "https://fiscaldata.treasury.gov/",
+      "description": "Portail officiel du Trésor américain pour dette fédérale, cash balance, Daily Treasury Statement, recettes, dépenses et datasets fiscaux.",
+      "datasets": [
+        {
+          "name": "Daily Treasury Statement",
+          "role": "Cash balance, recettes, dépenses et opérations quotidiennes du Trésor.",
+          "cadence": "Quotidienne jours ouvrés",
+          "delay": "Publication officielle",
+          "url": "https://fiscaldata.treasury.gov/datasets/daily-treasury-statement/operating-cash-balance"
+        },
+        {
+          "name": "Debt to the Penny",
+          "role": "Dette fédérale américaine au jour le jour.",
+          "cadence": "Quotidienne jours ouvrés",
+          "delay": "Publication officielle",
+          "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny"
+        },
+        {
+          "name": "Treasury securities auctions",
+          "role": "Calendrier, adjudications et caractéristiques des émissions du Trésor.",
+          "cadence": "Selon adjudications",
+          "delay": "Publication officielle",
+          "url": "https://www.treasurydirect.gov/auctions/announcements-data-results/"
+        }
+      ],
+      "limits": [
+        "Le DTS est très utile mais bruité au jour le jour.",
+        "La donnée fiscale ne suffit pas à elle seule pour mesurer les réserves bancaires.",
+        "Les calendriers d’émission doivent être lus avec conditions de marché et politique de la Fed."
+      ],
+      "verification": [
+        "Conserver dataset, date de reporting et unité.",
+        "Distinguer cash balance, dette brute et flux budgétaires.",
+        "Recouper avec H.4.1/Fed, RRP et réserves pour une lecture de liquidité nette."
+      ]
+    },
+    {
+      "slug": "congress-govinfo-cbo",
+      "url": "https://l0g.fr/sources/congress-govinfo-cbo/",
+      "name": "Congress.gov, GovInfo & CBO",
+      "shortName": "Congress / CBO",
+      "category": "politique US, lois & budget",
+      "officialUrl": "https://www.congress.gov/",
+      "description": "Sources officielles américaines pour textes de loi, débats, documents fédéraux, scoring budgétaire et analyses du Congressional Budget Office.",
+      "datasets": [
+        {
+          "name": "Congress.gov legislation",
+          "role": "Textes de loi, amendements, sponsors, statuts et historique législatif.",
+          "cadence": "Au fil des procédures",
+          "delay": "Publication officielle",
+          "url": "https://www.congress.gov/"
+        },
+        {
+          "name": "GovInfo",
+          "role": "Federal Register, Congressional Record, lois publiques et documents gouvernementaux.",
+          "cadence": "Au fil des publications",
+          "delay": "Publication officielle",
+          "url": "https://www.govinfo.gov/"
+        },
+        {
+          "name": "CBO cost estimates",
+          "role": "Estimations budgétaires et analyses économiques des textes.",
+          "cadence": "Au fil des estimations",
+          "delay": "Variable",
+          "url": "https://www.cbo.gov/cost-estimates"
+        }
+      ],
+      "limits": [
+        "Un texte peut changer rapidement entre versions, amendements et conférences.",
+        "Le scoring CBO arrive parfois après la bataille politique.",
+        "Un bill déposé ne signifie pas adoption, ni application effective."
+      ],
+      "verification": [
+        "Citer numéro de bill, chambre, version et date.",
+        "Séparer statut procédural, texte adopté et règle finale publiée.",
+        "Vérifier le CBO quand une affirmation porte sur déficit, dépenses ou recettes."
+      ]
+    },
+    {
+      "slug": "world-bank-oecd",
+      "url": "https://l0g.fr/sources/world-bank-oecd/",
+      "name": "World Bank Open Data & OECD Data",
+      "shortName": "World Bank / OECD",
+      "category": "macro internationale & développement",
+      "officialUrl": "https://data.worldbank.org/",
+      "description": "Banque mondiale et OCDE : séries macro, développement, commerce, productivité, dette, revenus, énergie et comparaisons internationales.",
+      "datasets": [
+        {
+          "name": "World Bank Open Data",
+          "role": "Indicateurs macro, développement, commerce, dette et énergie par pays.",
+          "cadence": "Selon indicateur",
+          "delay": "Variable",
+          "url": "https://data.worldbank.org/"
+        },
+        {
+          "name": "World Development Indicators",
+          "role": "Base structurée de séries pays et indicateurs de développement.",
+          "cadence": "Variable",
+          "delay": "Variable",
+          "url": "https://databank.worldbank.org/source/world-development-indicators"
+        },
+        {
+          "name": "OECD Data Explorer",
+          "role": "Statistiques OCDE : productivité, comptes nationaux, emploi, prix, commerce et dette.",
+          "cadence": "Selon série",
+          "delay": "Variable",
+          "url": "https://data-explorer.oecd.org/"
+        }
+      ],
+      "limits": [
+        "Les séries peuvent provenir de sources nationales avec révisions et ruptures méthodologiques.",
+        "Les délais sont parfois longs pour les pays émergents.",
+        "Les comparaisons internationales exigent de vérifier unité, année de base et parité de pouvoir d’achat."
+      ],
+      "verification": [
+        "Citer code indicateur, pays, période et unité.",
+        "Distinguer donnée observée, estimation et projection.",
+        "Recouper avec FMI, banques centrales ou agences statistiques nationales sur les points sensibles."
+      ]
+    }
+  ],
+  "referenceHosts": [
+    {
+      "host": "l0g.fr",
+      "references": 132,
+      "articles": 42,
+      "kinds": [
+        "contexte",
+        "publication interne"
+      ]
+    },
+    {
+      "host": "wsj.com",
+      "references": 4,
+      "articles": 2,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "13flow.eu",
+      "references": 2,
+      "articles": 1,
+      "kinds": [
+        "dashboard"
+      ]
+    },
+    {
+      "host": "blockonomi.com",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "bluetouff.com",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "cpc.ncep.noaa.gov",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "fred.stlouisfed.org",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source primaire"
+      ]
+    },
+    {
+      "host": "github.com",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "iea.org",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "mof.go.jp",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source primaire"
+      ]
+    },
+    {
+      "host": "pubs.usgs.gov",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "unctad.org",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "source secondaire"
+      ]
+    },
+    {
+      "host": "us.l0g.fr",
+      "references": 1,
+      "articles": 1,
+      "kinds": [
+        "dashboard"
+      ]
+    }
+  ],
+  "sourcePolicy": {
+    "preferred": "Sources primaires institutionnelles, données publiques et documents originaux.",
+    "fallback": "Presse économique de référence et sources secondaires datées quand la source primaire ne suffit pas.",
+    "citationRule": "Une source exploitable par agent doit conserver URL, date, libellé et contexte de claim."
+  },
+  "license": "CC BY 4.0",
+  "attribution": "l0g.fr"
+}
