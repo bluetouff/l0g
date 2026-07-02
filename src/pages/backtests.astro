@@ -191,12 +191,12 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
           <span>méthode</span>
         </div>
         {instruments.map((item) => (
-          <div class="bt-row">
+          <div class="bt-row" data-signal-row={item.key}>
             <span>
               <strong>{item.label}</strong>
               <em>{item.key}</em>
             </span>
-            <span>{item.current?.value ?? 'n/a'}{item.current ? `/${item.current.scale}` : ''}</span>
+            <span data-signal-value>{item.current?.value ?? 'n/a'}{item.current ? `/${item.current.scale}` : ''}</span>
             <span>{item.observations}</span>
             <span>{item.changes}</span>
             <a href={item.methodology}>fiche</a>
@@ -204,6 +204,48 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         ))}
       </div>
     </section>
+
+    <script is:inline>
+      (function () {
+        function hasSignal(data, key) {
+          return !!(data && Array.isArray(data.indices) && data.indices.some(function (item) {
+            return item && item.key === key && item.value != null;
+          }));
+        }
+
+        function mergeDebt(data) {
+          if (hasSignal(data, 'debt')) return Promise.resolve(data);
+          return fetch('/debt-latest.json', { cache: 'no-store' })
+            .then(function (response) { return response.ok ? response.json() : null; })
+            .then(function (snapshot) {
+              var signal = snapshot && snapshot.signal;
+              if (!signal || signal.key !== 'debt' || signal.value == null) return data;
+              var base = data && typeof data === 'object' ? data : {};
+              var indices = Array.isArray(base.indices) ? base.indices.slice() : [];
+              indices.push(signal);
+              return Object.assign({}, base, { indices: indices });
+            });
+        }
+
+        function updateRows(data) {
+          if (!data || !Array.isArray(data.indices)) return;
+          data.indices.forEach(function (item) {
+            var row = document.querySelector('[data-signal-row="' + item.key + '"]');
+            if (!row) return;
+            var value = row.querySelector('[data-signal-value]');
+            if (!value) return;
+            value.textContent = item.value != null ? item.value + '/' + (item.scale || 100) : 'n/a';
+            if (data.updated) value.setAttribute('title', 'snapshot ' + data.updated);
+          });
+        }
+
+        fetch('/risk.json', { cache: 'no-store' })
+          .then(function (response) { return response.ok ? response.json() : null; })
+          .then(mergeDebt)
+          .then(updateRows)
+          .catch(function () {});
+      })();
+    </script>
 
     <section class="bt-section bt-split">
       <div>

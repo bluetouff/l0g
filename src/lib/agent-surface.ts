@@ -1633,7 +1633,7 @@ export function buildOpenApiContract() {
             value: { type: 'number' },
             scale: { type: 'number' },
             level: { type: 'string' },
-            tone: { enum: ['low', 'normal', 'moderate', 'elevated', 'stress', 'risk-on', 'risk-off'] },
+            tone: { enum: ['low', 'normal', 'calm', 'moderate', 'elevated', 'stress', 'risk-on', 'risk-off'] },
             label: { type: 'string' },
             source: { type: 'string', format: 'uri' },
             methodology: { type: 'string', format: 'uri' },
