@@ -1,33 +1,33 @@
 {
-  "updated": "2026-07-01T08:06:54Z",
+  "updated": "2026-07-02T06:49:53Z",
   "indices": [
     {
       "key": "us",
-      "value": 58,
-      "scale": 100,
-      "level": "Élevé",
-      "tone": "elevated"
-    },
-    {
-      "key": "eu",
-      "value": 47,
+      "value": 43,
       "scale": 100,
       "level": "Modéré",
       "tone": "moderate"
     },
     {
-      "key": "yen",
+      "key": "eu",
       "value": 41,
+      "scale": 100,
+      "level": "Risk-On",
+      "tone": "calm"
+    },
+    {
+      "key": "yen",
+      "value": 45,
       "scale": 100,
       "level": "Modéré",
       "tone": "moderate"
     },
     {
       "key": "energie",
-      "value": 58,
+      "value": 45,
       "scale": 100,
-      "level": "Tendu",
-      "tone": "elevated"
+      "level": "Normal",
+      "tone": "moderate"
     },
     {
       "key": "debt",
