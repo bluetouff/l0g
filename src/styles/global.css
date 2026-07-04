@@ -49,25 +49,25 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --color-ink: #f6f7f9;          /* fond */
-  --color-surface: #ffffff;      /* carte / surface */
-  --color-surface-2: #eceef2;
-  --color-line: rgba(12, 13, 16, 0.12);
-  --color-line-strong: rgba(12, 13, 16, 0.24);
+  --color-ink: #e7e9ee;          /* fond adouci (moins d'éblouissement) */
+  --color-surface: #ffffff;      /* carte / surface — ressort sur le fond gris */
+  --color-surface-2: #eef0f4;
+  --color-line: rgba(12, 13, 16, 0.14);
+  --color-line-strong: rgba(12, 13, 16, 0.26);
   --color-paper: #1b1d23;        /* texte principal */
   --color-bright: #0c0d10;
-  --color-muted: #545a66;        /* labels atténués */
+  --color-muted: #4d5461;        /* labels atténués (un cran plus foncé) */
 
-  --color-signal: #0d9488;       /* teal assombri, lisible sur blanc */
-  --color-accent: #d61f69;       /* rose assombri */
+  --color-signal: #0f766e;       /* teal assombri, contraste AA sur blanc */
+  --color-accent: #c81e63;       /* rose assombri, contraste AA */
   --color-amber: #b45309;        /* ambre assombri (texte .prose em) */
-  --color-down: #d61f69;
+  --color-down: #c81e63;
 
   --color-prose: #2a2e36;
-  --color-nav-idle: #545a66;
+  --color-nav-idle: #4d5461;
   --card-fill: rgba(12, 13, 16, 0.015);
   --card-fill-hover: rgba(12, 13, 16, 0.04);
-  --body-glow: rgba(13, 148, 136, 0.06);
+  --body-glow: rgba(15, 118, 110, 0.05);
 }
 
 * { box-sizing: border-box; }
@@ -123,6 +123,13 @@ a { color: inherit; text-decoration: none; }
 /* Gros titres : halo cyan discret */
 .font-display.glow {
   text-shadow: 0 0 30px color-mix(in srgb, var(--color-signal) 20%, transparent);
+}
+
+/* Mode jour : le halo floute le texte sur fond clair, on le retire. */
+:root[data-theme="light"] .glow,
+:root[data-theme="light"] .mono-label.glow,
+:root[data-theme="light"] .font-display.glow {
+  text-shadow: none;
 }
 
 .hairline { border: 0; border-top: 1px solid var(--color-line); }
