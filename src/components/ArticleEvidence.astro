@@ -58,129 +58,136 @@ const claimTone: Record<string, string> = {
     )}
   </div>
 
-  <p class="depth-note">
-    {depthMode} : {depth.detail}. Les niveaux “preuve directe” et “reproduction”
-    demandent une relation relue entre une affirmation précise et sa source.
-  </p>
+  <details class="evidence-details">
+    <summary class="evidence-toggle">
+      Afficher le détail des preuves
+      <span class="evidence-toggle-hint">{evidence.stats.claimRelations} affirmations sourcées</span>
+    </summary>
 
-  <section class="claim-section">
-    <h2 class="evidence-h">Affirmations sourcées</h2>
-    {claimsShown.length > 0 ? (
-      <ol class="claim-list">
-        {claimsShown.map((claim) => (
-          <li class={`claim-item ${claimTone[claim.kind]}`}>
-            <div class="claim-top">
-              <span>{claim.kind}</span>
-              <time datetime={claim.dateIso}>{claim.dateLabel}</time>
-              <span class={`review-badge ${claim.reviewStatus === 'reviewed' ? 'reviewed' : 'unreviewed'}`}>
-                {claim.reviewStatus === 'reviewed' ? 'revue humaine' : 'classification heuristique'}
-              </span>
-            </div>
-            <p class="claim-review-note">
-              {claim.reviewStatus === 'reviewed'
-                ? claim.reviewNote ?? 'Relation relue dans le registre éditorial.'
-                : 'Non relue : type et relation source-affirmation produits par heuristique lexicale.'}
-            </p>
-            <p>{claim.claim}</p>
-            <div class="claim-refs">
-              {claim.references.map((ref) => (
-                <a href={ref.href} target={ref.href.startsWith('http') ? '_blank' : undefined} rel={ref.href.startsWith('http') ? 'noopener' : undefined}>
-                  <span>{ref.kind ?? ref.host ?? 'référence'}</span>
-                  <strong>{ref.label}</strong>
-                  {ref.sourcePublicationDateIso || ref.dateIso ? (
-                    <time datetime={ref.sourcePublicationDateIso ?? ref.dateIso}>{ref.sourcePublicationDateLabel ?? ref.dateLabel}</time>
-                  ) : (
-                    <span>{ref.sourcePublicationDateLabel ?? ref.dateLabel ?? 'date source non détectée'}</span>
-                  )}
-                </a>
-              ))}
-            </div>
-          </li>
-        ))}
-      </ol>
-    ) : (
-      <p class="evidence-empty">Aucune relation affirmation-source détectée automatiquement.</p>
-    )}
-  </section>
+    <p class="depth-note">
+      {depthMode} : {depth.detail}. Les niveaux “preuve directe” et “reproduction”
+      demandent une relation relue entre une affirmation précise et sa source.
+    </p>
 
-  <div class="evidence-grid">
-    <section class="evidence-panel">
-      <h2 class="evidence-h">Sources primaires</h2>
-      {primaryShown.length > 0 ? (
-        <ul class="evidence-list">
-          {primaryShown.map((item) => (
-            <li>
-              <a href={primarySourceUrl(item.source.slug)}>{item.source.shortName}</a>
-              <span>source liée à au moins une référence cliquable</span>
-              {item.links.length > 0 && (
-                <span class="primary-links">
-                  {item.links.map((link) => (
-                    <a href={link.href} target="_blank" rel="noopener">
-                      <span>{link.label}</span>
-                      {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
-                    </a>
-                  ))}
+    <section class="claim-section">
+      <h2 class="evidence-h">Affirmations sourcées</h2>
+      {claimsShown.length > 0 ? (
+        <ol class="claim-list">
+          {claimsShown.map((claim) => (
+            <li class={`claim-item ${claimTone[claim.kind]}`}>
+              <div class="claim-top">
+                <span>{claim.kind}</span>
+                <time datetime={claim.dateIso}>{claim.dateLabel}</time>
+                <span class={`review-badge ${claim.reviewStatus === 'reviewed' ? 'reviewed' : 'unreviewed'}`}>
+                  {claim.reviewStatus === 'reviewed' ? 'revue humaine' : 'classification heuristique'}
                 </span>
-              )}
+              </div>
+              <p class="claim-review-note">
+                {claim.reviewStatus === 'reviewed'
+                  ? claim.reviewNote ?? 'Relation relue dans le registre éditorial.'
+                  : 'Non relue : type et relation source-affirmation produits par heuristique lexicale.'}
+              </p>
+              <p>{claim.claim}</p>
+              <div class="claim-refs">
+                {claim.references.map((ref) => (
+                  <a href={ref.href} target={ref.href.startsWith('http') ? '_blank' : undefined} rel={ref.href.startsWith('http') ? 'noopener' : undefined}>
+                    <span>{ref.kind ?? ref.host ?? 'référence'}</span>
+                    <strong>{ref.label}</strong>
+                    {ref.sourcePublicationDateIso || ref.dateIso ? (
+                      <time datetime={ref.sourcePublicationDateIso ?? ref.dateIso}>{ref.sourcePublicationDateLabel ?? ref.dateLabel}</time>
+                    ) : (
+                      <span>{ref.sourcePublicationDateLabel ?? ref.dateLabel ?? 'date source non détectée'}</span>
+                    )}
+                  </a>
+                ))}
+              </div>
             </li>
           ))}
-        </ul>
+        </ol>
       ) : (
-        <p class="evidence-empty">Aucune institution primaire du registre l0g détectée automatiquement.</p>
+        <p class="evidence-empty">Aucune relation affirmation-source détectée automatiquement.</p>
       )}
     </section>
 
-    <section class="evidence-panel">
-      <h2 class="evidence-h">Sources secondaires</h2>
-      {secondaryShown.length > 0 ? (
-        <ul class="evidence-list">
-          {secondaryShown.map((link) => (
-            <li>
-              <a href={link.href} target="_blank" rel="noopener">{link.host ?? link.label}</a>
-              <span>{link.label}</span>
-              {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="evidence-empty">Pas de source secondaire externe isolée.</p>
-      )}
-    </section>
+    <div class="evidence-grid">
+      <section class="evidence-panel">
+        <h2 class="evidence-h">Sources primaires</h2>
+        {primaryShown.length > 0 ? (
+          <ul class="evidence-list">
+            {primaryShown.map((item) => (
+              <li>
+                <a href={primarySourceUrl(item.source.slug)}>{item.source.shortName}</a>
+                <span>source liée à au moins une référence cliquable</span>
+                {item.links.length > 0 && (
+                  <span class="primary-links">
+                    {item.links.map((link) => (
+                      <a href={link.href} target="_blank" rel="noopener">
+                        <span>{link.label}</span>
+                        {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
+                      </a>
+                    ))}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="evidence-empty">Aucune institution primaire du registre l0g détectée automatiquement.</p>
+        )}
+      </section>
 
-    <section class="evidence-panel">
-      <h2 class="evidence-h">Données internes</h2>
-      {dataShown.length > 0 ? (
-        <ul class="evidence-list">
-          {dataShown.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-              <span>{link.kind}</span>
-              {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="evidence-empty">Aucun dataset ou dashboard l0g lié explicitement.</p>
-      )}
-    </section>
+      <section class="evidence-panel">
+        <h2 class="evidence-h">Sources secondaires</h2>
+        {secondaryShown.length > 0 ? (
+          <ul class="evidence-list">
+            {secondaryShown.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener">{link.host ?? link.label}</a>
+                <span>{link.label}</span>
+                {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="evidence-empty">Pas de source secondaire externe isolée.</p>
+        )}
+      </section>
 
-    <section class="evidence-panel">
-      <h2 class="evidence-h">Contexte l0g</h2>
-      {contextShown.length > 0 ? (
-        <ul class="evidence-list">
-          {contextShown.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-              <span>{link.kind}</span>
-              {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="evidence-empty">Aucun renvoi interne de contexte détecté.</p>
-      )}
-    </section>
-  </div>
+      <section class="evidence-panel">
+        <h2 class="evidence-h">Données internes</h2>
+        {dataShown.length > 0 ? (
+          <ul class="evidence-list">
+            {dataShown.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+                <span>{link.kind}</span>
+                {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="evidence-empty">Aucun dataset ou dashboard l0g lié explicitement.</p>
+        )}
+      </section>
+
+      <section class="evidence-panel">
+        <h2 class="evidence-h">Contexte l0g</h2>
+        {contextShown.length > 0 ? (
+          <ul class="evidence-list">
+            {contextShown.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+                <span>{link.kind}</span>
+                {link.dateLabel && <time datetime={link.dateIso}>{link.dateLabel}</time>}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="evidence-empty">Aucun renvoi interne de contexte détecté.</p>
+        )}
+      </section>
+    </div>
+  </details>
 </aside>
 
 <style>
@@ -268,6 +275,60 @@ const claimTone: Record<string, string> = {
     color: var(--color-muted);
     font-size: 0.78rem;
     line-height: 1.55;
+  }
+  .evidence-details {
+    margin-top: 1rem;
+  }
+  .evidence-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    list-style: none;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.85rem;
+    transition: background 0.16s, border-color 0.16s;
+  }
+  .evidence-toggle::-webkit-details-marker {
+    display: none;
+  }
+  .evidence-toggle::marker {
+    content: '';
+  }
+  .evidence-toggle::before {
+    content: '+';
+    display: inline-grid;
+    place-items: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-signal) 18%, transparent);
+    color: var(--color-bright);
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+  .evidence-details[open] .evidence-toggle::before {
+    content: '−';
+  }
+  .evidence-toggle:hover {
+    background: color-mix(in srgb, var(--color-signal) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+  }
+  .evidence-toggle-hint {
+    color: var(--color-muted);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+  }
+  .evidence-details[open] .depth-note {
+    margin-top: 1rem;
   }
   .proof-badge {
     --proof-color: var(--color-muted);
