@@ -5,6 +5,7 @@ import { methodologyPages } from '../config/methodology.ts';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+import { textResponse } from '../lib/agent-surface.ts';
 
 /**
  * /llms.txt — carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -170,7 +171,5 @@ export const GET: APIRoute = async () => {
   }
   lines.push('');
 
-  return new Response(lines.join('\n'), {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  });
+  return textResponse(lines.join('\n'), 'text/plain; charset=utf-8');
 };

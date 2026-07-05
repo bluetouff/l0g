@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+import { textResponse } from '../lib/agent-surface.ts';
 
 /**
  * /llms-full.txt — corpus integral pour agents IA (convention llmstxt.org).
@@ -194,7 +195,5 @@ export const GET: APIRoute = async () => {
     out.push(body);
   }
 
-  return new Response(out.join('\n') + '\n', {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  });
+  return textResponse(out.join('\n') + '\n', 'text/plain; charset=utf-8');
 };

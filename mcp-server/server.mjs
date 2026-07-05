@@ -63,6 +63,7 @@ const SECURE_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+  'Cross-Origin-Resource-Policy': 'same-origin',
   'Cross-Origin-Opener-Policy': 'same-origin',
 };
 function activeGitSha() {
@@ -2369,10 +2370,11 @@ const httpServer = http.createServer(async (req, res) => {
         },
       });
     } catch (error) {
+      console.error('[l0g-mcp] healthz failed', error);
       return send(res, 503, {
         ok: false,
         server: MCP_SERVER_INFO,
-        error: error instanceof Error ? error.message : 'healthz failed',
+        error: 'service indisponible',
       });
     }
   }
@@ -2433,7 +2435,8 @@ const httpServer = http.createServer(async (req, res) => {
       await server.connect(transport);
       await transport.handleRequest(req, res, body);
     } catch (e) {
-      if (!res.headersSent) send(res, 500, { jsonrpc: '2.0', error: { code: -32603, message: 'Internal error' }, id: null });
+      console.error('[l0g-mcp] streamable request failed', e);
+      if (!res.headersSent) send(res, 500, { jsonrpc: '2.0', error: { code: -32603, message: 'internal error' }, id: null });
     }
   });
 });
