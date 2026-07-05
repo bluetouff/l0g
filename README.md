@@ -69,6 +69,33 @@ Détails sécurité côté local :
 
 Le MCP public et les endpoints de production ne sont pas affectés par ces options.
 
+### Dépannage rapide
+
+En cas d’erreur dans l’UI de revue :
+
+1. **Requête rejetée avec `Token de sécurité manquant ou invalide`**
+   - Rafraîchis la page (`Cmd/Ctrl + R`) puis rejoue l’action.
+   - Si ça persiste, arrête puis relance le service :
+     - `Ctrl+C` dans le terminal qui a lancé `node scripts/review-claims.mjs`
+     - relance `node scripts/review-claims.mjs`
+   - Evite d’avoir plusieurs tabs de cette UI ouvertes.
+
+2. **Erreur `Method not allowed` / 405**
+   - Vérifie de ne pas appeler les endpoints de manière manuelle hors UI.
+   - Les routes mutantes attendent uniquement `POST` avec JSON.
+
+3. **Erreur `Content-Type invalide: application/json requis`**
+   - C’est normal si une requête n’envoie pas `content-type: application/json`.
+   - L’UI interne envoie bien ce header.
+
+4. **Erreur de débit (`Trop de requêtes`)**
+   - Attends quelques secondes puis reteste ; la limite locale est 30 requêtes / minute.
+   - Cela protège le endpoint admin local contre le spam.
+
+5. **Erreur `Requête trop volumineuse` / champs trop longs**
+   - Réduis la taille du payload dans le formulaire (note, preuve, localisateur).
+   - Le message de commit reste inchangé : il s’agit d’un guard local par design.
+
 ## Modèles de risque
 
 Deux corrections de modèle sont maintenant reflétées dans les surfaces l0g :
