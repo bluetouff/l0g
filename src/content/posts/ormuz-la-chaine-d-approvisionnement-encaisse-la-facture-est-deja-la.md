@@ -10,7 +10,7 @@ draft: false
 
 Il y a deux horloges dans une crise de [chokepoint](/glossaire/chokepoint/), et elles ne battent pas à la même vitesse. La première est celle des prix, financière, qui se calme dès qu'un accord est signé. La seconde est celle des cales, des cuves et des quais, physique, qui met des mois à se remettre. L'accord américano-iranien de mi-juin, analysé dans nos [trois scénarios de réouverture](/posts/accord-paix-ormuz-rouvre-scenarios/), a arrêté la première. La seconde continue de tourner. Début juillet 2026, la prime de guerre a quitté le baril, mais la chaîne d'approvisionnement mondiale, elle, digère encore la plus grosse rupture logistique de son histoire récente.
 
-## Ce que le monde fait transiter par un rail de quarante kilomètres
+## Un détroit étroit, une part démesurée du monde
 
 Le détroit d'Ormuz n'est large que d'une cinquantaine de kilomètres, avec des chenaux de navigation de quelques kilomètres à peine. Par ce goulot passe une part de l'économie mondiale sans commune mesure avec sa taille. L'Agence internationale de l'énergie y mesurait en 2025 un flux moyen d'environ 20 millions de barils de brut et de produits raffinés par jour, soit près d'un cinquième de la consommation pétrolière mondiale et environ un quart du pétrole transporté par mer. Côté gaz, près de 20 % du commerce mondial de [gaz naturel liquéfié](/glossaire/gnl/) en dépend, le Qatar y faisant transiter la quasi-totalité de ses exportations.
 
@@ -19,7 +19,7 @@ La dépendance ne s'arrête pas aux hydrocarbures. Selon le Forum économique mo
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 720 320" role="img" aria-label="Part des flux mondiaux qui transitent par le détroit d'Ormuz" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="320" fill="#0c0d10"></rect>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Ce qui transite par un seul détroit</text>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Un seul détroit, des flux planétaires</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Part des flux mondiaux passant par Ormuz. Un goulot de quelques kilomètres de large.</text>
   <text x="40" y="98" fill="#d6d9df" font-size="12">Pétrole (brut et produits) : ~20 Mb/j</text>
   <rect x="40" y="108" width="600" height="24" fill="#2a2c33"></rect>
@@ -117,11 +117,11 @@ Les Nations unies avertissent que, si la crise se prolonge, 9,1 millions de pers
 
 ## Au-delà du pétrole et du gaz : la chimie et les batteries
 
-Le détroit ne charrie pas que de l'énergie et des engrais. Le Forum économique mondial recense au moins quatre autres maillons industriels perturbés, souvent ignorés parce qu'ils sont invisibles pour le consommateur final. Le méthanol d'abord, brique de base d'innombrables plastiques, peintures et solvants, dont le Golfe est un fournisseur majeur. L'aluminium ensuite, dont les flux régionaux alimentent l'industrie, la construction et l'emballage. Le soufre, ce sous-produit du raffinage qui sert à fabriquer l'acide sulfurique et, en bout de chaîne, les engrais phosphatés, ce qui referme la boucle avec la crise agricole. Le graphite enfin, matériau clé des anodes de batteries lithium-ion, dont la raréfaction frappe de plein fouet la transition énergétique et la fabrication de véhicules électriques.
+Le détroit ne charrie pas que de l'énergie et des engrais. Le Forum économique mondial recense au moins quatre autres maillons industriels perturbés, souvent ignorés parce qu'ils sont invisibles pour le consommateur final. Le méthanol d'abord, brique de base d'innombrables plastiques, peintures et solvants, dont le Golfe est un fournisseur majeur. L'aluminium ensuite, dont les flux régionaux alimentent l'industrie, la construction et l'emballage. Le soufre, ce sous-produit du raffinage qui sert à fabriquer l'acide sulfurique et, en bout de chaîne, les engrais phosphatés, refermant la boucle avec la crise agricole. Le graphite enfin, matériau clé des anodes de batteries lithium-ion, dont la raréfaction frappe de plein fouet la transition énergétique et la fabrication de véhicules électriques.
 
 Chacun de ces maillons a son propre délai de propagation, du navire au produit fini, mais tous racontent la même mécanique : un choc de transport concentré sur un point unique se diffuse, de proche en proche, à des chaînes de valeur qui n'ont aucun rapport apparent avec le pétrole. Une usine de batteries européenne, un fabricant de peinture asiatique et un producteur d'engrais africain découvrent qu'ils partagent, sans le savoir, le même goulot d'étranglement.
 
-## Ce qui est déjà dans les chiffres
+## Le choc est déjà dans les chiffres
 
 L'objection habituelle serait de dire que tout cela reste théorique tant que la trêve tient. Les données disent le contraire : la facture est déjà partiellement acquittée. L'inflation américaine en porte la marque. En mai 2026, l'indice des prix à la consommation ressortait à 4,2 % sur un an, son plus haut depuis avril 2023, tiré par une énergie en hausse de 23,5 %, un enchaînement décrit dans notre guide sur [la lecture du CPI](/guides/lire-le-cpi-inflation-us/). Un carburant renchéri par un choc d'offre se propage mécaniquement aux prix à la consommation.
 
@@ -135,15 +135,15 @@ Reste la question du présent. La trêve de mi-juin a bien enclenché une repris
 
 Le résultat se voit à l'ancre. Environ 3 200 navires, dont près de 800 pétroliers et cargos, patientent encore à l'ouest d'Ormuz, et les grands hubs de transbordement comme Jebel Ali à Dubaï sont engorgés par les déroutements. Surtout, une bonne partie des armateurs a déjà reconstruit ses plannings, ses contrats et son approvisionnement en carburant pour le reste de 2026 autour de la route du cap de Bonne-Espérance. Défaire ces arrangements prend du temps, et c'est pourquoi, comme le résume la recherche universitaire, le détroit peut rouvrir sans que le transport mondial ne redevienne normal avant des mois.
 
-## L'autre lecture : ce qui a amorti le choc
+## L'autre lecture : les amortisseurs du choc
 
 Par souci d'équité, il faut porter la lecture inverse, car tout n'a pas cédé. Plusieurs amortisseurs ont fonctionné, et les ignorer donnerait une image faussement apocalyptique. Les réserves stratégiques ont permis aux grands importateurs de tenir sans rationnement immédiat, la Chine en tête, qui a largement vécu sur ses stocks accumulés à bas prix. La montée en puissance du GNL américain, à un niveau record, a partiellement remplacé les cargaisons qataries manquantes. Le pétrole de schiste et les barils que l'OPEP+ a remis sur le marché ont ajouté de l'offre au moment où elle manquait. Et la désescalade diplomatique est intervenue plus tôt qu'anticipé, avant que les réserves ne s'épuisent.
 
 Le scénario catastrophe, celui d'une fermeture totale prolongée sur six mois, avec un baril durablement au-dessus de 130 dollars et un TTF à 200 euros, n'a donc pas eu lieu. Une partie des analystes en tire une conclusion optimiste : le système s'est montré plus résilient que redouté, et l'adaptation logistique, si coûteuse soit-elle, a fait son travail. Cette lecture est solide, et elle mérite d'être posée en regard de la précédente. Mais elle n'en fixe que la borne haute. Dire que le choc a été absorbé n'est pas dire qu'il a été indolore : entre la catastrophe évitée et le retour à la normale, il reste précisément tous les coûts décrits plus haut, qui, eux, sont bien réels.
 
-## Ce que la crise laisse
+## Le bilan, à deux échéances
 
-Deux enseignements se dégagent, à deux échéances. À court terme, l'écart entre les deux horloges est le vrai sujet : les prix du pétrole ont largement effacé la prime de conflit, retombant de leur pic d'avril supérieur à 106 dollars, mais le coût logistique, lui, reste inscrit dans le fret, les primes d'assurance, le gaz européen et les engrais. Qui lit la seule courbe du Brent conclura à tort que la crise est derrière nous. Les mécanismes du marché pétrolier et cette lecture en trompe-l'œil sont détaillés dans notre guide [lire le marché pétrolier](/guides/lire-le-marche-petrolier/).
+Deux enseignements se dégagent. À court terme, l'écart entre les deux horloges est le vrai sujet : les prix du pétrole ont largement effacé la prime de conflit, retombant de leur pic d'avril supérieur à 106 dollars, mais le coût logistique, lui, reste inscrit dans le fret, les primes d'assurance, le gaz européen et les engrais. Qui lit la seule courbe du Brent conclura à tort que la crise est derrière nous. Les mécanismes du marché pétrolier et cette lecture en trompe-l'œil sont détaillés dans notre guide [lire le marché pétrolier](/guides/lire-le-marche-petrolier/).
 
 À plus long terme, Ormuz rappelle une vérité inconfortable sur la mondialisation : sa productivité repose sur une poignée de goulots dont aucun n'a de véritable substitut. Concentrer un cinquième du pétrole, un cinquième du gaz et un tiers des intrants agricoles dans un rail de quelques kilomètres crée une efficacité redoutable en temps normal et une fragilité tout aussi redoutable en temps de crise. Le cessez-le-feu a stoppé l'hémorragie. Il n'a pas refermé la plaie, et surtout il n'a pas rendu le système moins vulnérable au prochain choc.
 

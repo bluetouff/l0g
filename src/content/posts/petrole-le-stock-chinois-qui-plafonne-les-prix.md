@@ -22,7 +22,7 @@ Cette discipline n'est possible que parce que la Chine dispose d'un matelas cons
 
 Fait notable, la Chine a continué à remplir ses cuves même pendant la chute des importations : entre 430 000 et 580 000 barils par jour sont allés en stockage en avril 2026, selon les estimations de Reuters et de Vortexa. Le carburant de ce remplissage n'est pas le brut du Golfe au prix du marché, mais des barils décotés, sanctionnés, achetés à rabais à la Russie, à l'Iran et au Venezuela. Environ 166 millions de barils de brut iranien flotteraient dans les eaux asiatiques, positionnés hors du détroit d'Ormuz et plus près des ports chinois que des terminaux moyen-orientaux. Pékin peut ainsi se servir dans un stock déjà sur l'eau, sans alimenter la surenchère sur le marché ouvert.
 
-## Ce que la Chine ne contrôle pas
+## Les limites du levier chinois
 
 Il faut se garder de tout attribuer à Pékin. Le reflux du Brent tient aussi, et peut-être surtout, à deux facteurs indépendants. D'abord, la désescalade autour de l'Iran a levé la prime de risque géopolitique qui gonflait le baril. Ensuite, l'offre remonte : sept pays de l'OPEP+ augmentent leur production de 188 000 barils par jour à partir de juillet 2026, après avoir déjà relevé leurs quotas de près de 600 000 barils par jour entre avril et juin. Le marché bascule lentement de la peur de la pénurie vers la crainte du surplus.
 

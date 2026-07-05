@@ -76,7 +76,7 @@ Cette faille éclaire un paradoxe. Le marché des RWA prospère, mais pas du cô
 
 Pourquoi cette catégorie prospère-t-elle quand le béton casse ? Parce que la nature du sous-jacent diffère. Un bon du Trésor tokenisé est une créance quasi liquide, détenue par un dépositaire régulé qui contrôle réellement l'actif : le jeton est la part du fonds, le règlement est propre, et il n'y a ni toiture à réparer, ni taxe foncière à payer, ni locataire à expulser. L'immobilier locatif, lui, exige que le jeton fasse respecter, hors chaîne, un titre que gouvernent un registre foncier, un fisc, des tribunaux et l'état physique d'un bâtiment. La blockchain n'a aucune prise sur ce substrat : elle enregistre fidèlement qui détient le jeton, sans pouvoir garantir que ce jeton commande la brique. C'est la limite que rappelle toute lecture sérieuse de la [donnée on-chain](/guides/lire-la-donnee-on-chain/) : un registre fidèle n'est pas un registre vrai.
 
-## Ce que la liquidation laisse
+## Le solde de la liquidation
 
 Le solde s'annonce maigre. Selon la presse spécialisée, le compte séquestre de la ville contenait moins de 640 000 dollars, quand les seuls honoraires du fiduciaire ont atteint 178 000 dollars en deux mois. Une fois réglés les impôts impayés, les frais administratifs et les coûts juridiques qui pèsent sur les sociétés du groupe, il restera peu à répartir entre les porteurs de jetons, et beaucoup de biens risquent la saisie fiscale.
 

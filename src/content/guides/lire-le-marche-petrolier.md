@@ -53,7 +53,7 @@ Le marché physique, lui, se raccroche à ces références. Une cargaison réell
 
 Cette architecture a une conséquence que l'on oublie souvent. Comme le prix se forme d'abord sur des contrats financiers, il incorpore des anticipations, des couvertures de producteurs et de compagnies aériennes, et des positions spéculatives. Le positionnement des intervenants se lit dans le rapport hebdomadaire [COT de la CFTC](/guides/lire-cot-cftc/), qui répartit les positions ouvertes entre catégories de traders. Un prix qui monte peut refléter une pénurie physique réelle comme un simple repositionnement financier ; distinguer les deux est le cœur du métier.
 
-## Contango et backwardation : ce que la courbe raconte
+## Contango et backwardation : lire la pente de la courbe
 
 Puisqu'il existe un prix pour chaque échéance future, on peut relier ces prix en une **courbe à terme**, et c'est sa pente qui porte l'information la plus dense du marché. Deux configurations s'opposent.
 
