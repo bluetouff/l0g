@@ -19,6 +19,22 @@ const HTML_PATH = path.join(path.dirname(fileURLToPath(import.meta.url)), 'revie
 const ALLOWED_KINDS = new Set(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
 const ALLOWED_PROOFS = new Set(['', 'direct-proof', 'reproduction']);
 const ALLOWED_LOCATORS = new Set(['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other']);
+const CLI_FLAGS = new Set([
+  '--commit',
+  '--dry-run',
+  '--push',
+  '--no-push',
+  '--message',
+  '-m',
+  '--help',
+  '-h',
+]);
+const C = {
+  reset: '\x1b[0m',
+  red: '\x1b[31m',
+  blue: '\x1b[34m',
+  dim: '\x1b[2m',
+};
 
 function json(res, status, payload) {
   const body = JSON.stringify(payload);
@@ -110,11 +126,27 @@ function parseArgs(argv) {
     if (arg === '--commit') options.commit = true;
     else if (arg === '--dry-run') options.dryRun = true;
     else if (arg === '--push') options.push = true;
+    else if (/^--message=/.test(arg) || /^-m=/.test(arg)) {
+      const value = arg.includes('=') ? arg.split('=', 2)[1] : '';
+      if (!value) {
+        throw new Error(`Option message attend une valeur.
+Usage: --message "..." | --message="..." | -m="..." | -m "..."`);
+      }
+      options.message = value;
+    }
     else if (arg === '--message' || arg === '-m') {
       const next = argv[i + 1];
-      if (!next || next.startsWith('-')) {
+      if (!next) {
         throw new Error(`Option ${arg} attend une valeur.
-Usage: --message "..."`);
+Usage: --message "..." | --message="..." | -m="..." | -m "..."`);
+      }
+      if (next === '--') {
+        throw new Error(`Option ${arg} attend une valeur.
+Usage: --message "..." | --message="..." | -m="..." | -m "..."`);
+      }
+      if (next.startsWith('-') && CLI_FLAGS.has(next)) {
+        throw new Error(`Option ${arg} attend une valeur; ${next} semble être une option.
+Usage: --message "..." | --message="..." | -m="..." | -m "..."`);
       }
       options.message = next || '';
       i += 1;
@@ -130,7 +162,7 @@ Usage: --message "..."`);
 }
 
 function printUsage() {
-  console.log(`
+  console.log(`${C.blue}
 Usage:
   node scripts/review-claims.mjs
       Lance l’interface locale de review sur http://127.0.0.1:4317 (localhost uniquement)
@@ -138,6 +170,12 @@ Usage:
   node scripts/review-claims.mjs --commit [--push] [--message "..." ] [--dry-run]
       Committe la revue avec confirmation manuelle dans le terminal.
       Avec --dry-run, prévisualise la commande et le diff sans modifier Git.
+${C.dim}Options:
+  --commit        Lance le commit des reviews (terminal uniquement)
+  --dry-run       Affiche un aperçu sans écrire dans Git
+  --push          Pousse le commit après création
+  --message, -m   Définit le message du commit
+  --help, -h      Affiche cette aide${C.reset}
 `);
 }
 
@@ -362,7 +400,7 @@ async function runCommitMode(options) {
     dryRun: options.dryRun,
   });
   if (result.dryRun) {
-    console.log('\nDRY-RUN actif : aucun commit Git n’est effectué.');
+    console.log(`${C.blue}\nDRY-RUN actif : aucun commit Git n’est effectué.${C.reset}`);
     console.log(`Message envisagé: "${result.commitMessage}"`);
     if (result.push) console.log('Push cibles (simulation): activé');
     if (result.build) console.log(`\nBuild snapshot:\n${result.build}`);
@@ -374,7 +412,7 @@ async function runCommitMode(options) {
     if (result.push) console.log('git push origin HEAD');
     return;
   }
-  console.log(result.commit);
+  console.log(`${C.blue}${result.commit}${C.reset}`);
   if (result.push) console.log(result.push);
   if (result.build) console.log(`\nBuild snapshot:\n${result.build}`);
 }
@@ -383,7 +421,7 @@ let options;
 try {
   options = parseArgs(process.argv);
 } catch (error) {
-  console.error(error.message);
+  console.error(`${C.red}Erreur: ${error.message}${C.reset}`);
   printUsage();
   process.exit(1);
 }
@@ -393,12 +431,12 @@ if (options.help) {
 }
 if (options.commit) {
   runCommitMode(options).catch((error) => {
-    console.error(error.message);
+    console.error(`${C.red}Erreur: ${error.message}${C.reset}`);
     process.exit(1);
   });
 } else {
   runServer().catch((error) => {
-    console.error(error.message);
+    console.error(`${C.red}Erreur: ${error.message}${C.reset}`);
     process.exit(1);
   });
 }
