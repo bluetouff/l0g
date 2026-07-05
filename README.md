@@ -39,6 +39,36 @@ Les détails de calcul et les limites de modèle sont dans
 [`docs/MODELES-RISQUE.md`](docs/MODELES-RISQUE.md) et dans
 `/methodologie/`.
 
+## Outil interne de revue des claims
+
+L'UI de revue humaine des assertions (tooling d’admin) est volontairement
+isolée du site public et du MCP. Elle n'est pas exposée publiquement :
+
+- serveur local: `127.0.0.1:4317`
+- endpoint principal: `http://127.0.0.1:4317/`
+
+Lancement :
+
+```bash
+node scripts/review-claims.mjs
+```
+
+Le mode commit reste strictement en terminal :
+
+```bash
+node scripts/review-claims.mjs --commit [--dry-run] [--push] --message "..." 
+```
+
+Détails sécurité côté local :
+
+- seul localhost est accepté,
+- toutes les mutations API (`/api/review`, `/api/remove`) exigent JSON + token anti-CSRF propre à la session (`x-review-token`),
+- validation de payload (longueurs/champs),
+- anti-spam local par fenêtre de temps sur les routes de mutation,
+- commit Git en mode interactif terminal uniquement avec confirmation explicite `CONFIRMER`.
+
+Le MCP public et les endpoints de production ne sont pas affectés par ces options.
+
 ## Modèles de risque
 
 Deux corrections de modèle sont maintenant reflétées dans les surfaces l0g :
