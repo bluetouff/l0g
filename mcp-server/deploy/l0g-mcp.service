@@ -13,6 +13,9 @@ WorkingDirectory=/opt/l0g-mcp/mcp-server
 ExecStart=/usr/bin/node /opt/l0g-mcp/mcp-server/server.mjs
 Restart=on-failure
 RestartSec=3
+TimeoutStartSec=45
+TimeoutStopSec=15
+UMask=0077
 
 # --- Configuration applicative ---
 Environment=MCP_HOST=127.0.0.1
@@ -29,6 +32,7 @@ Environment=NODE_ENV=production
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
+PrivateIPC=yes
 ProtectSystem=strict
 ProtectHome=yes
 ProtectKernelTunables=yes
@@ -52,6 +56,7 @@ AmbientCapabilities=
 ReadOnlyPaths=/var/www/html/l0g /opt/l0g-mcp
 # Limites de ressources
 LimitNOFILE=4096
+LimitCORE=0
 MemoryMax=256M
 TasksMax=64
 
