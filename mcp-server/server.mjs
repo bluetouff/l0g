@@ -30,15 +30,35 @@ const PORT = parseInt(process.env.MCP_PORT || '8848', 10);
 const MCP_PATH = process.env.MCP_PATH || '/mcp';
 const DATA_DIR = process.env.L0G_DATA_DIR || '/var/www/html/l0g/current';
 const SITE = (process.env.L0G_SITE || 'https://l0g.fr').replace(/\/$/, '');
-const ALLOWED_HOSTS = (process.env.MCP_ALLOWED_HOSTS || 'l0g.fr,127.0.0.1,localhost')
-  .split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
-const ALLOWED_ORIGINS = (process.env.MCP_ALLOWED_ORIGINS || 'https://l0g.fr')
-  .split(',').map((s) => s.trim()).filter(Boolean);
+const ALLOWED_HOSTS = new Set(
+  (process.env.MCP_ALLOWED_HOSTS || 'l0g.fr,127.0.0.1,localhost')
+    .split(',').map((s) => s.trim().toLowerCase()).filter(Boolean)
+);
+const ALLOWED_ORIGINS = new Set(
+  (process.env.MCP_ALLOWED_ORIGINS || 'https://l0g.fr')
+    .split(',').map((s) => {
+      const value = s.trim().toLowerCase();
+      if (!value) return '';
+      try {
+        return new URL(value).origin;
+      } catch {
+        return value;
+      }
+    }).filter(Boolean)
+);
 const MAX_BODY = 1024 * 1024; // 1 Mo
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
 const RATE_WIN = 60_000;
 const MCP_VERSION = '1.14.0';
+const SECURE_HEADERS = {
+  'Cache-Control': 'no-store',
+  'Pragma': 'no-cache',
+  'Referrer-Policy': 'same-origin',
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+};
 function activeGitSha() {
   if (process.env.MCP_GIT_SHA) return process.env.MCP_GIT_SHA;
   if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
@@ -80,15 +100,13 @@ function rateLimited(ip) {
   return b.n > RATE_MAX;
 }
 function clientIp(req) {
-  // Derriere un unique proxy de confiance (Apache), la vraie IP cliente est la
-  // DERNIERE entree de X-Forwarded-For, celle ajoutee par Apache. Prendre la
-  // premiere serait spoofable par le client pour contourner le rate-limit.
+  const socketIp = req.socket?.remoteAddress || 'unknown';
   const xff = req.headers['x-forwarded-for'];
-  if (xff) {
-    const parts = String(xff).split(',').map((s) => s.trim()).filter(Boolean);
-    if (parts.length) return parts[parts.length - 1];
+  if ((socketIp === '127.0.0.1' || socketIp === '::1') && xff) {
+    const forwarded = String(xff).split(',').map((s) => s.trim()).filter(Boolean);
+    if (forwarded.length === 1) return forwarded[0];
   }
-  return req.socket.remoteAddress || 'unknown';
+  return socketIp;
 }
 setInterval(() => {
   const now = Date.now();
@@ -2276,24 +2294,39 @@ function buildServer(data) {
 
 // --- validation de sécurité (Host + Origin) ---
 function hostAllowed(req) {
-  const host = String(req.headers.host || '').toLowerCase().split(':')[0];
-  return ALLOWED_HOSTS.includes(host);
+  let host = String(req.headers.host || '')
+    .trim()
+    .toLowerCase()
+    .replace(/\.+$/, '');
+  const ipv6Match = host.match(/^\[(.+)\](?::\d+)?$/);
+  host = ipv6Match ? ipv6Match[1] : host.split(':')[0];
+  return ALLOWED_HOSTS.has(host);
 }
 function originAllowed(req) {
   const origin = req.headers.origin;
   if (!origin) return true; // clients natifs : pas d'Origin
-  return ALLOWED_ORIGINS.includes(origin);
+  try {
+    const normalized = new URL(String(origin)).origin.toLowerCase();
+    return ALLOWED_ORIGINS.has(normalized);
+  } catch {
+    return false;
+  }
 }
 
-function send(res, code, obj) {
+function send(res, code, obj, extraHeaders = {}) {
   const body = JSON.stringify(obj);
-  res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8' });
+  res.writeHead(code, { ...SECURE_HEADERS, ...extraHeaders, 'Content-Type': 'application/json; charset=utf-8' });
   res.end(body);
 }
 
 // --- serveur HTTP ---
 const httpServer = http.createServer(async (req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  let url;
+  try {
+    url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  } catch {
+    return send(res, 400, { error: 'requête invalide' });
+  }
 
   // sonde de santé
   if (req.method === 'GET' && url.pathname === '/healthz') {
@@ -2326,13 +2359,21 @@ const httpServer = http.createServer(async (req, res) => {
   if (!hostAllowed(req)) return send(res, 421, { error: 'host non autorisé' });
   if (!originAllowed(req)) return send(res, 403, { error: 'origin non autorisée' });
 
+  const contentLength = Number(req.headers['content-length']);
+  if (Number.isFinite(contentLength) && contentLength > MAX_BODY) {
+    return send(res, 413, { error: 'payload too large' });
+  }
+
   // Streamable HTTP stateless : seul POST est utile (pas de flux serveur en mode JSON).
   if (req.method === 'GET' || req.method === 'DELETE') {
-    res.writeHead(405, { Allow: 'POST', 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ jsonrpc: '2.0', error: { code: -32000, message: 'Method Not Allowed' }, id: null }));
+    return send(res, 405, { jsonrpc: '2.0', error: { code: -32000, message: 'Method Not Allowed' }, id: null }, { Allow: 'POST' });
   }
-  if (req.method !== 'POST') return send(res, 405, { error: 'method not allowed' });
+  if (req.method !== 'POST') return send(res, 405, { error: 'method not allowed' }, { Allow: 'POST' });
   if (rateLimited(clientIp(req))) return send(res, 429, { error: 'too many requests' });
+  const contentType = req.headers['content-type'];
+  if (!contentType || !/^application\/json\b/i.test(String(contentType))) {
+    return send(res, 415, { error: 'unsupported content type' });
+  }
 
   // lecture du corps, bornée
   let raw = '';
