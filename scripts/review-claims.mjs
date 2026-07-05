@@ -111,16 +111,19 @@ function parseArgs(argv) {
     else if (arg === '--dry-run') options.dryRun = true;
     else if (arg === '--push') options.push = true;
     else if (arg === '--message' || arg === '-m') {
-      if (!argv[i + 1]) {
+      const next = argv[i + 1];
+      if (!next || next.startsWith('-')) {
         throw new Error(`Option ${arg} attend une valeur.
 Usage: --message "..."`);
       }
-      options.message = argv[i + 1] || '';
+      options.message = next || '';
       i += 1;
     } else if (arg === '--help' || arg === '-h') options.help = true;
     else if (arg === '--no-push') options.push = false;
     else if (/^--/.test(arg) || /^-[^-]/.test(arg)) {
       throw new Error(`Argument inconnu: ${arg}`);
+    } else {
+      throw new Error(`Argument inattendu: ${arg}`);
     }
   }
   return options;
