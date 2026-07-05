@@ -2,6 +2,7 @@
 
 import http from 'node:http';
 import { execFile } from 'node:child_process';
+import readline from 'node:readline';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -96,6 +97,45 @@ async function ensureClaims({ force = false } = {}) {
     const built = await command('npm', ['run', 'build']);
     if (!built.ok) throw new Error(`Le build a échoué.\n\n${built.stdout}\n${built.stderr}`);
   }
+}
+
+function parseArgs(argv) {
+  const options = { commit: false, push: false, message: 'Review evidence claims', help: false };
+  for (let i = 2; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === '--commit') options.commit = true;
+    else if (arg === '--push') options.push = true;
+    else if (arg === '--message' || arg === '-m') {
+      options.message = argv[i + 1] || '';
+      i += 1;
+    } else if (arg === '--help' || arg === '-h') options.help = true;
+    else if (arg === '--no-push') options.push = false;
+  }
+  return options;
+}
+
+function printUsage() {
+  console.log(`
+Usage:
+  node scripts/review-claims.mjs
+      Lance l’interface locale de review sur http://127.0.0.1:4317 (localhost uniquement)
+
+  node scripts/review-claims.mjs --commit [--push] [--message "..." ]
+      Committe la revue avec confirmation manuelle dans le terminal.
+`);
+}
+
+function askTerminalConfirmation() {
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    throw new Error('Le mode --commit doit être lancé en terminal interactif.');
+  }
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question('Tape EXACTEMENT "CONFIRMER" pour valider le commit Git: ', (answer) => {
+      rl.close();
+      resolve(answer);
+    });
+  });
 }
 
 async function loadReviews() {
@@ -258,20 +298,52 @@ const server = http.createServer(async (req, res) => {
       const body = await parseBody(req);
       return json(res, 200, await removeReview(String(body.claimId || '')));
     }
-    if (url.pathname === '/api/commit' && req.method === 'POST') return json(res, 200, await commitReviews(await parseBody(req)));
     return json(res, 404, { error: 'Route inconnue.' });
   } catch (error) {
     return json(res, 400, { error: error.message || String(error) });
   }
 });
 
-await ensureRepository();
-await ensureClaims();
-server.listen(PORT, HOST, async () => {
-  console.log(`\n✓ Interface de review l0g : http://${HOST}:${PORT}/`);
-  console.log('  Ouvre cette URL dans ton navigateur.');
-  console.log('  Protection: localhost uniquement + confirmation manuelle avant commit.');
-  console.log('  Ctrl-C pour fermer.\n');
-  const opened = await command('open', [`http://${HOST}:${PORT}/`]);
-  if (!opened.ok) console.log('Ouvre cette URL dans ton navigateur.');
-});
+async function runServer() {
+  await ensureRepository();
+  await ensureClaims();
+  server.listen(PORT, HOST, async () => {
+    console.log(`\n✓ Interface de review l0g : http://${HOST}:${PORT}/`);
+    console.log('  Ouvre cette URL dans ton navigateur.');
+    console.log('  Protection: localhost uniquement.');
+    console.log('  Commit via API désactivé : commit terminal uniquement avec confirmation explicite.');
+    console.log('  Ctrl-C pour fermer.\n');
+    const opened = await command('open', [`http://${HOST}:${PORT}/`]);
+    if (!opened.ok) console.log('Ouvre cette URL dans ton navigateur.');
+  });
+}
+
+async function runCommitMode(options) {
+  await ensureRepository();
+  const confirmation = await askTerminalConfirmation();
+  const result = await commitReviews({
+    push: options.push,
+    message: options.message,
+    confirmation,
+  });
+  console.log(result.commit);
+  if (result.push) console.log(result.push);
+  if (result.build) console.log(`\nBuild snapshot:\n${result.build}`);
+}
+
+const options = parseArgs(process.argv);
+if (options.help) {
+  printUsage();
+  process.exit(0);
+}
+if (options.commit) {
+  runCommitMode(options).catch((error) => {
+    console.error(error.message);
+    process.exit(1);
+  });
+} else {
+  runServer().catch((error) => {
+    console.error(error.message);
+    process.exit(1);
+  });
+}
