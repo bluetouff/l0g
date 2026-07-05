@@ -2,7 +2,13 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 
 const URL_ = process.env.URL || 'http://127.0.0.1:8848/mcp';
-const transport = new StreamableHTTPClientTransport(new URL(URL_));
+const transport = new StreamableHTTPClientTransport(new URL(URL_), {
+  requestInit: {
+    headers: {
+      Accept: "application/json, text/event-stream",
+    },
+  },
+});
 const client = new Client({ name: 'l0g-test', version: '1.0.0' });
 await client.connect(transport);
 
