@@ -26,7 +26,7 @@ Le texte est ensuite resté bloqué au Sénat pendant dix mois, le temps que le 
 Le 14 mai, après six heures d'audition contentieuse marquée par les attaques frontales d'**Elizabeth Warren**, le bill franchit le markup et est désormais en route vers le plancher du Sénat. Pour devenir loi, il faudra encore :
 
 - Réconcilier la version Banking avec celle du Senate Agriculture Committee (qui couvre la juridiction CFTC)
-- Atteindre les **60 voix** au plancher du Sénat — ce qui nécessitera au moins sept démocrates supplémentaires
+- Atteindre les **60 voix** au plancher du Sénat, ce qui nécessitera au moins sept démocrates supplémentaires
 - Réconcilier le texte final avec la version House
 - Recevoir la signature du président Trump
 
@@ -143,9 +143,9 @@ Ces rejets en série donnent le ton de l'orientation politique du texte : favora
 
 ### Les oppositions et critiques
 
-- **Senator Elizabeth Warren** (D-MA, ranking member Banking) : *« ce bill met les investisseurs, notre sécurité nationale et notre système financier entier en risque — et il va turbocharger la corruption crypto de Donald Trump »*
+- **Senator Elizabeth Warren** (D-MA, ranking member Banking) : *« ce bill met les investisseurs, notre sécurité nationale et notre système financier entier en risque, et il va turbocharger la corruption crypto de Donald Trump »*
 - **NASAA** (North American Securities Administrators Association, qui regroupe les régulateurs des 50 États américains) : opposition documentée en janvier 2026 et statement officiel après le vote (14 mai 2026) déplorant *« l'avancement d'un bill avec des provisions que les bad actors chercheront à exploiter »*
-- **Syndicats** : AFL-CIO, SEIU, AFT, NEA, AFSCME — qui craignent l'exposition des comptes retraite et fonds de pension à la volatilité crypto
+- **Syndicats** : AFL-CIO, SEIU, AFT, NEA, AFSCME, qui craignent l'exposition des comptes retraite et fonds de pension à la volatilité crypto
 - **American Bankers Association** : pression pour durcir les restrictions stablecoin (partiellement satisfaite)
 
 ### Les démocrates ouverts à la négociation
@@ -170,7 +170,7 @@ Les **ETF spot crypto** déjà approuvés (Bitcoin, Ethereum, et plus récemment
 
 ### Pour les émetteurs de tokens
 
-**Regulation Crypto** crée un véhicule de levée capable de remplacer en partie les ICO (Initial Coin Offerings) de la période 2017-2018 — mais cette fois dans un cadre légal explicite. Les startups crypto basées aux États-Unis pourraient lever jusqu'à 50 M$ par an pendant 4 ans (plafond cumulé 200 M$) sans enregistrement S-1 complet, en respectant les obligations de disclosure.
+**Regulation Crypto** crée un véhicule de levée capable de remplacer en partie les ICO (Initial Coin Offerings) de la période 2017-2018, mais cette fois dans un cadre légal explicite. Les startups crypto basées aux États-Unis pourraient lever jusqu'à 50 M$ par an pendant 4 ans (plafond cumulé 200 M$) sans enregistrement S-1 complet, en respectant les obligations de disclosure.
 
 ### Pour les stablecoins
 
@@ -190,12 +190,12 @@ Le CLARITY Act est explicitement présenté comme une **réponse à MiCA** (Mark
 
 Comparaisons clés :
 
-- **MiCA** est plus protecteur (consumer protection prééminente, encadrement strict des CASPs — Crypto-Asset Service Providers)
+- **MiCA** est plus protecteur (consumer protection prééminente, encadrement strict des CASPs, Crypto-Asset Service Providers)
 - **CLARITY** est plus pro-innovation (Regulation Crypto plus généreuse, DeFi explicitement protégée)
 - **Hong Kong et Singapour** ont des cadres comparables mais avec moins de pénétration retail
 - **Le Royaume-Uni** est plus avancé sur les stablecoins (BoE) mais traîne sur le market structure
 
-Le CLARITY Act, s'il devient loi, pourrait redonner aux États-Unis le leadership réglementaire mondial sur les digital assets — leadership perdu pendant les années Gensler (2021-2025).
+Le CLARITY Act, s'il devient loi, pourrait redonner aux États-Unis le leadership réglementaire mondial sur les digital assets, leadership perdu pendant les années Gensler (2021-2025).
 
 ## Risques et zones grises
 
