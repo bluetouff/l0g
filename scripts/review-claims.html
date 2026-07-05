@@ -48,8 +48,9 @@ async function removeCurrent(){try{await api('/api/remove',{method:'POST',body:J
 function terminalCommitCommand() {
   const push = $('#push').checked ? ' --push' : '';
   const dryRun = $('#dryRun').checked ? ' --dry-run' : '';
-  const message = ( $('#message').value || 'Review evidence claims' ).trim().replace(/"/g, '\\"');
-  return `node scripts/review-claims.mjs --commit${push}${dryRun} --message "${message}"`;
+  const message = ( $('#message').value || 'Review evidence claims' ).trim();
+  const shellQuote = (value) => `'${String(value).replace(/'/g, `'\\''`)}'`;
+  return `node scripts/review-claims.mjs --commit${push}${dryRun} --message ${shellQuote(message)}`;
 }
 function commitAll(){const log=$('#log'),btn=$('#commit');btn.disabled=true;log.classList.add('visible');log.textContent=`Le commit depuis le navigateur est volontairement désactivé.\n\nRelance en local :\n${terminalCommitCommand()}\n\nPuis tape EXACTEMENT : CONFIRMER\n\nSécurité: commit Git uniquement en terminal interactif.`;toast('Commit désactivé dans le navigateur');btn.disabled=false}
 async function reload(){state=await api('/api/state');renderList();if(selected)renderDetail()}

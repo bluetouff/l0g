@@ -335,6 +335,7 @@ async function runServer() {
 
 async function runCommitMode(options) {
   await ensureRepository();
+  const shellQuotedMessage = (message) => `'${String(message).replace(/'/g, `'\\''`)}'`;
   const result = await commitReviews({
     push: options.push,
     message: options.message,
@@ -350,7 +351,7 @@ async function runCommitMode(options) {
     console.log(result.diff.trim() || '(aucune modif détectée)');
     console.log('\nCommande prévue :');
     console.log(`git add src/config/claim-reviews.json`);
-    console.log(`git commit -m "${(result.commitMessage || 'Review evidence claims').replace(/"/g, '\\"')}"`);
+    console.log(`git commit -m ${shellQuotedMessage(result.commitMessage || 'Review evidence claims')}`);
     if (result.push) console.log('git push origin HEAD');
     return;
   }
