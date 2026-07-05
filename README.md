@@ -96,6 +96,23 @@ En cas d’erreur dans l’UI de revue :
    - Réduis la taille du payload dans le formulaire (note, preuve, localisateur).
    - Le message de commit reste inchangé : il s’agit d’un guard local par design.
 
+### Checklist opérationnelle de maintenance
+
+- Avant de modifier ce flux local :
+  - vérifier qu’aucune donnée sensible de production n’est présente sur le poste (workflow git local propre),
+  - arrêter le serveur review existant (`Ctrl+C`) avant de relancer la commande,
+  - démarrer avec `node scripts/review-claims.mjs`,
+  - valider une review test puis vérifier la sortie JSON du serveur (`/api/state`).
+- En cas de hardening ou de changement de format de review :
+  - relancer un `git status --short`,
+  - exécuter `node scripts/review-claims.mjs --commit --dry-run --message "..."`,
+  - vérifier le diff affiché n’éditera que `src/config/claim-reviews.json`,
+  - exécuter le `commit --dry-run` réel avec `CONFIRMER` uniquement si le diff est conforme.
+- Après mise à jour :
+  - redémarrer le serveur review local,
+  - conserver la trace des événements sécurité récents si nécessaire :
+    - `curl -s http://127.0.0.1:4317/api/security-stats`
+
 ## Modèles de risque
 
 Deux corrections de modèle sont maintenant reflétées dans les surfaces l0g :

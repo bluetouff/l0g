@@ -35,6 +35,8 @@ const RATE_WINDOW_MS = 60_000;
 const RATE_LIMIT = 30;
 const operationRequestHistory = new Map();
 const securityEvents = [];
+const SECURITY_EVENTS_MAX = 200;
+const securityFailureCounts = new Map();
 const CLI_FLAGS = new Set([
   '--commit',
   '--dry-run',
@@ -215,17 +217,60 @@ function formatRemote(req) {
   return req.socket?.remoteAddress || 'unknown';
 }
 
-function logSecurityEvent(type, req, reason) {
-  const entry = {
-    at: new Date().toISOString(),
-    type,
-    reason,
-    path: req.url || 'unknown',
-    remote: formatRemote(req),
+function securityRecord() {
+  return {
+    timestamp: new Date().toISOString(),
+    type: 'request-rejected',
+    reason: 'unknown',
+    path: 'unknown',
+    method: 'unknown',
+    remote: 'unknown',
   };
+}
+
+function logSecurityEvent(type, req, reason) {
+  const entry = securityRecord();
+  entry.timestamp = new Date().toISOString();
+  entry.type = type;
+  entry.reason = String(reason || 'Erreur inconnue.');
+  entry.path = req.url || 'unknown';
+  entry.method = req.method || 'unknown';
+  entry.remote = formatRemote(req);
   securityEvents.push(entry);
-  if (securityEvents.length > 50) securityEvents.shift();
-  console.warn(`[SECURITE] ${entry.at} ${entry.type} - ${entry.reason} | ${entry.remote} ${entry.path}`);
+  if (securityEvents.length > SECURITY_EVENTS_MAX) securityEvents.shift();
+
+  const failure = securityFailureCounts.get(entry.remote) || {
+    total: 0,
+    byType: {},
+    lastAt: null,
+    lastPath: null,
+    lastReason: null,
+  };
+  failure.total += 1;
+  failure.byType[type] = (failure.byType[type] || 0) + 1;
+  failure.lastAt = entry.timestamp;
+  failure.lastPath = entry.path;
+  failure.lastReason = entry.reason;
+  securityFailureCounts.set(entry.remote, failure);
+  console.error(`[SECURITY] ${JSON.stringify(entry)}`);
+}
+
+function securityStats() {
+  return {
+    generatedAt: new Date().toISOString(),
+    failuresByIp: Object.fromEntries(
+      [...securityFailureCounts.entries()]
+        .sort((a, b) => b[1].total - a[1].total)
+        .map(([ip, stats]) => [ip, {
+          total: stats.total,
+          byType: stats.byType,
+          lastAt: stats.lastAt,
+          lastPath: stats.lastPath,
+          lastReason: stats.lastReason,
+        }]),
+    ),
+    recentEvents: securityEvents.slice(-40),
+  };
 }
 
 function enforceRateLimit(req) {
@@ -454,6 +499,10 @@ const server = http.createServer(async (req, res) => {
       requireJsonRequest(req);
       const body = await parseBody(req);
       return json(res, 200, await removeReview(String(body.claimId || '')));
+    }
+    if (url.pathname === '/api/security-stats') {
+      if (req.method !== 'GET') return json(res, 405, { error: 'Méthode non autorisée.' });
+      return json(res, 200, securityStats());
     }
     return json(res, 404, { error: 'Route inconnue.' });
   } catch (error) {
