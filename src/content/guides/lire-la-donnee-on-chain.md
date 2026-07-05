@@ -45,7 +45,7 @@ Les flux d'exchange sont le signal le plus surveillé par les bureaux institutio
   <text x="40" y="282" fill="#8b909b" font-size="12">Une sortie n'est donc plus forcément une mise en auto-conservation.</text>
   <text x="40" y="306" fill="#8b909b" font-size="11">Source : données on-chain agrégées (CryptoQuant, Glassnode), avril 2026.</text>
 </svg>
-<figcaption>Les réserves de bitcoins sur les plateformes sont passées d'environ **3,2 millions** en février 2020 à près de **2,40 millions** fin avril 2026, soit environ **12 %** de l'offre. Mais une partie du recul reflète le transfert de plus de **1,45 million** de bitcoins vers la conservation d'ETF, souvent comptée dans les mêmes adresses : le signal « sortie égale accumulation » s'est brouillé. Sources : agrégateurs on-chain (CryptoQuant, Glassnode).</figcaption>
+<figcaption>Les réserves de bitcoins sur les plateformes sont passées d'environ <strong>3,2 millions</strong> en février 2020 à près de <strong>2,40 millions</strong> fin avril 2026, soit environ <strong>12 %</strong> de l'offre. Mais une partie du recul reflète le transfert de plus de <strong>1,45 million</strong> de bitcoins vers la conservation d'ETF, souvent comptée dans les mêmes adresses : le signal « sortie égale accumulation » s'est brouillé. Sources : agrégateurs on-chain (CryptoQuant, Glassnode).</figcaption>
 </figure>
 
 ## Lire la valorisation : capitalisation réalisée, MVRV, SOPR, NVT
@@ -73,7 +73,7 @@ La donnée on-chain permet une valorisation impossible sur les marchés classiqu
   <text x="612" y="198" fill="#5eead4" font-size="11">déc. 2017 ≈ 4,0</text>
   <text x="60" y="228" fill="#8b909b" font-size="11">MVRV = capitalisation de marché / capitalisation réalisée. Sources : Mahmudov et Puell (2018) ; Glassnode.</text>
 </svg>
-<figcaption>Le MVRV oppose la valeur de marché au coût de revient on-chain des détenteurs. Au-dessus de **3,5**, le marché est historiquement euphorique, les sommets de **2017** et **2021** s'étant inscrits vers **4,0** et **3,2** ; sous **1**, le détenteur moyen est en perte. C'est un repère de régime, jamais un signal de timing précis. Sources : Murad Mahmudov et David Puell (2018), Glassnode.</figcaption>
+<figcaption>Le MVRV oppose la valeur de marché au coût de revient on-chain des détenteurs. Au-dessus de <strong>3,5</strong>, le marché est historiquement euphorique, les sommets de <strong>2017</strong> et <strong>2021</strong> s'étant inscrits vers <strong>4,0</strong> et <strong>3,2</strong> ; sous <strong>1</strong>, le détenteur moyen est en perte. C'est un repère de régime, jamais un signal de timing précis. Sources : Murad Mahmudov et David Puell (2018), Glassnode.</figcaption>
 </figure>
 
 Deux compléments affinent la lecture. Le SOPR, ou ratio de profit des sorties dépensées, indique si les pièces déplacées un jour donné le sont en gain, au-dessus de **1**, ou en perte, en dessous ; sa version ajustée ignore les pièces dépensées en moins d'une heure. Le NVT rapporte la capitalisation au volume de transfert on-chain en dollars, comme un cours rapporté à l'activité, à la manière d'un multiple de valorisation. Aucun de ces ratios ne se lit isolément, ni d'un actif à l'autre : un NVT n'a de sens que comparé à l'histoire du même réseau, Bitcoin et Ethereum ne jouant pas le même rôle.
@@ -100,7 +100,7 @@ Trois pièges guettent. La TVL gonfle avec les prix des jetons déposés, donc u
   <text x="40" y="236" fill="#f5b13d" font-size="12" font-weight="700">À relativiser</text>
   <text x="40" y="258" fill="#d6d9df" font-size="12">Les stablecoins (≈ 314 Md$) pèsent près de 4,4 fois la TVL DeFi.</text>
 </svg>
-<figcaption>Mi-2026, la valeur verrouillée en DeFi tourne autour de **71,8 milliards** de dollars, dont **53 %** sur Ethereum, en repli d'environ **37 %** depuis janvier et de près de **60 %** sous le pic de 2021. Rapportée à la capitalisation des stablecoins, près de **314 milliards**, elle pèse peu. Source : DefiLlama.</figcaption>
+<figcaption>Mi-2026, la valeur verrouillée en DeFi tourne autour de <strong>71,8 milliards</strong> de dollars, dont <strong>53 %</strong> sur Ethereum, en repli d'environ <strong>37 %</strong> depuis janvier et de près de <strong>60 %</strong> sous le pic de 2021. Rapportée à la capitalisation des stablecoins, près de <strong>314 milliards</strong>, elle pèse peu. Source : DefiLlama.</figcaption>
 </figure>
 
 ## Ce que la chaîne masque

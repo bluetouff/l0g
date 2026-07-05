@@ -46,7 +46,7 @@ La notion clé est celle de régulateur fédéral principal. Pour chaque émette
   <text x="48" y="380" fill="#5eead4" font-size="12" font-weight="700">Pour tous, sans exception</text>
   <text x="48" y="399" fill="#d6d9df" font-size="12">FinCEN (anti-blanchiment) et OFAC (sanctions), sous l'autorité du Trésor.</text>
 </svg>
-<figcaption>Le GENIUS Act désigne un régulateur fédéral principal par type d'émetteur, l'**OCC** couvrant le périmètre le plus large. Par-dessus ce maillage prudentiel, les obligations d'anti-blanchiment et de sanctions du Trésor s'appliquent à tout émetteur. Sources : Federal Register (projet de règle conjoint FinCEN/OFAC, avril 2026) ; Sullivan &amp; Cromwell, mars 2026.</figcaption>
+<figcaption>Le GENIUS Act désigne un régulateur fédéral principal par type d'émetteur, l'<strong>OCC</strong> couvrant le périmètre le plus large. Par-dessus ce maillage prudentiel, les obligations d'anti-blanchiment et de sanctions du Trésor s'appliquent à tout émetteur. Sources : Federal Register (projet de règle conjoint FinCEN/OFAC, avril 2026) ; Sullivan &amp; Cromwell, mars 2026.</figcaption>
 </figure>
 
 ## Trois portes d'entrée pour émettre
@@ -108,7 +108,7 @@ Le GENIUS Act impose que la plupart des règles d'application soient prises dans
   <text x="620" y="222" fill="#8b909b" font-size="10.5" text-anchor="middle">entrée en vigueur</text>
   <text x="620" y="236" fill="#8b909b" font-size="10.5" text-anchor="middle">ou 120 j après règles finales</text>
 </svg>
-<figcaption>La plupart des règles doivent être prises d'ici le **18 juillet 2026**, un an après la promulgation, l'entrée en vigueur intervenant au plus tard le **18 janvier 2027** ou cent vingt jours après les règles finales. Les six agences ont publié leurs projets, commentaires clos vers le 9 juin, mais aucun repli n'est prévu en cas de dépassement. Sources : Chapman and Cutler, tracker GENIUS Act ; Sullivan &amp; Cromwell ; Federal Register.</figcaption>
+<figcaption>La plupart des règles doivent être prises d'ici le <strong>18 juillet 2026</strong>, un an après la promulgation, l'entrée en vigueur intervenant au plus tard le <strong>18 janvier 2027</strong> ou cent vingt jours après les règles finales. Les six agences ont publié leurs projets, commentaires clos vers le 9 juin, mais aucun repli n'est prévu en cas de dépassement. Sources : Chapman and Cutler, tracker GENIUS Act ; Sullivan &amp; Cromwell ; Federal Register.</figcaption>
 </figure>
 
 ## Comment lire l'architecture, pas à pas

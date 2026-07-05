@@ -256,8 +256,14 @@ export const glossarySections = rawGlossarySections.map((section) => {
     slug: sectionSlug,
     entries: section.entries.map((entry): GlossaryEntry => {
       const slug = uniqueSlug(entry.sigle);
+      // Normalise le lien de guide : un slug nu ("lire-le-cpi-inflation-us")
+      // devient une URL absolue "/guides/.../", sinon le lien est relatif et casse.
+      const guide = entry.guide
+        ? (entry.guide.startsWith('/') ? entry.guide : `/guides/${entry.guide}/`)
+        : undefined;
       return {
         ...entry,
+        guide,
         slug,
         url: `/glossaire/${slug}/`,
         sectionTitle: section.titre,

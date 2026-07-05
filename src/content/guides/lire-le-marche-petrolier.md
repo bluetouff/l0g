@@ -42,7 +42,7 @@ Cette différence de géographie explique que les deux prix ne soient jamais tou
   <text x="40" y="300" fill="#d6d9df" font-size="12">Mars 2026 : ≈ 4,70 $. Fin juin 2026, prime de risque retombée : &lt; 3 $.</text>
   <text x="40" y="324" fill="#8b909b" font-size="11">Sources : RBN Energy, YCharts, Schwab.</text>
 </svg>
-<figcaption>Le Brent, maritime, sert de référence à environ deux tiers du brut échangé dans le monde ; le WTI, livré à Cushing, marque le marché américain. Leur écart, le spread Brent-WTI, oscille le plus souvent entre **2 et 8 dollars**. Sources : RBN Energy, YCharts, Charles Schwab.</figcaption>
+<figcaption>Le Brent, maritime, sert de référence à environ deux tiers du brut échangé dans le monde ; le WTI, livré à Cushing, marque le marché américain. Leur écart, le spread Brent-WTI, oscille le plus souvent entre <strong>2 et 8 dollars</strong>. Sources : RBN Energy, YCharts, Charles Schwab.</figcaption>
 </figure>
 
 ## Comment se forme le prix : papier et physique
@@ -83,7 +83,7 @@ En **contango**, la relation s'inverse : le comptant est moins cher que les éch
   <text x="410" y="292" fill="#d6d9df" font-size="11">Comptant &gt; futur · marché tendu</text>
   <text x="410" y="308" fill="#8b909b" font-size="10.5">Décourage le stockage</text>
 </svg>
-<figcaption>En **contango**, les échéances lointaines valent plus que le comptant : le marché est excédentaire et rémunère le stockage. En **backwardation**, le comptant vaut plus : le marché est tendu. La pente de la courbe est souvent un signal plus fiable que le niveau du prix.</figcaption>
+<figcaption>En <strong>contango</strong>, les échéances lointaines valent plus que le comptant : le marché est excédentaire et rémunère le stockage. En <strong>backwardation</strong>, le comptant vaut plus : le marché est tendu. La pente de la courbe est souvent un signal plus fiable que le niveau du prix.</figcaption>
 </figure>
 
 ## L'offre : OPEP+, schiste et capacité de réserve

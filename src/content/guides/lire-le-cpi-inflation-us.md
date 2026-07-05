@@ -52,7 +52,7 @@ Le CPI agrège des centaines de composantes, mais quatre blocs résument l'essen
   <text x="388" y="313" fill="#d6d9df" font-size="11">loyers réels 7,7 %</text>
   <text x="40" y="340" fill="#8b909b" font-size="11">Source : BLS, Table 1 du communiqué CPI (importance relative, mars 2026).</text>
 </svg>
-<figcaption>Le panier du CPI est dominé par les services, et au sein des services par le logement, qui pèse **35,3 %** de l'indice total, dont **25,9 %** pour le loyer imputé aux propriétaires (OER). L'alimentation et l'énergie, les deux postes les plus volatils, ne représentent ensemble que **20,7 %**. Source : Bureau of Labor Statistics, Table 1 du communiqué CPI.</figcaption>
+<figcaption>Le panier du CPI est dominé par les services, et au sein des services par le logement, qui pèse <strong>35,3 %</strong> de l'indice total, dont <strong>25,9 %</strong> pour le loyer imputé aux propriétaires (OER). L'alimentation et l'énergie, les deux postes les plus volatils, ne représentent ensemble que <strong>20,7 %</strong>. Source : Bureau of Labor Statistics, Table 1 du communiqué CPI.</figcaption>
 </figure>
 
 Une précision sur l'énergie, qui n'est pas une catégorie de dépense en soi mais un agrégat transversal. Le BLS la reconstitue à partir des carburants, logés dans les transports, et de l'électricité et du gaz, logés dans le logement. Son poids varie aussi plus vite que les autres : la pondération de base fixée en décembre 2025 était de **6,3 %**, mais l'importance relative remonte à **7,1 %** au printemps 2026, simplement parce que les prix de l'énergie ont grimpé et que la part de l'énergie dans la dépense suit.
@@ -108,7 +108,7 @@ Le troisième piège est celui de la précision. Le CPI est une estimation tiré
   <text x="40" y="304" fill="#d6d9df" font-size="12">L'énergie a expliqué plus de 60 % de la hausse mensuelle (+0,5 %).</text>
   <text x="40" y="324" fill="#8b909b" font-size="11">Essence : +40,5 % sur un an. Source : BLS, communiqué CPI du 10 juin 2026.</text>
 </svg>
-<figcaption>En mai 2026, le headline atteint **4,2 %** sur un an, tiré par une énergie en hausse de **23,5 %** (essence : **+40,5 %**), pendant que le core reste à **2,9 %**. À elle seule, l'énergie a expliqué plus de **60 %** de la hausse mensuelle de l'indice tous postes. Source : Bureau of Labor Statistics, communiqué du 10 juin 2026.</figcaption>
+<figcaption>En mai 2026, le headline atteint <strong>4,2 %</strong> sur un an, tiré par une énergie en hausse de <strong>23,5 %</strong> (essence : <strong>+40,5 %</strong>), pendant que le core reste à <strong>2,9 %</strong>. À elle seule, l'énergie a expliqué plus de <strong>60 %</strong> de la hausse mensuelle de l'indice tous postes. Source : Bureau of Labor Statistics, communiqué du 10 juin 2026.</figcaption>
 </figure>
 
 ## CPI contre PCE : pourquoi la Fed regarde un autre indice
@@ -136,7 +136,7 @@ Trois différences expliquent l'écart. La formule, d'abord : le PCE est un indi
   <text x="40" y="274" fill="#d6d9df" font-size="11.5">Logement : poids environ deux fois plus élevé dans le CPI ; santé : plus lourde dans le PCE.</text>
   <text x="40" y="294" fill="#8b909b" font-size="11">Écart moyen depuis 2000 : le CPI dépasse le PCE d'environ 0,39 point. Sources : Fed de Cleveland, Fed d'Atlanta.</text>
 </svg>
-<figcaption>CPI et PCE évoluent ensemble, mais le CPI court au-dessus, d'environ **0,39** point en moyenne depuis 2000, et l'écart a atteint un record à l'été 2022 (CPI à environ **9 %**, PCE à environ **7,1 %**). La Fed cible 2 % sur le PCE, pas sur le CPI. Sources : Fed de Cleveland, Fed d'Atlanta.</figcaption>
+<figcaption>CPI et PCE évoluent ensemble, mais le CPI court au-dessus, d'environ <strong>0,39</strong> point en moyenne depuis 2000, et l'écart a atteint un record à l'été 2022 (CPI à environ <strong>9 %</strong>, PCE à environ <strong>7,1 %</strong>). La Fed cible 2 % sur le PCE, pas sur le CPI. Sources : Fed de Cleveland, Fed d'Atlanta.</figcaption>
 </figure>
 
 Conséquence pratique : un CPI à 3 % n'est pas un échec de la Fed, et un CPI à 2 % serait déjà en deçà de la cible une fois traduit en PCE. Le CPI reste le chiffre que les marchés tradent, parce qu'il est plus visible et qu'il sort environ deux semaines avant le PCE, mais c'est le PCE qui oriente la décision. Confondre les deux, c'est se tromper de fonction de réaction.

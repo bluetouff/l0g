@@ -37,7 +37,7 @@ La M2 est une grandeur de stock, pas un flux d'argent qui entrerait dans les mar
   <text x="40" y="276" fill="#d6d9df" font-size="12">−4,6 % : plus bas de la série, première contraction franche</text>
   <text x="40" y="296" fill="#8b909b" font-size="12">depuis le début des données en 1960.</text>
 </svg>
-<figcaption>La M2 américaine est passée d'une expansion record de **26,8 %** sur un an en février 2021 à une contraction inédite de **4,6 %** en avril 2023, avant de réaccélérer vers **5,6 %** au printemps 2026. Source : Réserve fédérale (communiqué H.6), FRED.</figcaption>
+<figcaption>La M2 américaine est passée d'une expansion record de <strong>26,8 %</strong> sur un an en février 2021 à une contraction inédite de <strong>4,6 %</strong> en avril 2023, avant de réaccélérer vers <strong>5,6 %</strong> au printemps 2026. Source : Réserve fédérale (communiqué H.6), FRED.</figcaption>
 </figure>
 
 ## Pourquoi la M2 a explosé puis reculé

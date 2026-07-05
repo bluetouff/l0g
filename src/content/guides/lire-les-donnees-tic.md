@@ -106,7 +106,7 @@ Lue dans la durée, et corrigée mentalement du biais de conservation, la donné
   <text x="198" y="286" fill="#d6d9df" font-size="11">Royaume-Uni (place de garde)</text>
   <text x="470" y="286" fill="#8b909b" font-size="11">Source : Trésor américain (MFH).</text>
 </svg>
-<figcaption>En une décennie, la Chine est passée d'environ **1 270 milliards** de dollars de Treasuries à moins de **700 milliards**, pendant que le Royaume-Uni, place de conservation, montait de **152** à **866 milliards**. La bascule mêle vrai désengagement chinois et simple déplacement de la garde vers Londres. Source : Trésor américain, table MFH.</figcaption>
+<figcaption>En une décennie, la Chine est passée d'environ <strong>1 270 milliards</strong> de dollars de Treasuries à moins de <strong>700 milliards</strong>, pendant que le Royaume-Uni, place de conservation, montait de <strong>152</strong> à <strong>866 milliards</strong>. La bascule mêle vrai désengagement chinois et simple déplacement de la garde vers Londres. Source : Trésor américain, table MFH.</figcaption>
 </figure>
 
 Le troisième mouvement est le plus discret et le plus important. Au sein des détentions étrangères, la part des institutions officielles, banques centrales et fonds souverains, recule. Elle dépassait **53 %** du total fin 2021 ; elle est tombée autour de **42 %** fin 2025, alors même que le total atteignait un record. Mécaniquement, ce sont les investisseurs privés, gérants de fonds, assureurs, fonds spéculatifs, qui ont porté la hausse. L'acheteur marginal de la dette américaine n'est plus la banque centrale étrangère arrimée au dollar, mais un investisseur privé sensible au rendement, donc plus volatil. C'est un changement de nature du financement extérieur, que la seule lecture du total masque.
@@ -128,7 +128,7 @@ Le troisième mouvement est le plus discret et le plus important. Au sein des d�
   <text x="314" y="204" fill="#0c0d10" font-size="12" font-weight="700">privé 58 %</text>
   <text x="40" y="248" fill="#8b909b" font-size="11">Détenteurs officiels : env. 4 118 Md$ (2021) puis 3 887 Md$ (2025). Source : Trésor américain (MFH).</text>
 </svg>
-<figcaption>La part des détenteurs officiels étrangers, banques centrales et fonds souverains, est passée d'environ **53 %** fin 2021 à **42 %** fin 2025, leur encours reculant de **4 118** à **3 887 milliards** de dollars pendant que le total grimpait. Le financement extérieur de la dette américaine repose désormais davantage sur des investisseurs privés sensibles au rendement. Source : Trésor américain, table MFH.</figcaption>
+<figcaption>La part des détenteurs officiels étrangers, banques centrales et fonds souverains, est passée d'environ <strong>53 %</strong> fin 2021 à <strong>42 %</strong> fin 2025, leur encours reculant de <strong>4 118</strong> à <strong>3 887 milliards</strong> de dollars pendant que le total grimpait. Le financement extérieur de la dette américaine repose désormais davantage sur des investisseurs privés sensibles au rendement. Source : Trésor américain, table MFH.</figcaption>
 </figure>
 
 ## Lire le TIC en pratique

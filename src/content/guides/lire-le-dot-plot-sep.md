@@ -50,7 +50,7 @@ Le contenu, lui, a surpris. La médiane du taux directeur de fin 2026 est ressor
   <text x="150" y="312" fill="#d6d9df" font-size="12">En mars, la médiane 2026 était à 3,4 %, soit une baisse implicite.</text>
   <text x="150" y="332" fill="#8b909b" font-size="11">Sources : Fed, SEP du 17 juin 2026 ; répartition d'après CNBC.</text>
 </svg>
-<figcaption>Pour fin 2026, un seul participant voyait une baisse, huit le maintien, et neuf au moins une hausse, portant la médiane à **3,8 %** contre **3,4 %** en mars. Le taux directeur était alors maintenu à **3,50 %-3,75 %**. Warsh n'a pas soumis de point. Sources : Réserve fédérale, SEP du 17 juin 2026 ; répartition rapportée par CNBC.</figcaption>
+<figcaption>Pour fin 2026, un seul participant voyait une baisse, huit le maintien, et neuf au moins une hausse, portant la médiane à <strong>3,8 %</strong> contre <strong>3,4 %</strong> en mars. Le taux directeur était alors maintenu à <strong>3,50 %-3,75 %</strong>. Warsh n'a pas soumis de point. Sources : Réserve fédérale, SEP du 17 juin 2026 ; répartition rapportée par CNBC.</figcaption>
 </figure>
 
 <figure class="infographic" style="padding-bottom:1.75rem">
@@ -80,7 +80,7 @@ Le contenu, lui, a surpris. La médiane du taux directeur de fin 2026 est ressor
   <line x1="40" y1="244" x2="660" y2="244" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="268" fill="#8b909b" font-size="11">Source : Fed, SEP de mars et juin 2026. Médianes, projections de fin d'année 2026.</text>
 </svg>
-<figcaption>Entre mars et juin 2026, la Fed a relevé sa projection d'inflation PCE 2026 de **2,7 %** à **3,6 %** (sous-jacente : **2,7 %** à **3,3 %**), abaissé la croissance à **2,2 %** et le chômage à **4,3 %**, et remonté la médiane du taux de **3,4 %** à **3,8 %**. Un profil d'inflation plus collante qui justifie le virage du dot plot. Source : Réserve fédérale, SEP de mars et juin 2026.</figcaption>
+<figcaption>Entre mars et juin 2026, la Fed a relevé sa projection d'inflation PCE 2026 de <strong>2,7 %</strong> à <strong>3,6 %</strong> (sous-jacente : <strong>2,7 %</strong> à <strong>3,3 %</strong>), abaissé la croissance à <strong>2,2 %</strong> et le chômage à <strong>4,3 %</strong>, et remonté la médiane du taux de <strong>3,4 %</strong> à <strong>3,8 %</strong>. Un profil d'inflation plus collante qui justifie le virage du dot plot. Source : Réserve fédérale, SEP de mars et juin 2026.</figcaption>
 </figure>
 
 ## Lire la trajectoire, le taux neutre et l'écart avec le marché

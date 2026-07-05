@@ -42,7 +42,7 @@ Le piège central est ignoré de presque tous les commentaires : le NFP est une 
   <line x1="80" y1="108" x2="80" y2="158" stroke="#ff4d87" stroke-width="2" stroke-dasharray="5 4"></line>
   <text x="92" y="224" fill="#ff4d87" font-size="11">Sous +122 000, le chiffre n'est pas distinguable de zéro.</text>
 </svg>
-<figcaption>Le NFP de mai 2026, **+172 000**, porte un intervalle de confiance à 90 % d'environ plus ou moins **122 000**, soit une fourchette réelle de **+50 000** à **+294 000**. Tout chiffre publié sous **122 000** n'est pas statistiquement distinguable de zéro. Source : BLS, note technique de l'Employment Situation, mai 2026.</figcaption>
+<figcaption>Le NFP de mai 2026, <strong>+172 000</strong>, porte un intervalle de confiance à 90 % d'environ plus ou moins <strong>122 000</strong>, soit une fourchette réelle de <strong>+50 000</strong> à <strong>+294 000</strong>. Tout chiffre publié sous <strong>122 000</strong> n'est pas statistiquement distinguable de zéro. Source : BLS, note technique de l'Employment Situation, mai 2026.</figcaption>
 </figure>
 
 ## Les révisions, ou pourquoi le premier chiffre ment souvent
@@ -64,7 +64,7 @@ Une fois par an ensuite, l'enquête entreprises est recalée sur les registres q
   <text x="168" y="207" fill="#ff4d87" font-size="13" font-weight="700">≈ 15 / mois</text>
   <text x="40" y="246" fill="#8b909b" font-size="11">Année 2025 ramenée de +584 000 à +181 000 emplois (révision préliminaire de mars : −911 000). Source : BLS.</text>
 </svg>
-<figcaption>La révision de référence a ramené la création d'emplois de 2025 de **584 000** à **181 000**, soit un rythme réel d'environ **15 000** par mois contre les **48 000** affichés sur le moment. La révision préliminaire pour mars 2025 retranchait à elle seule **911 000** emplois. Source : BLS, programme CES et révision de référence.</figcaption>
+<figcaption>La révision de référence a ramené la création d'emplois de 2025 de <strong>584 000</strong> à <strong>181 000</strong>, soit un rythme réel d'environ <strong>15 000</strong> par mois contre les <strong>48 000</strong> affichés sur le moment. La révision préliminaire pour mars 2025 retranchait à elle seule <strong>911 000</strong> emplois. Source : BLS, programme CES et révision de référence.</figcaption>
 </figure>
 
 ## Le chômage : U3, U6 et le piège de la participation
@@ -88,7 +88,7 @@ Le piège le plus contre-intuitif tient au taux de participation, soit la part d
   <text x="40" y="200" fill="#d6d9df" font-size="12">Le U6 ajoute découragés et temps partiel subi. Participation : 61,8 %.</text>
   <text x="40" y="220" fill="#8b909b" font-size="11">Source : BLS, enquête ménages, mai 2026.</text>
 </svg>
-<figcaption>En mai 2026, le taux de chômage officiel U3 était de **4,3 %**, mais la mesure large U6, qui inclut découragés et temps partiel subi, atteignait **8,1 %**. Avec une participation de **61,8 %**, l'écart entre les deux mesures dit la qualité du marché, pas seulement son volume. Source : BLS, enquête ménages.</figcaption>
+<figcaption>En mai 2026, le taux de chômage officiel U3 était de <strong>4,3 %</strong>, mais la mesure large U6, qui inclut découragés et temps partiel subi, atteignait <strong>8,1 %</strong>. Avec une participation de <strong>61,8 %</strong>, l'écart entre les deux mesures dit la qualité du marché, pas seulement son volume. Source : BLS, enquête ménages.</figcaption>
 </figure>
 
 Restent les salaires et les heures, souvent négligés. En mai, le salaire horaire moyen a progressé de **0,3 %** sur le mois et de **3,4 %** sur un an. Mais rapporté à une inflation de **4,2 %**, ce gain est négatif en termes réels : le pouvoir d'achat horaire a reculé. La durée hebdomadaire du travail, stable à **34,3** heures, est un indicateur avancé utile, car les employeurs ajustent souvent les heures avant les effectifs.
