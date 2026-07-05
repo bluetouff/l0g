@@ -100,10 +100,11 @@ async function ensureClaims({ force = false } = {}) {
 }
 
 function parseArgs(argv) {
-  const options = { commit: false, push: false, message: 'Review evidence claims', help: false };
+  const options = { commit: false, push: false, dryRun: false, message: 'Review evidence claims', help: false };
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === '--commit') options.commit = true;
+    else if (arg === '--dry-run') options.dryRun = true;
     else if (arg === '--push') options.push = true;
     else if (arg === '--message' || arg === '-m') {
       options.message = argv[i + 1] || '';
@@ -120,8 +121,9 @@ Usage:
   node scripts/review-claims.mjs
       Lance l’interface locale de review sur http://127.0.0.1:4317 (localhost uniquement)
 
-  node scripts/review-claims.mjs --commit [--push] [--message "..." ]
+  node scripts/review-claims.mjs --commit [--push] [--message "..." ] [--dry-run]
       Committe la revue avec confirmation manuelle dans le terminal.
+      Avec --dry-run, prévisualise la commande et le diff sans modifier Git.
 `);
 }
 
@@ -224,8 +226,8 @@ async function removeReview(claimId) {
   return next;
 }
 
-async function commitReviews({ push = false, message = '', confirmation = '' } = {}) {
-  if (String(confirmation || '').trim() !== 'CONFIRMER') {
+async function commitReviews({ push = false, message = '', confirmation = '', dryRun = false } = {}) {
+  if (!dryRun && String(confirmation || '').trim() !== 'CONFIRMER') {
     throw new Error('Confirmation explicite requise : tape "CONFIRMER" pour poursuivre le commit.');
   }
   const stagedBefore = await command('git', ['diff', '--cached', '--name-only']);
@@ -236,14 +238,27 @@ async function commitReviews({ push = false, message = '', confirmation = '' } =
   const build = await command('npm', ['run', 'build']);
   if (!build.ok) throw new Error(`Validation impossible : le build a échoué.\n\n${build.stdout}\n${build.stderr}`);
 
-  const add = await command('git', ['add', 'src/config/claim-reviews.json']);
-  if (!add.ok) throw new Error(add.stderr || 'git add a échoué.');
-
-  const diff = await command('git', ['diff', '--cached', '--quiet']);
-  if (diff.ok) throw new Error('Aucune nouvelle review à committer.');
+  const diff = await command('git', ['diff', '--', 'src/config/claim-reviews.json']);
+  if (diff.ok && !diff.stdout.trim()) throw new Error('Aucune nouvelle review à committer.');
 
   const registry = await loadReviews();
   const commitMessage = String(message || '').trim() || `Review ${registry.entries.length} evidence claim${registry.entries.length > 1 ? 's' : ''}`;
+  if (dryRun) {
+    return {
+      dryRun: true,
+      commitMessage,
+      push,
+      diff: diff.stdout || '',
+      build: build.stdout.trim().split('\n').slice(-12).join('\n'),
+    };
+  }
+
+  const add = await command('git', ['add', 'src/config/claim-reviews.json']);
+  if (!add.ok) throw new Error(add.stderr || 'git add a échoué.');
+
+  const staged = await command('git', ['diff', '--cached', '--quiet']);
+  if (staged.ok) throw new Error('Aucune nouvelle review à committer.');
+
   const commit = await command('git', ['commit', '-m', commitMessage]);
   if (!commit.ok) throw new Error(`${commit.stdout}\n${commit.stderr}`.trim());
 
@@ -320,12 +335,25 @@ async function runServer() {
 
 async function runCommitMode(options) {
   await ensureRepository();
-  const confirmation = await askTerminalConfirmation();
   const result = await commitReviews({
     push: options.push,
     message: options.message,
-    confirmation,
+    confirmation: options.dryRun ? '' : await askTerminalConfirmation(),
+    dryRun: options.dryRun,
   });
+  if (result.dryRun) {
+    console.log('\nDRY-RUN actif : aucun commit Git n’est effectué.');
+    console.log(`Message envisagé: "${result.commitMessage}"`);
+    if (result.push) console.log('Push cibles (simulation): activé');
+    if (result.build) console.log(`\nBuild snapshot:\n${result.build}`);
+    console.log('\nDiff du fichier de revue :\n');
+    console.log(result.diff.trim() || '(aucune modif détectée)');
+    console.log('\nCommande prévue :');
+    console.log(`git add src/config/claim-reviews.json`);
+    console.log(`git commit -m "${(result.commitMessage || 'Review evidence claims').replace(/"/g, '\\"')}"`);
+    if (result.push) console.log('git push origin HEAD');
+    return;
+  }
   console.log(result.commit);
   if (result.push) console.log(result.push);
   if (result.build) console.log(`\nBuild snapshot:\n${result.build}`);
