@@ -12,7 +12,7 @@ const execFileAsync = promisify(execFile);
 const ROOT = process.cwd();
 const HOST = '127.0.0.1';
 const PORT = Number(process.env.L0G_REVIEW_PORT || 4317);
-const TOKEN = randomBytes(24).toString('hex');
+const TOKEN = process.env.L0G_REVIEW_TOKEN?.trim() || randomBytes(24).toString('hex');
 const CLAIMS_PATH = path.join(ROOT, 'dist/api/v1/claims.json');
 const REVIEW_PATH = path.join(ROOT, 'src/config/claim-reviews.json');
 const PACKAGE_PATH = path.join(ROOT, 'package.json');
@@ -230,16 +230,35 @@ async function parseBody(req) {
   return chunks.length ? JSON.parse(Buffer.concat(chunks).toString('utf8')) : {};
 }
 
-function authorized(url) {
-  return url.searchParams.get('token') === TOKEN;
+function isLoopbackAddress(address) {
+  if (!address) return false;
+  return (
+    address === '127.0.0.1'
+    || address === '::1'
+    || address === '::ffff:127.0.0.1'
+    || address === '::ffff:127.0.0.1/128'
+  );
+}
+
+function requestToken(req) {
+  const authorization = req.headers.authorization;
+  if (typeof authorization !== 'string') return '';
+  const direct = /^Bearer\s+(.+)$/i.exec(authorization);
+  return direct ? direct[1].trim() : authorization.trim();
+}
+
+function authorized(req) {
+  return requestToken(req) === TOKEN;
 }
 
 const html = await fs.readFile(HTML_PATH, 'utf8');
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url || '/', `http://${HOST}:${PORT}`);
+    const isLocal = isLoopbackAddress(req.socket?.remoteAddress);
+    if (!isLocal) return json(res, 403, { error: 'Interface réservée à localhost.' });
     if (url.pathname === '/' && req.method === 'GET') return text(res, 200, html, 'text/html; charset=utf-8');
-    if (!authorized(url)) return json(res, 403, { error: 'Token local invalide.' });
+    if (!authorized(req)) return json(res, 403, { error: 'Token local invalide.' });
     if (url.pathname === '/api/state' && req.method === 'GET') {
       return json(res, 200, await loadState({ forceBuild: url.searchParams.get('force') === '1' }));
     }
@@ -258,9 +277,11 @@ const server = http.createServer(async (req, res) => {
 await ensureRepository();
 await ensureClaims();
 server.listen(PORT, HOST, async () => {
-  const url = `http://${HOST}:${PORT}/?token=${TOKEN}`;
-  console.log(`\n✓ Interface de review l0g : ${url}`);
+  console.log(`\n✓ Interface de review l0g : http://${HOST}:${PORT}/`);
+  console.log('  Ouvre cette URL dans ton navigateur.');
+  console.log('  Autorisation requise via header: Authorization: Bearer <TOKEN>');
+  console.log('  (Token non exposé dans l’URL)');
   console.log('  Ctrl-C pour fermer.\n');
-  const opened = await command('open', [url]);
+  const opened = await command('open', [`http://${HOST}:${PORT}/`]);
   if (!opened.ok) console.log('Ouvre cette URL dans ton navigateur.');
 });
