@@ -122,8 +122,11 @@ Les resources inexistantes renvoient une erreur protocolaire MCP, pas un documen
 - **Lecture seule** : aucune écriture disque, slugs en **allowlist** (le path traversal
   est rejeté), taille de corps bornée à 1 Mo.
 - **Rate limit** par IP (120 req/min par défaut, via `X-Forwarded-For` posé par Apache).
-- systemd **durci** : `DynamicUser`, `ProtectSystem=strict`, capacités vidées,
-  `ReadOnlyPaths`, `MemoryMax`, filtre d'appels système.
+- Apache reverse-proxy : `LimitRequestBody` aligné à 1 Mo, entêtes de sécurité sur réponse,
+  timeout applicatif 30 s, keepalive proxy désactivé sur l’endpoint.
+- systemd **durci** : `DynamicUser`, `TimeoutStartSec=45`, `TimeoutStopSec=15`, `UMask=0077`,
+  `PrivateIPC`, `LimitCORE=0`, `ProtectSystem=strict`, capacités vidées, `ReadOnlyPaths`,
+  `MemoryMax`, filtre d'appels système.
 
 ## Déploiement pas à pas (Debian, serveur « zen »)
 
@@ -181,6 +184,12 @@ Inclure le bloc de `deploy/apache-l0g-mcp.conf` **dans le VirtualHost HTTPS de l
 ```bash
 sudo apache2ctl configtest        # Syntax OK
 sudo systemctl reload apache2
+```
+
+Après reload :
+```bash
+sudo apache2ctl -M | rg -e "proxy_module|proxy_http_module|headers_module|rewrite_module"
+curl -s -I https://l0g.fr/api/mcp | sed -n '1,20p'
 ```
 
 ### 6. Vérifier de l'extérieur
