@@ -239,4 +239,9 @@ sudo systemctl restart l0g-mcp
 | `L0G_SITE` | `https://l0g.fr` | base des URL renvoyées |
 | `MCP_ALLOWED_HOSTS` | `l0g.fr,127.0.0.1,localhost` | en-têtes Host acceptés |
 | `MCP_ALLOWED_ORIGINS` | `https://l0g.fr` | en-têtes Origin acceptés |
+| `MCP_MAX_BODY_BYTES` | `1048576` | limite de payload par requête (1 Mo) |
 | `MCP_RATE_MAX` | `120` | requêtes/min/IP |
+| `MCP_HEADER_TIMEOUT` | `10000` | timeout headers HTTP (ms) |
+| `MCP_REQUEST_TIMEOUT` | `15000` | timeout requête HTTP complet (ms) |
+| `MCP_KEEP_ALIVE_TIMEOUT` | `5000` | timeout keep-alive TCP (ms) |
+| `MCP_MAX_HEADERS_COUNT` | `64` | nombre maximum d'en-têtes parsables |

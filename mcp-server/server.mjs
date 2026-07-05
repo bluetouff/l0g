@@ -26,7 +26,7 @@ import { parse as parseHtml } from 'node-html-parser';
 
 // --- configuration (variables d'environnement, valeurs par défaut sûres) ---
 const HOST = process.env.MCP_HOST || '127.0.0.1';
-const PORT = parseInt(process.env.MCP_PORT || '8848', 10);
+const PORT = parsePositiveInteger(process.env.MCP_PORT, 8848, { min: 1, max: 65535 });
 const MCP_PATH = process.env.MCP_PATH || '/mcp';
 const DATA_DIR = process.env.L0G_DATA_DIR || '/var/www/html/l0g/current';
 const SITE = (process.env.L0G_SITE || 'https://l0g.fr').replace(/\/$/, '');
@@ -46,11 +46,15 @@ const ALLOWED_ORIGINS = new Set(
       }
     }).filter(Boolean)
 );
-const MAX_BODY = 1024 * 1024; // 1 Mo
+const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
 const CACHE_TTL = 60_000; // 60 s
-const RATE_MAX = parseInt(process.env.MCP_RATE_MAX || '120', 10); // requêtes / minute / IP
+const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
 const MCP_VERSION = '1.14.0';
+const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
+const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
+const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
+const MCP_MAX_HEADERS_COUNT = parsePositiveInteger(process.env.MCP_MAX_HEADERS_COUNT, 64); // sécurité parser headers
 const SECURE_HEADERS = {
   'Cache-Control': 'no-store',
   'Pragma': 'no-cache',
@@ -71,6 +75,14 @@ function activeGitSha() {
   } catch {
     return 'unknown';
   }
+}
+
+function parsePositiveInteger(value, fallback, options = {}) {
+  const parsed = Number.parseInt(value ?? '', 10);
+  const min = Number(options.min ?? 1);
+  const max = Number(options.max ?? Number.MAX_SAFE_INTEGER);
+  if (!Number.isFinite(parsed) || parsed < min || parsed > max) return fallback;
+  return parsed;
 }
 const CURRENT_SHA = activeGitSha();
 const SHA_STATUS = /^[0-9a-f]{40}$/i.test(CURRENT_SHA) ? 'verified-hex' : 'unknown';
@@ -2404,5 +2416,9 @@ const httpServer = http.createServer(async (req, res) => {
 });
 
 httpServer.listen(PORT, HOST, () => {
+  httpServer.maxHeadersCount = MCP_MAX_HEADERS_COUNT;
+  httpServer.headersTimeout = MCP_HEADER_TIMEOUT;
+  httpServer.requestTimeout = MCP_REQUEST_TIMEOUT;
+  httpServer.keepAliveTimeout = MCP_KEEP_ALIVE_TIMEOUT;
   console.error(`[l0g-mcp] écoute sur http://${HOST}:${PORT}${MCP_PATH} — données : ${DATA_DIR}`);
 });

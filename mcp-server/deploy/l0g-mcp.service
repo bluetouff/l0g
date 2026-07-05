@@ -26,6 +26,11 @@ Environment=L0G_SITE=https://l0g.fr
 Environment=MCP_ALLOWED_HOSTS=l0g.fr,127.0.0.1,localhost
 Environment=MCP_ALLOWED_ORIGINS=https://l0g.fr
 Environment=MCP_RATE_MAX=120
+Environment=MCP_MAX_BODY_BYTES=1048576
+Environment=MCP_HEADER_TIMEOUT=10000
+Environment=MCP_REQUEST_TIMEOUT=15000
+Environment=MCP_KEEP_ALIVE_TIMEOUT=5000
+Environment=MCP_MAX_HEADERS_COUNT=64
 Environment=NODE_ENV=production
 
 # --- Durcissement (le service ne fait que lire des fichiers et ecouter en local) ---
