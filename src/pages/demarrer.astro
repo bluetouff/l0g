@@ -40,7 +40,13 @@ const profils = [
   },
 ];
 
-const briques = [
+type BriqueItem = readonly [href: string, label: string, ext: boolean];
+
+const briques: Array<{
+  h: string;
+  d: string;
+  items: BriqueItem[];
+}> = [
   {
     h: 'fondations',
     d: "L’origine intellectuelle et le contrat de départ.",
