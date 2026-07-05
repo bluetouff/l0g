@@ -21,6 +21,20 @@ const REVIEW_TOKEN = randomBytes(24).toString('hex');
 const ALLOWED_KINDS = new Set(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
 const ALLOWED_PROOFS = new Set(['', 'direct-proof', 'reproduction']);
 const ALLOWED_LOCATORS = new Set(['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other']);
+const MAX_PAYLOAD_BYTES = 24_000;
+const MAX_FIELD_LENGTHS = {
+  claimId: 200,
+  reviewedBy: 120,
+  note: 6_000,
+  proofDepth: 64,
+  locatorType: 64,
+  locatorValue: 1_000,
+  reproductionArtifact: 1_200,
+};
+const RATE_WINDOW_MS = 60_000;
+const RATE_LIMIT = 30;
+const operationRequestHistory = new Map();
+const securityEvents = [];
 const CLI_FLAGS = new Set([
   '--commit',
   '--dry-run',
@@ -178,6 +192,9 @@ ${C.dim}Options:
   --push          Pousse le commit après création
   --message, -m   Définit le message du commit
   --help, -h      Affiche cette aide${C.reset}
+
+L’UI de review local envoie un token anti-CSRF dans l’en-tête x-review-token pour toutes les POST
+locales, et le service n’accepte que JSON applicatif.
 `);
 }
 
@@ -192,6 +209,44 @@ function requireReviewToken(req) {
   if (req.headers['x-review-token'] !== REVIEW_TOKEN) {
     throw new Error('Token de sécurité manquant ou invalide.');
   }
+}
+
+function formatRemote(req) {
+  return req.socket?.remoteAddress || 'unknown';
+}
+
+function logSecurityEvent(type, req, reason) {
+  const entry = {
+    at: new Date().toISOString(),
+    type,
+    reason,
+    path: req.url || 'unknown',
+    remote: formatRemote(req),
+  };
+  securityEvents.push(entry);
+  if (securityEvents.length > 50) securityEvents.shift();
+  console.warn(`[SECURITE] ${entry.at} ${entry.type} - ${entry.reason} | ${entry.remote} ${entry.path}`);
+}
+
+function enforceRateLimit(req) {
+  const key = `${formatRemote(req)}|${req.url}`;
+  const now = Date.now();
+  const items = operationRequestHistory.get(key) || [];
+  const next = items.filter((ts) => now - ts < RATE_WINDOW_MS);
+  if (next.length >= RATE_LIMIT) {
+    throw new Error(`Trop de requêtes: max ${RATE_LIMIT} toutes les ${RATE_WINDOW_MS / 1000}s.`);
+  }
+  next.push(now);
+  operationRequestHistory.set(key, next);
+}
+
+function sanitizeField(value, label, limit, { required = false } = {}) {
+  const valueStr = String(value || '').trim();
+  if (required && !valueStr) throw new Error(`${label} est requis.`);
+  if (valueStr.length > limit) {
+    throw new Error(`${label} trop long (${valueStr.length}/${limit} caractères).`);
+  }
+  return valueStr;
 }
 
 function askTerminalConfirmation() {
@@ -235,14 +290,14 @@ async function loadState({ forceBuild = false } = {}) {
 }
 
 function validateReview(body, claimIds) {
-  const claimId = String(body.claimId || '').trim();
-  const reviewedBy = String(body.reviewedBy || '').trim();
-  const kind = String(body.kind || '').trim();
-  const note = String(body.note || '').trim();
-  const proofDepth = String(body.proofDepth || '').trim();
-  const locatorType = String(body.evidenceLocator?.type || '').trim();
-  const locatorValue = String(body.evidenceLocator?.value || '').trim();
-  const reproductionArtifact = String(body.reproductionArtifact || '').trim();
+  const claimId = sanitizeField(body.claimId, 'claimId', MAX_FIELD_LENGTHS.claimId, { required: true });
+  const reviewedBy = sanitizeField(body.reviewedBy, 'Le nom du reviewer', MAX_FIELD_LENGTHS.reviewedBy, { required: true });
+  const kind = sanitizeField(body.kind, 'Le type de claim', MAX_FIELD_LENGTHS.proofDepth);
+  const note = sanitizeField(body.note, 'Note de revue', MAX_FIELD_LENGTHS.note, { required: true });
+  const proofDepth = sanitizeField(body.proofDepth, 'Niveau de preuve', MAX_FIELD_LENGTHS.proofDepth);
+  const locatorType = sanitizeField(body.evidenceLocator?.type, 'Type de localisateur', MAX_FIELD_LENGTHS.locatorType);
+  const locatorValue = sanitizeField(body.evidenceLocator?.value, 'Localisateur', MAX_FIELD_LENGTHS.locatorValue);
+  const reproductionArtifact = sanitizeField(body.reproductionArtifact, 'Artefact de reproduction', MAX_FIELD_LENGTHS.reproductionArtifact);
 
   if (!claimIds.has(claimId)) throw new Error('Claim inconnue ou corpus local obsolète.');
   if (!reviewedBy) throw new Error('Le nom du reviewer est obligatoire.');
@@ -282,6 +337,8 @@ async function saveReview(body) {
 }
 
 async function removeReview(claimId) {
+  if (!String(claimId || '').trim()) throw new Error('claimId manquant.');
+  const normalized = sanitizeField(claimId, 'claimId', MAX_FIELD_LENGTHS.claimId, { required: true });
   const registry = await loadReviews();
   const today = new Date().toISOString().slice(0, 10);
   const next = {
@@ -353,7 +410,7 @@ async function parseBody(req) {
   let size = 0;
   for await (const chunk of req) {
     size += chunk.length;
-    if (size > 1_000_000) throw new Error('Requête trop volumineuse.');
+    if (size > MAX_PAYLOAD_BYTES) throw new Error('Requête trop volumineuse.');
     chunks.push(chunk);
   }
   return chunks.length ? JSON.parse(Buffer.concat(chunks).toString('utf8')) : {};
@@ -385,12 +442,14 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname === '/api/review') {
       if (req.method !== 'POST') return json(res, 405, { error: 'Méthode non autorisée.' });
+      enforceRateLimit(req);
       requireReviewToken(req);
       requireJsonRequest(req);
       return json(res, 200, await saveReview(await parseBody(req)));
     }
     if (url.pathname === '/api/remove') {
       if (req.method !== 'POST') return json(res, 405, { error: 'Méthode non autorisée.' });
+      enforceRateLimit(req);
       requireReviewToken(req);
       requireJsonRequest(req);
       const body = await parseBody(req);
@@ -398,6 +457,7 @@ const server = http.createServer(async (req, res) => {
     }
     return json(res, 404, { error: 'Route inconnue.' });
   } catch (error) {
+    logSecurityEvent('request-rejected', req, error.message || String(error));
     return json(res, 400, { error: error.message || String(error) });
   }
 });
