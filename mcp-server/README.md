@@ -157,6 +157,8 @@ npm ci --omit=dev          # ou : npm install --omit=dev
 L0G_DATA_DIR=/var/www/html/l0g/current node server.mjs &
 curl -s http://127.0.0.1:8848/healthz       # -> versions MCP/Agent Surface, SHA et fraîcheur chargée
 node test-client.mjs                          # liste les tools et teste chaque appel
+# le script force l'en-tête Accept requis par le Streamable HTTP :
+# application/json, text/event-stream
 kill %1
 ```
 
