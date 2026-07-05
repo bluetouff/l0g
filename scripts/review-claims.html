@@ -23,9 +23,10 @@
   <main class="main"><div id="detail" class="empty">Sélectionne une claim.</div></main>
 </div>
 <script>
+const REVIEW_TOKEN = "__REVIEW_TOKEN_PLACEHOLDER__";
 let state=null,selected=null;const $=s=>document.querySelector(s);
 function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function api(path,options={}){const res=await fetch(path,{headers:{'content-type':'application/json',...(options.headers||{})},method:options.method||'GET',body:options.body});const data=await res.json();if(!res.ok)throw new Error(data.error||'Erreur');return data}
+async function api(path,options={}){const res=await fetch(path,{headers:{'content-type':'application/json','x-review-token':REVIEW_TOKEN,...(options.headers||{})},method:options.method||'GET',body:options.body});const data=await res.json();if(!res.ok)throw new Error(data.error||'Erreur');return data}
 function toast(message,error=false){const n=document.createElement('div');n.className='toast'+(error?' error':'');n.textContent=message;document.body.appendChild(n);setTimeout(()=>n.remove(),3200)}
 function currentList(){const q=$('#search').value.trim().toLowerCase(),f=$('#filter').value;return state.claims.filter(c=>{const reviewed=!!c.review;if(f==='pending'&&reviewed)return false;if(f==='reviewed'&&!reviewed)return false;const hay=[c.articleTitle,c.claim,c.kind,...(c.references||[]).flatMap(r=>[r.label,r.href,r.host])].join(' ').toLowerCase();return !q||hay.includes(q)})}
 function commitMessage(){

@@ -3,6 +3,7 @@
 import http from 'node:http';
 import { execFile } from 'node:child_process';
 import readline from 'node:readline';
+import { randomBytes } from 'node:crypto';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,6 +17,7 @@ const CLAIMS_PATH = path.join(ROOT, 'dist/api/v1/claims.json');
 const REVIEW_PATH = path.join(ROOT, 'src/config/claim-reviews.json');
 const PACKAGE_PATH = path.join(ROOT, 'package.json');
 const HTML_PATH = path.join(path.dirname(fileURLToPath(import.meta.url)), 'review-claims.html');
+const REVIEW_TOKEN = randomBytes(24).toString('hex');
 const ALLOWED_KINDS = new Set(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
 const ALLOWED_PROOFS = new Set(['', 'direct-proof', 'reproduction']);
 const ALLOWED_LOCATORS = new Set(['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other']);
@@ -177,6 +179,19 @@ ${C.dim}Options:
   --message, -m   Définit le message du commit
   --help, -h      Affiche cette aide${C.reset}
 `);
+}
+
+function requireJsonRequest(req) {
+  const contentType = String(req.headers['content-type'] || '').toLowerCase();
+  if (!contentType.startsWith('application/json')) {
+    throw new Error('Content-Type invalide: application/json requis.');
+  }
+}
+
+function requireReviewToken(req) {
+  if (req.headers['x-review-token'] !== REVIEW_TOKEN) {
+    throw new Error('Token de sécurité manquant ou invalide.');
+  }
 }
 
 function askTerminalConfirmation() {
@@ -359,15 +374,25 @@ const server = http.createServer(async (req, res) => {
     const url = new URL(req.url || '/', `http://${HOST}:${PORT}`);
     const isLocal = isLoopbackAddress(req.socket?.remoteAddress);
     if (!isLocal) return json(res, 403, { error: 'Interface réservée à localhost.' });
-    if (url.pathname === '/' && req.method === 'GET') {
-      const html = await fs.readFile(HTML_PATH, 'utf8');
+    if (url.pathname === '/') {
+      if (req.method !== 'GET') return json(res, 405, { error: 'Méthode non autorisée.' });
+      const html = (await fs.readFile(HTML_PATH, 'utf8')).replace('__REVIEW_TOKEN_PLACEHOLDER__', REVIEW_TOKEN);
       return text(res, 200, html, 'text/html; charset=utf-8');
     }
-    if (url.pathname === '/api/state' && req.method === 'GET') {
+    if (url.pathname === '/api/state') {
+      if (req.method !== 'GET') return json(res, 405, { error: 'Méthode non autorisée.' });
       return json(res, 200, await loadState({ forceBuild: url.searchParams.get('force') === '1' }));
     }
-    if (url.pathname === '/api/review' && req.method === 'POST') return json(res, 200, await saveReview(await parseBody(req)));
-    if (url.pathname === '/api/remove' && req.method === 'POST') {
+    if (url.pathname === '/api/review') {
+      if (req.method !== 'POST') return json(res, 405, { error: 'Méthode non autorisée.' });
+      requireReviewToken(req);
+      requireJsonRequest(req);
+      return json(res, 200, await saveReview(await parseBody(req)));
+    }
+    if (url.pathname === '/api/remove') {
+      if (req.method !== 'POST') return json(res, 405, { error: 'Méthode non autorisée.' });
+      requireReviewToken(req);
+      requireJsonRequest(req);
       const body = await parseBody(req);
       return json(res, 200, await removeReview(String(body.claimId || '')));
     }
