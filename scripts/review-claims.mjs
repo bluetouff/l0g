@@ -3,7 +3,7 @@
 import http from 'node:http';
 import { execFile } from 'node:child_process';
 import readline from 'node:readline';
-import { randomBytes } from 'node:crypto';
+import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -60,6 +60,9 @@ function json(res, status, payload) {
     'content-type': 'application/json; charset=utf-8',
     'content-length': Buffer.byteLength(body),
     'cache-control': 'no-store',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'DENY',
+    'referrer-policy': 'no-referrer',
   });
   res.end(body);
 }
@@ -69,6 +72,9 @@ function text(res, status, payload, type = 'text/plain; charset=utf-8') {
     'content-type': type,
     'content-length': Buffer.byteLength(payload),
     'cache-control': 'no-store',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'DENY',
+    'referrer-policy': 'no-referrer',
   });
   res.end(payload);
 }
@@ -208,7 +214,13 @@ function requireJsonRequest(req) {
 }
 
 function requireReviewToken(req) {
-  if (req.headers['x-review-token'] !== REVIEW_TOKEN) {
+  const headerValue = req.headers['x-review-token'];
+  const providedToken = Array.isArray(headerValue) ? headerValue[0] : headerValue;
+  if (
+    typeof providedToken !== 'string'
+    || providedToken.length !== REVIEW_TOKEN.length
+    || !timingSafeEqual(Buffer.from(providedToken), Buffer.from(REVIEW_TOKEN))
+  ) {
     throw new Error('Token de sécurité manquant ou invalide.');
   }
 }
@@ -274,7 +286,8 @@ function securityStats() {
 }
 
 function enforceRateLimit(req) {
-  const key = `${formatRemote(req)}|${req.url}`;
+  const path = String(req.url || '').split('?')[0] || '/';
+  const key = `${formatRemote(req)}|${path}`;
   const now = Date.now();
   const items = operationRequestHistory.get(key) || [];
   const next = items.filter((ts) => now - ts < RATE_WINDOW_MS);
@@ -386,10 +399,14 @@ async function removeReview(claimId) {
   const normalized = sanitizeField(claimId, 'claimId', MAX_FIELD_LENGTHS.claimId, { required: true });
   const registry = await loadReviews();
   const today = new Date().toISOString().slice(0, 10);
+  const nextEntries = registry.entries.filter((item) => item.claimId !== normalized);
+  if (nextEntries.length === registry.entries.length) {
+    throw new Error('Aucune review trouvée pour ce claimId.');
+  }
   const next = {
     version: today,
     updated: today,
-    entries: registry.entries.filter((item) => item.claimId !== claimId),
+    entries: nextEntries,
   };
   await writeJsonAtomic(REVIEW_PATH, next);
   return next;
