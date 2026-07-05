@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { textResponse } from '../../../lib/agent-surface.ts';
 
 /**
  * Flux Atom des changements de niveau de risque (franchissements de seuil).
@@ -65,7 +66,5 @@ ${entries}
 </feed>
 `;
 
-  return new Response(feed, {
-    headers: { 'Content-Type': 'application/atom+xml; charset=utf-8' },
-  });
+  return textResponse(feed, 'application/atom+xml; charset=utf-8');
 };

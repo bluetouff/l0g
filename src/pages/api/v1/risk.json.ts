@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { editorialProtocol } from '../../../config/editorial.ts';
 import { riskBandScaleCaveat } from '../../../config/methodology.ts';
 import { riskSignalMeta } from '../../../config/risk-signals.ts';
+import { textResponse } from '../../../lib/agent-surface.ts';
 
 /**
  * API publique l0g — v1. Sortie statique : le corps est généré au build à partir
@@ -68,7 +69,5 @@ export const GET: APIRoute = () => {
       "Signaux repris des outils l0g, à la cadence des snapshots (pas de temps réel strict). L’échelle 0-100 est une normalisation d’affichage par instrument, pas un indice global ni une probabilité. Best-effort, pas un conseil en investissement.",
   };
 
-  return new Response(JSON.stringify(payload, null, 2) + '\n', {
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-  });
+  return textResponse(JSON.stringify(payload, null, 2) + '\n', 'application/json; charset=utf-8');
 };

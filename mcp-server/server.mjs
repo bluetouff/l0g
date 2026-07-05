@@ -55,6 +55,7 @@ const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
 const MCP_MAX_HEADERS_COUNT = parsePositiveInteger(process.env.MCP_MAX_HEADERS_COUNT, 64); // sécurité parser headers
+const MCP_RATE_WINDOW_SECONDS = Math.max(1, Math.round(RATE_WIN / 1000));
 const SECURE_HEADERS = {
   'Cache-Control': 'no-store',
   'Pragma': 'no-cache',
@@ -62,6 +63,7 @@ const SECURE_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+  'Cross-Origin-Opener-Policy': 'same-origin',
 };
 function activeGitSha() {
   if (process.env.MCP_GIT_SHA) return process.env.MCP_GIT_SHA;
@@ -2331,6 +2333,14 @@ function send(res, code, obj, extraHeaders = {}) {
   res.end(body);
 }
 
+function rateLimitHeaders() {
+  return {
+    'Retry-After': String(MCP_RATE_WINDOW_SECONDS),
+    'X-RateLimit-Limit': String(RATE_MAX),
+    'X-RateLimit-Window': `${MCP_RATE_WINDOW_SECONDS}s`,
+  };
+}
+
 // --- serveur HTTP ---
 const httpServer = http.createServer(async (req, res) => {
   let url;
@@ -2381,24 +2391,37 @@ const httpServer = http.createServer(async (req, res) => {
     return send(res, 405, { jsonrpc: '2.0', error: { code: -32000, message: 'Method Not Allowed' }, id: null }, { Allow: 'POST' });
   }
   if (req.method !== 'POST') return send(res, 405, { error: 'method not allowed' }, { Allow: 'POST' });
-  if (rateLimited(clientIp(req))) return send(res, 429, { error: 'too many requests' });
+  if (rateLimited(clientIp(req))) {
+    return send(res, 429, {
+      error: 'too many requests',
+      retryAfter: MCP_RATE_WINDOW_SECONDS,
+      limitPerMinute: RATE_MAX,
+    }, rateLimitHeaders());
+  }
   const contentType = req.headers['content-type'];
   if (!contentType || !/^application\/json\b/i.test(String(contentType))) {
     return send(res, 415, { error: 'unsupported content type' });
   }
 
   // lecture du corps, bornée
-  let raw = '';
+  const chunks = [];
+  let rawBytes = 0;
   let tooBig = false;
   req.on('data', (c) => {
-    raw += c;
-    if (raw.length > MAX_BODY) { tooBig = true; req.destroy(); }
+    const chunk = Buffer.isBuffer(c) ? c : Buffer.from(c);
+    rawBytes += chunk.length;
+    chunks.push(chunk);
+    if (rawBytes > MAX_BODY) { tooBig = true; req.destroy(); }
   });
   req.on('end', async () => {
     if (tooBig) return send(res, 413, { error: 'payload too large' });
     let body;
-    try { body = raw ? JSON.parse(raw) : undefined; }
-    catch { return send(res, 400, { jsonrpc: '2.0', error: { code: -32700, message: 'Parse error' }, id: null }); }
+    try {
+      const raw = Buffer.concat(chunks).toString('utf8');
+      body = raw ? JSON.parse(raw) : undefined;
+    } catch {
+      return send(res, 400, { jsonrpc: '2.0', error: { code: -32700, message: 'Parse error' }, id: null });
+    }
     try {
       const data = await loadData();
       const server = buildServer(data);

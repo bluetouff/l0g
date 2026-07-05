@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { textResponse } from '../../../lib/agent-surface.ts';
 
 /**
  * Snapshot Dette US dedie. Il reprend le fichier public genere au build depuis
@@ -13,7 +14,5 @@ function readJSON(rel: string): any {
 
 export const GET: APIRoute = () => {
   const snapshot = readJSON('public/debt-latest.json');
-  return new Response(JSON.stringify(snapshot, null, 2) + '\n', {
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-  });
+  return textResponse(JSON.stringify(snapshot, null, 2) + '\n', 'application/json; charset=utf-8');
 };

@@ -14,6 +14,21 @@ import {
   buildSignalSchemaSurface,
 } from './signal-history.ts';
 
+const API_SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'geolocation=(), microphone=(), camera=(), interest-cohort=()',
+  'Cross-Origin-Opener-Policy': 'same-origin',
+};
+
+function secureApiHeaders(type: string) {
+  return {
+    'Content-Type': type,
+    ...API_SECURITY_HEADERS,
+  };
+}
+
 export const AGENT_SITE = 'https://l0g.fr';
 export const AGENT_VERSION = '1.10.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
@@ -39,7 +54,7 @@ export type GuideEntry = CollectionEntry<'guides'>;
 
 export function jsonResponse(payload: unknown) {
   return new Response(JSON.stringify(payload, null, 2) + '\n', {
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    headers: secureApiHeaders('application/json; charset=utf-8'),
   });
 }
 
@@ -49,8 +64,12 @@ export function toNdjson(rows: unknown[]) {
 
 export function ndjsonResponse(rows: unknown[]) {
   return new Response(toNdjson(rows), {
-    headers: { 'Content-Type': 'application/x-ndjson; charset=utf-8' },
+    headers: secureApiHeaders('application/x-ndjson; charset=utf-8'),
   });
+}
+
+export function textResponse(payload: string, type: string) {
+  return new Response(payload, { headers: secureApiHeaders(type) });
 }
 
 export function generatedAt() {
