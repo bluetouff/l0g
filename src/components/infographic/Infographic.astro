@@ -1,0 +1,21 @@
+---
+// Enveloppe commune des infographies : <figure> à la charte, padding sous le
+// graphe (pour que le texte suivant ne colle pas), et <figcaption> qui gère le
+// gras **...** (le markdown ne s'interprète pas dans le HTML brut des figures).
+interface Props {
+  caption?: string;
+}
+const { caption } = Astro.props;
+
+function renderCaption(text: string): string {
+  const escaped = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  return escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+---
+<figure class="infographic" style="padding-bottom:1.75rem">
+  <slot />
+  {caption && <figcaption set:html={renderCaption(caption)} />}
+</figure>
