@@ -252,12 +252,16 @@ function authorized(req) {
 }
 
 const html = await fs.readFile(HTML_PATH, 'utf8');
+function renderHtml() {
+  return html.replace('__L0G_REVIEW_TOKEN__', JSON.stringify(TOKEN));
+}
+
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url || '/', `http://${HOST}:${PORT}`);
     const isLocal = isLoopbackAddress(req.socket?.remoteAddress);
     if (!isLocal) return json(res, 403, { error: 'Interface réservée à localhost.' });
-    if (url.pathname === '/' && req.method === 'GET') return text(res, 200, html, 'text/html; charset=utf-8');
+    if (url.pathname === '/' && req.method === 'GET') return text(res, 200, renderHtml(), 'text/html; charset=utf-8');
     if (!authorized(req)) return json(res, 403, { error: 'Token local invalide.' });
     if (url.pathname === '/api/state' && req.method === 'GET') {
       return json(res, 200, await loadState({ forceBuild: url.searchParams.get('force') === '1' }));
