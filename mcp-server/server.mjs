@@ -2350,6 +2350,10 @@ const httpServer = http.createServer(async (req, res) => {
   } catch {
     return send(res, 400, { error: 'requête invalide' });
   }
+  const acceptHeader = req.headers.accept;
+  if (typeof acceptHeader === 'undefined' || !/text\/event-stream/i.test(acceptHeader) || !/application\/json/i.test(acceptHeader)) {
+    req.headers.accept = `${acceptHeader ? `${acceptHeader}, ` : ''}application/json, text/event-stream`;
+  }
 
   // sonde de santé
   if (req.method === 'GET' && url.pathname === '/healthz') {
