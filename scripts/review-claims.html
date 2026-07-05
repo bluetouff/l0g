@@ -28,6 +28,14 @@ function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt
 async function api(path,options={}){const res=await fetch(path,{headers:{'content-type':'application/json',...(options.headers||{})},method:options.method||'GET',body:options.body});const data=await res.json();if(!res.ok)throw new Error(data.error||'Erreur');return data}
 function toast(message,error=false){const n=document.createElement('div');n.className='toast'+(error?' error':'');n.textContent=message;document.body.appendChild(n);setTimeout(()=>n.remove(),3200)}
 function currentList(){const q=$('#search').value.trim().toLowerCase(),f=$('#filter').value;return state.claims.filter(c=>{const reviewed=!!c.review;if(f==='pending'&&reviewed)return false;if(f==='reviewed'&&!reviewed)return false;const hay=[c.articleTitle,c.claim,c.kind,...(c.references||[]).flatMap(r=>[r.label,r.href,r.host])].join(' ').toLowerCase();return !q||hay.includes(q)})}
+function commitMessage(){
+  const value=$('#message').value||'';
+  return String(value).trim()||'Review evidence claims';
+}
+function commitMessageIsDefault(){
+  const value=$('#message').value||'';
+  return !String(value).trim();
+}
 function renderList(){const list=currentList();$('#counts').textContent=state.registry.entries.length+' relues / '+state.claims.length;$('#list').innerHTML=list.map(c=>`<button class="claim ${c.review?'reviewed':''} ${selected===c.id?'active':''}" data-id="${esc(c.id)}"><div class="claim-title">${esc(c.articleTitle)}</div><div class="claim-text">${esc(c.claim)}</div><div class="status">${c.review?'✓ revue humaine':'○ à revoir'} · ${esc(c.kind)}</div></button>`).join('')||'<div class="empty">Aucun résultat.</div>';document.querySelectorAll('.claim').forEach(n=>n.onclick=()=>selectClaim(n.dataset.id))}
 function selectClaim(id){selected=id;renderList();renderDetail()}
 function renderDetail(){const c=state.claims.find(x=>x.id===selected);if(!c){$('#detail').className='empty';$('#detail').textContent='Sélectionne une claim.';return}const r=c.review||{},proof=r.proofDepth||'';$('#detail').className='panel';$('#detail').innerHTML=`
@@ -48,11 +56,23 @@ async function removeCurrent(){try{await api('/api/remove',{method:'POST',body:J
 function terminalCommitCommand() {
   const push = $('#push').checked ? ' --push' : '';
   const dryRun = $('#dryRun').checked ? ' --dry-run' : '';
-  const message = ( $('#message').value || 'Review evidence claims' ).trim();
+  const message = commitMessage();
   const shellQuote = (value) => `'${String(value).replace(/'/g, `'\\''`)}'`;
   return `node scripts/review-claims.mjs --commit${push}${dryRun} --message ${shellQuote(message)}`;
 }
-function commitAll(){const log=$('#log'),btn=$('#commit');btn.disabled=true;log.classList.add('visible');log.textContent=`Le commit depuis le navigateur est volontairement désactivé.\n\nRelance en local :\n${terminalCommitCommand()}\n\nPuis tape EXACTEMENT : CONFIRMER\n\nSécurité: commit Git uniquement en terminal interactif.`;toast('Commit désactivé dans le navigateur');btn.disabled=false}
+function commitAll() {
+  const log = $('#log');
+  const btn = $('#commit');
+  const isDefault = commitMessageIsDefault();
+  const warning = isDefault
+    ? `\n\n⚠️ Avertissement: message vide détecté, la commande utilisera le message par défaut: "Review evidence claims".`
+    : '';
+  btn.disabled = true;
+  log.classList.add('visible');
+  log.textContent = `Le commit depuis le navigateur est volontairement désactivé.\n\nRelance en local :\n${terminalCommitCommand()}${warning}\n\nPuis tape EXACTEMENT : CONFIRMER\n\nSécurité: commit Git uniquement en terminal interactif.`;
+  toast(isDefault ? 'Message vide: message par défaut utilisé' : 'Commit désactivé dans le navigateur', isDefault);
+  btn.disabled = false;
+}
 async function reload(){state=await api('/api/state');renderList();if(selected)renderDetail()}
 $('#search').oninput=renderList;$('#filter').onchange=renderList;reload().then(()=>{const first=currentList()[0];if(first)selectClaim(first.id)}).catch(e=>toast(e.message,true));
 </script>
