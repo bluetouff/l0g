@@ -99,6 +99,10 @@ async function ensureClaims({ force = false } = {}) {
   }
 }
 
+function shellQuote(value) {
+  return `'${String(value).replace(/'/g, `'\\''`)}'`;
+}
+
 function parseArgs(argv) {
   const options = { commit: false, push: false, dryRun: false, message: 'Review evidence claims', help: false };
   for (let i = 2; i < argv.length; i += 1) {
@@ -107,10 +111,17 @@ function parseArgs(argv) {
     else if (arg === '--dry-run') options.dryRun = true;
     else if (arg === '--push') options.push = true;
     else if (arg === '--message' || arg === '-m') {
+      if (!argv[i + 1]) {
+        throw new Error(`Option ${arg} attend une valeur.
+Usage: --message "..."`);
+      }
       options.message = argv[i + 1] || '';
       i += 1;
     } else if (arg === '--help' || arg === '-h') options.help = true;
     else if (arg === '--no-push') options.push = false;
+    else if (/^--/.test(arg) || /^-[^-]/.test(arg)) {
+      throw new Error(`Argument inconnu: ${arg}`);
+    }
   }
   return options;
 }
@@ -231,6 +242,9 @@ async function commitReviews({ push = false, message = '', confirmation = '', dr
     throw new Error('Confirmation explicite requise : tape "CONFIRMER" pour poursuivre le commit.');
   }
   const stagedBefore = await command('git', ['diff', '--cached', '--name-only']);
+  if (!stagedBefore.ok) {
+    throw new Error(`Impossible de lire l’index Git: ${stagedBefore.stderr || stagedBefore.stdout}`);
+  }
   if (stagedBefore.stdout.trim()) {
     throw new Error(`Des fichiers sont déjà indexés dans Git. Désindexe-les avant le commit automatique :\n${stagedBefore.stdout}`);
   }
@@ -239,6 +253,9 @@ async function commitReviews({ push = false, message = '', confirmation = '', dr
   if (!build.ok) throw new Error(`Validation impossible : le build a échoué.\n\n${build.stdout}\n${build.stderr}`);
 
   const diff = await command('git', ['diff', '--', 'src/config/claim-reviews.json']);
+  if (!diff.ok) {
+    throw new Error(`Impossible de lire le diff du fichier de review: ${diff.stderr || diff.stdout}`);
+  }
   if (diff.ok && !diff.stdout.trim()) throw new Error('Aucune nouvelle review à committer.');
 
   const registry = await loadReviews();
@@ -335,7 +352,6 @@ async function runServer() {
 
 async function runCommitMode(options) {
   await ensureRepository();
-  const shellQuotedMessage = (message) => `'${String(message).replace(/'/g, `'\\''`)}'`;
   const result = await commitReviews({
     push: options.push,
     message: options.message,
@@ -351,7 +367,7 @@ async function runCommitMode(options) {
     console.log(result.diff.trim() || '(aucune modif détectée)');
     console.log('\nCommande prévue :');
     console.log(`git add src/config/claim-reviews.json`);
-    console.log(`git commit -m ${shellQuotedMessage(result.commitMessage || 'Review evidence claims')}`);
+    console.log(`git commit -m ${shellQuote(result.commitMessage || 'Review evidence claims')}`);
     if (result.push) console.log('git push origin HEAD');
     return;
   }
@@ -360,7 +376,14 @@ async function runCommitMode(options) {
   if (result.build) console.log(`\nBuild snapshot:\n${result.build}`);
 }
 
-const options = parseArgs(process.argv);
+let options;
+try {
+  options = parseArgs(process.argv);
+} catch (error) {
+  console.error(error.message);
+  printUsage();
+  process.exit(1);
+}
 if (options.help) {
   printUsage();
   process.exit(0);
