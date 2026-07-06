@@ -1,0 +1,89 @@
+---
+title: "Lire le marché de l'uranium : cycle du combustible, prix et goulots"
+description: "Guide de référence sur le marché de l'uranium : le cycle du combustible du minerai au réacteur, la façon très particulière dont l'uranium se cote (un marché de contrats privés, pas une Bourse), la structure de la demande des réacteurs, une offre concentrée et lente, le goulot souvent oublié de la conversion et de l'enrichissement, et les indicateurs à suivre pour une veille. Avec les chiffres de 2026 en illustration."
+summary: "Le marché de l'uranium ne ressemble à aucun autre : il ne s'échange pas en Bourse mais par contrats privés, où le prix à long terme, publié par UxC et TradeTech, compte plus que le comptant. Le lire suppose de suivre le cycle du combustible (mine, conversion, enrichissement, fabrication), de comprendre une demande des réacteurs en forte hausse face à une offre concentrée et rigide, et de repérer le vrai goulot, l'enrichissement, dominé par la Russie."
+pubDate: 2026-07-07T06:35:00+02:00
+updatedDate: 2026-07-07T06:35:00+02:00
+tags: ["uranium", "nucléaire", "matières premières"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*L'uranium fascine et déroute. Fascine, parce qu'il concentre les grands récits du moment, transition énergétique, relance du nucléaire, soif électrique de l'intelligence artificielle. Déroute, parce que son marché ne fonctionne comme aucun autre : pas de Bourse, un prix qui se négocie de gré à gré, et un goulot d'étranglement qui n'est pas là où on le cherche. Ce guide reprend le marché de l'uranium de bout en bout, du minerai au réacteur, pour savoir quoi lire et quoi suivre.*
+
+## Le cycle du combustible, du minerai au réacteur
+
+Comprendre l'uranium suppose d'abord de suivre sa transformation, car chaque étape a son marché et ses tensions. Tout commence à la mine, où le minerai est concassé puis lessivé, souvent à l'acide sulfurique, pour être précipité en un concentré d'oxyde d'uranium, le [yellowcake](/glossaire/u3o8/), unité de référence du marché coté en dollars par livre. Vient ensuite la conversion, qui transforme cet oxyde en hexafluorure d'uranium, ou UF6, un composé gazeux à l'état chauffé, seule forme exploitable par les usines d'enrichissement. L'enrichissement augmente alors la teneur en uranium 235, l'isotope fissile, un travail mesuré en unités de séparation, les [SWU](/glossaire/swu/). La fabrication, enfin, met l'uranium enrichi en forme d'assemblages combustibles chargés dans le réacteur.
+
+Cette chaîne a une conséquence décisive : le prix du minerai ne dit pas tout. Un pays peut disposer d'uranium et rester dépendant pour le convertir et l'enrichir. C'est précisément là, en haut du cycle, que se logent les vulnérabilités les plus fortes.
+
+## Comment se cote l'uranium : un marché de contrats
+
+Contrairement au pétrole, l'uranium ne s'échange pas sur un marché ouvert avec un prix continu. Acheteurs et vendeurs, essentiellement des exploitants de centrales et des producteurs, négocient des contrats de gré à gré. Le prix de référence est publié par deux maisons spécialisées, UxC et TradeTech, qui diffusent des indicateurs pour le comptant, le moyen terme et le long terme, ainsi que pour la conversion et l'enrichissement. Cameco, le producteur canadien, calcule d'ailleurs ses prix moyens à partir de ces deux sources.
+
+La distinction entre comptant et long terme est le premier réflexe à acquérir. Le prix au comptant porte sur des livraisons rapprochées, de quelques mois, et sur de petits volumes ; il est volatil et amplifié par les acheteurs financiers. Le prix à long terme porte sur des livraisons à trois ans ou plus, avec des clauses d'indexation : c'est lui que regardent les exploitants pour sécuriser leur combustible, et donc le meilleur thermomètre de la conviction du secteur. En 2026, le comptant a dépassé 100 dollars la livre, une première depuis deux ans, mais c'est le prix à long terme, à 93 dollars fin mars selon TradeTech, à son plus haut depuis plus de dix-huit ans, qui dit la tension de fond.
+
+## La demande : des réacteurs et un combustible chargé d'avance
+
+La demande d'uranium découle du parc de réacteurs, et sa trajectoire est nettement haussière. La World Nuclear Association projette une capacité nucléaire installée passant de 398 gigawatts électriques en 2025 à 746 en 2040, et 78 réacteurs sont en construction dans le monde, la Chine en tête avec environ 38 unités. Les besoins en uranium suivraient, d'environ 68 900 tonnes en 2025 à plus de 150 000 en 2040.
+
+<InfographicBars
+  title="La flotte nucléaire en passe de doubler"
+  subtitle="Capacité nucléaire installée dans le monde, en gigawatts électriques."
+  items={[
+    { label: "2025", value: 398, valueLabel: "398 GWe", tone: "signal" },
+    { label: "2040 (projection)", value: 746, valueLabel: "746 GWe", tone: "accent" },
+  ]}
+  note="78 réacteurs en construction, dont environ 38 en Chine."
+  source="Source : World Nuclear Association."
+  caption="La capacité nucléaire mondiale passerait de **398** à **746 gigawatts** d'ici 2040, tirant la demande d'uranium. Source : World Nuclear Association."
+/>
+
+Une particularité renforce cette demande : le combustible est chargé d'avance. Un réacteur neuf réclame un premier cœur important avant de passer à des rechargements plus modestes, si bien qu'une vague de construction crée un appel d'uranium anticipé. À cela s'ajoute la demande électrique des centres de données d'intelligence artificielle, qui a poussé les géants du numérique vers le nucléaire, un phénomène détaillé dans notre analyse des [goulots du marché de l'uranium](/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/).
+
+## L'offre : concentrée, rigide, et l'appoint secondaire
+
+Face à cette demande, l'offre a deux faiblesses. Elle est d'abord concentrée : le kazakh Kazatomprom, premier producteur mondial, et le canadien Cameco fournissent l'essentiel de la production, le Kazakhstan pesant à lui seul environ 40 % de l'extraction mondiale.
+
+<InfographicBars
+  title="D'où vient l'uranium"
+  subtitle="Part dans la production minière mondiale, ordres de grandeur."
+  items={[
+    { label: "Kazakhstan (Kazatomprom en tête)", value: 40, valueLabel: "~40 %", tone: "accent" },
+    { label: "Canada (Cameco)", value: 15, valueLabel: "~15 %", tone: "amber" },
+    { label: "Reste du monde (Namibie, Australie, etc.)", value: 45, valueLabel: "~45 %", tone: "muted" },
+  ]}
+  note="Une concentration qui est un risque en soi."
+  source="Sources : World Nuclear Association, producteurs."
+  caption="Le Kazakhstan assure à lui seul environ **40 %** de la production minière mondiale, ce qui concentre le risque d'offre. Source : World Nuclear Association."
+/>
+
+L'offre est ensuite rigide. Ouvrir ou relancer une mine demande des années et beaucoup de capital, et la production répond lentement au prix. Kazatomprom a même abaissé ses ambitions pour 2026, à 27 500 à 29 000 tonnes, sous sa capacité, faute d'acide sulfurique. Dans l'intervalle, le déficit entre une production minière d'environ 60 000 tonnes et des besoins proches de 69 000 est comblé par l'offre secondaire, c'est-à-dire les stocks, le retraitement et les réévaluations d'inventaires. Ce matelas repousse l'échéance sans supprimer le déséquilibre.
+
+## Le goulot du haut de cycle : conversion et enrichissement
+
+Voici le point que le marché sous-estime le plus. Même avec assez de minerai, encore faut-il le convertir et l'enrichir, et c'est là que se concentre la vraie dépendance. L'enrichissement est un oligopole où la Russie occupe environ 44 % de la capacité mondiale, et elle a longtemps fourni près de 35 % de l'uranium enrichi importé par les États-Unis. La difficulté est aiguë pour les réacteurs avancés et les [petits réacteurs modulaires](/glossaire/smr/), qui réclament un combustible plus enrichi, le [HALEU](/glossaire/haleu/), dont la Russie était jusqu'en 2024 le seul fournisseur commercial. Les États-Unis reconstruisent une filière, avec Centrus comme unique producteur national à ce stade, mais l'interdiction des importations russes, à plein effet en 2028, laisse un intervalle tendu. La relance nucléaire portée par l'IA pourrait ainsi buter moins sur la mine que sur la capacité, à rebâtir, d'enrichir hors de Russie.
+
+## Les signaux à suivre
+
+Pour une veille sur cette matière première, quelques indicateurs concentrent l'information. Le prix à long terme de TradeTech, plus révélateur que le comptant, dit la conviction des exploitants. Le rythme de contractation des utilities signale la fin du matelas de stocks. Les productions guidées de Kazatomprom et de Cameco donnent le pouls de l'offre. Les jalons des remises en service et des petits réacteurs modulaires, ainsi que la montée en puissance de l'enrichissement et du HALEU hors de Russie, disent si la promesse se matérialise. Enfin, la trajectoire des dépenses d'IA reste le juge de paix de la demande électrique attendue.
+
+## Lire le marché en pratique
+
+Bien lu, le marché de l'uranium n'est pas un prix unique mais un système à étages. Le cycle du combustible dit où se forme la valeur et où sont les goulots. Le prix à long terme, et non le comptant, dit la tension réelle. La demande des réacteurs, chargée d'avance, dit la trajectoire. L'offre, concentrée et rigide, dit la fragilité. Et le haut de cycle, conversion et enrichissement, dit où le blocage risque de survenir avant la mine.
+
+Ce cadre se lit utilement en regard de notre article sur le [déficit et les goulots cachés](/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/), et par comparaison avec un marché de matière première plus classique, exposé dans le guide [lire le marché pétrolier](/guides/lire-le-marche-petrolier/). Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions.
+
+---
+
+**Sources principales :**
+
+- [World Nuclear Association, marchés de l'uranium et cycle du combustible](https://world-nuclear.org/information-library/nuclear-fuel-cycle/uranium-resources/uranium-markets) : offre, demande, besoins des réacteurs, capacité installée de 398 GWe en 2025 à 746 GWe en 2040, besoins d'environ 68 900 à plus de 150 000 tonnes.
+- [World Nuclear News, guide du cycle du combustible nucléaire](https://www.world-nuclear-news.org/articles/the-nuclear-fuel-cycle-a-guide) : étapes de la mine à la fabrication, conversion en UF6, enrichissement.
+- [U.S. Energy Information Administration, le cycle du combustible nucléaire](https://www.eia.gov/energyexplained/nuclear/the-nuclear-fuel-cycle.php) : description des étapes et du rôle de chacune.
+- [UxC, indicateurs de prix du combustible nucléaire](https://www.uxc.com/p/price) : marché de contrats de gré à gré, prix comptant et long terme de l'U3O8, de la conversion UF6 et de l'enrichissement SWU.
+- [TradeTech, prix et analyses de l'uranium](https://www.uranium.info/) : prix à long terme de l'U3O8 à 93 dollars la livre fin mars 2026, plus haut depuis plus de dix-huit ans.
+- [World Nuclear News, résultats et guidance de Cameco et Kazatomprom](https://world-nuclear-news.org/articles/Cameco-Kazatomprom-release-2025-figures) : guidance 2026 de Kazatomprom (27 500 à 29 000 tonnes), contrainte d'acide sulfurique, part du Kazakhstan.
+- [Nuclear Regulatory Commission, contexte de l'interdiction de l'uranium russe](https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/uranium-import-ban) : Russie à environ 44 % de la capacité mondiale d'enrichissement, environ 35 % des importations américaines.
+- [U.S. Department of Energy, interdiction de l'uranium russe et filière domestique](https://www.energy.gov/ne/articles/russian-uranium-ban-will-speed-development-us-nuclear-fuel-supply-chain) : plein effet en 2028, développement du HALEU et de l'enrichissement.
