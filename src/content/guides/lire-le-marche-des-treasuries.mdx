@@ -1,0 +1,99 @@
+---
+title: "Lire le marché des Treasuries : adjudications, courbe et prime de terme"
+description: "Guide de référence sur la dette de l'État américain : la composition du marché (bills, notes, bonds), la mécanique du refinancement trimestriel et de l'adjudication, comment lire une émission (bid-to-cover, tail, dealer takedown), ce que signale la forme de la courbe des taux, la décomposition d'un taux long entre anticipation de taux et prime de terme, qui détient la dette, et les thermomètres de stress à surveiller. Avec les chiffres de 2026 en illustration."
+summary: "Le marché des Treasuries est le socle du système financier mondial : plus de 28 000 milliards de dollars de dette négociable de l'État américain, en bills (un an ou moins), notes (2 à 10 ans) et bonds (long terme). Le lire suppose de comprendre le refinancement trimestriel, la mécanique d'adjudication (bid-to-cover, tail, primary dealers), la forme de la courbe des taux et la décomposition d'un taux long entre anticipation de taux et prime de terme."
+pubDate: 2026-07-07T06:35:00+02:00
+updatedDate: 2026-07-07T06:35:00+02:00
+tags: ["macro", "taux", "trésor us"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Le bon du Trésor américain est l'actif le plus important de la finance mondiale, et l'un des moins bien lus. On parle du « taux à dix ans » comme d'un thermomètre, sans toujours savoir ce qu'il mesure ni comment il se forme. Ce guide reprend le marché des Treasuries de bout en bout, de l'anatomie de la dette à la lecture d'une adjudication, jusqu'à la décomposition d'un taux long. L'année 2026, marquée par le retour de la prime de terme, sert d'illustration.*
+
+## L'anatomie de la dette : bills, notes, bonds
+
+La dette fédérale américaine négociable dépasse 28 000 milliards de dollars, ce qui en fait de très loin le plus grand marché obligataire du monde. Elle se compose de plusieurs instruments qui diffèrent par leur maturité. Les **bills** ont une échéance d'un an ou moins, émis à escompte et sans coupon, et représentent environ **22 %** du marché. Les **notes**, de deux à dix ans, en forment la plus grosse part, autour de **52 %**. Les **bonds**, de vingt à trente ans, pèsent environ **17 %**. S'y ajoutent des instruments plus spécialisés : les TIPS, indexés sur l'inflation, et les FRN, à taux variable sur deux ans, introduits en 2014.
+
+<InfographicBars
+  title="De quoi se compose la dette américaine"
+  subtitle="Part des grands types de titres dans la dette négociable, ordres de grandeur 2026."
+  max={100}
+  items={[
+    { label: "Notes (2 à 10 ans)", value: 52, valueLabel: "~52 %", tone: "signal" },
+    { label: "Bills (un an ou moins)", value: 22, valueLabel: "~22 %", tone: "amber" },
+    { label: "Bonds (20 à 30 ans)", value: 17, valueLabel: "~17 %", tone: "blue" },
+    { label: "TIPS, FRN et autres", value: 9, valueLabel: "~9 %", tone: "muted" },
+  ]}
+  source="Sources : U.S. Treasury (Monthly Statement of the Public Debt), SIFMA."
+  caption="Les notes de 2 à 10 ans forment le gros du marché, devant les bills courts et les bonds longs. Sources : U.S. Treasury, SIFMA."
+/>
+
+Cette structure a une conséquence directe : l'État doit refinancer en permanence. Sur le seul exercice 2026, le Trésor doit remplacer environ **9 700 milliards de dollars** de titres arrivant à échéance, en plus de financer le déficit courant. Le taux d'intérêt moyen payé sur cette dette était d'environ **3,4 %** au printemps 2026, un niveau qui monte lentement à mesure que la dette ancienne, contractée à taux bas, est remplacée par de la dette neuve plus chère.
+
+## Comment l'État émet : refinancement et adjudication
+
+Le Trésor n'émet pas au fil de l'eau, il suit un calendrier. Chaque trimestre, il publie son annonce de refinancement, le Quarterly Refunding Announcement, qui fixe les tailles d'émission par maturité. Un montant croissant de bills, par exemple, signale que l'État finance davantage par le court terme, une décision lourde de conséquences pour la courbe.
+
+L'émission passe par une **adjudication** à prix unique, dite enchère hollandaise. Les soumissionnaires proposent des rendements, et le Trésor accepte les offres du rendement le plus bas vers le plus haut jusqu'à écouler le montant offert. Tous les gagnants paient alors le même rendement, celui qui solde l'enchère, appelé rendement d'adjudication. Trois catégories de soumissionnaires se partagent l'émission. Les **primary dealers**, une vingtaine de banques désignées par la Réserve fédérale de New York, sont tenus de participer à chaque adjudication et jouent le rôle de teneurs de marché. Les **direct bidders** sont des institutions qui soumissionnent en direct. Les **indirect bidders** passent par un intermédiaire, et cette catégorie sert d'approximation de la demande étrangère et des banques centrales. Avant même l'adjudication, le titre s'échange déjà sur un marché « when-issued », qui fixe un prix de référence.
+
+## Lire une adjudication : trois signaux
+
+Une adjudication se lit à trois chiffres, et savoir les interpréter distingue le suiveur du connaisseur.
+
+Le premier est le **bid-to-cover**, le rapport entre le total des offres reçues et le montant vendu. C'est un signal de volume : plus il est élevé, plus la demande est large. Comme les primary dealers sont obligés de soumissionner, on regarde surtout s'il dépasse **2**, seuil au-dessous duquel l'appétit paraît faible. Le deuxième est le **tail**, l'écart entre le rendement de l'adjudication et celui du marché when-issued juste avant. C'est un signal de prix : un tail nul ou négatif indique une émission bien absorbée, un tail de 1 à 2 points de base une demande un peu molle, et au-delà de 3 points de base sur une maturité longue, l'adjudication commence à inquiéter. Le troisième est la part revenant aux primary dealers, le **dealer takedown** : quand les dealers absorbent plus de 20 à 25 % de l'émission, c'est que les investisseurs finaux, directs et indirects, ont boudé, laissant les teneurs de marché avec du stock à écouler. Une adjudication réussie combine un bid-to-cover solide, un tail proche de zéro et une faible part de dealers.
+
+## La courbe des taux, un signal avancé
+
+En reliant les rendements des différentes maturités, on obtient la courbe des taux, dont la forme porte une information macroéconomique dense. En temps normal, elle monte : prêter plus longtemps rapporte davantage. Quand elle s'aplatit puis s'**inverse**, les taux courts passant au-dessus des taux longs, c'est un signal d'alerte : le marché anticipe un ralentissement et de futures baisses de taux. La Réserve fédérale de New York rappelle que l'écart entre le dix ans et le deux ans a précédé chacune des huit dernières récessions américaines.
+
+En 2026, la courbe est sortie d'une inversion prolongée pour se repentifier. Fin juin 2026, le dix ans s'établissait autour de 4,38 % et le deux ans autour de 4,07 %, soit une courbe de nouveau positive. Une re-pentification par le haut, où les taux longs montent plus vite que les courts, porte un nom, le « bear steepening », et traduit souvent une inquiétude sur l'offre de dette et l'inflation plutôt qu'un simple cycle de baisse. Le sens de la pente compte autant que son niveau.
+
+## Décomposer un taux long : la prime de terme
+
+Un rendement long n'est pas un bloc, il se décompose en deux. La première brique est la moyenne des taux courts anticipés sur la durée de vie du titre, c'est-à-dire ce que le marché pense que fera la Fed, une trajectoire que l'on relie au [dot plot](/guides/lire-le-dot-plot-sep/). La seconde est la [prime de terme](/glossaire/prime-de-terme/), le supplément exigé pour immobiliser son argent longtemps et supporter le risque que les taux, l'inflation ou l'offre de dette évoluent défavorablement. Le modèle de référence, celui d'Adrian, Crump et Moench à la Réserve fédérale de New York, permet d'estimer cette prime.
+
+Sa lecture a changé en 2026. Négative ou nulle pendant une décennie, la prime de terme à dix ans est repassée en positif, autour de 0,73 point en données d'avril 2026, tout en restant sous sa médiane de long terme, proche de 1,41 point sur soixante-cinq ans. Deux enseignements en découlent. D'une part, une prime redevenue positive mais encore modérée laisse de la marge pour monter si l'offre de dette gonfle. D'autre part, dans ce régime, une baisse de taux de la Fed ne se traduit plus automatiquement par une détente des taux longs, car la prime peut monter quand l'anticipation de taux baisse.
+
+<InfographicBars
+  title="La prime de terme, revenue mais sous sa norme"
+  subtitle="Prime de terme à 10 ans (modèle ACM), en points de pourcentage."
+  items={[
+    { label: "Aujourd'hui (2026)", value: 0.73, valueLabel: "0,73 pt", tone: "signal" },
+    { label: "Médiane sur 65 ans", value: 1.41, valueLabel: "1,41 pt", tone: "amber" },
+  ]}
+  note="Négative ou nulle pendant une décennie avant 2026."
+  source="Source : Federal Reserve Bank of New York (modèle ACM)."
+  caption="Revenue en territoire positif en 2026, la prime de terme reste sous sa médiane historique : il existe une marge de hausse si l'offre de dette continue de gonfler. Source : Fed de New York."
+/>
+
+## Qui détient la dette américaine
+
+La demande est aussi importante que l'offre, et sa composition dit beaucoup du risque. La Réserve fédérale, longtemps grand acheteur via l'assouplissement quantitatif, s'est retirée avec la fin du resserrement, sujet traité dans notre guide sur le [bilan de la Fed](/guides/lire-h41-bilan-fed/). Les détenteurs étrangers possèdent environ 8 500 milliards de dollars de Treasuries, soit 28 à 30 % de la dette négociable, avec le Japon en tête devant le Royaume-Uni et la Chine, mais leur part recule à mesure que la dette croît plus vite qu'eux, une dynamique que l'on suit dans les [données TIC](/guides/lire-les-donnees-tic/).
+
+Le reste se répartit entre acteurs domestiques, dont certains sont plus stables que d'autres. Les fonds monétaires et les émetteurs de stablecoins achètent surtout des bills courts. Les hedge funds, eux, portent d'énormes positions à effet de levier via le [basis trade](/glossaire/basis-trade/), un arbitrage entre le comptant et le contrat à terme, dont le débouclage brutal peut déstabiliser le marché, comme en mars 2020. Une demande de plus en plus assurée par des acteurs à levier est une demande moins fiable en cas de stress.
+
+## Les thermomètres de stress
+
+Pour surveiller ce marché, quelques instruments concentrent l'information. Le **tail** et le **bid-to-cover** des adjudications disent la santé de la demande primaire, émission par émission. Le rendement à trente ans capte la pression sur le très long terme. L'indice [MOVE](/glossaire/move/) mesure la volatilité implicite des taux, l'équivalent obligataire du VIX : il grimpe quand le marché se tend. Le CDS souverain américain, prime d'assurance contre un défaut technique, s'agite lors des épisodes de plafond de dette. Enfin, la reconstitution du compte du Trésor à la Fed après un relèvement du plafond crée des à-coups de liquidité, un mécanisme détaillé dans notre guide sur la [liquidité du Trésor](/guides/liquidite-tresor-dts-tga-rrp/).
+
+## Lire le marché en pratique
+
+Bien lu, le marché des Treasuries n'est pas un thermomètre unique mais un système. La composition de la dette et le calendrier de refinancement disent l'offre. Le triptyque bid-to-cover, tail et dealer takedown dit la demande à chaque adjudication. La forme de la courbe dit l'anticipation macroéconomique. La décomposition d'un taux long entre anticipation de taux et prime de terme dit d'où vient un mouvement, et donc s'il relève de la politique monétaire ou d'une défiance sur la dette. Et les thermomètres de stress, du MOVE au CDS, disent quand la mécanique se grippe.
+
+Ce cadre prend tout son sens quand l'équilibre se tend, comme le montre notre analyse du [réveil de la prime de terme](/posts/dette-americaine-le-reveil-de-la-prime-de-terme/), où l'offre gonfle pendant que la demande se fragilise. Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions, et le [calendrier économique](/calendrier-eco/) recense les échéances d'adjudication et de refinancement à surveiller.
+
+---
+
+**Sources principales :**
+
+- [U.S. Department of the Treasury, Monthly Statement of the Public Debt](https://fiscaldata.treasury.gov/datasets/monthly-statement-public-debt/) : composition de la dette par type de titre (notes, bills, bonds, TIPS, FRN) et encours.
+- [U.S. Department of the Treasury, estimations d'emprunt et refinancement trimestriel](https://home.treasury.gov/news/press-releases/sb0485) : besoins de refinancement d'environ 9 700 milliards de dollars pour l'exercice 2026, taille des émissions.
+- [SIFMA, US Treasury Securities Statistics](https://www.sifma.org/research/statistics/us-treasury-securities-statistics) : taille du marché, encours par instrument, volumes d'émission et d'échange.
+- [Charles Schwab, « How Do Treasury Auctions Work? »](https://www.schwab.com/learn/story/how-do-treasury-auctions-work) : mécanique de l'enchère à prix unique, catégories de soumissionnaires, when-issued.
+- [Loomis Sayles, « The Anatomy of a Treasury Auction »](https://www.loomissayles.com/insights/the-anatomy-of-a-treasury-auction/) : lecture du bid-to-cover, du tail et du dealer takedown, seuils d'interprétation.
+- [Federal Reserve Bank of New York, primary dealers](https://www.newyorkfed.org/markets/primarydealers) : liste et rôle des teneurs de marché désignés, obligation de participer aux adjudications.
+- [Federal Reserve Bank of New York, la courbe des taux comme indicateur avancé](https://www.newyorkfed.org/research/capital_markets/ycfaq) : inversion de la courbe et récessions.
+- [Federal Reserve Bank of New York, primes de terme des Treasuries (modèle Adrian, Crump, Moench)](https://www.newyorkfed.org/research/data_indicators/term-premia-tabs) : décomposition d'un taux long entre anticipation de taux et prime de terme.
+- [U.S. Department of the Treasury, système Treasury International Capital (TIC)](https://home.treasury.gov/data/treasury-international-capital-tic-system) : détentions étrangères de Treasuries et leur part.
