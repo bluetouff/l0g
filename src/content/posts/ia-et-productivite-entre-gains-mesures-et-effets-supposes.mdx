@@ -1,0 +1,95 @@
+---
+title: "IA et productivité : entre gains mesurés et effets supposés"
+description: "Les études contrôlées montrent des gains de productivité réels et parfois spectaculaires sur certaines tâches. Pourtant, ces gains restent invisibles dans les statistiques macro et la plupart des déploiements en entreprise. Revue objective des preuves, de la tâche isolée à l'économie entière, et des effets sur l'emploi encore à démêler."
+pubDate: 2026-07-06T03:29:08+02:00
+updatedDate: 2026-07-06
+tags: ["ia", "productivité", "travail", "macro", "risque"]
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Les études contrôlées montrent des gains de productivité réels et parfois spectaculaires sur certaines tâches. Pourtant, ces gains restent invisibles dans les statistiques macro et la plupart des déploiements en entreprise. Revue objective des preuves, de la tâche isolée à l'économie entière, et des effets sur l'emploi encore à démêler.*
+
+Peu de sujets concentrent autant de promesses et aussi peu de recul que la productivité de l'intelligence artificielle générative. D'un côté, un récit de rupture imminente, chiffré en points de PIB. De l'autre, un corpus d'études empiriques qui, lu sans filtre, raconte une histoire plus nuancée : des gains bien réels sur des tâches précises, une frontière de compétence très irrégulière, et un signal macroéconomique pour l'instant introuvable. Faire le tri suppose de distinguer trois échelles, la tâche, l'entreprise et l'économie, qui ne disent pas la même chose.
+
+## En laboratoire, des gains bien réels
+
+Commençons par ce que la recherche établit le plus solidement : sur des tâches isolées et mesurables, l'assistance par IA générative améliore la productivité, souvent nettement. Trois expériences contrôlées font référence.
+
+Sur le développement logiciel, une expérience avec GitHub Copilot a vu le groupe assisté implémenter un serveur HTTP en JavaScript 55,8 % plus vite que le groupe témoin. Sur le support client, l'étude de Brynjolfsson, Li et Raymond, portant sur 5 172 agents d'une entreprise du Fortune 500, mesure une hausse de 14 % du nombre de dossiers résolus par heure, avec un effet bien plus fort, de l'ordre de 34 %, chez les agents les moins expérimentés. Sur la rédaction professionnelle, l'expérience de Noy et Zhang, publiée dans Science, a exposé 453 professionnels à ChatGPT : les rédacteurs assistés ont travaillé plus vite de 0,8 écart-type et produit des textes jugés meilleurs de 0,4 écart-type par des évaluateurs à l'aveugle.
+
+<InfographicBars
+  title="En expérience contrôlée, des gains nets"
+  subtitle="Effet mesuré de l'assistance par IA sur des tâches isolées."
+  items={[
+    { label: "Codage, tâche isolée (GitHub Copilot)", value: 55.8, valueLabel: "+55,8 % vitesse", tone: "signal" },
+    { label: "Conseil, tâches dans la zone de compétence (BCG)", value: 25.1, valueLabel: "+25,1 % vitesse", tone: "signal" },
+    { label: "Support client, dossiers/heure (Brynjolfsson)", value: 14, valueLabel: "+14 %", tone: "blue" },
+  ]}
+  note="Métriques différentes (vitesse, débit) : à comparer avec prudence."
+  source="Sources : Peng et al. 2023 ; Dell'Acqua et al. (Organization Science 2025) ; Brynjolfsson, Li et Raymond."
+  caption="Sur des tâches bien cadrées, les gains sont réels et parfois importants. Ils profitent le plus aux travailleurs les moins expérimentés, ce qui **comprime** l'écart de performance. Sources : études RCT citées."
+/>
+
+Un résultat revient dans ces travaux et mérite d'être souligné : ce sont les travailleurs les moins performants qui gagnent le plus. L'IA comprime la distribution des performances plutôt qu'elle ne la creuse, en rapprochant les débutants des experts sur les tâches standardisées.
+
+## Une frontière irrégulière, et un mirage de vitesse
+
+Ces gains ont toutefois une géométrie trompeuse. L'étude de Dell'Acqua, Mollick, Lakhani et leurs co-auteurs, menée avec 758 consultants du Boston Consulting Group, a introduit une image devenue centrale : la « frontière technologique irrégulière ». À l'intérieur de la zone de compétence de l'IA, sur 18 tâches réalistes, les consultants assistés ont fait 12,2 % de tâches en plus, 25,1 % plus vite, avec une qualité supérieure. Mais sur une tâche complexe choisie hors de cette zone, les consultants assistés avaient 19 % de chances en moins de produire une réponse correcte. Le même outil aide ou nuit selon que la tâche tombe du bon côté d'une frontière que l'utilisateur ne voit pas.
+
+À cette irrégularité s'ajoute un piège de perception. En 2025, l'organisme d'évaluation METR a mené une expérience contrôlée sur 16 développeurs open source expérimentés, traitant 246 tâches réelles sur de gros dépôts de code. Résultat contre-intuitif : avec les outils d'IA, ils ont mis 19 % de temps en plus. Plus frappant encore, après coup, ces mêmes développeurs estimaient avoir été 20 % plus rapides. L'écart entre la vitesse ressentie et la vitesse réelle est un signal d'alerte pour toute entreprise qui pilote ses gains à l'estime. La portée du résultat reste étroite, développeurs chevronnés sur des bases matures, mais il rappelle que les gains de laboratoire ne se transposent pas mécaniquement à tout contexte.
+
+## Le paradoxe de productivité, version 2026
+
+Si les gains de tâche sont réels, on devrait finir par les voir dans les chiffres agrégés. C'est là que le bât blesse. L'estimation de référence, celle de Daron Acemoglu dans « The Simple Macroeconomics of AI », plafonne l'effet de l'IA à une hausse de la [productivité totale des facteurs](/glossaire/ptf/) d'au plus 0,53 à 0,66 % sur dix ans, soit environ 0,05 point par an. Un ordre de grandeur modeste, très loin des promesses de bond de croissance. Acemoglu ajoute que ce chiffre pourrait même être surestimé, car les premières preuves viennent de tâches faciles à apprendre, alors que les tâches difficiles, à contexte riche et sans mesure objective de succès, résistent davantage.
+
+Ce décalage entre des gains micro visibles et un effet macro invisible porte un nom : le [paradoxe de Solow](/glossaire/paradoxe-de-solow/), du mot de l'économiste en 1987, « on voit les ordinateurs partout sauf dans les statistiques de productivité ». L'histoire de l'électrification et de l'informatique offre deux lectures opposées de ce décalage, sur lesquelles nous revenons en conclusion. Retenons pour l'instant le fait brut : en 2026, aucun boom de productivité agrégée attribuable à l'IA n'est visible dans les données.
+
+## Le fossé de l'entreprise
+
+Entre la tâche et l'économie, il y a l'organisation, et c'est là que la promesse se perd le plus souvent. Le rapport du MIT, « The GenAI Divide: State of AI in Business 2025 », établi à partir de plus de 300 initiatives, 52 entretiens et 153 réponses de dirigeants, aboutit à un constat sévère : environ 95 % des projets pilotes d'IA générative ne produisent aucun impact mesurable sur le compte de résultat, et seuls 5 % environ accélèrent réellement le chiffre d'affaires.
+
+Le rapport documente aussi un grand écart d'usage. Alors que 40 % seulement des entreprises disposent d'un abonnement officiel à un grand modèle de langage, 90 % des salariés interrogés déclarent utiliser au quotidien des outils personnels comme ChatGPT ou Claude pour leur travail. Cette « IA de l'ombre » signale une adoption massive mais désorganisée, où les gains individuels ne remontent pas au niveau de l'entreprise faute d'intégration dans les processus.
+
+<InfographicBars
+  title="Adoption massive, valeur mesurée minuscule"
+  subtitle="Le grand écart de l'IA en entreprise (rapport MIT, 2025)."
+  items={[
+    { label: "Salariés utilisant l'IA au quotidien (usage personnel)", value: 90, valueLabel: "90 %", tone: "signal" },
+    { label: "Entreprises avec un abonnement officiel à un LLM", value: 40, valueLabel: "40 %", tone: "amber" },
+    { label: "Pilotes avec un impact mesurable sur le résultat", value: 5, valueLabel: "≈ 5 %", tone: "accent" },
+  ]}
+  note="L'écart entre usage et valeur est le vrai problème de déploiement."
+  source="Source : MIT NANDA, « The GenAI Divide: State of AI in Business 2025 »."
+  caption="Neuf salariés sur dix se servent d'IA, mais à peine **5 %** des pilotes d'entreprise dégagent un gain mesurable sur le compte de résultat. Source : MIT NANDA."
+/>
+
+L'enseignement rejoint celui des grandes vagues technologiques : la valeur ne vient pas de l'outil, mais de la réorganisation qui l'entoure. Le rapport note d'ailleurs que l'achat de solutions spécialisées réussit environ deux fois plus souvent que les développements internes, et que le meilleur retour se trouve dans l'automatisation des fonctions support, pas dans les usages marketing où se concentrent pourtant les budgets. Ce hiatus entre capital investi et valeur créée fait écho au risque que nous décrivions à propos du [financement circulaire de l'IA](/posts/financement-circulaire-ia/) et de la [fragilité financière pointée par la BIS](/posts/boom-ia-bis-fragilite-financiere/).
+
+## Les effets sur l'emploi : signaux précoces, causalité prudente
+
+Reste la question qui inquiète le plus, celle de l'emploi, et c'est celle où il faut être le plus rigoureux sur la distinction entre corrélation et causalité. Les travaux du Stanford Digital Economy Lab, menés par Brynjolfsson, Chandar et Chen sur des données de paie, mettent au jour un signal net : depuis fin 2022, l'emploi des travailleurs de 22 à 25 ans dans les métiers les plus exposés à l'IA, comme le développement logiciel et le support client, a reculé d'environ 16 %. Sur la même période, l'emploi des travailleurs de 30 ans et plus dans ces mêmes métiers a, lui, progressé de 6 à 12 %.
+
+L'explication avancée est plausible et instructive : l'IA substitue surtout du savoir codifié, celui des manuels et des cursus, qui constitue l'essentiel de la valeur ajoutée d'un débutant, alors qu'elle peine à remplacer le savoir tacite accumulé par l'expérience. Le jeune diplômé se retrouve donc en concurrence plus directe avec la machine que le professionnel chevronné. La prudence reste toutefois de mise : isoler l'effet propre de l'IA d'un ralentissement sectoriel plus large est difficile, et l'on observe en parallèle une prime salariale, avec des rémunérations en hausse pour ceux qui entrent effectivement dans les métiers de l'IA. Le signal est réel et persistant, mais il documente une recomposition, pas encore une destruction nette massive.
+
+## L'autre lecture : décalage historique ou survente ?
+
+Comment concilier des gains de tâche indéniables et une macro atone ? Deux lectures s'affrontent, et l'honnêteté commande de les exposer toutes deux.
+
+La première est optimiste et historique. Elle rappelle qu'entre l'invention d'une technologie à usage général et son empreinte sur la productivité agrégée, il s'écoule des décennies. L'électricité a mis près de quarante ans à transformer la productivité industrielle, le temps que les usines soient repensées autour du moteur électrique. L'informatique a connu son propre paradoxe de Solow dans les années 1980 avant les gains des années 1990. Dans cette lecture, l'IA suit la même courbe en J : les gains sont devant nous, à mesure que les organisations se réinventent.
+
+La seconde est plus sobre. Elle souligne que les gains les plus faciles, sur les tâches standardisées, sont peut-être déjà largement captés, et que les tâches restantes sont précisément celles où l'IA se heurte à sa frontière irrégulière. Dans cette lecture, l'estimation prudente d'Acemoglu n'est pas un plancher en attente de révision à la hausse, mais un ordre de grandeur réaliste, et l'écart avec le récit dominant mesure surtout une survente.
+
+Il n'est pas possible de trancher aujourd'hui, et prétendre le contraire serait malhonnête. Ce que les preuves autorisent à dire est plus modeste, mais solide. Les gains de productivité de l'IA sont réels à l'échelle de la tâche, hétérogènes selon la frontière de compétence, largement non capturés à l'échelle de l'entreprise, et invisibles à l'échelle de la macro. Les effets sur l'emploi commencent à se voir, mais sous forme de recomposition entre générations plus que de saignée. Le risque, pour l'analyste comme pour le décideur, n'est pas tant que l'IA échoue que de confondre une promesse avec une preuve, et de dimensionner des investissements ou des politiques sur la première en attendant la seconde.
+
+## Sources
+
+1. Peng et al., « The Impact of AI on Developer Productivity: Evidence from GitHub Copilot » : tâche de serveur HTTP réalisée 55,8 % plus vite par le groupe assisté : https://arxiv.org/pdf/2302.06590
+2. Brynjolfsson, Li et Raymond, « Generative AI at Work » : 5 172 agents de support client, +14 % de dossiers résolus par heure en moyenne, +34 % pour les moins expérimentés : https://www.nber.org/papers/w31161
+3. Noy et Zhang, « Experimental evidence on the productivity effects of generative artificial intelligence », Science : 453 professionnels, temps réduit de 0,8 écart-type, qualité supérieure de 0,4 écart-type, plus forts gains pour les moins performants : https://www.science.org/doi/10.1126/science.adh2586
+4. Dell'Acqua, McFowland, Mollick, Lakhani et al., « Navigating the Jagged Technological Frontier », Organization Science 2025 : 758 consultants du BCG, +12,2 % de tâches et 25,1 % plus vite dans la zone de compétence, 19 % de réponses correctes en moins hors zone : https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
+5. METR, « Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity » : 16 développeurs expérimentés, 246 tâches, 19 % de temps en plus avec l'IA alors qu'ils s'estimaient 20 % plus rapides : https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+6. Acemoglu, « The Simple Macroeconomics of AI », NBER Working Paper 32487 : effet sur la productivité totale des facteurs d'au plus 0,53 à 0,66 % sur dix ans, potentiellement surestimé : https://www.nber.org/papers/w32487
+7. MIT NANDA, « The GenAI Divide: State of AI in Business 2025 » : environ 95 % des pilotes sans impact mesurable sur le résultat, 90 % des salariés en usage informel contre 40 % d'abonnements officiels, achat plus efficace que développement interne : https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/
+8. Brynjolfsson, Chandar et Chen (Stanford Digital Economy Lab), effets sur l'emploi des jeunes : recul d'environ 16 % pour les 22-25 ans dans les métiers exposés depuis fin 2022, hausse de 6 à 12 % pour les 30 ans et plus : https://digitaleconomy.stanford.edu/news/ai-and-labor-markets-what-we-know-and-dont-know/
+9. Fortune, suivi de l'étude Stanford sur l'emploi d'entrée de carrière, effet persistant et non réversible : https://fortune.com/2026/06/27/what-is-ai-impact-entry-level-jobs-stanford-adp-canaries-brynjolfsson-richardson/

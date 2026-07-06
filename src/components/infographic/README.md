@@ -26,7 +26,7 @@ import InfographicBars from '../../components/infographic/InfographicBars.astro'
   note="Ligne d'accent rose optionnelle"
   notes={["Ligne grise 1.", "Ligne grise 2."]}
   source="Sources : ..."
-  caption="Légende sous le graphe, le **gras** est géré."
+  caption="Légende sous le graphe, le **gras** (ou <strong>) est géré."
 />
 ```
 

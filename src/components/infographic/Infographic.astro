@@ -12,7 +12,11 @@ function renderCaption(text: string): string {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
-  return escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Gras via **...**, et on ré-autorise <strong>/<em> écrits en clair
+  // (le reste du HTML reste échappé).
+  return escaped
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/&lt;(\/?(?:strong|em))&gt;/g, '<$1>');
 }
 ---
 <figure class="infographic" style="padding-bottom:1.75rem">
