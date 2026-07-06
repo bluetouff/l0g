@@ -1,0 +1,86 @@
+---
+title: "Lire les prévisions du CBO : la baseline budgétaire et ses pièges"
+description: "Guide de référence sur le Congressional Budget Office : ce qu'est cet arbitre budgétaire indépendant, ce qu'il publie, comment lire une baseline (déficit, dette sur PIB, intérêts nets), la convention mal comprise du « droit en vigueur » qui en fait un repère et non une prévision, la différence entre chiffrage statique et dynamique, et l'extrême sensibilité des projections de long terme aux hypothèses de taux et de productivité. Avec les chiffres de 2026 en illustration."
+summary: "Le Congressional Budget Office (CBO) est l'agence budgétaire indépendante et non partisane du Congrès américain. Sa baseline projette déficits, dette et économie sur dix ans sous l'hypothèse que le droit en vigueur ne change pas : c'est un repère, pas une prévision. Bien la lire suppose de connaître ses conventions (expirations assumées, dépenses discrétionnaires indexées), la différence entre chiffrage statique et dynamique, et la sensibilité des trajectoires longues aux taux et à la productivité."
+pubDate: 2026-07-07T06:35:00+02:00
+updatedDate: 2026-07-07T06:35:00+02:00
+tags: ["macro", "dette", "budget us"]
+category: macro
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Chaque projection de dette américaine, chaque débat sur un projet de loi fiscale, chaque titre sur le déficit s'appuie sur les mêmes chiffres : ceux du Congressional Budget Office. Pourtant, ces projections sont parmi les plus mal comprises de la macroéconomie, parce qu'on les lit comme des prévisions alors qu'elles sont des repères construits selon des règles précises. Ce guide reprend ce qu'est le CBO, comment lire une baseline, et pourquoi ses conventions changent tout.*
+
+## Un arbitre budgétaire indépendant
+
+Le Congressional Budget Office a été créé en 1974 pour donner au Congrès une capacité d'analyse budgétaire indépendante de l'exécutif. Il est non partisan par construction : il ne recommande aucune politique, il en chiffre les conséquences. C'est cette neutralité qui fait autorité, au point que ses chiffres servent de référence commune aux deux partis, même quand ils en contestent les hypothèses. Comprendre le CBO, c'est donc d'abord comprendre qu'il ne dit pas ce qui va arriver, mais ce qui arriverait sous certaines conditions.
+
+## Les publications du CBO
+
+Le CBO produit plusieurs documents qu'il ne faut pas confondre. Le plus suivi est le Budget and Economic Outlook, la baseline à dix ans publiée en général deux fois par an, qui projette recettes, dépenses, déficits et grandes variables économiques. Le Long-Term Budget Outlook prolonge l'exercice sur trente ans, où les tendances démographiques et la charge d'intérêt dominent. Les cost estimates, ou chiffrages, évaluent l'effet budgétaire d'un projet de loi précis, exercice appelé scoring. S'y ajoutent le Monthly Budget Review, qui suit l'exécution en cours d'année, et diverses études thématiques. Savoir de quel document provient un chiffre est le premier réflexe.
+
+## Lire une baseline : les chiffres qui comptent
+
+Une baseline se lit à quelques grandeurs, exprimées de préférence en pourcentage du PIB pour être comparables dans le temps. Le déficit annuel, d'abord : pour l'exercice 2026, le CBO l'attend à 1 900 milliards de dollars, soit **5,8 %** du PIB, un niveau inhabituel hors récession ou guerre. La dette détenue par le public ensuite, la mesure pertinente du fardeau, projetée à passer de **101 %** du PIB en 2026 à **120 %** en 2036. La charge d'intérêt enfin, devenue le poste le plus dynamique : les intérêts nets, à 1 000 milliards de dollars en 2026, atteindraient 2 100 milliards en 2036, dépassant désormais le budget de la défense.
+
+Un chiffre mérite une attention particulière, le déficit primaire, c'est-à-dire le déficit hors charge d'intérêt. Il distingue ce que l'État dépense en trop de ce qu'il paie pour sa dette passée. Quand le déficit se creuse surtout par les intérêts, le problème est le poids du stock de dette ; quand il vient du primaire, c'est la politique budgétaire courante qui est en cause.
+
+<InfographicBars
+  title="La dette, sur trente ans"
+  subtitle="Dette fédérale détenue par le public, en pourcentage du PIB, projection CBO à droit constant."
+  items={[
+    { label: "2026", value: 101, valueLabel: "101 %", tone: "signal" },
+    { label: "2036", value: 120, valueLabel: "120 %", tone: "amber" },
+    { label: "2055", value: 156, valueLabel: "156 %", tone: "accent" },
+  ]}
+  note="Jusqu'à 172 % en tenant compte des lois votées depuis."
+  source="Sources : CBO, Budget and Economic Outlook et Long-Term Budget Outlook."
+  caption="Sous le droit en vigueur, la dette passerait de **101 %** du PIB en 2026 à **156 %** en 2055. Source : CBO."
+/>
+
+## La règle mal comprise : la baseline « à droit constant »
+
+Voici le cœur du sujet, et la source de la plupart des contresens. La baseline n'est pas une prévision de ce qui va se passer, mais une projection de ce qui se passerait si le droit en vigueur restait inchangé. Cette convention obéit à des règles statutaires, fixées notamment par la section 257 du Balanced Budget and Emergency Deficit Control Act, qui produisent des effets contre-intuitifs.
+
+Trois exemples suffisent à saisir l'enjeu. Les dépenses discrétionnaires sont supposées repartir du dernier budget voté, ajusté de l'inflation, et non figées. Les dispositions fiscales ou de dépenses arrivant à expiration sont supposées expirer, même quand tout le monde s'attend à leur reconduction : une baisse d'impôt temporaire disparaît donc de la baseline à sa date d'échéance, si bien qu'une prolongation, pourtant probable, apparaît comme un coût supplémentaire par rapport au repère. Enfin, les prestations d'un programme sont supposées versées en totalité même si son fonds de réserve est épuisé et qu'aucune loi n'autorise le paiement. La baseline est donc un objet juridique autant qu'économique. La lire sans connaître ces conventions, c'est risquer de prendre un artefact comptable pour une trajectoire réelle.
+
+## Statique ou dynamique : lire un chiffrage
+
+Quand le CBO évalue un projet de loi, la méthode compte autant que le résultat. Un chiffrage classique est statique : il mesure l'effet direct sur les recettes et les dépenses, sans supposer que la mesure modifie la croissance, et souvent sans intégrer le coût du service de la dette qu'elle engendre. Un chiffrage dynamique, plus rare et plus discuté, intègre les rétroactions macroéconomiques, par exemple l'idée qu'une baisse d'impôt stimulerait l'activité et donc les recettes. Ni l'un ni l'autre n'est neutre : le choix de la méthode peut faire passer une réforme de coûteuse à autofinancée sur le papier. Savoir quel type de chiffrage on regarde est indispensable pour juger une annonce budgétaire.
+
+## La fragilité des hypothèses
+
+Plus l'horizon s'allonge, plus la baseline dépend d'hypothèses économiques dont de petites variations produisent d'énormes écarts. Le CBO projette une croissance moyenne de seulement **1,7 %** par an sur trente ans et la plus faible progression démographique de l'histoire américaine. Sous le droit en vigueur, la dette détenue par le public passerait d'environ 100 % du PIB en 2025 à **156 %** en 2055, voire 172 % dans les projections intégrant les lois votées depuis.
+
+Mais ces chiffres ne sont que le centre d'un éventail. Si le taux d'intérêt moyen payé sur la dette s'écartait de seulement 5 points de base par an de l'hypothèse retenue, la dette de 2055 ressortirait à **204 %** du PIB dans un cas, à **121 %** dans l'autre. De même, une productivité supérieure ou inférieure de 0,5 point par an ramènerait la dette à 113 % ou la porterait à 203 %. Autrement dit, l'écart entre une trajectoire soutenable et une trajectoire explosive tient à des hypothèses minuscules. Un chiffre unique de dette à trente ans doit toujours se lire comme le milieu d'un éventail, pas comme un destin.
+
+<InfographicBars
+  title="Un éventail, pas un destin"
+  subtitle="Dette détenue par le public en 2055 (% du PIB) selon l'écart de taux d'intérêt, plus ou moins 5 points de base par an."
+  items={[
+    { label: "Taux inférieur de 5 pb par an", value: 121, valueLabel: "121 %", tone: "signal" },
+    { label: "Hypothèse centrale (baseline)", value: 156, valueLabel: "156 %", tone: "amber" },
+    { label: "Taux supérieur de 5 pb par an", value: 204, valueLabel: "204 %", tone: "accent" },
+  ]}
+  note="Un écart minuscule sur le taux fait basculer la trajectoire."
+  source="Source : CBO, Long-Term Budget Outlook Under Alternative Scenarios."
+  caption="Un écart de seulement **5 points de base par an** sur le taux moyen fait varier la dette de 2055 de 121 % à **204 %** du PIB. Source : CBO."
+/>
+
+## Lire le CBO en pratique
+
+Bien utilisé, le CBO est un instrument précieux à condition de le prendre pour ce qu'il est. Il donne une direction, un repère commun et un ordre de grandeur, pas une prophétie. Quelques réflexes en tirent le meilleur. Distinguer le déficit primaire du déficit total pour savoir d'où vient la dérive. Lire les grandeurs en pourcentage du PIB plutôt qu'en dollars. Vérifier les hypothèses économiques, croissance, taux, inflation, qui sous-tendent la baseline, et garder en tête que le résultat y est très sensible. Se demander, devant un chiffrage, s'il est statique ou dynamique, et si les dispositions supposées expirer le seront vraiment.
+
+Ce cadre éclaire les débats concrets. La trajectoire de dette et de charge d'intérêt que documente le CBO est précisément le point de départ de notre analyse du [réveil de la prime de terme](/posts/dette-americaine-le-reveil-de-la-prime-de-terme/), et l'offre de titres qu'elle implique se lit à l'aune de notre guide sur le [marché des Treasuries](/guides/lire-le-marche-des-treasuries/). Enfin, la sensibilité de la dette à la productivité rejoint un débat que nous avons traité ailleurs, celui des [gains de productivité de l'IA](/posts/ia-et-productivite-entre-gains-mesures-et-effets-supposes/), dont dépend en partie la croissance future. Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions.
+
+---
+
+**Sources principales :**
+
+- [Congressional Budget Office, « The Budget and Economic Outlook: 2026 to 2036 »](https://www.cbo.gov/topics/budget/outlook-budget-and-economy) : baseline à dix ans, déficit 2026 de 1 900 milliards de dollars (5,8 % du PIB), intérêts nets de 1 000 milliards en 2026 à 2 100 milliards en 2036, dette détenue par le public de 101 % à 120 % du PIB.
+- [Congressional Budget Office, « The Long-Term Budget Outlook: 2025 to 2055 »](https://www.cbo.gov/publication/61270) : dette détenue par le public de 100 % du PIB en 2025 à 156 % en 2055 sous le droit en vigueur, croissance moyenne de 1,7 % par an.
+- [Congressional Budget Office, « The Long-Term Budget Outlook Under Alternative Scenarios for the Economy and the Budget »](https://www.cbo.gov/publication/61332) : sensibilité de la dette de 2055 aux taux (204 % ou 121 % du PIB pour un écart de 5 points de base par an) et à la productivité (203 % ou 113 % pour 0,5 point par an).
+- [Congressional Budget Office, « CBO Explains How It Develops the Budget Baseline »](https://www.cbo.gov/publication/59085) : construction de la baseline, hypothèse de droit en vigueur, rôle de repère et non de prévision.
+- [Congressional Budget Office, « CBO Explains the Statutory Foundations of Its Budget Baseline »](https://www.cbo.gov/publication/59208) : règles de la section 257 (dépenses discrétionnaires indexées, programmes expirants supposés reconduits ou expirés, fonds de réserve supposés financés).
+- [Committee for a Responsible Federal Budget, lecture de l'outlook de long terme](https://www.crfb.org/blogs/debt-rises-175-gdp-under-cbos-long-term-outlook) : dette atteignant environ 172 % à 175 % du PIB en tenant compte des lois récentes.
