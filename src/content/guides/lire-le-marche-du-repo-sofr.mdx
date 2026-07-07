@@ -1,0 +1,114 @@
+---
+title: "Lire le marché du repo : SOFR, le couloir des taux et la rareté des réserves"
+description: "Guide de référence sur la plomberie du financement collatéralisé aux États-Unis : ce qu'est une pension livrée (repo), comment se fabrique le SOFR et sur quel volume il repose, le couloir de taux par lequel la Fed pilote les taux courts (IORB, RRP, SRF, EFFR), la lecture de l'écart SOFR-IORB comme thermomètre de la rareté des réserves, l'anatomie d'un stress avec le cas d'école de septembre 2019, les à-coups de fin de trimestre et de fin d'année, et le régime de 2026 après la fin du resserrement quantitatif. Avec les chiffres de 2026 en illustration."
+summary: "Le repo est le marché sur lequel se finance chaque jour la finance de gros : plus de 3 000 milliards de dollars de prêts de cash garantis par des Treasuries, dont la moyenne donne le SOFR, taux de référence des financements garantis au jour le jour. Le lire suppose de comprendre la mécanique de la pension livrée, le couloir de taux par lequel la Fed encadre le SOFR (IORB en repère, RRP en plancher, SRF en plafond), et pourquoi un SOFR qui décolle de l'IORB signale que les réserves bancaires deviennent rares."
+pubDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "banques centrales", "liquidité", "taux", "méthodologie"]
+category: fed
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Le repo est le marché le plus important dont personne ne parle. C'est là que banques, hedge funds et fonds monétaires se financent au jour le jour, contre du collatéral, pour des milliers de milliards de dollars quotidiens. Sa moyenne donne le SOFR, le taux qui a remplacé le Libor et sur lequel se calent des centaines de milliers de milliards de contrats. Ce guide reprend la plomberie de bout en bout : la mécanique d'une pension, la fabrique du SOFR, le couloir par lequel la Fed le tient, et la manière d'y lire une montée du stress. Septembre 2019 et la fin d'année 2025 servent de cas d'école.*
+
+## Le repo, brique de base du financement de marché
+
+Une pension livrée, ou [repo](/glossaire/repo/), est d'une simplicité trompeuse : un acteur vend un titre, presque toujours une obligation du Trésor, en s'engageant à le racheter le lendemain à un prix légèrement supérieur. Économiquement, c'est un prêt de cash garanti par du collatéral, et l'écart entre les deux prix est le taux d'intérêt de ce prêt. Celui qui apporte le cash et reçoit le titre fait un « reverse repo » ; celui qui apporte le titre et reçoit le cash fait un « repo ». Le même contrat vu des deux côtés.
+
+Deux réglages en gouvernent le risque. Le premier est la [décote, ou haircut](/glossaire/haircut-repo/) : on ne prête pas 100 % de la valeur du titre mais un peu moins, cette marge protégeant le prêteur si le collatéral se déprécie. Un haircut faible autorise un fort levier, un haircut qui monte force l'emprunteur à trouver du cash ou à vendre. Le second est la nature du collatéral. Quand le prêteur se moque du titre précis qu'il reçoit du moment qu'il est de bonne qualité, on parle de « general collateral » (GC), et le taux reflète le prix du cash. Quand un titre particulier est très demandé, il devient « special » et se finance moins cher, car détenir ce titre-là a une valeur propre. Cette plomberie est la fabrique quotidienne de la liquidité, un mécanisme que nous détaillons dans notre article sur le [repo comme fabrique de liquidité](/posts/repo-collateral-fabrique-liquidite/) et sa contrepartie, la [réutilisation du collatéral](/posts/collateral-rehypothecation-cle-de-voute/).
+
+## Comment se fabrique le SOFR
+
+Le [SOFR](/glossaire/sofr/), pour Secured Overnight Financing Rate, n'est pas un taux affiché par une banque : c'est une statistique. Chaque matin ouvré vers huit heures, la [Réserve fédérale de New York](https://www.newyorkfed.org/markets/reference-rates/sofr) publie la médiane, pondérée par les volumes, de toutes les transactions de repo sur Treasuries de la veille. Une médiane, et non une moyenne, précisément pour qu'une poignée d'opérations extrêmes ne fasse pas dévier le chiffre. C'est ce qui fait du SOFR un taux robuste, adossé à des transactions réelles, là où le Libor reposait sur des estimations déclaratives et s'est effondré avec les scandales de manipulation.
+
+Sa robustesse tient à son assiette. Le SOFR repose sur plus de **3 000 milliards de dollars** de transactions quotidiennes, réparties sur trois segments : le repo tripartite, où un agent comme BNY gère le collatéral entre les parties, le repo bilatéral compensé (DVP) via la chambre FICC, et le GCF. Aucun taux de référence n'a jamais reposé sur une base aussi large, ce qui le rend quasi impossible à manipuler.
+
+<InfographicBars
+  title="Ce qui fait tourner le SOFR : plus de 3 000 milliards par jour"
+  subtitle="Volume quotidien moyen des pensions sur Treasuries par segment, 1er semestre 2026, en milliards de dollars."
+  max={2000}
+  items={[
+    { label: "Bilatéral compensé (DVP, via FICC)", value: 1855, valueLabel: "1 855 Md$", tone: "signal" },
+    { label: "Tripartite (via BNY)", value: 1280, valueLabel: "1 280 Md$", tone: "blue" },
+    { label: "GCF (FICC)", value: 31, valueLabel: "31 Md$", tone: "muted" },
+  ]}
+  source="Source : Federal Reserve Bank of New York (composantes du SOFR)."
+  caption="Le SOFR est la médiane, pondérée par les volumes, de plus de 3 000 milliards de dollars de pensions quotidiennes. Une assiette qui le rend quasi immanipulable. Source : Fed de New York."
+/>
+
+## Le couloir des taux courts
+
+La Réserve fédérale ne fixe pas le SOFR à la main : elle construit un couloir dans lequel il doit se tenir, et le marché fait le reste. Le repère central est l'[IORB](/glossaire/iorb/), le taux auquel la Fed rémunère les réserves que les banques laissent chez elle. Une banque n'a guère de raison de prêter son cash en dessous de ce que la Fed lui offre sans risque, ce qui fait de l'IORB un aimant pour les taux courts.
+
+Le couloir a deux bornes. En bas, le taux de la facilité de prises en pension inversées, l'[ON RRP](/glossaire/rrp/), où les fonds monétaires peuvent placer leur cash auprès de la Fed : personne n'a intérêt à prêter moins cher ailleurs, ce qui en fait un plancher. En haut, la [facilité permanente de pension, la SRF](/glossaire/srf/), qui prête du cash aux contreparties éligibles contre Treasuries à un taux fixe : personne n'a besoin d'emprunter plus cher sur le marché tant que ce guichet est ouvert, ce qui en fait un plafond. Entre les deux évoluent le SOFR et l'[EFFR](/glossaire/effr/), le taux effectif des fonds fédéraux, la véritable cible opérationnelle de la politique monétaire. En juillet 2026, avec une [cible des fonds fédéraux de 3,50 à 3,75 %](https://www.federalreserve.gov/monetarypolicy/openmarket.htm), le SOFR se tenait autour de [3,64 %](https://www.newyorkfed.org/markets/reference-rates/sofr), juste sous un IORB à 3,65 %, bien à l'intérieur du couloir.
+
+<InfographicBars
+  title="Le couloir des taux courts (juillet 2026)"
+  subtitle="Position de chaque taux au-dessus du plancher (taux ON RRP, 3,50 %), en points de base."
+  items={[
+    { label: "SRF — plafond (3,75 %)", value: 25, valueLabel: "+25 pb", tone: "amber" },
+    { label: "IORB — repère (3,65 %)", value: 15, valueLabel: "+15 pb", tone: "muted" },
+    { label: "SOFR (3,64 %)", value: 14, valueLabel: "+14 pb", tone: "signal" },
+    { label: "EFFR (3,63 %)", value: 13, valueLabel: "+13 pb", tone: "blue" },
+  ]}
+  note="Plancher = taux de la facilité ON RRP, à 3,50 %."
+  source="Sources : Federal Reserve, Federal Reserve Bank of New York (données du 2 juillet 2026)."
+  caption="En régime de réserves abondantes, le SOFR se loge juste sous l'IORB, loin du plafond de la SRF. Le jour où il s'en approche, c'est que le cash se raréfie. Sources : Fed, Fed de New York."
+/>
+
+## Le thermomètre : l'écart SOFR-IORB
+
+De tout ce dispositif, un seul chiffre concentre l'information : l'écart entre le SOFR et l'IORB. En régime de [réserves abondantes](/glossaire/reserves-bancaires/), le cash est surabondant, les prêteurs se bousculent, et le SOFR se tient au niveau de l'IORB voire un point de base en dessous, comme [début juillet 2026 où l'écart était d'environ -1 point de base](https://en.macromicro.me/charts/141325/us-sofriorb-spread). Quand cet écart se resserre puis passe en positif, c'est que les réserves deviennent rares : les emprunteurs sont prêts à payer plus que ce que la Fed offre pour se procurer du cash. Un SOFR qui décolle durablement au-dessus de l'IORB est le premier symptôme d'un système à court de liquidité.
+
+C'est ce même mécanisme que l'on retrouve, un cran plus loin, dans les [ratios de liquidité réglementaire des banques régionales](/posts/banques-regionales-us-liquidite-lcr/) et dans les épisodes de tension sur les [gilts financés en repo au Royaume-Uni](/posts/gilts-repo-levier-banque-angleterre/). L'écart SOFR-IORB est au financement garanti ce qu'est le thermomètre à la fièvre : il ne dit pas la cause, mais il dit qu'il y en a une.
+
+## Quand la mécanique casse : septembre 2019
+
+Le cas d'école reste le 17 septembre 2019. En deux jours, deux ponctions se sont cumulées : le règlement d'environ 54 milliards de dollars de Treasuries et le versement des acomptes trimestriels d'impôt sur les sociétés, qui ont [drainé quelque 120 milliards de dollars de réserves](https://www.federalreserve.gov/econres/notes/feds-notes/what-Happened-in-Money-Markets-in-September-2019-20200227.htm). Le système était déjà tendu par des années de resserrement du bilan de la Fed. Résultat, le SOFR est passé de [2,43 % la veille à 5,25 % le 17 septembre](https://www.financialresearch.gov/working-papers/files/OFRwp-23-04_anatomy-of-the-repo-rate-spikes-in-september-2019.pdf), avec des transactions intraday jusqu'à 10 %, soit le double du plafond du couloir.
+
+<InfographicBars
+  title="L'anatomie d'un stress : septembre 2019"
+  subtitle="SOFR, taux des pensions au jour le jour, en %."
+  max={10}
+  items={[
+    { label: "16 sept. (veille)", value: 2.43, valueLabel: "2,43 %", tone: "muted" },
+    { label: "17 sept. (médiane du jour)", value: 5.25, valueLabel: "5,25 %", tone: "signal" },
+    { label: "17 sept. (plus haut intraday)", value: 10.0, valueLabel: "~10 %", tone: "amber" },
+  ]}
+  note="La Fed a injecté 75 milliards de dollars le 17, puis près de 200 milliards sur la semaine."
+  source="Sources : Federal Reserve (FEDS Notes), Office of Financial Research."
+  caption="Le drainage d'environ 120 milliards de réserves en deux jours a suffi à faire quintupler le taux. C'est en réponse à cet épisode que la Fed a créé la facilité permanente de pension (SRF) en 2021. Sources : Fed, OFR."
+/>
+
+La leçon de 2019 n'est pas qu'un accident est arrivé, mais qu'il est arrivé sans que personne ne l'ait vu venir, parce que la frontière entre réserves « abondantes » et réserves « rares » n'est pas visible à l'avance. C'est pour ne plus dépendre d'interventions au coup par coup que la Fed a créé la SRF en 2021, un guichet permanent censé plafonner les taux avant l'emballement.
+
+## Les à-coups de calendrier
+
+Depuis, le stress ne disparaît pas : il se déplace vers les dates de bilan. En fin de trimestre et surtout en fin d'année, les banques réduisent leur bilan pour soigner leurs ratios réglementaires et prêtent moins de cash au marché, ce qui fait grimper les taux le temps de quelques jours. La fin d'année 2025 en a offert une démonstration nette : le [SOFR a bondi à 3,87 % le 31 décembre](https://www.newyorkfed.org/markets/reference-rates/sofr), avec des transactions à 4,0 %, très au-dessus d'un IORB à 3,65 %. Les contreparties ont tiré [75 milliards de dollars sur la SRF ce jour-là](https://wolfstreet.com/2026/01/05/feds-standing-repo-facility-srf-drops-to-zero-from-75-billion-on-the-last-balance-sheet-as-yearend-liquidity-turmoil-dissolves/), avant que la tension ne se dissolve dès les premiers jours de janvier et que la facilité ne retombe à zéro. Un signal plus précoce était apparu à la mi-septembre 2025, quand la SRF avait été sollicitée pour environ 18,5 milliards en une seule journée, son plus fort tirage depuis sa création.
+
+Ces à-coups ne sont pas en eux-mêmes alarmants : ils sont saisonniers et se résorbent. Ce qui compte, c'est leur amplitude et leur fréquence, qui disent à quel point le coussin de réserves s'est aminci. Un recours à la SRF qui devient banal, et non plus exceptionnel, marque le passage d'un système où le cash déborde à un système où il faut aller le chercher au guichet.
+
+## Le régime de 2026
+
+Ce basculement est précisément l'enjeu de 2026. La Fed a mis fin à son resserrement quantitatif le [1er décembre 2025](https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm), arrêtant de laisser fondre son bilan pour ne plus retirer de réserves du système. Dans le même mouvement, la facilité ON RRP, longtemps amortisseur qui dépassait 2 000 milliards de dollars, est tombée près de zéro : le coussin qui absorbait les chocs a disparu, et la moindre ponction se répercute désormais directement sur les réserves bancaires. En parallèle, la Fed a musclé la SRF, en supprimant son plafond agrégé et en passant à un allotissement intégral, pour qu'elle joue plus franchement son rôle de filet.
+
+Le régime de 2026 est donc celui d'un système qui a perdu ses marges. Les réserves ne sont plus surabondantes mais simplement « suffisantes », un état plus fragile où l'écart SOFR-IORB et le recours à la SRF deviennent les indicateurs à surveiller de près. C'est le même fil que l'on suit dans notre guide sur la [liquidité du Trésor](/guides/liquidite-tresor-dts-tga-rrp/) et dans celui sur le [bilan de la Fed](/guides/lire-h41-bilan-fed/), dont ce marché est le prolongement quotidien.
+
+## Lire le marché en pratique
+
+Bien lu, le repo n'est pas un taux mais un système d'alerte avancé. La mécanique de la pension et le niveau des haircuts disent le levier disponible. Le SOFR et son volume disent le prix et la profondeur du financement garanti. Le couloir IORB-RRP-SRF dit où la Fed veut tenir les taux courts. Et l'écart SOFR-IORB, couplé au recours à la SRF, dit quand la mécanique se grippe, souvent avant que le stress ne devienne visible ailleurs. En 2019 comme en fin d'année 2025, c'est le repo qui a parlé le premier.
+
+Ce cadre prend tout son sens quand le levier s'accumule sur les Treasuries, comme dans le [basis trade](/glossaire/basis-trade/) financé en pension, que nous détaillons dans notre analyse du [basis trade sur Treasuries](/posts/basis-trade-treasuries-levier/), et qu'il se lit en miroir du [marché des Treasuries](/guides/lire-le-marche-des-treasuries/) lui-même. Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions, et le [calendrier économique](/calendrier-eco/) recense les échéances de fin de trimestre à surveiller.
+
+---
+
+**Sources principales :**
+
+- [Federal Reserve Bank of New York, Secured Overnight Financing Rate Data](https://www.newyorkfed.org/markets/reference-rates/sofr) : méthodologie et niveau du SOFR, composantes et volumes quotidiens des pensions sur Treasuries, valeurs de fin d'année 2025 (3,87 % au 31 décembre).
+- [Federal Reserve, taux directeurs et cible des fonds fédéraux](https://www.federalreserve.gov/monetarypolicy/openmarket.htm) : fourchette-cible de 3,50 à 3,75 %, IORB et taux de la facilité ON RRP en 2026.
+- [MacroMicro, écart SOFR-IORB](https://en.macromicro.me/charts/141325/us-sofriorb-spread) : lecture de l'écart SOFR-IORB comme thermomètre de la rareté des réserves, valeur d'environ -1 point de base début juillet 2026.
+- [Federal Reserve, « What Happened in Money Markets in September 2019? » (FEDS Notes)](https://www.federalreserve.gov/econres/notes/feds-notes/what-Happened-in-Money-Markets-in-September-2019-20200227.htm) : chronologie du pic de septembre 2019, ponction d'environ 120 milliards de réserves, interventions de la Fed.
+- [Office of Financial Research, « Anatomy of the Repo Rate Spikes in September 2019 »](https://www.financialresearch.gov/working-papers/files/OFRwp-23-04_anatomy-of-the-repo-rate-spikes-in-september-2019.pdf) : SOFR de 2,43 % à 5,25 %, pointes intraday jusqu'à 10 %, facteurs déclencheurs.
+- [Federal Reserve, fin du resserrement quantitatif au 1er décembre 2025 (communiqué FOMC du 29 octobre 2025)](https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm) : arrêt de la réduction du bilan et régime de réserves suffisantes.
+- [Wolf Street, « Fed's Standing Repo Facility Drops to Zero, from $75 Billion »](https://wolfstreet.com/2026/01/05/feds-standing-repo-facility-srf-drops-to-zero-from-75-billion-on-the-last-balance-sheet-as-yearend-liquidity-turmoil-dissolves/) : tension de fin d'année 2025, tirage de 75 milliards sur la SRF le 31 décembre et résorption en janvier.
