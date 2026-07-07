@@ -6,6 +6,7 @@ import {
   glossaryAtlasEntries,
   glossaryEntries,
   glossaryEntryBySlug,
+  glossaryUpdatedIso,
   glossarySections as sections,
   totalGlossaryEntries,
 } from '../config/glossary.ts';
@@ -32,12 +33,12 @@ const atlasPreview = atlasFeaturedSlugs
   .map((slug) => glossaryAtlasEntries.find((entry) => entry.slug === slug))
   .filter((entry): entry is (typeof glossaryAtlasEntries)[number] => Boolean(entry))
   .map((entry) => ({
-  entry,
-  related: (entry.atlas?.related ?? [])
-    .map((slug) => glossaryEntryBySlug.get(slug))
-    .filter(Boolean)
-    .slice(0, 6),
-}));
+    entry,
+    related: (entry.atlas?.related ?? [])
+      .map((slug) => glossaryEntryBySlug.get(slug))
+      .filter(Boolean)
+      .slice(0, 6),
+  }));
 
 // --- Structured data : le glossaire comme vocabulaire structure (DefinedTermSet) ---
 const GSITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -49,6 +50,7 @@ const glossaryLd = {
   description:
     'Glossaire et graphe de connaissance l0g : sigles, concepts, sources, guides, signaux et datasets de risque financier.',
   inLanguage: 'fr',
+  dateModified: glossaryUpdatedIso,
   hasDefinedTerm: glossaryEntries.map((e) => ({
     '@type': 'DefinedTerm',
     '@id': `${GSITE}${e.url}#term`,

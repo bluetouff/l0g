@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
-import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
+import { glossaryEntries, glossaryEntryBySlug, glossaryUpdatedIso } from '../../config/glossary.ts';
 
 export function getStaticPaths() {
   return glossaryEntries.map((entry) => ({
@@ -40,7 +40,7 @@ const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const canonical = `${SITE}${entry.url}`;
 const title = `${entry.sigle} : ${entry.nom}`;
 const description = `${entry.sigle} (${entry.nom}) : ${entry.def}`;
-const glossaryUpdated = new Date('2026-06-27T00:00:00+02:00');
+const glossaryUpdated = new Date(`${glossaryUpdatedIso}T00:00:00+02:00`);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -52,7 +52,7 @@ const jsonLd = {
       description: entry.def,
       url: canonical,
       inLanguage: 'fr',
-      dateModified: '2026-06-27',
+      dateModified: glossaryUpdatedIso,
       ...(atlas?.formula ? { mathExpression: atlas.formula } : {}),
       ...(atlas?.whyNow ? { disambiguatingDescription: atlas.whyNow } : {}),
       ...(atlasJsonLinks.length > 0
