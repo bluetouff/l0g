@@ -347,6 +347,156 @@ const treasurySources: GlossaryGraphLink[] = [
   { label: 'Bank for International Settlements', href: '/sources/bis/', detail: 'Dette globale, banques et fragilités de marché.', kind: 'source' },
 ];
 
+const privateCreditArticles: GlossaryGraphLink[] = [
+  { label: 'Crédit privé : un actif, deux prix', href: '/posts/credit-prive-un-actif-deux-prix/', detail: 'Découverte de prix, BDC cotées et fonds non cotés.', kind: 'article' },
+  { label: 'Crédit privé, défaut et gating', href: '/posts/credit-prive-juin-2026-defaut-record-gating/', detail: 'Défauts, rachats plafonnés et vigilance des régulateurs.', kind: 'article' },
+  { label: 'Contagion silencieuse du crédit privé', href: '/posts/la-contagion-silencieuse-credit-prive/', detail: 'Passerelles banques, assureurs, BDC, crypto et stablecoins.', kind: 'article' },
+  { label: 'Fonds semi-liquides et gating', href: '/posts/private-credit-semi-liquide-gating-hlend-2026/', detail: 'Mécanique des fenêtres de rachat et risque retail.', kind: 'article' },
+  { label: 'Zombie funds et valorisations privées', href: '/posts/zombie-funds-valorisations-privees/', detail: 'Marks privés, sorties difficiles et illusion de stabilité.', kind: 'article' },
+];
+
+const privateCreditGuides: GlossaryGraphLink[] = [
+  { label: 'Analyser le crédit privé', href: '/guides/analyser-credit-prive/', detail: 'Valorisation, liquidité, levier, clauses et points de rupture.', kind: 'guide' },
+  { label: 'Lire un 10-K', href: '/guides/lire-le-10-k-sec/', detail: 'Risque de crédit, dette, échéances et facteurs de risque.', kind: 'guide' },
+  { label: 'Analyser les 13F', href: '/guides/analyser-13f-sec/', detail: 'Expositions publiques des gérants institutionnels.', kind: 'guide' },
+];
+
+const privateCreditSources: GlossaryGraphLink[] = [
+  { label: 'SEC EDGAR', href: '/sources/sec-edgar/', detail: 'Filings de BDC, 10-K, 10-Q, 8-K et déclarations institutionnelles.', kind: 'source' },
+  { label: 'Bank for International Settlements', href: '/sources/bis/', detail: 'Crédit global, NBFI et vulnérabilités de marché.', kind: 'source' },
+  { label: 'Financial Stability Board & OFR', href: '/sources/fsb-ofr/', detail: 'Intermédiation non bancaire, stabilité financière et monitors.', kind: 'source' },
+  { label: 'International Monetary Fund', href: '/sources/imf/', detail: 'Global Financial Stability Report et stress de financement.', kind: 'source' },
+];
+
+const privateCreditDatasets: GlossaryGraphLink[] = [
+  { label: 'debt-risk.json', href: '/api/v1/debt-risk.json', detail: 'Snapshot Debt Risk Radar incluant le bucket private_leverage.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'Diff des sources, signaux, modèles et articles sur 1, 7 et 30 jours.', kind: 'dataset' },
+  { label: 'evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'Graphe articles, claims, références, hôtes et sources.', kind: 'dataset' },
+  { label: 'catalog.json', href: '/api/v1/catalog.json', detail: 'Catalogue machine avec atlas du glossaire.', kind: 'dataset' },
+];
+
+const privateCreditSignals: GlossaryGraphLink[] = [
+  { label: 'Debt Risk Radar', href: '/methodologie/debt-risk-radar/', detail: 'Levier privé, crédit global, stress de marché et dette publique.', kind: 'methodology' },
+  { label: 'Risk Diff', href: '/risk-diff/', detail: 'Mouvements récents des signaux, sources et claims.', kind: 'signal' },
+  { label: 'Black Box Recorder', href: '/black-box/', detail: 'Frames point-in-time hashées pour rejouer un état publié.', kind: 'signal' },
+];
+
+const privateCreditRelated = ['bdc', 'interval-fund', 'nav', 'nav-loan', 'pik', 'pcdr', 'pmr', 'lme', 'lbo', 'ndfi', 'nbfi', 'form-pf'];
+
+const stablecoinArticles: GlossaryGraphLink[] = [
+  { label: 'RealT en liquidation', href: '/posts/realt-en-liquidation-le-token-qui-ne-possedait-pas-la-maison/', detail: 'RWA immobilier, titre off-chain et promesse on-chain.', kind: 'article' },
+  { label: 'USDT sur Tron et contournement OFAC', href: '/posts/iran-peages-ormuz-usdt-tron-ofac/', detail: 'Stablecoins, sanctions et paiements géopolitiques.', kind: 'article' },
+  { label: 'Hyperliquid et la tradfi on-chain', href: '/posts/hyperliquid-bourse-onchain-tradfi/', detail: 'Perpétuels, DEX et passerelles vers actifs traditionnels.', kind: 'article' },
+  { label: 'Strategy et le pari bitcoin', href: '/posts/strategy-pari-bitcoin-saylor/', detail: 'Trésorerie numérique, mNAV et financement par marché.', kind: 'article' },
+];
+
+const stablecoinGuides: GlossaryGraphLink[] = [
+  { label: 'Stablecoins et GENIUS Act', href: '/guides/stablecoins-genius-act/', detail: 'Réserves, émetteurs agréés, audits et supervision.', kind: 'guide' },
+  { label: 'Qui applique le GENIUS Act', href: '/guides/qui-applique-le-genius-act/', detail: 'OCC, FinCEN, OFAC, États et architecture d’application.', kind: 'guide' },
+  { label: 'Lire la donnée on-chain', href: '/guides/lire-la-donnee-on-chain/', detail: 'Adresses, réserves, flux et limites d’interprétation.', kind: 'guide' },
+  { label: 'MiCA sigle par sigle', href: '/guides/mica-sigle-par-sigle/', detail: 'ART, EMT, CASP et supervision européenne.', kind: 'guide' },
+];
+
+const stablecoinSources: GlossaryGraphLink[] = [
+  { label: 'Congress.gov, GovInfo & CBO', href: '/sources/congress-govinfo-cbo/', detail: 'Textes législatifs, dont GENIUS Act et policy crypto US.', kind: 'source' },
+  { label: 'U.S. Treasury Fiscal Data', href: '/sources/treasury-fiscal-data/', detail: 'T-bills et dette courte servant de réserve aux stablecoins.', kind: 'source' },
+  { label: 'SEC EDGAR', href: '/sources/sec-edgar/', detail: 'Déclarations d’émetteurs cotés et sociétés exposées aux cryptoactifs.', kind: 'source' },
+  { label: 'Federal Reserve & FRED', href: '/sources/federal-reserve-fred/', detail: 'Taux courts, liquidité dollar et actifs sans risque.', kind: 'source' },
+];
+
+const stablecoinDatasets: GlossaryGraphLink[] = [
+  { label: 'catalog.json', href: '/api/v1/catalog.json', detail: 'Catalogue machine des articles, guides, sources et atlas.', kind: 'dataset' },
+  { label: 'claims.json', href: '/api/v1/claims.json', detail: 'Claims sourcées et datées quand détectable.', kind: 'dataset' },
+  { label: 'evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'Relations articles, claims, références et sources.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'Changements récents du corpus et des signaux.', kind: 'dataset' },
+];
+
+const stablecoinSignals: GlossaryGraphLink[] = [
+  { label: 'Risk Diff', href: '/risk-diff/', detail: 'Claims, sources et articles reliés à la régulation crypto.', kind: 'signal' },
+  { label: 'Black Box Recorder', href: '/black-box/', detail: 'État publié du risque et des sources à une date donnée.', kind: 'signal' },
+];
+
+const stablecoinRelated = ['stablecoin', 'usdt', 'usdc', 'rlusd', 'genius', 'ppsi', 't-bill', 'occ', 'fincen', 'bsa', 'mica', 'art', 'emt', 'wlfi'];
+const rwaRelated = ['rwa', 'immobilier-tokenise', 'stablecoin', 'tvl', 'defi', 'dao', 'grand-livre-unifie', 'reglement-atomique', 'wcbdc', 'cbdc'];
+
+const energyArticles: GlossaryGraphLink[] = [
+  { label: 'Pétrole : le stock chinois', href: '/posts/petrole-le-stock-chinois-qui-plafonne-les-prix/', detail: 'Réserves, prix du Brent et comportement d’achat chinois.', kind: 'article' },
+  { label: 'Chine et importations de brut', href: '/posts/chine-importations-petrole-brut-chute-2026/', detail: 'Flux physiques, marges et pouvoir de marché.', kind: 'article' },
+  { label: 'Ormuz rouvre', href: '/posts/accord-paix-ormuz-rouvre-scenarios/', detail: 'Normalisation, scénarios de prix et primes géopolitiques.', kind: 'article' },
+  { label: 'Crise d’Ormuz en Asie', href: '/posts/crise-ormuz-asie-impacts-economiques/', detail: 'Facture énergétique, GNL et exposition asiatique.', kind: 'article' },
+  { label: 'Chaîne d’approvisionnement et Ormuz', href: '/posts/ormuz-la-chaine-d-approvisionnement-encaisse-la-facture-est-deja-la/', detail: 'Fret, délais et coût énergétique transmis aux biens.', kind: 'article' },
+];
+
+const energyGuides: GlossaryGraphLink[] = [
+  { label: 'Lire le marché pétrolier', href: '/guides/lire-le-marche-petrolier/', detail: 'Prix, courbe, stocks, OPEP et données physiques.', kind: 'guide' },
+  { label: 'Lire le marché de l’uranium', href: '/guides/lire-le-marche-de-l-uranium/', detail: 'Cycle du combustible, conversion, enrichissement et goulots.', kind: 'guide' },
+];
+
+const energySources: GlossaryGraphLink[] = [
+  { label: 'U.S. Energy Information Administration', href: '/sources/eia-energy/', detail: 'Pétrole, gaz, stocks, production et Short-Term Energy Outlook.', kind: 'source' },
+  { label: 'Commodity Futures Trading Commission', href: '/sources/cftc/', detail: 'Positionnement futures via Commitments of Traders.', kind: 'source' },
+  { label: 'World Bank Open Data & OECD Data', href: '/sources/world-bank-oecd/', detail: 'Comparables macro et prix de matières premières.', kind: 'source' },
+];
+
+const energyDatasets: GlossaryGraphLink[] = [
+  { label: 'risk.json', href: '/api/v1/risk.json', detail: 'Snapshot du signal Energie Monitor dans la surface risque.', kind: 'dataset' },
+  { label: 'signals/history.json', href: '/api/v1/signals/history.json', detail: 'Historique point-in-time des niveaux de risque.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'Mouvements récents de signaux, sources et modèles.', kind: 'dataset' },
+  { label: 'evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'Claims et sources des articles énergie.', kind: 'dataset' },
+];
+
+const energySignals: GlossaryGraphLink[] = [
+  { label: 'Energie Monitor', href: '/methodologie/energie/', detail: 'Lecture des tensions énergie à partir de données publiques.', kind: 'methodology' },
+  { label: 'Backtests signaux', href: '/backtests/', detail: 'Historique vérifiable des signaux de risque.', kind: 'signal' },
+  { label: 'Risk Diff', href: '/risk-diff/', detail: 'Variation récente du régime de risque.', kind: 'signal' },
+];
+
+const energyRelated = ['wti', 'brent', 'chokepoint', 'ttf', 'gnl', 'vlsfo', 'opep', 'opep-2', 'spr', 'stockage-flottant', 'cftc', 'cot'];
+
+const uraniumArticles: GlossaryGraphLink[] = [
+  { label: 'Uranium : déficit et goulots cachés', href: '/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/', detail: 'Mine, conversion, enrichissement, HALEU et demande IA.', kind: 'article' },
+  { label: 'Cuivre, Ormuz et El Niño', href: '/posts/cuivre-shortage-ormuz-el-nino-2026/', detail: 'Matières premières, énergie et contraintes d’offre.', kind: 'article' },
+];
+
+const uraniumGuides: GlossaryGraphLink[] = [
+  { label: 'Lire le marché de l’uranium', href: '/guides/lire-le-marche-de-l-uranium/', detail: 'Du minerai au réacteur, contrats, conversion et enrichissement.', kind: 'guide' },
+  { label: 'Lire le marché pétrolier', href: '/guides/lire-le-marche-petrolier/', detail: 'Comparer marché physique liquide et marché de contrats privés.', kind: 'guide' },
+];
+
+const uraniumRelated = ['u3o8', 'uf6', 'swu', 'haleu', 'smr', 'hyperscaler', 'capex', 'eia', 'vlsfo'];
+
+const yenCarryArticles: GlossaryGraphLink[] = [
+  { label: 'Dollar-yen : le risque de débouclage', href: '/posts/dollar-yen-intervention-risque-carry-2026/', detail: 'USD/JPY, BoJ, intervention et liquidation du carry.', kind: 'article' },
+  { label: 'Warsh, bilan Fed et QT', href: '/posts/warsh-bilan-qt/', detail: 'Taux dollar, liquidité et conditions de portage global.', kind: 'article' },
+];
+
+const yenCarryGuides: GlossaryGraphLink[] = [
+  { label: 'Lire le COT de la CFTC', href: '/guides/lire-cot-cftc/', detail: 'Positionnement futures, catégories de traders et limites.', kind: 'guide' },
+  { label: 'Lire le dot plot et le SEP', href: '/guides/lire-le-dot-plot-sep/', detail: 'Trajectoire de taux dollar et différentiel de rendement.', kind: 'guide' },
+];
+
+const yenCarrySources: GlossaryGraphLink[] = [
+  { label: 'Bank of Japan & Ministry of Finance Japan', href: '/sources/bank-of-japan-mof/', detail: 'Politique monétaire japonaise, statistiques BoJ et interventions FX.', kind: 'source' },
+  { label: 'Commodity Futures Trading Commission', href: '/sources/cftc/', detail: 'Positionnement yen et futures via COT.', kind: 'source' },
+  { label: 'ECB Data Portal & Eurostat', href: '/sources/ecb-eurostat/', detail: 'Taux de change de référence et contexte FX européen.', kind: 'source' },
+  { label: 'Federal Reserve & FRED', href: '/sources/federal-reserve-fred/', detail: 'Taux dollar, Fed funds et conditions de liquidité.', kind: 'source' },
+];
+
+const yenCarryDatasets: GlossaryGraphLink[] = [
+  { label: 'risk.json', href: '/api/v1/risk.json', detail: 'Snapshot public du Yen Carry Monitor.', kind: 'dataset' },
+  { label: 'signals/history.json', href: '/api/v1/signals/history.json', detail: 'Historique point-in-time des signaux.', kind: 'dataset' },
+  { label: 'signals/history.csv', href: '/api/v1/signals/history.csv', detail: 'Historique tabulaire pour backtests.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'Diff des signaux, sources et modèles.', kind: 'dataset' },
+];
+
+const yenCarrySignals: GlossaryGraphLink[] = [
+  { label: 'Yen Carry Monitor', href: '/methodologie/yen-carry/', detail: 'Positionnement, FX, volatilité et risque de débouclage.', kind: 'methodology' },
+  { label: 'Backtests signaux', href: '/backtests/', detail: 'Historique vérifiable des changements de niveau.', kind: 'signal' },
+  { label: 'Risk Diff', href: '/risk-diff/', detail: 'Mouvements récents du risque cross-asset.', kind: 'signal' },
+];
+
+const yenCarryRelated = ['yen-carry', 'boj', 'mof', 'cot', 'future', 'open-interest', 'cftc', 'ffr', 'bce', 'move'];
+
 const treasuryRelated = [
   'duration',
   'move',
@@ -486,6 +636,325 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     signals: [treasurySignals[0], treasurySignals[2]],
     sources: [treasurySources[3]],
     related: ['baseline-budgetaire', 'deficit-primaire', 'dominance-fiscale', 'prime-de-terme'],
+  },
+  'credit-prive': {
+    intuition: "Le crédit privé remplace un prix de marché continu par une valorisation de modèle, des fenêtres de rachat et une information souvent retardée.",
+    formula: 'risque visible ≈ défauts observés + décote de NAV + rachats plafonnés + levier du fonds',
+    whyNow: "La montée des défauts, les rachats semi-liquides plafonnés et l’écart entre BDC cotées et fonds privés rendent la liquidité aussi importante que le rendement affiché.",
+    articles: privateCreditArticles,
+    guides: privateCreditGuides,
+    datasets: privateCreditDatasets,
+    signals: privateCreditSignals,
+    sources: privateCreditSources,
+    related: privateCreditRelated,
+  },
+  bdc: {
+    intuition: "Une BDC donne un prix coté à une exposition de crédit privé, ce qui révèle parfois une décote absente des fonds non cotés.",
+    formula: 'prime ou décote de BDC = prix de marché / NAV publiée - 1',
+    whyNow: "Quand les BDC se traitent sous leur NAV pendant que les fonds ouverts rachètent au pair, le marché signale une tension que la valorisation privée lisse.",
+    articles: [privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
+    guides: privateCreditGuides,
+    datasets: privateCreditDatasets,
+    signals: privateCreditSignals,
+    sources: [privateCreditSources[0], privateCreditSources[2]],
+    related: ['credit-prive', 'nav', 'pik', 'pcdr', 'lbo', 'ndfi'],
+  },
+  'interval-fund': {
+    intuition: "Le fonds à intervalle promet une liquidité périodique sur des actifs qui, eux, ne se vendent pas forcément au même rythme.",
+    formula: 'liquidité offerte < liquidité demandée = gating ou file d’attente',
+    whyNow: "Les demandes de rachat rendent visible le décalage entre liquidité commerciale et liquidité économique du portefeuille.",
+    articles: [privateCreditArticles[1], privateCreditArticles[3], privateCreditArticles[4]],
+    guides: [privateCreditGuides[0]],
+    datasets: [privateCreditDatasets[1], privateCreditDatasets[2], privateCreditDatasets[3]],
+    signals: privateCreditSignals,
+    sources: [privateCreditSources[0], privateCreditSources[2], privateCreditSources[3]],
+    related: ['credit-prive', 'nav', 'nav-loan', 'lp', 'pik', 'ndfi'],
+  },
+  nav: {
+    intuition: "La NAV privée est moins une photo de marché qu’une estimation administrée. Son utilité dépend de la qualité des marks et de la fréquence des révisions.",
+    formula: 'NAV = valeur estimée des actifs - dettes du fonds',
+    whyNow: "L’écart entre prix cotés, rachats au pair et marks internes devient un signal de confiance dans la valorisation.",
+    articles: [privateCreditArticles[0], privateCreditArticles[3], privateCreditArticles[4]],
+    guides: [privateCreditGuides[0]],
+    datasets: privateCreditDatasets,
+    signals: privateCreditSignals,
+    sources: [privateCreditSources[0], privateCreditSources[2]],
+    related: ['credit-prive', 'bdc', 'interval-fund', 'nav-loan', 'pik', 'pmr'],
+  },
+  'nav-loan': {
+    intuition: "Le NAV loan ajoute une dette au niveau du fonds, au-dessus des emprunteurs eux-mêmes.",
+    formula: 'levier total = dette des sociétés + dette portée par le fonds',
+    whyNow: "Quand les sorties augmentent, financer distributions ou rachats par NAV loan peut masquer temporairement la pression de liquidité.",
+    articles: [privateCreditArticles[2], privateCreditArticles[4]],
+    guides: [privateCreditGuides[0]],
+    datasets: privateCreditDatasets,
+    signals: privateCreditSignals,
+    sources: [privateCreditSources[0], privateCreditSources[2], privateCreditSources[3]],
+    related: ['credit-prive', 'nav', 'interval-fund', 'lp', 'lbo', 'spv'],
+  },
+  pik: {
+    intuition: "Le PIK transforme un intérêt non payé en dette supplémentaire. Il soulage le cash aujourd’hui et alourdit le bilan demain.",
+    formula: 'dette future = dette actuelle + intérêts capitalisés',
+    whyNow: "Une hausse du PIK signale que des emprunteurs préservent leur trésorerie au prix d’un risque de défaut reporté.",
+    articles: [privateCreditArticles[1], privateCreditArticles[2], privateCreditArticles[4]],
+    guides: [privateCreditGuides[0]],
+    datasets: privateCreditDatasets,
+    signals: privateCreditSignals,
+    sources: privateCreditSources,
+    related: ['credit-prive', 'pcdr', 'pmr', 'lme', 'lbo', 'ebitda'],
+  },
+  pcdr: {
+    intuition: "Le PCDR suit le défaut privé sur un univers de middle market, donc un stress moins visible que le high yield coté.",
+    whyNow: "Il sert de capteur direct quand les restructurations privées progressent sans toujours passer par un défaut public classique.",
+    articles: [privateCreditArticles[1], privateCreditArticles[2]],
+    guides: [privateCreditGuides[0]],
+    datasets: [privateCreditDatasets[0], privateCreditDatasets[1], privateCreditDatasets[2]],
+    signals: privateCreditSignals,
+    sources: [privateCreditSources[2], privateCreditSources[3]],
+    related: ['credit-prive', 'pmr', 'pik', 'lme', 'lbo', 'cds'],
+  },
+  rwa: {
+    intuition: "Un RWA ne rend pas l’actif réel magique : il ajoute une couche tokenisée à une chaîne juridique, comptable et opérationnelle déjà fragile.",
+    formula: 'valeur du token = droit on-chain + titre off-chain + exécution juridique',
+    whyNow: "La tokenisation progresse plus vite que la preuve juridique et opérationnelle, surtout quand le rendement stablecoin attire le capital.",
+    articles: [stablecoinArticles[0], stablecoinArticles[2]],
+    guides: [stablecoinGuides[2], stablecoinGuides[3], stablecoinGuides[0]],
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: [stablecoinSources[0], stablecoinSources[2]],
+    related: rwaRelated,
+  },
+  'immobilier-tokenise': {
+    intuition: "Le token immobilier ne vaut que si la propriété, les flux de loyers et les droits du porteur suivent hors chaîne.",
+    formula: 'risque RWA = token liquide + actif illiquide + droit local',
+    whyNow: "Les incidents de propriété et de liquidation montrent que le registre blockchain ne remplace pas les titres fonciers ni la gouvernance juridique.",
+    articles: [stablecoinArticles[0]],
+    guides: [stablecoinGuides[2], stablecoinGuides[0]],
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: [stablecoinSources[2]],
+    related: ['rwa', 'stablecoin', 'tvl', 'dao', 'spv', 'reglement-atomique'],
+  },
+  stablecoin: {
+    intuition: "Un stablecoin est une promesse de parité. Le risque se loge dans la réserve, le droit au remboursement, les intermédiaires et les usages géopolitiques.",
+    formula: 'parité durable = actifs liquides + droit au rachat + supervision + confiance opérationnelle',
+    whyNow: "Les stablecoins deviennent une plomberie dollar parallèle : réserve en T-bills, paiements cross-border, sanctions, DeFi et régulation américaine se croisent.",
+    articles: stablecoinArticles,
+    guides: stablecoinGuides,
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: stablecoinSources,
+    related: stablecoinRelated,
+  },
+  usdt: {
+    intuition: "USDT concentre le risque stablecoin le plus systémique : taille, liquidité, confiance dans la réserve et usages offshore.",
+    whyNow: "Son rôle dans les paiements crypto et les contournements de sanctions en fait un indicateur d’opacité dollar, pas seulement un jeton de trading.",
+    articles: [stablecoinArticles[1]],
+    guides: [stablecoinGuides[0], stablecoinGuides[2]],
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: stablecoinSources,
+    related: ['stablecoin', 't-bill', 'usdc', 'rlusd', 'ofac', 'fincen', 'bsa', 'cips'],
+  },
+  usdc: {
+    intuition: "USDC représente le stablecoin plus intégré au cadre réglementaire américain et aux acteurs financiers institutionnels.",
+    whyNow: "La compétition se joue moins sur la technologie que sur la transparence des réserves, l’accès bancaire et le statut réglementaire.",
+    articles: [stablecoinArticles[2]],
+    guides: [stablecoinGuides[0], stablecoinGuides[3]],
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: stablecoinSources,
+    related: ['stablecoin', 'genius', 'ppsi', 't-bill', 'emt', 'mica', 'occ'],
+  },
+  ppsi: {
+    intuition: "Le PPSI transforme l’émetteur de stablecoin en acteur explicitement supervisé, avec réserve, audit et obligations AML.",
+    formula: 'stablecoin légal US = émetteur agréé + réserve admissible + audits + conformité BSA',
+    whyNow: "Le statut d’émetteur agréé devient la frontière entre dollar tokenisé réglementé et émission offshore plus opaque.",
+    articles: stablecoinArticles.slice(0, 2),
+    guides: [stablecoinGuides[0], stablecoinGuides[1]],
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: [stablecoinSources[0], stablecoinSources[1], stablecoinSources[2]],
+    related: ['stablecoin', 'genius', 'occ', 'fincen', 'bsa', 't-bill', 'usdc'],
+  },
+  genius: {
+    intuition: "Le GENIUS Act définit la plomberie légale du stablecoin de paiement aux États-Unis.",
+    whyNow: "Il déplace le risque de la question technique vers la qualité de la réserve, la surveillance, les conflits d’intérêts et l’application concrète.",
+    articles: stablecoinArticles.slice(0, 2),
+    guides: [stablecoinGuides[0], stablecoinGuides[1]],
+    datasets: stablecoinDatasets,
+    signals: stablecoinSignals,
+    sources: [stablecoinSources[0], stablecoinSources[1]],
+    related: ['stablecoin', 'ppsi', 'occ', 'fincen', 'bsa', 't-bill', 'wlfi'],
+  },
+  wti: {
+    intuition: "Le WTI lit le marché américain du brut, avec une forte sensibilité aux stocks, au raffinage et aux contraintes de logistique intérieure.",
+    formula: 'stress pétrole = prix spot + structure de courbe + stocks + positionnement',
+    whyNow: "Après un choc géopolitique, l’écart entre WTI, Brent et stocks dit si la tension est locale, mondiale ou surtout financière.",
+    articles: [energyArticles[0], energyArticles[1], energyArticles[2]],
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[1]],
+    related: energyRelated,
+  },
+  brent: {
+    intuition: "Le Brent est le prix mondial marginal du brut. Il réagit plus directement aux chocs de routes maritimes, OPEP+ et demande asiatique.",
+    formula: 'prime géopolitique ≈ Brent stressé - prix compatible avec stocks et demande',
+    whyNow: "La normalisation post-Ormuz et les réserves chinoises rendent le Brent utile pour séparer rareté physique et prime de risque.",
+    articles: energyArticles,
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: energySources,
+    related: energyRelated,
+  },
+  chokepoint: {
+    intuition: "Un chokepoint concentre un flux mondial dans un passage difficile à remplacer.",
+    formula: 'fragilité = part du flux mondial × capacité de contournement limitée',
+    whyNow: "Ormuz a montré qu’un choc local peut devenir inflation, fret, assurance maritime et risque politique en quelques jours.",
+    articles: [energyArticles[2], energyArticles[3], energyArticles[4]],
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: energySources,
+    related: ['brent', 'wti', 'gnl', 'ttf', 'vlsfo', 'irgc', 'mou', 'stockage-flottant'],
+  },
+  ttf: {
+    intuition: "Le TTF capte le prix marginal du gaz européen, souvent fixé par le GNL disponible.",
+    whyNow: "Un choc sur routes maritimes ou GNL asiatique peut atteindre l’Europe par le prix marginal même sans rupture physique directe.",
+    articles: [energyArticles[3], energyArticles[4]],
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[2]],
+    related: ['gnl', 'chokepoint', 'brent', 'vlsfo', 'wfp', 'fao'],
+  },
+  opep: {
+    intuition: "L’OPEP coordonne une partie de l’offre, mais son pouvoir réel dépend de la discipline interne et de la demande marginale.",
+    whyNow: "Quand la demande chinoise ralentit ou puise dans ses stocks, la capacité de l’OPEP à soutenir le prix devient observable.",
+    articles: [energyArticles[0], energyArticles[1], energyArticles[2]],
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[1]],
+    related: ['opep-2', 'brent', 'wti', 'spr', 'stockage-flottant', 'chokepoint'],
+  },
+  'opep-2': {
+    intuition: "OPEP+ ajoute des producteurs non membres, dont la Russie, et rend la lecture de l’offre plus politique.",
+    whyNow: "Les hausses ou coupes coordonnées changent l’équilibre entre stocks, discipline d’offre et prime géopolitique.",
+    articles: [energyArticles[0], energyArticles[2]],
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[1]],
+    related: ['opep', 'brent', 'wti', 'spr', 'stockage-flottant'],
+  },
+  spr: {
+    intuition: "La réserve stratégique est une option politique sur le prix et la sécurité énergétique.",
+    formula: 'coussin de sécurité = stocks mobilisables / consommation ou importations exposées',
+    whyNow: "Les réserves chinoises et américaines peuvent amortir ou amplifier les mouvements de prix selon qu’elles sont utilisées, reconstituées ou conservées.",
+    articles: [energyArticles[0], energyArticles[1]],
+    guides: [energyGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0]],
+    related: ['brent', 'wti', 'stockage-flottant', 'opep', 'opep-2', 'chokepoint'],
+  },
+  u3o8: {
+    intuition: "U3O8 est le point de départ marchand du cycle nucléaire, mais pas le goulot final.",
+    formula: 'combustible nucléaire = mine + conversion + enrichissement + fabrication',
+    whyNow: "Le prix du minerai attire l’attention, alors que conversion et enrichissement peuvent devenir les contraintes déterminantes.",
+    articles: uraniumArticles,
+    guides: uraniumGuides,
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[2]],
+    related: uraniumRelated,
+  },
+  uf6: {
+    intuition: "UF6 est le passage obligé entre minerai et enrichissement. Sans conversion disponible, le yellowcake ne devient pas combustible.",
+    whyNow: "La conversion est un marché plus étroit que le minerai, donc plus sensible aux retards industriels et aux sanctions.",
+    articles: [uraniumArticles[0]],
+    guides: [uraniumGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[2]],
+    related: ['u3o8', 'swu', 'haleu', 'smr', 'hyperscaler'],
+  },
+  swu: {
+    intuition: "Le SWU mesure l’effort industriel qui sépare les isotopes. C’est le vrai langage du goulot d’enrichissement.",
+    formula: 'besoin SWU = enrichissement cible + quantité de combustible + teneur des tails',
+    whyNow: "La concentration de capacité d’enrichissement rend le risque géopolitique plus aigu que le seul prix du minerai.",
+    articles: [uraniumArticles[0]],
+    guides: [uraniumGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[2]],
+    related: ['u3o8', 'uf6', 'haleu', 'smr', 'capex'],
+  },
+  haleu: {
+    intuition: "HALEU est le carburant avancé qui concentre promesse nucléaire et dépendance de chaîne industrielle.",
+    whyNow: "Les petits réacteurs et projets avancés se heurtent à une offre commerciale encore trop étroite.",
+    articles: [uraniumArticles[0]],
+    guides: [uraniumGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[2]],
+    related: ['swu', 'uf6', 'u3o8', 'smr', 'hyperscaler', 'capex'],
+  },
+  smr: {
+    intuition: "Le SMR est une option industrielle sur l’électricité bas-carbone, mais son calendrier reste plus lent que la demande des data centers.",
+    formula: 'risque SMR = délai industriel + combustible disponible + coût du capital',
+    whyNow: "La demande électrique de l’IA met le nucléaire en avant avant que les premiers déploiements commerciaux ne soient réellement disponibles.",
+    articles: [uraniumArticles[0]],
+    guides: [uraniumGuides[0]],
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: [energySources[0], energySources[2]],
+    related: ['haleu', 'swu', 'uf6', 'u3o8', 'hyperscaler', 'capex'],
+  },
+  'yen-carry': {
+    intuition: "Le yen carry finance des actifs risqués avec une devise à faible coût. Le risque n’est pas le niveau du yen, mais la vitesse du débouclage.",
+    formula: 'carry brut ≈ rendement actif acheté - coût de financement en yen - coût de couverture',
+    whyNow: "BoJ plus restrictive, menace d’intervention et volatilité FX peuvent forcer des positions à se refermer ensemble.",
+    articles: yenCarryArticles,
+    guides: yenCarryGuides,
+    datasets: yenCarryDatasets,
+    signals: yenCarrySignals,
+    sources: yenCarrySources,
+    related: yenCarryRelated,
+  },
+  boj: {
+    intuition: "La BoJ fixe le prix de départ du carry en yen et influence la tolérance mondiale au financement bon marché.",
+    whyNow: "Un changement de ton de la BoJ peut transformer une position de portage rentable en risque de change et de liquidité.",
+    articles: [yenCarryArticles[0]],
+    guides: yenCarryGuides,
+    datasets: yenCarryDatasets,
+    signals: yenCarrySignals,
+    sources: [yenCarrySources[0], yenCarrySources[3]],
+    related: ['yen-carry', 'mof', 'cot', 'ffr', 'move', 'bce'],
+  },
+  mof: {
+    intuition: "Le MoF décide des interventions de change japonaises. Il ne change pas toujours le régime, mais il peut changer le rythme du débouclage.",
+    whyNow: "Quand USD/JPY teste des zones politiquement sensibles, le risque d’intervention devient une variable de marché.",
+    articles: [yenCarryArticles[0]],
+    guides: yenCarryGuides,
+    datasets: yenCarryDatasets,
+    signals: yenCarrySignals,
+    sources: [yenCarrySources[0]],
+    related: ['yen-carry', 'boj', 'cot', 'future', 'open-interest'],
+  },
+  cot: {
+    intuition: "Le COT donne une photographie retardée du positionnement futures. Il ne prédit pas seul, mais il montre où le marché est chargé.",
+    formula: 'risque de débouclage = positionnement extrême + catalyseur FX + volatilité',
+    whyNow: "Sur le yen, un positionnement très consensuel devient dangereux quand la BoJ, le MoF ou la Fed changent le régime de taux.",
+    articles: [yenCarryArticles[0]],
+    guides: [yenCarryGuides[0]],
+    datasets: yenCarryDatasets,
+    signals: yenCarrySignals,
+    sources: [yenCarrySources[1]],
+    related: ['yen-carry', 'cftc', 'future', 'open-interest', 'boj', 'mof'],
   },
 };
 

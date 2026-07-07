@@ -11,7 +11,27 @@ import {
 } from '../config/glossary.ts';
 
 const total = totalGlossaryEntries;
-const atlasPreview = glossaryAtlasEntries.slice(0, 9).map((entry) => ({
+const atlasFeaturedSlugs = [
+  'prime-de-terme',
+  'credit-prive',
+  'rwa',
+  'stablecoin',
+  'brent',
+  'u3o8',
+  'yen-carry',
+  'repo',
+  'bdc',
+  'immobilier-tokenise',
+  'chokepoint',
+  'smr',
+  'cot',
+  'usdt',
+  'spr',
+];
+const atlasPreview = atlasFeaturedSlugs
+  .map((slug) => glossaryAtlasEntries.find((entry) => entry.slug === slug))
+  .filter((entry): entry is (typeof glossaryAtlasEntries)[number] => Boolean(entry))
+  .map((entry) => ({
   entry,
   related: (entry.atlas?.related ?? [])
     .map((slug) => glossaryEntryBySlug.get(slug))
