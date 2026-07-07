@@ -6,7 +6,7 @@ import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 
 /**
- * /llms-full.txt — corpus integral pour agents IA (convention llmstxt.org).
+ * /llms-full.txt - corpus integral pour agents IA (convention llmstxt.org).
  * Texte complet de toutes les analyses et guides, infographies SVG retirees,
  * Markdown aplati en texte. Genere au build. Borne souple par document pour ne
  * pas saturer une fenetre de contexte.
@@ -36,7 +36,7 @@ function toPlain(md: string): string {
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // liens -> texte
     .replace(/^\s*#{1,6}\s*/gm, '') // titres
     .replace(/[*_`>]/g, '') // emphase, citations, code
-    .replace(/\s*[—–]\s*/g, ' · ') // tirets cadratins/demi : separateur maison
+    .replace(/\s*[\u2014\u2013]\s*/g, ' · ') // tirets longs/demi : separateur maison
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
@@ -74,7 +74,7 @@ export const GET: APIRoute = async () => {
   out.push(`URL : ${SITE}/terminal/`);
   out.push('-'.repeat(76));
   out.push(
-    "Interface de navigation en ligne de commande pour explorer l0g : help, ls, cat manifeste, open dashboards, open methodologie, open backtests, open api, curl risk. Elle donne un acces rapide aux pages de methode, a l'historique des signaux, aux outils, aux sources, a l'API et au corpus machine."
+    "Interface clavier en ligne de commande pour explorer l0g : man, risk today, risk diff 1d/7d/30d, source debt, claim uranium enrichment, replay YYYY-MM-DD, guide treasuries, opacity private-credit, scenario hormuz, mcp tools, open cible, curl risk. Elle inclut un manuel web statique, une navigation interne allowlistee, un historique local borne et des liens vers Risk Diff, Black Box Recorder, sources primaires, API, MCP et corpus machine."
   );
   out.push(SEP);
   out.push('STATUS : Statut & intégrité');

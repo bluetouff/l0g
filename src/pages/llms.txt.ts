@@ -8,7 +8,7 @@ import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 
 /**
- * /llms.txt — carte concise et annotee du site pour agents IA (convention llmstxt.org).
+ * /llms.txt - carte concise et annotee du site pour agents IA (convention llmstxt.org).
  * Markdown : titre, resume, sections de liens annotes. Le texte integral est dans
  * /llms-full.txt. Genere au build, comme les endpoints /api/.
  */
@@ -45,7 +45,7 @@ export const GET: APIRoute = async () => {
     `- [Manifeste l0g](${SITE}/manifeste/): pacte de lecture du projet : sources primaires, code ouvert, auto-hebergement, limites assumees, zero tracker.`
   );
   lines.push(
-    `- [Terminal l0g](${SITE}/terminal/): interface de navigation en ligne de commande vers manifeste, methodologie, backtests, dashboards, API, sources et corpus machine.`
+    `- [Terminal l0g](${SITE}/terminal/): interface clavier en ligne de commande avec manuel web : man, risk today, risk diff 7d, source debt, claim uranium enrichment, replay par date, guides, scenarios, MCP tools et navigation interne allowlistee.`
   );
   lines.push(
     `- [Statut & intégrité](${SITE}/status/): état public du build statique, des snapshots, des endpoints, du corpus machine et des garanties de tracking.`
@@ -140,7 +140,7 @@ export const GET: APIRoute = async () => {
   lines.push('## Glossaire');
   lines.push(`- [Glossaire l0g](${SITE}/glossaire/): ${glossaryEntries.length} sigles et notions de macro, finance, crypto, energie et regulation, chacun avec une page dediee.`);
   for (const term of glossaryEntries) {
-    lines.push(`- [${term.sigle}](${SITE}${term.url}): ${term.nom} — ${term.def}`);
+    lines.push(`- [${term.sigle}](${SITE}${term.url}): ${term.nom} - ${term.def}`);
   }
   lines.push('');
 

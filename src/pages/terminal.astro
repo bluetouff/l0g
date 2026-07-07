@@ -1,39 +1,116 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const commands = [
-  'help',
-  'ls',
-  'cat manifeste',
-  'open dashboards',
-  'open donnees',
-  'open agents',
-  'open preuves',
-  'open sources-primaires',
-  'open methodologie',
-  'open backtests',
-  'open api',
+const quickCommands = [
+  'man',
+  'risk today',
+  'risk diff 7d',
+  'source debt',
+  'claim uranium enrichment',
+  'replay 2026-06-15',
+  'guide treasuries',
+  'opacity private-credit',
+  'scenario hormuz',
+  'mcp tools',
   'curl risk',
-  'whoami',
+  'ls',
+];
+
+const manualCommands = [
+  {
+    command: 'man',
+    role: 'manuel complet du terminal, avec carte des commandes et garanties de sécurité.',
+  },
+  {
+    command: 'risk today',
+    role: 'snapshot public du risque, endpoints JSON, données et limites de fraîcheur.',
+  },
+  {
+    command: 'risk diff 1d | 7d | 30d',
+    role: 'lecture des changements de risque par fenêtre : signaux, sources, claims, modèles, articles, confiance.',
+  },
+  {
+    command: 'source debt',
+    role: 'sources primaires liées à la dette US : Treasury Fiscal Data, TIC, CBO, FRED, méthodologie.',
+  },
+  {
+    command: 'claim uranium enrichment',
+    role: 'claims et articles l0g reliés à la chaîne uranium, sans réponse générée côté navigateur.',
+  },
+  {
+    command: 'replay YYYY-MM-DD',
+    role: 'renvoie vers le Black Box Recorder et ses frames point-in-time hashées.',
+  },
+  {
+    command: 'guide treasuries',
+    role: 'guide de lecture des Treasuries et articles de marché reliés.',
+  },
+  {
+    command: 'opacity private-credit',
+    role: 'dossier crédit privé : opacité, prix, gating, sources FSB/OFR et articles l0g.',
+  },
+  {
+    command: 'scenario hormuz',
+    role: 'dossier géopolitique énergie autour d’Ormuz, pétrole, flux, supply chains et scénarios.',
+  },
+  {
+    command: 'mcp tools',
+    role: 'outils MCP exposés en lecture seule pour agents : risk diff, black box, claims, evidence graph.',
+  },
+  {
+    command: 'open <cible>',
+    role: 'navigation interne allowlistée : api, agents, black-box, risk-diff, sources, guides, dashboards, status.',
+  },
+  {
+    command: 'clear',
+    role: 'nettoie uniquement l’affichage local du terminal.',
+  },
 ];
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  '@id': 'https://l0g.fr/terminal/#terminal',
-  name: 'Terminal l0g',
-  description:
-    'Interface terminal de navigation dans l0g : manifeste, méthodologie, backtests, dashboards, API, sources et corpus machine.',
-  inLanguage: 'fr',
-  isAccessibleForFree: true,
-  publisher: { '@id': 'https://l0g.fr/#org' },
-  url: 'https://l0g.fr/terminal/',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://l0g.fr/terminal/#terminal',
+      name: 'Terminal l0g',
+      description:
+        'Interface terminal de navigation dans l0g : commandes risk, sources, claims, guides, Black Box, Risk Diff, MCP et corpus machine.',
+      inLanguage: 'fr',
+      isAccessibleForFree: true,
+      publisher: { '@id': 'https://l0g.fr/#org' },
+      url: 'https://l0g.fr/terminal/',
+      mainEntity: { '@id': 'https://l0g.fr/terminal/#app' },
+    },
+    {
+      '@type': 'WebApplication',
+      '@id': 'https://l0g.fr/terminal/#app',
+      name: 'Terminal l0g',
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Web',
+      isAccessibleForFree: true,
+      featureList: manualCommands.map((item) => item.command),
+      browserRequirements:
+        'JavaScript optionnel pour le shell interactif ; le manuel des commandes reste lisible en HTML statique.',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    },
+    {
+      '@type': 'TechArticle',
+      '@id': 'https://l0g.fr/terminal/#man',
+      headline: 'Manuel des commandes du terminal l0g',
+      inLanguage: 'fr',
+      about: ['risk intelligence', 'finance', 'MCP', 'sources primaires', 'point-in-time'],
+      isAccessibleForFree: true,
+      publisher: { '@id': 'https://l0g.fr/#org' },
+      mainEntityOfPage: 'https://l0g.fr/terminal/',
+    },
+  ],
 };
 ---
 
 <BaseLayout
   title="Terminal"
-  description="Interface terminal de navigation dans l0g : manifeste, méthodologie, backtests, dashboards, API, sources, corpus machine et raccourcis utiles."
+  description="Terminal l0g : interface clavier pour explorer risques, sources, claims, guides, Risk Diff, Black Box Recorder, MCP et corpus machine."
   ogImage="/og-terminal.png"
   ogImageAlt="Terminal l0g : interface de navigation en ligne de commande"
   sidebar={false}
@@ -41,19 +118,19 @@ const jsonLd = {
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
   <section class="terminal-page rise" data-pagefind-body>
-    <div class="terminal-shell" data-pagefind-ignore>
+    <div class="terminal-shell" id="terminal-shell" data-pagefind-ignore>
       <header class="terminal-bar">
         <span class="terminal-lights" aria-hidden="true">
           <span></span><span></span><span></span>
         </span>
         <span class="terminal-title">bluetouff@l0g:/risk</span>
-        <span class="terminal-status">static · no tracker</span>
+        <span class="terminal-status">static · no tracker · allowlist</span>
       </header>
 
-      <div class="terminal-screen" id="terminal-screen" aria-live="polite">
+      <div class="terminal-screen" id="terminal-screen" aria-live="polite" aria-label="Sortie du terminal">
         <p><span class="prompt">bluetouff@l0g:~$</span> <span class="cmd">boot l0g</span></p>
-        <p class="out">risk intelligence shell · build statique · sources publiques</p>
-        <p class="out muted">help · ls · cat manifeste · open backtests · curl risk</p>
+        <p class="out">risk intelligence shell · build statique · sources publiques · clavier d’abord</p>
+        <p class="out muted">tapez <span class="cmd">man</span> · historique avec ↑/↓ · autocomplétion avec Tab · clear avec Ctrl+L</p>
       </div>
 
       <form class="terminal-input" id="terminal-form" autocomplete="off">
@@ -64,45 +141,100 @@ const jsonLd = {
           type="text"
           inputmode="text"
           spellcheck="false"
-          value="help"
+          placeholder="man"
           aria-label="Commande terminal"
+          maxlength="96"
         />
         <button type="submit">run</button>
       </form>
     </div>
 
-    <div class="command-dock" data-pagefind-ignore>
-      {commands.map((command) => (
+    <div class="command-dock" aria-label="Commandes rapides" data-pagefind-ignore>
+      {quickCommands.map((command) => (
         <button type="button" data-command={command}>{command}</button>
       ))}
     </div>
 
+    <section class="terminal-man" id="man" aria-labelledby="terminal-man-title">
+      <p class="mono-label glow">// man l0g-terminal</p>
+      <h1 id="terminal-man-title">Manuel des commandes</h1>
+      <p class="terminal-lede">
+        Le terminal l0g est une interface de navigation clavier, pas un shell système. Les commandes
+        déclenchent uniquement des réponses statiques ou des liens internes allowlistés vers les surfaces
+        publiques : Risk Diff, Black Box Recorder, sources primaires, guides, claims et MCP.
+      </p>
+
+      <div class="man-grid">
+        {manualCommands.map((item) => (
+          <article class="man-command">
+            <code>{item.command}</code>
+            <p>{item.role}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="man-ops" aria-label="Garanties">
+        <section>
+          <h2>Sécurité</h2>
+          <p>
+            Aucune commande n’est évaluée. Le parseur accepte un jeu de caractères réduit, borne la longueur,
+            rejette les cibles inconnues et construit toutes les sorties avec <code>textContent</code> ou des
+            liens internes définis en dur.
+          </p>
+        </section>
+        <section>
+          <h2>Performance</h2>
+          <p>
+            Le terminal ne charge pas de gros dataset dans le navigateur. L’historique visible est borné,
+            les lignes anciennes sont purgées et les réponses renvoient vers les endpoints publics quand
+            l’analyse exige de la donnée structurée.
+          </p>
+        </section>
+        <section>
+          <h2>Accès machine</h2>
+          <p>
+            Les mêmes surfaces restent lisibles par agents via <a href="/llms.txt">llms.txt</a>,
+            <a href="/api/">l’API publique</a>, <a href="/mcp/">MCP</a>, <a href="/risk-diff/">Risk Diff</a>
+            et <a href="/black-box/">Black Box Recorder</a>.
+          </p>
+        </section>
+      </div>
+    </section>
+
     <section class="terminal-links">
       <p class="mono-label glow">// accès directs</p>
       <div class="terminal-grid">
-        <a href="/manifeste/">
-          <span>manifeste</span>
-          <strong>pacte de lecture</strong>
+        <a href="/risk-diff/">
+          <span>risk diff</span>
+          <strong>mouvement de la connaissance</strong>
         </a>
-        <a href="/methodologie/">
-          <span>méthodologie</span>
-          <strong>formules & limites</strong>
+        <a href="/black-box/">
+          <span>black box</span>
+          <strong>replay point-in-time</strong>
         </a>
-        <a href="/backtests/">
-          <span>backtests</span>
-          <strong>historique signaux</strong>
-        </a>
-        <a href="/dashboards/">
-          <span>dashboards</span>
-          <strong>outils de monitoring</strong>
+        <a href="/mcp/">
+          <span>mcp</span>
+          <strong>tools pour agents</strong>
         </a>
         <a href="/api/">
           <span>api</span>
           <strong>données machine</strong>
         </a>
+        <a href="/methodologie/">
+          <span>méthodologie</span>
+          <strong>formules et limites</strong>
+        </a>
+        <a href="/sources/">
+          <span>sources</span>
+          <strong>institutions primaires</strong>
+        </a>
+        <a href="/guides/">
+          <span>guides</span>
+          <strong>références de marché</strong>
+        </a>
         <a href="/preuves/">
           <span>preuves</span>
-          <strong>changelog & artefacts</strong>
+          <strong>changelog et artefacts</strong>
         </a>
       </div>
     </section>
@@ -110,168 +242,492 @@ const jsonLd = {
 
   <script is:inline>
     (function () {
+      var shell = document.getElementById('terminal-shell');
       var screen = document.getElementById('terminal-screen');
       var form = document.getElementById('terminal-form');
       var input = document.getElementById('terminal-command');
-      if (!screen || !form || !input) return;
+      if (!shell || !screen || !form || !input) return;
 
-      var routes = {
+      var MAX_LINES = 180;
+      var MAX_HISTORY = 50;
+      var MAX_COMMAND_LENGTH = 96;
+      var SAFE_COMMAND = /^[a-z0-9][a-z0-9 ._:/-]{0,95}$/;
+
+      var routes = Object.freeze({
         about: '/about/',
-        api: '/api/',
         agents: '/agents/',
+        api: '/api/',
+        'black-box': '/black-box/',
         backtests: '/backtests/',
         dashboards: '/dashboards/',
         donnees: '/donnees/',
         guides: '/guides/',
         journal: '/',
         manifeste: '/manifeste/',
+        mcp: '/mcp/',
         methodologie: '/methodologie/',
         preuves: '/preuves/',
         recherche: '/recherche/',
-        sources: '/sites-reference/',
-        'sources-primaires': '/sources/',
+        'risk-diff': '/risk-diff/',
+        sources: '/sources/',
+        'sources-reference': '/sites-reference/',
         status: '/status/',
-      };
+        terminal: '/terminal/',
+      });
 
-      var docs = {
-        help: [
-          'help             affiche les commandes',
-          'ls               liste les espaces l0g',
-          'cat manifeste    résume le pacte de lecture',
-          'open <cible>     ouvre manifeste, dashboards, donnees, agents, preuves, methodologie, backtests, api, sources, sources-primaires, status',
-          'curl risk        pointe vers les endpoints JSON principaux',
-          'whoami           identifie le projet',
-          'clear            nettoie le terminal',
-        ],
-        ls: [
-          '<a href="/manifeste/">manifeste</a>      pacte de lecture',
-          '<a href="/dashboards/">dashboards</a>    instruments de monitoring',
-          '<a href="/donnees/">donnees</a>       inventaire des datasets',
-          '<a href="/agents/">agents</a>        utiliser l0g avec un agent',
-          '<a href="/preuves/">preuves</a>       changelog et artefacts',
-          '<a href="/methodologie/">methodologie</a> formules, seuils, limites',
-          '<a href="/backtests/">backtests</a>    historique point-in-time des signaux',
-          '<a href="/guides/">guides</a>          pages de référence',
-          '<a href="/api/">api</a>             endpoints JSON, XML, catalogue',
-          '<a href="/sites-reference/">sources</a>         bibliothèque de sources',
-          '<a href="/sources/">sources-primaires</a> institutions et limites',
-        ],
-        'cat manifeste': [
+      var suggestions = [
+        'man',
+        'help',
+        'ls',
+        'cat manifeste',
+        'risk today',
+        'risk diff 1d',
+        'risk diff 7d',
+        'risk diff 30d',
+        'source debt',
+        'claim uranium enrichment',
+        'replay 2026-06-15',
+        'guide treasuries',
+        'opacity private-credit',
+        'scenario hormuz',
+        'mcp tools',
+        'curl risk',
+        'whoami',
+        'clear',
+        'open risk-diff',
+        'open black-box',
+        'open api',
+        'open mcp',
+        'open sources',
+        'open guides',
+      ];
+
+      var history = [];
+      var historyIndex = 0;
+
+      function normalize(raw) {
+        return String(raw || '').trim().toLowerCase().replace(/\s+/g, ' ');
+      }
+
+      function safeHref(href) {
+        return typeof href === 'string' && href.charAt(0) === '/' && href.indexOf('//') !== 0;
+      }
+
+      function appendLine(className, writer) {
+        var p = document.createElement('p');
+        p.className = className || 'out';
+        writer(p);
+        screen.appendChild(p);
+        prune();
+        return p;
+      }
+
+      function textLine(text, className) {
+        appendLine(className || 'out', function (p) {
+          p.textContent = text;
+        });
+      }
+
+      function preBlock(lines) {
+        var pre = document.createElement('pre');
+        pre.className = 'terminal-pre';
+        pre.textContent = lines.join('\n');
+        screen.appendChild(pre);
+        prune();
+      }
+
+      function promptLine(command) {
+        appendLine('', function (p) {
+          var promptSpan = document.createElement('span');
+          var cmdSpan = document.createElement('span');
+          promptSpan.className = 'prompt';
+          promptSpan.textContent = 'bluetouff@l0g:~$';
+          cmdSpan.className = 'cmd';
+          cmdSpan.textContent = command;
+          p.appendChild(promptSpan);
+          p.appendChild(document.createTextNode(' '));
+          p.appendChild(cmdSpan);
+        });
+      }
+
+      function linkLine(label, href, detail) {
+        appendLine('out', function (p) {
+          var anchor = document.createElement('a');
+          anchor.textContent = label;
+          if (safeHref(href)) anchor.setAttribute('href', href);
+          p.appendChild(anchor);
+          if (detail) {
+            p.appendChild(document.createTextNode('  ' + detail));
+          }
+        });
+      }
+
+      function section(title, lines) {
+        textLine(title, 'out section-title');
+        lines.forEach(function (line) {
+          if (typeof line === 'string') {
+            textLine(line);
+          } else if (line && line.href) {
+            linkLine(line.label, line.href, line.detail);
+          }
+        });
+      }
+
+      function prune() {
+        while (screen.children.length > MAX_LINES) {
+          screen.removeChild(screen.firstElementChild);
+        }
+      }
+
+      function scrollToEnd() {
+        screen.scrollTop = screen.scrollHeight;
+      }
+
+      function printMan() {
+        preBlock([
+          ' _  ___             __       ',
+          '| |/ _ \\ __ _      / _|_ __ ',
+          '| | | | / _` |____| |_| \'__|',
+          '| | |_| | (_| |____|  _| |   ',
+          '|_|\\___/ \\__, |    |_| |_|   ',
+          '         |___/               ',
+        ]);
+        section('NOM', ['l0g-terminal - interface clavier pour explorer les risques publics l0g']);
+        section('SYNOPSIS', [
+          'risk today',
+          'risk diff 1d | 7d | 30d',
+          'source debt',
+          'claim uranium enrichment',
+          'replay YYYY-MM-DD',
+          'guide treasuries',
+          'opacity private-credit',
+          'scenario hormuz',
+          'mcp tools',
+          'open <cible>',
+        ]);
+        section('DESCRIPTION', [
+          'Ce terminal ne parle pas au système. Il sert de routeur clavier vers les pages, endpoints et dossiers de preuve publiés par l0g.',
+          'Les commandes sont allowlistées, les arguments sont validés, la sortie est échappée et aucun HTML utilisateur n’est injecté.',
+        ]);
+        section('CLAVIER', [
+          'Entrée exécute la commande.',
+          '↑ et ↓ parcourent l’historique local.',
+          'Tab complète vers une commande connue.',
+          'Ctrl+L lance clear.',
+        ]);
+      }
+
+      function printLs() {
+        section('ESPACES', [
+          { label: '/risk-diff/', href: '/risk-diff/', detail: 'changements de risque sur 1, 7 et 30 jours' },
+          { label: '/black-box/', href: '/black-box/', detail: 'frames point-in-time hashées' },
+          { label: '/mcp/', href: '/mcp/', detail: 'serveur MCP public en lecture seule' },
+          { label: '/api/', href: '/api/', detail: 'contrats JSON, XML, NDJSON et catalogue' },
+          { label: '/agents/', href: '/agents/', detail: 'mode d’emploi pour agents' },
+          { label: '/methodologie/', href: '/methodologie/', detail: 'formules, seuils et limites' },
+          { label: '/sources/', href: '/sources/', detail: 'institutions primaires' },
+          { label: '/guides/', href: '/guides/', detail: 'guides de marché' },
+          { label: '/preuves/', href: '/preuves/', detail: 'artefacts, changelog, intégrité' },
+        ]);
+      }
+
+      function printManifesto() {
+        section('MANIFESTE', [
           'sources primaires avant agrégateurs',
           'méthodes visibles avant scores séduisants',
           'code ouvert quand le calcul compte',
           'pas de cookie, pas de pixel, pas de conseil en investissement',
-        ],
-        'curl risk': [
-          '<a href="/api/v1/risk.json">GET /api/v1/risk.json</a>',
-          '<a href="/api/v1/catalog.json">GET /api/v1/catalog.json</a>',
-          '<a href="/api/v1/evidence-graph.json">GET /api/v1/evidence-graph.json</a>',
-          '<a href="/api/v1/changes.ndjson">GET /api/v1/changes.ndjson</a>',
-          '<a href="/api/v1/signals/history.csv">GET /api/v1/signals/history.csv</a>',
-          '<a href="/api/v1/risk.xml">GET /api/v1/risk.xml</a>',
-        ],
-        whoami: [
+          { label: '/manifeste/', href: '/manifeste/', detail: 'pacte de lecture complet' },
+        ]);
+      }
+
+      function printRiskToday() {
+        section('RISK TODAY', [
+          'Lecture du dernier état public publié. Ce n’est pas un flux de prix en temps réel.',
+          { label: '/api/v1/risk.json', href: '/api/v1/risk.json', detail: 'snapshot canonique de risque' },
+          { label: '/api/v1/debt-risk.json', href: '/api/v1/debt-risk.json', detail: 'score dette US canonique' },
+          { label: '/api/v1/signals/current.json', href: '/api/v1/signals/current.json', detail: 'signaux courants' },
+          { label: '/donnees/', href: '/donnees/', detail: 'inventaire des datasets et limites de fraîcheur' },
+          { label: '/status/', href: '/status/', detail: 'statut public des artefacts' },
+        ]);
+      }
+
+      function printRiskDiff(windowName) {
+        section('RISK DIFF ' + windowName.toUpperCase(), [
+          'Compare le risque publié par fenêtre, en séparant signaux, sources, claims, modèles, articles et confiance.',
+          { label: '/risk-diff/', href: '/risk-diff/', detail: 'page de lecture humaine' },
+          { label: '/api/v1/risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'contrat machine 1d, 7d, 30d' },
+          { label: '/api/v1/changes.ndjson', href: '/api/v1/changes.ndjson', detail: 'flux de changements' },
+        ]);
+      }
+
+      function printDebtSources() {
+        section('SOURCE DEBT', [
+          'Dossier dette US : déficit, cash balance, auctions, TIC, CBO, conditions de marché et méthodes l0g.',
+          { label: '/sources/treasury-fiscal-data/', href: '/sources/treasury-fiscal-data/', detail: 'Daily Treasury Statement, Debt to the Penny, auctions' },
+          { label: '/sources/treasury-tic/', href: '/sources/treasury-tic/', detail: 'détention étrangère et flux transfrontaliers' },
+          { label: '/sources/congress-govinfo-cbo/', href: '/sources/congress-govinfo-cbo/', detail: 'scoring budgétaire et documents politiques' },
+          { label: '/sources/federal-reserve-fred/', href: '/sources/federal-reserve-fred/', detail: 'taux, spreads, liquidité, conditions financières' },
+          { label: '/methodologie/debt-risk-radar/', href: '/methodologie/debt-risk-radar/', detail: 'méthode du radar dette' },
+        ]);
+      }
+
+      function printUraniumClaim() {
+        section('CLAIM URANIUM ENRICHMENT', [
+          'Le terminal ne génère pas de verdict ad hoc. Il renvoie aux claims, guides et analyses publiés pour lecture vérifiable.',
+          { label: '/api/v1/claims.json', href: '/api/v1/claims.json', detail: 'claims sourcées exposées aux agents' },
+          { label: '/guides/lire-le-marche-de-l-uranium/', href: '/guides/lire-le-marche-de-l-uranium/', detail: 'guide uranium' },
+          { label: '/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/', href: '/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/', detail: 'analyse chaîne d’offre et contraintes' },
+        ]);
+      }
+
+      function printReplay(date) {
+        section('REPLAY ' + date, [
+          'Rejoue le dernier état public publié avant ou le jour demandé, sans reconstruction rétrospective dans le navigateur.',
+          { label: '/black-box/', href: '/black-box/', detail: 'lecteur point-in-time' },
+          { label: '/api/v1/black-box.json', href: '/api/v1/black-box.json', detail: 'frames hashées, sources, modèles, fraîcheur' },
+        ]);
+      }
+
+      function printTreasuriesGuide() {
+        section('GUIDE TREASURIES', [
+          { label: '/guides/lire-le-marche-des-treasuries/', href: '/guides/lire-le-marche-des-treasuries/', detail: 'guide de lecture du marché Treasury' },
+          { label: '/posts/basis-trade-treasuries-levier/', href: '/posts/basis-trade-treasuries-levier/', detail: 'levier, bases trade et vulnérabilités' },
+          { label: '/sources/treasury-tic/', href: '/sources/treasury-tic/', detail: 'TIC et détenteurs étrangers' },
+          { label: '/sources/federal-reserve-fred/', href: '/sources/federal-reserve-fred/', detail: 'séries de taux et spreads' },
+        ]);
+      }
+
+      function printPrivateCredit() {
+        section('OPACITY PRIVATE-CREDIT', [
+          'Dossier sur actifs privés, prix lissés, rachats, liquidité promise et risque de valorisation.',
+          { label: '/sujet/credit-prive/', href: '/sujet/credit-prive/', detail: 'sujet l0g crédit privé' },
+          { label: '/guides/analyser-credit-prive/', href: '/guides/analyser-credit-prive/', detail: 'guide d’analyse' },
+          { label: '/posts/credit-prive-un-actif-deux-prix/', href: '/posts/credit-prive-un-actif-deux-prix/', detail: 'prix affiché et prix de sortie' },
+          { label: '/posts/la-contagion-silencieuse-credit-prive/', href: '/posts/la-contagion-silencieuse-credit-prive/', detail: 'canaux de contagion' },
+          { label: '/sources/fsb-ofr/', href: '/sources/fsb-ofr/', detail: 'surveillance finance non bancaire' },
+        ]);
+      }
+
+      function printHormuzScenario() {
+        section('SCENARIO HORMUZ', [
+          'Dossier géopolitique énergie : flux, pétrole, shipping, assurance, supply chains, crypto et scénarios.',
+          { label: '/sujet/geopolitique-energie/', href: '/sujet/geopolitique-energie/', detail: 'sujet l0g géopolitique énergie' },
+          { label: '/posts/accord-paix-ormuz-rouvre-scenarios/', href: '/posts/accord-paix-ormuz-rouvre-scenarios/', detail: 'scénarios après désescalade' },
+          { label: '/posts/crise-ormuz-asie-impacts-economiques/', href: '/posts/crise-ormuz-asie-impacts-economiques/', detail: 'exposition Asie et énergie' },
+          { label: '/posts/point-situation-detroit-ormuz-avril-2026/', href: '/posts/point-situation-detroit-ormuz-avril-2026/', detail: 'point de situation' },
+          { label: '/sources/eia-energy/', href: '/sources/eia-energy/', detail: 'données énergie EIA' },
+        ]);
+      }
+
+      function printMcpTools() {
+        section('MCP TOOLS', [
+          'Endpoint public en lecture seule, destiné aux agents et aux clients compatibles MCP Streamable HTTP.',
+          { label: '/mcp/', href: '/mcp/', detail: 'documentation humaine' },
+          { label: '/api/mcp', href: '/api/mcp', detail: 'endpoint MCP' },
+          'Tools clés : get_risk_diff, get_black_box, get_signal_history, get_claims, get_evidence_graph, get_sources, get_freshness.',
+        ]);
+      }
+
+      function printCurlRisk() {
+        section('CURL RISK', [
+          { label: '/api/v1/risk.json', href: '/api/v1/risk.json', detail: 'snapshot risque' },
+          { label: '/api/v1/risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'diff du risque' },
+          { label: '/api/v1/black-box.json', href: '/api/v1/black-box.json', detail: 'frames point-in-time' },
+          { label: '/api/v1/catalog.json', href: '/api/v1/catalog.json', detail: 'catalogue API' },
+          { label: '/api/v1/evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'graphe de preuves' },
+          { label: '/api/v1/changes.ndjson', href: '/api/v1/changes.ndjson', detail: 'changelog machine' },
+          { label: '/api/v1/risk.xml', href: '/api/v1/risk.xml', detail: 'flux XML' },
+        ]);
+      }
+
+      function printWhoami() {
+        section('WHOAMI', [
           'l0g.fr · audit open source des narratifs économiques',
-          'éditeur : Bluetouff · github.com/bluetouff · x.com/bluetouff',
-          'mode : statique, auto-hébergé, sans tracker maison',
-        ],
-      };
-
-      function escapeText(value) {
-        return String(value).replace(/[&<>"']/g, function (char) {
-          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char];
-        });
+          'éditeur : Bluetouff',
+          'mode : statique, auto-hébergé, sans tracker maison, MCP-ready',
+          { label: '/manifeste/', href: '/manifeste/', detail: 'pacte de lecture' },
+        ]);
       }
 
-      function lineText(text, className) {
-        var p = document.createElement('p');
-        p.className = className || 'out';
-        p.textContent = text;
-        screen.appendChild(p);
-      }
-
-      function lineTrusted(html, className) {
-        var p = document.createElement('p');
-        p.className = className || 'out';
-        p.innerHTML = html;
-        screen.appendChild(p);
-      }
-
-      function prompt(command) {
-        var p = document.createElement('p');
-        var promptSpan = document.createElement('span');
-        var cmdSpan = document.createElement('span');
-        promptSpan.className = 'prompt';
-        promptSpan.textContent = 'bluetouff@l0g:~$';
-        cmdSpan.className = 'cmd';
-        cmdSpan.textContent = command;
-        p.appendChild(promptSpan);
-        p.appendChild(document.createTextNode(' '));
-        p.appendChild(cmdSpan);
-        screen.appendChild(p);
-      }
-
-      function print(lines) {
-        lines.forEach(function (item) { lineTrusted(item, 'out'); });
-      }
-
-      function printText(lines) {
-        lines.forEach(function (item) { lineText(item, 'out'); });
+      function reject(command, reason) {
+        promptLine(command || '[empty]');
+        textLine(reason, 'out error');
+        textLine('tapez man pour le manuel complet', 'out muted');
       }
 
       function run(raw) {
-        var command = String(raw || '').trim().toLowerCase();
+        var command = normalize(raw);
         if (!command) return;
+
+        if (command.length > MAX_COMMAND_LENGTH || !SAFE_COMMAND.test(command)) {
+          reject(command.slice(0, MAX_COMMAND_LENGTH), 'commande rejetée : caractères ou longueur non autorisés');
+          return;
+        }
+
         if (command === 'clear') {
           screen.replaceChildren();
           return;
         }
 
-        prompt(command);
+        promptLine(command);
 
-        if (docs[command]) {
-          print(docs[command]);
+        if (command === 'man' || command === 'help' || command === 'man l0g' || command === 'man terminal') {
+          printMan();
           return;
         }
-
+        if (command === 'ls') {
+          printLs();
+          return;
+        }
+        if (command === 'cat manifeste') {
+          printManifesto();
+          return;
+        }
+        if (command === 'risk today') {
+          printRiskToday();
+          return;
+        }
+        if (/^risk diff (1d|7d|30d)$/.test(command)) {
+          printRiskDiff(command.replace('risk diff ', ''));
+          return;
+        }
+        if (command === 'source debt') {
+          printDebtSources();
+          return;
+        }
+        if (command === 'claim uranium enrichment' || command === 'claim uranium') {
+          printUraniumClaim();
+          return;
+        }
+        if (/^replay \d{4}-\d{2}-\d{2}$/.test(command)) {
+          printReplay(command.replace('replay ', ''));
+          return;
+        }
+        if (command === 'guide treasuries') {
+          printTreasuriesGuide();
+          return;
+        }
+        if (command === 'opacity private-credit' || command === 'opacity private credit') {
+          printPrivateCredit();
+          return;
+        }
+        if (command === 'scenario hormuz') {
+          printHormuzScenario();
+          return;
+        }
+        if (command === 'mcp tools') {
+          printMcpTools();
+          return;
+        }
+        if (command === 'curl risk') {
+          printCurlRisk();
+          return;
+        }
+        if (command === 'whoami') {
+          printWhoami();
+          return;
+        }
         if (command.indexOf('open ') === 0) {
           var target = command.replace(/^open\s+/, '').trim();
           var href = routes[target];
-          if (href) {
-            print(['open <a href="' + href + '">' + escapeText(href) + '</a>']);
-            window.location.href = href;
+          if (safeHref(href)) {
+            linkLine('open ' + href, href, 'navigation interne allowlistée');
+            window.setTimeout(function () {
+              window.location.assign(href);
+            }, 120);
           } else {
-            printText(['cible inconnue : ' + target, 'essayez : open manifeste · open dashboards · open backtests · open api']);
+            textLine('cible inconnue : ' + target, 'out error');
+            textLine('cibles : ' + Object.keys(routes).join(', '), 'out muted');
           }
           return;
         }
 
-        printText(['commande inconnue : ' + command, 'help']);
+        textLine('commande inconnue : ' + command, 'out error');
+        textLine('essayez : man · risk today · risk diff 7d · mcp tools', 'out muted');
+      }
+
+      function remember(command) {
+        if (!command) return;
+        if (history[history.length - 1] !== command) {
+          history.push(command);
+          if (history.length > MAX_HISTORY) history.shift();
+        }
+        historyIndex = history.length;
       }
 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        run(input.value);
+        var command = input.value;
+        remember(normalize(command));
+        run(command);
         input.value = '';
-        screen.scrollTop = screen.scrollHeight;
+        scrollToEnd();
+      });
+
+      input.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (history.length) {
+            historyIndex = Math.max(0, historyIndex - 1);
+            input.value = history[historyIndex] || '';
+          }
+        } else if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          if (history.length) {
+            historyIndex = Math.min(history.length, historyIndex + 1);
+            input.value = history[historyIndex] || '';
+          }
+        } else if (event.key === 'Tab') {
+          event.preventDefault();
+          var current = normalize(input.value);
+          var matches = suggestions.filter(function (item) { return item.indexOf(current) === 0; });
+          if (matches.length === 1) {
+            input.value = matches[0];
+          } else if (matches.length > 1 && current) {
+            textLine(matches.slice(0, 8).join(' · '), 'out muted');
+            scrollToEnd();
+          }
+        } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'l') {
+          event.preventDefault();
+          run('clear');
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        var target = event.target;
+        var tag = target && target.tagName ? target.tagName.toLowerCase() : '';
+        if (event.key === '/' && tag !== 'input' && tag !== 'textarea' && tag !== 'select') {
+          event.preventDefault();
+          input.focus();
+        }
+      });
+
+      shell.addEventListener('click', function () {
+        input.focus();
       });
 
       document.querySelectorAll('[data-command]').forEach(function (button) {
         button.addEventListener('click', function () {
           var command = button.getAttribute('data-command') || '';
           input.value = command;
+          remember(normalize(command));
           run(command);
           input.value = '';
-          screen.scrollTop = screen.scrollHeight;
+          scrollToEnd();
           input.focus();
         });
       });
+
+      window.setTimeout(function () {
+        input.focus();
+      }, 80);
     })();
   </script>
 
   <style>
     .terminal-page {
-      max-width: 64rem;
+      max-width: 72rem;
     }
 
     .terminal-shell {
@@ -329,7 +785,7 @@ const jsonLd = {
     }
 
     .terminal-screen {
-      height: clamp(21rem, 58vh, 30rem);
+      height: clamp(24rem, 58vh, 34rem);
       overflow: auto;
       padding: 1.1rem 1.2rem;
       font-size: clamp(0.82rem, 2vw, 0.98rem);
@@ -341,20 +797,40 @@ const jsonLd = {
       overflow-wrap: anywhere;
     }
 
-    .terminal-screen p + p { margin-top: 0.35rem; }
+    .terminal-screen p + p,
+    .terminal-screen pre + p,
+    .terminal-screen p + pre { margin-top: 0.35rem; }
+
     .terminal-screen a {
       color: var(--color-signal);
       text-decoration: underline;
       text-decoration-color: color-mix(in srgb, var(--color-signal) 38%, transparent);
       text-underline-offset: 3px;
     }
+
     .terminal-screen a:hover { text-decoration-color: var(--color-signal); }
+
+    .terminal-pre {
+      margin: 0.15rem 0 0.45rem;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.18;
+      overflow-x: auto;
+      white-space: pre;
+    }
 
     .prompt { color: var(--color-signal); }
     .cmd { color: var(--color-bright); }
     .out { color: var(--color-paper); }
     .out.muted,
     .muted { color: var(--color-muted); }
+    .out.error { color: var(--color-accent); }
+    .section-title {
+      margin-top: 0.8rem;
+      color: var(--color-bright);
+      font-weight: 700;
+    }
 
     .terminal-input {
       display: grid;
@@ -413,11 +889,30 @@ const jsonLd = {
       padding: 0.25rem 0.62rem;
     }
 
+    .terminal-man,
     .terminal-links {
       margin-top: 3rem;
     }
 
-    .terminal-grid {
+    .terminal-man h1 {
+      max-width: 46rem;
+      margin-top: 0.7rem;
+      color: var(--color-paper);
+      font-size: clamp(2rem, 6vw, 4.6rem);
+      line-height: 0.95;
+    }
+
+    .terminal-lede {
+      max-width: 56rem;
+      margin-top: 1rem;
+      color: var(--color-muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .man-grid,
+    .terminal-grid,
+    .man-ops {
       display: grid;
       grid-template-columns: 1fr;
       gap: 0.75rem;
@@ -425,15 +920,53 @@ const jsonLd = {
     }
 
     @media (min-width: 720px) {
+      .man-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .terminal-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .man-ops { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
+    .man-command,
+    .man-ops section,
     .terminal-grid a {
-      min-height: 6.4rem;
       border: 1px solid var(--color-line);
       border-radius: 8px;
       padding: 0.9rem;
       background: color-mix(in srgb, var(--color-surface) 38%, transparent);
+    }
+
+    .man-command {
+      min-height: 7.2rem;
+    }
+
+    .man-command code {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      overflow-wrap: anywhere;
+    }
+
+    .man-command p,
+    .man-ops p {
+      margin-top: 0.8rem;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .man-ops h2 {
+      color: var(--color-paper);
+      font-size: 1rem;
+    }
+
+    .man-ops a {
+      color: var(--color-signal);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--color-signal) 38%, transparent);
+      text-underline-offset: 3px;
+    }
+
+    .terminal-grid a {
+      min-height: 6.4rem;
       transition: border-color 0.16s, background 0.16s, transform 0.16s;
     }
 
@@ -467,6 +1000,9 @@ const jsonLd = {
       }
       .terminal-input label {
         grid-column: 1 / -1;
+      }
+      .terminal-man h1 {
+        font-size: 2.4rem;
       }
     }
 
