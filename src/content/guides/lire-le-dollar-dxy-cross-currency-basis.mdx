@@ -1,0 +1,120 @@
+---
+title: "Lire le dollar : DXY, cross-currency basis et la dette dollar offshore"
+description: "Guide de référence sur le dollar comme monnaie de financement mondiale : ce que mesure vraiment le DXY et pourquoi son panier est biaisé, l'indice large de la Fed comme meilleure boussole, la parité couverte des taux et sa rupture depuis 2008, le cross-currency basis comme prix caché du dollar et thermomètre du stress de financement, le FX swap comme repo hors bilan, la dette dollar « manquante » estimée par la BIS, les lignes de swap de la Fed comme filet offshore, et la distinction décisive entre dollar de réserve et dollar de financement. Avec le régime de 2026 en illustration."
+summary: "Le dollar ne se lit pas à un seul chiffre. Le DXY donne un cours, mais son panier suragrège l'euro et ignore la Chine ; l'indice large de la Fed corrige ce biais. Surtout, l'essentiel du dollar est ailleurs : dans une couche offshore où les non-Américains empruntent en dollars via des FX swaps, un financement hors bilan dont la BIS estime la dette « manquante » à des dizaines de milliers de milliards. Le cross-currency basis en est le thermomètre, les lignes de swap de la Fed le filet. Le lire suppose de séparer le dollar de réserve du dollar de financement."
+pubDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "dollar", "liquidité", "banques centrales"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*On parle du dollar comme d'un cours, celui du DXY, alors qu'il est d'abord une plomberie. Des milliers de milliards de dollars sont empruntés hors des États-Unis, par des acteurs qui n'en gagnent pas, via des instruments qui n'apparaissent sur aucun bilan. Ce guide reprend le dollar de bout en bout : ce que le DXY mesure et ce qu'il masque, pourquoi la parité des taux ne tient plus, comment lire le cross-currency basis, et où se cache la vraie dette dollar. L'année 2026, où un dollar mou au comptant coexiste avec un financement sous tension, sert d'illustration.*
+
+## Le DXY, un thermomètre biaisé
+
+Le [DXY](/glossaire/dxy/), ou U.S. Dollar Index, est l'indice le plus cité pour juger de la « force » du dollar. C'est un panier de six devises, dont les pondérations n'ont pas bougé depuis le lancement de l'euro en 1999, avec une base 1973 = 100. Le problème tient à sa composition : l'euro y pèse à lui seul près de **57,6 %**, le yen **13,6 %**, la livre **11,9 %**, le reste se partageant entre dollar canadien, couronne suédoise et franc suisse. Le DXY n'est donc pas un thermomètre du dollar contre le monde, mais surtout du dollar contre l'Europe.
+
+Ce qu'il ignore compte autant que ce qu'il contient. Aucune place pour le yuan chinois, le peso mexicain ou le won coréen, alors que ces économies figurent parmi les premiers partenaires commerciaux des États-Unis. Pour une lecture non déformée, la Réserve fédérale publie un indice large pondéré par les échanges, le Broad Trade-Weighted Dollar Index, qui inclut la Chine, le Mexique et une vingtaine d'autres partenaires. Il n'est pas rare que le DXY et l'indice large racontent des histoires différentes : un dollar peut reculer face à l'euro et au yen tout en restant ferme face aux devises émergentes. Lire le seul DXY, c'est regarder le dollar par le petit bout de la lorgnette.
+
+<InfographicBars
+  title="Ce que pèse le DXY, et ce qu'il oublie"
+  subtitle="Pondérations du panier du U.S. Dollar Index, en %. Inchangées depuis 1999."
+  max={58}
+  items={[
+    { label: "Euro", value: 57.6, valueLabel: "57,6 %", tone: "signal" },
+    { label: "Yen japonais", value: 13.6, valueLabel: "13,6 %", tone: "blue" },
+    { label: "Livre sterling", value: 11.9, valueLabel: "11,9 %", tone: "amber" },
+    { label: "Dollar canadien, couronne, franc suisse", value: 16.9, valueLabel: "16,9 %", tone: "muted" },
+  ]}
+  note="Absents du panier : yuan, peso mexicain, won, real… soit une grande partie du commerce réel des États-Unis."
+  source="Source : ICE U.S. Dollar Index (composition du panier)."
+  caption="Le DXY est d'abord un indice euro contre dollar déguisé : l'euro y pèse près de 58 %. Il ignore la Chine et le Mexique. Pour le dollar « contre le monde », l'indice large de la Fed est plus fidèle. Source : ICE."
+/>
+
+## La parité des taux et sa rupture
+
+Sous le cours de change se joue une mécanique plus profonde, celle du financement. En théorie, se procurer des dollars directement ou en synthétique, via un emprunt dans sa devise puis un échange contre dollars, devrait coûter exactement la même chose : c'est la [parité couverte des taux](/glossaire/cip/), un arbitrage qui devrait effacer tout écart. Si un investisseur japonais couvre un placement en dollars, la couverture devrait lui coûter précisément le différentiel de taux entre le yen et le dollar, ni plus ni moins.
+
+Depuis 2008, cette parité ne tient plus. Le coût réel de la couverture s'écarte du différentiel de taux, et ce résidu, qui ne devrait pas exister, est le [cross-currency basis](/glossaire/cross-currency-basis/). Deux raisons à cette rupture. D'une part, la réglementation d'après-crise a rendu coûteux pour les banques d'immobiliser du bilan pour arbitrer, ce sont les limites à l'arbitrage. D'autre part, la demande structurelle de dollars, de la part d'investisseurs japonais et européens qui achètent des actifs américains et couvrent leur risque de change, pousse dans un seul sens. L'arbitrage ne compense plus, l'écart persiste.
+
+## Le cross-currency basis, prix caché du dollar
+
+Le basis est devenu le meilleur thermomètre du stress de financement en dollar. Il est négatif et persistant depuis 2008, ce qui signifie que se procurer des dollars en synthétique coûte une prime : le dollar est structurellement « cher » à financer hors des États-Unis. Quand cette prime se creuse, c'est que la ruée sur le dollar s'intensifie ; quand elle se détend, que la tension reflue. Comme pour le [repo onshore](/guides/lire-le-marche-du-repo-sofr/), le basis se dégrade aux dates de bilan, fin de trimestre et surtout fin d'année, quand les banques réduisent leur offre de dollars.
+
+L'ampleur du marché sous-jacent a explosé. Au premier trimestre 2026, les volumes de cross-currency swaps ont atteint un [record de 3 600 milliards de dollars de notionnel](https://www.clarusft.com/q1-2026-cross-currency-swap-volumes-and-market-shares/), en hausse de 36 % sur un an, avec un mois de mars à 1 560 milliards, le plus fort jamais mesuré. Ce n'est pas un marché de niche : c'est l'artère par laquelle le monde se finance en dollars, et son basis dit à chaque instant si le sang circule ou se coagule.
+
+## Le FX swap, un repo hors bilan
+
+Pour comprendre le risque, il faut voir ce qu'est vraiment un [FX swap](/glossaire/swap-de-change/) : un échange de devises au comptant assorti de l'opération inverse à terme. Économiquement, c'est un prêt garanti, l'équivalent d'un [repo](/guides/lire-le-marche-du-repo-sofr/) avec une devise en collatéral. Mais à une différence comptable décisive : le repo apparaît au bilan comme une dette, le FX swap non. L'obligation de rembourser des dollars à terme est un engagement bien réel, mais elle est logée hors bilan, dans les annexes, invisible aux statistiques de dette classiques.
+
+C'est cette invisibilité qui en fait un danger. Un acteur qui se finance en dollars par FX swap doit renouveler son financement à échéance, souvent très courte. Tant que le marché fonctionne, le rouleau tourne sans heurt. Le jour où la liquidité dollar se raréfie, comme en mars 2020, tous doivent renouveler en même temps une dette qu'aucun bilan ne montrait, et la ruée sur le dollar s'auto-alimente.
+
+## La dette dollar « manquante »
+
+La Banque des règlements internationaux a chiffré ce trou. Les obligations de payer des dollars nichées dans les FX swaps, forwards et currency swaps [dépassent 80 000 milliards de dollars de notionnel](https://www.bis.org/publ/qtrpdf/r_qt2212h.htm), un montant qui excède à lui seul les encours combinés de bons du Trésor, de repo et de billets de trésorerie en dollars. L'essentiel est très court terme, ce qui démultiplie les besoins de renouvellement. La BIS estime que les non-banques hors des États-Unis portent à elles seules près de **25 000 milliards** de cette dette cachée, contre 17 000 milliards en 2016, et les banques non américaines davantage encore.
+
+<InfographicBars
+  title="La plus grosse dette dollar est celle qu'on ne voit pas"
+  subtitle="Dette dollar hors des États-Unis, on-bilan et hors bilan, en milliers de milliards de dollars."
+  max={35}
+  items={[
+    { label: "Obligations FX swap des banques non-US (hors bilan)", value: 35, valueLabel: "~35 000 Md$", tone: "signal" },
+    { label: "Obligations FX swap des non-banques hors US (hors bilan)", value: 25, valueLabel: "~25 000 Md$", tone: "amber" },
+    { label: "Crédit dollar on-bilan aux non-banques hors US", value: 14.3, valueLabel: "14 300 Md$", tone: "muted" },
+  ]}
+  note="Total des obligations FX swap à payer en dollars : plus de 80 000 milliards de notionnel."
+  source="Sources : BIS (dette dollar dans les FX swaps et forwards), statistiques bancaires BIS."
+  caption="La dette dollar visible au bilan est dépassée, et de loin, par les engagements hors bilan des FX swaps. C'est la partie immergée qui alimente les ruées sur le dollar. Source : BIS."
+/>
+
+## Les lignes de swap de la Fed, le filet offshore
+
+Face à ce risque, la Réserve fédérale dispose d'un filet, symétrique de la [facilité permanente de pension](/guides/lire-le-marche-du-repo-sofr/) qui plafonne le stress onshore. Ce sont les [lignes de swap de banque centrale](/glossaire/ligne-de-swap/) : la Fed prête des dollars à un réseau de banques centrales étrangères, la BCE, la Banque du Japon, la Banque d'Angleterre et d'autres, qui les reprêtent à leurs propres banques. Le dollar irrigue ainsi l'offshore sans que la Fed traite avec des contreparties étrangères directes.
+
+Ces lignes ont été activées massivement en 2008 puis en mars 2020, où elles ont dépassé 400 milliards de dollars et cassé net la ruée sur le billet vert. Leur usage, visible chaque semaine à l'actif du [bilan de la Fed](/guides/lire-h41-bilan-fed/), est un signal de dernier recours : quand il grimpe, c'est que le financement offshore s'est grippé au point de nécessiter l'intervention de la banque centrale émettrice. Le suivre, c'est guetter le moment où la plomberie casse.
+
+## Réserve ou financement : lire la dé-dollarisation
+
+De tout cela découle la distinction la plus mal comprise du débat sur le dollar. Le dollar est à la fois une monnaie de réserve, celle que les banques centrales stockent, et une monnaie de financement, celle dans laquelle le monde emprunte et facture. Or ces deux rôles ne déclinent pas au même rythme. La part du dollar dans les réserves de change, mesurée par le [COFER](/glossaire/cofer/) du FMI, s'érode lentement, autour de 58 % en 2025 contre près de 70 % en 2000. Mais sa domination comme monnaie de financement, elle, ne bouge quasiment pas : le dollar reste présent dans près de 88 % des transactions de change mondiales.
+
+<InfographicBars
+  title="Deux dollars, deux vitesses de déclin"
+  subtitle="Part du dollar selon la fonction considérée, ordres de grandeur récents, en %."
+  max={90}
+  items={[
+    { label: "Transactions de change (une jambe sur deux)", value: 88, valueLabel: "~88 %", tone: "signal" },
+    { label: "Réserves de change officielles (COFER)", value: 58, valueLabel: "~58 %", tone: "amber" },
+  ]}
+  note="La dé-dollarisation touche surtout la réserve, très peu le financement."
+  source="Sources : BIS (enquête triennale sur les changes), FMI (COFER)."
+  caption="Le dollar recule comme monnaie de réserve, pas comme monnaie de financement, où il reste incontournable. Confondre les deux, c'est surestimer la dé-dollarisation. Sources : BIS, FMI."
+/>
+
+C'est pourquoi la [dé-dollarisation](/glossaire/dedollarisation/) est réelle mais partielle, un point que nous détaillons dans notre analyse du [récit face aux chiffres](/posts/dedollarisation-recit-vs-chiffres/). Les banques centrales diversifient leurs réserves, notamment vers l'[or](/posts/or-banques-centrales-dedollarisation-tonnes/), mais tant que la dette mondiale se libelle en dollars, la demande de financement en dollars demeure, et avec elle la vulnérabilité aux ruées que le basis mesure.
+
+## 2026 : dollar mou au comptant, financement sous tension
+
+Le régime de 2026 illustre parfaitement pourquoi il faut lire plusieurs cadrans. Au comptant, le dollar est plutôt faible : le [DXY évolue autour de 101](https://tradingeconomics.com/united-states/currency), près d'un plus bas de trois semaines après sa plus forte baisse hebdomadaire depuis avril. Un observateur qui ne regarde que ce chiffre conclut à un dollar sur le reflux. Pourtant, au même moment, les volumes de financement en dollars battent des records et le basis subit des pressions d'écartement, signe que la demande de dollars synthétiques reste vive. Un dollar peut baisser en cours tout en restant tendu à financer : le niveau et le stress sont deux dimensions distinctes, et les confondre, c'est manquer l'essentiel.
+
+Ce découplage est le même que celui qui joue dans le [carry trade sur le yen](/glossaire/yen-carry/), où un yen faible et une volatilité basse entretiennent l'emprunt en yen jusqu'au retournement, sujet traité dans notre analyse du [risque d'intervention sur le dollar-yen](/posts/dollar-yen-intervention-risque-carry-2026/). Là encore, la surface calme masque une plomberie tendue.
+
+## Lire le dollar en pratique
+
+Bien lu, le dollar n'est pas un cours mais un système à plusieurs étages. Le DXY donne l'humeur du marché face à l'Europe, à lire avec ses biais ; l'indice large de la Fed donne le dollar contre le monde réel. Le cross-currency basis donne le prix caché du financement en dollar et son degré de tension. La dette dollar hors bilan estimée par la BIS donne la taille du risque de renouvellement. Les lignes de swap de la Fed disent quand le filet se déploie. Et la distinction entre part de réserve et part de financement dit ce que la dé-dollarisation change vraiment, et ce qu'elle ne change pas.
+
+Ce cadre est le pendant offshore de la plomberie onshore décrite dans nos guides sur le [repo et le SOFR](/guides/lire-le-marche-du-repo-sofr/) et sur la [liquidité du système](/guides/liquidite-tresor-dts-tga-rrp/), et il éclaire la couche internationale du billet vert analysée dans notre article sur les [eurodollars](/posts/eurodollars-dollar-offshore-dette-cachee/) et le [prix caché du dollar](/posts/cross-currency-basis-prix-cache-dollar/). Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions, et le [calendrier économique](/calendrier-eco/) recense les rendez-vous à surveiller.
+
+---
+
+**Sources principales :**
+
+- [BIS, « Dollar debt in FX swaps and forwards: huge, missing and growing »](https://www.bis.org/publ/qtrpdf/r_qt2212h.htm) : obligations FX swap dépassant 80 000 milliards de dollars de notionnel, dette « manquante » d'environ 25 000 milliards pour les non-banques hors US (17 000 en 2016), risque de renouvellement.
+- [ClarusFT, « Q1 2026 cross-currency swap volumes and market shares »](https://www.clarusft.com/q1-2026-cross-currency-swap-volumes-and-market-shares/) : record de 3 600 milliards de dollars de notionnel au T1 2026 (+36 % sur un an), mars 2026 à 1 560 milliards.
+- [ICE, U.S. Dollar Index](https://www.ice.com/products/13/US-Dollar-Index-Futures) : composition et pondérations du panier DXY (euro 57,6 %, yen 13,6 %, livre 11,9 %), panier inchangé depuis 1999.
+- [Federal Reserve, indices du dollar pondérés par les échanges](https://www.federalreserve.gov/releases/h10/summary/) : indice large incluant la Chine, le Mexique et les partenaires commerciaux, boussole plus fidèle que le DXY.
+- [Federal Reserve, lignes de swap de liquidité en dollars des banques centrales](https://www.federalreserve.gov/monetarypolicy/central-bank-liquidity-swaps.htm) : mécanique du filet offshore, activations de 2008 et mars 2020.
+- [FMI, base COFER sur la composition des réserves de change](https://data.imf.org/regular.aspx?key=41175) : part du dollar dans les réserves officielles, environ 58 % en 2025.
+- [BIS, enquête triennale sur les marchés des changes](https://www.bis.org/statistics/rpfx22.htm) : présence du dollar dans près de 88 % des transactions de change mondiales, domination comme monnaie de financement.
+- [TradingEconomics, U.S. Dollar Index (DXY)](https://tradingeconomics.com/united-states/currency) : niveau du DXY autour de 101 début juillet 2026.
