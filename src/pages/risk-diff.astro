@@ -1,0 +1,444 @@
+---
+import { getCollection } from 'astro:content';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
+import { buildRiskDiffSurface } from '../lib/risk-diff.ts';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+
+function readRiskSnapshot() {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), 'public/risk.json'), 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
+function fr(value?: string | null) {
+  if (!value) return 'n/a';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'n/a';
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+function signed(value: number | null) {
+  if (value == null) return 'n/a';
+  return `${value > 0 ? '+' : ''}${value.toFixed(1)}`;
+}
+
+const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
+const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
+const diff = buildRiskDiffSurface(posts, guides, readRiskSnapshot());
+const selected = diff.windows.find((window) => window.window === '7d') ?? diff.windows[0];
+
+const trustItems = [
+  { label: 'signaux point-in-time', href: '/api/v1/signals/history.json' },
+  { label: 'claims sourcées', href: '/api/v1/claims.json' },
+  { label: 'changefeed public', href: '/api/v1/changes.json' },
+  { label: 'json machine', href: '/api/v1/risk-diff.json' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${site}/risk-diff/#dataset`,
+  name: 'Risk Diff l0g',
+  description:
+    'Diff public du risque l0g : mouvements de signaux, fraîcheur des sources, claims, articles, méthodes et limites de confiance.',
+  url: `${site}/risk-diff/`,
+  inLanguage: 'fr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  isAccessibleForFree: true,
+  creator: { '@id': `${site}/#org` },
+  temporalCoverage: `${selected.since}/${selected.until}`,
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${site}/api/v1/risk-diff.json`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Risk Diff"
+  description="Risk Diff l0g : ce qui a changé dans le risque depuis hier, 7 jours et 30 jours, en reliant signaux, sources, claims, articles et méthodes."
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <article class="risk-diff rise" data-pagefind-body>
+    <section class="rd-hero" data-pagefind-ignore>
+      <p class="mono-label glow">// risk diff</p>
+      <h1 class="rd-title font-display glow">Le mouvement de la connaissance du risque.</h1>
+      <p class="rd-lede">
+        Une lecture compacte de ce qui a changé depuis hier, 7 jours et 30 jours :
+        signaux, sources, claims, modèles, articles reliés et confiance. La page ne
+        fabrique pas de diff quand l’historique public manque ; elle le signale.
+      </p>
+      <TrustBar items={trustItems} />
+      <div class="rd-links">
+        <a href="/api/v1/risk-diff.json">JSON</a>
+        <a href="/api/v1/signals/history.json">signaux</a>
+        <a href="/api/v1/claims.json">claims</a>
+        <a href="/api/v1/changes.json">changefeed</a>
+      </div>
+    </section>
+
+    <section class="rd-grid" aria-label="Fenêtres Risk Diff">
+      {diff.windows.map((window) => (
+        <article class="rd-card">
+          <div class="rd-card-head">
+            <span class="mono-label">{window.window}</span>
+            <strong>{window.confidence.label}</strong>
+          </div>
+          <h2>{window.label}</h2>
+          <p>
+            <time datetime={window.since}>{fr(window.since)}</time>
+            <span> → </span>
+            <time datetime={window.until}>{fr(window.until)}</time>
+          </p>
+          <div class="rd-metrics">
+            <span><b>{window.signalMoves.rising.length}</b> montent</span>
+            <span><b>{window.signalMoves.falling.length}</b> baissent</span>
+            <span><b>{window.sources.newData.length}</b> sources fraîches</span>
+            <span><b>{window.claims.counts.added}</b> claims</span>
+          </div>
+          <div class="rd-confidence">
+            <span style={`width:${window.confidence.score}%`}></span>
+          </div>
+          <em>confiance {window.confidence.score}/100</em>
+        </article>
+      ))}
+    </section>
+
+    <section class="rd-section">
+      <p class="mono-label glow">// signaux qui montent</p>
+      <div class="rd-list">
+        {selected.signalMoves.rising.length ? selected.signalMoves.rising.map((move) => (
+          <a class="rd-row up" href={move.methodology ?? move.source ?? '/methodologie/'}>
+            <span>{move.label}</span>
+            <strong>{signed(move.delta)}</strong>
+            <em>{move.baseline?.level ?? 'n/a'} → {move.current?.level ?? 'n/a'}</em>
+          </a>
+        )) : <p class="rd-empty">Aucun signal en hausse avec baseline exploitable sur la fenêtre 7 jours.</p>}
+      </div>
+    </section>
+
+    <section class="rd-section">
+      <p class="mono-label glow">// signaux qui baissent</p>
+      <div class="rd-list">
+        {selected.signalMoves.falling.length ? selected.signalMoves.falling.map((move) => (
+          <a class="rd-row down" href={move.methodology ?? move.source ?? '/methodologie/'}>
+            <span>{move.label}</span>
+            <strong>{signed(move.delta)}</strong>
+            <em>{move.baseline?.level ?? 'n/a'} → {move.current?.level ?? 'n/a'}</em>
+          </a>
+        )) : <p class="rd-empty">Aucun signal en baisse avec baseline exploitable sur la fenêtre 7 jours.</p>}
+      </div>
+    </section>
+
+    <section class="rd-split">
+      <div class="rd-panel">
+        <p class="mono-label glow">// nouvelles données intégrées</p>
+        <ul>
+          {selected.sources.newData.length ? selected.sources.newData.map((source) => (
+            <li>
+              <strong>{source.name}</strong>
+              <span>{source.metrics ?? 'n/a'} métrique(s), latestDate {source.latestDate ? fr(source.latestDate) : 'n/a'}</span>
+            </li>
+          )) : <li>Aucune source Debt Risk datée dans la fenêtre 7 jours.</li>}
+        </ul>
+      </div>
+      <div class="rd-panel">
+        <p class="mono-label glow">// sources stale</p>
+        <ul>
+          {selected.sources.stale.length ? selected.sources.stale.map((source) => (
+            <li>
+              <strong>{source.name}</strong>
+              <span>{source.latestDate ? `${source.ageDays} jours` : 'date absente'}</span>
+            </li>
+          )) : <li>Aucune source Debt Risk marquée stale selon la règle publiée.</li>}
+          {selected.sources.futureDated.length ? (
+            <li>
+              <strong>Horizons de projection exclus</strong>
+              <span>{selected.sources.futureDated.map((source) => source.name).join(', ')}</span>
+            </li>
+          ) : null}
+        </ul>
+      </div>
+    </section>
+
+    <section class="rd-split">
+      <div class="rd-panel">
+        <p class="mono-label glow">// claims ajoutées</p>
+        <ul>
+          {selected.claims.added.length ? selected.claims.added.slice(0, 8).map((claim) => (
+            <li>
+              <a href={claim.articleUrl}>{claim.articleTitle}</a>
+              <span>{claim.kind} · {claim.dateLabel}</span>
+            </li>
+          )) : <li>Aucune claim ajoutée détectée sur la fenêtre 7 jours.</li>}
+        </ul>
+      </div>
+      <div class="rd-panel">
+        <p class="mono-label glow">// claims corrigées</p>
+        <ul>
+          {selected.claims.corrected.length ? selected.claims.corrected.slice(0, 8).map((claim) => (
+            <li>
+              <strong>{claim.claimId}</strong>
+              <span>{claim.kind} · {fr(claim.reviewedAt)}</span>
+            </li>
+          )) : <li>Aucune correction explicite détectée sur la fenêtre 7 jours.</li>}
+          {selected.claims.counts.reviewedInWindow ? (
+            <li>
+              <strong>{selected.claims.counts.reviewedInWindow} claim(s) relue(s)</strong>
+              <span>revue qualité comptée séparément des corrections déclarées</span>
+            </li>
+          ) : null}
+        </ul>
+      </div>
+    </section>
+
+    <section class="rd-split">
+      <div class="rd-panel">
+        <p class="mono-label glow">// modèles modifiés</p>
+        <ul>
+          {selected.models.modified.length ? selected.models.modified.map((model) => (
+            <li>
+              <a href={model.url}>{model.title}</a>
+              <span>{model.summary}</span>
+            </li>
+          )) : <li>{selected.models.caveat}</li>}
+        </ul>
+      </div>
+      <div class="rd-panel">
+        <p class="mono-label glow">// articles reliés</p>
+        <ul>
+          {selected.articles.length ? selected.articles.map((article) => (
+            <li>
+              <a href={article.url}>{article.title}</a>
+              <span>{article.type} · {fr(article.date)}</span>
+            </li>
+          )) : <li>Aucun article publié ou révisé sur la fenêtre 7 jours.</li>}
+        </ul>
+      </div>
+    </section>
+
+    <section class="rd-section rd-note">
+      <p class="mono-label glow">// limites affichées</p>
+      <ul>
+        {diff.limitations.map((limit) => <li>{limit}</li>)}
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .risk-diff {
+    max-width: 1120px;
+  }
+
+  .rd-hero {
+    padding: 2rem 0 1rem;
+  }
+
+  .rd-title {
+    margin-top: .8rem;
+    max-width: 900px;
+    font-size: clamp(2.2rem, 6vw, 4.8rem);
+    line-height: .96;
+    letter-spacing: 0;
+  }
+
+  .rd-lede {
+    margin-top: 1.2rem;
+    max-width: 760px;
+    color: var(--color-paper);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .rd-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 1rem;
+  }
+
+  .rd-links a,
+  .rd-row,
+  .rd-card,
+  .rd-panel {
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-surface) 64%, transparent);
+  }
+
+  .rd-links a {
+    padding: .45rem .65rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .rd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .rd-card {
+    padding: 1rem;
+  }
+
+  .rd-card-head,
+  .rd-metrics,
+  .rd-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .8rem;
+  }
+
+  .rd-card-head strong {
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    text-transform: uppercase;
+  }
+
+  .rd-card h2 {
+    margin: .8rem 0 .2rem;
+    color: var(--color-bright);
+    font-size: 1.15rem;
+  }
+
+  .rd-card p,
+  .rd-card em,
+  .rd-empty,
+  .rd-panel span,
+  .rd-note li {
+    color: var(--color-muted);
+  }
+
+  .rd-metrics {
+    flex-wrap: wrap;
+    margin-top: .9rem;
+    justify-content: flex-start;
+  }
+
+  .rd-metrics span {
+    min-width: 7.5rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: .75rem;
+  }
+
+  .rd-metrics b {
+    color: var(--color-signal);
+  }
+
+  .rd-confidence {
+    height: 4px;
+    margin-top: 1rem;
+    background: var(--color-surface-2);
+    overflow: hidden;
+  }
+
+  .rd-confidence span {
+    display: block;
+    height: 100%;
+    background: var(--color-signal);
+  }
+
+  .rd-section,
+  .rd-split {
+    margin-top: 2.2rem;
+  }
+
+  .rd-list {
+    display: grid;
+    gap: .65rem;
+    margin-top: .8rem;
+  }
+
+  .rd-row {
+    min-height: 3.6rem;
+    padding: .8rem 1rem;
+    text-decoration: none;
+  }
+
+  .rd-row span,
+  .rd-panel strong,
+  .rd-panel a {
+    color: var(--color-bright);
+  }
+
+  .rd-row strong {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+  }
+
+  .rd-row.down strong {
+    color: var(--color-accent);
+  }
+
+  .rd-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .rd-panel {
+    padding: 1rem;
+  }
+
+  .rd-panel ul,
+  .rd-note ul {
+    margin: .8rem 0 0;
+    padding-left: 1.1rem;
+  }
+
+  .rd-panel li {
+    margin-top: .55rem;
+  }
+
+  .rd-panel span {
+    display: block;
+    margin-top: .15rem;
+    font-size: .88rem;
+  }
+
+  .rd-note {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.2rem;
+  }
+
+  @media (max-width: 860px) {
+    .rd-grid,
+    .rd-split {
+      grid-template-columns: 1fr;
+    }
+
+    .rd-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

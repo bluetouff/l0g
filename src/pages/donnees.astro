@@ -55,6 +55,14 @@ const events = readJSON<{ updated?: string; events?: unknown[] }>('public/risk-e
 
 const datasets = [
   {
+    label: 'risk-diff.json',
+    href: '/api/v1/risk-diff.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: '1 / 7 / 30 jours',
+    role: 'Diff du risque : signaux qui montent ou baissent, sources fraîches ou stale, claims, modèles, articles et confiance.',
+  },
+  {
     label: 'risk.json',
     href: '/api/v1/risk.json',
     format: 'JSON',

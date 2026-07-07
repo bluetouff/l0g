@@ -25,6 +25,11 @@ const datasetLd = {
     {
       '@type': 'DataDownload',
       encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/risk-diff.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
       contentUrl: `${ASITE}/api/v1/risk.json`,
     },
     {
@@ -205,6 +210,12 @@ const datasetLd = {
           <code class="ep-path">/api/v1/changes.ndjson</code>
           <span class="ep-type">NDJSON</span>
           <span class="ep-desc">Changefeed en flux ligne à ligne, avec métadonnées de version pour watchers.</span>
+        </a>
+        <a class="ep card" href="/api/v1/risk-diff.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/risk-diff.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Risk Diff : ce qui change dans les signaux, sources, claims, modèles, articles et niveau de confiance.</span>
         </a>
         <a class="ep card" href="/api/v1/catalog.json" target="_blank" rel="noopener" style="--t: var(--color-accent)">
           <span class="ep-method">GET</span>
