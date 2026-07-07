@@ -45,7 +45,7 @@ export const GET: APIRoute = async () => {
     `- [Manifeste l0g](${SITE}/manifeste/): pacte de lecture du projet : sources primaires, code ouvert, auto-hebergement, limites assumees, zero tracker.`
   );
   lines.push(
-    `- [Terminal l0g](${SITE}/terminal/): interface clavier en ligne de commande avec manuel web : man, risk today, risk diff 7d, source debt, claim uranium enrichment, replay par date, guides, scenarios, MCP tools et navigation interne allowlistee.`
+    `- [Terminal l0g](${SITE}/terminal/): interface clavier en ligne de commande avec manuel web : man, risk today, risk regime, risk diff 7d, proof map, freshness check, integrity hash, signal history, source debt, method debt-risk, sources stale, model limits, corrections, replay par date, MCP tools et navigation interne allowlistee.`
   );
   lines.push(
     `- [Statut & intégrité](${SITE}/status/): état public du build statique, des snapshots, des endpoints, du corpus machine et des garanties de tracking.`

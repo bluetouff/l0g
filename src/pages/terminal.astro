@@ -4,16 +4,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const quickCommands = [
   'man',
   'risk today',
+  'risk regime',
   'risk diff 7d',
+  'proof map',
+  'freshness check',
+  'integrity hash',
+  'signal history',
   'source debt',
+  'method debt-risk',
   'claim uranium enrichment',
-  'replay 2026-06-15',
-  'guide treasuries',
-  'opacity private-credit',
-  'scenario hormuz',
+  'sources stale',
   'mcp tools',
-  'curl risk',
-  'ls',
 ];
 
 const manualCommands = [
@@ -26,16 +27,52 @@ const manualCommands = [
     role: 'snapshot public du risque, endpoints JSON, données et limites de fraîcheur.',
   },
   {
+    command: 'risk regime',
+    role: 'lecture des régimes et seuils : niveau courant, historique, changements de régime et limites de comparaison.',
+  },
+  {
     command: 'risk diff 1d | 7d | 30d',
     role: 'lecture des changements de risque par fenêtre : signaux, sources, claims, modèles, articles, confiance.',
+  },
+  {
+    command: 'proof map',
+    role: 'carte des preuves : claims, evidence graph, protocole éditorial, corrections et artefacts.',
+  },
+  {
+    command: 'freshness check',
+    role: 'fraîcheur du corpus : dates observées, calculées, récupérées, expirées et couverture.',
+  },
+  {
+    command: 'integrity hash',
+    role: 'empreintes, changefeed, Black Box Recorder et statut public des artefacts.',
+  },
+  {
+    command: 'signal history',
+    role: 'historique point-in-time des signaux, CSV, NDJSON, backtests et garde-fous anti look-ahead.',
   },
   {
     command: 'source debt',
     role: 'sources primaires liées à la dette US : Treasury Fiscal Data, TIC, CBO, FRED, méthodologie.',
   },
   {
+    command: 'method debt-risk',
+    role: 'méthode Debt Risk Radar : stress courant, structure CBO, pondérations, couverture et limites.',
+  },
+  {
     command: 'claim uranium enrichment',
     role: 'claims et articles l0g reliés à la chaîne uranium, sans réponse générée côté navigateur.',
+  },
+  {
+    command: 'sources stale',
+    role: 'sources, fraîcheur, limites de publication, statut et surfaces de vérification.',
+  },
+  {
+    command: 'model limits',
+    role: 'rappelle les limites des scores : couverture, incertitude, normalisation, seuils et révisions.',
+  },
+  {
+    command: 'corrections',
+    role: 'journal des corrections, changements de protocole et traçabilité éditoriale.',
   },
   {
     command: 'replay YYYY-MM-DD',
@@ -124,7 +161,7 @@ const jsonLd = {
           <span></span><span></span><span></span>
         </span>
         <span class="terminal-title">bluetouff@l0g:/risk</span>
-        <span class="terminal-status">static · no tracker · allowlist</span>
+        <span class="terminal-status">static · no tracker · strict allowlist</span>
       </header>
 
       <div class="terminal-screen" id="terminal-screen" aria-live="polite" aria-label="Sortie du terminal">
@@ -177,7 +214,7 @@ const jsonLd = {
         <section>
           <h2>Sécurité</h2>
           <p>
-            Aucune commande n’est évaluée. Le parseur accepte un jeu de caractères réduit, borne la longueur,
+            Aucune commande n’est évaluée. Le parseur accepte un jeu de caractères strict, borne la longueur,
             rejette les cibles inconnues et construit toutes les sorties avec <code>textContent</code> ou des
             liens internes définis en dur.
           </p>
@@ -251,7 +288,7 @@ const jsonLd = {
       var MAX_LINES = 180;
       var MAX_HISTORY = 50;
       var MAX_COMMAND_LENGTH = 96;
-      var SAFE_COMMAND = /^[a-z0-9][a-z0-9 ._:/-]{0,95}$/;
+      var SAFE_COMMAND = /^[a-z0-9][a-z0-9 ._-]{0,95}$/;
 
       var routes = Object.freeze({
         about: '/about/',
@@ -266,6 +303,7 @@ const jsonLd = {
         manifeste: '/manifeste/',
         mcp: '/mcp/',
         methodologie: '/methodologie/',
+        'protocole-editorial': '/protocole-editorial/',
         preuves: '/preuves/',
         recherche: '/recherche/',
         'risk-diff': '/risk-diff/',
@@ -281,11 +319,20 @@ const jsonLd = {
         'ls',
         'cat manifeste',
         'risk today',
+        'risk regime',
         'risk diff 1d',
         'risk diff 7d',
         'risk diff 30d',
+        'proof map',
+        'freshness check',
+        'integrity hash',
+        'signal history',
         'source debt',
+        'method debt-risk',
         'claim uranium enrichment',
+        'sources stale',
+        'model limits',
+        'corrections',
         'replay 2026-06-15',
         'guide treasuries',
         'opacity private-credit',
@@ -311,6 +358,17 @@ const jsonLd = {
 
       function safeHref(href) {
         return typeof href === 'string' && href.charAt(0) === '/' && href.indexOf('//') !== 0;
+      }
+
+      function isIsoDate(value) {
+        var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+        if (!match) return false;
+        var year = Number(match[1]);
+        var month = Number(match[2]);
+        var day = Number(match[3]);
+        if (year < 2000 || year > 2100 || month < 1 || month > 12 || day < 1 || day > 31) return false;
+        var date = new Date(Date.UTC(year, month - 1, day));
+        return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
       }
 
       function appendLine(className, writer) {
@@ -395,9 +453,18 @@ const jsonLd = {
         section('NOM', ['l0g-terminal - interface clavier pour explorer les risques publics l0g']);
         section('SYNOPSIS', [
           'risk today',
+          'risk regime',
           'risk diff 1d | 7d | 30d',
+          'proof map',
+          'freshness check',
+          'integrity hash',
+          'signal history',
           'source debt',
+          'method debt-risk',
           'claim uranium enrichment',
+          'sources stale',
+          'model limits',
+          'corrections',
           'replay YYYY-MM-DD',
           'guide treasuries',
           'opacity private-credit',
@@ -452,12 +519,66 @@ const jsonLd = {
         ]);
       }
 
+      function printRiskRegime() {
+        section('RISK REGIME', [
+          'Lit le risque comme un régime daté : niveau, seuils, transitions, historique et confiance, pas comme une vérité instantanée.',
+          { label: '/api/v1/signals/current.json', href: '/api/v1/signals/current.json', detail: 'état courant par instrument' },
+          { label: '/api/v1/signals/history.json', href: '/api/v1/signals/history.json', detail: 'observations et changements de niveau' },
+          { label: '/backtests/', href: '/backtests/', detail: 'lecture point-in-time et limites anti look-ahead' },
+          { label: '/risk-diff/', href: '/risk-diff/', detail: 'mouvement des signaux, sources et modèles' },
+          { label: '/methodologie/', href: '/methodologie/', detail: 'définition des seuils et limites' },
+        ]);
+      }
+
       function printRiskDiff(windowName) {
         section('RISK DIFF ' + windowName.toUpperCase(), [
           'Compare le risque publié par fenêtre, en séparant signaux, sources, claims, modèles, articles et confiance.',
           { label: '/risk-diff/', href: '/risk-diff/', detail: 'page de lecture humaine' },
           { label: '/api/v1/risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'contrat machine 1d, 7d, 30d' },
           { label: '/api/v1/changes.ndjson', href: '/api/v1/changes.ndjson', detail: 'flux de changements' },
+        ]);
+      }
+
+      function printProofMap() {
+        section('PROOF MAP', [
+          'Carte de preuve l0g : un article utile doit relier affirmation, source, méthode, fraîcheur et correction possible.',
+          { label: '/api/v1/claims.json', href: '/api/v1/claims.json', detail: 'claims typées, sourcées et reliées aux articles' },
+          { label: '/api/v1/evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'graphe articles, claims, références, hôtes, sources' },
+          { label: '/protocole-editorial/', href: '/protocole-editorial/', detail: 'niveaux de preuve et chaîne éditoriale' },
+          { label: '/changelog-editorial/', href: '/changelog-editorial/', detail: 'changements de protocole et corrections' },
+          { label: '/preuves/', href: '/preuves/', detail: 'artefacts publics et vérification' },
+        ]);
+      }
+
+      function printFreshnessCheck() {
+        section('FRESHNESS CHECK', [
+          'Distingue publication, observation, récupération, calcul, indexation, expiration et couverture.',
+          { label: '/api/v1/freshness.json', href: '/api/v1/freshness.json', detail: 'fraîcheur du corpus et des signaux' },
+          { label: '/status/', href: '/status/', detail: 'état public du build et des snapshots' },
+          { label: '/donnees/', href: '/donnees/', detail: 'inventaire, cadence, limites de fraîcheur' },
+          { label: '/api/v1/sources.json', href: '/api/v1/sources.json', detail: 'registre sources et hôtes cités' },
+        ]);
+      }
+
+      function printIntegrityHash() {
+        section('INTEGRITY HASH', [
+          'Suit les empreintes et les changements publiés pour savoir si une surface a bougé.',
+          { label: '/api/v1/integrity.json', href: '/api/v1/integrity.json', detail: 'hashes SHA-256 canoniques des surfaces agents' },
+          { label: '/api/v1/changes.json', href: '/api/v1/changes.json', detail: 'changefeed JSON avec diff et version' },
+          { label: '/api/v1/changes.ndjson', href: '/api/v1/changes.ndjson', detail: 'changefeed ligne à ligne' },
+          { label: '/black-box/', href: '/black-box/', detail: 'frames point-in-time hashées' },
+          { label: '/preuves/', href: '/preuves/', detail: 'preuves, commits, artefacts' },
+        ]);
+      }
+
+      function printSignalHistory() {
+        section('SIGNAL HISTORY', [
+          'Historique exploitable sans reconstruire après coup : observations, dates, niveaux, couverture et exports.',
+          { label: '/api/v1/signals/history.json', href: '/api/v1/signals/history.json', detail: 'historique structuré' },
+          { label: '/api/v1/signals/history.ndjson', href: '/api/v1/signals/history.ndjson', detail: 'streaming ligne à ligne' },
+          { label: '/api/v1/signals/history.csv', href: '/api/v1/signals/history.csv', detail: 'table pour pandas, R, DuckDB ou tableur' },
+          { label: '/api/v1/signals/schema.json', href: '/api/v1/signals/schema.json', detail: 'contrat machine des lignes' },
+          { label: '/backtests/', href: '/backtests/', detail: 'lecture humaine des backtests' },
         ]);
       }
 
@@ -472,12 +593,55 @@ const jsonLd = {
         ]);
       }
 
+      function printDebtMethod() {
+        section('METHOD DEBT-RISK', [
+          'Le radar dette sépare le stress courant des vulnérabilités structurelles de long terme.',
+          { label: '/methodologie/debt-risk-radar/', href: '/methodologie/debt-risk-radar/', detail: 'pondérations, familles, imputation, limites' },
+          { label: '/api/v1/debt-risk.json', href: '/api/v1/debt-risk.json', detail: 'snapshot canonique dette US' },
+          { label: '/sources/treasury-fiscal-data/', href: '/sources/treasury-fiscal-data/', detail: 'données fiscales rapides du Trésor' },
+          { label: '/sources/congress-govinfo-cbo/', href: '/sources/congress-govinfo-cbo/', detail: 'projections et contexte structurel CBO' },
+        ]);
+      }
+
       function printUraniumClaim() {
         section('CLAIM URANIUM ENRICHMENT', [
           'Le terminal ne génère pas de verdict ad hoc. Il renvoie aux claims, guides et analyses publiés pour lecture vérifiable.',
           { label: '/api/v1/claims.json', href: '/api/v1/claims.json', detail: 'claims sourcées exposées aux agents' },
           { label: '/guides/lire-le-marche-de-l-uranium/', href: '/guides/lire-le-marche-de-l-uranium/', detail: 'guide uranium' },
           { label: '/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/', href: '/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/', detail: 'analyse chaîne d’offre et contraintes' },
+        ]);
+      }
+
+      function printSourcesStale() {
+        section('SOURCES STALE', [
+          'Une source peut être fiable et stale. l0g sépare qualité de source, cadence, fraîcheur et couverture.',
+          { label: '/sources/', href: '/sources/', detail: 'sources primaires suivies, cadences, limites' },
+          { label: '/api/v1/freshness.json', href: '/api/v1/freshness.json', detail: 'staleAfter, expiresAt, couverture' },
+          { label: '/api/v1/sources.json', href: '/api/v1/sources.json', detail: 'registre machine des sources citées' },
+          { label: '/donnees/', href: '/donnees/', detail: 'politique de fraîcheur des datasets' },
+          { label: '/status/', href: '/status/', detail: 'présence des artefacts publics' },
+        ]);
+      }
+
+      function printModelLimits() {
+        section('MODEL LIMITS', [
+          'Les scores l0g sont des instruments de lecture : normalisation, couverture et incertitude priment sur le chiffre rond.',
+          { label: '/protocole-editorial/', href: '/protocole-editorial/', detail: 'garde-fou contre l’illusion de précision' },
+          { label: '/methodologie/', href: '/methodologie/', detail: 'méthodes par instrument' },
+          { label: '/backtests/', href: '/backtests/', detail: 'historique et performance des signaux' },
+          { label: '/risk-diff/', href: '/risk-diff/', detail: 'modèles modifiés et confiance' },
+          { label: '/api/v1/freshness.json', href: '/api/v1/freshness.json', detail: 'fraîcheur et couverture' },
+        ]);
+      }
+
+      function printCorrections() {
+        section('CORRECTIONS', [
+          'Les corrections font partie du produit : changement de protocole, source, méthode, donnée ou interprétation.',
+          { label: '/changelog-editorial/', href: '/changelog-editorial/', detail: 'journal éditorial des changements' },
+          { label: '/protocole-editorial/', href: '/protocole-editorial/', detail: 'politique de correction' },
+          { label: '/api/v1/changes.json', href: '/api/v1/changes.json', detail: 'changefeed machine' },
+          { label: '/preuves/', href: '/preuves/', detail: 'artefacts publics' },
+          { label: '/risk-diff/', href: '/risk-diff/', detail: 'claims ajoutées ou corrigées' },
         ]);
       }
 
@@ -588,20 +752,62 @@ const jsonLd = {
           printRiskToday();
           return;
         }
+        if (command === 'risk regime') {
+          printRiskRegime();
+          return;
+        }
         if (/^risk diff (1d|7d|30d)$/.test(command)) {
           printRiskDiff(command.replace('risk diff ', ''));
+          return;
+        }
+        if (command === 'proof map' || command === 'evidence graph') {
+          printProofMap();
+          return;
+        }
+        if (command === 'freshness check' || command === 'freshness') {
+          printFreshnessCheck();
+          return;
+        }
+        if (command === 'integrity hash' || command === 'integrity') {
+          printIntegrityHash();
+          return;
+        }
+        if (command === 'signal history' || command === 'signals history') {
+          printSignalHistory();
           return;
         }
         if (command === 'source debt') {
           printDebtSources();
           return;
         }
+        if (command === 'method debt-risk' || command === 'method debt') {
+          printDebtMethod();
+          return;
+        }
         if (command === 'claim uranium enrichment' || command === 'claim uranium') {
           printUraniumClaim();
           return;
         }
+        if (command === 'sources stale' || command === 'source stale') {
+          printSourcesStale();
+          return;
+        }
+        if (command === 'model limits' || command === 'score limits') {
+          printModelLimits();
+          return;
+        }
+        if (command === 'corrections' || command === 'correction log') {
+          printCorrections();
+          return;
+        }
         if (/^replay \d{4}-\d{2}-\d{2}$/.test(command)) {
-          printReplay(command.replace('replay ', ''));
+          var replayDate = command.replace('replay ', '');
+          if (!isIsoDate(replayDate)) {
+            textLine('date invalide : ' + replayDate, 'out error');
+            textLine('format attendu : replay YYYY-MM-DD, date réelle uniquement', 'out muted');
+            return;
+          }
+          printReplay(replayDate);
           return;
         }
         if (command === 'guide treasuries') {
@@ -644,7 +850,7 @@ const jsonLd = {
         }
 
         textLine('commande inconnue : ' + command, 'out error');
-        textLine('essayez : man · risk today · risk diff 7d · mcp tools', 'out muted');
+        textLine('essayez : man · risk regime · proof map · freshness check · integrity hash', 'out muted');
       }
 
       function remember(command) {

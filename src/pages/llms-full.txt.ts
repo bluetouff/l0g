@@ -74,7 +74,7 @@ export const GET: APIRoute = async () => {
   out.push(`URL : ${SITE}/terminal/`);
   out.push('-'.repeat(76));
   out.push(
-    "Interface clavier en ligne de commande pour explorer l0g : man, risk today, risk diff 1d/7d/30d, source debt, claim uranium enrichment, replay YYYY-MM-DD, guide treasuries, opacity private-credit, scenario hormuz, mcp tools, open cible, curl risk. Elle inclut un manuel web statique, une navigation interne allowlistee, un historique local borne et des liens vers Risk Diff, Black Box Recorder, sources primaires, API, MCP et corpus machine."
+    "Interface clavier en ligne de commande pour explorer l0g : man, risk today, risk regime, risk diff 1d/7d/30d, proof map, freshness check, integrity hash, signal history, source debt, method debt-risk, claim uranium enrichment, sources stale, model limits, corrections, replay YYYY-MM-DD, guide treasuries, opacity private-credit, scenario hormuz, mcp tools, open cible, curl risk. Elle inclut un manuel web statique, une navigation interne allowlistee, un historique local borne et des liens vers Risk Diff, Black Box Recorder, claims, evidence graph, sources primaires, API, MCP et corpus machine."
   );
   out.push(SEP);
   out.push('STATUS : Statut & intégrité');
