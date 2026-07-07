@@ -527,7 +527,7 @@ export const methodologyPages: MethodologyPage[] = [
     updated: methodologyUpdated,
     quickRead: [
       "Le dashboard agrège des séries FRED dans une lecture de stress macro américain.",
-      "Le score source est un z-score signé centré sur 0 ; l0g le convertit en échelle 0-100 pour le bandeau consolidé.",
+      "Le score source est un z-score signé centré sur 0 ; l0g le convertit en échelle 0-100 pour le tableau de bord consolidé de signaux.",
       "La valeur utile est autant dans les composantes que dans le chiffre final.",
     ],
     sources: [

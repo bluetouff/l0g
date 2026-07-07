@@ -24,7 +24,7 @@ const trustItems = [
 
 <BaseLayout
   title="Méthodologie"
-  description="Comment l0g calcule ses signaux de risque : bandeau consolidé, historique point-in-time pour backtests, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
+  description="Comment l0g calcule ses signaux de risque : tableau de bord consolidé de signaux, historique point-in-time pour backtests, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
 >
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// méthodologie</p>
@@ -38,7 +38,7 @@ const trustItems = [
     </p>
 
     <p class="m-p">
-      Cette page documente les deux familles de signaux affichées sur le site : le bandeau
+      Cette page documente les deux familles de signaux affichées sur le site : le tableau de bord
       consolidé de signaux de risque en page d'accueil, et le classement de confluence repris de
       13FLOW dans la colonne de droite. Tout est calculé sur des données publiques,
       côté serveur, et figé dans des fichiers JSON servis depuis l0g.fr. Le navigateur
@@ -109,9 +109,9 @@ const trustItems = [
   </section>
 
   <section class="mt-14" id="bandeau-signaux-risque" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// le bandeau consolidé de signaux</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// le tableau de bord consolidé de signaux</p>
     <p class="m-p">
-      Les tableaux de bord indépendants produisent chacun un indice, ramené sur une
+      Les tableaux de bord indépendants produisent chacun un score, ramené sur une
       échelle 0-100 où un chiffre plus élevé signale un risque plus marqué dans son propre
       instrument. Un agrégateur
       lit les sources, les normalise et écrit un seul fichier. Aucune des
