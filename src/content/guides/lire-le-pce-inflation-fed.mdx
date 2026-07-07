@@ -1,0 +1,97 @@
+---
+title: "Lire le PCE : la mesure d'inflation que cible vraiment la Fed"
+description: "Guide de référence sur le Personal Consumption Expenditures Price Index : ce que le BEA mesure et pourquoi il est plus large que le CPI, la formule chaînée de Fisher qui capte les substitutions, le poids déterminant de la santé et le principe des dépenses faites pour le compte des ménages, la distinction entre PCE total, core PCE et PCE market-based, les mesures robustes de la Fed de Dallas et de Cleveland, et pourquoi la cible de 2 % porte sur cet indice et non sur le CPI. Avec le chiffre de mai 2026 comme cas d'école, où le core PCE dépasse le core CPI."
+summary: "Le PCE (Personal Consumption Expenditures Price Index) est l'indice des prix calculé par le BEA que la Réserve fédérale cible à 2 %. Plus large que le CPI, chaîné selon la formule de Fisher, il pèse la santé environ deux fois plus lourd et le logement environ deux fois moins. Le lire suppose de distinguer PCE total, core PCE et PCE market-based, de connaître les mesures robustes (trimmed mean de Dallas, médiane de Cleveland), et de comprendre pourquoi un même mois peut donner un core PCE au-dessus du core CPI."
+pubDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "inflation", "banques centrales"]
+category: macro
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Les marchés tradent le CPI, mais la Fed décide sur le PCE. Deux semaines après le gros titre de l'inflation, un second chiffre sort presque en silence, et c'est celui-là que la banque centrale regarde pour caler ses taux. Ce guide reprend le PCE de bout en bout : ce que le Bureau of Economic Analysis mesure, pourquoi sa construction diffère de celle du CPI, et comment le lire sans se tromper de thermomètre. Le mois de mai 2026 sert de fil conducteur, avec une anomalie apparente : un core PCE plus élevé que le core CPI.*
+
+## Ce que le PCE mesure, et pourquoi il est plus large
+
+Le Personal Consumption Expenditures Price Index est publié chaque mois par le Bureau of Economic Analysis (BEA), au sein du rapport « Personal Income and Outlays ». Il mesure la variation des prix de l'ensemble des biens et services consommés par les ménages américains, et c'est ce mot « ensemble » qui le distingue du [CPI](/guides/lire-le-cpi-inflation-us/). Là où le CPI ne retient que les dépenses payées directement par les ménages urbains, le PCE couvre toute la consommation, urbaine et rurale, y compris ce qui est acheté **pour le compte** des ménages par des tiers.
+
+Ce principe des dépenses faites pour le compte des ménages est la clé de voûte. Une large part des soins de santé américains est payée par les employeurs, via l'assurance maladie, ou par l'État, via Medicare et Medicaid. Le CPI ne voit que le reste à charge du patient ; le PCE compte la dépense totale, quelle qu'en soit la source de paiement. Résultat, la santé pèse environ deux fois plus dans le PCE que dans le CPI, tandis que le logement, à l'inverse, y pèse environ deux fois moins. Ce simple écart de pondération suffit à faire diverger les deux indices, comme on le verra sur le cas de mai 2026.
+
+<InfographicBars
+  title="Le poids qui fait toute la différence"
+  subtitle="Part de la santé et du logement dans chaque indice, ordres de grandeur, en %."
+  max={38}
+  items={[
+    { label: "Logement — CPI", value: 35, valueLabel: "~35 %", tone: "blue" },
+    { label: "Logement — PCE", value: 18, valueLabel: "~18 %", tone: "muted" },
+    { label: "Santé — PCE", value: 17, valueLabel: "~17 %", tone: "signal" },
+    { label: "Santé — CPI", value: 8, valueLabel: "~8 %", tone: "amber" },
+  ]}
+  note="Le PCE compte la santé payée par les employeurs et l'État ; le CPI, seulement le reste à charge."
+  source="Sources : BEA, Federal Reserve Bank of Cleveland (comparaison CPI / PCE)."
+  caption="Le logement domine le CPI, la santé pèse lourd dans le PCE. Ces deux poids opposés expliquent l'essentiel de l'écart entre les deux mesures. Sources : BEA, Fed de Cleveland."
+/>
+
+## La formule : un indice chaîné qui suit le consommateur
+
+La deuxième grande différence tient à la formule. Le CPI fige les quantités de son panier jusqu'à la mise à jour suivante des pondérations, ce qui tend à surestimer légèrement le coût de la vie. Le PCE, lui, est un indice chaîné de type Fisher : ses pondérations sont réactualisées en continu, si bien qu'il intègre les substitutions des ménages, qui se détournent des produits dont le prix monte le plus vite pour se reporter sur d'autres. Quand le prix du bœuf s'envole et que les ménages achètent plus de poulet, le PCE capte ce glissement presque en temps réel, le CPI seulement au retard de sa révision.
+
+Cette construction a une conséquence mécanique : sur longue période, le PCE tend à croître un peu moins vite que le CPI. Depuis 2000, l'écart moyen est d'environ 0,4 point en faveur du CPI. C'est l'une des raisons pour lesquelles une cible de 2 % en PCE correspondrait à un CPI plutôt autour de 2,4 %, un décalage détaillé dans notre [guide du CPI](/guides/lire-le-cpi-inflation-us/).
+
+## D'où viennent les chiffres
+
+Un point souvent ignoré : le PCE n'est pas construit à partir de zéro. Pour beaucoup de composantes, le BEA reprend les prix relevés par le BLS pour le CPI, puis les repondère selon ses propres poids et les complète par des sources d'entreprises et administratives, notamment pour la santé et les services financiers. Le PCE est donc en partie du CPI retraité, avec un champ élargi et une formule différente. C'est pourquoi les marchés savent assez bien « anticiper » le PCE une fois connus le CPI et le PPI du même mois : les modèles de nowcast de la Fed de Cleveland reconstituent le PCE avec une bonne précision avant sa publication officielle.
+
+## PCE total, core PCE et PCE market-based
+
+Comme pour le CPI, on distingue le PCE total, qui inclut tout, et le core PCE, qui retire l'alimentation et l'énergie pour isoler la tendance de fond. C'est le core PCE que la Fed scrute pour juger de la persistance de l'inflation, même si sa cible formelle de 2 % porte sur le PCE total.
+
+Le PCE ajoute une distinction qui lui est propre : le PCE market-based. Une partie des prix du PCE n'est pas observée sur un marché mais imputée, c'est-à-dire estimée indirectement, comme les services financiers mesurés par les marges bancaires ou certains loyers fictifs. Le PCE market-based écarte ces composantes non marchandes pour ne garder que des prix réellement transactés. La Fed le suit comme une lecture plus « propre » de l'inflation, moins sujette aux artefacts de mesure. Quand le PCE total et le PCE market-based divergent, c'est souvent qu'un poste imputé, et non un vrai prix de marché, tire l'indice.
+
+## Les mesures robustes : trimmed mean et médiane
+
+Retirer l'alimentation et l'énergie est une façon grossière d'éliminer le bruit. Deux Réserves fédérales régionales proposent des filtres plus fins, spécifiques au PCE. La Fed de Dallas calcule le **trimmed mean PCE**, qui écarte chaque mois les composantes aux variations les plus extrêmes, dans le haut comme dans le bas de la distribution, plutôt que de toujours retirer les deux mêmes postes. La Fed de Cleveland publie la **médiane PCE**, la variation de la composante située au centre de la distribution. Ces mesures captent mieux la tendance durable, car elles ne sont pas polluées par un poste unique qui s'emballe.
+
+Leur intérêt éclate quand elles divergent du core. En mai 2026, le core PCE ressort à [3,4 % sur un an](https://www.bea.gov/news/2026/personal-income-and-outlays-may-2026), son plus haut depuis octobre 2023, mais le [trimmed mean de Dallas tient à 2,35 %](https://www.dallasfed.org/research/pce) et la médiane de Cleveland à 2,83 %. Autrement dit, une partie de la hauteur du core PCE vient de composantes atypiques, et la tendance centrale est plus modérée que le chiffre vedette ne le suggère.
+
+<InfographicBars
+  title="Ce que disent les mesures robustes (mai 2026)"
+  subtitle="Inflation PCE sur un an selon la mesure retenue, en %."
+  max={4.2}
+  items={[
+    { label: "PCE total (headline)", value: 4.1, valueLabel: "4,1 %", tone: "amber" },
+    { label: "Core PCE (hors alim. et énergie)", value: 3.4, valueLabel: "3,4 %", tone: "signal" },
+    { label: "Médiane PCE (Fed de Cleveland)", value: 2.83, valueLabel: "2,83 %", tone: "blue" },
+    { label: "Trimmed mean PCE (Fed de Dallas)", value: 2.35, valueLabel: "2,35 %", tone: "muted" },
+  ]}
+  note="Cible de la Fed : 2 % sur le PCE total."
+  source="Sources : BEA, Federal Reserve Bank of Dallas, Federal Reserve Bank of Cleveland (mai 2026)."
+  caption="Plus on filtre les composantes extrêmes, plus l'inflation se rapproche de la cible : le trimmed mean à 2,35 % raconte une tendance de fond bien plus sage que le core PCE à 3,4 %. Sources : BEA, Fed de Dallas, Fed de Cleveland."
+/>
+
+## Mai 2026 : quand le core PCE dépasse le core CPI
+
+Le cas de mai 2026 condense la leçon. Le PCE total grimpe à 4,1 % sur un an, presque au niveau du [CPI headline de 4,2 %](https://www.bls.gov/news.release/cpi.nr0.htm), les deux tirés par la même flambée de l'énergie. Jusqu'ici, rien d'inhabituel. Mais sur le core, l'ordre s'inverse : le core PCE atteint 3,4 % quand le core CPI reste à 2,9 %. Le PCE, réputé courir sous le CPI, passe cette fois au-dessus.
+
+L'explication tient entièrement aux pondérations. Le logement, qui pèse un tiers du CPI mais deux fois moins dans le PCE, refroidit depuis le pic de 2023 : sa décrue pèse donc lourdement à la baisse sur le core CPI, beaucoup moins sur le core PCE. À l'inverse, la santé, deux fois plus lourde dans le PCE, s'est mise à chauffer et pousse le core PCE vers le haut. Deux forces opposées, deux poids opposés, et un croisement des deux mesures. Qui ne lit que le gros titre du CPI conclut à une désinflation sous-jacente rassurante ; qui regarde le core PCE, celui qui compte pour la Fed, voit une inflation de fond plus tenace. C'est précisément pour ne pas se tromper de fonction de réaction qu'il faut savoir lire les deux.
+
+## Lire le PCE en pratique
+
+Le rapport « Personal Income and Outlays » paraît vers la fin du mois, à 8 h 30 heure de l'Est, environ deux à trois semaines après le CPI du même mois : le PCE de mai 2026 a été publié le 26 juin 2026. La séquence de lecture efficace tient en quelques réflexes. Partir du core PCE, l'indicateur que la Fed cible en pratique, plutôt que du total, plus bruité par l'énergie. Croiser avec les mesures robustes, trimmed mean et médiane, pour voir si la hauteur du core vient de la tendance ou de quelques postes atypiques. Regarder le PCE market-based pour écarter les artefacts d'imputation. Et comparer avec le CPI du même mois, car l'écart entre les deux, surtout sur le core, révèle quelles composantes portent l'inflation.
+
+Ce chiffre n'a de sens que relié au reste de la mécanique monétaire. C'est sur sa trajectoire que la Fed cale ses taux, une fonction de réaction que l'on lit dans le [dot plot](/guides/lire-le-dot-plot-sep/) et dont les effets se déploient à travers le [bilan de la Fed](/guides/lire-h41-bilan-fed/) et la [liquidité du système](/guides/liquidite-tresor-dts-tga-rrp/). En mai 2026, la cause du sursaut est un choc d'offre énergétique venu du [conflit au Moyen-Orient et des tensions sur le détroit d'Ormuz](/posts/crise-ormuz-asie-impacts-economiques/), qui gonfle le total sans dénaturer la tendance de fond, laquelle se juge, elle, sur le core et les mesures robustes.
+
+Bien lu, le PCE n'est pas un doublon du CPI mais son complément décisif. Le CPI donne l'humeur du marché et sort le premier ; le PCE, plus large et mieux pondéré, donne la mesure sur laquelle se prend la décision. Pour les dates de publication, le [calendrier économique](/calendrier-eco/) recense les sorties à surveiller, et le [glossaire](/glossaire/) reprend les sigles employés ici.
+
+---
+
+**Sources principales :**
+
+- [BEA, « Personal Income and Outlays, May 2026 »](https://www.bea.gov/news/2026/personal-income-and-outlays-may-2026) : PCE total +4,1 % sur un an (plus haut depuis avril 2023), core PCE +3,4 % (plus haut depuis octobre 2023), structure du rapport.
+- [BEA, Personal Consumption Expenditures Price Index](https://www.bea.gov/data/personal-consumption-expenditures-price-index) : définition, champ, formule chaînée de type Fisher, distinction PCE total, core et market-based.
+- [Federal Reserve Bank of Dallas, Trimmed Mean PCE Inflation Rate](https://www.dallasfed.org/research/pce) : mesure robuste écartant les composantes extrêmes, 2,35 % en mai 2026, méthodologie du trim.
+- [Federal Reserve Bank of Cleveland, Median PCE Inflation](https://www.clevelandfed.org/indicators-and-data/median-pce-inflation) : médiane PCE à 2,83 % en mai 2026, lecture de la tendance centrale.
+- [Federal Reserve Bank of Cleveland, « The CPI Versus the PCE Price Index »](https://www.clevelandfed.org/collections/infographics/2024/infogr-20241205-cpi-versus-pce-price-index) : différences de formule, de champ et de pondération, poids comparés du logement et de la santé, écart moyen d'environ 0,4 point depuis 2000.
+- [Federal Reserve Bank of Atlanta, « What Is PCE? Explaining the Fed's Preferred Inflation Measure »](https://www.atlantafed.org/what-we-study/inflation/2026/05/20/what-is-pce-explaining-the-feds-preferred-inflation-measure) : adoption du PCE comme cible en 2000 et 2012, cible de 2 % sur le PCE total.
+- [BLS, communiqué « Consumer Price Index, May 2026 »](https://www.bls.gov/news.release/cpi.nr0.htm) : CPI headline +4,2 % et core +2,9 % sur un an, points de comparaison avec le PCE du même mois.
