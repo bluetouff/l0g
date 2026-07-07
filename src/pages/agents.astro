@@ -7,6 +7,8 @@ const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const trustItems = [
   { label: 'agents.json', href: '/agents.json' },
   { label: 'OpenAPI', href: '/openapi.json' },
+  { label: 'Black Box', href: '/black-box/' },
+  { label: 'Risk Diff', href: '/risk-diff/' },
   { label: 'backtests', href: '/backtests/' },
   { label: 'MCP public', href: '/mcp/' },
   { label: 'preuves', href: '/preuves/' },
@@ -44,6 +46,16 @@ const surfaces = [
     use: 'Flux machine pour suivre publications, révisions et changements éditoriaux.',
   },
   {
+    need: 'Diff du risque',
+    endpoint: '/api/v1/risk-diff.json',
+    use: 'Fenêtres 1, 7 et 30 jours : signaux qui montent ou baissent, sources stale, nouvelles données, claims, modèles, articles et confiance.',
+  },
+  {
+    need: 'Replay point-in-time',
+    endpoint: '/api/v1/black-box.json',
+    use: 'Frames datées et hashées pour rejouer l’état public du risque à une date donnée, sans reconstruction rétroactive.',
+  },
+  {
     need: 'Backtester les signaux',
     endpoint: '/api/v1/signals/history.csv',
     use: 'Observations point-in-time à plat, plus exports JSON et NDJSON, pour rejouer les signaux sans look-ahead bias.',
@@ -75,6 +87,8 @@ const flow = [
   'Vérifier /api/v1/freshness.json avant de répondre à une question sensible au temps ou aux signaux de marché.',
   'Utiliser /api/v1/catalog.ndjson pour trouver les documents pertinents.',
   'Utiliser /api/v1/claims.json ou /api/v1/evidence-graph.json pour relier une affirmation à sa preuve.',
+  'Utiliser /api/v1/risk-diff.json pour résumer ce qui a changé dans le risque depuis 1, 7 ou 30 jours.',
+  'Utiliser /api/v1/black-box.json pour rejouer une date uniquement si une frame publique existe déjà.',
   'Utiliser /api/v1/signals/history.csv ou .ndjson pour backtester les signaux point-in-time.',
   'Utiliser /api/v1/debt-risk.json pour Dette US, pas une moyenne recalculée depuis les buckets.',
   'Citer l’URL canonique, la date de publication ou de source, et le type de claim.',
@@ -98,6 +112,16 @@ const prompts = [
       'Surveille /api/v1/changes.ndjson. Ne retraite que les entrées nouvelles ou révisées. Si une réponse dépend d’un snapshot figé, vérifie son empreinte dans /api/v1/integrity.json.',
   },
   {
+    label: 'risk diff',
+    text:
+      'Pars de /api/v1/risk-diff.json. Choisis la fenêtre 1d, 7d ou 30d selon la question, puis cite les signaux, sources stale, claims et limites de confiance sans extrapoler au-delà de la couverture publiée.',
+  },
+  {
+    label: 'replay point-in-time',
+    text:
+      'Pour rejouer une date, utilise /api/v1/black-box.json. Sélectionne la dernière frame dont date <= date demandée. Si aucune frame n’existe, réponds non rejouable plutôt que de reconstruire après coup.',
+  },
+  {
     label: 'backtest',
     text:
       'Pour évaluer un signal l0g dans le temps, utilise /api/v1/signals/history.csv ou /api/v1/signals/history.ndjson. Ne reconstitue pas une valeur après coup : conserve observedAt, retrievedAt, computedAt, level et levelChange.',
@@ -116,6 +140,8 @@ const rules = [
 const curlExamples = [
   'curl -s https://l0g.fr/agents.json',
   'curl -s https://l0g.fr/api/v1/freshness.json',
+  'curl -s https://l0g.fr/api/v1/risk-diff.json',
+  'curl -s https://l0g.fr/api/v1/black-box.json',
   'curl -s https://l0g.fr/api/v1/signals/history.ndjson | head',
   'curl -s https://l0g.fr/api/v1/catalog.ndjson | head',
   'curl -s https://l0g.fr/api/v1/evidence-graph.json',
@@ -127,7 +153,7 @@ const jsonLd = {
   '@id': `${site}/agents/#guide`,
   headline: 'Utiliser l0g avec un agent',
   description:
-    'Guide pratique pour connecter un agent IA à l0g.fr : MCP, Agent Surface, OpenAPI, NDJSON, evidence graph, historique des signaux, citations et vérification.',
+    'Guide pratique pour connecter un agent IA à l0g.fr : MCP, Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, evidence graph, historique des signaux, citations et vérification.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -138,7 +164,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
 <BaseLayout
   title="Utiliser l0g avec un agent"
-  description="Guide pratique pour connecter un agent IA à l0g.fr : MCP public, Agent Surface, OpenAPI, NDJSON, evidence graph, historique des signaux, citations et vérification."
+  description="Guide pratique pour connecter un agent IA à l0g.fr : MCP public, Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, evidence graph, historique des signaux, citations et vérification."
   ogImage="/og-donnees.png"
   ogImageAlt="Utiliser l0g avec un agent : MCP, Agent Surface et evidence graph"
   sidebar={false}
@@ -151,8 +177,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <h1 class="guide-title font-display glow">Utiliser l0g avec un agent</h1>
       <p class="guide-lede">
         l0g expose désormais une surface machine lisible sans scraping : manifeste,
-        contrat OpenAPI, flux NDJSON, evidence graph, claims sourcées, historique
-        point-in-time des signaux, fraîcheur,
+        contrat OpenAPI, Risk Diff, Black Box Recorder, flux NDJSON, evidence graph,
+        claims sourcées, historique point-in-time des signaux, fraîcheur,
         intégrité et MCP public. L’objectif n’est pas de faire parler un agent plus vite,
         mais de l’obliger à conserver la source, la date et le niveau de preuve.
       </p>
@@ -210,7 +236,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <p>
           Le serveur <a href="/mcp/">MCP</a> expose les outils de lecture en mode
           read-only : recherche, articles, manifestes, fraîcheur, claims, evidence
-          graph, sources, intégrité et changefeed. Pour un agent capable de tool calling,
+          graph, sources, intégrité, changefeed, Risk Diff et Black Box. Pour un agent capable de tool calling,
           c’est l’interface la plus naturelle.
         </p>
         <pre><code>POST https://l0g.fr/api/mcp</code></pre>

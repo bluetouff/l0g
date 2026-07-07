@@ -28,11 +28,17 @@ et par les dashboards :
 
 - `/agents.json` : manifeste de découverte pour agents.
 - `/openapi.json` : contrat OpenAPI 3.1 de l'API publique.
+- `/api/v1/risk-diff.json` : diff du risque sur 1, 7 et 30 jours
+  (signaux, sources, claims, modèles, articles et confiance).
+- `/api/v1/black-box.json` : frames point-in-time hashées pour rejouer
+  l'état public du risque sans reconstruction rétroactive.
 - `/api/v1/risk.json` : signaux de risque normalisés par instrument.
 - `/api/v1/debt-risk.json` : snapshot canonique Dette US repris de Debt Risk
   Radar `latest.json`, avec provenance, buckets et couverture lorsque disponible.
 - `/api/v1/signals/history.*` : historique point-in-time pour backtests et
   replay sans look-ahead bias.
+- `/api/mcp` : serveur MCP public en lecture seule, avec resources et tools
+  pour Agent Surface, Risk Diff, Black Box, claims, sources, intégrité et changefeed.
 - `/llms.txt` et `/llms-full.txt` : cartes textuelles pour agents et RAG.
 
 Les détails de calcul et les limites de modèle sont dans

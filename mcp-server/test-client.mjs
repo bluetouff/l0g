@@ -39,6 +39,8 @@ for (const required of [
   'get_openapi_schema',
   'get_ndjson_feed',
   'get_signal_history',
+  'get_risk_diff',
+  'get_black_box',
   'get_claim',
   'get_claim_evidence',
   'list_article_claims',
@@ -54,7 +56,7 @@ for (const required of [
 
 const { resources } = await client.listResources();
 console.log('RESOURCES:', resources.length, '| #1:', resources[0]?.uri);
-for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://signals/current', 'l0g://signals/history']) {
+for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://risk-diff', 'l0g://black-box', 'l0g://signals/current', 'l0g://signals/history']) {
   if (!resources.some((resource) => resource.uri === required)) throw new Error(`resource manquante: ${required}`);
 }
 
@@ -156,6 +158,14 @@ console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join
 const signalHistory = await call('get_signal_history', { key: 'debt', limit: 5 });
 if (!signalHistory.current?.debt) throw new Error('get_signal_history(debt) doit exposer le signal courant debt.');
 console.log('get_signal_history(debt) -> events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.debt));
+
+const riskDiff = await call('get_risk_diff', { window: '7d' });
+if (!riskDiff.selectedWindow?.window) throw new Error('get_risk_diff(7d) doit exposer une fenêtre sélectionnée.');
+console.log('get_risk_diff(7d) -> confidence:', riskDiff.selectedWindow?.confidence?.label);
+
+const blackBox = await call('get_black_box', { date: '2026-03-12' });
+if (blackBox.replayable !== false) throw new Error('get_black_box(2026-03-12) doit refuser la reconstruction rétroactive.');
+console.log('get_black_box(2026-03-12) -> replayable:', blackBox.replayable);
 
 const manifest = await call('get_agent_manifest');
 if (!manifest.server?.version || !manifest.server?.sha) throw new Error('get_agent_manifest sans version/SHA serveur MCP');

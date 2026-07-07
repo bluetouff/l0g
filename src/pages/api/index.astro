@@ -9,13 +9,13 @@ const datasetLd = {
   '@id': `${ASITE}/api/#dataset`,
   name: 'API publique l0g et Agent Surface 1.10',
   description:
-    "Surface M2M publique de l0g : Agent Surface 1.10, claims sourcées, evidence graph, snapshots de risque, debt-risk canonique et historique point-in-time des signaux.",
+    "Surface M2M publique de l0g : Agent Surface 1.10, Risk Diff, Black Box Recorder, claims sourcées, evidence graph, snapshots de risque, debt-risk canonique et historique point-in-time des signaux.",
   url: `${ASITE}/api/`,
   inLanguage: 'fr',
   license: 'https://creativecommons.org/licenses/by/4.0/',
   isAccessibleForFree: true,
   creator: { '@id': `${ASITE}/#org` },
-  keywords: ['Agent Surface', 'API publique', 'risk intelligence', 'dette US', 'signals history', 'evidence graph'],
+  keywords: ['Agent Surface', 'API publique', 'risk intelligence', 'Risk Diff', 'Black Box Recorder', 'dette US', 'signals history', 'evidence graph'],
   distribution: [
     {
       '@type': 'DataDownload',
@@ -119,7 +119,7 @@ const datasetLd = {
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
       Cette page inventorie la surface machine de l0g : <a class="link-term" href="/donnees/agents/">Agent Surface 1.10</a>,
-      claims sourcées, evidence graph, snapshots de risque, endpoint canonique
+      claims sourcées, evidence graph, Risk Diff, Black Box Recorder, snapshots de risque, endpoint canonique
       <code class="apic">debt-risk.json</code> et historique <code class="apic">signals/history</code>
       pour replay et backtest. CORS ouvert, aucune clé, aucune authentification, aucun pistage.
     </p>

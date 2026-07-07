@@ -57,6 +57,9 @@ export const GET: APIRoute = async () => {
     `- [Backtests](${SITE}/backtests/): historique point-in-time des signaux l0g, exports CSV/NDJSON/JSON, contrat de dates et garde-fous contre le look-ahead bias.`
   );
   lines.push(
+    `- [Risk Diff](${SITE}/risk-diff/): lecture des changements de risque sur 1, 7 et 30 jours : signaux, sources, claims, modèles, articles et confiance.`
+  );
+  lines.push(
     `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
   );
   lines.push(
@@ -155,6 +158,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
   lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine avec objectId, version courante, hash courant, statut de diff et changement sémantique.`);
   lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille, mêmes métadonnées de version.`);
+  lines.push(`- [Risk Diff](${SITE}/api/v1/risk-diff.json): diff du risque sur 1, 7 et 30 jours, avec signaux, sources, claims, modèles, articles et confiance.`);
   lines.push(`- [Black Box Recorder](${SITE}/api/v1/black-box.json): frames point-in-time hashées pour rejouer la dernière observation publique du risque avant une date donnée.`);
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable. US Macro combine z-score, drift et momentum par moyenne ponderee et penalise les faux positifs hors recession.`);
   lines.push(`- [Dette US](${SITE}/api/v1/debt-risk.json): snapshot canonique Debt Risk Radar repris de latest.json, avec score courant hors CBO, imputation neutre des buckets courants manquants, couverture, provenance et top signaux.`);
@@ -165,7 +169,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Schéma signaux](${SITE}/api/v1/signals/schema.json): contrat machine des lignes meta, observation et level-change.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
-  lines.push(`- [Serveur MCP](${SITE}/api/mcp): endpoint Model Context Protocol en lecture seule (transport Streamable HTTP). Doc : ${SITE}/mcp`);
+  lines.push(`- [Serveur MCP](${SITE}/api/mcp): endpoint Model Context Protocol en lecture seule (transport Streamable HTTP). Tools clés : get_risk_diff, get_black_box, get_signal_history, get_claims, get_evidence_graph. Doc : ${SITE}/mcp`);
   lines.push(`- [Corpus integral](${SITE}/llms-full.txt): texte complet de toutes les analyses et guides.`);
   lines.push('');
 

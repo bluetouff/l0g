@@ -10,6 +10,8 @@ const resources = [
   ['l0g://freshness', 'Fraîcheur du corpus et des signaux'],
   ['l0g://integrity', 'Empreintes SHA-256 canoniques'],
   ['l0g://changes/latest', 'Derniers changements éditoriaux et publications'],
+  ['l0g://risk-diff', 'Diff du risque sur 1, 7 et 30 jours'],
+  ['l0g://black-box', 'Frames point-in-time hashées du risque'],
   ['l0g://signals/current', 'État courant des signaux'],
   ['l0g://signals/history', 'Historique point-in-time des signaux'],
   ['l0g://mcp/server', 'Version MCP, SHA actif et capacités serveur'],
@@ -32,6 +34,8 @@ const tools = [
   ['get_agent_manifest', 'aucun', "Manifeste Agent Surface : capacités, endpoints, règles d'usage, politiques de preuve et compteurs."],
   ['get_risk_indices', 'aucun', 'Signaux de risque normalisés par instrument (US Macro, EU Macro, Yen Carry, Énergie, Dette US) et synthèse de confluence 13F.'],
   ['get_signal_history', 'key, limit', 'Historique des franchissements de niveau, état courant des signaux et confluence 13FLOW.'],
+  ['get_risk_diff', 'window', 'Diff du risque sur 1, 7 ou 30 jours : signaux, sources, claims, modèles, articles et confiance.'],
+  ['get_black_box', 'date, limitFrames', 'Replay point-in-time des frames de risque hashées, avec refus explicite des dates non rejouables.'],
   ['get_openapi_schema', 'mode, path', 'Contrat OpenAPI résumé, ciblé par endpoint ou complet pour générer un client.'],
   ['get_ndjson_feed', 'feed, recordType, limit', 'Flux NDJSON allowlistés : catalogue, claims, evidence graph, changefeed et historique des signaux.'],
   ['get_freshness', 'limit', 'Fraîcheur du corpus et des signaux : observedAt, computedAt, expiration, couverture et politique de fraîcheur.'],
@@ -60,7 +64,7 @@ const appLd = {
   '@id': `${SITE}/mcp/#mcp`,
   name: 'Serveur MCP l0g',
   description:
-    "Serveur Model Context Protocol en lecture seule pour l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides, via le transport Streamable HTTP.",
+    "Serveur Model Context Protocol en lecture seule pour l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides, via le transport Streamable HTTP.",
   documentation: `${SITE}/mcp`,
   url: ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
@@ -71,7 +75,7 @@ const appLd = {
 
 <BaseLayout
   title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides."
+  description="Serveur Model Context Protocol de l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
@@ -84,8 +88,8 @@ const appLd = {
     <p class="mt-4 max-w-2xl text-paper">
       l0g expose ses données aux agents IA via le Model Context Protocol, en lecture seule.
       Un agent peut interroger l'Agent Surface, le contrat OpenAPI, les flux NDJSON,
-      les claims, l'evidence graph, les sources, la fraîcheur, l'intégrité, le changefeed,
-      l'historique des signaux ou récupérer le texte complet d'un article, sans scraper le site.
+      Risk Diff, Black Box Recorder, les claims, l'evidence graph, les sources, la fraîcheur,
+      l'intégrité, le changefeed, l'historique des signaux ou récupérer le texte complet d'un article, sans scraper le site.
       Le graphe de preuve devient interrogeable directement : article, affirmation, type,
       source, date et profondeur de preuve.
       Aucune clé, aucune authentification, aucun pistage.
@@ -121,7 +125,7 @@ const appLd = {
       <ul class="mt-4 space-y-2 text-paper">
         <li>
           une <a class="link-term text-signal" href="/api/">API JSON publique</a> pour les indices
-          de risque, le snapshot canonique Dette US et le flux Atom des changements de niveau ;
+          de risque, Risk Diff, Black Box, le snapshot canonique Dette US et le flux Atom des changements de niveau ;
         </li>
         <li>
           un <a class="link-term text-signal" href="/api/v1/catalog.json">catalogue</a> machine des
@@ -129,7 +133,7 @@ const appLd = {
         </li>
         <li>
           une <a class="link-term text-signal" href="/donnees/agents/">Agent Surface</a> avec
-          claims, evidence graph, intégrité, changefeed et flux NDJSON ;
+          claims, evidence graph, Risk Diff, Black Box, intégrité, changefeed et flux NDJSON ;
         </li>
         <li>
           un contrat <a class="link-term text-signal" href="/openapi.json">OpenAPI</a> et des
@@ -143,7 +147,7 @@ const appLd = {
         </li>
         <li>
           ce serveur MCP, qui transforme tout cela en resources lisibles et tools appelables par un agent, sans scraping.
-          Les opérations fines sur claims, sources, preuves, changements et intégrité sont exposées comme tools structurés.
+          Les opérations fines sur claims, sources, preuves, changements, Risk Diff, Black Box et intégrité sont exposées comme tools structurés.
         </li>
       </ul>
     </div>
@@ -212,8 +216,8 @@ const appLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// tools</h2>
       <p class="mt-3 max-w-2xl text-paper">
-        Les tools sont réservés aux opérations : recherche, filtrage, historique, extraction
-        de sous-graphe ou lecture ciblée. La recherche plein texte reste locale et déterministe,
+        Les tools sont réservés aux opérations : recherche, filtrage, diff, replay, historique,
+        extraction de sous-graphe ou lecture ciblée. La recherche plein texte reste locale et déterministe,
         sans base vectorielle ni fournisseur externe. Les articles longs sont paginables, avec
         curseur de continuation, accès direct aux sources et références séparées. Chaque réponse expose un résumé humain dans
         <code>content</code> et les données exploitables dans <code>structuredContent</code>,
@@ -299,6 +303,8 @@ curl -s -X POST ${ENDPOINT} \\
         <li><a class="link-term text-signal" href="/agents/">utiliser l0g avec un agent</a> : prompts, ordre de lecture et règles d'attribution.</li>
         <li><a class="link-term text-signal" href="/donnees/agents/">Agent Surface</a> : manifeste, OpenAPI, claims, evidence graph, intégrité, changefeed et NDJSON.</li>
         <li><a class="link-term text-signal" href="/api/">API JSON</a> : indices de risque, snapshot Dette US et flux Atom des changements de niveau.</li>
+        <li><a class="link-term text-signal" href="/risk-diff/">Risk Diff</a> : changements de risque sur 1, 7 et 30 jours.</li>
+        <li><a class="link-term text-signal" href="/black-box/">Black Box Recorder</a> : replay point-in-time des frames de risque.</li>
         <li><a class="link-term text-signal" href="/api/v1/debt-risk.json">debt-risk.json</a> : valeur Dette US calculée depuis Debt Risk Radar latest.json, avec provenance.</li>
         <li><a class="link-term text-signal" href="/api/v1/catalog.json">catalog.json</a> : articles, guides et sujets.</li>
         <li><a class="link-term text-signal" href="/api/v1/evidence-graph.json">evidence-graph.json</a> : relation articles, claims, sources et datasets.</li>

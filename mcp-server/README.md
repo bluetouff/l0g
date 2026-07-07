@@ -1,7 +1,7 @@
 # Serveur MCP de l0g.fr
 
 Serveur **Model Context Protocol** en lecture seule, qui expose les données de l0g.fr
-(Agent Surface, OpenAPI, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via resources, resource templates et tools, avec le
+(Agent Surface, OpenAPI, Risk Diff, Black Box Recorder, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via resources, resource templates et tools, avec le
 transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié).
 
 Endpoint public visé : `https://l0g.fr/api/mcp`
@@ -27,7 +27,7 @@ agent / client MCP
 - Le service Node **n'écoute qu'en 127.0.0.1**, jamais exposé directement.
 - Les données proviennent du **site déjà déployé** : `agents.json`, `catalog.json`,
   `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
-  `changes.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `debt-risk.json`,
+  `changes.json`, `risk-diff.json`, `black-box.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `debt-risk.json`,
   `risk-events.json` et `confluence.json`. Le service ne fait que **lire** ces fichiers,
   avec un cache TTL de 60 s.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
@@ -47,6 +47,8 @@ aux opérations de recherche, filtrage et synthèse.
 | `l0g://freshness` | fraîcheur du corpus |
 | `l0g://integrity` | empreintes SHA-256 canoniques |
 | `l0g://changes/latest` | dernières publications et révisions |
+| `l0g://risk-diff` | diff du risque sur 1, 7 et 30 jours |
+| `l0g://black-box` | frames point-in-time hashées du risque |
 | `l0g://signals/current` | état courant des signaux |
 | `l0g://signals/history` | observations point-in-time et alertes de seuil |
 
@@ -85,6 +87,8 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_agent_manifest` | aucun | capacités, endpoints, règles d'usage et politiques de preuve |
 | `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie, Dette US) + résumé confluence |
 | `get_signal_history` | `key?`, `limit?` | historique des franchissements de niveau + état courant + confluence |
+| `get_risk_diff` | `window?` | Risk Diff sur 1, 7 ou 30 jours : signaux, sources, claims, modèles, articles et confiance |
+| `get_black_box` | `date?`, `limitFrames?` | replay point-in-time des frames de risque hashées, avec refus des dates non rejouables |
 | `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |
 | `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes, signalHistory |
 | `get_freshness` | `limit?` | derniers contenus, compteurs, temporalité par signal et politique de fraîcheur |
@@ -110,6 +114,11 @@ Les documents longs exposent `section`, `offset`, `limit`, `nextOffset` et `next
 `l0g://articles/economie-des-intentions?section=sources&offset=0&limit=12000`.
 Les références structurées sont aussi renvoyées séparément dans `references`, afin de ne pas dépendre
 du chunk de texte courant.
+
+`get_risk_diff` est le chemin court pour répondre à une question de type "qu'est-ce qui a changé
+dans le risque depuis hier, 7 jours ou 30 jours". `get_black_box` sert au replay : avec `date`, le
+tool sélectionne la dernière frame publiée avant ou le jour demandé ; si aucune frame n'existe, la
+réponse marque la date comme non rejouable plutôt que de recalculer après coup.
 
 `get_claim` ne publie pas d’URI fragmentée de preuve : il renvoie la ressource `l0g://claims/{claim_id}`
 et oriente vers le tool `get_claim_evidence`. Les tools marquent les identifiants inconnus avec `isError: true`.

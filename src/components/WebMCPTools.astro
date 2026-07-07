@@ -18,6 +18,8 @@
  *   - list_recent_analyses  : derniers articles, depuis le frontmatter (données fiables).
  *   - get_agent_manifest    : manifeste agents.json.
  *   - get_freshness         : fraîcheur du corpus et derniers contenus.
+ *   - get_risk_diff         : diff du risque par fenêtre 1, 7 ou 30 jours.
+ *   - get_black_box         : replay point-in-time des frames de risque.
  *   - get_claims            : claims typées et références datées.
  *   - get_evidence_graph    : sous-graphe articles, claims et sources.
  * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
@@ -247,6 +249,99 @@ const articleSlugs = published.map((p) => p.id);
             });
           } catch (e) {
             return reply({ error: 'freshness indisponible', url: site + '/api/v1/freshness.json' });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
+    }
+
+    // --- Tool : Risk Diff ---
+    try {
+      mc.registerTool({
+        name: 'get_risk_diff',
+        description:
+          "Renvoie le Risk Diff l0g : signaux, sources, claims, modèles, articles et confiance sur 1, 7 ou 30 jours.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            window: { type: 'string', enum: ['1d', '7d', '30d'], description: 'Fenêtre optionnelle : 1d, 7d ou 30d.' }
+          }
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          try {
+            var surface = await readPublicJson('/api/v1/risk-diff.json');
+            var windowValue = String((input && input.window) || '').trim();
+            var windows = Array.isArray(surface.windows) ? surface.windows : [];
+            if (windowValue) {
+              var selectedWindow = windows.find(function (item) { return item.window === windowValue; }) || null;
+              return reply({
+                generated: surface.generated,
+                anchorDate: surface.anchorDate,
+                filters: { window: windowValue },
+                selectedWindow: selectedWindow,
+                limitations: surface.limitations
+              });
+            }
+            return reply({
+              generated: surface.generated,
+              anchorDate: surface.anchorDate,
+              windows: windows,
+              limitations: surface.limitations
+            });
+          } catch (e) {
+            return reply({ error: 'risk diff indisponible', url: site + '/api/v1/risk-diff.json' });
+          }
+        }
+      });
+    } catch (e) {
+      // idem.
+    }
+
+    // --- Tool : Black Box Recorder ---
+    try {
+      mc.registerTool({
+        name: 'get_black_box',
+        description:
+          "Renvoie le Black Box Recorder l0g : frames point-in-time hashées des signaux de risque. Avec date, rejoue la dernière frame publiée avant ou le jour demandé.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            date: { type: 'string', description: 'Date à rejouer au format YYYY-MM-DD.' },
+            limitFrames: { type: 'integer', minimum: 1, maximum: 30, default: 5 }
+          }
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          try {
+            var surface = await readPublicJson('/api/v1/black-box.json');
+            var frames = Array.isArray(surface.frames) ? surface.frames.slice() : [];
+            frames.sort(function (a, b) { return String(a.date).localeCompare(String(b.date)); });
+            var requestedDate = String((input && input.date) || '').trim().slice(0, 10);
+            if (requestedDate) {
+              var frame = frames.filter(function (item) { return String(item.date) <= requestedDate; }).pop() || null;
+              return reply({
+                generated: surface.generated,
+                coverage: surface.coverage,
+                replay: surface.replay,
+                requestedDate: requestedDate,
+                replayable: Boolean(frame),
+                frame: frame,
+                policy: surface.policy
+              });
+            }
+            var limit = clampLimit(input && input.limitFrames, 5, 30);
+            return reply({
+              generated: surface.generated,
+              coverage: surface.coverage,
+              replay: surface.replay,
+              latestFrame: frames[frames.length - 1] || null,
+              frames: frames.slice(-limit),
+              policy: surface.policy
+            });
+          } catch (e) {
+            return reply({ error: 'black box indisponible', url: site + '/api/v1/black-box.json' });
           }
         }
       });

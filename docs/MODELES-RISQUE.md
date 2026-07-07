@@ -2,7 +2,9 @@
 
 Ce document résume les conventions de modèle qui doivent rester alignées entre
 les dashboards, `/methodologie/`, `/api/`, `/agents.json`, `llms.txt` et les
-snapshots publics.
+snapshots publics. Les surfaces `/api/v1/risk-diff.json` et
+`/api/v1/black-box.json` ne recalculent pas les modèles : elles documentent le
+mouvement de la connaissance publique et le replay des frames déjà publiées.
 
 ## Dette US
 
@@ -60,11 +62,16 @@ Les agents IA doivent :
 
 - lire `/agents.json` puis `/openapi.json` avant ingestion ;
 - vérifier `/api/v1/freshness.json` pour les dates utiles ;
+- utiliser `/api/v1/risk-diff.json` pour analyser les changements de risque par
+  fenêtre 1, 7 ou 30 jours ;
+- utiliser `/api/v1/black-box.json` pour rejouer une date seulement si une frame
+  publique existe déjà ;
 - privilégier `/api/v1/debt-risk.json` pour Dette US ;
 - ne pas comparer directement les scores 0-100 entre instruments ;
 - citer la méthodologie et la source primaire quand elles sont disponibles ;
 - conserver `observedAt`, `retrievedAt`, `computedAt` et `snapshotHash` pour les
   backtests.
+- ne jamais reconstruire une frame absente avec des données connues plus tard.
 
 ## Validation
 

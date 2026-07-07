@@ -50,7 +50,7 @@ const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 102
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.14.0';
+const MCP_VERSION = '1.15.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -140,6 +140,8 @@ let cache = {
   freshness: null,
   integrity: null,
   changes: null,
+  riskDiff: null,
+  blackBox: null,
   evidenceGraph: null,
   risk: null,
   debtRisk: null,
@@ -177,6 +179,14 @@ async function loadData() {
   const freshness = await readJson(dataDir, 'api/v1/freshness.json');
   const integrity = await readJson(dataDir, 'api/v1/integrity.json');
   const changes = await readJson(dataDir, 'api/v1/changes.json');
+  let riskDiff = null;
+  try {
+    riskDiff = await readJson(dataDir, 'api/v1/risk-diff.json');
+  } catch { /* risk diff optionnel */ }
+  let blackBox = null;
+  try {
+    blackBox = await readJson(dataDir, 'api/v1/black-box.json');
+  } catch { /* black box optionnelle */ }
   const evidenceGraph = await readJson(dataDir, 'api/v1/evidence-graph.json');
   let risk = null;
   try {
@@ -198,7 +208,7 @@ async function loadData() {
   try {
     confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
+  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
   return cache;
 }
 
@@ -593,6 +603,28 @@ const SignalHistoryOutput = ToolOutput.extend({
   confluence: AnyRecord.optional(),
   caveat: z.string().optional(),
 }).passthrough();
+const RiskDiffOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  anchorDate: z.string().optional(),
+  filters: AnyRecord.optional(),
+  windows: z.array(z.any()).optional(),
+  selectedWindow: z.any().optional(),
+  freshness: z.any().optional(),
+  limitations: z.array(z.string()).optional(),
+}).passthrough();
+const BlackBoxOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().optional(),
+  coverage: AnyRecord.optional(),
+  replay: AnyRecord.optional(),
+  requestedDate: z.string().nullable().optional(),
+  replayable: z.boolean().optional(),
+  frame: z.any().nullable().optional(),
+  latestFrame: z.any().nullable().optional(),
+  frames: z.array(z.any()).optional(),
+  policy: AnyRecord.optional(),
+}).passthrough();
 const OpenapiOutput = ToolOutput.extend({
   openapi: z.string().optional(),
   info: AnyRecord.optional(),
@@ -801,6 +833,10 @@ function summarizePayload(payload) {
       .map(([key, item]) => `${key}: ${item?.value ?? 'n/a'} (${item?.level ?? item?.tone ?? 'n/a'})`);
     return `Signaux l0g : ${parts.join(', ')}.`;
   }
+  if (payload?.selectedWindow) return `Risk Diff ${payload.selectedWindow.window} : confiance ${payload.selectedWindow.confidence?.label ?? 'n/a'}.`;
+  if (payload?.windows) return `Risk Diff : ${payload.windows.length} fenêtre(s) disponibles.`;
+  if (payload?.replayable !== undefined && payload?.requestedDate) return payload.replayable ? `Black Box : frame rejouée pour ${payload.requestedDate}.` : `Black Box : ${payload.requestedDate} non rejouable.`;
+  if (payload?.latestFrame && payload?.coverage) return `Black Box : ${payload.coverage.frames ?? 0} frame(s), dernière date ${payload.latestFrame.date ?? 'n/a'}.`;
   if (payload?.claims) return `${payload.count ?? payload.claims.length} claim(s) structurée(s) avec références.`;
   if (payload?.nodes && payload?.edges) return `Sous-graphe de preuve : ${payload.returned?.nodes ?? payload.nodes.length} nœud(s), ${payload.returned?.edges ?? payload.edges.length} arête(s).`;
   if (payload?.entries) return `${payload.count ?? payload.entries.length} changement(s) dans le changefeed.`;
@@ -944,7 +980,7 @@ function removeLiveNotificationCapabilities(server) {
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
   const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
-  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence } = data;
+  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence } = data;
   const dataDir = data.dataDir || DATA_DIR;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
@@ -1305,6 +1341,25 @@ function buildServer(data) {
     description: 'Dernières publications, révisions et changements éditoriaux structurants.',
     mimeType: 'application/json',
   }, () => ({ ...changes, entries: (changes.entries || []).slice(0, 50) }));
+  registerStaticResource('risk-diff', 'l0g://risk-diff', {
+    title: 'Risk Diff',
+    description: 'Diff du risque sur 1, 7 et 30 jours : signaux, sources, claims, modèles, articles et confiance.',
+    mimeType: 'application/json',
+  }, () => riskDiff || {
+    schema: `${SITE}/openapi.json#/components/schemas/RiskDiffSurface`,
+    windows: [],
+    limitations: ['Risk Diff indisponible dans ce build.'],
+  });
+  registerStaticResource('black-box', 'l0g://black-box', {
+    title: 'Black Box Recorder',
+    description: 'Frames point-in-time hashées pour rejouer l’état public des signaux de risque à une date donnée.',
+    mimeType: 'application/json',
+  }, () => blackBox || {
+    schema: `${SITE}/openapi.json#/components/schemas/BlackBoxSurface`,
+    coverage: { frames: 0 },
+    frames: [],
+    policy: { noPostHoc: 'Une frame absente reste absente.' },
+  });
   registerStaticResource('signals-current', 'l0g://signals/current', {
     title: 'Current signals',
     description: 'État courant des signaux de risque normalisés par instrument.',
@@ -1612,6 +1667,100 @@ function buildServer(data) {
           summary: risk?.confluence || null,
         },
         caveat: "Les scores 0-100 sont normalisés par instrument ; l'historique signale surtout les franchissements de niveau.",
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_risk_diff',
+    {
+      description:
+        "Renvoie le Risk Diff l0g : ce qui a changé dans le risque depuis 1, 7 ou 30 jours. " +
+        "Inclut signaux, sources fraîches ou stale, claims, modèles, articles reliés et niveau de confiance.",
+      inputSchema: {
+        window: z.enum(['1d', '7d', '30d']).optional().describe('Fenêtre optionnelle : 1d, 7d ou 30d.'),
+      },
+      outputSchema: RiskDiffOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ window }) => {
+      if (!riskDiff) return errorReply({ error: 'risk diff indisponible', url: `${SITE}/api/v1/risk-diff.json` });
+      const windows = Array.isArray(riskDiff.windows) ? riskDiff.windows : [];
+      if (window) {
+        const selectedWindow = windows.find((item) => item.window === window);
+        if (!selectedWindow) {
+          return errorReply({
+            error: 'fenêtre inconnue',
+            requestedWindow: window,
+            availableWindows: windows.map((item) => item.window),
+          });
+        }
+        return reply({
+          version: riskDiff.version,
+          generated: riskDiff.generated,
+          anchorDate: riskDiff.anchorDate,
+          filters: { window },
+          selectedWindow,
+          freshness: riskDiff.freshness,
+          limitations: riskDiff.limitations,
+        });
+      }
+      return reply({
+        version: riskDiff.version,
+        generated: riskDiff.generated,
+        anchorDate: riskDiff.anchorDate,
+        filters: { window: null },
+        windows,
+        freshness: riskDiff.freshness,
+        limitations: riskDiff.limitations,
+      });
+    }
+  );
+
+  server.registerTool(
+    'get_black_box',
+    {
+      description:
+        "Renvoie le Black Box Recorder l0g : frames point-in-time hashées des signaux de risque. " +
+        "Avec une date, sélectionne la dernière frame publiée avant ou le jour demandé, sans reconstruction rétroactive.",
+      inputSchema: {
+        date: z.string().optional().describe('Date à rejouer au format YYYY-MM-DD. Si absente, renvoie la dernière frame.'),
+        limitFrames: z.number().int().min(1).max(30).default(5).describe('Nombre de frames récentes à inclure quand date est absente.'),
+      },
+      outputSchema: BlackBoxOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ date, limitFrames }) => {
+      if (!blackBox) return errorReply({ error: 'black box indisponible', url: `${SITE}/api/v1/black-box.json` });
+      const frames = Array.isArray(blackBox.frames) ? blackBox.frames : [];
+      const sortedFrames = [...frames].sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      if (date) {
+        const requestedDate = String(date).trim().slice(0, 10);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)) {
+          return errorReply({ error: 'date invalide', requestedDate: date, acceptedDateFormat: 'YYYY-MM-DD' });
+        }
+        const frame = sortedFrames.filter((item) => String(item.date) <= requestedDate).at(-1) || null;
+        return reply({
+          version: blackBox.version,
+          generated: blackBox.generated,
+          coverage: blackBox.coverage,
+          replay: blackBox.replay,
+          requestedDate,
+          replayable: Boolean(frame),
+          frame,
+          policy: blackBox.policy,
+        });
+      }
+      const latestFrame = sortedFrames.at(-1) || null;
+      return reply({
+        version: blackBox.version,
+        generated: blackBox.generated,
+        coverage: blackBox.coverage,
+        replay: blackBox.replay,
+        requestedDate: null,
+        latestFrame,
+        frames: sortedFrames.slice(-limitFrames),
+        policy: blackBox.policy,
       });
     }
   );
