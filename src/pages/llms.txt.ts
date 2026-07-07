@@ -57,6 +57,9 @@ export const GET: APIRoute = async () => {
     `- [Backtests](${SITE}/backtests/): historique point-in-time des signaux l0g, exports CSV/NDJSON/JSON, contrat de dates et garde-fous contre le look-ahead bias.`
   );
   lines.push(
+    `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
+  );
+  lines.push(
     `- [Agent Surface v1.10.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, intégrité attestée, revue humaine et changefeed versionné.`
   );
   lines.push(
@@ -152,6 +155,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
   lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine avec objectId, version courante, hash courant, statut de diff et changement sémantique.`);
   lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille, mêmes métadonnées de version.`);
+  lines.push(`- [Black Box Recorder](${SITE}/api/v1/black-box.json): frames point-in-time hashées pour rejouer la dernière observation publique du risque avant une date donnée.`);
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable. US Macro combine z-score, drift et momentum par moyenne ponderee et penalise les faux positifs hors recession.`);
   lines.push(`- [Dette US](${SITE}/api/v1/debt-risk.json): snapshot canonique Debt Risk Radar repris de latest.json, avec score courant hors CBO, imputation neutre des buckets courants manquants, couverture, provenance et top signaux.`);
   lines.push(`- [Signaux courants](${SITE}/api/v1/signals/current.json): dernières observations point-in-time par instrument.`);

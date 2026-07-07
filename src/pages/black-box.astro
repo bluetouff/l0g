@@ -1,0 +1,388 @@
+---
+import { getCollection } from 'astro:content';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
+import { buildBlackBoxSurface } from '../lib/black-box.ts';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+
+function readRiskSnapshot() {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), 'public/risk.json'), 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
+function fr(value?: string | null) {
+  if (!value) return 'n/a';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'n/a';
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
+const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
+const recorder = buildBlackBoxSurface(posts, guides, readRiskSnapshot());
+const latest = recorder.frames.at(-1);
+
+const trustItems = [
+  { label: 'frames hashées', href: '/api/v1/black-box.json' },
+  { label: 'signaux point-in-time', href: '/api/v1/signals/history.json' },
+  { label: 'intégrité', href: '/api/v1/integrity.json' },
+  { label: 'changefeed', href: '/api/v1/changes.json' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${site}/black-box/#dataset`,
+  name: 'Black Box Recorder l0g',
+  description:
+    'Boîte noire publique des signaux de risque l0g : frames datées, hashes, sources, modèles, fraîcheur, articles et changements de méthodologie.',
+  url: `${site}/black-box/`,
+  inLanguage: 'fr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  isAccessibleForFree: true,
+  creator: { '@id': `${site}/#org` },
+  temporalCoverage: `${recorder.coverage.firstFrameDate ?? ''}/${recorder.coverage.lastFrameDate ?? ''}`,
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${site}/api/v1/black-box.json`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Black Box Recorder"
+  description="Black Box Recorder l0g : boîte noire publique des signaux de risque, avec frames point-in-time, hashes d’intégrité, sources, modèles, fraîcheur et replay par date."
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <article class="black-box rise" data-pagefind-body>
+    <section class="bb-hero" data-pagefind-ignore>
+      <p class="mono-label glow">// black box recorder</p>
+      <h1 class="bb-title font-display glow">La boîte noire publique du risque.</h1>
+      <p class="bb-lede">
+        Chaque frame enregistre ce que l0g pouvait publiquement savoir à une date donnée :
+        scores, sources, hashes, fraîcheur, modèles, articles, changements de méthode et
+        signaux déclenchés. Une date absente reste absente.
+      </p>
+      <TrustBar items={trustItems} />
+      <div class="bb-links">
+        <a href="/api/v1/black-box.json">JSON</a>
+        <a href="/api/v1/signals/history.json">signaux</a>
+        <a href="/api/v1/integrity.json">hashes</a>
+        <a href="/api/v1/changes.json">changes</a>
+      </div>
+    </section>
+
+    <section class="bb-panel bb-replay" data-pagefind-ignore>
+      <div>
+        <p class="mono-label glow">// replay</p>
+        <h2>Rejouer une date</h2>
+        <p>
+          La règle est stricte : dernière frame publiée avant ou le jour demandé.
+          Aucune reconstruction rétroactive.
+        </p>
+      </div>
+      <form id="bb-replay-form" class="bb-form">
+        <input
+          id="bb-date"
+          type="date"
+          min={recorder.coverage.firstFrameDate ?? undefined}
+          max={recorder.coverage.lastFrameDate ?? undefined}
+          value={recorder.coverage.lastFrameDate ?? undefined}
+          aria-label="Date à rejouer"
+        />
+        <button type="submit">rejouer</button>
+      </form>
+      <div id="bb-replay-result" class="bb-result" aria-live="polite">
+        {latest ? (
+          <>
+            <strong>Dernière frame : {latest.date}</strong>
+            <span>{latest.signals.length} signaux, hash {latest.frameHash.slice(0, 16)}…</span>
+          </>
+        ) : (
+          <span>Aucune frame publique disponible.</span>
+        )}
+      </div>
+    </section>
+
+    <section class="bb-grid" aria-label="Couverture Black Box">
+      <article class="bb-card">
+        <span class="mono-label">frames</span>
+        <strong>{recorder.coverage.frames}</strong>
+        <p>{recorder.coverage.firstFrameDate ?? 'n/a'} → {recorder.coverage.lastFrameDate ?? 'n/a'}</p>
+      </article>
+      <article class="bb-card">
+        <span class="mono-label">observations</span>
+        <strong>{recorder.coverage.observations}</strong>
+        <p>{recorder.coverage.instruments.length} instruments point-in-time</p>
+      </article>
+      <article class="bb-card">
+        <span class="mono-label">alertes</span>
+        <strong>{recorder.coverage.levelChanges}</strong>
+        <p>franchissements de niveau publiés</p>
+      </article>
+    </section>
+
+    {latest ? (
+      <section class="bb-split">
+        <div class="bb-panel">
+          <p class="mono-label glow">// dernière frame</p>
+          <ul>
+            <li><strong>Date</strong><span>{latest.date}</span></li>
+            <li><strong>Frame hash</strong><span>{latest.frameHash}</span></li>
+            <li><strong>Fraîcheur</strong><span>{latest.freshness.status}, {latest.freshness.completeSignals}/5 signaux présents</span></li>
+          </ul>
+        </div>
+        <div class="bb-panel">
+          <p class="mono-label glow">// signaux enregistrés</p>
+          <ul>
+            {latest.signals.map((signal) => (
+              <li>
+                <strong>{signal.label}</strong>
+                <span>{signal.value ?? 'n/a'} / {signal.scale} · {signal.level ?? 'n/a'} · {fr(signal.observedAt)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ) : null}
+
+    <section class="bb-split">
+      <div class="bb-panel">
+        <p class="mono-label glow">// sources disponibles</p>
+        <ul>
+          {latest?.sources.available.length ? latest.sources.available.map((source) => (
+            <li>
+              <strong>{source.label}</strong>
+              <span>{source.sourceUrl}</span>
+            </li>
+          )) : <li>Aucune source enregistrée dans la dernière frame.</li>}
+        </ul>
+      </div>
+      <div class="bb-panel">
+        <p class="mono-label glow">// limites publiques</p>
+        <ul>
+          <li>Le replay commence à la première frame publiée, pas avant.</li>
+          <li>Les trous historiques restent visibles.</li>
+          <li>Les hashes vérifient les surfaces servies, sans transformer un score en probabilité.</li>
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <script is:inline>
+    (() => {
+      const form = document.getElementById('bb-replay-form');
+      const input = document.getElementById('bb-date');
+      const result = document.getElementById('bb-replay-result');
+      if (!form || !input || !result) return;
+
+      let surfacePromise = null;
+      const surface = () => {
+        if (!surfacePromise) surfacePromise = fetch('/api/v1/black-box.json').then((res) => res.json());
+        return surfacePromise;
+      };
+
+      function render(frame, requested) {
+        if (!frame) {
+          result.innerHTML = `<strong>Non rejouable</strong><span>Aucune frame publique antérieure ou égale au ${requested}.</span>`;
+          return;
+        }
+        const signals = frame.signals.map((signal) => `${signal.instrument}:${signal.value ?? 'n/a'}`).join(' · ');
+        result.innerHTML = `<strong>Frame ${frame.date}</strong><span>${frame.signals.length} signaux · ${signals}</span><span>hash ${frame.frameHash}</span>`;
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const requested = input.value;
+        if (!requested) return;
+        const data = await surface();
+        const frames = Array.isArray(data.frames) ? data.frames : [];
+        render(frames.filter((frame) => frame.date <= requested).at(-1), requested);
+      });
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .black-box {
+    max-width: 1120px;
+  }
+
+  .bb-hero {
+    padding: 2rem 0 1rem;
+  }
+
+  .bb-title {
+    margin-top: .8rem;
+    max-width: 900px;
+    font-size: clamp(2.2rem, 6vw, 4.8rem);
+    line-height: .96;
+    letter-spacing: 0;
+  }
+
+  .bb-lede {
+    margin-top: 1.2rem;
+    max-width: 780px;
+    color: var(--color-paper);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .bb-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 1rem;
+  }
+
+  .bb-links a,
+  .bb-card,
+  .bb-panel {
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-surface) 64%, transparent);
+  }
+
+  .bb-links a {
+    padding: .45rem .65rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .bb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .bb-card,
+  .bb-panel {
+    padding: 1rem;
+  }
+
+  .bb-card strong {
+    display: block;
+    margin-top: .5rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 2rem;
+  }
+
+  .bb-card p,
+  .bb-panel span,
+  .bb-panel li,
+  .bb-replay p {
+    color: var(--color-muted);
+  }
+
+  .bb-replay {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .bb-replay h2 {
+    margin-top: .5rem;
+    color: var(--color-bright);
+    font-size: 1.35rem;
+  }
+
+  .bb-form {
+    display: flex;
+    gap: .5rem;
+  }
+
+  .bb-form input,
+  .bb-form button {
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-surface-2);
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    min-height: 2.5rem;
+    padding: .4rem .65rem;
+  }
+
+  .bb-form button {
+    color: var(--color-signal);
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .bb-result {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--color-line);
+    padding-top: .8rem;
+  }
+
+  .bb-result strong,
+  .bb-result span {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+
+  .bb-result strong,
+  .bb-panel strong {
+    color: var(--color-bright);
+  }
+
+  .bb-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .bb-panel ul {
+    margin: .8rem 0 0;
+    padding-left: 1.1rem;
+  }
+
+  .bb-panel li {
+    margin-top: .55rem;
+  }
+
+  .bb-panel span {
+    display: block;
+    margin-top: .15rem;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 860px) {
+    .bb-grid,
+    .bb-split,
+    .bb-replay {
+      grid-template-columns: 1fr;
+    }
+
+    .bb-form {
+      flex-direction: column;
+    }
+  }
+</style>
