@@ -1,0 +1,99 @@
+---
+title: "Lire la volatilité : VIX et MOVE, les thermomètres de la peur"
+description: "Guide de référence sur les indices de volatilité implicite : ce que mesure le VIX sur les actions et le MOVE sur les obligations, comment ils sont construits, la lecture des niveaux et de la structure par terme (contango, backwardation), pourquoi le VIX et le MOVE divergent parfois, les pièges (volatilité moyenne-réversive, faible volatilité qui n'est pas faible risque, produits non directement investissables), et le régime de 2026 où les deux sont bas. Avec les niveaux de 2026 en illustration."
+summary: "Le VIX et le MOVE sont les deux thermomètres de la peur des marchés : le VIX mesure la volatilité implicite attendue des actions américaines sur 30 jours, le MOVE celle des obligations d'État. Le lire suppose de comprendre qu'ils regardent devant et non derrière, de situer les niveaux (VIX autour de 20 en moyenne, MOVE autour de 80), de lire la structure par terme, et de savoir qu'une volatilité basse n'est pas un risque bas. En 2026, les deux sont au plancher : une surface calme qui mérite qu'on regarde dessous."
+pubDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "marchés", "taux", "méthodologie"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Quand un présentateur annonce que « la peur remonte sur les marchés », il parle presque toujours du VIX, sans dire ce qu'il mesure. Et il oublie son cousin obligataire, le MOVE, souvent plus révélateur. Ces deux indices ne disent pas ce que les marchés ont fait, mais ce qu'ils redoutent. Ce guide reprend la volatilité implicite de bout en bout : comment le VIX et le MOVE sont construits, comment les lire, quand ils divergent, et pourquoi une volatilité basse n'annonce jamais la tranquillité qu'elle semble promettre. Le calme de 2026 sert d'illustration.*
+
+## Volatilité implicite : regarder devant, pas derrière
+
+Il faut d'abord distinguer deux volatilités. La volatilité réalisée mesure l'ampleur des mouvements passés d'un actif, elle regarde dans le rétroviseur. La volatilité implicite, elle, est extraite du prix des options : c'est l'ampleur des mouvements que le marché anticipe pour les semaines à venir. Comme une option est une assurance contre un mouvement, son prix monte quand les investisseurs redoutent la turbulence. Le VIX et le MOVE ne sont rien d'autre que la lecture de cette assurance, traduite en indice.
+
+C'est ce qui en fait des indicateurs avancés, et non des constats. Ils montent quand la demande de protection s'intensifie, souvent avant que la baisse ne se matérialise pleinement. Un VIX qui bondit dit que le marché achète des parapluies, pas nécessairement qu'il pleut déjà.
+
+## Le VIX, la volatilité des actions
+
+Le [VIX](/glossaire/vix/) mesure la volatilité implicite attendue de l'indice S&P 500 sur les trente jours à venir. Il est calculé par le CBOE à partir de tout un éventail d'options sur le S&P, sans passer par un modèle d'évaluation, puis exprimé en pourcentage annualisé. Une règle de lecture simple aide à le traduire : diviser le VIX par 3,5 environ donne l'ampleur du mouvement mensuel que le marché juge probable. Un VIX à 16 correspond ainsi à une variation attendue de l'ordre de 4,5 % sur le mois, à la hausse comme à la baisse.
+
+Surnommé l'« indice de la peur », le VIX a un comportement asymétrique : il grimpe brutalement lors des chutes de marché et redescend lentement dans les phases de hausse, parce que la demande de protection explose dans la panique. Sa moyenne de long terme tourne autour de 19 à 20. En dessous de 15, le marché est complaisant ; au-dessus de 30, il est tendu ; les grands chocs l'ont propulsé bien plus haut, jusqu'à environ 82 au plus fort du krach de mars 2020.
+
+<InfographicBars
+  title="Le VIX, de la complaisance à la panique"
+  subtitle="Indice VIX, aujourd'hui, en moyenne et lors des grands chocs, en points."
+  max={82}
+  items={[
+    { label: "Aujourd'hui (juillet 2026)", value: 15.8, valueLabel: "15,8", tone: "signal" },
+    { label: "Moyenne de long terme", value: 19.5, valueLabel: "~19,5", tone: "muted" },
+    { label: "Pic du krach Covid (mars 2020)", value: 82, valueLabel: "~82", tone: "amber" },
+  ]}
+  note="Sous 15, complaisance ; au-dessus de 30, tension ; au-delà de 50, panique."
+  source="Sources : Cboe, Federal Reserve Bank of St. Louis (FRED)."
+  caption="À 15,8, le VIX est nettement sous sa moyenne : le marché actions ne price presque aucune turbulence. Les grands chocs l'ont pourtant envoyé au-delà de 80. Sources : Cboe, FRED."
+/>
+
+## Le MOVE, la volatilité des obligations
+
+Le [MOVE](/glossaire/move/) est l'équivalent du VIX pour les obligations d'État américaines. Il mesure la volatilité implicite des options à un mois sur les Treasuries, en pondérant les échéances le long de la courbe, avec un poids dominant sur le dix ans. À la différence du VIX, il s'exprime en points de base de volatilité de taux, pas en pourcentage de prix. Un MOVE élevé signale que le marché s'attend à de forts mouvements de rendements, donc à de l'incertitude sur la trajectoire de la Fed, l'inflation ou l'offre de dette.
+
+Sa grille de lecture est bien établie : en dessous de 80, le marché obligataire est calme, un environnement plutôt favorable au risque ; entre 80 et 120, la volatilité est modérée ; au-delà de 120, la tension est réelle. Le MOVE est particulièrement suivi comme approximation de la [prime de terme](/glossaire/prime-de-terme/) : quand l'incertitude sur les taux monte, la prime exigée pour détenir de la dette longue monte avec elle, sujet développé dans notre guide sur le [marché des Treasuries](/guides/lire-le-marche-des-treasuries/).
+
+<InfographicBars
+  title="Le MOVE et ses seuils de lecture"
+  subtitle="Indice MOVE, aujourd'hui, seuil de stress et pic récent, en points de base."
+  max={200}
+  items={[
+    { label: "Aujourd'hui (juillet 2026)", value: 65.8, valueLabel: "65,8", tone: "signal" },
+    { label: "Seuil de stress", value: 120, valueLabel: "120", tone: "amber" },
+    { label: "Pic de la crise bancaire (mars 2023)", value: 198, valueLabel: "~198", tone: "muted" },
+  ]}
+  note="Sous 80 : marché obligataire calme, propice au risque."
+  source="Sources : ICE BofA, MacroMicro."
+  caption="À 65,8, le MOVE est sous le seuil de calme : le marché des taux ne price aucun stress, loin du pic de 198 atteint lors des faillites bancaires de mars 2023. Sources : ICE BofA, MacroMicro."
+/>
+
+## La structure par terme, un signal dans le signal
+
+Au-delà du niveau, la forme de la courbe de volatilité porte une information. Les contrats à terme sur le VIX sont d'ordinaire en contango : la volatilité attendue à trois mois est supérieure à celle d'aujourd'hui, car l'incertitude croît avec l'horizon. C'est l'état normal, celui d'un marché serein. Quand cette structure s'inverse, la volatilité immédiate passant au-dessus de la volatilité lointaine, on parle de backwardation : le marché price un stress aigu ici et maintenant, qu'il juge appelé à se résorber. Cette inversion est l'un des signaux les plus fiables de panique en cours.
+
+Un indice complète le tableau, le VVIX, ou volatilité de la volatilité : il mesure l'agitation des options sur le VIX lui-même. Un VVIX élevé alors que le VIX est bas trahit une nervosité sous la surface, des investisseurs qui se couvrent contre un retournement soudain sans que la volatilité au comptant ait encore bougé.
+
+## Quand le VIX et le MOVE divergent
+
+L'erreur commune est de croire que ces deux thermomètres bougent ensemble. Ils le font souvent, mais leurs divergences sont précisément ce qu'il faut guetter. En 2022 et 2023, alors que la Fed remontait ses taux à marche forcée, le MOVE s'est envolé bien au-dessus de ses normes quand le VIX restait relativement contenu : le stress était logé dans les taux, pas dans les actions. À l'inverse, un choc purement actionnaire, une déception sur les résultats des grandes technologiques par exemple, peut faire bondir le VIX sans agiter le MOVE.
+
+Lire les deux ensemble, c'est localiser le stress. Un MOVE qui monte seul signale une inquiétude sur la Fed, l'inflation ou la dette souveraine. Un VIX qui monte seul signale une peur cantonnée aux actions. Et les deux qui montent de concert, comme en mars 2020, signalent une crise systémique où plus aucun compartiment n'est épargné.
+
+## Les pièges de lecture
+
+Le premier piège est de confondre volatilité basse et risque bas. La volatilité est moyenne-réversive et regarde à court terme : elle peut rester au plancher pendant des mois, juste avant un choc. Les grandes crises ont presque toutes été précédées d'une période de calme trompeur, parce que le calme lui-même pousse les investisseurs à prendre plus de levier, ce qui rend le système plus fragile. Une volatilité basse est une information sur le présent, jamais une assurance sur l'avenir.
+
+Le deuxième piège est de croire le VIX directement investissable. On ne peut pas acheter le VIX au comptant ; on ne peut trader que ses contrats à terme, dont le contango érode mécaniquement les produits indiciels qui les répliquent. Le débouclage brutal de positions vendeuses de volatilité peut par ailleurs amplifier un choc, comme lors du « Volmageddon » de février 2018, où l'effondrement de produits short-vol a nourri sa propre spirale. Vendre de la volatilité rapporte régulièrement de petits gains, jusqu'au jour où la perte efface tout.
+
+## 2026 : une surface trop calme
+
+Mi-2026, les deux thermomètres sont au plancher : le [VIX autour de 15,8](https://fred.stlouisfed.org/series/VIXCLS) et le [MOVE autour de 65,8](https://en.macromicro.me/charts/35584/us-treasury-move-index), tous deux sous leurs seuils de calme. Pris isolément, ce double signal dit un marché parfaitement serein. Mais c'est précisément là qu'il faut se méfier : cette sérénité affichée coexiste avec des [spreads de crédit au plus serré depuis 2007](/guides/lire-les-spreads-de-credit/) et des tensions de financement en dollar que la surface ne montre pas, décrites dans notre guide sur le [dollar et le cross-currency basis](/guides/lire-le-dollar-dxy-cross-currency-basis/). Le calme de la volatilité, comme la finesse des spreads, est le symptôme d'un marché qui a cessé de payer pour se protéger.
+
+C'est le même paradoxe que nous analysons à propos des [valorisations de l'IA](/posts/la-bulle-dans-la-bulle-valorisations-ia-et-benefices-gonfles/) : plus la complaisance s'installe, moins il reste de marge quand le vent tourne. Un MOVE bas ne garantit pas des taux stables, il indique seulement que le marché n'anticipe pas leur instabilité, ce qui n'est pas la même chose.
+
+## Lire la volatilité en pratique
+
+Bien lus, le VIX et le MOVE ne sont pas des verdicts mais des cartes du risque perçu. Le niveau situe la tension par rapport à l'histoire. La structure par terme, contango ou backwardation, dit si le stress est lointain ou immédiat. La divergence entre les deux localise le compartiment concerné, actions ou taux. Et le VVIX révèle la nervosité tapie sous un calme apparent. À aucun moment ils ne prédisent : ils mesurent ce que le marché est prêt à payer pour dormir tranquille, et ce prix en dit long sur son état d'esprit.
+
+Reste la règle d'or : lire la volatilité avec le reste du tableau de bord. Une volatilité basse conjuguée à des spreads serrés et à un [basis](/glossaire/cross-currency-basis/) tendu n'est pas un feu vert, mais un avertissement sur la faible rémunération du risque. Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions, et le [calendrier économique](/calendrier-eco/) recense les rendez-vous susceptibles de réveiller ces indices.
+
+---
+
+**Sources principales :**
+
+- [Cboe, méthodologie de l'indice VIX](https://www.cboe.com/tradable_products/vix/) : construction à partir des options sur le S&P 500, horizon de 30 jours, expression en pourcentage annualisé.
+- [Federal Reserve Bank of St. Louis (FRED), CBOE Volatility Index: VIX](https://fred.stlouisfed.org/series/VIXCLS) : niveau du VIX (environ 15,8 début juillet 2026), série historique et pics de 2008 et mars 2020 (~82).
+- [ICE, MOVE Index](https://developer.ice.com/fixed-income-data-services/catalog/ice-data-indices-move-index) : volatilité implicite des options à un mois sur les Treasuries, pondération le long de la courbe, expression en points de base.
+- [MacroMicro, US Treasury MOVE Index](https://en.macromicro.me/charts/35584/us-treasury-move-index) : niveau du MOVE (environ 65,8 en juillet 2026), seuils de lecture et pic de mars 2023 (~198).
+- [Cboe, indice VVIX (volatilité de la volatilité)](https://www.cboe.com/us/indices/dashboard/VVIX/) : mesure de la nervosité des options sur le VIX, lecture sous un VIX bas.
