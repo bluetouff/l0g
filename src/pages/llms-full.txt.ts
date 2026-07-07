@@ -161,7 +161,7 @@ export const GET: APIRoute = async () => {
     out.push('');
   }
   out.push(SEP);
-  out.push('GLOSSAIRE : Sigles et notions');
+  out.push("GLOSSAIRE : Atlas de l'opacite financiere");
   out.push(`URL : ${SITE}/glossaire/`);
   out.push('-'.repeat(76));
   for (const term of glossaryEntries) {
@@ -170,6 +170,27 @@ export const GET: APIRoute = async () => {
     out.push(`Categorie : ${term.sectionTitle}`);
     out.push(term.def);
     if (term.guide) out.push(`Guide lie : ${guideUrl(term.guide)}`);
+    if (term.atlas) {
+      out.push("Atlas de l'opacite financiere :");
+      if (term.atlas.intuition) out.push(`Intuition : ${term.atlas.intuition}`);
+      if (term.atlas.formula) out.push(`Formule : ${term.atlas.formula}`);
+      if (term.atlas.whyNow) out.push(`Pourquoi maintenant : ${term.atlas.whyNow}`);
+      if (term.atlas.related?.length) out.push(`Concepts voisins : ${term.atlas.related.join(', ')}`);
+      const groups = [
+        ['Articles lies', term.atlas.articles],
+        ['Guides lies', term.atlas.guides],
+        ['Datasets lies', term.atlas.datasets],
+        ['Signaux', term.atlas.signals],
+        ['Sources primaires', term.atlas.sources],
+      ] as const;
+      for (const [label, items] of groups) {
+        if (!items?.length) continue;
+        out.push(`${label} :`);
+        for (const item of items) {
+          out.push(`- ${item.label} : ${item.href.startsWith('/') ? `${SITE}${item.href}` : item.href}${item.detail ? ` (${item.detail})` : ''}`);
+        }
+      }
+    }
     out.push('');
   }
 

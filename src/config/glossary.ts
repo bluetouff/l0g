@@ -1,5 +1,23 @@
 export interface GlossarySourceEntry { sigle: string; nom: string; def: string; guide?: string; }
 export interface GlossarySourceSection { titre: string; accent: string; entries: GlossarySourceEntry[]; }
+export type GlossaryGraphLinkKind = 'article' | 'guide' | 'dataset' | 'signal' | 'source' | 'methodology';
+export interface GlossaryGraphLink {
+  label: string;
+  href: string;
+  detail?: string;
+  kind?: GlossaryGraphLinkKind;
+}
+export interface GlossaryKnowledgeGraph {
+  intuition?: string;
+  formula?: string;
+  whyNow?: string;
+  articles?: GlossaryGraphLink[];
+  guides?: GlossaryGraphLink[];
+  datasets?: GlossaryGraphLink[];
+  signals?: GlossaryGraphLink[];
+  sources?: GlossaryGraphLink[];
+  related?: string[];
+}
 
 const rawGlossarySections: GlossarySourceSection[] = [
   {
@@ -21,6 +39,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'PTF', nom: 'Productivité totale des facteurs', def: "Part de la croissance qui ne s'explique ni par plus de travail ni par plus de capital, mais par une meilleure efficacité (technologie, organisation). Mesure résiduelle et centrale du progrès technique. L'estimation d'Acemoglu chiffre l'apport de l'IA à au plus 0,5 à 0,66 % de PTF sur dix ans." },
       { sigle: 'Paradoxe de Solow', nom: 'Solow paradox', def: "Constat de Robert Solow en 1987, « on voit l'âge informatique partout sauf dans les statistiques de productivité » : le décalage entre des gains technologiques visibles au niveau des tâches et un effet longtemps introuvable dans la productivité agrégée. Réapparu avec l'IA générative." },
       { sigle: 'Prime de terme', nom: 'Term premium', def: "Supplément de rendement qu'un investisseur exige pour détenir une obligation longue plutôt que d'enchaîner des placements courts, en compensation du risque de taux, d'inflation et d'offre de dette. Estimée par le modèle ACM de la Fed de New York. Négative ou nulle pendant une décennie, elle est repassée en positif en 2026, sans atteindre sa moyenne historique de long terme.", guide: '/guides/lire-le-marche-des-treasuries/' },
+      { sigle: 'Duration', nom: 'Sensibilité aux taux', def: "Mesure de la sensibilité du prix d'une obligation à une variation de taux. Plus la duration est élevée, plus une hausse de rendement détruit de valeur de marché. Elle transforme une tension sur les taux longs en risque de bilan pour les porteurs de dette longue.", guide: '/guides/lire-le-marche-des-treasuries/' },
       { sigle: 'Adjudication', nom: 'Treasury auction', def: "Vente aux enchères par laquelle le Trésor américain émet sa dette. Enchère à prix unique : les soumissionnaires proposent des rendements et tous les gagnants paient le rendement qui solde l'émission. Sa lecture repose sur le bid-to-cover, le tail et la part des primary dealers.", guide: '/guides/lire-le-marche-des-treasuries/' },
       { sigle: 'Bid-to-cover', nom: 'Ratio de couverture', def: "Rapport entre le total des offres reçues à une adjudication et le montant vendu. Signal de volume de la demande : au-dessus de 2, l'appétit est jugé solide ; en dessous, faible.", guide: '/guides/lire-le-marche-des-treasuries/' },
       { sigle: 'Primary dealer', nom: 'Teneur de marché primaire', def: "Banque désignée par la Réserve fédérale de New York, tenue de participer à chaque adjudication du Trésor et de tenir le marché secondaire. Une vingtaine au total. Un dealer takedown élevé, la part revenant aux dealers, signale une demande finale faible.", guide: '/guides/lire-le-marche-des-treasuries/' },
@@ -256,6 +275,7 @@ export interface GlossaryEntry extends GlossarySourceEntry {
   sectionTitle: string;
   sectionSlug: string;
   accent: string;
+  atlas?: GlossaryKnowledgeGraph;
 }
 
 export const slugifyGlossary = (s: string) =>
@@ -268,6 +288,183 @@ const uniqueSlug = (value: string) => {
   const n = (seenSlugs.get(base) ?? 0) + 1;
   seenSlugs.set(base, n);
   return n === 1 ? base : `${base}-${n}`;
+};
+
+const treasuryArticles: GlossaryGraphLink[] = [
+  { label: 'Le réveil de la prime de terme', href: '/posts/dette-americaine-le-reveil-de-la-prime-de-terme/', detail: 'Décomposition du taux long et régime de dette US.', kind: 'article' },
+  { label: 'Basis trade sur Treasuries', href: '/posts/basis-trade-treasuries-levier/', detail: 'Levier, repo et fragilité du marché obligataire.', kind: 'article' },
+  { label: 'Repo et collatéral', href: '/posts/repo-collateral-fabrique-liquidite/', detail: 'Chaînes de financement qui transmettent un choc de taux.', kind: 'article' },
+];
+
+const treasuryGuides: GlossaryGraphLink[] = [
+  { label: 'Lire le marché des Treasuries', href: '/guides/lire-le-marche-des-treasuries/', detail: 'Courbe, adjudications, détenteurs et prime de terme.', kind: 'guide' },
+  { label: 'Lire les données TIC', href: '/guides/lire-les-donnees-tic/', detail: 'Détentions étrangères et biais de conservation.', kind: 'guide' },
+  { label: 'Liquidité Trésor, TGA, RRP', href: '/guides/liquidite-tresor-dts-tga-rrp/', detail: 'Canaux de réserves et cash du Trésor.', kind: 'guide' },
+  { label: 'Lire les prévisions du CBO', href: '/guides/lire-les-previsions-du-cbo/', detail: 'Trajectoire budgétaire et charge d’intérêt.', kind: 'guide' },
+];
+
+const treasuryDatasets: GlossaryGraphLink[] = [
+  { label: 'risk.json', href: '/api/v1/risk.json', detail: 'Snapshot public des signaux de risque.', kind: 'dataset' },
+  { label: 'debt-risk.json', href: '/api/v1/debt-risk.json', detail: 'Snapshot Debt Risk Radar avec provenance.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: 'Diff 1, 7 et 30 jours des signaux, sources et modèles.', kind: 'dataset' },
+  { label: 'signals/history.json', href: '/api/v1/signals/history.json', detail: 'Historique point-in-time des signaux.', kind: 'dataset' },
+];
+
+const treasurySignals: GlossaryGraphLink[] = [
+  { label: 'Debt Risk Radar', href: '/methodologie/debt-risk-radar/', detail: 'Dette, charge d’intérêt, stress courant et vulnérabilité structurelle.', kind: 'methodology' },
+  { label: 'Backtests signaux', href: '/backtests/', detail: 'Historique vérifiable des observations de risque.', kind: 'signal' },
+  { label: 'Risk Diff', href: '/risk-diff/', detail: 'Variation récente du risque et fraîcheur des sources.', kind: 'signal' },
+  { label: 'Black Box Recorder', href: '/black-box/', detail: 'Frames hashées pour rejouer un état point-in-time.', kind: 'signal' },
+];
+
+const treasurySources: GlossaryGraphLink[] = [
+  { label: 'Federal Reserve & FRED', href: '/sources/federal-reserve-fred/', detail: 'Taux, bilan Fed, séries FRED et modèle ACM de la Fed de New York.', kind: 'source' },
+  { label: 'U.S. Treasury Fiscal Data', href: '/sources/treasury-fiscal-data/', detail: 'Dette, cash du Trésor, DTS et adjudications.', kind: 'source' },
+  { label: 'U.S. Treasury TIC', href: '/sources/treasury-tic/', detail: 'Détentions et flux transfrontaliers de Treasuries.', kind: 'source' },
+  { label: 'Congress.gov, GovInfo & CBO', href: '/sources/congress-govinfo-cbo/', detail: 'Projections budgétaires, textes et estimations.', kind: 'source' },
+  { label: 'Bank for International Settlements', href: '/sources/bis/', detail: 'Dette globale, banques et fragilités de marché.', kind: 'source' },
+];
+
+const treasuryRelated = [
+  'duration',
+  'move',
+  'adjudication',
+  'bid-to-cover',
+  'primary-dealer',
+  'courbe-des-taux',
+  'dominance-fiscale',
+  'repo',
+  'basis-trade',
+  'tic',
+  'tga',
+  'cbo',
+];
+
+const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'prime-de-terme': {
+    intuition: "La prime de terme isole la rémunération demandée pour porter la duration, une fois retirée la trajectoire attendue des taux courts.",
+    formula: 'rendement long ≈ moyenne des taux courts anticipés + prime de terme',
+    whyNow: "Quand l'offre de dette longue augmente, que le QT réduit l'acheteur public et que la demande étrangère se déplace, une baisse attendue des taux courts peut coexister avec une remontée du rendement long.",
+    articles: treasuryArticles,
+    guides: treasuryGuides,
+    datasets: treasuryDatasets,
+    signals: treasurySignals,
+    sources: treasurySources,
+    related: treasuryRelated,
+  },
+  duration: {
+    intuition: "La duration transforme un mouvement de taux en perte ou gain de prix. Elle dit quelle quantité de risque de taux dort dans un portefeuille.",
+    formula: 'variation approximative du prix ≈ -duration × variation du rendement',
+    whyNow: "Dans un régime de dette élevée, la duration concentre le risque : banques, assureurs, fonds de pension et stratégies repo peuvent vendre en même temps si les taux longs cassent leur scénario.",
+    articles: treasuryArticles,
+    guides: treasuryGuides,
+    datasets: treasuryDatasets,
+    signals: treasurySignals,
+    sources: treasurySources,
+    related: ['prime-de-terme', 'move', 'courbe-des-taux', 'repo', 'basis-trade', 'ldi'],
+  },
+  move: {
+    intuition: "Le MOVE mesure le prix de l'incertitude sur les taux. Il sert de détecteur de turbulence obligataire, surtout quand adjudications, duration et financement repo se tendent ensemble.",
+    whyNow: "Un MOVE élevé renchérit la couverture, complique le market making et peut rendre les stratégies de portage moins stables.",
+    articles: treasuryArticles,
+    guides: treasuryGuides.slice(0, 2),
+    datasets: treasuryDatasets,
+    signals: treasurySignals,
+    sources: treasurySources.slice(0, 2),
+    related: ['prime-de-terme', 'duration', 'adjudication', 'repo', 'basis-trade'],
+  },
+  adjudication: {
+    intuition: "L'adjudication révèle la demande marginale pour la dette émise aujourd'hui, pas la demande théorique pour les Treasuries.",
+    formula: 'demande visible = bid-to-cover + tail + part des primary dealers',
+    whyNow: "Le calendrier de refinancement devient un signal de risque quand les volumes à émettre augmentent et que l'acheteur marginal exige plus de rendement.",
+    articles: [treasuryArticles[0]],
+    guides: [treasuryGuides[0]],
+    datasets: [treasuryDatasets[1], treasuryDatasets[2], treasuryDatasets[3]],
+    signals: treasurySignals,
+    sources: [treasurySources[1], treasurySources[0]],
+    related: ['bid-to-cover', 'primary-dealer', 'prime-de-terme', 'duration', 'courbe-des-taux'],
+  },
+  'bid-to-cover': {
+    intuition: "Le bid-to-cover mesure le coussin de demandes autour d'une émission, mais il ne suffit pas sans lire le tail et la répartition entre dealers, directs et indirects.",
+    whyNow: "Un ratio faible au mauvais moment peut signaler que la demande finale laisse plus de papier aux intermédiaires.",
+    guides: [treasuryGuides[0]],
+    datasets: [treasuryDatasets[1], treasuryDatasets[2]],
+    signals: treasurySignals.slice(0, 2),
+    sources: [treasurySources[1]],
+    related: ['adjudication', 'primary-dealer', 'prime-de-terme', 'move'],
+  },
+  'primary-dealer': {
+    intuition: "Les primary dealers absorbent l'offre quand la demande finale manque. Leur part dans une adjudication aide à lire la qualité de la demande.",
+    whyNow: "Dans un marché plus gros et plus volatil, l'intermédiation obligataire devient elle-même une variable de risque.",
+    guides: [treasuryGuides[0]],
+    datasets: [treasuryDatasets[1], treasuryDatasets[2]],
+    signals: treasurySignals.slice(0, 2),
+    sources: [treasurySources[0], treasurySources[1]],
+    related: ['adjudication', 'bid-to-cover', 'repo', 'basis-trade', 'move'],
+  },
+  'courbe-des-taux': {
+    intuition: "La courbe sépare niveau des taux, pente et forme. Elle relie politique monétaire, croissance attendue et rémunération du temps.",
+    formula: 'pente 10 ans - 2 ans = rendement 10 ans - rendement 2 ans',
+    whyNow: "Une courbe qui se repentifie peut signaler un retour du risque de duration plutôt qu'une simple détente monétaire.",
+    articles: [treasuryArticles[0], { label: 'Warsh, bilan Fed et QT', href: '/posts/warsh-bilan-qt/', detail: 'Bilan de la Fed, QT et conditions de taux.', kind: 'article' }],
+    guides: [treasuryGuides[0], { label: 'Lire le H.4.1 de la Fed', href: '/guides/lire-h41-bilan-fed/', detail: 'Bilan de la Fed et réserves bancaires.', kind: 'guide' }],
+    datasets: treasuryDatasets,
+    signals: treasurySignals,
+    sources: treasurySources.slice(0, 2),
+    related: ['prime-de-terme', 'duration', 'move', 'qt', 'ffr'],
+  },
+  'dominance-fiscale': {
+    intuition: "La dominance fiscale apparaît quand le coût politique et budgétaire de la dette réduit la liberté de la banque centrale.",
+    whyNow: "Le signal devient plus pertinent quand charge d'intérêt, déficit primaire et refinancement montent en même temps.",
+    articles: [treasuryArticles[0]],
+    guides: [treasuryGuides[3], treasuryGuides[0]],
+    datasets: [treasuryDatasets[1], treasuryDatasets[2]],
+    signals: treasurySignals,
+    sources: [treasurySources[3], treasurySources[1], treasurySources[0]],
+    related: ['prime-de-terme', 'cbo', 'deficit-primaire', 'baseline-budgetaire', 'ffr'],
+  },
+  repo: {
+    intuition: "Le repo dit comment la dette publique se finance au jour le jour quand elle devient collatéral.",
+    formula: 'cash aujourd’hui contre titre, puis rachat demain avec intérêt implicite',
+    whyNow: "Le repo relie Treasuries, hedge funds, banques et fonds monétaires. Une tension de collatéral peut transformer un mouvement de taux en problème de liquidité.",
+    articles: [treasuryArticles[1], treasuryArticles[2], { label: 'Gilts, repo et levier', href: '/posts/gilts-repo-levier-banque-angleterre/', detail: 'Transmission d’un choc de taux via le financement.', kind: 'article' }],
+    guides: [treasuryGuides[0], treasuryGuides[2]],
+    datasets: treasuryDatasets,
+    signals: treasurySignals,
+    sources: [treasurySources[0], treasurySources[1], treasurySources[4]],
+    related: ['basis-trade', 'haircut-repo', 'srf', 'rrp', 'duration', 'move'],
+  },
+  'basis-trade': {
+    intuition: "Le basis trade transforme un petit écart de prix en grosse exposition grâce au levier repo.",
+    whyNow: "Il peut soutenir la liquidité des Treasuries en temps calme, puis l'assécher si les marges montent ou si le financement devient instable.",
+    articles: [treasuryArticles[1], treasuryArticles[2]],
+    guides: [treasuryGuides[0], treasuryGuides[2]],
+    datasets: treasuryDatasets,
+    signals: treasurySignals,
+    sources: [treasurySources[0], treasurySources[4], treasurySources[1]],
+    related: ['repo', 'duration', 'move', 'primary-dealer', 'courbe-des-taux'],
+  },
+  tga: {
+    intuition: "Le TGA déplace les réserves bancaires sans changer mécaniquement le bilan de la Fed.",
+    formula: 'liquidité nette suivie par les marchés ≈ bilan Fed - TGA - RRP',
+    whyNow: "Après une phase d'émission ou de reconstitution du cash du Trésor, le TGA peut drainer les réserves au moment où le marché absorbe déjà plus de dette.",
+    articles: [treasuryArticles[2]],
+    guides: [treasuryGuides[2], treasuryGuides[0]],
+    datasets: [treasuryDatasets[0], treasuryDatasets[1], treasuryDatasets[2]],
+    signals: treasurySignals,
+    sources: [treasurySources[1], treasurySources[0]],
+    related: ['dts', 'rrp', 'liquidite-nette', 'repo', 'prime-de-terme'],
+  },
+  cbo: {
+    intuition: "Le CBO donne le scénario budgétaire de référence qui permet de séparer bruit politique et trajectoire de dette.",
+    whyNow: "Ses projections servent à lire la vulnérabilité structurelle, surtout quand les intérêts deviennent une part visible du déficit.",
+    articles: [treasuryArticles[0]],
+    guides: [treasuryGuides[3]],
+    datasets: [treasuryDatasets[1], treasuryDatasets[2]],
+    signals: [treasurySignals[0], treasurySignals[2]],
+    sources: [treasurySources[3]],
+    related: ['baseline-budgetaire', 'deficit-primaire', 'dominance-fiscale', 'prime-de-terme'],
+  },
 };
 
 export const glossarySections = rawGlossarySections.map((section) => {
@@ -285,6 +482,7 @@ export const glossarySections = rawGlossarySections.map((section) => {
       return {
         ...entry,
         guide,
+        atlas: glossaryKnowledgeGraph[slug],
         slug,
         url: `/glossaire/${slug}/`,
         sectionTitle: section.titre,
@@ -298,3 +496,5 @@ export const glossarySections = rawGlossarySections.map((section) => {
 export const glossaryEntries = glossarySections.flatMap((section) => section.entries);
 export const totalGlossaryEntries = glossaryEntries.length;
 export const glossaryEntryBySlug = new Map(glossaryEntries.map((entry) => [entry.slug, entry]));
+export const glossaryAtlasEntries = glossaryEntries.filter((entry) => entry.atlas);
+export const glossaryAtlasEdgeCount = glossaryAtlasEntries.reduce((total, entry) => total + (entry.atlas?.related?.length ?? 0), 0);

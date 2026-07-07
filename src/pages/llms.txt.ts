@@ -138,9 +138,16 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Glossaire');
-  lines.push(`- [Glossaire l0g](${SITE}/glossaire/): ${glossaryEntries.length} sigles et notions de macro, finance, crypto, energie et regulation, chacun avec une page dediee.`);
+  lines.push(`- [Atlas de l'opacite financiere](${SITE}/glossaire/): ${glossaryEntries.length} sigles et notions de macro, finance, crypto, energie et regulation. Les entrees enrichies relient definition, intuition, articles, guides, datasets, signaux, sources primaires et concepts voisins.`);
   for (const term of glossaryEntries) {
-    lines.push(`- [${term.sigle}](${SITE}${term.url}): ${term.nom} - ${term.def}`);
+    const atlasParts = term.atlas
+      ? [
+          term.atlas.formula ? `formule: ${term.atlas.formula}` : null,
+          term.atlas.related?.length ? `concepts voisins: ${term.atlas.related.join(', ')}` : null,
+          term.atlas.sources?.length ? `sources: ${term.atlas.sources.map((source) => source.label).join(', ')}` : null,
+        ].filter(Boolean).join('; ')
+      : '';
+    lines.push(`- [${term.sigle}](${SITE}${term.url}): ${term.nom} - ${term.def}${atlasParts ? ` Atlas: ${atlasParts}.` : ''}`);
   }
   lines.push('');
 

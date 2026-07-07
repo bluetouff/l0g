@@ -1,9 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import { glossaryEntries, glossarySections as sections, totalGlossaryEntries } from '../config/glossary.ts';
+import {
+  glossaryAtlasEdgeCount,
+  glossaryAtlasEntries,
+  glossaryEntries,
+  glossaryEntryBySlug,
+  glossarySections as sections,
+  totalGlossaryEntries,
+} from '../config/glossary.ts';
 
 const total = totalGlossaryEntries;
+const atlasPreview = glossaryAtlasEntries.slice(0, 9).map((entry) => ({
+  entry,
+  related: (entry.atlas?.related ?? [])
+    .map((slug) => glossaryEntryBySlug.get(slug))
+    .filter(Boolean)
+    .slice(0, 6),
+}));
 
 // --- Structured data : le glossaire comme vocabulaire structure (DefinedTermSet) ---
 const GSITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -11,9 +25,9 @@ const glossaryLd = {
   '@context': 'https://schema.org',
   '@type': 'DefinedTermSet',
   '@id': `${GSITE}/glossaire/#glossary`,
-  name: 'Glossaire l0g',
+  name: "Atlas de l'opacité financière",
   description:
-    'Sigles et acronymes de la finance, de la macroeconomie, de la crypto et de la regulation, definis en francais.',
+    'Glossaire et graphe de connaissance l0g : sigles, concepts, sources, guides, signaux et datasets de risque financier.',
   inLanguage: 'fr',
   hasDefinedTerm: glossaryEntries.map((e) => ({
     '@type': 'DefinedTerm',
@@ -30,19 +44,58 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
 
 <BaseLayout
   title="Glossaire"
-  description="Tous les sigles et acronymes du journal expliqués en français clair : CPI, SEC, BDC, NAV, USDT, OAT, CFTC, OFAC, stablecoins, crédit privé, macro et régulation."
+  description="Atlas de l'opacité financière : glossaire l0g, concepts voisins, articles, guides, sources primaires, datasets et signaux de risque reliés."
 >
   <script type="application/ld+json" is:inline set:html={glossaryJsonLd} />
   <section class="rise" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// glossaire</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// atlas</p>
     <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      Décoder les sigles
+      Atlas de l'opacité financière
     </h1>
     <p class="mt-4 max-w-2xl text-muted">
-      La finance et la macro adorent les acronymes. En voici {total}, tous croisés dans les
-      articles de ce journal, expliqués en français clair. Pas de jargon pour le jargon.
+      Le glossaire l0g devient une carte du risque : définitions courtes, concepts voisins,
+      articles, guides, sources primaires, datasets et signaux qui utilisent chaque notion.
     </p>
+    <div class="atlas-metrics" aria-label="État de l'atlas">
+      <span><strong>{total}</strong> entrées</span>
+      <span><strong>{glossaryAtlasEntries.length}</strong> nœuds enrichis</span>
+      <span><strong>{glossaryAtlasEdgeCount}</strong> relations conceptuelles</span>
+    </div>
   </section>
+
+  {atlasPreview.length > 0 && (
+    <section class="atlas-panel mt-10" aria-labelledby="atlas-title" data-pagefind-ignore>
+      <div class="atlas-panel-head">
+        <div>
+          <p class="mono-label" style="color: var(--color-signal)">graphe navigable</p>
+          <h2 id="atlas-title">Concepts reliés au risque</h2>
+        </div>
+        <a class="atlas-manual" href="/agents/">Surface agents</a>
+      </div>
+      <div class="atlas-grid">
+        {atlasPreview.map(({ entry, related }) => (
+          <article class="atlas-node" style={`--node:${entry.accent}`}>
+            <a class="atlas-node-title" href={entry.url}>
+              <span>{entry.sigle}</span>
+              <small>{entry.nom}</small>
+            </a>
+            {entry.atlas?.whyNow && <p>{entry.atlas.whyNow}</p>}
+            <div class="atlas-neighbors" aria-label={`Concepts voisins de ${entry.sigle}`}>
+              {related.map((term) => (
+                <a href={term!.url}>{term!.sigle}</a>
+              ))}
+            </div>
+            <dl class="atlas-links">
+              <div><dt>articles</dt><dd>{entry.atlas?.articles?.length ?? 0}</dd></div>
+              <div><dt>guides</dt><dd>{entry.atlas?.guides?.length ?? 0}</dd></div>
+              <div><dt>sources</dt><dd>{entry.atlas?.sources?.length ?? 0}</dd></div>
+              <div><dt>données</dt><dd>{entry.atlas?.datasets?.length ?? 0}</dd></div>
+            </dl>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <div class="gloss-tools" data-pagefind-ignore>
     <div class="gloss-search">
@@ -78,10 +131,11 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
           </h2>
           <dl class="glossary">
             {s.entries.map((e) => (
-              <div class="gentry" id={e.slug} data-term={(e.sigle + ' ' + e.nom + ' ' + e.def).toLowerCase()}>
+              <div class="gentry" id={e.slug} data-term={(e.sigle + ' ' + e.nom + ' ' + e.def + ' ' + (e.atlas?.related ?? []).join(' ')).toLowerCase()}>
                 <dt>
                   <a class="sigle" style={`color:${s.accent}`} href={e.url}>{e.sigle}</a>
                   <a class="nom" href={e.url}>{e.nom}</a>
+                  {e.atlas && <a class="atlas-tag" href={e.url}>atlas</a>}
                 </dt>
                 <dd>{e.def}{e.guide && (
                   <> <a class="gloss-guide link-term" href={e.guide}>Lire le guide complet →</a></>
@@ -170,6 +224,163 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
 
     .gloss-empty { margin-top: 2rem; color: var(--color-muted); font-family: var(--font-mono); }
     .gloss-empty::before { content: "// "; color: var(--color-accent); }
+
+    .atlas-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.35rem;
+    }
+    .atlas-metrics span {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 0.45rem 0.65rem;
+    }
+    .atlas-metrics strong {
+      color: var(--color-paper);
+      font-weight: 600;
+    }
+    .atlas-panel {
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      padding: 1.2rem 0;
+    }
+    .atlas-panel-head {
+      align-items: end;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .atlas-panel h2 {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      letter-spacing: 0;
+      line-height: 1.15;
+      margin-top: 0.35rem;
+    }
+    .atlas-manual {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 0.45rem 0.65rem;
+      white-space: nowrap;
+    }
+    .atlas-manual:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
+      color: var(--color-bright);
+    }
+    .atlas-grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    }
+    .atlas-node {
+      background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+      border: 1px solid color-mix(in srgb, var(--node) 32%, var(--color-line));
+      border-radius: 8px;
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+      min-height: 18rem;
+      padding: 0.85rem;
+    }
+    .atlas-node-title {
+      display: grid;
+      gap: 0.2rem;
+    }
+    .atlas-node-title span {
+      color: var(--node);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .atlas-node-title small {
+      color: var(--color-bright);
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .atlas-node p {
+      color: var(--color-muted);
+      font-size: 0.86rem;
+      line-height: 1.55;
+      margin-top: 0.7rem;
+    }
+    .atlas-neighbors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.8rem;
+    }
+    .atlas-neighbors a {
+      border: 1px solid var(--color-line);
+      border-radius: 7px;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.4rem;
+    }
+    .atlas-neighbors a:hover {
+      border-color: color-mix(in srgb, var(--node) 55%, transparent);
+      color: var(--color-bright);
+    }
+    .atlas-links {
+      border-top: 1px solid var(--color-line);
+      display: grid;
+      gap: 0.35rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 0.85rem;
+      padding-top: 0.65rem;
+    }
+    .atlas-links div {
+      min-width: 0;
+    }
+    .atlas-links dt {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      overflow-wrap: anywhere;
+      text-transform: uppercase;
+    }
+    .atlas-links dd {
+      color: var(--color-paper);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin: 0.1rem 0 0;
+    }
+    .atlas-tag {
+      border: 1px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
+      border-radius: 7px;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.04em;
+      padding: 0.12rem 0.4rem;
+      text-transform: uppercase;
+    }
+    .atlas-tag:hover {
+      background: color-mix(in srgb, var(--color-signal) 9%, transparent);
+      color: var(--color-bright);
+    }
+
+    @media (max-width: 640px) {
+      .atlas-panel-head {
+        align-items: start;
+        display: grid;
+      }
+      .atlas-manual {
+        width: fit-content;
+      }
+      .atlas-node {
+        min-height: auto;
+      }
+    }
   </style>
 
   <script is:inline>

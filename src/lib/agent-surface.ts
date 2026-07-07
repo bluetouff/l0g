@@ -529,9 +529,36 @@ export function buildOpenApiContract() {
             revisions: { $ref: '#/components/schemas/ArticleRevisionPolicy' },
           },
         },
+        GlossaryAtlasLink: {
+          type: 'object',
+          required: ['label', 'href'],
+          additionalProperties: false,
+          properties: {
+            label: { type: 'string' },
+            href: { type: 'string', format: 'uri' },
+            detail: { type: 'string' },
+            kind: { type: 'string', enum: ['article', 'guide', 'dataset', 'signal', 'source', 'methodology'] },
+          },
+        },
+        GlossaryAtlas: {
+          type: 'object',
+          required: ['intuition', 'formula', 'whyNow', 'related', 'articles', 'guides', 'datasets', 'signals', 'sources'],
+          additionalProperties: false,
+          properties: {
+            intuition: { type: ['string', 'null'] },
+            formula: { type: ['string', 'null'] },
+            whyNow: { type: ['string', 'null'] },
+            related: { type: 'array', items: { type: 'string' } },
+            articles: { type: 'array', items: { $ref: '#/components/schemas/GlossaryAtlasLink' } },
+            guides: { type: 'array', items: { $ref: '#/components/schemas/GlossaryAtlasLink' } },
+            datasets: { type: 'array', items: { $ref: '#/components/schemas/GlossaryAtlasLink' } },
+            signals: { type: 'array', items: { $ref: '#/components/schemas/GlossaryAtlasLink' } },
+            sources: { type: 'array', items: { $ref: '#/components/schemas/GlossaryAtlasLink' } },
+          },
+        },
         GlossaryEntry: {
           type: 'object',
-          required: ['slug', 'url', 'name', 'definition', 'category'],
+          required: ['slug', 'url', 'name', 'definition', 'category', 'atlas'],
           additionalProperties: false,
           properties: {
             slug: { type: 'string' },
@@ -541,6 +568,7 @@ export function buildOpenApiContract() {
             definition: { type: 'string' },
             category: { type: 'string' },
             guide: { type: ['string', 'null'] },
+            atlas: { anyOf: [{ $ref: '#/components/schemas/GlossaryAtlas' }, { type: 'null' }] },
           },
         },
         Topic: {
@@ -2589,6 +2617,19 @@ export function buildCatalogSurface(posts: PostEntry[], guides: GuideEntry[]) {
     definition: term.def,
     category: term.sectionTitle,
     guide: term.guide ? `${AGENT_SITE}${term.guide}` : null,
+    atlas: term.atlas
+      ? {
+          intuition: term.atlas.intuition ?? null,
+          formula: term.atlas.formula ?? null,
+          whyNow: term.atlas.whyNow ?? null,
+          related: term.atlas.related ?? [],
+          articles: (term.atlas.articles ?? []).map((link) => ({ ...link, href: absoluteHref(link.href) })),
+          guides: (term.atlas.guides ?? []).map((link) => ({ ...link, href: absoluteHref(link.href) })),
+          datasets: (term.atlas.datasets ?? []).map((link) => ({ ...link, href: absoluteHref(link.href) })),
+          signals: (term.atlas.signals ?? []).map((link) => ({ ...link, href: absoluteHref(link.href) })),
+          sources: (term.atlas.sources ?? []).map((link) => ({ ...link, href: absoluteHref(link.href) })),
+        }
+      : null,
   }));
 
   const primarySources = primaryInstitutions.map((source) => ({

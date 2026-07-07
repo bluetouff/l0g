@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
-import { glossaryEntries } from '../../config/glossary.ts';
+import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
 
 export function getStaticPaths() {
   return glossaryEntries.map((entry) => ({
@@ -12,13 +12,33 @@ export function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const related = glossaryEntries
+const sectionRelated = glossaryEntries
   .filter((candidate) => candidate.sectionSlug === entry.sectionSlug && candidate.slug !== entry.slug)
   .slice(0, 6);
+const atlas = entry.atlas;
+const atlasRelated = (atlas?.related ?? [])
+  .map((slug) => glossaryEntryBySlug.get(slug))
+  .filter(Boolean)
+  .slice(0, 10);
+const related = atlasRelated.length > 0 ? atlasRelated : sectionRelated;
+const atlasLinkGroups = [
+  { title: 'Articles liés', items: atlas?.articles ?? [] },
+  { title: 'Guides liés', items: atlas?.guides ?? [] },
+  { title: 'Datasets liés', items: atlas?.datasets ?? [] },
+  { title: 'Signaux qui l’utilisent', items: atlas?.signals ?? [] },
+  { title: 'Sources primaires', items: atlas?.sources ?? [] },
+].filter((group) => group.items.length > 0);
+const atlasJsonLinks = [
+  ...(atlas?.articles ?? []),
+  ...(atlas?.guides ?? []),
+  ...(atlas?.datasets ?? []),
+  ...(atlas?.signals ?? []),
+  ...(atlas?.sources ?? []),
+];
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const canonical = `${SITE}${entry.url}`;
-const title = `${entry.sigle} — ${entry.nom}`;
+const title = `${entry.sigle} : ${entry.nom}`;
 const description = `${entry.sigle} (${entry.nom}) : ${entry.def}`;
 const glossaryUpdated = new Date('2026-06-27T00:00:00+02:00');
 const jsonLd = {
@@ -33,12 +53,54 @@ const jsonLd = {
       url: canonical,
       inLanguage: 'fr',
       dateModified: '2026-06-27',
+      ...(atlas?.formula ? { mathExpression: atlas.formula } : {}),
+      ...(atlas?.whyNow ? { disambiguatingDescription: atlas.whyNow } : {}),
+      ...(atlasJsonLinks.length > 0
+        ? {
+            subjectOf: atlasJsonLinks.map((link) => ({
+              '@type': 'CreativeWork',
+              name: link.label,
+              url: link.href.startsWith('/') ? `${SITE}${link.href}` : link.href,
+              description: link.detail,
+            })),
+          }
+        : {}),
+      ...(atlas?.sources?.length
+        ? {
+            citation: atlas.sources.map((source) => ({
+              '@type': 'CreativeWork',
+              name: source.label,
+              url: source.href.startsWith('/') ? `${SITE}${source.href}` : source.href,
+              description: source.detail,
+            })),
+          }
+        : {}),
       inDefinedTermSet: {
         '@type': 'DefinedTermSet',
         '@id': `${SITE}/glossaire/#glossary`,
-        name: 'Glossaire l0g',
+        name: "Atlas de l'opacité financière",
         url: `${SITE}/glossaire/`,
       },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: 'fr',
+      mainEntity: { '@id': `${canonical}#term` },
+      isPartOf: { '@id': `${SITE}/glossaire/#glossary` },
+      ...(related.length
+        ? {
+            mentions: related.map((term) => ({
+              '@type': 'DefinedTerm',
+              name: term!.nom,
+              termCode: term!.sigle,
+              url: `${SITE}${term!.url}`,
+            })),
+          }
+        : {}),
     },
     {
       '@type': 'BreadcrumbList',
@@ -92,6 +154,62 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p>{entry.def}</p>
     </section>
 
+    {atlas && (
+      <section class="term-atlas" aria-labelledby="atlas-title">
+        <p class="mono-label" style={`color:${entry.accent}`}>atlas de risque</p>
+        <h2 id="atlas-title">Carte de connaissance</h2>
+        <div class="atlas-brief">
+          {atlas.intuition && (
+            <section>
+              <h3>Intuition</h3>
+              <p>{atlas.intuition}</p>
+            </section>
+          )}
+          {atlas.formula && (
+            <section>
+              <h3>Formule</h3>
+              <code>{atlas.formula}</code>
+            </section>
+          )}
+          {atlas.whyNow && (
+            <section>
+              <h3>Pourquoi ça compte maintenant</h3>
+              <p>{atlas.whyNow}</p>
+            </section>
+          )}
+        </div>
+
+        {related.length > 0 && (
+          <nav class="atlas-relations" aria-label={`Concepts voisins de ${entry.sigle}`}>
+            {related.map((term) => (
+              <a href={term!.url} style={`--rel:${term!.accent}`}>
+                <span>{term!.sigle}</span>
+                <small>{term!.nom}</small>
+              </a>
+            ))}
+          </nav>
+        )}
+
+        {atlasLinkGroups.length > 0 && (
+          <div class="atlas-evidence">
+            {atlasLinkGroups.map((group) => (
+              <section>
+                <h3>{group.title}</h3>
+                <ul>
+                  {group.items.map((item) => (
+                    <li>
+                      <a href={item.href}>{item.label}</a>
+                      {item.detail && <span>{item.detail}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        )}
+      </section>
+    )}
+
     <div class="term-actions" data-pagefind-ignore>
       {entry.guide && <a class="term-action" href={entry.guide}>Lire le guide complet</a>}
       <a class="term-action ghost" href="/glossaire/">Retour au glossaire</a>
@@ -107,9 +225,9 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </h2>
       <div class="related-grid">
         {related.map((item) => (
-          <a class="related-term" href={item.url}>
-            <span class="related-sigle" style={`color:${item.accent}`}>{item.sigle}</span>
-            <span class="related-name">{item.nom}</span>
+          <a class="related-term" href={item!.url}>
+            <span class="related-sigle" style={`color:${item!.accent}`}>{item!.sigle}</span>
+            <span class="related-name">{item!.nom}</span>
           </a>
         ))}
       </div>
@@ -234,6 +352,119 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     .related-name {
       color: var(--color-muted);
       font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .term-atlas {
+      border-top: 1px solid var(--color-line);
+      margin-top: 2rem;
+      padding-top: 1.4rem;
+    }
+    .term-atlas h2 {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      letter-spacing: 0;
+      line-height: 1.15;
+      margin-top: 0.4rem;
+    }
+    .atlas-brief {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 1rem;
+    }
+    .atlas-brief section {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      padding: 0.85rem;
+    }
+    .atlas-brief h3,
+    .atlas-evidence h3 {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .atlas-brief p {
+      color: var(--color-paper);
+      font-size: 0.93rem;
+      line-height: 1.65;
+      margin-top: 0.45rem;
+    }
+    .atlas-brief code {
+      color: var(--color-signal);
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      line-height: 1.5;
+      margin-top: 0.55rem;
+      overflow-wrap: anywhere;
+    }
+    .atlas-relations {
+      display: grid;
+      gap: 0.55rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      margin-top: 1rem;
+    }
+    .atlas-relations a {
+      border: 1px solid color-mix(in srgb, var(--rel) 36%, var(--color-line));
+      border-radius: 8px;
+      display: grid;
+      gap: 0.18rem;
+      min-height: 4.4rem;
+      padding: 0.65rem;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .atlas-relations a:hover {
+      background: color-mix(in srgb, var(--rel) 8%, transparent);
+      border-color: color-mix(in srgb, var(--rel) 70%, transparent);
+    }
+    .atlas-relations span {
+      color: var(--rel);
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .atlas-relations small {
+      color: var(--color-muted);
+      font-size: 0.75rem;
+      line-height: 1.35;
+    }
+    .atlas-evidence {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 1.3rem;
+    }
+    .atlas-evidence section {
+      border-top: 1px solid var(--color-line);
+      padding-top: 0.75rem;
+    }
+    .atlas-evidence ul {
+      display: grid;
+      gap: 0.65rem;
+      list-style: none;
+      margin: 0.7rem 0 0;
+      padding: 0;
+    }
+    .atlas-evidence li {
+      display: grid;
+      gap: 0.22rem;
+    }
+    .atlas-evidence a {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .atlas-evidence a:hover {
+      color: var(--color-bright);
+    }
+    .atlas-evidence span {
+      color: var(--color-muted);
+      font-size: 0.82rem;
       line-height: 1.45;
     }
 
