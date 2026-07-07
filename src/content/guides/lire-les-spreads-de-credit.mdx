@@ -1,0 +1,101 @@
+---
+title: "Lire les spreads de crédit : OAS, échelle de qualité et signal de stress"
+description: "Guide de référence sur les spreads de crédit : ce que mesure l'écart de rendement entre une obligation d'entreprise et un Treasury, pourquoi l'OAS (option-adjusted spread) est la mesure de référence, l'échelle de qualité de l'investment grade au CCC, la décomposition d'un spread entre perte attendue, prime de risque et prime de liquidité, le rôle des CDS et des indices CDX, et la lecture du spread comme signal avancé de stress. Avec les niveaux de 2026, au plus serré depuis 2007, et le débat sur la complaisance du marché."
+summary: "Le spread de crédit est le prix du risque de prêter à une entreprise plutôt qu'à l'État : l'écart de rendement entre une obligation privée et un Treasury de même maturité. Sa mesure de référence est l'OAS (option-adjusted spread), publié par les indices ICE BofA. Le lire suppose de connaître l'échelle de qualité (de l'investment grade au CCC), de décomposer le spread entre perte attendue et primes, et de le suivre comme signal avancé : sa vitesse d'écartement dit le stress avant les défauts. En 2026, les spreads sont au plus serré depuis 2007."
+pubDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "crédit", "marchés", "méthodologie"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Le spread de crédit est le prix, exprimé en points de base, du risque de prêter à une entreprise plutôt qu'à l'État. C'est l'un des rares indicateurs qui parle avant que les défauts n'arrivent : quand il s'écarte, le marché a déjà décidé que le risque montait. Ce guide reprend les spreads de bout en bout, de la définition de l'OAS à la lecture de l'échelle de qualité, jusqu'au signal de stress. L'année 2026, où les spreads touchent leurs plus bas depuis 2007, sert d'illustration et de mise en garde.*
+
+## Qu'est-ce qu'un spread de crédit
+
+Une obligation d'entreprise rapporte plus qu'un [Treasury](/guides/lire-le-marche-des-treasuries/) de même maturité, et cet écart de rendement est le [spread de crédit](/glossaire/spread-de-credit/). Il rémunère tout ce qui distingue un émetteur privé de l'État américain : le risque qu'il fasse défaut, la moindre facilité à revendre le titre, l'incertitude sur son avenir. Prêter dix ans à une entreprise notée BBB à 5,15 % quand le Treasury dix ans est à 4,38 %, c'est exiger 77 points de base de plus pour ce surcroît de risque. Ce nombre, et sa variation dans le temps, est l'information.
+
+Le spread se resserre quand l'appétit pour le risque domine : les investisseurs se contentent d'une faible prime, persuadés que peu d'émetteurs feront défaut. Il s'écarte quand la peur revient : chacun exige davantage, ou refuse de prêter. Un spread n'est donc pas seulement une mesure du risque de défaut, c'est aussi une mesure du sentiment. C'est ce qui en fait un indicateur avancé : il bouge avant les bilans, avant les défauts, souvent avant les actions.
+
+## L'OAS, la mesure de référence
+
+Comparer des obligations brutes serait trompeur, car beaucoup contiennent des options : une clause de remboursement anticipé permet à l'émetteur de rembourser par avance s'il peut se refinancer moins cher. Cette option a une valeur, qui déforme le rendement affiché. La mesure de référence corrige ce biais : l'[OAS, pour option-adjusted spread](/glossaire/oas/), retranche la valeur des options pour isoler le pur écart de crédit sur toute la courbe des Treasuries, et non par rapport à un seul point. Deux titres aux structures différentes deviennent ainsi comparables.
+
+Les indices [ICE BofA](https://fred.stlouisfed.org/series/BAMLH0A0HYM2), publiés quotidiennement et repris par la Réserve fédérale de Saint-Louis, sont la source la plus suivie. On y lit l'OAS d'un indice large comme le high yield américain, ou de sous-segments par notation. C'est le langage commun des salles de marché quand elles parlent de « spreads ».
+
+## L'échelle de qualité : de l'investment grade au CCC
+
+Le risque de crédit se hiérarchise par notation, et le spread suit cette échelle de façon très non linéaire. Au sommet, l'[investment grade](/glossaire/investment-grade/) regroupe les émetteurs notés de AAA à BBB-, jugés solides ; le segment BBB en représente à lui seul près de la moitié. En dessous commence le [high yield](/glossaire/high-yield/), de BB à CCC, la dette dite spéculative. Plus on descend, plus le spread s'élargit, mais pas proportionnellement : il explose dans le bas de l'échelle, car la probabilité de défaut y croît beaucoup plus vite que la notation ne le suggère.
+
+<InfographicBars
+  title="L'échelle de qualité, en 2026"
+  subtitle="Spread de crédit (OAS) par catégorie de notation, en points de base."
+  max={950}
+  items={[
+    { label: "Investment grade (AAA à BBB-)", value: 77, valueLabel: "~77 pb", tone: "signal" },
+    { label: "High yield, indice large (BB à CCC)", value: 285, valueLabel: "~285 pb", tone: "amber" },
+    { label: "CCC et moins", value: 900, valueLabel: "~900 pb", tone: "blue" },
+  ]}
+  note="Ordres de grandeur du premier semestre 2026."
+  source="Source : ICE BofA / Federal Reserve Bank of St. Louis (FRED)."
+  caption="Le spread ne monte pas en ligne droite le long de l'échelle de notation : il explose dans le bas, où la probabilité de défaut croît bien plus vite que la note. Source : ICE BofA, FRED."
+/>
+
+L'écart entre le haut et le bas de cette échelle est lui-même un signal. Quand il se creuse, le marché discrimine : il fait payer cher le risque le plus faible et laisse tranquilles les émetteurs solides, signe d'une inquiétude ciblée. Quand il s'écrase, tout le monde se finance presque au même prix, signe d'un appétit pour le risque indifférencié, souvent le prélude aux mauvaises surprises.
+
+## Décomposer un spread
+
+Un spread n'est pas un bloc, il se décompose en trois briques. La première est la **perte attendue**, c'est-à-dire la probabilité de défaut multipliée par la perte en cas de défaut, une fois déduit ce que le créancier récupère. C'est la part « actuarielle », celle qu'un modèle de risque calcule. La deuxième est la **prime de risque**, le supplément exigé pour supporter l'incertitude autour de cette moyenne, car un défaut ne survient jamais de façon prévisible. La troisième est la **prime de liquidité**, le dédommagement pour la difficulté à revendre le titre en cas de besoin, d'autant plus élevée que le marché est étroit.
+
+Cette décomposition importe pour lire un mouvement. Un spread qui s'écarte parce que la perte attendue monte traduit une dégradation réelle des fondamentaux. Un spread qui s'écarte parce que la prime de liquidité explose, sans que les bilans aient bougé, traduit une panique de marché, souvent brutale et parfois réversible. Les deux se ressemblent sur un graphique, mais ne disent pas la même chose.
+
+## Le CDS et les indices CDX
+
+À côté du marché comptant des obligations existe un marché synthétique, plus rapide. Un [CDS](/glossaire/cds/), credit default swap, est un contrat d'assurance contre le défaut d'un émetteur : sa prime, en points de base, monte quand le défaut paraît plus probable. Regroupés en paniers, ces contrats forment les indices [CDX](/glossaire/cdx/) : le CDX.NA.IG pour l'investment grade, le CDX.NA.HY pour le high yield. Négociés en continu, très liquides, ils bougent souvent avant le marché comptant, car il est plus facile de vendre de la protection synthétique que d'écouler un portefeuille d'obligations.
+
+D'où l'intérêt de suivre l'écart entre le CDX et le spread comptant, la « base ». Quand le synthétique décroche du comptant, c'est que l'un des deux marchés a un temps d'avance sur l'autre, généralement le CDX, plus prompt à intégrer un choc. Surveiller les deux, c'est se donner une chance de voir le stress arriver.
+
+## Lire le spread comme signal
+
+Bien lu, un spread ne se juge pas à son seul niveau mais à quatre lectures croisées. Le **niveau**, d'abord, situé dans son historique : un spread dans son décile le plus bas dit un marché cher, sans dire quand il se retournera. La **vitesse**, ensuite, qui compte davantage : un spread qui double en quelques semaines est un signal de stress bien plus fort qu'un niveau élevé mais stable. L'**échelle de qualité**, dont l'écartement entre CCC et BB signale le retour de la discrimination. Enfin le [ratio de détresse](/glossaire/ratio-de-detresse/), la part du high yield dont le spread dépasse 1 000 points de base, qui mesure la taille du segment déjà en difficulté et précède les vagues de défaut. Un spread bas mais un ratio de détresse qui monte est une divergence à ne pas ignorer.
+
+## 2026 : au plus serré depuis 2007
+
+Début 2026, les spreads sont exceptionnellement comprimés. Le high yield large traite autour de [285 points de base, son niveau de juin 2007](https://fred.stlouisfed.org/series/BAMLH0A0HYM2), à la veille de la crise financière. L'investment grade a touché [71 points de base en janvier, au plus serré depuis 1998](https://www.morningstar.com/bonds/corporate-credit-spreads-trading-tightest-decile-historical-range) et l'épisode LTCM. Pour mesurer cette compression, il suffit de rappeler où le high yield est monté lors des derniers chocs : environ 1 100 points de base au plus fort de mars 2020, près de 2 000 en 2008.
+
+<InfographicBars
+  title="Des spreads au plus serré depuis 2007"
+  subtitle="Spread du high yield américain (OAS), aujourd'hui et lors des derniers chocs, en points de base."
+  max={2000}
+  items={[
+    { label: "Pic de la crise financière (déc. 2008)", value: 2000, valueLabel: "~2 000 pb", tone: "muted" },
+    { label: "Pic du choc Covid (mars 2020)", value: 1100, valueLabel: "~1 100 pb", tone: "blue" },
+    { label: "Aujourd'hui (2026)", value: 285, valueLabel: "~285 pb", tone: "signal" },
+  ]}
+  source="Source : ICE BofA / Federal Reserve Bank of St. Louis (FRED)."
+  caption="À 285 points de base, le high yield rémunère à peine plus le risque qu'à la veille de 2008. La marge d'écartement, en cas de choc, est considérable. Source : ICE BofA, FRED."
+/>
+
+Faut-il y voir de la complaisance ? En partie, mais pas seulement, et l'honnêteté commande de donner l'autre lecture. La composition des indices s'est améliorée : le high yield d'aujourd'hui est de meilleure qualité moyenne que celui de 2007, avec davantage de BB et moins de CCC, si bien qu'un [spread structurellement plus bas peut se justifier par un risque moyen plus faible](https://www.troweprice.com/en/us/insights/are-structural-spread-changes-concealing-value-in-credit). Reste que même corrigé de cet effet, le coussin est mince : à ces niveaux, un spread rémunère mal le risque d'un retournement, et l'essentiel du mouvement possible est à la hausse. Un spread serré n'annonce pas une crise, mais il en réduit d'autant le préavis.
+
+## Le miroir du crédit privé
+
+Ce cadre éclaire enfin un angle mort. Le marché obligataire public a un prix observable, mis à jour chaque jour ; le crédit privé, lui, est valorisé à dire d'expert, sans spread de marché. C'est pourquoi le spread public sert de référence implicite : il est le prix contre lequel se juge la valorisation, souvent plus lisse, du non-coté. Nous détaillons cette tension dans notre article sur le [crédit privé comme actif à deux prix](/posts/credit-prive-un-actif-deux-prix/) et dans le guide dédié à [l'analyse du crédit privé](/guides/analyser-credit-prive/). Quand le spread public s'écarte vite alors que le privé reste stable, l'écart ne mesure pas une opportunité mais un retard de reconnaissance des pertes, un risque que nous suivons dans notre analyse de la [contagion silencieuse du crédit privé](/posts/la-contagion-silencieuse-credit-prive/).
+
+## Lire les spreads en pratique
+
+Bien lu, le spread de crédit n'est pas un thermomètre unique mais un système. L'OAS donne la mesure comparable du risque. L'échelle de qualité dit si le marché discrimine ou se contente d'une prime uniforme. La décomposition entre perte attendue et primes dit d'où vient un mouvement, dégradation réelle ou panique de liquidité. Le CDX dit ce que pense le marché synthétique, souvent en avance. Et le ratio de détresse dit la taille du segment déjà en difficulté. En 2026, tous ces cadrans pointent la même chose : un risque bon marché, dans un marché qui a peu de marge pour se tromper.
+
+Pour les sigles employés ici, le [glossaire](/glossaire/) reprend les définitions, et le [calendrier économique](/calendrier-eco/) recense les échéances de crédit à surveiller. Ce guide se lit en complément de celui sur le [marché des Treasuries](/guides/lire-le-marche-des-treasuries/), dont le spread de crédit est le miroir côté privé.
+
+---
+
+**Sources principales :**
+
+- [ICE BofA US High Yield Index Option-Adjusted Spread (FRED, BAMLH0A0HYM2)](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) : niveau du spread high yield, environ 285 points de base en 2026, série historique et pics de 2008 (~2 000 pb) et mars 2020 (~1 100 pb).
+- [ICE BofA US Corporate Index Option-Adjusted Spread (FRED, BAMLC0A0CM)](https://fred.stlouisfed.org/series/BAMLC0A0CM) : spread de l'investment grade, autour de 77 points de base au printemps 2026.
+- [ICE BofA CCC & Lower US High Yield Index OAS (FRED, BAMLH0A3HYC)](https://fred.stlouisfed.org/series/BAMLH0A3HYC) : spread du bas de l'échelle de qualité, de l'ordre de 900 points de base en 2026.
+- [Morningstar, « Corporate Credit Spreads Trading in Tightest Decile of Historical Range »](https://www.morningstar.com/bonds/corporate-credit-spreads-trading-tightest-decile-historical-range) : investment grade au plus serré depuis 1998 (71 pb en janvier 2026), spreads dans leur décile le plus bas.
+- [T. Rowe Price, « Are structural spread changes concealing value in credit? »](https://www.troweprice.com/en/us/insights/are-structural-spread-changes-concealing-value-in-credit) : amélioration structurelle de la qualité des indices high yield, lecture nuancée de spreads bas.
+- [ICE, Markit CDX.NA.HY](https://www.ice.com/products/28687609/Markit-CDXNAHY) : construction et rôle des indices CDX comme baromètre synthétique du risque de crédit.
