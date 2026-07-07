@@ -40,7 +40,6 @@ const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const canonical = `${SITE}${entry.url}`;
 const title = `${entry.sigle} : ${entry.nom}`;
 const description = `${entry.sigle} (${entry.nom}) : ${entry.def}`;
-const glossaryUpdated = new Date(`${glossaryUpdatedIso}T00:00:00+02:00`);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -141,7 +140,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         </h1>
         <p class="term-name">{entry.nom}</p>
         <div class="term-freshness" data-pagefind-ignore>
-          <FreshnessBadge date={glossaryUpdated} />
+          <FreshnessBadge date={glossaryUpdatedIso} />
         </div>
       </div>
       <a class="term-family" style={`--term-accent:${entry.accent}`} href={`/glossaire/#sec-${entry.sectionSlug}`}>
@@ -215,7 +214,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <a class="term-action ghost" href="/glossaire/">Retour au glossaire</a>
     </div>
 
-    <CitationBox title={title} url={canonical} kind="définition" updated={glossaryUpdated} />
+    <CitationBox title={title} url={canonical} kind="définition" updated={glossaryUpdatedIso} />
   </article>
 
   {related.length > 0 && (

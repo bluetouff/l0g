@@ -8,6 +8,7 @@ export interface FreshnessInfo {
 }
 
 const DAY = 24 * 60 * 60 * 1000;
+const ISO_DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 export function daysSince(date: Date, now = new Date()): number {
   return Math.max(0, Math.floor((now.getTime() - date.getTime()) / DAY));
@@ -29,4 +30,23 @@ export function freshnessFor(date: Date, now = new Date()): FreshnessInfo {
 
 export function formatDateFr(date: Date): string {
   return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+
+export function dateFromIsoDate(isoDate: string): Date {
+  const match = ISO_DATE_RE.exec(isoDate);
+  if (!match) return new Date(isoDate);
+  const [, year, month, day] = match;
+  return new Date(Date.UTC(Number(year), Number(month) - 1, Number(day), 12));
+}
+
+export function formatDateFrIsoDate(isoDate: string): string {
+  const match = ISO_DATE_RE.exec(isoDate);
+  if (!match) return formatDateFr(new Date(isoDate));
+  const [, year, month, day] = match;
+  return new Date(Date.UTC(Number(year), Number(month) - 1, Number(day))).toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 }

@@ -1,21 +1,24 @@
 ---
-import { formatDateFr } from '../lib/freshness.ts';
+import { formatDateFr, formatDateFrIsoDate } from '../lib/freshness.ts';
+
+type CitationDate = Date | string;
 
 interface Props {
   title: string;
   url: string;
   kind?: string;
-  published?: Date;
-  updated?: Date;
+  published?: CitationDate;
+  updated?: CitationDate;
 }
 
 const { title, url, kind = 'page', published, updated } = Astro.props;
 const date = updated ?? published;
-const year = date?.getFullYear();
-const datePart = date ? `, ${updated ? 'revu le' : 'publié le'} ${formatDateFr(date)}` : '';
+const formatCitationDate = (value: CitationDate) => (typeof value === 'string' ? formatDateFrIsoDate(value) : formatDateFr(value));
+const year = typeof date === 'string' ? date.slice(0, 4) : date?.getFullYear();
+const datePart = date ? `, ${updated ? 'revu le' : 'publié le'} ${formatCitationDate(date)}` : '';
 const accessed = formatDateFr(new Date());
 const citation = `l0g.fr, « ${title} » (${kind}${datePart}), ${url}`;
-const md = `[${title}](${url}) — l0g.fr${date ? `, ${formatDateFr(date)}` : ''}.`;
+const md = `[${title}](${url}) — l0g.fr${date ? `, ${formatCitationDate(date)}` : ''}.`;
 const bibKey = `l0g-${title
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')

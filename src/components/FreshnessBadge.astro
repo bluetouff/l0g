@@ -1,15 +1,16 @@
 ---
-import { formatDateFr, freshnessFor } from '../lib/freshness.ts';
+import { dateFromIsoDate, formatDateFr, formatDateFrIsoDate, freshnessFor } from '../lib/freshness.ts';
 
 interface Props {
-  date: Date;
+  date: Date | string;
   label?: string;
   compact?: boolean;
 }
 
 const { date, label = 'fraîcheur', compact = false } = Astro.props;
-const info = freshnessFor(date);
-const dateLabel = formatDateFr(date);
+const freshnessDate = typeof date === 'string' ? dateFromIsoDate(date) : date;
+const info = freshnessFor(freshnessDate);
+const dateLabel = typeof date === 'string' ? formatDateFrIsoDate(date) : formatDateFr(date);
 ---
 
 <span
