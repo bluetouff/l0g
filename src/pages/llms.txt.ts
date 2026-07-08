@@ -40,6 +40,15 @@ export const GET: APIRoute = async () => {
   );
   lines.push('');
 
+  lines.push('## English entry points');
+  lines.push(`- [English overview](${SITE}/en/): English map of the l0g surfaces: guides, method, API, MCP, dashboards, glossary, Risk Diff and Black Box.`);
+  lines.push(`- [English guided tour](${SITE}/en/tour/): visual orientation through the project for non-French readers.`);
+  lines.push(`- [English manifesto](${SITE}/en/manifesto/): public-data, source-discipline and machine-readable evidence principles.`);
+  lines.push(`- [English core glossary](${SITE}/en/glossary/): compact vocabulary for macro, SEC filings, Fed plumbing, credit, crypto regulation, commodities and risk surfaces.`);
+  lines.push(`- [English dashboards map](${SITE}/en/dashboards/): monitoring tools and their limits.`);
+  lines.push(`- [English Risk Diff](${SITE}/en/risk-diff/): what changed in risk signals, sources, claims, models and confidence.`);
+  lines.push(`- [English Black Box Recorder](${SITE}/en/black-box/): point-in-time risk frame replay, hashes and explicit gaps.`);
+  lines.push('');
   lines.push('## Manifeste');
   lines.push(
     `- [Manifeste l0g](${SITE}/manifeste/): pacte de lecture du projet : sources primaires, code ouvert, auto-hebergement, limites assumees, zero tracker.`

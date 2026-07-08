@@ -1,0 +1,59 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const tools = [
+  ['US Macro Dashboard', 'https://us.l0g.fr', 'U.S. macro stress monitor built from public macro and market data.'],
+  ['EU Macro Dashboard', 'https://euro.l0g.fr', 'Euro-area macro stress view with public European datasets.'],
+  ['Yen Carry Monitor', 'https://yct.l0g.fr', 'Monitor for yen carry stress and related market conditions.'],
+  ['Energy Monitor', 'https://energie.l0g.fr', 'Energy stress surface linking oil, gas, power and macro transmission.'],
+  ['13FLOW', 'https://13flow.eu', 'SEC 13F and Form 4 confluence: slow institutional flows crossed with faster insider signals.'],
+  ['ORBIT', 'https://orbit.l0g.fr', 'A related public risk surface for monitoring opaque financial signals.'],
+  ['Debt Risk Radar', 'https://debt.l0g.fr', 'U.S. debt-risk snapshot used by the canonical /api/v1/debt-risk.json endpoint.'],
+];
+---
+
+<EnglishLayout
+  title="Dashboards and monitors"
+  description="English map of l0g dashboards and monitors: macro, energy, yen carry, U.S. debt, 13F/Form 4 confluence and machine-readable risk snapshots."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/dashboards/` },
+    { hreflang: 'fr', href: `${SITE}/dashboards/` },
+    { hreflang: 'x-default', href: `${SITE}/dashboards/` },
+  ]}
+>
+  <article class="dash-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// dashboards</p>
+    <h1 class="dash-title font-display glow">Risk monitors, not magic gauges.</h1>
+    <p class="dash-lede">
+      l0g dashboards are public-data monitoring tools. They publish snapshots; they do not claim to be real-time prophecy.
+      Scores are normalized by instrument and should not be compared as if they were one global risk index.
+    </p>
+
+    <section class="tool-grid" aria-label="l0g tools">
+      {tools.map(([name, href, text]) => (
+        <a class="tool-card" href={href} target="_blank" rel="noopener">
+          <span class="mono-label">open tool</span>
+          <strong>{name}</strong>
+          <p>{text}</p>
+        </a>
+      ))}
+    </section>
+
+    <p class="dash-note">
+      For machine-readable integration, prefer <a class="link-term" href="/en/api/">the public API</a>,
+      <a class="link-term" href="/en/mcp/"> the MCP server</a> and the point-in-time signal history endpoints.
+    </p>
+  </article>
+</EnglishLayout>
+
+<style>
+  .dash-title { margin-top: .8rem; max-width: 54rem; font-size: clamp(2.1rem, 6vw, 4.4rem); line-height: .98; }
+  .dash-lede { margin-top: 1.15rem; max-width: 48rem; color: var(--color-paper); font-size: 1.05rem; line-height: 1.7; }
+  .tool-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+  .tool-card { display: grid; gap: .45rem; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); text-decoration: none; }
+  .tool-card:hover { border-color: color-mix(in srgb, var(--color-signal) 48%, transparent); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
+  .tool-card strong { color: var(--color-bright); }
+  .tool-card p, .dash-note { color: var(--color-muted); line-height: 1.6; }
+  .dash-note { margin-top: 1.5rem; max-width: 46rem; }
+  @media (min-width: 760px) { .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

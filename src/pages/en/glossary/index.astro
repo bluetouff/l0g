@@ -1,0 +1,66 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const terms = [
+  ['CPI', 'Consumer Price Index, the market-moving U.S. inflation release from the BLS.', '/en/guides/read-cpi-inflation-us/'],
+  ['PCE', 'Personal Consumption Expenditures Price Index, the inflation gauge targeted by the Federal Reserve.', '/en/guides/read-pce-inflation-fed/'],
+  ['NFP', 'Nonfarm payrolls, the headline job-creation figure in the U.S. Employment Situation report.', '/en/guides/read-us-employment-report-nfp/'],
+  ['JOLTS', 'Job openings, hires, quits and layoffs: the flow view beneath the payroll headline.', '/en/guides/read-jolts-report/'],
+  ['10-K', 'The annual SEC report: business, risks, management discussion, audited financials and notes.', '/en/guides/how-to-read-10-k-sec/'],
+  ['13F', 'Quarterly long-position disclosure for large institutional investment managers.', '/en/guides/how-to-analyze-sec-13f-filings/'],
+  ['Form 4', 'Two-business-day disclosure of insider transactions by executives, directors and 10% holders.', '/en/guides/how-to-read-sec-form-4/'],
+  ['13D / 13G', 'Beneficial-ownership filings above 5%: activist intent versus passive holding.', '/en/guides/read-schedule-13d-13g-sec/'],
+  ['TGA', 'The Treasury General Account at the Fed: when it fills, it drains reserves; when it spends, it releases cash.', '/en/guides/read-net-liquidity-tga-rrp/'],
+  ['RRP', 'Reverse repo facility, a money-market cash absorber and former liquidity buffer.', '/en/guides/read-net-liquidity-tga-rrp/'],
+  ['SOFR', 'Secured Overnight Financing Rate, the transaction-based overnight Treasury repo benchmark.', '/en/guides/read-repo-market-sofr/'],
+  ['OAS', 'Option-adjusted spread, the reference credit spread measure used by ICE BofA indices.', '/en/guides/read-credit-spreads-oas/'],
+  ['VIX', 'Implied volatility of S&P 500 options over roughly 30 days.', '/en/guides/read-vix-move-volatility/'],
+  ['MOVE', 'Implied volatility of Treasury options, the bond-market fear gauge.', '/en/guides/read-vix-move-volatility/'],
+  ['DXY', 'U.S. Dollar Index, a narrow dollar basket heavily weighted toward the euro.', '/en/guides/read-dollar-dxy-cross-currency-basis/'],
+  ['Cross-currency basis', 'The hidden premium for synthetic dollar funding through FX swaps.', '/en/guides/read-dollar-dxy-cross-currency-basis/'],
+  ['MiCA', 'The European Union crypto-asset regulation covering EMTs, ARTs and CASPs.', '/en/guides/decode-mica-crypto-regulation/'],
+  ['GENIUS Act', 'The U.S. federal payment-stablecoin framework enacted in 2025.', '/en/guides/read-stablecoins-genius-act/'],
+  ['OFAC / SDN', 'U.S. sanctions enforcement and the list of blocked persons, entities and sometimes crypto addresses.', '/en/guides/read-ofac-sdn-list/'],
+  ['TVL', 'Total value locked in DeFi protocols, useful but prone to price effects and double counting.', '/en/guides/read-on-chain-data/'],
+  ['MVRV', 'Market value to realized value, an on-chain valuation ratio often used for Bitcoin cycle regimes.', '/en/guides/read-on-chain-data/'],
+  ['U3O8', 'Yellowcake uranium, the market unit quoted in dollars per pound.', '/en/guides/read-uranium-market/'],
+  ['Brent / WTI', 'The two dominant crude-oil benchmarks: maritime global Brent versus inland U.S. WTI.', '/en/guides/read-oil-market/'],
+];
+---
+
+<EnglishLayout
+  title="Core glossary"
+  description="A core English glossary for l0g: macro, Fed plumbing, SEC filings, credit, crypto regulation, commodities and machine-readable risk surfaces."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/glossary/` },
+    { hreflang: 'fr', href: `${SITE}/glossaire/` },
+    { hreflang: 'x-default', href: `${SITE}/glossaire/` },
+  ]}
+>
+  <article class="gloss-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// core glossary</p>
+    <h1 class="gloss-title font-display glow">The minimum vocabulary for reading l0g.</h1>
+    <p class="gloss-lede">
+      This is not yet a full translation of the French atlas. It is a compact English glossary for the concepts used most often in the English guides,
+      API/MCP documentation and risk surfaces.
+    </p>
+    <div class="term-grid">
+      {terms.map(([sigle, def, href]) => (
+        <article class="term-card" id={String(sigle).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+          <a href={href}>{sigle}</a>
+          <p>{def}</p>
+        </article>
+      ))}
+    </div>
+  </article>
+</EnglishLayout>
+
+<style>
+  .gloss-title { margin-top: .8rem; max-width: 54rem; font-size: clamp(2.1rem, 6vw, 4.4rem); line-height: .98; }
+  .gloss-lede { margin-top: 1.15rem; max-width: 48rem; color: var(--color-paper); font-size: 1.05rem; line-height: 1.7; }
+  .term-grid { display: grid; gap: .8rem; margin-top: 2rem; }
+  .term-card { border: 1px solid var(--color-line); border-radius: 10px; padding: .9rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); }
+  .term-card a { color: var(--color-signal); font-family: var(--font-mono); font-weight: 700; text-decoration: none; }
+  .term-card p { margin-top: .4rem; color: var(--color-muted); line-height: 1.55; }
+  @media (min-width: 760px) { .term-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

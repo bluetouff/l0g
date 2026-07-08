@@ -1,0 +1,63 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const items = [
+  ['Signals', 'Which risk signals rose or fell across 1, 7 and 30-day windows.'],
+  ['Sources', 'Which source families became fresh, stale or unavailable.'],
+  ['Claims', 'Which claim-source relations were added, reviewed or corrected.'],
+  ['Models', 'Whether methodology or model files changed in the public surface.'],
+  ['Confidence', 'Whether the diff is usable or weakened by missing public history.'],
+];
+---
+
+<EnglishLayout
+  title="Risk Diff"
+  description="Risk Diff in English: what changed in l0g risk signals, sources, claims, models and confidence across public time windows."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/risk-diff/` },
+    { hreflang: 'fr', href: `${SITE}/risk-diff/` },
+    { hreflang: 'x-default', href: `${SITE}/risk-diff/` },
+  ]}
+>
+  <article class="risk-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// risk diff</p>
+    <h1 class="risk-title font-display glow">What changed in the risk picture?</h1>
+    <p class="risk-lede">
+      Risk Diff is the change layer of l0g. It does not pretend to know the future; it compares public frames and explains what moved:
+      signals, sources, claims, model files, related articles and the confidence of the comparison itself.
+    </p>
+
+    <div class="risk-links" data-pagefind-ignore>
+      <a href="/api/v1/risk-diff.json">risk-diff.json</a>
+      <a href="/risk-diff/">French live page</a>
+      <a href="/en/black-box/">Black Box</a>
+      <a href="/en/api/">API documentation</a>
+    </div>
+
+    <section class="risk-grid" aria-label="Risk Diff fields">
+      {items.map(([title, text]) => (
+        <article class="risk-card">
+          <strong>{title}</strong>
+          <p>{text}</p>
+        </article>
+      ))}
+    </section>
+
+    <p class="risk-note">
+      Missing history is not filled in. If l0g cannot replay a date, the gap remains visible. That rule matters more than a smooth chart.
+    </p>
+  </article>
+</EnglishLayout>
+
+<style>
+  .risk-title { margin-top: .8rem; max-width: 54rem; font-size: clamp(2.1rem, 6vw, 4.4rem); line-height: .98; }
+  .risk-lede { margin-top: 1.15rem; max-width: 48rem; color: var(--color-paper); font-size: 1.05rem; line-height: 1.7; }
+  .risk-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.3rem; }
+  .risk-links a { border: 1px solid var(--color-line); border-radius: 999px; padding: .4rem .65rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; text-decoration: none; }
+  .risk-grid { display: grid; gap: .9rem; margin-top: 2rem; }
+  .risk-card { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); }
+  .risk-card strong { color: var(--color-bright); }
+  .risk-card p, .risk-note { color: var(--color-muted); line-height: 1.6; }
+  .risk-note { margin-top: 1.5rem; max-width: 44rem; }
+  @media (min-width: 760px) { .risk-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+</style>

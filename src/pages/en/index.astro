@@ -1,88 +1,63 @@
 ---
-import EnglishGuidesLayout from '../../layouts/EnglishGuidesLayout.astro';
-import { existsSync } from 'node:fs';
+import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 
-const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-const hasApi = existsSync(new URL('./api/index.astro', import.meta.url));
-const hasMcp = existsSync(new URL('./mcp/index.astro', import.meta.url));
-const hasAgentSurface = existsSync(new URL('./agent-surface/index.astro', import.meta.url));
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const cards = [
-  { href: '/en/start/', label: 'Start here', desc: 'A short map of what exists in English and what remains French-only.' },
-  { href: '/en/about/', label: 'About l0g', desc: 'What l0g is, who publishes it, and what problem it tries to solve.' },
-  { href: '/en/guides/', label: 'English guides', desc: 'Durable reference guides on macro, credit, markets, crypto and regulation.' },
-  { href: '/en/methodology/', label: 'Methodology', desc: 'How signals are built, how evidence is handled, and what the dashboards do not claim.' },
-  { href: '/en/sources/', label: 'Sources', desc: 'Primary data sources, institutional datasets and reference outlets used by l0g.' },
-  { href: '/en/editorial-protocol/', label: 'Editorial protocol', desc: 'Fact, estimate, inference, scenario: how l0g separates evidence levels and corrections.' },
-  ...(hasApi ? [{ href: '/en/api/', label: 'Public API', desc: 'JSON, NDJSON, OpenAPI, risk snapshots, evidence graph and point-in-time signal history.' }] : []),
-  ...(hasMcp ? [{ href: '/en/mcp/', label: 'MCP server', desc: 'Read-only Model Context Protocol access for agents.' }] : []),
-  ...(hasAgentSurface ? [{ href: '/en/agent-surface/', label: 'Agent Surface', desc: 'Machine-readable contract for claims, sources, integrity, freshness and changefeeds.' }] : []),
+  { href: '/en/start/', k: 'start', title: 'Start here', text: 'A quick orientation page for non-French readers: what l0g is, what exists in English, and how to use it.' },
+  { href: '/en/tour/', k: 'tour', title: 'Guided tour', text: 'A visual map of the site: guides, dashboards, API, MCP, evidence graph, glossary and risk surfaces.' },
+  { href: '/en/guides/', k: 'guides', title: 'Reference guides', text: 'Long-form, sourced, durable guides on macro, markets, credit, crypto regulation and public data.' },
+  { href: '/en/methodology/', k: 'method', title: 'Methodology', text: 'How l0g reads public data, separates observation from inference and avoids false precision.' },
+  { href: '/en/sources/', k: 'sources', title: 'Sources', text: 'The primary-source hierarchy behind the project: central banks, statistical agencies, SEC filings, regulators and public datasets.' },
+  { href: '/en/api/', k: 'api', title: 'API', text: 'Static JSON, NDJSON and CSV surfaces for risk signals, claims, evidence graph, catalog, freshness and integrity.' },
+  { href: '/en/mcp/', k: 'mcp', title: 'MCP server', text: 'Read-only Model Context Protocol endpoint for agents that need structured access without scraping.' },
+  { href: '/en/glossary/', k: 'glossary', title: 'Core glossary', text: 'A first English glossary for the terms that appear most often in the English guides and machine surfaces.' },
+  { href: '/en/dashboards/', k: 'dashboards', title: 'Dashboards', text: 'A map of l0g monitoring tools: macro, debt, energy, yen carry, 13F/insider confluence and other risk monitors.' },
+  { href: '/en/risk-diff/', k: 'diff', title: 'Risk Diff', text: 'What changed in public risk signals, sources, claims and model confidence across 1, 7 and 30 days.' },
+  { href: '/en/black-box/', k: 'blackbox', title: 'Black Box', text: 'Point-in-time replay of public risk frames, with hashes and explicit historical gaps.' },
+  { href: '/en/editorial-protocol/', k: 'protocol', title: 'Editorial protocol', text: 'Correction policy, evidence levels, source rules and the difference between fact, estimate, inference and scenario.' },
 ];
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  '@id': `${site}/en/#english-entrypoint`,
-  headline: 'l0g in English',
-  description: 'English entry points for l0g.fr: guides, methodology, sources, editorial protocol, API and MCP documentation.',
-  inLanguage: 'en',
-  isAccessibleForFree: true,
-  publisher: { '@id': `${site}/#org` },
-};
 ---
 
-<EnglishGuidesLayout
+<EnglishLayout
   title="l0g in English"
-  description="English entry points for l0g.fr: reference guides, methodology, sources, editorial protocol, API and MCP documentation. l0g remains primarily French; this section exposes the durable reference and machine-readable layer."
-  alternateLinks={[{ hreflang: 'en', href: `${site}/en/` }, { hreflang: 'fr', href: `${site}/` }, { hreflang: 'x-default', href: `${site}/` }]}
+  description="English entry points for l0g.fr: reference guides, methodology, sources, API, MCP, dashboards, glossary and risk replay surfaces."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/` },
+    { hreflang: 'fr', href: `${SITE}/` },
+    { hreflang: 'x-default', href: `${SITE}/` },
+  ]}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
-
-  <section class="en-hero rise">
+  <section class="en-hero rise" data-pagefind-body>
     <p class="mono-label glow" style="color: var(--color-signal)">$ cd /en</p>
-    <h1 class="mt-5 font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-tight tracking-wider glow">
-      l0g in <span style="color: var(--color-accent)">English</span>
-    </h1>
-    <p class="mt-5 max-w-2xl text-paper text-lg leading-8">
-      l0g.fr is primarily a French publication. The English section exposes the durable layer: reference guides,
-      methodology, source doctrine, editorial protocol and machine-readable access for agents and data workflows.
+    <h1 class="en-title font-display glow">English entry points for l0g.</h1>
+    <p class="en-lede">
+      l0g.fr is primarily a French risk-intelligence project. The English section exposes the durable parts of the site:
+      reference guides, methodology, primary-source logic, API/MCP documentation, machine-readable data surfaces and selected risk tools.
     </p>
-    <p class="mt-4 max-w-2xl text-muted">
-      News articles and most topic pages remain French-only. The English surface is intentionally partial: it covers what needs to be stable, citable and reusable.
+    <p class="en-note">
+      This is a partial, explicit English layer. The full journal, most topic hubs and many exploratory notes remain French-only.
     </p>
   </section>
 
-  <section class="en-grid rise" aria-label="English entry points">
+  <section class="en-grid" aria-label="English sections">
     {cards.map((card) => (
       <a class="en-card" href={card.href}>
-        <span class="mono-label">{card.label}</span>
-        <p>{card.desc}</p>
+        <span class="mono-label">// {card.k}</span>
+        <strong>{card.title}</strong>
+        <p>{card.text}</p>
       </a>
     ))}
   </section>
-
-  <section class="en-panel rise">
-    <p class="mono-label glow" style="color: var(--color-signal)">// reuse policy</p>
-    <p class="mt-3 text-paper">
-      Public pages and machine-readable surfaces are meant to be cited, indexed and reused with attribution.
-      l0g prefers primary sources, explicit dates, visible uncertainty and reproducible data surfaces over opaque summaries.
-    </p>
-  </section>
-</EnglishGuidesLayout>
+</EnglishLayout>
 
 <style>
-  .en-hero { padding-bottom: 2.4rem; border-bottom: 1px dashed var(--color-line); }
-  .en-grid { display: grid; gap: 1rem; margin-top: 2.6rem; }
+  .en-title { margin-top: .8rem; max-width: 52rem; font-size: clamp(2.4rem, 6vw, 4.9rem); line-height: .96; }
+  .en-lede { margin-top: 1.2rem; max-width: 50rem; color: var(--color-paper); font-size: 1.08rem; line-height: 1.7; }
+  .en-note { margin-top: 1rem; max-width: 46rem; color: var(--color-muted); font-size: .94rem; line-height: 1.6; }
+  .en-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.4rem; }
+  .en-card { display: grid; gap: .45rem; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); text-decoration: none; }
+  .en-card:hover { border-color: color-mix(in srgb, var(--color-signal) 48%, transparent); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
+  .en-card strong { color: var(--color-bright); font-size: 1.08rem; }
+  .en-card p { color: var(--color-muted); font-size: .92rem; line-height: 1.55; }
   @media (min-width: 760px) { .en-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  .en-card, .en-panel {
-    display: block;
-    border: 1px solid var(--color-line);
-    border-radius: 10px;
-    background: color-mix(in srgb, var(--color-surface) 62%, transparent);
-    padding: 1rem;
-  }
-  .en-card { text-decoration: none; transition: border-color 0.16s, background 0.16s, transform 0.16s; }
-  .en-card:hover { border-color: color-mix(in srgb, var(--color-signal) 55%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); transform: translateY(-1px); }
-  .en-card span { color: var(--color-signal); }
-  .en-card p { margin-top: 0.65rem; color: var(--color-muted); line-height: 1.6; font-size: 0.94rem; }
-  .en-panel { margin-top: 2.6rem; max-width: 52rem; }
 </style>

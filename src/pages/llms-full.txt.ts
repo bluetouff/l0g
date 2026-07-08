@@ -63,6 +63,11 @@ export const GET: APIRoute = async () => {
   out.push(`Genere le ${new Date().toISOString()}. ${guides.length} guides, ${posts.length} analyses.`);
   out.push(`Carte concise : ${SITE}/llms.txt`);
   out.push(SEP);
+  out.push('ENGLISH ENTRY POINTS');
+  out.push(`URL : ${SITE}/en/`);
+  out.push('-'.repeat(76));
+  out.push('English surfaces: /en/ overview, /en/tour/ guided tour, /en/manifesto/ manifesto, /en/guides/ reference guides, /en/methodology/ methodology, /en/sources/ source hierarchy, /en/editorial-protocol/ editorial protocol, /en/api/ public API, /en/mcp/ MCP server, /en/agent-surface/ Agent Surface, /en/glossary/ core glossary, /en/dashboards/ monitoring tools, /en/risk-diff/ change layer and /en/black-box/ point-in-time replay. These pages are an explicit partial English layer; the full journal remains primarily French.');
+  out.push(SEP);
   out.push('MANIFESTE : Manifeste l0g');
   out.push(`URL : ${SITE}/manifeste/`);
   out.push('-'.repeat(76));

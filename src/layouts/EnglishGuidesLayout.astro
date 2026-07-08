@@ -1,10 +1,11 @@
 ---
 import '../styles/global.css';
 import { existsSync } from 'node:fs';
-
-const hasPage = (relativePath: string) => existsSync(new URL(relativePath, import.meta.url));
+import { join } from 'node:path';
 
 type AlternateLink = { hreflang: string; href: string };
+
+type NavTab = { href: string; label: string; show?: boolean };
 
 interface Props {
   title?: string;
@@ -17,8 +18,8 @@ interface Props {
 }
 
 const {
-  title = 'l0g in English',
-  description = 'English entry points from l0g.fr: reference guides, methodology, sources, API, MCP and machine-readable risk data.',
+  title = 'English',
+  description = 'English entry points for l0g.fr: guides, methodology, API, MCP, risk surfaces and machine-readable data.',
   ogType = 'website',
   ogImage = '/og-default.png',
   ogImageAlt,
@@ -31,25 +32,33 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const fullTitle = `${title} · l0g.fr`;
 const socialImageAlt = ogImageAlt ?? `${fullTitle} — l0g.fr social card`;
 const year = new Date().getFullYear();
-const path = Astro.url.pathname;
-const norm = (s: string) => (s.length > 1 ? s.replace(/\/$/, '') : s);
-const isCurrentHref = (href: string) => {
-  const p = norm(path);
-  const h = norm(href);
-  return h === '/' ? p === '/' : p === h || p.startsWith(h + '/');
-};
+const pageExists = (path: string) => existsSync(join(process.cwd(), 'src/pages', path));
 
-const navItems = [
+const navTabs: NavTab[] = [
   { href: '/en/', label: 'overview' },
-  { href: '/en/start/', label: 'start' },
-  { href: '/en/about/', label: 'about' },
-  { href: '/en/methodology/', label: 'methodology' },
-  { href: '/en/sources/', label: 'sources' },
-  { href: '/en/guides/', label: 'guides' },
-  ...(hasPage('../pages/en/api/index.astro') ? [{ href: '/en/api/', label: 'api' }] : []),
-  ...(hasPage('../pages/en/mcp/index.astro') ? [{ href: '/en/mcp/', label: 'mcp' }] : []),
-  ...(hasPage('../pages/en/agent-surface/index.astro') ? [{ href: '/en/agent-surface/', label: 'agent surface' }] : []),
-];
+  { href: '/en/start/', label: 'start', show: pageExists('en/start/index.astro') },
+  { href: '/en/tour/', label: 'tour', show: pageExists('en/tour/index.astro') },
+  { href: '/en/about/', label: 'about', show: pageExists('en/about/index.astro') },
+  { href: '/en/manifesto/', label: 'manifesto', show: pageExists('en/manifesto/index.astro') },
+  { href: '/en/methodology/', label: 'methodology', show: pageExists('en/methodology/index.astro') },
+  { href: '/en/sources/', label: 'sources', show: pageExists('en/sources/index.astro') },
+  { href: '/en/editorial-protocol/', label: 'protocol', show: pageExists('en/editorial-protocol/index.astro') },
+  { href: '/en/guides/', label: 'guides', show: pageExists('en/guides/index.astro') },
+  { href: '/en/glossary/', label: 'glossary', show: pageExists('en/glossary/index.astro') },
+  { href: '/en/dashboards/', label: 'dashboards', show: pageExists('en/dashboards/index.astro') },
+  { href: '/en/risk-diff/', label: 'risk diff', show: pageExists('en/risk-diff/index.astro') },
+  { href: '/en/black-box/', label: 'black box', show: pageExists('en/black-box/index.astro') },
+  { href: '/en/api/', label: 'api', show: pageExists('en/api/index.astro') },
+  { href: '/en/mcp/', label: 'mcp', show: pageExists('en/mcp/index.astro') },
+  { href: '/en/agent-surface/', label: 'agent surface', show: pageExists('en/agent-surface/index.astro') },
+].filter((tab) => tab.show !== false);
+
+const norm = (s: string) => (s.length > 1 ? s.replace(/\/$/, '') : s);
+function isActive(href: string): boolean {
+  const p = norm(Astro.url.pathname);
+  const h = norm(href);
+  return h === '/en' ? p === '/en' : p === h || p.startsWith(h + '/');
+}
 
 const siteJsonLd = {
   '@context': 'https://schema.org',
@@ -133,7 +142,7 @@ const siteJsonLd = {
     <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
       <header>
         <div class="header-top">
-          <a href="/en/" class="brand" aria-label="l0g in English">
+          <a href="/en/" class="brand" aria-label="l0g English">
             <span class="brand-mark">
               <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
             </span>
@@ -143,8 +152,8 @@ const siteJsonLd = {
         </div>
 
         <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="English navigation">
-          {navItems.map((item) => (
-            <a href={item.href} class="nav-tab" aria-current={isCurrentHref(item.href) ? 'page' : undefined}>{item.label}</a>
+          {navTabs.map((tab) => (
+            <a href={tab.href} class="nav-tab" aria-current={isActive(tab.href) ? 'page' : undefined}>{tab.label}</a>
           ))}
           <a href="/" class="nav-tab">french site</a>
         </nav>
@@ -158,19 +167,19 @@ const siteJsonLd = {
     <footer class="site-footer">
       <div class="footer-grad" aria-hidden="true"></div>
       <div class="footer-inner mx-auto max-w-6xl px-5">
-        <p class="mono-label">// l0g in English</p>
+        <p class="mono-label">// l0g English</p>
         <p class="en-footer-text">
-          l0g.fr is primarily published in French. This English section covers the durable reference layer:
-          guides, methodology, sources, editorial protocol and machine-readable access.
+          l0g.fr is primarily published in French. The English section covers reference guides,
+          trust pages, API/MCP documentation and selected machine-readable risk surfaces.
         </p>
         <p class="en-footer-links">
-          <a href="/en/start/" class="link-term">Start</a>
+          <a href="/en/" class="link-term">English overview</a>
           <span aria-hidden="true"> · </span>
           <a href="/en/guides/" class="link-term">English guides</a>
           <span aria-hidden="true"> · </span>
-          <a href="/en/methodology/" class="link-term">Methodology</a>
+          <a href="/en/api/" class="link-term">API</a>
           <span aria-hidden="true"> · </span>
-          <a href="/en/sources/" class="link-term">Sources</a>
+          <a href="/en/mcp/" class="link-term">MCP</a>
           <span aria-hidden="true"> · </span>
           <a href="/" class="link-term">l0g.fr</a>
         </p>

@@ -1,0 +1,57 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const cards = [
+  ['Point-in-time frames', 'Each frame records what was publicly available at a date: signals, sources, models, freshness and hashes.'],
+  ['No retroactive reconstruction', 'A missing date stays missing. The system does not fill historical gaps to make the record look cleaner.'],
+  ['Hashable surfaces', 'Integrity manifests expose SHA-256 hashes so a served artifact can be checked against the public snapshot.'],
+  ['Replay for audit', 'The Black Box is designed for audit, monitoring and backtest hygiene, not for pretending risk can be reduced to a prophecy.'],
+];
+---
+
+<EnglishLayout
+  title="Black Box Recorder"
+  description="Black Box Recorder in English: point-in-time public risk frames, hashes, explicit gaps and replay rules for l0g risk signals."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/black-box/` },
+    { hreflang: 'fr', href: `${SITE}/black-box/` },
+    { hreflang: 'x-default', href: `${SITE}/black-box/` },
+  ]}
+>
+  <article class="bb-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// black box recorder</p>
+    <h1 class="bb-title font-display glow">The public flight recorder for risk.</h1>
+    <p class="bb-lede">
+      The Black Box Recorder preserves public l0g risk frames as they existed at the time. It is built to keep replay honest:
+      no look-ahead bias, no silent backfill, no fake continuity.
+    </p>
+
+    <div class="bb-links" data-pagefind-ignore>
+      <a href="/api/v1/black-box.json">black-box.json</a>
+      <a href="/black-box/">French live page</a>
+      <a href="/api/v1/integrity.json">integrity hashes</a>
+      <a href="/en/risk-diff/">Risk Diff</a>
+    </div>
+
+    <section class="bb-grid" aria-label="Black Box principles">
+      {cards.map(([title, text]) => (
+        <article class="bb-card">
+          <strong>{title}</strong>
+          <p>{text}</p>
+        </article>
+      ))}
+    </section>
+  </article>
+</EnglishLayout>
+
+<style>
+  .bb-title { margin-top: .8rem; max-width: 54rem; font-size: clamp(2.1rem, 6vw, 4.4rem); line-height: .98; }
+  .bb-lede { margin-top: 1.15rem; max-width: 48rem; color: var(--color-paper); font-size: 1.05rem; line-height: 1.7; }
+  .bb-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.3rem; }
+  .bb-links a { border: 1px solid var(--color-line); border-radius: 999px; padding: .4rem .65rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; text-decoration: none; }
+  .bb-grid { display: grid; gap: .9rem; margin-top: 2rem; }
+  .bb-card { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); }
+  .bb-card strong { color: var(--color-bright); }
+  .bb-card p { color: var(--color-muted); line-height: 1.6; }
+  @media (min-width: 760px) { .bb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
