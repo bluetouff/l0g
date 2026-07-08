@@ -1,0 +1,81 @@
+---
+title: "How to Read CBO Forecasts: the Budget Baseline and Its Traps"
+description: "A reference guide to the Congressional Budget Office: what this independent budget referee is, what it publishes, how to read a baseline through deficits, debt-to-GDP and net interest, the misunderstood current-law convention that makes it a benchmark rather than a forecast, the difference between static and dynamic scoring, and how sensitive long-term projections are to interest-rate and productivity assumptions. With 2026 figures as illustration."
+summary: "The Congressional Budget Office is the independent, nonpartisan budget agency of the U.S. Congress. Its baseline projects deficits, debt and the economy over ten years under the assumption that current law does not change. It is a benchmark, not a forecast. Reading it well requires understanding its conventions, scoring methods and sensitivity to rates and productivity."
+pubDate: 2026-07-08T18:00:00+02:00
+updatedDate: 2026-07-08T18:00:00+02:00
+sourceGuide: "lire-les-previsions-du-cbo"
+sourceUpdatedDate: 2026-07-07T06:35:00+02:00
+tags: ["macro", "debt", "us budget"]
+category: macro
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Every projection of U.S. debt, every debate about a tax bill, every headline on the deficit leans on the same numbers: those of the Congressional Budget Office. Yet those projections are among the most misunderstood in macro, because people read them as forecasts when they are benchmarks built under strict rules. This guide explains what the CBO is, how to read a baseline, and why its conventions change everything.*
+
+## An independent budget referee
+
+The Congressional Budget Office was created in 1974 to give Congress an independent budget-analysis capacity separate from the executive branch. It is nonpartisan by design. It recommends no policy; it estimates the consequences of policy. That neutrality is why its numbers become the common reference for both parties, even when they attack the assumptions. Understanding the CBO starts with this: it does not say what will happen. It says what would happen under specified conditions.
+
+## What the CBO publishes
+
+The CBO produces several documents that should not be confused. The most followed is the Budget and Economic Outlook, the ten-year baseline generally published twice a year, projecting revenues, spending, deficits and major economic variables. The Long-Term Budget Outlook extends the exercise over thirty years, where demographics and interest costs dominate. Cost estimates, or scores, evaluate the budget effect of a specific bill. Add the Monthly Budget Review, which tracks execution during the year, and thematic studies. Knowing which document a number comes from is the first reflex.
+
+## Reading a baseline: the numbers that matter
+
+A baseline is read through a few magnitudes, preferably as a share of GDP so they are comparable over time. First, the annual deficit: for fiscal year 2026, the CBO expects **$1.9 trillion**, or **5.8%** of GDP, unusually high outside recession or war. Second, debt held by the public, the relevant measure of the burden, projected to rise from **101%** of GDP in 2026 to **120%** in 2036. Third, net interest, now the fastest-growing line: **$1.0 trillion** in 2026, rising to **$2.1 trillion** in 2036, already above the defense budget.
+
+One number deserves special attention: the primary deficit, meaning the deficit excluding interest. It separates what the state spends beyond current revenue from what it pays for past debt. When the deficit widens mostly because of interest, the problem is the stock of debt. When it comes from the primary balance, current fiscal policy is the issue.
+
+<InfographicBars
+  title="Debt over thirty years"
+  subtitle="Federal debt held by the public, percent of GDP, CBO current-law projection."
+  items={[
+    { label: "2026", value: 101, valueLabel: "101%", tone: "signal" },
+    { label: "2036", value: 120, valueLabel: "120%", tone: "amber" },
+    { label: "2055", value: 156, valueLabel: "156%", tone: "accent" },
+  ]}
+  note="Up to roughly 172% after accounting for laws enacted since."
+  source="Sources: CBO, Budget and Economic Outlook; Long-Term Budget Outlook."
+  caption="Under current law, debt would rise from 101% of GDP in 2026 to 156% in 2055. Source: CBO."
+/>
+
+## The misunderstood rule: the current-law baseline
+
+This is the core issue and the source of most errors. The baseline is not a forecast of what will happen. It is a projection of what would happen if current law remained unchanged. That convention follows statutory rules, notably section 257 of the Balanced Budget and Emergency Deficit Control Act, and those rules produce counterintuitive effects.
+
+Three examples are enough. Discretionary spending is assumed to start from the latest enacted level and grow with inflation, not stay frozen. Tax or spending provisions scheduled to expire are assumed to expire, even when everyone expects Congress to extend them: a temporary tax cut therefore disappears from the baseline at its sunset date, so an extension, however likely, shows up as an added cost relative to the benchmark. Finally, benefits under a program are assumed to be paid in full even if its trust fund is exhausted and no law authorizes full payment. The baseline is therefore a legal object as much as an economic one. Reading it without knowing those conventions means mistaking an accounting artifact for a real trajectory.
+
+## Static or dynamic: reading a score
+
+When the CBO evaluates a bill, the method matters as much as the result. A conventional score is static: it measures direct effects on revenues and outlays without assuming the policy changes growth, and often without including the debt-service cost it creates. A dynamic score, rarer and more contested, includes macroeconomic feedbacks, for example the idea that a tax cut could stimulate activity and therefore revenues. Neither method is neutral. The methodological choice can make a reform look costly or self-financing on paper. You need to know which kind of score you are reading before judging a fiscal claim.
+
+## Fragile assumptions
+
+The longer the horizon, the more the baseline depends on economic assumptions whose small changes create huge gaps. The CBO projects only **1.7%** average growth over thirty years and the weakest demographic growth in U.S. history. Under current law, debt held by the public would rise from around 100% of GDP in 2025 to **156%** in 2055, or roughly 172% in projections incorporating laws enacted since.
+
+But those figures are only the center of a fan. If the average interest rate on the debt diverged from the assumption by only 5 basis points per year, debt in 2055 would be **204%** of GDP in one case and **121%** in the other. Likewise, productivity higher or lower by 0.5 point per year would bring debt to 113% or push it to 203%. In other words, the gap between a manageable and explosive path rests on tiny assumptions. A single thirty-year debt number should always be read as the middle of a range, not destiny.
+
+<InfographicBars
+  title="A fan, not a destiny"
+  subtitle="Debt held by the public in 2055, percent of GDP, under interest-rate deviations of plus or minus 5 basis points per year."
+  items={[
+    { label: "Rates 5 bp/year lower", value: 121, valueLabel: "121%", tone: "signal" },
+    { label: "Central baseline", value: 156, valueLabel: "156%", tone: "amber" },
+    { label: "Rates 5 bp/year higher", value: 204, valueLabel: "204%", tone: "accent" },
+  ]}
+  note="A tiny rate difference changes the trajectory completely."
+  source="Source: CBO, Long-Term Budget Outlook Under Alternative Scenarios."
+  caption="A difference of only 5 basis points per year in the average rate moves 2055 debt from 121% to 204% of GDP. Source: CBO."
+/>
+
+## Reading the CBO in practice
+
+Used well, the CBO is extremely valuable, provided it is taken for what it is: a direction, a common benchmark and an order of magnitude, not prophecy. A few habits help. Separate the primary deficit from the total deficit to know where deterioration comes from. Read shares of GDP rather than dollar amounts. Check the economic assumptions—growth, rates, inflation—behind the baseline, and remember the sensitivity. When reading a score, ask whether it is static or dynamic, and whether the supposedly expiring provisions will really expire.
+
+This framework applies to concrete debates. The debt and interest path documented by the CBO is the starting point for our analysis of the [return of term premium](/posts/dette-americaine-le-reveil-de-la-prime-de-terme/), and the supply of securities it implies is read through our guide to the [Treasury market](/en/guides/read-us-treasuries-market/). The sensitivity of debt to productivity also connects to the debate over [AI productivity gains](/posts/ia-et-productivite-entre-gains-mesures-et-effets-supposes/). The [glossary](/glossaire/) defines the acronyms.
+
+---
+
+**Main sources:** Congressional Budget Office, “The Budget and Economic Outlook: 2026 to 2036”; CBO, “The Long-Term Budget Outlook: 2025 to 2055”; CBO, “The Long-Term Budget Outlook Under Alternative Scenarios for the Economy and the Budget”; CBO, “CBO Explains How It Develops the Budget Baseline”; CBO, “CBO Explains the Statutory Foundations of Its Budget Baseline”; Committee for a Responsible Federal Budget on CBO’s long-term outlook.
