@@ -1,0 +1,181 @@
+---
+import '../styles/global.css';
+
+type AlternateLink = { hreflang: string; href: string };
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  ogImageAlt?: string;
+  canonical?: string;
+  alternateLinks?: AlternateLink[];
+}
+
+const {
+  title = 'English guides',
+  description = 'English reference guides from l0g.fr.',
+  ogType = 'website',
+  ogImage = '/og-default.png',
+  ogImageAlt,
+  canonical = new URL(Astro.url.pathname, Astro.site).toString(),
+  alternateLinks = [],
+} = Astro.props;
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const ogImageUrl = new URL(ogImage, Astro.site).toString();
+const fullTitle = `${title} · l0g.fr`;
+const socialImageAlt = ogImageAlt ?? `${fullTitle} — l0g.fr social card`;
+const year = new Date().getFullYear();
+
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#org`,
+      name: 'l0g',
+      alternateName: 'l0g.fr',
+      url: `${SITE}/`,
+      logo: `${SITE}/favicon.svg`,
+      description: 'Risk intelligence: mapping opaque finance, systemic risk and financial geopolitics with public data.',
+      sameAs: ['https://github.com/bluetouff', 'https://x.com/bluetouff'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: 'l0g',
+      inLanguage: 'en',
+      publisher: { '@id': `${SITE}/#org` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <script is:inline>
+      (function () {
+        try {
+          var k = 'l0g-theme';
+          var s = localStorage.getItem(k);
+          var t = (s === 'light' || s === 'dark')
+            ? s
+            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+    ))}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="l0g.fr" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bluetouff" />
+    <meta name="twitter:creator" content="@bluetouff" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(siteJsonLd).replace(/</g, '\\u003c')} />
+  </head>
+
+  <body>
+    <div class="topbar" aria-hidden="true"></div>
+    <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
+      <header>
+        <div class="header-top">
+          <a href="/en/guides/" class="brand" aria-label="l0g English guides">
+            <span class="brand-mark">
+              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-tag mono-label">risk intelligence · english guides</span>
+          </a>
+        </div>
+
+        <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="English guide navigation">
+          <a href="/en/guides/" class="nav-tab" aria-current={Astro.url.pathname.startsWith('/en/guides') ? 'page' : undefined}>english guides</a>
+          <a href="/guides/" class="nav-tab">guides FR</a>
+          <a href="/" class="nav-tab">french site</a>
+        </nav>
+      </header>
+
+      <main class="min-w-0 py-8">
+        <slot />
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-grad" aria-hidden="true"></div>
+      <div class="footer-inner mx-auto max-w-6xl px-5">
+        <p class="mono-label">// l0g English guides</p>
+        <p class="en-footer-text">
+          l0g.fr is primarily published in French. This English section only covers selected reference guides.
+        </p>
+        <p class="en-footer-links">
+          <a href="/en/guides/" class="link-term">English guides</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/guides/" class="link-term">French guides</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/" class="link-term">l0g.fr</a>
+        </p>
+        <p class="mono-label en-copy">© {year} l0g.fr</p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        function current() { return document.documentElement.getAttribute('data-theme') || 'dark'; }
+        function sync() { btn.setAttribute('aria-pressed', current() === 'light' ? 'true' : 'false'); }
+        btn.addEventListener('click', function () {
+          var next = current() === 'light' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', next);
+          try { localStorage.setItem('l0g-theme', next); } catch (e) {}
+          sync();
+        });
+        sync();
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  .en-footer-text {
+    margin-top: 0.45rem;
+    max-width: 44rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .en-footer-links { margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; }
+  .en-copy { margin-top: 1.2rem; color: var(--color-muted); }
+</style>

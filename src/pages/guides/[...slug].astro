@@ -28,6 +28,19 @@ const isoUpd = updated.toISOString();
 const rt = readingTime(guide.body);
 
 const url = new URL(`/guides/${guide.id}/`, Astro.site).toString();
+const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
+const englishGuide = englishGuides.find((entry) => entry.data.sourceGuide === guide.id);
+const englishUrl = englishGuide ? new URL(`/en/guides/${englishGuide.id}/`, Astro.site).toString() : null;
+const alternateLinks = englishUrl
+  ? [
+      { hreflang: 'fr', href: url },
+      { hreflang: 'en', href: englishUrl },
+      { hreflang: 'x-default', href: url },
+    ]
+  : [
+      { hreflang: 'fr', href: url },
+      { hreflang: 'x-default', href: url },
+    ];
 
 // Partage : URL absolue + textes encodes. Liens HTML purs, aucun script tiers.
 const shareTitle = guide.data.title;
@@ -82,6 +95,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
   description={guide.data.description}
   ogType="article"
   ogImage={ogImage}
+  alternateLinks={alternateLinks}
 >
   <script type="application/ld+json" is:inline set:html={safeLd} />
 
@@ -115,6 +129,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       </div>
 
       <TrustBar items={trustItems} variant="compact" />
+      {englishGuide && (
+        <p class="translation-link mono-label" data-pagefind-ignore>
+          <a href={`/en/guides/${englishGuide.id}/`} class="link-term">English version available →</a>
+        </p>
+      )}
       <div class="post-rule" aria-hidden="true"></div>
     </header>
 
@@ -239,5 +258,6 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       color: var(--color-signal); border-color: var(--color-signal);
       background: color-mix(in srgb, var(--color-signal) 8%, transparent);
     }
+    .translation-link { margin-top: 0.9rem; }
   </style>
 </BaseLayout>

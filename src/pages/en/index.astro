@@ -1,0 +1,43 @@
+---
+import EnglishGuidesLayout from '../../layouts/EnglishGuidesLayout.astro';
+
+const canonical = new URL('/en/', Astro.site).toString();
+const alternateLinks = [
+  { hreflang: 'en', href: canonical },
+  { hreflang: 'fr', href: new URL('/', Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL('/', Astro.site).toString() },
+];
+---
+
+<EnglishGuidesLayout
+  title="English guides"
+  description="English entry point for selected l0g.fr reference guides. The rest of the website is primarily published in French."
+  canonical={canonical}
+  alternateLinks={alternateLinks}
+>
+  <section class="rise border-b border-dashed border-line pb-10">
+    <p class="mono-label" style="color: var(--color-signal)">$ cd /en</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
+      l0g <span style="color: var(--color-accent)">English guides</span>
+    </h1>
+    <p class="mt-5 max-w-xl text-muted">
+      l0g.fr is primarily published in French. This area exposes selected reference guides in English,
+      without pretending the whole website has been internationalized.
+    </p>
+    <div class="en-actions" data-pagefind-ignore>
+      <a class="en-action link-term" href="/en/guides/">Browse English guides →</a>
+      <a class="en-action link-term" href="/guides/">View French guides →</a>
+    </div>
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .en-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+</style>

@@ -5,6 +5,8 @@ import SidebarMobile from '../components/SidebarMobile.astro';
 import WebMCPTools from '../components/WebMCPTools.astro';
 import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
 
+type AlternateLink = { hreflang: string; href: string };
+
 interface Props {
   title?: string;
   description?: string;
@@ -12,6 +14,9 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   sidebar?: boolean;
+  lang?: 'fr' | 'en';
+  ogLocale?: 'fr_FR' | 'en_US';
+  alternateLinks?: AlternateLink[];
 }
 
 const {
@@ -21,6 +26,9 @@ const {
   ogImage = '/og-default.png',
   ogImageAlt,
   sidebar = true,
+  lang = 'fr',
+  ogLocale = 'fr_FR',
+  alternateLinks = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
@@ -54,7 +62,7 @@ const siteJsonLd = {
       '@id': `${SITE}/#website`,
       url: `${SITE}/`,
       name: 'l0g',
-      inLanguage: 'fr',
+      inLanguage: lang,
       publisher: { '@id': `${SITE}/#org` },
     },
   ],
@@ -92,7 +100,7 @@ function isCurrentHref(href: string): boolean {
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -118,12 +126,15 @@ function isCurrentHref(href: string): boolean {
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+    ))}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="l0g.fr" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
