@@ -1,0 +1,76 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const principles = [
+  ['Primary sources first', 'Official datasets, filings and regulator publications are preferred over summaries and recycled narratives.'],
+  ['Risk, not prophecy', 'l0g tracks stress, opacity and market plumbing. It does not pretend to forecast the next tick.'],
+  ['Open surface', 'The public API, Agent Surface and MCP server make the corpus queryable without scraping or hidden access.'],
+  ['No fake precision', 'Scores and dashboards are reading aids, not a single omniscient index. Coverage and limits matter.'],
+];
+---
+
+<EnglishGuidesLayout
+  title="About l0g"
+  description="What l0g.fr is: an independent, public-data risk-intelligence site focused on macro, credit, market plumbing, crypto regulation and systemic opacity."
+  alternateLinks={[{ hreflang: 'en', href: `${site}/en/about/` }, { hreflang: 'fr', href: `${site}/about/` }, { hreflang: 'x-default', href: `${site}/about/` }]}
+>
+  <article class="rise about-page" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// about</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
+      A public-data notebook for <span style="color: var(--color-accent)">opaque finance</span>
+    </h1>
+    <p class="lede">
+      l0g.fr is an independent risk-intelligence site by Bluetouff. It maps systemic risk, financial plumbing, macro stress,
+      credit opacity, crypto regulation and geopolitical finance with public data, official sources and reproducible machine surfaces.
+    </p>
+
+    <section>
+      <h2>What l0g is for</h2>
+      <p>
+        The site is built for readers who want to understand the mechanisms behind market narratives: Treasury funding, central-bank balance sheets,
+        repo stress, private credit opacity, sanctions, stablecoins, dollar funding, on-chain data and macro releases.
+      </p>
+      <p>
+        Articles handle events. Guides define durable concepts. Dashboards expose signals. Machine-readable endpoints make the evidence reusable.
+      </p>
+    </section>
+
+    <section class="principles">
+      {principles.map(([title, desc]) => (
+        <div>
+          <h3>{title}</h3>
+          <p>{desc}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>What l0g is not</h2>
+      <p>
+        l0g is not investment advice, a trading signal service, a paid data terminal, or a black-box score vendor. It is a public notebook with strong source discipline,
+        explicit caveats and a bias toward verifiable evidence.
+      </p>
+    </section>
+
+    <section>
+      <h2>How to reuse it</h2>
+      <p>
+        Start with the <a href="/en/guides/" class="link-term">English guides</a>, read the <a href="/en/methodology/" class="link-term">methodology</a>,
+        and use the <a href="/en/api/" class="link-term">API</a> or <a href="/en/mcp/" class="link-term">MCP server</a> when a workflow needs structured data.
+        Attribution to l0g.fr is required when reusing the public corpus.
+      </p>
+    </section>
+  </article>
+</EnglishGuidesLayout>
+
+<style>
+  .about-page { max-width: 56rem; }
+  .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
+  .about-page section { margin-top: 2.4rem; }
+  .about-page h2 { color: var(--color-bright); font-size: 1.35rem; font-weight: 700; }
+  .about-page p { margin-top: 0.85rem; color: var(--color-muted); line-height: 1.75; }
+  .principles { display: grid; gap: 1rem; }
+  @media (min-width: 760px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .principles div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
+  .principles h3 { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.07em; }
+</style>

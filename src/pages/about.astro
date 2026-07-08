@@ -10,7 +10,12 @@ const trustItems = [
 ];
 ---
 
-<BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et l'éthique zéro tiers du projet.">
+<BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et l'éthique zéro tiers du projet."
+  alternateLinks={[{ hreflang: 'fr', href: new URL('/about/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/about/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/about/', Astro.site).toString() }]}>
+  <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
+    <a href="/en/about/" class="link-term">English version available →</a>
+  </p>
+
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// à propos</p>
 

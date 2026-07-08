@@ -35,7 +35,12 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   ogImage="/og-protocole-editorial.png"
   ogImageAlt="Protocole éditorial l0g : sources, vérification, preuve et correction"
   sidebar={false}
->
+
+  alternateLinks={[{ hreflang: 'fr', href: new URL('/protocole-editorial/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/editorial-protocol/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/protocole-editorial/', Astro.site).toString() }]}>
+  <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
+    <a href="/en/editorial-protocol/" class="link-term">English version available →</a>
+  </p>
+
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="protocol-page rise" data-pagefind-body>

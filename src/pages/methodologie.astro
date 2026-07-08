@@ -25,7 +25,12 @@ const trustItems = [
 <BaseLayout
   title="Méthodologie"
   description="Comment l0g calcule ses signaux de risque : tableau de bord consolidé de signaux, historique point-in-time pour backtests, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
->
+
+  alternateLinks={[{ hreflang: 'fr', href: new URL('/methodologie/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/methodology/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/methodologie/', Astro.site).toString() }]}>
+  <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
+    <a href="/en/methodology/" class="link-term">English version available →</a>
+  </p>
+
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// méthodologie</p>
     <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">

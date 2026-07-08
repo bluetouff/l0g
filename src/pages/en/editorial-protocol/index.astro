@@ -1,0 +1,71 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const kinds = [
+  ['Observed fact', 'A directly observed data point, filing, rule, vote, release, price, date or statement.'],
+  ['Estimate', 'A number derived by a model, provider, survey, nowcast or reconstruction.'],
+  ['Inference', 'A conclusion drawn from several facts. It must be labeled as reasoning, not as a raw fact.'],
+  ['Scenario', 'A conditional path, not a forecast. Scenarios should keep assumptions visible.'],
+  ['Uncategorized assertion', 'A claim not yet typed with sufficient confidence. It should not be overused as evidence.'],
+];
+---
+
+<EnglishGuidesLayout
+  title="Editorial protocol"
+  description="The l0g editorial protocol: how claims are typed, dated, corrected and cited, and how the site separates observed facts from estimates, inferences and scenarios."
+  alternateLinks={[{ hreflang: 'en', href: `${site}/en/editorial-protocol/` }, { hreflang: 'fr', href: `${site}/protocole-editorial/` }, { hreflang: 'x-default', href: `${site}/protocole-editorial/` }]}
+>
+  <article class="protocol-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// editorial protocol</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
+      Claims need <span style="color: var(--color-accent)">grammar</span>
+    </h1>
+    <p class="lede">
+      l0g separates observed facts, estimates, inferences and scenarios. The point is not stylistic neatness: it prevents a model output from becoming a fact,
+      a hypothesis from becoming a conclusion, or a scenario from being misquoted as a forecast.
+    </p>
+
+    <section class="kind-grid">
+      {kinds.map(([title, desc]) => (
+        <div>
+          <h2>{title}</h2>
+          <p>{desc}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Correction policy</h2>
+      <p>
+        Corrections should be explicit, dated and traceable. When a material claim changes, the change should not be hidden behind silent rewriting.
+        The machine-readable changefeed and integrity hashes exist so agents and readers can detect meaningful revisions.
+      </p>
+    </section>
+
+    <section>
+      <h2>Attribution and citation</h2>
+      <p>
+        A reusable claim should retain its source URL, canonical page, date, type and confidence level. If a generated answer cites l0g without preserving the source chain,
+        it has already degraded the evidence.
+      </p>
+    </section>
+
+    <section>
+      <h2>No investment advice</h2>
+      <p>
+        l0g analyzes public information, risk regimes and market plumbing. It does not provide personalized investment advice, trading signals or suitability assessments.
+      </p>
+    </section>
+  </article>
+</EnglishGuidesLayout>
+
+<style>
+  .protocol-page { max-width: 58rem; }
+  .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
+  .kind-grid { display: grid; gap: 1rem; margin-top: 2.4rem; }
+  @media (min-width: 760px) { .kind-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .kind-grid div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
+  .protocol-page section { margin-top: 2.4rem; }
+  .protocol-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 700; }
+  .protocol-page p { margin-top: 0.8rem; color: var(--color-muted); line-height: 1.75; }
+</style>

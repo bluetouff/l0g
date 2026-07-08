@@ -1,0 +1,68 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const blocks = [
+  ['1. Observe the source', 'Start from the original dataset, filing, release, regulator note or official time series whenever possible. Secondary coverage is useful for context, not as the root of a claim.'],
+  ['2. Separate signal families', 'A risk score is not a truth machine. l0g separates macro, liquidity, credit, market plumbing, policy, sanctions and crypto-regulatory signals instead of collapsing them into a magic number.'],
+  ['3. Preserve time', 'Signals keep publication dates, observation dates, retrieval dates and snapshot hashes where available. Backtests must use what was observable at the time.'],
+  ['4. Expose uncertainty', 'Coverage gaps, stale fields, imputed buckets and model caveats are part of the output. Hidden uncertainty is worse than visible incompleteness.'],
+  ['5. Prefer confluence', 'A single metric is rarely enough. l0g looks for alignment between independent signals: data, filings, positioning, funding stress, official releases and market prices.'],
+  ['6. Refuse false precision', 'A score can help compare regimes, but decimals do not make uncertainty disappear. The site avoids claims that a dashboard cannot support.'],
+];
+---
+
+<EnglishGuidesLayout
+  title="Methodology"
+  description="The l0g methodology: primary sources, dated evidence, signal families, confluence, uncertainty, point-in-time data and anti-false-precision rules."
+  alternateLinks={[{ hreflang: 'en', href: `${site}/en/methodology/` }, { hreflang: 'fr', href: `${site}/methodologie/` }, { hreflang: 'x-default', href: `${site}/methodologie/` }]}
+>
+  <article class="method-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// methodology</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
+      How l0g reads <span style="color: var(--color-accent)">risk</span>
+    </h1>
+    <p class="lede">
+      l0g treats risk as a set of observable pressures, not as a prophecy. The method is simple: use primary sources,
+      keep dates explicit, expose uncertainty, separate signal families and look for confluence before drawing conclusions.
+    </p>
+
+    <section class="method-grid">
+      {blocks.map(([title, text]) => (
+        <div>
+          <h2>{title}</h2>
+          <p>{text}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>How dashboards should be read</h2>
+      <p>
+        Dashboards normalize heterogeneous signals so they can be compared visually. That normalization is a reading aid, not a unified physical measure.
+        When a score is missing source coverage or relies on neutral imputation, the coverage itself matters as much as the number.
+      </p>
+      <p>
+        The machine-readable layer keeps this constraint visible through fields such as freshness, coverage, policy, scale caveats and precision guards.
+      </p>
+    </section>
+
+    <section>
+      <h2>How evidence should be cited</h2>
+      <p>
+        A claim should carry its source, URL, date and status: observed fact, estimate, inference, scenario or uncategorized assertion.
+        The <a href="/en/agent-surface/" class="link-term">Agent Surface</a> and the evidence graph exist to preserve that chain when agents reuse l0g.
+      </p>
+    </section>
+  </article>
+</EnglishGuidesLayout>
+
+<style>
+  .method-page { max-width: 58rem; }
+  .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
+  .method-grid { display: grid; gap: 1rem; margin-top: 2.4rem; }
+  @media (min-width: 760px) { .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .method-grid div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
+  .method-page section { margin-top: 2.5rem; }
+  .method-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 700; }
+  .method-page p { margin-top: 0.8rem; color: var(--color-muted); line-height: 1.75; }
+</style>
