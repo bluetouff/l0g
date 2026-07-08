@@ -1,0 +1,144 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const enUrl = `${SITE}/en/api/`;
+const frUrl = `${SITE}/api/`;
+const alternateLinks = [
+  { hreflang: 'fr', href: frUrl },
+  { hreflang: 'en', href: enUrl },
+  { hreflang: 'x-default', href: frUrl },
+];
+
+const endpoints = [
+  ['/en/agent-surface/', 'HTML', 'English documentation for Agent Surface v1.10.0.'],
+  ['/agents.json', 'JSON', 'Discovery manifest for agents: capabilities, endpoints, usage rules and proof policy.'],
+  ['/openapi.json', 'OPENAPI', 'OpenAPI 3.1 contract for l0g machine-to-machine endpoints.'],
+  ['/api/v1/claims.json', 'JSON', 'Typed claim-source graph with references and dates when detectable.'],
+  ['/api/v1/evidence-graph.json', 'JSON', 'Evidence graph: articles, claims, references, hosts, primary sources and datasets.'],
+  ['/api/v1/catalog.ndjson', 'NDJSON', 'Full line-by-line catalog for streaming ingestion, RAG or incremental indexing.'],
+  ['/api/v1/claims.ndjson', 'NDJSON', 'Typed claims in line-delimited form, with embedded references.'],
+  ['/api/v1/sources.json', 'JSON', 'Primary sources and cited hosts actually used by the corpus.'],
+  ['/api/v1/freshness.json', 'JSON', 'Corpus and signal freshness: useful dates, expiration policy and coverage.'],
+  ['/api/v1/integrity.json', 'JSON', 'Canonical SHA-256 fingerprints for verifying a snapshot.'],
+  ['/api/v1/changes.json', 'JSON', 'Machine changefeed: versions, hashes, diff status and semantic changes.'],
+  ['/api/v1/black-box.json', 'JSON', 'Black Box Recorder: hashed point-in-time frames for replaying public risk states.'],
+  ['/api/v1/risk-diff.json', 'JSON', 'What changed in signals, sources, claims, models, articles and confidence.'],
+  ['/api/v1/catalog.json', 'JSON', 'Complete machine catalog: articles, guides, sources, glossary atlas and protocol.'],
+  ['/api/v1/risk.json', 'JSON', 'Current historical dashboard state and confluence synthesis.'],
+  ['/api/v1/debt-risk.json', 'JSON', 'Canonical Debt Risk Radar snapshot imported from latest.json.'],
+  ['/api/v1/risk.xml', 'Atom', 'Level-change feed for alerting bots and SIEM-like watchers.'],
+  ['/api/v1/signals/current.json', 'JSON', 'Latest point-in-time observations by instrument.'],
+  ['/api/v1/signals/history.json', 'JSON', 'Complete point-in-time signal history: coverage, policy, current, observations and level changes.'],
+  ['/api/v1/signals/history.ndjson', 'NDJSON', 'Signal history line-by-line: meta, observations and level-change events.'],
+  ['/api/v1/signals/history.csv', 'CSV', 'Flat observations for pandas, R, DuckDB or spreadsheets.'],
+  ['/api/v1/signals/schema.json', 'JSON', 'Machine schema for meta, observation and level-change rows.'],
+];
+
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${enUrl}#dataset`,
+  name: 'l0g public API and Agent Surface 1.10',
+  description: 'Public machine-to-machine surface for l0g: Agent Surface, Risk Diff, Black Box Recorder, sourced claims, evidence graph, risk snapshots, canonical debt-risk and point-in-time signal history.',
+  url: enUrl,
+  inLanguage: 'en',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  isAccessibleForFree: true,
+  creator: { '@id': `${SITE}/#org` },
+  keywords: ['Agent Surface', 'public API', 'risk intelligence', 'Risk Diff', 'Black Box Recorder', 'US debt', 'signals history', 'evidence graph'],
+};
+---
+
+<EnglishLayout
+  title="Public API"
+  description="English documentation for the l0g public API: Agent Surface, sourced claims, evidence graph, Debt Risk Radar, current signals and point-in-time history in JSON, NDJSON and CSV."
+  canonical={enUrl}
+  alternateLinks={alternateLinks}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(datasetLd).replace(/</g, '\\u003c')} />
+
+  <section data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// api</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      Public <span style="color: var(--color-accent)">API</span>
+    </h1>
+    <p class="mt-4 max-w-2xl text-paper">
+      This page inventories the l0g machine surface: Agent Surface 1.10, sourced claims, evidence graph, Risk Diff, Black Box Recorder, risk snapshots, canonical <code class="apic">debt-risk.json</code> and <code class="apic">signals/history</code> for replay and backtests. CORS is open. No key, no authentication, no tracking.
+    </p>
+    <p class="mono-label mt-4"><a class="link-term" href="/api/">Version française →</a></p>
+  </section>
+
+  <section class="mt-10 space-y-8" data-pagefind-ignore>
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
+      <p class="mt-3 text-paper">
+        Public endpoints, no key and no authentication. Agent Surface 1.10 is the reading contract for agents; risk endpoints remain specialized snapshots.
+      </p>
+      <div class="ep-list mt-4">
+        {endpoints.map(([path, type, desc]) => (
+          <a class="ep card" href={path} target={path.startsWith('/api/') || path.endsWith('.json') || path.endsWith('.ndjson') || path.endsWith('.csv') || path.endsWith('.xml') ? '_blank' : undefined} rel="noopener" style="--t: var(--color-signal)">
+            <span class="ep-method">GET</span>
+            <code class="ep-path">{path}</code>
+            <span class="ep-type">{type}</span>
+            <span class="ep-desc">{desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// examples</h2>
+      <div class="codeblock"><pre class="apipre"><code>curl -s https://l0g.fr/agents.json</code></pre></div>
+      <div class="codeblock"><pre class="apipre"><code>curl -s https://l0g.fr/api/v1/risk.json</code></pre></div>
+      <div class="codeblock"><pre class="apipre"><code>curl -s https://l0g.fr/api/v1/debt-risk.json</code></pre></div>
+      <div class="codeblock"><pre class="apipre"><code>curl -s https://l0g.fr/api/v1/signals/history.ndjson | head</code></pre></div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// point-in-time history</h2>
+      <p class="mt-3 text-paper">
+        The <code class="apic">signals/history</code> surface is point-in-time: each observation keeps <code class="apic">observedAt</code>, <code class="apic">sourcePublishedAt</code>, <code class="apic">retrievedAt</code>, <code class="apic">computedAt</code> and <code class="apic">snapshotHash</code>. Backtests use what was actually published or collected at time T, without look-ahead bias.
+      </p>
+      <div class="codeblock"><pre class="apipre"><code>{`import pandas as pd
+
+df = pd.read_csv("https://l0g.fr/api/v1/signals/history.csv", parse_dates=["observedAt", "retrievedAt"])
+df = df.set_index("observedAt").sort_index()`}</code></pre></div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// fields and guardrails</h2>
+      <ul class="api-list mt-3">
+        <li><code class="apic">Agent Surface 1.10</code>: M2M contract, with <code class="apic">/agents.json</code> for discovery, <code class="apic">/openapi.json</code> for schema and <code class="apic">/api/v1/integrity.json</code> for snapshot verification.</li>
+        <li><code class="apic">/api/v1/debt-risk.json</code>: canonical US Debt signal, imported from <code class="apic">https://debt.l0g.fr/latest.json</code>, with provenance and coverage when available.</li>
+        <li><code class="apic">/api/v1/signals/history.json</code>: complete surface for replay, with <code class="apic">coverage</code>, <code class="apic">policy</code>, <code class="apic">current</code>, <code class="apic">observations</code> and <code class="apic">levelChanges</code>.</li>
+        <li><code class="apic">level</code>: human-readable state. <code class="apic">tone</code>: machine code such as <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code> or <code class="apic">crisis</code>.</li>
+        <li><code class="apic">scaleCaveat</code> and <code class="apic">precisionGuard</code>: reading limits around display normalization, freshness, coverage, uncertainty and reproducibility.</li>
+      </ul>
+      <p class="mt-3 text-muted">There is no single global index. l0g only exposes the measured sub-signals from each tool; aggregating them into one derived number would add false precision.</p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// notes</h2>
+      <ul class="api-list mt-3">
+        <li><strong class="text-bright">CORS:</strong> <code class="apic">Access-Control-Allow-Origin: *</code>.</li>
+        <li><strong class="text-bright">Cadence:</strong> regenerated with tool snapshots. Not strict real time; rely on <code class="apic">snapshot</code>.</li>
+        <li><strong class="text-bright">Versioning:</strong> <code class="apic">/v1/</code> remains stable. Breaking changes will move to <code class="apic">/v2/</code>.</li>
+        <li><strong class="text-bright">License:</strong> CC BY 4.0. Free reuse with attribution to l0g.fr.</li>
+      </ul>
+    </div>
+  </section>
+</EnglishLayout>
+
+<style>
+  .apic { font-family: var(--font-mono); color: var(--color-bright); }
+  .ep-list { display: grid; gap: 0.75rem; }
+  .ep { --t: var(--color-signal); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.45rem 0.8rem; align-items: baseline; border: 1px solid var(--color-line); border-radius: 8px; padding: 0.85rem; text-decoration: none; background: color-mix(in srgb, var(--color-surface) 55%, transparent); }
+  .ep:hover { border-color: color-mix(in srgb, var(--t) 55%, transparent); background: color-mix(in srgb, var(--t) 7%, transparent); }
+  .ep-method, .ep-type { color: var(--t); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ep-path { color: var(--color-bright); font-family: var(--font-mono); }
+  .ep-desc { grid-column: 2 / 4; color: var(--color-muted); line-height: 1.5; }
+  .codeblock { margin-top: 0.75rem; border: 1px solid var(--color-line); border-radius: 8px; background: color-mix(in srgb, var(--color-signal) 6%, transparent); padding: 0.8rem; overflow-x: auto; }
+  .apipre { margin: 0; color: var(--color-bright); font-family: var(--font-mono); font-size: 0.86rem; }
+  .api-list { display: grid; gap: 0.65rem; color: var(--color-paper); line-height: 1.65; }
+</style>

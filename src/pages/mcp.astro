@@ -3,6 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ENDPOINT = `${SITE}/api/mcp`;
+const mcpFrUrl = new URL('/mcp/', Astro.site).toString();
+const mcpEnUrl = new URL('/en/mcp/', Astro.site).toString();
+const mcpAlternateLinks = [
+  { hreflang: 'fr', href: mcpFrUrl },
+  { hreflang: 'en', href: mcpEnUrl },
+  { hreflang: 'x-default', href: mcpFrUrl },
+];
 
 const resources = [
   ['l0g://agent-manifest', 'Manifeste Agent Surface'],
@@ -77,6 +84,7 @@ const appLd = {
   title="Serveur MCP"
   description="Serveur Model Context Protocol de l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides."
   sidebar={false}
+  alternateLinks={mcpAlternateLinks}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
 
@@ -94,6 +102,7 @@ const appLd = {
       source, date et profondeur de preuve.
       Aucune clé, aucune authentification, aucun pistage.
     </p>
+    <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/mcp/">English MCP documentation →</a></p>
   </section>
 
   <section class="mt-12 space-y-10" data-pagefind-ignore>

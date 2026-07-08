@@ -1,0 +1,203 @@
+---
+import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const ENDPOINT = `${SITE}/api/mcp`;
+const enUrl = `${SITE}/en/mcp/`;
+const frUrl = `${SITE}/mcp/`;
+const alternateLinks = [
+  { hreflang: 'fr', href: frUrl },
+  { hreflang: 'en', href: enUrl },
+  { hreflang: 'x-default', href: frUrl },
+];
+
+const resources = [
+  ['l0g://agent-manifest', 'Agent Surface manifest'],
+  ['l0g://openapi', 'Complete OpenAPI contract'],
+  ['l0g://freshness', 'Corpus and signal freshness'],
+  ['l0g://integrity', 'Canonical SHA-256 fingerprints'],
+  ['l0g://changes/latest', 'Latest editorial changes and publications'],
+  ['l0g://risk-diff', 'Risk diff over 1, 7 and 30 days'],
+  ['l0g://black-box', 'Hashed point-in-time risk frames'],
+  ['l0g://signals/current', 'Current signal state'],
+  ['l0g://signals/history', 'Point-in-time signal history'],
+  ['l0g://mcp/server', 'MCP version, active SHA and server capabilities'],
+];
+
+const templates = [
+  ['l0g://articles/{slug}', 'First article page with metadata, references and text'],
+  ['l0g://articles/{slug}{?section,offset,limit}', 'Targeted article page by section, offset and limit'],
+  ['l0g://articles/{slug}{?cursor}', 'Article continuation through nextCursor'],
+  ['l0g://guides/{slug}', 'First guide page with metadata and text'],
+  ['l0g://guides/{slug}{?section,offset,limit}', 'Targeted guide page by section, offset and limit'],
+  ['l0g://guides/{slug}{?cursor}', 'Guide continuation through nextCursor'],
+  ['l0g://claims/{claim_id}', 'Claim-source relationship'],
+  ['l0g://sources/{source_id}', 'Primary source or cited host'],
+  ['l0g://signals/{instrument}/current', 'Current signal and history'],
+  ['l0g://methodologies/{instrument}', 'Methodology note'],
+];
+
+const tools = [
+  ['get_agent_manifest', 'none', 'Agent Surface manifest: capabilities, endpoints, usage rules, proof policies and counters.'],
+  ['get_risk_indices', 'none', 'Normalized risk signals by instrument and 13FLOW confluence synthesis.'],
+  ['get_signal_history', 'key, limit', 'Level-change history, current signal state and 13FLOW confluence.'],
+  ['get_risk_diff', 'window', 'Risk diff over 1, 7 or 30 days: signals, sources, claims, models, articles and confidence.'],
+  ['get_black_box', 'date, limitFrames', 'Point-in-time replay of hashed risk frames, with explicit refusal for non-replayable dates.'],
+  ['get_openapi_schema', 'mode, path', 'Summarized, endpoint-targeted or complete OpenAPI contract.'],
+  ['get_ndjson_feed', 'feed, recordType, limit', 'Allowlisted NDJSON feeds: catalog, claims, evidence graph, changefeed and signal history.'],
+  ['get_freshness', 'limit', 'Corpus and signal freshness: observedAt, computedAt, expiration, coverage and policy.'],
+  ['search_content', 'query, mode, limit', 'Local deterministic full-text search on generated HTML, with catalog mode for audit.'],
+  ['get_claims', 'articleSlug, kind, query, limit', 'Filterable claim-source relationships with clickable references and dates when detectable.'],
+  ['get_claim', 'claimId', 'Single claim, resource links and parent article.'],
+  ['get_claim_evidence', 'claimId, limit', 'Prudent evidence level for one claim. Direct proof only when reviewed by humans.'],
+  ['list_article_claims', 'articleSlug, kind, limit', 'Claims for an article, usable as entry points into the evidence graph.'],
+  ['find_claims_by_source', 'sourceId, kind, limit', 'Claims linked to a primary source, a name or a cited host.'],
+  ['get_source', 'sourceId, limit', 'Primary source or cited host, with associated claims.'],
+  ['get_evidence_graph', 'articleSlug, nodeType, limit', 'Direct subgraph: articles → claims → references → sources.'],
+  ['list_sources', 'mode, limit', 'Institutional primary sources and hosts actually cited by claims.'],
+  ['get_integrity', 'path', 'Canonical SHA-256 fingerprints for Agent Surface, JSON and NDJSON surfaces.'],
+  ['verify_artifact', 'path, sha256', 'Allowlisted artifact verification through the integrity manifest.'],
+  ['get_changefeed', 'contentType, limit', 'Latest changes with objectId, current version/hash, diff status and semantic change.'],
+  ['get_changes', 'contentType, slug, since, limit', 'Changefeed filtered by type, slug and minimum date.'],
+  ['list_recent_analyses', 'limit', 'Latest analyses, newest first.'],
+  ['list_guides', 'none', 'Reference guides.'],
+  ['search_by_topic', 'topic, limit', 'Analyses attached to a topic hub.'],
+  ['get_article', 'slug, offset, cursor, limit, length, section', 'Paginated text for an analysis or guide, with nextCursor and separate references.'],
+];
+
+const appLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebAPI',
+  '@id': `${enUrl}#mcp`,
+  name: 'l0g MCP server',
+  description: 'Read-only Model Context Protocol server for l0g.fr: resources, resource templates and tools for Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, freshness, integrity, changes, signal history, analyses and guides through Streamable HTTP.',
+  documentation: enUrl,
+  url: ENDPOINT,
+  provider: { '@id': `${SITE}/#org` },
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+};
+---
+
+<EnglishLayout
+  title="MCP server"
+  description="English documentation for the l0g.fr Model Context Protocol server: read-only resources, resource templates and tools for Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, freshness and signal history."
+  canonical={enUrl}
+  alternateLinks={alternateLinks}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd).replace(/</g, '\\u003c')} />
+
+  <section data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// mcp</p>
+    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
+      MCP <span style="color: var(--color-accent)">server</span>
+    </h1>
+    <p class="mt-4 max-w-2xl text-paper">
+      l0g exposes its data to AI agents through the Model Context Protocol, read-only. An agent can query Agent Surface, the OpenAPI contract, NDJSON feeds, Risk Diff, Black Box Recorder, claims, the evidence graph, sources, freshness, integrity, changefeed, signal history or full article text without scraping the site. No key, no authentication, no tracking.
+    </p>
+    <p class="mono-label mt-4"><a class="link-term" href="/mcp/">Version française →</a></p>
+  </section>
+
+  <section class="mt-12 space-y-10" data-pagefind-ignore>
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// why</h2>
+      <div class="mt-3 max-w-2xl space-y-3 text-paper">
+        <p>
+          AI agents increasingly read the web on behalf of humans, and they often do it badly: flattening HTML, losing context and mangling citations. For a site whose value depends on sourcing discipline, that is a risk. l0g publishes clean, attributable machine surfaces so the data can be reused exactly.
+        </p>
+        <p>
+          The Model Context Protocol extends the site philosophy: static-first, self-hosted, no tracking, no opaque proxy, read-only access and CC BY 4.0 reuse with attribution.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoint</h2>
+      <p class="mt-3 text-paper">Streamable HTTP transport, request/response JSON mode.</p>
+      <pre class="mcp-code mt-3"><code>{ENDPOINT}</code></pre>
+      <p class="mt-2 text-muted">Read-only. The code and deployment procedure are public in the GitHub repository.</p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// resources</h2>
+      <p class="mt-3 max-w-2xl text-paper">Documents and datasets are exposed as MCP resources. Agents can list resources with <code>resources/list</code>, read them with <code>resources/read</code>, and discover parameterized URIs with <code>resources/templates/list</code>.</p>
+      <div class="mcp-table mt-3"><table><thead><tr><th>URI</th><th>Content</th></tr></thead><tbody>{resources.map(([uri, desc]) => (<tr><td><code>{uri}</code></td><td>{desc}</td></tr>))}</tbody></table></div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// resource templates</h2>
+      <div class="mcp-table mt-3"><table><thead><tr><th>Template</th><th>Content</th></tr></thead><tbody>{templates.map(([uri, desc]) => (<tr><td><code>{uri}</code></td><td>{desc}</td></tr>))}</tbody></table></div>
+      <p class="mt-3 max-w-2xl text-muted">Templates enumerate known instances and propose variable completions. The public service is stateless and does not advertise live subscriptions; monitoring goes through <code>l0g://changes/latest</code> or <code>get_changefeed</code>.</p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// tools</h2>
+      <p class="mt-3 max-w-2xl text-paper">Tools are reserved for operations: search, filtering, diff, replay, history, subgraph extraction or targeted reading. Full-text search remains local and deterministic, with no vector database or external provider. Long articles are paginated with continuation cursors, direct source access and separate references.</p>
+      <div class="mcp-table mt-3"><table><thead><tr><th>Tool</th><th>Arguments</th><th>Returns</th></tr></thead><tbody>{tools.map(([name, args, desc]) => (<tr><td><code>{name}</code></td><td class="text-muted">{args}</td><td>{desc}</td></tr>))}</tbody></table></div>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// connect</h2>
+      <p class="mt-3 text-paper">Inspect tools with the official inspector:</p>
+      <pre class="mcp-code mt-2"><code>npx @modelcontextprotocol/inspector</code></pre>
+
+      <p class="mt-4 text-paper">Connect a desktop client through the local bridge:</p>
+      <pre class="mcp-code mt-2"><code>npx mcp-remote {ENDPOINT}</code></pre>
+
+      <p class="mt-4 text-paper">Example compatible-client configuration:</p>
+      <pre class="mcp-code mt-2"><code>{`{
+  "mcpServers": {
+    "l0g": {
+      "command": "npx",
+      "args": ["mcp-remote", "${ENDPOINT}"]
+    }
+  }
+}`}</code></pre>
+
+      <p class="mt-4 text-paper">Minimal raw JSON-RPC cycle:</p>
+      <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
+
+curl -s -X POST ${ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
+
+curl -s -X POST ${ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`}</code></pre>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// security and design</h2>
+      <ul class="mt-3 space-y-2 text-paper">
+        <li><strong>Read-only.</strong> No tool writes anything, and article access goes through a slug allowlist, with no arbitrary URL fetch.</li>
+        <li><strong>Not exposed directly.</strong> The service listens locally, behind Apache TLS and proxying.</li>
+        <li><strong>Anti-hijacking.</strong> Host and Origin validation on each request, against DNS rebinding attacks.</li>
+        <li><strong>Bounded.</strong> Per-IP rate limiting, bounded request size and hardened system service.</li>
+        <li><strong>No sensitive data.</strong> Everything is public: no key, no authentication and no tracking.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// other machine access</h2>
+      <ul class="mt-3 space-y-2 text-paper">
+        <li><a class="link-term text-signal" href="/en/agent-surface/">Agent Surface</a>: manifest, OpenAPI, claims, evidence graph, integrity, changefeed and NDJSON.</li>
+        <li><a class="link-term text-signal" href="/en/api/">Public API</a>: risk indices, canonical Debt Risk snapshot and level-change feed.</li>
+        <li><a class="link-term text-signal" href="/llms.txt">llms.txt</a> and <a class="link-term text-signal" href="/llms-full.txt">llms-full.txt</a>: concise map and full corpus.</li>
+      </ul>
+    </div>
+  </section>
+</EnglishLayout>
+
+<style>
+  .mcp-code { background: color-mix(in srgb, var(--color-signal) 6%, transparent); border: 1px solid var(--color-line); border-radius: 8px; padding: 0.7rem 0.9rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-bright); white-space: pre; }
+  .mcp-table { overflow-x: auto; }
+  .mcp-table table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .mcp-table th, .mcp-table td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+  .mcp-table th { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); }
+  .mcp-table code, .mcp-code code { font-family: var(--font-mono); }
+</style>

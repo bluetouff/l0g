@@ -3,6 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const agentFrUrl = new URL('/donnees/agents/', Astro.site).toString();
+const agentEnUrl = new URL('/en/agent-surface/', Astro.site).toString();
+const agentAlternateLinks = [
+  { hreflang: 'fr', href: agentFrUrl },
+  { hreflang: 'en', href: agentEnUrl },
+  { hreflang: 'x-default', href: agentFrUrl },
+];
 const trustItems = [
   { label: 'Guide agent', href: '/agents/' },
   { label: 'JSON statique', href: '/agents.json' },
@@ -130,6 +137,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   ogImage="/og-donnees.png"
   ogImageAlt="Agent Surface v1.10.0 l0g.fr : API, evidence graph, NDJSON, claims et sources"
   sidebar={false}
+  alternateLinks={agentAlternateLinks}
 >
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
@@ -147,6 +155,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         un stress courant hors CBO et une couverture de buckets lorsque le snapshot amont la fournit.
       </p>
       <TrustBar items={trustItems} />
+      <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/agent-surface/">English Agent Surface documentation →</a></p>
     </section>
 
     <section class="agent-section">

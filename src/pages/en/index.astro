@@ -1,43 +1,83 @@
 ---
-import EnglishGuidesLayout from '../../layouts/EnglishGuidesLayout.astro';
+import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 
-const canonical = new URL('/en/', Astro.site).toString();
-const alternateLinks = [
-  { hreflang: 'en', href: canonical },
-  { hreflang: 'fr', href: new URL('/', Astro.site).toString() },
-  { hreflang: 'x-default', href: new URL('/', Astro.site).toString() },
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const canonical = `${SITE}/en/`;
+const cards = [
+  {
+    href: '/en/guides/',
+    label: 'Reference guides',
+    cmd: '$ ls /en/guides',
+    text: 'English versions of l0g reference guides: macro, Fed plumbing, markets, SEC filings, crypto regulation, sanctions and commodities.',
+  },
+  {
+    href: '/en/api/',
+    label: 'Public API',
+    cmd: '$ curl /api/v1/catalog.json',
+    text: 'Static JSON, NDJSON and CSV endpoints for catalogues, claims, evidence graph, risk signals, point-in-time history and integrity checks.',
+  },
+  {
+    href: '/en/mcp/',
+    label: 'MCP server',
+    cmd: '$ npx mcp-remote https://l0g.fr/api/mcp',
+    text: 'Read-only Model Context Protocol access to l0g resources and tools without scraping the website.',
+  },
+  {
+    href: '/en/agent-surface/',
+    label: 'Agent Surface',
+    cmd: '$ curl /agents.json',
+    text: 'Machine-readable contract for agents: discovery, OpenAPI, evidence graph, claims, freshness, integrity and changefeeds.',
+  },
 ];
 ---
 
-<EnglishGuidesLayout
-  title="English guides"
-  description="English entry point for selected l0g.fr reference guides. The rest of the website is primarily published in French."
+<EnglishLayout
+  title="l0g in English"
+  description="English entry points for l0g.fr: reference guides, public API, MCP server and Agent Surface documentation."
   canonical={canonical}
-  alternateLinks={alternateLinks}
 >
   <section class="rise border-b border-dashed border-line pb-10">
-    <p class="mono-label" style="color: var(--color-signal)">$ cd /en</p>
+    <p class="mono-label" style="color: var(--color-signal)">$ ls /en</p>
     <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
-      l0g <span style="color: var(--color-accent)">English guides</span>
+      l0g <span style="color: var(--color-accent)">in English</span>
     </h1>
-    <p class="mt-5 max-w-xl text-muted">
-      l0g.fr is primarily published in French. This area exposes selected reference guides in English,
-      without pretending the whole website has been internationalized.
+    <p class="mt-5 max-w-2xl text-muted">
+      l0g.fr is primarily published in French. This English section exposes the parts that matter most to non-French readers and machines: reference guides, the public API, the MCP server and the Agent Surface contract.
     </p>
-    <div class="en-actions" data-pagefind-ignore>
-      <a class="en-action link-term" href="/en/guides/">Browse English guides →</a>
-      <a class="en-action link-term" href="/guides/">View French guides →</a>
-    </div>
   </section>
-</EnglishGuidesLayout>
+
+  <section class="en-grid mt-10" data-pagefind-body>
+    {cards.map((card) => (
+      <a href={card.href} class="en-card">
+        <span class="mono-label" style="color: var(--color-signal)">{card.cmd}</span>
+        <strong>{card.label}</strong>
+        <span>{card.text}</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="mt-12 border-t border-dashed border-line pt-8 text-muted">
+    <p>
+      The rest of the site remains French-first. English pages link back to the French canonical source when relevant, and machine surfaces remain shared across both languages.
+    </p>
+  </section>
+</EnglishLayout>
 
 <style>
-  .en-actions {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
+  .en-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .en-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .en-card {
+    display: grid;
+    gap: 0.65rem;
+    min-height: 12rem;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-surface) 58%, transparent);
+    padding: 1.2rem;
+    text-decoration: none;
+    transition: border-color 0.16s, background 0.16s, transform 0.16s;
   }
+  .en-card:hover { border-color: color-mix(in srgb, var(--color-signal) 52%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); transform: translateY(-1px); }
+  .en-card strong { color: var(--color-bright); font-size: 1.28rem; }
+  .en-card span:last-child { color: var(--color-muted); line-height: 1.65; }
 </style>
