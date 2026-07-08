@@ -1,0 +1,142 @@
+---
+title: "Semi-conducteurs : la pile de contraintes derrière l'IA"
+description: "Ventes record, GPU, lithographie EUV, fonderie, mémoire et relocalisation : lire les semi-conducteurs comme une chaîne de goulets plutôt que comme un simple thème IA."
+pubDate: 2026-07-08T18:00:00+02:00
+tags: ["marchés", "semi-conducteurs", "ia", "géopolitique", "valorisation"]
+draft: false
+---
+
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+Le semi-conducteur n'est pas un secteur. C'est une pile de contraintes. En haut, le marché voit l'IA, les GPU et la capitalisation des gagnants. En dessous, il y a des wafers, de la lithographie, de la mémoire, du packaging, des machines, de l'énergie, des permis, des talents, des contrôles export et des calendriers industriels qui ne se compressent pas avec un communiqué de résultats.
+
+La bonne question n'est donc pas : "les puces sont-elles chères ?" La question utile est : quelle partie de la chaîne est déjà vendue, quelle partie peut encore augmenter ses prix, et quelle partie risque de devenir le point de rupture du cycle ?
+
+## Le fait observable
+
+Le cycle est reparti très fort. La [Semiconductor Industry Association, à partir des statistiques WSTS, annonce le 6 juillet 2026](https://www.semiconductors.org/global-semiconductor-sales-increase-9-2-month-to-month-in-may/) des ventes mondiales de semi-conducteurs de 120,6 Md$ en mai 2026. C'est 9,2 % de plus qu'en avril 2026 et 104,1 % de plus qu'en mai 2025. La même publication qualifie mai 2026 de plus haut total mensuel jamais enregistré et signale un quinzième mois consécutif de hausse mensuelle.
+
+<InfographicBars
+  title="La demande sort du cycle classique"
+  subtitle="Ventes mondiales mensuelles, moyenne mobile trois mois"
+  items={[
+    { label: "Mai 2025", value: 59.1, valueLabel: "59,1 Md$", tone: "muted" },
+    { label: "Avril 2026", value: 110.5, valueLabel: "110,5 Md$", tone: "blue" },
+    { label: "Mai 2026", value: 120.6, valueLabel: "120,6 Md$", tone: "signal" },
+  ]}
+  max={125}
+  note="Mai 2026 est présenté par SIA comme le plus haut total mensuel jamais enregistré."
+  notes={[
+    "La série est publiée en moyenne mobile trois mois.",
+    "Lecture : le choc n'est pas seulement une reprise cyclique, il ressemble à un choc de capacité."
+  ]}
+  source="Source : SIA / WSTS, communiqué du 6 juillet 2026."
+  caption="Le marché des puces est redevenu vertical. **Lecture l0g :** le signal utile n'est pas seulement la taille du marché, mais la capacité des goulets d'étranglement à suivre."
+/>
+
+Ce chiffre agrégé masque la composition. La [SIA rappelle dans son introduction aux semi-conducteurs](https://www.semiconductors.org/semiconductors-101/what-are-semiconductors/) que les composants se répartissent en logique, mémoire, analogique, capteurs, optoélectronique et composants discrets. Une voiture, un onduleur, un modem, un GPU et une puce mémoire ne racontent pas le même cycle. L'IA tire surtout la partie haute : logique avancée, mémoire à très large bande passante, interconnexion, packaging avancé et outils de production associés.
+
+## La pile, pas le ticker
+
+Un accélérateur IA vendu par NVIDIA n'est pas seulement un produit NVIDIA. C'est une promesse d'approvisionnement sur toute une pile :
+
+1. conception de puce, logiciels et bibliothèques de design ;
+2. wafers produits par une fonderie avancée ;
+3. lithographie EUV et DUV ;
+4. mémoire rapide, souvent proche du processeur ;
+5. packaging avancé pour faire communiquer compute, mémoire et interconnexion ;
+6. réseau, optique, alimentation, refroidissement et capacité électrique du data center.
+
+Le haut de la pile se voit immédiatement dans les comptes. [NVIDIA a publié le 20 mai 2026](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027) un chiffre d'affaires trimestriel record de 81,6 Md$ pour son T1 fiscal 2027, clos le 26 avril 2026. Le Data Center pèse 75,2 Md$, en hausse de 92 % sur un an. Sous l'ancien découpage de reporting, le compute Data Center atteint 60,4 Md$ et le networking Data Center 14,8 Md$.
+
+<InfographicBars
+  title="L'IA tire déjà le haut de la pile"
+  subtitle="NVIDIA, T1 fiscal 2027 clos le 26 avril 2026"
+  items={[
+    { label: "Chiffre d'affaires total", value: 81.6, valueLabel: "81,6 Md$", tone: "signal" },
+    { label: "Data Center", value: 75.2, valueLabel: "75,2 Md$", tone: "accent" },
+    { label: "Compute Data Center", value: 60.4, valueLabel: "60,4 Md$", tone: "blue" },
+    { label: "Networking Data Center", value: 14.8, valueLabel: "14,8 Md$", tone: "amber" },
+  ]}
+  max={85}
+  note="Le client final achète du compute ; la chaîne amont vend des wafers, de la mémoire, du packaging et des machines."
+  source="Source : NVIDIA, résultats T1 FY2027, 20 mai 2026."
+  caption="Le GPU n'est que la face visible. **La contrainte se propage** vers mémoire, interconnexion, packaging avancé, wafers avancés et outils."
+/>
+
+Ce signal est un fait de demande. Ce n'est pas une preuve que toutes les valorisations du secteur sont justifiées. La demande se transforme en marge seulement si chaque couche de la pile reçoit sa part de capacité au bon moment.
+
+## La fonderie donne la cadence
+
+Le marché peut commander des GPU plus vite qu'une fonderie ne construit, qualifie et remplit une ligne avancée. C'est le premier point de lecture.
+
+Au 8 juillet 2026, la page investisseurs de [TSMC pour le T2 2026](https://investor.tsmc.com/english/quarterly-results/2026/q2) indique une conférence de résultats prévue le 16 juillet 2026 et une période de silence du 6 au 15 juillet. La donnée publiée à cette date n'est donc pas encore un résultat T2 observé : c'est une guidance. TSMC affiche 35,90 Md$ de revenu réalisé au T1 2026 et une guidance de 39,0 à 40,2 Md$ pour le T2 2026, avec une marge brute attendue entre 65,5 % et 67,5 %.
+
+C'est une donnée de charge, pas un oracle. Elle dit que le carnet et les prix soutiennent encore le haut de la pile. Elle ne dit pas où seront les marges si les clients hyperscale ralentissent, si les restrictions géopolitiques coupent certains débouchés, ou si une génération de puces arrive avec un décalage de packaging ou de mémoire.
+
+## La lithographie est le goulet le plus propre
+
+La partie la plus pure du monopole industriel se lit chez ASML. [ASML décrit ses systèmes EUV](https://www.asml.com/en/products/euv-lithography-systems) comme la technologie qui rend possible la production de masse des microprocesseurs les plus avancés. La société indique que l'EUV utilise une lumière de 13,5 nm, que cette technologie est unique à ASML, et que les systèmes NXE servent à produire des couches complexes pour les noeuds 7 nm, 5 nm et 3 nm.
+
+Le détail technique compte parce qu'il rend la substitution difficile. Pour générer la lumière EUV, ASML explique qu'un laser CO2 frappe des gouttes d'étain jusqu'à 50 000 fois par seconde. La lumière EUV est absorbée par presque tout, même l'air, donc le trajet optique doit être sous vide. Le stage wafer positionne la plaquette avec une précision de l'ordre du quart de nanomètre et ajuste sa position 20 000 fois par seconde. ASML indique aussi avoir investi plus de 6 Md€ en R&D EUV sur 17 ans.
+
+Ce n'est pas un composant que l'on double par décret. C'est un système industriel accumulé : optique, mécanique, vide, métrologie, logiciels, fournisseurs et savoir-faire. [ASML publie pour 2025](https://www.asml.com/en/investors/annual-report) 32,7 Md€ de ventes nettes, 52,8 % de marge brute et 4,7 Md€ de R&D. La valorisation d'un fournisseur comme ASML se discute, mais son rôle dans la chaîne est simple : sans couche d'outillage, pas de capacité avancée.
+
+## La géographie change lentement
+
+La relocalisation est réelle, mais elle ne supprime pas le risque de concentration. [CHIPS for America, côté NIST](https://www.nist.gov/chips), rappelle que le CHIPS and Science Act a confié 50 Md$ au Department of Commerce : 11 Md$ pour l'écosystème R&D et 39 Md$ pour les incitations aux installations et équipements aux États-Unis.
+
+Le rapport [SIA / Boston Consulting Group sur la résilience de la supply chain](https://www.semiconductors.org/emerging-resilience-in-the-semiconductor-supply-chain/) projette une hausse de 203 % de la capacité américaine de fabrication d'ici 2032, une part américaine de capacité globale passant de 10 % à 14 %, et une part américaine de logique avancée passant de 0 % en 2022 à 28 % en 2032. Le même document insiste sur les vulnérabilités qui restent : logique avancée, puces legacy, mémoire, packaging avancé et matériaux clés.
+
+<InfographicBars
+  title="La relocalisation ne gomme pas la concentration"
+  subtitle="Projections SIA / BCG pour la capacité américaine"
+  items={[
+    { label: "Part US capacité fab 2022", value: 10, valueLabel: "10 %", tone: "muted" },
+    { label: "Part US capacité fab 2032", value: 14, valueLabel: "14 %", tone: "blue" },
+    { label: "Logique avancée US 2022", value: 0, valueLabel: "0 %", tone: "muted" },
+    { label: "Logique avancée US 2032", value: 28, valueLabel: "28 %", tone: "signal" },
+  ]}
+  max={30}
+  note="Projection, pas capacité observée."
+  notes={[
+    "Le CHIPS Act accélère la construction locale.",
+    "Le risque se déplace vers équipements, matériaux, packaging, talents et rendement industriel."
+  ]}
+  source="Source : SIA / Boston Consulting Group, Emerging Resilience in the Semiconductor Supply Chain."
+  caption="La géographie change lentement. **Une usine avancée ne remplace pas l'écosystème complet** qui la rend productive."
+/>
+
+La géopolitique ajoute un autre filtre. Dans sa guidance du T2 fiscal 2027, NVIDIA précise ne pas intégrer de revenu Data Center compute venant de Chine. Cette phrase suffit à rappeler que le cycle IA n'est pas seulement un cycle de demande privée. C'est aussi un cycle de permission : qui a le droit d'acheter, qui a le droit de vendre, qui a le droit de produire, et sous quelles contraintes.
+
+## Lecture marché
+
+Le marché price trois choses en même temps.
+
+D'abord, il price la demande. Les ventes SIA/WSTS et les chiffres NVIDIA disent que la demande observée est déjà massive. Ce n'est pas une promesse lointaine : les revenus existent.
+
+Ensuite, il price la rareté. L'EUV, la fonderie avancée, le packaging et certaines mémoires ne s'ajoutent pas instantanément. Quand la rareté est réelle, les marges montent et le pouvoir de prix s'installe.
+
+Enfin, il price la durée. C'est le point fragile. Une chaîne de semi-conducteurs investit en années. La demande IA se lit parfois en trimestres. Si le cycle d'investissement cloud reste vertical, la capacité rare devient une rente. Si les clients ralentissent avant que les nouvelles lignes arrivent à maturité, la même capacité devient un risque de cycle.
+
+Je classe donc le thème en trois étages :
+
+- **qualité industrielle** : ASML, TSMC, fournisseurs de mémoire et packaging avancé ont des barrières réelles ;
+- **levier de demande** : NVIDIA et les accélérateurs capturent la partie visible du choc IA ;
+- **risque de second tour** : équipements, matériaux, fondeurs secondaires et puces plus banalisées peuvent recevoir les commandes après le pic de pricing power.
+
+## Scénarios
+
+**Scénario central.** La demande IA reste assez forte pour absorber la capacité avancée disponible. Les marges restent élevées chez les acteurs qui détiennent une contrainte non substituable : design accélérateur, fonderie avancée, lithographie, mémoire rapide, packaging.
+
+**Scénario de stress.** Les hyperscalers ralentissent leurs commandes ou étalent leurs plans de data centers. La partie visible du thème corrige d'abord, puis le marché teste les fournisseurs amont. Le risque n'est pas seulement la baisse de volumes : c'est le décalage entre une base de coûts qui monte et des prix qui cessent de monter.
+
+**Scénario géopolitique.** Les restrictions d'export, les politiques industrielles et les tensions autour de Taiwan ne détruisent pas mécaniquement la demande. Elles fragmentent la chaîne. Dans ce cas, la duplication de capacités peut soutenir les commandes d'équipement, mais réduire l'efficacité globale : plus de capex pour produire une résilience partielle.
+
+## Le point l0g
+
+Les semi-conducteurs sont devenus une classe de risque macro parce qu'ils mélangent quatre temporalités incompatibles : le trimestre de résultats, le cycle de capex, le temps long de la technologie et le temps politique des contrôles export.
+
+La conclusion n'est pas "acheter tout le secteur". La conclusion est plus étroite : il faut lire les semi-conducteurs comme une carte de goulets. Le chiffre qui compte n'est pas seulement la croissance du marché. C'est la distance entre la demande finale et la couche la moins extensible de la chaîne.
+
+Pour l'instant, cette couche n'est pas unique. Elle se partage entre fonderie avancée, EUV, packaging, mémoire et énergie du data center. C'est précisément pour cela que le thème reste puissant. Et précisément pour cela qu'il peut casser brutalement si le marché confond demande d'IA, capacité industrielle et rente durable.
