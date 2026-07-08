@@ -1,0 +1,149 @@
+---
+import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const enUrl = `${SITE}/en/agent-surface/`;
+const frUrl = `${SITE}/donnees/agents/`;
+const alternateLinks = [
+  { hreflang: 'fr', href: frUrl },
+  { hreflang: 'en', href: enUrl },
+  { hreflang: 'x-default', href: frUrl },
+];
+
+const endpoints = [
+  ['/agents.json', 'Discovery', 'Capability manifest, endpoints, usage rules and proof policy.'],
+  ['/openapi.json', 'Contract', 'OpenAPI 3.1 description of machine-consumable endpoints.'],
+  ['/api/v1/catalog.json', 'Catalog', 'Complete corpus map: articles, guides, topics, glossary atlas, sources and protocol.'],
+  ['/api/v1/catalog.ndjson', 'Catalog NDJSON', 'Line-by-line catalog for streaming ingestion, RAG or incremental indexing.'],
+  ['/api/v1/claims.json', 'Claims', 'Claim-source graph with typed claims, references and dates when detectable.'],
+  ['/api/v1/evidence-graph.json', 'Evidence graph', 'Articles, claims, references, hosts, primary sources and datasets as nodes and edges.'],
+  ['/api/v1/sources.json', 'Sources', 'Primary sources and cited hosts actually used by the corpus.'],
+  ['/api/v1/freshness.json', 'Freshness', 'Freshness policy, last content updates and signal timing metadata.'],
+  ['/api/v1/integrity.json', 'Integrity', 'Canonical SHA-256 fingerprints of M2M surfaces.'],
+  ['/api/v1/changes.json', 'Changefeed', 'Machine-readable publication and revision feed.'],
+  ['/api/v1/risk-diff.json', 'Risk Diff', 'Risk changes over 1, 7 and 30 days.'],
+  ['/api/v1/black-box.json', 'Black Box', 'Point-in-time hashed frames for replaying public risk states.'],
+  ['/api/v1/signals/history.json', 'Signal history', 'Point-in-time signal observations, level changes, coverage and policy.'],
+  ['/api/v1/signals/history.ndjson', 'Signal NDJSON', 'Line-by-line signal history for agents, watchers and incremental ingestion.'],
+  ['/api/v1/signals/history.csv', 'Signal CSV', 'Flat signal observations for pandas, R, DuckDB or spreadsheets.'],
+];
+
+const flow = [
+  'Discover the surface with /agents.json.',
+  'Read /api/v1/freshness.json to date the corpus and dashboard signals.',
+  'Verify fingerprints with /api/v1/integrity.json when a response depends on a fixed snapshot.',
+  'Watch /api/v1/changes.json for new content and revisions.',
+  'Use /api/v1/risk-diff.json to understand what changed in risk over 1, 7 or 30 days.',
+  'Use /api/v1/black-box.json to replay a public date without filling historical gaps.',
+  'Use /api/v1/signals/history.csv or .ndjson for point-in-time replay without look-ahead bias.',
+  'Use /api/v1/evidence-graph.json to traverse article → claim → source relationships.',
+  'Switch to NDJSON feeds for line-by-line ingestion.',
+  'Use /api/v1/catalog.json or /llms.txt to find content.',
+  'Quote factual claims via /api/v1/claims.json when the answer depends on a precise assertion.',
+  'Preserve the canonical URL, date fields and claim kind in generated answers.',
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  '@id': `${enUrl}#agent-surface`,
+  headline: 'Agent Surface v1.10.0',
+  description: 'English documentation for the l0g.fr machine-readable surface: agents.json, OpenAPI, Risk Diff, Black Box, claims, evidence graph, NDJSON, freshness, integrity and changefeed.',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  publisher: { '@id': `${SITE}/#org` },
+};
+---
+
+<EnglishLayout
+  title="Agent Surface v1.10.0"
+  description="English documentation for l0g Agent Surface: agents.json, OpenAPI, claims, evidence graph, freshness, integrity, changefeed, Risk Diff, Black Box and NDJSON feeds."
+  canonical={enUrl}
+  alternateLinks={alternateLinks}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <article class="agent-page rise" data-pagefind-body>
+    <section class="agent-hero">
+      <p class="mono-label glow">// agent surface v1.10.0</p>
+      <h1 class="agent-title font-display glow">A machine surface for reading l0g without scraping.</h1>
+      <p class="agent-lede">
+        Agent Surface v1.10.0 exposes the l0g corpus as static JSON and NDJSON: catalog, evidence graph, sourced claims, primary sources, freshness, Risk Diff, Black Box Recorder, signal history, fingerprints and an OpenAPI contract. The promise is simple: an agent should be able to cite a claim without losing the source, claimDate, observationDate, sourcePublicationDate, retrievedAt, indexedAt or reading level.
+      </p>
+      <p class="mono-label mt-4"><a class="link-term" href="/donnees/agents/">Version française →</a></p>
+    </section>
+
+    <section class="agent-section">
+      <p class="mono-label glow">// endpoints</p>
+      <div class="endpoint-grid">
+        {endpoints.map(([path, label, role]) => (
+          <a class="endpoint-card" href={path}>
+            <span>{label}</span>
+            <code>{path}</code>
+            <p>{role}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="agent-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// recommended flow</p>
+        <ol class="flow-list">
+          {flow.map((item) => <li>{item}</li>)}
+        </ol>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// guardrails</p>
+        <p>
+          Fields such as <code>kind</code>, <code>dateLabel</code>, <code>references</code> and <code>confidence</code> are not decoration. They prevent a scenario or estimate from being turned into an observed fact, and remind consumers that extracted relations remain verifiable in the canonical page.
+        </p>
+      </div>
+    </section>
+
+    <section class="agent-section">
+      <p class="mono-label glow">// minimal contract</p>
+      <div class="contract-grid">
+        <div><span>Attribution</span><strong>l0g.fr</strong></div>
+        <div><span>License</span><strong>CC BY 4.0</strong></div>
+        <div><span>Version</span><strong>v1.10.0</strong></div>
+        <div><span>Format</span><strong>JSON + NDJSON</strong></div>
+        <div><span>Evidence</span><strong>claim-source</strong></div>
+        <div><span>Integrity</span><strong>SHA-256</strong></div>
+      </div>
+    </section>
+
+    <section class="agent-section split">
+      <div class="note-block">
+        <p class="mono-label glow">// example</p>
+        <pre><code>curl -s https://l0g.fr/api/v1/claims.json</code></pre>
+      </div>
+      <div class="note-block">
+        <p class="mono-label glow">// integration</p>
+        <p>
+          For a RAG agent, use <code>/api/v1/catalog.ndjson</code> for document discovery, then <code>/api/v1/evidence-graph.json</code> or <code>/api/v1/claims.ndjson</code> for sensitive assertions. <code>/api/v1/changes.ndjson</code> avoids rescanning the whole corpus. <code>/openapi.json</code> is the typed entry point for client generation.
+        </p>
+      </div>
+    </section>
+  </article>
+</EnglishLayout>
+
+<style>
+  .agent-page { max-width: 64rem; }
+  .agent-hero { padding-bottom: 2.2rem; border-bottom: 1px solid var(--color-line); }
+  .agent-title { margin-top: 1rem; max-width: 50rem; color: var(--color-bright); font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.14; letter-spacing: 0.02em; }
+  .agent-lede { margin-top: 1.15rem; max-width: 48rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.66; }
+  .agent-section { margin-top: 3rem; }
+  .endpoint-grid, .contract-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1rem; }
+  @media (min-width: 760px) { .endpoint-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .contract-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .split { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; } }
+  .endpoint-card, .contract-grid div, .note-block { border: 1px solid var(--color-line); border-radius: 8px; background: color-mix(in srgb, var(--color-surface) 54%, transparent); padding: 0.95rem; }
+  .endpoint-card { display: grid; gap: 0.45rem; text-decoration: none; transition: border-color 0.16s, background 0.16s; }
+  .endpoint-card:hover { border-color: color-mix(in srgb, var(--color-signal) 48%, transparent); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
+  .endpoint-card span, .contract-grid span { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .endpoint-card code, .note-block code, .note-block pre { font-family: var(--font-mono); }
+  .endpoint-card p, .note-block p, .flow-list { color: var(--color-muted); line-height: 1.6; }
+  .contract-grid strong { display: block; margin-top: 0.35rem; color: var(--color-bright); }
+  .flow-list { padding-left: 1.25rem; }
+  .note-block pre { margin-top: 0.7rem; overflow-x: auto; color: var(--color-bright); }
+</style>

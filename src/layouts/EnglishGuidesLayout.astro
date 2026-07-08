@@ -14,8 +14,8 @@ interface Props {
 }
 
 const {
-  title = 'English guides',
-  description = 'English reference guides from l0g.fr.',
+  title = 'l0g English',
+  description = 'English entry points for l0g.fr: reference guides, API, MCP server and Agent Surface.',
   ogType = 'website',
   ogImage = '/og-default.png',
   ogImageAlt,
@@ -28,6 +28,8 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const fullTitle = `${title} · l0g.fr`;
 const socialImageAlt = ogImageAlt ?? `${fullTitle} — l0g.fr social card`;
 const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+const active = (href: string) => path === href || path.startsWith(href.endsWith('/') ? href : `${href}/`);
 
 const siteJsonLd = {
   '@context': 'https://schema.org',
@@ -111,18 +113,20 @@ const siteJsonLd = {
     <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
       <header>
         <div class="header-top">
-          <a href="/en/guides/" class="brand" aria-label="l0g English guides">
+          <a href="/en/" class="brand" aria-label="l0g English section">
             <span class="brand-mark">
               <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
             </span>
             <span class="brand-sep" aria-hidden="true"></span>
-            <span class="brand-tag mono-label">risk intelligence · english guides</span>
+            <span class="brand-tag mono-label">risk intelligence · english</span>
           </a>
         </div>
 
-        <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="English guide navigation">
-          <a href="/en/guides/" class="nav-tab" aria-current={Astro.url.pathname.startsWith('/en/guides') ? 'page' : undefined}>english guides</a>
-          <a href="/guides/" class="nav-tab">guides FR</a>
+        <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="English section navigation">
+          <a href="/en/guides/" class="nav-tab" aria-current={active('/en/guides/') ? 'page' : undefined}>guides</a>
+          <a href="/en/api/" class="nav-tab" aria-current={active('/en/api/') ? 'page' : undefined}>api</a>
+          <a href="/en/mcp/" class="nav-tab" aria-current={active('/en/mcp/') ? 'page' : undefined}>mcp</a>
+          <a href="/en/agent-surface/" class="nav-tab" aria-current={active('/en/agent-surface/') ? 'page' : undefined}>agent surface</a>
           <a href="/" class="nav-tab">french site</a>
         </nav>
       </header>
@@ -135,43 +139,31 @@ const siteJsonLd = {
     <footer class="site-footer">
       <div class="footer-grad" aria-hidden="true"></div>
       <div class="footer-inner mx-auto max-w-6xl px-5">
-        <p class="mono-label">// l0g English guides</p>
+        <p class="mono-label">// l0g English section</p>
         <p class="en-footer-text">
-          l0g.fr is primarily published in French. This English section only covers selected reference guides.
+          l0g.fr is primarily published in French. The English section currently covers reference guides, the public API, the MCP server and Agent Surface documentation.
         </p>
         <p class="en-footer-links">
-          <a href="/en/guides/" class="link-term">English guides</a>
+          <a href="/en/guides/" class="link-term">Guides</a>
           <span aria-hidden="true"> · </span>
-          <a href="/guides/" class="link-term">French guides</a>
+          <a href="/en/api/" class="link-term">API</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/en/mcp/" class="link-term">MCP</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/en/agent-surface/" class="link-term">Agent Surface</a>
           <span aria-hidden="true"> · </span>
           <a href="/" class="link-term">l0g.fr</a>
         </p>
         <p class="mono-label en-copy">© {year} l0g.fr</p>
       </div>
     </footer>
-
-    <script is:inline>
-      (function () {
-        var btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-        function current() { return document.documentElement.getAttribute('data-theme') || 'dark'; }
-        function sync() { btn.setAttribute('aria-pressed', current() === 'light' ? 'true' : 'false'); }
-        btn.addEventListener('click', function () {
-          var next = current() === 'light' ? 'dark' : 'light';
-          document.documentElement.setAttribute('data-theme', next);
-          try { localStorage.setItem('l0g-theme', next); } catch (e) {}
-          sync();
-        });
-        sync();
-      })();
-    </script>
   </body>
 </html>
 
 <style>
   .en-footer-text {
     margin-top: 0.45rem;
-    max-width: 44rem;
+    max-width: 48rem;
     color: var(--color-muted);
     font-size: 0.9rem;
     line-height: 1.6;

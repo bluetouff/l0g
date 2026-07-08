@@ -3,6 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // --- Structured data : l'API publique decrite comme jeu de donnees citable ---
 const ASITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const apiFrUrl = new URL('/api/', Astro.site).toString();
+const apiEnUrl = new URL('/en/api/', Astro.site).toString();
+const apiAlternateLinks = [
+  { hreflang: 'fr', href: apiFrUrl },
+  { hreflang: 'en', href: apiEnUrl },
+  { hreflang: 'x-default', href: apiFrUrl },
+];
 const datasetLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
@@ -110,6 +117,7 @@ const datasetLd = {
   title="API publique"
   description="API publique l0g : Agent Surface 1.10, claims sourcées, evidence graph, snapshot Debt Risk Radar, signaux courants et historique point-in-time en JSON, NDJSON et CSV. CORS ouvert, licence CC BY 4.0."
   sidebar={false}
+  alternateLinks={apiAlternateLinks}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(datasetLd)} />
   <section data-pagefind-ignore>
@@ -123,6 +131,7 @@ const datasetLd = {
       <code class="apic">debt-risk.json</code> et historique <code class="apic">signals/history</code>
       pour replay et backtest. CORS ouvert, aucune clé, aucune authentification, aucun pistage.
     </p>
+    <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/api/">English version available →</a></p>
 
     <div id="api-status" class="api-status" hidden>
       <span class="api-dot" aria-hidden="true"></span>
