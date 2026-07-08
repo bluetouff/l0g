@@ -1,21 +1,70 @@
 ---
+import { getCollection } from 'astro:content';
 import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-const cards = [
-  { href: '/en/start/', k: 'start', title: 'Start here', text: 'A quick orientation page for non-French readers: what l0g is, what exists in English, and how to use it.' },
-  { href: '/en/tour/', k: 'tour', title: 'Guided tour', text: 'A visual map of the site: guides, dashboards, API, MCP, evidence graph, glossary and risk surfaces.' },
-  { href: '/en/guides/', k: 'guides', title: 'Reference guides', text: 'Long-form, sourced, durable guides on macro, markets, credit, crypto regulation and public data.' },
-  { href: '/en/methodology/', k: 'method', title: 'Methodology', text: 'How l0g reads public data, separates observation from inference and avoids false precision.' },
-  { href: '/en/sources/', k: 'sources', title: 'Sources', text: 'The primary-source hierarchy behind the project: central banks, statistical agencies, SEC filings, regulators and public datasets.' },
-  { href: '/en/api/', k: 'api', title: 'API', text: 'Static JSON, NDJSON and CSV surfaces for risk signals, claims, evidence graph, catalog, freshness and integrity.' },
-  { href: '/en/mcp/', k: 'mcp', title: 'MCP server', text: 'Read-only Model Context Protocol endpoint for agents that need structured access without scraping.' },
-  { href: '/en/glossary/', k: 'glossary', title: 'Core glossary', text: 'A first English glossary for the terms that appear most often in the English guides and machine surfaces.' },
-  { href: '/en/dashboards/', k: 'dashboards', title: 'Dashboards', text: 'A map of l0g monitoring tools: macro, debt, energy, yen carry, 13F/insider confluence and other risk monitors.' },
-  { href: '/en/risk-diff/', k: 'diff', title: 'Risk Diff', text: 'What changed in public risk signals, sources, claims and model confidence across 1, 7 and 30 days.' },
-  { href: '/en/black-box/', k: 'blackbox', title: 'Black Box', text: 'Point-in-time replay of public risk frames, with hashes and explicit historical gaps.' },
-  { href: '/en/editorial-protocol/', k: 'protocol', title: 'Editorial protocol', text: 'Correction policy, evidence levels, source rules and the difference between fact, estimate, inference and scenario.' },
+const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
+const guideCount = englishGuides.length;
+
+const primaryCards = [
+  {
+    href: '/en/guides/',
+    eyebrow: 'reference layer',
+    title: `${guideCount} English guides`,
+    text: 'Durable guides on macro plumbing, credit, public filings, crypto regulation, commodities and risk signals.',
+    stat: `${guideCount}`,
+    statLabel: 'translated guides',
+  },
+  {
+    href: '/en/methodology/',
+    eyebrow: 'trust layer',
+    title: 'Method before narrative',
+    text: 'How l0g separates observation, estimation, inference and scenario instead of flattening everything into confident prose.',
+    stat: '0',
+    statLabel: 'magic indicators',
+  },
+  {
+    href: '/en/api/',
+    eyebrow: 'machine layer',
+    title: 'Static API surfaces',
+    text: 'JSON, NDJSON and CSV endpoints for claims, evidence graph, freshness, integrity, risk diff and point-in-time signal history.',
+    stat: 'M2M',
+    statLabel: 'without scraping',
+  },
 ];
+
+const routes = [
+  { href: '/en/start/', label: 'Start here', text: 'A fast orientation page for non-French readers.' },
+  { href: '/en/tour/', label: 'Guided tour', text: 'A visual map of the site and its risk surfaces.' },
+  { href: '/en/about/', label: 'About', text: 'What l0g is, what it refuses, and why it exists.' },
+  { href: '/en/sources/', label: 'Sources', text: 'Primary-source hierarchy and public datasets.' },
+  { href: '/en/editorial-protocol/', label: 'Editorial protocol', text: 'Evidence levels, corrections and source discipline.' },
+  { href: '/en/glossary/', label: 'Core glossary', text: 'Key terms from the English guides and APIs.' },
+];
+
+const machine = [
+  { href: '/en/agent-surface/', label: 'Agent Surface', cmd: 'curl -s https://l0g.fr/agents.json' },
+  { href: '/en/mcp/', label: 'MCP server', cmd: 'npx mcp-remote https://l0g.fr/api/mcp' },
+  { href: '/en/risk-diff/', label: 'Risk Diff', cmd: 'curl -s https://l0g.fr/api/v1/risk-diff.json' },
+  { href: '/en/black-box/', label: 'Black Box', cmd: 'curl -s https://l0g.fr/api/v1/black-box.json' },
+];
+
+const trails = [
+  ['Understand the project', '/en/start/', '/en/about/', '/en/manifesto/'],
+  ['Audit the method', '/en/methodology/', '/en/sources/', '/en/editorial-protocol/'],
+  ['Read the corpus', '/en/guides/', '/en/glossary/', '/llms-full.txt'],
+  ['Use the data', '/en/api/', '/en/agent-surface/', '/en/mcp/'],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${SITE}/en/#webpage`,
+  name: 'l0g in English',
+  description: 'English entry points for l0g.fr: reference guides, methodology, sources, API, MCP, dashboards, glossary and risk replay surfaces.',
+  inLanguage: 'en',
+  isPartOf: { '@id': `${SITE}/#website` },
+};
 ---
 
 <EnglishLayout
@@ -27,37 +76,344 @@ const cards = [
     { hreflang: 'x-default', href: `${SITE}/` },
   ]}
 >
-  <section class="en-hero rise" data-pagefind-body>
-    <p class="mono-label glow" style="color: var(--color-signal)">$ cd /en</p>
-    <h1 class="en-title font-display glow">English entry points for l0g.</h1>
-    <p class="en-lede">
-      l0g.fr is primarily a French risk-intelligence project. The English section exposes the durable parts of the site:
-      reference guides, methodology, primary-source logic, API/MCP documentation, machine-readable data surfaces and selected risk tools.
-    </p>
-    <p class="en-note">
-      This is a partial, explicit English layer. The full journal, most topic hubs and many exploratory notes remain French-only.
-    </p>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <section class="en-home-hero rise" data-pagefind-body>
+    <div class="en-hero-copy">
+      <p class="mono-label glow" style="color: var(--color-signal)">$ open /en</p>
+      <h1 class="en-title font-display glow">
+        Risk intelligence, translated where it matters.
+      </h1>
+      <p class="en-lede">
+        l0g is a French, open-source risk-intelligence project that maps financial opacity with public data, primary sources and machine-readable evidence. This English layer exposes the durable core: guides, methods, sources, APIs, MCP and replayable risk surfaces.
+      </p>
+      <div class="en-hero-actions" data-pagefind-ignore>
+        <a href="/en/guides/" class="en-cta primary">read the guides</a>
+        <a href="/en/api/" class="en-cta">use the API</a>
+        <a href="/en/tour/" class="en-cta ghost">take the tour</a>
+      </div>
+    </div>
+
+    <aside class="terminal-card" aria-label="l0g English terminal summary" data-pagefind-ignore>
+      <div class="terminal-top"><span></span><span></span><span></span></div>
+      <pre><code>{`$ l0g --english
+surface: partial, explicit, curated
+corpus: ${guideCount} reference guides
+method: primary sources > narrative
+data: json · ndjson · csv · mcp
+tracking: none
+license: CC BY 4.0
+status: readable by humans and agents`}</code></pre>
+    </aside>
   </section>
 
-  <section class="en-grid" aria-label="English sections">
-    {cards.map((card) => (
-      <a class="en-card" href={card.href}>
-        <span class="mono-label">// {card.k}</span>
+  <section class="signal-strip" aria-label="English layer metrics" data-pagefind-ignore>
+    <span><strong>{guideCount}</strong> guides</span>
+    <span><strong>API</strong> JSON / NDJSON / CSV</span>
+    <span><strong>MCP</strong> read-only server</span>
+    <span><strong>0</strong> trackers</span>
+  </section>
+
+  <section class="primary-grid" aria-label="Main English entry points">
+    {primaryCards.map((card) => (
+      <a href={card.href} class="primary-card">
+        <span class="mono-label">// {card.eyebrow}</span>
         <strong>{card.title}</strong>
         <p>{card.text}</p>
+        <em><b>{card.stat}</b>{card.statLabel}</em>
       </a>
     ))}
+  </section>
+
+  <section class="en-section en-split" aria-labelledby="paths-title">
+    <div>
+      <p class="mono-label glow" style="color: var(--color-signal)">// reading paths</p>
+      <h2 id="paths-title">Choose the door that matches the job.</h2>
+      <p>
+        The English section is not a machine-translated mirror of the French site. It is a curated access layer for readers, analysts and agents who need the reusable parts first.
+      </p>
+    </div>
+    <div class="route-grid">
+      {routes.map((route) => (
+        <a href={route.href} class="route-card">
+          <strong>{route.label}</strong>
+          <span>{route.text}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="en-section machine-panel" aria-labelledby="machine-title" data-pagefind-ignore>
+    <div class="machine-head">
+      <div>
+        <p class="mono-label glow" style="color: var(--color-signal)">// machine-readable</p>
+        <h2 id="machine-title">Built for agents, not scraped by accident.</h2>
+      </div>
+      <a href="/en/mcp/" class="link-term">MCP documentation →</a>
+    </div>
+    <div class="machine-grid">
+      {machine.map((item) => (
+        <a href={item.href} class="machine-card">
+          <span>{item.label}</span>
+          <code>{item.cmd}</code>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="en-section trail-panel" aria-labelledby="trail-title">
+    <p class="mono-label glow" style="color: var(--color-signal)">// suggested flows</p>
+    <h2 id="trail-title">Four useful flows.</h2>
+    <div class="trail-grid">
+      {trails.map(([title, a, b, c]) => (
+        <article class="trail-card">
+          <strong>{title}</strong>
+          <p><a href={a}>{a}</a></p>
+          <p><a href={b}>{b}</a></p>
+          <p><a href={c}>{c}</a></p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="en-section final-cta" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// caveat</p>
+    <h2>English is a layer, not a disguise.</h2>
+    <p>
+      The original journal remains French. The English layer is intentionally limited to evergreen guides, methods, sources and machine surfaces, because these are the parts worth keeping stable across languages.
+    </p>
+    <div class="en-hero-actions">
+      <a href="/" class="en-cta ghost">go to the French site</a>
+      <a href="/en/sources/" class="en-cta">inspect the sources</a>
+    </div>
   </section>
 </EnglishLayout>
 
 <style>
-  .en-title { margin-top: .8rem; max-width: 52rem; font-size: clamp(2.4rem, 6vw, 4.9rem); line-height: .96; }
-  .en-lede { margin-top: 1.2rem; max-width: 50rem; color: var(--color-paper); font-size: 1.08rem; line-height: 1.7; }
-  .en-note { margin-top: 1rem; max-width: 46rem; color: var(--color-muted); font-size: .94rem; line-height: 1.6; }
-  .en-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.4rem; }
-  .en-card { display: grid; gap: .45rem; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); text-decoration: none; }
-  .en-card:hover { border-color: color-mix(in srgb, var(--color-signal) 48%, transparent); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
-  .en-card strong { color: var(--color-bright); font-size: 1.08rem; }
-  .en-card p { color: var(--color-muted); font-size: .92rem; line-height: 1.55; }
-  @media (min-width: 760px) { .en-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .en-home-hero {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+    align-items: stretch;
+    padding: clamp(1.2rem, 4vw, 3rem) 0 1.5rem;
+  }
+  .en-home-hero::before {
+    content: '';
+    position: absolute;
+    inset: -1.2rem -1rem auto -1rem;
+    height: 18rem;
+    z-index: -1;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 16%, transparent);
+    border-radius: 24px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 8%, transparent), transparent 58%),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-line) 28%, transparent) 0 1px, transparent 1px 52px);
+    mask-image: linear-gradient(#000, transparent 88%);
+  }
+  .en-hero-copy { max-width: 54rem; }
+  .en-title {
+    margin-top: .8rem;
+    max-width: 58rem;
+    font-size: clamp(2.8rem, 8vw, 6.8rem);
+    line-height: .9;
+    letter-spacing: -0.045em;
+  }
+  .en-lede {
+    margin-top: 1.35rem;
+    max-width: 50rem;
+    color: var(--color-paper);
+    font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+    line-height: 1.68;
+  }
+  .en-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 1.25rem;
+  }
+  .en-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 42%, transparent);
+    border-radius: 999px;
+    padding: .72rem 1rem;
+    color: var(--color-signal);
+    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .en-cta.primary {
+    color: var(--color-ink);
+    background: var(--color-signal);
+    border-color: var(--color-signal);
+    box-shadow: 0 0 32px color-mix(in srgb, var(--color-signal) 22%, transparent);
+  }
+  .en-cta.ghost { color: var(--color-muted); border-color: var(--color-line); background: transparent; }
+  .terminal-card {
+    display: grid;
+    align-content: start;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line));
+    border-radius: 18px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 82%, transparent), color-mix(in srgb, var(--color-ink) 72%, transparent)),
+      radial-gradient(circle at 30% 0%, color-mix(in srgb, var(--color-signal) 14%, transparent), transparent 16rem);
+    overflow: hidden;
+    box-shadow: 0 18px 60px color-mix(in srgb, #000 32%, transparent);
+  }
+  .terminal-top {
+    display: flex;
+    gap: .45rem;
+    padding: .8rem .95rem;
+    border-bottom: 1px solid var(--color-line);
+    background: color-mix(in srgb, var(--color-surface) 62%, transparent);
+  }
+  .terminal-top span { width: .62rem; height: .62rem; border-radius: 999px; background: var(--color-muted); opacity: .75; }
+  .terminal-top span:nth-child(2) { background: var(--color-amber); }
+  .terminal-top span:nth-child(3) { background: var(--color-signal); }
+  .terminal-card pre {
+    margin: 0;
+    padding: 1.05rem;
+    overflow-x: auto;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: .86rem;
+    line-height: 1.7;
+  }
+  .signal-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .7rem;
+    margin: 1rem 0 1.8rem;
+  }
+  .signal-strip span {
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    padding: .75rem .9rem;
+    color: var(--color-muted);
+    background: color-mix(in srgb, var(--color-surface) 58%, transparent);
+    font-family: var(--font-mono);
+    font-size: .78rem;
+  }
+  .signal-strip strong { color: var(--color-bright); margin-right: .35rem; }
+  .primary-grid, .route-grid, .machine-grid, .trail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .primary-card, .route-card, .machine-card, .trail-card, .machine-panel, .final-cta {
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--color-surface) 62%, transparent);
+  }
+  .primary-card {
+    position: relative;
+    display: grid;
+    gap: .65rem;
+    min-height: 17rem;
+    padding: 1.1rem;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .primary-card::after {
+    content: '';
+    position: absolute;
+    right: -3rem;
+    bottom: -4rem;
+    width: 13rem;
+    height: 13rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+    filter: blur(4px);
+  }
+  .primary-card:hover, .route-card:hover, .machine-card:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 50%, transparent);
+    background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+  }
+  .primary-card strong {
+    max-width: 18rem;
+    color: var(--color-bright);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    line-height: 1.05;
+  }
+  .primary-card p, .route-card span, .trail-card p, .final-cta p {
+    color: var(--color-muted);
+    line-height: 1.58;
+  }
+  .primary-card em {
+    align-self: end;
+    display: grid;
+    gap: .15rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .primary-card em b { display: block; color: var(--color-signal); font-size: 2.2rem; line-height: 1; letter-spacing: -0.04em; }
+  .en-section { margin-top: clamp(2.8rem, 7vw, 5rem); }
+  .en-section h2 {
+    margin-top: .5rem;
+    max-width: 42rem;
+    color: var(--color-bright);
+    font-size: clamp(1.65rem, 4vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .en-section > div > p, .en-section > p {
+    margin-top: .9rem;
+    max-width: 42rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+  .en-split { display: grid; gap: 1.3rem; align-items: start; }
+  .route-card {
+    display: grid;
+    gap: .35rem;
+    padding: .95rem;
+    text-decoration: none;
+  }
+  .route-card strong { color: var(--color-bright); }
+  .machine-panel, .final-cta { padding: clamp(1rem, 3vw, 1.4rem); }
+  .machine-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: end; }
+  .machine-card {
+    display: grid;
+    gap: .55rem;
+    padding: .9rem;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .machine-card span { color: var(--color-bright); font-weight: 700; }
+  .machine-card code {
+    overflow-x: auto;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: .74rem;
+    white-space: nowrap;
+  }
+  .trail-grid { margin-top: 1rem; }
+  .trail-card { padding: 1rem; }
+  .trail-card strong { color: var(--color-bright); }
+  .trail-card p { margin-top: .45rem; font-family: var(--font-mono); font-size: .78rem; }
+  .trail-card a { color: var(--color-signal); text-decoration: none; }
+  .final-cta {
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent),
+      color-mix(in srgb, var(--color-surface) 62%, transparent);
+  }
+  .final-cta h2 { margin-top: .55rem; }
+  @media (min-width: 760px) {
+    .signal-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .primary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .route-grid, .machine-grid, .trail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .en-split { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+  }
+  @media (min-width: 960px) {
+    .en-home-hero { grid-template-columns: minmax(0, 1.18fr) minmax(22rem, .82fr); }
+    .terminal-card { margin-top: 1.2rem; }
+  }
 </style>
