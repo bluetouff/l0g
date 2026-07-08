@@ -1,0 +1,96 @@
+---
+title: "How to Read Credit Spreads: OAS, Quality Scale and Stress Signal"
+description: "A reference guide to credit spreads: what the yield gap between a corporate bond and a Treasury measures, why OAS is the reference measure, the quality ladder from investment grade to CCC, how to decompose a spread into expected loss, risk premium and liquidity premium, the role of CDS and CDX indexes, and how to read spreads as a forward stress signal. With 2026 levels near the tightest since 2007 and the market-complacency debate."
+summary: "A credit spread is the price of lending to a company rather than the government: the yield gap between a corporate bond and a Treasury of comparable maturity. The reference measure is OAS, published through ICE BofA indexes. Reading it means knowing the quality scale, the spread decomposition and its role as an early stress signal."
+pubDate: 2026-07-08T18:00:00+02:00
+updatedDate: 2026-07-08T18:00:00+02:00
+sourceGuide: "lire-les-spreads-de-credit"
+sourceUpdatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "credit", "markets", "methodology"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*A credit spread is the price, in basis points, of lending to a company rather than the state. It is one of the rare indicators that speaks before defaults arrive: when it widens, the market has already decided risk is rising. This guide covers spreads end to end, from the definition of OAS to the credit-quality scale and the stress signal. The year 2026, with spreads at their tightest since 2007, serves as both illustration and warning.*
+
+## What is a credit spread?
+
+A corporate bond yields more than a [Treasury](/en/guides/read-us-treasuries-market/) of similar maturity, and that yield gap is the [credit spread](/glossaire/spread-de-credit/). It compensates for everything that distinguishes a private issuer from the U.S. government: the risk of default, the difficulty of reselling the security, and uncertainty about its future. Lending for ten years to a BBB company at 5.15% while the ten-year Treasury yields 4.38% means demanding 77 basis points for the extra risk. That number, and its change over time, is the information.
+
+A spread tightens when risk appetite dominates: investors accept a small premium, confident few issuers will default. It widens when fear returns: investors demand more, or refuse to lend. A spread is therefore not only a measure of default risk. It is also a measure of sentiment. That is why it is a leading indicator: it moves before balance sheets, before defaults and often before equities.
+
+## OAS, the reference measure
+
+Comparing raw bonds would be misleading because many contain options. A callable bond lets the issuer repay early if it can refinance more cheaply. That option has value and distorts the displayed yield. The reference measure adjusts for it: [OAS, option-adjusted spread](/glossaire/oas/), removes the value of embedded options to isolate the pure credit spread across the Treasury curve, not just against a single point. Bonds with different structures become comparable.
+
+[ICE BofA](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) indexes, published daily and mirrored by the St. Louis Fed, are the most followed source. They show OAS for broad indexes such as U.S. high yield or for rating buckets. This is the common language of trading desks when they speak about “spreads.”
+
+## The quality scale: from investment grade to CCC
+
+Credit risk is ordered by rating, and spreads follow that ladder in a highly nonlinear way. At the top, [investment grade](/glossaire/investment-grade/) includes issuers rated from AAA to BBB-, judged relatively solid; BBB alone represents almost half the segment. Below begins [high yield](/glossaire/high-yield/), from BB to CCC, speculative debt. The lower you go, the wider the spread, but not proportionally: it explodes at the bottom of the scale because default probability rises much faster than the rating step suggests.
+
+<InfographicBars
+  title="The quality ladder, 2026"
+  subtitle="Credit spread, OAS, by rating bucket, in basis points."
+  max={950}
+  items={[
+    { label: "Investment grade, AAA to BBB-", value: 77, valueLabel: "~77 bp", tone: "signal" },
+    { label: "High yield broad index, BB to CCC", value: 285, valueLabel: "~285 bp", tone: "amber" },
+    { label: "CCC and lower", value: 900, valueLabel: "~900 bp", tone: "blue" },
+  ]}
+  note="Orders of magnitude for the first half of 2026."
+  source="Source: ICE BofA / Federal Reserve Bank of St. Louis, FRED."
+  caption="Spreads do not rise in a straight line along the rating scale: they explode at the bottom, where default probability rises much faster. Source: ICE BofA, FRED."
+/>
+
+The gap between the top and bottom of this scale is itself a signal. When it widens, the market discriminates: it makes the weakest risk pay dearly while leaving solid issuers alone, a sign of targeted concern. When it compresses, almost everyone funds near the same price, a sign of indiscriminate risk appetite, often the prelude to unpleasant surprises.
+
+## Decomposing a spread
+
+A spread is not one block. It has three parts. The first is **expected loss**: probability of default multiplied by loss given default, after recovery. This is the actuarial part a credit model calculates. The second is the **risk premium**, the extra compensation for bearing uncertainty around that average, because defaults do not happen predictably. The third is the **liquidity premium**, compensation for the difficulty of selling the bond when needed, higher when the market is thin.
+
+This decomposition matters when reading a move. A widening caused by higher expected loss points to real fundamental deterioration. A widening caused by exploding liquidity premium, with no balance-sheet change, points to market panic, often brutal and sometimes reversible. They look similar on a chart but say different things.
+
+## CDS and CDX indexes
+
+Beside cash bonds sits a faster synthetic market. A [CDS](/glossaire/cds/), or credit default swap, is insurance against issuer default: its premium, in basis points, rises when default looks more likely. Grouped into baskets, these contracts form [CDX](/glossaire/cdx/) indexes: CDX.NA.IG for investment grade, CDX.NA.HY for high yield. Continuously traded and highly liquid, they often move before the cash market, because selling synthetic protection is easier than moving a bond portfolio.
+
+That is why the difference between CDX and cash spreads, the basis, matters. When synthetic credit decouples from cash, one of the two markets is ahead of the other, usually CDX. Watching both gives you a better chance of seeing stress arrive.
+
+## Reading spreads as signal
+
+A spread is not judged by level alone, but through four crossed readings. **Level** first, placed in history: a spread in its tightest decile says the market is expensive, not when it will turn. **Speed** matters more: a spread doubling in weeks is a much stronger stress signal than a high but stable spread. The **quality scale** shows whether CCC is separating from BB, meaning discrimination is returning. Finally, the [distress ratio](/glossaire/ratio-de-detresse/), the share of high yield trading above 1,000 bp, measures the part of the market already in trouble and often precedes default waves. A low spread with a rising distress ratio is a divergence not to ignore.
+
+## 2026: tightest since 2007
+
+In early 2026, spreads are exceptionally compressed. Broad high yield trades near **285 basis points**, around its June 2007 level on the eve of the financial crisis. Investment grade touched **71 basis points** in January, the tightest since 1998 and the LTCM episode. To understand that compression, remember where high yield went in recent shocks: roughly 1,100 bp in March 2020, near 2,000 bp in 2008.
+
+<InfographicBars
+  title="Spreads at their tightest since 2007"
+  subtitle="U.S. high-yield spread, OAS, today and during recent stress peaks, in basis points."
+  max={2000}
+  items={[
+    { label: "Global financial crisis peak, Dec. 2008", value: 2000, valueLabel: "~2,000 bp", tone: "muted" },
+    { label: "Covid shock peak, March 2020", value: 1100, valueLabel: "~1,100 bp", tone: "blue" },
+    { label: "Today, 2026", value: 285, valueLabel: "~285 bp", tone: "signal" },
+  ]}
+  source="Source: ICE BofA / Federal Reserve Bank of St. Louis, FRED."
+  caption="At 285 bp, high yield pays barely more for risk than before 2008. The room to widen under stress is enormous. Source: ICE BofA, FRED."
+/>
+
+Is this complacency? Partly, but not only, and the honest reading includes the counterargument. Index composition has improved: today’s high yield is of higher average quality than in 2007, with more BB and fewer CCC names, so a structurally lower spread can be justified by lower average risk. Still, even after correcting for this, the cushion is thin. At these levels, spreads poorly compensate for reversal risk, and the main possible move is upward. A tight spread does not announce a crisis. It reduces the warning time.
+
+## The private-credit mirror
+
+This framework also illuminates a blind spot. The public bond market has an observable price, updated daily; private credit is valued by expert judgment, without a market spread. That is why the public spread becomes the implicit reference price against which smoother private valuations are judged. When public spreads widen quickly while private marks stay stable, the gap does not measure opportunity. It measures delayed loss recognition, a risk we follow in our work on private-credit contagion and in the guide to [private credit analysis](/guides/analyser-credit-prive/).
+
+## Reading spreads in practice
+
+Read properly, credit spread is not one thermometer but a system. OAS gives the comparable measure of risk. The quality scale says whether the market is discriminating or applying a uniform premium. Decomposition between expected loss and premia says where a move comes from, real deterioration or liquidity panic. CDX shows what the synthetic market thinks, often earlier. The distress ratio shows how much of the market is already in trouble. In 2026, all these gauges say the same thing: risk is cheap, in a market with little room for error.
+
+The [glossary](/glossaire/) defines the acronyms, and the [economic calendar](/calendrier-eco/) lists credit-related dates to watch. This guide complements the guide to the [Treasury market](/en/guides/read-us-treasuries-market/), of which credit spread is the private-sector mirror.
+
+---
+
+**Main sources:** ICE BofA U.S. High Yield Index Option-Adjusted Spread, FRED BAMLH0A0HYM2; ICE BofA U.S. Corporate Index OAS, FRED BAMLC0A0CM; ICE BofA CCC & Lower U.S. High Yield Index OAS, FRED BAMLH0A3HYC; Morningstar, “Corporate Credit Spreads Trading in Tightest Decile of Historical Range”; T. Rowe Price, “Are structural spread changes concealing value in credit?”; ICE, Markit CDX.NA.HY.

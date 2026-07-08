@@ -1,0 +1,91 @@
+---
+title: "How to Read the Treasury Market: Auctions, Curve and Term Premium"
+description: "A reference guide to U.S. government debt: the composition of the market, from bills to notes and bonds; quarterly refunding and auction mechanics; how to read an auction through bid-to-cover, tail and dealer takedown; what the shape of the yield curve signals; how to decompose a long yield into rate expectations and term premium; who owns the debt; and which stress thermometers to watch. With 2026 figures as illustration."
+summary: "The Treasury market is the foundation of the global financial system: more than $28 trillion of marketable U.S. government debt in bills, notes and bonds. Reading it means understanding quarterly refunding, auction mechanics, the yield curve and the split between expected short rates and term premium."
+pubDate: 2026-07-08T18:00:00+02:00
+updatedDate: 2026-07-08T18:00:00+02:00
+sourceGuide: "lire-le-marche-des-treasuries"
+sourceUpdatedDate: 2026-07-07T06:35:00+02:00
+tags: ["macro", "rates", "us treasury"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*The U.S. Treasury security is the most important asset in global finance, and one of the most poorly read. People speak about “the ten-year yield” as if it were a thermometer, without always knowing what it measures or how it is formed. This guide walks through the Treasury market from the anatomy of the debt to auction reading and the decomposition of long yields. The year 2026, marked by the return of term premium, provides the illustration.*
+
+## The anatomy of the debt: bills, notes, bonds
+
+Marketable U.S. federal debt exceeds **$28 trillion**, making it by far the largest bond market in the world. It is made of several instruments that differ by maturity. **Bills** mature in one year or less, are issued at a discount and pay no coupon; they represent roughly **22%** of the market. **Notes**, from two to ten years, are the largest block, around **52%**. **Bonds**, at twenty to thirty years, account for roughly **17%**. Add more specialized instruments: TIPS, indexed to inflation, and two-year floating-rate notes, introduced in 2014.
+
+<InfographicBars
+  title="What U.S. debt is made of"
+  subtitle="Approximate share of major security types in marketable debt, 2026."
+  max={100}
+  items={[
+    { label: "Notes, 2 to 10 years", value: 52, valueLabel: "~52%", tone: "signal" },
+    { label: "Bills, one year or less", value: 22, valueLabel: "~22%", tone: "amber" },
+    { label: "Bonds, 20 to 30 years", value: 17, valueLabel: "~17%", tone: "blue" },
+    { label: "TIPS, FRNs and others", value: 9, valueLabel: "~9%", tone: "muted" },
+  ]}
+  source="Sources: U.S. Treasury, Monthly Statement of the Public Debt; SIFMA."
+  caption="Two-to-ten-year notes make up the largest block of the market, ahead of short bills and long bonds. Sources: U.S. Treasury, SIFMA."
+/>
+
+This structure has a direct consequence: the federal government must refinance constantly. In fiscal year 2026 alone, Treasury must replace roughly **$9.7 trillion** of maturing securities, on top of financing the current deficit. The average interest rate paid on the debt was about **3.4%** in spring 2026, rising slowly as old low-rate debt is replaced by more expensive new debt.
+
+## How the government issues: refunding and auctions
+
+Treasury does not issue randomly. It follows a calendar. Each quarter, it publishes its Quarterly Refunding Announcement, which sets issuance sizes by maturity. A rising share of bills, for example, signals that the government is financing more through the short end, a choice with heavy consequences for the curve.
+
+Issuance happens through a single-price auction, often called a Dutch auction. Bidders submit yields, and Treasury accepts bids from the lowest yield upward until the offered amount is filled. All winners then receive the same yield, the stop-out yield. Three bidder categories split the auction. **Primary dealers**, a group of banks designated by the New York Fed, must participate in each auction and act as market makers. **Direct bidders** are institutions bidding directly. **Indirect bidders** bid through an intermediary, and this bucket is often used as a rough proxy for foreign and central-bank demand. Before the auction, the security already trades in the “when-issued” market, which gives the reference price.
+
+## Reading an auction: three signals
+
+An auction is read through three numbers, and knowing how to interpret them separates the observer from the tourist.
+
+The first is **bid-to-cover**, the ratio of total bids received to the amount sold. It is a volume signal: the higher it is, the broader the demand. Because primary dealers must bid, the key question is whether it sits above **2**, below which appetite looks weak. The second is the **tail**, the gap between the auction yield and the when-issued yield just before the auction. It is a price signal: a zero or negative tail means strong absorption; a 1–2 bp tail means soft demand; above 3 bp on a long maturity, the auction starts to worry people. The third is the **dealer takedown**, the share absorbed by primary dealers. When dealers take more than 20–25% of the issue, end investors—direct and indirect bidders—have stepped back, leaving market makers with inventory to distribute. A strong auction combines a solid bid-to-cover, a near-zero tail and a low dealer share.
+
+## The yield curve, a leading signal
+
+Link the yields of different maturities and you get the yield curve, whose shape carries dense macro information. In normal times it slopes upward: lending for longer earns more. When it flattens and then **inverts**, with short rates above long rates, it is a warning signal: the market expects a slowdown and future rate cuts. The New York Fed notes that the gap between the ten-year and the two-year has preceded each of the last eight U.S. recessions.
+
+In 2026, the curve exited a long inversion and steepened again. At the end of June 2026, the ten-year yield stood near 4.38% and the two-year near 4.07%, putting the curve back in positive territory. A steepening driven by long yields rising faster than short yields has a name: bear steepening. It often points to concerns about debt supply and inflation rather than a simple easing cycle. The direction of the slope matters as much as its level.
+
+## Decomposing a long yield: term premium
+
+A long yield is not a single object. It has two parts. The first is the average expected path of short rates over the life of the bond, meaning what the market thinks the Fed will do, a path connected to the [dot plot](/en/guides/read-dot-plot-sep/). The second is the [term premium](/glossaire/prime-de-terme/), the extra compensation demanded for locking up money for a long time and bearing the risk that rates, inflation or debt supply move against the investor. The benchmark model is Adrian, Crump and Moench at the New York Fed.
+
+The reading changed in 2026. Negative or near zero for a decade, the ten-year term premium turned positive again, around 0.73 percentage point in April 2026, while remaining below its long-term median near 1.41 percentage point over sixty-five years. Two lessons follow. First, a positive but still moderate premium can rise further if debt supply expands. Second, in this regime, a Fed rate cut does not automatically pull long yields down, because term premium can rise even as expected short rates fall.
+
+<InfographicBars
+  title="Term premium is back, but still below its norm"
+  subtitle="Ten-year term premium, ACM model, in percentage points."
+  items={[
+    { label: "Today, 2026", value: 0.73, valueLabel: "0.73 pt", tone: "signal" },
+    { label: "65-year median", value: 1.41, valueLabel: "1.41 pt", tone: "amber" },
+  ]}
+  note="Negative or close to zero for a decade before 2026."
+  source="Source: Federal Reserve Bank of New York, ACM model."
+  caption="Back in positive territory in 2026, term premium remains below its historical median: there is room for it to rise if debt supply keeps swelling. Source: New York Fed."
+/>
+
+## Who owns U.S. debt
+
+Demand matters as much as supply, and its composition says a lot about risk. The Federal Reserve, long a major buyer through quantitative easing, has stepped back after the end of balance-sheet reduction, covered in our guide to the [Fed balance sheet](/en/guides/read-h41-fed-balance-sheet/). Foreign holders own roughly **$8.5 trillion** of Treasuries, or 28–30% of marketable debt, led by Japan, the United Kingdom and China. But their share is falling as debt grows faster than their holdings, a dynamic followed through [TIC data](/guides/lire-les-donnees-tic/).
+
+The rest is split among domestic actors with different stability profiles. Money-market funds and stablecoin issuers mostly buy short bills. Hedge funds hold enormous leveraged positions through the [basis trade](/glossaire/basis-trade/), an arbitrage between cash bonds and futures whose disorderly unwind can destabilize the market, as in March 2020. Demand increasingly carried by leveraged players is less reliable under stress.
+
+## Stress thermometers
+
+A few instruments concentrate the information. Auction **tails** and **bid-to-cover** ratios show primary-market demand, issue by issue. The thirty-year yield captures pressure at the long end. The [MOVE](/glossaire/move/) index measures implied rate volatility, the bond-market equivalent of the VIX: it rises when the market tightens. The U.S. sovereign CDS, insurance against technical default, moves during debt-ceiling episodes. Finally, a TGA rebuild after a debt-ceiling increase creates liquidity shocks, a mechanism detailed in our guide to [Treasury liquidity](/en/guides/read-net-liquidity-tga-rrp/).
+
+## Reading the market in practice
+
+Read properly, the Treasury market is not one thermometer but a system. Debt composition and the refunding calendar show supply. Bid-to-cover, tail and dealer takedown show demand at each auction. The curve shows macro expectations. The split between rate expectations and term premium explains where a long-yield move comes from, and therefore whether it is about monetary policy or debt confidence. Stress gauges, from MOVE to CDS, say when the mechanics are seizing up.
+
+That framework matters when the balance tightens, as in our analysis of the [return of term premium](/posts/dette-americaine-le-reveil-de-la-prime-de-terme/), where supply rises while demand becomes more fragile. The [glossary](/glossaire/) defines the acronyms, and the [economic calendar](/calendrier-eco/) lists auction and refunding dates to watch.
+
+---
+
+**Main sources:** U.S. Treasury, Monthly Statement of the Public Debt; U.S. Treasury quarterly borrowing estimates and refunding announcement; SIFMA, U.S. Treasury Securities Statistics; Charles Schwab, “How Do Treasury Auctions Work?”; Loomis Sayles, “The Anatomy of a Treasury Auction”; Federal Reserve Bank of New York, primary dealers; New York Fed yield-curve recession FAQ; New York Fed Treasury term premia, Adrian-Crump-Moench model; U.S. Treasury TIC system for foreign Treasury holdings.

@@ -1,0 +1,113 @@
+---
+title: "How to Read the Dollar: DXY, Cross-Currency Basis and Offshore Dollar Debt"
+description: "A reference guide to the dollar as the world’s funding currency: what DXY really measures and why its basket is biased, why the Fed’s broad dollar index is a better compass, covered interest parity and its post-2008 break, cross-currency basis as the hidden price of dollars and a funding-stress thermometer, FX swaps as off-balance-sheet repo, the missing dollar debt estimated by the BIS, Fed swap lines as the offshore backstop, and the crucial distinction between the reserve dollar and the funding dollar. With the 2026 regime as illustration."
+summary: "The dollar cannot be read through one number. DXY gives a spot index, but its basket overweights the euro and ignores China; the Fed’s broad index corrects the bias. More importantly, the real dollar system sits offshore, where non-U.S. actors borrow dollars through FX swaps. Cross-currency basis is the thermometer, Fed swap lines the backstop."
+pubDate: 2026-07-08T18:00:00+02:00
+updatedDate: 2026-07-08T18:00:00+02:00
+sourceGuide: "lire-le-dollar-dxy-cross-currency-basis"
+sourceUpdatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "dollar", "liquidity", "central banks"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*People talk about the dollar as a spot price, usually DXY, when it is first a funding system. Trillions of dollars are borrowed outside the United States by actors that do not earn dollars, through instruments that show up on no balance sheet. This guide reads the dollar end to end: what DXY measures and hides, why covered interest parity broke, how to read cross-currency basis, and where the real dollar debt is hidden. The 2026 regime, where a soft spot dollar coexists with tight funding, is the illustration.*
+
+## DXY, a biased thermometer
+
+[DXY](/glossaire/dxy/), the U.S. Dollar Index, is the most quoted gauge of dollar “strength.” It is a basket of six currencies whose weights have not changed since the euro was launched in 1999, with a 1973 = 100 base. The problem is composition: the euro alone weighs almost **57.6%**, the yen **13.6%**, sterling **11.9%**, and the rest is split between the Canadian dollar, Swedish krona and Swiss franc. DXY is therefore not the dollar against the world. It is mostly the dollar against Europe.
+
+What it ignores matters as much as what it includes. There is no Chinese yuan, Mexican peso or Korean won, even though those economies are major U.S. trading partners. For a less distorted reading, the Federal Reserve publishes a broad trade-weighted dollar index including China, Mexico and roughly two dozen partners. It is common for DXY and the broad index to tell different stories: the dollar can fall against the euro and yen while remaining firm against emerging-market currencies. Reading DXY alone means looking at the dollar through the wrong end of the telescope.
+
+<InfographicBars
+  title="What DXY weighs, and what it forgets"
+  subtitle="U.S. Dollar Index basket weights, %. Unchanged since 1999."
+  max={58}
+  items={[
+    { label: "Euro", value: 57.6, valueLabel: "57.6%", tone: "signal" },
+    { label: "Japanese yen", value: 13.6, valueLabel: "13.6%", tone: "blue" },
+    { label: "Sterling", value: 11.9, valueLabel: "11.9%", tone: "amber" },
+    { label: "CAD, SEK, CHF", value: 16.9, valueLabel: "16.9%", tone: "muted" },
+  ]}
+  note="Absent from the basket: yuan, Mexican peso, won, real… a large share of real U.S. trade."
+  source="Source: ICE U.S. Dollar Index basket composition."
+  caption="DXY is mostly a euro-dollar index in disguise: the euro weighs nearly 58%. It ignores China and Mexico. For the dollar against the real world, the Fed’s broad index is more faithful. Source: ICE."
+/>
+
+## Covered interest parity, and its break
+
+Below the exchange rate lies a deeper mechanism: funding. In theory, obtaining dollars directly or synthetically—borrowing in another currency, then swapping into dollars—should cost exactly the same. That is [covered interest parity](/glossaire/cip/), an arbitrage that should eliminate any gap. If a Japanese investor hedges a dollar investment, the hedge should cost exactly the interest-rate differential between yen and dollars, no more.
+
+Since 2008, that parity has not held. The actual cost of hedging deviates from the rate differential, and the residual, which should not exist, is the [cross-currency basis](/glossaire/cross-currency-basis/). Two forces explain the break. Post-crisis regulation made it costly for banks to use balance sheet for arbitrage. At the same time, structural demand for dollars—from Japanese and European investors buying U.S. assets and hedging FX risk—pushes in one direction. Arbitrage no longer closes the gap. The gap persists.
+
+## Cross-currency basis, the hidden dollar price
+
+Basis has become the best thermometer of dollar funding stress. It has been negative and persistent since 2008, meaning obtaining synthetic dollars carries a premium: the dollar is structurally expensive to fund outside the United States. When that premium widens, the dash for dollars intensifies. When it narrows, pressure eases. As with [onshore repo](/en/guides/read-repo-market-sofr/), basis deteriorates around balance-sheet dates, quarter-end and especially year-end, when banks cut back their supply of dollars.
+
+The underlying market has exploded. In the first quarter of 2026, cross-currency swap volumes hit a **$3.6 trillion** notional record, up 36% year over year, with March alone at **$1.56 trillion**, the highest ever measured. This is not a niche market. It is the artery through which the world funds itself in dollars, and the basis says whether the blood is flowing or clotting.
+
+## The FX swap, an off-balance-sheet repo
+
+To understand the risk, see what an [FX swap](/glossaire/swap-de-change/) really is: a spot currency exchange paired with the reverse exchange forward. Economically, it is a collateralized loan, the equivalent of a [repo](/en/guides/read-repo-market-sofr/) with a currency as collateral. But there is a decisive accounting difference: repo appears on the balance sheet as debt; an FX swap does not. The obligation to repay dollars at maturity is real, but it sits off balance sheet, in notes, invisible to standard debt statistics.
+
+That invisibility is the danger. An actor funding itself in dollars through FX swaps must roll the funding at maturity, often very short. While the market works, the roll is smooth. When dollar liquidity becomes scarce, as in March 2020, everyone must roll at the same time a debt no balance sheet showed, and the dash for dollars feeds on itself.
+
+## The “missing” dollar debt
+
+The Bank for International Settlements has measured the hole. Obligations to pay dollars embedded in FX swaps, forwards and currency swaps exceed **$80 trillion** in notional value, a sum larger than combined dollar Treasury bills, repo and commercial paper. Most is very short term, multiplying rollover needs. The BIS estimates that non-U.S. non-banks alone carry nearly **$25 trillion** of this hidden debt, up from $17 trillion in 2016, with non-U.S. banks carrying even more.
+
+<InfographicBars
+  title="The largest dollar debt is the one you do not see"
+  subtitle="Dollar debt outside the United States, on-balance-sheet and off-balance-sheet, in trillions of dollars."
+  max={35}
+  items={[
+    { label: "Non-U.S. banks’ FX swap obligations, off balance sheet", value: 35, valueLabel: "~$35tn", tone: "signal" },
+    { label: "Non-U.S. non-banks’ FX swap obligations, off balance sheet", value: 25, valueLabel: "~$25tn", tone: "amber" },
+    { label: "On-balance-sheet dollar credit to non-U.S. non-banks", value: 14.3, valueLabel: "$14.3tn", tone: "muted" },
+  ]}
+  note="Total FX-swap dollar payment obligations: more than $80tn notional."
+  source="Sources: BIS, dollar debt in FX swaps and forwards; BIS banking statistics."
+  caption="Visible balance-sheet dollar debt is dwarfed by off-balance-sheet FX swap obligations. This submerged layer fuels dollar dashes. Source: BIS."
+/>
+
+## Fed swap lines, the offshore backstop
+
+Against this risk, the Federal Reserve has a backstop, symmetrical to the [standing repo facility](/en/guides/read-repo-market-sofr/) that caps onshore stress: central-bank [swap lines](/glossaire/ligne-de-swap/). The Fed lends dollars to a network of foreign central banks—the ECB, Bank of Japan, Bank of England and others—which then lend them to their own banks. Dollars reach the offshore system without the Fed dealing directly with foreign private counterparties.
+
+These lines were activated massively in 2008 and again in March 2020, when usage exceeded **$400 billion** and broke the dash for cash. Their usage, visible weekly on the asset side of the [Fed balance sheet](/en/guides/read-h41-fed-balance-sheet/), is a last-resort signal: when it rises, offshore funding has seized up badly enough to require the issuer central bank. Watching it means watching the moment when the plumbing breaks.
+
+## Reserve or funding: reading de-dollarization
+
+Everything above leads to the most misunderstood distinction in the dollar debate. The dollar is both a reserve currency, the one central banks hold, and a funding currency, the one the world borrows and invoices in. Those two roles do not decline at the same speed. The dollar’s share of FX reserves, measured by the IMF’s [COFER](/glossaire/cofer/), is slowly eroding, around **58%** in 2025 versus close to 70% in 2000. But its dominance as a funding currency is barely moving: the dollar remains on one side of nearly **88%** of global FX transactions.
+
+<InfographicBars
+  title="Two dollars, two speeds of decline"
+  subtitle="Dollar share by function, recent orders of magnitude, %."
+  max={90}
+  items={[
+    { label: "FX transactions, one leg", value: 88, valueLabel: "~88%", tone: "signal" },
+    { label: "Official FX reserves, COFER", value: 58, valueLabel: "~58%", tone: "amber" },
+  ]}
+  note="De-dollarization affects reserves much more than funding."
+  source="Sources: BIS triennial FX survey; IMF COFER."
+  caption="The dollar is declining as a reserve currency, not as a funding currency, where it remains unavoidable. Confusing the two overstates de-dollarization. Sources: BIS, IMF."
+/>
+
+That is why [de-dollarization](/glossaire/dedollarisation/) is real but partial. Central banks diversify reserves, including toward [gold](/posts/or-banques-centrales-dedollarisation-tonnes/), but as long as global debt is denominated in dollars, the demand for dollar funding remains, and with it the vulnerability to dashes measured by basis.
+
+## 2026: soft spot dollar, tight funding
+
+The 2026 regime shows why multiple gauges are necessary. In spot terms, the dollar is soft: DXY trades around **101**, near a three-week low after its largest weekly fall since April. An observer looking only at that number sees a dollar in retreat. Yet at the same time, dollar-funding volumes are hitting records and basis pressure is widening, a sign that demand for synthetic dollars remains strong. A dollar can fall in price while remaining expensive to fund. Level and stress are separate dimensions. Confusing them is how you miss the point.
+
+The same decoupling appears in the [yen carry trade](/glossaire/yen-carry/), where a weak yen and low volatility support yen borrowing until the reversal. Once again, the calm surface hides tense plumbing.
+
+## Reading the dollar in practice
+
+Read properly, the dollar is not a price but a multi-layered system. DXY gives market mood against Europe, with major biases. The Fed’s broad index gives the dollar against the real trading world. Cross-currency basis gives the hidden price of dollar funding and its stress level. BIS-estimated off-balance-sheet dollar debt gives the size of the rollover risk. Fed swap lines show when the backstop is deployed. And the distinction between reserve share and funding share tells what de-dollarization changes, and what it does not.
+
+This framework is the offshore counterpart to the onshore plumbing described in our guides to [repo and SOFR](/en/guides/read-repo-market-sofr/) and [system liquidity](/en/guides/read-net-liquidity-tga-rrp/). It also illuminates the international dollar layer discussed in our pieces on [eurodollars](/posts/eurodollars-dollar-offshore-dette-cachee/) and the [hidden price of the dollar](/posts/cross-currency-basis-prix-cache-dollar/). The [glossary](/glossaire/) defines the acronyms, and the [economic calendar](/calendrier-eco/) lists the data to watch.
+
+---
+
+**Main sources:** BIS, “Dollar debt in FX swaps and forwards: huge, missing and growing”; ClarusFT, Q1 2026 cross-currency swap volumes; ICE, U.S. Dollar Index; Federal Reserve, trade-weighted dollar indexes; Federal Reserve, central-bank dollar liquidity swap lines; IMF COFER database; BIS triennial FX survey; TradingEconomics, U.S. Dollar Index.
