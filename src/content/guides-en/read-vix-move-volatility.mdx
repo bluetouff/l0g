@@ -1,0 +1,97 @@
+---
+title: "How to Read Volatility: VIX and MOVE, the market fear gauges"
+description: "A reference guide to implied-volatility indices: what VIX measures for equities and MOVE for bonds, how they are built, how to read levels and term structure, why VIX and MOVE sometimes diverge, common traps, and the 2026 regime in which both are low."
+summary: "VIX and MOVE are the two main fear gauges: VIX measures expected 30-day implied volatility for U.S. equities, while MOVE measures implied volatility for Treasuries. They look forward, not backward. Low volatility is not low risk; it is the price the market is currently willing to pay for protection."
+pubDate: 2026-07-08T08:00:00+02:00
+updatedDate: 2026-07-08T08:00:00+02:00
+sourceGuide: "lire-la-volatilite-vix-move"
+sourceUpdatedDate: 2026-07-08T08:00:00+02:00
+tags: ["macro", "markets", "rates", "methodology"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*When commentators say fear is rising in markets, they usually mean the VIX, without saying what it measures. They also often forget its bond-market cousin, MOVE, which can be more informative. These indices do not say what markets have done; they say what investors are paying to insure against what may happen next.*
+
+## Implied volatility: looking forward
+
+Realized volatility measures past price movement. Implied volatility is extracted from option prices: it is the amount of movement the market prices for the future. Because an option is insurance, its price rises when investors demand protection.
+
+VIX and MOVE are therefore forward-looking gauges of protection demand, not backward-looking descriptions. A rising VIX means the market is buying umbrellas; it does not necessarily mean it is already raining.
+
+## VIX: equity volatility
+
+[VIX](/glossaire/vix/) measures expected 30-day implied volatility on the S&P 500. Cboe calculates it from a wide strip of S&P options, without relying on a single pricing model, and expresses it as an annualized percentage.
+
+A rough translation helps: divide the VIX by about 3.5 to estimate the one-month move the market is pricing. A VIX of 16 corresponds to roughly a 4.5% expected monthly move, up or down.
+
+The VIX is asymmetric. It jumps when equities fall and protection demand spikes, then usually drifts lower during rallies. Its long-term average is around 19-20. Below 15 suggests complacency; above 30 signals stress; the largest shocks have sent it far higher, near 82 during March 2020.
+
+<InfographicBars
+  title="VIX: from complacency to panic"
+  subtitle="VIX index level: current, long-run average and major shock."
+  max={82}
+  items={[
+    { label: "July 2026", value: 15.8, valueLabel: "15.8", tone: "signal" },
+    { label: "Long-run average", value: 19.5, valueLabel: "~19.5", tone: "muted" },
+    { label: "Covid crash peak", value: 82, valueLabel: "~82", tone: "amber" },
+  ]}
+  note="Below 15: complacency; above 30: stress; above 50: panic."
+  source="Sources: Cboe, FRED."
+  caption="At 15.8, the VIX prices little equity turbulence, far below major crisis peaks. Sources: Cboe, FRED."
+/>
+
+## MOVE: bond volatility
+
+[MOVE](/glossaire/move/) is the VIX-like gauge for U.S. Treasuries. It measures one-month implied volatility in Treasury options, with maturities along the curve and a heavy weight on the ten-year sector. Unlike VIX, it is expressed in basis points of rate volatility.
+
+Its reading grid is simple. Below 80, the bond market is calm. Between 80 and 120, volatility is moderate. Above 120, stress is significant. MOVE is also a rough gauge of uncertainty around the Fed, inflation and debt supply; when it rises, the [term premium](/glossaire/prime-de-terme/) often matters more.
+
+<InfographicBars
+  title="MOVE and its stress zones"
+  subtitle="MOVE index: current, stress threshold and recent crisis peak."
+  max={200}
+  items={[
+    { label: "July 2026", value: 65.8, valueLabel: "65.8", tone: "signal" },
+    { label: "Stress threshold", value: 120, valueLabel: "120", tone: "amber" },
+    { label: "Bank-crisis peak, March 2023", value: 198, valueLabel: "~198", tone: "muted" },
+  ]}
+  note="Below 80: calm Treasury market."
+  source="Sources: ICE BofA, MacroMicro."
+  caption="At 65.8, MOVE shows a calm Treasury market, far below the 2023 bank-stress peak. Sources: ICE BofA, MacroMicro."
+/>
+
+## Term structure: the signal inside the signal
+
+Level is not enough. The volatility term structure matters. VIX futures are normally in contango: three-month volatility is above spot volatility, because uncertainty grows with horizon. That is the normal calm state. When spot volatility moves above longer-dated volatility, the curve flips into backwardation: the market prices immediate stress that it expects to fade.
+
+VVIX adds another layer: the volatility of VIX options. A high VVIX with a low VIX can reveal nervousness under a calm surface, as investors buy protection against a volatility shock before spot volatility has moved.
+
+## When VIX and MOVE diverge
+
+The two gauges do not always move together. In 2022-2023, aggressive Fed tightening pushed MOVE sharply above normal while VIX stayed more contained. The stress was in rates, not equities. Conversely, a stock-specific earnings shock can lift VIX without much movement in MOVE.
+
+Read together, they locate stress. MOVE rising alone points to Fed, inflation, duration or debt-supply risk. VIX rising alone points to equity risk. Both rising together, as in March 2020, points to systemic stress.
+
+## Traps
+
+The first trap is confusing low volatility with low risk. Volatility is mean-reverting and short-horizon. It can stay low right before a shock. Calm markets often encourage leverage, making the system more fragile precisely because measured volatility is low.
+
+The second trap is thinking the VIX is directly investable. You cannot buy spot VIX; you can trade futures and products built on them. When the futures curve is in contango, roll costs erode long-volatility products. Short-volatility strategies earn small gains until one shock wipes them out, as in February 2018's “Volmageddon.”
+
+## 2026: a surface that is too calm
+
+In mid-2026 both gauges are low: [VIX around 15.8](https://fred.stlouisfed.org/series/VIXCLS) and [MOVE around 65.8](https://en.macromicro.me/charts/35584/us-treasury-move-index). Read alone, that says serenity. Read with the rest of the dashboard, it is more ambiguous: [credit spreads are at their tightest since 2007](/en/guides/read-credit-spreads-oas/) and dollar-funding plumbing still needs watching through the [cross-currency basis](/en/guides/read-dollar-dxy-cross-currency-basis/).
+
+The calm is therefore not a green light. It is a statement about the current price of protection. If protection is cheap while macro, credit and funding risks persist, the message is not “risk is gone”; it is “risk is not being paid much.”
+
+## How to use them
+
+Read VIX and MOVE as maps of perceived risk. The level tells how much protection costs versus history. The term structure says whether stress is immediate or deferred. The divergence between the two locates the stress in equities or rates. VVIX reveals nervousness below the surface.
+
+The golden rule: read volatility with spreads, funding, liquidity and positioning. Low volatility plus tight spreads and a strained basis is not a clean all-clear. It is often a warning that the market is underpricing the cost of being wrong.
+
+---
+
+**Main sources:** Cboe VIX methodology; FRED VIX series; ICE MOVE Index documentation; MacroMicro MOVE Index data; Cboe VVIX materials; historical volatility-market episodes including March 2020 and February 2018.
