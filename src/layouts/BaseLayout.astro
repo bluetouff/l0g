@@ -223,6 +223,9 @@ function isCurrentHref(href: string): boolean {
               </a>
             ))
           }
+          <a href="/en/" class="nav-tab nav-en nav-right" aria-current={Astro.url.pathname.startsWith('/en') ? 'page' : undefined}>
+            en
+          </a>
           <a href="/api/" class="nav-tab nav-api" aria-current={Astro.url.pathname.startsWith('/api') ? 'page' : undefined}>
             api
           </a>
