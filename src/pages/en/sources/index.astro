@@ -1,0 +1,66 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const groups = [
+  ['Macro and central banks', ['FRED / Federal Reserve Bank of St. Louis', 'Federal Reserve and FOMC materials', 'BEA', 'BLS', 'U.S. Treasury', 'ECB Statistical Data Warehouse', 'Banque de France Webstat', 'INSEE', 'Eurostat', 'BIS', 'IMF', 'World Bank', 'OECD']],
+  ['Markets and corporate filings', ['SEC EDGAR', 'CFTC Commitments of Traders', 'FINRA', 'Treasury TIC', 'company 10-K / 10-Q / 8-K / S-1 filings', 'Massive Market Data where available, with official or exchange-backed checks']],
+  ['Crypto, regulation and sanctions', ['CoinGecko and CoinDesk for market context', 'DefiLlama for DeFi TVL', 'Glassnode / CryptoQuant when needed', 'OFAC', 'FinCEN', 'Congress.gov', 'Federal Register', 'ESMA', 'EBA', 'ECB']],
+  ['Reference press', ['Reuters', 'Financial Times', 'Wall Street Journal', 'Bloomberg', 'The Economist', 'Barron’s', 'Politico for U.S. policy context', 'Nikkei Asia for APAC angles']],
+];
+---
+
+<EnglishGuidesLayout
+  title="Sources"
+  description="The l0g source doctrine: primary data first, official filings and regulators before aggregators, reference financial press for context, and explicit caveats for estimates."
+  alternateLinks={[{ hreflang: 'en', href: `${site}/en/sources/` }, { hreflang: 'fr', href: `${site}/sources/` }, { hreflang: 'x-default', href: `${site}/sources/` }]}
+>
+  <article class="source-page rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// sources</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
+      Primary sources <span style="color: var(--color-accent)">first</span>
+    </h1>
+    <p class="lede">
+      l0g gives priority to official datasets, filings, central banks, regulators and primary documents. Aggregators and press coverage are useful,
+      but they are not a substitute for the underlying source when a claim depends on a number, a rule or a filing.
+    </p>
+
+    <section class="source-grid">
+      {groups.map(([title, items]) => (
+        <div>
+          <h2>{title}</h2>
+          <ul>
+            {(items as string[]).map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>How l0g uses secondary sources</h2>
+      <p>
+        Reference financial press is used for context, chronology, interviews and market color. When a secondary source reports a specific number or rule,
+        l0g tries to trace it back to the primary release, filing, table or statute.
+      </p>
+    </section>
+
+    <section>
+      <h2>How uncertainty is handled</h2>
+      <p>
+        Estimates, model outputs and unofficial datasets are useful only when labeled as such. l0g avoids presenting them as observed facts.
+        A good source is not only reputable; it must also be the right source for the claim being made.
+      </p>
+    </section>
+  </article>
+</EnglishGuidesLayout>
+
+<style>
+  .source-page { max-width: 62rem; }
+  .lede { margin-top: 1.25rem; color: var(--color-paper); font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.75; border-left: 2px solid var(--color-signal); padding-left: 1rem; }
+  .source-grid { display: grid; gap: 1rem; margin-top: 2.4rem; }
+  @media (min-width: 820px) { .source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .source-grid div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
+  .source-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 700; }
+  .source-page ul { margin-top: 0.8rem; display: grid; gap: 0.45rem; color: var(--color-muted); line-height: 1.55; }
+  .source-page section { margin-top: 2.4rem; }
+  .source-page p { margin-top: 0.8rem; color: var(--color-muted); line-height: 1.75; }
+</style>

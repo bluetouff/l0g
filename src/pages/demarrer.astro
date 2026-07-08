@@ -120,7 +120,12 @@ const jsonLd = {
   description={description}
   ogImageAlt="Démarrer sur l0g : par où commencer, comment lire un chiffre, carte du projet"
   sidebar={false}
->
+
+  alternateLinks={[{ hreflang: 'fr', href: new URL('/demarrer/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/start/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/demarrer/', Astro.site).toString() }]}>
+  <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
+    <a href="/en/start/" class="link-term">English version available →</a>
+  </p>
+
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
   <article class="start-page rise" data-pagefind-body>

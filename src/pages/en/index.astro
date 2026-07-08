@@ -1,83 +1,88 @@
 ---
-import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
+import EnglishGuidesLayout from '../../layouts/EnglishGuidesLayout.astro';
+import { existsSync } from 'node:fs';
 
-const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-const canonical = `${SITE}/en/`;
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const hasApi = existsSync(new URL('./api/index.astro', import.meta.url));
+const hasMcp = existsSync(new URL('./mcp/index.astro', import.meta.url));
+const hasAgentSurface = existsSync(new URL('./agent-surface/index.astro', import.meta.url));
 const cards = [
-  {
-    href: '/en/guides/',
-    label: 'Reference guides',
-    cmd: '$ ls /en/guides',
-    text: 'English versions of l0g reference guides: macro, Fed plumbing, markets, SEC filings, crypto regulation, sanctions and commodities.',
-  },
-  {
-    href: '/en/api/',
-    label: 'Public API',
-    cmd: '$ curl /api/v1/catalog.json',
-    text: 'Static JSON, NDJSON and CSV endpoints for catalogues, claims, evidence graph, risk signals, point-in-time history and integrity checks.',
-  },
-  {
-    href: '/en/mcp/',
-    label: 'MCP server',
-    cmd: '$ npx mcp-remote https://l0g.fr/api/mcp',
-    text: 'Read-only Model Context Protocol access to l0g resources and tools without scraping the website.',
-  },
-  {
-    href: '/en/agent-surface/',
-    label: 'Agent Surface',
-    cmd: '$ curl /agents.json',
-    text: 'Machine-readable contract for agents: discovery, OpenAPI, evidence graph, claims, freshness, integrity and changefeeds.',
-  },
+  { href: '/en/start/', label: 'Start here', desc: 'A short map of what exists in English and what remains French-only.' },
+  { href: '/en/about/', label: 'About l0g', desc: 'What l0g is, who publishes it, and what problem it tries to solve.' },
+  { href: '/en/guides/', label: 'English guides', desc: 'Durable reference guides on macro, credit, markets, crypto and regulation.' },
+  { href: '/en/methodology/', label: 'Methodology', desc: 'How signals are built, how evidence is handled, and what the dashboards do not claim.' },
+  { href: '/en/sources/', label: 'Sources', desc: 'Primary data sources, institutional datasets and reference outlets used by l0g.' },
+  { href: '/en/editorial-protocol/', label: 'Editorial protocol', desc: 'Fact, estimate, inference, scenario: how l0g separates evidence levels and corrections.' },
+  ...(hasApi ? [{ href: '/en/api/', label: 'Public API', desc: 'JSON, NDJSON, OpenAPI, risk snapshots, evidence graph and point-in-time signal history.' }] : []),
+  ...(hasMcp ? [{ href: '/en/mcp/', label: 'MCP server', desc: 'Read-only Model Context Protocol access for agents.' }] : []),
+  ...(hasAgentSurface ? [{ href: '/en/agent-surface/', label: 'Agent Surface', desc: 'Machine-readable contract for claims, sources, integrity, freshness and changefeeds.' }] : []),
 ];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${site}/en/#english-entrypoint`,
+  headline: 'l0g in English',
+  description: 'English entry points for l0g.fr: guides, methodology, sources, editorial protocol, API and MCP documentation.',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  publisher: { '@id': `${site}/#org` },
+};
 ---
 
-<EnglishLayout
+<EnglishGuidesLayout
   title="l0g in English"
-  description="English entry points for l0g.fr: reference guides, public API, MCP server and Agent Surface documentation."
-  canonical={canonical}
+  description="English entry points for l0g.fr: reference guides, methodology, sources, editorial protocol, API and MCP documentation. l0g remains primarily French; this section exposes the durable reference and machine-readable layer."
+  alternateLinks={[{ hreflang: 'en', href: `${site}/en/` }, { hreflang: 'fr', href: `${site}/` }, { hreflang: 'x-default', href: `${site}/` }]}
 >
-  <section class="rise border-b border-dashed border-line pb-10">
-    <p class="mono-label" style="color: var(--color-signal)">$ ls /en</p>
-    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
-      l0g <span style="color: var(--color-accent)">in English</span>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <section class="en-hero rise">
+    <p class="mono-label glow" style="color: var(--color-signal)">$ cd /en</p>
+    <h1 class="mt-5 font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-tight tracking-wider glow">
+      l0g in <span style="color: var(--color-accent)">English</span>
     </h1>
-    <p class="mt-5 max-w-2xl text-muted">
-      l0g.fr is primarily published in French. This English section exposes the parts that matter most to non-French readers and machines: reference guides, the public API, the MCP server and the Agent Surface contract.
+    <p class="mt-5 max-w-2xl text-paper text-lg leading-8">
+      l0g.fr is primarily a French publication. The English section exposes the durable layer: reference guides,
+      methodology, source doctrine, editorial protocol and machine-readable access for agents and data workflows.
+    </p>
+    <p class="mt-4 max-w-2xl text-muted">
+      News articles and most topic pages remain French-only. The English surface is intentionally partial: it covers what needs to be stable, citable and reusable.
     </p>
   </section>
 
-  <section class="en-grid mt-10" data-pagefind-body>
+  <section class="en-grid rise" aria-label="English entry points">
     {cards.map((card) => (
-      <a href={card.href} class="en-card">
-        <span class="mono-label" style="color: var(--color-signal)">{card.cmd}</span>
-        <strong>{card.label}</strong>
-        <span>{card.text}</span>
+      <a class="en-card" href={card.href}>
+        <span class="mono-label">{card.label}</span>
+        <p>{card.desc}</p>
       </a>
     ))}
   </section>
 
-  <section class="mt-12 border-t border-dashed border-line pt-8 text-muted">
-    <p>
-      The rest of the site remains French-first. English pages link back to the French canonical source when relevant, and machine surfaces remain shared across both languages.
+  <section class="en-panel rise">
+    <p class="mono-label glow" style="color: var(--color-signal)">// reuse policy</p>
+    <p class="mt-3 text-paper">
+      Public pages and machine-readable surfaces are meant to be cited, indexed and reused with attribution.
+      l0g prefers primary sources, explicit dates, visible uncertainty and reproducible data surfaces over opaque summaries.
     </p>
   </section>
-</EnglishLayout>
+</EnglishGuidesLayout>
 
 <style>
-  .en-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-  @media (min-width: 760px) { .en-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  .en-card {
-    display: grid;
-    gap: 0.65rem;
-    min-height: 12rem;
+  .en-hero { padding-bottom: 2.4rem; border-bottom: 1px dashed var(--color-line); }
+  .en-grid { display: grid; gap: 1rem; margin-top: 2.6rem; }
+  @media (min-width: 760px) { .en-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .en-card, .en-panel {
+    display: block;
     border: 1px solid var(--color-line);
     border-radius: 10px;
-    background: color-mix(in srgb, var(--color-surface) 58%, transparent);
-    padding: 1.2rem;
-    text-decoration: none;
-    transition: border-color 0.16s, background 0.16s, transform 0.16s;
+    background: color-mix(in srgb, var(--color-surface) 62%, transparent);
+    padding: 1rem;
   }
-  .en-card:hover { border-color: color-mix(in srgb, var(--color-signal) 52%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); transform: translateY(-1px); }
-  .en-card strong { color: var(--color-bright); font-size: 1.28rem; }
-  .en-card span:last-child { color: var(--color-muted); line-height: 1.65; }
+  .en-card { text-decoration: none; transition: border-color 0.16s, background 0.16s, transform 0.16s; }
+  .en-card:hover { border-color: color-mix(in srgb, var(--color-signal) 55%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); transform: translateY(-1px); }
+  .en-card span { color: var(--color-signal); }
+  .en-card p { margin-top: 0.65rem; color: var(--color-muted); line-height: 1.6; font-size: 0.94rem; }
+  .en-panel { margin-top: 2.6rem; max-width: 52rem; }
 </style>

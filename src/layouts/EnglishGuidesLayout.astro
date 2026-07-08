@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import { existsSync } from 'node:fs';
+
+const hasPage = (relativePath: string) => existsSync(new URL(relativePath, import.meta.url));
 
 type AlternateLink = { hreflang: string; href: string };
 
@@ -14,8 +17,8 @@ interface Props {
 }
 
 const {
-  title = 'l0g English',
-  description = 'English entry points for l0g.fr: reference guides, API, MCP server and Agent Surface.',
+  title = 'l0g in English',
+  description = 'English entry points from l0g.fr: reference guides, methodology, sources, API, MCP and machine-readable risk data.',
   ogType = 'website',
   ogImage = '/og-default.png',
   ogImageAlt,
@@ -29,7 +32,24 @@ const fullTitle = `${title} · l0g.fr`;
 const socialImageAlt = ogImageAlt ?? `${fullTitle} — l0g.fr social card`;
 const year = new Date().getFullYear();
 const path = Astro.url.pathname;
-const active = (href: string) => path === href || path.startsWith(href.endsWith('/') ? href : `${href}/`);
+const norm = (s: string) => (s.length > 1 ? s.replace(/\/$/, '') : s);
+const isCurrentHref = (href: string) => {
+  const p = norm(path);
+  const h = norm(href);
+  return h === '/' ? p === '/' : p === h || p.startsWith(h + '/');
+};
+
+const navItems = [
+  { href: '/en/', label: 'overview' },
+  { href: '/en/start/', label: 'start' },
+  { href: '/en/about/', label: 'about' },
+  { href: '/en/methodology/', label: 'methodology' },
+  { href: '/en/sources/', label: 'sources' },
+  { href: '/en/guides/', label: 'guides' },
+  ...(hasPage('../pages/en/api/index.astro') ? [{ href: '/en/api/', label: 'api' }] : []),
+  ...(hasPage('../pages/en/mcp/index.astro') ? [{ href: '/en/mcp/', label: 'mcp' }] : []),
+  ...(hasPage('../pages/en/agent-surface/index.astro') ? [{ href: '/en/agent-surface/', label: 'agent surface' }] : []),
+];
 
 const siteJsonLd = {
   '@context': 'https://schema.org',
@@ -113,7 +133,7 @@ const siteJsonLd = {
     <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
       <header>
         <div class="header-top">
-          <a href="/en/" class="brand" aria-label="l0g English section">
+          <a href="/en/" class="brand" aria-label="l0g in English">
             <span class="brand-mark">
               <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
             </span>
@@ -122,11 +142,10 @@ const siteJsonLd = {
           </a>
         </div>
 
-        <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="English section navigation">
-          <a href="/en/guides/" class="nav-tab" aria-current={active('/en/guides/') ? 'page' : undefined}>guides</a>
-          <a href="/en/api/" class="nav-tab" aria-current={active('/en/api/') ? 'page' : undefined}>api</a>
-          <a href="/en/mcp/" class="nav-tab" aria-current={active('/en/mcp/') ? 'page' : undefined}>mcp</a>
-          <a href="/en/agent-surface/" class="nav-tab" aria-current={active('/en/agent-surface/') ? 'page' : undefined}>agent surface</a>
+        <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="English navigation">
+          {navItems.map((item) => (
+            <a href={item.href} class="nav-tab" aria-current={isCurrentHref(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
           <a href="/" class="nav-tab">french site</a>
         </nav>
       </header>
@@ -139,18 +158,19 @@ const siteJsonLd = {
     <footer class="site-footer">
       <div class="footer-grad" aria-hidden="true"></div>
       <div class="footer-inner mx-auto max-w-6xl px-5">
-        <p class="mono-label">// l0g English section</p>
+        <p class="mono-label">// l0g in English</p>
         <p class="en-footer-text">
-          l0g.fr is primarily published in French. The English section currently covers reference guides, the public API, the MCP server and Agent Surface documentation.
+          l0g.fr is primarily published in French. This English section covers the durable reference layer:
+          guides, methodology, sources, editorial protocol and machine-readable access.
         </p>
         <p class="en-footer-links">
-          <a href="/en/guides/" class="link-term">Guides</a>
+          <a href="/en/start/" class="link-term">Start</a>
           <span aria-hidden="true"> · </span>
-          <a href="/en/api/" class="link-term">API</a>
+          <a href="/en/guides/" class="link-term">English guides</a>
           <span aria-hidden="true"> · </span>
-          <a href="/en/mcp/" class="link-term">MCP</a>
+          <a href="/en/methodology/" class="link-term">Methodology</a>
           <span aria-hidden="true"> · </span>
-          <a href="/en/agent-surface/" class="link-term">Agent Surface</a>
+          <a href="/en/sources/" class="link-term">Sources</a>
           <span aria-hidden="true"> · </span>
           <a href="/" class="link-term">l0g.fr</a>
         </p>

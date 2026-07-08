@@ -41,7 +41,12 @@ const trustItems = [
   title="Sources primaires"
   description="Les institutions que l0g utilise comme points d'ancrage : quoi lire, pourquoi, limites, cadence et liens de vérification."
   sidebar={false}
->
+
+  alternateLinks={[{ hreflang: 'fr', href: new URL('/sources/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/sources/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/sources/', Astro.site).toString() }]}>
+  <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
+    <a href="/en/sources/" class="link-term">English version available →</a>
+  </p>
+
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
   <article class="sources-page rise" data-pagefind-body>

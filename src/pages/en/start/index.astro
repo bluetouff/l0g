@@ -1,0 +1,66 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { existsSync } from 'node:fs';
+
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const hasApi = existsSync(new URL('../api/index.astro', import.meta.url));
+const hasMcp = existsSync(new URL('../mcp/index.astro', import.meta.url));
+const hasAgentSurface = existsSync(new URL('../agent-surface/index.astro', import.meta.url));
+const steps = [
+  ['1', 'Read the reference guides', '/en/guides/', 'Start with the English guides if you want durable primers on macro, markets, SEC filings, crypto regulation and systemic risk.'],
+  ['2', 'Check the methodology', '/en/methodology/', 'Use the methodology page to understand scoring, signal families, limits, uncertainty and the anti-precision doctrine.'],
+  ['3', 'Inspect the source doctrine', '/en/sources/', 'l0g gives priority to official data, filings, central banks, regulators and transparent primary datasets.'],
+  ['4', 'Use machine-readable access', hasApi ? '/en/api/' : '/api/', 'The API exposes JSON, NDJSON, OpenAPI, evidence graph, risk snapshots and signal history for reproducible workflows.'],
+  ['5', 'Connect an agent', hasMcp ? '/en/mcp/' : '/mcp/', 'The MCP server and Agent Surface let agents query claims, sources, changes, freshness and article text without scraping HTML.'],
+];
+---
+
+<EnglishGuidesLayout
+  title="Start here"
+  description="Start using l0g in English: what exists, what remains French-only, where to read guides, how to use the API, and how to understand the methodology."
+  alternateLinks={[{ hreflang: 'en', href: `${site}/en/start/` }, { hreflang: 'fr', href: `${site}/demarrer/` }, { hreflang: 'x-default', href: `${site}/demarrer/` }]}
+>
+  <section class="rise start-hero">
+    <p class="mono-label glow" style="color: var(--color-signal)">$ cat start.md</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
+      Start using <span style="color: var(--color-accent)">l0g</span>
+    </h1>
+    <p class="mt-5 max-w-2xl text-paper text-lg leading-8">
+      l0g is a risk-intelligence site focused on macro, opaque finance, credit, market plumbing, crypto regulation and public data.
+      It remains primarily French, but its stable reference layer is now available in English.
+    </p>
+  </section>
+
+  <section class="flow-list rise" aria-label="Suggested path">
+    {steps.map(([n, title, href, desc]) => (
+      <a class="flow-card" href={href}>
+        <span class="flow-num">{n}</span>
+        <span class="flow-body">
+          <strong>{title}</strong>
+          <span>{desc}</span>
+        </span>
+      </a>
+    ))}
+  </section>
+
+  <section class="note rise">
+    <p class="mono-label glow" style="color: var(--color-signal)">// what remains French-only</p>
+    <p>
+      Most news articles, topic hubs and some dashboards are still published in French. The English section is not a promise of full internationalization;
+      it is a clean entrance to the pages that are meant to be durable, citable and reusable.
+    </p>
+    {hasAgentSurface && <p class="mt-3">For agent workflows, start with <a href="/en/agent-surface/" class="link-term">Agent Surface</a>.</p>}
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .start-hero { padding-bottom: 2rem; border-bottom: 1px dashed var(--color-line); }
+  .flow-list { display: grid; gap: 0.85rem; margin-top: 2.5rem; max-width: 58rem; }
+  .flow-card { display: grid; grid-template-columns: 2.3rem 1fr; gap: 0.9rem; align-items: start; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 60%, transparent); text-decoration: none; }
+  .flow-card:hover { border-color: color-mix(in srgb, var(--color-signal) 55%, transparent); background: color-mix(in srgb, var(--color-signal) 7%, transparent); }
+  .flow-num { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--color-signal) 55%, transparent); color: var(--color-signal); font-family: var(--font-mono); }
+  .flow-body { display: grid; gap: 0.35rem; }
+  .flow-body strong { color: var(--color-bright); }
+  .flow-body span { color: var(--color-muted); line-height: 1.55; }
+  .note { margin-top: 2.5rem; max-width: 52rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-muted); line-height: 1.7; }
+</style>
