@@ -82,7 +82,9 @@ const jsonLd = {
     <div class="en-hero-copy">
       <p class="mono-label glow" style="color: var(--color-signal)">$ open /en</p>
       <h1 class="en-title font-display glow">
-        Risk intelligence, translated where it matters.
+        <span class="title-line">Risk intelligence,</span>
+        <span class="title-line gradient-word">translated</span>
+        <span class="title-line">where it matters.</span>
       </h1>
       <p class="en-lede">
         l0g is a French, open-source risk-intelligence project that maps financial opacity with public data, primary sources and machine-readable evidence. This English layer exposes the durable core: guides, methods, sources, APIs, MCP and replayable risk surfaces.
@@ -193,43 +195,78 @@ status: readable by humans and agents`}</code></pre>
   .en-home-hero {
     position: relative;
     display: grid;
-    gap: 1.5rem;
+    gap: clamp(1rem, 3vw, 2.2rem);
     align-items: stretch;
-    padding: clamp(1.2rem, 4vw, 3rem) 0 1.5rem;
+    padding: clamp(1.35rem, 4vw, 2.7rem);
+    margin-top: .35rem;
+    border: 1px solid transparent;
+    border-radius: 26px;
+    background:
+      linear-gradient(var(--color-ink), var(--color-ink)) padding-box,
+      linear-gradient(135deg,
+        color-mix(in srgb, var(--color-signal) 56%, transparent),
+        color-mix(in srgb, var(--color-accent) 30%, transparent) 52%,
+        color-mix(in srgb, var(--color-amber) 30%, transparent)
+      ) border-box;
+    overflow: hidden;
   }
   .en-home-hero::before {
     content: '';
     position: absolute;
-    inset: -1.2rem -1rem auto -1rem;
-    height: 18rem;
-    z-index: -1;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 16%, transparent);
-    border-radius: 24px;
+    inset: 0;
+    z-index: 0;
     background:
-      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 8%, transparent), transparent 58%),
-      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-line) 28%, transparent) 0 1px, transparent 1px 52px);
-    mask-image: linear-gradient(#000, transparent 88%);
+      radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-signal) 20%, transparent), transparent 22rem),
+      radial-gradient(circle at 83% 12%, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 24rem),
+      radial-gradient(circle at 56% 88%, color-mix(in srgb, var(--color-amber) 10%, transparent), transparent 18rem),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-line) 22%, transparent) 0 1px, transparent 1px 52px),
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-line) 18%, transparent) 0 1px, transparent 1px 52px);
+    mask-image: linear-gradient(90deg, #000, rgba(0,0,0,.82) 60%, rgba(0,0,0,.64));
   }
-  .en-hero-copy { max-width: 54rem; }
+  .en-home-hero::after {
+    content: '';
+    position: absolute;
+    right: 10%;
+    top: -6rem;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+    filter: blur(28px);
+    opacity: .72;
+  }
+  .en-hero-copy, .terminal-card { position: relative; z-index: 1; }
+  .en-hero-copy { max-width: 43rem; }
   .en-title {
-    margin-top: .8rem;
-    max-width: 58rem;
-    font-size: clamp(2.8rem, 8vw, 6.8rem);
-    line-height: .9;
-    letter-spacing: -0.045em;
+    margin-top: .75rem;
+    max-width: 43rem;
+    font-size: clamp(2.25rem, 5.15vw, 4.45rem);
+    line-height: .98;
+    letter-spacing: -0.035em;
+  }
+  .title-line { display: block; }
+  .gradient-word {
+    width: max-content;
+    max-width: 100%;
+    background: linear-gradient(90deg, var(--color-signal), var(--color-accent) 54%, var(--color-amber));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 0 22px color-mix(in srgb, var(--color-signal) 22%, transparent));
   }
   .en-lede {
-    margin-top: 1.35rem;
-    max-width: 50rem;
+    margin-top: 1.25rem;
+    max-width: 42rem;
     color: var(--color-paper);
-    font-size: clamp(1.05rem, 2.2vw, 1.28rem);
-    line-height: 1.68;
+    font-size: clamp(1.02rem, 1.7vw, 1.17rem);
+    line-height: 1.7;
   }
   .en-hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: .75rem;
-    margin-top: 1.25rem;
+    margin-top: 1.2rem;
   }
   .en-cta {
     display: inline-flex;
@@ -248,19 +285,20 @@ status: readable by humans and agents`}</code></pre>
   }
   .en-cta.primary {
     color: var(--color-ink);
-    background: var(--color-signal);
-    border-color: var(--color-signal);
-    box-shadow: 0 0 32px color-mix(in srgb, var(--color-signal) 22%, transparent);
+    background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-accent) 55%, var(--color-signal)));
+    border-color: color-mix(in srgb, var(--color-signal) 75%, transparent);
+    box-shadow: 0 0 34px color-mix(in srgb, var(--color-signal) 28%, transparent);
   }
   .en-cta.ghost { color: var(--color-muted); border-color: var(--color-line); background: transparent; }
   .terminal-card {
     display: grid;
     align-content: start;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line));
+    border: 1px solid color-mix(in srgb, var(--color-signal) 38%, var(--color-line));
     border-radius: 18px;
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 82%, transparent), color-mix(in srgb, var(--color-ink) 72%, transparent)),
-      radial-gradient(circle at 30% 0%, color-mix(in srgb, var(--color-signal) 14%, transparent), transparent 16rem);
+      linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent), color-mix(in srgb, var(--color-ink) 74%, transparent)),
+      radial-gradient(circle at 22% 0%, color-mix(in srgb, var(--color-signal) 18%, transparent), transparent 15rem),
+      radial-gradient(circle at 88% 16%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 12rem);
     overflow: hidden;
     box-shadow: 0 18px 60px color-mix(in srgb, #000 32%, transparent);
   }
@@ -269,7 +307,7 @@ status: readable by humans and agents`}</code></pre>
     gap: .45rem;
     padding: .8rem .95rem;
     border-bottom: 1px solid var(--color-line);
-    background: color-mix(in srgb, var(--color-surface) 62%, transparent);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-signal) 8%, var(--color-surface)), color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)));
   }
   .terminal-top span { width: .62rem; height: .62rem; border-radius: 999px; background: var(--color-muted); opacity: .75; }
   .terminal-top span:nth-child(2) { background: var(--color-amber); }
@@ -280,21 +318,23 @@ status: readable by humans and agents`}</code></pre>
     overflow-x: auto;
     color: var(--color-paper);
     font-family: var(--font-mono);
-    font-size: .86rem;
-    line-height: 1.7;
+    font-size: .84rem;
+    line-height: 1.72;
   }
   .signal-strip {
     display: grid;
     grid-template-columns: 1fr;
     gap: .7rem;
-    margin: 1rem 0 1.8rem;
+    margin: 1.05rem 0 1.8rem;
   }
   .signal-strip span {
     border: 1px solid var(--color-line);
     border-radius: 12px;
     padding: .75rem .9rem;
     color: var(--color-muted);
-    background: color-mix(in srgb, var(--color-surface) 58%, transparent);
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 6%, transparent), transparent),
+      color-mix(in srgb, var(--color-surface) 58%, transparent);
     font-family: var(--font-mono);
     font-size: .78rem;
   }
@@ -310,14 +350,21 @@ status: readable by humans and agents`}</code></pre>
     background: color-mix(in srgb, var(--color-surface) 62%, transparent);
   }
   .primary-card {
+    --card-accent: var(--color-signal);
     position: relative;
     display: grid;
     gap: .65rem;
-    min-height: 17rem;
+    min-height: 16rem;
     padding: 1.1rem;
     overflow: hidden;
     text-decoration: none;
+    border-top-color: color-mix(in srgb, var(--card-accent) 58%, transparent);
+    background:
+      linear-gradient(160deg, color-mix(in srgb, var(--card-accent) 9%, transparent), transparent 52%),
+      color-mix(in srgb, var(--color-surface) 62%, transparent);
   }
+  .primary-card:nth-child(2) { --card-accent: var(--color-accent); }
+  .primary-card:nth-child(3) { --card-accent: var(--color-amber); }
   .primary-card::after {
     content: '';
     position: absolute;
@@ -326,7 +373,7 @@ status: readable by humans and agents`}</code></pre>
     width: 13rem;
     height: 13rem;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+    background: color-mix(in srgb, var(--card-accent) 13%, transparent);
     filter: blur(4px);
   }
   .primary-card:hover, .route-card:hover, .machine-card:hover {
@@ -336,8 +383,8 @@ status: readable by humans and agents`}</code></pre>
   .primary-card strong {
     max-width: 18rem;
     color: var(--color-bright);
-    font-size: clamp(1.35rem, 3vw, 2rem);
-    line-height: 1.05;
+    font-size: clamp(1.32rem, 2.5vw, 1.82rem);
+    line-height: 1.08;
   }
   .primary-card p, .route-card span, .trail-card p, .final-cta p {
     color: var(--color-muted);
@@ -354,7 +401,7 @@ status: readable by humans and agents`}</code></pre>
     text-transform: uppercase;
     letter-spacing: .08em;
   }
-  .primary-card em b { display: block; color: var(--color-signal); font-size: 2.2rem; line-height: 1; letter-spacing: -0.04em; }
+  .primary-card em b { display: block; color: var(--card-accent); font-size: 2.1rem; line-height: 1; letter-spacing: -0.04em; }
   .en-section { margin-top: clamp(2.8rem, 7vw, 5rem); }
   .en-section h2 {
     margin-top: .5rem;
@@ -379,6 +426,12 @@ status: readable by humans and agents`}</code></pre>
   }
   .route-card strong { color: var(--color-bright); }
   .machine-panel, .final-cta { padding: clamp(1rem, 3vw, 1.4rem); }
+  .machine-panel {
+    background:
+      radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 18rem),
+      radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 18rem),
+      color-mix(in srgb, var(--color-surface) 62%, transparent);
+  }
   .machine-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: end; }
   .machine-card {
     display: grid;
@@ -386,6 +439,7 @@ status: readable by humans and agents`}</code></pre>
     padding: .9rem;
     text-decoration: none;
     overflow: hidden;
+    background: color-mix(in srgb, var(--color-ink) 28%, transparent);
   }
   .machine-card span { color: var(--color-bright); font-weight: 700; }
   .machine-card code {
@@ -403,6 +457,7 @@ status: readable by humans and agents`}</code></pre>
   .final-cta {
     background:
       linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent),
+      radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 18rem),
       color-mix(in srgb, var(--color-surface) 62%, transparent);
   }
   .final-cta h2 { margin-top: .55rem; }
@@ -413,7 +468,11 @@ status: readable by humans and agents`}</code></pre>
     .en-split { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
   }
   @media (min-width: 960px) {
-    .en-home-hero { grid-template-columns: minmax(0, 1.18fr) minmax(22rem, .82fr); }
-    .terminal-card { margin-top: 1.2rem; }
+    .en-home-hero { grid-template-columns: minmax(0, 1.02fr) minmax(21rem, .98fr); }
+    .terminal-card { margin-top: 1.05rem; }
+  }
+  @media (max-width: 520px) {
+    .en-home-hero { padding: 1.05rem; }
+    .en-title { font-size: clamp(2.05rem, 14vw, 3.2rem); }
   }
 </style>
