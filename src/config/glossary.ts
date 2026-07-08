@@ -225,6 +225,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
     entries: [
       { sigle: 'WTI', nom: 'West Texas Intermediate', def: "Pétrole brut de référence américain, coté à New York. Avec le Brent, l'un des deux prix de référence mondiaux.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'Brent', nom: 'Brent Crude', def: "Pétrole brut de référence mondial, issu de la mer du Nord et coté à Londres. Avec le WTI, l'un des deux prix de référence du marché pétrolier.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'Cushing', nom: 'Cushing (Oklahoma)', def: "Terminal de stockage et de raccordement de pipelines du centre des États-Unis, avec une capacité d'environ 76 millions de barils. C'est le point de livraison physique du contrat à terme WTI : le prix du WTI est, littéralement, le prix du brut à Cushing. Ses stocks hebdomadaires, publiés par l'EIA, servent de baromètre de tension du marché américain. Le niveau plancher d'exploitation, sous lequel pipelines et transferts entre cuves deviennent difficiles, est estimé autour de 20 millions de barils.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'Contango', nom: 'Contango (report)', def: "Configuration de la courbe à terme où le prix pour livraison lointaine est supérieur au prix comptant. Signale un marché bien approvisionné : il rémunère celui qui stocke le brut aujourd'hui pour le livrer plus tard. Inverse de la backwardation.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'Backwardation', nom: 'Backwardation (déport)', def: "Configuration inverse du contango : le prix comptant est supérieur au prix pour livraison lointaine. Signale un marché tendu, où l'on paie une prime pour disposer du baril tout de suite. Un écart marqué entre les échéances rapprochées (M1-M3) trahit une pénurie physique, souvent liée à des stocks bas à Cushing.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'GNL', nom: 'Gaz naturel liquéfié', def: "Gaz refroidi à l'état liquide pour le transport par méthanier. Permet d'exporter le gaz hors gazoducs." },
       { sigle: 'GPL', nom: 'Gaz de pétrole liquéfié', def: "Mélange de propane et de butane liquéfié sous pression, utilisé pour le chauffage, la cuisson et certains transports. Distinct du GNL." },
       { sigle: 'Chokepoint', nom: 'Point de passage stratégique', def: "Passage maritime étroit par lequel transite une part majeure d'un flux mondial : Ormuz (pétrole, GNL), Malacca, Suez, Panama, Bab el-Mandeb. Sa concentration crée une grande efficacité en temps normal et une vulnérabilité aiguë en cas de blocage, faute de contournement à la hauteur." },
@@ -304,7 +307,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-07';
+export const glossaryUpdatedIso = '2026-07-08';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
