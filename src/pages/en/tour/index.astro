@@ -1,0 +1,53 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const steps = [
+  ['1', 'Read the guides', '/en/guides/', 'Use the English reference guides as durable primers on macro, markets, credit, crypto regulation and public datasets.'],
+  ['2', 'Check the method', '/en/methodology/', 'Before trusting a score, read how l0g separates observation, model output, inference and scenario.'],
+  ['3', 'Inspect the sources', '/en/sources/', 'Primary sources come first: central banks, statistical agencies, regulators, filings and official datasets.'],
+  ['4', 'Use the API', '/en/api/', 'The public machine surface exposes JSON, NDJSON and CSV for agents, RAG, dashboards and backtests.'],
+  ['5', 'Connect via MCP', '/en/mcp/', 'The read-only MCP server lets compatible agents query l0g resources and tools without scraping the site.'],
+  ['6', 'Replay risk', '/en/black-box/', 'The Black Box Recorder keeps point-in-time frames so gaps remain visible instead of being reconstructed after the fact.'],
+  ['7', 'Track changes', '/en/risk-diff/', 'Risk Diff shows what changed across signals, sources, claims and model confidence.'],
+  ['8', 'Map the terms', '/en/glossary/', 'The core glossary defines the vocabulary used across the English guides and machine-readable surfaces.'],
+];
+---
+
+<EnglishLayout
+  title="Guided tour"
+  description="A guided tour of l0g in English: guides, methodology, sources, API, MCP, dashboards, glossary and risk replay surfaces."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/tour/` },
+    { hreflang: 'fr', href: `${SITE}/visite-guidee/` },
+    { hreflang: 'x-default', href: `${SITE}/visite-guidee/` },
+  ]}
+>
+  <article class="tour rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// guided tour</p>
+    <h1 class="tour-title font-display glow">A clean path through l0g.</h1>
+    <p class="tour-lede">
+      l0g is not meant to be consumed like a feed. It is a map: sources, methods, guides, dashboards and machine-readable evidence surfaces.
+      This page gives English readers a sane first route through the project.
+    </p>
+
+    <div class="tour-list">
+      {steps.map(([n, title, href, text]) => (
+        <a class="tour-step" href={href}>
+          <span>{n}</span>
+          <strong>{title}</strong>
+          <p>{text}</p>
+        </a>
+      ))}
+    </div>
+  </article>
+</EnglishLayout>
+
+<style>
+  .tour-title { margin-top: .8rem; font-size: clamp(2.2rem, 6vw, 4.5rem); line-height: .98; }
+  .tour-lede { margin-top: 1.15rem; max-width: 49rem; color: var(--color-paper); font-size: 1.05rem; line-height: 1.7; }
+  .tour-list { display: grid; gap: .9rem; margin-top: 2rem; }
+  .tour-step { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); text-decoration: none; }
+  .tour-step span { grid-row: span 2; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--color-signal) 40%, transparent); color: var(--color-signal); font-family: var(--font-mono); }
+  .tour-step strong { color: var(--color-bright); }
+  .tour-step p { margin: 0; color: var(--color-muted); line-height: 1.55; }
+</style>

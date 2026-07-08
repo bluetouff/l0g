@@ -1,0 +1,55 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const principles = [
+  ['Public data first', 'Prefer primary data, official filings and institutional sources over commentary and recycled narratives.'],
+  ['No magic score', 'A risk score is a display normalization, not a probability, prophecy or universal index.'],
+  ['Traceability beats confidence theater', 'Dates, sources, caveats and corrections matter more than confident prose.'],
+  ['Machines deserve clean inputs', 'If agents will read the web, give them canonical URLs, claims, evidence graphs, hashes and explicit limits.'],
+  ['No tracking tax', 'The site favors static pages, open data, no unnecessary third-party calls and no behavioral surveillance.'],
+];
+---
+
+<EnglishLayout
+  title="Manifesto"
+  description="The l0g manifesto in English: public data, source discipline, machine-readable evidence, no magic score and no tracking theater."
+  alternateLinks={[
+    { hreflang: 'en', href: `${SITE}/en/manifesto/` },
+    { hreflang: 'fr', href: `${SITE}/manifeste/` },
+    { hreflang: 'x-default', href: `${SITE}/manifeste/` },
+  ]}
+>
+  <article class="manifesto rise" data-pagefind-body>
+    <p class="mono-label glow" style="color: var(--color-signal)">// manifesto</p>
+    <h1 class="manifesto-title font-display glow">Make opaque finance readable.</h1>
+    <p class="manifesto-lede">
+      l0g is a risk-intelligence workshop built on a simple rule: useful analysis must be queryable, dated, sourced,
+      revisable and contradictable. The project maps economic opacity with public sources, explicit methods and machine-readable surfaces.
+    </p>
+
+    <section class="manifesto-grid" aria-label="Principles">
+      {principles.map(([title, text]) => (
+        <article class="manifesto-card">
+          <strong>{title}</strong>
+          <p>{text}</p>
+        </article>
+      ))}
+    </section>
+
+    <p class="manifesto-note">
+      l0g is not investment advice. It is an attempt to make narratives inspectable: what was observed, where it came from,
+      how it was transformed, what changed, and what remains uncertain.
+    </p>
+  </article>
+</EnglishLayout>
+
+<style>
+  .manifesto-title { margin-top: .8rem; font-size: clamp(2.2rem, 6vw, 4.6rem); line-height: .98; }
+  .manifesto-lede { margin-top: 1.15rem; max-width: 48rem; color: var(--color-paper); font-size: 1.07rem; line-height: 1.72; }
+  .manifesto-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+  .manifesto-card { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); }
+  .manifesto-card strong { color: var(--color-signal); }
+  .manifesto-card p { margin-top: .45rem; color: var(--color-muted); line-height: 1.6; }
+  .manifesto-note { margin-top: 1.6rem; max-width: 46rem; color: var(--color-muted); line-height: 1.65; }
+  @media (min-width: 760px) { .manifesto-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
