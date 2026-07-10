@@ -148,7 +148,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'ETF', nom: 'Exchange-Traded Fund', def: "Fonds indiciel coté en bourse, qui réplique un indice ou un panier d'actifs et se négocie comme une action." },
       { sigle: 'PER', nom: 'Price-Earnings Ratio', def: "Rapport entre le cours d'une action ou d'un indice et son bénéfice par action. Mesure combien les investisseurs paient pour un euro de bénéfice courant. Élevé, il traduit soit de fortes attentes de croissance, soit une survalorisation." },
       { sigle: 'CAPE', nom: 'Cyclically Adjusted Price-to-Earnings', def: "Ratio de valorisation popularisé par Robert Shiller, qui rapporte le prix à la moyenne des bénéfices sur dix ans corrigés de l'inflation, pour lisser le cycle. Utile pour comparer les valorisations dans le temps : un CAPE très élevé annonce un rendement futur médiocre à long terme, sans donner de calendrier. Sommets historiques : 32,6 en 1929, 44,2 en 2000." },
-      { sigle: 'Yen carry', nom: 'Yen carry trade', def: "Stratégie qui consiste à emprunter en yen, devise historiquement peu rémunérée, pour acheter des actifs ou devises offrant un rendement supérieur. Fonctionne tant que le yen reste faible et que la volatilité demeure contenue." },
+      { sigle: 'Yen carry', nom: 'Yen carry trade', def: "Stratégie qui consiste à emprunter en yen, devise historiquement peu rémunérée, pour acheter des actifs ou devises offrant un rendement supérieur. Fonctionne tant que le yen reste faible et que la volatilité demeure contenue.", guide: '/guides/lire-le-carry-trade/' },
+      { sigle: 'Carry trade', nom: 'Portage', def: "Stratégie qui emprunte dans une devise à bas rendement pour placer dans un actif mieux rémunéré et empocher l'écart. Elle revient à vendre implicitement de la volatilité : un revenu régulier tant que le calme règne, une perte brutale quand le change se retourne. Le yen carry en est le cas le plus connu.", guide: '/guides/lire-le-carry-trade/' },
+      { sigle: 'Devise de financement', nom: 'Funding currency', def: "Monnaie empruntée pour financer un portage, choisie pour son faible taux d'intérêt et sa stabilité : historiquement le yen et le franc suisse, le dollar durant les années de taux zéro. Sa remontée soudaine, en taux ou en change, est le principal déclencheur d'un débouclage.", guide: '/guides/lire-le-carry-trade/' },
       { sigle: 'LME metals', nom: 'London Metal Exchange', def: "Bourse londonienne des métaux industriels. Son contrat cuivre sert de référence mondiale pour le prix physique et financier du cuivre." },
       { sigle: 'ICSG', nom: 'International Copper Study Group', def: "Organisation intergouvernementale qui publie les statistiques mondiales de production, d'usage, de stocks et de prix du cuivre." },
       { sigle: 'SX-EW', nom: 'Solvent Extraction Electrowinning', def: "Procédé hydrométallurgique d'extraction du cuivre : le minerai est lixivié, souvent avec de l'acide sulfurique, puis le métal est récupéré par électrolyse." },
@@ -507,6 +509,7 @@ const yenCarryArticles: GlossaryGraphLink[] = [
 ];
 
 const yenCarryGuides: GlossaryGraphLink[] = [
+  { label: 'Lire le carry trade', href: '/guides/lire-le-carry-trade/', detail: 'Mécanique du portage, effet de levier et risque de débouclage.', kind: 'guide' },
   { label: 'Lire le COT de la CFTC', href: '/guides/lire-cot-cftc/', detail: 'Positionnement futures, catégories de traders et limites.', kind: 'guide' },
   { label: 'Lire le dot plot et le SEP', href: '/guides/lire-le-dot-plot-sep/', detail: 'Trajectoire de taux dollar et différentiel de rendement.', kind: 'guide' },
 ];
