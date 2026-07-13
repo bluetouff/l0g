@@ -1,8 +1,8 @@
 ---
 title: "La migration du risque de crédit : hors des banques, hors du regard"
 description: "Depuis 2008, la réglementation a rendu les banques plus solides. Mais le risque de crédit n'a pas diminué, il a déménagé : la finance non bancaire dépasse désormais la moitié des actifs financiers mondiaux, environ 250 000 milliards de dollars. Synthèse d'un déplacement, des cachettes du risque au re-couplage par les banques, et du débat qui divise les régulateurs : système plus sûr, ou seulement moins lisible ?"
-pubDate: 2026-07-11
-updatedDate: 2026-07-11
+pubDate: 2026-07-13T04:37:47+02:00
+updatedDate: 2026-07-13T04:37:47+02:00
 tags: ["risque", "crédit", "banques", "crédit privé", "shadow banking", "régulation"]
 draft: false
 ---

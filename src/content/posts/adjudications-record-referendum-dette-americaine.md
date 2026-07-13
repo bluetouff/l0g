@@ -1,8 +1,8 @@
 ---
 title: "Adjudications record : le référendum hebdomadaire sur la dette américaine"
 description: "Le 9 juillet 2026, le Trésor a placé son obligation à 30 ans au plus haut rendement depuis 2007, avec un deuxième tail consécutif mais une demande étrangère solide. Comment lire la bande d'adjudication, ce référendum permanent sur la capacité de l'Amérique à financer des déficits record pendant que la Fed, l'étranger et le basis trade se retirent."
-pubDate: 2026-07-10
-updatedDate: 2026-07-10
+pubDate: 2026-07-10T19:44:38+02:00
+updatedDate: 2026-07-10T19:44:38+02:00
 tags: ["macro", "dette", "taux", "trésor us", "banques centrales"]
 draft: false
 ---

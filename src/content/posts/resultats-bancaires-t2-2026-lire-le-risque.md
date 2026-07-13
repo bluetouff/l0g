@@ -1,8 +1,8 @@
 ---
 title: "Résultats bancaires du T2 : lire le risque derrière le bénéfice"
 description: "Mardi 14 juillet, cinq géants de Wall Street ouvrent la saison des résultats avec des bénéfices attendus en forte hausse. Mais le dépassement du consensus est la partie la moins instructive. Le vrai signal est dans la marge d'intérêt, la direction des provisions et surtout l'exposition croissante des banques au crédit privé. Grille de lecture au prisme du risque, adossée au guide solidité bancaire."
-pubDate: 2026-07-11
-updatedDate: 2026-07-11
+pubDate: 2026-07-12T13:22:47+02:00
+updatedDate: 2026-07-12T13:22:47+02:00
 tags: ["banques", "résultats", "risque", "crédit privé", "fed", "marchés"]
 draft: false
 ---

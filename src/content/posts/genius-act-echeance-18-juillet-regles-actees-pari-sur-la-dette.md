@@ -1,8 +1,8 @@
 ---
 title: "GENIUS Act : l'échéance du 18 juillet, entre règles actées et pari sur la dette"
 description: "Le 18 juillet 2026, un an après sa promulgation, le GENIUS Act arrive à l'échéance de ses règles d'application : six agences fédérales finalisent le cadre des stablecoins. Ce qui est acté (réserves à 100 %, bons du Trésor courts, interdiction de rémunérer) et ce qui reste un pari (une vague de demande de dette, le sort de Tether, le risque de ruée). Analyse rigoureuse, du fait au scénario."
-pubDate: 2026-07-11
-updatedDate: 2026-07-11
+pubDate: 2026-07-11T15:08:09+02:00
+updatedDate: 2026-07-11T15:08:09+02:00
 tags: ["stablecoins", "crypto", "régulation", "dette", "trésor us"]
 draft: false
 ---

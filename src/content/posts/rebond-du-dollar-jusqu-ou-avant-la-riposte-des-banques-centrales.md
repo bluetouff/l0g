@@ -1,8 +1,8 @@
 ---
 title: "Rebond du dollar : jusqu'où avant la riposte des banques centrales ?"
 description: "Le DXY a gagné 2,3 % en juin 2026 et touché un plus haut de treize mois après le dot plot hawkish de la Fed. Le yen campe au-delà de 160 malgré 11 700 milliards de yens d'intervention, la BCE et la BoJ remontent leurs taux. Anatomie d'un rebond, et des ripostes possibles."
-pubDate: 2026-07-08
-updatedDate: 2026-07-08
+pubDate: 2026-07-08T09:33:24+02:00
+updatedDate: 2026-07-08T09:33:24+02:00
 tags: ["macro", "dollar", "fed", "banques centrales", "yen", "taux"]
 draft: false
 ---

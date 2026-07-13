@@ -1,8 +1,8 @@
 ---
 title: "Carry trade yen : la mèche est désormais dans les obligations japonaises"
 description: "Le rendement du JGB 10 ans a touché 2,88 % le 9 juillet 2026, un plus haut de près de trente ans, sur fond de plan d'investissement à 370 000 milliards de yens. Pourquoi une envolée des taux longs japonais menace le portage yen, le financement caché des marchés mondiaux, et la leçon du précédent d'août 2024."
-pubDate: 2026-07-10
-updatedDate: 2026-07-10
+pubDate: 2026-07-10T16:55:49+02:00
+updatedDate: 2026-07-10T16:55:49+02:00
 tags: ["yen", "boj", "carry trade", "jgb", "taux", "macro", "marchés"]
 draft: false
 ---

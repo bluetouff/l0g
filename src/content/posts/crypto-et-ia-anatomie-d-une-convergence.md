@@ -1,8 +1,8 @@
 ---
 title: "Crypto et IA : anatomie d'une convergence, entre plomberie réelle et casino narratif"
 description: "Les deux technologies phares de la décennie convergent. Derrière le mot-valise, une réalité à deux visages : d'un côté une plomberie qui fonctionne déjà (agents qui paient en stablecoins, compute décentralisé, vérification cryptographique), de l'autre un casino de jetons spéculatifs qui s'est effondré en 2025. Cartographie rigoureuse, acteurs, cadre réglementaire, et la ligne de partage entre le réel et le mirage. Avec références académiques."
-pubDate: 2026-07-11
-updatedDate: 2026-07-11
+pubDate: 2026-07-11T16:33:45+02:00
+updatedDate: 2026-07-11T16:33:45+02:00
 tags: ["crypto", "ia", "stablecoins", "régulation", "marchés", "tech"]
 draft: false
 ---

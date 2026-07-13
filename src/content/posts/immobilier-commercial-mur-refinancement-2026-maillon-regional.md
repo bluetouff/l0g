@@ -1,8 +1,8 @@
 ---
 title: "Immobilier commercial : le mur de refinancement de 2026, et le maillon régional"
 description: "Près de 1 000 milliards de dollars de dette immobilière commerciale arrivent à échéance en 2026, souscrite à 3-4 % et à refinancer à 6-7 %, contre des immeubles qui valent 20 à 40 % de moins. L'épicentre est le bureau, la transmission passe par les banques régionales, surexposées. Anatomie d'un risque à retardement, entre contenu et contagieux."
-pubDate: 2026-07-11
-updatedDate: 2026-07-11
+pubDate: 2026-07-13T02:54:26+02:00
+updatedDate: 2026-07-13T02:54:26+02:00
 tags: ["immobilier", "banques", "crédit", "risque", "marchés"]
 draft: false
 ---

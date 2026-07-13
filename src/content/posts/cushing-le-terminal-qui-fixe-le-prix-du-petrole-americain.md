@@ -1,8 +1,8 @@
 ---
 title: "Cushing : le terminal de l'Oklahoma qui fixe le prix du pétrole américain"
 description: "Les cuves de Cushing, point de livraison du contrat WTI, sont tombées à environ 19,7 millions de barils fin juin 2026, tout près de leur plancher d'exploitation. Pédagogie de ce carrefour de pipelines, lecture des données EIA et scénarios, dont celui d'une Chine qui repasserait à l'achat."
-pubDate: 2026-07-08
-updatedDate: 2026-07-08
+pubDate: 2026-07-08T08:44:07+02:00
+updatedDate: 2026-07-08T08:44:07+02:00
 tags: ["pétrole", "matières premières", "macro", "wti", "chine"]
 draft: false
 ---

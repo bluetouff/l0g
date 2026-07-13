@@ -1,8 +1,8 @@
 ---
 title: "Basis trade : au plus haut selon la Fed, moribond selon le marché"
 description: "Le 22 juin 2026, une note de la Réserve fédérale a chiffré le pari des hedge funds sur la dette américaine : un basis trade à 830 milliards de dollars, près du double de son pic de 2020. Au même moment, les praticiens le disent en perte de vitesse. Deux lectures d'un même arbitrage, et pourquoi l'écart compte."
-pubDate: 2026-07-10
-updatedDate: 2026-07-10
+pubDate: 2026-07-10T17:29:08+02:00
+updatedDate: 2026-07-10T17:29:08+02:00
 tags: ["macro", "marchés", "banques centrales", "régulation", "liquidité"]
 draft: false
 ---

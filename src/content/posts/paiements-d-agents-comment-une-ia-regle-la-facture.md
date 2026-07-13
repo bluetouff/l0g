@@ -1,8 +1,8 @@
 ---
 title: "Paiements d'agents : comment une IA règle la facture, et qui tient les rails"
 description: "Un agent d'IA paie désormais seul, en stablecoins, en dessous du coût d'une transaction par carte. Sous cette plomberie discrète, la mécanique du protocole x402 qui ressuscite le code HTTP 402, la bataille pour les standards (Coinbase, Google AP2, Visa, Mastercard) qui est en réalité une pile complémentaire, la dépendance à l'USDC, et une sécurité encore mal cartographiée. Le deep-dive du vecteur le plus solide de la convergence crypto-IA."
-pubDate: 2026-07-11
-updatedDate: 2026-07-11
+pubDate: 2026-07-12T06:44:08+02:00
+updatedDate: 2026-07-12T06:44:08+02:00
 tags: ["crypto", "ia", "stablecoins", "paiements", "tech"]
 draft: false
 ---
