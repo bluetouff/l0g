@@ -49,4 +49,22 @@ const guidesEn = defineCollection({
   }),
 });
 
-export const collections = { posts, guides, guidesEn };
+const postsEn = defineCollection({
+  // Versions anglaises d'articles d'analyse sélectionnés, même logique que guidesEn.
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts-en' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    ogImage: z.string().optional(),
+    // Slug de l'article français source, ex: financement-circulaire-ia.
+    sourceArticle: z.string(),
+    // Date de révision de l'article français au moment de la traduction.
+    sourceUpdatedDate: z.coerce.date(),
+  }),
+});
+
+export const collections = { posts, guides, guidesEn, postsEn };

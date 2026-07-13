@@ -5,6 +5,8 @@ import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
 const guideCount = englishGuides.length;
+const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
+const analysisCount = englishPosts.length;
 
 const primaryCards = [
   {
@@ -34,6 +36,9 @@ const primaryCards = [
 ];
 
 const routes = [
+  ...(analysisCount > 0
+    ? [{ href: '/en/analysis/', label: `${analysisCount} analysis pieces`, text: 'Sourced, antithesis-tested essays on AI finance, credit plumbing and systemic risk.' }]
+    : []),
   { href: '/en/start/', label: 'Start here', text: 'A fast orientation page for non-French readers.' },
   { href: '/en/tour/', label: 'Guided tour', text: 'A visual map of the site and its risk surfaces.' },
   { href: '/en/about/', label: 'About', text: 'What l0g is, what it refuses, and why it exists.' },

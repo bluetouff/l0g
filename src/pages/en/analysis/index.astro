@@ -1,0 +1,154 @@
+---
+import { getCollection } from 'astro:content';
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { readingTime } from '../../../lib/reading-time.ts';
+
+const all = (await getCollection('postsEn', ({ data }) => !data.draft)).sort((a, b) => {
+  const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
+  const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
+  return db - da;
+});
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+const items = all.map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  date: p.data.updatedDate ?? p.data.pubDate,
+  tag: p.data.tags[0],
+  rt: readingTime(p.body),
+}));
+
+const total = items.length;
+const canonical = new URL('/en/analysis/', Astro.site).toString();
+const alternateLinks = [
+  { hreflang: 'en', href: canonical },
+  { hreflang: 'fr', href: new URL('/', Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL('/', Astro.site).toString() },
+];
+---
+
+<EnglishGuidesLayout
+  title="English analysis"
+  description="English versions of selected l0g analysis pieces: sourced, evidence-graded essays on AI finance, credit plumbing, shadow banking and the machinery of systemic risk."
+  canonical={canonical}
+  alternateLinks={alternateLinks}
+>
+  <section class="rise border-b border-dashed border-line pb-10">
+    <p class="mono-label" style="color: var(--color-signal)">$ ls /en/analysis</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
+      English <span style="color: var(--color-accent)">analysis</span>
+    </h1>
+    <p class="mt-5 max-w-xl text-muted">
+      Selected l0g analysis pieces translated from the French corpus: sourced, antithesis-tested essays
+      on the plumbing of finance and systemic risk. This English section is intentionally curated, not exhaustive:
+      the rest of l0g.fr remains primarily French.
+      {total} {total === 1 ? 'piece is' : 'pieces are'} currently available in English.
+    </p>
+  </section>
+
+  {
+    total === 0 ? (
+      <p class="mt-10 text-muted">No English analysis is published yet.</p>
+    ) : (
+      <section class="cat rise">
+        {items.map((p, i) => (
+          <a href={`/en/analysis/${p.id}/`} class="en-guide-card">
+            <span class="en-guide-index mono-label" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="en-guide-rail" aria-hidden="true"></span>
+            <span class="en-guide-body">
+              <span class="en-guide-meta mono-label">
+                <time datetime={p.date.toISOString()}>{fmt(p.date)}</time>
+                <span aria-hidden="true">·</span>
+                <span>{p.rt} min read</span>
+                {p.tag && <span class="topic-chip">{p.tag}</span>}
+              </span>
+              <span class="en-guide-title">{p.title}</span>
+              <span class="en-guide-desc">{p.description}</span>
+            </span>
+            <span class="en-guide-arrow" aria-hidden="true">›</span>
+          </a>
+        ))}
+      </section>
+    )
+  }
+</EnglishGuidesLayout>
+
+<style>
+  .cat { padding-top: 2.6rem; }
+  .en-guide-card {
+    --a: var(--color-signal);
+    display: grid;
+    grid-template-columns: auto 2px 1fr auto;
+    align-items: start;
+    column-gap: 1rem;
+    padding: 1.45rem 0.85rem 1.45rem 0.25rem;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 8px;
+    transition: background 0.16s;
+  }
+  .en-guide-card:hover { background: color-mix(in srgb, var(--a) 7%, transparent); }
+  .en-guide-index {
+    min-width: 1.8rem;
+    padding-top: 0.2rem;
+    color: var(--color-line-strong);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.16s;
+  }
+  .en-guide-card:hover .en-guide-index { color: var(--a); }
+  .en-guide-rail {
+    align-self: stretch;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--a) 30%, transparent);
+    transition: background 0.16s;
+  }
+  .en-guide-card:hover .en-guide-rail { background: var(--a); }
+  .en-guide-body { min-width: 0; }
+  .en-guide-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; color: var(--a); }
+  .topic-chip {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--a);
+    padding: 0.1rem 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+    background: color-mix(in srgb, var(--a) 12%, transparent);
+    border-radius: 999px;
+  }
+  .en-guide-title {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--color-bright);
+    transition: color 0.16s;
+  }
+  .en-guide-card:hover .en-guide-title { color: var(--a); }
+  .en-guide-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+  .en-guide-arrow {
+    align-self: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-line-strong);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.16s, transform 0.16s, color 0.16s;
+  }
+  .en-guide-card:hover .en-guide-arrow { opacity: 1; transform: translateX(0); color: var(--a); }
+  @media (max-width: 640px) {
+    .en-guide-card { grid-template-columns: auto 2px 1fr; }
+    .en-guide-arrow { display: none; }
+  }
+</style>

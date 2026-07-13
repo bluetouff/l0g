@@ -1,0 +1,95 @@
+---
+title: "AI and productivity: between measured gains and assumed effects"
+description: "Controlled studies show real and sometimes spectacular productivity gains on certain tasks. Yet these gains stay invisible in the macro statistics and in most corporate deployments. An objective review of the evidence, from the isolated task to the whole economy, and of the employment effects still to be untangled."
+pubDate: 2026-07-13T14:36:00+02:00
+updatedDate: 2026-07-13T14:36:00+02:00
+tags: ["ai", "productivity", "labour", "macro", "risk"]
+draft: false
+sourceArticle: "ia-et-productivite-entre-gains-mesures-et-effets-supposes"
+sourceUpdatedDate: 2026-07-06
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+Few subjects concentrate as many promises and as little hindsight as the productivity of generative artificial intelligence. On one side, a narrative of imminent rupture, quantified in points of GDP. On the other, a body of empirical studies that, read without filter, tells a more nuanced story: real gains on specific tasks, a very uneven frontier of competence, and a macroeconomic signal that is for now nowhere to be found. Sorting it out means distinguishing three scales, the task, the firm and the economy, which do not say the same thing.
+
+## In the lab, real gains
+
+Let us start with what research establishes most solidly: on isolated, measurable tasks, generative-AI assistance improves productivity, often markedly. Three controlled experiments stand as references.
+
+On software development, an experiment with GitHub Copilot saw the assisted group implement an HTTP server in JavaScript 55.8% faster than the control group. On customer support, the study by Brynjolfsson, Li and Raymond, covering 5,172 agents at a Fortune 500 firm, measures a 14% rise in the number of cases resolved per hour, with a far stronger effect, on the order of 34%, among the least experienced agents. On professional writing, the experiment by Noy and Zhang, published in Science, exposed 453 professionals to ChatGPT: assisted writers worked 0.8 standard deviations faster and produced texts rated 0.4 standard deviations better by blind evaluators.
+
+<InfographicBars
+  title="In controlled experiments, clear gains"
+  subtitle="Measured effect of AI assistance on isolated tasks."
+  items={[
+    { label: "Coding, isolated task (GitHub Copilot)", value: 55.8, valueLabel: "+55.8% speed", tone: "signal" },
+    { label: "Consulting, tasks inside the frontier (BCG)", value: 25.1, valueLabel: "+25.1% speed", tone: "signal" },
+    { label: "Customer support, cases/hour (Brynjolfsson)", value: 14, valueLabel: "+14%", tone: "blue" },
+  ]}
+  note="Different metrics (speed, throughput): compare with caution."
+  source="Sources: Peng et al. 2023; Dell'Acqua et al. (Organization Science 2025); Brynjolfsson, Li and Raymond."
+  caption="On well-scoped tasks, the gains are real and sometimes large. They benefit the least experienced workers most, which **compresses** the performance gap. Sources: cited RCTs."
+/>
+
+One result recurs in this work and deserves emphasis: it is the lowest-performing workers who gain the most. AI compresses the distribution of performance rather than widening it, bringing beginners closer to experts on standardised tasks.
+
+## An uneven frontier, and a mirage of speed
+
+These gains, however, have a deceptive geometry. The study by Dell'Acqua, Mollick, Lakhani and co-authors, run with 758 Boston Consulting Group consultants, introduced an image that has become central: the "jagged technological frontier". Inside AI's zone of competence, across 18 realistic tasks, assisted consultants did 12.2% more tasks, 25.1% faster, with higher quality. But on a complex task chosen outside that zone, assisted consultants were 19% less likely to produce a correct answer. The same tool helps or harms depending on whether the task falls on the right side of a frontier the user cannot see.
+
+To this unevenness is added a trap of perception. In 2025, the evaluation body METR ran a controlled experiment on 16 experienced open-source developers, handling 246 real tasks on large code repositories. A counter-intuitive result: with AI tools, they took 19% longer. More striking still, afterwards these same developers estimated they had been 20% faster. The gap between felt speed and real speed is a warning sign for any firm steering its gains by guesswork. The result's reach stays narrow, seasoned developers on mature codebases, but it reminds us that lab gains do not transfer mechanically to every context.
+
+## The productivity paradox, 2026 edition
+
+If task gains are real, they should eventually show up in the aggregate figures. That is where the shoe pinches. The reference estimate, Daron Acemoglu's in "The Simple Macroeconomics of AI", caps AI's effect at a rise in total factor productivity of at most 0.53 to 0.66% over ten years, on the order of 0.05 to 0.07 point a year. A modest order of magnitude, far from the promised growth leap. Acemoglu adds that this figure could even be overstated, because the early evidence comes from easy-to-learn tasks, while hard tasks, context-rich and with no objective measure of success, resist more.
+
+This gap between visible micro gains and an invisible macro effect has a name: the Solow paradox, from the economist's 1987 line, "you can see the computer age everywhere but in the productivity statistics". The history of electrification and computing offers two opposing readings of this lag, which we return to in conclusion. For now, keep the raw fact: in 2026, no aggregate productivity boom attributable to AI is visible in the data.
+
+## The corporate chasm
+
+Between the task and the economy there is the organisation, and that is where the promise most often gets lost. The MIT report, "The GenAI Divide: State of AI in Business 2025", built from more than 300 initiatives, 52 interviews and 153 executive responses, reaches a severe finding: about 95% of generative-AI pilot projects produce no measurable impact on the income statement, and only about 5% actually accelerate revenue.
+
+The report also documents a wide usage gap. While only 40% of firms have an official subscription to a large language model, 90% of surveyed employees say they use personal tools like ChatGPT or Claude for their work every day. This "shadow AI" signals massive but disorganised adoption, where individual gains do not rise to the firm level for lack of integration into processes.
+
+<InfographicBars
+  title="Massive adoption, tiny measured value"
+  subtitle="The great divide of AI in business (MIT report, 2025)."
+  items={[
+    { label: "Employees using AI daily (personal use)", value: 90, valueLabel: "90%", tone: "signal" },
+    { label: "Firms with an official LLM subscription", value: 40, valueLabel: "40%", tone: "amber" },
+    { label: "Pilots with a measurable impact on the bottom line", value: 5, valueLabel: "≈ 5%", tone: "accent" },
+  ]}
+  note="The gap between usage and value is the real deployment problem."
+  source="Source: MIT NANDA, 'The GenAI Divide: State of AI in Business 2025'."
+  caption="Nine in ten employees use AI, yet barely **5%** of corporate pilots produce a measurable gain on the bottom line. Source: MIT NANDA."
+/>
+
+The lesson matches that of the great technological waves: value comes not from the tool, but from the reorganisation around it. The report notes, moreover, that buying specialised solutions succeeds about twice as often as in-house development, and that the best return is found in automating support functions, not in the marketing uses where budgets nonetheless concentrate. This gap between capital invested and value created echoes the risk we described in [AI circular financing](/en/analysis/ai-circular-financing/) and [the financial fragility flagged by the BIS](/en/analysis/ai-boom-bis-financial-fragility/).
+
+## Employment effects: early signals, cautious causality
+
+There remains the question that worries most, employment, and it is the one where we must be most rigorous about the distinction between correlation and causation. Work by the Stanford Digital Economy Lab, run by Brynjolfsson, Chandar and Chen on payroll data, uncovers a clear signal: since late 2022, employment of workers aged 22 to 25 in the occupations most exposed to AI, such as software development and customer support, has fallen by about 16%. Over the same period, employment of workers aged 30 and over in these same occupations has risen by 6 to 12%.
+
+The proposed explanation is plausible and instructive: AI mainly substitutes for codified knowledge, that of manuals and curricula, which makes up the bulk of a beginner's value added, while it struggles to replace the tacit knowledge accumulated through experience. The young graduate therefore finds themselves in more direct competition with the machine than the seasoned professional. Caution remains in order, however: isolating AI's own effect from a broader sector slowdown is hard, and we observe in parallel a wage premium, with pay rising for those who do enter AI occupations. The signal is real and persistent, but it documents a recomposition, not yet a massive net destruction.
+
+## The other reading: historical lag or oversell?
+
+How to reconcile undeniable task gains with a listless macro? Two readings clash, and honesty commands laying out both.
+
+The first is optimistic and historical. It recalls that between the invention of a general-purpose technology and its imprint on aggregate productivity, decades pass. Electricity took nearly forty years to transform industrial productivity, the time it took to redesign factories around the electric motor. Computing had its own Solow paradox in the 1980s before the gains of the 1990s. In this reading, AI follows the same J-curve: the gains are ahead of us, as organisations reinvent themselves.
+
+The second is soberer. It stresses that the easiest gains, on standardised tasks, are perhaps already largely captured, and that the remaining tasks are precisely those where AI runs into its jagged frontier. In this reading, Acemoglu's cautious estimate is not a floor awaiting upward revision, but a realistic order of magnitude, and the gap with the dominant narrative mostly measures an oversell.
+
+It is not possible to settle this today, and pretending otherwise would be dishonest. What the evidence permits saying is more modest, but solid. AI's productivity gains are real at the task level, heterogeneous along the frontier of competence, largely uncaptured at the firm level, and invisible at the macro level. Employment effects are starting to show, but as a recomposition between generations more than a bloodletting. The risk, for the analyst as for the decision-maker, is not so much that AI fails as that a promise is mistaken for a proof, and that investments or policies are sized on the former while awaiting the latter.
+
+## Sources
+
+1. Peng et al., "The Impact of AI on Developer Productivity: Evidence from GitHub Copilot": HTTP-server task done 55.8% faster by the assisted group: https://arxiv.org/pdf/2302.06590
+2. Brynjolfsson, Li and Raymond, "Generative AI at Work": 5,172 customer-support agents, +14% cases resolved per hour on average, +34% for the least experienced: https://www.nber.org/papers/w31161
+3. Noy and Zhang, "Experimental evidence on the productivity effects of generative artificial intelligence", Science: 453 professionals, time cut by 0.8 standard deviations, quality 0.4 standard deviations higher, largest gains for the lowest performers: https://www.science.org/doi/10.1126/science.adh2586
+4. Dell'Acqua, McFowland, Mollick, Lakhani et al., "Navigating the Jagged Technological Frontier", Organization Science 2025: 758 BCG consultants, +12.2% tasks and 25.1% faster inside the frontier, 19% fewer correct answers outside it: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
+5. METR, "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity": 16 experienced developers, 246 tasks, 19% more time with AI while estimating they were 20% faster: https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+6. Acemoglu, "The Simple Macroeconomics of AI", NBER Working Paper 32487: effect on total factor productivity of at most 0.53 to 0.66% over ten years, potentially overstated: https://www.nber.org/papers/w32487
+7. MIT NANDA, "The GenAI Divide: State of AI in Business 2025": about 95% of pilots with no measurable impact on the bottom line, 90% of employees in informal use against 40% official subscriptions, buying more effective than in-house development: https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/
+8. Brynjolfsson, Chandar and Chen (Stanford Digital Economy Lab), employment effects on the young: fall of about 16% for the 22-25s in exposed occupations since late 2022, rise of 6 to 12% for the 30-and-overs: https://digitaleconomy.stanford.edu/news/ai-and-labor-markets-what-we-know-and-dont-know/
+9. Fortune, follow-up on the Stanford study of entry-level employment, persistent and non-reversible effect: https://fortune.com/2026/06/27/what-is-ai-impact-entry-level-jobs-stanford-adp-canaries-brynjolfsson-richardson/

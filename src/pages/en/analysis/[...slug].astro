@@ -1,0 +1,249 @@
+---
+import { getCollection, render } from 'astro:content';
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { readingTime } from '../../../lib/reading-time.ts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('postsEn', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const sourcePost = (await getCollection('posts')).find((entry) => entry.id === post.data.sourceArticle);
+const { Content } = await render(post);
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+const updated = post.data.updatedDate ?? post.data.pubDate;
+const updatedLabel = fmt(updated);
+const isoPub = post.data.pubDate.toISOString();
+const isoUpd = updated.toISOString();
+const rt = readingTime(post.body);
+const ogImage = post.data.ogImage ?? `/og/${post.data.sourceArticle}.png`;
+
+const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
+const frUrl = sourcePost ? new URL(`/posts/${sourcePost.id}/`, Astro.site).toString() : new URL('/', Astro.site).toString();
+const sourceUpdated = sourcePost ? (sourcePost.data.updatedDate ?? sourcePost.data.pubDate) : post.data.sourceUpdatedDate;
+const translationIsStale = sourcePost && sourceUpdated.getTime() > post.data.sourceUpdatedDate.getTime();
+
+const alternateLinks = [
+  { hreflang: 'en', href: url },
+  { hreflang: 'fr', href: frUrl },
+  { hreflang: 'x-default', href: frUrl },
+];
+
+const shareTitle = post.data.title;
+const u = encodeURIComponent(url);
+const t = encodeURIComponent(shareTitle);
+const share = {
+  x: `https://twitter.com/intent/tweet?text=${t}&url=${u}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`,
+  bluesky: `https://bsky.app/intent/compose?text=${t}%20${u}`,
+};
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: isoPub,
+      dateModified: isoUpd,
+      inLanguage: 'en',
+      author: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
+      publisher: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
+      mainEntityOfPage: url,
+      isBasedOn: { '@type': 'Article', url: frUrl },
+      keywords: post.data.tags,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'English analysis', item: new URL('/en/analysis/', Astro.site).toString() },
+        { '@type': 'ListItem', position: 2, name: post.data.title, item: url },
+      ],
+    },
+  ],
+};
+const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
+---
+
+<EnglishGuidesLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  ogImage={ogImage}
+  canonical={url}
+  alternateLinks={alternateLinks}
+>
+  <script type="application/ld+json" is:inline set:html={safeLd} />
+
+  <div class="read-progress" aria-hidden="true"><span></span></div>
+
+  <article class="rise max-w-2xl" data-pagefind-body>
+    <header class="post-head mb-10">
+      <p class="mono-label glow post-kicker">// analysis</p>
+
+      <h1 class="post-title mt-3 font-display text-[clamp(1.9rem,4.5vw,3rem)] leading-tight tracking-wider glow">
+        {post.data.title}
+      </h1>
+
+      <p class="post-lede mt-5">{post.data.description}</p>
+
+      <div class="post-meta mono-label mt-6">
+        <time datetime={isoUpd} data-pagefind-meta="date">last updated {updatedLabel}</time>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>{rt} min read</span>
+        {post.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
+        <span class="post-tags">
+          {post.data.tags.map((tag) => <span class="text-signal">#{tag}</span>)}
+        </span>
+      </div>
+
+      <div class="en-trust" data-pagefind-ignore>
+        <span>dated revision: {updatedLabel}</span>
+        <a href={frUrl}>French original</a>
+        <a href="/sites-reference/">primary sources</a>
+        <a href="/rgpd/">no tracker</a>
+      </div>
+
+      {translationIsStale && (
+        <p class="stale-note" data-pagefind-ignore>
+          Translation freshness warning: the French source was revised after this English version.
+        </p>
+      )}
+
+      <div class="post-rule" aria-hidden="true"></div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <div class="share mt-14" data-pagefind-ignore>
+      <span class="mono-label share-label">// share</span>
+      <div class="share-row">
+        <a class="share-btn" href={share.x} target="_blank" rel="noopener nofollow" aria-label="Share on X" title="Share on X">
+          <span>X</span>
+        </a>
+        <a class="share-btn" href={share.bluesky} target="_blank" rel="noopener nofollow" aria-label="Share on Bluesky" title="Share on Bluesky">
+          <span>Bluesky</span>
+        </a>
+        <a class="share-btn" href={share.linkedin} target="_blank" rel="noopener nofollow" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+          <span>LinkedIn</span>
+        </a>
+        <a class="share-btn" href={share.facebook} target="_blank" rel="noopener nofollow" aria-label="Share on Facebook" title="Share on Facebook">
+          <span>Facebook</span>
+        </a>
+        <button class="share-btn" type="button" data-copy-url={url} aria-label="Copy link" title="Copy link">
+          <span data-copy-label>Copy link</span>
+        </button>
+      </div>
+    </div>
+
+    <p class="post-disclaimer" data-pagefind-ignore>
+      <em>This analysis is not investment advice.</em>
+    </p>
+
+    <div class="citation-en" data-pagefind-ignore>
+      <p class="mono-label">// cite this analysis</p>
+      <p>
+        l0g, “{post.data.title}”, l0g.fr, published {fmt(post.data.pubDate)}, updated {updatedLabel}, {url}
+      </p>
+    </div>
+
+    <hr class="hairline mt-12" />
+    <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>
+  </article>
+
+  <script is:inline>
+    (function () {
+      var bar = document.querySelector('.read-progress > span');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var p = max > 0 ? h.scrollTop / max : 0;
+        bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        ticking = false;
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+  </script>
+
+  <script is:inline>
+    document.querySelectorAll('[data-copy-url]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var u = btn.getAttribute('data-copy-url');
+        var label = btn.querySelector('[data-copy-label]');
+        var flash = function (text) {
+          if (!label) return;
+          var original = label.textContent;
+          label.textContent = text;
+          setTimeout(function () { label.textContent = original; }, 1800);
+        };
+        if (!u || !window.isSecureContext || !navigator.clipboard || !navigator.clipboard.writeText) {
+          flash('Copy unavailable');
+          return;
+        }
+        navigator.clipboard.writeText(u)
+          .then(function () { flash('Link copied'); })
+          .catch(function () { flash('Copy unavailable'); });
+      });
+    });
+  </script>
+</EnglishGuidesLayout>
+
+<style>
+  .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
+  .read-progress > span {
+    display: block; height: 100%; width: 100%;
+    transform: scaleX(0); transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--color-signal), var(--color-accent), var(--color-amber));
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 65%, transparent);
+  }
+  .en-trust {
+    margin-top: 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .en-trust span,
+  .en-trust a {
+    border: 1px solid color-mix(in srgb, var(--color-signal) 35%, transparent);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    color: var(--color-signal);
+    background: color-mix(in srgb, var(--color-signal) 8%, transparent);
+  }
+  .stale-note {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px dashed var(--color-amber);
+    border-radius: 12px;
+    color: var(--color-amber);
+    background: color-mix(in srgb, var(--color-amber) 8%, transparent);
+    font-size: 0.86rem;
+  }
+  .citation-en {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px dashed var(--color-line);
+    border-radius: 12px;
+    color: var(--color-muted);
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+</style>

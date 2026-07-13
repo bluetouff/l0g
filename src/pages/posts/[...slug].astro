@@ -31,6 +31,19 @@ const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
+const englishPost = englishPosts.find((entry) => entry.data.sourceArticle === post.id);
+const englishUrl = englishPost ? new URL(`/en/analysis/${englishPost.id}/`, Astro.site).toString() : null;
+const alternateLinks = englishUrl
+  ? [
+      { hreflang: 'fr', href: shareUrl },
+      { hreflang: 'en', href: englishUrl },
+      { hreflang: 'x-default', href: shareUrl },
+    ]
+  : [
+      { hreflang: 'fr', href: shareUrl },
+      { hreflang: 'x-default', href: shareUrl },
+    ];
 const evidence = buildArticleEvidence(post.body ?? '', {
   published: post.data.pubDate,
   updated: post.data.updatedDate,
@@ -196,6 +209,7 @@ const trustItems = [
   description={post.data.description}
   ogType="article"
   ogImage={ogImage}
+  alternateLinks={alternateLinks}
 >
   <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
 
@@ -235,6 +249,11 @@ const trustItems = [
       </div>
 
       <TrustBar items={trustItems} variant="compact" />
+      {englishUrl && (
+        <p class="en-alt" data-pagefind-ignore>
+          <a href={englishUrl} class="link-term" hreflang="en" lang="en">Read this analysis in English →</a>
+        </p>
+      )}
       <div class="proof-strip" aria-label="Niveaux de preuve détectés" data-pagefind-ignore>
         <span class="proof-depth" title={proofDepth.detail}>
           <span aria-hidden="true">{proofDepth.score}</span>
@@ -408,6 +427,12 @@ const trustItems = [
       flex-wrap: wrap;
       gap: 0.45rem;
       margin-top: 1rem;
+    }
+    .en-alt {
+      margin-top: 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
     }
     .proof-pill {
       --proof-color: var(--color-muted);
