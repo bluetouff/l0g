@@ -1,0 +1,92 @@
+---
+title: "US debt: the awakening of the term premium"
+description: "US public debt exceeds its 1946 record, the interest bill overtakes the defence budget, and the term premium has turned positive for the first time since 2023. Behind these signals, a fundamental question: who will finance the federal state, and at what price. A rigorous, sourced analysis, from diagnosis to objections."
+pubDate: 2026-07-13T15:22:00+02:00
+updatedDate: 2026-07-13T15:22:00+02:00
+tags: ["macro", "debt", "rates", "us treasury", "risk"]
+draft: false
+sourceArticle: "dette-americaine-le-reveil-de-la-prime-de-terme"
+sourceUpdatedDate: 2026-07-07
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+Some risks do not explode, they settle in. The US fiscal trajectory is one of them: slow, predictable, and for that very reason regularly ignored. Yet three developments converge in 2026 and deserve to be looked at together rather than separately. Debt crosses a historic threshold, the interest bill becomes a major spending item, and the market begins again to demand a premium to lend long term. This last point, technical in appearance, is the most important, because it touches the very price of the debt.
+
+## The weight of the numbers
+
+Let us start with the base, relying on the projections of the Congressional Budget Office, Congress's independent budget body. The federal deficit for fiscal year 2026 is expected at $1.9 trillion, or 5.8% of gross domestic product, an unusual deficit level outside recession or war. Debt held by the public would go from 101% of GDP in 2026 to 120% in 2036, thus exceeding its previous record of 106%, reached in 1946 at the end of the Second World War.
+
+<InfographicBars
+  title="The 1946 record, surpassed"
+  subtitle="Federal debt held by the public, as a percentage of GDP."
+  items={[
+    { label: "Post-war peak (1946)", value: 106, valueLabel: "106%", tone: "muted" },
+    { label: "Today (2026)", value: 101, valueLabel: "101%", tone: "signal" },
+    { label: "Projection (2036)", value: 120, valueLabel: "120%", tone: "accent" },
+  ]}
+  note="The 2036 debt would exceed the post-war peak."
+  source="Source: Congressional Budget Office, budget outlook 2026-2036."
+  caption="Debt held by the public, at **101%** of GDP in 2026, would exceed its 1946 record by 2036. Source: CBO."
+/>
+
+The real regime change is elsewhere, in the interest bill. The CBO puts net interest at $1 trillion in 2026, or 3.3% of GDP, and projects it will reach $2.1 trillion, or 4.6% of GDP, in 2036. This interest now exceeds all defence spending, and would surpass total discretionary spending in 2038. In other words, a growing share of taxation serves not to fund services, but to pay creditors. It is the first gear: the higher debt and rates rise, the more the interest bill swells the deficit, which in turn feeds the debt.
+
+## The term premium, that forgotten price of risk
+
+The yield on a ten-year bond breaks into two bricks. The first is the average of expected short rates over the security's life, what the Federal Reserve will do. The second is the term premium, the extra yield an investor demands to tie up their money for a long time and bear the risk that rates, inflation or debt supply move unfavourably. The reference model, that of Adrian, Crump and Moench at the New York Federal Reserve, allows this premium to be estimated.
+
+And it has just woken up. Negative for the first time in the series in 2014, then staying zero or negative for a decade, the ten-year term premium has moved back into positive territory, around half a point in mid-2026, for the first time since 2023. At the end of April 2026, the model decomposed a ten-year yield of 4.45% into 3.72% of rate expectation and 0.73% of term premium.
+
+<InfographicBars
+  title="What a ten-year lender is paid"
+  subtitle="Decomposition of the 10-year Treasury yield, end April 2026, ACM model (New York Fed)."
+  items={[
+    { label: "10-year yield", value: 4.45, valueLabel: "4.45%", tone: "signal" },
+    { label: "of which expected short rates", value: 3.72, valueLabel: "3.72%", tone: "muted" },
+    { label: "of which term premium", value: 0.73, valueLabel: "0.73%", tone: "accent" },
+  ]}
+  note="The term premium stays below its 65-year median (1.41%): room to rise."
+  source="Source: Federal Reserve Bank of New York, ACM model (Adrian, Crump, Moench)."
+  caption="The 10-year yield breaks down into expected rates (**3.72%**) and term premium (**0.73%**). This premium, back in positive territory, stays below its historical average. Source: New York Fed."
+/>
+
+This point is decisive for two reasons. First, this level of 0.73 point stays modest against history, below the 1.41-point median over sixty-five years. The premium is therefore not at an extreme, it has simply turned positive again, which leaves room to rise if debt supply keeps swelling. Second, in a regime of positive term premium, Fed rate cuts no longer translate mechanically into an easing of long rates, because the premium can rise when rate expectation falls. The central bank's leverage over the real cost of the debt is thereby weakened.
+
+## Who buys, now that the Fed and foreigners are retreating
+
+A price rises when demand weakens against supply. Yet the supply of Treasuries is abundant and the structure of demand is degrading. The Federal Reserve has stopped being a buyer with the end of quantitative tightening, a subject we treated in our coverage of the Fed's balance sheet under Warsh. Foreign holders, for their part, hold about $8.5 trillion of Treasuries, or 28 to 30% of the marketable debt, with Japan in the lead at $1.13 trillion, ahead of the United Kingdom and China. But while their holdings rise in dollars, their share is falling, because the debt grows faster than they do, a dynamic legible in the [TIC data](/en/guides/read-tic-data-us-debt/) and consistent with the gradual move of de-dollarisation.
+
+The clearest signal came from the agencies. In May 2025, Moody's stripped the United States of its last AAA rating, downgrading it to Aa1 and joining S&P and Fitch, citing gross debt of $36 trillion and an interest bill absorbing 18% of federal revenue. The thirty-year yield had then briefly exceeded 5%.
+
+Who fills the void? Increasingly, marginal and fragile buyers. Stablecoins, framed by the GENIUS Act, must back their reserves with very short-term Treasury bills, of 93 days at most, and repos of less than seven days. They therefore support the short end of the curve, not the long end, the one where the premium forms. Hedge funds, for their part, carry enormous positions through the basis trade, a highly leveraged arbitrage between the cash bond and the futures contract. The Financial Stability Board recalls that the precipitous unwind of $90 billion of these positions contributed to the Treasury market crisis of March 2020, and notes that in the first quarter of 2025 hedge-fund leverage reached a historic high. Demand increasingly provided by leveraged actors is less stable demand.
+
+## The spectre of fiscal dominance
+
+All these threads converge toward the same worry, fiscal dominance: the situation where the weight of the debt constrains monetary policy, the central bank hesitating to raise or hold high rates for fear of rendering the debt unsustainable. The debate is not theoretical. It runs through Kevin Warsh's Federal Reserve, caught between an inflation it judges it must fight and an executive demanding rate cuts. A rising term premium is precisely the symptom that a market is starting to doubt the state's ability, or willingness, to stabilise its debt without resorting to inflation.
+
+## Why the worst is not written
+
+Rigour requires weighing the objections, and they are serious. The first is the exorbitant privilege of the dollar. The United States borrows in its own currency, which it issues, and therefore cannot default in the strict sense on debt denominated in dollars. The Treasury remains the safe-haven asset par excellence, bedrock of the global financial system, and the structural demand for safe dollar assets is immense. As long as this status holds, the tolerance threshold for US debt is higher than that of any other state.
+
+The second objection is that high debt does not mechanically entail a crisis. Japan has proven it for decades, with debt well above 200% of GDP without a major episode of distrust, because it is financed by abundant domestic savings. The third rests on the arithmetic of sustainability: as long as nominal growth exceeds the average interest rate paid on the debt, the debt-to-GDP ratio can stabilise without violent fiscal effort. Finally, the term premium, as we have seen, stays moderate, and auctions keep finding takers, with even a cautious return of foreign buyers in early 2026. The market has often wrongly announced the imminent revenge of the creditors.
+
+These arguments bound the risk, they do not erase it. The dollar's privilege reduces the probability of a brutal crisis, it does not abolish the cost of an interest bill that crowds out other spending. The Japanese counter-example recalls that domestic financing changes everything, which conversely underlines US vulnerability to foreign demand. And the sustainability condition, growth above the rate, is nothing guaranteed in a regime of a rising term premium.
+
+## Following the risk, indicator by indicator
+
+The subject cannot be read from a single figure, but from a dashboard. The New York Fed's ACM term premium says whether the market demands more for duration. Auction quality, the bid-to-cover ratio and the share of indirect buyers, signals the depth of demand. The thirty-year yield and the [MOVE](/en/guides/read-vix-move-volatility/) index, which measures rate volatility, capture stress. TIC data traces the behaviour of foreign holders. The interest bill relative to revenue measures the crowding-out effect. And debt-ceiling episodes, with the rebuilding of the Treasury's account at the Fed, punctuate the calendar with liquidity jolts, a theme developed in our guide on [Treasury liquidity](/en/guides/read-net-liquidity-tga-rrp/).
+
+The honest conclusion is measured. There is no programmed imminent crisis, and betting on its trigger at a given date would be as imprudent as denying the problem. But the direction is clear: debt supply swells, demand grows fragile, and the price of duration risk, long anaesthetised, is waking up. The real danger is not a sudden crash, it is the durable installation of a higher cost of capital, which weighs on everything, from the federal budget to asset valuations. A slow risk, then, but one that deserves for precisely that reason a sustained watch.
+
+## Sources
+
+1. Congressional Budget Office, "The Budget and Economic Outlook: 2026 to 2036": 2026 deficit of $1.9 trillion (5.8% of GDP), net interest of $1 trillion in 2026 (3.3% of GDP) to $2.1 trillion in 2036 (4.6%), debt held by the public from 101% of GDP in 2026 to 120% in 2036, exceeding the 106% record of 1946, interest exceeding defence: https://www.cbo.gov/publication/62105
+2. Federal Reserve Bank of New York, Treasury term premia (Adrian, Crump, Moench model): yield decomposition, premium back in positive territory: https://www.newyorkfed.org/research/data_indicators/term-premia-tabs
+3. FRED (Federal Reserve Bank of St. Louis), series THREEFYTP10, ten-year term premium: historical levels, turn negative in 2014, return to positive: https://fred.stlouisfed.org/series/THREEFYTP10
+4. Moody's Ratings, downgrade of the US sovereign rating from Aaa to Aa1, 16 May 2025: debt and interest bill cited, alignment with S&P and Fitch: https://ratings.moodys.com/ratings-news/443154
+5. CNBC, 19 May 2025, thirty-year yield briefly exceeding 5% after the Moody's downgrade: https://www.cnbc.com/2025/05/19/us-treasury-yields-moodys-downgrades-us-credit-rating.html
+6. U.S. Department of the Treasury, Treasury International Capital (TIC) system, foreign holdings of Treasuries (about $8.5 trillion, Japan, United Kingdom, China) and falling share: https://home.treasury.gov/data/treasury-international-capital-tic-system
+7. Congress.gov, GENIUS Act of 2025, reserve obligations of stablecoin issuers in short-maturity Treasury bills and repos: https://www.congress.gov/bill/119th-congress/senate-bill/1582/text
+8. Financial Stability Board, vulnerabilities of repo markets and non-bank leverage: unwind of $90 billion of basis trade in March 2020, call to limit hedge-fund leverage: https://www.fsb.org/uploads/P040226.pdf
+9. Federal Reserve, FEDS Notes, sizing of hedge-fund Treasury positions and the basis trade: https://www.federalreserve.gov/econres/notes/feds-notes/recent-developments-in-hedge-funds-treasury-futures-and-repo-positions-20230830.html
+10. Peter G. Peterson Foundation, tracking of the federal debt interest bill: https://www.pgpf.org/programs-and-projects/fiscal-policy/monthly-interest-tracker-national-debt/
