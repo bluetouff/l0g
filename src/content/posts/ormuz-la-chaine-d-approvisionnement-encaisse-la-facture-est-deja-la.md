@@ -6,7 +6,6 @@ updatedDate: 2026-07-05
 tags: ["géopolitique", "énergie", "supply chain", "macro", "matières premières"]
 draft: false
 ---
-*Le cessez-le-feu de mi-juin a fait sortir la prime de guerre des prix du pétrole, mais pas les navires des files d'attente. Cinq mois après la fermeture du détroit d'Ormuz, les dégâts sur la chaîne d'approvisionnement mondiale sont déjà mesurables : fret doublé, gaz européen sous tension, engrais rationnés. État des lieux chiffré et sourcé.*
 
 Il y a deux horloges dans une crise de [chokepoint](/glossaire/chokepoint/), et elles ne battent pas à la même vitesse. La première est celle des prix, financière, qui se calme dès qu'un accord est signé. La seconde est celle des cales, des cuves et des quais, physique, qui met des mois à se remettre. L'accord américano-iranien de mi-juin, analysé dans nos [trois scénarios de réouverture](/posts/accord-paix-ormuz-rouvre-scenarios/), a arrêté la première. La seconde continue de tourner. Début juillet 2026, la prime de guerre a quitté le baril, mais la chaîne d'approvisionnement mondiale, elle, digère encore la plus grosse rupture logistique de son histoire récente.
 

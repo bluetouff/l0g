@@ -6,10 +6,6 @@ tags: ["obligataire", "macro", "france"]
 draft: false
 ---
 
-*Pourquoi les marchés ne pricent absolument pas un Frexit, malgré le bruit des réseaux sociaux*
-
----
-
 ## Une intuition séduisante, une lecture défaillante
 
 Depuis quelques semaines, un récit gagne en visibilité sur les réseaux sociaux : la hausse des taux d'intérêt sur la dette française signalerait que les marchés « pricent » une sortie imminente de la France de la zone euro. Le scénario, popularisé par des figures comme Marc Touati ou François Asselineau, postule que les investisseurs anticipent l'explosion de l'euro, le retour au franc, une vague de monétisation par la Banque de France, donc une inflation galopante et une dévaluation des obligations. CQFD : la hausse de l'OAT serait le prélude à la grande rupture.

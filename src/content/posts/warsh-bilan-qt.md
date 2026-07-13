@@ -6,7 +6,6 @@ updatedDate: 2026-06-11
 tags: ["fed", "politique monétaire", "macro", "politique us"]
 draft: false
 ---
-*Warsh veut une banque centrale plus petite et plus discrète. Mais il arrive quelques semaines après que le comité a mis fin au quantitative tightening, et le bilan devient le vrai terrain où se jouera son regime change*
 
 Sur les taux, Kevin Warsh est prisonnier : de l'inflation à 4,2 %, du choc énergétique iranien, et de ses dix-huit collègues du FOMC qui ne lui laissent qu'une voix. C'est ailleurs qu'il imprimera sa marque. Le 17e président de la Réserve fédérale, en fonction depuis le 22 mai 2026, a fait du bilan de la banque centrale le cœur de sa doctrine. Or il hérite d'une situation paradoxale : le comité vient précisément de fermer le dossier qu'il voudrait rouvrir.
 

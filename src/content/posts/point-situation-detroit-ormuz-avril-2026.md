@@ -6,8 +6,6 @@ tags: ["géopolitique", "énergie", "macro"]
 draft: false
 ---
 
-*Depuis le 28 février 2026, le détroit d'Ormuz est de facto fermé. Cet article fait le point, au 10 avril, sur ce que les sources officielles documentent : l'état du trafic, l'ampleur du choc pétrolier et les amortisseurs mobilisés. Il se clôt par une mise à jour sur la sortie de crise, intervenue depuis.*
-
 ## La situation au 10 avril
 
 Le 28 février 2026, les États-Unis et Israël ont lancé une campagne aérienne contre l'Iran, au cours de laquelle le guide suprême Ali Khamenei a été tué. En représailles, l'Iran a visé des navires, posé des mines et interdit le passage du détroit par la voix du Corps des gardiens de la révolution. En temps normal, environ 20 % du pétrole mondial et une part comparable du gaz naturel liquéfié transitent par Ormuz, l'essentiel à destination de l'Asie (EIA, IEA).

@@ -7,10 +7,6 @@ tags: ["régulation", "crypto", "politique us"]
 draft: false
 ---
 
-*Comment un projet de loi de 309 pages s'apprête à mettre fin à dix ans de guerre de juridictions entre SEC et CFTC, et ce que ça change pour l'industrie*
-
----
-
 ## Une bataille de dix ans qui touche à sa fin
 
 Le 14 mai 2026, à 10h30 dans la salle Dirksen du Sénat américain, la commission Banking adopte par **15 voix contre 9** le Digital Asset Market Clarity Act. Deux démocrates, Ruben Gallego (Arizona) et Angela Alsobrooks (Maryland), traversent le rideau pour rejoindre les treize républicains. Pour la première fois depuis l'origine du débat crypto au Congrès, un texte de structure de marché complet franchit l'étape critique d'une commission sénatoriale avec un vote bipartisan documenté (source : TheStreet Crypto, 14 mai 2026).

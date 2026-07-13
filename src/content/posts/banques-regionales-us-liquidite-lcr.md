@@ -7,8 +7,6 @@ tags: ["macro", "banques centrales", "liquidité", "régulation", "marchés"]
 draft: false
 ---
 
-*En mars 2023, trois banques régionales américaines disparaissent en sept semaines, emportées non par des pertes de crédit mais par une fuite de dépôts. Trois ans plus tard, le système est officiellement revenu en zone de réserves amples, mais le débat réglementaire s'est inversé : la Réserve fédérale ne cherche plus à durcir les exigences de liquidité, elle réfléchit à les assouplir. Retour sur un épisode qui a redéfini la vitesse d'une panique bancaire, et sur ce que prépare la réforme de 2026.*
-
 ## Mars 2023 : trois faillites en sept semaines
 
 Silicon Valley Bank est fermée le 10 mars 2023 par son régulateur d'État, qui nomme la FDIC administratrice. La banque affichait **209 milliards** de dollars d'actifs fin 2022, ce qui en fait alors la deuxième faillite bancaire de l'histoire américaine. Le mécanisme n'est pas un défaut d'emprunteurs : la remontée rapide des taux en 2022 a fait fondre la valeur de marché de son portefeuille de Treasuries et de titres hypothécaires. En vendant une partie de ces titres à perte pour faire face aux retraits, SVB déclenche une crise de confiance. Ses clients, surtout des entreprises technologiques aux dépôts largement non assurés, retirent plus de **42 milliards** de dollars en une seule journée. La rapidité, et non l'ampleur, est la vraie nouveauté. Signature Bank suit deux jours plus tard. Le 1er mai, First Republic, 229 milliards d'actifs et environ deux tiers de dépôts non assurés, est saisie puis cédée à JPMorgan, devenant la plus grosse faillite depuis 2008. Le coût de SVB pour le fonds de garantie de la [FDIC](/glossaire/#fdic) est estimé à environ 20 milliards de dollars.

@@ -7,8 +7,6 @@ tags: ["private equity", "valorisation", "finance", "marchés privés", "private
 draft: false
 ---
 
-*Entre actifs invendables, fonds de continuation et prêts adossés aux portefeuilles, le private equity affronte une crise silencieuse de valorisation. Derrière les NAV stables se cache un problème de liquidité qui inquiète de plus en plus les investisseurs.*
-
 # Zombie Funds : quand les valorisations survivent plus longtemps que les marchés
 
 Pendant des années, le private equity a vendu un récit simple : moins de volatilité, plus de rendement et une création de valeur supérieure aux marchés cotés. Mais en 2026, une question devient impossible à éviter : les valorisations affichées par de nombreux fonds reflètent-elles encore la réalité économique ?

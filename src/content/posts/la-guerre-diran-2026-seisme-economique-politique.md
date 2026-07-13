@@ -6,10 +6,6 @@ tags: ["géopolitique", "macro", "énergie"]
 draft: false
 ---
 
-*Comment un conflit régional est en train de redessiner l'inflation, les alliances, et la politique intérieure de toutes les grandes puissances*
-
----
-
 ## Introduction : le choc le plus important depuis 1973
 
 Le 28 février 2026, les États-Unis et Israël lancent une campagne de frappes aériennes contre le programme nucléaire et les capacités balistiques iraniennes. Quatre jours plus tard, le 4 mars, Téhéran déclare le détroit d'Ormuz fermé et commence à attaquer les infrastructures pétrolières du Golfe. En l'espace de quelques semaines, le monde bascule dans ce que l'Agence Internationale de l'Énergie a qualifié de *« plus grande perturbation d'approvisionnement de l'histoire du marché pétrolier mondial »*. La suite de l'épisode, du cessez-le-feu fragile d'avril à l'accord de réouverture, est suivie dans [le point de situation sur Ormuz](/posts/point-situation-detroit-ormuz-avril-2026/) puis dans [les scénarios de normalisation du marché](/posts/accord-paix-ormuz-rouvre-scenarios/).

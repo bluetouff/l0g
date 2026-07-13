@@ -6,7 +6,6 @@ updatedDate: 2026-07-04
 tags: ["pétrole", "chine", "matières premières", "macro", "géopolitique"]
 draft: false
 ---
-*Le Brent est retombé autour de 71 dollars début juillet 2026, quelques semaines après avoir menacé les 100 lors du choc iranien. Derrière ce plafond invisible, un acheteur discipliné : la Chine, qui a cessé de courir après le baril cher pour puiser dans ses réserves record.*
 
 Au 3 juillet 2026, le Brent s'échange autour de 71 dollars le baril, en recul par rapport aux 72,68 dollars du 1er juillet. C'est un fait contre-intuitif : quelques semaines plus tôt, la fermeture partielle du détroit d'Ormuz et la guerre autour de l'Iran avaient poussé le baril vers 80 dollars, avec un scénario à 105 dollars si le détroit restait bloqué. Le prix est pourtant redescendu. Une partie de l'explication tient à un acteur qui ne produit presque rien : la Chine, premier importateur mondial de brut.
 
