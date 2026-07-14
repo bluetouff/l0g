@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import AnalysisList from '../../../../components/AnalysisList.astro';
+import { readingTime } from '../../../../lib/reading-time.ts';
+
+const PAGE_SIZE = 20;
+
+export async function getStaticPaths() {
+  const size = 20;
+  const all = (await getCollection('postsEn', ({ data }) => !data.draft)).sort((a, b) => {
+    const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
+    const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
+    return db - da;
+  });
+  const totalPages = Math.max(1, Math.ceil(all.length / size));
+  // Page 1 lives at /en/analysis/ ; generate 2..totalPages here.
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const current = Number(Astro.params.page);
+
+const all = (await getCollection('postsEn', ({ data }) => !data.draft)).sort((a, b) => {
+  const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
+  const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
+  return db - da;
+});
+
+const total = all.length;
+const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+const start = (current - 1) * PAGE_SIZE;
+
+const items = all.slice(start, start + PAGE_SIZE).map((p, i) => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  date: p.data.updatedDate ?? p.data.pubDate,
+  tag: p.data.tags[0],
+  rt: readingTime(p.body),
+  index: start + i + 1,
+}));
+
+const canonical = new URL(`/en/analysis/page/${current}/`, Astro.site).toString();
+const alternateLinks = [
+  { hreflang: 'en', href: canonical },
+  { hreflang: 'fr', href: new URL('/', Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL('/', Astro.site).toString() },
+];
+---
+
+<EnglishGuidesLayout
+  title={`English analysis — page ${current}`}
+  description="English versions of selected l0g analysis pieces: sourced, evidence-graded essays on AI finance, credit plumbing, shadow banking and the machinery of systemic risk."
+  canonical={canonical}
+  alternateLinks={alternateLinks}
+>
+  <section class="rise border-b border-dashed border-line pb-10">
+    <p class="mono-label" style="color: var(--color-signal)">$ ls /en/analysis | page {current}</p>
+    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
+      English <span style="color: var(--color-accent)">analysis</span>
+    </h1>
+    <p class="mt-5 max-w-xl text-muted">
+      Page {current} of {totalPages}. Selected l0g analysis pieces translated from the French corpus, newest first.
+      <a href="/en/analysis/" style="color: var(--color-signal)">Back to the latest →</a>
+    </p>
+  </section>
+
+  <AnalysisList items={items} currentPage={current} totalPages={totalPages} />
+</EnglishGuidesLayout>
