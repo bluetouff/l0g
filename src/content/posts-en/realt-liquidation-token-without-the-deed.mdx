@@ -1,0 +1,84 @@
+---
+title: "RealT in liquidation: the token that did not own the house"
+description: "RealT, one of the oldest tokenised real-estate platforms, entered liquidation in early July 2026. The Detroit press investigation shows that its tokens often pointed to houses whose deeds the company did not hold. Autopsy of a bricks-and-mortar RWA, and of the flaw it reveals."
+pubDate: 2026-07-14T10:00:00+02:00
+updatedDate: 2026-07-14T10:00:00+02:00
+tags: ["crypto", "rwa", "real estate", "tokenisation"]
+draft: false
+sourceArticle: "realt-en-liquidation-le-token-qui-ne-possedait-pas-la-maison"
+sourceUpdatedDate: 2026-07-05
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+Tokenised real-world assets, RWAs, have never weighed so much: around $26 to 32bn of on-chain value in 2026, roughly four times more than a year earlier, according to sector-tracking data (rwa.xyz). Yet one of their most visible pioneers has just collapsed. In early July 2026, during a community call broadcast on YouTube then relayed on Telegram, RealT announced its voluntary liquidation. Some 14,000 French investors are said to be affected, according to the Delomel law firm, within a global base spread across more than 150 countries.
+
+## The model: an LLC, a house, some tokens
+
+RealT, based in Florida and founded by brothers Remy and Jean-Marc Jacobson, had industrialised a simple idea. For each property, a US limited liability company, an LLC, was supposed to hold the house. The shares of that LLC were converted into ERC-20 tokens issued on Ethereum then on Gnosis, and sold in fractions. The token cost about $50, a property counted more than a thousand of them, and each house often gathered several hundred investors. In exchange, the holder collected each week their share of rent, paid in the USDC stablecoin, for an advertised yield of around 10% a year.
+
+Barred to US investors, the platform targeted the rest of the world, and France in particular. Since 2019, the portfolio had grown to about 650 tokenised houses in Detroit according to the deeds recorded by the local press, the company claiming close to a thousand. This promise of rental real estate made liquid, fractional and global had made RealT a showcase for real-estate RWA. The liquidation makes it the inverted textbook case.
+
+## The fall: when the rent dries up
+
+The machinery seized up from the bottom, where the bricks meet the real world. In 2024, the city of Detroit brings against the company what its lawyer, Conrad Mallett, describes as the largest nuisance-abatement proceeding in its history. The complaint targets 408 properties and demands compliance certificates within 90 days, failing which the city reserves the right to do the work at RealT's expense. The local entity, Michigan Realtoken, then owes the city at least $2m in tax arrears and blight fines, is behind on taxes on more than 300 properties, and more than 200 properties face foreclosure.
+
+Because these properties were in poor condition. The investigation by local outlet Outlier Media counts more than a thousand blight fines and, from postal data, more than a hundred vacant homes. In 2025, a judge places tenants' rents in escrow, reserved for repairs alone. Deprived of collectible rent, the model collapses at its source: in February 2026, RealT suspends almost all distributions, a move some investors call theft. An independent fiduciary, Charles Bullock, takes over the properties in April, a trial is set for 27 May, and in early July the liquidation marks the end of the game.
+
+## The token was not worth the deed
+
+This is where the case touches the core of what a tokenised real-world asset is. By cross-checking the Wayne County records, Outlier Media and local channel WXYZ uncover a disconnect between the token sold and the registered title.
+
+The clearest case: RealT collected $2.72m from investors for 39 houses in eastern Detroit, when it had only agreed to pay $1.1m to the seller. More than a year after the last tokens were sold, the deeds to these 39 houses still bore the name of the original seller, Brewer Park Homes, and not RealT. The registered owner, Kathy Makino-Leipsitz, confirmed it: the property was "under contract for more than a year, but the sale was never completed". More broadly, of 25 properties offered to investors in January, only three appeared under RealT's name in the county register.
+
+The token therefore promised its holder the status of owner, but the title, enforceable before a judge, often stayed elsewhere. The token lived on the blockchain; the house, in the law of the State of Michigan. Nothing guaranteed that the two coincided.
+
+<InfographicBars
+  title="The token on one side, the deed on the other"
+  subtitle="Case of the 39 houses in eastern Detroit, per the Wayne County records."
+  items={[
+    { label: "Collected from investors", value: 2.72, valueLabel: "$2.72m", tone: "signal" },
+    { label: "Price RealT was to pay the seller", value: 1.1, valueLabel: "$1.1m", tone: "muted" },
+  ]}
+  note="Property deeds, more than a year after the tokens were sold"
+  notes={[
+    "The 39 houses: still under the seller's name (Brewer Park Homes), not RealT.",
+    "Of 25 properties offered in January: only 3 registered under RealT's name.",
+  ]}
+  source="Sources: Outlier Media, WXYZ Detroit, Wayne County Register of Deeds."
+  caption="For 39 houses, RealT raised **$2.72m** from investors when it had only committed to pay **$1.1m**, and the deeds stayed under the original seller's name. Sources: Outlier Media, WXYZ Detroit."
+/>
+
+## Bricks and mortar, the RWA blind spot
+
+This flaw sheds light on a paradox. The RWA market is thriving, but not on the bricks-and-mortar side. Six categories of tokenised assets have crossed the billion-dollar mark on chain: private credit, commodities, US Treasuries, corporate bonds, non-US sovereign debt and institutional alternative funds. Tokenised Treasuries alone account for around $15bn, nearly half the total. Tokenised real estate, long presented as the sector's flagship application, is its exact counter-example: added together, platforms like RealT or Lofty have never exceeded $100m of on-chain value, a crumb at the scale of the market.
+
+<InfographicBars
+  title="RWA is exploding, real estate stays on the floor"
+  subtitle="On-chain value in 2026, in billions of dollars."
+  max={32}
+  items={[
+    { label: "Tokenised RWA market (total)", value: 32, valueLabel: "≈ $26 to 32bn", tone: "signal" },
+    { label: "of which tokenised Treasuries", value: 15, valueLabel: "≈ $15bn", tone: "blue" },
+    { label: "Tokenised real estate (RealT, Lofty, etc.)", value: 0.1, valueLabel: "< $0.1bn", tone: "accent" },
+  ]}
+  notes={["Real estate weighs less than 0.4% of the market, when it was meant to be its flagship application."]}
+  source="Sources: rwa.xyz, PYMNTS. 2026 orders of magnitude."
+  caption="The tokenised-asset market has quadrupled in a year, driven by financial claims. Tokenised real estate, however, remains below **$100m** of on-chain value, a tiny fraction of the total. Sources: rwa.xyz, PYMNTS."
+/>
+
+Why does this category thrive when the bricks break? Because the nature of the underlying differs. A tokenised Treasury is a near-liquid claim, held by a regulated custodian that actually controls the asset: the token is the fund share, settlement is clean, and there is no roof to fix, no property tax to pay, no tenant to evict. Rental real estate, by contrast, requires the token to enforce, off chain, a title governed by a land registry, a tax authority, courts and the physical state of a building. The blockchain has no grip on that substrate: it faithfully records who holds the token, without being able to guarantee that the token commands the brick. This is the limit any serious reading of [on-chain data](/en/guides/read-on-chain-data/) recalls: a faithful register is not a true register.
+
+## The liquidation balance
+
+The balance looks thin. According to the specialist press, the city's escrow account held less than $640,000, when the fiduciary's fees alone reached $178,000 in two months. Once unpaid taxes, administrative costs and the legal fees weighing on the group's companies are settled, there will be little left to distribute among token holders, and many properties face tax foreclosure.
+
+One must avoid condemning all of RWA from this single case: the findings of Outlier Media and WXYZ are journalistic, not settled by a court, and RealT is only one actor. But the structural lesson holds. Tokenising an asset does not create ownership; it records a claim on a register. The value of an RWA depends on the strength of the bridge between the chain and the legal world: title, taxation, justice, physical management. That bridge, RealT did not hold. Tokenised bricks and mortar did not fail because they were on a blockchain, but because the blockchain did not fix the roofs and did not hold the deeds.
+
+## Sources
+
+1. Outlier Media, "The real estate scheme gobbling up Detroit, one digital token at a time": more than 500 properties in Detroit tied to RealT (close to 1,000 claimed), purchases since 2019, token at $50.72, more than 250 investors per property, advertised yield around 10%, more than 1,000 blight fines, more than 100 vacant homes, founders Remy and Jean-Marc Jacobson: https://outliermedia.org/crypto-real-estate-realt-cryptocurrency-detroit/
+2. WXYZ Detroit, "Crypto real estate company RealT collected millions from investors for Detroit properties it doesn't own": $2.72m raised for 39 houses against $1.1m agreed, deeds still under Brewer Park Homes, Kathy Makino-Leipsitz quote, 3 of 25 properties under RealT's name, about 650 tokenised properties, city proceeding targeting 408 properties (Conrad Mallett): https://www.wxyz.com/news/crypto-real-estate-company-realt-collected-millions-from-investors-for-detroit-properties-it-doesnt-own
+3. Outlier Media, management and collapse of the model: distributions halted in February 2026, rents in escrow, more than 300 properties behind on taxes, more than 200 facing foreclosure, at least $2m owed to the city: https://outliermedia.org/realt-crypto-real-estate-detroit-landlord-property-management/
+4. Cryptoast, liquidation in early July 2026, about 14,000 French investors (Delomel firm), fiduciary Charles Bullock, escrow below $640,000, fiduciary fees of $178,000: https://cryptoast.fr/immobilier-tokenise-realt-liquidation-francais-concernes/
+5. PYMNTS, tokenised real-world asset value up fourfold to about $26bn, six categories above the billion: https://www.pymnts.com/blockchain/2026/tokenized-real-world-asset-value-jumps-fourfold-to-26-billion/
+6. rwa.xyz, tokenised-asset market tracking data: on-chain value around $31 to 32bn mid-2026, weight of Treasuries, tokenised real estate remaining below $100m: https://app.rwa.xyz/
