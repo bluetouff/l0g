@@ -1,0 +1,145 @@
+---
+title: "Semiconductors: the stack of constraints behind AI"
+description: "Record sales, GPUs, EUV lithography, foundry, memory and reshoring: reading semiconductors as a chain of bottlenecks rather than as a mere AI theme."
+pubDate: 2026-07-14T11:36:00+02:00
+updatedDate: 2026-07-14T11:36:00+02:00
+tags: ["markets", "semiconductors", "ai", "geopolitics", "valuation"]
+draft: false
+sourceArticle: "semi-conducteurs-pile-contraintes"
+sourceUpdatedDate: 2026-07-08
+---
+
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+The semiconductor is not a sector. It is a stack of constraints. At the top, the market sees AI, GPUs and the market cap of the winners. Below, there are wafers, lithography, memory, packaging, machines, energy, permits, talent, export controls and industrial timelines that do not compress with an earnings release.
+
+The right question is therefore not: "are chips expensive?" The useful question is: which part of the chain is already sold out, which part can still raise prices, and which part risks becoming the cycle's breaking point?
+
+## The observable fact
+
+The cycle has restarted very strongly. The [Semiconductor Industry Association, from WSTS statistics, announces on 6 July 2026](https://www.semiconductors.org/global-semiconductor-sales-increase-9-2-month-to-month-in-may/) global semiconductor sales of $120.6bn in May 2026. That is 9.2% more than April 2026 and 104.1% more than May 2025. The same release calls May 2026 the highest monthly total ever recorded and flags a fifteenth consecutive month of monthly rise.
+
+<InfographicBars
+  title="Demand breaks out of the classic cycle"
+  subtitle="Monthly global sales, three-month moving average"
+  items={[
+    { label: "May 2025", value: 59.1, valueLabel: "$59.1bn", tone: "muted" },
+    { label: "April 2026", value: 110.5, valueLabel: "$110.5bn", tone: "blue" },
+    { label: "May 2026", value: 120.6, valueLabel: "$120.6bn", tone: "signal" },
+  ]}
+  max={125}
+  note="May 2026 is presented by SIA as the highest monthly total ever recorded."
+  notes={[
+    "The series is published as a three-month moving average.",
+    "Reading: the shock is not only a cyclical recovery, it looks like a capacity shock."
+  ]}
+  source="Source: SIA / WSTS, 6 July 2026 release."
+  caption="The chip market has gone vertical again. **l0g reading:** the useful signal is not only the market size, but the ability of the bottlenecks to keep up."
+/>
+
+This aggregate figure masks the composition. The [SIA recalls in its introduction to semiconductors](https://www.semiconductors.org/semiconductors-101/what-are-semiconductors/) that components split into logic, memory, analog, sensors, optoelectronics and discretes. A car, an inverter, a modem, a GPU and a memory chip do not tell the same cycle. AI mainly pulls the top part: advanced logic, high-bandwidth memory, interconnect, advanced packaging and the associated production tools.
+
+## The stack, not the ticker
+
+An AI accelerator sold by NVIDIA is not only an NVIDIA product. It is a supply promise across a whole stack:
+
+1. chip design, software and design libraries;
+2. wafers produced by an advanced foundry;
+3. EUV and DUV lithography;
+4. fast memory, often close to the processor;
+5. advanced packaging to make compute, memory and interconnect communicate;
+6. network, optics, power, cooling and the data center's electrical capacity.
+
+The top of the stack shows up immediately in the accounts. [NVIDIA reported on 20 May 2026](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027) a record quarterly revenue of $81.6bn for its Q1 fiscal 2027, ended 26 April 2026. Data Center weighs $75.2bn, up 92% year on year. Under the old reporting split, Data Center compute reaches $60.4bn and Data Center networking $14.8bn.
+
+<InfographicBars
+  title="AI already pulls the top of the stack"
+  subtitle="NVIDIA, Q1 fiscal 2027 ended 26 April 2026"
+  items={[
+    { label: "Total revenue", value: 81.6, valueLabel: "$81.6bn", tone: "signal" },
+    { label: "Data Center", value: 75.2, valueLabel: "$75.2bn", tone: "accent" },
+    { label: "Data Center compute", value: 60.4, valueLabel: "$60.4bn", tone: "blue" },
+    { label: "Data Center networking", value: 14.8, valueLabel: "$14.8bn", tone: "amber" },
+  ]}
+  max={85}
+  note="The end customer buys compute; the upstream chain sells wafers, memory, packaging and machines."
+  source="Source: NVIDIA, Q1 FY2027 results, 20 May 2026."
+  caption="The GPU is only the visible face. **The constraint propagates** to memory, interconnect, advanced packaging, advanced wafers and tools."
+/>
+
+This signal is a demand fact. It is not proof that all the sector's valuations are justified. Demand turns into margin only if each layer of the stack receives its share of capacity at the right moment.
+
+## The foundry sets the pace
+
+The market can order GPUs faster than a foundry can build, qualify and fill an advanced line. That is the first reading point.
+
+As of 8 July 2026, [TSMC's investor page for Q2 2026](https://investor.tsmc.com/english/quarterly-results/2026/q2) indicates an earnings call scheduled for 16 July 2026 and a quiet period from 6 to 15 July. The data published on that date is therefore not yet an observed Q2 result: it is guidance. TSMC shows $35.90bn of realised revenue in Q1 2026 and guidance of $39.0 to $40.2bn for Q2 2026, with a gross margin expected between 65.5% and 67.5%.
+
+It is a load figure, not an oracle. It says the order book and prices still support the top of the stack. It does not say where the margins will be if the hyperscale customers slow, if geopolitical restrictions cut certain outlets, or if a chip generation arrives with a packaging or memory lag.
+
+## Lithography is the cleanest bottleneck
+
+The purest part of the industrial monopoly reads at ASML. [ASML describes its EUV systems](https://www.asml.com/en/products/euv-lithography-systems) as the technology that makes possible the mass production of the most advanced microprocessors. The company indicates that EUV uses 13.5 nm light, that this technology is unique to ASML, and that the NXE systems serve to produce complex layers for the 7 nm, 5 nm and 3 nm nodes.
+
+The technical detail matters because it makes substitution hard. To generate EUV light, ASML explains that a CO2 laser strikes tin droplets up to 50,000 times per second. EUV light is absorbed by almost everything, even air, so the optical path must be under vacuum. The wafer stage positions the plate with a precision on the order of a quarter of a nanometer and adjusts its position 20,000 times per second. ASML also indicates having invested more than €6bn in EUV R&D over 17 years.
+
+This is not a component you double by decree. It is an accumulated industrial system: optics, mechanics, vacuum, metrology, software, suppliers and know-how. [ASML reports for 2025](https://www.asml.com/en/investors/annual-report) €32.7bn of net sales, 52.8% gross margin and €4.7bn of R&D. The valuation of a supplier like ASML is debatable, but its role in the chain is simple: without a tooling layer, no advanced capacity.
+
+## Geography changes slowly
+
+Reshoring is real, but it does not remove the concentration risk. [CHIPS for America, on the NIST side](https://www.nist.gov/chips), recalls that the CHIPS and Science Act entrusted $50bn to the Department of Commerce: $11bn for the R&D ecosystem and $39bn for incentives to facilities and equipment in the United States.
+
+The [SIA / Boston Consulting Group report on supply-chain resilience](https://www.semiconductors.org/emerging-resilience-in-the-semiconductor-supply-chain/) projects a 203% rise in US manufacturing capacity by 2032, a US share of global capacity going from 10% to 14%, and a US share of advanced logic going from 0% in 2022 to 28% in 2032. The same document insists on the vulnerabilities that remain: advanced logic, legacy chips, memory, advanced packaging and key materials.
+
+<InfographicBars
+  title="Reshoring does not erase concentration"
+  subtitle="SIA / BCG projections for US capacity"
+  items={[
+    { label: "US fab capacity share 2022", value: 10, valueLabel: "10%", tone: "muted" },
+    { label: "US fab capacity share 2032", value: 14, valueLabel: "14%", tone: "blue" },
+    { label: "US advanced logic 2022", value: 0, valueLabel: "0%", tone: "muted" },
+    { label: "US advanced logic 2032", value: 28, valueLabel: "28%", tone: "signal" },
+  ]}
+  max={30}
+  note="Projection, not observed capacity."
+  notes={[
+    "The CHIPS Act accelerates local construction.",
+    "The risk shifts toward equipment, materials, packaging, talent and industrial yield."
+  ]}
+  source="Source: SIA / Boston Consulting Group, Emerging Resilience in the Semiconductor Supply Chain."
+  caption="Geography changes slowly. **An advanced fab does not replace the full ecosystem** that makes it productive."
+/>
+
+Geopolitics adds another filter. In its Q2 fiscal 2027 guidance, NVIDIA specifies not including any Data Center compute revenue from China. That sentence alone recalls that the AI cycle is not only a cycle of private demand. It is also a cycle of permission: who has the right to buy, who has the right to sell, who has the right to produce, and under what constraints.
+
+## Market reading
+
+The market prices three things at once.
+
+First, it prices demand. The SIA/WSTS sales and the NVIDIA figures say the observed demand is already massive. It is not a distant promise: the revenue exists.
+
+Next, it prices scarcity. EUV, advanced foundry, packaging and certain memories cannot be added instantly. When scarcity is real, margins rise and pricing power sets in.
+
+Finally, it prices duration. That is the fragile point. A semiconductor chain invests in years. AI demand sometimes reads in quarters. If the cloud investment cycle stays vertical, scarce capacity becomes an annuity. If customers slow before the new lines mature, the same capacity becomes a cycle risk.
+
+I therefore sort the theme into three floors:
+
+- **industrial quality**: ASML, TSMC, memory suppliers and advanced packaging have real barriers;
+- **demand leverage**: NVIDIA and the accelerators capture the visible part of the AI shock;
+- **second-round risk**: equipment, materials, secondary foundries and more commoditised chips may receive the orders after the peak of pricing power.
+
+## Scenarios
+
+**Central scenario.** AI demand stays strong enough to absorb the available advanced capacity. Margins stay high among the players that hold a non-substitutable constraint: accelerator design, advanced foundry, lithography, fast memory, packaging.
+
+**Stress scenario.** The hyperscalers slow their orders or spread out their data-center plans. The visible part of the theme corrects first, then the market tests the upstream suppliers. The risk is not only the fall in volumes: it is the gap between a rising cost base and prices that stop rising.
+
+**Geopolitical scenario.** Export restrictions, industrial policies and tensions around Taiwan do not mechanically destroy demand. They fragment the chain. In that case, the duplication of capacity can support equipment orders, but reduce overall efficiency: more capex to produce a partial resilience.
+
+## The l0g point
+
+Semiconductors have become a macro risk class because they mix four incompatible timeframes: the earnings quarter, the capex cycle, the long time of technology and the political time of export controls.
+
+The conclusion is not "buy the whole sector". The conclusion is narrower: semiconductors must be read as a map of bottlenecks. The figure that matters is not only market growth. It is the distance between final demand and the least stretchable layer of the chain.
+
+For now, that layer is not a single one. It is shared between advanced foundry, EUV, packaging, memory and data-center energy. It is precisely for that reason that the theme stays powerful. And precisely for that reason that it can break brutally if the market confuses AI demand, industrial capacity and durable annuity.
