@@ -1,0 +1,319 @@
+---
+title: "Ethereum and TradFi: the real-world test of programmable finance"
+description: "Why Ethereum matters for traditional finance: stablecoins, tokenisation, rollups, roadmap, risks and possible impact on global infrastructure."
+pubDate: 2026-07-14T10:38:00+02:00
+updatedDate: 2026-07-14T10:38:00+02:00
+tags: ["crypto", "ethereum", "tradfi", "tokenisation", "stablecoins", "rwa", "infrastructure"]
+draft: false
+sourceArticle: "ethereum-tradfi-infrastructure-finance"
+sourceUpdatedDate: 2026-07-08
+---
+
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+We must start by discarding two too-convenient ideas. Ethereum is not going to replace, on its own, banks, clearing houses, SWIFT, central securities depositories or central banks. But Ethereum is also not a mere on-chain casino separate from traditional finance. Since 2024, the border has moved: spot ether ETFs have installed the asset in regulated portfolios, stablecoins give a cash leg to on-chain activity, tokenised money market funds like BUIDL put public securities into smart contracts, and the big institutions look closely at the same technical promise that the [BIS](https://www.bis.org/publ/arpdf/ar2023e3.htm) formalises in its work on tokenisation: bringing the asset, the settlement money and the execution rules together in a single programmable layer.
+
+This article's thesis is measured: Ethereum matters because it serves as a public test bench for programmable finance. It shows, in production, how assets can be issued, transferred, composed, verified and settled around the clock on a common infrastructure. It does not yet resolve the hardest institutional questions: confidentiality, compliance, legal recourse, governance, smart-contract risk, rollup sequencers, bridges, quality of stablecoin reserves. But it makes visible mechanisms that often stayed buried in private databases and reconciliation chains.
+
+To understand Ethereum, one must separate five layers. **Ethereum** is the network and the settlement layer. **ETH** is the native asset that pays for gas and secures consensus. The **EVM** is the virtual machine that executes contracts. **Rollups** move execution to layer 2s by publishing proofs or commitments to Ethereum. **Financial applications** use this stack for stablecoins, DEXs, lending, tokenised funds, collateral and payments. Confusing these layers leads to bad conclusions: a rise in stablecoins is not proof of monetary superiority, a fall in L2 fees is not a guarantee of decentralisation, and a tokenised fund is not yet a complete institutional market.
+
+The useful technical entries are added to the l0g glossary: Ethereum, EVM, rollup, L2, blob, EIP-4844, data availability, sequencer, account abstraction, PBS and MEV.
+
+<InfographicBars
+  title="Ethereum in the financial stack"
+  subtitle="A layered reading, from native asset to TradFi rails"
+  items={[
+    { label: "Public settlement network", value: 5, valueLabel: "L1", tone: "signal" },
+    { label: "Economic security", value: 4.5, valueLabel: "staked ETH", tone: "blue" },
+    { label: "Programmable execution", value: 4, valueLabel: "EVM", tone: "amber" },
+    { label: "Scalability", value: 3.5, valueLabel: "rollups and blobs", tone: "accent" },
+    { label: "Usable finance", value: 3, valueLabel: "stablecoins, RWA, DeFi", tone: "muted" },
+  ]}
+  max={5}
+  note="The important layer is not a single brick: it is the stack."
+  notes={[
+    "TradFi looks not only at the price of ETH, but at settlement, proof and integration capacity.",
+    "Rollups improve usage cost, but add their own governance and operational risks.",
+  ]}
+  source="Sources: Ethereum.org, BIS, RWA.xyz, DefiLlama, consulted 8 July 2026."
+  caption="A pedagogical reading of Ethereum: **L1 for finality**, **L2 for execution**, **stablecoins and RWA for financial use**."
+/>
+
+## 1. Why Ethereum interests TradFi
+
+Traditional finance already has ledgers. It knows how to settle securities, manage collateral, centralise risk, run clearing houses and apply compliance rules. The problem is not the absence of infrastructure. The problem is fragmentation. Payments, securities, messages, confirmations, margin calls and ownership registers still circulate between silos. The [BIS](https://www.bis.org/publ/arpdf/ar2023e3.htm) describes this architecture as a series of separate databases, messaging and reconciliation before final settlement. Ethereum offers a public version of a different intuition: an asset can carry its own transfer rules and interact with other assets in the same execution environment.
+
+In a traditional operation, the message and the settlement are not the same thing. An instruction can be sent, confirmed, cleared, then settled later in another infrastructure. In Ethereum, the model is more brutal: a valid transaction modifies the ledger's state. This simplicity hides much technical complexity, but it gives a central idea: the ledger, execution and proof can be brought together. It is exactly the direction explored by institutional tokenisation projects, even when they do not choose a public chain.
+
+The [BIS Innovation Hub](https://www.bis.org/about/bisih/topics/fmis/agora.htm) does not build Project Agorá on Ethereum. It tests a programmable platform for wholesale cross-border payments with tokenised central-bank reserves and tokenised bank deposits. But the vocabulary is the same: atomic settlement, around-the-clock availability, embedded compliance logic, reduced reconciliation. Ethereum matters because it has exposed these properties in a public, adversarial, liquid environment, observable by all. TradFi can reject total permissionlessness and still take up part of the technical grammar.
+
+The second reason is liquidity. A financial infrastructure becomes useful when assets, counterparties, developers and tools gather there. On 8 July 2026, [DefiLlama](https://defillama.com/stablecoins/chains) shows about **$309.1 billion** of stablecoins, of which about **$151.9 billion** on Ethereum, or **49.15%** of the total. [Circle](https://www.circle.com/usdc) reports **$73.0 billion** of USDC in circulation on 6 July 2026 and native issuance on **35 networks**. [RWA.xyz](https://app.rwa.xyz/) shows **$30.87 billion** of tokenised assets distributed and **$398.59 billion** of assets represented, with Ethereum at **$16.4 billion** of tokenised value and **52.80%** market share in its by-chain table.
+
+These figures do not say that global finance has migrated on-chain. They say that the layer has enough liquidity to be tested by non-crypto-native actors. BlackRock's tokenised fund [BUIDL](https://app.rwa.xyz/) appears at **$2.4 billion** on RWA.xyz at the time of consultation. Reuters recalled that in March 2024 BlackRock had launched BUIDL on Ethereum, invested in cash, US Treasury bills and repo operations, with a market cap of **$530 million** in October 2024 in the article cited below. The trajectory is more interesting than the isolated figure: institutional tokenisation begins with the simplest, most liquid assets, the closest to cash.
+
+The third reason is access. Spot ether ETFs brought ETH into the world of listed products. The [Financial Times](https://www.ft.com/content/f36d7eeb-03d6-4dab-909a-d5d4524a4edb) reported that the first US spot ether ETFs, including BlackRock and Fidelity products and the conversion of the Grayscale trust, began trading in July 2024. This does not turn Ethereum into banking infrastructure. It creates a regulated interface between traditional markets and the network's native asset. For an institution, it becomes possible to distinguish three exposures: the price of ETH, the flows of on-chain applications, and the infrastructure value of the layer.
+
+The fourth reason is more discreet: operational experimentation. [Visa](https://www.reuters.com/business/finance/visa-crypto-chief-bets-stablecoin-settlement-sees-volumes-growing-2026-01-14/) told Reuters in January 2026 that its annualised stablecoin settlement volume reached **$4.5 billion**, a tiny fraction of its **$14.2 trillion** of annual volume, but growing according to its crypto chief. The important sentence is not that Visa would be replaced. It says the opposite: existing networks seek to connect stablecoins to their own merchant network. TradFi does not adopt Ethereum as a religion, it evaluates it as a new settlement and distribution layer.
+
+## 2. The minimal pedagogy: Ethereum in ten blocks
+
+**1. Ethereum is a shared computer, but the image is imperfect.** Each node verifies the network's state. Smart contracts are programs deployed on the chain. The useful metaphor is rather that of a programmable ledger: the balance, the rule and the proof live in the same logical space. That is why a stablecoin, a fund token, a lending protocol and a DEX can interact without classic bilateral integration.
+
+**2. ETH is not just a ticker.** ETH pays for gas, remunerates validators, can be staked and serves as an economic-security asset. The official [staking](https://ethereum.org/staking/) page shows about **40.4 million ETH staked**, or about **32%** of the supply, with an APR displayed at **2.6%** at the time of consultation. This yield is not a risk-free coupon: it depends on the protocol, slashing, the operator, liquidity and the price of ETH.
+
+**3. Ethereum moved to proof of stake.** The [Merge](https://ethereum.org/roadmap/) of 15 September 2022 replaced proof of work with proof of stake. Ethereum.org estimates this transition cut energy consumption by about **99.95%**. Its energy page gives a CCRI estimate of **0.0026 TWh per year** for post-Merge Ethereum, against **21 TWh** for proof-of-work Ethereum before the transition. The environmental criticism has not disappeared for all of crypto, but it no longer reads the same way for Ethereum.
+
+**4. The L1 is expensive by design.** Ethereum L1 maximises security and verifiability rather than raw user throughput. That is the reason for the rollup-centric strategy: everyday execution migrates to L2s, while Ethereum keeps the role of settlement, data availability and finality.
+
+**5. Rollups are not ordinary sidechains.** A rollup executes transactions off L1, groups the results, then publishes to Ethereum the necessary data and commitments. [Ethereum.org](https://ethereum.org/roadmap/scaling/) describes rollups as the central scaling method: they group transactions and send the results to Ethereum. The stake is that user cost falls without breaking the security link with the L1.
+
+**6. Blobs are a data corridor for rollups.** [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced blob transactions, packets of data not accessible to EVM execution but available to verify rollups. The EIP specifies a target of about **0.375 MB per block** and a limit of about **0.75 MB** in this stopgap toward full sharding. Blobs cost less than calldata because they are not kept indefinitely by execution.
+
+**7. Composability is the real conceptual leap.** A tokenised bond, a stablecoin, a liquidity pool and a lending contract can call one another. In traditional finance, this interoperability requires conventions, contracts, files, counterparties and integrations. On Ethereum, it can be native, but at the cost of a more direct software and financial contagion risk.
+
+**8. Accounts remain difficult.** A bank does not want to lose an asset because a private key was copied. Neither does an individual. [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) and [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) seek to improve the account experience: programmable validation, bundlers, paymasters, temporary code delegation for external accounts. This layer is indispensable if Ethereum wants to move beyond the audience already familiar with wallets.
+
+**9. L2 decentralisation remains unfinished.** [Ethereum.org](https://ethereum.org/roadmap/scaling/) notes that current rollups still use centralised components, notably sequencers and provers. [L2BEAT](https://l2beat.com/scaling/summary) ranks several large L2s with maturity stages and mentions of additional trust assumptions. The message is simple: L2s are useful, but you must read their own risks, not just their marketing link to Ethereum.
+
+**10. Ethereum is not central-bank money.** The BIS insists on the singleness of money: forms of money must exchange at par, anchored by central-bank money. Private stablecoins can serve as an on-chain cash leg, but they are not central-bank reserves. This difference is decisive for wholesale markets, banks and systemic infrastructure.
+
+## 3. The numbers that really matter
+
+The trap with Ethereum is to choose the figure that confirms your side. Optimists cite TVL, DEX volumes, stablecoins and ETFs. Sceptics cite hacks, speculation, historical fees, sequencer concentration and dependence on stablecoins. Both readings must be kept.
+
+<InfographicBars
+  title="Where on-chain finance is already measurable"
+  subtitle="Orders of magnitude, not prediction"
+  items={[
+    { label: "Stablecoins, all chains", value: 309.1, valueLabel: "$309.1bn", tone: "signal" },
+    { label: "Stablecoins on Ethereum", value: 151.9, valueLabel: "$151.9bn", tone: "blue" },
+    { label: "USDC in circulation", value: 73.0, valueLabel: "$73.0bn", tone: "amber" },
+    { label: "RWA distributed", value: 30.87, valueLabel: "$30.9bn", tone: "accent" },
+    { label: "RWA on Ethereum", value: 16.4, valueLabel: "$16.4bn", tone: "muted" },
+  ]}
+  max={309.1}
+  note="The bulk of the notional stays stablecoin; RWAs are smaller but more institutional."
+  notes={[
+    "Ethereum represents about 49% of stablecoins per DefiLlama at the time of consultation.",
+    "RWA.xyz shows Ethereum at 52.80% share of the tracked tokenised assets.",
+  ]}
+  source="Sources: DefiLlama, RWA.xyz, Circle. Data consulted 8 July 2026."
+  caption="The amounts do not prove final adoption. They show **where the observable liquidity already is**."
+/>
+
+On 8 July 2026, [DefiLlama Chains](https://defillama.com/chains) shows Ethereum with about **$38.9 billion** of DeFi TVL, **1,909 protocols**, about **$152.5 billion** of stablecoin market cap and about **$967.9 million** of 24-hour DEX volume. The same page places Solana, BSC, Tron and Base far behind Ethereum in DeFi TVL, but with different profiles: Solana has high DEX volume, Tron concentrates stablecoins, Base plays the role of a mainstream rollup. Ethereum is not alone, but it remains the centre of gravity for complex programmable finance.
+
+TVL must also be read with caution. A 2025 academic article on [TVL verifiability](https://arxiv.org/abs/2505.14565) recalls that aggregators rely on heterogeneous methodologies and sometimes community contributions. Another paper on [TVL and double-counting](https://arxiv.org/abs/2404.11745) stresses that wrapping, leverage and derivatives can inflate the apparent amounts. On l0g, TVL is therefore a thermometer, not an audited balance sheet.
+
+On rollups, [L2BEAT](https://l2beat.com/scaling/summary) shows **22 rollups**, **6 validiums and optimiums**, and a long tail of other projects. Arbitrum One appears at **$17.39 billion** of secured value, Base at **$11.25 billion**, OP Mainnet at **$1.41 billion** at the time of consultation. The lesson is not only scale. L2BEAT also flags stages and trust assumptions: the L2 ecosystem is already financial, but still in a hardening phase.
+
+<InfographicBars
+  title="Rollups: execution leaves the L1, the risk does not disappear"
+  subtitle="Secured value per L2BEAT, partial reading"
+  items={[
+    { label: "Arbitrum One", value: 17.39, valueLabel: "$17.39bn", tone: "signal" },
+    { label: "Base", value: 11.25, valueLabel: "$11.25bn", tone: "blue" },
+    { label: "OP Mainnet", value: 1.41, valueLabel: "$1.41bn", tone: "amber" },
+    { label: "Mantle", value: 1.26, valueLabel: "$1.26bn", tone: "accent" },
+    { label: "Starknet", value: 0.39, valueLabel: "$0.39bn", tone: "muted" },
+  ]}
+  max={17.39}
+  note="A rollup can cut fees while keeping a still-imperfect sequencer or governance."
+  notes={[
+    "Secured value alone does not tell the level of decentralisation.",
+    "For institutional use, sequencer, proof, upgrade and bridge risks must be read project by project.",
+  ]}
+  source="Source: L2BEAT, scaling summary page, consulted 8 July 2026."
+  caption="The L2s are the engine of the user experience. But **the quality of the link to Ethereum varies**."
+/>
+
+On Ethereum itself, the [Ethereum for Institutions](https://institutions.ethereum.org/) site presents the network as an institutional liquidity layer and shows, at the time of consultation, about **10.9 years** of uptime, **40.6 million ETH** securing the network, **$70.5 billion** of economic value associated with staking, **$161 billion** of stablecoin TVL, **$39 billion** of DeFi TVL and **$2.22 billion** of average 24-hour DEX volume. This source is an ecosystem showcase, so read it as such. It remains useful to understand the institutional argument carried by the Ethereum Foundation.
+
+The most underestimated figure is perhaps not TVL, but the stablecoin share. Stablecoins are the cash leg of the on-chain economy. Without them, tokenised RWAs remain hard to settle, DEXs are limited to crypto against crypto, and international payments lose their reference asset. With them, Ethereum hosts a private quasi-dollar, programmable, mobile and liquid. That is useful, but also fragile: the trust depends on the issuer, the reserve, the legal framework, redemptions and compliance.
+
+## 4. The bridge with TradFi: stablecoins, RWAs, ETFs, tokenised deposits
+
+The first bridge is the stablecoin. A well-designed stablecoin turns a claim on an issuer into a transferable token. [Circle](https://www.circle.com/usdc) presents USDC as redeemable 1:1 and backed by cash or cash equivalents, with monthly attestations. For a bank or a manager, it is not final money. It is a very liquid private claim, usable as a settlement instrument in on-chain applications. That is the whole difference: the stablecoin gives an operational cash leg, but not the ultimate quality of central-bank money.
+
+The second bridge is the tokenisation of simple financial assets. Tokenised money market funds are the cleanest case: short duration, liquid assets, simple accounting, collateral demand. [Reuters](https://www.reuters.com/technology/abu-dhabi-firm-launch-tokenized-us-treasuries-fund-2024-10-31/) wrote that tokenised Treasuries formed a growing segment, mostly on Ethereum, and recalled that BUIDL invested 100% in cash, Treasury bills and repo. [WSJ](https://www.wsj.com/livecoverage/fed-meeting-fomc-interest-rate-decision-march-2024/card/blackrock-launches-first-tokenized-fund-on-ethereum-blockchain-nzDSJjH5mEijUzKO24T4) reported in March 2024 that BlackRock had launched its first tokenised fund on a public blockchain with Securitize.
+
+The third bridge is the ETF. A spot ether ETF does not put market finance on Ethereum; it puts ETH in a market wrapper. This difference is fundamental. The ETF makes the asset accessible to allocators who do not want to manage keys, wallets or smart contracts. It does not circulate securities on Ethereum. It brings ETH's price risk into securities accounts. To understand the infrastructural impact, one must therefore separate ETFs on ETH from asset tokenisation on Ethereum.
+
+The fourth bridge is the tokenised deposit. This is where the debate becomes systemic. The BIS clearly distinguishes private stablecoins from tokenised deposits and wholesale CBDCs. In a tokenised-deposit model, the client holds a programmable bank claim, not a stablecoin issued outside the banking system. Project Agorá tests precisely this kind of logic with central banks and private institutions, but in a controlled wholesale environment. Ethereum has demonstrated public programmability. Wholesale finance wants programmability with safe settlement money, confidentiality and native compliance.
+
+The fifth bridge is collateral management. A tokenised asset can circulate faster, be used in lending contracts, be immobilised as collateral, be settled against stablecoin or against tokenised deposit. It is also the most dangerous zone. If the same asset is reused, framed by several contracts, valued by oracle, locked by a bridge then financed elsewhere, the risk becomes legible but also faster. Composability reduces friction and accelerates cascades.
+
+## Pedagogical example: a tokenised money-market-fund share
+
+Take a deliberately simple case. A manager issues a tokenised money-market-fund share. The fund's portfolio holds cash, Treasury bills and repo. The token represents an economic share of the fund. A qualified investor buys this share against traditional dollars or against stablecoin, depending on the issuer's set-up. Once the token is received in their institutional wallet, they can keep it, transfer it to an authorised counterparty, use it as collateral in a compatible contract, or redeem it from the issuer per the fund's rules.
+
+In a classic infrastructure, several ledgers intervene: the fund's transfer agent, the custodian bank, the cash account, the messaging, the investor controls, the confirmations, then the internal entries. In a tokenised version, part of this logic can condense: the token carries the ownership identifier, the contract encodes certain transfer restrictions, the on-chain history gives an audit trail, and the cash leg can be a stablecoin if the framework allows. The potential gain comes from this condensation, not from the word blockchain in itself.
+
+The important point is synchronisation. If a fund share and a stablecoin live in the same execution environment, a transaction can swap the two legs together. It is the intuition of atomic settlement: everything happens or nothing happens. In traditional finance, delivery versus payment also exists, but it depends on specific market infrastructures. On Ethereum, a contract can reproduce a form of programmable DvP, provided both assets are valid, liquid and legally recognised.
+
+The limits appear immediately. The token only has value if the issuer honours the redemption, if the underlying asset exists, if custody is correct, if the law recognises the ledger, if the list of authorised investors is maintained, if the eventual oracle is reliable, and if the contract cannot be arbitrarily updated. The blockchain can make the transfer clean. It does not replace due diligence on the issuer.
+
+This example explains why tokenised money market funds are more credible than overly broad promises of real-estate or private-credit tokenisation. A Treasury bill is liquid, standardised, short, closely followed and valuable. A building, a private loan or a disputed claim requires law, expertise, recovery and event management. The simpler the asset, the more the on-chain part can create value. The more complex the asset, the more the off-chain returns to the centre.
+
+## 5. Why Ethereum, and not just a bank database
+
+A bank database can be faster, cheaper and more compliant than Ethereum. A private blockchain can be simpler to govern. A central-bank unified ledger can better preserve settlement money. The question is therefore not: why not rebuild Ethereum in-house? The question is: what properties only a public, open and liquid infrastructure brings?
+
+First property: common access. An application can deploy a contract, issue an asset, read a stablecoin, integrate a DEX, plug in an oracle, use a wallet and access existing liquidity without signing a bilateral integration with each actor. In traditional finance, integration is a fixed cost. On Ethereum, integration is often a public software interface. This does not remove the law, but it changes the speed of innovation.
+
+Second property: auditability. Balances, contracts and transactions are observable. The limits are real: the address is not always the actor, flows can be internalised on exchanges, and institutional confidentiality is insufficient. But for a risk analyst, Ethereum produces raw data that private infrastructures do not always publish. That is the interest of a public ledger: it also reveals the fragilities.
+
+Third property: relative neutrality. Ethereum does not require a single actor to authorise the execution of each application. This point attracts developers and frightens regulators. It explains the fast innovation and the difficulty of control. For TradFi, public neutrality is useful as a liquidity layer and a market standard, but problematic when sanctions, KYC, confidentiality and judicial freezes must be applied.
+
+Fourth property: programmable settlement. A contract can impose a transfer rule, verify a condition, distribute a yield, lock collateral, liquidate a position or synchronise several legs of a transaction. The [BIS](https://www.bis.org/publ/arpdf/ar2023e3.htm) speaks of programmability as a way to create arrangements not practicable with current rails. Ethereum is one of the production proofs of this idea, even if the BIS prefers to anchor it in central-bank money for wholesale finance.
+
+Fifth property: the tooling network. Developers, audits, indexers, wallets, custodians, rollups, ERC standards, stablecoins, DEXs, oracles, block explorers and analytics constitute an invisible capital. A bank can create a private blockchain, but it does not instantly recreate this ecosystem. It is the same logic as for the Internet: value comes not only from the protocol, but from the accumulated layer of tools and standards.
+
+## 6. The roadmap: read Ethereum as a succession of constraints
+
+The Ethereum roadmap is not a classic product plan. [Ethereum.org](https://ethereum.org/roadmap/) specifies that it is built by a development community, that elements may change, and that long horizons are intent rather than hard commitment. It must therefore be read as a map of constraints: security, scalability, decentralisation, user experience, censorship resistance, node lightness.
+
+<InfographicBars
+  title="Ethereum roadmap: from energy security to rollup scalability"
+  subtitle="Past and next official milestones, simplified reading"
+  items={[
+    { label: "The Merge", value: 2022.75, valueLabel: "15 Sep 2022", tone: "signal" },
+    { label: "Shapella", value: 2023.28, valueLabel: "12 Apr 2023", tone: "blue" },
+    { label: "Dencun and EIP-4844", value: 2024.20, valueLabel: "13 Mar 2024", tone: "amber" },
+    { label: "Pectra", value: 2025.35, valueLabel: "7 May 2025", tone: "accent" },
+    { label: "Fusaka", value: 2025.92, valueLabel: "3 Dec 2025", tone: "muted" },
+    { label: "Glamsterdam", value: 2026.75, valueLabel: "H2 2026", tone: "signal" },
+  ]}
+  max={2027}
+  note="Each step removes a different constraint: energy, withdrawals, L2 data, UX, availability, block construction."
+  notes={[
+    "The official roadmap indicates that future dates and contents remain subject to change.",
+    "Glamsterdam is notably to bring enshrined PBS and block-level access lists per the roadmap page consulted.",
+  ]}
+  source="Source: Ethereum.org roadmap, consulted 8 July 2026."
+  caption="Ethereum advances by removing bottlenecks: **consensus**, **data**, **wallets**, **rollups**, **MEV**."
+/>
+
+The Merge resolved the energy constraint and changed the security model. Shapella made staking withdrawals possible, turning staking into a more institutional activity. Dencun, with EIP-4844, created blobs and cut the cost of data for rollups. Pectra brought EIP-7702 to give external accounts capabilities close to smart wallets, raised certain validator-related parameters and increased blob throughput. Fusaka, activated on 3 December 2025 per the roadmap, introduces PeerDAS, blob adjustments and safer gas limits. Glamsterdam, expected in the second half of 2026 in the roadmap, notably aims at enshrined proposer-builder separation and block-level access lists.
+
+The logic is not that of a blockchain simply increasing block size. Ethereum seeks to preserve the ability to verify the network while moving execution to L2s. This strategy creates a trade-off: the L1 stays robust and relatively expensive; the L2s become the user interface; the data needed for the L2s must stay available long enough to verify their state; nodes must not become out-of-reach data-center machines.
+
+The key word is **data availability**. A rollup can publish a result, but participants must be able to reconstruct or contest the state if needed. If the data is not available, security becomes theoretical. EIP-4844 created a cheaper path for temporary data. PeerDAS goes further: instead of each node downloading everything, validators can sample the data. The goal is to increase blob throughput without exploding hardware requirements.
+
+The second key word is **PBS**. In a network with MEV, specialised actors know how to build more profitable blocks than ordinary validators. Proposer-builder separation acknowledges this reality: builders build, proposers choose. [Ethereum.org](https://ethereum.org/roadmap/security/) presents PBS as a censorship-resistance improvement, especially with mechanisms like inclusion lists or encrypted transactions. The institutional stake is clear: a market cannot depend on an opaque and concentrated block construction without safeguards.
+
+The third key word is **finality**. Ethereum already has economic finality, but [Ethereum.org](https://ethereum.org/roadmap/security/) explains that single slot finality would reduce the current window for chain reorganisation, around **15 minutes**, toward finality in a single slot. For TradFi, finality is a familiar language: when a settlement is final, it must no longer be cancelled by a simple state change. SSF is therefore more than a technical optimisation; it is a translation of the settlement vocabulary into a public protocol.
+
+The fourth key word is **user experience**. Institutions do not want their traders handling seed phrases like personal passwords. Neither do individuals. [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) introduces a form of account abstraction through UserOperations and bundlers, without a consensus change. [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) lets an external account temporarily delegate code, to improve wallets. In plain terms: transaction batching, recovery, permissions, gas payment by a third party, signature policies and automation become easier.
+
+## 7. Effects of the roadmap for finance
+
+For a DeFi protocol, a fall in L2 cost means more users and more operations. For a TradFi actor, it means something else: the possibility of moving low-margin flows to programmable rails. A stablecoin transfer costing several dollars in fees stays a niche product. A transfer costing a few cents, or less, becomes a building block of more common operations. That is why the Ethereum roadmap is also a cost roadmap.
+
+For a tokenised fund, the roadmap changes distribution. If fees fall and wallets become programmable, a fund can be used as collateral, fractionated, transferred, integrated into treasury contracts or settlement platforms. The useful effect is not to put a PDF of a fund share on a blockchain. The useful effect is to make the fund share operable by software, with transfer rules and a common ledger.
+
+For payments, Ethereum does not necessarily have to be the chain where every merchant receives a stablecoin. Mass payments can go through L2, specialised chains or existing networks. But Ethereum serves as an anchoring and liquidity layer for part of the assets. The nuance is important: global infrastructure does not become monolithic. It becomes more stratified, with settlement, execution, distribution and compliance on different layers.
+
+For banks, the most sensitive point remains the liability side. A payment stablecoin can divert deposits. A tokenised deposit can preserve the banking relationship. A wholesale CBDC can provide the ultimate settlement money. The BIS pushes the unified-ledger logic to preserve the two-tier monetary system. Ethereum, for its part, shows the public, competitive and open side of this logic. The real impact could be indirect: forcing regulated infrastructures to adopt more programmability.
+
+For capital markets, tokenisation can transform market hours, delivery-versus-payment, collateral management and distribution. But the impact depends on the quality of the tokenised assets. Tokenising a Treasury bill or a money-market-fund share is simpler than tokenising a private loan, a listed stock, a bond with clauses, a derivative or an illiquid claim. The more complex the asset, the more the chain must manage off-chain events: default, tax withholdings, sanctions, votes, corporate actions, investor restrictions.
+
+## 8. Ethereum against institutional rails: complement, competitor or laboratory?
+
+The answer depends on the level of the stack. Against SWIFT, Ethereum is not a simple substitute. SWIFT is an interbank messaging system, not a universal settlement blockchain. Stablecoins transfer value on-chain, but merchant acceptance, banking compliance, sanctions controls and bridges to traditional accounts remain off-chain. The Reuters article on Visa is telling: stablecoins progress, but Visa insists on the need to connect to the existing merchant-acceptance network.
+
+Against clearing houses, Ethereum is not yet a replacement. A CCP manages default, mutualises resources, imposes margins, defines liquidation rules and operates in a precise legal framework. A smart contract can automatically liquidate a position, but it does not replace the whole governance of a systemic infrastructure. Automation can even worsen a liquidation if the oracles, liquidity or queues tighten.
+
+Against custodians, Ethereum is more threatening conceptually. An on-chain asset carries its ownership register in the token. But for real-world assets, this register only has value if the law recognises it. A fund's token can be the official register if the issuer adopts it so. A building's or a claim's token must be connected to documents, jurisdictions, transfer agents, taxation and default procedures. The off-chain link is the Achilles' heel of RWAs.
+
+Against wholesale payment systems, Ethereum is a laboratory more than a system core. Central banks want central money, access rules, confidentiality, resilience and explicit governance. Project Agorá shows the direction: tokenise reserves and deposits in a programmable environment. Ethereum proved the open model; central banks seek an institutional, controlled, perhaps interoperable version.
+
+Against crypto markets, Ethereum is already infrastructure. DEXs, lending, liquid staking, stablecoins, NFTs, RWAs, restaking, rollups and wallets form an economy there. This status is not guaranteed forever. Solana, Tron, Base, Arbitrum, BSC, Hyperliquid and other networks capture specific uses. But Ethereum keeps the advantage of the standard, liquidity, history and depth of tools.
+
+## 9. The risks a serious article must not smooth over
+
+The first risk is legal. A token can represent an asset, but the law decides the recourse. Who is the owner? In which jurisdiction? What procedure in case of key loss, transfer error, sanction, death, fraud or issuer bankruptcy? Finance does not live only in settlement; it lives in recourse.
+
+The second risk is the stablecoin. If the cash leg rests on a private issuer, you must read the reserve, the attestations, the redemptions, the banking concentration, the regulatory framework, the exposure to the US Treasury and the freeze capacity. A stablecoin can be technically mobile and legally fragile. It can also be very liquid and politically sensitive. The on-chain dollar is a private infrastructure with public consequences.
+
+The third risk is the smart contract. An automatic rule is useful if it is correct. It becomes dangerous if it contains a bug, a poorly governed admin permission, an oracle dependence or a poorly controlled update. Code transparency is not enough: it takes audit, formalisation, monitoring, insurance, size limits and emergency procedures.
+
+The fourth risk is the rollup. L2s reduce costs but can introduce centralised sequencers, pauses, bridges, governance keys, challenge delays, validiums dependent on external data availability, and dependencies on teams or foundations. For institutional use, the question is not only "is it cheaper?" but "who can stop, censor, update, prove, contest or recover?"
+
+The fifth risk is MEV. Transaction ordering has value. On an on-chain market, block construction can determine who is executed, liquidated, arbitraged or protected. PBS, inclusion lists, encrypted mempools and application design seek to limit this problem. But MEV turns the infrastructure into market microstructure. A serious TradFi cannot ignore it.
+
+The sixth risk is confidentiality. Ethereum is public by default. Institutions need commercial confidentiality: positions, clients, flows, collateral, order sizes. Solutions exist, from zero-knowledge cryptography to permissioned environments, but they add complexity and trade-offs. A fully transparent market is not always a fair market; it can also become a predation ground.
+
+The seventh risk is social governance. Ethereum is not a company. Its roadmap forms through research, clients, core developers, validators, applications, foundations and social consensus. This distributed governance is a strength of resilience, but it does not offer the same kind of accountability as a regulated infrastructure. In a crisis, the question "who decides?" stays harder than in a classic organisation.
+
+The eighth risk is the illusion of economic finality. A transaction finalised on Ethereum can settle a token. It does not automatically settle the real world behind the token. A Treasury token can be transferred, but the investor must still read the issuer, custody, restrictions, taxation and rights. The blockchain accelerates the register. It does not remove the contract.
+
+<InfographicBars
+  title="The risks to read before crying revolution"
+  subtitle="Qualitative l0g score: 5 = critical constraint for TradFi"
+  items={[
+    { label: "Legal recourse and off-chain link", value: 5, valueLabel: "critical", tone: "accent" },
+    { label: "Quality of stablecoin reserves", value: 4.5, valueLabel: "very high", tone: "amber" },
+    { label: "Sequencers and L2 governance", value: 4, valueLabel: "high", tone: "blue" },
+    { label: "Smart contracts and oracles", value: 4, valueLabel: "high", tone: "signal" },
+    { label: "Institutional confidentiality", value: 3.5, valueLabel: "blocking depending on use", tone: "muted" },
+  ]}
+  max={5}
+  note="This chart is not a market measure; it is an editorial reading grid."
+  notes={[
+    "Ethereum can settle a token, not necessarily the full law attached to the asset.",
+    "Global finance will adopt programmability more easily than raw permissionlessness.",
+  ]}
+  source="l0g reading based on the risks from Ethereum.org, BIS, L2BEAT, Circle and RWA."
+  caption="The measured thesis: Ethereum matters because it exposes the new rails, **not because it erases the old risks**."
+/>
+
+## 10. The plausible scenarios
+
+**Scenario 1: Ethereum becomes the public liquidity layer for part of the tokenised assets.** Stablecoins and money market funds stay the first use cases. Liquid RWAs progress. Rollups capture the user experience. Banks do not migrate their system core, but use Ethereum or its L2s for distribution, collateral, specialised settlements and access to crypto-native liquidity. It is the scenario most compatible with current data.
+
+**Scenario 2: TradFi takes up the technology without taking up Ethereum.** Central banks and commercial banks develop permissioned ledgers, unified ledgers, tokenised deposits and interbank platforms. Ethereum stays a public laboratory and an innovation layer, but the large regulated volumes stay in controlled infrastructures. This is also plausible, especially for wholesale payments and systemic securities.
+
+**Scenario 3: the L2s become the real interfaces, Ethereum becomes the final settlement.** The user no longer knows they are using Ethereum. They interact with Base, Arbitrum, Optimism, an abstracted wallet, a banking app or a broker interface. Blobs, PeerDAS and PBS serve in the background. In this scenario, Ethereum gains depth but loses mainstream visibility.
+
+**Scenario 4: fragmentation and competition.** Tron keeps a large share of stablecoins, Solana captures trading and fast payments, institutional chains capture permissioned RWAs, Ethereum keeps complex DeFi and L2 settlement. This fragmentation is probably more realistic than a single winner.
+
+**Scenario 5: a confidence shock.** A large stablecoin, a bridge, a rollup, a tokenised fund or a systemic protocol suffers an incident. Institutional adoption slows, regulators harden, private infrastructures gain ground. Ethereum has already been through crises, but TradFi's entry raises the political cost of a failure.
+
+## 11. What must be understood in the end
+
+Ethereum matters for TradFi for a simple reason: it turns settlement into a computing environment. In the historical rails, assets often circulate through messages, confirmations, reconciliations and separate settlements. On Ethereum, an asset can be a program, and a program can settle a transfer. This property is not enough to govern global finance, but it changes the terrain.
+
+Ethereum is not important because it would already be safer than a central bank, more compliant than a bank, faster than a database or more stable than a clearing house. It is important because it concentrates, in a public and liquid system, the experiments that traditional finance seeks to internalise: tokenisation, atomic settlement, collateral mobility, 24/7 markets, composability, auditability and account programming.
+
+The Ethereum roadmap tries to resolve a contradiction: keep a verifiable and decentralised L1, while serving a much larger economy. Rollups, blobs, PeerDAS, account abstraction, PBS and faster finality are answers to this contradiction. The technical details matter because they determine whether Ethereum stays a costly laboratory or becomes a settlement infrastructure usable at scale.
+
+TradFi will not adopt Ethereum wholesale. It will take pieces: regulated stablecoins, tokenised funds, institutional wallets, custody, L2s, proofs, ERC standards, settlement interfaces, on-chain analytics. It will reject or frame other pieces: anonymity, absence of recourse, purely technical finality, social governance, limitless composability. The most probable impact is not a replacement of the existing rails. It is a competitive and architectural pressure on them.
+
+The sentence to remember is this: Ethereum is the public proof that finance can become programmable, but not the proof that finance can do without institutions. For the investor, it is an asset and an infrastructure bet. For the banker, it is a settlement layer and a disintermediation risk. For the regulator, it is an observable market surface and a hard-to-control zone. For the analyst, it is a place to watch the next financial plumbing being built before it is standardised.
+
+## Primary sources
+
+- [Ethereum roadmap](https://ethereum.org/roadmap/)
+- [Ethereum scaling roadmap](https://ethereum.org/roadmap/scaling/)
+- [Ethereum security roadmap](https://ethereum.org/roadmap/security/)
+- [Ethereum user experience roadmap](https://ethereum.org/roadmap/user-experience/)
+- [Ethereum staking](https://ethereum.org/staking/)
+- [Ethereum energy consumption](https://ethereum.org/energy-consumption/)
+- [EIP-4844: Shard Blob Transactions](https://eips.ethereum.org/EIPS/eip-4844)
+- [ERC-4337: Account Abstraction Using Alt Mempool](https://eips.ethereum.org/EIPS/eip-4337)
+- [EIP-7702: Set Code for EOAs](https://eips.ethereum.org/EIPS/eip-7702)
+- [Ethereum for Institutions](https://institutions.ethereum.org/)
+- [DefiLlama stablecoins by chain](https://defillama.com/stablecoins/chains)
+- [DefiLlama chains](https://defillama.com/chains)
+- [RWA.xyz](https://app.rwa.xyz/)
+- [Circle USDC](https://www.circle.com/usdc)
+- [L2BEAT scaling summary](https://l2beat.com/scaling/summary)
+- [BIS Annual Economic Report 2023, tokenisation and unified ledger](https://www.bis.org/publ/arpdf/ar2023e3.htm)
+- [BIS Project Agorá](https://www.bis.org/about/bisih/topics/fmis/agora.htm)
+- [Reuters, BlackRock BUIDL and tokenized Treasuries](https://www.reuters.com/technology/abu-dhabi-firm-launch-tokenized-us-treasuries-fund-2024-10-31/)
+- [WSJ, BlackRock launches tokenized fund on Ethereum](https://www.wsj.com/livecoverage/fed-meeting-fomc-interest-rate-decision-march-2024/card/blackrock-launches-first-tokenized-fund-on-ethereum-blockchain-nzDSJjH5mEijUzKO24T4)
+- [FT, spot ether ETFs approved and launched](https://www.ft.com/content/f36d7eeb-03d6-4dab-909a-d5d4524a4edb)
+- [Reuters, Visa stablecoin settlement](https://www.reuters.com/business/finance/visa-crypto-chief-bets-stablecoin-settlement-sees-volumes-growing-2026-01-14/)
+- [Towards Verifiability of Total Value Locked in DeFi](https://arxiv.org/abs/2505.14565)
+- [Piercing the Veil of TVL: DeFi Reappraised](https://arxiv.org/abs/2404.11745)
