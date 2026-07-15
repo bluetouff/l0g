@@ -146,6 +146,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Interval fund', nom: 'Fonds à intervalle', def: "Fonds semi-liquide qui n'autorise les rachats que par fenêtres périodiques et plafonnées. Tout en détenant des actifs illiquides, d'où un risque de gating en cas d'afflux de sorties." },
       { sigle: 'NAV', nom: 'Net Asset Value', def: "Valeur nette d'inventaire : valeur des actifs d'un fonds moins ses dettes. Pour les fonds privés, elle est estimée et non cotée, d'où des questions d'opacité." },
       { sigle: 'NAV loan', nom: 'Prêt sur valeur liquidative', def: "Emprunt contracté par un fonds contre la valeur liquidative de l'ensemble de son portefeuille, souvent pour financer distributions ou rachats. Levier ajouté au niveau du fonds, peu visible." },
+      { sigle: 'Rated feeder note', nom: 'Note de fonds nourricier notée', def: "Titre de dette émis par un véhicule nourricier investi dans un fonds privé, assorti d'une notation, le plus souvent privée. Permet à un assureur de loger une exposition de type fonds en la traitant comme une obligation notée, avec une charge en capital réduite. Structure au cœur de l'examen engagé par la NAIC." },
+      { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Cession de réserves d'assurance-vie ou de rentes à un réassureur, souvent affilié au même groupe et installé offshore, aux Bermudes en particulier. Le réassureur reprend les engagements et réinvestit les actifs, fréquemment en crédit privé et en produits structurés, sous un régime prudentiel plus souple que celui du régulateur d'origine." },
+      { sigle: 'NAIC', nom: 'National Association of Insurance Commissioners', def: "Association des régulateurs d'assurance des États américains, qui harmonise les règles prudentielles du secteur. Son bureau des valeurs mobilières (SVO) fixe le traitement en capital des actifs détenus par les assureurs ; ses réformes de 2026 lui permettent d'outrepasser des notations jugées trop favorables." },
       { sigle: 'AUM', nom: 'Assets Under Management', def: "Encours sous gestion : montant total des actifs gérés par un fonds ou une société de gestion." },
       { sigle: 'PIK', nom: 'Payment In Kind', def: "Paiement en nature : intérêts d'une dette versés non en cash mais en dette supplémentaire. Signal de tension sur la trésorerie de l'emprunteur." },
       { sigle: 'LP', nom: 'Limited Partner', def: "Investisseur commanditaire d'un fonds (assureur, fonds de pension, family office) qui apporte le capital sans gérer." },
@@ -392,7 +395,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-08';
+export const glossaryUpdatedIso = '2026-07-16';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
