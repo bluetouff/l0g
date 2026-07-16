@@ -1,0 +1,19 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.bluetouff/l0g",
+  "title": "l0g.fr Risk Intelligence",
+  "description": "Read-only macro risk analysis, evidence, signals, and source-backed research from l0g.fr.",
+  "version": "1.15.0",
+  "websiteUrl": "https://l0g.fr/mcp/",
+  "repository": {
+    "url": "https://github.com/bluetouff/l0g",
+    "source": "github",
+    "subfolder": "mcp-server"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://l0g.fr/api/mcp"
+    }
+  ]
+}
