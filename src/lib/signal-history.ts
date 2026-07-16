@@ -6,7 +6,7 @@ import { riskSignalMeta } from '../config/risk-signals.ts';
 const SITE = 'https://l0g.fr';
 const VERSION = '1';
 const SIGNAL_KEYS = ['us', 'eu', 'yen', 'energie', 'debt'] as const;
-const SIGNAL_GENERATED_AT = new Date().toISOString();
+const SIGNAL_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 
 type SignalKey = (typeof SIGNAL_KEYS)[number];
 

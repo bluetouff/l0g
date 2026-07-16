@@ -76,6 +76,7 @@ function validateOpenapiArtifacts() {
     ['FreshnessSurface', 'dist/api/v1/freshness.json'],
     ['IntegritySurface', 'dist/api/v1/integrity.json'],
     ['ChangefeedSurface', 'dist/api/v1/changes.json'],
+    ['BlackBoxSurface', 'dist/api/v1/black-box.json'],
     ['RiskSnapshot', 'dist/api/v1/risk.json'],
     ['DebtRiskSnapshot', 'dist/api/v1/debt-risk.json'],
   ];
@@ -252,6 +253,16 @@ for (const article of catalog.articles || []) {
 assert(sources.registry?.version, 'sources.registry.version manquant');
 assert(sources.registry?.testPolicy, 'sources.registry.testPolicy manquant');
 assert(integrity.externalAuthenticity?.status === 'github-sigstore-attestation-configured', 'politique externalAuthenticity Sigstore manquante');
+
+const blackBox = readJson('dist/api/v1/black-box.json');
+assert(blackBox.version === '2', 'Black Box append-only v2 non publié');
+assert(blackBox.coverage?.pointInTime === true, 'Black Box v2 doit déclarer pointInTime');
+assert(blackBox.archive?.appendOnly === true, 'politique append-only Black Box absente');
+let previousFrameHash = null;
+for (const frame of blackBox.frames || []) {
+  assert(frame.previousFrameHash === previousFrameHash, `chaîne Black Box rompue: ${frame.frameId}`);
+  previousFrameHash = frame.frameHash;
+}
 
 const malformedGuideLinks = llmsFull
   .split('\n')

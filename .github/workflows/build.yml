@@ -16,7 +16,8 @@ permissions:
 
 concurrency:
   group: build-${{ github.ref }}
-  cancel-in-progress: true
+  # Une publication forme une transaction built + archive. Ne pas couper entre les deux pushes.
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -31,11 +32,57 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Fix deterministic build timestamp
+        run: echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
+
+      - name: Checkout or initialize append-only Black Box archive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git ls-remote --exit-code origin refs/heads/black-box-archive >/dev/null 2>&1; then
+            git fetch origin black-box-archive:refs/remotes/origin/black-box-archive
+            git worktree add -B black-box-archive .black-box-archive origin/black-box-archive
+          else
+            mkdir -p .black-box-archive/frames
+            git -C .black-box-archive init -q -b black-box-archive
+            git -C .black-box-archive config user.name "github-actions[bot]"
+            git -C .black-box-archive config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            touch .black-box-archive/frames/.gitkeep
+            git -C .black-box-archive add frames/.gitkeep
+            git -C .black-box-archive commit -q -m "Initialize append-only Black Box archive"
+          fi
+          node scripts/black-box-archive.mjs validate --archive .black-box-archive
+
       - name: Install (lockfile strict)
         run: npm ci
 
       - name: Build (Astro + Agent Surface test + Pagefind)
+        env:
+          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
         run: npm run build
+
+      - name: Append immutable Black Box frame
+        env:
+          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
+          BLACK_BOX_COMPUTED_AT: ${{ env.L0G_BUILD_TIMESTAMP }}
+          BLACK_BOX_ATTESTATION_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          node scripts/black-box-archive.mjs append --archive .black-box-archive --dist dist --git-sha "$GITHUB_SHA" --id-suffix "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          changes=$(git -C .black-box-archive status --porcelain)
+          test -n "$changes"
+          if printf '%s\n' "$changes" | grep -Ev '^\?\? frames/[^/]+\.json$'; then
+            echo "Refus: une frame passée a été modifiée, supprimée ou renommée."
+            exit 1
+          fi
+
+      - name: Rebuild from immutable archive
+        env:
+          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
+        run: |
+          npx astro build
+          npm run test:agent-surface
+          npx pagefind --site dist
+          npm run test:internal-links
 
       - name: Test MCP server against built Agent Surface
         env:
@@ -68,6 +115,7 @@ jobs:
             dist/agents.json
             dist/openapi.json
             dist/api/v1/integrity.json
+            dist/api/v1/black-box.json
 
       - name: Publish to `built` branch
         env:
@@ -81,3 +129,13 @@ jobs:
           git commit -q -m "build ${GITHUB_SHA::8}"
           git branch -M built
           git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" built
+
+      - name: Publish append-only Black Box archive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git -C .black-box-archive config user.name "github-actions[bot]"
+          git -C .black-box-archive config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C .black-box-archive add frames
+          git -C .black-box-archive commit -q -m "frame ${GITHUB_SHA::8}"
+          git -C .black-box-archive push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:black-box-archive

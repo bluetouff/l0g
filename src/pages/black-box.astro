@@ -35,6 +35,10 @@ const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft))
 const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
 const recorder = buildBlackBoxSurface(posts, guides, readRiskSnapshot());
 const latest = recorder.frames.at(-1);
+const latestSignals = (latest?.signals ?? []) as Array<Record<string, any>>;
+const latestSources = [...new Map(latestSignals
+  .filter((signal) => signal.sourceUrl)
+  .map((signal) => [String(signal.sourceUrl), { label: String(signal.label || signal.instrument || 'source'), sourceUrl: String(signal.sourceUrl) }])).values()];
 
 const trustItems = [
   { label: 'frames hashées', href: '/api/v1/black-box.json' },
@@ -130,14 +134,14 @@ const jsonLd = {
         <p>{recorder.coverage.firstFrameDate ?? 'n/a'} → {recorder.coverage.lastFrameDate ?? 'n/a'}</p>
       </article>
       <article class="bb-card">
-        <span class="mono-label">observations</span>
-        <strong>{recorder.coverage.observations}</strong>
-        <p>{recorder.coverage.instruments.length} instruments point-in-time</p>
+        <span class="mono-label">chaîne</span>
+        <strong>{recorder.coverage.instruments.length}</strong>
+        <p>instruments archivés point-in-time</p>
       </article>
       <article class="bb-card">
-        <span class="mono-label">alertes</span>
-        <strong>{recorder.coverage.levelChanges}</strong>
-        <p>franchissements de niveau publiés</p>
+        <span class="mono-label">mode</span>
+        <strong>{recorder.archive.appendOnly ? 'append-only' : 'n/a'}</strong>
+        <p>aucune frame passée recalculée</p>
       </article>
     </section>
 
@@ -148,13 +152,14 @@ const jsonLd = {
           <ul>
             <li><strong>Date</strong><span>{latest.date}</span></li>
             <li><strong>Frame hash</strong><span>{latest.frameHash}</span></li>
-            <li><strong>Fraîcheur</strong><span>{latest.freshness.status}, {latest.freshness.completeSignals}/5 signaux présents</span></li>
+            <li><strong>Git SHA</strong><span>{latest.gitSha}</span></li>
+            <li><strong>Calculé</strong><span>{fr(latest.computedAt)}</span></li>
           </ul>
         </div>
         <div class="bb-panel">
           <p class="mono-label glow">// signaux enregistrés</p>
           <ul>
-            {latest.signals.map((signal) => (
+            {latestSignals.map((signal) => (
               <li>
                 <strong>{signal.label}</strong>
                 <span>{signal.value ?? 'n/a'} / {signal.scale} · {signal.level ?? 'n/a'} · {fr(signal.observedAt)}</span>
@@ -169,7 +174,7 @@ const jsonLd = {
       <div class="bb-panel">
         <p class="mono-label glow">// sources disponibles</p>
         <ul>
-          {latest?.sources.available.length ? latest.sources.available.map((source) => (
+          {latestSources.length ? latestSources.map((source) => (
             <li>
               <strong>{source.label}</strong>
               <span>{source.sourceUrl}</span>
@@ -202,12 +207,21 @@ const jsonLd = {
       };
 
       function render(frame, requested) {
+        result.replaceChildren();
+        const strong = document.createElement('strong');
+        const line = document.createElement('span');
         if (!frame) {
-          result.innerHTML = `<strong>Non rejouable</strong><span>Aucune frame publique antérieure ou égale au ${requested}.</span>`;
+          strong.textContent = 'Non rejouable';
+          line.textContent = `Aucune frame publique antérieure ou égale au ${requested}.`;
+          result.append(strong, line);
           return;
         }
-        const signals = frame.signals.map((signal) => `${signal.instrument}:${signal.value ?? 'n/a'}`).join(' · ');
-        result.innerHTML = `<strong>Frame ${frame.date}</strong><span>${frame.signals.length} signaux · ${signals}</span><span>hash ${frame.frameHash}</span>`;
+        const signals = (Array.isArray(frame.signals) ? frame.signals : []).map((signal) => `${signal.instrument}:${signal.value ?? 'n/a'}`).join(' · ');
+        const hash = document.createElement('span');
+        strong.textContent = `Frame ${frame.date}`;
+        line.textContent = `${frame.signals.length} signaux · ${signals}`;
+        hash.textContent = `hash ${frame.frameHash}`;
+        result.append(strong, line, hash);
       }
 
       form.addEventListener('submit', async (event) => {

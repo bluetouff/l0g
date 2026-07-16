@@ -41,6 +41,7 @@ for (const required of [
   'get_signal_history',
   'get_risk_diff',
   'get_black_box',
+  'build_research_pack',
   'get_claim',
   'get_claim_evidence',
   'list_article_claims',
@@ -223,6 +224,21 @@ console.log('search_content(productivity gains,en) ->', englishSearch.count, 'r�
 
 const catalogSearch = await call('search_content', { query: 'stablecoins', mode: 'catalog', limit: 3 });
 console.log('search_content(stablecoins,catalog) ->', catalogSearch.count, 'résultats; #1:', catalogSearch.results?.[0]?.title);
+
+const researchPack = await call('build_research_pack', { query: 'productivity gains', language: 'en', riskWindow: '7d', limit: 3 });
+if (!researchPack.documents?.length || researchPack.documents.some((document) => document.language !== 'en')) {
+  throw new Error('build_research_pack ne respecte pas la langue anglaise');
+}
+if (!Array.isArray(researchPack.claimEvidence) || !Array.isArray(researchPack.citationUrls)) {
+  throw new Error('build_research_pack incomplet');
+}
+if (researchPack.claims?.some((claim) => claim.language !== 'fr')) {
+  throw new Error('build_research_pack duplique des claims anglaises');
+}
+console.log('build_research_pack(en) -> documents:', researchPack.documents.length, '| claims:', researchPack.claims.length, '| replay:', researchPack.asOf?.replayable);
+
+const historicalPack = await call('build_research_pack', { query: 'dollar yen', language: 'fr', asOf: '2026-03-12', limit: 2 });
+if (historicalPack.asOf?.replayable !== false) throw new Error('build_research_pack doit signaler un asOf antérieur à la genesis comme non rejouable');
 
 const recent = await call('list_recent_analyses', { limit: 3 });
 console.log('list_recent_analyses ->', recent.count, '; #1:', recent.analyses?.[0]?.title);

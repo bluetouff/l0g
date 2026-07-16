@@ -106,7 +106,7 @@ const DASHBOARD_HOSTS = new Map([
   ['energie.l0g.fr', 'Énergie'],
   ['yct.l0g.fr', 'Yen Carry'],
 ]);
-const EVIDENCE_INDEXED_AT = new Date().toISOString();
+const EVIDENCE_INDEXED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 
 function cleanLabel(value: string | undefined, fallback: string) {
   return String(value || fallback)

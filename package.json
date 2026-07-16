@@ -17,7 +17,9 @@
     "test:internal-links": "node scripts/check-internal-links.mjs",
     "lint:editorial": "node scripts/lint-editorial.mjs",
     "astro": "astro",
-    "review": "node scripts/review-claims.mjs"
+    "review": "node scripts/review-claims.mjs",
+    "black-box:validate": "node scripts/black-box-archive.mjs validate",
+    "black-box:append": "node scripts/black-box-archive.mjs append"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.0",

@@ -100,6 +100,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes, signalHistory |
 | `get_freshness` | `limit?` | derniers contenus, compteurs, temporalité par signal et politique de fraîcheur |
 | `search_content` | `query`, `language?`, `mode?`, `limit?` | recherche bilingue sur l'index canonique partagé avec l'Agent Surface et WebMCP |
+| `build_research_pack` | `query`, `language`, `asOf?`, `riskWindow?`, `limit?` | paquet de preuves déterministe : documents, claims canoniques, sources, graphe, fraîcheur, Risk Diff, éléments adverses, limites et URLs citables |
 | `get_claims` | `articleSlug?`, `language?`, `kind?`, `query?`, `limit?` | claims françaises canoniques ; un slug anglais est résolu vers ses preuves françaises |
 | `get_claim` | `claimId` | une claim précise, ses liens ressource et son article |
 | `get_claim_evidence` | `claimId`, `limit?` | preuve et références d'une claim, avec contenus reliés isolés dans `relatedContent` |

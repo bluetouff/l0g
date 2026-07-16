@@ -30,8 +30,8 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.11.0';
-export const AGENT_GENERATED_AT = new Date().toISOString();
+export const AGENT_VERSION = '1.12.0';
+export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
 const CLAIM_KIND_ENUM = ['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion'];
@@ -2017,8 +2017,8 @@ export function buildOpenApiContract() {
             'question',
             'coverage',
             'replay',
+            'archive',
             'inputs',
-            'currentFreshness',
             'frames',
             'policy',
             'license',
@@ -2033,8 +2033,8 @@ export function buildOpenApiContract() {
             question: { type: 'string' },
             coverage: { $ref: '#/components/schemas/BlackBoxCoverage' },
             replay: { $ref: '#/components/schemas/BlackBoxReplayPolicy' },
+            archive: { $ref: '#/components/schemas/BlackBoxArchivePolicy' },
             inputs: { $ref: '#/components/schemas/BlackBoxInputs' },
-            currentFreshness: { $ref: '#/components/schemas/RiskDiffFreshness' },
             frames: { type: 'array', items: { $ref: '#/components/schemas/BlackBoxFrame' } },
             policy: { $ref: '#/components/schemas/BlackBoxPolicy' },
             license: { type: 'string' },
@@ -2043,16 +2043,15 @@ export function buildOpenApiContract() {
         },
         BlackBoxCoverage: {
           type: 'object',
-          required: ['frames', 'firstFrameDate', 'lastFrameDate', 'instruments', 'observations', 'levelChanges', 'pointInTime'],
+          required: ['frames', 'firstFrameDate', 'lastFrameDate', 'instruments', 'pointInTime', 'archiveAvailable'],
           additionalProperties: false,
           properties: {
             frames: { type: 'integer' },
             firstFrameDate: { type: ['string', 'null'], format: 'date' },
             lastFrameDate: { type: ['string', 'null'], format: 'date' },
-            instruments: { type: 'array', items: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] } },
-            observations: { type: 'integer' },
-            levelChanges: { type: 'integer' },
-            pointInTime: { type: 'boolean' },
+            instruments: { type: 'array', items: { type: 'string' } },
+            pointInTime: { const: true },
+            archiveAvailable: { type: 'boolean' },
           },
         },
         BlackBoxReplayPolicy: {
@@ -2076,11 +2075,10 @@ export function buildOpenApiContract() {
         },
         BlackBoxInputs: {
           type: 'object',
-          required: ['signals', 'integrity', 'freshness', 'changes', 'risk', 'debtRisk'],
+          required: ['signals', 'freshness', 'changes', 'risk', 'debtRisk'],
           additionalProperties: false,
           properties: {
             signals: { type: 'string', format: 'uri' },
-            integrity: { type: 'string', format: 'uri' },
             freshness: { type: 'string', format: 'uri' },
             changes: { type: 'string', format: 'uri' },
             risk: { type: 'string', format: 'uri' },
@@ -2090,33 +2088,68 @@ export function buildOpenApiContract() {
         BlackBoxFrame: {
           type: 'object',
           required: [
-            'date',
-            'replayableAt',
+            'schemaVersion',
+            'frameId',
+            'date', 'observedAt', 'retrievedAt', 'computedAt', 'gitSha',
+            'previousFrameHash',
+            'attestation',
+            'contemporaryHashes',
             'signals',
-            'sources',
-            'models',
-            'articles',
-            'methodologyChanges',
-            'triggeredSignals',
             'freshness',
-            'integrity',
+            'changes',
             'limitations',
             'frameHash',
           ],
           additionalProperties: false,
           properties: {
+            schemaVersion: { const: '2' },
+            frameId: { type: 'string' },
             date: { type: 'string', format: 'date' },
-            replayableAt: { type: 'string', format: 'date-time' },
-            signals: { type: 'array', items: { $ref: '#/components/schemas/BlackBoxSignal' } },
-            sources: { $ref: '#/components/schemas/BlackBoxSources' },
-            models: { type: 'array', items: { $ref: '#/components/schemas/BlackBoxModelState' } },
-            articles: { type: 'array', items: { $ref: '#/components/schemas/ChangefeedEntry' } },
-            methodologyChanges: { type: 'array', items: { $ref: '#/components/schemas/ChangefeedEntry' } },
-            triggeredSignals: { type: 'array', items: { $ref: '#/components/schemas/BlackBoxTriggeredSignal' } },
-            freshness: { $ref: '#/components/schemas/BlackBoxFrameFreshness' },
-            integrity: { $ref: '#/components/schemas/BlackBoxFrameIntegrity' },
+            observedAt: { type: ['string', 'null'], format: 'date-time' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            computedAt: { type: 'string', format: 'date-time' },
+            gitSha: { type: 'string', pattern: '^[a-fA-F0-9]{7,64}$' },
+            previousFrameHash: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
+            attestation: { $ref: '#/components/schemas/BlackBoxAttestation' },
+            contemporaryHashes: { type: 'array', minItems: 1, items: { $ref: '#/components/schemas/BlackBoxContemporaryHash' } },
+            signals: { type: 'array', items: { type: 'object' } },
+            freshness: { type: 'object' },
+            changes: { type: 'object' },
             limitations: { type: 'array', items: { type: 'string' } },
             frameHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+          },
+        },
+        BlackBoxArchivePolicy: {
+          type: 'object',
+          required: ['branch', 'layout', 'appendOnly', 'hashAlgorithm', 'validation'],
+          additionalProperties: false,
+          properties: {
+            branch: { const: 'black-box-archive' },
+            layout: { const: 'frames/*.json' },
+            appendOnly: { const: true },
+            hashAlgorithm: { const: 'sha-256' },
+            validation: { type: 'string' },
+          },
+        },
+        BlackBoxAttestation: {
+          type: 'object',
+          required: ['provider', 'reference', 'subjects'],
+          additionalProperties: false,
+          properties: {
+            provider: { enum: ['github-sigstore', 'none'] },
+            reference: { type: 'string' },
+            subjects: { type: 'array', items: { type: 'string' } },
+          },
+        },
+        BlackBoxContemporaryHash: {
+          type: 'object',
+          required: ['path', 'sha256', 'bytes', 'canonicalization'],
+          additionalProperties: false,
+          properties: {
+            path: { type: 'string' },
+            sha256: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            bytes: { type: 'integer', minimum: 0 },
+            canonicalization: { enum: ['integrity-manifest-v1', 'canonical-json-v1'] },
           },
         },
         BlackBoxSignal: {
@@ -2247,11 +2280,12 @@ export function buildOpenApiContract() {
         },
         BlackBoxPolicy: {
           type: 'object',
-          required: ['promise', 'noPostHoc', 'correctionPolicy', 'changelog'],
+          required: ['promise', 'noPostHoc', 'genesis', 'correctionPolicy', 'changelog'],
           additionalProperties: false,
           properties: {
             promise: { type: 'string' },
             noPostHoc: { type: 'string' },
+            genesis: { type: 'string' },
             correctionPolicy: { type: 'string', format: 'uri' },
             changelog: { type: 'string', format: 'uri' },
           },

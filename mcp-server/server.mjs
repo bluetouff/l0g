@@ -50,7 +50,7 @@ const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 102
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.16.0';
+const MCP_VERSION = '1.17.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -712,6 +712,22 @@ const SearchOutput = ToolOutput.extend({
   count: z.number().optional(),
   results: z.array(SearchResultSchema).optional(),
 }).strict();
+const ResearchPackOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  query: z.string().optional(),
+  language: LanguageSchema.optional(),
+  parameters: AnyRecord.optional(),
+  asOf: AnyRecord.optional(),
+  documents: z.array(z.any()).optional(),
+  claims: z.array(z.any()).optional(),
+  primarySources: z.array(z.any()).optional(),
+  claimEvidence: z.array(z.any()).optional(),
+  freshness: AnyRecord.optional(),
+  riskDiff: z.any().nullable().optional(),
+  adversarialFindings: z.array(z.any()).optional(),
+  knownLimitations: z.array(z.string()).optional(),
+  citationUrls: z.array(z.string()).optional(),
+}).passthrough();
 const ClaimsOutput = ToolOutput.extend({
   version: z.string().optional(),
   count: z.number().optional(),
@@ -2008,6 +2024,121 @@ function buildServer(data) {
       });
     }
   );
+
+  server.registerTool(
+    'build_research_pack',
+    {
+      description:
+        "Compose en un appel un paquet de recherche déterministe : documents classés, claims canoniques, sources primaires, " +
+        "liens claim -> preuve, fraîcheur, Risk Diff, éléments adverses, limites et URLs citables. Ne produit aucune opinion d’investissement.",
+      inputSchema: {
+        query: z.string().min(2).max(200).describe('Question ou thème de recherche.'),
+        language: LanguageSchema.describe('Langue des documents recherchés : fr ou en.'),
+        asOf: z.string().optional().describe('Date point-in-time optionnelle au format YYYY-MM-DD.'),
+        riskWindow: z.enum(['1d', '7d', '30d']).default('7d').describe('Fenêtre Risk Diff.'),
+        limit: z.number().int().min(1).max(10).default(5).describe('Nombre maximum de documents.'),
+      },
+      outputSchema: ResearchPackOutput,
+      annotations: { readOnlyHint: true },
+    },
+    async ({ query, language, asOf, riskWindow, limit }) => {
+      const requestedAsOf = asOf ? String(asOf).trim() : null;
+      if (requestedAsOf && !/^\d{4}-\d{2}-\d{2}$/.test(requestedAsOf)) {
+        return errorReply({ error: 'asOf invalide', acceptedDateFormat: 'YYYY-MM-DD' });
+      }
+      const searched = await searchFullText(dataDir, catalog, sharedSearchIndex, query, Math.min(10, limit * 2), language);
+      const documents = searched
+        .filter((document) => !requestedAsOf || !document.date || String(document.date).slice(0, 10) <= requestedAsOf)
+        .slice(0, limit);
+      const canonicalArticleSlugs = new Set(documents
+        .filter((document) => document.type === 'article' && String(document.canonicalId || '').startsWith('article:'))
+        .map((document) => String(document.canonicalId).slice('article:'.length)));
+      const queryTokens = tokensOf(query);
+      const rankedClaims = claimsList
+        .filter((claim) => canonicalArticleSlugs.has(claim.articleSlug))
+        .map((claim) => {
+          const text = norm(`${claim.claim} ${claim.articleTitle}`);
+          const relevance = queryTokens.reduce((total, token) => total + (text.includes(token) ? 1 : 0), 0);
+          return { claim, relevance };
+        })
+        .sort((a, b) => b.relevance - a.relevance || String(a.claim.id).localeCompare(String(b.claim.id)))
+        .slice(0, Math.min(30, Math.max(limit * 4, limit)))
+        .map(({ claim }) => compactClaim(claim));
+      const referenceMap = new Map();
+      for (const claim of rankedClaims) {
+        for (const reference of claim.references || []) {
+          if (reference.href && !referenceMap.has(reference.href)) referenceMap.set(reference.href, reference);
+        }
+      }
+      const referenceHostsUsed = new Set([...referenceMap.values()].map((reference) => reference.host || hostFromUrl(reference.href)).filter(Boolean));
+      const selectedPrimarySources = primarySources.filter((source) => {
+        const sourceHost = hostFromUrl(source.officialUrl);
+        return [...referenceHostsUsed].some((host) => host === sourceHost || host.endsWith(`.${sourceHost}`));
+      });
+      const claimEvidence = rankedClaims.map((claim) => ({
+        claimId: claim.id,
+        claimResource: `l0g://claims/${encodeURIComponent(claim.id)}`,
+        evidenceTool: { name: 'get_claim_evidence', arguments: { claimId: claim.id } },
+        articleUrl: claim.articleUrl,
+        references: (claim.references || []).map((reference) => reference.href),
+      }));
+      const selectedRiskWindow = (riskDiff?.windows || []).find((item) => item.window === riskWindow) || null;
+      const archiveFrames = Array.isArray(blackBox?.frames) ? [...blackBox.frames].sort((a, b) => String(a.date).localeCompare(String(b.date))) : [];
+      const selectedFrame = requestedAsOf ? archiveFrames.filter((frame) => String(frame.date) <= requestedAsOf).at(-1) || null : archiveFrames.at(-1) || null;
+      const adversePattern = /\b(?:risque|baisse|contraction|stress|dégradation|degradation|incertitude|inversement|adverse|downside|decline|contraction|uncertainty|contradiction|counterpoint)\b/iu;
+      const adversarialFindings = rankedClaims
+        .filter((claim) => ['inférence', 'scénario'].includes(claim.kind) || adversePattern.test(claim.claim))
+        .slice(0, 10)
+        .map((claim) => ({
+          claimId: claim.id,
+          kind: claim.kind,
+          text: claim.claim,
+          status: 'candidate-not-verified-contradiction',
+          basis: ['inférence', 'scénario'].includes(claim.kind) ? 'claim prospective ou inférentielle' : 'marqueur lexical adverse',
+        }));
+      const knownLimitations = [
+        'Composition déterministe de surfaces existantes ; aucune opinion ni recommandation d’investissement.',
+        'Les claims anglaises ne sont pas dupliquées : les documents EN pointent vers les claims canoniques françaises.',
+        'Les éléments adverses sont des candidats lexicaux ou typés, pas des contradictions validées automatiquement.',
+        ...(riskDiff?.limitations || []),
+      ];
+      if (requestedAsOf && !selectedFrame) knownLimitations.push('Aucune frame Black Box archivée avant asOf : le paquet est filtré par date mais ne constitue pas un replay point-in-time probant.');
+      if (requestedAsOf && selectedFrame) knownLimitations.push('La frame asOf atteste les hashes et l’état Black Box archivés ; les documents et claims renvoyés restent le corpus courant filtré par date, pas une copie historique de leurs octets.');
+      const citationUrls = [...new Set([
+        ...documents.map((document) => document.url),
+        ...rankedClaims.map((claim) => claim.articleUrl),
+        ...referenceMap.keys(),
+        ...selectedPrimarySources.map((source) => source.officialUrl),
+      ].filter(Boolean))];
+      return reply({
+        version: '1', query, language,
+        parameters: { asOf: requestedAsOf, riskWindow, limit },
+        asOf: {
+          requested: requestedAsOf,
+          replayable: requestedAsOf ? Boolean(selectedFrame) : null,
+          scope: requestedAsOf ? 'black-box-frame-only' : null,
+          frameId: selectedFrame?.frameId || null,
+          frameHash: selectedFrame?.frameHash || null,
+          archiveStartDate: blackBox?.replay?.archiveStartDate || null,
+        },
+        documents,
+        claims: rankedClaims,
+        primarySources: selectedPrimarySources,
+        claimEvidence,
+        freshness: {
+          generated: freshness.generated,
+          corpus: freshness.corpus,
+          signalFreshness: freshness.signalFreshness,
+          translations: documents.filter((document) => document.language === 'en').map((document) => ({ canonicalId: document.canonicalId, status: document.translationStatus })),
+        },
+        riskDiff: selectedRiskWindow ? { anchorDate: riskDiff.anchorDate, window: selectedRiskWindow, freshness: riskDiff.freshness } : null,
+        adversarialFindings,
+        knownLimitations,
+        citationUrls,
+      });
+    }
+  );
+
 
   server.registerTool(
     'get_claims',
