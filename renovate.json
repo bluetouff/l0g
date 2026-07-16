@@ -1,6 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":dependencyDashboard", ":semanticCommits"],
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    "helpers:pinGitHubActionDigests"
+  ],
   "timezone": "Europe/Paris",
   "schedule": ["after 6am and before 9am on monday"],
 
@@ -22,6 +27,7 @@
     {
       "description": "GitHub Actions : pin au SHA + fusion auto",
       "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["pin", "digest"],
       "automerge": true,
       "automergeType": "branch"
     },

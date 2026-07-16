@@ -51,7 +51,7 @@ const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 102
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.19.0';
+const MCP_VERSION = '1.20.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -90,11 +90,13 @@ function parsePositiveInteger(value, fallback, options = {}) {
 }
 const CURRENT_SHA = activeGitSha();
 const SHA_STATUS = /^[0-9a-f]{40}$/i.test(CURRENT_SHA) ? 'verified-hex' : 'unknown';
+const RELEASE_ATTESTED = process.env.MCP_RELEASE_ATTESTED === '1';
 const MCP_SERVER_INFO = {
   name: 'l0g.fr',
   version: MCP_VERSION,
   sha: CURRENT_SHA,
   shaStatus: SHA_STATUS,
+  releaseAttested: RELEASE_ATTESTED,
   transport: 'streamable-http',
   path: MCP_PATH,
 };

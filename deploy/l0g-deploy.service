@@ -1,5 +1,6 @@
 [Unit]
-Description=Deploy l0g.fr static site from GitHub built branch
+Description=Deploy attested l0g.fr static release from GitHub built branch
+Documentation=https://github.com/bluetouff/l0g/blob/main/README.md
 After=network-online.target
 Wants=network-online.target
 
@@ -8,19 +9,34 @@ Type=oneshot
 User=l0gdeploy
 Group=l0gdeploy
 ExecStart=/usr/local/bin/l0g-deploy.sh
+TimeoutStartSec=10min
+UMask=0077
 
 # Durcissement
 NoNewPrivileges=true
 PrivateTmp=true
+PrivateDevices=true
+PrivateIPC=true
 ProtectSystem=strict
 ReadWritePaths=/var/www/html/l0g
 ProtectHome=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
+ProtectKernelLogs=true
 ProtectControlGroups=true
-RestrictAddressFamilies=AF_INET AF_INET6
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
 LockPersonality=true
 MemoryDenyWriteExecute=true
 SystemCallFilter=@system-service
 SystemCallErrorNumber=EPERM
+SystemCallArchitectures=native
+LimitNOFILE=4096
+LimitCORE=0
+MemoryMax=512M
+TasksMax=128

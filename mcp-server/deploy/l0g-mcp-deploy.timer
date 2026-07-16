@@ -1,0 +1,12 @@
+[Unit]
+Description=Poll GitHub for an attested l0g.fr MCP release
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+RandomizedDelaySec=30
+Persistent=true
+Unit=l0g-mcp-deploy.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,33 @@
+# Licences de l0g
+
+Copyright (c) 2026 Olivier Laurelli, alias bluetouff.
+
+Ce dépôt applique deux licences selon la nature du fichier.
+
+## Code: MIT
+
+Le code source, les scripts, les tests, les workflows, les configurations et
+les unités de déploiement sont placés sous licence MIT. Le texte complet est
+disponible dans `LICENSES/MIT.txt`.
+
+SPDX-License-Identifier: MIT
+
+## Textes, données et artefacts éditoriaux: CC BY 4.0
+
+Les articles, guides, textes du site, documentations éditoriales, jeux de
+données publiés, snapshots, graphes, schémas éditoriaux et autres artefacts de
+recherche sont placés sous licence Creative Commons Attribution 4.0
+International. Le texte complet est disponible dans
+`LICENSES/CC-BY-4.0.txt`.
+
+SPDX-License-Identifier: CC-BY-4.0
+
+Attribution recommandée:
+
+> Olivier Laurelli / l0g.fr, titre de la ressource, version ou date, URL,
+> licence CC BY 4.0. Indiquer toute modification.
+
+Les contenus tiers, marques, citations, données sources et éléments incorporés
+qui ne sont pas détenus par Olivier Laurelli restent soumis aux droits de leurs
+auteurs ou producteurs. Ces licences ne concèdent que les droits que le
+titulaire de ce dépôt est autorisé à concéder.

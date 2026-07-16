@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "title": "l0g Editorial Protocol 1.0",
+  "version": "1.0.0",
+  "status": "stable",
+  "releasedAt": "2026-07-16",
+  "author": {
+    "name": "Olivier Laurelli",
+    "alias": "bluetouff"
+  },
+  "repository": "https://github.com/bluetouff/l0g",
+  "canonicalUrl": "https://l0g.fr/protocole-editorial/",
+  "specification": "SPECIFICATION.md",
+  "schemas": [
+    "schemas/article.schema.json",
+    "schemas/evidence-pack.schema.json"
+  ],
+  "example": {
+    "article": "example/article.md",
+    "metadata": "example/article.json",
+    "evidencePack": "example/evidence-pack.json"
+  },
+  "tests": ["tests/conformance.mjs"],
+  "licenses": {
+    "codeAndSchemas": "MIT",
+    "textDataAndEditorialArtifacts": "CC-BY-4.0",
+    "notice": "LICENSE"
+  },
+  "integrity": "SHA256SUMS"
+}

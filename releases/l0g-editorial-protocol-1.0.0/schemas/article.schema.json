@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l0g.fr/schemas/editorial-protocol/1.0/article.schema.json",
+  "title": "l0g Editorial Protocol article",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "protocolVersion",
+    "id",
+    "title",
+    "description",
+    "language",
+    "publishedAt",
+    "authors",
+    "license",
+    "contentPath",
+    "evidencePack",
+    "claims",
+    "limitations"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "protocolVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 8 },
+    "description": { "type": "string", "minLength": 24 },
+    "language": { "type": "string", "enum": ["fr", "en"] },
+    "publishedAt": { "type": "string", "format": "date" },
+    "updatedAt": { "type": "string", "format": "date" },
+    "authors": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
+    },
+    "license": { "const": "CC-BY-4.0" },
+    "contentPath": { "const": "article.md" },
+    "evidencePack": { "const": "evidence-pack.json" },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "text", "evidenceIds"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" },
+          "type": { "enum": ["fact", "estimate", "inference", "scenario"] },
+          "text": { "type": "string", "minLength": 20 },
+          "evidenceIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^evidence-[a-z0-9-]+$" }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 20 }
+    }
+  }
+}

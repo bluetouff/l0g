@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: >-
+  Pour citer ce dépôt, utilisez: Laurelli, Olivier (2026). l0g Editorial
+  Protocol (Version 1.0.0). https://l0g.fr/protocole-editorial/
+title: "l0g Editorial Protocol"
+version: 1.0.0
+date-released: 2026-07-16
+type: software
+authors:
+  - family-names: Laurelli
+    given-names: Olivier
+    alias: bluetouff
+repository-code: "https://github.com/bluetouff/l0g"
+url: "https://l0g.fr/protocole-editorial/"
+license: CC-BY-4.0
+abstract: >-
+  Protocole éditorial, schémas de preuve et outils de conformité de l0g.fr
+  pour produire des analyses sourcées, datées, contestables et réutilisables.
+keywords:
+  - editorial protocol
+  - evidence
+  - financial research
+  - reproducibility
+  - risk intelligence

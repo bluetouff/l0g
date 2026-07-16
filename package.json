@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "astro dev",
     "og": "node scripts/og-default.mjs && OUT=public/og-manifeste.png TITLE='Manifeste l0g' SUBTITLE='Sources primaires, code ouvert, auto-hébergement et limites assumées.' EYEBROW='manifeste' COMMAND='cat manifeste.md' CHIPS='sources primaires,code ouvert,aucun tracker' node scripts/og-default.mjs && OUT=public/og-terminal.png TITLE='Terminal l0g' SUBTITLE='Interface de navigation : manifeste, méthodologie, backtests, API et corpus machine.' EYEBROW='terminal' COMMAND='ssh l0g.fr' CHIPS='terminal,api,llms.txt' node scripts/og-default.mjs && OUT=public/og-status.png TITLE='Statut & intégrité' SUBTITLE='Build statique, snapshots publics, endpoints, corpus machine et hygiène zéro tracker.' EYEBROW='status' COMMAND='cat status.json' CHIPS='build statique,api publique,zéro tracker' node scripts/og-default.mjs && OUT=public/og-donnees.png TITLE='Données l0g' SUBTITLE='Snapshots publics, API JSON, corpus agents, licence et limites de fraîcheur.' EYEBROW='données' COMMAND='curl /api/v1/catalog.json' CHIPS='snapshots,json,llms.txt' node scripts/og-default.mjs && OUT=public/og-protocole-editorial.png TITLE='Protocole éditorial' SUBTITLE='Sources, vérification, niveaux de preuve, corrections et limites de lecture.' EYEBROW='protocole' COMMAND='cat protocole-editorial.md' CHIPS='sources,preuve,correction' node scripts/og-default.mjs && OUT=public/og-changelog-editorial.png TITLE='Changelog éditorial' SUBTITLE='Journal des changements de protocole, sources, données, méthode et traçabilité.' EYEBROW='changelog' COMMAND='git log --editorial' CHIPS='traçabilité,méthode,sources' node scripts/og-default.mjs && node scripts/og-generate.mjs && POSTS_DIR=src/content/guides node scripts/og-generate.mjs",
@@ -16,11 +17,15 @@
     "test:agent-bench": "node mcp-server/agent-bench.mjs",
     "test:risk-snapshot": "node scripts/validate-risk-snapshot.mjs",
     "test:internal-links": "node scripts/check-internal-links.mjs",
+    "test:deploy": "bash deploy/test-deploy.sh",
     "lint:editorial": "node scripts/lint-editorial.mjs",
     "astro": "astro",
     "review": "node scripts/review-claims.mjs",
     "black-box:validate": "node scripts/black-box-archive.mjs validate",
-    "black-box:append": "node scripts/black-box-archive.mjs append"
+    "black-box:append": "node scripts/black-box-archive.mjs append",
+    "test:editorial-protocol": "node releases/l0g-editorial-protocol-1.0.0/tests/conformance.mjs",
+    "mcp:release:check": "node scripts/validate-mcp-release.mjs",
+    "mcp:release:build": "node scripts/build-mcp-release.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.0",

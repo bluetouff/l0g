@@ -240,20 +240,25 @@ C'est tout. À partir de là :
 
 1. GitHub reconstruit le site automatiquement (onglet **Actions** du dépôt pour
    suivre).
-2. Si le build passe, l'artefact est publié sur la branche `built`.
-3. Le serveur récupère la nouvelle version dans les 2 minutes et la met en ligne.
+2. Si le build passe, l'archive statique complète est attestée puis publiée sur
+   la branche `built` avec son bundle de provenance.
+3. Le serveur vérifie la correspondance `main`, attestation et `built`, puis
+   récupère la nouvelle version dans les 2 minutes et bascule le symlink servi.
 
 ### 5.3 Vérifier le déploiement (sur le serveur, optionnel)
 
 ```bash
 systemctl status l0g-deploy.timer      # le timer tourne
 journalctl -u l0g-deploy.service -n 20 # logs du dernier déploiement
+cat /var/www/html/l0g/.last_source_sha # commit main attesté et actif
+cat /var/www/html/l0g/.last_built_sha  # commit de transport built actif
 ```
 
 ### Filet de sécurité
 
-Si un build casse (erreur de syntaxe, etc.), l'action GitHub échoue et **rien
-n'est publié** : l'ancienne version reste en ligne. Tu corriges, tu re-pushes.
+Si un build casse, si l'attestation est absente ou si `main` et `built` ne
+convergent pas, **rien n'est activé** : l'ancienne version reste en ligne. Tu
+corriges, tu re-pushes.
 
 ---
 

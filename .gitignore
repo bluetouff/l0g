@@ -17,3 +17,6 @@ public/og/
 
 # worktree locale de la branche append-only Black Box
 .black-box-archive/
+
+# artefact MCP local (les releases officielles sont construites par GitHub Actions)
+.mcp-release/

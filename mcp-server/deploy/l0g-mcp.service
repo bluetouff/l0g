@@ -8,9 +8,9 @@ Wants=network-online.target
 Type=simple
 # Utilisateur ephemere sans privileges, cree a la volee par systemd.
 DynamicUser=yes
-WorkingDirectory=/opt/l0g-mcp/mcp-server
+WorkingDirectory=/opt/l0g-mcp-runtime/current/mcp-server
 # Adapter le chemin de node si besoin :  which node
-ExecStart=/usr/bin/node /opt/l0g-mcp/mcp-server/server.mjs
+ExecStart=/usr/bin/node /opt/l0g-mcp-runtime/current/mcp-server/server.mjs
 Restart=on-failure
 RestartSec=3
 TimeoutStartSec=45
@@ -32,6 +32,7 @@ Environment=MCP_REQUEST_TIMEOUT=15000
 Environment=MCP_KEEP_ALIVE_TIMEOUT=5000
 Environment=MCP_MAX_HEADERS_COUNT=64
 Environment=NODE_ENV=production
+EnvironmentFile=-/opt/l0g-mcp-runtime/current/release.env
 
 # --- Durcissement (le service ne fait que lire des fichiers et ecouter en local) ---
 NoNewPrivileges=yes
@@ -58,7 +59,7 @@ SystemCallArchitectures=native
 CapabilityBoundingSet=
 AmbientCapabilities=
 # Acces disque : lecture seule du site deploye, rien d'autre en ecriture.
-ReadOnlyPaths=/var/www/html/l0g /opt/l0g-mcp
+ReadOnlyPaths=/var/www/html/l0g /opt/l0g-mcp-runtime
 # Limites de ressources
 LimitNOFILE=4096
 LimitCORE=0

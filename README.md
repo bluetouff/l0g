@@ -173,17 +173,29 @@ Le bandeau de cotations en haut de page se règle dans
 ## Déploiement (vue d'ensemble)
 
 1. `git push` sur `main`.
-2. GitHub Actions build sur un runner éphémère et publie `dist/` sur la branche
-   `built` (via `GITHUB_TOKEN`, sans secret custom).
-3. Le timer systemd sur le serveur poll la branche `built` toutes les 2 min, et
-   bascule atomiquement le dossier servi si elle a changé.
+2. GitHub Actions construit `dist/`, crée une archive déterministe de toute la
+   sortie, puis l'atteste avec GitHub OIDC et Sigstore.
+3. La branche `built` ne contient que l'archive, son SHA-256, le bundle
+   d'attestation et les coordonnées du commit source de `main`.
+4. Le timer systemd poll `built` toutes les 2 min. Avant toute bascule, il exige
+   que le clone corresponde au HEAD distant de `built`, que le SHA source
+   corresponde au HEAD distant de `main`, et que `gh attestation verify`
+   confirme l'archive, le workflow signataire, la ref et le commit source.
+5. L'archive est contrôlée contre les traversées de chemin et les liens, extraite
+   dans une release isolée, puis le symlink servi par Apache est basculé
+   atomiquement.
 
-Le serveur n'a aucune toolchain Node, ne build rien, et n'ouvre aucun port
-entrant pour le déploiement.
+Le déploiement statique n'exécute aucune toolchain Node, ne build rien et
+n'ouvre aucun port entrant. Le serveur ne possède aucun token GitHub permanent.
 
 ## Mise en place serveur (une fois)
 
 ```bash
+# prérequis de vérification
+git --version
+gh --version
+gh attestation verify --help >/dev/null
+
 # utilisateur dédié
 sudo useradd --system --create-home --shell /usr/sbin/nologin l0gdeploy
 sudo mkdir -p /var/www/html/l0g && sudo chown l0gdeploy:l0gdeploy /var/www/html/l0g
@@ -204,12 +216,32 @@ sudo certbot --apache -d l0g.fr -d www.l0g.fr   # ou certonly puis reload
 sudo systemctl reload apache2
 ```
 
+Si la version Debian de `gh` ne fournit pas `attestation verify`, suivre le bloc
+d'installation depuis le dépôt officiel GitHub dans
+[`docs/MCP-RELEASE.md`](docs/MCP-RELEASE.md#migration-unique-de-zen). Installer
+le nouveau `deploy.sh` avant d'activer le workflow qui publie le nouveau format
+de `built`. Tant que l'archive attestée n'existe pas, le script refuse la
+release et conserve le symlink courant.
+
+Contrôles après le premier déploiement attesté :
+
+```bash
+sudo systemctl start l0g-deploy.service
+sudo systemctl status l0g-deploy.service l0g-deploy.timer --no-pager
+sudo journalctl -u l0g-deploy.service -n 100 --no-pager
+cat /var/www/html/l0g/.last_source_sha
+cat /var/www/html/l0g/.last_built_sha
+readlink -f /var/www/html/l0g/current
+```
+
 ## Mises à jour sans y penser
 
 - **Dépendances** : activer Renovate sur le dépôt. `renovate.json` fusionne
-  automatiquement patch/minor quand la CI est verte, et épingle les Actions au
-  digest SHA. Les majeures restent en PR manuelle. Un build cassé n'atteint
-  jamais la prod : l'ancien artefact `built` continue de servir.
+  automatiquement patch/minor quand la CI est verte. Le preset
+  `helpers:pinGitHubActionDigests` conserve toutes les Actions sur des SHA
+  immuables et ouvre les mises à jour de digest. Les majeures restent en PR
+  manuelle. Un build cassé ou une provenance incohérente n'atteint jamais la
+  prod : la release courante continue de servir.
 - **OS / Apache** : `unattended-upgrades` côté Debian.
 
 ## Sécurité, en bref
@@ -217,8 +249,22 @@ sudo systemctl reload apache2
 - Sortie 100% statique, pas de runtime, pas de base de données.
 - GitHub ne détient aucune clé d'accès au serveur ; le serveur ne fait que du
   HTTPS sortant.
+- La branche `built` n'est pas une autorité seule : son archive doit être
+  attestée par `.github/workflows/build.yml` et provenir du HEAD courant de
+  `main` au moment de l'activation.
 - CSP stricte (voir `deploy/l0g.fr.apache.conf`), HSTS, en-têtes durcis.
 - Unité de déploiement systemd sandboxée.
+
+## Licences et citation
+
+- code, scripts, tests, workflows et déploiement : **MIT** ;
+- textes, données et artefacts éditoriaux : **CC BY 4.0** ;
+- métadonnées de citation : [`CITATION.cff`](CITATION.cff) ;
+- release stable du protocole :
+  [`releases/l0g-editorial-protocol-1.0.0/`](releases/l0g-editorial-protocol-1.0.0/).
+
+Le fichier [`LICENSE`](LICENSE) définit précisément la portée et renvoie aux
+deux textes juridiques complets dans `LICENSES/`.
 
 ## Ajouter une UI d'édition plus tard (optionnel)
 

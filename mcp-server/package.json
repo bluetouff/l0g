@@ -1,8 +1,9 @@
 {
   "name": "l0g-mcp-server",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "private": true,
   "type": "module",
+  "license": "MIT",
   "description": "Serveur MCP en lecture seule pour l0g.fr (Streamable HTTP, stateless).",
   "engines": { "node": ">=20" },
   "scripts": {

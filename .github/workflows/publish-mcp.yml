@@ -1,0 +1,221 @@
+name: Publish MCP release
+
+on:
+  push:
+    tags: ["mcp-v*"]
+
+permissions: {}
+
+concurrency:
+  group: publish-mcp
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.coordinates.outputs.version }}
+    steps:
+      - name: Checkout tagged source without persisted credentials
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Validate immutable release coordinates
+        id: coordinates
+        run: |
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          node scripts/validate-mcp-release.mjs --tag "$GITHUB_REF_NAME" --sha "$GITHUB_SHA" --require-main
+          VERSION="${GITHUB_REF_NAME#mcp-v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "MCP_VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "SOURCE_DATE_EPOCH=$(git show -s --format=%ct "$GITHUB_SHA")" >> "$GITHUB_ENV"
+          echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI "$GITHUB_SHA")" >> "$GITHUB_ENV"
+
+      - name: Install site and server dependencies from lockfiles
+        run: |
+          npm ci
+          npm ci --prefix mcp-server --omit=dev
+
+      - name: Build Agent Surface used by release tests
+        run: npm run build
+
+      - name: Test server contracts and Agent Bench
+        env:
+          L0G_DATA_DIR: ${{ github.workspace }}/dist
+          MCP_ALLOWED_HOSTS: 127.0.0.1,localhost
+          MCP_ALLOWED_ORIGINS: http://127.0.0.1:8851
+          MCP_GIT_SHA: ${{ github.sha }}
+          MCP_HOST: 127.0.0.1
+          MCP_PORT: 8851
+          URL: http://127.0.0.1:8851/mcp
+        run: |
+          node mcp-server/server.mjs &
+          MCP_PID=$!
+          trap 'kill "$MCP_PID" 2>/dev/null || true' EXIT
+          for i in {1..30}; do
+            curl -fsS http://127.0.0.1:8851/healthz >/dev/null && break
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8851/healthz
+          node mcp-server/test-client.mjs
+          node mcp-server/agent-bench.mjs --url "$URL" --output dist/api/v1/agent-bench-release.json
+
+      - name: Build deterministic MCP archive and SBOM
+        run: |
+          git diff --exit-code -- \
+            server.json mcp-server/server.mjs mcp-server/package.json mcp-server/package-lock.json \
+            mcp-server/deploy/verify-release.mjs src/lib/agent-prompts.mjs
+          mkdir -p release
+          node scripts/build-mcp-release.mjs --output release --tag "$GITHUB_REF_NAME" --sha "$GITHUB_SHA"
+          RELEASE_NAME="l0g-mcp-${MCP_VERSION}"
+          ARCHIVE="${RELEASE_NAME}.tar.gz"
+          tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner \
+            --pax-option=delete=atime,delete=ctime -C release -cf - "$RELEASE_NAME" | gzip -n > "release/$ARCHIVE"
+          (cd release && sha256sum "$ARCHIVE" > "$ARCHIVE.sha256")
+
+      - name: Verify archive before transfer
+        run: |
+          ARCHIVE="l0g-mcp-${MCP_VERSION}.tar.gz"
+          (cd release && sha256sum -c "$ARCHIVE.sha256")
+          mkdir -p release/verify
+          tar -xzf "release/$ARCHIVE" -C release/verify
+          node mcp-server/deploy/verify-release.mjs \
+            --root "release/verify/l0g-mcp-${MCP_VERSION}" --version "$MCP_VERSION" --sha "$GITHUB_SHA"
+
+      - name: Smoke test the exact extracted archive
+        env:
+          L0G_DATA_DIR: ${{ github.workspace }}/dist
+          MCP_ALLOWED_HOSTS: 127.0.0.1,localhost
+          MCP_ALLOWED_ORIGINS: http://127.0.0.1:8852
+          MCP_GIT_SHA: ${{ github.sha }}
+          MCP_RELEASE_ATTESTED: 1
+          MCP_HOST: 127.0.0.1
+          MCP_PORT: 8852
+          URL: http://127.0.0.1:8852/mcp
+        run: |
+          node "release/verify/l0g-mcp-${MCP_VERSION}/mcp-server/server.mjs" &
+          MCP_PID=$!
+          trap 'kill "$MCP_PID" 2>/dev/null || true' EXIT
+          for i in {1..30}; do
+            curl -fsS http://127.0.0.1:8852/healthz >/dev/null && break
+            sleep 1
+          done
+          node scripts/verify-public-mcp-release.mjs \
+            --endpoint "$URL" --version "$MCP_VERSION" --sha "$GITHUB_SHA"
+          node mcp-server/test-client.mjs
+
+      - name: Transfer only the archive and checksum
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mcp-release-${{ steps.coordinates.outputs.version }}
+          path: |
+            release/l0g-mcp-${{ steps.coordinates.outputs.version }}.tar.gz
+            release/l0g-mcp-${{ steps.coordinates.outputs.version }}.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 7
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    env:
+      MCP_VERSION: ${{ needs.build.outputs.version }}
+      RELEASE_NAME: l0g-mcp-${{ needs.build.outputs.version }}
+      ARCHIVE: l0g-mcp-${{ needs.build.outputs.version }}.tar.gz
+    steps:
+      - name: Checkout tagged source without persisted credentials
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Revalidate tag before privileged operations
+        run: |
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          node scripts/validate-mcp-release.mjs --tag "$GITHUB_REF_NAME" --sha "$GITHUB_SHA" --require-main
+
+      - name: Download isolated build result
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: mcp-release-${{ needs.build.outputs.version }}
+          path: release
+
+      - name: Reverify transferred archive
+        run: |
+          (cd release && sha256sum -c "$ARCHIVE.sha256")
+          mkdir -p release/verify
+          tar -xzf "release/$ARCHIVE" -C release/verify
+          node mcp-server/deploy/verify-release.mjs \
+            --root "release/verify/$RELEASE_NAME" --version "$MCP_VERSION" --sha "$GITHUB_SHA"
+
+      - name: Attest release archive with GitHub OIDC
+        id: attest
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        with:
+          subject-path: release/${{ env.ARCHIVE }}
+
+      - name: Stage attestation bundle
+        run: cp "${{ steps.attest.outputs.bundle-path }}" "release/${ARCHIVE}.sigstore.jsonl"
+
+      - name: Publish immutable GitHub Release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            mkdir -p release/existing
+            gh release download "$GITHUB_REF_NAME" --dir release/existing \
+              --pattern "$ARCHIVE" --pattern "$ARCHIVE.sha256" --pattern "$ARCHIVE.sigstore.jsonl"
+            cmp "release/$ARCHIVE" "release/existing/$ARCHIVE"
+            cmp "release/$ARCHIVE.sha256" "release/existing/$ARCHIVE.sha256"
+            cp "release/existing/$ARCHIVE.sigstore.jsonl" "release/$ARCHIVE.sigstore.jsonl"
+          else
+            gh release create "$GITHUB_REF_NAME" --draft --verify-tag \
+              --title "l0g MCP ${MCP_VERSION}" \
+              --notes "Artefact MCP Linux versionné, SBOM CycloneDX embarqué et provenance GitHub/Sigstore. Le Registry est publié seulement après validation du daemon public."
+            gh release upload "$GITHUB_REF_NAME" \
+              "release/$ARCHIVE" "release/$ARCHIVE.sha256" "release/$ARCHIVE.sigstore.jsonl"
+          fi
+          gh release edit "$GITHUB_REF_NAME" --draft=false --latest
+
+      - name: Wait for atomic production deployment
+        run: node scripts/verify-public-mcp-release.mjs --version "$MCP_VERSION" --sha "$GITHUB_SHA" --attempts 72 --delay-ms 10000
+
+      - name: Install pinned mcp-publisher
+        env:
+          MCP_PUBLISHER_VERSION: 1.8.0
+          MCP_PUBLISHER_SHA256: 1370446bbe74d562608e8005a6ccce02d146a661fbd78674e11cc70b9618d6cf
+        run: |
+          curl --proto '=https' --tlsv1.2 --fail --location --retry 3 \
+            -o mcp-publisher.tar.gz \
+            "https://github.com/modelcontextprotocol/registry/releases/download/v${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz"
+          printf '%s  %s\n' "$MCP_PUBLISHER_SHA256" mcp-publisher.tar.gz | sha256sum -c -
+          tar -xzf mcp-publisher.tar.gz mcp-publisher
+          ./mcp-publisher --version
+
+      - name: Publish current live version to MCP Registry through OIDC
+        run: |
+          if node scripts/verify-mcp-registry.mjs --version "$MCP_VERSION"; then
+            echo "Registry déjà aligné sur ${MCP_VERSION}."
+          else
+            ./mcp-publisher login github-oidc
+            ./mcp-publisher publish
+          fi
+
+      - name: Verify Registry convergence
+        run: node scripts/verify-mcp-registry.mjs --version "$MCP_VERSION" --attempts 12 --delay-ms 5000

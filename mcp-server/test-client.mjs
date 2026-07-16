@@ -96,8 +96,8 @@ for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity'
 
 const mcpServerResource = await client.readResource({ uri: 'l0g://mcp/server' });
 const mcpServerInfo = JSON.parse(mcpServerResource.contents?.[0]?.text || '{}');
-if (!mcpServerInfo.version || !mcpServerInfo.sha || !mcpServerInfo.shaStatus) {
-  throw new Error('readResource(mcp/server) sans version/SHA/shaStatus');
+if (!mcpServerInfo.version || !mcpServerInfo.sha || !mcpServerInfo.shaStatus || typeof mcpServerInfo.releaseAttested !== 'boolean') {
+  throw new Error('readResource(mcp/server) sans version/SHA/shaStatus/releaseAttested');
 }
 if (mcpServerInfo.dataDir) throw new Error('readResource(mcp/server) expose dataDir');
 if (mcpServerInfo.shaStatus === 'verified-hex' && !/^[0-9a-f]{40}$/i.test(mcpServerInfo.sha)) {

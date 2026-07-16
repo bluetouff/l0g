@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "1.0.0",
+  "articleId": "sec-13f-form4-two-clocks",
+  "generatedAt": "2026-07-16T00:00:00+02:00",
+  "license": "CC-BY-4.0",
+  "attribution": "Olivier Laurelli / l0g.fr, l0g Editorial Protocol 1.0",
+  "evidence": [
+    {
+      "id": "evidence-sec-13f-faq",
+      "claimIds": ["claim-13f-deadline", "claim-complementary-clocks"],
+      "kind": "primary",
+      "proofDepth": "direct-proof",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Frequently Asked Questions About Form 13F",
+      "url": "https://www.sec.gov/rules-regulations/staff-guidance/division-investment-management-frequently-asked-questions/frequently-asked-questions-about-form-13f",
+      "publishedAt": "2026-03-06",
+      "retrievedAt": "2026-07-16",
+      "locator": "Question 25, What Is the Filing Deadline?",
+      "supports": "La SEC décrit le seuil réglementaire et les échéances situées dans les 45 jours suivant chaque fin de trimestre visée."
+    },
+    {
+      "id": "evidence-sec-form4-instructions",
+      "claimIds": ["claim-form4-deadline", "claim-complementary-clocks"],
+      "kind": "primary",
+      "proofDepth": "direct-proof",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Form 4, Statement of Changes in Beneficial Ownership",
+      "url": "https://www.sec.gov/files/form4data%2C0.pdf",
+      "publishedAt": null,
+      "retrievedAt": "2026-07-16",
+      "locator": "General Instructions, section 1(a), When Form Must Be Filed",
+      "supports": "L'instruction fixe en principe l'échéance avant la fin du deuxième jour ouvré suivant la transaction concernée."
+    },
+    {
+      "id": "evidence-sec-edgar-search",
+      "claimIds": ["claim-edgar-public"],
+      "kind": "primary",
+      "proofDepth": "direct-proof",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Search Filings",
+      "url": "https://www.sec.gov/search-filings",
+      "publishedAt": null,
+      "retrievedAt": "2026-07-16",
+      "locator": "Introduction and EDGAR Search Tools sections",
+      "supports": "La page présente l'accès public aux dépôts EDGAR et les outils de recherche par formulaire, entité et date."
+    }
+  ],
+  "limitations": [
+    "Le paquet conserve des URL et des localisateurs, mais pas une copie intégrale des documents SEC.",
+    "La conformité structurelle ne remplace pas la réouverture des sources avant une nouvelle publication.",
+    "L'inférence de complémentarité ne constitue ni un backtest ni une preuve de performance."
+  ]
+}

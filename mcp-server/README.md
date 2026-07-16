@@ -163,7 +163,7 @@ Les resources inexistantes renvoient une erreur protocolaire MCP, pas un documen
   `PrivateIPC`, `LimitCORE=0`, `ProtectSystem=strict`, capacités vidées, `ReadOnlyPaths`,
   `MemoryMax`, filtre d'appels système.
 
-## Déploiement pas à pas (Debian, serveur « zen »)
+## Déploiement atomique (Debian, serveur « zen »)
 
 > Hypothèses : Apache sert déjà l0g.fr en HTTPS, le site est déployé dans
 > `/var/www/html/l0g/current`. Node 20+ requis.
@@ -176,17 +176,17 @@ curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-### 2. Récupérer le code et installer les dépendances
+### 2. Installer une fois le poller de releases attestées
 
-```bash
-sudo mkdir -p /opt/l0g-mcp
-sudo chown "$USER" /opt/l0g-mcp
-git clone https://github.com/bluetouff/l0g.git /opt/l0g-mcp
-cd /opt/l0g-mcp/mcp-server
-npm ci --omit=dev          # ou : npm install --omit=dev
-```
+Le runbook complet, le bloc de migration avec sauvegardes et la procédure de release sont dans
+[`docs/MCP-RELEASE.md`](../docs/MCP-RELEASE.md). Après cette migration, le serveur ne lance plus
+`git pull` ni `npm ci` : il poll les GitHub Releases publiques, vérifie SHA-256 et l'attestation
+GitHub/Sigstore, teste le candidat, puis bascule un symlink atomiquement avec rollback automatique.
 
-### 3. Test à blanc (en local, avant Apache)
+Prérequis supplémentaires : GitHub CLI doit fournir `gh attestation verify`. Le timer et le
+daemon n'ouvrent aucun port entrant de déploiement et n'utilisent aucun token GitHub permanent.
+
+### 3. Test à blanc d'une source locale
 
 ```bash
 L0G_DATA_DIR=/var/www/html/l0g/current node server.mjs &
@@ -197,14 +197,11 @@ node test-client.mjs                          # liste les tools et teste chaque 
 kill %1
 ```
 
-### 4. Installer le service systemd
+### 4. Contrôler le service et le timer
 
 ```bash
-sudo cp /opt/l0g-mcp/mcp-server/deploy/l0g-mcp.service /etc/systemd/system/
-#  Vérifier le chemin de node dans le fichier (ExecStart) :  which node
-sudo systemctl daemon-reload
-sudo systemctl enable --now l0g-mcp
-systemctl status l0g-mcp --no-pager
+systemctl status l0g-mcp l0g-mcp-deploy.timer --no-pager
+journalctl -u l0g-mcp-deploy.service -n 100 --no-pager
 curl -s http://127.0.0.1:8848/healthz        # -> versions MCP/Agent Surface, SHA et fraîcheur chargée
 ```
 
@@ -257,13 +254,12 @@ sur `https://l0g.fr/api/mcp`.
 
 - **Données** (nouvel article, indices) : automatique. Le site se redéploie, le service
   relit `catalog.json`, `risk.json` et `debt-risk.json` au plus tard 60 s après.
-- **Code du serveur** :
-
-```bash
-cd /opt/l0g-mcp && git pull
-cd mcp-server && npm ci --omit=dev
-sudo systemctl restart l0g-mcp
-```
+- **Code du serveur** : automatique après un tag `mcp-vX.Y.Z`. Le workflow construit une
+  archive versionnée avec SBOM, l'atteste par OIDC, la publie en GitHub Release, attend le
+  déploiement atomique de `zen`, puis publie le manifeste dans le MCP Registry par OIDC.
+- **Registry** : canal de découverte en preview, principalement destiné aux agrégateurs
+  downstream. Il est vérifié après publication, mais ne remplace ni les tests vivants ni la
+  stratégie d'adoption.
 
 ## Variables d'environnement
 
@@ -282,3 +278,4 @@ sudo systemctl restart l0g-mcp
 | `MCP_REQUEST_TIMEOUT` | `15000` | timeout requête HTTP complet (ms) |
 | `MCP_KEEP_ALIVE_TIMEOUT` | `5000` | timeout keep-alive TCP (ms) |
 | `MCP_MAX_HEADERS_COUNT` | `64` | nombre maximum d'en-têtes parsables |
+| `MCP_RELEASE_ATTESTED` | absent | `1` uniquement dans une archive dont le poller a vérifié la provenance |

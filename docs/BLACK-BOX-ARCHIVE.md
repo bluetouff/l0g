@@ -20,8 +20,9 @@ couverture vide et explicite. Il ne reconstruit jamais le passé depuis les donn
 
 Le workflow valide toute la chaîne avant le build. Après ajout, il refuse tout état Git autre qu'un
 nouveau fichier `frames/*.json`, reconstruit le site depuis l'archive, teste l'Agent Surface et le MCP,
-atteste les manifests avec GitHub Artifact Attestations, publie `built`, puis effectue un push normal
-et non forcé de l'archive.
+emballe toute la sortie statique dans une archive déterministe, atteste cette archive et les manifests
+avec GitHub Artifact Attestations, publie le bundle vérifiable dans `built`, puis effectue un push
+normal et non forcé de l'archive Black Box.
 
 La branche `black-box-archive` doit aussi être protégée dans GitHub avec les règles suivantes :
 
@@ -31,7 +32,9 @@ La branche `black-box-archive` doit aussi être protégée dans GitHub avec les 
 - administrateurs inclus dans les règles.
 
 Git rend les réécritures visibles, la chaîne de hashes rend les frames altérées détectables et
-l'attestation Sigstore relie les manifests au workflow et au commit publiés. Cette combinaison ne
+l'attestation Sigstore relie l'archive statique complète, les manifests, le workflow et le commit
+source. Le serveur refuse l'activation si le HEAD courant de `main`, la provenance attestée et le
+HEAD de `built` ne convergent pas. Cette combinaison ne
 prouve pas la vérité économique d'un modèle, seulement l'intégrité et la provenance du snapshot.
 
 ## Vérification locale

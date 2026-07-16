@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "1.0.0",
+  "id": "sec-13f-form4-two-clocks",
+  "title": "13F et Form 4: deux horloges réglementaires, pas un signal magique",
+  "description": "Exemple conforme qui sépare les délais réglementaires observables de l'inférence analytique qu'ils permettent.",
+  "language": "fr",
+  "publishedAt": "2026-07-16",
+  "authors": ["Olivier Laurelli"],
+  "license": "CC-BY-4.0",
+  "contentPath": "article.md",
+  "evidencePack": "evidence-pack.json",
+  "claims": [
+    {
+      "id": "claim-13f-deadline",
+      "type": "fact",
+      "text": "Les dépôts Form 13F visés par la règle sont dus dans les 45 jours suivant la fin du trimestre concerné.",
+      "evidenceIds": ["evidence-sec-13f-faq"]
+    },
+    {
+      "id": "claim-form4-deadline",
+      "type": "fact",
+      "text": "Le Form 4 est en principe dû avant la fin du deuxième jour ouvré suivant la transaction visée.",
+      "evidenceIds": ["evidence-sec-form4-instructions"]
+    },
+    {
+      "id": "claim-edgar-public",
+      "type": "fact",
+      "text": "EDGAR donne au public un accès de recherche aux dépôts réglementaires de la SEC.",
+      "evidenceIds": ["evidence-sec-edgar-search"]
+    },
+    {
+      "id": "claim-complementary-clocks",
+      "type": "inference",
+      "text": "La différence de cadence rend les deux formulaires complémentaires pour organiser une revue documentaire.",
+      "evidenceIds": ["evidence-sec-13f-faq", "evidence-sec-form4-instructions"]
+    }
+  ],
+  "limitations": [
+    "Le Form 13F ne décrit pas à lui seul le portefeuille économique complet du déclarant.",
+    "Le code et la nature des opérations du Form 4 doivent être examinés avant toute interprétation.",
+    "Aucune cadence de dépôt ne permet de conclure à une performance future."
+  ]
+}

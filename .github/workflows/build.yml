@@ -13,6 +13,7 @@ permissions:
   contents: write # nécessaire uniquement pour pousser sur la branche `built`
   id-token: write # nécessaire pour les attestations Sigstore/GitHub OIDC
   attestations: write
+  artifact-metadata: write
 
 concurrency:
   group: build-${{ github.ref }}
@@ -23,17 +24,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Actions officielles uniquement. Renovate (pinDigests) remplacera ces
-      # tags par des digests SHA dès sa première PR — voir renovate.json.
-      - uses: actions/checkout@v4
+      # Actions officielles uniquement, épinglées sur un SHA immuable.
+      # Renovate conserve le SHA et le commentaire de version à jour.
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: npm
 
+      - name: Require the current main commit
+        run: |
+          test "$GITHUB_REF" = "refs/heads/main"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          test "$GITHUB_SHA" = "$(git rev-parse refs/remotes/origin/main)"
+
       - name: Fix deterministic build timestamp
-        run: echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
+        run: |
+          echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
+          echo "L0G_SOURCE_DATE_EPOCH=$(git show -s --format=%ct HEAD)" >> "$GITHUB_ENV"
 
       - name: Checkout or initialize append-only Black Box archive
         env:
@@ -55,6 +66,11 @@ jobs:
 
       - name: Install (lockfile strict)
         run: npm ci
+
+      - name: Test release and deployment contracts
+        run: |
+          npm run test:editorial-protocol
+          npm run test:deploy
 
       - name: Build (Astro + Agent Surface test + Pagefind)
         env:
@@ -109,26 +125,49 @@ jobs:
           node test-client.mjs
           node agent-bench.mjs --url "$URL" --output ../dist/api/v1/agent-bench.json
 
-      - name: Attest Agent Surface manifests
-        uses: actions/attest-build-provenance@v4
+      - name: Package deterministic static release
+        env:
+          SOURCE_DATE_EPOCH: ${{ env.L0G_SOURCE_DATE_EPOCH }}
+        run: |
+          mkdir -p release
+          tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner \
+            --pax-option=delete=atime,delete=ctime -C dist -cf - . \
+            | gzip -n > release/l0g-site.tar.gz
+          (cd release && sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256)
+          {
+            echo 'L0G_RELEASE_SCHEMA=1'
+            echo "L0G_RELEASE_REPOSITORY=${GITHUB_REPOSITORY}"
+            echo "L0G_RELEASE_SOURCE_REF=${GITHUB_REF}"
+            echo "L0G_RELEASE_SOURCE_SHA=${GITHUB_SHA}"
+            echo "L0G_RELEASE_RUN_ID=${GITHUB_RUN_ID}"
+            echo "L0G_RELEASE_RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
+          } > release/source.env
+
+      - name: Attest the complete static release and Agent Surface manifests
+        id: attest_static
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
         with:
           subject-path: |
+            release/l0g-site.tar.gz
             dist/agents.json
             dist/openapi.json
             dist/api/v1/integrity.json
             dist/api/v1/black-box.json
             dist/api/v1/agent-bench.json
 
+      - name: Stage the offline attestation bundle
+        run: cp "${{ steps.attest_static.outputs.bundle-path }}" release/l0g-site.tar.gz.sigstore.jsonl
+
       - name: Publish to `built` branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd dist
+          cd release
           git init -q
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -q -m "build ${GITHUB_SHA::8}"
+          git commit -q -m "build ${GITHUB_SHA}"
           git branch -M built
           git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" built
 
