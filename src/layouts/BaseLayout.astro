@@ -165,7 +165,10 @@ function isCurrentHref(href: string): boolean {
               <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
             </span>
             <span class="brand-sep" aria-hidden="true"></span>
-            <span class="brand-tag mono-label">risk intelligence</span>
+            <span class="brand-tag" aria-label="Lire les mécanismes avant qu’ils deviennent l’événement">
+              <span class="brand-tag-line brand-tag-line-signal">Lire les mécanismes</span>
+              <span class="brand-tag-line brand-tag-line-paper">avant qu’ils deviennent l’événement</span>
+            </span>
           </a>
 
           <a href="/terminal/" class="header-terminal" aria-current={isCurrentHref('/terminal/') ? 'page' : undefined}>
@@ -507,12 +510,39 @@ function isCurrentHref(href: string): boolean {
         display: flex; flex-wrap: wrap; align-items: center;
         justify-content: space-between; gap: 0.5rem 1.75rem;
       }
-      .brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+      .brand { display: inline-flex; align-items: center; gap: 0.7rem; min-width: 0; text-decoration: none; }
       .brand-mark { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
       .brand-0 { text-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 45%, transparent); }
-      .brand-sep { width: 1px; height: 1rem; background: var(--color-line); }
-      .brand-tag { color: var(--color-muted); }
-      @media (max-width: 380px) { .brand-sep, .brand-tag { display: none; } }
+      .brand-sep { width: 1px; height: 2.05rem; background: linear-gradient(180deg, transparent, var(--color-line-strong), transparent); }
+      .brand-tag {
+        display: flex;
+        min-width: 0;
+        max-width: min(34rem, 58vw);
+        flex-direction: column;
+        gap: 0.08rem;
+        font-family: var(--font-mono);
+        font-size: clamp(0.68rem, 1.05vw, 0.82rem);
+        font-weight: 520;
+        letter-spacing: 0.035em;
+        line-height: 1.16;
+        text-wrap: balance;
+      }
+      .brand-tag-line { display: block; }
+      .brand-tag-line-signal {
+        color: var(--color-signal);
+        text-shadow: 0 0 16px color-mix(in srgb, var(--color-signal) 24%, transparent);
+      }
+      .brand-tag-line-paper { color: var(--color-bright); }
+      @media (max-width: 680px) {
+        .brand { max-width: calc(100% - 3.1rem); }
+        .brand-tag { max-width: min(24rem, 62vw); font-size: 0.68rem; letter-spacing: 0.02em; }
+      }
+      @media (max-width: 430px) {
+        .brand { align-items: flex-start; gap: 0.55rem; }
+        .brand-sep { height: 2.45rem; }
+        .brand-tag { max-width: calc(100vw - 8rem); }
+      }
+      @media (max-width: 340px) { .brand-sep, .brand-tag { display: none; } }
       .header-terminal {
         display: inline-flex; align-items: center; gap: 0.38rem;
         margin-left: auto;
