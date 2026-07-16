@@ -41,17 +41,18 @@ const hero = isFirst ? items[0] : null;
 const feed = isFirst ? items.slice(1) : items;
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="l0g : les angles morts de la finance"
+  description="Enquêtes sur les mécanismes financiers invisibles : bilans, collatéral, crédit privé, levier et chaînes de contagion."
+>
   {isFirst && (
     <section class="rise">
       <p class="mono-label" style="color: var(--color-signal)">$ cat /risque | cartographie</p>
       <h1 class="mt-5 font-display text-[clamp(2.2rem,5.5vw,3.5rem)] leading-tight tracking-wider glow">
-        Cartographier le <span style="color: var(--color-accent)">risque</span> des systèmes économiques
+        l0g : les angles morts de la finance
       </h1>
       <p class="mt-5 max-w-xl text-muted">
-        l0g est un système d'audit open source des narratifs économiques, qui tente
-        de rendre l'opacité économique mesurable à partir de données publiques, de
-        signaux de marché et d'indicateurs de confluence.
+        Enquêtes sur les mécanismes financiers invisibles : bilans, collatéral, crédit privé, levier et chaînes de contagion.
       </p>
     </section>
   )}
