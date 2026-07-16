@@ -532,7 +532,17 @@ function isCurrentHref(href: string): boolean {
         color: var(--color-signal);
         text-shadow: 0 0 16px color-mix(in srgb, var(--color-signal) 24%, transparent);
       }
-      .brand-tag-line-paper { color: var(--color-bright); }
+      .brand-tag-line-paper {
+        color: var(--color-bright);
+        background: linear-gradient(90deg,
+          var(--color-signal),
+          var(--color-accent) 48%,
+          var(--color-amber));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 16%, transparent);
+      }
       @media (max-width: 680px) {
         .brand { max-width: calc(100% - 3.1rem); }
         .brand-tag { max-width: min(24rem, 62vw); font-size: 0.68rem; letter-spacing: 0.02em; }
