@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { agentPrompts } from '../lib/agent-prompts.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ENDPOINT = `${SITE}/api/mcp`;
@@ -71,13 +72,19 @@ const tools = [
   ['get_article', 'slug, language, offset, cursor, limit, length, section', "Texte paginé français ou anglais, avec nextCursor et références canoniques séparées."],
 ];
 
+const prompts = agentPrompts.map((prompt) => [
+  prompt.name,
+  prompt.arguments.map((argument) => `${argument.name}${'required' in argument && argument.required ? '' : '?'}`).join(', '),
+  prompt.description,
+]);
+
 const appLd = {
   '@context': 'https://schema.org',
   '@type': 'WebAPI',
   '@id': `${SITE}/mcp/#mcp`,
   name: 'Serveur MCP l0g',
   description:
-    "Serveur Model Context Protocol en lecture seule pour l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides, via le transport Streamable HTTP.",
+    "Serveur Model Context Protocol en lecture seule pour l0g.fr : resources, prompts sélectionnés par l’utilisateur et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, claims, preuves et sources, via le transport Streamable HTTP.",
   documentation: `${SITE}/mcp`,
   url: ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
@@ -88,7 +95,7 @@ const appLd = {
 
 <BaseLayout
   title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : resources, resource templates et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, claims, evidence graph, sources, fraîcheur, intégrité, changements, historique des signaux, analyses et guides."
+  description="Serveur Model Context Protocol de l0g.fr : resources, quatre prompts sélectionnés par l’utilisateur et tools pour Agent Surface, Risk Diff, Black Box, claims, preuves et sources."
   sidebar={false}
   alternateLinks={mcpAlternateLinks}
 >
@@ -226,6 +233,32 @@ const appLd = {
         la veille opérationnelle passe par <code>l0g://changes/latest</code> ou
         <code>get_changefeed</code>.
       </p>
+    </div>
+
+    <div>
+      <h2 class="mono-label glow" style="color: var(--color-signal)">// prompts</h2>
+      <p class="mt-3 max-w-2xl text-paper">
+        Quatre workflows sont exposés avec <code>prompts/list</code> et rendus avec
+        <code>prompts/get</code>. Ils sont déclenchés explicitement par l'utilisateur et partagent
+        exactement leur définition avec les cartes de la page <a class="link-term text-signal" href="/agents/">Agent Surface</a>.
+        Le serveur valide les arguments et n'annonce pas de notification <code>listChanged</code>.
+      </p>
+      <div class="mcp-table mt-3">
+        <table>
+          <thead>
+            <tr><th>Prompt</th><th>Arguments</th><th>Workflow</th></tr>
+          </thead>
+          <tbody>
+            {prompts.map(([name, args, desc]) => (
+              <tr>
+                <td><code>{name}</code></td>
+                <td class="text-muted">{args}</td>
+                <td>{desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div>

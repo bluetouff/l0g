@@ -107,6 +107,7 @@ jobs:
           done
           curl -fsS http://127.0.0.1:8851/healthz
           node test-client.mjs
+          node agent-bench.mjs --url "$URL" --output ../dist/api/v1/agent-bench.json
 
       - name: Attest Agent Surface manifests
         uses: actions/attest-build-provenance@v4
@@ -116,6 +117,7 @@ jobs:
             dist/openapi.json
             dist/api/v1/integrity.json
             dist/api/v1/black-box.json
+            dist/api/v1/agent-bench.json
 
       - name: Publish to `built` branch
         env:

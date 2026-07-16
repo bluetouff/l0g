@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { agentPrompts, previewAgentPrompt } from '../lib/agent-prompts.mjs';
 import TrustBar from '../components/TrustBar.astro';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -95,38 +96,11 @@ const flow = [
   'Pour un suivi continu, consommer /api/v1/changes.ndjson plutôt que rescanner tout le site.',
 ];
 
-const prompts = [
-  {
-    label: 'réponse sourcée',
-    text:
-      'Réponds uniquement avec les données publiques de l0g.fr. Avant de conclure, vérifie /api/v1/freshness.json. Pour chaque affirmation importante, cite l’URL canonique, la date disponible et le type de claim : fait revu, estimation, inférence, scénario ou assertion non classée.',
-  },
-  {
-    label: 'audit de preuve',
-    text:
-      'Pars de /api/v1/evidence-graph.json. Identifie les claims liés au sujet, puis remonte vers les références et sources primaires. Sépare clairement les faits observés, les estimations et les scénarios.',
-  },
-  {
-    label: 'veille incrémentale',
-    text:
-      'Surveille /api/v1/changes.ndjson. Ne retraite que les entrées nouvelles ou révisées. Si une réponse dépend d’un snapshot figé, vérifie son empreinte dans /api/v1/integrity.json.',
-  },
-  {
-    label: 'risk diff',
-    text:
-      'Pars de /api/v1/risk-diff.json. Choisis la fenêtre 1d, 7d ou 30d selon la question, puis cite les signaux, sources stale, claims et limites de confiance sans extrapoler au-delà de la couverture publiée.',
-  },
-  {
-    label: 'replay point-in-time',
-    text:
-      'Pour rejouer une date, utilise /api/v1/black-box.json. Sélectionne la dernière frame dont date <= date demandée. Si aucune frame n’existe, réponds non rejouable plutôt que de reconstruire après coup.',
-  },
-  {
-    label: 'backtest',
-    text:
-      'Pour évaluer un signal l0g dans le temps, utilise /api/v1/signals/history.csv ou /api/v1/signals/history.ndjson. Ne reconstitue pas une valeur après coup : conserve observedAt, retrievedAt, computedAt, level et levelChange.',
-  },
-];
+const prompts = agentPrompts.map((prompt) => ({
+  name: prompt.name,
+  label: prompt.webLabel,
+  text: previewAgentPrompt(prompt.name),
+}));
 
 const rules = [
   'Ne transforme pas une estimation ou une inférence en fait établi.',
@@ -211,7 +185,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <div class="prompt-stack">
           {prompts.map((prompt) => (
             <figure class="prompt-card">
-              <figcaption>{prompt.label}</figcaption>
+              <figcaption>{prompt.label} <code>{prompt.name}</code></figcaption>
               <blockquote>{prompt.text}</blockquote>
             </figure>
           ))}

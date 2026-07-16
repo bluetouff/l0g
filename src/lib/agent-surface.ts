@@ -30,7 +30,7 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.12.0';
+export const AGENT_VERSION = '1.13.0';
 export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -384,6 +384,7 @@ export function buildOpenApiContract() {
       '/api/v1/catalog.json': openApiEndpoint('Catalogue complet', 'Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.', 'Catalog'),
       '/api/v1/catalog.ndjson': openApiNdjsonEndpoint('Catalogue NDJSON', 'Catalogue en lignes NDJSON : articles, guides, méthodologies, glossaire, sources primaires et protocole.'),
       '/api/v1/search-index.json': openApiEndpoint('Index de recherche partagé', 'Index bilingue canonique consommé par Agent Surface, MCP serveur et WebMCP.', 'SearchIndexSurface'),
+      '/api/v1/agent-bench.json': openApiEndpoint('l0g Agent Bench', 'Résultats déterministes FR/EN de recherche, preuve, parité, asOf, refus, fraîcheur et classification.', 'AgentBenchSurface'),
       '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables, datées quand détectable.', 'ClaimsSurface'),
       '/api/v1/claims.ndjson': openApiNdjsonEndpoint('Claims NDJSON', 'Claims en lignes NDJSON, une affirmation typée par ligne avec références.'),
       '/api/v1/evidence-graph.json': openApiEndpoint('Evidence graph', 'Graphe articles, claims, références, hôtes, institutions et datasets, exprimé en nœuds et arêtes.', 'EvidenceGraphSurface'),
@@ -518,13 +519,16 @@ export function buildOpenApiContract() {
                   required: ['type', 'value'],
                   additionalProperties: false,
                   properties: {
-                    type: { enum: ['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other'] },
+                    type: { enum: ['page', 'paragraph', 'section', 'table', 'series', 'cell', 'form', 'accession', 'doi', 'calculation', 'other'] },
                     value: { type: 'string' },
                   },
                 },
                 { type: 'null' },
               ],
             },
+            reviewSourceUrl: { type: ['string', 'null'], format: 'uri' },
+            reviewSourceDate: { type: ['string', 'null'], format: 'date' },
+            reviewSourceType: { anyOf: [{ enum: ['primary', 'secondary', 'issuer', 'dataset'] }, { type: 'null' }] },
             reproductionArtifact: { type: ['string', 'null'] },
             classifier: { $ref: '#/components/schemas/ClaimClassifier' },
             references: { type: 'array', items: { $ref: '#/components/schemas/EvidenceReference' } },
@@ -811,6 +815,7 @@ export function buildOpenApiContract() {
             'catalog',
             'catalogNdjson',
             'searchIndex',
+            'agentBench',
             'claims',
             'claimsNdjson',
             'evidenceGraph',
@@ -835,6 +840,7 @@ export function buildOpenApiContract() {
             'mcpEndpoint',
             'mcpDocumentation',
             'docs',
+            'agentBenchDocumentation',
           ],
           additionalProperties: false,
           properties: Object.fromEntries([
@@ -842,6 +848,7 @@ export function buildOpenApiContract() {
             'catalog',
             'catalogNdjson',
             'searchIndex',
+            'agentBench',
             'claims',
             'claimsNdjson',
             'evidenceGraph',
@@ -866,6 +873,7 @@ export function buildOpenApiContract() {
             'mcpEndpoint',
             'mcpDocumentation',
             'docs',
+            'agentBenchDocumentation',
           ].map((key) => [key, { type: 'string', format: 'uri' }])),
         },
         AgentManifest: {
@@ -1128,6 +1136,22 @@ export function buildOpenApiContract() {
             attribution: { type: 'string' },
           },
         },
+        AgentBenchSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'surfaces', 'methodology', 'results'],
+          properties: {
+            schema: { type: 'string', format: 'uri' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            status: { type: 'string' },
+            benchmarkHash: { type: 'string' },
+            surfaces: { type: 'object' },
+            methodology: { type: 'object' },
+            summary: { anyOf: [{ type: 'object' }, { type: 'null' }] },
+            results: { type: 'array', items: { type: 'object' } },
+            note: { type: 'string' },
+          },
+        },
         ClaimsSurface: {
           type: 'object',
           required: ['schema', 'version', 'generated', 'counts', 'policy', 'reviewRegistry', 'claims', 'references'],
@@ -1160,20 +1184,22 @@ export function buildOpenApiContract() {
         },
         ClaimReviewRegistry: {
           type: 'object',
-          required: ['version', 'updated', 'policy', 'reviewedClaims', 'entries'],
+          required: ['version', 'updated', 'policy', 'reviewedClaims', 'legacyReviews', 'entries'],
           additionalProperties: false,
           properties: {
             version: { type: 'string' },
             updated: { type: 'string', format: 'date' },
             policy: { type: 'string' },
             reviewedClaims: { type: 'integer' },
+            legacyReviews: { type: 'integer' },
             entries: {
               type: 'array',
               items: {
                 type: 'object',
-                required: ['claimId', 'reviewedAt', 'reviewedBy', 'note'],
+                required: ['status', 'claimId', 'reviewedAt', 'reviewedBy', 'note'],
                 additionalProperties: false,
                 properties: {
+                  status: { enum: ['legacy', 'canonical'] },
                   claimId: { type: 'string' },
                   reviewedAt: { type: 'string', format: 'date-time' },
                   reviewedBy: { type: 'string' },
@@ -1185,10 +1211,13 @@ export function buildOpenApiContract() {
                     required: ['type', 'value'],
                     additionalProperties: false,
                     properties: {
-                      type: { enum: ['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other'] },
+                      type: { enum: ['page', 'paragraph', 'section', 'table', 'series', 'cell', 'form', 'accession', 'doi', 'calculation', 'other'] },
                       value: { type: 'string' },
                     },
                   },
+                  sourceUrl: { type: 'string', format: 'uri' },
+                  sourceDate: { type: 'string', format: 'date' },
+                  sourceType: { enum: ['primary', 'secondary', 'issuer', 'dataset'] },
                   reproductionArtifact: { type: 'string' },
                 },
               },
@@ -2754,6 +2783,9 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
           reviewNote: review?.note ?? claim.reviewNote ?? null,
           reviewedProofDepth: review?.proofDepth ?? claim.reviewedProofDepth ?? null,
           evidenceLocator: review?.evidenceLocator ?? claim.evidenceLocator ?? null,
+          reviewSourceUrl: review?.sourceUrl ?? claim.reviewSourceUrl ?? null,
+          reviewSourceDate: review?.sourceDate ?? claim.reviewSourceDate ?? null,
+          reviewSourceType: review?.sourceType ?? claim.reviewSourceType ?? null,
           reproductionArtifact: review?.reproductionArtifact ?? claim.reproductionArtifact ?? null,
           classifier: {
             ...claim.classifier,
@@ -3135,7 +3167,8 @@ export function buildClaimsSurface(posts: PostEntry[]) {
       version: claimReviewRegistry.version,
       updated: claimReviewRegistry.updated,
       policy: claimReviewRegistry.policy,
-      reviewedClaims: claimReviewRegistry.entries.length,
+      reviewedClaims: claimReviewRegistry.canonicalEntries.length,
+      legacyReviews: claimReviewRegistry.legacyEntries.length,
       entries: claimReviewRegistry.entries,
     },
     policy: {
@@ -3144,7 +3177,7 @@ export function buildClaimsSurface(posts: PostEntry[]) {
       classification:
         'Les types fait/estimation/inférence/scénario/unclassified-assertion sont produits par un classifieur lexical heuristique v1, exposé par claim.classifier. Le fallback automatique est unclassified-assertion, jamais fait.',
       review:
-        'Les claims générées automatiquement portent reviewStatus=unreviewed tant qu’aucune validation humaine par claim n’est encodée dans src/config/claim-reviews.ts.',
+        'Les claims heuristiques restent unreviewed. Une certification exige status=canonical, source et date, locator exact, type explicite et profondeur direct-proof ou reproduction, avec un maximum de trois claims canoniques par analyse. Les anciennes revues restent legacy.',
       dateModel:
         'claimDate décrit la date portée par l’affirmation ; observationDate décrit l’horizon observé quand il est détectable ; sourcePublicationDate appartient à la référence ; retrievedAt reste null sans fetch réel de la source ; indexedAt indique l’indexation du lien dans le snapshot.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
@@ -3500,6 +3533,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/api/v1/catalog.json', role: 'Catalogue machine complet', update: 'à chaque build' },
       { path: '/api/v1/catalog.ndjson', role: 'Catalogue machine en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/search-index.json', role: 'Index de recherche bilingue partagé', update: 'à chaque build' },
+      { path: '/api/v1/agent-bench.json', role: 'Benchmark déterministe FR/EN de l’Agent Surface et du MCP', update: 'à chaque build publié' },
       { path: '/api/v1/claims.json', role: 'Graphe affirmation-source', update: 'à chaque build' },
       { path: '/api/v1/claims.ndjson', role: 'Claims en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/evidence-graph.json', role: 'Evidence graph en nœuds et arêtes', update: 'à chaque build' },
@@ -3565,12 +3599,15 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'point-in-time signal history for backtests',
       'debt-risk current-stress coverage metadata',
       'MCP-compatible corpus',
+      'user-selectable MCP research prompts',
+      'deterministic bilingual Agent Bench results',
     ],
     endpoints: {
       openapi: `${AGENT_SITE}/openapi.json`,
       catalog: `${AGENT_SITE}/api/v1/catalog.json`,
       catalogNdjson: `${AGENT_SITE}/api/v1/catalog.ndjson`,
       searchIndex: `${AGENT_SITE}/api/v1/search-index.json`,
+      agentBench: `${AGENT_SITE}/api/v1/agent-bench.json`,
       claims: `${AGENT_SITE}/api/v1/claims.json`,
       claimsNdjson: `${AGENT_SITE}/api/v1/claims.ndjson`,
       evidenceGraph: `${AGENT_SITE}/api/v1/evidence-graph.json`,
@@ -3595,6 +3632,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       mcpEndpoint: `${AGENT_SITE}/api/mcp`,
       mcpDocumentation: `${AGENT_SITE}/mcp/`,
       docs: `${AGENT_SITE}/donnees/agents/`,
+      agentBenchDocumentation: `${AGENT_SITE}/agent-bench/`,
     },
     preferredUse: [
       'Citer les URL canoniques des articles, guides ou sources.',
@@ -3604,6 +3642,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
       'Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.',
+      'Consulter agent-bench.json pour les performances déterministes de recherche et de preuve de la version publiée.',
       'Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.',
       'Utiliser risk-diff.json pour voir ce qui a changé dans le risque, avec limites de couverture explicites.',
       'Utiliser black-box.json pour rejouer la dernière frame point-in-time publiée avant une date donnée.',

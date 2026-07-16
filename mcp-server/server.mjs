@@ -23,6 +23,7 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
 import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
+import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
 
 // --- configuration (variables d'environnement, valeurs par défaut sûres) ---
 const HOST = process.env.MCP_HOST || '127.0.0.1';
@@ -50,7 +51,7 @@ const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 102
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.17.0';
+const MCP_VERSION = '1.19.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -508,9 +509,12 @@ const CompactClaimSchema = z.object({
   reviewNote: NullableString,
   reviewedProofDepth: z.enum(['direct-proof', 'reproduction']).nullable().optional(),
   evidenceLocator: z.object({
-    type: z.enum(['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other']),
+    type: z.enum(['page', 'paragraph', 'section', 'table', 'series', 'cell', 'form', 'accession', 'doi', 'calculation', 'other']),
     value: z.string(),
   }).nullable().optional(),
+  reviewSourceUrl: NullableString,
+  reviewSourceDate: NullableString,
+  reviewSourceType: z.enum(['primary', 'secondary', 'issuer', 'dataset']).nullable().optional(),
   reproductionArtifact: NullableString,
   classifier: AnyRecord.optional(),
   references: z.array(EvidenceReferenceSchema),
@@ -936,6 +940,9 @@ function compactClaim(claim) {
     reviewNote: claim.reviewNote,
     reviewedProofDepth: claim.reviewedProofDepth,
     evidenceLocator: claim.evidenceLocator,
+    reviewSourceUrl: claim.reviewSourceUrl,
+    reviewSourceDate: claim.reviewSourceDate,
+    reviewSourceType: claim.reviewSourceType,
     reproductionArtifact: claim.reproductionArtifact,
     classifier: claim.classifier,
     references: (claim.references || []).map((r) => ({
@@ -1716,6 +1723,26 @@ function buildServer(data) {
     },
   );
 
+  for (const prompt of agentPrompts) {
+    const argsSchema = Object.fromEntries(prompt.arguments.map((argument) => {
+      let schema = argument.values
+        ? z.enum(argument.values)
+        : z.string().min(argument.required ? 1 : 0).max(argument.maxLength || 4000);
+      if (argument.pattern) schema = schema.regex(new RegExp(argument.pattern));
+      if (!argument.required) schema = schema.optional();
+      return [argument.name, schema.describe(argument.description)];
+    }));
+    server.registerPrompt(
+      prompt.name,
+      {
+        title: prompt.title,
+        description: prompt.description,
+        argsSchema,
+      },
+      async (args) => renderAgentPrompt(prompt.name, args),
+    );
+  }
+
   server.registerTool(
     'get_agent_manifest',
     {
@@ -2046,14 +2073,16 @@ function buildServer(data) {
       if (requestedAsOf && !/^\d{4}-\d{2}-\d{2}$/.test(requestedAsOf)) {
         return errorReply({ error: 'asOf invalide', acceptedDateFormat: 'YYYY-MM-DD' });
       }
+      const queryTokens = tokensOf(query);
       const searched = await searchFullText(dataDir, catalog, sharedSearchIndex, query, Math.min(10, limit * 2), language);
-      const documents = searched
+      const minimumMatchedTerms = Math.min(queryTokens.length, Math.max(2, Math.ceil(queryTokens.length * 0.6)));
+      const supported = searched.filter((document) => (document.matchedTerms || []).length >= minimumMatchedTerms);
+      const documents = supported
         .filter((document) => !requestedAsOf || !document.date || String(document.date).slice(0, 10) <= requestedAsOf)
         .slice(0, limit);
       const canonicalArticleSlugs = new Set(documents
         .filter((document) => document.type === 'article' && String(document.canonicalId || '').startsWith('article:'))
         .map((document) => String(document.canonicalId).slice('article:'.length)));
-      const queryTokens = tokensOf(query);
       const rankedClaims = claimsList
         .filter((claim) => canonicalArticleSlugs.has(claim.articleSlug))
         .map((claim) => {

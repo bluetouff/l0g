@@ -132,7 +132,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/donnees/agents/#agent-surface`,
-  headline: 'Agent Surface v1.12.0',
+  headline: 'Agent Surface v1.13.0',
   description:
     'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, Risk Diff, Black Box, claims, sources, fraîcheur et règles de citation.',
   inLanguage: 'fr',
@@ -144,10 +144,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title="Agent Surface v1.12.0"
+  title="Agent Surface v1.13.0"
   description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, Risk Diff, Black Box, evidence graph, NDJSON, claims sourcées, sources, fraîcheur, intégrité, changefeed et règles de citation."
   ogImage="/og-donnees.png"
-  ogImageAlt="Agent Surface v1.12.0 l0g.fr : API bilingue, evidence graph, NDJSON, claims et sources"
+  ogImageAlt="Agent Surface v1.13.0 l0g.fr : API bilingue, Agent Bench, evidence graph, claims et sources"
   sidebar={false}
   alternateLinks={agentAlternateLinks}
 >
@@ -155,10 +155,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.12.0</p>
+      <p class="mono-label glow">// agent surface v1.13.0</p>
       <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
       <p class="agent-lede">
-        Agent Surface v1.12.0 expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
+        Agent Surface v1.13.0 expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
         evidence graph, claims sourcées, sources primaires, fraîcheur, Risk Diff,
         Black Box Recorder, index de recherche partagé, historique des signaux, empreintes et contrat OpenAPI. Les traductions
         portent leur identifiant canonique, leur alternative et leur statut de fraîcheur. Les claims restent françaises et
@@ -170,6 +170,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </p>
       <TrustBar items={trustItems} />
       <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/agent-surface/">English Agent Surface documentation →</a></p>
+      <p class="mono-label mt-2" data-pagefind-ignore><a class="link-term" href="/agent-bench/">l0g Agent Bench : résultats déterministes FR/EN →</a></p>
     </section>
 
     <section class="agent-section">
@@ -208,7 +209,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>Licence</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.12.0</strong></div>
+        <div><span>Version</span><strong>v1.13.0</strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Preuve</span><strong>claim-source</strong></div>
         <div><span>Intégrité</span><strong>SHA-256</strong></div>

@@ -18,9 +18,10 @@ const REVIEW_PATH = path.join(ROOT, 'src/config/claim-reviews.json');
 const PACKAGE_PATH = path.join(ROOT, 'package.json');
 const HTML_PATH = path.join(path.dirname(fileURLToPath(import.meta.url)), 'review-claims.html');
 const REVIEW_TOKEN = randomBytes(24).toString('hex');
-const ALLOWED_KINDS = new Set(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
-const ALLOWED_PROOFS = new Set(['', 'direct-proof', 'reproduction']);
-const ALLOWED_LOCATORS = new Set(['page', 'section', 'table', 'series', 'cell', 'form', 'calculation', 'other']);
+const ALLOWED_KINDS = new Set(['fait', 'estimation', 'inférence', 'scénario']);
+const ALLOWED_PROOFS = new Set(['direct-proof', 'reproduction']);
+const ALLOWED_LOCATORS = new Set(['page', 'paragraph', 'section', 'table', 'series', 'cell', 'form', 'accession', 'doi', 'calculation', 'other']);
+const ALLOWED_SOURCE_TYPES = new Set(['primary', 'secondary', 'issuer', 'dataset']);
 const MAX_PAYLOAD_BYTES = 24_000;
 const MAX_FIELD_LENGTHS = {
   claimId: 200,
@@ -30,6 +31,9 @@ const MAX_FIELD_LENGTHS = {
   locatorType: 64,
   locatorValue: 1_000,
   reproductionArtifact: 1_200,
+  sourceUrl: 2_000,
+  sourceDate: 10,
+  sourceType: 32,
 };
 const RATE_WINDOW_MS = 60_000;
 const RATE_LIMIT = 30;
@@ -321,11 +325,15 @@ function askTerminalConfirmation() {
 }
 
 async function loadReviews() {
-  return readJson(REVIEW_PATH).catch(() => ({
+  const registry = await readJson(REVIEW_PATH).catch(() => ({
     version: new Date().toISOString().slice(0, 10),
     updated: new Date().toISOString().slice(0, 10),
     entries: [],
   }));
+  return {
+    ...registry,
+    entries: registry.entries.map((entry) => ({ status: entry.status || 'legacy', ...entry })),
+  };
 }
 
 async function loadState({ forceBuild = false } = {}) {
@@ -356,26 +364,40 @@ function validateReview(body, claimIds) {
   const locatorType = sanitizeField(body.evidenceLocator?.type, 'Type de localisateur', MAX_FIELD_LENGTHS.locatorType);
   const locatorValue = sanitizeField(body.evidenceLocator?.value, 'Localisateur', MAX_FIELD_LENGTHS.locatorValue);
   const reproductionArtifact = sanitizeField(body.reproductionArtifact, 'Artefact de reproduction', MAX_FIELD_LENGTHS.reproductionArtifact);
+  const sourceUrl = sanitizeField(body.sourceUrl, 'URL de source', MAX_FIELD_LENGTHS.sourceUrl, { required: true });
+  const sourceDate = sanitizeField(body.sourceDate, 'Date de source', MAX_FIELD_LENGTHS.sourceDate, { required: true });
+  const sourceType = sanitizeField(body.sourceType, 'Type de source', MAX_FIELD_LENGTHS.sourceType, { required: true });
 
   if (!claimIds.has(claimId)) throw new Error('Claim inconnue ou corpus local obsolète.');
   if (!reviewedBy) throw new Error('Le nom du reviewer est obligatoire.');
   if (!ALLOWED_KINDS.has(kind)) throw new Error('Type de claim invalide.');
   if (!note) throw new Error('Ajoute une note de revue, même courte.');
   if (!ALLOWED_PROOFS.has(proofDepth)) throw new Error('Niveau de preuve invalide.');
-  if (proofDepth && (!ALLOWED_LOCATORS.has(locatorType) || !locatorValue)) {
-    throw new Error('Une preuve directe ou reproduction exige un localisateur précis.');
+  if (!ALLOWED_LOCATORS.has(locatorType) || !locatorValue) throw new Error('Un localisateur exact est obligatoire.');
+  let parsedSourceUrl;
+  try { parsedSourceUrl = new URL(sourceUrl); } catch { throw new Error('URL de source invalide.'); }
+  if (parsedSourceUrl.protocol !== 'https:') throw new Error('La source canonique doit utiliser HTTPS.');
+  const parsedSourceDate = new Date(`${sourceDate}T00:00:00Z`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(sourceDate) || Number.isNaN(parsedSourceDate.getTime()) || parsedSourceDate.toISOString().slice(0, 10) !== sourceDate) {
+    throw new Error('La date de source doit suivre YYYY-MM-DD.');
   }
+  if (!ALLOWED_SOURCE_TYPES.has(sourceType)) throw new Error('Type de source invalide.');
   if (proofDepth === 'reproduction' && !reproductionArtifact) {
     throw new Error('Une reproduction exige un artefact reproductible.');
   }
 
   return {
+    status: 'canonical',
     claimId,
     reviewedAt: new Date().toISOString(),
     reviewedBy,
     kind,
     note,
-    ...(proofDepth ? { proofDepth, evidenceLocator: { type: locatorType, value: locatorValue } } : {}),
+    proofDepth,
+    evidenceLocator: { type: locatorType, value: locatorValue },
+    sourceUrl,
+    sourceDate,
+    sourceType,
     ...(proofDepth === 'reproduction' ? { reproductionArtifact } : {}),
   };
 }
@@ -386,6 +408,9 @@ async function saveReview(body) {
   const entry = validateReview(body, new Set(claimsSurface.claims.map((claim) => claim.id)));
   const registry = await loadReviews();
   const entries = registry.entries.filter((item) => item.claimId !== entry.claimId);
+  const articleId = entry.claimId.split(':claim-')[0];
+  const canonicalForArticle = entries.filter((item) => item.status === 'canonical' && item.claimId.split(':claim-')[0] === articleId);
+  if (canonicalForArticle.length >= 3) throw new Error('Maximum atteint : trois claims canoniques par analyse.');
   entries.push(entry);
   entries.sort((a, b) => a.claimId.localeCompare(b.claimId, 'fr'));
   const today = new Date().toISOString().slice(0, 10);

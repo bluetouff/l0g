@@ -13,6 +13,7 @@
     "check": "astro check",
     "risk:update": "node scripts/update-risk-snapshot.mjs",
     "test:agent-surface": "node scripts/validate-agent-surface.mjs",
+    "test:agent-bench": "node mcp-server/agent-bench.mjs",
     "test:risk-snapshot": "node scripts/validate-risk-snapshot.mjs",
     "test:internal-links": "node scripts/check-internal-links.mjs",
     "lint:editorial": "node scripts/lint-editorial.mjs",

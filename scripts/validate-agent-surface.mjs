@@ -70,6 +70,7 @@ function validateOpenapiArtifacts() {
     ['AgentManifest', 'dist/agents.json'],
     ['Catalog', 'dist/api/v1/catalog.json'],
     ['SearchIndexSurface', 'dist/api/v1/search-index.json'],
+    ['AgentBenchSurface', 'dist/api/v1/agent-bench.json'],
     ['ClaimsSurface', 'dist/api/v1/claims.json'],
     ['EvidenceGraphSurface', 'dist/api/v1/evidence-graph.json'],
     ['SourcesSurface', 'dist/api/v1/sources.json'],
@@ -107,9 +108,24 @@ assert(claims.policy?.review, 'claims.policy.review manquant');
 assert(claims.policy?.dateModel, 'claims.policy.dateModel manquant');
 assert(claims.reviewRegistry?.version, 'claims.reviewRegistry.version manquant');
 assert(typeof claims.counts?.reviewedClaims === 'number', 'claims.counts.reviewedClaims manquant');
+assert(typeof claims.reviewRegistry?.legacyReviews === 'number', 'claims.reviewRegistry.legacyReviews manquant');
 assert((claims.counts?.claimKinds || []).includes('unclassified-assertion'), 'claimKinds ne declare pas unclassified-assertion');
 assert(claims.counts?.articlesByLanguage?.en === 0, 'claims.json ne doit pas dupliquer les claims anglaises');
 assert((claims.claims || []).every((claim) => claim.language === 'fr'), 'une claim non canonique française a été publiée');
+assert((claims.claims || []).every((claim) => claim.reviewStatus !== 'reviewed' || (
+  ['fait', 'estimation', 'inférence', 'scénario'].includes(claim.kind)
+  && ['direct-proof', 'reproduction'].includes(claim.reviewedProofDepth)
+  && claim.evidenceLocator?.value
+  && claim.reviewSourceUrl
+  && claim.reviewSourceDate
+)), 'une claim reviewed ne respecte pas le contrat canonique');
+const canonicalReviewsByArticle = new Map();
+for (const entry of claims.reviewRegistry?.entries || []) {
+  if (entry.status !== 'canonical') continue;
+  const articleSlug = entry.claimId.split(':claim-')[0];
+  canonicalReviewsByArticle.set(articleSlug, (canonicalReviewsByArticle.get(articleSlug) || 0) + 1);
+}
+assert([...canonicalReviewsByArticle.values()].every((count) => count <= 3), 'plus de trois claims canoniques sur une analyse');
 
 assert(catalog.counts?.articlesByLanguage?.fr > 0 && catalog.counts?.articlesByLanguage?.en > 0, 'catalogue articles non bilingue');
 assert(catalog.counts?.guidesByLanguage?.fr > 0 && catalog.counts?.guidesByLanguage?.en > 0, 'catalogue guides non bilingue');
@@ -200,7 +216,10 @@ for (const review of reviewEntries) {
   reviewIds.add(review.claimId);
   assert(claimIds.has(review.claimId), `review orpheline: ${review.claimId}`);
 }
-assert(reviewEntries.length === claims.counts.reviewedClaims, 'reviewedClaims ne correspond pas au registre');
+assert(
+  reviewEntries.filter((entry) => entry.status === 'canonical').length === claims.counts.reviewedClaims,
+  'reviewedClaims ne correspond pas aux seules revues canoniques',
+);
 
 assert(
   (claims.claims || []).some((claim) => claim.observationDate && claim.observationDate !== claim.claimDate),
@@ -274,4 +293,4 @@ assert(
 );
 
 const staleTranslations = [...catalog.articles, ...catalog.guides].filter((item) => item.language === 'en' && item.translationStatus === 'stale').length;
-console.log(`Agent Surface OK: ${claims.claims?.length ?? 0} claims canoniques, ${searchIndex.counts?.byLanguage?.en ?? 0} documents EN, ${staleTranslations} traduction(s) stale.`);
+console.log(`Agent Surface OK: ${claims.claims?.length ?? 0} claims FR, ${claims.counts?.reviewedClaims ?? 0} revue(s) canonique(s), ${claims.reviewRegistry?.legacyReviews ?? 0} revue(s) legacy, ${searchIndex.counts?.byLanguage?.en ?? 0} documents EN, ${staleTranslations} traduction(s) stale.`);

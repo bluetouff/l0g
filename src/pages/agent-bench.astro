@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="l0g Agent Bench — performance vérifiable des agents"
+  description="Benchmark déterministe FR/EN de l’Agent Surface et du serveur MCP l0g : recherche, sources primaires, parité, asOf, refus, fraîcheur et typage des claims."
+>
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <p class="mono-label glow">// l0g agent bench</p>
+    <h1 class="mt-4 text-4xl font-black text-paper md:text-6xl">Mesurer ce que l’agent trouve vraiment.</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-relaxed text-paper/80">
+      Ce benchmark exécute 44 questions déterministes en français et en anglais contre le serveur MCP publié. Aucun LLM n’est appelé : les tests vérifient les documents dans le top 3, les sources primaires, la parité des traductions, le comportement <code>asOf</code>, le refus des requêtes non étayées, la fraîcheur et la séparation observation, inférence, estimation et scénario.
+    </p>
+
+    <section class="mt-10 grid gap-4 md:grid-cols-3" aria-live="polite">
+      <div class="border border-paper/20 p-5"><span class="mono-label">score</span><strong id="score" class="mt-2 block text-3xl text-signal">chargement…</strong></div>
+      <div class="border border-paper/20 p-5"><span class="mono-label">versions</span><strong id="versions" class="mt-2 block text-lg text-paper">—</strong></div>
+      <div class="border border-paper/20 p-5"><span class="mono-label">méthode</span><strong class="mt-2 block text-lg text-paper">déterministe · 0 LLM</strong></div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-paper">Résultats par capacité</h2>
+      <div id="categories" class="mt-5 grid gap-3 md:grid-cols-2"></div>
+    </section>
+
+    <section class="mt-12 border-l-2 border-signal pl-5">
+      <h2 class="text-2xl font-bold text-paper">Contrat de preuve</h2>
+      <p class="mt-3 text-paper/75">Le score, le hash du jeu de cas, les versions testées et chaque résultat sont publiés dans un artefact JSON attesté par le workflow de build.</p>
+      <p class="mt-4"><a class="link-term" href="/api/v1/agent-bench.json">Lire le résultat JSON →</a></p>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const score = document.querySelector<HTMLElement>('#score')!;
+  const versions = document.querySelector<HTMLElement>('#versions')!;
+  const categories = document.querySelector<HTMLElement>('#categories')!;
+  const labels: Record<string, string> = { retrieval: 'Document attendu dans le top 3', parity: 'Parité FR / EN', 'primary-source': 'Source primaire attendue', 'as-of': 'Comportement asOf', refusal: 'Refus sans preuve', freshness: 'Fraîcheur', classification: 'Typage des claims' };
+  fetch('/api/v1/agent-bench.json').then((response) => response.json()).then((data) => {
+    if (!data.summary) throw new Error('résultat CI indisponible');
+    score.textContent = `${data.summary.passed}/${data.summary.total} · ${Math.round(data.summary.score * 100)} %`;
+    versions.textContent = `Agent ${data.surfaces.agentSurfaceVersion} · MCP ${data.surfaces.mcpServerVersion}`;
+    Object.entries(data.summary.categories as Record<string, { passed: number; total: number }>).forEach(([key, value]) => {
+      const row = document.createElement('div');
+      row.className = 'flex justify-between gap-4 border border-paper/15 p-4 text-paper';
+      const name = document.createElement('span');
+      name.textContent = labels[key] || key;
+      const result = document.createElement('strong');
+      result.textContent = `${value.passed}/${value.total}`;
+      row.append(name, result);
+      categories.append(row);
+    });
+  }).catch(() => { score.textContent = 'en attente du build CI'; });
+</script>

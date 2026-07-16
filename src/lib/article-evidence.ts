@@ -47,9 +47,12 @@ export interface ClaimEvidence {
   reviewNote?: string | null;
   reviewedProofDepth?: Extract<EvidenceDepth['id'], 'direct-proof' | 'reproduction'> | null;
   evidenceLocator?: {
-    type: 'page' | 'section' | 'table' | 'series' | 'cell' | 'form' | 'calculation' | 'other';
+    type: 'page' | 'paragraph' | 'section' | 'table' | 'series' | 'cell' | 'form' | 'accession' | 'doi' | 'calculation' | 'other';
     value: string;
   } | null;
+  reviewSourceUrl?: string | null;
+  reviewSourceDate?: string | null;
+  reviewSourceType?: 'primary' | 'secondary' | 'issuer' | 'dataset' | null;
   reproductionArtifact?: string | null;
   classifier: {
     method: 'lexical-heuristic-v1';
@@ -774,6 +777,9 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
       reviewNote: review.note,
       reviewedProofDepth: review.proofDepth ?? null,
       evidenceLocator: review.evidenceLocator ?? null,
+      reviewSourceUrl: review.sourceUrl ?? null,
+      reviewSourceDate: review.sourceDate ?? null,
+      reviewSourceType: review.sourceType ?? null,
       reproductionArtifact: review.reproductionArtifact ?? null,
       classifier: {
         ...claim.classifier,

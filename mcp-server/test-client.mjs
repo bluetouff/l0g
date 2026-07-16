@@ -16,7 +16,40 @@ const serverCapabilities = client.getServerCapabilities?.() || {};
 if (serverCapabilities.resources?.subscribe || serverCapabilities.resources?.listChanged) {
   throw new Error('Le serveur annonce des souscriptions resources sans notifications live');
 }
+if (!serverCapabilities.prompts || serverCapabilities.prompts.listChanged) {
+  throw new Error('Le serveur doit annoncer prompts sans notification listChanged');
+}
 console.log('CAPABILITIES resources:', JSON.stringify(serverCapabilities.resources || {}));
+
+const { prompts } = await client.listPrompts();
+const expectedPrompts = ['audit_financial_narrative', 'explain_risk_change', 'verify_claim', 'replay_as_of'];
+if (prompts.length !== expectedPrompts.length || expectedPrompts.some((name) => !prompts.some((prompt) => prompt.name === name))) {
+  throw new Error(`prompts/list inattendu: ${prompts.map((prompt) => prompt.name).join(', ')}`);
+}
+for (const prompt of prompts) {
+  if (!prompt.title || !prompt.description) throw new Error(`prompt incomplet: ${prompt.name}`);
+}
+const promptFixtures = {
+  audit_financial_narrative: { topic: 'stablecoins and Treasury demand', language: 'en' },
+  explain_risk_change: { window: '7d', language: 'fr' },
+  verify_claim: { claim: 'Les stablecoins augmentent la demande marginale de Treasuries.', language: 'fr' },
+  replay_as_of: { date: '2026-07-16', question: 'Quel était le niveau de risque publié ?', language: 'fr' },
+};
+for (const name of expectedPrompts) {
+  const rendered = await client.getPrompt({ name, arguments: promptFixtures[name] });
+  const text = rendered.messages?.[0]?.content?.text || '';
+  if (rendered.messages?.[0]?.role !== 'user' || text.length < 200 || text.includes('undefined')) {
+    throw new Error(`prompts/get invalide: ${name}`);
+  }
+}
+let invalidPromptRejected = false;
+try {
+  await client.getPrompt({ name: 'replay_as_of', arguments: { date: '16-07-2026' } });
+} catch {
+  invalidPromptRejected = true;
+}
+if (!invalidPromptRejected) throw new Error('prompts/get accepte une date de replay invalide');
+console.log('PROMPTS:', prompts.map((prompt) => prompt.name).join(', '));
 
 const healthUrl = new URL('/healthz', URL_).toString();
 const health = await fetch(healthUrl).then((res) => res.json());

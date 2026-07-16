@@ -51,7 +51,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${enUrl}#agent-surface`,
-  headline: 'Agent Surface v1.12.0',
+  headline: 'Agent Surface v1.13.0',
   description: 'English documentation for the l0g.fr machine-readable surface: agents.json, OpenAPI, Risk Diff, Black Box, claims, evidence graph, NDJSON, freshness, integrity and changefeed.',
   inLanguage: 'en',
   isAccessibleForFree: true,
@@ -61,7 +61,7 @@ const jsonLd = {
 ---
 
 <EnglishLayout
-  title="Agent Surface v1.12.0"
+  title="Agent Surface v1.13.0"
   description="English documentation for l0g Agent Surface: agents.json, OpenAPI, claims, evidence graph, freshness, integrity, changefeed, Risk Diff, Black Box and NDJSON feeds."
   canonical={enUrl}
   alternateLinks={alternateLinks}
@@ -70,12 +70,13 @@ const jsonLd = {
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.12.0</p>
+      <p class="mono-label glow">// agent surface v1.13.0</p>
       <h1 class="agent-title font-display glow">A machine surface for reading l0g without scraping.</h1>
       <p class="agent-lede">
-        Agent Surface v1.12.0 exposes the French and English l0g corpus as static JSON and NDJSON: bilingual catalog, shared search index, evidence graph, sourced claims, primary sources, freshness, Risk Diff, Black Box Recorder, signal history, fingerprints and an OpenAPI contract. Translations carry canonical and alternate identifiers plus freshness status. Claims remain canonical in French; English analyses link to them through <code>evidenceRef</code>.
+        Agent Surface v1.13.0 exposes the French and English l0g corpus as static JSON and NDJSON: bilingual catalog, shared search index, evidence graph, sourced claims, primary sources, freshness, Risk Diff, Black Box Recorder, signal history, fingerprints, Agent Bench results and an OpenAPI contract. Translations carry canonical and alternate identifiers plus freshness status. Claims remain canonical in French; English analyses link to them through <code>evidenceRef</code>.
       </p>
       <p class="mono-label mt-4"><a class="link-term" href="/donnees/agents/">Version française →</a></p>
+      <p class="mono-label mt-2"><a class="link-term" href="/agent-bench/">l0g Agent Bench: deterministic FR/EN results →</a></p>
     </section>
 
     <section class="agent-section">
@@ -111,7 +112,7 @@ const jsonLd = {
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>License</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.12.0</strong></div>
+        <div><span>Version</span><strong>v1.13.0</strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Evidence</span><strong>claim-source</strong></div>
         <div><span>Integrity</span><strong>SHA-256</strong></div>

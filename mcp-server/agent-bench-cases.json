@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    { "id": "ret-fr-stablecoins", "category": "retrieval", "language": "fr", "query": "stablecoins acheteur marginal bons du Trésor", "expectedCanonicalId": "article:stablecoins-acheteur-marginal-bon-du-tresor" },
+    { "id": "ret-en-stablecoins", "category": "retrieval", "language": "en", "query": "stablecoins marginal buyer US Treasuries", "expectedCanonicalId": "article:stablecoins-acheteur-marginal-bon-du-tresor" },
+    { "id": "ret-fr-eurodollars", "category": "retrieval", "language": "fr", "query": "eurodollars dette dollar offshore", "expectedCanonicalId": "article:eurodollars-dollar-offshore-dette-cachee" },
+    { "id": "ret-en-eurodollars", "category": "retrieval", "language": "en", "query": "eurodollars offshore dollar debt", "expectedCanonicalId": "article:eurodollars-dollar-offshore-dette-cachee" },
+    { "id": "ret-fr-productivity", "category": "retrieval", "language": "fr", "query": "IA productivité gains mesurés effets supposés", "expectedCanonicalId": "article:ia-et-productivite-entre-gains-mesures-et-effets-supposes" },
+    { "id": "ret-en-productivity", "category": "retrieval", "language": "en", "query": "AI productivity measured gains supposed effects", "expectedCanonicalId": "article:ia-et-productivite-entre-gains-mesures-et-effets-supposes" },
+    { "id": "ret-fr-semiconductors", "category": "retrieval", "language": "fr", "query": "semi-conducteurs pile de contraintes IA", "expectedCanonicalId": "article:semi-conducteurs-pile-contraintes" },
+    { "id": "ret-en-semiconductors", "category": "retrieval", "language": "en", "query": "semiconductors stack constraints behind AI", "expectedCanonicalId": "article:semi-conducteurs-pile-contraintes" },
+    { "id": "ret-fr-cushing", "category": "retrieval", "language": "fr", "query": "Cushing terminal fixe prix pétrole américain", "expectedCanonicalId": "article:cushing-le-terminal-qui-fixe-le-prix-du-petrole-americain" },
+    { "id": "ret-en-cushing", "category": "retrieval", "language": "en", "query": "Cushing Oklahoma terminal sets US oil price", "expectedCanonicalId": "article:cushing-le-terminal-qui-fixe-le-prix-du-petrole-americain" },
+    { "id": "ret-fr-insurers", "category": "retrieval", "language": "fr", "query": "assureurs vie épargne retraite crédit privé Bermudes", "expectedCanonicalId": "article:assureurs-vie-epargne-retraite-credit-prive-bermudes" },
+    { "id": "ret-en-insurers", "category": "retrieval", "language": "en", "query": "life insurers retirement savings private credit Bermuda", "expectedCanonicalId": "article:assureurs-vie-epargne-retraite-credit-prive-bermudes" },
+    { "id": "ret-fr-residual", "category": "retrieval", "language": "fr", "query": "valeur résiduelle garantie crédit infrastructure IA", "expectedCanonicalId": "article:valeur-residuelle-garantie-credit-infrastructure-ia" },
+    { "id": "ret-en-residual", "category": "retrieval", "language": "en", "query": "residual value guarantee AI infrastructure credit", "expectedCanonicalId": "article:valeur-residuelle-garantie-credit-infrastructure-ia" },
+    { "id": "ret-fr-basel", "category": "retrieval", "language": "fr", "query": "Bâle III régulateurs américains capital banques", "expectedCanonicalId": "article:bale-iii-rollback-regulateurs-us-capital-bancaire" },
+    { "id": "ret-en-basel", "category": "retrieval", "language": "en", "query": "Basel III rollback US regulators bank capital", "expectedCanonicalId": "article:bale-iii-rollback-regulateurs-us-capital-bancaire" },
+    { "id": "ret-fr-ethereum", "category": "retrieval", "language": "fr", "query": "Ethereum TradFi infrastructure finance programmable", "expectedCanonicalId": "article:ethereum-tradfi-infrastructure-finance" },
+    { "id": "ret-en-ethereum", "category": "retrieval", "language": "en", "query": "Ethereum TradFi programmable finance infrastructure", "expectedCanonicalId": "article:ethereum-tradfi-infrastructure-finance" },
+    { "id": "ret-fr-yen", "category": "retrieval", "language": "fr", "query": "dollar yen intervention risque carry trade", "expectedCanonicalId": "article:dollar-yen-intervention-risque-carry-2026" },
+    { "id": "ret-en-yen", "category": "retrieval", "language": "en", "query": "dollar yen intervention carry unwind", "expectedCanonicalId": "article:dollar-yen-intervention-risque-carry-2026" },
+
+    { "id": "parity-stablecoins", "category": "parity", "queryFr": "stablecoins acheteur marginal bons du Trésor", "queryEn": "stablecoins marginal buyer US Treasuries", "expectedCanonicalId": "article:stablecoins-acheteur-marginal-bon-du-tresor" },
+    { "id": "parity-eurodollars", "category": "parity", "queryFr": "eurodollars dette dollar offshore", "queryEn": "eurodollars offshore dollar debt", "expectedCanonicalId": "article:eurodollars-dollar-offshore-dette-cachee" },
+    { "id": "parity-productivity", "category": "parity", "queryFr": "IA productivité gains mesurés effets supposés", "queryEn": "AI productivity measured gains supposed effects", "expectedCanonicalId": "article:ia-et-productivite-entre-gains-mesures-et-effets-supposes" },
+    { "id": "parity-cushing", "category": "parity", "queryFr": "Cushing terminal fixe prix pétrole américain", "queryEn": "Cushing Oklahoma terminal sets US oil price", "expectedCanonicalId": "article:cushing-le-terminal-qui-fixe-le-prix-du-petrole-americain" },
+    { "id": "parity-residual", "category": "parity", "queryFr": "valeur résiduelle garantie crédit infrastructure IA", "queryEn": "residual value guarantee AI infrastructure credit", "expectedCanonicalId": "article:valeur-residuelle-garantie-credit-infrastructure-ia" },
+    { "id": "parity-ethereum", "category": "parity", "queryFr": "Ethereum TradFi infrastructure finance programmable", "queryEn": "Ethereum TradFi programmable finance infrastructure", "expectedCanonicalId": "article:ethereum-tradfi-infrastructure-finance" },
+
+    { "id": "source-insurers-imf", "category": "primary-source", "language": "fr", "query": "assureurs vie épargne retraite crédit privé Bermudes", "expectedSource": "imf" },
+    { "id": "source-yen-fred", "category": "primary-source", "language": "fr", "query": "dollar yen intervention carry trade", "expectedSource": "federal-reserve-fred" },
+    { "id": "source-ethereum-bis", "category": "primary-source", "language": "en", "query": "Ethereum TradFi programmable finance infrastructure", "expectedSource": "bis" },
+    { "id": "source-stablecoins-tic", "category": "primary-source", "language": "fr", "query": "stablecoins acheteur marginal Treasuries", "expectedSource": "treasury-tic" },
+    { "id": "source-residual-sec", "category": "primary-source", "language": "fr", "query": "valeur résiduelle garantie crédit IA", "expectedSource": "sec-edgar" },
+    { "id": "source-gilts-bis", "category": "primary-source", "language": "fr", "query": "gilts repo levier Banque Angleterre", "expectedSource": "bis" },
+
+    { "id": "asof-before-archive", "category": "as-of", "tool": "get_black_box", "asOf": "1900-01-01", "expectedFound": false },
+    { "id": "asof-invalid-date", "category": "as-of", "tool": "get_black_box", "asOf": "16-07-2026", "expectedError": true },
+    { "id": "asof-pack-no-frame", "category": "as-of", "tool": "build_research_pack", "query": "stablecoins Treasuries", "language": "en", "asOf": "1900-01-01", "expectedFound": false },
+
+    { "id": "refuse-nonce-fr", "category": "refusal", "language": "fr", "query": "zxqv oracle souverain non étayé 9917" },
+    { "id": "refuse-future-fr", "category": "refusal", "language": "fr", "query": "prix exact futur indice inexistant qqq 88731" },
+    { "id": "refuse-nonce-en", "category": "refusal", "language": "en", "query": "unsupported private balance sheet nonce 77419" },
+
+    { "id": "freshness-surface", "category": "freshness", "tool": "get_freshness" },
+    { "id": "freshness-pack", "category": "freshness", "tool": "build_research_pack", "query": "stablecoins Treasuries", "language": "en" },
+
+    { "id": "class-estimation", "category": "classification", "kind": "estimation", "expectedNonEmpty": true },
+    { "id": "class-inference", "category": "classification", "kind": "inférence", "expectedNonEmpty": true },
+    { "id": "class-scenario", "category": "classification", "kind": "scénario", "expectedNonEmpty": true },
+    { "id": "class-no-auto-observation", "category": "classification", "kind": "fait", "expectedNonEmpty": false }
+  ]
+}

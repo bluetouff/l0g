@@ -1,7 +1,7 @@
 # Serveur MCP de l0g.fr
 
 Serveur **Model Context Protocol** en lecture seule, qui expose les données de l0g.fr
-(Agent Surface, OpenAPI, Risk Diff, Black Box Recorder, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via resources, resource templates et tools, avec le
+(Agent Surface, OpenAPI, Risk Diff, Black Box Recorder, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via resources, prompts, resource templates et tools, avec le
 transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié).
 
 Endpoint public visé : `https://l0g.fr/api/mcp`
@@ -79,6 +79,20 @@ ont des callbacks de complétion. Le service public actuel est stateless en requ
 n’annonce pas `resources.subscribe` ni `resources.listChanged` : pour surveiller le corpus, lire
 `l0g://changes/latest` ou appeler `get_changefeed`.
 
+## Prompts exposés
+
+Les prompts MCP sont des workflows sélectionnés explicitement par l'utilisateur. Le serveur
+annonce la capability `prompts`, sans `listChanged`, et valide chaque argument avant de rendre le
+message. Leur définition unique vit dans `src/lib/agent-prompts.mjs`, également utilisée par la
+page `/agents/`.
+
+| Prompt | Arguments | Workflow |
+|--------|-----------|----------|
+| `audit_financial_narrative` | `topic`, `language?` | auditer un récit financier et séparer claims, preuves, inférences, scénarios et limites |
+| `explain_risk_change` | `window?`, `language?` | expliquer un Risk Diff publié sur 1, 7 ou 30 jours sans extrapolation |
+| `verify_claim` | `claim`, `language?` | vérifier une affirmation contre les claims canoniques, leurs preuves et leurs sources |
+| `replay_as_of` | `date`, `question?`, `language?` | rejouer uniquement une frame Black Box réellement archivée à la date demandée |
+
 ## Tools exposés (tous `readOnlyHint`)
 
 Tous les tools renvoient désormais :
@@ -117,6 +131,10 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `list_guides` | `language?` | guides de référence français ou anglais |
 | `search_by_topic` | `topic`, `language?`, `limit?` | analyses d'un sujet, filtrables par langue |
 | `get_article` | `slug`, `language?`, `offset?`, `cursor?`, `limit?`, `length?`, `section?` | texte paginé français ou anglais, avec références canoniques séparées |
+
+## l0g Agent Bench
+
+Le workflow publié exécute `agent-bench.mjs` contre ce serveur après le test de protocole. Les 44 cas FR/EN n’appellent aucun LLM et couvrent le top 3 documentaire, les sources primaires, la parité des traductions, `asOf`, le refus sans preuve, la fraîcheur et le typage des claims. Le résultat versionné et attesté est publié sur `/api/v1/agent-bench.json` et présenté sur `/agent-bench/`.
 
 Les documents longs exposent `section`, `offset`, `limit`, `nextOffset` et `nextCursor`. Exemple :
 `l0g://articles/economie-des-intentions?section=sources&offset=0&limit=12000`.

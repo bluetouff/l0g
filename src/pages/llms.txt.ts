@@ -84,7 +84,7 @@ export const GET: APIRoute = async () => {
     `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
   );
   lines.push(
-    `- [Agent Surface v1.12.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue humaine et changefeed versionné.`
+    `- [Agent Surface v1.13.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -184,6 +184,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Sources](${SITE}/api/v1/sources.json): registre sources primaires et hôtes effectivement cités.`);
   lines.push(`- [Freshness](${SITE}/api/v1/freshness.json): fraîcheur du corpus et des signaux, avec observedAt, computedAt, staleAfter, expiresAt et statut de couverture.`);
   lines.push(`- [Integrity](${SITE}/api/v1/integrity.json): empreintes SHA-256 canoniques des surfaces Agent Surface, champ generated exclu.`);
+  lines.push(`- [l0g Agent Bench](${SITE}/agent-bench/): 44 tests déterministes FR/EN, résultats JSON attestés dans ${SITE}/api/v1/agent-bench.json.`);
   lines.push(`- [Changes](${SITE}/api/v1/changes.json): changefeed machine avec objectId, version courante, hash courant, statut de diff et changement sémantique.`);
   lines.push(`- [Changes NDJSON](${SITE}/api/v1/changes.ndjson): changefeed ligne à ligne pour watchers et agents de veille, mêmes métadonnées de version.`);
   lines.push(`- [Risk Diff](${SITE}/api/v1/risk-diff.json): diff du risque sur 1, 7 et 30 jours, avec signaux, sources, claims, modèles, articles et confiance.`);
