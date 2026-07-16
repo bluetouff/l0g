@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { jsonResponse, sortGuides, sortPosts } from '../../../lib/agent-surface.ts';
+import { loadAgentContent } from '../../../lib/agent-content.ts';
+import { jsonResponse } from '../../../lib/agent-surface.ts';
 import { buildRiskDiffSurface } from '../../../lib/risk-diff.ts';
 
 function readRiskSnapshot() {
@@ -14,7 +14,6 @@ function readRiskSnapshot() {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
-  const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
+  const { posts, guides } = await loadAgentContent();
   return jsonResponse(buildRiskDiffSurface(posts, guides, readRiskSnapshot()));
 };

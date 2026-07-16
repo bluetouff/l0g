@@ -50,7 +50,7 @@ const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 102
 const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.15.0';
+const MCP_VERSION = '1.16.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -135,6 +135,7 @@ let cache = {
   agent: null,
   openapi: null,
   catalog: null,
+  searchIndex: null,
   claims: null,
   sources: null,
   freshness: null,
@@ -174,6 +175,7 @@ async function loadData() {
   const agent = await readJson(dataDir, 'agents.json');
   const openapi = await readJson(dataDir, 'openapi.json');
   const catalog = await readJson(dataDir, 'api/v1/catalog.json');
+  const searchIndex = await readJson(dataDir, 'api/v1/search-index.json');
   const claims = await readJson(dataDir, 'api/v1/claims.json');
   const sources = await readJson(dataDir, 'api/v1/sources.json');
   const freshness = await readJson(dataDir, 'api/v1/freshness.json');
@@ -208,7 +210,7 @@ async function loadData() {
   try {
     confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { at: now, dataDir, agent, openapi, catalog, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
+  cache = { at: now, dataDir, agent, openapi, catalog, searchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
   return cache;
 }
 
@@ -348,12 +350,14 @@ async function readSearchDocument(dataDir, candidate) {
     normText: norm(text),
   };
 }
-async function buildSearchIndex(dataDir, catalog) {
+async function buildSearchIndex(dataDir, catalog, sharedSearchIndex) {
   const now = Date.now();
   if (searchIndexCache.index && searchIndexCache.dataDir === dataDir && now - searchIndexCache.at < CACHE_TTL) {
     return searchIndexCache.index;
   }
-  const candidates = [
+  const candidates = Array.isArray(sharedSearchIndex?.documents) && sharedSearchIndex.documents.length
+    ? sharedSearchIndex.documents.map((item) => ({ ...item, rel: null }))
+    : [
     ...(catalog.articles || []).map((item) => ({
       ...item,
       type: 'article',
@@ -385,10 +389,21 @@ async function buildSearchIndex(dataDir, catalog) {
       tags: [item.category, item.shortName, item.officialUrl].filter(Boolean),
       rel: `sources/${item.slug}/index.html`,
     })),
-  ];
+    ];
   const index = [];
   for (const candidate of candidates) {
-    index.push(await readSearchDocument(dataDir, candidate));
+    if (candidate.rel) index.push(await readSearchDocument(dataDir, candidate));
+    else {
+      const text = [candidate.description, candidate.text].filter(Boolean).join(' ');
+      index.push({
+        ...candidate,
+        text,
+        normTitle: norm(candidate.title),
+        normDescription: norm(candidate.description),
+        normMeta: norm([...(candidate.tags || []), ...(candidate.topics || [])].join(' ')),
+        normText: norm(text),
+      });
+    }
   }
   searchIndexCache = { at: now, dataDir, index };
   return index;
@@ -416,18 +431,22 @@ function rankSearchDocument(doc, tokens, queryNorm) {
   value += Math.min(matched.length, 6) * 3;
   return { value, matched, fields: [...fields] };
 }
-async function searchFullText(dataDir, catalog, query, limit) {
+async function searchFullText(dataDir, catalog, sharedSearchIndex, query, limit, language) {
   const tokens = tokensOf(query);
   if (!tokens.length) return [];
   const queryNorm = tokens.join(' ');
-  const index = await buildSearchIndex(dataDir, catalog);
+  const index = await buildSearchIndex(dataDir, catalog, sharedSearchIndex);
   return index
+    .filter((doc) => !language || doc.language === language)
     .map((doc) => ({ doc, ranking: rankSearchDocument(doc, tokens, queryNorm) }))
     .filter((item) => item.ranking)
     .sort((a, b) => b.ranking.value - a.ranking.value || String(b.doc.date || '').localeCompare(String(a.doc.date || '')))
     .slice(0, limit)
     .map(({ doc, ranking }) => ({
       type: doc.type,
+      canonicalId: doc.canonicalId,
+      language: doc.language || 'fr',
+      translationStatus: doc.translationStatus || 'source',
       title: doc.title,
       url: doc.url,
       date: doc.date || doc.updated || null,
@@ -451,6 +470,7 @@ const ToolOutput = z.object({ error: z.string().optional() }).catchall(JsonValue
 const UrlString = z.string();
 const NullableString = z.string().nullable().optional();
 const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
+const LanguageSchema = z.enum(['fr', 'en']);
 const EvidenceReferenceSchema = z.object({
   label: z.string(),
   href: z.string(),
@@ -465,6 +485,8 @@ const EvidenceReferenceSchema = z.object({
 }).strict();
 const CompactClaimSchema = z.object({
   id: z.string(),
+  canonicalId: z.string(),
+  language: LanguageSchema,
   articleSlug: z.string(),
   articleTitle: z.string().optional(),
   articleUrl: UrlString.optional(),
@@ -495,6 +517,9 @@ const CompactClaimSchema = z.object({
 }).strict();
 const SearchResultSchema = z.object({
   type: z.enum(['article', 'guide', 'glossary', 'methodology', 'source']),
+  canonicalId: z.string().optional(),
+  language: LanguageSchema,
+  translationStatus: z.enum(['source', 'current', 'stale', 'missing-source']).optional(),
   title: z.string(),
   url: UrlString.optional(),
   date: NullableString,
@@ -544,6 +569,7 @@ const ChangeEntrySchema = z.object({
   date: z.string(),
   type: z.enum(['article-published', 'article-revised', 'guide-published', 'guide-revised', 'editorial-change']),
   contentType: z.enum(['article', 'guide', 'policy']),
+  language: LanguageSchema,
   slug: z.string(),
   title: z.string(),
   url: UrlString,
@@ -679,8 +705,9 @@ const FreshnessOutput = ToolOutput.extend({
 }).passthrough();
 const SearchOutput = ToolOutput.extend({
   query: z.string().optional(),
+  language: LanguageSchema.nullable().optional(),
   mode: z.enum(['fulltext', 'catalog']).optional(),
-  backend: z.enum(['local-html-index', 'catalog-weighted-lexical']).optional(),
+  backend: z.enum(['shared-agent-search-index', 'catalog-weighted-lexical']).optional(),
   coverage: z.array(z.enum(['title', 'tags', 'topics', 'description', 'body'])).optional(),
   count: z.number().optional(),
   results: z.array(SearchResultSchema).optional(),
@@ -744,6 +771,9 @@ const TopicOutput = AnalysisListOutput.extend({
 }).passthrough();
 const ArticleOutput = ToolOutput.extend({
   slug: z.string().optional(),
+  canonicalId: z.string().optional(),
+  language: LanguageSchema.nullable().optional(),
+  translationStatus: z.enum(['source', 'current', 'stale', 'missing-source']).optional(),
   type: z.enum(['article', 'guide']).optional(),
   url: z.string().optional(),
   title: z.string().optional(),
@@ -867,6 +897,8 @@ function resourceNotFound(kind, id) {
 function compactClaim(claim) {
   return {
     id: claim.id,
+    canonicalId: claim.canonicalId,
+    language: claim.language || 'fr',
     articleSlug: claim.articleSlug,
     articleTitle: claim.articleTitle,
     articleUrl: claim.articleUrl,
@@ -980,12 +1012,15 @@ function removeLiveNotificationCapabilities(server) {
 // --- fabrique d'un serveur MCP (neuf par requête) ---
 function buildServer(data) {
   const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
-  const { agent, openapi, catalog, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence } = data;
+  const { agent, openapi, catalog, searchIndex: sharedSearchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence } = data;
   const dataDir = data.dataDir || DATA_DIR;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
+  const articlesFr = articles.filter((item) => item.language !== 'en');
+  const articlesEn = articles.filter((item) => item.language === 'en');
+  const guidesFr = guides.filter((item) => item.language !== 'en');
+  const guidesEn = guides.filter((item) => item.language === 'en');
   const topicsList = catalog.topics || [];
-  const slugs = new Set([...articles.map((a) => a.slug), ...guides.map((g) => g.slug)]);
   const claimKinds = ['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion'];
   const claimsList = claims.claims || [];
   const methodologies = catalog.methodologies || [];
@@ -1002,7 +1037,8 @@ function buildServer(data) {
     };
   }
 
-  function referencesForArticle(slug) {
+  function referencesForArticle(record) {
+    const slug = record?.evidenceRef?.articleSlug || record?.slug;
     const seen = new Set();
     const references = [];
     for (const claim of claimsList.filter((item) => item.articleSlug === slug)) {
@@ -1042,12 +1078,18 @@ function buildServer(data) {
   }
 
   async function readDocument(slug, type, options = {}) {
-    const clean = uriValue(slug).replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+    const raw = uriValue(slug);
+    const clean = cleanSlug(raw);
     const pool = type === 'guide' ? guides : articles;
-    const record = pool.find((item) => item.slug === clean);
+    const inferredLanguage = /(?:^|\/)en\/(?:analysis|guides)\//.test(raw) ? 'en' : null;
+    const language = options.language || inferredLanguage;
+    const candidates = pool.filter((item) => item.slug === clean && (!language || item.language === language));
+    const record = candidates.find((item) => item.language === 'fr') || candidates[0];
     if (!record) resourceNotFound(type, clean);
-    const section = type === 'guide' ? 'guides' : 'posts';
-    const html = await readFile(join(dataDir, section, clean, 'index.html'), 'utf-8');
+    const pathname = new URL(record.url, SITE).pathname.replace(/^\/+|\/+$/g, '');
+    const allowedPath = /^(?:posts|guides|en\/analysis|en\/guides)\/[a-z0-9][a-z0-9-]*$/;
+    if (!allowedPath.test(pathname)) resourceNotFound(type, clean);
+    const html = await readFile(join(dataDir, pathname, 'index.html'), 'utf-8');
     const root = parseHtml(html);
     const titleEl = root.querySelector('article h1') || root.querySelector('h1');
     const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
@@ -1058,12 +1100,22 @@ function buildServer(data) {
       type,
       title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : record.title,
       ...chunk,
-      references: referencesForArticle(clean),
+      references: referencesForArticle(record),
     };
   }
 
   function cleanSlug(value) {
-    return String(value || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
+    return String(value || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(?:posts|guides|en\/analysis|en\/guides)\//, '');
+  }
+
+  function resolveCatalogDocument(value, type, language) {
+    const raw = String(value || '');
+    const clean = cleanSlug(raw);
+    const inferredLanguage = /(?:^|\/)en\/(?:analysis|guides)\//.test(raw) ? 'en' : null;
+    const requestedLanguage = language || inferredLanguage;
+    const pool = type === 'guide' ? guides : type === 'article' ? articles : [...articles, ...guides];
+    const matches = pool.filter((item) => item.slug === clean && (!requestedLanguage || item.language === requestedLanguage));
+    return matches.find((item) => item.language === 'fr') || matches[0] || null;
   }
 
   function normalizeId(value, prefix) {
@@ -1386,92 +1438,148 @@ function buildServer(data) {
     'article',
     new ResourceTemplate('l0g://articles/{slug}', {
       list: async () => ({
-        resources: articles.map((article) => resourceSummary(
+        resources: articlesFr.map((article) => resourceSummary(
           `l0g://articles/${encodeURIComponent(article.slug)}`,
           article.title,
           article.description,
         )),
       }),
-      complete: { slug: (value) => articles.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+      complete: { slug: (value) => articlesFr.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Article',
       description: 'Analyse l0g lue comme document ressource paginé, avec métadonnées, références et texte.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', readOptionsFromUri(uri, variables))),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', { ...readOptionsFromUri(uri, variables), language: 'fr' })),
   );
 
   server.registerResource(
     'article-page',
     new ResourceTemplate('l0g://articles/{slug}{?section,offset,limit}', {
-      complete: { slug: (value) => articles.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+      complete: { slug: (value) => articlesFr.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Article page',
       description: 'Page ciblée d’une analyse l0g : section, offset et limit explicites.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', readOptionsFromUri(uri, variables))),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', { ...readOptionsFromUri(uri, variables), language: 'fr' })),
   );
 
   server.registerResource(
     'article-cursor',
     new ResourceTemplate('l0g://articles/{slug}{?cursor}', {
-      complete: { slug: (value) => articles.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+      complete: { slug: (value) => articlesFr.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Article cursor',
       description: 'Continuation opaque d’une analyse l0g via nextCursor.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', readOptionsFromUri(uri, variables))),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', { ...readOptionsFromUri(uri, variables), language: 'fr' })),
+  );
+
+  server.registerResource(
+    'article-en',
+    new ResourceTemplate('l0g://en/articles/{slug}', {
+      list: async () => ({ resources: articlesEn.map((article) => resourceSummary(`l0g://en/articles/${encodeURIComponent(article.slug)}`, article.title, article.description)) }),
+      complete: { slug: (value) => articlesEn.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    { title: 'English article', description: 'Published English l0g analysis with canonical French evidence references.', mimeType: 'application/json' },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', { ...readOptionsFromUri(uri, variables), language: 'en' })),
+  );
+
+  server.registerResource(
+    'article-en-page',
+    new ResourceTemplate('l0g://en/articles/{slug}{?section,offset,limit}', {
+      complete: { slug: (value) => articlesEn.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    { title: 'English article page', description: 'Paginated English analysis.', mimeType: 'application/json' },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', { ...readOptionsFromUri(uri, variables), language: 'en' })),
+  );
+
+  server.registerResource(
+    'article-en-cursor',
+    new ResourceTemplate('l0g://en/articles/{slug}{?cursor}', {
+      complete: { slug: (value) => articlesEn.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    { title: 'English article cursor', description: 'Opaque continuation cursor for an English analysis.', mimeType: 'application/json' },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'article', { ...readOptionsFromUri(uri, variables), language: 'en' })),
   );
 
   server.registerResource(
     'guide',
     new ResourceTemplate('l0g://guides/{slug}', {
       list: async () => ({
-        resources: guides.map((guide) => resourceSummary(
+        resources: guidesFr.map((guide) => resourceSummary(
           `l0g://guides/${encodeURIComponent(guide.slug)}`,
           guide.title,
           guide.description,
         )),
       }),
-      complete: { slug: (value) => guides.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+      complete: { slug: (value) => guidesFr.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Guide',
       description: 'Guide de référence l0g lu comme document ressource paginé.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', readOptionsFromUri(uri, variables))),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', { ...readOptionsFromUri(uri, variables), language: 'fr' })),
   );
 
   server.registerResource(
     'guide-page',
     new ResourceTemplate('l0g://guides/{slug}{?section,offset,limit}', {
-      complete: { slug: (value) => guides.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+      complete: { slug: (value) => guidesFr.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Guide page',
       description: 'Page ciblée d’un guide l0g : section, offset et limit explicites.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', readOptionsFromUri(uri, variables))),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', { ...readOptionsFromUri(uri, variables), language: 'fr' })),
   );
 
   server.registerResource(
     'guide-cursor',
     new ResourceTemplate('l0g://guides/{slug}{?cursor}', {
-      complete: { slug: (value) => guides.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+      complete: { slug: (value) => guidesFr.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Guide cursor',
       description: 'Continuation opaque d’un guide l0g via nextCursor.',
       mimeType: 'application/json',
     },
-    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', readOptionsFromUri(uri, variables))),
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', { ...readOptionsFromUri(uri, variables), language: 'fr' })),
+  );
+
+  server.registerResource(
+    'guide-en',
+    new ResourceTemplate('l0g://en/guides/{slug}', {
+      list: async () => ({ resources: guidesEn.map((guide) => resourceSummary(`l0g://en/guides/${encodeURIComponent(guide.slug)}`, guide.title, guide.description)) }),
+      complete: { slug: (value) => guidesEn.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    { title: 'English guide', description: 'Published English l0g reference guide.', mimeType: 'application/json' },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', { ...readOptionsFromUri(uri, variables), language: 'en' })),
+  );
+
+  server.registerResource(
+    'guide-en-page',
+    new ResourceTemplate('l0g://en/guides/{slug}{?section,offset,limit}', {
+      complete: { slug: (value) => guidesEn.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    { title: 'English guide page', description: 'Paginated English reference guide.', mimeType: 'application/json' },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', { ...readOptionsFromUri(uri, variables), language: 'en' })),
+  );
+
+  server.registerResource(
+    'guide-en-cursor',
+    new ResourceTemplate('l0g://en/guides/{slug}{?cursor}', {
+      complete: { slug: (value) => guidesEn.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
+    }),
+    { title: 'English guide cursor', description: 'Opaque continuation cursor for an English guide.', mimeType: 'application/json' },
+    async (uri, variables) => resourceJson(uri.toString(), await readDocument(variables.slug, 'guide', { ...readOptionsFromUri(uri, variables), language: 'en' })),
   );
 
   server.registerResource(
@@ -1849,25 +1957,27 @@ function buildServer(data) {
     {
       description:
         "Recherche plein texte locale dans l0g.fr : analyses, guides, glossaire, fiches méthodologiques et sources primaires. " +
-        "Par défaut, le serveur lit les HTML construits et score titre, métadonnées, description et corps de page, sans fournisseur externe. " +
+        "Par défaut, le serveur utilise l'index bilingue canonique partagé avec l'Agent Surface et WebMCP, sans fournisseur externe. " +
         "Le mode catalog conserve l'ancien scoring léger sur titre, tags, topics et description.",
       inputSchema: {
         query: z.string().min(1).max(200).describe('Termes de recherche.'),
+        language: LanguageSchema.optional().describe('Langue optionnelle : fr ou en. Sans filtre, recherche bilingue.'),
         mode: z.enum(['fulltext', 'catalog']).default('fulltext').describe('fulltext pour le corps des pages, catalog pour le scoring catalogue historique.'),
         limit: z.number().int().min(1).max(10).default(5).describe('Nombre maximum de résultats.'),
       },
       outputSchema: SearchOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ query, mode, limit }) => {
+    async ({ query, language, mode, limit }) => {
       const tokens = norm(query).split(/\s+/).filter(Boolean);
       if (!tokens.length) return reply({ query, mode: mode || 'fulltext', count: 0, results: [] });
       if ((mode || 'fulltext') === 'fulltext') {
-        const results = await searchFullText(dataDir, catalog, query, limit);
+        const results = await searchFullText(dataDir, catalog, sharedSearchIndex, query, limit, language);
         return reply({
           query,
+          language: language || null,
           mode: 'fulltext',
-          backend: 'local-html-index',
+          backend: 'shared-agent-search-index',
           coverage: ['title', 'tags', 'topics', 'description', 'body'],
           count: results.length,
           results,
@@ -1876,7 +1986,7 @@ function buildServer(data) {
       const pool = [
         ...articles.map((a) => ({ ...a, type: 'article' })),
         ...guides.map((g) => ({ ...g, type: 'guide' })),
-      ];
+      ].filter((item) => !language || item.language === language);
       const ranked = pool
         .map((it) => ({ it, s: score(it, tokens) }))
         .filter((x) => x.s > 0)
@@ -1884,10 +1994,12 @@ function buildServer(data) {
         .slice(0, limit)
         .map((x) => ({
           type: x.it.type, title: x.it.title, url: x.it.url,
+          canonicalId: x.it.canonicalId, language: x.it.language || 'fr', translationStatus: x.it.translationStatus,
           date: x.it.date, description: x.it.description, score: x.s,
         }));
       return reply({
         query,
+        language: language || null,
         mode: 'catalog',
         backend: 'catalog-weighted-lexical',
         coverage: ['title', 'tags', 'topics', 'description'],
@@ -1905,6 +2017,7 @@ function buildServer(data) {
         "(fait, estimation, inférence, scénario, assertion non classée) et texte. Renvoie les références cliquables, datées quand détectable.",
       inputSchema: {
         articleSlug: z.string().optional().describe("Slug d'article optionnel."),
+        language: LanguageSchema.optional().describe('Langue du slug fourni. Une claim reste canonique en français.'),
         kind: ClaimKindSchema.optional().describe('Type de claim optionnel.'),
         query: z.string().optional().describe('Filtre texte optionnel dans la claim ou le titre article.'),
         limit: z.number().int().min(1).max(50).default(10).describe('Nombre maximum de claims.'),
@@ -1912,10 +2025,11 @@ function buildServer(data) {
       outputSchema: ClaimsOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ articleSlug, kind, query, limit }) => {
+    async ({ articleSlug, language, kind, query, limit }) => {
       let list = claims.claims || [];
       if (articleSlug) {
-        const clean = String(articleSlug).trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
+        const record = resolveCatalogDocument(articleSlug, 'article', language);
+        const clean = record?.evidenceRef?.articleSlug || cleanSlug(articleSlug);
         list = list.filter((claim) => claim.articleSlug === clean);
       }
       if (kind) list = list.filter((claim) => claim.kind === kind);
@@ -1927,7 +2041,7 @@ function buildServer(data) {
       return reply({
         version: claims.version,
         count: list.length,
-        filters: { articleSlug: articleSlug || null, kind: kind || null, query: query || null },
+        filters: { articleSlug: articleSlug || null, language: language || null, kind: kind || null, query: query || null },
         claimKinds,
         claims: list,
         policy: claims.policy,
@@ -2014,15 +2128,16 @@ function buildServer(data) {
         "C'est le chemin recommandé pour passer d'un article à ses affirmations vérifiables.",
       inputSchema: {
         articleSlug: z.string().min(1).describe("Slug d'article."),
+        language: LanguageSchema.optional().describe('Langue du slug fourni. Les claims renvoyées restent canoniques en français.'),
         kind: ClaimKindSchema.optional().describe('Type de claim optionnel.'),
         limit: z.number().int().min(1).max(100).default(50).describe('Nombre maximum de claims.'),
       },
       outputSchema: ArticleClaimsOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ articleSlug, kind, limit }) => {
-      const slug = cleanSlug(articleSlug);
-      const article = articles.find((item) => item.slug === slug);
+    async ({ articleSlug, language, kind, limit }) => {
+      const article = resolveCatalogDocument(articleSlug, 'article', language);
+      const slug = article?.evidenceRef?.articleSlug || cleanSlug(articleSlug);
       if (!article) return errorReply({ error: 'article inconnu', articleSlug: slug });
       let list = claimsList.filter((claim) => claim.articleSlug === slug);
       if (kind) list = list.filter((claim) => claim.kind === kind);
@@ -2031,7 +2146,7 @@ function buildServer(data) {
         articleSlug: slug,
         article,
         count: list.length,
-        filters: { kind: kind || null },
+        filters: { language: language || null, kind: kind || null },
         claims: list,
         resources: list.map((claim) => `l0g://claims/${encodeURIComponent(claim.id)}`),
       });
@@ -2164,19 +2279,21 @@ function buildServer(data) {
         "Avec articleSlug, la preuve directe est séparée des contenus reliés par hôte/source/dataset commun.",
       inputSchema: {
         articleSlug: z.string().optional().describe("Slug d'article optionnel pour extraire son voisinage de graphe."),
+        language: LanguageSchema.optional().describe('Langue du slug fourni. Le graphe de preuve reste canonique en français.'),
         nodeType: z.enum(['article', 'claim', 'reference', 'host', 'primarySource', 'dataset']).optional().describe('Type de nœud optionnel.'),
         limit: z.number().int().min(1).max(200).default(80).describe('Nombre maximum de nœuds renvoyés.'),
       },
       outputSchema: EvidenceGraphOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ articleSlug, nodeType, limit }) => {
+    async ({ articleSlug, language, nodeType, limit }) => {
       let nodes = evidenceGraph.nodes || [];
       const edges = evidenceGraph.edges || [];
       let directSection = null;
       let relatedSection = null;
       if (articleSlug) {
-        const clean = String(articleSlug).trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
+        const record = resolveCatalogDocument(articleSlug, 'article', language);
+        const clean = record?.evidenceRef?.articleSlug || cleanSlug(articleSlug);
         const articleId = `article:${clean}`;
         const articleClaimIds = edges
           .filter((edge) => edge.type === 'contains' && edge.from === articleId)
@@ -2209,7 +2326,7 @@ function buildServer(data) {
             directEvidence: directSection.returned,
             relatedContent: relatedSection.returned,
           },
-          filters: { articleSlug: clean, nodeType: nodeType || null },
+          filters: { articleSlug: clean, requestedLanguage: language || null, canonicalLanguage: 'fr', nodeType: nodeType || null },
           graphPolicy: {
             ...evidenceGraph.graphPolicy,
             traversal:
@@ -2350,16 +2467,18 @@ function buildServer(data) {
         "Liste les analyses (articles) les plus récentes de l0g.fr, de la plus récente à la plus ancienne, " +
         "avec titre, URL, date, description et thèmes.",
       inputSchema: {
+        language: LanguageSchema.optional().describe('Langue optionnelle : fr ou en. Sans filtre, liste bilingue.'),
         limit: z.number().int().min(1).max(20).default(5).describe("Nombre d'analyses à renvoyer."),
       },
       outputSchema: AnalysisListOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ limit }) => {
-      const list = articles.slice(0, limit).map((a) => ({
+    async ({ language, limit }) => {
+      const list = articles.filter((a) => !language || a.language === language).slice(0, limit).map((a) => ({
+        canonicalId: a.canonicalId, language: a.language, translationStatus: a.translationStatus,
         title: a.title, url: a.url, date: a.date, description: a.description, tags: a.tags,
       }));
-      return reply({ count: list.length, analyses: list });
+      return reply({ language: language || null, count: list.length, analyses: list });
     }
   );
 
@@ -2369,15 +2488,18 @@ function buildServer(data) {
       description:
         "Liste les guides de référence de l0g.fr (pages piliers durables : 13F, Form 4, GENIUS Act, OFAC, MiCA...), " +
         "avec titre, URL, description et résumé définitionnel.",
-      inputSchema: {},
+      inputSchema: {
+        language: LanguageSchema.optional().describe('Langue optionnelle : fr ou en. Sans filtre, liste bilingue.'),
+      },
       outputSchema: GuideListOutput,
       annotations: { readOnlyHint: true },
     },
-    async () => {
-      const list = guides.map((g) => ({
+    async ({ language }) => {
+      const list = guides.filter((g) => !language || g.language === language).map((g) => ({
+        canonicalId: g.canonicalId, language: g.language, translationStatus: g.translationStatus,
         title: g.title, url: g.url, date: g.date, description: g.description, summary: g.summary, tags: g.tags,
       }));
-      return reply({ count: list.length, guides: list });
+      return reply({ language: language || null, count: list.length, guides: list });
     }
   );
 
@@ -2389,22 +2511,23 @@ function buildServer(data) {
         topicsList.map((t) => `${t.slug} : ${t.label}`).join(' ; ') + ". Accepte le slug ou un libellé approchant.",
       inputSchema: {
         topic: z.string().describe('Slug ou libellé du sujet.'),
+        language: LanguageSchema.optional().describe('Langue optionnelle : fr ou en. Sans filtre, recherche bilingue.'),
         limit: z.number().int().min(1).max(20).default(10).describe("Nombre maximum d'analyses."),
       },
       outputSchema: TopicOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ topic, limit }) => {
+    async ({ topic, language, limit }) => {
       const raw = norm(topic);
       if (!raw) return errorReply({ error: 'sujet vide', topics: topicsList });
       let match = topicsList.find((t) => t.slug === raw);
       if (!match) match = topicsList.find((t) => norm(t.label).includes(raw) || t.slug.includes(raw) || raw.includes(t.slug));
       if (!match) return errorReply({ error: 'sujet inconnu', requested: topic, topics: topicsList });
       const list = articles
-        .filter((a) => (a.topics || []).includes(match.slug))
+        .filter((a) => (!language || a.language === language) && (a.topics || []).includes(match.slug))
         .slice(0, limit)
-        .map((a) => ({ title: a.title, url: a.url, date: a.date, description: a.description }));
-      return reply({ topic: match.slug, label: match.label, count: list.length, analyses: list });
+        .map((a) => ({ canonicalId: a.canonicalId, language: a.language, translationStatus: a.translationStatus, title: a.title, url: a.url, date: a.date, description: a.description }));
+      return reply({ topic: match.slug, label: match.label, language: language || null, count: list.length, analyses: list });
     }
   );
 
@@ -2418,6 +2541,7 @@ function buildServer(data) {
         "Pour lire le document complet comme objet, utiliser aussi la ressource l0g://articles/{slug} ou l0g://guides/{slug}.",
       inputSchema: {
         slug: z.string().min(1).describe("Slug de l'article ou du guide."),
+        language: LanguageSchema.optional().describe('Langue optionnelle : fr ou en. Une URL /en/... permet aussi de l’inférer.'),
         offset: z.number().int().min(0).default(0).describe('Position de départ en caractères pour paginer le texte.'),
         cursor: z.string().optional().describe('Curseur opaque nextCursor renvoyé par un appel précédent.'),
         limit: z.number().int().min(1000).max(50000).optional().describe('Alias de length, recommandé pour les clients agents.'),
@@ -2427,27 +2551,45 @@ function buildServer(data) {
       outputSchema: ArticleOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ slug, offset, cursor, limit, length, section: requestedSection }) => {
-      const clean = String(slug || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(posts|guides)\//, '');
-      if (!slugs.has(clean)) return errorReply({ error: 'slug inconnu', slug: clean });
-      const isGuide = guides.some((g) => g.slug === clean);
-      const section = isGuide ? 'guides' : 'posts';
-      const url = `${SITE}/${section}/${clean}/`;
+    async ({ slug, language, offset, cursor, limit, length, section: requestedSection }) => {
+      const clean = cleanSlug(slug);
+      const record = resolveCatalogDocument(slug, null, language);
+      if (!record) return errorReply({ error: 'slug inconnu', slug: clean, language: language || null });
+      const type = guides.includes(record) ? 'guide' : 'article';
       try {
-        const html = await readFile(join(dataDir, section, clean, 'index.html'), 'utf-8');
-        const root = parseHtml(html);
-        const titleEl = root.querySelector('article h1') || root.querySelector('h1');
-        const body = root.querySelector('.prose') || root.querySelector('[data-pagefind-body]') || root.querySelector('article');
-        const fullText = (body ? body.text : '').replace(/\s+/g, ' ').trim();
-        const chunk = articleChunk(fullText, { offset, cursor, limit: limit ?? length, section: requestedSection || 'body' });
+        const document = await readDocument(record.slug, type, {
+          language: record.language || language || 'fr',
+          offset,
+          cursor,
+          limit: limit ?? length,
+          section: requestedSection || 'body',
+        });
         return reply({
-          slug: clean, type: isGuide ? 'guide' : 'article', url,
-          title: titleEl ? titleEl.text.replace(/\s+/g, ' ').trim() : clean,
-          references: referencesForArticle(clean),
-          ...chunk,
+          slug: document.slug,
+          canonicalId: document.canonicalId,
+          language: document.language,
+          translationStatus: document.translationStatus,
+          type,
+          url: document.url,
+          title: document.title,
+          words: document.words,
+          totalWords: document.totalWords,
+          totalChars: document.totalChars,
+          textChars: document.textChars,
+          offset: document.offset,
+          limit: document.limit,
+          length: document.length,
+          nextOffset: document.nextOffset,
+          nextCursor: document.nextCursor,
+          hasMore: document.hasMore,
+          section: document.section,
+          sectionFound: document.sectionFound,
+          truncated: document.truncated,
+          text: document.text,
+          references: document.references,
         });
       } catch {
-        return errorReply({ error: 'contenu introuvable', slug: clean, url });
+        return errorReply({ error: 'contenu introuvable', slug: clean, language: record.language, url: record.url });
       }
     }
   );

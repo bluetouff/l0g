@@ -233,7 +233,7 @@ function splitClaimFragments(block: string) {
 
 function isNavigationFragment(value: string) {
   const text = normalizeClaimText(value);
-  if (/^(?:pour le contexte|voir aussi|lire aussi|lire également|à lire aussi|a lire aussi|voir également|à consulter|a consulter)\b/u.test(text)) {
+  if (/^(?:pour le contexte|voir aussi|lire aussi|lire également|à lire aussi|a lire aussi|voir également|à consulter|a consulter|for context|see also|read also|further reading|related reading)\b/u.test(text)) {
     return true;
   }
   const links = extractLinks(value);
@@ -286,13 +286,13 @@ function sourceHosts(source: PrimarySourceInstitution) {
 function classifyClaimWithRule(text: string): { kind: ClaimKind; matchedRule: string } {
   const value = text.toLowerCase();
   const scenarioValue = value.replace(/\bm[eê]me\s+si\b/giu, '');
-  if (/(sc[eé]nario|hypoth[eè]se|projection|conditionnel|pourrait|pourraient|[àa] surveiller|dans ce cas|trajectoire|\bsi\s+(?:les?|la|l'|un|une|des|ce|cette|ces|on|nous|le\s+march[eé]|la\s+fed|la\s+bce)\b)/iu.test(scenarioValue)) {
+  if (/(sc[eé]nario|scenario|hypoth[eè]se|hypothesis|projection|conditionnel|conditional|pourrait|pourraient|\bcould\b|\bmight\b|to watch|watch for|[àa] surveiller|dans ce cas|in that case|trajectoire|trajectory|\bsi\s+(?:les?|la|l'|un|une|des|ce|cette|ces|on|nous|le\s+march[eé]|la\s+fed|la\s+bce)\b|\bif\s+(?:the|a|an|this|these|we|markets?|the\s+fed|the\s+ecb)\b)/iu.test(scenarioValue)) {
     return { kind: 'scénario', matchedRule: 'scenario-marker' };
   }
-  if (/(estime|estimation|pr[eé]vision|environ|fourchette|probabilit[eé]|consensus|table sur|selon)/iu.test(value)) {
+  if (/(estime|estimate|estimation|forecast|pr[eé]vision|environ|approximately|roughly|fourchette|\brange\b|probabilit[eé]|probability|consensus|table sur|according to|selon)/iu.test(value)) {
     return { kind: 'estimation', matchedRule: 'estimate-marker' };
   }
-  if (/(donc|sugg[eè]re|implique|signale|indique|lecture|interpr[eè]te|ce qui veut dire|en clair|j'en d[eé]duis)/iu.test(value)) {
+  if (/(donc|therefore|sugg[eè]re|suggests?|implique|implies|signale|signals?|indique|indicates?|lecture|reading|interpr[eè]te|interpretation|ce qui veut dire|en clair|in other words|j'en d[eé]duis|we infer)/iu.test(value)) {
     return { kind: 'inférence', matchedRule: 'inference-marker' };
   }
   return { kind: 'unclassified-assertion', matchedRule: 'unclassified-assertion' };
@@ -319,6 +319,18 @@ function monthNumber(raw: string) {
     novembre: '11',
     décembre: '12',
     decembre: '12',
+    january: '01',
+    february: '02',
+    march: '03',
+    april: '04',
+    may: '05',
+    june: '06',
+    july: '07',
+    august: '08',
+    september: '09',
+    october: '10',
+    november: '11',
+    december: '12',
   };
   return months[raw.toLowerCase()];
 }
@@ -346,14 +358,21 @@ function extractDateFromText(text: string): { label: string; iso?: string; preci
   const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
   if (iso) return { label: `${iso[3]}/${iso[2]}/${iso[1]}`, iso: `${iso[1]}-${iso[2]}-${iso[3]}`, precision: 'day' };
 
-  const full = text.match(/\b([0-3]?\d)\s+(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(20\d{2})\b/iu);
+  const full = text.match(/\b([0-3]?\d)\s+(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre|january|february|march|april|may|june|july|august|september|october|november|december)\s+(20\d{2})\b/iu);
   if (full) {
     const month = monthNumber(full[2].normalize('NFD').replace(/\p{Diacritic}/gu, '')) || monthNumber(full[2]);
     const day = full[1].padStart(2, '0');
     return { label: `${day}/${month}/${full[3]}`, iso: `${full[3]}-${month}-${day}`, precision: 'day' };
   }
 
-  const monthYear = text.match(/\b(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(20\d{2})\b/iu);
+  const englishFull = text.match(/\b(january|february|march|april|may|june|july|august|september|october|november|december)\s+([0-3]?\d),?\s+(20\d{2})\b/iu);
+  if (englishFull) {
+    const month = monthNumber(englishFull[1]);
+    const day = englishFull[2].padStart(2, '0');
+    return { label: `${day}/${month}/${englishFull[3]}`, iso: `${englishFull[3]}-${month}-${day}`, precision: 'day' };
+  }
+
+  const monthYear = text.match(/\b(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre|january|february|march|april|may|june|july|august|september|october|november|december)\s+(20\d{2})\b/iu);
   if (monthYear) {
     const month = monthNumber(monthYear[1].normalize('NFD').replace(/\p{Diacritic}/gu, '')) || monthNumber(monthYear[1]);
     return { label: `${monthYear[1]} ${monthYear[2]}`, iso: `${monthYear[2]}-${month}-01`, precision: 'month' };
@@ -370,7 +389,8 @@ function extractDateFromText(text: string): { label: string; iso?: string; preci
 
 function observationDateForBlock(block: string) {
   const text = stripMarkdown(block);
-  const interval = text.match(/\b(?:entre|du)\s+(?:le\s+)?([0-3]?\d\s+(?:janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)(?:\s+20\d{2})?)\s+(?:et|au)\s+(?:le\s+)?([0-3]?\d\s+(?:janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+20\d{2})\b/iu);
+  const monthPattern = 'janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre|january|february|march|april|may|june|july|august|september|october|november|december';
+  const interval = text.match(new RegExp(`\\b(?:entre|du|between|from)\\s+(?:le\\s+)?([0-3]?\\d\\s+(?:${monthPattern})(?:\\s+20\\d{2})?)\\s+(?:et|au|and|to)\\s+(?:le\\s+)?([0-3]?\\d\\s+(?:${monthPattern})\\s+20\\d{2})\\b`, 'iu'));
   if (interval) {
     const end = extractDateFromText(interval[2]);
     const year = end?.iso?.slice(0, 4);
@@ -387,7 +407,7 @@ function observationDateForBlock(block: string) {
     }
   }
   const cue = text.match(
-    /\b(?:au|à fin|a fin|fin|début|debut|depuis|en|pour|sur|d['’]ici|lors de|pendant|au cours de)\s+(.{0,80}?(?:20\d{2}|T[1-4]\s+20\d{2}|Q[1-4]\s+20\d{2}))/iu
+    /\b(?:au|à fin|a fin|fin|début|debut|depuis|en|pour|sur|d['’]ici|lors de|pendant|au cours de|as of|at the end of|end of|beginning of|since|in|for|by|during|over)\s+(.{0,80}?(?:20\d{2}|T[1-4]\s+20\d{2}|Q[1-4]\s+20\d{2}))/iu
   );
   if (cue) {
     const found = extractDateFromText(cue[0]);
@@ -471,12 +491,12 @@ function relationKind(link: EvidenceLink, primaryHosts: Set<string>) {
 }
 
 function internalKind(href: string) {
-  if (href.startsWith('/glossaire')) return 'glossaire';
-  if (href.startsWith('/guides')) return 'guide';
+  if (href.startsWith('/glossaire') || href.startsWith('/en/glossary')) return 'glossaire';
+  if (href.startsWith('/guides') || href.startsWith('/en/guides')) return 'guide';
   if (href.startsWith('/methodologie')) return 'méthode';
   if (href.startsWith('/sources')) return 'source';
   if (href.startsWith('/sujet')) return 'fil';
-  if (href.startsWith('/posts')) return 'article';
+  if (href.startsWith('/posts') || href.startsWith('/en/analysis')) return 'article';
   if (href.startsWith('/api') || href.startsWith('/donnees') || href.startsWith('/llms') || href.startsWith('/status') || href.startsWith('/preuves')) return 'donnée';
   return 'l0g';
 }
@@ -509,7 +529,7 @@ function dedupeByHost(links: EvidenceLink[]) {
 }
 
 function detectScenario(markdown: string) {
-  return /(^|[^a-zà-ÿ])(hypoth[eè]se|sc[eé]nario|projection|estimation|probabilit[eé]|fourchette|conditionnel|[àa] surveiller)([^a-zà-ÿ]|$)/iu.test(markdown);
+  return /(^|[^a-zà-ÿ])(hypoth[eè]se|hypothesis|sc[eé]nario|scenario|projection|estimation|estimate|probabilit[eé]|probability|fourchette|range|conditionnel|conditional|[àa] surveiller|to watch)([^a-zà-ÿ]|$)/iu.test(markdown);
 }
 
 function buildBadges(args: {

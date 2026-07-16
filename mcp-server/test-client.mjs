@@ -77,9 +77,15 @@ for (const required of [
   'l0g://articles/{slug}',
   'l0g://articles/{slug}{?section,offset,limit}',
   'l0g://articles/{slug}{?cursor}',
+  'l0g://en/articles/{slug}',
+  'l0g://en/articles/{slug}{?section,offset,limit}',
+  'l0g://en/articles/{slug}{?cursor}',
   'l0g://guides/{slug}',
   'l0g://guides/{slug}{?section,offset,limit}',
   'l0g://guides/{slug}{?cursor}',
+  'l0g://en/guides/{slug}',
+  'l0g://en/guides/{slug}{?section,offset,limit}',
+  'l0g://en/guides/{slug}{?cursor}',
   'l0g://claims/{claim_id}',
   'l0g://sources/{source_id}',
   'l0g://signals/{instrument}/current',
@@ -114,6 +120,23 @@ const articleCursorResource = await client.readResource({
 const articleCursorDocument = JSON.parse(articleCursorResource.contents?.[0]?.text || '{}');
 if (articleCursorDocument.offset !== articleDocument.nextOffset) throw new Error('readResource(article cursor) ne reprend pas au bon offset');
 console.log('readResource(article cursor) -> offset:', articleCursorDocument.offset, '| chars:', articleCursorDocument.textChars);
+
+const englishArticleResource = await client.readResource({ uri: 'l0g://en/articles/ai-and-productivity' });
+const englishArticleDocument = JSON.parse(englishArticleResource.contents?.[0]?.text || '{}');
+if (englishArticleDocument.language !== 'en' || englishArticleDocument.canonicalId !== 'article:ia-et-productivite-entre-gains-mesures-et-effets-supposes') {
+  throw new Error('readResource(article-en) sans mapping canonique FR/EN');
+}
+if (!englishArticleDocument.text?.toLowerCase().includes('productivity')) {
+  throw new Error('readResource(article-en) sans corps anglais');
+}
+console.log('readResource(article-en) ->', englishArticleDocument.canonicalId, '| language:', englishArticleDocument.language);
+
+const englishGuideResource = await client.readResource({ uri: 'l0g://en/guides/read-oil-market' });
+const englishGuideDocument = JSON.parse(englishGuideResource.contents?.[0]?.text || '{}');
+if (englishGuideDocument.language !== 'en' || !englishGuideDocument.canonicalId?.startsWith('guide:')) {
+  throw new Error('readResource(guide-en) sans mapping canonique FR/EN');
+}
+console.log('readResource(guide-en) ->', englishGuideDocument.canonicalId, '| language:', englishGuideDocument.language);
 
 const signalResource = await client.readResource({ uri: 'l0g://signals/yen/current' });
 console.log('readResource(signal) -> instrument:', JSON.parse(signalResource.contents?.[0]?.text || '{}').instrument);
@@ -189,6 +212,15 @@ const search = await call('search_content', { query: 'trilemme bilan', limit: 3 
 if (!search.results?.[0]?.excerpt) throw new Error('search_content plein texte sans excerpt');
 console.log('search_content(trilemme bilan) ->', search.count, 'résultats; mode:', search.mode, '; #1:', search.results?.[0]?.title);
 
+const englishSearch = await call('search_content', { query: 'productivity gains', language: 'en', limit: 5 });
+if (englishSearch.backend !== 'shared-agent-search-index' || !englishSearch.results?.length) {
+  throw new Error('search_content anglais n’utilise pas l’index partagé');
+}
+if (englishSearch.results.some((result) => result.language !== 'en')) {
+  throw new Error('search_content(language=en) laisse passer un résultat français');
+}
+console.log('search_content(productivity gains,en) ->', englishSearch.count, 'résultats; backend:', englishSearch.backend);
+
 const catalogSearch = await call('search_content', { query: 'stablecoins', mode: 'catalog', limit: 3 });
 console.log('search_content(stablecoins,catalog) ->', catalogSearch.count, 'résultats; #1:', catalogSearch.results?.[0]?.title);
 
@@ -208,6 +240,15 @@ const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-y
 const dollarYenClaimId = articleClaims.claims?.[0]?.id;
 if (!dollarYenClaimId) throw new Error('list_article_claims ne renvoie aucune claim dollar-yen');
 console.log('list_article_claims ->', articleClaims.count, '| #1:', dollarYenClaimId);
+
+const englishArticleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-carry-unwind', language: 'en', limit: 5 });
+if (!englishArticleClaims.claims?.length || englishArticleClaims.articleSlug !== 'dollar-yen-intervention-risque-carry-2026') {
+  throw new Error('list_article_claims ne résout pas la traduction vers les claims françaises');
+}
+if (englishArticleClaims.claims.some((item) => item.language !== 'fr')) {
+  throw new Error('list_article_claims duplique des claims anglaises');
+}
+console.log('list_article_claims(en) -> canonical:', englishArticleClaims.articleSlug, '| claims:', englishArticleClaims.count);
 
 const claim = await call('get_claim', { claimId: dollarYenClaimId });
 if (claim.evidenceResource) throw new Error('get_claim ne doit pas exposer une URI evidence non enregistrée');
@@ -276,6 +317,13 @@ const art = await call('get_article', { slug: 'economie-des-intentions', limit: 
 if (!art.nextOffset || !art.nextCursor || !art.truncated) throw new Error('get_article ne fournit pas de continuation sur article long');
 if (!Array.isArray(art.references)) throw new Error('get_article ne renvoie pas les références séparées');
 console.log('get_article(page 1) -> title:', art.title, '| chars:', art.textChars, '/', art.totalChars, '| next:', art.nextOffset, '| cursor:', Boolean(art.nextCursor));
+
+const englishArt = await call('get_article', { slug: 'ai-and-productivity', language: 'en', limit: 5000 });
+if (englishArt.language !== 'en' || englishArt.canonicalId !== 'article:ia-et-productivite-entre-gains-mesures-et-effets-supposes') {
+  throw new Error('get_article(language=en) sans mapping canonique');
+}
+if (!englishArt.text?.toLowerCase().includes('productivity')) throw new Error('get_article(language=en) sans texte anglais');
+console.log('get_article(en) ->', englishArt.canonicalId, '| chars:', englishArt.textChars);
 
 const artNext = await call('get_article', { slug: 'economie-des-intentions', cursor: art.nextCursor });
 if (artNext.offset !== art.nextOffset) throw new Error('get_article(cursor) ne reprend pas au bon offset');

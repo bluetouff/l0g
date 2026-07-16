@@ -13,7 +13,9 @@ const alternateLinks = [
 const endpoints = [
   ['/agents.json', 'Discovery', 'Capability manifest, endpoints, usage rules and proof policy.'],
   ['/openapi.json', 'Contract', 'OpenAPI 3.1 description of machine-consumable endpoints.'],
-  ['/api/v1/catalog.json', 'Catalog', 'Complete corpus map: articles, guides, topics, glossary atlas, sources and protocol.'],
+  ['/api/v1/catalog.json', 'Catalog', 'Bilingual corpus map with language, canonicalId, translationOf, alternateUrl and translationStatus.'],
+  ['/api/v1/search-index.json', 'Shared search index', 'Canonical bilingual search index used by Agent Surface, MCP and WebMCP.'],
+  ['/llms-full-en.txt', 'English corpus', 'Full English analyses and guides, kept separate from the French context.'],
   ['/api/v1/catalog.ndjson', 'Catalog NDJSON', 'Line-by-line catalog for streaming ingestion, RAG or incremental indexing.'],
   ['/api/v1/claims.json', 'Claims', 'Claim-source graph with typed claims, references and dates when detectable.'],
   ['/api/v1/evidence-graph.json', 'Evidence graph', 'Articles, claims, references, hosts, primary sources and datasets as nodes and edges.'],
@@ -38,8 +40,10 @@ const flow = [
   'Use /api/v1/signals/history.csv or .ndjson for point-in-time replay without look-ahead bias.',
   'Use /api/v1/evidence-graph.json to traverse article → claim → source relationships.',
   'Switch to NDJSON feeds for line-by-line ingestion.',
-  'Use /api/v1/catalog.json or /llms.txt to find content.',
+  'Use /api/v1/search-index.json to search the bilingual corpus shared with MCP and WebMCP.',
+  'Use /llms-full.txt for French or /llms-full-en.txt for English without loading both corpora.',
   'Quote factual claims via /api/v1/claims.json when the answer depends on a precise assertion.',
+  'For an English translation, follow evidenceRef to the canonical French claims and evidence graph.',
   'Preserve the canonical URL, date fields and claim kind in generated answers.',
 ];
 
@@ -47,7 +51,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${enUrl}#agent-surface`,
-  headline: 'Agent Surface v1.10.0',
+  headline: 'Agent Surface v1.11.0',
   description: 'English documentation for the l0g.fr machine-readable surface: agents.json, OpenAPI, Risk Diff, Black Box, claims, evidence graph, NDJSON, freshness, integrity and changefeed.',
   inLanguage: 'en',
   isAccessibleForFree: true,
@@ -57,7 +61,7 @@ const jsonLd = {
 ---
 
 <EnglishLayout
-  title="Agent Surface v1.10.0"
+  title="Agent Surface v1.11.0"
   description="English documentation for l0g Agent Surface: agents.json, OpenAPI, claims, evidence graph, freshness, integrity, changefeed, Risk Diff, Black Box and NDJSON feeds."
   canonical={enUrl}
   alternateLinks={alternateLinks}
@@ -66,10 +70,10 @@ const jsonLd = {
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.10.0</p>
+      <p class="mono-label glow">// agent surface v1.11.0</p>
       <h1 class="agent-title font-display glow">A machine surface for reading l0g without scraping.</h1>
       <p class="agent-lede">
-        Agent Surface v1.10.0 exposes the l0g corpus as static JSON and NDJSON: catalog, evidence graph, sourced claims, primary sources, freshness, Risk Diff, Black Box Recorder, signal history, fingerprints and an OpenAPI contract. The promise is simple: an agent should be able to cite a claim without losing the source, claimDate, observationDate, sourcePublicationDate, retrievedAt, indexedAt or reading level.
+        Agent Surface v1.11.0 exposes the French and English l0g corpus as static JSON and NDJSON: bilingual catalog, shared search index, evidence graph, sourced claims, primary sources, freshness, Risk Diff, Black Box Recorder, signal history, fingerprints and an OpenAPI contract. Translations carry canonical and alternate identifiers plus freshness status. Claims remain canonical in French; English analyses link to them through <code>evidenceRef</code>.
       </p>
       <p class="mono-label mt-4"><a class="link-term" href="/donnees/agents/">Version française →</a></p>
     </section>
@@ -107,7 +111,7 @@ const jsonLd = {
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>License</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.10.0</strong></div>
+        <div><span>Version</span><strong>v1.11.0</strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Evidence</span><strong>claim-source</strong></div>
         <div><span>Integrity</span><strong>SHA-256</strong></div>
@@ -122,7 +126,7 @@ const jsonLd = {
       <div class="note-block">
         <p class="mono-label glow">// integration</p>
         <p>
-          For a RAG agent, use <code>/api/v1/catalog.ndjson</code> for document discovery, then <code>/api/v1/evidence-graph.json</code> or <code>/api/v1/claims.ndjson</code> for sensitive assertions. <code>/api/v1/changes.ndjson</code> avoids rescanning the whole corpus. <code>/openapi.json</code> is the typed entry point for client generation.
+          For a RAG agent, use <code>/api/v1/search-index.json</code> for bilingual retrieval, then <code>/api/v1/evidence-graph.json</code> or <code>/api/v1/claims.ndjson</code> for sensitive assertions. <code>/api/v1/changes.ndjson</code> avoids rescanning the whole corpus. <code>/openapi.json</code> is the typed entry point for client generation.
         </p>
       </div>
     </section>

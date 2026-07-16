@@ -22,11 +22,12 @@ agent / client MCP
                           /var/www/html/l0g/current/risk-events.json
                           /var/www/html/l0g/current/confluence.json
                           /var/www/html/l0g/current/posts|guides/<slug>/index.html
+                          /var/www/html/l0g/current/en/analysis|guides/<slug>/index.html
 ```
 
 - Le service Node **n'écoute qu'en 127.0.0.1**, jamais exposé directement.
 - Les données proviennent du **site déjà déployé** : `agents.json`, `catalog.json`,
-  `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
+  `search-index.json`, `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
   `changes.json`, `risk-diff.json`, `black-box.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `debt-risk.json`,
   `risk-events.json` et `confluence.json`. Le service ne fait que **lire** ces fichiers,
   avec un cache TTL de 60 s.
@@ -59,9 +60,15 @@ aux opérations de recherche, filtrage et synthèse.
 | `l0g://articles/{slug}` | première page d'un article avec métadonnées, références et texte |
 | `l0g://articles/{slug}{?section,offset,limit}` | page ciblée d'un article (`body`, `head`, `tail`, `sources`) |
 | `l0g://articles/{slug}{?cursor}` | continuation d'article via `nextCursor` |
+| `l0g://en/articles/{slug}` | première page d'une analyse anglaise, reliée aux preuves françaises canoniques |
+| `l0g://en/articles/{slug}{?section,offset,limit}` | page ciblée d'une analyse anglaise |
+| `l0g://en/articles/{slug}{?cursor}` | continuation d'analyse anglaise via `nextCursor` |
 | `l0g://guides/{slug}` | première page d'un guide avec métadonnées et texte |
 | `l0g://guides/{slug}{?section,offset,limit}` | page ciblée d'un guide (`body`, `head`, `tail`, `sources`) |
 | `l0g://guides/{slug}{?cursor}` | continuation de guide via `nextCursor` |
+| `l0g://en/guides/{slug}` | première page d'un guide anglais |
+| `l0g://en/guides/{slug}{?section,offset,limit}` | page ciblée d'un guide anglais |
+| `l0g://en/guides/{slug}{?cursor}` | continuation de guide anglais via `nextCursor` |
 | `l0g://claims/{claim_id}` | relation affirmation-source |
 | `l0g://sources/{source_id}` | source primaire ou hôte cité |
 | `l0g://signals/{instrument}/current` | signal courant + historique de franchissement |
@@ -92,23 +99,23 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |
 | `get_ndjson_feed` | `feed`, `recordType?`, `limit?` | flux NDJSON allowlistés : catalogue, claims, evidence graph, changes, signalHistory |
 | `get_freshness` | `limit?` | derniers contenus, compteurs, temporalité par signal et politique de fraîcheur |
-| `search_content` | `query`, `mode?`, `limit?` | recherche plein texte locale sur HTML généré, ou scoring catalogue historique |
-| `get_claims` | `articleSlug?`, `kind?`, `query?`, `limit?` | claims typées et références cliquables, datées quand détectable |
+| `search_content` | `query`, `language?`, `mode?`, `limit?` | recherche bilingue sur l'index canonique partagé avec l'Agent Surface et WebMCP |
+| `get_claims` | `articleSlug?`, `language?`, `kind?`, `query?`, `limit?` | claims françaises canoniques ; un slug anglais est résolu vers ses preuves françaises |
 | `get_claim` | `claimId` | une claim précise, ses liens ressource et son article |
 | `get_claim_evidence` | `claimId`, `limit?` | preuve et références d'une claim, avec contenus reliés isolés dans `relatedContent` |
-| `list_article_claims` | `articleSlug`, `kind?`, `limit?` | claims d'un article, utilisables comme points d'entrée du graphe |
+| `list_article_claims` | `articleSlug`, `language?`, `kind?`, `limit?` | claims canoniques d'un article français ou de sa traduction anglaise |
 | `find_claims_by_source` | `sourceId`, `kind?`, `limit?` | claims rattachées à une source primaire, un nom ou un host cité |
 | `get_source` | `sourceId`, `limit?` | source primaire ou hôte cité, plus claims associées |
-| `get_evidence_graph` | `articleSlug?`, `nodeType?`, `limit?` | sous-graphe direct articles → claims → références → sources, contexte relié séparé |
+| `get_evidence_graph` | `articleSlug?`, `language?`, `nodeType?`, `limit?` | sous-graphe canonique ; un slug anglais pointe vers le graphe français sans duplication |
 | `list_sources` | `mode?`, `limit?` | sources primaires et hôtes effectivement cités |
 | `get_integrity` | `path?` | empreintes SHA-256 canoniques des surfaces Agent Surface |
 | `verify_artifact` | `path`, `sha256?` | vérification allowlistée d'un artefact via le manifeste d'intégrité |
 | `get_changefeed` | `contentType?`, `limit?` | derniers changements avec objectId, version/hash courant et statut de diff |
 | `get_changes` | `contentType?`, `slug?`, `since?`, `limit?` | changefeed filtrable avec métadonnées de version |
-| `list_recent_analyses` | `limit?` | dernières analyses |
-| `list_guides` | aucun | guides de référence |
-| `search_by_topic` | `topic`, `limit?` | analyses d'un sujet (hubs `/sujets/`) |
-| `get_article` | `slug`, `offset?`, `cursor?`, `limit?`, `length?`, `section?` | texte paginé d'une analyse ou d'un guide, avec `nextCursor`, références séparées et accès direct `tail`/`sources` |
+| `list_recent_analyses` | `language?`, `limit?` | dernières analyses, filtrables en `fr` ou `en` |
+| `list_guides` | `language?` | guides de référence français ou anglais |
+| `search_by_topic` | `topic`, `language?`, `limit?` | analyses d'un sujet, filtrables par langue |
+| `get_article` | `slug`, `language?`, `offset?`, `cursor?`, `limit?`, `length?`, `section?` | texte paginé français ou anglais, avec références canoniques séparées |
 
 Les documents longs exposent `section`, `offset`, `limit`, `nextOffset` et `nextCursor`. Exemple :
 `l0g://articles/economie-des-intentions?section=sources&offset=0&limit=12000`.

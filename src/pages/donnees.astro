@@ -11,6 +11,8 @@ import { methodologyPages } from '../config/methodology.ts';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 const guides = await getCollection('guides', ({ data }) => !data.draft);
+const postsEn = await getCollection('postsEn', ({ data }) => !data.draft);
+const guidesEn = await getCollection('guidesEn', ({ data }) => !data.draft);
 
 function readJSON<T>(rel: string, fallback: T): T {
   try {
@@ -131,8 +133,16 @@ const datasets = [
     href: '/api/v1/catalog.json',
     format: 'JSON',
     updated: new Date(),
-    count: `${posts.length + guides.length + glossaryEntries.length} objets`,
-    role: 'Catalogue machine : analyses, guides, sujets, méthodologies et glossaire.',
+    count: `${posts.length + postsEn.length + guides.length + guidesEn.length + glossaryEntries.length} objets`,
+    role: 'Catalogue machine bilingue : analyses, guides, sujets, méthodologies et glossaire.',
+  },
+  {
+    label: 'search-index.json',
+    href: '/api/v1/search-index.json',
+    format: 'JSON',
+    updated: new Date(),
+    count: `${posts.length + postsEn.length + guides.length + guidesEn.length + glossaryEntries.length + methodologyPages.length} documents + sources`,
+    role: 'Index bilingue canonique partagé par Agent Surface, MCP et WebMCP.',
   },
   {
     label: 'claims.json',
@@ -228,7 +238,7 @@ const trustItems = [
   { label: 'CORS ouvert', href: '/api/' },
   { label: 'licence CC BY 4.0', href: '/manifeste/' },
   { label: 'build statique', href: '/status/' },
-  { label: 'Agent Surface v1.10.0', href: '/donnees/agents/' },
+  { label: 'Agent Surface v1.11.0', href: '/donnees/agents/' },
 ];
 
 const jsonLd = {
@@ -314,8 +324,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div>
         <p class="mono-label glow">// corpus</p>
         <div class="corpus-box">
-          <div><span>analyses</span><strong>{posts.length}</strong></div>
-          <div><span>guides</span><strong>{guides.length}</strong></div>
+          <div><span>analyses FR / EN</span><strong>{posts.length} / {postsEn.length}</strong></div>
+          <div><span>guides FR / EN</span><strong>{guides.length} / {guidesEn.length}</strong></div>
           <div><span>méthodologies</span><strong>{methodologyPages.length}</strong></div>
           <div><span>glossaire</span><strong>{glossaryEntries.length}</strong></div>
         </div>
@@ -327,10 +337,12 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="access-grid">
         <a href="/api/" class="access-link"><span>API</span><strong>documentation humaine</strong></a>
         <a href="/agents/" class="access-link"><span>AGENTS</span><strong>guide d'utilisation</strong></a>
-        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.10.0</strong></a>
+        <a href="/donnees/agents/" class="access-link"><span>M2M</span><strong>Agent Surface v1.11.0</strong></a>
         <a href="/agents.json" class="access-link"><span>JSON</span><strong>manifeste agent</strong></a>
         <a href="/openapi.json" class="access-link"><span>OPENAPI</span><strong>contrat machine</strong></a>
         <a href="/api/v1/catalog.json" class="access-link"><span>JSON</span><strong>catalogue complet</strong></a>
+        <a href="/api/v1/search-index.json" class="access-link"><span>JSON</span><strong>index bilingue partagé</strong></a>
+        <a href="/llms-full-en.txt" class="access-link"><span>TEXT</span><strong>corpus anglais complet</strong></a>
         <a href="/api/v1/claims.json" class="access-link"><span>JSON</span><strong>claims sourcées</strong></a>
         <a href="/api/v1/evidence-graph.json" class="access-link"><span>JSON</span><strong>evidence graph</strong></a>
         <a href="/api/v1/catalog.ndjson" class="access-link"><span>NDJSON</span><strong>catalogue stream</strong></a>

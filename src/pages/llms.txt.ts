@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 import { topics } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
+import { loadAgentContent } from '../lib/agent-content.ts';
 
 /**
  * /llms.txt - carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -16,12 +16,11 @@ import { textResponse } from '../lib/agent-surface.ts';
 const SITE = 'https://l0g.fr';
 
 export const GET: APIRoute = async () => {
-  const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
-  const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
+  const { posts: allPosts, guides: allGuides } = await loadAgentContent();
+  const posts = allPosts.filter((entry) => entry.collection === 'posts');
+  const postsEn = allPosts.filter((entry) => entry.collection === 'postsEn');
+  const guides = allGuides.filter((entry) => entry.collection === 'guides');
+  const guidesEn = allGuides.filter((entry) => entry.collection === 'guidesEn');
   const d = (x?: Date) => (x ? x.toISOString().slice(0, 10) : '');
 
   const lines: string[] = [];
@@ -31,7 +30,7 @@ export const GET: APIRoute = async () => {
     '> l0g est un systeme d\'audit open source des narratifs economiques, qui tente de rendre ' +
       'l\'opacite economique mesurable a partir de donnees publiques, de signaux de marche et ' +
       'd\'indicateurs de confluence. Chaque chiffre est verifie sur source primaire (FRED, BLS, ' +
-      'BEA, SEC EDGAR, IMF, BIS, FSB, banques centrales). Contenu en francais.'
+      'BEA, SEC EDGAR, IMF, BIS, FSB, banques centrales). Corpus disponible en francais et en anglais.'
   );
   lines.push('');
   lines.push(
@@ -48,6 +47,19 @@ export const GET: APIRoute = async () => {
   lines.push(`- [English dashboards map](${SITE}/en/dashboards/): monitoring tools and their limits.`);
   lines.push(`- [English Risk Diff](${SITE}/en/risk-diff/): what changed in risk signals, sources, claims, models and confidence.`);
   lines.push(`- [English Black Box Recorder](${SITE}/en/black-box/): point-in-time risk frame replay, hashes and explicit gaps.`);
+  lines.push(`- [Complete English corpus](${SITE}/llms-full-en.txt): full text of every published English analysis and reference guide.`);
+  lines.push('');
+
+  lines.push('## English reference guides');
+  for (const g of guidesEn) {
+    lines.push(`- [${g.data.title}](${SITE}/en/guides/${g.id}/): ${g.data.summary ?? g.data.description}`);
+  }
+  lines.push('');
+
+  lines.push('## Recent English analyses');
+  for (const p of postsEn.slice(0, 20)) {
+    lines.push(`- [${p.data.title}](${SITE}/en/analysis/${p.id}/): ${p.data.description} (${d(p.data.pubDate)})`);
+  }
   lines.push('');
   lines.push('## Manifeste');
   lines.push(
@@ -72,7 +84,7 @@ export const GET: APIRoute = async () => {
     `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
   );
   lines.push(
-    `- [Agent Surface v1.10.0](${SITE}/donnees/agents/): surface M2M pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, intégrité attestée, revue humaine et changefeed versionné.`
+    `- [Agent Surface v1.11.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, intégrité attestée, revue humaine et changefeed versionné.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -187,11 +199,15 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
   lines.push(`- [Serveur MCP](${SITE}/api/mcp): endpoint Model Context Protocol en lecture seule (transport Streamable HTTP). Tools clés : get_risk_diff, get_black_box, get_signal_history, get_claims, get_evidence_graph. Doc : ${SITE}/mcp`);
   lines.push(`- [Corpus integral](${SITE}/llms-full.txt): texte complet de toutes les analyses et guides.`);
+  lines.push(`- [English full corpus](${SITE}/llms-full-en.txt): complete English analyses and guides in a separate context file.`);
   lines.push('');
 
   lines.push('## Optional');
   for (const p of posts.slice(20)) {
     lines.push(`- [${p.data.title}](${SITE}/posts/${p.id}/): ${p.data.description}`);
+  }
+  for (const p of postsEn.slice(20)) {
+    lines.push(`- [${p.data.title}](${SITE}/en/analysis/${p.id}/): ${p.data.description}`);
   }
   lines.push('');
 

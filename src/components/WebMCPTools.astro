@@ -9,13 +9,12 @@
  * On n'utilise PAS window.agent ni provideContext() (dépréciés / retirés en 2026).
  *
  * Sans effet pour les visiteurs humains : tout est encapsulé dans un test de
- * disponibilité (navigator.modelContext + SecureContext). Le bundle Pagefind est
- * chargé paresseusement à la première invocation (aucun coût au chargement de page,
- * dégradation propre en dev où /pagefind/ n'existe pas encore).
+ * disponibilité (navigator.modelContext + SecureContext). L'index statique partagé
+ * est chargé paresseusement à la première invocation.
  *
  * Tools :
- *   - search_content        : recherche plein texte (Pagefind, index local).
- *   - list_recent_analyses  : derniers articles, depuis le frontmatter (données fiables).
+ *   - search_content        : recherche dans l'index canonique Agent Surface.
+ *   - list_recent_analyses  : derniers articles FR/EN du même index.
  *   - get_agent_manifest    : manifeste agents.json.
  *   - get_freshness         : fraîcheur du corpus et derniers contenus.
  *   - get_risk_diff         : diff du risque par fenêtre 1, 7 ou 30 jours.
@@ -24,44 +23,14 @@
  *   - get_evidence_graph    : sous-graphe articles, claims et sources.
  * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
  */
-import { getCollection, type CollectionEntry } from 'astro:content';
-import { topics, postMatchesTopic } from '../config/topics.ts';
+import { topics } from '../config/topics.ts';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 
-// Articles publiés, même tri et même filtre que la home (pubDate desc, hors brouillons).
-const published = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-const dateOf = (p: CollectionEntry<'posts'>) => p.data.pubDate.toISOString().slice(0, 10);
-
-// Liste des dernières analyses (avec description) pour list_recent_analyses.
-const recent = published.slice(0, 20).map((p) => ({
-  title: p.data.title,
-  url: `${site}/posts/${p.id}/`,
-  date: dateOf(p),
-  description: p.data.description,
-  tags: p.data.tags ?? [],
-}));
-
-// Sujets canoniques et articles rattachés (même logique que les hubs /sujets/).
-// Réfs légères (sans description) pour ne pas alourdir chaque page ; la description
-// complète reste disponible via list_recent_analyses ou get_article.
 const topicsList = topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb }));
-const byTopic = Object.fromEntries(
-  topics.map((t) => [
-    t.slug,
-    published
-      .filter((p) => postMatchesTopic(p.data.tags ?? [], t))
-      .map((p) => ({ title: p.data.title, url: `${site}/posts/${p.id}/`, date: dateOf(p) })),
-  ])
-);
-
-// Allowlist de slugs : get_article ne récupère qu'un article connu, jamais une URL arbitraire.
-const articleSlugs = published.map((p) => p.id);
 ---
 
-<script is:inline define:vars={{ site, recent, topicsList, byTopic, articleSlugs }}>
+<script is:inline define:vars={{ site, topicsList }}>
   (function () {
     if (typeof navigator === 'undefined') return;
     // WebMCP n'existe qu'en contexte sécurisé (HTTPS) et sur navigateur compatible.
@@ -69,13 +38,13 @@ const articleSlugs = published.map((p) => p.id);
     const mc = navigator.modelContext;
     if (!mc || typeof mc.registerTool !== 'function') return;
 
-    // --- Pagefind : import dynamique paresseux, mémoïsé ---
-    let pagefindPromise = null;
-    function loadPagefind() {
-      if (!pagefindPromise) {
-        pagefindPromise = import('/pagefind/pagefind.js').catch(function () { return null; });
+    // --- Index canonique partagé avec Agent Surface et MCP serveur ---
+    let searchIndexPromise = null;
+    function loadSearchIndex() {
+      if (!searchIndexPromise) {
+        searchIndexPromise = readPublicJson('/api/v1/search-index.json').catch(function () { return null; });
       }
-      return pagefindPromise;
+      return searchIndexPromise;
     }
 
     // --- helpers ---
@@ -96,6 +65,23 @@ const articleSlugs = published.map((p) => p.id);
       if (!res.ok) throw new Error('fetch failed');
       return res.json();
     }
+    function normalize(value) {
+      return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+    function rankDocument(document, tokens) {
+      var title = normalize(document.title);
+      var meta = normalize([].concat(document.tags || [], document.topics || []).join(' '));
+      var description = normalize(document.description);
+      var body = normalize(document.text);
+      var score = 0;
+      tokens.forEach(function (token) {
+        if (title.indexOf(token) !== -1) score += 30;
+        if (meta.indexOf(token) !== -1) score += 12;
+        if (description.indexOf(token) !== -1) score += 8;
+        if (body.indexOf(token) !== -1) score += 1;
+      });
+      return score;
+    }
 
     // --- Tool : recherche plein texte ---
     try {
@@ -104,13 +90,18 @@ const articleSlugs = published.map((p) => p.id);
         description:
           "Recherche plein texte dans tout l0g.fr : analyses, guides de référence et glossaire. " +
           "Renvoie les meilleurs résultats avec titre, URL absolue, extrait et sous-sections pertinentes. " +
-          "Index local Pagefind, sans service tiers. Exemples de requêtes : « crédit privé », « GENIUS Act », « OFAC », « liquidité du Trésor ».",
+          "Index statique partagé avec Agent Surface et MCP serveur, sans service tiers. Exemples : « crédit privé », « GENIUS Act », « OFAC », « Treasury liquidity ».",
         inputSchema: {
           type: 'object',
           properties: {
             query: {
               type: 'string',
               description: 'Termes de recherche en français ou en anglais.'
+            },
+            language: {
+              type: 'string',
+              enum: ['fr', 'en'],
+              description: 'Langue optionnelle. Sans filtre, la recherche est bilingue.'
             },
             limit: {
               type: 'integer',
@@ -130,37 +121,35 @@ const articleSlugs = published.map((p) => p.id);
           if (!Number.isFinite(limit)) limit = 5;
           limit = Math.max(1, Math.min(10, limit));
           if (!q) return reply({ query: '', count: 0, results: [], note: 'requête vide' });
-
-          const pf = await loadPagefind();
-          if (!pf || typeof pf.search !== 'function') {
+          const language = input && (input.language === 'fr' || input.language === 'en') ? input.language : '';
+          const index = await loadSearchIndex();
+          if (!index || !Array.isArray(index.documents)) {
             return reply({ query: q, count: 0, results: [], note: 'index de recherche indisponible' });
           }
+          const tokens = normalize(q).split(/[^a-z0-9]+/).filter(function (token) { return token.length > 1; }).slice(0, 12);
+          const results = index.documents
+            .filter(function (document) { return !language || document.language === language; })
+            .map(function (document) { return { document: document, score: rankDocument(document, tokens) }; })
+            .filter(function (item) { return item.score > 0; })
+            .sort(function (a, b) { return b.score - a.score || String(b.document.date || '').localeCompare(String(a.document.date || '')); })
+            .slice(0, limit)
+            .map(function (item) {
+              var document = item.document;
+              var text = stripTags(document.text || document.description || '');
+              return {
+                canonicalId: document.canonicalId,
+                language: document.language,
+                translationStatus: document.translationStatus,
+                type: document.type,
+                title: document.title,
+                url: document.url,
+                description: document.description,
+                excerpt: text.slice(0, 420),
+                score: item.score
+              };
+            });
 
-          let search;
-          try {
-            search = await pf.search(q);
-          } catch (e) {
-            return reply({ query: q, count: 0, results: [], note: 'erreur de recherche' });
-          }
-
-          const slice = (search.results || []).slice(0, limit);
-          const data = await Promise.all(slice.map(function (r) { return r.data(); }));
-          const results = data.map(function (d) {
-            return {
-              title: (d.meta && d.meta.title) || stripTags(d.excerpt).slice(0, 80),
-              url: site + (d.url || ''),
-              excerpt: stripTags(d.excerpt),
-              sections: (d.sub_results || []).slice(0, 3).map(function (s) {
-                return {
-                  title: s.title,
-                  url: site + (s.url || ''),
-                  excerpt: stripTags(s.excerpt)
-                };
-              })
-            };
-          });
-
-          return reply({ query: q, count: results.length, results: results });
+          return reply({ query: q, language: language || null, backend: 'shared-agent-search-index', count: results.length, results: results });
         }
       });
     } catch (e) {
@@ -178,6 +167,7 @@ const articleSlugs = published.map((p) => p.id);
         inputSchema: {
           type: 'object',
           properties: {
+            language: { type: 'string', enum: ['fr', 'en'], description: 'Langue optionnelle. Sans filtre, liste bilingue.' },
             limit: {
               type: 'integer',
               description: "Nombre d'analyses à renvoyer (1 à 20).",
@@ -192,8 +182,26 @@ const articleSlugs = published.map((p) => p.id);
           let limit = parseInt((input && input.limit) || 5, 10);
           if (!Number.isFinite(limit)) limit = 5;
           limit = Math.max(1, Math.min(20, limit));
-          const analyses = (recent || []).slice(0, limit);
-          return reply({ count: analyses.length, analyses: analyses });
+          const language = input && (input.language === 'fr' || input.language === 'en') ? input.language : '';
+          const index = await loadSearchIndex();
+          if (!index || !Array.isArray(index.documents)) return reply({ error: 'index de recherche indisponible' });
+          const analyses = index.documents
+            .filter(function (document) { return document.type === 'article' && (!language || document.language === language); })
+            .sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); })
+            .slice(0, limit)
+            .map(function (document) {
+              return {
+                canonicalId: document.canonicalId,
+                language: document.language,
+                translationStatus: document.translationStatus,
+                title: document.title,
+                url: document.url,
+                date: document.date,
+                description: document.description,
+                tags: document.tags
+              };
+            });
+          return reply({ language: language || null, count: analyses.length, analyses: analyses });
         }
       });
     } catch (e) {
@@ -359,6 +367,7 @@ const articleSlugs = published.map((p) => p.id);
           type: 'object',
           properties: {
             articleSlug: { type: 'string', description: "Slug d'article facultatif." },
+            language: { type: 'string', enum: ['fr', 'en'], description: 'Langue du slug. Les claims restent canoniques en français.' },
             kind: { type: 'string', description: 'fait, estimation, inférence, scénario ou unclassified-assertion.' },
             query: { type: 'string', description: 'Filtre texte facultatif.' },
             limit: { type: 'integer', minimum: 1, maximum: 50, default: 10 }
@@ -367,13 +376,21 @@ const articleSlugs = published.map((p) => p.id);
         annotations: { readOnlyHint: true },
         execute: async function (input) {
           var articleSlug = String((input && input.articleSlug) || '').trim().slice(0, 120);
+          var language = input && (input.language === 'fr' || input.language === 'en') ? input.language : '';
           var kind = String((input && input.kind) || '').trim().toLowerCase().slice(0, 40);
           var query = String((input && input.query) || '').trim().toLowerCase().slice(0, 200);
           var limit = clampLimit(input && input.limit, 10, 50);
           try {
             var surface = await readPublicJson('/api/v1/claims.json');
             var claims = Array.isArray(surface.claims) ? surface.claims : [];
-            if (articleSlug) claims = claims.filter(function (claim) { return claim.articleSlug === articleSlug; });
+            if (articleSlug) {
+              var index = await loadSearchIndex();
+              var document = index && Array.isArray(index.documents) ? index.documents.find(function (item) {
+                return item.type === 'article' && item.slug === articleSlug && (!language || item.language === language);
+              }) : null;
+              var canonicalSlug = document && String(document.canonicalId || '').replace(/^article:/, '') || articleSlug;
+              claims = claims.filter(function (claim) { return claim.articleSlug === canonicalSlug; });
+            }
             if (kind) claims = claims.filter(function (claim) { return String(claim.kind || '').toLowerCase() === kind; });
             if (query) {
               claims = claims.filter(function (claim) {
@@ -405,6 +422,7 @@ const articleSlugs = published.map((p) => p.id);
           type: 'object',
           properties: {
             articleSlug: { type: 'string', description: "Slug d'article facultatif." },
+            language: { type: 'string', enum: ['fr', 'en'], description: 'Langue du slug. Le graphe reste canonique en français.' },
             nodeType: { type: 'string', description: 'article, claim, reference, host, primarySource ou dataset.' },
             limit: { type: 'integer', minimum: 1, maximum: 120, default: 40 }
           }
@@ -412,12 +430,20 @@ const articleSlugs = published.map((p) => p.id);
         annotations: { readOnlyHint: true },
         execute: async function (input) {
           var articleSlug = String((input && input.articleSlug) || '').trim().slice(0, 120);
+          var language = input && (input.language === 'fr' || input.language === 'en') ? input.language : '';
           var nodeType = String((input && input.nodeType) || '').trim().slice(0, 40);
           var limit = clampLimit(input && input.limit, 40, 120);
           try {
             var graph = await readPublicJson('/api/v1/evidence-graph.json');
             var nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
             var edges = Array.isArray(graph.edges) ? graph.edges : [];
+            if (articleSlug) {
+              var index = await loadSearchIndex();
+              var document = index && Array.isArray(index.documents) ? index.documents.find(function (item) {
+                return item.type === 'article' && item.slug === articleSlug && (!language || item.language === language);
+              }) : null;
+              articleSlug = document && String(document.canonicalId || '').replace(/^article:/, '') || articleSlug;
+            }
             var articleId = articleSlug ? 'article:' + articleSlug : '';
             if (articleSlug) {
               var keep = new Set([articleId]);
@@ -483,27 +509,38 @@ const articleSlugs = published.map((p) => p.id);
       mc.registerTool({
         name: 'get_article',
         description:
-          "Renvoie le contenu texte complet d'une analyse de l0g.fr à partir de son slug " +
-          "(le dernier segment de l'URL /posts/.../, par ex. « clarity-act-trump-obstacle-conflit-interets »). " +
+          "Renvoie le contenu texte complet d'une analyse ou d'un guide français ou anglais à partir de son slug " +
+          "(le dernier segment de /posts/, /guides/, /en/analysis/ ou /en/guides/). " +
           "Récupérer les slugs via list_recent_analyses, search_content ou search_by_topic.",
         inputSchema: {
           type: 'object',
           properties: {
-            slug: { type: 'string', description: "Slug de l'article, dernier segment de son URL." }
+            slug: { type: 'string', description: "Slug ou URL de l'analyse ou du guide." },
+            language: { type: 'string', enum: ['fr', 'en'], description: 'Langue optionnelle. Une URL /en/... permet aussi de l’inférer.' }
           },
           required: ['slug']
         },
         annotations: { readOnlyHint: true },
         execute: async function (input) {
-          // Normalisation puis allowlist stricte : jamais de fetch d'URL arbitraire.
-          var slug = String((input && input.slug) || '')
-            .trim().replace(/^https?:\/\/[^/]+/i, '').replace(/^\/+|\/+$/g, '').replace(/^posts\//, '');
-          if (articleSlugs.indexOf(slug) === -1) {
+          var raw = String((input && input.slug) || '').trim();
+          var slug = raw.replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+|\/+$/g, '').replace(/^(?:posts|guides|en\/analysis|en\/guides)\//, '');
+          var language = input && (input.language === 'fr' || input.language === 'en') ? input.language : (/\/?en\/(?:analysis|guides)\//.test(raw) ? 'en' : '');
+          var index = await loadSearchIndex();
+          var documents = index && Array.isArray(index.documents) ? index.documents : [];
+          var matches = documents.filter(function (document) {
+            return (document.type === 'article' || document.type === 'guide') && document.slug === slug && (!language || document.language === language);
+          });
+          var document = matches.find(function (item) { return item.language === 'fr'; }) || matches[0];
+          if (!document) {
             return reply({ error: 'slug inconnu', slug: slug, note: 'utiliser list_recent_analyses ou search_content pour obtenir un slug valide' });
           }
-          var url = site + '/posts/' + slug + '/';
+          var parsedUrl = new URL(document.url, site);
+          if (parsedUrl.origin !== new URL(site).origin || !/^\/(?:posts|guides|en\/analysis|en\/guides)\/[a-z0-9][a-z0-9-]*\/$/.test(parsedUrl.pathname)) {
+            return reply({ error: 'route de contenu invalide', slug: slug });
+          }
+          var url = parsedUrl.toString();
           try {
-            var res = await fetch('/posts/' + slug + '/', { credentials: 'omit' });
+            var res = await fetch(parsedUrl.pathname, { credentials: 'omit' });
             if (!res.ok) return reply({ error: 'article introuvable', slug: slug, url: url });
             var doc = new DOMParser().parseFromString(await res.text(), 'text/html');
             var titleEl = doc.querySelector('article h1') || doc.querySelector('h1');
@@ -514,6 +551,10 @@ const articleSlugs = published.map((p) => p.id);
             if (truncated) body = body.slice(0, MAX);
             return reply({
               slug: slug,
+              canonicalId: document.canonicalId,
+              language: document.language,
+              translationStatus: document.translationStatus,
+              type: document.type,
               url: url,
               title: titleEl ? stripTags(titleEl.textContent) : slug,
               words: body ? body.split(/\s+/).length : 0,
@@ -542,6 +583,7 @@ const articleSlugs = published.map((p) => p.id);
           type: 'object',
           properties: {
             topic: { type: 'string', description: "Slug ou libellé du sujet, par ex. « crypto », « credit-prive », « géopolitique »." },
+            language: { type: 'string', enum: ['fr', 'en'], description: 'Langue optionnelle. Sans filtre, recherche bilingue.' },
             limit: { type: 'integer', description: "Nombre maximum d'analyses (1 à 20).", minimum: 1, maximum: 20, default: 10 }
           },
           required: ['topic']
@@ -562,8 +604,27 @@ const articleSlugs = published.map((p) => p.id);
             });
           }
           if (!match) return reply({ error: 'sujet inconnu', requested: raw, topics: topicsList });
-          var analyses = (byTopic[match.slug] || []).slice(0, limit);
-          return reply({ topic: match.slug, label: match.label, count: analyses.length, analyses: analyses });
+          var language = input && (input.language === 'fr' || input.language === 'en') ? input.language : '';
+          var index = await loadSearchIndex();
+          var documents = index && Array.isArray(index.documents) ? index.documents : [];
+          var analyses = documents
+            .filter(function (document) {
+              return document.type === 'article' && (!language || document.language === language) && (document.topics || []).indexOf(match.slug) !== -1;
+            })
+            .sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); })
+            .slice(0, limit)
+            .map(function (document) {
+              return {
+                canonicalId: document.canonicalId,
+                language: document.language,
+                translationStatus: document.translationStatus,
+                title: document.title,
+                url: document.url,
+                date: document.date,
+                description: document.description
+              };
+            });
+          return reply({ topic: match.slug, label: match.label, language: language || null, count: analyses.length, analyses: analyses });
         }
       });
     } catch (e) {

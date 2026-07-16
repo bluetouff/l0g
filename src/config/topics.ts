@@ -27,6 +27,7 @@ export const topics: Topic[] = [
     tags: [
       'private-credit', 'private credit', 'crédit privé', 'credit prive',
       'private equity', 'marchés privés', 'marches prives', 'investissement-alternatif',
+      'private markets', 'alternative-investment',
       'investissement alternatif', 'gating', 'semi-liquide', 'hlend', 'blackrock',
       'blackstone', 'apollo', 'valorisation', 'valorisations privées', 'liquidité',
       'liquidite', 'zombie funds', 'bdc',
@@ -40,6 +41,7 @@ export const topics: Topic[] = [
     accent: 'teal',
     tags: [
       'macro', 'macroéconomie', 'macroeconomie', 'inflation', 'fed', 'ecb', 'bce',
+      'macroeconomics', 'central banks', 'central-banks', 'monetary policy', 'rates',
       'politique monétaire', 'politique monetaire', 'banques centrales', 'taux',
       'tarifs', 'qt', 'quantitative tightening',
     ],
@@ -52,6 +54,7 @@ export const topics: Topic[] = [
     accent: 'amber',
     tags: [
       'géopolitique', 'geopolitique', 'énergie', 'energie', 'pétrole', 'petrole',
+      'geopolitics', 'energy', 'oil', 'gas', 'commodities',
       'iran', 'ormuz', 'détroit', 'detroit', 'gaz', 'opep',
     ],
   },
@@ -74,7 +77,8 @@ export const topics: Topic[] = [
     accent: 'blue',
     tags: [
       'bourse', 'ipo', 'mag7', 'ai', 'ia', 'analyse fondamentale', '13f', '13flow',
-      'sec edgar', 'form 4', 'marchés', 'marches', 'actions', 'nasdaq', 'softbank',
+      'sec edgar', 'form 4', 'marchés', 'marches', 'markets', 'equities', 'stocks',
+      'fundamental analysis', 'valuations', 'valuation', 'institutional flows', 'actions', 'nasdaq', 'softbank',
     ],
   },
   {
@@ -83,7 +87,7 @@ export const topics: Topic[] = [
     blurb:
       "Décisions, annonces et signaux politiques américains qui font bouger les marchés. Décryptage, pas relais.",
     accent: 'pink',
-    tags: ['politique us', 'politique américaine', 'trump', 'congrès', 'maison blanche'],
+    tags: ['politique us', 'politique américaine', 'us politics', 'trump', 'congrès', 'congress', 'maison blanche', 'white house'],
   },
 ];
 

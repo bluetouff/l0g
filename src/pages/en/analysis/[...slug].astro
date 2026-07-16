@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { readingTime } from '../../../lib/reading-time.ts';
+import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('postsEn', ({ data }) => !data.draft);
@@ -26,7 +27,7 @@ const ogImage = post.data.ogImage ?? `/og/${post.data.sourceArticle}.png`;
 const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
 const frUrl = sourcePost ? new URL(`/posts/${sourcePost.id}/`, Astro.site).toString() : new URL('/', Astro.site).toString();
 const sourceUpdated = sourcePost ? (sourcePost.data.updatedDate ?? sourcePost.data.pubDate) : post.data.sourceUpdatedDate;
-const translationIsStale = sourcePost && sourceUpdated.getTime() > post.data.sourceUpdatedDate.getTime();
+const translationIsStale = sourcePost && isTranslationStale(sourceUpdated, post.data.sourceUpdatedDate);
 
 const alternateLinks = [
   { hreflang: 'en', href: url },

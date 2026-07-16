@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { readingTime } from '../../../lib/reading-time.ts';
+import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
 export async function getStaticPaths() {
   const guides = await getCollection('guidesEn', ({ data }) => !data.draft);
@@ -26,7 +27,7 @@ const ogImage = guide.data.ogImage ?? `/og/${guide.data.sourceGuide}.png`;
 const url = new URL(`/en/guides/${guide.id}/`, Astro.site).toString();
 const frUrl = sourceGuide ? new URL(`/guides/${sourceGuide.id}/`, Astro.site).toString() : new URL('/guides/', Astro.site).toString();
 const sourceUpdated = sourceGuide ? (sourceGuide.data.updatedDate ?? sourceGuide.data.pubDate) : guide.data.sourceUpdatedDate;
-const translationIsStale = sourceGuide && sourceUpdated.getTime() > guide.data.sourceUpdatedDate.getTime();
+const translationIsStale = sourceGuide && isTranslationStale(sourceUpdated, guide.data.sourceUpdatedDate);
 
 const alternateLinks = [
   { hreflang: 'en', href: url },

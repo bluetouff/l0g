@@ -1,4 +1,3 @@
-import type { CollectionEntry } from 'astro:content';
 import { riskSignalMeta } from '../config/risk-signals.ts';
 import {
   AGENT_SITE,
@@ -8,11 +7,10 @@ import {
   generatedAt,
   sortGuides,
   sortPosts,
+  type GuideEntry,
+  type PostEntry,
 } from './agent-surface.ts';
 import { buildSignalHistorySurface, type SignalObservation } from './signal-history.ts';
-
-type PostEntry = CollectionEntry<'posts'>;
-type GuideEntry = CollectionEntry<'guides'>;
 
 type RiskSourceInput = {
   source?: string;

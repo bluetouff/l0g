@@ -1,13 +1,9 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
-import {
-  buildClaimsNdjsonRows,
-  ndjsonResponse,
-  sortPosts,
-} from '../../../lib/agent-surface.ts';
+import { loadAgentContent } from '../../../lib/agent-content.ts';
+import { buildClaimsNdjsonRows, ndjsonResponse } from '../../../lib/agent-surface.ts';
 
 export const GET: APIRoute = async () => {
-  const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
+  const { posts } = await loadAgentContent();
 
   return ndjsonResponse(buildClaimsNdjsonRows(posts));
 };

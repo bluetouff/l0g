@@ -11,12 +11,14 @@ const alternateLinks = [
 ];
 
 const endpoints = [
-  ['/en/agent-surface/', 'HTML', 'English documentation for Agent Surface v1.10.0.'],
+  ['/en/agent-surface/', 'HTML', 'English documentation for Agent Surface v1.11.0.'],
   ['/agents.json', 'JSON', 'Discovery manifest for agents: capabilities, endpoints, usage rules and proof policy.'],
   ['/openapi.json', 'OPENAPI', 'OpenAPI 3.1 contract for l0g machine-to-machine endpoints.'],
   ['/api/v1/claims.json', 'JSON', 'Typed claim-source graph with references and dates when detectable.'],
   ['/api/v1/evidence-graph.json', 'JSON', 'Evidence graph: articles, claims, references, hosts, primary sources and datasets.'],
   ['/api/v1/catalog.ndjson', 'NDJSON', 'Full line-by-line catalog for streaming ingestion, RAG or incremental indexing.'],
+  ['/api/v1/search-index.json', 'JSON', 'Canonical bilingual search index shared by Agent Surface, MCP and WebMCP.'],
+  ['/llms-full-en.txt', 'TEXT', 'Full English analysis and guide corpus, separate from the French context.'],
   ['/api/v1/claims.ndjson', 'NDJSON', 'Typed claims in line-delimited form, with embedded references.'],
   ['/api/v1/sources.json', 'JSON', 'Primary sources and cited hosts actually used by the corpus.'],
   ['/api/v1/freshness.json', 'JSON', 'Corpus and signal freshness: useful dates, expiration policy and coverage.'],
@@ -39,7 +41,7 @@ const datasetLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
   '@id': `${enUrl}#dataset`,
-  name: 'l0g public API and Agent Surface 1.10',
+  name: 'l0g public API and Agent Surface 1.11',
   description: 'Public machine-to-machine surface for l0g: Agent Surface, Risk Diff, Black Box Recorder, sourced claims, evidence graph, risk snapshots, canonical debt-risk and point-in-time signal history.',
   url: enUrl,
   inLanguage: 'en',
@@ -64,7 +66,7 @@ const datasetLd = {
       Public <span style="color: var(--color-accent)">API</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
-      This page inventories the l0g machine surface: Agent Surface 1.10, sourced claims, evidence graph, Risk Diff, Black Box Recorder, risk snapshots, canonical <code class="apic">debt-risk.json</code> and <code class="apic">signals/history</code> for replay and backtests. CORS is open. No key, no authentication, no tracking.
+      This page inventories the bilingual l0g machine surface: Agent Surface 1.11, shared search index, sourced canonical claims, evidence graph, Risk Diff, Black Box Recorder, risk snapshots, canonical <code class="apic">debt-risk.json</code> and <code class="apic">signals/history</code> for replay and backtests. CORS is open. No key, no authentication, no tracking.
     </p>
     <p class="mono-label mt-4"><a class="link-term" href="/api/">Version française →</a></p>
   </section>
@@ -73,7 +75,7 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
       <p class="mt-3 text-paper">
-        Public endpoints, no key and no authentication. Agent Surface 1.10 is the reading contract for agents; risk endpoints remain specialized snapshots.
+        Public endpoints, no key and no authentication. Agent Surface 1.11 is the bilingual reading contract for agents; risk endpoints remain specialized snapshots.
       </p>
       <div class="ep-list mt-4">
         {endpoints.map(([path, type, desc]) => (
@@ -109,7 +111,8 @@ df = df.set_index("observedAt").sort_index()`}</code></pre></div>
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// fields and guardrails</h2>
       <ul class="api-list mt-3">
-        <li><code class="apic">Agent Surface 1.10</code>: M2M contract, with <code class="apic">/agents.json</code> for discovery, <code class="apic">/openapi.json</code> for schema and <code class="apic">/api/v1/integrity.json</code> for snapshot verification.</li>
+        <li><code class="apic">Agent Surface 1.11</code>: bilingual M2M contract, with <code class="apic">/agents.json</code> for discovery, <code class="apic">/openapi.json</code> for schema and <code class="apic">/api/v1/integrity.json</code> for snapshot verification.</li>
+        <li><code class="apic">language</code>, <code class="apic">canonicalId</code>, <code class="apic">translationOf</code>, <code class="apic">alternateUrl</code> and <code class="apic">translationStatus</code> link each translation to its French source.</li>
         <li><code class="apic">/api/v1/debt-risk.json</code>: canonical US Debt signal, imported from <code class="apic">https://debt.l0g.fr/latest.json</code>, with provenance and coverage when available.</li>
         <li><code class="apic">/api/v1/signals/history.json</code>: complete surface for replay, with <code class="apic">coverage</code>, <code class="apic">policy</code>, <code class="apic">current</code>, <code class="apic">observations</code> and <code class="apic">levelChanges</code>.</li>
         <li><code class="apic">level</code>: human-readable state. <code class="apic">tone</code>: machine code such as <code class="apic">calm</code>, <code class="apic">moderate</code>, <code class="apic">elevated</code> or <code class="apic">crisis</code>.</li>

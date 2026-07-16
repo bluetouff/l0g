@@ -30,7 +30,7 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.10.0';
+export const AGENT_VERSION = '1.11.0';
 export const AGENT_GENERATED_AT = new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -49,8 +49,57 @@ type RiskSnapshotInput = {
   indices?: Array<{ key?: string; value?: number; scale?: number; level?: string; tone?: string }>;
 };
 
-export type PostEntry = CollectionEntry<'posts'>;
-export type GuideEntry = CollectionEntry<'guides'>;
+export type ContentLanguage = 'fr' | 'en';
+export type PostEntry = CollectionEntry<'posts'> | CollectionEntry<'postsEn'>;
+export type GuideEntry = CollectionEntry<'guides'> | CollectionEntry<'guidesEn'>;
+
+export function contentLanguage(entry: PostEntry | GuideEntry): ContentLanguage {
+  return entry.collection === 'postsEn' || entry.collection === 'guidesEn' ? 'en' : 'fr';
+}
+
+function canonicalId(entry: PostEntry | GuideEntry, contentType: 'article' | 'guide') {
+  return `${contentType}:${sourceSlug(entry) ?? entry.id}`;
+}
+
+function sourceSlug(entry: PostEntry | GuideEntry): string | null {
+  if (entry.collection === 'postsEn') return entry.data.sourceArticle;
+  if (entry.collection === 'guidesEn') return entry.data.sourceGuide;
+  return null;
+}
+
+function sourceContentId(entry: PostEntry | GuideEntry, contentType: 'article' | 'guide') {
+  const slug = sourceSlug(entry);
+  return slug ? `${contentType}:${slug}` : null;
+}
+
+function sourceContentUrl(entry: PostEntry | GuideEntry, contentType: 'article' | 'guide') {
+  const slug = sourceSlug(entry);
+  if (!slug) return null;
+  return contentType === 'article' ? `${AGENT_SITE}/posts/${slug}/` : `${AGENT_SITE}/guides/${slug}/`;
+}
+
+function languageCounts(entries: Array<PostEntry | GuideEntry>) {
+  return {
+    fr: entries.filter((entry) => contentLanguage(entry) === 'fr').length,
+    en: entries.filter((entry) => contentLanguage(entry) === 'en').length,
+  };
+}
+
+type TranslationStatus = 'source' | 'current' | 'stale' | 'missing-source';
+
+export function isTranslationStale(sourceVersion: Date, translatedSourceVersion: Date) {
+  return sourceVersion.toISOString().slice(0, 10) > translatedSourceVersion.toISOString().slice(0, 10);
+}
+
+function translationStatus(entry: PostEntry | GuideEntry, source?: PostEntry | GuideEntry): TranslationStatus {
+  if (contentLanguage(entry) === 'fr') return 'source';
+  if (!source) return 'missing-source';
+  const sourceVersion = source.data.updatedDate ?? source.data.pubDate;
+  const translatedSourceVersion = entry.collection === 'postsEn' || entry.collection === 'guidesEn'
+    ? entry.data.sourceUpdatedDate
+    : sourceVersion;
+  return isTranslationStale(sourceVersion, translatedSourceVersion) ? 'stale' : 'current';
+}
 
 export function jsonResponse(payload: unknown) {
   return new Response(JSON.stringify(payload, null, 2) + '\n', {
@@ -172,13 +221,15 @@ function versionHash(value: unknown) {
   return sha256(stableStringify(value));
 }
 
-function changeObjectId(contentType: 'article' | 'guide' | 'policy', slug: string) {
-  return `${contentType}:${slug}`;
+function changeObjectId(contentType: 'article' | 'guide' | 'policy', slug: string, language: ContentLanguage = 'fr') {
+  if (contentType === 'policy' || language === 'fr') return `${contentType}:${slug}`;
+  return `${contentType}:${language}:${slug}`;
 }
 
 function contentVersionHash(entry: PostEntry | GuideEntry, contentType: 'article' | 'guide') {
   const base = {
     contentType,
+    language: contentLanguage(entry),
     slug: entry.id,
     title: entry.data.title,
     description: entry.data.description,
@@ -191,7 +242,9 @@ function contentVersionHash(entry: PostEntry | GuideEntry, contentType: 'article
   if (contentType === 'article') {
     return versionHash({
       ...base,
-      evidence: buildArticleEvidenceRecord(entry as PostEntry, { globalClaimIds: true }),
+      evidence: contentLanguage(entry) === 'fr'
+        ? buildArticleEvidenceRecord(entry as PostEntry, { globalClaimIds: true })
+        : null,
     });
   }
 
@@ -220,6 +273,7 @@ function semanticChangeFor(fields: string[], type: string) {
 function diffMetadata(input: {
   contentType: 'article' | 'guide' | 'policy';
   slug: string;
+  language?: ContentLanguage;
   type: string;
   date: string;
   currentHash: string | null;
@@ -228,7 +282,7 @@ function diffMetadata(input: {
   correctionReason?: string | null;
   diffStatus?: 'current-only' | 'previous-version-known-without-hash' | 'historical-version-without-hash' | 'full-diff';
 }) {
-  const objectId = changeObjectId(input.contentType, input.slug);
+  const objectId = changeObjectId(input.contentType, input.slug, input.language ?? 'fr');
   const previousVersion = input.previousVersion ?? null;
 
   return {
@@ -265,6 +319,18 @@ function hostFromHref(href: string) {
 
 function absoluteHref(href: string) {
   return href.startsWith('/') ? `${AGENT_SITE}${href}` : href;
+}
+
+function searchablePlainText(markdown: string) {
+  return String(markdown || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/<figure[\s\S]*?<\/figure>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[`*_>#]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 const openApiEndpoint = (summary: string, description: string, schemaName: string) => ({
@@ -317,6 +383,7 @@ export function buildOpenApiContract() {
       '/agents.json': openApiEndpoint('Manifeste agent', 'Découverte des capacités, endpoints, règles d’usage et politiques de preuve.', 'AgentManifest'),
       '/api/v1/catalog.json': openApiEndpoint('Catalogue complet', 'Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.', 'Catalog'),
       '/api/v1/catalog.ndjson': openApiNdjsonEndpoint('Catalogue NDJSON', 'Catalogue en lignes NDJSON : articles, guides, méthodologies, glossaire, sources primaires et protocole.'),
+      '/api/v1/search-index.json': openApiEndpoint('Index de recherche partagé', 'Index bilingue canonique consommé par Agent Surface, MCP serveur et WebMCP.', 'SearchIndexSurface'),
       '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables, datées quand détectable.', 'ClaimsSurface'),
       '/api/v1/claims.ndjson': openApiNdjsonEndpoint('Claims NDJSON', 'Claims en lignes NDJSON, une affirmation typée par ligne avec références.'),
       '/api/v1/evidence-graph.json': openApiEndpoint('Evidence graph', 'Graphe articles, claims, références, hôtes, institutions et datasets, exprimé en nœuds et arêtes.', 'EvidenceGraphSurface'),
@@ -353,6 +420,12 @@ export function buildOpenApiContract() {
           responses: { '200': { description: 'Texte brut.', content: { 'text/plain': { schema: { type: 'string' } } } } },
         },
       },
+      '/llms-full-en.txt': {
+        get: {
+          summary: 'Complete English agent corpus',
+          responses: { '200': { description: 'Plain text.', content: { 'text/plain': { schema: { type: 'string' } } } } },
+        },
+      },
     },
     components: {
       schemas: {
@@ -384,10 +457,21 @@ export function buildOpenApiContract() {
             reviewedOverride: { type: 'string' },
           },
         },
+        LanguageCounts: {
+          type: 'object',
+          required: ['fr', 'en'],
+          additionalProperties: false,
+          properties: {
+            fr: { type: 'integer' },
+            en: { type: 'integer' },
+          },
+        },
         Claim: {
           type: 'object',
           required: [
             'id',
+            'canonicalId',
+            'language',
             'articleSlug',
             'kind',
             'claim',
@@ -405,6 +489,8 @@ export function buildOpenApiContract() {
           properties: {
             id: { type: 'string' },
             localId: { type: 'string' },
+            canonicalId: { type: 'string' },
+            language: { enum: ['fr', 'en'] },
             articleSlug: { type: 'string' },
             articleUrl: { type: 'string', format: 'uri' },
             articleTitle: { type: 'string' },
@@ -511,11 +597,27 @@ export function buildOpenApiContract() {
             changelog: { type: 'string', format: 'uri' },
           },
         },
-        ContentSummary: {
+        CanonicalEvidenceRef: {
           type: 'object',
-          required: ['slug', 'url', 'title', 'date', 'description'],
+          required: ['language', 'articleSlug', 'claimsUrl', 'evidenceGraphUrl'],
           additionalProperties: false,
           properties: {
+            language: { const: 'fr' },
+            articleSlug: { type: 'string' },
+            claimsUrl: { type: 'string', format: 'uri' },
+            evidenceGraphUrl: { type: 'string', format: 'uri' },
+          },
+        },
+        ContentSummary: {
+          type: 'object',
+          required: ['canonicalId', 'language', 'translationOf', 'alternateUrl', 'translationStatus', 'slug', 'url', 'title', 'date', 'description'],
+          additionalProperties: false,
+          properties: {
+            canonicalId: { type: 'string' },
+            language: { enum: ['fr', 'en'] },
+            translationOf: { type: ['string', 'null'] },
+            alternateUrl: { type: ['string', 'null'], format: 'uri' },
+            translationStatus: { enum: ['source', 'current', 'stale', 'missing-source'] },
             slug: { type: 'string' },
             url: { type: 'string', format: 'uri' },
             title: { type: 'string' },
@@ -526,6 +628,7 @@ export function buildOpenApiContract() {
             tags: { type: 'array', items: { type: 'string' } },
             topics: { type: 'array', items: { type: 'string' } },
             evidence: { $ref: '#/components/schemas/ArticleEvidenceSummary' },
+            evidenceRef: { anyOf: [{ $ref: '#/components/schemas/CanonicalEvidenceRef' }, { type: 'null' }] },
             revisions: { $ref: '#/components/schemas/ArticleRevisionPolicy' },
           },
         },
@@ -676,11 +779,13 @@ export function buildOpenApiContract() {
         },
         AgentCounts: {
           type: 'object',
-          required: ['articles', 'guides', 'methodologies', 'glossary', 'primarySources'],
+          required: ['articles', 'articlesByLanguage', 'guides', 'guidesByLanguage', 'methodologies', 'glossary', 'primarySources'],
           additionalProperties: false,
           properties: {
             articles: { type: 'integer' },
+            articlesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             guides: { type: 'integer' },
+            guidesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             methodologies: { type: 'integer' },
             glossary: { type: 'integer' },
             primarySources: { type: 'integer' },
@@ -705,6 +810,7 @@ export function buildOpenApiContract() {
             'openapi',
             'catalog',
             'catalogNdjson',
+            'searchIndex',
             'claims',
             'claimsNdjson',
             'evidenceGraph',
@@ -725,6 +831,7 @@ export function buildOpenApiContract() {
             'signalSchema',
             'llms',
             'llmsFull',
+            'llmsFullEn',
             'mcpEndpoint',
             'mcpDocumentation',
             'docs',
@@ -734,6 +841,7 @@ export function buildOpenApiContract() {
             'openapi',
             'catalog',
             'catalogNdjson',
+            'searchIndex',
             'claims',
             'claimsNdjson',
             'evidenceGraph',
@@ -754,6 +862,7 @@ export function buildOpenApiContract() {
             'signalSchema',
             'llms',
             'llmsFull',
+            'llmsFullEn',
             'mcpEndpoint',
             'mcpDocumentation',
             'docs',
@@ -771,6 +880,8 @@ export function buildOpenApiContract() {
             'license',
             'attribution',
             'language',
+            'languages',
+            'defaultLanguage',
             'capabilities',
             'endpoints',
             'preferredUse',
@@ -789,6 +900,8 @@ export function buildOpenApiContract() {
             license: { type: 'string' },
             attribution: { type: 'string' },
             language: { type: 'string' },
+            languages: { type: 'array', minItems: 2, uniqueItems: true, items: { enum: ['fr', 'en'] } },
+            defaultLanguage: { enum: ['fr', 'en'] },
             capabilities: { type: 'array', items: { type: 'string' } },
             endpoints: { $ref: '#/components/schemas/AgentEndpointMap' },
             preferredUse: { type: 'array', items: { type: 'string' } },
@@ -799,11 +912,13 @@ export function buildOpenApiContract() {
         },
         CatalogCounts: {
           type: 'object',
-          required: ['articles', 'guides', 'topics', 'methodologies', 'glossary', 'primarySources', 'editorialChangelog'],
+          required: ['articles', 'articlesByLanguage', 'guides', 'guidesByLanguage', 'topics', 'methodologies', 'glossary', 'primarySources', 'editorialChangelog'],
           additionalProperties: false,
           properties: {
             articles: { type: 'integer' },
+            articlesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             guides: { type: 'integer' },
+            guidesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             topics: { type: 'integer' },
             methodologies: { type: 'integer' },
             glossary: { type: 'integer' },
@@ -951,6 +1066,68 @@ export function buildOpenApiContract() {
             riskBandScaleCaveat: { $ref: '#/components/schemas/RiskBandScaleCaveat' },
           },
         },
+        SearchIndexDocument: {
+          type: 'object',
+          required: ['canonicalId', 'language', 'translationOf', 'alternateUrl', 'translationStatus', 'type', 'slug', 'url', 'title', 'date', 'updated', 'description', 'tags', 'topics', 'text'],
+          additionalProperties: false,
+          properties: {
+            canonicalId: { type: 'string' },
+            language: { enum: ['fr', 'en'] },
+            translationOf: { type: ['string', 'null'] },
+            alternateUrl: { type: ['string', 'null'], format: 'uri' },
+            translationStatus: { enum: ['source', 'current', 'stale', 'missing-source'] },
+            type: { enum: ['article', 'guide', 'glossary', 'methodology', 'source'] },
+            slug: { type: 'string' },
+            url: { type: 'string', format: 'uri' },
+            title: { type: 'string' },
+            date: { type: ['string', 'null'], format: 'date' },
+            updated: { type: ['string', 'null'] },
+            description: { type: 'string' },
+            summary: { type: ['string', 'null'] },
+            tags: { type: 'array', items: { type: 'string' } },
+            topics: { type: 'array', items: { type: 'string' } },
+            text: { type: 'string' },
+          },
+        },
+        SearchIndexCounts: {
+          type: 'object',
+          required: ['documents', 'byLanguage', 'byType'],
+          additionalProperties: false,
+          properties: {
+            documents: { type: 'integer' },
+            byLanguage: { $ref: '#/components/schemas/LanguageCounts' },
+            byType: {
+              type: 'object',
+              required: ['article', 'guide', 'glossary', 'methodology', 'source'],
+              additionalProperties: false,
+              properties: Object.fromEntries(['article', 'guide', 'glossary', 'methodology', 'source'].map((type) => [type, { type: 'integer' }])),
+            },
+          },
+        },
+        SearchIndexSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'counts', 'policy', 'documents', 'license', 'attribution'],
+          additionalProperties: false,
+          properties: {
+            schema: { type: 'string', format: 'uri' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            counts: { $ref: '#/components/schemas/SearchIndexCounts' },
+            policy: {
+              type: 'object',
+              required: ['source', 'ranking', 'caveat'],
+              additionalProperties: false,
+              properties: {
+                source: { type: 'string' },
+                ranking: { type: 'string' },
+                caveat: { type: 'string' },
+              },
+            },
+            documents: { type: 'array', items: { $ref: '#/components/schemas/SearchIndexDocument' } },
+            license: { type: 'string' },
+            attribution: { type: 'string' },
+          },
+        },
         ClaimsSurface: {
           type: 'object',
           required: ['schema', 'version', 'generated', 'counts', 'policy', 'reviewRegistry', 'claims', 'references'],
@@ -970,10 +1147,11 @@ export function buildOpenApiContract() {
         },
         ClaimsCounts: {
           type: 'object',
-          required: ['articles', 'claims', 'reviewedClaims', 'references', 'claimKinds'],
+          required: ['articles', 'articlesByLanguage', 'claims', 'reviewedClaims', 'references', 'claimKinds'],
           additionalProperties: false,
           properties: {
             articles: { type: 'integer' },
+            articlesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             claims: { type: 'integer' },
             reviewedClaims: { type: 'integer' },
             references: { type: 'integer' },
@@ -1034,6 +1212,8 @@ export function buildOpenApiContract() {
           type: 'object',
           required: [
             'claimId',
+            'canonicalId',
+            'language',
             'articleSlug',
             'label',
             'href',
@@ -1053,6 +1233,8 @@ export function buildOpenApiContract() {
           additionalProperties: false,
           properties: {
             claimId: { type: 'string' },
+            canonicalId: { type: 'string' },
+            language: { enum: ['fr', 'en'] },
             articleSlug: { type: 'string' },
             label: { type: 'string' },
             href: { type: 'string' },
@@ -1157,6 +1339,8 @@ export function buildOpenApiContract() {
           additionalProperties: false,
           properties: {
             slug: { type: 'string' },
+            canonicalId: { type: 'string' },
+            language: { enum: ['fr', 'en'] },
             localId: { type: 'string' },
             articleSlug: { type: 'string' },
             kind: {
@@ -1295,11 +1479,13 @@ export function buildOpenApiContract() {
         },
         FreshnessCorpus: {
           type: 'object',
-          required: ['articles', 'guides', 'methodologies', 'glossary', 'primarySources', 'editorialChangelog'],
+          required: ['articles', 'articlesByLanguage', 'guides', 'guidesByLanguage', 'methodologies', 'glossary', 'primarySources', 'editorialChangelog'],
           additionalProperties: false,
           properties: {
             articles: { type: 'integer' },
+            articlesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             guides: { type: 'integer' },
+            guidesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             methodologies: { type: 'integer' },
             glossary: { type: 'integer' },
             primarySources: { type: 'integer' },
@@ -1362,10 +1548,12 @@ export function buildOpenApiContract() {
         },
         FreshnessItem: {
           type: 'object',
-          required: ['type', 'slug', 'title', 'url', 'date'],
+          required: ['type', 'canonicalId', 'language', 'slug', 'title', 'url', 'date'],
           additionalProperties: false,
           properties: {
             type: { enum: ['article', 'guide'] },
+            canonicalId: { type: 'string' },
+            language: { enum: ['fr', 'en'] },
             slug: { type: 'string' },
             title: { type: 'string' },
             url: { type: 'string', format: 'uri' },
@@ -1479,12 +1667,14 @@ export function buildOpenApiContract() {
         },
         ChangefeedCounts: {
           type: 'object',
-          required: ['entries', 'articles', 'guides', 'editorialChanges'],
+          required: ['entries', 'articles', 'articlesByLanguage', 'guides', 'guidesByLanguage', 'editorialChanges'],
           additionalProperties: false,
           properties: {
             entries: { type: 'integer' },
             articles: { type: 'integer' },
+            articlesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             guides: { type: 'integer' },
+            guidesByLanguage: { $ref: '#/components/schemas/LanguageCounts' },
             editorialChanges: { type: 'integer' },
           },
         },
@@ -1518,6 +1708,7 @@ export function buildOpenApiContract() {
             'date',
             'type',
             'contentType',
+            'language',
             'slug',
             'title',
             'url',
@@ -1539,6 +1730,7 @@ export function buildOpenApiContract() {
             date: { type: 'string', format: 'date-time' },
             type: { enum: ['article-published', 'article-revised', 'guide-published', 'guide-revised', 'editorial-change'] },
             contentType: { enum: ['article', 'guide', 'policy'] },
+            language: { enum: ['fr', 'en'] },
             slug: { type: 'string' },
             title: { type: 'string' },
             url: { type: 'string', format: 'uri' },
@@ -2465,22 +2657,27 @@ export function buildOpenApiContract() {
 }
 
 export function postUrl(post: PostEntry) {
-  return `${AGENT_SITE}/posts/${post.id}/`;
+  return contentLanguage(post) === 'en'
+    ? `${AGENT_SITE}/en/analysis/${post.id}/`
+    : `${AGENT_SITE}/posts/${post.id}/`;
 }
 
 export function guideUrl(guide: GuideEntry) {
-  return `${AGENT_SITE}/guides/${guide.id}/`;
+  return contentLanguage(guide) === 'en'
+    ? `${AGENT_SITE}/en/guides/${guide.id}/`
+    : `${AGENT_SITE}/guides/${guide.id}/`;
 }
 
-export function sortPosts(posts: PostEntry[]) {
+export function sortPosts<T extends PostEntry>(posts: T[]): T[] {
   return [...posts].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 }
 
-export function sortGuides(guides: GuideEntry[]) {
+export function sortGuides<T extends GuideEntry>(guides: T[]): T[] {
   return [...guides].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 }
 
 export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimIds?: boolean } = {}) {
+  const language = contentLanguage(post);
   const evidence = buildArticleEvidence(post.body ?? '', {
     published: post.data.pubDate,
     updated: post.data.updatedDate,
@@ -2492,13 +2689,16 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
   return {
     claims: evidence.claims.map((claim) => ({
       ...(() => {
-        const globalId = `${post.id}:${claim.id}`;
-        const review = claimReviewById.get(globalId);
+        const reviewId = `${post.id}:${claim.id}`;
+        const globalId = language === 'fr' ? reviewId : `en:${reviewId}`;
+        const review = language === 'fr' ? claimReviewById.get(reviewId) : undefined;
         const id = opts.globalClaimIds ? globalId : claim.id;
         const kind = review?.kind ?? claim.kind;
         return {
           id,
           localId: claim.id,
+          canonicalId: canonicalId(post, 'article'),
+          language,
           articleSlug: post.id,
           articleUrl: postUrl(post),
           articleTitle: post.data.title,
@@ -2558,8 +2758,25 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
   };
 }
 
-export function buildArticleRecord(post: PostEntry) {
+export function buildArticleRecord(
+  post: PostEntry,
+  translations: { source?: PostEntry; alternate?: PostEntry } = {}
+) {
+  const language = contentLanguage(post);
+  const evidenceRef = language === 'en'
+    ? {
+        language: 'fr' as const,
+        articleSlug: sourceSlug(post)!,
+        claimsUrl: `${AGENT_SITE}/api/v1/claims.json`,
+        evidenceGraphUrl: `${AGENT_SITE}/api/v1/evidence-graph.json`,
+      }
+    : null;
   return {
+    canonicalId: canonicalId(post, 'article'),
+    language,
+    translationOf: sourceContentId(post, 'article'),
+    alternateUrl: translations.alternate ? postUrl(translations.alternate) : sourceContentUrl(post, 'article'),
+    translationStatus: translationStatus(post, translations.source),
     slug: post.id,
     url: postUrl(post),
     title: post.data.title,
@@ -2568,7 +2785,8 @@ export function buildArticleRecord(post: PostEntry) {
     description: post.data.description,
     tags: post.data.tags ?? [],
     topics: topics.filter((topic) => postMatchesTopic(post.data.tags ?? [], topic)).map((topic) => topic.slug),
-    evidence: buildArticleEvidenceRecord(post),
+    ...(language === 'fr' ? { evidence: buildArticleEvidenceRecord(post) } : {}),
+    evidenceRef,
     revisions: {
       published: isoDate(post.data.pubDate),
       updated: isoDate(post.data.updatedDate),
@@ -2578,8 +2796,16 @@ export function buildArticleRecord(post: PostEntry) {
   };
 }
 
-export function buildGuideRecord(guide: GuideEntry) {
+export function buildGuideRecord(
+  guide: GuideEntry,
+  translations: { source?: GuideEntry; alternate?: GuideEntry } = {}
+) {
   return {
+    canonicalId: canonicalId(guide, 'guide'),
+    language: contentLanguage(guide),
+    translationOf: sourceContentId(guide, 'guide'),
+    alternateUrl: translations.alternate ? guideUrl(translations.alternate) : sourceContentUrl(guide, 'guide'),
+    translationStatus: translationStatus(guide, translations.source),
     slug: guide.id,
     url: guideUrl(guide),
     title: guide.data.title,
@@ -2592,8 +2818,22 @@ export function buildGuideRecord(guide: GuideEntry) {
 }
 
 export function buildCatalogSurface(posts: PostEntry[], guides: GuideEntry[]) {
-  const articles = sortPosts(posts).map(buildArticleRecord);
-  const sortedGuides = sortGuides(guides).map(buildGuideRecord);
+  const postsFr = posts.filter((entry): entry is CollectionEntry<'posts'> => entry.collection === 'posts');
+  const postsEn = posts.filter((entry): entry is CollectionEntry<'postsEn'> => entry.collection === 'postsEn');
+  const guidesFr = guides.filter((entry): entry is CollectionEntry<'guides'> => entry.collection === 'guides');
+  const guidesEn = guides.filter((entry): entry is CollectionEntry<'guidesEn'> => entry.collection === 'guidesEn');
+  const postSourceBySlug = new Map(postsFr.map((entry) => [entry.id, entry]));
+  const postTranslationBySource = new Map(postsEn.map((entry) => [entry.data.sourceArticle, entry]));
+  const guideSourceBySlug = new Map(guidesFr.map((entry) => [entry.id, entry]));
+  const guideTranslationBySource = new Map(guidesEn.map((entry) => [entry.data.sourceGuide, entry]));
+  const articles = sortPosts(posts).map((post) => buildArticleRecord(post, {
+    source: post.collection === 'postsEn' ? postSourceBySlug.get(post.data.sourceArticle) : undefined,
+    alternate: post.collection === 'posts' ? postTranslationBySource.get(post.id) : undefined,
+  }));
+  const sortedGuides = sortGuides(guides).map((guide) => buildGuideRecord(guide, {
+    source: guide.collection === 'guidesEn' ? guideSourceBySlug.get(guide.data.sourceGuide) : undefined,
+    alternate: guide.collection === 'guides' ? guideTranslationBySource.get(guide.id) : undefined,
+  }));
 
   const methodologies = methodologyPages.map((methodology) => ({
     slug: methodology.slug,
@@ -2674,7 +2914,9 @@ export function buildCatalogSurface(posts: PostEntry[], guides: GuideEntry[]) {
     generated: generatedAt(),
     counts: {
       articles: articles.length,
+      articlesByLanguage: languageCounts(posts),
       guides: sortedGuides.length,
+      guidesByLanguage: languageCounts(guides),
       topics: topics.length,
       methodologies: methodologies.length,
       glossary: glossary.length,
@@ -2692,18 +2934,140 @@ export function buildCatalogSurface(posts: PostEntry[], guides: GuideEntry[]) {
     glossary,
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
-    note: 'Catalogue best-effort. Le texte complet des analyses est servi par les pages /posts/.',
+    note: 'Catalogue bilingue best-effort. Le texte complet est servi par /posts/ et /guides/ en français, /en/analysis/ et /en/guides/ en anglais.',
+  };
+}
+
+export function buildSearchIndexSurface(posts: PostEntry[], guides: GuideEntry[]) {
+  const catalog = buildCatalogSurface(posts, guides);
+  const postByKey = new Map(posts.map((entry) => [`${contentLanguage(entry)}:${entry.id}`, entry]));
+  const guideByKey = new Map(guides.map((entry) => [`${contentLanguage(entry)}:${entry.id}`, entry]));
+  const toContentDocument = (record: ReturnType<typeof buildArticleRecord> | ReturnType<typeof buildGuideRecord>, type: 'article' | 'guide', text: string) => ({
+    canonicalId: record.canonicalId,
+    language: record.language,
+    translationOf: record.translationOf,
+    alternateUrl: record.alternateUrl,
+    translationStatus: record.translationStatus,
+    type,
+    slug: record.slug,
+    url: record.url,
+    title: record.title,
+    date: record.date,
+    updated: record.updated,
+    description: record.description,
+    summary: 'summary' in record ? record.summary : null,
+    tags: record.tags,
+    topics: 'topics' in record ? record.topics : [],
+    text,
+  });
+  const contentDocuments = [
+    ...catalog.articles.map((article) => toContentDocument(
+      article,
+      'article',
+      searchablePlainText(postByKey.get(`${article.language}:${article.slug}`)?.body ?? '')
+    )),
+    ...catalog.guides.map((guide) => toContentDocument(
+      guide,
+      'guide',
+      searchablePlainText(guideByKey.get(`${guide.language}:${guide.slug}`)?.body ?? '')
+    )),
+  ];
+
+  const referenceDocuments = [
+    ...catalog.glossary.map((term) => ({
+      canonicalId: `glossary:${term.slug}`,
+      language: 'fr' as const,
+      translationOf: null,
+      alternateUrl: null,
+      translationStatus: 'source' as const,
+      type: 'glossary' as const,
+      slug: term.slug,
+      url: term.url,
+      title: `${term.sigle} · ${term.name}`,
+      date: null,
+      updated: null,
+      description: term.definition,
+      summary: null,
+      tags: [term.category, term.sigle, term.name].filter(Boolean),
+      topics: [],
+      text: [term.definition, term.atlas?.intuition, term.atlas?.formula, term.atlas?.whyNow].filter(Boolean).join(' '),
+    })),
+    ...catalog.methodologies.map((methodology) => ({
+      canonicalId: `methodology:${methodology.slug}`,
+      language: 'fr' as const,
+      translationOf: null,
+      alternateUrl: null,
+      translationStatus: 'source' as const,
+      type: 'methodology' as const,
+      slug: methodology.slug,
+      url: methodology.url,
+      title: methodology.title,
+      date: null,
+      updated: methodology.updated,
+      description: methodology.description,
+      summary: methodology.question,
+      tags: [methodology.label],
+      topics: [],
+      text: `${methodology.description} ${methodology.question}`,
+    })),
+    ...catalog.primarySources.map((source) => ({
+      canonicalId: `source:${source.slug}`,
+      language: 'fr' as const,
+      translationOf: null,
+      alternateUrl: null,
+      translationStatus: 'source' as const,
+      type: 'source' as const,
+      slug: source.slug,
+      url: source.url,
+      title: `${source.shortName} · ${source.name}`,
+      date: null,
+      updated: null,
+      description: source.description,
+      summary: null,
+      tags: [source.category, source.shortName].filter(Boolean),
+      topics: [],
+      text: [source.description, ...source.limits].join(' '),
+    })),
+  ];
+
+  const documents = [...contentDocuments, ...referenceDocuments];
+  return {
+    schema: `${OPENAPI_SCHEMA_BASE}/SearchIndexSurface`,
+    version: AGENT_VERSION,
+    generated: generatedAt(),
+    counts: {
+      documents: documents.length,
+      byLanguage: {
+        fr: documents.filter((document) => document.language === 'fr').length,
+        en: documents.filter((document) => document.language === 'en').length,
+      },
+      byType: Object.fromEntries(['article', 'guide', 'glossary', 'methodology', 'source'].map((type) => [
+        type,
+        documents.filter((document) => document.type === type).length,
+      ])),
+    },
+    policy: {
+      source: 'Artefact canonique partagé par Agent Surface, MCP serveur et WebMCP.',
+      ranking: 'Le consommateur applique un score lexical déterministe sur title, tags, topics, description et text.',
+      caveat: 'Index statique mis à jour au build ; ce n’est pas un moteur temps réel.',
+    },
+    documents,
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
   };
 }
 
 export function buildClaimsSurface(posts: PostEntry[]) {
-  const articles = sortPosts(posts).map((post) => ({
+  const canonicalPosts = posts.filter((post): post is CollectionEntry<'posts'> => post.collection === 'posts');
+  const articles = sortPosts(canonicalPosts).map((post) => ({
     ...buildArticleRecord(post),
     evidence: buildArticleEvidenceRecord(post, { globalClaimIds: true }),
   }));
   const claims = articles.flatMap((article) => article.evidence.claims);
   const references = claims.flatMap((claim) => claim.references.map((reference) => ({
     claimId: claim.id,
+    canonicalId: claim.canonicalId,
+    language: claim.language,
     articleSlug: claim.articleSlug,
     label: reference.label,
     href: reference.href,
@@ -2727,6 +3091,7 @@ export function buildClaimsSurface(posts: PostEntry[]) {
     generated: generatedAt(),
     counts: {
       articles: articles.length,
+      articlesByLanguage: languageCounts(canonicalPosts),
       claims: claims.length,
       reviewedClaims: claims.filter((claim) => claim.reviewStatus === 'reviewed').length,
       references: references.length,
@@ -2765,7 +3130,7 @@ export function buildSourcesSurface(posts: PostEntry[]) {
     const host = ref.host || (ref.href.startsWith('/') ? 'l0g.fr' : 'unknown');
     const current = hostCounts.get(host) ?? { host, references: 0, articles: new Set<string>(), kinds: new Set<string>() };
     current.references += 1;
-    current.articles.add(ref.articleSlug);
+    current.articles.add(ref.canonicalId);
     if (ref.kind) current.kinds.add(ref.kind);
     hostCounts.set(host, current);
   }
@@ -2905,7 +3270,7 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
   }
 
   for (const claim of claimsSurface.claims) {
-    const articleId = `article:${claim.articleSlug}`;
+    const articleId = claim.language === 'fr' ? `article:${claim.articleSlug}` : `article:en:${claim.articleSlug}`;
     const claimId = `claim:${claim.id}`;
     addNode({
       id: articleId,
@@ -2914,6 +3279,8 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
       url: claim.articleUrl,
       meta: {
         slug: claim.articleSlug,
+        canonicalId: claim.canonicalId,
+        language: claim.language,
       },
     });
     addNode({
@@ -2923,6 +3290,8 @@ export function buildEvidenceGraphSurface(posts: PostEntry[]) {
       url: `${claim.articleUrl}#${claim.localId}`,
       meta: {
         localId: claim.localId,
+        canonicalId: claim.canonicalId,
+        language: claim.language,
         articleSlug: claim.articleSlug,
         kind: claim.kind,
         date: claim.date,
@@ -3064,8 +3433,8 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
   const sortedPosts = sortPosts(posts);
   const sortedGuides = sortGuides(guides);
   const latestContent = [
-    ...sortedPosts.map((post) => ({ type: 'article', slug: post.id, title: post.data.title, url: postUrl(post), date: post.data.pubDate })),
-    ...sortedGuides.map((guide) => ({ type: 'guide', slug: guide.id, title: guide.data.title, url: guideUrl(guide), date: guide.data.updatedDate ?? guide.data.pubDate })),
+    ...sortedPosts.map((post) => ({ type: 'article', canonicalId: canonicalId(post, 'article'), language: contentLanguage(post), slug: post.id, title: post.data.title, url: postUrl(post), date: post.data.pubDate })),
+    ...sortedGuides.map((guide) => ({ type: 'guide', canonicalId: canonicalId(guide, 'guide'), language: contentLanguage(guide), slug: guide.id, title: guide.data.title, url: guideUrl(guide), date: guide.data.updatedDate ?? guide.data.pubDate })),
   ].sort((a, b) => b.date.getTime() - a.date.getTime());
 
   return {
@@ -3074,6 +3443,8 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
     generated: generatedAt(),
     latest: latestContent.slice(0, 20).map((item) => ({
       type: item.type,
+      canonicalId: item.canonicalId,
+      language: item.language,
       slug: item.slug,
       title: item.title,
       url: item.url,
@@ -3081,7 +3452,9 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
     })),
     corpus: {
       articles: sortedPosts.length,
+      articlesByLanguage: languageCounts(posts),
       guides: sortedGuides.length,
+      guidesByLanguage: languageCounts(guides),
       methodologies: methodologyPages.length,
       glossary: glossaryEntries.length,
       primarySources: primaryInstitutions.length,
@@ -3092,6 +3465,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/openapi.json', role: 'Contrat OpenAPI public', update: 'à chaque build' },
       { path: '/api/v1/catalog.json', role: 'Catalogue machine complet', update: 'à chaque build' },
       { path: '/api/v1/catalog.ndjson', role: 'Catalogue machine en NDJSON', update: 'à chaque build' },
+      { path: '/api/v1/search-index.json', role: 'Index de recherche bilingue partagé', update: 'à chaque build' },
       { path: '/api/v1/claims.json', role: 'Graphe affirmation-source', update: 'à chaque build' },
       { path: '/api/v1/claims.ndjson', role: 'Claims en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/evidence-graph.json', role: 'Evidence graph en nœuds et arêtes', update: 'à chaque build' },
@@ -3111,6 +3485,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/api/v1/signals/schema.json', role: 'Schéma des lignes historiques de signaux', update: 'à chaque changement de contrat' },
       { path: '/llms.txt', role: 'Carte concise pour agents', update: 'à chaque build' },
       { path: '/llms-full.txt', role: 'Corpus textuel étendu', update: 'à chaque build' },
+      { path: '/llms-full-en.txt', role: 'Corpus textuel anglais étendu', update: 'à chaque build' },
     ],
     signalFreshness: buildSignalFreshness(risk),
     freshnessPolicy: {
@@ -3135,9 +3510,12 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Surface statique de données, preuves et méthodes pour agents IA : articles, claims sourcées, sources primaires, glossaire, dashboards et fraîcheur.',
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
-    language: 'fr',
+    language: 'mul',
+    languages: ['fr', 'en'],
+    defaultLanguage: 'fr',
     capabilities: [
       'search-ready catalog',
+      'shared bilingual search index for Agent Surface, MCP and WebMCP',
       'streamable ndjson feeds',
       'claim-source graph',
       'evidence graph',
@@ -3158,6 +3536,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       openapi: `${AGENT_SITE}/openapi.json`,
       catalog: `${AGENT_SITE}/api/v1/catalog.json`,
       catalogNdjson: `${AGENT_SITE}/api/v1/catalog.ndjson`,
+      searchIndex: `${AGENT_SITE}/api/v1/search-index.json`,
       claims: `${AGENT_SITE}/api/v1/claims.json`,
       claimsNdjson: `${AGENT_SITE}/api/v1/claims.ndjson`,
       evidenceGraph: `${AGENT_SITE}/api/v1/evidence-graph.json`,
@@ -3178,6 +3557,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       signalSchema: `${AGENT_SITE}/api/v1/signals/schema.json`,
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
+      llmsFullEn: `${AGENT_SITE}/llms-full-en.txt`,
       mcpEndpoint: `${AGENT_SITE}/api/mcp`,
       mcpDocumentation: `${AGENT_SITE}/mcp/`,
       docs: `${AGENT_SITE}/donnees/agents/`,
@@ -3205,7 +3585,9 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
     ],
     counts: {
       articles: posts.length,
+      articlesByLanguage: languageCounts(posts),
       guides: guides.length,
+      guidesByLanguage: languageCounts(guides),
       methodologies: methodologyPages.length,
       glossary: glossaryEntries.length,
       primarySources: primaryInstitutions.length,
@@ -3224,15 +3606,17 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
 export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[]) {
   const contentEntries = [
     ...sortPosts(posts).flatMap((post) => {
+      const language = contentLanguage(post);
       const url = postUrl(post);
       const currentHash = contentVersionHash(post, 'article');
       const publishedDate = post.data.pubDate.toISOString();
       const hasRevision = Boolean(post.data.updatedDate && post.data.updatedDate.getTime() !== post.data.pubDate.getTime());
       const published = {
-        id: shortRevisionId(['article-published', post.id, publishedDate]),
+        id: shortRevisionId([language === 'fr' ? 'article-published' : 'article-published-en', post.id, publishedDate]),
         date: publishedDate,
         type: 'article-published',
         contentType: 'article',
+        language,
         slug: post.id,
         title: post.data.title,
         url,
@@ -3241,6 +3625,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
         ...diffMetadata({
           contentType: 'article',
           slug: post.id,
+          language,
           type: 'article-published',
           date: publishedDate,
           currentHash: hasRevision ? null : currentHash,
@@ -3253,10 +3638,11 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
             const revisedDate = post.data.updatedDate!.toISOString();
             const changedFields = ['updatedDate', 'body', 'sources', 'evidence'];
             return [{
-              id: shortRevisionId(['article-revised', post.id, revisedDate]),
+              id: shortRevisionId([language === 'fr' ? 'article-revised' : 'article-revised-en', post.id, revisedDate]),
               date: revisedDate,
               type: 'article-revised',
               contentType: 'article',
+              language,
               slug: post.id,
               title: post.data.title,
               url,
@@ -3265,6 +3651,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
               ...diffMetadata({
                 contentType: 'article',
                 slug: post.id,
+                language,
                 type: 'article-revised',
                 date: revisedDate,
                 currentHash,
@@ -3277,15 +3664,17 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
       return [published, ...revised];
     }),
     ...sortGuides(guides).flatMap((guide) => {
+      const language = contentLanguage(guide);
       const url = guideUrl(guide);
       const currentHash = contentVersionHash(guide, 'guide');
       const publishedDate = guide.data.pubDate.toISOString();
       const hasRevision = Boolean(guide.data.updatedDate && guide.data.updatedDate.getTime() !== guide.data.pubDate.getTime());
       const published = {
-        id: shortRevisionId(['guide-published', guide.id, publishedDate]),
+        id: shortRevisionId([language === 'fr' ? 'guide-published' : 'guide-published-en', guide.id, publishedDate]),
         date: publishedDate,
         type: 'guide-published',
         contentType: 'guide',
+        language,
         slug: guide.id,
         title: guide.data.title,
         url,
@@ -3294,6 +3683,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
         ...diffMetadata({
           contentType: 'guide',
           slug: guide.id,
+          language,
           type: 'guide-published',
           date: publishedDate,
           currentHash: hasRevision ? null : currentHash,
@@ -3306,10 +3696,11 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
             const revisedDate = guide.data.updatedDate!.toISOString();
             const changedFields = ['updatedDate', 'body', 'sources'];
             return [{
-              id: shortRevisionId(['guide-revised', guide.id, revisedDate]),
+              id: shortRevisionId([language === 'fr' ? 'guide-revised' : 'guide-revised-en', guide.id, revisedDate]),
               date: revisedDate,
               type: 'guide-revised',
               contentType: 'guide',
+              language,
               slug: guide.id,
               title: guide.data.title,
               url,
@@ -3318,6 +3709,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
               ...diffMetadata({
                 contentType: 'guide',
                 slug: guide.id,
+                language,
                 type: 'guide-revised',
                 date: revisedDate,
                 currentHash,
@@ -3340,6 +3732,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
       date,
       type: 'editorial-change',
       contentType: 'policy',
+      language: 'fr' as const,
       slug,
       title: entry.title,
       url: `${AGENT_SITE}/changelog-editorial/`,
@@ -3348,6 +3741,7 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
       ...diffMetadata({
         contentType: 'policy',
         slug,
+        language: 'fr',
         type: 'editorial-change',
         date,
         currentHash: editorialVersionHash(entry),
@@ -3366,7 +3760,9 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
     counts: {
       entries: entries.length,
       articles: posts.length,
+      articlesByLanguage: languageCounts(posts),
       guides: guides.length,
+      guidesByLanguage: languageCounts(guides),
       editorialChanges: editorialEntries.length,
     },
     feedPolicy: {
@@ -3409,6 +3805,12 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       role: 'Catalogue machine en NDJSON',
       mediaType: 'application/x-ndjson',
       body: toNdjson(buildCatalogNdjsonRows(posts, guides)),
+    },
+    {
+      path: '/api/v1/search-index.json',
+      role: 'Index de recherche bilingue partagé',
+      mediaType: 'application/json',
+      payload: buildSearchIndexSurface(posts, guides),
     },
     {
       path: '/api/v1/claims.json',

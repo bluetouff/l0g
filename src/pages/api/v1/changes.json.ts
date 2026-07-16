@@ -1,15 +1,9 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
-import {
-  buildChangefeedSurface,
-  jsonResponse,
-  sortGuides,
-  sortPosts,
-} from '../../../lib/agent-surface.ts';
+import { loadAgentContent } from '../../../lib/agent-content.ts';
+import { buildChangefeedSurface, jsonResponse } from '../../../lib/agent-surface.ts';
 
 export const GET: APIRoute = async () => {
-  const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
-  const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
+  const { posts, guides } = await loadAgentContent();
 
   return jsonResponse(buildChangefeedSurface(posts, guides));
 };

@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { buildFreshnessSurface, jsonResponse, sortGuides, sortPosts } from '../../../lib/agent-surface.ts';
+import { loadAgentContent } from '../../../lib/agent-content.ts';
+import { buildFreshnessSurface, jsonResponse } from '../../../lib/agent-surface.ts';
 
 function readRiskSnapshot() {
   try {
@@ -13,7 +13,6 @@ function readRiskSnapshot() {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
-  const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
+  const { posts, guides } = await loadAgentContent();
   return jsonResponse(buildFreshnessSurface(posts, guides, readRiskSnapshot()));
 };

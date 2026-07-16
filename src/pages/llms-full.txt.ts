@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
+import { loadAgentContent } from '../lib/agent-content.ts';
 
 /**
  * /llms-full.txt - corpus integral pour agents IA (convention llmstxt.org).
@@ -42,12 +42,9 @@ function toPlain(md: string): string {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
-  const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
+  const { posts: allPosts, guides: allGuides } = await loadAgentContent();
+  const posts = allPosts.filter((entry) => entry.collection === 'posts');
+  const guides = allGuides.filter((entry) => entry.collection === 'guides');
   const d = (x?: Date) => (x ? x.toISOString().slice(0, 10) : '');
   const SEP = '\n\n' + '='.repeat(76) + '\n';
 
@@ -62,11 +59,12 @@ export const GET: APIRoute = async () => {
   out.push('');
   out.push(`Genere le ${new Date().toISOString()}. ${guides.length} guides, ${posts.length} analyses.`);
   out.push(`Carte concise : ${SITE}/llms.txt`);
+  out.push(`Corpus anglais distinct : ${SITE}/llms-full-en.txt`);
   out.push(SEP);
   out.push('ENGLISH ENTRY POINTS');
   out.push(`URL : ${SITE}/en/`);
   out.push('-'.repeat(76));
-  out.push('English surfaces: /en/ overview, /en/tour/ guided tour, /en/manifesto/ manifesto, /en/guides/ reference guides, /en/methodology/ methodology, /en/sources/ source hierarchy, /en/editorial-protocol/ editorial protocol, /en/api/ public API, /en/mcp/ MCP server, /en/agent-surface/ Agent Surface, /en/glossary/ core glossary, /en/dashboards/ monitoring tools, /en/risk-diff/ change layer and /en/black-box/ point-in-time replay. These pages are an explicit partial English layer; the full journal remains primarily French.');
+  out.push(`English surfaces start at /en/. The complete English corpus is deliberately separated at ${SITE}/llms-full-en.txt to avoid inflating context windows.`);
   out.push(SEP);
   out.push('MANIFESTE : Manifeste l0g');
   out.push(`URL : ${SITE}/manifeste/`);
@@ -97,7 +95,7 @@ export const GET: APIRoute = async () => {
   );
   out.push('MCP public (Streamable HTTP) : https://l0g.fr/api/mcp');
   out.push(
-    `Agent Surface v1.10.0 : ${SITE}/donnees/agents/ documente la surface M2M statique. Le guide pratique ${SITE}/agents/ explique comment utiliser l0g avec un agent : choix des endpoints, prompts, citations, verification, dates separees, retrievedAt nullable, indexedAt, revue humaine et MCP public. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/evidence-graph.json pour le graphe articles-claims-sources, ${SITE}/api/v1/sources.json pour le registre sources, ${SITE}/api/v1/freshness.json pour la fraicheur du corpus et des signaux, ${SITE}/api/v1/risk-diff.json pour les changements de risque sur 1, 7 et 30 jours, ${SITE}/api/v1/black-box.json pour rejouer les frames point-in-time du risque, ${SITE}/api/v1/debt-risk.json pour le snapshot Dette US, ${SITE}/api/v1/signals/history.json pour l historique point-in-time des signaux, ${SITE}/api/v1/signals/history.ndjson pour le flux historique ligne a ligne, ${SITE}/api/v1/signals/history.csv pour les backtests pandas/R/DuckDB, ${SITE}/api/v1/integrity.json pour les empreintes SHA-256 canoniques attestees en CI et ${SITE}/api/v1/changes.json pour le changefeed machine avec objectId, version/hash courant, statut de diff et changement semantique. MCP expose aussi les resources l0g://risk-diff et l0g://black-box, ainsi que les tools get_risk_diff et get_black_box. Les variantes NDJSON principales sont ${SITE}/api/v1/catalog.ndjson, ${SITE}/api/v1/claims.ndjson, ${SITE}/api/v1/evidence-graph.ndjson, ${SITE}/api/v1/changes.ndjson et ${SITE}/api/v1/signals/history.ndjson.`
+    `Agent Surface v1.11.0 : ${SITE}/donnees/agents/ documente la surface M2M statique bilingue. Le guide pratique ${SITE}/agents/ explique comment utiliser l0g avec un agent : choix des endpoints, prompts, citations, verification, dates separees, retrievedAt nullable, indexedAt, revue humaine et MCP public. Points d acces principaux : ${SITE}/agents.json pour la decouverte, ${SITE}/openapi.json pour le contrat, ${SITE}/api/v1/claims.json pour le graphe affirmation-source, ${SITE}/api/v1/evidence-graph.json pour le graphe articles-claims-sources, ${SITE}/api/v1/sources.json pour le registre sources, ${SITE}/api/v1/freshness.json pour la fraicheur du corpus et des signaux, ${SITE}/api/v1/risk-diff.json pour les changements de risque sur 1, 7 et 30 jours, ${SITE}/api/v1/black-box.json pour rejouer les frames point-in-time du risque, ${SITE}/api/v1/debt-risk.json pour le snapshot Dette US, ${SITE}/api/v1/signals/history.json pour l historique point-in-time des signaux, ${SITE}/api/v1/signals/history.ndjson pour le flux historique ligne a ligne, ${SITE}/api/v1/signals/history.csv pour les backtests pandas/R/DuckDB, ${SITE}/api/v1/integrity.json pour les empreintes SHA-256 canoniques attestees en CI et ${SITE}/api/v1/changes.json pour le changefeed machine avec objectId, version/hash courant, statut de diff et changement semantique. MCP expose aussi les resources l0g://risk-diff et l0g://black-box, ainsi que les tools get_risk_diff et get_black_box. Les variantes NDJSON principales sont ${SITE}/api/v1/catalog.ndjson, ${SITE}/api/v1/claims.ndjson, ${SITE}/api/v1/evidence-graph.ndjson, ${SITE}/api/v1/changes.ndjson et ${SITE}/api/v1/signals/history.ndjson.`
   );
   out.push(
     "Le fichier risk.json expose un tableau de bord consolide de signaux, pas un indice unique de risque systemique : les scores 0-100 sont normalises par instrument et ne sont pas statistiquement equivalents entre US Macro, Euro Macro, Yen Carry et Energie. US Macro combine z-score, drift et momentum par moyenne ponderee et penalise les faux positifs hors recession. Le signal Dette US est expose par debt-risk.json, calcule depuis Debt Risk Radar latest.json avec stress courant hors CBO, imputation neutre des buckets courants manquants, couverture quand disponible et provenance."

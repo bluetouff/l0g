@@ -14,9 +14,9 @@ const datasetLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
   '@id': `${ASITE}/api/#dataset`,
-  name: 'API publique l0g et Agent Surface 1.10',
+  name: 'API publique l0g et Agent Surface 1.11',
   description:
-    "Surface M2M publique de l0g : Agent Surface 1.10, Risk Diff, Black Box Recorder, claims sourcées, evidence graph, snapshots de risque, debt-risk canonique et historique point-in-time des signaux.",
+    "Surface M2M publique bilingue de l0g : Agent Surface 1.11, index partagé, claims canoniques sourcées, evidence graph, Risk Diff, Black Box Recorder, snapshots de risque et historique point-in-time des signaux.",
   url: `${ASITE}/api/`,
   inLanguage: 'fr',
   license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -58,6 +58,11 @@ const datasetLd = {
       '@type': 'DataDownload',
       encodingFormat: 'application/json',
       contentUrl: `${ASITE}/openapi.json`,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: `${ASITE}/api/v1/search-index.json`,
     },
     {
       '@type': 'DataDownload',
@@ -115,7 +120,7 @@ const datasetLd = {
 
 <BaseLayout
   title="API publique"
-  description="API publique l0g : Agent Surface 1.10, claims sourcées, evidence graph, snapshot Debt Risk Radar, signaux courants et historique point-in-time en JSON, NDJSON et CSV. CORS ouvert, licence CC BY 4.0."
+  description="API publique bilingue l0g : Agent Surface 1.11, index partagé, claims canoniques sourcées, evidence graph, snapshot Debt Risk Radar et historique point-in-time."
   sidebar={false}
   alternateLinks={apiAlternateLinks}
 >
@@ -126,8 +131,8 @@ const datasetLd = {
       API <span style="color: var(--color-accent)">publique</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
-      Cette page inventorie la surface machine de l0g : <a class="link-term" href="/donnees/agents/">Agent Surface 1.10</a>,
-      claims sourcées, evidence graph, Risk Diff, Black Box Recorder, snapshots de risque, endpoint canonique
+      Cette page inventorie la surface machine bilingue de l0g : <a class="link-term" href="/donnees/agents/">Agent Surface 1.11</a>,
+      index de recherche partagé, claims canoniques sourcées, evidence graph, Risk Diff, Black Box Recorder, snapshots de risque, endpoint canonique
       <code class="apic">debt-risk.json</code> et historique <code class="apic">signals/history</code>
       pour replay et backtest. CORS ouvert, aucune clé, aucune authentification, aucun pistage.
     </p>
@@ -143,7 +148,7 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
       <p class="mt-3 text-paper">
-        Les points d'accès publics, sans clé ni authentification. Agent Surface 1.10 est le contrat
+        Les points d'accès publics, sans clé ni authentification. Agent Surface 1.11 est le contrat
         de lecture pour agents ; les endpoints de risque restent des snapshots spécialisés.
       </p>
       <div class="ep-list mt-4">
@@ -151,7 +156,7 @@ const datasetLd = {
           <span class="ep-method">GET</span>
           <code class="ep-path">/donnees/agents/</code>
           <span class="ep-type">HTML</span>
-          <span class="ep-desc">Documentation Agent Surface 1.10 : règles de citation, flux recommandé, garde-fous, champs temporels et endpoints M2M.</span>
+          <span class="ep-desc">Documentation Agent Surface 1.11 : corpus bilingue, règles de citation, flux recommandé, garde-fous et endpoints M2M.</span>
         </a>
         <a class="ep card" href="/agents.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
           <span class="ep-method">GET</span>
@@ -164,6 +169,18 @@ const datasetLd = {
           <code class="ep-path">/openapi.json</code>
           <span class="ep-type">OPENAPI</span>
           <span class="ep-desc">Contrat OpenAPI 3.1 des endpoints M2M de l0g.</span>
+        </a>
+        <a class="ep card" href="/api/v1/search-index.json" target="_blank" rel="noopener" style="--t: var(--color-signal)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/api/v1/search-index.json</code>
+          <span class="ep-type">JSON</span>
+          <span class="ep-desc">Index bilingue canonique partagé par Agent Surface, MCP et WebMCP.</span>
+        </a>
+        <a class="ep card" href="/llms-full-en.txt" target="_blank" rel="noopener" style="--t: var(--color-accent)">
+          <span class="ep-method">GET</span>
+          <code class="ep-path">/llms-full-en.txt</code>
+          <span class="ep-type">TEXT</span>
+          <span class="ep-desc">Corpus anglais complet séparé du contexte français.</span>
         </a>
         <a class="ep card" href="/api/v1/claims.json" target="_blank" rel="noopener" style="--t: #7aa2f7">
           <span class="ep-method">GET</span>
@@ -358,7 +375,8 @@ df = df.set_index("observedAt").sort_index()`}</code></pre>
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// champs</h2>
       <ul class="api-list mt-3">
-        <li><code class="apic">Agent Surface 1.10</code> : contrat M2M, avec <code class="apic">/agents.json</code> pour la découverte, <code class="apic">/openapi.json</code> pour le schéma et <code class="apic">/api/v1/integrity.json</code> pour vérifier les snapshots.</li>
+        <li><code class="apic">Agent Surface 1.11</code> : contrat M2M bilingue, avec <code class="apic">/agents.json</code> pour la découverte, <code class="apic">/openapi.json</code> pour le schéma et <code class="apic">/api/v1/integrity.json</code> pour vérifier les snapshots.</li>
+        <li><code class="apic">language</code>, <code class="apic">canonicalId</code>, <code class="apic">translationOf</code>, <code class="apic">alternateUrl</code> et <code class="apic">translationStatus</code> relient chaque traduction à sa source française.</li>
         <li><code class="apic">indices.&lt;clé&gt;.value</code> — valeur du signal (0 à <code class="apic">scale</code>, généralement 100), normalisée par instrument.</li>
         <li><code class="apic">/api/v1/debt-risk.json</code> — source canonique du signal Dette US : <code class="apic">signal.value</code> est l'arrondi de <code class="apic">provenance.scoreRaw</code>, lui-même repris de <code class="apic">https://debt.l0g.fr/latest.json</code>. Le stress courant exclut les projections CBO et stabilise les familles manquantes par imputation neutre ; quand disponible, <code class="apic">provenance.coverage</code> indique la couverture observée avant imputation.</li>
         <li><code class="apic">/api/v1/signals/history.json</code> : surface complète pour replay, avec <code class="apic">coverage</code>, <code class="apic">policy</code>, <code class="apic">current</code>, <code class="apic">observations</code> et <code class="apic">levelChanges</code>.</li>
