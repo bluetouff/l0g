@@ -20,11 +20,13 @@ for (let attempt = 1; attempt <= attempts; attempt += 1) {
     });
     if (!response.ok) throw new Error(`Registry HTTP ${response.status}`);
     const payload = await response.json();
-    const entry = payload.servers?.find(({ server }) => server?.name === 'io.github.bluetouff/l0g');
-    if (!entry) throw new Error('entrée Registry absente');
+    const entries = payload.servers?.filter(({ server }) => server?.name === 'io.github.bluetouff/l0g') ?? [];
+    if (!entries.length) throw new Error('entrée Registry absente');
+    const latestEntries = entries.filter((entry) => entry._meta?.['io.modelcontextprotocol.registry/official']?.isLatest === true);
+    if (latestEntries.length !== 1) throw new Error(`Registry latest ambigu : ${latestEntries.length} entrée(s)`);
+    const [entry] = latestEntries;
     const server = entry.server;
     if (server.version !== expectedVersion) throw new Error(`Registry=${server.version}, attendu=${expectedVersion}`);
-    if (!entry._meta?.['io.modelcontextprotocol.registry/official']?.isLatest) throw new Error('version non marquée latest');
     if (!server.remotes?.some((remote) => remote.type === 'streamable-http' && remote.url === 'https://l0g.fr/api/mcp')) {
       throw new Error('endpoint canonique absent du Registry');
     }

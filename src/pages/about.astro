@@ -6,11 +6,11 @@ const trustItems = [
   { label: 'open source', href: 'https://github.com/bluetouff/l0g' },
   { label: 'auto-hébergé', href: '/rgpd/' },
   { label: 'sources citées', href: '/sites-reference/' },
-  { label: 'aucun tracker', href: '/rgpd/' },
+  { label: 'aucun tracker maison', href: '/rgpd/' },
 ];
 ---
 
-<BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et l'éthique zéro tiers du projet."
+<BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et la politique de confidentialité du projet."
   alternateLinks={[{ hreflang: 'fr', href: new URL('/about/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/about/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/about/', Astro.site).toString() }]}>
   <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
     <a href="/en/about/" class="link-term">English version available →</a>
@@ -49,7 +49,7 @@ const trustItems = [
       <div class="facet card" style="--c: #7aa2f7">
         <span class="facet-k">04</span>
         <span class="facet-t">Projet open source</span>
-        <span class="facet-d">Code ouvert, sources citées, serveur auto-hébergé, aucun tracker.</span>
+        <span class="facet-d">Code ouvert, sources citées, serveur auto-hébergé, aucun tracker maison.</span>
       </div>
     </div>
   </section>
@@ -59,7 +59,7 @@ const trustItems = [
     <div class="specs card mt-4">
       <div class="spec"><span class="spec-k">Statut</span><span class="spec-v">Statique, auto-hébergé sur Debian</span></div>
       <div class="spec"><span class="spec-k">Données</span><span class="spec-v">Sources publiques et gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC…)</span></div>
-      <div class="spec"><span class="spec-k">Vie privée</span><span class="spec-v">Zéro cookie, zéro tracker, aucun tiers contacté par le navigateur</span></div>
+      <div class="spec"><span class="spec-k">Vie privée</span><span class="spec-v">aucun tracker maison ; composants TradingView signalés sur les pages concernées</span></div>
       <div class="spec"><span class="spec-k">Code</span><span class="spec-v"><a class="link-term" href="https://github.com/bluetouff/l0g" target="_blank" rel="noopener">github.com/bluetouff/l0g</a></span></div>
       <div class="spec"><span class="spec-k">Licences</span><span class="spec-v">Code sous MIT ; textes, données et artefacts éditoriaux sous CC BY 4.0</span></div>
       <div class="spec"><span class="spec-k">Citation</span><span class="spec-v"><a class="link-term" href="https://github.com/bluetouff/l0g/blob/main/CITATION.cff" target="_blank" rel="noopener">CITATION.cff</a> · <a class="link-term" href="/protocole-editorial/">protocole 1.0</a></span></div>
@@ -96,7 +96,7 @@ const trustItems = [
         propres outils. Pas d'équipe de quants, pas de terminal Bloomberg, pas de flux de
         données payant. Tout ce que vous voyez ici est bâti sur des sources publiques et
         gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC), assemblé sur un serveur que
-        j'administre moi-même, et servi en statique sans tracker.
+        j'administre moi-même, et servi en statique sans tracker maison.
       </p>
       <p>
         C'est une force et une limite. Une force, parce que tout est vérifiable : les sources

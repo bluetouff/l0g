@@ -160,12 +160,12 @@ function isCurrentHref(href: string): boolean {
       <header>
         <!-- Marque -->
         <div class="header-top">
-          <a href="/" class="brand" aria-label="l0g, accueil">
+          <a href="/" class="brand" aria-label="l0g, Lire les mécanismes avant qu’ils deviennent l’événement">
             <span class="brand-mark">
-              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="blink text-accent" aria-hidden="true">_</span>
+              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="brand-colon text-accent" aria-hidden="true">:</span>
             </span>
             <span class="brand-sep" aria-hidden="true"></span>
-            <span class="brand-tag" aria-label="Lire les mécanismes avant qu’ils deviennent l’événement">
+            <span class="brand-tag" aria-hidden="true">
               <span class="brand-tag-line brand-tag-line-signal">Lire les mécanismes</span>
               <span class="brand-tag-line brand-tag-line-paper">avant qu’ils deviennent l’événement</span>
             </span>
@@ -507,12 +507,16 @@ function isCurrentHref(href: string): boolean {
 
       /* En-tête : lockup de marque */
       .header-top {
-        display: flex; flex-wrap: wrap; align-items: center;
-        justify-content: space-between; gap: 0.5rem 1.75rem;
+        display: grid;
+        grid-template-columns: auto auto auto minmax(0, 1fr);
+        grid-template-areas: "brand terminal theme signal";
+        align-items: center;
+        gap: 1.75rem;
       }
-      .brand { display: inline-flex; align-items: center; gap: 0.7rem; min-width: 0; text-decoration: none; }
+      .brand { grid-area: brand; display: inline-flex; align-items: center; gap: 0.7rem; min-width: 0; text-decoration: none; }
       .brand-mark { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
       .brand-0 { text-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 45%, transparent); }
+      .brand-colon { margin-left: 0.12em; text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 45%, transparent); }
       .brand-sep { width: 1px; height: 2.05rem; background: linear-gradient(180deg, transparent, var(--color-line-strong), transparent); }
       .brand-tag {
         display: flex;
@@ -527,7 +531,7 @@ function isCurrentHref(href: string): boolean {
         line-height: 1.16;
         text-wrap: balance;
       }
-      .brand-tag-line { display: block; }
+      .brand-tag-line { display: block; white-space: nowrap; }
       .brand-tag-line-signal {
         color: var(--color-signal);
         text-shadow: 0 0 16px color-mix(in srgb, var(--color-signal) 24%, transparent);
@@ -548,14 +552,15 @@ function isCurrentHref(href: string): boolean {
         .brand-tag { max-width: min(24rem, 62vw); font-size: 0.68rem; letter-spacing: 0.02em; }
       }
       @media (max-width: 430px) {
-        .brand { align-items: flex-start; gap: 0.55rem; }
+        .brand { gap: 0.55rem; }
         .brand-sep { height: 2.45rem; }
         .brand-tag { max-width: calc(100vw - 8rem); }
       }
       @media (max-width: 340px) { .brand-sep, .brand-tag { display: none; } }
       .header-terminal {
+        grid-area: terminal;
         display: inline-flex; align-items: center; gap: 0.38rem;
-        margin-left: auto;
+        margin-left: 0;
         border: 1px solid color-mix(in srgb, var(--color-signal) 28%, var(--color-line));
         border-radius: 999px;
         padding: 0.32rem 0.72rem;
@@ -572,15 +577,28 @@ function isCurrentHref(href: string): boolean {
         border-color: color-mix(in srgb, var(--color-signal) 58%, transparent);
         background: color-mix(in srgb, var(--color-signal) 8%, transparent);
       }
-      @media (max-width: 760px) { .header-terminal { display: none; } }
+      .theme-toggle { grid-area: theme; }
+      @media (max-width: 760px) {
+        .header-top {
+          grid-template-columns: auto auto minmax(0, 1fr);
+          grid-template-areas: "brand theme signal";
+        }
+        .header-terminal { display: none; }
+      }
 
       /* Motif décoratif du header : tracé de signal abstrait, à droite du lockup */
-      .header-signal { height: 46px; line-height: 0; flex-shrink: 1; min-width: 0; }
-      .header-signal svg { height: 100%; width: auto; max-width: 100%; display: block; }
+      .header-signal { grid-area: signal; width: 100%; height: 46px; line-height: 0; min-width: 0; max-width: 480px; justify-self: end; }
+      .header-signal svg { height: 100%; width: auto; max-width: 100%; margin-left: auto; display: block; }
       .header-signal .hs-glow { animation: hs-pulse 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
       @keyframes hs-pulse { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.06); } }
       @media (prefers-reduced-motion: reduce) { .header-signal .hs-glow { animation: none; } }
-      @media (max-width: 680px) { .header-signal { display: none; } }
+      @media (max-width: 680px) {
+        .header-top {
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas: "brand theme";
+        }
+        .header-signal { display: none; }
+      }
 
       /* Filet bas du header en dégradé, en écho au footer */
       .main-nav { border-bottom: 0; position: relative; }
