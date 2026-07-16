@@ -1,5 +1,8 @@
 # Revue canonique des claims
 
+État documenté : `2026-07-16`. Ce registre complète les exigences EP-003 à
+EP-005 de [`l0g Editorial Protocol 1.0`](../releases/l0g-editorial-protocol-1.0.0/SPECIFICATION.md).
+
 Le registre distingue désormais deux états.
 
 - `legacy` conserve les anciennes revues manuelles comme historique. Elles ne changent plus `reviewStatus` et ne constituent pas une certification.

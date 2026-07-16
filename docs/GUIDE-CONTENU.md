@@ -1,8 +1,13 @@
-# Guide de contenu — l0g.fr
+# Guide de contenu l0g.fr
 
-Tout ce qu'il faut pour publier sans réfléchir à la technique. Trois types de
-contenu : les **articles** (le journal), les **pages** (contenu fixe, ex. « à
-propos »), et la **colonne de droite** (liens, mini-graphe, about).
+Guide pratique pour publier sans perdre les garde-fous éditoriaux et techniques.
+Trois types de contenu : les **articles** (le journal), les **pages** (contenu
+fixe, ex. « à propos »), et la **colonne de droite** (liens, mini-graphe, about).
+
+La référence normative est
+[`l0g Editorial Protocol 1.0`](../releases/l0g-editorial-protocol-1.0.0/README.md).
+Elle fixe le typage des affirmations, le lien vers les preuves, les localisateurs,
+les limites, les corrections, les licences et les tests de conformité.
 
 ---
 
@@ -75,6 +80,27 @@ Un paragraphe avec un [lien](https://fred.stlouisfed.org) et du `code inline`.
 
 Le rendu reprend automatiquement le thème terminal (titres VT323, puces `[*]`,
 liens cyan, etc.). Tu n'as rien à styler.
+
+### 1.4 Garde-fous éditoriaux
+
+- distinguer fait, estimation, inférence et scénario ;
+- rouvrir la source primaire et vérifier chaque chiffre critique ;
+- conserver la date de consultation et, si elle est connue, la date de la source ;
+- fournir un localisateur exact pour toute preuve directe ;
+- exposer les limites de couverture, de retard, de révision ou d'incertitude ;
+- terminer une analyse par des sections `Sources` et `Limites` explicites ;
+- appliquer CC BY 4.0 aux textes, données et artefacts éditoriaux ;
+- dater toute correction qui change la lecture d'un fait, d'une méthode ou d'une conclusion.
+
+Pour produire ou modifier le paquet de référence conforme :
+
+```bash
+npm run test:editorial-protocol
+(cd releases/l0g-editorial-protocol-1.0.0 && sha256sum -c SHA256SUMS)
+```
+
+Ces tests valident la structure, pas la vérité économique ni la fraîcheur future
+d'une source.
 
 ---
 
@@ -231,19 +257,25 @@ Ouvre http://localhost:4321. La page se recharge à chaque sauvegarde.
 ### 5.2 Publier
 
 ```bash
-git add .
+git status --short
+git diff --check
+npm run lint:editorial
+npm run build
+git add chemin/du/fichier.md
 git commit -m "post: stress du private credit"
-git push
+git push origin main
 ```
 
-C'est tout. À partir de là :
+Relis toujours le diff indexé avant le commit. À partir du push :
 
 1. GitHub reconstruit le site automatiquement (onglet **Actions** du dépôt pour
    suivre).
 2. Si le build passe, l'archive statique complète est attestée puis publiée sur
    la branche `built` avec son bundle de provenance.
-3. Le serveur vérifie la correspondance `main`, attestation et `built`, puis
-   récupère la nouvelle version dans les 2 minutes et bascule le symlink servi.
+3. Pendant la migration, l'ancien déployeur sert l'arbre statique de compatibilité
+   présent dans `built`. Après installation du nouveau `deploy.sh`, le serveur
+   vérifie la correspondance `main`, attestation et `built`, puis extrait
+   l'archive et bascule le symlink servi.
 
 ### 5.3 Vérifier le déploiement (sur le serveur, optionnel)
 
@@ -256,9 +288,10 @@ cat /var/www/html/l0g/.last_built_sha  # commit de transport built actif
 
 ### Filet de sécurité
 
-Si un build casse, si l'attestation est absente ou si `main` et `built` ne
-convergent pas, **rien n'est activé** : l'ancienne version reste en ligne. Tu
-corriges, tu re-pushes.
+Avec le nouveau déployeur, si un build casse, si l'attestation est absente ou si
+`main` et `built` ne convergent pas, **rien n'est activé** : l'ancienne version
+reste en ligne. Tant que la migration serveur n'est pas terminée, cette garantie
+fail-closed n'est pas encore fournie côté serveur.
 
 ---
 

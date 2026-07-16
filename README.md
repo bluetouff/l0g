@@ -172,6 +172,21 @@ Le bandeau de cotations en haut de page se règle dans
 
 ## Déploiement (vue d'ensemble)
 
+### État de migration vérifié le 16 juillet 2026
+
+- Le workflow CI publie dans `built` l'arbre statique de compatibilité et une
+  enveloppe attestée composée de l'archive, du SHA-256, du bundle Sigstore et
+  des coordonnées du commit source.
+- Le serveur statique sert encore l'arbre de compatibilité. La correspondance
+  publique avec `built` est vérifiable, mais le contrôle d'attestation côté
+  serveur ne devient effectif qu'après installation du nouveau `deploy.sh`.
+- Cette copie statique temporaire évite une interruption pendant la migration.
+  Elle devra être retirée du workflow seulement après vérification des marqueurs
+  `.last_source_sha` et `.last_built_sha` en production.
+
+L'index des contrats, runbooks et versions maintenues se trouve dans
+[`docs/README.md`](docs/README.md).
+
 1. `git push` sur `main`.
 2. GitHub Actions construit `dist/`, crée une archive déterministe de toute la
    sortie, puis l'atteste avec GitHub OIDC et Sigstore.
@@ -180,7 +195,8 @@ Le bandeau de cotations en haut de page se règle dans
    bundle d'attestation et les coordonnées du commit source de `main`. Le
    nouveau déployeur ignore l'arbre non attesté et n'active que l'archive
    vérifiée.
-4. Le timer systemd poll `built` toutes les 2 min. Avant toute bascule, il exige
+4. Après migration du serveur, le timer systemd poll `built` toutes les 2 min.
+   Avant toute bascule, il exige
    que le clone corresponde au HEAD distant de `built`, que le SHA source
    corresponde au HEAD distant de `main`, et que `gh attestation verify`
    confirme l'archive, le workflow signataire, la ref et le commit source.
@@ -256,13 +272,14 @@ readlink -f /var/www/html/l0g/current
   HTTPS sortant.
 - La branche `built` n'est pas une autorité seule : son archive doit être
   attestée par `.github/workflows/build.yml` et provenir du HEAD courant de
-  `main` au moment de l'activation.
+  `main` au moment de l'activation. Cette vérification est le contrat du nouveau
+  déployeur ; l'état transitoire du serveur est documenté plus haut.
 - CSP stricte (voir `deploy/l0g.fr.apache.conf`), HSTS, en-têtes durcis.
 - Unité de déploiement systemd sandboxée.
 
 ## Licences et citation
 
-- code, scripts, tests, workflows et déploiement : **MIT** ;
+- code, schémas machine, scripts, tests, workflows et déploiement : **MIT** ;
 - textes, données et artefacts éditoriaux : **CC BY 4.0** ;
 - métadonnées de citation : [`CITATION.cff`](CITATION.cff) ;
 - release stable du protocole :

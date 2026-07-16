@@ -3,7 +3,7 @@ import { topics } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
-import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
 
@@ -93,7 +93,7 @@ export const GET: APIRoute = async () => {
     `- [Preuves & changelog](${SITE}/preuves/): derniers commits, artefacts publiés, surfaces sécurité et liens de vérification.`
   );
   lines.push(
-    `- [Protocole éditorial](${SITE}/protocole-editorial/): chaîne source, vérification, rédaction, publication, niveaux de preuve et corrections.`
+    `- [Protocole éditorial ${editorialProtocolRelease.version}](${SITE}/protocole-editorial/): release normative stable, chaîne source, vérification, rédaction, publication, niveaux de preuve et corrections.`
   );
   lines.push(
     `- [Changelog éditorial](${SITE}/changelog-editorial/): journal des changements de protocole, sources, données, méthode et traçabilité.`
@@ -101,7 +101,9 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Protocole editorial');
-  lines.push(`- [Protocole éditorial](${SITE}/protocole-editorial/): ${editorialProtocol.promise}`);
+  lines.push(`- [Protocole éditorial ${editorialProtocolRelease.version}](${SITE}/protocole-editorial/): ${editorialProtocol.promise}`);
+  lines.push(`- [Release normative stable](${editorialProtocolRelease.releaseUrl}): spécification EP-001 à EP-009, schémas JSON, exemple, paquet de preuves, tests, empreintes et licences.`);
+  lines.push(`- [Citation](${editorialProtocolRelease.citationUrl}) et [portée des licences](${editorialProtocolRelease.licenseUrl}): MIT pour le code, les tests et les schémas ; CC BY 4.0 pour les textes, données et artefacts éditoriaux.`);
   for (const principle of editorialProtocol.principles) {
     lines.push(`- ${principle.title}: ${principle.text}`);
   }

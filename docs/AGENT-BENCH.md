@@ -1,5 +1,9 @@
 # l0g Agent Bench
 
+État documenté : `2026-07-16`. Jeu de cas : `1.0.0`. Agent Surface : `1.13.0`.
+MCP du dépôt : `1.20.0`. Le MCP public reste en `1.19.0` tant que la release
+attestée `mcp-v1.20.0` n'est pas publiée et déployée.
+
 Le benchmark exécute 44 cas déterministes, en français et en anglais, contre le serveur MCP réellement construit. Il n’appelle aucun LLM et ne mesure aucun temps d’exécution.
 
 Il couvre : document canonique attendu dans le top 3, parité FR/EN, présence d’une source primaire attendue, comportement `asOf`, refus d’une recherche insuffisamment étayée, fraîcheur et séparation entre observation, estimation, inférence et scénario.

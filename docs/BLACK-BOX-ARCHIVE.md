@@ -1,5 +1,7 @@
 # Black Box Recorder v2
 
+État documenté : `2026-07-16`. Format courant : `v2`.
+
 Le registre probant commence à sa première frame v2. Les anciennes frames dérivées ne sont pas
 rétroactivement présentées comme des preuves point-in-time.
 
@@ -35,8 +37,10 @@ La branche `black-box-archive` doit aussi être protégée dans GitHub avec les 
 
 Git rend les réécritures visibles, la chaîne de hashes rend les frames altérées détectables et
 l'attestation Sigstore relie l'archive statique complète, les manifests, le workflow et le commit
-source. Le serveur refuse l'activation si le HEAD courant de `main`, la provenance attestée et le
-HEAD de `built` ne convergent pas. Cette combinaison ne
+source. Après migration vers `deploy/deploy.sh`, le serveur refuse l'activation si le HEAD courant
+de `main`, la provenance attestée et le HEAD de `built` ne convergent pas. Pendant la migration,
+l'arbre statique de compatibilité reste publié dans `built` et l'ancien déployeur ne fournit pas
+encore cette garantie côté serveur. Cette combinaison ne
 prouve pas la vérité économique d'un modèle, seulement l'intégrité et la provenance du snapshot.
 
 ## Vérification locale

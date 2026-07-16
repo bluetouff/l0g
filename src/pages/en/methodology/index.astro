@@ -1,5 +1,6 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { editorialProtocolRelease } from '../../../config/editorial.ts';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const blocks = [
   ['1. Observe the source', 'Start from the original dataset, filing, release, regulator note or official time series whenever possible. Secondary coverage is useful for context, not as the root of a claim.'],
@@ -51,6 +52,17 @@ const blocks = [
       <p>
         A claim should carry its source, URL, date and status: observed fact, estimate, inference, scenario or uncategorized assertion.
         The <a href="/en/agent-surface/" class="link-term">Agent Surface</a> and the evidence graph exist to preserve that chain when agents reuse l0g.
+      </p>
+    </section>
+
+    <section>
+      <h2>Normative editorial contract</h2>
+      <p>
+        Instrument formulas and model limits are documented on the methodology pages. The cross-cutting rules for sources,
+        dated evidence, typed claims, exact locators, corrections and licensing are fixed by
+        <a href="/en/editorial-protocol/" class="link-term">l0g Editorial Protocol {editorialProtocolRelease.version}</a>.
+        The <a href={editorialProtocolRelease.releaseUrl} class="link-term">stable repository release</a> includes the schemas,
+        complete example, evidence pack, tests and checksums.
       </p>
     </section>
   </article>

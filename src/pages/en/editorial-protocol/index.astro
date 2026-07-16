@@ -1,5 +1,6 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { editorialProtocolRelease } from '../../../config/editorial.ts';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const kinds = [
   ['Observed fact', 'A directly observed data point, filing, rule, vote, release, price, date or statement.'],
@@ -7,6 +8,17 @@ const kinds = [
   ['Inference', 'A conclusion drawn from several facts. It must be labeled as reasoning, not as a raw fact.'],
   ['Scenario', 'A conditional path, not a forecast. Scenarios should keep assumptions visible.'],
   ['Uncategorized assertion', 'A claim not yet typed with sufficient confidence. It should not be overused as evidence.'],
+];
+const requirements = [
+  ['EP-001', 'Source before narrative', 'Critical factual claims point to an identifiable source, with primary material preferred when available.'],
+  ['EP-002', 'Dated verification', 'Evidence retains retrieval, publication and observation dates whenever they are known.'],
+  ['EP-003', 'Typed claims', 'Claims use fact, estimate, inference or scenario, and one kind is never presented as another.'],
+  ['EP-004', 'Exact locator', 'Direct evidence identifies a section, table, series, page, filing accession or reproducible calculation.'],
+  ['EP-005', 'Claim-to-evidence link', 'Every structured claim references an existing evidence record. Facts require direct proof or reproduction.'],
+  ['EP-006', 'Explicit limits', 'Coverage gaps, delays, revisions, missing data and unresolved uncertainty remain visible.'],
+  ['EP-007', 'Attribution and license', 'Editorial text, data and evidence packs use CC BY 4.0. Code, tests and schemas use MIT.'],
+  ['EP-008', 'Visible corrections', 'Material corrections are dated and exposed rather than hidden in silent rewriting.'],
+  ['EP-009', 'Release integrity', 'Stable distributions carry a version, date, status, checksums and failing conformance tests.'],
 ];
 ---
 
@@ -24,6 +36,36 @@ const kinds = [
       l0g separates observed facts, estimates, inferences and scenarios. The point is not stylistic neatness: it prevents a model output from becoming a fact,
       a hypothesis from becoming a conclusion, or a scenario from being misquoted as a forecast.
     </p>
+
+    <section class="release-box">
+      <h2>{editorialProtocolRelease.title}</h2>
+      <p>
+        Version {editorialProtocolRelease.version}, released {editorialProtocolRelease.released}, is the stable normative reference.
+        This page is explanatory. The repository release contains the specification, JSON schemas, a complete example,
+        its evidence pack, conformance tests, checksums, licenses and citation metadata.
+      </p>
+      <div class="release-links">
+        <a href={editorialProtocolRelease.releaseUrl}>Complete release</a>
+        <a href={editorialProtocolRelease.specificationUrl}>Normative specification</a>
+        <a href={editorialProtocolRelease.schemasUrl}>JSON schemas</a>
+        <a href={editorialProtocolRelease.exampleUrl}>Example and evidence</a>
+        <a href={editorialProtocolRelease.testsUrl}>Conformance tests</a>
+        <a href={editorialProtocolRelease.citationUrl}>CITATION.cff</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Normative requirements</h2>
+      <div class="requirement-grid">
+        {requirements.map(([id, title, text]) => (
+          <div>
+            <span>{id}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <section class="kind-grid">
       {kinds.map(([title, desc]) => (
@@ -48,6 +90,18 @@ const kinds = [
         A reusable claim should retain its source URL, canonical page, date, type and confidence level. If a generated answer cites l0g without preserving the source chain,
         it has already degraded the evidence.
       </p>
+      <p>
+        Editorial text, public data and evidence artifacts are licensed under CC BY 4.0. Code, tests, workflows and schemas are licensed under MIT.
+        Third-party material remains subject to its original rights. Citation metadata is published in <a href={editorialProtocolRelease.citationUrl}>CITATION.cff</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>What conformance proves</h2>
+      <p>
+        A conformant package has valid schemas, resolvable claim and evidence identifiers, explicit Sources and Limits sections,
+        correct licenses and matching checksums. It is not an independent factual audit and cannot guarantee that a source remains current.
+      </p>
     </section>
 
     <section>
@@ -65,6 +119,14 @@ const kinds = [
   .kind-grid { display: grid; gap: 1rem; margin-top: 2.4rem; }
   @media (min-width: 760px) { .kind-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .kind-grid div { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
+  .release-box { border: 1px solid var(--color-line); border-left: 2px solid var(--color-signal); border-radius: 10px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 62%, transparent); }
+  .release-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+  .release-links a { border: 1px solid var(--color-line); border-radius: 7px; padding: .45rem .65rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; }
+  .requirement-grid { display: grid; gap: .75rem; margin-top: 1rem; }
+  .requirement-grid div { border-top: 1px solid var(--color-line); padding-top: .8rem; }
+  .requirement-grid span { color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; }
+  .requirement-grid h3 { margin-top: .2rem; color: var(--color-bright); font-weight: 700; }
+  @media (min-width: 760px) { .requirement-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .protocol-page section { margin-top: 2.4rem; }
   .protocol-page h2 { color: var(--color-bright); font-size: 1.18rem; font-weight: 700; }
   .protocol-page p { margin-top: 0.8rem; color: var(--color-muted); line-height: 1.75; }

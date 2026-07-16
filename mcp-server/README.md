@@ -6,6 +6,13 @@ transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié
 
 Endpoint public visé : `https://l0g.fr/api/mcp`
 
+## État de déploiement
+
+Au 16 juillet 2026, le code du dépôt déclare `1.20.0`, mais l'endpoint public
+annonce encore `serverInfo.version = 1.19.0` et aucun tag `mcp-v1.20.0` n'est
+publié. Le mécanisme de release atomique ci-dessous est donc prêt dans le dépôt,
+mais sa migration en production ne doit pas être présentée comme acquise.
+
 ## Architecture
 
 ```

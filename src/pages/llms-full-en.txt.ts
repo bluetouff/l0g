@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { editorialProtocolRelease } from '../config/editorial.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 
@@ -32,6 +33,10 @@ export const GET: APIRoute = async () => {
     `Generated ${new Date().toISOString()}. ${guidesEn.length} guides, ${postsEn.length} analyses.`,
     `Concise map: ${SITE}/llms.txt`,
     `French corpus: ${SITE}/llms-full.txt`,
+    `Normative editorial protocol: ${SITE}/en/editorial-protocol/`,
+    `Stable protocol release ${editorialProtocolRelease.version}: ${editorialProtocolRelease.releaseUrl}`,
+    `Licenses: MIT for code, tests and schemas; CC BY 4.0 for editorial text, public data and evidence artifacts.`,
+    `Citation metadata: ${editorialProtocolRelease.citationUrl}`,
   ];
 
   for (const guide of guidesEn) {

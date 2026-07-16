@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { glossaryEntries } from '../config/glossary.ts';
 import { primaryInstitutions } from '../config/primary-sources.ts';
-import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
 
@@ -110,6 +110,10 @@ export const GET: APIRoute = async () => {
   out.push(SEP);
   out.push('PROTOCOLE EDITORIAL : Sources, verification, preuve, correction');
   out.push(`URL : ${SITE}/protocole-editorial/`);
+  out.push(`Version normative stable : ${editorialProtocolRelease.version}, publiee le ${editorialProtocolRelease.released}.`);
+  out.push(`Release complete : ${editorialProtocolRelease.releaseUrl}`);
+  out.push(`Citation : ${editorialProtocolRelease.citationUrl}`);
+  out.push('Licences : code, tests et schemas sous MIT ; textes, donnees et artefacts editoriaux sous CC BY 4.0.');
   out.push('-'.repeat(76));
   out.push(editorialProtocol.promise);
   out.push('');

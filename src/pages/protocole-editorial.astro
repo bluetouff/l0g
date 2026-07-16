@@ -1,10 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
-import { editorialChangelog, editorialProtocol } from '../config/editorial.ts';
+import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const latestChanges = editorialChangelog.slice(0, 4);
+const releaseArtifacts = [
+  { label: 'spécification normative', detail: 'EP-001 à EP-009', href: editorialProtocolRelease.specificationUrl },
+  { label: 'schémas JSON', detail: 'article et paquet de preuves', href: editorialProtocolRelease.schemasUrl },
+  { label: 'exemple complet', detail: 'article, claims et preuves', href: editorialProtocolRelease.exampleUrl },
+  { label: 'tests de conformité', detail: 'validation déterministe', href: editorialProtocolRelease.testsUrl },
+  { label: 'licences', detail: 'MIT et CC BY 4.0', href: editorialProtocolRelease.licenseUrl },
+  { label: 'citation', detail: 'CITATION.cff', href: editorialProtocolRelease.citationUrl },
+];
 
 const trustItems = [
   { label: 'sources primaires', href: '/sources/' },
@@ -22,7 +30,17 @@ const jsonLd = {
     'Protocole éditorial de l0g.fr : sources, vérification, rédaction, niveaux de preuve, corrections et limites de lecture.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
+  version: editorialProtocolRelease.version,
+  datePublished: editorialProtocolRelease.released,
   dateModified: editorialProtocol.updated,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: {
+    '@type': 'Person',
+    name: 'Olivier Laurelli',
+    alternateName: 'bluetouff',
+  },
+  codeRepository: editorialProtocolRelease.repositoryUrl,
+  sameAs: editorialProtocolRelease.releaseUrl,
   publisher: { '@id': `${site}/#org` },
   url: `${site}/protocole-editorial/`,
 };
@@ -54,7 +72,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </p>
       <TrustBar items={trustItems} />
       <p class="protocol-updated mono-label">
-        protocole mis à jour : <time datetime={editorialProtocol.updated}>{editorialProtocol.updated}</time>
+        version normative {editorialProtocolRelease.version} · {editorialProtocolRelease.status} ·
+        <time datetime={editorialProtocol.updated}>{editorialProtocol.updated}</time>
       </p>
     </section>
 
@@ -62,6 +81,32 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="mono-label glow">// promesse</p>
       <div class="promise-box">
         <p>{editorialProtocol.promise}</p>
+      </div>
+    </section>
+
+    <section class="protocol-section" id="release-stable">
+      <p class="mono-label glow">// release normative stable</p>
+      <div class="release-box">
+        <div>
+          <h2>{editorialProtocolRelease.title}</h2>
+          <p>
+            Cette page explique le protocole. La release versionnée dans le dépôt constitue la
+            référence normative : elle fixe les obligations, les schémas, l'exemple conforme,
+            les tests, les empreintes et les licences. La conformité structurelle ne remplace
+            jamais la vérification factuelle des sources.
+          </p>
+          <a class="release-main" href={editorialProtocolRelease.releaseUrl} target="_blank" rel="noopener">
+            ouvrir la release {editorialProtocolRelease.version}
+          </a>
+        </div>
+        <div class="release-grid">
+          {releaseArtifacts.map((artifact) => (
+            <a href={artifact.href} target="_blank" rel="noopener">
+              <strong>{artifact.label}</strong>
+              <span>{artifact.detail}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -217,6 +262,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     }
     .protocol-section { margin-top: 3rem; }
     .promise-box,
+    .release-box,
     .principle-card,
     .step-row,
     .depth-table,
@@ -232,6 +278,62 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       margin-top: 1rem;
       padding: 1.1rem;
       border-left: 2px solid var(--color-signal);
+    }
+    .release-box {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 2px solid var(--color-signal);
+    }
+    .release-box h2 {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+    }
+    .release-box p {
+      margin-top: 0.6rem;
+      color: var(--color-paper);
+      line-height: 1.65;
+    }
+    .release-main {
+      display: inline-flex;
+      margin-top: 0.8rem;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .release-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    @media (min-width: 700px) {
+      .release-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .release-grid a {
+      border: 1px solid var(--color-line);
+      border-radius: 7px;
+      padding: 0.7rem;
+      background: color-mix(in srgb, var(--color-surface) 54%, transparent);
+    }
+    .release-grid strong,
+    .release-grid span {
+      display: block;
+    }
+    .release-grid strong {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .release-grid span {
+      margin-top: 0.25rem;
+      color: var(--color-muted);
+      font-size: 0.84rem;
     }
     .promise-box p,
     .note-block p:not(.mono-label) {

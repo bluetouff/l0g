@@ -45,8 +45,23 @@ export type EditorialChangelogEntry = {
   links: Array<{ label: string; href: string }>;
 };
 
+export const editorialProtocolRelease = {
+  title: 'l0g Editorial Protocol 1.0',
+  version: '1.0.0',
+  status: 'stable',
+  released: '2026-07-16',
+  repositoryUrl: 'https://github.com/bluetouff/l0g',
+  releaseUrl: 'https://github.com/bluetouff/l0g/tree/main/releases/l0g-editorial-protocol-1.0.0',
+  specificationUrl: 'https://github.com/bluetouff/l0g/blob/main/releases/l0g-editorial-protocol-1.0.0/SPECIFICATION.md',
+  schemasUrl: 'https://github.com/bluetouff/l0g/tree/main/releases/l0g-editorial-protocol-1.0.0/schemas',
+  exampleUrl: 'https://github.com/bluetouff/l0g/tree/main/releases/l0g-editorial-protocol-1.0.0/example',
+  testsUrl: 'https://github.com/bluetouff/l0g/tree/main/releases/l0g-editorial-protocol-1.0.0/tests',
+  citationUrl: 'https://github.com/bluetouff/l0g/blob/main/CITATION.cff',
+  licenseUrl: 'https://github.com/bluetouff/l0g/blob/main/LICENSE',
+} as const;
+
 export const editorialProtocol = {
-  updated: '2026-06-27',
+  updated: editorialProtocolRelease.released,
   promise:
     "Séparer les faits, les sources, les hypothèses et les conclusions afin que chaque analyse l0g puisse être relue, contestée et corrigée.",
   principles: [
@@ -98,8 +113,8 @@ export const editorialProtocol = {
       id: 'redaction',
       title: 'Rédaction',
       checks: [
-        'Distinguer fait, interprétation, hypothèse et scénario.',
-        'Ajouter les citations internes et les badges de niveau de preuve.',
+        'Distinguer fait, estimation, inférence et scénario.',
+        'Relier chaque affirmation structurée à une preuve et à un localisateur exact.',
         'Préserver les liens vers méthodologie, données et sources primaires.',
       ],
     },
@@ -214,6 +229,17 @@ export const editorialProtocol = {
 };
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
+  {
+    date: '2026-07-16',
+    title: 'l0g Editorial Protocol 1.0 stable',
+    kind: 'protocole',
+    summary:
+      'Publication du noyau normatif versionné : exigences EP-001 à EP-009, schémas article et paquet de preuves, article exemple, tests de conformité, empreintes, licences et métadonnées de citation.',
+    links: [
+      { label: 'protocole', href: '/protocole-editorial/' },
+      { label: 'release 1.0.0', href: editorialProtocolRelease.releaseUrl },
+    ],
+  },
   {
     date: '2026-06-27',
     title: 'Relations affirmation-source et historique des révisions',

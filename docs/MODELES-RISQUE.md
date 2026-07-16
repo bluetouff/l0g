@@ -1,5 +1,9 @@
 # Modèles de risque l0g
 
+État documenté : `2026-07-16`. Ce document décrit les conventions de modèle,
+tandis que [`l0g Editorial Protocol 1.0`](../releases/l0g-editorial-protocol-1.0.0/README.md)
+fixe les règles transversales de preuve, de limite, de correction et de licence.
+
 Ce document résume les conventions de modèle qui doivent rester alignées entre
 les dashboards, `/methodologie/`, `/api/`, `/agents.json`, `llms.txt` et les
 snapshots publics. Les surfaces `/api/v1/risk-diff.json` et
@@ -80,6 +84,7 @@ Avant publication :
 ```bash
 npm run test:risk-snapshot
 npm run test:agent-surface
+npm run test:editorial-protocol
 npm run build
 ```
 

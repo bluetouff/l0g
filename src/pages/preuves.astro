@@ -81,6 +81,9 @@ const artefacts = [
   fileMeta('public/.well-known/security.txt', '/.well-known/security.txt', 'security.txt', 'Contact vulnérabilités et canal de disclosure.'),
   fileMeta('package-lock.json', 'https://github.com/bluetouff/l0g/blob/main/package-lock.json', 'package-lock.json', 'Verrou de dépendances auditable.'),
   fileMeta('deploy/l0g.fr.apache.conf', 'https://github.com/bluetouff/l0g/blob/main/deploy/l0g.fr.apache.conf', 'vhost Apache', 'En-têtes CSP, HSTS et protections statiques.'),
+  fileMeta('LICENSE', 'https://github.com/bluetouff/l0g/blob/main/LICENSE', 'licences', 'MIT pour le code ; CC BY 4.0 pour les textes, données et artefacts éditoriaux.'),
+  fileMeta('CITATION.cff', 'https://github.com/bluetouff/l0g/blob/main/CITATION.cff', 'CITATION.cff', 'Auteur, titre, version et manière de citer l0g Editorial Protocol.'),
+  fileMeta('releases/l0g-editorial-protocol-1.0.0/SPECIFICATION.md', 'https://github.com/bluetouff/l0g/tree/main/releases/l0g-editorial-protocol-1.0.0', 'protocole 1.0', 'Spécification normative, schémas, exemple, preuves, tests et empreintes.'),
 ];
 
 const guarantees = [
@@ -104,6 +107,11 @@ const guarantees = [
     value: 'Pas de cookie applicatif, pas de mesure comportementale maison, partage social sans script tiers.',
     href: '/rgpd/',
   },
+  {
+    label: 'provenance de release',
+    value: "La CI publie une archive attestée et ses coordonnées. L'enforcement fail-closed côté serveur devient effectif après migration vers le nouveau déployeur.",
+    href: 'https://github.com/bluetouff/l0g/blob/main/deploy/deploy.sh',
+  },
 ];
 
 const dataFreshness = [
@@ -118,6 +126,7 @@ const trustItems = [
   { label: 'audits npm', href: 'https://github.com/bluetouff/l0g/blob/main/package-lock.json' },
   { label: 'security.txt', href: '/.well-known/security.txt' },
   { label: 'statut public', href: '/status/' },
+  { label: 'protocole 1.0', href: '/protocole-editorial/' },
 ];
 
 const jsonLd = {
