@@ -162,7 +162,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd release
+          # Keep the static tree at the branch root during the server migration.
+          # The attested deployer ignores it and activates only the verified archive;
+          # the legacy deployer can still serve the site without an outage.
+          mkdir -p publish
+          cp -a dist/. publish/
+          cp -a release/. publish/
+          cd publish
           git init -q
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

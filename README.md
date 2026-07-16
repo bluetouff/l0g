@@ -175,8 +175,11 @@ Le bandeau de cotations en haut de page se règle dans
 1. `git push` sur `main`.
 2. GitHub Actions construit `dist/`, crée une archive déterministe de toute la
    sortie, puis l'atteste avec GitHub OIDC et Sigstore.
-3. La branche `built` ne contient que l'archive, son SHA-256, le bundle
-   d'attestation et les coordonnées du commit source de `main`.
+3. Pendant la migration serveur, la branche `built` contient l'arbre statique
+   compatible avec l'ancien déployeur, ainsi que l'archive, son SHA-256, le
+   bundle d'attestation et les coordonnées du commit source de `main`. Le
+   nouveau déployeur ignore l'arbre non attesté et n'active que l'archive
+   vérifiée.
 4. Le timer systemd poll `built` toutes les 2 min. Avant toute bascule, il exige
    que le clone corresponde au HEAD distant de `built`, que le SHA source
    corresponde au HEAD distant de `main`, et que `gh attestation verify`
@@ -219,9 +222,11 @@ sudo systemctl reload apache2
 Si la version Debian de `gh` ne fournit pas `attestation verify`, suivre le bloc
 d'installation depuis le dépôt officiel GitHub dans
 [`docs/MCP-RELEASE.md`](docs/MCP-RELEASE.md#migration-unique-de-zen). Installer
-le nouveau `deploy.sh` avant d'activer le workflow qui publie le nouveau format
-de `built`. Tant que l'archive attestée n'existe pas, le script refuse la
-release et conserve le symlink courant.
+le nouveau `deploy.sh` dès que possible. La racine statique de `built` reste
+temporairement présente pour assurer une migration sans interruption avec
+l'ancien déployeur. Tant que l'archive attestée n'existe pas, le nouveau script
+refuse la release et conserve le symlink courant. Après migration vérifiée du
+serveur, cette copie de compatibilité pourra être retirée du workflow.
 
 Contrôles après le premier déploiement attesté :
 

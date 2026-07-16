@@ -21,8 +21,10 @@ couverture vide et explicite. Il ne reconstruit jamais le passé depuis les donn
 Le workflow valide toute la chaîne avant le build. Après ajout, il refuse tout état Git autre qu'un
 nouveau fichier `frames/*.json`, reconstruit le site depuis l'archive, teste l'Agent Surface et le MCP,
 emballe toute la sortie statique dans une archive déterministe, atteste cette archive et les manifests
-avec GitHub Artifact Attestations, publie le bundle vérifiable dans `built`, puis effectue un push
-normal et non forcé de l'archive Black Box.
+avec GitHub Artifact Attestations, publie le bundle vérifiable dans `built` avec une copie statique
+temporaire pour la compatibilité de migration serveur, puis effectue un push normal et non forcé de
+l'archive Black Box. Le nouveau déployeur n'active jamais cette copie : il extrait uniquement
+l'archive dont la provenance a été vérifiée.
 
 La branche `black-box-archive` doit aussi être protégée dans GitHub avec les règles suivantes :
 
