@@ -21,6 +21,7 @@ UMask=0077
 Environment=MCP_HOST=127.0.0.1
 Environment=MCP_PORT=8848
 Environment=MCP_PATH=/mcp
+Environment=MCP_USAGE_PATH=/var/lib/l0g-mcp/usage.json
 Environment=L0G_DATA_DIR=/var/www/html/l0g/current
 Environment=L0G_SITE=https://l0g.fr
 Environment=MCP_ALLOWED_HOSTS=l0g.fr,127.0.0.1,localhost
@@ -39,6 +40,8 @@ NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
 PrivateIPC=yes
+StateDirectory=l0g-mcp
+StateDirectoryMode=0700
 ProtectSystem=strict
 ProtectHome=yes
 ProtectKernelTunables=yes
@@ -58,7 +61,8 @@ SystemCallErrorNumber=EPERM
 SystemCallArchitectures=native
 CapabilityBoundingSet=
 AmbientCapabilities=
-# Acces disque : lecture seule du site deploye, rien d'autre en ecriture.
+# Acces disque : corpus et runtime en lecture seule ; seul StateDirectory persiste
+# les compteurs MCP agrégés sans IP, cookie, session ni empreinte.
 ReadOnlyPaths=/var/www/html/l0g /opt/l0g-mcp-runtime
 # Limites de ressources
 LimitNOFILE=4096

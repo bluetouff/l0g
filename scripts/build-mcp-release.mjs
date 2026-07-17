@@ -34,8 +34,10 @@ await mkdir(join(releaseDir, 'src/lib'), { recursive: true, mode: 0o755 });
 for (const path of [
   'server.json',
   'mcp-server/server.mjs',
+  'mcp-server/usage-telemetry.mjs',
   'mcp-server/package.json',
   'mcp-server/package-lock.json',
+  'mcp-server/deploy/l0g-mcp.service',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
 ]) {
@@ -75,8 +77,10 @@ await writeFile(join(releaseDir, 'release.env'), `MCP_GIT_SHA=${sha}\nMCP_RELEAS
 const criticalPaths = [
   'server.json',
   'mcp-server/server.mjs',
+  'mcp-server/usage-telemetry.mjs',
   'mcp-server/package.json',
   'mcp-server/package-lock.json',
+  'mcp-server/deploy/l0g-mcp.service',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
   'LICENSE',

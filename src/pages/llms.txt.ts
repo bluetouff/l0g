@@ -201,6 +201,7 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
   lines.push(`- [Serveur MCP](${SITE}/api/mcp): endpoint Model Context Protocol en lecture seule (transport Streamable HTTP). Tools clés : get_risk_diff, get_black_box, get_signal_history, get_claims, get_evidence_graph. Doc : ${SITE}/mcp`);
+  lines.push(`- [Statistiques MCP anonymisées](${SITE}/api/mcp/usage): volumes techniques agrégés sur 91 jours, sans IP, cookie, session, empreinte ni user-agent ; familles client masquées sous cinq initialisations.`);
   lines.push(`- [Corpus integral](${SITE}/llms-full.txt): texte complet de toutes les analyses et guides.`);
   lines.push(`- [English full corpus](${SITE}/llms-full-en.txt): complete English analyses and guides in a separate context file.`);
   lines.push('');

@@ -58,6 +58,7 @@ jobs:
           MCP_GIT_SHA: ${{ github.sha }}
           MCP_HOST: 127.0.0.1
           MCP_PORT: 8851
+          MCP_USAGE_PATH: ${{ runner.temp }}/l0g-mcp-usage-build.json
           URL: http://127.0.0.1:8851/mcp
         run: |
           node mcp-server/server.mjs &
@@ -74,8 +75,10 @@ jobs:
       - name: Build deterministic MCP archive and SBOM
         run: |
           git diff --exit-code -- \
-            server.json mcp-server/server.mjs mcp-server/package.json mcp-server/package-lock.json \
-            mcp-server/deploy/verify-release.mjs src/lib/agent-prompts.mjs
+            server.json mcp-server/server.mjs mcp-server/usage-telemetry.mjs \
+            mcp-server/package.json mcp-server/package-lock.json \
+            mcp-server/deploy/l0g-mcp.service mcp-server/deploy/verify-release.mjs \
+            src/lib/agent-prompts.mjs
           mkdir -p release
           node scripts/build-mcp-release.mjs --output release --tag "$GITHUB_REF_NAME" --sha "$GITHUB_SHA"
           RELEASE_NAME="l0g-mcp-${MCP_VERSION}"
@@ -102,6 +105,7 @@ jobs:
           MCP_RELEASE_ATTESTED: 1
           MCP_HOST: 127.0.0.1
           MCP_PORT: 8852
+          MCP_USAGE_PATH: ${{ runner.temp }}/l0g-mcp-usage-archive.json
           URL: http://127.0.0.1:8852/mcp
         run: |
           node "release/verify/l0g-mcp-${MCP_VERSION}/mcp-server/server.mjs" &

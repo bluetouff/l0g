@@ -81,6 +81,11 @@ const surfaces = [
     endpoint: '/api/mcp',
     use: 'Serveur MCP public en lecture seule, adapté aux agents qui préfèrent appeler des outils.',
   },
+  {
+    need: 'Mesurer l’usage MCP',
+    endpoint: '/api/mcp/usage',
+    use: 'Rapport agrégé sur 91 jours : volumes, tools, resources, prompts et familles client masquées sous cinq initialisations.',
+  },
 ];
 
 const flow = [
@@ -119,6 +124,7 @@ const curlExamples = [
   'curl -s https://l0g.fr/api/v1/signals/history.ndjson | head',
   'curl -s https://l0g.fr/api/v1/catalog.ndjson | head',
   'curl -s https://l0g.fr/api/v1/evidence-graph.json',
+  'curl -s https://l0g.fr/api/mcp/usage',
 ];
 
 const jsonLd = {
@@ -157,6 +163,72 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         mais de l’obliger à conserver la source, la date et le niveau de preuve.
       </p>
       <TrustBar items={trustItems} />
+    </section>
+
+    <section class="guide-section usage-section" data-mcp-usage data-pagefind-ignore>
+      <p class="mono-label glow">// preuve d'usage</p>
+      <h2 class="usage-title font-display">Statistiques MCP anonymisées</h2>
+      <p class="usage-lede">
+        Fenêtre glissante de 91 jours. l0g compte des événements techniques agrégés,
+        sans IP, cookie, session, empreinte ni user-agent. Les noms libres déclarés dans
+        <code>clientInfo</code> sont immédiatement ramenés à une famille fermée ; les cohortes
+        inférieures à cinq initialisations restent masquées.
+      </p>
+
+      <div class="usage-cards" aria-live="polite">
+        <article><span>Initialisations</span><strong data-usage-stat="initializations">…</strong></article>
+        <article><span>Appels de tools</span><strong data-usage-stat="tool_calls">…</strong></article>
+        <article><span>Resources lues</span><strong data-usage-stat="resource_reads">…</strong></article>
+        <article><span>Prompts rendus</span><strong data-usage-stat="prompt_gets">…</strong></article>
+        <article><span><code>clientInfo</code> déclaré</span><strong data-usage-stat="client_info_declaration_rate">…</strong></article>
+      </div>
+      <p class="usage-status" data-usage-status>Chargement du rapport public…</p>
+
+      <div class="usage-tables">
+        <section>
+          <h3>Tools les plus appelés</h3>
+          <div class="usage-table-wrap">
+            <table>
+              <thead><tr><th>Tool</th><th>Appels</th></tr></thead>
+              <tbody data-usage-tools></tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h3>Familles déclarées via <code>clientInfo</code></h3>
+          <div class="usage-table-wrap">
+            <table>
+              <thead><tr><th>Famille</th><th>Initialisations</th></tr></thead>
+              <tbody data-usage-clients></tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h3>Resources les plus lues</h3>
+          <div class="usage-table-wrap">
+            <table>
+              <thead><tr><th>Famille</th><th>Lectures</th></tr></thead>
+              <tbody data-usage-resources></tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h3>Prompts les plus rendus</h3>
+          <div class="usage-table-wrap">
+            <table>
+              <thead><tr><th>Prompt</th><th>Rendus</th></tr></thead>
+              <tbody data-usage-prompts></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <p class="usage-method">
+        <strong>Ce qui n'est pas mesuré.</strong> Sans identifiant technique, l0g ne peut pas
+        compter des personnes, distinguer deux agents derrière une même intégration ni qualifier
+        un appelant de récurrent. Les appels de tools ne sont pas reliés aux familles de clients.
+        <a href="/rgpd/">Lire le cadre de confidentialité</a>.
+      </p>
     </section>
 
     <section class="guide-section">
@@ -230,6 +302,78 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     </section>
   </article>
 
+  <script>
+    const root = document.querySelector<HTMLElement>('[data-mcp-usage]');
+    const status = root?.querySelector<HTMLElement>('[data-usage-status]');
+    const tools = root?.querySelector<HTMLTableSectionElement>('[data-usage-tools]');
+    const clients = root?.querySelector<HTMLTableSectionElement>('[data-usage-clients]');
+    const resources = root?.querySelector<HTMLTableSectionElement>('[data-usage-resources]');
+    const prompts = root?.querySelector<HTMLTableSectionElement>('[data-usage-prompts]');
+    const count = new Intl.NumberFormat('fr-FR');
+    const percent = new Intl.NumberFormat('fr-FR', { style: 'percent', maximumFractionDigits: 1 });
+
+    function addRow(target: HTMLTableSectionElement | null | undefined, label: string, value: number) {
+      if (!target) return;
+      const row = document.createElement('tr');
+      const name = document.createElement('td');
+      const total = document.createElement('td');
+      name.textContent = label;
+      total.textContent = count.format(value);
+      row.append(name, total);
+      target.append(row);
+    }
+
+    function addEmpty(target: HTMLTableSectionElement | null | undefined, message: string) {
+      if (!target || target.children.length) return;
+      const row = document.createElement('tr');
+      const cell = document.createElement('td');
+      cell.colSpan = 2;
+      cell.textContent = message;
+      row.append(cell);
+      target.append(row);
+    }
+
+    try {
+      const response = await fetch('/api/mcp/usage', { headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error('usage_report_unavailable');
+      const report = await response.json();
+      if (!report.enabled) throw new Error('usage_collection_disabled');
+
+      for (const element of root?.querySelectorAll<HTMLElement>('[data-usage-stat]') ?? []) {
+        const key = element.dataset.usageStat ?? '';
+        const value = report.totals?.[key];
+        element.textContent = key.endsWith('_rate')
+          ? (typeof value === 'number' ? percent.format(value) : 'Indisponible')
+          : (typeof value === 'number' ? count.format(value) : 'Indisponible');
+      }
+
+      for (const row of (report.tools ?? []).slice(0, 10)) addRow(tools, row.name, row.count);
+      for (const row of (report.clients ?? []).slice(0, 10)) addRow(clients, row.family, row.count);
+      for (const row of (report.resources ?? []).slice(0, 10)) addRow(resources, row.family, row.count);
+      for (const row of (report.prompts ?? []).slice(0, 10)) addRow(prompts, row.name, row.count);
+      addEmpty(tools, 'Aucun appel agrégé à ce stade.');
+      addEmpty(clients, 'Cohortes encore inférieures au seuil public.');
+      addEmpty(resources, 'Aucune lecture agrégée à ce stade.');
+      addEmpty(prompts, 'Aucun rendu agrégé à ce stade.');
+
+      if (status) {
+        const freshness = report.updated_at
+          ? `Rapport mis à jour le ${new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(report.updated_at))}.`
+          : 'Instrumentation active, aucun événement agrégé à ce stade.';
+        status.textContent = report.storage_healthy === false
+          ? `${freshness} La dernière écriture de l’agrégat a échoué.`
+          : freshness;
+      }
+    } catch {
+      if (status) status.textContent = 'Le rapport d’usage est momentanément indisponible. Aucun chiffre de remplacement n’est estimé.';
+      for (const element of root?.querySelectorAll<HTMLElement>('[data-usage-stat]') ?? []) element.textContent = 'Indisponible';
+      addEmpty(tools, 'Rapport indisponible.');
+      addEmpty(clients, 'Rapport indisponible.');
+      addEmpty(resources, 'Rapport indisponible.');
+      addEmpty(prompts, 'Rapport indisponible.');
+    }
+  </script>
+
   <style>
     .agent-guide {
       max-width: 64rem;
@@ -262,6 +406,152 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
     .guide-section {
       margin-top: 3rem;
+    }
+
+    .usage-section {
+      border-bottom: 1px solid var(--color-line);
+      padding-bottom: 3rem;
+    }
+
+    .usage-title {
+      margin-top: 0.8rem;
+      color: var(--color-bright);
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      line-height: 1.15;
+    }
+
+    .usage-lede,
+    .usage-method {
+      margin-top: 0.8rem;
+      max-width: 52rem;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .usage-lede code,
+    .usage-method code,
+    .usage-tables code {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+    }
+
+    .usage-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .usage-cards article,
+    .usage-tables > section {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--color-surface) 54%, transparent);
+    }
+
+    .usage-cards article {
+      display: grid;
+      gap: 0.6rem;
+      min-width: 0;
+      padding: 1rem;
+    }
+
+    .usage-cards span {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .usage-cards strong {
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      line-height: 1;
+      overflow-wrap: anywhere;
+    }
+
+    .usage-status {
+      margin-top: 0.8rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .usage-tables {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.4rem;
+    }
+
+    .usage-tables > section {
+      min-width: 0;
+      padding: 1rem;
+    }
+
+    .usage-tables h3 {
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .usage-table-wrap {
+      margin-top: 0.65rem;
+      overflow-x: auto;
+    }
+
+    .usage-table-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+
+    .usage-table-wrap th,
+    .usage-table-wrap td {
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.55rem 0.4rem;
+      text-align: left;
+    }
+
+    .usage-table-wrap th {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .usage-table-wrap td {
+      color: var(--color-paper);
+      overflow-wrap: anywhere;
+    }
+
+    .usage-table-wrap th:last-child,
+    .usage-table-wrap td:last-child {
+      text-align: right;
+    }
+
+    .usage-method {
+      border-left: 2px solid color-mix(in srgb, var(--color-signal) 55%, transparent);
+      padding: 0.9rem 1rem;
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+    }
+
+    .usage-method a {
+      color: var(--color-signal);
+    }
+
+    @media (min-width: 720px) {
+      .usage-cards {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .usage-tables {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .surface-grid {

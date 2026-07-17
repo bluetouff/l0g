@@ -411,5 +411,20 @@ await expectReadResourceFailure('l0g://articles/article-inconnu');
 await expectReadResourceFailure('l0g://signals/signal-inconnu/current');
 await expectReadResourceFailure('l0g://methodologies/methodologie-inconnue');
 
+const usageUrl = `${URL_.replace(/\/$/, '')}/usage`;
+const usageResponse = await fetch(usageUrl, { headers: { Accept: 'application/json' } });
+if (!usageResponse.ok) throw new Error(`usage report HTTP ${usageResponse.status}`);
+const usage = await usageResponse.json();
+if (usage.schema_version !== '1.0.0' || usage.retention_days !== 91 || !usage.totals) {
+  throw new Error('usage report incomplet');
+}
+if (usage.enabled && (usage.totals.initializations < 1 || usage.totals.tool_calls < 1 || usage.totals.resource_reads < 1 || usage.totals.prompt_gets < 1)) {
+  throw new Error('usage report actif sans compteurs MCP attendus');
+}
+if (/ip|address|fingerprint|user.?agent/i.test(JSON.stringify(Object.keys(usage.measurement || {})))) {
+  throw new Error('usage report expose une dimension identifiante');
+}
+console.log('usage -> enabled:', usage.enabled, '| init:', usage.totals.initializations, '| tools:', usage.totals.tool_calls, '| resources:', usage.totals.resource_reads, '| prompts:', usage.totals.prompt_gets);
+
 await client.close();
 console.log('OK');

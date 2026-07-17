@@ -7,11 +7,12 @@
  * Sécurité :
  *   - écoute en 127.0.0.1 uniquement, exposé par Apache en HTTPS.
  *   - valide l'en-tête Host et l'Origin (anti DNS rebinding, exigé par la spec).
- *   - lecture seule : aucune écriture, slugs en allowlist, taille de corps bornée.
+ *   - corpus en lecture seule : slugs en allowlist, taille de corps bornée.
+ *   - télémétrie optionnelle limitée à des compteurs agrégés sans IP ni identifiant.
  *   - un serveur + un transport neufs par requête (mode stateless, isolation).
  *
  * Données : lues sur le disque, dans le site déjà déployé (Agent Surface, risk.json
- * et debt-risk.json générés au build), avec un petit cache TTL. Le texte complet d'un article est
+ * et debt-risk.json générés au build), avec un cache lié au répertoire réel de la release. Le texte complet d'un article est
  * extrait à la demande depuis le HTML construit.
  */
 import http from 'node:http';
@@ -24,11 +25,13 @@ import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
 import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
+import { createMcpUsageStore } from './usage-telemetry.mjs';
 
 // --- configuration (variables d'environnement, valeurs par défaut sûres) ---
 const HOST = process.env.MCP_HOST || '127.0.0.1';
 const PORT = parsePositiveInteger(process.env.MCP_PORT, 8848, { min: 1, max: 65535 });
 const MCP_PATH = process.env.MCP_PATH || '/mcp';
+const MCP_USAGE_PATH = process.env.MCP_USAGE_PATH || '';
 const DATA_DIR = process.env.L0G_DATA_DIR || '/var/www/html/l0g/current';
 const SITE = (process.env.L0G_SITE || 'https://l0g.fr').replace(/\/$/, '');
 const ALLOWED_HOSTS = new Set(
@@ -50,7 +53,7 @@ const ALLOWED_ORIGINS = new Set(
 const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.20.1';
+const MCP_VERSION = '1.20.2';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -99,6 +102,10 @@ const MCP_SERVER_INFO = {
   transport: 'streamable-http',
   path: MCP_PATH,
 };
+const usageStore = createMcpUsageStore({
+  path: MCP_USAGE_PATH,
+  onError: (error) => console.error('[l0g-mcp] usage telemetry failed', error?.message || error),
+});
 const NDJSON_FEEDS = {
   catalog: { path: 'api/v1/catalog.ndjson', role: 'catalogue complet pour ingestion RAG' },
   claims: { path: 'api/v1/claims.ndjson', role: 'claims typées avec références embarquées' },
@@ -132,7 +139,6 @@ setInterval(() => {
 
 // --- cache des données du site ---
 let cache = {
-  at: 0,
   dataDir: null,
   agent: null,
   openapi: null,
@@ -153,7 +159,6 @@ let cache = {
   confluence: null,
 };
 let searchIndexCache = {
-  at: 0,
   dataDir: null,
   index: null,
 };
@@ -171,7 +176,6 @@ async function readText(baseDir, rel) {
   return readFile(join(baseDir, rel), 'utf-8');
 }
 async function loadData() {
-  const now = Date.now();
   const dataDir = await resolveDataDir();
   // Les releases sont immuables et `current` bascule atomiquement vers un nouveau
   // répertoire réel. Tant que realpath(DATA_DIR) ne change pas, relire et parser
@@ -215,7 +219,7 @@ async function loadData() {
   try {
     confluence = await readJson(dataDir, 'confluence.json');
   } catch { /* confluence optionnelle */ }
-  cache = { at: now, dataDir, agent, openapi, catalog, searchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
+  cache = { dataDir, agent, openapi, catalog, searchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence };
   return cache;
 }
 
@@ -356,7 +360,6 @@ async function readSearchDocument(dataDir, candidate) {
   };
 }
 async function buildSearchIndex(dataDir, catalog, sharedSearchIndex) {
-  const now = Date.now();
   if (searchIndexCache.index && searchIndexCache.dataDir === dataDir) {
     return searchIndexCache.index;
   }
@@ -410,7 +413,7 @@ async function buildSearchIndex(dataDir, catalog, sharedSearchIndex) {
       });
     }
   }
-  searchIndexCache = { at: now, dataDir, index };
+  searchIndexCache = { dataDir, index };
   return index;
 }
 function rankSearchDocument(doc, tokens, queryNorm) {
@@ -2773,6 +2776,7 @@ const httpServer = http.createServer(async (req, res) => {
           claimsVersion: data.claims?.version || null,
           claimsGenerated: data.claims?.generated || null,
         },
+        usage: usageStore.status(),
       });
     } catch (error) {
       console.error('[l0g-mcp] healthz failed', error);
@@ -2784,9 +2788,22 @@ const httpServer = http.createServer(async (req, res) => {
     }
   }
 
-  if (url.pathname !== MCP_PATH) return send(res, 404, { error: 'not found' });
+  const usageEndpoint = `${MCP_PATH.replace(/\/$/, '')}/usage`;
+  if (url.pathname !== MCP_PATH && url.pathname !== usageEndpoint) return send(res, 404, { error: 'not found' });
   if (!hostAllowed(req)) return send(res, 421, { error: 'host non autorisé' });
   if (!originAllowed(req)) return send(res, 403, { error: 'origin non autorisée' });
+
+  if (url.pathname === usageEndpoint) {
+    if (req.method !== 'GET') return send(res, 405, { error: 'method not allowed' }, { Allow: 'GET' });
+    try {
+      return send(res, 200, await usageStore.publicReport(), {
+        'Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
+      });
+    } catch (error) {
+      console.error('[l0g-mcp] usage report failed', error?.message || error);
+      return send(res, 503, { error: 'usage report unavailable' });
+    }
+  }
 
   const contentLength = Number(req.headers['content-length']);
   if (Number.isFinite(contentLength) && contentLength > MAX_BODY) {
@@ -2837,6 +2854,9 @@ const httpServer = http.createServer(async (req, res) => {
         enableJsonResponse: true, // réponse JSON, pas de SSE
       });
       res.on('close', () => { transport.close(); server.close(); });
+      res.on('finish', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) usageStore.recordRpc(body);
+      });
       await server.connect(transport);
       await transport.handleRequest(req, res, body);
     } catch (e) {
@@ -2853,3 +2873,24 @@ httpServer.listen(PORT, HOST, () => {
   httpServer.keepAliveTimeout = MCP_KEEP_ALIVE_TIMEOUT;
   console.error(`[l0g-mcp] écoute sur http://${HOST}:${PORT}${MCP_PATH} — données : ${DATA_DIR}`);
 });
+
+let shuttingDown = false;
+async function shutdown(signal) {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  const deadline = setTimeout(() => process.exit(1), 5_000);
+  deadline.unref();
+  try {
+    await new Promise((resolve, reject) => {
+      httpServer.close((error) => error ? reject(error) : resolve());
+    });
+    await usageStore.flush();
+    clearTimeout(deadline);
+  } catch (error) {
+    console.error(`[l0g-mcp] arrêt ${signal} incomplet`, error?.message || error);
+    process.exitCode = 1;
+  }
+}
+
+process.once('SIGINT', () => void shutdown('SIGINT'));
+process.once('SIGTERM', () => void shutdown('SIGTERM'));

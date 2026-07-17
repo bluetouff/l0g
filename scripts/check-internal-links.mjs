@@ -16,7 +16,7 @@ const DIST = 'dist';
 
 // Endpoints servis au runtime par le serveur (pas générés dans dist/).
 // À maintenir à la main ; garder au strict minimum.
-const RUNTIME_ENDPOINTS = new Set(['/api/mcp']);
+const RUNTIME_ENDPOINTS = new Set(['/api/mcp', '/api/mcp/usage']);
 
 function walkFiles(dir, out = []) {
   for (const name of readdirSync(dir)) {

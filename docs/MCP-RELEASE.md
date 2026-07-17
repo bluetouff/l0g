@@ -137,3 +137,27 @@ curl -fsS http://127.0.0.1:8848/healthz
 
 La purge ne conserve que cinq releases, tout en protégeant la version courante et la cible de
 rollback. Un downgrade automatique est refusé.
+
+## Activation unique des statistiques anonymisées (1.20.2+)
+
+La release contient l'unité systemd déclarant une `StateDirectory` privée. Après que le poller a
+activé `1.20.2` ou une version ultérieure, installer cette unité une fois pour rendre l'agrégat
+persistant. Le corpus et le runtime restent en lecture seule ; seul `/var/lib/l0g-mcp/usage.json`
+est inscriptible par le `DynamicUser` du service.
+
+```bash
+STAMP="$(date +%Y%m%d%H%M%S)"
+sudo cp -a /etc/systemd/system/l0g-mcp.service \
+  "/etc/systemd/system/l0g-mcp.service.bak-${STAMP}"
+sudo install -m 0644 \
+  /opt/l0g-mcp-runtime/current/mcp-server/deploy/l0g-mcp.service \
+  /etc/systemd/system/l0g-mcp.service
+sudo systemctl daemon-reload
+sudo systemctl restart l0g-mcp.service
+sudo systemctl status l0g-mcp.service --no-pager
+curl -fsS http://127.0.0.1:8848/healthz
+curl -fsS http://127.0.0.1:8848/mcp/usage
+```
+
+Le health doit annoncer `usage.enabled: true` et `storageHealthy: true`. Le rapport public ne
+doit contenir ni adresse réseau, ni user-agent, ni identifiant de session ou d'appelant.

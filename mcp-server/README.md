@@ -53,10 +53,15 @@ agent / client MCP
 - Les données proviennent du **site déjà déployé** : `agents.json`, `catalog.json`,
   `search-index.json`, `claims.json`, `evidence-graph.json`, `sources.json`, `freshness.json`, `integrity.json`,
   `changes.json`, `risk-diff.json`, `black-box.json`, leurs variantes NDJSON, `openapi.json`, `risk.json`, `debt-risk.json`,
-  `risk-events.json` et `confluence.json`. Le service ne fait que **lire** ces fichiers,
-  avec un cache TTL de 60 s.
+  `risk-events.json` et `confluence.json`. Le service ne fait que **lire** ces fichiers.
+  Le cache est lié au répertoire réel de la release atomique : il est conservé tant que le
+  symlink `current` pointe sur la même release, puis rechargé après la bascule.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
   transport neufs par requête.
+- Un agrégat MCP séparé compte initialisations, tools, familles de resources, prompts et
+  familles fermées issues de `clientInfo`. Il n'utilise aucune IP, session, empreinte,
+  chaîne user-agent ni valeur libre persistante. Les écritures atomiques sont regroupées
+  hors du chemin de réponse MCP et vidées proprement à l'arrêt. Rapport public : `/api/mcp/usage`.
 
 ## Resources exposées
 
@@ -183,8 +188,11 @@ Les resources inexistantes renvoient une erreur protocolaire MCP, pas un documen
 
 - Écoute **127.0.0.1** uniquement ; TLS et exposition gérés par Apache.
 - **Validation Host et Origin** sur chaque requête (anti DNS rebinding, exigé par la spec).
-- **Lecture seule** : aucune écriture disque, slugs en **allowlist** (le path traversal
-  est rejeté), taille de corps bornée à 1 Mo.
+- **Corpus en lecture seule** : aucune donnée éditoriale n'est modifiée, les slugs sont en
+  **allowlist** (le path traversal est rejeté) et la taille du corps est bornée à 1 Mo.
+- **Télémétrie minimale** : seule la `StateDirectory` systemd reçoit un agrégat sur 91 jours,
+  sans IP, cookie, session, empreinte ou user-agent. Les familles client sous cinq
+  initialisations sont masquées dans le rapport public.
 - **Rate limit** par IP (120 req/min par défaut, via `X-Forwarded-For` posé par Apache).
 - Apache reverse-proxy : `LimitRequestBody` aligné à 1 Mo, entêtes de sécurité sur réponse,
   timeout applicatif 30 s, keepalive proxy désactivé sur l’endpoint.
@@ -219,7 +227,8 @@ daemon n'ouvrent aucun port entrant de déploiement et n'utilisent aucun token G
 ### 3. Test à blanc d'une source locale
 
 ```bash
-L0G_DATA_DIR=/var/www/html/l0g/current node server.mjs &
+L0G_DATA_DIR=/var/www/html/l0g/current \
+MCP_USAGE_PATH=/tmp/l0g-mcp-usage-test.json node server.mjs &
 curl -s http://127.0.0.1:8848/healthz       # -> versions MCP/Agent Surface, SHA et fraîcheur chargée
 node test-client.mjs                          # liste les tools et teste chaque appel
 # le script force l'en-tête Accept requis par le Streamable HTTP :
@@ -282,8 +291,8 @@ sur `https://l0g.fr/api/mcp`.
 
 ## Mises à jour
 
-- **Données** (nouvel article, indices) : automatique. Le site se redéploie, le service
-  relit `catalog.json`, `risk.json` et `debt-risk.json` au plus tard 60 s après.
+- **Données** (nouvel article, indices) : automatique. Le site se redéploie et la bascule
+  atomique vers un nouveau répertoire invalide immédiatement le cache du service.
 - **Code du serveur** : automatique après un tag `mcp-vX.Y.Z`. Le workflow construit une
   archive versionnée avec SBOM, l'atteste par OIDC, la publie en GitHub Release, attend le
   déploiement atomique de `zen`, puis publie le manifeste dans le MCP Registry par OIDC.
@@ -298,6 +307,7 @@ sur `https://l0g.fr/api/mcp`.
 | `MCP_HOST` | `127.0.0.1` | interface d'écoute |
 | `MCP_PORT` | `8848` | port local |
 | `MCP_PATH` | `/mcp` | chemin de l'endpoint |
+| `MCP_USAGE_PATH` | absent | fichier privé de compteurs agrégés ; `/var/lib/l0g-mcp/usage.json` en production |
 | `L0G_DATA_DIR` | `/var/www/html/l0g/current` | racine du site déployé (lecture) |
 | `L0G_SITE` | `https://l0g.fr` | base des URL renvoyées |
 | `MCP_ALLOWED_HOSTS` | `l0g.fr,127.0.0.1,localhost` | en-têtes Host acceptés |

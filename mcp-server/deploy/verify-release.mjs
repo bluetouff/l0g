@@ -46,8 +46,10 @@ if ([manifest.version, packageJson.version, packageLock.packages?.['']?.version]
 const requiredFiles = [
   'server.json',
   'mcp-server/server.mjs',
+  'mcp-server/usage-telemetry.mjs',
   'mcp-server/package.json',
   'mcp-server/package-lock.json',
+  'mcp-server/deploy/l0g-mcp.service',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
   'LICENSE',

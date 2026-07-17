@@ -106,13 +106,13 @@ const appLd = {
       MCP <span style="color: var(--color-accent)">server</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
-      l0g exposes its data to AI agents through the Model Context Protocol, read-only. An agent can query Agent Surface, the OpenAPI contract, NDJSON feeds, Risk Diff, Black Box Recorder, claims, the evidence graph, sources, freshness, integrity, changefeed, signal history or full article text without scraping the site. No key, no authentication, no tracking.
+      l0g exposes its data to AI agents through the Model Context Protocol, read-only. An agent can query Agent Surface, the OpenAPI contract, NDJSON feeds, Risk Diff, Black Box Recorder, claims, the evidence graph, sources, freshness, integrity, changefeed, signal history or full article text without scraping the site. No key or authentication. Usage measurement is aggregated without IP addresses, cookies, sessions, fingerprints or user-agent strings in MCP telemetry.
     </p>
     <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-muted">
-      <strong class="text-signal">Status verified on 17 July 2026:</strong>
-      the repository, the <code>mcp-v1.20.0</code> release, the Registry and the public
-      endpoint are aligned on <code>1.20.0</code>. The daemon exposes the attested
-      <code>478d5e44</code> SHA, and the catalog below describes the contract actually served.
+      <strong class="text-signal">Repository target on 17 July 2026:</strong>
+      <code>1.20.2</code>, with release caching and anonymous usage statistics. The version and SHA
+      actually running remain available through <code>l0g://mcp/server</code>; repository and runtime
+      are only considered aligned after the attested release is published.
     </div>
     <p class="mono-label mt-4"><a class="link-term" href="/mcp/">Version française →</a></p>
   </section>
@@ -134,12 +134,13 @@ const appLd = {
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoint</h2>
       <p class="mt-3 text-paper">Streamable HTTP transport, request/response JSON mode.</p>
       <pre class="mcp-code mt-3"><code>{ENDPOINT}</code></pre>
+      <p class="mt-2 text-muted">Aggregated public report: <a class="link-term text-signal" href="/api/mcp/usage"><code>/api/mcp/usage</code></a>. Definitions and limitations are documented on the <a class="link-term text-signal" href="/agents/">agents page</a>.</p>
       <p class="mt-2 text-muted">Read-only. The code and deployment procedure are public in the GitHub repository.</p>
     </div>
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// resources</h2>
-      <p class="mt-3 max-w-2xl text-paper">Documents and datasets are exposed as MCP resources. Agents can list resources with <code>resources/list</code>, read them with <code>resources/read</code>, and discover parameterized URIs with <code>resources/templates/list</code>. The code prepared for the next MCP release caps the list at the ten static resources so clients do not load the entire catalog into context; the public endpoint remains on <code>1.20.0</code> until that immutable release is published.</p>
+      <p class="mt-3 max-w-2xl text-paper">Documents and datasets are exposed as MCP resources. Agents can list resources with <code>resources/list</code>, read them with <code>resources/read</code>, and discover parameterized URIs with <code>resources/templates/list</code>. The list is capped at ten static resources so clients do not load the entire catalog into context.</p>
       <div class="mcp-table mt-3"><table><thead><tr><th>URI</th><th>Content</th></tr></thead><tbody>{resources.map(([uri, desc]) => (<tr><td><code>{uri}</code></td><td>{desc}</td></tr>))}</tbody></table></div>
     </div>
 

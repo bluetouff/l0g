@@ -68,6 +68,24 @@ const updated = '17 juillet 2026';
         </ul>
       </article>
 
+      <article class="leak card" style="--c: var(--color-accent)">
+        <span class="leak-h">Statistiques d’usage du serveur MCP</span>
+        <p class="leak-d">
+          Le serveur MCP produit des compteurs techniques agrégés sur les initialisations, les
+          tools appelés, les familles de resources lues et les prompts rendus. Lorsqu’un client
+          déclare <code class="rgpd-code">clientInfo.name</code>, ce nom libre est immédiatement
+          classé dans une liste fermée de familles connues ou dans la catégorie
+          <code class="rgpd-code">other</code>. Le nom d’origine et sa version ne sont pas écrits.
+        </p>
+        <ul class="leak-sub">
+          <li><strong class="text-bright">Données exclues :</strong> aucune IP, adresse réseau, empreinte, session, cookie ou chaîne user-agent n’entre dans l’agrégat MCP ;</li>
+          <li><strong class="text-bright">Finalité :</strong> mesurer l’usage, la qualité et l’adoption de l’interface publique MCP ;</li>
+          <li><strong class="text-bright">Base légale :</strong> intérêt légitime de l’opérateur à maintenir et mesurer son service public ;</li>
+          <li><strong class="text-bright">Durée :</strong> fenêtre glissante de 91 jours ;</li>
+          <li><strong class="text-bright">Publication :</strong> les familles de clients sous cinq initialisations sont masquées ; aucun utilisateur ou appelant récurrent n’est estimé.</li>
+        </ul>
+      </article>
+
       <article class="leak card" style="--c: #7aa2f7">
         <span class="leak-h">Prise de contact</span>
         <p class="leak-d">
