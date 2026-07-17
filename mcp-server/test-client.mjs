@@ -89,7 +89,17 @@ for (const required of [
 }
 
 const { resources } = await client.listResources();
-console.log('RESOURCES:', resources.length, '| #1:', resources[0]?.uri);
+const resourcesListBytes = Buffer.byteLength(JSON.stringify({ resources }), 'utf8');
+if (resources.length > 20 || resourcesListBytes > 12_000) {
+  throw new Error(`resources/list trop volumineux: ${resources.length} ressources, ${resourcesListBytes} octets`);
+}
+for (const resource of resources) {
+  if (/^l0g:\/\/(?:articles|en\/articles|guides|en\/guides|claims|sources|methodologies)\//.test(resource.uri)
+    || /^l0g:\/\/signals\/[^/]+\/current$/.test(resource.uri)) {
+    throw new Error(`resources/list matérialise encore une instance de template: ${resource.uri}`);
+  }
+}
+console.log('RESOURCES:', resources.length, '| bytes:', resourcesListBytes, '| #1:', resources[0]?.uri);
 for (const required of ['l0g://mcp/server', 'l0g://freshness', 'l0g://integrity', 'l0g://changes/latest', 'l0g://risk-diff', 'l0g://black-box', 'l0g://signals/current', 'l0g://signals/history']) {
   if (!resources.some((resource) => resource.uri === required)) throw new Error(`resource manquante: ${required}`);
 }
@@ -127,6 +137,14 @@ for (const required of [
 ]) {
   if (!resourceTemplates.some((template) => template.uriTemplate === required)) throw new Error(`resource template manquant: ${required}`);
 }
+const articleCompletion = await client.complete({
+  ref: { type: 'ref/resource', uri: 'l0g://articles/{slug}' },
+  argument: { name: 'slug', value: 'economie-des-' },
+});
+if (!articleCompletion.completion.values.includes('economie-des-intentions')) {
+  throw new Error('completion article perdue après bornage de resources/list');
+}
+console.log('RESOURCE_COMPLETION:', articleCompletion.completion.values.slice(0, 3).join(', '));
 
 const freshnessResource = await client.readResource({ uri: 'l0g://freshness' });
 console.log('readResource(freshness) -> contents:', freshnessResource.contents?.length);

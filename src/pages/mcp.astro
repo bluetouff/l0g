@@ -197,7 +197,10 @@ const appLd = {
       <p class="mt-3 max-w-2xl text-paper">
         Les documents et datasets sont exposés comme ressources MCP. Les agents peuvent les lister
         avec <code>resources/list</code>, lire leur contenu avec <code>resources/read</code>, et
-        découvrir les URI paramétrées avec <code>resources/templates/list</code>.
+        découvrir les URI paramétrées avec <code>resources/templates/list</code>. Le code préparé
+        pour la prochaine release MCP borne la liste aux dix ressources statiques afin de ne pas
+        charger tout le catalogue dans le contexte ; l'endpoint public reste en <code>1.20.0</code>
+        jusqu'à la publication de cette release immuable.
       </p>
       <div class="mcp-table mt-3">
         <table>
@@ -234,7 +237,8 @@ const appLd = {
         </table>
       </div>
       <p class="mt-3 max-w-2xl text-muted">
-        Les templates énumèrent les instances connues et proposent des complétions de variables.
+        Les templates décrivent les familles de ressources et proposent des complétions de variables.
+        Les instances se découvrent de façon ciblée avec les tools de recherche et de filtrage.
         Le service public actuel reste stateless et n'annonce pas de souscriptions live :
         la veille opérationnelle passe par <code>l0g://changes/latest</code> ou
         <code>get_changefeed</code>.

@@ -983,9 +983,6 @@ function resourceJson(uri, payload) {
 function uriValue(value) {
   return decodeURIComponent(String(value || '').trim());
 }
-function resourceSummary(uri, name, description, mimeType = 'application/json') {
-  return { uri, name, description, mimeType };
-}
 function summarizeOpenapi(openapi, path) {
   const paths = openapi.paths || {};
   const selectedPaths = path ? Object.fromEntries(Object.entries(paths).filter(([key]) => key === path)) : paths;
@@ -1462,13 +1459,6 @@ function buildServer(data) {
   server.registerResource(
     'article',
     new ResourceTemplate('l0g://articles/{slug}', {
-      list: async () => ({
-        resources: articlesFr.map((article) => resourceSummary(
-          `l0g://articles/${encodeURIComponent(article.slug)}`,
-          article.title,
-          article.description,
-        )),
-      }),
       complete: { slug: (value) => articlesFr.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
@@ -1508,7 +1498,6 @@ function buildServer(data) {
   server.registerResource(
     'article-en',
     new ResourceTemplate('l0g://en/articles/{slug}', {
-      list: async () => ({ resources: articlesEn.map((article) => resourceSummary(`l0g://en/articles/${encodeURIComponent(article.slug)}`, article.title, article.description)) }),
       complete: { slug: (value) => articlesEn.map((article) => article.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     { title: 'English article', description: 'Published English l0g analysis with canonical French evidence references.', mimeType: 'application/json' },
@@ -1536,13 +1525,6 @@ function buildServer(data) {
   server.registerResource(
     'guide',
     new ResourceTemplate('l0g://guides/{slug}', {
-      list: async () => ({
-        resources: guidesFr.map((guide) => resourceSummary(
-          `l0g://guides/${encodeURIComponent(guide.slug)}`,
-          guide.title,
-          guide.description,
-        )),
-      }),
       complete: { slug: (value) => guidesFr.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {
@@ -1582,7 +1564,6 @@ function buildServer(data) {
   server.registerResource(
     'guide-en',
     new ResourceTemplate('l0g://en/guides/{slug}', {
-      list: async () => ({ resources: guidesEn.map((guide) => resourceSummary(`l0g://en/guides/${encodeURIComponent(guide.slug)}`, guide.title, guide.description)) }),
       complete: { slug: (value) => guidesEn.map((guide) => guide.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     { title: 'English guide', description: 'Published English l0g reference guide.', mimeType: 'application/json' },
@@ -1610,13 +1591,6 @@ function buildServer(data) {
   server.registerResource(
     'claim',
     new ResourceTemplate('l0g://claims/{claim_id}', {
-      list: async () => ({
-        resources: claimsList.map((claim) => resourceSummary(
-          `l0g://claims/${encodeURIComponent(claim.id)}`,
-          claim.claim.slice(0, 90),
-          `${claim.kind} · ${claim.articleTitle}`,
-        )),
-      }),
       complete: { claim_id: (value) => claimsList.map((claim) => claim.id).filter((id) => id.startsWith(value)).slice(0, 20) },
     }),
     {
@@ -1635,20 +1609,6 @@ function buildServer(data) {
   server.registerResource(
     'source',
     new ResourceTemplate('l0g://sources/{source_id}', {
-      list: async () => ({
-        resources: [
-          ...primarySources.map((source) => resourceSummary(
-            `l0g://sources/${encodeURIComponent(source.slug)}`,
-            source.shortName || source.name,
-            source.description,
-          )),
-          ...referenceHosts.map((host) => resourceSummary(
-            `l0g://sources/${encodeURIComponent(host.host)}`,
-            host.host,
-            `${host.references} référence(s), ${host.articles} article(s)`,
-          )),
-        ],
-      }),
       complete: {
         source_id: (value) => [
           ...primarySources.map((source) => source.slug),
@@ -1672,13 +1632,6 @@ function buildServer(data) {
   server.registerResource(
     'signal-current',
     new ResourceTemplate('l0g://signals/{instrument}/current', {
-      list: async () => ({
-        resources: Object.keys(signals).map((instrument) => resourceSummary(
-          `l0g://signals/${encodeURIComponent(instrument)}/current`,
-          `${instrument} current signal`,
-          `Signal courant ${instrument}`,
-        )),
-      }),
       complete: { instrument: (value) => Object.keys(signals).filter((key) => key.startsWith(value)).slice(0, 20) },
     }),
     {
@@ -1703,13 +1656,6 @@ function buildServer(data) {
   server.registerResource(
     'methodology',
     new ResourceTemplate('l0g://methodologies/{instrument}', {
-      list: async () => ({
-        resources: methodologies.map((methodology) => resourceSummary(
-          `l0g://methodologies/${encodeURIComponent(methodology.slug)}`,
-          methodology.title,
-          methodology.description,
-        )),
-      }),
       complete: { instrument: (value) => methodologies.map((item) => item.slug).filter((slug) => slug.startsWith(value)).slice(0, 20) },
     }),
     {

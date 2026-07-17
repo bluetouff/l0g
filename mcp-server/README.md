@@ -51,6 +51,7 @@ aux opérations de recherche, filtrage et synthèse.
 | URI | Contenu |
 |-----|---------|
 | `l0g://agent-manifest` | manifeste Agent Surface |
+| `l0g://mcp/server` | version, SHA et transport du serveur MCP actif |
 | `l0g://openapi` | contrat OpenAPI complet |
 | `l0g://freshness` | fraîcheur du corpus |
 | `l0g://integrity` | empreintes SHA-256 canoniques |
@@ -81,8 +82,13 @@ aux opérations de recherche, filtrage et synthèse.
 | `l0g://signals/{instrument}/current` | signal courant + historique de franchissement |
 | `l0g://methodologies/{instrument}` | fiche méthodologique |
 
-`resources/list` énumère aussi les instances connues via les templates. Les variables principales
-ont des callbacks de complétion. Le service public actuel est stateless en requête/réponse et
+Le code préparé après la release publique `1.20.0` borne volontairement `resources/list` aux dix
+resources statiques afin de ne pas injecter le catalogue entier dans le contexte des clients. Ce
+changement entrera en production avec la prochaine release MCP immuable. Les articles, guides,
+claims, sources, signaux et méthodologies restent lisibles par URI via les templates ;
+`resources/templates/list` les découvre et les variables principales conservent leurs callbacks
+de complétion. Les tools de recherche et de filtrage fournissent la découverte ciblée. Le service
+public actuel est stateless en requête/réponse et
 n’annonce pas `resources.subscribe` ni `resources.listChanged` : pour surveiller le corpus, lire
 `l0g://changes/latest` ou appeler `get_changefeed`.
 

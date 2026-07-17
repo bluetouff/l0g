@@ -139,14 +139,14 @@ const appLd = {
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// resources</h2>
-      <p class="mt-3 max-w-2xl text-paper">Documents and datasets are exposed as MCP resources. Agents can list resources with <code>resources/list</code>, read them with <code>resources/read</code>, and discover parameterized URIs with <code>resources/templates/list</code>.</p>
+      <p class="mt-3 max-w-2xl text-paper">Documents and datasets are exposed as MCP resources. Agents can list resources with <code>resources/list</code>, read them with <code>resources/read</code>, and discover parameterized URIs with <code>resources/templates/list</code>. The code prepared for the next MCP release caps the list at the ten static resources so clients do not load the entire catalog into context; the public endpoint remains on <code>1.20.0</code> until that immutable release is published.</p>
       <div class="mcp-table mt-3"><table><thead><tr><th>URI</th><th>Content</th></tr></thead><tbody>{resources.map(([uri, desc]) => (<tr><td><code>{uri}</code></td><td>{desc}</td></tr>))}</tbody></table></div>
     </div>
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// resource templates</h2>
       <div class="mcp-table mt-3"><table><thead><tr><th>Template</th><th>Content</th></tr></thead><tbody>{templates.map(([uri, desc]) => (<tr><td><code>{uri}</code></td><td>{desc}</td></tr>))}</tbody></table></div>
-      <p class="mt-3 max-w-2xl text-muted">Templates enumerate known instances and propose variable completions. The public service is stateless and does not advertise live subscriptions; monitoring goes through <code>l0g://changes/latest</code> or <code>get_changefeed</code>.</p>
+      <p class="mt-3 max-w-2xl text-muted">Templates describe resource families and propose variable completions. Targeted search and filtering tools discover individual instances. The public service is stateless and does not advertise live subscriptions; monitoring goes through <code>l0g://changes/latest</code> or <code>get_changefeed</code>.</p>
     </div>
 
     <div>
