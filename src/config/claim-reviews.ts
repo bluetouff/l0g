@@ -6,7 +6,7 @@ export type ClaimReviewEntry = {
   claimId: string;
   reviewedAt: string;
   reviewedBy: string;
-  kind?: ClaimKind;
+  kind?: ClaimKind | 'unclassified-assertion';
   note: string;
   proofDepth?: Extract<EvidenceDepth['id'], 'direct-proof' | 'reproduction'>;
   evidenceLocator?: {
@@ -20,8 +20,12 @@ export type ClaimReviewEntry = {
 };
 
 const rawEntries = registryData.entries as ClaimReviewEntry[];
-const entries = rawEntries.map((entry) => ({ ...entry, status: entry.status === 'canonical' ? 'canonical' as const : 'legacy' as const }));
-const canonicalEntries = entries.filter((entry) => entry.status === 'canonical');
+const entries = rawEntries.map((entry) => entry.status === 'canonical'
+  ? { ...entry, status: 'canonical' as const }
+  : { ...entry, status: 'legacy' as const, kind: undefined });
+const canonicalEntries = entries.filter((entry) => entry.status === 'canonical') as Array<
+  Omit<ClaimReviewEntry, 'kind' | 'status'> & { status: 'canonical'; kind: ClaimKind }
+>;
 const legacyEntries = entries.filter((entry) => entry.status === 'legacy');
 const canonicalKinds = new Set<ClaimKind>(['fait', 'estimation', 'inférence', 'scénario']);
 const canonicalByArticle = new Map<string, number>();
@@ -47,7 +51,7 @@ export const claimReviewRegistry = {
   version: registryData.version,
   updated: registryData.updated,
   policy:
-    'Une claim ne devient reviewed que si son entrée status=canonical contient un type explicite, une source et sa date, un locator exact et une profondeur direct-proof ou reproduction. Les anciennes revues restent publiées comme legacy mais ne certifient plus les claims. Maximum trois claims canoniques par analyse.',
+    'Une claim ne devient reviewed que si son entrée status=canonical contient un type explicite, une source et sa date, un locator exact et une profondeur direct-proof ou reproduction. Les anciennes revues restent publiées comme legacy mais ne certifient plus les claims. La surface sélectionne au maximum trois claims structurants typés par analyse.',
   entries,
   canonicalEntries,
   legacyEntries,

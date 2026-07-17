@@ -11,7 +11,7 @@ const primaryShown = evidence.primary.slice(0, 6);
 const secondaryShown = evidence.secondary.slice(0, 8);
 const dataShown = evidence.internalData.slice(0, 6);
 const contextShown = evidence.context.slice(0, 10);
-const claimsShown = evidence.claims.slice(0, 12);
+const claimsShown = evidence.claims.slice(0, 3);
 const badges = evidence.badges;
 const depth = evidence.depth;
 const depthMode = depth.automated ? 'Profondeur automatique' : 'Profondeur relue';
@@ -20,7 +20,6 @@ const claimTone: Record<string, string> = {
   estimation: 'claim-estimate',
   inférence: 'claim-inference',
   scénario: 'claim-scenario',
-  'unclassified-assertion': 'claim-unclassified',
 };
 ---
 
@@ -402,7 +401,6 @@ const claimTone: Record<string, string> = {
   .claim-estimate .claim-top span { color: var(--color-amber); }
   .claim-inference .claim-top span { color: var(--color-accent); }
   .claim-scenario .claim-top span { color: #7aa2f7; }
-  .claim-unclassified .claim-top span { color: var(--color-muted); }
   .claim-top .review-badge {
     border: 1px solid color-mix(in srgb, var(--color-amber) 42%, transparent);
     border-radius: 999px;

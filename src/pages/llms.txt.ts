@@ -84,7 +84,7 @@ export const GET: APIRoute = async () => {
     `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
   );
   lines.push(
-    `- [Agent Surface v1.14.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, claims sourcées, séries de risque nommées et versionnées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
+    `- [Agent Surface v1.15.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, trois claims structurants typés maximum par article, séries de risque nommées et versionnées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -115,7 +115,7 @@ export const GET: APIRoute = async () => {
     `- Garde-fou precision: ${editorialProtocol.precisionGuard.summary} Exigences: ${editorialProtocol.precisionGuard.requirements.join(', ')}. ${editorialProtocol.precisionGuard.warning}`
   );
   lines.push(
-    `- Relations affirmation-source: les articles backfillent les passages référencés en fait revu, estimation, inférence, scénario ou assertion non classée ; chaque référence exposée est cliquable et datée.`
+    `- Relations affirmation-source: chaque article expose au maximum trois claims structurants, classés en fait, estimation, inférence ou scénario ; le type heuristique reste distinct d’une revue canonique et chaque référence exposée est cliquable et datée.`
   );
   lines.push(
     `- Politique de correction: ${editorialProtocol.correctionPolicy.summary}`

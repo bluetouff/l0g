@@ -113,10 +113,13 @@ validateOpenapiArtifacts();
 assert(claims.policy?.classification, 'claims.policy.classification manquant');
 assert(claims.policy?.review, 'claims.policy.review manquant');
 assert(claims.policy?.dateModel, 'claims.policy.dateModel manquant');
+assert(claims.policy?.selection, 'claims.policy.selection manquant');
+assert(claims.policy?.maxClaimsPerArticle === 3, 'claims.policy.maxClaimsPerArticle doit valoir 3');
 assert(claims.reviewRegistry?.version, 'claims.reviewRegistry.version manquant');
 assert(typeof claims.counts?.reviewedClaims === 'number', 'claims.counts.reviewedClaims manquant');
 assert(typeof claims.reviewRegistry?.legacyReviews === 'number', 'claims.reviewRegistry.legacyReviews manquant');
-assert((claims.counts?.claimKinds || []).includes('unclassified-assertion'), 'claimKinds ne declare pas unclassified-assertion');
+assert((claims.counts?.claimKinds || []).every((kind) => ['fait', 'estimation', 'inférence', 'scénario'].includes(kind)), 'claimKinds contient un type non classé');
+assert(!(claims.counts?.claimKinds || []).includes('unclassified-assertion'), 'claimKinds expose encore unclassified-assertion');
 assert(claims.counts?.articlesByLanguage?.en === 0, 'claims.json ne doit pas dupliquer les claims anglaises');
 assert((claims.claims || []).every((claim) => claim.language === 'fr'), 'une claim non canonique française a été publiée');
 assert((claims.claims || []).every((claim) => claim.reviewStatus !== 'reviewed' || (
@@ -180,13 +183,15 @@ assert(llmsFull.includes('Corpus anglais distinct : https://l0g.fr/llms-full-en.
 assert(!llmsFull.includes('ENGLISH ANALYSIS :'), 'llms-full.txt gonflé par le corpus anglais');
 
 const claimIds = new Set();
+const claimsByArticle = new Map();
 for (const claim of claims.claims || []) {
   assert(!claimIds.has(claim.id), `claim id duplique: ${claim.id}`);
   claimIds.add(claim.id);
   assert(claim.reviewStatus === 'unreviewed' || claim.reviewStatus === 'reviewed', `reviewStatus invalide: ${claim.id}`);
-  assert(claim.classifier?.method === 'lexical-heuristic-v1', `classifier manquant: ${claim.id}`);
-  assert(claim.classifier?.matchedRule !== 'default-fact', `default-fact interdit: ${claim.id}`);
-  assert(claim.kind !== 'fait' || claim.reviewStatus === 'reviewed', `fait automatique interdit sans revue: ${claim.id}`);
+  assert(claim.classifier?.method === 'lexical-heuristic-v2', `classifier manquant: ${claim.id}`);
+  assert(['scenario-marker', 'estimate-marker', 'inference-marker', 'cited-fact-default'].includes(claim.classifier?.matchedRule), `règle de classification invalide: ${claim.id}`);
+  assert(['fait', 'estimation', 'inférence', 'scénario'].includes(claim.kind), `claim non classée: ${claim.id}`);
+  claimsByArticle.set(claim.articleSlug, (claimsByArticle.get(claim.articleSlug) || 0) + 1);
   assert(!/:claim-\d+$/.test(claim.id), `claim id positionnel instable: ${claim.id}`);
   assert(!/^sources?\s+principales?\b/iu.test(claim.claim), `section bibliographique extraite en claim: ${claim.id}`);
   assert(!/^(?:pour le contexte|voir aussi|lire aussi|lire également|à lire aussi|a lire aussi|voir également|for context|see also|read also|further reading|related reading)\b/iu.test(claim.claim), `phrase navigationnelle extraite en claim: ${claim.id}`);
@@ -214,6 +219,7 @@ for (const claim of claims.claims || []) {
     }
   }
 }
+assert([...claimsByArticle.values()].every((count) => count <= 3), 'plus de trois claims structurantes sur une analyse');
 
 // claim-review-registry-integrity
 const reviewEntries = claims.reviewRegistry?.entries || [];
@@ -221,8 +227,9 @@ const reviewIds = new Set();
 for (const review of reviewEntries) {
   assert(!reviewIds.has(review.claimId), `review dupliquee: ${review.claimId}`);
   reviewIds.add(review.claimId);
-  assert(claimIds.has(review.claimId), `review orpheline: ${review.claimId}`);
+  if (review.status === 'canonical') assert(claimIds.has(review.claimId), `review canonique orpheline: ${review.claimId}`);
 }
+assert(reviewEntries.filter((entry) => entry.status === 'legacy').every((entry) => !entry.kind), 'une revue legacy expose encore un ancien type non validé');
 assert(
   reviewEntries.filter((entry) => entry.status === 'canonical').length === claims.counts.reviewedClaims,
   'reviewedClaims ne correspond pas aux seules revues canoniques',
@@ -237,19 +244,19 @@ const semanticGoldenClaims = [
   {
     articleSlug: 'dollar-yen-intervention-risque-carry-2026',
     includes: 'autour de 161,94',
-    expectedKind: 'unclassified-assertion',
+    expectedKind: 'fait',
     note: 'une observation de marche contenant autour de ne doit pas devenir estimation automatiquement',
   },
   {
     articleSlug: 'dollar-yen-intervention-risque-carry-2026',
     includes: 'même si la banque centrale',
-    expectedKind: 'unclassified-assertion',
+    expectedKind: 'fait',
     note: 'meme si ne doit pas declencher scenario automatiquement',
   },
   {
     articleSlug: 'dollar-yen-intervention-risque-carry-2026',
     includes: 'entre le 28 avril et le 27 mai 2026',
-    expectedKind: 'unclassified-assertion',
+    expectedKind: 'fait',
     expectedTemporalPrecision: 'range',
     expectedObservationStart: '2026-04-28',
     expectedObservationEnd: '2026-05-27',

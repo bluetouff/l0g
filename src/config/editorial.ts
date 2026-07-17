@@ -231,6 +231,17 @@ export const editorialProtocol = {
 export const editorialChangelog: EditorialChangelogEntry[] = [
   {
     date: '2026-07-17',
+    title: 'Claims structurants typés et sélectionnés par le risque',
+    kind: 'méthode',
+    summary:
+      'La surface limite désormais chaque article à trois claims structurants maximum et supprime le type assertion non classée. Chaque claim est classée en fait, estimation, inférence ou scénario ; ce typage heuristique reste distinct d’une revue canonique complète.',
+    links: [
+      { label: 'claims', href: '/api/v1/claims.json' },
+      { label: 'politique de revue', href: '/protocole-editorial/' },
+    ],
+  },
+  {
+    date: '2026-07-17',
     title: 'Registre des séries de risque nommées et versionnées',
     kind: 'données',
     summary:
@@ -257,7 +268,7 @@ export const editorialChangelog: EditorialChangelogEntry[] = [
     title: 'Relations affirmation-source et historique des révisions',
     kind: 'traçabilité',
     summary:
-      'Les articles exposent désormais des relations affirmation-source typées en fait relu, estimation, inférence, scénario ou assertion non classée, avec dates séparées quand elles sont détectables, historique de publication et politique de correction.',
+      'Les articles exposent désormais des relations affirmation-source typées, avec dates séparées quand elles sont détectables, historique de publication et politique de correction. Cette entrée décrit le premier contrat, remplacé depuis par la sélection structurante Agent Surface 1.15.',
     links: [
       { label: 'protocole', href: '/protocole-editorial/' },
       { label: 'catalogue', href: '/api/v1/catalog.json' },

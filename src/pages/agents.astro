@@ -39,7 +39,7 @@ const surfaces = [
   {
     need: 'Citation précise',
     endpoint: '/api/v1/claims.json',
-    use: 'Assertions typées : fait revu, estimation, inférence, scénario ou assertion non classée, avec références datées quand détectable.',
+    use: 'Trois claims structurants maximum par article, toujours typés : fait, estimation, inférence ou scénario, avec références datées quand détectable.',
   },
   {
     need: 'Veille incrémentale',
@@ -269,7 +269,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <ul class="rule-list">
           <li>URL canonique de l’article ou de l’endpoint.</li>
           <li>Date de publication, de révision ou de source quand elle existe.</li>
-          <li>Type de claim : fait revu, estimation, inférence, scénario ou assertion non classée.</li>
+          <li>Trois claims structurants maximum par article, chacun typé : fait, estimation, inférence ou scénario.</li>
           <li>Source primaire citée quand l’evidence graph la connaît.</li>
           <li>Mention explicite des limites si la donnée est incomplète.</li>
         </ul>

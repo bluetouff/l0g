@@ -10,6 +10,8 @@ Le registre distingue désormais deux états.
 
 Le localisateur doit désigner l’endroit vérifiable : page, paragraphe, section, tableau, série, cellule, formulaire, accession SEC, DOI ou calcul. Une reproduction exige aussi un artefact reproductible.
 
-Les claims produits par le classifieur lexical restent `unclassified-assertion` tant qu’aucune revue canonique ne satisfait ce contrat. Le nombre brut de revues historiques n’est donc plus présenté comme un nombre de claims certifiés.
+La surface publique sélectionne au plus trois claims structurants par article. Chacune est classée automatiquement en `fait`, `estimation`, `inférence` ou `scénario`. Cette classification heuristique ne vaut pas revue : la claim reste `unreviewed` tant qu’aucune entrée canonique ne satisfait le contrat ci-dessus.
+
+La sélection privilégie les claims explicitement marquées, les affirmations sensibles ou juridiques, les chiffres matériels et les relations vers une source primaire, un dataset, une méthodologie ou un dashboard. Le nombre brut de revues historiques n’est pas présenté comme un nombre de claims certifiés ; les entrées `legacy` peuvent conserver l’identifiant d’une claim qui ne figure plus dans la sélection structurante courante.
 
 L’interface locale reste accessible avec `npm run claims:review`. Une sauvegarde crée ou remplace une entrée `canonical`. Le build refuse une entrée incomplète ou plus de trois claims canoniques pour une même analyse.

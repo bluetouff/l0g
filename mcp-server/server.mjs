@@ -53,7 +53,7 @@ const ALLOWED_ORIGINS = new Set(
 const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.20.4';
+const MCP_VERSION = '1.21.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -477,7 +477,7 @@ const AnyRecord = z.record(z.string(), JsonValue);
 const ToolOutput = z.object({ error: z.string().optional() }).catchall(JsonValue);
 const UrlString = z.string();
 const NullableString = z.string().nullable().optional();
-const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion']);
+const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario']);
 const LanguageSchema = z.enum(['fr', 'en']);
 const EvidenceReferenceSchema = z.object({
   label: z.string(),
@@ -1055,7 +1055,7 @@ function buildServer(data) {
   const guidesFr = guides.filter((item) => item.language !== 'en');
   const guidesEn = guides.filter((item) => item.language === 'en');
   const topicsList = catalog.topics || [];
-  const claimKinds = ['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion'];
+  const claimKinds = ['fait', 'estimation', 'inférence', 'scénario'];
   const claimsList = claims.claims || [];
   const methodologies = catalog.methodologies || [];
   const primarySources = sources.primarySources || [];
@@ -2153,8 +2153,8 @@ function buildServer(data) {
     'get_claims',
     {
       description:
-        "Interroge les relations affirmation-source extraites des articles l0g. Filtrage par article, type de claim " +
-        "(fait, estimation, inférence, scénario, assertion non classée) et texte. Renvoie les références cliquables, datées quand détectable.",
+        "Interroge les trois relations affirmation-source structurantes au maximum par article l0g. Filtrage par article, type de claim " +
+        "(fait, estimation, inférence ou scénario) et texte. Renvoie les références cliquables, datées quand détectable.",
       inputSchema: {
         articleSlug: z.string().optional().describe("Slug d'article optionnel."),
         language: LanguageSchema.optional().describe('Langue du slug fourni. Une claim reste canonique en français.'),

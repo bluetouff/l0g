@@ -17,7 +17,7 @@ const endpoints = [
   ['/api/v1/search-index.json', 'Shared search index', 'Canonical bilingual search index used by Agent Surface, MCP and WebMCP.'],
   ['/llms-full-en.txt', 'English corpus', 'Full English analyses and guides, kept separate from the French context.'],
   ['/api/v1/catalog.ndjson', 'Catalog NDJSON', 'Line-by-line catalog for streaming ingestion, RAG or incremental indexing.'],
-  ['/api/v1/claims.json', 'Claims', 'Claim-source graph with typed claims, references and dates when detectable.'],
+  ['/api/v1/claims.json', 'Claims', 'At most three structural claims per article, typed as fact, estimate, inference or scenario, with references and dates when detectable.'],
   ['/api/v1/evidence-graph.json', 'Evidence graph', 'Articles, claims, references, hosts, primary sources and datasets as nodes and edges.'],
   ['/api/v1/sources.json', 'Sources', 'Primary sources and cited hosts actually used by the corpus.'],
   ['/api/v1/freshness.json', 'Freshness', 'Freshness policy, last content updates and signal timing metadata.'],
@@ -53,7 +53,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${enUrl}#agent-surface`,
-  headline: 'Agent Surface v1.14.0',
+  headline: 'Agent Surface v1.15.0',
   description: 'English documentation for the l0g.fr machine-readable surface: agents.json, OpenAPI, named signal series, Risk Diff, Black Box, claims, evidence graph, freshness and integrity.',
   inLanguage: 'en',
   isAccessibleForFree: true,
@@ -63,7 +63,7 @@ const jsonLd = {
 ---
 
 <EnglishLayout
-  title="Agent Surface v1.14.0"
+  title="Agent Surface v1.15.0"
   description="English documentation for l0g Agent Surface: agents.json, OpenAPI, named and versioned signal series, claims, evidence graph, Risk Diff, Black Box and NDJSON feeds."
   canonical={enUrl}
   alternateLinks={alternateLinks}
@@ -72,10 +72,10 @@ const jsonLd = {
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.14.0</p>
+      <p class="mono-label glow">// agent surface v1.15.0</p>
       <h1 class="agent-title font-display glow">A machine surface for reading l0g without scraping.</h1>
       <p class="agent-lede">
-        Agent Surface v1.14.0 exposes the French and English l0g corpus as static JSON and NDJSON: bilingual catalog, shared search index, evidence graph, sourced claims, primary sources, freshness, Risk Diff, Black Box Recorder, named and versioned signal series, fingerprints, Agent Bench results and an OpenAPI contract. Translations carry canonical and alternate identifiers plus freshness status. Claims remain canonical in French; English analyses link to them through <code>evidenceRef</code>.
+        Agent Surface v1.15.0 exposes the French and English l0g corpus as static JSON and NDJSON: bilingual catalog, shared search index, evidence graph, at most three structural typed claims per article, primary sources, freshness, Risk Diff, Black Box Recorder, named and versioned signal series, fingerprints, Agent Bench results and an OpenAPI contract. Translations carry canonical and alternate identifiers plus freshness status. Claims remain canonical in French; English analyses link to them through <code>evidenceRef</code>. Heuristic typing remains distinct from canonical review.
       </p>
       <p class="mono-label mt-4"><a class="link-term" href="/donnees/agents/">Version française →</a></p>
       <p class="mono-label mt-2"><a class="link-term" href="/agent-bench/">l0g Agent Bench: deterministic FR/EN results →</a></p>
@@ -114,7 +114,7 @@ const jsonLd = {
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>License</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.14.0</strong></div>
+        <div><span>Version</span><strong>v1.15.0</strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Evidence</span><strong>claim-source</strong></div>
         <div><span>Integrity</span><strong>SHA-256</strong></div>

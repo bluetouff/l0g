@@ -306,8 +306,9 @@ console.log('list_guides ->', gd.count, 'guides');
 const byTopic = await call('search_by_topic', { topic: 'crypto', limit: 3 });
 console.log('search_by_topic(crypto) ->', byTopic.count, '; label:', byTopic.label);
 
-const claims = await call('get_claims', { kind: 'unclassified-assertion', limit: 3 });
-console.log('get_claims(unclassified-assertion) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
+const claims = await call('get_claims', { kind: 'fait', limit: 3 });
+if (!claims.claims?.length || claims.claims.some((claim) => claim.kind !== 'fait')) throw new Error('get_claims ne filtre pas les faits');
+console.log('get_claims(fait) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
 
 const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
 const dollarYenClaimId = articleClaims.claims?.[0]?.id;

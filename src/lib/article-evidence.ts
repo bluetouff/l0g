@@ -24,7 +24,7 @@ export interface PrimaryEvidence {
   links: EvidenceLink[];
 }
 
-export type ClaimKind = 'fait' | 'estimation' | 'inférence' | 'scénario' | 'unclassified-assertion';
+export type ClaimKind = 'fait' | 'estimation' | 'inférence' | 'scénario';
 
 export interface ClaimEvidence {
   id: string;
@@ -55,7 +55,7 @@ export interface ClaimEvidence {
   reviewSourceType?: 'primary' | 'secondary' | 'issuer' | 'dataset' | null;
   reproductionArtifact?: string | null;
   classifier: {
-    method: 'lexical-heuristic-v1';
+    method: 'lexical-heuristic-v2';
     matchedRule: string;
     caveat: string;
     reviewedOverride?: string;
@@ -298,7 +298,7 @@ function classifyClaimWithRule(text: string): { kind: ClaimKind; matchedRule: st
   if (/(donc|therefore|sugg[eè]re|suggests?|implique|implies|signale|signals?|indique|indicates?|lecture|reading|interpr[eè]te|interpretation|ce qui veut dire|en clair|in other words|j'en d[eé]duis|we infer)/iu.test(value)) {
     return { kind: 'inférence', matchedRule: 'inference-marker' };
   }
-  return { kind: 'unclassified-assertion', matchedRule: 'unclassified-assertion' };
+  return { kind: 'fait', matchedRule: 'cited-fact-default' };
 }
 
 export function classifyClaim(text: string): ClaimKind {
@@ -431,11 +431,31 @@ function sourcePublicationDateForLink(link: EvidenceLink) {
 function claimClassifier(text: string): ClaimEvidence['classifier'] {
   const { matchedRule } = classifyClaimWithRule(text);
   return {
-    method: 'lexical-heuristic-v1',
+    method: 'lexical-heuristic-v2',
     matchedRule,
     caveat:
-      'Classification automatique par marqueurs lexicaux ; elle doit être relue avant d’être traitée comme annotation éditoriale validée.',
+      'Classification automatique par marqueurs lexicaux ; le type fait est le défaut d’une proposition citée sans marqueur prospectif ou inférentiel. Une revue canonique reste nécessaire pour valider le type et la preuve.',
   };
+}
+
+function claimRiskScore(block: string, claim: ClaimEvidence, opts: ArticleEvidenceOptions) {
+  const text = normalizeClaimText(claim.claim);
+  const hasCanonicalReview = Boolean(opts.articleSlug && claimReviewById.has(`${opts.articleSlug}:${claim.id}`));
+  const hasPrimaryOrDataReference = claim.references.some((reference) =>
+    ['source primaire', 'dashboard', 'donnée', 'méthode'].includes(reference.kind || '')
+  );
+  const hasExternalReference = claim.references.some((reference) => !isInternal(reference));
+  const isMaterialNumber = /(?:\d[\d\s.,]*\s*(?:%|€|\$|mds?|milliards?|millions?|bps?|points?)|\b20\d{2}\b)/iu.test(text);
+  const isSensitive = /\b(?:accusation|accusé|accuse|allégation|allegation|fraude|fraud|illégal|illegal|juridique|legal|sanction|interdit|banned|défaut|default|faillite|bankruptcy|préjudice|harm|conflit d['’]intérêts?|conflict of interest)\b/iu.test(text);
+  const typedRisk = claim.kind === 'scénario' || claim.kind === 'inférence' ? 18 : claim.kind === 'estimation' ? 12 : 0;
+
+  return (hasCanonicalReview ? 10_000 : 0)
+    + (explicitClaimId(block) ? 1_000 : 0)
+    + (isSensitive ? 120 : 0)
+    + (hasPrimaryOrDataReference ? 70 : 0)
+    + (isMaterialNumber ? 45 : 0)
+    + (hasExternalReference ? 25 : 0)
+    + typedRisk;
 }
 
 function buildFallbackClaim(markdown: string, opts: ArticleEvidenceOptions): ClaimEvidence[] {
@@ -702,9 +722,9 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
     .filter((link) => ['glossaire', 'guide', 'source', 'fil', 'article'].includes(link.kind || ''))
     .slice(0, 12);
 
-  const linkClaims = splitEvidenceBlocks(markdown)
+  const linkClaimCandidates = splitEvidenceBlocks(markdown)
     .flatMap((block) => splitClaimFragments(block).map((fragment) => ({ block, fragment })))
-    .map(({ block, fragment }): ClaimEvidence | null => {
+    .map(({ block, fragment }, position): { block: string; position: number; claim: ClaimEvidence } | null => {
       const blockLinks = extractLinks(fragment)
         .map((link) => {
           const local = isInternal(link) ? { ...link, href: toLocalPath(link), kind: internalKind(toLocalPath(link)) } : link;
@@ -733,37 +753,47 @@ export function buildArticleEvidence(markdown: string, opts: ArticleEvidenceOpti
       const observationDate = observationDateForBlock(fragment);
       const classification = classifyClaimWithRule(claim);
       return {
-        id: stableClaimId(block, claim),
-        kind: classification.kind,
-        claim,
-        dateLabel: observationDate.iso ? observationDate.label : claimDate.label,
-        dateIso: observationDate.iso ?? claimDate.iso,
-        claimDateLabel: claimDate.label,
-        claimDateIso: claimDate.iso,
-        observationDateLabel: observationDate.label,
-        observationDateIso: observationDate.iso,
-        observationStartIso: observationDate.startIso,
-        observationEndIso: observationDate.endIso,
-        temporalPrecision: observationDate.precision,
-        references: blockLinks.slice(0, 5),
-        confidence: 'auto-backfill',
-        reviewStatus: 'unreviewed',
-        reviewedAt: null,
-        reviewedBy: null,
-        reviewNote: null,
-        reviewedProofDepth: null,
-        evidenceLocator: null,
-        reproductionArtifact: null,
-        classifier: {
-          method: 'lexical-heuristic-v1',
-          matchedRule: classification.matchedRule,
-          caveat:
-            'Classification automatique par marqueurs lexicaux ; elle doit être relue avant d’être traitée comme annotation éditoriale validée.',
+        block,
+        position,
+        claim: {
+          id: stableClaimId(block, claim),
+          kind: classification.kind,
+          claim,
+          dateLabel: observationDate.iso ? observationDate.label : claimDate.label,
+          dateIso: observationDate.iso ?? claimDate.iso,
+          claimDateLabel: claimDate.label,
+          claimDateIso: claimDate.iso,
+          observationDateLabel: observationDate.label,
+          observationDateIso: observationDate.iso,
+          observationStartIso: observationDate.startIso,
+          observationEndIso: observationDate.endIso,
+          temporalPrecision: observationDate.precision,
+          references: blockLinks.slice(0, 5),
+          confidence: 'auto-backfill',
+          reviewStatus: 'unreviewed',
+          reviewedAt: null,
+          reviewedBy: null,
+          reviewNote: null,
+          reviewedProofDepth: null,
+          evidenceLocator: null,
+          reproductionArtifact: null,
+          classifier: {
+            method: 'lexical-heuristic-v2',
+            matchedRule: classification.matchedRule,
+            caveat:
+              'Classification automatique par marqueurs lexicaux ; le type fait est le défaut d’une proposition citée sans marqueur prospectif ou inférentiel. Une revue canonique reste nécessaire pour valider le type et la preuve.',
+          },
         },
       };
     })
-    .filter((claim): claim is ClaimEvidence => Boolean(claim))
-    .slice(0, 24);
+    .filter((candidate): candidate is { block: string; position: number; claim: ClaimEvidence } => Boolean(candidate));
+
+  const linkClaims = linkClaimCandidates
+    .map((candidate) => ({ ...candidate, riskScore: claimRiskScore(candidate.block, candidate.claim, opts) }))
+    .sort((a, b) => b.riskScore - a.riskScore || a.position - b.position || a.claim.id.localeCompare(b.claim.id))
+    .slice(0, 3)
+    .sort((a, b) => a.position - b.position)
+    .map((candidate) => candidate.claim);
 
   const claims = (linkClaims.length ? linkClaims : buildFallbackClaim(markdown, opts)).map((claim) => {
     const review = opts.articleSlug ? claimReviewById.get(`${opts.articleSlug}:${claim.id}`) : undefined;

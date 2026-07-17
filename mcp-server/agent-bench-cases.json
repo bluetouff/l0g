@@ -50,6 +50,6 @@
     { "id": "class-estimation", "category": "classification", "kind": "estimation", "expectedNonEmpty": true },
     { "id": "class-inference", "category": "classification", "kind": "inférence", "expectedNonEmpty": true },
     { "id": "class-scenario", "category": "classification", "kind": "scénario", "expectedNonEmpty": true },
-    { "id": "class-no-auto-observation", "category": "classification", "kind": "fait", "expectedNonEmpty": false }
+    { "id": "class-fact", "category": "classification", "kind": "fait", "expectedNonEmpty": true }
   ]
 }

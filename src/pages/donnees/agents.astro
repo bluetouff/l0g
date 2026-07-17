@@ -32,7 +32,7 @@ const endpoints = [
   {
     path: '/api/v1/claims.json',
     label: 'Claims',
-    role: 'Graphe affirmation-source : fait revu, estimation, inférence, scénario ou assertion non classée, avec références datées quand détectable.',
+    role: 'Graphe affirmation-source : trois claims structurants maximum par article, typés fait, estimation, inférence ou scénario, avec références datées quand détectable.',
   },
   {
     path: '/api/v1/evidence-graph.json',
@@ -138,7 +138,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/donnees/agents/#agent-surface`,
-  headline: 'Agent Surface v1.14.0',
+  headline: 'Agent Surface v1.15.0',
   description:
     'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, séries de risque nommées, Risk Diff, Black Box, claims, sources, fraîcheur et règles de citation.',
   inLanguage: 'fr',
@@ -150,10 +150,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title="Agent Surface v1.14.0"
+  title="Agent Surface v1.15.0"
   description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, séries nommées et versionnées, Risk Diff, Black Box, evidence graph, claims sourcées et règles de citation."
   ogImage="/og-donnees.png"
-  ogImageAlt="Agent Surface v1.14.0 l0g.fr : API bilingue, séries nommées, Agent Bench, evidence graph, claims et sources"
+  ogImageAlt="Agent Surface v1.15.0 l0g.fr : API bilingue, séries nommées, Agent Bench, evidence graph, claims et sources"
   sidebar={false}
   alternateLinks={agentAlternateLinks}
 >
@@ -161,14 +161,15 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.14.0</p>
+      <p class="mono-label glow">// agent surface v1.15.0</p>
       <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
       <p class="agent-lede">
-        Agent Surface v1.14.0 expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
-        evidence graph, claims sourcées, sources primaires, fraîcheur, Risk Diff,
+        Agent Surface v1.15.0 expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
+        evidence graph, trois claims structurants typés maximum par article, sources primaires, fraîcheur, Risk Diff,
         Black Box Recorder, index de recherche partagé, historique des signaux, empreintes et contrat OpenAPI. Les traductions
         portent leur identifiant canonique, leur alternative et leur statut de fraîcheur. Les claims restent françaises et
-        canoniques : une analyse anglaise pointe vers ses preuves via <code>evidenceRef</code>. La promesse est
+        canoniques en français : une analyse anglaise pointe vers ses preuves via <code>evidenceRef</code>. Le type heuristique
+        reste distinct d’une revue canonique. La promesse est
         simple : un agent doit pouvoir citer une affirmation sans perdre la source, claimDate,
         observationDate, sourcePublicationDate, retrievedAt, indexedAt et le niveau de lecture.
         Pour les signaux de risque, le contrat conserve aussi les limites de modèle : Dette US publie
@@ -215,7 +216,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>Licence</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.14.0</strong></div>
+        <div><span>Version</span><strong>v1.15.0</strong></div>
         <div><span>Protocole éditorial</span><strong><a class="link-term" href="/protocole-editorial/">v1.0.0</a></strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Preuve</span><strong>claim-source</strong></div>

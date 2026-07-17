@@ -8,7 +8,7 @@ export const GET: APIRoute = () => new Response(JSON.stringify({
   version: '1.0.0',
   generated: new Date().toISOString(),
   status: 'pending-ci',
-  surfaces: { agentSurfaceVersion: AGENT_VERSION, mcpServerVersion: '1.20.4', gitSha: null },
+  surfaces: { agentSurfaceVersion: AGENT_VERSION, mcpServerVersion: '1.21.0', gitSha: null },
   methodology: { deterministic: true, llmCalls: 0, topK: 3, cases: 44 },
   summary: null,
   results: [],

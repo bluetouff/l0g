@@ -32,11 +32,11 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.14.0';
+export const AGENT_VERSION = '1.15.0';
 export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
-const CLAIM_KIND_ENUM = ['fait', 'estimation', 'inférence', 'scénario', 'unclassified-assertion'];
+const CLAIM_KIND_ENUM = ['fait', 'estimation', 'inférence', 'scénario'];
 
 const RISK_SIGNAL_META: Record<string, { label: string; source: string; methodology: string }> = {
   us: { label: 'US Macro Dashboard', source: 'https://us.l0g.fr', methodology: `${AGENT_SITE}/methodologie/us-macro/` },
@@ -501,8 +501,8 @@ export function buildOpenApiContract() {
           required: ['method', 'matchedRule', 'caveat'],
           additionalProperties: false,
           properties: {
-            method: { const: 'lexical-heuristic-v1' },
-            matchedRule: { enum: ['scenario-marker', 'estimate-marker', 'inference-marker', 'unclassified-assertion'] },
+            method: { const: 'lexical-heuristic-v2' },
+            matchedRule: { enum: ['scenario-marker', 'estimate-marker', 'inference-marker', 'cited-fact-default'] },
             caveat: { type: 'string' },
             reviewedOverride: { type: 'string' },
           },
@@ -1277,11 +1277,13 @@ export function buildOpenApiContract() {
         },
         ClaimsPolicy: {
           type: 'object',
-          required: ['relation', 'caveat', 'classification', 'review', 'dateModel', 'correctionPolicy'],
+          required: ['relation', 'caveat', 'selection', 'maxClaimsPerArticle', 'classification', 'review', 'dateModel', 'correctionPolicy'],
           additionalProperties: false,
           properties: {
             relation: { type: 'string' },
             caveat: { type: 'string' },
+            selection: { type: 'string' },
+            maxClaimsPerArticle: { type: 'integer', const: 3 },
             classification: { type: 'string' },
             review: { type: 'string' },
             dateModel: { type: 'string' },
@@ -1429,7 +1431,6 @@ export function buildOpenApiContract() {
                 'estimation',
                 'inférence',
                 'scénario',
-                'unclassified-assertion',
                 'source primaire',
                 'source secondaire',
                 'contexte',
@@ -1472,7 +1473,6 @@ export function buildOpenApiContract() {
                     'estimation',
                     'inférence',
                     'scénario',
-                    'unclassified-assertion',
                     'source primaire',
                     'source secondaire',
                     'contexte',
@@ -3337,10 +3337,13 @@ export function buildClaimsSurface(posts: PostEntry[]) {
     policy: {
       relation: 'Chaque entrée relie une affirmation textuelle à une ou plusieurs références cliquables, datées quand détectable.',
       caveat: 'Extraction automatique best-effort : la relation exacte doit rester vérifiable dans la page source.',
+      selection:
+        'Sélection déterministe fondée sur le risque : priorité aux claims explicitement marquées, sensibles ou juridiques, chiffrées, puis reliées à une source primaire, un dataset, une méthodologie ou un dashboard.',
+      maxClaimsPerArticle: 3,
       classification:
-        'Les types fait/estimation/inférence/scénario/unclassified-assertion sont produits par un classifieur lexical heuristique v1, exposé par claim.classifier. Le fallback automatique est unclassified-assertion, jamais fait.',
+        'Chaque analyse expose au maximum trois claims structurants. Les types fait/estimation/inférence/scénario sont produits par un classifieur lexical heuristique v2, exposé par claim.classifier. Une proposition citée sans marqueur prospectif ou inférentiel est classée fait par défaut, sans devenir pour autant une revue canonique.',
       review:
-        'Les claims heuristiques restent unreviewed. Une certification exige status=canonical, source et date, locator exact, type explicite et profondeur direct-proof ou reproduction, avec un maximum de trois claims canoniques par analyse. Les anciennes revues restent legacy.',
+        'Les claims heuristiques restent unreviewed. Une certification exige status=canonical, source et date, locator exact, type explicite et profondeur direct-proof ou reproduction. Les anciennes revues restent legacy et peuvent référencer des claims qui ne font plus partie de la sélection structurante courante.',
       dateModel:
         'claimDate décrit la date portée par l’affirmation ; observationDate décrit l’horizon observé quand il est détectable ; sourcePublicationDate appartient à la référence ; retrievedAt reste null sans fetch réel de la source ; indexedAt indique l’indexation du lien dans le snapshot.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,

@@ -373,7 +373,7 @@
           properties: {
             articleSlug: { type: 'string', description: "Slug d'article facultatif." },
             language: { type: 'string', enum: ['fr', 'en'], description: 'Langue du slug. Les claims restent canoniques en français.' },
-            kind: { type: 'string', description: 'fait, estimation, inférence, scénario ou unclassified-assertion.' },
+            kind: { type: 'string', description: 'fait, estimation, inférence ou scénario.' },
             query: { type: 'string', description: 'Filtre texte facultatif.' },
             limit: { type: 'integer', minimum: 1, maximum: 50, default: 10 }
           }
