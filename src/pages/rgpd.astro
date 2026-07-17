@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '16 juin 2026';
+const updated = '17 juillet 2026';
 ---
 
 <BaseLayout
   title="Mentions légales & RGPD"
-  description="Éditeur, hébergement et recensement de tout ce qui sort de ce site vers des tiers. Aucun tracker, IP anonymisées. Version courte : presque rien."
+  description="Identité de l'éditeur de l0g, hébergement, propriété intellectuelle et politique de confidentialité : traitements, tiers, durées et droits RGPD."
 >
   <section class="rise" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// mentions légales &amp; rgpd</p>
@@ -14,105 +14,136 @@ const updated = '16 juin 2026';
       Transparence, ligne par ligne
     </h1>
     <p class="rgpd-lede">
-      Cette page recense, de façon exhaustive, tout ce qui peut quitter votre navigateur
-      quand vous consultez le site. Version courte : presque rien.
+      Cette page identifie l'opérateur de l0g et décrit les traitements de données liés à la
+      consultation du site, aux composants tiers et aux prises de contact.
     </p>
     <span class="rgpd-meta">Dernière mise à jour : {updated}</span>
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// éditeur &amp; hébergement</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// mentions légales</p>
     <div class="specs card mt-4">
-      <div class="spec"><span class="spec-k">Éditeur</span><span class="spec-v">Bluetouff, à titre individuel et non commercial</span></div>
-      <div class="spec"><span class="spec-k">Statut</span><span class="spec-v">Site personnel, sans finalité commerciale</span></div>
-      <div class="spec"><span class="spec-k">Contact</span><span class="spec-v"><a class="link-term" href="mailto:admin@toonux.com">admin@toonux.com</a> · directeur de la publication</span></div>
-      <div class="spec"><span class="spec-k">Hébergement</span><span class="spec-v">Auto-hébergé par l'éditeur sur un serveur dédié qu'il administre</span></div>
-      <div class="spec"><span class="spec-k">Nature</span><span class="spec-v">Entièrement statique : aucune base de données, aucun compte, aucun formulaire</span></div>
+      <div class="spec"><span class="spec-k">Opérateur</span><span class="spec-v">l0g : Olivier Laurelli, entrepreneur individuel (EI)</span></div>
+      <div class="spec"><span class="spec-k">SIREN</span><span class="spec-v">809 005 010</span></div>
+      <div class="spec"><span class="spec-k">Contact</span><span class="spec-v"><a class="link-term" href="mailto:olivier@l0g.fr">olivier@l0g.fr</a> · <a class="link-term" href="tel:+33633214443">06 33 21 44 43</a></span></div>
+      <div class="spec"><span class="spec-k">Publication</span><span class="spec-v">Olivier Laurelli, directeur de la publication</span></div>
+      <div class="spec"><span class="spec-k">TVA</span><span class="spec-v">Non applicable</span></div>
+      <div class="spec"><span class="spec-k">Hébergement</span><span class="spec-v">l0g : Olivier Laurelli (EI), SIREN 809 005 010, Chartres (28000), 06 33 21 44 43. Serveur dédié administré par l'opérateur.</span></div>
+      <div class="spec"><span class="spec-k">Nature</span><span class="spec-v">Site statique et application locale dans le navigateur : aucune base de données de comptes et aucun formulaire.</span></div>
+      <div class="spec"><span class="spec-k">Propriété</span><span class="spec-v">l0g / Olivier Laurelli (EI). Les licences applicables au code, aux textes, aux données et aux éléments tiers sont précisées dans le <a class="link-term" href="https://github.com/bluetouff/l0g/blob/main/LICENSE" rel="noopener">fichier de licence du dépôt</a>.</span></div>
     </div>
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// ce qui sort vers des tiers</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// responsable du traitement</p>
+    <div class="rgpd-note">
+      Le responsable des traitements mis en œuvre pour l0g est Olivier Laurelli, entrepreneur
+      individuel, opérateur de l0g, joignable à
+      <a class="link-term" href="mailto:olivier@l0g.fr">olivier@l0g.fr</a> ou au
+      <a class="link-term" href="tel:+33633214443">06 33 21 44 43</a>.
+    </div>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// traitements liés à l0g</p>
     <p class="m-p">
-      Par principe, ce site limite au strict minimum les connexions vers l'extérieur. Voici
-      la liste exhaustive de ce qui peut quitter votre navigateur lors de la consultation.
+      l0g limite la collecte au strict nécessaire. Les traitements directement mis en œuvre par
+      l'opérateur sont les suivants.
     </p>
 
     <div class="leak-list">
-      <article class="leak card" style="--c: var(--color-amber)">
-        <span class="leak-h">TradingView · graphiques &amp; cotations</span>
-        <p class="leak-d">
-          Les graphiques de marché, le bandeau de cotations, les mini-aperçus de la colonne
-          latérale, ainsi que les comparateurs, heatmaps et le calendrier économique des pages
-          dashboards sont des composants embarqués de <strong class="text-bright">TradingView</strong>
-          (TradingView, Inc., États-Unis). Au chargement d'une page contenant l'un de ces
-          éléments, votre navigateur contacte directement les serveurs de TradingView
-          (<code class="rgpd-code">s3.tradingview.com</code>, <code class="rgpd-code">*.tradingview.com</code>,
-          <code class="rgpd-code">*.tradingview-widget.com</code>).
-        </p>
-        <p class="leak-sub-label">Transmis à TradingView, sans que l'éditeur puisse l'empêcher :</p>
-        <ul class="leak-sub">
-          <li>votre adresse IP ;</li>
-          <li>votre type de navigateur et d'appareil (user-agent) ;</li>
-          <li>la page consultée (référent) ;</li>
-          <li>des cookies et/ou du stockage local déposés par TradingView.</li>
-        </ul>
-        <p class="leak-note">
-          Ces traitements relèvent de la seule responsabilité de TradingView
-          (<a class="link-term" href="https://www.tradingview.com/privacy-policy/" rel="noopener nofollow">politique de confidentialité</a>).
-          Pour les éviter : bloquer les scripts tiers (extension de blocage, navigateur durci)
-          ou éviter les pages contenant des graphiques.
-        </p>
-      </article>
-
       <article class="leak card" style="--c: var(--color-signal)">
-        <span class="leak-h">Journaux serveur &amp; mesure d'audience</span>
+        <span class="leak-h">Journaux serveur &amp; mesure d'audience locale</span>
         <p class="leak-d">
-          Comme tout serveur web, l'hébergement enregistre des journaux techniques (adresse IP,
-          horodatage, page demandée, user-agent), à finalité technique, de sécurité et de mesure
-          d'audience. Ils sont conservés <strong class="text-bright">14 jours</strong>, puis
-          supprimés automatiquement par rotation. La mesure d'audience utilise l'outil libre
-          <strong class="text-bright">GoAccess</strong>, exécuté localement sur le serveur.
+          Le serveur enregistre l'adresse IP, l'horodatage, la ressource demandée, le référent et
+          le user-agent. Ces données servent à assurer la sécurité et la disponibilité du service,
+          à diagnostiquer les erreurs et à produire des statistiques de fréquentation agrégées avec
+          <strong class="text-bright">GoAccess</strong>, exécuté localement.
         </p>
         <ul class="leak-sub">
-          <li>aucun script de mesure chargé dans votre navigateur, aucun cookie ni stockage local à cette fin ;</li>
-          <li>aucune donnée envoyée à un service tiers : tout reste sur le serveur de l'éditeur ;</li>
-          <li>adresses IP anonymisées avant traitement (dernier octet masqué) : aucune personne n'est identifiable ;</li>
-          <li>statistiques agrégées (pages vues, pays, navigateurs, référents), jamais de profilage individuel.</li>
+          <li><strong class="text-bright">Base légale :</strong> intérêt légitime de l'opérateur à sécuriser, maintenir et mesurer son service ;</li>
+          <li><strong class="text-bright">Destinataire :</strong> Olivier Laurelli, dans le cadre de l'administration du serveur ;</li>
+          <li><strong class="text-bright">Durée :</strong> 14 jours, puis suppression automatique par rotation ;</li>
+          <li><strong class="text-bright">Mesure :</strong> adresses IP masquées avant la production des statistiques ; aucun profil individuel.</li>
         </ul>
       </article>
 
       <article class="leak card" style="--c: #7aa2f7">
-        <span class="leak-h">Liens sortants</span>
+        <span class="leak-h">Prise de contact</span>
         <p class="leak-d">
-          Le site contient des liens vers des sites externes (dashboards, projets, réseaux).
-          Ces sites ne sont contactés que si vous cliquez volontairement sur le lien, et sont
-          alors régis par leurs propres politiques de confidentialité.
+          Lorsque vous écrivez à l'adresse de contact, l'opérateur reçoit les informations que
+          vous choisissez de communiquer, notamment votre adresse électronique, votre identité
+          éventuelle, le contenu du message et les données techniques associées à l'envoi.
+        </p>
+        <ul class="leak-sub">
+          <li><strong class="text-bright">Finalité :</strong> lire la demande, y répondre et conserver la trace utile de l'échange ;</li>
+          <li><strong class="text-bright">Base légale :</strong> intérêt légitime à traiter les messages reçus ou mesures précontractuelles prises à votre demande, selon l'objet du message ;</li>
+          <li><strong class="text-bright">Destinataire :</strong> Olivier Laurelli et les prestataires techniques nécessaires à l'acheminement du courrier électronique ;</li>
+          <li><strong class="text-bright">Durée :</strong> le temps nécessaire au traitement et au suivi de la demande, puis, si nécessaire, selon les délais légaux applicables.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// service tiers : TradingView</p>
+    <p class="m-p">
+      Certaines pages intègrent des graphiques, cotations, comparateurs, heatmaps ou calendriers
+      fournis par <strong class="text-bright">TradingView, Inc.</strong>, établi aux États-Unis.
+    </p>
+    <div class="leak-list">
+      <article class="leak card" style="--c: var(--color-amber)">
+        <span class="leak-h">Connexion directe depuis le navigateur</span>
+        <p class="leak-d">
+          Au chargement d'une page concernée, le navigateur contacte les domaines de TradingView,
+          notamment <code class="rgpd-code">s3.tradingview.com</code>,
+          <code class="rgpd-code">*.tradingview.com</code> et
+          <code class="rgpd-code">*.tradingview-widget.com</code>. TradingView peut recevoir
+          l'adresse IP, le user-agent, la page consultée et des identifiants issus de cookies ou
+          du stockage local. Ces opérations peuvent impliquer un transfert de données vers les
+          États-Unis.
+        </p>
+        <p class="leak-note">
+          TradingView décrit ses traitements, leurs bases juridiques, les destinataires, les
+          transferts et les modalités d'exercice des droits dans sa
+          <a class="link-term" href="https://www.tradingview.com/privacy-policy/" rel="noopener nofollow">politique de confidentialité</a>.
+          Pour empêcher cette connexion, vous pouvez bloquer les scripts tiers ou ne pas consulter
+          les pages qui comportent ces composants.
         </p>
       </article>
     </div>
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// ce que ce site ne fait pas</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// cookies &amp; stockage local</p>
     <ul class="nope">
-      <li>Aucune régie publicitaire, aucun pixel de tracking, aucun réseau social embarqué.</li>
-      <li>Aucun outil de mesure d'audience tiers (pas de Google Analytics ni équivalent) : la fréquentation est mesurée localement, IP anonymisées.</li>
-      <li>Aucune police chargée depuis un CDN tiers : les polices sont auto-hébergées.</li>
-      <li>Aucune recherche déportée : le moteur fonctionne entièrement dans votre navigateur, sans appel externe.</li>
-      <li>Aucun cookie déposé par le site lui-même. Seul TradingView, le cas échéant, peut en déposer.</li>
+      <li>l0g ne dépose aucun cookie et n'intègre aucune régie publicitaire, aucun pixel de suivi ni aucun réseau social.</li>
+      <li>La préférence de thème est enregistrée dans le stockage local du navigateur sous la clé <code class="rgpd-code">l0g-theme</code>. Elle reste sur l'appareil et peut être supprimée dans les réglages du navigateur.</li>
+      <li>Aucun script de mesure d'audience tiers : la fréquentation est mesurée localement à partir des journaux serveur.</li>
+      <li>Les polices et la recherche sont servies par l0g ; la recherche s'exécute dans le navigateur.</li>
+      <li>Les composants TradingView peuvent utiliser leurs propres cookies ou mécanismes de stockage, conformément à leur politique.</li>
     </ul>
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// vos droits (RGPD)</p>
     <div class="rgpd-note">
-      Le site ne constitue, par lui-même, aucun fichier de données personnelles à des fins
-      commerciales. Pour toute demande relative aux journaux techniques (accès, rectification,
-      effacement, opposition), écrivez à
-      <a class="link-term" href="mailto:admin@toonux.com">admin@toonux.com</a>. Pour les données
-      collectées par TradingView, adressez-vous directement à ce tiers via sa politique de
-      confidentialité.
+      Vous pouvez demander l'accès aux données vous concernant, leur rectification, leur
+      effacement ou la limitation de leur traitement. Vous pouvez aussi vous opposer aux
+      traitements fondés sur l'intérêt légitime pour des raisons tenant à votre situation.
+      Écrivez à <a class="link-term" href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>. Une preuve
+      d'identité ne sera demandée qu'en cas de doute raisonnable sur l'identité du demandeur.
+      Vous pouvez enfin introduire une réclamation auprès de la
+      <a class="link-term" href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.
+    </div>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// liens externes &amp; décisions automatisées</p>
+    <div class="rgpd-note">
+      Les sites externes ne sont contactés que lorsque vous cliquez sur un lien, sauf pour les
+      composants TradingView décrits ci-dessus. l0g ne met en œuvre ni profilage individuel ni
+      décision automatisée produisant un effet juridique ou similaire sur ses visiteurs.
     </div>
   </section>
 
