@@ -8,10 +8,10 @@ Endpoint public visé : `https://l0g.fr/api/mcp`
 
 ## État de déploiement
 
-Au 16 juillet 2026, le code du dépôt déclare `1.20.0`, mais l'endpoint public
-annonce encore `serverInfo.version = 1.19.0` et aucun tag `mcp-v1.20.0` n'est
-publié. Le mécanisme de release atomique ci-dessous est donc prêt dans le dépôt,
-mais sa migration en production ne doit pas être présentée comme acquise.
+Au 17 juillet 2026, le code, la release `mcp-v1.20.0`, le Registry et l'endpoint
+public sont alignés sur `1.20.0`. Le daemon actif sert le SHA
+`478d5e448e9442a7ebc3d1d9e207b6586eafe6d5` avec `releaseAttested: true` depuis
+le runtime atomique `/opt/l0g-mcp-runtime/releases/`.
 
 ## Architecture
 

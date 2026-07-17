@@ -16,10 +16,10 @@ prouve pas à elle seule que l'état de production correspond au dépôt.
 
 ## Runbooks
 
-| Document | Usage | État vérifié le 2026-07-16 |
+| Document | Usage | État vérifié le 2026-07-17 |
 |---|---|---|
 | [`GUIDE-CONTENU.md`](GUIDE-CONTENU.md) | rédaction, contrôles et publication Astro | protocole 1.0 intégré |
-| [`MCP-RELEASE.md`](MCP-RELEASE.md) | release MCP atomique, health check et rollback | dépôt `1.20.0`, public `1.19.0`, tag `mcp-v1.20.0` absent |
+| [`MCP-RELEASE.md`](MCP-RELEASE.md) | release MCP atomique, health check et rollback | `1.20.0` attestée et alignée entre dépôt, release, Registry et production |
 | [`../README.md`](../README.md) | architecture et déploiement statique | `built` publie arbre compatible et enveloppe attestée ; migration serveur à terminer |
 
 ## Surfaces publiques correspondantes

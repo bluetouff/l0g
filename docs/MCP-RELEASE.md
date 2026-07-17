@@ -1,17 +1,16 @@
 # Releases et déploiement du daemon MCP
 
-## État vérifié le 16 juillet 2026
+## État vérifié le 17 juillet 2026
 
-- version déclarée dans le dépôt : `1.20.0` ;
-- version annoncée par le MCP public : `1.19.0` ;
-- tag stable `mcp-v1.20.0` : non publié ;
-- migration vers le poller de releases attestées : non confirmée en production.
+- version déclarée dans le dépôt, le Registry et le MCP public : `1.20.0` ;
+- tag stable et GitHub Release : `mcp-v1.20.0` ;
+- SHA source actif : `478d5e448e9442a7ebc3d1d9e207b6586eafe6d5` ;
+- archive, somme SHA-256 et bundle Sigstore publiés ;
+- poller de releases attestées actif en production ;
+- `/healthz` et `l0g://mcp/server` exposent `releaseAttested: true`.
 
-Les sections suivantes décrivent le contrat cible et la procédure de migration.
-Elles ne doivent pas être lues comme la preuve que la release `1.20.0` est déjà
-active. Après publication, la convergence doit être prouvée par le tag, les
-assets GitHub, l'attestation, `/healthz` côté serveur et `serverInfo.version`
-sur l'endpoint public.
+Cette convergence a été prouvée par le tag, les assets GitHub, l'attestation,
+le runtime atomique actif, `/healthz` et `serverInfo.version` sur l'endpoint public.
 
 Le daemon MCP suit une chaîne distincte du déploiement statique du site. Le Registry reste un
 canal de découverte en preview, principalement destiné aux agrégateurs downstream ; il n'est ni
