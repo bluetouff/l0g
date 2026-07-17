@@ -43,6 +43,24 @@ if ([manifest.version, packageJson.version, packageLock.packages?.['']?.version]
   fail('versions du manifeste, du paquet et du lockfile désalignées');
 }
 
+const requiredFiles = [
+  'server.json',
+  'mcp-server/server.mjs',
+  'mcp-server/package.json',
+  'mcp-server/package-lock.json',
+  'mcp-server/deploy/verify-release.mjs',
+  'src/lib/agent-prompts.mjs',
+  'LICENSE',
+  'README.md',
+  'NOTICE.md',
+  'SECURITY.md',
+  'sbom.cdx.json',
+  'release.env',
+];
+for (const relativePath of requiredFiles) {
+  if (!release.files?.[relativePath]) fail(`fichier obligatoire absent du manifeste: ${relativePath}`);
+}
+
 for (const [relativePath, digest] of Object.entries(release.files || {})) {
   if (!/^[0-9a-f]{64}$/i.test(digest)) fail(`empreinte invalide pour ${relativePath}`);
   const path = resolve(root, relativePath);
@@ -53,5 +71,5 @@ for (const [relativePath, digest] of Object.entries(release.files || {})) {
   if (await sha256(canonicalPath) !== digest) fail(`empreinte incorrecte: ${relativePath}`);
 }
 
-if (!release.files || Object.keys(release.files).length < 8) fail('manifeste de fichiers incomplet');
+if (Object.keys(release.files).length < requiredFiles.length) fail('manifeste de fichiers incomplet');
 process.stdout.write(`${JSON.stringify({ ok: true, version: release.version, gitSha: release.gitSha })}\n`);

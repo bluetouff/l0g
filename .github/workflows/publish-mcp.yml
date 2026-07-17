@@ -187,7 +187,7 @@ jobs:
           else
             gh release create "$GITHUB_REF_NAME" --draft --verify-tag \
               --title "l0g MCP ${MCP_VERSION}" \
-              --notes "Artefact MCP Linux versionné, SBOM CycloneDX embarqué et provenance GitHub/Sigstore. Le Registry est publié seulement après validation du daemon public."
+              --notes-file .github/MCP_RELEASE_NOTES.md
             gh release upload "$GITHUB_REF_NAME" \
               "release/$ARCHIVE" "release/$ARCHIVE.sha256" "release/$ARCHIVE.sigstore.jsonl"
           fi

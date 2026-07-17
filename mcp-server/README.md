@@ -8,10 +8,27 @@ Endpoint public visé : `https://l0g.fr/api/mcp`
 
 ## État de déploiement
 
-Au 17 juillet 2026, le code, la release `mcp-v1.20.0`, le Registry et l'endpoint
-public sont alignés sur `1.20.0`. Le daemon actif sert le SHA
-`478d5e448e9442a7ebc3d1d9e207b6586eafe6d5` avec `releaseAttested: true` depuis
-le runtime atomique `/opt/l0g-mcp-runtime/releases/`.
+La version active, son SHA source et son statut d'attestation ne sont pas figés
+dans cette documentation. Ils sont publiés par la ressource
+`l0g://mcp/server` et vérifiables avec `scripts/verify-public-mcp-release.mjs`.
+Le daemon de production est servi depuis le runtime atomique
+`/opt/l0g-mcp-runtime/releases/`.
+
+## Réutilisation et licences
+
+Tout client compatible MCP peut utiliser le service distant public
+`https://l0g.fr/api/mcp`, sans compte ni clé API. Il s'agit d'un service en
+lecture seule consacré aux données de l0g.fr.
+
+Le code du serveur, ses tests et ses scripts de déploiement sont réutilisables
+sous licence MIT. Les textes, données et artefacts éditoriaux renvoyés par le
+service sont sous licence CC BY 4.0 avec attribution, dans la limite des droits
+détenus par leur auteur. Les éléments tiers conservent leurs propres droits.
+Consulter `LICENSE` et `NOTICE.md` dans l'archive de release.
+
+L'archive Linux/Node publiée est le runtime de production de l0g.fr : elle est
+auditable et redistribuable selon ces licences, mais elle n'est pas présentée
+comme un paquet npm générique prêt à héberger un autre corpus ou domaine.
 
 ## Architecture
 
@@ -82,13 +99,12 @@ aux opérations de recherche, filtrage et synthèse.
 | `l0g://signals/{instrument}/current` | signal courant + historique de franchissement |
 | `l0g://methodologies/{instrument}` | fiche méthodologique |
 
-Le code préparé après la release publique `1.20.0` borne volontairement `resources/list` aux dix
-resources statiques afin de ne pas injecter le catalogue entier dans le contexte des clients. Ce
-changement entrera en production avec la prochaine release MCP immuable. Les articles, guides,
+`resources/list` est volontairement borné aux dix resources statiques afin de ne pas injecter le
+catalogue entier dans le contexte des clients. Les articles, guides,
 claims, sources, signaux et méthodologies restent lisibles par URI via les templates ;
 `resources/templates/list` les découvre et les variables principales conservent leurs callbacks
 de complétion. Les tools de recherche et de filtrage fournissent la découverte ciblée. Le service
-public actuel est stateless en requête/réponse et
+est stateless en requête/réponse et
 n’annonce pas `resources.subscribe` ni `resources.listChanged` : pour surveiller le corpus, lire
 `l0g://changes/latest` ou appeler `get_changefeed`.
 
@@ -192,7 +208,8 @@ sudo apt-get install -y nodejs
 ### 2. Installer une fois le poller de releases attestées
 
 Le runbook complet, le bloc de migration avec sauvegardes et la procédure de release sont dans
-[`docs/MCP-RELEASE.md`](../docs/MCP-RELEASE.md). Après cette migration, le serveur ne lance plus
+[`docs/MCP-RELEASE.md`](https://github.com/bluetouff/l0g/blob/main/docs/MCP-RELEASE.md).
+Après cette migration, le serveur ne lance plus
 `git pull` ni `npm ci` : il poll les GitHub Releases publiques, vérifie SHA-256 et l'attestation
 GitHub/Sigstore, teste le candidat, puis bascule un symlink atomiquement avec rollback automatique.
 

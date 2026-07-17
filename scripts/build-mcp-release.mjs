@@ -44,6 +44,15 @@ for (const path of [
   await cp(join(ROOT, path), target, { force: true });
 }
 
+for (const [source, targetPath] of [
+  ['LICENSES/MIT.txt', 'LICENSE'],
+  ['mcp-server/README.md', 'README.md'],
+  ['mcp-server/NOTICE.md', 'NOTICE.md'],
+  ['SECURITY.md', 'SECURITY.md'],
+]) {
+  await cp(join(ROOT, source), join(releaseDir, targetPath), { force: true });
+}
+
 const nodeModules = join(ROOT, 'mcp-server/node_modules');
 if (!(await stat(nodeModules).catch(() => null))?.isDirectory()) {
   throw new Error('mcp-server/node_modules absent; exécuter npm ci --omit=dev avant le packaging');
@@ -70,6 +79,10 @@ const criticalPaths = [
   'mcp-server/package-lock.json',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
+  'LICENSE',
+  'README.md',
+  'NOTICE.md',
+  'SECURITY.md',
   'sbom.cdx.json',
   'release.env',
 ];

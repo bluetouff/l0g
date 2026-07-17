@@ -1,16 +1,18 @@
 # Releases et déploiement du daemon MCP
 
-## État vérifié le 17 juillet 2026
+## État courant
 
-- version déclarée dans le dépôt, le Registry et le MCP public : `1.20.0` ;
-- tag stable et GitHub Release : `mcp-v1.20.0` ;
-- SHA source actif : `478d5e448e9442a7ebc3d1d9e207b6586eafe6d5` ;
-- archive, somme SHA-256 et bundle Sigstore publiés ;
-- poller de releases attestées actif en production ;
-- `/healthz` et `l0g://mcp/server` exposent `releaseAttested: true`.
+La version active, son SHA source et son statut d'attestation sont publiés par
+la ressource MCP `l0g://mcp/server`. Le dépôt ne duplique pas ici cet état
+volatile. La convergence entre le tag, la GitHub Release, le runtime public et
+le Registry se contrôle avec :
 
-Cette convergence a été prouvée par le tag, les assets GitHub, l'attestation,
-le runtime atomique actif, `/healthz` et `serverInfo.version` sur l'endpoint public.
+```bash
+VERSION="$(node -p "require('./mcp-server/package.json').version")"
+SHA="$(git rev-list -n 1 "mcp-v${VERSION}")"
+node scripts/verify-public-mcp-release.mjs --version "$VERSION" --sha "$SHA"
+node scripts/verify-mcp-registry.mjs --version "$VERSION"
+```
 
 Le daemon MCP suit une chaîne distincte du déploiement statique du site. Le Registry reste un
 canal de découverte en preview, principalement destiné aux agrégateurs downstream ; il n'est ni
@@ -22,8 +24,9 @@ la source du binaire de production ni une preuve que la version annoncée est vi
 - `server.json`, `mcp-server/package.json`, son lockfile, `MCP_VERSION` et le placeholder
   Agent Bench portent exactement la même version.
 - Une version du Registry n'est jamais republiée : ses métadonnées sont immuables.
-- La GitHub Release contient une archive déterministe, son SHA-256, un SBOM CycloneDX et le
-  bundle d'attestation GitHub/Sigstore.
+- La GitHub Release contient une archive déterministe, son SHA-256, le texte MIT, le README,
+  les notices, la politique de sécurité, un SBOM CycloneDX et le bundle d'attestation
+  GitHub/Sigstore.
 - `zen` n'exécute ni `git pull` ni `npm ci`. Il télécharge les trois assets publics et refuse
   l'archive si l'empreinte, l'identité du workflow, le tag, le SHA source ou le manifeste interne
   ne convergent pas.
@@ -64,8 +67,9 @@ npm run build
 Après revue, commit et push de `main`, créer un tag annoté sur le commit déjà validé :
 
 ```bash
-git tag -a mcp-v1.20.0 -m "l0g MCP 1.20.0"
-git push origin mcp-v1.20.0
+VERSION="$(node -p "require('./mcp-server/package.json').version")"
+git tag -a "mcp-v${VERSION}" -m "l0g MCP ${VERSION}"
+git push origin "mcp-v${VERSION}"
 ```
 
 Le tag ne doit pas être déplacé. Une correction crée une nouvelle version SemVer.
