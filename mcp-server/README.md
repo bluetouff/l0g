@@ -141,7 +141,7 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 |------|-----------|---------|
 | `get_agent_manifest` | aucun | capacités, endpoints, règles d'usage et politiques de preuve |
 | `get_risk_indices` | aucun | indices de risque (US, EU, Yen, Energie, Dette US) + résumé confluence |
-| `get_signal_history` | `key?`, `limit?` | historique des franchissements de niveau + état courant + confluence |
+| `get_signal_history` | `key?`, `limit?` | observations datées, identité citable, version méthodologique, franchissements + état courant |
 | `get_risk_diff` | `window?` | Risk Diff sur 1, 7 ou 30 jours : signaux, sources, claims, modèles, articles et confiance |
 | `get_black_box` | `date?`, `limitFrames?` | replay point-in-time des frames de risque hashées, avec refus des dates non rejouables |
 | `get_openapi_schema` | `mode?`, `path?` | contrat OpenAPI résumé, ciblé par endpoint ou complet |

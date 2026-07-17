@@ -80,7 +80,14 @@ function validateOpenapiArtifacts() {
     ['BlackBoxSurface', 'dist/api/v1/black-box.json'],
     ['RiskSnapshot', 'dist/api/v1/risk.json'],
     ['DebtRiskSnapshot', 'dist/api/v1/debt-risk.json'],
+    ['SignalCurrentSurface', 'dist/api/v1/signals/current.json'],
+    ['SignalHistorySurface', 'dist/api/v1/signals/history.json'],
   ];
+
+  const signalHistory = readJson('dist/api/v1/signals/history.json');
+  for (const series of signalHistory.instruments || []) {
+    artifacts.push(['SignalSeriesSurface', `dist/api/v1/signals/${series.slug}/history.json`]);
+  }
 
   for (const [schemaName, path] of artifacts) {
     const validate = ajv.getSchema(`#/components/schemas/${schemaName}`);
@@ -282,6 +289,34 @@ for (const frame of blackBox.frames || []) {
   assert(frame.previousFrameHash === previousFrameHash, `chaîne Black Box rompue: ${frame.frameId}`);
   previousFrameHash = frame.frameHash;
 }
+
+const signalHistory = readJson('dist/api/v1/signals/history.json');
+assert(signalHistory.version === '2', 'Signal History v2 non publié');
+assert(signalHistory.coverage?.archiveFrames === blackBox.coverage?.frames, 'Signal History ne reprend pas toutes les frames Black Box');
+assert(
+  signalHistory.coverage?.appendOnlyVerifiedObservations === (blackBox.frames || []).reduce((total, frame) => total + (frame.signals || []).length, 0),
+  'Signal History ne reprend pas tous les signaux append-only des frames',
+);
+assert(signalHistory.instruments?.length === 5, 'registre des cinq séries de risque incomplet');
+assert((signalHistory.instruments || []).every((series) => (
+  series.seriesId
+  && series.name
+  && series.citationName
+  && series.methodologyVersion
+  && series.downloads?.json
+  && series.downloads?.ndjson
+  && series.downloads?.csv
+  && series.coverage?.appendOnlyVerifiedObservations === blackBox.coverage?.frames
+)), 'identité, exports ou couverture append-only incomplets pour une série');
+assert((signalHistory.observations || []).every((item, index, rows) => (
+  item.seriesDate
+  && item.seriesId
+  && item.methodologyVersionStatus
+  && (index === 0 || rows[index - 1].seriesDate <= item.seriesDate)
+)), 'observations sans identité/date/version ou ordre chronologique invalide');
+assert(new Set((signalHistory.observations || []).map((item) => item.recordId)).size === signalHistory.observations.length, 'recordId de série dupliqué');
+assert((signalHistory.observations || []).some((item) => item.methodologyVersionStatus === 'unversioned-legacy'), 'les frames pré-versionnage ne sont pas signalées comme legacy');
+assert((signalHistory.observations || []).some((item) => item.methodologyVersionStatus === 'versioned'), 'aucun point méthodologique versionné publié');
 
 const malformedGuideLinks = llmsFull
   .split('\n')

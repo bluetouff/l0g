@@ -53,7 +53,7 @@ const ALLOWED_ORIGINS = new Set(
 const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.20.2';
+const MCP_VERSION = '1.20.3';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -633,10 +633,17 @@ const RiskIndicesOutput = ToolOutput.extend({
   source: z.string().optional(),
 }).passthrough();
 const SignalHistoryOutput = ToolOutput.extend({
+  version: z.string().optional(),
+  generated: z.string().nullable().optional(),
   updated: z.string().nullable().optional(),
+  coverage: AnyRecord.optional(),
   filters: AnyRecord.optional(),
+  instruments: z.array(AnyRecord).optional(),
   current: AnyRecord.optional(),
+  observations: z.array(z.any()).optional(),
+  levelChanges: z.array(z.any()).optional(),
   events: z.array(z.any()).optional(),
+  policy: AnyRecord.optional(),
   confluence: AnyRecord.optional(),
   caveat: z.string().optional(),
 }).passthrough();
@@ -1746,31 +1753,51 @@ function buildServer(data) {
     'get_signal_history',
     {
       description:
-        "Renvoie l'historique des changements de niveau des signaux l0g, l'état courant des scores et la confluence 13FLOW. " +
-        "À utiliser pour distinguer niveau courant, franchissement de seuil et signal de marché historisé.",
+        "Renvoie les observations datées des séries l0g, leur identité citable, leur version méthodologique, " +
+        "les changements de niveau, l'état courant des scores et la confluence 13FLOW.",
       inputSchema: {
         key: z.enum(['us', 'eu', 'yen', 'energie', 'debt']).optional().describe('Signal optionnel : us, eu, yen, energie ou debt.'),
-        limit: z.number().int().min(1).max(50).default(20).describe("Nombre maximum d'événements historiques."),
+        limit: z.number().int().min(1).max(500).default(100).describe("Nombre maximum d'observations et d'événements retournés."),
       },
       outputSchema: SignalHistoryOutput,
       annotations: { readOnlyHint: true },
     },
     async ({ key, limit }) => {
-      const current = signals;
-      let events = Array.isArray(riskEvents?.events) ? riskEvents.events.slice() : [];
-      if (key) events = events.filter((event) => event.key === key);
-      events.sort((a, b) => String(b.ts).localeCompare(String(a.ts)));
+      const history = signalHistory || {};
+      const historyCurrent = history.current && typeof history.current === 'object' ? history.current : signals;
+      let observations = Array.isArray(history.observations) ? history.observations.slice() : [];
+      let levelChanges = Array.isArray(history.levelChanges)
+        ? history.levelChanges.slice()
+        : Array.isArray(riskEvents?.events)
+          ? riskEvents.events.slice()
+          : [];
+      if (key) {
+        observations = observations.filter((item) => item.instrument === key || item.key === key);
+        levelChanges = levelChanges.filter((item) => item.instrument === key || item.key === key);
+      }
+      observations.sort((a, b) => String(b.seriesDate || b.observedAt).localeCompare(String(a.seriesDate || a.observedAt)));
+      levelChanges.sort((a, b) => String(b.observedAt || b.ts).localeCompare(String(a.observedAt || a.ts)));
+      const instruments = Array.isArray(history.instruments)
+        ? history.instruments.filter((item) => !key || item.key === key)
+        : [];
       return reply({
-        updated: riskEvents?.updated || risk?.snapshot || risk?.generated || null,
+        version: history.version || '2',
+        generated: history.generated || null,
+        updated: history.generated || riskEvents?.updated || risk?.snapshot || risk?.generated || null,
+        coverage: history.coverage || {},
         filters: { key: key || null },
-        current: key ? { [key]: current[key] ?? null } : current,
-        events: events.slice(0, limit),
+        instruments,
+        current: key ? { [key]: historyCurrent[key] ?? null } : historyCurrent,
+        observations: observations.slice(0, limit),
+        levelChanges: levelChanges.slice(0, limit),
+        events: levelChanges.slice(0, limit),
+        policy: history.policy || {},
         confluence: {
           updated: confluence?.updated || risk?.confluence?.updated || null,
           items: (confluence?.items || []).slice(0, 20),
           summary: risk?.confluence || null,
         },
-        caveat: "Les scores 0-100 sont normalisés par instrument ; l'historique signale surtout les franchissements de niveau.",
+        caveat: "Les scores 0-100 sont normalisés par instrument. Utiliser seriesDate pour la publication l0g et observedAt pour la date économique amont lorsqu'elle existe.",
       });
     }
   );

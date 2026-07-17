@@ -230,6 +230,18 @@ export const editorialProtocol = {
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
   {
+    date: '2026-07-17',
+    title: 'Registre des séries de risque nommées et versionnées',
+    kind: 'données',
+    summary:
+      'Chaque jauge du tableau consolidé reçoit un identifiant stable, un nom citable, des exports JSON, NDJSON et CSV dédiés, une date de série issue de la frame Black Box et une version méthodologique. Les frames antérieures au registre restent explicitement non versionnées ; aucun backfill rétroactif n’est produit.',
+    links: [
+      { label: 'séries', href: '/series/' },
+      { label: 'backtests', href: '/backtests/' },
+      { label: 'schéma', href: '/api/v1/signals/schema.json' },
+    ],
+  },
+  {
     date: '2026-07-16',
     title: 'l0g Editorial Protocol 1.0 stable',
     kind: 'protocole',

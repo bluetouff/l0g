@@ -11,7 +11,7 @@ const alternateLinks = [
 ];
 
 const endpoints = [
-  ['/en/agent-surface/', 'HTML', 'English documentation for Agent Surface v1.13.0.'],
+  ['/en/agent-surface/', 'HTML', 'English documentation for Agent Surface v1.14.0.'],
   ['/agents.json', 'JSON', 'Discovery manifest for agents: capabilities, endpoints, usage rules and proof policy.'],
   ['/openapi.json', 'OPENAPI', 'OpenAPI 3.1 contract for l0g machine-to-machine endpoints.'],
   ['/api/v1/claims.json', 'JSON', 'Typed claim-source graph with references and dates when detectable.'],
@@ -31,6 +31,7 @@ const endpoints = [
   ['/api/v1/debt-risk.json', 'JSON', 'Canonical Debt Risk Radar snapshot imported from latest.json.'],
   ['/api/v1/risk.xml', 'Atom', 'Level-change feed for alerting bots and SIEM-like watchers.'],
   ['/api/v1/signals/current.json', 'JSON', 'Latest point-in-time observations by instrument.'],
+  ['/series/', 'HTML', 'Named signal-series registry with stable identifiers, methodology versions and dedicated downloads.'],
   ['/api/v1/signals/history.json', 'JSON', 'Complete point-in-time signal history: coverage, policy, current, observations and level changes.'],
   ['/api/v1/signals/history.ndjson', 'NDJSON', 'Signal history line-by-line: meta, observations and level-change events.'],
   ['/api/v1/signals/history.csv', 'CSV', 'Flat observations for pandas, R, DuckDB or spreadsheets.'],
@@ -41,7 +42,7 @@ const datasetLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
   '@id': `${enUrl}#dataset`,
-  name: 'l0g public API and Agent Surface 1.13',
+  name: 'l0g public API and Agent Surface 1.14',
   description: 'Public machine-to-machine surface for l0g: Agent Surface, Risk Diff, Black Box Recorder, sourced claims, evidence graph, risk snapshots, canonical debt-risk and point-in-time signal history.',
   url: enUrl,
   inLanguage: 'en',
@@ -66,7 +67,7 @@ const datasetLd = {
       Public <span style="color: var(--color-accent)">API</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
-      This page inventories the bilingual l0g machine surface: Agent Surface 1.13, shared search index, sourced canonical claims, evidence graph, Risk Diff, Black Box Recorder, risk snapshots, canonical <code class="apic">debt-risk.json</code> and <code class="apic">signals/history</code> for replay and backtests. CORS is open. No key, no authentication, no tracking.
+      This page inventories the bilingual l0g machine surface: Agent Surface 1.14, shared search index, sourced canonical claims, evidence graph, Risk Diff, Black Box Recorder, and named, dated, versioned signal series. CORS is open. No key, no authentication, no tracking.
     </p>
     <p class="mono-label mt-4"><a class="link-term" href="/api/">Version française →</a></p>
   </section>
@@ -75,7 +76,7 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoints</h2>
       <p class="mt-3 text-paper">
-        Public endpoints, no key and no authentication. Agent Surface 1.13 is the bilingual reading contract for agents; risk endpoints remain specialized snapshots.
+        Public endpoints, no key and no authentication. Agent Surface 1.14 is the bilingual reading contract for agents; risk endpoints remain specialized snapshots.
       </p>
       <div class="ep-list mt-4">
         {endpoints.map(([path, type, desc]) => (
@@ -100,18 +101,18 @@ const datasetLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// point-in-time history</h2>
       <p class="mt-3 text-paper">
-        The <code class="apic">signals/history</code> surface is point-in-time: each observation keeps <code class="apic">observedAt</code>, <code class="apic">sourcePublishedAt</code>, <code class="apic">retrievedAt</code>, <code class="apic">computedAt</code> and <code class="apic">snapshotHash</code>. Backtests use what was actually published or collected at time T, without look-ahead bias.
+        The <code class="apic">signals/history</code> surface is point-in-time: <code class="apic">seriesDate</code> dates the l0g publication proven by an archived frame, while <code class="apic">observedAt</code> dates the upstream economic observation when available. Every point also carries <code class="apic">methodologyVersion</code>, <code class="apic">snapshotHash</code> and append-only proof fields.
       </p>
       <div class="codeblock"><pre class="apipre"><code>{`import pandas as pd
 
-df = pd.read_csv("https://l0g.fr/api/v1/signals/history.csv", parse_dates=["observedAt", "retrievedAt"])
-df = df.set_index("observedAt").sort_index()`}</code></pre></div>
+df = pd.read_csv("https://l0g.fr/api/v1/signals/thermometre-stress-dette/history.csv", parse_dates=["seriesDate"])
+df = df.set_index("seriesDate").sort_index()`}</code></pre></div>
     </div>
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// fields and guardrails</h2>
       <ul class="api-list mt-3">
-        <li><code class="apic">Agent Surface 1.13</code>: bilingual M2M contract, with <code class="apic">/agents.json</code> for discovery, <code class="apic">/openapi.json</code> for schema and <code class="apic">/api/v1/integrity.json</code> for snapshot verification.</li>
+        <li><code class="apic">Agent Surface 1.14</code>: bilingual M2M contract, with <code class="apic">/agents.json</code> for discovery, <code class="apic">/openapi.json</code> for schema and <code class="apic">/api/v1/integrity.json</code> for snapshot verification.</li>
         <li><code class="apic">language</code>, <code class="apic">canonicalId</code>, <code class="apic">translationOf</code>, <code class="apic">alternateUrl</code> and <code class="apic">translationStatus</code> link each translation to its French source.</li>
         <li><code class="apic">/api/v1/debt-risk.json</code>: canonical US Debt signal, imported from <code class="apic">https://debt.l0g.fr/latest.json</code>, with provenance and coverage when available.</li>
         <li><code class="apic">/api/v1/signals/history.json</code>: complete surface for replay, with <code class="apic">coverage</code>, <code class="apic">policy</code>, <code class="apic">current</code>, <code class="apic">observations</code> and <code class="apic">levelChanges</code>.</li>

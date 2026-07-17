@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import { buildSignalHistorySurface } from '../../lib/signal-history.ts';
+
+const history = buildSignalHistorySurface();
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const trustItems = [
+  { label: 'archive append-only', href: '/black-box/' },
+  { label: 'méthodes versionnées', href: '/changelog-editorial/' },
+  { label: 'CSV par série', href: '#series' },
+  { label: 'CC BY 4.0', href: 'https://creativecommons.org/licenses/by/4.0/' },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site}/series/#collection`,
+  name: 'Séries de risque l0g',
+  description: 'Registre public des séries de risque l0g nommées, datées, téléchargeables et reliées à une méthodologie versionnée.',
+  url: `${site}/series/`,
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: history.instruments.map((series, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: series.name,
+      url: series.page,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Séries de risque l0g"
+  description="Séries de risque l0g nommées, datées, téléchargeables et reliées à une méthodologie versionnée et une archive append-only."
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <article class="series-page rise" data-pagefind-body>
+    <section class="series-hero">
+      <p class="mono-label glow">// séries l0g</p>
+      <h1 class="series-title font-display glow">Un signal nommé peut devenir une référence.</h1>
+      <p class="series-lede">
+        Chaque jauge du tableau consolidé possède désormais un identifiant stable, un nom citable,
+        une série datée et ses propres exports. La preuve historique commence avec la première
+        frame Black Box disponible ; aucun passé manquant n’est reconstruit.
+      </p>
+      <TrustBar items={trustItems} />
+    </section>
+
+    <section class="series-metrics" aria-label="Couverture des séries">
+      <div><span>séries nommées</span><strong>{history.instruments.length}</strong></div>
+      <div><span>points publiés</span><strong>{history.coverage.observations}</strong></div>
+      <div><span>points append-only</span><strong>{history.coverage.appendOnlyVerifiedObservations}</strong></div>
+      <div>
+        <span>début probant</span>
+        <strong class="date">
+          {history.coverage.firstSeriesDate ? <FreshnessBadge date={new Date(history.coverage.firstSeriesDate)} compact /> : 'n/a'}
+        </strong>
+      </div>
+    </section>
+
+    <section class="series-section" id="series">
+      <p class="mono-label glow">// registre</p>
+      <div class="series-grid">
+        {history.instruments.map((series) => {
+          const current = history.current[series.key];
+          return (
+            <article class="series-card">
+              <div class="series-card-head">
+                <span>{series.seriesId}</span>
+                <strong>{current?.value ?? 'n/a'}{current ? `/${current.scale}` : ''}</strong>
+              </div>
+              <h2><a href={`/series/${series.slug}/`}>{series.name}</a></h2>
+              <p>{series.description}</p>
+              <dl>
+                <div><dt>méthode</dt><dd>{series.methodologyVersion}</dd></div>
+                <div><dt>points</dt><dd>{series.coverage.observations}</dd></div>
+                <div><dt>append-only</dt><dd>{series.coverage.appendOnlyVerifiedObservations}</dd></div>
+              </dl>
+              <div class="series-links">
+                <a href={`/series/${series.slug}/`}>fiche</a>
+                <a href={series.downloads.csv}>CSV</a>
+                <a href={series.downloads.json}>JSON</a>
+                <a href={series.methodology}>méthode</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="series-section series-note">
+      <p class="mono-label glow">// règle de continuité</p>
+      <p>
+        <code>seriesDate</code> est la date de publication l0g garantie par la frame archivée.
+        <code>observedAt</code> décrit la date économique amont et peut rester vide. Les points
+        antérieurs au lancement du registre méthodologique du 17 juillet 2026 restent marqués
+        <code>unversioned-legacy</code> : ils ne sont ni supprimés ni requalifiés rétroactivement.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .series-page { max-width: 68rem; }
+    .series-hero { padding-bottom: 2.2rem; border-bottom: 1px solid var(--color-line); }
+    .series-title { margin-top: 1rem; max-width: 54rem; font-size: clamp(2.1rem, 5vw, 3.5rem); line-height: 1.06; color: var(--color-bright); }
+    .series-lede { margin-top: 1.1rem; max-width: 52rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: 1.12rem; line-height: 1.7; }
+    .series-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 2rem; }
+    @media (min-width: 820px) { .series-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .series-metrics > div, .series-card, .series-note { border: 1px solid var(--color-line); border-radius: 8px; background: color-mix(in srgb, var(--color-surface) 45%, transparent); }
+    .series-metrics > div { min-height: 6.5rem; padding: 1rem; }
+    .series-metrics span, .series-card-head span, dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; }
+    .series-metrics strong { display: block; margin-top: .45rem; color: var(--color-signal); font-size: 1.6rem; }
+    .series-metrics .date { font-size: .85rem; }
+    .series-section { margin-top: 3rem; }
+    .series-grid { display: grid; gap: 1rem; margin-top: 1rem; }
+    @media (min-width: 820px) { .series-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .series-card { padding: 1.1rem; }
+    .series-card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .series-card-head strong { color: var(--color-amber); font-family: var(--font-mono); }
+    .series-card h2 { margin-top: .75rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+    .series-card h2 a { color: inherit; text-decoration: none; }
+    .series-card p { margin-top: .6rem; color: var(--color-muted); line-height: 1.6; }
+    .series-card dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-top: 1rem; }
+    .series-card dl div { border-top: 1px solid var(--color-line); padding-top: .55rem; }
+    dd { margin: .2rem 0 0; color: var(--color-paper); font-family: var(--font-mono); font-size: .8rem; }
+    .series-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1rem; }
+    .series-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; }
+    .series-note { padding: 1rem; }
+    .series-note p:last-child { margin-top: .65rem; color: var(--color-paper); font-family: var(--font-read); line-height: 1.7; }
+    .series-note code { color: var(--color-amber); }
+  </style>
+</BaseLayout>

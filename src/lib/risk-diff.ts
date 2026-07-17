@@ -58,14 +58,14 @@ function addDays(anchor: string, days: number) {
 
 function latestObservation(observations: SignalObservation[]) {
   return observations
-    .filter((item) => item.value != null && item.observedAt)
-    .sort((a, b) => String(b.observedAt).localeCompare(String(a.observedAt)))[0] ?? null;
+    .filter((item) => item.value != null && item.seriesDate)
+    .sort((a, b) => b.seriesDate.localeCompare(a.seriesDate))[0] ?? null;
 }
 
 function baselineObservation(observations: SignalObservation[], since: string) {
   return observations
-    .filter((item) => item.value != null && item.observedAt && Date.parse(item.observedAt) <= Date.parse(since))
-    .sort((a, b) => String(b.observedAt).localeCompare(String(a.observedAt)))[0] ?? null;
+    .filter((item) => item.value != null && Date.parse(item.seriesDate) <= Date.parse(since))
+    .sort((a, b) => b.seriesDate.localeCompare(a.seriesDate))[0] ?? null;
 }
 
 function moveTone(delta: number | null) {
@@ -211,6 +211,7 @@ function buildSignalMoves(window: WindowSpec, anchor: string) {
       source: riskSignalMeta[instrument]?.source ?? null,
       methodology: riskSignalMeta[instrument]?.methodology ?? null,
       current: current ? {
+        seriesDate: current.seriesDate,
         observedAt: current.observedAt,
         value: current.value,
         level: current.level,
@@ -218,6 +219,7 @@ function buildSignalMoves(window: WindowSpec, anchor: string) {
         snapshotHash: current.snapshotHash,
       } : null,
       baseline: baseline ? {
+        seriesDate: baseline.seriesDate,
         observedAt: baseline.observedAt,
         value: baseline.value,
         level: baseline.level,
@@ -239,6 +241,8 @@ function buildSignalMoves(window: WindowSpec, anchor: string) {
     coverage: {
       instruments: moves.length,
       withBaseline: moves.filter((move) => move.baseline).length,
+      historyFirstSeriesDate: history.coverage.firstSeriesDate,
+      historyLastSeriesDate: history.coverage.lastSeriesDate,
       historyFirstObservedAt: history.coverage.firstObservedAt,
       historyLastObservedAt: history.coverage.lastObservedAt,
     },
@@ -248,7 +252,7 @@ function buildSignalMoves(window: WindowSpec, anchor: string) {
 export function buildRiskDiffSurface(posts: PostEntry[], guides: GuideEntry[], risk: RiskSnapshotInput | null) {
   const signalHistory = buildSignalHistorySurface();
   const anchor =
-    signalHistory.coverage.lastObservedAt ??
+    signalHistory.coverage.lastSeriesDate ??
     iso(risk?.updated) ??
     generatedAt();
   const freshness = buildFreshnessSurface(sortPosts(posts), sortGuides(guides), risk);

@@ -1,0 +1,195 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CitationBox from '../../components/CitationBox.astro';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import {
+  buildSignalSeriesSurface,
+  signalSeriesRegistry,
+  type SignalKey,
+} from '../../lib/signal-history.ts';
+
+export const getStaticPaths = (() =>
+  signalSeriesRegistry().map((series) => ({
+    params: { slug: series.slug },
+    props: { key: series.key },
+  }))) satisfies GetStaticPaths;
+
+const { key } = Astro.props as { key: SignalKey };
+const surface = buildSignalSeriesSurface(key);
+const { series } = surface;
+const values = surface.observations.filter((item) => typeof item.value === 'number');
+const width = 820;
+const height = 250;
+const padX = 42;
+const padY = 24;
+const times = values.map((item) => new Date(item.seriesDate).getTime());
+const minTime = Math.min(...times);
+const maxTime = Math.max(...times);
+const span = Math.max(1, maxTime - minTime);
+const chartPoints = values.map((item, index) => {
+  const time = new Date(item.seriesDate).getTime();
+  const x = values.length === 1 ? width / 2 : padX + ((time - minTime) / span) * (width - padX * 2);
+  const y = height - padY - ((item.value as number) / 100) * (height - padY * 2);
+  return { x, y, item, index };
+});
+const path = chartPoints.map((point, index) => `${index ? 'L' : 'M'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' ');
+const latestRows = [...surface.observations].reverse().slice(0, 30);
+const pageUrl = `${(Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '')}/series/${series.slug}/`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${pageUrl}#dataset`,
+  name: series.name,
+  alternateName: series.seriesId,
+  description: series.description,
+  url: pageUrl,
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  temporalCoverage: series.coverage.firstSeriesDate && series.coverage.lastSeriesDate
+    ? `${series.coverage.firstSeriesDate}/${series.coverage.lastSeriesDate}`
+    : undefined,
+  measurementTechnique: `Méthodologie ${series.methodologyVersion} : ${series.methodology}`,
+  distribution: [
+    { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: series.downloads.json },
+    { '@type': 'DataDownload', encodingFormat: 'application/x-ndjson', contentUrl: series.downloads.ndjson },
+    { '@type': 'DataDownload', encodingFormat: 'text/csv', contentUrl: series.downloads.csv },
+  ],
+};
+---
+
+<BaseLayout title={series.name} description={series.description} sidebar={false}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <article class="signal-page rise" data-pagefind-body>
+    <header class="signal-hero">
+      <p class="mono-label glow">// {series.seriesId}</p>
+      <h1 class="signal-title font-display glow">{series.name}</h1>
+      <p class="signal-lede">{series.description}</p>
+      <div class="signal-actions">
+        <a href={series.downloads.csv}>Télécharger CSV</a>
+        <a href={series.downloads.json}>JSON</a>
+        <a href={series.downloads.ndjson}>NDJSON</a>
+        <a href={series.methodology}>Méthodologie</a>
+      </div>
+    </header>
+
+    <section class="signal-metrics">
+      <div><span>valeur courante</span><strong>{surface.current?.value ?? 'n/a'}{surface.current ? `/${surface.current.scale}` : ''}</strong></div>
+      <div><span>observations</span><strong>{surface.coverage.observations}</strong></div>
+      <div><span>append-only</span><strong>{surface.coverage.appendOnlyVerifiedObservations}</strong></div>
+      <div>
+        <span>dernier point</span>
+        <strong class="date">{surface.coverage.lastSeriesDate ? <FreshnessBadge date={new Date(surface.coverage.lastSeriesDate)} compact /> : 'n/a'}</strong>
+      </div>
+    </section>
+
+    <section class="signal-section">
+      <p class="mono-label glow">// série publiée</p>
+      <div class="chart-wrap">
+        {chartPoints.length ? (
+          <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`Évolution de ${series.name} sur une échelle de 0 à 100`}>
+            {[0, 25, 50, 75, 100].map((tick) => {
+              const y = height - padY - (tick / 100) * (height - padY * 2);
+              return (
+                <g>
+                  <line x1={padX} y1={y} x2={width - padX} y2={y} stroke="rgba(154,163,175,.22)" />
+                  <text x="4" y={y + 4} fill="#9aa3af" font-size="12" font-family="monospace">{tick}</text>
+                </g>
+              );
+            })}
+            <path d={path} fill="none" stroke="#5eead4" stroke-width="3" />
+            {chartPoints.map((point) => (
+              <circle cx={point.x} cy={point.y} r="4" fill={point.item.appendOnlyVerified ? '#5eead4' : '#ffd166'}>
+                <title>{`${point.item.seriesDate} · ${point.item.value}/100`}</title>
+              </circle>
+            ))}
+          </svg>
+        ) : <p>Aucun point numérique disponible.</p>}
+      </div>
+      <p class="chart-caption">
+        Axe vertical 0-100 propre à cet instrument. Les points verts sont reliés à une frame
+        append-only ; un point jaune représente le snapshot du build courant avant archivage.
+      </p>
+    </section>
+
+    <section class="signal-section split">
+      <div class="info-card">
+        <p class="mono-label glow">// identité</p>
+        <dl>
+          <div><dt>identifiant stable</dt><dd>{series.seriesId}</dd></div>
+          <div><dt>version d’identité</dt><dd>{series.identityVersion}, depuis {series.identityEffectiveFrom}</dd></div>
+          <div><dt>dashboard source</dt><dd><a href={series.source}>{series.dashboardLabel}</a></dd></div>
+          <div><dt>licence</dt><dd>CC BY 4.0</dd></div>
+        </dl>
+      </div>
+      <div class="info-card">
+        <p class="mono-label glow">// méthode</p>
+        <dl>
+          <div><dt>version courante</dt><dd>{series.methodologyVersion}</dd></div>
+          <div><dt>versionnée depuis</dt><dd>{series.methodologyEffectiveFrom}</dd></div>
+          <div><dt>fiche</dt><dd><a href={series.methodology}>méthodologie complète</a></dd></div>
+          <div><dt>révisions</dt><dd><a href={series.methodologyChangelog}>changelog éditorial</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="signal-section">
+      <p class="mono-label glow">// derniers points</p>
+      <div class="points-table">
+        <div class="point-row head"><span>seriesDate</span><span>valeur</span><span>méthode</span><span>preuve</span></div>
+        {latestRows.map((item) => (
+          <div class="point-row">
+            <time datetime={item.seriesDate}>{item.seriesDate}</time>
+            <strong>{item.value ?? 'n/a'}/{item.scale}</strong>
+            <span>{item.methodologyVersion ?? 'non versionnée'}</span>
+            <span>{item.appendOnlyVerified ? 'frame hashée' : 'build courant'}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="signal-section warning">
+      <p class="mono-label glow">// limite historique</p>
+      <p>{surface.policy.noRetroactiveBackfill}</p>
+      <p>{surface.policy.methodologyDiscipline}</p>
+    </section>
+
+    <CitationBox title={series.citationName} url={pageUrl} kind="série de données" updated={new Date(surface.generated)} />
+  </article>
+
+  <style>
+    .signal-page { max-width: 68rem; }
+    .signal-hero { padding-bottom: 2.1rem; border-bottom: 1px solid var(--color-line); }
+    .signal-title { margin-top: 1rem; max-width: 56rem; color: var(--color-bright); font-size: clamp(2rem, 5vw, 3.35rem); line-height: 1.08; }
+    .signal-lede { margin-top: 1rem; max-width: 52rem; color: var(--color-paper); font-family: var(--font-read); font-size: 1.12rem; line-height: 1.7; }
+    .signal-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.2rem; }
+    .signal-actions a { border: 1px solid color-mix(in srgb, var(--color-signal) 50%, var(--color-line)); border-radius: 999px; padding: .42rem .7rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; text-decoration: none; text-transform: uppercase; }
+    .signal-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 2rem; }
+    @media (min-width: 800px) { .signal-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .signal-metrics > div, .chart-wrap, .info-card, .warning { border: 1px solid var(--color-line); border-radius: 8px; background: color-mix(in srgb, var(--color-surface) 45%, transparent); }
+    .signal-metrics > div { min-height: 6.3rem; padding: 1rem; }
+    .signal-metrics span, dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; }
+    .signal-metrics strong { display: block; margin-top: .45rem; color: var(--color-signal); font-size: 1.55rem; }
+    .signal-metrics .date { font-size: .83rem; }
+    .signal-section { margin-top: 3rem; }
+    .chart-wrap { margin-top: 1rem; padding: .8rem; overflow-x: auto; }
+    .chart-wrap svg { display: block; min-width: 42rem; width: 100%; height: auto; }
+    .chart-caption { margin-top: .65rem; color: var(--color-muted); font-size: .85rem; line-height: 1.55; }
+    .split { display: grid; gap: 1rem; }
+    @media (min-width: 800px) { .split { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .info-card, .warning { padding: 1rem; }
+    .info-card dl { display: grid; gap: .75rem; margin-top: 1rem; }
+    .info-card dl div { border-top: 1px solid var(--color-line); padding-top: .6rem; }
+    dd { margin: .25rem 0 0; color: var(--color-paper); }
+    dd a { color: var(--color-signal); }
+    .points-table { margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 8px; overflow-x: auto; }
+    .point-row { display: grid; grid-template-columns: minmax(15rem, 1.5fr) repeat(3, minmax(8rem, 1fr)); min-width: 48rem; border-top: 1px solid var(--color-line); }
+    .point-row:first-child { border-top: 0; }
+    .point-row > * { padding: .7rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .75rem; }
+    .point-row strong { color: var(--color-paper); }
+    .point-row.head span { color: var(--color-signal); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
+    .warning p:not(.mono-label) { margin-top: .6rem; color: var(--color-paper); font-family: var(--font-read); line-height: 1.65; }
+  </style>
+</BaseLayout>

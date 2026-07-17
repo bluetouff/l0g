@@ -232,7 +232,13 @@ console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join
 
 const signalHistory = await call('get_signal_history', { key: 'debt', limit: 5 });
 if (!signalHistory.current?.debt) throw new Error('get_signal_history(debt) doit exposer le signal courant debt.');
-console.log('get_signal_history(debt) -> events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.debt));
+if (!signalHistory.observations?.length || !signalHistory.observations.every((item) => item.instrument === 'debt')) {
+  throw new Error('get_signal_history(debt) doit exposer les observations datées de la série debt.');
+}
+if (!signalHistory.instruments?.[0]?.seriesId || !signalHistory.observations[0]?.seriesDate) {
+  throw new Error('get_signal_history(debt) sans identité citable ou seriesDate.');
+}
+console.log('get_signal_history(debt) -> observations:', signalHistory.observations.length, '| events:', signalHistory.events?.length, '| current:', Boolean(signalHistory.current?.debt));
 
 const riskDiff = await call('get_risk_diff', { window: '7d' });
 if (!riskDiff.selectedWindow?.window) throw new Error('get_risk_diff(7d) doit exposer une fenêtre sélectionnée.');

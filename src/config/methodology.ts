@@ -31,8 +31,8 @@ export interface MethodologyPage {
   reproducibility: string[];
 }
 
-export const methodologyUpdated = '16 juillet 2026';
-export const methodologyUpdatedIso = '2026-07-16';
+export const methodologyUpdated = '17 juillet 2026';
+export const methodologyUpdatedIso = '2026-07-17';
 
 export const riskBandScaleCaveat = {
   title: 'Normalisation d’affichage, pas indice unique',

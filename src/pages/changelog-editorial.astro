@@ -22,7 +22,7 @@ const jsonLd = {
     'Journal des changements éditoriaux structurants de l0g.fr : protocole, sources, données, méthode, sécurité et traçabilité.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
-  dateModified: editorialProtocol.updated,
+  dateModified: editorialChangelog[0]?.date ?? editorialProtocol.updated,
   publisher: { '@id': `${site}/#org` },
   mainEntity: {
     '@type': 'ItemList',

@@ -4,6 +4,7 @@ import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { methodologyPages, methodologyUpdatedIso, riskBandScaleCaveat, type MethodologyPage } from '../../config/methodology.ts';
+import { SIGNAL_KEYS, riskSignalMeta } from '../../config/risk-signals.ts';
 
 export function getStaticPaths() {
   return methodologyPages.map((page) => ({
@@ -19,6 +20,10 @@ interface Props {
 const { page } = Astro.props;
 const updatedDate = new Date(`${methodologyUpdatedIso}T00:00:00+02:00`);
 const isRiskBandInstrument = page.slug !== '13flow';
+const signalEntry = SIGNAL_KEYS
+  .map((key) => ({ key, meta: riskSignalMeta[key] }))
+  .find(({ meta }) => meta.methodology.endsWith(`/methodologie/${page.slug}/`));
+const signalIdentity = signalEntry?.meta.identity;
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -67,6 +72,7 @@ const trustItems = [
         <a class="method-action primary" href={page.dashboardUrl} target="_blank" rel="noopener">ouvrir l'outil</a>
         <a class="method-action" href={page.repoUrl} target="_blank" rel="noopener">code source</a>
         <a class="method-action" href="/backtests/">backtests</a>
+        {signalIdentity && <a class="method-action" href={`/series/${signalIdentity.slug}/`}>série datée</a>}
         <a class="method-action" href="/methodologie/">hub méthodo</a>
       </div>
       <p class="method-updated" data-pagefind-ignore>
@@ -180,14 +186,26 @@ const trustItems = [
       <ul class="method-list repro">
         {page.reproducibility.map((item) => <li>{item}</li>)}
       </ul>
-      <p class="method-p">
-        L'historique public des signaux est disponible sur
-        <a class="link-term" href="/backtests/">/backtests/</a>, avec exports
-        <a class="link-term" href="/api/v1/signals/history.csv">CSV</a>,
-        <a class="link-term" href="/api/v1/signals/history.ndjson">NDJSON</a> et
-        <a class="link-term" href="/api/v1/signals/schema.json">schéma JSON</a>
-        pour auditer les observations point-in-time.
-      </p>
+      {signalIdentity ? (
+        <div class="scale-note">
+          <p class="mono-label">série citable · méthode {signalIdentity.methodologyVersion}</p>
+          <p>
+            Le signal est publié sous le nom <strong>{signalIdentity.citationName}</strong>,
+            identifiant stable <code>{signalIdentity.seriesId}</code>. Sa
+            <a class="link-term" href={`/series/${signalIdentity.slug}/`}> série datée</a> dispose
+            d'exports dédiés <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.csv`}>CSV</a>,
+            <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.json`}> JSON</a> et
+            <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.ndjson`}> NDJSON</a>.
+            Le versionnage méthodologique commence le {signalIdentity.methodologyEffectiveFrom} ;
+            les points antérieurs restent explicitement non versionnés.
+          </p>
+        </div>
+      ) : (
+        <p class="method-p">
+          L'historique public des signaux est disponible sur
+          <a class="link-term" href="/backtests/">/backtests/</a>.
+        </p>
+      )}
       <p class="method-disclaimer" data-pagefind-ignore>
         Cette fiche décrit un instrument de lecture, pas un système de décision. Les scores
         réduisent le bruit ; ils ne remplacent ni les sources primaires ni le jugement.

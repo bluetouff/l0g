@@ -21,6 +21,7 @@ const instruments = history.instruments.map((instrument) => {
 
 const trustItems = [
   { label: 'point-in-time', href: '#contrat' },
+  { label: 'séries nommées', href: '/series/' },
   { label: 'CSV + NDJSON', href: '#exports' },
   { label: 'hashes', href: '/api/v1/integrity.json' },
   { label: 'méthodes', href: '/methodologie/' },
@@ -72,8 +73,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <h1 class="bt-title font-display glow">Les signaux doivent pouvoir être rejoués.</h1>
       <p class="bt-lede">
         Un indicateur qui ne garde pas son historique demande qu'on lui fasse confiance.
-        l0g publie les observations point-in-time de ses signaux pour que chacun puisse
-        vérifier, rejouer, casser ou améliorer les lectures de marché.
+        l0g publie des séries nommées, datées et point-in-time pour que chacun puisse
+        les citer, les télécharger, les rejouer, les casser ou améliorer les lectures de marché.
       </p>
       <TrustBar items={trustItems} />
     </section>
@@ -177,6 +178,11 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
           <strong>/api/v1/signals/schema.json</strong>
           <em>contrat machine des lignes publiées</em>
         </a>
+        <a href="/series/" class="bt-export">
+          <span>REGISTRE</span>
+          <strong>/series/</strong>
+          <em>noms citables, identifiants stables et exports par indicateur</em>
+        </a>
       </div>
     </section>
 
@@ -193,13 +199,16 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         {instruments.map((item) => (
           <div class="bt-row" data-signal-row={item.key}>
             <span>
-              <strong>{item.label}</strong>
-              <em>{item.key}</em>
+              <strong><a href={`/series/${item.slug}/`}>{item.name}</a></strong>
+              <em>{item.seriesId}</em>
             </span>
             <span data-signal-value>{item.current?.value ?? 'n/a'}{item.current ? `/${item.current.scale}` : ''}</span>
             <span>{item.observations}</span>
             <span>{item.changes}</span>
-            <a href={item.methodology}>fiche</a>
+            <span class="row-links">
+              <a href={item.downloads.csv}>CSV</a>
+              <a href={item.methodology}>méthode {item.methodologyVersion}</a>
+            </span>
           </div>
         ))}
       </div>
@@ -252,13 +261,13 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         <p class="mono-label glow">// exemple pandas</p>
         <pre class="bt-code"><code>{`import pandas as pd
 
-url = "https://l0g.fr/api/v1/signals/history.csv"
+url = "https://l0g.fr/api/v1/signals/thermometre-stress-dette/history.csv"
 df = pd.read_csv(url, parse_dates=["observedAt", "retrievedAt"])
-df = df[df["instrument"] == "debt"].sort_values("observedAt")
+df = df.sort_values("seriesDate")
 
 # Exemple volontairement minimal :
 # signal observe a T, rendement futur calcule hors de l'archive.
-signal = df[["observedAt", "value", "level", "snapshotHash"]]`}</code></pre>
+signal = df[["seriesDate", "value", "level", "methodologyVersion", "snapshotHash"]]`}</code></pre>
       </div>
       <div class="bt-note">
         <p class="mono-label">// garde-fou</p>
@@ -271,12 +280,12 @@ signal = df[["observedAt", "value", "level", "snapshotHash"]]`}</code></pre>
     </section>
 
     <section class="bt-section bt-note wide">
-      <p class="mono-label">// état de la brique</p>
+      <p class="mono-label">// continuité de la série</p>
       <p>
-        Cette première version expose le snapshot courant et les franchissements déjà collectés.
-        La cible durable est une archive append-only alimentée à chaque collecte par
-        <code>public/signals-history.ndjson</code>. Les clients peuvent déjà coder contre le contrat,
-        puis bénéficier automatiquement de l'allongement de l'historique.
+        La couverture probante commence à la première frame Black Box du 16 juillet 2026.
+        Chaque build ajoute une frame hashée sans modifier les précédentes. Aucun point absent
+        n'est reconstitué après coup ; les observations antérieures au registre méthodologique
+        restent explicitement marquées <code>unversioned-legacy</code>.
       </p>
     </section>
   </article>
@@ -405,7 +414,7 @@ signal = df[["observedAt", "value", "level", "snapshotHash"]]`}</code></pre>
     }
     .bt-row {
       display: grid;
-      grid-template-columns: minmax(12rem, 1.6fr) repeat(3, minmax(5.5rem, 0.55fr)) minmax(4rem, 0.45fr);
+      grid-template-columns: minmax(15rem, 1.8fr) repeat(3, minmax(5.5rem, 0.55fr)) minmax(9rem, 0.7fr);
       gap: 0.75rem;
       align-items: center;
       border-bottom: 1px solid var(--color-line);
@@ -437,6 +446,7 @@ signal = df[["observedAt", "value", "level", "snapshotHash"]]`}</code></pre>
       font-family: var(--font-mono);
       font-size: 0.78rem;
     }
+    .row-links { display: grid; gap: 0.25rem; }
     .bt-code {
       margin-top: 1rem;
       overflow-x: auto;

@@ -11,7 +11,9 @@ import {
   buildSignalHistoryCsv,
   buildSignalHistoryNdjsonRows,
   buildSignalHistorySurface,
+  buildSignalSeriesSurface,
   buildSignalSchemaSurface,
+  signalSeriesRegistry,
 } from './signal-history.ts';
 
 const API_SECURITY_HEADERS = {
@@ -30,7 +32,7 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.13.0';
+export const AGENT_VERSION = '1.14.0';
 export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -369,6 +371,14 @@ const openApiNdjsonEndpoint = (summary: string, description: string) => ({
 });
 
 export function buildOpenApiContract() {
+  const signalSeriesSlugs = signalSeriesRegistry().map((series) => series.slug);
+  const seriesParameter = {
+    name: 'series',
+    in: 'path',
+    required: true,
+    description: 'Slug stable de la série l0g.',
+    schema: { type: 'string', enum: signalSeriesSlugs },
+  };
   return {
     openapi: '3.1.0',
     info: {
@@ -406,6 +416,45 @@ export function buildOpenApiContract() {
           summary: 'Historique des signaux CSV',
           description: 'Observations point-in-time à plat pour pandas, R, DuckDB ou tableur.',
           responses: { '200': { description: 'CSV statique généré au build.', content: { 'text/csv': { schema: { type: 'string' } } } } },
+        },
+      },
+      '/api/v1/signals/{series}/history.json': {
+        get: {
+          summary: 'Série de signal dédiée en JSON',
+          description: 'Identité citable, couverture, méthode versionnée, observations et alertes pour une seule série.',
+          parameters: [seriesParameter],
+          responses: {
+            '200': {
+              description: 'Série point-in-time nommée.',
+              content: { 'application/json': { schema: { $ref: '#/components/schemas/SignalSeriesSurface' } } },
+            },
+          },
+        },
+      },
+      '/api/v1/signals/{series}/history.ndjson': {
+        get: {
+          summary: 'Série de signal dédiée en NDJSON',
+          description: 'Meta, observations puis événements de seuil pour une seule série.',
+          parameters: [seriesParameter],
+          responses: {
+            '200': {
+              description: 'Flux NDJSON statique.',
+              content: { 'application/x-ndjson': { schema: { type: 'string' } } },
+            },
+          },
+        },
+      },
+      '/api/v1/signals/{series}/history.csv': {
+        get: {
+          summary: 'Série de signal dédiée en CSV',
+          description: 'Observations datées d’une seule série pour pandas, R, DuckDB ou tableur.',
+          parameters: [seriesParameter],
+          responses: {
+            '200': {
+              description: 'CSV statique.',
+              content: { 'text/csv': { schema: { type: 'string' } } },
+            },
+          },
         },
       },
       '/api/v1/signals/schema.json': openApiEndpoint('Schéma des signaux', 'Schéma JSON des lignes meta, observation et level-change.', 'SignalLineSchema'),
@@ -833,6 +882,7 @@ export function buildOpenApiContract() {
             'signalHistory',
             'signalHistoryNdjson',
             'signalHistoryCsv',
+            'signalSeriesRegistry',
             'signalSchema',
             'llms',
             'llmsFull',
@@ -866,6 +916,7 @@ export function buildOpenApiContract() {
             'signalHistory',
             'signalHistoryNdjson',
             'signalHistoryCsv',
+            'signalSeriesRegistry',
             'signalSchema',
             'llms',
             'llmsFull',
@@ -1885,9 +1936,10 @@ export function buildOpenApiContract() {
         },
         RiskDiffSignalPoint: {
           type: 'object',
-          required: ['observedAt', 'value', 'level', 'tone', 'snapshotHash'],
+          required: ['seriesDate', 'observedAt', 'value', 'level', 'tone', 'snapshotHash'],
           additionalProperties: false,
           properties: {
+            seriesDate: { type: 'string', format: 'date-time' },
             observedAt: { type: ['string', 'null'], format: 'date-time' },
             value: { type: ['number', 'null'] },
             level: { type: ['string', 'null'] },
@@ -1897,11 +1949,13 @@ export function buildOpenApiContract() {
         },
         RiskDiffSignalCoverage: {
           type: 'object',
-          required: ['instruments', 'withBaseline', 'historyFirstObservedAt', 'historyLastObservedAt'],
+          required: ['instruments', 'withBaseline', 'historyFirstSeriesDate', 'historyLastSeriesDate', 'historyFirstObservedAt', 'historyLastObservedAt'],
           additionalProperties: false,
           properties: {
             instruments: { type: 'integer' },
             withBaseline: { type: 'integer' },
+            historyFirstSeriesDate: { type: ['string', 'null'], format: 'date-time' },
+            historyLastSeriesDate: { type: ['string', 'null'], format: 'date-time' },
             historyFirstObservedAt: { type: ['string', 'null'], format: 'date-time' },
             historyLastObservedAt: { type: ['string', 'null'], format: 'date-time' },
           },
@@ -2321,29 +2375,53 @@ export function buildOpenApiContract() {
         },
         SignalObservation: {
           type: 'object',
-          required: ['recordType', 'recordId', 'instrument', 'observedAt', 'value', 'scale', 'level', 'tone', 'snapshotHash', 'backtestUsable'],
+          required: [
+            'recordType', 'schemaVersion', 'recordId', 'sourceRecordId', 'instrument', 'seriesId', 'seriesSlug',
+            'name', 'shortName', 'citationName', 'label', 'seriesDate', 'observedAt', 'sourcePublishedAt',
+            'retrievedAt', 'computedAt', 'archivedAt', 'value', 'rawValue', 'scale', 'level', 'tone',
+            'identityVersion', 'methodologyVersion', 'methodologyVersionStatus', 'methodologyEffectiveFrom',
+            'sourceUrl', 'methodologyUrl', 'methodologyChangelogUrl', 'sourceSnapshotUrl', 'calculatorRepo',
+            'calculatorRevision', 'snapshotHash', 'archiveFrameId', 'archiveFrameHash', 'appendOnlyVerified',
+            'pointInTime', 'backtestUsable', 'limitations',
+          ],
           additionalProperties: false,
           properties: {
             recordType: { const: 'observation' },
             schemaVersion: { type: 'string' },
             recordId: { type: 'string' },
+            sourceRecordId: { type: ['string', 'null'] },
             instrument: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
+            seriesId: { type: 'string' },
+            seriesSlug: { type: 'string' },
+            name: { type: 'string' },
+            shortName: { type: 'string' },
+            citationName: { type: 'string' },
             label: { type: 'string' },
+            seriesDate: { type: 'string', format: 'date-time' },
             observedAt: { type: ['string', 'null'], format: 'date-time' },
             sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
             computedAt: { type: 'string', format: 'date-time' },
+            archivedAt: { type: ['string', 'null'], format: 'date-time' },
             value: { type: ['number', 'null'] },
             rawValue: { type: ['number', 'null'] },
             scale: { type: 'number' },
             level: { type: ['string', 'null'] },
             tone: { type: ['string', 'null'] },
+            identityVersion: { type: 'string' },
+            methodologyVersion: { type: ['string', 'null'] },
+            methodologyVersionStatus: { enum: ['versioned', 'unversioned-legacy'] },
+            methodologyEffectiveFrom: { type: 'string', format: 'date' },
             sourceUrl: { type: 'string', format: 'uri' },
             methodologyUrl: { type: 'string', format: 'uri' },
+            methodologyChangelogUrl: { type: 'string', format: 'uri' },
             sourceSnapshotUrl: { type: 'string', format: 'uri' },
             calculatorRepo: { type: ['string', 'null'], format: 'uri' },
             calculatorRevision: { type: ['string', 'null'] },
             snapshotHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            archiveFrameId: { type: ['string', 'null'] },
+            archiveFrameHash: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
+            appendOnlyVerified: { type: 'boolean' },
             pointInTime: { type: 'boolean' },
             backtestUsable: { const: true },
             limitations: { type: 'array', items: { type: 'string' } },
@@ -2351,13 +2429,16 @@ export function buildOpenApiContract() {
         },
         SignalLevelChange: {
           type: 'object',
-          required: ['recordType', 'eventId', 'instrument', 'observedAt', 'previousLevel', 'currentLevel', 'backtestUsable'],
+          required: ['recordType', 'schemaVersion', 'eventId', 'instrument', 'seriesId', 'seriesSlug', 'name', 'label', 'observedAt', 'previousLevel', 'currentLevel', 'value', 'tone', 'sourceUrl', 'methodologyUrl', 'pointInTime', 'backtestUsable', 'limitations'],
           additionalProperties: false,
           properties: {
             recordType: { const: 'level-change' },
             schemaVersion: { type: 'string' },
             eventId: { type: 'string' },
             instrument: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
+            seriesId: { type: 'string' },
+            seriesSlug: { type: 'string' },
+            name: { type: 'string' },
             label: { type: 'string' },
             observedAt: { type: ['string', 'null'], format: 'date-time' },
             previousLevel: { type: ['string', 'null'] },
@@ -2365,6 +2446,7 @@ export function buildOpenApiContract() {
             value: { type: ['number', 'null'] },
             tone: { type: ['string', 'null'] },
             sourceUrl: { type: 'string', format: 'uri' },
+            methodologyUrl: { type: 'string', format: 'uri' },
             pointInTime: { type: 'boolean' },
             backtestUsable: { const: false },
             limitations: { type: 'array', items: { type: 'string' } },
@@ -2372,12 +2454,17 @@ export function buildOpenApiContract() {
         },
         SignalCoverage: {
           type: 'object',
-          required: ['observations', 'levelChanges', 'instruments', 'firstObservedAt', 'lastObservedAt', 'pointInTime'],
+          required: ['observations', 'appendOnlyVerifiedObservations', 'methodologyVersionedObservations', 'archiveFrames', 'levelChanges', 'instruments', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt', 'pointInTime'],
           additionalProperties: false,
           properties: {
             observations: { type: 'integer' },
+            appendOnlyVerifiedObservations: { type: 'integer' },
+            methodologyVersionedObservations: { type: 'integer' },
+            archiveFrames: { type: 'integer' },
             levelChanges: { type: 'integer' },
             instruments: { type: 'array', items: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] } },
+            firstSeriesDate: { type: ['string', 'null'], format: 'date-time' },
+            lastSeriesDate: { type: ['string', 'null'], format: 'date-time' },
             firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
             lastObservedAt: { type: ['string', 'null'], format: 'date-time' },
             pointInTime: { type: 'boolean' },
@@ -2385,12 +2472,14 @@ export function buildOpenApiContract() {
         },
         SignalHistoryPolicy: {
           type: 'object',
-          required: ['purpose', 'appendOnlyTarget', 'dateDiscipline', 'backtestRule', 'caveat', 'license', 'attribution'],
+          required: ['purpose', 'appendOnlyTarget', 'dateDiscipline', 'methodologyDiscipline', 'noRetroactiveBackfill', 'backtestRule', 'caveat', 'license', 'attribution'],
           additionalProperties: false,
           properties: {
             purpose: { type: 'string' },
             appendOnlyTarget: { type: 'string' },
             dateDiscipline: { type: 'string' },
+            methodologyDiscipline: { type: 'string' },
+            noRetroactiveBackfill: { type: 'string' },
             backtestRule: { type: 'string' },
             caveat: { type: 'string' },
             license: { type: 'string' },
@@ -2399,13 +2488,52 @@ export function buildOpenApiContract() {
         },
         SignalInstrument: {
           type: 'object',
-          required: ['key', 'label', 'source', 'methodology'],
+          required: ['key', 'label', 'seriesId', 'slug', 'name', 'shortName', 'citationName', 'description', 'dashboardLabel', 'identityVersion', 'identityEffectiveFrom', 'methodologyVersion', 'methodologyEffectiveFrom', 'source', 'methodology', 'methodologyChangelog', 'page', 'downloads', 'recommendedCitation', 'coverage'],
           additionalProperties: false,
           properties: {
             key: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
             label: { type: 'string' },
+            seriesId: { type: 'string' },
+            slug: { type: 'string' },
+            name: { type: 'string' },
+            shortName: { type: 'string' },
+            citationName: { type: 'string' },
+            description: { type: 'string' },
+            dashboardLabel: { type: 'string' },
+            identityVersion: { type: 'string' },
+            identityEffectiveFrom: { type: 'string', format: 'date' },
+            methodologyVersion: { type: 'string' },
+            methodologyEffectiveFrom: { type: 'string', format: 'date' },
             source: { type: 'string', format: 'uri' },
             methodology: { type: 'string', format: 'uri' },
+            methodologyChangelog: { type: 'string', format: 'uri' },
+            page: { type: 'string', format: 'uri' },
+            downloads: { $ref: '#/components/schemas/SignalDownloads' },
+            recommendedCitation: { type: 'string' },
+            coverage: { $ref: '#/components/schemas/SignalInstrumentCoverage' },
+          },
+        },
+        SignalDownloads: {
+          type: 'object',
+          required: ['json', 'ndjson', 'csv'],
+          additionalProperties: false,
+          properties: {
+            json: { type: 'string', format: 'uri' },
+            ndjson: { type: 'string', format: 'uri' },
+            csv: { type: 'string', format: 'uri' },
+          },
+        },
+        SignalInstrumentCoverage: {
+          type: 'object',
+          required: ['observations', 'appendOnlyVerifiedObservations', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt'],
+          additionalProperties: false,
+          properties: {
+            observations: { type: 'integer' },
+            appendOnlyVerifiedObservations: { type: 'integer' },
+            firstSeriesDate: { type: ['string', 'null'], format: 'date-time' },
+            lastSeriesDate: { type: ['string', 'null'], format: 'date-time' },
+            firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
+            lastObservedAt: { type: ['string', 'null'], format: 'date-time' },
           },
         },
         SignalHistorySurface: {
@@ -2435,6 +2563,41 @@ export function buildOpenApiContract() {
             coverage: { $ref: '#/components/schemas/SignalCoverage' },
             current: { type: 'object', additionalProperties: { $ref: '#/components/schemas/SignalObservation' } },
             policy: { $ref: '#/components/schemas/SignalHistoryPolicy' },
+          },
+        },
+        SignalSeriesCoverage: {
+          type: 'object',
+          required: ['observations', 'appendOnlyVerifiedObservations', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt', 'methodologyVersionedObservations', 'archiveFrames', 'levelChanges', 'pointInTime'],
+          additionalProperties: false,
+          properties: {
+            observations: { type: 'integer' },
+            appendOnlyVerifiedObservations: { type: 'integer' },
+            firstSeriesDate: { type: ['string', 'null'], format: 'date-time' },
+            lastSeriesDate: { type: ['string', 'null'], format: 'date-time' },
+            firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
+            lastObservedAt: { type: ['string', 'null'], format: 'date-time' },
+            methodologyVersionedObservations: { type: 'integer' },
+            archiveFrames: { type: 'integer' },
+            levelChanges: { type: 'integer' },
+            pointInTime: { type: 'boolean' },
+          },
+        },
+        SignalSeriesSurface: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'series', 'coverage', 'policy', 'current', 'observations', 'levelChanges', 'license', 'attribution'],
+          additionalProperties: false,
+          properties: {
+            schema: { type: 'string', format: 'uri' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            series: { $ref: '#/components/schemas/SignalInstrument' },
+            coverage: { $ref: '#/components/schemas/SignalSeriesCoverage' },
+            policy: { $ref: '#/components/schemas/SignalHistoryPolicy' },
+            current: { anyOf: [{ $ref: '#/components/schemas/SignalObservation' }, { type: 'null' }] },
+            observations: { type: 'array', items: { $ref: '#/components/schemas/SignalObservation' } },
+            levelChanges: { type: 'array', items: { $ref: '#/components/schemas/SignalLevelChange' } },
+            license: { type: 'string' },
+            attribution: { type: 'string' },
           },
         },
         SignalLineSchema: {
@@ -3557,7 +3720,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
     ],
     signalFreshness: buildSignalFreshness(risk),
     freshnessPolicy: {
-      rule: 'Les agents doivent privilégier date/updated pour le contenu éditorial, observedAt pour les signaux, puis computedAt/generated pour la fraîcheur du fichier.',
+      rule: 'Les agents doivent privilégier date/updated pour le contenu éditorial, seriesDate pour la publication des signaux, observedAt pour la date économique amont, puis computedAt/generated pour la fraîcheur du fichier.',
       caveat: 'l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile. Les champs sourcePublishedAt et retrievedAt restent explicites et peuvent être null quand la source amont ne les expose pas ; indexedAt décrit seulement l’indexation du lien dans l’artefact.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
       changelog: `${AGENT_SITE}/changelog-editorial/`,
@@ -3601,6 +3764,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'MCP-compatible corpus',
       'user-selectable MCP research prompts',
       'deterministic bilingual Agent Bench results',
+      'named, dated and methodology-versioned risk series',
     ],
     endpoints: {
       openapi: `${AGENT_SITE}/openapi.json`,
@@ -3625,6 +3789,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       signalHistory: `${AGENT_SITE}/api/v1/signals/history.json`,
       signalHistoryNdjson: `${AGENT_SITE}/api/v1/signals/history.ndjson`,
       signalHistoryCsv: `${AGENT_SITE}/api/v1/signals/history.csv`,
+      signalSeriesRegistry: `${AGENT_SITE}/series/`,
       signalSchema: `${AGENT_SITE}/api/v1/signals/schema.json`,
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
@@ -3647,6 +3812,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Utiliser risk-diff.json pour voir ce qui a changé dans le risque, avec limites de couverture explicites.',
       'Utiliser black-box.json pour rejouer la dernière frame point-in-time publiée avant une date donnée.',
       'Utiliser signals/history.csv ou signals/history.ndjson pour rejouer les signaux point-in-time sans look-ahead bias.',
+      'Utiliser /series/ et les exports dédiés pour citer une série par son nom stable et sa version méthodologique.',
       'Utiliser debt-risk.json pour Dette US : ne pas recalculer le score courant depuis les seuls buckets disponibles.',
       'Lire les champs caveat, limits et correctionPolicy avant synthèse.',
     ],
@@ -3854,6 +4020,26 @@ export function buildChangefeedSurface(posts: PostEntry[], guides: GuideEntry[])
 
 export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) {
   const signalHistory = buildSignalHistorySurface();
+  const signalSeriesResources = signalSeriesRegistry().flatMap((series) => [
+    {
+      path: `/api/v1/signals/${series.slug}/history.json`,
+      role: `Série ${series.name} en JSON`,
+      mediaType: 'application/json',
+      payload: buildSignalSeriesSurface(series.key),
+    },
+    {
+      path: `/api/v1/signals/${series.slug}/history.ndjson`,
+      role: `Série ${series.name} en NDJSON`,
+      mediaType: 'application/x-ndjson',
+      body: toNdjson(buildSignalHistoryNdjsonRows(series.key)),
+    },
+    {
+      path: `/api/v1/signals/${series.slug}/history.csv`,
+      role: `Série ${series.name} en CSV`,
+      mediaType: 'text/csv',
+      body: buildSignalHistoryCsv(series.key),
+    },
+  ]);
   const resources = [
     {
       path: '/agents.json',
@@ -3970,6 +4156,7 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       mediaType: 'application/json',
       payload: buildSignalSchemaSurface(),
     },
+    ...signalSeriesResources,
   ];
 
   const snapshots = resources.map((resource) => {
