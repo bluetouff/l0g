@@ -3,6 +3,7 @@
  * Colonne de droite — MOBILE. Mêmes boutons, en bloc sous le contenu.
  */
 import { dashboards } from '../config/sidebar.ts';
+import SearchForm from './SearchForm.astro';
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -14,7 +15,7 @@ const accentVar: Record<string, string> = {
 
 <aside class="mt-12 border-t border-line pt-6">
   <h2 class="mono-label glow mb-3">// recherche</h2>
-  <div class="pf-search mb-8" data-pagefind-ignore></div>
+  <div class="mb-8"><SearchForm /></div>
 
   <a href="/dashboards/" class="group mb-3 flex items-baseline justify-between gap-2">
     <h2 class="mono-label glow">// dashboards</h2>

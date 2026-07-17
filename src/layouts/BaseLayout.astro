@@ -419,10 +419,14 @@ function isCurrentHref(href: string): boolean {
       </div>
     </footer>
 
-    <!-- Recherche Pagefind : 3 ressources, toutes servies par le site (self) -->
-    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-    <script src="/pagefind/pagefind-ui.js" is:inline></script>
-    <script src="/pagefind-init.js" is:inline></script>
+    <!-- Le moteur Pagefind complet n'est utile que sur la page de résultats. -->
+    {path.startsWith('/recherche') && (
+      <>
+        <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+        <script src="/pagefind/pagefind-ui.js" defer is:inline></script>
+        <script src="/pagefind-init.js" defer is:inline></script>
+      </>
+    )}
 
     {/* Bascule de thème : addEventListener (CSP script-src-attr 'none'). */}
     <script is:inline>

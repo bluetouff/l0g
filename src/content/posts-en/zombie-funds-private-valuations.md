@@ -8,8 +8,7 @@ draft: false
 sourceArticle: "zombie-funds-valorisations-privees"
 sourceUpdatedDate: 2026-06-11
 ---
-# Zombie funds: when valuations outlive markets
-
+## Zombie funds: when valuations outlive markets
 For years, private equity sold a simple story: less volatility, more return and value creation superior to listed markets. But in 2026, one question becomes impossible to avoid: do the valuations displayed by many funds still reflect economic reality?
 
 The "zombie funds" phenomenon is not new. Traditionally, the term designated funds reaching the end of their life, unable to sell their holdings but continuing to exist thanks to management fees. Today, the concept has broadened. It now encompasses thousands of private assets whose value is maintained on paper even as exit conditions have sharply deteriorated.

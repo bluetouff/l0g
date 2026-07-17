@@ -23,14 +23,19 @@
  *   - get_evidence_graph    : sous-graphe articles, claims et sources.
  * Les tools suivants (get_article, search_by_topic) s'ajoutent sur le même modèle.
  */
-import { topics } from '../config/topics.ts';
-
-const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-
-const topicsList = topics.map((t) => ({ slug: t.slug, label: t.label, blurb: t.blurb }));
 ---
 
-<script is:inline define:vars={{ site, topicsList }}>
+<script>
+  // @ts-nocheck -- WebMCP est encore un draft sans types DOM stables.
+  import { topics } from '../config/topics.ts';
+
+  const site = window.location.origin;
+  const topicsList = topics.map((topic) => ({
+    slug: topic.slug,
+    label: topic.label,
+    blurb: topic.blurb,
+  }));
+
   (function () {
     if (typeof navigator === 'undefined') return;
     // WebMCP n'existe qu'en contexte sécurisé (HTTPS) et sur navigateur compatible.

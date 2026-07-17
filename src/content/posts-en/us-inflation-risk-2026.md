@@ -9,7 +9,7 @@ sourceArticle: "risque-inflationniste-2026"
 sourceUpdatedDate: 2026-06-12
 ---
 
-# Persistent inflation risk in 2026: the energy shock of the Middle East conflict and the upward revisions of forecasts
+## Persistent inflation risk in 2026: the energy shock of the Middle East conflict and the upward revisions of forecasts
 
 Inflation, thought to be on a durable disinflation trajectory toward central-bank targets (2% for the Fed and the ECB), saw a marked rebound in spring 2026. Driven by a major geopolitical shock, the Iran/Israel conflict and the disruptions of the Strait of Hormuz, the May 2026 data confirm an acceleration of consumer prices, both in the United States and in the euro zone. Forecasts are systematically revised upward. This phenomenon, called a "silent contagion" of energy pressures toward the core of inflation, poses a tangible risk for the rest of 2026 and beyond.
 

@@ -4,6 +4,7 @@
  * accent par application). Contenu dans src/config/sidebar.ts.
  */
 import { dashboards, sidebarAbout } from '../config/sidebar.ts';
+import SearchForm from './SearchForm.astro';
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
@@ -16,7 +17,7 @@ const accentVar: Record<string, string> = {
 <div class="space-y-6">
   <section>
     <h2 class="mono-label glow mb-3">// recherche</h2>
-    <div class="pf-search" data-pagefind-ignore></div>
+    <SearchForm compact />
   </section>
 
   <section>
@@ -96,6 +97,8 @@ const accentVar: Record<string, string> = {
         src="/auditer-opacite.jpg"
         alt="Auditer l'opacité — Anatomie d'une crise qu'on ne veut pas voir, par Bluetouff"
         class="pub-cover"
+        width="600"
+        height="894"
         loading="lazy"
         decoding="async"
       />
@@ -132,7 +135,7 @@ const accentVar: Record<string, string> = {
   </section>
 </div>
 
-<script src="/confluence.js" is:inline></script>
+<script src="/confluence.js" defer is:inline></script>
 
 <style>
   .conf-head:hover .mono-label { color: var(--color-signal); }

@@ -6,7 +6,7 @@ tags: ["bourse", "macro", "crypto", "politique US"]
 draft: false
 ---
 
-# SpaceX : le tapis rouge de la SEC pour l'IPO la plus chère de l'histoire
+## SpaceX : le tapis rouge de la SEC pour l'IPO la plus chère de l'histoire
 
 Ce vendredi 12 juin 2026, Space Exploration Technologies Corp. fait ses premiers pas au Nasdaq sous le ticker SPCX. Prix fixe de 135 dollars l'action, environ 556 millions de titres, 75 milliards de dollars levés, valorisation de 1 750 milliards. C'est, de très loin, la plus grosse introduction en bourse jamais réalisée, plus du double du record établi par Saudi Aramco en 2019, selon Reuters. Le décor est grandiose. La mécanique réglementaire qui l'a rendu possible, beaucoup moins reluisante.
 

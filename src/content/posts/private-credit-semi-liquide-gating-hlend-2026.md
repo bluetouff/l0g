@@ -6,7 +6,7 @@ tags: ["finance", "private-credit", "investissement-alternatif", "gating", "blac
 draft: false
 ---
 
-# Fonds de crédit privé semi-liquides et gating : le cas HLEND (BlackRock) et les leçons pour les investisseurs particuliers en 2026
+## Fonds de crédit privé semi-liquides et gating : le cas HLEND (BlackRock) et les leçons pour les investisseurs particuliers en 2026
 
 Un article de Reuters du 12 juin 2026 rapporte qu’un fonds de crédit privé BlackRock/HPS d’environ 25 milliards de dollars (le HPS Corporate Lending Fund ou HLEND) a reçu au premier trimestre des demandes de rachat représentant 13,3 % de ses actions en circulation. Le fonds a décidé d’honorer seulement 5 % de ces parts, soit environ 620 millions de dollars. Un véhicule plus petit, le BlackRock Private Credit Fund (BDEBT, 2,7 milliards de dollars), a vu des demandes de 5,3 % et a racheté 5 % (environ 83 millions de dollars). Ces décisions s’inscrivent dans une vague plus large de retraits observée en 2025-2026 sur les fonds de crédit privé accessibles aux investisseurs fortunés.
 
@@ -82,5 +82,3 @@ La performance attractive du private credit (rendements, diversification) reste 
 6. AdvisorHub / Bloomberg, « Trapped in Private Credit, Investors Wait to Pull Out $5 Billion », mars 2026.
 
 7. HLEND.com (page performance et SEC filings 10-Q / 8-K) pour les données historiques d’actifs nets et les communications officielles du fonds.
-
-

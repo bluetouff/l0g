@@ -9,7 +9,7 @@ sourceArticle: "private-credit-semi-liquide-gating-hlend-2026"
 sourceUpdatedDate: 2026-06-13
 ---
 
-# Semi-liquid private-credit funds and gating: the HLEND (BlackRock) case and the lessons for retail investors in 2026
+## Semi-liquid private-credit funds and gating: the HLEND (BlackRock) case and the lessons for retail investors in 2026
 
 A Reuters article of 12 June 2026 reports that a BlackRock/HPS private-credit fund of about $25 billion (the HPS Corporate Lending Fund, or HLEND) received in the first quarter redemption requests representing 13.3% of its shares in circulation. The fund decided to honour only 5% of these shares, about $620 million. A smaller vehicle, the BlackRock Private Credit Fund (BDEBT, $2.7 billion), saw requests of 5.3% and redeemed 5% (about $83 million). These decisions are part of a broader wave of withdrawals seen in 2025-2026 on private-credit funds open to wealthy investors.
 

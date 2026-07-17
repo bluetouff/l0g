@@ -1,0 +1,65 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<form class:list={['site-search', { compact }]} action="/recherche/" method="get" role="search">
+  <label class="sr-only" for={`site-search-${compact ? 'compact' : 'default'}`}>Rechercher sur l0g.fr</label>
+  <input
+    id={`site-search-${compact ? 'compact' : 'default'}`}
+    type="search"
+    name="q"
+    placeholder="Rechercher…"
+    autocomplete="off"
+    enterkeyhint="search"
+  />
+  <button type="submit" aria-label="Lancer la recherche">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4 4" />
+    </svg>
+  </button>
+</form>
+
+<style>
+  .site-search {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-surface);
+    transition: border-color 0.16s, box-shadow 0.16s;
+  }
+  .site-search:focus-within {
+    border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-signal) 12%, transparent);
+  }
+  input {
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    padding: 0.65rem 0.75rem;
+    color: var(--color-bright);
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  input::placeholder { color: var(--color-muted); }
+  button {
+    display: grid;
+    width: 2.7rem;
+    place-items: center;
+    border: 0;
+    border-left: 1px solid var(--color-line);
+    color: var(--color-muted);
+    background: color-mix(in srgb, var(--color-surface-2) 70%, transparent);
+    cursor: pointer;
+  }
+  button:hover { color: var(--color-signal); }
+  svg { width: 1rem; height: 1rem; }
+  .compact input { padding-block: 0.58rem; }
+</style>

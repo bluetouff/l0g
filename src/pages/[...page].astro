@@ -29,6 +29,12 @@ export async function getStaticPaths({ paginate }: { paginate: (data: PostEntry[
 
 const { page } = Astro.props as { page: PaginatedPosts };
 const isFirst = page.currentPage === 1;
+const pageTitle = isFirst
+  ? 'l0g : les angles morts de la finance'
+  : `Analyses financières — page ${page.currentPage}`;
+const pageDescription = isFirst
+  ? 'Enquêtes sur les mécanismes financiers invisibles : bilans, collatéral, crédit privé, levier et chaînes de contagion.'
+  : `Archives des analyses l0g sur la finance, la macroéconomie, le crédit et les risques systémiques — page ${page.currentPage} sur ${page.lastPage}.`;
 
 const items = page.data.map((post: PostEntry, i: number) => ({
   post,
@@ -42,8 +48,8 @@ const feed = isFirst ? items.slice(1) : items;
 ---
 
 <BaseLayout
-  title="l0g : les angles morts de la finance"
-  description="Enquêtes sur les mécanismes financiers invisibles : bilans, collatéral, crédit privé, levier et chaînes de contagion."
+  title={pageTitle}
+  description={pageDescription}
 >
   {isFirst && (
     <section class="rise">
@@ -67,6 +73,18 @@ const feed = isFirst ? items.slice(1) : items;
   )}
 
   {isFirst && <RiskBand />}
+
+  {!isFirst && (
+    <header class="rise border-b border-dashed border-line pb-8">
+      <p class="mono-label" style="color: var(--color-signal)">$ ls /analyses | page {page.currentPage}</p>
+      <h1 class="mt-4 font-display text-[clamp(2rem,5vw,3rem)] leading-tight tracking-wider glow">
+        Analyses financières <span style="color: var(--color-accent)">— page {page.currentPage}</span>
+      </h1>
+      <p class="mt-4 max-w-xl text-muted">
+        Archives des enquêtes l0g, de la plus récente à la plus ancienne.
+      </p>
+    </header>
+  )}
 
   {hero && (
     <PostHero

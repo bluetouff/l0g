@@ -48,7 +48,6 @@ const ALLOWED_ORIGINS = new Set(
     }).filter(Boolean)
 );
 const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
-const CACHE_TTL = 60_000; // 60 s
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
 const MCP_VERSION = '1.20.1';
@@ -174,7 +173,10 @@ async function readText(baseDir, rel) {
 async function loadData() {
   const now = Date.now();
   const dataDir = await resolveDataDir();
-  if (cache.catalog && cache.dataDir === dataDir && now - cache.at < CACHE_TTL) return cache;
+  // Les releases sont immuables et `current` bascule atomiquement vers un nouveau
+  // répertoire réel. Tant que realpath(DATA_DIR) ne change pas, relire et parser
+  // plusieurs mégaoctets toutes les 60 s ne peut produire aucune donnée plus fraîche.
+  if (cache.catalog && cache.dataDir === dataDir) return cache;
   const agent = await readJson(dataDir, 'agents.json');
   const openapi = await readJson(dataDir, 'openapi.json');
   const catalog = await readJson(dataDir, 'api/v1/catalog.json');
@@ -355,7 +357,7 @@ async function readSearchDocument(dataDir, candidate) {
 }
 async function buildSearchIndex(dataDir, catalog, sharedSearchIndex) {
   const now = Date.now();
-  if (searchIndexCache.index && searchIndexCache.dataDir === dataDir && now - searchIndexCache.at < CACHE_TTL) {
+  if (searchIndexCache.index && searchIndexCache.dataDir === dataDir) {
     return searchIndexCache.index;
   }
   const candidates = Array.isArray(sharedSearchIndex?.documents) && sharedSearchIndex.documents.length
