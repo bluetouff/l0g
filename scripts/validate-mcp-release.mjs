@@ -26,17 +26,20 @@ function fail(message) {
 }
 
 export async function readReleaseVersions() {
-  const [manifestRaw, packageRaw, lockRaw, serverRaw] = await Promise.all([
+  const [manifestRaw, packageRaw, lockRaw, serverRaw, agentBenchRaw] = await Promise.all([
     readFile(join(ROOT, 'server.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/package.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/package-lock.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/server.mjs'), 'utf8'),
+    readFile(join(ROOT, 'src/pages/api/v1/agent-bench.json.ts'), 'utf8'),
   ]);
   const manifest = JSON.parse(manifestRaw);
   const packageJson = JSON.parse(packageRaw);
   const packageLock = JSON.parse(lockRaw);
   const serverMatch = serverRaw.match(/const MCP_VERSION = ['"]([^'"]+)['"]/);
   if (!serverMatch) fail('MCP_VERSION est introuvable dans mcp-server/server.mjs');
+  const agentBenchMatch = agentBenchRaw.match(/mcpServerVersion:\s*['"]([^'"]+)['"]/);
+  if (!agentBenchMatch) fail('mcpServerVersion est introuvable dans le placeholder Agent Bench');
 
   return {
     manifest,
@@ -45,6 +48,7 @@ export async function readReleaseVersions() {
       package: packageJson.version,
       lock: packageLock.packages?.['']?.version,
       server: serverMatch[1],
+      agentBench: agentBenchMatch[1],
     },
   };
 }

@@ -20,8 +20,8 @@ la source du binaire de production ni une preuve que la version annoncée est vi
 ## Invariants
 
 - Un tag stable a la forme `mcp-vX.Y.Z` et pointe sur un commit de `main`.
-- `server.json`, `mcp-server/package.json`, son lockfile et `MCP_VERSION` portent exactement
-  la même version.
+- `server.json`, `mcp-server/package.json`, son lockfile, `MCP_VERSION` et le placeholder
+  Agent Bench portent exactement la même version.
 - Une version du Registry n'est jamais republiée : ses métadonnées sont immuables.
 - La GitHub Release contient une archive déterministe, son SHA-256, un SBOM CycloneDX et le
   bundle d'attestation GitHub/Sigstore.
