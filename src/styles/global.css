@@ -253,6 +253,7 @@ a { color: inherit; text-decoration: none; }
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, var(--color-signal) 40%, transparent);
   text-underline-offset: 3px;
+  overflow-wrap: anywhere;
 }
 .prose a:hover { text-decoration-color: var(--color-signal); }
 
