@@ -1,8 +1,8 @@
 {
   "schema": "https://l0g.fr/schemas/debt-risk-snapshot.json",
   "version": "1",
-  "generated": "2026-07-16T10:14:53Z",
-  "retrievedAt": "2026-07-16T10:23:08.911Z",
+  "generated": "2026-07-17T21:15:47Z",
+  "retrievedAt": "2026-07-17T21:21:17.950Z",
   "signal": {
     "key": "debt",
     "value": 54,
@@ -17,10 +17,10 @@
     "methodology": "https://l0g.fr/methodologie/debt-risk-radar/",
     "calculator": "https://github.com/bluetouff/debt-risk-radar",
     "calculatorRevision": null,
-    "generatedAt": "2026-07-16T10:14:53Z",
-    "retrievedAt": "2026-07-16T10:23:08.911Z",
+    "generatedAt": "2026-07-17T21:15:47Z",
+    "retrievedAt": "2026-07-17T21:21:17.950Z",
     "schemaVersion": "1.0",
-    "scoreRaw": 54.205866146840165,
+    "scoreRaw": 54.26956191617821,
     "scoreRounded": 54,
     "status": "Elevated",
     "coverage": null,
@@ -54,7 +54,7 @@
       {
         "key": "treasury_daily",
         "label": "Treasury daily debt",
-        "score": 68.01077081552948,
+        "score": 68.96353776684602,
         "status": "Watch",
         "weight": 0.1,
         "metrics": 3
@@ -86,7 +86,7 @@
       {
         "key": "market_prices",
         "label": "Massive market prices",
-        "score": 52.48223407830981,
+        "score": 52.606325432795806,
         "status": "Elevated",
         "weight": 0.04,
         "metrics": 9
@@ -94,7 +94,7 @@
       {
         "key": "rates_market",
         "label": "Rates and market stress",
-        "score": 48.91505372579782,
+        "score": 48.932793211522224,
         "status": "Calm",
         "weight": 0.18,
         "metrics": 7
@@ -102,7 +102,7 @@
       {
         "key": "liquidity",
         "label": "Liquidity plumbing",
-        "score": 45.17930127090207,
+        "score": 44.71822862752951,
         "status": "Calm",
         "weight": 0.1,
         "metrics": 4
@@ -119,25 +119,25 @@
     "sources": [
       {
         "source": "Massive Market Data",
-        "latestDate": "2026-07-15",
+        "latestDate": "2026-07-16",
         "metrics": 9,
-        "maxRisk": 71.6156695860142
+        "maxRisk": 71.61823822827544
       },
       {
         "source": "FRED/Fed",
-        "latestDate": "2026-07-15",
+        "latestDate": "2026-07-17",
         "metrics": 5,
         "maxRisk": 74.24371187943021
       },
       {
         "source": "FRED/Treasury",
-        "latestDate": "2026-07-15",
+        "latestDate": "2026-07-17",
         "metrics": 4,
-        "maxRisk": 67.14968782209867
+        "maxRisk": 67.27080808301429
       },
       {
         "source": "FRED",
-        "latestDate": "2026-07-15",
+        "latestDate": "2026-07-17",
         "metrics": 4,
         "maxRisk": 76.56763372822563
       },
@@ -155,9 +155,9 @@
       },
       {
         "source": "US Treasury Fiscal Data",
-        "latestDate": "2026-07-14",
+        "latestDate": "2026-07-16",
         "metrics": 3,
-        "maxRisk": 76.3158788142151
+        "maxRisk": 76.45276907350487
       },
       {
         "source": "BIS Data Portal",
@@ -167,9 +167,9 @@
       },
       {
         "source": "FRED/ICE BofA",
-        "latestDate": "2026-07-14",
+        "latestDate": "2026-07-16",
         "metrics": 2,
-        "maxRisk": 37.27894373718908
+        "maxRisk": 36.342824782398665
       },
       {
         "source": "FRED/Chicago Fed",
@@ -223,12 +223,23 @@
         "family": "Treasury daily debt",
         "name": "Total public debt outstanding",
         "source": "US Treasury Fiscal Data",
-        "date": "2026-07-14",
-        "current": 39470.15221859901,
+        "date": "2026-07-16",
+        "current": 39518.85975891912,
         "unit": "USD bn",
-        "riskScore": 76.3158788142151,
-        "signedZ": 1.754391920947673,
+        "riskScore": 76.45276907350487,
+        "signedZ": 1.763517938233658,
         "rationale": "Daily Treasury debt stock."
+      },
+      {
+        "family": "Treasury daily debt",
+        "name": "Debt held by the public share",
+        "source": "US Treasury Fiscal Data",
+        "date": "2026-07-16",
+        "current": 80.51459640147529,
+        "unit": "%",
+        "riskScore": 74.78627968203746,
+        "signedZ": 1.6524186454691638,
+        "rationale": "Market-facing share of Treasury debt."
       },
       {
         "family": "Private leverage",
@@ -242,25 +253,14 @@
         "rationale": "Business loan stress can migrate into banks and employment."
       },
       {
-        "family": "Treasury daily debt",
-        "name": "Debt held by the public share",
-        "source": "US Treasury Fiscal Data",
-        "date": "2026-07-14",
-        "current": 80.4433554682549,
-        "unit": "%",
-        "riskScore": 73.54164162881861,
-        "signedZ": 1.5694427752545737,
-        "rationale": "Market-facing share of Treasury debt."
-      },
-      {
         "family": "Massive market prices",
         "name": "iShares 1-3 Year Treasury Bond ETF",
         "source": "Massive Market Data",
-        "date": "2026-07-15",
+        "date": "2026-07-16",
         "current": 82,
         "unit": "USD",
-        "riskScore": 71.6156695860142,
-        "signedZ": 1.4410446390676142,
+        "riskScore": 71.61823822827544,
+        "signedZ": 1.4412158818850294,
         "rationale": "Short Treasury proxy used in duration stress ratios. 30d return -0.01% if available."
       },
       {
@@ -278,22 +278,22 @@
         "family": "Massive market prices",
         "name": "iShares 20+ Year Treasury Bond ETF",
         "source": "Massive Market Data",
-        "date": "2026-07-15",
-        "current": 84.24,
+        "date": "2026-07-16",
+        "current": 84.21,
         "unit": "USD",
-        "riskScore": 70.36829787062689,
-        "signedZ": 1.3578865247084597,
-        "rationale": "Long-duration Treasury proxy; drawdowns flag rate stress. 30d return -1.44% if available."
+        "riskScore": 70.40608692614336,
+        "signedZ": 1.3604057950762234,
+        "rationale": "Long-duration Treasury proxy; drawdowns flag rate stress. 30d return -1.68% if available."
       },
       {
         "family": "Massive market prices",
         "name": "Long Treasury versus short Treasury price ratio",
         "source": "Massive Market Data",
-        "date": "2026-07-15",
-        "current": 1.0273170731707317,
+        "date": "2026-07-16",
+        "current": 1.026951219512195,
         "unit": "ratio",
-        "riskScore": 68.76155818879667,
-        "signedZ": 1.2507705459197784,
+        "riskScore": 68.81745852119394,
+        "signedZ": 1.254497234746263,
         "rationale": "Derived market ratio from Massive daily adjusted closes."
       },
       {
