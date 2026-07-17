@@ -1,8 +1,9 @@
 # l0g Agent Bench
 
 État documenté : `2026-07-17`. Jeu de cas : `1.0.0`. Agent Surface : `1.13.0`.
-Le dépôt, la release attestée `mcp-v1.20.0`, le Registry et le MCP public sont
-alignés sur `1.20.0`.
+Le benchmark de la release attestée `mcp-v1.20.2` a été exécuté contre MCP
+`1.20.2` et Agent Surface `1.13.0`. Le daemon public expose le SHA du tag ; la
+convergence Registry se vérifie séparément via l'API officielle.
 
 Le benchmark exécute 44 cas déterministes, en français et en anglais, contre le serveur MCP réellement construit. Il n’appelle aucun LLM et ne mesure aucun temps d’exécution.
 
