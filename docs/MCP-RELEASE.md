@@ -155,6 +155,17 @@ sudo install -m 0644 \
 sudo systemctl daemon-reload
 sudo systemctl restart l0g-mcp.service
 sudo systemctl status l0g-mcp.service --no-pager
+
+READY=0
+for _ in $(seq 1 30); do
+  if curl -fsS http://127.0.0.1:8848/healthz >/dev/null 2>&1; then
+    READY=1
+    break
+  fi
+  sleep 1
+done
+test "$READY" -eq 1
+
 curl -fsS http://127.0.0.1:8848/healthz
 curl -fsS http://127.0.0.1:8848/mcp/usage
 ```
