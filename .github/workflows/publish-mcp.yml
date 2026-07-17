@@ -42,12 +42,20 @@ jobs:
           echo "SOURCE_DATE_EPOCH=$(git show -s --format=%ct "$GITHUB_SHA")" >> "$GITHUB_ENV"
           echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI "$GITHUB_SHA")" >> "$GITHUB_ENV"
 
+      - name: Checkout append-only Black Box archive
+        run: |
+          git fetch origin black-box-archive:refs/remotes/origin/black-box-archive
+          git worktree add --detach .black-box-archive origin/black-box-archive
+          node scripts/black-box-archive.mjs validate --archive .black-box-archive
+
       - name: Install site and server dependencies from lockfiles
         run: |
           npm ci
           npm ci --prefix mcp-server --omit=dev
 
       - name: Build Agent Surface used by release tests
+        env:
+          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
         run: npm run build
 
       - name: Test server contracts and Agent Bench

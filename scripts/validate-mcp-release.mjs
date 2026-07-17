@@ -26,12 +26,13 @@ function fail(message) {
 }
 
 export async function readReleaseVersions() {
-  const [manifestRaw, packageRaw, lockRaw, serverRaw, agentBenchRaw] = await Promise.all([
+  const [manifestRaw, packageRaw, lockRaw, serverRaw, agentBenchRaw, workflowRaw] = await Promise.all([
     readFile(join(ROOT, 'server.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/package.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/package-lock.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/server.mjs'), 'utf8'),
     readFile(join(ROOT, 'src/pages/api/v1/agent-bench.json.ts'), 'utf8'),
+    readFile(join(ROOT, '.github/workflows/publish-mcp.yml'), 'utf8'),
   ]);
   const manifest = JSON.parse(manifestRaw);
   const packageJson = JSON.parse(packageRaw);
@@ -40,6 +41,12 @@ export async function readReleaseVersions() {
   if (!serverMatch) fail('MCP_VERSION est introuvable dans mcp-server/server.mjs');
   const agentBenchMatch = agentBenchRaw.match(/mcpServerVersion:\s*['"]([^'"]+)['"]/);
   if (!agentBenchMatch) fail('mcpServerVersion est introuvable dans le placeholder Agent Bench');
+  if (!workflowRaw.includes('git worktree add --detach .black-box-archive origin/black-box-archive')) {
+    fail('le workflow MCP ne monte pas l’archive Black Box append-only');
+  }
+  if (!workflowRaw.includes('L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive')) {
+    fail('le build MCP ne consomme pas l’archive Black Box');
+  }
 
   return {
     manifest,
