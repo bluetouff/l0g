@@ -1,0 +1,231 @@
+---
+title: "Euroclear, la chambre forte opaque au cœur de l'Europe"
+description: "Un dépositaire bruxellois qui conserve 44 000 milliards d'euros de titres, 200 milliards d'avoirs russes immobilisés, une condamnation record confirmée à Moscou le 17 juillet, et un prêt de réparation qui divise les Vingt-Sept. Enquête sur l'infrastructure la plus discrète et la plus systémique du continent, devenue champ de bataille géopolitique."
+pubDate: 2026-07-18T10:14:00+02:00
+updatedDate: 2026-07-18T10:14:00+02:00
+tags: ["europe", "géopolitique", "sanctions", "banques centrales", "risque systémique", "marchés"]
+draft: false
+---
+
+*Le 17 juillet 2026, une cour d'appel russe a confirmé la condamnation d'Euroclear à verser plus de 18 000 milliards de roubles, soit plus de 200 milliards d'euros, à la Banque centrale de Russie. Le jugement est inexécutable hors de Russie, et le dépositaire bruxellois ne reconnaît pas la compétence du tribunal. Mais il dit l'essentiel : la plus grande infrastructure de titres d'Europe, une maison que le grand public ne connaît pas, est devenue l'épicentre d'un bras de fer juridique, financier et géopolitique à 200 milliards d'euros. Pour inaugurer notre volet européen, plongée dans une chambre forte dont l'opacité n'est pas un accident, mais une architecture.*
+
+Il y a un quart de siècle, un livre consacré à un dépositaire de titres luxembourgeois déclenchait l'un des plus longs feuilletons judiciaires de la presse française. En 2026, plus besoin d'enquêter pour savoir où dorment les réserves gelées de la Banque centrale de Russie : elles sont à Bruxelles, chez [Euroclear](https://en.wikipedia.org/wiki/Euroclear), leur montant figure dans des communiqués trimestriels, et leur sort occupe les chancelleries. Le secret d'hier se publie désormais en conférence de presse, sans avoir rien perdu de sa charge explosive.
+
+## Quarante-quatre mille milliards sous conservation
+
+Commençons par l'échelle, car elle conditionne tout le reste. Euroclear n'est pas une banque au sens courant : c'est un dépositaire central de titres ([DCT](/glossaire/#dct)), la couche du système financier où les obligations, actions et fonds sont inscrits, conservés et livrés contre paiement. Fin mars 2026, le groupe conservait [près de 44 000 milliards d'euros d'actifs](https://www.euroclear.com/newsandinsights/en/press/2026/mr-12-euroclear-delivers-q1-2026-results.html) pour le compte de ses clients, et le montant des transactions réglées dans ses livres a atteint [1 390 000 milliards d'euros sur l'année 2025](https://www.euroclear.com/newsandinsights/en/press/2026/mr-06-euroclear-delivers-strong-2025-results.html), environ douze fois le PIB mondial. Quand un fonds de pension néerlandais achète une OAT française ou qu'une banque japonaise livre un eurobond, la transaction a de bonnes chances de se dénouer dans cette machine.
+
+L'histoire éclaire la géographie. Euroclear naît en 1968 à Bruxelles, dans la filiale locale de la banque américaine Morgan Guaranty, pour régler les eurobonds, ces obligations émises hors de toute juridiction nationale, dont le marché explosait alors. Deux ans plus tard, des banques concurrentes créent Cedel à Luxembourg, qui deviendra Clearstream. Les deux maisons, aujourd'hui rivales, partagent une même fonction et une même discrétion : ce sont des dépositaires centraux internationaux ([ICSD](/glossaire/#icsd)), les carrefours du marché obligataire mondial. Leur régulation s'est considérablement épaissie depuis, avec le règlement européen [CSDR](/glossaire/#csdr) de 2014 ([règlement UE 909/2014](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0909)) et, pour Euroclear Bank, une supervision de la Banque nationale de Belgique. Une infrastructure de cette taille ne vit pas dans une zone grise réglementaire. Son opacité est ailleurs.
+
+## L'opacité par construction
+
+Le mécanisme central s'appelle le [compte omnibus](/glossaire/#compte-omnibus). Un dépositaire comme Euroclear n'ouvre pas de comptes aux épargnants ni aux entreprises : ses clients sont des banques et des conservateurs, qui regroupent les titres de leurs propres clients sur des comptes collectifs. Chaque maillon de la chaîne ne connaît que le maillon adjacent. Euroclear voit la banque dépositaire, la banque voit le gérant, le gérant voit le fonds, et le bénéficiaire final n'apparaît nulle part dans les livres du sommet. Cette organisation en poupées russes n'a pas été conçue pour cacher : elle mutualise les coûts, permet la compensation des flux et rend possible le règlement de centaines de milliers de transactions par jour. Sans comptes omnibus, pas de marché obligataire mondial à ce prix.
+
+La contrepartie est structurelle : la propriété économique devient invisible à l'infrastructure qui la conserve. De là vient toute la complexité du dossier russe. Sur les quelque [210 milliards d'euros d'avoirs de la Banque centrale de Russie immobilisés dans l'Union](https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2025)779267), l'essentiel est logé chez Euroclear : [183 milliards d'euros fin 2024 selon les comptes du groupe](https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html), un encours passé [au-dessus de 200 milliards au premier trimestre 2026](https://www.euroclear.com/newsandinsights/en/press/2026/mr-12-euroclear-delivers-q1-2026-results.html) à mesure que les titres arrivent à échéance et se transforment en cash. Démêler ce qui relève de la banque centrale, d'entités sanctionnées ou de simples investisseurs russes non sanctionnés suppose de remonter des chaînes de conservation que le système n'a jamais été conçu pour exposer.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 360" role="img" aria-label="Schéma de la chaîne de conservation des titres et des comptes omnibus, du bénéficiaire final à Euroclear" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="360" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La chaîne de conservation : une opacité par étages</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Chaque maillon ne connaît que le maillon adjacent. Le sommet ne voit jamais le bénéficiaire final.</text>
+
+  <!-- chaine -->
+  <rect x="32" y="96" width="150" height="58" rx="8" fill="none" stroke="#8b909b" stroke-width="1.5"/>
+  <text x="107" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Bénéficiaire final</text>
+  <text x="107" y="138" fill="#8b909b" font-size="10" text-anchor="middle">épargnant, fonds, banque centrale</text>
+
+  <rect x="212" y="96" width="140" height="58" rx="8" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
+  <text x="282" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Intermédiaire local</text>
+  <text x="282" y="138" fill="#8b909b" font-size="10" text-anchor="middle">courtier, banque</text>
+
+  <rect x="382" y="96" width="140" height="58" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
+  <text x="452" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Conservateur global</text>
+  <text x="452" y="138" fill="#8b909b" font-size="10" text-anchor="middle">custodian</text>
+
+  <rect x="552" y="96" width="136" height="58" rx="8" fill="none" stroke="#5eead4" stroke-width="2"/>
+  <text x="620" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Euroclear (ICSD)</text>
+  <text x="620" y="138" fill="#8b909b" font-size="10" text-anchor="middle">registre de dernier niveau</text>
+
+  <line x1="182" y1="125" x2="210" y2="125" stroke="#2a2c33" stroke-width="2" marker-end="url(#arg)"/>
+  <line x1="352" y1="125" x2="380" y2="125" stroke="#2a2c33" stroke-width="2" marker-end="url(#arg)"/>
+  <line x1="522" y1="125" x2="550" y2="125" stroke="#2a2c33" stroke-width="2" marker-end="url(#arg)"/>
+
+  <!-- omnibus -->
+  <text x="282" y="185" fill="#f5b13d" font-size="11" text-anchor="middle">comptes omnibus : les titres de</text>
+  <text x="282" y="200" fill="#f5b13d" font-size="11" text-anchor="middle">milliers de clients agrégés en un seul compte</text>
+  <line x1="282" y1="160" x2="282" y2="172" stroke="#f5b13d" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="452" y1="160" x2="452" y2="172" stroke="#f5b13d" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="282" y1="172" x2="452" y2="172" stroke="#f5b13d" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- panneau russe -->
+  <rect x="32" y="232" width="656" height="96" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
+  <text x="52" y="260" fill="#ff4d87" font-size="13" font-weight="700">Le cas russe</text>
+  <text x="52" y="282" fill="#d6d9df" font-size="12">Environ 210 Md€ d'avoirs de la Banque centrale de Russie immobilisés dans l'UE,</text>
+  <text x="52" y="300" fill="#d6d9df" font-size="12">dont plus de 200 Md€ logés chez Euroclear Bank fin mars 2026 (85 % de son bilan).</text>
+  <text x="52" y="318" fill="#8b909b" font-size="11">Sources : EPRS, Euroclear (T1 2026). Ordres de grandeur arrondis.</text>
+
+  <defs>
+    <marker id="arg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#8b909b"/></marker>
+  </defs>
+</svg>
+<figcaption>Le compte omnibus mutualise la conservation : chaque étage agrège ses clients et ne déclare que le solde à l'étage supérieur. Efficace et économique, mais le registre central ignore par construction la propriété économique réelle. Schéma simplifié.</figcaption>
+</figure>
+
+## Révélation$, l'archéologie du soupçon
+
+Cette architecture a une histoire polémique, et elle est française autant que luxembourgeoise. En février 2001, le journaliste Denis Robert et l'ancien cadre de Cedel Ernest Backes publient Révélation$, enquête qui accuse [Clearstream](https://fr.wikipedia.org/wiki/Affaire_Clearstream_1), le rival luxembourgeois d'Euroclear, d'avoir entretenu un système de comptes non publiés susceptible de servir des circuits d'évasion et de blanchiment. S'ensuivent une décennie de procès en diffamation, des dizaines de procédures, et finalement, le 3 février 2011, [trois arrêts de la Cour de cassation](https://www.ouvertures.net/denis-robert-versus-clearstream-un-arret-historique-pour-le-droit-a-linformation/) qui donnent gain de cause au journaliste au nom du débat d'intérêt général et du sérieux de son enquête, en s'appuyant sur l'article 10 de la Convention européenne des droits de l'homme.
+
+Deux précisions d'équité s'imposent. D'abord, l'affaire dite Clearstream 2, celle des faux listings utilisés pour salir des personnalités politiques françaises, n'a rien à voir avec le travail documentaire initial : elle a durablement brouillé la perception publique du dossier. Ensuite, Euroclear n'est pas Clearstream, et rien dans le dossier de 2001 ne visait la maison bruxelloise. Si nous convoquons cette histoire, c'est pour un motif précis : le mécanisme interrogé à l'époque, des chaînes de comptes que nul régulateur ni journaliste ne pouvait dérouler de bout en bout, est le même qui rend aujourd'hui les avoirs russes à la fois immobilisables et si difficiles à saisir proprement. En vingt-cinq ans, la question a simplement changé de camp : elle n'est plus posée par un journaliste à une infrastructure, mais par les États à leur propre système financier.
+
+## Le gel de 2022, une rente involontaire
+
+Le 28 février 2022, quatre jours après l'invasion de l'Ukraine, l'Union européenne [interdit toute transaction avec la Banque centrale de Russie](https://www.consilium.europa.eu/en/policies/sanctions-against-russia-explained/). Les réserves que Moscou avait placées en titres européens, pour l'essentiel conservées chez Euroclear, sont immobilisées : ni confisquées, ni rendues. Puis la mécanique des marchés fait son œuvre. Les obligations arrivent à échéance, les coupons tombent, et tout ce cash s'accumule dans les livres d'Euroclear Bank, qui le redépose auprès de banques centrales. Fin mars 2026, [le bilan d'Euroclear Bank atteint 237 milliards d'euros, dont 200 milliards liés aux actifs russes sanctionnés](https://www.euroclear.com/newsandinsights/en/press/2026/mr-12-euroclear-delivers-q1-2026-results.html). Une infrastructure de règlement s'est retrouvée, malgré elle, avec un bilan aux six septièmes russe.
+
+Ce cash rapporte. Les intérêts sur les avoirs russes ont atteint [4,4 milliards d'euros en 2023](https://www.euroclear.com/newsandinsights/en/press/2024/2024-mr-04-strong-performance-fy2023.html), [6,9 milliards en 2024](https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html), puis [5 milliards en 2025, en baisse de 26 % avec la détente des taux](https://www.euroclear.com/newsandinsights/en/press/2026/mr-06-euroclear-delivers-strong-2025-results.html), et encore [2,3 milliards au premier semestre 2026](https://www.lalibre.be/economie/entreprises-startup/2026/07/17/la-russie-confirme-la-condamnation-record-deuroclear-a-plus-de-200-milliards-deuros-UBZ3IGFWNNHFHC6KFPZZ47PKRM/). Au total, [environ 17 milliards d'euros d'intérêts entre 2022 et 2025](https://www.lalibre.be/economie/entreprises-startup/2026/07/17/la-russie-confirme-la-condamnation-record-deuroclear-a-plus-de-200-milliards-deuros-UBZ3IGFWNNHFHC6KFPZZ47PKRM/), qui ont au passage rapporté plus de 4 milliards d'impôt à l'État belge.
+
+L'Europe a organisé la captation de cette rente sans toucher au principal. En février 2024, le Conseil [oblige les dépositaires à cantonner ces revenus extraordinaires](https://www.consilium.europa.eu/en/press/press-releases/2024/02/12/immobilised-russian-assets-council-decides-to-set-aside-extraordinary-revenues/) ; en mai 2024, [le Conseil en affecte l'essentiel au soutien de l'Ukraine](https://www.consilium.europa.eu/en/press/press-releases/2024/05/21/extraordinary-revenues-generated-by-immobilised-russian-assets-council-greenlights-the-use-of-windfall-net-profits-to-support-ukraine-s-self-defence-and-reconstruction/), sous le nom de contribution exceptionnelle, ou windfall contribution. Euroclear a versé [une première tranche de 1,5 milliard d'euros fin juillet 2024](https://enlargement.ec.europa.eu/news/first-transfer-eu15-billion-proceeds-immobilised-russian-assets-made-available-support-ukraine-today-2024-07-26_en), puis [1,6 milliard en juillet 2025](https://www.euroclear.com/newsandinsights/en/press/2026/mr-06-euroclear-delivers-strong-2025-results.html), et [1,4 milliard supplémentaire annoncé pour 2026](https://ec.europa.eu/commission/presscorner/detail/en/ip_26_768), [portant le total à 6,6 milliards d'euros](https://www.lalibre.be/economie/entreprises-startup/2026/07/17/la-russie-confirme-la-condamnation-record-deuroclear-a-plus-de-200-milliards-deuros-UBZ3IGFWNNHFHC6KFPZZ47PKRM/). Ces flux servent aussi à rembourser le prêt de [50 milliards de dollars accordé par le G7 en juin 2024](https://www.consilium.europa.eu/en/policies/ukraine-solidarity-financial-support/), l'ERA, gagé sur les revenus futurs des avoirs immobilisés. La frontière juridique est constamment rappelée par les institutions : les intérêts ne sont la propriété de personne selon la lecture européenne, le principal reste russe. Sur cette ligne de crête, l'Europe finance une guerre avec le produit d'un gel, sans jamais prononcer le mot confiscation.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 400" role="img" aria-label="Flux financiers générés par les avoirs russes immobilisés chez Euroclear et intérêts annuels 2023 à 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="400" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La machine à cash du gel</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Le principal reste immobilisé ; seuls les intérêts du cash redéposé sont captés. Montants en milliards d'euros.</text>
+
+  <!-- flux gauche -->
+  <rect x="32" y="92" width="180" height="52" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
+  <text x="122" y="114" fill="#f5f6f8" font-size="12" text-anchor="middle">Titres de la BCR</text>
+  <text x="122" y="131" fill="#8b909b" font-size="10" text-anchor="middle">arrivent à échéance</text>
+
+  <rect x="32" y="176" width="180" height="52" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
+  <text x="122" y="198" fill="#f5f6f8" font-size="12" text-anchor="middle">Cash chez Euroclear Bank</text>
+  <text x="122" y="215" fill="#8b909b" font-size="10" text-anchor="middle">redéposé en banque centrale</text>
+
+  <rect x="32" y="260" width="180" height="52" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
+  <text x="122" y="282" fill="#f5f6f8" font-size="12" text-anchor="middle">Intérêts : ~17 Md€</text>
+  <text x="122" y="299" fill="#8b909b" font-size="10" text-anchor="middle">cumul 2022-2025</text>
+
+  <line x1="122" y1="144" x2="122" y2="174" stroke="#2a2c33" stroke-width="2" marker-end="url(#arf)"/>
+  <line x1="122" y1="228" x2="122" y2="258" stroke="#2a2c33" stroke-width="2" marker-end="url(#arf)"/>
+
+  <line x1="212" y1="286" x2="300" y2="250" stroke="#5eead4" stroke-width="1.5" marker-end="url(#art)"/>
+  <line x1="212" y1="286" x2="300" y2="330" stroke="#f5b13d" stroke-width="1.5" marker-end="url(#ara)"/>
+  <text x="310" y="244" fill="#5eead4" font-size="11">contribution exceptionnelle : 6,6 Md€ versés</text>
+  <text x="310" y="260" fill="#8b909b" font-size="10">Ukraine + remboursement du prêt ERA du G7</text>
+  <text x="310" y="334" fill="#f5b13d" font-size="11">impôt belge : plus de 4 Md€ (2022-2025)</text>
+
+  <!-- barres droite -->
+  <text x="470" y="100" fill="#f5f6f8" font-size="12" font-weight="700">Intérêts annuels sur avoirs russes</text>
+  <line x1="470" y1="200" x2="688" y2="200" stroke="#2a2c33" stroke-width="1"/>
+  <rect x="478" y="156" width="38" height="44" fill="#5eead4" opacity="0.85"/>
+  <rect x="532" y="131" width="38" height="69" fill="#5eead4" opacity="0.85"/>
+  <rect x="586" y="150" width="38" height="50" fill="#5eead4" opacity="0.85"/>
+  <rect x="640" y="177" width="38" height="23" fill="#7aa2f7" opacity="0.85"/>
+  <text x="497" y="148" fill="#d6d9df" font-size="11" text-anchor="middle">4,4</text>
+  <text x="551" y="123" fill="#d6d9df" font-size="11" text-anchor="middle">6,9</text>
+  <text x="605" y="142" fill="#d6d9df" font-size="11" text-anchor="middle">5,0</text>
+  <text x="659" y="169" fill="#d6d9df" font-size="11" text-anchor="middle">2,3</text>
+  <text x="497" y="216" fill="#8b909b" font-size="10" text-anchor="middle">2023</text>
+  <text x="551" y="216" fill="#8b909b" font-size="10" text-anchor="middle">2024</text>
+  <text x="605" y="216" fill="#8b909b" font-size="10" text-anchor="middle">2025</text>
+  <text x="659" y="216" fill="#8b909b" font-size="10" text-anchor="middle">S1 26</text>
+
+  <text x="32" y="372" fill="#8b909b" font-size="11">Sources : Euroclear (résultats 2023-2025 et T1 2026), La Libre (17 juillet 2026), Conseil de l'UE.</text>
+
+  <defs>
+    <marker id="arf" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#2a2c33"/></marker>
+    <marker id="art" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#5eead4"/></marker>
+    <marker id="ara" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#f5b13d"/></marker>
+  </defs>
+</svg>
+<figcaption>Le gel transforme des titres en cash, le cash en intérêts, et les intérêts en soutien à l'Ukraine, via la contribution exceptionnelle instaurée en mai 2024. La baisse des taux érode mécaniquement la rente : 6,9 milliards d'euros d'intérêts en 2024, 5 milliards en 2025, 2,3 milliards au premier semestre 2026.</figcaption>
+</figure>
+
+## Le prêt de réparation, chronique d'un blocage
+
+À l'automne 2025, la Commission veut changer d'échelle. Son idée, le prêt de réparation : mobiliser non plus les intérêts mais les soldes de cash eux-mêmes, en les prêtant à l'Ukraine via un montage où Kiev ne rembourse que si la Russie paie un jour des réparations de guerre. La [proposition formalisée en décembre 2025](https://ec.europa.eu/commission/presscorner/detail/en/ip_25_2903) porte sur [165 milliards d'euros de soutien nouveau, dont 115 pour la défense et 50 pour le budget ukrainien, auxquels s'ajoutent 45 milliards pour rembourser l'ERA du G7, soit 210 milliards mobilisés au total](https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/779267/EPRS_BRI(2025)779267_EN.pdf). Sept États membres, de la Finlande à la Pologne, signent une lettre de soutien, tandis que la Commission, qui présente aussi une option d'emprunt européen classique, pousse ouvertement le prêt gagé sur les avoirs.
+
+Le blocage vient du pays hôte. Le Premier ministre belge Bart De Wever exige des garanties politiques, juridiques et financières : si le gel devait être levé ou si la Russie gagnait un arbitrage, la Belgique et Euroclear se retrouveraient seuls face à une créance de 200 milliards. La Commission propose [un système de garanties nationales réparties selon le revenu national brut](https://www.cer.eu/insights/ukraine-reparations-loan-how-fix-europes-financial-plumbing), mais plusieurs capitales rechignent et les engagements restent, aux yeux de Bruxelles-la-belge, insuffisamment contraignants. Au même moment, le [plan de paix américain en 28 points](https://www.axios.com/2025/11/20/trump-ukraine-peace-plan-28-points-russia) de novembre 2025 percute le montage : il prévoit d'investir 100 milliards de dollars d'avoirs russes gelés dans un véhicule de reconstruction piloté par Washington, avec la moitié des profits pour les États-Unis, le reste devant alimenter un véhicule d'investissement américano-russe. Pour les Européens, qui découvrent le texte sans avoir été consultés, c'est la confirmation que [leur principal levier de négociation peut leur échapper](https://www.euronews.com/my-europe/2025/11/21/us-peace-plan-casts-doubt-on-eus-plan-to-use-russian-frozen-assets-for-ukraine).
+
+Le Conseil européen du 18 décembre 2025 accouche d'un compromis en retrait : [90 milliards d'euros de soutien pour 2026-2027, financés par un emprunt de l'Union adossé à la marge disponible du budget européen](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/european-council-18-december-2025-ukraine/), sans recours aux avoirs russes. Le texte, soutenu par 25 chefs d'État et de gouvernement, ménage la Tchéquie, la Hongrie et la Slovaquie par une coopération renforcée, réserve explicitement le droit d'utiliser les avoirs russes pour rembourser le prêt, et demande que [les travaux techniques et juridiques sur le prêt de réparation se poursuivent](https://www.consilium.europa.eu/media/wqmknoh4/en-20251218-european-council-conclusions.pdf). Une semaine plus tôt, un geste passé plus inaperçu a verrouillé le dispositif : le 12 décembre, le Conseil adopte le [règlement 2025/2600](https://www.consilium.europa.eu/en/press/press-releases/2025/12/12/council-decides-to-prohibit-transfers-of-immobilised-central-bank-of-russia-assets-back-to-russia/), fondé sur l'article 122 du traité, qui interdit tout transfert des avoirs de la Banque centrale de Russie vers Moscou et rend inexécutables dans l'Union les jugements russes contraires. L'immobilisation, jusque-là suspendue au renouvellement unanime des sanctions tous les six mois, devient de fait indéfinie, et votée à la majorité qualifiée. Des juristes y voient une innovation audacieuse, d'autres [un contournement des règles de la politique étrangère commune](https://www.justsecurity.org/129157/eu-emergency-powers-russian-assets/) ; les deux lectures peuvent être vraies en même temps. Le cadre du prêt de 90 milliards a été [arrêté par le Conseil le 4 février 2026](https://www.consilium.europa.eu/en/press/press-releases/2026/02/04/council-agrees-position-on-legal-framework-to-provide-90-billion-in-financial-support-to-ukraine/), [finalisé le 23 avril](https://www.consilium.europa.eu/en/press/press-releases/2026/04/23/council-finalises-90-billion-support-loan-to-ukraine/), et le sommet de juin a validé [un premier décaissement avant fin juin 2026](https://www.consilium.europa.eu/en/meetings/european-council/2026/06/18-19/).
+
+## La guerre des tribunaux
+
+La riposte russe s'est déployée sur tous les fronts à la fois, et 2026 en a fait une guerre d'usure judiciaire. En décembre 2025, la Banque centrale de Russie [saisit un tribunal d'arbitrage moscovite](https://www.rtbf.be/article/avoirs-russes-geles-la-banque-centrale-russe-entame-une-procedure-en-justice-contre-euroclear-11647102) pour récupérer ses avoirs, et [annonce qu'elle demandera réparation aux banques européennes](https://www.themoscowtimes.com/2025/12/18/russian-central-bank-says-it-will-seek-damages-from-european-lenders-a91478). Le 27 février 2026, elle attaque le règlement d'immobilisation [devant le Tribunal de l'Union européenne](https://www.euronews.com/my-europe/2026/03/03/russian-central-bank-sues-eu-for-immobilising-210-billion-in-assets), en invoquant l'immunité souveraine de ses actifs et le choix contestable de la majorité qualifiée. Le 15 mai, le tribunal moscovite [condamne Euroclear à plus de 18 000 milliards de roubles](https://www.themoscowtimes.com/2026/05/16/russian-court-orders-euroclear-to-pay-around-250bln-over-frozen-assets-a92769) de dommages, environ 250 milliards de dollars. Euroclear, qui fait face à [plus d'une centaine de procédures en Russie](https://www.lalibre.be/economie/entreprises-startup/2026/05/15/avoirs-russes-geles-un-tribunal-russe-condamne-euroclear-a-verser-un-montant-colossal-G2FXFESSDFFTTJRYDDQU7E4T3Q/), [ne reconnaît pas la compétence du tribunal](https://www.euroclear.com/newsandinsights/en/Format/Articles/russia-our-current-status/update-on-russian-sanctioned-assets-may-2026.html) et contre-attaque le 30 juin [devant le tribunal de l'entreprise de Bruxelles](https://www.lavenir.net/actu/belgique/2026/06/30/avoirs-russes-geles-euroclear-cite-la-banque-centrale-de-russie-devant-un-tribunal-bruxellois-pour-contrer-une-condamnation-russe-a-220-milliards-C4LEJKAH6NH3TEZTUJFBKI6D64/), pour faire constater par un juge européen que la créance russe est sans fondement. Le 17 juillet, la justice russe [rejette l'appel d'Euroclear et confirme la condamnation](https://www.lalibre.be/economie/entreprises-startup/2026/07/17/la-russie-confirme-la-condamnation-record-deuroclear-a-plus-de-200-milliards-deuros-UBZ3IGFWNNHFHC6KFPZZ47PKRM/).
+
+Aucun de ces jugements russes n'est exécutable en Europe, et le règlement 2025/2600 a précisément été écrit pour qu'ils ne le deviennent jamais. Leur fonction est ailleurs : construire un titre juridique mobilisable contre les actifs occidentaux encore présents en Russie, où les avoirs de clients d'Euroclear piégés sur les comptes de type C se comptent en milliards, et peser sur toute négociation de paix future. Chaque camp fabrique méthodiquement sa propre réalité juridique, en miroir. L'issue ne se jouera vraisemblablement ni à Moscou ni à Bruxelles, mais dans le rapport de force qui décidera lequel des deux ordres juridiques s'appliquera aux actifs de l'autre.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 330" role="img" aria-label="Chronologie du bras de fer autour des avoirs russes chez Euroclear, de février 2022 à juillet 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="330" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Quatre ans et demi de bras de fer</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Du gel des réserves à la guerre des tribunaux.</text>
+
+  <line x1="56" y1="170" x2="692" y2="170" stroke="#2a2c33" stroke-width="1"/>
+
+  <circle cx="80" cy="170" r="5" fill="#ff4d87"/>
+  <text x="80" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">févr. 22</text>
+  <text x="80" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">gel des réserves</text>
+  <text x="80" y="210" fill="#8b909b" font-size="10" text-anchor="middle">de la BCR</text>
+
+  <circle cx="190" cy="170" r="5" fill="#5eead4"/>
+  <text x="190" y="140" fill="#5eead4" font-size="11" text-anchor="middle" font-weight="700">mai 24</text>
+  <text x="190" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">contribution</text>
+  <text x="190" y="210" fill="#8b909b" font-size="10" text-anchor="middle">exceptionnelle</text>
+
+  <circle cx="280" cy="170" r="5" fill="#5eead4"/>
+  <text x="280" y="140" fill="#5eead4" font-size="11" text-anchor="middle" font-weight="700">juin 24</text>
+  <text x="280" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">prêt ERA G7</text>
+  <text x="280" y="210" fill="#8b909b" font-size="10" text-anchor="middle">50 Md$</text>
+
+  <circle cx="380" cy="170" r="5" fill="#f5b13d"/>
+  <text x="380" y="140" fill="#f5b13d" font-size="11" text-anchor="middle" font-weight="700">nov.-déc. 25</text>
+  <text x="380" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">plan US, échec du prêt</text>
+  <text x="380" y="210" fill="#8b909b" font-size="10" text-anchor="middle">de réparation</text>
+
+  <circle cx="470" cy="170" r="5" fill="#7aa2f7"/>
+  <text x="470" y="140" fill="#7aa2f7" font-size="11" text-anchor="middle" font-weight="700">12 déc. 25</text>
+  <text x="470" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">règlement 2025/2600</text>
+  <text x="470" y="210" fill="#8b909b" font-size="10" text-anchor="middle">immobilisation indéfinie</text>
+
+  <circle cx="560" cy="170" r="5" fill="#ff4d87"/>
+  <text x="560" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">15 mai 26</text>
+  <text x="560" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">Moscou condamne</text>
+  <text x="560" y="210" fill="#8b909b" font-size="10" text-anchor="middle">Euroclear : ~250 Md$</text>
+
+  <circle cx="650" cy="170" r="5" fill="#ff4d87"/>
+  <text x="650" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">17 juil. 26</text>
+  <text x="650" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">appel rejeté,</text>
+  <text x="650" y="210" fill="#8b909b" font-size="10" text-anchor="middle">condamnation confirmée</text>
+
+  <text x="32" y="266" fill="#8b909b" font-size="11">Entre-temps : recours de la BCR devant le Tribunal de l'UE (27 févr. 26), contre-action d'Euroclear à Bruxelles (30 juin 26),</text>
+  <text x="32" y="284" fill="#8b909b" font-size="11">prêt européen de 90 Md€ décidé les 18-19 déc. 25, premier décaissement validé au sommet de juin 26.</text>
+  <text x="32" y="310" fill="#8b909b" font-size="11">Sources : Conseil de l'UE, Euronews, La Libre, Moscow Times, L'Avenir.</text>
+</svg>
+<figcaption>La ligne du temps fait apparaître la symétrie du conflit : chaque étape européenne (contribution exceptionnelle, immobilisation indéfinie) répond à une étape russe (procédures d'arbitrage, condamnations records), sans qu'aucun des deux ordres juridiques ne reconnaisse l'autre.</figcaption>
+</figure>
+
+## Le précédent et la monnaie
+
+Reste la question qui dépasse Euroclear : que vaut une monnaie de réserve dont les actifs peuvent être retenus indéfiniment par décision politique ? La Banque centrale européenne s'est tenue à une ligne constante : aucun rôle de prêteur en dernier ressort dans un montage qui s'apparenterait à du financement monétaire, interdit par les traités, et une exigence de clarté juridique que Christine Lagarde a répétée [jusque dans sa conférence de presse du 18 décembre 2025](https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is251218~3a10402adb.en.html), la confiance dans l'euro se jouant aussi sur ce terrain. La Commission elle-même a longtemps [rejeté la confiscation pure et simple](https://euractiv.fr/news/la-commission-rejette-les-appels-a-saisir-les-avoirs-russes-geles/), au motif qu'elle violerait l'immunité souveraine et exposerait l'Union à des rétorsions. L'argument de fond est connu : si les réserves placées en euros deviennent saisissables, les banques centrales tierces, de Pékin à Riyad, réalloueront une partie de leurs avoirs vers l'or, dont nous avons documenté [l'accumulation record par les banques centrales](/posts/or-banques-centrales-dedollarisation-tonnes/), ou vers des juridictions perçues comme neutres. Le débat sur la [dédollarisation](/posts/dedollarisation-recit-vs-chiffres/) a montré combien ces bascules sont lentes et souvent surestimées ; il a aussi montré qu'elles s'accélèrent précisément après les chocs de confiance.
+
+Le risque le plus concret est pourtant plus prosaïque, et il loge dans la plomberie. Euroclear est une contrepartie systémique : un ratio de fonds propres [CET1](/glossaire/#cet1) d'environ 57 % au premier trimestre 2026 en fait l'une des institutions les mieux capitalisées d'Europe, mais son bilan reste à 85 % constitué d'avoirs russes immobilisés. Une confiscation du principal transformerait une position de dépositaire, neutre par construction, en une dette de 200 milliards envers un créancier hostile, avec un précédent opposable à toute banque centrale cliente. Le groupe lui-même a [publiquement averti l'Union des conséquences d'une utilisation des avoirs](https://www.rtbf.be/article/le-groupe-euroclear-previent-l-ue-des-consequences-de-l-utilisation-des-avoirs-russes-geles-11638456) : perte de confiance des investisseurs internationaux, contentieux en chaîne, et fragilisation d'une infrastructure dont dépend le règlement de la dette européenne, cette même plomberie du collatéral dont nous avons décrit [la mécanique et les points de rupture](/posts/repo-collateral-fabrique-liquidite/) côté américain.
+
+## Des risques surestimés ? Le dossier des partisans du prêt
+
+L'équité commande d'exposer la lecture inverse, portée par une partie des économistes et des juristes européens. Pour le Centre for European Reform, les risques juridiques du prêt de réparation sont [largement infondés](https://www.cer.eu/insights/ukraine-reparations-loan-how-fix-europes-financial-plumbing) : la Russie a déjà perdu les arbitrages Uniper contre Gazprom en 2024 et Krymenergo contre la Russie en 2025, elle refuse elle-même de comparaître devant les instances qu'elle invoque, et le règlement de décembre 2025 neutralise l'exécution de ses jugements dans l'Union. Les tampons de liquidité existent, ajoutent les auteurs : clauses de force majeure, délais réglementaires, et en dernier ressort l'assistance d'urgence des banques centrales. Christine Lagarde elle-même a jugé la dernière mouture du projet [plus solide juridiquement que les précédentes](https://euractiv.fr/news/avoirs-russes-geles-christine-lagarde-juge-la-derniere-proposition-de-lue-plus-solide-juridiquement/), un déplacement notable de la position de la BCE. Quant au précédent pour l'euro, ses partisans font remarquer que le gel dure depuis quatre ans sans fuite mesurable des réserves officielles hors de la zone euro, et que l'alternative, faire payer le contribuable européen plutôt que l'agresseur, crée un autre risque, politique celui-là.
+
+Ce débat n'est pas tranché, et notre [protocole éditorial](/protocole-editorial/) impose de le dire : personne ne dispose d'une base empirique solide pour chiffrer l'effet d'une confiscation sur le statut de réserve de l'euro, car l'événement serait sans précédent à cette échelle. Les deux camps raisonnent par scénarios, pas par données.
+
+## Trois trajectoires pour une chambre forte
+
+Au moment où nous publions, trois chemins restent ouverts, et il s'agit de scénarios, non de prévisions. Le premier est le statu quo rentier : l'immobilisation indéfinie continue de produire quelques milliards d'intérêts par an, décroissants avec les taux, que l'Europe capte sans toucher au principal. C'est la trajectoire par défaut, celle du règlement 2025/2600 et du prêt de 90 milliards. Le deuxième est la relance du prêt de réparation : les conclusions de décembre demandent noir sur blanc la poursuite des travaux techniques et juridiques sur l'instrument, et le dossier reviendra si les besoins ukrainiens débordent l'enveloppe de 2026-2027 ou si les garanties réclamées par la Belgique finissent par être réunies. Le troisième est un règlement négocié du conflit dans lequel les avoirs deviennent une monnaie d'échange, sur le modèle esquissé par le plan américain de novembre 2025 ; ce serait paradoxalement le scénario le plus déstabilisant pour l'Europe, qui verrait le levier changer de mains.
+
+Les signaux à suivre pour départager ces trajectoires sont identifiables : les résultats trimestriels d'Euroclear, qui donnent tous les trois mois la photographie du bilan russe et de la rente ; l'arrêt du Tribunal de l'Union sur le recours de la Banque centrale de Russie, premier test judiciaire du règlement d'immobilisation ; la procédure bruxelloise ouverte le 30 juin ; et chaque Conseil européen, où la question du financement de l'Ukraine au-delà de 2027 reviendra mécaniquement. Une infrastructure conçue pour l'ombre passe désormais ses trimestres sous les projecteurs, avec un règlement européen écrit sur mesure, une créance russe de 250 milliards de dollars à son nom et des chancelleries qui suivent ses soldes de cash communiqué après communiqué. Vingt-cinq ans après Révélation$, plus personne ne cherche où est l'argent : il est localisé au milliard près, dans des rapports trimestriels publics. Le combat porte désormais sur le droit de s'en servir.
+
+---
+
+**Sources primaires :** Euroclear, communiqués de résultats [2023](https://www.euroclear.com/newsandinsights/en/press/2024/2024-mr-04-strong-performance-fy2023.html), [2024](https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html), [2025](https://www.euroclear.com/newsandinsights/en/press/2026/mr-06-euroclear-delivers-strong-2025-results.html) et [premier trimestre 2026](https://www.euroclear.com/newsandinsights/en/press/2026/mr-12-euroclear-delivers-q1-2026-results.html), et [point sur les avoirs russes sanctionnés (mai 2026)](https://www.euroclear.com/newsandinsights/en/Format/Articles/russia-our-current-status/update-on-russian-sanctioned-assets-may-2026.html) ; Conseil de l'UE : [cantonnement des revenus extraordinaires (12 février 2024)](https://www.consilium.europa.eu/en/press/press-releases/2024/02/12/immobilised-russian-assets-council-decides-to-set-aside-extraordinary-revenues/), [affectation des profits nets à l'Ukraine (21 mai 2024)](https://www.consilium.europa.eu/en/press/press-releases/2024/05/21/extraordinary-revenues-generated-by-immobilised-russian-assets-council-greenlights-the-use-of-windfall-net-profits-to-support-ukraine-s-self-defence-and-reconstruction/), [règlement (UE) 2025/2600 du 12 décembre 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/12/council-decides-to-prohibit-transfers-of-immobilised-central-bank-of-russia-assets-back-to-russia/), [conclusions du Conseil européen du 18 décembre 2025](https://www.consilium.europa.eu/media/wqmknoh4/en-20251218-european-council-conclusions.pdf), [position du 4 février](https://www.consilium.europa.eu/en/press/press-releases/2026/02/04/council-agrees-position-on-legal-framework-to-provide-90-billion-in-financial-support-to-ukraine/) et [finalisation du 23 avril 2026](https://www.consilium.europa.eu/en/press/press-releases/2026/04/23/council-finalises-90-billion-support-loan-to-ukraine/) du prêt de 90 milliards, [Conseil européen des 18-19 juin 2026](https://www.consilium.europa.eu/en/meetings/european-council/2026/06/18-19/) ; Commission européenne : [deux options de financement (décembre 2025)](https://ec.europa.eu/commission/presscorner/detail/en/ip_25_2903), [premier transfert de 1,5 milliard (juillet 2024)](https://enlargement.ec.europa.eu/news/first-transfer-eu15-billion-proceeds-immobilised-russian-assets-made-available-support-ukraine-today-2024-07-26_en), [transfert de 1,4 milliard (2026)](https://ec.europa.eu/commission/presscorner/detail/en/ip_26_768) ; BCE, [conférence de presse du 18 décembre 2025](https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is251218~3a10402adb.en.html) ; Parlement européen, [briefing EPRS « Financing Ukraine in 2026 and 2027 »](https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2025)779267) ; [règlement (UE) 909/2014 (CSDR), EUR-Lex](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0909).
+
+**Analyses :** [Centre for European Reform (Tordoir et Paduano, 18 décembre 2025)](https://www.cer.eu/insights/ukraine-reparations-loan-how-fix-europes-financial-plumbing) ; [CEPR VoxEU](https://cepr.org/voxeu/columns/euroclear-and-geopolitics-immobilised-russian-assets) ; [Just Security](https://www.justsecurity.org/129157/eu-emergency-powers-russian-assets/) ; [Institut Jacques Delors](https://institutdelors.eu/en/publications/eu-support-to-ukraine-in-2026-the-saga-of-the-reparations-loan/) ; [Lawfare](https://www.lawfaremedia.org/article/understanding-the-g7-s-new-plan-for-funding-ukraine).
+
+**Presse :** [La Libre (17 juillet 2026)](https://www.lalibre.be/economie/entreprises-startup/2026/07/17/la-russie-confirme-la-condamnation-record-deuroclear-a-plus-de-200-milliards-deuros-UBZ3IGFWNNHFHC6KFPZZ47PKRM/) et [15 mai 2026](https://www.lalibre.be/economie/entreprises-startup/2026/05/15/avoirs-russes-geles-un-tribunal-russe-condamne-euroclear-a-verser-un-montant-colossal-G2FXFESSDFFTTJRYDDQU7E4T3Q/) ; [L'Avenir (30 juin 2026)](https://www.lavenir.net/actu/belgique/2026/06/30/avoirs-russes-geles-euroclear-cite-la-banque-centrale-de-russie-devant-un-tribunal-bruxellois-pour-contrer-une-condamnation-russe-a-220-milliards-C4LEJKAH6NH3TEZTUJFBKI6D64/) ; [RTBF](https://www.rtbf.be/article/le-groupe-euroclear-previent-l-ue-des-consequences-de-l-utilisation-des-avoirs-russes-geles-11638456) ; [The Moscow Times (16 mai 2026)](https://www.themoscowtimes.com/2026/05/16/russian-court-orders-euroclear-to-pay-around-250bln-over-frozen-assets-a92769) et [18 décembre 2025](https://www.themoscowtimes.com/2025/12/18/russian-central-bank-says-it-will-seek-damages-from-european-lenders-a91478) ; [Euronews (3 mars 2026)](https://www.euronews.com/my-europe/2026/03/03/russian-central-bank-sues-eu-for-immobilising-210-billion-in-assets) et [21 novembre 2025](https://www.euronews.com/my-europe/2025/11/21/us-peace-plan-casts-doubt-on-eus-plan-to-use-russian-frozen-assets-for-ukraine) ; [Axios, texte du plan en 28 points](https://www.axios.com/2025/11/20/trump-ukraine-peace-plan-28-points-russia) ; [Euractiv](https://euractiv.fr/news/avoirs-russes-geles-christine-lagarde-juge-la-derniere-proposition-de-lue-plus-solide-juridiquement/). Pour l'histoire de l'affaire Clearstream : [Wikipédia](https://fr.wikipedia.org/wiki/Affaire_Clearstream_1) et [Ouvertures.net sur les arrêts de cassation du 3 février 2011](https://www.ouvertures.net/denis-robert-versus-clearstream-un-arret-historique-pour-le-droit-a-linformation/). Chiffres et dates vérifiés sur les sources citées ; les montants en roubles et en dollars sont des ordres de grandeur convertis au taux courant.

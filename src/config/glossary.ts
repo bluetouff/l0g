@@ -118,6 +118,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'EFFR', nom: 'Effective Federal Funds Rate', def: "Taux effectif moyen des prêts en blanc au jour le jour entre banques américaines. Cible opérationnelle de la politique monétaire, encadrée par l'IORB, le RRP et le SRP." },
       { sigle: 'COFER', nom: 'Currency Composition of Official Foreign Exchange Reserves', def: "Base trimestrielle du FMI mesurant la composition en devises des réserves de change mondiales, hors or. Le dollar y pèse encore autour de 58 pour cent en 2025, contre près de 70 pour cent en 2000. À distinguer de la part de l'or, mesurée sur les réserves totales." },
       { sigle: 'Dédollarisation', nom: 'Diversification hors du dollar', def: "Réduction progressive de la part du dollar dans les réserves, les échanges et les financements, au profit d'autres devises et de l'or. Mouvement graduel et partiel, accéléré par la crainte des sanctions depuis 2022, plus qu'un abandon brutal du billet vert." },
+      { sigle: 'Immunité souveraine', nom: 'Sovereign immunity', def: "Principe de droit international coutumier qui protège les biens d'un État, en particulier les réserves de sa banque centrale, contre les mesures d'exécution d'un autre État. Au cœur du débat sur les avoirs russes immobilisés : l'immobilisation est jugée compatible avec ce principe par les institutions européennes, la confiscation du principal beaucoup plus contestée." },
       { sigle: 'TIC', nom: 'Treasury International Capital', def: "Système de relevés du Trésor américain mesurant les détentions et flux transfrontaliers de titres américains. Source de référence sur les détenteurs étrangers de Treasuries, mais sur une base de conservation qui attribue les titres au pays du dépositaire, pas au détenteur final.", guide: 'lire-les-donnees-tic' },
       { sigle: 'MFH', nom: 'Major Foreign Holders', def: "Table mensuelle du TIC classant les pays par stock de Treasuries détenus. Japon, Royaume-Uni et Chine en tête fin 2025, mais gonflée par les centres de garde (Belgique, Luxembourg, Caïmans, Irlande).", guide: 'lire-les-donnees-tic' },
       { sigle: 'Biais de conservation', nom: 'Custodial bias', def: "Limite majeure des données TIC : un titre est attribué au pays où il est conservé, non à celui de son propriétaire réel. Gonfle les places de garde et masque les vrais détenteurs ; l'enquête annuelle de référence le corrige en partie.", guide: 'lire-les-donnees-tic' },
@@ -212,6 +213,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'VRG', nom: 'Valeur résiduelle garantie', def: "Engagement par lequel le locataire d'un actif (data center, GPU, avion) garantit au prêteur une valeur plancher de cet actif à la fin du bail : si la revente rapporte moins, il comble l'écart. La garantie rend le montage finançable et le sort du bilan du locataire, mais transfère le risque de dépréciation au garant, sans le supprimer. Pièce centrale des financements d'infrastructure IA adossés au matériel." },
       { sigle: 'Neocloud', nom: 'Neocloud (GPU cloud)', def: "Opérateur de cloud spécialisé dans la location de puissance de calcul GPU pour l'IA, comme CoreWeave. Finance l'achat de puces Nvidia par de la dette adossée au matériel et à des contrats clients, en pariant sur une valeur résiduelle et un taux d'utilisation élevés." },
       { sigle: 'EBITDA', nom: 'Earnings Before Interest, Taxes, Depreciation and Amortization', def: "Résultat avant intérêts, impôts, dépréciations et amortissements. Proxy de la génération de cash opérationnel, sur lequel on dimensionne la dette." },
+      { sigle: 'DCT', nom: 'Dépositaire central de titres (CSD)', def: "Infrastructure où les titres financiers sont inscrits, conservés et livrés contre paiement. Registre de dernier niveau du marché : quand une obligation change de main, c'est dans les livres du DCT que la propriété bascule. Euroclear Bank et Clearstream en sont les exemples européens les plus connus." },
+      { sigle: 'ICSD', nom: 'Dépositaire central international', def: "DCT spécialisé dans les titres internationaux, eurobonds en tête, et le règlement transfrontière. Deux acteurs dominent : Euroclear (Bruxelles, créé en 1968) et Clearstream (Luxembourg, ex-Cedel, 1970). Points de passage obligés du marché obligataire mondial, et à ce titre infrastructures systémiques." },
+      { sigle: 'Compte omnibus', nom: 'Omnibus account', def: "Compte sur lequel un intermédiaire regroupe les titres de tous ses clients, sans que l'échelon supérieur de la chaîne de conservation ne voie les bénéficiaires finaux. Réduit massivement les coûts de conservation et permet le netting, au prix d'une opacité structurelle : le dépositaire central ignore, par construction, qui possède réellement quoi." },
+      { sigle: 'CSDR', nom: 'Central Securities Depositories Regulation', def: "Règlement (UE) 909/2014 encadrant les dépositaires centraux de titres européens : agrément, exigences prudentielles, discipline de règlement. C'est le socle réglementaire d'Euroclear et de Clearstream, complété par la supervision des banques centrales nationales." },
     ],
   },
   {
@@ -407,7 +412,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-17';
+export const glossaryUpdatedIso = '2026-07-18';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
