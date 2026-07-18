@@ -1,0 +1,10 @@
+[Unit]
+Description=Rafraîchit l'agrégat de risque l0g toutes les 15 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

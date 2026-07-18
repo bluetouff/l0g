@@ -24,11 +24,10 @@ export const GET: APIRoute = () => {
   for (const it of risk.indices || []) {
     const m = riskSignalMeta[it.key] || { label: undefined, source: undefined, methodology: undefined };
     const provenance = risk.provenance?.[it.key] ?? null;
+    const { key: _key, ...signal } = it;
     indices[it.key] = {
-      value: it.value,
+      ...signal,
       scale: it.scale ?? 100,
-      level: it.level,
-      tone: it.tone,
       label: m.label,
       source: m.source,
       methodology: m.methodology,
@@ -55,9 +54,12 @@ export const GET: APIRoute = () => {
 
   const payload = {
     schema: 'https://l0g.fr/api/',
-    version: '1',
-    generated: new Date().toISOString(),
-    snapshot: risk.updated ?? null,
+    version: '2',
+    generated: risk.generated ?? new Date().toISOString(),
+    snapshot: risk.aggregateGeneratedAt ?? risk.updated ?? null,
+    status: risk.status ?? 'unknown',
+    summary: risk.summary ?? null,
+    software: risk.software ?? null,
     indices,
     scaleCaveat: riskBandScaleCaveat,
     precisionGuard: editorialProtocol.precisionGuard,
@@ -66,7 +68,7 @@ export const GET: APIRoute = () => {
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
     note:
-      "Signaux repris des outils l0g, à la cadence des snapshots (pas de temps réel strict). L’échelle 0-100 est une normalisation d’affichage par instrument, pas un indice global ni une probabilité. Best-effort, pas un conseil en investissement.",
+      "Best-effort explicite : snapshot/generated datent l’assemblage. Lire sourceStatus, qualityStatus, fallbackUsed, sourceUpdatedAt, lastAttemptAt et lastSuccessAt pour chaque signal. L’échelle 0-100 est propre à chaque instrument, pas un indice global ni une probabilité.",
   };
 
   return textResponse(JSON.stringify(payload, null, 2) + '\n', 'application/json; charset=utf-8');

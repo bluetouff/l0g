@@ -34,6 +34,8 @@ const chartPoints = values.map((item, index) => {
   return { x, y, item, index };
 });
 const path = chartPoints.map((point, index) => `${index ? 'L' : 'M'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' ');
+const evidenceColor = (tier: string) => tier === 'attested-archive' ? '#5eead4' : tier === 'operational-archive' ? '#7aa2f7' : '#ffd166';
+const evidenceLabel = (tier: string) => tier === 'attested-archive' ? 'frame Black Box attestée' : tier === 'operational-archive' ? 'archive opérationnelle' : 'build courant';
 const latestRows = [...surface.observations].reverse().slice(0, 30);
 const pageUrl = `${(Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '')}/series/${series.slug}/`;
 const jsonLd = {
@@ -101,16 +103,17 @@ const jsonLd = {
             })}
             <path d={path} fill="none" stroke="#5eead4" stroke-width="3" />
             {chartPoints.map((point) => (
-              <circle cx={point.x} cy={point.y} r="4" fill={point.item.appendOnlyVerified ? '#5eead4' : '#ffd166'}>
-                <title>{`${point.item.seriesDate} · ${point.item.value}/100`}</title>
+              <circle cx={point.x} cy={point.y} r="4" fill={evidenceColor(point.item.evidenceTier)}>
+                <title>{`${point.item.seriesDate} · ${point.item.value}/100 · ${evidenceLabel(point.item.evidenceTier)}`}</title>
               </circle>
             ))}
           </svg>
         ) : <p>Aucun point numérique disponible.</p>}
       </div>
       <p class="chart-caption">
-        Axe vertical 0-100 propre à cet instrument. Les points verts sont reliés à une frame
-        append-only ; un point jaune représente le snapshot du build courant avant archivage.
+        Axe vertical 0-100 propre à cet instrument. Vert : frame Black Box attestée ; bleu :
+        journal opérationnel réellement publié mais non attesté individuellement ; jaune :
+        snapshot du build courant avant sa prochaine frame.
       </p>
     </section>
 
@@ -144,7 +147,7 @@ const jsonLd = {
             <time datetime={item.seriesDate}>{item.seriesDate}</time>
             <strong>{item.value ?? 'n/a'}/{item.scale}</strong>
             <span>{item.methodologyVersion ?? 'non versionnée'}</span>
-            <span>{item.appendOnlyVerified ? 'frame hashée' : 'build courant'}</span>
+            <span>{evidenceLabel(item.evidenceTier)}</span>
           </div>
         ))}
       </div>

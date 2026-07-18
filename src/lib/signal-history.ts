@@ -14,6 +14,7 @@ const SIGNAL_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOS
 
 export type SignalKey = RiskSignalKey;
 export type MethodologyVersionStatus = 'versioned' | 'unversioned-legacy';
+export type SignalEvidenceTier = 'attested-archive' | 'operational-archive' | 'current-snapshot';
 
 type RiskIndexInput = {
   key?: string;
@@ -21,6 +22,18 @@ type RiskIndexInput = {
   scale?: number;
   level?: string;
   tone?: string;
+  sourceStatus?: string;
+  qualityStatus?: string;
+  fallbackUsed?: boolean;
+  fallbackReason?: string | null;
+  sourceUpdatedAt?: string | null;
+  sourcePublishedAt?: string | null;
+  observedAt?: string | null;
+  retrievedAt?: string | null;
+  lastAttemptAt?: string | null;
+  lastSuccessAt?: string | null;
+  staleAfter?: string;
+  timelinessStatus?: string;
 };
 
 type RiskEventInput = {
@@ -71,6 +84,11 @@ export type SignalObservation = {
   archiveFrameId: string | null;
   archiveFrameHash: string | null;
   appendOnlyVerified: boolean;
+  evidenceTier: SignalEvidenceTier;
+  sourceStatus: 'ok' | 'fallback' | 'unknown';
+  qualityStatus: 'nominal' | 'degraded' | 'official-delayed' | 'unknown';
+  fallbackUsed: boolean;
+  fallbackReason: string | null;
   pointInTime: boolean;
   backtestUsable: boolean;
   limitations: string[];
@@ -124,6 +142,9 @@ export type SignalSeriesMetadata = {
   coverage: {
     observations: number;
     appendOnlyVerifiedObservations: number;
+    attestedObservations: number;
+    operationalObservations: number;
+    currentObservations: number;
     firstSeriesDate: string | null;
     lastSeriesDate: string | null;
     firstObservedAt: string | null;
@@ -151,6 +172,9 @@ export type SignalSurface = {
     observations: number;
     appendOnlyVerifiedObservations: number;
     methodologyVersionedObservations: number;
+    attestedObservations: number;
+    operationalObservations: number;
+    currentObservations: number;
     archiveFrames: number;
     levelChanges: number;
     instruments: SignalKey[];
@@ -159,6 +183,18 @@ export type SignalSurface = {
     firstObservedAt: string | null;
     lastObservedAt: string | null;
     pointInTime: boolean;
+    operationalImport: {
+      status: string;
+      source: string;
+      attemptedAt: string | null;
+      retrievedAt: string | null;
+      rows: number | null;
+      dailyObservations: number;
+      firstSnapshot: string | null;
+      lastSnapshot: string | null;
+      sampling: string;
+      reason: string | null;
+    };
   };
   policy: SignalHistoryPolicy;
   instruments: SignalSeriesMetadata[];
@@ -221,6 +257,7 @@ function seriesMetadata(key: SignalKey, observations: SignalObservation[] = []):
   const meta = riskSignalMeta[key];
   const identity = meta.identity;
   const dates = observations.map((item) => item.seriesDate).sort();
+  const observedDates = observations.map((item) => item.observedAt).filter((value): value is string => Boolean(value)).sort();
   const urls = seriesUrls(key);
   return {
     key,
@@ -247,10 +284,13 @@ function seriesMetadata(key: SignalKey, observations: SignalObservation[] = []):
     coverage: {
       observations: observations.length,
       appendOnlyVerifiedObservations: observations.filter((item) => item.appendOnlyVerified).length,
+      attestedObservations: observations.filter((item) => item.evidenceTier === 'attested-archive').length,
+      operationalObservations: observations.filter((item) => item.evidenceTier === 'operational-archive').length,
+      currentObservations: observations.filter((item) => item.evidenceTier === 'current-snapshot').length,
       firstSeriesDate: dates[0] ?? null,
       lastSeriesDate: dates.at(-1) ?? null,
-      firstObservedAt: dates[0] ?? null,
-      lastObservedAt: dates.at(-1) ?? null,
+      firstObservedAt: observedDates[0] ?? null,
+      lastObservedAt: observedDates.at(-1) ?? null,
     },
   };
 }
@@ -267,7 +307,7 @@ function normalizeObservation(
   parsed: Partial<SignalObservation> & Record<string, unknown>,
   key: SignalKey,
   fallbackComputedAt: string,
-  options: { frame?: ArchiveFrame; current?: boolean } = {},
+  options: { frame?: ArchiveFrame; current?: boolean; evidenceTier?: SignalEvidenceTier } = {},
 ): SignalObservation {
   const meta = riskSignalMeta[key];
   const identity = meta.identity;
@@ -283,7 +323,10 @@ function normalizeObservation(
       ? identity.methodologyVersion
       : null;
   const archivedAt = frame ? isoOrNull(frame.computedAt) : isoOrNull(parsed.archivedAt);
-  const appendOnlyVerified = Boolean(frame) || parsed.appendOnlyVerified === true;
+  const appendOnlyVerified = Boolean(frame);
+  const evidenceTier: SignalEvidenceTier = frame
+    ? 'attested-archive'
+    : options.evidenceTier ?? (options.current ? 'current-snapshot' : 'operational-archive');
   const sourceRecordId = parsed.sourceRecordId
     ? String(parsed.sourceRecordId)
     : parsed.recordId
@@ -296,6 +339,17 @@ function normalizeObservation(
   if (!parsed.sourcePublishedAt && key !== 'debt') {
     limitations.push('Date de publication de la source amont non exposée par le snapshot historique.');
   }
+  if (evidenceTier === 'operational-archive') {
+    limitations.push('Point issu du journal opérationnel append-only serveur, non attesté individuellement par la CI.');
+  }
+  if (evidenceTier === 'current-snapshot') {
+    limitations.push('Snapshot du build courant, attesté seulement après publication de la frame Black Box correspondante.');
+  }
+
+  const sourceStatus = parsed.sourceStatus === 'fallback' ? 'fallback' : parsed.sourceStatus === 'ok' ? 'ok' : 'unknown';
+  const qualityStatus = ['nominal', 'degraded', 'official-delayed'].includes(String(parsed.qualityStatus))
+    ? String(parsed.qualityStatus) as SignalObservation['qualityStatus']
+    : 'unknown';
 
   return {
     recordType: 'observation',
@@ -334,6 +388,11 @@ function normalizeObservation(
     archiveFrameId: frame?.frameId ?? (parsed.archiveFrameId ? String(parsed.archiveFrameId) : null),
     archiveFrameHash: frame?.frameHash ?? (parsed.archiveFrameHash ? String(parsed.archiveFrameHash) : null),
     appendOnlyVerified,
+    evidenceTier,
+    sourceStatus,
+    qualityStatus,
+    fallbackUsed: parsed.fallbackUsed === true,
+    fallbackReason: parsed.fallbackReason ? String(parsed.fallbackReason) : null,
     pointInTime: parsed.pointInTime !== false,
     backtestUsable: parsed.backtestUsable !== false,
     limitations: uniqueStrings(limitations),
@@ -355,6 +414,106 @@ function readLegacyNdjsonObservations(computedAt: string): SignalObservation[] {
       rows.push(normalizeObservation(parsed, key, computedAt));
     } catch {
       /* Ignore malformed legacy rows; the append-only frame reader remains authoritative. */
+    }
+  }
+  return rows;
+}
+
+type OperationalHistoryMeta = {
+  status?: string;
+  source?: string;
+  attemptedAt?: string | null;
+  retrievedAt?: string | null;
+  rows?: number;
+  firstSnapshot?: string | null;
+  lastSnapshot?: string | null;
+  sampling?: string;
+  reason?: string | null;
+};
+
+function operationalPaths() {
+  return {
+    history: process.env.L0G_OPERATIONAL_HISTORY_PATH || '.cache/risk-operational-history.ndjson',
+    meta: process.env.L0G_OPERATIONAL_HISTORY_META_PATH || '.cache/risk-operational-history.meta.json',
+  };
+}
+
+function readOperationalHistoryMeta(): OperationalHistoryMeta {
+  return readJson<OperationalHistoryMeta>(operationalPaths().meta, {
+    status: 'missing',
+    source: `${SITE}/api/v1/history.ndjson`,
+    attemptedAt: null,
+    retrievedAt: null,
+    rows: 0,
+    reason: 'Capture opérationnelle absente de ce build.',
+  });
+}
+
+function readOperationalObservations(computedAt: string): SignalObservation[] {
+  const path = join(process.cwd(), operationalPaths().history);
+  if (!existsSync(path)) return [];
+  const lastByUtcDay = new Map<string, Record<string, unknown>>();
+
+  for (const line of readFileSync(path, 'utf-8').split('\n')) {
+    if (!line.trim()) continue;
+    try {
+      const row = JSON.parse(line) as Record<string, unknown>;
+      const snapshot = isoOrNull(row.snapshot);
+      if (!snapshot) continue;
+      const day = snapshot.slice(0, 10);
+      const previous = lastByUtcDay.get(day);
+      if (!previous || String(previous.snapshot) < snapshot) {
+        lastByUtcDay.set(day, { ...row, snapshot });
+      }
+    } catch {
+      /* Le téléchargement valide déjà le NDJSON ; ignorer protège le build local. */
+    }
+  }
+
+  const rows: SignalObservation[] = [];
+  for (const [day, row] of [...lastByUtcDay].sort(([left], [right]) => left.localeCompare(right))) {
+    const snapshot = String(row.snapshot);
+    for (const key of SIGNAL_KEYS) {
+      const value = row[key];
+      if (typeof value !== 'number' || !Number.isFinite(value)) continue;
+      const meta = riskSignalMeta[key];
+      const sourceStatusRaw = row[`${key}_source_status`];
+      const qualityStatusRaw = row[`${key}_quality_status`];
+      const sourcePublishedAt = isoOrNull(row[`${key}_source_updated_at`]);
+      const fallbackUsed = row[`${key}_fallback`] === true;
+      const payload = {
+        recordType: 'observation' as const,
+        instrument: key,
+        label: meta.label,
+        seriesDate: snapshot,
+        observedAt: null,
+        sourcePublishedAt,
+        retrievedAt: snapshot,
+        computedAt: snapshot,
+        value,
+        rawValue: value,
+        scale: 100,
+        level: null,
+        tone: typeof row[`${key}_tone`] === 'string' ? row[`${key}_tone`] : null,
+        sourceUrl: meta.source,
+        methodologyUrl: meta.methodology,
+        sourceSnapshotUrl: `${SITE}/api/v1/history.ndjson`,
+        snapshotHash: sha256(stableStringify({ snapshot, key, value, tone: row[`${key}_tone`] })),
+        evidenceTier: 'operational-archive' as const,
+        sourceStatus: sourceStatusRaw === 'fallback' ? 'fallback' : sourceStatusRaw === 'ok' ? 'ok' : 'unknown',
+        qualityStatus: ['nominal', 'degraded', 'official-delayed'].includes(String(qualityStatusRaw))
+          ? qualityStatusRaw
+          : 'unknown',
+        fallbackUsed,
+        fallbackReason: null,
+        pointInTime: true,
+        backtestUsable: true,
+        limitations: [
+          `Échantillon quotidien : dernier snapshot opérationnel disponible le ${day} UTC.`,
+          'Aucune interpolation ; le journal brut reste disponible dans /api/v1/history.ndjson.',
+        ],
+      } as Partial<SignalObservation> & Record<string, unknown>;
+      rows.push(normalizeObservation(payload, key, computedAt, { evidenceTier: 'operational-archive' }));
     }
   }
   return rows;
@@ -385,11 +544,11 @@ function currentObservations(computedAt: string): SignalObservation[] {
       if (!key) return null;
       const meta = riskSignalMeta[key];
       const provenance = risk.provenance?.[key] ?? (key === 'debt' ? debt?.provenance : null) ?? null;
-      const sourcePublishedAt = isoOrNull(provenance?.generatedAt ?? provenance?.sourcePublishedAt ?? (key === 'debt' ? debt?.generated : null));
-      const retrievedAt = isoOrNull(provenance?.retrievedAt ?? (key === 'debt' ? debt?.retrievedAt : null));
-      const observedAt = key === 'debt'
-        ? isoOrNull(provenance?.observedAt ?? sourcePublishedAt ?? retrievedAt)
-        : isoOrNull(provenance?.observedAt);
+      const sourcePublishedAt = isoOrNull(
+        item.sourcePublishedAt ?? item.sourceUpdatedAt ?? provenance?.generatedAt ?? provenance?.sourcePublishedAt ?? (key === 'debt' ? debt?.generated : null),
+      );
+      const retrievedAt = isoOrNull(item.retrievedAt ?? provenance?.retrievedAt ?? (key === 'debt' ? debt?.retrievedAt : null));
+      const observedAt = isoOrNull(item.observedAt ?? provenance?.observedAt);
       const signalPayload = {
         key,
         value: item.value ?? null,
@@ -419,6 +578,10 @@ function currentObservations(computedAt: string): SignalObservation[] {
         sourceUrl,
         methodologyUrl: meta.methodology,
         sourceSnapshotUrl,
+        sourceStatus: item.sourceStatus ?? provenance?.sourceStatus ?? 'unknown',
+        qualityStatus: item.qualityStatus ?? provenance?.qualityStatus ?? 'unknown',
+        fallbackUsed: item.fallbackUsed === true || provenance?.fallbackUsed === true,
+        fallbackReason: item.fallbackReason ?? provenance?.fallbackReason ?? null,
         calculatorRepo: provenance?.calculator ?? meta.calculation?.sourceCode ?? null,
         calculatorRevision: provenance?.calculatorRevision ?? meta.calculation?.sourceRevision ?? null,
         snapshotHash,
@@ -480,16 +643,16 @@ function mergeObservations(observations: SignalObservation[]) {
 
 function historyPolicy(): SignalHistoryPolicy {
   return {
-    purpose: 'Historique public point-in-time des signaux l0g pour audit, citation, replay et backtest.',
-    appendOnlyTarget: 'black-box-archive/frames/*.json',
+    purpose: 'Historique public fusionné des signaux l0g pour audit, citation, replay, visualisation et backtest.',
+    appendOnlyTarget: 'Journal opérationnel serveur pour la continuité ; black-box-archive/frames/*.json pour la preuve attestée.',
     dateDiscipline:
       'seriesDate date la publication l0g archivée ; observedAt date le phénomène amont ; sourcePublishedAt date la publication amont ; retrievedAt date la collecte ; computedAt date le calcul.',
     methodologyDiscipline:
       'Chaque point expose methodologyVersion. Les frames antérieures au 17 juillet 2026 restent explicitement unversioned-legacy.',
     noRetroactiveBackfill:
-      'Aucun point absent n’est reconstruit après coup. La série probante commence à la première frame Black Box disponible.',
-    backtestRule: 'Utiliser observations et seriesDate. Les levelChanges sont des alertes dérivées, pas des points de série.',
-    caveat: 'Best-effort, pas du temps réel strict, pas un conseil en investissement.',
+      'Aucune valeur absente n’est interpolée. Le passé importé provient exclusivement du journal opérationnel réellement publié ; la preuve attestée commence à la première frame Black Box.',
+    backtestRule: 'Utiliser observations et seriesDate, filtrer evidenceTier selon le niveau de preuve requis. Les levelChanges sont des alertes dérivées, pas des points de série.',
+    caveat: 'Fusion best-effort : operational-archive assure la continuité sans attestation CI individuelle ; attested-archive porte la preuve Black Box ; current-snapshot attend sa frame.',
     license: 'CC BY 4.0',
     attribution: 'l0g.fr',
   };
@@ -497,13 +660,17 @@ function historyPolicy(): SignalHistoryPolicy {
 
 export function buildSignalHistorySurface(): SignalSurface {
   const computedAt = isoOrNull(SIGNAL_GENERATED_AT) ?? SIGNAL_GENERATED_AT;
+  const operational = readOperationalObservations(computedAt);
+  const operationalMeta = readOperationalHistoryMeta();
   const observations = mergeObservations([
     ...currentObservations(computedAt),
     ...readLegacyNdjsonObservations(computedAt),
+    ...operational,
     ...readArchivedObservations(computedAt),
   ]);
   const changes = levelChanges();
   const dates = observations.map((item) => item.seriesDate).sort();
+  const observedDates = observations.map((item) => item.observedAt).filter((value): value is string => Boolean(value)).sort();
   const current: Partial<Record<SignalKey, SignalObservation>> = {};
   for (const observation of observations) current[observation.instrument] = observation;
 
@@ -515,14 +682,29 @@ export function buildSignalHistorySurface(): SignalSurface {
       observations: observations.length,
       appendOnlyVerifiedObservations: observations.filter((item) => item.appendOnlyVerified).length,
       methodologyVersionedObservations: observations.filter((item) => item.methodologyVersionStatus === 'versioned').length,
+      attestedObservations: observations.filter((item) => item.evidenceTier === 'attested-archive').length,
+      operationalObservations: observations.filter((item) => item.evidenceTier === 'operational-archive').length,
+      currentObservations: observations.filter((item) => item.evidenceTier === 'current-snapshot').length,
       archiveFrames: new Set(observations.map((item) => item.archiveFrameId).filter(Boolean)).size,
       levelChanges: changes.length,
       instruments: SIGNAL_KEYS.filter((key) => observations.some((item) => item.instrument === key)),
       firstSeriesDate: dates[0] ?? null,
       lastSeriesDate: dates.at(-1) ?? null,
-      firstObservedAt: dates[0] ?? null,
-      lastObservedAt: dates.at(-1) ?? null,
+      firstObservedAt: observedDates[0] ?? null,
+      lastObservedAt: observedDates.at(-1) ?? null,
       pointInTime: true,
+      operationalImport: {
+        status: operationalMeta.status ?? 'missing',
+        source: operationalMeta.source ?? `${SITE}/api/v1/history.ndjson`,
+        attemptedAt: isoOrNull(operationalMeta.attemptedAt),
+        retrievedAt: isoOrNull(operationalMeta.retrievedAt),
+        rows: typeof operationalMeta.rows === 'number' ? operationalMeta.rows : null,
+        dailyObservations: operational.length,
+        firstSnapshot: isoOrNull(operationalMeta.firstSnapshot),
+        lastSnapshot: isoOrNull(operationalMeta.lastSnapshot),
+        sampling: operationalMeta.sampling ?? 'Dernier snapshot de chaque jour UTC et de chaque signal ; aucune interpolation.',
+        reason: operationalMeta.reason ? String(operationalMeta.reason) : null,
+      },
     },
     policy: historyPolicy(),
     instruments: SIGNAL_KEYS.map((key) => seriesMetadata(key, observations.filter((item) => item.instrument === key))),
@@ -545,6 +727,9 @@ export function buildSignalSeriesSurface(key: SignalKey) {
     coverage: {
       ...series.coverage,
       methodologyVersionedObservations: observations.filter((item) => item.methodologyVersionStatus === 'versioned').length,
+      attestedObservations: observations.filter((item) => item.evidenceTier === 'attested-archive').length,
+      operationalObservations: observations.filter((item) => item.evidenceTier === 'operational-archive').length,
+      currentObservations: observations.filter((item) => item.evidenceTier === 'current-snapshot').length,
       archiveFrames: new Set(observations.map((item) => item.archiveFrameId).filter(Boolean)).size,
       levelChanges: levelChanges.length,
       pointInTime: true,
@@ -612,6 +797,11 @@ export function buildSignalHistoryCsv(key?: SignalKey) {
     'archiveFrameId',
     'archiveFrameHash',
     'appendOnlyVerified',
+    'evidenceTier',
+    'sourceStatus',
+    'qualityStatus',
+    'fallbackUsed',
+    'fallbackReason',
   ];
   const observations = buildSignalHistorySurface().observations.filter((item) => !key || item.instrument === key);
   const rows = observations.map((observation) =>
@@ -645,7 +835,8 @@ export function buildSignalSchemaSurface() {
         type: 'object',
         required: [
           'recordType', 'recordId', 'instrument', 'seriesId', 'seriesSlug', 'name', 'seriesDate',
-          'value', 'snapshotHash', 'methodologyVersionStatus', 'appendOnlyVerified', 'backtestUsable',
+          'value', 'snapshotHash', 'methodologyVersionStatus', 'appendOnlyVerified', 'evidenceTier',
+          'sourceStatus', 'qualityStatus', 'fallbackUsed', 'backtestUsable',
         ],
         properties: {
           recordType: { const: 'observation' },
@@ -657,6 +848,11 @@ export function buildSignalSchemaSurface() {
           methodologyVersion: { type: ['string', 'null'] },
           methodologyVersionStatus: { enum: ['versioned', 'unversioned-legacy'] },
           appendOnlyVerified: { type: 'boolean' },
+          evidenceTier: { enum: ['attested-archive', 'operational-archive', 'current-snapshot'] },
+          sourceStatus: { enum: ['ok', 'fallback', 'unknown'] },
+          qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+          fallbackUsed: { type: 'boolean' },
+          fallbackReason: { type: ['string', 'null'] },
           backtestUsable: { const: true },
         },
         additionalProperties: true,

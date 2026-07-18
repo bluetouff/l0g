@@ -194,7 +194,8 @@ export const GET: APIRoute = async () => {
   lines.push(`- [API signaux de risque](${SITE}/api/v1/risk.json): signaux US Macro, EU Macro, Yen Carry, Energie + confluence 13F, en JSON. L'échelle 0-100 est une normalisation d'affichage par instrument, pas un indice global comparable. US Macro combine z-score, drift et momentum par moyenne ponderee et penalise les faux positifs hors recession.`);
   lines.push(`- [Dette US](${SITE}/api/v1/debt-risk.json): snapshot canonique Debt Risk Radar repris de latest.json, avec score courant hors CBO, imputation neutre des buckets courants manquants, couverture, provenance et top signaux.`);
   lines.push(`- [Signaux courants](${SITE}/api/v1/signals/current.json): dernières observations point-in-time par instrument.`);
-  lines.push(`- [Historique signaux](${SITE}/api/v1/signals/history.json): observations backtestables, événements de seuil, couverture et politique de replay.`);
+  lines.push(`- [Journal opérationnel brut](${SITE}/api/v1/history.ndjson): chaque assemblage serveur, append-only opérationnel sans attestation CI individuelle.`);
+  lines.push(`- [Historique signaux](${SITE}/api/v1/signals/history.json): fusion quotidienne du journal opérationnel, des frames Black Box attestées et du snapshot courant, avec evidenceTier par observation.`);
   lines.push(`- [Historique signaux NDJSON](${SITE}/api/v1/signals/history.ndjson): flux ligne à ligne pour agents, watchers et ingestion incrémentale.`);
   lines.push(`- [Historique signaux CSV](${SITE}/api/v1/signals/history.csv): table d'observations pour pandas, R, DuckDB ou tableur.`);
   lines.push(`- [Schéma signaux](${SITE}/api/v1/signals/schema.json): contrat machine des lignes meta, observation et level-change.`);

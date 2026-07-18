@@ -20,3 +20,10 @@ public/og/
 
 # artefact MCP local (les releases officielles sont construites par GitHub Actions)
 .mcp-release/
+
+# captures opérationnelles téléchargées une seule fois au début du build
+.cache/
+
+# caches Python produits par les tests de l’agrégateur
+__pycache__/
+*.pyc

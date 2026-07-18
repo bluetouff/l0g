@@ -85,9 +85,14 @@ const endpoints = [
     role: 'Registre des identifiants stables, noms citables, versions méthodologiques et exports dédiés par jauge.',
   },
   {
+    path: '/api/v1/history.ndjson',
+    label: 'Journal brut',
+    role: 'Chaque assemblage opérationnel, append-only serveur mais non attesté individuellement par la CI.',
+  },
+  {
     path: '/api/v1/signals/history.json',
     label: 'Signal history',
-    role: 'Historique point-in-time des signaux : observations backtestables, alertes de seuil, couverture et politique.',
+    role: 'Historique canonique fusionné : continuité opérationnelle quotidienne, frames attestées, courant et evidenceTier.',
   },
   {
     path: '/api/v1/signals/history.ndjson',
@@ -124,7 +129,7 @@ const flow = [
   'Lire /api/v1/risk-diff.json pour analyser les changements de risque sur 1, 7 ou 30 jours.',
   'Lire /api/v1/black-box.json pour rejouer une date sans remplir les trous historiques.',
   'Choisir une série nommée dans /series/, puis utiliser son export CSV, JSON ou NDJSON dédié.',
-  'Lire /api/v1/signals/history.csv ou .ndjson pour rejouer toutes les séries point-in-time sans look-ahead bias.',
+  'Lire /api/v1/signals/history.csv ou .ndjson pour rejouer les séries ; filtrer evidenceTier selon le niveau de preuve requis.',
   'Utiliser /api/v1/evidence-graph.json quand il faut parcourir la relation article → claim → source.',
   'Basculer sur les variantes .ndjson pour une ingestion ligne à ligne.',
   'Chercher le contenu dans /api/v1/search-index.json, partagé avec MCP et WebMCP.',

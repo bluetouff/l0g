@@ -23,6 +23,44 @@ for (const key of requiredSignals) {
   if (!item.level || !item.tone) {
     throw new Error(`Signal ${key}: level et tone sont requis.`);
   }
+  if (!['ok', 'fallback'].includes(item.sourceStatus)) {
+    throw new Error(`Signal ${key}: sourceStatus doit valoir ok ou fallback.`);
+  }
+  if (!['nominal', 'unknown', 'degraded', 'official-delayed'].includes(item.qualityStatus)) {
+    throw new Error(`Signal ${key}: qualityStatus non reconnu.`);
+  }
+  if (typeof item.fallbackUsed !== 'boolean') {
+    throw new Error(`Signal ${key}: fallbackUsed doit etre booleen.`);
+  }
+  if (!item.lastAttemptAt || Number.isNaN(Date.parse(item.lastAttemptAt))) {
+    throw new Error(`Signal ${key}: lastAttemptAt doit etre une date ISO.`);
+  }
+  if (item.lastSuccessAt && Number.isNaN(Date.parse(item.lastSuccessAt))) {
+    throw new Error(`Signal ${key}: lastSuccessAt invalide.`);
+  }
+  if (!/^P(?:\d+D|T\d+H)$/.test(item.staleAfter || '')) {
+    throw new Error(`Signal ${key}: staleAfter doit etre une duree ISO en jours ou heures.`);
+  }
+  if (!['fresh', 'stale', 'unknown'].includes(item.timelinessStatus)) {
+    throw new Error(`Signal ${key}: timelinessStatus non reconnu.`);
+  }
+  const dataDate = item.sourcePublishedAt || item.sourceUpdatedAt || item.observedAt;
+  if (!dataDate && item.timelinessStatus !== 'unknown') {
+    throw new Error(`Signal ${key}: une donnée sans date producteur/observation ne peut pas être déclarée fraîche.`);
+  }
+  if (item.sourceStatus === 'fallback' && (!item.fallbackUsed || !item.fallbackReason)) {
+    throw new Error(`Signal ${key}: un repli doit exposer fallbackUsed et fallbackReason.`);
+  }
+}
+
+if (!['ok', 'degraded', 'failed'].includes(risk.status)) {
+  throw new Error('public/risk.json: status doit valoir ok, degraded ou failed.');
+}
+if (risk.summary?.expected !== requiredSignals.length || risk.summary?.present !== requiredSignals.length) {
+  throw new Error('public/risk.json: summary doit couvrir les cinq signaux.');
+}
+if (!risk.generated || Number.isNaN(Date.parse(risk.generated))) {
+  throw new Error('public/risk.json: generated doit dater le build du snapshot.');
 }
 
 if (/\bFALLBACK\b|render\s*\(\s*\{/.test(riskScript)) {

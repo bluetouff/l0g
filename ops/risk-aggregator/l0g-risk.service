@@ -1,0 +1,41 @@
+[Unit]
+Description=Agrège les cinq signaux de risque l0g et publie leur provenance
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=l0grisk
+Group=l0grisk
+EnvironmentFile=-/etc/l0g-risk.env
+ExecStart=/usr/bin/python3 /usr/local/lib/l0g-risk/l0g-risk.py
+ExecStartPost=/usr/bin/python3 /usr/local/lib/l0g-risk/api-build.py
+ExecStartPost=/usr/bin/python3 /usr/local/lib/l0g-risk/risk_history.py /var/www/l0g-data
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ReadWritePaths=/var/www/l0g-data
+ReadOnlyPaths=/opt/macro_dashboard /var/lib/macro_dashboard /usr/local/lib/l0g-risk
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectProc=invisible
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+UMask=0027
+TimeoutStartSec=120
+
+[Install]
+WantedBy=timers.target

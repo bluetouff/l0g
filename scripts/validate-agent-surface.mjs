@@ -110,6 +110,17 @@ walk(openapi, (node, path) => {
 assert(looseSchemas === 0, 'OpenAPI contient encore des schemas permissifs');
 validateOpenapiArtifacts();
 
+const freshness = readJson('dist/api/v1/freshness.json');
+assert(freshness.signalFreshness?.length === 5, 'fraîcheur individuelle des cinq signaux absente');
+for (const signal of freshness.signalFreshness || []) {
+  const dataDate = signal.sourcePublishedAt || signal.observedAt;
+  assert(dataDate || signal.timelinessStatus === 'unknown', `${signal.key}: une date globale ne doit pas fabriquer une fraîcheur producteur`);
+  assert(
+    signal.sourceStatus !== 'fallback' || (signal.fallbackUsed === true && signal.fallbackReason),
+    `${signal.key}: repli sans cause ni indicateur explicite`,
+  );
+}
+
 assert(claims.policy?.classification, 'claims.policy.classification manquant');
 assert(claims.policy?.review, 'claims.policy.review manquant');
 assert(claims.policy?.dateModel, 'claims.policy.dateModel manquant');
@@ -325,6 +336,14 @@ assert((signalHistory.observations || []).every((item, index, rows) => (
 assert(new Set((signalHistory.observations || []).map((item) => item.recordId)).size === signalHistory.observations.length, 'recordId de série dupliqué');
 assert((signalHistory.observations || []).some((item) => item.methodologyVersionStatus === 'unversioned-legacy'), 'les frames pré-versionnage ne sont pas signalées comme legacy');
 assert((signalHistory.observations || []).some((item) => item.methodologyVersionStatus === 'versioned'), 'aucun point méthodologique versionné publié');
+assert(
+  (signalHistory.observations || []).every((item) => ['operational-archive', 'attested-archive', 'current-snapshot'].includes(item.evidenceTier)),
+  'un point historique ne déclare pas son niveau de preuve',
+);
+assert(
+  ['ok', 'fallback', 'missing'].includes(signalHistory.coverage?.operationalImport?.status),
+  'statut de l’import opérationnel absent',
+);
 
 const malformedGuideLinks = llmsFull
   .split('\n')

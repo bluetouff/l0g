@@ -105,12 +105,20 @@ const datasets = [
     role: 'Journal des derniers changements de niveau des indices de risque.',
   },
   {
+    label: 'history.ndjson',
+    href: '/api/v1/history.ndjson',
+    format: 'NDJSON',
+    updated: new Date(),
+    count: 'chaque assemblage',
+    role: 'Journal opérationnel brut append-only serveur, sans attestation CI individuelle.',
+  },
+  {
     label: 'signals/history.json',
     href: '/api/v1/signals/history.json',
     format: 'JSON',
     updated: new Date(),
     count: 'observations + alertes',
-    role: 'Historique point-in-time des signaux l0g pour audit, replay et backtest.',
+    role: 'Historique canonique fusionné avec niveau de preuve par observation.',
   },
   {
     label: 'signals/history.ndjson',

@@ -17,6 +17,44 @@
     return Math.max(0, Math.min(100, p));
   }
 
+  function formatDate(value, withTime) {
+    if (!value) return null;
+    try {
+      var date = new Date(value);
+      if (isNaN(date.getTime())) return null;
+      return date.toLocaleString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        ...(withTime ? { hour: '2-digit', minute: '2-digit' } : {}),
+      });
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function statusText(item) {
+    var sourceDate = formatDate(item.sourceUpdatedAt || item.sourcePublishedAt, true);
+    var brentDate = item.componentDates && item.componentDates.brent;
+    var wtiDate = item.componentDates && item.componentDates.wti;
+    var componentDate = brentDate === wtiDate ? formatDate(brentDate, false) : null;
+    if (item.sourceStatus === 'fallback' || item.fallbackLayer === 'aggregator') {
+      return 'repli best effort · dernier succès ' + (formatDate(item.lastSuccessAt, true) || 'inconnu');
+    }
+    if (item.qualityStatus === 'official-delayed') {
+      return 'officiel différé (EIA) · pétrole au ' + (componentDate || 'jour publié');
+    }
+    if (item.timelinessStatus === 'stale') {
+      return 'source ancienne · donnée ' + (sourceDate || 'non datée');
+    }
+    if (item.qualityStatus === 'degraded') {
+      return 'couverture dégradée · donnée ' + (sourceDate || 'non datée');
+    }
+    if (item.qualityStatus === 'unknown') {
+      return 'provenance partielle · date source inconnue';
+    }
+    return 'source ' + (sourceDate || 'non datée');
+  }
+
   function render(data) {
     if (!data || !Array.isArray(data.indices)) return;
     data.indices.forEach(function (it) {
@@ -26,6 +64,9 @@
       var valEl = tile.querySelector('[data-value]');
       var lvlEl = tile.querySelector('[data-level]');
       var fillEl = tile.querySelector('[data-fill]');
+      var statusEl = tile.querySelector('[data-status]');
+      var degraded = it.sourceStatus === 'fallback' || it.fallbackUsed || it.timelinessStatus === 'stale' || !['nominal'].includes(it.qualityStatus);
+      tile.dataset.degraded = degraded ? 'true' : 'false';
       if (valEl) {
         valEl.textContent = it.value != null ? it.value : '—';
         valEl.style.color = color;
@@ -38,19 +79,18 @@
         fillEl.style.width = clampPct(it.value, it.scale) + '%';
         fillEl.style.background = color;
       }
+      if (statusEl) statusEl.textContent = statusText(it);
     });
     var upd = document.getElementById('risk-updated');
-    if (upd && data.updated) {
+    if (upd) {
       try {
-        var d = new Date(data.updated);
-        upd.textContent =
-          'maj ' +
-          d.toLocaleString('fr-FR', {
-            day: '2-digit',
-            month: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-          });
+        var d = formatDate(data.aggregateGeneratedAt || data.updated || data.generated, true);
+        var count = data.indices.filter(function (item) {
+          return item && (item.sourceStatus === 'fallback' || item.fallbackUsed || item.timelinessStatus === 'stale' || item.qualityStatus !== 'nominal');
+        }).length;
+        upd.textContent = d
+          ? ' Assemblage ' + d + (data.status === 'degraded' ? ' · état dégradé visible' + (count ? ' (' + count + ')' : '') : '') + '.'
+          : '';
       } catch (e) {}
     }
   }
@@ -69,15 +109,15 @@
     indices = indices.map(function (it) {
       if (it && it.key === signal.key) {
         found = true;
-        return signal;
+        return Object.assign({}, it, signal);
       }
       return it;
     });
     if (!found) indices.push(signal);
-    return {
+    return Object.assign({}, base, {
       updated: base.updated || updated,
       indices: indices,
-    };
+    });
   }
 
   function snapshotUpdated(snapshot) {

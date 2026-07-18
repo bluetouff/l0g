@@ -32,10 +32,16 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.16.0';
+export const AGENT_VERSION = '1.17.0';
 export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
-const SIGNAL_STALE_AFTER_DAYS = 7;
+const SIGNAL_STALE_AFTER: Record<string, string> = {
+  us: 'PT36H',
+  eu: 'PT36H',
+  yen: 'PT12H',
+  energie: 'PT6H',
+  debt: 'PT6H',
+};
 const CLAIM_KIND_ENUM = ['fait', 'estimation', 'inférence', 'scénario'];
 
 const RISK_SIGNAL_META: Record<string, { label: string; source: string; methodology: string }> = {
@@ -48,7 +54,28 @@ const RISK_SIGNAL_META: Record<string, { label: string; source: string; methodol
 
 type RiskSnapshotInput = {
   updated?: string | null;
-  indices?: Array<{ key?: string; value?: number; scale?: number; level?: string; tone?: string }>;
+  status?: string | null;
+  indices?: Array<{
+    key?: string;
+    value?: number;
+    scale?: number;
+    level?: string;
+    tone?: string;
+    sourceStatus?: string;
+    qualityStatus?: string;
+    fallbackUsed?: boolean;
+    fallbackReason?: string | null;
+    sourceUpdatedAt?: string | null;
+    sourcePublishedAt?: string | null;
+    observedAt?: string | null;
+    retrievedAt?: string | null;
+    lastAttemptAt?: string | null;
+    lastSuccessAt?: string | null;
+    staleAfter?: string;
+    timelinessStatus?: string;
+    warnings?: string[];
+  }>;
+  provenance?: Record<string, Record<string, unknown>>;
 };
 
 export type ContentLanguage = 'fr' | 'en';
@@ -138,28 +165,74 @@ function isoDateTimeOrNull(value?: string | null) {
   return date.toISOString();
 }
 
-function addDaysIso(value: string, days: number) {
+function durationMilliseconds(value: string) {
+  const days = value.match(/^P(\d+)D$/);
+  if (days) return Number(days[1]) * 24 * 60 * 60 * 1000;
+  const hours = value.match(/^PT(\d+)H$/);
+  if (hours) return Number(hours[1]) * 60 * 60 * 1000;
+  return null;
+}
+
+function addDurationIso(value: string, duration: string) {
   const date = new Date(value);
-  date.setUTCDate(date.getUTCDate() + days);
+  const milliseconds = durationMilliseconds(duration);
+  if (milliseconds == null) return null;
+  date.setTime(date.getTime() + milliseconds);
   return date.toISOString();
 }
 
 function buildSignalFreshness(risk?: RiskSnapshotInput | null) {
   const computedAt = generatedAt();
-  const observedAt = isoDateTimeOrNull(risk?.updated ?? null);
-  const expiresAt = observedAt ? addDaysIso(observedAt, SIGNAL_STALE_AFTER_DAYS) : null;
-  const timelinessStatus = expiresAt && Date.parse(computedAt) > Date.parse(expiresAt) ? 'stale' : observedAt ? 'fresh' : 'unknown';
-  const indexedKeys = new Set((risk?.indices ?? []).map((item) => item.key).filter(Boolean));
+  const indexed = new Map((risk?.indices ?? []).map((item) => [item.key, item]));
 
   return Object.entries(RISK_SIGNAL_META).map(([key, meta]) => {
-    const present = indexedKeys.has(key);
+    const item = indexed.get(key);
+    const provenance = risk?.provenance?.[key] ?? {};
+    const present = Boolean(item);
+    const observedAt = isoDateTimeOrNull(String(item?.observedAt ?? provenance.observedAt ?? '') || null);
+    const sourcePublishedAt = isoDateTimeOrNull(
+      String(item?.sourcePublishedAt ?? item?.sourceUpdatedAt ?? provenance.sourcePublishedAt ?? provenance.generatedAt ?? '') || null,
+    );
+    const retrievedAt = isoDateTimeOrNull(
+      String(item?.retrievedAt ?? provenance.retrievedAt ?? '') || null,
+    );
+    const lastAttemptAt = isoDateTimeOrNull(
+      String(item?.lastAttemptAt ?? provenance.lastAttemptAt ?? '') || null,
+    );
+    const lastSuccessAt = isoDateTimeOrNull(
+      String(item?.lastSuccessAt ?? provenance.lastSuccessAt ?? '') || null,
+    );
+    const staleAfter = item?.staleAfter || String(provenance.staleAfter ?? SIGNAL_STALE_AFTER[key] ?? 'P1D');
+    // lastSuccessAt mesure la disponibilité de la collecte, pas l'âge de la
+    // donnée économique. Sans date producteur/observation, rester unknown.
+    const freshnessAnchor = sourcePublishedAt ?? observedAt;
+    const expiresAt = freshnessAnchor ? addDurationIso(freshnessAnchor, staleAfter) : null;
+    const timelinessStatus = expiresAt && Date.parse(computedAt) > Date.parse(expiresAt)
+      ? 'stale'
+      : freshnessAnchor
+        ? 'fresh'
+        : 'unknown';
+    const sourceStatus = present
+      ? item?.sourceStatus === 'fallback' || provenance.sourceStatus === 'fallback'
+        ? 'fallback'
+        : 'ok'
+      : 'missing';
+    const qualityStatus = String(item?.qualityStatus ?? provenance.qualityStatus ?? (present ? 'unknown' : 'missing'));
+    const fallbackUsed = item?.fallbackUsed === true || provenance.fallbackUsed === true;
+    const fallbackReason = item?.fallbackReason
+      ? String(item.fallbackReason)
+      : provenance.fallbackReason
+        ? String(provenance.fallbackReason)
+        : null;
     const coverage = {
       signalPresent: present,
       observedAt: Boolean(observedAt),
-      sourcePublishedAt: false,
-      retrievedAt: false,
+      sourcePublishedAt: Boolean(sourcePublishedAt),
+      retrievedAt: Boolean(retrievedAt),
+      lastAttemptAt: Boolean(lastAttemptAt),
+      lastSuccessAt: Boolean(lastSuccessAt),
       computedAt: true,
-      staleAfter: true,
+      staleAfter: durationMilliseconds(staleAfter) !== null,
     };
     const missing = Object.entries(coverage)
       .filter(([, isCovered]) => !isCovered)
@@ -171,17 +244,24 @@ function buildSignalFreshness(risk?: RiskSnapshotInput | null) {
       source: meta.source,
       methodology: meta.methodology,
       observedAt,
-      sourcePublishedAt: null,
-      retrievedAt: null,
+      sourcePublishedAt,
+      retrievedAt,
+      lastAttemptAt,
+      lastSuccessAt,
       computedAt,
-      staleAfter: `P${SIGNAL_STALE_AFTER_DAYS}D`,
+      staleAfter,
       expiresAt,
       timelinessStatus,
+      sourceStatus,
+      qualityStatus,
+      fallbackUsed,
+      fallbackReason,
+      warnings: Array.isArray(item?.warnings) ? item.warnings.map(String).slice(0, 10) : [],
       coverageStatus: missing.length === 0 ? 'complete' : present ? 'partial' : 'missing',
       coverage,
       missing,
       note:
-        'Temporalité issue du snapshot agrégé disponible. Les dates sourcePublishedAt et retrievedAt restent nulles tant que le dashboard amont ne les expose pas.',
+        'La fraîcheur est calculée par signal depuis la date du producteur ou, à défaut, son dernier succès. generated/updated de l’agrégat datent seulement l’assemblage.',
     };
   });
 }
@@ -407,9 +487,10 @@ export function buildOpenApiContract() {
       '/api/v1/risk-diff.json': openApiEndpoint('Risk Diff', 'Diff du risque : signaux, sources, claims, modèles, articles et confiance par fenêtre 1, 7 et 30 jours.', 'RiskDiffSurface'),
       '/api/v1/black-box.json': openApiEndpoint('Black Box Recorder', 'Frames point-in-time du risque : scores, sources, modèles, freshness, hashes, changements et replay par date.', 'BlackBoxSurface'),
       '/api/v1/risk.json': openApiEndpoint('Signaux de risque', 'Snapshots des dashboards de risque et caveats de normalisation.', 'RiskSnapshot'),
+      '/api/v1/history.ndjson': openApiNdjsonEndpoint('Journal de risque opérationnel', 'Chaque assemblage serveur append-only : continuité fine, sans attestation CI individuelle. La surface canonique fusionnée est /api/v1/signals/history.json.'),
       '/api/v1/debt-risk.json': openApiEndpoint('Dette US', 'Snapshot canonique Dette US importé depuis Debt Risk Radar latest.json, avec stress courant hors CBO, couverture, provenance, buckets, sources et top signaux.', 'DebtRiskSnapshot'),
       '/api/v1/signals/current.json': openApiEndpoint('Signaux courants', 'Dernières observations point-in-time par instrument, dérivées de l’historique public.', 'SignalCurrentSurface'),
-      '/api/v1/signals/history.json': openApiEndpoint('Historique des signaux', 'Observations point-in-time, alertes de franchissement, couverture et politique de backtest.', 'SignalHistorySurface'),
+      '/api/v1/signals/history.json': openApiEndpoint('Historique fusionné des signaux', 'Observations quotidiennes du journal opérationnel, frames Black Box attestées, snapshot courant, evidenceTier, couverture et politique de backtest.', 'SignalHistorySurface'),
       '/api/v1/signals/history.ndjson': openApiNdjsonEndpoint('Historique des signaux NDJSON', 'Historique des signaux ligne à ligne : meta, observations puis événements de seuil.'),
       '/api/v1/signals/history.csv': {
         get: {
@@ -1597,13 +1678,15 @@ export function buildOpenApiContract() {
         },
         SignalFreshnessCoverage: {
           type: 'object',
-          required: ['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'computedAt', 'staleAfter'],
+          required: ['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'lastAttemptAt', 'lastSuccessAt', 'computedAt', 'staleAfter'],
           additionalProperties: false,
           properties: {
             signalPresent: { type: 'boolean' },
             observedAt: { type: 'boolean' },
             sourcePublishedAt: { type: 'boolean' },
             retrievedAt: { type: 'boolean' },
+            lastAttemptAt: { type: 'boolean' },
+            lastSuccessAt: { type: 'boolean' },
             computedAt: { type: 'boolean' },
             staleAfter: { type: 'boolean' },
           },
@@ -1618,10 +1701,17 @@ export function buildOpenApiContract() {
             'observedAt',
             'sourcePublishedAt',
             'retrievedAt',
+            'lastAttemptAt',
+            'lastSuccessAt',
             'computedAt',
             'staleAfter',
             'expiresAt',
             'timelinessStatus',
+            'sourceStatus',
+            'qualityStatus',
+            'fallbackUsed',
+            'fallbackReason',
+            'warnings',
             'coverageStatus',
             'coverage',
             'missing',
@@ -1636,15 +1726,22 @@ export function buildOpenApiContract() {
             observedAt: { type: ['string', 'null'], format: 'date-time' },
             sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            lastAttemptAt: { type: ['string', 'null'], format: 'date-time' },
+            lastSuccessAt: { type: ['string', 'null'], format: 'date-time' },
             computedAt: { type: 'string', format: 'date-time' },
-            staleAfter: { type: 'string', pattern: '^P\\d+D$' },
+            staleAfter: { type: 'string', pattern: '^P(?:\\d+D|T\\d+H)$' },
             expiresAt: { type: ['string', 'null'], format: 'date-time' },
             timelinessStatus: { enum: ['fresh', 'stale', 'unknown'] },
+            sourceStatus: { enum: ['ok', 'fallback', 'missing'] },
+            qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown', 'missing'] },
+            fallbackUsed: { type: 'boolean' },
+            fallbackReason: { type: ['string', 'null'] },
+            warnings: { type: 'array', items: { type: 'string' } },
             coverageStatus: { enum: ['complete', 'partial', 'missing'] },
             coverage: { $ref: '#/components/schemas/SignalFreshnessCoverage' },
             missing: {
               type: 'array',
-              items: { enum: ['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'computedAt', 'staleAfter'] },
+              items: { enum: ['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'lastAttemptAt', 'lastSuccessAt', 'computedAt', 'staleAfter'] },
             },
             note: { type: 'string' },
           },
@@ -2405,6 +2502,7 @@ export function buildOpenApiContract() {
             'identityVersion', 'methodologyVersion', 'methodologyVersionStatus', 'methodologyEffectiveFrom',
             'sourceUrl', 'methodologyUrl', 'methodologyChangelogUrl', 'sourceSnapshotUrl', 'calculatorRepo',
             'calculatorRevision', 'snapshotHash', 'archiveFrameId', 'archiveFrameHash', 'appendOnlyVerified',
+            'evidenceTier', 'sourceStatus', 'qualityStatus', 'fallbackUsed', 'fallbackReason',
             'pointInTime', 'backtestUsable', 'limitations',
           ],
           additionalProperties: false,
@@ -2445,6 +2543,11 @@ export function buildOpenApiContract() {
             archiveFrameId: { type: ['string', 'null'] },
             archiveFrameHash: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
             appendOnlyVerified: { type: 'boolean' },
+            evidenceTier: { enum: ['attested-archive', 'operational-archive', 'current-snapshot'] },
+            sourceStatus: { enum: ['ok', 'fallback', 'unknown'] },
+            qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+            fallbackUsed: { type: 'boolean' },
+            fallbackReason: { type: ['string', 'null'] },
             pointInTime: { type: 'boolean' },
             backtestUsable: { const: true },
             limitations: { type: 'array', items: { type: 'string' } },
@@ -2477,12 +2580,15 @@ export function buildOpenApiContract() {
         },
         SignalCoverage: {
           type: 'object',
-          required: ['observations', 'appendOnlyVerifiedObservations', 'methodologyVersionedObservations', 'archiveFrames', 'levelChanges', 'instruments', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt', 'pointInTime'],
+          required: ['observations', 'appendOnlyVerifiedObservations', 'methodologyVersionedObservations', 'attestedObservations', 'operationalObservations', 'currentObservations', 'archiveFrames', 'levelChanges', 'instruments', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt', 'pointInTime', 'operationalImport'],
           additionalProperties: false,
           properties: {
             observations: { type: 'integer' },
             appendOnlyVerifiedObservations: { type: 'integer' },
             methodologyVersionedObservations: { type: 'integer' },
+            attestedObservations: { type: 'integer' },
+            operationalObservations: { type: 'integer' },
+            currentObservations: { type: 'integer' },
             archiveFrames: { type: 'integer' },
             levelChanges: { type: 'integer' },
             instruments: { type: 'array', items: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] } },
@@ -2491,6 +2597,24 @@ export function buildOpenApiContract() {
             firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
             lastObservedAt: { type: ['string', 'null'], format: 'date-time' },
             pointInTime: { type: 'boolean' },
+            operationalImport: { $ref: '#/components/schemas/SignalOperationalImport' },
+          },
+        },
+        SignalOperationalImport: {
+          type: 'object',
+          required: ['status', 'source', 'attemptedAt', 'retrievedAt', 'rows', 'dailyObservations', 'firstSnapshot', 'lastSnapshot', 'sampling', 'reason'],
+          additionalProperties: false,
+          properties: {
+            status: { enum: ['ok', 'fallback', 'missing'] },
+            source: { type: 'string' },
+            attemptedAt: { type: ['string', 'null'], format: 'date-time' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            rows: { type: ['integer', 'null'] },
+            dailyObservations: { type: 'integer' },
+            firstSnapshot: { type: ['string', 'null'], format: 'date-time' },
+            lastSnapshot: { type: ['string', 'null'], format: 'date-time' },
+            sampling: { type: 'string' },
+            reason: { type: ['string', 'null'] },
           },
         },
         SignalHistoryPolicy: {
@@ -2548,11 +2672,14 @@ export function buildOpenApiContract() {
         },
         SignalInstrumentCoverage: {
           type: 'object',
-          required: ['observations', 'appendOnlyVerifiedObservations', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt'],
+          required: ['observations', 'appendOnlyVerifiedObservations', 'attestedObservations', 'operationalObservations', 'currentObservations', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt'],
           additionalProperties: false,
           properties: {
             observations: { type: 'integer' },
             appendOnlyVerifiedObservations: { type: 'integer' },
+            attestedObservations: { type: 'integer' },
+            operationalObservations: { type: 'integer' },
+            currentObservations: { type: 'integer' },
             firstSeriesDate: { type: ['string', 'null'], format: 'date-time' },
             lastSeriesDate: { type: ['string', 'null'], format: 'date-time' },
             firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
@@ -2590,11 +2717,14 @@ export function buildOpenApiContract() {
         },
         SignalSeriesCoverage: {
           type: 'object',
-          required: ['observations', 'appendOnlyVerifiedObservations', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt', 'methodologyVersionedObservations', 'archiveFrames', 'levelChanges', 'pointInTime'],
+          required: ['observations', 'appendOnlyVerifiedObservations', 'attestedObservations', 'operationalObservations', 'currentObservations', 'firstSeriesDate', 'lastSeriesDate', 'firstObservedAt', 'lastObservedAt', 'methodologyVersionedObservations', 'archiveFrames', 'levelChanges', 'pointInTime'],
           additionalProperties: false,
           properties: {
             observations: { type: 'integer' },
             appendOnlyVerifiedObservations: { type: 'integer' },
+            attestedObservations: { type: 'integer' },
+            operationalObservations: { type: 'integer' },
+            currentObservations: { type: 'integer' },
             firstSeriesDate: { type: ['string', 'null'], format: 'date-time' },
             lastSeriesDate: { type: ['string', 'null'], format: 'date-time' },
             firstObservedAt: { type: ['string', 'null'], format: 'date-time' },
@@ -2631,16 +2761,37 @@ export function buildOpenApiContract() {
         },
         RiskSignal: {
           type: 'object',
-          required: ['value', 'scale', 'level', 'tone', 'label', 'source', 'methodology'],
+          required: ['value', 'scale', 'level', 'tone', 'label', 'source', 'methodology', 'sourceStatus', 'qualityStatus', 'fallbackUsed', 'fallbackLayer', 'fallbackReason', 'sourceUpdatedAt', 'sourcePublishedAt', 'retrievedAt', 'lastAttemptAt', 'lastSuccessAt', 'staleAfter', 'ageSeconds', 'timelinessStatus', 'sourceSnapshotUrl', 'warnings'],
           additionalProperties: false,
           properties: {
             value: { type: 'number' },
+            rawValue: { type: 'number' },
             scale: { type: 'number' },
             level: { type: 'string' },
-            tone: { enum: ['low', 'normal', 'calm', 'moderate', 'elevated', 'stress', 'risk-on', 'risk-off'] },
+            tone: { enum: ['low', 'normal', 'calm', 'moderate', 'elevated', 'stress', 'crisis', 'risk-on', 'risk-off'] },
             label: { type: 'string' },
             source: { type: 'string', format: 'uri' },
             methodology: { type: 'string', format: 'uri' },
+            sourceStatus: { enum: ['ok', 'fallback'] },
+            qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+            fallbackUsed: { type: 'boolean' },
+            fallbackLayer: { type: ['string', 'null'] },
+            fallbackReason: { type: ['string', 'null'] },
+            sourceUpdatedAt: { type: ['string', 'null'], format: 'date-time' },
+            sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            lastAttemptAt: { type: ['string', 'null'], format: 'date-time' },
+            lastSuccessAt: { type: ['string', 'null'], format: 'date-time' },
+            staleAfter: { type: 'string' },
+            ageSeconds: { type: ['integer', 'null'] },
+            timelinessStatus: { enum: ['fresh', 'stale', 'unknown'] },
+            sourceSnapshotUrl: { type: ['string', 'null'], format: 'uri' },
+            warnings: { type: 'array', items: { type: 'string' } },
+            componentDates: { type: 'object', additionalProperties: { type: ['string', 'null'] } },
+            componentSources: { type: 'object' },
+            producerRepository: { type: 'string', format: 'uri' },
+            producerRevision: { type: ['string', 'null'] },
+            producerRevisionStatus: { enum: ['reported', 'unreported'] },
             calculation: {
               anyOf: [
                 {
@@ -2701,6 +2852,21 @@ export function buildOpenApiContract() {
             scale: { type: 'number' },
             level: { type: 'string' },
             tone: { enum: ['calm', 'moderate', 'elevated', 'stress', 'crisis'] },
+            sourceStatus: { enum: ['ok', 'fallback'] },
+            qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+            fallbackUsed: { type: 'boolean' },
+            fallbackLayer: { type: ['string', 'null'] },
+            fallbackReason: { type: ['string', 'null'] },
+            sourceUpdatedAt: { type: ['string', 'null'], format: 'date-time' },
+            sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
+            retrievedAt: { type: ['string', 'null'], format: 'date-time' },
+            lastAttemptAt: { type: ['string', 'null'], format: 'date-time' },
+            lastSuccessAt: { type: ['string', 'null'], format: 'date-time' },
+            staleAfter: { type: 'string' },
+            ageSeconds: { type: ['integer', 'null'] },
+            timelinessStatus: { enum: ['fresh', 'stale', 'unknown'] },
+            sourceSnapshotUrl: { type: ['string', 'null'], format: 'uri' },
+            warnings: { type: 'array', items: { type: 'string' } },
           },
         },
         RiskSignalProvenanceBucket: {
@@ -2781,6 +2947,13 @@ export function buildOpenApiContract() {
             scoreRaw: { type: 'number' },
             scoreRounded: { type: 'number' },
             status: { type: 'string' },
+            sourceStatus: { enum: ['ok', 'fallback'] },
+            qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
+            fallbackUsed: { type: 'boolean' },
+            fallbackReason: { type: ['string', 'null'] },
+            lastAttemptAt: { type: ['string', 'null'], format: 'date-time' },
+            lastSuccessAt: { type: ['string', 'null'], format: 'date-time' },
+            staleAfter: { type: 'string' },
             coverage: { type: ['number', 'null'], minimum: 0, maximum: 1 },
             coverageNote: { type: ['string', 'null'] },
             issues: { type: 'array', items: { type: 'string' } },
@@ -2837,13 +3010,43 @@ export function buildOpenApiContract() {
         },
         RiskSnapshot: {
           type: 'object',
-          required: ['schema', 'version', 'generated', 'snapshot', 'indices', 'note', 'license', 'attribution'],
+          required: ['schema', 'version', 'generated', 'snapshot', 'status', 'summary', 'indices', 'note', 'license', 'attribution'],
           additionalProperties: false,
           properties: {
             schema: { type: 'string' },
             version: { type: 'string' },
             generated: { type: 'string', format: 'date-time' },
             snapshot: { type: 'string', format: 'date-time' },
+            status: { enum: ['ok', 'degraded', 'failed'] },
+            summary: {
+              type: 'object',
+              required: ['expected', 'present', 'ok', 'fallback', 'stale', 'degraded', 'missing'],
+              properties: {
+                expected: { type: 'integer' },
+                present: { type: 'integer' },
+                ok: { type: 'integer' },
+                fallback: { type: 'integer' },
+                stale: { type: 'integer' },
+                degraded: { type: 'integer' },
+                missing: { type: 'array', items: { type: 'object' } },
+              },
+            },
+            software: {
+              anyOf: [
+                {
+                  type: 'object',
+                  required: ['repository', 'revision', 'revisionStatus', 'sourceSha256'],
+                  additionalProperties: false,
+                  properties: {
+                    repository: { type: 'string', format: 'uri' },
+                    revision: { type: ['string', 'null'] },
+                    revisionStatus: { enum: ['reported', 'unreported'] },
+                    sourceSha256: { type: ['string', 'null'], pattern: '^[a-f0-9]{64}$' },
+                  },
+                },
+                { type: 'null' },
+              ],
+            },
             indices: {
               type: 'object',
               required: ['us', 'eu', 'yen', 'energie', 'debt'],
@@ -2874,6 +3077,7 @@ export function buildOpenApiContract() {
             version: { type: 'string' },
             generated: { type: 'string', format: 'date-time' },
             retrievedAt: { type: 'string', format: 'date-time' },
+            status: { enum: ['ok', 'fallback'] },
             signal: { $ref: '#/components/schemas/DebtRiskTileSignal' },
             provenance: { $ref: '#/components/schemas/RiskSignalProvenance' },
           },
@@ -3741,8 +3945,9 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/api/v1/risk-diff.json', role: 'Diff du risque : signaux, sources, claims, modèles et articles', update: 'à chaque build' },
       { path: '/api/v1/black-box.json', role: 'Boîte noire point-in-time des frames de risque rejouables', update: 'à chaque build' },
       { path: '/api/v1/debt-risk.json', role: 'Snapshot Dette US avec provenance Debt Risk Radar', update: 'à chaque build' },
+      { path: '/api/v1/history.ndjson', role: 'Journal opérationnel brut à chaque assemblage', update: 'toutes les 15 minutes' },
       { path: '/api/v1/signals/current.json', role: 'Dernières observations point-in-time par instrument', update: 'à chaque build' },
-      { path: '/api/v1/signals/history.json', role: 'Historique des signaux pour audit et backtest', update: 'à chaque build et archive append-only' },
+      { path: '/api/v1/signals/history.json', role: 'Historique fusionné avec niveau de preuve par observation', update: 'à chaque build, journal opérationnel et archive Black Box' },
       { path: '/api/v1/signals/history.ndjson', role: 'Historique des signaux en NDJSON', update: 'à chaque build et archive append-only' },
       { path: '/api/v1/signals/history.csv', role: 'Observations de signaux à plat pour backtest', update: 'à chaque build et archive append-only' },
       { path: '/api/v1/signals/schema.json', role: 'Schéma des lignes historiques de signaux', update: 'à chaque changement de contrat' },
@@ -3752,8 +3957,8 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
     ],
     signalFreshness: buildSignalFreshness(risk),
     freshnessPolicy: {
-      rule: 'Les agents doivent privilégier date/updated pour le contenu éditorial, seriesDate pour la publication des signaux, observedAt pour la date économique amont, puis computedAt/generated pour la fraîcheur du fichier.',
-      caveat: 'l0g.fr n’est pas un flux temps réel strict ; les snapshots indiquent leur date utile. Les champs sourcePublishedAt et retrievedAt restent explicites et peuvent être null quand la source amont ne les expose pas ; indexedAt décrit seulement l’indexation du lien dans l’artefact.',
+      rule: 'Les agents doivent privilégier date/updated pour le contenu éditorial, seriesDate pour la publication des signaux, observedAt pour la date économique amont, sourcePublishedAt pour la publication du producteur, puis computedAt/generated pour la construction du fichier.',
+      caveat: 'l0g.fr n’est pas un flux temps réel strict. Une valeur best effort peut être conservée : sourceStatus, qualityStatus, fallbackUsed, lastAttemptAt et lastSuccessAt priment alors sur l’horodatage global d’assemblage.',
       correctionPolicy: `${AGENT_SITE}/protocole-editorial/`,
       changelog: `${AGENT_SITE}/changelog-editorial/`,
     },

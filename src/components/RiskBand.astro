@@ -17,7 +17,7 @@ const items = [
 <section class="rise my-8" data-pagefind-ignore>
   <div class="mb-3 flex items-baseline justify-between gap-3">
     <h2 class="mono-label glow">// signaux de risque</h2>
-    <span class="mono-label" id="risk-updated"></span>
+    <a class="mono-label risk-history-link" href="/series/">historique & provenance</a>
   </div>
 
   <div class="grid grid-cols-2 gap-3 lg:grid-cols-5">
@@ -39,6 +39,7 @@ const items = [
             <span class="risk-level mono-label" data-level></span>
           </div>
           <div class="risk-track mt-3"><div class="risk-fill" data-fill></div></div>
+          <div class="risk-status" data-status>source en attente</div>
         </a>
       ))
     }
@@ -46,7 +47,8 @@ const items = [
   <p class="risk-caveat">
     Scores 0-100 normalisés par instrument : ils ne mesurent ni le même phénomène,
     ni le même horizon. À lire comme un tableau de bord consolidé de signaux, pas comme un
-    indice unique de risque systémique.
+    indice unique de risque systémique. Collecte best effort : chaque carte date sa source et
+    signale tout repli. <span id="risk-updated"></span>
   </p>
 </section>
 
@@ -83,5 +85,20 @@ const items = [
     color: var(--color-muted);
     font-size: 0.78rem;
     line-height: 1.55;
+  }
+  .risk-status {
+    min-height: 1.9rem;
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.45;
+  }
+  .risk-history-link {
+    color: var(--color-signal);
+    text-decoration: none;
+  }
+  .risk-tile[data-degraded='true'] {
+    border-color: color-mix(in srgb, var(--color-amber) 50%, var(--color-line));
   }
 </style>
