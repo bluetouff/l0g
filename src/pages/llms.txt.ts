@@ -84,7 +84,7 @@ export const GET: APIRoute = async () => {
     `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
   );
   lines.push(
-    `- [Agent Surface v1.15.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, trois claims structurants typés maximum par article, séries de risque nommées et versionnées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
+    `- [Agent Surface v1.16.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, trois claims structurants typés maximum par article, séries de risque nommées et versionnées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`

@@ -1,6 +1,6 @@
 {
-  "version": "2026-06-29",
-  "updated": "2026-07-13",
+  "version": "2026-07-18",
+  "updated": "2026-07-18",
   "entries": [
     {
       "claimId": "13flow:claim-53b32247e6add3",
@@ -792,6 +792,38 @@
       "reviewedBy": "bluetouff",
       "kind": "unclassified-assertion",
       "note": "check ok"
+    },
+    {
+      "status": "canonical",
+      "claimId": "bale-iii-rollback-regulateurs-us-capital-bancaire:claim-6721d4dbc25aec",
+      "reviewedAt": "2026-07-18T00:00:00.000Z",
+      "reviewedBy": "codex-source-audit",
+      "kind": "fait",
+      "note": "Type et relation source validés sur la déclaration officielle de Michelle Bowman. Le texte décrit une proposition, pas la règle finale adoptée en novembre 2025.",
+      "proofDepth": "direct-proof",
+      "evidenceLocator": {
+        "type": "paragraph",
+        "value": "Paragraphe commençant par « For U.S. GSIBs » : remplacement du coussin fixe de 2 % par la moitié de la surcharge GSIB method 1."
+      },
+      "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/bowman-statement-20250625.htm",
+      "sourceDate": "2025-06-25",
+      "sourceType": "primary"
+    },
+    {
+      "status": "canonical",
+      "claimId": "ethereum-tradfi-infrastructure-finance:claim-5f1c2944670a81",
+      "reviewedAt": "2026-07-18T00:00:00.000Z",
+      "reviewedBy": "codex-source-audit",
+      "kind": "fait",
+      "note": "Type et formulation validés contre la description explicite de l'architecture traditionnelle par la BIS.",
+      "proofDepth": "direct-proof",
+      "evidenceLocator": {
+        "type": "paragraph",
+        "value": "Introduction, paragraphes 14 à 15 : bases propriétaires en silos, messageries tierces, réconciliation séparée puis règlement final."
+      },
+      "sourceUrl": "https://www.bis.org/publ/arpdf/ar2023e3.htm",
+      "sourceDate": "2023-06-20",
+      "sourceType": "primary"
     }
   ]
 }

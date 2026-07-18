@@ -53,7 +53,7 @@ const ALLOWED_ORIGINS = new Set(
 const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.21.0';
+const MCP_VERSION = '1.22.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -752,6 +752,12 @@ const ClaimsOutput = ToolOutput.extend({
   filters: AnyRecord.optional(),
   claimKinds: z.array(ClaimKindSchema).optional(),
   claims: z.array(CompactClaimSchema).optional(),
+  claimId: z.string().optional(),
+  sourceId: z.string().optional(),
+  source: z.union([PrimarySourceSchema, ReferenceHostSchema]).nullable().optional(),
+  evidence: AnyRecord.optional(),
+  directEvidence: GraphSectionSchema.optional(),
+  relatedContent: GraphSectionSchema.optional(),
   policy: AnyRecord.optional(),
 }).strict();
 const EvidenceGraphOutput = ToolOutput.extend({
@@ -772,6 +778,11 @@ const SourcesOutput = ToolOutput.extend({
   sourcePolicy: AnyRecord.optional(),
   primarySources: z.array(PrimarySourceSchema).optional(),
   referenceHosts: z.array(ReferenceHostSchema).optional(),
+  sourceId: z.string().optional(),
+  sourceType: z.enum(['primarySource', 'referenceHost', 'referenceMatch']).optional(),
+  source: z.union([PrimarySourceSchema, ReferenceHostSchema]).nullable().optional(),
+  claimsCount: z.number().optional(),
+  claims: z.array(CompactClaimSchema.extend({ matchingReferences: z.array(EvidenceReferenceSchema) })).optional(),
 }).strict();
 const IntegrityOutput = ToolOutput.extend({
   version: z.string().optional(),
@@ -2087,7 +2098,7 @@ function buildServer(data) {
       const claimEvidence = rankedClaims.map((claim) => ({
         claimId: claim.id,
         claimResource: `l0g://claims/${encodeURIComponent(claim.id)}`,
-        evidenceTool: { name: 'get_claim_evidence', arguments: { claimId: claim.id } },
+        evidenceTool: { name: 'get_claims', arguments: { claimId: claim.id, includeEvidence: true } },
         articleUrl: claim.articleUrl,
         references: (claim.references || []).map((reference) => reference.href),
       }));
@@ -2156,21 +2167,35 @@ function buildServer(data) {
         "Interroge les trois relations affirmation-source structurantes au maximum par article l0g. Filtrage par article, type de claim " +
         "(fait, estimation, inférence ou scénario) et texte. Renvoie les références cliquables, datées quand détectable.",
       inputSchema: {
+        claimId: z.string().optional().describe('Identifiant exact pour obtenir une claim unique.'),
         articleSlug: z.string().optional().describe("Slug d'article optionnel."),
         language: LanguageSchema.optional().describe('Langue du slug fourni. Une claim reste canonique en français.'),
+        sourceId: z.string().optional().describe('Slug de source, nom ou hôte cité.'),
         kind: ClaimKindSchema.optional().describe('Type de claim optionnel.'),
         query: z.string().optional().describe('Filtre texte optionnel dans la claim ou le titre article.'),
+        includeEvidence: z.boolean().default(false).describe("Inclut le voisinage de preuve quand une seule claim est renvoyée."),
         limit: z.number().int().min(1).max(50).default(10).describe('Nombre maximum de claims.'),
       },
       outputSchema: ClaimsOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ articleSlug, language, kind, query, limit }) => {
+    async ({ claimId, articleSlug, language, sourceId, kind, query, includeEvidence, limit }) => {
       let list = claims.claims || [];
+      let resolvedSource = null;
+      if (claimId) {
+        const found = findClaimById(claimId);
+        if (!found.claim) return errorReply({ error: 'claim inconnue', claimId: found.id });
+        list = [found.claim];
+      }
       if (articleSlug) {
         const record = resolveCatalogDocument(articleSlug, 'article', language);
         const clean = record?.evidenceRef?.articleSlug || cleanSlug(articleSlug);
         list = list.filter((claim) => claim.articleSlug === clean);
+      }
+      if (sourceId) {
+        const found = claimsForSource(sourceId, { kind, limit: 100 });
+        resolvedSource = found.resolved;
+        list = found.claims;
       }
       if (kind) list = list.filter((claim) => claim.kind === kind);
       if (query) {
@@ -2178,18 +2203,34 @@ function buildServer(data) {
         list = list.filter((claim) => tokens.every((tok) => norm(`${claim.claim} ${claim.articleTitle}`).includes(tok)));
       }
       list = list.slice(0, limit).map(compactClaim);
+      let evidence = null;
+      let directEvidence = null;
+      let relatedContent = null;
+      if (includeEvidence && list.length === 1) {
+        const fullClaim = findClaimById(list[0].id).claim;
+        const direct = directEvidenceForClaims([`claim:${list[0].id}`], 80);
+        evidence = proofDepthForClaim(fullClaim);
+        directEvidence = direct.section;
+        relatedContent = relatedContentForAnchors(direct.anchors, 80);
+      }
       return reply({
         version: claims.version,
         count: list.length,
-        filters: { articleSlug: articleSlug || null, language: language || null, kind: kind || null, query: query || null },
+        filters: { claimId: claimId || null, articleSlug: articleSlug || null, language: language || null, sourceId: sourceId || null, kind: kind || null, query: query || null },
+        claimId: list.length === 1 ? list[0].id : undefined,
+        sourceId: resolvedSource?.id,
+        source: resolvedSource?.source || undefined,
         claimKinds,
         claims: list,
+        evidence: evidence || undefined,
+        directEvidence: directEvidence || undefined,
+        relatedContent: relatedContent || undefined,
         policy: claims.policy,
       });
     }
   );
 
-  server.registerTool(
+  if (process.env.MCP_ENABLE_LEGACY_CLAIM_TOOLS === '1') server.registerTool(
     'get_claim',
     {
       description:
@@ -2214,7 +2255,7 @@ function buildServer(data) {
     }
   );
 
-  server.registerTool(
+  if (process.env.MCP_ENABLE_LEGACY_CLAIM_TOOLS === '1') server.registerTool(
     'get_claim_evidence',
     {
       description:
@@ -2260,7 +2301,7 @@ function buildServer(data) {
     }
   );
 
-  server.registerTool(
+  if (process.env.MCP_ENABLE_LEGACY_CLAIM_TOOLS === '1') server.registerTool(
     'list_article_claims',
     {
       description:
@@ -2293,7 +2334,7 @@ function buildServer(data) {
     }
   );
 
-  server.registerTool(
+  if (process.env.MCP_ENABLE_LEGACY_CLAIM_TOOLS === '1') server.registerTool(
     'find_claims_by_source',
     {
       description:
@@ -2319,7 +2360,7 @@ function buildServer(data) {
     }
   );
 
-  server.registerTool(
+  if (process.env.MCP_ENABLE_LEGACY_CLAIM_TOOLS === '1') server.registerTool(
     'get_source',
     {
       description:
@@ -2531,19 +2572,35 @@ function buildServer(data) {
         "Liste les sources primaires institutionnelles suivies par l0g et les hôtes effectivement cités par les claims. " +
         "Utile pour auditer l'origine des preuves.",
       inputSchema: {
+        sourceId: z.string().optional().describe('Source précise à résoudre, par slug, nom ou hôte.'),
         mode: z.enum(['primary', 'hosts', 'both']).default('both').describe('Type de sources à renvoyer.'),
+        includeClaims: z.boolean().default(false).describe('Inclut les claims associées quand sourceId est fourni.'),
         limit: z.number().int().min(1).max(100).default(30).describe('Nombre maximum de sources ou hôtes.'),
       },
       outputSchema: SourcesOutput,
       annotations: { readOnlyHint: true },
     },
-    async ({ mode, limit }) => reply({
-      version: sources.version,
-      counts: sources.counts,
-      sourcePolicy: sources.sourcePolicy,
-      primarySources: mode === 'hosts' ? [] : (sources.primarySources || []).slice(0, limit),
-      referenceHosts: mode === 'primary' ? [] : (sources.referenceHosts || []).slice(0, limit),
-    })
+    async ({ sourceId, mode, includeClaims, limit }) => {
+      if (sourceId) {
+        const found = claimsForSource(sourceId, { limit });
+        if (!found.resolved.source && !found.claims.length) return errorReply({ error: 'source inconnue', sourceId: found.resolved.id });
+        return reply({
+          version: sources.version,
+          sourceId: found.resolved.id,
+          sourceType: found.resolved.sourceType || 'referenceMatch',
+          source: found.resolved.source,
+          claimsCount: found.claims.length,
+          claims: includeClaims ? found.claims : [],
+        });
+      }
+      return reply({
+        version: sources.version,
+        counts: sources.counts,
+        sourcePolicy: sources.sourcePolicy,
+        primarySources: mode === 'hosts' ? [] : (sources.primarySources || []).slice(0, limit),
+        referenceHosts: mode === 'primary' ? [] : (sources.referenceHosts || []).slice(0, limit),
+      });
+    }
   );
 
   server.registerTool(

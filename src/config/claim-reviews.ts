@@ -1,5 +1,6 @@
 import type { ClaimKind, EvidenceDepth } from '../lib/article-evidence.ts';
 import registryData from './claim-reviews.json';
+import { signalClaimUsage } from './signal-claims.ts';
 
 export type ClaimReviewEntry = {
   status?: 'legacy' | 'canonical';
@@ -46,6 +47,11 @@ for (const entry of canonicalEntries) {
 for (const [articleSlug, count] of canonicalByArticle) {
   if (count > 3) throw new Error(`Plus de trois claims canoniques pour ${articleSlug}: ${count}`);
 }
+for (const usage of signalClaimUsage) {
+  if (!canonicalEntries.some((entry) => entry.claimId === usage.claimId)) {
+    throw new Error(`Claim utilisée par le signal ${usage.signal} sans revue canonique: ${usage.claimId}`);
+  }
+}
 
 export const claimReviewRegistry = {
   version: registryData.version,
@@ -55,6 +61,7 @@ export const claimReviewRegistry = {
   entries,
   canonicalEntries,
   legacyEntries,
+  signalClaimUsage,
 };
 
 export const claimReviewById = new Map(canonicalEntries.map((entry) => [entry.claimId, entry]));

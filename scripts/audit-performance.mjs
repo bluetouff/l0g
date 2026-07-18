@@ -26,6 +26,12 @@ const htmlFiles = (await walk(root)).filter((file) => file.endsWith('.html'));
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
   const name = relative(root, file);
+  const isRedirect = /<meta http-equiv="refresh" content="0;url=[^"]+">/.test(html);
+  if (isRedirect) {
+    assert(/<meta name="robots" content="noindex">/.test(html), `${name}: redirection sans noindex`);
+    assert(/<link rel="canonical" href="https:\/\/l0g\.fr\/[^\"]+">/.test(html), `${name}: redirection sans canonical`);
+    continue;
+  }
   assert(/<title>[^<]+<\/title>/.test(html), `${name}: title absent`);
   assert(/<meta name="description" content="[^"]+">/.test(html), `${name}: meta description absente`);
   assert(/<link rel="canonical" href="https:\/\/l0g\.fr\/[^"]*">/.test(html), `${name}: canonical absente ou invalide`);

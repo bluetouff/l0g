@@ -54,14 +54,9 @@ const tools = [
   ['get_ndjson_feed', 'feed, recordType, limit', 'Allowlisted NDJSON feeds: catalog, claims, evidence graph, changefeed and signal history.'],
   ['get_freshness', 'limit', 'Corpus and signal freshness: observedAt, computedAt, expiration, coverage and policy.'],
   ['search_content', 'query, language, mode, limit', 'Bilingual search over the canonical index shared by Agent Surface, MCP and WebMCP.'],
-  ['get_claims', 'articleSlug, language, kind, query, limit', 'Canonical French claims; an English slug resolves to its French evidence.'],
-  ['get_claim', 'claimId', 'Single claim, resource links and parent article.'],
-  ['get_claim_evidence', 'claimId, limit', 'Prudent evidence level for one claim. Direct proof only when reviewed by humans.'],
-  ['list_article_claims', 'articleSlug, language, kind, limit', 'Canonical claims for a French article or its English translation.'],
-  ['find_claims_by_source', 'sourceId, kind, limit', 'Claims linked to a primary source, a name or a cited host.'],
-  ['get_source', 'sourceId, limit', 'Primary source or cited host, with associated claims.'],
+  ['get_claims', 'claimId, articleSlug, language, sourceId, kind, query, includeEvidence, limit', 'Search, exact claim, article, source and evidence neighbourhood in one contract.'],
   ['get_evidence_graph', 'articleSlug, language, nodeType, limit', 'Canonical graph: an English slug points to the French graph without duplication.'],
-  ['list_sources', 'mode, limit', 'Institutional primary sources and hosts actually cited by claims.'],
+  ['list_sources', 'sourceId, mode, includeClaims, limit', 'List or resolve one source, with linked claims on demand.'],
   ['get_integrity', 'path', 'Canonical SHA-256 fingerprints for Agent Surface, JSON and NDJSON surfaces.'],
   ['verify_artifact', 'path, sha256', 'Allowlisted artifact verification through the integrity manifest.'],
   ['get_changefeed', 'contentType, limit', 'Latest changes with objectId, current version/hash, diff status and semantic change.'],
@@ -110,7 +105,7 @@ const appLd = {
     </p>
     <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-muted">
       <strong class="text-signal">Repository target on 17 July 2026:</strong>
-      <code>1.21.0</code>, with release caching, at most three structural typed claims per article and anonymous usage statistics. The version and SHA
+      <code>1.22.0</code>, with consolidated claims/source tools, at most three structural typed claims per article and anonymous usage statistics. The version and SHA
       actually running remain available through <code>l0g://mcp/server</code>; repository and runtime
       are only considered aligned after the attested release is published.
     </div>

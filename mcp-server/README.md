@@ -149,14 +149,9 @@ Le JSON n'est donc plus caché dans un bloc texte à reparser.
 | `get_freshness` | `limit?` | derniers contenus, compteurs, temporalité par signal et politique de fraîcheur |
 | `search_content` | `query`, `language?`, `mode?`, `limit?` | recherche bilingue sur l'index canonique partagé avec l'Agent Surface et WebMCP |
 | `build_research_pack` | `query`, `language`, `asOf?`, `riskWindow?`, `limit?` | paquet de preuves déterministe : documents, claims canoniques, sources, graphe, fraîcheur, Risk Diff, éléments adverses, limites et URLs citables |
-| `get_claims` | `articleSlug?`, `language?`, `kind?`, `query?`, `limit?` | claims françaises canoniques ; un slug anglais est résolu vers ses preuves françaises |
-| `get_claim` | `claimId` | une claim précise, ses liens ressource et son article |
-| `get_claim_evidence` | `claimId`, `limit?` | preuve et références d'une claim, avec contenus reliés isolés dans `relatedContent` |
-| `list_article_claims` | `articleSlug`, `language?`, `kind?`, `limit?` | claims canoniques d'un article français ou de sa traduction anglaise |
-| `find_claims_by_source` | `sourceId`, `kind?`, `limit?` | claims rattachées à une source primaire, un nom ou un host cité |
-| `get_source` | `sourceId`, `limit?` | source primaire ou hôte cité, plus claims associées |
+| `get_claims` | `claimId?`, `articleSlug?`, `language?`, `sourceId?`, `kind?`, `query?`, `includeEvidence?`, `limit?` | recherche, claim précise, filtrage article/source et voisinage de preuve dans un contrat unique |
 | `get_evidence_graph` | `articleSlug?`, `language?`, `nodeType?`, `limit?` | sous-graphe canonique ; un slug anglais pointe vers le graphe français sans duplication |
-| `list_sources` | `mode?`, `limit?` | sources primaires et hôtes effectivement cités |
+| `list_sources` | `sourceId?`, `mode?`, `includeClaims?`, `limit?` | liste ou source précise, avec claims associées sur demande |
 | `get_integrity` | `path?` | empreintes SHA-256 canoniques des surfaces Agent Surface |
 | `verify_artifact` | `path`, `sha256?` | vérification allowlistée d'un artefact via le manifeste d'intégrité |
 | `get_changefeed` | `contentType?`, `limit?` | derniers changements avec objectId, version/hash courant et statut de diff |
@@ -180,8 +175,7 @@ dans le risque depuis hier, 7 jours ou 30 jours". `get_black_box` sert au replay
 tool sélectionne la dernière frame publiée avant ou le jour demandé ; si aucune frame n'existe, la
 réponse marque la date comme non rejouable plutôt que de recalculer après coup.
 
-`get_claim` ne publie pas d’URI fragmentée de preuve : il renvoie la ressource `l0g://claims/{claim_id}`
-et oriente vers le tool `get_claim_evidence`. Les tools marquent les identifiants inconnus avec `isError: true`.
+`get_claims` regroupe les anciens chemins unitaires, par article, par source et par preuve. Les identifiants inconnus sont marqués avec `isError: true`.
 Les resources inexistantes renvoient une erreur protocolaire MCP, pas un document JSON avec champ `error`.
 
 ## Sécurité

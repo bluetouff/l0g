@@ -230,6 +230,18 @@ export const editorialProtocol = {
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
   {
+    date: '2026-07-18',
+    title: 'Revue canonique sélective et dépendances signal-claim fermées',
+    kind: 'méthode',
+    summary:
+      'Deux claims disposant d’une source primaire datée et d’un locator exact inaugurent le registre canonique. Les 113 validations historiques restent legacy. Toute claim déclarée comme entrée, seuil ou interprétation d’un signal doit désormais être canonique sous peine d’échec du build.',
+    links: [
+      { label: 'claims', href: '/api/v1/claims.json' },
+      { label: 'preuves', href: '/preuves/' },
+      { label: 'protocole', href: '/protocole-editorial/' },
+    ],
+  },
+  {
     date: '2026-07-17',
     title: 'Claims structurants typés et sélectionnés par le risque',
     kind: 'méthode',

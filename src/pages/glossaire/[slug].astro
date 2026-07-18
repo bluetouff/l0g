@@ -119,6 +119,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   title={title}
   description={description}
   ogType="article"
+  robots={atlas ? 'index,follow' : 'noindex,follow'}
   ogImageAlt={`Définition ${entry.sigle} sur le glossaire l0g.fr`}
 >
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />

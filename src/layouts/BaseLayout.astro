@@ -4,12 +4,16 @@ import Sidebar from '../components/Sidebar.astro';
 import SidebarMobile from '../components/SidebarMobile.astro';
 import WebMCPTools from '../components/WebMCPTools.astro';
 import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
+import { buildSeoMetadata } from '../lib/seo.ts';
 
 type AlternateLink = { hreflang: string; href: string };
 
 interface Props {
   title?: string;
   description?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  robots?: 'index,follow' | 'noindex,follow';
   ogType?: 'website' | 'article';
   ogImage?: string;
   ogImageAlt?: string;
@@ -22,6 +26,9 @@ interface Props {
 const {
   title = 'l0g.fr',
   description = 'Cartographier le risque des systèmes économiques. Macro, crédit privé, crypto sur données publiques : analyses aux sources primaires et outils de monitoring en accès libre, par Bluetouff.',
+  seoTitle,
+  seoDescription,
+  robots = 'index,follow',
   ogType = 'website',
   ogImage = '/og-default.png',
   ogImageAlt,
@@ -33,9 +40,9 @@ const {
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
-const fullTitle = title === 'l0g.fr'
-  ? 'l0g.fr · Cartographier le risque des systèmes économiques'
-  : `${title} · l0g.fr`;
+const seo = buildSeoMetadata(seoTitle || title, seoDescription || description);
+const fullTitle = seo.fullTitle;
+const metaDescription = seo.description;
 const socialImageAlt = ogImageAlt ?? `${fullTitle} — carte sociale l0g.fr`;
 const year = new Date().getFullYear();
 
@@ -77,6 +84,7 @@ const mainTabs: Tab[] = [
   { href: '/sujets/', label: 'sujets', match: ['/sujets', '/sujet'] },
   { href: '/dashboards/', label: 'dashboards' },
   { href: '/confluence/', label: 'confluence' },
+  { href: '/hebdo/', label: 'hebdo' },
   { href: '/methodologie/', label: 'méthodologie' },
   { href: '/glossaire/', label: 'glossaire' },
   { href: '/guides/', label: 'guides' },
@@ -124,7 +132,8 @@ function isCurrentHref(href: string): boolean {
     </script>
 
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />
@@ -132,7 +141,7 @@ function isCurrentHref(href: string): boolean {
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="l0g.fr" />
@@ -144,7 +153,7 @@ function isCurrentHref(href: string): boolean {
     <meta name="twitter:site" content="@bluetouff" />
     <meta name="twitter:creator" content="@bluetouff" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
 

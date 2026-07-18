@@ -32,7 +32,7 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.15.0';
+export const AGENT_VERSION = '1.16.0';
 export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER_DAYS = 7;
@@ -1235,7 +1235,7 @@ export function buildOpenApiContract() {
         },
         ClaimReviewRegistry: {
           type: 'object',
-          required: ['version', 'updated', 'policy', 'reviewedClaims', 'legacyReviews', 'entries'],
+          required: ['version', 'updated', 'policy', 'reviewedClaims', 'legacyReviews', 'signalClaims', 'entries'],
           additionalProperties: false,
           properties: {
             version: { type: 'string' },
@@ -1243,6 +1243,29 @@ export function buildOpenApiContract() {
             policy: { type: 'string' },
             reviewedClaims: { type: 'integer' },
             legacyReviews: { type: 'integer' },
+            signalClaims: {
+              type: 'object',
+              required: ['declared', 'canonicallyReviewed', 'coverage', 'usages'],
+              additionalProperties: false,
+              properties: {
+                declared: { type: 'integer' },
+                canonicallyReviewed: { type: 'integer' },
+                coverage: { type: 'number', minimum: 0, maximum: 1 },
+                usages: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    required: ['signal', 'claimId', 'role'],
+                    additionalProperties: false,
+                    properties: {
+                      signal: { enum: ['us', 'eu', 'yen', 'energie', 'debt'] },
+                      claimId: { type: 'string' },
+                      role: { enum: ['input', 'threshold', 'interpretation'] },
+                    },
+                  },
+                },
+              },
+            },
             entries: {
               type: 'array',
               items: {
@@ -3332,6 +3355,12 @@ export function buildClaimsSurface(posts: PostEntry[]) {
       policy: claimReviewRegistry.policy,
       reviewedClaims: claimReviewRegistry.canonicalEntries.length,
       legacyReviews: claimReviewRegistry.legacyEntries.length,
+      signalClaims: {
+        declared: claimReviewRegistry.signalClaimUsage.length,
+        canonicallyReviewed: claimReviewRegistry.signalClaimUsage.length,
+        coverage: 1,
+        usages: claimReviewRegistry.signalClaimUsage,
+      },
       entries: claimReviewRegistry.entries,
     },
     policy: {

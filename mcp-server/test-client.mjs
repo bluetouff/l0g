@@ -60,7 +60,11 @@ if (!health.agentSurface?.version) throw new Error('healthz sans version Agent S
 console.log('healthz -> MCP:', health.server.version, '| Agent:', health.agentSurface.version, '| shaStatus:', health.server.shaStatus);
 
 const { tools } = await client.listTools();
-console.log('TOOLS:', tools.map((t) => t.name).join(', '));
+const toolsListBytes = Buffer.byteLength(JSON.stringify({ tools }), 'utf8');
+console.log('TOOLS:', tools.map((t) => t.name).join(', '), `| ${tools.length} outils, ${toolsListBytes} octets`);
+if (tools.length > 21 || toolsListBytes > 120_000) {
+  throw new Error(`tools/list hors budget: ${tools.length} outils, ${toolsListBytes} octets`);
+}
 for (const required of [
   'get_agent_manifest',
   'get_claims',
@@ -75,17 +79,15 @@ for (const required of [
   'get_risk_diff',
   'get_black_box',
   'build_research_pack',
-  'get_claim',
-  'get_claim_evidence',
-  'list_article_claims',
-  'find_claims_by_source',
-  'get_source',
   'verify_artifact',
   'get_changes',
 ]) {
   const tool = tools.find((item) => item.name === required);
   if (!tool) throw new Error(`tool manquant: ${required}`);
   if (!tool.outputSchema) throw new Error(`outputSchema manquant: ${required}`);
+}
+for (const removed of ['get_claim', 'get_claim_evidence', 'list_article_claims', 'find_claims_by_source', 'get_source']) {
+  if (tools.some((tool) => tool.name === removed)) throw new Error(`tool legacy encore exposé: ${removed}`);
 }
 
 const { resources } = await client.listResources();
@@ -310,29 +312,28 @@ const claims = await call('get_claims', { kind: 'fait', limit: 3 });
 if (!claims.claims?.length || claims.claims.some((claim) => claim.kind !== 'fait')) throw new Error('get_claims ne filtre pas les faits');
 console.log('get_claims(fait) ->', claims.count, '; #1:', claims.claims?.[0]?.articleSlug);
 
-const articleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
+const articleClaims = await call('get_claims', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 5 });
 const dollarYenClaimId = articleClaims.claims?.[0]?.id;
-if (!dollarYenClaimId) throw new Error('list_article_claims ne renvoie aucune claim dollar-yen');
-console.log('list_article_claims ->', articleClaims.count, '| #1:', dollarYenClaimId);
+if (!dollarYenClaimId) throw new Error('get_claims ne renvoie aucune claim dollar-yen');
+console.log('get_claims(article) ->', articleClaims.count, '| #1:', dollarYenClaimId);
 
-const englishArticleClaims = await call('list_article_claims', { articleSlug: 'dollar-yen-intervention-carry-unwind', language: 'en', limit: 5 });
-if (!englishArticleClaims.claims?.length || englishArticleClaims.articleSlug !== 'dollar-yen-intervention-risque-carry-2026') {
-  throw new Error('list_article_claims ne résout pas la traduction vers les claims françaises');
+const englishArticleClaims = await call('get_claims', { articleSlug: 'dollar-yen-intervention-carry-unwind', language: 'en', limit: 5 });
+if (!englishArticleClaims.claims?.length || englishArticleClaims.claims[0].articleSlug !== 'dollar-yen-intervention-risque-carry-2026') {
+  throw new Error('get_claims ne résout pas la traduction vers les claims françaises');
 }
 if (englishArticleClaims.claims.some((item) => item.language !== 'fr')) {
-  throw new Error('list_article_claims duplique des claims anglaises');
+  throw new Error('get_claims duplique des claims anglaises');
 }
-console.log('list_article_claims(en) -> canonical:', englishArticleClaims.articleSlug, '| claims:', englishArticleClaims.count);
+console.log('get_claims(en) -> canonical:', englishArticleClaims.claims[0].articleSlug, '| claims:', englishArticleClaims.count);
 
-const claim = await call('get_claim', { claimId: dollarYenClaimId });
-if (claim.evidenceResource) throw new Error('get_claim ne doit pas exposer une URI evidence non enregistrée');
-if (claim.evidenceTool?.name !== 'get_claim_evidence') throw new Error('get_claim doit orienter vers get_claim_evidence');
-console.log('get_claim ->', claim.claimId, '| kind:', claim.claim?.kind);
+const claim = await call('get_claims', { claimId: dollarYenClaimId });
+if (claim.claims?.length !== 1) throw new Error('get_claims(claimId) doit renvoyer une seule claim');
+console.log('get_claims(claimId) ->', claim.claimId, '| kind:', claim.claims?.[0]?.kind);
 
-const unknownClaim = await callExpectError('get_claim', { claimId: 'claim-inconnue' });
-console.log('get_claim(error) ->', unknownClaim.error);
+const unknownClaim = await callExpectError('get_claims', { claimId: 'claim-inconnue' });
+console.log('get_claims(error) ->', unknownClaim.error);
 
-const claimEvidence = await call('get_claim_evidence', { claimId: dollarYenClaimId, limit: 40 });
+const claimEvidence = await call('get_claims', { claimId: dollarYenClaimId, includeEvidence: true });
 if (claimEvidence.evidence?.proofDepth === 'preuve directe') {
   throw new Error('get_claim_evidence ne doit pas attribuer preuve directe automatiquement');
 }
@@ -340,10 +341,10 @@ const claimEvidenceHasDate = (claimEvidence.references || []).some((reference) =
 if (!claimEvidenceHasDate && /datée/.test(claimEvidence.evidence?.proofDepth || '')) {
   throw new Error(`niveau de preuve daté sans date source: ${claimEvidence.evidence?.proofDepth}`);
 }
-if (!claimEvidence.directEvidence?.nodes?.length) throw new Error('get_claim_evidence sans section directEvidence');
-if (!claimEvidence.relatedContent?.nodes) throw new Error('get_claim_evidence sans section relatedContent');
+if (!claimEvidence.directEvidence?.nodes?.length) throw new Error('get_claims sans section directEvidence');
+if (!claimEvidence.relatedContent?.nodes) throw new Error('get_claims sans section relatedContent');
 console.log(
-  'get_claim_evidence -> depth:',
+  'get_claims(evidence) -> depth:',
   claimEvidence.evidence?.proofDepth,
   '| direct:',
   claimEvidence.directEvidence?.nodes?.length,
@@ -351,14 +352,14 @@ console.log(
   claimEvidence.relatedContent?.nodes?.length
 );
 
-const claimsBySource = await call('find_claims_by_source', { sourceId: 'fred.stlouisfed.org', limit: 3 });
-console.log('find_claims_by_source(fred) ->', claimsBySource.count);
+const claimsBySource = await call('get_claims', { sourceId: 'fred.stlouisfed.org', limit: 3 });
+console.log('get_claims(source) ->', claimsBySource.count);
 
-const source = await call('get_source', { sourceId: 'federal-reserve-fred', limit: 3 });
-console.log('get_source(federal-reserve-fred) ->', source.sourceType, '| claims:', source.claimsCount);
+const source = await call('list_sources', { sourceId: 'federal-reserve-fred', includeClaims: true, limit: 3 });
+console.log('list_sources(federal-reserve-fred) ->', source.sourceType, '| claims:', source.claimsCount);
 
-const unknownSource = await callExpectError('get_source', { sourceId: 'source-inconnue' });
-console.log('get_source(error) ->', unknownSource.error);
+const unknownSource = await callExpectError('list_sources', { sourceId: 'source-inconnue' });
+console.log('list_sources(error) ->', unknownSource.error);
 
 const graph = await call('get_evidence_graph', { articleSlug: 'dollar-yen-intervention-risque-carry-2026', limit: 30 });
 if (!graph.directEvidence?.nodes?.length) throw new Error('get_evidence_graph sans section directEvidence');

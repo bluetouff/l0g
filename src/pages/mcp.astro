@@ -54,14 +54,9 @@ const tools = [
   ['get_ndjson_feed', 'feed, recordType, limit', 'Flux NDJSON allowlistés : catalogue, claims, evidence graph, changefeed et historique des signaux.'],
   ['get_freshness', 'limit', 'Fraîcheur du corpus et des signaux : observedAt, computedAt, expiration, couverture et politique de fraîcheur.'],
   ['search_content', 'query, language, mode, limit', "Recherche bilingue sur l'index canonique partagé avec l'Agent Surface et WebMCP."],
-  ['get_claims', 'articleSlug, language, kind, query, limit', 'Claims françaises canoniques ; un slug anglais est résolu vers ses preuves françaises.'],
-  ['get_claim', 'claimId', 'Claim précise, liens ressource et article parent.'],
-  ['get_claim_evidence', 'claimId, limit', "Niveau de preuve prudent d'une claim, avec preuve directe seulement si revue humaine ; contenus reliés séparés par hôte/source commune."],
-  ['list_article_claims', 'articleSlug, language, kind, limit', "Claims canoniques d'un article français ou de sa traduction anglaise."],
-  ['find_claims_by_source', 'sourceId, kind, limit', 'Claims liées à une source primaire, un nom ou un host cité.'],
-  ['get_source', 'sourceId, limit', 'Source primaire ou hôte cité, avec claims associées.'],
+  ['get_claims', 'claimId, articleSlug, language, sourceId, kind, query, includeEvidence, limit', 'Recherche, claim précise, article, source et voisinage de preuve dans un contrat unique.'],
   ['get_evidence_graph', 'articleSlug, language, nodeType, limit', 'Sous-graphe canonique ; un slug anglais pointe vers le graphe français sans duplication.'],
-  ['list_sources', 'mode, limit', 'Sources primaires institutionnelles et hôtes effectivement cités par les claims.'],
+  ['list_sources', 'sourceId, mode, includeClaims, limit', 'Liste ou source précise, avec claims associées sur demande.'],
   ['get_integrity', 'path', 'Empreintes SHA-256 canoniques des surfaces Agent Surface, JSON et NDJSON.'],
   ['verify_artifact', 'path, sha256', "Vérification allowlistée d'un artefact via le manifeste d'intégrité."],
   ['get_changefeed', 'contentType, limit', 'Derniers changements avec objectId, version/hash courant, statut de diff et changement sémantique.'],
@@ -118,7 +113,7 @@ const appLd = {
     </p>
     <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-muted">
       <strong class="text-signal">Cible du dépôt au 17 juillet 2026 :</strong>
-      <code>1.21.0</code>, avec cache de release, sélection de trois claims structurants typés maximum par article et statistiques anonymisées. La version et le SHA
+      <code>1.22.0</code>, avec outils claims/sources consolidés, sélection de trois claims structurants typés maximum par article et statistiques anonymisées. La version et le SHA
       réellement actifs restent publiés par la ressource <code>l0g://mcp/server</code> ; le dépôt
       et le runtime ne sont considérés alignés qu’après publication de la release attestée.
     </div>

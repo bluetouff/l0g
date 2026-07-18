@@ -8,6 +8,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'
 
 permissions:
   contents: write # nécessaire uniquement pour pousser sur la branche `built`
@@ -43,7 +45,11 @@ jobs:
 
       - name: Fix deterministic build timestamp
         run: |
-          echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            echo "L0G_BUILD_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+          else
+            echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
+          fi
           echo "L0G_SOURCE_DATE_EPOCH=$(git show -s --format=%ct HEAD)" >> "$GITHUB_ENV"
 
       - name: Checkout or initialize append-only Black Box archive

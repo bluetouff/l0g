@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildArticleEvidence } from '../lib/article-evidence.ts';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const enriched = posts.map((post) => ({
+  post,
+  evidence: buildArticleEvidence(post.body ?? '', {
+    published: post.data.pubDate,
+    updated: post.data.updatedDate,
+    title: post.data.title,
+    articleSlug: post.id,
+    url: `https://l0g.fr/posts/${post.id}/`,
+  }),
+}));
+const mechanisms = enriched.slice(0, 3);
+if (!mechanisms.some((item) => item.evidence.primary.length > 0)) {
+  const sourced = enriched.slice(3).find((item) => item.evidence.primary.length > 0);
+  if (sourced) mechanisms[2] = sourced;
+}
+const primary = mechanisms
+  .flatMap((item) => item.evidence.primary.flatMap((source) => source.links.map((link) => ({ source, link, post: item.post }))))
+  .at(0);
+const editionDate = process.env.L0G_BUILD_TIMESTAMP
+  ? new Date(process.env.L0G_BUILD_TIMESTAMP)
+  : (mechanisms[0]?.post.data.pubDate ?? new Date());
+const edition = new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(editionDate);
+---
+
+<BaseLayout
+  title="La note hebdomadaire l0g"
+  description="Trois mécanismes récents à surveiller, un schéma de transmission et une source primaire à ouvrir. Une édition déterministe produite depuis le flux RSS l0g."
+>
+  <article class="weekly-note">
+    <header>
+      <p class="mono-label text-signal">// rendez-vous hebdomadaire</p>
+      <h1>Trois mécanismes à garder en tête</h1>
+      <p class="weekly-date">Édition du {edition}, composée automatiquement depuis le flux éditorial.</p>
+    </header>
+
+    <ol class="mechanisms" aria-label="Trois mécanismes de la semaine">
+      {mechanisms.map(({ post }, index) => (
+        <li>
+          <span class="mechanism-index">0{index + 1}</span>
+          <div>
+            <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
+            <p>{post.data.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <figure class="weekly-chart">
+      <svg viewBox="0 0 900 250" role="img" aria-labelledby="weekly-chart-title weekly-chart-desc">
+        <title id="weekly-chart-title">Chaîne de lecture des trois mécanismes</title>
+        <desc id="weekly-chart-desc">Les trois analyses alimentent une lecture commune du risque, puis une liste de variables à surveiller.</desc>
+        <defs>
+          <linearGradient id="weekly-line" x1="0" x2="1"><stop stop-color="#5eead4"/><stop offset=".55" stop-color="#ff4d87"/><stop offset="1" stop-color="#f5b13d"/></linearGradient>
+        </defs>
+        <path d="M110 80 H365 M110 125 H365 M110 170 H365 M535 125 H790" stroke="url(#weekly-line)" stroke-width="3" fill="none"/>
+        <g fill="#0b0d10" stroke="#5eead4" stroke-width="2"><circle cx="80" cy="80" r="32"/><circle cx="80" cy="125" r="32"/><circle cx="80" cy="170" r="32"/></g>
+        <g fill="#e8e9ed" font-family="JetBrains Mono, monospace" font-size="18" text-anchor="middle"><text x="80" y="86">01</text><text x="80" y="131">02</text><text x="80" y="176">03</text></g>
+        <rect x="365" y="77" width="170" height="96" rx="16" fill="#11151a" stroke="#ff4d87" stroke-width="2"/>
+        <text x="450" y="118" fill="#e8e9ed" font-family="JetBrains Mono, monospace" font-size="18" text-anchor="middle">transmission</text>
+        <text x="450" y="145" fill="#9ba1ad" font-family="Inter, sans-serif" font-size="15" text-anchor="middle">du choc au signal</text>
+        <rect x="790" y="92" width="92" height="66" rx="14" fill="#11151a" stroke="#f5b13d" stroke-width="2"/>
+        <text x="836" y="131" fill="#e8e9ed" font-family="JetBrains Mono, monospace" font-size="17" text-anchor="middle">veille</text>
+      </svg>
+      <figcaption>Le graphique ne produit pas un score : il matérialise la chaîne de lecture commune aux trois analyses.</figcaption>
+    </figure>
+
+    <section class="primary-source">
+      <p class="mono-label text-signal">// source primaire à ouvrir</p>
+      {primary ? (
+        <p><a href={primary.link.href}>{primary.link.label}</a> <span>via {primary.source.source.name}, citée dans <a href={`/posts/${primary.post.id}/`}>{primary.post.data.title}</a>.</span></p>
+      ) : (
+        <p>Aucune source primaire détectée dans les trois entrées. L’édition reste publiée, mais ce manque est rendu explicite.</p>
+      )}
+    </section>
+  </article>
+
+  <style>
+    .weekly-note { max-width: 850px; }
+    .weekly-note h1 { margin-top: .65rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.04; }
+    .weekly-date { color: var(--color-muted); margin-top: 1rem; }
+    .mechanisms { list-style: none; padding: 0; margin: 3rem 0; display: grid; gap: 1.25rem; }
+    .mechanisms li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid var(--color-line); }
+    .mechanism-index { color: var(--color-signal); font-family: var(--font-mono); }
+    .mechanisms h2 { font-size: 1.15rem; }
+    .mechanisms p { color: var(--color-muted); margin-top: .45rem; }
+    .weekly-chart { margin: 2.5rem 0 3rem; padding-bottom: .75rem; }
+    .weekly-chart svg { width: 100%; height: auto; border: 1px solid var(--color-line); background: #0b0d10; border-radius: 16px; }
+    .weekly-chart figcaption { color: var(--color-muted); font-size: .86rem; margin-top: .7rem; }
+    .primary-source { border-left: 3px solid var(--color-signal); padding: 1rem 1.25rem; background: color-mix(in srgb, var(--color-signal) 5%, transparent); }
+    .primary-source p:last-child { margin-top: .55rem; }
+    .primary-source span { color: var(--color-muted); }
+  </style>
+</BaseLayout>

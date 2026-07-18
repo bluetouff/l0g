@@ -118,6 +118,7 @@ assert(claims.policy?.maxClaimsPerArticle === 3, 'claims.policy.maxClaimsPerArti
 assert(claims.reviewRegistry?.version, 'claims.reviewRegistry.version manquant');
 assert(typeof claims.counts?.reviewedClaims === 'number', 'claims.counts.reviewedClaims manquant');
 assert(typeof claims.reviewRegistry?.legacyReviews === 'number', 'claims.reviewRegistry.legacyReviews manquant');
+assert(claims.reviewRegistry?.signalClaims?.coverage === 1, 'une claim utilisée par un signal échappe à la revue canonique');
 assert((claims.counts?.claimKinds || []).every((kind) => ['fait', 'estimation', 'inférence', 'scénario'].includes(kind)), 'claimKinds contient un type non classé');
 assert(!(claims.counts?.claimKinds || []).includes('unclassified-assertion'), 'claimKinds expose encore unclassified-assertion');
 assert(claims.counts?.articlesByLanguage?.en === 0, 'claims.json ne doit pas dupliquer les claims anglaises');
