@@ -23,11 +23,12 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
 });
 
 test('la configuration versionnée sert les fichiers vivants et neutralise les anciens scripts', async () => {
-  const [apache, service, installer, activator] = await Promise.all([
+  const [apache, service, installer, activator, agentSurface] = await Promise.all([
     readFile(new URL('deploy/l0g.fr.apache.conf', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/l0g-risk.service', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/install-server.sh', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/activate-zen.sh', root), 'utf8'),
+    readFile(new URL('src/lib/agent-surface.ts', root), 'utf8'),
   ]);
   for (const alias of [
     'Alias /risk.json /var/www/l0g-data/risk.json',
@@ -46,4 +47,11 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(activator.indexOf('check_stage energie') < activator.indexOf('systemctl restart energie-snapshot.service'));
   assert.ok(activator.includes('/var/www/html/energie/snapshot.json'));
   assert.ok(!activator.includes('/opt/energie/web/snapshot.json'));
+  const debtSchema = agentSurface.slice(
+    agentSurface.indexOf('DebtRiskTileSignal:'),
+    agentSurface.indexOf('RiskSignalProvenanceBucket:'),
+  );
+  for (const field of ['rawValue:', 'producerRepository:', 'producerRevision:', 'producerRevisionStatus:']) {
+    assert.ok(debtSchema.includes(field), `DebtRiskTileSignal doit publier ${field.slice(0, -1)}`);
+  }
 });

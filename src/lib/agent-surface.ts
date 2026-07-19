@@ -58,6 +58,7 @@ type RiskSnapshotInput = {
   indices?: Array<{
     key?: string;
     value?: number;
+    rawValue?: number;
     scale?: number;
     level?: string;
     tone?: string;
@@ -74,6 +75,9 @@ type RiskSnapshotInput = {
     staleAfter?: string;
     timelinessStatus?: string;
     warnings?: string[];
+    producerRepository?: string;
+    producerRevision?: string | null;
+    producerRevisionStatus?: string;
   }>;
   provenance?: Record<string, Record<string, unknown>>;
 };
@@ -2849,6 +2853,7 @@ export function buildOpenApiContract() {
           properties: {
             key: { const: 'debt' },
             value: { type: 'number' },
+            rawValue: { type: 'number' },
             scale: { type: 'number' },
             level: { type: 'string' },
             tone: { enum: ['calm', 'moderate', 'elevated', 'stress', 'crisis'] },
@@ -2867,6 +2872,9 @@ export function buildOpenApiContract() {
             timelinessStatus: { enum: ['fresh', 'stale', 'unknown'] },
             sourceSnapshotUrl: { type: ['string', 'null'], format: 'uri' },
             warnings: { type: 'array', items: { type: 'string' } },
+            producerRepository: { type: 'string', format: 'uri' },
+            producerRevision: { type: ['string', 'null'] },
+            producerRevisionStatus: { enum: ['reported', 'unreported'] },
           },
         },
         RiskSignalProvenanceBucket: {
