@@ -79,3 +79,15 @@ test('une horloge producteur franchement future reste une erreur', () => {
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.includes('plus de cinq minutes dans le futur')));
 });
+
+test('une qualité dégradée reste verte mais sa cause remonte dans GitHub', () => {
+  const input = fixture();
+  const energy = input.aggregate.indices.find((item) => item.key === 'energie');
+  energy.qualityStatus = 'degraded';
+  energy.fallbackUsed = false;
+  energy.fallbackLayer = null;
+  energy.warnings = ['WTI EIA quotidien différé de six jours'];
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, true);
+  assert.ok(report.warnings.some((warning) => warning.includes('WTI EIA quotidien différé')));
+});

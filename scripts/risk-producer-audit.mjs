@@ -40,6 +40,10 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     if (item.sourceStatus === 'fallback') errors.push(`${key}: repli agrégateur actif (${item.fallbackReason || 'cause absente'})`);
     if (item.timelinessStatus === 'stale') errors.push(`${key}: producteur ancien (${item.sourceUpdatedAt || 'date absente'})`);
     if (item.qualityStatus === 'official-delayed') warnings.push(`${key}: source officielle différée acceptée`);
+    if (item.qualityStatus === 'degraded') {
+      const detail = item.warnings?.[0] || item.fallbackReason || 'cause détaillée dans le snapshot producteur';
+      warnings.push(`${key}: qualité producteur dégradée (${detail})`);
+    }
     if (item.fallbackUsed && item.fallbackLayer === 'producer') warnings.push(`${key}: repli interne producteur visible`);
   }
 
