@@ -23,10 +23,11 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
 });
 
 test('la configuration versionnée sert les fichiers vivants et neutralise les anciens scripts', async () => {
-  const [apache, service, installer] = await Promise.all([
+  const [apache, service, installer, activator] = await Promise.all([
     readFile(new URL('deploy/l0g.fr.apache.conf', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/l0g-risk.service', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/install-server.sh', root), 'utf8'),
+    readFile(new URL('ops/risk-aggregator/activate-zen.sh', root), 'utf8'),
   ]);
   for (const alias of [
     'Alias /risk.json /var/www/l0g-data/risk.json',
@@ -41,4 +42,6 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(!service.includes('/usr/local/bin/l0g-risk.py'));
   assert.ok(installer.includes("'ExecStartPost='"), 'le reset des anciens ExecStartPost doit être explicite');
   assert.ok(installer.indexOf('verify-producer-deployment.py') < installer.indexOf('systemctl restart l0g-risk.service'));
+  assert.ok(activator.indexOf('check_stage debt') < activator.indexOf('systemctl restart debt-risk-radar-export.service'));
+  assert.ok(activator.indexOf('check_stage energie') < activator.indexOf('systemctl restart energie-snapshot.service'));
 });

@@ -68,6 +68,17 @@ sudo ops/risk-aggregator/verify-producer-deployment.py \
 sudo ops/risk-aggregator/install-server.sh "$revision"
 ```
 
+Sur Zen, lorsqu'énergie et dette sont préparés dans des répertoires de staging,
+la migration coordonnée tient en une commande. Elle vérifie leurs SHA-256,
+sauvegarde les fichiers actifs, relance chaque producteur, valide son JSON, puis
+appelle l'installateur de l'agrégateur :
+
+```sh
+sudo ops/risk-aggregator/activate-zen.sh "$revision" \
+  /chemin/stage/energie/builder.py \
+  /chemin/stage/debt-risk-radar
+```
+
 Le contrôle préliminaire échoue volontairement si un producteur n'a pas encore
 été mis à la révision inscrite dans le manifeste. Il faut alors déployer ce
 producteur depuis son propre dépôt, le relancer et recommencer la vérification.
