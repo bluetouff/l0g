@@ -1,55 +1,49 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CitationBox from '../../components/CitationBox.astro';
-import FreshnessBadge from '../../components/FreshnessBadge.astro';
-import { glossaryEntries, glossaryEntryBySlug, glossaryUpdatedIso } from '../../config/glossary.ts';
-import { glossaryAtlasEnBySlug } from '../../config/glossary-atlas-en.ts';
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import CitationBox from '../../../components/CitationBox.astro';
+import FreshnessBadge from '../../../components/FreshnessBadge.astro';
+import { glossaryAtlasEn, glossaryAtlasEnBySlug } from '../../../config/glossary-atlas-en.ts';
+import { glossaryUpdatedIso } from '../../../config/glossary.ts';
 
 export function getStaticPaths() {
-  return glossaryEntries.map((entry) => ({
+  return glossaryAtlasEn.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const sectionRelated = glossaryEntries
-  .filter((candidate) => candidate.sectionSlug === entry.sectionSlug && candidate.slug !== entry.slug)
-  .slice(0, 6);
 const atlas = entry.atlas;
-const atlasRelated = (atlas?.related ?? [])
-  .map((slug) => glossaryEntryBySlug.get(slug))
+const related = (atlas.related ?? [])
+  .map((slug) => glossaryAtlasEnBySlug.get(slug))
   .filter(Boolean)
   .slice(0, 10);
-const related = atlasRelated.length > 0 ? atlasRelated : sectionRelated;
 const atlasLinkGroups = [
-  { title: 'Articles liés', items: atlas?.articles ?? [] },
-  { title: 'Guides liés', items: atlas?.guides ?? [] },
-  { title: 'Datasets liés', items: atlas?.datasets ?? [] },
-  { title: 'Signaux qui l’utilisent', items: atlas?.signals ?? [] },
-  { title: 'Sources primaires', items: atlas?.sources ?? [] },
+  { title: 'Related analyses', items: atlas.articles ?? [] },
+  { title: 'Related guides', items: atlas.guides ?? [] },
+  { title: 'Related datasets', items: atlas.datasets ?? [] },
+  { title: 'Signals using it', items: atlas.signals ?? [] },
+  { title: 'Primary sources', items: atlas.sources ?? [] },
 ].filter((group) => group.items.length > 0);
 const atlasJsonLinks = [
-  ...(atlas?.articles ?? []),
-  ...(atlas?.guides ?? []),
-  ...(atlas?.datasets ?? []),
-  ...(atlas?.signals ?? []),
-  ...(atlas?.sources ?? []),
+  ...(atlas.articles ?? []),
+  ...(atlas.guides ?? []),
+  ...(atlas.datasets ?? []),
+  ...(atlas.signals ?? []),
+  ...(atlas.sources ?? []),
 ];
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-const canonical = `${SITE}${entry.url}`;
-const englishFiche = glossaryAtlasEnBySlug.get(entry.slug);
-const englishUrl = englishFiche ? `/en/glossary/${entry.slug}/` : null;
-const alternateLinks = englishUrl
-  ? [
-      { hreflang: 'fr', href: canonical },
-      { hreflang: 'en', href: `${SITE}${englishUrl}` },
-      { hreflang: 'x-default', href: canonical },
-    ]
-  : [];
-const title = `${entry.sigle} : ${entry.nom}`;
-const description = `${entry.sigle} (${entry.nom}) : ${entry.def}`;
+const url = `/en/glossary/${entry.slug}/`;
+const canonical = `${SITE}${url}`;
+const frUrl = `${SITE}/glossaire/${entry.slug}/`;
+const title = `${entry.sigle}: ${entry.nom}`;
+const description = `${entry.sigle} (${entry.nom}): ${entry.def}`;
+const alternateLinks = [
+  { hreflang: 'en', href: canonical },
+  { hreflang: 'fr', href: frUrl },
+  { hreflang: 'x-default', href: frUrl },
+];
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -60,10 +54,10 @@ const jsonLd = {
       termCode: entry.sigle,
       description: entry.def,
       url: canonical,
-      inLanguage: 'fr',
+      inLanguage: 'en',
       dateModified: glossaryUpdatedIso,
-      ...(atlas?.formula ? { mathExpression: atlas.formula } : {}),
-      ...(atlas?.whyNow ? { disambiguatingDescription: atlas.whyNow } : {}),
+      ...(atlas.formula ? { mathExpression: atlas.formula } : {}),
+      ...(atlas.whyNow ? { disambiguatingDescription: atlas.whyNow } : {}),
       ...(atlasJsonLinks.length > 0
         ? {
             subjectOf: atlasJsonLinks.map((link) => ({
@@ -74,21 +68,11 @@ const jsonLd = {
             })),
           }
         : {}),
-      ...(atlas?.sources?.length
-        ? {
-            citation: atlas.sources.map((source) => ({
-              '@type': 'CreativeWork',
-              name: source.label,
-              url: source.href.startsWith('/') ? `${SITE}${source.href}` : source.href,
-              description: source.detail,
-            })),
-          }
-        : {}),
       inDefinedTermSet: {
         '@type': 'DefinedTermSet',
-        '@id': `${SITE}/glossaire/#glossary`,
-        name: "Atlas de l'opacité financière",
-        url: `${SITE}/glossaire/`,
+        '@id': `${SITE}/en/glossary/#glossary`,
+        name: 'Atlas of financial opacity (English fiches)',
+        url: `${SITE}/en/glossary/`,
       },
     },
     {
@@ -97,16 +81,16 @@ const jsonLd = {
       url: canonical,
       name: title,
       description,
-      inLanguage: 'fr',
+      inLanguage: 'en',
       mainEntity: { '@id': `${canonical}#term` },
-      isPartOf: { '@id': `${SITE}/glossaire/#glossary` },
+      isPartOf: { '@id': `${SITE}/en/glossary/#glossary` },
       ...(related.length
         ? {
             mentions: related.map((term) => ({
               '@type': 'DefinedTerm',
               name: term!.nom,
               termCode: term!.sigle,
-              url: `${SITE}${term!.url}`,
+              url: `${SITE}/en/glossary/${term!.slug}/`,
             })),
           }
         : {}),
@@ -115,8 +99,8 @@ const jsonLd = {
       '@type': 'BreadcrumbList',
       '@id': `${canonical}#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE}/` },
-        { '@type': 'ListItem', position: 2, name: 'Glossaire', item: `${SITE}/glossaire/` },
+        { '@type': 'ListItem', position: 1, name: 'l0g in English', item: `${SITE}/en/` },
+        { '@type': 'ListItem', position: 2, name: 'Glossary', item: `${SITE}/en/glossary/` },
         { '@type': 'ListItem', position: 3, name: entry.sigle, item: canonical },
       ],
     },
@@ -125,26 +109,26 @@ const jsonLd = {
 const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
-<BaseLayout
+<EnglishLayout
   title={title}
   description={description}
   ogType="article"
-  robots={atlas ? 'index,follow' : 'noindex,follow'}
+  canonical={canonical}
   alternateLinks={alternateLinks}
-  ogImageAlt={`Définition ${entry.sigle} sur le glossaire l0g.fr`}
+  ogImageAlt={`Definition of ${entry.sigle} on the l0g.fr glossary`}
 >
   <script type="application/ld+json" is:inline set:html={safeJsonLd} />
 
-  <nav class="term-breadcrumb mono-label" aria-label="Fil d'Ariane" data-pagefind-ignore>
-    <a href="/">l0g</a>
+  <nav class="term-breadcrumb mono-label" aria-label="Breadcrumb" data-pagefind-ignore>
+    <a href="/en/">l0g</a>
     <span>/</span>
-    <a href="/glossaire/">glossaire</a>
+    <a href="/en/glossary/">glossary</a>
     <span>/</span>
     <span aria-current="page">{entry.slug}</span>
   </nav>
 
   <article class="term-page rise" data-pagefind-body>
-    <p class="mono-label glow" style={`color:${entry.accent}`}>// définition</p>
+    <p class="mono-label glow" style={`color:${entry.accent}`}>// definition</p>
     <header class="term-head">
       <div>
         <h1 id="term" class="font-display text-3xl leading-tight tracking-wider glow sm:text-4xl">
@@ -155,89 +139,87 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
           <FreshnessBadge date={glossaryUpdatedIso} />
         </div>
       </div>
-      <a class="term-family" style={`--term-accent:${entry.accent}`} href={`/glossaire/#sec-${entry.sectionSlug}`}>
+      <span class="term-family" style={`--term-accent:${entry.accent}`}>
         {entry.sectionTitle}
-      </a>
+      </span>
     </header>
 
     <section class="term-definition" aria-labelledby="definition-title">
-      <h2 id="definition-title" class="mono-label">Définition courte</h2>
+      <h2 id="definition-title" class="mono-label">Short definition</h2>
       <p>{entry.def}</p>
     </section>
 
-    {atlas && (
-      <section class="term-atlas" aria-labelledby="atlas-title">
-        <p class="mono-label" style={`color:${entry.accent}`}>atlas de risque</p>
-        <h2 id="atlas-title">Carte de connaissance</h2>
-        <div class="atlas-brief">
-          {atlas.intuition && (
+    <section class="term-atlas" aria-labelledby="atlas-title">
+      <p class="mono-label" style={`color:${entry.accent}`}>risk atlas</p>
+      <h2 id="atlas-title">Knowledge map</h2>
+      <div class="atlas-brief">
+        {atlas.intuition && (
+          <section>
+            <h3>Intuition</h3>
+            <p>{atlas.intuition}</p>
+          </section>
+        )}
+        {atlas.formula && (
+          <section>
+            <h3>Formula</h3>
+            <code>{atlas.formula}</code>
+          </section>
+        )}
+        {atlas.whyNow && (
+          <section>
+            <h3>Why it matters now</h3>
+            <p>{atlas.whyNow}</p>
+          </section>
+        )}
+      </div>
+
+      {related.length > 0 && (
+        <nav class="atlas-relations" aria-label={`Concepts related to ${entry.sigle}`}>
+          {related.map((term) => (
+            <a href={`/en/glossary/${term!.slug}/`} style={`--rel:${term!.accent}`}>
+              <span>{term!.sigle}</span>
+              <small>{term!.nom}</small>
+            </a>
+          ))}
+        </nav>
+      )}
+
+      {atlasLinkGroups.length > 0 && (
+        <div class="atlas-evidence">
+          {atlasLinkGroups.map((group) => (
             <section>
-              <h3>Intuition</h3>
-              <p>{atlas.intuition}</p>
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.href}>{item.label}</a>
+                    {item.detail && <span>{item.detail}</span>}
+                  </li>
+                ))}
+              </ul>
             </section>
-          )}
-          {atlas.formula && (
-            <section>
-              <h3>Formule</h3>
-              <code>{atlas.formula}</code>
-            </section>
-          )}
-          {atlas.whyNow && (
-            <section>
-              <h3>Pourquoi ça compte maintenant</h3>
-              <p>{atlas.whyNow}</p>
-            </section>
-          )}
+          ))}
         </div>
-
-        {related.length > 0 && (
-          <nav class="atlas-relations" aria-label={`Concepts voisins de ${entry.sigle}`}>
-            {related.map((term) => (
-              <a href={term!.url} style={`--rel:${term!.accent}`}>
-                <span>{term!.sigle}</span>
-                <small>{term!.nom}</small>
-              </a>
-            ))}
-          </nav>
-        )}
-
-        {atlasLinkGroups.length > 0 && (
-          <div class="atlas-evidence">
-            {atlasLinkGroups.map((group) => (
-              <section>
-                <h3>{group.title}</h3>
-                <ul>
-                  {group.items.map((item) => (
-                    <li>
-                      <a href={item.href}>{item.label}</a>
-                      {item.detail && <span>{item.detail}</span>}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        )}
-      </section>
-    )}
+      )}
+    </section>
 
     <div class="term-actions" data-pagefind-ignore>
-      {entry.guide && <a class="term-action" href={entry.guide}>Lire le guide complet</a>}
-      <a class="term-action ghost" href="/glossaire/">Retour au glossaire</a>
-      {englishUrl && <a class="term-action ghost" href={englishUrl} hreflang="en">Read this fiche in English</a>}
+      {entry.guide && <a class="term-action" href={entry.guide}>Read the full guide</a>}
+      <a class="term-action ghost" href="/en/glossary/">Back to the glossary</a>
+      <a class="term-action ghost" href={`/glossaire/${entry.slug}/`} hreflang="fr">Lire cette fiche en français</a>
     </div>
 
-    <CitationBox title={title} url={canonical} kind="définition" updated={glossaryUpdatedIso} />
+    <CitationBox title={title} url={canonical} kind="definition" updated={glossaryUpdatedIso} />
   </article>
 
   {related.length > 0 && (
     <section class="term-related mt-12" aria-labelledby="related-title" data-pagefind-ignore>
       <h2 id="related-title" class="mono-label mb-4" style={`color:${entry.accent}`}>
-        // termes voisins
+        // related terms
       </h2>
       <div class="related-grid">
         {related.map((item) => (
-          <a class="related-term" href={item!.url}>
+          <a class="related-term" href={`/en/glossary/${item!.slug}/`}>
             <span class="related-sigle" style={`color:${item!.accent}`}>{item!.sigle}</span>
             <span class="related-name">{item!.nom}</span>
           </a>
@@ -296,11 +278,6 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       max-width: 18rem;
       padding: 0.35rem 0.7rem;
       text-transform: uppercase;
-      transition: background 0.18s, border-color 0.18s;
-    }
-    .term-family:hover {
-      background: color-mix(in srgb, var(--term-accent) 9%, transparent);
-      border-color: var(--term-accent);
     }
     .term-definition {
       margin-top: 2rem;
@@ -493,4 +470,4 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       }
     }
   </style>
-</BaseLayout>
+</EnglishLayout>

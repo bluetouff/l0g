@@ -1,5 +1,6 @@
 ---
 import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { glossaryAtlasEn } from '../../../config/glossary-atlas-en.ts';
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const terms = [
   ['CPI', 'Consumer Price Index, the market-moving U.S. inflation release from the BLS.', '/en/guides/read-cpi-inflation-us/'],
@@ -41,9 +42,21 @@ const terms = [
     <p class="mono-label glow" style="color: var(--color-signal)">// core glossary</p>
     <h1 class="gloss-title font-display glow">The minimum vocabulary for reading l0g.</h1>
     <p class="gloss-lede">
-      This is not yet a full translation of the French atlas. It is a compact English glossary for the concepts used most often in the English guides,
-      API/MCP documentation and risk surfaces.
+      The French atlas is being translated fiche by fiche. Below, first, the full English fiches already available, then a compact glossary for the
+      concepts used most often in the English guides, API/MCP documentation and risk surfaces.
     </p>
+
+    <h2 class="gloss-section mono-label">// atlas fiches in English</h2>
+    <div class="term-grid">
+      {glossaryAtlasEn.map((entry) => (
+        <article class="term-card" id={entry.slug}>
+          <a href={`/en/glossary/${entry.slug}/`}>{entry.sigle}</a>
+          <p>{entry.def}</p>
+        </article>
+      ))}
+    </div>
+
+    <h2 class="gloss-section mono-label">// core vocabulary</h2>
     <div class="term-grid">
       {terms.map(([sigle, def, href]) => (
         <article class="term-card" id={String(sigle).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
@@ -58,7 +71,8 @@ const terms = [
 <style>
   .gloss-title { margin-top: .8rem; max-width: 54rem; font-size: clamp(2.1rem, 6vw, 4.4rem); line-height: .98; }
   .gloss-lede { margin-top: 1.15rem; max-width: 48rem; color: var(--color-paper); font-size: 1.05rem; line-height: 1.7; }
-  .term-grid { display: grid; gap: .8rem; margin-top: 2rem; }
+  .gloss-section { margin-top: 2.4rem; color: var(--color-signal); }
+  .term-grid { display: grid; gap: .8rem; margin-top: 1rem; }
   .term-card { border: 1px solid var(--color-line); border-radius: 10px; padding: .9rem; background: color-mix(in srgb, var(--color-surface) 64%, transparent); }
   .term-card a { color: var(--color-signal); font-family: var(--font-mono); font-weight: 700; text-decoration: none; }
   .term-card p { margin-top: .4rem; color: var(--color-muted); line-height: 1.55; }
