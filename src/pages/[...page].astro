@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AnalysisPagination from '../components/AnalysisPagination.astro';
 import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
@@ -45,6 +46,7 @@ const items = page.data.map((post: PostEntry, i: number) => ({
 }));
 const hero = isFirst ? items[0] : null;
 const feed = isFirst ? items.slice(1) : items;
+const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
 ---
 
 <BaseLayout
@@ -119,20 +121,14 @@ const feed = isFirst ? items.slice(1) : items;
     }
   </section>
 
-  <!-- Pagination -->
-  <nav class="mono-label flex items-center justify-between border-t border-dashed border-line py-6">
-    {page.url.prev ? (
-      <a href={page.url.prev} class="link-term">← précédent</a>
-    ) : (
-      <span class="text-muted opacity-40">← précédent</span>
-    )}
-    <span class="text-muted">{page.currentPage} / {page.lastPage}</span>
-    {page.url.next ? (
-      <a href={page.url.next} class="link-term">suivant →</a>
-    ) : (
-      <span class="text-muted opacity-40">suivant →</span>
-    )}
-  </nav>
+  <AnalysisPagination
+    currentPage={page.currentPage}
+    totalPages={page.lastPage}
+    pageHref={pageHref}
+    ariaLabel="Pages des analyses"
+    previousLabel="Précédent"
+    nextLabel="Suivant"
+  />
 </BaseLayout>
 
 <style>

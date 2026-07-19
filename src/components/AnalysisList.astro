@@ -1,4 +1,6 @@
 ---
+import AnalysisPagination from './AnalysisPagination.astro';
+
 export interface AnalysisItem {
   id: string;
   title: string;
@@ -19,7 +21,6 @@ const { items, currentPage, totalPages } = Astro.props;
 
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
 const pageHref = (n: number) => (n <= 1 ? '/en/analysis/' : `/en/analysis/page/${n}/`);
-const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 ---
 
 <section class="cat rise">
@@ -42,31 +43,14 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   ))}
 </section>
 
-{
-  totalPages > 1 && (
-    <nav class="pager rise" aria-label="Analysis pages">
-      {currentPage > 1 ? (
-        <a class="pager-step" href={pageHref(currentPage - 1)} rel="prev">‹ Prev</a>
-      ) : (
-        <span class="pager-step is-disabled" aria-disabled="true">‹ Prev</span>
-      )}
-      <span class="pager-nums">
-        {pages.map((n) =>
-          n === currentPage ? (
-            <span class="pager-num is-current" aria-current="page">{n}</span>
-          ) : (
-            <a class="pager-num" href={pageHref(n)}>{n}</a>
-          )
-        )}
-      </span>
-      {currentPage < totalPages ? (
-        <a class="pager-step" href={pageHref(currentPage + 1)} rel="next">Next ›</a>
-      ) : (
-        <span class="pager-step is-disabled" aria-disabled="true">Next ›</span>
-      )}
-    </nav>
-  )
-}
+<AnalysisPagination
+  currentPage={currentPage}
+  totalPages={totalPages}
+  pageHref={pageHref}
+  ariaLabel="Analysis pages"
+  previousLabel="Prev"
+  nextLabel="Next"
+/>
 
 <style>
   .cat { padding-top: 2.6rem; }
@@ -144,56 +128,5 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   @media (max-width: 640px) {
     .en-guide-card { grid-template-columns: auto 2px 1fr; }
     .en-guide-arrow { display: none; }
-  }
-
-  .pager {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 2.4rem;
-    padding-top: 1.6rem;
-    border-top: 1px dashed var(--color-line);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-  }
-  .pager-step {
-    color: var(--color-signal);
-    text-decoration: none;
-    padding: 0.35rem 0.7rem;
-    border: 1px solid color-mix(in srgb, var(--color-signal) 35%, transparent);
-    border-radius: 6px;
-    transition: background 0.16s, color 0.16s;
-    white-space: nowrap;
-  }
-  .pager-step:hover { background: color-mix(in srgb, var(--color-signal) 12%, transparent); }
-  .pager-step.is-disabled {
-    color: var(--color-line-strong);
-    border-color: var(--color-line);
-    pointer-events: none;
-    opacity: 0.55;
-  }
-  .pager-nums { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; }
-  .pager-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.9rem;
-    height: 1.9rem;
-    padding: 0 0.4rem;
-    color: var(--color-muted);
-    text-decoration: none;
-    border-radius: 6px;
-    font-variant-numeric: tabular-nums;
-    transition: background 0.16s, color 0.16s;
-  }
-  .pager-num:hover { color: var(--color-bright); background: color-mix(in srgb, var(--color-signal) 10%, transparent); }
-  .pager-num.is-current {
-    color: var(--color-bg, #0c0d10);
-    background: var(--color-signal);
-    font-weight: 700;
-  }
-  @media (max-width: 480px) {
-    .pager { flex-wrap: wrap; justify-content: center; }
   }
 </style>
