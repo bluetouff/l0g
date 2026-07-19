@@ -80,7 +80,7 @@ While the Fed temporises, the bond market has ruled. The 10-year, the benchmark 
 </g>
 <line x1="536" y1="58" x2="536" y2="192" stroke="#ff4d87" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="536" y="212" text-anchor="end" fill="#ff4d87" font-size="12">30-year peak mid-May: 5.2% (highest since 2007)</text>
-<text x="20" y="264" fill="#8b909b" font-size="12">Term premium stretched by the energy shock, deficits and defence spending; recent</text>
+<text x="20" y="264" fill="#8b909b" font-size="12">[Term premium](/en/glossary/prime-de-terme/) stretched by the energy shock, deficits and defence spending; recent</text>
 <text x="20" y="282" fill="#8b909b" font-size="12">easing on the preliminary peace deal with Iran. Sources: CNBC, CNN (May-June 2026).</text>
 </svg>
 </figure>
@@ -91,7 +91,7 @@ This curve tells a story the Fed does not control. The term premium, the extra y
 
 This is where the new chair becomes unpredictable. Warsh is a long-standing critic of the Fed's balance sheet, swollen to about $6.6 trillion, nearly 25% of GDP against 6% before 2008. He denounces a "monetary dominance" where quantitative easing benefits financial-asset holders first, distorts markets and eases public borrowing. His stated intent: bring the balance sheet back toward $4 trillion, in coordination with the Treasury, the most aggressive balance-sheet normalisation the Fed has undertaken. His thesis, counter-intuitive: a smaller balance sheet could justify lower policy rates, the two tools ceasing to work at cross purposes.
 
-The problem, for the bond market, is exactly there. Accelerating quantitative tightening would return duration for the market to absorb, which mechanically pushes long rates and mortgage rates higher, at the very moment the term premium is already stretched. And the operational warning is recent: in late 2025, the combination of QT and state borrowing had drained the money markets, forcing the Fed to stop dead and buy short securities. Warsh's instinct therefore runs into two walls, the fragility of the long end and banks' demand for reserves. To watch: any mention today of a balance-sheet timeline would be a heavier signal than the dot plot. In the background, Jerome Powell, who stayed on the board to ensure continuity, publicly warned against political pressures on the institution's independence.
+The problem, for the bond market, is exactly there. Accelerating quantitative tightening would return [duration](/en/glossary/duration/) for the market to absorb, which mechanically pushes long rates and mortgage rates higher, at the very moment the term premium is already stretched. And the operational warning is recent: in late 2025, the combination of QT and state borrowing had drained the money markets, forcing the Fed to stop dead and buy short securities. Warsh's instinct therefore runs into two walls, the fragility of the long end and banks' demand for reserves. To watch: any mention today of a balance-sheet timeline would be a heavier signal than the dot plot. In the background, Jerome Powell, who stayed on the board to ensure continuity, publicly warned against political pressures on the institution's independence.
 
 ## Warsh's options
 

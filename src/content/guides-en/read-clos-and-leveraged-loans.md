@@ -128,7 +128,7 @@ The leveraged loan market, known as syndicated or BSL, no longer lives alone. It
 <figcaption>The syndicated market remains the largest, but <strong>private credit</strong> has reached a comparable size, and <strong>middle-market CLOs</strong> backed by direct loans are the most dynamic segment. Competition for good deals loosens terms everywhere. Sources: Moody's, S&P Global, PitchBook.</figcaption>
 </figure>
 
-This rivalry has a perverse effect. To win the best borrowers, syndicated and private lenders wage a race to the bottom on flexibility: even lighter covenants, interest paid in kind rather than cash (PIK), more permissive documentation. The risk does not disappear, it shifts and hides. We explored the private side of this dynamic in our article on [private credit's two prices](/posts/credit-prive-un-actif-deux-prix/) and our [private credit guide](/en/guides/read-private-credit-risk/). The CLO and the private-debt fund are two slopes of the same mountain of leveraged corporate debt.
+This rivalry has a perverse effect. To win the best borrowers, syndicated and private lenders wage a race to the bottom on flexibility: even lighter covenants, interest paid in kind rather than cash ([PIK](/en/glossary/pik/)), more permissive documentation. The risk does not disappear, it shifts and hides. We explored the private side of this dynamic in our article on [private credit's two prices](/posts/credit-prive-un-actif-deux-prix/) and our [private credit guide](/en/guides/read-private-credit-risk/). The CLO and the private-debt fund are two slopes of the same mountain of leveraged corporate debt.
 
 ## Reading a CLO in practice
 

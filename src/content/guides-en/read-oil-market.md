@@ -11,7 +11,7 @@ category: marches
 draft: false
 ---
 
-*Oil has a price everyone quotes and almost nobody reads properly. A headline says “the barrel” is at a given level. Which barrel? Brent or WTI? Spot or a future contract? The useful information is often not the level, but the spread, the curve and the direction of inventories. This guide explains oil-market mechanics from price formation to the data calendar. The 2026 Hormuz shock is the case study.*
+*Oil has a price everyone quotes and almost nobody reads properly. A headline says “the barrel” is at a given level. Which barrel? [Brent](/en/glossary/brent/) or [WTI](/en/glossary/wti/)? Spot or a future contract? The useful information is often not the level, but the spread, the curve and the direction of inventories. This guide explains oil-market mechanics from price formation to the data calendar. The 2026 Hormuz shock is the case study.*
 
 ## Two prices for one market
 
@@ -21,7 +21,7 @@ Two dominate global discussion. **Brent**, from the North Sea, is a light sweet 
 
 This geography explains why the two prices differ. The **Brent-WTI spread** reflects transport costs, quality differences and regional imbalances. Since 2015, Brent has usually traded **$2 to $8** above WTI. During the March 2026 Hormuz stress, the spread was around **$4.70**; by late June, after the risk premium faded, it had fallen below **$3**. A spread often says more than the outright price.
 
-Asia has another reference: **Dubai/Oman**, a heavier, sourer crude used for Gulf cargoes to the East. OPEC also publishes its own reference basket. Reading a quote means first asking which benchmark you are looking at.
+Asia has another reference: **Dubai/Oman**, a heavier, sourer crude used for Gulf cargoes to the East. [OPEC](/en/glossary/opep/) also publishes its own reference basket. Reading a quote means first asking which benchmark you are looking at.
 
 ## Paper price and physical barrels
 
@@ -45,7 +45,7 @@ A negative oil price was not a market joke. It was a physical storage failure ex
 
 On the supply side, three forces matter.
 
-The first is **OPEC+**, the OPEC group plus non-OPEC producers led by Russia. The group manages a decisive share of global supply through quotas and voluntary cuts. In 2026 it began unwinding cuts, adding roughly **600,000 barrels per day** between April and June and **188,000** more in July.
+The first is **[OPEC+](/en/glossary/opep-2/)**, the OPEC group plus non-OPEC producers led by Russia. The group manages a decisive share of global supply through quotas and voluntary cuts. In 2026 it began unwinding cuts, adding roughly **600,000 barrels per day** between April and June and **188,000** more in July.
 
 The second is U.S. shale. Shale made the United States the world's largest producer and acts as a flexible supply response: wells start and decline quickly, so production reacts faster to price than conventional projects.
 

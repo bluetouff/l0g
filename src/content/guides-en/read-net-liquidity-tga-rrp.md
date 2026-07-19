@@ -13,13 +13,13 @@ draft: false
 
 *Market liquidity is not a mood. It is plumbing. Three accounts, sitting around the Federal Reserve and the U.S. Treasury, push cash into and out of the system: bank reserves, the Treasury General Account and reverse repos. A popular formula combines them into a “net liquidity” indicator that thousands of traders watch as a risk-asset barometer. This guide explains the real mechanics, shows how to read the primary sources, and marks exactly where the proxy misleads.*
 
-The formula comes first because it is the one everyone quotes. Net liquidity is most often calculated as the Federal Reserve balance sheet minus the balance of the Treasury General Account and the amounts placed in the overnight reverse repo facility. When the Treasury account or reverse repos fall, cash returns to the system and net liquidity rises. When they swell, the reverse happens. Everything else follows from understanding these three taps.
+The formula comes first because it is the one everyone quotes. Net liquidity is most often calculated as the Federal Reserve balance sheet minus the balance of the Treasury General Account and the amounts placed in the overnight reverse [repo](/en/glossary/repo/) facility. When the Treasury account or reverse repos fall, cash returns to the system and net liquidity rises. When they swell, the reverse happens. Everything else follows from understanding these three taps.
 
 ## The three taps
 
 The first tap is the stock of bank reserves: deposits that banks hold at the Federal Reserve. They are the ultimate settlement liquidity, the fuel banks use to settle with each other. When the Fed buys securities, it credits reserves and injects liquidity; when it lets securities mature without reinvestment, it withdraws it. That is the mechanism behind [QE](/glossaire/#qe) and [QT](/glossaire/#qt).
 
-The second tap is the Treasury General Account, or TGA: the federal government’s checking account at the Fed. Its mechanics are counterintuitive but decisive. When Treasury issues debt and builds cash, that cash leaves the banking system and sits in the TGA, draining reserves. When Treasury spends, it reinjects cash. A TGA rebuild after a debt-ceiling standoff is therefore a powerful liquidity drain, often underestimated.
+The second tap is the Treasury General Account, or [TGA](/en/glossary/tga/): the federal government’s checking account at the Fed. Its mechanics are counterintuitive but decisive. When Treasury issues debt and builds cash, that cash leaves the banking system and sits in the TGA, draining reserves. When Treasury spends, it reinjects cash. A TGA rebuild after a debt-ceiling standoff is therefore a powerful liquidity drain, often underestimated.
 
 The third tap is the overnight reverse repo facility, or RRP, where money-market funds place excess cash with the Fed against securities. While it was full, RRP acted as a buffer: it absorbed excess cash and protected bank reserves from shocks. Once drained, it no longer plays that role, and every stress lands more directly on reserves.
 
@@ -27,7 +27,7 @@ The third tap is the overnight reverse repo facility, or RRP, where money-market
 
 The attraction of the formula is real. Over long periods, the net-liquidity proxy has often moved in the same direction as risk assets, making it a popular macro lens among money-market analysts. When liquidity flows in, it tends to look for return. When liquidity flows out, the most liquidity-sensitive assets usually suffer first.
 
-Honesty requires stating the limits, because this is where the tool becomes a trap. Net liquidity is a proxy, not a law. Its correlation with markets is loose, unstable and regime-dependent. The formula itself varies by author: some start from the total balance sheet, others from reserves only, changing the level. It ignores money velocity, private credit, foreign flows and off-balance-sheet leverage, channels that can dominate in the short run. Above all, it can fail at turning points, when markets anticipate the plumbing rather than passively absorb it. Net liquidity illuminates a background regime. It is not an entry signal.
+Honesty requires stating the limits, because this is where the tool becomes a trap. Net liquidity is a proxy, not a law. Its correlation with markets is loose, unstable and regime-dependent. The formula itself varies by author: some start from the total balance sheet, others from reserves only, changing the level. It ignores money velocity, [private credit](/en/glossary/credit-prive/), foreign flows and off-balance-sheet leverage, channels that can dominate in the short run. Above all, it can fail at turning points, when markets anticipate the plumbing rather than passively absorb it. Net liquidity illuminates a background regime. It is not an entry signal.
 
 ## Reading the plumbing from primary sources
 

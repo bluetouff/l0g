@@ -40,7 +40,7 @@ Taken together, international credit, cross-border and in foreign currency, repr
 
 ## The missing debt: FX swaps
 
-Beneath this visible part hides a far larger mass, lodged in foreign-exchange swaps. In a swap, a Dutch pension fund or a Japanese insurer borrows dollars and lends euros or yen on the way out, then does the reverse on the way back. The operation resembles a repo, but with a currency for collateral. The crucial difference: these dollar payment obligations are recorded off balance sheet, in an accounting blind spot. They do not appear in classic debt statistics.
+Beneath this visible part hides a far larger mass, lodged in foreign-exchange swaps. In a swap, a Dutch pension fund or a Japanese insurer borrows dollars and lends euros or yen on the way out, then does the reverse on the way back. The operation resembles a [repo](/en/glossary/repo/), but with a currency for collateral. The crucial difference: these dollar payment obligations are recorded off balance sheet, in an accounting blind spot. They do not appear in classic debt statistics.
 
 The BIS has tried to size this missing debt. In its reference estimate, on 2022 data, non-banks located outside the United States owed close to $26 trillion through these instruments, double their on-balance-sheet dollar debt, and up sharply from the $17 trillion of 2016. For non-American banks, this off-balance-sheet amount exceeded $39 trillion, more than ten times their equity. Most of this debt is very short term, which creates permanent refinancing needs and, therefore, a squeeze risk at every strain.
 

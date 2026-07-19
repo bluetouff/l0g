@@ -47,7 +47,7 @@ In decentralised finance, the flagship metric is total value locked, or TVL: the
 
 By mid-June 2026, total DeFi TVL was around **$71.8 billion** across more than 450 chains, down about **37%** year-to-date and almost **60%** below the November 2021 peak of roughly **$177 billion**. Ethereum concentrated about **53%** of TVL, showing reconcentration rather than unstoppable multichain diffusion.
 
-TVL has three traps. First, it rises when token prices rise, even without new capital inflow. Second, double counting is real: an asset can be deposited, tokenised and redeposited across protocols. Third, TVL is not the size of the crypto market. Stablecoin market capitalisation, around **$314 billion** in mid-2026, was more than four times DeFi TVL.
+TVL has three traps. First, it rises when token prices rise, even without new capital inflow. Second, double counting is real: an asset can be deposited, tokenised and redeposited across protocols. Third, TVL is not the size of the crypto market. [Stablecoin](/en/glossary/stablecoin/) market capitalisation, around **$314 billion** in mid-2026, was more than four times DeFi TVL.
 
 ## What the chain hides
 

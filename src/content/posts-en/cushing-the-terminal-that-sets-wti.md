@@ -8,7 +8,7 @@ draft: false
 sourceArticle: "cushing-le-terminal-qui-fixe-le-prix-du-petrole-americain"
 sourceUpdatedDate: 2026-07-08
 ---
-*The Cushing tanks, in Oklahoma, fell to about 19.7 million barrels as of 26 June 2026, a low since 2014, within a whisker of their operating floor. It is here, in a pipeline crossroads of 8,000 inhabitants, that the WTI price is physically set. Small plumbing, big consequences.*
+*The Cushing tanks, in Oklahoma, fell to about 19.7 million barrels as of 26 June 2026, a low since 2014, within a whisker of their operating floor. It is here, in a pipeline crossroads of 8,000 inhabitants, that the [WTI](/en/glossary/wti/) price is physically set. Small plumbing, big consequences.*
 
 One imagines the oil price forming on screens, in London or New York. It also forms, and first of all, in a network of steel tanks laid on the plains of Oklahoma. Cushing is the point where the abstraction of the futures contract touches metal: crude arrives there, is stored there, leaves from there. When these tanks empty fast, it is not a logistical detail, it is a tension signal that propagates up the whole price curve. In late June 2026, they emptied to the point of brushing their lower limit.
 
@@ -122,11 +122,11 @@ Where does Cushing go from here? Three scenarios take shape, and they must be ta
 <figcaption>The three readings are not mutually exclusive over time: a supply-driven rebalancing can precede a new draw if Asian demand wakes up. <strong>Scenarios, not forecasts.</strong> l0g reading.</figcaption>
 </figure>
 
-The first scenario is that of the rebuild. OPEC+ raised its production by nearly 600,000 barrels a day between April and June, then by a further 188,000 in July; if this additional crude materialises while export demand runs out of steam and refineries enter maintenance, Cushing can refill and the curve ease. The slight rebound of the last week of June points that way, without confirming it.
+The first scenario is that of the rebuild. [OPEC+](/en/glossary/opep-2/) raised its production by nearly 600,000 barrels a day between April and June, then by a further 188,000 in July; if this additional crude materialises while export demand runs out of steam and refineries enter maintenance, Cushing can refill and the curve ease. The slight rebound of the last week of June points that way, without confirming it.
 
 The second scenario is that of prolonged tension. As long as exports run at full tilt and refineries pull hard, the tanks stay scraping the floor. The market then lives with durable backwardation and an acute vulnerability: the slightest pipeline incident or the shutdown of a supply source could force a disorderly unwind of positions at expiry, a physical squeeze where holders of short contracts struggle to find crude to deliver.
 
-The third scenario is the most interesting, because it comes from outside. We documented how China, the world's largest importer, played the role of a price ceiling in 2026 by cutting its purchases and living off its record reserves, in our article on [the Chinese inventory that caps prices](/en/analysis/oil-the-chinese-inventory-capping-prices/). What happens if Beijing starts buying again? Its imports had fallen to 9.25 million barrels a day in April, a near-three-year low. A simple return toward normal would add one to two million barrels a day of demand to the world market. Brent would rise, the Brent-WTI spread would widen, and this more favourable spread would encourage even more US crude to be exported. The mechanics are counter-intuitive: a reviving Asian demand does not fill Cushing, it empties it a little more, by pulling US barrels toward the export terminals. A Chinese awakening would be bullish for the world price and tightening for the Oklahoma terminal.
+The third scenario is the most interesting, because it comes from outside. We documented how China, the world's largest importer, played the role of a price ceiling in 2026 by cutting its purchases and living off its record reserves, in our article on [the Chinese inventory that caps prices](/en/analysis/oil-the-chinese-inventory-capping-prices/). What happens if Beijing starts buying again? Its imports had fallen to 9.25 million barrels a day in April, a near-three-year low. A simple return toward normal would add one to two million barrels a day of demand to the world market. [Brent](/en/glossary/brent/) would rise, the Brent-WTI spread would widen, and this more favourable spread would encourage even more US crude to be exported. The mechanics are counter-intuitive: a reviving Asian demand does not fill Cushing, it empties it a little more, by pulling US barrels toward the export terminals. A Chinese awakening would be bullish for the world price and tightening for the Oklahoma terminal.
 
 ## The opposite reading
 
@@ -136,7 +136,7 @@ This nuance has weight, and it invites not confusing a plumbing tension with a p
 
 ## Sources
 
-1. U.S. Energy Information Administration, weekly Cushing crude stocks excluding SPR, series W_EPC0_SAX_YCUOK_MBBL (31.5 Mb on 3 April, 18.96 Mb on 19 June, 19.67 Mb on 26 June 2026): https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W
+1. U.S. Energy Information Administration, weekly Cushing crude stocks excluding [SPR](/en/glossary/spr/), series W_EPC0_SAX_YCUOK_MBBL (31.5 Mb on 3 April, 18.96 Mb on 19 June, 19.67 Mb on 26 June 2026): https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W
 2. Kpler, "WTI flirts with physical squeeze as Cushing buffers evaporate" (10 June 2026), M1-M3 backwardation toward $7, US exports ~5.6 Mb/d, refineries at 95%, Houston-Cushing differential ~$1 against 4 a month earlier: https://www.kpler.com/blog/wti-flirts-with-physical-squeeze-as-cushing-buffers-evaporate
 3. Energy News Beat / TankTerminals, "Cushing Oil Storage Hits Tank Bottom", capacity ~76 Mb, level ~26%, definition of tank bottoms: https://tankterminals.com/news/cushing-oklahoma-oil-storage-hits-tank-bottom-implications-for-energy-markets-consumers-and-investors/
 4. Transport Topics, "Oklahoma Crude Inventories in Cushing Fall Near Minimum", lowest since October 2014, operating floor of about 20 Mb estimated by Wood Mackenzie: https://www.ttnews.com/articles/oklahoma-crude-cushing-low

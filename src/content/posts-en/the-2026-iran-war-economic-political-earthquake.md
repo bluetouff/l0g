@@ -13,7 +13,7 @@ sourceUpdatedDate: 2026-05-17
 
 On 28 February 2026, the United States and Israel launched an air campaign against Iran's nuclear programme and ballistic capabilities. Four days later, on 4 March, Tehran declared the Strait of Hormuz closed and began attacking the Gulf's oil infrastructure. Within a few weeks, the world tipped into what the International Energy Agency called the *"largest supply disruption in the history of the global oil market"*. The rest of the episode, from the fragile April ceasefire to the reopening deal, is followed in [the situation report on Hormuz](/en/analysis/strait-of-hormuz-situation-april-2026/) then in [the market normalisation scenarios](/en/analysis/hormuz-reopens-three-oil-scenarios/).
 
-For nearly three months, this war has no longer been merely a regional conflict. It has become a systemic event that simultaneously touches energy, food, finance, the domestic politics of every Western democracy, and world geopolitics. Historical comparisons point to the 1973 oil shock, the 1979 crisis, and more recently the Russian invasion of Ukraine, but none of these analogies fully captures the singularity of this crisis, which combines the closure of a strategic strait, attacks on the infrastructure of four OPEC producers at once, and a reconfiguration of alliances between great powers.
+For nearly three months, this war has no longer been merely a regional conflict. It has become a systemic event that simultaneously touches energy, food, finance, the domestic politics of every Western democracy, and world geopolitics. Historical comparisons point to the 1973 oil shock, the 1979 crisis, and more recently the Russian invasion of Ukraine, but none of these analogies fully captures the singularity of this crisis, which combines the closure of a strategic strait, attacks on the infrastructure of four [OPEC](/en/glossary/opep/) producers at once, and a reconfiguration of alliances between great powers.
 
 This article proposes as rigorous a mapping as possible of the crisis's global economic and political consequences, drawing on the analyses of central banks, multilateral institutions, and the main geo-economic think tanks. It closes with several argued prospective scenarios to late 2026 and 2027.
 
@@ -21,7 +21,7 @@ This article proposes as rigorous a mapping as possible of the crisis's global e
 
 ### A historic supply rupture
 
-The Strait of Hormuz is a chokepoint through which about **27% of world seaborne trade in crude oil and petroleum products** transits, according to Congressional Research Service report R45281 published on 11 March 2026. Its effective closure since 4 March 2026 produced immediate and cumulative effects.
+The Strait of Hormuz is a [chokepoint](/en/glossary/chokepoint/) through which about **27% of world seaborne trade in crude oil and petroleum products** transits, according to Congressional Research Service report R45281 published on 11 March 2026. Its effective closure since 4 March 2026 produced immediate and cumulative effects.
 
 According to the estimates collected by the Dallas Fed in its analysis of 20 March 2026, and confirmed by the Atlas Institute, the combined production of Kuwait, Iraq, Saudi Arabia and the United Arab Emirates fell by **6.7 million barrels a day on 10 March**, then by **10 million barrels a day on 12 March**. That is a supply shock representing approximately **20% of world oil supply** removed simultaneously from the market. By comparison, the 1973 OPEC embargo represented about 7% of world supply. The current crisis is therefore, in pure magnitude, about three times more violent than the shock of the 1970s.
 
@@ -29,7 +29,7 @@ QatarEnergy, which operates the world's largest liquefied natural gas production
 
 ### Prices: between $100 and $200 depending on the scenario
 
-At the time of writing (mid-May 2026), Brent hovers above **$100 a barrel**, with an intraday peak of **$119 on 23 March**, the highest since 2008. West Texas Intermediate (WTI) settled in a range of **$94 to $98** depending on the modelled scenarios.
+At the time of writing (mid-May 2026), [Brent](/en/glossary/brent/) hovers above **$100 a barrel**, with an intraday peak of **$119 on 23 March**, the highest since 2008. West Texas Intermediate ([WTI](/en/glossary/wti/)) settled in a range of **$94 to $98** depending on the modelled scenarios.
 
 Three institutional models converge on the short-term trajectory:
 
@@ -113,7 +113,7 @@ European defence commissioner Andrius Kubilius stated on 6 March 2026 that **US 
 Several reconfigurations are already observable:
 
 - The crisis **accelerates China's energy decoupling from the Middle East**. Beijing is investing massively in Russian and Venezuelan (paradoxically) hydrocarbons and in domestic renewables.
-- **OPEC+ is mechanically disorganised** by the temporary exit of four of its major members. The Atlas Institute speaks of an *"OPEC endgame"*, a bold thesis but one that deserves consideration.
+- **[OPEC+](/en/glossary/opep-2/) is mechanically disorganised** by the temporary exit of four of its major members. The Atlas Institute speaks of an *"OPEC endgame"*, a bold thesis but one that deserves consideration.
 - The **United States emerges as a strategic exporter of LNG and oil**. US production is at historic highs according to Treasury secretary Scott Bessent (CNBC statement, May 2026), and the Emirates' exit from OPEC has freed up capacity.
 - **Venezuelan oil returns to the market** as part of a Trumpian policy of partial reintegration, with the explicit aim of diluting OPEC's influence and weakening Iranian and Russian revenues (Russia Matters analysis, January 2026).
 

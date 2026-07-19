@@ -11,7 +11,7 @@ category: fed
 draft: false
 ---
 
-*The question returns at every Treasury auction and every yield spike: if foreigners step back from U.S. debt, who buys, and at what yield? The reference source is the Treasury International Capital system. It tells how many Treasuries non-residents hold and where they are recorded. But it speaks in a language that must be learned: custody accounting, where Belgium can matter more than Saudi Arabia and a Cayman hedge fund can disappear into a domestic line.*
+*The question returns at every [Treasury auction](/en/glossary/adjudication/) and every yield spike: if foreigners step back from U.S. debt, who buys, and at what yield? The reference source is the Treasury International Capital system. It tells how many Treasuries non-residents hold and where they are recorded. But it speaks in a language that must be learned: custody accounting, where Belgium can matter more than Saudi Arabia and a Cayman hedge fund can disappear into a domestic line.*
 
 ## What TIC measures
 
@@ -25,7 +25,7 @@ The top line is familiar: Japan around **$1.19 trillion**, the United Kingdom ar
 
 The Treasury says it explicitly: the monthly table is collected on a custody basis and cannot assign ownership with perfect accuracy. A Treasury bought by an investor in one country but held through a custodian in another is attributed to the custodian's country.
 
-Belgium is large because Euroclear is there. Luxembourg and Ireland are large because investment funds are registered there. The UK is inflated by London's custody role. The Cayman Islands line captures hedge funds, including vehicles involved in the Treasury basis trade.
+Belgium is large because Euroclear is there. Luxembourg and Ireland are large because investment funds are registered there. The UK is inflated by London's custody role. The Cayman Islands line captures hedge funds, including vehicles involved in the Treasury [basis trade](/en/glossary/basis-trade/).
 
 That last point matters for stability. Fed research has estimated that Cayman hedge-fund Treasury positions were undercounted by about **$1.4 trillion** at the end of 2024, with some exposure classified as domestic. Read naïvely, TIC can turn a leveraged arbitrage into “American savings.”
 

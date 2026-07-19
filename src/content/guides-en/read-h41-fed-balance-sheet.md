@@ -23,7 +23,7 @@ H.4.1 is not one table but a series. Table 1, the most closely watched, presents
 
 This is the point most readers miss, and it is the key to the whole document. Bank reserves, meaning the deposits banks hold at the Fed, are not directly steered line by line. They are what remains after all other liability items are subtracted from the Fed’s assets. In plain English, the Fed’s holdings provide liquidity, while currency in circulation, the Treasury account and reverse repos absorb it. Reserves are the residual.
 
-That mechanics has a major consequence. The level of reserves can move sharply without any monetary policy decision, simply because the Treasury General Account fills or empties, or because reverse repo volumes change. Following reserves without following those two items is a recipe for misreading funding stress. This is exactly the mechanism explained in our guide to net liquidity.
+That mechanics has a major consequence. The level of reserves can move sharply without any monetary policy decision, simply because the Treasury General Account fills or empties, or because reverse [repo](/en/glossary/repo/) volumes change. Following reserves without following those two items is a recipe for misreading funding stress. This is exactly the mechanism explained in our guide to net liquidity.
 
 ## Assets: what the Fed holds
 

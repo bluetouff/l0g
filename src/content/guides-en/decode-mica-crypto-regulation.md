@@ -11,7 +11,7 @@ category: crypto
 draft: false
 ---
 
-*MiCA is the world's first full-scale crypto rulebook, and it is also an alphabet soup: ART, EMT, CASP, NCA, EBA, ESMA. This guide decodes the acronyms, explains who supervises what, and highlights the provision that is less about finance than geopolitics: caps on dollar stablecoins designed to protect the euro's monetary sovereignty. The key deadline is the end of the transition period on July 1, 2026.*
+*MiCA is the world's first full-scale crypto rulebook, and it is also an alphabet soup: ART, EMT, CASP, NCA, EBA, ESMA. This guide decodes the acronyms, explains who supervises what, and highlights the provision that is less about finance than geopolitics: caps on dollar [stablecoins](/en/glossary/stablecoin/) designed to protect the euro's monetary sovereignty. The key deadline is the end of the transition period on July 1, 2026.*
 
 MiCA, the Markets in Crypto-Assets Regulation, entered into force in 2023 and has been fully applicable since **December 30, 2024**. It classifies crypto-assets, strictly regulates stablecoins, licenses service providers, and splits supervision between national authorities and European agencies. Because of its scale, it has become the benchmark against which other crypto regimes are compared.
 
@@ -67,7 +67,7 @@ Europe and the United States now have two very different stablecoin regimes. Bot
 
 The U.S. [GENIUS Act](/en/guides/read-stablecoins-genius-act/) builds a banking-style framework that supports the expansion of the digital dollar. MiCA inherits the logic of e-money, gives the EBA and ESMA major supervisory roles, and caps non-European stablecoins. One regime tries to export its currency; the other tries to protect itself from that currency.
 
-That asymmetry explains why Circle pursued MiCA authorisation while Tether did not, leading to restrictions on USDT in parts of Europe.
+That asymmetry explains why Circle pursued MiCA authorisation while Tether did not, leading to restrictions on [USDT](/en/glossary/usdt/) in parts of Europe.
 
 ## Blind spots
 

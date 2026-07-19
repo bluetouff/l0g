@@ -39,7 +39,7 @@ The SDN List remains the sharpest tool: full blocking.
 
 Since 2018, OFAC has also listed cryptocurrency wallet addresses. The logic is the same: transacting with a listed address is prohibited.
 
-North Korean laundering networks, including Lazarus-linked activity, have been a major driver of these designations. But crypto enforcement often moves through centralised chokepoints. A centralised [stablecoin](/en/guides/read-stablecoins-genius-act/) issuer can freeze tokens held at sanctioned addresses. Tether, for example, has frozen USDT linked to addresses designated by OFAC, including in cases connected to Russian exchange activity.
+North Korean laundering networks, including Lazarus-linked activity, have been a major driver of these designations. But crypto enforcement often moves through centralised [chokepoints](/en/glossary/chokepoint/). A centralised [stablecoin](/en/guides/read-stablecoins-genius-act/) issuer can freeze tokens held at sanctioned addresses. Tether, for example, has frozen [USDT](/en/glossary/usdt/) linked to addresses designated by OFAC, including in cases connected to Russian exchange activity.
 
 This is the paradox of centralised digital money: it can be moved like crypto but frozen like regulated finance.
 

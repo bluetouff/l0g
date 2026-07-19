@@ -11,7 +11,7 @@ summary: "The Commitments of Traders report is a weekly release published by the
 draft: false
 ---
 
-*In futures markets, everyone eventually shows their cards once a week. The Commitments of Traders report, or COT, is that moment of transparency imposed by the U.S. regulator. Each Friday, the CFTC publishes open positions in futures contracts, broken down by trader type. It is one of the few public windows into the real positioning of funds, banks and industrial hedgers. But you need to read the right report, understand who sits in which bucket, and know the time lag that limits its use. This guide takes the mechanism apart.*
+*In futures markets, everyone eventually shows their cards once a week. The Commitments of Traders report, or [COT](/en/glossary/cot/), is that moment of transparency imposed by the U.S. regulator. Each Friday, the CFTC publishes open positions in futures contracts, broken down by trader type. It is one of the few public windows into the real positioning of funds, banks and industrial hedgers. But you need to read the right report, understand who sits in which bucket, and know the time lag that limits its use. This guide takes the mechanism apart.*
 
 The COT does not say where the market is going. It says who is positioned how, at a given date. It is structural data, not a buy or sell signal. Its value lies in revelation: the split between those hedging physical risk and those speculating on direction. Read methodically, it gives faces to [open interest](/glossaire/#open-interest), the mass of outstanding contracts. Read carelessly, it gives false certainty.
 

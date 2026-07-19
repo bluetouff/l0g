@@ -11,7 +11,7 @@ category: marches
 draft: false
 ---
 
-*Private credit has become one of the largest blind spots in the financial system: roughly $1.3 trillion in the United States, more globally, lent outside public markets, without daily prices and with limited mandatory transparency. This guide does not predict a crash. It teaches how to read what the usual market data cannot show.*
+*[Private credit](/en/glossary/credit-prive/) has become one of the largest blind spots in the financial system: roughly $1.3 trillion in the United States, more globally, lent outside public markets, without daily prices and with limited mandatory transparency. This guide does not predict a crash. It teaches how to read what the usual market data cannot show.*
 
 ## What private credit is
 
@@ -35,17 +35,17 @@ The Fed and the FSB both stress the same issue: limited transparency and poorly 
 
 ## The four red flags
 
-First: **PIK interest**, payment-in-kind. The borrower does not pay cash interest; it capitalizes the interest into more debt. For the fund, income exists on paper, not in the bank account. Rising PIK means borrowers cannot fully service debt in cash.
+First: **[PIK](/en/glossary/pik/) interest**, payment-in-kind. The borrower does not pay cash interest; it capitalizes the interest into more debt. For the fund, income exists on paper, not in the bank account. Rising PIK means borrowers cannot fully service debt in cash.
 
 Second: **model valuation**. Without a market, the lender marks the asset. Marks are smoothed and delayed, especially when no forced sale occurs.
 
-Third: **NAV loans**. A fund borrows against the net asset value of its portfolio, sometimes to fund distributions or meet redemptions. This adds leverage at the fund level and can become circular: borrowing against asset values to satisfy investors who doubt those values.
+Third: **[NAV loans](/en/glossary/nav-loan/)**. A fund borrows against the net asset value of its portfolio, sometimes to fund distributions or meet redemptions. This adds leverage at the fund level and can become circular: borrowing against asset values to satisfy investors who doubt those values.
 
 Fourth: **liquidity mismatch**. Semi-liquid vehicles promise periodic redemption windows while owning illiquid loans. When exits rise, managers gate redemptions. The problem is not illiquidity itself; it is liquidity promised and then withdrawn.
 
 ## Vehicles: from readable to dangerous
 
-The wrapper matters. A listed [BDC](/glossaire/#bdc) trades on an exchange and files with the SEC: it is the most transparent form. A non-traded BDC, whose assets have grown above **$200 billion**, offers periodic valuations and capped redemptions. Interval and evergreen funds operate similarly. A classic closed-end fund locks capital for years and does not pretend otherwise. The trap is the semi-liquid wrapper that sells illiquid credit as if it were nearly liquid.
+The wrapper matters. A listed [BDC](/glossaire/#bdc) trades on an exchange and files with the SEC: it is the most transparent form. A non-traded [BDC](/en/glossary/bdc/), whose assets have grown above **$200 billion**, offers periodic valuations and capped redemptions. Interval and evergreen funds operate similarly. A classic closed-end fund locks capital for years and does not pretend otherwise. The trap is the semi-liquid wrapper that sells illiquid credit as if it were nearly liquid.
 
 ## The 2025-2026 stress sequence
 

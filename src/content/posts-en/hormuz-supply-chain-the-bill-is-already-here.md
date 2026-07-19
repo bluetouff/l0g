@@ -9,7 +9,7 @@ sourceArticle: "ormuz-la-chaine-d-approvisionnement-encaisse-la-facture-est-deja
 sourceUpdatedDate: 2026-07-05
 ---
 
-There are two clocks in a chokepoint crisis, and they do not tick at the same speed. The first is the price clock, financial, which calms the moment a deal is signed. The second is the clock of holds, tanks and quays, physical, which takes months to recover. The mid-June US-Iran agreement, analysed in our [three reopening scenarios](/en/analysis/hormuz-reopens-three-oil-scenarios/), stopped the first. The second keeps running. In early July 2026, the war premium has left the barrel, but the global supply chain is still digesting the largest logistical rupture in its recent history.
+There are two clocks in a [chokepoint](/en/glossary/chokepoint/) crisis, and they do not tick at the same speed. The first is the price clock, financial, which calms the moment a deal is signed. The second is the clock of holds, tanks and quays, physical, which takes months to recover. The mid-June US-Iran agreement, analysed in our [three reopening scenarios](/en/analysis/hormuz-reopens-three-oil-scenarios/), stopped the first. The second keeps running. In early July 2026, the war premium has left the barrel, but the global supply chain is still digesting the largest logistical rupture in its recent history.
 
 ## A narrow strait, an outsized share of the world
 
@@ -81,7 +81,7 @@ The mechanism is simple to follow: carriers pass on to their customers the more 
 
 ## The gas wave reaches Europe
 
-No region illustrates the propagation better than the European gas market. Qatar, whose cargoes take Hormuz, suspended part of its production under force majeure, removing at a stroke nearly a fifth of world LNG supply. The European benchmark price, the Dutch TTF, jumped 35% in a single session to exceed €60 per megawatt-hour, and 76% over the week.
+No region illustrates the propagation better than the European gas market. Qatar, whose cargoes take Hormuz, suspended part of its production under force majeure, removing at a stroke nearly a fifth of world LNG supply. The European benchmark price, the Dutch [TTF](/en/glossary/ttf/), jumped 35% in a single session to exceed €60 per megawatt-hour, and 76% over the week.
 
 The prolongation scenarios are dizzying. A three-month halt of Qatari exports would take the TTF to around €155 per megawatt-hour, triple the pre-crisis level near €50. A six-month blockage would raise fears, according to analysts cited by the European press, of a 2022-style squeeze or worse, with averages around €160 and possible spikes beyond €200. The IEEFA estimates that the Hormuz disruption alone puts about 10% of Europe's LNG imports at stake.
 
@@ -138,13 +138,13 @@ The result is visible at anchor. About 3,200 vessels, including nearly 800 tanke
 
 ## The other reading: the shock absorbers
 
-For the sake of fairness, one must carry the opposite reading, because not everything gave way. Several shock absorbers worked, and ignoring them would give a falsely apocalyptic picture. Strategic reserves allowed the large importers to hold without immediate rationing, China first, which largely lived off its stocks accumulated at low prices. The ramp-up of US LNG, to a record level, partly replaced the missing Qatari cargoes. Shale oil and the barrels OPEC+ put back on the market added supply when it was missing. And the diplomatic de-escalation came sooner than anticipated, before reserves ran out.
+For the sake of fairness, one must carry the opposite reading, because not everything gave way. Several shock absorbers worked, and ignoring them would give a falsely apocalyptic picture. Strategic reserves allowed the large importers to hold without immediate rationing, China first, which largely lived off its stocks accumulated at low prices. The ramp-up of US LNG, to a record level, partly replaced the missing Qatari cargoes. Shale oil and the barrels [OPEC+](/en/glossary/opep-2/) put back on the market added supply when it was missing. And the diplomatic de-escalation came sooner than anticipated, before reserves ran out.
 
 The disaster scenario, that of a total closure prolonged over six months, with the barrel durably above $130 and the TTF at €200, therefore did not happen. Some analysts draw an optimistic conclusion from this: the system proved more resilient than feared, and the logistical adaptation, however costly, did its job. This reading is solid, and it deserves to be set against the previous one. But it only fixes the upper bound. To say the shock was absorbed is not to say it was painless: between the disaster averted and the return to normal lie precisely all the costs described above, which are very real.
 
 ## The assessment, on two horizons
 
-Two lessons stand out. In the short term, the gap between the two clocks is the real subject: oil prices have largely erased the conflict premium, falling back from their April peak above $106, but the logistical cost remains inscribed in freight, insurance premiums, European gas and fertiliser. Whoever reads only the Brent curve will wrongly conclude the crisis is behind us. The mechanics of the oil market and this deceptive reading are detailed in our guide on [reading the oil market](/en/guides/read-oil-market/).
+Two lessons stand out. In the short term, the gap between the two clocks is the real subject: oil prices have largely erased the conflict premium, falling back from their April peak above $106, but the logistical cost remains inscribed in freight, insurance premiums, European gas and fertiliser. Whoever reads only the [Brent](/en/glossary/brent/) curve will wrongly conclude the crisis is behind us. The mechanics of the oil market and this deceptive reading are detailed in our guide on [reading the oil market](/en/guides/read-oil-market/).
 
 Over the longer term, Hormuz recalls an uncomfortable truth about globalisation: its productivity rests on a handful of chokepoints, none of which has a genuine substitute. Concentrating a fifth of oil, a fifth of gas and a third of agricultural inputs in a channel a few kilometres wide creates a formidable efficiency in normal times and an equally formidable fragility in times of crisis. The ceasefire stopped the bleeding. It did not close the wound, and above all it did not make the system less vulnerable to the next shock.
 

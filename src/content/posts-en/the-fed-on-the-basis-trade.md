@@ -8,13 +8,13 @@ draft: false
 sourceArticle: "basis-trade-fed-radiographie-pari-record"
 sourceUpdatedDate: 2026-07-10
 ---
-*On 22 June 2026, a Federal Reserve note X-rayed the hedge funds' Treasury book: $4 trillion of gross exposure, including a basis trade estimated at $830 billion, nearly double its 2020 peak. Three weeks earlier, the specialist press was announcing the slow death of that same arbitrage, rendered barely profitable. A trade at its peak and out of breath at the same time: the paradox deserves decoding.*
+*On 22 June 2026, a Federal Reserve note X-rayed the hedge funds' Treasury book: $4 trillion of gross exposure, including a [basis trade](/en/glossary/basis-trade/) estimated at $830 billion, nearly double its 2020 peak. Three weeks earlier, the specialist press was announcing the slow death of that same arbitrage, rendered barely profitable. A trade at its peak and out of breath at the same time: the paradox deserves decoding.*
 
 The basis trade is one of those invisible cogs we only talk about when it breaks. It contributed to the Treasury-market panic of March 2020, when the Fed had to buy hundreds of billions of dollars of debt to restore order. Since then, regulators and central bankers watch it. We described its mechanics in our reference piece, [the basis trade at the heart of US debt](/en/analysis/the-treasury-basis-trade/). What is new is the quantified snapshot the Fed has just delivered, and the tension between what its data say and what the market says.
 
 ## The bet, in brief
 
-Let us recall the idea in one sentence. The price of a cash Treasury bond and that of its futures contract diverge slightly. A fund buys the security in cash, sells the future, and pockets the gap, the basis, at expiry. The gap is tiny, a few basis points, so it is amplified by leverage of 15 to 20 times, obtained by financing the purchase on the repo market, where cash is borrowed overnight against the security as collateral. The trade earns a steady income as long as funding stays cheap and volatility contained. It becomes dangerous when these two conditions reverse at the same time.
+Let us recall the idea in one sentence. The price of a cash Treasury bond and that of its futures contract diverge slightly. A fund buys the security in cash, sells the future, and pockets the gap, the basis, at expiry. The gap is tiny, a few basis points, so it is amplified by leverage of 15 to 20 times, obtained by financing the purchase on the [repo](/en/glossary/repo/) market, where cash is borrowed overnight against the security as collateral. The trade earns a steady income as long as funding stays cheap and volatility contained. It becomes dangerous when these two conditions reverse at the same time.
 
 ## The Fed's X-ray
 
@@ -88,7 +88,7 @@ This is not a theoretical worry. In April 2025, swap-spread arbitrage, the basis
 
 ## Who will buy the debt if the bet retreats
 
-A more discreet angle deserves attention. By financing the purchase of cash Treasuries, the basis trade makes hedge funds an important marginal buyer of US debt, at the very moment the Treasury issues record amounts of it. If the arbitrage retreats, for lack of profitability or after a shock, a source of demand disappears from the auctions. The relay is not obvious, and its absence would be paid in higher yields. It is one of the reasons for the awakening of the term premium, that extra yield demanded to hold long debt, which we analysed in our piece on [the awakening term premium](/en/analysis/the-return-of-the-term-premium/). The basis trade is not only a stability risk; it is also, by implication, a pillar of financing the federal state.
+A more discreet angle deserves attention. By financing the purchase of cash Treasuries, the basis trade makes hedge funds an important marginal buyer of US debt, at the very moment the Treasury issues record amounts of it. If the arbitrage retreats, for lack of profitability or after a shock, a source of demand disappears from the auctions. The relay is not obvious, and its absence would be paid in higher yields. It is one of the reasons for the awakening of the [term premium](/en/glossary/prime-de-terme/), that extra yield demanded to hold long debt, which we analysed in our piece on [the awakening term premium](/en/analysis/the-return-of-the-term-premium/). The basis trade is not only a stability risk; it is also, by implication, a pillar of financing the federal state.
 
 ## The wildcard of mandatory clearing
 
@@ -128,7 +128,7 @@ The third is the forced unwind, the scenario everyone dreads. A volatility spike
 
 ## The serious objections are not lacking
 
-One must guard against catastrophism, and several arguments plead for calm. The basis trade renders a real service: by linking the cash price and the futures price, it maintains the coherence of a $31 trillion market and provides liquidity to Treasury auctions. Without it, the US state would finance itself at a slightly higher cost. The Fed also has a net it did not have in 2020, the Standing Repo Facility, a permanent window where primary dealers can obtain cash against Treasuries, precisely to prevent a repo drought from degenerating. And a basis trade that deflates on its own, for lack of profitability, reduces the risk instead of increasing it: it is an orderly exit, not a panic.
+One must guard against catastrophism, and several arguments plead for calm. The basis trade renders a real service: by linking the cash price and the futures price, it maintains the coherence of a $31 trillion market and provides liquidity to [Treasury auctions](/en/glossary/adjudication/). Without it, the US state would finance itself at a slightly higher cost. The Fed also has a net it did not have in 2020, the Standing Repo Facility, a permanent window where [primary dealers](/en/glossary/primary-dealer/) can obtain cash against Treasuries, precisely to prevent a repo drought from degenerating. And a basis trade that deflates on its own, for lack of profitability, reduces the risk instead of increasing it: it is an orderly exit, not a panic.
 
 This reassuring reading nonetheless has its blind spots. The Standing Repo Facility has never been tested in a real storm, and nothing guarantees the deflation is slow: a barely profitable trade is a trade hanging by a thread, not a safe trade.
 

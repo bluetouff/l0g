@@ -10,11 +10,11 @@ sourceUpdatedDate: 2026-07-10
 ---
 *On 9 July 2026, the US Treasury sold its 30-year bond at the highest yield since 2007, a little above 5%. The auction again tailed, for the second time in a row, but foreign buyers turned up. Every week, these auctions are a discreet referendum: the market sets there, live, the price at which it agrees to finance a heavily indebted state. Here is how to read it.*
 
-We watch the 10-year yield like a thermometer, without always seeing where it comes from. It comes, for a good part, from a trading room where, several times a month, the Treasury auctions its debt. These auctions are not an accounting formality: they are the only moments when real demand for US debt is observed, at a negotiated price rather than a supposed one. When this demand weakens, it shows there first, in the detail of the results, before it reads in the broad indices. July 2026 offers a clear illustration.
+We watch the 10-year yield like a thermometer, without always seeing where it comes from. It comes, for a good part, from a trading room where, several times a month, the [Treasury auctions](/en/glossary/adjudication/) its debt. These auctions are not an accounting formality: they are the only moments when real demand for US debt is observed, at a negotiated price rather than a supposed one. When this demand weakens, it shows there first, in the detail of the results, before it reads in the broad indices. July 2026 offers a clear illustration.
 
 ## Reading a Treasury auction
 
-Three figures are enough to take an auction's pulse. The first is the bid-to-cover, the ratio of bids received to the amount sold: above 2, appetite is judged decent. The second is the tail, the gap between the final yield and the one the market anticipated just before, on the When Issued segment. A positive tail means the Treasury had to pay more than expected to place its paper, a sign of softer demand than hoped. The third is the share of indirect bidders, the usual approximation of foreign demand, central banks and sovereign funds included. Our [Treasury-market guide](/en/guides/read-us-treasuries-market/) details this grammar; the essential is to read it together, because a single isolated figure misleads.
+Three figures are enough to take an auction's pulse. The first is the [bid-to-cover](/en/glossary/bid-to-cover/), the ratio of bids received to the amount sold: above 2, appetite is judged decent. The second is the tail, the gap between the final yield and the one the market anticipated just before, on the When Issued segment. A positive tail means the Treasury had to pay more than expected to place its paper, a sign of softer demand than hoped. The third is the share of indirect bidders, the usual approximation of foreign demand, central banks and sovereign funds included. Our [Treasury-market guide](/en/guides/read-us-treasuries-market/) details this grammar; the essential is to read it together, because a single isolated figure misleads.
 
 ## July's verdict
 
@@ -53,7 +53,7 @@ The balanced reading is this: the Treasury still places its debt, but at a risin
 
 ## The supply wall
 
-This hardening is nothing mysterious. It answers a supply-and-demand equation whose two terms play against the Treasury. On the supply side, the structural federal deficit runs around 6% of GDP over 2025-2030, which mechanically swells the volume of debt to place, and the Fed's quantitative tightening returned more than $2 trillion of duration to the market since 2022. On the demand side, the big historical buyers are keeping a lower profile.
+This hardening is nothing mysterious. It answers a supply-and-demand equation whose two terms play against the Treasury. On the supply side, the structural federal deficit runs around 6% of GDP over 2025-2030, which mechanically swells the volume of debt to place, and the Fed's quantitative tightening returned more than $2 trillion of [duration](/en/glossary/duration/) to the market since 2022. On the demand side, the big historical buyers are keeping a lower profile.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 720 300" role="img" aria-label="The US debt supply wall and the retreat of the big buyers" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
@@ -81,11 +81,11 @@ This hardening is nothing mysterious. It answers a supply-and-demand equation wh
 <figcaption>More debt to place, and three pillars of demand pulling back at the same time: the Fed via its balance sheet, foreigners whose share stagnates, and the <strong>basis trade</strong> of hedge funds losing steam. Sources: NY Fed, FRED, Apollo.</figcaption>
 </figure>
 
-The Fed, once the top buyer via quantitative easing, is today a net seller. Foreign demand, for its part, is not collapsing but stagnating: non-residents' holdings rise much slower than the debt stock over a decade, so their relative share shrinks. And a new marginal buyer, the hedge-fund basis trade, is retreating in turn, as we analysed in our piece on [the $830 billion bet the market judges moribund](/en/analysis/the-fed-on-the-basis-trade/). When supply rises and three categories of buyers retreat together, the adjustment happens through the price, that is, through the yield.
+The Fed, once the top buyer via quantitative easing, is today a net seller. Foreign demand, for its part, is not collapsing but stagnating: non-residents' holdings rise much slower than the debt stock over a decade, so their relative share shrinks. And a new marginal buyer, the hedge-fund [basis trade](/en/glossary/basis-trade/), is retreating in turn, as we analysed in our piece on [the $830 billion bet the market judges moribund](/en/analysis/the-fed-on-the-basis-trade/). When supply rises and three categories of buyers retreat together, the adjustment happens through the price, that is, through the yield.
 
 ## The term premium is negotiated here
 
-This price has a name: the term premium, the extra yield demanded to hold a long bond rather than roll short placements. Per the New York Fed's ACM model, it stood around 0.73% in spring 2026, back clearly positive after a decade of zero or negative values, but still well below its historical median of 1.41%. In other words, normalisation is under way without being complete. We set this diagnosis in our piece on [the awakening of the term premium](/en/analysis/the-return-of-the-term-premium/); the auctions are its concrete stage. Every tail on the 30-year, every yield coming above the When Issued, is a small increment of term premium wrested by the market. The aggregate statistic the Fed publishes is only the sum of these weekly negotiations.
+This price has a name: the [term premium](/en/glossary/prime-de-terme/), the extra yield demanded to hold a long bond rather than roll short placements. Per the New York Fed's ACM model, it stood around 0.73% in spring 2026, back clearly positive after a decade of zero or negative values, but still well below its historical median of 1.41%. In other words, normalisation is under way without being complete. We set this diagnosis in our piece on [the awakening of the term premium](/en/analysis/the-return-of-the-term-premium/); the auctions are its concrete stage. Every tail on the 30-year, every yield coming above the When Issued, is a small increment of term premium wrested by the market. The aggregate statistic the Fed publishes is only the sum of these weekly negotiations.
 
 ## Where the tug-of-war leads
 
@@ -117,7 +117,7 @@ The first trajectory, the most probable, is demand holding. Auctions keep coveri
 
 The second is a creeping buyers' strike. Not a crash, but an erosion: tails that widen, a bid-to-cover that erodes from one auction to the next, long yields that step up. The Treasury would respond by shifting its issuance toward short maturities, the T-bills, less sensitive to the term premium, a real flexibility but one that defers the problem and shortens the debt's maturity.
 
-The third is the Fed's forced return. If a link seizes, like the repo market in September 2019 or Treasuries in March 2020, the central bank buys back to restore order. This would be, de facto, a form of fiscal dominance: monetary policy put at the service of financing the state, at the cost of its credibility in fighting inflation. It is the least probable and most consequential scenario.
+The third is the Fed's forced return. If a link seizes, like the [repo](/en/glossary/repo/) market in September 2019 or Treasuries in March 2020, the central bank buys back to restore order. This would be, de facto, a form of [fiscal dominance](/en/glossary/dominance-fiscale/): monetary policy put at the service of financing the state, at the cost of its credibility in fighting inflation. It is the least probable and most consequential scenario.
 
 ## The reasons not to panic
 

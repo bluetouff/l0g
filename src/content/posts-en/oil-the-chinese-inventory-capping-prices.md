@@ -9,7 +9,7 @@ sourceArticle: "petrole-le-stock-chinois-qui-plafonne-les-prix"
 sourceUpdatedDate: 2026-07-04
 ---
 
-As of 3 July 2026, Brent trades around $71 a barrel, down from $72.68 on 1 July. It is a counter-intuitive fact: a few weeks earlier, the partial closure of the Strait of Hormuz and the war around Iran had pushed the barrel toward $80, with a scenario at $105 if the strait stayed blocked. Yet the price came back down. Part of the explanation lies with an actor that produces almost nothing: China, the world's largest crude importer. For the fundamentals, see our guide on [reading the oil market](/en/guides/read-oil-market/).
+As of 3 July 2026, [Brent](/en/glossary/brent/) trades around $71 a barrel, down from $72.68 on 1 July. It is a counter-intuitive fact: a few weeks earlier, the partial closure of the Strait of Hormuz and the war around Iran had pushed the barrel toward $80, with a scenario at $105 if the strait stayed blocked. Yet the price came back down. Part of the explanation lies with an actor that produces almost nothing: China, the world's largest crude importer. For the fundamentals, see our guide on [reading the oil market](/en/guides/read-oil-market/).
 
 ## The buyer that sets a floor, then a ceiling
 
@@ -25,7 +25,7 @@ Notably, China kept filling its tanks even during the collapse in imports: betwe
 
 ## The limits of Chinese leverage
 
-One must avoid attributing everything to Beijing. The retreat in Brent also owes, and perhaps above all, to two independent factors. First, the de-escalation around Iran lifted the geopolitical risk premium that was inflating the barrel. Second, supply is rising: seven OPEC+ countries are increasing production by 188,000 barrels a day from July 2026, after already raising their quotas by nearly 600,000 barrels a day between April and June. The market is slowly tilting from fear of shortage toward fear of surplus.
+One must avoid attributing everything to Beijing. The retreat in Brent also owes, and perhaps above all, to two independent factors. First, the de-escalation around Iran lifted the geopolitical risk premium that was inflating the barrel. Second, supply is rising: seven [OPEC+](/en/glossary/opep-2/) countries are increasing production by 188,000 barrels a day from July 2026, after already raising their quotas by nearly 600,000 barrels a day between April and June. The market is slowly tilting from fear of shortage toward fear of surplus.
 
 Chinese demand is therefore not the only brake, but it is the silent one. J.P. Morgan sees Brent at about $60 on average over 2026; the EIA even anticipated a trough near $52 in the first quarter. In a structurally well-supplied market, an importer able to cut its purchases by 2 million barrels a day without suffering becomes a de facto stabiliser. China did not decide to keep prices low out of benevolence: it buys when it is cheap and withdraws when it is expensive, in service of its own energy security alone. The ceiling on prices is a side effect of this methodical opportunism. One unknown remains: the day Beijing stops building reserves and starts selling them, the same leverage will work in the other direction.
 

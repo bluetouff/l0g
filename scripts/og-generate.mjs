@@ -36,24 +36,32 @@ function frDate(raw) {
   if (!raw) return null;
   const d = new Date(raw);
   if (isNaN(d)) return null;
-  return d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  const locale = (process.env.OG_LANG || "fr") === "en" ? "en-GB" : "fr-FR";
+  return d.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
 }
+
+const OG_LANG = process.env.OG_LANG || "fr";
 
 async function render(title, dateLabel) {
   const isGuide = POSTS_DIR.includes("guides");
+  const en = OG_LANG === "en";
   return renderOgPng(
     ogCard({
       title,
       subtitle: isGuide
-        ? "Guide de référence l0g : notion durable, sources primaires, révision datée."
-        : "Analyse l0g : lecture critique, sources citées, données publiques.",
-      eyebrow: isGuide ? "guide de référence" : "analyse",
+        ? (en
+            ? "l0g reference guide: durable concept, primary sources, dated revision."
+            : "Guide de référence l0g : notion durable, sources primaires, révision datée.")
+        : (en
+            ? "l0g analysis: critical reading, cited sources, public data."
+            : "Analyse l0g : lecture critique, sources citées, données publiques."),
+      eyebrow: isGuide ? (en ? "reference guide" : "guide de référence") : (en ? "analysis" : "analyse"),
       command: isGuide ? "cat guide.md" : "cat article.md",
       dateLabel,
       accent: isGuide ? OG.teal : OG.rose,
       chips: isGuide
-        ? ["révision datée", "sources primaires", "zéro tracker"]
-        : ["lecture datée", "sources citées", "zéro tracker"],
+        ? (en ? ["dated revision", "primary sources", "zero tracker"] : ["révision datée", "sources primaires", "zéro tracker"])
+        : (en ? ["dated reading", "cited sources", "zero tracker"] : ["lecture datée", "sources citées", "zéro tracker"]),
     })
   );
 }

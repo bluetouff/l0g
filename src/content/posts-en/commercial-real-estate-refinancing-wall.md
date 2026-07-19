@@ -82,7 +82,7 @@ This mechanism is a direct cousin of the restructurings that mask defaults in le
 
 ## The private-credit channel
 
-A second channel now doubles the banks': private credit. As regional banks turned cautious after 2023, private-debt funds rushed into commercial-real-estate financing, including on the riskiest assets. The risk does not disappear, it moves toward less transparent and less regulated vehicles, the non-bank financial institutions that we made the through-line of our second-quarter bank-earnings preview.
+A second channel now doubles the banks': [private credit](/en/glossary/credit-prive/). As regional banks turned cautious after 2023, private-debt funds rushed into commercial-real-estate financing, including on the riskiest assets. The risk does not disappear, it moves toward less transparent and less regulated vehicles, the non-bank financial institutions that we made the through-line of our second-quarter bank-earnings preview.
 
 The loop is the one we keep finding in credit plumbing. Banks finance the private-credit funds, which finance commercial real estate; the exposure leaves the bank balance sheet through the direct-lending door and comes back through wholesale funding. It is the [silent contagion](/en/analysis/the-silent-contagion-of-private-credit/) of private credit applied to bricks and mortar, and it makes mapping the risk harder, because a real-estate loss can now strike where you do not look for it, in a semi-liquid fund rather than in a listed bank.
 

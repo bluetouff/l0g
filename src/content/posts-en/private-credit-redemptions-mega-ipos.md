@@ -15,13 +15,13 @@ Withdrawal requests at the large private-credit funds are hitting a new quarterl
 
 The starting point is a tally published by The Kobeissi Letter from Robert A. Stanger & Co. data: across the five large funds tracked (Golub, Cliffwater, Oaktree Strategic Credit, Blackstone, BlackRock HPS), redemption requests reach about $12bn in the single second quarter of 2026, up $4.3bn (or +56%) on the prior quarter.
 
-Two funds concentrate most of the surge. The Cliffwater Corporate Lending Fund (CCLFX, about $31 to 33bn of assets) records the largest rise, +$3.0bn, taking its requests to $5.3bn. The figure squares with Bloomberg: requested redemptions represented nearly 17% of shares in the second quarter, against about 14% in the first; the fund brought its cap down to 5%, serving only about a third of the amounts requested. Next comes the Blackstone Private Credit Fund (BCRED, about $79 to 82bn), whose requests rise by $720m, to $4.5bn, nearly 10% of its shares.
+Two funds concentrate most of the surge. The Cliffwater Corporate Lending Fund (CCLFX, about $31 to 33bn of assets) records the largest rise, +$3.0bn, taking its requests to $5.3bn. The figure squares with Bloomberg: requested redemptions represented nearly 17% of shares in the second quarter, against about 14% in the first; the fund brought its cap down to 5%, serving only about a third of the amounts requested. Next comes the Blackstone [Private Credit](/en/glossary/credit-prive/) Fund (BCRED, about $79 to 82bn), whose requests rise by $720m, to $4.5bn, nearly 10% of its shares.
 
 The contrast with the previous quarter is marked. In the first quarter, BCRED had honoured 100% of requests (7.9% of shares) after a $400m injection from Blackstone and its executives. Blue Owl, for its part, had seen up to 40.7% of shares requested for redemption on its technology fund and 21.9% on its flagship credit fund, before capping at 5%. The shift from full service to generalised capping is a regime change, not a mere blip.
 
 ## Fundraising collapses faster than exits rise
 
-The least-commented part of the file is not the level of redemptions, but the drying up of inflows. According to Stanger, sales of BDCs (business development companies, the retail vehicle of private credit) fell to about $1.6bn in April, down 74% year on year and the lowest monthly figure since May 2023. Over the first four months of the year, cumulative fundraising reaches $10.8bn, down 52%.
+The least-commented part of the file is not the level of redemptions, but the drying up of inflows. According to Stanger, sales of [BDCs](/en/glossary/bdc/) (business development companies, the retail vehicle of private credit) fell to about $1.6bn in April, down 74% year on year and the lowest monthly figure since May 2023. Over the first four months of the year, cumulative fundraising reaches $10.8bn, down 52%.
 
 Above all, the first quarter of 2026 saw, for the first time in the sector's history, honoured redemptions ($6.9bn) exceed fundraising ($4.9bn, down 59% year on year). Stanger speaks of a pullback phase in its liquidity cycle and anticipates a roughly 40% drop in BDC fundraising over the year, by analogy with the reversal of non-traded REITs in 2022-2023.
 
@@ -69,7 +69,7 @@ The trigger comes from a sector fear: the AI disruption of software vendors, a s
 
 Managers counter these exits with the strength of their portfolios: Cliffwater recalls that its fund received an A rating from S&P Global Ratings in November 2025, citing diversification, measured leverage and asset quality, and considers that the withdrawals owe more to sentiment than to fundamentals. The thesis remains unverifiable in the short term, for lack of observable market prices, which is precisely the heart of the problem.
 
-The difficulty is structural. Private-credit assets are valued to model rather than to market, with a 60-to-90-day lag on net asset values (NAV). The gap shows in the indices: in the first quarter, the Stanger index of non-traded BDCs posts -0.03% (its first negative quarterly performance since Q2 2022) and +6.2% over twelve months, while the S&P index of listed BDCs loses 10.1% over the quarter and 14% year on year. When too many holders want out, funds activate their caps (the gates) to avoid selling illiquid assets at a loss; the flip side is that a holder served 5% for 17% requested recovers only about 29 cents per dollar requested.
+The difficulty is structural. Private-credit assets are valued to model rather than to market, with a 60-to-90-day lag on net asset values ([NAV](/en/glossary/nav/)). The gap shows in the indices: in the first quarter, the Stanger index of non-traded BDCs posts -0.03% (its first negative quarterly performance since Q2 2022) and +6.2% over twelve months, while the S&P index of listed BDCs loses 10.1% over the quarter and 14% year on year. When too many holders want out, funds activate their caps (the gates) to avoid selling illiquid assets at a loss; the flip side is that a holder served 5% for 17% requested recovers only about 29 cents per dollar requested.
 
 ## The contagion channel: insurers and banks
 
@@ -151,7 +151,7 @@ The junction point with private credit sits there. These listings court, through
 
 ## What to watch
 
-Four signals deserve close tracking: the quarterly redemption rate relative to the effective cap at the large funds; the persistent gap between model-based NAVs and listed comparables; the share of capitalised interest (PIK) in declared income, a sign of borrowers no longer paying in cash; and the evolution of the bank credit lines extended to managers. Against a backdrop of stretched equity valuations (S&P 500 P/E near 32x against a fifteen-year average of 20x, Shiller CAPE ratio around 42, and a top 10 representing nearly 38% of the VOO ETF and half of the QQQ), the coincidence of an exit from private credit and a wave of record listings sketches the playing field of the coming quarters.
+Four signals deserve close tracking: the quarterly redemption rate relative to the effective cap at the large funds; the persistent gap between model-based NAVs and listed comparables; the share of capitalised interest ([PIK](/en/glossary/pik/)) in declared income, a sign of borrowers no longer paying in cash; and the evolution of the bank credit lines extended to managers. Against a backdrop of stretched equity valuations (S&P 500 P/E near 32x against a fifteen-year average of 20x, Shiller CAPE ratio around 42, and a top 10 representing nearly 38% of the VOO ETF and half of the QQQ), the coincidence of an exit from private credit and a wave of record listings sketches the playing field of the coming quarters.
 
 ## Sources
 

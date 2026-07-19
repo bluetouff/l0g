@@ -72,7 +72,7 @@ These paths are working bounds, not quantified probabilities.
 
 ## The useful dashboard now
 
-The memorandum's dates are no longer sufficient. The relevant indicators are AP and military reports on strikes, UKMTO vessel alerts, the number and composition of crossings, the exact reach of the US blockade, Qatari and Pakistani mediation, and the next OPEC+ meeting on 2 August. The oil curve remains useful, but it must be read as the consequence of physical flows and operational risk, following the method in our guide to [reading the oil market](/en/guides/read-oil-market/).
+The memorandum's dates are no longer sufficient. The relevant indicators are AP and military reports on strikes, UKMTO vessel alerts, the number and composition of crossings, the exact reach of the US blockade, Qatari and Pakistani mediation, and the next [OPEC+](/en/glossary/opep-2/) meeting on 2 August. The oil curve remains useful, but it must be read as the consequence of physical flows and operational risk, following the method in our guide to [reading the oil market](/en/guides/read-oil-market/).
 
 The memorandum bought time. Renewed strikes consumed it before the written deadlines. Analytical integrity therefore requires abandoning mid-August as an automatic decision date. The operative calendar is now event-driven: attack, retaliation, mediation, partial reopening or regional expansion.
 

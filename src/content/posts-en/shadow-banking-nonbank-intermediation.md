@@ -8,7 +8,7 @@ draft: false
 sourceArticle: "shadow-banking-intermediation-non-bancaire"
 sourceUpdatedDate: 2026-06-23
 ---
-*A crossover passed almost unnoticed. For the first time since the pandemic, non-bank financial institutions hold more than half of global financial assets. Hedge funds, money market funds, insurers, asset managers, private credit, securitisation vehicles: the old shadow banking now weighs **$256.8 trillion** and is growing twice as fast as the banks. Credit has migrated off the bank balance sheet, to where oversight is looser and data scarcer. Extending our pieces on [repo](/en/analysis/repo-the-liquidity-factory/), the basis trade and [private credit](/en/guides/read-private-credit-risk/), here is the overall map.*
+*A crossover passed almost unnoticed. For the first time since the pandemic, non-bank financial institutions hold more than half of global financial assets. Hedge funds, money market funds, insurers, asset managers, [private credit](/en/glossary/credit-prive/), securitisation vehicles: the old shadow banking now weighs **$256.8 trillion** and is growing twice as fast as the banks. Credit has migrated off the bank balance sheet, to where oversight is looser and data scarcer. Extending our pieces on [repo](/en/analysis/repo-the-liquidity-factory/), the [basis trade](/en/glossary/basis-trade/) and [private credit](/en/guides/read-private-credit-risk/), here is the overall map.*
 
 The term shadow banking, coined in 2007, originally described an opaque system that did credit like a bank, without its status or its safeguards. Regulators today prefer a less loaded and more precise expression, non-bank financial intermediation, or NBFI. The shift is not cosmetic: it marks the move from a hunt for suspect entities to a surveillance of activities, those that transform liquid savings into long-term credit, with leverage, outside the banking perimeter.
 
@@ -39,7 +39,7 @@ Alongside, the FSB tracks a narrow measure, more relevant for financial stabilit
 
 ## Where the vulnerabilities are
 
-Three fragilities recur in every analysis. Liquidity and maturity transformation first: an open-ended fund promises daily withdrawal while holding illiquid assets, which exposes it to forced sales in case of mass redemptions. Vehicles liable to suffer panic withdrawals weighed on their own $58 trillion in 2024, up **15%**. Leverage next, concentrated in hedge funds, finance companies and securitisation vehicles, which amplifies shocks, as repo and the basis trade show. Interconnection finally, because non-banks and banks are tied by a thousand threads.
+Three fragilities recur in every analysis. Liquidity and maturity transformation first: an open-ended fund promises daily withdrawal while holding illiquid assets, which exposes it to forced sales in case of mass redemptions. Vehicles liable to suffer panic withdrawals weighed on their own $58 trillion in 2024, up **15%**. Leverage next, concentrated in hedge funds, finance companies and securitisation vehicles, which amplifies shocks, as [repo](/en/glossary/repo/) and the basis trade show. Interconnection finally, because non-banks and banks are tied by a thousand threads.
 
 It is this last point, the bank and non-bank nexus, that the FSB has documented particularly this year. The links take three forms: non-banks place deposits with banks, banks grant them credit, repo and other exposures, and funds, insurers and pension funds hold securities issued by banks. In calm times, these links widen access to funding. In a crisis, they become channels of contagion.
 

@@ -11,15 +11,15 @@ sourceUpdatedDate: 2026-06-13
 
 ## Semi-liquid private-credit funds and gating: the HLEND (BlackRock) case and the lessons for retail investors in 2026
 
-A Reuters article of 12 June 2026 reports that a BlackRock/HPS private-credit fund of about $25 billion (the HPS Corporate Lending Fund, or HLEND) received in the first quarter redemption requests representing 13.3% of its shares in circulation. The fund decided to honour only 5% of these shares, about $620 million. A smaller vehicle, the BlackRock Private Credit Fund (BDEBT, $2.7 billion), saw requests of 5.3% and redeemed 5% (about $83 million). These decisions are part of a broader wave of withdrawals seen in 2025-2026 on private-credit funds open to wealthy investors.
+A Reuters article of 12 June 2026 reports that a BlackRock/HPS private-credit fund of about $25 billion (the HPS Corporate Lending Fund, or HLEND) received in the first quarter redemption requests representing 13.3% of its shares in circulation. The fund decided to honour only 5% of these shares, about $620 million. A smaller vehicle, the BlackRock [Private Credit](/en/glossary/credit-prive/) Fund (BDEBT, $2.7 billion), saw requests of 5.3% and redeemed 5% (about $83 million). These decisions are part of a broader wave of withdrawals seen in 2025-2026 on private-credit funds open to wealthy investors.
 
 This phenomenon highlights the concrete workings of **semi-liquid** private-credit funds and, for many retail investors or family offices, the operational discovery of **gating mechanisms**.
 
 ## What is a semi-liquid private-credit fund?
 
-Private credit mainly designates senior secured direct loans granted to mid-market companies (often with an EBITDA of several tens to hundreds of millions of dollars). These loans are generally floating-rate, with credit spreads, and held to maturity (typical duration 5-7 years). They offer attractive yields relative to listed public credit, with historically lower volatility and low correlation to equity/bond markets.
+Private credit mainly designates senior secured direct loans granted to mid-market companies (often with an EBITDA of several tens to hundreds of millions of dollars). These loans are generally floating-rate, with credit spreads, and held to maturity (typical [duration](/en/glossary/duration/) 5-7 years). They offer attractive yields relative to listed public credit, with historically lower volatility and low correlation to equity/bond markets.
 
-To widen access beyond traditional institutional investors, managers developed vehicles registered with the SEC: **non-traded Business Development Companies (BDCs)** or **tender offer funds / interval funds**. These structures, marketed via wealth-management platforms, target qualified or wealthy investors (accredited investors, qualified purchasers per the US thresholds).
+To widen access beyond traditional institutional investors, managers developed vehicles registered with the SEC: **non-traded Business Development Companies ([BDCs](/en/glossary/bdc/))** or **tender offer funds / [interval funds](/en/glossary/interval-fund/)**. These structures, marketed via wealth-management platforms, target qualified or wealthy investors (accredited investors, qualified purchasers per the US thresholds).
 
 Unlike classic private-equity funds (7-10-year or longer lock-ups with sporadic distributions), these vehicles promise **periodic liquidity**: redemption windows (tender offers) generally quarterly. This is what makes them "semi-liquid". In exchange, they keep the advantage of private-credit yields (distributions often monthly or quarterly from the interest received).
 
@@ -29,7 +29,7 @@ The fund periodically organises an offer to redeem a certain percentage of its s
 
 If redemption requests stay below or equal to the cap, the fund redeems everything (or pro rata if a slight excess). If requests largely exceed the cap, this is **gating**, the fund limits redemptions to the amount authorised by its liquidity policy (generally pro rata to the requests). Excess requests are deferred to the following windows or handled per the prospectus rules.
 
-**Stated objective**: align the liquidity offered to investors with the illiquid nature of the underlying assets. Direct loans do not trade easily on a deep secondary market; a mass forced sale could entail significant discounts and hurt the net asset value (NAV) of all remaining shareholders. Gating therefore protects the long-term investment strategy and avoids a "bank run" on illiquid assets.
+**Stated objective**: align the liquidity offered to investors with the illiquid nature of the underlying assets. Direct loans do not trade easily on a deep secondary market; a mass forced sale could entail significant discounts and hurt the net asset value ([NAV](/en/glossary/nav/)) of all remaining shareholders. Gating therefore protects the long-term investment strategy and avoids a "bank run" on illiquid assets.
 
 In the HLEND case, the letter to shareholders confirms: requests of 13.3% of shares as of 31 March 2026, redemption limited to 5% (about $620 million), in line with the fund's usual liquidity parameters. The fund also stresses a conservative portfolio (> 95% first-lien senior secured), low leverage (1.0x, the low end of the target range), liquidity estimated at $7.2 billion (borrowing capacity, cash and liquid assets) and subscriptions plus distribution reinvestment expected to more than offset redemptions in the first half of 2026.
 

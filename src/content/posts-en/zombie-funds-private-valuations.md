@@ -15,7 +15,7 @@ The "zombie funds" phenomenon is not new. Traditionally, the term designated fun
 
 The problem is first a liquidity problem. Since the rate cycle turned in 2022, initial public offerings have become scarce, mergers and acquisitions have slowed, and strategic acquirers have become far more selective. As a result, funds hold their stakes much longer than planned.
 
-Faced with this absence of exits, managers find themselves in a dilemma. Selling today would often mean accepting multiples lower than those used in their internal valuation models. Not selling, on the other hand, preserves a higher net asset value (NAV) and avoids crystallising losses.
+Faced with this absence of exits, managers find themselves in a dilemma. Selling today would often mean accepting multiples lower than those used in their internal valuation models. Not selling, on the other hand, preserves a higher net asset value ([NAV](/en/glossary/nav/)) and avoids crystallising losses.
 
 This is where the heart of the problem appears. Unlike listed markets, where the price is continuously discovered, private assets are valued periodically according to internal models. As long as no transaction takes place, the displayed value stays largely theoretical.
 
@@ -23,7 +23,7 @@ Institutional investors are beginning to wonder. Several large private-credit fu
 
 To buy time, the industry has developed a whole series of financial tools. The most emblematic is the continuation fund. Concretely, a manager transfers an asset from an old fund into a new vehicle, offering partial liquidity to investors while keeping the asset under control.
 
-In parallel, NAV loans are seeing explosive growth. These financings use the portfolio's assets as collateral to generate cash without selling the holdings. The market now exceeds $100 billion.
+In parallel, [NAV loans](/en/glossary/nav-loan/) are seeing explosive growth. These financings use the portfolio's assets as collateral to generate cash without selling the holdings. The market now exceeds $100 billion.
 
 This evolution recalls an old financial lesson: liquidity is abundant right up to the moment everyone needs it simultaneously.
 

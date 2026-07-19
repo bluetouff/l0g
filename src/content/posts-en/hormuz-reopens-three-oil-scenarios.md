@@ -9,7 +9,7 @@ sourceArticle: "accord-paix-ormuz-rouvre-scenarios"
 sourceUpdatedDate: 2026-06-16
 ---
 
-On 14 June, Donald Trump announced on Truth Social that the deal with Iran was "complete" and authorised the "toll-free" reopening of the Strait of Hormuz, lifting the US naval blockade of Iranian ports. Tehran confirmed the next day, specifying that implementation would only begin at the formal signing, set for 19 June in Geneva. Markets reacted immediately: Brent lost 4.7% on 15 June to close at $83.17, its lowest level since 10 March, and WTI fell 4.8% to $80.75.
+On 14 June, Donald Trump announced on Truth Social that the deal with Iran was "complete" and authorised the "toll-free" reopening of the Strait of Hormuz, lifting the US naval blockade of Iranian ports. Tehran confirmed the next day, specifying that implementation would only begin at the formal signing, set for 19 June in Geneva. Markets reacted immediately: [Brent](/en/glossary/brent/) lost 4.7% on 15 June to close at $83.17, its lowest level since 10 March, and [WTI](/en/glossary/wti/) fell 4.8% to $80.75.
 
 Except that, as I already noted in my [April situation report](/en/analysis/strait-of-hormuz-situation-april-2026/), an announcement of reopening is not a reopening. And above all, the deal took the war premium out of prices, not the damage the war left behind. Understanding that gap is the whole point for anyone trying to anticipate what comes next.
 
@@ -56,7 +56,7 @@ From there, one can build three trajectories. They are not predictions, but plau
 
 **High scenario: slow reopening.** If mine clearance drags toward the high end of the six months mentioned by the Pentagon, if shipowners demand persistent risk premiums and if the marine insurance premium stays high, logistical congestion keeps a high price floor. This is the scenario the EIA implicitly assumes, whose June Short-Term Energy Outlook projects a 2026 average of $95, on slower-reopening assumptions. In this configuration, the barrel stays stuck above $90 for a good part of the second half, with the known consequences for imported inflation, a subject I developed in [the great US inflation comeback](/en/analysis/us-inflation-comeback/). The coming CPI releases and the FOMC meetings that will arbitrate this energy shock are worth watching on the economic calendar.
 
-**Low scenario: return to the floor.** If the 19th signing holds, if mine clearance goes fast and if OPEC+ reopens the valves of shut wells, the residual premium dissipates and Brent returns toward $72-75, its level before the strikes. This is the least likely scenario in the short term, because it assumes all the frictions resolve simultaneously, but it is the long-term anchor once the logistics are purged.
+**Low scenario: return to the floor.** If the 19th signing holds, if mine clearance goes fast and if [OPEC+](/en/glossary/opep-2/) reopens the valves of shut wells, the residual premium dissipates and Brent returns toward $72-75, its level before the strikes. This is the least likely scenario in the short term, because it assumes all the frictions resolve simultaneously, but it is the long-term anchor once the logistics are purged.
 
 <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three scenarios for traffic and price recovery" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px">
   <text x="24" y="34" fill="#5eead4" font-family="monospace" font-size="15">// Hormuz traffic recovery (% of pre-war levels)</text>

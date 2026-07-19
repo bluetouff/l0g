@@ -11,7 +11,7 @@ category: marches
 draft: false
 ---
 
-*A life insurer promises to pay in ten, twenty or forty years. Its soundness is therefore not judged by its quarterly profit, but by the certainty that the assets it holds today will still be worth, when the time comes, what its commitments are worth. That certainty has blurred. Since a growing share of American annuities is backed by private credit, housed in Bermuda-affiliated reinsurers and rated by private agencies, reading an insurer means looking beyond the headline capital ratio. This guide lays out the dials to watch, from RBC to the liability, with 777 Re as the thread, and extends our article on [retirement savings in private credit](/en/analysis/life-insurers-retirement-savings-private-credit-bermuda/).*
+*A life insurer promises to pay in ten, twenty or forty years. Its soundness is therefore not judged by its quarterly profit, but by the certainty that the assets it holds today will still be worth, when the time comes, what its commitments are worth. That certainty has blurred. Since a growing share of American annuities is backed by [private credit](/en/glossary/credit-prive/), housed in Bermuda-affiliated reinsurers and rated by private agencies, reading an insurer means looking beyond the headline capital ratio. This guide lays out the dials to watch, from RBC to the liability, with 777 Re as the thread, and extends our article on [retirement savings in private credit](/en/analysis/life-insurers-retirement-savings-private-credit-bermuda/).*
 
 ## Regulatory capital: the RBC ratio and its levels
 

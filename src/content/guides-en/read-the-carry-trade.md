@@ -115,7 +115,7 @@ The carry gives no warning, but it leaves traces. Four dials help gauge its tens
 <figcaption>Rate gap, currency volatility, speculative positioning and nearness to intervention thresholds: read together, these four dials tell whether the carry is sleeping soundly or nearing its breaking point. They feed the l0g <strong>Yen Carry Monitor</strong>.</figcaption>
 </figure>
 
-The first is the rate gap: it is what pays the trade, and its compression, when the funding central bank tightens or the others ease, reduces its appeal. The second is FX implied volatility: low, it lulls; a spike wakes it and triggers sales. The third is speculative positioning, published weekly by the [CFTC](/glossaire/cftc/) in its COT report: an extreme short position on the yen betrays a crowded trade, hence vulnerable to the slightest reversal. The fourth is the exchange rate itself relative to the thresholds where an [FX intervention](/glossaire/intervention-de-change/) becomes likely, since that intervention can be the spark of the unwind. The l0g [Yen Carry Monitor](/methodologie/yen-carry/) aggregates precisely these signals.
+The first is the rate gap: it is what pays the trade, and its compression, when the funding central bank tightens or the others ease, reduces its appeal. The second is FX implied volatility: low, it lulls; a spike wakes it and triggers sales. The third is speculative positioning, published weekly by the [CFTC](/glossaire/cftc/) in its [COT](/en/glossary/cot/) report: an extreme short position on the yen betrays a crowded trade, hence vulnerable to the slightest reversal. The fourth is the exchange rate itself relative to the thresholds where an [FX intervention](/glossaire/intervention-de-change/) becomes likely, since that intervention can be the spark of the unwind. The l0g [Yen Carry Monitor](/methodologie/yen-carry/) aggregates precisely these signals.
 
 ## Reading the carry in practice
 
@@ -126,7 +126,7 @@ Reading it therefore means looking beyond the rate gap that feeds it, toward the
 ## Sources and further reading
 
 - [Bank for International Settlements, Bulletin no. 90, "The market turbulence and carry trade unwind of August 2024"](https://www.bis.org/publ/bisbull90.pdf): anatomy of the 5 August 2024 unwind.
-- [Bank of Japan, monetary policy decisions](https://www.boj.or.jp/en/mopo/mpmdeci/index.htm/): the path of Japanese rates, the bedrock of the yen carry.
+- [Bank of Japan, monetary policy decisions](https://www.boj.or.jp/en/mopo/mpmdeci/index.htm/): the path of Japanese rates, the bedrock of the [yen carry](/en/glossary/yen-carry/).
 - [CFTC, Commitments of Traders](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm): speculative positioning on the yen and currencies.
 - l0g, [Yen carry trade: the fuse in Japanese bonds](/posts/carry-trade-yen-la-meche-dans-les-obligations-japonaises/) and [Dollar-yen: the unwind risk](/posts/dollar-yen-intervention-risque-carry-2026/).
 - Related guides: [Reading VIX and MOVE volatility](/en/guides/read-vix-move-volatility/), [Reading the CFTC COT report](/en/guides/read-cftc-cot-report/) and [Reading the dollar: DXY and cross-currency basis](/en/guides/read-dollar-dxy-cross-currency-basis/).

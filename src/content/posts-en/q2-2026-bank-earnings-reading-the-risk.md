@@ -8,7 +8,7 @@ draft: false
 sourceArticle: "resultats-bancaires-t2-2026-lire-le-risque"
 sourceUpdatedDate: 2026-07-12
 ---
-*On Tuesday 14 July, before the open, five behemoths of US finance report their second-quarter accounts: JPMorgan, Bank of America, Citigroup, Wells Fargo and Goldman Sachs. The consensus expects good numbers, and it will probably be right. But beating the consensus is precisely what matters least, because it is already in the prices. For anyone who reads risk rather than the headline, the interest is elsewhere: in the interest margin, in the direction of provisions, and above all in a discreet thread linking these very profitable banks to the most fragile link of the system, private credit. Here is Tuesday's reading grid, the one that looks under the profit.*
+*On Tuesday 14 July, before the open, five behemoths of US finance report their second-quarter accounts: JPMorgan, Bank of America, Citigroup, Wells Fargo and Goldman Sachs. The consensus expects good numbers, and it will probably be right. But beating the consensus is precisely what matters least, because it is already in the prices. For anyone who reads risk rather than the headline, the interest is elsewhere: in the interest margin, in the direction of provisions, and above all in a discreet thread linking these very profitable banks to the most fragile link of the system, [private credit](/en/glossary/credit-prive/). Here is Tuesday's reading grid, the one that looks under the profit.*
 
 ## The consensus, and why beating it matters little
 
@@ -41,7 +41,7 @@ The method lesson is simple. When the market already expects a 25% rise, beating
 
 ## The interest margin, the real arbiter
 
-A retail bank's queen metric is not the profit, it is the net interest margin, the gap between what the bank earns on its loans and what it pays on its deposits. It is what says whether the model's heart is breathing. Two forces clash this quarter. On one side, banks' funding cost eased, from about 2.61% in 2024 to 2.26% in 2025, relieving the margin. On the other, the yield curve lost some slope in the second quarter, compressing the gain banks draw from maturity transformation.
+A retail bank's queen metric is not the profit, it is the net interest margin, the gap between what the bank earns on its loans and what it pays on its deposits. It is what says whether the model's heart is breathing. Two forces clash this quarter. On one side, banks' funding cost eased, from about 2.61% in 2024 to 2.26% in 2025, relieving the margin. On the other, the [yield curve](/en/glossary/courbe-des-taux/) lost some slope in the second quarter, compressing the gain banks draw from maturity transformation.
 
 The context of durably high rates, under a Fed still leaning toward tightening, is double-edged for banks. It swells interest income on new loans, but it raises competition for deposits and, as we will see, deepens unrealised losses on bond portfolios. Listening, on Tuesday, to what the chief financial officers say about the margin trajectory for the rest of the year will be worth more than the profit of the past quarter.
 

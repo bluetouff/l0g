@@ -11,7 +11,7 @@ category: crypto
 draft: false
 ---
 
-*A stablecoin promises one dollar, always, on demand. That promise rests on nothing except the reserve behind it. Most of the time, the reserve is visible through a monthly report produced by the issuer. The GENIUS Act, signed into law in July 2025, creates the U.S. federal framework for payment stablecoins. But an attestation is not an audit, a snapshot is not continuous proof, and this market of roughly $320 billion has quietly become a major buyer of U.S. Treasury bills. This guide explains how to read the promise.*
+*A [stablecoin](/en/glossary/stablecoin/) promises one dollar, always, on demand. That promise rests on nothing except the reserve behind it. Most of the time, the reserve is visible through a monthly report produced by the issuer. The [GENIUS Act](/en/glossary/genius/), signed into law in July 2025, creates the U.S. federal framework for payment stablecoins. But an attestation is not an audit, a snapshot is not continuous proof, and this market of roughly $320 billion has quietly become a major buyer of U.S. Treasury bills. This guide explains how to read the promise.*
 
 At its simplest, a payment stablecoin is a digital token backed one-for-one by a currency, in practice the dollar in nearly **99%** of cases according to European Central Bank data. The issuer takes in a dollar, issues a token, and holds the dollar or a cash-like asset in reserve. The token's stability depends on whether that reserve exists, is liquid, and can be redeemed at par.
 
@@ -19,7 +19,7 @@ At its simplest, a payment stablecoin is a digital token backed one-for-one by a
 
 The peg is enforced by redemption arbitrage. If a token trades at $0.99 but can be redeemed for $1, an arbitrageur can buy it and redeem it, pushing the price back toward par. The mechanism works only if redemption is credible.
 
-That is why reserve-backed stablecoins such as Tether's USDT or Circle's USDC differ radically from purely algorithmic models. Reserve-backed tokens depend on collateral. Algorithmic stablecoins tried to hold the peg through incentives and auxiliary tokens rather than equivalent reserves. TerraUSD's collapse in May 2022 showed what happens when that loop breaks.
+That is why reserve-backed stablecoins such as Tether's [USDT](/en/glossary/usdt/) or Circle's [USDC](/en/glossary/usdc/) differ radically from purely algorithmic models. Reserve-backed tokens depend on collateral. Algorithmic stablecoins tried to hold the peg through incentives and auxiliary tokens rather than equivalent reserves. TerraUSD's collapse in May 2022 showed what happens when that loop breaks.
 
 The GENIUS Act draws the lesson: payment stablecoins require full reserves, effectively closing the door to a purely algorithmic payment-stablecoin model.
 
@@ -61,7 +61,7 @@ The GENIUS Act raises the floor with monthly attestations and annual audits for 
 
 A reserve report must be read line by line. Not all “dollar” reserves are equal.
 
-Short Treasury bills are liquid and close to risk-free. Bank deposits carry counterparty risk. Repo exposure depends on collateral, tenor and counterparty. Money market funds add another layer of structure. Maturity matters because a reserve can be solvent on paper and still be hard to liquidate instantly.
+Short Treasury bills are liquid and close to risk-free. Bank deposits carry counterparty risk. [Repo](/en/glossary/repo/) exposure depends on collateral, tenor and counterparty. Money market funds add another layer of structure. Maturity matters because a reserve can be solvent on paper and still be hard to liquidate instantly.
 
 The Silicon Valley Bank episode made the point. In March 2023, Circle held roughly **$3.3 billion** of USDC reserves at SVB. When the bank failed, USDC briefly traded around **$0.87** before the peg recovered after deposits were protected. A fully reserved stablecoin can still depeg if part of the reserve is stuck at a failed counterparty.
 

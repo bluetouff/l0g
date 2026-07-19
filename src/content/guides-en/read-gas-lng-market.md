@@ -15,7 +15,7 @@ draft: false
 
 ## Three benchmarks, not one price
 
-The world gas market is organised around three references. Henry Hub is a physical delivery point in Louisiana, the benchmark for US gas and the base of most US LNG export contracts. TTF, the Title Transfer Facility, is a Dutch virtual trading point that has become Europe's reference, quoted in euros per megawatt-hour. JKM, the Japan-Korea Marker published by S&P Global Platts, is the benchmark for spot LNG delivered to Northeast Asia.
+The world gas market is organised around three references. Henry Hub is a physical delivery point in Louisiana, the benchmark for US gas and the base of most US LNG export contracts. [TTF](/en/glossary/ttf/), the Title Transfer Facility, is a Dutch virtual trading point that has become Europe's reference, quoted in euros per megawatt-hour. JKM, the Japan-Korea Marker published by S&P Global Platts, is the benchmark for spot LNG delivered to Northeast Asia.
 
 These three prices do not align, and their hierarchy has a logic. Henry Hub is structurally the cheapest, because the United States produces abundant gas it long struggled to export. TTF and JKM trade higher, because they embed the cost of bringing liquefied gas to them. According to the [LNG association](https://liquefiednaturalgas.org/market/pricing/), TTF and JKM sustain a premium of $5 to $10 per MMBtu over Henry Hub, precisely to cover liquefaction, shipping and the relative scarcity of supply in Asia and Europe.
 
@@ -83,7 +83,7 @@ This arbitrage has a political consequence. In a shock, Europe and Asia compete 
 
 Two variables cushion or amplify these shocks. Storage, first, especially European: the fill levels of gas reserves before winter determine Europe's margin against a rupture. Full storage can absorb a cut for a few weeks; low storage turns the slightest incident into a spike. Following the fill rate of European storage is therefore one of the most predictive signals for TTF.
 
-Maritime chokepoints, next. A major share of world LNG depends on a few narrow passages, first among them the Strait of Hormuz, through which almost all Qatari exports transit. We documented in [the Hormuz supply chain](/en/analysis/hormuz-supply-chain-the-bill-is-already-here/) how a disruption of this corridor, aggravated by the absence of an alternative route for gas unlike oil, transmits directly to TTF and JKM. Gas is more vulnerable than oil to these chokepoints, because it has neither a bypass pipeline of the right scale nor a spot market as fluid.
+Maritime [chokepoints](/en/glossary/chokepoint/), next. A major share of world LNG depends on a few narrow passages, first among them the Strait of Hormuz, through which almost all Qatari exports transit. We documented in [the Hormuz supply chain](/en/analysis/hormuz-supply-chain-the-bill-is-already-here/) how a disruption of this corridor, aggravated by the absence of an alternative route for gas unlike oil, transmits directly to TTF and JKM. Gas is more vulnerable than oil to these chokepoints, because it has neither a bypass pipeline of the right scale nor a spot market as fluid.
 
 ## The signals to watch
 

@@ -22,7 +22,7 @@ const updatedLabel = fmt(updated);
 const isoPub = guide.data.pubDate.toISOString();
 const isoUpd = updated.toISOString();
 const rt = readingTime(guide.body);
-const ogImage = guide.data.ogImage ?? `/og/${guide.data.sourceGuide}.png`;
+const ogImage = guide.data.ogImage ?? `/og/${guide.id}.png`;
 
 const url = new URL(`/en/guides/${guide.id}/`, Astro.site).toString();
 const frUrl = sourceGuide ? new URL(`/guides/${sourceGuide.id}/`, Astro.site).toString() : new URL('/guides/', Astro.site).toString();

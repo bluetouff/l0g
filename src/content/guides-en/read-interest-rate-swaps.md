@@ -56,7 +56,7 @@ The OIS plays a second role, more technical but fundamental: it serves as the "r
 
 ## From LIBOR to SOFR: the great shift
 
-For decades, the floating leg of swaps was indexed to [LIBOR](/glossaire/libor/), an interbank rate calculated from banks' submissions. The scandal over its manipulation, revealed after 2008, sealed its fate. For the dollar, LIBOR stopped being published at the end of June 2023, replaced by [SOFR](/glossaire/sofr/), a rate backed by actual repo transactions on Treasuries, hence far harder to rig. We detail how it is built in our [repo and SOFR guide](/en/guides/read-repo-market-sofr/).
+For decades, the floating leg of swaps was indexed to [LIBOR](/glossaire/libor/), an interbank rate calculated from banks' submissions. The scandal over its manipulation, revealed after 2008, sealed its fate. For the dollar, LIBOR stopped being published at the end of June 2023, replaced by [SOFR](/glossaire/sofr/), a rate backed by actual [repo](/en/glossary/repo/) transactions on Treasuries, hence far harder to rig. We detail how it is built in our [repo and SOFR guide](/en/guides/read-repo-market-sofr/).
 
 The shift is not just a change of name. LIBOR embedded a bank-risk premium and existed for several maturities; SOFR is an overnight, secured rate with no credit premium. The whole edifice of swaps had to be rebuilt on this new foundation, and once-common instruments, such as forward rate agreements, have virtually disappeared in the post-LIBOR world. It is one of the largest market overhauls ever undertaken, and it happened almost without a hitch.
 

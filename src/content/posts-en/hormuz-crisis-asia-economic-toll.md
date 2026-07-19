@@ -58,7 +58,7 @@ The consequences were visible. In Japan, consumer-goods companies, for lack of s
 
 ## The spectre of inflation and the powerlessness of central banks
 
-The surge in energy prices placed Asian central banks before a formidable dilemma. Brent exceeded **$100** a barrel at the peak of the crisis, up some 65% in the single month of March according to the World Bank, before easing; the institution pencils in an average of **$86** in 2026, against $69 in 2025. Nearly **80%** of the blocked crude and LNG was bound for Asia, making the region exceptionally vulnerable.
+The surge in energy prices placed Asian central banks before a formidable dilemma. [Brent](/en/glossary/brent/) exceeded **$100** a barrel at the peak of the crisis, up some 65% in the single month of March according to the World Bank, before easing; the institution pencils in an average of **$86** in 2026, against $69 in 2025. Nearly **80%** of the blocked crude and LNG was bound for Asia, making the region exceptionally vulnerable.
 
 Central banks had to navigate between the sudden inflationary shock and structural headwinds: slowing growth, pressure on currencies. According to S&P Global Ratings, the room to ease monetary policy narrowed, which forced Asia-Pacific central banks into caution. Several importing economies saw their gasoline prices rise sharply, while Thailand and Indonesia contained the increases through subsidies and price controls, at a growing budgetary cost.
 

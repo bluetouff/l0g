@@ -84,7 +84,7 @@ The right reading is therefore that of a **cyclical shock amplified by a structu
 
 The May fall does not mean China is giving up on oil. Petrochemicals, aviation and reserve-building will keep supporting purchases. But the country no longer plays the role of an automatic engine of world demand: each additional barrel depends more on refining margins, inventory levels and the rebate obtained than on GDP growth alone.
 
-For OPEC+, the consequence is uncomfortable. The world's main buyer now has enough inventory, diversification and marginal restraint to bide its time, cut its runs and protect its domestic market by limiting fuel exports. China does not yet set the world oil price alone, but it can refuse the price offered.
+For [OPEC+](/en/glossary/opep-2/), the consequence is uncomfortable. The world's main buyer now has enough inventory, diversification and marginal restraint to bide its time, cut its runs and protect its domestic market by limiting fuel exports. China does not yet set the world oil price alone, but it can refuse the price offered.
 
 This is therefore not only a story of falling volumes. It is the sign that, on the physical market, part of the bargaining power has shifted from producers to the Chinese buyer.
 

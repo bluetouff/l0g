@@ -79,7 +79,7 @@ A second exemption, **"Regulation DA"** (Digital Assets), frames the semiannual 
 
 ## The stablecoin compromise: the subject that blocked everything
 
-For months, the main sticking point was not classic tokens, but **stablecoins** and their yield. The debate pits:
+For months, the main sticking point was not classic tokens, but **[stablecoins](/en/glossary/stablecoin/)** and their yield. The debate pits:
 
 - **Traditional banks** (the American Bankers Association leading), who fear that a yield-bearing stablecoin becomes a direct competitor to interest-bearing deposit accounts
 - **The crypto industry** (Coinbase, Circle, Tether), which defended the freedom to remunerate stablecoin holders
@@ -171,7 +171,7 @@ The **spot crypto ETFs** already approved (Bitcoin, Ethereum, and more recently 
 
 ### For stablecoins
 
-The stablecoin market (USDT, USDC, RLUSD) now operates under a federal framework (combined with the already-adopted GENIUS Act). The **prohibition of passive yields** forces issuers to rethink their business models. Circle (USDC) and Ripple (RLUSD) are structurally more exposed than Tether (USDT), which operates mostly outside the United States.
+The stablecoin market ([USDT](/en/glossary/usdt/), [USDC](/en/glossary/usdc/), RLUSD) now operates under a federal framework (combined with the already-adopted [GENIUS Act](/en/glossary/genius/)). The **prohibition of passive yields** forces issuers to rethink their business models. Circle (USDC) and Ripple (RLUSD) are structurally more exposed than Tether (USDT), which operates mostly outside the United States.
 
 ### For Layer-1 and Layer-2 innovation
 

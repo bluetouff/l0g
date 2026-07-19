@@ -8,7 +8,7 @@ draft: false
 sourceArticle: "paiements-d-agents-comment-une-ia-regle-la-facture"
 sourceUpdatedDate: 2026-07-12
 ---
-*In our overview of the convergence between [crypto and artificial intelligence](/en/analysis/crypto-and-ai-convergence/), one vector stood out as the most accomplished: agent payments. An AI program that buys data or compute on its own now settles its bill in stablecoins, in a few cents, with no human intervention. This piece goes one level deeper into the machine. How does an agent pay, concretely? Which standards clash, and is it really a clash? Who controls the rails, and how secure is all of this? Because behind the smoothness of the demonstration plays out a question of power, that of knowing who will hold the tap when billions of micropayments circulate between machines.*
+*In our overview of the convergence between [crypto and artificial intelligence](/en/analysis/crypto-and-ai-convergence/), one vector stood out as the most accomplished: agent payments. An AI program that buys data or compute on its own now settles its bill in [stablecoins](/en/glossary/stablecoin/), in a few cents, with no human intervention. This piece goes one level deeper into the machine. How does an agent pay, concretely? Which standards clash, and is it really a clash? Who controls the rails, and how secure is all of this? Because behind the smoothness of the demonstration plays out a question of power, that of knowing who will hold the tap when billions of micropayments circulate between machines.*
 
 ## The problem cards cannot solve
 
@@ -48,7 +48,7 @@ When the HTTP protocol was designed, a status code, 402, was reserved for future
 <figcaption>The server demands a payment through a <strong>402</strong> code, the agent settles in <strong>USDC</strong> via a contract on the Base chain, gets a receipt and receives its resource. A machine-readable payment negotiation, settled for a handful of cents. Sources: Coinbase, Cloudflare.</figcaption>
 </figure>
 
-Coinbase provided the Base chain and the USDC rails, Cloudflare the software component that lets any interface hosted with it accept these payments. The protocol is free and with no protocol fee, in stablecoins only since its second version of December 2025. What this unlocks was unthinkable with the card: charging an AI interface per request, web content paid per article, service markets between agents, autonomous purchasing of supplies. An agent can spend a budget over thousands of micro-transactions without a human authorising each one. It is powerful, and it is precisely there that the risk sets in, more on that later.
+Coinbase provided the Base chain and the [USDC](/en/glossary/usdc/) rails, Cloudflare the software component that lets any interface hosted with it accept these payments. The protocol is free and with no protocol fee, in stablecoins only since its second version of December 2025. What this unlocks was unthinkable with the card: charging an AI interface per request, web content paid per article, service markets between agents, autonomous purchasing of supplies. An agent can spend a budget over thousands of micro-transactions without a human authorising each one. It is powerful, and it is precisely there that the risk sets in, more on that later.
 
 ## Not a standards war, a stack
 

@@ -49,7 +49,7 @@ The third trap is ignoring the dollar when discussing global M2. A weaker dollar
 
 ## How to use it without fooling yourself
 
-M2 remains useful if read as a conditional monetary climate gauge. Look at year-over-year growth rather than the raw level. Cross-check velocity and composition to see whether the move reflects risk appetite or a move into cash-like safety. Then compare it with other liquidity measures: reserves, the Treasury General Account, reverse repo, and money-market funding stress.
+M2 remains useful if read as a conditional monetary climate gauge. Look at year-over-year growth rather than the raw level. Cross-check velocity and composition to see whether the move reflects risk appetite or a move into cash-like safety. Then compare it with other liquidity measures: reserves, the Treasury General Account, reverse [repo](/en/glossary/repo/), and money-market funding stress.
 
 M2 is one piece of the broader plumbing described in the guides on the [Fed balance sheet](/en/guides/read-h41-fed-balance-sheet/) and [net liquidity](/en/guides/read-net-liquidity-tga-rrp/). It is a good weather indicator, not a crystal ball.
 

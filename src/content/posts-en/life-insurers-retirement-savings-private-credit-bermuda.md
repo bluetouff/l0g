@@ -11,7 +11,7 @@ sourceUpdatedDate: 2026-07-16
 
 An American retiree who buys a lifetime annuity believes they are entrusting their savings to one of the most prudent trades in finance. They are right about the history, less surely about the present. A growing share of these annuities is now backed by [private credit](/en/guides/read-private-credit-risk/) loans, housed in Bermuda reinsurers controlled by the asset managers themselves, and rated by specialised agencies whose grades are not public. Each link in this chain has its own logic. It is their stacking that manufactures something new: a life-insurance balance sheet whose contents neither the saver, nor at times the home regulator, can quite see any more.
 
-This article completes our private credit series, after [the defaults and the gating](/en/analysis/private-credit-record-default-liquidity-closing/), [the redemptions facing the mega-IPOs](/en/analysis/private-credit-redemptions-mega-ipos/) and [the migration of credit risk out of regulatory sight](/en/analysis/the-migration-of-credit-risk/). The link treated here is the largest of all: the one that connects retirement savings to shadow credit.
+This article completes our [private credit](/en/glossary/credit-prive/) series, after [the defaults and the gating](/en/analysis/private-credit-record-default-liquidity-closing/), [the redemptions facing the mega-IPOs](/en/analysis/private-credit-redemptions-mega-ipos/) and [the migration of credit risk out of regulatory sight](/en/analysis/the-migration-of-credit-risk/). The link treated here is the largest of all: the one that connects retirement savings to shadow credit.
 
 ## A third of the balance sheet in private assets
 

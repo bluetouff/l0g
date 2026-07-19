@@ -63,7 +63,7 @@ The ECB signalled a probable rate hike (the first in three years) at its June 20
 ### The geopolitical energy shock (main 2026 driver)
 - Start of the conflict: late February / early March 2026.
 - Closure / major disruptions of the **Strait of Hormuz** (20% of global oil trade).
-- Brent price: from ~$72/bbl in late February to a peak near **$120/bbl**, then ebbing toward **$92-98/bbl** in early June (extreme volatility depending on ceasefire hopes).
+- [Brent](/en/glossary/brent/) price: from ~$72/bbl in late February to a peak near **$120/bbl**, then ebbing toward **$92-98/bbl** in early June (extreme volatility depending on ceasefire hopes).
 - Direct impact: sharp rise in fuel, transport and energy-input prices.
 
 The **IMF (World Economic Outlook April 2026)** incorporates this shock in its baseline scenario (limited conflict +19% of energy prices in 2026):
@@ -121,7 +121,7 @@ Downside risks: rapid resolution of the conflict + sharp oil fall + marked deman
 - **Bond markets**: US 10-year and Bund yields under upward pressure (possible steepening if growth resists).
 - **Equities**: defensive sectors (energy, utilities, consumer staples) favoured; growth and tech under pressure if rates rise.
 - **Currencies**: dollar supported by the expected rate differential.
-- **Crypto / stablecoins**: indirect correlation via macro risk and liquidity (risk of negative correlation in case of tightening).
+- **Crypto / [stablecoins](/en/glossary/stablecoin/)**: indirect correlation via macro risk and liquidity (risk of negative correlation in case of tightening).
 
 ## Conclusion: vigilance required through 2027
 

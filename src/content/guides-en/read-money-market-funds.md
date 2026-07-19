@@ -15,7 +15,7 @@ draft: false
 
 ## A money market fund, in brief
 
-A [money market fund](/glossaire/mmf/) is a pooled vehicle that invests only in very short-term, high-quality instruments: Treasury bills, repo, agency debt, commercial paper from solid issuers. Its promise is three words: safety, liquidity, yield. You park cash there as in an account, you can withdraw it any time, and it earns interest close to short-term market rates. It is the waiting vehicle par excellence, where corporate treasurers, managers and households park their cash between two uses.
+A [money market fund](/glossaire/mmf/) is a pooled vehicle that invests only in very short-term, high-quality instruments: Treasury bills, [repo](/en/glossary/repo/), agency debt, commercial paper from solid issuers. Its promise is three words: safety, liquidity, yield. You park cash there as in an account, you can withdraw it any time, and it earns interest close to short-term market rates. It is the waiting vehicle par excellence, where corporate treasurers, managers and households park their cash between two uses.
 
 This convenience rests on a useful fiction: the stable one-dollar net asset value. Where an equity fund's price moves constantly, a money fund strives to keep each share at exactly one dollar, so the saver feels they hold cash, not a risky investment. The whole regulatory edifice aims to keep that fiction workable. And all the danger arises the day it no longer is.
 
@@ -51,7 +51,7 @@ The distinction between government and [prime](/glossaire/fonds-prime/) matters 
 
 For a fund to promise a stable value, the SEC imposes a precise corset, [Rule 2a-7](/glossaire/2a-7/). It limits what it can hold and how. Credit quality must be high. The portfolio's weighted average maturity cannot exceed sixty days, bounding interest-rate risk. Above all, the fund must keep buffers of immediately mobilizable assets: since the 2023 reform, at least 25% in daily liquid assets and 50% in weekly ones. These buffers are its first line of defence against redemptions.
 
-The rule also distinguishes two types of valuation. Government and retail funds keep a stable one-dollar NAV, rounded. Institutional prime funds, since the 2016 reform, must show a floating NAV that varies at the fourth decimal with the portfolio's real market value. The idea was to wean large investors off the illusion of the fixed dollar, and to make panic withdrawals less mechanical. The result was mixed, as we will see.
+The rule also distinguishes two types of valuation. Government and retail funds keep a stable one-dollar [NAV](/en/glossary/nav/), rounded. Institutional prime funds, since the 2016 reform, must show a floating NAV that varies at the fourth decimal with the portfolio's real market value. The idea was to wean large investors off the illusion of the fixed dollar, and to make panic withdrawals less mechanical. The result was mixed, as we will see.
 
 ## Breaking the buck: the dread
 
@@ -122,7 +122,7 @@ Beyond their internal mechanics, money funds matter because they are huge and co
 <figcaption>At <strong>$8 trillion</strong>, money funds are a leading buyer of short government debt, just as the Treasury issues record amounts. The draining of the <strong>RRP</strong> facility pushed them toward T-bills and market repo. Sources: ICI, Fed.</figcaption>
 </figure>
 
-Their behaviour carries two signals. First, the Fed's reverse repo facility, the [RRP](/glossaire/rrp/), where they parked spare cash, went from over $2.5 trillion in 2023 to near zero in 2025: that money went to seek yield elsewhere, notably in T-bills, absorbing part of the record issuance we described in our article on [Treasury auctions](/posts/adjudications-record-referendum-dette-americaine/). Second, the size of money funds is a barometer of risk aversion: when it swells fast, as in 2026, it often means investors prefer the paid safety of cash funds to the uncertainty of risk assets. Finally, a cousin was born of the same logic, payment stablecoins, whose short Treasury-bill reserves make them money funds that dare not speak their name, as our [stablecoins guide](/en/guides/read-stablecoins-genius-act/) shows.
+Their behaviour carries two signals. First, the Fed's reverse repo facility, the [RRP](/glossaire/rrp/), where they parked spare cash, went from over $2.5 trillion in 2023 to near zero in 2025: that money went to seek yield elsewhere, notably in T-bills, absorbing part of the record issuance we described in our article on [Treasury auctions](/posts/adjudications-record-referendum-dette-americaine/). Second, the size of money funds is a barometer of risk aversion: when it swells fast, as in 2026, it often means investors prefer the paid safety of cash funds to the uncertainty of risk assets. Finally, a cousin was born of the same logic, payment [stablecoins](/en/glossary/stablecoin/), whose short Treasury-bill reserves make them money funds that dare not speak their name, as our [stablecoins guide](/en/guides/read-stablecoins-genius-act/) shows.
 
 ## Reading money market funds in practice
 
