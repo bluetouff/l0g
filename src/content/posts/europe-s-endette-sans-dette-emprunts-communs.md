@@ -1,8 +1,8 @@
 ---
 title: "L'Europe s'endette sans dette : la pile d'emprunts communs qui n'apparaît dans aucun ratio"
 description: "NGEU, prêt Ukraine, SAFE : l'Union européenne est devenue l'un des plus gros émetteurs du continent, un millier de milliards d'euros d'encours attendus fin 2026, sans qu'un seul euro ne figure dans la dette d'un État membre. Radiographie d'une dette fédérale de fait, construite programme temporaire par programme temporaire, dont le remboursement commence en 2028 et dont personne n'a encore trouvé le payeur."
-pubDate: 2026-07-19T16:00:00+02:00
-updatedDate: 2026-07-19T16:00:00+02:00
+pubDate: 2026-07-19T18:14:00+02:00
+updatedDate: 2026-07-19T18:14:00+02:00
 tags: ["europe", "dette", "obligataire", "macro"]
 draft: false
 ---
