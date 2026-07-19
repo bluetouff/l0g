@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-19",
+  "producers": {
+    "us": {
+      "repository": "https://github.com/bluetouff/macro_dashboard",
+      "revision": "012d7ab63e894fbccd83a87382794f3f64499e9a",
+      "files": [
+        {
+          "path": "/opt/macro_dashboard/app_server.py",
+          "sha256": "92af6c9a165b6a87dd4091752458df8ef62f65da5ec55cd22724293006a27a45"
+        },
+        {
+          "path": "/opt/macro_dashboard/catalog.py",
+          "sha256": "4f8b13694c060010c63c3a508da2b5e12ef1569de50c75c63fcdd71c8b64aab3"
+        },
+        {
+          "path": "/opt/macro_dashboard/data.py",
+          "sha256": "1c4c2456b0751b74e426a60ce270ecb3868c0ad8dfd7a1463e142d367fd6323c"
+        }
+      ]
+    },
+    "eu": {
+      "repository": "https://github.com/bluetouff/euro-macro-dashboard",
+      "revision": "aa418dd338bb8efb668a76389cb86bad7ff27d59",
+      "files": [
+        {
+          "path": "/opt/euromacro/deploy/refresh.sh",
+          "sha256": "a48c2c1ee60d27f875899bdedb89f7af5aebe6883ff434b5126997926bd7ff5d"
+        }
+      ]
+    },
+    "yen": {
+      "repository": "https://github.com/bluetouff/carry-yen-monitor",
+      "revision": "6e4260cd635c11104d1c87b14e8d5ccb8417cd05",
+      "files": [
+        {
+          "path": "/opt/yct/build_snapshot.py",
+          "sha256": "bd94ac4decfbf886a1c05fe8b478321329924dfbafc3bb7dfaadc1f9b0b600cf"
+        }
+      ]
+    },
+    "energie": {
+      "repository": "https://github.com/bluetouff/energie-stress-monitor",
+      "revision": "795f950add82a9e08db39402adac9e514a223e23",
+      "files": [
+        {
+          "path": "/opt/energie/builder.py",
+          "sha256": "c66af5fa611d38ccef08e391ef13122f9911e3b35d82ae2cbeb00bda00411f9b"
+        }
+      ]
+    },
+    "debt": {
+      "repository": "https://github.com/bluetouff/debt-risk-radar",
+      "revision": "6eb31855a8922025439826e01c412c952b327750",
+      "files": [
+        {
+          "path": "/opt/debt-risk-radar/latest_export.py",
+          "sha256": "ee78b1580aa063e48dbc78a757edb8b27be6c657478406c08b7d28908a3881c0"
+        },
+        {
+          "path": "/opt/debt-risk-radar/catalog.py",
+          "sha256": "a34b3aed78aab61415a93144ba06c60e1697aa4fb4437264567e7483d4caa324"
+        },
+        {
+          "path": "/opt/debt-risk-radar/data.py",
+          "sha256": "36fbfeb0fd2e602af59dba7a1b2e3e54a456ba33ef091b60b36abc228c4e7dfc"
+        }
+      ]
+    }
+  }
+}

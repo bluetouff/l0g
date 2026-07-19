@@ -15,7 +15,7 @@
     "risk:update": "node scripts/update-risk-snapshot.mjs",
     "risk:history:update": "node scripts/update-risk-history.mjs",
     "test:risk-aggregator": "python3 -m unittest ops/risk-aggregator/test_risk_aggregator.py",
-    "test:risk-producers": "node --test scripts/risk-producer-audit.test.mjs",
+    "test:risk-producers": "node --test scripts/risk-producer-audit.test.mjs scripts/risk-deployment.test.mjs",
     "test:agent-surface": "node scripts/validate-agent-surface.mjs",
     "test:agent-bench": "node mcp-server/agent-bench.mjs",
     "test:risk-snapshot": "node scripts/validate-risk-snapshot.mjs",

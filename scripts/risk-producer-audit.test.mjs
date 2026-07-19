@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { auditRiskFlow } from './risk-producer-audit.mjs';
+import { auditRiskFlow, githubAnnotation, renderRiskAuditMarkdown } from './risk-producer-audit.mjs';
 
 const now = '2026-07-18T10:00:00Z';
 const generated = { eu: '2026-07-18T07:49:00Z', yen: '2026-07-18T04:17:33Z', energie: '2026-07-18T09:01:06Z', debt: '2026-07-18T09:57:57Z' };
@@ -44,4 +44,14 @@ test('un ancien score conservé par l’agrégateur fait échouer le moniteur', 
   const report = auditRiskFlow(input, now);
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.includes('repli agrégateur actif')));
+});
+
+test('un échec explique sa cause dans le résumé GitHub et dans une annotation sûre', () => {
+  const input = fixture();
+  input.aggregate.version = '1-legacy';
+  const report = auditRiskFlow(input, now);
+  const markdown = renderRiskAuditMarkdown(report);
+  assert.match(markdown, /\| Résultat \| ÉCHEC \|/);
+  assert.match(markdown, /agrégateur: contrat v2 absent/);
+  assert.equal(githubAnnotation('error', 'ligne 1\n100%'), '::error::ligne 1%0A100%25');
 });

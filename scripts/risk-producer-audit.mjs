@@ -98,3 +98,42 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     },
   };
 }
+
+function markdown(value) {
+  return String(value ?? 'n/d').replaceAll('|', '\\|').replaceAll('\n', ' ');
+}
+
+export function renderRiskAuditMarkdown(report) {
+  const summary = report.summary || {};
+  const rows = [
+    ['Résultat', report.ok ? 'OK' : 'ÉCHEC'],
+    ['Contrôlé à', report.checkedAt || 'n/d'],
+    ['Statut agrégé', summary.aggregateStatus || 'n/d'],
+    ['Génération agrégée', summary.aggregateGenerated || 'n/d'],
+    ['Dernière ligne brute', summary.rawHistoryLast || 'n/d'],
+    ['Observations fusionnées', summary.canonicalObservations ?? 0],
+  ];
+  const lines = [
+    '## Contrôle des producteurs de risque',
+    '',
+    '| Champ | Valeur |',
+    '| --- | --- |',
+    ...rows.map(([label, value]) => `| ${markdown(label)} | ${markdown(value)} |`),
+  ];
+  if (report.errors?.length) {
+    lines.push('', '### Erreurs', '', ...report.errors.map((error) => `- ${markdown(error)}`));
+  }
+  if (report.warnings?.length) {
+    lines.push('', '### Avertissements', '', ...report.warnings.map((warning) => `- ${markdown(warning)}`));
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
+export function githubAnnotation(level, message) {
+  const escaped = String(message)
+    .replaceAll('%', '%25')
+    .replaceAll('\r', '%0D')
+    .replaceAll('\n', '%0A');
+  return `::${level}::${escaped}`;
+}

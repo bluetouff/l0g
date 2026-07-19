@@ -22,6 +22,6 @@ jobs:
         with:
           node-version: 22
       - name: Test the monitoring contract
-        run: node --test scripts/risk-producer-audit.test.mjs
+        run: node --test scripts/risk-producer-audit.test.mjs scripts/risk-deployment.test.mjs
       - name: Probe producers, aggregator and both histories
         run: node scripts/check-risk-producers.mjs

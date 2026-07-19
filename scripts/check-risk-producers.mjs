@@ -1,4 +1,5 @@
-import { auditRiskFlow } from './risk-producer-audit.mjs';
+import { appendFile } from 'node:fs/promises';
+import { auditRiskFlow, githubAnnotation, renderRiskAuditMarkdown } from './risk-producer-audit.mjs';
 
 const URLS = {
   aggregate: process.env.L0G_RISK_URL || 'https://l0g.fr/risk.json',
@@ -19,6 +20,15 @@ async function get(url, type = 'json') {
   return type === 'json' ? response.json() : response.text();
 }
 
+async function publish(report) {
+  console.log(JSON.stringify(report, null, 2));
+  for (const error of report.errors || []) console.error(githubAnnotation('error', error));
+  for (const warning of report.warnings || []) console.error(githubAnnotation('warning', warning));
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    await appendFile(process.env.GITHUB_STEP_SUMMARY, renderRiskAuditMarkdown(report), 'utf8');
+  }
+}
+
 try {
   const [aggregate, eu, yen, energy, debt, rawText, canonicalHistory] = await Promise.all([
     get(URLS.aggregate), get(URLS.eu), get(URLS.yen), get(URLS.energy), get(URLS.debt),
@@ -27,9 +37,16 @@ try {
   const lines = rawText.split('\n').filter(Boolean);
   const rawLast = lines.length ? JSON.parse(lines.at(-1)) : null;
   const report = auditRiskFlow({ aggregate, eu, yen, energy, debt, rawLast, canonicalHistory });
-  console.log(JSON.stringify(report, null, 2));
+  await publish(report);
   if (!report.ok) process.exitCode = 1;
 } catch (error) {
-  console.error(JSON.stringify({ ok: false, error: String(error?.message || error) }, null, 2));
+  const message = String(error?.message || error);
+  await publish({
+    checkedAt: new Date().toISOString(),
+    ok: false,
+    errors: [`collecte impossible: ${message}`],
+    warnings: [],
+    summary: {},
+  });
   process.exitCode = 1;
 }

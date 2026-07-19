@@ -37,36 +37,47 @@ temps réel.
 python3 -m unittest ops/risk-aggregator/test_risk_aggregator.py
 ```
 
+## Correspondance entre GitHub et le serveur
+
+`producer-deployment.json` relie chaque producteur à une révision Git complète
+et aux SHA-256 des fichiers réellement exécutés. Cette déclaration n'est pas
+prise sur confiance : `verify-producer-deployment.py` relit les fichiers sous
+`/opt` et bloque l'installation au premier écart. Une mise à jour de producteur
+doit donc modifier ensemble sa révision et les empreintes de ses points d'entrée
+et dépendances locales.
+
 ## Installation serveur
 
-Prévisualiser d'abord le diff et sauvegarder les fichiers actifs. Les quatre
-scripts sont installés dans un répertoire en lecture seule ; seule la donnée
-publique reste inscriptible par `l0grisk`.
+Le script d'installation effectue une migration atomique et réversible :
+
+1. il vérifie les cinq producteurs avant d'annoncer leurs révisions ;
+2. il crée une release immuable dans `/usr/local/lib/l0g-risk-<revision>` ;
+3. il remplace le lien `/usr/local/lib/l0g-risk` atomiquement ;
+4. il réinitialise `ExecStart` et `ExecStartPost`, y compris si un ancien
+   `override.conf` ajoute encore les scripts de `/usr/local/bin` ;
+5. il sauvegarde unités, drop-ins et données, puis restaure l'ensemble si
+   systemd ou le contrat de sortie échoue.
+
+Depuis un checkout propre correspondant au code à activer :
 
 ```sh
-sudo install -d -m 0755 /usr/local/lib/l0g-risk
-sudo install -m 0755 ops/risk-aggregator/l0g-risk.py /usr/local/lib/l0g-risk/
-sudo install -m 0755 ops/risk-aggregator/api-build.py /usr/local/lib/l0g-risk/
-sudo install -m 0755 ops/risk-aggregator/risk_history.py /usr/local/lib/l0g-risk/
-sudo install -m 0755 ops/risk-aggregator/backfill_history.py /usr/local/lib/l0g-risk/
-test -z "$(git status --porcelain -- ops/risk-aggregator)"
-printf 'L0G_RISK_REVISION=%s\n' "$(git rev-parse HEAD)" | sudo tee /etc/l0g-risk.env >/dev/null
-# Ajouter dans /etc/l0g-risk.env les révisions réellement déployées :
-# L0G_US_REVISION=... L0G_EU_REVISION=... L0G_YEN_REVISION=...
-# L0G_ENERGIE_REVISION=... L0G_DEBT_REVISION=...
-sudo install -m 0644 ops/risk-aggregator/l0g-risk.service /etc/systemd/system/
-sudo install -m 0644 ops/risk-aggregator/l0g-risk.timer /etc/systemd/system/
-sudo systemd-analyze verify /etc/systemd/system/l0g-risk.service /etc/systemd/system/l0g-risk.timer
-sudo systemctl daemon-reload
-sudo systemctl restart l0g-risk.service
-sudo systemctl enable --now l0g-risk.timer
+git status --short
+revision=$(git rev-parse HEAD)
+sudo ops/risk-aggregator/verify-producer-deployment.py \
+  ops/risk-aggregator/producer-deployment.json
+sudo ops/risk-aggregator/install-server.sh "$revision"
 ```
+
+Le contrôle préliminaire échoue volontairement si un producteur n'a pas encore
+été mis à la révision inscrite dans le manifeste. Il faut alors déployer ce
+producteur depuis son propre dépôt, le relancer et recommencer la vérification.
 
 Vérifications obligatoires après activation :
 
 ```sh
 systemctl status l0g-risk.service --no-pager
 journalctl -u l0g-risk.service -n 50 --no-pager
+systemctl cat l0g-risk.service --no-pager
 curl -fsS https://l0g.fr/risk.json | jq '{generated,status,summary,indices}'
 curl -fsS https://l0g.fr/api/v1/history.ndjson | tail -n 1 | jq .
 ```
