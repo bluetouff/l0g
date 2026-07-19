@@ -58,7 +58,7 @@ PYTHONPYCACHEPREFIX="${WORK}/pycache-energy" \
 install -o root -g energie -m 0750 "$ENERGY_STAGE" /opt/energie/builder.py
 if ! systemctl restart energie-snapshot.service || \
    [ "$(systemctl show energie-snapshot.service -p Result --value)" != "success" ] || \
-   ! python3 -c 'import json; d=json.load(open("/opt/energie/web/snapshot.json")); assert d.get("generated"); assert all((d.get("series") or {}).get(k, {}).get("date") for k in ("brent", "wti"))'; then
+   ! python3 -c 'import json; d=json.load(open("/var/www/html/energie/snapshot.json")); assert d.get("generated"); assert all((d.get("series") or {}).get(k, {}).get("date") for k in ("brent", "wti"))'; then
   echo "Échec énergie : restauration" >&2
   cp -a "${BACKUP}/energie/builder.py" /opt/energie/builder.py
   systemctl restart energie-snapshot.service

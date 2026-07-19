@@ -44,4 +44,6 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(installer.indexOf('verify-producer-deployment.py') < installer.indexOf('systemctl restart l0g-risk.service'));
   assert.ok(activator.indexOf('check_stage debt') < activator.indexOf('systemctl restart debt-risk-radar-export.service'));
   assert.ok(activator.indexOf('check_stage energie') < activator.indexOf('systemctl restart energie-snapshot.service'));
+  assert.ok(activator.includes('/var/www/html/energie/snapshot.json'));
+  assert.ok(!activator.includes('/opt/energie/web/snapshot.json'));
 });
