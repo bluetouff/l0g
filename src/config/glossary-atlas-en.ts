@@ -106,6 +106,69 @@ const cryptoSources: GlossaryGraphLink[] = [
 
 const cryptoShared = { datasets: cryptoDatasets, signals: cryptoSignals, sources: cryptoSources };
 
+const energySection = { sectionTitle: 'Energy & geopolitics', accent: 'var(--color-amber)' };
+
+const yenDatasets: GlossaryGraphLink[] = [
+  { label: 'risk.json', href: '/api/v1/risk.json', detail: 'Public snapshot of the risk signals.', kind: 'dataset' },
+  { label: 'signals/history.json', href: '/api/v1/signals/history.json', detail: 'Point-in-time history of the signals.', kind: 'dataset' },
+  { label: 'signals/history.csv', href: '/api/v1/signals/history.csv', detail: 'The same history as CSV.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: '1, 7 and 30-day diff of signals, sources and models.', kind: 'dataset' },
+];
+
+const yenSignals: GlossaryGraphLink[] = [
+  { label: 'Yen Carry Monitor', href: '/en/methodology/', detail: 'Methodology of the yen carry risk signal.', kind: 'methodology' },
+  { label: 'Risk Diff', href: '/en/risk-diff/', detail: 'Recent change in risk and source freshness.', kind: 'signal' },
+];
+
+const yenArticle: GlossaryGraphLink = { label: 'Dollar-yen: the unwind risk', href: '/en/analysis/dollar-yen-intervention-carry-unwind/', detail: 'USD/JPY, the BoJ, intervention and carry liquidation.', kind: 'article' };
+
+const yenGuides: GlossaryGraphLink[] = [
+  { label: 'Reading the carry trade', href: '/en/guides/read-the-carry-trade/', detail: 'Carry mechanics, leverage and unwind risk.', kind: 'guide' },
+  { label: 'Reading the CFTC COT report', href: '/en/guides/read-cftc-cot-report/', detail: 'Futures positioning, trader categories and limits.', kind: 'guide' },
+  { label: 'Reading the dot plot and SEP', href: '/en/guides/read-dot-plot-sep/', detail: 'Dollar rate path and yield differential.', kind: 'guide' },
+];
+
+const yenSources: GlossaryGraphLink[] = [
+  { label: 'Bank of Japan & Ministry of Finance Japan', href: 'https://www.boj.or.jp/en/', detail: 'Japanese monetary policy, BoJ statistics and FX interventions.', kind: 'source' },
+  { label: 'Commodity Futures Trading Commission', href: 'https://www.cftc.gov/', detail: 'Yen and futures positioning through the COT.', kind: 'source' },
+  { label: 'Federal Reserve & FRED', href: 'https://fred.stlouisfed.org/', detail: 'Dollar rates, fed funds and liquidity conditions.', kind: 'source' },
+];
+
+const yenShared = { datasets: yenDatasets, signals: yenSignals, sources: yenSources };
+
+const energyDatasets: GlossaryGraphLink[] = [
+  { label: 'risk.json', href: '/api/v1/risk.json', detail: 'Public snapshot of the risk signals.', kind: 'dataset' },
+  { label: 'signals/history.json', href: '/api/v1/signals/history.json', detail: 'Point-in-time history of the signals.', kind: 'dataset' },
+  { label: 'risk-diff.json', href: '/api/v1/risk-diff.json', detail: '1, 7 and 30-day diff of signals, sources and models.', kind: 'dataset' },
+  { label: 'evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'Claims, evidence and their sources as a graph.', kind: 'dataset' },
+];
+
+const energySignals: GlossaryGraphLink[] = [
+  { label: 'Energy Monitor', href: '/en/methodology/', detail: 'Methodology of the energy stress signal.', kind: 'methodology' },
+  { label: 'Risk Diff', href: '/en/risk-diff/', detail: 'Recent change in risk and source freshness.', kind: 'signal' },
+];
+
+const energySources: GlossaryGraphLink[] = [
+  { label: 'U.S. Energy Information Administration', href: 'https://www.eia.gov/', detail: 'Oil, gas, inventories, production and the Short-Term Energy Outlook.', kind: 'source' },
+  { label: 'Commodity Futures Trading Commission', href: 'https://www.cftc.gov/', detail: 'Futures positioning through the Commitments of Traders.', kind: 'source' },
+  { label: 'World Bank Open Data & OECD Data', href: 'https://data.worldbank.org/', detail: 'Macro comparables and commodity prices.', kind: 'source' },
+];
+
+const energyShared = { datasets: energyDatasets, signals: energySignals, sources: energySources };
+
+const oilArticles: GlossaryGraphLink[] = [
+  { label: 'Oil: the Chinese inventory capping prices', href: '/en/analysis/oil-the-chinese-inventory-capping-prices/', detail: 'Reserves, Brent prices and Chinese buying behaviour.', kind: 'article' },
+  { label: 'China crude imports fall', href: '/en/analysis/china-crude-imports-fall-market-power/', detail: 'Physical flows, margins and market power.', kind: 'article' },
+  { label: 'Hormuz reopens', href: '/en/analysis/hormuz-reopens-three-oil-scenarios/', detail: 'Normalisation, price scenarios and geopolitical premia.', kind: 'article' },
+  { label: 'The Hormuz crisis in Asia', href: '/en/analysis/hormuz-crisis-asia-economic-toll/', detail: 'Energy bill, LNG and Asian exposure.', kind: 'article' },
+  { label: 'Supply chains and Hormuz', href: '/en/analysis/hormuz-supply-chain-the-bill-is-already-here/', detail: 'Freight, delays and energy costs passed into goods.', kind: 'article' },
+];
+
+const oilGuide: GlossaryGraphLink = { label: 'Reading the oil market', href: '/en/guides/read-oil-market/', detail: 'Prices, curve, inventories, OPEC and physical data.', kind: 'guide' };
+
+const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden bottlenecks', href: '/en/analysis/uranium-market-deficit-ai-bottlenecks/', detail: 'Mining, conversion, enrichment, HALEU and AI demand.', kind: 'article' };
+const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
+
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
     slug: 'prime-de-terme',
@@ -564,6 +627,292 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       ],
       ...cryptoShared,
       related: ['stablecoin', 'ppsi', 'usdt', 'usdc'],
+    },
+  },
+  {
+    slug: 'dominance-fiscale',
+    sigle: 'Fiscal dominance',
+    nom: 'When debt constrains the central bank',
+    def: 'The situation in which the weight of public debt constrains monetary policy: the central bank hesitates to raise or hold rates high for fear of making the debt unsustainable, letting inflation erode its value instead. The opposite of a central bank free in its choices.',
+    ...macroSection,
+    atlas: {
+      intuition: "Fiscal dominance appears when the political and budgetary cost of the debt curtails the central bank's freedom.",
+      whyNow: 'The signal grows more relevant when the interest burden, the primary deficit and refinancing needs rise at the same time.',
+      articles: [usDebtArticles[0]],
+      guides: [usDebtGuides[3], usDebtGuides[0]],
+      ...shared,
+      related: ['prime-de-terme', 'cbo', 'courbe-des-taux', 'adjudication'],
+    },
+  },
+  {
+    slug: 'boj',
+    sigle: 'BoJ',
+    nom: 'Bank of Japan',
+    def: "Japan's central bank. It sets Japanese monetary policy, steers asset purchases or sales, and can act as operational agent in currency interventions decided by the Ministry of Finance.",
+    ...macroSection,
+    atlas: {
+      intuition: 'The BoJ sets the starting price of the yen carry and shapes global tolerance for cheap funding.',
+      whyNow: 'A change of tone at the BoJ can turn a profitable carry position into currency and liquidity risk.',
+      articles: [yenArticle],
+      guides: yenGuides,
+      ...yenShared,
+      related: ['yen-carry', 'mof', 'cot', 'move'],
+    },
+  },
+  {
+    slug: 'mof',
+    sigle: 'MoF',
+    nom: 'Ministry of Finance Japan',
+    def: "Japan's finance ministry. The authority responsible for exchange-rate policy and decisions to intervene on the yen.",
+    ...macroSection,
+    atlas: {
+      intuition: 'The MoF decides Japanese currency interventions. It does not always change the regime, but it can change the pace of the unwind.',
+      whyNow: 'When USD/JPY tests politically sensitive zones, intervention risk becomes a market variable.',
+      articles: [yenArticle],
+      guides: yenGuides,
+      ...yenShared,
+      related: ['yen-carry', 'boj', 'cot'],
+    },
+  },
+  {
+    slug: 'yen-carry',
+    sigle: 'Yen carry',
+    nom: 'Yen carry trade',
+    def: 'The strategy of borrowing in yen, a historically low-yielding currency, to buy assets or currencies offering a higher return. It works as long as the yen stays weak and volatility stays contained.',
+    guide: '/en/guides/read-the-carry-trade/',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'The yen carry funds risky assets with a low-cost currency. The risk is not the level of the yen but the speed of the unwind.',
+      formula: 'gross carry ≈ yield of asset bought - yen funding cost - hedging cost',
+      whyNow: 'A more restrictive BoJ, intervention threats and FX volatility can force positions to close together.',
+      articles: [
+        yenArticle,
+        { label: 'Warsh and the Fed balance sheet', href: '/en/analysis/warsh-and-the-fed-balance-sheet/', detail: 'Dollar rates, liquidity and global carry conditions.', kind: 'article' },
+      ],
+      guides: yenGuides,
+      ...yenShared,
+      related: ['boj', 'mof', 'cot', 'move'],
+    },
+  },
+  {
+    slug: 'wti',
+    sigle: 'WTI',
+    nom: 'West Texas Intermediate',
+    def: 'The US benchmark crude, quoted in New York. With Brent, one of the two global reference prices.',
+    guide: '/en/guides/read-oil-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'WTI reads the American crude market, highly sensitive to inventories, refining and domestic logistics constraints.',
+      formula: 'oil stress = spot price + curve structure + inventories + positioning',
+      whyNow: 'After a geopolitical shock, the gap between WTI, Brent and inventories says whether the strain is local, global or mostly financial.',
+      articles: [oilArticles[0], oilArticles[1], oilArticles[2]],
+      guides: [oilGuide],
+      ...energyShared,
+      related: ['brent', 'chokepoint', 'ttf', 'opep', 'opep-2', 'spr', 'cot'],
+    },
+  },
+  {
+    slug: 'brent',
+    sigle: 'Brent',
+    nom: 'Brent Crude',
+    def: 'The global benchmark crude, sourced from the North Sea and quoted in London. With WTI, one of the two reference prices of the oil market.',
+    guide: '/en/guides/read-oil-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'Brent is the marginal world price of crude. It reacts more directly to shipping-route shocks, OPEC+ and Asian demand.',
+      formula: 'geopolitical premium ≈ stressed Brent - price consistent with inventories and demand',
+      whyNow: 'The post-Hormuz normalisation and Chinese reserves make Brent useful for separating physical scarcity from risk premium.',
+      articles: oilArticles,
+      guides: [oilGuide],
+      ...energyShared,
+      related: ['wti', 'chokepoint', 'ttf', 'opep', 'opep-2', 'spr', 'cot'],
+    },
+  },
+  {
+    slug: 'chokepoint',
+    sigle: 'Chokepoint',
+    nom: 'Strategic maritime passage',
+    def: 'A narrow maritime passage through which a major share of a global flow transits: Hormuz (oil, LNG), Malacca, Suez, Panama, Bab el-Mandeb. Its concentration creates great efficiency in normal times and acute vulnerability when blocked, for lack of adequate alternatives.',
+    ...energySection,
+    atlas: {
+      intuition: 'A chokepoint concentrates a global flow in a passage that is hard to replace.',
+      formula: 'fragility = share of world flow × limited bypass capacity',
+      whyNow: 'Hormuz showed that a local shock can become inflation, freight, marine insurance and political risk within days.',
+      articles: [oilArticles[2], oilArticles[3], oilArticles[4]],
+      guides: [oilGuide],
+      ...energyShared,
+      related: ['brent', 'wti', 'ttf', 'spr'],
+    },
+  },
+  {
+    slug: 'ttf',
+    sigle: 'TTF',
+    nom: 'Title Transfer Facility',
+    def: "The Dutch wholesale natural gas market, Europe's reference gas price, quoted in euros per megawatt-hour. LNG often sets the marginal price there, which makes the TTF highly sensitive to supply disruptions, as during the 2026 Hormuz crisis.",
+    guide: '/en/guides/read-gas-lng-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'The TTF captures the marginal price of European gas, often set by the LNG available.',
+      whyNow: 'A shock to shipping routes or Asian LNG can reach Europe through the marginal price even without a direct physical cut.',
+      articles: [oilArticles[3], oilArticles[4]],
+      guides: [
+        { label: 'Reading the gas and LNG market', href: '/en/guides/read-gas-lng-market/', detail: 'TTF, Henry Hub, JKM and the LNG chain.', kind: 'guide' },
+        oilGuide,
+      ],
+      ...energyShared,
+      related: ['chokepoint', 'brent', 'wti'],
+    },
+  },
+  {
+    slug: 'u3o8',
+    sigle: 'U3O8',
+    nom: 'Triuranium octoxide (yellowcake)',
+    def: 'The concentrated form of uranium out of the mine, the "yellowcake", the market\'s reference unit. Uranium is priced in dollars per pound of U3O8, spot and above all long-term (reactor operators\' contracts).',
+    guide: '/en/guides/read-uranium-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'U3O8 is the commercial starting point of the nuclear cycle, but not the final bottleneck.',
+      formula: 'nuclear fuel = mining + conversion + enrichment + fabrication',
+      whyNow: 'The ore price draws the attention, while conversion and enrichment can become the binding constraints.',
+      articles: [
+        uraniumArticle,
+        { label: 'Copper, Hormuz and El Niño', href: '/en/analysis/copper-shortage-hormuz-el-nino/', detail: 'Commodities, energy and supply constraints.', kind: 'article' },
+      ],
+      guides: [uraniumGuide, oilGuide],
+      ...energyShared,
+      related: ['uf6', 'swu', 'haleu', 'smr'],
+    },
+  },
+  {
+    slug: 'uf6',
+    sigle: 'UF6',
+    nom: 'Uranium hexafluoride',
+    def: 'The compound obtained by converting uranium oxide, gaseous once heated, the only form enrichment plants can process. Conversion is a distinct step of the fuel cycle, with its own market and its own bottlenecks.',
+    guide: '/en/guides/read-uranium-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'UF6 is the mandatory passage between ore and enrichment. Without available conversion, yellowcake never becomes fuel.',
+      whyNow: 'Conversion is a narrower market than the ore, hence more sensitive to industrial delays and sanctions.',
+      articles: [uraniumArticle],
+      guides: [uraniumGuide],
+      ...energyShared,
+      related: ['u3o8', 'swu', 'haleu', 'smr'],
+    },
+  },
+  {
+    slug: 'swu',
+    sigle: 'SWU',
+    nom: 'Separative Work Unit',
+    def: 'The unit measuring the enrichment effort needed to raise the uranium-235 content. The enrichment market is counted in SWU; Russia concentrates a large share of world capacity.',
+    guide: '/en/guides/read-uranium-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'The SWU measures the industrial effort that separates isotopes. It is the true language of the enrichment bottleneck.',
+      formula: 'SWU need = target enrichment + fuel quantity + tails assay',
+      whyNow: 'The concentration of enrichment capacity makes the geopolitical risk sharper than the ore price alone.',
+      articles: [uraniumArticle],
+      guides: [uraniumGuide],
+      ...energyShared,
+      related: ['u3o8', 'uf6', 'haleu', 'smr'],
+    },
+  },
+  {
+    slug: 'haleu',
+    sigle: 'HALEU',
+    nom: 'High-Assay Low-Enriched Uranium',
+    def: 'Low-enriched uranium of high assay, between 5 and 20% uranium-235, the fuel required by most small modular and advanced reactors. Long supplied commercially by Russia alone, it is the main bottleneck of the Western nuclear revival.',
+    guide: '/en/guides/read-uranium-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'HALEU is the advanced fuel where nuclear promise and industrial-chain dependence concentrate.',
+      whyNow: 'Small reactors and advanced projects run into a commercial supply that is still too narrow.',
+      articles: [uraniumArticle],
+      guides: [uraniumGuide],
+      ...energyShared,
+      related: ['swu', 'uf6', 'u3o8', 'smr'],
+    },
+  },
+  {
+    slug: 'smr',
+    sigle: 'SMR',
+    nom: 'Small Modular Reactor',
+    def: 'A small, low-power modular reactor designed for series production and faster deployment than a large plant. Central to plans for powering AI data centres, though the first commercial units are not expected before the early 2030s.',
+    guide: '/en/guides/read-uranium-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'The SMR is an industrial option on low-carbon electricity, but its calendar remains slower than data-centre demand.',
+      formula: 'SMR risk = industrial delay + available fuel + cost of capital',
+      whyNow: 'AI electricity demand pushes nuclear forward before the first commercial deployments are actually available.',
+      articles: [uraniumArticle],
+      guides: [uraniumGuide],
+      ...energyShared,
+      related: ['haleu', 'swu', 'uf6', 'u3o8'],
+    },
+  },
+  {
+    slug: 'opep',
+    sigle: 'OPEC',
+    nom: 'Organization of the Petroleum Exporting Countries',
+    def: 'The producers cartel (Saudi Arabia and others) that coordinates production quotas to influence the price of the barrel.',
+    guide: '/en/guides/read-oil-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'OPEC coordinates part of the supply, but its real power depends on internal discipline and marginal demand.',
+      whyNow: "When Chinese demand slows or draws on its stocks, OPEC's ability to support the price becomes observable.",
+      articles: [oilArticles[0], oilArticles[1], oilArticles[2]],
+      guides: [oilGuide],
+      ...energyShared,
+      related: ['opep-2', 'brent', 'wti', 'spr', 'chokepoint'],
+    },
+  },
+  {
+    slug: 'opep-2',
+    sigle: 'OPEC+',
+    nom: 'The enlarged OPEC',
+    def: 'OPEC plus around ten non-member producers, including Russia, coordinating quotas since late 2016. Its decisions now weigh as much as OPEC\'s alone: the group raised output by nearly 600,000 barrels a day between April and June 2026, then by another 188,000 in July.',
+    guide: '/en/guides/read-oil-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'OPEC+ adds non-member producers, Russia included, and makes the reading of supply more political.',
+      whyNow: 'Coordinated hikes or cuts shift the balance between inventories, supply discipline and geopolitical premium.',
+      articles: [oilArticles[0], oilArticles[2]],
+      guides: [oilGuide],
+      ...energyShared,
+      related: ['opep', 'brent', 'wti', 'spr'],
+    },
+  },
+  {
+    slug: 'spr',
+    sigle: 'SPR',
+    nom: 'Strategic petroleum reserve',
+    def: "A crude stockpile built by a state to cushion a supply disruption. China's reserve, estimated at about 1.24 billion barrels in early 2026 (commercial and strategic stocks combined), would be the world's largest, ahead of the United States and Japan. Beijing publishes no detail; analysts reconstruct it from import flows and satellite tank monitoring.",
+    guide: '/en/guides/read-oil-market/',
+    ...energySection,
+    atlas: {
+      intuition: 'A strategic reserve is a political option on price and energy security.',
+      formula: 'safety cushion = deployable stocks / exposed consumption or imports',
+      whyNow: 'Chinese and American reserves can dampen or amplify price moves depending on whether they are used, rebuilt or held.',
+      articles: [oilArticles[0], oilArticles[1]],
+      guides: [oilGuide],
+      ...energyShared,
+      related: ['brent', 'wti', 'opep', 'opep-2', 'chokepoint'],
+    },
+  },
+  {
+    slug: 'cot',
+    sigle: 'COT',
+    nom: 'Commitments of Traders',
+    def: "The CFTC's weekly report detailing open positions on US futures markets by trader category. Published Friday at 3:30 p.m. New York time, on data as of the preceding Tuesday, a three-day lag.",
+    guide: '/en/guides/read-cftc-cot-report/',
+    ...usRegulationSection,
+    atlas: {
+      intuition: 'The COT gives a delayed photograph of futures positioning. It does not predict on its own, but it shows where the market is loaded.',
+      formula: 'unwind risk = extreme positioning + FX catalyst + volatility',
+      whyNow: 'On the yen, a highly consensual positioning turns dangerous when the BoJ, the MoF or the Fed changes the rate regime.',
+      articles: [yenArticle],
+      guides: [yenGuides[0], yenGuides[1]],
+      ...yenShared,
+      related: ['yen-carry', 'boj', 'mof', 'move'],
     },
   },
 ];
