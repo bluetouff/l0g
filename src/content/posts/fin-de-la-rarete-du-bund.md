@@ -1,0 +1,78 @@
+---
+title: "La fin de la rareté du Bund"
+description: "Pendant une décennie, l'obligation fédérale allemande fut un actif rationné : frein à la dette d'un côté, achats massifs de la BCE de l'autre. Ce régime est mort. Le Bund rend 3,14 %, au-dessus du taux de swap pour la première fois de son histoire, l'Allemagne émettra 511 milliards d'euros cette année, et le marché doit absorber ce que la banque centrale rendait introuvable. Radiographie d'un changement de régime qui redessine toute la courbe européenne."
+pubDate: 2026-07-19T18:57:00+02:00
+updatedDate: 2026-07-19T18:57:00+02:00
+tags: ["europe", "obligataire", "taux", "marchés", "liquidité"]
+draft: false
+---
+
+*Début juillet, la Finanzagentur a lancé sa nouvelle ligne à dix ans, échéance août 2036, six milliards d'euros pour commencer, près de quarante à terme. Une émission de routine, sauf que la routine elle-même est neuve : quatre syndications dans l'année, une ligne à vingt ans inédite, 511 milliards d'euros de programme. L'Allemagne, qui a passé une décennie à raréfier sa dette, l'industrialise désormais. Et le marché a déjà rendu son verdict, discret mais historique : le rendement du Bund est passé au-dessus du taux de swap équivalent, une première depuis que ces deux courbes existent. L'actif le plus recherché d'Europe est en train de devenir une obligation comme les autres.*
+
+Le détail technique qui résume tout tient sur un écran de trading. Le 17 juillet, le Bund à dix ans rendait [3,14 %](https://tradingeconomics.com/germany/government-bond-yield), quand le [taux de swap en euros de même maturité évoluait sous les 3 %](https://www.bluegamma.io/euribor-swap-rates). Ce [swap spread](/glossaire/#swap-spread) négatif, le rendement de l'État allemand au-dessus du taux fixe interbancaire, aurait paru absurde à n'importe quel opérateur des années 2010 : l'écart, historiquement, jouait dans l'autre sens, et son ampleur mesurait le supplément que les investisseurs acceptaient de payer pour détenir l'actif sans risque par excellence. Le basculement, [amorcé fin 2024 et installé depuis](https://www.twentyfouram.com/insights/should-investors-care-about-negative-swap-spreads), signifie une chose simple : la prime de rareté du Bund a disparu. Notre guide sur [les swaps de taux](/guides/lire-les-swaps-de-taux/) détaille la mécanique de cet écart ; voici l'histoire de sa mort.
+
+## D'où venait la rareté
+
+Le Bund des années 2010-2020 n'était pas seulement une obligation : c'était une matière première rationnée. Le rationnement avait deux sources qui se renforçaient. Côté offre, le frein à la dette constitutionnel et le culte du « schwarze Null », l'équilibre budgétaire, limitaient l'émission nette à presque rien : l'Allemagne remboursait parfois plus qu'elle n'empruntait. Côté demande, l'Eurosystème aspirait le stock : les programmes d'achats ont retiré du flottant une part telle des titres fédéraux que la recherche de la Bundesbank a documenté une [prime de « spécialité » sur le marché repo](https://link.springer.com/article/10.1007/s11573-025-01243-w), où emprunter un Bund précis coûtait plus cher que le cash qu'il garantissait, y compris pour des titres simplement éligibles aux achats, jamais achetés. L'obligation allemande servait de collatéral ultime à toute la plomberie européenne, celle que nous décrivons dans notre analyse du [marché du repo et du collatéral](/posts/repo-collateral-fabrique-liquidite/), et ce statut d'actif introuvable se payait : rendements écrasés sous les swaps, passages sous zéro, adjudications sursouscrites quoi qu'il arrive.
+
+Ce monde reposait sur un équilibre politique précis : un État qui refuse d'emprunter, une banque centrale qui achète tout. Les deux piliers sont tombés en moins de trois ans.
+
+## Le robinet ouvert
+
+Le premier pilier a cédé le 21 mars 2025, quand l'Allemagne a réformé son frein à la dette pour exempter les dépenses de défense au-delà de 1 % du PIB et loger 500 milliards d'euros d'infrastructures dans un fonds spécial, tournant que nous avons cadré dans notre guide sur [la dette souveraine européenne](/guides/lire-la-dette-souveraine-europeenne/). La traduction en papier est immédiate : le [programme d'émission 2026 de la Finanzagentur](https://www.deutsche-finanzagentur.de/fileadmin/user_upload/Pressemitteilung/en/2025/2025_12_18_pm_10_Emissionsplanung_Bund_2026_en.pdf) prévoit environ 511,5 milliards d'euros de titres, face à 362,4 milliards de tombées, soit une offre nette de l'ordre de 150 milliards, un volume [encore relevé de 8 milliards en cours de route](https://www.bloomberg.com/news/articles/2025-11-14/germany-lifts-planned-net-new-borrowing-for-2026-by-8-billion). Le besoin d'emprunt fédéral total, fonds spéciaux compris, avoisine 174 milliards, plus du triple d'il y a deux ans, pour financer notamment un budget militaire passé au-dessus de 100 milliards d'euros. La panoplie suit : deux nouvelles lignes à dix ans dans l'année, quatre syndications dont une ligne à vingt ans inédite, 16 à 19 milliards de titres verts. L'émetteur qui se faisait désirer est devenu un industriel de la dette.
+
+Le second pilier s'est retiré en silence : la BCE ne réinvestit plus rien et son resserrement quantitatif rend au marché [environ 500 milliards d'euros de titres par an](/guides/lire-le-bilan-bce-target2/). L'acheteur insensible au prix a disparu au moment précis où l'offre triplait. L'OCDE chiffre le résultat : depuis la mi-2022, les secteurs autres que la banque centrale ont dû absorber [environ 430 milliards d'euros de dette fédérale allemande supplémentaire](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/the-investor-base-for-government-and-corporate-bond-markets_e68b90b3.html), reprise par des investisseurs autrement plus sensibles au prix, fonds, assureurs, ménages, étrangers. La conséquence se lit sur la courbe : les taux longs européens sans risque ont [gagné plus de 40 points de base sur la seule année 2025](https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog.20260116~4c6200fe58.en.html), pentification que la BCE elle-même attribue à la combinaison de l'offre et du retrait des banques centrales.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 360" role="img" aria-label="Le croisement historique entre le rendement du Bund à dix ans et le taux de swap euro équivalent" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="360" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le croisement : Bund contre swap à dix ans</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Tracé stylisé. Sous le swap : prime de rareté. Au-dessus : le marché fait payer l'offre.</text>
+
+  <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
+  <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
+  <text x="140" y="300" fill="#8b909b" font-size="10" text-anchor="middle">années 2010</text>
+  <text x="400" y="300" fill="#8b909b" font-size="10" text-anchor="middle">fin 2024</text>
+  <text x="640" y="300" fill="#8b909b" font-size="10" text-anchor="middle">juillet 2026</text>
+
+  <polyline points="100,180 300,190 400,196 540,190 660,182" fill="none" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="150" y="172" fill="#8b909b" font-size="11">taux de swap</text>
+
+  <polyline points="100,240 300,224 400,199 540,180 660,164" fill="none" stroke="#5eead4" stroke-width="2.5"/>
+  <text x="150" y="258" fill="#5eead4" font-size="11">rendement du Bund</text>
+
+  <circle cx="400" cy="197" r="5" fill="#ff4d87"/>
+  <text x="400" y="130" fill="#ff4d87" font-size="11" text-anchor="middle">croisement, une première</text>
+  <text x="400" y="145" fill="#8b909b" font-size="10" text-anchor="middle">historique (fin 2024)</text>
+  <line x1="400" y1="152" x2="400" y2="188" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <text x="668" y="160" fill="#5eead4" font-size="11" text-anchor="end">3,14 %</text>
+
+  <text x="32" y="330" fill="#8b909b" font-size="11">Sources : Trading Economics (17 juillet 2026), TwentyFour AM, Amundi, BIS. Représentation schématique, pas une série de marché.</text>
+</svg>
+<figcaption>Une décennie durant, le Bund a rendu moins que le taux de swap : le prix de la rareté. Le croisement de fin 2024, installé depuis, marque le passage à un régime où l'investisseur exige au contraire une compensation pour absorber l'offre allemande. Tracé stylisé d'après les sources citées.</figcaption>
+</figure>
+
+## Les conséquences en chaîne
+
+Un changement de régime sur l'actif de référence ne reste jamais confiné à cet actif, et trois déplacements sont déjà visibles. Le premier concerne la lecture des spreads souverains : la fameuse convergence européenne, l'Italie revenue à 70 points de base, tient pour partie à un dénominateur qui bouge. Quand le Bund cheapen sous le poids de sa propre offre, l'écart avec les autres se comprime sans que la périphérie n'ait rien fait de plus ; une portion de la « normalisation » des spreads est en réalité une banalisation de l'Allemagne. Grille de lecture à garder pour interpréter le resserrement affiché des [spreads BTP-Bund et OAT-Bund](/guides/lire-la-dette-souveraine-europeenne/).
+
+Le deuxième touche la référence de valorisation. Quand le souverain le plus sûr rend plus que le swap, la courbe des swaps, adossée à l'[€STR](/glossaire/#estr), devient de fait l'étalon des prix : c'est déjà [sur elle que se valorisent les obligations de l'Union européenne](https://financeunlocked.com/videos/how-to-price-euro-bonds), les agences et une part croissante du crédit, trajectoire que les marchés américains ont suivie avant l'Europe, les swap spreads sur Treasuries étant négatifs depuis des années. Le Bund reste l'instrument de couverture et le sous-jacent des futures, mais son monopole de taux sans risque se partage.
+
+Le troisième est, pour une fois, une bonne nouvelle de plomberie : le collatéral allemand redevenu abondant, les primes de spécialité s'évaporent, les fins de trimestre se tendent moins, et le marché du repo européen respire mieux qu'à l'époque où chaque Bund emprunté était un trésor. La rareté avait un coût systémique discret ; sa fin est un dividende du même ordre.
+
+## L'autre lecture : la rareté ne meurt pas, elle dort
+
+Le tableau mérite ses contrepoints, car enterrer le statut refuge du Bund serait aller trop vite. D'abord, l'aune du stress : dans chaque épisode de tension, du choc pétrolier de juin aux poussées de fièvre françaises, l'argent continue de fuir vers l'Allemagne, et le [risque de redénomination](/glossaire/#risque-de-redenomination), si jamais il se réveillait, ferait du Bund l'actif le plus recherché du continent en quelques heures ; la prime de rareté est cyclique, l'assurance allemande ne l'est pas. Ensuite, l'arithmétique : même à 174 milliards d'emprunt annuel, l'Allemagne partait d'une dette de 63 % du PIB environ, la plus basse des grands pays avancés, et sa capacité d'absorption reste sans équivalent ; le marché fait payer l'offre, il ne doute pas de la signature. Enfin, la profondeur : un gisement plus large et plus liquide sert le statut de référence à long terme, comme le Treasury américain le démontre depuis des décennies, lui qui a survécu sans dommage au passage de ses propres swap spreads en territoire négatif. La version optimiste du même phénomène s'écrit ainsi : le Bund cesse d'être un objet de collection pour devenir une vraie classe d'actifs, et l'Europe y gagne l'ancrage obligataire profond qui lui manquait, complément naturel du [gisement de dette commune en construction](/posts/europe-s-endette-sans-dette-emprunts-communs/).
+
+Entre les deux lectures, un point d'accord existe : l'ancien régime ne reviendra pas. Ni le frein à la dette version intégriste, enterré par la géopolitique, ni les achats massifs de la BCE, dont le bilan décroît encore, ne referont du Bund un actif rationné dans un horizon prévisible.
+
+## Les juges de paix
+
+La suite se suivra sur une poignée d'écrans. Le swap spread à dix ans d'abord : son enfoncement dirait que l'absorption force encore la décote, son retour vers zéro que le marché a digéré le nouveau volume. Les adjudications allemandes ensuite, couverture et queues, à lire avec la même grille que les [adjudications américaines](/guides/lire-le-marche-des-treasuries/) : le jour où une syndication allemande peine, le régime aura encore changé de degré. La pente de la courbe encore, le dix-trente ans allemand disant le prix exigé pour la duration longue quand l'offre s'installe. Et la réunion de la BCE de jeudi enfin, car tout resserrement supplémentaire s'additionne à ce déplacement d'offre : le mélange hausse de taux, QT et triple émission allemande est précisément la configuration que notre [analyse du remake de 2011](/posts/bce-remake-2011-choc-petrolier/) invite à surveiller. L'Allemagne a passé dix ans à prouver qu'un État peut être trop peu endetté pour le bon fonctionnement des marchés. Elle consacrera la décennie qui vient à vérifier la réciproque.
+
+---
+
+**Sources primaires :** Deutsche Finanzagentur, [programme d'émission 2026 (18 décembre 2025)](https://www.deutsche-finanzagentur.de/fileadmin/user_upload/Pressemitteilung/en/2025/2025_12_18_pm_10_Emissionsplanung_Bund_2026_en.pdf) et [mise à jour du troisième trimestre (25 juin 2026)](https://www.deutsche-finanzagentur.de/fileadmin/user_upload/Institutionelle-investoren/praesentation/2026_06_25_Issuance_Outlook_Q3_2026.pdf) : 511,5 milliards d'émissions, 362,4 milliards de tombées, nouvelles lignes et syndications ; BCE, [blog « Sloping up: the repricing of euro area yields in 2025 » (16 janvier 2026)](https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog.20260116~4c6200fe58.en.html) : hausse de plus de 40 points de base des taux longs sans risque en 2025 ; Bundesbank (recherche), [« The Eurosystem's asset purchase programmes, securities lending and Bund specialness »](https://link.springer.com/article/10.1007/s11573-025-01243-w) : primes de spécialité et d'éligibilité sur le repo allemand ; OCDE, [Global Debt Report 2026, chapitre sur la base d'investisseurs](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/the-investor-base-for-government-and-corporate-bond-markets_e68b90b3.html) : 430 milliards absorbés hors banque centrale depuis mi-2022.
+
+**Marché et analyses :** [Trading Economics, Bund à 3,14 % le 17 juillet 2026](https://tradingeconomics.com/germany/government-bond-yield) ; [Blue Gamma, taux de swap euro](https://www.bluegamma.io/euribor-swap-rates) ; [TwentyFour AM sur les swap spreads négatifs](https://www.twentyfouram.com/insights/should-investors-care-about-negative-swap-spreads) ; [Amundi Research, « Swap Spreads: Analysis & Outlook »](https://research-center.amundi.com/article/swap-spreads-analysis-challenges-and-outlook) ; [Bloomberg sur le relèvement du programme d'emprunt (14 novembre 2025)](https://www.bloomberg.com/news/articles/2025-11-14/germany-lifts-planned-net-new-borrowing-for-2026-by-8-billion) ; [Finance Unlocked sur les conventions de valorisation en euros](https://financeunlocked.com/videos/how-to-price-euro-bonds) ; [Bruegel sur la réforme du frein à la dette](https://www.bruegel.org/newsletter/what-does-german-debt-brake-reform-mean-europe). Chiffres et dates vérifiés sur les sources citées ; le swap spread évolue en continu, les niveaux cités sont ceux de la mi-juillet 2026.
