@@ -51,6 +51,7 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
   const yenGenerated = iso(input.yen?.generated);
   const energyGenerated = iso(input.energy?.generated);
   const debtGenerated = iso(input.debt?.generated_at);
+  const producerPublishedAfterAttempt = new Set();
   for (const [key, value] of Object.entries({ eu: euGenerated, yen: yenGenerated, energie: energyGenerated, debt: debtGenerated })) {
     if (!value) errors.push(`${key}: date producteur publique absente`);
     const item = byKey.get(key);
@@ -60,6 +61,7 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     } else if (value && aggregateDate && value !== aggregateDate) {
       const attemptDate = iso(item?.lastAttemptAt);
       if (attemptDate && Date.parse(value) > Date.parse(attemptDate)) {
+        producerPublishedAfterAttempt.add(key);
         warnings.push(`${key}: nouveau snapshot publié après la tentative d’agrégation ; rattrapage attendu (${attemptDate} -> ${value})`);
       } else {
         errors.push(`${key}: date agrégée différente du producteur (${aggregateDate} != ${value})`);
@@ -74,7 +76,9 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
   };
   for (const [key, expected] of Object.entries(expectedValues)) {
     if (expected == null) errors.push(`${key}: score producteur absent`);
-    else if (byKey.get(key)?.value !== expected) errors.push(`${key}: valeur agrégée ${byKey.get(key)?.value} != producteur ${expected}`);
+    else if (byKey.get(key)?.value !== expected && !producerPublishedAfterAttempt.has(key)) {
+      errors.push(`${key}: valeur agrégée ${byKey.get(key)?.value} != producteur ${expected}`);
+    }
   }
 
   const oilRows = [input.energy?.series?.brent, input.energy?.series?.wti].filter(Boolean);

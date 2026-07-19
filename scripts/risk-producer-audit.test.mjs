@@ -64,12 +64,30 @@ test('un snapshot publié après la tentative est une course visible et non une 
   assert.ok(report.warnings.some((warning) => warning.includes('publié après la tentative')));
 });
 
+test('la valeur du nouveau snapshot attend le prochain cycle sans faux échec', () => {
+  const input = fixture();
+  input.energy.generated = '2026-07-18T10:00:03Z';
+  input.energy.composite.score = 43.8;
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, true);
+  assert.ok(report.warnings.some((warning) => warning.includes('energie: nouveau snapshot publié après la tentative')));
+  assert.ok(!report.errors.some((error) => error.includes('valeur agrégée')));
+});
+
 test('une date différente déjà disponible lors de la tentative reste une erreur', () => {
   const input = fixture();
   input.yen.generated = '2026-07-18T09:00:00Z';
   const report = auditRiskFlow(input, now);
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.includes('date agrégée différente')));
+});
+
+test('une valeur différente sans publication concurrente reste une erreur', () => {
+  const input = fixture();
+  input.energy.composite.score = 43.8;
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('valeur agrégée 42 != producteur 44')));
 });
 
 test('une horloge producteur franchement future reste une erreur', () => {
