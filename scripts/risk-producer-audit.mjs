@@ -49,8 +49,18 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
   const debtGenerated = iso(input.debt?.generated_at);
   for (const [key, value] of Object.entries({ eu: euGenerated, yen: yenGenerated, energie: energyGenerated, debt: debtGenerated })) {
     if (!value) errors.push(`${key}: date producteur publique absente`);
-    const aggregateDate = iso(byKey.get(key)?.sourceUpdatedAt);
-    if (value && aggregateDate && value !== aggregateDate) errors.push(`${key}: date agrégée différente du producteur (${aggregateDate} != ${value})`);
+    const item = byKey.get(key);
+    const aggregateDate = iso(item?.sourceUpdatedAt);
+    if (value && Date.parse(value) - Date.parse(now) > 5 * 60_000) {
+      errors.push(`${key}: date producteur située à plus de cinq minutes dans le futur (${value})`);
+    } else if (value && aggregateDate && value !== aggregateDate) {
+      const attemptDate = iso(item?.lastAttemptAt);
+      if (attemptDate && Date.parse(value) > Date.parse(attemptDate)) {
+        warnings.push(`${key}: nouveau snapshot publié après la tentative d’agrégation ; rattrapage attendu (${attemptDate} -> ${value})`);
+      } else {
+        errors.push(`${key}: date agrégée différente du producteur (${aggregateDate} != ${value})`);
+      }
+    }
   }
 
   const expectedValues = {

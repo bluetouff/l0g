@@ -22,7 +22,7 @@ const indices = ['us', 'eu', 'yen', 'energie', 'debt'].map((key) => ({
 
 function fixture() {
   return {
-    aggregate: { version: '2', status: 'degraded', generated: now, software: { revision: 'abc123', revisionStatus: 'reported', sourceSha256: 'a'.repeat(64) }, indices },
+    aggregate: { version: '2', status: 'degraded', generated: now, software: { revision: 'abc123', revisionStatus: 'reported', sourceSha256: 'a'.repeat(64) }, indices: indices.map((item) => ({ ...item })) },
     eu: { generated_at: '2026-07-18 07:49', global_score: 41.2 },
     yen: { generated: generated.yen },
     energy: { generated: generated.energie, composite: { score: 42.1 }, series: { brent: { label: 'Brent', date: '2026-07-13', tip_source: 'eia' }, wti: { label: 'WTI', date: '2026-07-13', tip_source: 'eia' } } },
@@ -54,4 +54,28 @@ test('un échec explique sa cause dans le résumé GitHub et dans une annotation
   assert.match(markdown, /\| Résultat \| ÉCHEC \|/);
   assert.match(markdown, /agrégateur: contrat v2 absent/);
   assert.equal(githubAnnotation('error', 'ligne 1\n100%'), '::error::ligne 1%0A100%25');
+});
+
+test('un snapshot publié après la tentative est une course visible et non une rupture', () => {
+  const input = fixture();
+  input.yen.generated = '2026-07-18T10:00:03Z';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, true);
+  assert.ok(report.warnings.some((warning) => warning.includes('publié après la tentative')));
+});
+
+test('une date différente déjà disponible lors de la tentative reste une erreur', () => {
+  const input = fixture();
+  input.yen.generated = '2026-07-18T09:00:00Z';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('date agrégée différente')));
+});
+
+test('une horloge producteur franchement future reste une erreur', () => {
+  const input = fixture();
+  input.yen.generated = '2026-07-18T10:06:00Z';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('plus de cinq minutes dans le futur')));
 });
