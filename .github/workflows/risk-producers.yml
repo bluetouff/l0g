@@ -2,6 +2,17 @@ name: risk producers
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/risk-producers.yml
+      - scripts/check-risk-producers.mjs
+      - scripts/risk-producer-audit.mjs
+      - scripts/risk-producer-audit.test.mjs
+      - scripts/risk-deployment.test.mjs
+      - ops/risk-aggregator/**
+      - deploy/l0g.fr.apache.conf
   schedule:
     - cron: '7,37 * * * *'
 
