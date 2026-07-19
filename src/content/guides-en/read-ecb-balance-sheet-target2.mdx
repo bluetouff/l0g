@@ -1,0 +1,115 @@
+---
+title: "Reading the ECB balance sheet and the Target2 balances"
+description: "A reference guide to the Eurosystem balance sheet: how to read the weekly financial statement, where European quantitative tightening stands, where the Target2 balances come from and why they are not the hidden bailout of legend, how central banks can string together losses without ceasing to function, and the new operational framework for rates. With 2026 figures as illustration, first rate hike since 2023 included."
+summary: "The Eurosystem balance sheet consolidates the ECB and the euro area's national central banks: about €6.3 trillion at the end of 2025, shrinking by roughly €500 billion a year at the pace of quantitative tightening. Reading it means understanding the capital-key allocation, the mechanics of the Target2 balances (more than €1 trillion of claims for the Bundesbank), central banks' accounting losses and the floor framework that steers short-term rates."
+pubDate: 2026-07-19T14:40:00+02:00
+updatedDate: 2026-07-19T14:40:00+02:00
+sourceGuide: "lire-le-bilan-bce-target2"
+sourceUpdatedDate: 2026-07-19T14:40:00+02:00
+tags: ["macro", "central banks", "liquidity", "europe"]
+category: fed
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*The American central bank's balance sheet can be read every Thursday in the H.4.1. Its European counterpart exists, published every Tuesday, and almost nobody reads it: the Eurosystem's consolidated weekly financial statement. The difference fits in one word, consolidation: where the Fed is a single house, the Eurosystem aggregates the ECB and twenty national central banks, connected by an internal plumbing, Target2, whose balances have fed the wildest readings for fifteen years. This guide decodes the whole: the balance sheet, its rundown, the balances that alarm, the losses that worry and the framework that steers rates. It extends, on the euro side, our reading of [the Fed's balance sheet](/en/guides/read-h41-fed-balance-sheet/).*
+
+## One balance sheet, twenty central banks
+
+The ECB holds only a fraction of monetary policy assets. The bulk sits on the balance sheets of the national central banks, the Bundesbank, the Banque de France, the Banca d'Italia and their peers, which execute the operations decided in Frankfurt. Together they form the Eurosystem, and its consolidated accounts appear every week. Asset purchases and the associated risks are mostly distributed according to the capital key, each country's share in the ECB's capital, computed from its population and GDP: roughly 26% for Germany, 20% for France, 17% for Italy.
+
+Orders of magnitude first. At the end of 2025, the consolidated balance sheet stood at [€6,293 billion](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html), against a peak of about €8,800 billion in the summer of 2022. On the asset side, two blocks dominate: the securities portfolios accumulated during the quantitative easing years, the historical APP (€2,322 billion at the end of 2025) and the pandemic-era PEPP (€1,423 billion), plus a residue of refinancing operations that have become marginal. On the liability side, banknotes in circulation (about [€1,612 billion](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html)), minimum reserves (€172 billion) and above all excess liquidity, the cash banks park at the central bank beyond their requirements. The logic is the same as for the Fed: bank reserves are not a choice made by banks, they are the accounting residual of everything else.
+
+## QT, the European way
+
+Since 2023, the Eurosystem has let its portfolios melt by no longer reinvesting maturing securities, the APP first, the PEPP since 2025. The pace is deliberately passive, "measured and predictable" in the formula the ECB [repeats at every decision](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html): no sales, only redemptions. Over 2026 this returns about [€500 billion to the market](https://cpram.com/fra/en/individual/publications/experts/article/ecb-the-end-of-quantitative-tightening-is-not-on-the-agenda), €330 billion of APP and €173 billion of PEPP, with the balance sheet expected around €5,800 billion by year-end.
+
+The contrast with America deserves emphasis: the Fed closed its quantitative tightening in December 2025 under pressure from repo market strains, while the ECB carries on without visible friction. The explanation is the cushion: euro area excess liquidity still stood at [€2,358 billion in the spring of 2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html), against a peak of €4,748 billion at the end of 2022. European banks are still swimming in cash: their recourse to regular refinancing operations averages a mere €24 billion, a crumb at the system's scale. The question for the coming years is the one the Fed just settled at its own expense: how far down can you go before the plumbing creaks? Our guide on [US net liquidity](/en/guides/read-net-liquidity-tga-rrp/) details how elusive that threshold is.
+
+<InfographicBars
+  title="The Eurosystem balance sheet deflates"
+  subtitle="Size of the consolidated balance sheet, in billions of euros."
+  max={8800}
+  items={[
+    { label: "Peak (summer 2022)", value: 8800, valueLabel: "~8,800", tone: "accent" },
+    { label: "End of 2024", value: 6400, valueLabel: "6,400", tone: "amber" },
+    { label: "End of 2025", value: 6293, valueLabel: "6,293", tone: "amber" },
+    { label: "End of 2026 (trajectory)", value: 5800, valueLabel: "~5,800", tone: "signal" },
+  ]}
+  note="Rundown through non-reinvestment of redemptions, without asset sales."
+  source="Sources: ECB (2025 annual accounts, monetary policy decisions), CPRAM for the 2026 trajectory."
+  caption="Three trillion euros below the 2022 peak, at a pace of roughly €500 billion a year. European tightening continues where the Fed's stopped in late 2025. Sources: ECB, CPRAM."
+/>
+
+## Target2, the plumbing that panics people
+
+Now for the most misunderstood piece. Target2, rebranded T2 in its modernised version, is the euro area's large-value payment system, the RTGS where cross-border interbank transfers settle in central bank money. When an Italian bank pays a German bank, the Banca d'Italia's position towards the ECB deteriorates and the Bundesbank's improves. Accumulated over time, these flows form the Target2 balances: as of 31 May 2026, the Bundesbank posted a claim of [nearly €1,066 billion](https://www.bundesbank.de/en/tasks/payment-systems/t2/target-balances-920752) on the Eurosystem, while Spain carried a liability of about €489 billion and Italy a debtor position of the same order of magnitude.
+
+These vertiginous figures have fed an entire literature on the "hidden bailout" of the South by German savings, popularised by the economist Hans-Werner Sinn at the height of the debt crisis. The mechanical reading is more prosaic. A Target2 balance is not a loan granted by the Bundesbank: it is [the accounting footprint of payment flows](https://www.ecb.europa.eu/ecb/educational/explainers/tell-me-more/html/target2_balances.en.html), which swells when capital flees a country (2011-2012), but also, and this is the neglected point, when the central bank buys securities from counterparties whose accounts sit elsewhere: a large share of the rise in balances after 2015 reflects the mechanics of QE, not capital flight. The German balance in fact peaked at €1,269 billion in December 2022, at the balance sheet's peak, before receding with QT.
+
+There remains the limit scenario, the only one in which these balances stop being an accounting entry: a country leaving the euro area, which would turn its debtor position into a real claim on a departed state, with recovery prospects uncertain at best. This is the bridge between Target2 and the redenomination risk we described in our guide on [European sovereign debt](/en/guides/read-european-sovereign-debt/): as long as euro membership is not in doubt, the balances are a thermometer of flows; the day it were, they would become one of the invoices of the rupture.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 340" role="img" aria-label="Target2 balances of the main euro area central banks in 2026, German claim against Spanish and Italian liabilities" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="340" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Target2: the map of balances</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Positions towards the Eurosystem, in billions of euros, spring 2026.</text>
+
+  <line x1="360" y1="84" x2="360" y2="268" stroke="#2a2c33" stroke-width="1"/>
+  <text x="360" y="282" fill="#8b909b" font-size="10" text-anchor="middle">0</text>
+
+  <rect x="360" y="96" width="290" height="34" fill="#5eead4" opacity="0.85"/>
+  <text x="368" y="118" fill="#0c0d10" font-size="12" font-weight="700">Germany  +1,066</text>
+  <line x1="705" y1="96" x2="705" y2="130" stroke="#8b909b" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="700" y="90" fill="#8b909b" font-size="10" text-anchor="end">peak Dec 2022: +1,269</text>
+
+  <rect x="227" y="152" width="133" height="34" fill="#ff4d87" opacity="0.85"/>
+  <text x="352" y="174" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="end">Spain  -489</text>
+
+  <rect x="238" y="208" width="122" height="34" fill="#f5b13d" opacity="0.85"/>
+  <text x="352" y="230" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="end">Italy  ~-450</text>
+
+  <text x="32" y="308" fill="#8b909b" font-size="11">Sources: Bundesbank (claim as of 31 May 2026), compiled ECB data. Italy: order of magnitude.</text>
+  <text x="32" y="326" fill="#8b909b" font-size="11">A balance is not a loan: it is the accounting accumulation of cross-border payment flows.</text>
+</svg>
+<figcaption>The Bundesbank a creditor for more than €1 trillion, Spain and Italy debtors for several hundred billion each: the geography of the balances reflects payment flows and the mechanics of QE, not a fiscal transfer. The German peak coincides with the balance sheet's peak, at the end of 2022.</figcaption>
+</figure>
+
+## Central banks in the red, so what?
+
+Another recurring source of alarm: the losses. The mechanics are simple to state. During the zero-rate years, the Eurosystem bought trillions of low-yielding securities, financed with central bank money. When policy rates rose, the remuneration paid to banks on that liquidity exceeded the portfolios' return: the interest margin turned negative. The Bundesbank thus recorded [a seventh consecutive year without profit, with an €8.6 billion loss in 2025](https://www.bundesbank.de/en/press/speeches/annual-accounts-for-2025-990898) and an accumulated loss carry-forward of €27.8 billion. The Banque de France, €7.7 billion in the red in 2024, [returned to a profit of €8.1 billion in 2025](https://www.banque-france.fr/en/news/banque-de-france-2025-results), helped by an exceptional €11 billion gain from selling gold bars held in New York. The ECB itself shows [negative accounting equity](https://www.piie.com/blogs/realtime-economics/2025/how-much-money-have-central-banks-really-lost) under the conventions it applies.
+
+Should this alarm anyone? A central bank is not a bank: it cannot run out of the money it issues, and no prudential rule imposes a solvency ratio on it. Its losses are a deferred cash-flow phenomenon: provisions built in the fat years absorb the shock, revaluation reserves (the Bundesbank's gold lifts its net equity to €363 billion) sleep beneath the negative carry-forward, and the return of a positive margin as QT proceeds will work off the stock. The real stake lies elsewhere, and it is political: a central bank durably in the red pays no dividend to the state, and becomes a convenient target for anyone keen to contest its independence. The ridge line is not an accounting one, it is institutional.
+
+## The floor: rates and the operational framework
+
+Steering short-term rates changed in nature with the abundance of liquidity. In the [operational framework revised in March 2024](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250218~cc20f3518c.en.html), the deposit facility rate became the central instrument: it sets the floor to which the overnight rate, the €STR, sticks as long as excess liquidity remains massive. The spread between the main refinancing rate and the deposit facility was narrowed to 15 basis points, so that banks will not hesitate to borrow at the window once liquidity grows scarce: the system is designed to evolve from a pure floor towards a demand-driven regime, without jolts.
+
+The levels, as of mid-2026: on 11 June, the ECB raised its three rates by 25 basis points, [the first hike since 2023](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html), taking the deposit facility to 2.25%, the main refinancing rate to 2.40% and the marginal lending facility to 2.65%. The motive: inflation pressures born of the war in the Middle East, with inflation expected at 3.0% in 2026 before returning towards 2.0% by 2028. Tightening rates in the middle of a balance sheet rundown illustrates the separation doctrine: rates steer inflation, the balance sheet follows its own path. We covered the Sintra turn in [our analysis of the 2026 forum](/en/analysis/sintra-2026-ecb-hike-warsh-tokenisation/).
+
+## The thermometers
+
+Monitoring the system comes down to a handful of indicators, all public. **Excess liquidity**, published in the weekly statements and the ECB's bulletins, tells the thickness of the cushion: €2,358 billion in the spring of 2026, falling by about €100 billion a quarter. **Recourse to refinancing operations**, minuscule today, will be the first signal of liquidity turning scarce: the European equivalent of banks tapping the Fed's standing facility. The **gap between the €STR and the deposit facility**, today glued a few basis points below the floor, will narrow and then flip above it as the cushion thins. The **Target2 balances**, published monthly by the national central banks, remain the thermometer of cross-border flows. And the [consolidated weekly financial statement](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst260630.en.html), every Tuesday, gives the overall photograph, the counterpart of the American H.4.1.
+
+## Reading the balance sheet in practice
+
+Three misunderstandings organise most bad readings of the European balance sheet, and this guide equips you to avoid them. The first reads the Eurosystem as a single central bank: it is a federation of balance sheets, allocated by capital key, and this architecture explains both the Target2 balances and the distribution of losses. The second turns Target2 balances into enforceable claims: they are accumulations of flows, meaningful as a thermometer, dangerous only in a euro break-up scenario that belongs to redenomination risk, not to ordinary operation. The third treats central bank losses as bankruptcies in the making: the real constraint is political, not accounting.
+
+The 2026 thread assembles the whole: a balance sheet gliding towards €5,800 billion, a still-thick liquidity cushion that allows a drama-free QT, Target2 balances receding along with it, and a June rate hike reminding everyone that the floor is steered independently of the balance sheet. The same discreet infrastructure carries the other European files of the moment, from [the Russian cash redeposited with central banks](/en/analysis/euroclear-the-opaque-vault-of-europe/) to [the conditional net stretched beneath sovereign debts](/en/guides/read-european-sovereign-debt/). For the terms used here, the [glossary](/en/glossary/) collects the definitions.
+
+---
+
+**Main sources:**
+
+- [ECB, consolidated weekly financial statement of the Eurosystem](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst260630.en.html): the weekly balance sheet, European counterpart of the H.4.1.
+- [ECB, 2025 annual accounts (26 February 2026)](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html): balance sheet size at the end of 2025, APP and PEPP portfolios.
+- [ECB, Economic Bulletin, liquidity conditions from February to May 2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html): excess liquidity (€2,358 billion), banknotes, minimum reserves, recourse to refinancing.
+- [ECB, monetary policy decision of 11 June 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html): 25 basis point hike, rates at 2.25 / 2.40 / 2.65%, continued non-reinvestment.
+- [ECB, speech "Striking the right balance" (18 February 2025)](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250218~cc20f3518c.en.html): operational framework, role of the deposit rate, 15 basis point spread.
+- [ECB, explainer "What are TARGET balances?"](https://www.ecb.europa.eu/ecb/educational/explainers/tell-me-more/html/target2_balances.en.html): mechanics of the balances, link with QE and capital flows.
+- [Bundesbank, Target balances](https://www.bundesbank.de/en/tasks/payment-systems/t2/target-balances-920752): German claim of €1,065.7 billion as of 31 May 2026, historical series.
+- [Bundesbank, 2025 annual accounts](https://www.bundesbank.de/en/press/speeches/annual-accounts-for-2025-990898): €8.6 billion loss, €27.8 billion accumulated carry-forward, €363 billion net equity.
+- [Banque de France, 2025 results](https://www.banque-france.fr/en/news/banque-de-france-2025-results): €8.1 billion profit, €11 billion exceptional gain on gold, €283 billion net equity.
+- [PIIE, "How much money have central banks really lost?"](https://www.piie.com/blogs/realtime-economics/2025/how-much-money-have-central-banks-really-lost): loss comparisons and accounting conventions, the ECB's negative equity.
+- [CPRAM, "The end of Quantitative Tightening is not on the agenda"](https://cpram.com/fra/en/individual/publications/experts/article/ecb-the-end-of-quantitative-tightening-is-not-on-the-agenda): 2026 redemptions (€330 billion of APP, €173 billion of PEPP), balance sheet trajectory.
+- [Bruegel, "Finding the right balance (sheet): quantitative tightening in the euro area"](https://www.bruegel.org/news/finding-right-balance-sheet-quantitative-tightening-euro-area): framing of European QT.

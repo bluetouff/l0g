@@ -1,0 +1,113 @@
+---
+title: "Lire le bilan de la BCE et les soldes Target2"
+description: "Guide de référence sur le bilan de l'Eurosystème : comment se lit la situation financière hebdomadaire, où en est le resserrement quantitatif européen, d'où viennent les soldes Target2 et pourquoi ils ne sont pas le renflouement caché que l'on raconte, comment des banques centrales peuvent enchaîner les pertes sans cesser de fonctionner, et le nouveau cadre opérationnel des taux. Avec les chiffres de 2026 en illustration, première hausse de taux depuis 2023 comprise."
+summary: "Le bilan de l'Eurosystème consolide la BCE et les banques centrales nationales de la zone euro : environ 6 300 milliards d'euros fin 2025, en décrue d'environ 500 milliards par an au rythme du resserrement quantitatif. Le lire suppose de comprendre la répartition par clé de capital, la mécanique des soldes Target2 (plus de 1 000 milliards de créance pour la Bundesbank), les pertes comptables des banques centrales et le cadre opérationnel de plancher qui pilote les taux courts."
+pubDate: 2026-07-19T14:40:00+02:00
+updatedDate: 2026-07-19T14:40:00+02:00
+tags: ["macro", "banques centrales", "liquidité", "europe"]
+category: fed
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Le bilan de la banque centrale américaine se lit chaque jeudi dans le H.4.1. Son pendant européen existe, publié chaque mardi, et presque personne ne le lit : la situation financière hebdomadaire de l'Eurosystème. La différence tient en un mot, la consolidation : là où la Fed est une seule maison, l'Eurosystème agrège la BCE et vingt banques centrales nationales, reliées entre elles par une tuyauterie interne, Target2, dont les soldes nourrissent depuis quinze ans les lectures les plus fantaisistes. Ce guide décode l'ensemble : le bilan, sa décrue, les soldes qui affolent, les pertes qui inquiètent et le cadre qui pilote les taux. Il prolonge côté euro notre lecture du [bilan de la Fed](/guides/lire-h41-bilan-fed/).*
+
+## Un bilan, vingt banques centrales
+
+La [BCE](/glossaire/bce/) ne détient qu'une fraction des actifs de la politique monétaire. L'essentiel loge dans les bilans des banques centrales nationales, la Bundesbank, la Banque de France, la Banca d'Italia et leurs homologues, qui exécutent les opérations décidées à Francfort. L'ensemble forme l'[Eurosystème](/glossaire/eurosysteme/), et ses comptes consolidés paraissent chaque semaine. Les achats d'actifs et les risques afférents se répartissent pour l'essentiel selon la [clé de capital](/glossaire/cle-de-capital/), la quote-part de chaque pays dans le capital de la BCE, calculée sur sa population et son PIB : environ 26 % pour l'Allemagne, 20 % pour la France, 17 % pour l'Italie.
+
+Les ordres de grandeur d'abord. Fin 2025, le bilan consolidé atteignait [6 293 milliards d'euros](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html), contre un pic d'environ 8 800 milliards à l'été 2022. À l'actif, deux blocs dominent : les portefeuilles de titres accumulés pendant les années d'assouplissement quantitatif, l'[APP](/glossaire/app/) historique (2 322 milliards fin 2025) et le [PEPP](/glossaire/pepp/) de la pandémie (1 423 milliards), plus un résidu d'opérations de refinancement devenues marginales. Au passif, les billets en circulation (environ [1 612 milliards](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html)), les réserves obligatoires (172 milliards) et surtout la [liquidité excédentaire](/glossaire/liquidite-excedentaire/), le cash que les banques déposent à la banque centrale au-delà de leurs obligations. La logique est la même que pour la Fed : les réserves des banques ne sont pas un choix des banques, elles sont le résidu comptable de tout le reste.
+
+## Le QT à l'européenne
+
+Depuis 2023, l'Eurosystème laisse ses portefeuilles fondre en cessant de réinvestir les titres qui arrivent à échéance, l'APP d'abord, le PEPP depuis 2025. Le rythme est délibérément passif, « mesuré et prévisible » selon la formule que la BCE [répète à chaque décision](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html) : pas de ventes, seulement des tombées. Sur l'année 2026, cela représente environ [500 milliards d'euros rendus au marché](https://cpram.com/fra/en/individual/publications/experts/article/ecb-the-end-of-quantitative-tightening-is-not-on-the-agenda), 330 milliards d'APP et 173 milliards de PEPP, et un bilan attendu autour de 5 800 milliards en fin d'année.
+
+Le contraste avec l'Amérique mérite d'être souligné : la Fed a clos son resserrement quantitatif en décembre 2025 sous la pression des tensions du marché repo, quand la BCE poursuit le sien sans heurt apparent. L'explication tient au coussin : la liquidité excédentaire de la zone euro s'établissait encore à [2 358 milliards d'euros au printemps 2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html), contre un pic de 4 748 milliards fin 2022. Les banques européennes nagent toujours dans le cash : leur recours aux opérations de refinancement classiques plafonne à 24 milliards d'euros en moyenne, une miette à l'échelle du système. La question qui occupera les prochaines années est celle que la Fed vient de trancher à ses dépens : jusqu'où descendre avant que la tuyauterie ne grince ? Notre guide sur la [liquidité nette américaine](/guides/liquidite-tresor-dts-tga-rrp/) détaille ce que ce seuil a d'insaisissable.
+
+<InfographicBars
+  title="La décrue du bilan de l'Eurosystème"
+  subtitle="Taille du bilan consolidé, en milliards d'euros."
+  max={8800}
+  items={[
+    { label: "Pic (été 2022)", value: 8800, valueLabel: "~8 800", tone: "accent" },
+    { label: "Fin 2024", value: 6400, valueLabel: "6 400", tone: "amber" },
+    { label: "Fin 2025", value: 6293, valueLabel: "6 293", tone: "amber" },
+    { label: "Fin 2026 (trajectoire)", value: 5800, valueLabel: "~5 800", tone: "signal" },
+  ]}
+  note="Décrue par non-réinvestissement des tombées, sans ventes de titres."
+  source="Sources : BCE (comptes annuels 2025, décisions de politique monétaire), CPRAM pour la trajectoire 2026."
+  caption="Trois mille milliards d'euros de moins qu'au pic de 2022, au rythme d'environ 500 milliards par an. Le resserrement européen continue là où celui de la Fed s'est arrêté fin 2025. Sources : BCE, CPRAM."
+/>
+
+## Target2, la tuyauterie qui affole
+
+Passons au morceau le plus mal compris. [Target2](/glossaire/target2/), devenu T2 dans sa version modernisée, est le système de paiement de gros montant de la zone euro, le [RTGS](/glossaire/rtgs/) où se règlent en monnaie de banque centrale les virements interbancaires transfrontières. Quand une banque italienne paie une banque allemande, la Banca d'Italia voit sa position envers la BCE se dégrader et la Bundesbank voit la sienne s'améliorer. Accumulés dans le temps, ces flux forment les soldes Target2 : au 31 mai 2026, la Bundesbank affichait une créance de [près de 1 066 milliards d'euros](https://www.bundesbank.de/en/tasks/payment-systems/t2/target-balances-920752) sur l'Eurosystème, quand l'Espagne portait une dette d'environ 489 milliards et l'Italie une position débitrice du même ordre de grandeur.
+
+Ces chiffres vertigineux ont nourri une littérature entière sur le « renflouement caché » du Sud par l'épargne allemande, popularisée par l'économiste Hans-Werner Sinn au plus fort de la crise de la dette. La lecture mécanique est pourtant plus prosaïque. Un solde Target2 n'est pas un prêt consenti par la Bundesbank : c'est [l'empreinte comptable des flux de paiements](https://www.ecb.europa.eu/ecb/educational/explainers/tell-me-more/html/target2_balances.en.html), qui gonfle quand les capitaux fuient un pays (2011-2012), mais aussi, et c'est le point négligé, quand la banque centrale achète des titres à des contreparties dont les comptes sont domiciliés ailleurs : une large part de la montée des soldes après 2015 reflète la mécanique du QE, pas une fuite des capitaux. Le solde allemand a d'ailleurs culminé à 1 269 milliards en décembre 2022, au pic du bilan, avant de refluer avec le QT.
+
+Reste le scénario limite, le seul où ces soldes cessent d'être une écriture comptable : la sortie d'un pays de la zone euro, qui transformerait sa position débitrice en créance réelle sur un État parti, avec un recouvrement pour le moins incertain. C'est le pont entre Target2 et le [risque de redénomination](/glossaire/risque-de-redenomination/) que nous avons décrit dans notre guide sur [la dette souveraine européenne](/guides/lire-la-dette-souveraine-europeenne/) : tant que l'appartenance à l'euro n'est pas mise en doute, les soldes sont un thermomètre de flux ; le jour où elle le serait, ils deviendraient l'une des factures de la rupture.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 340" role="img" aria-label="Soldes Target2 des principales banques centrales de la zone euro en 2026, créance allemande contre dettes espagnole et italienne" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="340" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Target2 : la carte des soldes</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Positions envers l'Eurosystème, en milliards d'euros, printemps 2026.</text>
+
+  <line x1="360" y1="84" x2="360" y2="268" stroke="#2a2c33" stroke-width="1"/>
+  <text x="360" y="282" fill="#8b909b" font-size="10" text-anchor="middle">0</text>
+
+  <rect x="360" y="96" width="290" height="34" fill="#5eead4" opacity="0.85"/>
+  <text x="368" y="118" fill="#0c0d10" font-size="12" font-weight="700">Allemagne  +1 066</text>
+  <line x1="705" y1="96" x2="705" y2="130" stroke="#8b909b" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="700" y="90" fill="#8b909b" font-size="10" text-anchor="end">pic déc. 2022 : +1 269</text>
+
+  <rect x="227" y="152" width="133" height="34" fill="#ff4d87" opacity="0.85"/>
+  <text x="352" y="174" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="end">Espagne  -489</text>
+
+  <rect x="238" y="208" width="122" height="34" fill="#f5b13d" opacity="0.85"/>
+  <text x="352" y="230" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="end">Italie  ~-450</text>
+
+  <text x="32" y="308" fill="#8b909b" font-size="11">Sources : Bundesbank (créance au 31 mai 2026), données BCE compilées. Italie : ordre de grandeur.</text>
+  <text x="32" y="326" fill="#8b909b" font-size="11">Un solde n'est pas un prêt : c'est le cumul comptable des flux de paiements transfrontières.</text>
+</svg>
+<figcaption>La Bundesbank créancière de plus de 1 000 milliards d'euros, l'Espagne et l'Italie débitrices de plusieurs centaines de milliards chacune : la géographie des soldes reflète les flux de paiements et la mécanique du QE, pas un transfert budgétaire. Le pic allemand coïncide avec le pic du bilan, fin 2022.</figcaption>
+</figure>
+
+## Des banques centrales en perte, et alors ?
+
+Autre source récurrente d'affolement : les pertes. La mécanique est simple à poser. Pendant les années de taux nuls, l'Eurosystème a acheté des milliers de milliards de titres à rendement faible, financés par de la monnaie de banque centrale. Quand les taux directeurs sont remontés, la rémunération versée aux banques sur cette liquidité a dépassé le rendement des portefeuilles : la marge d'intérêt est devenue négative. La Bundesbank a ainsi enchaîné [une septième année sans bénéfice, avec une perte de 8,6 milliards d'euros en 2025](https://www.bundesbank.de/en/press/speeches/annual-accounts-for-2025-990898) et un report de pertes cumulé de 27,8 milliards. La Banque de France, déficitaire de 7,7 milliards en 2024, est [revenue à un bénéfice de 8,1 milliards en 2025](https://www.banque-france.fr/en/news/banque-de-france-2025-results), à la faveur d'une plus-value exceptionnelle de 11 milliards tirée de la vente de lingots d'or conservés à New York. La BCE elle-même affiche des [fonds propres comptables négatifs](https://www.piie.com/blogs/realtime-economics/2025/how-much-money-have-central-banks-really-lost) selon les conventions qu'elle applique.
+
+Faut-il s'en alarmer ? Une banque centrale n'est pas une banque : elle ne peut pas manquer de la monnaie qu'elle émet, et aucune règle prudentielle ne lui impose un ratio de solvabilité. Ses pertes sont un phénomène de trésorerie différée : les provisions constituées pendant les années fastes amortissent le choc, les réserves de réévaluation (l'or de la Bundesbank porte ses fonds propres nets à 363 milliards d'euros) dorment sous le report négatif, et le retour d'une marge positive au fil du QT résorbera le stock. Le vrai enjeu est ailleurs, et il est politique : une banque centrale durablement en perte ne verse plus de dividende à l'État, et devient une cible commode pour qui veut contester son indépendance. La ligne de crête n'est pas comptable, elle est institutionnelle.
+
+## Le plancher : taux et cadre opérationnel
+
+Le pilotage des taux courts a changé de nature avec l'abondance de liquidité. Dans le [cadre opérationnel révisé en mars 2024](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250218~cc20f3518c.en.html), le taux de la facilité de dépôt est devenu l'instrument central : c'est lui qui fixe le plancher où se colle le taux au jour le jour, l'[€STR](/glossaire/estr/), tant que la liquidité excédentaire reste massive. L'écart entre le taux des opérations principales de refinancement et la facilité de dépôt a été resserré à 15 points de base, pour que les banques n'hésitent pas à emprunter au guichet quand la liquidité se raréfiera : le système est conçu pour évoluer d'un plancher pur vers un régime piloté par la demande, sans à-coups.
+
+Les niveaux, à jour de la mi-2026 : le 11 juin, la BCE a relevé ses trois taux de 25 points de base, [la première hausse depuis 2023](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html), portant la facilité de dépôt à 2,25 %, le refinancement principal à 2,40 % et la facilité de prêt marginal à 2,65 %. Le motif : les pressions inflationnistes nées de la guerre au Proche-Orient, avec une inflation attendue à 3,0 % en 2026 avant un retour vers 2,0 % à l'horizon 2028. Ce resserrement en pleine décrue du bilan illustre la doctrine de la séparation : les taux pilotent l'inflation, le bilan suit sa trajectoire propre. Nous avions décrypté le tournant de Sintra dans [notre analyse du forum 2026](/posts/sintra-2026-bce-tokenisation/).
+
+## Les thermomètres
+
+La surveillance du système tient en une poignée d'indicateurs, tous publics. La **liquidité excédentaire**, publiée dans les situations hebdomadaires et les bulletins de la BCE, dit l'épaisseur du coussin : 2 358 milliards au printemps 2026, en baisse d'environ 100 milliards par trimestre. Le **recours aux opérations de refinancement**, minuscule aujourd'hui, sera le premier signal d'une liquidité qui devient rare : c'est l'équivalent européen du recours à la facilité permanente de la Fed. L'**écart entre l'ESTR et la facilité de dépôt**, aujourd'hui collé à quelques points de base sous le plancher, se resserrera puis basculera au-dessus quand le coussin s'amincira. Les **soldes Target2**, publiés mensuellement par les banques centrales nationales, restent le thermomètre des flux transfrontières. Et la [situation financière hebdomadaire](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst260630.en.html) de chaque mardi donne la photographie d'ensemble, l'équivalent du H.4.1 américain.
+
+## Lire le bilan en pratique
+
+Trois malentendus organisent l'essentiel des mauvaises lectures du bilan européen, et ce guide donne les moyens de les éviter. Le premier consiste à lire l'Eurosystème comme une banque centrale unique : c'est une fédération de bilans, répartie par clé de capital, et cette architecture explique à la fois les soldes Target2 et la répartition des pertes. Le deuxième transforme les soldes Target2 en créances exigibles : ce sont des cumuls de flux, significatifs comme thermomètre, dangereux seulement dans un scénario de rupture de la zone euro qui relève du risque de redénomination, pas du fonctionnement courant. Le troisième traite les pertes des banques centrales comme des faillites en devenir : la contrainte réelle est politique, pas comptable.
+
+Le fil de 2026 assemble le tout : un bilan en décrue vers 5 800 milliards, un coussin de liquidité encore épais qui permet un QT sans drame, des soldes Target2 qui refluent avec lui, et une hausse de taux de juin qui rappelle que le plancher se pilote indépendamment du bilan. La même infrastructure discrète porte les autres dossiers européens du moment, du [cash russe redéposé en banque centrale](/posts/euroclear-chambre-forte-opaque-avoirs-russes/) au [filet conditionnel tendu sous les dettes souveraines](/guides/lire-la-dette-souveraine-europeenne/). Pour les sigles, le [glossaire](/glossaire/) reprend chaque définition.
+
+---
+
+**Sources principales :**
+
+- [BCE, situation financière hebdomadaire consolidée de l'Eurosystème](https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fst260630.en.html) : le bilan hebdomadaire, pendant européen du H.4.1.
+- [BCE, comptes annuels 2025 (26 février 2026)](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260226~15dbe4febc.en.html) : taille du bilan fin 2025, portefeuilles APP et PEPP.
+- [BCE, bulletin économique, conditions de liquidité de février à mai 2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_07~e257cabcc5.en.html) : liquidité excédentaire (2 358 milliards), billets, réserves obligatoires, recours au refinancement.
+- [BCE, décision de politique monétaire du 11 juin 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html) : hausse de 25 points de base, taux à 2,25 / 2,40 / 2,65 %, poursuite du non-réinvestissement.
+- [BCE, discours « Striking the right balance » (18 février 2025)](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250218~cc20f3518c.en.html) : cadre opérationnel, rôle du taux de dépôt, spread de 15 points de base.
+- [BCE, explainer « What are TARGET balances? »](https://www.ecb.europa.eu/ecb/educational/explainers/tell-me-more/html/target2_balances.en.html) : mécanique des soldes, lien avec le QE et les flux de capitaux.
+- [Bundesbank, soldes Target](https://www.bundesbank.de/en/tasks/payment-systems/t2/target-balances-920752) : créance allemande de 1 065,7 milliards d'euros au 31 mai 2026, série historique.
+- [Bundesbank, comptes annuels 2025](https://www.bundesbank.de/en/press/speeches/annual-accounts-for-2025-990898) : perte de 8,6 milliards, report cumulé de 27,8 milliards, fonds propres nets de 363 milliards.
+- [Banque de France, résultats 2025](https://www.banque-france.fr/en/news/banque-de-france-2025-results) : bénéfice de 8,1 milliards, plus-value exceptionnelle de 11 milliards sur l'or, fonds propres de 283 milliards.
+- [PIIE, « How much money have central banks really lost? »](https://www.piie.com/blogs/realtime-economics/2025/how-much-money-have-central-banks-really-lost) : comparaison des pertes et conventions comptables, fonds propres négatifs de la BCE.
+- [CPRAM, « The end of Quantitative Tightening is not on the agenda »](https://cpram.com/fra/en/individual/publications/experts/article/ecb-the-end-of-quantitative-tightening-is-not-on-the-agenda) : tombées 2026 (330 milliards d'APP, 173 de PEPP), trajectoire du bilan.
+- [Bruegel, « Finding the right balance (sheet): quantitative tightening in the euro area »](https://www.bruegel.org/news/finding-right-balance-sheet-quantitative-tightening-euro-area) : cadrage du QT européen.
