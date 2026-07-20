@@ -5,7 +5,7 @@ import { glossaryRedirects } from '../src/config/glossary-redirects.mjs';
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
 assert.equal(glossaryAtlasEntries.length, 42, 'Le périmètre Atlas indexable doit rester à 42 fiches');
-assert.equal(glossaryEntries.length - glossaryAtlasEntries.length, 328, "Les définitions courtes uniques doivent être au nombre de 328 après fusion");
+assert.equal(glossaryEntries.length - glossaryAtlasEntries.length, 332, "Les définitions courtes uniques doivent être au nombre de 332 après fusion");
 assert.equal(Object.keys(glossaryRedirects).length, 6, 'Les six anciens slugs doivent conserver une redirection');
 for (const [from, to] of Object.entries(glossaryRedirects)) {
   assert(from.endsWith('-2'), `Alias inattendu: ${from}`);
