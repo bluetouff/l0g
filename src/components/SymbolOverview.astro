@@ -1,4 +1,6 @@
 ---
+import { serializeInlineScriptData } from '../lib/security.ts';
+
 /**
  * Comparateur multi-symboles (« Symbol Overview »).
  *   <SymbolOverview symbols={[{label:'BTC', ticker:'BINANCE:BTCUSDT'}, ...]} />
@@ -37,7 +39,7 @@ const config = {
       src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
       async
       is:inline
-      set:html={JSON.stringify(config)}
+      set:html={serializeInlineScriptData(config)}
     />
   </div>
 </div>

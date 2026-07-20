@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../../lib/security.ts';
 
 // --- Structured data : l'API publique decrite comme jeu de donnees citable ---
 const ASITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -124,7 +125,7 @@ const datasetLd = {
   sidebar={false}
   alternateLinks={apiAlternateLinks}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(datasetLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(datasetLd)} />
   <section data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// api</p>
     <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
@@ -517,7 +518,8 @@ df = df.set_index("seriesDate").sort_index()`}</code></pre>
     }
   </style>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (() => {
       // Boutons « copier »
       document.querySelectorAll('.copy-btn').forEach((btn) => {

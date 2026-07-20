@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 import { agentPrompts } from '../lib/agent-prompts.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -94,7 +95,7 @@ const appLd = {
   sidebar={false}
   alternateLinks={mcpAlternateLinks}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(appLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(appLd)} />
 
   <section data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// mcp</p>

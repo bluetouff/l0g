@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 import TrustBar from '../components/TrustBar.astro';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -127,7 +128,7 @@ const jsonLd = {
   ogImageAlt="Statut et intégrité l0g : build statique, API publique, zéro tracker"
   sidebar={false}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <article class="status-page rise" data-pagefind-body>
     <section class="status-hero" data-pagefind-ignore>

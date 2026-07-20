@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 import TrustBar from '../components/TrustBar.astro';
 import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
 import { buildBlackBoxSurface } from '../lib/black-box.ts';
@@ -75,7 +76,7 @@ const jsonLd = {
   description="Black Box Recorder l0g : boîte noire publique des signaux de risque, avec frames point-in-time, hashes d’intégrité, sources, modèles, fraîcheur et replay par date."
   sidebar={false}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <article class="black-box rise" data-pagefind-body>
     <section class="bb-hero" data-pagefind-ignore>
@@ -193,7 +194,8 @@ const jsonLd = {
     </section>
   </article>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (() => {
       const form = document.getElementById('bb-replay-form');
       const input = document.getElementById('bb-date');

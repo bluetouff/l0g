@@ -1,4 +1,6 @@
 ---
+import { serializeInlineScriptData } from '../lib/security.ts';
+
 /**
  * Heatmap TradingView.
  *   <Heatmap kind="crypto" />
@@ -54,7 +56,7 @@ const config = isCrypto
 <div class="tv-widget" style={`--h:${height}px`}>
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src={src} async is:inline set:html={JSON.stringify(config)} />
+    <script type="text/javascript" src={src} async is:inline set:html={serializeInlineScriptData(config)} />
   </div>
 </div>
 

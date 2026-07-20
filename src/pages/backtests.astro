@@ -214,7 +214,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </div>
     </section>
 
-    <script is:inline>
+    <script>
+      // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
       (function () {
         function hasSignal(data, key) {
           return !!(data && Array.isArray(data.indices) && data.indices.some(function (item) {

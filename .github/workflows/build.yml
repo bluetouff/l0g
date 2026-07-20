@@ -102,6 +102,7 @@ jobs:
           L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
         run: |
           npx astro build
+          npm run test:security
           npm run test:agent-surface
           npx pagefind --site dist
           npm run test:internal-links

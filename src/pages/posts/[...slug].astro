@@ -346,7 +346,8 @@ const trustItems = [
     <a href="/" class="mono-label link-term mt-6 inline-block">$ cd ..</a>
   </article>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     document.querySelectorAll('[data-copy-url]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var url = btn.getAttribute('data-copy-url');
@@ -368,7 +369,8 @@ const trustItems = [
     });
   </script>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (function () {
       var bar = document.querySelector('.read-progress > span');
       if (!bar) return;

@@ -49,7 +49,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   </style>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (function () {
       function input() { return document.querySelector('.pf-page .pagefind-ui__search-input'); }
       function runSearch(q, push) {

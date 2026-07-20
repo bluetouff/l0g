@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 import TrustBar from '../components/TrustBar.astro';
 import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
 import { buildRiskDiffSurface } from '../lib/risk-diff.ts';
@@ -76,7 +77,7 @@ const jsonLd = {
   description="Risk Diff l0g : ce qui a changé dans le risque depuis hier, 7 jours et 30 jours, en reliant signaux, sources, claims, articles et méthodes."
   sidebar={false}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <article class="risk-diff rise" data-pagefind-body>
     <section class="rd-hero" data-pagefind-ignore>

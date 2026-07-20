@@ -60,7 +60,8 @@ const formats = [
   </div>
 </aside>
 
-<script is:inline>
+<script>
+  // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
   document.querySelectorAll('[data-copy-citation]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var value = btn.getAttribute('data-copy-citation');

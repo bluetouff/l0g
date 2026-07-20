@@ -1,4 +1,6 @@
 ---
+import { serializeInlineScriptData } from '../lib/security.ts';
+
 /**
  * Calendrier économique (« Events »).
  *   <EconomicCalendar countries="us,eu,fr,gb,jp,cn" />
@@ -29,7 +31,7 @@ const config = {
       src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
       async
       is:inline
-      set:html={JSON.stringify(config)}
+      set:html={serializeInlineScriptData(config)}
     />
   </div>
 </div>

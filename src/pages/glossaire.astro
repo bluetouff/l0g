@@ -405,7 +405,8 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     }
   </style>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (() => {
       const input = document.getElementById('gloss-filter');
       const root = document.getElementById('gloss-root');

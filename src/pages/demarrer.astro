@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 const title = 'Démarrer';
 const description =
@@ -126,7 +127,7 @@ const jsonLd = {
     <a href="/en/start/" class="link-term">English version available →</a>
   </p>
 
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <article class="start-page rise" data-pagefind-body>
     <section class="start-hero" data-pagefind-ignore>

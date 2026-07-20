@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 const title = 'Manifeste';
 const description =
@@ -63,7 +64,7 @@ const jsonLd = {
   ogImageAlt="Manifeste l0g : sources primaires, code ouvert, limites assumées"
   sidebar={false}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <article class="manifest-page rise" data-pagefind-body>
     <section class="manifest-hero" data-pagefind-ignore>

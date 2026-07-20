@@ -161,7 +161,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>
   </article>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (function () {
       var bar = document.querySelector('.read-progress > span');
       if (!bar) return;
@@ -180,7 +181,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     })();
   </script>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     document.querySelectorAll('[data-copy-url]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var u = btn.getAttribute('data-copy-url');

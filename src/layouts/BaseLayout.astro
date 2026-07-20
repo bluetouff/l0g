@@ -3,8 +3,10 @@ import '../styles/global.css';
 import Sidebar from '../components/Sidebar.astro';
 import SidebarMobile from '../components/SidebarMobile.astro';
 import WebMCPTools from '../components/WebMCPTools.astro';
+import CspMeta from '../components/CspMeta.astro';
 import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
 import { buildSeoMetadata } from '../lib/seo.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 type AlternateLink = { hreflang: string; href: string };
 
@@ -111,12 +113,14 @@ function isCurrentHref(href: string): boolean {
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
+    <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     {/* Thème clair/sombre : résolution avant le premier paint (anti-flash). */}
-    <script is:inline>
+    <script>
+      // @ts-nocheck -- exécuté avant le rendu ; aucune API Astro côté client.
       (function () {
         try {
           var k = 'l0g-theme';
@@ -159,7 +163,7 @@ function isCurrentHref(href: string): boolean {
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="l0g.fr" href="/rss.xml" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(siteJsonLd)} />
+    <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(siteJsonLd)} />
   </head>
 
   <body>
@@ -438,7 +442,8 @@ function isCurrentHref(href: string): boolean {
     )}
 
     {/* Bascule de thème : addEventListener (CSP script-src-attr 'none'). */}
-    <script is:inline>
+    <script>
+      // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
       (function () {
         var k = 'l0g-theme';
         var btn = document.getElementById('theme-toggle');

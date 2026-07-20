@@ -1,4 +1,6 @@
 ---
+import { serializeInlineScriptData } from '../lib/security.ts';
+
 /**
  * Graphique TradingView (embed officiel « Advanced Chart »).
  * Usage dans un .mdx :
@@ -56,7 +58,7 @@ const symbolPath = symbol.replace(':', '-');
       src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
       async
       is:inline
-      set:html={JSON.stringify(config)}
+      set:html={serializeInlineScriptData(config)}
     />
   </div>
   {caption && <figcaption class="mono-label tv-caption">{caption}</figcaption>}

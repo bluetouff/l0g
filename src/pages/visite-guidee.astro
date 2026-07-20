@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 const title = 'Visite guidée';
 const description =
@@ -379,7 +380,7 @@ const jsonLd = {
   ogImageAlt="Visite guidée de l0g : comprendre, lire, surveiller, vérifier et réutiliser"
   sidebar={false}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <article class="tour-page rise" data-pagefind-body>
     <section class="tour-hero" data-pagefind-ignore>

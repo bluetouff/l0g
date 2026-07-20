@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 const quickCommands = [
   'man',
@@ -152,7 +153,7 @@ const jsonLd = {
   ogImageAlt="Terminal l0g : interface de navigation en ligne de commande"
   sidebar={false}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
   <section class="terminal-page rise" data-pagefind-body>
     <div class="terminal-shell" id="terminal-shell" data-pagefind-ignore>
@@ -277,7 +278,8 @@ const jsonLd = {
     </section>
   </section>
 
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (function () {
       var shell = document.getElementById('terminal-shell');
       var screen = document.getElementById('terminal-screen');

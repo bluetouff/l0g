@@ -531,7 +531,8 @@ const total = categories.reduce((n, c) => n + c.sources.length, 0);
       text-transform: uppercase; color: var(--color-muted); white-space: nowrap;
     }
   </style>
-  <script is:inline>
+  <script>
+    // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     const q = document.getElementById('ref-q');
     if (q) {
       const cards = Array.from(document.querySelectorAll('.ref-card'));

@@ -27,10 +27,15 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Astro réutilise ce seuil pour décider d'injecter un petit chunk JS
+      // directement dans le HTML. La CSP Apache interdit ce mode d'exécution.
+      assetsInlineLimit: (filePath) => filePath.endsWith('.js') ? false : undefined,
+    },
   },
 
-  // La CSP est gérée au niveau Apache (deploy/l0g.fr.apache.conf) pour
-  // pouvoir whitelister proprement les domaines TradingView des embeds.
+  // Les scripts applicatifs sont externalisés par Astro. Apache peut ainsi
+  // interdire tout JavaScript inline dans son CSP sans alourdir chaque page.
   build: {
     inlineStylesheets: 'auto',
   },

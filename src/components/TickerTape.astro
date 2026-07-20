@@ -1,4 +1,6 @@
 ---
+import { serializeInlineScriptData } from '../lib/security.ts';
+
 /**
  * Bandeau de cotations TradingView (« Ticker Tape »), placé en tête de page.
  */
@@ -31,7 +33,7 @@ const config = {
       src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
       async
       is:inline
-      set:html={JSON.stringify(config)}
+      set:html={serializeInlineScriptData(config)}
     />
   </div>
 </div>
