@@ -1,0 +1,110 @@
+---
+title: "La double peine des émergents : dollar fort, baril de guerre"
+description: "Un Brent repassé à 88 dollars, un billet vert au plus haut de treize mois porté par des paris de hausse de la Fed, des devises émergentes qui ont effacé leurs gains de 2026 : l'étau de 2022 se remonte pièce par pièce. Face à lui, des spreads souverains émergents endormis sur des plus bas pluriannuels et un FMI déjà engagé à guichet record. Radiographie d'un écart entre la mécanique et le pricing."
+pubDate: 2026-07-20T11:37:00+02:00
+updatedDate: 2026-07-20T11:37:00+02:00
+tags: ["macro", "dollar", "dette", "géopolitique", "marchés émergents"]
+draft: false
+---
+
+*Vendredi 17 juillet, le Brent a clôturé à 88 dollars, en hausse de 13 % sur la semaine après l'attaque d'une usine de dessalement au Koweït. Le même jour, le dollar campait près de son plus haut de treize mois, dopé par des marchés qui recommencent à parier sur une hausse de la Réserve fédérale. Pour un importateur d'énergie du Sud, ces deux lignes de cotation n'en font qu'une : la facture pétrolière gonfle en volume et en change à la fois. La dernière fois que ce ciseau s'est refermé, en 2022, il s'est terminé au Fonds monétaire international pour le Pakistan, l'Égypte et le Sri Lanka. Le voici qui se remonte, pièce par pièce, face à des marchés de dette émergente installés sur des plus bas pluriannuels.*
+
+Les chiffres de la tenaille tiennent en trois lignes. Le pétrole d'abord : [88,10 dollars le baril de Brent au 17 juillet](https://tradingeconomics.com/commodity/brent-crude-oil), en hausse de 27 % sur un an, après un aller-retour complet en trois semaines, retombé sous 75 dollars fin juin avant que la guerre ne rallume la prime. Le dollar ensuite : [un indice en hausse d'environ 2,5 % sur le seul mois de juin, proche d'un sommet de treize mois](https://convera.com/blog/market-insights/fx-research/monthly-global-fx-outlook/fx-outlook-july-2026/), soutenu par [des paris de hausse de taux de la Fed nourris par la flambée pétrolière](https://www.cnbc.com/amp/2026/07/09/dollar-stands-tall-as-gulf-tensions-fuel-oil-surge-fed-hike-bets.html), une inflation américaine à 4,2 % fermant la porte à toute détente rapide, mécanique que nous avons décortiquée dans notre analyse du [rebond du dollar](/posts/rebond-du-dollar-jusqu-ou-avant-la-riposte-des-banques-centrales/). Les devises émergentes enfin : [l'indice MSCI des devises émergentes a effacé début juillet la totalité de ses gains de 2026](https://www.bloomberg.com/news/articles/2026-07-01/emerging-market-currencies-erase-2026-gains-as-dollar-advances), au plus bas depuis avril. Trois cotations, un seul mouvement : tout ce que le Sud importe se paie plus cher, dans une monnaie qui s'apprécie, financée à des taux qui remontent.
+
+## Le ciseau se referme
+
+La mécanique mérite d'être posée, car elle n'a rien d'abstrait. Le pétrole se facture en dollars ; quand le baril et le billet vert montent ensemble, l'importateur émergent subit une double hausse multiplicative, celle du prix et celle du change. La facture énergétique creuse le déficit commercial, le déficit pèse sur la devise, la devise qui glisse renchérit encore la facture : la boucle s'auto-alimente, et elle mord d'abord là où les coussins sont les plus minces. Le FMI l'a écrit noir sur blanc dès mars : les importateurs d'énergie [d'Afrique, du Moyen-Orient et d'Amérique latine encaissent des factures d'importation alourdies sur des marges budgétaires et des réserves déjà limitées](https://www.imf.org/en/blogs/articles/2026/03/30/how-the-war-in-the-middle-east-is-affecting-energy-trade-and-finance), le triptyque carburant, engrais, alimentation élargissant les déficits et pressant les changes.
+
+S'ajoute l'étage financier. Vu du Sud, le resserrement américain n'est pas une nouvelle de politique intérieure : c'est le prix de refinancement d'un stock de dette en dollars que la BIS chiffre à [environ 4 300 milliards de dollars pour les économies émergentes et en développement fin 2025](https://www.bis.org/statistics/rppb2604.htm), en hausse de 35 % sur dix ans, plus de la moitié sous forme de titres. Cette dette en monnaie des autres, le vieux [« péché originel »](/glossaire/#peche-originel) des émergents, passe par la plomberie offshore que nous avons cartographiée dans notre article sur [les eurodollars](/posts/eurodollars-dollar-offshore-dette-cachee/) : quand la Fed durcit et que le dollar monte, le service de cette dette se renchérit sans qu'aucun parlement du Sud n'ait voté quoi que ce soit.
+
+## La carte des fragilités
+
+Le choc ne frappe pas une catégorie homogène mais une géographie précise. En première ligne, les importateurs d'énergie à réserves minces. L'Égypte cumule les plaies : recettes du canal de Suez et du tourisme amoindries, [livre glissée à 50,55 pour un dollar](https://tradingeconomics.com/egypt/currency), et une perfusion du FMI dont [une tranche d'environ 2,3 milliards de dollars a encore été débloquée fin février](https://www.bloomberg.com/news/articles/2026-02-26/egypt-unlocks-around-2-3-billion-in-imf-funding-after-reviews). Le Pakistan voit sa [facture alimentaire d'importation bondir à 9,1 milliards de dollars sur l'exercice 2026](https://www.dawn.com/news/2016027/food-import-bill-jumps-to-91bn-on-higher-sugar-edible-oil-purchases-in-fy26) pendant que la guerre du Golfe a provoqué des [pénuries de carburant du Bangladesh au Nigeria en passant par le Vietnam et le Zimbabwe](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war). Le Nigeria illustre la cruauté des classements : exportateur de brut mais importateur de produits raffinés, il touche la rente d'un côté et paie la pénurie de l'autre.
+
+De l'autre côté du ciseau, les gagnants encaissent. Les producteurs du Golfe engrangent la prime de guerre, le Brésil vend son brut et ses céréales dans un monde qui en manque, et les exportateurs de matières premières voient leurs termes de l'échange s'améliorer à mesure que ceux des importateurs se dégradent. La ligne de partage ne passe plus entre « émergents » et « développés » : elle passe entre ceux qui vendent des molécules et ceux qui les achètent, une grille que le [choc alimentaire mondial](/posts/trump-famine-arme-destruction-massive/) rend encore plus brutale pour les pays les plus pauvres. La Banque mondiale garde un scénario central plutôt clément, [une hausse limitée à 2,5 % de son indice alimentaire en 2026](https://blogs.worldbank.org/en/developmenttalk/when-risks-stack-up--threats-to-global-food-markets-in-2026), mais liste elle-même les risques qui le feraient dérailler : guerre prolongée, El Niño, restrictions à l'export.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 360" role="img" aria-label="Le ciseau des émergents : Brent en hausse et indice des devises émergentes en baisse sur douze mois" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="360" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le ciseau : baril contre devises du Sud</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Douze derniers mois, tracé stylisé. Quand les deux lames s'écartent, l'importateur émergent paie deux fois.</text>
+
+  <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
+  <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
+  <text x="120" y="300" fill="#8b909b" font-size="10" text-anchor="middle">été 2025</text>
+  <text x="400" y="300" fill="#8b909b" font-size="10" text-anchor="middle">guerre, juin 2026</text>
+  <text x="640" y="300" fill="#8b909b" font-size="10" text-anchor="middle">17 juillet</text>
+
+  <polyline points="100,220 220,210 320,200 400,130 470,205 560,190 660,120" fill="none" stroke="#f5b13d" stroke-width="2.5"/>
+  <text x="150" y="200" fill="#f5b13d" font-size="11">Brent (+27 % sur un an)</text>
+  <text x="655" y="110" fill="#f5b13d" font-size="11" text-anchor="end">88 $</text>
+
+  <polyline points="100,170 220,165 320,150 400,155 470,150 560,175 660,205" fill="none" stroke="#5eead4" stroke-width="2.5"/>
+  <text x="210" y="140" fill="#5eead4" font-size="11">indice MSCI devises émergentes</text>
+  <text x="655" y="225" fill="#5eead4" font-size="11" text-anchor="end">gains 2026 effacés</text>
+
+  <circle cx="660" cy="120" r="5" fill="#ff4d87"/>
+  <circle cx="660" cy="205" r="5" fill="#ff4d87"/>
+  <line x1="660" y1="128" x2="660" y2="197" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <text x="32" y="330" fill="#8b909b" font-size="11">Sources : Trading Economics (Brent, 17 juillet 2026), Bloomberg (indice MSCI EM FX, 1ᵉʳ juillet 2026), Convera (dollar). Représentation schématique.</text>
+</svg>
+<figcaption>Le baril a repris 27 % sur un an avec une prime de guerre reconstituée mi-juillet, pendant que l'indice des devises émergentes retombait à son plus bas depuis avril, dollar au plus haut de treize mois oblige. L'écartement des deux lames mesure la double peine des importateurs. Tracé stylisé à partir des points cités.</figcaption>
+</figure>
+
+## Le guichet record du FMI
+
+Le filet de sécurité du système porte déjà la marque du cycle précédent. L'encours de crédit du FMI a [dépassé 110 milliards de DTS début 2026, environ 150 milliards de dollars, un record historique](https://zeenews.india.com/economy/from-argentina-to-pakistan-the-10-nations-holding-the-world-s-largest-imf-debt-in-2026-3041561.html). L'Argentine en concentre à elle seule 60,2 milliards, soit plus de 10 % de son PIB ; l'Égypte suit avec 10,7 milliards, le Pakistan avec 10,5 ; les dix premiers débiteurs, Ukraine comprise, [cumulent 128 milliards de dollars](https://economy.com.pk/these-ten-countries-carry-the-largest-imf-debt-loads-in-2026/). Dit simplement : le prêteur en dernier ressort mondial aborde un possible deuxième round avec un bilan déjà chargé des rescapés du premier, et une concentration inédite sur une poignée de programmes géants.
+
+Cette photographie a deux lectures. La rassurante : le Fonds a prouvé en 2022-2023 qu'il savait enchaîner les programmes, et ses grands débiteurs actuels sont précisément encadrés, revues trimestrielles à l'appui. L'inquiète : chaque dollar de baril supplémentaire dégrade l'arithmétique de programmes calibrés sur un pétrole plus sage, et les pays qui ne sont pas encore au guichet, frontière africaine en tête, y arriveraient dans un monde où les gros tiroirs sont déjà ouverts.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 330" role="img" aria-label="Encours record du FMI et principaux pays débiteurs en 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="330" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le FMI à guichet record</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12">Crédit en cours par pays, en milliards de dollars, début 2026.</text>
+
+  <rect x="200" y="90" width="470" height="36" fill="#ff4d87" opacity="0.85"/>
+  <text x="192" y="114" fill="#d6d9df" font-size="12" text-anchor="end">Argentine</text>
+  <text x="208" y="114" fill="#0c0d10" font-size="13" font-weight="700">60,2 (10,5 % du PIB)</text>
+
+  <rect x="200" y="142" width="84" height="36" fill="#f5b13d" opacity="0.85"/>
+  <text x="192" y="166" fill="#d6d9df" font-size="12" text-anchor="end">Égypte</text>
+  <text x="292" y="166" fill="#f5f6f8" font-size="13" font-weight="700">10,7</text>
+
+  <rect x="200" y="194" width="82" height="36" fill="#f5b13d" opacity="0.85"/>
+  <text x="192" y="218" fill="#d6d9df" font-size="12" text-anchor="end">Pakistan</text>
+  <text x="290" y="218" fill="#f5f6f8" font-size="13" font-weight="700">10,5</text>
+
+  <text x="200" y="262" fill="#5eead4" font-size="12">Encours total : record au-dessus de 110 milliards de DTS (~150 Md$). Top 10, Ukraine comprise : 128 Md$.</text>
+
+  <text x="32" y="302" fill="#8b909b" font-size="11">Sources : FMI (crédit en cours), compilations Zee News et The Economy Pakistan, Bloomberg pour la tranche égyptienne de février 2026.</text>
+</svg>
+<figcaption>Le prêteur en dernier ressort mondial aborde le nouveau choc avec un encours record et une concentration extrême : l'Argentine pèse à elle seule 40 % du total. Un deuxième round pétrolier trouverait un guichet déjà très sollicité. Sources : FMI, compilations citées.</figcaption>
+</figure>
+
+## Le paradoxe des 235 points
+
+Face à cette mécanique, le marché affiche un calme qui interroge. Le spread souverain émergent de référence, l'[EMBI](/glossaire/#embi), s'est [resserré de 53 points de base au deuxième trimestre pour finir à 235 points](https://www.ssga.com/us/en/institutional/insights/emerging-market-debt-commentary-q2-2026), non loin de ses plus bas pluriannuels. La séquence dit tout du régime de marché : écartement de 35 points au premier trimestre quand la guerre éclate, puis rallye tout au long de mai et juin à mesure que le cadre de cessez-le-feu américano-iranien débouclait la prime géopolitique. Le problème est daté : ces 235 points photographient la fin juin, avant que l'attaque du Koweït et le retour des menaces sur Ormuz ne relancent le baril de 13 % en une semaine.
+
+Trois explications cohabitent, et les distinguer est tout l'enjeu. La complaisance : le marché extrapole le débouclage de juin et n'a pas encore réévalué la re-escalade. La différenciation : les indices agrègent des exportateurs gagnants et des importateurs perdants, et la moyenne masque un écart interne qui, lui, travaille. La résilience réelle, enfin, qui mérite sa propre section. La réponse se lira dans les prochaines semaines au point de rencontre des trois : si le Brent s'installe au-dessus de 90 et que l'EMBI reste à 235, l'anomalie deviendra difficile à défendre.
+
+## L'école de la résilience
+
+Le camp d'en face a des arguments sérieux, et il domine la gestion d'actifs. Sa thèse : les émergents de 2026 ne sont pas ceux de 2013, encore moins ceux des années 1990. Leurs banques centrales ont resserré avant la Fed et en sont récompensées ; leurs marchés de dette en monnaie locale se sont approfondis, réduisant le péché originel ; leurs réserves ont été reconstituées après 2022. La dette émergente a [surperformé les autres marchés obligataires en 2025, portée par des exportations résistantes et une inflation en repli](https://www.pinebridge.com/en/insights/2026-emerging-market-debt-outlook), et les stratèges y voient [des forces qui perdurent](https://investments.metlife.com/insights/fixed-income/emd-outlook-strengths-endure/), flux entrants et offre nette réduite à l'appui. Même la BIS, peu suspecte de complaisance, documente des [réponses monétaires émergentes aux chocs externes devenues nettement plus orthodoxes](https://www.bis.org/publ/qtrpdf/r_qt2603e.pdf).
+
+Le tableau de ce lundi donne d'ailleurs raison aux deux camps à la fois, et c'est sa singularité. Aucune devise majeure du Sud n'est en chute libre : la roupie pakistanaise [tient dans un mouchoir de poche autour de 279](https://en.dailypakistan.com.pk/18-Jul-2026/today-currency-rates-in-pakistan-open-market-dollar-pound-euro-irani-rial-rates-18-july-2026), la livre égyptienne glisse sans décrocher. Le stress de 2026 n'est pas une panique, c'est une érosion : quelques dixièmes de réserves par mois, quelques points de facture énergétique, quelques points de base de refinancement. L'histoire des crises émergentes enseigne que l'érosion peut durer longtemps, puis cesser d'être lente d'un coup, au premier accident de refinancement venu.
+
+## Les lignes de faille à surveiller
+
+Les scénarios se départageront sur une poignée de curseurs datés, et il s'agit bien de scénarios. Le baril d'abord : un Brent durablement au-dessus de 90 dollars transforme l'érosion en hémorragie pour les importateurs fragiles ; un reflux vers 75, comme fin juin, referme le ciseau sans dégâts majeurs. La Fed ensuite, dès les 28 et 29 juillet : chaque cran de « higher for longer » se transmet aux 4 300 milliards de dette dollar du Sud, et une vraie hausse changerait de catégorie de choc. L'EMBI encore : sa réaction, ou son absence de réaction, à la re-escalade de mi-juillet dira si les 235 points relevaient de la différenciation ou de la complaisance. Les revues du FMI enfin, Égypte et Pakistan en tête, premières à intégrer un baril de guerre dans leurs arithmétiques de programme, et le [front alimentaire](/posts/trump-famine-arme-destruction-massive/) si l'un des risques listés par la Banque mondiale se matérialise.
+
+Le fil à retenir dépasse le trimestre. Le système financier mondial a passé quatre ans à tester la résistance de ses maillons riches, banques régionales américaines, Gilts britanniques, dette française. Le ciseau qui se referme teste maintenant les maillons pauvres, avec un filet de sécurité déjà engagé à guichet record et des marchés qui n'ont pas encore mis de prix sur cette éventualité. Les précédents de 2022 s'appelaient Colombo, Le Caire et Islamabad ; les points de départ étaient exactement ceux d'aujourd'hui.
+
+---
+
+**Sources primaires :** FMI, [blog « How the War in the Middle East Is Affecting Energy, Trade, and Finance » (30 mars 2026)](https://www.imf.org/en/blogs/articles/2026/03/30/how-the-war-in-the-middle-east-is-affecting-energy-trade-and-finance), [World Economic Outlook d'avril 2026](https://www.imf.org/-/media/files/publications/weo/2026/april/english/ch1.pdf) et [crédit en cours (données trésorerie)](https://www.imf.org/external/np/fin/tad/balmov2.aspx?type=TOTAL) ; BIS, [statistiques bancaires internationales et indicateurs de liquidité globale à fin décembre 2025](https://www.bis.org/statistics/rppb2604.htm) (crédit dollar aux EMDE ~4 300 milliards) et [Quarterly Review de mars 2026 sur les réponses monétaires émergentes](https://www.bis.org/publ/qtrpdf/r_qt2603e.pdf) ; Banque mondiale, [« When risks stack up: Threats to global food markets in 2026 »](https://blogs.worldbank.org/en/developmenttalk/when-risks-stack-up--threats-to-global-food-markets-in-2026).
+
+**Marché et analyses :** [State Street, EMD Commentary T2 2026](https://www.ssga.com/us/en/institutional/insights/emerging-market-debt-commentary-q2-2026) (EMBI à 235 points) et [T1 2026](https://www.ssga.com/us/en/institutional/insights/emerging-market-debt-commentary-q1-2026) ; [PineBridge, « 2026 EMD Outlook »](https://www.pinebridge.com/en/insights/2026-emerging-market-debt-outlook) ; [MetLife IM, « Strengths Endure »](https://investments.metlife.com/insights/fixed-income/emd-outlook-strengths-endure/) ; [Convera, FX Outlook juillet 2026](https://convera.com/blog/market-insights/fx-research/monthly-global-fx-outlook/fx-outlook-july-2026/).
+
+**Presse et données :** [Bloomberg, « EM Currencies Erase 2026 Gains » (1ᵉʳ juillet 2026)](https://www.bloomberg.com/news/articles/2026-07-01/emerging-market-currencies-erase-2026-gains-as-dollar-advances) et [tranche FMI égyptienne (26 février 2026)](https://www.bloomberg.com/news/articles/2026-02-26/egypt-unlocks-around-2-3-billion-in-imf-funding-after-reviews) ; [CNBC (9 juillet 2026)](https://www.cnbc.com/amp/2026/07/09/dollar-stands-tall-as-gulf-tensions-fuel-oil-surge-fed-hike-bets.html) ; [Trading Economics, Brent](https://tradingeconomics.com/commodity/brent-crude-oil) et [livre égyptienne](https://tradingeconomics.com/egypt/currency) ; [Dawn, facture alimentaire pakistanaise](https://www.dawn.com/news/2016027/food-import-bill-jumps-to-91bn-on-higher-sugar-edible-oil-purchases-in-fy26) ; [Daily Pakistan, taux du 18 juillet](https://en.dailypakistan.com.pk/18-Jul-2026/today-currency-rates-in-pakistan-open-market-dollar-pound-euro-irani-rial-rates-18-july-2026) ; [Zee News](https://zeenews.india.com/economy/from-argentina-to-pakistan-the-10-nations-holding-the-world-s-largest-imf-debt-in-2026-3041561.html) et [The Economy Pakistan](https://economy.com.pk/these-ten-countries-carry-the-largest-imf-debt-loads-in-2026/) pour les classements de dette FMI ; [Wikipédia, impact économique de la guerre d'Iran de 2026](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war). Chiffres et dates vérifiés sur les sources citées ; spreads, changes et prix évoluent en continu, les niveaux cités sont ceux du 17-20 juillet 2026.

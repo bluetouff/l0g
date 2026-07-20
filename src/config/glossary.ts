@@ -135,6 +135,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'SRF', nom: 'Standing Repo Facility / Standing Repo Program', def: "Facilité permanente de la Fed permettant aux contreparties éligibles d'emprunter du cash contre Treasuries et MBS d'agence. Agit comme plafond sur les taux courts. Plafond agrégé supprimé et passage en allotissement intégral le 10 décembre 2025." },
       { sigle: 'IORB', nom: 'Interest On Reserve Balances', def: "Taux auquel la Fed rémunère les réserves que les banques détiennent chez elle. Outil central de pilotage des taux courts dans le régime de réserves abondantes : les banques n'ont guère intérêt à prêter en dessous." },
       { sigle: 'EFFR', nom: 'Effective Federal Funds Rate', def: "Taux effectif moyen des prêts en blanc au jour le jour entre banques américaines. Cible opérationnelle de la politique monétaire, encadrée par l'IORB, le RRP et le SRP." },
+      { sigle: 'EMBI', nom: 'Emerging Markets Bond Index', def: "Indice de référence de J.P. Morgan pour la dette souveraine émergente en dollars. Son spread contre les Treasuries mesure le risque perçu de l'ensemble de la classe d'actifs : autour de 235 points de base mi-2026, près de ses plus bas pluriannuels, un niveau qui agrège exportateurs gagnants et importateurs sous pression." },
+      { sigle: 'Péché originel', nom: 'Original sin', def: "Incapacité historique des émergents à emprunter à l'étranger dans leur propre monnaie, les condamnant à une dette en dollars dont le service explose quand le billet vert s'apprécie. Atténué depuis vingt ans par l'essor des marchés en monnaie locale, il persiste via environ 4 300 milliards de dollars de crédit dollar aux économies émergentes recensés par la BIS." },
       { sigle: 'COFER', nom: 'Currency Composition of Official Foreign Exchange Reserves', def: "Base trimestrielle du FMI mesurant la composition en devises des réserves de change mondiales, hors or. Le dollar y pèse encore autour de 58 pour cent en 2025, contre près de 70 pour cent en 2000. À distinguer de la part de l'or, mesurée sur les réserves totales." },
       { sigle: 'Dédollarisation', nom: 'Diversification hors du dollar', def: "Réduction progressive de la part du dollar dans les réserves, les échanges et les financements, au profit d'autres devises et de l'or. Mouvement graduel et partiel, accéléré par la crainte des sanctions depuis 2022, plus qu'un abandon brutal du billet vert." },
       { sigle: 'Immunité souveraine', nom: 'Sovereign immunity', def: "Principe de droit international coutumier qui protège les biens d'un État, en particulier les réserves de sa banque centrale, contre les mesures d'exécution d'un autre État. Au cœur du débat sur les avoirs russes immobilisés : l'immobilisation est jugée compatible avec ce principe par les institutions européennes, la confiscation du principal beaucoup plus contestée." },
@@ -431,7 +433,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-19';
+export const glossaryUpdatedIso = '2026-07-20';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
