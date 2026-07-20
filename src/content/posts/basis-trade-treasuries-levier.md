@@ -96,7 +96,7 @@ La fragilité est connue et documentée. Quand la volatilité monte, deux choses
 <figcaption>Un choc de volatilité relève marges et haircuts, déclenche des appels de marge, force le débouclage, et fait repartir la volatilité : une boucle auto-entretenue. Sources : BIS (Schrimpf, Shin, Sushko, 2020), OFR, FEDS Notes.</figcaption>
 </figure>
 
-## Ce que le clearing obligatoire va changer
+## Les effets attendus du clearing obligatoire
 
 Les régulateurs ne sont pas restés sans réponse. La gouverneure de la Fed Lisa Cook a de nouveau qualifié, le **20 novembre 2025**, les positions des hedge funds sur les Treasuries de vulnérabilité systémique, susceptible de rendre le marché plus vulnérable au stress. Mais le levier principal est ailleurs : la compensation centralisée obligatoire. La règle de la SEC, adoptée fin 2023 puis repoussée d'un an, impose désormais la compensation des transactions au comptant sur Treasuries au **31 décembre 2026**, et celle du repo au **30 juin 2027**. Le périmètre des chambres a été élargi, avec l'agrément de CME en décembre 2025 et d'ICE début 2026, et un nouveau service de FICC pour limiter le double appel de marge.
 

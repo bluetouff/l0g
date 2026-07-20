@@ -1,6 +1,6 @@
 ---
-title: "Lire la donnée on-chain : ce que la blockchain montre, et ce qu'elle masque"
-description: "Guide de référence sur la donnée on-chain : le registre public permanent face aux dépôts réglementaires à retard, comment lire l'activité (adresses actives, flux d'exchange), la valorisation (capitalisation réalisée, MVRV, SOPR, NVT) et la DeFi (TVL, ses doubles comptes), puis surtout ce que la chaîne ne dit pas. Une adresse n'est pas une identité, l'essentiel du trading reste hors chaîne, et les étiquettes sont l'œuvre de fournisseurs faillibles."
+title: "Lire la donnée on-chain : la transparence de la blockchain, et ses masques"
+description: "Guide de référence sur la donnée on-chain : le registre public permanent face aux dépôts réglementaires à retard, comment lire l'activité (adresses actives, flux d'exchange), la valorisation (capitalisation réalisée, MVRV, SOPR, NVT) et la DeFi (TVL, ses doubles comptes), puis surtout la part que la chaîne tait. Une adresse n'est pas une identité, l'essentiel du trading reste hors chaîne, et les étiquettes sont l'œuvre de fournisseurs faillibles."
 summary: "La donnée on-chain regroupe les transactions et soldes inscrits publiquement sur une blockchain. Radicalement transparente et en temps réel, elle se lit avec des métriques (adresses actives, flux d'exchange, MVRV, SOPR, TVL) et surtout des heuristiques d'étiquetage : la chaîne montre tout, mais une adresse n'est pas une identité et l'essentiel du trading reste hors chaîne."
 pubDate: 2026-06-29T19:30:00+02:00
 updatedDate: 2026-06-29T19:30:00+02:00
@@ -82,7 +82,7 @@ Deux compléments affinent la lecture. Le SOPR, ou ratio de profit des sorties d
 
 Pour la finance décentralisée, la mesure reine est la valeur totale verrouillée, ou TVL : la somme des actifs déposés dans les contrats d'un protocole, valorisée en dollars. La référence ouverte est DefiLlama, dont les calculs reposent sur des adaptateurs par protocole publiés en source ouverte, ce qui rend la méthode auditable. Mi-juin 2026, la TVL DeFi totale s'établit autour de **71,8 milliards** de dollars sur plus de 450 chaînes, en repli d'environ **37 %** depuis le début de l'année et de près de **60 %** sous le pic de novembre 2021, à **177 milliards**. Ethereum en concentre **53 %**, signe d'une reconcentration.
 
-Trois pièges guettent. La TVL gonfle avec les prix des jetons déposés, donc une hausse peut ne traduire qu'un effet de valorisation, pas un afflux de capital. Le double comptage est réel : un actif déposé, re-déposé puis remis en jeu dans un autre protocole peut être compté plusieurs fois, ce que DefiLlama tente de neutraliser avec des filtres dédiés au staking liquide et aux pools imbriqués. Enfin, la TVL n'est pas la taille du marché : la capitalisation des stablecoins, autour de **314 milliards** de dollars mi-2026, pèse près de **4,4 fois** la TVL DeFi, et c'est elle qui irrigue l'essentiel des échanges. Pour la lecture détaillée de ces réserves, le guide sur les [stablecoins et le GENIUS Act](/guides/stablecoins-genius-act/) montre pourquoi une offre émise n'est pas une offre en circulation.
+Trois pièges guettent. La TVL gonfle avec les prix des jetons déposés, donc une hausse peut ne traduire qu'un effet de valorisation, pas un afflux de capital. Le double comptage est réel : un actif déposé, re-déposé puis remis en jeu dans un autre protocole peut être compté plusieurs fois, une distorsion que DefiLlama tente de neutraliser avec des filtres dédiés au staking liquide et aux pools imbriqués. Enfin, la TVL n'est pas la taille du marché : la capitalisation des stablecoins, autour de **314 milliards** de dollars mi-2026, pèse près de **4,4 fois** la TVL DeFi, et c'est elle qui irrigue l'essentiel des échanges. Pour la lecture détaillée de ces réserves, le guide sur les [stablecoins et le GENIUS Act](/guides/stablecoins-genius-act/) montre pourquoi une offre émise n'est pas une offre en circulation.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 720 280" role="img" aria-label="Concentration et recul de la valeur verrouillée en DeFi mi-2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
@@ -103,7 +103,7 @@ Trois pièges guettent. La TVL gonfle avec les prix des jetons déposés, donc u
 <figcaption>Mi-2026, la valeur verrouillée en DeFi tourne autour de <strong>71,8 milliards</strong> de dollars, dont <strong>53 %</strong> sur Ethereum, en repli d'environ <strong>37 %</strong> depuis janvier et de près de <strong>60 %</strong> sous le pic de 2021. Rapportée à la capitalisation des stablecoins, près de <strong>314 milliards</strong>, elle pèse peu. Source : DefiLlama.</figcaption>
 </figure>
 
-## Ce que la chaîne masque
+## Les angles morts de la chaîne
 
 Voici le cœur du problème, et la raison pour laquelle la transparence on-chain n'efface pas l'opacité. D'abord, une adresse n'est pas une identité. La chaîne est pseudonyme : relier une adresse à un acteur suppose des heuristiques de regroupement, probabilistes par nature. Un seul ensemble d'adresses de plateforme peut compter près de **25 millions** d'adresses, en croissance permanente, car les exchanges créent sans cesse de nouvelles adresses de change ou de chambre froide. Rattacher tout cela à une entité relève de l'inférence statistique, pas du fait établi.
 

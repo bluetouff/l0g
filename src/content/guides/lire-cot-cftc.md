@@ -13,7 +13,7 @@ draft: false
 
 Le COT ne dit pas où va le marché. Il dit qui est positionné comment, à une date donnée. C'est une donnée de structure, pas un signal d'achat ou de vente. Sa valeur tient à sa révélation : la répartition des paris entre ceux qui couvrent un risque physique et ceux qui spéculent sur une direction. Lu avec méthode, il met des visages sur l'[open interest](/glossaire/#open-interest), la masse des contrats ouverts. Lu sans précaution, il donne des certitudes trompeuses.
 
-## Ce que mesure le COT
+## La photographie hebdomadaire du COT
 
 Le rapport décompose, pour chaque contrat suivi, l'open interest total, c'est-à-dire le nombre de contrats ouverts et non encore dénoués. Cette masse est répartie entre catégories de traders, chacune déclinée en positions longues, courtes et, le cas échéant, en spreads, c'est-à-dire des positions longues et courtes qui se compensent chez un même intervenant. Par construction, le total des positions longues égale le total des positions courtes : à chaque acheteur correspond un vendeur. La lecture la plus courante consiste à calculer la position nette d'une catégorie, ses longs moins ses courts. Un nombre positif signale un biais acheteur, un nombre négatif un biais vendeur.
 
@@ -45,7 +45,7 @@ Dans le TFF, même logique pour les marchés financiers. Les Dealer, Intermediar
 
 Un point décisif, et souvent ignoré. La catégorie d'un trader n'est pas déduite de chacune de ses transactions, mais de son activité prédominante, qu'il déclare lui-même sur le formulaire Form 40 de la CFTC, sous le contrôle des services de la Commission. La classification se fait donc au niveau de l'entité, selon sa vocation déclarée, pas au niveau de l'intention de chaque position.
 
-La nuance est lourde de conséquences. Un industriel classé commercial peut aussi prendre des positions spéculatives, et une banque classée Swap Dealer peut porter des paris directionnels en plus de ses couvertures. Les cases du COT sont des approximations institutionnelles, pas des certitudes sur le motif de chaque contrat. C'est exactement le genre de précision que ce journal tient à rappeler avant toute interprétation.
+La nuance est lourde de conséquences. Un industriel classé commercial peut aussi prendre des positions spéculatives, et une banque classée Swap Dealer peut porter des paris directionnels en plus de ses couvertures. Les cases du COT sont des approximations institutionnelles, pas des certitudes sur le motif de chaque contrat. C'est le genre de précision que ce journal tient à rappeler avant toute interprétation.
 
 ## Lire un extrême de positionnement
 

@@ -1,6 +1,6 @@
 ---
 title: "GENIUS Act : l'échéance du 18 juillet, entre règles actées et pari sur la dette"
-description: "Le 18 juillet 2026, un an après sa promulgation, le GENIUS Act arrive à l'échéance de ses règles d'application : six agences fédérales finalisent le cadre des stablecoins. Ce qui est acté (réserves à 100 %, bons du Trésor courts, interdiction de rémunérer) et ce qui reste un pari (une vague de demande de dette, le sort de Tether, le risque de ruée). Analyse rigoureuse, du fait au scénario."
+description: "Le 18 juillet 2026, un an après sa promulgation, le GENIUS Act arrive à l'échéance de ses règles d'application : six agences fédérales finalisent le cadre des stablecoins. Ce qui est acté (réserves à 100 %, bons du Trésor courts, interdiction de rémunérer) et la part qui reste un pari (une vague de demande de dette, le sort de Tether, le risque de ruée). Analyse rigoureuse, du fait au scénario."
 pubDate: 2026-07-11T15:08:09+02:00
 updatedDate: 2026-07-11T15:08:09+02:00
 tags: ["stablecoins", "crypto", "régulation", "dette", "trésor us"]
@@ -76,7 +76,7 @@ Il faut tenir ces chiffres pour ce qu'ils sont : des scénarios, émis par des a
 
 Une disposition mérite une attention particulière, car elle façonnera le marché plus que les autres : l'interdiction faite aux émetteurs de verser un rendement aux porteurs. L'intention est claire, éviter que les stablecoins ne deviennent des comptes d'épargne déguisés, échappant à la réglementation bancaire et pouvant siphonner les dépôts des banques. Mais l'effet de bord est prévisible.
 
-Si un stablecoin ne rapporte rien alors que ses réserves, elles, produisent un intérêt encaissé par l'émetteur, deux dynamiques s'enclenchent. D'un côté, les émetteurs conformes voient leur modèle économique confirmé : ils gardent le rendement des réserves, très lucratif à cette échelle. De l'autre, les détenteurs cherchent le rendement ailleurs, ce qui pousse vers les fonds monétaires tokenisés et autres véhicules porteurs d'intérêt, en concurrence directe avec les stablecoins de paiement. La règle ne supprime pas l'appétit de rendement, elle le déplace. Elle crée aussi une asymétrie géographique : selon plusieurs analyses, un même émetteur peut proposer du rendement sur ses jetons émis hors des États-Unis, mais pas sur ceux régulés aux États-Unis, une frontière qui invite au contournement.
+Si un stablecoin ne rapporte rien alors que ses réserves, elles, produisent un intérêt encaissé par l'émetteur, deux dynamiques s'enclenchent. D'un côté, les émetteurs conformes voient leur modèle économique confirmé : ils gardent le rendement des réserves, très lucratif à cette échelle. De l'autre, les détenteurs cherchent le rendement ailleurs, et la demande glisse vers les fonds monétaires tokenisés et autres véhicules porteurs d'intérêt, en concurrence directe avec les stablecoins de paiement. La règle ne supprime pas l'appétit de rendement, elle le déplace. Elle crée aussi une asymétrie géographique : selon plusieurs analyses, un même émetteur peut proposer du rendement sur ses jetons émis hors des États-Unis, mais pas sur ceux régulés aux États-Unis, une frontière qui invite au contournement.
 
 ## Le cas Tether, angle mort du dispositif
 

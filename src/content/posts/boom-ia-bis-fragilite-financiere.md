@@ -11,7 +11,7 @@ draft: false
 
 Le fil de Finneko tire de la BIS cinq idées qui méritent d'être prises au sérieux : un gain de productivité sur une tâche ne fait pas une hausse durable pour toute l'économie, la course à l'investissement est en partie défensive et risque la surcapacité, un goulot peut surgir du côté de la demande, le financement de l'écosystème est opaque, et l'erreur du marché serait de transformer une histoire vraie en certitude financière. Reprenons sur pièces.
 
-## Ce que dit vraiment la BIS
+## Le message réel de la BIS
 
 Le diagnostic repose sur des données. Le bulletin n° 120 de la BIS, signé Aldasoro, Doerr et Rees, chiffre l'ampleur du phénomène : à la mi-2025, les dépenses en centres de données et en usines de semi-conducteurs équivalaient à **1 %** du PIB américain, et l'investissement total lié à l'informatique atteignait **5 %** du PIB, au-dessus de son pic de la bulle Internet de 2000. L'IA a contribué pour **0,4** point à la croissance américaine sur trois ans, et l'informatique au total pour près de la moitié de la croissance récente. La trajectoire ne faiblit pas : la BIS projette une dépense annuelle en centres de données portée à **0,8 à 1,3 %** du PIB, contre **0,5 %** aujourd'hui.
 
@@ -81,7 +81,7 @@ La BIS elle-même calibre la suite. La fin des booms d'investissement passés s'
 
 Le troisième point, plus prospectif, reste ouvert. Si l'IA déplace le revenu du travail vers le capital, dont la propension à consommer est plus faible, une économie plus productive en théorie peut buter sur une demande insuffisante. La BIS pose ce risque sans le quantifier ; il fait écho à la littérature sur l'automatisation et la part du travail, chez Acemoglu et Restrepo, qui ont documenté comment l'automatisation a pesé sur la part des salaires dans le revenu national américain depuis les années 1980. Un risque conditionnel, de moyen terme, qui tient autant au partage de la valeur qu'à la technologie.
 
-## Ce que ça vaut
+## Le poids de l'avertissement
 
 La synthèse tient en un équilibre. La BIS ne dit pas que l'IA est une bulle, et son bulletin qualifie les risques macro-financiers de modérés à ce stade. Mais le rapport annuel monte d'un cran : une révision de prix, par des taux plus élevés ou une déception sur l'IA, pourrait être aussi perturbatrice pour le crédit que la crise de 2008, d'autant que les ménages américains sont très exposés aux actions et que les institutions non bancaires sont devenues les premiers détenteurs de dette souveraine des économies avancées.
 

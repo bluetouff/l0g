@@ -15,9 +15,9 @@ Réduit à l'essentiel, le mécanisme est simple. Un stablecoin de paiement est 
 
 ## Comment un stablecoin tient son ancrage
 
-L'ancrage repose sur l'arbitrage par le remboursement. Tant que chacun peut rendre un jeton contre un dollar, le prix de marché ne s'éloigne pas durablement du pair : si le jeton tombe à 0,99 dollar, un arbitragiste l'achète et le rembourse à un dollar, ce qui le fait remonter. Tout dépend donc de la crédibilité du remboursement, elle-même fonction de la qualité des réserves.
+L'ancrage repose sur l'arbitrage par le remboursement. Tant que chacun peut rendre un jeton contre un dollar, le prix de marché ne s'éloigne pas durablement du pair : si le jeton tombe à 0,99 dollar, un arbitragiste l'achète et le rembourse à un dollar, et le cours remonte. Tout dépend donc de la crédibilité du remboursement, elle-même fonction de la qualité des réserves.
 
-C'est ce qui sépare radicalement deux familles. Le stablecoin adossé à des réserves réelles, comme l'[USDT](/glossaire/#usdt) de Tether ou l'[USDC](/glossaire/#usdc) de Circle, tient par son collatéral. Le stablecoin algorithmique, lui, prétendait tenir son ancrage par un jeu de jetons annexes et d'incitations de marché, sans réserve équivalente. Cette seconde famille a volé en éclats avec l'effondrement de TerraUSD en mai 2022, qui a effacé des dizaines de milliards de dollars en quelques jours. Le GENIUS Act en tire la conséquence directe : il exige une réserve pleine, fermant la porte au modèle purement algorithmique pour les stablecoins de paiement.
+La frontière entre deux familles passe là. Le stablecoin adossé à des réserves réelles, comme l'[USDT](/glossaire/#usdt) de Tether ou l'[USDC](/glossaire/#usdc) de Circle, tient par son collatéral. Le stablecoin algorithmique, lui, prétendait tenir son ancrage par un jeu de jetons annexes et d'incitations de marché, sans réserve équivalente. Cette seconde famille a volé en éclats avec l'effondrement de TerraUSD en mai 2022, qui a effacé des dizaines de milliards de dollars en quelques jours. Le GENIUS Act en tire la conséquence directe : il exige une réserve pleine, fermant la porte au modèle purement algorithmique pour les stablecoins de paiement.
 
 ## Le GENIUS Act, ses obligations réelles
 

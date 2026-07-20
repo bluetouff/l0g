@@ -39,7 +39,7 @@ Les historiens des crises reconnaîtront le motif. Le Japon de 1989 prêtait con
 
 Ajoutons, toujours selon Bloomberg, que certains responsables de SoftBank s'inquiètent en interne de l'ampleur de l'engagement, au moment où les progrès d'Anthropic relativisent la position concurrentielle d'OpenAI. Quand le doute gagne jusqu'au principal actionnaire, le prix des tours privés devient une convention fragile.
 
-## Ce que dit vraiment ce refus
+## Le sens réel de ce refus
 
 Le consensus voudra y voir un incident technique, partie remise. C'est possible. Mais la lecture la plus simple reste la plus dérangeante : face à l'actif privé le plus célébré de la planète, les banques ont préféré s'abstenir. Elles viennent de tracer, discrètement, la frontière entre une valorisation et un prix. Tout le capex IA, ses centaines de milliards de dettes et de financements croisés, est construit du mauvais côté de cette frontière. On saura bientôt si juin 2026 était un accroc ou un avertissement.
 

@@ -38,9 +38,9 @@ Ces trois prix ne s'alignent pas, et leur hiérarchie a une logique. Le Henry Hu
 <figcaption>Le Henry Hub sert de base ; le TTF et le JKM y ajoutent le coût du voyage. L'écart entre eux, plus que leur niveau, gouverne le marché. Sources : LNG Allies, LNGPriceIndex.</figcaption>
 </figure>
 
-## La chaîne du GNL : ce qui relie les bassins
+## La chaîne du GNL : le lien entre les bassins
 
-Ce qui transforme trois marchés cloisonnés en un système connecté, c'est le gaz naturel liquéfié, le [GNL](/glossaire/gnl/). Le principe tient en trois étapes. On refroidit le gaz à environ −162°C pour le liquéfier, ce qui divise son volume par plus de six cents et le rend transportable par méthanier. On l'expédie par mer vers le bassin le mieux rémunéré. On le regazéifie à l'arrivée, dans un terminal d'importation, pour l'injecter dans le réseau. Selon l'[association du GNL](https://liquefiednaturalgas.org/market/), le commerce mondial a atteint environ 400 millions de tonnes en 2024.
+Ce qui transforme trois marchés cloisonnés en un système connecté, c'est le gaz naturel liquéfié, le [GNL](/glossaire/gnl/). Le principe tient en trois étapes. On refroidit le gaz à environ −162°C pour le liquéfier, divisant son volume par plus de six cents et le rend transportable par méthanier. On l'expédie par mer vers le bassin le mieux rémunéré. On le regazéifie à l'arrivée, dans un terminal d'importation, pour l'injecter dans le réseau. Selon l'[association du GNL](https://liquefiednaturalgas.org/market/), le commerce mondial a atteint environ 400 millions de tonnes en 2024.
 
 Cette chaîne a un coût énergétique, souvent oublié. Liquéfier, transporter et regazéifier consomment entre 10 et 15 % du contenu énergétique initial du gaz. C'est ce coût, ajouté au fret et à la marge, qui explique la prime des indices d'import sur le Henry Hub. Il explique aussi pourquoi le GNL ne se déroute pas instantanément : un méthanier met des semaines à changer de bassin, et les usines de liquéfaction se construisent en années. La flexibilité du GNL est réelle mais lente, ce qui laisse les écarts de prix persister plus longtemps que sur le pétrole.
 
@@ -64,7 +64,7 @@ Cette chaîne a un coût énergétique, souvent oublié. Liquéfier, transporter
   <text x="360" y="188" fill="#ff4d87" font-size="12.5" text-anchor="middle" font-weight="700">Coût énergétique de la chaîne : 10 à 15 % du contenu initial</text>
   <text x="32" y="222" fill="#8b909b" font-size="11">Commerce mondial de GNL 2024 : ~400 millions de tonnes. Source : LNG Allies.</text>
 </svg>
-<figcaption>La liquéfaction rend le gaz transportable mais lui coûte une part de son énergie et des semaines de voyage. Cette lenteur est ce qui laisse persister les écarts de prix entre bassins. Source : LNG Allies.</figcaption>
+<figcaption>La liquéfaction rend le gaz transportable mais lui coûte une part de son énergie et des semaines de voyage. Cette lenteur laisse persister les écarts de prix entre bassins. Source : LNG Allies.</figcaption>
 </figure>
 
 ## Les unités, un piège à éviter

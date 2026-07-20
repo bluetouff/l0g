@@ -65,7 +65,7 @@ Pékin n’a pas « détruit » quatre millions de barils par jour de consommati
 
 La réaction chinoise relève aussi d’un arbitrage de prix. En mai, la prime de l’Arab Light saoudien a atteint jusqu’à **19,50 dollars par baril** sur les références régionales. Les raffineurs ont préféré réduire leurs runs plutôt que transformer un brut surpayé en essence ou diesel vendus sur un marché intérieur peu dynamique.
 
-En avril, le traitement de brut a baissé de **5,8 % sur un an**, à **13,3 Mb/j**, son plus faible niveau depuis août 2022. Le taux d’utilisation est tombé à **63,6 %** et la marge moyenne à **–649 yuans par tonne**. En mai, les runs ont encore reculé à 12,66 Mb/j, tandis que les stocks n’ont été mobilisés que modérément.
+En avril, le traitement de brut a baissé de **5,8 % sur un an**, à **13,3 Mb/j**, son plus faible niveau depuis août 2022. Le taux d’utilisation est tombé à **63,6 %** et la marge moyenne à **-649 yuans par tonne**. En mai, les runs ont encore reculé à 12,66 Mb/j, tandis que les stocks n’ont été mobilisés que modérément.
 
 Ce comportement montre que les importations chinoises sont devenues une variable d’optimisation plus qu’un simple miroir du PIB. Après avoir accumulé du brut bon marché en 2025 et au début de 2026, la Chine peut différer ses achats lorsque les différentiels physiques flambent. Elle remplit ses réservoirs quand les barils sanctionnés ou excédentaires sont décotés, puis disparaît du marché spot quand la sécurité d’approvisionnement devient trop coûteuse.
 

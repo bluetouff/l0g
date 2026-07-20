@@ -79,7 +79,7 @@ Le problème commence avec les versions popularisées. Sur les réseaux, on pré
 <figcaption>Le Bitcoin suit la direction de la liquidité mondiale dans une large majorité des cas sur un an, mais la relation s'est nettement rompue en 2025 et 2026, quand la M2 mondiale progressait pendant que le Bitcoin reculait. Sources : Lyn Alden et Sam Callahan ; CF Benchmarks.</figcaption>
 </figure>
 
-C'est exactement ce qui s'est passé récemment. Après avoir épousé la liquidité mondiale pendant des années, le Bitcoin s'en est détaché à partir de l'été 2025 : sur les douze mois précédant début 2026, la M2 mondiale a progressé d'environ **12 %** quand le Bitcoin reculait d'autant, selon CF Benchmarks. Pendant la contraction de 2022, à l'inverse, le lien était très serré, la liquidité expliquant alors l'essentiel de la chute. La leçon est claire : la corrélation est forte quand la liquidité domine le récit, et elle s'efface quand des facteurs propres au marché prennent le dessus, flux des ETF, effet de levier, chocs réglementaires ou géopolitiques.
+La séquence récente l'a rejoué à l'identique. Après avoir épousé la liquidité mondiale pendant des années, le Bitcoin s'en est détaché à partir de l'été 2025 : sur les douze mois précédant début 2026, la M2 mondiale a progressé d'environ **12 %** quand le Bitcoin reculait d'autant, selon CF Benchmarks. Pendant la contraction de 2022, à l'inverse, le lien était très serré, la liquidité expliquant alors l'essentiel de la chute. La leçon est claire : la corrélation est forte quand la liquidité domine le récit, et elle s'efface quand des facteurs propres au marché prennent le dessus, flux des ETF, effet de levier, chocs réglementaires ou géopolitiques.
 
 ## Les pièges de lecture
 

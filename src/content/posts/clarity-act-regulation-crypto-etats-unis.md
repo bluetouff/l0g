@@ -22,7 +22,7 @@ Le texte est ensuite resté bloqué au Sénat pendant dix mois, le temps que le 
 Le 14 mai, après six heures d'audition contentieuse marquée par les attaques frontales d'**Elizabeth Warren**, le bill franchit le markup et est désormais en route vers le plancher du Sénat. Pour devenir loi, il faudra encore :
 
 - Réconcilier la version Banking avec celle du Senate Agriculture Committee (qui couvre la juridiction CFTC)
-- Atteindre les **60 voix** au plancher du Sénat, ce qui nécessitera au moins sept démocrates supplémentaires
+- Atteindre les **60 voix** au plancher du Sénat, il faudra au moins sept démocrates supplémentaires
 - Réconcilier le texte final avec la version House
 - Recevoir la signature du président Trump
 
@@ -85,7 +85,7 @@ Pendant des mois, le point d'achoppement principal n'a pas été les tokens clas
 
 Le compromis final dans la version 11 mai 2026 **interdit les rewards sur la simple détention passive de stablecoins** quand ces rewards sont *« économiquement ou fonctionnellement équivalents au paiement d'intérêt ou de yield sur un dépôt bancaire portant intérêt »* (CoinDesk). Mais le bill **autorise les stablecoin rewards ou incitations liées à une activité**, c'est-à-dire les programmes de fidélité, cashback, ou rendements liés à l'usage actif de la stablecoin dans des protocoles DeFi.
 
-Cette ligne de partage, négociée à l'arraché, satisfait partiellement les deux camps. C'est ce qui a débloqué le markup.
+Cette ligne de partage, négociée à l'arraché, satisfait partiellement les deux camps, et a débloqué le markup.
 
 ## La victoire DeFi : protection des développeurs
 
@@ -105,7 +105,7 @@ Le texte couvre également des éléments techniques importants :
 - **NFTs** : généralement exclus du périmètre des Securities Laws
 - **Tokenized securities** : restent securities pour tous les usages
 
-## Les flashpoints : ce qui n'a pas été tranché
+## Les flashpoints : les questions laissées ouvertes
 
 ### La question éthique Trump
 

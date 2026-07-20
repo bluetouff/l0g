@@ -131,7 +131,7 @@ L'année 2026 en offre la démonstration. La flambée liée au détroit d'Ormuz 
 
 - [U.S. Energy Information Administration, *Weekly Petroleum Status Report* (calendrier et contenu)](https://www.eia.gov/petroleum/supply/weekly/) : publication le mercredi à 10 h 30, stocks de brut et de produits, niveau de Cushing, taux d'utilisation des raffineries.
 - [U.S. Energy Information Administration, *Short-Term Energy Outlook*, marché mondial du pétrole](https://www.eia.gov/outlooks/steo/report/global_oil.php) : équilibre offre-demande, prévisions de prix, effet du choc d'Ormuz sur 2026.
-- [IEA, *Oil Market Report – June 2026*](https://www.iea.org/reports/oil-market-report-june-2026) : demande et offre mondiales 2026-2027, révision liée à la fermeture du détroit d'Ormuz, offre moyenne 2026 autour de 102,4 mb/j.
+- [IEA, *Oil Market Report - June 2026*](https://www.iea.org/reports/oil-market-report-june-2026) : demande et offre mondiales 2026-2027, révision liée à la fermeture du détroit d'Ormuz, offre moyenne 2026 autour de 102,4 mb/j.
 - [RBN Energy, *Brent vs. WTI Spread*](https://rbnenergy.com/market-data/brent-vs-wti-spread) : nature des deux marqueurs, points de livraison, fourchette du spread depuis 2015.
 - [Charles Schwab, *Energy Investing: WTI vs. Brent Crude Oil*](https://www.schwab.com/learn/story/energy-investing-basics-wti-vs-brent-crude-oil) : Brent maritime et mondial, WTI livré à Cushing, part du Brent dans le brut échangé.
 - [OilPrice, *OPEC Nears Its Limit, Leaving Prices One Crisis Away from a Spike*](https://oilprice.com/Energy/Crude-Oil/OPEC-Nears-Its-Limit-Leaving-Prices-One-Crisis-Away-from-a-Spike.html) : capacité de réserve OPEP+ autour de 5 mb/j, ~3 mb/j pour l'Arabie saoudite, schéma de retour d'environ 180 000 b/j par mois.

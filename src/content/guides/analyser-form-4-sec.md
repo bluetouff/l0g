@@ -25,7 +25,7 @@ Trois catégories de personnes sont concernées : les dirigeants au sens des fon
 
 Un élargissement récent mérite d'être noté, parce qu'il date la page. Le **27 février 2026**, la SEC a adopté une règle étendant la section 16 aux dirigeants et administrateurs des émetteurs privés étrangers, jusque-là exemptés, avec une entrée en vigueur autour du **18 mars 2026**. Pour ces émetteurs étrangers, en revanche, les actionnaires à plus de 10 % restent hors du dispositif. Le périmètre des déposants s'est donc agrandi en 2026.
 
-## Ce que contient un Form 4
+## Le contenu d'un Form 4
 
 Le formulaire se lit en deux tableaux. Le **tableau I** couvre les titres non dérivés, l'action ordinaire pour l'essentiel. Le **tableau II** couvre les titres dérivés : options, bons de souscription, titres convertibles. Pour chaque ligne, on lit la date de la transaction, un code en une lettre qui en indique la nature, la quantité, une mention d'acquisition (A) ou de cession (D), le prix, et surtout le nombre de titres détenus après l'opération. Une dernière colonne précise si la détention est directe (D) ou indirecte (I), par exemple via une fiducie ou un véhicule familial.
 
@@ -67,7 +67,7 @@ Le Form 4 reste un instrument partiel, et le lire honnêtement suppose d'en conn
 
 ## La confluence avec le 13F
 
-Un signal rapide et étroit gagne à être croisé avec un signal lent et large. Là où le [formulaire 13F](/guides/analyser-13f-sec/) offre une photo trimestrielle, retardée et en positions longues des grands gérants, le Form 4 offre une donnée fraîche, directionnelle et signée d'un initié. Les deux se complètent : le 13F dit où l'argent institutionnel se positionne, le Form 4 dit si ceux qui dirigent l'entreprise accompagnent ce mouvement de leur propre argent. C'est exactement la logique que nous exploitons dans <a href="https://13flow.eu" rel="noopener">13FLOW</a>, qui croise dépôts 13F et formulaires 4 pour faire ressortir les zones de convergence. Une position que renforcent à la fois des gérants respectés et des initiés opportunistes pèse davantage qu'un signal isolé.
+Un signal rapide et étroit gagne à être croisé avec un signal lent et large. Là où le [formulaire 13F](/guides/analyser-13f-sec/) offre une photo trimestrielle, retardée et en positions longues des grands gérants, le Form 4 offre une donnée fraîche, directionnelle et signée d'un initié. Les deux se complètent : le 13F dit où l'argent institutionnel se positionne, le Form 4 dit si ceux qui dirigent l'entreprise accompagnent ce mouvement de leur propre argent. C'est la logique que nous exploitons dans <a href="https://13flow.eu" rel="noopener">13FLOW</a>, qui croise dépôts 13F et formulaires 4 pour faire ressortir les zones de convergence. Une position que renforcent à la fois des gérants respectés et des initiés opportunistes pèse davantage qu'un signal isolé.
 
 ## Méthodologie
 

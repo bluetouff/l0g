@@ -27,7 +27,7 @@ Le seuil de 100 millions de dollars a été fixé à la fin des années 1970 et 
 
 Le calendrier est strict. Une fois le seuil franchi, le gérant dépose dans les **45 jours** suivant la fin de l'année civile, puis dans les 45 jours suivant chacun des trois premiers trimestres de l'année suivante. En pratique, les échéances tombent autour du **14 février** (quatrième trimestre), du **15 mai**, du **14 août** et du **14 novembre**. L'obligation se poursuit tant que le seuil reste atteint, et une erreur découverte sur un dépôt passé impose un amendement immédiat.
 
-## Ce que contient un 13F
+## Le contenu d'un 13F
 
 Un dépôt comporte trois blocs : une page de couverture, une page de synthèse, et surtout une table d'information au format **XML**, qui est le cœur exploitable. Chaque ligne décrit une position : nom de l'émetteur, classe de titre, identifiant **CUSIP**, valeur de marché en dollars à la fin du trimestre, nombre de titres ou montant principal, nature de la discrétion et de l'autorité de vote, et un champ décisif, `putCall`, qui indique si la ligne est une option de vente (PUT) ou d'achat (CALL).
 
@@ -63,7 +63,7 @@ Un rétroviseur reste précieux quand on le croise avec d'autres miroirs. La bon
 
 Le [formulaire 4](/glossaire/#form-4) en est le complément naturel. Les transactions d'initiés y sont déclarées sous deux jours ouvrés, ce qui en fait une donnée bien plus fraîche et directionnelle que le 13F : un dirigeant qui achète ses propres actions engage son argent, en temps quasi réel. Là où le 13F est lent et long-only, le Form 4 est rapide et signé. Les déclarations de franchissement de seuil 13D et 13G, à partir de 5 % du capital, ajoutent une lecture d'intention, le 13D signalant souvent une visée activiste.
 
-La confluence entre gérants compte tout autant. Une position que plusieurs maisons respectées renforcent simultanément pèse davantage qu'un pari isolé, même de grande taille. C'est exactement la logique que nous exploitons dans <a href="https://13flow.eu" rel="noopener">13FLOW</a>, qui croise les dépôts 13F et les formulaires 4 pour faire ressortir les zones de convergence entre flux institutionnels lents et signaux d'initiés rapides. Aucun de ces signaux ne vaut isolément ; leur recoupement, lui, réduit le bruit.
+La confluence entre gérants compte tout autant. Une position que plusieurs maisons respectées renforcent simultanément pèse davantage qu'un pari isolé, même de grande taille. Cette logique est celle que nous exploitons dans <a href="https://13flow.eu" rel="noopener">13FLOW</a>, qui croise les dépôts 13F et les formulaires 4 pour faire ressortir les zones de convergence entre flux institutionnels lents et signaux d'initiés rapides. Aucun de ces signaux ne vaut isolément ; leur recoupement, lui, réduit le bruit.
 
 ## Méthodologie
 

@@ -13,7 +13,7 @@ draft: false
 
 Le titre officiel du relevé est « Factors Affecting Reserve Balances of Depository Institutions and Condition Statement of Federal Reserve Banks ». Il est publié chaque jeudi, en principe à **16 h 30** heure de New York, avec un report au jour ouvré suivant en cas de jour férié. Les données sont arrêtées au mercredi. La source est double, les banques de la Réserve fédérale et le Trésor américain.
 
-## Ce que publie la Fed chaque jeudi
+## La publication du jeudi, tableau par tableau
 
 Le H.4.1 n'est pas un seul tableau mais une série. Le tableau 1, le plus suivi, présente les facteurs affectant les réserves : il sépare ce qui fournit de la liquidité de ce qui en retire. Le tableau 2 donne la distribution par échéance des titres et prêts détenus. Le tableau 5 est l'état de condition consolidé de toutes les banques de réserve, soit le bilan classique où l'actif égale le passif plus le capital. D'autres tableaux détaillent chaque banque régionale et, lors des crises, les facilités de prêt spéciales. Pour une lecture courante, le tableau 1 et le tableau 5 suffisent.
 
@@ -21,7 +21,7 @@ Le H.4.1 n'est pas un seul tableau mais une série. Le tableau 1, le plus suivi,
 
 C'est le point que la plupart des lecteurs manquent, et c'est la clé de tout le document. Les réserves bancaires, c'est-à-dire les dépôts que les banques détiennent à la Fed, ne sont pas pilotées directement. Elles sont ce qui reste une fois retranchés, de l'actif de la Fed, tous les autres postes du passif. En clair, les avoirs de la Fed fournissent de la liquidité, tandis que la monnaie en circulation, le compte du Trésor et les prises en pension inverse en absorbent. Les réserves sont le solde.
 
-Cette mécanique a une conséquence majeure. Le niveau de réserves peut bouger fortement sans la moindre décision de politique monétaire, simplement parce que le [compte du Trésor à la Fed](/glossaire/#tga) se remplit ou se vide, ou parce que les volumes de [prise en pension inverse](/glossaire/#rrp) varient. Suivre les réserves sans suivre ces deux postes, c'est se condamner à mal lire les tensions de financement. C'est précisément le mécanisme détaillé dans notre guide sur la liquidité nette.
+Cette mécanique a une conséquence majeure. Le niveau de réserves peut bouger fortement sans la moindre décision de politique monétaire, simplement parce que le [compte du Trésor à la Fed](/glossaire/#tga) se remplit ou se vide, ou parce que les volumes de [prise en pension inverse](/glossaire/#rrp) varient. Suivre les réserves sans suivre ces deux postes, c'est se condamner à mal lire les tensions de financement. Ce mécanisme est détaillé dans notre guide sur la liquidité nette.
 
 ## L'actif : les avoirs de la Fed
 

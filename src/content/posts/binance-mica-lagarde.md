@@ -93,7 +93,7 @@ Les motivations qu'on lui prête se lisent à la lumière de positions, elles, p
 
 Reste une objection institutionnelle qui mérite mieux qu'un haussement d'épaules. MiCA confie l'agrément aux autorités nationales, pas à la BCE. Si une pression politique venue de Francfort renversait une décision technique nationale, la question dépasserait Binance : elle toucherait l'indépendance des régulateurs nationaux et la promesse même d'un guichet unique harmonisé. C'est pour cela que la distinction entre faits et récit n'est pas un confort de prudence, mais le cœur du sujet.
 
-## Ce que ça change
+## La portée du précédent
 
 À court terme, si le rejet est formalisé sans relais français à temps, Binance devra cesser ses services régulés aux résidents de l'UE au 1er juillet, ou présenter une liquidation ordonnée ; les rivaux déjà agréés capteraient mécaniquement du volume en euro. Plus largement, deux choses se jouent : un éventuel précédent sur la capacité d'une banque centrale à infléchir une décision d'agrément national, et un signal de plus que MiCA, vendu comme cadre harmonisé, reste politiquement disputé sur ses marges. Trois éléments trancheront : une décision écrite de la HCMC, motivée ou non ; une éventuelle saisine de l'ESMA, faute d'extension du délai ; et le calendrier de l'AMF. D'ici là, l'honnêteté commande de tenir les deux récits à distance l'un de l'autre.
 

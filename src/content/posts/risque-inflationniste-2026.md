@@ -40,7 +40,7 @@ Selon les données préliminaires d'Eurostat (mai 2026) :
 
 L'Allemagne (+2,7 %), la France (+2,8 %), l'Espagne (+3,6 %) et l'Italie (+3,3 %) montrent toutes une accélération.
 
-**Projections Eurosystem staff (juin 2026)** – publiées très récemment :
+**Projections Eurosystem staff (juin 2026)** : publiées très récemment :
 
 | Indicateur                  | 2026     | 2027     | 2028     | Remarques |
 |-----------------------------|----------|----------|----------|-----------|
@@ -132,13 +132,13 @@ La « désinflation » n'est pas morte, mais elle est reportée et rendue plus c
 
 ## Sources et liens (toutes vérifiées juin 2026)
 
-1. **US CPI May 2026** – Bureau of Labor Statistics : [https://www.bls.gov/news.release/cpi.nr0.htm](https://www.bls.gov/news.release/cpi.nr0.htm) et PDF détaillé.
-2. **[Eurosystem Staff Projections June 2026](https://www.ecb.europa.eu/press/projections/html/ecb.projections202606_eurosystemstaff~a495110f8d.en.html)** – Banque centrale européenne
-3. **World Economic Outlook April 2026** – Fonds monétaire international : [https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026](https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026)
-4. **Trading Economics / données agrégées** – US Inflation Rate, Euro Area Inflation (mises à jour juin 2026).
-5. **Reuters, CNBC, Bloomberg** – Couverture temps réel du conflit Iran, prix du pétrole et réactions marchés (mai-juin 2026).
-6. **Survey of Professional Forecasters Q2 2026** – Federal Reserve Bank of Philadelphia.
-7. **FOMC Minutes & SEP March 2026** – Federal Reserve.
-8. **World Bank Commodity Markets Outlook April 2026** – pour les prévisions énergie et inflation pays émergents.
+1. **US CPI May 2026** : Bureau of Labor Statistics : [https://www.bls.gov/news.release/cpi.nr0.htm](https://www.bls.gov/news.release/cpi.nr0.htm) et PDF détaillé.
+2. **[Eurosystem Staff Projections June 2026](https://www.ecb.europa.eu/press/projections/html/ecb.projections202606_eurosystemstaff~a495110f8d.en.html)** : Banque centrale européenne
+3. **World Economic Outlook April 2026** : Fonds monétaire international : [https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026](https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026)
+4. **Trading Economics / données agrégées** : US Inflation Rate, Euro Area Inflation (mises à jour juin 2026).
+5. **Reuters, CNBC, Bloomberg** : Couverture temps réel du conflit Iran, prix du pétrole et réactions marchés (mai-juin 2026).
+6. **Survey of Professional Forecasters Q2 2026** : Federal Reserve Bank of Philadelphia.
+7. **FOMC Minutes & SEP March 2026** : Federal Reserve.
+8. **World Bank Commodity Markets Outlook April 2026** : pour les prévisions énergie et inflation pays émergents.
 
 *Article rédigé sur la base de sources publiques officielles et de consensus de marché au 12 juin 2026. Les données sont exactes à la date de publication des communiqués officiels cités. Les scénarios restent conditionnels à l'évolution géopolitique et aux humeurs de Donald Trump.*

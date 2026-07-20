@@ -156,7 +156,7 @@ L'Inde, neuvième économie mondiale, est doublement exposée : elle est le **pr
 
 Toute projection sur un conflit en cours est par nature spéculative. Nous proposons trois scénarios argumentés, en pondérant explicitement les hypothèses.
 
-### Scénario 1 – Résolution diplomatique d'ici l'été 2026 (probabilité estimée : 30-40 %)
+### Scénario 1 : Résolution diplomatique d'ici l'été 2026 (probabilité estimée : 30-40 %)
 
 **Hypothèses** : Un compromis russo-chinois assorti d'une médiation pakistanaise ou omanaise produit un cessez-le-feu durable, avec réouverture progressive du détroit d'Ormuz d'ici septembre 2026. Les sanctions secondaires américaines sur l'Iran sont partiellement levées en échange de l'arrêt du programme nucléaire militaire.
 
@@ -175,7 +175,7 @@ Toute projection sur un conflit en cours est par nature spéculative. Nous propo
 - L'Europe sort affaiblie mais sans rupture systémique
 - L'Iran ressort durablement affaibli sur le plan régional, mais le régime survit
 
-### Scénario 2 – Enlisement et stagflation prolongée (probabilité estimée : 40-50 %)
+### Scénario 2 : Enlisement et stagflation prolongée (probabilité estimée : 40-50 %)
 
 **Hypothèses** : Le conflit s'enlise sans résolution claire. Ni la victoire militaire complète ni le compromis ne se matérialisent. Le détroit reste partiellement bloqué, l'Iran maintient des capacités de nuisance asymétriques, et les sanctions secondaires américaines s'effritent face à la lassitude européenne et l'opposition asiatique.
 
@@ -196,7 +196,7 @@ Toute projection sur un conflit en cours est par nature spéculative. Nous propo
 - Effondrement de plusieurs régimes vulnérables dans le Sahel et en Afrique du Nord
 - Russie et Chine consolident leur position d'alternatives géopolitiques
 
-### Scénario 3 – Escalade et choc systémique (probabilité estimée : 15-25 %)
+### Scénario 3 : Escalade et choc systémique (probabilité estimée : 15-25 %)
 
 **Hypothèses** : L'Iran déclenche des opérations asymétriques contre les infrastructures énergétiques saoudiennes et émiriennes au-delà des seuils actuels. L'arc chiite (Hezbollah, Houthis, milices irakiennes) est entièrement activé. Une crise au sein de l'OPEP+ provoque la rupture du dispositif de cohésion des prix. Une mauvaise gestion conduit à un incident impliquant un porte-avion US ou un grand pétrolier dans Ormuz.
 

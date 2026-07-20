@@ -48,7 +48,7 @@ Deux chiffres donnent la mesure du phénomène. Le basis trade est aujourd'hui p
 
 ## Le paradoxe du basis moribond
 
-Voici la tension. Au moment même où la Fed documente ce record, les praticiens enterrent le trade. Selon [Risk.net](https://www.risk.net/markets/7963653/treasury-basis-trade-loses-its-allure-as-returns-shrink), la base a perdu son attrait : des écarts devenus trop serrés, sous l'afflux de capitaux qui les chassent, et un coût de financement repo qui a monté. Résultat, le revenu net du trade, l'écart entre ce qu'il rapporte et ce que coûte son financement, s'est aminci au point que beaucoup de gérants considèrent l'opération comme finie.
+Voici la tension. Au moment même où la Fed documente ce record, les praticiens enterrent le trade. Selon [Risk.net](https://www.risk.net/markets/7963653/treasury-basis-trade-loses-its-allure-as-returns-shrink), la base a perdu son attrait : des écarts devenus trop serrés, sous l'afflux de capitaux qui les chassent, et un coût de financement repo qui a monté. Résultat, le revenu net du trade, l'écart entre son rendement et son coût de financement, s'est aminci au point que beaucoup de gérants considèrent l'opération comme finie.
 
 Les deux constats ne se contredisent qu'en apparence. La taille mesure un stock de positions accumulé sur des années ; la rentabilité mesure le flux qu'elles dégagent aujourd'hui. Un trade peut être à la fois énorme et à peine rémunérateur : c'est même la situation la plus inconfortable, celle où des positions massives ne rapportent presque plus, et où la moindre contrariété fait pencher la balance vers la sortie. Un arbitrage qui ne paie plus est un arbitrage qu'on est tenté de déboucler, et un débouclage à cette échelle ne se fait jamais sans bruit.
 
@@ -122,7 +122,7 @@ La première est un dégonflement en douceur. Le trade ne rapportant plus, les f
 
 La deuxième est une refonte par la réglementation. Le calendrier de compensation obligatoire transforme les conditions du trade avant qu'un choc de marché ne s'en charge. Selon le réglage des marges, l'arbitrage se contracte, se déplace vers d'autres acteurs ou change de forme. La transition elle-même comporte un risque, si elle force des ajustements de positions dans une fenêtre étroite.
 
-La troisième est le débouclage forcé, le scénario que tout le monde redoute. Un pic de volatilité, un appel de marge, un mouvement brutal des rendements, et les positions les plus leveragées se dénouent en catastrophe. Pour honorer les marges, les fonds vendent leurs Treasuries, ce qui pousse les rendements à la hausse, ce qui déclenche de nouveaux appels de marge : la spirale de mars 2020, en plus gros. Ce n'est pas le scénario le plus probable, mais c'est celui dont le coût serait le plus lourd, et c'est la raison pour laquelle la Fed, l'OFR et le FSB gardent l'œil dessus.
+La troisième est le débouclage forcé, le scénario que tout le monde redoute. Un pic de volatilité, un appel de marge, un mouvement brutal des rendements, et les positions les plus leveragées se dénouent en catastrophe. Pour honorer les marges, les fonds vendent leurs Treasuries, les rendements montent, et cela déclenche de nouveaux appels de marge : la spirale de mars 2020, en plus gros. Ce n'est pas le scénario le plus probable, mais c'est celui dont le coût serait le plus lourd, et c'est la raison pour laquelle la Fed, l'OFR et le FSB gardent l'œil dessus.
 
 ## Les objections sérieuses ne manquent pas
 

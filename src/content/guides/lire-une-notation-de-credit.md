@@ -54,7 +54,7 @@ La frontière qui compte n'est pas en haut de l'échelle, mais en son milieu. Un
 <figcaption>Franchir la ligne BBB- / Baa3 vers le bas exclut l'émetteur des portefeuilles contraints à l'investment grade. Un cran à cette frontière pèse plus que partout ailleurs. Sources : S&P, Moody's, Fitch.</figcaption>
 </figure>
 
-## Les taux de défaut : ce que la note prédit vraiment
+## Les taux de défaut, seule vraie promesse de la note
 
 Une note ne vaut que si elle prédit. L'historique montre qu'elle le fait, à gros traits. La probabilité de défaut à un an grimpe fortement à mesure que la note descend : proche de zéro pour un AAA, de l'ordre de 0,2 % pour un BBB, 0,6 % pour un BB, 3 % pour un B, et jusqu'à 26 % pour un CCC ou moins. Sur cinq ans en cumulé, l'écart se creuse encore : moins de 2 % de défauts pour la catégorie investissement, plus de 20 % pour un émetteur noté B.
 

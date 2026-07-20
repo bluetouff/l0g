@@ -109,7 +109,7 @@ La deuxième fragilité touche la gouvernance et la centralisation. En mars 2025
 
 Reste enfin un risque de concentration. Qu'un seul protocole domine à ce point les perpétuels décentralisés crée un point de défaillance unique pour tout le segment. Et la mesure même de cette domination prête à débat, les volumes de certains concurrents étant soupçonnés d'être gonflés. La transparence on-chain permet justement de vérifier ces chiffres, ce qui change la nature du débat par rapport aux bourses opaques.
 
-## Ce que Hyperliquid donne à voir
+## La leçon Hyperliquid
 
 Hyperliquid est un cas rare où un token crypto correspond à des flux de trésorerie réels et à des données publiquement vérifiables, là où le secteur carbure d'habitude au récit. Ses portes vers la finance traditionnelle sont concrètes, des ETF aux perpétuels sur actions et matières premières, en passant par une distribution en marque blanche et des intégrations de garde institutionnelle. Elles restent toutefois bridées par la réglementation et menacées par la dilution. La vraie question n'est pas de savoir si ce pont existe, il existe, mais s'il tiendra sans recréer l'opacité et la centralisation qu'Hyperliquid prétend remplacer. La bonne nouvelle, pour qui veut juger sur pièces, est que tout se passe sur une chaîne publique. Le verdict s'y lira en données, pas en promesses.
 

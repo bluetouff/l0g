@@ -10,7 +10,7 @@ draft: false
 
 Le 17 juin, Donald Trump a signé avec l'Iran un mémorandum d'entente, un [MOU](/glossaire/#mou) en 14 points, lors d'un dîner avec Emmanuel Macron au château de Versailles, au lendemain du G7. L'accord est entré en vigueur aussitôt : le détroit d'Ormuz rouvre et le blocus maritime américain est levé. Il prolonge le cessez-le-feu de la guerre déclenchée le 28 février, quand les États-Unis et Israël avaient frappé l'Iran et tué son guide suprême. Le détroit redevient gratuit, mais pour 60 jours seulement, le blocus disparaît sous 30 jours, l'Iran peut exporter son pétrole dès la signature, et l'allègement des sanctions reste conditionné à la conformité iranienne. Tout le reste, à commencer par le nucléaire, est renvoyé à un accord final à négocier en 60 jours. C'est la suite directe de [la guerre d'Iran de 2026](/posts/la-guerre-diran-2026-seisme-economique-politique/) et de [la réouverture d'Ormuz](/posts/accord-paix-ormuz-rouvre-scenarios/), à suivre dans le [fil géopolitique du journal](/sujet/geopolitique-energie/).
 
-## Ce que le MOU règle, et ce qu'il esquive
+## Les acquis du MOU, et ses angles morts
 
 Le soulagement de marché tient à un fait : la voie qui assure environ 20 % de l'énergie mondiale rouvre. Mais l'essentiel des sujets de fond est repoussé. L'uranium hautement enrichi reste enfoui sous les sites bombardés, sans engagement iranien public de le céder. Trump a indiqué au New York Times que l'Iran serait autorisé à enrichir à bas niveau, renversant l'exigence de démantèlement total qui avait justifié la guerre. Le texte prévoit aussi un plan de reconstruction d'au moins 300 milliards de dollars, porté par les États-Unis et des partenaires régionaux du Golfe.
 

@@ -15,7 +15,7 @@ draft: false
 
 L'exercice porte deux sigles qu'on confond souvent, et qui répondent en réalité à deux questions distinctes. Le [DFAST](/glossaire/dfast/), pour Dodd-Frank Act Stress Test, est le volet quantitatif, né de la loi de 2010 : il pose la question de la survie. La banque garderait-elle ses fonds propres au-dessus des minimums réglementaires si une récession sévère frappait ? Le [CCAR](/glossaire/ccar/), lui, est le volet de planification du capital : il pose la question de la distribution. La banque peut-elle verser des dividendes et racheter ses actions tout en restant assez solide sous stress ? Le premier teste la résistance, le second en tire les conséquences pour la politique de capital.
 
-Le test ne concerne que les grandes banques, celles de plus de 100 milliards de dollars d'actifs, réparties en catégories selon leur taille et leur complexité. En 2026, trente-deux établissements y étaient soumis. Les plus petites banques, comme les régionales, en sont exemptées, un point qui n'est pas anodin, on y reviendra, car c'est précisément là que se sont logées certaines des failles récentes, décrites dans notre [guide de la solidité bancaire](/guides/lire-la-solidite-d-une-banque/).
+Le test ne concerne que les grandes banques, celles de plus de 100 milliards de dollars d'actifs, réparties en catégories selon leur taille et leur complexité. En 2026, trente-deux établissements y étaient soumis. Les plus petites banques, comme les régionales, en sont exemptées, un point qui n'est pas anodin, on y reviendra, car c'est là même que se sont logées certaines des failles récentes, décrites dans notre [guide de la solidité bancaire](/guides/lire-la-solidite-d-une-banque/).
 
 ## Le scénario : une apocalypse sur mesure
 

@@ -27,7 +27,7 @@ Le crédit privé ne se contente pas de prêter aux neoclouds. Il monte aussi le
 
 ## Le nerf du calcul : la courbe de dépréciation
 
-Toute la solidité de ces montages repose sur une hypothèse comptable : la durée sur laquelle on amortit le matériel. Plus elle est longue, plus le coût annuel paraît faible, plus les bénéfices affichés sont élevés, et plus une valeur résiduelle lointaine semble crédible. C'est précisément là que le consensus se fissure.
+Toute la solidité de ces montages repose sur une hypothèse comptable : la durée sur laquelle on amortit le matériel. Plus elle est longue, plus le coût annuel paraît faible, plus les bénéfices affichés sont élevés, et plus une valeur résiduelle lointaine semble crédible. La fissure du consensus passe là.
 
 L'investisseur Michael Burry a porté le sujet sur la place publique fin 2025. Selon [CNBC](https://www.cnbc.com/2025/11/14/ai-gpu-depreciation-coreweave-nvidia-michael-burry.html), Google, Oracle et Microsoft amortissent leur matériel d'IA sur **cinq à six ans**, quand la cadence de renouvellement des puces Nvidia ramènerait leur vie économique réelle à **deux ou trois ans**. Burry chiffre à environ **176 milliards de dollars** la dépréciation sous-estimée, et donc les profits surestimés, du secteur entre 2026 et 2028. Nvidia a répondu par une note aux analystes contestant le calcul et rejetant toute comparaison avec les fraudes comptables du passé. La divergence est déjà visible dans les pratiques : en 2025, Amazon a raccourci la durée de vie retenue sur une partie de ses serveurs, quand Meta l'allongeait encore.
 

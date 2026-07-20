@@ -16,7 +16,7 @@ Le Confluence Score, de 0 à 100, agrège quatre composantes explicites. La larg
 
 ## Hygiène du signal
 
-Deux partis pris méthodologiques font la qualité de l'ensemble. Le temps, d'abord : chaque achat d'initié décroît avec une demi-vie d'environ 30 jours, un dépôt de 3 jours ne pèse pas comme un dépôt de 80. La taille relative entre en compte (une ligne augmentée de 30 % n'est pas un achat symbolique), de même que la concentration : plusieurs initiés sur une fenêtre de 14 jours forment un cluster, et c'est le signal fort. Le filtrage par code de transaction, ensuite : seuls les ordres au prix du marché comptent, achats (P) et ventes (S). Les attributions, exercices d'options (M) et retenues fiscales (F) sont parsés mais exclus du score, parce qu'ils ne traduisent aucune décision discrétionnaire d'entrer ou de sortir. C'est précisément le bruit que la plupart des trackers d'initiés laissent passer.
+Deux partis pris méthodologiques font la qualité de l'ensemble. Le temps, d'abord : chaque achat d'initié décroît avec une demi-vie d'environ 30 jours, un dépôt de 3 jours ne pèse pas comme un dépôt de 80. La taille relative entre en compte (une ligne augmentée de 30 % n'est pas un achat symbolique), de même que la concentration : plusieurs initiés sur une fenêtre de 14 jours forment un cluster, et c'est le signal fort. Le filtrage par code de transaction, ensuite : seuls les ordres au prix du marché comptent, achats (P) et ventes (S). Les attributions, exercices d'options (M) et retenues fiscales (F) sont parsés mais exclus du score, parce qu'ils ne traduisent aucune décision discrétionnaire d'entrer ou de sortir. C'est justement le bruit que la plupart des trackers d'initiés laissent passer.
 
 ## Données et surface
 

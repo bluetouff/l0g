@@ -35,7 +35,19 @@ function snippet(line, marker) {
 
 const errors = [];
 const warnings = [];
-const CE_QUE = /\bce qu[ei]\b/i;
+// « ce que / ce qui », hors idiomes à inversion (« serait-ce que », « est-ce que »).
+const CE_QUE = /(?<!-)\bce qu[ei]\b/i;
+const CE_QUE_ALL = /(?<!-)\bce qu[ei]\b/gi;
+// Plage de dates ou de nombres tolérée : demi-cadratin collé entre chiffres ou mois.
+const MONTH = '(?:jan|fév|mars|avril|mai|juin|juil|août|sept|oct|nov|déc|January|February|March|April|May|June|July|August|September|October|November|December)[a-z]*\\.?';
+const EN_DASH_RANGE = new RegExp(`(?:\\d|${MONTH})\\s?–\\s?(?:\\d|${MONTH})`, 'i');
+// Tics de construction confirmés (avertissement) : varier les tournures.
+const TICS = [
+  [/\bautrement dit\b/i, '« autrement dit »'],
+  [/\bc'est exactement\b/i, '« c\'est exactement »'],
+  [/\bvoilà pourquoi\b/i, '« voilà pourquoi »'],
+  [/\bc'est précisément\b/i, '« c\'est précisément »'],
+];
 
 for (const file of contentFiles()) {
   const lines = readFileSync(file, 'utf8').split('\n');
@@ -45,13 +57,18 @@ for (const file of contentFiles()) {
     if (line.includes(EM_DASH)) {
       errors.push({ file, ln, msg: `tiret cadratin (${EM_DASH}) interdit`, ctx: snippet(line, EM_DASH) });
     }
-    if (line.includes(EN_DASH)) {
+    if (line.includes(EN_DASH) && !EN_DASH_RANGE.test(line)) {
       warnings.push({ file, ln, msg: `tiret demi-cadratin (${EN_DASH}) : plage de dates ? sinon éviter`, ctx: snippet(line, EN_DASH) });
     }
     if (/^#{1,6}\s/.test(line) && CE_QUE.test(line)) {
       warnings.push({ file, ln, msg: 'tic « ce que / ce qui » dans un titre', ctx: line.trim() });
     }
-    if (CE_QUE.test(line)) ceQueCount += (line.match(/\bce qu[ei]\b/gi) || []).length;
+    if (CE_QUE.test(line)) ceQueCount += (line.match(CE_QUE_ALL) || []).length;
+    for (const [re, label] of TICS) {
+      if (re.test(line)) {
+        warnings.push({ file, ln, msg: `tic ${label} : varier la tournure`, ctx: snippet(line, line.match(re)[0]) });
+      }
+    }
   });
   if (ceQueCount >= 6) {
     warnings.push({ file, ln: 0, msg: `densité élevée de « ce que / ce qui » (${ceQueCount})`, ctx: 'varier les formulations' });

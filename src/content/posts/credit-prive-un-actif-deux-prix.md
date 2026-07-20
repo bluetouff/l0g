@@ -69,7 +69,7 @@ Selon PIMCO, l'écart peut se résorber de trois façons : par dévalorisation 
 
 Le marché obligataire a tranché plus tôt : beaucoup d'obligations de BDC s'échangent à des écarts de rendement proches du segment BB de l'indice Bloomberg US Corporate, relève PIMCO. Les actionnaires doutent de la crédibilité des NAV ; les créanciers, eux, séparent l'incertitude de valorisation du risque de défaut. Ce qui permet au prix modèle de tenir tient à sa plomberie. Le Financial Stability Board, dans son rapport du 6 mai, pointe l'opacité des valorisations et le recours à des notations privées, parfois émises par des fournisseurs peu connus. La juste valeur de niveau 3 laisse une marge d'appréciation au gérant et au conseil : des marks lissés soutiennent la NAV à court terme, au prix de la transparence.
 
-## Ce qui retient encore la panique
+## Les digues qui tiennent encore
 
 Le tableau appelle une contrepartie. Neuberger Berman rappelle que l'univers des BDC, cotées et non cotées confondues, ne pèse qu'environ 500 milliards de dollars, et qu'environ 600 milliards de capital institutionnel engagé mais non déployé, dont la moitié en direct lending, peuvent absorber une partie des sorties. Surtout, les rachats ne traduisent pas d'abord une mauvaise performance : plusieurs grands véhicules ont livré des rendements totaux à un chiffre élevé en 2025. Les filings de juillet 2026 le confirment : chez Goldman Sachs Private Credit, les demandes de rachat du deuxième trimestre ont atteint 3,24 % des parts, sous le plafond de 5 %, et ont été servies en totalité ; chez Fidelity Private Credit, environ 2,9 %, servies elles aussi intégralement, avec une collecte nette positive.
 

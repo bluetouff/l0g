@@ -38,7 +38,7 @@ Quand les marchés pricent réellement un risque de rupture monétaire, plusieur
 
 **Les dépôts dans les banques françaises** restent stables. BNP Paribas, Société Générale et Crédit Agricole ne subissent pas de fuite de capitaux. Lors du véritable épisode de stress du printemps 2024 (dissolution de l'Assemblée nationale), ces banques avaient perdu près de 10 % de capitalisation en quelques jours (source : Club Patrimoine, septembre 2025). Aujourd'hui, rien de tel.
 
-**Les adjudications de l'Agence France Trésor** restent largement souscrites. L'IFRAP note dans son analyse de janvier 2026 que *« malgré les tensions politiques, l'option d'une baisse du taux de couverture sur les adjudications, révélant une forme de défiance, ne s'est pour l'instant pas manifestée »*. Or, c'est précisément ce qui se passerait en premier si les marchés anticipaient une sortie : les acheteurs structurels (assureurs, fonds de pension, banques centrales étrangères) commenceraient à se retirer.
+**Les adjudications de l'Agence France Trésor** restent largement souscrites. L'IFRAP note dans son analyse de janvier 2026 que *« malgré les tensions politiques, l'option d'une baisse du taux de couverture sur les adjudications, révélant une forme de défiance, ne s'est pour l'instant pas manifestée »*. Or, ce serait là le premier symptôme si les marchés anticipaient une sortie : les acheteurs structurels (assureurs, fonds de pension, banques centrales étrangères) commenceraient à se retirer.
 
 ## La vraie raison de la prime française est budgétaire, pas existentielle
 

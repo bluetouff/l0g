@@ -10,7 +10,7 @@ Le 14 juin, Donald Trump a annoncé sur Truth Social que l'accord avec l'Iran é
 
 Sauf que, comme je le notais déjà dans mon [point de situation d'avril](/posts/point-situation-detroit-ormuz-avril-2026/), une annonce de réouverture n'est pas une réouverture. Et surtout, l'accord a fait sortir des prix la prime de guerre, pas les dégâts que la guerre a laissés derrière elle. Comprendre cet écart, c'est tout l'enjeu pour qui veut anticiper la suite.
 
-## Ce que pesait Ormuz, et ce que la crise a détruit
+## Le poids d'Ormuz, et les dégâts de la crise
 
 Le détroit est l'artère pétrolière la plus critique du monde après Malacca. En 2025, l'IEA y mesure un flux moyen de 20 millions de barils par jour de brut et produits raffinés, soit environ 25 % du commerce maritime mondial de pétrole. L'EIA chiffre le premier trimestre 2025 à 20,1 millions de barils par jour, dont 14,2 de brut, et estime que cela représente près d'un cinquième de la consommation pétrolière mondiale. Côté gaz, l'IEA rappelle qu'environ 19 % du commerce mondial de GNL dépend d'Ormuz.
 
@@ -81,7 +81,7 @@ Cet écart n'est pas irrationnel : il a des causes physiques. Le trafic n'a pas 
 
 Trois fils peuvent défaire la pelote. D'abord les mines : tant qu'elles sont là, les capitaines temporisent, et Bimco maintient un avis de risque élevé sur le détroit. Ensuite l'ambiguïté de l'accord lui-même : l'Iran parle d'un transit sans péage limité à 60 jours, après quoi Téhéran et Oman administreraient le détroit, tandis que le vice-président Vance affirme que l'attente américaine est une gratuité durable. Cette divergence d'interprétation est exactement le type de flou qui a fait dérailler le cessez-le-feu d'avril, comme je l'analysais dans [les péages d'Ormuz et le rail USDT-Tron](/posts/iran-peages-ormuz-usdt-tron-ofac/). Enfin la variable libanaise : les opérations israéliennes au Liban continuent indépendamment du cadre US-Iran, et c'est une frappe au Liban qui avait fait suspendre l'accès au détroit en avril. Rien dans le mémorandum actuel ne résout ce point.
 
-## Ce qui ressort
+## La synthèse
 
 L'accord du 14 juin est une bonne nouvelle macro, mais le marché a raison de ne pas crier victoire. La prime de guerre est sortie, la congestion ne l'est pas. Mon scénario de travail reste le central : convergence vers 78-85 dollars d'ici la fin de l'été si la signature tient et si le déminage respecte la fenêtre de 30 jours, avec un risque asymétrique vers le haut tant que les mines et l'ambiguïté sur les péages persistent. Pour le contexte géopolitique complet de cette crise, mon article de fond sur [la guerre d'Iran 2026](/posts/la-guerre-diran-2026-seisme-economique-politique/) garde toute sa pertinence.
 

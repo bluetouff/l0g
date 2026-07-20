@@ -22,9 +22,9 @@ Contrairement aux fonds de private equity classiques (lock-up de 7-10 ans ou plu
 
 ## Le mécanisme de liquidité et le gating : comment ça marche concrètement
 
-Le fonds organise périodiquement une offre de rachat d’un certain pourcentage de ses actions en circulation. La pratique très répandue sur ces véhicules de private credit est un **plafond de 5 % par trimestre** (parfois jusqu’à 25 % pour certains interval funds, mais 5 % est le standard courant pour les gros tender offer BDCs comme HLEND ou le Blackstone Private Credit Fund – BCRED).
+Le fonds organise périodiquement une offre de rachat d’un certain pourcentage de ses actions en circulation. La pratique très répandue sur ces véhicules de private credit est un **plafond de 5 % par trimestre** (parfois jusqu’à 25 % pour certains interval funds, mais 5 % est le standard courant pour les gros tender offer BDCs comme HLEND ou le Blackstone Private Credit Fund, BCRED).
 
-Si les demandes de rachat restent inférieures ou égales au plafond, le fonds rachète tout (ou au prorata si léger excédent). Si les demandes dépassent largement le plafond – c’est le **gating** –, le fonds limite les rachats au montant autorisé par sa politique de liquidité (généralement au prorata des demandes). Les demandes excédentaires sont reportées aux fenêtres suivantes ou traitées selon les règles du prospectus.
+Si les demandes de rachat restent inférieures ou égales au plafond, le fonds rachète tout (ou au prorata si léger excédent). Si les demandes dépassent largement le plafond, c’est le **gating**, le fonds limite les rachats au montant autorisé par sa politique de liquidité (généralement au prorata des demandes). Les demandes excédentaires sont reportées aux fenêtres suivantes ou traitées selon les règles du prospectus.
 
 **Objectif déclaré** : aligner la liquidité offerte aux investisseurs avec la nature illiquide des actifs sous-jacents. Les prêts directs ne se négocient pas facilement sur un marché secondaire profond ; une vente forcée en masse pourrait entraîner des décotes importantes et nuire à la valeur liquidative (NAV) de tous les actionnaires restants. Le gating protège donc la stratégie d’investissement long terme et évite un « bank run » sur des actifs peu liquides.
 
@@ -75,7 +75,7 @@ La performance attractive du private credit (rendements, diversification) reste 
 
 3. Reuters, « Private credit funds for wealthy individuals raise 45% less new money in Q1, RA Stanger says », 22 avril 2026 : https://www.reuters.com/legal/transactional/private-credit-funds-wealthy-individuals-raise-45-less-new-money-q1-ra-stanger-2026-04-22/
 
-4. HPS Corporate Lending Fund (HLEND), lettre aux actionnaires Q1 2026 Client Repurchase Letter – détails sur les 13,3 % de demandes, 5 % honorés (~620 M$), performance, portefeuille et liquidité (via hlend.com et filings associés).
+4. HPS Corporate Lending Fund (HLEND), lettre aux actionnaires Q1 2026 Client Repurchase Letter : détails sur les 13,3 % de demandes, 5 % honorés (~620 M$), performance, portefeuille et liquidité (via hlend.com et filings associés).
 
 5. Reuters, « Blackstone caps withdrawals from flagship private credit fund », 4 juin 2026 : https://www.reuters.com/business/blackstone-caps-withdrawals-flagship-private-credit-fund-2026-06-04/
 

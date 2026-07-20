@@ -76,7 +76,7 @@ C'est ici que le récit d'un risque « sorti des banques » se fissure, et c'est
 <figcaption>La banque ne prête plus à l'emprunteur risqué, elle prête au fonds qui lui prête. Elle croit s'être mise à l'abri en montant dans la structure de capital, mais <strong>le risque revient par la porte de derrière</strong>, sous forme d'exposition senior aux non-banques. Sources : FSB.</figcaption>
 </figure>
 
-Un analyste a nommé ce mouvement le « Great Retranching » : la banque est montée dans la structure de capital, passant de prêteur direct à créancier senior des non-banques, mais le risque de crédit n'a pas quitté le système bancaire, il a été transformé. La désintermédiation apparente est en partie une ré-intermédiation déguisée. Voilà pourquoi lire les résultats des banques suppose désormais de traquer leur exposition aux acteurs non bancaires, comme nous l'avons souligné dans notre [préview des résultats du deuxième trimestre](/posts/resultats-bancaires-t2-2026-lire-le-risque/).
+Un analyste a nommé ce mouvement le « Great Retranching » : la banque est montée dans la structure de capital, passant de prêteur direct à créancier senior des non-banques, mais le risque de crédit n'a pas quitté le système bancaire, il a été transformé. La désintermédiation apparente est en partie une ré-intermédiation déguisée. Lire les résultats des banques suppose désormais, pour cette raison, de traquer leur exposition aux acteurs non bancaires, comme nous l'avons souligné dans notre [préview des résultats du deuxième trimestre](/posts/resultats-bancaires-t2-2026-lire-le-risque/).
 
 ## La thèse rassurante : le capital patient
 

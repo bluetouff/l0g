@@ -36,7 +36,7 @@ La progression est sans équivalent récent. Sur les cinq dernières années, le
 
 Cette croissance fulgurante depuis la crise de 2008 s'explique par un mécanisme simple : Bâle III a rendu les prêts directs prohibitivement coûteux en fonds propres pour les banques, qui ont délégué progressivement ce risque à des acteurs spécialisés. Apollo, KKR, Blackstone, Blue Owl, Ares ou Carlyle ont bâti un marché alternatif colossal. **Les cinq plus grands gestionnaires cotés gèrent désormais environ 1,5 trillion de dollars en capital perpétuel, soit environ 40 % de leurs AUM combinés**, contre 35 % en 2021. Si la croissance se maintient au rythme observé depuis 2021, ils géreront près de 5 trillions en capital permanent d'ici la fin de la décennie.
 
-Cette concentration n'est pas anodine. Plus le marché grandit, plus les fonds vont chercher des emprunteurs en bas du spectre du crédit. Le FMI estime que plus d'un tiers des emprunteurs présentent aujourd'hui des charges d'intérêt supérieures à leurs bénéfices actuels. Autrement dit, plus d'un tiers du marché ne génère plus assez de cash-flow pour couvrir son service de la dette dans l'environnement de taux actuel. C'est colossal et historiquement inédit.
+Cette concentration n'est pas anodine. Plus le marché grandit, plus les fonds vont chercher des emprunteurs en bas du spectre du crédit. Le FMI estime que plus d'un tiers des emprunteurs présentent aujourd'hui des charges d'intérêt supérieures à leurs bénéfices actuels. En clair, plus d'un tiers du marché ne génère plus assez de cash-flow pour couvrir son service de la dette dans l'environnement de taux actuel. C'est colossal et historiquement inédit.
 
 ---
 
@@ -110,7 +110,7 @@ Le 10 octobre 2025, l'annonce par Donald Trump de tarifs additionnels de 100 % s
 
 Pendant la tempête, USDe a brièvement chuté à 0,65 dollar sur Binance, un dépeg apparent de 35 %. Sur Curve, Bybit, Kraken et les pools DeFi, le prix est resté autour de 0,98-0,99 dollar. Le problème n'était pas une faillite du protocole : Ethena a confirmé que ses mécanismes de mint et redemption ont continué à fonctionner normalement, que la collatéralisation est restée supérieure à 100 %, et que plus de 2 milliards de dollars de redemptions ont été traités dans la journée.
 
-Le problème était de la *fragilité d'infrastructure* : l'oracle interne de Binance lisait son propre order book, d'une profondeur de 8 millions de dollars seulement, au lieu d'agréger les prix externes. Avec une supply USDe de 9 milliards, ça donne un ratio de profondeur de 0,09 %. À comparer à USDC : 40 milliards de supply, 2 milliards+ de profondeur Binance, ratio 5 %. Autrement dit, USDe est environ 55 fois plus fragile que USDC en termes de ratio de liquidité sur l'exchange dominant. Une seule vente de 90 millions de dollars a suffi à faire bouger le prix de 35 %.
+Le problème était de la *fragilité d'infrastructure* : l'oracle interne de Binance lisait son propre order book, d'une profondeur de 8 millions de dollars seulement, au lieu d'agréger les prix externes. Avec une supply USDe de 9 milliards, ça donne un ratio de profondeur de 0,09 %. À comparer à USDC : 40 milliards de supply, 2 milliards+ de profondeur Binance, ratio 5 %. USDe est ainsi environ 55 fois plus fragile que USDC en termes de ratio de liquidité sur l'exchange dominant. Une seule vente de 90 millions de dollars a suffi à faire bouger le prix de 35 %.
 
 Conséquence durable : Ethena a traité plus de 3 milliards de redemptions en 8 heures, la supply USDe passant de 14,8 milliards en octobre à 7,6 milliards à fin novembre, une chute de plus de 50 %. Le token de gouvernance ENA, lui, est passé d'un sommet historique de 1,52 dollar à environ 0,11 dollar le 18 mai 2026, soit une chute de plus de 92 %. La résilience proclamée du protocole est réelle au niveau du mécanisme central, mais les boucles de levier qui l'entouraient (Pendle PT, Aave, Morpho) ont été massivement dénouées.
 
@@ -145,9 +145,9 @@ Au Q3 2025, l'ensemble des stablecoins détenait environ 170 milliards de dollar
 
 ### L'asymétrie BIS : pourquoi un outflow fait 2 à 3 fois plus mal qu'un inflow
 
-Le BIS Working Paper No 1270 publié en 2026 documente une asymétrie cruciale dans l'effet des flux stablecoin sur les yields : **un flux entrant de 2 % du capital stablecoin pourrait baisser les yields 3 mois de 2 à 2,5 points de base, alors qu'un flux sortant équivalent pourrait les augmenter de 6 à 7 points de base**. Autrement dit, quand les stablecoins absorbent des Treasuries, l'effet sur les yields est modéré. Quand ils en vendent, l'effet est deux à trois fois plus violent.
+Le BIS Working Paper No 1270 publié en 2026 documente une asymétrie cruciale dans l'effet des flux stablecoin sur les yields : **un flux entrant de 2 % du capital stablecoin pourrait baisser les yields 3 mois de 2 à 2,5 points de base, alors qu'un flux sortant équivalent pourrait les augmenter de 6 à 7 points de base**. L'asymétrie est là : quand les stablecoins absorbent des Treasuries, l'effet sur les yields est modéré. Quand ils en vendent, l'effet est deux à trois fois plus violent.
 
-Cette asymétrie s'explique par la liquidité non-linéaire du marché des T-bills : en conditions normales, les MMF (money market funds) absorbent facilement les flux. En conditions de stress (bill scarcity, panique), la profondeur s'évanouit et chaque transaction marginale impacte le prix beaucoup plus fortement. C'est précisément le phénomène que la BIS appelle la « non-linéarité d'impact en queue de distribution ».
+Cette asymétrie s'explique par la liquidité non-linéaire du marché des T-bills : en conditions normales, les MMF (money market funds) absorbent facilement les flux. En conditions de stress (bill scarcity, panique), la profondeur s'évanouit et chaque transaction marginale impacte le prix beaucoup plus fortement. La BIS a un nom pour ce phénomène : la « non-linéarité d'impact en queue de distribution ».
 
 ### Le spike obligataire japonais : la mèche allumée
 
@@ -159,13 +159,13 @@ Les implications globales sont multiples et toutes négatives pour les actifs ri
 
 - **Unwinding du carry trade yen** : estimé à environ 20 trillions de dollars selon Kobeissi Letter, ce carry trade consistait à emprunter du yen à taux quasi-nul pour acheter des actifs à yield supérieur partout dans le monde, actions américaines, crédit corporate, real estate, crypto. À 2,8 % sur le JGB 10 ans, l'arbitrage devient marginal.
 - **Repatriation flows** : le Japon détient environ 1,20 trillion de dollars en U.S. Treasuries au 31 octobre 2025 selon les données TIC du Trésor américain, ce qui en fait le premier créancier étranger du gouvernement américain devant la Chine. Si les institutionnels japonais (assureurs-vie, fonds de pension comme GPIF) rapatrient ne serait-ce que 10 % de cette exposition pour profiter des rendements domestiques, c'est 120 milliards de dollars de pression vendeuse sur le marché US.
-- **Hausse mécanique des yields américains** : moins d'acheteurs étrangers signifie des yields plus élevés sur les Treasuries, ce qui se traduit immédiatement par un resserrement des conditions financières globales, défavorable au crédit privé, aux actions de croissance, à la crypto.
+- **Hausse mécanique des yields américains** : moins d'acheteurs étrangers signifie des yields plus élevés sur les Treasuries, traduits immédiatement en resserrement des conditions financières globales, défavorable au crédit privé, aux actions de croissance, à la crypto.
 
 ### La boucle stablecoin / yields
 
 Voici comment les trois canaux s'auto-renforcent en cas de stress :
 
-Imaginons un scénario où, à la suite d'un événement de crédit privé sérieux (cinq Tricolor simultanés, par exemple), les BDC subissent des rachats massifs. Les détenteurs cherchent à sortir aussi des positions adjacentes, y compris des stablecoins yield-bearing comme sUSDe ou syrupUSDC. Run sur les stablecoins yield-bearing. Pour honorer les redemptions, Ethena doit dénouer ses positions short crypto (ce qui pousse temporairement les prix crypto à la hausse via short covering forcé, paradoxalement). Maple doit vendre ses positions en crédit privé sous-jacent, mais le marché secondaire est mince. Ondo et BUIDL doivent vendre des Treasuries.
+Imaginons un scénario où, à la suite d'un événement de crédit privé sérieux (cinq Tricolor simultanés, par exemple), les BDC subissent des rachats massifs. Les détenteurs cherchent à sortir aussi des positions adjacentes, y compris des stablecoins yield-bearing comme sUSDe ou syrupUSDC. Run sur les stablecoins yield-bearing. Pour honorer les redemptions, Ethena doit dénouer ses positions short crypto (poussant temporairement les prix crypto à la hausse via short covering forcé, paradoxalement). Maple doit vendre ses positions en crédit privé sous-jacent, mais le marché secondaire est mince. Ondo et BUIDL doivent vendre des Treasuries.
 
 À ce moment-là, l'effet d'asymétrie BIS s'active : ce qui était une demande modérée à la hausse pour les Treasuries devient une vente brutale qui spike les yields. Le spike des yields ré-évalue à la baisse l'ensemble des portefeuilles de crédit privé classique (les emprunteurs deviennent encore plus stressés à payer leurs intérêts indexés). Les BDC subissent de nouveaux markdowns. Boucle.
 
@@ -187,7 +187,7 @@ Dans ce scénario, la classe d'actifs crédit privé sort affaiblie mais pas bri
 
 Une combinaison défavorable se matérialise sur 3 à 6 mois : récession américaine légère, défauts simultanés sur 10 à 15 emprunteurs majeurs, fermeture des gates de rachat sur les principales BDC retail (BCRED, OBDC, ACRED), funding rates crypto durablement négatifs forçant Ethena à puiser dans son reserve fund.
 
-Dans ce scénario, le canal assureurs-vie devient critique : Athene, Global Atlantic ou American Equity Life prennent des markdowns substantiels sur leurs portefeuilles de crédit privé. Pour maintenir leurs ratios de solvabilité (RBC ratio aux États-Unis), elles doivent vendre des Treasuries et des obligations IG, ce qui pollue les marchés publics. Les stablecoins yield-bearing connaissent des outflows massifs (-50 à -70 % de TVL en quelques semaines, comme USDe en octobre 2025 mais avec un trigger différent et plus prolongé).
+Dans ce scénario, le canal assureurs-vie devient critique : Athene, Global Atlantic ou American Equity Life prennent des markdowns substantiels sur leurs portefeuilles de crédit privé. Pour maintenir leurs ratios de solvabilité (RBC ratio aux États-Unis), elles doivent vendre des Treasuries et des obligations IG, au risque de polluer les marchés publics. Les stablecoins yield-bearing connaissent des outflows massifs (-50 à -70 % de TVL en quelques semaines, comme USDe en octobre 2025 mais avec un trigger différent et plus prolongé).
 
 Les yields US 10 ans repassent au-dessus de 5 %. Les BDC cotées chutent de 30 à 50 %. La crypto subit un nouveau leg down, BTC retesterait probablement les 60 000 à 70 000 dollars. La Fed serait probablement contrainte d'intervenir avec une facilité de liquidité ad hoc, similaire au BTFP de mars 2023. Probabilité estimée : 25-35 %.
 
@@ -199,7 +199,7 @@ Ce scénario est improbable parce que (1) les fonds de crédit privé ont eux-m�
 
 ---
 
-## Conclusion : ce que disent vraiment les chiffres
+## Conclusion : le verdict des chiffres
 
 L'argument « le crédit privé pèse 2 000 milliards, c'est trop petit pour être systémique » est doublement erroné. D'abord, parce que la taille réelle, avec une définition large, approche les 3 trillions et le marché adressable potentiel dépasse les 30 trillions. Ensuite, et surtout, parce que la taille brute n'a jamais été le bon indicateur de risque systémique.
 

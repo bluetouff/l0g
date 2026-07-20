@@ -92,7 +92,7 @@ Cette inversion n'est pas une erreur de marché, c'est un signal. Détenir un Tr
 
 Après 2008, les régulateurs ont voulu réduire le risque que le défaut d'une contrepartie sur un swap ne se propage. La réponse a été la compensation centrale : la plupart des swaps standardisés passent désormais par une chambre de compensation, une [contrepartie centrale](/glossaire/ccp/) qui s'interpose entre les deux parties et garantit la bonne fin des flux. En échange, elle exige des marges : une marge initiale déposée en garantie, et une marge de variation réévaluée chaque jour selon les mouvements de marché.
 
-Ce dispositif rend le système plus sûr en temps normal, mais il introduit un canal de fragilité. Quand les taux bougent violemment, les appels de marge de variation explosent, et les acteurs doivent trouver du cash immédiatement pour y répondre. S'ils n'en ont pas sous la main, ils vendent des actifs, souvent les plus liquides, ce qui peut amplifier le choc initial. La marge protège contre le risque de contrepartie, mais elle transmet le risque de liquidité. C'est exactement l'engrenage qui a failli emporter le marché de la dette britannique.
+Ce dispositif rend le système plus sûr en temps normal, mais il introduit un canal de fragilité. Quand les taux bougent violemment, les appels de marge de variation explosent, et les acteurs doivent trouver du cash immédiatement pour y répondre. S'ils n'en ont pas sous la main, ils vendent des actifs, souvent les plus liquides, ce qui peut amplifier le choc initial. La marge protège contre le risque de contrepartie, mais elle transmet le risque de liquidité. Cet engrenage est celui qui a failli emporter le marché de la dette britannique.
 
 ## Quand les swaps cassent : la spirale LDI britannique
 

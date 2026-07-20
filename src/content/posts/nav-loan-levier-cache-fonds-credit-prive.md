@@ -72,7 +72,7 @@ Le point systémique n'est pas l'usage individuel, mais l'empilement. Les entrep
 <figcaption>Chaque étage se finance sur la valeur de l'étage du dessous. Tant que les valorisations tiennent, la pile est stable ; si elles baissent, les trois étages se resserrent en même temps. Sources : Moody's, FSB. Schéma l0g.</figcaption>
 </figure>
 
-La fragilité de la pile tient à sa circularité. Le NAV loan est gagé sur une valeur que le gérant calcule lui-même, ce terrain des [valorisations au modèle](/posts/zombie-funds-valorisations-privees/) que nous avons documenté : tant qu'on ne vend pas, la NAV reste lisse. Or c'est précisément parce qu'on ne veut pas vendre qu'on emprunte. Si les valorisations devaient être abaissées, la quotité du prêt remonterait mécaniquement, déclenchant appels de marge ou remboursements anticipés, au pire moment. Le levier de fonds transforme ainsi une correction de valorisation, événement comptable, en besoin de liquidité, événement bien réel.
+La fragilité de la pile tient à sa circularité. Le NAV loan est gagé sur une valeur que le gérant calcule lui-même, ce terrain des [valorisations au modèle](/posts/zombie-funds-valorisations-privees/) que nous avons documenté : tant qu'on ne vend pas, la NAV reste lisse. Or on emprunte parce que, justement, on ne veut pas vendre. Si les valorisations devaient être abaissées, la quotité du prêt remonterait mécaniquement, déclenchant appels de marge ou remboursements anticipés, au pire moment. Le levier de fonds transforme ainsi une correction de valorisation, événement comptable, en besoin de liquidité, événement bien réel.
 
 ## Le cadre ILPA, un garde-fou tardif
 

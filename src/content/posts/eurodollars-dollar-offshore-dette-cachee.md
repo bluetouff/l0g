@@ -64,7 +64,7 @@ La BIS a tenté de chiffrer cette dette manquante. Dans son estimation de réfé
 
 Le problème n'est pas la taille en soi, mais la combinaison d'un financement court, d'un hors bilan opaque et d'une dépendance totale à un dollar émis ailleurs. Quand les conditions se tendent, les détenteurs de dollars hors des États-Unis cherchent tous à se refinancer en même temps, et le dollar offshore devient brutalement rare. C'est ce qui s'est produit en 2008, puis en mars 2020 : le marché des swaps de change s'est figé, et la Réserve fédérale a dû ouvrir des lignes de swap avec les grandes banques centrales pour réinjecter des dollars dans le système mondial.
 
-Or la Fed agit alors en pompier d'un incendie qu'elle voit mal. Comme le souligne la BIS, les autorités sont intervenues en 2008 et 2020 avec peu d'informations sur qui devait quoi et où. Le prêteur en dernier ressort du dollar mondial pilote en partie à l'aveugle, sur une dette qui ne figure nulle part dans les bilans qu'il surveille. C'est précisément la zone d'opacité que ce journal cherche à éclairer.
+Or la Fed agit alors en pompier d'un incendie qu'elle voit mal. Comme le souligne la BIS, les autorités sont intervenues en 2008 et 2020 avec peu d'informations sur qui devait quoi et où. Le prêteur en dernier ressort du dollar mondial pilote en partie à l'aveugle, sur une dette qui ne figure nulle part dans les bilans qu'il surveille. Cette zone d'opacité est celle que ce journal cherche à éclairer.
 
 ## L'étage offshore de la même machine
 

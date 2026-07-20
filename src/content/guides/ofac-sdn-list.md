@@ -21,7 +21,7 @@ La portée dépasse de loin les frontières américaines. Parce que le dollar ir
 
 ## Le piège de la règle des 50 %
 
-Une subtilité fait tomber les conformités négligentes : la règle des 50 %. Une entité détenue à **50 %** ou plus, directement ou indirectement, par une ou plusieurs personnes inscrites sur la liste, est elle-même réputée bloquée, même si son nom n'y figure pas. Les participations de plusieurs SDN s'additionnent pour atteindre ce seuil. Autrement dit, l'absence d'un nom sur la liste ne suffit pas : il faut remonter la chaîne de propriété. C'est l'erreur de conformité la plus fréquente.
+Une subtilité fait tomber les conformités négligentes : la règle des 50 %. Une entité détenue à **50 %** ou plus, directement ou indirectement, par une ou plusieurs personnes inscrites sur la liste, est elle-même réputée bloquée, même si son nom n'y figure pas. Les participations de plusieurs SDN s'additionnent pour atteindre ce seuil. L'absence d'un nom sur la liste ne suffit donc pas : il faut remonter la chaîne de propriété. C'est l'erreur de conformité la plus fréquente.
 
 ## Au-delà de la SDN List
 
@@ -41,7 +41,7 @@ La contestation fut immédiate. Dans l'affaire Van Loon contre Trésor, six util
 
 La suite a confirmé la limite. Le **21 mars 2025**, l'OFAC a retiré Tornado Cash de la SDN List, en invoquant sa propre discrétion face à des « questions juridiques et politiques inédites ». En avril 2025, un tribunal fédéral a même prononcé une injonction permanente interdisant à l'OFAC de réimposer ces sanctions sur les contrats immuables du protocole. L'OFAC a néanmoins maintenu la sanction visant l'un des développeurs au titre du programme Corée du Nord, et les poursuites pénales contre les fondateurs se poursuivent indépendamment. La leçon est nette : l'autorité de l'OFAC sur un protocole véritablement décentralisé est juridiquement bornée, et l'application devra cibler des personnes et des entités, non le code lui-même.
 
-## Ce que cela change pour le risque de conformité
+## Les conséquences pour le risque de conformité
 
 Le délistage de Tornado Cash n'est pas un feu vert. Un mélangeur reste un instrument à très haut risque de blanchiment, la responsabilité objective demeure, et le profil de risque d'une opération ne change pas parce qu'une sanction est levée. La frontière tracée par les tribunaux sépare le code des personnes : on peut poursuivre un développeur ou une entité, plus difficilement un logiciel immuable. Les juges eux-mêmes ont suggéré que le Congrès pourrait mettre à jour l'IEEPA pour viser ces technologies, ce qui reste à faire. Tant que ce n'est pas le cas, la portée des sanctions sur la finance décentralisée demeure incertaine.
 
