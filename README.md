@@ -37,8 +37,13 @@ et par les dashboards :
   Radar `latest.json`, avec provenance, buckets et couverture lorsque disponible.
 - `/api/v1/signals/history.*` : historique point-in-time pour backtests et
   replay sans look-ahead bias.
-- `/api/mcp` : serveur MCP public en lecture seule, avec resources et tools
-  pour Agent Surface, Risk Diff, Black Box, claims, sources, intégrité et changefeed.
+- `/api/mcp/compact` : façade MCP recommandée à six outils, avec découverte,
+  recherche, documents, preuves, research packs et état du risque.
+- `/api/mcp` : surface MCP complète en lecture seule, conservée pour compatibilité
+  et usages experts autour d'Agent Surface, Risk Diff, Black Box, claims, sources,
+  intégrité et changefeed.
+- `/api/v1/toolset-manifest.json` : versions et empreintes anti-dérive des contrats
+  d'outils MCP complet et compact.
 - `/llms.txt` et `/llms-full.txt` : cartes textuelles pour agents et RAG.
 
 Les détails de calcul et les limites de modèle sont dans

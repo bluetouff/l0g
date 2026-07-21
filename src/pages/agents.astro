@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { agentPrompts, previewAgentPrompt } from '../lib/agent-prompts.mjs';
 import TrustBar from '../components/TrustBar.astro';
+import { MCP_COMPACT_PUBLIC_PATH, MCP_PUBLIC_PATH } from '../config/agent-contract.mjs';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 
@@ -78,8 +79,8 @@ const surfaces = [
   },
   {
     need: 'Tool calling',
-    endpoint: '/api/mcp',
-    use: 'Serveur MCP public en lecture seule, adapté aux agents qui préfèrent appeler des outils.',
+    endpoint: MCP_COMPACT_PUBLIC_PATH,
+    use: `Façade MCP recommandée à six outils. La surface complète reste disponible sur ${MCP_PUBLIC_PATH} pour les usages experts.`,
   },
   {
     need: 'Mesurer l’usage MCP',
@@ -280,12 +281,13 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="note-block">
         <p class="mono-label glow">// MCP public</p>
         <p>
-          Le serveur <a href="/mcp/">MCP</a> expose les outils de lecture en mode
-          read-only : recherche, articles, manifestes, fraîcheur, claims, evidence
-          graph, sources, intégrité, changefeed, Risk Diff et Black Box. Pour un agent capable de tool calling,
-          c’est l’interface la plus naturelle.
+          Le serveur <a href="/mcp/">MCP</a> expose une façade compacte read-only à six outils :
+          découverte, recherche, documents, preuves, research packs et état du risque. La surface
+          complète conserve les outils spécialisés de fraîcheur, claims, evidence graph, sources,
+          intégrité, changefeed, Risk Diff et Black Box.
         </p>
-        <pre><code>POST https://l0g.fr/api/mcp</code></pre>
+        <pre><code>POST https://l0g.fr{MCP_COMPACT_PUBLIC_PATH}</code></pre>
+        <p class="mt-2 text-muted">Surface complète : <code>https://l0g.fr{MCP_PUBLIC_PATH}</code></p>
       </div>
 
       <div class="note-block">

@@ -74,6 +74,16 @@ const htmlFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.html']));
 if (!htmlFiles.length) fail('Aucune page HTML construite à auditer dans dist');
 
 const apacheConfig = await readFile(join(ROOT, 'deploy/l0g.fr.apache.conf'), 'utf8');
+if (!apacheConfig.includes('<LocationMatch "^/(agents\\.json|openapi\\.json|llms(?:-full(?:-en)?)?\\.txt)$">')) {
+  fail('CORS public borné absent pour agents.json, openapi.json et llms*.txt');
+}
+if (!apacheConfig.includes('<Location "/api/mcp/compact">') || !apacheConfig.includes('http://127.0.0.1:8848/mcp/compact')) {
+  fail('reverse proxy MCP compact absent');
+}
+const compactLocation = apacheConfig.match(/<Location "\/api\/mcp\/compact">([\s\S]*?)<\/Location>/)?.[1] || '';
+if (!compactLocation.includes('Header always unset Access-Control-Allow-Origin') || !compactLocation.includes('<LimitExcept POST GET>')) {
+  fail('MCP compact doit rester sans CORS générique et borné à GET/POST');
+}
 const cspHeader = apacheConfig
   .match(/Header always set Content-Security-Policy "([\s\S]*?)"/i)?.[1]
   ?.replace(/\\\s*\n\s*/g, ' ') || '';

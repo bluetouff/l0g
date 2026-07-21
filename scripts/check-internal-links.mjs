@@ -19,6 +19,7 @@ const DIST = 'dist';
 // À maintenir à la main ; garder au strict minimum.
 const RUNTIME_ENDPOINTS = new Set([
   '/api/mcp',
+  '/api/mcp/compact',
   '/api/mcp/usage',
   '/api/v1/history.ndjson',
 ]);

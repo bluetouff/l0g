@@ -21,8 +21,9 @@ la source du binaire de production ni une preuve que la version annoncée est vi
 ## Invariants
 
 - Un tag stable a la forme `mcp-vX.Y.Z` et pointe sur un commit de `main`.
-- `server.json`, `mcp-server/package.json`, son lockfile, `MCP_VERSION` et le placeholder
-  Agent Bench portent exactement la même version.
+- `src/config/agent-contract.mjs` est la source unique de version ; `server.json`,
+  `mcp-server/package.json` et son lockfile doivent rester alignés, tandis que le serveur
+  et le placeholder Agent Bench importent directement cette source.
 - Une version du Registry n'est jamais republiée : ses métadonnées sont immuables.
 - La GitHub Release contient une archive déterministe, son SHA-256, le texte MIT, le README,
   les notices, la politique de sécurité, un SBOM CycloneDX et le bundle d'attestation
@@ -31,7 +32,9 @@ la source du binaire de production ni une preuve que la version annoncée est vi
   l'archive si l'empreinte, l'identité du workflow, le tag, le SHA source ou le manifeste interne
   ne convergent pas.
 - Le Registry est mis à jour par OIDC uniquement après que `https://l0g.fr/api/mcp` expose la
-  version et le SHA attendus avec `releaseAttested: true`.
+  version et le SHA attendus avec `releaseAttested: true`. La façade recommandée
+  `https://l0g.fr/api/mcp/compact` est ensuite vérifiée avec ses six outils ; la surface complète
+  reste le point déclaré au Registry pour préserver la compatibilité des clients existants.
 
 Documentation officielle :
 

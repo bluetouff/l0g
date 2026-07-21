@@ -2,9 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import { agentPrompts } from '../lib/agent-prompts.mjs';
+import { MCP_COMPACT_PUBLIC_PATH, MCP_PROTOCOL_VERSION, MCP_PUBLIC_PATH, MCP_VERSION } from '../config/agent-contract.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-const ENDPOINT = `${SITE}/api/mcp`;
+const ENDPOINT = `${SITE}${MCP_PUBLIC_PATH}`;
+const COMPACT_ENDPOINT = `${SITE}${MCP_COMPACT_PUBLIC_PATH}`;
 const mcpFrUrl = new URL('/mcp/', Astro.site).toString();
 const mcpEnUrl = new URL('/en/mcp/', Astro.site).toString();
 const mcpAlternateLinks = [
@@ -113,10 +115,16 @@ const appLd = {
       cookie, session, empreinte ni user-agent dans la télémétrie MCP.
     </p>
     <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-muted">
-      <strong class="text-signal">Cible du dépôt au 17 juillet 2026 :</strong>
-      <code>1.22.0</code>, avec outils claims/sources consolidés, sélection de trois claims structurants typés maximum par article et statistiques anonymisées. La version et le SHA
+      <strong class="text-signal">Contrat du dépôt :</strong>
+      <code>{MCP_VERSION}</code>, avec outils claims/sources consolidés, sélection de trois claims structurants typés maximum par article et statistiques anonymisées. La version et le SHA
       réellement actifs restent publiés par la ressource <code>l0g://mcp/server</code> ; le dépôt
       et le runtime ne sont considérés alignés qu’après publication de la release attestée.
+    </div>
+    <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-paper">
+      <strong class="text-signal">Entrée compacte recommandée :</strong> <code>{COMPACT_ENDPOINT}</code> expose six primitives :
+      <code>discover_l0g</code>, <code>search_l0g</code>, <code>get_document</code>, <code>get_evidence</code>,
+      <code>build_research_pack</code> et <code>get_risk_state</code>. Le MCP complet reste disponible à <code>{ENDPOINT}</code>.
+      Les empreintes des contrats sont publiées dans <a class="link-term" href="/api/v1/toolset-manifest.json">toolset-manifest.json</a>.
     </div>
     <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/mcp/">English MCP documentation →</a></p>
   </section>
@@ -325,7 +333,7 @@ const appLd = {
       <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
-  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"${MCP_PROTOCOL_VERSION}","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
 
 curl -s -X POST ${ENDPOINT} \\
   -H 'Content-Type: application/json' \\

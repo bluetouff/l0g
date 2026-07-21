@@ -6,6 +6,7 @@ import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
+import { AGENT_VERSION, MCP_COMPACT_PUBLIC_PATH, MCP_PUBLIC_PATH } from '../config/agent-contract.mjs';
 
 /**
  * /llms.txt - carte concise et annotee du site pour agents IA (convention llmstxt.org).
@@ -84,7 +85,7 @@ export const GET: APIRoute = async () => {
     `- [Black Box Recorder](${SITE}/black-box/): boîte noire publique des frames de risque, avec replay par date, hashes, sources, modèles, fraîcheur et changements publiés.`
   );
   lines.push(
-    `- [Agent Surface v1.16.0](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, trois claims structurants typés maximum par article, séries de risque nommées et versionnées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
+    `- [Agent Surface v${AGENT_VERSION}](${SITE}/donnees/agents/): surface M2M bilingue pour agents IA : manifeste, OpenAPI, evidence graph, NDJSON, trois claims structurants typés maximum par article, séries de risque nommées et versionnées, dates séparées, retrievedAt nullable, indexedAt, sources, fraîcheur, registre Black Box append-only, intégrité attestée, revue canonique et Agent Bench déterministe.`
   );
   lines.push(
     `- [Sources primaires](${SITE}/sources/): pages institutionnelles SEC, Fed/FRED, BIS, FMI, FSB/OFR, BCE/Eurostat, CFTC, EIA, TIC, BLS/BEA.`
@@ -201,7 +202,9 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Schéma signaux](${SITE}/api/v1/signals/schema.json): contrat machine des lignes meta, observation et level-change.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
-  lines.push(`- [Serveur MCP](${SITE}/api/mcp): endpoint Model Context Protocol en lecture seule (transport Streamable HTTP). Tools clés : get_risk_diff, get_black_box, get_signal_history, get_claims, get_evidence_graph. Doc : ${SITE}/mcp`);
+  lines.push(`- [MCP compact](${SITE}${MCP_COMPACT_PUBLIC_PATH}): façade Model Context Protocol recommandée en lecture seule, à six outils : discover_l0g, search_l0g, get_document, get_evidence, build_research_pack et get_risk_state.`);
+  lines.push(`- [MCP complet](${SITE}${MCP_PUBLIC_PATH}): surface Streamable HTTP compatible et experte, avec les outils spécialisés Risk Diff, Black Box, historique, claims, sources et evidence graph. Doc : ${SITE}/mcp`);
+  lines.push(`- [Manifeste des outils MCP](${SITE}/api/v1/toolset-manifest.json): versions et empreintes anti-dérive des surfaces complète et compacte.`);
   lines.push(`- [Statistiques MCP anonymisées](${SITE}/api/mcp/usage): volumes techniques agrégés sur 91 jours, sans IP, cookie, session, empreinte ni user-agent ; familles client masquées sous cinq initialisations.`);
   lines.push(`- [Corpus integral](${SITE}/llms-full.txt): texte complet de toutes les analyses et guides.`);
   lines.push(`- [English full corpus](${SITE}/llms-full-en.txt): complete English analyses and guides in a separate context file.`);

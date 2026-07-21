@@ -1,0 +1,260 @@
+{
+  "serverVersion": "1.23.0",
+  "protocolVersion": "2025-11-25",
+  "toolsetHash": "4c50683e547086c5312c1dba62b51f607daa16c7aea44fe724eca26b729b83f8",
+  "tools": [
+    {
+      "name": "build_research_pack",
+      "semanticVersion": "1.1.0",
+      "descriptionHash": "c2c2cab618a0f51e54a61b270702dde7f616beda43aa4109e4b86bf79d29b924",
+      "inputSchemaHash": "54cdaf9ab52960e6dae6c634ab8e0492fdd56a1fa6f1aaa299d6fbc39b0af31e",
+      "outputSchemaHash": "f96a31795e08b4896be786db006146fc3f43b983ec6a1aa0f29e15c57113d932",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "discover_l0g",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "9bdd86d6a1601f5e49a6e8f5a45df957d66907c30b2e89be29651b5c0351b479",
+      "inputSchemaHash": "43f5628040b3eeea537cc8867439dbc45256cc54036b1a57c4db26d7054ae7a4",
+      "outputSchemaHash": "5d3d890902f61f4bf3d87ec3ee2f499cffb21be322a3dbcf3104357c220682df",
+      "changeType": "initial"
+    },
+    {
+      "name": "get_agent_manifest",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "2ab7f2f5575e30b2e53da452394a8c19f06d8ae261b64d93785c583a58743457",
+      "inputSchemaHash": "7a014b717a77aac971ea0ab5c0ff47bb13e6cae7ef9442d9dedb15ce36381b15",
+      "outputSchemaHash": "3f26d70366c5f450289a5178cb6221ca1a3c18546114a799fe2be1fcda0db4b3",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_article",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "f59fbd0fa6355bf4e785b6577ca31b26441b29f6a6ce94ce215ddf5121e830b4",
+      "inputSchemaHash": "258917a619bf7c709cef075f24e5eb4c679fe2270fddb8f5d22181b233bbd783",
+      "outputSchemaHash": "f50f8cee47de07f16f59fdbabfc9ffcccf509c55b80b82195487edc41183ce4f",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_black_box",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "c7fdb9043b6b484dab28c8ffe02c849277c7470575ea0804b981d00d53a47efb",
+      "inputSchemaHash": "148355cae2fd8c07d3dfdd628130fd57e389c85c2b81e66a50f17c0da133b2c9",
+      "outputSchemaHash": "0afa4d21d92e099f7d0bedc21392c25f47045f206af85684afe370796fe65c1b",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_changefeed",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "6a8cf0f822f7dd998734a8b3eb248a5a18fd28130645f3ab9a15f8162aeea970",
+      "inputSchemaHash": "4077b555d2d694f12953412aae1f9378447dfcaca9b318e03a2f5acd9d103a3f",
+      "outputSchemaHash": "3ceff2bb295696e3a689ca9e0fb767d73490585c5324916b1702254fd93c8d2d",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_changes",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "292ab18d355cf5f5f63850f92e10bcdb2aa186638b7a244394e3e91f3a19232c",
+      "inputSchemaHash": "50724a817972ac439e5b4b54610c30399cee85b13a43f43545b89ab63b32053c",
+      "outputSchemaHash": "6efb8bc61ef7f6d8222669517a916b69b83bbd94a528c0bb98f5111c61a2be1a",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_claims",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "3fdca64f4bab7d3160afefc5deaa85295ce5b2666aec44fc0ea41545e8becbf3",
+      "inputSchemaHash": "2e12b1dcfac2fe85be755cb825686c64425ebcdb6f4336c658c919ba5ed44c46",
+      "outputSchemaHash": "8299d72ac494df0fa9e10e96f445e44ab3d4b091021f532312d75210c24264f4",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_document",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "edfe264ab124f396da2aca3d0cfdf067a94d0318b5867f68fc671b2e88897fe2",
+      "inputSchemaHash": "258917a619bf7c709cef075f24e5eb4c679fe2270fddb8f5d22181b233bbd783",
+      "outputSchemaHash": "f50f8cee47de07f16f59fdbabfc9ffcccf509c55b80b82195487edc41183ce4f",
+      "changeType": "initial"
+    },
+    {
+      "name": "get_evidence",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "3b9d7df811425aca03412f977f61ea4715c55cfbe3b63f977c690a93e5f40e0a",
+      "inputSchemaHash": "c4aedbc7747696aa47b1ba45818662a4d6c809901e9521c4232f258dc2f205c1",
+      "outputSchemaHash": "5d3d890902f61f4bf3d87ec3ee2f499cffb21be322a3dbcf3104357c220682df",
+      "changeType": "initial"
+    },
+    {
+      "name": "get_evidence_graph",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "ab95b13cec8c47a124f2f83d152ce7502218068df7d44785362c652f6b3b61ae",
+      "inputSchemaHash": "216a234c23d1ff5377514b33b0c080a2cf0fd7cc7be49c8271aaf3e41739d8b5",
+      "outputSchemaHash": "21e28e5cfa22bf5043c3d74e48b29b26c0628e1f8b3c8e1676e43e2e4b290efb",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_freshness",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "e4a0925cba27cf0e9c424b1784fe2ca7efe521448405443e6d3e708baaaabc49",
+      "inputSchemaHash": "d64565b746e3a522f8018c767ab2d9646025e77cd5eec0521c43233729c4e1b9",
+      "outputSchemaHash": "833cd684884c9e9ec652e95286df89841db536ffa6034fac436ea216fb266c21",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_integrity",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "335de7b15a90413c76314fb9b450f1994807e5329d2bba1cd22ed47dd56c70bf",
+      "inputSchemaHash": "5c2cc01bbf7338f96126bb82793324c425c39b711a5b10cd60fe3eecbb805412",
+      "outputSchemaHash": "1ce5b81486c444b7e4925bf6b70ba6c17f52a09d477c1e1dbbb9af3d91fbbfaa",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_ndjson_feed",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "fc72b4eb5fecb47aa73d62cc493ef1bd59dd2ca67e9b08f8943e520ffedb54ab",
+      "inputSchemaHash": "dd218098ca6c9921ca986cc172fb910fac5d3ff3c42129b91709300d23a9a601",
+      "outputSchemaHash": "fbc185e236467755f417ddc7f1a2b8b4d4439132c50811d6ed2763dc9773f0c9",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_openapi_schema",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "15b7ac2f5b4f292b50fada0ed4b5d05692bce8f726e83616252f48ee331bac28",
+      "inputSchemaHash": "6ec1e62bc0e70cf54f21a97b55f9c257b3899b6baadcb3719e6c44fef9191988",
+      "outputSchemaHash": "887e9dfde6562dbc3ece35d9652d1c2b46bbecd485d9ee7ae6341059e0d370d3",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_risk_diff",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "727cafa4bcbb16b7b513db15f50d719894d92520870c7256c48bba4ab9de4353",
+      "inputSchemaHash": "d1b0e9fe6e103a423e8230a50625648196e3571ff274423a9e9cd3dafa7548b2",
+      "outputSchemaHash": "4bcd732b8165a22fde93683c510987592e4324fa1791351d9bca2c2b8917b204",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_risk_indices",
+      "semanticVersion": "2.1.0",
+      "descriptionHash": "079ffd7d618434a90fec536e0482791e62dd49680628e5d1365f13c6221b78f1",
+      "inputSchemaHash": "7a014b717a77aac971ea0ab5c0ff47bb13e6cae7ef9442d9dedb15ce36381b15",
+      "outputSchemaHash": "7ad8e24a88805776fdf4b99c183f3e66a455a7d90c9d4d9769b9954260a762ac",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "get_risk_state",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "364e6b4469e2e4bad930592af2f81e57d9931bd5966d51079c7f7d3ada445d84",
+      "inputSchemaHash": "cb838f7e63982b6c913c8fc91633f3b43b273a7d6e5859d10423f49d6385c78f",
+      "outputSchemaHash": "5d3d890902f61f4bf3d87ec3ee2f499cffb21be322a3dbcf3104357c220682df",
+      "changeType": "initial"
+    },
+    {
+      "name": "get_signal_history",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "2ba39654256da209d3af1ef7cf3ff828a098852751fecfe623f902342ca392a5",
+      "inputSchemaHash": "385ad4333ee67856af67859c317da99dc3f2c448083b0451c6e5b0e6308e410d",
+      "outputSchemaHash": "823c0756deac118e2642c123d9d3f6723737010e8bc2d3f864defacac06784b5",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "list_guides",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "25c94cc2e846bc94e71e689f79c17f711505725dbfa09296fb19e4a10258a0be",
+      "inputSchemaHash": "e09a19576d8db6f086687aed9cae3effdce015331b01a94d448f78d36266aa45",
+      "outputSchemaHash": "2a95c5564709de16fc2d1f02eb17e794ba67a74edbd95df8cf2eee8139973351",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "list_recent_analyses",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "a32694feb37d2af7b9e5fafc8730be02aedfffebf2a5afc272e8c40dce7750c1",
+      "inputSchemaHash": "fd0da58aebb9ed50083ff31cf6ac09b4cb5c351df5e49a372c7a301bc4f97373",
+      "outputSchemaHash": "4f907ade94e4075ae8504de587f3730b6f3a709ea88a123da2eb568f57f3663c",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "list_sources",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "db1e947af7a4796939bceafb5c160d4acc253fa65432e1c9caa9d451166d6721",
+      "inputSchemaHash": "da4d3f33c16027800d3ec7c26cf13459257f5aa4b61d9f25e88367a6aa1de51b",
+      "outputSchemaHash": "6e1c433291a9b0dbffa7d00b77d4179a4c280327246dcd70e04ea2798eb201b3",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "search_by_topic",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "c763d392fac7b40c5979aa22c287715c8daaf1eaff9fff20b1746c4726a66235",
+      "inputSchemaHash": "30ddaae8228deec1b81c8471153ff59f3795c06eaeb2a2f5fea489bfe2fd404c",
+      "outputSchemaHash": "507638ecc84ed741593fb36a9e37f39d79b6859a89d36b2c4431c4e90727719a",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "search_content",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "da0416344bed0823827882e52c3fe93b6fff4bfa19a1d664e6569b7c708820d4",
+      "inputSchemaHash": "ab4000770ddf7e78e92283d789e9cedaa8180bdf8b75b916b19e676a301db37a",
+      "outputSchemaHash": "3140ea1f113e1fa826615cf8127c68ab4bac58dacac296c978229a01d6b74b91",
+      "changeType": "non-breaking"
+    },
+    {
+      "name": "search_l0g",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "29af9d11dd62baba765d574d698ceab879e5476e37337bbb41cccc766957a7f2",
+      "inputSchemaHash": "ab4000770ddf7e78e92283d789e9cedaa8180bdf8b75b916b19e676a301db37a",
+      "outputSchemaHash": "3140ea1f113e1fa826615cf8127c68ab4bac58dacac296c978229a01d6b74b91",
+      "changeType": "initial"
+    },
+    {
+      "name": "verify_artifact",
+      "semanticVersion": "1.0.0",
+      "descriptionHash": "21529880b16c4ba7d84bd11230a4c07441fcbb8a7a83f41928baf3eea79cf976",
+      "inputSchemaHash": "b0a311002b2f881c5f0469ddda7d6135630736909b73531b4dda398cdf7be4f2",
+      "outputSchemaHash": "def4d423f059d2f6a690ee187c5782594b7d1631a81a9e444d2c329664446372",
+      "changeType": "non-breaking"
+    }
+  ],
+  "surfaces": {
+    "full": {
+      "path": "/api/mcp",
+      "toolsetHash": "274e7f8cf68fd628bbbf146cc9871d90b15f23e9be1b15daa50c855f4ea1ae0c",
+      "tools": [
+        "build_research_pack",
+        "get_agent_manifest",
+        "get_article",
+        "get_black_box",
+        "get_changefeed",
+        "get_changes",
+        "get_claims",
+        "get_evidence_graph",
+        "get_freshness",
+        "get_integrity",
+        "get_ndjson_feed",
+        "get_openapi_schema",
+        "get_risk_diff",
+        "get_risk_indices",
+        "get_signal_history",
+        "list_guides",
+        "list_recent_analyses",
+        "list_sources",
+        "search_by_topic",
+        "search_content",
+        "verify_artifact"
+      ],
+      "toolCount": 21,
+      "toolsListBytes": 51156
+    },
+    "compact": {
+      "path": "/api/mcp/compact",
+      "toolsetHash": "53ceef981c0a42fc915c8cf36a828b667adb9185a8ee38904080e6b321afeff9",
+      "tools": [
+        "build_research_pack",
+        "discover_l0g",
+        "get_document",
+        "get_evidence",
+        "get_risk_state",
+        "search_l0g"
+      ],
+      "toolCount": 6,
+      "toolsListBytes": 11276
+    }
+  }
+}

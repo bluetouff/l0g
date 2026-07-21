@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
+import { MCP_COMPACT_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
@@ -49,7 +50,7 @@ const routes = [
 
 const machine = [
   { href: '/en/agent-surface/', label: 'Agent Surface', cmd: 'curl -s https://l0g.fr/agents.json' },
-  { href: '/en/mcp/', label: 'MCP server', cmd: 'npx mcp-remote https://l0g.fr/api/mcp' },
+  { href: '/en/mcp/', label: 'MCP server', cmd: `npx mcp-remote https://l0g.fr${MCP_COMPACT_PUBLIC_PATH}` },
   { href: '/en/risk-diff/', label: 'Risk Diff', cmd: 'curl -s https://l0g.fr/api/v1/risk-diff.json' },
   { href: '/en/black-box/', label: 'Black Box', cmd: 'curl -s https://l0g.fr/api/v1/black-box.json' },
 ];

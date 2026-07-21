@@ -4,7 +4,12 @@ Serveur **Model Context Protocol** en lecture seule, qui expose les données de 
 (Agent Surface, OpenAPI, Risk Diff, Black Box Recorder, NDJSON, evidence graph, claims, sources, fraîcheur, intégrité, changefeed, historique des signaux, analyses, guides) à des agents IA via resources, prompts, resource templates et tools, avec le
 transport **Streamable HTTP** (spec 2025-11-25, le transport SSE est déprécié).
 
-Endpoint public visé : `https://l0g.fr/api/mcp`
+Endpoints publics visés :
+
+- `https://l0g.fr/api/mcp/compact` : façade recommandée à six tools ;
+- `https://l0g.fr/api/mcp` : surface complète conservée pour compatibilité et usages experts.
+
+Le contrat anti-dérive est publié sur `https://l0g.fr/api/v1/toolset-manifest.json`.
 
 ## État de déploiement
 
@@ -127,15 +132,31 @@ page `/agents/`.
 | `verify_claim` | `claim`, `language?` | vérifier une affirmation contre les claims canoniques, leurs preuves et leurs sources |
 | `replay_as_of` | `date`, `question?`, `language?` | rejouer uniquement une frame Black Box réellement archivée à la date demandée |
 
-## Tools exposés (tous `readOnlyHint`)
+## Tools exposés
 
 Tous les tools renvoient désormais :
 
 - un résumé humain court dans `content`;
 - les données exploitables dans `structuredContent`;
 - un `outputSchema` déclaré et validé par le SDK.
+- un `title` et les hints `readOnlyHint: true`, `destructiveHint: false`,
+  `idempotentHint: true`, `openWorldHint: false` ;
+- des `resource_link` natifs lorsque la réponse référence des documents, claims ou sources.
 
 Le JSON n'est donc plus caché dans un bloc texte à reparser.
+
+### Façade compacte
+
+| Tool | Rôle |
+|------|------|
+| `discover_l0g` | capacités, versions, fraîcheur, règles et contrats |
+| `search_l0g` | recherche bilingue filtrée dans tout le corpus |
+| `get_document` | article ou guide paginé avec références |
+| `get_evidence` | claims, sources et sous-graphe de preuve |
+| `build_research_pack` | paquet de recherche déterministe prêt à citer |
+| `get_risk_state` | courant, diff, historique ou replay |
+
+### Surface complète
 
 | Tool | Arguments | Renvoie |
 |------|-----------|---------|

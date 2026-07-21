@@ -21,6 +21,11 @@ const CLIENT_FAMILIES = [
 const CLIENT_FAMILY_NAMES = new Set([...CLIENT_FAMILIES.map(([family]) => family), 'other', 'undeclared']);
 
 const KNOWN_TOOLS = new Set([
+  'discover_l0g',
+  'search_l0g',
+  'get_document',
+  'get_evidence',
+  'get_risk_state',
   'get_agent_manifest',
   'get_risk_indices',
   'get_signal_history',

@@ -1,9 +1,11 @@
 ---
 import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 import { agentPrompts } from '../../lib/agent-prompts.mjs';
+import { MCP_COMPACT_PUBLIC_PATH, MCP_PROTOCOL_VERSION, MCP_PUBLIC_PATH, MCP_VERSION } from '../../config/agent-contract.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
-const ENDPOINT = `${SITE}/api/mcp`;
+const ENDPOINT = `${SITE}${MCP_PUBLIC_PATH}`;
+const COMPACT_ENDPOINT = `${SITE}${MCP_COMPACT_PUBLIC_PATH}`;
 const enUrl = `${SITE}/en/mcp/`;
 const frUrl = `${SITE}/mcp/`;
 const alternateLinks = [
@@ -104,10 +106,16 @@ const appLd = {
       l0g exposes its data to AI agents through the Model Context Protocol, read-only. An agent can query Agent Surface, the OpenAPI contract, NDJSON feeds, Risk Diff, Black Box Recorder, claims, the evidence graph, sources, freshness, integrity, changefeed, signal history or full article text without scraping the site. No key or authentication. Usage measurement is aggregated without IP addresses, cookies, sessions, fingerprints or user-agent strings in MCP telemetry.
     </p>
     <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-muted">
-      <strong class="text-signal">Repository target on 17 July 2026:</strong>
-      <code>1.22.0</code>, with consolidated claims/source tools, at most three structural typed claims per article and anonymous usage statistics. The version and SHA
+      <strong class="text-signal">Repository contract:</strong>
+      <code>{MCP_VERSION}</code>, with consolidated claims/source tools, at most three structural typed claims per article and anonymous usage statistics. The version and SHA
       actually running remain available through <code>l0g://mcp/server</code>; repository and runtime
       are only considered aligned after the attested release is published.
+    </div>
+    <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-paper">
+      <strong class="text-signal">Recommended compact entry point:</strong> <code>{COMPACT_ENDPOINT}</code> exposes six primitives:
+      <code>discover_l0g</code>, <code>search_l0g</code>, <code>get_document</code>, <code>get_evidence</code>,
+      <code>build_research_pack</code> and <code>get_risk_state</code>. The full MCP remains available at <code>{ENDPOINT}</code>.
+      Contract fingerprints are published in <a class="link-term" href="/api/v1/toolset-manifest.json">toolset-manifest.json</a>.
     </div>
     <p class="mono-label mt-4"><a class="link-term" href="/mcp/">Version française →</a></p>
   </section>
@@ -179,7 +187,7 @@ const appLd = {
       <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
-  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"${MCP_PROTOCOL_VERSION}","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
 
 curl -s -X POST ${ENDPOINT} \\
   -H 'Content-Type: application/json' \\

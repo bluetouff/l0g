@@ -15,6 +15,8 @@ import {
   buildSignalSchemaSurface,
   signalSeriesRegistry,
 } from './signal-history.ts';
+import { AGENT_VERSION, MCP_COMPACT_PUBLIC_PATH, MCP_PROTOCOL_VERSION, MCP_PUBLIC_PATH } from '../config/agent-contract.mjs';
+import toolsetManifest from '../generated/toolset-manifest.json';
 
 const API_SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
@@ -32,7 +34,7 @@ function secureApiHeaders(type: string) {
 }
 
 export const AGENT_SITE = 'https://l0g.fr';
-export const AGENT_VERSION = '1.17.0';
+export { AGENT_VERSION };
 export const AGENT_GENERATED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 const OPENAPI_SCHEMA_BASE = `${AGENT_SITE}/openapi.json#/components/schemas`;
 const SIGNAL_STALE_AFTER: Record<string, string> = {
@@ -486,6 +488,7 @@ export function buildOpenApiContract() {
       '/api/v1/sources.json': openApiEndpoint('Registre sources', 'Sources primaires institutionnelles, hôtes cités, règles de citation et limites.', 'SourcesSurface'),
       '/api/v1/freshness.json': openApiEndpoint('Fraîcheur', 'Derniers contenus, compteurs de corpus, endpoints et politique de fraîcheur.', 'FreshnessSurface'),
       '/api/v1/integrity.json': openApiEndpoint('Intégrité', 'Empreintes SHA-256 canoniques des surfaces Agent Surface pour vérification de snapshot.', 'IntegritySurface'),
+      '/api/v1/toolset-manifest.json': openApiEndpoint('Manifeste des tools MCP', 'Versions sémantiques et empreintes anti-dérive des contrats MCP complet et compact.', 'ToolsetManifest'),
       '/api/v1/changes.json': openApiEndpoint('Changefeed', 'Flux machine des publications, révisions et politiques, avec version courante, hash, statut de diff et changement sémantique.', 'ChangefeedSurface'),
       '/api/v1/changes.ndjson': openApiNdjsonEndpoint('Changefeed NDJSON', 'Changefeed machine en lignes NDJSON, une publication ou révision par ligne.'),
       '/api/v1/risk-diff.json': openApiEndpoint('Risk Diff', 'Diff du risque : signaux, sources, claims, modèles, articles et confiance par fenêtre 1, 7 et 30 jours.', 'RiskDiffSurface'),
@@ -957,6 +960,7 @@ export function buildOpenApiContract() {
             'sources',
             'freshness',
             'integrity',
+            'toolsetManifest',
             'changes',
             'changesNdjson',
             'riskDiff',
@@ -973,6 +977,7 @@ export function buildOpenApiContract() {
             'llmsFull',
             'llmsFullEn',
             'mcpEndpoint',
+            'mcpCompactEndpoint',
             'mcpDocumentation',
             'docs',
             'agentBenchDocumentation',
@@ -991,6 +996,7 @@ export function buildOpenApiContract() {
             'sources',
             'freshness',
             'integrity',
+            'toolsetManifest',
             'changes',
             'changesNdjson',
             'riskDiff',
@@ -1007,6 +1013,7 @@ export function buildOpenApiContract() {
             'llmsFull',
             'llmsFullEn',
             'mcpEndpoint',
+            'mcpCompactEndpoint',
             'mcpDocumentation',
             'docs',
             'agentBenchDocumentation',
@@ -1805,6 +1812,43 @@ export function buildOpenApiContract() {
                 },
               },
             },
+          },
+        },
+        ToolsetManifest: {
+          type: 'object',
+          required: ['serverVersion', 'protocolVersion', 'toolsetHash', 'tools', 'surfaces'],
+          additionalProperties: false,
+          properties: {
+            serverVersion: { type: 'string' },
+            protocolVersion: { const: MCP_PROTOCOL_VERSION },
+            toolsetHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            tools: { type: 'array', items: { $ref: '#/components/schemas/ToolContractFingerprint' } },
+            surfaces: { type: 'object', additionalProperties: { $ref: '#/components/schemas/ToolsetSurface' } },
+          },
+        },
+        ToolContractFingerprint: {
+          type: 'object',
+          required: ['name', 'semanticVersion', 'descriptionHash', 'inputSchemaHash', 'outputSchemaHash', 'changeType'],
+          additionalProperties: false,
+          properties: {
+            name: { type: 'string' },
+            semanticVersion: { type: 'string' },
+            descriptionHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            inputSchemaHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            outputSchemaHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            changeType: { enum: ['initial', 'non-breaking', 'breaking'] },
+          },
+        },
+        ToolsetSurface: {
+          type: 'object',
+          required: ['path', 'toolsetHash', 'tools', 'toolCount', 'toolsListBytes'],
+          additionalProperties: false,
+          properties: {
+            path: { type: 'string' },
+            toolsetHash: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            tools: { type: 'array', items: { type: 'string' } },
+            toolCount: { type: 'integer' },
+            toolsListBytes: { type: 'integer' },
           },
         },
         IntegrityCounts: {
@@ -3948,6 +3992,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/api/v1/sources.json', role: 'Registre sources et hôtes cités', update: 'à chaque build' },
       { path: '/api/v1/freshness.json', role: 'Fraîcheur et derniers contenus', update: 'à chaque build' },
       { path: '/api/v1/integrity.json', role: 'Empreintes SHA-256 des surfaces M2M', update: 'à chaque build' },
+      { path: '/api/v1/toolset-manifest.json', role: 'Empreintes anti-dérive des tools MCP', update: 'à chaque changement de contrat MCP' },
       { path: '/api/v1/changes.json', role: 'Changefeed machine des publications et révisions', update: 'à chaque build' },
       { path: '/api/v1/changes.ndjson', role: 'Changefeed machine en NDJSON', update: 'à chaque build' },
       { path: '/api/v1/risk-diff.json', role: 'Diff du risque : signaux, sources, claims, modèles et articles', update: 'à chaque build' },
@@ -4024,6 +4069,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       sources: `${AGENT_SITE}/api/v1/sources.json`,
       freshness: `${AGENT_SITE}/api/v1/freshness.json`,
       integrity: `${AGENT_SITE}/api/v1/integrity.json`,
+      toolsetManifest: `${AGENT_SITE}/api/v1/toolset-manifest.json`,
       changes: `${AGENT_SITE}/api/v1/changes.json`,
       changesNdjson: `${AGENT_SITE}/api/v1/changes.ndjson`,
       riskDiff: `${AGENT_SITE}/api/v1/risk-diff.json`,
@@ -4039,7 +4085,8 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       llms: `${AGENT_SITE}/llms.txt`,
       llmsFull: `${AGENT_SITE}/llms-full.txt`,
       llmsFullEn: `${AGENT_SITE}/llms-full-en.txt`,
-      mcpEndpoint: `${AGENT_SITE}/api/mcp`,
+      mcpEndpoint: `${AGENT_SITE}${MCP_PUBLIC_PATH}`,
+      mcpCompactEndpoint: `${AGENT_SITE}${MCP_COMPACT_PUBLIC_PATH}`,
       mcpDocumentation: `${AGENT_SITE}/mcp/`,
       docs: `${AGENT_SITE}/donnees/agents/`,
       agentBenchDocumentation: `${AGENT_SITE}/agent-bench/`,
@@ -4052,6 +4099,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       'Utiliser les variantes .ndjson pour ingestion streaming, pipelines RAG et traitements ligne à ligne.',
       'Utiliser freshness.json pour éviter de présenter un snapshot ancien comme temps réel.',
       'Utiliser integrity.json pour vérifier les empreintes canoniques des surfaces agent.',
+      'Utiliser toolset-manifest.json pour vérifier la version et les empreintes des descriptions et schémas MCP.',
       'Consulter agent-bench.json pour les performances déterministes de recherche et de preuve de la version publiée.',
       'Utiliser changes.json pour suivre les publications et révisions sans rescanner tout le corpus.',
       'Utiliser risk-diff.json pour voir ce qui a changé dans le risque, avec limites de couverture explicites.',
@@ -4299,6 +4347,12 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       payload: buildOpenApiContract(),
     },
     {
+      path: '/api/v1/toolset-manifest.json',
+      role: 'Contrat anti-dérive des tools MCP',
+      mediaType: 'application/json',
+      payload: toolsetManifest,
+    },
+    {
       path: '/api/v1/catalog.json',
       role: 'Catalogue machine complet',
       mediaType: 'application/json',
@@ -4442,13 +4496,13 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
     externalAuthenticity: {
       status: 'github-sigstore-attestation-configured',
       mechanism: 'GitHub Artifact Attestations / Sigstore, émises par le workflow de build avec OIDC GitHub Actions.',
-      subjects: ['/agents.json', '/openapi.json', '/api/v1/integrity.json'],
+      subjects: ['/agents.json', '/openapi.json', '/api/v1/integrity.json', '/api/v1/toolset-manifest.json'],
       currentGuarantee:
         'Les hashes publiés sur l0g.fr vérifient la cohérence canonique des artefacts servis ; le workflow GitHub signe extérieurement les manifests principaux par attestation Sigstore.',
       missingGuarantee:
         'Une copie locale construite hors CI peut ne pas avoir d’attestation distante ; l’attestation doit être vérifiée côté GitHub pour le commit publié.',
       verification:
-        'Vérifier les attestations GitHub du commit publié sur le dépôt bluetouff/l0g pour les sujets /agents.json, /openapi.json et /api/v1/integrity.json, puis comparer les SHA-256 canoniques exposés.',
+        'Vérifier les attestations GitHub du commit publié sur le dépôt bluetouff/l0g pour les sujets /agents.json, /openapi.json, /api/v1/integrity.json et /api/v1/toolset-manifest.json, puis comparer les SHA-256 canoniques exposés.',
       recommendedNextSteps: [
         'Publier un lien de vérification des attestations depuis la page données.',
         'Étendre l’attestation à tous les snapshots JSON et NDJSON si le volume reste acceptable.',

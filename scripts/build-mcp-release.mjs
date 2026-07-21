@@ -30,6 +30,7 @@ if (basename(releaseDir) !== releaseName) throw new Error('Chemin de release inv
 await rm(releaseDir, { recursive: true, force: true });
 await mkdir(join(releaseDir, 'mcp-server'), { recursive: true, mode: 0o755 });
 await mkdir(join(releaseDir, 'src/lib'), { recursive: true, mode: 0o755 });
+await mkdir(join(releaseDir, 'src/config'), { recursive: true, mode: 0o755 });
 
 for (const path of [
   'server.json',
@@ -40,6 +41,7 @@ for (const path of [
   'mcp-server/deploy/l0g-mcp.service',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
+  'src/config/agent-contract.mjs',
 ]) {
   const target = join(releaseDir, path);
   await mkdir(dirname(target), { recursive: true, mode: 0o755 });
@@ -83,6 +85,7 @@ const criticalPaths = [
   'mcp-server/deploy/l0g-mcp.service',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
+  'src/config/agent-contract.mjs',
   'LICENSE',
   'README.md',
   'NOTICE.md',

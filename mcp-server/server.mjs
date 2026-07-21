@@ -19,18 +19,21 @@ import http from 'node:http';
 import { execFileSync } from 'node:child_process';
 import { readFile, realpath } from 'node:fs/promises';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
 import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
+import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs';
 import { createMcpUsageStore } from './usage-telemetry.mjs';
 
 // --- configuration (variables d'environnement, valeurs par défaut sûres) ---
 const HOST = process.env.MCP_HOST || '127.0.0.1';
 const PORT = parsePositiveInteger(process.env.MCP_PORT, 8848, { min: 1, max: 65535 });
 const MCP_PATH = process.env.MCP_PATH || '/mcp';
+const MCP_COMPACT_PATH = process.env.MCP_COMPACT_PATH || `${MCP_PATH.replace(/\/$/, '')}/compact`;
 const MCP_USAGE_PATH = process.env.MCP_USAGE_PATH || '';
 const DATA_DIR = process.env.L0G_DATA_DIR || '/var/www/html/l0g/current';
 const SITE = (process.env.L0G_SITE || 'https://l0g.fr').replace(/\/$/, '');
@@ -53,7 +56,6 @@ const ALLOWED_ORIGINS = new Set(
 const MAX_BODY = parsePositiveInteger(process.env.MCP_MAX_BODY_BYTES, 1024 * 1024, { min: 16_384, max: 25_000_000 });
 const RATE_MAX = parsePositiveInteger(process.env.MCP_RATE_MAX, 120); // requêtes / minute / IP
 const RATE_WIN = 60_000;
-const MCP_VERSION = '1.22.0';
 const MCP_HEADER_TIMEOUT = parsePositiveInteger(process.env.MCP_HEADER_TIMEOUT, 10_000); // ms
 const MCP_REQUEST_TIMEOUT = parsePositiveInteger(process.env.MCP_REQUEST_TIMEOUT, 15_000); // ms
 const MCP_KEEP_ALIVE_TIMEOUT = parsePositiveInteger(process.env.MCP_KEEP_ALIVE_TIMEOUT, 5_000); // ms
@@ -101,6 +103,8 @@ const MCP_SERVER_INFO = {
   releaseAttested: RELEASE_ATTESTED,
   transport: 'streamable-http',
   path: MCP_PATH,
+  compactPath: MCP_COMPACT_PATH,
+  protocolVersion: MCP_PROTOCOL_VERSION,
 };
 const usageStore = createMcpUsageStore({
   path: MCP_USAGE_PATH,
@@ -175,7 +179,7 @@ async function readJson(baseDir, rel) {
 async function readText(baseDir, rel) {
   return readFile(join(baseDir, rel), 'utf-8');
 }
-async function loadData() {
+export async function loadData() {
   const dataDir = await resolveDataDir();
   // Les releases sont immuables et `current` bascule atomiquement vers un nouveau
   // répertoire réel. Tant que realpath(DATA_DIR) ne change pas, relire et parser
@@ -475,6 +479,7 @@ const JsonValue = z.lazy(() => z.union([
 ]));
 const AnyRecord = z.record(z.string(), JsonValue);
 const ToolOutput = z.object({ error: z.string().optional() }).catchall(JsonValue);
+const CompositeToolOutput = z.object({ error: z.string().optional() }).passthrough();
 const UrlString = z.string();
 const NullableString = z.string().nullable().optional();
 const ClaimKindSchema = z.enum(['fait', 'estimation', 'inférence', 'scénario']);
@@ -932,9 +937,64 @@ function summarizePayload(payload) {
   if (payload?.text && payload?.title) return `${payload.title} — ${payload.words ?? 0} mots${payload.truncated ? ' (tronqué)' : ''}.`;
   return 'Réponse structurée disponible dans structuredContent.';
 }
-function reply(payload, text) {
+function resourceLink(uri, name, description, options = {}) {
+  const rawLastModified = options.lastModified ? String(options.lastModified) : '';
+  const lastModified = /^\d{4}-\d{2}-\d{2}$/.test(rawLastModified)
+    ? `${rawLastModified}T00:00:00Z`
+    : /^\d{4}-\d{2}-\d{2}T/.test(rawLastModified)
+      ? rawLastModified
+      : '';
   return {
-    content: [{ type: 'text', text: text || summarizePayload(payload) }],
+    type: 'resource_link',
+    uri,
+    name,
+    title: options.title || name,
+    description,
+    mimeType: options.mimeType || 'application/json',
+    annotations: {
+      audience: ['assistant'],
+      priority: options.priority ?? 0.7,
+      ...(lastModified ? { lastModified } : {}),
+    },
+  };
+}
+function resourceLinksForPayload(payload) {
+  const links = [];
+  const seen = new Set();
+  const add = (link) => {
+    if (!link?.uri || seen.has(link.uri) || links.length >= 12) return;
+    seen.add(link.uri);
+    links.push(link);
+  };
+  for (const document of payload?.documents || payload?.results || []) {
+    if (!document?.url) continue;
+    add(resourceLink(document.url, document.canonicalId || document.title || 'document', 'Document canonique l0g.', {
+      mimeType: 'text/html', priority: 0.9, lastModified: document.date || undefined,
+    }));
+  }
+  if (payload?.url && payload?.title) {
+    add(resourceLink(payload.url, payload.canonicalId || payload.title, 'Document canonique l0g.', {
+      mimeType: 'text/html', priority: 0.95,
+    }));
+  }
+  for (const claim of payload?.claims || []) {
+    if (!claim?.id) continue;
+    add(resourceLink(`l0g://claims/${encodeURIComponent(claim.id)}`, claim.id, 'Claim structurée et provenance directe.', {
+      priority: 0.95, lastModified: claim.reviewedAt || claim.date || undefined,
+    }));
+  }
+  for (const source of payload?.primarySources || []) {
+    if (!source?.slug) continue;
+    add(resourceLink(`l0g://sources/${encodeURIComponent(source.slug)}`, source.shortName || source.name || source.slug, 'Source primaire suivie par l0g.', { priority: 0.85 }));
+  }
+  if (payload?.methodology) {
+    add(resourceLink(payload.methodology, 'methodology', 'Méthodologie applicable.', { mimeType: 'text/html', priority: 0.8 }));
+  }
+  return links;
+}
+function reply(payload, text, links = resourceLinksForPayload(payload)) {
+  return {
+    content: [{ type: 'text', text: text || summarizePayload(payload) }, ...links],
     structuredContent: payload,
   };
 }
@@ -1064,9 +1124,38 @@ function removeLiveNotificationCapabilities(server) {
 }
 
 // --- fabrique d'un serveur MCP (neuf par requête) ---
-function buildServer(data) {
-  const server = new McpServer({ name: 'l0g.fr', version: MCP_VERSION });
+export function buildServer(data, options = {}) {
+  const surface = options.surface === 'compact' ? 'compact' : 'full';
   const { agent, openapi, catalog, searchIndex: sharedSearchIndex, claims, sources, freshness, integrity, changes, riskDiff, blackBox, evidenceGraph, risk, debtRisk, signalHistory, riskEvents, confluence } = data;
+  const server = new McpServer({ name: surface === 'compact' ? 'l0g.fr compact' : 'l0g.fr', version: MCP_VERSION });
+  const registeredTools = new Map();
+  const originalRegisterTool = server.registerTool.bind(server);
+  server.registerTool = (name, config, handler) => {
+    const normalizedConfig = {
+      ...config,
+      title: config.title || name.split('_').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' '),
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false,
+        ...(config.annotations || {}),
+      },
+    };
+    const handle = originalRegisterTool(name, normalizedConfig, handler);
+    registeredTools.set(name, { config: normalizedConfig, handler, handle });
+    return handle;
+  };
+  const originalRegisterResource = server.registerResource.bind(server);
+  server.registerResource = (name, uriOrTemplate, config, handler) => originalRegisterResource(name, uriOrTemplate, {
+    ...config,
+    annotations: {
+      audience: ['assistant'],
+      priority: name === 'agent-manifest' || name === 'freshness' || name === 'integrity' ? 0.95 : 0.75,
+      ...(freshness?.generated ? { lastModified: freshness.generated } : {}),
+      ...(config.annotations || {}),
+    },
+  }, handler);
   const dataDir = data.dataDir || DATA_DIR;
   const articles = catalog.articles || [];
   const guides = catalog.guides || [];
@@ -2713,8 +2802,8 @@ function buildServer(data) {
     'search_by_topic',
     {
       description:
-        "Liste les analyses rattachées à un sujet (hub thématique) de l0g.fr. Sujets disponibles (slug : libellé) : " +
-        topicsList.map((t) => `${t.slug} : ${t.label}`).join(' ; ') + ". Accepte le slug ou un libellé approchant.",
+        "Liste les analyses rattachées à un sujet (hub thématique) de l0g.fr. " +
+        "Accepte un slug ou un libellé approchant ; les sujets disponibles sont renvoyés avec une erreur de résolution.",
       inputSchema: {
         topic: z.string().describe('Slug ou libellé du sujet.'),
         language: LanguageSchema.optional().describe('Langue optionnelle : fr ou en. Sans filtre, recherche bilingue.'),
@@ -2800,6 +2889,125 @@ function buildServer(data) {
     }
   );
 
+  if (surface === 'compact') {
+    const fullTools = new Map(registeredTools);
+    for (const { handle } of fullTools.values()) handle.remove();
+    registeredTools.clear();
+    const invoke = async (name, args) => {
+      const definition = fullTools.get(name);
+      if (!definition) throw new McpError(ErrorCode.MethodNotFound, `tool interne introuvable: ${name}`);
+      return definition.handler(args || {});
+    };
+
+    server.registerTool(
+      'discover_l0g',
+      {
+        title: 'Discover l0g',
+        description: 'Point d’entrée compact : capacités, versions, fraîcheur, contrats, règles de preuve et chemins MCP complet/compact.',
+        inputSchema: {
+          latestLimit: z.number().int().min(1).max(10).default(5).describe('Nombre de contenus récents à inclure.'),
+        },
+        outputSchema: CompositeToolOutput,
+      },
+      async ({ latestLimit }) => {
+        const manifest = (await invoke('get_agent_manifest', {})).structuredContent;
+        const freshnessState = (await invoke('get_freshness', { limit: latestLimit })).structuredContent;
+        return reply({
+          surface: 'compact',
+          server: MCP_SERVER_INFO,
+          agentSurface: manifest,
+          freshness: freshnessState,
+          contracts: {
+            toolsetManifest: `${SITE}/api/v1/toolset-manifest.json`,
+            openapi: `${SITE}/openapi.json`,
+            fullMcp: `${SITE}/api/mcp`,
+            compactMcp: `${SITE}/api/mcp/compact`,
+          },
+        }, undefined, [
+          resourceLink(`${SITE}/agents.json`, 'agents.json', 'Manifeste de découverte Agent Surface.', { priority: 1, lastModified: freshnessState.generated }),
+          resourceLink(`${SITE}/api/v1/toolset-manifest.json`, 'toolset-manifest.json', 'Empreintes anti-dérive des tools MCP.', { priority: 1 }),
+          resourceLink(`${SITE}/api/v1/freshness.json`, 'freshness.json', 'État de fraîcheur du corpus.', { priority: 0.95, lastModified: freshnessState.generated }),
+        ]);
+      },
+    );
+
+    server.registerTool(
+      'search_l0g',
+      {
+        ...fullTools.get('search_content').config,
+        title: 'Search l0g',
+        description: 'Recherche filtrée bilingue dans articles, guides, glossaire, méthodologies et sources. Renvoie des URL canoniques et des extraits bornés.',
+      },
+      async (args) => invoke('search_content', args),
+    );
+
+    server.registerTool(
+      'get_document',
+      {
+        ...fullTools.get('get_article').config,
+        title: 'Get document',
+        description: 'Lit un article ou guide l0g par slug, avec pagination opaque, troncature explicite, références et URL canonique.',
+      },
+      async (args) => invoke('get_article', args),
+    );
+
+    server.registerTool(
+      'get_evidence',
+      {
+        title: 'Get evidence',
+        description: 'Interroge les claims et leurs sources, un sous-graphe de preuve ou le registre de sources avec une seule primitive compacte.',
+        inputSchema: {
+          mode: z.enum(['claims', 'graph', 'sources']).default('claims').describe('Vue de preuve : claims, graph ou sources.'),
+          claimId: z.string().optional().describe('Identifiant exact de claim.'),
+          articleSlug: z.string().optional().describe('Slug d’article à auditer.'),
+          sourceId: z.string().optional().describe('Source primaire ou hôte cité.'),
+          query: z.string().optional().describe('Filtre textuel sur les claims.'),
+          kind: ClaimKindSchema.optional().describe('Type de claim.'),
+          language: LanguageSchema.optional().describe('Langue du slug : fr ou en.'),
+          includeEvidence: z.boolean().default(true).describe('Inclut le voisinage de preuve pour une claim unique.'),
+          limit: z.number().int().min(1).max(100).default(20).describe('Nombre maximum d’objets.'),
+        },
+        outputSchema: CompositeToolOutput,
+      },
+      async ({ mode, claimId, articleSlug, sourceId, query, kind, language, includeEvidence, limit }) => {
+        if (mode === 'graph') return invoke('get_evidence_graph', { articleSlug, language, limit });
+        if (mode === 'sources') return invoke('list_sources', { sourceId, mode: 'both', includeClaims: includeEvidence, limit });
+        return invoke('get_claims', { claimId, articleSlug, language, sourceId, kind, query, includeEvidence, limit: Math.min(limit, 50) });
+      },
+    );
+
+    server.registerTool(
+      'build_research_pack',
+      {
+        ...fullTools.get('build_research_pack').config,
+        title: 'Build research pack',
+      },
+      async (args) => invoke('build_research_pack', args),
+    );
+
+    server.registerTool(
+      'get_risk_state',
+      {
+        title: 'Get risk state',
+        description: 'État de risque courant, diff 1/7/30 jours, historique par instrument ou replay Black Box point-in-time.',
+        inputSchema: {
+          mode: z.enum(['current', 'diff', 'history', 'replay']).default('current').describe('Vue de risque demandée.'),
+          instrument: z.enum(['us', 'eu', 'yen', 'energie', 'debt']).optional().describe('Instrument pour l’historique.'),
+          window: z.enum(['1d', '7d', '30d']).default('7d').describe('Fenêtre de diff.'),
+          date: z.string().optional().describe('Date YYYY-MM-DD pour le replay.'),
+          limit: z.number().int().min(1).max(200).default(50).describe('Nombre maximum d’observations ou frames.'),
+        },
+        outputSchema: CompositeToolOutput,
+      },
+      async ({ mode, instrument, window, date, limit }) => {
+        if (mode === 'diff') return invoke('get_risk_diff', { window });
+        if (mode === 'history') return invoke('get_signal_history', { key: instrument, limit });
+        if (mode === 'replay') return invoke('get_black_box', { date, limitFrames: Math.min(limit, 30) });
+        return invoke('get_risk_indices', {});
+      },
+    );
+  }
+
   removeLiveNotificationCapabilities(server);
   return server;
 }
@@ -2882,7 +3090,7 @@ const httpServer = http.createServer(async (req, res) => {
   }
 
   const usageEndpoint = `${MCP_PATH.replace(/\/$/, '')}/usage`;
-  if (url.pathname !== MCP_PATH && url.pathname !== usageEndpoint) return send(res, 404, { error: 'not found' });
+  if (url.pathname !== MCP_PATH && url.pathname !== MCP_COMPACT_PATH && url.pathname !== usageEndpoint) return send(res, 404, { error: 'not found' });
   if (!hostAllowed(req)) return send(res, 421, { error: 'host non autorisé' });
   if (!originAllowed(req)) return send(res, 403, { error: 'origin non autorisée' });
 
@@ -2941,7 +3149,7 @@ const httpServer = http.createServer(async (req, res) => {
     }
     try {
       const data = await loadData();
-      const server = buildServer(data);
+      const server = buildServer(data, { surface: url.pathname === MCP_COMPACT_PATH ? 'compact' : 'full' });
       const transport = new StreamableHTTPServerTransport({
         sessionIdGenerator: undefined, // stateless
         enableJsonResponse: true, // réponse JSON, pas de SSE
@@ -2959,13 +3167,16 @@ const httpServer = http.createServer(async (req, res) => {
   });
 });
 
-httpServer.listen(PORT, HOST, () => {
-  httpServer.maxHeadersCount = MCP_MAX_HEADERS_COUNT;
-  httpServer.headersTimeout = MCP_HEADER_TIMEOUT;
-  httpServer.requestTimeout = MCP_REQUEST_TIMEOUT;
-  httpServer.keepAliveTimeout = MCP_KEEP_ALIVE_TIMEOUT;
-  console.error(`[l0g-mcp] écoute sur http://${HOST}:${PORT}${MCP_PATH} — données : ${DATA_DIR}`);
-});
+const isMainModule = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMainModule) {
+  httpServer.listen(PORT, HOST, () => {
+    httpServer.maxHeadersCount = MCP_MAX_HEADERS_COUNT;
+    httpServer.headersTimeout = MCP_HEADER_TIMEOUT;
+    httpServer.requestTimeout = MCP_REQUEST_TIMEOUT;
+    httpServer.keepAliveTimeout = MCP_KEEP_ALIVE_TIMEOUT;
+    console.error(`[l0g-mcp] écoute sur http://${HOST}:${PORT}${MCP_PATH} et ${MCP_COMPACT_PATH} — données : ${DATA_DIR}`);
+  });
+}
 
 let shuttingDown = false;
 async function shutdown(signal) {
@@ -2985,5 +3196,7 @@ async function shutdown(signal) {
   }
 }
 
-process.once('SIGINT', () => void shutdown('SIGINT'));
-process.once('SIGTERM', () => void shutdown('SIGTERM'));
+if (isMainModule) {
+  process.once('SIGINT', () => void shutdown('SIGINT'));
+  process.once('SIGTERM', () => void shutdown('SIGTERM'));
+}

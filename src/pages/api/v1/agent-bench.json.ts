@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { AGENT_VERSION } from '../../../lib/agent-surface';
+import { MCP_VERSION } from '../../../config/agent-contract.mjs';
 
 export const prerender = true;
 
@@ -8,7 +9,7 @@ export const GET: APIRoute = () => new Response(JSON.stringify({
   version: '1.0.0',
   generated: new Date().toISOString(),
   status: 'pending-ci',
-  surfaces: { agentSurfaceVersion: AGENT_VERSION, mcpServerVersion: '1.22.0', gitSha: null },
+  surfaces: { agentSurfaceVersion: AGENT_VERSION, mcpServerVersion: MCP_VERSION, gitSha: null },
   methodology: { deterministic: true, llmCalls: 0, topK: 3, cases: 44 },
   summary: null,
   results: [],

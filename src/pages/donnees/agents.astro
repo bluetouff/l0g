@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
+import { AGENT_VERSION } from '../../config/agent-contract.mjs';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const agentFrUrl = new URL('/donnees/agents/', Astro.site).toString();
@@ -143,7 +144,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/donnees/agents/#agent-surface`,
-  headline: 'Agent Surface v1.16.0',
+  headline: `Agent Surface v${AGENT_VERSION}`,
   description:
     'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, séries de risque nommées, Risk Diff, Black Box, claims, sources, fraîcheur et règles de citation.',
   inLanguage: 'fr',
@@ -155,10 +156,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title="Agent Surface v1.16.0"
+  title={`Agent Surface v${AGENT_VERSION}`}
   description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, séries nommées et versionnées, Risk Diff, Black Box, evidence graph, claims sourcées et règles de citation."
   ogImage="/og-donnees.png"
-  ogImageAlt="Agent Surface v1.16.0 l0g.fr : API bilingue, séries nommées, Agent Bench, evidence graph, claims et sources"
+  ogImageAlt={`Agent Surface v${AGENT_VERSION} l0g.fr : API bilingue, séries nommées, Agent Bench, evidence graph, claims et sources`}
   sidebar={false}
   alternateLinks={agentAlternateLinks}
 >
@@ -166,10 +167,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
-      <p class="mono-label glow">// agent surface v1.16.0</p>
+      <p class="mono-label glow">// agent surface v{AGENT_VERSION}</p>
       <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
       <p class="agent-lede">
-        Agent Surface v1.16.0 expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
+        Agent Surface v{AGENT_VERSION} expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
         evidence graph, trois claims structurants typés maximum par article, sources primaires, fraîcheur, Risk Diff,
         Black Box Recorder, index de recherche partagé, historique des signaux, empreintes et contrat OpenAPI. Les traductions
         portent leur identifiant canonique, leur alternative et leur statut de fraîcheur. Les claims restent françaises et
@@ -221,7 +222,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <div class="contract-grid">
         <div><span>Attribution</span><strong>l0g.fr</strong></div>
         <div><span>Licence</span><strong>CC BY 4.0</strong></div>
-        <div><span>Version</span><strong>v1.16.0</strong></div>
+        <div><span>Version</span><strong>v{AGENT_VERSION}</strong></div>
         <div><span>Protocole éditorial</span><strong><a class="link-term" href="/protocole-editorial/">v1.0.0</a></strong></div>
         <div><span>Format</span><strong>JSON + NDJSON</strong></div>
         <div><span>Preuve</span><strong>claim-source</strong></div>

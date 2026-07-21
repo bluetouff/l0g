@@ -26,10 +26,11 @@ function fail(message) {
 }
 
 export async function readReleaseVersions() {
-  const [manifestRaw, packageRaw, lockRaw, serverRaw, agentBenchRaw, workflowRaw] = await Promise.all([
+  const [manifestRaw, packageRaw, lockRaw, contractRaw, serverRaw, agentBenchRaw, workflowRaw] = await Promise.all([
     readFile(join(ROOT, 'server.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/package.json'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/package-lock.json'), 'utf8'),
+    readFile(join(ROOT, 'src/config/agent-contract.mjs'), 'utf8'),
     readFile(join(ROOT, 'mcp-server/server.mjs'), 'utf8'),
     readFile(join(ROOT, 'src/pages/api/v1/agent-bench.json.ts'), 'utf8'),
     readFile(join(ROOT, '.github/workflows/publish-mcp.yml'), 'utf8'),
@@ -37,10 +38,12 @@ export async function readReleaseVersions() {
   const manifest = JSON.parse(manifestRaw);
   const packageJson = JSON.parse(packageRaw);
   const packageLock = JSON.parse(lockRaw);
-  const serverMatch = serverRaw.match(/const MCP_VERSION = ['"]([^'"]+)['"]/);
-  if (!serverMatch) fail('MCP_VERSION est introuvable dans mcp-server/server.mjs');
-  const agentBenchMatch = agentBenchRaw.match(/mcpServerVersion:\s*['"]([^'"]+)['"]/);
-  if (!agentBenchMatch) fail('mcpServerVersion est introuvable dans le placeholder Agent Bench');
+  const contractMatch = contractRaw.match(/export const MCP_VERSION = ['"]([^'"]+)['"]/);
+  if (!contractMatch) fail('MCP_VERSION est introuvable dans src/config/agent-contract.mjs');
+  if (!serverRaw.includes("import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs'")) {
+    fail('le serveur MCP ne dérive pas sa version de la source unique');
+  }
+  if (!agentBenchRaw.includes('mcpServerVersion: MCP_VERSION')) fail('Agent Bench ne dérive pas sa version de la source unique');
   if (!workflowRaw.includes('git worktree add --detach .black-box-archive origin/black-box-archive')) {
     fail('le workflow MCP ne monte pas l’archive Black Box append-only');
   }
@@ -54,8 +57,7 @@ export async function readReleaseVersions() {
       manifest: manifest.version,
       package: packageJson.version,
       lock: packageLock.packages?.['']?.version,
-      server: serverMatch[1],
-      agentBench: agentBenchMatch[1],
+      contract: contractMatch[1],
     },
   };
 }

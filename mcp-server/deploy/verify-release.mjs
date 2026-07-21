@@ -39,7 +39,9 @@ if (release.entrypoint !== 'mcp-server/server.mjs' || release.manifest !== 'serv
 const manifest = JSON.parse(await readFile(resolve(root, release.manifest), 'utf8'));
 const packageJson = JSON.parse(await readFile(resolve(root, 'mcp-server/package.json'), 'utf8'));
 const packageLock = JSON.parse(await readFile(resolve(root, 'mcp-server/package-lock.json'), 'utf8'));
-if ([manifest.version, packageJson.version, packageLock.packages?.['']?.version].some((value) => value !== release.version)) {
+const contractRaw = await readFile(resolve(root, 'src/config/agent-contract.mjs'), 'utf8');
+const contractVersion = contractRaw.match(/export const MCP_VERSION = ['"]([^'"]+)['"]/)?.[1];
+if ([manifest.version, packageJson.version, packageLock.packages?.['']?.version, contractVersion].some((value) => value !== release.version)) {
   fail('versions du manifeste, du paquet et du lockfile désalignées');
 }
 
@@ -52,6 +54,7 @@ const requiredFiles = [
   'mcp-server/deploy/l0g-mcp.service',
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
+  'src/config/agent-contract.mjs',
   'LICENSE',
   'README.md',
   'NOTICE.md',

@@ -85,6 +85,9 @@ for (const required of [
   const tool = tools.find((item) => item.name === required);
   if (!tool) throw new Error(`tool manquant: ${required}`);
   if (!tool.outputSchema) throw new Error(`outputSchema manquant: ${required}`);
+  if (!tool.title || tool.annotations?.readOnlyHint !== true || tool.annotations?.destructiveHint !== false || tool.annotations?.idempotentHint !== true || tool.annotations?.openWorldHint !== false) {
+    throw new Error(`annotations de sûreté incomplètes: ${required}`);
+  }
 }
 for (const removed of ['get_claim', 'get_claim_evidence', 'list_article_claims', 'find_claims_by_source', 'get_source']) {
   if (tools.some((tool) => tool.name === removed)) throw new Error(`tool legacy encore exposé: ${removed}`);
@@ -96,6 +99,9 @@ if (resources.length > 20 || resourcesListBytes > 12_000) {
   throw new Error(`resources/list trop volumineux: ${resources.length} ressources, ${resourcesListBytes} octets`);
 }
 for (const resource of resources) {
+  if (!resource.annotations?.audience?.includes('assistant') || typeof resource.annotations?.priority !== 'number' || !resource.annotations?.lastModified) {
+    throw new Error(`annotations resource incomplètes: ${resource.uri}`);
+  }
   if (/^l0g:\/\/(?:articles|en\/articles|guides|en\/guides|claims|sources|methodologies)\//.test(resource.uri)
     || /^l0g:\/\/signals\/[^/]+\/current$/.test(resource.uri)) {
     throw new Error(`resources/list matérialise encore une instance de template: ${resource.uri}`);
@@ -119,6 +125,11 @@ console.log('readResource(mcp/server) -> version:', mcpServerInfo.version, '| sh
 
 const { resourceTemplates } = await client.listResourceTemplates();
 console.log('RESOURCE_TEMPLATES:', resourceTemplates.map((template) => template.uriTemplate).join(', '));
+for (const template of resourceTemplates) {
+  if (!template.annotations?.audience?.includes('assistant') || typeof template.annotations?.priority !== 'number' || !template.annotations?.lastModified) {
+    throw new Error(`annotations resource template incomplètes: ${template.uriTemplate}`);
+  }
+}
 for (const required of [
   'l0g://articles/{slug}',
   'l0g://articles/{slug}{?section,offset,limit}',

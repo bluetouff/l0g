@@ -131,6 +131,7 @@ jobs:
           done
           curl -fsS http://127.0.0.1:8851/healthz
           node test-client.mjs
+          node test-compact-client.mjs
           node agent-bench.mjs --url "$URL" --output ../dist/api/v1/agent-bench.json
 
       - name: Package deterministic static release

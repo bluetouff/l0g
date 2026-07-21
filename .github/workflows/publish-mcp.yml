@@ -78,6 +78,7 @@ jobs:
           done
           curl -fsS http://127.0.0.1:8851/healthz
           node mcp-server/test-client.mjs
+          node mcp-server/test-compact-client.mjs
           node mcp-server/agent-bench.mjs --url "$URL" --output dist/api/v1/agent-bench-release.json
 
       - name: Build deterministic MCP archive and SBOM
@@ -86,7 +87,7 @@ jobs:
             server.json mcp-server/server.mjs mcp-server/usage-telemetry.mjs \
             mcp-server/package.json mcp-server/package-lock.json \
             mcp-server/deploy/l0g-mcp.service mcp-server/deploy/verify-release.mjs \
-            src/lib/agent-prompts.mjs
+            src/lib/agent-prompts.mjs src/config/agent-contract.mjs
           mkdir -p release
           node scripts/build-mcp-release.mjs --output release --tag "$GITHUB_REF_NAME" --sha "$GITHUB_SHA"
           RELEASE_NAME="l0g-mcp-${MCP_VERSION}"
@@ -126,6 +127,7 @@ jobs:
           node scripts/verify-public-mcp-release.mjs \
             --endpoint "$URL" --version "$MCP_VERSION" --sha "$GITHUB_SHA"
           node mcp-server/test-client.mjs
+          node mcp-server/test-compact-client.mjs
 
       - name: Transfer only the archive and checksum
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
