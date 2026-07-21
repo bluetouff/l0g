@@ -119,7 +119,8 @@ jobs:
           MCP_USAGE_PATH: ${{ runner.temp }}/l0g-mcp-usage-archive.json
           URL: http://127.0.0.1:8852/mcp
         run: |
-          node "release/verify/l0g-mcp-${MCP_VERSION}/mcp-server/server.mjs" &
+          ln -s "l0g-mcp-${MCP_VERSION}" release/verify/current
+          node "release/verify/current/mcp-server/server.mjs" &
           MCP_PID=$!
           trap 'kill "$MCP_PID" 2>/dev/null || true' EXIT
           for i in {1..30}; do

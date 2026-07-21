@@ -17,9 +17,10 @@
  */
 import http from 'node:http';
 import { execFileSync } from 'node:child_process';
+import { realpathSync } from 'node:fs';
 import { readFile, realpath } from 'node:fs/promises';
 import { join } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
@@ -3167,7 +3168,16 @@ const httpServer = http.createServer(async (req, res) => {
   });
 });
 
-const isMainModule = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+function resolvesToCurrentModule(entrypoint) {
+  if (!entrypoint) return false;
+  try {
+    return realpathSync(entrypoint) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+const isMainModule = resolvesToCurrentModule(process.argv[1]);
 if (isMainModule) {
   httpServer.listen(PORT, HOST, () => {
     httpServer.maxHeadersCount = MCP_MAX_HEADERS_COUNT;
