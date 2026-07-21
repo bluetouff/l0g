@@ -117,6 +117,7 @@ jobs:
           MCP_GIT_SHA: ${{ github.sha }}
           MCP_HOST: 127.0.0.1
           MCP_PORT: 8851
+          MCP_RATE_MAX: 1000
           MCP_USAGE_PATH: ${{ runner.temp }}/l0g-mcp-usage.json
           URL: http://127.0.0.1:8851/mcp
         run: |
