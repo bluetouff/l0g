@@ -25,6 +25,8 @@ const attemptedAt = new Date().toISOString();
 const maxBytes = 15_000_000;
 
 function atomicWrite(path, contents) {
+  // Flux intentionnel : le NDJSON distant est borné et validé ligne par ligne;
+  // la destination est obligatoirement confinée sous .cache/.
   mkdirSync(dirname(path), { recursive: true });
   const temporary = `${path}.tmp-${process.pid}`;
   writeFileSync(temporary, contents, { encoding: 'utf8', flag: 'wx' });

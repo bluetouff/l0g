@@ -34,6 +34,8 @@ async function publish(report) {
     }
     const summary = renderRiskAuditMarkdown(report);
     if (Buffer.byteLength(summary, 'utf8') > 100_000) throw new Error('résumé GitHub trop volumineux');
+    // Flux intentionnel : contenu Markdown échappé, taille bornée et destination
+    // imposée par GitHub sous RUNNER_TEMP.
     await appendFile(summaryPath, summary, { encoding: 'utf8', flag: 'a' });
   }
 }

@@ -55,7 +55,7 @@ test('un échec explique sa cause dans le résumé GitHub et dans une annotation
   assert.match(markdown, /agrégateur: contrat v2 absent/);
   assert.equal(githubAnnotation('error', 'ligne 1\n100%'), '::error::ligne 1%0A100%25');
   const hostile = renderRiskAuditMarkdown({ ok: false, errors: ['<script>|x'], summary: {} });
-  assert.doesNotMatch(hostile, /<script>/);
+  assert.equal(hostile.includes('<script>'), false);
   assert.match(hostile, /&lt;script&gt;\\\|x/);
 });
 

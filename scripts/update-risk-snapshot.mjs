@@ -125,6 +125,8 @@ async function fetchJson(url, label) {
 }
 
 function atomicJsonWrite(path, value) {
+  // Flux intentionnel : seuls deux producteurs HTTPS fixes alimentent des JSON
+  // bornés, parsés et publiés comme données, jamais comme code exécutable.
   const temporary = `${path}.tmp-${process.pid}`;
   writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\n`, { encoding: 'utf8', flag: 'wx' });
   renameSync(temporary, path);
