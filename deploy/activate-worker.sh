@@ -70,7 +70,7 @@ restore_target() {
   local temporary="${target}.rollback.$$"
   if [ -f "${BACKUP_DIR}/${name}.present" ]; then
     cp -a -- "${BACKUP_DIR}/${name}" "$temporary"
-    mv -f -- "$temporary" "$target"
+    mv -Tf -- "$temporary" "$target"
   else
     rm -f -- "$target" "$temporary"
   fi
@@ -86,6 +86,9 @@ rollback() {
     restore_target "$WORKER_TARGET" l0g-deploy.sh
     restore_target "$SERVICE_TARGET" l0g-deploy.service
     restore_target "$TIMER_TARGET" l0g-deploy.timer
+    restore_target "${BASE}/current" current
+    restore_target "${BASE}/.last_source_sha" .last_source_sha
+    restore_target "${BASE}/.last_built_sha" .last_built_sha
     systemctl daemon-reload
     systemctl restart l0g-deploy.timer
     systemctl restart l0g-deploy.service
@@ -99,14 +102,17 @@ trap 'rollback 143' TERM
 backup_target "$WORKER_TARGET" l0g-deploy.sh
 backup_target "$SERVICE_TARGET" l0g-deploy.service
 backup_target "$TIMER_TARGET" l0g-deploy.timer
+backup_target "${BASE}/current" current
+backup_target "${BASE}/.last_source_sha" .last_source_sha
+backup_target "${BASE}/.last_built_sha" .last_built_sha
 BACKUP_READY=true
 
 install -o root -g root -m 0755 "$WORKER_SOURCE" "${WORKER_TARGET}.new.$$"
 install -o root -g root -m 0644 "$SERVICE_SOURCE" "${SERVICE_TARGET}.new.$$"
 install -o root -g root -m 0644 "$TIMER_SOURCE" "${TIMER_TARGET}.new.$$"
-mv -f -- "${WORKER_TARGET}.new.$$" "$WORKER_TARGET"
-mv -f -- "${SERVICE_TARGET}.new.$$" "$SERVICE_TARGET"
-mv -f -- "${TIMER_TARGET}.new.$$" "$TIMER_TARGET"
+mv -Tf -- "${WORKER_TARGET}.new.$$" "$WORKER_TARGET"
+mv -Tf -- "${SERVICE_TARGET}.new.$$" "$SERVICE_TARGET"
+mv -Tf -- "${TIMER_TARGET}.new.$$" "$TIMER_TARGET"
 
 cmp -s "$WORKER_SOURCE" "$WORKER_TARGET"
 cmp -s "$SERVICE_SOURCE" "$SERVICE_TARGET"

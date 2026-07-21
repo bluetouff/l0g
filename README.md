@@ -176,7 +176,9 @@ Le bandeau de cotations en haut de page se règle dans
 
 - Le workflow CI publie dans `built` l'arbre statique de compatibilité et une
   enveloppe attestée composée de l'archive, du SHA-256, du bundle Sigstore et
-  des coordonnées du commit source.
+  des coordonnées du commit source. Ces coordonnées sont incluses dans
+  l'archive attestée et dupliquées à la racine de `built`; le déployeur exige
+  leur égalité octet par octet avant toute bascule.
 - Le serveur statique sert encore l'arbre de compatibilité. La correspondance
   publique avec `built` est vérifiable, mais le contrôle d'attestation côté
   serveur ne devient effectif qu'après installation du nouveau `deploy.sh`.
@@ -237,8 +239,8 @@ sudo systemctl reload apache2
 
 Pour migrer un serveur qui possède déjà l'ancien timer, utiliser plutôt le
 script transactionnel. Il sauvegarde le worker et les unités, vérifie le
-premier déploiement attesté et restaure automatiquement l'ancienne version si
-l'activation échoue :
+premier déploiement attesté et restaure automatiquement l'ancien worker, les
+unités, le symlink courant et les marqueurs si l'activation échoue :
 
 ```bash
 sudo deploy/activate-worker.sh

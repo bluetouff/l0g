@@ -47,12 +47,11 @@ git -C "$BUILT" config user.email test@example.invalid
 publish_artifact() {
   local body="$1"
   local preserve_bundle="${2:-false}"
+  local embed_coordinates="${3:-true}"
   local site="${TMP}/site"
   rm -rf -- "$site"
   mkdir -p "$site"
   printf '%s\n' "$body" >"${site}/index.html"
-  tar -C "$site" -czf "${BUILT}/l0g-site.tar.gz" .
-  (cd "$BUILT" && sha256sum l0g-site.tar.gz >l0g-site.tar.gz.sha256)
   {
     printf 'L0G_RELEASE_SCHEMA=1\n'
     printf 'L0G_RELEASE_REPOSITORY=bluetouff/l0g\n'
@@ -61,6 +60,11 @@ publish_artifact() {
     printf 'L0G_RELEASE_RUN_ID=1\n'
     printf 'L0G_RELEASE_RUN_ATTEMPT=1\n'
   } >"${BUILT}/source.env"
+  if [ "$embed_coordinates" = true ]; then
+    cp "${BUILT}/source.env" "${site}/source.env"
+  fi
+  tar -C "$site" -czf "${BUILT}/l0g-site.tar.gz" .
+  (cd "$BUILT" && sha256sum l0g-site.tar.gz >l0g-site.tar.gz.sha256)
   if [ "$preserve_bundle" != true ]; then
     {
       printf 'digest=%s\n' "$(sha256sum "${BUILT}/l0g-site.tar.gz" | awk '{print $1}')"
@@ -114,8 +118,21 @@ L0G_DEPLOY_GH_BIN="$FAKE_GH" \
 PATH="${TMP}/bin:${PATH}" \
   bash "${ROOT}/deploy/deploy.sh"
 [ "$(cat "${BASE}/current/index.html")" = stable ]
+cmp -s "${BUILT}/source.env" "${BASE}/current/source.env"
 FIRST_BUILT="$(cat "${BASE}/.last_built_sha")"
 [ "$(cat "${BASE}/.last_source_sha")" = "$SOURCE_SHA" ]
+
+publish_artifact missing-provenance false false
+if L0G_DEPLOY_REPO="file://${REMOTE}" \
+   L0G_DEPLOY_BASE="$BASE" \
+   L0G_DEPLOY_GH_BIN="$FAKE_GH" \
+   PATH="${TMP}/bin:${PATH}" \
+     bash "${ROOT}/deploy/deploy.sh" >/dev/null 2>&1; then
+  echo "Le déploiement sans provenance attestée aurait dû être refusé" >&2
+  exit 1
+fi
+[ "$(cat "${BASE}/current/index.html")" = stable ]
+[ "$(cat "${BASE}/.last_built_sha")" = "$FIRST_BUILT" ]
 
 publish_artifact tampered true
 if L0G_DEPLOY_REPO="file://${REMOTE}" \
@@ -129,4 +146,4 @@ fi
 [ "$(cat "${BASE}/current/index.html")" = stable ]
 [ "$(cat "${BASE}/.last_built_sha")" = "$FIRST_BUILT" ]
 
-printf '{"ok":true,"validActivation":true,"tamperedActivation":false}\n'
+printf '{"ok":true,"validActivation":true,"missingProvenanceActivation":false,"tamperedActivation":false}\n'

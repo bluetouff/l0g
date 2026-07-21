@@ -17,7 +17,7 @@ BUNDLE_NAME="${ARCHIVE_NAME}.sigstore.jsonl"
 CHECKSUM_NAME="${ARCHIVE_NAME}.sha256"
 COORDINATES_NAME="source.env"
 
-for command in git tar gzip sha256sum flock "$GH_BIN"; do
+for command in cmp git tar gzip sha256sum flock "$GH_BIN"; do
   command -v "$command" >/dev/null 2>&1 || {
     echo "Commande requise absente: $command" >&2
     exit 1
@@ -176,6 +176,14 @@ tar --extract --gzip --file "$ARCHIVE" --directory "$STAGING" \
   --no-same-owner --no-same-permissions
 [ -f "${STAGING}/index.html" ] || {
   echo "Release statique sans index.html" >&2
+  exit 1
+}
+[ -f "${STAGING}/${COORDINATES_NAME}" ] || {
+  echo "Release statique sans coordonnées de provenance attestées" >&2
+  exit 1
+}
+cmp -s "$COORDINATES" "${STAGING}/${COORDINATES_NAME}" || {
+  echo "Les coordonnées de provenance diffèrent entre built et l'archive attestée" >&2
   exit 1
 }
 

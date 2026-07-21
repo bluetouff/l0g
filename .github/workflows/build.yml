@@ -138,10 +138,6 @@ jobs:
           SOURCE_DATE_EPOCH: ${{ env.L0G_SOURCE_DATE_EPOCH }}
         run: |
           mkdir -p release
-          tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner \
-            --pax-option=delete=atime,delete=ctime -C dist -cf - . \
-            | gzip -n > release/l0g-site.tar.gz
-          (cd release && sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256)
           {
             echo 'L0G_RELEASE_SCHEMA=1'
             echo "L0G_RELEASE_REPOSITORY=${GITHUB_REPOSITORY}"
@@ -150,6 +146,11 @@ jobs:
             echo "L0G_RELEASE_RUN_ID=${GITHUB_RUN_ID}"
             echo "L0G_RELEASE_RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
           } > release/source.env
+          install -m 0644 release/source.env dist/source.env
+          tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner \
+            --pax-option=delete=atime,delete=ctime -C dist -cf - . \
+            | gzip -n > release/l0g-site.tar.gz
+          (cd release && sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256)
 
       - name: Attest the complete static release and Agent Surface manifests
         id: attest_static
