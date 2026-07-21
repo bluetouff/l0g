@@ -21,9 +21,11 @@ Le daemon de production est servi depuis le runtime atomique
 
 ## Réutilisation et licences
 
-Tout client compatible MCP peut utiliser le service distant public
-`https://l0g.fr/api/mcp`, sans compte ni clé API. Il s'agit d'un service en
-lecture seule consacré aux données de l0g.fr.
+Tout client compatible MCP peut utiliser le service distant public sans compte
+ni clé API. Une nouvelle intégration doit commencer par
+`https://l0g.fr/api/mcp/compact`; `https://l0g.fr/api/mcp` conserve la surface
+complète pour la compatibilité et les usages experts. Les deux sont en lecture
+seule et consacrés aux données de l0g.fr.
 
 Le code du serveur, ses tests et ses scripts de déploiement sont réutilisables
 sous licence MIT. Les textes, données et artefacts éditoriaux renvoyés par le
@@ -265,9 +267,11 @@ curl -s http://127.0.0.1:8848/healthz        # -> versions MCP/Agent Surface, SH
 sudo a2enmod proxy proxy_http headers
 ```
 
-Inclure le bloc de `deploy/apache-l0g-mcp.conf` **dans le VirtualHost HTTPS de l0g.fr**
-(le fichier `*-le-ssl.conf` généré par certbot, entre `<VirtualHost *:443>` et
-`</VirtualHost>`). Puis :
+Le vhost complet maintenu dans le dépôt est `../deploy/l0g.fr.apache.conf`. En
+production, il doit être installé transactionnellement dans
+`/etc/apache2/sites-available/l0g.fr-hardened.conf`, après sauvegarde du fichier
+actif. Le fragment `deploy/apache-l0g-mcp.conf` reste une référence isolée pour
+les deux routes MCP, pas la source du vhost de production. Puis :
 
 ```bash
 sudo apache2ctl configtest        # Syntax OK
@@ -277,32 +281,34 @@ sudo systemctl reload apache2
 Après reload :
 ```bash
 sudo apache2ctl -M | rg -e "proxy_module|proxy_http_module|headers_module|rewrite_module"
+curl -s -I https://l0g.fr/api/mcp/compact | sed -n '1,20p'
 curl -s -I https://l0g.fr/api/mcp | sed -n '1,20p'
 ```
 
 ### 6. Vérifier de l'extérieur
 
-Cycle MCP minimal en JSON-RPC brut :
+Cycle MCP minimal en JSON-RPC brut sur la façade compacte recommandée :
 
 ```bash
-curl -s -X POST https://l0g.fr/api/mcp \
+curl -s -X POST https://l0g.fr/api/mcp/compact \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
 
-curl -s -X POST https://l0g.fr/api/mcp \
+curl -s -X POST https://l0g.fr/api/mcp/compact \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
 
-curl -s -X POST https://l0g.fr/api/mcp \
+curl -s -X POST https://l0g.fr/api/mcp/compact \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' | head -c 400
 ```
 
 Ou pointer un client compatible (Claude Desktop via `mcp-remote`, l'inspecteur MCP, etc.)
-sur `https://l0g.fr/api/mcp`.
+sur `https://l0g.fr/api/mcp/compact`. Remplacer l'URL par `https://l0g.fr/api/mcp`
+uniquement pour les outils spécialisés de la surface complète.
 
 ## Mises à jour
 

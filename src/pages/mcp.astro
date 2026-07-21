@@ -190,7 +190,10 @@ const appLd = {
       <p class="mt-3 text-paper">
         Transport Streamable HTTP (spec MCP <strong>2025-11-25</strong>), mode requête/réponse JSON.
       </p>
-      <pre class="mcp-code mt-3"><code>{ENDPOINT}</code></pre>
+      <pre class="mcp-code mt-3"><code>{COMPACT_ENDPOINT}</code></pre>
+      <p class="mt-2 text-muted">
+        Entrée recommandée pour les nouvelles intégrations. Surface complète experte : <code>{ENDPOINT}</code>.
+      </p>
       <p class="mt-2 text-muted">
         Rapport public agrégé : <a class="link-term text-signal" href="/api/mcp/usage"><code>/api/mcp/usage</code></a>.
         La méthode et ses limites sont visibles sur la page <a class="link-term text-signal" href="/agents/">agents</a>.
@@ -314,14 +317,14 @@ const appLd = {
       <pre class="mcp-code mt-2"><code>npx @modelcontextprotocol/inspector</code></pre>
 
       <p class="mt-4 text-paper">Brancher un client de bureau via le pont local :</p>
-      <pre class="mcp-code mt-2"><code>npx mcp-remote {ENDPOINT}</code></pre>
+      <pre class="mcp-code mt-2"><code>npx mcp-remote {COMPACT_ENDPOINT}</code></pre>
 
       <p class="mt-4 text-paper">Exemple de configuration pour un client compatible :</p>
       <pre class="mcp-code mt-2"><code>{`{
   "mcpServers": {
     "l0g": {
       "command": "npx",
-      "args": ["mcp-remote", "${ENDPOINT}"]
+      "args": ["mcp-remote", "${COMPACT_ENDPOINT}"]
     }
   }
 }`}</code></pre>
@@ -330,17 +333,17 @@ const appLd = {
         Cycle MCP minimal en JSON-RPC brut : initialisation, notification <code>initialized</code>,
         puis appel ordinaire. Pour une session complète, préférer l'inspecteur ou <code>mcp-remote</code>.
       </p>
-      <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
+      <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"${MCP_PROTOCOL_VERSION}","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
 
-curl -s -X POST ${ENDPOINT} \\
+curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
   -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
 
-curl -s -X POST ${ENDPOINT} \\
+curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
   -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`}</code></pre>

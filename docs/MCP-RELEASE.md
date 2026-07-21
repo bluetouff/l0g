@@ -33,8 +33,9 @@ la source du binaire de production ni une preuve que la version annoncée est vi
   ne convergent pas.
 - Le Registry est mis à jour par OIDC uniquement après que `https://l0g.fr/api/mcp` expose la
   version et le SHA attendus avec `releaseAttested: true`. La façade recommandée
-  `https://l0g.fr/api/mcp/compact` est ensuite vérifiée avec ses six outils ; la surface complète
-  reste le point déclaré au Registry pour préserver la compatibilité des clients existants.
+  `https://l0g.fr/api/mcp/compact` est ensuite vérifiée avec ses six outils. Les deux remotes sont
+  déclarés au Registry : surface complète d'abord pour la compatibilité des clients existants,
+  puis façade compacte recommandée pour les nouvelles intégrations.
 
 Documentation officielle :
 

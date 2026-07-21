@@ -1,6 +1,6 @@
 {
   "name": "l0g-mcp-server",
-  "version": "1.23.1",
+  "version": "1.23.2",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -13,5 +13,8 @@
     "@modelcontextprotocol/sdk": "^1.21.0",
     "node-html-parser": "^7.0.1",
     "zod": "^3.25.0"
+  },
+  "overrides": {
+    "@hono/node-server": "2.0.5"
   }
 }

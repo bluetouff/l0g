@@ -136,7 +136,8 @@ const appLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// endpoint</h2>
       <p class="mt-3 text-paper">Streamable HTTP transport, request/response JSON mode.</p>
-      <pre class="mcp-code mt-3"><code>{ENDPOINT}</code></pre>
+      <pre class="mcp-code mt-3"><code>{COMPACT_ENDPOINT}</code></pre>
+      <p class="mt-2 text-muted">Recommended entry point for new integrations. Expert full surface: <code>{ENDPOINT}</code>.</p>
       <p class="mt-2 text-muted">Aggregated public report: <a class="link-term text-signal" href="/api/mcp/usage"><code>/api/mcp/usage</code></a>. Definitions and limitations are documented on the <a class="link-term text-signal" href="/agents/">agents page</a>.</p>
       <p class="mt-2 text-muted">Read-only. The code and deployment procedure are public in the GitHub repository.</p>
     </div>
@@ -171,30 +172,30 @@ const appLd = {
       <pre class="mcp-code mt-2"><code>npx @modelcontextprotocol/inspector</code></pre>
 
       <p class="mt-4 text-paper">Connect a desktop client through the local bridge:</p>
-      <pre class="mcp-code mt-2"><code>npx mcp-remote {ENDPOINT}</code></pre>
+      <pre class="mcp-code mt-2"><code>npx mcp-remote {COMPACT_ENDPOINT}</code></pre>
 
       <p class="mt-4 text-paper">Example compatible-client configuration:</p>
       <pre class="mcp-code mt-2"><code>{`{
   "mcpServers": {
     "l0g": {
       "command": "npx",
-      "args": ["mcp-remote", "${ENDPOINT}"]
+      "args": ["mcp-remote", "${COMPACT_ENDPOINT}"]
     }
   }
 }`}</code></pre>
 
       <p class="mt-4 text-paper">Minimal raw JSON-RPC cycle:</p>
-      <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${ENDPOINT} \\
+      <pre class="mcp-code mt-2"><code>{`curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"${MCP_PROTOCOL_VERSION}","capabilities":{},"clientInfo":{"name":"curl","version":"0.1"}}}'
 
-curl -s -X POST ${ENDPOINT} \\
+curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
   -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
 
-curl -s -X POST ${ENDPOINT} \\
+curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
   -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`}</code></pre>

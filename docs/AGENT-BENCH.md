@@ -1,9 +1,11 @@
 # l0g Agent Bench
 
-État documenté : `2026-07-17`. Jeu de cas : `1.0.0`. La version Agent Surface est dérivée de `src/config/agent-contract.mjs`.
-Le benchmark de la release attestée `mcp-v1.20.2` a été exécuté contre MCP
-La version du serveur MCP et celle d'Agent Surface sont dérivées de `src/config/agent-contract.mjs`. Le daemon public expose le SHA du tag ; la
-convergence Registry se vérifie séparément via l'API officielle.
+État documenté : `2026-07-21`. Jeu de cas : `1.0.0`.
+Le benchmark de chaque release attestée valide les 44 cas contre le serveur MCP
+construit. La version du serveur MCP et celle d'Agent Surface sont dérivées de
+`src/config/agent-contract.mjs` et publiées dans `/api/v1/agent-bench.json`. Le
+daemon public expose le SHA du tag ; la convergence Registry se vérifie
+séparément via l'API officielle.
 
 Le benchmark exécute 44 cas déterministes, en français et en anglais, contre le serveur MCP réellement construit. Il n’appelle aucun LLM et ne mesure aucun temps d’exécution.
 

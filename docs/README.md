@@ -16,7 +16,7 @@ prouve pas à elle seule que l'état de production correspond au dépôt.
 
 ## Runbooks
 
-| Document | Usage | État vérifié le 2026-07-17 |
+| Document | Usage | État et source de vérité |
 |---|---|---|
 | [`GUIDE-CONTENU.md`](GUIDE-CONTENU.md) | rédaction, contrôles et publication Astro | protocole 1.0 intégré |
 | [`MCP-RELEASE.md`](MCP-RELEASE.md) | release MCP atomique, health check et rollback | version dérivée de `src/config/agent-contract.mjs` |
