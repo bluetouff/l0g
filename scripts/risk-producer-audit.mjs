@@ -13,6 +13,12 @@ function ageHours(value, now) {
   return parsed ? (Date.parse(now) - Date.parse(parsed)) / 3_600_000 : null;
 }
 
+function roundHalfEven(value) {
+  const lower = Math.floor(value);
+  if (value - lower !== 0.5) return Math.round(value);
+  return lower % 2 === 0 ? lower : lower + 1;
+}
+
 export function auditRiskFlow(input, now = new Date().toISOString()) {
   const errors = [];
   const warnings = [];
@@ -81,9 +87,9 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
   }
 
   const expectedValues = {
-    eu: typeof input.eu?.global_score === 'number' ? Math.round(input.eu.global_score) : null,
-    energie: typeof input.energy?.composite?.score === 'number' ? Math.round(input.energy.composite.score) : null,
-    debt: typeof input.debt?.score?.current_stress === 'number' ? Math.round(input.debt.score.current_stress) : null,
+    eu: typeof input.eu?.global_score === 'number' ? roundHalfEven(input.eu.global_score) : null,
+    energie: typeof input.energy?.composite?.score === 'number' ? roundHalfEven(input.energy.composite.score) : null,
+    debt: typeof input.debt?.score?.current_stress === 'number' ? roundHalfEven(input.debt.score.current_stress) : null,
   };
   for (const [key, expected] of Object.entries(expectedValues)) {
     if (expected == null) errors.push(`${key}: score producteur absent`);

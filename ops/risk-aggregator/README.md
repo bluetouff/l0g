@@ -25,6 +25,10 @@ explicite, de préférence UTC avec le suffixe `Z`. Une date locale naïve est
 rejetée afin qu'un changement de fuseau ou d'heure d'été ne puisse pas créer
 un snapshot artificiellement futur.
 
+Les scores décimaux sont ramenés à l'entier avec l'arrondi Python vers l'entier
+pair en cas de demi-unité. Les contrôles JavaScript doivent reproduire ce même
+contrat, notamment `46.5 → 46` et `47.5 → 48`.
+
 Une panne conserve la dernière valeur connue si elle existe. Sa provenance et
 son dernier succès sont préservés, tandis que la nouvelle tentative est datée
 et le statut global passe à `degraded`. Aucune panne ne peut donc être masquée

@@ -90,6 +90,18 @@ test('une valeur différente sans publication concurrente reste une erreur', () 
   assert.ok(report.errors.some((error) => error.includes('valeur agrégée 42 != producteur 44')));
 });
 
+test('les demi-unités suivent le même arrondi vers pair que l’agrégateur Python', () => {
+  const input = fixture();
+  const energy = input.aggregate.indices.find((item) => item.key === 'energie');
+  input.energy.composite.score = 46.5;
+  energy.value = 46;
+  assert.equal(auditRiskFlow(input, now).ok, true);
+
+  input.energy.composite.score = 47.5;
+  energy.value = 48;
+  assert.equal(auditRiskFlow(input, now).ok, true);
+});
+
 test('une horloge producteur franchement future reste une erreur', () => {
   const input = fixture();
   input.yen.generated = '2026-07-18T10:06:00Z';
