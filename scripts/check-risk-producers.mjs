@@ -1,4 +1,5 @@
 import { appendFile } from 'node:fs/promises';
+import { relative, resolve } from 'node:path';
 import { auditRiskFlow, githubAnnotation, renderRiskAuditMarkdown } from './risk-producer-audit.mjs';
 
 const URLS = {
@@ -25,7 +26,15 @@ async function publish(report) {
   for (const error of report.errors || []) console.error(githubAnnotation('error', error));
   for (const warning of report.warnings || []) console.error(githubAnnotation('warning', warning));
   if (process.env.GITHUB_STEP_SUMMARY) {
-    await appendFile(process.env.GITHUB_STEP_SUMMARY, renderRiskAuditMarkdown(report), 'utf8');
+    const summaryPath = resolve(process.env.GITHUB_STEP_SUMMARY);
+    const runnerTemp = process.env.RUNNER_TEMP ? resolve(process.env.RUNNER_TEMP) : '';
+    const fromRunnerTemp = runnerTemp ? relative(runnerTemp, summaryPath) : '..';
+    if (process.env.GITHUB_ACTIONS !== 'true' || fromRunnerTemp === '..' || fromRunnerTemp.startsWith('../')) {
+      throw new Error('GITHUB_STEP_SUMMARY hors du répertoire temporaire du runner');
+    }
+    const summary = renderRiskAuditMarkdown(report);
+    if (Buffer.byteLength(summary, 'utf8') > 100_000) throw new Error('résumé GitHub trop volumineux');
+    await appendFile(summaryPath, summary, { encoding: 'utf8', flag: 'a' });
   }
 }
 

@@ -135,7 +135,13 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
 }
 
 function markdown(value) {
-  return String(value ?? 'n/d').replaceAll('|', '\\|').replaceAll('\n', ' ');
+  return String(value ?? 'n/d')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('|', '\\|')
+    .replaceAll('\r', ' ')
+    .replaceAll('\n', ' ');
 }
 
 export function renderRiskAuditMarkdown(report) {

@@ -4,6 +4,7 @@ import {
 } from '../config/primary-sources.ts';
 import { claimReviewById } from '../config/claim-reviews.ts';
 import { createHash } from 'node:crypto';
+import { stripHtmlTags } from './html-utils.ts';
 
 export interface EvidenceLink {
   label: string;
@@ -112,8 +113,7 @@ const DASHBOARD_HOSTS = new Map([
 const EVIDENCE_INDEXED_AT = process.env.L0G_BUILD_TIMESTAMP || new Date().toISOString();
 
 function cleanLabel(value: string | undefined, fallback: string) {
-  return String(value || fallback)
-    .replace(/<[^>]+>/g, '')
+  return stripHtmlTags(String(value || fallback))
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 90);

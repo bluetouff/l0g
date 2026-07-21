@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { existsSync, lstatSync, readFileSync, readdirSync } from 'node:fs';
+import { closeSync, constants, existsSync, fstatSync, openSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 export type ArchiveHash = {
@@ -58,6 +58,17 @@ function assertFrame(frame: ArchiveFrame, previous: ArchiveFrame | null, file: s
   }
 }
 
+function readFrameNoFollow(path: string, file: string) {
+  const descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try {
+    const stat = fstatSync(descriptor);
+    if (!stat.isFile() || stat.size > 5_000_000) throw new Error(`Black Box: fichier archive refusé ${file}`);
+    return readFileSync(descriptor, 'utf8');
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
 export function loadBlackBoxArchive(directory = DEFAULT_ARCHIVE_DIR) {
   const framesDirectory = resolve(directory, 'frames');
   if (!existsSync(framesDirectory)) return { directory, available: false, frames: [] as ArchiveFrame[] };
@@ -65,9 +76,7 @@ export function loadBlackBoxArchive(directory = DEFAULT_ARCHIVE_DIR) {
   const frames: ArchiveFrame[] = [];
   for (const file of files) {
     const path = resolve(framesDirectory, file);
-    const stat = lstatSync(path);
-    if (!stat.isFile() || stat.isSymbolicLink() || stat.size > 5_000_000) throw new Error(`Black Box: fichier archive refusé ${file}`);
-    const frame = JSON.parse(readFileSync(path, 'utf8')) as ArchiveFrame;
+    const frame = JSON.parse(readFrameNoFollow(path, file)) as ArchiveFrame;
     assertFrame(frame, frames.at(-1) ?? null, file);
     if (frames.some((item) => item.frameId === frame.frameId)) throw new Error(`Black Box: frameId dupliqué ${frame.frameId}`);
     frames.push(frame);

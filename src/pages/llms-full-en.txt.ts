@@ -2,14 +2,13 @@ import type { APIRoute } from 'astro';
 import { editorialProtocolRelease } from '../config/editorial.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
 import { textResponse } from '../lib/agent-surface.ts';
+import { removeHtmlElementBlocks, stripHtmlTags } from '../lib/html-utils.ts';
 
 const SITE = 'https://l0g.fr';
 const MAX_PER_DOC = 24000;
 
 function toPlain(markdown: string) {
-  return String(markdown || '')
-    .replace(/<figure[\s\S]*?<\/figure>/gi, '')
-    .replace(/<[^>]+>/g, '')
+  return stripHtmlTags(removeHtmlElementBlocks(String(markdown || ''), 'figure'))
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
     .replace(/^\s*#{1,6}\s*/gm, '')

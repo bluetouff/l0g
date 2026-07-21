@@ -1,11 +1,21 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { renameSync, readFileSync, writeFileSync } from 'node:fs';
 
 const RISK_PATH = 'public/risk.json';
 const DEBT_SNAPSHOT_PATH = 'public/debt-latest.json';
 const DEFAULT_RISK_URL = 'https://l0g.fr/risk.json';
 const DEFAULT_DEBT_URL = 'https://debt.l0g.fr/latest.json';
-const riskUrl = process.env.L0G_RISK_AGGREGATE_URL || DEFAULT_RISK_URL;
-const debtUrl = process.env.DEBT_RISK_LATEST_URL || DEFAULT_DEBT_URL;
+const MAX_REMOTE_BYTES = 2_000_000;
+
+function trustedUrl(value, expectedHost, label) {
+  const parsed = new URL(value);
+  if (parsed.protocol !== 'https:' || parsed.hostname !== expectedHost || parsed.username || parsed.password) {
+    throw new Error(`${label}: URL HTTPS ou hôte refusé`);
+  }
+  return parsed.href;
+}
+
+const riskUrl = trustedUrl(process.env.L0G_RISK_AGGREGATE_URL || DEFAULT_RISK_URL, 'l0g.fr', 'Agrégateur risk.json');
+const debtUrl = trustedUrl(process.env.DEBT_RISK_LATEST_URL || DEFAULT_DEBT_URL, 'debt.l0g.fr', 'Debt Risk Radar latest.json');
 const attemptedAt = new Date().toISOString();
 
 function assertNumber(value, label) {
@@ -107,7 +117,17 @@ async function fetchJson(url, label) {
   if (!response.ok) {
     throw new Error(`${label} indisponible: HTTP ${response.status}`);
   }
-  return response.json();
+  const declaredLength = Number(response.headers.get('content-length') || 0);
+  if (declaredLength > MAX_REMOTE_BYTES) throw new Error(`${label}: réponse trop volumineuse`);
+  const body = await response.text();
+  if (Buffer.byteLength(body, 'utf8') > MAX_REMOTE_BYTES) throw new Error(`${label}: réponse trop volumineuse`);
+  return JSON.parse(body);
+}
+
+function atomicJsonWrite(path, value) {
+  const temporary = `${path}.tmp-${process.pid}`;
+  writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\n`, { encoding: 'utf8', flag: 'wx' });
+  renameSync(temporary, path);
 }
 
 function safeError(error) {
@@ -328,27 +348,20 @@ try {
 }
 
 const updated = updateSummary(risk);
-writeFileSync(RISK_PATH, `${JSON.stringify(updated, null, 2)}\n`);
+atomicJsonWrite(RISK_PATH, updated);
 
 const debt = updated.indices.find((item) => item.key === 'debt');
 const debtProvenance = updated.provenance.debt;
 if (debt && debtProvenance) {
-  writeFileSync(
-    DEBT_SNAPSHOT_PATH,
-    `${JSON.stringify(
-      {
-        schema: 'https://l0g.fr/schemas/debt-risk-snapshot.json',
-        version: '2',
-        generated: debtProvenance.generatedAt,
-        retrievedAt: debtProvenance.retrievedAt,
-        status: debt.sourceStatus,
-        signal: debt,
-        provenance: debtProvenance,
-      },
-      null,
-      2,
-    )}\n`,
-  );
+  atomicJsonWrite(DEBT_SNAPSHOT_PATH, {
+    schema: 'https://l0g.fr/schemas/debt-risk-snapshot.json',
+    version: '2',
+    generated: debtProvenance.generatedAt,
+    retrievedAt: debtProvenance.retrievedAt,
+    status: debt.sourceStatus,
+    signal: debt,
+    provenance: debtProvenance,
+  });
 }
 
 console.log(

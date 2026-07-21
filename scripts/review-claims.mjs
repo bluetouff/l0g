@@ -549,7 +549,7 @@ const server = http.createServer(async (req, res) => {
     return json(res, 404, { error: 'Route inconnue.' });
   } catch (error) {
     logSecurityEvent('request-rejected', req, error.message || String(error));
-    return json(res, 400, { error: error.message || String(error) });
+    return json(res, 400, { error: 'Requête refusée.' });
   }
 });
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from 'node:crypto';
-import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { closeSync, constants, existsSync, fstatSync, mkdirSync, openSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 
 const command = process.argv[2] || 'validate';
@@ -26,13 +26,22 @@ function omitGenerated(input) {
   return Object.fromEntries(Object.entries(input).filter(([key]) => key !== 'generated').map(([key, item]) => [key, omitGenerated(item)]));
 }
 
+function readFrameNoFollow(path, file) {
+  const descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try {
+    const stat = fstatSync(descriptor);
+    if (!stat.isFile() || stat.size > 5_000_000) throw new Error(`${file}: fichier archive refusé`);
+    return JSON.parse(readFileSync(descriptor, 'utf8'));
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
 function loadFrames() {
   if (!existsSync(framesDir)) return [];
   return readdirSync(framesDir).filter((file) => file.endsWith('.json')).sort().map((file) => {
     const path = join(framesDir, file);
-    const stat = lstatSync(path);
-    if (!stat.isFile() || stat.isSymbolicLink() || stat.size > 5_000_000) throw new Error(`${file}: fichier archive refusé`);
-    return { file, frame: json(path) };
+    return { file, frame: readFrameNoFollow(path, file) };
   });
 }
 
@@ -89,7 +98,7 @@ function append() {
   const date = computedAt.slice(0, 10);
   const runUrl = value('attestation', process.env.BLACK_BOX_ATTESTATION_URL || 'local-unattested');
   const idSuffix = value('id-suffix', '').replace(/[^a-zA-Z0-9-]/g, '').slice(0, 80);
-  const frameId = `${computedAt.replace(/[-:.]/g, '').replace('Z', 'Z')}-${gitSha.slice(0, 12)}${idSuffix ? `-${idSuffix}` : ''}`;
+  const frameId = `${computedAt.replace(/[-:.]/g, '')}-${gitSha.slice(0, 12)}${idSuffix ? `-${idSuffix}` : ''}`;
   if (loadFrames().some(({ frame }) => frame.frameId === frameId)) throw new Error(`frame déjà présente: ${frameId}`);
   const frameCore = JSON.parse(JSON.stringify({
     schemaVersion: '2', frameId, date,

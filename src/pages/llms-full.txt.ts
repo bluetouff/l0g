@@ -4,6 +4,7 @@ import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
+import { removeHtmlElementBlocks, stripHtmlTags } from '../lib/html-utils.ts';
 
 /**
  * /llms-full.txt - corpus integral pour agents IA (convention llmstxt.org).
@@ -29,9 +30,7 @@ function guideUrl(value: string): string {
 }
 
 function toPlain(md: string): string {
-  return String(md || '')
-    .replace(/<figure[\s\S]*?<\/figure>/gi, '') // infographies SVG
-    .replace(/<[^>]+>/g, '') // autres balises eventuelles
+  return stripHtmlTags(removeHtmlElementBlocks(String(md || ''), 'figure'))
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '') // images
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // liens -> texte
     .replace(/^\s*#{1,6}\s*/gm, '') // titres

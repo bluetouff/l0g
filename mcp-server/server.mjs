@@ -2808,8 +2808,8 @@ function buildServer(data) {
 function hostAllowed(req) {
   let host = String(req.headers.host || '')
     .trim()
-    .toLowerCase()
-    .replace(/\.+$/, '');
+    .toLowerCase();
+  while (host.endsWith('.')) host = host.slice(0, -1);
   const ipv6Match = host.match(/^\[(.+)\](?::\d+)?$/);
   host = ipv6Match ? ipv6Match[1] : host.split(':')[0];
   return ALLOWED_HOSTS.has(host);

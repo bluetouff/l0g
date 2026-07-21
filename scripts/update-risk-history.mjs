@@ -1,18 +1,33 @@
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 
 const DEFAULT_URL = 'https://l0g.fr/api/v1/history.ndjson';
-const url = process.env.L0G_OPERATIONAL_HISTORY_URL || DEFAULT_URL;
+const parsedUrl = new URL(process.env.L0G_OPERATIONAL_HISTORY_URL || DEFAULT_URL);
+if (parsedUrl.protocol !== 'https:' || parsedUrl.hostname !== 'l0g.fr' || parsedUrl.username || parsedUrl.password) {
+  throw new Error('URL de l’historique opérationnel refusée');
+}
+const url = parsedUrl.href;
 const sourceFile = process.env.L0G_OPERATIONAL_HISTORY_SOURCE || null;
-const output = process.env.L0G_OPERATIONAL_HISTORY_PATH || '.cache/risk-operational-history.ndjson';
-const metaOutput = process.env.L0G_OPERATIONAL_HISTORY_META_PATH || '.cache/risk-operational-history.meta.json';
+const cacheRoot = resolve('.cache');
+
+function cachePath(value, fallback) {
+  const path = resolve(value || fallback);
+  const fromCache = relative(cacheRoot, path);
+  if (fromCache === '..' || fromCache.startsWith(`..${process.platform === 'win32' ? '\\' : '/'}`)) {
+    throw new Error(`chemin de cache hors racine: ${path}`);
+  }
+  return path;
+}
+
+const output = cachePath(process.env.L0G_OPERATIONAL_HISTORY_PATH, '.cache/risk-operational-history.ndjson');
+const metaOutput = cachePath(process.env.L0G_OPERATIONAL_HISTORY_META_PATH, '.cache/risk-operational-history.meta.json');
 const attemptedAt = new Date().toISOString();
 const maxBytes = 15_000_000;
 
 function atomicWrite(path, contents) {
   mkdirSync(dirname(path), { recursive: true });
-  const temporary = `${path}.tmp`;
-  writeFileSync(temporary, contents);
+  const temporary = `${path}.tmp-${process.pid}`;
+  writeFileSync(temporary, contents, { encoding: 'utf8', flag: 'wx' });
   renameSync(temporary, path);
 }
 
@@ -48,7 +63,9 @@ async function readSource() {
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const length = Number(response.headers.get('content-length') || 0);
   if (length > maxBytes) throw new Error('historique opérationnel trop volumineux');
-  return response.text();
+  const text = await response.text();
+  if (Buffer.byteLength(text, 'utf8') > maxBytes) throw new Error('historique opérationnel trop volumineux');
+  return text;
 }
 
 try {

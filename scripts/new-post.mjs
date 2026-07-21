@@ -66,16 +66,13 @@ if (!slug) {
 }
 
 const filePath = path.join(POSTS_DIR, `${slug}.md`);
-if (fs.existsSync(filePath)) {
-  console.error(`[post] existe deja : ${filePath} (rien ecrit).`);
-  process.exit(1);
-}
 
-// titre echappe pour le YAML (guillemets doubles)
-const yamlTitle = title.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+// JSON est un sous-ensemble sûr des scalaires YAML entre guillemets et couvre
+// aussi les retours ligne, contrairement à un échappement partiel manuel.
+const yamlTitle = JSON.stringify(title);
 
 const body = `---
-title: "${yamlTitle}"
+title: ${yamlTitle}
 description: ""
 pubDate: ${parisNowISO()}
 tags: []
@@ -87,7 +84,15 @@ draft: true
 `;
 
 fs.mkdirSync(POSTS_DIR, { recursive: true });
-fs.writeFileSync(filePath, body);
+try {
+  fs.writeFileSync(filePath, body, { encoding: 'utf8', flag: 'wx' });
+} catch (error) {
+  if (error?.code === 'EEXIST') {
+    console.error(`[post] existe deja : ${filePath} (rien ecrit).`);
+    process.exit(1);
+  }
+  throw error;
+}
 console.log(`[post] cree : ${filePath}`);
 console.log(`[post] pubDate : ${parisNowISO()}`);
 console.log(`[post] draft: true  ->  passe a false quand tu publies.`);

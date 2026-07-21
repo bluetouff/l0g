@@ -2,6 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { extname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { serializeInlineScriptData } from '../src/lib/security.ts';
+import { scanHtmlElements } from '../src/lib/html-utils.ts';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
@@ -97,14 +98,17 @@ let metaPolicies = 0;
 let redirectFallbacks = 0;
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
-  const cspMeta = (html.match(/<meta\b[^>]*>/gi) || [])
-    .find((tag) => /http-equiv=["']content-security-policy["']/i.test(tag));
-  if (!cspMeta && /http-equiv=["']refresh["']/i.test(html)) {
+  const elements = scanHtmlElements(html);
+  const cspMeta = elements.find((element) => element.name === 'meta' &&
+    element.attributes.get('http-equiv')?.toLowerCase() === 'content-security-policy');
+  const refreshMeta = elements.some((element) => element.name === 'meta' &&
+    element.attributes.get('http-equiv')?.toLowerCase() === 'refresh');
+  if (!cspMeta && refreshMeta) {
     redirectFallbacks += 1;
   } else if (!cspMeta) {
     fail(`${relative(ROOT, file)}: meta CSP autonome absente`);
   } else {
-    const metaContent = cspMeta.match(/content="([^"]*)"/i)?.[1] || '';
+    const metaContent = cspMeta.attributes.get('content') || '';
     const metaScriptSources = metaContent.match(/(?:^|;)\s*script-src\s+([^;]+)/i)?.[1] || '';
     if (!metaScriptSources || metaScriptSources.includes("'unsafe-inline'")) {
       fail(`${relative(ROOT, file)}: meta CSP script-src absente ou permissive`);
@@ -115,10 +119,9 @@ for (const file of htmlFiles) {
     metaPolicies += 1;
   }
 
-  for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
-    const [, attributes, body] = match;
-    const type = attributes.match(/\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase();
-    if (/\bsrc=["']/i.test(attributes) || type === 'application/ld+json' || !body.trim()) continue;
+  for (const element of elements.filter((candidate) => candidate.name === 'script')) {
+    const type = element.attributes.get('type')?.toLowerCase();
+    if (element.attributes.has('src') || type === 'application/ld+json' || !element.body.trim()) continue;
     executableInlineScripts += 1;
     fail(`${relative(ROOT, file)}: script inline exécutable incompatible avec la CSP Apache`);
   }

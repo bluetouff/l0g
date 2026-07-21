@@ -11,6 +11,7 @@
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, extname } from 'node:path';
+import { scanHtmlElements } from '../src/lib/html-utils.ts';
 
 const DIST = 'dist';
 
@@ -74,33 +75,30 @@ function isExternal(href) {
   return false;
 }
 
-const ATTR_RE = /(?:href|src)\s*=\s*"([^"]*)"/gi;
 const broken = [];
 let checked = 0;
 
 for (const file of htmlFiles) {
-  // On retire les blocs script/style : du JS comme `href = '...' + x` ne doit
-  // pas être pris pour un lien.
-  const html = readFileSync(file, 'utf8')
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
+  const elements = scanHtmlElements(readFileSync(file, 'utf8'));
   const base = 'https://l0g.local' + pageUrl(file);
   const seen = new Set();
-  let m;
-  while ((m = ATTR_RE.exec(html)) !== null) {
-    const raw = m[1];
-    if (isExternal(raw)) continue;
-    let path;
-    try {
-      path = new URL(raw, base).pathname; // résout relatif + absolu, retire #/?
-    } catch {
-      continue;
+  for (const element of elements) {
+    if (element.name === 'script' || element.name === 'style') continue;
+    for (const attribute of ['href', 'src']) {
+      const raw = element.attributes.get(attribute);
+      if (isExternal(raw)) continue;
+      let path;
+      try {
+        path = new URL(raw, base).pathname; // résout relatif + absolu, retire #/?
+      } catch {
+        continue;
+      }
+      if (seen.has(path)) continue;
+      seen.add(path);
+      if (RUNTIME_ENDPOINTS.has(path)) continue;
+      checked += 1;
+      if (!resolves(path)) broken.push({ from: '/' + relative(DIST, file), href: raw, path });
     }
-    if (seen.has(path)) continue;
-    seen.add(path);
-    if (RUNTIME_ENDPOINTS.has(path)) continue;
-    checked += 1;
-    if (!resolves(path)) broken.push({ from: '/' + relative(DIST, file), href: raw, path });
   }
 }
 
