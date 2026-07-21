@@ -8,7 +8,9 @@ function argument(name, fallback = null) {
 const expectedVersion = argument('--version');
 const attempts = Number.parseInt(argument('--attempts', '1'), 10);
 const delayMs = Number.parseInt(argument('--delay-ms', '5000'), 10);
+const timeoutMs = Number.parseInt(argument('--timeout-ms', '60000'), 10);
 if (!expectedVersion) throw new Error('--version est requis');
+if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) throw new Error('--timeout-ms doit être un entier positif');
 const url = 'https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.bluetouff%2Fl0g';
 
 let lastError;
@@ -16,7 +18,7 @@ for (let attempt = 1; attempt <= attempts; attempt += 1) {
   try {
     const response = await fetch(url, {
       headers: { Accept: 'application/json', 'User-Agent': 'l0g-mcp-release-verifier/1' },
-      signal: AbortSignal.timeout(15_000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     if (!response.ok) throw new Error(`Registry HTTP ${response.status}`);
     const payload = await response.json();
