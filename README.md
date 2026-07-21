@@ -172,7 +172,7 @@ Le bandeau de cotations en haut de page se règle dans
 
 ## Déploiement (vue d'ensemble)
 
-### État de migration vérifié le 16 juillet 2026
+### État de migration vérifié le 21 juillet 2026
 
 - Le workflow CI publie dans `built` l'arbre statique de compatibilité et une
   enveloppe attestée composée de l'archive, du SHA-256, du bundle Sigstore et
@@ -219,13 +219,13 @@ gh attestation verify --help >/dev/null
 sudo useradd --system --create-home --shell /usr/sbin/nologin l0gdeploy
 sudo mkdir -p /var/www/html/l0g && sudo chown l0gdeploy:l0gdeploy /var/www/html/l0g
 
-# script + unités systemd
+# installation initiale des unités
 sudo install -m 0755 deploy/deploy.sh /usr/local/bin/l0g-deploy.sh
 sudo install -m 0644 deploy/l0g-deploy.service /etc/systemd/system/
-sudo install -m 0644 deploy/l0g-deploy.timer   /etc/systemd/system/
+sudo install -m 0644 deploy/l0g-deploy.timer /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now l0g-deploy.timer
-sudo systemctl start l0g-deploy.service   # premier déploiement
+sudo systemctl start l0g-deploy.service
 
 # Apache
 sudo a2enmod ssl headers deflate expires rewrite
@@ -233,6 +233,15 @@ sudo cp deploy/l0g.fr.apache.conf /etc/apache2/sites-available/
 sudo a2ensite l0g.fr.apache.conf
 sudo certbot --apache -d l0g.fr -d www.l0g.fr   # ou certonly puis reload
 sudo systemctl reload apache2
+```
+
+Pour migrer un serveur qui possède déjà l'ancien timer, utiliser plutôt le
+script transactionnel. Il sauvegarde le worker et les unités, vérifie le
+premier déploiement attesté et restaure automatiquement l'ancienne version si
+l'activation échoue :
+
+```bash
+sudo deploy/activate-worker.sh
 ```
 
 Si la version Debian de `gh` ne fournit pas `attestation verify`, suivre le bloc

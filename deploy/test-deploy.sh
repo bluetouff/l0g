@@ -5,6 +5,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TMP="$(mktemp -d)"
 trap 'rm -rf -- "$TMP"' EXIT
 
+bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh"
+
 REMOTE="${TMP}/remote.git"
 SOURCE="${TMP}/source"
 BUILT="${TMP}/built"
