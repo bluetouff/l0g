@@ -23,7 +23,7 @@ const indices = ['us', 'eu', 'yen', 'energie', 'debt'].map((key) => ({
 function fixture() {
   return {
     aggregate: { version: '2', status: 'degraded', generated: now, software: { revision: 'abc123', revisionStatus: 'reported', sourceSha256: 'a'.repeat(64) }, indices: indices.map((item) => ({ ...item })) },
-    eu: { generated_at: '2026-07-18 07:49', global_score: 41.2 },
+    eu: { generated_at: generated.eu, global_score: 41.2 },
     yen: { generated: generated.yen },
     energy: { generated: generated.energie, composite: { score: 42.1 }, series: { brent: { label: 'Brent', date: '2026-07-13', tip_source: 'eia' }, wti: { label: 'WTI', date: '2026-07-13', tip_source: 'eia' } } },
     debt: { generated_at: generated.debt, score: { current_stress: 54.2 } },
@@ -96,6 +96,14 @@ test('une horloge producteur franchement future reste une erreur', () => {
   const report = auditRiskFlow(input, now);
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.includes('plus de cinq minutes dans le futur')));
+});
+
+test('une date producteur sans fuseau explicite rompt le contrat', () => {
+  const input = fixture();
+  input.eu.generated_at = '2026-07-18 07:49';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('eu: date producteur sans fuseau explicite')));
 });
 
 test('une qualité dégradée reste verte mais sa cause remonte dans GitHub', () => {

@@ -20,14 +20,16 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
     }
   }
   assert.equal(new Set(paths).size, paths.length, 'un fichier actif ne doit appartenir qu’à un producteur');
+  assert.ok(paths.includes('/opt/euromacro/build_snapshot.py'), 'le générateur Euro doit être attesté');
 });
 
 test('la configuration versionnée sert les fichiers vivants et neutralise les anciens scripts', async () => {
-  const [apache, service, installer, activator, agentSurface] = await Promise.all([
+  const [apache, service, installer, activator, euroActivator, agentSurface] = await Promise.all([
     readFile(new URL('deploy/l0g.fr.apache.conf', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/l0g-risk.service', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/install-server.sh', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/activate-zen.sh', root), 'utf8'),
+    readFile(new URL('ops/risk-aggregator/activate-euromacro-zen.sh', root), 'utf8'),
     readFile(new URL('src/lib/agent-surface.ts', root), 'utf8'),
   ]);
   for (const alias of [
@@ -47,6 +49,9 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(activator.indexOf('check_stage energie') < activator.indexOf('systemctl restart energie-snapshot.service'));
   assert.ok(activator.includes('/var/www/html/energie/snapshot.json'));
   assert.ok(!activator.includes('/opt/energie/web/snapshot.json'));
+  assert.ok(euroActivator.indexOf('sha256sum "$EURO_STAGE"') < euroActivator.indexOf('systemctl restart euromacro-snapshot.service'));
+  assert.ok(euroActivator.indexOf('systemctl restart euromacro-snapshot.service') < euroActivator.indexOf('install-server.sh'));
+  assert.ok(euroActivator.includes('/var/www/html/euromacro/snapshot.json'));
   const debtSchema = agentSurface.slice(
     agentSurface.indexOf('DebtRiskTileSignal:'),
     agentSurface.indexOf('RiskSignalProvenanceBucket:'),

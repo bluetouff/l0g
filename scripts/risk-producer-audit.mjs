@@ -2,7 +2,8 @@ const SIGNALS = ['us', 'eu', 'yen', 'energie', 'debt'];
 
 function iso(value) {
   if (!value) return null;
-  const raw = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(String(value)) ? `${value}:00Z` : value;
+  const raw = String(value).trim();
+  if (!/(?:Z|[+-]\d{2}:\d{2})$/i.test(raw)) return null;
   if (Number.isNaN(Date.parse(raw))) return null;
   return new Date(raw).toISOString();
 }
@@ -47,13 +48,23 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     if (item.fallbackUsed && item.fallbackLayer === 'producer') warnings.push(`${key}: repli interne producteur visible`);
   }
 
-  const euGenerated = iso(input.eu?.generated_at);
-  const yenGenerated = iso(input.yen?.generated);
-  const energyGenerated = iso(input.energy?.generated);
-  const debtGenerated = iso(input.debt?.generated_at);
+  const producerDates = {
+    eu: input.eu?.generated_at,
+    yen: input.yen?.generated,
+    energie: input.energy?.generated,
+    debt: input.debt?.generated_at,
+  };
+  const normalizedProducerDates = Object.fromEntries(
+    Object.entries(producerDates).map(([key, value]) => [key, iso(value)]),
+  );
   const producerPublishedAfterAttempt = new Set();
-  for (const [key, value] of Object.entries({ eu: euGenerated, yen: yenGenerated, energie: energyGenerated, debt: debtGenerated })) {
-    if (!value) errors.push(`${key}: date producteur publique absente`);
+  for (const [key, value] of Object.entries(normalizedProducerDates)) {
+    if (!value) {
+      const raw = producerDates[key];
+      errors.push(raw
+        ? `${key}: date producteur sans fuseau explicite ou invalide (${raw})`
+        : `${key}: date producteur publique absente`);
+    }
     const item = byKey.get(key);
     const aggregateDate = iso(item?.sourceUpdatedAt);
     if (value && Date.parse(value) - Date.parse(now) > 5 * 60_000) {

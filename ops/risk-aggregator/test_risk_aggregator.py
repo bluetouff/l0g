@@ -27,6 +27,12 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_naive_timestamp_is_rejected(self):
+        self.assertIsNone(RISK.iso_z("2026-07-21 07:53"))
+
+    def test_explicit_offset_is_normalized_to_utc(self):
+        self.assertEqual(RISK.iso_z("2026-07-21T07:53:00+02:00"), "2026-07-21T05:53:00Z")
+
     def test_failure_keeps_value_but_exposes_fallback(self):
         previous = {"us": item("us", 42)}
 

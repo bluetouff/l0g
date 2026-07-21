@@ -102,16 +102,14 @@ def iso_z(value) -> str | None:
     if not value:
         return None
     raw = str(value).strip()
-    if re.fullmatch(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}", raw):
-        raw += ":00Z"
-    elif raw.endswith("Z"):
+    if raw.endswith("Z"):
         raw = raw[:-1] + "+00:00"
     try:
         parsed = datetime.datetime.fromisoformat(raw)
     except ValueError:
         return None
     if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=datetime.timezone.utc)
+        return None
     return parsed.astimezone(datetime.timezone.utc).isoformat(timespec="seconds").replace(
         "+00:00", "Z"
     )

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-07-19",
+  "verifiedAt": "2026-07-21",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
@@ -22,8 +22,12 @@
     },
     "eu": {
       "repository": "https://github.com/bluetouff/euro-macro-dashboard",
-      "revision": "aa418dd338bb8efb668a76389cb86bad7ff27d59",
+      "revision": "88613ecff7f23b526c652ed6b30b14aa73090263",
       "files": [
+        {
+          "path": "/opt/euromacro/build_snapshot.py",
+          "sha256": "f533469a300303e8eb6473333bb629415441387a6f5c88785b828b7729b32741"
+        },
         {
           "path": "/opt/euromacro/deploy/refresh.sh",
           "sha256": "a48c2c1ee60d27f875899bdedb89f7af5aebe6883ff434b5126997926bd7ff5d"
