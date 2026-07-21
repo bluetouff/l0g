@@ -272,10 +272,9 @@ Relis toujours le diff indexé avant le commit. À partir du push :
    suivre).
 2. Si le build passe, l'archive statique complète est attestée puis publiée sur
    la branche `built` avec son bundle de provenance.
-3. Pendant la migration, l'ancien déployeur sert l'arbre statique de compatibilité
-   présent dans `built`. Après installation du nouveau `deploy.sh`, le serveur
-   vérifie la correspondance `main`, attestation et `built`, puis extrait
-   l'archive et bascule le symlink servi.
+3. Le serveur vérifie la correspondance entre `main`, l'attestation et `built`,
+   compare les coordonnées intégrées à l'archive, puis extrait celle-ci et
+   bascule atomiquement le symlink servi.
 
 ### 5.3 Vérifier le déploiement (sur le serveur, optionnel)
 
@@ -290,8 +289,7 @@ cat /var/www/html/l0g/.last_built_sha  # commit de transport built actif
 
 Avec le nouveau déployeur, si un build casse, si l'attestation est absente ou si
 `main` et `built` ne convergent pas, **rien n'est activé** : l'ancienne version
-reste en ligne. Tant que la migration serveur n'est pas terminée, cette garantie
-fail-closed n'est pas encore fournie côté serveur.
+reste en ligne. Cette garantie fail-closed est active en production.
 
 ---
 

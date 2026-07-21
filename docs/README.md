@@ -20,7 +20,7 @@ prouve pas à elle seule que l'état de production correspond au dépôt.
 |---|---|---|
 | [`GUIDE-CONTENU.md`](GUIDE-CONTENU.md) | rédaction, contrôles et publication Astro | protocole 1.0 intégré |
 | [`MCP-RELEASE.md`](MCP-RELEASE.md) | release MCP atomique, health check et rollback | `1.20.2` attestée, publiée et active en production |
-| [`../README.md`](../README.md) | architecture et déploiement statique | `built` publie arbre compatible et enveloppe attestée ; migration serveur à terminer |
+| [`../README.md`](../README.md) | architecture et déploiement statique | `built` transporte uniquement l'enveloppe attestée ; activation serveur fail-closed |
 
 ## Surfaces publiques correspondantes
 

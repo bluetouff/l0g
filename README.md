@@ -172,19 +172,17 @@ Le bandeau de cotations en haut de page se règle dans
 
 ## Déploiement (vue d'ensemble)
 
-### État de migration vérifié le 21 juillet 2026
+### Migration attestée terminée et vérifiée le 21 juillet 2026
 
-- Le workflow CI publie dans `built` l'arbre statique de compatibilité et une
-  enveloppe attestée composée de l'archive, du SHA-256, du bundle Sigstore et
-  des coordonnées du commit source. Ces coordonnées sont incluses dans
+- Le workflow CI publie dans `built` uniquement une enveloppe de release
+  composée de l'archive statique, du SHA-256, du bundle Sigstore et des
+  coordonnées du commit source. Ces coordonnées sont incluses dans
   l'archive attestée et dupliquées à la racine de `built`; le déployeur exige
   leur égalité octet par octet avant toute bascule.
-- Le serveur statique sert encore l'arbre de compatibilité. La correspondance
-  publique avec `built` est vérifiable, mais le contrôle d'attestation côté
-  serveur ne devient effectif qu'après installation du nouveau `deploy.sh`.
-- Cette copie statique temporaire évite une interruption pendant la migration.
-  Elle devra être retirée du workflow seulement après vérification des marqueurs
-  `.last_source_sha` et `.last_built_sha` en production.
+- Le serveur active exclusivement l'archive dont le checksum, l'attestation,
+  le workflow signataire, la ref et le commit source ont été vérifiés.
+- L'ancien arbre statique de compatibilité a été retiré après vérification en
+  production des marqueurs `.last_source_sha` et `.last_built_sha`.
 
 L'index des contrats, runbooks et versions maintenues se trouve dans
 [`docs/README.md`](docs/README.md).
@@ -192,12 +190,9 @@ L'index des contrats, runbooks et versions maintenues se trouve dans
 1. `git push` sur `main`.
 2. GitHub Actions construit `dist/`, crée une archive déterministe de toute la
    sortie, puis l'atteste avec GitHub OIDC et Sigstore.
-3. Pendant la migration serveur, la branche `built` contient l'arbre statique
-   compatible avec l'ancien déployeur, ainsi que l'archive, son SHA-256, le
-   bundle d'attestation et les coordonnées du commit source de `main`. Le
-   nouveau déployeur ignore l'arbre non attesté et n'active que l'archive
-   vérifiée.
-4. Après migration du serveur, le timer systemd poll `built` toutes les 2 min.
+3. La branche `built` contient uniquement l'archive, son SHA-256, le bundle
+   d'attestation et les coordonnées du commit source de `main`.
+4. Le timer systemd poll `built` toutes les 2 min.
    Avant toute bascule, il exige
    que le clone corresponde au HEAD distant de `built`, que le SHA source
    corresponde au HEAD distant de `main`, et que `gh attestation verify`
@@ -248,12 +243,9 @@ sudo deploy/activate-worker.sh
 
 Si la version Debian de `gh` ne fournit pas `attestation verify`, suivre le bloc
 d'installation depuis le dépôt officiel GitHub dans
-[`docs/MCP-RELEASE.md`](docs/MCP-RELEASE.md#migration-unique-de-zen). Installer
-le nouveau `deploy.sh` dès que possible. La racine statique de `built` reste
-temporairement présente pour assurer une migration sans interruption avec
-l'ancien déployeur. Tant que l'archive attestée n'existe pas, le nouveau script
-refuse la release et conserve le symlink courant. Après migration vérifiée du
-serveur, cette copie de compatibilité pourra être retirée du workflow.
+[`docs/MCP-RELEASE.md`](docs/MCP-RELEASE.md#migration-unique-de-zen). Tant que
+l'archive attestée ou l'outil de vérification manque, le script refuse la
+release et conserve le symlink courant.
 
 Contrôles après le premier déploiement attesté :
 
