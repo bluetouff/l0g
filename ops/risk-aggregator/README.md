@@ -20,6 +20,11 @@ de chaque producteur. Chaque entrée d'`indices` publie séparément :
   bloc racine `software` publie de même la révision et le SHA-256 du code
   d'agrégation réellement exécuté.
 
+Tous les horodatages de producteurs doivent inclure un fuseau ISO 8601
+explicite, de préférence UTC avec le suffixe `Z`. Une date locale naïve est
+rejetée afin qu'un changement de fuseau ou d'heure d'été ne puisse pas créer
+un snapshot artificiellement futur.
+
 Une panne conserve la dernière valeur connue si elle existe. Sa provenance et
 son dernier succès sont préservés, tandis que la nouvelle tentative est datée
 et le statut global passe à `degraded`. Aucune panne ne peut donc être masquée
@@ -77,6 +82,15 @@ appelle l'installateur de l'agrégateur :
 sudo ops/risk-aggregator/activate-zen.sh "$revision" \
   /chemin/stage/energie/builder.py \
   /chemin/stage/debt-risk-radar
+```
+
+Le producteur Euro dispose d'un activateur ciblé. Il atteste le hash de
+`build_snapshot.py`, sauvegarde le générateur et les snapshots actifs, exige un
+`generated_at` UTC explicite, puis active l'agrégateur avec la même révision :
+
+```sh
+sudo ops/risk-aggregator/activate-euromacro-zen.sh "$revision" \
+  /chemin/stage/euromacro/build_snapshot.py
 ```
 
 Le contrôle préliminaire échoue volontairement si un producteur n'a pas encore
