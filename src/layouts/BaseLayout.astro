@@ -175,7 +175,7 @@ function isCurrentHref(href: string): boolean {
         <div class="header-top">
           <a href="/" class="brand" aria-label="l0g, Lire les mécanismes avant qu’ils deviennent l’événement">
             <span class="brand-mark">
-              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="brand-colon text-accent" aria-hidden="true">:</span>
+              <span class="text-paper">l</span><span class="brand-0 text-signal">0</span><span class="text-paper">g</span><span class="brand-cursor blink text-accent" aria-hidden="true">_</span>
             </span>
             <span class="brand-sep" aria-hidden="true"></span>
             <span class="brand-tag" aria-hidden="true">
@@ -532,9 +532,6 @@ function isCurrentHref(href: string): boolean {
         gap: 1.75rem;
       }
       .brand { grid-area: brand; display: inline-flex; align-items: center; gap: 0.7rem; min-width: 0; text-decoration: none; }
-      .brand-mark { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
-      .brand-0 { text-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 45%, transparent); }
-      .brand-colon { margin-left: 0.12em; text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 45%, transparent); }
       .brand-sep { width: 1px; height: 2.05rem; background: linear-gradient(180deg, transparent, var(--color-line-strong), transparent); }
       .brand-tag {
         display: flex;
