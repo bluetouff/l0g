@@ -71,7 +71,9 @@ jobs:
           node scripts/black-box-archive.mjs validate --archive .black-box-archive
 
       - name: Install (lockfile strict)
-        run: npm ci
+        run: |
+          npm ci
+          npm ci --prefix mcp-server --omit=dev
 
       - name: Test release and deployment contracts
         run: |
