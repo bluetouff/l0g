@@ -16,6 +16,9 @@ grep -Fq 'Cache-Control "private, no-store, max-age=0"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'https://l0g.fr/stats/)" = 401' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'VHOST_MODE="hardened"' "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'Topologie de vhost l0g inattendue' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
 
 REMOTE="${TMP}/remote.git"
 SOURCE="${TMP}/source"

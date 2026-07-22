@@ -21,6 +21,7 @@ HTPASSWD="/etc/apache2/l0g-stats.htpasswd"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 BACKUP_DIR="/var/backups/l0g-apache-vhost-${STAMP}"
 BACKUP_READY=false
+VHOST_MODE=""
 
 for command in cat chmod cmp cp curl date grep install ln mkdir mv readlink rm stat systemctl; do
   command -v "$command" >/dev/null 2>&1 || {
@@ -30,8 +31,17 @@ for command in cat chmod cmp cp curl date grep install ln mkdir mv readlink rm s
 done
 [ -x "$APACHECTL" ] || { echo "apache2ctl absent" >&2; exit 1; }
 [ -f "$SOURCE" ] || { echo "Vhost source absent: $SOURCE" >&2; exit 1; }
-[ -L "$LEGACY_HTTP" ] || { echo "Vhost HTTP historique absent" >&2; exit 1; }
-[ -L "$LEGACY_HTTPS" ] || { echo "Vhost HTTPS historique absent" >&2; exit 1; }
+if [ -L "$LEGACY_HTTP" ] && [ -L "$LEGACY_HTTPS" ] \
+   && [ ! -e "$ACTIVE" ] && [ ! -L "$ACTIVE" ]; then
+  VHOST_MODE="legacy"
+elif [ ! -e "$LEGACY_HTTP" ] && [ ! -L "$LEGACY_HTTP" ] \
+     && [ ! -e "$LEGACY_HTTPS" ] && [ ! -L "$LEGACY_HTTPS" ] \
+     && [ -L "$ACTIVE" ]; then
+  VHOST_MODE="hardened"
+else
+  echo "Topologie de vhost l0g inattendue; activation refusée" >&2
+  exit 1
+fi
 [ -f /etc/letsencrypt/live/l0g.fr/fullchain.pem ]
 [ -f /etc/letsencrypt/live/l0g.fr/privkey.pem ]
 [ -s "$HTPASSWD" ] || {
@@ -49,8 +59,18 @@ done
 
 mkdir -p "$BACKUP_DIR"
 chmod 0700 "$BACKUP_DIR"
-readlink "$LEGACY_HTTP" >"${BACKUP_DIR}/legacy-http.link"
-readlink "$LEGACY_HTTPS" >"${BACKUP_DIR}/legacy-https.link"
+if [ -L "$LEGACY_HTTP" ]; then
+  readlink "$LEGACY_HTTP" >"${BACKUP_DIR}/legacy-http.link"
+  : >"${BACKUP_DIR}/legacy-http.present"
+else
+  : >"${BACKUP_DIR}/legacy-http.absent"
+fi
+if [ -L "$LEGACY_HTTPS" ]; then
+  readlink "$LEGACY_HTTPS" >"${BACKUP_DIR}/legacy-https.link"
+  : >"${BACKUP_DIR}/legacy-https.present"
+else
+  : >"${BACKUP_DIR}/legacy-https.absent"
+fi
 if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
   cp -a -- "$TARGET" "${BACKUP_DIR}/l0g.fr-hardened.conf"
   : >"${BACKUP_DIR}/target.present"
@@ -80,8 +100,12 @@ rollback() {
     if [ -f "${BACKUP_DIR}/active.present" ]; then
       cp -a -- "${BACKUP_DIR}/l0g.fr-hardened.enabled" "$ACTIVE"
     fi
-    ln -s "$(cat "${BACKUP_DIR}/legacy-http.link")" "$LEGACY_HTTP"
-    ln -s "$(cat "${BACKUP_DIR}/legacy-https.link")" "$LEGACY_HTTPS"
+    if [ -f "${BACKUP_DIR}/legacy-http.present" ]; then
+      ln -s "$(cat "${BACKUP_DIR}/legacy-http.link")" "$LEGACY_HTTP"
+    fi
+    if [ -f "${BACKUP_DIR}/legacy-https.present" ]; then
+      ln -s "$(cat "${BACKUP_DIR}/legacy-https.link")" "$LEGACY_HTTPS"
+    fi
     "$APACHECTL" configtest
     systemctl reload apache2
     echo "Activation Apache refusée; restauration depuis ${BACKUP_DIR}." >&2
@@ -116,4 +140,5 @@ printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/usage)" = 200 ]
 
 trap - ERR INT TERM
-printf 'Vhost l0g durci activé. Sauvegarde: %s\n' "$BACKUP_DIR"
+printf 'Vhost l0g durci activé depuis le mode %s. Sauvegarde: %s\n' \
+  "$VHOST_MODE" "$BACKUP_DIR"
