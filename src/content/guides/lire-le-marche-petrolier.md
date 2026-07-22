@@ -117,7 +117,7 @@ Le marché pétrolier a l'avantage d'être richement documenté, et gratuitement
 - **Baker Hughes, le vendredi à 13 h 00.** Le décompte hebdomadaire des plateformes de forage en activité aux États-Unis, indicateur avancé de la production de schiste à venir. Moins immédiat, mais révélateur de la tendance.
 - **Les rapports mensuels.** L'IEA (*Oil Market Report*), l'OPEP (*Monthly Oil Market Report*) et l'EIA (*Short-Term Energy Outlook*) donnent chacun leur lecture de l'équilibre offre-demande. Les comparer, plutôt que se fier à un seul, est le réflexe juste, tant leurs hypothèses diffèrent.
 
-Pour situer ces sorties dans le temps, le [calendrier économique](/calendrier-eco/) du site recense les rendez-vous à surveiller, et le [glossaire](/glossaire/) reprend les sigles employés ici.
+Pour situer ces sorties dans le temps, les dates doivent être vérifiées auprès des organismes répertoriés dans nos [sites de référence](/sites-reference/), et le [glossaire](/glossaire/) reprend les sigles employés ici.
 
 ## Lire le marché en pratique
 

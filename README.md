@@ -1,8 +1,8 @@
 # l0g.fr
 
-Journal statique (Astro 6 + Tailwind v4), édité en Markdown/MDX, versionné sur
+Journal statique (Astro 7 + Tailwind v4), édité en Markdown/MDX, versionné sur
 GitHub, déployé en pull-based sur un serveur Debian/Apache qui ne sert que du
-HTML. Embeds TradingView, recherche Pagefind, RSS, sitemap.
+HTML. Infographies locales, recherche Pagefind, RSS, sitemap, aucun tracker.
 
 > Pour publier (articles, pages avec graphes, colonne de droite), voir le guide
 > pas à pas : [`docs/GUIDE-CONTENU.md`](docs/GUIDE-CONTENU.md).
@@ -159,21 +159,17 @@ draft: false        # true = non publié
 
 L'URL est dérivée du nom de fichier : `mon-article.md` → `/posts/mon-article/`.
 
-## Glisser un graphe ou un widget
+## Ajouter une infographie
 
-Dans un fichier **`.mdx`**, importer le composant puis l'utiliser :
+Les visuels publiés doivent être locaux : SVG inline dans un fichier `.mdx`,
+composant Astro interne ou fichier placé dans `public/infographies/`.
 
-```mdx
-import TradingViewChart from '../../components/TradingViewChart.astro';
-import MiniSymbol from '../../components/MiniSymbol.astro';
-
-<TradingViewChart symbol="BINANCE:ETHUSDT" interval="240" caption="ETH/USDT — 4h" />
-
-<MiniSymbol symbol="TVC:DXY" dateRange="12M" />
+```markdown
+![Description accessible du graphique](/infographies/mon-graphique.svg)
 ```
 
-Le bandeau de cotations en haut de page se règle dans
-`src/components/TickerTape.astro`.
+Les scripts, iframes, images et polices chargés depuis un domaine tiers sont
+interdits. Le build de sécurité contrôle cette promesse.
 
 ## Déploiement (vue d'ensemble)
 

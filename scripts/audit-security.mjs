@@ -93,6 +93,26 @@ if (!scriptSources) fail('Directive Apache script-src absente');
 if (scriptSources.includes("'unsafe-inline'")) {
   fail('La directive Apache script-src autorise encore unsafe-inline');
 }
+const fetchDirectives = [
+  'default-src',
+  'script-src',
+  'style-src',
+  'img-src',
+  'font-src',
+  'connect-src',
+  'frame-src',
+  'worker-src',
+  'manifest-src',
+  'media-src',
+  'object-src',
+];
+for (const directiveName of fetchDirectives) {
+  const sources = cspHeader.match(new RegExp(`(?:^|;)\\s*${directiveName}\\s+([^;]+)`, 'i'))?.[1] || '';
+  if (!sources) fail(`Directive Apache ${directiveName} absente`);
+  if (/(?:https?:|wss?:|\*)/i.test(sources)) {
+    fail(`La directive Apache ${directiveName} autorise encore une origine tierce`);
+  }
+}
 for (const directive of [
   "script-src-attr 'none'",
   "object-src 'none'",
@@ -106,6 +126,7 @@ for (const directive of [
 let executableInlineScripts = 0;
 let metaPolicies = 0;
 let redirectFallbacks = 0;
+let thirdPartyResources = 0;
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
   const elements = scanHtmlElements(html);
@@ -126,7 +147,38 @@ for (const file of htmlFiles) {
     if (!/(?:^|;)\s*script-src-attr\s+'none'(?:;|$)/i.test(metaContent)) {
       fail(`${relative(ROOT, file)}: meta CSP n'interdit pas les attributs de script`);
     }
+    for (const directiveName of fetchDirectives) {
+      const sources = metaContent.match(new RegExp(`(?:^|;)\\s*${directiveName}\\s+([^;]+)`, 'i'))?.[1] || '';
+      if (!sources || /(?:https?:|wss?:|\*)/i.test(sources)) {
+        fail(`${relative(ROOT, file)}: meta CSP ${directiveName} autorise une origine tierce`);
+      }
+    }
     metaPolicies += 1;
+  }
+
+  const resourceAttributes = new Map([
+    ['script', ['src']],
+    ['iframe', ['src']],
+    ['img', ['src', 'srcset']],
+    ['source', ['src', 'srcset']],
+    ['video', ['src', 'poster']],
+    ['audio', ['src']],
+    ['track', ['src']],
+    ['embed', ['src']],
+    ['object', ['data']],
+    ['input', ['src']],
+    ['link', ['href']],
+  ]);
+  for (const element of elements) {
+    const attributes = resourceAttributes.get(element.name) || [];
+    for (const attribute of attributes) {
+      const value = element.attributes.get(attribute) || '';
+      const absoluteUrls = value.match(/(?:https?:)?\/\/[^\s,]+/gi) || [];
+      if (absoluteUrls.some((url) => !/^(?:https:)?\/\/l0g\.fr(?:\/|$)/i.test(url))) {
+        thirdPartyResources += 1;
+        fail(`${relative(ROOT, file)}: ressource tierce chargée automatiquement (${element.name} ${attribute})`);
+      }
+    }
   }
 
   for (const element of elements.filter((candidate) => candidate.name === 'script')) {
@@ -146,4 +198,5 @@ process.stdout.write(`${JSON.stringify({
   executableInlineScripts,
   metaPolicies,
   redirectFallbacks,
+  thirdPartyResources,
 })}\n`);

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '17 juillet 2026';
+const updated = '22 juillet 2026';
 ---
 
 <BaseLayout
@@ -15,7 +15,7 @@ const updated = '17 juillet 2026';
     </h1>
     <p class="rgpd-lede">
       Cette page identifie l'opérateur de l0g et décrit les traitements de données liés à la
-      consultation du site, aux composants tiers et aux prises de contact.
+      consultation du site, à la mesure locale de son usage et aux prises de contact.
     </p>
     <span class="rgpd-meta">Dernière mise à jour : {updated}</span>
   </section>
@@ -104,42 +104,13 @@ const updated = '17 juillet 2026';
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// service tiers : TradingView</p>
-    <p class="m-p">
-      Certaines pages intègrent des graphiques, cotations, comparateurs, heatmaps ou calendriers
-      fournis par <strong class="text-bright">TradingView, Inc.</strong>, établi aux États-Unis.
-    </p>
-    <div class="leak-list">
-      <article class="leak card" style="--c: var(--color-amber)">
-        <span class="leak-h">Connexion directe depuis le navigateur</span>
-        <p class="leak-d">
-          Au chargement d'une page concernée, le navigateur contacte les domaines de TradingView,
-          notamment <code class="rgpd-code">s3.tradingview.com</code>,
-          <code class="rgpd-code">*.tradingview.com</code> et
-          <code class="rgpd-code">*.tradingview-widget.com</code>. TradingView peut recevoir
-          l'adresse IP, le user-agent, la page consultée et des identifiants issus de cookies ou
-          du stockage local. Ces opérations peuvent impliquer un transfert de données vers les
-          États-Unis.
-        </p>
-        <p class="leak-note">
-          TradingView décrit ses traitements, leurs bases juridiques, les destinataires, les
-          transferts et les modalités d'exercice des droits dans sa
-          <a class="link-term" href="https://www.tradingview.com/privacy-policy/" rel="noopener nofollow">politique de confidentialité</a>.
-          Pour empêcher cette connexion, vous pouvez bloquer les scripts tiers ou ne pas consulter
-          les pages qui comportent ces composants.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="mt-14" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// cookies &amp; stockage local</p>
     <ul class="nope">
       <li>l0g ne dépose aucun cookie et n'intègre aucune régie publicitaire, aucun pixel de suivi ni aucun réseau social.</li>
       <li>La préférence de thème est enregistrée dans le stockage local du navigateur sous la clé <code class="rgpd-code">l0g-theme</code>. Elle reste sur l'appareil et peut être supprimée dans les réglages du navigateur.</li>
       <li>Aucun script de mesure d'audience tiers : la fréquentation est mesurée localement à partir des journaux serveur.</li>
       <li>Les polices et la recherche sont servies par l0g ; la recherche s'exécute dans le navigateur.</li>
-      <li>Les composants TradingView peuvent utiliser leurs propres cookies ou mécanismes de stockage, conformément à leur politique.</li>
+      <li>Aucun script, iframe, image, police ou widget tiers n'est chargé automatiquement par les pages de l0g.</li>
     </ul>
   </section>
 
@@ -159,8 +130,8 @@ const updated = '17 juillet 2026';
   <section class="mt-14" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// liens externes &amp; décisions automatisées</p>
     <div class="rgpd-note">
-      Les sites externes ne sont contactés que lorsque vous cliquez sur un lien, sauf pour les
-      composants TradingView décrits ci-dessus. l0g ne met en œuvre ni profilage individuel ni
+      Les sites externes ne sont contactés que lorsque vous choisissez de suivre un lien.
+      l0g ne met en œuvre ni profilage individuel ni
       décision automatisée produisant un effet juridique ou similaire sur ses visiteurs.
     </div>
   </section>

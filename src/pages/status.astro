@@ -92,7 +92,7 @@ const endpoints = [
 
 const trustItems = [
   { label: 'build statique', href: '/terminal/' },
-  { label: 'zéro tracker maison', href: '/rgpd/' },
+  { label: 'zéro tracker', href: '/rgpd/' },
   { label: 'api publique', href: '/api/' },
   { label: 'corpus machine', href: '/llms.txt' },
 ];
@@ -213,9 +213,9 @@ const jsonLd = {
         <ul>
           <li>Site généré statiquement : pas de session applicative côté l0g.fr.</li>
           <li>Recherche locale Pagefind, servie depuis le domaine.</li>
-          <li>CSP Apache déclarée : self par défaut, TradingView explicitement isolé.</li>
-          <li>Aucun cookie ni tracker maison.</li>
-          <li>Les embeds TradingView restent les seuls scripts tiers fonctionnels.</li>
+          <li>CSP Apache déclarée : scripts, connexions, images et polices limités au domaine l0g.</li>
+          <li>Aucun cookie ni tracker.</li>
+          <li>Aucune ressource tierce chargée automatiquement ; les liens externes ne sont contactés qu'au clic.</li>
         </ul>
       </div>
       <div class="integrity-note">

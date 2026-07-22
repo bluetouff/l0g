@@ -75,7 +75,7 @@ Le choc géopolitique n’explique pourtant pas tout. La demande chinoise de car
 
 L’essor des poids lourds électriques ou au GNL, le rail à grande vitesse et la faiblesse persistante de l’immobilier réduisent aussi la croissance du diesel et de l’essence. Dès 2024, les importations de brut avaient diminué de **1,9 %**, première baisse annuelle hors Covid depuis deux décennies, avant de rebondir en 2025 sous l’effet du raffinage et du stockage.
 
-La bonne lecture est donc celle d’un **choc cyclique amplifié par une tendance structurelle**. La réouverture d’Ormuz et le retour progressif des cargaisons du Golfe peuvent provoquer un rebond des arrivages. Les flux asiatiques remontaient déjà en juin, mais les acheteurs chinois restaient prudents face aux prix élevés. Pour suivre la normalisation du marché plutôt qu’une photographie mensuelle, le [dashboard commodities](/hard-commodities/) fournit les principaux prix énergétiques à jour.
+La bonne lecture est donc celle d’un **choc cyclique amplifié par une tendance structurelle**. La réouverture d’Ormuz et le retour progressif des cargaisons du Golfe peuvent provoquer un rebond des arrivages. Les flux asiatiques remontaient déjà en juin, mais les acheteurs chinois restaient prudents face aux prix élevés. La méthode de suivi des prix, stocks et courbes énergétiques est détaillée dans notre guide pour [lire le marché pétrolier](/guides/lire-le-marche-petrolier/).
 
 ## Le rapport de force a changé
 

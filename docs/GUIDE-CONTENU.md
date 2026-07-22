@@ -2,7 +2,7 @@
 
 Guide pratique pour publier sans perdre les garde-fous éditoriaux et techniques.
 Trois types de contenu : les **articles** (le journal), les **pages** (contenu
-fixe, ex. « à propos »), et la **colonne de droite** (liens, mini-graphe, about).
+fixe, ex. « à propos »), et la **colonne de droite** (liens et about).
 
 La référence normative est
 [`l0g Editorial Protocol 1.0`](../releases/l0g-editorial-protocol-1.0.0/README.md).
@@ -18,7 +18,7 @@ src/
 ├── content/posts/      → les articles (.md ou .mdx)
 ├── pages/              → les pages fixes (.astro)
 ├── config/sidebar.ts   → le contenu de la colonne de droite
-└── components/         → les composants réutilisables (graphes, widgets)
+└── components/         → les composants réutilisables et infographies locales
 ```
 
 Le flux de publication, en une phrase : tu écris en local, tu prévisualises, tu
@@ -39,8 +39,8 @@ src/content/posts/private-credit-stress.md   →   https://l0g.fr/posts/private-
 Choisis l'extension selon le besoin :
 
 - **`.md`** : texte seul (le plus simple).
-- **`.mdx`** : texte + graphes/widgets interactifs. À utiliser dès que tu veux un
-  graphe TradingView dans l'article (voir section 2).
+- **`.mdx`** : texte + composants Astro locaux. À utiliser pour une infographie
+  inline ou un composant interne (voir section 2).
 
 ### 1.2 Le frontmatter (obligatoire en tête de fichier)
 
@@ -104,48 +104,28 @@ d'une source.
 
 ---
 
-## 2. Ajouter un graphe ou un widget dans un article
+## 2. Ajouter une infographie sans appel tiers
 
-**Le fichier doit être en `.mdx`** (pas `.md`). En haut du fichier, sous le
-frontmatter, importe les composants une seule fois :
+La règle est simple : le navigateur ne doit contacter aucun domaine tiers au
+chargement. Utilise l'une de ces formes :
 
-```mdx
-import TradingViewChart from '../../components/TradingViewChart.astro';
-import MiniSymbol from '../../components/MiniSymbol.astro';
+- SVG inline dans un fichier `.mdx` ;
+- composant Astro interne sans requête réseau ;
+- fichier SVG, PNG ou WebP placé dans `public/infographies/`.
+
+Exemple Markdown :
+
+```markdown
+<figure>
+  <img src="/infographies/mon-graphique.svg" alt="Description factuelle du graphique" />
+  <figcaption>Source : organisme, série, date et calcul éventuel.</figcaption>
+</figure>
 ```
 
-Ensuite, place-les n'importe où dans le texte.
-
-### 2.1 Graphe complet (Advanced Chart)
-
-```mdx
-<TradingViewChart symbol="BINANCE:BTCUSDT" interval="240" caption="BTC/USDT — 4h" />
-```
-
-Options disponibles :
-
-| Prop       | Défaut             | Exemple                                  |
-|------------|--------------------|------------------------------------------|
-| `symbol`   | `BINANCE:BTCUSDT`  | `NASDAQ:NVDA`, `FRED:GDP`, `TVC:DXY`     |
-| `interval` | `D` (journalier)   | `60`, `240` (minutes), `D`, `W`, `M`     |
-| `height`   | `480`              | `360`, `600`                             |
-| `caption`  | (aucune)           | `"Texte sous le graphe"`                 |
-
-Le `symbol` suit le format `BOURSE:TICKER`. Pour le trouver : cherche l'actif sur
-tradingview.com, le symbole complet est affiché en haut du graphe.
-
-### 2.2 Mini-aperçu (compact)
-
-```mdx
-<MiniSymbol symbol="TVC:US10Y" dateRange="12M" />
-```
-
-`dateRange` accepte `1D`, `1M`, `3M`, `12M`, `60M`, `ALL`.
-
-### 2.3 Le bandeau de cotations en haut de page
-
-Il est global (toutes les pages). Pour changer les actifs affichés, édite la
-liste `symbols` dans `src/components/TickerTape.astro`.
+Chaque visuel doit indiquer sa source, sa date, son unité et, si nécessaire, la
+méthode de calcul. Les scripts externes, iframes, polices distantes et images
+chargées depuis un domaine tiers sont interdits. Le contrôle de sécurité du build
+échoue si une ressource HTTP(S) tierce est chargée automatiquement.
 
 ---
 
@@ -173,20 +153,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 La colonne de droite, le header et le footer s'ajoutent automatiquement (gérés
 par `BaseLayout`).
 
-### Page fixe AVEC un graphe
+### Page fixe avec une infographie locale
 
 Les pages `.astro` peuvent importer les mêmes composants :
 
 ```astro
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TradingViewChart from '../components/TradingViewChart.astro';
 ---
 
 <BaseLayout title="Watchlist">
   <article class="prose max-w-2xl">
     <h2>Watchlist</h2>
-    <TradingViewChart symbol="BINANCE:ETHUSDT" interval="D" height={520} />
+    <img src="/infographies/watchlist.svg" alt="Évolution de la watchlist" />
   </article>
 </BaseLayout>
 ```
@@ -208,9 +187,6 @@ Tout le contenu de la colonne se règle dans **un seul fichier** :
 `src/config/sidebar.ts`.
 
 ```ts
-// Mini-graphe en haut de colonne (desktop). null = pas de graphe.
-export const sidebarMarketSymbol = 'BINANCE:BTCUSDT';
-
 // Liens listés dans la colonne.
 export const sidebarLinks = [
   { label: 'US macro dashboard', href: 'https://us.l0g.fr' },
@@ -223,11 +199,10 @@ export const sidebarAbout = "Journal de Bluetouff. Macro, crypto, finance...";
 
 ### Comportement desktop / mobile
 
-- **Desktop (écran large)** : colonne collante à droite du texte, avec le
-  mini-graphe, les liens et le about.
+- **Desktop (écran large)** : colonne collante à droite du texte, avec les liens
+  et le about.
 - **Mobile** : la colonne disparaît en tant que colonne. Les **liens** et le
-  **about** réapparaissent en bloc compact sous l'article (le mini-graphe, lui,
-  est volontairement masqué pour ne pas alourdir la page mobile).
+  **about** réapparaissent en bloc compact sous l'article.
 
 Ce comportement est géré par les classes responsive de Tailwind (préfixe `lg:`),
 il n'y a pas de fichier `mobile.css` séparé : les styles de base sont déjà ceux
@@ -301,8 +276,7 @@ reste en ligne. Cette garantie fail-closed est active en production.
 - **Images** : pose-les dans `public/` (ex. `public/img/schema.png`) et
   référence-les par `/img/schema.png`. Elles ne sont pas optimisées
   automatiquement dans cette config, garde-les raisonnables.
-- **Symbole TradingView introuvable** : si un graphe reste blanc, c'est presque
-  toujours un `symbol` mal orthographié. Vérifie le format `BOURSE:TICKER` sur
-  tradingview.com.
+- **Visuel absent** : vérifie que le fichier est bien placé dans `public/`, que
+  son chemin commence par `/` et que son texte alternatif décrit le contenu.
 - **Avant de pousser**, un dernier `npm run build` en local attrape les erreurs
   avant même GitHub.
