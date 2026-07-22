@@ -230,7 +230,11 @@ sudo systemctl enable --now l0g-deploy.timer
 sudo systemctl start l0g-deploy.service
 
 # Apache
-sudo a2enmod ssl headers deflate expires rewrite
+sudo a2enmod ssl headers deflate expires rewrite auth_basic authn_file
+sudo apt-get install apache2-utils
+sudo htpasswd -cB /etc/apache2/l0g-stats.htpasswd bluetouff
+sudo chown root:www-data /etc/apache2/l0g-stats.htpasswd
+sudo chmod 0640 /etc/apache2/l0g-stats.htpasswd
 sudo cp deploy/l0g.fr.apache.conf /etc/apache2/sites-available/
 sudo a2ensite l0g.fr.apache.conf
 sudo certbot --apache -d l0g.fr -d www.l0g.fr   # ou certonly puis reload

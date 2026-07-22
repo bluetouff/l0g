@@ -17,11 +17,12 @@ ACTIVE="${ENABLED}/l0g.fr-hardened.conf"
 LEGACY_HTTP="${ENABLED}/l0g.fr.conf"
 LEGACY_HTTPS="${ENABLED}/l0g.fr-le-ssl.conf"
 APACHECTL="/usr/sbin/apache2ctl"
+HTPASSWD="/etc/apache2/l0g-stats.htpasswd"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 BACKUP_DIR="/var/backups/l0g-apache-vhost-${STAMP}"
 BACKUP_READY=false
 
-for command in cat chmod cmp cp curl date grep install ln mkdir mv readlink rm systemctl; do
+for command in cat chmod cmp cp curl date grep install ln mkdir mv readlink rm stat systemctl; do
   command -v "$command" >/dev/null 2>&1 || {
     echo "Commande requise absente: $command" >&2
     exit 1
@@ -33,6 +34,18 @@ done
 [ -L "$LEGACY_HTTPS" ] || { echo "Vhost HTTPS historique absent" >&2; exit 1; }
 [ -f /etc/letsencrypt/live/l0g.fr/fullchain.pem ]
 [ -f /etc/letsencrypt/live/l0g.fr/privkey.pem ]
+[ -s "$HTPASSWD" ] || {
+  echo "Fichier d'authentification stats absent ou vide: $HTPASSWD" >&2
+  exit 1
+}
+[ "$(stat -c '%U:%G' "$HTPASSWD")" = "root:www-data" ] || {
+  echo "$HTPASSWD doit appartenir à root:www-data" >&2
+  exit 1
+}
+[ "$(stat -c '%a' "$HTPASSWD")" = "640" ] || {
+  echo "$HTPASSWD doit être en mode 0640" >&2
+  exit 1
+}
 
 mkdir -p "$BACKUP_DIR"
 chmod 0700 "$BACKUP_DIR"
@@ -97,7 +110,8 @@ if printf '%s\n' "$HEADERS" | grep -Eiq "^Content-Security-Policy:.*script-src[^
   exit 1
 fi
 printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/)" = 200 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/)" = 401 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/index.html)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp)" = 405 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/usage)" = 200 ]
 

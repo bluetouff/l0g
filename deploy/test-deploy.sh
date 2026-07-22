@@ -8,6 +8,15 @@ trap 'rm -rf -- "$TMP"' EXIT
 bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh" \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 
+grep -Fq 'AuthUserFile /etc/apache2/l0g-stats.htpasswd' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'Require valid-user' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'Header unset Cache-Control' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'Cache-Control "private, no-store, max-age=0"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'https://l0g.fr/stats/)" = 401' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+
 REMOTE="${TMP}/remote.git"
 SOURCE="${TMP}/source"
 BUILT="${TMP}/built"
