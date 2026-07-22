@@ -11,6 +11,8 @@ bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh" \
 grep -Fq 'AuthUserFile /etc/apache2/l0g-stats.htpasswd' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'Require valid-user' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq '<LocationMatch "^/stats(?:/|$)">' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'Header unset Cache-Control' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'Cache-Control "private, no-store, max-age=0"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"

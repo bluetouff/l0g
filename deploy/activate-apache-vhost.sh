@@ -136,6 +136,7 @@ fi
 printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/index.html)" = 401 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp)" = 405 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/usage)" = 200 ]
 
