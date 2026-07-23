@@ -1,0 +1,103 @@
+---
+import SearchForm from './SearchForm.astro';
+
+interface EntryPoint {
+  kind: string;
+  label: string;
+  detail: string;
+  href: string;
+}
+
+interface Topic {
+  label: string;
+  question: string;
+  entryPoints: EntryPoint[];
+}
+
+interface Props {
+  topic: Topic;
+  analysisCount: number;
+}
+
+const { topic, analysisCount } = Astro.props;
+---
+
+<div class="topic-sidebar">
+  <section>
+    <h2>// dans ce dossier</h2>
+    <p class="question">{topic.question}</p>
+    <p class="count">{analysisCount} analyse{analysisCount > 1 ? 's' : ''} datée{analysisCount > 1 ? 's' : ''}</p>
+  </section>
+
+  <section class="topic-entry-points">
+    <h2>// commencer ici</h2>
+    {topic.entryPoints.map((entry) => (
+      <a href={entry.href}>
+        <span>{entry.kind}</span>
+        <strong>{entry.label}</strong>
+        <small>{entry.detail}</small>
+      </a>
+    ))}
+  </section>
+
+  <section>
+    <h2>// recherche</h2>
+    <SearchForm compact />
+  </section>
+
+  <a class="all-topics" href="/sujets/">← Tous les sujets</a>
+</div>
+
+<style>
+  .topic-sidebar { display: grid; gap: 1.45rem; }
+  .topic-sidebar h2 {
+    margin-bottom: 0.65rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  .question { color: var(--color-paper); font-size: 0.88rem; line-height: 1.55; }
+  .count {
+    margin-top: 0.65rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .topic-entry-points { display: grid; gap: 0.5rem; }
+  .topic-entry-points h2 { margin-bottom: 0.1rem; }
+  .topic-entry-points a {
+    display: block;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    padding: 0.75rem;
+    transition: border-color 0.16s, background 0.16s;
+  }
+  .topic-entry-points a:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
+    background: color-mix(in srgb, var(--color-signal) 6%, transparent);
+  }
+  .topic-entry-points span,
+  .topic-entry-points strong,
+  .topic-entry-points small { display: block; }
+  .topic-entry-points span {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .topic-entry-points strong { margin-top: 0.25rem; color: var(--color-bright); font-size: 0.83rem; }
+  .topic-entry-points small { margin-top: 0.25rem; color: var(--color-muted); font-size: 0.7rem; line-height: 1.45; }
+  .all-topics {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>

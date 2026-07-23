@@ -1,12 +1,16 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleNavigator from '../../components/ArticleNavigator.astro';
+import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
+import { topics, postMatchesTopic } from '../../config/topics.ts';
+import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
 import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evidence.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
@@ -20,7 +24,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const dateLabel = post.data.pubDate.toLocaleDateString('fr-FR', {
   day: '2-digit',
@@ -203,6 +207,51 @@ const trustItems = [
   { label: 'aucun tracker', href: '/rgpd/' },
   { label: 'partage sans script tiers' },
 ];
+const normalizedArticleText = `${post.data.title} ${post.data.description} ${post.body ?? ''}`
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLocaleLowerCase('fr-FR');
+const linkedGlossarySlugs = Array.from(
+  (post.body ?? '').matchAll(/\/glossaire\/([a-z0-9-]+)\/?/gi),
+  (match) => match[1].toLocaleLowerCase('fr-FR')
+);
+const mentionedGlossarySlugs = glossaryEntries
+  .filter((entry) => {
+    const token = entry.sigle
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase('fr-FR')
+      .trim();
+    if (token.length < 3 || token.length > 32) return false;
+    return normalizedArticleText.includes(token);
+  })
+  .sort((a, b) => b.sigle.length - a.sigle.length)
+  .map((entry) => entry.slug);
+const articleTerms = Array.from(new Set([...linkedGlossarySlugs, ...mentionedGlossarySlugs]))
+  .map((slug) => glossaryEntryBySlug.get(slug))
+  .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+  .slice(0, 2)
+  .map((entry) => ({
+    label: entry.sigle,
+    name: entry.nom,
+    definition: entry.def,
+    href: entry.url,
+  }));
+const relatedTopics = topics
+  .filter((topic) => postMatchesTopic(post.data.tags, topic))
+  .slice(0, 3)
+  .map((topic) => ({ label: topic.label, href: `/sujet/${topic.slug}/` }));
+const articleHeadings = [
+  { depth: 2, slug: 'analyse-complete', text: 'Analyse complète' },
+  ...headings,
+];
+const quickFact = post.data.quickTake?.fact ?? post.data.description;
+const quickImportance = post.data.quickTake?.importance
+  ?? (relatedTopics[0]
+    ? `L’analyse replace ce signal dans le dossier « ${relatedTopics[0].label} » et remonte aux mécanismes et aux sources qui permettent de le vérifier.`
+    : 'L’analyse relie le signal observé à ses mécanismes, à ses sources et à ses limites de lecture.');
+const quickUncertainty = post.data.quickTake?.uncertainty
+  ?? `Les faits et les chiffres sont datés du ${dateLabel.toLocaleLowerCase('fr-FR')}. Les scénarios et les zones non documentées restent explicitement séparés des faits établis.`;
 ---
 
 <BaseLayout
@@ -212,6 +261,13 @@ const trustItems = [
   ogImage={ogImage}
   alternateLinks={alternateLinks}
 >
+  <ArticleNavigator
+    slot="sidebar"
+    headings={articleHeadings}
+    terms={articleTerms}
+    topics={relatedTopics}
+  />
+
   <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
 
   <div class="read-progress" aria-hidden="true"><span></span></div>
@@ -224,7 +280,12 @@ const trustItems = [
         {post.data.title}
       </h1>
 
-      <p class="post-lede mt-5">{post.data.description}</p>
+      <ArticleQuickTake
+        fact={quickFact}
+        importance={quickImportance}
+        uncertainty={quickUncertainty}
+        readingTime={rt}
+      />
 
       <div class="post-meta mono-label mt-6">
         <a href="/about/#bluetouff" rel="author" class="link-term">Par Bluetouff</a>
@@ -275,6 +336,15 @@ const trustItems = [
       </div>
       <div class="post-rule" aria-hidden="true"></div>
     </header>
+
+    <ArticleNavigator
+      headings={articleHeadings}
+      terms={articleTerms}
+      topics={relatedTopics}
+      variant="inline"
+    />
+
+    <h2 id="analyse-complete" class="analysis-start font-display">Analyse complète</h2>
 
     <div class="prose">
       <Content />
@@ -409,13 +479,7 @@ const trustItems = [
 
     /* En-tête d'article */
     .post-kicker { color: var(--color-signal); }
-    .post-lede {
-      font-size: 1.18rem;
-      line-height: 1.6;
-      color: var(--color-paper);
-      border-left: 2px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
-      padding-left: 0.9rem;
-    }
+    :global(.post-head .quick-take) { margin-top: 1.35rem; margin-bottom: 1.35rem; }
     .post-meta {
       display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
       color: var(--color-muted);
@@ -426,6 +490,13 @@ const trustItems = [
     .post-rule {
       margin-top: 1.5rem; height: 2px; width: 72px; border-radius: 2px;
       background: linear-gradient(90deg, var(--color-signal), transparent);
+    }
+    .analysis-start {
+      margin: 0 0 1.5rem;
+      scroll-margin-top: 1.5rem;
+      color: var(--color-bright);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: 0.015em;
     }
     .proof-strip {
       display: flex;

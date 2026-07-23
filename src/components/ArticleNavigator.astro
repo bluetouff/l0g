@@ -1,0 +1,208 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Term {
+  label: string;
+  name: string;
+  definition: string;
+  href: string;
+}
+
+interface RelatedTopic {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  headings: Heading[];
+  terms?: Term[];
+  topics?: RelatedTopic[];
+  variant?: 'sidebar' | 'inline';
+}
+
+const {
+  headings,
+  terms = [],
+  topics = [],
+  variant = 'sidebar',
+} = Astro.props;
+const visibleHeadings = headings.filter((heading) => heading.depth === 2).slice(0, 16);
+---
+
+{variant === 'inline' ? (
+  <details class="article-navigator inline" data-pagefind-ignore>
+    <summary>
+      <span>Sommaire et notions</span>
+      <small>{visibleHeadings.length} étapes · {terms.length} notion{terms.length > 1 ? 's' : ''}</small>
+    </summary>
+    <div class="navigator-body">
+      {visibleHeadings.length > 0 && (
+        <nav aria-label="Sommaire de l’analyse">
+          <h2>// dans cette analyse</h2>
+          <ol>
+            {visibleHeadings.map((heading, index) => (
+              <li><a href={`#${heading.slug}`}><span>{String(index + 1).padStart(2, '0')}</span>{heading.text}</a></li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      {terms.length > 0 && (
+        <section class="terms">
+          <h2>// deux notions à connaître</h2>
+          {terms.map((term) => (
+            <a href={term.href}>
+              <strong>{term.label}</strong>
+              <span>{term.name}</span>
+              <small>{term.definition}</small>
+            </a>
+          ))}
+        </section>
+      )}
+    </div>
+  </details>
+) : (
+  <div class="article-navigator sidebar" data-pagefind-ignore>
+    {visibleHeadings.length > 0 && (
+      <nav aria-label="Sommaire de l’analyse">
+        <h2>// dans cette analyse</h2>
+        <ol>
+          {visibleHeadings.map((heading, index) => (
+            <li><a href={`#${heading.slug}`}><span>{String(index + 1).padStart(2, '0')}</span>{heading.text}</a></li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    {terms.length > 0 && (
+      <section class="terms">
+        <h2>// deux notions à connaître</h2>
+        {terms.map((term) => (
+          <a href={term.href}>
+            <strong>{term.label}</strong>
+            <span>{term.name}</span>
+            <small>{term.definition}</small>
+          </a>
+        ))}
+      </section>
+    )}
+    {topics.length > 0 && (
+      <section class="related-topics">
+        <h2>// dossiers liés</h2>
+        {topics.map((topic) => <a href={topic.href}>{topic.label}<span aria-hidden="true">›</span></a>)}
+      </section>
+    )}
+    <a class="back-journal" href="/">← Toutes les analyses</a>
+  </div>
+)}
+
+<style>
+  .article-navigator h2 {
+    margin-bottom: 0.65rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .sidebar { display: grid; gap: 1.35rem; }
+  .article-navigator ol { display: grid; gap: 0.12rem; margin: 0; padding: 0; list-style: none; }
+  .article-navigator ol a {
+    display: grid;
+    grid-template-columns: 1.6rem 1fr;
+    gap: 0.4rem;
+    border-radius: 6px;
+    padding: 0.28rem 0.35rem;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+  .article-navigator ol a:hover { color: var(--color-bright); background: color-mix(in srgb, var(--color-signal) 6%, transparent); }
+  .article-navigator ol a > span { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.6rem; }
+  .terms { display: grid; gap: 0.5rem; }
+  .terms h2 { margin-bottom: 0.1rem; }
+  .terms > a {
+    display: block;
+    border: 1px solid var(--color-line);
+    border-radius: 9px;
+    padding: 0.7rem;
+  }
+  .terms > a:hover { border-color: color-mix(in srgb, var(--color-signal) 45%, var(--color-line)); }
+  .terms strong,
+  .terms span,
+  .terms small { display: block; }
+  .terms strong { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.72rem; }
+  .terms span { margin-top: 0.12rem; color: var(--color-bright); font-size: 0.78rem; }
+  .terms small {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 0.35rem;
+    color: var(--color-muted);
+    font-size: 0.68rem;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  .related-topics { display: grid; gap: 0.25rem; }
+  .related-topics h2 { margin-bottom: 0.25rem; }
+  .related-topics a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.45rem 0;
+    color: var(--color-paper);
+    font-size: 0.76rem;
+  }
+  .related-topics a span { color: var(--color-signal); }
+  .back-journal {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .inline {
+    display: block;
+    margin: 0 0 2rem;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-surface) 48%, transparent);
+  }
+  .inline > summary {
+    display: flex;
+    min-height: 3.2rem;
+    cursor: pointer;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0.9rem;
+    color: var(--color-bright);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .inline > summary::-webkit-details-marker { display: none; }
+  .inline > summary::after { content: '+'; color: var(--color-signal); font-size: 1rem; }
+  .inline[open] > summary::after { content: '−'; }
+  .inline > summary small { margin-left: auto; color: var(--color-muted); font-size: 0.58rem; font-weight: 500; }
+  .navigator-body {
+    display: grid;
+    gap: 1.2rem;
+    border-top: 1px solid var(--color-line);
+    padding: 0.9rem;
+  }
+  @media (min-width: 1024px) {
+    .inline { display: none; }
+  }
+  @media (max-width: 520px) {
+    .inline > summary small { display: none; }
+  }
+</style>

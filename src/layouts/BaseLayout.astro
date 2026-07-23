@@ -1,11 +1,11 @@
 ---
 import '../styles/global.css';
 import Sidebar from '../components/Sidebar.astro';
-import SidebarMobile from '../components/SidebarMobile.astro';
+import SiteNavigation from '../components/SiteNavigation.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import WebMCPTools from '../components/WebMCPTools.astro';
 import CspMeta from '../components/CspMeta.astro';
 import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../config/entities.ts';
-import { methodologyPages, methodologyUrl } from '../config/methodology.ts';
 import { buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 
@@ -48,10 +48,9 @@ const fullTitle = seo.fullTitle;
 const metaDescription = seo.description;
 const socialImageAlt = ogImageAlt ?? `${fullTitle} — carte sociale l0g.fr`;
 const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+const hasContextSidebar = Astro.slots.has('sidebar');
 
-// --- Structured data : entite editrice du site (presente sur toutes les pages) ---
-// Honnete par construction : decrit l'editeur et le site, sans SearchAction
-// (la sitelinks search box de Google est depreciee depuis novembre 2024).
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const siteJsonLd = {
   '@context': 'https://schema.org',
@@ -69,37 +68,6 @@ const siteJsonLd = {
     },
   ],
 };
-
-// --- Navigation (éditable ici) ---------------------------------------
-type Tab = { href: string; label: string; match?: string[] };
-
-const mainTabs: Tab[] = [
-  { href: '/', label: 'journal' },
-  { href: '/demarrer/', label: 'démarrer' },
-  { href: '/sujets/', label: 'sujets', match: ['/sujets', '/sujet'] },
-  { href: '/dashboards/', label: 'dashboards' },
-  { href: '/confluence/', label: 'confluence' },
-  { href: '/hebdo/', label: 'hebdo' },
-  { href: '/methodologie/', label: 'méthodologie' },
-  { href: '/glossaire/', label: 'glossaire' },
-  { href: '/guides/', label: 'guides' },
-  { href: '/recherche/', label: 'recherche' },
-];
-
-
-const path = Astro.url.pathname;
-const norm = (s: string) => (s.length > 1 ? s.replace(/\/$/, '') : s);
-function isActive(tab: Tab): boolean {
-  const p = norm(path);
-  if (tab.href === '/') return p === '/' || /^\/\d+$/.test(p) || p.startsWith('/posts');
-  const bases = (tab.match ?? [tab.href]).map(norm);
-  return bases.some((b) => p === b || p.startsWith(b + '/'));
-}
-function isCurrentHref(href: string): boolean {
-  const p = norm(path);
-  const h = norm(href);
-  return h === '/' ? p === '/' : p === h || p.startsWith(h + '/');
-}
 ---
 
 <!doctype html>
@@ -111,18 +79,17 @@ function isCurrentHref(href: string): boolean {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    {/* Thème clair/sombre : résolution avant le premier paint (anti-flash). */}
     <script>
-      // @ts-nocheck -- exécuté avant le rendu ; aucune API Astro côté client.
+      // @ts-nocheck
       (function () {
         try {
-          var k = 'l0g-theme';
-          var s = localStorage.getItem(k);
-          var t = (s === 'light' || s === 'dark')
-            ? s
+          var key = 'l0g-theme';
+          var stored = localStorage.getItem(key);
+          var theme = (stored === 'light' || stored === 'dark')
+            ? stored
             : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-          document.documentElement.setAttribute('data-theme', t);
-        } catch (e) {
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (error) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
       })();
@@ -132,9 +99,7 @@ function isCurrentHref(href: string): boolean {
     <meta name="description" content={metaDescription} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
-    {alternateLinks.map((link) => (
-      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
-    ))}
+    {alternateLinks.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
@@ -161,10 +126,8 @@ function isCurrentHref(href: string): boolean {
 
   <body>
     <div class="topbar" aria-hidden="true"></div>
-    <div class="mx-auto max-w-6xl px-5 py-7 sm:py-9">
-      <!-- Header -->
+    <div class="mx-auto max-w-6xl px-5 py-6 sm:py-8">
       <header>
-        <!-- Marque -->
         <div class="header-top">
           <a href="/" class="brand" aria-label="l0g, Lire les mécanismes avant qu’ils deviennent l’événement">
             <span class="brand-mark">
@@ -175,10 +138,6 @@ function isCurrentHref(href: string): boolean {
               <span class="brand-tag-line brand-tag-line-signal">Lire les mécanismes</span>
               <span class="brand-tag-line brand-tag-line-paper">avant qu’ils deviennent l’événement</span>
             </span>
-          </a>
-
-          <a href="/terminal/" class="header-terminal" aria-current={isCurrentHref('/terminal/') ? 'page' : undefined}>
-            <span aria-hidden="true">$</span> terminal
           </a>
 
           <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre" aria-pressed="false">
@@ -223,36 +182,17 @@ function isCurrentHref(href: string): boolean {
           </div>
         </div>
 
-        <!-- Menu principal : onglets -->
-        <nav class="main-nav mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-6" aria-label="Navigation principale">
-          {
-            mainTabs.map((t) => (
-              <a href={t.href} class="nav-tab" aria-current={isActive(t) ? 'page' : undefined}>
-                {t.label}
-              </a>
-            ))
-          }
-          <a href="/en/" class="nav-tab nav-en nav-right" aria-current={Astro.url.pathname.startsWith('/en') ? 'page' : undefined}>
-            en
-          </a>
-          <a href="/api/" class="nav-tab nav-api" aria-current={Astro.url.pathname.startsWith('/api') ? 'page' : undefined}>
-            api
-          </a>
-        </nav>
+        <SiteNavigation path={path} />
       </header>
 
-      <!-- Contenu (+ colonne de droite selon la prop sidebar) -->
       {sidebar ? (
         <div class="py-8 lg:grid lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-12">
           <main class="min-w-0">
             <slot />
-            <div class="lg:hidden">
-              <SidebarMobile />
-            </div>
           </main>
-          <aside class="hidden lg:block">
+          <aside class="hidden lg:block" aria-label={hasContextSidebar ? 'Navigation contextuelle' : 'À découvrir'}>
             <div class="sticky top-8">
-              <Sidebar />
+              {hasContextSidebar ? <slot name="sidebar" /> : <Sidebar />}
             </div>
           </aside>
         </div>
@@ -261,160 +201,10 @@ function isCurrentHref(href: string): boolean {
           <slot />
         </main>
       )}
-
     </div>
 
-    <!-- Footer pleine largeur -->
-    <footer class="site-footer">
-      <div class="footer-grad" aria-hidden="true"></div>
-      <div class="footer-inner mx-auto max-w-6xl px-5">
-        <nav class="footer-grid" aria-label="Pied de page">
-          <div class="foot-col footer-profile-col">
-            <a href="https://x.com/bluetouff" target="_blank" rel="me noopener" class="footer-profile-link" aria-label="Profil X de Bluetouff">
-              <img src="/bluetouff-x.png" alt="" width="192" height="192" loading="lazy" decoding="async" />
-            </a>
-          </div>
-          <div class="foot-col">
-            <h2 class="foot-h mono-label">// privacy first</h2>
-            <a href="/rgpd/" class="foot-link" aria-current={isCurrentHref('/rgpd/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-5"/></svg>
-              zéro tracker
-            </a>
-            <a href="/status/" class="foot-link" aria-current={isCurrentHref('/status/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h4l2-5 4 10 2-5h4"/><path d="M4 5h16v14H4z"/></svg>
-              statut vérifiable
-            </a>
-            <a href="/manifeste/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v4h4"/><path d="M8 12h8M8 16h6"/></svg>
-              refus de la capture
-            </a>
-            <a href="/.well-known/security.txt" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6z"/><path d="M12 8v5"/><circle cx="12" cy="16" r="0.7" fill="currentColor" stroke="none"/></svg>
-              security.txt
-            </a>
-          </div>
-          <div class="foot-col">
-            <h2 class="foot-h mono-label">// méthodologie</h2>
-            {
-              methodologyPages.map((page) => (
-                <a href={methodologyUrl(page.slug)} class="foot-link">
-                  <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15l3-4 3 2 5-7"/><path d="M16 6h2.5v2.5"/></svg>
-                  {page.shortLabel}
-                </a>
-              ))
-            }
-          </div>
-          <div class="foot-col">
-            <h2 class="foot-h mono-label">// comprendre</h2>
-            <a href="/visite-guidee/" class="foot-link" aria-current={isCurrentHref('/visite-guidee/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 15l2.2-5.2L16 7l-2.2 5.2z"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg>
-              visite guidée
-            </a>
-            <a href="/protocole-editorial/" class="foot-link" aria-current={isCurrentHref('/protocole-editorial/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1z"/><path d="M9 8h6M9 11h6M9 14h4"/></svg>
-              protocole éditorial
-            </a>
-            <a href="/changelog-editorial/" class="foot-link" aria-current={isCurrentHref('/changelog-editorial/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M5.6 5.6l2.1 2.1"/><path d="M16.3 16.3l2.1 2.1"/><path d="M3 12h3"/><path d="M18 12h3"/><circle cx="12" cy="12" r="4"/><path d="M10.8 12.2l0.9 0.9 1.8-2"/></svg>
-              changelog éditorial
-            </a>
-            <a href="/about/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.7" fill="currentColor" stroke="none"/></svg>
-              à propos
-            </a>
-            <a href="/methodologie/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5.2 9.1A1 1 0 0 0 5.7 20h12.6a1 1 0 0 0 .9-1.9L14 9V3"/></svg>
-              méthodologie
-            </a>
-            <a href="/backtests/" class="foot-link" aria-current={isCurrentHref('/backtests/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/><path d="M6 12l3-3 3 2 5-5"/></svg>
-              backtests
-            </a>
-            <a href="/glossaire/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H17a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a2 2 0 0 0-2 2V5.5z"/><line x1="8" y1="8" x2="14" y2="8"/></svg>
-              glossaire
-            </a>
-            <a href="/sources/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M7 7l-3 6h6z"/><path d="M17 7l-3 6h6z"/><path d="M8 21h8"/></svg>
-              sources primaires
-            </a>
-            <a href="/sites-reference/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1z"/></svg>
-              sites de référence
-            </a>
-          </div>
-          <div class="foot-col">
-            <h2 class="foot-h mono-label">// données &amp; outils</h2>
-            <a href="/donnees/" class="foot-link" aria-current={isCurrentHref('/donnees/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><path d="M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg>
-              données
-            </a>
-            <a href="/ressources-journalistes/" class="foot-link" aria-current={isCurrentHref('/ressources-journalistes/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/><circle cx="17" cy="15" r="1.5"/></svg>
-              ressources presse
-            </a>
-            <a href="/black-box/" class="foot-link" aria-current={isCurrentHref('/black-box/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M7 8h10"/><path d="M7 12h5"/><path d="M7 16h3"/><path d="M15 14l2 2 3-4"/></svg>
-              black box
-            </a>
-            <a href="/risk-diff/" class="foot-link" aria-current={isCurrentHref('/risk-diff/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 15l3-4 3 2 4-6"/><path d="M17 7h2.5v2.5"/><path d="M7 8h4"/><path d="M7 12h2"/></svg>
-              risk diff
-            </a>
-            <a href="/terminal/" class="foot-link" aria-current={isCurrentHref('/terminal/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10l3 2-3 2"/><path d="M13 15h3"/></svg>
-              terminal
-            </a>
-            <a href="/preuves/" class="foot-link" aria-current={isCurrentHref('/preuves/') ? 'page' : undefined}>
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/><path d="M8.5 8.5l1.2 1.2 2.2-2.4"/></svg>
-              preuves
-            </a>
-            <a href="/recherche/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
-              recherche
-            </a>
-            <a href="/api/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4c-2 0-2.5 1-2.5 3v1.8c0 1.2-1 2.2-2.2 2.2 1.2 0 2.2 1 2.2 2.2V17c0 2 .5 3 2.5 3"/><path d="M16 4c2 0 2.5 1 2.5 3v1.8c0 1.2 1 2.2 2.2 2.2-1.2 0-2.2 1-2.2 2.2V17c0 2-.5 3-2.5 3"/></svg>
-              api
-            </a>
-            <a href="/mcp/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7.7 7.7 10.6 16M16.3 7.7 13.4 16M8.4 6h7.2"/></svg>
-              mcp
-            </a>
-            <a href="/agents/" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4"/><rect x="6" y="7" width="12" height="9" rx="2"/><path d="M8 20h8"/><path d="M10 16v4M14 16v4"/><circle cx="10" cy="11.5" r="0.8" fill="currentColor" stroke="none"/><circle cx="14" cy="11.5" r="0.8" fill="currentColor" stroke="none"/></svg>
-              agents
-            </a>
-            <a href="/rss.xml" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a8 8 0 0 1 8 8"/><path d="M5 5a14 14 0 0 1 14 14"/><circle cx="5.6" cy="18.4" r="1.3" fill="currentColor" stroke="none"/></svg>
-              rss
-            </a>
-            <a href="https://github.com/bluetouff" rel="me noopener" class="foot-link">
-              <svg class="foot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
-              github
-            </a>
-          </div>
-        </nav>
+    <SiteFooter path={path} year={year} />
 
-        <div class="footer-bottom">
-          <a href="/" class="footer-wm" aria-label="l0g, accueil">l<span class="text-signal">0</span>g</a>
-          <p class="footer-ethos mono-label">l0g.fr &copy; {year} · privacy first · statique · auto-hébergé · aucun cookie · aucun tracker</p>
-          <div class="footer-mini" aria-label="Raccourcis machine">
-            <a href="/terminal/">terminal</a>
-            <a href="/status/">status</a>
-            <a href="/preuves/">preuves</a>
-            <a href="/donnees/">données</a>
-            <a href="/ressources-journalistes/">presse</a>
-            <a href="/agents/">agents</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="/rss.xml">rss</a>
-          </div>
-          <a href="/rgpd/" class="link-term mono-label footer-legal">mentions légales &amp; rgpd</a>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Le moteur Pagefind complet n'est utile que sur la page de résultats. -->
     {path.startsWith('/recherche') && (
       <>
         <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
@@ -423,98 +213,61 @@ function isCurrentHref(href: string): boolean {
       </>
     )}
 
-    {/* Bascule de thème : addEventListener (CSP script-src-attr 'none'). */}
     <script>
-      // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
+      // @ts-nocheck
       (function () {
-        var k = 'l0g-theme';
-        var btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-        function cur() {
+        var key = 'l0g-theme';
+        var button = document.getElementById('theme-toggle');
+        if (!button) return;
+        function currentTheme() {
           return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
         }
-        btn.setAttribute('aria-pressed', cur() === 'light' ? 'true' : 'false');
-        btn.addEventListener('click', function () {
-          var next = cur() === 'light' ? 'dark' : 'light';
+        button.setAttribute('aria-pressed', currentTheme() === 'light' ? 'true' : 'false');
+        button.addEventListener('click', function () {
+          var next = currentTheme() === 'light' ? 'dark' : 'light';
           document.documentElement.setAttribute('data-theme', next);
-          btn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
-          try { localStorage.setItem(k, next); } catch (e) {}
+          button.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+          try { localStorage.setItem(key, next); } catch (error) {}
         });
       })();
     </script>
-    <style>
-      .topbar, .footer-grad {
-        height: 2px; width: 100%;
-        background: linear-gradient(90deg,
-          transparent 0%,
-          color-mix(in srgb, var(--color-signal) 55%, transparent) 28%,
-          color-mix(in srgb, var(--color-accent) 50%, transparent) 50%,
-          color-mix(in srgb, var(--color-amber) 55%, transparent) 72%,
-          transparent 100%);
-        opacity: 0.7;
-      }
-      .topbar { height: 4px; }
-      .site-footer {
-        margin-top: 5rem;
-        background: radial-gradient(120% 120% at 50% 0%, color-mix(in srgb, var(--color-signal) 4%, transparent) 0%, transparent 60%);
-      }
-      .footer-inner { padding-top: 3rem; padding-bottom: 2.5rem; }
-      .footer-grid { display: grid; gap: 2rem 2.25rem; grid-template-columns: 1fr; }
-      @media (min-width: 560px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
-      @media (min-width: 920px) { .footer-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-      .foot-col { display: flex; flex-direction: column; gap: 0.55rem; }
-      .footer-profile-col { align-items: center; justify-content: flex-start; padding-top: 2.2rem; }
-      .footer-profile-link {
-        display: block;
-        width: clamp(6rem, 9vw, 7.4rem);
-        height: clamp(6rem, 9vw, 7.4rem);
-        opacity: 0.92;
-        transition: opacity 0.18s, filter 0.18s, transform 0.18s;
-      }
-      .footer-profile-link:hover {
-        opacity: 1;
-        filter: drop-shadow(0 0 14px color-mix(in srgb, var(--color-signal) 24%, transparent));
-        transform: translateY(-1px);
-      }
-      .footer-profile-link img { display: block; width: 100%; height: 100%; object-fit: contain; }
-      .foot-h { color: var(--color-signal); margin-bottom: 0.3rem; }
-      .foot-link {
-        display: inline-flex; align-items: center; gap: 0.5rem;
-        font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-muted);
-        text-decoration: none; width: fit-content; transition: color 0.15s;
-      }
-      .foot-link:hover,
-      .foot-link[aria-current="page"] { color: var(--color-bright); }
-      .foot-ico { width: 14px; height: 14px; flex: none; opacity: 0.6; transition: opacity 0.15s; }
-      .foot-link:hover .foot-ico { opacity: 1; }
-      .foot-link[aria-current="page"] .foot-ico { opacity: 1; color: var(--color-signal); }
-      .footer-bottom {
-        margin-top: 2.75rem; padding-top: 1.5rem;
-        border-top: 1px solid var(--color-line);
-        display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem;
-      }
-      .footer-wm { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-paper); text-decoration: none; }
-      .footer-ethos { color: var(--color-muted); }
-      .footer-mini {
-        display: inline-flex; flex-wrap: wrap; gap: 0.65rem;
-        font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-      .footer-mini a { color: var(--color-muted); transition: color 0.15s; }
-      .footer-mini a:hover { color: var(--color-signal); }
-      .footer-legal { margin-left: auto; }
-      @media (max-width: 520px) { .footer-legal { margin-left: 0; } }
 
-      /* En-tête : lockup de marque */
+    <style>
+      .topbar {
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(90deg, transparent, var(--color-signal), var(--color-accent), var(--color-amber), transparent);
+        opacity: 0.65;
+      }
       .header-top {
         display: grid;
-        grid-template-columns: auto auto auto minmax(0, 1fr);
-        grid-template-areas: "brand terminal theme signal";
+        grid-template-columns: auto auto minmax(0, 1fr);
+        grid-template-areas: "brand theme signal";
         align-items: center;
-        gap: 1.75rem;
+        gap: 1.4rem;
       }
-      .brand { grid-area: brand; display: inline-flex; align-items: center; gap: 0.7rem; min-width: 0; text-decoration: none; }
-      .brand-sep { width: 1px; height: 2.05rem; background: linear-gradient(180deg, transparent, var(--color-line-strong), transparent); }
+      .brand {
+        grid-area: brand;
+        display: inline-flex;
+        min-width: 0;
+        align-items: center;
+        gap: 0.7rem;
+        text-decoration: none;
+      }
+      .brand-mark {
+        display: inline-flex;
+        flex: none;
+        align-items: baseline;
+        white-space: nowrap;
+        font-size: clamp(1.45rem, 3vw, 2rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+      .brand-sep {
+        width: 1px;
+        height: 2rem;
+        background: linear-gradient(180deg, transparent, var(--color-line-strong), transparent);
+      }
       .brand-tag {
         display: flex;
         min-width: 0;
@@ -526,85 +279,66 @@ function isCurrentHref(href: string): boolean {
         font-weight: 520;
         letter-spacing: 0.035em;
         line-height: 1.16;
-        text-wrap: balance;
       }
       .brand-tag-line { display: block; white-space: nowrap; }
-      .brand-tag-line-signal {
-        color: var(--color-signal);
-        text-shadow: 0 0 16px color-mix(in srgb, var(--color-signal) 24%, transparent);
-      }
+      .brand-tag-line-signal { color: var(--color-signal); }
       .brand-tag-line-paper {
         color: var(--color-bright);
-        background: linear-gradient(90deg,
-          var(--color-signal),
-          var(--color-accent) 48%,
-          var(--color-amber));
-        -webkit-background-clip: text;
+        background: linear-gradient(90deg, var(--color-signal), var(--color-accent) 48%, var(--color-amber));
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 16%, transparent);
       }
-      @media (max-width: 680px) {
-        .brand { max-width: calc(100% - 3.1rem); }
-        .brand-tag { max-width: min(24rem, 62vw); font-size: 0.68rem; letter-spacing: 0.02em; }
-      }
-      @media (max-width: 430px) {
-        .brand { gap: 0.55rem; }
-        .brand-sep { height: 2.45rem; }
-        .brand-tag { max-width: calc(100vw - 8rem); }
-      }
-      @media (max-width: 340px) { .brand-sep, .brand-tag { display: none; } }
-      .header-terminal {
-        grid-area: terminal;
-        display: inline-flex; align-items: center; gap: 0.38rem;
-        margin-left: 0;
-        border: 1px solid color-mix(in srgb, var(--color-signal) 28%, var(--color-line));
-        border-radius: 999px;
-        padding: 0.32rem 0.72rem;
-        font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .theme-toggle {
+        grid-area: theme;
+        display: inline-flex;
+        width: 2.15rem;
+        height: 2.15rem;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--color-line);
+        border-radius: 8px;
         color: var(--color-muted);
-        background: color-mix(in srgb, var(--color-surface) 45%, transparent);
-        transition: color 0.16s, border-color 0.16s, background 0.16s;
+        background: transparent;
+        cursor: pointer;
       }
-      .header-terminal span { color: var(--color-signal); }
-      .header-terminal:hover,
-      .header-terminal[aria-current="page"] {
+      .theme-toggle:hover,
+      .theme-toggle:focus-visible {
+        border-color: var(--color-signal);
         color: var(--color-bright);
-        border-color: color-mix(in srgb, var(--color-signal) 58%, transparent);
-        background: color-mix(in srgb, var(--color-signal) 8%, transparent);
       }
-      .theme-toggle { grid-area: theme; }
-      @media (max-width: 760px) {
-        .header-top {
-          grid-template-columns: auto auto minmax(0, 1fr);
-          grid-template-areas: "brand theme signal";
-        }
-        .header-terminal { display: none; }
+      .theme-toggle svg { width: 15px; height: 15px; }
+      .theme-toggle .ic-moon { display: none; }
+      :root[data-theme='light'] .theme-toggle .ic-sun { display: none; }
+      :root[data-theme='light'] .theme-toggle .ic-moon { display: block; }
+      .header-signal { grid-area: signal; min-width: 0; opacity: 0.74; }
+      .header-signal svg { display: block; width: 100%; height: 46px; }
+      .header-signal .hs-glow {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: hs-pulse 2.8s ease-in-out infinite;
       }
-
-      /* Motif décoratif du header : tracé de signal abstrait, à droite du lockup */
-      .header-signal { grid-area: signal; width: 100%; height: 46px; line-height: 0; min-width: 0; max-width: 480px; justify-self: end; }
-      .header-signal svg { height: 100%; width: auto; max-width: 100%; margin-left: auto; display: block; }
-      .header-signal .hs-glow { animation: hs-pulse 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-      @keyframes hs-pulse { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.06); } }
-      @media (prefers-reduced-motion: reduce) { .header-signal .hs-glow { animation: none; } }
+      @keyframes hs-pulse {
+        0%, 100% { opacity: 0.45; transform: scale(0.92); }
+        50% { opacity: 1; transform: scale(1.06); }
+      }
       @media (max-width: 680px) {
         .header-top {
           grid-template-columns: minmax(0, 1fr) auto;
           grid-template-areas: "brand theme";
+          gap: 0.75rem;
         }
         .header-signal { display: none; }
+        .brand { max-width: calc(100vw - 5.5rem); gap: 0.55rem; }
+        .brand-tag { max-width: calc(100vw - 9rem); font-size: 0.66rem; letter-spacing: 0.015em; }
       }
-
-      /* Filet bas du header en dégradé, en écho au footer */
-      .main-nav { border-bottom: 0; position: relative; }
-      .main-nav::after {
-        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-        background: linear-gradient(90deg,
-          color-mix(in srgb, var(--color-signal) 50%, transparent),
-          color-mix(in srgb, var(--color-accent) 28%, transparent) 45%,
-          transparent 85%);
+      @media (max-width: 360px) {
+        .brand-sep,
+        .brand-tag { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .header-signal .hs-glow { animation: none; }
       }
     </style>
     <WebMCPTools />

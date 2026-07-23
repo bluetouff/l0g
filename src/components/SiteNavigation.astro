@@ -1,0 +1,352 @@
+---
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const norm = (value: string) => (value.length > 1 ? value.replace(/\/$/, '') : value);
+const currentPath = norm(path);
+
+type NavItem = {
+  href: string;
+  label: string;
+  description?: string;
+  matches?: string[];
+};
+
+const primary: NavItem[] = [
+  { href: '/', label: 'Lire', matches: ['/', '/posts', '/sujet', '/sujets', '/hebdo'] },
+  { href: '/demarrer/', label: 'Comprendre', matches: ['/demarrer', '/guides', '/glossaire'] },
+  { href: '/dashboards/', label: 'Observer', matches: ['/dashboards', '/confluence', '/risk-diff', '/series'] },
+  { href: '/methodologie/', label: 'Vérifier', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
+];
+
+const groups: Array<{ label: string; items: NavItem[] }> = [
+  {
+    label: 'Lire',
+    items: [
+      { href: '/', label: 'Journal', description: 'Les analyses les plus récentes' },
+      { href: '/sujets/', label: 'Sujets suivis', description: 'Les dossiers dans la durée' },
+      { href: '/hebdo/', label: 'L’hebdo', description: 'La synthèse de la semaine' },
+    ],
+  },
+  {
+    label: 'Comprendre',
+    items: [
+      { href: '/demarrer/', label: 'Démarrer', description: 'Le mode d’emploi humain' },
+      { href: '/guides/', label: 'Guides', description: 'Apprendre à lire une donnée' },
+      { href: '/glossaire/', label: 'Glossaire', description: 'Décoder les termes techniques' },
+    ],
+  },
+  {
+    label: 'Observer',
+    items: [
+      { href: '/dashboards/', label: 'Tableaux de bord', description: 'Les instruments de suivi' },
+      { href: '/confluence/', label: 'Signaux croisés', description: 'Confluence 13F × Form 4' },
+      { href: '/risk-diff/', label: 'Ce qui a changé', description: 'Risk Diff sur 1, 7 et 30 jours' },
+    ],
+  },
+  {
+    label: 'Vérifier',
+    items: [
+      { href: '/methodologie/', label: 'Méthodologie', description: 'Comment les signaux sont calculés' },
+      { href: '/sources/', label: 'Sources primaires', description: 'D’où viennent les données' },
+      { href: '/preuves/', label: 'Preuves', description: 'Contrats, empreintes et limites' },
+    ],
+  },
+];
+
+const developerItems: NavItem[] = [
+  { href: '/donnees/', label: 'Données' },
+  { href: '/api/', label: 'API' },
+  { href: '/mcp/', label: 'MCP' },
+  { href: '/agents/', label: 'Agents' },
+  { href: '/terminal/', label: 'Terminal' },
+  { href: '/en/', label: 'English' },
+];
+
+function isActive(item: NavItem): boolean {
+  const bases = item.matches ?? [item.href];
+  return bases.some((base) => {
+    const normalizedBase = norm(base);
+    if (normalizedBase === '/') return currentPath === '/';
+    return currentPath === normalizedBase || currentPath.startsWith(`${normalizedBase}/`);
+  });
+}
+---
+
+<div class="site-navigation">
+  <nav class="desktop-nav" aria-label="Navigation principale">
+    {primary.map((item) => (
+      <a href={item.href} class="nav-tab" aria-current={isActive(item) ? 'page' : undefined}>
+        {item.label}
+      </a>
+    ))}
+
+    <a href="/recherche/" class="nav-tab nav-search" aria-current={currentPath.startsWith('/recherche') ? 'page' : undefined}>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="6"></circle>
+        <path d="m16 16 4 4"></path>
+      </svg>
+      Rechercher
+    </a>
+
+    <details class="nav-explorer">
+      <summary>Explorer <span aria-hidden="true">⌄</span></summary>
+      <div class="nav-panel">
+        <div class="nav-groups">
+          {groups.map((group) => (
+            <section>
+              <h2>{group.label}</h2>
+              {group.items.map((item) => (
+                <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
+                  <strong>{item.label}</strong>
+                  {item.description && <span>{item.description}</span>}
+                </a>
+              ))}
+            </section>
+          ))}
+        </div>
+        <div class="developer-row">
+          <span>Pour les développeurs</span>
+          {developerItems.map((item) => <a href={item.href}>{item.label}</a>)}
+        </div>
+      </div>
+    </details>
+  </nav>
+
+  <nav class="mobile-nav" aria-label="Navigation mobile">
+    <a href="/recherche/" class="mobile-search" aria-label="Rechercher sur l0g">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="6"></circle>
+        <path d="m16 16 4 4"></path>
+      </svg>
+      Rechercher
+    </a>
+    <details class="mobile-menu">
+      <summary>
+        Menu
+        <span class="menu-bars" aria-hidden="true"><i></i><i></i></span>
+      </summary>
+      <div class="mobile-panel">
+        {groups.map((group) => (
+          <section>
+            <h2>{group.label}</h2>
+            <div>
+              {group.items.map((item) => (
+                <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
+                  <strong>{item.label}</strong>
+                  {item.description && <span>{item.description}</span>}
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+        <section class="mobile-developer">
+          <h2>Développeurs</h2>
+          <div>
+            {developerItems.map((item) => <a href={item.href}>{item.label}</a>)}
+          </div>
+        </section>
+      </div>
+    </details>
+  </nav>
+</div>
+
+<script>
+  // @ts-nocheck
+  document.querySelectorAll('.site-navigation details').forEach(function (menu) {
+    menu.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        menu.removeAttribute('open');
+        menu.querySelector('summary')?.focus();
+      }
+    });
+  });
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.nav-explorer[open]').forEach(function (menu) {
+      if (!menu.contains(event.target)) menu.removeAttribute('open');
+    });
+  });
+</script>
+
+<style>
+  .site-navigation { position: relative; z-index: 30; }
+  .desktop-nav {
+    display: none;
+    align-items: stretch;
+    gap: 1.7rem;
+    margin-top: 1.45rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .nav-tab,
+  .nav-explorer > summary {
+    display: inline-flex;
+    min-height: 2.8rem;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    color: var(--color-nav-idle);
+    font-family: var(--font-mono);
+    font-size: 0.79rem;
+    font-weight: 600;
+    letter-spacing: 0.085em;
+    text-transform: uppercase;
+    transition: color 0.18s, border-color 0.18s;
+  }
+  .nav-tab:hover,
+  .nav-tab[aria-current='page'],
+  .nav-explorer > summary:hover,
+  .nav-explorer[open] > summary {
+    color: var(--color-bright);
+    border-bottom-color: var(--color-signal);
+  }
+  .nav-search { gap: 0.4rem; margin-left: auto; color: var(--color-signal); }
+  .nav-search svg,
+  .mobile-search svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 1.8;
+  }
+  .nav-explorer { position: static; }
+  .nav-explorer > summary {
+    gap: 0.4rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .nav-explorer > summary::-webkit-details-marker,
+  .mobile-menu > summary::-webkit-details-marker { display: none; }
+  .nav-explorer[open] > summary span { transform: rotate(180deg); }
+  .nav-explorer > summary span { transition: transform 0.18s; }
+  .nav-panel {
+    position: absolute;
+    top: calc(100% - 1px);
+    right: 0;
+    left: 0;
+    border: 1px solid var(--color-line);
+    border-top-color: color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
+    border-radius: 0 0 14px 14px;
+    padding: 1.25rem;
+    background: color-mix(in srgb, var(--color-ink) 96%, transparent);
+    box-shadow: 0 22px 70px color-mix(in srgb, #000 42%, transparent);
+    backdrop-filter: blur(18px);
+  }
+  :root[data-theme='light'] .nav-panel { background: color-mix(in srgb, var(--color-surface) 97%, transparent); }
+  .nav-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+  .nav-groups section { min-width: 0; }
+  .nav-groups h2,
+  .mobile-panel h2 {
+    margin-bottom: 0.55rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .nav-groups section > a {
+    display: block;
+    border-radius: 8px;
+    padding: 0.55rem 0.6rem;
+    transition: background 0.16s;
+  }
+  .nav-groups section > a:hover,
+  .nav-groups section > a[aria-current='page'] {
+    background: color-mix(in srgb, var(--color-signal) 7%, transparent);
+  }
+  .nav-groups strong,
+  .nav-groups span { display: block; }
+  .nav-groups strong { color: var(--color-bright); font-size: 0.88rem; }
+  .nav-groups span { margin-top: 0.18rem; color: var(--color-muted); font-size: 0.73rem; line-height: 1.4; }
+  .developer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+  .developer-row span { color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .developer-row a { color: var(--color-paper); }
+  .developer-row a:hover { color: var(--color-signal); }
+
+  .mobile-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .mobile-search,
+  .mobile-menu > summary {
+    display: inline-flex;
+    min-height: 3.15rem;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .mobile-menu { position: static; }
+  .mobile-menu > summary { cursor: pointer; list-style: none; }
+  .menu-bars { display: grid; gap: 0.28rem; width: 1.1rem; }
+  .menu-bars i { display: block; height: 1px; background: currentColor; transition: transform 0.18s; }
+  .mobile-menu[open] .menu-bars i:first-child { transform: translateY(0.14rem) rotate(45deg); }
+  .mobile-menu[open] .menu-bars i:last-child { transform: translateY(-0.14rem) rotate(-45deg); }
+  .mobile-panel {
+    position: absolute;
+    top: 100%;
+    right: -1.25rem;
+    left: -1.25rem;
+    max-height: min(72vh, 42rem);
+    overflow-y: auto;
+    border-bottom: 1px solid var(--color-line);
+    padding: 1.1rem 1.25rem 1.35rem;
+    background: color-mix(in srgb, var(--color-ink) 98%, transparent);
+    box-shadow: 0 24px 55px color-mix(in srgb, #000 48%, transparent);
+  }
+  :root[data-theme='light'] .mobile-panel { background: var(--color-surface); }
+  .mobile-panel section + section { margin-top: 1rem; }
+  .mobile-panel section > div { display: grid; gap: 0.35rem; }
+  .mobile-panel section:not(.mobile-developer) a {
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.8fr) 1.2fr;
+    gap: 0.75rem;
+    border-radius: 8px;
+    padding: 0.55rem 0.65rem;
+  }
+  .mobile-panel a[aria-current='page'],
+  .mobile-panel a:hover { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
+  .mobile-panel strong { color: var(--color-bright); font-size: 0.88rem; }
+  .mobile-panel span { color: var(--color-muted); font-size: 0.75rem; line-height: 1.35; }
+  .mobile-developer { border-top: 1px solid var(--color-line); padding-top: 1rem; }
+  .mobile-developer div { display: flex !important; flex-wrap: wrap; gap: 0.55rem !important; }
+  .mobile-developer a {
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 0.38rem 0.6rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 800px) {
+    .desktop-nav { display: flex; }
+    .mobile-nav { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-explorer > summary span,
+    .menu-bars i { transition: none; }
+  }
+</style>

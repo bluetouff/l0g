@@ -2,11 +2,12 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnalysisPagination from '../components/AnalysisPagination.astro';
+import HomeSidebar from '../components/HomeSidebar.astro';
 import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
 import { readingTime } from '../lib/reading-time.ts';
-import { accentForTags, topicLabelForTags } from '../config/topics.ts';
+import { accentForTags, topicLabelForTags, topics } from '../config/topics.ts';
 
 type PostEntry = CollectionEntry<'posts'>;
 type PaginatedPosts = {
@@ -47,34 +48,78 @@ const items = page.data.map((post: PostEntry, i: number) => ({
 const hero = isFirst ? items[0] : null;
 const feed = isFirst ? items.slice(1) : items;
 const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
+const followedTopics = topics.slice(0, 6);
+const needCards = [
+  {
+    eyebrow: 'comprendre',
+    title: 'Comprendre un sujet',
+    text: 'Partir d’une question, puis relier guides, définitions et analyses datées.',
+    href: '/sujets/',
+    cta: 'Explorer les sujets',
+  },
+  {
+    eyebrow: 'observer',
+    title: 'Suivre un risque',
+    text: 'Consulter les tableaux de bord et comprendre ce que chaque signal mesure.',
+    href: '/dashboards/',
+    cta: 'Voir les tableaux de bord',
+  },
+  {
+    eyebrow: 'vérifier',
+    title: 'Vérifier un chiffre',
+    text: 'Remonter à la source, à la méthode, à la date et aux limites publiées.',
+    href: '/preuves/',
+    cta: 'Contrôler les preuves',
+  },
+  {
+    eyebrow: 'retrouver',
+    title: 'Retrouver une analyse',
+    text: 'Chercher dans les articles, les guides, les méthodes et le glossaire.',
+    href: '/recherche/',
+    cta: 'Lancer une recherche',
+  },
+];
 ---
 
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
 >
+  {isFirst && <HomeSidebar slot="sidebar" />}
+
   {isFirst && (
-    <section class="rise">
-      <p class="mono-label" style="color: var(--color-signal)">$ cat /risque | cartographie</p>
+    <section class="rise home-intro">
+      <p class="mono-label" style="color: var(--color-signal)">// économie · marchés · risques</p>
       <h1 class="mt-5 font-display text-[clamp(2.2rem,5.5vw,3.5rem)] leading-tight tracking-wider glow">
         l<span style="color: var(--color-signal)">0</span>g <span style="color: var(--color-accent)">:</span> les angles morts de <span class="home-title-gradient">la finance</span>
       </h1>
-      <p class="mt-5 max-w-xl text-muted">
-        Enquêtes sur les mécanismes financiers invisibles : bilans, collatéral, crédit privé, levier et chaînes de contagion.
+      <p class="home-promise">
+        l0g explique ce qui change dans l’économie et les marchés,
+        avec les chiffres, les sources et leurs limites.
       </p>
+      <div class="home-actions">
+        <a href="/demarrer/" class="home-action primary">Découvrir l0g</a>
+        <a href="#dernieres-analyses" class="home-action">Lire les dernières analyses</a>
+      </div>
     </section>
   )}
 
   {isFirst && (
-    <div
-      class="rise mt-12"
-      aria-hidden="true"
-      style="height: 4px; width: 100%; opacity: 0.7; background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-signal) 55%, transparent) 28%, color-mix(in srgb, var(--color-accent) 50%, transparent) 50%, color-mix(in srgb, var(--color-amber) 55%, transparent) 72%, transparent 100%);"
-    >
-    </div>
+    <section class="home-needs rise" aria-labelledby="home-needs-title">
+      <p class="mono-label" style="color: var(--color-signal)">// choisir une entrée</p>
+      <h2 id="home-needs-title">Que cherchez-vous&nbsp;?</h2>
+      <div class="need-grid">
+        {needCards.map((card) => (
+          <a href={card.href} class="need-card">
+            <span>{card.eyebrow}</span>
+            <strong>{card.title}</strong>
+            <p>{card.text}</p>
+            <small>{card.cta} <i aria-hidden="true">›</i></small>
+          </a>
+        ))}
+      </div>
+    </section>
   )}
-
-  {isFirst && <RiskBand />}
 
   {!isFirst && (
     <header class="rise border-b border-dashed border-line pb-8">
@@ -89,20 +134,65 @@ const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
   )}
 
   {hero && (
-    <PostHero
-      url={`/posts/${hero.post.id}/`}
-      title={hero.post.data.title}
-      description={hero.post.data.description}
-      pubDate={hero.post.data.pubDate}
-      updatedDate={hero.post.data.updatedDate}
-      readingTime={hero.rt}
-      accent={hero.accent}
-      accentLabel={hero.accentLabel}
-    />
+    <section class="home-featured" aria-labelledby="featured-title">
+      <p class="mono-label" style="color: var(--color-signal)">// à la une</p>
+      <h2 id="featured-title" class="section-title">L’analyse à retenir</h2>
+      <PostHero
+        url={`/posts/${hero.post.id}/`}
+        title={hero.post.data.title}
+        description={hero.post.data.description}
+        pubDate={hero.post.data.pubDate}
+        updatedDate={hero.post.data.updatedDate}
+        readingTime={hero.rt}
+        accent={hero.accent}
+        accentLabel={hero.accentLabel}
+      />
+    </section>
   )}
 
-  <section class="pb-4 pt-2">
-    <p class="mono-label mb-3">page {page.currentPage} / {page.lastPage} · {page.total} entrées</p>
+  {isFirst && (
+    <section class="home-topics" aria-labelledby="followed-topics-title">
+      <div class="section-heading">
+        <div>
+          <p class="mono-label" style="color: var(--color-signal)">// dossiers</p>
+          <h2 id="followed-topics-title" class="section-title">Les sujets suivis</h2>
+        </div>
+        <a href="/sujets/">Tous les sujets <span aria-hidden="true">›</span></a>
+      </div>
+      <div class="topic-grid">
+        {followedTopics.map((topic) => (
+          <a href={`/sujet/${topic.slug}/`} class="topic-card" style={`--topic-accent:${topic.accent === 'pink' ? 'var(--color-accent)' : topic.accent === 'amber' ? 'var(--color-amber)' : topic.accent === 'blue' ? '#7aa2f7' : 'var(--color-signal)'}`}>
+            <strong>{topic.label}</strong>
+            <p>{topic.question}</p>
+            <span>Ouvrir le dossier ›</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {isFirst && (
+    <section class="home-risk" aria-labelledby="risk-intro-title">
+      <div class="risk-intro">
+        <p class="mono-label" style="color: var(--color-signal)">// instruments</p>
+        <h2 id="risk-intro-title" class="section-title">Les signaux de risque</h2>
+        <p>
+          Ces scores sont des panneaux de signalisation, pas une note globale des marchés.
+          Chaque instrument mesure un phénomène et un horizon différents.
+        </p>
+      </div>
+      <RiskBand />
+    </section>
+  )}
+
+  <section class="pb-4 latest-feed" id="dernieres-analyses">
+    <div class="section-heading feed-heading">
+      <div>
+        <p class="mono-label" style="color: var(--color-signal)">{isFirst ? '// chronologie' : '// archives'}</p>
+        <h2 class="section-title">{isFirst ? 'Les dernières analyses' : `Page ${page.currentPage}`}</h2>
+      </div>
+      <p class="mono-label">{page.total} entrées</p>
+    </div>
     {
       feed.map((it: (typeof items)[number]) => (
         <PostCard
@@ -132,6 +222,7 @@ const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
 </BaseLayout>
 
 <style>
+  .home-intro { padding: 1.1rem 0 0.4rem; }
   .home-title-gradient {
     color: var(--color-bright);
     background: linear-gradient(
@@ -144,5 +235,167 @@ const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 16%, transparent);
+  }
+  .home-promise {
+    max-width: 40rem;
+    margin-top: 1.2rem;
+    border-left: 2px solid var(--color-signal);
+    padding-left: 1rem;
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: clamp(1.08rem, 2.1vw, 1.28rem);
+    line-height: 1.65;
+  }
+  .home-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.35rem; }
+  .home-action {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 999px;
+    padding: 0.55rem 0.95rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: transform 0.16s, border-color 0.16s, background 0.16s;
+  }
+  .home-action:hover { transform: translateY(-1px); border-color: var(--color-signal); }
+  .home-action.primary { border-color: transparent; color: var(--color-ink); background: var(--color-signal); }
+  :root[data-theme='light'] .home-action.primary { color: #fff; }
+  .home-needs,
+  .home-featured,
+  .home-topics,
+  .home-risk,
+  .latest-feed { margin-top: 3.4rem; }
+  .home-needs > h2,
+  .section-title {
+    margin-top: 0.35rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+    line-height: 1.12;
+  }
+  .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.7rem; margin-top: 1.2rem; }
+  .need-card {
+    display: flex;
+    min-height: 12.3rem;
+    flex-direction: column;
+    border: 1px solid var(--color-line);
+    border-radius: 13px;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--color-surface) 42%, transparent);
+    transition: border-color 0.16s, background 0.16s, transform 0.16s;
+  }
+  .need-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-signal) 48%, var(--color-line));
+    background: color-mix(in srgb, var(--color-signal) 6%, var(--color-surface));
+  }
+  .need-card > span {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .need-card > strong { margin-top: 0.55rem; color: var(--color-bright); font-size: 1rem; }
+  .need-card > p { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.5; }
+  .need-card > small {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.85rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+  .need-card > small i { color: var(--color-signal); font-size: 1rem; font-style: normal; }
+  .home-featured :global(.post-hero) { margin-top: 1.1rem; }
+  .section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+  }
+  .section-heading > a {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .topic-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin-top: 1.15rem; }
+  .topic-card {
+    display: block;
+    border: 1px solid var(--color-line);
+    border-left: 3px solid color-mix(in srgb, var(--topic-accent) 64%, transparent);
+    border-radius: 10px;
+    padding: 0.9rem;
+    transition: border-color 0.16s, background 0.16s;
+  }
+  .topic-card:hover {
+    border-color: color-mix(in srgb, var(--topic-accent) 55%, var(--color-line));
+    background: color-mix(in srgb, var(--topic-accent) 5%, transparent);
+  }
+  .topic-card strong { color: var(--color-bright); font-size: 0.92rem; }
+  .topic-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+    font-size: 0.76rem;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .topic-card span {
+    display: block;
+    margin-top: 0.65rem;
+    color: var(--topic-accent);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .home-risk {
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    padding: 2.5rem 0 1.5rem;
+  }
+  .risk-intro { max-width: 42rem; }
+  .risk-intro > p:last-child {
+    margin-top: 0.8rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .home-risk :global(.rise) { margin-top: 1.1rem; margin-bottom: 0; }
+  .home-risk :global(.rise > div:first-child) { display: none; }
+  .feed-heading { margin-bottom: 0.9rem; }
+  .feed-heading > p { color: var(--color-muted); }
+  @media (min-width: 560px) {
+    .need-grid,
+    .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 880px) {
+    .need-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 520px) {
+    .home-actions { display: grid; grid-template-columns: 1fr; }
+    .home-action { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .home-action:hover,
+    .need-card:hover { transform: none; }
   }
 </style>

@@ -1,0 +1,93 @@
+---
+import SearchForm from './SearchForm.astro';
+---
+
+<div class="home-sidebar">
+  <section>
+    <h2>// recherche</h2>
+    <SearchForm compact />
+  </section>
+
+  <section class="start-card">
+    <p class="eyebrow">// nouveau ici ?</p>
+    <h2>Commencer sans jargon.</h2>
+    <p>
+      Choisissez votre besoin : comprendre une notion, suivre un risque,
+      vérifier un chiffre ou retrouver une analyse.
+    </p>
+    <a href="/demarrer/">Découvrir l0g <span aria-hidden="true">›</span></a>
+  </section>
+
+  <section class="side-shortcuts">
+    <h2>// raccourcis</h2>
+    <a href="/sujets/">
+      <strong>Sujets suivis</strong>
+      <span>Les dossiers dans la durée</span>
+    </a>
+    <a href="/hebdo/">
+      <strong>La synthèse hebdo</strong>
+      <span>Ce qu’il faut retenir</span>
+    </a>
+    <a href="/glossaire/">
+      <strong>Décoder un terme</strong>
+      <span>Le glossaire relié aux analyses</span>
+    </a>
+  </section>
+</div>
+
+<style>
+  .home-sidebar { display: grid; gap: 1.5rem; }
+  .home-sidebar > section > h2,
+  .eyebrow {
+    margin-bottom: 0.7rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  .start-card {
+    border: 1px solid color-mix(in srgb, var(--color-signal) 35%, var(--color-line));
+    border-radius: 14px;
+    padding: 1.1rem;
+    background: radial-gradient(100% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 70%);
+  }
+  .start-card .eyebrow { margin-bottom: 0.45rem; }
+  .start-card h2 {
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  .start-card p:not(.eyebrow) {
+    margin-top: 0.65rem;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .start-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.9rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .side-shortcuts { display: grid; gap: 0.45rem; }
+  .side-shortcuts > h2 { margin-bottom: 0.25rem !important; }
+  .side-shortcuts a {
+    display: block;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.6rem 0;
+  }
+  .side-shortcuts strong,
+  .side-shortcuts span { display: block; }
+  .side-shortcuts strong { color: var(--color-paper); font-size: 0.86rem; }
+  .side-shortcuts span { margin-top: 0.12rem; color: var(--color-muted); font-size: 0.72rem; }
+  .side-shortcuts a:hover strong { color: var(--color-signal); }
+</style>

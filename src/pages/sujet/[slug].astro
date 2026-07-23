@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
+import TopicSidebar from '../../components/TopicSidebar.astro';
 import { topics, postMatchesTopic, ACCENT_HEX, topicLabelForTags } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 import { serializeInlineScriptData } from '../../lib/security.ts';
@@ -52,6 +53,8 @@ const topicJsonLd = {
 ---
 
 <BaseLayout title={`${topic.label} — sujet`} description={topic.blurb}>
+  <TopicSidebar slot="sidebar" topic={topic} analysisCount={matched.length} />
+
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(topicJsonLd)} />
 
   <section class="rise" data-topic-pillar={topic.slug}>

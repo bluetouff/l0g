@@ -1,0 +1,169 @@
+---
+interface Props {
+  path: string;
+  year: number;
+}
+
+const { path, year } = Astro.props;
+const norm = (value: string) => (value.length > 1 ? value.replace(/\/$/, '') : value);
+const current = norm(path);
+const active = (href: string) => {
+  const target = norm(href);
+  return target === '/' ? current === '/' : current === target || current.startsWith(`${target}/`);
+};
+
+const columns = [
+  {
+    label: 'Comprendre',
+    links: [
+      ['/demarrer/', 'Démarrer'],
+      ['/sujets/', 'Sujets suivis'],
+      ['/guides/', 'Guides'],
+      ['/glossaire/', 'Glossaire'],
+    ],
+  },
+  {
+    label: 'Vérifier',
+    links: [
+      ['/methodologie/', 'Méthodologie'],
+      ['/sources/', 'Sources primaires'],
+      ['/preuves/', 'Preuves'],
+      ['/protocole-editorial/', 'Protocole éditorial'],
+    ],
+  },
+  {
+    label: 'Développeurs',
+    links: [
+      ['/donnees/', 'Données'],
+      ['/api/', 'API'],
+      ['/mcp/', 'MCP'],
+      ['/agents/', 'Agents'],
+    ],
+  },
+  {
+    label: 'À propos',
+    links: [
+      ['/about/', 'À propos'],
+      ['/status/', 'Statut'],
+      ['/rgpd/', 'Confidentialité'],
+      ['/demarrer/#fonctionnalites', 'Toutes les pages'],
+    ],
+  },
+] as const;
+---
+
+<footer class="site-footer">
+  <div class="footer-grad" aria-hidden="true"></div>
+  <div class="footer-inner mx-auto max-w-6xl px-5">
+    <div class="footer-intro">
+      <a href="/" class="footer-brand" aria-label="l0g, accueil">
+        l<span>0</span>g<span class="cursor" aria-hidden="true">_</span>
+      </a>
+      <p>
+        Lire les mécanismes avant qu’ils deviennent l’événement.
+        <span>Sources primaires, méthodes publiques, limites visibles.</span>
+      </p>
+    </div>
+
+    <nav class="footer-grid" aria-label="Pied de page">
+      {columns.map((column) => (
+        <section>
+          <h2>// {column.label}</h2>
+          {column.links.map(([href, label]) => (
+            <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>
+          ))}
+        </section>
+      ))}
+    </nav>
+
+    <div class="footer-bottom">
+      <p>l0g.fr © {year} · statique · auto-hébergé · aucun cookie · aucun tracker</p>
+      <div>
+        <a href="/en/">English</a>
+        <a href="/rss.xml">RSS</a>
+        <a href="https://github.com/bluetouff" rel="me noopener">GitHub</a>
+        <a href="/.well-known/security.txt">security.txt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-grad {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-signal), var(--color-accent), var(--color-amber), transparent);
+    opacity: 0.6;
+  }
+  .site-footer {
+    margin-top: 5rem;
+    background: radial-gradient(100% 100% at 50% 0%, color-mix(in srgb, var(--color-signal) 4%, transparent), transparent 62%);
+  }
+  .footer-inner { padding-top: 2.6rem; padding-bottom: 2rem; }
+  .footer-intro {
+    display: grid;
+    grid-template-columns: auto minmax(0, 30rem);
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 1.5rem;
+  }
+  .footer-brand {
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .footer-brand > span { color: var(--color-signal); }
+  .footer-brand .cursor { color: var(--color-accent); }
+  .footer-intro p { color: var(--color-paper); font-size: 0.9rem; line-height: 1.55; text-align: right; }
+  .footer-intro p span { display: block; color: var(--color-muted); font-size: 0.78rem; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.25rem;
+    padding: 2rem 0;
+  }
+  .footer-grid section { display: grid; align-content: start; gap: 0.55rem; }
+  .footer-grid h2 {
+    margin-bottom: 0.2rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .footer-grid a {
+    width: fit-content;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    transition: color 0.15s;
+  }
+  .footer-grid a:hover,
+  .footer-grid a[aria-current='page'] { color: var(--color-bright); }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem 1.5rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.15rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+  .footer-bottom div { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .footer-bottom a { color: var(--color-muted); }
+  .footer-bottom a:hover { color: var(--color-signal); }
+  @media (min-width: 760px) {
+    .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 540px) {
+    .footer-intro { grid-template-columns: 1fr; }
+    .footer-intro p { text-align: left; }
+  }
+</style>
