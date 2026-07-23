@@ -1,5 +1,6 @@
 ---
 import L0gGlyph from './L0gGlyph.astro';
+import FooterLinkIcon, { type FooterIconName } from './FooterLinkIcon.astro';
 
 interface Props {
   path: string;
@@ -18,38 +19,38 @@ const columns = [
   {
     label: 'Comprendre',
     links: [
-      ['/demarrer/', 'Démarrer'],
-      ['/sujets/', 'Sujets suivis'],
-      ['/guides/', 'Guides'],
-      ['/glossaire/', 'Glossaire'],
+      ['/demarrer/', 'Démarrer', 'compass'],
+      ['/sujets/', 'Sujets suivis', 'topics'],
+      ['/guides/', 'Guides', 'guide'],
+      ['/glossaire/', 'Glossaire', 'glossary'],
     ],
   },
   {
     label: 'Vérifier',
     links: [
-      ['/methodologie/', 'Méthodologie'],
-      ['/sources/', 'Sources primaires'],
-      ['/preuves/', 'Preuves'],
-      ['/protocole-editorial/', 'Protocole éditorial'],
+      ['/methodologie/', 'Méthodologie', 'methodology'],
+      ['/sources/', 'Sources primaires', 'sources'],
+      ['/preuves/', 'Preuves', 'proof'],
+      ['/protocole-editorial/', 'Protocole éditorial', 'protocol'],
     ],
   },
   {
     label: 'Développeurs',
     links: [
-      ['/terminal/', 'Terminal'],
-      ['/donnees/', 'Données'],
-      ['/api/', 'API'],
-      ['/mcp/', 'MCP'],
-      ['/agents/', 'Agents'],
+      ['/terminal/', 'Terminal', 'terminal'],
+      ['/donnees/', 'Données', 'data'],
+      ['/api/', 'API', 'api'],
+      ['/mcp/', 'MCP', 'mcp'],
+      ['/agents/', 'Agents', 'agents'],
     ],
   },
   {
     label: 'À propos',
     links: [
-      ['/about/', 'À propos'],
-      ['/status/', 'Statut'],
-      ['/rgpd/', 'Confidentialité'],
-      ['/demarrer/#fonctionnalites', 'Toutes les pages'],
+      ['/about/', 'À propos', 'about'],
+      ['/status/', 'Statut', 'status'],
+      ['/rgpd/', 'Confidentialité', 'privacy'],
+      ['/demarrer/#fonctionnalites', 'Toutes les pages', 'pages'],
     ],
   },
 ] as const;
@@ -78,8 +79,11 @@ const columns = [
       {columns.map((column) => (
         <section>
           <h2>// {column.label}</h2>
-          {column.links.map(([href, label]) => (
-            <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>
+          {column.links.map(([href, label, icon]) => (
+            <a href={href} aria-current={active(href) ? 'page' : undefined}>
+              <FooterLinkIcon name={icon as FooterIconName} />
+              <span>{label}</span>
+            </a>
           ))}
         </section>
       ))}
@@ -176,13 +180,28 @@ const columns = [
     text-transform: uppercase;
   }
   .footer-grid a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     width: fit-content;
     color: var(--color-muted);
     font-size: 0.85rem;
     transition: color 0.15s;
   }
+  .footer-grid :global(.footer-link-icon) {
+    width: 14px;
+    height: 14px;
+    flex: none;
+    opacity: 0.6;
+    transition: opacity 0.15s, color 0.15s;
+  }
   .footer-grid a:hover,
   .footer-grid a[aria-current='page'] { color: var(--color-bright); }
+  .footer-grid a:hover :global(.footer-link-icon) { opacity: 1; }
+  .footer-grid a[aria-current='page'] :global(.footer-link-icon) {
+    color: var(--color-signal);
+    opacity: 1;
+  }
   .footer-bottom {
     display: flex;
     flex-wrap: wrap;

@@ -191,18 +191,18 @@ const trustItems = [
           <p class="mono-label">série citable · méthode {signalIdentity.methodologyVersion}</p>
           <p>
             Le signal est publié sous le nom <strong>{signalIdentity.citationName}</strong>,
-            identifiant stable <code>{signalIdentity.seriesId}</code>. Sa
-            <a class="link-term" href={`/series/${signalIdentity.slug}/`}> série datée</a> dispose
+            identifiant stable <code>{signalIdentity.seriesId}</code>. Sa{' '}
+            <a class="link-term" href={`/series/${signalIdentity.slug}/`}>série datée</a> dispose
             d'exports dédiés <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.csv`}>CSV</a>,
-            <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.json`}> JSON</a> et
-            <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.ndjson`}> NDJSON</a>.
+            {' '}<a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.json`}>JSON</a>{' '}et{' '}
+            <a class="link-term" href={`/api/v1/signals/${signalIdentity.slug}/history.ndjson`}>NDJSON</a>.
             Le versionnage méthodologique commence le {signalIdentity.methodologyEffectiveFrom} ;
             les points antérieurs restent explicitement non versionnés.
           </p>
         </div>
       ) : (
         <p class="method-p">
-          L'historique public des signaux est disponible sur
+          L'historique public des signaux est disponible sur{' '}
           <a class="link-term" href="/backtests/">/backtests/</a>.
         </p>
       )}

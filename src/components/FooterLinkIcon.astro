@@ -1,0 +1,149 @@
+---
+export type FooterIconName =
+  | 'compass'
+  | 'topics'
+  | 'guide'
+  | 'glossary'
+  | 'methodology'
+  | 'sources'
+  | 'proof'
+  | 'protocol'
+  | 'terminal'
+  | 'data'
+  | 'api'
+  | 'mcp'
+  | 'agents'
+  | 'about'
+  | 'status'
+  | 'privacy'
+  | 'pages';
+
+interface Props {
+  name: FooterIconName;
+}
+
+const { name } = Astro.props;
+---
+
+<svg
+  class="footer-link-icon"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {name === 'compass' && (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 15l2.2-5.2L16 7l-2.2 5.2z" />
+      <circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none" />
+    </>
+  )}
+  {name === 'topics' && (
+    <>
+      <circle cx="6" cy="7" r="2" />
+      <circle cx="18" cy="7" r="2" />
+      <circle cx="12" cy="17" r="2" />
+      <path d="M7.8 8.1l3 6.9M16.2 8.1l-3 6.9M8 7h8" />
+    </>
+  )}
+  {name === 'guide' && (
+    <>
+      <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11a1 1 0 0 1 1 1v15a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2V5.5z" />
+      <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13a1 1 0 0 0-1 1v15a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2V5.5z" />
+    </>
+  )}
+  {name === 'glossary' && (
+    <>
+      <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H17a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a2 2 0 0 0-2 2V5.5z" />
+      <line x1="8" y1="8" x2="14" y2="8" />
+      <line x1="8" y1="12" x2="12" y2="12" />
+    </>
+  )}
+  {name === 'methodology' && (
+    <>
+      <path d="M9 3h6M10 3v6l-5.2 9.1A1 1 0 0 0 5.7 20h12.6a1 1 0 0 0 .9-1.9L14 9V3" />
+      <path d="M8 15h8" />
+    </>
+  )}
+  {name === 'sources' && (
+    <>
+      <path d="M12 3v18M5 7h14M7 7l-3 6h6zM17 7l-3 6h6zM8 21h8" />
+    </>
+  )}
+  {name === 'proof' && (
+    <>
+      <path d="M6 3h9l3 3v15H6zM15 3v4h4M9 12h6M9 16h6" />
+      <path d="M8.5 8.5l1.2 1.2 2.2-2.4" />
+    </>
+  )}
+  {name === 'protocol' && (
+    <>
+      <path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1z" />
+      <path d="M9 8h6M9 11h6M9 14h4" />
+    </>
+  )}
+  {name === 'terminal' && (
+    <>
+      <rect x="4" y="5" width="16" height="14" rx="2" />
+      <path d="M8 10l3 2-3 2M13 15h3" />
+    </>
+  )}
+  {name === 'data' && (
+    <>
+      <path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z" />
+      <path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5" />
+    </>
+  )}
+  {name === 'api' && (
+    <>
+      <path d="M8 4c-2 0-2.5 1-2.5 3v1.8c0 1.2-1 2.2-2.2 2.2 1.2 0 2.2 1 2.2 2.2V17c0 2 .5 3 2.5 3" />
+      <path d="M16 4c2 0 2.5 1 2.5 3v1.8c0 1.2 1 2.2 2.2 2.2-1.2 0-2.2 1-2.2 2.2V17c0 2-.5 3-2.5 3" />
+    </>
+  )}
+  {name === 'mcp' && (
+    <>
+      <circle cx="6" cy="6" r="2.4" />
+      <circle cx="18" cy="6" r="2.4" />
+      <circle cx="12" cy="18" r="2.4" />
+      <path d="M7.7 7.7 10.6 16M16.3 7.7 13.4 16M8.4 6h7.2" />
+    </>
+  )}
+  {name === 'agents' && (
+    <>
+      <path d="M12 3v4" />
+      <rect x="6" y="7" width="12" height="9" rx="2" />
+      <path d="M8 20h8M10 16v4M14 16v4" />
+      <circle cx="10" cy="11.5" r="0.8" fill="currentColor" stroke="none" />
+      <circle cx="14" cy="11.5" r="0.8" fill="currentColor" stroke="none" />
+    </>
+  )}
+  {name === 'about' && (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <line x1="12" y1="11" x2="12" y2="16" />
+      <circle cx="12" cy="8" r="0.7" fill="currentColor" stroke="none" />
+    </>
+  )}
+  {name === 'status' && (
+    <>
+      <path d="M4 13h4l2-6 4 11 2-5h4" />
+      <path d="M4 4h16v16H4z" />
+    </>
+  )}
+  {name === 'privacy' && (
+    <>
+      <path d="M12 3l7 3v5c0 4.6-2.8 8-7 10-4.2-2-7-5.4-7-10V6z" />
+      <path d="M9.5 12l1.7 1.7 3.6-4" />
+    </>
+  )}
+  {name === 'pages' && (
+    <>
+      <path d="M7 3h8l4 4v14H7zM15 3v5h5" />
+      <path d="M4 7v14h11M10 12h6M10 16h6" />
+    </>
+  )}
+</svg>

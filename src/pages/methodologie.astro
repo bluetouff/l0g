@@ -29,7 +29,7 @@ const trustItems = [
   description="Comment l0g calcule ses signaux de risque : tableau de bord consolidé de signaux, historique point-in-time pour backtests, normalisation 0-100, score de confluence 13F x Form 4, formules, seuils et limites assumées."
 
   alternateLinks={[{ hreflang: 'fr', href: new URL('/methodologie/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/methodology/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/methodologie/', Astro.site).toString() }]}>
-  <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
+  <p class="language-switch mono-label" data-pagefind-ignore style="color: var(--color-signal)">
     <a href="/en/methodology/" class="link-term">English version available →</a>
   </p>
 
@@ -211,7 +211,7 @@ interpolation linéaire entre ces points, borné 0-100</code></pre>
       <article class="idx card" style="--c: #7aa2f7">
         <span class="idx-h">Dette US · risque dette souveraine</span>
         <p class="idx-d">
-          Le bandeau lit le snapshot machine publié par Debt Risk Radar sur
+          Le bandeau lit le snapshot machine publié par Debt Risk Radar sur{' '}
           <a class="link-term" href="https://debt.l0g.fr/latest.json" target="_blank" rel="noopener">latest.json</a>.
           Le score courant agrège les familles de stress disponibles : solvabilité fiscale, taux et marché,
           levier privé, liquidité, dette Treasury quotidienne, comparables World Bank, crédit BIS,
@@ -251,7 +251,7 @@ valeur bandeau = arrondi(score.current_stress depuis latest.json)</code></pre>
     <p class="mono-label glow" style="color: var(--color-signal)">// la confluence 13F × Form 4</p>
     <p class="m-p">
       Le classement vient de <a class="link-term" href="https://13flow.eu" target="_blank" rel="noopener">13FLOW</a>,
-      un outil distinct, dont le code est
+      un outil distinct, dont le code est{' '}
       <a class="link-term" href="https://github.com/bluetouff/13flow" target="_blank" rel="noopener">public</a>.
       L'idée : croiser deux déclarations publiques de la SEC qui, prises seules, sont
       faibles, mais dont l'intersection est rare et difficile à truquer. Le 13F expose
