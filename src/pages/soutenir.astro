@@ -1,0 +1,477 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import {
+  configuredSupportPaymentLinkCount,
+  supportPaymentLinks,
+} from '../config/support-payment-links.mjs';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+const title = 'Soutenir l0g';
+const description =
+  "Contribuer ponctuellement ou chaque mois au financement de l'infrastructure, des données et des analyses publiques de l0g, sans contrepartie ni influence éditoriale.";
+const paymentLinksReady = configuredSupportPaymentLinkCount === 4;
+
+const monthlyOptions = [
+  {
+    amount: '5 €',
+    cadence: 'par mois',
+    label: 'Soutien essentiel',
+    detail: 'Une participation régulière aux coûts techniques du projet.',
+    href: supportPaymentLinks.monthly5,
+  },
+  {
+    amount: '10 €',
+    cadence: 'par mois',
+    label: 'Soutien régulier',
+    detail: 'Un appui durable à la collecte, à la vérification et à la publication.',
+    href: supportPaymentLinks.monthly10,
+    featured: true,
+  },
+  {
+    amount: '25 €',
+    cadence: 'par mois',
+    label: 'Soutien renforcé',
+    detail: 'Une contribution plus importante à la continuité de l0g.',
+    href: supportPaymentLinks.monthly25,
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://l0g.fr/soutenir/#page',
+  url: 'https://l0g.fr/soutenir/',
+  name: title,
+  description,
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  publisher: { '@id': 'https://l0g.fr/#org' },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImageAlt="Soutenir l0g : contributions volontaires ponctuelles ou mensuelles"
+  robots="noindex,follow"
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <article class="support-page" data-pagefind-ignore>
+    <PageHero
+      index="SUP"
+      kicker="indépendance"
+      title="Soutenir un outil public."
+      highlight="Préserver son indépendance."
+      description="Une contribution volontaire aide à financer l’infrastructure, les collectes de données et le temps consacré aux analyses. Elle n’achète ni accès privé ni influence éditoriale."
+      secondary="Les contenus, les méthodes et les données publiques de l0g restent accessibles à tous."
+      glyph="source"
+      accent="var(--color-signal)"
+      stats={[
+        { value: 'libre', label: 'montant ponctuel' },
+        { value: '3', label: 'niveaux mensuels' },
+        { value: '0', label: 'contrepartie' },
+        { value: '0', label: 'tracker sur l0g' },
+      ]}
+    />
+
+    {!paymentLinksReady && (
+      <aside class="setup-note" role="status">
+        <span>mise en service</span>
+        <p>
+          Les liens de paiement Stripe ne sont pas encore activés. Aucun paiement ne peut être
+          envoyé depuis cette page pour le moment.
+        </p>
+      </aside>
+    )}
+
+    <section class="support-section" aria-labelledby="support-once">
+      <div class="section-heading">
+        <p class="mono-label glow">// contribution ponctuelle</p>
+        <h2 id="support-once">Vous choisissez le montant.</h2>
+        <p>
+          Pour soutenir une publication, une méthode ou simplement la continuité du projet,
+          sans engagement récurrent.
+        </p>
+      </div>
+
+      <article class="payment-card payment-card-once instrument-plate">
+        <div>
+          <span class="payment-kicker">montant libre</span>
+          <strong>Contribution ponctuelle</strong>
+          <p>Le montant est choisi sur la page de paiement sécurisée hébergée par Stripe.</p>
+        </div>
+        {supportPaymentLinks.oneTime ? (
+          <a
+            class="payment-link"
+            href={supportPaymentLinks.oneTime}
+            rel="external nofollow"
+            aria-describedby="stripe-boundary"
+          >
+            Choisir mon montant <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <span class="payment-link is-disabled" aria-disabled="true">Bientôt disponible</span>
+        )}
+      </article>
+    </section>
+
+    <section class="support-section" aria-labelledby="support-monthly">
+      <div class="section-heading">
+        <p class="mono-label glow">// soutien mensuel</p>
+        <h2 id="support-monthly">Donner de la visibilité au projet.</h2>
+        <p>
+          Trois montants fixes pour contribuer chaque mois. Le contenu publié reste identique
+          pour tous les lecteurs.
+        </p>
+      </div>
+
+      <div class="monthly-grid">
+        {monthlyOptions.map((option) => (
+          <article class:list={['payment-card', 'instrument-plate', { featured: option.featured }]}>
+            {option.featured && <span class="recommended">repère</span>}
+            <span class="payment-kicker">{option.label}</span>
+            <div class="amount">
+              <strong>{option.amount}</strong>
+              <span>{option.cadence}</span>
+            </div>
+            <p>{option.detail}</p>
+            {option.href ? (
+              <a
+                class="payment-link"
+                href={option.href}
+                rel="external nofollow"
+                aria-describedby="stripe-boundary"
+              >
+                Choisir {option.amount} <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <span class="payment-link is-disabled" aria-disabled="true">Bientôt disponible</span>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="support-section trust-section" aria-labelledby="support-contract">
+      <div class="section-heading">
+        <p class="mono-label glow">// contrat de confiance</p>
+        <h2 id="support-contract">Ce que le soutien change. Et ce qu’il ne change pas.</h2>
+      </div>
+
+      <div class="trust-grid">
+        <article>
+          <span>01</span>
+          <h3>Indépendance éditoriale</h3>
+          <p>Une contribution ne donne aucun droit de regard sur les sujets, les sources ou les conclusions.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Accès public</h3>
+          <p>Aucun contenu, donnée ou outil public n’est réservé aux contributeurs.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Pas de reçu fiscal</h3>
+          <p>l0g est exploité en entreprise individuelle. Le soutien n’ouvre droit à aucune réduction d’impôt.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Vie privée lisible</h3>
+          <p>Aucun nom de contributeur n’est publié et aucune liste n’est cédée ou utilisée à des fins commerciales.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stripe-boundary instrument-plate" id="stripe-boundary" aria-labelledby="stripe-title">
+      <div>
+        <p class="mono-label glow">// avant de quitter l0g</p>
+        <h2 id="stripe-title">Le paiement est traité hors de l0g.</h2>
+      </div>
+      <div class="boundary-copy">
+        <p>
+          Les boutons actifs ouvrent <strong>buy.stripe.com</strong>. Aucun script, pixel,
+          formulaire ou cookie Stripe n’est chargé sur cette page avant votre clic.
+        </p>
+        <p>
+          Stripe traite ensuite les informations nécessaires au paiement selon sa propre
+          politique de confidentialité. l0g reçoit uniquement les informations de transaction
+          nécessaires au suivi du soutien et à ses obligations comptables.
+        </p>
+        <p>
+          Un soutien mensuel peut être arrêté depuis les outils de gestion Stripe ou en écrivant
+          à <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.
+        </p>
+        <div class="boundary-links">
+          <a href="/rgpd/">Confidentialité l0g</a>
+          <a href="https://stripe.com/fr/privacy" rel="external nofollow noopener" target="_blank">
+            Confidentialité Stripe <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .support-page {
+      width: min(100%, 66rem);
+      margin-inline: auto;
+    }
+    .setup-note {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.85rem;
+      align-items: start;
+      margin-top: 1rem;
+      border: 1px solid color-mix(in srgb, var(--color-amber) 42%, var(--color-line));
+      border-radius: 10px 3px 10px 10px;
+      padding: 0.9rem 1rem;
+      background: color-mix(in srgb, var(--color-amber) 7%, transparent);
+    }
+    .setup-note span {
+      border: 1px solid color-mix(in srgb, var(--color-amber) 52%, transparent);
+      border-radius: 999px;
+      padding: 0.18rem 0.48rem;
+      color: var(--color-amber);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .setup-note p {
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .support-section {
+      margin-top: clamp(3rem, 7vw, 4.6rem);
+    }
+    .section-heading {
+      max-width: 45rem;
+    }
+    .section-heading h2,
+    .stripe-boundary h2 {
+      margin-top: 0.55rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    .section-heading > p:last-child {
+      margin-top: 0.65rem;
+      color: var(--color-muted);
+      font-family: var(--font-read);
+      line-height: 1.65;
+    }
+    .payment-card {
+      --plate-accent: var(--color-signal);
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      padding: 1.2rem;
+    }
+    .payment-card-once {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1.25rem;
+      padding: clamp(1.2rem, 3vw, 1.6rem);
+    }
+    .payment-kicker,
+    .recommended {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .payment-card strong {
+      display: block;
+      margin-top: 0.3rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.06rem;
+    }
+    .payment-card p {
+      margin-top: 0.55rem;
+      color: var(--color-muted);
+      font-family: var(--font-read);
+      font-size: 0.88rem;
+      line-height: 1.58;
+    }
+    .payment-link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      border: 1px solid color-mix(in srgb, var(--color-signal) 60%, var(--color-line));
+      border-radius: 8px 2px 8px 8px;
+      padding: 0.65rem 0.9rem;
+      background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+      color: var(--color-bright);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      text-align: center;
+      transition: border-color 0.18s, background 0.18s, color 0.18s;
+    }
+    a.payment-link:hover {
+      border-color: var(--color-signal);
+      background: color-mix(in srgb, var(--color-signal) 17%, transparent);
+      color: var(--color-signal);
+    }
+    .payment-link.is-disabled {
+      cursor: not-allowed;
+      border-color: var(--color-line);
+      background: var(--surface-inset);
+      color: var(--color-muted);
+    }
+    .monthly-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.25rem;
+    }
+    .monthly-grid .payment-card {
+      min-height: 18rem;
+    }
+    .monthly-grid .payment-card.featured {
+      --plate-accent: var(--color-accent);
+      border-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-line));
+    }
+    .featured .recommended {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.8rem;
+      color: var(--color-accent);
+    }
+    .amount {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      margin-top: 1.3rem;
+    }
+    .amount strong {
+      margin: 0;
+      color: var(--color-bright);
+      font-size: clamp(1.85rem, 4vw, 2.45rem);
+      line-height: 1;
+    }
+    .amount span {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+    .monthly-grid .payment-link {
+      width: 100%;
+      margin-top: auto;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      margin-top: 1.25rem;
+      border: 1px solid var(--color-line);
+      border-radius: 12px 3px 12px 12px;
+      background: var(--color-line);
+    }
+    .trust-grid article {
+      padding: 1.15rem;
+      background: color-mix(in srgb, var(--color-surface) 96%, transparent);
+    }
+    .trust-grid article > span {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+    .trust-grid h3 {
+      margin-top: 0.35rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 0.96rem;
+    }
+    .trust-grid p {
+      margin-top: 0.45rem;
+      color: var(--color-muted);
+      font-family: var(--font-read);
+      font-size: 0.86rem;
+      line-height: 1.58;
+    }
+    .stripe-boundary {
+      --plate-accent: var(--color-accent);
+      display: grid;
+      grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      margin-top: clamp(3rem, 7vw, 4.6rem);
+      padding: clamp(1.2rem, 4vw, 2rem);
+    }
+    .boundary-copy {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .boundary-copy p {
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      font-size: 0.9rem;
+      line-height: 1.62;
+    }
+    .boundary-copy strong {
+      color: var(--color-bright);
+    }
+    .boundary-copy a {
+      color: var(--color-signal);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--color-signal) 35%, transparent);
+      text-underline-offset: 3px;
+    }
+    .boundary-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+      margin-top: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+    @media (max-width: 780px) {
+      .monthly-grid {
+        grid-template-columns: 1fr;
+      }
+      .monthly-grid .payment-card {
+        min-height: 14rem;
+      }
+      .stripe-boundary {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 580px) {
+      .payment-card-once {
+        grid-template-columns: 1fr;
+      }
+      .payment-card-once .payment-link {
+        width: 100%;
+      }
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+      .setup-note {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .payment-link {
+        transition: none;
+      }
+    }
+  </style>
+</BaseLayout>
