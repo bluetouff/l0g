@@ -1,5 +1,5 @@
 ---
-title: "MiCA, Binance et l'ombre de Lagarde : ce qui est établi, ce qui est raconté"
+title: "MiCA, Binance et l'ombre de Lagarde : faits établis et récit politique"
 description: "À deux semaines de la fin du régime transitoire de MiCA, la plus grande plateforme crypto au monde n'a pas d'agrément européen. La presse attribue le blocage grec à une intervention de Christine Lagarde, que ni la BCE ni Athènes ne confirment. Démêlage sourcé des faits et du récit."
 pubDate: 2026-06-19T15:00:00+02:00
 tags: ["crypto", "régulation", "mica", "binance", "bce", "lagarde", "stablecoins"]

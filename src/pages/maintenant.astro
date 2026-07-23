@@ -117,7 +117,7 @@ const jsonLd = {
   '@type': 'CollectionPage',
   '@id': `${site}/maintenant/#page`,
   name: 'Maintenant sur l0g',
-  description: 'Ce qui a changé dans les signaux et les analyses l0g, avec importance, incertitude, sources et prochaines vérifications.',
+  description: 'Les mouvements récents dans les signaux et les analyses l0g, avec importance, incertitude, sources et prochaines vérifications.',
   url: `${site}/maintenant/`,
   inLanguage: 'fr',
   isPartOf: { '@id': `${site}/#website` },
@@ -127,7 +127,7 @@ const jsonLd = {
 
 <BaseLayout
   title="Maintenant"
-  description="Ce qui a changé dans l’économie, les marchés et les risques suivis par l0g, avec les sources, les incertitudes et les prochaines vérifications."
+  description="Les mouvements récents dans l’économie, les marchés et les risques suivis par l0g, avec les sources, les incertitudes et les prochaines vérifications."
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
@@ -137,7 +137,7 @@ const jsonLd = {
       <div class="now-hero-head">
         <div>
           <p class="mono-label">// maintenant · {referenceLabel}</p>
-          <h1>Ce qui mérite votre attention.</h1>
+          <h1>L’essentiel, maintenant.</h1>
         </div>
         <L0gGlyph name="observe" size="lg" />
       </div>
@@ -171,7 +171,7 @@ const jsonLd = {
       <SectionSignature
         index="01"
         eyebrow="mouvements"
-        title="Ce qui a changé"
+        title="Mouvements documentés"
         id="changes-title"
         description={`Comparaison ${referenceLabel}. Une variation n’est affichée que si une baseline publique est disponible.`}
       />
@@ -288,7 +288,7 @@ const jsonLd = {
         {diff.limitations.map((limit) => <li>{limit}</li>)}
       </ul>
       <div>
-        <a href="/risk-diff/">Audit détaillé de ce qui a changé</a>
+        <a href="/risk-diff/">Audit détaillé des mouvements</a>
         <a href="/series/">Historique des signaux</a>
         <a href="/methodologie/">Méthodologies</a>
       </div>
@@ -367,9 +367,9 @@ const jsonLd = {
     margin-top: 0.7rem;
     color: var(--color-bright);
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 7vw, 5.4rem);
-    line-height: 0.98;
-    letter-spacing: -0.05em;
+    font-size: clamp(2.15rem, 5vw, 4.1rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
     text-wrap: balance;
   }
   .now-lede {

@@ -131,7 +131,7 @@ Trois différences expliquent l'écart. La formule, d'abord : le PCE est un indi
   <text x="513" y="156" fill="#5eead4" font-size="12" font-weight="700">≈ 7,1 %</text>
   <text x="40" y="184" fill="#8b909b" font-size="11">Le plus grand écart jamais mesuré entre les deux indices.</text>
   <line x1="40" y1="206" x2="680" y2="206" stroke="#2a2c33" stroke-width="1"></line>
-  <text x="40" y="232" fill="#f5f6f8" font-size="12" font-weight="700">Ce qui les sépare</text>
+  <text x="40" y="232" fill="#f5f6f8" font-size="12" font-weight="700">Principales différences</text>
   <text x="40" y="254" fill="#d6d9df" font-size="11.5">Formule : panier fixe (Laspeyres) pour le CPI, indice chaîné (Fisher) pour le PCE.</text>
   <text x="40" y="274" fill="#d6d9df" font-size="11.5">Logement : poids environ deux fois plus élevé dans le CPI ; santé : plus lourde dans le PCE.</text>
   <text x="40" y="294" fill="#8b909b" font-size="11">Écart moyen depuis 2000 : le CPI dépasse le PCE d'environ 0,39 point. Sources : Fed de Cleveland, Fed d'Atlanta.</text>

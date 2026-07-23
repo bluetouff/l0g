@@ -37,7 +37,7 @@ const intents = [
   },
   {
     eyebrow: 'changement',
-    title: 'Je veux savoir ce qui bouge',
+    title: 'Je veux suivre les mouvements',
     text: '« Maintenant » résume le changement, son importance, son incertitude et la prochaine donnée à vérifier.',
     href: '/maintenant/',
     cta: 'voir maintenant',
@@ -260,9 +260,9 @@ const featureGroups = [
         avoid: 'Oublier la date d’un snapshot.',
       },
       {
-        title: 'Ce qui a changé',
+        title: 'Mouvements récents',
         href: '/risk-diff/',
-        use: 'Voir ce qui a changé récemment.',
+        use: 'Comparer les évolutions récentes.',
         look: 'Différences 1 jour, 7 jours, 30 jours.',
         avoid: 'Le lire comme une prédiction.',
       },
@@ -368,7 +368,7 @@ const reminders = [
   'Un chiffre sans date est fragile.',
   'Une source primaire vaut mieux qu’un résumé.',
   'Deux scores 0-100 ne sont pas forcément comparables.',
-  '« Ce qui a changé » montre une évolution, pas ce qui va arriver.',
+  '« Mouvements récents » décrit une évolution, pas une prédiction.',
   'Black Box rejoue le passé publié, elle ne reconstruit pas après coup.',
 ];
 
@@ -626,7 +626,7 @@ const jsonLd = {
         <a href="/glossaire/">je découvre les mots</a>
         <a href="/guides/">j’apprends une notion</a>
         <a href="/dashboards/">je regarde les instruments</a>
-        <a href="/risk-diff/">je vois ce qui a changé</a>
+        <a href="/risk-diff/">je compare les mouvements</a>
       </div>
     </section>
   </article>
@@ -673,7 +673,7 @@ const jsonLd = {
     .tour-title {
       max-width: 48rem;
       margin-top: 0.8rem;
-      font-size: clamp(2.25rem, 6vw, 4.9rem);
+      font-size: clamp(2.1rem, 5vw, 4.05rem);
       line-height: 0.98;
       letter-spacing: -0.06em;
       color: var(--color-bright);

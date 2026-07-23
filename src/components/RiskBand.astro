@@ -139,9 +139,12 @@ const aggregateStatus = aggregateDate
 ---
 
 <section class="rise my-8" data-pagefind-ignore>
-  <div class="mb-3 flex items-baseline justify-between gap-3">
-    <h2 class="mono-label glow">// signaux de risque</h2>
-    <a class="mono-label risk-history-link" href="/series/">historique & provenance</a>
+  <div class="risk-band-head">
+    <h2 class="mono-label glow"><span>01</span>// signaux de risque</h2>
+    <nav aria-label="Accès aux signaux de risque">
+      <a class="mono-label risk-history-link" href="/maintenant/">lecture complète</a>
+      <a class="mono-label risk-history-link" href="/series/">historique & provenance</a>
+    </nav>
   </div>
 
   <div class="grid grid-cols-2 gap-3 lg:grid-cols-5">
@@ -204,6 +207,30 @@ const aggregateStatus = aggregateDate
 <script src="/risk.js?v=20260630-debt" defer is:inline></script>
 
 <style>
+  .risk-band-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.55rem 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .risk-band-head h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-bright);
+  }
+  .risk-band-head h2 span {
+    color: var(--color-signal);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+  }
+  .risk-band-head nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+  }
   .risk-track {
     height: 6px;
     border-radius: 999px;

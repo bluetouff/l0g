@@ -12,7 +12,7 @@ const { fact, importance, uncertainty, readingTime } = Astro.props;
 const rows: Array<{ index: string; label: string; value: string; glyph: GlyphName }> = [
   { index: '01', label: 'Le fait', value: fact, glyph: 'source' },
   { index: '02', label: 'Pourquoi cela compte', value: importance, glyph: 'impact' },
-  { index: '03', label: 'Ce qui reste incertain', value: uncertainty, glyph: 'uncertainty' },
+  { index: '03', label: 'Points encore incertains', value: uncertainty, glyph: 'uncertainty' },
 ];
 ---
 

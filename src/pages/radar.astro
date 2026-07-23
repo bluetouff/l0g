@@ -185,7 +185,7 @@ const channels = [
       </div>
       <p>
         Les cinq instruments l0g restent séparés. Le Radar montre les canaux à tester
-        entre eux, avec ce qui confirmerait ou contredirait chaque transmission.
+        entre eux, puis les observations capables de confirmer ou de contredire chaque transmission.
       </p>
       <div class="radar-rule">
         <strong>Pas de score global.</strong>
@@ -254,7 +254,7 @@ const channels = [
       <SectionSignature
         index="02"
         eyebrow="tests de transmission"
-        title="Ce qui confirme, ce qui contredit"
+        title="Tests de confirmation et de réfutation"
         id="channels-title"
         description="Ces fiches empêchent le Radar de devenir une simple carte narrative : chaque lien doit pouvoir échouer."
       />
@@ -296,8 +296,8 @@ const channels = [
         id="continue-title"
       />
       <div>
-        <a href="/maintenant/"><strong>Maintenant</strong><span>Ce qui a changé et pourquoi cela compte.</span></a>
-        <a href="/risk-diff/"><strong>Ce qui a changé</strong><span>Audit sur 1, 7 et 30 jours.</span></a>
+        <a href="/maintenant/"><strong>Maintenant</strong><span>Mouvements récents, importance et prochaines vérifications.</span></a>
+        <a href="/risk-diff/"><strong>Mouvements récents</strong><span>Audit sur 1, 7 et 30 jours.</span></a>
         <a href="/series/"><strong>Historique</strong><span>Dates, points et provenance des signaux.</span></a>
         <a href="/dashboards/"><strong>Tableaux de bord</strong><span>Ouvrir chaque instrument spécialisé.</span></a>
       </div>
@@ -318,7 +318,7 @@ const channels = [
   .radar-hero-head { display: flex; justify-content: space-between; gap: 1rem; }
   .radar-hero-head :global(.l0g-glyph) { --glyph-color: var(--color-accent); }
   .radar-hero .mono-label { color: var(--color-accent); }
-  .radar-hero h1 { max-width: 14ch; margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 5.2rem); line-height: 0.98; letter-spacing: -0.05em; text-wrap: balance; }
+  .radar-hero h1 { max-width: 16ch; margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.15rem, 5vw, 4.05rem); line-height: 1.02; letter-spacing: -0.045em; text-wrap: balance; }
   .radar-hero > p { max-width: 48rem; margin-top: 1.2rem; border-left: 2px solid var(--color-accent); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1rem, 2vw, 1.14rem); line-height: 1.7; }
   .radar-rule { display: flex; gap: 0.8rem 1.5rem; align-items: baseline; margin-top: 1.4rem; border-top: 1px solid var(--color-line); padding-top: 0.9rem; }
   .radar-rule strong { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }

@@ -74,7 +74,7 @@ const jsonLd = {
 
 <BaseLayout
   title="Risk Diff"
-  description="Risk Diff l0g : ce qui a changé dans le risque depuis hier, 7 jours et 30 jours, en reliant signaux, sources, claims, articles et méthodes."
+  description="Risk Diff l0g : les évolutions du risque depuis hier, 7 jours et 30 jours, reliées aux signaux, sources, claims, articles et méthodes."
   alternateLinks={[
     { hreflang: 'fr', href: new URL('/risk-diff/', Astro.site).toString() },
     { hreflang: 'en', href: new URL('/en/risk-diff/', Astro.site).toString() },
@@ -89,7 +89,7 @@ const jsonLd = {
       <p class="mono-label glow">// risk diff</p>
       <h1 class="rd-title font-display glow">Le mouvement de la connaissance du risque.</h1>
       <p class="rd-lede">
-        Une lecture compacte de ce qui a changé depuis hier, 7 jours et 30 jours :
+        Une lecture compacte des évolutions observées depuis hier, 7 jours et 30 jours :
         signaux, sources, claims, modèles, articles reliés et confiance. La page ne
         fabrique pas de diff quand l’historique public manque ; elle le signale.
       </p>
@@ -263,7 +263,7 @@ const jsonLd = {
   .rd-title {
     margin-top: .8rem;
     max-width: 900px;
-    font-size: clamp(2.2rem, 6vw, 4.8rem);
+    font-size: clamp(2.1rem, 5vw, 4rem);
     line-height: .96;
     letter-spacing: 0;
   }

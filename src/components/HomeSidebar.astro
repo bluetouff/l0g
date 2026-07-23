@@ -9,6 +9,25 @@ import SearchForm from './SearchForm.astro';
     <SearchForm compact />
   </section>
 
+  <a href="/maintenant/" class="now-card">
+    <span class="now-card-top">
+      <span class="now-orbit" aria-hidden="true"><i></i><b></b></span>
+      <small>// point quotidien</small>
+    </span>
+    <strong>Maintenant</strong>
+    <p>Les mouvements récents, leur importance et les prochaines vérifications.</p>
+    <span class="now-card-cta">Ouvrir <i aria-hidden="true">›</i></span>
+  </a>
+
+  <a href="/radar/" class="radar-card">
+    <L0gGlyph name="observe" size="sm" />
+    <span>
+      <strong>Radar des transmissions</strong>
+      <small>Suivre la circulation du risque</small>
+    </span>
+    <i aria-hidden="true">›</i>
+  </a>
+
   <section class="start-card">
     <div class="start-top">
       <p class="eyebrow">// nouveau ici ?</p>
@@ -24,10 +43,6 @@ import SearchForm from './SearchForm.astro';
 
   <section class="side-shortcuts">
     <h2>// raccourcis</h2>
-    <a href="/maintenant/">
-      <strong>Maintenant</strong>
-      <span>Ce qui a changé depuis votre passage</span>
-    </a>
     <a href="/sujets/">
       <strong>Sujets suivis</strong>
       <span>Les dossiers dans la durée</span>
@@ -51,6 +66,132 @@ import SearchForm from './SearchForm.astro';
     letter-spacing: 0.11em;
     text-transform: uppercase;
   }
+  .now-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 42%, var(--color-line));
+    border-radius: 14px 4px 14px 14px;
+    padding: 1rem;
+    background:
+      radial-gradient(90% 110% at 0 0, color-mix(in srgb, var(--color-amber) 9%, transparent), transparent 72%),
+      var(--surface-elevated);
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
+  }
+  .now-card::after {
+    content: '';
+    position: absolute;
+    right: -2.6rem;
+    bottom: -3.2rem;
+    width: 8rem;
+    height: 8rem;
+    border: 1px dashed color-mix(in srgb, var(--color-signal) 25%, transparent);
+    border-radius: 50%;
+  }
+  .now-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .now-card-top small {
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .now-orbit {
+    position: relative;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, var(--color-line));
+    border-radius: 50%;
+  }
+  .now-orbit i {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--color-amber);
+    box-shadow: 0 0 14px var(--color-amber);
+  }
+  .now-orbit b {
+    position: absolute;
+    inset: 0.28rem;
+    border: 1px dashed color-mix(in srgb, var(--color-signal) 45%, transparent);
+    border-radius: 50%;
+  }
+  .now-card > strong {
+    display: block;
+    margin-top: 0.7rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+  }
+  .now-card > p {
+    max-width: 14rem;
+    margin-top: 0.4rem;
+    color: var(--color-muted);
+    font-size: 0.76rem;
+    line-height: 1.5;
+  }
+  .now-card-cta {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .now-card-cta i { color: var(--color-amber); font-size: 0.9rem; font-style: normal; }
+  .now-card:hover { border-color: color-mix(in srgb, var(--color-amber) 72%, var(--color-line)); }
+  .now-card:hover > strong { color: var(--color-amber); }
+  .radar-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    align-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-line));
+    border-radius: 11px 3px 11px 11px;
+    padding: 0.78rem 0.85rem;
+    background: color-mix(in srgb, var(--color-accent) 4%, var(--color-surface));
+  }
+  .radar-card :global(.l0g-glyph) {
+    --glyph-size: 2rem;
+    --glyph-color: var(--color-accent);
+  }
+  .radar-card span,
+  .radar-card strong,
+  .radar-card small { display: block; }
+  .radar-card strong {
+    color: var(--color-bright);
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+  .radar-card small {
+    margin-top: 0.18rem;
+    color: var(--color-muted);
+    font-size: 0.65rem;
+  }
+  .radar-card > i {
+    color: var(--color-accent);
+    font-size: 1rem;
+    font-style: normal;
+  }
+  .radar-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 68%, var(--color-line));
+    background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface));
+  }
+  .radar-card:hover strong { color: var(--color-accent); }
   .start-card {
     position: relative;
     overflow: hidden;

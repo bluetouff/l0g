@@ -103,7 +103,7 @@ const needCards = [
         l<span style="color: var(--color-signal)">0</span>g <span style="color: var(--color-accent)">:</span> les angles morts de <span class="home-title-gradient">la finance</span>
       </h1>
       <p class="home-promise">
-        l0g explique ce qui change dans l’économie et les marchés,
+        l0g décrypte les changements de l’économie et des marchés,
         avec les chiffres, les sources et leurs limites.
       </p>
       <div class="home-actions">
@@ -114,20 +114,14 @@ const needCards = [
   )}
 
   {isFirst && (
-    <a href="/maintenant/" class="home-now rise">
-      <span class="home-now-signal" aria-hidden="true"><i></i><b></b></span>
-      <span class="home-now-copy">
-        <small>// votre point d’entrée quotidien</small>
-        <strong>Maintenant</strong>
-        <p>Ce qui a changé, pourquoi cela compte et ce qu’il faut vérifier ensuite.</p>
-      </span>
-      <span class="home-now-cta">Ouvrir <i aria-hidden="true">›</i></span>
-    </a>
+    <section class="home-risk" aria-label="Les signaux de risque">
+      <RiskBand />
+    </section>
   )}
 
   {isFirst && (
     <section class="home-needs rise" aria-labelledby="home-needs-title">
-      <SectionSignature index="01" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
+      <SectionSignature index="02" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
       <div class="need-grid">
         {needCards.map((card, index) => (
           <a href={card.href} class="need-card instrument-plate">
@@ -160,7 +154,7 @@ const needCards = [
   {hero && (
     <section class="home-featured" aria-labelledby="featured-title">
       {isFirst
-        ? <SectionSignature index="02" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
+        ? <SectionSignature index="03" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
         : <>
             <p class="mono-label" style="color: var(--color-signal)">// à la une</p>
             <h2 id="featured-title" class="section-title">L’analyse à retenir</h2>
@@ -182,7 +176,7 @@ const needCards = [
   {isFirst && (
     <section class="home-topics" aria-labelledby="followed-topics-title">
       <SectionSignature
-        index="03"
+        index="04"
         eyebrow="dossiers"
         title="Les sujets suivis"
         id="followed-topics-title"
@@ -199,19 +193,6 @@ const needCards = [
           </a>
         ))}
       </div>
-    </section>
-  )}
-
-  {isFirst && (
-    <section class="home-risk" aria-labelledby="risk-intro-title">
-      <SectionSignature
-        index="04"
-        eyebrow="instruments"
-        title="Les signaux de risque"
-        id="risk-intro-title"
-        description="Ces scores sont des panneaux de signalisation, pas une note globale des marchés. Chaque instrument mesure un phénomène et un horizon différents."
-      />
-      <RiskBand />
     </section>
   )}
 
@@ -256,51 +237,6 @@ const needCards = [
 
 <style>
   .home-intro { padding: 1.1rem 0 0.4rem; }
-  .home-now {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 1rem;
-    align-items: center;
-    overflow: hidden;
-    margin-top: 1rem;
-    border: 1px solid color-mix(in srgb, var(--color-amber) 38%, var(--color-line));
-    border-radius: 12px 3px 12px 12px;
-    padding: 1rem;
-    background:
-      linear-gradient(105deg, color-mix(in srgb, var(--color-amber) 7%, transparent), transparent 48%),
-      var(--surface-elevated);
-  }
-  .home-now::after {
-    content: '';
-    position: absolute;
-    right: -2rem;
-    bottom: -3rem;
-    width: 9rem;
-    height: 9rem;
-    border: 1px dashed color-mix(in srgb, var(--color-signal) 22%, transparent);
-    border-radius: 50%;
-  }
-  .home-now-signal {
-    position: relative;
-    display: grid;
-    width: 2.8rem;
-    height: 2.8rem;
-    place-items: center;
-    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, var(--color-line));
-    border-radius: 50%;
-  }
-  .home-now-signal i { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-amber); box-shadow: 0 0 18px var(--color-amber); }
-  .home-now-signal b { position: absolute; inset: 0.35rem; border: 1px dashed color-mix(in srgb, var(--color-signal) 45%, transparent); border-radius: 50%; }
-  .home-now-copy small,
-  .home-now-copy strong,
-  .home-now-copy p { display: block; }
-  .home-now-copy small { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  .home-now-copy strong { margin-top: 0.22rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.2rem; }
-  .home-now-copy p { margin-top: 0.2rem; color: var(--color-muted); font-size: 0.73rem; line-height: 1.45; }
-  .home-now-cta { position: relative; z-index: 1; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .home-now:hover { border-color: color-mix(in srgb, var(--color-amber) 70%, var(--color-line)); }
-  .home-now:hover .home-now-copy strong { color: var(--color-amber); }
   .home-kicker {
     display: flex;
     align-items: center;
@@ -381,7 +317,7 @@ const needCards = [
     font-size: clamp(1.55rem, 3vw, 2.15rem);
     line-height: 1.12;
   }
-  .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.7rem; margin-top: 1.2rem; }
+  .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
   .need-card {
     display: flex;
     min-height: 15rem;
@@ -441,7 +377,7 @@ const needCards = [
     text-transform: uppercase;
   }
   .need-card > small i { color: var(--color-signal); font-size: 1rem; font-style: normal; }
-  .home-featured :global(.post-hero) { margin-top: 1.1rem; }
+  .home-featured :global(.post-hero) { margin-top: 0; }
   .section-heading {
     display: flex;
     flex-wrap: wrap;
@@ -456,7 +392,7 @@ const needCards = [
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-  .topic-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin-top: 1.15rem; }
+  .topic-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
   .topic-card {
     display: block;
     position: relative;
@@ -520,12 +456,12 @@ const needCards = [
     text-transform: uppercase;
   }
   .home-risk {
+    margin-top: 1.65rem;
     border-top: 1px solid var(--color-line);
     border-bottom: 1px solid var(--color-line);
-    padding: 2.5rem 0 1.5rem;
+    padding: 1.15rem 0 1.2rem;
   }
-  .home-risk :global(.rise) { margin-top: 1.1rem; margin-bottom: 0; }
-  .home-risk :global(.rise > div:first-child) { display: none; }
+  .home-risk :global(.rise) { margin-top: 0; margin-bottom: 0; }
   .feed-heading { margin-bottom: 0.9rem; }
   .feed-heading > p { color: var(--color-muted); }
   @media (min-width: 560px) {
@@ -537,8 +473,6 @@ const needCards = [
     .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
   @media (max-width: 520px) {
-    .home-now { grid-template-columns: auto minmax(0, 1fr); }
-    .home-now-cta { grid-column: 2; }
     .home-actions { display: grid; grid-template-columns: 1fr; }
     .home-action { width: 100%; }
   }
