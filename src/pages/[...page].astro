@@ -90,6 +90,8 @@ const needCards = [
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
+  ogImage={isFirst ? '/og-home.png' : '/og-default.png'}
+  ogImageAlt={isFirst ? 'l0g : les angles morts de la finance, économie, marchés et risques sur un dégradé turquoise, rose et ambre' : undefined}
 >
   {isFirst && <HomeSidebar slot="sidebar" />}
 
