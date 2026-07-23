@@ -24,10 +24,6 @@ import SearchForm from './SearchForm.astro';
 
   <section class="side-shortcuts">
     <h2>// raccourcis</h2>
-    <a href="/terminal/" class="terminal-shortcut">
-      <strong><span aria-hidden="true">$</span> Terminal l0g</strong>
-      <span>Explorer rapidement toutes les pages</span>
-    </a>
     <a href="/sujets/">
       <strong>Sujets suivis</strong>
       <span>Les dossiers dans la durée</span>
@@ -120,13 +116,4 @@ import SearchForm from './SearchForm.astro';
   .side-shortcuts strong { color: var(--color-paper); font-size: 0.86rem; }
   .side-shortcuts span { margin-top: 0.12rem; color: var(--color-muted); font-size: 0.72rem; }
   .side-shortcuts a:hover strong { color: var(--color-signal); }
-  .side-shortcuts .terminal-shortcut {
-    border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-line));
-    border-radius: 10px 3px 10px 10px;
-    padding: 0.68rem;
-    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
-  }
-  .terminal-shortcut strong { color: var(--color-bright); }
-  .terminal-shortcut strong span { display: inline; color: var(--color-accent); }
-  .side-shortcuts .terminal-shortcut:hover strong { color: var(--color-accent); }
 </style>

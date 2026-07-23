@@ -1,197 +1,231 @@
 ---
-/**
- * Colonne de droite — DESKTOP. Boutons vers les apps l0g (cartes terminal,
- * accent par application). Contenu dans src/config/sidebar.ts.
- */
-import { dashboards, sidebarAbout } from '../config/sidebar.ts';
+import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
 import SearchForm from './SearchForm.astro';
 
-const accentVar: Record<string, string> = {
-  teal: 'var(--color-signal)',
-  blue: '#7aa2f7',
-  pink: 'var(--color-accent)',
-  amber: 'var(--color-amber)',
+interface Props {
+  path?: string;
+}
+
+interface SidebarLink {
+  href: string;
+  label: string;
+  detail: string;
+}
+
+interface Context {
+  eyebrow: string;
+  title: string;
+  description: string;
+  glyph: GlyphName;
+  accent: string;
+  links: SidebarLink[];
+}
+
+const { path = '/' } = Astro.props;
+
+const contexts: Record<string, Context> = {
+  understand: {
+    eyebrow: 'carte de lecture',
+    title: 'Construire ses repères.',
+    description: 'Un dossier pour suivre un fil, un guide pour apprendre, une définition pour débloquer un mot.',
+    glyph: 'understand',
+    accent: 'var(--color-signal)',
+    links: [
+      { href: '/sujets/', label: 'Sujets suivis', detail: 'Les fils longs du journal' },
+      { href: '/guides/', label: 'Guides de référence', detail: 'Les notions qui durent' },
+      { href: '/glossaire/', label: 'Atlas du glossaire', detail: 'Définitions et concepts voisins' },
+    ],
+  },
+  verify: {
+    eyebrow: 'chaîne de preuve',
+    title: 'Vérifier avant de conclure.',
+    description: 'Revenir à la source, comprendre le calcul et lire les limites avant d’utiliser un signal.',
+    glyph: 'verify',
+    accent: 'var(--color-accent)',
+    links: [
+      { href: '/methodologie/', label: 'Méthodologie', detail: 'Formules, seuils et limites' },
+      { href: '/sources/', label: 'Sources primaires', detail: 'Institutions et cadences' },
+      { href: '/preuves/', label: 'Preuves publiques', detail: 'Artefacts et traçabilité' },
+    ],
+  },
+  data: {
+    eyebrow: 'surface publique',
+    title: 'Passer du récit aux données.',
+    description: 'Inventaires, séries et contrats machine restent accessibles, citables et rejouables.',
+    glyph: 'source',
+    accent: '#7aa2f7',
+    links: [
+      { href: '/donnees/', label: 'Jeux de données', detail: 'Formats, licences et fraîcheur' },
+      { href: '/series/', label: 'Séries de risque', detail: 'Historique nommé et daté' },
+      { href: '/api/', label: 'API publique', detail: 'Contrats et points d’accès' },
+    ],
+  },
+  read: {
+    eyebrow: 'navigation éditoriale',
+    title: 'Trouver le bon point d’entrée.',
+    description: 'Lire l’analyse récente, reprendre un sujet dans la durée ou décoder une notion.',
+    glyph: 'read',
+    accent: 'var(--color-amber)',
+    links: [
+      { href: '/', label: 'Dernières analyses', detail: 'Le journal, du plus récent au plus ancien' },
+      { href: '/sujets/', label: 'Sujets suivis', detail: 'Les dossiers dans la durée' },
+      { href: '/hebdo/', label: 'Synthèse hebdo', detail: 'Ce qui mérite d’être retenu' },
+    ],
+  },
 };
+
+const contextKey =
+  path.startsWith('/sujet') || path.startsWith('/guides') || path.startsWith('/glossaire') || path.startsWith('/demarrer')
+    ? 'understand'
+    : path.startsWith('/methodologie') || path.startsWith('/sources') || path.startsWith('/preuves') ||
+        path.startsWith('/status') || path.startsWith('/black-box') || path.startsWith('/protocole')
+      ? 'verify'
+      : path.startsWith('/donnees') || path.startsWith('/api') || path.startsWith('/mcp') ||
+          path.startsWith('/agents') || path.startsWith('/series') || path.startsWith('/backtests')
+        ? 'data'
+        : 'read';
+
+const context = contexts[contextKey];
 ---
 
-<div class="space-y-6">
+<div class="context-sidebar">
   <section>
-    <h2 class="mono-label glow mb-3">// recherche</h2>
+    <h2>// recherche</h2>
     <SearchForm compact />
   </section>
 
-  <section>
-    <a href="/dashboards/" class="group mb-3 flex items-baseline justify-between gap-2">
-      <h2 class="mono-label glow">// dashboards</h2>
-      <span class="text-xs text-muted transition-colors group-hover:text-bright">tout voir ›</span>
-    </a>
-    <div class="space-y-2.5">
-      {
-        dashboards.map((d) => (
-          <a
-            href={d.href}
-            target="_blank"
-            rel="noopener"
-            class="dash-card group flex items-center gap-3 rounded-xl border border-line p-3"
-            style={`--a:${accentVar[d.accent]}`}
-          >
-            <span class="dash-tile flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg text-lg">
-              {d.glyph}
-            </span>
-            <span class="min-w-0 flex-1">
-              <span class="flex items-center gap-1.5">
-                <span class="truncate text-[0.92rem] font-semibold text-bright">{d.label}</span>
-                {d.beta && <span class="sb-beta flex-shrink-0">beta</span>}
-              </span>
-              <span class="block truncate text-xs text-muted">{d.sub}</span>
-            </span>
-            <span class="dash-chevron text-muted transition-transform group-hover:translate-x-0.5">›</span>
-          </a>
-        ))
-      }
+  <section
+    class="context-card instrument-plate"
+    style={`--context-accent:${context.accent};--plate-accent:${context.accent}`}
+  >
+    <div class="context-head">
+      <p>{context.eyebrow}</p>
+      <L0gGlyph name={context.glyph} />
     </div>
+    <h2>{context.title}</h2>
+    <p class="context-copy">{context.description}</p>
   </section>
 
-  <section data-pagefind-ignore>
-    <a
-      href="https://13flow.eu/dashboard.html#confluence"
-      target="_blank"
-      rel="noopener"
-      class="conf-head group mb-3 flex items-baseline justify-between gap-2"
-    >
-      <h2 class="mono-label glow">// confluence</h2>
-      <span class="text-xs text-muted transition-colors group-hover:text-bright">13F &times; Form 4 ›</span>
-    </a>
-    <div class="space-y-1.5" data-confluence>
-      {
-        [0, 1, 2, 3, 4].map((i) => (
-          <a
-            href="https://13flow.eu/dashboard.html#confluence"
-            target="_blank"
-            rel="noopener"
-            class="conf-row flex items-center gap-2 rounded-lg border border-line px-2.5 py-1.5"
-            data-slot={i}
-            style="display:none"
-          >
-            <span class="conf-ticker text-sm font-semibold tabular-nums text-bright" data-ticker>
-              —
-            </span>
-            <span class="conf-ctx ml-auto truncate text-xs text-muted" data-ctx />
-            <span class="conf-score font-display text-lg leading-none glow" data-score />
-          </a>
-        ))
-      }
-    </div>
-  </section>
+  <nav class="context-links" aria-label="Accès associés">
+    <h2>// poursuivre</h2>
+    {context.links.map((link, index) => (
+      <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <strong>{link.label}</strong>
+        <small>{link.detail}</small>
+        <b aria-hidden="true">↗</b>
+      </a>
+    ))}
+  </nav>
 
-  <section>
-    <h2 class="mono-label glow mb-3">// publication</h2>
-    <a
-      href="https://bluetouff.com/auditer-l-opacite.html"
-      target="_blank"
-      rel="noopener"
-      class="pub-link card group flex items-center gap-3 p-3"
-      aria-label="Auditer l'opacité — l'essai de Bluetouff"
-    >
-      <img
-        src="/auditer-opacite.jpg"
-        alt="Auditer l'opacité — Anatomie d'une crise qu'on ne veut pas voir, par Bluetouff"
-        class="pub-cover"
-        width="600"
-        height="894"
-        loading="lazy"
-        decoding="async"
-      />
-      <span class="min-w-0 flex-1">
-        <span class="block text-[0.92rem] font-semibold leading-tight text-bright">Auditer l'opacité</span>
-        <span class="mt-0.5 block text-xs leading-snug text-muted">Anatomie d'une crise qu'on ne veut pas voir</span>
-        <span class="mt-1.5 block text-[0.7rem] leading-tight text-muted">Printemps 2026</span>
-        <span class="block text-[0.7rem] leading-tight text-muted">Par Bluetouff</span>
-        <span class="pub-cta mt-1.5 block text-xs">Lire l'essai →</span>
-      </span>
-    </a>
-  </section>
-
-  <section>
-    <div class="mb-2 flex items-center justify-between gap-2">
-      <h2 class="mono-label glow">// about</h2>
-      <div class="flex items-center gap-3">
-        <a href="https://x.com/bluetouff" target="_blank" rel="me noopener" aria-label="X (Twitter) — @bluetouff" class="social-link">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-        <a href="https://github.com/bluetouff" target="_blank" rel="me noopener" aria-label="GitHub — bluetouff" class="social-link">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-          </svg>
-        </a>
-      </div>
-    </div>
-    <p class="text-sm leading-relaxed text-muted text-justify">{sidebarAbout}</p>
-    <p class="mt-3 text-xs leading-relaxed" style="color: var(--color-accent)">
-      Les contenus de ce site ne constituent en aucun cas un conseil en investissement.
-    </p>
-  </section>
+  <p class="context-note">
+    Sources citées · limites visibles<br />
+    aucun cookie · aucun tracker
+  </p>
 </div>
 
-<script src="/confluence.js" defer is:inline></script>
-
 <style>
-  .conf-head:hover .mono-label { color: var(--color-signal); }
-  .conf-row { transition: border-color 0.2s, background 0.2s; }
-  .conf-row:hover {
-    border-color: color-mix(in srgb, var(--color-signal) 45%, transparent);
-    background: color-mix(in srgb, var(--color-signal) 6%, transparent);
-  }
-  .conf-score { color: var(--color-signal); }
-  .dash-card { transition: border-color 0.2s, background 0.2s; }
-  .dash-card:hover {
-    border-color: color-mix(in srgb, var(--a) 55%, transparent);
-    background: color-mix(in srgb, var(--a) 6%, transparent);
-  }
-  .dash-tile {
-    border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
-    background: color-mix(in srgb, var(--a) 10%, transparent);
-  }
-  .dash-chevron { color: var(--a); }
-
-  .sb-beta {
+  .context-sidebar { display: grid; gap: 1.45rem; }
+  .context-sidebar > section > h2,
+  .context-links > h2 {
+    margin-bottom: 0.7rem;
+    color: var(--color-signal);
     font-family: var(--font-mono);
-    font-size: 0.52rem;
-    font-weight: 600;
+    font-size: 0.67rem;
+    font-weight: 650;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-amber);
-    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, transparent);
-    background: color-mix(in srgb, var(--color-amber) 12%, transparent);
-    border-radius: 5px;
-    padding: 0.06rem 0.32rem;
+  }
+  .context-card {
+    --context-accent: var(--color-signal);
+    padding: 1rem;
+    background:
+      radial-gradient(100% 120% at 0 0, color-mix(in srgb, var(--context-accent) 9%, transparent), transparent 70%),
+      var(--surface-elevated);
+  }
+  .context-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .context-head :global(.l0g-glyph) { --glyph-color: var(--context-accent); }
+  .context-head p {
+    color: var(--context-accent);
+    font-family: var(--font-mono);
+    font-size: 0.61rem;
+    font-weight: 650;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  .context-card > h2 {
+    max-width: 14ch;
+    margin-top: 0.85rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1.22rem;
+    line-height: 1.2;
+  }
+  .context-copy {
+    margin-top: 0.6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: 0.79rem;
+    line-height: 1.58;
+  }
+  .context-links { display: grid; gap: 0.35rem; }
+  .context-links > h2 { margin-bottom: 0.25rem; }
+  .context-links a {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.65rem minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    gap: 0.08rem 0.55rem;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.65rem 0.1rem;
+  }
+  .context-links a > span {
+    grid-row: 1 / 3;
+    padding-top: 0.12rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+  }
+  .context-links strong {
+    color: var(--color-paper);
+    font-size: 0.83rem;
     line-height: 1.3;
   }
-
-  .social-link {
+  .context-links small {
     color: var(--color-muted);
-    transition: color 0.2s, transform 0.2s;
-    display: inline-flex;
+    font-size: 0.67rem;
+    line-height: 1.4;
   }
-  .social-link:hover { color: var(--color-signal); transform: translateY(-1px); }
-
-  .pub-link { display: flex; }
-  .pub-cover {
-    flex: 0 0 auto;
-    width: 78px;
-    height: auto;
-    border-radius: 4px;
-    filter: grayscale(0.55) brightness(0.82) contrast(0.96);
-    transition: transform 0.3s, filter 0.3s;
+  .context-links b {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    align-self: center;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    transition: color 0.16s, transform 0.16s;
   }
-  .pub-cta { color: var(--color-signal); transition: color 0.2s; }
-  .pub-link:hover .pub-cover {
-    transform: scale(1.015);
-    filter: grayscale(0) brightness(1) contrast(1);
+  .context-links a:hover strong,
+  .context-links a[aria-current='page'] strong { color: var(--color-signal); }
+  .context-links a:hover b { color: var(--color-signal); transform: translate(2px, -2px); }
+  .context-note {
+    border-left: 1px solid var(--color-line);
+    padding-left: 0.7rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    line-height: 1.65;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
   @media (prefers-reduced-motion: reduce) {
-    .pub-link:hover .pub-cover { transform: none; }
+    .context-links a:hover b { transform: none; }
   }
 </style>

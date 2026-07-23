@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { methodologyPages, methodologyUrl, methodologyUpdated, riskBandScaleCaveat } from '../config/methodology.ts';
@@ -32,30 +33,24 @@ const trustItems = [
     <a href="/en/methodology/" class="link-term">English version available →</a>
   </p>
 
-  <section class="rise" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// méthodologie</p>
-    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      Comment c'est calculé
-    </h1>
-
-    <p class="methodo-lede">
-      Le projet ne se contente pas d'auditer l'opacité des marchés ; il essaie aussi
-      d'éviter de devenir lui-même une boîte noire.
-    </p>
-
-    <p class="m-p">
-      Cette page documente les deux familles de signaux affichées sur le site : le tableau de bord
-      consolidé de signaux de risque en page d'accueil, et le classement de confluence repris de
-      13FLOW dans la colonne de droite. Tout est calculé sur des données publiques,
-      côté serveur, et figé dans des fichiers JSON servis depuis l0g.fr. Le navigateur
-      ne contacte aucun tiers. La page <a class="link-term" href="/backtests/">backtests</a>
-      expose aussi les observations point-in-time en JSON, NDJSON et CSV pour rejouer ce qui
-      était visible à une date donnée.
-    </p>
-
+  <PageHero
+    index="05"
+    kicker="méthodologie"
+    title="Montrer le calcul."
+    highlight="Nommer la limite."
+    description="l0g ne se contente pas d’auditer l’opacité des marchés : le projet évite aussi de devenir lui-même une boîte noire."
+    secondary="Formules, seuils, normalisations, sources et observations point-in-time sont documentés pour comprendre ce qu’un signal mesure, et ce qu’il ne mesure pas."
+    glyph="verify"
+    accent="var(--color-accent)"
+    stats={[
+      { value: methodologyPages.length, label: 'fiches d’instrument' },
+      { value: '0–100', label: 'échelle de lecture' },
+      { value: updated, label: 'dernière révision' },
+    ]}
+  >
     <TrustBar items={trustItems} />
     <span class="methodo-meta">Dernière mise à jour : {updated}</span>
-  </section>
+  </PageHero>
 
   <section class="mt-10 protocol-note" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// cadre normatif</p>

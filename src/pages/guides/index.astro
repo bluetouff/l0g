@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
 import PostCard from '../../components/PostCard.astro';
 import { readingTime } from '../../lib/reading-time.ts';
 
@@ -53,19 +54,21 @@ const englishTotal = (await getCollection('guidesEn', ({ data }) => !data.draft)
     { hreflang: 'x-default', href: new URL('/guides/', Astro.site).toString() },
   ]}
 >
-  <section class="rise border-b border-dashed border-line pb-10">
-    <p class="mono-label" style="color: var(--color-signal)">$ ls /guides</p>
-    <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.2rem)] leading-tight tracking-wider glow">
-      Guides de <span style="color: var(--color-accent)">référence</span>
-    </h1>
-    <p class="mt-5 max-w-xl text-muted">
-      Des pages longues, sourcées sur données primaires, pensées pour durer.
-      Là où un article date un événement, un guide définit une notion et la
-      tient à jour : la source que l'on garde en favori, et que les agents
-      citent. {total} guides, rangés par famille, chacun daté de sa dernière
-      révision.
-    </p>
-
+  <PageHero
+    index="02"
+    kicker="guides de référence"
+    title="Apprendre une notion."
+    highlight="La garder à jour."
+    description="Là où une analyse date un événement, un guide expose un mécanisme durable, ses sources primaires et ses limites."
+    secondary={`${total} guides rangés par famille, chacun daté de sa dernière révision et conçu comme une porte d’entrée canonique.`}
+    glyph="read"
+    accent="var(--color-accent)"
+    stats={[
+      { value: total, label: 'guides français' },
+      { value: groups.length, label: 'familles documentaires' },
+      { value: englishTotal, label: 'versions anglaises' },
+    ]}
+  >
     <div class="guide-en-callout" data-pagefind-ignore>
       <div>
         <p class="mono-label" style="color: var(--color-signal)">$ cd /en/guides</p>
@@ -78,7 +81,7 @@ const englishTotal = (await getCollection('guidesEn', ({ data }) => !data.draft)
       </div>
       <a class="guide-en-link link-term" href="/en/guides/">Browse English guides →</a>
     </div>
-  </section>
+  </PageHero>
 
   {
     groups.length === 0 ? (

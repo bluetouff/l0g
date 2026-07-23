@@ -1,0 +1,189 @@
+---
+import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
+
+interface Stat {
+  value: string | number;
+  label: string;
+}
+
+interface Props {
+  index: string;
+  kicker: string;
+  title: string;
+  highlight?: string;
+  description: string;
+  secondary?: string;
+  glyph?: GlyphName;
+  accent?: string;
+  stats?: Stat[];
+}
+
+const {
+  index,
+  kicker,
+  title,
+  highlight,
+  description,
+  secondary,
+  glyph = 'understand',
+  accent = 'var(--color-signal)',
+  stats = [],
+} = Astro.props;
+---
+
+<section
+  class="page-hero instrument-plate rise"
+  style={`--hero-accent:${accent};--plate-accent:${accent}`}
+  data-pagefind-ignore
+>
+  <div class="page-hero-top">
+    <div class="page-hero-id">
+      <span>{index}</span>
+      <p>{kicker}</p>
+    </div>
+    <L0gGlyph name={glyph} size="lg" />
+  </div>
+
+  <h1>
+    {title}
+    {highlight && <> <span>{highlight}</span></>}
+  </h1>
+
+  <p class="page-hero-lede">{description}</p>
+  {secondary && <p class="page-hero-secondary">{secondary}</p>}
+
+  {stats.length > 0 && (
+    <dl class="page-hero-stats">
+      {stats.map((stat) => (
+        <div>
+          <dt>{stat.label}</dt>
+          <dd>{stat.value}</dd>
+        </div>
+      ))}
+    </dl>
+  )}
+
+  <slot />
+</section>
+
+<style>
+  .page-hero {
+    --hero-accent: var(--color-signal);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background:
+      radial-gradient(90% 135% at 0 0, color-mix(in srgb, var(--hero-accent) 10%, transparent), transparent 66%),
+      linear-gradient(145deg, color-mix(in srgb, var(--color-surface-2) 62%, transparent), transparent 72%),
+      var(--surface-elevated);
+    box-shadow: var(--shadow-elevated), inset 0 1px 0 var(--edge-highlight);
+  }
+  .page-hero-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .page-hero-top :global(.l0g-glyph) { --glyph-color: var(--hero-accent); }
+  .page-hero-id {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+  .page-hero-id > span {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--hero-accent) 36%, var(--color-line));
+    border-radius: 8px 2px 8px 8px;
+    color: var(--hero-accent);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+  }
+  .page-hero-id p {
+    color: var(--hero-accent);
+    font-size: 0.69rem;
+    font-weight: 650;
+    letter-spacing: 0.13em;
+  }
+  .page-hero h1 {
+    max-width: 18ch;
+    margin-top: clamp(1.2rem, 3vw, 2.1rem);
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    text-shadow: 0 0 32px color-mix(in srgb, var(--hero-accent) 14%, transparent);
+  }
+  .page-hero h1 span {
+    display: block;
+    color: var(--hero-accent);
+  }
+  .page-hero-lede {
+    max-width: 45rem;
+    margin-top: 1.15rem;
+    border-left: 2px solid color-mix(in srgb, var(--hero-accent) 72%, transparent);
+    padding-left: 1rem;
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: clamp(1rem, 1.9vw, 1.14rem);
+    line-height: 1.68;
+  }
+  .page-hero-secondary {
+    max-width: 43rem;
+    margin-top: 0.8rem;
+    padding-left: calc(1rem + 2px);
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+  .page-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    margin-top: 1.45rem;
+    border: 1px solid var(--color-line);
+    border-radius: 10px 3px 10px 10px;
+    background: var(--color-line);
+  }
+  .page-hero-stats div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column-reverse;
+    gap: 0.15rem;
+    padding: 0.7rem 0.8rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  }
+  .page-hero-stats dt {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .page-hero-stats dd {
+    overflow: hidden;
+    color: var(--hero-accent);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media (max-width: 540px) {
+    .page-hero { padding: 1.1rem; }
+    .page-hero-top :global(.l0g-glyph) { transform: scale(0.88); transform-origin: top right; }
+    .page-hero h1 { max-width: 100%; font-size: clamp(1.85rem, 10vw, 2.5rem); }
+    .page-hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero { animation: none; }
+  }
+  :global(:root[data-theme='light']) .page-hero h1 { text-shadow: none; }
+</style>

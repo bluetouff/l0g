@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import L0gGlyph, { type GlyphName } from '../components/L0gGlyph.astro';
+import PageHero from '../components/PageHero.astro';
 import { topics, postMatchesTopic } from '../config/topics.ts';
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -14,49 +16,178 @@ const accentVar: Record<string, string> = {
 const cards = topics
   .map((t) => ({ ...t, n: posts.filter((p) => postMatchesTopic(p.data.tags, t)).length }))
   .sort((a, b) => b.n - a.n);
+
+const topicGlyphs: Record<string, GlyphName> = {
+  'macro-banques-centrales': 'observe',
+  'marches-valorisations': 'verify',
+  'geopolitique-energie': 'impact',
+  'credit-prive': 'uncertainty',
+  crypto: 'source',
+  'liquidite-repo': 'retrieve',
+  'politique-us': 'understand',
+  'ormuz-petrole': 'impact',
+  'regulation-crypto-us': 'verify',
+};
 ---
 
 <BaseLayout
   title="Sujets"
   description="Les pages-piliers de l0g : crédit privé, liquidité et repo, Ormuz et pétrole, CLARITY Act, macro, crypto, marchés et politique US."
 >
-  <section class="rise" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// sujets</p>
-    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      Les dossiers
-    </h1>
-    <p class="mt-4 max-w-2xl text-muted">
-      Le journal n'est pas qu'un flux. Chaque dossier fixe une question centrale,
-      distingue guide, définition, méthodologie et analyse datée, puis organise les
-      contenus qui s'y rattachent.
-    </p>
-  </section>
+  <PageHero
+    index="01"
+    kicker="sujets suivis"
+    title="Les dossiers,"
+    highlight="pas seulement le flux."
+    description="Chaque dossier fixe une question centrale, distingue guide, définition, méthodologie et analyse datée, puis organise les contenus qui s’y rattachent."
+    secondary="Choisissez le mécanisme que vous voulez comprendre. Le nombre d’analyses indique la profondeur du dossier, pas son importance."
+    glyph="understand"
+    stats={[
+      { value: cards.length, label: 'dossiers actifs' },
+      { value: posts.length, label: 'analyses publiées' },
+      { value: '4 formats', label: 'guide · notion · méthode · analyse' },
+    ]}
+  />
 
-  <section class="mt-8 grid gap-3 sm:grid-cols-2" data-pagefind-ignore>
+  <section class="topic-grid" data-pagefind-ignore aria-label="Dossiers thématiques">
     {
-      cards.map((t) => (
+      cards.map((t, index) => (
         <a
           href={`/sujet/${t.slug}/`}
-          class="topic-card group block rounded-xl border border-line p-5"
-          style={`--a:${accentVar[t.accent]}`}
+          class="topic-card instrument-plate group"
+          style={`--a:${accentVar[t.accent]};--plate-accent:${accentVar[t.accent]}`}
         >
-          <div class="flex items-baseline justify-between gap-3">
-            <h2 class="text-lg font-semibold text-bright transition-colors group-hover:text-signal">
-              {t.label}
-            </h2>
-            <span class="mono-label whitespace-nowrap text-muted">{t.n} art.</span>
+          <div class="topic-card-top">
+            <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
+            <span class="topic-count">{t.n} analyse{t.n > 1 ? 's' : ''}</span>
           </div>
-          <p class="mt-2 text-sm leading-relaxed text-muted">{t.blurb}</p>
+          <div class="topic-symbol">
+            <L0gGlyph name={topicGlyphs[t.slug] ?? 'understand'} />
+            <span aria-hidden="true"></span>
+          </div>
+          <h2>{t.label}</h2>
+          <p class="topic-blurb">{t.blurb}</p>
+          <div class="topic-question">
+            <span>question de fond</span>
+            <p>{t.question}</p>
+          </div>
+          <span class="topic-open">Ouvrir le dossier <b aria-hidden="true">↗</b></span>
         </a>
       ))
     }
   </section>
 
   <style>
-    .topic-card { transition: border-color 0.2s, background 0.2s; }
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .topic-card {
+      --a: var(--color-signal);
+      display: flex;
+      min-height: 25rem;
+      flex-direction: column;
+      padding: 1.15rem;
+      background:
+        radial-gradient(85% 100% at 0 0, color-mix(in srgb, var(--a) 8%, transparent), transparent 62%),
+        var(--card-fill);
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
     .topic-card:hover {
       border-color: color-mix(in srgb, var(--a) 55%, transparent);
-      background: color-mix(in srgb, var(--a) 6%, transparent);
+      background:
+        radial-gradient(85% 100% at 0 0, color-mix(in srgb, var(--a) 12%, transparent), transparent 65%),
+        var(--card-fill-hover);
+      transform: translateY(-2px);
+    }
+    .topic-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .topic-index { color: var(--a); font-weight: 700; }
+    .topic-symbol {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 1.15rem;
+    }
+    .topic-symbol :global(.l0g-glyph) { --glyph-color: var(--a); }
+    .topic-symbol > span {
+      width: 3.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, color-mix(in srgb, var(--a) 65%, transparent), transparent);
+    }
+    .topic-card h2 {
+      max-width: 19ch;
+      margin-top: 1rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      line-height: 1.32;
+      text-wrap: balance;
+      transition: color 0.18s;
+    }
+    .topic-card:hover h2 { color: var(--a); }
+    .topic-blurb {
+      margin-top: 0.55rem;
+      color: var(--color-muted);
+      font-family: var(--font-read);
+      font-size: 0.79rem;
+      line-height: 1.58;
+    }
+    .topic-question {
+      margin-top: auto;
+      border-top: 1px solid var(--color-line);
+      padding-top: 0.8rem;
+    }
+    .topic-question > span {
+      color: var(--a);
+      font-family: var(--font-mono);
+      font-size: 0.56rem;
+      font-weight: 650;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .topic-question p {
+      display: -webkit-box;
+      overflow: hidden;
+      margin-top: 0.3rem;
+      color: var(--color-paper);
+      font-family: var(--font-read);
+      font-size: 0.72rem;
+      line-height: 1.48;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .topic-open {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.85rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 650;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .topic-open b { color: var(--a); font-weight: 400; }
+    @media (max-width: 700px) {
+      .topic-grid { grid-template-columns: 1fr; }
+      .topic-card { min-height: auto; }
+      .topic-question { margin-top: 1.2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .topic-card:hover { transform: none; }
     }
   </style>
 </BaseLayout>

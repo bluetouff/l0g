@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { dashboards } from '../config/sidebar.ts';
 import { methodologyBySlug, methodologyUrl, riskBandScaleCaveat } from '../config/methodology.ts';
@@ -37,16 +38,21 @@ const trustItems = [
   ]}
   sidebar={false}
 >
-  <section data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// dashboards</p>
-    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      Dashboards <span style="color: var(--color-accent)">&amp;</span> moniteurs
-    </h1>
-    <p class="mt-4 max-w-2xl text-paper">
-      Des outils de monitoring du risque sur données publiques. Le serveur récupère les
-      sources, écrit un instantané, et votre navigateur ne contacte aucun tiers : pas de CDN,
-      pas de tracker, aucune clé exposée. Chaque outil est documenté et son code est ouvert.
-    </p>
+  <PageHero
+    index="04"
+    kicker="tableaux de bord"
+    title="Observer un mécanisme."
+    highlight="Pas adorer un score."
+    description="Chaque instrument suit une question précise sur données publiques. Le serveur écrit un instantané ; votre navigateur ne contacte aucun tiers."
+    secondary="Un niveau élevé appelle une vérification dans la fiche méthodologique. Il ne constitue ni une probabilité universelle, ni un signal d’achat ou de vente."
+    glyph="observe"
+    accent="var(--color-amber)"
+    stats={[
+      { value: dashboardCards.length, label: 'instruments publics' },
+      { value: '0 tiers', label: 'appel navigateur' },
+      { value: 'ouvert', label: 'code et méthode' },
+    ]}
+  >
     <TrustBar items={trustItems} />
     <div class="dash-note">
       <span class="mono-label">// lecture des scores</span>
@@ -55,7 +61,7 @@ const trustItems = [
         pas une équivalence statistique : il faut lire la fiche de chaque instrument.
       </p>
     </div>
-  </section>
+  </PageHero>
 
   <div class="mt-9 grid gap-5 sm:grid-cols-2">
     {

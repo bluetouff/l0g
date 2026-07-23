@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 
 import {
   glossaryAtlasEdgeCount,
@@ -67,25 +68,21 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
   ]}
 >
   <script type="application/ld+json" is:inline set:html={glossaryJsonLd} />
-  <section class="rise" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// atlas</p>
-    <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      Atlas de l'opacité financière
-    </h1>
-    <p class="mt-4 max-w-2xl text-muted">
-      Le glossaire l0g devient une carte du risque : définitions courtes, concepts voisins,
-      articles, guides, sources primaires, datasets et signaux qui utilisent chaque notion.
-    </p>
-    <p class="mt-3 max-w-2xl text-sm text-muted">
-      Cet index reste volontairement compact. Chaque définition complète, ses références et
-      son graphe documentaire disposent d'une page dédiée.
-    </p>
-    <div class="atlas-metrics" aria-label="État de l'atlas">
-      <span><strong>{total}</strong> entrées</span>
-      <span><strong>{glossaryAtlasEntries.length}</strong> nœuds enrichis</span>
-      <span><strong>{glossaryAtlasEdgeCount}</strong> relations conceptuelles</span>
-    </div>
-  </section>
+  <PageHero
+    index="03"
+    kicker="atlas du glossaire"
+    title="Décoder les mots."
+    highlight="Relier les mécanismes."
+    description="Le glossaire devient une carte du risque : définitions courtes, concepts voisins, analyses, guides, sources primaires, datasets et signaux reliés."
+    secondary="L’index reste volontairement compact. Chaque notion dispose d’une page dédiée avec ses références et son graphe documentaire."
+    glyph="retrieve"
+    accent="#7aa2f7"
+    stats={[
+      { value: total, label: 'entrées' },
+      { value: glossaryAtlasEntries.length, label: 'nœuds enrichis' },
+      { value: glossaryAtlasEdgeCount, label: 'relations conceptuelles' },
+    ]}
+  />
 
   {atlasPreview.length > 0 && (
     <section class="atlas-panel mt-10" aria-labelledby="atlas-title" data-pagefind-ignore>
@@ -267,24 +264,6 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     .gloss-empty { margin-top: 2rem; color: var(--color-muted); font-family: var(--font-mono); }
     .gloss-empty::before { content: "// "; color: var(--color-accent); }
 
-    .atlas-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 1.35rem;
-    }
-    .atlas-metrics span {
-      border: 1px solid var(--color-line);
-      border-radius: 8px;
-      color: var(--color-muted);
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      padding: 0.45rem 0.65rem;
-    }
-    .atlas-metrics strong {
-      color: var(--color-paper);
-      font-weight: 600;
-    }
     .atlas-panel {
       border-top: 1px solid var(--color-line);
       border-bottom: 1px solid var(--color-line);

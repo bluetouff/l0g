@@ -192,7 +192,7 @@ const siteJsonLd = {
           </main>
           <aside class="hidden lg:block" aria-label={hasContextSidebar ? 'Navigation contextuelle' : 'À découvrir'}>
             <div class="sticky top-8">
-              {hasContextSidebar ? <slot name="sidebar" /> : <Sidebar />}
+              {hasContextSidebar ? <slot name="sidebar" /> : <Sidebar path={path} />}
             </div>
           </aside>
         </div>
