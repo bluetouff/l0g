@@ -20,22 +20,18 @@ L'écart capté est minuscule, de l'ordre de quelques points de base. Pour que l
   <rect width="720" height="320" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'anatomie du basis trade</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Trois jambes simultanées pour capter l'écart comptant / futures, avec un fort levier.</text>
-
   <rect x="40" y="100" width="190" height="80" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="135" y="132" fill="#f5f6f8" font-size="13" text-anchor="middle">1. Achat comptant</text>
   <text x="135" y="152" fill="#8b909b" font-size="11" text-anchor="middle">obligation du Trésor</text>
   <text x="135" y="168" fill="#5eead4" font-size="11" text-anchor="middle">position longue</text>
-
   <rect x="265" y="100" width="190" height="80" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="360" y="132" fill="#f5f6f8" font-size="13" text-anchor="middle">2. Vente à terme</text>
   <text x="360" y="152" fill="#8b909b" font-size="11" text-anchor="middle">contrat futures</text>
   <text x="360" y="168" fill="#ff4d87" font-size="11" text-anchor="middle">position courte</text>
-
   <rect x="490" y="100" width="190" height="80" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="585" y="132" fill="#f5f6f8" font-size="13" text-anchor="middle">3. Financement</text>
   <text x="585" y="152" fill="#8b909b" font-size="11" text-anchor="middle">repo, collatéral = la jambe 1</text>
   <text x="585" y="168" fill="#f5b13d" font-size="11" text-anchor="middle">levier ~20x</text>
-
   <text x="360" y="232" fill="#d6d9df" font-size="12" text-anchor="middle">La base converge vers zéro à l'échéance : l'écart est encaissé.</text>
   <text x="360" y="262" fill="#8b909b" font-size="12" text-anchor="middle">Marge initiale futures : 2 à 3 %. Repo souvent à haircut quasi nul.</text>
   <text x="360" y="284" fill="#8b909b" font-size="12" text-anchor="middle">Une position de 100 M$ mobilise environ 7 à 8 M$ de capital.</text>
@@ -60,34 +56,26 @@ La fragilité est connue et documentée. Quand la volatilité monte, deux choses
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La spirale de marges</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Le mécanisme qui transforme l'apporteur de liquidité en amplificateur de stress.</text>
-
   <rect x="270" y="78" width="180" height="46" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="360" y="106" fill="#f5f6f8" font-size="12" text-anchor="middle">Volatilité en hausse</text>
-
   <rect x="500" y="150" width="190" height="46" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="595" y="172" fill="#f5f6f8" font-size="12" text-anchor="middle">Marges et haircuts</text>
   <text x="595" y="187" fill="#8b909b" font-size="11" text-anchor="middle">relevés</text>
-
   <rect x="500" y="250" width="190" height="46" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="595" y="272" fill="#f5f6f8" font-size="12" text-anchor="middle">Appels de marge</text>
   <text x="595" y="287" fill="#8b909b" font-size="11" text-anchor="middle">besoin de cash</text>
-
   <rect x="270" y="250" width="180" height="46" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="360" y="272" fill="#f5f6f8" font-size="12" text-anchor="middle">Débouclage forcé</text>
   <text x="360" y="287" fill="#8b909b" font-size="11" text-anchor="middle">vente des Treasuries</text>
-
   <rect x="40" y="150" width="190" height="46" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="135" y="172" fill="#f5f6f8" font-size="12" text-anchor="middle">Prix sous pression</text>
   <text x="135" y="187" fill="#8b909b" font-size="11" text-anchor="middle">la volatilité repart</text>
-
   <path d="M450 101 L500 150" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M595 196 L595 250" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M500 273 L450 273" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M270 262 L135 196" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M135 150 L270 101" stroke="#ff4d87" stroke-width="1.6" marker-end="url(#a2)"/>
-
   <text x="360" y="325" fill="#8b909b" font-size="11" text-anchor="middle">Mars 2020 : le débouclage a représenté près de la moitié des ventes de Treasuries des hedge funds.</text>
-
   <defs>
     <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#8b909b"/></marker>
     <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#ff4d87"/></marker>

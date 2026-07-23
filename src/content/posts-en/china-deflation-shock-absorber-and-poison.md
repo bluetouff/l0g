@@ -24,23 +24,18 @@ This is not trade in the textbook sense, where you sell what you produce at a pr
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">June 2026: the trade machine at full throttle</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Billions of dollars, a single month. Records on exports, imports and the European surplus.</text>
-
   <rect x="200" y="84" width="470" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="192" y="106" fill="#d6d9df" font-size="12" text-anchor="end">Exports</text>
   <text x="208" y="106" fill="#0c0d10" font-size="13" font-weight="700">412.4 (+27%, record)</text>
-
   <rect x="200" y="132" width="327" height="34" fill="#7aa2f7" opacity="0.85"/>
   <text x="192" y="154" fill="#d6d9df" font-size="12" text-anchor="end">Imports</text>
   <text x="208" y="154" fill="#0c0d10" font-size="13" font-weight="700">286.8 (+36%, record)</text>
-
   <rect x="200" y="180" width="143" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="202" fill="#d6d9df" font-size="12" text-anchor="end">Total surplus</text>
   <text x="351" y="202" fill="#f5f6f8" font-size="13" font-weight="700">125.6 (2nd in history)</text>
-
   <rect x="200" y="228" width="38" height="34" fill="#ff4d87" opacity="0.9"/>
   <text x="192" y="250" fill="#d6d9df" font-size="12" text-anchor="end">of which EU surplus</text>
   <text x="246" y="250" fill="#f5f6f8" font-size="13" font-weight="700">32.9 (record, +27%)</text>
-
   <text x="32" y="286" fill="#8b909b" font-size="11">Sources: Chinese customs via RTE, Fortune, China Global South and Trading Economics (14 July 2026).</text>
 </svg>
 <figcaption>A June of records across the board: exports driven by AI hardware and autos, imports swollen by components, and an unprecedented surplus with the European Union. China's industrial overflow has found its destination. Sources cited.</figcaption>
@@ -57,29 +52,23 @@ This dumping ground has an effect the ECB itself quantified before living it: a 
   <rect width="720" height="350" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Four thermometers, one geography of prices</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Year-on-year changes, June 2026. Chinese deflation no longer reads in Beijing: it reads in European goods.</text>
-
   <line x1="70" y1="270" x2="690" y2="270" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="100" y="152" width="80" height="118" fill="#f5b13d" opacity="0.85"/>
   <text x="140" y="142" fill="#f5b13d" font-size="14" font-weight="700" text-anchor="middle">+4.1%</text>
   <text x="140" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">China PPI</text>
   <text x="140" y="308" fill="#8b909b" font-size="10" text-anchor="middle">war inputs, price floors</text>
-
   <rect x="260" y="241" width="80" height="29" fill="#5eead4" opacity="0.85"/>
   <text x="300" y="231" fill="#5eead4" font-size="14" font-weight="700" text-anchor="middle">+1.0%</text>
   <text x="300" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">China CPI</text>
   <text x="300" y="308" fill="#8b909b" font-size="10" text-anchor="middle">absent demand</text>
-
   <rect x="420" y="244" width="80" height="26" fill="#5eead4" opacity="0.85"/>
   <text x="460" y="234" fill="#5eead4" font-size="14" font-weight="700" text-anchor="middle">+0.9%</text>
   <text x="460" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">Euro area goods</text>
   <text x="460" y="308" fill="#8b909b" font-size="10" text-anchor="middle">the Chinese absorber</text>
-
   <rect x="580" y="149" width="80" height="121" fill="#ff4d87" opacity="0.85"/>
   <text x="620" y="139" fill="#ff4d87" font-size="14" font-weight="700" text-anchor="middle">+4.2%</text>
   <text x="620" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">US inflation</text>
   <text x="620" y="308" fill="#8b909b" font-size="10" text-anchor="middle">behind its tariff wall</text>
-
   <text x="32" y="336" fill="#8b909b" font-size="11">Sources: NBS and CNBC (China, June 2026), Eurostat (June HICP, non-energy industrial goods), BLS via analyses cited (United States).</text>
 </svg>
 <figcaption>Chinese producer prices climb on the barrel and administered floors, but Chinese consumption and European goods stay crushed around 1%, while America, behind its tariff wall, runs at 4.2%. Chinese deflation now reads outside China. Sources cited.</figcaption>

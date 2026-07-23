@@ -87,55 +87,42 @@ The warnings are not new: Jeffrey Gundlach compared the enthusiasm for private c
   </defs>
   <rect x="0" y="0" width="760" height="470" rx="12" fill="#14161b" stroke="#23262e"/>
   <text x="30" y="32" fill="#e7e9ee" font-size="15" font-weight="700">Liquidity chain and contagion channel</text>
-
   <rect x="40" y="50" width="250" height="56" rx="8" fill="#1a1d24" stroke="#5eead4" stroke-width="1.4"/>
   <text x="165" y="74" text-anchor="middle" fill="#e7e9ee" font-size="13" font-weight="600">Savers · risk capital</text>
   <text x="165" y="92" text-anchor="middle" fill="#8b909b" font-size="10">households, advisers, retail</text>
-
   <rect x="470" y="50" width="250" height="56" rx="8" fill="#1a1d24" stroke="#ff4d87" stroke-width="1.4"/>
   <text x="595" y="70" text-anchor="middle" fill="#e7e9ee" font-size="13" font-weight="600">2026 mega-IPOs</text>
   <text x="595" y="86" text-anchor="middle" fill="#8b909b" font-size="10">SpaceX, OpenAI, Anthropic</text>
   <text x="595" y="100" text-anchor="middle" fill="#8b909b" font-size="10">enlarged retail tranches</text>
-
   <path d="M 290 68 C 360 40, 410 40, 470 68" stroke="#ff4d87" stroke-width="1.6" fill="none" marker-end="url(#lg-arrR)"/>
   <text x="332" y="36" fill="#ff4d87" font-size="10" font-weight="600">competition for the same capital</text>
-
   <path d="M 150 106 L 150 168" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <text x="158" y="130" fill="#8b909b" font-size="10">fundraising</text>
   <text x="158" y="144" fill="#8b909b" font-size="10">-74% over 1 year</text>
-
   <path d="M 232 168 L 232 106" stroke="#ff4d87" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#lg-arrR)"/>
   <text x="240" y="134" fill="#ff4d87" font-size="10" font-weight="600">redemptions · 5% cap</text>
-
   <rect x="40" y="170" width="250" height="56" rx="8" fill="#1a1d24" stroke="#3a3f4b" stroke-width="1.2"/>
   <text x="165" y="194" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Evergreen funds & BDCs</text>
   <text x="165" y="212" text-anchor="middle" fill="#8b909b" font-size="10">valued to model, illiquid</text>
-
   <path d="M 165 226 L 165 290" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <text x="173" y="262" fill="#8b909b" font-size="10">loans</text>
-
   <rect x="40" y="292" width="250" height="56" rx="8" fill="#1a1d24" stroke="#3a3f4b" stroke-width="1.2"/>
   <text x="165" y="316" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Direct loans to SMEs</text>
   <text x="165" y="334" text-anchor="middle" fill="#8b909b" font-size="10">incl. SaaS vendors exposed to AI</text>
-
   <rect x="420" y="170" width="280" height="56" rx="8" fill="#1a1d24" stroke="#3a3f4b" stroke-width="1.2"/>
   <text x="560" y="194" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Banks</text>
   <text x="560" y="212" text-anchor="middle" fill="#8b909b" font-size="10">credit lines, leverage to managers</text>
-
   <rect x="420" y="292" width="280" height="56" rx="8" fill="#1a1d24" stroke="#3a3f4b" stroke-width="1.2"/>
   <text x="560" y="316" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Insurers · LP investors</text>
   <text x="560" y="334" text-anchor="middle" fill="#8b909b" font-size="10">exposure to BDC leverage</text>
-
   <path d="M 290 190 L 420 190" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <path d="M 420 208 L 290 208" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <path d="M 290 320 L 420 320" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <path d="M 560 226 L 560 372 L 470 372" stroke="#ff4d87" stroke-width="1.6" fill="none" marker-end="url(#lg-arrR)"/>
   <path d="M 470 334 C 420 360, 400 372, 362 386" stroke="#ff4d87" stroke-width="1.6" fill="none" marker-end="url(#lg-arrR)"/>
-
   <rect x="160" y="382" width="300" height="54" rx="8" fill="#1a1d24" stroke="#f5b13d" stroke-width="1.4"/>
   <text x="310" y="406" text-anchor="middle" fill="#e7e9ee" font-size="13" font-weight="600">Financial system</text>
   <text x="310" y="424" text-anchor="middle" fill="#8b909b" font-size="10">contagion channel (FSB, Fed, IMF)</text>
-
   <text x="30" y="460" fill="#8b909b" font-size="10">l0g.fr diagram · transmission routes: FSB, Fed, IMF, New York Fed.</text>
 </svg>
 <figcaption>Figure 2. Private credit links retail savings to SME debt, with banks and insurers as relays toward the system. The mega-IPOs draw in the same risk capital in parallel.</figcaption>

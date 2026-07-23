@@ -46,7 +46,6 @@ Le Fonds prête par deux grands guichets. Le **compte des ressources générales
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Deux guichets, plusieurs portes</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Où sort le crédit du Fonds selon le profil du pays. Sources : FMI ; Congressional Research Service.</text>
-
   <rect x="40" y="84" width="320" height="188" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="56" y="110" fill="#7aa2f7" font-size="14" font-weight="700">GRA (non concessionnel)</text>
   <text x="56" y="134" fill="#d6d9df" font-size="12">Taux de marché, tous les membres</text>
@@ -54,7 +53,6 @@ Le Fonds prête par deux grands guichets. Le **compte des ressources générales
   <text x="56" y="188" fill="#d6d9df" font-size="12">• EFF : réformes, 3 ans et plus</text>
   <text x="56" y="212" fill="#d6d9df" font-size="12">• FCL / PLL : lignes de précaution</text>
   <text x="56" y="236" fill="#d6d9df" font-size="12">• RFI : financement rapide d'urgence</text>
-
   <rect x="384" y="84" width="296" height="188" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="400" y="110" fill="#5eead4" font-size="14" font-weight="700">PRGT (concessionnel)</text>
   <text x="400" y="134" fill="#d6d9df" font-size="12">Taux bonifié, pays à faible revenu</text>
@@ -77,20 +75,15 @@ Ce seuil n'est pas théorique. Dans le cas argentin, [l'encours a atteint 1 335 
   <rect width="720" height="260" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'échelle d'accès, en pourcentage de quote-part</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Le crédit se mesure en multiples de la quote-part. Au-delà de 600 %, l'accès devient exceptionnel.</text>
-
   <line x1="70" y1="210" x2="690" y2="210" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="70" y="180" width="52" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="96" y="234" fill="#8b909b" font-size="11" text-anchor="middle">quote-part</text>
   <text x="96" y="172" fill="#d6d9df" font-size="11" text-anchor="middle">100 %</text>
-
   <rect x="70" y="150" width="312" height="30" fill="#7aa2f7" opacity="0.7"/>
   <line x1="382" y1="140" x2="382" y2="215" stroke="#f5b13d" stroke-width="2"/>
   <text x="382" y="132" fill="#f5b13d" font-size="11" text-anchor="middle" font-weight="700">600 % : limite normale</text>
-
   <rect x="382" y="120" width="286" height="30" fill="#ff4d87" opacity="0.5"/>
   <text x="525" y="112" fill="#ff4d87" font-size="11" text-anchor="middle">zone d'accès exceptionnel</text>
-
   <line x1="660" y1="110" x2="660" y2="215" stroke="#ff4d87" stroke-width="2" stroke-dasharray="3 3"/>
   <text x="660" y="102" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">1 335 %</text>
   <text x="600" y="234" fill="#8b909b" font-size="11" text-anchor="middle">exemple : Argentine 2026</text>

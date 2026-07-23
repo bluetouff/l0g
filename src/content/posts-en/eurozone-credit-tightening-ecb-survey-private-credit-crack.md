@@ -22,23 +22,18 @@ The picture worsens, by contrast, for households. Standards tightened by **9%** 
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The tightening, far below the fears</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Net tightening of credit standards, in % of banks, Q2 2026. Source: ECB, survey of 21 July 2026.</text>
-
   <line x1="170" y1="86" x2="170" y2="250" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="170" y="96" width="112" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="162" y="118" fill="#d6d9df" font-size="12" text-anchor="end">Firms</text>
   <text x="290" y="118" fill="#d6d9df" font-size="12">7%</text>
   <line x1="474" y1="88" x2="474" y2="138" stroke="#ff4d87" stroke-width="2" stroke-dasharray="3 3"/>
   <text x="482" y="118" fill="#ff4d87" font-size="11">19% expected in April</text>
-
   <rect x="170" y="150" width="144" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="162" y="172" fill="#d6d9df" font-size="12" text-anchor="end">Housing</text>
   <text x="322" y="172" fill="#d6d9df" font-size="12">9%</text>
-
   <rect x="170" y="204" width="192" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="162" y="226" fill="#d6d9df" font-size="12" text-anchor="end">Consumer</text>
   <text x="370" y="226" fill="#d6d9df" font-size="12">12%</text>
-
   <text x="32" y="284" fill="#8b909b" font-size="12">Firms' loan demand: +3% net, against an expected 10% fall. The feared crunch did not happen.</text>
 </svg>
 <figcaption>Euro-area banks are still tightening, but three times less than they had forecast for firms, whose demand is picking up. The pressure persists mainly on households. Source: ECB, bank lending survey, 21 July 2026.</figcaption>
@@ -65,29 +60,22 @@ The real systemic question is neither the bank channel alone nor the private cha
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Credit changed balance sheet, not risk</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Bank and private-credit entanglement. Source: FSB, report on vulnerabilities in private credit (6 May 2026).</text>
-
   <rect x="40" y="140" width="150" height="60" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="115" y="165" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Banks</text>
   <text x="115" y="185" fill="#8b909b" font-size="11" text-anchor="middle">regulated</text>
-
   <rect x="285" y="140" width="160" height="60" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="365" y="165" fill="#5eead4" font-size="13" font-weight="700" text-anchor="middle">Private debt</text>
   <text x="365" y="185" fill="#5eead4" font-size="12" text-anchor="middle">funds: $1.5-2tn</text>
-
   <rect x="540" y="140" width="150" height="60" fill="none" stroke="#8b909b" stroke-width="1.5"/>
   <text x="615" y="165" fill="#d6d9df" font-size="13" font-weight="700" text-anchor="middle">Companies</text>
   <text x="615" y="185" fill="#8b909b" font-size="11" text-anchor="middle">mid-sized</text>
-
   <line x1="190" y1="162" x2="283" y2="162" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="236" y="153" fill="#ff4d87" font-size="10" text-anchor="middle">lines, NAV</text>
   <text x="236" y="178" fill="#8b909b" font-size="10" text-anchor="middle">~$220bn</text>
-
   <line x1="445" y1="170" x2="538" y2="170" stroke="#5eead4" stroke-width="1.5"/>
   <text x="491" y="162" fill="#8b909b" font-size="10" text-anchor="middle">direct lending</text>
-
   <path d="M115 200 Q115 250 550 250 Q615 250 615 202" fill="none" stroke="#7aa2f7" stroke-width="1.2" stroke-dasharray="4 3"/>
   <text x="360" y="268" fill="#8b909b" font-size="10" text-anchor="middle">bank revolver to the same borrower</text>
-
   <rect x="285" y="266" width="160" height="46" fill="none" stroke="#f5b13d" stroke-width="1.2"/>
   <text x="365" y="285" fill="#f5b13d" font-size="12" font-weight="700" text-anchor="middle">Insurers, pensions,</text>
   <text x="365" y="302" fill="#f5b13d" font-size="12" text-anchor="middle">retail</text>

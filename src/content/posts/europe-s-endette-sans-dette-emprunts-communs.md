@@ -22,27 +22,21 @@ Cinq programmes, cinq justifications d'urgence, une même signature. La méthode
   <rect width="720" height="400" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La pile des emprunts communs</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Plafonds des programmes, en milliards d'euros. Aucun n'apparaît dans la dette d'un État membre.</text>
-
   <rect x="200" y="84" width="490" height="40" fill="#5eead4" opacity="0.85"/>
   <text x="192" y="110" fill="#d6d9df" font-size="12" text-anchor="end">NGEU (2021)</text>
   <text x="208" y="110" fill="#0c0d10" font-size="12" font-weight="700">806,9 (637 levés fin 2026)</text>
-
   <rect x="200" y="140" width="91" height="40" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="166" fill="#d6d9df" font-size="12" text-anchor="end">SAFE (2025)</text>
   <text x="299" y="166" fill="#f5f6f8" font-size="12" font-weight="700">150</text>
-
   <rect x="200" y="196" width="60" height="40" fill="#ff4d87" opacity="0.85"/>
   <text x="192" y="222" fill="#d6d9df" font-size="12" text-anchor="end">SURE (2020)</text>
   <text x="268" y="222" fill="#f5f6f8" font-size="12" font-weight="700">98,4</text>
-
   <rect x="200" y="252" width="55" height="40" fill="#7aa2f7" opacity="0.85"/>
   <text x="192" y="278" fill="#d6d9df" font-size="12" text-anchor="end">Prêt Ukraine (2026)</text>
   <text x="263" y="278" fill="#f5f6f8" font-size="12" font-weight="700">90</text>
-
   <rect x="200" y="308" width="11" height="40" fill="#8b909b" opacity="0.85"/>
   <text x="192" y="334" fill="#d6d9df" font-size="12" text-anchor="end">Part UE du prêt ERA (2024)</text>
   <text x="219" y="334" fill="#f5f6f8" font-size="12" font-weight="700">18</text>
-
   <text x="32" y="376" fill="#8b909b" font-size="11">Sources : Commission européenne (EU as a borrower), Conseil de l'UE. Encours total : ~827 Md€ mi-2026, ~1 000 Md€ attendus fin 2026.</text>
 </svg>
 <figcaption>Chaque programme a été voté comme exceptionnel, temporaire et plafonné. Leur addition fait de la Commission l'un des tout premiers émetteurs du continent, avec un millier de milliards d'euros d'encours attendus fin 2026. Sources : Commission européenne, Conseil.</figcaption>
@@ -71,19 +65,15 @@ Restait à trouver la recette. Les nouvelles [ressources propres](/glossaire/#re
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">2028-2034 : la facture et la recette</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Proposition de cadre budgétaire, en milliards d'euros sur sept ans.</text>
-
   <rect x="250" y="90" width="440" height="42" fill="#7aa2f7" opacity="0.85"/>
   <text x="242" y="117" fill="#d6d9df" font-size="12" text-anchor="end">Budget total proposé</text>
   <text x="258" y="117" fill="#0c0d10" font-size="13" font-weight="700">~1 985</text>
-
   <rect x="250" y="150" width="37" height="42" fill="#ff4d87" opacity="0.9"/>
   <text x="242" y="177" fill="#d6d9df" font-size="12" text-anchor="end">Remboursement NGEU</text>
   <text x="295" y="177" fill="#f5f6f8" font-size="13" font-weight="700">168</text>
-
   <rect x="250" y="210" width="2" height="42" fill="#f5b13d"/>
   <text x="242" y="237" fill="#d6d9df" font-size="12" text-anchor="end">Nouvelles ressources propres adoptées</text>
   <text x="262" y="237" fill="#f5b13d" font-size="13" font-weight="700">0</text>
-
   <text x="32" y="290" fill="#8b909b" font-size="11">Sources : Parlement européen (EPRS), Commission européenne, Agence Europe (impasse constatée en mai 2026).</text>
   <text x="32" y="308" fill="#8b909b" font-size="11">La décision sur les ressources propres exige l'unanimité des Vingt-Sept puis une ratification nationale.</text>
 </svg>

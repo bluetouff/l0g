@@ -22,32 +22,24 @@ The political context gives this text a weight an isolated statement would not h
   <rect width="720" height="320" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The Japanese curve steepens again</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">JGB yields by maturity, as of 21 July 2026, in percent. After years pinned to zero.</text>
-
   <line x1="70" y1="250" x2="690" y2="250" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="90" x2="70" y2="250" stroke="#2a2c33" stroke-width="1"/>
-
   <polyline points="120,215 250,190 400,120 520,92 640,90" fill="none" stroke="#5eead4" stroke-width="2.5"/>
-
   <circle cx="120" cy="215" r="4" fill="#5eead4"/>
   <text x="120" y="205" fill="#d6d9df" font-size="12" text-anchor="middle">1.44</text>
   <text x="120" y="270" fill="#8b909b" font-size="12" text-anchor="middle">2y</text>
-
   <circle cx="250" cy="190" r="4" fill="#5eead4"/>
   <text x="250" y="180" fill="#d6d9df" font-size="12" text-anchor="middle">2.74</text>
   <text x="250" y="270" fill="#8b909b" font-size="12" text-anchor="middle">10y</text>
-
   <circle cx="400" cy="120" r="4" fill="#5eead4"/>
   <text x="400" y="110" fill="#d6d9df" font-size="12" text-anchor="middle">3.64</text>
   <text x="400" y="270" fill="#8b909b" font-size="12" text-anchor="middle">20y</text>
-
   <circle cx="520" cy="92" r="4" fill="#f5b13d"/>
   <text x="520" y="82" fill="#f5b13d" font-size="12" text-anchor="middle">3.90</text>
   <text x="520" y="270" fill="#8b909b" font-size="12" text-anchor="middle">30y</text>
-
   <circle cx="640" cy="90" r="4" fill="#f5b13d"/>
   <text x="640" y="80" fill="#f5b13d" font-size="12" text-anchor="middle">3.91</text>
   <text x="640" y="270" fill="#8b909b" font-size="12" text-anchor="middle">40y</text>
-
   <text x="32" y="300" fill="#8b909b" font-size="12">BoJ policy rate: 1.00% since June 2026, its highest since the 1990s.</text>
 </svg>
 <figcaption>A curve repriced entirely upward, with the long end above 3.9%. The 40-year had already crossed 4% back in January 2026 (a record 4.23%) before easing slightly. Source: worldgovernmentbonds.com, reading of 21 July 2026.</figcaption>
@@ -68,23 +60,18 @@ The detail of recent moves confirms the nature of the signal. Over the past mont
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The premium sits at the far end of the curve</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">One-month change in JGB yields, in basis points, as of 21 July 2026.</text>
-
   <rect x="120" y="86" width="101" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="112" y="107" fill="#d6d9df" font-size="12" text-anchor="end">2y</text>
   <text x="229" y="107" fill="#d6d9df" font-size="12">+3.6</text>
-
   <rect x="120" y="126" width="249" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="112" y="147" fill="#d6d9df" font-size="12" text-anchor="end">10y</text>
   <text x="377" y="147" fill="#d6d9df" font-size="12">+8.9</text>
-
   <rect x="120" y="166" width="213" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="112" y="187" fill="#d6d9df" font-size="12" text-anchor="end">20y</text>
   <text x="341" y="187" fill="#d6d9df" font-size="12">+7.6</text>
-
   <rect x="120" y="206" width="196" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="112" y="227" fill="#d6d9df" font-size="12" text-anchor="end">30y</text>
   <text x="324" y="227" fill="#d6d9df" font-size="12">+7.0</text>
-
   <rect x="120" y="246" width="476" height="30" fill="#f5b13d" opacity="0.9"/>
   <text x="112" y="267" fill="#d6d9df" font-size="12" text-anchor="end">40y</text>
   <text x="604" y="267" fill="#f5b13d" font-size="12" font-weight="700">+17.0</text>

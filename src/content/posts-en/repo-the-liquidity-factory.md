@@ -27,32 +27,25 @@ The Fed does not act on repo by setting a price, but by bracketing a corridor. T
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The repo liquidity factory</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Collateral flows one way, cash the other. The Fed brackets the rate corridor.</text>
-
   <rect x="32" y="120" width="170" height="70" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="117" y="150" fill="#f5f6f8" font-size="13" text-anchor="middle">Cash lenders</text>
   <text x="117" y="170" fill="#8b909b" font-size="11" text-anchor="middle">money market funds, banks</text>
-
   <rect x="275" y="120" width="170" height="70" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="360" y="150" fill="#f5f6f8" font-size="13" text-anchor="middle">Dealers</text>
   <text x="360" y="170" fill="#8b909b" font-size="11" text-anchor="middle">primary banks</text>
-
   <rect x="518" y="120" width="170" height="70" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="603" y="150" fill="#f5f6f8" font-size="13" text-anchor="middle">Cash borrowers</text>
   <text x="603" y="170" fill="#8b909b" font-size="11" text-anchor="middle">hedge funds, leverage</text>
-
   <line x1="202" y1="143" x2="273" y2="143" stroke="#5eead4" stroke-width="2" marker-end="url(#ar)"/>
   <line x1="445" y1="143" x2="516" y2="143" stroke="#5eead4" stroke-width="2" marker-end="url(#ar)"/>
   <text x="360" y="112" fill="#5eead4" font-size="11" text-anchor="middle">cash →</text>
-
   <line x1="516" y1="168" x2="445" y2="168" stroke="#ff4d87" stroke-width="2" marker-end="url(#ar2)"/>
   <line x1="273" y1="168" x2="202" y2="168" stroke="#ff4d87" stroke-width="2" marker-end="url(#ar2)"/>
   <text x="360" y="208" fill="#ff4d87" font-size="11" text-anchor="middle">← collateral (Treasuries)</text>
-
   <line x1="275" y1="250" x2="445" y2="250" stroke="#8b909b" stroke-width="1" stroke-dasharray="3 3"/>
   <text x="360" y="245" fill="#5eead4" font-size="11" text-anchor="middle">ceiling: SRF (the Fed lends)</text>
   <text x="360" y="272" fill="#f5b13d" font-size="11" text-anchor="middle">IORB: interest on reserves</text>
   <text x="360" y="296" fill="#ff4d87" font-size="11" text-anchor="middle">floor: RRP (the Fed borrows)</text>
-
   <defs>
     <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#5eead4"/></marker>
     <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#ff4d87"/></marker>
@@ -78,29 +71,23 @@ The Fed reacted. On **10 December 2025**, it removed the facility's aggregate ca
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Signs of strain, late 2025</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Sources: New York Fed; FOMC; Wolf Street. Amounts in billions of dollars.</text>
-
   <line x1="60" y1="150" x2="690" y2="150" stroke="#2a2c33" stroke-width="1"/>
-
   <circle cx="130" cy="150" r="6" fill="#f5b13d"/>
   <text x="130" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">mid-Sep</text>
   <text x="130" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SRF: 18.5</text>
   <text x="130" y="196" fill="#8b909b" font-size="10" text-anchor="middle">SOFR ~4.42%</text>
-
   <circle cx="320" cy="150" r="6" fill="#5eead4"/>
   <text x="320" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">Dec 1</text>
   <text x="320" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">end of QT</text>
   <text x="320" y="196" fill="#8b909b" font-size="10" text-anchor="middle">b/s 6,500</text>
-
   <circle cx="500" cy="150" r="6" fill="#5eead4"/>
   <text x="500" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">Dec 10</text>
   <text x="500" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SRF cap lifted</text>
   <text x="500" y="196" fill="#8b909b" font-size="10" text-anchor="middle">buys 40 / month</text>
-
   <circle cx="650" cy="150" r="6" fill="#ff4d87"/>
   <text x="650" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">Dec 31</text>
   <text x="650" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SOFR 3.87%</text>
   <text x="650" y="196" fill="#8b909b" font-size="10" text-anchor="middle">SRF: 75</text>
-
   <text x="32" y="270" fill="#8b909b" font-size="11">For reference, the facility had been near-unused from 2021 to summer 2025.</text>
 </svg>
 <figcaption>From mid-September to end-December 2025, the standing facility went from near-disuse to a $75 billion draw on 31 December. Sources: New York Fed (speeches and Open Market Trading Desk statements), FOMC implementation note of 10 December 2025, Wolf Street for the year turn.</figcaption>

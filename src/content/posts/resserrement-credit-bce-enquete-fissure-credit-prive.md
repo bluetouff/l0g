@@ -20,23 +20,18 @@ Le tableau se dégrade en revanche du côté des ménages. Les critères se sont
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le durcissement, bien en deçà des craintes</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Resserrement net des critères d'octroi, en % de banques, T2 2026. Source : BCE, enquête du 21 juillet 2026.</text>
-
   <line x1="170" y1="86" x2="170" y2="250" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="170" y="96" width="112" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="162" y="118" fill="#d6d9df" font-size="12" text-anchor="end">Entreprises</text>
   <text x="290" y="118" fill="#d6d9df" font-size="12">7 %</text>
   <line x1="474" y1="88" x2="474" y2="138" stroke="#ff4d87" stroke-width="2" stroke-dasharray="3 3"/>
   <text x="482" y="118" fill="#ff4d87" font-size="11">19 % anticipé en avril</text>
-
   <rect x="170" y="150" width="144" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="162" y="172" fill="#d6d9df" font-size="12" text-anchor="end">Habitat</text>
   <text x="322" y="172" fill="#d6d9df" font-size="12">9 %</text>
-
   <rect x="170" y="204" width="192" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="162" y="226" fill="#d6d9df" font-size="12" text-anchor="end">Consommation</text>
   <text x="370" y="226" fill="#d6d9df" font-size="12">12 %</text>
-
   <text x="32" y="284" fill="#8b909b" font-size="12">Demande de crédit des entreprises : +3 % net, contre un recul de 10 % attendu. Le crunch redouté n'a pas eu lieu.</text>
 </svg>
 <figcaption>Les banques de la zone euro resserrent encore, mais trois fois moins qu'elles ne l'avaient prévu pour les entreprises, dont la demande repart. La pression persiste surtout sur les ménages. Source : BCE, enquête sur la distribution du crédit, 21 juillet 2026.</figcaption>
@@ -63,29 +58,22 @@ La vraie question systémique n'est ni le canal bancaire seul, ni le canal priv�
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le crédit a changé de bilan, pas de risque</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Enchevêtrement banques et crédit privé. Source : FSB, rapport sur les vulnérabilités du crédit privé (6 mai 2026).</text>
-
   <rect x="40" y="140" width="150" height="60" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="115" y="165" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Banques</text>
   <text x="115" y="185" fill="#8b909b" font-size="11" text-anchor="middle">régulées</text>
-
   <rect x="285" y="140" width="160" height="60" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="365" y="165" fill="#5eead4" font-size="13" font-weight="700" text-anchor="middle">Fonds de dette</text>
   <text x="365" y="185" fill="#5eead4" font-size="12" text-anchor="middle">privée : 1 500-2 000 Md$</text>
-
   <rect x="540" y="140" width="150" height="60" fill="none" stroke="#8b909b" stroke-width="1.5"/>
   <text x="615" y="165" fill="#d6d9df" font-size="13" font-weight="700" text-anchor="middle">Entreprises</text>
   <text x="615" y="185" fill="#8b909b" font-size="11" text-anchor="middle">taille moyenne</text>
-
   <line x1="190" y1="162" x2="283" y2="162" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="236" y="153" fill="#ff4d87" font-size="10" text-anchor="middle">lignes, NAV</text>
   <text x="236" y="178" fill="#8b909b" font-size="10" text-anchor="middle">~220 Md$</text>
-
   <line x1="445" y1="170" x2="538" y2="170" stroke="#5eead4" stroke-width="1.5"/>
   <text x="491" y="162" fill="#8b909b" font-size="10" text-anchor="middle">prêt direct</text>
-
   <path d="M115 200 Q115 250 550 250 Q615 250 615 202" fill="none" stroke="#7aa2f7" stroke-width="1.2" stroke-dasharray="4 3"/>
   <text x="360" y="268" fill="#8b909b" font-size="10" text-anchor="middle">revolving bancaire au même emprunteur</text>
-
   <rect x="285" y="266" width="160" height="46" fill="none" stroke="#f5b13d" stroke-width="1.2"/>
   <text x="365" y="285" fill="#f5b13d" font-size="12" font-weight="700" text-anchor="middle">Assureurs, pensions,</text>
   <text x="365" y="302" fill="#f5b13d" font-size="12" text-anchor="middle">particuliers</text>

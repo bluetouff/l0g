@@ -30,25 +30,20 @@ On the other side of the vice, the winners collect. Gulf producers bank the war 
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The vice: barrel against the South's currencies</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Last twelve months, stylised path. When the two blades spread apart, the emerging importer pays twice.</text>
-
   <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <text x="120" y="300" fill="#8b909b" font-size="10" text-anchor="middle">summer 2025</text>
   <text x="400" y="300" fill="#8b909b" font-size="10" text-anchor="middle">war, June 2026</text>
   <text x="640" y="300" fill="#8b909b" font-size="10" text-anchor="middle">17 July</text>
-
   <polyline points="100,220 220,210 320,200 400,130 470,205 560,190 660,120" fill="none" stroke="#f5b13d" stroke-width="2.5"/>
   <text x="150" y="200" fill="#f5b13d" font-size="11">Brent (+27% over one year)</text>
   <text x="655" y="110" fill="#f5b13d" font-size="11" text-anchor="end">$88</text>
-
   <polyline points="100,170 220,165 320,150 400,155 470,150 560,175 660,205" fill="none" stroke="#5eead4" stroke-width="2.5"/>
   <text x="210" y="140" fill="#5eead4" font-size="11">MSCI EM currency index</text>
   <text x="655" y="225" fill="#5eead4" font-size="11" text-anchor="end">2026 gains erased</text>
-
   <circle cx="660" cy="120" r="5" fill="#ff4d87"/>
   <circle cx="660" cy="205" r="5" fill="#ff4d87"/>
   <line x1="660" y1="128" x2="660" y2="197" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
-
   <text x="32" y="330" fill="#8b909b" font-size="11">Sources: Trading Economics (Brent, 17 July 2026), Bloomberg (MSCI EM FX index, 1 July 2026), Convera (dollar). Schematic representation.</text>
 </svg>
 <figcaption>The barrel has regained 27% over a year with a war premium rebuilt in mid-July, while the emerging currency index fell back to its lowest since April, courtesy of a dollar at a thirteen-month high. The spread between the two blades measures the importers' double squeeze. Stylised path drawn from the points cited.</figcaption>
@@ -65,21 +60,16 @@ This photograph reads two ways. The reassuring one: the Fund proved in 2022-2023
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The IMF at a record window</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Credit outstanding by country, in billions of dollars, early 2026.</text>
-
   <rect x="200" y="90" width="470" height="36" fill="#ff4d87" opacity="0.85"/>
   <text x="192" y="114" fill="#d6d9df" font-size="12" text-anchor="end">Argentina</text>
   <text x="208" y="114" fill="#0c0d10" font-size="13" font-weight="700">60.2 (10.5% of GDP)</text>
-
   <rect x="200" y="142" width="84" height="36" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="166" fill="#d6d9df" font-size="12" text-anchor="end">Egypt</text>
   <text x="292" y="166" fill="#f5f6f8" font-size="13" font-weight="700">10.7</text>
-
   <rect x="200" y="194" width="82" height="36" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="218" fill="#d6d9df" font-size="12" text-anchor="end">Pakistan</text>
   <text x="290" y="218" fill="#f5f6f8" font-size="13" font-weight="700">10.5</text>
-
   <text x="200" y="262" fill="#5eead4" font-size="12">Total outstanding: record above SDR 110 billion (~$150bn). Top ten, Ukraine included: $128bn.</text>
-
   <text x="32" y="302" fill="#8b909b" font-size="11">Sources: IMF (credit outstanding), Zee News and The Economy Pakistan compilations, Bloomberg for the February 2026 Egyptian tranche.</text>
 </svg>
 <figcaption>The world's lender of last resort approaches the new shock with a record book and extreme concentration: Argentina alone weighs 40% of the total. A second oil round would find an already crowded window. Sources: IMF, compilations cited.</figcaption>

@@ -20,23 +20,18 @@ Rapportée au portefeuille du prêteur, la concentration est plus frappante enco
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Un portefeuille, un client</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Encours de crédit du guichet général (GRA) au 17 juillet 2026, en milliards de dollars, au taux DTS courant.</text>
-
   <rect x="150" y="84" width="500" height="34" fill="#ff4d87" opacity="0.9"/>
   <text x="142" y="106" fill="#d6d9df" font-size="12" text-anchor="end">Argentine</text>
   <text x="158" y="106" fill="#0c0d10" font-size="13" font-weight="700">57,9 soit 46,1 % de l'encours</text>
-
   <rect x="150" y="132" width="123" height="34" fill="#7aa2f7" opacity="0.85"/>
   <text x="142" y="154" fill="#d6d9df" font-size="12" text-anchor="end">Ukraine</text>
   <text x="281" y="154" fill="#d6d9df" font-size="13">14,2</text>
-
   <rect x="150" y="180" width="91" height="34" fill="#7aa2f7" opacity="0.85"/>
   <text x="142" y="202" fill="#d6d9df" font-size="12" text-anchor="end">Pakistan</text>
   <text x="249" y="202" fill="#d6d9df" font-size="13">10,6</text>
-
   <rect x="150" y="228" width="84" height="34" fill="#7aa2f7" opacity="0.85"/>
   <text x="142" y="250" fill="#d6d9df" font-size="12" text-anchor="end">Équateur</text>
   <text x="242" y="250" fill="#d6d9df" font-size="13">9,7</text>
-
   <rect x="150" y="276" width="77" height="34" fill="#7aa2f7" opacity="0.85"/>
   <text x="142" y="298" fill="#d6d9df" font-size="12" text-anchor="end">Égypte</text>
   <text x="235" y="298" fill="#d6d9df" font-size="13">9,0</text>
@@ -65,34 +60,27 @@ Le calendrier tempère l'enthousiasme. L'[échéancier publié par le FMI](https
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La pente devant Buenos Aires</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Paiements dus au FMI sur l'encours existant, en milliards de dollars au taux DTS courant. Hors tirages restants.</text>
-
   <line x1="60" y1="280" x2="690" y2="280" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="90" y="260" width="70" height="20" fill="#5eead4" opacity="0.9"/>
   <rect x="90" y="230" width="70" height="30" fill="#f5b13d" opacity="0.9"/>
   <text x="125" y="218" fill="#d6d9df" font-size="13" text-anchor="middle" font-weight="700">2,8</text>
   <text x="125" y="300" fill="#8b909b" font-size="12" text-anchor="middle">S2 2026</text>
-
   <rect x="212" y="202" width="70" height="78" fill="#5eead4" opacity="0.9"/>
   <rect x="212" y="144" width="70" height="58" fill="#f5b13d" opacity="0.9"/>
   <text x="247" y="132" fill="#d6d9df" font-size="13" text-anchor="middle" font-weight="700">7,7</text>
   <text x="247" y="300" fill="#8b909b" font-size="12" text-anchor="middle">2027</text>
-
   <rect x="334" y="164" width="70" height="116" fill="#5eead4" opacity="0.9"/>
   <rect x="334" y="112" width="70" height="52" fill="#f5b13d" opacity="0.9"/>
   <text x="369" y="100" fill="#d6d9df" font-size="13" text-anchor="middle" font-weight="700">9,5</text>
   <text x="369" y="300" fill="#8b909b" font-size="12" text-anchor="middle">2028</text>
-
   <rect x="456" y="137" width="70" height="143" fill="#5eead4" opacity="0.9"/>
   <rect x="456" y="93" width="70" height="44" fill="#f5b13d" opacity="0.9"/>
   <text x="491" y="81" fill="#d6d9df" font-size="13" text-anchor="middle" font-weight="700">10,6</text>
   <text x="491" y="300" fill="#8b909b" font-size="12" text-anchor="middle">2029</text>
-
   <rect x="578" y="112" width="70" height="168" fill="#5eead4" opacity="0.9"/>
   <rect x="578" y="77" width="70" height="35" fill="#f5b13d" opacity="0.9"/>
   <text x="613" y="65" fill="#d6d9df" font-size="13" text-anchor="middle" font-weight="700">11,5</text>
   <text x="613" y="300" fill="#8b909b" font-size="12" text-anchor="middle">2030</text>
-
   <rect x="90" y="316" width="12" height="12" fill="#5eead4"/>
   <text x="108" y="326" fill="#8b909b" font-size="12">Principal</text>
   <rect x="190" y="316" width="12" height="12" fill="#f5b13d"/>
@@ -112,15 +100,12 @@ Traversons maintenant le bilan dans l'autre sens, car la dépendance n'est pas �
   <rect width="720" height="250" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'exposition dépasse le coussin</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Milliards de dollars, au taux DTS courant. Soldes de précaution : projection FMI pour fin avril 2025.</text>
-
   <rect x="240" y="88" width="440" height="44" fill="#ff4d87" opacity="0.9"/>
   <text x="232" y="115" fill="#d6d9df" font-size="12" text-anchor="end">Crédit à l'Argentine</text>
   <text x="248" y="115" fill="#0c0d10" font-size="13" font-weight="700">57,9</text>
-
   <rect x="240" y="150" width="268" height="44" fill="#5eead4" opacity="0.9"/>
   <text x="232" y="177" fill="#d6d9df" font-size="12" text-anchor="end">Soldes de précaution</text>
   <text x="248" y="177" fill="#0c0d10" font-size="13" font-weight="700">35,2</text>
-
   <text x="32" y="228" fill="#8b909b" font-size="12">Un défaut argentin, même partiel, entamerait un coussin déjà inférieur à la seule exposition au pays.</text>
 </svg>
 <figcaption>Le coussin de précaution du Fonds couvre environ deux tiers de la seule exposition argentine. Le statut de créancier privilégié fait le reste du travail, tant qu'il tient. Sources : FMI, évaluation de l'exposition financière (avril 2025), position financière au 30 juin 2026.</figcaption>

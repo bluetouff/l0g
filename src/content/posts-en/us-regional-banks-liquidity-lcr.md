@@ -21,39 +21,31 @@ On 12 March 2023, the Fed created the BTFP, an emergency facility lending for on
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">From panic to reform</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">March 2023: three failures. December 2025: end of tightening. March 2026: the framework eases.</text>
-
   <line x1="60" y1="150" x2="688" y2="150" stroke="#3a3d44" stroke-width="1.5"/>
-
   <circle cx="70" cy="150" r="6" fill="#ff4d87"/>
   <text x="70" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">10 Mar 23</text>
   <text x="70" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SVB</text>
   <text x="70" y="196" fill="#8b909b" font-size="10" text-anchor="middle">$209bn</text>
-
   <circle cx="192" cy="150" r="6" fill="#f5b13d"/>
   <text x="192" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">12 Mar 23</text>
   <text x="192" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">Signature</text>
   <text x="192" y="196" fill="#8b909b" font-size="10" text-anchor="middle">+ BTFP</text>
-
   <circle cx="314" cy="150" r="6" fill="#ff4d87"/>
   <text x="314" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">1 May 23</text>
   <text x="314" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">First Republic</text>
   <text x="314" y="196" fill="#8b909b" font-size="10" text-anchor="middle">$229bn → JPM</text>
-
   <circle cx="436" cy="150" r="6" fill="#5eead4"/>
   <text x="436" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">11 Mar 24</text>
   <text x="436" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">BTFP ends</text>
   <text x="436" y="196" fill="#8b909b" font-size="10" text-anchor="middle">NYCB / CRE</text>
-
   <circle cx="558" cy="150" r="6" fill="#5eead4"/>
   <text x="558" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">1 Dec 25</text>
   <text x="558" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">End of QT</text>
   <text x="558" y="196" fill="#8b909b" font-size="10" text-anchor="middle">ample reserves</text>
-
   <circle cx="680" cy="150" r="6" fill="#f5b13d"/>
   <text x="680" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">3 Mar 26</text>
   <text x="680" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">LCR reform</text>
   <text x="680" y="196" fill="#8b909b" font-size="10" text-anchor="middle">roundtable</text>
-
   <text x="32" y="270" fill="#8b909b" font-size="11">Seven weeks of panic in 2023, then three years of normalisation up to the 2026 regulatory turn.</text>
 </svg>
 <figcaption>Timeline of the episode, from SVB's closure on 10 March 2023 to the liquidity roundtable of 3 March 2026. Sources: FDIC, Federal Reserve, Bank Policy Institute. Dates and amounts verified one by one.</figcaption>
@@ -68,17 +60,13 @@ The quantitative tightening begun in June 2022 has ended: the FOMC stopped shrin
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The cushion that swelled</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Share of big banks' balance sheet tied up in safe assets, in percent.</text>
-
   <line x1="180" y1="250" x2="560" y2="250" stroke="#3a3d44" stroke-width="1.5"/>
-
   <rect x="220" y="190" width="120" height="60" fill="#5eead4" opacity="0.85"/>
   <text x="280" y="178" fill="#5eead4" font-size="20" font-weight="700" text-anchor="middle">~10%</text>
   <text x="280" y="272" fill="#d6d9df" font-size="12" text-anchor="middle">before 2008</text>
-
   <rect x="420" y="100" width="120" height="150" fill="#ff4d87" opacity="0.85"/>
   <text x="480" y="88" fill="#ff4d87" font-size="20" font-weight="700" text-anchor="middle">~25%</text>
   <text x="480" y="272" fill="#d6d9df" font-size="12" text-anchor="middle">2026</text>
-
   <text x="32" y="295" fill="#8b909b" font-size="10">Order of magnitude cited by the Treasury (S. Bessent), roundtable of 3 March 2026.</text>
 </svg>
 <figcaption>According to Treasury Secretary Scott Bessent, about 25% of big banks' balance sheet is today tied up in safe assets, against nearly 10% before the 2008 crisis. Source: remarks by S. Bessent, liquidity roundtable, 3 March 2026.</figcaption>

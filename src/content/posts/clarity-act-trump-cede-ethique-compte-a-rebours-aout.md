@@ -3,7 +3,7 @@ title: "CLARITY Act : Trump cède sur l'éthique, le compte à rebours d'août c
 description: "Le 20 juillet 2026 au soir, Donald Trump a accepté une clause éthique dans le CLARITY Act, l'obstacle qu'il incarnait lui-même. Trois jours plus tôt, le projet fusionné du Sénat était sorti sans cette clause, provoquant l'opposition frontale de trois sénateurs démocrates. Le texte définitif n'est pas public, les démocrates ne l'ont pas vu, et il reste une dizaine de jours de séance avant la pause du 7 août. Décryptage d'une course contre la montre, scénarios datés à l'appui."
 pubDate: 2026-07-21T15:51:00+02:00
 updatedDate: 2026-07-21T15:51:00+02:00
-tags: ["crypto", "régulation", "politique us", "stablecoins"]
+tags: ["clarity act", "crypto", "régulation", "politique us", "stablecoins"]
 draft: false
 ---
 
@@ -28,24 +28,17 @@ En trois jours, le dossier est passé d'un projet sans garde-fou, rejeté publiq
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La fin de partie, jour par jour</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Sénat des États-Unis, juillet-août 2026. Sources : Congress.gov, The Block, CoinDesk, cryptobriefing.</text>
-
   <line x1="48" y1="92" x2="48" y2="300" stroke="#2a2c33" stroke-width="1"/>
-
   <circle cx="48" cy="98" r="7" fill="#5eead4"/>
   <text x="68" y="103" fill="#d6d9df" font-size="13">13 juillet : le Sénat rentre de vacances</text>
-
   <circle cx="48" cy="140" r="7" fill="#5eead4"/>
   <text x="68" y="145" fill="#d6d9df" font-size="13">17 juillet : projet fusionné publié, sans clause éthique</text>
-
   <circle cx="48" cy="182" r="7" fill="#ff4d87"/>
   <text x="68" y="187" fill="#d6d9df" font-size="13">17 juillet : Murphy, Van Hollen, Merkley s'y opposent</text>
-
   <circle cx="48" cy="224" r="7" fill="#f5b13d"/>
   <text x="68" y="229" fill="#d6d9df" font-size="13">20 juillet : Trump accepte une clause éthique</text>
-
   <circle cx="48" cy="266" r="7" fill="none" stroke="#8b909b" stroke-width="2" stroke-dasharray="3 3"/>
   <text x="68" y="271" fill="#8b909b" font-size="13">Prochains jours : publication du texte amendé</text>
-
   <circle cx="48" cy="300" r="7" fill="none" stroke="#ff4d87" stroke-width="2"/>
   <text x="68" y="305" fill="#f5f6f8" font-size="13" font-weight="700">7 août : début de la pause estivale, échéance de fait</text>
 </svg>
@@ -63,19 +56,14 @@ Tout se joue sur un mot : la clause sera-t-elle contraignante ou cosmétique. Un
   <rect width="720" height="240" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Sept voix à trouver</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Seuil de clôture au Sénat : 60 voix sur 100. La majorité républicaine ne suffit pas seule.</text>
-
   <rect x="60" y="90" width="424" height="46" fill="#7aa2f7" opacity="0.85"/>
   <text x="272" y="119" fill="#0c0d10" font-size="14" font-weight="700" text-anchor="middle">53 républicains</text>
-
   <rect x="484" y="90" width="56" height="46" fill="#f5b13d" opacity="0.9"/>
   <text x="512" y="119" fill="#0c0d10" font-size="13" font-weight="700" text-anchor="middle">+7 D</text>
-
   <line x1="540" y1="86" x2="540" y2="150" stroke="#ff4d87" stroke-width="2"/>
   <text x="540" y="80" fill="#ff4d87" font-size="12" font-weight="700" text-anchor="middle">seuil 60</text>
-
   <rect x="540" y="90" width="120" height="46" fill="#2a2c33" opacity="0.6"/>
   <text x="600" y="119" fill="#8b909b" font-size="12" text-anchor="middle">40 restants</text>
-
   <text x="32" y="190" fill="#d6d9df" font-size="13">Démocrates en pointe sur la clause éthique : Murphy, Gillibrand, Van Hollen, Merkley.</text>
   <text x="32" y="214" fill="#8b909b" font-size="12">Au moins sept démocrates doivent rejoindre les 53 républicains. Aucun n'était rallié au 20 juillet.</text>
 </svg>

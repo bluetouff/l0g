@@ -28,25 +28,20 @@ De l'autre côté du ciseau, les gagnants encaissent. Les producteurs du Golfe e
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le ciseau : baril contre devises du Sud</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Douze derniers mois, tracé stylisé. Quand les deux lames s'écartent, l'importateur émergent paie deux fois.</text>
-
   <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <text x="120" y="300" fill="#8b909b" font-size="10" text-anchor="middle">été 2025</text>
   <text x="400" y="300" fill="#8b909b" font-size="10" text-anchor="middle">guerre, juin 2026</text>
   <text x="640" y="300" fill="#8b909b" font-size="10" text-anchor="middle">17 juillet</text>
-
   <polyline points="100,220 220,210 320,200 400,130 470,205 560,190 660,120" fill="none" stroke="#f5b13d" stroke-width="2.5"/>
   <text x="150" y="200" fill="#f5b13d" font-size="11">Brent (+27 % sur un an)</text>
   <text x="655" y="110" fill="#f5b13d" font-size="11" text-anchor="end">88 $</text>
-
   <polyline points="100,170 220,165 320,150 400,155 470,150 560,175 660,205" fill="none" stroke="#5eead4" stroke-width="2.5"/>
   <text x="210" y="140" fill="#5eead4" font-size="11">indice MSCI devises émergentes</text>
   <text x="655" y="225" fill="#5eead4" font-size="11" text-anchor="end">gains 2026 effacés</text>
-
   <circle cx="660" cy="120" r="5" fill="#ff4d87"/>
   <circle cx="660" cy="205" r="5" fill="#ff4d87"/>
   <line x1="660" y1="128" x2="660" y2="197" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
-
   <text x="32" y="330" fill="#8b909b" font-size="11">Sources : Trading Economics (Brent, 17 juillet 2026), Bloomberg (indice MSCI EM FX, 1ᵉʳ juillet 2026), Convera (dollar). Représentation schématique.</text>
 </svg>
 <figcaption>Le baril a repris 27 % sur un an avec une prime de guerre reconstituée mi-juillet, pendant que l'indice des devises émergentes retombait à son plus bas depuis avril, dollar au plus haut de treize mois oblige. L'écartement des deux lames mesure la double peine des importateurs. Tracé stylisé à partir des points cités.</figcaption>
@@ -63,21 +58,16 @@ Cette photographie a deux lectures. La rassurante : le Fonds a prouvé en 2022-2
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le FMI à guichet record</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Crédit en cours par pays, en milliards de dollars, début 2026.</text>
-
   <rect x="200" y="90" width="470" height="36" fill="#ff4d87" opacity="0.85"/>
   <text x="192" y="114" fill="#d6d9df" font-size="12" text-anchor="end">Argentine</text>
   <text x="208" y="114" fill="#0c0d10" font-size="13" font-weight="700">60,2 (10,5 % du PIB)</text>
-
   <rect x="200" y="142" width="84" height="36" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="166" fill="#d6d9df" font-size="12" text-anchor="end">Égypte</text>
   <text x="292" y="166" fill="#f5f6f8" font-size="13" font-weight="700">10,7</text>
-
   <rect x="200" y="194" width="82" height="36" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="218" fill="#d6d9df" font-size="12" text-anchor="end">Pakistan</text>
   <text x="290" y="218" fill="#f5f6f8" font-size="13" font-weight="700">10,5</text>
-
   <text x="200" y="262" fill="#5eead4" font-size="12">Encours total : record au-dessus de 110 milliards de DTS (~150 Md$). Top 10, Ukraine comprise : 128 Md$.</text>
-
   <text x="32" y="302" fill="#8b909b" font-size="11">Sources : FMI (crédit en cours), compilations Zee News et The Economy Pakistan, Bloomberg pour la tranche égyptienne de février 2026.</text>
 </svg>
 <figcaption>Le prêteur en dernier ressort mondial aborde le nouveau choc avec un encours record et une concentration extrême : l'Argentine pèse à elle seule 40 % du total. Un deuxième round pétrolier trouverait un guichet déjà très sollicité. Sources : FMI, compilations citées.</figcaption>

@@ -24,31 +24,24 @@ This architecture stacks three fragilities that multiply each other. Concentrati
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Desalination dependence, country by country</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Share of desalination in total water use (bars); drinking water depends on it far more.</text>
-
   <rect x="180" y="84" width="305" height="30" fill="#ff4d87" opacity="0.85"/>
   <text x="172" y="104" fill="#d6d9df" font-size="12" text-anchor="end">Qatar</text>
   <text x="493" y="104" fill="#f5f6f8" font-size="12" font-weight="700">61% (drinking water: &gt;99%)</text>
-
   <rect x="180" y="126" width="295" height="30" fill="#ff4d87" opacity="0.85"/>
   <text x="172" y="146" fill="#d6d9df" font-size="12" text-anchor="end">Bahrain</text>
   <text x="483" y="146" fill="#f5f6f8" font-size="12" font-weight="700">59% (drinking water: &gt;90%)</text>
-
   <rect x="180" y="168" width="235" height="30" fill="#f5b13d" opacity="0.85"/>
   <text x="172" y="188" fill="#d6d9df" font-size="12" text-anchor="end">Kuwait</text>
   <text x="423" y="188" fill="#f5f6f8" font-size="12" font-weight="700">47% (drinking water: ~90%)</text>
-
   <rect x="180" y="210" width="205" height="30" fill="#f5b13d" opacity="0.85"/>
   <text x="172" y="230" fill="#d6d9df" font-size="12" text-anchor="end">UAE</text>
   <text x="393" y="230" fill="#f5f6f8" font-size="12" font-weight="700">41% (drinking water: &gt;80%)</text>
-
   <rect x="180" y="252" width="115" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="172" y="272" fill="#d6d9df" font-size="12" text-anchor="end">Oman</text>
   <text x="303" y="272" fill="#f5f6f8" font-size="12" font-weight="700">23%</text>
-
   <rect x="180" y="294" width="90" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="172" y="314" fill="#d6d9df" font-size="12" text-anchor="end">Saudi Arabia</text>
   <text x="278" y="314" fill="#f5f6f8" font-size="12" font-weight="700">18%</text>
-
   <text x="32" y="348" fill="#8b909b" font-size="11">Sources: Al Jazeera (March 2026, regional data), AP/KSAT for Kuwait, Reuters via Middle East Eye for Bahrain and the UAE.</text>
 </svg>
 <figcaption>More than 400 plants produce 40% of the world's desalinated water. Of total water use, dependence runs from 18 to 61%; of the water people drink, it exceeds 90% in four of the six monarchies. The water table is no longer an alternative, it is an emergency reserve. Sources cited.</figcaption>
@@ -65,19 +58,15 @@ This asymmetry is the strategic heart of the case. An oil embargo negotiates ove
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The asymmetry of reserves: months versus days</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Approximate autonomy of strategic stocks, in days of consumption. Common scale.</text>
-
   <rect x="230" y="90" width="450" height="36" fill="#f5b13d" opacity="0.85"/>
   <text x="222" y="114" fill="#d6d9df" font-size="12" text-anchor="end">Oil: IEA rule</text>
   <text x="238" y="114" fill="#0c0d10" font-size="13" font-weight="700">90 days of net imports</text>
-
   <rect x="230" y="146" width="35" height="36" fill="#5eead4" opacity="0.9"/>
   <text x="222" y="170" fill="#d6d9df" font-size="12" text-anchor="end">Water: Qatar (mega-reservoirs)</text>
   <text x="273" y="170" fill="#f5f6f8" font-size="13" font-weight="700">~7 days</text>
-
   <rect x="230" y="202" width="12" height="36" fill="#ff4d87" opacity="0.9"/>
   <text x="222" y="226" fill="#d6d9df" font-size="12" text-anchor="end">Water: regional order of magnitude</text>
   <text x="250" y="226" fill="#f5f6f8" font-size="13" font-weight="700">"within days"</text>
-
   <text x="32" y="268" fill="#8b909b" font-size="11">Sources: IEA (90-day rule), Qatari storage programmes, AP wires of 17 July 2026 for the Kuwaiti order of magnitude.</text>
   <text x="32" y="286" fill="#8b909b" font-size="11">An oil embargo negotiates in months; a water interruption, in a week.</text>
 </svg>

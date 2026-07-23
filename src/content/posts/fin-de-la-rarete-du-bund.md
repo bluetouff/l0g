@@ -28,26 +28,20 @@ Le second pilier s'est retiré en silence : la BCE ne réinvestit plus rien et s
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le croisement : Bund contre swap à dix ans</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Tracé stylisé. Sous le swap : prime de rareté. Au-dessus : le marché fait payer l'offre.</text>
-
   <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <text x="140" y="300" fill="#8b909b" font-size="10" text-anchor="middle">années 2010</text>
   <text x="400" y="300" fill="#8b909b" font-size="10" text-anchor="middle">fin 2024</text>
   <text x="640" y="300" fill="#8b909b" font-size="10" text-anchor="middle">juillet 2026</text>
-
   <polyline points="100,180 300,190 400,196 540,190 660,182" fill="none" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 4"/>
   <text x="150" y="172" fill="#8b909b" font-size="11">taux de swap</text>
-
   <polyline points="100,240 300,224 400,199 540,180 660,164" fill="none" stroke="#5eead4" stroke-width="2.5"/>
   <text x="150" y="258" fill="#5eead4" font-size="11">rendement du Bund</text>
-
   <circle cx="400" cy="197" r="5" fill="#ff4d87"/>
   <text x="400" y="130" fill="#ff4d87" font-size="11" text-anchor="middle">croisement, une première</text>
   <text x="400" y="145" fill="#8b909b" font-size="10" text-anchor="middle">historique (fin 2024)</text>
   <line x1="400" y1="152" x2="400" y2="188" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
-
   <text x="668" y="160" fill="#5eead4" font-size="11" text-anchor="end">3,14 %</text>
-
   <text x="32" y="330" fill="#8b909b" font-size="11">Sources : Trading Economics (17 juillet 2026), TwentyFour AM, Amundi, BIS. Représentation schématique, pas une série de marché.</text>
 </svg>
 <figcaption>Une décennie durant, le Bund a rendu moins que le taux de swap : le prix de la rareté. Le croisement de fin 2024, installé depuis, marque le passage à un régime où l'investisseur exige au contraire une compensation pour absorber l'offre allemande. Tracé stylisé d'après les sources citées.</figcaption>

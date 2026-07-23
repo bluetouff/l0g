@@ -28,42 +28,34 @@ La contrepartie est structurelle : la propriété économique devient invisible 
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La chaîne de conservation : une opacité par étages</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Chaque maillon ne connaît que le maillon adjacent. Le sommet ne voit jamais le bénéficiaire final.</text>
-
   <!-- chaine -->
   <rect x="32" y="96" width="150" height="58" rx="8" fill="none" stroke="#8b909b" stroke-width="1.5"/>
   <text x="107" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Bénéficiaire final</text>
   <text x="107" y="138" fill="#8b909b" font-size="10" text-anchor="middle">épargnant, fonds, banque centrale</text>
-
   <rect x="212" y="96" width="140" height="58" rx="8" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="282" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Intermédiaire local</text>
   <text x="282" y="138" fill="#8b909b" font-size="10" text-anchor="middle">courtier, banque</text>
-
   <rect x="382" y="96" width="140" height="58" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="452" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Conservateur global</text>
   <text x="452" y="138" fill="#8b909b" font-size="10" text-anchor="middle">custodian</text>
-
   <rect x="552" y="96" width="136" height="58" rx="8" fill="none" stroke="#5eead4" stroke-width="2"/>
   <text x="620" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Euroclear (ICSD)</text>
   <text x="620" y="138" fill="#8b909b" font-size="10" text-anchor="middle">registre de dernier niveau</text>
-
   <line x1="182" y1="125" x2="210" y2="125" stroke="#2a2c33" stroke-width="2" marker-end="url(#arg)"/>
   <line x1="352" y1="125" x2="380" y2="125" stroke="#2a2c33" stroke-width="2" marker-end="url(#arg)"/>
   <line x1="522" y1="125" x2="550" y2="125" stroke="#2a2c33" stroke-width="2" marker-end="url(#arg)"/>
-
   <!-- omnibus -->
   <text x="282" y="185" fill="#f5b13d" font-size="11" text-anchor="middle">comptes omnibus : les titres de</text>
   <text x="282" y="200" fill="#f5b13d" font-size="11" text-anchor="middle">milliers de clients agrégés en un seul compte</text>
   <line x1="282" y1="160" x2="282" y2="172" stroke="#f5b13d" stroke-width="1" stroke-dasharray="3 3"/>
   <line x1="452" y1="160" x2="452" y2="172" stroke="#f5b13d" stroke-width="1" stroke-dasharray="3 3"/>
   <line x1="282" y1="172" x2="452" y2="172" stroke="#f5b13d" stroke-width="1" stroke-dasharray="3 3"/>
-
   <!-- panneau russe -->
   <rect x="32" y="232" width="656" height="96" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="52" y="260" fill="#ff4d87" font-size="13" font-weight="700">Le cas russe</text>
   <text x="52" y="282" fill="#d6d9df" font-size="12">Environ 210 Md€ d'avoirs de la Banque centrale de Russie immobilisés dans l'UE,</text>
   <text x="52" y="300" fill="#d6d9df" font-size="12">dont plus de 200 Md€ logés chez Euroclear Bank fin mars 2026 (85 % de son bilan).</text>
   <text x="52" y="318" fill="#8b909b" font-size="11">Sources : EPRS, Euroclear (T1 2026). Ordres de grandeur arrondis.</text>
-
   <defs>
     <marker id="arg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#8b909b"/></marker>
   </defs>
@@ -90,29 +82,23 @@ L'Europe a organisé la captation de cette rente sans toucher au principal. En f
   <rect width="720" height="400" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La machine à cash du gel</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Le principal reste immobilisé ; seuls les intérêts du cash redéposé sont captés. Montants en milliards d'euros.</text>
-
   <!-- flux gauche -->
   <rect x="32" y="92" width="180" height="52" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="122" y="114" fill="#f5f6f8" font-size="12" text-anchor="middle">Titres de la BCR</text>
   <text x="122" y="131" fill="#8b909b" font-size="10" text-anchor="middle">arrivent à échéance</text>
-
   <rect x="32" y="176" width="180" height="52" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="122" y="198" fill="#f5f6f8" font-size="12" text-anchor="middle">Cash chez Euroclear Bank</text>
   <text x="122" y="215" fill="#8b909b" font-size="10" text-anchor="middle">redéposé en banque centrale</text>
-
   <rect x="32" y="260" width="180" height="52" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="122" y="282" fill="#f5f6f8" font-size="12" text-anchor="middle">Intérêts : ~17 Md€</text>
   <text x="122" y="299" fill="#8b909b" font-size="10" text-anchor="middle">cumul 2022-2025</text>
-
   <line x1="122" y1="144" x2="122" y2="174" stroke="#2a2c33" stroke-width="2" marker-end="url(#arf)"/>
   <line x1="122" y1="228" x2="122" y2="258" stroke="#2a2c33" stroke-width="2" marker-end="url(#arf)"/>
-
   <line x1="212" y1="286" x2="300" y2="250" stroke="#5eead4" stroke-width="1.5" marker-end="url(#art)"/>
   <line x1="212" y1="286" x2="300" y2="330" stroke="#f5b13d" stroke-width="1.5" marker-end="url(#ara)"/>
   <text x="310" y="244" fill="#5eead4" font-size="11">contribution exceptionnelle : 6,6 Md€ versés</text>
   <text x="310" y="260" fill="#8b909b" font-size="10">Ukraine + remboursement du prêt ERA du G7</text>
   <text x="310" y="334" fill="#f5b13d" font-size="11">impôt belge : plus de 4 Md€ (2022-2025)</text>
-
   <!-- barres droite -->
   <text x="470" y="100" fill="#f5f6f8" font-size="12" font-weight="700">Intérêts annuels sur avoirs russes</text>
   <line x1="470" y1="200" x2="688" y2="200" stroke="#2a2c33" stroke-width="1"/>
@@ -128,9 +114,7 @@ L'Europe a organisé la captation de cette rente sans toucher au principal. En f
   <text x="551" y="216" fill="#8b909b" font-size="10" text-anchor="middle">2024</text>
   <text x="605" y="216" fill="#8b909b" font-size="10" text-anchor="middle">2025</text>
   <text x="659" y="216" fill="#8b909b" font-size="10" text-anchor="middle">S1 26</text>
-
   <text x="32" y="372" fill="#8b909b" font-size="11">Sources : Euroclear (résultats 2023-2025 et T1 2026), La Libre (17 juillet 2026), Conseil de l'UE.</text>
-
   <defs>
     <marker id="arf" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#2a2c33"/></marker>
     <marker id="art" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#5eead4"/></marker>
@@ -159,44 +143,35 @@ Aucun de ces jugements russes n'est exécutable en Europe, et le règlement 2025
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Quatre ans et demi de bras de fer</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Du gel des réserves à la guerre des tribunaux.</text>
-
   <line x1="56" y1="170" x2="692" y2="170" stroke="#2a2c33" stroke-width="1"/>
-
   <circle cx="80" cy="170" r="5" fill="#ff4d87"/>
   <text x="80" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">févr. 22</text>
   <text x="80" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">gel des réserves</text>
   <text x="80" y="210" fill="#8b909b" font-size="10" text-anchor="middle">de la BCR</text>
-
   <circle cx="190" cy="170" r="5" fill="#5eead4"/>
   <text x="190" y="140" fill="#5eead4" font-size="11" text-anchor="middle" font-weight="700">mai 24</text>
   <text x="190" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">contribution</text>
   <text x="190" y="210" fill="#8b909b" font-size="10" text-anchor="middle">exceptionnelle</text>
-
   <circle cx="280" cy="170" r="5" fill="#5eead4"/>
   <text x="280" y="140" fill="#5eead4" font-size="11" text-anchor="middle" font-weight="700">juin 24</text>
   <text x="280" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">prêt ERA G7</text>
   <text x="280" y="210" fill="#8b909b" font-size="10" text-anchor="middle">50 Md$</text>
-
   <circle cx="380" cy="170" r="5" fill="#f5b13d"/>
   <text x="380" y="140" fill="#f5b13d" font-size="11" text-anchor="middle" font-weight="700">nov.-déc. 25</text>
   <text x="380" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">plan US, échec du prêt</text>
   <text x="380" y="210" fill="#8b909b" font-size="10" text-anchor="middle">de réparation</text>
-
   <circle cx="470" cy="170" r="5" fill="#7aa2f7"/>
   <text x="470" y="140" fill="#7aa2f7" font-size="11" text-anchor="middle" font-weight="700">12 déc. 25</text>
   <text x="470" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">règlement 2025/2600</text>
   <text x="470" y="210" fill="#8b909b" font-size="10" text-anchor="middle">immobilisation indéfinie</text>
-
   <circle cx="560" cy="170" r="5" fill="#ff4d87"/>
   <text x="560" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">15 mai 26</text>
   <text x="560" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">Moscou condamne</text>
   <text x="560" y="210" fill="#8b909b" font-size="10" text-anchor="middle">Euroclear : ~250 Md$</text>
-
   <circle cx="650" cy="170" r="5" fill="#ff4d87"/>
   <text x="650" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">17 juil. 26</text>
   <text x="650" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">appel rejeté,</text>
   <text x="650" y="210" fill="#8b909b" font-size="10" text-anchor="middle">condamnation confirmée</text>
-
   <text x="32" y="266" fill="#8b909b" font-size="11">Entre-temps : recours de la BCR devant le Tribunal de l'UE (27 févr. 26), contre-action d'Euroclear à Bruxelles (30 juin 26),</text>
   <text x="32" y="284" fill="#8b909b" font-size="11">prêt européen de 90 Md€ décidé les 18-19 déc. 25, premier décaissement validé au sommet de juin 26.</text>
   <text x="32" y="310" fill="#8b909b" font-size="11">Sources : Conseil de l'UE, Euronews, La Libre, Moscow Times, L'Avenir.</text>

@@ -21,22 +21,18 @@ The captured gap is tiny, on the order of a few basis points. For the trade to b
   <rect width="720" height="320" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The anatomy of the basis trade</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Three simultaneous legs to capture the cash / futures gap, with high leverage.</text>
-
   <rect x="40" y="100" width="190" height="80" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="135" y="132" fill="#f5f6f8" font-size="13" text-anchor="middle">1. Cash purchase</text>
   <text x="135" y="152" fill="#8b909b" font-size="11" text-anchor="middle">Treasury bond</text>
   <text x="135" y="168" fill="#5eead4" font-size="11" text-anchor="middle">long position</text>
-
   <rect x="265" y="100" width="190" height="80" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="360" y="132" fill="#f5f6f8" font-size="13" text-anchor="middle">2. Forward sale</text>
   <text x="360" y="152" fill="#8b909b" font-size="11" text-anchor="middle">futures contract</text>
   <text x="360" y="168" fill="#ff4d87" font-size="11" text-anchor="middle">short position</text>
-
   <rect x="490" y="100" width="190" height="80" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="585" y="132" fill="#f5f6f8" font-size="13" text-anchor="middle">3. Funding</text>
   <text x="585" y="152" fill="#8b909b" font-size="11" text-anchor="middle">repo, collateral = leg 1</text>
   <text x="585" y="168" fill="#f5b13d" font-size="11" text-anchor="middle">leverage ~20x</text>
-
   <text x="360" y="232" fill="#d6d9df" font-size="12" text-anchor="middle">The basis converges to zero at expiry: the gap is pocketed.</text>
   <text x="360" y="262" fill="#8b909b" font-size="12" text-anchor="middle">Futures initial margin: 2 to 3%. Repo often at near-zero haircut.</text>
   <text x="360" y="284" fill="#8b909b" font-size="12" text-anchor="middle">A $100M position ties up about $7 to $8M of capital.</text>
@@ -61,34 +57,26 @@ The fragility is known and documented. When volatility rises, two things happen 
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The margin spiral</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">The mechanism that turns the liquidity provider into a stress amplifier.</text>
-
   <rect x="270" y="78" width="180" height="46" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="360" y="106" fill="#f5f6f8" font-size="12" text-anchor="middle">Rising volatility</text>
-
   <rect x="500" y="150" width="190" height="46" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="595" y="172" fill="#f5f6f8" font-size="12" text-anchor="middle">Margins and haircuts</text>
   <text x="595" y="187" fill="#8b909b" font-size="11" text-anchor="middle">raised</text>
-
   <rect x="500" y="250" width="190" height="46" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="595" y="272" fill="#f5f6f8" font-size="12" text-anchor="middle">Margin calls</text>
   <text x="595" y="287" fill="#8b909b" font-size="11" text-anchor="middle">cash needed</text>
-
   <rect x="270" y="250" width="180" height="46" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="360" y="272" fill="#f5f6f8" font-size="12" text-anchor="middle">Forced unwind</text>
   <text x="360" y="287" fill="#8b909b" font-size="11" text-anchor="middle">selling Treasuries</text>
-
   <rect x="40" y="150" width="190" height="46" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="135" y="172" fill="#f5f6f8" font-size="12" text-anchor="middle">Prices under pressure</text>
   <text x="135" y="187" fill="#8b909b" font-size="11" text-anchor="middle">volatility rises again</text>
-
   <path d="M450 101 L500 150" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M595 196 L595 250" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M500 273 L450 273" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M270 262 L135 196" stroke="#8b909b" stroke-width="1.4" marker-end="url(#a)"/>
   <path d="M135 150 L270 101" stroke="#ff4d87" stroke-width="1.6" marker-end="url(#a2)"/>
-
   <text x="360" y="325" fill="#8b909b" font-size="11" text-anchor="middle">March 2020: the unwind represented nearly half of hedge funds' Treasury sales.</text>
-
   <defs>
     <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#8b909b"/></marker>
     <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#ff4d87"/></marker>

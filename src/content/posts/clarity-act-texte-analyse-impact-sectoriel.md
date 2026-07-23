@@ -20,24 +20,19 @@ Le passage n'est pas automatique. Le texte crée, à la section 205, un nouvel a
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le test de maturité, du gendarme boursier au gendarme des matières premières</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Mécanique de la section 104 et de l'article 42 nouveau. Source : H.R. 3633 RS.</text>
-
   <rect x="270" y="82" width="180" height="46" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="360" y="103" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Jeton émis</text>
   <text x="360" y="120" fill="#8b909b" font-size="11" text-anchor="middle">via contrat d'investissement</text>
-
   <line x1="360" y1="128" x2="360" y2="158" stroke="#8b909b" stroke-width="1"/>
   <text x="360" y="150" fill="#d6d9df" font-size="12" text-anchor="middle">Blockchain sous contrôle commun ?</text>
-
   <rect x="70" y="176" width="250" height="70" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="195" y="200" fill="#ff4d87" font-size="13" font-weight="700" text-anchor="middle">OUI : actif accessoire</text>
   <text x="195" y="220" fill="#d6d9df" font-size="12" text-anchor="middle">Régulateur : SEC</text>
   <text x="195" y="238" fill="#8b909b" font-size="11" text-anchor="middle">émission, disclosures, insiders</text>
-
   <rect x="400" y="176" width="250" height="70" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="525" y="200" fill="#5eead4" font-size="13" font-weight="700" text-anchor="middle">NON : digital commodity</text>
   <text x="525" y="220" fill="#d6d9df" font-size="12" text-anchor="middle">Régulateur : CFTC</text>
   <text x="525" y="238" fill="#8b909b" font-size="11" text-anchor="middle">marché au comptant, bourses agréées</text>
-
   <line x1="360" y1="270" x2="360" y2="296" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="360" y="288" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">Passage OUI → NON : certification de maturité (art. 42)</text>
   <text x="360" y="318" fill="#8b909b" font-size="11" text-anchor="middle">Termes définis conjointement par la SEC et la CFTC (sec. 105).</text>
@@ -78,17 +73,14 @@ Le texte porte un second titre, souvent oublié des commentaires : l'« Anti-CBD
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Qui gagne quoi, et à quel prix</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Lecture d'impact du texte par acteur. Source : H.R. 3633 RS.</text>
-
   <text x="40" y="96" fill="#5eead4" font-size="13" font-weight="700">Gagnants nets</text>
   <text x="56" y="118" fill="#d6d9df" font-size="12">DeFi, développeurs, validateurs : exclusion large (sec. 15H, 409)</text>
   <text x="56" y="138" fill="#d6d9df" font-size="12">Émetteurs : voie de financement légale, 50 M$/an (sec. 202)</text>
   <text x="56" y="158" fill="#d6d9df" font-size="12">Stablecoins : confirmés hors valeurs mobilières (sec. 301)</text>
   <text x="56" y="178" fill="#d6d9df" font-size="12">Banques : garde d'actifs numériques autorisée (sec. 310)</text>
-
   <text x="40" y="212" fill="#f5b13d" font-size="13" font-weight="700">Gagnants sous conditions</text>
   <text x="56" y="234" fill="#d6d9df" font-size="12">Bourses : licence fédérale, mais cloisonnement des conflits (sec. 413)</text>
   <text x="56" y="254" fill="#d6d9df" font-size="12">Émetteurs, initiés : cessions bridées à 5-20 %/an (sec. 204)</text>
-
   <text x="40" y="288" fill="#ff4d87" font-size="13" font-weight="700">Perdant relatif</text>
   <text x="56" y="310" fill="#d6d9df" font-size="12">SEC : cède le comptant à la CFTC ; la Fed renonce à une CBDC (titre VI)</text>
 </svg>

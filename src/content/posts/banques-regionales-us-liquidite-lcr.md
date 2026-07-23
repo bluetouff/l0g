@@ -20,39 +20,31 @@ Le 12 mars 2023, la Fed crée le [BTFP](/glossaire/#btfp), une facilité d'urgen
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">De la panique à la réforme</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Mars 2023 : trois faillites. Décembre 2025 : fin du resserrement. Mars 2026 : le cadre s'assouplit.</text>
-
   <line x1="60" y1="150" x2="688" y2="150" stroke="#3a3d44" stroke-width="1.5"/>
-
   <circle cx="70" cy="150" r="6" fill="#ff4d87"/>
   <text x="70" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">10 mars 23</text>
   <text x="70" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SVB</text>
   <text x="70" y="196" fill="#8b909b" font-size="10" text-anchor="middle">209 Md$</text>
-
   <circle cx="192" cy="150" r="6" fill="#f5b13d"/>
   <text x="192" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">12 mars 23</text>
   <text x="192" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">Signature</text>
   <text x="192" y="196" fill="#8b909b" font-size="10" text-anchor="middle">+ BTFP</text>
-
   <circle cx="314" cy="150" r="6" fill="#ff4d87"/>
   <text x="314" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">1er mai 23</text>
   <text x="314" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">First Republic</text>
   <text x="314" y="196" fill="#8b909b" font-size="10" text-anchor="middle">229 Md$ → JPM</text>
-
   <circle cx="436" cy="150" r="6" fill="#5eead4"/>
   <text x="436" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">11 mars 24</text>
   <text x="436" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">Fin du BTFP</text>
   <text x="436" y="196" fill="#8b909b" font-size="10" text-anchor="middle">NYCB / CRE</text>
-
   <circle cx="558" cy="150" r="6" fill="#5eead4"/>
   <text x="558" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">1er déc. 25</text>
   <text x="558" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">Fin du QT</text>
   <text x="558" y="196" fill="#8b909b" font-size="10" text-anchor="middle">réserves amples</text>
-
   <circle cx="680" cy="150" r="6" fill="#f5b13d"/>
   <text x="680" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">3 mars 26</text>
   <text x="680" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">Réforme LCR</text>
   <text x="680" y="196" fill="#8b909b" font-size="10" text-anchor="middle">table ronde</text>
-
   <text x="32" y="270" fill="#8b909b" font-size="11">Sept semaines de panique en 2023, puis trois ans de normalisation jusqu'au virage réglementaire de 2026.</text>
 </svg>
 <figcaption>Chronologie de l'épisode, de la fermeture de SVB le 10 mars 2023 à la table ronde sur la liquidité du 3 mars 2026. Sources : FDIC, Federal Reserve, Bank Policy Institute. Dates et montants vérifiés un à un.</figcaption>
@@ -67,17 +59,13 @@ Le [resserrement quantitatif](/glossaire/#qt) engagé en juin 2022 s'est achevé
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le coussin qui a gonflé</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Part du bilan des grandes banques immobilisée en actifs sûrs, en pourcentage.</text>
-
   <line x1="180" y1="250" x2="560" y2="250" stroke="#3a3d44" stroke-width="1.5"/>
-
   <rect x="220" y="190" width="120" height="60" fill="#5eead4" opacity="0.85"/>
   <text x="280" y="178" fill="#5eead4" font-size="20" font-weight="700" text-anchor="middle">~10 %</text>
   <text x="280" y="272" fill="#d6d9df" font-size="12" text-anchor="middle">avant 2008</text>
-
   <rect x="420" y="100" width="120" height="150" fill="#ff4d87" opacity="0.85"/>
   <text x="480" y="88" fill="#ff4d87" font-size="20" font-weight="700" text-anchor="middle">~25 %</text>
   <text x="480" y="272" fill="#d6d9df" font-size="12" text-anchor="middle">2026</text>
-
   <text x="32" y="295" fill="#8b909b" font-size="10">Ordre de grandeur cité par le Trésor (S. Bessent), table ronde du 3 mars 2026.</text>
 </svg>
 <figcaption>Selon le secrétaire au Trésor Scott Bessent, environ 25 % du bilan des grandes banques est aujourd'hui immobilisé en actifs sûrs, contre près de 10 % avant la crise de 2008. Source : remarques de S. Bessent, table ronde sur la liquidité, 3 mars 2026.</figcaption>

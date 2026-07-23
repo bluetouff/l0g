@@ -30,26 +30,20 @@ The second pillar withdrew in silence: the ECB reinvests nothing anymore and its
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The crossing: Bund versus ten-year swap</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Stylised path. Below the swap: scarcity premium. Above it: the market charges for supply.</text>
-
   <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <text x="140" y="300" fill="#8b909b" font-size="10" text-anchor="middle">2010s</text>
   <text x="400" y="300" fill="#8b909b" font-size="10" text-anchor="middle">late 2024</text>
   <text x="640" y="300" fill="#8b909b" font-size="10" text-anchor="middle">July 2026</text>
-
   <polyline points="100,180 300,190 400,196 540,190 660,182" fill="none" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 4"/>
   <text x="150" y="172" fill="#8b909b" font-size="11">swap rate</text>
-
   <polyline points="100,240 300,224 400,199 540,180 660,164" fill="none" stroke="#5eead4" stroke-width="2.5"/>
   <text x="150" y="258" fill="#5eead4" font-size="11">Bund yield</text>
-
   <circle cx="400" cy="197" r="5" fill="#ff4d87"/>
   <text x="400" y="130" fill="#ff4d87" font-size="11" text-anchor="middle">the crossing, a historic</text>
   <text x="400" y="145" fill="#8b909b" font-size="10" text-anchor="middle">first (late 2024)</text>
   <line x1="400" y1="152" x2="400" y2="188" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
-
   <text x="668" y="160" fill="#5eead4" font-size="11" text-anchor="end">3.14%</text>
-
   <text x="32" y="330" fill="#8b909b" font-size="11">Sources: Trading Economics (17 July 2026), TwentyFour AM, Amundi, BIS. Schematic representation, not a market series.</text>
 </svg>
 <figcaption>For a decade, the Bund yielded less than the swap rate: the price of scarcity. The late-2024 crossing, entrenched since, marks the shift to a regime where investors instead demand compensation for absorbing German supply. Stylised path drawn from the sources cited.</figcaption>

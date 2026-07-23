@@ -24,27 +24,21 @@ Five programmes, five emergency justifications, one signature. The method has an
   <rect width="720" height="400" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The stack of common borrowing</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Programme ceilings, in billions of euros. None appears in any member state's debt.</text>
-
   <rect x="200" y="84" width="490" height="40" fill="#5eead4" opacity="0.85"/>
   <text x="192" y="110" fill="#d6d9df" font-size="12" text-anchor="end">NGEU (2021)</text>
   <text x="208" y="110" fill="#0c0d10" font-size="12" font-weight="700">806.9 (637 raised by end-2026)</text>
-
   <rect x="200" y="140" width="91" height="40" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="166" fill="#d6d9df" font-size="12" text-anchor="end">SAFE (2025)</text>
   <text x="299" y="166" fill="#f5f6f8" font-size="12" font-weight="700">150</text>
-
   <rect x="200" y="196" width="60" height="40" fill="#ff4d87" opacity="0.85"/>
   <text x="192" y="222" fill="#d6d9df" font-size="12" text-anchor="end">SURE (2020)</text>
   <text x="268" y="222" fill="#f5f6f8" font-size="12" font-weight="700">98.4</text>
-
   <rect x="200" y="252" width="55" height="40" fill="#7aa2f7" opacity="0.85"/>
   <text x="192" y="278" fill="#d6d9df" font-size="12" text-anchor="end">Ukraine loan (2026)</text>
   <text x="263" y="278" fill="#f5f6f8" font-size="12" font-weight="700">90</text>
-
   <rect x="200" y="308" width="11" height="40" fill="#8b909b" opacity="0.85"/>
   <text x="192" y="334" fill="#d6d9df" font-size="12" text-anchor="end">EU share of the ERA loan (2024)</text>
   <text x="219" y="334" fill="#f5f6f8" font-size="12" font-weight="700">18</text>
-
   <text x="32" y="376" fill="#8b909b" font-size="11">Sources: European Commission (EU as a borrower), Council of the EU. Total outstanding: ~€827bn mid-2026, ~€1,000bn expected by end-2026.</text>
 </svg>
 <figcaption>Each programme was voted as exceptional, temporary and capped. Their sum makes the Commission one of the continent's leading issuers, with a trillion euros of outstandings expected by the end of 2026. Sources: European Commission, Council.</figcaption>
@@ -73,19 +67,15 @@ The recipe remained to be found. The new own resources promised as early as 2020
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">2028-2034: the bill and the revenue</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Proposed budget framework, in billions of euros over seven years.</text>
-
   <rect x="250" y="90" width="440" height="42" fill="#7aa2f7" opacity="0.85"/>
   <text x="242" y="117" fill="#d6d9df" font-size="12" text-anchor="end">Total proposed budget</text>
   <text x="258" y="117" fill="#0c0d10" font-size="13" font-weight="700">~1,985</text>
-
   <rect x="250" y="150" width="37" height="42" fill="#ff4d87" opacity="0.9"/>
   <text x="242" y="177" fill="#d6d9df" font-size="12" text-anchor="end">NGEU repayment</text>
   <text x="295" y="177" fill="#f5f6f8" font-size="13" font-weight="700">168</text>
-
   <rect x="250" y="210" width="2" height="42" fill="#f5b13d"/>
   <text x="242" y="237" fill="#d6d9df" font-size="12" text-anchor="end">New own resources adopted</text>
   <text x="262" y="237" fill="#f5b13d" font-size="13" font-weight="700">0</text>
-
   <text x="32" y="290" fill="#8b909b" font-size="11">Sources: European Parliament (EPRS), European Commission, Agence Europe (deadlock noted in May 2026).</text>
   <text x="32" y="308" fill="#8b909b" font-size="11">The own resources decision requires unanimity of the 27 followed by national ratification.</text>
 </svg>

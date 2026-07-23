@@ -28,23 +28,18 @@ The amounts are becoming significant. [Tether](/en/glossary/usdt/) reports more 
   <rect width="720" height="310" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The demand pools</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Holdings by buyer category, in trillions of dollars, 2026. Sources: ICI, Treasury (TIC), press.</text>
-
   <rect x="230" y="86" width="380" height="36" fill="#7aa2f7" opacity="0.85"/>
   <text x="222" y="110" fill="#d6d9df" font-size="12" text-anchor="end">Foreign (TIC)</text>
   <text x="618" y="110" fill="#d6d9df" font-size="13">9.5</text>
-
   <rect x="230" y="130" width="316" height="36" fill="#5eead4" opacity="0.85"/>
   <text x="222" y="154" fill="#d6d9df" font-size="12" text-anchor="end">Money market funds</text>
   <text x="554" y="154" fill="#d6d9df" font-size="13">7.9</text>
-
   <rect x="230" y="174" width="12" height="36" fill="#f5b13d" opacity="0.9"/>
   <text x="222" y="198" fill="#d6d9df" font-size="12" text-anchor="end">Stablecoins</text>
   <text x="250" y="198" fill="#f5b13d" font-size="13" font-weight="700">0.3 (Tether 0.14)</text>
-
   <rect x="230" y="218" width="4" height="36" fill="#ff4d87"/>
   <text x="222" y="242" fill="#d6d9df" font-size="12" text-anchor="end">Reverse repo (ex-cushion)</text>
   <text x="242" y="242" fill="#ff4d87" font-size="13" font-weight="700">~0 (2022 peak: ~2.5)</text>
-
   <text x="32" y="288" fill="#8b909b" font-size="12">The reverse repo cushion is gone; demand must come from the other three pools, with uneven appetites.</text>
 </svg>
 <figcaption>Money funds and foreign holders remain the two dominant reservoirs; stablecoins add a captive but small demand. The pool that cushioned, reverse repo, has melted. Sources: ICI (money funds); Treasury, TIC data (foreign); attestations and press (stablecoins).</figcaption>
@@ -61,19 +56,15 @@ The nuance is first-order. Demand of official origin, like China's central bank,
   <rect width="720" height="250" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The foreign trio, and its shift</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Treasury debt holdings, in billions of dollars, December 2025. Source: US Treasury, TIC data.</text>
-
   <rect x="150" y="86" width="474" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="142" y="108" fill="#d6d9df" font-size="12" text-anchor="end">Japan</text>
   <text x="632" y="108" fill="#d6d9df" font-size="13">1,186</text>
-
   <rect x="150" y="130" width="345" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="142" y="152" fill="#d6d9df" font-size="12" text-anchor="end">United Kingdom</text>
   <text x="503" y="152" fill="#f5b13d" font-size="13" font-weight="700">863 (basis trade)</text>
-
   <rect x="150" y="174" width="273" height="34" fill="#ff4d87" opacity="0.75"/>
   <text x="142" y="196" fill="#d6d9df" font-size="12" text-anchor="end">China</text>
   <text x="431" y="196" fill="#ff4d87" font-size="13">684 (declining)</text>
-
   <text x="32" y="234" fill="#8b909b" font-size="12">The UK has moved ahead of China: official demand recedes, leveraged demand rises.</text>
 </svg>
 <figcaption>Japan remains the top holder, but the UK overtaking China betrays a book shifting from official hands to leveraged ones. Source: US Treasury, TIC data (December 2025).</figcaption>

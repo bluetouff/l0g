@@ -22,23 +22,18 @@ Ce n'est pas du commerce au sens des manuels, où l'on vend ce qu'on produit ave
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Juin 2026 : la machine commerciale à plein régime</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Milliards de dollars, un seul mois. Records en exportations, en importations et sur l'excédent européen.</text>
-
   <rect x="200" y="84" width="470" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="192" y="106" fill="#d6d9df" font-size="12" text-anchor="end">Exportations</text>
   <text x="208" y="106" fill="#0c0d10" font-size="13" font-weight="700">412,4 (+27 %, record)</text>
-
   <rect x="200" y="132" width="327" height="34" fill="#7aa2f7" opacity="0.85"/>
   <text x="192" y="154" fill="#d6d9df" font-size="12" text-anchor="end">Importations</text>
   <text x="208" y="154" fill="#0c0d10" font-size="13" font-weight="700">286,8 (+36 %, record)</text>
-
   <rect x="200" y="180" width="143" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="202" fill="#d6d9df" font-size="12" text-anchor="end">Excédent total</text>
   <text x="351" y="202" fill="#f5f6f8" font-size="13" font-weight="700">125,6 (2ᵉ de l'histoire)</text>
-
   <rect x="200" y="228" width="38" height="34" fill="#ff4d87" opacity="0.9"/>
   <text x="192" y="250" fill="#d6d9df" font-size="12" text-anchor="end">dont excédent UE</text>
   <text x="246" y="250" fill="#f5f6f8" font-size="13" font-weight="700">32,9 (record, +27 %)</text>
-
   <text x="32" y="286" fill="#8b909b" font-size="11">Sources : douanes chinoises via RTE, Fortune, China Global South et Trading Economics (14 juillet 2026).</text>
 </svg>
 <figcaption>Un mois de juin à tous les records : exportations tirées par le matériel d'IA et l'automobile, importations gonflées par les composants, et un excédent avec l'Union européenne jamais vu. Le trop-plein industriel chinois a trouvé sa destination. Sources citées.</figcaption>
@@ -55,29 +50,23 @@ Ce déversement a un effet que la BCE elle-même a chiffré avant de le vivre : 
   <rect width="720" height="350" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Quatre thermomètres, une géographie des prix</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Variations sur un an, juin 2026. La déflation chinoise ne se lit plus à Pékin : elle se lit dans les biens européens.</text>
-
   <line x1="70" y1="270" x2="690" y2="270" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="100" y="152" width="80" height="118" fill="#f5b13d" opacity="0.85"/>
   <text x="140" y="142" fill="#f5b13d" font-size="14" font-weight="700" text-anchor="middle">+4,1 %</text>
   <text x="140" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">PPI Chine</text>
   <text x="140" y="308" fill="#8b909b" font-size="10" text-anchor="middle">intrants de guerre, planchers</text>
-
   <rect x="260" y="241" width="80" height="29" fill="#5eead4" opacity="0.85"/>
   <text x="300" y="231" fill="#5eead4" font-size="14" font-weight="700" text-anchor="middle">+1,0 %</text>
   <text x="300" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">CPI Chine</text>
   <text x="300" y="308" fill="#8b909b" font-size="10" text-anchor="middle">demande absente</text>
-
   <rect x="420" y="244" width="80" height="26" fill="#5eead4" opacity="0.85"/>
   <text x="460" y="234" fill="#5eead4" font-size="14" font-weight="700" text-anchor="middle">+0,9 %</text>
   <text x="460" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">Biens zone euro</text>
   <text x="460" y="308" fill="#8b909b" font-size="10" text-anchor="middle">l'amortisseur chinois</text>
-
   <rect x="580" y="149" width="80" height="121" fill="#ff4d87" opacity="0.85"/>
   <text x="620" y="139" fill="#ff4d87" font-size="14" font-weight="700" text-anchor="middle">+4,2 %</text>
   <text x="620" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">Inflation US</text>
   <text x="620" y="308" fill="#8b909b" font-size="10" text-anchor="middle">derrière son mur tarifaire</text>
-
   <text x="32" y="336" fill="#8b909b" font-size="11">Sources : NBS et CNBC (Chine, juin 2026), Eurostat (IPCH juin, biens industriels hors énergie), BLS via analyses citées (États-Unis).</text>
 </svg>
 <figcaption>Les prix à la production chinois remontent sous l'effet du baril et des planchers administrés, mais la consommation chinoise et les biens européens restent écrasés autour de 1 %, pendant que l'Amérique, derrière son mur tarifaire, tourne à 4,2 %. La déflation chinoise se lit désormais hors de Chine. Sources citées.</figcaption>

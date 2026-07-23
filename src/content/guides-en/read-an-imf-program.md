@@ -48,7 +48,6 @@ Within these windows, several instruments meet distinct needs, per the [CRS](htt
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Two windows, several doors</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Where the Fund's credit comes from, by country profile. Sources: IMF; Congressional Research Service.</text>
-
   <rect x="40" y="84" width="320" height="188" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="56" y="110" fill="#7aa2f7" font-size="14" font-weight="700">GRA (non-concessional)</text>
   <text x="56" y="134" fill="#d6d9df" font-size="12">Market rates, all members</text>
@@ -56,7 +55,6 @@ Within these windows, several instruments meet distinct needs, per the [CRS](htt
   <text x="56" y="188" fill="#d6d9df" font-size="12">• EFF: reforms, 3 years and more</text>
   <text x="56" y="212" fill="#d6d9df" font-size="12">• FCL / PLL: precautionary lines</text>
   <text x="56" y="236" fill="#d6d9df" font-size="12">• RFI: rapid emergency financing</text>
-
   <rect x="384" y="84" width="296" height="188" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="400" y="110" fill="#5eead4" font-size="14" font-weight="700">PRGT (concessional)</text>
   <text x="400" y="134" fill="#d6d9df" font-size="12">Subsidised rate, low-income countries</text>
@@ -79,20 +77,15 @@ This threshold is not theoretical. In the Argentine case, [credit reached 1,335%
   <rect width="720" height="260" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The access ladder, as a percent of quota</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Credit is measured in multiples of quota. Beyond 600%, access becomes exceptional.</text>
-
   <line x1="70" y1="210" x2="690" y2="210" stroke="#2a2c33" stroke-width="1"/>
-
   <rect x="70" y="180" width="52" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="96" y="234" fill="#8b909b" font-size="11" text-anchor="middle">quota</text>
   <text x="96" y="172" fill="#d6d9df" font-size="11" text-anchor="middle">100%</text>
-
   <rect x="70" y="150" width="312" height="30" fill="#7aa2f7" opacity="0.7"/>
   <line x1="382" y1="140" x2="382" y2="215" stroke="#f5b13d" stroke-width="2"/>
   <text x="382" y="132" fill="#f5b13d" font-size="11" text-anchor="middle" font-weight="700">600%: normal limit</text>
-
   <rect x="382" y="120" width="286" height="30" fill="#ff4d87" opacity="0.5"/>
   <text x="525" y="112" fill="#ff4d87" font-size="11" text-anchor="middle">exceptional-access zone</text>
-
   <line x1="660" y1="110" x2="660" y2="215" stroke="#ff4d87" stroke-width="2" stroke-dasharray="3 3"/>
   <text x="660" y="102" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">1,335%</text>
   <text x="600" y="234" fill="#8b909b" font-size="11" text-anchor="middle">example: Argentina 2026</text>

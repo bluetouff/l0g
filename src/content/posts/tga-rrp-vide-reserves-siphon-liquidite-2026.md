@@ -26,19 +26,15 @@ Chaque dollar qui entre dans le compte du Trésor sort du système : il quitte u
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Où est passé le matelas</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Passif de la Fed, en milliards de dollars, semaine au 15 juillet 2026. Source : Réserve fédérale, H.4.1.</text>
-
   <rect x="200" y="88" width="470" height="40" fill="#5eead4" opacity="0.85"/>
   <text x="192" y="113" fill="#d6d9df" font-size="12" text-anchor="end">Réserves des banques</text>
   <text x="216" y="113" fill="#0c0d10" font-size="13" font-weight="700">3 143</text>
-
   <rect x="200" y="142" width="119" height="40" fill="#7aa2f7" opacity="0.85"/>
   <text x="192" y="167" fill="#d6d9df" font-size="12" text-anchor="end">Compte du Trésor (TGA)</text>
   <text x="327" y="167" fill="#d6d9df" font-size="13">796 → cible 950</text>
-
   <rect x="200" y="196" width="4" height="40" fill="#ff4d87"/>
   <text x="192" y="221" fill="#d6d9df" font-size="12" text-anchor="end">Reverse repo (RRP)</text>
   <text x="212" y="221" fill="#ff4d87" font-size="13" font-weight="700">1,2 (pic 2022 : ~2 500)</text>
-
   <text x="32" y="278" fill="#8b909b" font-size="12">Le RRP, longtemps l'amortisseur à 2 500 milliards, est vide. Le prochain drain passe par les réserves.</text>
 </svg>
 <figcaption>Le compte du Trésor se recharge vers 950 milliards pendant que la facilité de reverse repo, jadis à 2 500 milliards, est tombée à 1,2 milliard. Sans matelas, la ponction se reporte sur les réserves bancaires. Sources : Réserve fédérale (H.4.1, 15 juillet 2026) ; Trésor américain (estimation de financement).</figcaption>
@@ -59,21 +55,16 @@ Ce signal se lit déjà, discret, dans les taux au jour le jour. Le [SOFR](/glos
   <rect width="720" height="250" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le signal des taux courts</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Taux au jour le jour, en %, au 20 juillet 2026. Source : Réserve fédérale de New York.</text>
-
   <rect x="70" y="96" width="580" height="60" fill="#2a2c33" opacity="0.4"/>
   <text x="360" y="88" fill="#8b909b" font-size="11" text-anchor="middle">fourchette cible des fonds fédéraux : 3,50 - 3,75 %</text>
-
   <line x1="70" y1="126" x2="70" y2="156" stroke="#8b909b" stroke-width="1"/>
   <text x="70" y="176" fill="#8b909b" font-size="11" text-anchor="middle">3,50</text>
   <line x1="650" y1="126" x2="650" y2="156" stroke="#8b909b" stroke-width="1"/>
   <text x="650" y="176" fill="#8b909b" font-size="11" text-anchor="middle">3,75</text>
-
   <line x1="232" y1="90" x2="232" y2="162" stroke="#5eead4" stroke-width="2.5"/>
   <text x="232" y="205" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">SOFR 3,57</text>
-
   <line x1="371" y1="90" x2="371" y2="162" stroke="#7aa2f7" stroke-width="2.5"/>
   <text x="371" y="225" fill="#7aa2f7" font-size="12" text-anchor="middle" font-weight="700">EFFR 3,63</text>
-
   <line x1="580" y1="90" x2="580" y2="162" stroke="#ff4d87" stroke-width="2.5" stroke-dasharray="3 3"/>
   <text x="580" y="205" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">SOFR 99e centile 3,66</text>
 </svg>

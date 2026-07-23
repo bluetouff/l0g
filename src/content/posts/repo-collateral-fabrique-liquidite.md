@@ -26,36 +26,29 @@ La Fed n'agit pas sur le repo en fixant un prix, mais en bornant un couloir. La 
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La fabrique de liquidité du repo</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Le collatéral circule dans un sens, le cash dans l'autre. La Fed borne le couloir des taux.</text>
-
   <!-- trois boites -->
   <rect x="32" y="120" width="170" height="70" rx="8" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="117" y="150" fill="#f5f6f8" font-size="13" text-anchor="middle">Prêteurs de cash</text>
   <text x="117" y="170" fill="#8b909b" font-size="11" text-anchor="middle">fonds monétaires, banques</text>
-
   <rect x="275" y="120" width="170" height="70" rx="8" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="360" y="150" fill="#f5f6f8" font-size="13" text-anchor="middle">Dealers</text>
   <text x="360" y="170" fill="#8b909b" font-size="11" text-anchor="middle">banques primaires</text>
-
   <rect x="518" y="120" width="170" height="70" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="603" y="150" fill="#f5f6f8" font-size="13" text-anchor="middle">Emprunteurs de cash</text>
   <text x="603" y="170" fill="#8b909b" font-size="11" text-anchor="middle">hedge funds, levier</text>
-
   <!-- fleches cash (vers la droite, teal) -->
   <line x1="202" y1="143" x2="273" y2="143" stroke="#5eead4" stroke-width="2" marker-end="url(#ar)"/>
   <line x1="445" y1="143" x2="516" y2="143" stroke="#5eead4" stroke-width="2" marker-end="url(#ar)"/>
   <text x="360" y="112" fill="#5eead4" font-size="11" text-anchor="middle">cash →</text>
-
   <!-- fleches collateral (vers la gauche, rose) -->
   <line x1="516" y1="168" x2="445" y2="168" stroke="#ff4d87" stroke-width="2" marker-end="url(#ar2)"/>
   <line x1="273" y1="168" x2="202" y2="168" stroke="#ff4d87" stroke-width="2" marker-end="url(#ar2)"/>
   <text x="360" y="208" fill="#ff4d87" font-size="11" text-anchor="middle">← collatéral (Treasuries)</text>
-
   <!-- couloir Fed -->
   <line x1="275" y1="250" x2="445" y2="250" stroke="#8b909b" stroke-width="1" stroke-dasharray="3 3"/>
   <text x="360" y="245" fill="#5eead4" font-size="11" text-anchor="middle">plafond : SRP (la Fed prête)</text>
   <text x="360" y="272" fill="#f5b13d" font-size="11" text-anchor="middle">IORB : rémunération des réserves</text>
   <text x="360" y="296" fill="#ff4d87" font-size="11" text-anchor="middle">plancher : RRP (la Fed emprunte)</text>
-
   <defs>
     <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#5eead4"/></marker>
     <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#ff4d87"/></marker>
@@ -81,30 +74,24 @@ La Fed a réagi. Le **10 décembre 2025**, elle a supprimé le plafond agrégé 
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Signaux de tension, fin 2025</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Sources : New York Fed ; FOMC ; Wolf Street. Montants en milliards de dollars.</text>
-
   <line x1="60" y1="150" x2="690" y2="150" stroke="#2a2c33" stroke-width="1"/>
-
   <!-- noeuds -->
   <circle cx="130" cy="150" r="6" fill="#f5b13d"/>
   <text x="130" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">mi-sept.</text>
   <text x="130" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SRF : 18,5</text>
   <text x="130" y="196" fill="#8b909b" font-size="10" text-anchor="middle">SOFR ~4,42 %</text>
-
   <circle cx="320" cy="150" r="6" fill="#5eead4"/>
   <text x="320" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">1ᵉʳ déc.</text>
   <text x="320" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">fin du QT</text>
   <text x="320" y="196" fill="#8b909b" font-size="10" text-anchor="middle">bilan 6 500</text>
-
   <circle cx="500" cy="150" r="6" fill="#5eead4"/>
   <text x="500" y="120" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700">10 déc.</text>
   <text x="500" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">plafond SRF levé</text>
   <text x="500" y="196" fill="#8b909b" font-size="10" text-anchor="middle">achats 40 / mois</text>
-
   <circle cx="650" cy="150" r="6" fill="#ff4d87"/>
   <text x="650" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">31 déc.</text>
   <text x="650" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">SOFR 3,87 %</text>
   <text x="650" y="196" fill="#8b909b" font-size="10" text-anchor="middle">SRF : 75</text>
-
   <text x="32" y="270" fill="#8b909b" font-size="11">Pour mémoire, la facilité avait été quasi inutilisée de 2021 à l'été 2025.</text>
 </svg>
 <figcaption>De la mi-septembre à la fin décembre 2025, la facilité permanente est passée d'un quasi non-usage à un tirage de 75 milliards de dollars au 31 décembre. Sources : New York Fed (discours et statements de l'Open Market Trading Desk), implementation note du FOMC du 10 décembre 2025, Wolf Street pour le passage d'année.</figcaption>

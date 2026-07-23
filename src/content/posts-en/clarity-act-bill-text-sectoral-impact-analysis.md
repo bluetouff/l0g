@@ -22,24 +22,19 @@ The passage is not automatic. The text creates, in Section 205, a new Section 42
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The maturity test, from securities cop to commodities cop</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Mechanic of Section 104 and new Section 42. Source: H.R. 3633 RS.</text>
-
   <rect x="270" y="82" width="180" height="46" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="360" y="103" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Token issued</text>
   <text x="360" y="120" fill="#8b909b" font-size="11" text-anchor="middle">via investment contract</text>
-
   <line x1="360" y1="128" x2="360" y2="158" stroke="#8b909b" stroke-width="1"/>
   <text x="360" y="150" fill="#d6d9df" font-size="12" text-anchor="middle">Blockchain under common control?</text>
-
   <rect x="70" y="176" width="250" height="70" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="195" y="200" fill="#ff4d87" font-size="13" font-weight="700" text-anchor="middle">YES: ancillary asset</text>
   <text x="195" y="220" fill="#d6d9df" font-size="12" text-anchor="middle">Regulator: SEC</text>
   <text x="195" y="238" fill="#8b909b" font-size="11" text-anchor="middle">issuance, disclosures, insiders</text>
-
   <rect x="400" y="176" width="250" height="70" fill="none" stroke="#5eead4" stroke-width="1.5"/>
   <text x="525" y="200" fill="#5eead4" font-size="13" font-weight="700" text-anchor="middle">NO: digital commodity</text>
   <text x="525" y="220" fill="#d6d9df" font-size="12" text-anchor="middle">Regulator: CFTC</text>
   <text x="525" y="238" fill="#8b909b" font-size="11" text-anchor="middle">spot market, registered exchanges</text>
-
   <line x1="360" y1="270" x2="360" y2="296" stroke="#f5b13d" stroke-width="1.5"/>
   <text x="360" y="288" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">YES → NO: maturity certification (Sec. 42)</text>
   <text x="360" y="318" fill="#8b909b" font-size="11" text-anchor="middle">Terms defined jointly by the SEC and the CFTC (Sec. 105).</text>
@@ -80,17 +75,14 @@ The text carries a second title, often overlooked in commentary: the "Anti-CBDC 
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Who wins what, and at what price</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Impact reading of the text by actor. Source: H.R. 3633 RS.</text>
-
   <text x="40" y="96" fill="#5eead4" font-size="13" font-weight="700">Net winners</text>
   <text x="56" y="118" fill="#d6d9df" font-size="12">DeFi, developers, validators: broad exclusion (Sec. 15H, 409)</text>
   <text x="56" y="138" fill="#d6d9df" font-size="12">Issuers: legal financing path, $50m/year (Sec. 202)</text>
   <text x="56" y="158" fill="#d6d9df" font-size="12">Stablecoins: confirmed outside securities (Sec. 301)</text>
   <text x="56" y="178" fill="#d6d9df" font-size="12">Banks: digital-asset custody authorised (Sec. 310)</text>
-
   <text x="40" y="212" fill="#f5b13d" font-size="13" font-weight="700">Conditional winners</text>
   <text x="56" y="234" fill="#d6d9df" font-size="12">Exchanges: federal licence, but conflict walls (Sec. 413)</text>
   <text x="56" y="254" fill="#d6d9df" font-size="12">Issuers, insiders: sales capped at 5-20%/year (Sec. 204)</text>
-
   <text x="40" y="288" fill="#ff4d87" font-size="13" font-weight="700">Relative loser</text>
   <text x="56" y="310" fill="#d6d9df" font-size="12">SEC: cedes the spot market to the CFTC; the Fed forgoes a CBDC (Title VI)</text>
 </svg>

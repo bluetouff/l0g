@@ -24,7 +24,6 @@ What followed belongs to monetary history. The euro area economy, already fragil
   <rect width="720" height="380" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">2011 / 2026: mirror timelines</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Two tightenings into wartime oil, fifteen years apart.</text>
-
   <text x="32" y="100" fill="#ff4d87" font-size="13" font-weight="700">2011</text>
   <line x1="90" y1="96" x2="690" y2="96" stroke="#2a2c33" stroke-width="1"/>
   <circle cx="140" cy="96" r="5" fill="#ff4d87"/>
@@ -39,7 +38,6 @@ What followed belongs to monetary history. The euro area economy, already fragil
   <circle cx="620" cy="96" r="5" fill="#5eead4"/>
   <text x="620" y="122" fill="#d6d9df" font-size="10" text-anchor="middle">Nov-Dec: Draghi</text>
   <text x="620" y="136" fill="#8b909b" font-size="10" text-anchor="middle">cancels both hikes</text>
-
   <text x="32" y="220" fill="#5eead4" font-size="13" font-weight="700">2026</text>
   <line x1="90" y1="216" x2="690" y2="216" stroke="#2a2c33" stroke-width="1"/>
   <circle cx="140" cy="216" r="5" fill="#ff4d87"/>
@@ -54,7 +52,6 @@ What followed belongs to monetary history. The euro area economy, already fragil
   <circle cx="620" cy="216" r="5" fill="#2a2c33" stroke="#8b909b" stroke-width="1"/>
   <text x="620" y="242" fill="#d6d9df" font-size="10" text-anchor="middle">what follows: unwritten</text>
   <text x="620" y="256" fill="#8b909b" font-size="10" text-anchor="middle">the barrel will decide</text>
-
   <text x="32" y="320" fill="#8b909b" font-size="11">Sources: ECB (2011 and 2026 decisions and press conferences), Morningstar and Investing.com for July-September 2026 pricing.</text>
   <text x="32" y="338" fill="#8b909b" font-size="11">The parallel is a reading grid, not a prophecy: the differences matter as much as the resemblances.</text>
 </svg>
