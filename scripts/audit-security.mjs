@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { extname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
 import { serializeInlineScriptData } from '../src/lib/security.ts';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
 
@@ -129,6 +130,7 @@ let redirectFallbacks = 0;
 let thirdPartyResources = 0;
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
+  const relativeFile = relative(ROOT, file);
   const elements = scanHtmlElements(html);
   const cspMeta = elements.find((element) => element.name === 'meta' &&
     element.attributes.get('http-equiv')?.toLowerCase() === 'content-security-policy');
@@ -174,9 +176,15 @@ for (const file of htmlFiles) {
     for (const attribute of attributes) {
       const value = element.attributes.get(attribute) || '';
       const absoluteUrls = value.match(/(?:https?:)?\/\/[^\s,]+/gi) || [];
-      if (absoluteUrls.some((url) => !/^(?:https:)?\/\/l0g\.fr(?:\/|$)/i.test(url))) {
+      const expectedExternalRedirect = relativeFile === 'dist/btc/index.html'
+        ? legacySurfaceRedirects['/btc']
+        : null;
+      if (absoluteUrls.some((url) =>
+        !/^(?:https:)?\/\/l0g\.fr(?:\/|$)/i.test(url)
+        && !(refreshMeta && expectedExternalRedirect && url === expectedExternalRedirect)
+      )) {
         thirdPartyResources += 1;
-        fail(`${relative(ROOT, file)}: ressource tierce chargée automatiquement (${element.name} ${attribute})`);
+        fail(`${relativeFile}: ressource tierce chargée automatiquement (${element.name} ${attribute})`);
       }
     }
   }

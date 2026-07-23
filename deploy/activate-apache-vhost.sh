@@ -139,6 +139,15 @@ printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp)" = 405 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/usage)" = 200 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/btc/)" = 301 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/usd/)" = 301 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/marches-us/)" = 301 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/mag7/)" = 301 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/hard-commodities/)" = 410 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/calendrier-eco/)" = 410 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/route-inconnue-probe-l0g)" = 404 ]
+curl -sS --max-time 20 https://l0g.fr/route-inconnue-probe-l0g \
+  | grep -Fq "Cette route ne mène plus nulle part."
 
 trap - ERR INT TERM
 printf 'Vhost l0g durci activé depuis le mode %s. Sauvegarde: %s\n' \

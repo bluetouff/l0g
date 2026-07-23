@@ -1,0 +1,118 @@
+---
+import SearchForm from '../components/SearchForm.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const destinations = [
+  {
+    href: '/',
+    label: 'Accueil',
+    description: 'Revenir au journal et aux dernières analyses.',
+  },
+  {
+    href: '/sujets/',
+    label: 'Sujets',
+    description: 'Parcourir les dossiers par thème et mécanisme.',
+  },
+  {
+    href: '/guides/',
+    label: 'Guides',
+    description: 'Lire et vérifier les données économiques et financières.',
+  },
+];
+---
+
+<BaseLayout
+  title="Page introuvable"
+  description="Cette URL n’existe plus ou n’a jamais existé. Recherchez dans l0g ou revenez vers les sujets et les guides."
+  robots="noindex,follow"
+  sidebar={false}
+>
+  <main class="not-found rise" data-pagefind-ignore>
+    <p class="error-code font-display glow" aria-hidden="true">404</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// page introuvable</p>
+    <h1 class="not-found-title font-display glow">Cette route ne mène plus nulle part.</h1>
+    <p class="not-found-lede">
+      L’URL a peut-être changé, ou la page a été retirée. Le corpus reste accessible
+      par la recherche locale, les dossiers thématiques et les guides.
+    </p>
+
+    <div class="not-found-search">
+      <SearchForm />
+    </div>
+
+    <nav class="not-found-grid" aria-label="Continuer la navigation">
+      {destinations.map((destination) => (
+        <a class="not-found-card" href={destination.href}>
+          <span>{destination.label}</span>
+          <small>{destination.description}</small>
+        </a>
+      ))}
+    </nav>
+  </main>
+
+  <style>
+    .not-found {
+      max-width: 48rem;
+      padding-block: clamp(2rem, 7vw, 5rem);
+    }
+    .error-code {
+      margin: 0 0 0.5rem;
+      color: color-mix(in srgb, var(--color-accent) 78%, var(--color-paper));
+      font-size: clamp(4rem, 16vw, 9rem);
+      line-height: 0.82;
+      letter-spacing: 0.04em;
+    }
+    .not-found-title {
+      max-width: 44rem;
+      margin-top: 0.8rem;
+      color: var(--color-bright);
+      font-size: clamp(2rem, 6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: 0.02em;
+    }
+    .not-found-lede {
+      max-width: 42rem;
+      margin-top: 1.25rem;
+      color: var(--color-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .not-found-search {
+      max-width: 36rem;
+      margin-top: 1.8rem;
+    }
+    .not-found-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .not-found-card {
+      display: grid;
+      gap: 0.35rem;
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      color: var(--color-bright);
+      background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+      transition: border-color 0.16s, background 0.16s;
+    }
+    .not-found-card:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 6%, var(--color-surface));
+    }
+    .not-found-card span {
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .not-found-card small {
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+    @media (min-width: 640px) {
+      .not-found-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+</BaseLayout>

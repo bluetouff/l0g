@@ -21,6 +21,28 @@ grep -Fq 'https://l0g.fr/stats/)" = 401' \
 grep -Fq 'VHOST_MODE="hardened"' "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'Topologie de vhost l0g inattendue' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'RedirectMatch 301 "^/btc/?$" "https://orbit.l0g.fr/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/usd/?$" "/guides/lire-le-dollar-dxy-cross-currency-basis/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/marches-us/?$" "/sujet/marches-valorisations/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/mag7/?$" "/sujet/marches-valorisations/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch gone "^/hard-commodities/?$"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch gone "^/calendrier-eco/?$"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'ErrorDocument 404 /404.html' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'ErrorDocument 410 /404.html' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'https://l0g.fr/btc/)" = 301' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/hard-commodities/)" = 410' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/route-inconnue-probe-l0g)" = 404' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'Cette route ne mène plus nulle part.' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
 
 REMOTE="${TMP}/remote.git"
 SOURCE="${TMP}/source"

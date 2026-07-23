@@ -2,6 +2,7 @@ import { gzipSync } from 'node:zlib';
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { legacySurfaceRedirects } from '../src/config/legacy-surface-redirects.mjs';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
 
 const rootUrl = new URL('../dist/', import.meta.url);
@@ -48,7 +49,21 @@ for (const file of htmlFiles) {
   const isRedirect = /<meta http-equiv="refresh" content="0;url=[^"]+">/.test(html);
   if (isRedirect) {
     assert(/<meta name="robots" content="noindex">/.test(html), `${name}: redirection sans noindex`);
-    assert(/<link rel="canonical" href="https:\/\/l0g\.fr\/[^\"]+">/.test(html), `${name}: redirection sans canonical`);
+    const route = `/${name.replace(/\/index\.html$/, '')}`;
+    const expectedDestination = legacySurfaceRedirects[route];
+    if (expectedDestination) {
+      const absoluteDestination = new URL(expectedDestination, 'https://l0g.fr').toString();
+      assert(
+        html.includes(`<meta http-equiv="refresh" content="0;url=${expectedDestination}">`),
+        `${name}: destination de migration incorrecte`
+      );
+      assert(
+        html.includes(`<link rel="canonical" href="${absoluteDestination}">`),
+        `${name}: canonical de migration incorrecte`
+      );
+    } else {
+      assert(/<link rel="canonical" href="https:\/\/l0g\.fr\/[^\"]+">/.test(html), `${name}: redirection sans canonical`);
+    }
     continue;
   }
   assert(/<title>[^<]+<\/title>/.test(html), `${name}: title absent`);
@@ -154,6 +169,14 @@ assert(glossaryGzip.length <= 60_000, `glossaire/index.html gzip dépasse 60 Ko 
 const search = await readFile(new URL('recherche/index.html', rootUrl), 'utf8');
 assert(search.includes('/pagefind/pagefind-ui.js'), 'Pagefind absent de /recherche/');
 assert(/<meta name="robots" content="noindex,follow">/.test(search), '/recherche/ doit être noindex,follow');
+
+const notFound = await readFile(new URL('404.html', rootUrl), 'utf8');
+assert(/<meta name="robots" content="noindex,follow">/.test(notFound), '/404.html doit être noindex,follow');
+assert(notFound.includes('action="/recherche/"'), '/404.html: moteur de recherche absent');
+for (const href of ['/', '/sujets/', '/guides/']) {
+  assert(notFound.includes(`href="${href}"`), `/404.html: lien de sortie absent ${href}`);
+}
+assert(!notFound.includes('/pagefind/pagefind-ui.js'), '/404.html ne doit pas charger Pagefind');
 
 const indexablePages = [...pages.values()].filter((page) => !page.robots.includes('noindex'));
 const titles = new Map();

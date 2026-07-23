@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { glossaryRedirects } from './src/config/glossary-redirects.mjs';
+import { legacySurfaceRedirects } from './src/config/legacy-surface-redirects.mjs';
 import { glossaryAtlasEntries } from './src/config/glossary.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 
@@ -30,7 +31,10 @@ export default defineConfig({
   })],
 
   redirects: Object.fromEntries(
-    Object.entries(glossaryRedirects).map(([from, to]) => [from, { status: 301, destination: to }])
+    Object.entries({
+      ...glossaryRedirects,
+      ...legacySurfaceRedirects,
+    }).map(([from, to]) => [from, { status: 301, destination: to }])
   ),
 
   vite: {
