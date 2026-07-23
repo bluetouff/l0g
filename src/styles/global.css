@@ -38,6 +38,10 @@
   --card-fill: rgba(255, 255, 255, 0.012);
   --card-fill-hover: rgba(255, 255, 255, 0.025);
   --body-glow: rgba(94, 234, 212, 0.05);
+  --surface-elevated: rgba(18, 20, 25, 0.88);
+  --surface-inset: rgba(255, 255, 255, 0.018);
+  --edge-highlight: rgba(255, 255, 255, 0.075);
+  --shadow-elevated: 0 22px 70px rgba(0, 0, 0, 0.32);
 }
 
 /* ============================================================
@@ -68,6 +72,10 @@
   --card-fill: rgba(12, 13, 16, 0.015);
   --card-fill-hover: rgba(12, 13, 16, 0.04);
   --body-glow: rgba(15, 118, 110, 0.05);
+  --surface-elevated: rgba(255, 255, 255, 0.94);
+  --surface-inset: rgba(12, 13, 16, 0.018);
+  --edge-highlight: rgba(255, 255, 255, 0.8);
+  --shadow-elevated: 0 22px 60px rgba(24, 31, 40, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -204,6 +212,31 @@ a { color: inherit; text-decoration: none; }
 .card:hover {
   border-color: var(--color-line-strong);
   background: var(--card-fill-hover);
+}
+
+/* Plaque d'instrument : surface signature commune aux cartes éditoriales. */
+.instrument-plate {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 15px 4px 15px 15px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--plate-accent, var(--color-signal)) 4%, transparent), transparent 48%),
+    var(--surface-elevated);
+  box-shadow:
+    inset 0 1px 0 var(--edge-highlight),
+    0 16px 48px color-mix(in srgb, #000 15%, transparent);
+}
+.instrument-plate::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--plate-accent, var(--color-signal)) 38%, var(--color-line));
+  border-left: 1px solid color-mix(in srgb, var(--plate-accent, var(--color-signal)) 38%, var(--color-line));
+  background: var(--color-ink);
 }
 
 /* Badge (tags, statuts) */

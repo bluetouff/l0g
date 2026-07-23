@@ -1,4 +1,5 @@
 ---
+import L0gGlyph from './L0gGlyph.astro';
 import SearchForm from './SearchForm.astro';
 ---
 
@@ -9,7 +10,10 @@ import SearchForm from './SearchForm.astro';
   </section>
 
   <section class="start-card">
-    <p class="eyebrow">// nouveau ici ?</p>
+    <div class="start-top">
+      <p class="eyebrow">// nouveau ici ?</p>
+      <L0gGlyph name="understand" />
+    </div>
     <h2>Commencer sans jargon.</h2>
     <p>
       Choisissez votre besoin : comprendre une notion, suivre un risque,
@@ -20,6 +24,10 @@ import SearchForm from './SearchForm.astro';
 
   <section class="side-shortcuts">
     <h2>// raccourcis</h2>
+    <a href="/terminal/" class="terminal-shortcut">
+      <strong><span aria-hidden="true">$</span> Terminal l0g</strong>
+      <span>Explorer rapidement toutes les pages</span>
+    </a>
     <a href="/sujets/">
       <strong>Sujets suivis</strong>
       <span>Les dossiers dans la durée</span>
@@ -48,10 +56,32 @@ import SearchForm from './SearchForm.astro';
     text-transform: uppercase;
   }
   .start-card {
+    position: relative;
+    overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--color-signal) 35%, var(--color-line));
-    border-radius: 14px;
+    border-radius: 14px 4px 14px 14px;
     padding: 1.1rem;
-    background: radial-gradient(100% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 70%);
+    background:
+      radial-gradient(100% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 70%),
+      var(--surface-elevated);
+    box-shadow: inset 0 1px 0 var(--edge-highlight), 0 16px 45px color-mix(in srgb, #000 14%, transparent);
+  }
+  .start-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
+    background: var(--color-ink);
+  }
+  .start-top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
   .start-card .eyebrow { margin-bottom: 0.45rem; }
   .start-card h2 {
@@ -90,4 +120,13 @@ import SearchForm from './SearchForm.astro';
   .side-shortcuts strong { color: var(--color-paper); font-size: 0.86rem; }
   .side-shortcuts span { margin-top: 0.12rem; color: var(--color-muted); font-size: 0.72rem; }
   .side-shortcuts a:hover strong { color: var(--color-signal); }
+  .side-shortcuts .terminal-shortcut {
+    border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-line));
+    border-radius: 10px 3px 10px 10px;
+    padding: 0.68rem;
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  }
+  .terminal-shortcut strong { color: var(--color-bright); }
+  .terminal-shortcut strong span { display: inline; color: var(--color-accent); }
+  .side-shortcuts .terminal-shortcut:hover strong { color: var(--color-accent); }
 </style>

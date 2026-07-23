@@ -1,4 +1,6 @@
 ---
+import L0gGlyph from './L0gGlyph.astro';
+
 interface Props {
   path: string;
   year: number;
@@ -34,6 +36,7 @@ const columns = [
   {
     label: 'Développeurs',
     links: [
+      ['/terminal/', 'Terminal'],
       ['/donnees/', 'Données'],
       ['/api/', 'API'],
       ['/mcp/', 'MCP'],
@@ -56,9 +59,15 @@ const columns = [
   <div class="footer-grad" aria-hidden="true"></div>
   <div class="footer-inner mx-auto max-w-6xl px-5">
     <div class="footer-intro">
-      <a href="/" class="footer-brand" aria-label="l0g, accueil">
-        l<span>0</span>g<span class="cursor" aria-hidden="true">_</span>
-      </a>
+      <div class="footer-brand-cluster">
+        <a href="/" class="footer-brand" aria-label="l0g, accueil">
+          l<span>0</span>g<span class="cursor" aria-hidden="true">_</span>
+        </a>
+        <a href="/terminal/" class="footer-terminal">
+          <L0gGlyph name="terminal" size="sm" />
+          <span><strong>Terminal</strong><small>accès rapide</small></span>
+        </a>
+      </div>
       <p>
         Lire les mécanismes avant qu’ils deviennent l’événement.
         <span>Sources primaires, méthodes publiques, limites visibles.</span>
@@ -108,6 +117,12 @@ const columns = [
     border-bottom: 1px solid var(--color-line);
     padding-bottom: 1.5rem;
   }
+  .footer-brand-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
   .footer-brand {
     color: var(--color-paper);
     font-family: var(--font-mono);
@@ -116,6 +131,32 @@ const columns = [
   }
   .footer-brand > span { color: var(--color-signal); }
   .footer-brand .cursor { color: var(--color-accent); }
+  .footer-terminal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-left: 1px solid var(--color-line);
+    padding-left: 1rem;
+  }
+  .footer-terminal > span,
+  .footer-terminal strong,
+  .footer-terminal small { display: block; }
+  .footer-terminal strong {
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+  .footer-terminal small {
+    margin-top: 0.05rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .footer-terminal:hover strong { color: var(--color-accent); }
   .footer-intro p { color: var(--color-paper); font-size: 0.9rem; line-height: 1.55; text-align: right; }
   .footer-intro p span { display: block; color: var(--color-muted); font-size: 0.78rem; }
   .footer-grid {

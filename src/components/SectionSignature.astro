@@ -1,0 +1,108 @@
+---
+interface Props {
+  index: string;
+  eyebrow: string;
+  title: string;
+  id?: string;
+  description?: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+const { index, eyebrow, title, id, description, href, linkLabel } = Astro.props;
+---
+
+<header class="section-signature">
+  <div class="signature-index" aria-hidden="true">
+    <span>{index}</span>
+    <i></i>
+    <b></b>
+  </div>
+  <div class="signature-copy">
+    <p>{eyebrow}</p>
+    <h2 id={id}>{title}</h2>
+    {description && <span>{description}</span>}
+  </div>
+  {href && linkLabel && <a href={href}>{linkLabel}<b aria-hidden="true">›</b></a>}
+</header>
+
+<style>
+  .section-signature {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 0.8rem 1rem;
+  }
+  .signature-index {
+    display: grid;
+    grid-template-columns: auto minmax(1.25rem, 2.6rem) auto;
+    align-items: center;
+    gap: 0.35rem;
+    align-self: start;
+    padding-top: 0.18rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.08em;
+  }
+  .signature-index i {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-signal) 18%, transparent));
+  }
+  .signature-index b {
+    width: 0.38rem;
+    height: 0.38rem;
+    border: 1px solid var(--color-signal);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-signal) 7%, transparent);
+  }
+  .signature-copy p {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .signature-copy h2 {
+    margin-top: 0.35rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+    line-height: 1.12;
+  }
+  .signature-copy > span {
+    display: block;
+    max-width: 42rem;
+    margin-top: 0.65rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .section-signature > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 0.18rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+  .section-signature > a b {
+    font-size: 1rem;
+    font-weight: 400;
+    transition: transform 0.16s;
+  }
+  .section-signature > a:hover b { transform: translateX(3px); }
+  @media (max-width: 620px) {
+    .section-signature { grid-template-columns: 1fr auto; }
+    .signature-index { grid-column: 1 / -1; width: min(8rem, 48vw); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .section-signature > a b { transition: none; }
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+export type GlyphName =
+  | 'read'
+  | 'understand'
+  | 'observe'
+  | 'verify'
+  | 'retrieve'
+  | 'terminal'
+  | 'source'
+  | 'impact'
+  | 'uncertainty';
+
+interface Props {
+  name: GlyphName;
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+}
+
+const { name, size = 'md', label } = Astro.props;
+---
+
+<span
+  class:list={['l0g-glyph', `glyph-${name}`, `glyph-${size}`]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  <span class="glyph-line line-a"></span>
+  <span class="glyph-line line-b"></span>
+  <span class="glyph-node node-a"></span>
+  <span class="glyph-node node-b"></span>
+  <span class="glyph-cursor"></span>
+</span>
+
+<style>
+  .l0g-glyph {
+    --glyph-size: 2.65rem;
+    --glyph-pad: 0.48rem;
+    position: relative;
+    display: inline-block;
+    width: var(--glyph-size);
+    height: var(--glyph-size);
+    flex: none;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--glyph-color, var(--color-signal)) 30%, var(--color-line));
+    border-radius: 10px 3px 10px 10px;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--glyph-color, var(--color-signal)) 8%, transparent), transparent 56%),
+      color-mix(in srgb, var(--color-surface-2) 72%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--color-bright) 7%, transparent),
+      0 10px 28px color-mix(in srgb, #000 14%, transparent);
+    color: var(--glyph-color, var(--color-signal));
+  }
+  .glyph-sm { --glyph-size: 1.85rem; --glyph-pad: 0.32rem; border-radius: 7px 2px 7px 7px; }
+  .glyph-lg { --glyph-size: 3.35rem; --glyph-pad: 0.62rem; border-radius: 13px 4px 13px 13px; }
+  .l0g-glyph::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--glyph-color, var(--color-signal)) 42%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--glyph-color, var(--color-signal)) 42%, var(--color-line));
+    background: var(--color-ink);
+  }
+  .glyph-line,
+  .glyph-node,
+  .glyph-cursor {
+    position: absolute;
+    display: block;
+  }
+  .glyph-line {
+    height: 1px;
+    background: currentColor;
+    opacity: 0.72;
+    transform-origin: left center;
+  }
+  .glyph-node {
+    width: 0.42rem;
+    height: 0.42rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    background: var(--color-surface);
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 7%, transparent);
+  }
+  .glyph-cursor {
+    width: 0.48rem;
+    height: 2px;
+    background: var(--color-accent);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+
+  .glyph-read .line-a { top: 36%; left: 20%; width: 58%; }
+  .glyph-read .line-b { top: 60%; left: 29%; width: 47%; }
+  .glyph-read .node-a { top: calc(36% - 0.19rem); left: 18%; }
+  .glyph-read .node-b { top: calc(60% - 0.19rem); left: 66%; }
+  .glyph-read .glyph-cursor { right: 16%; bottom: 17%; }
+
+  .glyph-understand .line-a { top: 50%; left: 18%; width: 62%; }
+  .glyph-understand .line-b { top: 22%; left: 50%; width: 46%; transform: rotate(90deg); }
+  .glyph-understand .node-a { top: calc(50% - 0.2rem); left: 43%; }
+  .glyph-understand .node-b { top: calc(24% - 0.2rem); left: 43%; }
+  .glyph-understand .glyph-cursor { right: 15%; bottom: 17%; }
+
+  .glyph-observe .line-a { top: 60%; left: 14%; width: 72%; }
+  .glyph-observe .line-b { top: 59%; left: 24%; width: 48%; transform: rotate(-34deg); }
+  .glyph-observe .node-a { top: calc(60% - 0.2rem); left: 12%; }
+  .glyph-observe .node-b { top: calc(32% - 0.2rem); left: 58%; }
+  .glyph-observe .glyph-cursor { right: 13%; bottom: 17%; }
+
+  .glyph-verify .line-a { top: 51%; left: 23%; width: 23%; transform: rotate(42deg); }
+  .glyph-verify .line-b { top: 62%; left: 39%; width: 39%; transform: rotate(-48deg); }
+  .glyph-verify .node-a { top: 20%; left: 58%; }
+  .glyph-verify .node-b { top: 64%; left: 20%; }
+  .glyph-verify .glyph-cursor { right: 14%; bottom: 15%; }
+
+  .glyph-retrieve .node-a {
+    top: 19%;
+    left: 20%;
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+  .glyph-retrieve .line-a { top: 58%; left: 53%; width: 30%; transform: rotate(45deg); }
+  .glyph-retrieve .line-b { top: 68%; left: 18%; width: 35%; }
+  .glyph-retrieve .node-b { top: calc(68% - 0.2rem); left: 44%; }
+  .glyph-retrieve .glyph-cursor { right: 14%; bottom: 14%; }
+
+  .glyph-terminal .line-a { top: 32%; left: 23%; width: 29%; transform: rotate(42deg); }
+  .glyph-terminal .line-b { top: 56%; left: 23%; width: 29%; transform: rotate(-42deg); }
+  .glyph-terminal .node-a,
+  .glyph-terminal .node-b { display: none; }
+  .glyph-terminal .glyph-cursor { right: 18%; bottom: 27%; width: 30%; }
+
+  .glyph-source .line-a { top: 50%; left: 18%; width: 65%; }
+  .glyph-source .line-b { top: 27%; left: 34%; width: 42%; transform: rotate(37deg); }
+  .glyph-source .node-a { top: calc(27% - 0.2rem); left: 28%; }
+  .glyph-source .node-b { top: calc(50% - 0.2rem); right: 15%; }
+  .glyph-source .glyph-cursor { left: 18%; bottom: 16%; }
+
+  .glyph-impact { --glyph-color: var(--color-amber); }
+  .glyph-impact .line-a { top: 68%; left: 17%; width: 66%; }
+  .glyph-impact .line-b { top: 63%; left: 24%; width: 50%; transform: rotate(-38deg); }
+  .glyph-impact .node-a { top: calc(68% - 0.2rem); left: 15%; }
+  .glyph-impact .node-b { top: calc(36% - 0.2rem); left: 60%; }
+  .glyph-impact .glyph-cursor { right: 14%; bottom: 15%; }
+
+  .glyph-uncertainty { --glyph-color: var(--color-accent); }
+  .glyph-uncertainty .line-a { top: 37%; left: 17%; width: 27%; }
+  .glyph-uncertainty .line-b { top: 63%; right: 16%; width: 27%; }
+  .glyph-uncertainty .node-a { top: calc(37% - 0.2rem); left: 39%; }
+  .glyph-uncertainty .node-b { top: calc(63% - 0.2rem); right: 39%; }
+  .glyph-uncertainty .glyph-cursor { left: calc(50% - 0.24rem); bottom: 15%; }
+</style>

@@ -1,5 +1,6 @@
 ---
 import FreshnessBadge from './FreshnessBadge.astro';
+import L0gGlyph from './L0gGlyph.astro';
 
 interface Props {
   url: string;
@@ -23,9 +24,12 @@ const iso = refDate.toISOString();
 
 <a href={url} class="post-hero group mb-8 block" style={`--a:${accent}`}>
   <article class="post-hero-inner">
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <span class="hero-mark mono-label">// à la une</span>
-      {accentLabel && <span class="topic-chip">{accentLabel}</span>}
+    <div class="hero-top">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <span class="hero-mark mono-label">// à la une</span>
+        {accentLabel && <span class="topic-chip">{accentLabel}</span>}
+      </div>
+      <L0gGlyph name="read" size="lg" />
     </div>
 
     <h2 class="hero-title mt-4 font-display tracking-wider">{title}</h2>
@@ -48,11 +52,14 @@ const iso = refDate.toISOString();
     overflow: hidden;
     padding: 1.75rem 1.75rem 1.75rem 2rem;
     border: 1px solid var(--color-line);
-    border-radius: 16px;
+    border-radius: 18px 5px 18px 18px;
     background:
       radial-gradient(120% 130% at 0% 0%, color-mix(in srgb, var(--a) 9%, transparent), transparent 55%),
-      var(--color-surface);
-    transition: border-color 0.18s, transform 0.18s;
+      var(--surface-elevated);
+    box-shadow:
+      inset 0 1px 0 var(--edge-highlight),
+      0 24px 70px color-mix(in srgb, #000 18%, transparent);
+    transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
   }
   .post-hero-inner::before {
     content: '';
@@ -63,9 +70,23 @@ const iso = refDate.toISOString();
     opacity: 0.5;
     transition: opacity 0.18s;
   }
+  .post-hero-inner::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 1rem;
+    height: 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--a) 45%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--a) 45%, var(--color-line));
+    background: var(--color-ink);
+  }
   .post-hero:hover .post-hero-inner {
     border-color: color-mix(in srgb, var(--a) 45%, var(--color-line));
     transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 var(--edge-highlight),
+      0 30px 78px color-mix(in srgb, #000 25%, transparent);
   }
   .post-hero:hover .post-hero-inner::before { opacity: 1; }
 
@@ -74,6 +95,12 @@ const iso = refDate.toISOString();
   }
 
   .hero-mark { color: var(--a); }
+  .hero-top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
 
   .topic-chip {
     font-family: var(--font-mono);

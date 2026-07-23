@@ -1,4 +1,6 @@
 ---
+import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
+
 interface Props {
   path: string;
 }
@@ -21,37 +23,45 @@ const primary: NavItem[] = [
   { href: '/methodologie/', label: 'Vérifier', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
 ];
 
-const groups: Array<{ label: string; items: NavItem[] }> = [
+const groups: Array<{ label: string; glyph: GlyphName; items: NavItem[] }> = [
   {
     label: 'Lire',
+    glyph: 'read',
     items: [
       { href: '/', label: 'Journal', description: 'Les analyses les plus récentes' },
       { href: '/sujets/', label: 'Sujets suivis', description: 'Les dossiers dans la durée' },
       { href: '/hebdo/', label: 'L’hebdo', description: 'La synthèse de la semaine' },
+      { href: '/ressources-journalistes/', label: 'Ressources presse', description: 'Les angles et données réutilisables' },
     ],
   },
   {
     label: 'Comprendre',
+    glyph: 'understand',
     items: [
       { href: '/demarrer/', label: 'Démarrer', description: 'Le mode d’emploi humain' },
       { href: '/guides/', label: 'Guides', description: 'Apprendre à lire une donnée' },
       { href: '/glossaire/', label: 'Glossaire', description: 'Décoder les termes techniques' },
+      { href: '/manifeste/', label: 'Manifeste', description: 'La ligne éditoriale de l0g' },
     ],
   },
   {
     label: 'Observer',
+    glyph: 'observe',
     items: [
       { href: '/dashboards/', label: 'Tableaux de bord', description: 'Les instruments de suivi' },
       { href: '/confluence/', label: 'Signaux croisés', description: 'Confluence 13F × Form 4' },
       { href: '/risk-diff/', label: 'Ce qui a changé', description: 'Risk Diff sur 1, 7 et 30 jours' },
+      { href: '/series/', label: 'Historique des signaux', description: 'Les séries, dates et provenances' },
     ],
   },
   {
     label: 'Vérifier',
+    glyph: 'verify',
     items: [
       { href: '/methodologie/', label: 'Méthodologie', description: 'Comment les signaux sont calculés' },
       { href: '/sources/', label: 'Sources primaires', description: 'D’où viennent les données' },
       { href: '/preuves/', label: 'Preuves', description: 'Contrats, empreintes et limites' },
+      { href: '/backtests/', label: 'Backtests', description: 'Ce que les signaux ont réellement montré' },
     ],
   },
 ];
@@ -61,8 +71,15 @@ const developerItems: NavItem[] = [
   { href: '/api/', label: 'API' },
   { href: '/mcp/', label: 'MCP' },
   { href: '/agents/', label: 'Agents' },
-  { href: '/terminal/', label: 'Terminal' },
   { href: '/en/', label: 'English' },
+];
+
+const utilityItems: NavItem[] = [
+  { href: '/demarrer/#fonctionnalites', label: 'Toutes les fonctionnalités' },
+  { href: '/about/', label: 'À propos' },
+  { href: '/status/', label: 'Statut' },
+  { href: '/black-box/', label: 'Black Box' },
+  { href: '/ressources-journalistes/', label: 'Presse' },
 ];
 
 function isActive(item: NavItem): boolean {
@@ -83,6 +100,11 @@ function isActive(item: NavItem): boolean {
       </a>
     ))}
 
+    <a href="/terminal/" class="nav-tab nav-terminal" aria-current={currentPath.startsWith('/terminal') ? 'page' : undefined}>
+      <L0gGlyph name="terminal" size="sm" />
+      Terminal
+    </a>
+
     <a href="/recherche/" class="nav-tab nav-search" aria-current={currentPath.startsWith('/recherche') ? 'page' : undefined}>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="11" cy="11" r="6"></circle>
@@ -92,12 +114,12 @@ function isActive(item: NavItem): boolean {
     </a>
 
     <details class="nav-explorer">
-      <summary>Explorer <span aria-hidden="true">⌄</span></summary>
+      <summary>Menu <span aria-hidden="true">⌄</span></summary>
       <div class="nav-panel">
         <div class="nav-groups">
           {groups.map((group) => (
             <section>
-              <h2>{group.label}</h2>
+              <h2><L0gGlyph name={group.glyph} size="sm" /><span>{group.label}</span></h2>
               {group.items.map((item) => (
                 <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
                   <strong>{item.label}</strong>
@@ -111,11 +133,26 @@ function isActive(item: NavItem): boolean {
           <span>Pour les développeurs</span>
           {developerItems.map((item) => <a href={item.href}>{item.label}</a>)}
         </div>
+        <div class="menu-footer">
+          <a href="/terminal/" class="menu-terminal" aria-current={currentPath.startsWith('/terminal') ? 'page' : undefined}>
+            <L0gGlyph name="terminal" />
+            <span><strong>Terminal l0g</strong><small>Explorer rapidement toutes les surfaces publiques.</small></span>
+            <b aria-hidden="true">ouvrir →</b>
+          </a>
+          <div class="utility-row">
+            <span>Accès directs</span>
+            {utilityItems.map((item) => <a href={item.href}>{item.label}</a>)}
+          </div>
+        </div>
       </div>
     </details>
   </nav>
 
   <nav class="mobile-nav" aria-label="Navigation mobile">
+    <a href="/terminal/" class="mobile-terminal" aria-label="Ouvrir le terminal l0g" aria-current={currentPath.startsWith('/terminal') ? 'page' : undefined}>
+      <L0gGlyph name="terminal" size="sm" />
+      <span>Terminal</span>
+    </a>
     <a href="/recherche/" class="mobile-search" aria-label="Rechercher sur l0g">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="11" cy="11" r="6"></circle>
@@ -131,7 +168,7 @@ function isActive(item: NavItem): boolean {
       <div class="mobile-panel">
         {groups.map((group) => (
           <section>
-            <h2>{group.label}</h2>
+            <h2><L0gGlyph name={group.glyph} size="sm" /><span>{group.label}</span></h2>
             <div>
               {group.items.map((item) => (
                 <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
@@ -146,6 +183,12 @@ function isActive(item: NavItem): boolean {
           <h2>Développeurs</h2>
           <div>
             {developerItems.map((item) => <a href={item.href}>{item.label}</a>)}
+          </div>
+        </section>
+        <section class="mobile-utility">
+          <h2>Accès directs</h2>
+          <div>
+            {utilityItems.map((item) => <a href={item.href}>{item.label}</a>)}
           </div>
         </section>
       </div>
@@ -175,7 +218,7 @@ function isActive(item: NavItem): boolean {
   .desktop-nav {
     display: none;
     align-items: stretch;
-    gap: 1.7rem;
+    gap: 1.25rem;
     margin-top: 1.45rem;
     border-bottom: 1px solid var(--color-line);
   }
@@ -200,7 +243,9 @@ function isActive(item: NavItem): boolean {
     color: var(--color-bright);
     border-bottom-color: var(--color-signal);
   }
-  .nav-search { gap: 0.4rem; margin-left: auto; color: var(--color-signal); }
+  .nav-terminal { gap: 0.42rem; margin-left: auto; color: var(--color-accent); }
+  .nav-terminal[aria-current='page'] { border-bottom-color: var(--color-accent); }
+  .nav-search { gap: 0.4rem; color: var(--color-signal); }
   .nav-search svg,
   .mobile-search svg {
     width: 1rem;
@@ -227,10 +272,12 @@ function isActive(item: NavItem): boolean {
     left: 0;
     border: 1px solid var(--color-line);
     border-top-color: color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
-    border-radius: 0 0 14px 14px;
+    border-radius: 0 0 18px 6px;
     padding: 1.25rem;
-    background: color-mix(in srgb, var(--color-ink) 96%, transparent);
-    box-shadow: 0 22px 70px color-mix(in srgb, #000 42%, transparent);
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 3%, transparent), transparent 45%),
+      color-mix(in srgb, var(--color-ink) 96%, transparent);
+    box-shadow: var(--shadow-elevated);
     backdrop-filter: blur(18px);
   }
   :root[data-theme='light'] .nav-panel { background: color-mix(in srgb, var(--color-surface) 97%, transparent); }
@@ -238,6 +285,9 @@ function isActive(item: NavItem): boolean {
   .nav-groups section { min-width: 0; }
   .nav-groups h2,
   .mobile-panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
     margin-bottom: 0.55rem;
     color: var(--color-signal);
     font-family: var(--font-mono);
@@ -259,7 +309,7 @@ function isActive(item: NavItem): boolean {
   .nav-groups strong,
   .nav-groups span { display: block; }
   .nav-groups strong { color: var(--color-bright); font-size: 0.88rem; }
-  .nav-groups span { margin-top: 0.18rem; color: var(--color-muted); font-size: 0.73rem; line-height: 1.4; }
+  .nav-groups section > a span { margin-top: 0.18rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.73rem; line-height: 1.4; }
   .developer-row {
     display: flex;
     flex-wrap: wrap;
@@ -274,17 +324,56 @@ function isActive(item: NavItem): boolean {
   .developer-row span { color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; }
   .developer-row a { color: var(--color-paper); }
   .developer-row a:hover { color: var(--color-signal); }
+  .menu-footer {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 1.6fr);
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 1rem;
+  }
+  .menu-terminal {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-line));
+    border-radius: 12px 3px 12px 12px;
+    padding: 0.65rem;
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  }
+  .menu-terminal > span,
+  .menu-terminal strong,
+  .menu-terminal small { display: block; }
+  .menu-terminal strong { color: var(--color-bright); font-size: 0.82rem; }
+  .menu-terminal small { margin-top: 0.12rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.69rem; line-height: 1.35; }
+  .menu-terminal > b { color: var(--color-accent); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; text-transform: uppercase; }
+  .menu-terminal:hover { border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-line)); }
+  .utility-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+  }
+  .utility-row > span { color: var(--color-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .utility-row a { color: var(--color-paper); }
+  .utility-row a:first-of-type { color: var(--color-signal); }
+  .utility-row a:hover { color: var(--color-signal); }
 
   .mobile-nav {
     display: flex;
     align-items: stretch;
-    justify-content: space-between;
-    gap: 0.75rem;
+    justify-content: flex-start;
+    gap: 0.35rem 0.75rem;
     margin-top: 1rem;
     border-top: 1px solid var(--color-line);
     border-bottom: 1px solid var(--color-line);
   }
   .mobile-search,
+  .mobile-terminal,
   .mobile-menu > summary {
     display: inline-flex;
     min-height: 3.15rem;
@@ -297,6 +386,10 @@ function isActive(item: NavItem): boolean {
     letter-spacing: 0.09em;
     text-transform: uppercase;
   }
+  .mobile-terminal { gap: 0.4rem; color: var(--color-accent); }
+  .mobile-terminal > span { display: none; }
+  .mobile-terminal[aria-current='page'] { color: var(--color-bright); }
+  .mobile-search { margin-left: auto; }
   .mobile-menu { position: static; }
   .mobile-menu > summary { cursor: pointer; list-style: none; }
   .menu-bars { display: grid; gap: 0.28rem; width: 1.1rem; }
@@ -329,9 +422,12 @@ function isActive(item: NavItem): boolean {
   .mobile-panel a:hover { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
   .mobile-panel strong { color: var(--color-bright); font-size: 0.88rem; }
   .mobile-panel span { color: var(--color-muted); font-size: 0.75rem; line-height: 1.35; }
-  .mobile-developer { border-top: 1px solid var(--color-line); padding-top: 1rem; }
-  .mobile-developer div { display: flex !important; flex-wrap: wrap; gap: 0.55rem !important; }
-  .mobile-developer a {
+  .mobile-developer,
+  .mobile-utility { border-top: 1px solid var(--color-line); padding-top: 1rem; }
+  .mobile-developer div,
+  .mobile-utility div { display: flex !important; flex-wrap: wrap; gap: 0.55rem !important; }
+  .mobile-developer a,
+  .mobile-utility a {
     border: 1px solid var(--color-line);
     border-radius: 999px;
     padding: 0.38rem 0.6rem;
@@ -340,10 +436,17 @@ function isActive(item: NavItem): boolean {
     font-size: 0.68rem;
     text-transform: uppercase;
   }
+  .mobile-utility a:first-child {
+    border-color: color-mix(in srgb, var(--color-signal) 45%, var(--color-line));
+    color: var(--color-signal);
+  }
 
-  @media (min-width: 800px) {
+  @media (min-width: 980px) {
     .desktop-nav { display: flex; }
     .mobile-nav { display: none; }
+  }
+  @media (min-width: 430px) {
+    .mobile-terminal > span { display: inline; }
   }
   @media (prefers-reduced-motion: reduce) {
     .nav-explorer > summary span,

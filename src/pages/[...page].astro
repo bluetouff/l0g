@@ -3,9 +3,11 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnalysisPagination from '../components/AnalysisPagination.astro';
 import HomeSidebar from '../components/HomeSidebar.astro';
+import L0gGlyph, { type GlyphName } from '../components/L0gGlyph.astro';
 import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
+import SectionSignature from '../components/SectionSignature.astro';
 import { readingTime } from '../lib/reading-time.ts';
 import { accentForTags, topicLabelForTags, topics } from '../config/topics.ts';
 
@@ -51,6 +53,7 @@ const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
 const followedTopics = topics.slice(0, 6);
 const needCards = [
   {
+    glyph: 'understand' as GlyphName,
     eyebrow: 'comprendre',
     title: 'Comprendre un sujet',
     text: 'Partir d’une question, puis relier guides, définitions et analyses datées.',
@@ -58,6 +61,7 @@ const needCards = [
     cta: 'Explorer les sujets',
   },
   {
+    glyph: 'observe' as GlyphName,
     eyebrow: 'observer',
     title: 'Suivre un risque',
     text: 'Consulter les tableaux de bord et comprendre ce que chaque signal mesure.',
@@ -65,6 +69,7 @@ const needCards = [
     cta: 'Voir les tableaux de bord',
   },
   {
+    glyph: 'verify' as GlyphName,
     eyebrow: 'vérifier',
     title: 'Vérifier un chiffre',
     text: 'Remonter à la source, à la méthode, à la date et aux limites publiées.',
@@ -72,6 +77,7 @@ const needCards = [
     cta: 'Contrôler les preuves',
   },
   {
+    glyph: 'retrieve' as GlyphName,
     eyebrow: 'retrouver',
     title: 'Retrouver une analyse',
     text: 'Chercher dans les articles, les guides, les méthodes et le glossaire.',
@@ -89,7 +95,10 @@ const needCards = [
 
   {isFirst && (
     <section class="rise home-intro">
-      <p class="mono-label" style="color: var(--color-signal)">// économie · marchés · risques</p>
+      <div class="home-kicker">
+        <p class="mono-label">// économie · marchés · risques</p>
+        <span aria-hidden="true"><i></i><b></b></span>
+      </div>
       <h1 class="mt-5 font-display text-[clamp(2.2rem,5.5vw,3.5rem)] leading-tight tracking-wider glow">
         l<span style="color: var(--color-signal)">0</span>g <span style="color: var(--color-accent)">:</span> les angles morts de <span class="home-title-gradient">la finance</span>
       </h1>
@@ -106,12 +115,15 @@ const needCards = [
 
   {isFirst && (
     <section class="home-needs rise" aria-labelledby="home-needs-title">
-      <p class="mono-label" style="color: var(--color-signal)">// choisir une entrée</p>
-      <h2 id="home-needs-title">Que cherchez-vous&nbsp;?</h2>
+      <SectionSignature index="01" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
       <div class="need-grid">
-        {needCards.map((card) => (
-          <a href={card.href} class="need-card">
-            <span>{card.eyebrow}</span>
+        {needCards.map((card, index) => (
+          <a href={card.href} class="need-card instrument-plate">
+            <span class="need-card-top">
+              <span class="need-index">{String(index + 1).padStart(2, '0')}</span>
+              <L0gGlyph name={card.glyph} size="lg" />
+            </span>
+            <span class="need-eyebrow">{card.eyebrow}</span>
             <strong>{card.title}</strong>
             <p>{card.text}</p>
             <small>{card.cta} <i aria-hidden="true">›</i></small>
@@ -135,8 +147,13 @@ const needCards = [
 
   {hero && (
     <section class="home-featured" aria-labelledby="featured-title">
-      <p class="mono-label" style="color: var(--color-signal)">// à la une</p>
-      <h2 id="featured-title" class="section-title">L’analyse à retenir</h2>
+      {isFirst
+        ? <SectionSignature index="02" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
+        : <>
+            <p class="mono-label" style="color: var(--color-signal)">// à la une</p>
+            <h2 id="featured-title" class="section-title">L’analyse à retenir</h2>
+          </>
+      }
       <PostHero
         url={`/posts/${hero.post.id}/`}
         title={hero.post.data.title}
@@ -152,19 +169,21 @@ const needCards = [
 
   {isFirst && (
     <section class="home-topics" aria-labelledby="followed-topics-title">
-      <div class="section-heading">
-        <div>
-          <p class="mono-label" style="color: var(--color-signal)">// dossiers</p>
-          <h2 id="followed-topics-title" class="section-title">Les sujets suivis</h2>
-        </div>
-        <a href="/sujets/">Tous les sujets <span aria-hidden="true">›</span></a>
-      </div>
+      <SectionSignature
+        index="03"
+        eyebrow="dossiers"
+        title="Les sujets suivis"
+        id="followed-topics-title"
+        href="/sujets/"
+        linkLabel="Tous les sujets"
+      />
       <div class="topic-grid">
-        {followedTopics.map((topic) => (
+        {followedTopics.map((topic, index) => (
           <a href={`/sujet/${topic.slug}/`} class="topic-card" style={`--topic-accent:${topic.accent === 'pink' ? 'var(--color-accent)' : topic.accent === 'amber' ? 'var(--color-amber)' : topic.accent === 'blue' ? '#7aa2f7' : 'var(--color-signal)'}`}>
+            <span class="topic-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}<i></i><b></b></span>
             <strong>{topic.label}</strong>
             <p>{topic.question}</p>
-            <span>Ouvrir le dossier ›</span>
+            <span class="topic-cta">Ouvrir le dossier ›</span>
           </a>
         ))}
       </div>
@@ -173,26 +192,28 @@ const needCards = [
 
   {isFirst && (
     <section class="home-risk" aria-labelledby="risk-intro-title">
-      <div class="risk-intro">
-        <p class="mono-label" style="color: var(--color-signal)">// instruments</p>
-        <h2 id="risk-intro-title" class="section-title">Les signaux de risque</h2>
-        <p>
-          Ces scores sont des panneaux de signalisation, pas une note globale des marchés.
-          Chaque instrument mesure un phénomène et un horizon différents.
-        </p>
-      </div>
+      <SectionSignature
+        index="04"
+        eyebrow="instruments"
+        title="Les signaux de risque"
+        id="risk-intro-title"
+        description="Ces scores sont des panneaux de signalisation, pas une note globale des marchés. Chaque instrument mesure un phénomène et un horizon différents."
+      />
       <RiskBand />
     </section>
   )}
 
   <section class="pb-4 latest-feed" id="dernieres-analyses">
-    <div class="section-heading feed-heading">
-      <div>
-        <p class="mono-label" style="color: var(--color-signal)">{isFirst ? '// chronologie' : '// archives'}</p>
-        <h2 class="section-title">{isFirst ? 'Les dernières analyses' : `Page ${page.currentPage}`}</h2>
-      </div>
-      <p class="mono-label">{page.total} entrées</p>
-    </div>
+    {isFirst
+      ? <SectionSignature index="05" eyebrow="chronologie" title="Les dernières analyses" description={`${page.total} entrées publiées, de la plus récente à la plus ancienne.`} />
+      : <div class="section-heading feed-heading">
+          <div>
+            <p class="mono-label" style="color: var(--color-signal)">// archives</p>
+            <h2 class="section-title">Page {page.currentPage}</h2>
+          </div>
+          <p class="mono-label">{page.total} entrées</p>
+        </div>
+    }
     {
       feed.map((it: (typeof items)[number]) => (
         <PostCard
@@ -223,6 +244,31 @@ const needCards = [
 
 <style>
   .home-intro { padding: 1.1rem 0 0.4rem; }
+  .home-kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .home-kicker > p { color: var(--color-signal); }
+  .home-kicker > span {
+    display: grid;
+    grid-template-columns: minmax(2.5rem, 7rem) auto;
+    align-items: center;
+    gap: 0.35rem;
+    flex: 1;
+    max-width: 8rem;
+  }
+  .home-kicker i {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-signal), color-mix(in srgb, var(--color-signal) 12%, transparent));
+  }
+  .home-kicker b {
+    width: 0.42rem;
+    height: 0.42rem;
+    border: 1px solid var(--color-signal);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-signal) 6%, transparent);
+  }
   .home-title-gradient {
     color: var(--color-bright);
     background: linear-gradient(
@@ -271,7 +317,6 @@ const needCards = [
   .home-topics,
   .home-risk,
   .latest-feed { margin-top: 3.4rem; }
-  .home-needs > h2,
   .section-title {
     margin-top: 0.35rem;
     color: var(--color-bright);
@@ -282,28 +327,49 @@ const needCards = [
   .need-grid { display: grid; grid-template-columns: 1fr; gap: 0.7rem; margin-top: 1.2rem; }
   .need-card {
     display: flex;
-    min-height: 12.3rem;
+    min-height: 15rem;
     flex-direction: column;
-    border: 1px solid var(--color-line);
-    border-radius: 13px;
-    padding: 1rem;
-    background: color-mix(in srgb, var(--color-surface) 42%, transparent);
-    transition: border-color 0.16s, background 0.16s, transform 0.16s;
+    padding: 0.95rem 1rem 1rem;
+    transition: border-color 0.16s, background 0.16s, transform 0.16s, box-shadow 0.16s;
   }
   .need-card:hover {
     transform: translateY(-2px);
     border-color: color-mix(in srgb, var(--color-signal) 48%, var(--color-line));
-    background: color-mix(in srgb, var(--color-signal) 6%, var(--color-surface));
+    box-shadow:
+      inset 0 1px 0 var(--edge-highlight),
+      0 22px 58px color-mix(in srgb, #000 23%, transparent);
   }
-  .need-card > span {
+  .need-card-top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+  .need-index {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: color-mix(in srgb, var(--color-signal) 65%, var(--color-muted));
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+  }
+  .need-index::after {
+    content: '';
+    width: 1.8rem;
+    height: 1px;
+    background: color-mix(in srgb, var(--color-signal) 35%, transparent);
+  }
+  .need-eyebrow {
     color: var(--color-signal);
     font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .need-card > strong { margin-top: 0.55rem; color: var(--color-bright); font-size: 1rem; }
-  .need-card > p { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.5; }
+  .need-card > strong { margin-top: 0.5rem; color: var(--color-bright); font-size: 1.02rem; }
+  .need-card > p { margin-top: 0.55rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.82rem; line-height: 1.55; }
   .need-card > small {
     display: flex;
     align-items: center;
@@ -336,28 +402,58 @@ const needCards = [
   .topic-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin-top: 1.15rem; }
   .topic-card {
     display: block;
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--color-line);
-    border-left: 3px solid color-mix(in srgb, var(--topic-accent) 64%, transparent);
-    border-radius: 10px;
-    padding: 0.9rem;
-    transition: border-color 0.16s, background 0.16s;
+    border-radius: 13px 4px 13px 13px;
+    padding: 0.85rem 0.9rem 0.95rem;
+    background: color-mix(in srgb, var(--color-surface) 45%, transparent);
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
+    transition: border-color 0.16s, background 0.16s, transform 0.16s;
   }
   .topic-card:hover {
+    transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--topic-accent) 55%, var(--color-line));
     background: color-mix(in srgb, var(--topic-accent) 5%, transparent);
   }
+  .topic-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--topic-accent) 45%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--topic-accent) 45%, var(--color-line));
+    background: var(--color-ink);
+  }
+  .topic-index {
+    display: grid;
+    grid-template-columns: auto minmax(1.4rem, 3.5rem) auto;
+    align-items: center;
+    gap: 0.35rem;
+    width: min(7.2rem, 65%);
+    margin-bottom: 0.65rem;
+    color: var(--topic-accent);
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    letter-spacing: 0.08em;
+  }
+  .topic-index i { height: 1px; background: color-mix(in srgb, var(--topic-accent) 45%, transparent); }
+  .topic-index b { width: 0.34rem; height: 0.34rem; border: 1px solid var(--topic-accent); border-radius: 50%; }
   .topic-card strong { color: var(--color-bright); font-size: 0.92rem; }
   .topic-card p {
     display: -webkit-box;
     overflow: hidden;
     margin-top: 0.45rem;
     color: var(--color-muted);
+    font-family: var(--font-read);
     font-size: 0.76rem;
     line-height: 1.45;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  .topic-card span {
+  .topic-card .topic-cta {
     display: block;
     margin-top: 0.65rem;
     color: var(--topic-accent);
@@ -370,13 +466,6 @@ const needCards = [
     border-top: 1px solid var(--color-line);
     border-bottom: 1px solid var(--color-line);
     padding: 2.5rem 0 1.5rem;
-  }
-  .risk-intro { max-width: 42rem; }
-  .risk-intro > p:last-child {
-    margin-top: 0.8rem;
-    color: var(--color-muted);
-    font-size: 0.88rem;
-    line-height: 1.6;
   }
   .home-risk :global(.rise) { margin-top: 1.1rem; margin-bottom: 0; }
   .home-risk :global(.rise > div:first-child) { display: none; }
@@ -396,6 +485,7 @@ const needCards = [
   }
   @media (prefers-reduced-motion: reduce) {
     .home-action:hover,
-    .need-card:hover { transform: none; }
+    .need-card:hover,
+    .topic-card:hover { transform: none; }
   }
 </style>

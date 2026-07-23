@@ -1,4 +1,6 @@
 ---
+import L0gGlyph, { type GlyphName } from './L0gGlyph.astro';
+
 interface Props {
   fact: string;
   importance: string;
@@ -7,38 +9,40 @@ interface Props {
 }
 
 const { fact, importance, uncertainty, readingTime } = Astro.props;
+const rows: Array<{ index: string; label: string; value: string; glyph: GlyphName }> = [
+  { index: '01', label: 'Le fait', value: fact, glyph: 'source' },
+  { index: '02', label: 'Pourquoi cela compte', value: importance, glyph: 'impact' },
+  { index: '03', label: 'Ce qui reste incertain', value: uncertainty, glyph: 'uncertainty' },
+];
 ---
 
-<aside class="quick-take" aria-labelledby="quick-take-title" data-pagefind-ignore>
+<aside class="quick-take instrument-plate" aria-labelledby="quick-take-title" data-pagefind-ignore>
   <div class="quick-head">
-    <p id="quick-take-title">// en 30 secondes</p>
+    <div>
+      <L0gGlyph name="read" size="sm" />
+      <p id="quick-take-title">// en 30 secondes</p>
+    </div>
     <span>avant les {readingTime} min d’analyse</span>
   </div>
   <dl>
-    <div>
-      <dt>Le fait</dt>
-      <dd>{fact}</dd>
-    </div>
-    <div>
-      <dt>Pourquoi cela compte</dt>
-      <dd>{importance}</dd>
-    </div>
-    <div>
-      <dt>Ce qui reste incertain</dt>
-      <dd>{uncertainty}</dd>
-    </div>
+    {rows.map((row) => (
+      <div>
+        <dt>
+          <span class="quick-index" aria-hidden="true">{row.index}</span>
+          <L0gGlyph name={row.glyph} size="sm" />
+          <span>{row.label}</span>
+        </dt>
+        <dd>{row.value}</dd>
+      </div>
+    ))}
   </dl>
 </aside>
 
 <style>
   .quick-take {
+    --plate-accent: var(--color-signal);
     margin: 0 0 2.1rem;
-    overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line));
-    border-radius: 14px;
-    background:
-      linear-gradient(135deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 54%),
-      color-mix(in srgb, var(--color-surface) 62%, transparent);
   }
   .quick-head {
     display: flex;
@@ -48,6 +52,11 @@ const { fact, importance, uncertainty, readingTime } = Astro.props;
     gap: 0.35rem 1rem;
     border-bottom: 1px solid var(--color-line);
     padding: 0.85rem 1rem;
+  }
+  .quick-head > div {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
   }
   .quick-head p {
     color: var(--color-signal);
@@ -67,12 +76,17 @@ const { fact, importance, uncertainty, readingTime } = Astro.props;
   .quick-take dl { display: grid; margin: 0; }
   .quick-take dl > div {
     display: grid;
-    grid-template-columns: minmax(8rem, 0.36fr) 1fr;
-    gap: 1rem;
+    grid-template-columns: minmax(11rem, 0.42fr) 1fr;
+    align-items: start;
+    gap: 0.7rem 1rem;
     padding: 0.85rem 1rem;
   }
   .quick-take dl > div + div { border-top: 1px solid var(--color-line); }
   .quick-take dt {
+    display: grid;
+    grid-template-columns: 1.4rem auto 1fr;
+    align-items: center;
+    gap: 0.55rem;
     color: var(--color-bright);
     font-family: var(--font-mono);
     font-size: 0.67rem;
@@ -87,7 +101,16 @@ const { fact, importance, uncertainty, readingTime } = Astro.props;
     font-size: 0.9rem;
     line-height: 1.55;
   }
+  .quick-index {
+    color: color-mix(in srgb, var(--color-signal) 60%, var(--color-muted));
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    letter-spacing: 0.08em;
+  }
   @media (max-width: 560px) {
-    .quick-take dl > div { grid-template-columns: 1fr; gap: 0.4rem; }
+    .quick-take dl > div {
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
   }
 </style>

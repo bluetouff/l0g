@@ -63,10 +63,34 @@ const nn = index != null ? String(index).padStart(2, '0') : null;
   .feed-item:hover .feed-index { color: var(--a); }
 
   .feed-rail {
+    position: relative;
     align-self: stretch;
     border-radius: 999px;
     background: color-mix(in srgb, var(--a) 30%, transparent);
     transition: background 0.16s;
+  }
+  .feed-rail::before {
+    content: '';
+    position: absolute;
+    top: 0.18rem;
+    left: 50%;
+    width: 0.42rem;
+    height: 0.42rem;
+    border: 1px solid var(--a);
+    border-radius: 50%;
+    background: var(--color-ink);
+    transform: translateX(-50%);
+  }
+  .feed-rail::after {
+    content: '';
+    position: absolute;
+    bottom: 0.18rem;
+    left: 50%;
+    width: 0.55rem;
+    height: 2px;
+    background: var(--color-accent);
+    transform: translateX(-50%);
+    opacity: 0.45;
   }
   .feed-item:hover .feed-rail { background: var(--a); }
 
@@ -104,6 +128,7 @@ const nn = index != null ? String(index).padStart(2, '0') : null;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-top: 0.5rem;
+    font-family: var(--font-read);
     font-size: 0.88rem;
     line-height: 1.55;
     color: var(--color-muted);
