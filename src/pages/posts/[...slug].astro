@@ -5,6 +5,7 @@ import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
+import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
 import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evidence.ts';
 import { readingTime } from '../../lib/reading-time.ts';
@@ -114,7 +115,7 @@ const claimReviews = evidence.claims.filter((claim) => claim.reviewStatus === 'r
   url: shareUrl,
   datePublished: claim.reviewedAt ?? claim.claimDateIso ?? post.data.pubDate.toISOString().slice(0, 10),
   claimReviewed: claim.claim,
-  author: { '@id': `${site}/#org` },
+  author: { '@id': ORGANIZATION_ID },
   itemReviewed: {
     '@type': 'CreativeWork',
     '@id': `${shareUrl}#claim-${claim.id}`,
@@ -152,8 +153,8 @@ const articleJsonLd = {
       inLanguage: 'fr',
       isAccessibleForFree: true,
       license: 'https://creativecommons.org/licenses/by/4.0/',
-      author: { '@id': `${site}/#org` },
-      publisher: { '@id': `${site}/#org` },
+      author: authorEntity,
+      publisher: organizationEntity,
       about: post.data.tags.map((tag) => ({ '@type': 'Thing', name: tag })),
       keywords: post.data.tags,
       wordCount: post.body ? post.body.split(/\s+/).filter(Boolean).length : undefined,
@@ -226,6 +227,8 @@ const trustItems = [
       <p class="post-lede mt-5">{post.data.description}</p>
 
       <div class="post-meta mono-label mt-6">
+        <a href="/about/#bluetouff" rel="author" class="link-term">Par Bluetouff</a>
+        <span class="sep" aria-hidden="true">·</span>
         <time datetime={iso} data-pagefind-meta="date">{dateLabel}</time>
         {post.data.updatedDate && (
           <>

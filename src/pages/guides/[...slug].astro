@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
+import { authorEntity, organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
@@ -70,8 +71,8 @@ const ld = {
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'fr',
-      author: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
-      publisher: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
+      author: authorEntity,
+      publisher: organizationEntity,
       mainEntityOfPage: url,
       ...(guide.data.summary
         ? { about: { '@type': 'DefinedTerm', name: guide.data.title, description: guide.data.summary } }
@@ -112,6 +113,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       <p class="post-lede mt-5">{guide.data.description}</p>
 
       <div class="post-meta mono-label mt-6">
+        <a href="/about/#bluetouff" rel="author" class="link-term">Par Bluetouff</a>
+        <span class="sep" aria-hidden="true">·</span>
         <time datetime={isoUpd} data-pagefind-meta="date">dernière révision le {updatedLabel}</time>
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min de lecture</span>

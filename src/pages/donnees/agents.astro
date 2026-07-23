@@ -83,7 +83,12 @@ const endpoints = [
   {
     path: '/series/',
     label: 'Séries nommées',
-    role: 'Registre des identifiants stables, noms citables, versions méthodologiques et exports dédiés par jauge.',
+    role: 'Registre des identifiants stables, noms citables, versions méthodologiques et exports CSV, JSON, NDJSON et SVG par jauge.',
+  },
+  {
+    path: '/ressources-journalistes/',
+    label: 'Ressources presse',
+    role: 'Graphiques SVG permanents, code d’intégration, citations recommandées et limites de réutilisation.',
   },
   {
     path: '/api/v1/history.ndjson',
@@ -129,7 +134,7 @@ const flow = [
   'Surveiller /api/v1/changes.json pour suivre les nouveaux contenus et révisions.',
   'Lire /api/v1/risk-diff.json pour analyser les changements de risque sur 1, 7 ou 30 jours.',
   'Lire /api/v1/black-box.json pour rejouer une date sans remplir les trous historiques.',
-  'Choisir une série nommée dans /series/, puis utiliser son export CSV, JSON ou NDJSON dédié.',
+  'Choisir une série nommée dans /series/, puis utiliser son export CSV, JSON, NDJSON ou SVG dédié.',
   'Lire /api/v1/signals/history.csv ou .ndjson pour rejouer les séries ; filtrer evidenceTier selon le niveau de preuve requis.',
   'Utiliser /api/v1/evidence-graph.json quand il faut parcourir la relation article → claim → source.',
   'Basculer sur les variantes .ndjson pour une ingestion ligne à ligne.',

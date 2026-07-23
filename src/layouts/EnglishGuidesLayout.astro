@@ -3,12 +3,17 @@ import '../styles/global.css';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import CspMeta from '../components/CspMeta.astro';
+import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../config/entities.ts';
+import { buildSeoMetadata } from '../lib/seo.ts';
 
 type AlternateLink = { hreflang: string; href: string };
 
 interface Props {
   title?: string;
   description?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  robots?: 'index,follow' | 'noindex,follow';
   ogType?: 'website' | 'article';
   ogImage?: string;
   ogImageAlt?: string;
@@ -19,6 +24,9 @@ interface Props {
 const {
   title = 'l0g in English',
   description = 'English entry points from l0g.fr: reference guides, methodology, API, MCP and machine-readable risk intelligence.',
+  seoTitle,
+  seoDescription,
+  robots = 'index,follow',
   ogType = 'website',
   ogImage = '/og-default.png',
   ogImageAlt,
@@ -28,7 +36,9 @@ const {
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
-const fullTitle = `${title} · l0g.fr`;
+const seo = buildSeoMetadata(seoTitle || title, seoDescription || description);
+const fullTitle = seo.fullTitle;
+const metaDescription = seo.description;
 const socialImageAlt = ogImageAlt ?? `${fullTitle} — l0g.fr social card`;
 const year = new Date().getFullYear();
 
@@ -42,6 +52,7 @@ const nav = [
   { href: '/en/methodology/', label: 'method', active: Astro.url.pathname.startsWith('/en/methodology'), show: hasPage('src/pages/en/methodology/index.astro') },
   { href: '/en/sources/', label: 'sources', active: Astro.url.pathname.startsWith('/en/sources'), show: hasPage('src/pages/en/sources/index.astro') },
   { href: '/en/api/', label: 'api', active: Astro.url.pathname.startsWith('/en/api'), show: hasPage('src/pages/en/api/index.astro') },
+  { href: '/en/press-resources/', label: 'press', active: Astro.url.pathname.startsWith('/en/press-resources'), show: hasPage('src/pages/en/press-resources/index.astro') },
   { href: '/en/mcp/', label: 'mcp', active: Astro.url.pathname.startsWith('/en/mcp'), show: hasPage('src/pages/en/mcp/index.astro') },
   { href: '/', label: 'fr', active: false, show: true },
 ].filter((item) => item.show !== false);
@@ -52,6 +63,7 @@ const footerLinks = [
   { href: '/en/methodology/', label: 'methodology', show: hasPage('src/pages/en/methodology/index.astro') },
   { href: '/en/sources/', label: 'sources', show: hasPage('src/pages/en/sources/index.astro') },
   { href: '/en/api/', label: 'api', show: hasPage('src/pages/en/api/index.astro') },
+  { href: '/en/press-resources/', label: 'press resources', show: hasPage('src/pages/en/press-resources/index.astro') },
   { href: '/en/mcp/', label: 'mcp', show: hasPage('src/pages/en/mcp/index.astro') },
   { href: '/en/agent-surface/', label: 'agent surface', show: hasPage('src/pages/en/agent-surface/index.astro') },
   { href: '/', label: 'french site', show: true },
@@ -60,23 +72,16 @@ const footerLinks = [
 const siteJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${SITE}/#org`,
-      name: 'l0g',
-      alternateName: 'l0g.fr',
-      url: `${SITE}/`,
-      logo: `${SITE}/favicon.svg`,
-      description: 'Risk intelligence: mapping opaque finance, systemic risk and financial geopolitics with public data.',
-      sameAs: ['https://github.com/bluetouff', 'https://x.com/bluetouff'],
-    },
+    organizationEntity,
+    authorEntity,
     {
       '@type': 'WebSite',
       '@id': `${SITE}/#website`,
       url: `${SITE}/`,
       name: 'l0g',
       inLanguage: 'en',
-      publisher: { '@id': `${SITE}/#org` },
+      creator: { '@id': authorEntity['@id'] },
+      publisher: { '@id': ORGANIZATION_ID },
     },
   ],
 };
@@ -109,7 +114,8 @@ const siteJsonLd = {
     </script>
 
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />
@@ -117,7 +123,7 @@ const siteJsonLd = {
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="l0g.fr" />
@@ -129,7 +135,7 @@ const siteJsonLd = {
     <meta name="twitter:site" content="@bluetouff" />
     <meta name="twitter:creator" content="@bluetouff" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
 

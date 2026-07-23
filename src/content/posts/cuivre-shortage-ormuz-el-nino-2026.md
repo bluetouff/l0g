@@ -2,7 +2,7 @@
 title: "Cuivre : le shortage qui arrive par Ormuz et El Niño"
 description: "Panorama actualisé du marché du cuivre au 26 juin 2026 : prix LME, données ICSG, acide sulfurique, détroit d'Ormuz, El Niño et demande d'électrification."
 pubDate: 2026-06-26T16:02:00+02:00
-tags: ["macro", "marchés", "géopolitique", "énergie", "cuivre"]
+tags: ["ormuz", "macro", "marchés", "géopolitique", "énergie", "cuivre"]
 draft: false
 ---
 

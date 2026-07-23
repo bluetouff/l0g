@@ -30,6 +30,11 @@ const trustItems = [
 <BaseLayout
   title="Dashboards & moniteurs"
   description="Les outils de monitoring du risque en accès libre : macro US, macro zone euro, carry trade yen, stress énergétique. Données publiques, architecture snapshot, code ouvert. Par Bluetouff."
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/dashboards/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/dashboards/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/dashboards/', Astro.site).toString() },
+  ]}
   sidebar={false}
 >
   <section data-pagefind-ignore>
@@ -62,7 +67,14 @@ const trustItems = [
         >
           <div class="fiche-preview">
             {d.preview ? (
-              <img src={d.preview} alt={`Aperçu — ${d.label}`} loading="lazy" decoding="async" />
+              <img
+                src={d.preview.src}
+                alt={`Aperçu — ${d.label}`}
+                width={d.preview.width}
+                height={d.preview.height}
+                loading="lazy"
+                decoding="async"
+              />
             ) : (
               <span class="fiche-glyph" aria-hidden="true">{d.glyph}</span>
             )}

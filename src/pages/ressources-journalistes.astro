@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { buildSignalHistorySurface } from '../lib/signal-history.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+const history = buildSignalHistorySurface();
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pageUrl = `${site}/ressources-journalistes/`;
+const trustItems = [
+  { label: 'CSV · JSON · SVG', href: '#series' },
+  { label: 'méthodes versionnées', href: '/methodologie/' },
+  { label: 'CC BY 4.0', href: 'https://creativecommons.org/licenses/by/4.0/' },
+  { label: 'aucun tracker', href: '/rgpd/' },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${pageUrl}#resources`,
+  url: pageUrl,
+  name: 'Ressources l0g pour journalistes',
+  description:
+    'Graphiques SVG, séries CSV et JSON, méthodologies et règles d’attribution pour citer les données publiques de l0g.',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: history.instruments.map((series, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: series.name,
+      url: series.page,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Ressources pour journalistes"
+  description="Graphiques SVG, séries CSV et JSON, méthodologies et règles d’attribution pour citer les données publiques et indices récurrents de l0g."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: pageUrl },
+    { hreflang: 'en', href: `${site}/en/press-resources/` },
+    { hreflang: 'x-default', href: `${site}/en/press-resources/` },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <article class="press-page rise" data-pagefind-body>
+    <header class="press-hero">
+      <p class="mono-label glow">// press kit données</p>
+      <h1 class="press-title font-display glow">Des données prêtes à citer, pas des graphiques à recopier.</h1>
+      <p class="press-lede">
+        Cette page rassemble les séries récurrentes de l0g dans des formats directement
+        réutilisables. Chaque graphique possède une URL permanente, les données existent en
+        CSV et JSON, et la méthode reste liée à l'instrument.
+      </p>
+      <TrustBar items={trustItems} />
+    </header>
+
+    <section class="press-section principles" aria-labelledby="usage-title">
+      <p class="mono-label glow">// contrat de réutilisation</p>
+      <h2 id="usage-title">Trois règles suffisent.</h2>
+      <div class="principle-grid">
+        <div>
+          <strong>1. Citer</strong>
+          <p>Indiquer le nom de la série, l0g.fr, la date de consultation et un lien vers sa fiche permanente.</p>
+        </div>
+        <div>
+          <strong>2. Dater</strong>
+          <p>Conserver la date du point publié. Une valeur courante n'est pas une observation historique rétroactive.</p>
+        </div>
+        <div>
+          <strong>3. Contextualiser</strong>
+          <p>Chaque score 0-100 possède sa propre méthode. Deux niveaux identiques ne sont pas économiquement comparables.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="press-section" id="series" aria-labelledby="series-title">
+      <p class="mono-label glow">// séries récurrentes</p>
+      <h2 id="series-title">Graphique, données, méthode et citation.</h2>
+      <div class="resource-grid">
+        {history.instruments.map((series) => {
+          const embed = `<figure>\n  <img src="${series.downloads.svg}" alt="${series.name}" width="1200" height="630">\n  <figcaption>Source : l0g.fr, ${series.citationName}, CC BY 4.0.</figcaption>\n</figure>`;
+          return (
+            <section class="resource-card">
+              <img
+                src={series.downloads.svg}
+                alt={`Graphique de la série ${series.name}`}
+                width="1200"
+                height="630"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="resource-body">
+                <p class="series-id">{series.seriesId}</p>
+                <h3><a href={series.page}>{series.name}</a></h3>
+                <p>{series.description}</p>
+                <dl>
+                  <div><dt>méthode</dt><dd>{series.methodologyVersion}</dd></div>
+                  <div><dt>observations</dt><dd>{series.coverage.observations}</dd></div>
+                  <div><dt>licence</dt><dd>CC BY 4.0</dd></div>
+                </dl>
+                <nav class="format-links" aria-label={`Formats pour ${series.name}`}>
+                  <a href={series.downloads.svg}>SVG</a>
+                  <a href={series.downloads.csv}>CSV</a>
+                  <a href={series.downloads.json}>JSON</a>
+                  <a href={series.downloads.ndjson}>NDJSON</a>
+                  <a href={series.methodology}>méthode</a>
+                </nav>
+                <details>
+                  <summary>Code d'intégration</summary>
+                  <pre><code>{embed}</code></pre>
+                </details>
+                <p class="citation">{series.recommendedCitation}</p>
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="press-section split">
+      <div class="info-card">
+        <p class="mono-label glow">// ce qui est fourni</p>
+        <h2>Un paquet citable complet.</h2>
+        <ul>
+          <li>une fiche stable et indexable pour chaque série ;</li>
+          <li>un graphique SVG autonome avec source et licence intégrées ;</li>
+          <li>des exports CSV, JSON et NDJSON sans inscription ;</li>
+          <li>une méthodologie versionnée et un changelog éditorial ;</li>
+          <li>des dates de publication, de source et de calcul séparées.</li>
+        </ul>
+      </div>
+      <div class="info-card warning">
+        <p class="mono-label glow">// limites</p>
+        <h2>Ce que ces données ne promettent pas.</h2>
+        <ul>
+          <li>pas de temps réel lorsque la source amont ne l'est pas ;</li>
+          <li>pas de continuité inventée entre deux observations ;</li>
+          <li>pas d'indice global comparable entre instruments ;</li>
+          <li>pas de conseil en investissement ni de prévision certaine ;</li>
+          <li>les sources amont conservent leurs propres conditions de réutilisation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="press-section contact-card">
+      <p class="mono-label glow">// demandes éditoriales</p>
+      <h2>Besoin d'un angle, d'un format ou d'une vérification ?</h2>
+      <p>
+        Pour une demande documentée, un export supplémentaire ou une question méthodologique,
+        utiliser le dépôt public ou contacter Bluetouff sur son profil officiel. Une demande
+        ne garantit ni exclusivité, ni calendrier, ni conclusion prédéterminée.
+      </p>
+      <div class="contact-links">
+        <a href="https://github.com/bluetouff/l0g/issues" rel="noopener">GitHub issues</a>
+        <a href="https://x.com/bluetouff" rel="me noopener">X · @bluetouff</a>
+        <a href="/about/#bluetouff">profil auteur</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .press-page { max-width: 72rem; }
+    .press-hero { border-bottom: 1px solid var(--color-line); padding-bottom: 2rem; }
+    .press-title { color: var(--color-bright); font-size: clamp(2.1rem, 5vw, 3.7rem); line-height: 1.05; margin-top: 1rem; max-width: 62rem; }
+    .press-lede { border-left: 2px solid var(--color-signal); color: var(--color-paper); font-family: var(--font-read); font-size: 1.12rem; line-height: 1.7; margin-top: 1.15rem; max-width: 54rem; padding-left: 1rem; }
+    .press-section { margin-top: 3rem; }
+    .press-section > h2, .info-card h2, .contact-card h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.55rem; margin-top: .7rem; }
+    .principle-grid, .split { display: grid; gap: .8rem; margin-top: 1rem; }
+    .principle-grid > div, .info-card, .contact-card { background: color-mix(in srgb, var(--color-surface) 55%, transparent); border: 1px solid var(--color-line); border-radius: 9px; padding: 1rem; }
+    .principle-grid strong { color: var(--color-signal); font-family: var(--font-mono); }
+    .principle-grid p, .info-card li, .contact-card p { color: var(--color-muted); line-height: 1.65; margin-top: .5rem; }
+    .resource-grid { display: grid; gap: 1.2rem; margin-top: 1.2rem; }
+    .resource-card { background: color-mix(in srgb, var(--color-surface) 48%, transparent); border: 1px solid var(--color-line); border-radius: 10px; overflow: hidden; }
+    .resource-card > img { background: #0b0f14; display: block; height: auto; width: 100%; }
+    .resource-body { padding: 1rem; }
+    .series-id { color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; overflow-wrap: anywhere; }
+    .resource-card h3 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; margin-top: .55rem; }
+    .resource-card h3 a { color: inherit; }
+    .resource-card p:not(.series-id):not(.citation) { color: var(--color-muted); line-height: 1.6; margin-top: .55rem; }
+    .resource-card dl { display: grid; gap: .5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: .9rem; }
+    .resource-card dl div { border-top: 1px solid var(--color-line); padding-top: .5rem; }
+    dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; }
+    dd { color: var(--color-paper); font-family: var(--font-mono); font-size: .78rem; margin: .2rem 0 0; }
+    .format-links, .contact-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+    .format-links a, .contact-links a { border: 1px solid color-mix(in srgb, var(--color-signal) 45%, var(--color-line)); border-radius: 999px; color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; padding: .38rem .65rem; text-transform: uppercase; }
+    details { border-top: 1px solid var(--color-line); margin-top: 1rem; padding-top: .75rem; }
+    summary { color: var(--color-paper); cursor: pointer; font-family: var(--font-mono); font-size: .72rem; }
+    pre { background: var(--color-ink); border: 1px solid var(--color-line); border-radius: 7px; margin-top: .65rem; overflow-x: auto; padding: .75rem; }
+    code { color: var(--color-muted); font-size: .72rem; white-space: pre; }
+    .citation { border-left: 2px solid var(--color-amber); color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; margin-top: 1rem; padding-left: .7rem; }
+    .info-card ul { margin: .8rem 0 0 1.1rem; }
+    .warning { border-color: color-mix(in srgb, var(--color-amber) 38%, var(--color-line)); }
+    @media (min-width: 760px) {
+      .principle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .resource-grid, .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .resource-card dl { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

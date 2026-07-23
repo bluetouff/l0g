@@ -76,11 +76,6 @@ const jsonLd = {
 <EnglishLayout
   title="l0g in English"
   description="English entry points for l0g.fr: reference guides, methodology, sources, API, MCP, dashboards, glossary and risk replay surfaces."
-  alternateLinks={[
-    { hreflang: 'en', href: `${SITE}/en/` },
-    { hreflang: 'fr', href: `${SITE}/` },
-    { hreflang: 'x-default', href: `${SITE}/` },
-  ]}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 

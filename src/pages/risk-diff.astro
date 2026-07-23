@@ -75,6 +75,11 @@ const jsonLd = {
 <BaseLayout
   title="Risk Diff"
   description="Risk Diff l0g : ce qui a changé dans le risque depuis hier, 7 jours et 30 jours, en reliant signaux, sources, claims, articles et méthodes."
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/risk-diff/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/risk-diff/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/risk-diff/', Astro.site).toString() },
+  ]}
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />

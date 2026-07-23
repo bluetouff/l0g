@@ -1,0 +1,180 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { buildSignalHistorySurface } from '../../../lib/signal-history.ts';
+
+const history = buildSignalHistorySurface();
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pageUrl = `${SITE}/en/press-resources/`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${pageUrl}#resources`,
+  url: pageUrl,
+  name: 'l0g press and journalist resources',
+  description: 'Reusable SVG charts, CSV and JSON series, methods and attribution guidance for citing l0g public data.',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: history.instruments.map((series, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: series.name,
+      url: series.page,
+    })),
+  },
+};
+---
+
+<EnglishGuidesLayout
+  title="Press and journalist resources"
+  description="Reusable l0g SVG charts, CSV and JSON series, versioned methods and attribution guidance for financial and economic reporting."
+  canonical={pageUrl}
+  alternateLinks={[
+    { hreflang: 'en', href: pageUrl },
+    { hreflang: 'fr', href: `${SITE}/ressources-journalistes/` },
+    { hreflang: 'x-default', href: pageUrl },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+
+  <article class="press-page rise" data-pagefind-body>
+    <header class="press-hero">
+      <p class="mono-label glow">// reusable public data</p>
+      <h1 class="press-title font-display glow">Charts built to be cited, not copied by hand.</h1>
+      <p class="press-lede">
+        Permanent SVG charts, CSV and JSON exports, versioned methods and explicit attribution
+        rules for l0g recurring risk series. No account, tracking script or third-party embed is required.
+      </p>
+      <div class="trust-row">
+        <span>CSV · JSON · SVG</span>
+        <span>CC BY 4.0</span>
+        <span>versioned methods</span>
+        <span>no tracker</span>
+      </div>
+    </header>
+
+    <section class="press-section">
+      <p class="mono-label glow">// reuse contract</p>
+      <h2>Credit, date and contextualise.</h2>
+      <div class="principle-grid">
+        <div><strong>Credit</strong><p>Name the series, link to its permanent l0g page and include the access date.</p></div>
+        <div><strong>Date</strong><p>Keep the published observation date. Current values are not retroactive historical data.</p></div>
+        <div><strong>Context</strong><p>Each 0-100 score has its own method. Equal readings are not economically equivalent.</p></div>
+      </div>
+    </section>
+
+    <section class="press-section" id="series">
+      <p class="mono-label glow">// recurring series</p>
+      <h2>Chart, data, method and citation.</h2>
+      <div class="resource-grid">
+        {history.instruments.map((series) => {
+          const embed = `<figure>\n  <img src="${series.downloads.svg}" alt="${series.name}" width="1200" height="630">\n  <figcaption>Source: l0g.fr, ${series.citationName}, CC BY 4.0.</figcaption>\n</figure>`;
+          return (
+            <section class="resource-card">
+              <img
+                src={series.downloads.svg}
+                alt={`${series.name} chart`}
+                width="1200"
+                height="630"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="resource-body">
+                <p class="series-id">{series.seriesId}</p>
+                <h3><a href={series.page}>{series.name}</a></h3>
+                <p>{series.description}</p>
+                <nav class="format-links" aria-label={`Formats for ${series.name}`}>
+                  <a href={series.downloads.svg}>SVG</a>
+                  <a href={series.downloads.csv}>CSV</a>
+                  <a href={series.downloads.json}>JSON</a>
+                  <a href={series.downloads.ndjson}>NDJSON</a>
+                  <a href={series.methodology}>method</a>
+                </nav>
+                <details>
+                  <summary>Embed code</summary>
+                  <pre><code>{embed}</code></pre>
+                </details>
+                <p class="citation">{series.recommendedCitation}</p>
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="press-section split">
+      <div class="info-card">
+        <p class="mono-label glow">// included</p>
+        <h2>A complete citation package.</h2>
+        <ul>
+          <li>stable, indexable series pages;</li>
+          <li>standalone SVG charts with embedded source and licence;</li>
+          <li>CSV, JSON and NDJSON downloads without registration;</li>
+          <li>versioned methods and an editorial changelog;</li>
+          <li>separate publication, source and computation dates.</li>
+        </ul>
+      </div>
+      <div class="info-card warning">
+        <p class="mono-label glow">// boundaries</p>
+        <h2>What the data does not promise.</h2>
+        <ul>
+          <li>no real time when the upstream source is delayed;</li>
+          <li>no invented continuity between observations;</li>
+          <li>no global index comparable across instruments;</li>
+          <li>no investment advice or certain forecast;</li>
+          <li>upstream sources retain their own reuse terms.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="press-section contact-card">
+      <p class="mono-label glow">// editorial requests</p>
+      <h2>Need a format, method check or documented angle?</h2>
+      <p>
+        Open a public repository issue or contact Bluetouff through an official profile.
+        A request does not imply exclusivity, a fixed delivery date or a predetermined conclusion.
+      </p>
+      <div class="format-links">
+        <a href="https://github.com/bluetouff/l0g/issues" rel="noopener">GitHub issues</a>
+        <a href="https://x.com/bluetouff" rel="me noopener">X · @bluetouff</a>
+        <a href="/about/#bluetouff">author profile</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .press-page { max-width: 72rem; }
+    .press-hero { border-bottom: 1px solid var(--color-line); padding-bottom: 2rem; }
+    .press-title { color: var(--color-bright); font-size: clamp(2.1rem, 5vw, 3.7rem); line-height: 1.05; margin-top: 1rem; max-width: 62rem; }
+    .press-lede { border-left: 2px solid var(--color-signal); color: var(--color-paper); font-family: var(--font-read); font-size: 1.12rem; line-height: 1.7; margin-top: 1.15rem; max-width: 54rem; padding-left: 1rem; }
+    .trust-row, .format-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+    .trust-row span, .format-links a { border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; padding: .38rem .65rem; text-transform: uppercase; }
+    .press-section { margin-top: 3rem; }
+    .press-section > h2, .info-card h2, .contact-card h2 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.55rem; margin-top: .7rem; }
+    .principle-grid, .split { display: grid; gap: .8rem; margin-top: 1rem; }
+    .principle-grid > div, .info-card, .contact-card { background: color-mix(in srgb, var(--color-surface) 55%, transparent); border: 1px solid var(--color-line); border-radius: 9px; padding: 1rem; }
+    .principle-grid strong { color: var(--color-signal); font-family: var(--font-mono); }
+    .principle-grid p, .info-card li, .contact-card p { color: var(--color-muted); line-height: 1.65; margin-top: .5rem; }
+    .resource-grid { display: grid; gap: 1.2rem; margin-top: 1.2rem; }
+    .resource-card { background: color-mix(in srgb, var(--color-surface) 48%, transparent); border: 1px solid var(--color-line); border-radius: 10px; overflow: hidden; }
+    .resource-card > img { background: #0b0f14; display: block; height: auto; width: 100%; }
+    .resource-body { padding: 1rem; }
+    .series-id { color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; overflow-wrap: anywhere; }
+    .resource-card h3 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; margin-top: .55rem; }
+    .resource-card h3 a { color: inherit; }
+    .resource-card p:not(.series-id):not(.citation) { color: var(--color-muted); line-height: 1.6; margin-top: .55rem; }
+    details { border-top: 1px solid var(--color-line); margin-top: 1rem; padding-top: .75rem; }
+    summary { color: var(--color-paper); cursor: pointer; font-family: var(--font-mono); font-size: .72rem; }
+    pre { background: var(--color-ink); border: 1px solid var(--color-line); border-radius: 7px; margin-top: .65rem; overflow-x: auto; padding: .75rem; }
+    code { color: var(--color-muted); font-size: .72rem; white-space: pre; }
+    .citation { border-left: 2px solid var(--color-amber); color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; margin-top: 1rem; padding-left: .7rem; }
+    .info-card ul { margin: .8rem 0 0 1.1rem; }
+    .warning { border-color: color-mix(in srgb, var(--color-amber) 38%, var(--color-line)); }
+    @media (min-width: 760px) {
+      .principle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .resource-grid, .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</EnglishGuidesLayout>

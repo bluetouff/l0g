@@ -76,6 +76,12 @@ export const GET: APIRoute = async () => {
     `- [Données](${SITE}/donnees/): inventaire des snapshots publics, endpoints JSON/Atom/RSS, corpus machine, licence et limites de fraîcheur.`
   );
   lines.push(
+    `- [Ressources pour journalistes](${SITE}/ressources-journalistes/): graphiques SVG permanents, séries CSV/JSON/NDJSON, code d’intégration, méthodes et attribution CC BY 4.0.`
+  );
+  lines.push(
+    `- [Séries de risque](${SITE}/series/): registre des instruments nommés, fiches Dataset et exports prêts à citer.`
+  );
+  lines.push(
     `- [Backtests](${SITE}/backtests/): historique point-in-time des signaux l0g, exports CSV/NDJSON/JSON, contrat de dates et garde-fous contre le look-ahead bias.`
   );
   lines.push(

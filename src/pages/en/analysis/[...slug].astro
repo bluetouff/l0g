@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { authorEntity, organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
 import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
@@ -55,8 +56,8 @@ const ld = {
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'en',
-      author: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
-      publisher: { '@type': 'Organization', '@id': 'https://l0g.fr/#org', name: 'l0g', url: 'https://l0g.fr' },
+      author: authorEntity,
+      publisher: organizationEntity,
       mainEntityOfPage: url,
       isBasedOn: { '@type': 'Article', url: frUrl },
       keywords: post.data.tags,
@@ -96,6 +97,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       <p class="post-lede mt-5">{post.data.description}</p>
 
       <div class="post-meta mono-label mt-6">
+        <a href="/about/#bluetouff" rel="author" class="link-term">By Bluetouff</a>
+        <span class="sep" aria-hidden="true">·</span>
         <time datetime={isoUpd} data-pagefind-meta="date">last updated {updatedLabel}</time>
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min read</span>

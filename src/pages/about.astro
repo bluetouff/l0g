@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
+import { authorEntity, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 const trustItems = [
   { label: 'open source', href: 'https://github.com/bluetouff/l0g' },
@@ -8,10 +10,21 @@ const trustItems = [
   { label: 'sources citées', href: '/sites-reference/' },
   { label: 'aucun tracker', href: '/rgpd/' },
 ];
+const profilePageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${SITE_URL}/about/#profile-page`,
+  url: `${SITE_URL}/about/`,
+  dateModified: '2026-07-23',
+  mainEntity: authorEntity,
+  isPartOf: { '@id': `${SITE_URL}/#website` },
+  publisher: { '@id': ORGANIZATION_ID },
+};
 ---
 
 <BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et la politique de confidentialité du projet."
   alternateLinks={[{ hreflang: 'fr', href: new URL('/about/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/about/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/about/', Astro.site).toString() }]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(profilePageJsonLd)} />
   <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">
     <a href="/en/about/" class="link-term">English version available →</a>
   </p>
@@ -68,7 +81,7 @@ const trustItems = [
 
   <hr class="hairline mt-14" />
 
-  <section class="mt-12">
+  <section class="mt-12" id="bluetouff">
     <p class="mono-label glow" style="color: var(--color-signal)">// l'auteur</p>
     <h2 class="mt-3 font-display text-3xl leading-none tracking-wider glow">
       Olivier Laurelli <span style="color: var(--color-accent)">/ bluetouff</span>

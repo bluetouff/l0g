@@ -1,5 +1,5 @@
 ---
-title: "13FLOW : l'argent lourd et l'argent qui sait"
+title: "13FLOW : pourquoi croiser achats d'initiés et positions 13F"
 description: "13FLOW industrialise la lecture des 13F-HR et des Form 4 sur SEC EDGAR et les croise en un score de confluence auditable. Décomposition de la méthode : pondération institutionnelle, hygiène des codes de transaction, décroissance temporelle et clusters d'initiés."
 pubDate: 2026-06-14
 tags: ["13flow", "SEC EDGAR", "13F", "Form 4", "marchés", "analyse fondamentale"]

@@ -2,7 +2,7 @@
 title: "Ormuz rouvre : trois scénarios chiffrés pour la normalisation du marché pétrolier"
 description: "L'accord US-Iran du 14 juin rouvre le détroit d'Ormuz, signature le 19 à Genève. Mais l'accord a sorti la prime de guerre, pas les dégâts. Analyse chiffrée et sourcée de la remontée du trafic et trois trajectoires de prix du Brent."
 pubDate: 2026-06-16
-tags: ["géopolitique", "énergie", "macro", "pétrole"]
+tags: ["ormuz", "géopolitique", "énergie", "macro", "pétrole"]
 draft: false
 ---
 

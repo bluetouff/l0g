@@ -2,7 +2,7 @@
 title: "Détroit d'Ormuz, avril 2026 : état des lieux d'un chokepoint bloqué"
 description: "Depuis le 28 février 2026, le détroit d'Ormuz est de facto fermé. Ce que disent les sources officielles (EIA, IEA, CRS) sur le blocus, le choc pétrolier et les amortisseurs, au 10 avril, avec une mise à jour sur la sortie de crise."
 pubDate: 2026-04-10T11:00:00+02:00
-tags: ["géopolitique", "énergie", "macro"]
+tags: ["ormuz", "géopolitique", "énergie", "macro"]
 draft: false
 ---
 

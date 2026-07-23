@@ -62,6 +62,11 @@ const jsonLd = {
   description={description}
   ogImage="/og-manifeste.png"
   ogImageAlt="Manifeste l0g : sources primaires, code ouvert, limites assumées"
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/manifeste/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/manifesto/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/manifeste/', Astro.site).toString() },
+  ]}
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />

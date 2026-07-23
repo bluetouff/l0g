@@ -3,7 +3,7 @@ title: "CLARITY Act : le texte qui va redessiner la régulation crypto aux État
 description: "Comment un projet de loi de 309 pages s'apprête à mettre fin à dix ans de guerre de juridictions entre SEC et CFTC, et ce que ça change pour l'industrie."
 pubDate: 2026-05-17
 updatedDate: 2026-05-17
-tags: ["régulation", "crypto", "politique us"]
+tags: ["clarity act", "régulation", "crypto", "politique us"]
 draft: false
 ---
 

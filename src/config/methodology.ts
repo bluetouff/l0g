@@ -54,7 +54,7 @@ export const methodologyPages: MethodologyPage[] = [
     shortLabel: '13FLOW',
     eyebrow: '// confluence 13F x Form 4',
     accent: 'teal',
-    title: "13FLOW : l'argent lourd et l'argent qui sait",
+    title: 'Méthodologie 13FLOW : calcul du score 13F × Form 4',
     description:
       "Méthodologie de 13FLOW : comment lire la confluence entre accumulation institutionnelle 13F et achats d'initiés Form 4 depuis SEC EDGAR.",
     question:

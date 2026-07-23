@@ -137,6 +137,7 @@ export type SignalSeriesMetadata = {
     json: string;
     ndjson: string;
     csv: string;
+    svg: string;
   };
   recommendedCitation: string;
   coverage: {
@@ -249,6 +250,7 @@ function seriesUrls(key: SignalKey) {
       json: `${root}.json`,
       ndjson: `${root}.ndjson`,
       csv: `${root}.csv`,
+      svg: `${SITE}/api/v1/signals/${slug}/chart.svg`,
     },
   };
 }

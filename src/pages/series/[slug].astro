@@ -57,6 +57,7 @@ const jsonLd = {
     { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: series.downloads.json },
     { '@type': 'DataDownload', encodingFormat: 'application/x-ndjson', contentUrl: series.downloads.ndjson },
     { '@type': 'DataDownload', encodingFormat: 'text/csv', contentUrl: series.downloads.csv },
+    { '@type': 'DataDownload', encodingFormat: 'image/svg+xml', contentUrl: series.downloads.svg },
   ],
 };
 ---
@@ -73,6 +74,7 @@ const jsonLd = {
         <a href={series.downloads.csv}>Télécharger CSV</a>
         <a href={series.downloads.json}>JSON</a>
         <a href={series.downloads.ndjson}>NDJSON</a>
+        <a href={series.downloads.svg}>SVG</a>
         <a href={series.methodology}>Méthodologie</a>
       </div>
     </header>

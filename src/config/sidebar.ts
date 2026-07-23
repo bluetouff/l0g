@@ -20,7 +20,11 @@ export interface Dashboard {
   cadence: string;         // fréquence / nature des données
   stack: string;           // techno
   repo?: string;           // dépôt public (lien « code »)
-  preview?: string;        // capture, ex. /dash/us.png — placeholder si absent
+  preview?: {
+    src: string;
+    width: number;
+    height: number;
+  };                       // capture locale avec dimensions intrinsèques
   methodologySlug?: string; // slug méthodologie si différent de l'ancre slug
   beta?: boolean;          // affiche un badge « beta » sur la fiche
 }
@@ -38,7 +42,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Données FRED, à chaque consultation',
     stack: 'Streamlit · Python',
     repo: 'https://github.com/bluetouff/macro_dashboard',
-    preview: '/preview/us.png',
+    preview: { src: '/preview/us.png', width: 3158, height: 1638 },
   },
   {
     label: 'EU Macro Dashboard',
@@ -53,7 +57,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique, sans clé API',
     stack: 'Python · architecture snapshot',
     repo: 'https://github.com/bluetouff/euro-macro-dashboard',
-    preview: '/preview/eu.png',
+    preview: { src: '/preview/eu.png', width: 3000, height: 1672 },
   },
   {
     label: 'Yen Carry Monitor',
@@ -67,7 +71,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique · COT hebdomadaire',
     stack: 'Snapshot statique · licence MIT',
     repo: 'https://github.com/bluetouff/carry-yen-monitor',
-    preview: '/preview/yct.png',
+    preview: { src: '/preview/yct.png', width: 2314, height: 1678 },
   },
   {
     label: 'Energie Monitor',
@@ -81,7 +85,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique',
     stack: 'Python · builder stdlib durci',
     repo: 'https://github.com/bluetouff/energie-stress-monitor',
-    preview: '/preview/ener.png',
+    preview: { src: '/preview/ener.png', width: 2154, height: 1688 },
   },
   {
     label: 'Debt Risk Radar',
@@ -96,7 +100,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'APIs ouvertes et marché, à chaque consultation',
     stack: 'Streamlit · Python · systemd · Apache',
     repo: 'https://github.com/bluetouff/debt-risk-radar',
-    preview: '/preview/debt.png',
+    preview: { src: '/preview/debt.png', width: 2312, height: 1204 },
   },
   {
     label: '13FLOW',
@@ -110,7 +114,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique · 13F trimestriel, Form 4 sous 2 jours',
     stack: 'Python · ingest EDGAR · architecture snapshot',
     repo: 'https://github.com/bluetouff/13flow',
-    preview: '/preview/13flow.png',
+    preview: { src: '/preview/13flow.png', width: 2400, height: 1609 },
   },
   {
     label: 'Orbit',
@@ -125,7 +129,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique · refresh 2 min',
     stack: 'Python · builder stdlib · architecture snapshot',
     repo: 'https://github.com/bluetouff/orbit',
-    preview: '/preview/orbit.png',
+    preview: { src: '/preview/orbit.png', width: 3338, height: 1818 },
   },
 ];
 

@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { glossaryRedirects } from './src/config/glossary-redirects.mjs';
 import { glossaryAtlasEntries } from './src/config/glossary.ts';
+import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 
 const indexedGlossaryUrls = new Set(glossaryAtlasEntries.map((entry) => `https://l0g.fr${entry.url}`));
 
@@ -16,9 +17,16 @@ export default defineConfig({
   // (Pas d'adapter = build statique par défaut.)
 
   integrations: [mdx(), sitemap({
-    filter: (page) => page === 'https://l0g.fr/glossaire/'
-      || !page.startsWith('https://l0g.fr/glossaire/')
-      || indexedGlossaryUrls.has(page),
+    filter: (page) => page !== 'https://l0g.fr/recherche/'
+      && (
+        page === 'https://l0g.fr/glossaire/'
+        || !page.startsWith('https://l0g.fr/glossaire/')
+        || indexedGlossaryUrls.has(page)
+      ),
+    serialize: (item) => ({
+      ...item,
+      lastmod: sitemapLastmod(item.url),
+    }),
   })],
 
   redirects: Object.fromEntries(

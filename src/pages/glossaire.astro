@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import {
   glossaryAtlasEdgeCount,
   glossaryAtlasEntries,
-  glossaryEntries,
   glossaryEntryBySlug,
   glossaryUpdatedIso,
   glossarySections as sections,
@@ -51,14 +50,8 @@ const glossaryLd = {
     'Glossaire et graphe de connaissance l0g : sigles, concepts, sources, guides, signaux et datasets de risque financier.',
   inLanguage: 'fr',
   dateModified: glossaryUpdatedIso,
-  hasDefinedTerm: glossaryEntries.map((e) => ({
-    '@type': 'DefinedTerm',
-    '@id': `${GSITE}${e.url}#term`,
-    name: e.nom,
-    termCode: e.sigle,
-    description: e.def,
-    inDefinedTermSet: { '@id': `${GSITE}/glossaire/#glossary` },
-    url: `${GSITE}${e.url}`,
+  hasDefinedTerm: glossaryAtlasEntries.map((entry) => ({
+    '@id': `${GSITE}${entry.url}#term`,
   })),
 };
 const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
@@ -67,6 +60,11 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
 <BaseLayout
   title="Glossaire"
   description="Atlas de l'opacité financière : glossaire l0g, concepts voisins, articles, guides, sources primaires, datasets et signaux de risque reliés."
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/glossaire/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/glossary/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/glossaire/', Astro.site).toString() },
+  ]}
 >
   <script type="application/ld+json" is:inline set:html={glossaryJsonLd} />
   <section class="rise" data-pagefind-ignore>
@@ -77,6 +75,10 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     <p class="mt-4 max-w-2xl text-muted">
       Le glossaire l0g devient une carte du risque : définitions courtes, concepts voisins,
       articles, guides, sources primaires, datasets et signaux qui utilisent chaque notion.
+    </p>
+    <p class="mt-3 max-w-2xl text-sm text-muted">
+      Cet index reste volontairement compact. Chaque définition complète, ses références et
+      son graphe documentaire disposent d'une page dédiée.
     </p>
     <div class="atlas-metrics" aria-label="État de l'atlas">
       <span><strong>{total}</strong> entrées</span>
@@ -151,20 +153,17 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
           <h2 class="mono-label mb-4 text-lg" style={`color:${s.accent}`}>
             // {s.titre}<span class="gloss-sec-n">{s.entries.length}</span>
           </h2>
-          <dl class="glossary">
+          <ul class="glossary-index">
             {s.entries.map((e) => (
-              <div class="gentry" id={e.slug} data-term={(e.sigle + ' ' + e.nom + ' ' + e.def + ' ' + (e.atlas?.related ?? []).join(' ')).toLowerCase()}>
-                <dt>
-                  <a class="sigle" style={`color:${s.accent}`} href={e.url}>{e.sigle}</a>
-                  <a class="nom" href={e.url}>{e.nom}</a>
-                  {e.atlas && <a class="atlas-tag" href={e.url}>atlas</a>}
-                </dt>
-                <dd>{e.def}{e.guide && (
-                  <> <a class="gloss-guide link-term" href={e.guide}>Lire le guide complet →</a></>
-                )}</dd>
-              </div>
+              <li class="gentry" id={e.slug} data-term={(e.sigle + ' ' + e.nom + ' ' + (e.atlas?.related ?? []).join(' ')).toLowerCase()}>
+                <a class="gentry-link" href={e.url}>
+                  <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
+                  <span class="nom">{e.nom}</span>
+                  {e.atlas && <span class="atlas-tag">atlas</span>}
+                </a>
+              </li>
             ))}
-          </dl>
+          </ul>
         </section>
       ))
     }
@@ -227,11 +226,33 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     .gloss-sec { scroll-margin-top: 6rem; }
     .gloss-sec-n { font-size: 0.7rem; color: var(--color-muted); margin-left: 0.45rem; letter-spacing: normal; }
 
-    .glossary { display: flex; flex-direction: column; gap: 0; }
-    .gentry { padding: 0.8rem 0.6rem; border-bottom: 1px solid var(--color-line); border-radius: 8px; transition: background 0.15s; }
-    .gentry:last-child { border-bottom: 0; }
-    .gentry:hover { background: rgba(255, 255, 255, 0.018); }
-    .gentry dt { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
+    .glossary-index {
+      display: grid;
+      gap: 0.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .gentry {
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      min-width: 0;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .gentry:hover {
+      background: rgba(255, 255, 255, 0.018);
+      border-color: color-mix(in srgb, var(--color-signal) 35%, var(--color-line));
+    }
+    .gentry-link {
+      align-items: baseline;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      min-height: 100%;
+      padding: 0.6rem;
+      text-decoration: none;
+    }
     .gentry .sigle {
       font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em;
       border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
@@ -240,8 +261,7 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     }
     .gentry .sigle:hover { background: color-mix(in srgb, currentColor 10%, transparent); border-color: currentColor; }
     .gentry .nom { color: var(--color-bright); font-size: 0.9rem; transition: color 0.18s; }
-    .gentry .nom:hover { color: var(--color-signal); }
-    .gentry dd { margin: 0.4rem 0 0; color: var(--color-muted); font-size: 0.95rem; line-height: 1.6; max-width: 62ch; }
+    .gentry-link:hover .nom { color: var(--color-signal); }
     .gentry:target { background: color-mix(in srgb, var(--color-signal) 8%, transparent); }
 
     .gloss-empty { margin-top: 2rem; color: var(--color-muted); font-family: var(--font-mono); }

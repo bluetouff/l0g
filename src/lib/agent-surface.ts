@@ -2710,12 +2710,13 @@ export function buildOpenApiContract() {
         },
         SignalDownloads: {
           type: 'object',
-          required: ['json', 'ndjson', 'csv'],
+          required: ['json', 'ndjson', 'csv', 'svg'],
           additionalProperties: false,
           properties: {
             json: { type: 'string', format: 'uri' },
             ndjson: { type: 'string', format: 'uri' },
             csv: { type: 'string', format: 'uri' },
+            svg: { type: 'string', format: 'uri' },
           },
         },
         SignalInstrumentCoverage: {

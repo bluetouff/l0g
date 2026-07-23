@@ -2,7 +2,7 @@
 title: "L'Iran et ses péages d'Ormuz en USDT sur Tron : masterclass de contournement OFAC"
 description: "Comment l'IRGC se fait payer en dollars sans que l'Oncle Sam puisse toucher un centime : péage souverain en USDT sur Tron, paiements en yuan via CIPS, et toute la boîte à outils de sanctions-evasion 2.0."
 pubDate: 2026-04-10
-tags: ["géopolitique", "crypto", "sanctions"]
+tags: ["ormuz", "géopolitique", "crypto", "sanctions"]
 draft: false
 ---
 

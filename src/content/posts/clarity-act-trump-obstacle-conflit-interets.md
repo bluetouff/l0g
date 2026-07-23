@@ -3,7 +3,7 @@ title: "CLARITY Act : Trump, premier obstacle à sa propre loi crypto"
 description: "Le CLARITY Act, priorité de l'industrie crypto américaine, bute sur un obstacle paradoxal : les intérêts personnels du président. La disposition anti conflit d'intérêts que réclament les démocrates vise d'abord Donald Trump et sa famille, dont les ventures crypto ont généré des milliards. Sans elle, pas de 60 voix au Sénat ; avec elle, la Maison Blanche menace de bloquer."
 pubDate: 2026-06-22T11:00:00+02:00
 updatedDate: 2026-07-21T15:51:00+02:00
-tags: ["crypto", "régulation", "politique us", "stablecoins"]
+tags: ["clarity act", "crypto", "régulation", "politique us", "stablecoins"]
 draft: false
 ---
 

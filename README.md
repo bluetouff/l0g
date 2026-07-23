@@ -37,6 +37,10 @@ et par les dashboards :
   Radar `latest.json`, avec provenance, buckets et couverture lorsque disponible.
 - `/api/v1/signals/history.*` : historique point-in-time pour backtests et
   replay sans look-ahead bias.
+- `/api/v1/signals/{slug}/chart.svg` : graphique autonome 1200 × 630 d'une
+  série nommée, avec source et attribution CC BY 4.0 intégrées.
+- `/ressources-journalistes/` et `/en/press-resources/` : graphiques, exports,
+  code d'intégration, citations recommandées et limites de réutilisation.
 - `/api/mcp/compact` : façade MCP recommandée à six outils, avec découverte,
   recherche, documents, preuves, research packs et état du risque.
 - `/api/mcp` : surface MCP complète en lecture seule, conservée pour compatibilité
@@ -170,6 +174,10 @@ composant Astro interne ou fichier placé dans `public/infographies/`.
 
 Les scripts, iframes, images et polices chargés depuis un domaine tiers sont
 interdits. Le build de sécurité contrôle cette promesse.
+
+Toute balise `<img>` doit déclarer ses dimensions intrinsèques `width` et
+`height`, ainsi que `loading="lazy"` et `decoding="async"`. L'audit de
+performance bloque une régression susceptible de provoquer du CLS.
 
 ## Déploiement (vue d'ensemble)
 

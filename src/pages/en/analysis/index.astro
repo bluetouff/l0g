@@ -26,18 +26,12 @@ const items = all.slice(0, PAGE_SIZE).map((p, i) => ({
 }));
 
 const canonical = new URL('/en/analysis/', Astro.site).toString();
-const alternateLinks = [
-  { hreflang: 'en', href: canonical },
-  { hreflang: 'fr', href: new URL('/', Astro.site).toString() },
-  { hreflang: 'x-default', href: new URL('/', Astro.site).toString() },
-];
 ---
 
 <EnglishGuidesLayout
   title="English analysis"
   description="English versions of selected l0g analysis pieces: sourced, evidence-graded essays on AI finance, credit plumbing, shadow banking and the machinery of systemic risk."
   canonical={canonical}
-  alternateLinks={alternateLinks}
 >
   <section class="rise border-b border-dashed border-line pb-10">
     <p class="mono-label" style="color: var(--color-signal)">$ ls /en/analysis</p>

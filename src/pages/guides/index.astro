@@ -47,6 +47,11 @@ const englishTotal = (await getCollection('guidesEn', ({ data }) => !data.draft)
 <BaseLayout
   title="Guides de référence"
   description="Guides de référence l0g : des pages piliers longues et sourcées, conçues pour être la source canonique citée par les agents et les moteurs de réponse. Rangées par famille : données macro, Fed et liquidité, marchés et SEC, crypto et régulation."
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/guides/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/guides/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/guides/', Astro.site).toString() },
+  ]}
 >
   <section class="rise border-b border-dashed border-line pb-10">
     <p class="mono-label" style="color: var(--color-signal)">$ ls /guides</p>

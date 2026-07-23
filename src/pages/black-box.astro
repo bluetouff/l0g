@@ -74,6 +74,11 @@ const jsonLd = {
 <BaseLayout
   title="Black Box Recorder"
   description="Black Box Recorder l0g : boîte noire publique des signaux de risque, avec frames point-in-time, hashes d’intégrité, sources, modèles, fraîcheur et replay par date."
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/black-box/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/black-box/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/black-box/', Astro.site).toString() },
+  ]}
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />

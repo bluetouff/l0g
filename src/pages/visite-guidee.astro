@@ -376,6 +376,11 @@ const jsonLd = {
   title={title}
   description={description}
   ogImageAlt="Visite guidée de l0g : comprendre, lire, surveiller, vérifier et réutiliser"
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/visite-guidee/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/tour/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/visite-guidee/', Astro.site).toString() },
+  ]}
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />

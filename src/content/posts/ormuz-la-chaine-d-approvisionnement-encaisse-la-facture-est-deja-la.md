@@ -3,7 +3,7 @@ title: "Ormuz : la chaîne d'approvisionnement encaisse, la facture est déjà l
 description: "Le cessez-le-feu de mi-juin a fait sortir la prime de guerre des prix du pétrole, mais pas les navires des files d'attente. Cinq mois après la fermeture du détroit d'Ormuz, les dégâts sur la chaîne d'approvisionnement mondiale sont déjà mesurables : fret doublé, gaz européen sous tension, engrais rationnés. État des lieux chiffré et sourcé."
 pubDate: 2026-07-05T15:22:04+02:00
 updatedDate: 2026-07-05
-tags: ["géopolitique", "énergie", "supply chain", "macro", "matières premières"]
+tags: ["ormuz", "géopolitique", "énergie", "supply chain", "macro", "matières premières"]
 draft: false
 ---
 

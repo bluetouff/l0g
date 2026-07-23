@@ -2,7 +2,7 @@
 title: "Crise d'Ormuz : la facture asiatique d'un choc énergétique, à l'heure de la trêve"
 description: "Bilan chiffré et sourcé des effets du blocage du détroit d'Ormuz sur l'Asie, de l'Inde au Japon : croissance révisée, inflation importée, pénuries industrielles, menace alimentaire. Au moment où le MOU du 17 juin amorce une réouverture fragile, la facture cumulée reste lourde et mettra des mois à se résorber."
 pubDate: 2026-06-21T09:00:00+02:00
-tags: ["géopolitique", "énergie", "asie", "macro", "pétrole", "inflation"]
+tags: ["ormuz", "géopolitique", "énergie", "asie", "macro", "pétrole", "inflation"]
 draft: false
 ---
 
