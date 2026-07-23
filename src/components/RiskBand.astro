@@ -22,6 +22,8 @@ type RiskSignal = {
   sourceUpdatedAt?: string | null;
   sourcePublishedAt?: string | null;
   lastSuccessAt?: string | null;
+  retrievedAt?: string | null;
+  warnings?: string[];
   componentDates?: { brent?: string; wti?: string } | null;
 };
 
@@ -145,45 +147,49 @@ const aggregateStatus = aggregateDate
   <div class="grid grid-cols-2 gap-3 lg:grid-cols-5">
     {
       items.map((it) => (
-        <a
-          href={it.href}
-          target="_blank"
-          rel="noopener"
+        <article
           class="risk-tile card group block p-4"
           data-risk={it.key}
           data-degraded={isDegraded(it.signal) ? 'true' : 'false'}
         >
-          <div class="flex items-center justify-between">
-            <span class="mono-label">{it.label}</span>
-            <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">›</span>
-          </div>
-          <div class="risk-reading mt-3 flex items-baseline gap-2">
-            <span
-              class="risk-value font-display leading-none glow"
-              data-value
-              style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
-            >
-              {it.signal?.value ?? '—'}
-            </span>
-            <span
-              class="risk-level mono-label"
-              data-level
-              style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
-            >
-              {it.signal?.level ?? ''}
-            </span>
-          </div>
-          <div class="risk-track mt-3">
-            <div
-              class="risk-fill"
-              data-fill
-              style={`width:${clampPct(it.signal?.value, it.signal?.scale)}%;background:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
-            ></div>
-          </div>
-          <div class="risk-status" data-status>
-            {it.signal ? statusText(it.signal) : 'source indisponible au build'}
-          </div>
-        </a>
+          <a href={it.href} target="_blank" rel="noopener" class="risk-tile-main">
+            <div class="flex items-center justify-between">
+              <span class="mono-label">{it.label}</span>
+              <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">›</span>
+            </div>
+            <div class="risk-reading mt-3 flex items-baseline gap-2">
+              <span
+                class="risk-value font-display leading-none glow"
+                data-value
+                style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+              >
+                {it.signal?.value ?? '—'}
+              </span>
+              <span
+                class="risk-level mono-label"
+                data-level
+                style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+              >
+                {it.signal?.level ?? ''}
+              </span>
+            </div>
+            <div class="risk-track mt-3">
+              <div
+                class="risk-fill"
+                data-fill
+                style={`width:${clampPct(it.signal?.value, it.signal?.scale)}%;background:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+              ></div>
+            </div>
+            <div class="risk-status" data-status>
+              {it.signal ? statusText(it.signal) : 'source indisponible au build'}
+            </div>
+          </a>
+          {it.signal && (
+            <a class="risk-proof-link" href={`/maintenant/#signal-${it.key}`}>
+              <span aria-hidden="true">i</span> Vérifier ce chiffre
+            </a>
+          )}
+        </article>
       ))
     }
   </div>
@@ -204,6 +210,31 @@ const aggregateStatus = aggregateDate
     background: rgba(255, 255, 255, 0.08);
     overflow: hidden;
   }
+  .risk-tile-main { display: block; }
+  .risk-proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    margin-top: 0.7rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.58rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 650;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+  .risk-proof-link span {
+    display: inline-grid;
+    width: 0.95rem;
+    height: 0.95rem;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 0.54rem;
+  }
+  .risk-proof-link:hover { color: var(--color-signal); }
   .risk-fill {
     height: 100%;
     width: 0;

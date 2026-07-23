@@ -1,0 +1,489 @@
+---
+import { getCollection } from 'astro:content';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import L0gGlyph from '../components/L0gGlyph.astro';
+import RiskProvenance from '../components/RiskProvenance.astro';
+import SectionSignature from '../components/SectionSignature.astro';
+import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
+import { buildRiskDiffSurface } from '../lib/risk-diff.ts';
+import { riskSignalMeta } from '../config/risk-signals.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+type RiskSignal = {
+  key: string;
+  value?: number | null;
+  scale?: number | null;
+  level?: string | null;
+  tone?: string | null;
+  sourceStatus?: string | null;
+  qualityStatus?: string | null;
+  timelinessStatus?: string | null;
+  sourceUpdatedAt?: string | null;
+  sourcePublishedAt?: string | null;
+  retrievedAt?: string | null;
+  lastSuccessAt?: string | null;
+  warnings?: string[];
+};
+
+type RiskSnapshot = {
+  updated?: string | null;
+  indices?: RiskSignal[];
+};
+
+function readRiskSnapshot(): RiskSnapshot | null {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), 'public/risk.json'), 'utf-8')) as RiskSnapshot;
+  } catch {
+    return null;
+  }
+}
+
+function formatDate(value?: string | Date | null, withTime = false) {
+  if (!value) return 'date non publiée';
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return 'date non publiée';
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    ...(withTime ? { hour: '2-digit', minute: '2-digit' } : {}),
+    timeZone: 'Europe/Paris',
+  });
+}
+
+function signed(value: number | null) {
+  if (value == null) return 'baseline absente';
+  return `${value > 0 ? '+' : ''}${value.toFixed(1)} point${Math.abs(value) >= 2 ? 's' : ''}`;
+}
+
+const meaning: Record<string, { importance: string; next: string }> = {
+  us: {
+    importance: 'Le régime macro américain influence les taux, le dollar, la liquidité mondiale et le prix du risque.',
+    next: 'Recouper avec les prochaines publications BLS, BEA et les communications de la Fed.',
+  },
+  eu: {
+    importance: 'Le régime euro relie activité, inflation, politique de la BCE et conditions de crédit.',
+    next: 'Vérifier les prochaines données Eurostat et les décisions publiées par la BCE.',
+  },
+  yen: {
+    importance: 'Le financement en yen peut transmettre un choc de change vers les positions à levier mondiales.',
+    next: 'Observer simultanément le yen, les écarts de taux et la volatilité plutôt qu’un prix isolé.',
+  },
+  energie: {
+    importance: 'L’énergie transmet les ruptures physiques et géopolitiques vers les coûts, l’inflation et le commerce.',
+    next: 'Vérifier les flux, stocks et courbes auprès de l’EIA et des sources physiques.',
+  },
+  debt: {
+    importance: 'La dette transmet taux et refinancement vers budgets publics, crédit et valorisations privées.',
+    next: 'Contrôler les sources Treasury, FRED, BIS et CBO précisées dans la méthodologie.',
+  },
+};
+
+const posts = sortPosts(await getCollection('posts', ({ data }) => !data.draft));
+const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draft));
+const risk = readRiskSnapshot();
+const riskForDiff = risk ? {
+  ...risk,
+  indices: risk.indices?.map((signal) => ({
+    key: signal.key,
+    value: signal.value ?? undefined,
+    level: signal.level ?? undefined,
+    tone: signal.tone ?? undefined,
+  })),
+} : null;
+const diff = buildRiskDiffSurface(posts, guides, riskForDiff);
+const day = diff.windows.find((window) => window.window === '1d');
+const week = diff.windows.find((window) => window.window === '7d') ?? diff.windows[0];
+const dayHasEvidence = Boolean(day && (
+  day.signalMoves.rising.length
+  + day.signalMoves.falling.length
+  + day.articles.length
+  + day.sources.newData.length
+));
+const selected = dayHasEvidence && day ? day : week;
+const moves = [
+  ...selected.signalMoves.rising,
+  ...selected.signalMoves.falling,
+].sort((a, b) => Math.abs(b.delta ?? 0) - Math.abs(a.delta ?? 0));
+const signals = (risk?.indices ?? []).filter((signal) => riskSignalMeta[signal.key]);
+const latest = posts.slice(0, 6);
+const referenceLabel = dayHasEvidence ? 'depuis 24 heures' : 'sur la dernière fenêtre exploitable de 7 jours';
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site}/maintenant/#page`,
+  name: 'Maintenant sur l0g',
+  description: 'Ce qui a changé dans les signaux et les analyses l0g, avec importance, incertitude, sources et prochaines vérifications.',
+  url: `${site}/maintenant/`,
+  inLanguage: 'fr',
+  isPartOf: { '@id': `${site}/#website` },
+  dateModified: selected.until,
+};
+---
+
+<BaseLayout
+  title="Maintenant"
+  description="Ce qui a changé dans l’économie, les marchés et les risques suivis par l0g, avec les sources, les incertitudes et les prochaines vérifications."
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <article class="now-page" data-pagefind-body>
+    <header class="now-hero instrument-plate rise">
+      <div class="now-hero-head">
+        <div>
+          <p class="mono-label">// maintenant · {referenceLabel}</p>
+          <h1>Ce qui mérite votre attention.</h1>
+        </div>
+        <L0gGlyph name="observe" size="lg" />
+      </div>
+      <p class="now-lede">
+        Une entrée quotidienne dans l0g. Chaque changement est relié à son mécanisme,
+        à son degré d’incertitude et à la prochaine donnée susceptible de confirmer ou
+        de contredire la lecture.
+      </p>
+      <dl class="now-stats">
+        <div><dt>fenêtre retenue</dt><dd>{selected.window}</dd></div>
+        <div><dt>signaux comparables</dt><dd>{selected.signalMoves.coverage.withBaseline}/{selected.signalMoves.coverage.instruments}</dd></div>
+        <div><dt>confiance documentaire</dt><dd>{selected.confidence.label}</dd></div>
+        <div><dt>ancre des données</dt><dd>{formatDate(selected.until)}</dd></div>
+      </dl>
+    </header>
+
+    <section class="visit-panel rise" id="since-last-visit" aria-labelledby="visit-title">
+      <span class="visit-orbit" aria-hidden="true"><i></i></span>
+      <div>
+        <p class="mono-label">// depuis votre dernier passage</p>
+        <h2 id="visit-title">Votre repère de lecture reste sur cet appareil.</h2>
+        <p id="visit-summary">
+          Première visite détectée. l0g enregistre uniquement la date de ce passage dans ce navigateur.
+        </p>
+        <small id="visit-detail">Aucun compte, cookie publicitaire ou suivi distant.</small>
+      </div>
+      <button type="button" id="visit-mark">Marquer comme lu</button>
+    </section>
+
+    <section class="now-section" aria-labelledby="changes-title">
+      <SectionSignature
+        index="01"
+        eyebrow="mouvements"
+        title="Ce qui a changé"
+        id="changes-title"
+        description={`Comparaison ${referenceLabel}. Une variation n’est affichée que si une baseline publique est disponible.`}
+      />
+
+      {moves.length ? (
+        <div class="change-grid">
+          {moves.map((move) => {
+            const direction = (move.delta ?? 0) > 0 ? 'hausse' : 'baisse';
+            const signal = signals.find((item) => item.key === move.instrument);
+            const copy = meaning[move.instrument];
+            return (
+              <article class="change-card instrument-plate" data-direction={direction}>
+                <div class="change-head">
+                  <span>{direction}</span>
+                  <strong>{signed(move.delta)}</strong>
+                </div>
+                <h3>{move.label}</h3>
+                <p class="change-transition">
+                  {move.baseline?.level ?? 'niveau non publié'} <span aria-hidden="true">→</span> {move.current?.level ?? 'niveau non publié'}
+                </p>
+                <dl>
+                  <div>
+                    <dt>Pourquoi c’est important</dt>
+                    <dd>{copy?.importance ?? 'Ce signal doit être lu dans son propre périmètre et relié aux données qui le composent.'}</dd>
+                  </div>
+                  <div>
+                    <dt>Incertitude</dt>
+                    <dd>
+                      {move.limitations.length
+                        ? move.limitations.join(' ')
+                        : `Variation calculée entre ${formatDate(move.baseline?.seriesDate)} et ${formatDate(move.current?.seriesDate)}. Elle ne démontre pas une causalité.`}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>À vérifier ensuite</dt>
+                    <dd>{copy?.next ?? 'Consulter la prochaine publication de la source primaire et la méthodologie.'}</dd>
+                  </div>
+                </dl>
+                {signal && <RiskProvenance signal={signal} />}
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="now-empty instrument-plate">
+          <strong>Pas de mouvement comparable à publier sur cette fenêtre.</strong>
+          <p>
+            Ce silence est une information : l’historique public ne permet pas de fabriquer
+            une variation robuste. Les niveaux courants restent inspectables plus bas.
+          </p>
+        </div>
+      )}
+    </section>
+
+    <section class="now-section" aria-labelledby="signals-title">
+      <SectionSignature
+        index="02"
+        eyebrow="état courant"
+        title="Les cinq instruments, séparément"
+        id="signals-title"
+        description="Chaque score mesure un objet différent. Ouvrez « Vérifier ce chiffre » pour voir sa date, sa source, sa qualité et sa méthode."
+        href="/radar/"
+        linkLabel="Voir leurs transmissions"
+      />
+      <div class="signal-grid">
+        {signals.map((signal) => (
+          <article class="signal-card instrument-plate" id={`signal-${signal.key}`}>
+            <div class="signal-reading">
+              <div>
+                <span>{riskSignalMeta[signal.key].identity.shortName}</span>
+                <small>{formatDate(signal.sourceUpdatedAt ?? signal.sourcePublishedAt, true)}</small>
+              </div>
+              <strong>{signal.value ?? '—'}<small>/{signal.scale ?? 100}</small></strong>
+            </div>
+            <p>{riskSignalMeta[signal.key].identity.description}</p>
+            <RiskProvenance signal={signal} compact />
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="now-section" aria-labelledby="latest-title">
+      <SectionSignature
+        index="03"
+        eyebrow="publications"
+        title="Les dernières analyses"
+        id="latest-title"
+        description="Les articles nouveaux ou révisés servent aussi au repère local « depuis votre dernier passage »."
+      />
+      <div class="latest-grid">
+        {latest.map((post, index) => {
+          const refDate = post.data.updatedDate ?? post.data.pubDate;
+          return (
+            <a
+              href={`/posts/${post.id}/`}
+              class="latest-card"
+              data-now-article
+              data-published={refDate.toISOString()}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <time datetime={refDate.toISOString()}>{formatDate(refDate)}</time>
+              <strong>{post.data.title}</strong>
+              <p>{post.data.description}</p>
+              <small>Lire l’analyse <i aria-hidden="true">›</i></small>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="now-note">
+      <p class="mono-label">// limites de lecture</p>
+      <ul>
+        {diff.limitations.map((limit) => <li>{limit}</li>)}
+      </ul>
+      <div>
+        <a href="/risk-diff/">Audit détaillé de ce qui a changé</a>
+        <a href="/series/">Historique des signaux</a>
+        <a href="/methodologie/">Méthodologies</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<script>
+  // @ts-nocheck
+  (function () {
+    var key = 'l0g:last-visit-v1';
+    var summary = document.getElementById('visit-summary');
+    var detail = document.getElementById('visit-detail');
+    var button = document.getElementById('visit-mark');
+    var entries = Array.from(document.querySelectorAll('[data-now-article][data-published]'));
+    if (!summary || !detail || !button) return;
+
+    function validDate(value) {
+      var time = Date.parse(value || '');
+      return Number.isFinite(time) ? time : null;
+    }
+
+    function render(marker) {
+      var markerTime = validDate(marker);
+      if (markerTime === null) {
+        summary.textContent = 'Première visite détectée. Votre repère commence maintenant.';
+        detail.textContent = 'La date est conservée localement dans ce navigateur, sans compte ni suivi distant.';
+        return;
+      }
+      var unread = entries.filter(function (entry) {
+        var published = validDate(entry.getAttribute('data-published'));
+        return published !== null && published > markerTime;
+      });
+      summary.textContent = unread.length
+        ? unread.length + ' analyse' + (unread.length > 1 ? 's' : '') + ' nouvelle' + (unread.length > 1 ? 's' : '') + ' ou révisée' + (unread.length > 1 ? 's' : '') + ' depuis votre repère.'
+        : 'Aucune analyse nouvelle ou révisée depuis votre repère.';
+      detail.textContent = 'Repère local : ' + new Date(markerTime).toLocaleString('fr-FR') + '.';
+    }
+
+    var marker = null;
+    try { marker = localStorage.getItem(key); } catch (error) {}
+    if (marker === null) {
+      var firstVisit = new Date().toISOString();
+      try { localStorage.setItem(key, firstVisit); } catch (error) {}
+      render(null);
+    } else {
+      render(marker);
+    }
+
+    button.addEventListener('click', function () {
+      var now = new Date().toISOString();
+      try { localStorage.setItem(key, now); } catch (error) {}
+      render(now);
+      button.textContent = 'Repère mis à jour';
+      window.setTimeout(function () { button.textContent = 'Marquer comme lu'; }, 1800);
+    });
+  })();
+</script>
+
+<style>
+  .now-page { max-width: 1120px; margin: 0 auto; }
+  .now-hero {
+    --plate-accent: var(--color-signal);
+    padding: clamp(1.3rem, 4vw, 2.5rem);
+    background:
+      radial-gradient(80% 120% at 0 0, color-mix(in srgb, var(--color-signal) 11%, transparent), transparent 68%),
+      radial-gradient(60% 100% at 100% 100%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 72%),
+      var(--surface-elevated);
+  }
+  .now-hero-head { display: flex; justify-content: space-between; gap: 1rem; }
+  .now-hero-head :global(.l0g-glyph) { --glyph-color: var(--color-signal); }
+  .now-hero .mono-label,
+  .visit-panel .mono-label { color: var(--color-signal); }
+  .now-hero h1 {
+    max-width: 12ch;
+    margin-top: 0.7rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 7vw, 5.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+  }
+  .now-lede {
+    max-width: 48rem;
+    margin-top: 1.2rem;
+    border-left: 2px solid var(--color-signal);
+    padding-left: 1rem;
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: clamp(1rem, 2vw, 1.14rem);
+    line-height: 1.7;
+  }
+  .now-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    margin-top: 1.7rem;
+    border: 1px solid var(--color-line);
+    border-radius: 11px 3px 11px 11px;
+    background: var(--color-line);
+  }
+  .now-stats div { display: flex; flex-direction: column-reverse; gap: 0.15rem; padding: 0.8rem; background: var(--color-surface); }
+  .now-stats dt { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .now-stats dd { color: var(--color-signal); font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; }
+  .visit-panel {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 32%, var(--color-line));
+    border-radius: 12px 3px 12px 12px;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--color-amber) 4%, var(--color-surface));
+  }
+  .visit-orbit {
+    position: relative;
+    display: grid;
+    width: 2.7rem;
+    height: 2.7rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 46%, var(--color-line));
+    border-radius: 50%;
+  }
+  .visit-orbit::before { content: ''; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--color-amber); box-shadow: 0 0 16px var(--color-amber); }
+  .visit-orbit i { position: absolute; inset: 0.3rem; border: 1px dashed color-mix(in srgb, var(--color-signal) 42%, transparent); border-radius: 50%; }
+  .visit-panel h2 { margin-top: 0.25rem; color: var(--color-bright); font-size: 1rem; }
+  .visit-panel p:not(.mono-label) { margin-top: 0.25rem; color: var(--color-paper); font-size: 0.84rem; }
+  .visit-panel small { display: block; margin-top: 0.25rem; color: var(--color-muted); font-size: 0.67rem; }
+  .visit-panel button {
+    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, var(--color-line));
+    border-radius: 999px;
+    padding: 0.58rem 0.8rem;
+    color: var(--color-amber);
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .visit-panel button:hover { color: var(--color-ink); background: var(--color-amber); }
+  .now-section { padding-top: clamp(3rem, 7vw, 5rem); }
+  .change-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .change-card { --plate-accent: var(--color-accent); padding: 1.15rem; }
+  .change-card[data-direction='baisse'] { --plate-accent: var(--color-signal); }
+  .change-head { display: flex; justify-content: space-between; gap: 1rem; color: var(--plate-accent); font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .change-card h3 { margin-top: 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2; }
+  .change-transition { margin-top: 0.4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.66rem; }
+  .change-transition span { color: var(--plate-accent); }
+  .change-card dl { display: grid; gap: 0.8rem; margin-top: 1rem; }
+  .change-card dt { color: var(--plate-accent); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  .change-card dd { margin-top: 0.2rem; color: var(--color-paper); font-size: 0.75rem; line-height: 1.55; }
+  .now-empty { --plate-accent: var(--color-muted); padding: 1.2rem; }
+  .now-empty strong { color: var(--color-bright); }
+  .now-empty p { max-width: 44rem; margin-top: 0.5rem; color: var(--color-muted); line-height: 1.6; }
+  .signal-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
+  .signal-card { --plate-accent: var(--color-signal); min-width: 0; scroll-margin-top: 1rem; padding: 0.9rem; }
+  .signal-reading { display: flex; justify-content: space-between; gap: 0.65rem; align-items: start; }
+  .signal-reading > div { min-width: 0; }
+  .signal-reading span,
+  .signal-reading small { display: block; }
+  .signal-reading span { color: var(--color-paper); font-size: 0.74rem; font-weight: 650; line-height: 1.35; }
+  .signal-reading small { margin-top: 0.25rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.54rem; line-height: 1.35; }
+  .signal-reading > strong { color: var(--color-signal); font-family: var(--font-display); font-size: 1.45rem; }
+  .signal-reading > strong small { display: inline; color: var(--color-muted); font-size: 0.56rem; }
+  .signal-card > p { margin-top: 0.75rem; color: var(--color-muted); font-size: 0.67rem; line-height: 1.5; }
+  .latest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; overflow: hidden; border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; background: var(--color-line); }
+  .latest-card { display: flex; min-width: 0; flex-direction: column; padding: 1rem; background: var(--color-surface); }
+  .latest-card > span { color: var(--color-line-strong); font-family: var(--font-display); font-size: 1.6rem; }
+  .latest-card time { margin-top: 0.8rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .latest-card strong { margin-top: 0.55rem; color: var(--color-bright); font-size: 0.9rem; line-height: 1.4; }
+  .latest-card p { display: -webkit-box; overflow: hidden; margin-top: 0.5rem; color: var(--color-muted); font-size: 0.71rem; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+  .latest-card small { margin-top: auto; padding-top: 0.9rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; }
+  .latest-card:hover { background: color-mix(in srgb, var(--color-signal) 6%, var(--color-surface)); }
+  .now-note { margin-top: clamp(3rem, 7vw, 5rem); border-top: 1px dashed var(--color-line); padding-top: 1.2rem; }
+  .now-note > .mono-label { color: var(--color-accent); }
+  .now-note ul { margin-top: 0.8rem; padding-left: 1rem; color: var(--color-muted); font-size: 0.75rem; line-height: 1.6; }
+  .now-note > div { display: flex; flex-wrap: wrap; gap: 0.7rem 1.2rem; margin-top: 1rem; }
+  .now-note a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; }
+  @media (max-width: 900px) {
+    .now-stats { grid-template-columns: 1fr 1fr; }
+    .signal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .latest-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .now-hero-head :global(.l0g-glyph) { transform: scale(0.82); transform-origin: top right; }
+    .now-stats { grid-template-columns: 1fr; }
+    .visit-panel { grid-template-columns: auto minmax(0, 1fr); }
+    .visit-panel button { grid-column: 1 / -1; width: 100%; }
+    .change-grid,
+    .signal-grid,
+    .latest-grid { grid-template-columns: 1fr; }
+  }
+</style>

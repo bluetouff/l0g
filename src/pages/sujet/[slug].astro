@@ -1,11 +1,47 @@
 ---
 import { getCollection } from 'astro:content';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
+import RiskProvenance from '../../components/RiskProvenance.astro';
 import TopicSidebar from '../../components/TopicSidebar.astro';
 import { topics, postMatchesTopic, ACCENT_HEX, topicLabelForTags } from '../../config/topics.ts';
+import { monitoringForTopic } from '../../config/topic-monitoring.ts';
+import { riskSignalMeta } from '../../config/risk-signals.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 import { serializeInlineScriptData } from '../../lib/security.ts';
+
+type RiskSignal = {
+  key: string;
+  value?: number | null;
+  scale?: number | null;
+  level?: string | null;
+  sourceStatus?: string | null;
+  qualityStatus?: string | null;
+  timelinessStatus?: string | null;
+  sourceUpdatedAt?: string | null;
+  sourcePublishedAt?: string | null;
+  retrievedAt?: string | null;
+  lastSuccessAt?: string | null;
+  warnings?: string[];
+};
+
+function readSignals(): RiskSignal[] {
+  try {
+    const snapshot = JSON.parse(readFileSync(join(process.cwd(), 'public/risk.json'), 'utf-8'));
+    return snapshot.indices ?? [];
+  } catch {
+    return [];
+  }
+}
+
+function fr(value?: Date | string | null) {
+  if (!value) return 'date non publiée';
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return 'date non publiée';
+  return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+}
 
 export async function getStaticPaths() {
   const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
@@ -19,6 +55,13 @@ export async function getStaticPaths() {
 
 const { topic, matched } = Astro.props;
 const topicAccent = ACCENT_HEX[topic.accent] ?? ACCENT_HEX.teal;
+const monitoring = monitoringForTopic(topic.slug);
+const latest = matched[0] ?? null;
+const recent = matched.slice(0, 5);
+const signals = readSignals();
+const relatedSignals = monitoring.relatedSignals
+  .map((key) => signals.find((signal) => signal.key === key))
+  .filter(Boolean) as RiskSignal[];
 const canonical = new URL(`/sujet/${topic.slug}/`, Astro.site).toString();
 const topicJsonLd = {
   '@context': 'https://schema.org',
@@ -76,7 +119,113 @@ const topicJsonLd = {
     </p>
   </section>
 
-  <section class="pt-8" aria-labelledby="parcours">
+  <section class="dossier-state pt-8" aria-labelledby="etat-documente">
+    <div class="state-head">
+      <div>
+        <p class="mono-label" style={`color:${topicAccent}`}>// dossier vivant</p>
+        <h2 id="etat-documente">Dernier état documenté</h2>
+      </div>
+      <span>arrêté au {latest ? fr(latest.data.updatedDate ?? latest.data.pubDate) : 'premier article'}</span>
+    </div>
+    {latest ? (
+      <a href={`/posts/${latest.id}/`} class="state-reading instrument-plate" style={`--plate-accent:${topicAccent}`}>
+        <span>Point de départ actuel</span>
+        <strong>{latest.data.title}</strong>
+        <p>{latest.data.description}</p>
+        <small>Lire l’analyse qui fonde cet état <i aria-hidden="true">›</i></small>
+      </a>
+    ) : (
+      <div class="state-reading instrument-plate" style={`--plate-accent:${topicAccent}`}>
+        <strong>Aucun état courant n’est publié.</strong>
+        <p>Le dossier conserve ses références, mais ne fabrique pas de synthèse sans analyse datée.</p>
+      </div>
+    )}
+    <p class="state-caveat">
+      Cet état n’est pas une mise à jour temps réel. Il résume la dernière analyse publiée et doit être relu avec sa date, ses sources et ses limites.
+    </p>
+  </section>
+
+  <section class="monitoring-grid pt-10" aria-label="Plan de surveillance du dossier">
+    <article class="monitor-card watch-card">
+      <p class="mono-label">// à surveiller</p>
+      <h2>Les questions qui restent ouvertes</h2>
+      <ol>
+        {monitoring.watch.map((item, index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
+        ))}
+      </ol>
+    </article>
+    <article class="monitor-card counter-card">
+      <p class="mono-label">// ce qui peut changer la lecture</p>
+      <h2>Les signaux de réfutation</h2>
+      <ul>
+        {monitoring.counterSignals.map((item) => <li>{item}</li>)}
+      </ul>
+      <p class="counter-note">Une thèse utile doit indiquer à quelles observations elle cesserait de résister.</p>
+    </article>
+  </section>
+
+  <section class="pt-10" aria-labelledby="prochains-points">
+    <p class="mono-label" style={`color:${topicAccent}`}>// calendrier de preuve</p>
+    <h2 id="prochains-points" class="section-title">Prochains points de contrôle</h2>
+    <p class="section-copy">
+      Pas de fausse précision sur une date future : le dossier suit la cadence officielle de chaque source.
+    </p>
+    <div class="checkpoint-grid">
+      {monitoring.checkpoints.map((checkpoint) => (
+        <a href={checkpoint.href} target="_blank" rel="noopener" class="checkpoint-card">
+          <span>{checkpoint.cadence}</span>
+          <strong>{checkpoint.label}</strong>
+          <p>{checkpoint.detail}</p>
+          <small>{checkpoint.source} ↗</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {relatedSignals.length > 0 && (
+    <section class="pt-10" aria-labelledby="instruments-relies">
+      <p class="mono-label" style={`color:${topicAccent}`}>// instruments reliés</p>
+      <h2 id="instruments-relies" class="section-title">Les signaux à lire, sans les confondre</h2>
+      <p class="section-copy">
+        Ces instruments éclairent le sujet, mais aucun ne résume le dossier. Chaque chiffre est inspectable.
+      </p>
+      <div class="related-signal-grid">
+        {relatedSignals.map((signal) => (
+          <article class="related-signal instrument-plate" style={`--plate-accent:${topicAccent}`}>
+            <div>
+              <span>{riskSignalMeta[signal.key].identity.shortName}</span>
+              <strong>{signal.value ?? '—'}<small>/{signal.scale ?? 100}</small></strong>
+            </div>
+            <p>{riskSignalMeta[signal.key].identity.description}</p>
+            <RiskProvenance signal={signal} compact />
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {recent.length > 0 && (
+    <section class="pt-10" aria-labelledby="timeline-recente">
+      <p class="mono-label" style={`color:${topicAccent}`}>// trajectoire récente</p>
+      <h2 id="timeline-recente" class="section-title">Les cinq derniers jalons</h2>
+      <div class="topic-timeline">
+        {recent.map((post, index) => {
+          const date = post.data.updatedDate ?? post.data.pubDate;
+          return (
+            <a href={`/posts/${post.id}/`}>
+              <span class="timeline-rail" aria-hidden="true"><i></i></span>
+              <time datetime={date.toISOString()}>{fr(date)}</time>
+              <strong>{post.data.title}</strong>
+              <small>{index === 0 ? 'dernier état documenté' : 'jalon antérieur'}</small>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <section class="pt-10" aria-labelledby="parcours">
     <p class="mono-label" style="color: var(--color-signal)">// hiérarchie éditoriale</p>
     <h2 id="parcours" class="mt-2 font-display text-2xl tracking-wider text-bright">Commencer ici</h2>
     <p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
@@ -102,7 +251,7 @@ const topicJsonLd = {
   <section class="pb-4 pt-10" aria-labelledby="analyses-datees">
     <p class="mono-label" style="color: var(--color-signal)">// chronologie</p>
     <h2 id="analyses-datees" class="mt-2 font-display text-2xl tracking-wider text-bright">
-      Analyses datées
+      Toutes les analyses datées
     </h2>
     {
       matched.map((post, i) => (
@@ -128,6 +277,53 @@ const topicJsonLd = {
   </nav>
 
   <style>
+    .dossier-state { border-top: 1px solid var(--color-line); margin-top: 2rem; }
+    .state-head { display: flex; justify-content: space-between; gap: 1rem; align-items: end; }
+    .state-head h2,
+    .section-title,
+    .monitor-card h2 { margin-top: 0.4rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; }
+    .state-head > span { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .state-reading { display: block; margin-top: 1rem; padding: 1.1rem; }
+    .state-reading > span { color: var(--topic-accent, var(--color-signal)); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .state-reading > strong { display: block; margin-top: 0.6rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.25rem; line-height: 1.3; }
+    .state-reading > p { max-width: 44rem; margin-top: 0.55rem; color: var(--color-paper); font-size: 0.8rem; line-height: 1.6; }
+    .state-reading > small { display: block; margin-top: 0.8rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .state-caveat { margin-top: 0.65rem; color: var(--color-muted); font-size: 0.68rem; line-height: 1.55; }
+    .monitoring-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 1rem; }
+    .monitor-card { border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; padding: 1rem; background: var(--surface-elevated); }
+    .monitor-card .mono-label { color: var(--color-signal); }
+    .counter-card .mono-label { color: var(--color-accent); }
+    .watch-card ol { display: grid; gap: 0.65rem; margin-top: 1rem; }
+    .watch-card li { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 0.55rem; align-items: start; }
+    .watch-card li span { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.58rem; padding-top: 0.12rem; }
+    .watch-card li p { color: var(--color-paper); font-size: 0.75rem; line-height: 1.55; }
+    .counter-card ul { margin-top: 1rem; padding-left: 1rem; color: var(--color-paper); font-size: 0.75rem; line-height: 1.6; }
+    .counter-card li::marker { color: var(--color-accent); }
+    .counter-note { margin-top: 1rem; border-left: 1px solid var(--color-accent); padding-left: 0.65rem; color: var(--color-muted); font-size: 0.66rem; line-height: 1.5; }
+    .section-copy { max-width: 42rem; margin-top: 0.55rem; color: var(--color-muted); font-size: 0.78rem; line-height: 1.6; }
+    .checkpoint-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .checkpoint-card { display: flex; min-width: 0; flex-direction: column; border: 1px solid var(--color-line); border-radius: 10px 3px 10px 10px; padding: 0.85rem; background: var(--color-surface); }
+    .checkpoint-card > span { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .checkpoint-card > strong { margin-top: 0.55rem; color: var(--color-bright); font-size: 0.78rem; line-height: 1.4; }
+    .checkpoint-card > p { margin-top: 0.45rem; color: var(--color-muted); font-size: 0.68rem; line-height: 1.5; }
+    .checkpoint-card > small { margin-top: auto; padding-top: 0.75rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.58rem; }
+    .checkpoint-card:hover { border-color: color-mix(in srgb, var(--color-signal) 50%, var(--color-line)); }
+    .related-signal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .related-signal { padding: 0.9rem; }
+    .related-signal > div { display: flex; justify-content: space-between; gap: 0.75rem; align-items: baseline; }
+    .related-signal > div span { color: var(--color-paper); font-size: 0.73rem; font-weight: 650; }
+    .related-signal > div strong { color: var(--color-signal); font-family: var(--font-display); font-size: 1.35rem; }
+    .related-signal > div small { color: var(--color-muted); font-size: 0.55rem; }
+    .related-signal > p { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.67rem; line-height: 1.5; }
+    .topic-timeline { position: relative; display: grid; gap: 0; margin-top: 1rem; }
+    .topic-timeline a { display: grid; grid-template-columns: 1.2rem 7rem minmax(0, 1fr) auto; gap: 0.65rem; align-items: center; min-height: 3.3rem; border-bottom: 1px solid var(--color-line); padding: 0.5rem 0; }
+    .timeline-rail { position: relative; align-self: stretch; width: 1px; margin-left: 0.45rem; background: color-mix(in srgb, var(--color-signal) 35%, var(--color-line)); }
+    .timeline-rail i { position: absolute; top: 50%; left: 50%; width: 0.48rem; height: 0.48rem; border: 1px solid var(--color-signal); border-radius: 50%; background: var(--color-ink); transform: translate(-50%, -50%); }
+    .topic-timeline time { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; }
+    .topic-timeline strong { color: var(--color-paper); font-size: 0.76rem; line-height: 1.4; }
+    .topic-timeline small { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.53rem; text-transform: uppercase; }
+    .topic-timeline a:first-child strong,
+    .topic-timeline a:hover strong { color: var(--color-signal); }
     .pillar-card {
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
@@ -135,6 +331,17 @@ const topicJsonLd = {
       border-color: color-mix(in srgb, var(--topic-accent) 60%, transparent);
       background: color-mix(in srgb, var(--topic-accent) 6%, transparent);
       transform: translateY(-1px);
+    }
+    @media (max-width: 720px) {
+      .monitoring-grid,
+      .checkpoint-grid,
+      .related-signal-grid { grid-template-columns: 1fr; }
+      .topic-timeline a { grid-template-columns: 1.2rem minmax(0, 1fr); gap: 0.35rem 0.6rem; padding: 0.75rem 0; }
+      .timeline-rail { grid-row: 1 / 4; }
+      .topic-timeline time,
+      .topic-timeline strong,
+      .topic-timeline small { grid-column: 2; }
+      .state-head { display: grid; }
     }
   </style>
 </BaseLayout>

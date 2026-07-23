@@ -1,0 +1,296 @@
+---
+import { riskSignalMeta } from '../config/risk-signals.ts';
+
+interface RiskSignal {
+  key: string;
+  value?: number | null;
+  scale?: number | null;
+  level?: string | null;
+  sourceStatus?: string | null;
+  qualityStatus?: string | null;
+  timelinessStatus?: string | null;
+  sourceUpdatedAt?: string | null;
+  sourcePublishedAt?: string | null;
+  retrievedAt?: string | null;
+  lastSuccessAt?: string | null;
+  warnings?: string[];
+}
+
+interface Props {
+  signal: RiskSignal;
+  compact?: boolean;
+}
+
+const { signal, compact = false } = Astro.props;
+const meta = riskSignalMeta[signal.key];
+const sourceDate = signal.sourceUpdatedAt ?? signal.sourcePublishedAt ?? null;
+
+function formatDate(value?: string | null) {
+  if (!value) return 'non publiée';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'date invalide';
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+const quality =
+  signal.sourceStatus === 'fallback'
+    ? 'repli best effort'
+    : signal.timelinessStatus === 'stale'
+      ? 'source ancienne'
+      : signal.qualityStatus === 'nominal'
+        ? 'nominale'
+        : signal.qualityStatus === 'official-delayed'
+          ? 'officielle différée'
+          : signal.qualityStatus === 'degraded'
+            ? 'dégradée'
+            : 'partielle ou non qualifiée';
+
+const citation = [
+  meta?.identity?.citationName ?? meta?.label ?? signal.key,
+  `${signal.value ?? 'valeur indisponible'}/${signal.scale ?? 100}`,
+  signal.level ? `niveau ${signal.level}` : null,
+  `donnée source ${formatDate(sourceDate)}`,
+  meta?.source ? `source ${meta.source}` : null,
+  'via l0g.fr',
+].filter(Boolean).join(' · ');
+---
+
+<details class:list={['risk-provenance', compact && 'is-compact']}>
+  <summary>
+    <span class="proof-mark" aria-hidden="true">i</span>
+    <span>Vérifier ce chiffre</span>
+    <b aria-hidden="true">+</b>
+  </summary>
+  <div class="proof-panel">
+    <div class="proof-reading">
+      <span>{meta?.identity?.shortName ?? meta?.label ?? signal.key}</span>
+      <strong>{signal.value ?? '—'}<small> / {signal.scale ?? 100}</small></strong>
+      <em>{signal.level ?? 'niveau non publié'}</em>
+    </div>
+
+    <dl>
+      <div>
+        <dt>Donnée source</dt>
+        <dd>{formatDate(sourceDate)}</dd>
+      </div>
+      <div>
+        <dt>Récupérée par l0g</dt>
+        <dd>{formatDate(signal.retrievedAt ?? signal.lastSuccessAt)}</dd>
+      </div>
+      <div>
+        <dt>Qualité</dt>
+        <dd>{quality}</dd>
+      </div>
+      <div>
+        <dt>Unité</dt>
+        <dd>score normalisé propre à cet instrument</dd>
+      </div>
+    </dl>
+
+    {meta?.calculation?.summary && <p class="proof-method">{meta.calculation.summary}</p>}
+    {meta?.calculation?.formula?.length ? (
+      <ol class="proof-formula">
+        {meta.calculation.formula.map((step) => <li>{step}</li>)}
+      </ol>
+    ) : null}
+    {!meta?.calculation?.summary && (
+      <p class="proof-method">
+        La formule détaillée, les seuils et les limites sont publiés dans la méthodologie de l’instrument.
+      </p>
+    )}
+
+    {signal.warnings?.length ? (
+      <ul class="proof-warnings">
+        {signal.warnings.map((warning) => <li>{warning}</li>)}
+      </ul>
+    ) : null}
+
+    <div class="proof-actions">
+      {meta?.source && <a href={meta.source} target="_blank" rel="noopener">Source ↗</a>}
+      {meta?.methodology && <a href={meta.methodology}>Méthode</a>}
+      <button type="button" data-copy-provenance data-citation={citation}>
+        Copier la citation
+      </button>
+    </div>
+    <p class="proof-caveat">
+      Ce score n’est ni une probabilité, ni une recommandation, ni une composante d’un indice global.
+    </p>
+  </div>
+</details>
+
+<script>
+  document.querySelectorAll('[data-copy-provenance]').forEach((button) => {
+    if (button instanceof HTMLButtonElement && button.dataset.bound !== 'true') {
+      button.dataset.bound = 'true';
+      button.addEventListener('click', async () => {
+        const citation = button.dataset.citation ?? '';
+        try {
+          await navigator.clipboard.writeText(citation);
+          button.textContent = 'Citation copiée';
+        } catch {
+          button.textContent = 'Copie indisponible';
+        }
+        window.setTimeout(() => {
+          button.textContent = 'Copier la citation';
+        }, 1800);
+      });
+    }
+  });
+</script>
+
+<style>
+  .risk-provenance {
+    position: relative;
+    border-top: 1px solid color-mix(in srgb, var(--color-line) 78%, transparent);
+    margin-top: 0.8rem;
+    padding-top: 0.65rem;
+  }
+  .risk-provenance summary {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.61rem;
+    font-weight: 650;
+    letter-spacing: 0.065em;
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+  }
+  .risk-provenance summary::-webkit-details-marker { display: none; }
+  .risk-provenance summary:hover,
+  .risk-provenance[open] summary { color: var(--color-signal); }
+  .proof-mark {
+    display: inline-grid;
+    width: 1rem;
+    height: 1rem;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 0.58rem;
+    line-height: 1;
+  }
+  .risk-provenance summary b {
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    font-weight: 400;
+    transition: transform 0.16s;
+  }
+  .risk-provenance[open] summary b { transform: rotate(45deg); }
+  .proof-panel {
+    position: relative;
+    z-index: 4;
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 28%, var(--color-line));
+    border-radius: 10px 3px 10px 10px;
+    padding: 0.85rem;
+    background: color-mix(in srgb, var(--color-surface-2) 96%, var(--color-ink));
+    box-shadow: 0 16px 40px color-mix(in srgb, #000 22%, transparent);
+  }
+  .proof-reading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.18rem 0.75rem;
+    align-items: baseline;
+  }
+  .proof-reading > span {
+    color: var(--color-paper);
+    font-size: 0.76rem;
+    font-weight: 650;
+  }
+  .proof-reading strong {
+    grid-row: 1 / 3;
+    grid-column: 2;
+    color: var(--color-signal);
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+  }
+  .proof-reading strong small { color: var(--color-muted); font-size: 0.58rem; }
+  .proof-reading em {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    font-style: normal;
+    text-transform: uppercase;
+  }
+  .proof-panel dl { display: grid; gap: 0.45rem; }
+  .proof-panel dl div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 0.65rem;
+    border-bottom: 1px dashed var(--color-line);
+    padding-bottom: 0.4rem;
+  }
+  .proof-panel dt {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .proof-panel dd {
+    color: var(--color-paper);
+    font-size: 0.66rem;
+    line-height: 1.45;
+  }
+  .proof-method,
+  .proof-caveat {
+    color: var(--color-muted);
+    font-size: 0.65rem;
+    line-height: 1.52;
+  }
+  .proof-warnings {
+    padding-left: 1rem;
+    color: var(--color-amber);
+    font-size: 0.65rem;
+    line-height: 1.5;
+  }
+  .proof-formula {
+    display: grid;
+    gap: 0.35rem;
+    padding-left: 1.15rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    line-height: 1.45;
+  }
+  .proof-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .proof-actions a,
+  .proof-actions button {
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 0.35rem 0.58rem;
+    color: var(--color-paper);
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .proof-actions a:hover,
+  .proof-actions button:hover {
+    border-color: var(--color-signal);
+    color: var(--color-signal);
+  }
+  .is-compact[open] { z-index: 20; }
+  .is-compact .proof-panel {
+    width: min(20rem, calc(100vw - 3rem));
+    padding: 0.72rem;
+  }
+  @media (max-width: 480px) {
+    .is-compact .proof-panel { width: 100%; }
+    .proof-panel dl div { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>

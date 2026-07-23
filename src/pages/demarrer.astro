@@ -24,9 +24,9 @@ const intents = [
   {
     eyebrow: 'surveiller',
     title: 'Je veux voir un risque',
-    text: 'Les tableaux de bord servent d’instruments : ils signalent une tension, une détente ou une anomalie à creuser.',
-    href: '/dashboards/',
-    cta: 'voir les tableaux de bord',
+    text: 'Le Radar montre comment le risque peut circuler, puis les tableaux de bord mesurent chaque phénomène séparément.',
+    href: '/radar/',
+    cta: 'ouvrir le Radar',
   },
   {
     eyebrow: 'vérifier',
@@ -38,9 +38,9 @@ const intents = [
   {
     eyebrow: 'changement',
     title: 'Je veux savoir ce qui bouge',
-    text: '« Ce qui a changé » résume les évolutions des signaux, des sources et des affirmations sur 1, 7 ou 30 jours.',
-    href: '/risk-diff/',
-    cta: 'voir ce qui a changé',
+    text: '« Maintenant » résume le changement, son importance, son incertitude et la prochaine donnée à vérifier.',
+    href: '/maintenant/',
+    cta: 'voir maintenant',
   },
   {
     eyebrow: 'machine',
@@ -150,6 +150,13 @@ const featureGroups = [
     hint: 'Les entrées éditoriales.',
     features: [
       {
+        title: 'Maintenant',
+        href: '/maintenant/',
+        use: 'Le point d’entrée quotidien.',
+        look: 'Changement, importance, incertitude et prochaine vérification.',
+        avoid: 'Le lire comme une prédiction ou un résumé exhaustif.',
+      },
+      {
         title: 'Journal',
         href: '/',
         use: 'Le flux des analyses publiées.',
@@ -176,6 +183,13 @@ const featureGroups = [
     name: 'surveiller',
     hint: 'Les instruments de monitoring.',
     features: [
+      {
+        title: 'Radar',
+        href: '/radar/',
+        use: 'Cartographier les transmissions entre les risques.',
+        look: 'Mécanismes, confirmations, réfutations et sources.',
+        avoid: 'Prendre une liaison pour une causalité estimée.',
+      },
       {
         title: 'Tableaux de bord',
         href: '/dashboards/',

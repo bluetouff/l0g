@@ -1,0 +1,403 @@
+---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import L0gGlyph from '../components/L0gGlyph.astro';
+import RiskProvenance from '../components/RiskProvenance.astro';
+import SectionSignature from '../components/SectionSignature.astro';
+import { riskSignalMeta } from '../config/risk-signals.ts';
+
+type RiskSignal = {
+  key: string;
+  value?: number | null;
+  scale?: number | null;
+  level?: string | null;
+  tone?: string | null;
+  sourceStatus?: string | null;
+  qualityStatus?: string | null;
+  timelinessStatus?: string | null;
+  sourceUpdatedAt?: string | null;
+  sourcePublishedAt?: string | null;
+  retrievedAt?: string | null;
+  lastSuccessAt?: string | null;
+  warnings?: string[];
+};
+
+type RiskSnapshot = {
+  updated?: string | null;
+  indices?: RiskSignal[];
+};
+
+function readRiskSnapshot(): RiskSnapshot {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), 'public/risk.json'), 'utf-8')) as RiskSnapshot;
+  } catch {
+    return {};
+  }
+}
+
+function formatDate(value?: string | null) {
+  if (!value) return 'date non publiée';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'date non publiée';
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Paris',
+  });
+}
+
+const snapshot = readRiskSnapshot();
+const byKey = new Map((snapshot.indices ?? []).map((signal) => [signal.key, signal]));
+
+const nodes = [
+  {
+    id: 'geopolitique',
+    index: '01',
+    label: 'Géopolitique',
+    copy: 'Routes, sanctions et capacités physiques peuvent modifier l’offre avant d’apparaître dans les agrégats macro.',
+    signals: [] as string[],
+  },
+  {
+    id: 'energie',
+    index: '02',
+    label: 'Énergie',
+    copy: 'Prix, stocks, raffinage, fret et courbes distinguent rupture physique et prime de risque.',
+    signals: ['energie'],
+  },
+  {
+    id: 'inflation',
+    index: '03',
+    label: 'Inflation & activité',
+    copy: 'Les coûts importés n’ont pas tous la même persistance ni le même passage aux prix finaux.',
+    signals: ['us', 'eu'],
+  },
+  {
+    id: 'banques-centrales',
+    index: '04',
+    label: 'Banques centrales',
+    copy: 'La réaction dépend du mandat, de la persistance du choc, du crédit et de l’état du bilan.',
+    signals: [] as string[],
+  },
+  {
+    id: 'yen',
+    index: '05',
+    label: 'Dollar, yen & carry',
+    copy: 'Taux, change et volatilité conditionnent le coût du levier et le risque de débouclage.',
+    signals: ['yen'],
+  },
+  {
+    id: 'liquidite',
+    index: '06',
+    label: 'Liquidité & repo',
+    copy: 'Réserves, collatéral et capacité de bilan déterminent comment un choc se finance ou s’amplifie.',
+    signals: [] as string[],
+  },
+  {
+    id: 'dette',
+    index: '07',
+    label: 'Dette & crédit privé',
+    copy: 'Le refinancement transmet les taux vers budgets, covenants, défauts et valorisations hors marché.',
+    signals: ['debt'],
+  },
+];
+
+const channels = [
+  {
+    title: 'Géopolitique vers énergie',
+    mechanism: 'Un événement ne devient un choc énergétique que s’il affecte volumes, routes, coûts de transport ou capacités.',
+    confirms: 'Flux physiques, fret, assurances, stocks et courbe du brut évoluent dans le même sens.',
+    contradicts: 'Les volumes restent stables et seule la prime de risque de court terme augmente.',
+    sources: [
+      ['EIA', 'https://www.eia.gov/petroleum/supply/weekly/'],
+      ['OPEC', 'https://www.opec.org/opec_web/en/publications/338.htm'],
+    ],
+  },
+  {
+    title: 'Énergie vers inflation',
+    mechanism: 'Le choc passe par les coûts directs, le transport, les intrants et parfois les anticipations.',
+    confirms: 'Prix producteurs, composantes énergie et mesures sous-jacentes montrent une diffusion persistante.',
+    contradicts: 'Le mouvement reste cantonné à l’énergie et se renverse avant la diffusion.',
+    sources: [
+      ['BLS', 'https://www.bls.gov/schedule/'],
+      ['Eurostat', 'https://ec.europa.eu/eurostat/web/main/data/database'],
+    ],
+  },
+  {
+    title: 'Inflation vers banques centrales',
+    mechanism: 'La réponse monétaire dépend de la persistance, de l’emploi, du crédit et des anticipations.',
+    confirms: 'Décisions, projections et communication officielle révisent la trajectoire attendue.',
+    contradicts: 'La banque centrale traite le choc comme temporaire ou la faiblesse de l’activité domine.',
+    sources: [
+      ['Federal Reserve', 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'],
+      ['BCE', 'https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html'],
+    ],
+  },
+  {
+    title: 'Taux et change vers carry',
+    mechanism: 'Le différentiel de taux attire le financement, mais change et volatilité peuvent rendre le levier instable.',
+    confirms: 'Appréciation du yen, hausse de volatilité et débouclage d’actifs risqués apparaissent ensemble.',
+    contradicts: 'Le change bouge sans contraction du levier ni contagion visible.',
+    sources: [
+      ['BIS', 'https://data.bis.org/'],
+      ['Yen Carry Monitor', 'https://yct.l0g.fr'],
+    ],
+  },
+  {
+    title: 'Financement vers liquidité',
+    mechanism: 'Réserves, émissions du Trésor, collatéral et bilan des dealers déterminent le coût du financement garanti.',
+    confirms: 'SOFR, volumes repo et usage des facilités signalent une tension cohérente.',
+    contradicts: 'Le repo absorbe les dates sensibles sans écart durable aux taux administrés.',
+    sources: [
+      ['New York Fed', 'https://www.newyorkfed.org/markets/reference-rates/sofr'],
+      ['Fed H.4.1', 'https://www.federalreserve.gov/releases/h41/'],
+    ],
+  },
+  {
+    title: 'Liquidité vers dette et crédit',
+    mechanism: 'Un financement plus cher ou moins disponible se transmet aux refinancements, aux spreads et aux conditions de crédit.',
+    confirms: 'Spreads, défauts, non-accruals et concessions de refinancement se dégradent.',
+    contradicts: 'Les émissions restent ouvertes et les défauts ne suivent pas la tension de marché.',
+    sources: [
+      ['FRED', 'https://fred.stlouisfed.org/'],
+      ['SEC EDGAR', 'https://www.sec.gov/edgar/search/'],
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Radar des transmissions de risque"
+  description="Le Radar l0g relie énergie, inflation, banques centrales, devises, liquidité, dette et crédit sans les réduire à un score global."
+  sidebar={false}
+>
+  <article class="radar-page" data-pagefind-body>
+    <header class="radar-hero instrument-plate rise">
+      <div class="radar-hero-head">
+        <div>
+          <p class="mono-label">// radar l0g · transmissions</p>
+          <h1>Voir comment le risque circule.</h1>
+        </div>
+        <L0gGlyph name="observe" size="lg" />
+      </div>
+      <p>
+        Les cinq instruments l0g restent séparés. Le Radar montre les canaux à tester
+        entre eux, avec ce qui confirmerait ou contredirait chaque transmission.
+      </p>
+      <div class="radar-rule">
+        <strong>Pas de score global.</strong>
+        <span>Une ligne représente une hypothèse de transmission, pas une causalité statistiquement estimée.</span>
+      </div>
+    </header>
+
+    <section class="radar-section" aria-labelledby="map-title">
+      <SectionSignature
+        index="01"
+        eyebrow="carte de lecture"
+        title="Du choc au refinancement"
+        id="map-title"
+        description={`Snapshot assemblé le ${formatDate(snapshot.updated)}. Ouvrez chaque chiffre pour vérifier sa provenance.`}
+      />
+
+      <div class="transmission-map" role="list" aria-label="Canaux de transmission suivis par l0g">
+        <div class="map-route" aria-hidden="true">
+          <svg viewBox="0 0 1000 520" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="radar-path" x1="0" x2="1">
+                <stop offset="0" stop-color="var(--color-signal)" stop-opacity=".25" />
+                <stop offset=".5" stop-color="var(--color-accent)" stop-opacity=".75" />
+                <stop offset="1" stop-color="var(--color-amber)" stop-opacity=".35" />
+              </linearGradient>
+            </defs>
+            <path d="M80 92 C210 92 205 92 335 92 S575 92 705 92" />
+            <path d="M705 92 C830 92 860 182 760 258 S555 305 505 305" />
+            <path d="M505 305 C380 305 330 380 438 430 S665 430 805 430" />
+            <circle cx="80" cy="92" r="5" />
+            <circle cx="335" cy="92" r="5" />
+            <circle cx="705" cy="92" r="5" />
+            <circle cx="505" cy="305" r="5" />
+            <circle cx="438" cy="430" r="5" />
+            <circle cx="805" cy="430" r="5" />
+          </svg>
+        </div>
+
+        {nodes.map((node) => (
+          <article class={`radar-node node-${node.id}`} role="listitem">
+            <div class="node-head">
+              <span>{node.index}</span>
+              <i aria-hidden="true"></i>
+            </div>
+            <h2>{node.label}</h2>
+            <p>{node.copy}</p>
+            {node.signals.map((key) => {
+              const signal = byKey.get(key);
+              if (!signal) return null;
+              return (
+                <div class="node-signal">
+                  <div>
+                    <span>{riskSignalMeta[key].identity.shortName}</span>
+                    <strong>{signal.value ?? '—'}<small>/{signal.scale ?? 100}</small></strong>
+                  </div>
+                  <RiskProvenance signal={signal} compact />
+                </div>
+              );
+            })}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="radar-section" aria-labelledby="channels-title">
+      <SectionSignature
+        index="02"
+        eyebrow="tests de transmission"
+        title="Ce qui confirme, ce qui contredit"
+        id="channels-title"
+        description="Ces fiches empêchent le Radar de devenir une simple carte narrative : chaque lien doit pouvoir échouer."
+      />
+      <div class="channel-list">
+        {channels.map((channel, index) => (
+          <article class="channel-card">
+            <div class="channel-id">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <i aria-hidden="true"></i>
+            </div>
+            <div class="channel-body">
+              <h3>{channel.title}</h3>
+              <p>{channel.mechanism}</p>
+              <dl>
+                <div>
+                  <dt>Confirme</dt>
+                  <dd>{channel.confirms}</dd>
+                </div>
+                <div>
+                  <dt>Contredit</dt>
+                  <dd>{channel.contradicts}</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="channel-sources">
+              <span>Sources à recouper</span>
+              {channel.sources.map(([label, href]) => <a href={href} target="_blank" rel="noopener">{label} ↗</a>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="radar-section radar-actions" aria-labelledby="continue-title">
+      <SectionSignature
+        index="03"
+        eyebrow="approfondir"
+        title="Passer de la carte à la preuve"
+        id="continue-title"
+      />
+      <div>
+        <a href="/maintenant/"><strong>Maintenant</strong><span>Ce qui a changé et pourquoi cela compte.</span></a>
+        <a href="/risk-diff/"><strong>Ce qui a changé</strong><span>Audit sur 1, 7 et 30 jours.</span></a>
+        <a href="/series/"><strong>Historique</strong><span>Dates, points et provenance des signaux.</span></a>
+        <a href="/dashboards/"><strong>Tableaux de bord</strong><span>Ouvrir chaque instrument spécialisé.</span></a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .radar-page { max-width: 1120px; margin: 0 auto; }
+  .radar-hero {
+    --plate-accent: var(--color-accent);
+    padding: clamp(1.3rem, 4vw, 2.5rem);
+    background:
+      radial-gradient(95% 125% at 0 0, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 67%),
+      radial-gradient(65% 100% at 100% 100%, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 72%),
+      var(--surface-elevated);
+  }
+  .radar-hero-head { display: flex; justify-content: space-between; gap: 1rem; }
+  .radar-hero-head :global(.l0g-glyph) { --glyph-color: var(--color-accent); }
+  .radar-hero .mono-label { color: var(--color-accent); }
+  .radar-hero h1 { max-width: 14ch; margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 5.2rem); line-height: 0.98; letter-spacing: -0.05em; text-wrap: balance; }
+  .radar-hero > p { max-width: 48rem; margin-top: 1.2rem; border-left: 2px solid var(--color-accent); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1rem, 2vw, 1.14rem); line-height: 1.7; }
+  .radar-rule { display: flex; gap: 0.8rem 1.5rem; align-items: baseline; margin-top: 1.4rem; border-top: 1px solid var(--color-line); padding-top: 0.9rem; }
+  .radar-rule strong { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .radar-rule span { color: var(--color-muted); font-size: 0.78rem; }
+  .radar-section { padding-top: clamp(3rem, 7vw, 5rem); }
+  .transmission-map {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+    min-height: 34rem;
+    padding: 1.1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 16px 4px 16px 16px;
+    background:
+      radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--color-signal) 5%, transparent), transparent 44%),
+      linear-gradient(color-mix(in srgb, var(--color-line) 42%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-line) 42%, transparent) 1px, transparent 1px),
+      color-mix(in srgb, var(--color-surface) 94%, transparent);
+    background-size: auto, 36px 36px, 36px 36px, auto;
+  }
+  .map-route { position: absolute; inset: 1.2rem; z-index: 0; pointer-events: none; }
+  .map-route svg { width: 100%; height: 100%; overflow: visible; }
+  .map-route path { fill: none; stroke: url(#radar-path); stroke-width: 2; stroke-dasharray: 8 7; vector-effect: non-scaling-stroke; }
+  .map-route circle { fill: var(--color-surface); stroke: var(--color-accent); stroke-width: 2; vector-effect: non-scaling-stroke; }
+  .radar-node { position: relative; z-index: 1; min-width: 0; align-self: start; border: 1px solid color-mix(in srgb, var(--color-signal) 24%, var(--color-line)); border-radius: 11px 3px 11px 11px; padding: 0.8rem; background: color-mix(in srgb, var(--color-surface-2) 94%, transparent); box-shadow: 0 16px 38px color-mix(in srgb, #000 16%, transparent); }
+  .node-geopolitique { grid-column: 1 / 3; grid-row: 1; }
+  .node-energie { grid-column: 3 / 5; grid-row: 1; }
+  .node-inflation { grid-column: 5 / 7; grid-row: 1; }
+  .node-banques-centrales { grid-column: 3 / 5; grid-row: 2; align-self: center; }
+  .node-yen { grid-column: 1 / 3; grid-row: 2; align-self: end; }
+  .node-liquidite { grid-column: 2 / 4; grid-row: 3; align-self: end; }
+  .node-dette { grid-column: 5 / 7; grid-row: 3; align-self: end; }
+  .node-head { display: flex; align-items: center; gap: 0.6rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; }
+  .node-head i { width: 2.2rem; height: 1px; background: linear-gradient(90deg, var(--color-signal), transparent); }
+  .radar-node h2 { margin-top: 0.55rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.04rem; line-height: 1.2; }
+  .radar-node > p { margin-top: 0.4rem; color: var(--color-muted); font-size: 0.66rem; line-height: 1.48; }
+  .node-signal { margin-top: 0.75rem; border-top: 1px dashed var(--color-line); padding-top: 0.6rem; }
+  .node-signal + .node-signal { margin-top: 0.55rem; }
+  .node-signal > div { display: flex; justify-content: space-between; gap: 0.6rem; align-items: baseline; }
+  .node-signal > div span { color: var(--color-paper); font-size: 0.64rem; }
+  .node-signal > div strong { color: var(--color-signal); font-family: var(--font-display); font-size: 1.1rem; }
+  .node-signal > div small { color: var(--color-muted); font-size: 0.5rem; }
+  .channel-list { border-top: 1px solid var(--color-line); }
+  .channel-card { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) 11rem; gap: 1rem; border-bottom: 1px solid var(--color-line); padding: 1.2rem 0.4rem; }
+  .channel-id { color: var(--color-accent); font-family: var(--font-display); font-size: 1.15rem; }
+  .channel-id i { display: block; width: 2rem; height: 1px; margin-top: 0.4rem; background: linear-gradient(90deg, var(--color-accent), transparent); }
+  .channel-body h3 { color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; }
+  .channel-body > p { margin-top: 0.4rem; color: var(--color-paper); font-size: 0.76rem; line-height: 1.55; }
+  .channel-body dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+  .channel-body dl div { border-left: 1px solid var(--color-line); padding-left: 0.65rem; }
+  .channel-body dt { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  .channel-body dl div:last-child dt { color: var(--color-accent); }
+  .channel-body dd { margin-top: 0.25rem; color: var(--color-muted); font-size: 0.66rem; line-height: 1.5; }
+  .channel-sources { display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .channel-sources > span { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .channel-sources a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.62rem; }
+  .radar-actions > div:last-child { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; overflow: hidden; border: 1px solid var(--color-line); border-radius: 11px 3px 11px 11px; background: var(--color-line); }
+  .radar-actions a { padding: 1rem; background: var(--color-surface); }
+  .radar-actions strong,
+  .radar-actions span { display: block; }
+  .radar-actions strong { color: var(--color-bright); font-size: 0.85rem; }
+  .radar-actions span { margin-top: 0.35rem; color: var(--color-muted); font-size: 0.67rem; line-height: 1.45; }
+  .radar-actions a:hover strong { color: var(--color-signal); }
+  @media (max-width: 820px) {
+    .transmission-map { grid-template-columns: 1fr 1fr; grid-template-rows: none; min-height: 0; }
+    .map-route { display: none; }
+    .radar-node { grid-column: auto; grid-row: auto; align-self: stretch; }
+    .channel-card { grid-template-columns: 2.7rem minmax(0, 1fr); }
+    .channel-sources { grid-column: 2; flex-direction: row; flex-wrap: wrap; }
+    .radar-actions > div:last-child { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .radar-hero-head :global(.l0g-glyph) { transform: scale(0.82); transform-origin: top right; }
+    .radar-rule { display: grid; }
+    .transmission-map { grid-template-columns: 1fr; }
+    .channel-card { grid-template-columns: 2rem minmax(0, 1fr); }
+    .channel-body dl { grid-template-columns: 1fr; }
+    .radar-actions > div:last-child { grid-template-columns: 1fr; }
+  }
+</style>

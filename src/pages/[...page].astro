@@ -64,9 +64,9 @@ const needCards = [
     glyph: 'observe' as GlyphName,
     eyebrow: 'observer',
     title: 'Suivre un risque',
-    text: 'Consulter les tableaux de bord et comprendre ce que chaque signal mesure.',
-    href: '/dashboards/',
-    cta: 'Voir les tableaux de bord',
+    text: 'Voir comment un choc se transmet, puis ouvrir les instruments qui le mesurent.',
+    href: '/radar/',
+    cta: 'Ouvrir le Radar',
   },
   {
     glyph: 'verify' as GlyphName,
@@ -111,6 +111,18 @@ const needCards = [
         <a href="#dernieres-analyses" class="home-action">Lire les dernières analyses</a>
       </div>
     </section>
+  )}
+
+  {isFirst && (
+    <a href="/maintenant/" class="home-now rise">
+      <span class="home-now-signal" aria-hidden="true"><i></i><b></b></span>
+      <span class="home-now-copy">
+        <small>// votre point d’entrée quotidien</small>
+        <strong>Maintenant</strong>
+        <p>Ce qui a changé, pourquoi cela compte et ce qu’il faut vérifier ensuite.</p>
+      </span>
+      <span class="home-now-cta">Ouvrir <i aria-hidden="true">›</i></span>
+    </a>
   )}
 
   {isFirst && (
@@ -244,6 +256,51 @@ const needCards = [
 
 <style>
   .home-intro { padding: 1.1rem 0 0.4rem; }
+  .home-now {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 38%, var(--color-line));
+    border-radius: 12px 3px 12px 12px;
+    padding: 1rem;
+    background:
+      linear-gradient(105deg, color-mix(in srgb, var(--color-amber) 7%, transparent), transparent 48%),
+      var(--surface-elevated);
+  }
+  .home-now::after {
+    content: '';
+    position: absolute;
+    right: -2rem;
+    bottom: -3rem;
+    width: 9rem;
+    height: 9rem;
+    border: 1px dashed color-mix(in srgb, var(--color-signal) 22%, transparent);
+    border-radius: 50%;
+  }
+  .home-now-signal {
+    position: relative;
+    display: grid;
+    width: 2.8rem;
+    height: 2.8rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 55%, var(--color-line));
+    border-radius: 50%;
+  }
+  .home-now-signal i { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-amber); box-shadow: 0 0 18px var(--color-amber); }
+  .home-now-signal b { position: absolute; inset: 0.35rem; border: 1px dashed color-mix(in srgb, var(--color-signal) 45%, transparent); border-radius: 50%; }
+  .home-now-copy small,
+  .home-now-copy strong,
+  .home-now-copy p { display: block; }
+  .home-now-copy small { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .home-now-copy strong { margin-top: 0.22rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.2rem; }
+  .home-now-copy p { margin-top: 0.2rem; color: var(--color-muted); font-size: 0.73rem; line-height: 1.45; }
+  .home-now-cta { position: relative; z-index: 1; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .home-now:hover { border-color: color-mix(in srgb, var(--color-amber) 70%, var(--color-line)); }
+  .home-now:hover .home-now-copy strong { color: var(--color-amber); }
   .home-kicker {
     display: flex;
     align-items: center;
@@ -480,6 +537,8 @@ const needCards = [
     .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
   @media (max-width: 520px) {
+    .home-now { grid-template-columns: auto minmax(0, 1fr); }
+    .home-now-cta { grid-column: 2; }
     .home-actions { display: grid; grid-template-columns: 1fr; }
     .home-action { width: 100%; }
   }

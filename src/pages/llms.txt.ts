@@ -85,6 +85,12 @@ export const GET: APIRoute = async () => {
     `- [Backtests](${SITE}/backtests/): historique point-in-time des signaux l0g, exports CSV/NDJSON/JSON, contrat de dates et garde-fous contre le look-ahead bias.`
   );
   lines.push(
+    `- [Maintenant](${SITE}/maintenant/): entrée quotidienne lisible reliant changements, importance, incertitude, prochaine vérification et provenance de chaque score.`
+  );
+  lines.push(
+    `- [Radar des transmissions](${SITE}/radar/): carte sans score global des canaux entre géopolitique, énergie, inflation, banques centrales, devises, liquidité, dette et crédit.`
+  );
+  lines.push(
     `- [Risk Diff](${SITE}/risk-diff/): lecture des changements de risque sur 1, 7 et 30 jours : signaux, sources, claims, modèles, articles et confiance.`
   );
   lines.push(
