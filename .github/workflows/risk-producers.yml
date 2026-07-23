@@ -13,8 +13,6 @@ on:
       - scripts/risk-deployment.test.mjs
       - ops/risk-aggregator/**
       - deploy/l0g.fr.apache.conf
-  schedule:
-    - cron: '7,37 * * * *'
 
 permissions:
   contents: read

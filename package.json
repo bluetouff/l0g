@@ -28,6 +28,7 @@
     "test:glossary": "node scripts/validate-glossary.mjs",
     "test:seo": "node scripts/validate-seo.mjs",
     "test:deploy": "bash deploy/test-deploy.sh",
+    "test:ci-policy": "node scripts/audit-ci-policy.mjs",
     "lint:editorial": "node scripts/lint-editorial.mjs",
     "astro": "astro",
     "review": "node scripts/review-claims.mjs",

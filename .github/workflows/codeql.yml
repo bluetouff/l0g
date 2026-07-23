@@ -3,10 +3,40 @@ name: codeql
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - CITATION.cff
+      - SECURITY.md
+      - MEMOIRE-LOCALE.md
+      - docs/**
+      - src/content/**
+      - public/**/*.json
+      - public/**/*.csv
+      - public/**/*.svg
+      - public/**/*.png
+      - public/**/*.jpg
+      - public/**/*.jpeg
+      - public/**/*.webp
+      - public/**/*.ico
   pull_request:
     branches: [main]
-  schedule:
-    - cron: '23 5 * * 2'
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - CITATION.cff
+      - SECURITY.md
+      - MEMOIRE-LOCALE.md
+      - docs/**
+      - src/content/**
+      - public/**/*.json
+      - public/**/*.csv
+      - public/**/*.svg
+      - public/**/*.png
+      - public/**/*.jpg
+      - public/**/*.jpeg
+      - public/**/*.webp
+      - public/**/*.ico
   workflow_dispatch:
 
 permissions:

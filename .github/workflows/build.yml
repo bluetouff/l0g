@@ -7,9 +7,19 @@ name: build
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - CITATION.cff
+      - SECURITY.md
+      - MEMOIRE-LOCALE.md
+      - docs/**
+      - .github/MCP_RELEASE_NOTES.md
+      - .github/workflows/codeql.yml
+      - .github/workflows/publish-mcp.yml
+      - .github/workflows/risk-producers.yml
+      - renovate.json
   workflow_dispatch:
-  schedule:
-    - cron: '17 6 * * 1'
 
 permissions:
   contents: write # nécessaire uniquement pour pousser sur la branche `built`
@@ -25,6 +35,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       # Actions officielles uniquement, épinglées sur un SHA immuable.
       # Renovate conserve le SHA et le commentaire de version à jour.
@@ -36,6 +47,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            mcp-server/package-lock.json
 
       - name: Require the current main commit
         run: |
@@ -45,11 +59,7 @@ jobs:
 
       - name: Fix deterministic build timestamp
         run: |
-          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
-            echo "L0G_BUILD_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
-          else
-            echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
-          fi
+          echo "L0G_BUILD_TIMESTAMP=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
           echo "L0G_SOURCE_DATE_EPOCH=$(git show -s --format=%ct HEAD)" >> "$GITHUB_ENV"
 
       - name: Checkout or initialize append-only Black Box archive
@@ -72,11 +82,12 @@ jobs:
 
       - name: Install (lockfile strict)
         run: |
-          npm ci
-          npm ci --prefix mcp-server --omit=dev
+          npm ci --no-audit --no-fund
+          npm ci --prefix mcp-server --omit=dev --no-audit --no-fund
 
       - name: Test release and deployment contracts
         run: |
+          npm run test:ci-policy
           npm run test:editorial-protocol
           npm run test:deploy
 
@@ -122,7 +133,6 @@ jobs:
           URL: http://127.0.0.1:8851/mcp
         run: |
           cd mcp-server
-          npm ci --omit=dev
           node server.mjs &
           MCP_PID=$!
           trap 'kill "$MCP_PID" 2>/dev/null || true' EXIT

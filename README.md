@@ -181,6 +181,22 @@ performance bloque une régression susceptible de provoquer du CLS.
 
 ## Déploiement (vue d'ensemble)
 
+### Politique CI frugale
+
+- Aucun workflow GitHub Actions n'est planifié par cron.
+- Le build attesté s'exécute sur un changement de `main` qui affecte le site,
+  ou à la demande. Les changements limités aux documents internes et aux
+  workflows sans effet sur le site ne republient pas `built`.
+- CodeQL conserve la suite `security-extended` sur les changements de code et
+  les pull requests, avec annulation des analyses devenues obsolètes. Les
+  changements purement éditoriaux ou statiques sont exclus.
+- Le contrôle de bout en bout des producteurs de risque reste disponible à la
+  demande et lors d'une modification de sa chaîne. Le timer serveur
+  `l0g-risk.timer`, configuré toutes les 15 minutes, reste le mécanisme de
+  production des agrégats.
+- `npm run test:ci-policy` bloque la réintroduction silencieuse d'un cron et
+  vérifie les principaux garde-fous de coût et de sécurité.
+
 ### Migration attestée terminée et vérifiée le 21 juillet 2026
 
 - Le workflow CI publie dans `built` uniquement une enveloppe de release
