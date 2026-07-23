@@ -85,7 +85,7 @@ const utilityItems: NavItem[] = [
   { href: '/ressources-journalistes/', label: 'Presse' },
 ];
 const mobileUtilityItems: NavItem[] = [
-  { href: '/terminal/', label: 'Terminal' },
+  { href: '/auditer-l-opacite/', label: 'Auditer l’opacité' },
   ...utilityItems,
 ];
 
@@ -140,10 +140,10 @@ function isActive(item: NavItem): boolean {
           {developerItems.map((item) => <a href={item.href}>{item.label}</a>)}
         </div>
         <div class="menu-footer">
-          <a href="/terminal/" class="menu-terminal" aria-current={currentPath.startsWith('/terminal') ? 'page' : undefined}>
-            <L0gGlyph name="terminal" />
-            <span><strong>Terminal l0g</strong><small>Explorer rapidement toutes les surfaces publiques.</small></span>
-            <b aria-hidden="true">ouvrir →</b>
+          <a href="/auditer-l-opacite/" class="menu-book" aria-current={currentPath.startsWith('/auditer-l-opacite') ? 'page' : undefined}>
+            <span class="menu-book-mark" aria-hidden="true">A/O</span>
+            <span><strong>Auditer l’opacité</strong><small>Le livre à l’origine de l0g et la genèse du projet.</small></span>
+            <b aria-hidden="true">découvrir →</b>
           </a>
           <div class="utility-row">
             <span>Accès directs</span>
@@ -371,23 +371,41 @@ function isActive(item: NavItem): boolean {
     border-top: 1px solid var(--color-line);
     padding-top: 1rem;
   }
-  .menu-terminal {
+  .menu-book {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: 0.7rem;
-    border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-line));
+    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, var(--color-line));
     border-radius: 12px 3px 12px 12px;
     padding: 0.65rem;
-    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 7%, transparent), transparent 68%),
+      color-mix(in srgb, var(--color-accent) 3%, transparent);
   }
-  .menu-terminal > span,
-  .menu-terminal strong,
-  .menu-terminal small { display: block; }
-  .menu-terminal strong { color: var(--color-bright); font-size: 0.82rem; }
-  .menu-terminal small { margin-top: 0.12rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.69rem; line-height: 1.35; }
-  .menu-terminal > b { color: var(--color-accent); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; text-transform: uppercase; }
-  .menu-terminal:hover { border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-line)); }
+  .menu-book > span,
+  .menu-book strong,
+  .menu-book small { display: block; }
+  .menu-book-mark {
+    display: grid !important;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 52%, var(--color-line));
+    border-radius: 8px 2px 8px 8px;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .menu-book strong { color: var(--color-bright); font-size: 0.82rem; }
+  .menu-book small { margin-top: 0.12rem; color: var(--color-muted); font-family: var(--font-read); font-size: 0.69rem; line-height: 1.35; }
+  .menu-book > b { color: var(--color-accent); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; text-transform: uppercase; }
+  .menu-book:hover,
+  .menu-book[aria-current='page'] { border-color: color-mix(in srgb, var(--color-signal) 65%, var(--color-line)); }
+  .menu-book:hover strong,
+  .menu-book[aria-current='page'] strong { color: var(--color-signal); }
   .utility-row {
     display: flex;
     flex-wrap: wrap;

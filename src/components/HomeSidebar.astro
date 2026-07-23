@@ -28,6 +28,16 @@ import SearchForm from './SearchForm.astro';
     <i aria-hidden="true">›</i>
   </a>
 
+  <a href="/auditer-l-opacite/" class="book-card">
+    <span class="book-mark" aria-hidden="true">A/O</span>
+    <span>
+      <small>// livre fondateur</small>
+      <strong>Auditer l’opacité</strong>
+      <p>La genèse de l0g et l’essai intégral</p>
+    </span>
+    <i aria-hidden="true">›</i>
+  </a>
+
   <section class="start-card">
     <div class="start-top">
       <p class="eyebrow">// nouveau ici ?</p>
@@ -192,6 +202,63 @@ import SearchForm from './SearchForm.astro';
     background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface));
   }
   .radar-card:hover strong { color: var(--color-accent); }
+  .book-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    align-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line));
+    border-radius: 11px 3px 11px 11px;
+    padding: 0.78rem 0.85rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 5%, transparent), transparent 66%),
+      var(--surface-elevated);
+  }
+  .book-mark {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 46%, var(--color-line));
+    border-radius: 7px 2px 7px 7px;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .book-card > span,
+  .book-card strong,
+  .book-card small,
+  .book-card p { display: block; }
+  .book-card small {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .book-card strong {
+    margin-top: 0.16rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+  }
+  .book-card p {
+    margin-top: 0.12rem;
+    color: var(--color-muted);
+    font-size: 0.64rem;
+    line-height: 1.35;
+  }
+  .book-card > i {
+    color: var(--color-signal);
+    font-size: 1rem;
+    font-style: normal;
+  }
+  .book-card:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 62%, var(--color-line));
+  }
+  .book-card:hover strong { color: var(--color-signal); }
   .start-card {
     position: relative;
     overflow: hidden;

@@ -1,0 +1,787 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+const title = 'Auditer l’opacité, le livre à l’origine de l0g';
+const description =
+  'Genèse d’Auditer l’opacité, essai de Bluetouff consacré aux angles morts de la finance, et naissance de l0g comme observatoire public, sourcé et vérifiable.';
+const bookUrl = 'https://bluetouff.com/auditer-l-opacite.html';
+const pageUrl = `${SITE_URL}/auditer-l-opacite/`;
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: 'Auditer l’opacité',
+  alternateName: 'Auditer l’opacité : Anatomie d’une crise qu’on ne veut pas voir',
+  description,
+  author: { '@id': AUTHOR_ID },
+  datePublished: '2026',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  url: pageUrl,
+  sameAs: bookUrl,
+};
+
+const chapters = [
+  {
+    index: 'I',
+    title: 'Crises, prix et valeur',
+    detail: 'Comprendre l’écart entre les prix affichés, la valeur produite et les risques repoussés hors champ.',
+  },
+  {
+    index: 'II',
+    title: 'Crédit privé, ombre bancaire et assurance',
+    detail: 'Suivre la dette lorsqu’elle quitte les bilans les plus visibles et circule entre fonds, assureurs et véhicules.',
+  },
+  {
+    index: 'III',
+    title: 'DeFi, stablecoins et rendement',
+    detail: 'Examiner la promesse de transparence du code, puis les nouvelles formes de capture, de levier et de dépendance.',
+  },
+  {
+    index: 'IV',
+    title: 'Dollar, yen, Treasuries et régulation',
+    detail: 'Relier les bascules monétaires, les flux de collatéral et les réponses toujours tardives des institutions.',
+  },
+  {
+    index: 'V',
+    title: 'Décentralisation, promesse et limites',
+    detail: 'Distinguer l’architecture réellement ouverte du récit de décentralisation utilisé comme argument commercial.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  sidebar={false}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
+
+  <article class="book-page rise" data-pagefind-body>
+    <section class="book-hero" data-pagefind-ignore>
+      <div class="book-object" aria-hidden="true">
+        <span class="book-spine">l0g / origine</span>
+        <div class="book-cover">
+          <span class="book-meta">Essai · Printemps 2026</span>
+          <p>Auditer</p>
+          <p>l’opacité</p>
+          <span class="book-subtitle">Anatomie d’une crise qu’on ne veut pas voir</span>
+          <span class="book-author">Bluetouff</span>
+        </div>
+      </div>
+
+      <div class="book-intro">
+        <p class="mono-label glow">// le livre fondateur</p>
+        <h1>Auditer <span>l’opacité.</span></h1>
+        <p class="book-deck">Anatomie d’une crise qu’on ne veut pas voir</p>
+        <p class="book-lede">
+          l0g est né de l’écriture de cet essai consacré aux angles morts des systèmes
+          financiers. Le livre pose la carte. Le site maintient les instruments allumés.
+        </p>
+        <div class="book-actions">
+          <a class="book-action primary" href={bookUrl} target="_blank" rel="external noopener">
+            Lire le livre intégral <span aria-hidden="true">↗</span>
+          </a>
+          <a class="book-action secondary" href="#genese">
+            Découvrir la genèse <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <p class="access-note">Texte intégral en accès libre · préface · 13 chapitres · sources · lexique</p>
+      </div>
+    </section>
+
+    <section class="origin-section" id="genese">
+      <div class="section-heading">
+        <span>01</span>
+        <div>
+          <p class="mono-label glow">genèse</p>
+          <h2>Du manuscrit à l’observatoire.</h2>
+        </div>
+      </div>
+
+      <div class="origin-grid">
+        <div class="origin-copy">
+          <p>
+            Le point de départ est une dette intellectuelle assumée envers
+            <em>La Crise de Valeur(s)</em>, de Phil Roux. Sa question sur l’écart entre
+            valeur et vérité appelait un compagnon de route ancré dans les mécanismes
+            financiers contemporains.
+          </p>
+          <p>
+            Le regard vient aussi d’un parcours dans la cybersécurité, le logiciel libre
+            et l’enquête sur les dispositifs opaques. L’objet change, mais la méthode reste
+            la même : identifier les dépendances, remonter les flux et refuser qu’une
+            architecture complexe devienne une excuse pour ne plus l’examiner.
+          </p>
+          <p>
+            Un livre fixe un état des lieux. Les marchés, les bilans, les règles et les
+            canaux de transmission continuent de bouger. l0g prolonge donc l’essai par des
+            données publiques, des analyses datées, des méthodes ouvertes et des signaux
+            dont les limites restent visibles.
+          </p>
+        </div>
+
+        <aside class="origin-note">
+          <span class="note-k">continuité</span>
+          <p>
+            Le livre donne une grammaire pour lire la plomberie financière. l0g transforme
+            cette grammaire en outils de suivi, afin de vérifier les mécanismes au fil du
+            temps.
+          </p>
+          <a href="/about/">À propos de l’auteur <span aria-hidden="true">›</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="thesis-section">
+      <div class="section-heading">
+        <span>02</span>
+        <div>
+          <p class="mono-label glow">thèse</p>
+          <h2>La plomberie, avant la prophétie.</h2>
+        </div>
+      </div>
+
+      <div class="thesis-panel">
+        <p>
+          <strong>Auditer l’opacité</strong> ne date pas la prochaine crise et ne désigne
+          aucun détonateur certain. L’essai décrit les canalisations principales du système,
+          ses joints fragiles et ses interconnexions peu visibles.
+        </p>
+        <p>
+          L’enjeu est de disposer d’une carte avant la rupture, mais aussi lorsque rien ne
+          casse. Comprendre comment le risque circule reste utile indépendamment du calendrier.
+        </p>
+      </div>
+    </section>
+
+    <section class="chapters-section">
+      <div class="section-heading">
+        <span>03</span>
+        <div>
+          <p class="mono-label glow">architecture du livre</p>
+          <h2>Treize chapitres, cinq terrains.</h2>
+        </div>
+      </div>
+
+      <div class="chapter-grid">
+        {chapters.map((chapter) => (
+          <article class="chapter-card">
+            <span>{chapter.index}</span>
+            <h3>{chapter.title}</h3>
+            <p>{chapter.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="continuation-section">
+      <div class="section-heading">
+        <span>04</span>
+        <div>
+          <p class="mono-label glow">du livre à l0g</p>
+          <h2>Une enquête devenue infrastructure.</h2>
+        </div>
+      </div>
+
+      <div class="continuation-grid">
+        <a href="/radar/">
+          <span>observer</span>
+          <strong>Radar des transmissions</strong>
+          <p>Tester les passages possibles d’un choc entre géopolitique, énergie, inflation, taux, crédit et liquidité.</p>
+        </a>
+        <a href="/maintenant/">
+          <span>situer</span>
+          <strong>Signaux de risque</strong>
+          <p>Lire les mouvements récents sans confondre un score, une alerte et une prédiction.</p>
+        </a>
+        <a href="/methodologie/">
+          <span>vérifier</span>
+          <strong>Méthodes publiques</strong>
+          <p>Retrouver les données, les formules, les seuils, la fraîcheur et les limites de chaque instrument.</p>
+        </a>
+        <a href="/black-box/">
+          <span>tracer</span>
+          <strong>Black Box</strong>
+          <p>Conserver une preuve immuable des publications afin que l’observatoire ne devienne pas lui-même opaque.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="reading-section" data-pagefind-ignore>
+      <span class="reading-index">A/O</span>
+      <div>
+        <p class="mono-label glow">accès libre</p>
+        <h2>Lire l’essai dans son intégralité.</h2>
+        <p>
+          La préface, les treize chapitres, la bibliographie et le lexique sont accessibles
+          gratuitement sur le site de l’auteur.
+        </p>
+      </div>
+      <a href={bookUrl} target="_blank" rel="external noopener">
+        Ouvrir le livre <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .book-page {
+    max-width: 68rem;
+  }
+
+  .book-hero {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.7fr) minmax(0, 1.3fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+    min-height: 35rem;
+    padding: clamp(1rem, 3vw, 2rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .book-object {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 18rem);
+    min-height: 26rem;
+    filter: drop-shadow(0 25px 45px color-mix(in srgb, #000 42%, transparent));
+    transform: rotate(-1.2deg);
+  }
+
+  .book-spine {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-line));
+    border-right: 0;
+    border-radius: 7px 0 0 10px;
+    padding: 1rem 0 0.8rem;
+    background: color-mix(in srgb, var(--color-accent) 16%, var(--color-ink));
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .book-cover {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 42%, var(--color-line));
+    border-radius: 0 12px 12px 0;
+    padding: 1.6rem 1.45rem;
+    background:
+      linear-gradient(155deg, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 52%),
+      repeating-linear-gradient(0deg, transparent 0 2rem, color-mix(in srgb, var(--color-line) 45%, transparent) 2rem calc(2rem + 1px)),
+      var(--color-ink);
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
+  }
+
+  .book-cover::after {
+    content: '';
+    position: absolute;
+    right: -4rem;
+    bottom: -4rem;
+    width: 11rem;
+    height: 11rem;
+    border: 1px dashed color-mix(in srgb, var(--color-signal) 40%, transparent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2rem color-mix(in srgb, var(--color-signal) 2%, transparent);
+  }
+
+  .book-meta,
+  .book-author {
+    position: relative;
+    z-index: 1;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .book-cover > p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 3.7rem);
+    font-weight: 650;
+    line-height: 0.93;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+  }
+
+  .book-cover > p:first-of-type {
+    margin-top: auto;
+  }
+
+  .book-cover > p:last-of-type {
+    color: var(--color-accent);
+  }
+
+  .book-subtitle {
+    position: relative;
+    z-index: 1;
+    max-width: 13rem;
+    margin-top: 1rem;
+    color: var(--color-paper);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .book-author {
+    margin-top: auto;
+    padding-top: 1.8rem;
+    color: var(--color-signal);
+  }
+
+  .book-intro > .mono-label {
+    color: var(--color-accent);
+  }
+
+  .book-intro h1 {
+    margin-top: 1rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(2.7rem, 5.2vw, 4.05rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .book-intro h1 span {
+    display: block;
+    color: var(--color-accent);
+  }
+
+  .book-deck {
+    margin-top: 1rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .book-lede {
+    max-width: 38rem;
+    margin-top: 1.35rem;
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: clamp(1.08rem, 2vw, 1.28rem);
+    line-height: 1.68;
+  }
+
+  .book-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1.6rem;
+  }
+
+  .book-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid var(--color-line);
+    border-radius: 9px 3px 9px 9px;
+    padding: 0.72rem 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.69rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .book-action.primary {
+    border-color: color-mix(in srgb, var(--color-accent) 58%, var(--color-line));
+    background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+    color: var(--color-bright);
+  }
+
+  .book-action.secondary {
+    color: var(--color-muted);
+  }
+
+  .book-action:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .access-note {
+    margin-top: 0.9rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.5;
+  }
+
+  .origin-section,
+  .thesis-section,
+  .chapters-section,
+  .continuation-section {
+    padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: 2.7rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .section-heading > span {
+    display: grid;
+    width: 2.7rem;
+    height: 2.7rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 38%, var(--color-line));
+    border-radius: 9px 3px 9px 9px;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .section-heading .mono-label {
+    color: var(--color-signal);
+  }
+
+  .section-heading h2 {
+    max-width: 35rem;
+    margin-top: 0.45rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .origin-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 0.7fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    margin-top: 1.8rem;
+    padding-left: 3.7rem;
+  }
+
+  .origin-copy p,
+  .thesis-panel p {
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: 1rem;
+    line-height: 1.78;
+  }
+
+  .origin-copy p + p,
+  .thesis-panel p + p {
+    margin-top: 1.15rem;
+  }
+
+  .origin-copy em {
+    color: var(--color-bright);
+  }
+
+  .origin-note {
+    align-self: start;
+    border: 1px solid var(--color-line);
+    border-left-color: var(--color-accent);
+    border-radius: 10px 3px 10px 10px;
+    padding: 1.1rem;
+    background: color-mix(in srgb, var(--color-accent) 4%, var(--color-surface));
+  }
+
+  .note-k {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .origin-note p {
+    margin-top: 0.65rem;
+    color: var(--color-paper);
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+
+  .origin-note a {
+    display: inline-flex;
+    gap: 0.35rem;
+    margin-top: 0.9rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+  }
+
+  .thesis-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    margin-top: 1.8rem;
+    margin-left: 3.7rem;
+    border: 1px solid var(--color-line);
+    border-radius: 12px 3px 12px 12px;
+    background: var(--color-line);
+  }
+
+  .thesis-panel p {
+    padding: 1.3rem;
+    background: var(--surface-elevated);
+  }
+
+  .thesis-panel strong {
+    color: var(--color-accent);
+  }
+
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.8rem;
+    padding-left: 3.7rem;
+  }
+
+  .chapter-card {
+    grid-column: span 2;
+    border: 1px solid var(--color-line);
+    border-radius: 11px 3px 11px 11px;
+    padding: 1rem;
+    background: var(--surface-elevated);
+  }
+
+  .chapter-card:nth-child(4),
+  .chapter-card:nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .chapter-card > span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .chapter-card h3 {
+    margin-top: 0.55rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    line-height: 1.3;
+  }
+
+  .chapter-card p {
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    line-height: 1.52;
+  }
+
+  .continuation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.8rem;
+    padding-left: 3.7rem;
+  }
+
+  .continuation-grid a {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: 11px 3px 11px 11px;
+    padding: 1.05rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-signal) 5%, transparent), transparent 55%),
+      var(--surface-elevated);
+  }
+
+  .continuation-grid a::after {
+    content: '›';
+    position: absolute;
+    top: 0.8rem;
+    right: 0.9rem;
+    color: var(--color-signal);
+    font-size: 1rem;
+  }
+
+  .continuation-grid a > span {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .continuation-grid strong {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1rem;
+  }
+
+  .continuation-grid p {
+    max-width: 28rem;
+    margin-top: 0.4rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .continuation-grid a:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 55%, var(--color-line));
+  }
+
+  .reading-section {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: clamp(4rem, 8vw, 6rem);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 42%, var(--color-line));
+    border-radius: 14px 4px 14px 14px;
+    padding: clamp(1.2rem, 3vw, 1.7rem);
+    background:
+      radial-gradient(90% 130% at 0 0, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 70%),
+      var(--surface-elevated);
+  }
+
+  .reading-index {
+    display: grid;
+    width: 3.1rem;
+    height: 3.1rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 50%, var(--color-line));
+    border-radius: 10px 3px 10px 10px;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .reading-section .mono-label {
+    color: var(--color-accent);
+  }
+
+  .reading-section h2 {
+    margin-top: 0.35rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+  }
+
+  .reading-section p:not(.mono-label) {
+    max-width: 36rem;
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .reading-section > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 58%, var(--color-line));
+    border-radius: 9px 3px 9px 9px;
+    padding: 0.72rem 0.85rem;
+    color: var(--color-bright);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .reading-section > a:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 760px) {
+    .book-hero {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .book-object {
+      width: min(100%, 18rem);
+      min-height: 23rem;
+      margin-inline: auto;
+    }
+
+    .origin-grid,
+    .chapter-grid,
+    .continuation-grid {
+      grid-template-columns: 1fr;
+      padding-left: 0;
+    }
+
+    .thesis-panel {
+      grid-template-columns: 1fr;
+      margin-left: 0;
+    }
+
+    .chapter-card,
+    .chapter-card:nth-child(4),
+    .chapter-card:nth-child(5) {
+      grid-column: auto;
+    }
+
+    .reading-section {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .reading-section > a {
+      grid-column: 1 / -1;
+      width: fit-content;
+      margin-left: 4.3rem;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .section-heading {
+      grid-template-columns: 2.35rem minmax(0, 1fr);
+      gap: 0.75rem;
+    }
+
+    .section-heading > span {
+      width: 2.35rem;
+      height: 2.35rem;
+    }
+
+    .book-intro h1 {
+      font-size: clamp(2.5rem, 15vw, 3.8rem);
+    }
+
+    .reading-section {
+      grid-template-columns: 1fr;
+    }
+
+    .reading-index {
+      display: none;
+    }
+
+    .reading-section > a {
+      grid-column: auto;
+      margin-left: 0;
+    }
+  }
+</style>
