@@ -110,6 +110,13 @@ for (const file of htmlFiles) {
   if (isArticle) {
     const article = jsonLd.find((item) => item['@type'] === 'Article');
     assert(Boolean(article), `${name}: Article JSON-LD absent`);
+    assert(article?.['@id'] === `${canonical}#article`, `${name}: identifiant Article instable`);
+    assert(article?.url === canonical, `${name}: URL Article absente ou incohérente`);
+    assert(
+      typeof article?.image === 'string' && article.image.startsWith('https://l0g.fr/'),
+      `${name}: image Article absolue absente`
+    );
+    assert(article?.isAccessibleForFree === true, `${name}: gratuité Article absente`);
     assert(article?.author?.['@type'] === 'Person', `${name}: author doit être une Person`);
     assert(article?.author?.['@id'] === 'https://l0g.fr/about/#bluetouff', `${name}: identifiant auteur instable`);
     assert(article?.publisher?.['@type'] === 'Organization', `${name}: publisher doit être une Organization`);
@@ -131,6 +138,13 @@ assert(maxInline <= 2_000, `index.html contient un script inline de ${maxInline}
 assert(!homeText.includes('modelContext.registerTool'), 'WebMCP est de nouveau injecté inline dans index.html');
 assert(/<script type="module" src="\/_astro\/WebMCPTools\.[^"]+\.js"><\/script>/.test(homeText), 'module WebMCP externe absent');
 assert(!homeText.includes('/pagefind/pagefind-ui.js'), 'Pagefind ne doit pas être chargé sur la home');
+assert(!homeText.includes('source en attente'), 'la home contient encore un placeholder de risque');
+for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
+  const tile = homeText.match(new RegExp(`<a[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</a>`))?.[1] ?? '';
+  assert(Boolean(tile), `home: carte risque ${key} absente`);
+  assert(/data-value[^>]*>\s*\d+(?:[.,]\d+)?\s*</.test(tile), `home: valeur statique ${key} absente`);
+  assert(/data-status[^>]*>\s*[^<\s][^<]*</.test(tile), `home: statut statique ${key} absent`);
+}
 
 const glossary = await readFile(new URL('glossaire/index.html', rootUrl));
 const glossaryGzip = gzipSync(glossary, { level: 9 });
@@ -167,6 +181,7 @@ for (const page of pages.values()) {
 
 const profile = pages.get('https://l0g.fr/about/');
 const profilePage = profile?.jsonLd.find((item) => item['@type'] === 'ProfilePage');
+assert(profile?.title === 'Bluetouff, auteur et analyste de l0g · l0g.fr', '/about/: title auteur incorrect');
 assert(profilePage?.mainEntity?.['@type'] === 'Person', '/about/: ProfilePage Person absent');
 assert(profilePage?.mainEntity?.['@id'] === 'https://l0g.fr/about/#bluetouff', '/about/: identifiant Person incorrect');
 assert(

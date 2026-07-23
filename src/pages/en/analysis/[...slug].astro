@@ -26,6 +26,8 @@ const rt = readingTime(post.body);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 
 const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
+const articleId = `${url}#article`;
+const imageUrl = new URL(ogImage, Astro.site).toString();
 const frUrl = sourcePost ? new URL(`/posts/${sourcePost.id}/`, Astro.site).toString() : new URL('/', Astro.site).toString();
 const sourceUpdated = sourcePost ? (sourcePost.data.updatedDate ?? sourcePost.data.pubDate) : post.data.sourceUpdatedDate;
 const translationIsStale = sourcePost && isTranslationStale(sourceUpdated, post.data.sourceUpdatedDate);
@@ -51,14 +53,18 @@ const ld = {
   '@graph': [
     {
       '@type': 'Article',
+      '@id': articleId,
       headline: post.data.title,
       description: post.data.description,
+      image: imageUrl,
+      url,
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'en',
+      isAccessibleForFree: true,
       author: authorEntity,
       publisher: organizationEntity,
-      mainEntityOfPage: url,
+      mainEntityOfPage: { '@id': url },
       isBasedOn: { '@type': 'Article', url: frUrl },
       keywords: post.data.tags,
     },

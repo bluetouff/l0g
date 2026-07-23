@@ -1,17 +1,139 @@
 ---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 /**
  * Tableau de bord consolidé de signaux : valeurs reprises des dashboards.
- * Les valeurs sont lues côté navigateur dans /risk.json et /debt-latest.json
- * (origine self, aucun appel externe). Couleur par niveau de risque pour que
- * ça saute aux yeux.
+ * Le snapshot courant est injecté dans le HTML au build. /risk.js conserve
+ * ensuite un rôle d'actualisation progressive et de signalement des replis.
  */
+
+type RiskSignal = {
+  key: string;
+  value?: number | null;
+  scale?: number | null;
+  level?: string | null;
+  tone?: string | null;
+  sourceStatus?: string | null;
+  qualityStatus?: string | null;
+  fallbackUsed?: boolean;
+  fallbackLayer?: string | null;
+  timelinessStatus?: string | null;
+  sourceUpdatedAt?: string | null;
+  sourcePublishedAt?: string | null;
+  lastSuccessAt?: string | null;
+  componentDates?: { brent?: string; wti?: string } | null;
+};
+
+type RiskSnapshot = {
+  updated?: string | null;
+  aggregateGeneratedAt?: string | null;
+  generated?: string | null;
+  status?: string | null;
+  indices?: RiskSignal[];
+};
+
+type DebtSnapshot = {
+  generated?: string | null;
+  provenance?: { generatedAt?: string | null } | null;
+  signal?: RiskSignal | null;
+};
+
+function readJson<T>(relativePath: string, fallback: T): T {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), relativePath), 'utf8')) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+const snapshot = readJson<RiskSnapshot>('public/risk.json', {});
+const debtSnapshot = readJson<DebtSnapshot>('public/debt-latest.json', {});
+const signals = new Map((snapshot.indices ?? []).map((signal) => [signal.key, signal]));
+if (!signals.has('debt') && debtSnapshot.signal?.key === 'debt') {
+  signals.set('debt', debtSnapshot.signal);
+}
+
+const TONE: Record<string, string> = {
+  calm: '#5eead4',
+  moderate: '#f5b13d',
+  elevated: '#ff8a3d',
+  stress: '#ff4d87',
+  crisis: '#ff4d87',
+};
+
+function clampPct(value?: number | null, scale?: number | null) {
+  const percentage = (Number(value) / (Number(scale) || 100)) * 100;
+  if (Number.isNaN(percentage)) return 0;
+  return Math.max(0, Math.min(100, percentage));
+}
+
+function formatDate(value?: string | null, withTime = false) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    timeZone: 'Europe/Paris',
+    ...(withTime ? { hour: '2-digit', minute: '2-digit' } : {}),
+  });
+}
+
+function statusText(signal: RiskSignal) {
+  const sourceDate = formatDate(signal.sourceUpdatedAt || signal.sourcePublishedAt, true);
+  const brentDate = signal.componentDates?.brent;
+  const wtiDate = signal.componentDates?.wti;
+  const componentDate = brentDate === wtiDate ? formatDate(brentDate) : null;
+  if (signal.sourceStatus === 'fallback' || signal.fallbackLayer === 'aggregator') {
+    return `repli best effort · dernier succès ${formatDate(signal.lastSuccessAt, true) || 'inconnu'}`;
+  }
+  if (signal.qualityStatus === 'official-delayed') {
+    return `officiel différé (EIA) · pétrole au ${componentDate || 'jour publié'}`;
+  }
+  if (signal.timelinessStatus === 'stale') {
+    return `source ancienne · donnée ${sourceDate || 'non datée'}`;
+  }
+  if (signal.qualityStatus === 'degraded') {
+    return `couverture dégradée · donnée ${sourceDate || 'non datée'}`;
+  }
+  if (signal.qualityStatus === 'unknown') {
+    return 'provenance partielle · date source inconnue';
+  }
+  return `source ${sourceDate || 'non datée'}`;
+}
+
+function isDegraded(signal?: RiskSignal) {
+  return Boolean(signal && (
+    signal.sourceStatus === 'fallback'
+    || signal.fallbackUsed
+    || signal.timelinessStatus === 'stale'
+    || signal.qualityStatus !== 'nominal'
+  ));
+}
+
 const items = [
   { key: 'us', label: 'US Macro', href: 'https://us.l0g.fr' },
   { key: 'eu', label: 'EU Macro', href: 'https://euro.l0g.fr' },
   { key: 'yen', label: 'Yen Carry', href: 'https://yct.l0g.fr' },
   { key: 'energie', label: 'Énergie', href: 'https://energie.l0g.fr' },
   { key: 'debt', label: 'Dette US', href: 'https://debt.l0g.fr' },
-];
+].map((item) => ({ ...item, signal: signals.get(item.key) }));
+
+const aggregateDate = formatDate(
+  snapshot.aggregateGeneratedAt
+  || snapshot.updated
+  || snapshot.generated
+  || debtSnapshot.generated
+  || debtSnapshot.provenance?.generatedAt,
+  true,
+);
+const degradedCount = items.filter((item) => isDegraded(item.signal)).length;
+const aggregateStatus = aggregateDate
+  ? ` Assemblage ${aggregateDate}${snapshot.status === 'degraded'
+      ? ` · état dégradé visible${degradedCount ? ` (${degradedCount})` : ''}`
+      : ''}.`
+  : '';
 ---
 
 <section class="rise my-8" data-pagefind-ignore>
@@ -29,17 +151,38 @@ const items = [
           rel="noopener"
           class="risk-tile card group block p-4"
           data-risk={it.key}
+          data-degraded={isDegraded(it.signal) ? 'true' : 'false'}
         >
           <div class="flex items-center justify-between">
             <span class="mono-label">{it.label}</span>
             <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">›</span>
           </div>
           <div class="risk-reading mt-3 flex items-baseline gap-2">
-            <span class="risk-value font-display leading-none glow" data-value>—</span>
-            <span class="risk-level mono-label" data-level></span>
+            <span
+              class="risk-value font-display leading-none glow"
+              data-value
+              style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+            >
+              {it.signal?.value ?? '—'}
+            </span>
+            <span
+              class="risk-level mono-label"
+              data-level
+              style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+            >
+              {it.signal?.level ?? ''}
+            </span>
           </div>
-          <div class="risk-track mt-3"><div class="risk-fill" data-fill></div></div>
-          <div class="risk-status" data-status>source en attente</div>
+          <div class="risk-track mt-3">
+            <div
+              class="risk-fill"
+              data-fill
+              style={`width:${clampPct(it.signal?.value, it.signal?.scale)}%;background:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+            ></div>
+          </div>
+          <div class="risk-status" data-status>
+            {it.signal ? statusText(it.signal) : 'source indisponible au build'}
+          </div>
         </a>
       ))
     }
@@ -48,7 +191,7 @@ const items = [
     Scores 0-100 normalisés par instrument : ils ne mesurent ni le même phénomène,
     ni le même horizon. À lire comme un tableau de bord consolidé de signaux, pas comme un
     indice unique de risque systémique. Collecte best effort : chaque carte date sa source et
-    signale tout repli. <span id="risk-updated"></span>
+    signale tout repli. <span id="risk-updated">{aggregateStatus}</span>
   </p>
 </section>
 

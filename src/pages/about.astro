@@ -22,7 +22,7 @@ const profilePageJsonLd = {
 };
 ---
 
-<BaseLayout title="About" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et la politique de confidentialité du projet."
+<BaseLayout title="Bluetouff, auteur et analyste de l0g" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et la politique de confidentialité du projet."
   alternateLinks={[{ hreflang: 'fr', href: new URL('/about/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/about/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/about/', Astro.site).toString() }]}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(profilePageJsonLd)} />
   <p class="mono-label mt-2" data-pagefind-ignore style="color: var(--color-signal)">

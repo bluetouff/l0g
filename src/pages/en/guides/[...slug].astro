@@ -26,6 +26,8 @@ const rt = readingTime(guide.body);
 const ogImage = guide.data.ogImage ?? `/og/${guide.id}.png`;
 
 const url = new URL(`/en/guides/${guide.id}/`, Astro.site).toString();
+const articleId = `${url}#article`;
+const imageUrl = new URL(ogImage, Astro.site).toString();
 const frUrl = sourceGuide ? new URL(`/guides/${sourceGuide.id}/`, Astro.site).toString() : new URL('/guides/', Astro.site).toString();
 const sourceUpdated = sourceGuide ? (sourceGuide.data.updatedDate ?? sourceGuide.data.pubDate) : guide.data.sourceUpdatedDate;
 const translationIsStale = sourceGuide && isTranslationStale(sourceUpdated, guide.data.sourceUpdatedDate);
@@ -51,14 +53,18 @@ const ld = {
   '@graph': [
     {
       '@type': 'Article',
+      '@id': articleId,
       headline: guide.data.title,
       description: guide.data.description,
+      image: imageUrl,
+      url,
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'en',
+      isAccessibleForFree: true,
       author: authorEntity,
       publisher: organizationEntity,
-      mainEntityOfPage: url,
+      mainEntityOfPage: { '@id': url },
       isBasedOn: { '@type': 'Article', url: frUrl },
       ...(guide.data.summary
         ? { about: { '@type': 'DefinedTerm', name: guide.data.title, description: guide.data.summary } }

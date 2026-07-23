@@ -1,4 +1,4 @@
-/* Remplit le bandeau de signaux depuis /risk.json.
+/* Actualise le bandeau de signaux prérempli au build depuis /risk.json.
    Servi depuis l'origine du site (self) -> compatible CSP stricte.
    Aucun appel tiers : le navigateur ne lit qu'un fichier local de l0g.fr. */
 (function () {
@@ -25,6 +25,7 @@
       return date.toLocaleString('fr-FR', {
         day: '2-digit',
         month: '2-digit',
+        timeZone: 'Europe/Paris',
         ...(withTime ? { hour: '2-digit', minute: '2-digit' } : {}),
       });
     } catch (e) {

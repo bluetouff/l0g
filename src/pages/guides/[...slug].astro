@@ -29,6 +29,8 @@ const isoUpd = updated.toISOString();
 const rt = readingTime(guide.body);
 
 const url = new URL(`/guides/${guide.id}/`, Astro.site).toString();
+const articleId = `${url}#article`;
+const imageUrl = new URL(ogImage, Astro.site).toString();
 const englishGuides = await getCollection('guidesEn', ({ data }) => !data.draft);
 const englishGuide = englishGuides.find((entry) => entry.data.sourceGuide === guide.id);
 const englishUrl = englishGuide ? new URL(`/en/guides/${englishGuide.id}/`, Astro.site).toString() : null;
@@ -66,14 +68,18 @@ const ld = {
   '@graph': [
     {
       '@type': 'Article',
+      '@id': articleId,
       headline: guide.data.title,
       description: guide.data.description,
+      image: imageUrl,
+      url,
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'fr',
+      isAccessibleForFree: true,
       author: authorEntity,
       publisher: organizationEntity,
-      mainEntityOfPage: url,
+      mainEntityOfPage: { '@id': url },
       ...(guide.data.summary
         ? { about: { '@type': 'DefinedTerm', name: guide.data.title, description: guide.data.summary } }
         : {}),

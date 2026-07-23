@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -73,11 +73,41 @@ function addDirectPageSources(paths, pathname) {
   }
 }
 
-function addContentSource(paths, directory, slug) {
+function findContentSource(directory, slug) {
   for (const extension of ['.md', '.mdx']) {
     const candidate = `${directory}/${slug}${extension}`;
-    if (existsSync(join(ROOT, candidate))) paths.add(candidate);
+    if (existsSync(join(ROOT, candidate))) return candidate;
   }
+  return null;
+}
+
+function frontmatterDate(source, field) {
+  const frontmatter = source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
+  const value = frontmatter.match(new RegExp(`^${field}:\\s*(.+?)\\s*$`, 'm'))?.[1]
+    ?.trim()
+    .replace(/^['"]|['"]$/g, '');
+  return value || null;
+}
+
+// Une migration SEO massive doit être déclarée ici, route par route ou par
+// collection, avec une date justifiée. Une modification de template seule ne
+// redatera jamais automatiquement un article ou un guide.
+const contentMigrationLastmod = new Map();
+
+function contentEditorialLastmod(relativePath, pathname) {
+  const source = readFileSync(join(ROOT, relativePath), 'utf8');
+  const editorialValue = frontmatterDate(source, 'updatedDate') ?? frontmatterDate(source, 'pubDate');
+  const editorialDate = editorialValue ? new Date(editorialValue) : null;
+  if (!editorialDate || Number.isNaN(editorialDate.getTime())) {
+    throw new Error(`date éditoriale introuvable pour ${pathname} (${relativePath})`);
+  }
+  const migrationValue = contentMigrationLastmod.get(pathname);
+  if (!migrationValue) return editorialDate.toISOString();
+  const migrationDate = new Date(migrationValue);
+  if (Number.isNaN(migrationDate.getTime())) {
+    throw new Error(`date de migration SEO invalide pour ${pathname}`);
+  }
+  return new Date(Math.max(editorialDate.getTime(), migrationDate.getTime())).toISOString();
 }
 
 function latestCommittedDate(paths, pathname) {
@@ -142,17 +172,17 @@ export function sitemapLastmod(pageUrl) {
     ].forEach((path) => paths.add(path));
   } else {
     const matchers = [
-      [/^\/posts\/(.+)\/$/, 'src/content/posts', 'src/pages/posts/[...slug].astro'],
-      [/^\/guides\/(.+)\/$/, 'src/content/guides', 'src/pages/guides/[...slug].astro'],
-      [/^\/en\/analysis\/(.+)\/$/, 'src/content/posts-en', 'src/pages/en/analysis/[...slug].astro'],
-      [/^\/en\/guides\/(.+)\/$/, 'src/content/guides-en', 'src/pages/en/guides/[...slug].astro'],
+      [/^\/posts\/(.+)\/$/, 'src/content/posts'],
+      [/^\/guides\/(.+)\/$/, 'src/content/guides'],
+      [/^\/en\/analysis\/(.+)\/$/, 'src/content/posts-en'],
+      [/^\/en\/guides\/(.+)\/$/, 'src/content/guides-en'],
     ];
-    for (const [pattern, directory, template] of matchers) {
+    for (const [pattern, directory] of matchers) {
       const match = pathname.match(pattern);
       if (!match) continue;
-      addContentSource(paths, directory, match[1]);
-      paths.add(template);
-      break;
+      const source = findContentSource(directory, match[1]);
+      if (!source) throw new Error(`source de contenu introuvable pour ${pathname}`);
+      return contentEditorialLastmod(source, pathname);
     }
   }
 
