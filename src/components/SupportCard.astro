@@ -1,0 +1,94 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<a class:list={['support-card', { compact }]} href="/soutenir/" data-pagefind-ignore>
+  <span class="support-card-top">
+    <span class="support-pulse" aria-hidden="true"></span>
+    <small>// soutenir l0g</small>
+  </span>
+  <strong>Préserver son indépendance.</strong>
+  <span class="support-card-cta">
+    Contribution libre ou mensuelle
+    <i aria-hidden="true">›</i>
+  </span>
+</a>
+
+<style>
+  .support-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 42%, var(--color-line));
+    border-radius: 12px 3px 12px 12px;
+    padding: 0.9rem;
+    background:
+      radial-gradient(90% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 72%),
+      var(--surface-elevated);
+    box-shadow: inset 0 1px 0 var(--edge-highlight);
+  }
+  .support-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 52%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--color-accent) 52%, var(--color-line));
+    background: var(--color-ink);
+  }
+  .support-card-top,
+  .support-card-cta {
+    display: flex;
+    align-items: center;
+  }
+  .support-card-top { gap: 0.5rem; }
+  .support-pulse {
+    width: 0.42rem;
+    height: 0.42rem;
+    flex: none;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--color-accent) 70%, transparent);
+  }
+  .support-card small {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .support-card strong {
+    display: block;
+    margin-top: 0.55rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  .support-card-cta {
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+  .support-card-cta i {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    font-style: normal;
+  }
+  .support-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 64%, var(--color-line));
+  }
+  .support-card:hover strong { color: var(--color-signal); }
+  .support-card.compact { padding: 0.8rem; }
+  .support-card.compact strong { font-size: 0.94rem; }
+</style>

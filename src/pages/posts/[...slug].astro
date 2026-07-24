@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleNavigator from '../../components/ArticleNavigator.astro';
+import SupportCard from '../../components/SupportCard.astro';
 import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import CitationBox from '../../components/CitationBox.astro';
@@ -261,12 +262,14 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   ogImage={ogImage}
   alternateLinks={alternateLinks}
 >
-  <ArticleNavigator
-    slot="sidebar"
-    headings={articleHeadings}
-    terms={articleTerms}
-    topics={relatedTopics}
-  />
+  <div slot="sidebar" class="article-sidebar">
+    <SupportCard compact />
+    <ArticleNavigator
+      headings={articleHeadings}
+      terms={articleTerms}
+      topics={relatedTopics}
+    />
+  </div>
 
   <script type="application/ld+json" is:inline set:html={safeArticleJsonLd} />
 
@@ -465,6 +468,11 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   </script>
 
   <style>
+    .article-sidebar {
+      display: grid;
+      gap: 1.35rem;
+    }
+
     /* Barre de progression de lecture */
     .read-progress {
       position: fixed; top: 0; left: 0; right: 0; height: 2px;

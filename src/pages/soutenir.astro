@@ -54,12 +54,11 @@ const jsonLd = {
   title={title}
   description={description}
   ogImageAlt="Soutenir l0g : contributions volontaires ponctuelles ou mensuelles"
-  robots="noindex,follow"
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
 
-  <article class="support-page" data-pagefind-ignore>
+  <article class="support-page" data-pagefind-body>
     <PageHero
       index="SUP"
       kicker="indépendance"

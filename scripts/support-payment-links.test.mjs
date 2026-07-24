@@ -48,29 +48,37 @@ for (const [label, value] of [
   });
 }
 
-test('la prépublication reste hors navigation, recherche et sitemap', async () => {
+test('la page active est visible dans la navigation, la recherche et les colonnes contextuelles', async () => {
   const [
     page,
     navigation,
+    homeSidebar,
+    articlePage,
+    supportCard,
     footer,
     privacy,
     astroConfig,
   ] = await Promise.all([
     readFile(new URL('../src/pages/soutenir.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SiteNavigation.astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/components/HomeSidebar.astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/pages/posts/[...slug].astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/components/SupportCard.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SiteFooter.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/pages/rgpd.astro', import.meta.url), 'utf8'),
     readFile(new URL('../astro.config.mjs', import.meta.url), 'utf8'),
   ]);
 
-  assert.match(page, /robots="noindex,follow"/);
-  assert.match(page, /data-pagefind-ignore/);
+  assert.doesNotMatch(page, /robots="noindex,follow"/);
+  assert.match(page, /data-pagefind-body/);
   assert.match(page, /paymentLinksReady && supportPaymentLinks\.oneTime/);
   assert.match(page, /paymentLinksReady && option\.href/);
-  assert.doesNotMatch(page, /data-pagefind-body/);
   assert.doesNotMatch(page, /\bCe qu(?:e|i|['’])/);
-  assert.doesNotMatch(navigation, /\/soutenir\//);
+  assert.match(navigation, /\{ href: '\/soutenir\/', label: 'Soutenir'/);
+  assert.match(homeSidebar, /<SupportCard \/>[\s\S]*\/\/ recherche/);
+  assert.match(articlePage, /<SupportCard compact \/>[\s\S]*<ArticleNavigator/);
+  assert.match(supportCard, /href="\/soutenir\/"/);
   assert.doesNotMatch(footer, /\/soutenir\//);
   assert.doesNotMatch(privacy, /\/soutenir\//);
-  assert.match(astroConfig, /page !== 'https:\/\/l0g\.fr\/soutenir\/'/);
+  assert.doesNotMatch(astroConfig, /page !== 'https:\/\/l0g\.fr\/soutenir\/'/);
 });

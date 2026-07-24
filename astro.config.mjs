@@ -19,7 +19,6 @@ export default defineConfig({
 
   integrations: [mdx(), sitemap({
     filter: (page) => page !== 'https://l0g.fr/recherche/'
-      && page !== 'https://l0g.fr/soutenir/'
       && (
         page === 'https://l0g.fr/glossaire/'
         || !page.startsWith('https://l0g.fr/glossaire/')
