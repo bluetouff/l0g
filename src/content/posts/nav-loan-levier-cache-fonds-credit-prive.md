@@ -56,7 +56,7 @@ Le point systémique n'est pas l'usage individuel, mais l'empilement. Les entrep
 <svg viewBox="0 0 720 340" role="img" aria-label="L'empilement des trois étages de levier autour d'un portefeuille de capital-investissement" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Trois étages de dette sur les mêmes actifs</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Le NAV loan ajoute un levier au niveau du fonds, entre la dette des entreprises et celle des investisseurs.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Le NAV loan ajoute un levier au niveau du fonds, entre la dette des entreprises et celle des investisseurs.</text>
   <rect x="120" y="84" width="480" height="56" rx="8" fill="none" stroke="#7aa2f7" stroke-width="1.4"></rect>
   <text x="360" y="108" fill="#e7e9ee" font-size="13" text-anchor="middle" font-weight="600">Étage 3 : investisseurs (LP)</text>
   <text x="360" y="128" fill="#8b909b" font-size="10.5" text-anchor="middle">levier propre des assureurs, BDC, fonds de fonds</text>
@@ -102,7 +102,7 @@ Le fait qu'il ait fallu la réclamer est l'information. Jusqu'à cette guidance,
     <rect x="590" y="90" width="70" height="160" fill="#ff4d87" opacity="0.9"></rect>
     <text x="625" y="82" fill="#ff4d87" font-size="11" font-weight="700">600</text>
     <text x="625" y="268" fill="#8b909b" font-size="10.5">2030 (haut)</text>
-    <text x="625" y="284" fill="#8b909b" font-size="9.5">(Fund Finance Assoc.)</text>
+    <text x="625" y="284" fill="#8b909b" font-size="9.5" textLength="89" lengthAdjust="spacingAndGlyphs">(Fund Finance Assoc.)</text>
   </g>
   <text x="32" y="308" fill="#8b909b" font-size="11">Déploiement 2025 : ~70 Md$ (17Capital). Les projections divergent sur l'ampleur, pas sur la direction.</text>
 </svg>

@@ -42,7 +42,7 @@ Investor Michael Burry brought the subject into the open in late 2025. According
   <g font-size="11">
     <text x="242" y="104" fill="#d6d9df" text-anchor="end">Google, Oracle, Microsoft</text>
     <rect x="250" y="92" width="360" height="22" fill="#5eead4" opacity="0.85"></rect>
-    <text x="618" y="108" fill="#5eead4" font-weight="700">up to 6 years (depreciated)</text>
+    <text x="618" y="108" fill="#5eead4" font-weight="700" textLength="96" lengthAdjust="spacingAndGlyphs">up to 6 years (depreciated)</text>
     <text x="242" y="154" fill="#d6d9df" text-anchor="end">Estimated life (M. Burry)</text>
     <rect x="250" y="142" width="150" height="22" fill="#ff4d87" opacity="0.9"></rect>
     <text x="408" y="158" fill="#ff4d87" font-weight="700">2 to 3 years</text>
@@ -90,7 +90,7 @@ A residual value guarantee does not make the depreciation risk disappear. It tra
   <path d="M447 200 l3 10 l7 -7 z" fill="#ff4d87"></path>
   <text x="590" y="250" fill="#8b909b" font-size="10.5" text-anchor="middle">the guarantor</text>
   <text x="590" y="266" fill="#8b909b" font-size="10.5" text-anchor="middle">bears the risk</text>
-  <text x="32" y="308" fill="#8b909b" font-size="11.5">The lender gets a floor; the guarantor inherits a commitment that triggers in the worst scenario.</text>
+  <text x="32" y="308" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">The lender gets a floor; the guarantor inherits a commitment that triggers in the worst scenario.</text>
   <text x="32" y="326" fill="#8b909b" font-size="11">l0g diagram, based on the Meta-Blue Owl, CoreWeave and Apollo-Anthropic structures.</text>
 </svg>
 <figcaption>In these structures, the debt leaves the operator's balance sheet, but the depreciation risk returns to it through the guarantee. The lender is protected as long as the guarantor holds. l0g diagram.</figcaption>
@@ -125,7 +125,7 @@ The most useful reminder comes from autos. In 2008, the collapse of vehicle resa
   </g>
   <line x1="640" y1="90" x2="640" y2="240" stroke="#ff4d87" stroke-width="1.5" stroke-dasharray="5 4"></line>
   <text x="636" y="108" fill="#ff4d87" font-size="10.5" text-anchor="end">Meta RVG: 16 years</text>
-  <text x="32" y="292" fill="#8b909b" font-size="11.5">The guarantee protects the lender for sixteen years on an asset that has lost half its value in three.</text>
+  <text x="32" y="292" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">The guarantee protects the lender for sixteen years on an asset that has lost half its value in three.</text>
   <text x="32" y="310" fill="#8b909b" font-size="11">Markdown order of magnitude: Quartz. Guarantee horizon: Global Data Center Hub.</text>
 </svg>
 <figcaption>The timing mismatch is the sensitive point: the guarantee covers a long horizon, the asset depreciates fast. Between the two, the guarantor absorbs the difference. Sources: Quartz, Global Data Center Hub.</figcaption>

@@ -82,7 +82,7 @@ Ce profil non linéaire est le vrai message d'une note. L'écart entre AAA et BB
     <rect x="496" y="98" width="54" height="152" fill="#ff4d87"></rect>
     <text x="523" y="266" fill="#8b909b" font-size="11">CCC / C</text><text x="523" y="90" fill="#ff4d87" font-size="11" font-weight="700">26</text>
   </g>
-  <text x="32" y="298" fill="#8b909b" font-size="11">Sur 5 ans cumulés : &lt; 2 % de défauts en investment grade, &gt; 20 % pour un B. Sources : S&P Global, données historiques.</text>
+  <text x="32" y="298" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sur 5 ans cumulés : &lt; 2 % de défauts en investment grade, &gt; 20 % pour un B. Sources : S&P Global, données historiques.</text>
 </svg>
 <figcaption>La note ne mesure pas un risque linéaire mais un risque qui s'emballe dans le bas de l'échelle. Quelques crans de plus, et la probabilité de défaut change d'ordre de grandeur. Source : S&P Global.</figcaption>
 </figure>

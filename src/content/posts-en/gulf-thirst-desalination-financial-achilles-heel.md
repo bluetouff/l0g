@@ -42,7 +42,7 @@ This architecture stacks three fragilities that multiply each other. Concentrati
   <rect x="180" y="294" width="90" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="172" y="314" fill="#d6d9df" font-size="12" text-anchor="end">Saudi Arabia</text>
   <text x="278" y="314" fill="#f5f6f8" font-size="12" font-weight="700">18%</text>
-  <text x="32" y="348" fill="#8b909b" font-size="11">Sources: Al Jazeera (March 2026, regional data), AP/KSAT for Kuwait, Reuters via Middle East Eye for Bahrain and the UAE.</text>
+  <text x="32" y="348" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: Al Jazeera (March 2026, regional data), AP/KSAT for Kuwait, Reuters via Middle East Eye for Bahrain and the UAE.</text>
 </svg>
 <figcaption>More than 400 plants produce 40% of the world's desalinated water. Of total water use, dependence runs from 18 to 61%; of the water people drink, it exceeds 90% in four of the six monarchies. The water table is no longer an alternative, it is an emergency reserve. Sources cited.</figcaption>
 </figure>
@@ -65,9 +65,9 @@ This asymmetry is the strategic heart of the case. An oil embargo negotiates ove
   <text x="222" y="170" fill="#d6d9df" font-size="12" text-anchor="end">Water: Qatar (mega-reservoirs)</text>
   <text x="273" y="170" fill="#f5f6f8" font-size="13" font-weight="700">~7 days</text>
   <rect x="230" y="202" width="12" height="36" fill="#ff4d87" opacity="0.9"/>
-  <text x="222" y="226" fill="#d6d9df" font-size="12" text-anchor="end">Water: regional order of magnitude</text>
+  <text x="222" y="226" fill="#d6d9df" font-size="12" text-anchor="end" textLength="218" lengthAdjust="spacingAndGlyphs">Water: regional order of magnitude</text>
   <text x="250" y="226" fill="#f5f6f8" font-size="13" font-weight="700">"within days"</text>
-  <text x="32" y="268" fill="#8b909b" font-size="11">Sources: IEA (90-day rule), Qatari storage programmes, AP wires of 17 July 2026 for the Kuwaiti order of magnitude.</text>
+  <text x="32" y="268" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: IEA (90-day rule), Qatari storage programmes, AP wires of 17 July 2026 for the Kuwaiti order of magnitude.</text>
   <text x="32" y="286" fill="#8b909b" font-size="11">An oil embargo negotiates in months; a water interruption, in a week.</text>
 </svg>
 <figcaption>The oil states equipped the world with energy cushions measured in months, but their own water stores only in days. That asymmetry makes every desalination plant a faster lever of coercion than anything the energy market knows. Sources cited, orders of magnitude.</figcaption>

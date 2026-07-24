@@ -21,7 +21,7 @@ Cette architecture cumule trois fragilités qui se multiplient. La concentration
 <svg viewBox="0 0 720 360" role="img" aria-label="Dépendance des pays du Golfe au dessalement, en part de l'eau totale et de l'eau potable" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La dépendance au dessalement, pays par pays</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Part du dessalement dans l'eau totale consommée (barres) ; l'eau potable en dépend bien davantage.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Part du dessalement dans l'eau totale consommée (barres) ; l'eau potable en dépend bien davantage.</text>
   <rect x="180" y="84" width="305" height="30" fill="#ff4d87" opacity="0.85"/>
   <text x="172" y="104" fill="#d6d9df" font-size="12" text-anchor="end">Qatar</text>
   <text x="493" y="104" fill="#f5f6f8" font-size="12" font-weight="700">61 % (eau potable : &gt;99 %)</text>
@@ -40,7 +40,7 @@ Cette architecture cumule trois fragilités qui se multiplient. La concentration
   <rect x="180" y="294" width="90" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="172" y="314" fill="#d6d9df" font-size="12" text-anchor="end">Arabie saoudite</text>
   <text x="278" y="314" fill="#f5f6f8" font-size="12" font-weight="700">18 %</text>
-  <text x="32" y="348" fill="#8b909b" font-size="11">Sources : Al Jazeera (mars 2026, données régionales), AP/KSAT pour le Koweït, Reuters via Middle East Eye pour Bahreïn et les Émirats.</text>
+  <text x="32" y="348" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Al Jazeera (mars 2026, données régionales), AP/KSAT pour le Koweït, Reuters via Middle East Eye pour Bahreïn et les Émirats.</text>
 </svg>
 <figcaption>Plus de 400 usines produisent 40 % de l'eau dessalée mondiale. Sur l'eau totale, la dépendance va de 18 à 61 % ; sur l'eau que l'on boit, elle dépasse 90 % dans quatre des six monarchies. La nappe phréatique n'est plus une alternative, c'est une réserve d'urgence. Sources citées.</figcaption>
 </figure>
@@ -63,9 +63,9 @@ Cette asymétrie est le cœur stratégique du dossier. Un embargo pétrolier se 
   <text x="222" y="170" fill="#d6d9df" font-size="12" text-anchor="end">Eau : Qatar (méga-réservoirs)</text>
   <text x="273" y="170" fill="#f5f6f8" font-size="13" font-weight="700">~7 jours</text>
   <rect x="230" y="202" width="12" height="36" fill="#ff4d87" opacity="0.9"/>
-  <text x="222" y="226" fill="#d6d9df" font-size="12" text-anchor="end">Eau : ordre de grandeur régional</text>
+  <text x="222" y="226" fill="#d6d9df" font-size="12" text-anchor="end" textLength="218" lengthAdjust="spacingAndGlyphs">Eau : ordre de grandeur régional</text>
   <text x="250" y="226" fill="#f5f6f8" font-size="13" font-weight="700">« quelques jours »</text>
-  <text x="32" y="268" fill="#8b909b" font-size="11">Sources : AIE (règle des 90 jours), programmes qatariens de stockage, dépêches AP du 17 juillet 2026 pour l'ordre de grandeur koweïtien.</text>
+  <text x="32" y="268" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : AIE (règle des 90 jours), programmes qatariens de stockage, dépêches AP du 17 juillet 2026 pour l'ordre de grandeur koweïtien.</text>
   <text x="32" y="286" fill="#8b909b" font-size="11">Un embargo pétrolier se négocie en mois ; une interruption d'eau, en une semaine.</text>
 </svg>
 <figcaption>Les États du pétrole ont doté le monde de coussins énergétiques de plusieurs mois, mais leur propre eau ne se stocke qu'en jours. Cette asymétrie fait de chaque usine de dessalement un levier de contrainte plus rapide que tout ce que le marché de l'énergie connaît. Sources citées, ordres de grandeur.</figcaption>

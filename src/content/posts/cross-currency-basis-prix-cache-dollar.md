@@ -55,7 +55,7 @@ Ces deux forces expliquent pourquoi le basis se creuse surtout aux dates de bila
   <text x="32" y="196" fill="#ff4d87" font-size="12">STRESS AIGU (2008, 2011-12, mars 2020)</text>
   <rect x="300" y="184" width="360" height="22" fill="#ff4d87" opacity="0.85"></rect>
   <text x="32" y="216" fill="#8b909b" font-size="10"></text>
-  <text x="300" y="240" fill="#8b909b" font-size="11">jusqu'à plusieurs centaines de points de base sur certaines devises</text>
+  <text x="300" y="240" fill="#8b909b" font-size="11" textLength="414" lengthAdjust="spacingAndGlyphs">jusqu'à plusieurs centaines de points de base sur certaines devises</text>
   <text x="32" y="280" fill="#d6d9df" font-size="12">Les lignes de swap de la Fed, en 2008 et 2020, ont resserré l'écart.</text>
 </svg>
 <figcaption>Proche de zéro avant 2008, le basis s'est installé entre 20 et 100 points de base en régime normal, et a explosé lors des crises, jusqu'à plusieurs centaines de points de base sur des devises comme le won coréen en 2008. Sources : BIS, FMI, Réserve fédérale.</figcaption>

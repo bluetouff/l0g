@@ -80,8 +80,8 @@ Selon ce papier, Hangang est une implémentation du [grand livre unifié](/gloss
 <polygon points="576,224 590,230 576,236" fill="#ff4d87"/>
 <rect x="596" y="210" width="64" height="40" rx="6" fill="none" stroke="#ff4d87" stroke-width="2"/>
 <text x="628" y="235" text-anchor="middle" fill="#ff4d87" font-size="12">1 pas</text>
-<text x="20" y="300" fill="#8b909b" font-size="12">Le règlement final en monnaie de banque centrale préserve le système à deux niveaux et l'unicité de la</text>
-<text x="20" y="318" fill="#8b909b" font-size="12">monnaie. Source : Ryu, Shin, Sung, Yun, « A unified ledger in practice », ECB Forum 2026 ; BIS (2023).</text>
+<text x="20" y="300" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">Le règlement final en monnaie de banque centrale préserve le système à deux niveaux et l'unicité de la</text>
+<text x="20" y="318" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">monnaie. Source : Ryu, Shin, Sung, Yun, « A unified ledger in practice », ECB Forum 2026 ; BIS (2023).</text>
 </svg>
 </figure>
 

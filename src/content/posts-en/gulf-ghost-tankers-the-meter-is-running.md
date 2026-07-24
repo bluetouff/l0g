@@ -21,7 +21,7 @@ The 230 most likely measures something else: tankers present in the Gulf at a gi
 <svg viewBox="0 0 720 340" role="img" aria-label="Autopsy of the count of tankers trapped in the Gulf" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Trapped tankers: the count and its caption</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Big loaded non-Iranian crude tankers trapped in the Gulf (Bloomberg tracking), and the 14 July press figure.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Big loaded non-Iranian crude tankers trapped in the Gulf (Bloomberg tracking), and the 14 July press figure.</text>
   <text x="40" y="104" fill="#d6d9df" font-size="12">Late February (closure)</text>
   <rect x="250" y="90" width="196" height="24" fill="#ff4d87" opacity="0.9"></rect>
   <text x="456" y="107" fill="#ff4d87" font-size="12" font-weight="700">109</text>
@@ -34,7 +34,7 @@ The 230 most likely measures something else: tankers present in the Gulf at a gi
   <text x="40" y="260" fill="#d6d9df" font-size="12">"~230" (press, 14 July)</text>
   <rect x="250" y="246" width="414" height="24" fill="#7aa2f7" opacity="0.45"></rect>
   <text x="270" y="263" fill="#f5f6f8" font-size="12" font-weight="700">different measure: ships present, not ships trapped</text>
-  <text x="32" y="300" fill="#8b909b" font-size="11.5">Flows: 18 to 22 passages a day before the fighting; 6 in twelve hours on 11 July; voyages down 52% in a week.</text>
+  <text x="32" y="300" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Flows: 18 to 22 passages a day before the fighting; 6 in twelve hours on 11 July; voyages down 52% in a week.</text>
   <text x="32" y="322" fill="#8b909b" font-size="11">Sources: Bloomberg (ship tracking), TheStreet, Al Jazeera, Kpler.</text>
 </svg>
 <figcaption>Round one's stock of trapped ships was nearly cleared by 9 July. The 230 figure conflates presence with entrapment; round two's count has yet to be made. Sources: Bloomberg, CNBC, TheStreet, Al Jazeera, Kpler.</figcaption>
@@ -84,7 +84,7 @@ Since 13 July an openly declared layer sits on top of that private stack. Announ
 <svg viewBox="0 0 720 330" role="img" aria-label="Stacked costs of a Hormuz transit for a VLCC, orders of magnitude" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">One VLCC transit: the cost stack</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Orders of magnitude in millions of dollars, $138m hull, ~2 million barrels of cargo. Quotes from different dates.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Orders of magnitude in millions of dollars, $138m hull, ~2 million barrels of cargo. Quotes from different dates.</text>
   <text x="40" y="104" fill="#d6d9df" font-size="12">Pre-war war risk</text>
   <rect x="260" y="90" width="4" height="24" fill="#5eead4"></rect>
   <text x="274" y="107" fill="#5eead4" font-size="12" font-weight="700">~0.3</text>

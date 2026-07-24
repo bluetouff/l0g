@@ -39,7 +39,7 @@ Venons-en aux chiffres publiés chaque mercredi par l'agence américaine d'infor
   <text x="225" y="72" fill="#5eead4" font-size="11" font-weight="700" text-anchor="middle">31,5 (3 avr.)</text>
   <circle cx="690" cy="237.8" r="4.5" fill="#ff4d87"></circle>
   <text x="676" y="228" fill="#ff4d87" font-size="11" font-weight="700" text-anchor="end">19,7 (26 juin)</text>
-  <text x="470" y="248" fill="#f5b13d" font-size="11">Plancher d'exploitation estimé, ~20 Mb</text>
+  <text x="470" y="248" fill="#f5b13d" font-size="11" textLength="244" lengthAdjust="spacingAndGlyphs">Plancher d'exploitation estimé, ~20 Mb</text>
   <text x="70" y="320" fill="#8b909b" font-size="10.5" text-anchor="start">6 mars</text>
   <text x="496" y="320" fill="#8b909b" font-size="10.5" text-anchor="middle">22 mai</text>
   <text x="690" y="320" fill="#8b909b" font-size="10.5" text-anchor="end">26 juin</text>
@@ -58,7 +58,7 @@ Une cuve de stockage ne se vide jamais complètement. Au fond stagne une couche 
 <svg viewBox="0 0 720 320" role="img" aria-label="Niveau des stocks de Cushing rapporté à sa capacité et à son plancher d'exploitation" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="320" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">26 % de la capacité, au ras du plancher</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Stocks de Cushing rapportés à sa capacité utile et à son seuil d'exploitation, en millions de barils.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Stocks de Cushing rapportés à sa capacité utile et à son seuil d'exploitation, en millions de barils.</text>
   <text x="40" y="88" fill="#d6d9df" font-size="12">Capacité utile du terminal</text>
   <rect x="40" y="98" width="600" height="20" fill="#2a2c33"></rect>
   <rect x="40" y="98" width="600" height="20" fill="#8b909b" opacity="0.55"></rect>

@@ -21,7 +21,7 @@ The picture worsens, by contrast, for households. Standards tightened by **9%** 
 <svg viewBox="0 0 720 300" role="img" aria-label="Net tightening of credit standards in the euro area in the second quarter of 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The tightening, far below the fears</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Net tightening of credit standards, in % of banks, Q2 2026. Source: ECB, survey of 21 July 2026.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Net tightening of credit standards, in % of banks, Q2 2026. Source: ECB, survey of 21 July 2026.</text>
   <line x1="170" y1="86" x2="170" y2="250" stroke="#2a2c33" stroke-width="1"/>
   <rect x="170" y="96" width="112" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="162" y="118" fill="#d6d9df" font-size="12" text-anchor="end">Firms</text>
@@ -59,7 +59,7 @@ The real systemic question is neither the bank channel alone nor the private cha
 <svg viewBox="0 0 720 330" role="img" aria-label="The links between banks, private debt funds, borrowers and investors" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Credit changed balance sheet, not risk</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Bank and private-credit entanglement. Source: FSB, report on vulnerabilities in private credit (6 May 2026).</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Bank and private-credit entanglement. Source: FSB, report on vulnerabilities in private credit (6 May 2026).</text>
   <rect x="40" y="140" width="150" height="60" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="115" y="165" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Banks</text>
   <text x="115" y="185" fill="#8b909b" font-size="11" text-anchor="middle">regulated</text>

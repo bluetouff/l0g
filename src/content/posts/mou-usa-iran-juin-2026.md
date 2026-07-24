@@ -108,7 +108,7 @@ C'est peut-être là que le deal est le plus explosif. Il fracture le camp de Tr
 <text x="483" y="146" fill="#8b909b">Moreno, et l'opinion</text>
 <text x="483" y="164" fill="#8b909b">majoritairement contre la guerre</text>
 </g>
-<text x="20" y="232" fill="#8b909b" font-size="12">Les démocrates attaquent des deux côtés ; le Congrès a été tenu à l'écart du texte avant sa diffusion.</text>
+<text x="20" y="232" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">Les démocrates attaquent des deux côtés ; le Congrès a été tenu à l'écart du texte avant sa diffusion.</text>
 <text x="20" y="250" fill="#8b909b" font-size="12">Sources : The Hill, NBC News, CNN, PBS, Foreign Policy (mai-juin 2026).</text>
 </svg>
 </figure>

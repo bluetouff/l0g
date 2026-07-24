@@ -29,7 +29,7 @@ The state of play, in mid-2026, is one of slow conversion. Per the counts drawn 
     <text x="90" y="70">June 2023</text>
     <text x="290" y="70">30 June 2024</text>
     <text x="470" y="70">30 Dec 2024</text>
-    <text x="650" y="70" fill="#ff4d87">1 July 2026</text>
+    <text x="650" y="70" fill="#ff4d87" textLength="64" lengthAdjust="spacingAndGlyphs">1 July 2026</text>
   </g>
   <g fill="#8b909b" font-size="11.5" text-anchor="middle">
     <text x="90" y="126">adoption</text>
@@ -37,7 +37,7 @@ The state of play, in mid-2026, is one of slow conversion. Per the counts drawn 
     <text x="290" y="140">(ART / EMT)</text>
     <text x="470" y="126">CASP regime</text>
     <text x="650" y="126" fill="#f5b13d">end of</text>
-    <text x="650" y="140" fill="#f5b13d">transition</text>
+    <text x="650" y="140" fill="#f5b13d" textLength="64" lengthAdjust="spacingAndGlyphs">transition</text>
   </g>
   <text x="60" y="185" fill="#8b909b" font-size="11">Conversion at 06/2026: ~210 CASP licences out of 1,200+ registered entities (~17%).</text>
 </svg>

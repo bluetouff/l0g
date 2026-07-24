@@ -49,8 +49,8 @@ En mars, la médiane des 19 participants plaçait le [taux directeur](/glossaire
 <text x="170" y="179" fill="#8b909b" font-size="13">2 : deux baisses</text>
 <text x="170" y="229" fill="#8b909b" font-size="13">2 : trois baisses</text>
 <text x="170" y="279" fill="#8b909b" font-size="13">1 : quatre baisses</text>
-<text x="20" y="332" fill="#8b909b" font-size="12">Médiane mars : une baisse en 2026, à 3,4 %. Depuis, l'IPC est monté à 4,2 % et le marché price désormais</text>
-<text x="20" y="350" fill="#8b909b" font-size="12">un relèvement en décembre. Source : Federal Reserve, Summary of Economic Projections, 18 mars 2026.</text>
+<text x="20" y="332" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">Médiane mars : une baisse en 2026, à 3,4 %. Depuis, l'IPC est monté à 4,2 % et le marché price désormais</text>
+<text x="20" y="350" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">un relèvement en décembre. Source : Federal Reserve, Summary of Economic Projections, 18 mars 2026.</text>
 </svg>
 </figure>
 

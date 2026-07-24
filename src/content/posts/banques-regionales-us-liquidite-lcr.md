@@ -19,7 +19,7 @@ Le 12 mars 2023, la Fed crée le [BTFP](/glossaire/#btfp), une facilité d'urgen
 <svg viewBox="0 0 720 300" role="img" aria-label="Chronologie de la crise des banques régionales américaines, de mars 2023 à mars 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">De la panique à la réforme</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Mars 2023 : trois faillites. Décembre 2025 : fin du resserrement. Mars 2026 : le cadre s'assouplit.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Mars 2023 : trois faillites. Décembre 2025 : fin du resserrement. Mars 2026 : le cadre s'assouplit.</text>
   <line x1="60" y1="150" x2="688" y2="150" stroke="#3a3d44" stroke-width="1.5"/>
   <circle cx="70" cy="150" r="6" fill="#ff4d87"/>
   <text x="70" y="120" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700">10 mars 23</text>
@@ -45,7 +45,7 @@ Le 12 mars 2023, la Fed crée le [BTFP](/glossaire/#btfp), une facilité d'urgen
   <text x="680" y="120" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">3 mars 26</text>
   <text x="680" y="180" fill="#d6d9df" font-size="11" text-anchor="middle">Réforme LCR</text>
   <text x="680" y="196" fill="#8b909b" font-size="10" text-anchor="middle">table ronde</text>
-  <text x="32" y="270" fill="#8b909b" font-size="11">Sept semaines de panique en 2023, puis trois ans de normalisation jusqu'au virage réglementaire de 2026.</text>
+  <text x="32" y="270" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sept semaines de panique en 2023, puis trois ans de normalisation jusqu'au virage réglementaire de 2026.</text>
 </svg>
 <figcaption>Chronologie de l'épisode, de la fermeture de SVB le 10 mars 2023 à la table ronde sur la liquidité du 3 mars 2026. Sources : FDIC, Federal Reserve, Bank Policy Institute. Dates et montants vérifiés un à un.</figcaption>
 </figure>

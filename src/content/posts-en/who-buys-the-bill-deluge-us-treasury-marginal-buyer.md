@@ -40,7 +40,7 @@ The amounts are becoming significant. [Tether](/en/glossary/usdt/) reports more 
   <rect x="230" y="218" width="4" height="36" fill="#ff4d87"/>
   <text x="222" y="242" fill="#d6d9df" font-size="12" text-anchor="end">Reverse repo (ex-cushion)</text>
   <text x="242" y="242" fill="#ff4d87" font-size="13" font-weight="700">~0 (2022 peak: ~2.5)</text>
-  <text x="32" y="288" fill="#8b909b" font-size="12">The reverse repo cushion is gone; demand must come from the other three pools, with uneven appetites.</text>
+  <text x="32" y="288" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">The reverse repo cushion is gone; demand must come from the other three pools, with uneven appetites.</text>
 </svg>
 <figcaption>Money funds and foreign holders remain the two dominant reservoirs; stablecoins add a captive but small demand. The pool that cushioned, reverse repo, has melted. Sources: ICI (money funds); Treasury, TIC data (foreign); attestations and press (stablecoins).</figcaption>
 </figure>

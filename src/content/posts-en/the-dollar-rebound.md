@@ -29,7 +29,7 @@ The mechanics are classic and worth spelling out: when the market revises the tr
   <rect x="40" y="108" width="600" height="24" fill="#2a2c33"></rect>
   <rect x="40" y="108" width="450" height="24" fill="#5eead4" opacity="0.9"></rect>
   <text x="498" y="125" fill="#5eead4" font-size="12" font-weight="700">3.75%</text>
-  <text x="560" y="125" fill="#f5b13d" font-size="11" font-weight="700">→ 3.8% (end-2026 median)</text>
+  <text x="560" y="125" fill="#f5b13d" font-size="11" font-weight="700" textLength="154" lengthAdjust="spacingAndGlyphs">→ 3.8% (end-2026 median)</text>
   <text x="40" y="160" fill="#d6d9df" font-size="12">ECB (deposit rate)</text>
   <rect x="40" y="170" width="600" height="24" fill="#2a2c33"></rect>
   <rect x="40" y="170" width="270" height="24" fill="#7aa2f7" opacity="0.9"></rect>

@@ -34,7 +34,7 @@ Voici le point que la plupart des commentaires manquent. Le Brent à 83 dollars 
   <polyline fill="none" stroke="#ff4d87" stroke-width="2.5" points="80,248 200,232 300,76 380,150 470,128 560,176 650,196"/>
   <g fill="#b8fff5" font-family="monospace" font-size="10" text-anchor="middle">
     <text x="80" y="268">28 fév</text><text x="200" y="268">mars</text><text x="300" y="268">avril</text>
-    <text x="470" y="268">mai</text><text x="650" y="268">15 juin</text>
+    <text x="470" y="268">mai</text><text x="650" y="268" textLength="44" lengthAdjust="spacingAndGlyphs">15 juin</text>
   </g>
   <circle cx="80" cy="248" r="4" fill="#5eead4"/><text x="92" y="244" fill="#5eead4" font-family="monospace" font-size="10">~71</text>
   <circle cx="300" cy="76" r="4" fill="#ff4d87"/><text x="300" y="64" fill="#ff4d87" font-family="monospace" font-size="10" text-anchor="middle">~106 (pic avril)</text>

@@ -19,7 +19,7 @@ Les 230 mesurent vraisemblablement autre chose : les tankers présents dans le G
 <svg viewBox="0 0 720 340" role="img" aria-label="Autopsie du comptage des tankers piégés dans le Golfe" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Tankers piégés : le comptage et sa légende</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Grands tankers de brut non iraniens chargés, piégés dans le Golfe (suivi Bloomberg), et chiffre presse du 14 juillet.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Grands tankers de brut non iraniens chargés, piégés dans le Golfe (suivi Bloomberg), et chiffre presse du 14 juillet.</text>
   <text x="40" y="104" fill="#d6d9df" font-size="12">Fin février (fermeture)</text>
   <rect x="250" y="90" width="196" height="24" fill="#ff4d87" opacity="0.9"></rect>
   <text x="456" y="107" fill="#ff4d87" font-size="12" font-weight="700">109</text>
@@ -32,7 +32,7 @@ Les 230 mesurent vraisemblablement autre chose : les tankers présents dans le G
   <text x="40" y="260" fill="#d6d9df" font-size="12">« ~230 » (presse, 14 juillet)</text>
   <rect x="250" y="246" width="414" height="24" fill="#7aa2f7" opacity="0.45"></rect>
   <text x="270" y="263" fill="#f5f6f8" font-size="12" font-weight="700">mesure différente : navires présents, pas navires piégés</text>
-  <text x="32" y="300" fill="#8b909b" font-size="11.5">Flux : 18 à 22 passages/jour avant les combats ; 6 en douze heures le 11 juillet ; traversées en repli de 52 % sur une semaine.</text>
+  <text x="32" y="300" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Flux : 18 à 22 passages/jour avant les combats ; 6 en douze heures le 11 juillet ; traversées en repli de 52 % sur une semaine.</text>
   <text x="32" y="322" fill="#8b909b" font-size="11">Sources : Bloomberg (pistage navires), TheStreet, Al Jazeera, Kpler.</text>
 </svg>
 <figcaption>Le stock de navires piégés du premier round était presque soldé le 9 juillet. Le chiffre de 230 mélange présence et piégeage ; le comptage du deuxième round reste à faire. Sources : Bloomberg, CNBC, TheStreet, Al Jazeera, Kpler.</figcaption>
@@ -54,7 +54,7 @@ Deux nuances empêchent d'en faire un récit de pénurie d'assurance. D'abord, l
 <svg viewBox="0 0 720 330" role="img" aria-label="Evolution de la prime d'assurance war risk pour une traversée d'Ormuz en 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La prime war risk, péage de marché du détroit</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Prime indicative par traversée, en % de la valeur de la coque. Cotations rapportées, variables selon le navire.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Prime indicative par traversée, en % de la valeur de la coque. Cotations rapportées, variables selon le navire.</text>
   <text x="92" y="264" fill="#d6d9df" font-size="12" text-anchor="middle">Avant-guerre</text>
   <rect x="62" y="235" width="60" height="5" fill="#5eead4"></rect>
   <text x="92" y="225" fill="#5eead4" font-size="12" font-weight="700" text-anchor="middle">0,15-0,25 %</text>
@@ -68,8 +68,8 @@ Deux nuances empêchent d'en faire un récit de pénurie d'assurance. D'abord, l
   <rect x="584" y="160" width="60" height="80" fill="#ff4d87" opacity="0.65"></rect>
   <text x="614" y="150" fill="#ff4d87" font-size="12" font-weight="700" text-anchor="middle">~5 % (norme)</text>
   <line x1="40" y1="240" x2="680" y2="240" stroke="#2a2c33" stroke-width="1"></line>
-  <text x="32" y="292" fill="#8b909b" font-size="11.5">Pour un VLCC valant 138 M$ : ~0,3 M$ avant-guerre, 10 à 14 M$ demandés au pic de mars, ~7 M$ à 5 %.</text>
-  <text x="32" y="314" fill="#8b909b" font-size="11">Sources : Lloyd's List (11 mars 2026), LMA (23 mars 2026), estimations de marché via Xinhua (11 juillet 2026).</text>
+  <text x="32" y="292" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Pour un VLCC valant 138 M$ : ~0,3 M$ avant-guerre, 10 à 14 M$ demandés au pic de mars, ~7 M$ à 5 %.</text>
+  <text x="32" y="314" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Lloyd's List (11 mars 2026), LMA (23 mars 2026), estimations de marché via Xinhua (11 juillet 2026).</text>
 </svg>
 <figcaption>La prime war risk est recotée à chaque incident : détendue après le mémorandum de juin, réinstallée autour de 5 % de la valeur de coque à la mi-juillet. Sources : Lloyd's List, LMA, Xinhua.</figcaption>
 </figure>
@@ -82,7 +82,7 @@ Deux nuances empêchent d'en faire un récit de pénurie d'assurance. D'abord, l
 <svg viewBox="0 0 720 330" role="img" aria-label="Couts empiles d'une traversee d'Ormuz pour un VLCC, ordres de grandeur" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Une traversée de VLCC : l'empilement des coûts</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Ordres de grandeur en millions de dollars, coque de 138 M$, cargaison ~2 millions de barils. Dates de cotation différentes.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Ordres de grandeur en millions de dollars, coque de 138 M$, cargaison ~2 millions de barils. Dates de cotation différentes.</text>
   <text x="40" y="104" fill="#d6d9df" font-size="12">War risk avant-guerre</text>
   <rect x="260" y="90" width="4" height="24" fill="#5eead4"></rect>
   <text x="274" y="107" fill="#5eead4" font-size="12" font-weight="700">~0,3</text>
@@ -95,8 +95,8 @@ Deux nuances empêchent d'en faire un récit de pénurie d'assurance. D'abord, l
   <text x="40" y="260" fill="#d6d9df" font-size="12">Péage annoncé de 20 % (si appliqué)</text>
   <rect x="260" y="246" width="396" height="24" fill="#7aa2f7" opacity="0.55"></rect>
   <text x="270" y="263" fill="#f5f6f8" font-size="12" font-weight="700">~33 (20 % de 2 Mb à ~83 $/b)</text>
-  <text x="32" y="296" fill="#8b909b" font-size="11.5">Plus l'attente : surestaries et location supérieures à 0,1 M$ par jour immobilisé (estimation de mars).</text>
-  <text x="32" y="318" fill="#8b909b" font-size="11">Sources : Lloyd's List, Xinhua, Fortior Law, TheStreet. Calcul de la ligne péage : l0g, ordre de grandeur.</text>
+  <text x="32" y="296" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Plus l'attente : surestaries et location supérieures à 0,1 M$ par jour immobilisé (estimation de mars).</text>
+  <text x="32" y="318" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Lloyd's List, Xinhua, Fortior Law, TheStreet. Calcul de la ligne péage : l0g, ordre de grandeur.</text>
 </svg>
 <figcaption>Assurance, attente, péage : chaque étage renchérit le même baril avant même qu'il navigue. Les cotations datent de moments différents de la crise et sont signalées comme telles. Sources : Lloyd's List, Xinhua, Fortior Law, TheStreet ; calcul l0g pour le péage.</figcaption>
 </figure>

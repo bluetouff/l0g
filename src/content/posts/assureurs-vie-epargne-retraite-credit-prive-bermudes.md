@@ -30,7 +30,7 @@ Ce déplacement ne s'est pas fait par hasard. Pour un gérant de crédit privé,
   <rect x="40" y="186" width="600" height="26" fill="#2a2c33"></rect>
   <rect x="40" y="186" width="204" height="26" fill="#ff4d87" opacity="0.9"></rect>
   <text x="254" y="204" fill="#ff4d87" font-size="12" font-weight="700">~1 900, soit près d'un tiers</text>
-  <text x="40" y="248" fill="#f5b13d" font-size="12">Assureurs adossés au capital-investissement : ~2x plus d'actifs illiquides que les autres (FMI).</text>
+  <text x="40" y="248" fill="#f5b13d" font-size="12" textLength="674" lengthAdjust="spacingAndGlyphs">Assureurs adossés au capital-investissement : ~2x plus d'actifs illiquides que les autres (FMI).</text>
   <text x="32" y="284" fill="#8b909b" font-size="11">Sources : American Banker ; FMI, Global Financial Stability Report (avril 2026).</text>
 </svg>
 <figcaption>Près d'un tiers du bilan des assureurs-vie américains est désormais investi en crédit privé, une proportion qui double chez les assureurs contrôlés par des gérants alternatifs. Sources : American Banker, FMI.</figcaption>

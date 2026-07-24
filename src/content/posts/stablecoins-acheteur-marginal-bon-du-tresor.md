@@ -38,7 +38,7 @@ L'intérêt pour Washington est direct. Alors que le Trésor émet massivement d
   <text x="490" y="270" fill="#8b909b" font-size="11.5" text-anchor="middle">projection 2028</text>
   <text x="620" y="120" fill="#f5b13d" font-size="11" text-anchor="middle">si le marché</text>
   <text x="620" y="136" fill="#f5b13d" font-size="11" text-anchor="middle">atteint 2 000 Md$</text>
-  <text x="32" y="300" fill="#8b909b" font-size="11">Source : Treasury Borrowing Advisory Committee (avril 2025). Tether porte à lui seul &gt; 141 Md$ d'exposition.</text>
+  <text x="32" y="300" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Source : Treasury Borrowing Advisory Committee (avril 2025). Tether porte à lui seul &gt; 141 Md$ d'exposition.</text>
 </svg>
 <figcaption>Le Trésor estime qu'environ 120 milliards de dollars de bons adossent déjà les stablecoins, et que la barre des 1 000 milliards serait franchie si le marché atteint 2 000 milliards en 2028. Source : TBAC.</figcaption>
 </figure>

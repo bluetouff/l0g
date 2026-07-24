@@ -67,11 +67,11 @@ This hardening is nothing mysterious. It answers a supply-and-demand equation wh
   <line x1="40" y1="126" x2="680" y2="126" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="156" fill="#d6d9df" font-size="12.5">Fed (quantitative tightening)</text>
   <text x="330" y="160" fill="#f5b13d" font-size="19" font-weight="700">+$2trn</text>
-  <text x="500" y="156" fill="#8b909b" font-size="11.5">of duration returned to the market</text>
+  <text x="500" y="156" fill="#8b909b" font-size="11.5" textLength="214" lengthAdjust="spacingAndGlyphs">of duration returned to the market</text>
   <line x1="40" y1="174" x2="680" y2="174" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="204" fill="#d6d9df" font-size="12.5">Foreign buyers</text>
   <text x="330" y="208" fill="#8b909b" font-size="19" font-weight="700">flat</text>
-  <text x="500" y="204" fill="#8b909b" font-size="11.5">below the supply rise since 2014</text>
+  <text x="500" y="204" fill="#8b909b" font-size="11.5" textLength="214" lengthAdjust="spacingAndGlyphs">below the supply rise since 2014</text>
   <line x1="40" y1="222" x2="680" y2="222" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="252" fill="#d6d9df" font-size="12.5">Hedge-fund basis trade</text>
   <text x="330" y="256" fill="#7aa2f7" font-size="19" font-weight="700">retreating</text>

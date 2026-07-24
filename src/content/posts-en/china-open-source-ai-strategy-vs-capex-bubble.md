@@ -21,7 +21,7 @@ This mechanism is familiar to us. It is the exported deflation we described in [
 <svg viewBox="0 0 720 300" role="img" aria-label="Collapse in the inference price of large language models" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The price of intelligence collapses</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Cost per million input tokens, GPT-4-level quality, in dollars. Sources: 2026 API price comparisons.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Cost per million input tokens, GPT-4-level quality, in dollars. Sources: 2026 API price comparisons.</text>
   <line x1="70" y1="92" x2="70" y2="240" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="240" x2="680" y2="240" stroke="#2a2c33" stroke-width="1"/>
   <rect x="120" y="100" width="90" height="140" fill="#ff4d87" opacity="0.85"/>
@@ -67,7 +67,7 @@ The return on these $725 billion assumes one thing: that the model layer keeps e
   <rect x="160" y="238" width="70" height="30" fill="#7aa2f7" opacity="0.85"/>
   <text x="152" y="259" fill="#d6d9df" font-size="12" text-anchor="end">Oracle</text>
   <text x="238" y="259" fill="#d6d9df" font-size="12">50</text>
-  <text x="32" y="300" fill="#f5b13d" font-size="12">About $725 billion for the top four, part of it debt-financed. The return assumes a model price that Chinese open source pushes toward zero.</text>
+  <text x="32" y="300" fill="#f5b13d" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">About $725 billion for the top four, part of it debt-financed. The return assumes a model price that Chinese open source pushes toward zero.</text>
 </svg>
 <figcaption>The hyperscalers are committing the equivalent of a mid-sized country's output in a single year, largely on credit. That bet rests on a margin at the model level that Chinese free-of-charge is eroding. Sources: company guidance; CreditSights estimates.</figcaption>
 </figure>

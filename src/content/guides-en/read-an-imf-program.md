@@ -47,7 +47,7 @@ Within these windows, several instruments meet distinct needs, per the [CRS](htt
 <svg viewBox="0 0 720 300" role="img" aria-label="The IMF's two windows and their instruments" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Two windows, several doors</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Where the Fund's credit comes from, by country profile. Sources: IMF; Congressional Research Service.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Where the Fund's credit comes from, by country profile. Sources: IMF; Congressional Research Service.</text>
   <rect x="40" y="84" width="320" height="188" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="56" y="110" fill="#7aa2f7" font-size="14" font-weight="700">GRA (non-concessional)</text>
   <text x="56" y="134" fill="#d6d9df" font-size="12">Market rates, all members</text>

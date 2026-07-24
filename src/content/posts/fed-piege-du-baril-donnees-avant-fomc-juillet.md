@@ -54,7 +54,7 @@ Le marché l'a compris. L'outil FedWatch du CME évaluait au 21 juillet à [83,4
 <svg viewBox="0 0 720 300" role="img" aria-label="La Fed coincée entre baisser et ne pas baisser" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le taux bloqué, les deux forces qui l'immobilisent</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Fourchette des fonds fédéraux inchangée depuis décembre 2025. Probabilité de statu quo le 29 juillet : 83,4 %.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Fourchette des fonds fédéraux inchangée depuis décembre 2025. Probabilité de statu quo le 29 juillet : 83,4 %.</text>
   <rect x="285" y="118" width="150" height="60" fill="none" stroke="#f5f6f8" stroke-width="1.5"/>
   <text x="360" y="143" fill="#f5f6f8" font-size="14" font-weight="700" text-anchor="middle">3,50 - 3,75 %</text>
   <text x="360" y="164" fill="#8b909b" font-size="11" text-anchor="middle">taux réel proche de 0</text>
@@ -66,7 +66,7 @@ Le marché l'a compris. L'outil FedWatch du CME évaluait au 21 juillet à [83,4
   <text x="575" y="156" fill="#8b909b" font-size="11" text-anchor="middle">Brent à 100 $,</text>
   <text x="575" y="172" fill="#8b909b" font-size="11" text-anchor="middle">anticipations menacées</text>
   <line x1="510" y1="148" x2="437" y2="148" stroke="#ff4d87" stroke-width="1.5"/>
-  <text x="32" y="270" fill="#8b909b" font-size="12">Monter ne ferait pas baisser le baril ; baisser reviendrait à assouplir dans un choc d'offre. Reste l'attente.</text>
+  <text x="32" y="270" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Monter ne ferait pas baisser le baril ; baisser reviendrait à assouplir dans un choc d'offre. Reste l'attente.</text>
 </svg>
 <figcaption>Le taux directeur est immobilisé entre une économie qui plaide pour la détente et un baril qui l'interdit. La politique monétaire ne peut rien contre un choc d'offre, elle ne peut que patienter. Sources : Réserve fédérale de New York ; CME FedWatch (21 juillet 2026).</figcaption>
 </figure>

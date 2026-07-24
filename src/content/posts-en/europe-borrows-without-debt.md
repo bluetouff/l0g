@@ -37,9 +37,9 @@ Five programmes, five emergency justifications, one signature. The method has an
   <text x="192" y="278" fill="#d6d9df" font-size="12" text-anchor="end">Ukraine loan (2026)</text>
   <text x="263" y="278" fill="#f5f6f8" font-size="12" font-weight="700">90</text>
   <rect x="200" y="308" width="11" height="40" fill="#8b909b" opacity="0.85"/>
-  <text x="192" y="334" fill="#d6d9df" font-size="12" text-anchor="end">EU share of the ERA loan (2024)</text>
+  <text x="192" y="334" fill="#d6d9df" font-size="12" text-anchor="end" textLength="188" lengthAdjust="spacingAndGlyphs">EU share of the ERA loan (2024)</text>
   <text x="219" y="334" fill="#f5f6f8" font-size="12" font-weight="700">18</text>
-  <text x="32" y="376" fill="#8b909b" font-size="11">Sources: European Commission (EU as a borrower), Council of the EU. Total outstanding: ~€827bn mid-2026, ~€1,000bn expected by end-2026.</text>
+  <text x="32" y="376" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: European Commission (EU as a borrower), Council of the EU. Total outstanding: ~€827bn mid-2026, ~€1,000bn expected by end-2026.</text>
 </svg>
 <figcaption>Each programme was voted as exceptional, temporary and capped. Their sum makes the Commission one of the continent's leading issuers, with a trillion euros of outstandings expected by the end of 2026. Sources: European Commission, Council.</figcaption>
 </figure>

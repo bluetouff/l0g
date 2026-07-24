@@ -19,7 +19,7 @@ Ce mécanisme nous est familier. C'est la déflation exportée que nous décrivi
 <svg viewBox="0 0 720 300" role="img" aria-label="Effondrement du prix de l'inférence des grands modèles de langage" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le prix de l'intelligence s'effondre</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Coût pour un million de tokens d'entrée, qualité niveau GPT-4, en dollars. Sources : comparateurs d'API 2026.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Coût pour un million de tokens d'entrée, qualité niveau GPT-4, en dollars. Sources : comparateurs d'API 2026.</text>
   <line x1="70" y1="92" x2="70" y2="240" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="240" x2="680" y2="240" stroke="#2a2c33" stroke-width="1"/>
   <rect x="120" y="100" width="90" height="140" fill="#ff4d87" opacity="0.85"/>
@@ -28,7 +28,7 @@ Ce mécanisme nous est familier. C'est la déflation exportée que nous décrivi
   <rect x="560" y="238" width="90" height="2" fill="#5eead4"/>
   <text x="605" y="228" fill="#5eead4" font-size="14" font-weight="700" text-anchor="middle">&lt; 0,10 $</text>
   <text x="605" y="258" fill="#8b909b" font-size="12" text-anchor="middle">2026</text>
-  <text x="32" y="286" fill="#8b909b" font-size="12">Environ 300 fois moins cher en trois ans, dont près de 80 % de baisse sur la seule dernière année.</text>
+  <text x="32" y="286" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Environ 300 fois moins cher en trois ans, dont près de 80 % de baisse sur la seule dernière année.</text>
 </svg>
 <figcaption>Un token de qualité GPT-4 coûtait 30 dollars le million en 2023 ; il en coûte aujourd'hui moins de 0,10. La baisse dépasse un facteur 300 en trois ans. Sources : comparateurs de prix d'API des grands modèles, 2026.</figcaption>
 </figure>
@@ -65,7 +65,7 @@ Le retour sur investissement de ces 725 milliards suppose une chose : que la cou
   <rect x="160" y="238" width="70" height="30" fill="#7aa2f7" opacity="0.85"/>
   <text x="152" y="259" fill="#d6d9df" font-size="12" text-anchor="end">Oracle</text>
   <text x="238" y="259" fill="#d6d9df" font-size="12">50</text>
-  <text x="32" y="300" fill="#f5b13d" font-size="12">Environ 725 milliards pour les quatre premiers, financés en partie par la dette. Le ROI suppose un prix du modèle que l'open source chinois pousse vers zéro.</text>
+  <text x="32" y="300" fill="#f5b13d" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Environ 725 milliards pour les quatre premiers, financés en partie par la dette. Le ROI suppose un prix du modèle que l'open source chinois pousse vers zéro.</text>
 </svg>
 <figcaption>Les hyperscalers engagent l'équivalent du produit intérieur brut d'un pays moyen en une seule année, largement à crédit. Ce pari repose sur une marge au niveau du modèle que la gratuité chinoise vient éroder. Sources : guidances des sociétés ; estimations CreditSights.</figcaption>
 </figure>

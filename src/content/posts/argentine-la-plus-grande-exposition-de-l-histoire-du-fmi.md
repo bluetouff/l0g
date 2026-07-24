@@ -19,7 +19,7 @@ Rapportée au portefeuille du prêteur, la concentration est plus frappante enco
 <svg viewBox="0 0 720 330" role="img" aria-label="Les cinq premiers emprunteurs du guichet général du FMI au 17 juillet 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Un portefeuille, un client</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Encours de crédit du guichet général (GRA) au 17 juillet 2026, en milliards de dollars, au taux DTS courant.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Encours de crédit du guichet général (GRA) au 17 juillet 2026, en milliards de dollars, au taux DTS courant.</text>
   <rect x="150" y="84" width="500" height="34" fill="#ff4d87" opacity="0.9"/>
   <text x="142" y="106" fill="#d6d9df" font-size="12" text-anchor="end">Argentine</text>
   <text x="158" y="106" fill="#0c0d10" font-size="13" font-weight="700">57,9 soit 46,1 % de l'encours</text>
@@ -59,7 +59,7 @@ Le calendrier tempère l'enthousiasme. L'[échéancier publié par le FMI](https
 <svg viewBox="0 0 720 340" role="img" aria-label="Échéancier des paiements de l'Argentine au FMI, 2026-2030" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La pente devant Buenos Aires</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Paiements dus au FMI sur l'encours existant, en milliards de dollars au taux DTS courant. Hors tirages restants.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Paiements dus au FMI sur l'encours existant, en milliards de dollars au taux DTS courant. Hors tirages restants.</text>
   <line x1="60" y1="280" x2="690" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <rect x="90" y="260" width="70" height="20" fill="#5eead4" opacity="0.9"/>
   <rect x="90" y="230" width="70" height="30" fill="#f5b13d" opacity="0.9"/>
@@ -99,14 +99,14 @@ Traversons maintenant le bilan dans l'autre sens, car la dépendance n'est pas �
 <svg viewBox="0 0 720 250" role="img" aria-label="Exposition argentine comparée aux soldes de précaution du FMI" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="250" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'exposition dépasse le coussin</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Milliards de dollars, au taux DTS courant. Soldes de précaution : projection FMI pour fin avril 2025.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Milliards de dollars, au taux DTS courant. Soldes de précaution : projection FMI pour fin avril 2025.</text>
   <rect x="240" y="88" width="440" height="44" fill="#ff4d87" opacity="0.9"/>
   <text x="232" y="115" fill="#d6d9df" font-size="12" text-anchor="end">Crédit à l'Argentine</text>
   <text x="248" y="115" fill="#0c0d10" font-size="13" font-weight="700">57,9</text>
   <rect x="240" y="150" width="268" height="44" fill="#5eead4" opacity="0.9"/>
   <text x="232" y="177" fill="#d6d9df" font-size="12" text-anchor="end">Soldes de précaution</text>
   <text x="248" y="177" fill="#0c0d10" font-size="13" font-weight="700">35,2</text>
-  <text x="32" y="228" fill="#8b909b" font-size="12">Un défaut argentin, même partiel, entamerait un coussin déjà inférieur à la seule exposition au pays.</text>
+  <text x="32" y="228" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Un défaut argentin, même partiel, entamerait un coussin déjà inférieur à la seule exposition au pays.</text>
 </svg>
 <figcaption>Le coussin de précaution du Fonds couvre environ deux tiers de la seule exposition argentine. Le statut de créancier privilégié fait le reste du travail, tant qu'il tient. Sources : FMI, évaluation de l'exposition financière (avril 2025), position financière au 30 juin 2026.</figcaption>
 </figure>

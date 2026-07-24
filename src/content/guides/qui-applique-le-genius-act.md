@@ -106,7 +106,7 @@ Le GENIUS Act impose que la plupart des règles d'application soient prises dans
   <text x="620" y="112" fill="#d6d9df" font-size="11" text-anchor="middle">au plus tard</text>
   <text x="620" y="98" fill="#f5b13d" font-size="10.5" text-anchor="middle">18 janv. 2027</text>
   <text x="620" y="222" fill="#8b909b" font-size="10.5" text-anchor="middle">entrée en vigueur</text>
-  <text x="620" y="236" fill="#8b909b" font-size="10.5" text-anchor="middle">ou 120 j après règles finales</text>
+  <text x="620" y="236" fill="#8b909b" font-size="10.5" text-anchor="middle" textLength="192" lengthAdjust="spacingAndGlyphs">ou 120 j après règles finales</text>
 </svg>
 <figcaption>La plupart des règles doivent être prises d'ici le <strong>18 juillet 2026</strong>, un an après la promulgation, l'entrée en vigueur intervenant au plus tard le <strong>18 janvier 2027</strong> ou cent vingt jours après les règles finales. Les six agences ont publié leurs projets, commentaires clos vers le 9 juin, mais aucun repli n'est prévu en cas de dépassement. Sources : Chapman and Cutler, tracker GENIUS Act ; Sullivan &amp; Cromwell ; Federal Register.</figcaption>
 </figure>

@@ -19,7 +19,7 @@ Chez TSMC, même grammaire. Les résultats du 16 juillet dépassent la fourchett
 <svg viewBox="0 0 720 330" role="img" aria-label="Le paradoxe de la correction : profits en hausse, multiples en baisse" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le paradoxe de juillet : les profits montent, le prix descend</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">À gauche, la réalité opérationnelle ; à droite, la sanction de marché. Données aux dates citées.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">À gauche, la réalité opérationnelle ; à droite, la sanction de marché. Données aux dates citées.</text>
   <line x1="360" y1="80" x2="360" y2="270" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="96" fill="#5eead4" font-size="13" font-weight="700">Les comptes</text>
   <text x="40" y="126" fill="#d6d9df" font-size="12">TSMC, CA T2 : +33,7 % sur un an</text>
@@ -33,7 +33,7 @@ Chez TSMC, même grammaire. Les résultats du 16 juillet dépassent la fourchett
   <text x="390" y="174" fill="#d6d9df" font-size="12">Nvidia : -16 %, ~1 000 Md$ effacés</text>
   <text x="390" y="198" fill="#d6d9df" font-size="12">Multiple Nvidia : 18x, plus bas depuis 2019</text>
   <text x="390" y="222" fill="#d6d9df" font-size="12">Marvell, ARM, Intel : -30 % et plus</text>
-  <text x="40" y="266" fill="#8b909b" font-size="11.5">La correction porte sur le multiple de valorisation, pas sur les bénéfices publiés ni sur les estimations.</text>
+  <text x="40" y="266" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">La correction porte sur le multiple de valorisation, pas sur les bénéfices publiés ni sur les estimations.</text>
   <text x="32" y="302" fill="#8b909b" font-size="11">Sources : TSMC (6-K du 16 juillet 2026), Bloomberg (8 et 17 juillet 2026).</text>
 </svg>
 <figcaption>Un marché baissier déclenché sans avertissement sur résultats : les comptes battent les attentes pendant que le secteur perd un cinquième de sa valeur. Sources : TSMC, Bloomberg.</figcaption>
@@ -78,7 +78,7 @@ Cette migration a toutefois sa propre fragilité, et elle est historique : la m�
   <text x="40" y="260" fill="#d6d9df" font-size="12">Micron (mémoire)</text>
   <rect x="220" y="246" width="412" height="24" fill="#ff4d87" opacity="0.85"></rect>
   <text x="500" y="263" fill="#0c0d10" font-size="12" font-weight="700">+229 % (après +239 % en 2025)</text>
-  <text x="40" y="300" fill="#8b909b" font-size="11.5">SK Hynix : ~+248 % en 2026, entrée dans le club des 1 000 Md$ de capitalisation aux côtés de Micron.</text>
+  <text x="40" y="300" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">SK Hynix : ~+248 % en 2026, entrée dans le club des 1 000 Md$ de capitalisation aux côtés de Micron.</text>
   <text x="32" y="324" fill="#8b909b" font-size="11">Sources : Bloomberg (via Yahoo Finance, 8 juillet 2026), Yahoo Finance, IG.</text>
 </svg>
 <figcaption>Le capital ne sort pas du thème IA, il migre du calcul vers la mémoire, historiquement le compartiment le plus cyclique de l'industrie. Sources : Bloomberg, Yahoo Finance, IG.</figcaption>

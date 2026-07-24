@@ -104,7 +104,7 @@ That it had to be demanded is the information. Until this guidance, a fund could
     <rect x="590" y="90" width="70" height="160" fill="#ff4d87" opacity="0.9"></rect>
     <text x="625" y="82" fill="#ff4d87" font-size="11" font-weight="700">600</text>
     <text x="625" y="268" fill="#8b909b" font-size="10.5">2030 (high)</text>
-    <text x="625" y="284" fill="#8b909b" font-size="9.5">(Fund Finance Assoc.)</text>
+    <text x="625" y="284" fill="#8b909b" font-size="9.5" textLength="89" lengthAdjust="spacingAndGlyphs">(Fund Finance Assoc.)</text>
   </g>
   <text x="32" y="308" fill="#8b909b" font-size="11">2025 deployment: ~$70bn (17Capital). Projections diverge on scale, not on direction.</text>
 </svg>

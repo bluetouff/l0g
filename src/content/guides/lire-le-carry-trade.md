@@ -25,7 +25,7 @@ Toutes les monnaies ne se valent pas pour ce jeu. Une bonne devise de financemen
 <svg viewBox="0 0 720 320" role="img" aria-label="Écart de taux entre devises de financement et de destination du carry trade" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="320" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'écart de taux, moteur du portage</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Taux directeurs à titre indicatif, mi-2026. Le portage capte l'écart entre financement et destination.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Taux directeurs à titre indicatif, mi-2026. Le portage capte l'écart entre financement et destination.</text>
   <text x="40" y="88" fill="#d6d9df" font-size="12">Japon (devise de financement)</text>
   <rect x="40" y="98" width="600" height="20" fill="#2a2c33"></rect>
   <rect x="40" y="98" width="43" height="20" fill="#8b909b" opacity="0.75"></rect>
@@ -65,7 +65,7 @@ C'est le point le plus important, et le plus mal compris. Le carry trade n'est p
   <text x="150" y="120" fill="#5eead4" font-size="12" font-weight="700">revenu régulier du portage</text>
   <text x="150" y="138" fill="#8b909b" font-size="11">l'écart de taux encaissé mois après mois</text>
   <text x="556" y="200" fill="#ff4d87" font-size="12" font-weight="700">débouclage</text>
-  <text x="404" y="284" fill="#8b909b" font-size="11">Des mois de gains réguliers effacés en quelques séances : le portage vend implicitement de la volatilité.</text>
+  <text x="404" y="284" fill="#8b909b" font-size="11" textLength="310" lengthAdjust="spacingAndGlyphs">Des mois de gains réguliers effacés en quelques séances : le portage vend implicitement de la volatilité.</text>
 </svg>
 <figcaption>La courbe de gains monte lentement, marche après marche, puis chute d'un coup. C'est le profil d'un vendeur d'assurance : une prime régulière, puis un sinistre brutal. <strong>Le portage prospère dans le calme et meurt dans la panique.</strong></figcaption>
 </figure>

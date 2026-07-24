@@ -18,7 +18,7 @@ The gilt market weighs close to **£3 trillion** per the orders of magnitude rel
 <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mechanics of leverage in gilt repo" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px">
   <rect width="760" height="360" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-family="monospace" font-size="17" font-weight="700">From gilt to leverage: the short funding that becomes risk</text>
-  <text x="32" y="60" fill="#8b909b" font-family="monospace" font-size="12">Simplified reading of a repo-financed arbitrage. Sources: BoE via FT and Times; BIS Annual Economic Report 2026.</text>
+  <text x="32" y="60" fill="#8b909b" font-family="monospace" font-size="12" textLength="722" lengthAdjust="spacingAndGlyphs">Simplified reading of a repo-financed arbitrage. Sources: BoE via FT and Times; BIS Annual Economic Report 2026.</text>
   <g font-family="monospace" font-size="13">
     <rect x="44" y="112" width="150" height="68" rx="7" fill="none" stroke="#5eead4" stroke-width="1.5"></rect>
     <text x="68" y="140" fill="#f5f6f8">Gilt</text>
@@ -48,7 +48,7 @@ The gilt market weighs close to **£3 trillion** per the orders of magnitude rel
     <path d="M346 238 l9 -5 v10 z"></path>
     <path d="M436 272 l-9 -5 v10 z"></path>
   </g>
-  <text x="44" y="335" fill="#8b909b" font-family="monospace" font-size="11">The risk is not the sovereign security itself, but the transformation of a supposedly liquid position into a forced sale.</text>
+  <text x="44" y="335" fill="#8b909b" font-family="monospace" font-size="11" textLength="710" lengthAdjust="spacingAndGlyphs">The risk is not the sovereign security itself, but the transformation of a supposedly liquid position into a forced sale.</text>
 </svg>
 <figcaption style="margin-top:0.65rem;color:#8b909b;font-size:0.9rem;line-height:1.55">A repo with a very low haircut maximises leverage. If margins rise or refinancing closes, the fund must find cash or reduce its position. In a crowded market, this can turn a liquid sovereign bond into a forced-sale asset.</figcaption>
 </figure>
@@ -92,7 +92,7 @@ The BIS's central figure is clear: in advanced economies, the NBFI share of sove
     <text x="354" y="206" fill="#d6d9df">27% in 2021</text>
     <text x="304" y="244" fill="#8b909b">17% in 2025</text>
   </g>
-  <text x="32" y="300" fill="#8b909b" font-family="monospace" font-size="11">Less official holding, more private intermediation: the market can stay liquid, but with more sensitivity to funding.</text>
+  <text x="32" y="300" fill="#8b909b" font-family="monospace" font-size="11" textLength="722" lengthAdjust="spacingAndGlyphs">Less official holding, more private intermediation: the market can stay liquid, but with more sensitivity to funding.</text>
 </svg>
 <figcaption style="margin-top:0.65rem;color:#8b909b;font-size:0.9rem;line-height:1.55">The BIS does not say NBFIs are all unstable. It says the public debt of advanced economies is increasingly absorbed by actors whose liquidity depends on prices, margins, redemptions and short funding.</figcaption>
 </figure>

@@ -31,7 +31,7 @@ L'origine de la ponction est connue : le 11 mars, en réponse à la flambée pro
   <text x="40" y="208" fill="#d6d9df" font-size="12">Plancher d'avril 1983</text>
   <rect x="250" y="194" width="178" height="24" fill="#f5b13d" opacity="0.75"></rect>
   <text x="438" y="211" fill="#f5b13d" font-size="12" font-weight="700">317,45</text>
-  <text x="40" y="252" fill="#8b909b" font-size="11.5">Libération de 172 millions de barils sur ~120 jours, annoncée le 11 mars 2026 ; la réserve est vide à 56 %.</text>
+  <text x="40" y="252" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">Libération de 172 millions de barils sur ~120 jours, annoncée le 11 mars 2026 ; la réserve est vide à 56 %.</text>
   <text x="32" y="282" fill="#8b909b" font-size="11">Sources : EIA (série hebdomadaire WCSSTUS1), Mansfield Energy, Rigzone, DOE.</text>
 </svg>
 <figcaption>La réserve américaine est passée sous son plancher de 1983. Le programme de déstockage de mars s'achève au moment précis où le choc repart. Sources : EIA, Rigzone, DOE.</figcaption>
@@ -61,7 +61,7 @@ Le socle sur lequel cette libération a puisé était documenté avant la crise 
   <text x="40" y="262" fill="#d6d9df" font-size="12">Ordre de grandeur restant (estimation)</text>
   <rect x="360" y="248" width="170" height="20" fill="#5eead4" opacity="0.9"></rect>
   <text x="536" y="263" fill="#5eead4" font-size="12" font-weight="700">~850</text>
-  <text x="32" y="298" fill="#8b909b" font-size="11">Sources : IEA (communiqués du 11 mars 2026 et historique 2022), CRS. Reste : calcul l0g, non affiné à la semaine.</text>
+  <text x="32" y="298" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : IEA (communiqués du 11 mars 2026 et historique 2022), CRS. Reste : calcul l0g, non affiné à la semaine.</text>
 </svg>
 <figcaption>La réponse de mars a engagé près d'un tiers des stocks gouvernementaux de l'OCDE en une seule décision. Le socle restant est une estimation, pas une donnée publiée. Sources : IEA, CRS, calcul l0g.</figcaption>
 </figure>

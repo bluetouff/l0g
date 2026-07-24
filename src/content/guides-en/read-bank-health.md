@@ -80,7 +80,7 @@ Here is the subtlest and most dangerous mechanism. When a bank buys bonds and in
   <text x="360" y="200" fill="#8b909b" font-size="11" text-anchor="middle">~$15bn</text>
   <text x="360" y="216" fill="#8b909b" font-size="11" text-anchor="middle">close to</text>
   <text x="360" y="232" fill="#8b909b" font-size="11" text-anchor="middle">its equity</text>
-  <text x="32" y="294" fill="#8b909b" font-size="11">In HTM, the gap stays invisible on the balance sheet, until a forced sale reveals it. Source: Federal Reserve.</text>
+  <text x="32" y="294" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">In HTM, the gap stays invisible on the balance sheet, until a forced sale reveals it. Source: Federal Reserve.</text>
 </svg>
 <figcaption>The portfolio stays recorded at its <strong>book value</strong>, well above its <strong>market value</strong>. The gap, the unrealized loss, hits equity only when the bank sells. At SVB it was around <strong>$15 billion</strong>, roughly the size of its equity. Source: Federal Reserve.</figcaption>
 </figure>

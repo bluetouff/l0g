@@ -48,10 +48,10 @@ Un point doit être posé d'emblée, car l'erreur d'analyse est tentante : la pu
     <text x="32" y="294" fill="#f5f6f8">vidéo / CTV</text>
     <rect x="180" y="284" width="430" height="14" fill="rgba(255,255,255,0.10)"/>
     <rect x="180" y="284" width="129" height="14" fill="#5eead4"/>
-    <text x="620" y="295" fill="#f5f6f8">≈ 80 à 110 Md$</text>
+    <text x="620" y="295" fill="#f5f6f8" textLength="94" lengthAdjust="spacingAndGlyphs">≈ 80 à 110 Md$</text>
   </g>
   <line x1="32" y1="312" x2="688" y2="312" stroke="rgba(255,255,255,0.20)" stroke-width="1"/>
-  <text x="32" y="330" fill="#8b909b" font-size="11">en rose, le retail media : segment le plus dynamique, porté par Amazon. Le search est le plus exposé au contournement agentique.</text>
+  <text x="32" y="330" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">en rose, le retail media : segment le plus dynamique, porté par Amazon. Le search est le plus exposé au contournement agentique.</text>
 </svg>
 <figcaption>Le marché publicitaire mondial 2025. Sources : WPP Media (déc. 2025) ; GroupM (EOY 2024) ; Statista 2025. Les segments ne s'additionnent pas exactement au total : périmètres et méthodologies diffèrent selon les cabinets.</figcaption>
 </figure>
@@ -93,7 +93,7 @@ Car le comportement marchand, lui, raconte une histoire plus nuancée et bien pl
   <rect x="650" y="100" width="70" height="100" fill="#5eead4"/>
   <text x="672" y="220" fill="#8b909b" font-size="10.5" text-anchor="middle">mars 26</text>
   <text x="672" y="92" fill="#5eead4" font-size="12" text-anchor="middle">+42 %</text>
-  <text x="32" y="352" fill="#8b909b" font-size="11">Le trafic IA convertissait moins bien que le trafic humain, puis a basculé fin 2025. Un signal récent, et limité au commerce de détail.</text>
+  <text x="32" y="352" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Le trafic IA convertissait moins bien que le trafic humain, puis a basculé fin 2025. Un signal récent, et limité au commerce de détail.</text>
 </svg>
 <figcaption>Écart de taux de conversion entre trafic venu d'une IA générative et trafic classique, commerce de détail américain. Source : Adobe Analytics / Adobe Digital Insights (mars 2025 à mars 2026), base supérieure à mille milliards de visites. Données propres au retail, non généralisables à l'ensemble du web.</figcaption>
 </figure>
@@ -160,7 +160,7 @@ Le troisième document est souvent surinterprété. Il s'agit d'un Internet-Draf
     <text x="60" y="348" fill="#0c0d10" font-size="16">Stablecoins · USDC · USDT</text>
     <text x="60" y="368" fill="#0c0d10" font-size="11.5">≈ 317 Md$ de capitalisation · ≈ 99 % libellés en dollar</text>
   </g>
-  <text x="44" y="410" fill="#8b909b" font-size="11">Chaque couche est confiée à une fondation neutre. La couche monétaire, elle, reste très majoritairement en dollar.</text>
+  <text x="44" y="410" fill="#8b909b" font-size="11" textLength="670" lengthAdjust="spacingAndGlyphs">Chaque couche est confiée à une fondation neutre. La couche monétaire, elle, reste très majoritairement en dollar.</text>
 </svg>
 <figcaption>La pile agentique se lit comme un règlement qui remonte : la monnaie finance le paiement, qui s'incruste dans les échanges entre outils puis entre agents. Sources : Anthropic ; Google ; Coinbase ; Linux Foundation ; Federal Reserve.</figcaption>
 </figure>

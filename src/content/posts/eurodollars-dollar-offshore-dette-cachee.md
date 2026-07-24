@@ -21,7 +21,7 @@ Pris ensemble, le crédit international, transfrontière et en devises, représe
 <svg viewBox="0 0 720 300" role="img" aria-label="Crédit en devises hors zone d'émission : dollar, euro, yen" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le crédit en devises, hors zone d'émission</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Encours aux emprunteurs non bancaires, fin 2025. Source : BIS, indicateurs de liquidité mondiale.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Encours aux emprunteurs non bancaires, fin 2025. Source : BIS, indicateurs de liquidité mondiale.</text>
   <text x="32" y="104" fill="#5eead4" font-size="12">DOLLAR (hors US)</text>
   <rect x="200" y="92" width="470" height="26" fill="#5eead4" opacity="0.85"></rect>
   <text x="210" y="110" fill="#0c0d10" font-size="12" font-weight="700">14 300 Md$ · +8,5 %</text>
@@ -47,7 +47,7 @@ La BIS a tenté de chiffrer cette dette manquante. Dans son estimation de réfé
 <svg viewBox="0 0 720 320" role="img" aria-label="Dette dollar visible au bilan contre dette cachée dans les swaps de change" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="320" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La dette dollar visible, et la dette cachée</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Non-banques hors US. Estimation BIS sur données 2022. Montants en milliers de milliards de dollars.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Non-banques hors US. Estimation BIS sur données 2022. Montants en milliers de milliards de dollars.</text>
   <text x="32" y="110" fill="#5eead4" font-size="12">AU BILAN (visible dans les statistiques)</text>
   <rect x="32" y="120" width="160" height="34" fill="#5eead4" opacity="0.85"></rect>
   <text x="204" y="142" fill="#d6d9df" font-size="12">~13 000 Md$</text>

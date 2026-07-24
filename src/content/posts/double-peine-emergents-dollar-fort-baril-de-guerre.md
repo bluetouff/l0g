@@ -27,7 +27,7 @@ De l'autre côté du ciseau, les gagnants encaissent. Les producteurs du Golfe e
 <svg viewBox="0 0 720 360" role="img" aria-label="Le ciseau des émergents : Brent en hausse et indice des devises émergentes en baisse sur douze mois" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le ciseau : baril contre devises du Sud</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Douze derniers mois, tracé stylisé. Quand les deux lames s'écartent, l'importateur émergent paie deux fois.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Douze derniers mois, tracé stylisé. Quand les deux lames s'écartent, l'importateur émergent paie deux fois.</text>
   <line x1="70" y1="90" x2="70" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="280" x2="680" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <text x="120" y="300" fill="#8b909b" font-size="10" text-anchor="middle">été 2025</text>
@@ -42,7 +42,7 @@ De l'autre côté du ciseau, les gagnants encaissent. Les producteurs du Golfe e
   <circle cx="660" cy="120" r="5" fill="#ff4d87"/>
   <circle cx="660" cy="205" r="5" fill="#ff4d87"/>
   <line x1="660" y1="128" x2="660" y2="197" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
-  <text x="32" y="330" fill="#8b909b" font-size="11">Sources : Trading Economics (Brent, 17 juillet 2026), Bloomberg (indice MSCI EM FX, 1ᵉʳ juillet 2026), Convera (dollar). Représentation schématique.</text>
+  <text x="32" y="330" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Trading Economics (Brent, 17 juillet 2026), Bloomberg (indice MSCI EM FX, 1ᵉʳ juillet 2026), Convera (dollar). Représentation schématique.</text>
 </svg>
 <figcaption>Le baril a repris 27 % sur un an avec une prime de guerre reconstituée mi-juillet, pendant que l'indice des devises émergentes retombait à son plus bas depuis avril, dollar au plus haut de treize mois oblige. L'écartement des deux lames mesure la double peine des importateurs. Tracé stylisé à partir des points cités.</figcaption>
 </figure>
@@ -67,8 +67,8 @@ Cette photographie a deux lectures. La rassurante : le Fonds a prouvé en 2022-2
   <rect x="200" y="194" width="82" height="36" fill="#f5b13d" opacity="0.85"/>
   <text x="192" y="218" fill="#d6d9df" font-size="12" text-anchor="end">Pakistan</text>
   <text x="290" y="218" fill="#f5f6f8" font-size="13" font-weight="700">10,5</text>
-  <text x="200" y="262" fill="#5eead4" font-size="12">Encours total : record au-dessus de 110 milliards de DTS (~150 Md$). Top 10, Ukraine comprise : 128 Md$.</text>
-  <text x="32" y="302" fill="#8b909b" font-size="11">Sources : FMI (crédit en cours), compilations Zee News et The Economy Pakistan, Bloomberg pour la tranche égyptienne de février 2026.</text>
+  <text x="200" y="262" fill="#5eead4" font-size="12" textLength="514" lengthAdjust="spacingAndGlyphs">Encours total : record au-dessus de 110 milliards de DTS (~150 Md$). Top 10, Ukraine comprise : 128 Md$.</text>
+  <text x="32" y="302" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : FMI (crédit en cours), compilations Zee News et The Economy Pakistan, Bloomberg pour la tranche égyptienne de février 2026.</text>
 </svg>
 <figcaption>Le prêteur en dernier ressort mondial aborde le nouveau choc avec un encours record et une concentration extrême : l'Argentine pèse à elle seule 40 % du total. Un deuxième round pétrolier trouverait un guichet déjà très sollicité. Sources : FMI, compilations citées.</figcaption>
 </figure>

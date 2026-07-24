@@ -22,12 +22,12 @@ La mécanique est classique et vaut d'être explicitée : quand le marché révi
 <svg viewBox="0 0 720 340" role="img" aria-label="Écart de taux directeurs entre la Fed, la BCE et la Banque du Japon en juillet 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'écart de taux qui porte le dollar</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Taux directeurs au 8 juillet 2026, en pourcentage. La flèche marque la médiane du dot plot pour fin 2026.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Taux directeurs au 8 juillet 2026, en pourcentage. La flèche marque la médiane du dot plot pour fin 2026.</text>
   <text x="40" y="98" fill="#d6d9df" font-size="12">Fed (fourchette haute)</text>
   <rect x="40" y="108" width="600" height="24" fill="#2a2c33"></rect>
   <rect x="40" y="108" width="450" height="24" fill="#5eead4" opacity="0.9"></rect>
   <text x="498" y="125" fill="#5eead4" font-size="12" font-weight="700">3,75 %</text>
-  <text x="560" y="125" fill="#f5b13d" font-size="11" font-weight="700">→ 3,8 % (médiane fin 2026)</text>
+  <text x="560" y="125" fill="#f5b13d" font-size="11" font-weight="700" textLength="154" lengthAdjust="spacingAndGlyphs">→ 3,8 % (médiane fin 2026)</text>
   <text x="40" y="160" fill="#d6d9df" font-size="12">BCE (taux de dépôt)</text>
   <rect x="40" y="170" width="600" height="24" fill="#2a2c33"></rect>
   <rect x="40" y="170" width="270" height="24" fill="#7aa2f7" opacity="0.9"></rect>
@@ -37,7 +37,7 @@ La mécanique est classique et vaut d'être explicitée : quand le marché révi
   <rect x="40" y="232" width="120" height="24" fill="#ff4d87" opacity="0.9"></rect>
   <text x="168" y="249" fill="#ff4d87" font-size="12" font-weight="700">1,00 % (relevé le 16 juin, plus haut depuis 30 ans)</text>
   <line x1="40" y1="288" x2="680" y2="288" stroke="#2a2c33" stroke-width="1"></line>
-  <text x="40" y="312" fill="#8b909b" font-size="11">Même en remontant, la BoJ et la BCE restent loin sous la Fed : le différentiel continue de nourrir le dollar.</text>
+  <text x="40" y="312" fill="#8b909b" font-size="11" textLength="674" lengthAdjust="spacingAndGlyphs">Même en remontant, la BoJ et la BCE restent loin sous la Fed : le différentiel continue de nourrir le dollar.</text>
   <text x="40" y="330" fill="#8b909b" font-size="11">Sources : Federal Reserve, BCE, Bank of Japan, projections FOMC du 17 juin 2026.</text>
 </svg>
 <figcaption>La Fed à <strong>3,50-3,75 %</strong> avec un dot plot penchant vers la hausse, la BCE à <strong>2,25 %</strong>, la BoJ à <strong>1,00 %</strong> : les resserrements japonais et européen réduisent l'écart sans le combler. Sources : Fed, BCE, BoJ.</figcaption>

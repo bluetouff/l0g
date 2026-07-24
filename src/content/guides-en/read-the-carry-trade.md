@@ -67,7 +67,7 @@ This is the most important point, and the most misunderstood. The carry trade is
   <text x="150" y="120" fill="#5eead4" font-size="12" font-weight="700">steady carry income</text>
   <text x="150" y="138" fill="#8b909b" font-size="11">the rate gap earned month after month</text>
   <text x="556" y="200" fill="#ff4d87" font-size="12" font-weight="700">the unwind</text>
-  <text x="386" y="284" fill="#8b909b" font-size="11">Months of steady gains erased in a few sessions: the carry implicitly sells volatility.</text>
+  <text x="386" y="284" fill="#8b909b" font-size="11" textLength="328" lengthAdjust="spacingAndGlyphs">Months of steady gains erased in a few sessions: the carry implicitly sells volatility.</text>
 </svg>
 <figcaption>The payoff line climbs slowly, step by step, then drops all at once. It is the profile of an insurance seller: a regular premium, then a sudden claim. <strong>The carry thrives on calm and dies in panic.</strong></figcaption>
 </figure>

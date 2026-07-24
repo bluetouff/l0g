@@ -57,7 +57,7 @@ Cette mécanique a un carburant identifiable. Lincoln International, qui valoris
 <text x="40" y="200" fill="#e7e9ee">« Bad PIK » (cash converti en PIK), fin 2025</text>
 <rect x="40" y="208" width="154" height="16" fill="#ff4d87"/>
 <text x="202" y="221" fill="#e7e9ee">6,4 %</text>
-<text x="40" y="248" fill="#8b909b" font-size="12">Source : Lincoln International (valorise environ un tiers des portefeuilles de crédit privé US).</text>
+<text x="40" y="248" fill="#8b909b" font-size="12" textLength="674" lengthAdjust="spacingAndGlyphs">Source : Lincoln International (valorise environ un tiers des portefeuilles de crédit privé US).</text>
 </g>
 </svg>
 </figure>
@@ -88,7 +88,7 @@ HLEND n'est pas seul. Le fonds de crédit de Blackstone, BCRED, après avoir hon
 <text x="40" y="210" fill="#e7e9ee">Blackstone (BCRED), T1</text>
 <rect x="40" y="218" width="316" height="16" fill="#f5b13d"/>
 <text x="364" y="231" fill="#e7e9ee">7,9 %</text>
-<text x="40" y="258" fill="#8b909b" font-size="12">Demandes de rachat, et non rachats effectifs (plafonnés à 5 %). Trimestres T1 et T2 2026 mêlés.</text>
+<text x="40" y="258" fill="#8b909b" font-size="12" textLength="674" lengthAdjust="spacingAndGlyphs">Demandes de rachat, et non rachats effectifs (plafonnés à 5 %). Trimestres T1 et T2 2026 mêlés.</text>
 <text x="40" y="276" fill="#8b909b" font-size="12">Sources : Reuters, Financial Times, Bloomberg, ZeroHedge (mars à juin 2026).</text>
 </g>
 </svg>

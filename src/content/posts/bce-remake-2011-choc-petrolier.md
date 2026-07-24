@@ -50,8 +50,8 @@ La suite appartient à l'histoire monétaire. L'économie de la zone, déjà fra
   <circle cx="620" cy="216" r="5" fill="#2a2c33" stroke="#8b909b" stroke-width="1"/>
   <text x="620" y="242" fill="#d6d9df" font-size="10" text-anchor="middle">suite : à écrire</text>
   <text x="620" y="256" fill="#8b909b" font-size="10" text-anchor="middle">le baril décidera</text>
-  <text x="32" y="320" fill="#8b909b" font-size="11">Sources : BCE (décisions et conférences de presse 2011 et 2026), Morningstar et Investing.com pour le pricing de juillet-septembre 2026.</text>
-  <text x="32" y="338" fill="#8b909b" font-size="11">Le parallèle est une grille de lecture, pas une prophétie : les différences comptent autant que les ressemblances.</text>
+  <text x="32" y="320" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : BCE (décisions et conférences de presse 2011 et 2026), Morningstar et Investing.com pour le pricing de juillet-septembre 2026.</text>
+  <text x="32" y="338" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Le parallèle est une grille de lecture, pas une prophétie : les différences comptent autant que les ressemblances.</text>
 </svg>
 <figcaption>En 2011, deux hausses face à un pétrole de guerre, un été de crise souveraine, deux baisses pour tout annuler. En 2026, la première marche est franchie et la deuxième se joue en septembre. La comparaison éclaire les risques sans écrire la fin. Sources : BCE, Morningstar, Investing.com.</figcaption>
 </figure>

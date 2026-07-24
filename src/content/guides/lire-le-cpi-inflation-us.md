@@ -134,7 +134,7 @@ Trois différences expliquent l'écart. La formule, d'abord : le PCE est un indi
   <text x="40" y="232" fill="#f5f6f8" font-size="12" font-weight="700">Principales différences</text>
   <text x="40" y="254" fill="#d6d9df" font-size="11.5">Formule : panier fixe (Laspeyres) pour le CPI, indice chaîné (Fisher) pour le PCE.</text>
   <text x="40" y="274" fill="#d6d9df" font-size="11.5">Logement : poids environ deux fois plus élevé dans le CPI ; santé : plus lourde dans le PCE.</text>
-  <text x="40" y="294" fill="#8b909b" font-size="11">Écart moyen depuis 2000 : le CPI dépasse le PCE d'environ 0,39 point. Sources : Fed de Cleveland, Fed d'Atlanta.</text>
+  <text x="40" y="294" fill="#8b909b" font-size="11" textLength="674" lengthAdjust="spacingAndGlyphs">Écart moyen depuis 2000 : le CPI dépasse le PCE d'environ 0,39 point. Sources : Fed de Cleveland, Fed d'Atlanta.</text>
 </svg>
 <figcaption>CPI et PCE évoluent ensemble, mais le CPI court au-dessus, d'environ <strong>0,39</strong> point en moyenne depuis 2000, et l'écart a atteint un record à l'été 2022 (CPI à environ <strong>9 %</strong>, PCE à environ <strong>7,1 %</strong>). La Fed cible 2 % sur le PCE, pas sur le CPI. Sources : Fed de Cleveland, Fed d'Atlanta.</figcaption>
 </figure>

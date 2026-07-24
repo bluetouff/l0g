@@ -20,7 +20,7 @@ According to the Bureau of Labor Statistics, in its report of 10 April, the CPI 
   <text x="20" y="28" fill="#8b909b" font-size="12">Inflation, year on year (%)</text>
   <line x1="80" y1="200" x2="680" y2="200" stroke="rgba(255,255,255,0.15)"/>
   <line x1="80" y1="140" x2="680" y2="140" stroke="#8b909b" stroke-dasharray="4 4" opacity="0.5"/>
-  <text x="684" y="144" fill="#8b909b" font-size="10">2% target</text>
+  <text x="684" y="144" fill="#8b909b" font-size="10" textLength="30" lengthAdjust="spacingAndGlyphs">2% target</text>
   <polyline points="120,128 260,128 400,101 540,86 640,74" fill="none" stroke="#ff4d87" stroke-width="2.5"/>
   <g fill="#ff4d87">
     <circle cx="120" cy="128" r="4"/><circle cx="260" cy="128" r="4"/><circle cx="400" cy="101" r="4"/><circle cx="540" cy="86" r="4"/><circle cx="640" cy="74" r="4"/>

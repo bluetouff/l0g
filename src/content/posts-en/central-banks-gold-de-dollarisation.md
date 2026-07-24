@@ -90,7 +90,7 @@ All this runs into a measurement problem, and it is precisely this journal's ter
 <svg viewBox="0 0 720 280" role="img" aria-label="Reported and unreported share of central-bank gold purchases in 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="280" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The reported purchase, and the opaque one</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Estimate of the unreported share of official purchases in 2025. Source: World Gold Council, Metals Focus.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Estimate of the unreported share of official purchases in 2025. Source: World Gold Council, Metals Focus.</text>
   <text x="32" y="104" fill="#5eead4" font-size="12">REPORTED (about 43%)</text>
   <rect x="32" y="114" width="275" height="40" fill="#5eead4" opacity="0.85"></rect>
   <text x="32" y="186" fill="#ff4d87" font-size="12">UNREPORTED (about 57%)</text>

@@ -31,7 +31,7 @@ Le point de départ est un problème de calendrier. Une grande partie de la dett
   <line x1="40" y1="216" x2="680" y2="216" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="244" fill="#d6d9df" font-size="12.5">Quotité de financement (LTV)</text>
   <text x="330" y="248" fill="#ff4d87" font-size="17" font-weight="700">75 %  →  55-60 %</text>
-  <text x="32" y="284" fill="#8b909b" font-size="11">Sources : S&amp;P Global, CoStar, CRE Daily. La baisse de la quotité crée un trou de financement à combler.</text>
+  <text x="32" y="284" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : S&amp;P Global, CoStar, CRE Daily. La baisse de la quotité crée un trou de financement à combler.</text>
 </svg>
 <figcaption>Un prêt souscrit à <strong>75 %</strong> de la valeur d'un immeuble, à <strong>3-4 %</strong>, se refinance aujourd'hui à <strong>6-7 %</strong> et à <strong>55-60 %</strong> d'une valeur en baisse. L'écart, c'est le trou que l'emprunteur doit combler en cash, ou faire défaut. Sources : S&P Global, CoStar.</figcaption>
 </figure>
@@ -65,7 +65,7 @@ Voici la transmission qui transforme un problème immobilier en risque financier
   <rect x="40" y="222" width="600" height="24" fill="#2a2c33"></rect>
   <rect x="40" y="222" width="535" height="24" fill="#ff4d87" opacity="0.9"></rect>
   <text x="583" y="239" fill="#ff4d87" font-size="12" font-weight="700">312 %</text>
-  <text x="32" y="278" fill="#8b909b" font-size="11">54,8 % des banques régionales dépassent le seuil de 300 %. Sources : BankHealthData, Wharton (Hinzen et al.).</text>
+  <text x="32" y="278" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">54,8 % des banques régionales dépassent le seuil de 300 %. Sources : BankHealthData, Wharton (Hinzen et al.).</text>
 </svg>
 <figcaption>Là où la moyenne nationale du ratio CRE sur fonds propres avoisine <strong>30 %</strong>, le ratio médian des banques régionales atteint <strong>312 %</strong>, et plus de la moitié d'entre elles franchissent le seuil de <strong>300 %</strong> qui déclenche la vigilance du régulateur. La concentration, plus que le volume, fait le risque. Sources : BankHealthData, Wharton.</figcaption>
 </figure>

@@ -40,7 +40,7 @@ The interest for Washington is direct. While the Treasury issues short-dated deb
   <text x="490" y="270" fill="#8b909b" font-size="11.5" text-anchor="middle">2028 projection</text>
   <text x="620" y="120" fill="#f5b13d" font-size="11" text-anchor="middle">if the market</text>
   <text x="620" y="136" fill="#f5b13d" font-size="11" text-anchor="middle">reaches $2,000bn</text>
-  <text x="32" y="300" fill="#8b909b" font-size="11">Source: Treasury Borrowing Advisory Committee (April 2025). Tether alone carries &gt; $141bn of exposure.</text>
+  <text x="32" y="300" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Source: Treasury Borrowing Advisory Committee (April 2025). Tether alone carries &gt; $141bn of exposure.</text>
 </svg>
 <figcaption>The Treasury estimates that about $120bn of bills already back stablecoins, and that the $1,000bn mark would be crossed if the market reaches $2,000bn in 2028. Source: TBAC.</figcaption>
 </figure>

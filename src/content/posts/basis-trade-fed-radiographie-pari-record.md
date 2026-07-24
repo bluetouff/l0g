@@ -113,7 +113,7 @@ Trois issues se dessinent, à tenir pour des hypothèses d'analyste et non des p
   <text x="58" y="235" fill="#ff4d87" font-size="13" font-weight="700">Débouclage forcé</text>
   <text x="58" y="254" fill="#d6d9df" font-size="11.5">Choc de volatilité ou de marges, la spirale s'enclenche.</text>
   <text x="58" y="270" fill="#8b909b" font-size="11.5">Ventes forcées de Treasuries, à la mars 2020 ou avril 2025.</text>
-  <text x="32" y="294" fill="#8b909b" font-size="10.5">Lecture l0g. Le Standing Repo Facility de la Fed est un filet, mais il n'a jamais affronté une vraie tempête.</text>
+  <text x="32" y="294" fill="#8b909b" font-size="10.5" textLength="682" lengthAdjust="spacingAndGlyphs">Lecture l0g. Le Standing Repo Facility de la Fed est un filet, mais il n'a jamais affronté une vraie tempête.</text>
 </svg>
 <figcaption>Du plus bénin au plus violent, les trois issues dépendent d'une même variable : la vitesse à laquelle le pari se dénoue. <strong>Scénarios, non prévisions.</strong> Lecture l0g.</figcaption>
 </figure>

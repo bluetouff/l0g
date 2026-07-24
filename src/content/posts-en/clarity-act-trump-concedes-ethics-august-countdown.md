@@ -29,7 +29,7 @@ In three days, the file went from a bill with no safeguard, publicly rejected by
 <svg viewBox="0 0 720 340" role="img" aria-label="Timeline of the CLARITY Act endgame in the Senate" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The endgame, day by day</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">United States Senate, July-August 2026. Sources: Congress.gov, The Block, CoinDesk, CryptoBriefing.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">United States Senate, July-August 2026. Sources: Congress.gov, The Block, CoinDesk, CryptoBriefing.</text>
   <line x1="48" y1="92" x2="48" y2="300" stroke="#2a2c33" stroke-width="1"/>
   <circle cx="48" cy="98" r="7" fill="#5eead4"/>
   <text x="68" y="103" fill="#d6d9df" font-size="13">13 July: the Senate returns from recess</text>

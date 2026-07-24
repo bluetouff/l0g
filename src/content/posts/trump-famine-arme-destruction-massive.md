@@ -35,7 +35,7 @@ Ces nombres sont des projections modélisées, assorties d'incertitudes que leur
   <!-- Lancet GH 9.4-22.6 -->
   <text x="235" y="158" text-anchor="end" fill="#f5f6f8" font-size="12">Lancet GH · monde</text>
   <rect x="422" y="148" width="240" height="14" fill="#ff4d87" opacity="0.45"/>
-  <text x="540" y="178" fill="#8b909b" font-size="10">9,4 (modéré) à 22,6 (agressif)</text>
+  <text x="540" y="178" fill="#8b909b" font-size="10" textLength="174" lengthAdjust="spacingAndGlyphs">9,4 (modéré) à 22,6 (agressif)</text>
   <text x="20" y="210" fill="#8b909b" font-size="10">Sources : Lancet (Cavalcanti et al., 2025) ; Lancet Global Health (fév. 2026) ; Center for Global Development.</text>
 </svg>
 <figcaption>Projections modélisées, avec intervalles d'incertitude. Elles ne mesurent pas un bilan constaté.</figcaption>
@@ -56,7 +56,7 @@ Le contexte sur lequel ces coupes s'appliquent est déjà tendu. Selon le Global
   <text x="34" y="114" fill="#f5f6f8" font-size="13">41 M · urgence (phase 4)</text>
   <rect x="20" y="134" width="90" height="34" fill="#ff4d87" opacity="0.45"/>
   <text x="120" y="156" fill="#f5f6f8" font-size="13">1,4 M · catastrophe (phase 5)</text>
-  <text x="20" y="194" fill="#8b909b" font-size="10">Sources : WFP Global Outlook ; Global Report on Food Crises 2026 (GRFC, 24 avril 2026). Barres proportionnelles aux effectifs.</text>
+  <text x="20" y="194" fill="#8b909b" font-size="10" textLength="694" lengthAdjust="spacingAndGlyphs">Sources : WFP Global Outlook ; Global Report on Food Crises 2026 (GRFC, 24 avril 2026). Barres proportionnelles aux effectifs.</text>
 </svg>
 <figcaption>Deux famines confirmées en 2025 (Gaza, Soudan) ; risque maintenu en 2026 pour Gaza, le Soudan et le Soudan du Sud.</figcaption>
 </figure>

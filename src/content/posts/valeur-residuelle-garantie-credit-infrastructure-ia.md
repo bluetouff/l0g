@@ -40,7 +40,7 @@ L'investisseur Michael Burry a porté le sujet sur la place publique fin 2025. S
   <g font-size="11">
     <text x="242" y="104" fill="#d6d9df" text-anchor="end">Google, Oracle, Microsoft</text>
     <rect x="250" y="92" width="360" height="22" fill="#5eead4" opacity="0.85"></rect>
-    <text x="618" y="108" fill="#5eead4" font-weight="700">jusqu'à 6 ans (amorti)</text>
+    <text x="618" y="108" fill="#5eead4" font-weight="700" textLength="96" lengthAdjust="spacingAndGlyphs">jusqu'à 6 ans (amorti)</text>
     <text x="242" y="154" fill="#d6d9df" text-anchor="end">Vie estimée (M. Burry)</text>
     <rect x="250" y="142" width="150" height="22" fill="#ff4d87" opacity="0.9"></rect>
     <text x="408" y="158" fill="#ff4d87" font-weight="700">2 à 3 ans</text>
@@ -88,7 +88,7 @@ Une valeur résiduelle garantie ne fait pas disparaître le risque de déprécia
   <path d="M447 200 l3 10 l7 -7 z" fill="#ff4d87"></path>
   <text x="590" y="250" fill="#8b909b" font-size="10.5" text-anchor="middle">le garant</text>
   <text x="590" y="266" fill="#8b909b" font-size="10.5" text-anchor="middle">porte le risque</text>
-  <text x="32" y="308" fill="#8b909b" font-size="11.5">Le prêteur obtient un plancher ; le garant hérite d'un engagement qui se déclenche dans le pire scénario.</text>
+  <text x="32" y="308" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Le prêteur obtient un plancher ; le garant hérite d'un engagement qui se déclenche dans le pire scénario.</text>
   <text x="32" y="326" fill="#8b909b" font-size="11">Schéma l0g, d'après les structures Meta-Blue Owl, CoreWeave et Apollo-Anthropic.</text>
 </svg>
 <figcaption>Dans ces montages, la dette quitte le bilan de l'exploitant, mais le risque de dépréciation revient vers lui par la garantie. Le prêteur est protégé tant que le garant tient. Schéma l0g.</figcaption>
@@ -123,7 +123,7 @@ Le rappel le plus utile vient de l'automobile. En 2008, l'effondrement des prix 
   </g>
   <line x1="640" y1="90" x2="640" y2="240" stroke="#ff4d87" stroke-width="1.5" stroke-dasharray="5 4"></line>
   <text x="636" y="108" fill="#ff4d87" font-size="10.5" text-anchor="end">VRG Meta : 16 ans</text>
-  <text x="32" y="292" fill="#8b909b" font-size="11.5">La garantie protège le prêteur sur seize ans un actif qui a perdu la moitié de sa valeur en trois.</text>
+  <text x="32" y="292" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">La garantie protège le prêteur sur seize ans un actif qui a perdu la moitié de sa valeur en trois.</text>
   <text x="32" y="310" fill="#8b909b" font-size="11">Ordre de grandeur de décote : Quartz. Horizon de garantie : Global Data Center Hub.</text>
 </svg>
 <figcaption>Le décalage temporel est le point sensible : la garantie couvre un horizon long, l'actif se déprécie vite. Entre les deux, c'est le garant qui absorbe la différence. Sources : Quartz, Global Data Center Hub.</figcaption>

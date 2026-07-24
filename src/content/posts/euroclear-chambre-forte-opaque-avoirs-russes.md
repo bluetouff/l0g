@@ -27,7 +27,7 @@ La contrepartie est structurelle : la propriété économique devient invisible 
 <svg viewBox="0 0 720 360" role="img" aria-label="Schéma de la chaîne de conservation des titres et des comptes omnibus, du bénéficiaire final à Euroclear" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="360" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La chaîne de conservation : une opacité par étages</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Chaque maillon ne connaît que le maillon adjacent. Le sommet ne voit jamais le bénéficiaire final.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Chaque maillon ne connaît que le maillon adjacent. Le sommet ne voit jamais le bénéficiaire final.</text>
   <!-- chaine -->
   <rect x="32" y="96" width="150" height="58" rx="8" fill="none" stroke="#8b909b" stroke-width="1.5"/>
   <text x="107" y="120" fill="#f5f6f8" font-size="12" text-anchor="middle">Bénéficiaire final</text>
@@ -81,7 +81,7 @@ L'Europe a organisé la captation de cette rente sans toucher au principal. En f
 <svg viewBox="0 0 720 400" role="img" aria-label="Flux financiers générés par les avoirs russes immobilisés chez Euroclear et intérêts annuels 2023 à 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="400" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La machine à cash du gel</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Le principal reste immobilisé ; seuls les intérêts du cash redéposé sont captés. Montants en milliards d'euros.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Le principal reste immobilisé ; seuls les intérêts du cash redéposé sont captés. Montants en milliards d'euros.</text>
   <!-- flux gauche -->
   <rect x="32" y="92" width="180" height="52" rx="8" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
   <text x="122" y="114" fill="#f5f6f8" font-size="12" text-anchor="middle">Titres de la BCR</text>
@@ -172,7 +172,7 @@ Aucun de ces jugements russes n'est exécutable en Europe, et le règlement 2025
   <text x="650" y="140" fill="#ff4d87" font-size="11" text-anchor="middle" font-weight="700">17 juil. 26</text>
   <text x="650" y="196" fill="#d6d9df" font-size="10" text-anchor="middle">appel rejeté,</text>
   <text x="650" y="210" fill="#8b909b" font-size="10" text-anchor="middle">condamnation confirmée</text>
-  <text x="32" y="266" fill="#8b909b" font-size="11">Entre-temps : recours de la BCR devant le Tribunal de l'UE (27 févr. 26), contre-action d'Euroclear à Bruxelles (30 juin 26),</text>
+  <text x="32" y="266" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Entre-temps : recours de la BCR devant le Tribunal de l'UE (27 févr. 26), contre-action d'Euroclear à Bruxelles (30 juin 26),</text>
   <text x="32" y="284" fill="#8b909b" font-size="11">prêt européen de 90 Md€ décidé les 18-19 déc. 25, premier décaissement validé au sommet de juin 26.</text>
   <text x="32" y="310" fill="#8b909b" font-size="11">Sources : Conseil de l'UE, Euronews, La Libre, Moscow Times, L'Avenir.</text>
 </svg>

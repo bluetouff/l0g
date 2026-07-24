@@ -62,7 +62,7 @@ Une fois par an ensuite, l'enquête entreprises est recalée sur les registres q
   <text x="40" y="176" fill="#ff4d87" font-size="12">Après révision de référence</text>
   <rect x="40" y="186" width="120" height="30" fill="#ff4d87" opacity="0.9"></rect>
   <text x="168" y="207" fill="#ff4d87" font-size="13" font-weight="700">≈ 15 / mois</text>
-  <text x="40" y="246" fill="#8b909b" font-size="11">Année 2025 ramenée de +584 000 à +181 000 emplois (révision préliminaire de mars : −911 000). Source : BLS.</text>
+  <text x="40" y="246" fill="#8b909b" font-size="11" textLength="674" lengthAdjust="spacingAndGlyphs">Année 2025 ramenée de +584 000 à +181 000 emplois (révision préliminaire de mars : −911 000). Source : BLS.</text>
 </svg>
 <figcaption>La révision de référence a ramené la création d'emplois de 2025 de <strong>584 000</strong> à <strong>181 000</strong>, soit un rythme réel d'environ <strong>15 000</strong> par mois contre les <strong>48 000</strong> affichés sur le moment. La révision préliminaire pour mars 2025 retranchait à elle seule <strong>911 000</strong> emplois. Source : BLS, programme CES et révision de référence.</figcaption>
 </figure>

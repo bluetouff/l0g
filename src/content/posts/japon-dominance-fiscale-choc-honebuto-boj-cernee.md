@@ -19,7 +19,7 @@ Le contexte politique donne à ce texte un poids que n'aurait pas eu une déclar
 <svg viewBox="0 0 720 320" role="img" aria-label="Courbe des taux souverains japonais au 21 juillet 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="320" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La courbe japonaise reprend de la pente</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Rendement des JGB par maturité, au 21 juillet 2026, en pourcentage. Après des années collée à zéro.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Rendement des JGB par maturité, au 21 juillet 2026, en pourcentage. Après des années collée à zéro.</text>
   <line x1="70" y1="250" x2="690" y2="250" stroke="#2a2c33" stroke-width="1"/>
   <line x1="70" y1="90" x2="70" y2="250" stroke="#2a2c33" stroke-width="1"/>
   <polyline points="120,215 250,190 400,120 520,92 640,90" fill="none" stroke="#5eead4" stroke-width="2.5"/>

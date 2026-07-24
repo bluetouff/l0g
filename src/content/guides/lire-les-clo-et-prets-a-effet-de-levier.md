@@ -80,15 +80,15 @@ Le CLO, lui, s'adosse à des prêts d'entreprises réparties dans des dizaines d
   <line x1="40" y1="126" x2="680" y2="126" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="156" fill="#d6d9df" font-size="12.5">Part des restructurations (LME)</text>
   <text x="330" y="160" fill="#ff4d87" font-size="20" font-weight="700">~2/3</text>
-  <text x="470" y="156" fill="#8b909b" font-size="11.5">de l'activité de défaut par émetteur</text>
+  <text x="470" y="156" fill="#8b909b" font-size="11.5" textLength="244" lengthAdjust="spacingAndGlyphs">de l'activité de défaut par émetteur</text>
   <line x1="40" y1="174" x2="680" y2="174" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="204" fill="#d6d9df" font-size="12.5">Recouvrement (cov-lite)</text>
   <text x="330" y="208" fill="#f5b13d" font-size="15" font-weight="700">en baisse</text>
-  <text x="470" y="204" fill="#8b909b" font-size="11.5">moins de protection, moins récupéré</text>
+  <text x="470" y="204" fill="#8b909b" font-size="11.5" textLength="244" lengthAdjust="spacingAndGlyphs">moins de protection, moins récupéré</text>
   <line x1="40" y1="222" x2="680" y2="222" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="252" fill="#d6d9df" font-size="12.5">Plafond de prêts CCC</text>
   <text x="330" y="256" fill="#7aa2f7" font-size="15" font-weight="700">~7,5 %</text>
-  <text x="470" y="252" fill="#8b909b" font-size="11.5">au-delà, les protections se déclenchent</text>
+  <text x="470" y="252" fill="#8b909b" font-size="11.5" textLength="244" lengthAdjust="spacingAndGlyphs">au-delà, les protections se déclenchent</text>
   <text x="32" y="282" fill="#8b909b" font-size="11">Sources : S&amp;P Global Ratings, Moody's, PineBridge.</text>
 </svg>
 <figcaption>Le taux de défaut affiché, autour de <strong>1,2 %</strong>, paraît anodin. Mais les <strong>restructurations négociées</strong> (LME), qui repoussent le défaut sans l'éviter, forment aujourd'hui les deux tiers de l'activité de détresse. Le chiffre rassurant masque un stress bien réel. Sources : S&P Global, Moody's.</figcaption>

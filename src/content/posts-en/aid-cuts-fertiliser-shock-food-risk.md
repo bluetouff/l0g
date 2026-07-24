@@ -30,10 +30,10 @@ These numbers are modelled projections, with uncertainties their authors underli
   <text x="235" y="118" text-anchor="end" fill="#f5f6f8" font-size="12">Lancet · USAID</text>
   <rect x="405" y="108" width="204" height="14" fill="#f5b13d" opacity="0.45"/>
   <rect x="505" y="105" width="4" height="20" fill="#f5b13d"/>
-  <text x="617" y="119" fill="#8b909b" font-size="11">14 [8.5 to 19.7]</text>
+  <text x="617" y="119" fill="#8b909b" font-size="11" textLength="97" lengthAdjust="spacingAndGlyphs">14 [8.5 to 19.7]</text>
   <text x="235" y="158" text-anchor="end" fill="#f5f6f8" font-size="12">Lancet GH · world</text>
   <rect x="422" y="148" width="240" height="14" fill="#ff4d87" opacity="0.45"/>
-  <text x="540" y="178" fill="#8b909b" font-size="10">9.4 (moderate) to 22.6 (aggressive)</text>
+  <text x="540" y="178" fill="#8b909b" font-size="10" textLength="174" lengthAdjust="spacingAndGlyphs">9.4 (moderate) to 22.6 (aggressive)</text>
   <text x="20" y="210" fill="#8b909b" font-size="10">Sources: Lancet (Cavalcanti et al., 2025); Lancet Global Health (Feb 2026); Center for Global Development.</text>
 </svg>
 <figcaption>Modelled projections, with uncertainty intervals. They do not measure an observed toll.</figcaption>

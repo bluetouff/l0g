@@ -84,7 +84,7 @@ This non-linear profile is a rating's real message. The gap between AAA and BBB,
     <rect x="496" y="98" width="54" height="152" fill="#ff4d87"></rect>
     <text x="523" y="266" fill="#8b909b" font-size="11">CCC / C</text><text x="523" y="90" fill="#ff4d87" font-size="11" font-weight="700">26</text>
   </g>
-  <text x="32" y="298" fill="#8b909b" font-size="11">Cumulative 5-year: &lt; 2% defaults in investment grade, &gt; 20% for a B. Sources: S&P Global, historical data.</text>
+  <text x="32" y="298" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Cumulative 5-year: &lt; 2% defaults in investment grade, &gt; 20% for a B. Sources: S&P Global, historical data.</text>
 </svg>
 <figcaption>The rating measures not a linear risk but one that runs away at the bottom of the scale. A few notches lower, and the default probability changes order of magnitude. Source: S&P Global.</figcaption>
 </figure>

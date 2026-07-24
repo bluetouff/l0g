@@ -52,7 +52,7 @@ What followed belongs to monetary history. The euro area economy, already fragil
   <circle cx="620" cy="216" r="5" fill="#2a2c33" stroke="#8b909b" stroke-width="1"/>
   <text x="620" y="242" fill="#d6d9df" font-size="10" text-anchor="middle">what follows: unwritten</text>
   <text x="620" y="256" fill="#8b909b" font-size="10" text-anchor="middle">the barrel will decide</text>
-  <text x="32" y="320" fill="#8b909b" font-size="11">Sources: ECB (2011 and 2026 decisions and press conferences), Morningstar and Investing.com for July-September 2026 pricing.</text>
+  <text x="32" y="320" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: ECB (2011 and 2026 decisions and press conferences), Morningstar and Investing.com for July-September 2026 pricing.</text>
   <text x="32" y="338" fill="#8b909b" font-size="11">The parallel is a reading grid, not a prophecy: the differences matter as much as the resemblances.</text>
 </svg>
 <figcaption>In 2011, two hikes into wartime oil, a summer of sovereign crisis, two cuts to cancel everything. In 2026, the first step is taken and the second is at stake in September. The comparison illuminates the risks without writing the ending. Sources: ECB, Morningstar, Investing.com.</figcaption>

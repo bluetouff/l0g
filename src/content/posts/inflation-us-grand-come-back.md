@@ -20,7 +20,7 @@ Selon le Bureau of Labor Statistics, dans son rapport du 10 avril, l'indice CPI 
   <line x1="80" y1="200" x2="680" y2="200" stroke="rgba(255,255,255,0.15)"/>
   <!-- cible 2% : y = 200 - (2/5)*150 = 200-60 = 140 -->
   <line x1="80" y1="140" x2="680" y2="140" stroke="#8b909b" stroke-dasharray="4 4" opacity="0.5"/>
-  <text x="684" y="144" fill="#8b909b" font-size="10">cible 2 %</text>
+  <text x="684" y="144" fill="#8b909b" font-size="10" textLength="30" lengthAdjust="spacingAndGlyphs">cible 2 %</text>
   <!-- points headline : jan 2.4, fev 2.4, mars 3.3, avr 3.8, mai 4.2 -->
   <!-- x: 120,260,400,540,640 ; y = 200 - v/5*150 -->
   <polyline points="120,128 260,128 400,101 540,86 640,74" fill="none" stroke="#ff4d87" stroke-width="2.5"/>

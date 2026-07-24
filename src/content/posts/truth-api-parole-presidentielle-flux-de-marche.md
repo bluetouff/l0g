@@ -33,8 +33,8 @@ Le business case de Truth API tient en une journée de bourse. Le 9 avril 2025 a
   <text x="80" y="168" fill="#d6d9df" font-size="12">Annonce de la pause douanière de 90 jours</text>
   <circle cx="60" cy="204" r="5" fill="#5eead4"></circle>
   <text x="80" y="200" fill="#5eead4" font-size="12" font-weight="700">Clôture</text>
-  <text x="80" y="216" fill="#d6d9df" font-size="12">S&amp;P 500 +9,5 % · Nasdaq ~+12 % (meilleure séance depuis 2008) · action Trump Media +22,7 %</text>
-  <text x="40" y="256" fill="#8b909b" font-size="11.5">Des élus ont réclamé une enquête ; aucune infraction n'a été établie, le droit de l'insider trading s'appliquant mal</text>
+  <text x="80" y="216" fill="#d6d9df" font-size="12" textLength="634" lengthAdjust="spacingAndGlyphs">S&amp;P 500 +9,5 % · Nasdaq ~+12 % (meilleure séance depuis 2008) · action Trump Media +22,7 %</text>
+  <text x="40" y="256" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">Des élus ont réclamé une enquête ; aucune infraction n'a été établie, le droit de l'insider trading s'appliquant mal</text>
   <text x="40" y="272" fill="#8b909b" font-size="11.5">au président qui annonce sa propre politique.</text>
   <text x="32" y="304" fill="#8b909b" font-size="11">Sources : PBS News, Time, Washington Post, CNBC (avril 2025).</text>
 </svg>
@@ -49,7 +49,7 @@ Le contexte financier de l'annonce éclaire sa logique. Truth Social a généré
 <svg viewBox="0 0 720 300" role="img" aria-label="Disproportion entre revenus, pertes et capitalisation de Trump Media" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Trump Media : l'entreprise qui vend des millisecondes</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Ordres de grandeur, en millions de dollars. Échelle linéaire : la première barre est invisible, c'est le sujet.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Ordres de grandeur, en millions de dollars. Échelle linéaire : la première barre est invisible, c'est le sujet.</text>
   <text x="40" y="104" fill="#d6d9df" font-size="12">Chiffre d'affaires T1 2026</text>
   <rect x="280" y="90" width="2" height="24" fill="#5eead4"></rect>
   <text x="292" y="107" fill="#5eead4" font-size="12" font-weight="700">0,87</text>
@@ -59,7 +59,7 @@ Le contexte financier de l'annonce éclaire sa logique. Truth Social a généré
   <text x="40" y="208" fill="#d6d9df" font-size="12">Capitalisation (mi-juillet)</text>
   <rect x="280" y="194" width="390" height="24" fill="#f5b13d" opacity="0.7"></rect>
   <text x="300" y="211" fill="#0c0d10" font-size="12" font-weight="700">~2 610</text>
-  <text x="32" y="252" fill="#8b909b" font-size="11.5">Revenus sur douze mois : ~3,7 M$. Le président détient ~41 % du groupe via un trust révocable (FactSet).</text>
+  <text x="32" y="252" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Revenus sur douze mois : ~3,7 M$. Le président détient ~41 % du groupe via un trust révocable (FactSet).</text>
   <text x="32" y="278" fill="#8b909b" font-size="11">Sources : TMTG (communiqué T1 2026), Variety, stockanalysis.com, CNN/FactSet.</text>
 </svg>
 <figcaption>Moins d'un million de dollars de revenus trimestriels pour 2,6 milliards de capitalisation : la valeur du groupe repose sur ses actifs financiers et sur ce qu'il est seul à pouvoir vendre, la primeur de la parole présidentielle. Sources : TMTG, Variety, CNN.</figcaption>
@@ -98,12 +98,12 @@ La chaîne de valeur complète de la parole présidentielle se referme donc ains
   <rect x="40" y="200" width="460" height="72" rx="8" fill="#181a20" stroke="#ff4d87" stroke-width="1.5"></rect>
   <text x="270" y="222" fill="#ff4d87" font-size="12.5" font-weight="700" text-anchor="middle">Les lieux du pari sur cette parole</text>
   <text x="270" y="240" fill="#d6d9df" font-size="11" text-anchor="middle">Truth Predict (TMTG x Crypto.com) · Kalshi (« Mentions ») · Polymarket</text>
-  <text x="270" y="258" fill="#8b909b" font-size="10.5" text-anchor="middle">Donald Trump Jr. : conseiller de Kalshi et de Polymarket, participations dans les deux</text>
+  <text x="270" y="258" fill="#8b909b" font-size="10.5" text-anchor="middle" textLength="532" lengthAdjust="spacingAndGlyphs">Donald Trump Jr. : conseiller de Kalshi et de Polymarket, participations dans les deux</text>
   <rect x="560" y="200" width="128" height="72" rx="8" fill="#181a20" stroke="#8b909b" stroke-width="1.5"></rect>
   <text x="624" y="228" fill="#f5f6f8" font-size="12.5" font-weight="700" text-anchor="middle">CFTC</text>
   <text x="624" y="246" fill="#d6d9df" font-size="11" text-anchor="middle">régulateur des</text>
   <text x="624" y="260" fill="#d6d9df" font-size="11" text-anchor="middle">marchés prédictifs</text>
-  <text x="40" y="308" fill="#8b909b" font-size="11.5">L'affaire du téléprompteur (paris « Mentions » sur les discours) est née à l'intérieur de cette boucle ;</text>
+  <text x="40" y="308" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">L'affaire du téléprompteur (paris « Mentions » sur les discours) est née à l'intérieur de cette boucle ;</text>
   <text x="40" y="324" fill="#8b909b" font-size="11.5">c'est la surveillance de Kalshi qui l'a signalée à la CFTC.</text>
   <text x="32" y="368" fill="#8b909b" font-size="11">Sources : TMTG, Reuters, CNBC, CoinDesk, Prediction News, The American Prospect.</text>
   <defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#8b909b"></path></marker></defs>

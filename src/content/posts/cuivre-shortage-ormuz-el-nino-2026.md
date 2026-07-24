@@ -63,7 +63,7 @@ Le lien avec le cuivre passe par la géographie. Selon l'[USGS](https://pubs.usg
     <path d="M424 160 l-10 -5 v10 z"/>
     <path d="M424 180 l-10 -5 v10 z"/>
   </g>
-  <text x="42" y="302" fill="#8b909b" font-family="monospace" font-size="11">Lecture : Ormuz agit sur les intrants et la logistique ; El Nino agit sur le risque operationnel minier.</text>
+  <text x="42" y="302" fill="#8b909b" font-family="monospace" font-size="11" textLength="672" lengthAdjust="spacingAndGlyphs">Lecture : Ormuz agit sur les intrants et la logistique ; El Nino agit sur le risque operationnel minier.</text>
 </svg>
 
 ## Demande rigide, substitution limitée

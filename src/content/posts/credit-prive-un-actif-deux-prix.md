@@ -25,8 +25,8 @@ Les deux familles prêtent pourtant au même univers : des prêts senior garant
 <rect x="40" y="140" width="465" height="18" fill="#ff4d87"/>
 <text x="515" y="154" fill="#e7e9ee">≈ 83</text>
 </g>
-<text x="40" y="196" fill="#8b909b" font-size="12">Base 100 = valeur déclarée (NAV). Le coté affiche deux prix ; le non coté, un seul, celui du rachat.</text>
-<text x="40" y="216" fill="#8b909b" font-size="12">Sources : VanEck (P/B de l'indice BDC coté ≈ 0,83x, 27 février 2026) ; Fidelity Private Credit Fund, filing SEC (mark moyen 98,7 %).</text>
+<text x="40" y="196" fill="#8b909b" font-size="12" textLength="674" lengthAdjust="spacingAndGlyphs">Base 100 = valeur déclarée (NAV). Le coté affiche deux prix ; le non coté, un seul, celui du rachat.</text>
+<text x="40" y="216" fill="#8b909b" font-size="12" textLength="674" lengthAdjust="spacingAndGlyphs">Sources : VanEck (P/B de l'indice BDC coté ≈ 0,83x, 27 février 2026) ; Fidelity Private Credit Fund, filing SEC (mark moyen 98,7 %).</text>
 </svg>
 </figure>
 

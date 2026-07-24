@@ -19,7 +19,7 @@ Le tableau se dégrade en revanche du côté des ménages. Les critères se sont
 <svg viewBox="0 0 720 300" role="img" aria-label="Resserrement net des critères d'octroi de crédit dans la zone euro au deuxième trimestre 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le durcissement, bien en deçà des craintes</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Resserrement net des critères d'octroi, en % de banques, T2 2026. Source : BCE, enquête du 21 juillet 2026.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Resserrement net des critères d'octroi, en % de banques, T2 2026. Source : BCE, enquête du 21 juillet 2026.</text>
   <line x1="170" y1="86" x2="170" y2="250" stroke="#2a2c33" stroke-width="1"/>
   <rect x="170" y="96" width="112" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="162" y="118" fill="#d6d9df" font-size="12" text-anchor="end">Entreprises</text>
@@ -32,7 +32,7 @@ Le tableau se dégrade en revanche du côté des ménages. Les critères se sont
   <rect x="170" y="204" width="192" height="34" fill="#f5b13d" opacity="0.85"/>
   <text x="162" y="226" fill="#d6d9df" font-size="12" text-anchor="end">Consommation</text>
   <text x="370" y="226" fill="#d6d9df" font-size="12">12 %</text>
-  <text x="32" y="284" fill="#8b909b" font-size="12">Demande de crédit des entreprises : +3 % net, contre un recul de 10 % attendu. Le crunch redouté n'a pas eu lieu.</text>
+  <text x="32" y="284" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Demande de crédit des entreprises : +3 % net, contre un recul de 10 % attendu. Le crunch redouté n'a pas eu lieu.</text>
 </svg>
 <figcaption>Les banques de la zone euro resserrent encore, mais trois fois moins qu'elles ne l'avaient prévu pour les entreprises, dont la demande repart. La pression persiste surtout sur les ménages. Source : BCE, enquête sur la distribution du crédit, 21 juillet 2026.</figcaption>
 </figure>
@@ -57,7 +57,7 @@ La vraie question systémique n'est ni le canal bancaire seul, ni le canal priv�
 <svg viewBox="0 0 720 330" role="img" aria-label="Les liens entre banques, fonds de dette privée, emprunteurs et investisseurs" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le crédit a changé de bilan, pas de risque</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Enchevêtrement banques et crédit privé. Source : FSB, rapport sur les vulnérabilités du crédit privé (6 mai 2026).</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Enchevêtrement banques et crédit privé. Source : FSB, rapport sur les vulnérabilités du crédit privé (6 mai 2026).</text>
   <rect x="40" y="140" width="150" height="60" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="115" y="165" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Banques</text>
   <text x="115" y="185" fill="#8b909b" font-size="11" text-anchor="middle">régulées</text>

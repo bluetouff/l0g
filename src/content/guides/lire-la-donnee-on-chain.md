@@ -71,7 +71,7 @@ La donnée on-chain permet une valorisation impossible sur les marchés classiqu
   <text x="566" y="180" fill="#5eead4" font-size="11">nov. 2021 ≈ 3,2</text>
   <line x1="648" y1="86" x2="648" y2="134" stroke="#5eead4" stroke-width="2"></line>
   <text x="612" y="198" fill="#5eead4" font-size="11">déc. 2017 ≈ 4,0</text>
-  <text x="60" y="228" fill="#8b909b" font-size="11">MVRV = capitalisation de marché / capitalisation réalisée. Sources : Mahmudov et Puell (2018) ; Glassnode.</text>
+  <text x="60" y="228" fill="#8b909b" font-size="11" textLength="654" lengthAdjust="spacingAndGlyphs">MVRV = capitalisation de marché / capitalisation réalisée. Sources : Mahmudov et Puell (2018) ; Glassnode.</text>
 </svg>
 <figcaption>Le MVRV oppose la valeur de marché au coût de revient on-chain des détenteurs. Au-dessus de <strong>3,5</strong>, le marché est historiquement euphorique, les sommets de <strong>2017</strong> et <strong>2021</strong> s'étant inscrits vers <strong>4,0</strong> et <strong>3,2</strong> ; sous <strong>1</strong>, le détenteur moyen est en perte. C'est un repère de régime, jamais un signal de timing précis. Sources : Murad Mahmudov et David Puell (2018), Glassnode.</figcaption>
 </figure>

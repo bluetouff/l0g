@@ -18,7 +18,7 @@ Le passage n'est pas automatique. Le texte crée, à la section 205, un nouvel a
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 720 340" role="img" aria-label="Le test de maturité qui répartit un actif numérique entre la SEC et la CFTC" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le test de maturité, du gendarme boursier au gendarme des matières premières</text>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700" textLength="682" lengthAdjust="spacingAndGlyphs">Le test de maturité, du gendarme boursier au gendarme des matières premières</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Mécanique de la section 104 et de l'article 42 nouveau. Source : H.R. 3633 RS.</text>
   <rect x="270" y="82" width="180" height="46" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="360" y="103" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">Jeton émis</text>

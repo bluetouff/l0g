@@ -51,7 +51,7 @@ This dumping ground has an effect the ECB itself quantified before living it: a 
 <svg viewBox="0 0 720 350" role="img" aria-label="Four price thermometers: Chinese PPI, Chinese inflation, European goods, American inflation" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="350" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Four thermometers, one geography of prices</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Year-on-year changes, June 2026. Chinese deflation no longer reads in Beijing: it reads in European goods.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Year-on-year changes, June 2026. Chinese deflation no longer reads in Beijing: it reads in European goods.</text>
   <line x1="70" y1="270" x2="690" y2="270" stroke="#2a2c33" stroke-width="1"/>
   <rect x="100" y="152" width="80" height="118" fill="#f5b13d" opacity="0.85"/>
   <text x="140" y="142" fill="#f5b13d" font-size="14" font-weight="700" text-anchor="middle">+4.1%</text>
@@ -69,7 +69,7 @@ This dumping ground has an effect the ECB itself quantified before living it: a 
   <text x="620" y="139" fill="#ff4d87" font-size="14" font-weight="700" text-anchor="middle">+4.2%</text>
   <text x="620" y="292" fill="#d6d9df" font-size="11" text-anchor="middle">US inflation</text>
   <text x="620" y="308" fill="#8b909b" font-size="10" text-anchor="middle">behind its tariff wall</text>
-  <text x="32" y="336" fill="#8b909b" font-size="11">Sources: NBS and CNBC (China, June 2026), Eurostat (June HICP, non-energy industrial goods), BLS via analyses cited (United States).</text>
+  <text x="32" y="336" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: NBS and CNBC (China, June 2026), Eurostat (June HICP, non-energy industrial goods), BLS via analyses cited (United States).</text>
 </svg>
 <figcaption>Chinese producer prices climb on the barrel and administered floors, but Chinese consumption and European goods stay crushed around 1%, while America, behind its tariff wall, runs at 4.2%. Chinese deflation now reads outside China. Sources cited.</figcaption>
 </figure>

@@ -70,7 +70,7 @@ Voilà le nœud du risque. Les cinq préférentielles versent des dividendes en 
   <text x="360" y="245" fill="#f5f6f8" font-size="11.5" text-anchor="middle">STRD « Stride » · 10 % junior</text>
   <rect x="240" y="262" width="240" height="30" fill="#ff4d87" opacity="0.9"></rect>
   <text x="360" y="282" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="middle">Actions MSTR · dernier rang</text>
-  <text x="40" y="318" fill="#8b909b" font-size="11">Environ 800 M$ par an d'intérêts et de dividendes, sans trésorerie d'exploitation pour les couvrir. Source : 8-K, strategy.com.</text>
+  <text x="40" y="318" fill="#8b909b" font-size="11" textLength="674" lengthAdjust="spacingAndGlyphs">Environ 800 M$ par an d'intérêts et de dividendes, sans trésorerie d'exploitation pour les couvrir. Source : 8-K, strategy.com.</text>
 </svg>
 <figcaption>La dette et les cinq préférentielles, rémunérées de <strong>8 %</strong> à <strong>12 %</strong>, passent avant l'action ordinaire. Aucune n'est gagée sur le bitcoin, l'appel de marge automatique est donc écarté, mais l'obligation de payer environ <strong>800 millions</strong> par an demeure, sans trésorerie d'exploitation pour la couvrir. Source : documents 8-K de Strategy.</figcaption>
 </figure>

@@ -36,7 +36,7 @@ Truth API's business case fits in one trading day. On the morning of 9 April 202
   <circle cx="60" cy="204" r="5" fill="#5eead4"></circle>
   <text x="80" y="200" fill="#5eead4" font-size="12" font-weight="700">Close</text>
   <text x="80" y="216" fill="#d6d9df" font-size="12">S&amp;P 500 +9.5% · Nasdaq ~+12% (best session since 2008) · Trump Media stock +22.7%</text>
-  <text x="40" y="256" fill="#8b909b" font-size="11.5">Lawmakers demanded an investigation; no offence was established, insider trading law fitting poorly</text>
+  <text x="40" y="256" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">Lawmakers demanded an investigation; no offence was established, insider trading law fitting poorly</text>
   <text x="40" y="272" fill="#8b909b" font-size="11.5">on a president announcing his own policy.</text>
   <text x="32" y="304" fill="#8b909b" font-size="11">Sources: PBS News, Time, Washington Post, CNBC (April 2025).</text>
 </svg>
@@ -51,7 +51,7 @@ The financial context of the announcement explains its logic. Truth Social gener
 <svg viewBox="0 0 720 300" role="img" aria-label="Disproportion between Trump Media revenue, losses and market capitalisation" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Trump Media: the company selling milliseconds</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Orders of magnitude, in millions of dollars. Linear scale: the first bar is invisible, which is the point.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Orders of magnitude, in millions of dollars. Linear scale: the first bar is invisible, which is the point.</text>
   <text x="40" y="104" fill="#d6d9df" font-size="12">Q1 2026 revenue</text>
   <rect x="280" y="90" width="2" height="24" fill="#5eead4"></rect>
   <text x="292" y="107" fill="#5eead4" font-size="12" font-weight="700">0.87</text>
@@ -61,7 +61,7 @@ The financial context of the announcement explains its logic. Truth Social gener
   <text x="40" y="208" fill="#d6d9df" font-size="12">Market cap (mid-July)</text>
   <rect x="280" y="194" width="390" height="24" fill="#f5b13d" opacity="0.7"></rect>
   <text x="300" y="211" fill="#0c0d10" font-size="12" font-weight="700">~2,610</text>
-  <text x="32" y="252" fill="#8b909b" font-size="11.5">Trailing-twelve-month revenue: ~$3.7m. The president owns ~41% of the group via a revocable trust (FactSet).</text>
+  <text x="32" y="252" fill="#8b909b" font-size="11.5" textLength="682" lengthAdjust="spacingAndGlyphs">Trailing-twelve-month revenue: ~$3.7m. The president owns ~41% of the group via a revocable trust (FactSet).</text>
   <text x="32" y="278" fill="#8b909b" font-size="11">Sources: TMTG (Q1 2026 release), Variety, stockanalysis.com, CNN/FactSet.</text>
 </svg>
 <figcaption>Under a million dollars of quarterly revenue against $2.6bn of market value: the group's worth rests on its financial assets and on the one thing it alone can sell, first access to the presidential word. Sources: TMTG, Variety, CNN.</figcaption>

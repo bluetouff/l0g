@@ -58,7 +58,7 @@ Le mouvement n'est pas à sens unique. À mesure que les banques centrales ont r
   <text x="270" y="138" fill="#8b909b" font-size="11">vélocité élevée, comparable à la circulation de la monnaie</text>
   <text x="32" y="168" fill="#ff4d87" font-size="12">APRÈS LEHMAN</text>
   <rect x="270" y="156" width="210" height="24" fill="#ff4d87" opacity="0.85"></rect>
-  <text x="270" y="202" fill="#8b909b" font-size="11">chute du collatéral source et de la vélocité, environ 4 000 à 5 000 Md$ en moins</text>
+  <text x="270" y="202" fill="#8b909b" font-size="11" textLength="444" lengthAdjust="spacingAndGlyphs">chute du collatéral source et de la vélocité, environ 4 000 à 5 000 Md$ en moins</text>
   <text x="32" y="232" fill="#f5b13d" font-size="12">APRÈS LE RESSERREMENT DES BILANS</text>
   <rect x="270" y="220" width="300" height="24" fill="#f5b13d" opacity="0.8"></rect>
   <text x="270" y="266" fill="#8b909b" font-size="11">rebond, à mesure que l'espace de bilan des dealers se libère</text>

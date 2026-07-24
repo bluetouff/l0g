@@ -25,7 +25,7 @@ Les montants deviennent significatifs. [Tether](/glossaire/usdt/) déclare plus 
 <svg viewBox="0 0 720 310" role="img" aria-label="Les grandes poches de demande pour la dette du Trésor américain en 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="310" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Les poches de demande</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Encours par catégorie d'acheteur, en milliers de milliards de dollars, 2026. Sources : ICI, Trésor (TIC), presse.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Encours par catégorie d'acheteur, en milliers de milliards de dollars, 2026. Sources : ICI, Trésor (TIC), presse.</text>
   <rect x="230" y="86" width="380" height="36" fill="#7aa2f7" opacity="0.85"/>
   <text x="222" y="110" fill="#d6d9df" font-size="12" text-anchor="end">Étrangers (TIC)</text>
   <text x="618" y="110" fill="#d6d9df" font-size="13">9,5</text>
@@ -38,7 +38,7 @@ Les montants deviennent significatifs. [Tether](/glossaire/usdt/) déclare plus 
   <rect x="230" y="218" width="4" height="36" fill="#ff4d87"/>
   <text x="222" y="242" fill="#d6d9df" font-size="12" text-anchor="end">Reverse repo (ex-matelas)</text>
   <text x="242" y="242" fill="#ff4d87" font-size="13" font-weight="700">~0 (pic 2022 : ~2,5)</text>
-  <text x="32" y="288" fill="#8b909b" font-size="12">Le matelas du reverse repo a disparu ; la demande doit venir des trois autres poches, aux appétits inégaux.</text>
+  <text x="32" y="288" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Le matelas du reverse repo a disparu ; la demande doit venir des trois autres poches, aux appétits inégaux.</text>
 </svg>
 <figcaption>Les fonds monétaires et les détenteurs étrangers restent les deux réservoirs dominants ; les stablecoins ajoutent une demande captive mais petite. La poche qui amortissait, le reverse repo, a fondu. Sources : ICI (fonds monétaires) ; Trésor, données TIC (étrangers) ; attestations et presse (stablecoins).</figcaption>
 </figure>
@@ -53,7 +53,7 @@ La nuance est de premier ordre. Une demande d'origine officielle, comme celle de
 <svg viewBox="0 0 720 250" role="img" aria-label="Les trois premiers détenteurs étrangers de dette du Trésor américain fin 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="250" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le trio étranger, et sa bascule</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Détention de dette du Trésor, en milliards de dollars, décembre 2025. Source : Trésor américain, données TIC.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Détention de dette du Trésor, en milliards de dollars, décembre 2025. Source : Trésor américain, données TIC.</text>
   <rect x="150" y="86" width="474" height="34" fill="#5eead4" opacity="0.85"/>
   <text x="142" y="108" fill="#d6d9df" font-size="12" text-anchor="end">Japon</text>
   <text x="632" y="108" fill="#d6d9df" font-size="13">1 186</text>
@@ -63,7 +63,7 @@ La nuance est de premier ordre. Une demande d'origine officielle, comme celle de
   <rect x="150" y="174" width="273" height="34" fill="#ff4d87" opacity="0.75"/>
   <text x="142" y="196" fill="#d6d9df" font-size="12" text-anchor="end">Chine</text>
   <text x="431" y="196" fill="#ff4d87" font-size="13">684 (en repli)</text>
-  <text x="32" y="234" fill="#8b909b" font-size="12">Le Royaume-Uni est passé devant la Chine : la demande officielle recule, la demande à levier monte.</text>
+  <text x="32" y="234" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Le Royaume-Uni est passé devant la Chine : la demande officielle recule, la demande à levier monte.</text>
 </svg>
 <figcaption>Le Japon reste le premier détenteur, mais la bascule Royaume-Uni devant Chine trahit un carnet qui passe de la main officielle à la main spéculative. Source : Trésor américain, données TIC (décembre 2025).</figcaption>
 </figure>

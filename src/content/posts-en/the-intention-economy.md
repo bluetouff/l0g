@@ -51,10 +51,10 @@ One point must be made at once, because the analytical error is tempting: advert
     <text x="32" y="294" fill="#f5f6f8">video / CTV</text>
     <rect x="180" y="284" width="430" height="14" fill="rgba(255,255,255,0.10)"/>
     <rect x="180" y="284" width="129" height="14" fill="#5eead4"/>
-    <text x="620" y="295" fill="#f5f6f8">≈ $80 to $110bn</text>
+    <text x="620" y="295" fill="#f5f6f8" textLength="94" lengthAdjust="spacingAndGlyphs">≈ $80 to $110bn</text>
   </g>
   <line x1="32" y1="312" x2="688" y2="312" stroke="rgba(255,255,255,0.20)" stroke-width="1"/>
-  <text x="32" y="330" fill="#8b909b" font-size="11">in pink, retail media: the most dynamic segment, driven by Amazon. Search is the most exposed to agentic bypass.</text>
+  <text x="32" y="330" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">in pink, retail media: the most dynamic segment, driven by Amazon. Search is the most exposed to agentic bypass.</text>
 </svg>
 <figcaption>The global advertising market 2025. Sources: WPP Media (Dec 2025); GroupM (EOY 2024); Statista 2025. The segments do not add up exactly to the total: perimeters and methodologies differ by firm.</figcaption>
 </figure>
@@ -93,7 +93,7 @@ Because commercial behaviour tells a more nuanced and far more instructive story
   <rect x="650" y="100" width="70" height="100" fill="#5eead4"/>
   <text x="672" y="220" fill="#8b909b" font-size="10.5" text-anchor="middle">Mar 26</text>
   <text x="672" y="92" fill="#5eead4" font-size="12" text-anchor="middle">+42%</text>
-  <text x="32" y="352" fill="#8b909b" font-size="11">AI traffic converted worse than human traffic, then flipped in late 2025. A recent signal, limited to retail.</text>
+  <text x="32" y="352" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">AI traffic converted worse than human traffic, then flipped in late 2025. A recent signal, limited to retail.</text>
 </svg>
 <figcaption>Conversion-rate gap between traffic from a generative AI and classic traffic, US retail. Source: Adobe Analytics / Adobe Digital Insights (March 2025 to March 2026), base above a trillion visits. Data specific to retail, not generalisable to the whole web.</figcaption>
 </figure>
@@ -160,7 +160,7 @@ The third document is often over-interpreted. It is an individual Internet-Draft
     <text x="60" y="348" fill="#0c0d10" font-size="16">Stablecoins · USDC · [USDT](/en/glossary/usdt/)</text>
     <text x="60" y="368" fill="#0c0d10" font-size="11.5">≈ $317bn market cap · ≈ 99% denominated in dollars</text>
   </g>
-  <text x="44" y="410" fill="#8b909b" font-size="11">Each layer is entrusted to a neutral foundation. The money layer, though, stays overwhelmingly in dollars.</text>
+  <text x="44" y="410" fill="#8b909b" font-size="11" textLength="670" lengthAdjust="spacingAndGlyphs">Each layer is entrusted to a neutral foundation. The money layer, though, stays overwhelmingly in dollars.</text>
 </svg>
 <figcaption>The agentic stack reads like a settlement that rises: money funds the payment, which embeds into exchanges between tools then between agents. Sources: Anthropic; Google; Coinbase; Linux Foundation; Federal Reserve.</figcaption>
 </figure>

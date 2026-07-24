@@ -78,7 +78,7 @@ Voici le mécanisme le plus subtil, et le plus dangereux. Quand une banque achè
   <text x="360" y="200" fill="#8b909b" font-size="11" text-anchor="middle">~15 Md$</text>
   <text x="360" y="216" fill="#8b909b" font-size="11" text-anchor="middle">proches des</text>
   <text x="360" y="232" fill="#8b909b" font-size="11" text-anchor="middle">fonds propres</text>
-  <text x="32" y="294" fill="#8b909b" font-size="11">En HTM, l'écart reste invisible au bilan, jusqu'à ce qu'une vente forcée le révèle. Source : Réserve fédérale.</text>
+  <text x="32" y="294" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">En HTM, l'écart reste invisible au bilan, jusqu'à ce qu'une vente forcée le révèle. Source : Réserve fédérale.</text>
 </svg>
 <figcaption>Le portefeuille reste inscrit à sa <strong>valeur comptable</strong>, bien au-dessus de sa <strong>valeur de marché</strong>. L'écart, les pertes latentes, ne pèse sur les fonds propres qu'au moment d'une vente. Chez SVB, il avoisinait <strong>15 milliards de dollars</strong>, l'ordre de grandeur de ses fonds propres. Source : Réserve fédérale.</figcaption>
 </figure>

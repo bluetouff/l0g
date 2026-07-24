@@ -21,7 +21,7 @@ Measured against the lender's portfolio, the concentration is starker still. Tot
 <svg viewBox="0 0 720 330" role="img" aria-label="The five largest borrowers of the IMF's general window as of 17 July 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="330" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">One portfolio, one client</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Outstanding credit of the General Resources Account (GRA) as of 17 July 2026, in billions of dollars at the current SDR rate.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Outstanding credit of the General Resources Account (GRA) as of 17 July 2026, in billions of dollars at the current SDR rate.</text>
   <rect x="150" y="84" width="500" height="34" fill="#ff4d87" opacity="0.9"/>
   <text x="142" y="106" fill="#d6d9df" font-size="12" text-anchor="end">Argentina</text>
   <text x="158" y="106" fill="#0c0d10" font-size="13" font-weight="700">57.9, i.e. 46.1% of the book</text>
@@ -61,7 +61,7 @@ The calendar tempers the enthusiasm. The [schedule published by the IMF](https:/
 <svg viewBox="0 0 720 340" role="img" aria-label="Argentina's payment schedule to the IMF, 2026-2030" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The slope ahead of Buenos Aires</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Payments due to the IMF on existing credit, in billions of dollars at the current SDR rate. Excludes remaining drawings.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Payments due to the IMF on existing credit, in billions of dollars at the current SDR rate. Excludes remaining drawings.</text>
   <line x1="60" y1="280" x2="690" y2="280" stroke="#2a2c33" stroke-width="1"/>
   <rect x="90" y="260" width="70" height="20" fill="#5eead4" opacity="0.9"/>
   <rect x="90" y="230" width="70" height="30" fill="#f5b13d" opacity="0.9"/>
@@ -101,14 +101,14 @@ Now walk the balance sheet in the other direction, because the dependence does n
 <svg viewBox="0 0 720 250" role="img" aria-label="Argentine exposure compared with the IMF's precautionary balances" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="250" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The exposure exceeds the cushion</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Billions of dollars, at the current SDR rate. Precautionary balances: IMF projection for end-April 2025.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Billions of dollars, at the current SDR rate. Precautionary balances: IMF projection for end-April 2025.</text>
   <rect x="240" y="88" width="440" height="44" fill="#ff4d87" opacity="0.9"/>
   <text x="232" y="115" fill="#d6d9df" font-size="12" text-anchor="end">Credit to Argentina</text>
   <text x="248" y="115" fill="#0c0d10" font-size="13" font-weight="700">57.9</text>
   <rect x="240" y="150" width="268" height="44" fill="#5eead4" opacity="0.9"/>
   <text x="232" y="177" fill="#d6d9df" font-size="12" text-anchor="end">Precautionary balances</text>
   <text x="248" y="177" fill="#0c0d10" font-size="13" font-weight="700">35.2</text>
-  <text x="32" y="228" fill="#8b909b" font-size="12">An Argentine default, even partial, would eat into a cushion already smaller than the exposure to the country alone.</text>
+  <text x="32" y="228" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">An Argentine default, even partial, would eat into a cushion already smaller than the exposure to the country alone.</text>
 </svg>
 <figcaption>The Fund's precautionary cushion covers about two thirds of the Argentine exposure alone. De facto preferred creditor status does the rest of the work, for as long as it holds. Sources: IMF, assessment of the Fund's financial exposure (April 2025), financial position as of 30 June 2026.</figcaption>
 </figure>

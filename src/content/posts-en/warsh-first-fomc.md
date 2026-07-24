@@ -80,7 +80,7 @@ While the Fed temporises, the bond market has ruled. The 10-year, the benchmark 
 </g>
 <line x1="536" y1="58" x2="536" y2="192" stroke="#ff4d87" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="536" y="212" text-anchor="end" fill="#ff4d87" font-size="12">30-year peak mid-May: 5.2% (highest since 2007)</text>
-<text x="20" y="264" fill="#8b909b" font-size="12">[Term premium](/en/glossary/prime-de-terme/) stretched by the energy shock, deficits and defence spending; recent</text>
+<text x="20" y="264" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">[Term premium](/en/glossary/prime-de-terme/) stretched by the energy shock, deficits and defence spending; recent</text>
 <text x="20" y="282" fill="#8b909b" font-size="12">easing on the preliminary peace deal with Iran. Sources: CNBC, CNN (May-June 2026).</text>
 </svg>
 </figure>

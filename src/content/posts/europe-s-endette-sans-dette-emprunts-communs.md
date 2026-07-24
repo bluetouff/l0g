@@ -37,7 +37,7 @@ Cinq programmes, cinq justifications d'urgence, une même signature. La méthode
   <rect x="200" y="308" width="11" height="40" fill="#8b909b" opacity="0.85"/>
   <text x="192" y="334" fill="#d6d9df" font-size="12" text-anchor="end">Part UE du prêt ERA (2024)</text>
   <text x="219" y="334" fill="#f5f6f8" font-size="12" font-weight="700">18</text>
-  <text x="32" y="376" fill="#8b909b" font-size="11">Sources : Commission européenne (EU as a borrower), Conseil de l'UE. Encours total : ~827 Md€ mi-2026, ~1 000 Md€ attendus fin 2026.</text>
+  <text x="32" y="376" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Commission européenne (EU as a borrower), Conseil de l'UE. Encours total : ~827 Md€ mi-2026, ~1 000 Md€ attendus fin 2026.</text>
 </svg>
 <figcaption>Chaque programme a été voté comme exceptionnel, temporaire et plafonné. Leur addition fait de la Commission l'un des tout premiers émetteurs du continent, avec un millier de milliards d'euros d'encours attendus fin 2026. Sources : Commission européenne, Conseil.</figcaption>
 </figure>
@@ -72,10 +72,10 @@ Restait à trouver la recette. Les nouvelles [ressources propres](/glossaire/#re
   <text x="242" y="177" fill="#d6d9df" font-size="12" text-anchor="end">Remboursement NGEU</text>
   <text x="295" y="177" fill="#f5f6f8" font-size="13" font-weight="700">168</text>
   <rect x="250" y="210" width="2" height="42" fill="#f5b13d"/>
-  <text x="242" y="237" fill="#d6d9df" font-size="12" text-anchor="end">Nouvelles ressources propres adoptées</text>
+  <text x="242" y="237" fill="#d6d9df" font-size="12" text-anchor="end" textLength="238" lengthAdjust="spacingAndGlyphs">Nouvelles ressources propres adoptées</text>
   <text x="262" y="237" fill="#f5b13d" font-size="13" font-weight="700">0</text>
-  <text x="32" y="290" fill="#8b909b" font-size="11">Sources : Parlement européen (EPRS), Commission européenne, Agence Europe (impasse constatée en mai 2026).</text>
-  <text x="32" y="308" fill="#8b909b" font-size="11">La décision sur les ressources propres exige l'unanimité des Vingt-Sept puis une ratification nationale.</text>
+  <text x="32" y="290" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Parlement européen (EPRS), Commission européenne, Agence Europe (impasse constatée en mai 2026).</text>
+  <text x="32" y="308" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">La décision sur les ressources propres exige l'unanimité des Vingt-Sept puis une ratification nationale.</text>
 </svg>
 <figcaption>Cent soixante-huit milliards d'euros de remboursement inscrits au prochain cadre budgétaire, un douzième du total, et toujours aucune recette dédiée adoptée pour les couvrir. Le conflit distributif est écrit d'avance. Sources : EPRS, Commission, Agence Europe.</figcaption>
 </figure>

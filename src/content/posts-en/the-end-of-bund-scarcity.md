@@ -44,7 +44,7 @@ The second pillar withdrew in silence: the ECB reinvests nothing anymore and its
   <text x="400" y="145" fill="#8b909b" font-size="10" text-anchor="middle">first (late 2024)</text>
   <line x1="400" y1="152" x2="400" y2="188" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 3"/>
   <text x="668" y="160" fill="#5eead4" font-size="11" text-anchor="end">3.14%</text>
-  <text x="32" y="330" fill="#8b909b" font-size="11">Sources: Trading Economics (17 July 2026), TwentyFour AM, Amundi, BIS. Schematic representation, not a market series.</text>
+  <text x="32" y="330" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: Trading Economics (17 July 2026), TwentyFour AM, Amundi, BIS. Schematic representation, not a market series.</text>
 </svg>
 <figcaption>For a decade, the Bund yielded less than the swap rate: the price of scarcity. The late-2024 crossing, entrenched since, marks the shift to a regime where investors instead demand compensation for absorbing German supply. Stylised path drawn from the sources cited.</figcaption>
 </figure>

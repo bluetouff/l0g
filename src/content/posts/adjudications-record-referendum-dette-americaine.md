@@ -42,7 +42,7 @@ La semaine de refinancement de juillet a livré deux signaux contrastés. Le 8 j
   <text x="40" y="268" fill="#d6d9df" font-size="12">Indirects (proxy étranger)</text>
   <text x="380" y="268" fill="#8b909b" font-size="13" text-anchor="middle">solide</text>
   <text x="580" y="268" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">~16,6 Md$</text>
-  <text x="32" y="298" fill="#8b909b" font-size="11">Sources : Trésor américain (TreasuryDirect), Bloomberg. Rendement arrondi, résultats officiels sur TreasuryDirect.</text>
+  <text x="32" y="298" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources : Trésor américain (TreasuryDirect), Bloomberg. Rendement arrondi, résultats officiels sur TreasuryDirect.</text>
 </svg>
 <figcaption>Le 10 ans placé sans peine, le 30 ans à son plus haut depuis 2007 avec un <strong>deuxième tail consécutif</strong>, mais une demande indirecte de <strong>16,6 milliards de dollars</strong> qui rassure. Le prix monte, les acheteurs restent. Sources : Trésor américain, Bloomberg.</figcaption>
 </figure>
@@ -69,11 +69,11 @@ Ce durcissement n'a rien de mystérieux. Il répond à une équation d'offre et 
   <line x1="40" y1="174" x2="680" y2="174" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="204" fill="#d6d9df" font-size="12.5">Acheteurs étrangers</text>
   <text x="330" y="208" fill="#8b909b" font-size="19" font-weight="700">à plat</text>
-  <text x="500" y="204" fill="#8b909b" font-size="11.5">sous la hausse de l'offre depuis 2014</text>
+  <text x="500" y="204" fill="#8b909b" font-size="11.5" textLength="214" lengthAdjust="spacingAndGlyphs">sous la hausse de l'offre depuis 2014</text>
   <line x1="40" y1="222" x2="680" y2="222" stroke="#2a2c33" stroke-width="1"></line>
   <text x="40" y="252" fill="#d6d9df" font-size="12.5">Basis trade des hedge funds</text>
   <text x="330" y="256" fill="#7aa2f7" font-size="19" font-weight="700">en repli</text>
-  <text x="500" y="252" fill="#8b909b" font-size="11.5">un acheteur marginal qui s'efface</text>
+  <text x="500" y="252" fill="#8b909b" font-size="11.5" textLength="214" lengthAdjust="spacingAndGlyphs">un acheteur marginal qui s'efface</text>
   <text x="32" y="288" fill="#8b909b" font-size="11">Sources : NY Fed, FRED, Apollo, note de la Réserve fédérale du 22 juin 2026.</text>
 </svg>
 <figcaption>Plus de dette à placer, et trois piliers de la demande qui reculent en même temps : la Fed via son bilan, l'étranger dont la part stagne, et le <strong>basis trade</strong> des hedge funds en perte de vitesse. Sources : NY Fed, FRED, Apollo.</figcaption>

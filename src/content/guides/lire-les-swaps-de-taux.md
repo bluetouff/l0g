@@ -81,7 +81,7 @@ Revenons à l'écart entre la courbe des swaps et celle des emprunts d'État. Ce
   <rect x="560" y="150" width="90" height="70" fill="#8b909b" opacity="0.7"></rect>
   <text x="605" y="240" fill="#d6d9df" font-size="11" text-anchor="middle">Treasury</text>
   <text x="530" y="132" fill="#ff4d87" font-size="11" text-anchor="middle">spread négatif depuis 2015</text>
-  <text x="32" y="286" fill="#8b909b" font-size="11">Cause : le coût de bilan et les contraintes de levier des banques renchérissent la détention de Treasuries.</text>
+  <text x="32" y="286" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Cause : le coût de bilan et les contraintes de levier des banques renchérissent la détention de Treasuries.</text>
 </svg>
 <figcaption>Sur les <strong>courtes maturités</strong>, le taux de swap dépasse le rendement du Treasury, un spread positif classique. Sur les <strong>longues</strong>, le rapport s'inverse depuis 2015 : détenir un Treasury coûte du bilan aux banques, ce qui déprime son prix face au swap. Le signe du spread est devenu un thermomètre de contraintes réglementaires.</figcaption>
 </figure>

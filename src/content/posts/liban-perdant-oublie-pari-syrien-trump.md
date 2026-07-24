@@ -32,7 +32,7 @@ Le 28 février 2026, les États-Unis et Israël frappent l'Iran et tuent son gui
 <text x="400" y="200" fill="#8b909b" font-size="13">morts, 11 798 blessés (Santé, 17 juin)</text>
 </g>
 <line x1="380" y1="56" x2="380" y2="210" stroke="#8b909b" stroke-opacity="0.3" stroke-width="1"/>
-<text x="20" y="238" fill="#8b909b" font-size="12">Bilan en hausse quotidienne. Sources : ministère libanais de la Santé, relayé par SANA et agences (juin 2026).</text>
+<text x="20" y="238" fill="#8b909b" font-size="12" textLength="694" lengthAdjust="spacingAndGlyphs">Bilan en hausse quotidienne. Sources : ministère libanais de la Santé, relayé par SANA et agences (juin 2026).</text>
 </svg>
 </figure>
 

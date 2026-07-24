@@ -38,7 +38,7 @@ Ce ralentissement de 2025 s'explique surtout par l'envolée des prix, qui a rend
   <rect x="570" y="183" width="70" height="87" fill="#f5b13d" opacity="0.85"></rect>
   <text x="605" y="175" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700">863</text>
   <text x="605" y="288" fill="#8b909b" font-size="10" text-anchor="middle">2025</text>
-  <text x="32" y="318" fill="#8b909b" font-size="11">Trois années au-dessus de 1 000 tonnes, puis un ralentissement en 2025, toujours loin au-dessus de la norme.</text>
+  <text x="32" y="318" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Trois années au-dessus de 1 000 tonnes, puis un ralentissement en 2025, toujours loin au-dessus de la norme.</text>
 </svg>
 <figcaption>Après trois années record au-dessus de 1 000 tonnes, les achats ont ralenti à 863 tonnes en 2025 sous l'effet des prix, sans retomber vers la moyenne de la décennie 2010. Source : World Gold Council (données à fin décembre 2025).</figcaption>
 </figure>
@@ -89,7 +89,7 @@ Tout cela se heurte à un problème de mesure, et ce terrain est celui de ce jou
 <svg viewBox="0 0 720 280" role="img" aria-label="Part déclarée et part non déclarée des achats d'or des banques centrales en 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="280" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'achat déclaré, et l'achat opaque</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Estimation de la part non déclarée des achats officiels en 2025. Source : World Gold Council, Metals Focus.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Estimation de la part non déclarée des achats officiels en 2025. Source : World Gold Council, Metals Focus.</text>
   <text x="32" y="104" fill="#5eead4" font-size="12">DÉCLARÉ (environ 43 %)</text>
   <rect x="32" y="114" width="275" height="40" fill="#5eead4" opacity="0.85"></rect>
   <text x="32" y="186" fill="#ff4d87" font-size="12">NON DÉCLARÉ (environ 57 %)</text>

@@ -25,7 +25,7 @@ Chaque dollar qui entre dans le compte du Trésor sort du système : il quitte u
 <svg viewBox="0 0 720 300" role="img" aria-label="Les trois grands postes de liquidité du bilan de la Fed en juillet 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Où est passé le matelas</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Passif de la Fed, en milliards de dollars, semaine au 15 juillet 2026. Source : Réserve fédérale, H.4.1.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Passif de la Fed, en milliards de dollars, semaine au 15 juillet 2026. Source : Réserve fédérale, H.4.1.</text>
   <rect x="200" y="88" width="470" height="40" fill="#5eead4" opacity="0.85"/>
   <text x="192" y="113" fill="#d6d9df" font-size="12" text-anchor="end">Réserves des banques</text>
   <text x="216" y="113" fill="#0c0d10" font-size="13" font-weight="700">3 143</text>
@@ -35,7 +35,7 @@ Chaque dollar qui entre dans le compte du Trésor sort du système : il quitte u
   <rect x="200" y="196" width="4" height="40" fill="#ff4d87"/>
   <text x="192" y="221" fill="#d6d9df" font-size="12" text-anchor="end">Reverse repo (RRP)</text>
   <text x="212" y="221" fill="#ff4d87" font-size="13" font-weight="700">1,2 (pic 2022 : ~2 500)</text>
-  <text x="32" y="278" fill="#8b909b" font-size="12">Le RRP, longtemps l'amortisseur à 2 500 milliards, est vide. Le prochain drain passe par les réserves.</text>
+  <text x="32" y="278" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Le RRP, longtemps l'amortisseur à 2 500 milliards, est vide. Le prochain drain passe par les réserves.</text>
 </svg>
 <figcaption>Le compte du Trésor se recharge vers 950 milliards pendant que la facilité de reverse repo, jadis à 2 500 milliards, est tombée à 1,2 milliard. Sans matelas, la ponction se reporte sur les réserves bancaires. Sources : Réserve fédérale (H.4.1, 15 juillet 2026) ; Trésor américain (estimation de financement).</figcaption>
 </figure>

@@ -16,7 +16,7 @@ Le marché des gilts pèse près de **3 000 milliards de livres** selon les ordr
 <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mécanique du levier dans le repo sur gilts" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px">
   <rect width="760" height="360" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-family="monospace" font-size="17" font-weight="700">Du gilt au levier : le financement court qui devient risque</text>
-  <text x="32" y="60" fill="#8b909b" font-family="monospace" font-size="12">Lecture simplifiée d'un arbitrage financé en repo. Sources : BoE via FT et Times ; BIS Annual Economic Report 2026.</text>
+  <text x="32" y="60" fill="#8b909b" font-family="monospace" font-size="12" textLength="722" lengthAdjust="spacingAndGlyphs">Lecture simplifiée d'un arbitrage financé en repo. Sources : BoE via FT et Times ; BIS Annual Economic Report 2026.</text>
   <g font-family="monospace" font-size="13">
     <rect x="44" y="112" width="150" height="68" rx="7" fill="none" stroke="#5eead4" stroke-width="1.5"></rect>
     <text x="68" y="140" fill="#f5f6f8">Gilt</text>
@@ -46,7 +46,7 @@ Le marché des gilts pèse près de **3 000 milliards de livres** selon les ordr
     <path d="M346 238 l9 -5 v10 z"></path>
     <path d="M436 272 l-9 -5 v10 z"></path>
   </g>
-  <text x="44" y="335" fill="#8b909b" font-family="monospace" font-size="11">Le risque n'est pas le titre souverain isolé, mais la transformation d'une position réputée liquide en vente forcée.</text>
+  <text x="44" y="335" fill="#8b909b" font-family="monospace" font-size="11" textLength="710" lengthAdjust="spacingAndGlyphs">Le risque n'est pas le titre souverain isolé, mais la transformation d'une position réputée liquide en vente forcée.</text>
 </svg>
 <figcaption style="margin-top:0.65rem;color:#8b909b;font-size:0.9rem;line-height:1.55">Un repo avec haircut très faible maximise le levier. Si les marges montent ou si le refinancement se ferme, le fonds doit trouver du cash ou réduire sa position. Dans un marché encombré, cela peut transformer une obligation souveraine liquide en actif vendu de force.</figcaption>
 </figure>
@@ -77,7 +77,7 @@ Le chiffre central de la BIS est net : dans les économies avancées, la part de
 <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Migration des détenteurs de dette souveraine vers les NBFI dans les économies avancées" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px">
   <rect width="760" height="330" fill="#0c0d10"></rect>
   <text x="32" y="38" fill="#f5f6f8" font-family="monospace" font-size="17" font-weight="700">Dette souveraine : l'acheteur marginal change</text>
-  <text x="32" y="60" fill="#8b909b" font-family="monospace" font-size="12">Économies avancées, part des détenteurs de dette souveraine. Source : BIS Annual Economic Report 2026.</text>
+  <text x="32" y="60" fill="#8b909b" font-family="monospace" font-size="12" textLength="722" lengthAdjust="spacingAndGlyphs">Économies avancées, part des détenteurs de dette souveraine. Source : BIS Annual Economic Report 2026.</text>
   <g font-family="monospace" font-size="12">
     <text x="64" y="108" fill="#d6d9df">NBFI</text>
     <rect x="210" y="88" width="220" height="30" fill="#5eead4" opacity="0.78"></rect>
@@ -90,7 +90,7 @@ Le chiffre central de la BIS est net : dans les économies avancées, la part de
     <text x="354" y="206" fill="#d6d9df">27 % en 2021</text>
     <text x="304" y="244" fill="#8b909b">17 % en 2025</text>
   </g>
-  <text x="32" y="300" fill="#8b909b" font-family="monospace" font-size="11">Moins de portage officiel, plus d'intermédiation privée : le marché peut rester liquide, mais avec plus de sensibilité au financement.</text>
+  <text x="32" y="300" fill="#8b909b" font-family="monospace" font-size="11" textLength="722" lengthAdjust="spacingAndGlyphs">Moins de portage officiel, plus d'intermédiation privée : le marché peut rester liquide, mais avec plus de sensibilité au financement.</text>
 </svg>
 <figcaption style="margin-top:0.65rem;color:#8b909b;font-size:0.9rem;line-height:1.55">La BIS ne dit pas que les NBFI sont tous instables. Elle dit que la dette publique des économies avancées est de plus en plus absorbée par des acteurs dont la liquidité dépend des prix, des marges, des rachats et du financement court.</figcaption>
 </figure>

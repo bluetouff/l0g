@@ -71,7 +71,7 @@ Here is the knot of risk. The five preferreds pay cash dividends, from **8%** fo
   <text x="360" y="245" fill="#f5f6f8" font-size="11.5" text-anchor="middle">STRD "Stride" · 10% junior</text>
   <rect x="240" y="262" width="240" height="30" fill="#ff4d87" opacity="0.9"></rect>
   <text x="360" y="282" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="middle">MSTR shares · last in line</text>
-  <text x="40" y="318" fill="#8b909b" font-size="11">About $800M a year of interest and dividends, with no operating cash to cover it. Source: 8-K, strategy.com.</text>
+  <text x="40" y="318" fill="#8b909b" font-size="11" textLength="674" lengthAdjust="spacingAndGlyphs">About $800M a year of interest and dividends, with no operating cash to cover it. Source: 8-K, strategy.com.</text>
 </svg>
 <figcaption>The debt and the five preferreds, paying <strong>8%</strong> to <strong>12%</strong>, come before the common share. None is secured on the bitcoin, which rules out an automatic margin call, but the obligation to pay about <strong>$800 million</strong> a year remains, with no operating cash to cover it. Source: Strategy 8-K filings.</figcaption>
 </figure>

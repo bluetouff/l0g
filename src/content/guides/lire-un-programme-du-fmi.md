@@ -45,7 +45,7 @@ Le Fonds prête par deux grands guichets. Le **compte des ressources générales
 <svg viewBox="0 0 720 300" role="img" aria-label="Les deux guichets du FMI et leurs instruments" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="300" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Deux guichets, plusieurs portes</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Où sort le crédit du Fonds selon le profil du pays. Sources : FMI ; Congressional Research Service.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Où sort le crédit du Fonds selon le profil du pays. Sources : FMI ; Congressional Research Service.</text>
   <rect x="40" y="84" width="320" height="188" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
   <text x="56" y="110" fill="#7aa2f7" font-size="14" font-weight="700">GRA (non concessionnel)</text>
   <text x="56" y="134" fill="#d6d9df" font-size="12">Taux de marché, tous les membres</text>
@@ -74,7 +74,7 @@ Ce seuil n'est pas théorique. Dans le cas argentin, [l'encours a atteint 1 335 
 <svg viewBox="0 0 720 260" role="img" aria-label="L'échelle d'accès aux ressources du FMI en pourcentage de quote-part" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="260" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'échelle d'accès, en pourcentage de quote-part</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Le crédit se mesure en multiples de la quote-part. Au-delà de 600 %, l'accès devient exceptionnel.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Le crédit se mesure en multiples de la quote-part. Au-delà de 600 %, l'accès devient exceptionnel.</text>
   <line x1="70" y1="210" x2="690" y2="210" stroke="#2a2c33" stroke-width="1"/>
   <rect x="70" y="180" width="52" height="30" fill="#5eead4" opacity="0.85"/>
   <text x="96" y="234" fill="#8b909b" font-size="11" text-anchor="middle">quote-part</text>

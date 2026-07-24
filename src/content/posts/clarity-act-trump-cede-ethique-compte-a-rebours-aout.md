@@ -27,7 +27,7 @@ En trois jours, le dossier est passé d'un projet sans garde-fou, rejeté publiq
 <svg viewBox="0 0 720 340" role="img" aria-label="Chronologie de la fin de partie du CLARITY Act au Sénat" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
   <rect width="720" height="340" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">La fin de partie, jour par jour</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Sénat des États-Unis, juillet-août 2026. Sources : Congress.gov, The Block, CoinDesk, cryptobriefing.</text>
+  <text x="32" y="59" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Sénat des États-Unis, juillet-août 2026. Sources : Congress.gov, The Block, CoinDesk, cryptobriefing.</text>
   <line x1="48" y1="92" x2="48" y2="300" stroke="#2a2c33" stroke-width="1"/>
   <circle cx="48" cy="98" r="7" fill="#5eead4"/>
   <text x="68" y="103" fill="#d6d9df" font-size="13">13 juillet : le Sénat rentre de vacances</text>
@@ -65,7 +65,7 @@ Tout se joue sur un mot : la clause sera-t-elle contraignante ou cosmétique. Un
   <rect x="540" y="90" width="120" height="46" fill="#2a2c33" opacity="0.6"/>
   <text x="600" y="119" fill="#8b909b" font-size="12" text-anchor="middle">40 restants</text>
   <text x="32" y="190" fill="#d6d9df" font-size="13">Démocrates en pointe sur la clause éthique : Murphy, Gillibrand, Van Hollen, Merkley.</text>
-  <text x="32" y="214" fill="#8b909b" font-size="12">Au moins sept démocrates doivent rejoindre les 53 républicains. Aucun n'était rallié au 20 juillet.</text>
+  <text x="32" y="214" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Au moins sept démocrates doivent rejoindre les 53 républicains. Aucun n'était rallié au 20 juillet.</text>
 </svg>
 <figcaption>La majorité républicaine plafonne à 53 sièges ; il faut sept démocrates de plus pour atteindre les 60 voix de clôture. Le principe de la clause éthique est acquis, sa portée reste à négocier avec ces voix pivots. Sources : composition du Sénat ; CoinDesk.</figcaption>
 </figure>

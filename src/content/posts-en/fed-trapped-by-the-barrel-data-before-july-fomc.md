@@ -68,7 +68,7 @@ The market has grasped it. The CME's FedWatch tool put the probability of a hold
   <text x="575" y="156" fill="#8b909b" font-size="11" text-anchor="middle">Brent at $100,</text>
   <text x="575" y="172" fill="#8b909b" font-size="11" text-anchor="middle">expectations at risk</text>
   <line x1="510" y1="148" x2="437" y2="148" stroke="#ff4d87" stroke-width="1.5"/>
-  <text x="32" y="270" fill="#8b909b" font-size="12">Raising would not lower the barrel; cutting would mean easing into a supply shock. Waiting remains.</text>
+  <text x="32" y="270" fill="#8b909b" font-size="12" textLength="682" lengthAdjust="spacingAndGlyphs">Raising would not lower the barrel; cutting would mean easing into a supply shock. Waiting remains.</text>
 </svg>
 <figcaption>The policy rate is pinned between an economy that argues for easing and a barrel that forbids it. Monetary policy can do nothing against a supply shock, it can only wait. Sources: Federal Reserve Bank of New York; CME FedWatch (21 July 2026).</figcaption>
 </figure>

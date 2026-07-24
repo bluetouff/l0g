@@ -32,7 +32,7 @@ The origin of the drawdown is known: on 11 March, in response to the price surge
   <text x="40" y="208" fill="#d6d9df" font-size="12">April 1983 floor</text>
   <rect x="250" y="194" width="178" height="24" fill="#f5b13d" opacity="0.75"></rect>
   <text x="438" y="211" fill="#f5b13d" font-size="12" font-weight="700">317.45</text>
-  <text x="40" y="252" fill="#8b909b" font-size="11.5">Release of 172 million barrels over ~120 days, announced 11 March 2026; the reserve is 56% empty.</text>
+  <text x="40" y="252" fill="#8b909b" font-size="11.5" textLength="674" lengthAdjust="spacingAndGlyphs">Release of 172 million barrels over ~120 days, announced 11 March 2026; the reserve is 56% empty.</text>
   <text x="32" y="282" fill="#8b909b" font-size="11">Sources: EIA (weekly series WCSSTUS1), Mansfield Energy, Rigzone, DOE.</text>
 </svg>
 <figcaption>The American reserve has slipped below its 1983 floor. The March destocking programme ends at the precise moment the shock restarts. Sources: EIA, Rigzone, DOE.</figcaption>
@@ -62,7 +62,7 @@ The base this release drew from was documented before the crisis: about **1.25 b
   <text x="40" y="262" fill="#d6d9df" font-size="12">Remaining order of magnitude (estimate)</text>
   <rect x="360" y="248" width="170" height="20" fill="#5eead4" opacity="0.9"></rect>
   <text x="536" y="263" fill="#5eead4" font-size="12" font-weight="700">~850</text>
-  <text x="32" y="298" fill="#8b909b" font-size="11">Sources: IEA (11 March 2026 releases and 2022 history), CRS. Remainder: l0g calculation, not refined to the week.</text>
+  <text x="32" y="298" fill="#8b909b" font-size="11" textLength="682" lengthAdjust="spacingAndGlyphs">Sources: IEA (11 March 2026 releases and 2022 history), CRS. Remainder: l0g calculation, not refined to the week.</text>
 </svg>
 <figcaption>The March response committed nearly a third of the OECD's government stocks in a single decision. The remaining base is an estimate, not a published figure. Sources: IEA, CRS, l0g calculation.</figcaption>
 </figure>
