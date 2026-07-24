@@ -54,6 +54,7 @@ const shared = { datasets: usDebtDatasets, signals: usDebtSignals, sources: usDe
 const privateCreditSection = { sectionTitle: 'Private credit & markets', accent: '#ff4d87' };
 const cryptoSection = { sectionTitle: 'Crypto & stablecoins', accent: 'var(--color-amber)' };
 const usRegulationSection = { sectionTitle: 'US regulation & institutions', accent: '#7aa2f7' };
+const clearingSection = { sectionTitle: 'Markets & clearing', accent: '#7aa2f7' };
 
 const privateCreditArticles: GlossaryGraphLink[] = [
   { label: 'Private credit: one asset, two prices', href: '/en/analysis/private-credit-one-asset-two-prices/', detail: 'Price discovery, listed BDCs and unlisted funds.', kind: 'article' },
@@ -162,9 +163,24 @@ const oilArticles: GlossaryGraphLink[] = [
   { label: 'Hormuz reopens', href: '/en/analysis/hormuz-reopens-three-oil-scenarios/', detail: 'Normalisation, price scenarios and geopolitical premia.', kind: 'article' },
   { label: 'The Hormuz crisis in Asia', href: '/en/analysis/hormuz-crisis-asia-economic-toll/', detail: 'Energy bill, LNG and Asian exposure.', kind: 'article' },
   { label: 'Supply chains and Hormuz', href: '/en/analysis/hormuz-supply-chain-the-bill-is-already-here/', detail: 'Freight, delays and energy costs passed into goods.', kind: 'article' },
+  { label: 'When the barrel becomes a margin call', href: '/en/analysis/when-the-barrel-becomes-a-margin-call/', detail: 'Hedging, cash, clearing and transmission to bank balance sheets.', kind: 'article' },
 ];
 
 const oilGuide: GlossaryGraphLink = { label: 'Reading the oil market', href: '/en/guides/read-oil-market/', detail: 'Prices, curve, inventories, OPEC and physical data.', kind: 'guide' };
+
+const marginGuides: GlossaryGraphLink[] = [
+  oilGuide,
+  { label: 'Reading interest-rate swaps', href: '/en/guides/read-interest-rate-swaps/', detail: 'Valuation, clearing and counterparty risk in derivatives.', kind: 'guide' },
+];
+
+const marginSources: GlossaryGraphLink[] = [
+  { label: 'Intercontinental Exchange', href: 'https://www.ice.com/products/219/Brent-Crude-Futures', detail: 'Brent future specifications, clearing and indicative margins.', kind: 'source' },
+  { label: 'European Central Bank', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Energy derivatives, margin calls, bank credit and EMIR data.', kind: 'source' },
+  { label: 'Bank of England', href: 'https://www.bankofengland.co.uk/speech/2024/july/nathanael-benjamin-speech-followed-by-panel-preparing-for-liquidity-stresses', detail: 'Measures of the 2022 European energy-margin stress.', kind: 'source' },
+  { label: 'Financial Stability Board', href: 'https://www.fsb.org/2024/12/liquidity-preparedness-for-margin-and-collateral-calls-final-report/', detail: 'International recommendations on margin-call preparedness.', kind: 'source' },
+];
+
+const marginShared = { datasets: energyDatasets, signals: energySignals, sources: marginSources };
 
 const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden bottlenecks', href: '/en/analysis/uranium-market-deficit-ai-bottlenecks/', detail: 'Mining, conversion, enrichment, HALEU and AI demand.', kind: 'article' };
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
@@ -896,6 +912,90 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       guides: [oilGuide],
       ...energyShared,
       related: ['brent', 'wti', 'opep', 'opep-2', 'chokepoint'],
+    },
+  },
+  {
+    slug: 'ccp',
+    sigle: 'CCP',
+    nom: 'Central counterparty',
+    def: 'A clearing house that interposes itself between buyer and seller and becomes the counterparty to each trade. It reduces counterparty risk and organises default management, at the cost of more systematic margin calls.',
+    guide: '/en/guides/read-interest-rate-swaps/',
+    ...clearingSection,
+    atlas: {
+      intuition: 'A central counterparty reduces the propagation of default, but turns market losses into calls for cash and collateral.',
+      formula: 'counterparty protection = initial margin + variation margin + default resources',
+      whyNow: 'When oil becomes more volatile, clearing resilience also depends on clients and banks providing liquidity on time.',
+      articles: [oilArticles[5]],
+      guides: marginGuides,
+      ...marginShared,
+      related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'membre-compensateur', 'brent', 'repo'],
+    },
+  },
+  {
+    slug: 'appel-de-marge',
+    sigle: 'Margin call',
+    nom: 'Demand for additional cash or collateral',
+    def: 'A request for additional cash or collateral when the value or risk of a position changes. It may be variation margin settling the current loss or an increase in initial margin covering a potential loss after default.',
+    guide: '/en/guides/read-interest-rate-swaps/',
+    ...clearingSection,
+    atlas: {
+      intuition: 'A margin call does not mean a hedge is economically wrong. It means its current loss or potential risk must be funded now.',
+      formula: 'liquidity need = variation margin + increase in initial margin - available cash and collateral',
+      whyNow: 'A producer short futures can gain on physical crude and still have to advance cash before the cargo settles.',
+      articles: [oilArticles[5]],
+      guides: marginGuides,
+      ...marginShared,
+      related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
+    },
+  },
+  {
+    slug: 'marge-initiale',
+    sigle: 'Initial margin',
+    nom: 'Potential-loss collateral',
+    def: 'Cash or liquid securities posted at inception and during a position to cover a potential loss while a defaulting participant is closed out. Its amount depends on risk, volatility and recognised portfolio offsets.',
+    guide: '/en/guides/read-interest-rate-swaps/',
+    ...clearingSection,
+    atlas: {
+      intuition: "Initial margin is a buffer against a possible future loss during default liquidation, not settlement of today's loss.",
+      formula: 'initial margin = potential loss over the liquidation period, after recognised offsets',
+      whyNow: 'Volatility can raise this buffer just as participants are already funding daily losses.',
+      articles: [oilArticles[5]],
+      guides: marginGuides,
+      ...marginShared,
+      related: ['appel-de-marge', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
+    },
+  },
+  {
+    slug: 'marge-de-variation',
+    sigle: 'Variation margin',
+    nom: 'Daily settlement of mark-to-market gains and losses',
+    def: 'A payment, generally daily and in cash for cleared derivatives, that settles gains and losses caused by the new market value. It resets current exposure between counterparties to zero but can create an immediate cash need.',
+    guide: '/en/guides/read-interest-rate-swaps/',
+    ...clearingSection,
+    atlas: {
+      intuition: 'Variation margin settles today the gain or loss that has appeared since the previous valuation.',
+      formula: 'variation margin ≈ price change × contract size × number of contracts',
+      whyNow: 'On a short oil hedge, a higher barrel can cause an immediate outflow before the physical cargo is paid for.',
+      articles: [oilArticles[5]],
+      guides: marginGuides,
+      ...marginShared,
+      related: ['appel-de-marge', 'marge-initiale', 'membre-compensateur', 'ccp', 'brent'],
+    },
+  },
+  {
+    slug: 'membre-compensateur',
+    sigle: 'Clearing member',
+    nom: 'Member of a central counterparty',
+    def: "A firm that settles margins and obligations for its own positions and those of its clients at a central counterparty. If a client misses a margin call, the member still owes the clearing house and bears step-in liquidity risk.",
+    guide: '/en/guides/read-interest-rate-swaps/',
+    ...clearingSection,
+    atlas: {
+      intuition: 'The clearing member is the bridge between client and clearing house. It passes on margin and remains responsible for settlement to the CCP.',
+      whyNow: 'If a client runs short of cash, stress moves to the bank providing clearing and, sometimes, funding.',
+      articles: [oilArticles[5]],
+      guides: marginGuides,
+      ...marginShared,
+      related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'ccp', 'brent'],
     },
   },
   {

@@ -367,6 +367,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Swap spread', nom: 'Spread de swap', def: "Écart entre le taux d'un swap de taux d'intérêt et le rendement de l'obligation d'État de même maturité. L'arbitrage de spread de swap, cousin du basis trade, parie avec levier sur le resserrement ou l'écartement de cet écart. Environ 60 milliards de dollars s'en sont dénoués brutalement en avril 2025, un rappel de sa fragilité. En Europe, le passage du rendement du Bund au-dessus du swap fin 2024, une première, a signé la fin de la prime de rareté allemande.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'FICC', nom: 'Fixed Income Clearing Corporation', def: "Chambre de compensation des titres à revenu fixe américains, filiale de la DTCC. Longtemps seule contrepartie centrale agréée pour les Treasuries, avant l'arrivée de CME et ICE. Au cœur du mandat de compensation obligatoire de la SEC." },
       { sigle: 'CCP', nom: 'Central Counterparty (contrepartie centrale)', def: "Chambre de compensation qui s'interpose entre acheteur et vendeur, devenant contrepartie de chaque transaction. Réduit le risque de contrepartie et organise la gestion de défaut, au prix d'appels de marge plus systématiques." },
+      { sigle: 'Appel de marge', nom: 'Margin call', def: "Demande de cash ou de collatéral supplémentaire adressée à un participant lorsque la valeur ou le risque de sa position évolue. Elle peut correspondre à une marge de variation, qui règle la perte courante, ou à un relèvement de la marge initiale destinée à couvrir une perte potentielle en cas de défaut.", guide: '/guides/lire-les-swaps-de-taux/' },
+      { sigle: 'Marge initiale', nom: 'Initial margin (IM)', def: "Cash ou titres liquides déposés à l'ouverture et pendant la vie d'une position pour couvrir la perte potentielle qui pourrait survenir durant la fermeture d'un participant défaillant. Son niveau dépend du risque, de la volatilité et des compensations reconnues dans le portefeuille.", guide: '/guides/lire-les-swaps-de-taux/' },
+      { sigle: 'Marge de variation', nom: 'Variation margin (VM)', def: "Paiement, généralement quotidien et en cash sur les dérivés compensés, qui règle les gains et pertes liés à la nouvelle valeur de marché. Elle remet l'exposition courante entre contreparties à zéro, mais peut créer un besoin de trésorerie immédiat.", guide: '/guides/lire-les-swaps-de-taux/' },
+      { sigle: 'Membre compensateur', nom: 'Clearing member', def: "Établissement membre d'une contrepartie centrale qui règle les marges et obligations de ses propres positions et de celles de ses clients. Si un client ne paie pas un appel de marge, le membre reste redevable envers la chambre et porte un risque de liquidité de substitution.", guide: '/guides/lire-les-swaps-de-taux/' },
       { sigle: 'COT', nom: 'Commitments of Traders', def: "Relevé hebdomadaire de la CFTC détaillant, par catégorie d'intervenant, les positions ouvertes sur les marchés à terme américains. Publié le vendredi à 15 h 30 heure de New York, sur données arrêtées au mardi précédent, soit un décalage de trois jours." },
       { sigle: 'Future', nom: 'Contrat à terme', def: "Contrat standardisé d'achat ou de vente d'un actif à une date future et un prix fixé d'avance, négocié sur un marché organisé. Sert à se couvrir ou à spéculer. Le positionnement sur ces contrats est ce que mesure le COT." },
       { sigle: 'Open interest', nom: 'Position ouverte', def: "Nombre total de contrats à terme ouverts et non encore dénoués à un instant donné. Le total des positions longues y égale toujours le total des positions courtes. Masse que le COT répartit entre catégories de traders." },
@@ -442,7 +446,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-21';
+export const glossaryUpdatedIso = '2026-07-24';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
@@ -565,6 +569,7 @@ const energyArticles: GlossaryGraphLink[] = [
   { label: 'Ormuz rouvre', href: '/posts/accord-paix-ormuz-rouvre-scenarios/', detail: 'Normalisation, scénarios de prix et primes géopolitiques.', kind: 'article' },
   { label: 'Crise d’Ormuz en Asie', href: '/posts/crise-ormuz-asie-impacts-economiques/', detail: 'Facture énergétique, GNL et exposition asiatique.', kind: 'article' },
   { label: 'Chaîne d’approvisionnement et Ormuz', href: '/posts/ormuz-la-chaine-d-approvisionnement-encaisse-la-facture-est-deja-la/', detail: 'Fret, délais et coût énergétique transmis aux biens.', kind: 'article' },
+  { label: 'Quand le baril devient un appel de marge', href: '/posts/baril-appel-de-marge-liquidite-choc-petrolier/', detail: 'Couvertures, trésorerie, compensation et transmission aux banques.', kind: 'article' },
 ];
 
 const energyGuides: GlossaryGraphLink[] = [
@@ -576,6 +581,18 @@ const energySources: GlossaryGraphLink[] = [
   { label: 'U.S. Energy Information Administration', href: '/sources/eia-energy/', detail: 'Pétrole, gaz, stocks, production et Short-Term Energy Outlook.', kind: 'source' },
   { label: 'Commodity Futures Trading Commission', href: '/sources/cftc/', detail: 'Positionnement futures via Commitments of Traders.', kind: 'source' },
   { label: 'World Bank Open Data & OECD Data', href: '/sources/world-bank-oecd/', detail: 'Comparables macro et prix de matières premières.', kind: 'source' },
+];
+
+const marginGuides: GlossaryGraphLink[] = [
+  energyGuides[0],
+  { label: 'Lire les swaps de taux', href: '/guides/lire-les-swaps-de-taux/', detail: 'Valorisation, compensation et risque de contrepartie des dérivés.', kind: 'guide' },
+];
+
+const marginSources: GlossaryGraphLink[] = [
+  { label: 'Intercontinental Exchange', href: 'https://www.ice.com/products/219/Brent-Crude-Futures', detail: 'Spécifications du future Brent, compensation et marges indicatives.', kind: 'source' },
+  { label: 'Banque centrale européenne', href: 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html', detail: 'Dérivés énergétiques, appels de marge, crédit bancaire et données EMIR.', kind: 'source' },
+  { label: 'Banque d’Angleterre', href: 'https://www.bankofengland.co.uk/speech/2024/july/nathanael-benjamin-speech-followed-by-panel-preparing-for-liquidity-stresses', detail: 'Mesures du stress de marge sur l’énergie européenne en 2022.', kind: 'source' },
+  { label: 'Financial Stability Board', href: 'https://www.fsb.org/2024/12/liquidity-preparedness-for-margin-and-collateral-calls-final-report/', detail: 'Recommandations internationales sur la préparation aux appels de marge.', kind: 'source' },
 ];
 
 const energyDatasets: GlossaryGraphLink[] = [
@@ -591,7 +608,7 @@ const energySignals: GlossaryGraphLink[] = [
   { label: 'Risk Diff', href: '/risk-diff/', detail: 'Variation récente du régime de risque.', kind: 'signal' },
 ];
 
-const energyRelated = ['wti', 'brent', 'chokepoint', 'ttf', 'gnl', 'vlsfo', 'opep', 'opep-2', 'spr', 'stockage-flottant', 'cftc', 'cot'];
+const energyRelated = ['wti', 'brent', 'chokepoint', 'ttf', 'gnl', 'vlsfo', 'opep', 'opep-2', 'spr', 'stockage-flottant', 'cftc', 'cot', 'appel-de-marge', 'marge-initiale', 'marge-de-variation', 'membre-compensateur'];
 
 const uraniumArticles: GlossaryGraphLink[] = [
   { label: 'Uranium : déficit et goulots cachés', href: '/posts/uranium-marche-en-deficit-promesse-de-l-ia-et-goulots-caches/', detail: 'Mine, conversion, enrichissement, HALEU et demande IA.', kind: 'article' },
@@ -949,6 +966,60 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     signals: energySignals,
     sources: energySources,
     related: energyRelated,
+  },
+  ccp: {
+    intuition: "La contrepartie centrale réduit le risque qu’un défaut se propage, mais transforme les pertes de marché en appels de cash et de collatéral.",
+    formula: 'protection contrepartie = marge initiale + marge de variation + ressources de défaut',
+    whyNow: "Quand le pétrole devient plus volatil, la solidité de la compensation dépend aussi de la capacité des clients et des banques à fournir la liquidité à temps.",
+    articles: [energyArticles[5]],
+    guides: marginGuides,
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: marginSources,
+    related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'membre-compensateur', 'brent', 'future', 'repo'],
+  },
+  'appel-de-marge': {
+    intuition: "L’appel de marge ne dit pas qu’une couverture est mauvaise. Il dit que sa perte courante ou son risque potentiel doit être financé immédiatement.",
+    formula: 'besoin de liquidité = marge de variation + hausse de marge initiale - cash et collatéral mobilisables',
+    whyNow: "Un producteur court futures peut gagner sur son brut physique et devoir néanmoins avancer du cash avant le règlement de sa cargaison.",
+    articles: [energyArticles[5]],
+    guides: marginGuides,
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: marginSources,
+    related: ['marge-initiale', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent', 'open-interest'],
+  },
+  'marge-initiale': {
+    intuition: "La marge initiale est un coussin contre une perte future possible pendant la liquidation d’un défaut, pas le règlement de la perte du jour.",
+    formula: 'marge initiale = risque potentiel sur la période de liquidation, après compensations reconnues',
+    whyNow: "La volatilité peut relever ce coussin au moment même où les participants doivent déjà financer leurs pertes quotidiennes.",
+    articles: [energyArticles[5]],
+    guides: marginGuides,
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: marginSources,
+    related: ['appel-de-marge', 'marge-de-variation', 'membre-compensateur', 'ccp', 'brent'],
+  },
+  'marge-de-variation': {
+    intuition: "La marge de variation règle aujourd’hui le gain ou la perte apparu depuis la dernière valorisation.",
+    formula: 'marge de variation ≈ variation du prix × taille du contrat × nombre de contrats',
+    whyNow: "Sur une couverture courte de pétrole, une hausse du baril peut produire un décaissement immédiat avant que la cargaison physique ne soit payée.",
+    articles: [energyArticles[5]],
+    guides: marginGuides,
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: marginSources,
+    related: ['appel-de-marge', 'marge-initiale', 'membre-compensateur', 'ccp', 'brent'],
+  },
+  'membre-compensateur': {
+    intuition: "Le membre compensateur est le pont entre le client et la chambre. Il transmet les marges et reste responsable du règlement envers la CCP.",
+    whyNow: "Si le client manque de cash, la tension remonte vers la banque qui assure à la fois la compensation et, parfois, son financement.",
+    articles: [energyArticles[5]],
+    guides: marginGuides,
+    datasets: energyDatasets,
+    signals: energySignals,
+    sources: marginSources,
+    related: ['appel-de-marge', 'marge-initiale', 'marge-de-variation', 'ccp', 'brent'],
   },
   chokepoint: {
     intuition: "Un chokepoint concentre un flux mondial dans un passage difficile à remplacer.",
