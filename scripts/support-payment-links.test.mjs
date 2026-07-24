@@ -61,6 +61,7 @@ test('la prépublication reste hors navigation, recherche et sitemap', async () 
   assert.match(page, /robots="noindex,follow"/);
   assert.match(page, /data-pagefind-ignore/);
   assert.doesNotMatch(page, /data-pagefind-body/);
+  assert.doesNotMatch(page, /\bCe qu(?:e|i|['’])/);
   assert.doesNotMatch(navigation, /\/soutenir\//);
   assert.doesNotMatch(footer, /\/soutenir\//);
   assert.doesNotMatch(privacy, /\/soutenir\//);
