@@ -1,9 +1,14 @@
 const rawPaymentLinks = {
-  oneTime: null,
-  monthly5: null,
-  monthly10: null,
-  monthly25: null,
+  oneTime: 'https://donate.stripe.com/14A4gB8hC0EKd3e7m6enS00',
+  monthly5: 'https://donate.stripe.com/eVqeVfbtObjo4wI49UenS01',
+  monthly10: 'https://donate.stripe.com/aFa00l8hC5Z47IUeOyenS02',
+  monthly25: 'https://donate.stripe.com/cNibJ341m9bg9R2bCmenS03',
 };
+
+const STRIPE_PAYMENT_LINK_HOSTS = Object.freeze([
+  'buy.stripe.com',
+  'donate.stripe.com',
+]);
 
 export const SUPPORT_PAYMENT_LINK_KEYS = Object.freeze(Object.keys(rawPaymentLinks));
 
@@ -22,7 +27,7 @@ export function validateStripePaymentLink(value, key = 'unknown') {
 
   if (
     parsed.protocol !== 'https:'
-    || parsed.hostname !== 'buy.stripe.com'
+    || !STRIPE_PAYMENT_LINK_HOSTS.includes(parsed.hostname)
     || parsed.port
     || parsed.username
     || parsed.password
@@ -31,7 +36,7 @@ export function validateStripePaymentLink(value, key = 'unknown') {
     || parsed.pathname === '/'
   ) {
     throw new TypeError(
-      `Lien Stripe ${key} invalide : utiliser uniquement une URL https://buy.stripe.com/... sans paramètre.`
+      `Lien Stripe ${key} invalide : utiliser uniquement une URL Stripe Payment Links officielle sans paramètre.`
     );
   }
 

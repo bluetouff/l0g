@@ -103,7 +103,7 @@ const jsonLd = {
           <strong>Contribution ponctuelle</strong>
           <p>Le montant est choisi sur la page de paiement sécurisée hébergée par Stripe.</p>
         </div>
-        {supportPaymentLinks.oneTime ? (
+        {paymentLinksReady && supportPaymentLinks.oneTime ? (
           <a
             class="payment-link"
             href={supportPaymentLinks.oneTime}
@@ -138,7 +138,7 @@ const jsonLd = {
               <span>{option.cadence}</span>
             </div>
             <p>{option.detail}</p>
-            {option.href ? (
+            {paymentLinksReady && option.href ? (
               <a
                 class="payment-link"
                 href={option.href}
@@ -192,8 +192,9 @@ const jsonLd = {
       </div>
       <div class="boundary-copy">
         <p>
-          Les boutons actifs ouvrent <strong>buy.stripe.com</strong>. Aucun script, pixel,
-          formulaire ou cookie Stripe n’est chargé sur cette page avant votre clic.
+          Les boutons actifs ouvrent un domaine de paiement Stripe officiel :
+          <strong> donate.stripe.com</strong> ou <strong>buy.stripe.com</strong>. Aucun script,
+          pixel, formulaire ou cookie Stripe n’est chargé sur cette page avant votre clic.
         </p>
         <p>
           Stripe traite ensuite les informations nécessaires au paiement selon sa propre

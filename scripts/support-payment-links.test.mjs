@@ -27,11 +27,16 @@ test('un Payment Link Stripe de production exact est accepté', () => {
     validateStripePaymentLink('https://buy.stripe.com/28E_example', 'oneTime'),
     'https://buy.stripe.com/28E_example'
   );
+  assert.equal(
+    validateStripePaymentLink('https://donate.stripe.com/28E_example', 'oneTime'),
+    'https://donate.stripe.com/28E_example'
+  );
 });
 
 for (const [label, value] of [
   ['HTTP', 'http://buy.stripe.com/28E_example'],
   ['sous-domaine trompeur', 'https://buy.stripe.com.example.test/28E_example'],
+  ['sous-domaine de don trompeur', 'https://donate.stripe.com.example.test/28E_example'],
   ['identifiants intégrés', 'https://user:secret@buy.stripe.com/28E_example'],
   ['paramètres', 'https://buy.stripe.com/28E_example?prefilled_email=test@example.test'],
   ['fragment', 'https://buy.stripe.com/28E_example#support'],
@@ -60,6 +65,8 @@ test('la prépublication reste hors navigation, recherche et sitemap', async () 
 
   assert.match(page, /robots="noindex,follow"/);
   assert.match(page, /data-pagefind-ignore/);
+  assert.match(page, /paymentLinksReady && supportPaymentLinks\.oneTime/);
+  assert.match(page, /paymentLinksReady && option\.href/);
   assert.doesNotMatch(page, /data-pagefind-body/);
   assert.doesNotMatch(page, /\bCe qu(?:e|i|['’])/);
   assert.doesNotMatch(navigation, /\/soutenir\//);
