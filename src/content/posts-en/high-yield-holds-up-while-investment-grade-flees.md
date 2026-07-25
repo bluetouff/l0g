@@ -105,7 +105,7 @@ Saying that "it is all duration" would be as careless as declaring a credit cris
 
 On 23 July, the [ICE BofA US Corporate Index OAS](https://fred.stlouisfed.org/series/BAMLC0A0CM) stood at **79 basis points**, compared with **78 basis points** from 20 to 22 July. The spread remained contained, so most of the increase in the yield demanded on investment grade still came from Treasuries.
 
-High yield tightened less cleanly. Its [aggregate OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) rose from **269 basis points on 20 July to 277 basis points on 23 July**. More importantly, the [CCC and lower segment](https://fred.stlouisfed.org/series/BAMLH0A3HYC) moved from **977 to 991 basis points** over the same period.
+High yield showed more strain. Its [aggregate OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) rose from **269 basis points on 20 July to 277 basis points on 23 July**. More importantly, the [CCC and lower segment](https://fred.stlouisfed.org/series/BAMLH0A3HYC) moved from **977 to 991 basis points** over the same period.
 
 The paradox therefore needs precise wording:
 
