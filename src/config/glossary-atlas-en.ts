@@ -86,6 +86,22 @@ const privateCreditSources: GlossaryGraphLink[] = [
 
 const privateCreditShared = { datasets: privateCreditDatasets, signals: usDebtSignals, sources: privateCreditSources };
 
+const regulatedUtilitySection = { sectionTitle: 'Regulated utilities & data centres', accent: '#f5b13d' };
+const largeLoadArticles: GlossaryGraphLink[] = [
+  { label: 'The ghost kilowatt', href: '/en/analysis/the-ghost-kilowatt/', detail: 'Data-centre tariffs, grid costs and ratepayer risk.', kind: 'article' },
+  { label: 'The debt behind AI', href: '/en/analysis/the-debt-behind-ai/', detail: 'Debt, SPVs and financing the compute buildout.', kind: 'article' },
+  { label: 'The residual value guarantee', href: '/en/analysis/residual-value-guarantee-ai-infrastructure-credit/', detail: 'AI-asset depreciation and risk transferred to a guarantor.', kind: 'article' },
+];
+const largeLoadSources: GlossaryGraphLink[] = [
+  { label: 'Federal Energy Regulatory Commission', href: 'https://www.ferc.gov/', detail: 'Transmission tariffs, large loads and cost-recovery agreements.', kind: 'source' },
+  { label: 'U.S. Department of Energy', href: 'https://www.energy.gov/policy/articles/electricity-rate-designs-large-loads-evolving-practices-and-opportunities', detail: 'Rate design, risk sharing and stranded assets.', kind: 'source' },
+  { label: 'Virginia State Corporation Commission', href: 'https://www.scc.virginia.gov/media/sccvirginiagov-home/about-the-scc/fact-sheets/scc-data-center-initiatives-02-2026.pdf', detail: 'GS-5 tariff, minimum commitment and collateral.', kind: 'source' },
+];
+const largeLoadDatasets: GlossaryGraphLink[] = [
+  { label: 'evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'Links between articles, claims and sources.', kind: 'dataset' },
+  { label: 'claims.json', href: '/api/v1/claims.json', detail: 'Claims extracted from the corpus with their references.', kind: 'dataset' },
+];
+
 const cryptoDatasets: GlossaryGraphLink[] = [
   { label: 'catalog.json', href: '/api/v1/catalog.json', detail: 'Machine-readable catalogue of l0g surfaces.', kind: 'dataset' },
   { label: 'claims.json', href: '/api/v1/claims.json', detail: 'Classified claims with their evidence level.', kind: 'dataset' },
@@ -863,6 +879,54 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       guides: [uraniumGuide],
       ...energyShared,
       related: ['haleu', 'swu', 'uf6', 'u3o8'],
+    },
+  },
+  {
+    slug: 'rate-base',
+    sigle: 'Rate base',
+    nom: 'Regulated asset base',
+    def: "The value of a utility's property on which the regulator allows it to earn a return. When a line, substation or plant enters the rate base, depreciation and the allowed return are recovered through rates.",
+    ...regulatedUtilitySection,
+    atlas: {
+      intuition: 'The rate base turns an approved investment into tariff revenue: depreciation and return are recovered from customers as the regulator decides.',
+      formula: 'revenue requirement = operating expenses + depreciation + taxes + rate of return × rate base',
+      whyNow: 'The data-centre boom forces commissions to decide whether assets built for an absent large load remain with the applicant or enter collective rates.',
+      articles: largeLoadArticles,
+      datasets: largeLoadDatasets,
+      sources: largeLoadSources,
+      related: ['actif-echoue', 'take-or-pay', 'capex', 'hyperscaler', 'spv'],
+    },
+  },
+  {
+    slug: 'actif-echoue',
+    sigle: 'Stranded asset',
+    nom: 'Asset no longer earning its expected recovery',
+    def: 'An asset that is built or financed but loses the use or revenue needed for full recovery. For an abandoned data centre, it may be a line or substation that is difficult to reassign.',
+    ...regulatedUtilitySection,
+    atlas: {
+      intuition: 'A stranded asset is a cost still awaiting repayment after it has lost the use or revenue meant to finance it.',
+      formula: 'stranded cost = unamortised cost - reassignment value - guarantees recovered',
+      whyNow: 'A delayed, duplicate or cancelled data-centre load can leave a line or substation underused before it is repaid.',
+      articles: largeLoadArticles,
+      datasets: largeLoadDatasets,
+      sources: largeLoadSources,
+      related: ['rate-base', 'take-or-pay', 'capex', 'hyperscaler', 'vrg'],
+    },
+  },
+  {
+    slug: 'take-or-pay',
+    sigle: 'Take-or-pay',
+    nom: 'Minimum-payment commitment',
+    def: 'A clause requiring a customer to pay for a minimum quantity or reserved capacity even when it does not use it. In large-load electricity tariffs, it protects the grid against delay or cancellation if coverage, duration and counterparty quality are sufficient.',
+    ...regulatedUtilitySection,
+    atlas: {
+      intuition: 'Take-or-pay charges for the reservation, not only use. It turns the grid volume risk into a customer credit obligation.',
+      formula: 'payment due = greater of actual use and contractual minimum',
+      whyNow: 'New large-load tariffs use minimum payments, long terms and collateral to filter speculative requests.',
+      articles: largeLoadArticles,
+      datasets: largeLoadDatasets,
+      sources: largeLoadSources,
+      related: ['rate-base', 'actif-echoue', 'hyperscaler', 'spv', 'vrg'],
     },
   },
   {

@@ -241,6 +241,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'CDO', nom: 'Collateralized Debt Obligation', def: "Ancêtre et cousin du CLO, mais adossé à des crédits hypothécaires, souvent subprime, dans les années 2000. Son effondrement en 2008, aggravé par des tranches re-titrisées et corrélées, en a fait un symbole de la crise. Le CLO, adossé à des prêts d'entreprise diversifiés, a mieux résisté.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'SPV', nom: 'Special Purpose Vehicle', def: "Véhicule ad hoc créé pour isoler un actif ou un financement. Sert par exemple à acheter du matériel puis à le louer, en gardant la dette hors du bilan de l'utilisateur." },
       { sigle: 'VRG', nom: 'Valeur résiduelle garantie', def: "Engagement par lequel le locataire d'un actif (data center, GPU, avion) garantit au prêteur une valeur plancher de cet actif à la fin du bail : si la revente rapporte moins, il comble l'écart. La garantie rend le montage finançable et le sort du bilan du locataire, mais transfère le risque de dépréciation au garant, sans le supprimer. Pièce centrale des financements d'infrastructure IA adossés au matériel." },
+      { sigle: 'Rate base', nom: "Base d'actifs régulée", def: "Valeur des actifs d'une utility sur laquelle le régulateur l'autorise à percevoir un rendement. Lorsqu'une ligne, une sous-station ou une centrale entre dans cette base, son amortissement et le rendement autorisé sont récupérés dans les tarifs. Le traitement d'un ouvrage construit pour une charge qui ne vient pas détermine donc si le coût reste au client, aux actionnaires ou aux autres abonnés." },
+      { sigle: 'Actif échoué', nom: 'Stranded asset', def: "Actif construit ou financé dont l'usage ou les revenus deviennent insuffisants avant le remboursement complet. Pour un data center abandonné, il peut s'agir d'une ligne ou d'une sous-station difficile à réaffecter. L'actif ne disparaît pas : le contrat et la décision du régulateur déterminent qui absorbe le coût non récupéré." },
+      { sigle: 'Take-or-pay', nom: 'Engagement minimal de paiement', def: "Clause obligeant un client à payer une quantité ou une capacité minimale réservée, même s'il ne la consomme pas. Dans les tarifs électriques des grandes charges, elle protège le réseau contre un projet retardé ou annulé, à condition de couvrir les bons ouvrages, la bonne durée et une contrepartie solvable." },
       { sigle: 'Neocloud', nom: 'Neocloud (GPU cloud)', def: "Opérateur de cloud spécialisé dans la location de puissance de calcul GPU pour l'IA, comme CoreWeave. Finance l'achat de puces Nvidia par de la dette adossée au matériel et à des contrats clients, en pariant sur une valeur résiduelle et un taux d'utilisation élevés." },
       { sigle: 'EBITDA', nom: 'Earnings Before Interest, Taxes, Depreciation and Amortization', def: "Résultat avant intérêts, impôts, dépréciations et amortissements. Proxy de la génération de cash opérationnel, sur lequel on dimensionne la dette." },
       { sigle: 'DCT', nom: 'Dépositaire central de titres (CSD)', def: "Infrastructure où les titres financiers sont inscrits, conservés et livrés contre paiement. Registre de dernier niveau du marché : quand une obligation change de main, c'est dans les livres du DCT que la propriété bascule. Euroclear Bank et Clearstream en sont les exemples européens les plus connus." },
@@ -446,7 +449,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-24';
+export const glossaryUpdatedIso = '2026-07-25';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
@@ -526,6 +529,23 @@ const privateCreditSignals: GlossaryGraphLink[] = [
 ];
 
 const privateCreditRelated = ['bdc', 'interval-fund', 'nav', 'nav-loan', 'pik', 'pcdr', 'pmr', 'lme', 'lbo', 'ndfi', 'nbfi', 'form-pf'];
+
+const largeLoadArticles: GlossaryGraphLink[] = [
+  { label: 'Le kilowatt fantôme', href: '/posts/kilowatt-fantome-reseau-data-center/', detail: 'Tarifs data centers, coût du réseau et risque de transfert vers les abonnés.', kind: 'article' },
+  { label: "La dette derrière l'IA", href: '/posts/la-dette-derriere-l-ia-spv-obligations-credit-prive/', detail: 'Dette, SPV et financement des infrastructures de calcul.', kind: 'article' },
+  { label: 'La valeur résiduelle garantie', href: '/posts/valeur-residuelle-garantie-credit-infrastructure-ia/', detail: "Dépréciation des actifs d'IA et transfert du risque au garant.", kind: 'article' },
+];
+
+const largeLoadSources: GlossaryGraphLink[] = [
+  { label: 'Federal Energy Regulatory Commission', href: 'https://www.ferc.gov/', detail: 'Tarifs de transport, grandes charges et accords de récupération des coûts.', kind: 'source' },
+  { label: 'U.S. Department of Energy', href: 'https://www.energy.gov/policy/articles/electricity-rate-designs-large-loads-evolving-practices-and-opportunities', detail: 'Conception tarifaire, partage des risques et actifs échoués.', kind: 'source' },
+  { label: 'Virginia State Corporation Commission', href: 'https://www.scc.virginia.gov/media/sccvirginiagov-home/about-the-scc/fact-sheets/scc-data-center-initiatives-02-2026.pdf', detail: 'Tarif GS-5, engagement minimal et collatéral.', kind: 'source' },
+];
+
+const largeLoadDatasets: GlossaryGraphLink[] = [
+  { label: 'evidence-graph.json', href: '/api/v1/evidence-graph.json', detail: 'Relations entre les articles, leurs claims et leurs sources.', kind: 'dataset' },
+  { label: 'claims.json', href: '/api/v1/claims.json', detail: 'Claims extraites du corpus avec leurs références.', kind: 'dataset' },
+];
 
 const stablecoinArticles: GlossaryGraphLink[] = [
   { label: 'RealT en liquidation', href: '/posts/realt-en-liquidation-le-token-qui-ne-possedait-pas-la-maison/', detail: 'RWA immobilier, titre off-chain et promesse on-chain.', kind: 'article' },
@@ -870,6 +890,33 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     signals: privateCreditSignals,
     sources: [privateCreditSources[2], privateCreditSources[3]],
     related: ['credit-prive', 'pmr', 'pik', 'lme', 'lbo', 'cds'],
+  },
+  'rate-base': {
+    intuition: "La base d'actifs régulée transforme un investissement autorisé en revenus tarifaires : amortissement et rendement sont récupérés auprès des clients selon la décision du régulateur.",
+    formula: "besoin de revenu = charges d'exploitation + amortissement + taxes + taux de rendement × base d'actifs",
+    whyNow: "Le boom des data centers oblige les commissions à décider si les ouvrages construits pour une grande charge absente restent à la charge du demandeur ou entrent dans les tarifs collectifs.",
+    articles: largeLoadArticles,
+    datasets: largeLoadDatasets,
+    sources: largeLoadSources,
+    related: ['actif-echoue', 'take-or-pay', 'capex', 'hyperscaler', 'spv'],
+  },
+  'actif-echoue': {
+    intuition: "Un actif échoué est une dépense encore à rembourser, mais privée trop tôt de l'usage ou des revenus qui devaient la financer.",
+    formula: 'coût échoué = coût non amorti - valeur réaffectable - garanties récupérées',
+    whyNow: "Une charge de data center retardée, dupliquée ou annulée peut laisser une ligne ou une sous-station sous-utilisée avant son remboursement.",
+    articles: largeLoadArticles,
+    datasets: largeLoadDatasets,
+    sources: largeLoadSources,
+    related: ['rate-base', 'take-or-pay', 'capex', 'hyperscaler', 'vrg'],
+  },
+  'take-or-pay': {
+    intuition: "Le take-or-pay facture la réservation, pas seulement l'usage. Il transforme le risque de volume du réseau en obligation de crédit du client.",
+    formula: 'paiement dû = maximum de la consommation réelle et du minimum contractuel',
+    whyNow: "Les nouveaux tarifs pour grandes charges emploient des paiements minimaux, des durées longues et du collatéral pour filtrer les demandes spéculatives.",
+    articles: largeLoadArticles,
+    datasets: largeLoadDatasets,
+    sources: largeLoadSources,
+    related: ['rate-base', 'actif-echoue', 'hyperscaler', 'spv', 'vrg'],
   },
   rwa: {
     intuition: "Un RWA ne rend pas l’actif réel magique : il ajoute une couche tokenisée à une chaîne juridique, comptable et opérationnelle déjà fragile.",
