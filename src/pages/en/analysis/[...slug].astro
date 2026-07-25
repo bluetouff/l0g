@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
-import { authorEntity, organizationEntity } from '../../../config/entities.ts';
+import { organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
 import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
@@ -62,7 +62,7 @@ const ld = {
       dateModified: isoUpd,
       inLanguage: 'en',
       isAccessibleForFree: true,
-      author: authorEntity,
+      author: organizationEntity,
       publisher: organizationEntity,
       mainEntityOfPage: { '@id': url },
       isBasedOn: { '@type': 'Article', url: frUrl },
@@ -103,7 +103,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       <p class="post-lede mt-5">{post.data.description}</p>
 
       <div class="post-meta mono-label mt-6">
-        <a href="/about/#bluetouff" rel="author" class="link-term">By Bluetouff</a>
+        <a href="/en/about/" rel="author" class="link-term">By l0g</a>
         <span class="sep" aria-hidden="true">·</span>
         <time datetime={isoUpd} data-pagefind-meta="date">last updated {updatedLabel}</time>
         <span class="sep" aria-hidden="true">·</span>

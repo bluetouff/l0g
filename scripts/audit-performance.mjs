@@ -132,11 +132,14 @@ for (const file of htmlFiles) {
       `${name}: image Article absolue absente`
     );
     assert(article?.isAccessibleForFree === true, `${name}: gratuité Article absente`);
-    assert(article?.author?.['@type'] === 'Person', `${name}: author doit être une Person`);
-    assert(article?.author?.['@id'] === 'https://l0g.fr/about/#bluetouff', `${name}: identifiant auteur instable`);
+    assert(article?.author?.['@type'] === 'Organization', `${name}: author doit être une Organization`);
+    assert(article?.author?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant auteur instable`);
     assert(article?.publisher?.['@type'] === 'Organization', `${name}: publisher doit être une Organization`);
     assert(article?.publisher?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant publisher instable`);
-    assert(/<a href="\/about\/#bluetouff" rel="author"[^>]*>(?:Par|By) Bluetouff<\/a>/.test(html), `${name}: byline auteur cliquable absente`);
+    assert(
+      /<a href="\/(?:en\/)?about\/" rel="author"[^>]*>(?:(?:Par|By) )?l0g<\/a>/.test(html),
+      `${name}: byline l0g cliquable absente`
+    );
   }
 }
 

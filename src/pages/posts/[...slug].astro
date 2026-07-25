@@ -8,7 +8,7 @@ import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
-import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../../config/entities.ts';
+import { ORGANIZATION_ID, organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
 import { topics, postMatchesTopic } from '../../config/topics.ts';
 import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
@@ -158,7 +158,7 @@ const articleJsonLd = {
       inLanguage: 'fr',
       isAccessibleForFree: true,
       license: 'https://creativecommons.org/licenses/by/4.0/',
-      author: authorEntity,
+      author: organizationEntity,
       publisher: organizationEntity,
       about: post.data.tags.map((tag) => ({ '@type': 'Thing', name: tag })),
       keywords: post.data.tags,
@@ -293,7 +293,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       <dl class:list={['post-meta', 'mt-6', post.data.updatedDate && 'has-update']}>
         <div>
           <dt>Auteur</dt>
-          <dd><a href="/about/#bluetouff" rel="author" class="link-term">Par Bluetouff</a></dd>
+          <dd><a href="/about/" rel="author" class="link-term">l0g</a></dd>
         </div>
         <div>
           <dt>Publication</dt>
