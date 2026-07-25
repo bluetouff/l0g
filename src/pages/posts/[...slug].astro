@@ -290,52 +290,101 @@ const quickUncertainty = post.data.quickTake?.uncertainty
         readingTime={rt}
       />
 
-      <div class="post-meta mono-label mt-6">
-        <a href="/about/#bluetouff" rel="author" class="link-term">Par Bluetouff</a>
-        <span class="sep" aria-hidden="true">·</span>
-        <time datetime={iso} data-pagefind-meta="date">{dateLabel}</time>
+      <dl class:list={['post-meta', 'mt-6', post.data.updatedDate && 'has-update']}>
+        <div>
+          <dt>Auteur</dt>
+          <dd><a href="/about/#bluetouff" rel="author" class="link-term">Bluetouff</a></dd>
+        </div>
+        <div>
+          <dt>Publication</dt>
+          <dd><time datetime={iso} data-pagefind-meta="date">{dateLabel}</time></dd>
+        </div>
         {post.data.updatedDate && (
-          <>
-            <span class="sep" aria-hidden="true">·</span>
-            <time datetime={post.data.updatedDate.toISOString()}>revu le {post.data.updatedDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}</time>
-          </>
+          <div>
+            <dt>Mise à jour</dt>
+            <dd>
+              <time datetime={post.data.updatedDate.toISOString()}>
+                {post.data.updatedDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}
+              </time>
+            </dd>
+          </div>
         )}
-        <span class="sep" aria-hidden="true">·</span>
-        <span>{rt} min de lecture</span>
-        <span class="sep" aria-hidden="true">·</span>
-        <FreshnessBadge date={refDate} />
-        {post.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}
-        <span class="post-tags">
-          {post.data.tags.map((tag) => {
-            const slug = topicForTag(tag);
-            return slug
-              ? <a href={`/sujet/${slug}/`} class="link-term text-signal">#{tag}</a>
-              : <span class="text-signal">#{tag}</span>;
-          })}
-        </span>
-      </div>
+        <div>
+          <dt>Lecture</dt>
+          <dd>{rt} min</dd>
+        </div>
+        <div>
+          <dt>Fraîcheur</dt>
+          <dd><FreshnessBadge date={refDate} compact /></dd>
+        </div>
+      </dl>
 
-      <TrustBar items={trustItems} variant="compact" />
-      {englishUrl && (
-        <p class="en-alt" data-pagefind-ignore>
-          <a href={englishUrl} class="link-term" hreflang="en" lang="en">Read this analysis in English →</a>
-        </p>
+      {post.data.tags.length > 0 && (
+        <nav class="post-topics" aria-label="Sujets de l’analyse">
+          <span class="post-topics-label">// sujets</span>
+          <span class="post-tags">
+            {post.data.tags.map((tag) => {
+              const slug = topicForTag(tag);
+              return slug
+                ? <a href={`/sujet/${slug}/`} class="post-tag">#{tag}</a>
+                : <span class="post-tag">#{tag}</span>;
+            })}
+          </span>
+        </nav>
       )}
-      <div class="proof-strip" aria-label="Niveaux de preuve détectés" data-pagefind-ignore>
-        <span class="proof-depth" title={proofDepth.detail}>
-          <span aria-hidden="true">{proofDepth.score}</span>
-          {proofDepth.label}
-        </span>
-        {proofBadges.length > 0 && (
-          <>
-          {proofBadges.map((badge) => (
-            <span class={`proof-pill proof-${badge.tone}`} title={badge.detail}>
-              <span aria-hidden="true"></span>
-              {badge.label}
+
+      <div class="article-tools" data-pagefind-ignore>
+        {englishUrl && (
+          <a href={englishUrl} class="translation-card" hreflang="en">
+            <span class="translation-badge" aria-hidden="true">EN</span>
+            <span class="translation-copy">
+              <strong>Version anglaise</strong>
+              <span lang="en">Read this analysis in English</span>
             </span>
-          ))}
-          </>
+            <span class="translation-arrow" aria-hidden="true">→</span>
+          </a>
         )}
+
+        <details class="article-tool">
+          <summary>
+            <span class="article-tool-copy">
+              <strong>Garanties de lecture</strong>
+              <span>Datée, sourcée, sans tracker</span>
+            </span>
+            <span class="article-tool-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="article-tool-body">
+            <TrustBar items={trustItems} variant="compact" />
+          </div>
+        </details>
+
+        <details class="article-tool">
+          <summary>
+            <span class="article-tool-copy">
+              <strong>Niveaux de preuve</strong>
+              <span>Profondeur {proofDepth.score} : {proofDepth.label.toLocaleLowerCase('fr-FR')} · {proofBadges.length} niveaux détectés</span>
+            </span>
+            <span class="article-tool-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="article-tool-body">
+            <div class="proof-strip" aria-label="Niveaux de preuve détectés">
+              <span class="proof-depth" title={proofDepth.detail}>
+                <span aria-hidden="true">{proofDepth.score}</span>
+                {proofDepth.label}
+              </span>
+              {proofBadges.length > 0 && (
+                <>
+                {proofBadges.map((badge) => (
+                  <span class={`proof-pill proof-${badge.tone}`} title={badge.detail}>
+                    <span aria-hidden="true"></span>
+                    {badge.label}
+                  </span>
+                ))}
+                </>
+              )}
+            </div>
+          </div>
+        </details>
       </div>
       <div class="post-rule" aria-hidden="true"></div>
     </header>
@@ -489,12 +538,80 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     .post-kicker { color: var(--color-signal); }
     :global(.post-head .quick-take) { margin-top: 1.35rem; margin-bottom: 1.35rem; }
     .post-meta {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
-      color: var(--color-muted);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(8.4rem, 1fr));
+      gap: 0.85rem 1rem;
+      margin-bottom: 0;
+      padding: 1rem 0;
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
     }
-    .post-meta .sep { opacity: 0.45; }
-    .post-meta time { color: var(--color-muted); }
-    .post-tags { display: inline-flex; flex-wrap: wrap; gap: 0.7rem; }
+    .post-meta.has-update {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .post-meta > div {
+      min-width: 0;
+      padding-left: 0.75rem;
+      border-left: 2px solid color-mix(in srgb, var(--color-signal) 30%, var(--color-line));
+    }
+    .post-meta dt {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .post-meta dd {
+      margin: 0.35rem 0 0;
+      color: var(--color-bright);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+    .post-meta time { color: inherit; }
+    .post-topics {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: start;
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+    .post-topics-label {
+      padding-top: 0.3rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .post-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.65rem;
+      border: 1px solid color-mix(in srgb, var(--color-signal) 22%, var(--color-line));
+      border-radius: 6px;
+      padding: 0.22rem 0.5rem;
+      background: color-mix(in srgb, var(--color-signal) 4%, transparent);
+      color: color-mix(in srgb, var(--color-signal) 78%, var(--color-paper));
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.055em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    a.post-tag:hover {
+      border-color: color-mix(in srgb, var(--color-signal) 58%, transparent);
+      background: color-mix(in srgb, var(--color-signal) 9%, transparent);
+      color: var(--color-bright);
+    }
     .post-rule {
       margin-top: 1.5rem; height: 2px; width: 72px; border-radius: 2px;
       background: linear-gradient(90deg, var(--color-signal), transparent);
@@ -506,17 +623,126 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       font-size: clamp(1.45rem, 3vw, 2rem);
       letter-spacing: 0.015em;
     }
+    .article-tools {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 1.1rem;
+    }
+    .translation-card {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.85rem;
+      min-height: 4rem;
+      border: 1px solid color-mix(in srgb, var(--color-signal) 55%, var(--color-line));
+      border-radius: 12px;
+      padding: 0.7rem 0.85rem;
+      background:
+        linear-gradient(100deg, color-mix(in srgb, var(--color-signal) 12%, transparent), transparent 70%),
+        color-mix(in srgb, var(--color-surface) 55%, transparent);
+      color: var(--color-bright);
+      text-decoration: none;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .translation-card:hover {
+      border-color: var(--color-signal);
+      background:
+        linear-gradient(100deg, color-mix(in srgb, var(--color-signal) 18%, transparent), transparent 76%),
+        color-mix(in srgb, var(--color-surface) 68%, transparent);
+      transform: translateY(-1px);
+    }
+    .translation-badge {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 8px;
+      background: var(--color-signal);
+      color: var(--color-void);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .translation-copy {
+      display: grid;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+    .translation-copy strong,
+    .article-tool-copy strong {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .translation-copy > span,
+    .article-tool-copy > span {
+      color: var(--color-muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+    .translation-arrow {
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      transition: transform 0.18s;
+    }
+    .translation-card:hover .translation-arrow { transform: translateX(3px); }
+    .article-tool {
+      min-width: 0;
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--color-surface) 36%, transparent);
+    }
+    .article-tool summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      min-height: 3.6rem;
+      padding: 0.7rem 0.8rem;
+      color: var(--color-bright);
+      cursor: pointer;
+      list-style: none;
+    }
+    .article-tool summary::-webkit-details-marker { display: none; }
+    .article-tool summary:hover { color: var(--color-signal); }
+    .article-tool-copy {
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+    }
+    .article-tool-toggle {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 1.55rem;
+      height: 1.55rem;
+      border: 1px solid var(--color-line);
+      border-radius: 50%;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      transition: transform 0.18s, border-color 0.18s;
+    }
+    .article-tool[open] .article-tool-toggle {
+      border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+      transform: rotate(45deg);
+    }
+    .article-tool-body {
+      border-top: 1px solid var(--color-line);
+      padding: 0.8rem;
+    }
+    :global(.article-tool-body .trust-bar) {
+      margin-top: 0;
+    }
     .proof-strip {
       display: flex;
       flex-wrap: wrap;
       gap: 0.45rem;
-      margin-top: 1rem;
-    }
-    .en-alt {
-      margin-top: 0.9rem;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.03em;
+      margin-top: 0;
     }
     .proof-pill {
       --proof-color: var(--color-muted);
@@ -571,6 +797,20 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     .proof-secondary { --proof-color: var(--color-muted); }
     .proof-scenario { --proof-color: var(--color-amber); }
     .proof-context { --proof-color: var(--color-accent); }
+
+    @media (max-width: 620px) {
+      .post-meta,
+      .post-meta.has-update {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .post-topics {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+      }
+      .post-topics-label { padding-top: 0; }
+      .article-tools { grid-template-columns: 1fr; }
+      .translation-card { grid-column: 1; }
+    }
 
     .revision-box {
       margin-top: 2rem;
