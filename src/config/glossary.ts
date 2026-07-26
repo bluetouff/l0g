@@ -319,6 +319,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'ACP', nom: 'Agentic Commerce Protocol', def: "Protocole co-développé par OpenAI et Stripe (septembre 2025), socle du Instant Checkout de ChatGPT pour des achats initiés par un agent." },
       { sigle: 'CBDC', nom: 'Central Bank Digital Currency', def: "Monnaie numérique de banque centrale. L'euro numérique de la BCE en est l'exemple européen, visant une première émission potentielle en 2029." },
       { sigle: 'wCBDC', nom: 'Wholesale CBDC', def: "Monnaie numérique de banque centrale de gros, réservée au règlement interbancaire et aux infrastructures de marché, par opposition à la CBDC de détail destinée au public. Sert d'actif de règlement sur les plateformes tokenisées, comme dans le Projet Hangang." },
+      { sigle: 'Euro numérique', nom: 'Digital euro', def: "Projet de CBDC de détail de la BCE : monnaie de banque centrale pour le grand public, distribuée via les banques, non rémunérée, sans détention par les entreprises, et bornée par un plafond de détention. Conçue comme ancre monétaire face aux stablecoins et aux réseaux de paiement étrangers. Position du Parlement adoptée en 2026, trilogues ouverts à l'été 2026, pilote visé au second semestre 2027, première émission possible en 2029." },
+      { sigle: 'Plafond de détention', nom: 'Holding limit', def: "Montant maximal d'euro numérique qu'un particulier peut conserver, envisagé par la BCE entre 500 et 3 000 euros. Verrou anti-désintermédiation : il limite le volume de dépôts bancaires susceptibles de migrer vers la monnaie de banque centrale. Le mécanisme de cascade (waterfall) reverse automatiquement les excédents sur le compte bancaire lié." },
       { sigle: 'Grand livre unifié', nom: 'Unified ledger', def: "Concept formalisé par la BIS en 2023 : une plateforme programmable unique où coexistent monnaie de banque centrale tokenisée, dépôts bancaires tokenisés et actifs tokenisés. Permet le règlement atomique tout en préservant le système monétaire à deux niveaux." },
       { sigle: 'Règlement atomique', nom: 'Atomic settlement', def: "Exécution indivisible d'une transaction où toutes les jambes aboutissent ou aucune. Sur un grand livre unifié, message, compensation et règlement s'effondrent en une seule étape, éliminant le risque de règlement partiel et de contrepartie." },
       { sigle: 'PPSI', nom: 'Permitted Payment Stablecoin Issuer', def: "Émetteur agréé de stablecoin de paiement au sens du GENIUS Act. Seul un PPSI peut émettre légalement aux États-Unis : filiale de banque assurée, émetteur non bancaire agréé par l'OCC, ou émetteur agréé au niveau d'un État.", guide: '/guides/qui-applique-le-genius-act/' },
@@ -453,7 +455,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-25';
+export const glossaryUpdatedIso = '2026-07-26';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
