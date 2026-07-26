@@ -75,7 +75,9 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(page, /paymentLinksReady && option\.href/);
   assert.doesNotMatch(page, /\bCe qu(?:e|i|['’])/);
   assert.match(navigation, /\{ href: '\/soutenir\/', label: 'Soutenir'/);
-  assert.match(homeSidebar, /<SupportCard \/>[\s\S]*\/\/ recherche/);
+  assert.match(navigation, /href="\/recherche\/"/);
+  assert.match(homeSidebar, /<SupportCard \/>/);
+  assert.doesNotMatch(homeSidebar, /<SearchForm|\/\/ recherche/);
   assert.match(articlePage, /<SupportCard compact \/>[\s\S]*<ArticleNavigator/);
   assert.match(supportCard, /href="\/soutenir\/"/);
   assert.doesNotMatch(footer, /\/soutenir\//);
