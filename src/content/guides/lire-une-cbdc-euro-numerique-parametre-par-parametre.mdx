@@ -1,0 +1,74 @@
+---
+title: "Lire une CBDC : l'euro numérique paramètre par paramètre"
+description: "Guide de référence sur les monnaies numériques de banque centrale, à travers l'exemple de l'euro numérique. Une CBDC n'est pas un objet mais un faisceau de choix de conception, chacun politique : détail ou gros, compte ou jeton, distribution directe ou à deux niveaux, plafond de détention, rémunération, confidentialité, cours légal et programmabilité. Chaque paramètre révèle la vraie priorité de l'émetteur, entre souveraineté des paiements, stabilité financière et surveillance. Avec le calendrier de l'euro numérique en 2026 comme fil conducteur."
+summary: "Une monnaie numérique de banque centrale se lit paramètre par paramètre : chaque choix de conception, du plafond de détention à la rémunération, de l'architecture compte ou jeton au degré de confidentialité, traduit un arbitrage entre souveraineté des paiements, stabilité bancaire et conformité. L'euro numérique sert de cas d'école : plafonné, non rémunéré, distribué par les banques, doté d'un cours légal et volontairement non programmable. Ce guide donne la grille de lecture applicable à toute CBDC."
+pubDate: 2026-07-27T20:13:00+02:00
+updatedDate: 2026-07-27T20:13:00+02:00
+tags: ["crypto", "banques centrales", "paiements"]
+category: crypto
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Une monnaie numérique de banque centrale n'est pas une chose, c'est une liste de décisions. Derrière le sigle CBDC se cache une dizaine de paramètres, et chacun est un arbitrage politique déguisé en choix technique : combien peut-on en détenir, rapporte-t-elle un intérêt, qui la distribue, que voit la banque centrale de vos paiements, peut-on programmer son usage. Lire une CBDC, ce n'est donc pas la juger en bloc, c'est décoder ces réglages un à un, car ils révèlent la vraie priorité de l'émetteur, quelque part entre la reconquête de sa souveraineté monétaire, la protection de ses banques et la tentation du contrôle. Ce guide déroule la grille, avec l'euro numérique comme cas d'école.*
+
+## Détail ou gros : la première bifurcation
+
+La première question à poser devant tout projet de CBDC est celle de son public. Une CBDC de détail vise le grand public : c'est de la monnaie de banque centrale dans le portefeuille des ménages, un équivalent numérique du billet. Une CBDC de gros, la [wCBDC](/glossaire/#wcbdc), reste réservée aux banques et aux infrastructures de marché, où elle sert d'actif de règlement entre institutions, notamment sur les plateformes tokenisées que nous décrivons dans notre analyse des [chantiers de tokenisation de la BCE](/posts/sintra-2026-bce-tokenisation/). Les deux ne posent pas les mêmes enjeux : la version de gros est une affaire de plomberie interbancaire, discrète et peu polémique ; la version de détail touche à la relation directe entre le citoyen et la banque centrale, et concentre tout le débat. L'euro numérique dont il est question ici est une CBDC de détail.
+
+## Compte ou jeton : l'architecture
+
+Vient ensuite le choix d'architecture, qui commande presque tout le reste. Une CBDC fondée sur le compte associe chaque unité à l'identité de son détenteur, comme un dépôt bancaire : la propriété découle de l'inscription au registre. Une CBDC fondée sur le jeton fonctionne comme l'espèce : la propriété découle de la possession du jeton ou de la connaissance d'une clé, sans identité nécessairement attachée. Ce choix n'est pas neutre, car il détermine le degré de confidentialité possible et la capacité à fonctionner hors ligne. L'euro numérique combine les deux logiques : un volet en ligne, intermédié et adossé à l'identité, et un volet hors ligne de type jeton, plus proche du liquide.
+
+## Qui distribue : le modèle à deux niveaux
+
+Troisième paramètre, souvent sous-estimé : la banque centrale sert-elle directement le public, ou passe-t-elle par des intermédiaires ? Le modèle direct ferait de la banque centrale la teneuse de compte de millions de citoyens, une révolution institutionnelle que presque aucun projet occidental n'envisage. L'euro numérique retient au contraire un modèle à deux niveaux : il [reposera sur un partenariat entre l'Eurosystème et des prestataires de services de paiement](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html), banques commerciales, établissements de paiement et de monnaie électronique. La banque centrale émet, les intermédiaires distribuent et tiennent la relation client. Ce choix est la première réponse à la crainte de désintermédiation : les banques restent dans la boucle et encaissent les commissions, plutôt que d'être court-circuitées.
+
+## Le plafond de détention : le verrou de stabilité
+
+Le paramètre le plus scruté est le plafond de détention, ce montant maximal qu'un particulier peut conserver. La BCE l'envisage [entre 500 et 3 000 euros](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html), un niveau volontairement bas comparé aux projets britannique et canadien, précisément pour empêcher une fuite massive des dépôts vers la monnaie de banque centrale. Il s'accompagne d'un mécanisme de cascade, qui reverse tout excédent sur le compte bancaire lié, et d'une cascade inverse qui recharge le portefeuille à la volée, plus l'interdiction de détention pour les entreprises. Nous détaillons l'enjeu de ce verrou dans notre analyse de [l'euro numérique et du plafond](/posts/euro-numerique-plafond-detention-depots-bancaires/) ; la comparaison internationale montre à quel point la borne de la zone euro est basse.
+
+<InfographicBars
+  title="Le plafond de détention, un choix révélateur"
+  subtitle="Plafond envisagé par monnaie numérique de banque centrale, en euros."
+  max={20000}
+  items={[
+    { label: "Zone euro (haut de fourchette)", value: 3000, valueLabel: "3 000 €", tone: "signal" },
+    { label: "Canada (25 000 CAD)", value: 17000, valueLabel: "≈ 17 000 €", tone: "blue" },
+    { label: "Royaume-Uni (fourchette)", value: 20000, valueLabel: "10 000 à 20 000 £", tone: "amber" },
+  ]}
+  note="Plus le plafond est bas, plus l'émetteur privilégie la stabilité bancaire sur l'usage."
+  source="Sources : BCE, Banque d'Angleterre, Banque du Canada. Conversions indicatives."
+  caption="Le plafond est le paramètre qui trahit la priorité : la zone euro le fixe trois à cinq fois plus bas que ses pairs, signe qu'elle redoute avant tout la désintermédiation des banques. Lire une CBDC commence par lire ce chiffre. Sources : banques centrales citées."
+/>
+
+## La rémunération : le paramètre le plus lourd
+
+Vient un réglage discret mais décisif : la CBDC porte-t-elle un intérêt ? C'est [sans doute la caractéristique de conception la plus importante](https://www.mdpi.com/2227-7072/14/5/122), car elle décide si la monnaie numérique concurrence l'épargne. Une CBDC rémunérée deviendrait un placement sans risque adossé à la banque centrale, aspirant les dépôts ; une CBDC non rémunérée reste un simple instrument de paiement. L'euro numérique a tranché pour le zéro : aucun intérêt, afin de ne jamais rivaliser avec un livret ou un dépôt à terme. Ce choix, combiné au plafond, forme le cœur du dispositif anti-fuite. Lire la rémunération d'une CBDC, c'est lire jusqu'où son émetteur accepte qu'elle empiète sur le système bancaire.
+
+## Confidentialité : le triangle impossible
+
+Aucun paramètre n'est plus chargé que la confidentialité, et il obéit à un arbitrage que la recherche résume en un [trilemme : on ne peut maximiser à la fois la vie privée, la stabilité financière et la conformité réglementaire](https://www.mdpi.com/2227-7072/14/5/122). Renforcer l'anonymat fragilise la lutte anti-blanchiment ; renforcer la traçabilité inquiète sur les libertés. Chaque CBDC se positionne quelque part dans ce triangle, et sa place est un choix de société.
+
+L'euro numérique s'y range par paliers. Hors ligne, il promet une [confidentialité proche de l'espèce, où seuls le payeur et le payé voient la transaction](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html) ; en ligne, il applique une minimisation des données, où l'intermédiaire ne voit que le strict nécessaire aux contrôles anti-blanchiment, et où la BCE, elle, ne voit pas les paiements individuels. Les petits montants seraient les plus protégés. La [CNIL et ses homologues suivent le dossier de près](https://www.cnil.fr/en/confidentiality-digital-euro-where-are-we), car c'est ici que se joue la réputation du projet : une CBDC perçue comme un outil de surveillance serait rejetée avant d'exister.
+
+## Cours légal et non-programmabilité
+
+Deux derniers paramètres, souvent confondus, ferment la grille. Le premier est le statut de [cours légal](/glossaire/#cours-legal) : l'euro numérique l'aurait, ce qui obligerait la plupart des commerçants à l'accepter, garantissant son universalité face aux moyens de paiement privés et préservant l'[unicité de la monnaie](/glossaire/#unicite-de-la-monnaie). Le second est la programmabilité, et c'est le plus mal compris. La BCE insiste : l'euro numérique serait une [monnaie non programmable](/glossaire/#monnaie-programmable), chaque unité restant fongible et dépensable partout, sans qu'on puisse la restreindre à certains biens ou à une date. Ce choix répond frontalement au soupçon d'une monnaie de contrôle : une monnaie programmable permettrait en théorie de conditionner les dépenses, une CBDC non programmable s'y refuse par construction. Distinguer la monnaie programmable, écartée, des paiements programmables, qui automatisent une transaction sans contraindre la monnaie, est la clé pour lire honnêtement ce débat.
+
+## Le calendrier et la réversibilité
+
+Un dernier réflexe de lecture : situer le projet sur sa trajectoire, car les paramètres ne sont pas gravés. Pour l'euro numérique, le cadre législatif se négocie en 2026, la BCE a lancé son appel à manifestation d'intérêt auprès des prestataires en mars 2026, un [pilote de douze mois est visé à partir du second semestre 2027, et une première émission reste possible en 2029](https://www.adesso.de/en/news/blog/the-digital-euro-2026-what-decision-makers-need-to-know-now.jsp). Surtout, plusieurs réglages sont conçus pour évoluer : le plafond, en particulier, est un curseur volontairement bas au départ, susceptible d'être relevé une fois la stabilité éprouvée. Lire une CBDC suppose donc de lire aussi ses marges de révision, car un paramètre calibré pour être desserré plus tard en dit long sur l'incertitude de l'émetteur.
+
+## Lire une CBDC en pratique
+
+Face à n'importe quel projet de monnaie numérique de banque centrale, la même grille s'applique. Vérifier d'abord si elle est de détail ou de gros, car tout le débat public ne concerne que la première. Repérer l'architecture, compte ou jeton, qui commande la confidentialité et le hors ligne. Lire le modèle de distribution, direct ou à deux niveaux, qui dit le sort réservé aux banques. Puis les deux verrous de stabilité, plafond de détention et rémunération, qui mesurent jusqu'où la CBDC empiète sur les dépôts. Situer ensuite le projet dans le trilemme de la confidentialité, entre vie privée, stabilité et conformité. Contrôler enfin le cours légal et la programmabilité, qui séparent une monnaie publique universelle d'un instrument de contrôle. Chaque réglage lu isolément est technique ; l'ensemble dessine une intention. Et cette intention se juge à l'aune de la concurrence que la CBDC prétend contrer, les réseaux de paiement étrangers et les [stablecoins privés adossés au dollar](/posts/stablecoins-acheteur-marginal-bon-du-tresor/), car une monnaie publique numérique est d'abord une réponse à la question de savoir qui, demain, émettra la monnaie que nous utilisons.
+
+---
+
+### Sources
+
+- [Banque centrale européenne, « Preparation phase of a digital euro, Closing report », octobre 2025 (modèle à deux niveaux, plafond, confidentialité par paliers, calendrier)](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html)
+- [MDPI, Journal of Risk and Financial Management, « Designing Retail Central Bank Digital Currencies » (trilemme vie privée, stabilité, conformité ; rémunération comme paramètre décisif)](https://www.mdpi.com/2227-7072/14/5/122)
+- [CNIL, « Confidentiality in the Digital Euro: Where are we? » (paliers de confidentialité, minimisation des données)](https://www.cnil.fr/en/confidentiality-digital-euro-where-are-we)
+- [adesso, « The Digital Euro 2026: What decision-makers need to know now » (appel à manifestation d'intérêt mars 2026, pilote 2027, émission possible 2029, non-programmabilité)](https://www.adesso.de/en/news/blog/the-digital-euro-2026-what-decision-makers-need-to-know-now.jsp)

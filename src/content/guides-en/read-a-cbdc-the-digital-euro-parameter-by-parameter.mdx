@@ -1,0 +1,76 @@
+---
+title: "How to Read a CBDC: the digital euro parameter by parameter"
+description: "A reference guide to central bank digital currencies, through the example of the digital euro. A CBDC is not an object but a bundle of design choices, each of them political: retail or wholesale, account or token, direct or two-tier distribution, holding limit, remuneration, privacy, legal tender and programmability. Each parameter reveals the issuer's real priority, between payment sovereignty, financial stability and surveillance. With the digital euro's 2026 timeline as the thread."
+summary: "A central bank digital currency is read parameter by parameter: each design choice, from the holding limit to remuneration, from account-or-token architecture to the degree of privacy, reflects a trade-off between payment sovereignty, bank stability and compliance. The digital euro serves as the worked example: capped, unremunerated, distributed by banks, legal tender and deliberately non-programmable. This guide gives the reading grid applicable to any CBDC."
+pubDate: 2026-07-27T20:13:00+02:00
+updatedDate: 2026-07-27T20:13:00+02:00
+sourceGuide: "lire-une-cbdc-euro-numerique-parametre-par-parametre"
+sourceUpdatedDate: 2026-07-27T20:13:00+02:00
+tags: ["crypto", "central banks", "payments"]
+category: crypto
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*A central bank digital currency is not a thing, it is a list of decisions. Behind the acronym CBDC hides a dozen parameters, and each is a political trade-off disguised as a technical choice: how much can be held, does it pay interest, who distributes it, what does the central bank see of your payments, can its use be programmed. Reading a CBDC is therefore not judging it as a block, it is decoding these settings one by one, because they reveal the issuer's real priority, somewhere between reclaiming monetary sovereignty, protecting its banks and the temptation of control. This guide runs through the grid, with the digital euro as the worked example.*
+
+## Retail or wholesale: the first fork
+
+The first question to ask of any CBDC project is who it is for. A retail CBDC targets the general public: it is central bank money in households' wallets, a digital equivalent of the banknote. A wholesale CBDC stays reserved for banks and market infrastructure, where it serves as a settlement asset between institutions, notably on the tokenised platforms we describe in our analysis of [the ECB's tokenisation projects](/en/analysis/sintra-2026-ecb-hike-warsh-tokenisation/). The two raise different stakes: the wholesale version is a matter of interbank plumbing, discreet and rarely controversial; the retail version touches the direct relationship between citizen and central bank, and concentrates the entire debate. The digital euro discussed here is a retail CBDC.
+
+## Account or token: the architecture
+
+Next comes the architecture choice, which governs almost everything else. An account-based CBDC ties each unit to its holder's identity, like a bank deposit: ownership follows the entry in the ledger. A token-based CBDC works like cash: ownership follows possession of the token or knowledge of a key, without identity necessarily attached. This choice is not neutral, because it determines the degree of privacy possible and the ability to work offline. The digital euro combines both logics: an online leg, intermediated and identity-linked, and an offline, token-like leg, closer to cash.
+
+## Who distributes: the two-tier model
+
+Third parameter, often underestimated: does the central bank serve the public directly, or through intermediaries? The direct model would make the central bank the account keeper of millions of citizens, an institutional revolution almost no Western project envisages. The digital euro instead adopts a two-tier model: it [will rest on a partnership between the Eurosystem and payment service providers](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html), commercial banks, payment institutions and e-money institutions. The central bank issues, the intermediaries distribute and keep the customer relationship. This choice is the first answer to the fear of disintermediation: banks stay in the loop and collect the fees, rather than being bypassed.
+
+## The holding limit: the stability lock
+
+The most scrutinised parameter is the holding limit, the maximum an individual can keep. The ECB envisages it [between €500 and €3,000](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html), a deliberately low level compared with the British and Canadian projects, precisely to prevent a massive flight of deposits into central bank money. It comes with a waterfall mechanism, which sweeps any excess to the linked bank account, a reverse waterfall that reloads the wallet on the fly, plus a ban on holdings for companies. We detail the stakes of this lock in our analysis of [the digital euro and its cap](/en/analysis/three-thousand-euros-no-more/); the international comparison shows how low the euro-area bound is.
+
+<InfographicBars
+  title="The holding limit, a revealing choice"
+  subtitle="Limit considered per central bank digital currency, in euros."
+  max={20000}
+  items={[
+    { label: "Euro area (top of range)", value: 3000, valueLabel: "€3,000", tone: "signal" },
+    { label: "Canada (25,000 CAD)", value: 17000, valueLabel: "≈ €17,000", tone: "blue" },
+    { label: "United Kingdom (range)", value: 20000, valueLabel: "£10,000 to 20,000", tone: "amber" },
+  ]}
+  note="The lower the cap, the more the issuer favours bank stability over use."
+  source="Sources: ECB, Bank of England, Bank of Canada. Indicative conversions."
+  caption="The cap is the parameter that betrays the priority: the euro area sets it three to five times lower than its peers, a sign that it fears bank disintermediation above all. Reading a CBDC begins with reading this number. Sources: central banks cited."
+/>
+
+## Remuneration: the heaviest parameter
+
+Then comes a discreet but decisive setting: does the CBDC pay interest? It is [arguably the most important design feature](https://www.mdpi.com/2227-7072/14/5/122), because it decides whether the digital currency competes with savings. A remunerated CBDC would become a risk-free investment backed by the central bank, sucking in deposits; an unremunerated CBDC stays a mere payment instrument. The digital euro has settled on zero: no interest, so that it never rivals a savings account or a term deposit. That choice, combined with the cap, forms the core of the anti-flight design. Reading a CBDC's remuneration means reading how far its issuer accepts that it encroaches on the banking system.
+
+## Privacy: the impossible triangle
+
+No parameter is more loaded than privacy, and it obeys a trade-off research sums up as a [trilemma: one cannot maximise privacy, financial stability and regulatory compliance all at once](https://www.mdpi.com/2227-7072/14/5/122). Strengthening anonymity weakens anti-money-laundering; strengthening traceability worries civil liberties. Each CBDC positions itself somewhere in that triangle, and its place is a choice of society.
+
+The digital euro sits there in tiers. Offline, it promises a [cash-like confidentiality, where only payer and payee see the transaction](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html); online, it applies data minimisation, where the intermediary sees only what is strictly necessary for anti-money-laundering checks, and where the ECB itself does not see individual payments. Small amounts would be the most protected. The [CNIL and its counterparts follow the file closely](https://www.cnil.fr/en/confidentiality-digital-euro-where-are-we), because it is here that the project's reputation is decided: a CBDC perceived as a surveillance tool would be rejected before it exists.
+
+## Legal tender and non-programmability
+
+Two last parameters, often confused, close the grid. The first is legal-tender status: the digital euro would have it, obliging most merchants to accept it, guaranteeing its universality against private means of payment and preserving the singleness of money. The second is programmability, and it is the most misunderstood. The ECB insists: the digital euro would be non-programmable money, each unit staying fungible and spendable everywhere, without being restrictable to certain goods or a date. This choice answers head-on the suspicion of a control currency: programmable money could in theory condition spending, a non-programmable CBDC refuses to by construction. Distinguishing programmable money, ruled out, from programmable payments, which automate a transaction without constraining the money, is the key to reading this debate honestly.
+
+## The timeline and reversibility
+
+One final reading reflex: place the project on its trajectory, because the parameters are not set in stone. For the digital euro, the legal framework is being negotiated in 2026, the ECB launched its call for expression of interest to providers in March 2026, a [twelve-month pilot is targeted from the second half of 2027, and a first issuance remains possible in 2029](https://www.adesso.de/en/news/blog/the-digital-euro-2026-what-decision-makers-need-to-know-now.jsp). Above all, several settings are designed to evolve: the cap in particular is a deliberately low dial at the start, liable to be raised once stability has been tested. Reading a CBDC therefore means reading its margins for revision too, because a parameter calibrated to be loosened later says a lot about the issuer's uncertainty.
+
+## Reading a CBDC in practice
+
+Faced with any central bank digital currency project, the same grid applies. First check whether it is retail or wholesale, since the whole public debate concerns only the former. Spot the architecture, account or token, which governs privacy and offline use. Read the distribution model, direct or two-tier, which tells the fate reserved for banks. Then the two stability locks, holding limit and remuneration, which measure how far the CBDC encroaches on deposits. Next place the project within the privacy trilemma, between privacy, stability and compliance. Finally check legal tender and programmability, which separate a universal public currency from a control instrument. Each setting read in isolation is technical; together they sketch an intent. And that intent is judged against the competition the CBDC claims to counter, foreign payment networks and [private dollar-backed stablecoins](/en/analysis/stablecoins-the-marginal-buyer-of-us-treasuries/), because a public digital currency is first an answer to the question of who, tomorrow, will issue the money we use.
+
+---
+
+### Sources
+
+- [European Central Bank, "Preparation phase of a digital euro, Closing report", October 2025 (two-tier model, holding limit, tiered privacy, timeline)](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html)
+- [MDPI, Journal of Risk and Financial Management, "Designing Retail Central Bank Digital Currencies" (privacy-stability-compliance trilemma; remuneration as the decisive parameter)](https://www.mdpi.com/2227-7072/14/5/122)
+- [CNIL, "Confidentiality in the Digital Euro: Where are we?" (privacy tiers, data minimisation)](https://www.cnil.fr/en/confidentiality-digital-euro-where-are-we)
+- [adesso, "The Digital Euro 2026: What decision-makers need to know now" (call for expression of interest March 2026, 2027 pilot, possible 2029 issuance, non-programmability)](https://www.adesso.de/en/news/blog/the-digital-euro-2026-what-decision-makers-need-to-know-now.jsp)
