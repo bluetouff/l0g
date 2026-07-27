@@ -1,0 +1,105 @@
+---
+title: "How to Read the NY Fed Household Debt Report"
+description: "A reference guide to the New York Fed's Household Debt and Credit Report: what it measures and how (the Consumer Credit Panel, a 5% Equifax sample), the composition of US household debt, the three lenses on delinquency (stock, flow, severity), the transition rate as a leading signal, the trap of the aggregate that hides a K-shaped economy, the student-loan case after the forbearance reset, and the reading pitfalls. With the first quarter of 2026 as a worked example."
+summary: "The Household Debt and Credit Report is the quarterly X-ray of US household borrowing, published by the New York Fed from an anonymised sample of Equifax records. It gives the composition of debt (mortgage, auto, card, student) and, above all, the transition rates into delinquency, a signal earlier than the aggregate level. Reading it means separating stock, flow and severity, and never stopping at the average, which hides a K-shaped distribution. The first quarter of 2026 serves as illustration."
+pubDate: 2026-07-27T15:52:00+02:00
+updatedDate: 2026-07-27T15:52:00+02:00
+sourceGuide: "lire-le-rapport-dette-et-credit-des-menages"
+sourceUpdatedDate: 2026-07-27T15:52:00+02:00
+tags: ["macro", "consumer", "credit"]
+category: macro
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*The American consumer carries two thirds of the world's largest economy, and their health shows up first in a quarterly document: the New York Fed's Household Debt and Credit Report. It tells how much households owe, on what, and above all how many are starting to fall behind. The trap is to stop at the aggregate number, the one that makes the headlines, when all the useful information hides in the breakdown and in the flows. This guide takes the report end to end, from its method to its pitfalls, using the first quarter of 2026 as a worked example.*
+
+## What the HHDC measures
+
+The report, produced each quarter by the New York Fed's Center for Microeconomic Data, is not a survey of opinions: it rests on real credit data. Its source is the [Consumer Credit Panel](https://www.newyorkfed.org/microeconomics/hhdc/background.html), a random 5% sample of all Americans holding a social security number and a credit file, supplemented by the other people living at the same address to reconstruct the household. The whole covers roughly 44 million individuals per quarter, from anonymised Equifax records, going back to 1999. It is a longitudinal panel: it follows the same people over time, which allows observing not only levels but transitions.
+
+The data is cut off at quarter-end and published about six weeks later: the first-quarter report, cut off at the end of March, thus appeared on 12 May 2026. It covers the main categories of household debt, mortgage first, then auto loans, credit cards, student loans, home equity lines (HELOC) and other, with balances, new originations, credit scores and delinquencies for each.
+
+## The composition of debt
+
+First rule of reading: US household debt is overwhelmingly housing. Of the $18.79 trillion outstanding at the end of March 2026, the [mortgage alone weighs $13.19 trillion](https://www.newyorkfed.org/newsevents/news/research/2026/20260512), about 70% of the total. The rest splits between auto, student, card and home equity lines.
+
+<InfographicBars
+  title="US household debt by category (Q1 2026)"
+  subtitle="Balances at end of March 2026, in billions of dollars."
+  max={13190}
+  items={[
+    { label: "Mortgage", value: 13190, valueLabel: "13,190", tone: "signal" },
+    { label: "Auto loan", value: 1690, valueLabel: "1,690", tone: "amber" },
+    { label: "Student loan", value: 1660, valueLabel: "1,660", tone: "blue" },
+    { label: "Credit card", value: 1250, valueLabel: "1,250", tone: "accent" },
+    { label: "HELOC and other", value: 1000, valueLabel: "≈ 1,000", tone: "muted" },
+  ]}
+  note="The mortgage is about 70% of total debt: the aggregate moves first to the rhythm of housing."
+  source="Source: Federal Reserve Bank of New York, Household Debt and Credit Report, Q1 2026."
+  caption="Of $18.79 trillion, housing dominates. Reading consequence: a change in total debt reflects mostly the mortgage, and hides the far sharper moves of the small compartments, card and auto first. Source: New York Fed."
+/>
+
+That structure has a direct consequence: when a headline says household debt hits a record, it is mostly talking about housing and demographics. The real stress signal never comes from the aggregate level, it comes from the fast-turning compartments and from delinquencies.
+
+## Stock, flow, severity
+
+The heart of the report is delinquency, and it must be read at three distinct levels too often confused.
+
+The first is the **stock**: the share of balances past due at a given moment. At the end of March 2026, 4.8% of debt was at least thirty days late, and 3.36% seriously delinquent at ninety days or more, about $631 billion. This is the snapshot, useful but slow to move.
+
+The second, and the most important, is the **flow**: the transition rate into delinquency, that is, the share of previously current balances that tip into arrears over the quarter. The report defines it precisely as the balances that newly became at least ninety days late in the reference quarter, divided by the balances that were current or less than ninety days past due in the previous quarter. This flow turns before the stock: it rises when deterioration begins, well before the total share of arrears shifts. It is the leading signal.
+
+The third is **severity**. The report isolates serious delinquency, defined as having at least one account ninety days or more past due, in collections, or classified as severely derogatory. It is the mark of households unlikely to recover, and it comes with last-resort indicators: collections, home foreclosures and personal bankruptcies. Holding the distinction is vital: the stock tells where we are, the flow tells where we are going, severity tells who is already lost.
+
+## The trap of the aggregate
+
+Here is the most common reading error. The aggregate delinquency rate, at 3.36% for serious arrears, looks benign, and the debt-to-disposable-income ratio, down to [79.9%, its lowest since 2003](https://wolfstreet.com/2026/05/12/household-debts-debt-to-income-ratio-serious-delinquencies-foreclosures-collections-bankruptcies-in-q1-2026/) outside pandemic-stimulus episodes, seems to confirm iron health. But the aggregate adds together products that have nothing to do with each other, and it hides a K-shaped economy where housing stays immaculate while other compartments catch fire.
+
+<InfographicBars
+  title="The same quarter, two worlds (Q1 2026)"
+  subtitle="Share of balances seriously delinquent, 90 days or more, in percent."
+  max={11}
+  items={[
+    { label: "Student loan", value: 10.3, valueLabel: "10.3%", tone: "accent" },
+    { label: "All debt", value: 3.36, valueLabel: "3.36%", tone: "signal" },
+    { label: "Mortgage", value: 1.09, valueLabel: "1.09%", tone: "muted" },
+    { label: "Home equity line (HELOC)", value: 0.95, valueLabel: "0.95%", tone: "muted" },
+  ]}
+  note="Housing around 1%, student above 10%: the 3.36% average describes neither."
+  source="Source: New York Fed, Q1 2026; Wolf Street calculations on HHDC data."
+  caption="The aggregate average is a misleading blend. Mortgages and HELOCs stay below 1.1% serious delinquency, while student loans exceed 10%. Cards and auto sit in between, subprime auto at the top of the stress, as detailed in our analysis of the American consumer fracture. Source: New York Fed."
+/>
+
+The rule is therefore always to go one level down: by product, then by credit-score tier, then by age. The report allows it, and that is where the K-shaped distribution becomes visible. The top of the distribution, homeowning and well-scored, pulls the average towards calm; the bottom, young and loaded with revolving debt, falls away without the aggregate flinching. Our piece on [the average consumer who does not exist](/en/analysis/the-average-consumer-does-not-exist/) unpacks that fracture beneath the reassuring aggregate.
+
+## The student-loan worked example
+
+No compartment better illustrates the report's pitfalls than student loans in 2026. After the federal repayment freeze ended in 2025, previously suspended balances began being reported to the credit bureaus again, and delinquencies resurfaced all at once. The transition rate into serious delinquency, measured as a four-quarter moving sum, jumped then began to recede, going from [16.2% at the end of 2025 to 10.9% in the first quarter of 2026](https://goldrushcam.com/sierrasuntimes/index.php/news/local-news/78061-federal-reserve-bank-of-new-york-s-center-for-microeconomic-data-2026-quarter-one-report-on-household-debt-and-credit-finds-household-debt-balances-rise-slightly-as-delinquency-transition-rates-hold-steady), while the stock ninety days or more past due stayed elevated at 10.3%.
+
+The reading lesson is twofold. First, a spike in the transition rate can be partly a reporting artefact: it is not only that more households default, it is also that defaults previously invisible reappear in the statistics. Second, flow and stock can diverge: here the flow recedes while the stock stays high, the sign of a reset wave passing its peak without having cleared. Taking the rising flow for a catastrophe, or its recession for a cure, would be a double error.
+
+## Reading pitfalls
+
+Beyond the misleading aggregate and the student artefact, a few reflexes avoid misreadings.
+
+The first is to distrust the nominal record. Household debt grows almost mechanically with prices and population; the dollar figure sets records nearly every quarter without meaning much. The relevant measure is the debt-to-income ratio, which at 79.9% tells the opposite story of relative deleveraging. The second is not to confuse the series: the HHDC, drawn from the Equifax panel, does not match the delinquency rates the Fed publishes on commercial-bank balance sheets, which have a different scope and definition. The third rests on a methodological subtlety: for mortgages, new delinquency is measured on the account balance at its entry into arrears, while for other loans it is measured on the net increase in the delinquent balance, which makes the compartments not strictly comparable. The fourth is the lag: the data is about six weeks old, and foreclosures and bankruptcies are late indicators, which confirm stress more than they announce it.
+
+## First quarter 2026: the deceptive calm
+
+The May 2026 report is a textbook case of dissonance between the aggregate and the tail. On the surface, total debt barely rises, by 0.1% on the quarter, to [$18.79 trillion](https://www.newyorkfed.org/newsevents/news/research/2026/20260512), some 3.2% more year on year; card balances fall by $25 billion, auto gains $18 billion; the debt-to-income ratio drops to a two-decade low; the aggregate delinquency rate is stable. Nothing, at that level, to worry about.
+
+Below the surface, the picture shades. Home foreclosures touch 59,160 consumers and bankruptcies 124,020, slightly higher; collections rise to 5% of consumers; student loans stay at 10.3% serious delinquency, and subprime auto credit, outside the HHDC's scope alone, sits at delinquency levels unseen since the 1990s. The aggregate says calm, the distribution says fracture. The report, read correctly, says both at once, and that is precisely its value.
+
+## Reading the HHDC in practice
+
+To draw the right signal from the report, a few moves suffice. Look first at the transition rates, not the delinquency levels: the flow leads the stock. Systematically go below the aggregate, by product then by score and age, to spot the tail falling away. Scale debt to income rather than to the dollar, to ignore the false nominal record. Treat severity, foreclosures and bankruptcies as late confirmations, not as alerts. Finally, cross the HHDC with the [labor market](/en/guides/read-us-employment-report-nfp/), because employment remains the firewall of consumer credit: as long as it holds, delinquency stays manageable, and it is the labor market to watch to anticipate the next quarter. The risk does not vanish when it leaves the aggregate: it migrates towards [non-bank intermediation](/en/analysis/shadow-banking-nonbank-intermediation/) and the [securitisation](/en/guides/read-clos-and-leveraged-loans/) that buy up these receivables, and that is where it must be tracked next.
+
+---
+
+### Sources
+
+- [Federal Reserve Bank of New York, "Household Debt Balances Rise Slightly as Delinquency Transition Rates Hold Steady", 12 May 2026 (total debt $18.79tn, composition by category)](https://www.newyorkfed.org/newsevents/news/research/2026/20260512)
+- [Federal Reserve Bank of New York, "Household Debt and Credit, Background" (Consumer Credit Panel methodology, 5% Equifax sample, panel since 1999)](https://www.newyorkfed.org/microeconomics/hhdc/background.html)
+- [Wolf Street, "Household Debts, Debt-to-Income Ratio, Serious Delinquencies, Foreclosures, Collections & Bankruptcies in Q1 2026" (90-day delinquency by category, debt-to-income 79.9%, foreclosures and bankruptcies)](https://wolfstreet.com/2026/05/12/household-debts-debt-to-income-ratio-serious-delinquencies-foreclosures-collections-bankruptcies-in-q1-2026/)
+- [Center for Microeconomic Data, New York Fed, Q1 2026 (student-loan transition rate, 16.2% to 10.9% as a four-quarter moving sum)](https://goldrushcam.com/sierrasuntimes/index.php/news/local-news/78061-federal-reserve-bank-of-new-york-s-center-for-microeconomic-data-2026-quarter-one-report-on-household-debt-and-credit-finds-household-debt-balances-rise-slightly-as-delinquency-transition-rates-hold-steady)

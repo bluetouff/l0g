@@ -1,0 +1,103 @@
+---
+title: "Lire le rapport dette et crédit des ménages de la Fed de New York"
+description: "Guide de référence sur le Household Debt and Credit Report de la Réserve fédérale de New York : ce qu'il mesure et comment (le Consumer Credit Panel, échantillon Equifax de 5 %), la composition de la dette des ménages américains, les trois lectures de l'impayé (stock, flux, sévérité), le taux de transition vers le défaut comme signal avancé, le piège de l'agrégat qui masque une économie en K, le cas des prêts étudiants après la fin du gel, et les pièges de lecture. Avec le rapport du premier trimestre 2026 comme cas d'école."
+summary: "Le Household Debt and Credit Report est la radiographie trimestrielle de l'endettement des ménages américains, publiée par la Fed de New York à partir d'un échantillon anonymisé de dossiers Equifax. Il donne la composition de la dette (hypothécaire, auto, carte, étudiant) et surtout les taux de transition vers l'impayé, signal plus précoce que le niveau agrégé. Le lire suppose de distinguer le stock, le flux et la sévérité, et de ne jamais s'arrêter à la moyenne, qui recouvre une distribution en K. Le rapport du premier trimestre 2026 sert d'illustration."
+pubDate: 2026-07-27T15:52:00+02:00
+updatedDate: 2026-07-27T15:52:00+02:00
+tags: ["macro", "consommation", "crédit"]
+category: macro
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Le consommateur américain porte les deux tiers de la première économie mondiale, et sa santé se lit d'abord dans un document trimestriel : le Household Debt and Credit Report de la Réserve fédérale de New York. On y trouve combien les ménages doivent, sur quoi, et surtout combien d'entre eux commencent à ne plus payer. Le piège est de s'arrêter au chiffre agrégé, celui qui fait les titres, alors que toute l'information utile se cache dans la ventilation et dans les flux. Ce guide prend le rapport de bout en bout, de sa méthode à ses pièges, et se sert du premier trimestre 2026 comme cas d'école.*
+
+## Ce que mesure le HHDC
+
+Le rapport, produit chaque trimestre par le Center for Microeconomic Data de la Fed de New York, n'est pas une enquête déclarative : il repose sur des données de crédit réelles. Sa source est le [Consumer Credit Panel](https://www.newyorkfed.org/microeconomics/hhdc/background.html), un échantillon aléatoire de 5 % de tous les individus américains disposant d'un numéro de sécurité sociale et d'un dossier de crédit, complété par les autres personnes vivant à la même adresse pour reconstituer le ménage. L'ensemble couvre environ 44 millions d'individus par trimestre, à partir de dossiers Equifax anonymisés, et remonte à 1999. C'est un panel longitudinal : il suit les mêmes personnes dans le temps, ce qui permet d'observer non seulement les niveaux, mais les transitions.
+
+La donnée est arrêtée à la fin du trimestre et publiée environ six semaines plus tard : le rapport du premier trimestre, arrêté fin mars, est ainsi paru le 12 mai 2026. Il couvre les grandes catégories de dette des ménages, hypothécaire en tête, puis crédit auto, cartes de crédit, prêts étudiants, marges hypothécaires (HELOC) et autres, avec pour chacune les encours, les nouvelles émissions, les scores de crédit et les impayés.
+
+## La composition de la dette
+
+Première règle de lecture : la dette des ménages américains est massivement immobilière. Sur les 18 790 milliards de dollars d'encours à fin mars 2026, le [prêt hypothécaire pèse à lui seul 13 190 milliards](https://www.newyorkfed.org/newsevents/news/research/2026/20260512), soit environ 70 % du total. Le reste se répartit entre l'auto, l'étudiant, la carte et les marges hypothécaires.
+
+<InfographicBars
+  title="La dette des ménages américains par catégorie (T1 2026)"
+  subtitle="Encours à fin mars 2026, en milliards de dollars."
+  max={13190}
+  items={[
+    { label: "Prêt hypothécaire", value: 13190, valueLabel: "13 190", tone: "signal" },
+    { label: "Prêt auto", value: 1690, valueLabel: "1 690", tone: "amber" },
+    { label: "Prêt étudiant", value: 1660, valueLabel: "1 660", tone: "blue" },
+    { label: "Carte de crédit", value: 1250, valueLabel: "1 250", tone: "accent" },
+    { label: "HELOC et autres crédits", value: 1000, valueLabel: "≈ 1 000", tone: "muted" },
+  ]}
+  note="Le prêt hypothécaire représente environ 70 % de la dette totale : l'agrégat bouge d'abord au rythme du logement."
+  source="Source : Federal Reserve Bank of New York, Household Debt and Credit Report, T1 2026."
+  caption="Sur 18 790 milliards de dollars, l'immobilier domine. Conséquence de lecture : une variation de la dette totale reflète surtout le crédit hypothécaire, et masque les mouvements bien plus vifs des petits compartiments, carte et auto en tête. Source : Fed de New York."
+/>
+
+Cette structure a une conséquence directe : quand un titre annonce que la dette des ménages bat un record, il parle surtout d'immobilier et de démographie. Le vrai signal de stress ne vient jamais du niveau agrégé, il vient des compartiments à rotation rapide et des impayés.
+
+## Le stock, le flux, la sévérité
+
+Le cœur du rapport, ce sont les impayés, et il faut les lire à trois niveaux distincts qu'on confond trop souvent.
+
+Le premier est le **stock** : la part des encours en retard à un instant donné. À fin mars 2026, 4,8 % de la dette était en retard d'au moins trente jours, et 3,36 % en retard sérieux d'au moins quatre-vingt-dix jours, soit environ 631 milliards de dollars. C'est la photographie, utile mais lente à bouger.
+
+Le deuxième, et le plus important, est le **flux** : le taux de transition vers l'impayé, c'est-à-dire la part des encours jusque-là à jour qui basculent dans le retard au cours du trimestre. Le rapport le définit précisément comme les soldes devenus récemment défaillants d'au moins quatre-vingt-dix jours, rapportés aux soldes qui étaient à jour ou en retard de moins de quatre-vingt-dix jours le trimestre précédent. Ce flux tourne avant le stock : il monte quand la dégradation commence, bien avant que la part totale d'impayés ne se déplace. C'est le signal avancé.
+
+Le troisième est la **sévérité**. Le rapport isole la délinquance sévère, définie comme au moins un compte en retard de quatre-vingt-dix jours et plus, en recouvrement ou classé « severely derogatory ». C'est la marque des ménages qui ne se rattraperont probablement pas, et elle se double d'indicateurs de dernier recours : mises en recouvrement, saisies immobilières et faillites personnelles. Retenir la distinction est vital : le stock dit où on en est, le flux dit où on va, la sévérité dit qui est déjà perdu.
+
+## Le piège de l'agrégat
+
+Voici l'erreur de lecture la plus commune. Le taux d'impayé agrégé, à 3,36 % pour le retard sérieux, paraît bénin, et le ratio dette rapportée au revenu disponible, tombé à [79,9 %, son plus bas depuis 2003](https://wolfstreet.com/2026/05/12/household-debts-debt-to-income-ratio-serious-delinquencies-foreclosures-collections-bankruptcies-in-q1-2026/) hors épisodes de relance pandémique, semble confirmer une santé de fer. Mais l'agrégat additionne des produits qui n'ont rien à voir entre eux, et il recouvre une [économie en K](/glossaire/#economie-en-k) où l'immobilier reste immaculé pendant que d'autres compartiments s'enflamment.
+
+<InfographicBars
+  title="Le même trimestre, deux mondes (T1 2026)"
+  subtitle="Part des encours en retard sérieux de 90 jours et plus, en pourcentage."
+  max={11}
+  items={[
+    { label: "Prêt étudiant", value: 10.3, valueLabel: "10,3 %", tone: "accent" },
+    { label: "Ensemble de la dette", value: 3.36, valueLabel: "3,36 %", tone: "signal" },
+    { label: "Prêt hypothécaire", value: 1.09, valueLabel: "1,09 %", tone: "muted" },
+    { label: "Marge hypothécaire (HELOC)", value: 0.95, valueLabel: "0,95 %", tone: "muted" },
+  ]}
+  note="L'immobilier autour de 1 %, l'étudiant à plus de 10 % : la moyenne à 3,36 % ne décrit aucun des deux."
+  source="Source : Fed de New York, T1 2026 ; calculs Wolf Street sur données HHDC."
+  caption="La moyenne agrégée est un mélange trompeur. Le crédit hypothécaire et les marges HELOC restent sous 1,1 % d'impayé sérieux, tandis que le prêt étudiant dépasse 10 %. Les cartes et le crédit auto se situent entre les deux, l'auto subprime au sommet du stress, comme le détaille notre analyse de la fissure du consommateur américain. Source : Fed de New York."
+/>
+
+La règle est donc de toujours descendre d'un cran : par produit, puis par tranche de score de crédit, puis par âge. Le rapport le permet, et c'est là que la distribution en K devient visible. Le haut de la distribution, propriétaire et bien noté, tire la moyenne vers le calme ; le bas, jeune et endetté en revolving, décroche sans que l'agrégat ne bronche. Notre article sur [le consommateur moyen qui n'existe pas](/posts/fissure-consommateur-americain-economie-en-k/) déroule cette fracture sous l'agrégat rassurant.
+
+## Le cas d'école des prêts étudiants
+
+Aucun compartiment n'illustre mieux les pièges du rapport que le prêt étudiant en 2026. Après la fin du gel fédéral des remboursements en 2025, les créances jusque-là suspendues ont recommencé à être déclarées aux bureaux de crédit, et les impayés ont resurgi d'un coup. Le taux de transition vers le retard sérieux, mesuré en somme mobile sur quatre trimestres, a bondi puis a commencé à refluer, passant de [16,2 % fin 2025 à 10,9 % au premier trimestre 2026](https://goldrushcam.com/sierrasuntimes/index.php/news/local-news/78061-federal-reserve-bank-of-new-york-s-center-for-microeconomic-data-2026-quarter-one-report-on-household-debt-and-credit-finds-household-debt-balances-rise-slightly-as-delinquency-transition-rates-hold-steady), tandis que le stock en retard de quatre-vingt-dix jours restait élevé à 10,3 %.
+
+La leçon de lecture est double. D'abord, un pic de transition peut être en partie un artefact de reporting : ce n'est pas seulement que davantage de ménages font défaut, c'est aussi que des défauts jusque-là invisibles réapparaissent dans les statistiques. Ensuite, le flux et le stock peuvent diverger : ici le flux reflue alors que le stock reste haut, signe d'une vague de reset qui passe son pic sans s'être résorbée. Prendre le flux en hausse pour une catastrophe, ou son reflux pour une guérison, serait deux fois une erreur.
+
+## Les pièges de lecture
+
+Au-delà de l'agrégat trompeur et de l'artefact étudiant, quelques réflexes évitent les contresens.
+
+Le premier est de se méfier du record nominal. La dette des ménages croît presque mécaniquement avec les prix et la population ; le chiffre en dollars bat des records à peu près chaque trimestre sans que cela signifie grand-chose. La mesure pertinente est le ratio dette sur revenu, qui à 79,9 % raconte l'histoire inverse d'un désendettement relatif. Le deuxième est de ne pas confondre les séries : le HHDC, tiré du panel Equifax, ne coïncide pas avec les taux d'impayé publiés par la Fed sur les bilans des banques commerciales, qui ont un périmètre et une définition différents. Le troisième tient à une subtilité de méthode : pour le prêt hypothécaire, la nouvelle délinquance est mesurée sur le solde du compte à son entrée en retard, tandis que pour les autres crédits elle l'est sur la hausse nette du solde en retard, ce qui rend les compartiments non strictement comparables. Le quatrième est le décalage : la donnée a environ six semaines de retard et les saisies comme les faillites sont des indicateurs tardifs, qui confirment le stress plus qu'ils ne l'annoncent.
+
+## Premier trimestre 2026 : le calme trompeur
+
+Le rapport de mai 2026 est un cas d'école de dissonance entre l'agrégat et la queue. Vue d'ensemble, la dette totale progresse à peine, de 0,1 % sur le trimestre, à [18 790 milliards de dollars](https://www.newyorkfed.org/newsevents/news/research/2026/20260512), soit 3,2 % de plus sur un an ; le solde des cartes recule de 25 milliards, celui de l'auto gagne 18 milliards ; le ratio dette sur revenu tombe à un plus bas de deux décennies ; le taux d'impayé agrégé est stable. Rien, à ce niveau, qui inquiète.
+
+Sous la surface, le tableau se nuance. Les saisies immobilières touchent 59 160 consommateurs et les faillites 124 020, en légère hausse ; les mises en recouvrement remontent à 5 % des consommateurs ; le prêt étudiant reste à 10,3 % d'impayé sérieux, et le crédit auto subprime, hors périmètre du seul HHDC, campe à des niveaux d'impayé inédits depuis les années 1990. L'agrégat dit le calme, la distribution dit la fracture. Le rapport, correctement lu, dit les deux à la fois, et c'est précisément sa valeur.
+
+## Lire le HHDC en pratique
+
+Pour tirer le bon signal du rapport, quelques gestes suffisent. Regarder d'abord les taux de transition, pas les niveaux d'impayé : le flux devance le stock. Descendre systématiquement sous l'agrégat, par produit puis par score et par âge, pour repérer la queue qui décroche. Rapporter la dette au revenu plutôt qu'au dollar, pour ignorer le faux record nominal. Traiter la sévérité, les saisies et les faillites comme des confirmations tardives, pas comme des alertes. Croiser enfin le HHDC avec le [marché du travail](/guides/lire-le-rapport-emploi-nfp/), car l'emploi reste le pare-feu du crédit à la consommation : tant qu'il tient, l'impayé reste gérable, et c'est lui qu'il faut surveiller pour anticiper le trimestre suivant. Le risque, lui, ne disparaît pas quand il quitte l'agrégat : il migre vers l'[intermédiation non bancaire](/posts/shadow-banking-intermediation-non-bancaire/) et la [titrisation](/glossaire/#titrisation) qui rachètent ces créances, et c'est là qu'il faudra le suivre ensuite.
+
+---
+
+### Sources
+
+- [Federal Reserve Bank of New York, « Household Debt Balances Rise Slightly as Delinquency Transition Rates Hold Steady », 12 mai 2026 (dette totale 18 790 Md$, composition par catégorie)](https://www.newyorkfed.org/newsevents/news/research/2026/20260512)
+- [Federal Reserve Bank of New York, « Household Debt and Credit, Background » (méthodologie du Consumer Credit Panel, échantillon Equifax 5 %, panel depuis 1999)](https://www.newyorkfed.org/microeconomics/hhdc/background.html)
+- [Wolf Street, « Household Debts, Debt-to-Income Ratio, Serious Delinquencies, Foreclosures, Collections & Bankruptcies in Q1 2026 » (impayé 90 jours par catégorie, dette sur revenu 79,9 %, saisies et faillites)](https://wolfstreet.com/2026/05/12/household-debts-debt-to-income-ratio-serious-delinquencies-foreclosures-collections-bankruptcies-in-q1-2026/)
+- [Center for Microeconomic Data, Fed de New York, T1 2026 (taux de transition du prêt étudiant, 16,2 % à 10,9 % en somme mobile sur quatre trimestres)](https://goldrushcam.com/sierrasuntimes/index.php/news/local-news/78061-federal-reserve-bank-of-new-york-s-center-for-microeconomic-data-2026-quarter-one-report-on-household-debt-and-credit-finds-household-debt-balances-rise-slightly-as-delinquency-transition-rates-hold-steady)
