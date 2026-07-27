@@ -82,5 +82,11 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(supportCard, /href="\/soutenir\/"/);
   assert.doesNotMatch(footer, /\/soutenir\//);
   assert.doesNotMatch(privacy, /\/soutenir\//);
+  assert.match(privacy, /https:\/\/watch\.l0g\.fr\/confidentialite/);
+  assert.match(privacy, /Cette notice couvre le site éditorial l0g\.fr/);
+  assert.doesNotMatch(
+    privacy,
+    />l0g ne dépose aucun cookie/,
+  );
   assert.doesNotMatch(astroConfig, /page !== 'https:\/\/l0g\.fr\/soutenir\/'/);
 });
