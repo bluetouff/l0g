@@ -8,6 +8,7 @@ import CspMeta from '../components/CspMeta.astro';
 import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../config/entities.ts';
 import { buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
+import pagefindInitUrl from '../scripts/pagefind-init.js?url';
 
 type AlternateLink = { hreflang: string; href: string };
 
@@ -206,7 +207,7 @@ const siteJsonLd = {
     <SiteFooter path={path} year={year} />
 
     {path.startsWith('/recherche') && (
-      <script src="/pagefind-init.js" defer is:inline></script>
+      <script src={pagefindInitUrl} defer is:inline></script>
     )}
 
     <script>

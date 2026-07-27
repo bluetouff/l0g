@@ -87,12 +87,12 @@ for (const file of builtScriptFiles) {
     fail(`${relative(ROOT, file)}: sink DOM incompatible avec Trusted Types strict`);
   }
 }
-const pagefindInit = await readFile(join(ROOT, 'public/pagefind-init.js'), 'utf8');
+const pagefindInit = await readFile(join(ROOT, 'src/scripts/pagefind-init.js'), 'utf8');
 if (/(?:\.innerHTML\s*=|\.outerHTML\s*=|insertAdjacentHTML\s*\(|document\.write\s*\(|new\s+DOMParser\s*\(\)\.parseFromString\s*\()/i.test(pagefindInit)) {
-  fail('public/pagefind-init.js: sink DOM incompatible avec Trusted Types strict');
+  fail('src/scripts/pagefind-init.js: sink DOM incompatible avec Trusted Types strict');
 }
 if (!/pagefind\.options\(\{\s*noWorker:\s*true\s*\}\)/.test(pagefindInit)) {
-  fail('public/pagefind-init.js: Pagefind doit désactiver Worker(url), sink TrustedScriptURL');
+  fail('src/scripts/pagefind-init.js: Pagefind doit désactiver Worker(url), sink TrustedScriptURL');
 }
 
 const apacheConfig = await readFile(join(ROOT, 'deploy/l0g.fr.apache.conf'), 'utf8');

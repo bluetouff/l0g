@@ -70,7 +70,7 @@ for (const file of htmlFiles) {
   assert(/<meta name="description" content="[^"]+">/.test(html), `${name}: meta description absente`);
   assert(/<link rel="canonical" href="https:\/\/l0g\.fr\/[^"]*">/.test(html), `${name}: canonical absente ou invalide`);
   assert((html.match(/<h1(?:\s|>)/g) || []).length === 1, `${name}: exactement un h1 attendu`);
-  if (html.includes('/pagefind-init.js')) {
+  if (html.includes('/_astro/pagefind-init.')) {
     assert(name === 'recherche/index.html', `${name}: Pagefind chargé hors de la page de recherche`);
   }
 
@@ -155,7 +155,7 @@ assert(homeGzip.length <= 16_000, `index.html gzip dépasse 16 Ko (${homeGzip.le
 assert(maxInline <= 2_000, `index.html contient un script inline de ${maxInline} octets`);
 assert(!homeText.includes('modelContext.registerTool'), 'WebMCP est de nouveau injecté inline dans index.html');
 assert(/<script type="module" src="\/_astro\/WebMCPTools\.[^"]+\.js"><\/script>/.test(homeText), 'module WebMCP externe absent');
-assert(!homeText.includes('/pagefind-init.js'), 'Pagefind ne doit pas être chargé sur la home');
+assert(!homeText.includes('/_astro/pagefind-init.'), 'Pagefind ne doit pas être chargé sur la home');
 assert(!homeText.includes('source en attente'), 'la home contient encore un placeholder de risque');
 for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
   const tile = homeText.match(new RegExp(`<a[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</a>`))?.[1] ?? '';
@@ -170,7 +170,8 @@ assert(glossary.length <= 300_000, `glossaire/index.html dépasse 300 Ko (${glos
 assert(glossaryGzip.length <= 60_000, `glossaire/index.html gzip dépasse 60 Ko (${glossaryGzip.length} octets)`);
 
 const search = await readFile(new URL('recherche/index.html', rootUrl), 'utf8');
-assert(search.includes('/pagefind-init.js'), 'Pagefind absent de /recherche/');
+assert(/<script src="\/_astro\/pagefind-init\.[^"]+\.js" defer><\/script>/.test(search), 'asset Pagefind versionné absent de /recherche/');
+assert(!search.includes('/pagefind-init.js'), 'initialiseur Pagefind non versionné encore chargé sur /recherche/');
 assert(!search.includes('/pagefind/pagefind-ui.js'), 'UI Pagefind à sinks DOM encore chargée sur /recherche/');
 assert(/<meta name="robots" content="noindex,follow">/.test(search), '/recherche/ doit être noindex,follow');
 
@@ -180,7 +181,7 @@ assert(notFound.includes('action="/recherche/"'), '/404.html: moteur de recherch
 for (const href of ['/', '/sujets/', '/guides/']) {
   assert(notFound.includes(`href="${href}"`), `/404.html: lien de sortie absent ${href}`);
 }
-assert(!notFound.includes('/pagefind-init.js'), '/404.html ne doit pas charger Pagefind');
+assert(!notFound.includes('/_astro/pagefind-init.'), '/404.html ne doit pas charger Pagefind');
 
 const indexablePages = [...pages.values()].filter((page) => !page.robots.includes('noindex'));
 const titles = new Map();

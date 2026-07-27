@@ -1,4 +1,4 @@
-/* Recherche Pagefind locale rendue uniquement avec les API DOM sûres.
+/* Recherche Pagefind locale, versionnée par le build et rendue avec les API DOM sûres.
    Aucun innerHTML ni parseur HTML : compatible avec Trusted Types en mode strict. */
 (function () {
   'use strict';
