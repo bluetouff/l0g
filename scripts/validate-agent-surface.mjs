@@ -19,6 +19,7 @@ function walk(value, visit, path = []) {
 
 const openapi = readJson('dist/openapi.json');
 const catalog = readJson('dist/api/v1/catalog.json');
+const recentArticles = readJson('dist/api/v1/articles/recent.json');
 const claims = readJson('dist/api/v1/claims.json');
 const searchIndex = readJson('dist/api/v1/search-index.json');
 const sources = readJson('dist/api/v1/sources.json');
@@ -69,6 +70,7 @@ function validateOpenapiArtifacts() {
   const artifacts = [
     ['AgentManifest', 'dist/agents.json'],
     ['Catalog', 'dist/api/v1/catalog.json'],
+    ['RecentArticleFeed', 'dist/api/v1/articles/recent.json'],
     ['SearchIndexSurface', 'dist/api/v1/search-index.json'],
     ['AgentBenchSurface', 'dist/api/v1/agent-bench.json'],
     ['ClaimsSurface', 'dist/api/v1/claims.json'],
@@ -151,6 +153,34 @@ assert([...canonicalReviewsByArticle.values()].every((count) => count <= 3), 'pl
 
 assert(catalog.counts?.articlesByLanguage?.fr > 0 && catalog.counts?.articlesByLanguage?.en > 0, 'catalogue articles non bilingue');
 assert(catalog.counts?.guidesByLanguage?.fr > 0 && catalog.counts?.guidesByLanguage?.en > 0, 'catalogue guides non bilingue');
+assert(recentArticles.policy?.targetArticles === 256, 'fenêtre récente cible invalide');
+assert(recentArticles.policy?.maxArticles === 512, 'plafond du flux récent invalide');
+assert(recentArticles.counts?.returnedArticles === recentArticles.articles?.length, 'compteur du flux récent incohérent');
+assert(recentArticles.articles?.length <= 512, 'flux récent non borné');
+assert((recentArticles.articles || []).every((article) => article.language === 'fr'), 'flux récent non français');
+assert(
+  (recentArticles.articles || []).every((article, index, entries) =>
+    index === 0 || entries[index - 1].date >= article.date
+  ),
+  'flux récent non trié par date décroissante',
+);
+assert(
+  recentArticles.oldestIncludedDate === (recentArticles.articles.at(-1)?.date ?? null),
+  'date limite du flux récent incohérente',
+);
+if (recentArticles.oldestIncludedDate) {
+  const expectedAtCutoff = catalog.articles.filter(
+    (article) => article.language === 'fr' && article.date === recentArticles.oldestIncludedDate,
+  ).length;
+  const returnedAtCutoff = recentArticles.articles.filter(
+    (article) => article.date === recentArticles.oldestIncludedDate,
+  ).length;
+  assert(returnedAtCutoff === expectedAtCutoff, 'la journée limite du flux récent est incomplète');
+}
+assert(
+  Buffer.byteLength(JSON.stringify(recentArticles), 'utf8') < 750_000,
+  'flux récent trop volumineux pour une veille légère',
+);
 assert(searchIndex.counts?.byLanguage?.en > 0, 'index de recherche sans documents anglais');
 assert(searchIndex.documents?.some((document) => document.language === 'en' && document.type === 'article' && document.text.length > 500), 'index partagé sans corps d’article anglais');
 

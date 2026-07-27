@@ -8,6 +8,11 @@ import { primaryInstitutions, primarySourcesUpdatedIso } from '../config/primary
 import { postMatchesTopic, topics } from '../config/topics.ts';
 import { buildArticleEvidence } from './article-evidence.ts';
 import {
+  RECENT_ARTICLE_MAX,
+  RECENT_ARTICLE_TARGET,
+  selectRecentArticles,
+} from './recent-article-feed.mjs';
+import {
   buildSignalHistoryCsv,
   buildSignalHistoryNdjsonRows,
   buildSignalHistorySurface,
@@ -479,6 +484,7 @@ export function buildOpenApiContract() {
       '/agents.json': openApiEndpoint('Manifeste agent', 'Découverte des capacités, endpoints, règles d’usage et politiques de preuve.', 'AgentManifest'),
       '/api/v1/catalog.json': openApiEndpoint('Catalogue complet', 'Articles, guides, méthodologies, glossaire, sources primaires et protocole éditorial.', 'Catalog'),
       '/api/v1/catalog.ndjson': openApiNdjsonEndpoint('Catalogue NDJSON', 'Catalogue en lignes NDJSON : articles, guides, méthodologies, glossaire, sources primaires et protocole.'),
+      '/api/v1/articles/recent.json': openApiEndpoint('Publications récentes', 'Fenêtre bornée des articles français récents, destinée aux veilles incrémentales sans relecture du catalogue complet.', 'RecentArticleFeed'),
       '/api/v1/search-index.json': openApiEndpoint('Index de recherche partagé', 'Index bilingue canonique consommé par Agent Surface, MCP serveur et WebMCP.', 'SearchIndexSurface'),
       '/api/v1/agent-bench.json': openApiEndpoint('l0g Agent Bench', 'Résultats déterministes FR/EN de recherche, preuve, parité, asOf, refus, fraîcheur et classification.', 'AgentBenchSurface'),
       '/api/v1/claims.json': openApiEndpoint('Graphe affirmation-source', 'Affirmations typées reliées à des références cliquables, datées quand détectable.', 'ClaimsSurface'),
@@ -951,6 +957,7 @@ export function buildOpenApiContract() {
             'openapi',
             'catalog',
             'catalogNdjson',
+            'recentArticles',
             'searchIndex',
             'agentBench',
             'claims',
@@ -987,6 +994,7 @@ export function buildOpenApiContract() {
             'openapi',
             'catalog',
             'catalogNdjson',
+            'recentArticles',
             'searchIndex',
             'agentBench',
             'claims',
@@ -1215,6 +1223,61 @@ export function buildOpenApiContract() {
             primarySources: { type: 'array', items: { $ref: '#/components/schemas/PrimarySource' } },
             editorial: { $ref: '#/components/schemas/CatalogEditorial' },
             riskBandScaleCaveat: { $ref: '#/components/schemas/RiskBandScaleCaveat' },
+          },
+        },
+        RecentArticleFeedItem: {
+          type: 'object',
+          required: ['canonicalId', 'language', 'slug', 'url', 'title', 'date', 'description', 'topics'],
+          additionalProperties: false,
+          properties: {
+            canonicalId: { type: 'string' },
+            language: { const: 'fr' },
+            slug: { type: 'string' },
+            url: { type: 'string', format: 'uri' },
+            title: { type: 'string' },
+            date: { type: 'string', format: 'date' },
+            description: { type: 'string' },
+            topics: { type: 'array', uniqueItems: true, items: { type: 'string' } },
+          },
+        },
+        RecentArticleFeed: {
+          type: 'object',
+          required: ['schema', 'version', 'generated', 'policy', 'counts', 'oldestIncludedDate', 'articles', 'license', 'attribution'],
+          additionalProperties: false,
+          properties: {
+            schema: { type: 'string', format: 'uri' },
+            version: { type: 'string' },
+            generated: { type: 'string', format: 'date-time' },
+            policy: {
+              type: 'object',
+              required: ['scope', 'ordering', 'targetArticles', 'maxArticles', 'cutoffRule'],
+              additionalProperties: false,
+              properties: {
+                scope: { const: 'articles-fr' },
+                ordering: { const: 'publication-descending' },
+                targetArticles: { const: RECENT_ARTICLE_TARGET },
+                maxArticles: { const: RECENT_ARTICLE_MAX },
+                cutoffRule: { const: 'include-complete-cutoff-day' },
+              },
+            },
+            counts: {
+              type: 'object',
+              required: ['totalArticles', 'returnedArticles', 'hasOlderArticles'],
+              additionalProperties: false,
+              properties: {
+                totalArticles: { type: 'integer', minimum: 0 },
+                returnedArticles: { type: 'integer', minimum: 0, maximum: RECENT_ARTICLE_MAX },
+                hasOlderArticles: { type: 'boolean' },
+              },
+            },
+            oldestIncludedDate: { type: ['string', 'null'], format: 'date' },
+            articles: {
+              type: 'array',
+              maxItems: RECENT_ARTICLE_MAX,
+              items: { $ref: '#/components/schemas/RecentArticleFeedItem' },
+            },
+            license: { const: 'CC BY 4.0' },
+            attribution: { const: 'l0g.fr' },
           },
         },
         SearchIndexDocument: {
@@ -3447,6 +3510,53 @@ export function buildCatalogSurface(posts: PostEntry[], guides: GuideEntry[]) {
   };
 }
 
+export function buildRecentArticleFeed(posts: PostEntry[]) {
+  const articles = sortPosts(
+    posts.filter(
+      (entry): entry is CollectionEntry<'posts'> =>
+      entry.collection === 'posts',
+    ),
+  );
+  const records = articles.map((article) => ({
+    canonicalId: canonicalId(article, 'article'),
+    language: 'fr' as const,
+    slug: article.id,
+    url: postUrl(article),
+    title: article.data.title,
+    date: isoDate(article.data.pubDate),
+    description: article.data.description,
+    topics: topics
+      .filter((topic) =>
+        postMatchesTopic(article.data.tags ?? [], topic),
+      )
+      .map((topic) => topic.slug),
+  }));
+  const selected = selectRecentArticles(records);
+
+  return {
+    schema: `${OPENAPI_SCHEMA_BASE}/RecentArticleFeed`,
+    version: AGENT_VERSION,
+    generated: generatedAt(),
+    policy: {
+      scope: 'articles-fr',
+      ordering: 'publication-descending',
+      targetArticles: RECENT_ARTICLE_TARGET,
+      maxArticles: RECENT_ARTICLE_MAX,
+      cutoffRule: 'include-complete-cutoff-day',
+    },
+    counts: {
+      totalArticles: articles.length,
+      returnedArticles: selected.length,
+      hasOlderArticles: selected.length < articles.length,
+    },
+    oldestIncludedDate:
+      selected.length > 0 ? selected.at(-1)?.date ?? null : null,
+    articles: selected,
+    license: 'CC BY 4.0',
+    attribution: 'l0g.fr',
+  };
+}
+
 export function buildSearchIndexSurface(posts: PostEntry[], guides: GuideEntry[]) {
   const catalog = buildCatalogSurface(posts, guides);
   const postByKey = new Map(posts.map((entry) => [`${contentLanguage(entry)}:${entry.id}`, entry]));
@@ -3984,6 +4094,7 @@ export function buildFreshnessSurface(posts: PostEntry[], guides: GuideEntry[], 
       { path: '/openapi.json', role: 'Contrat OpenAPI public', update: 'à chaque build' },
       { path: '/api/v1/catalog.json', role: 'Catalogue machine complet', update: 'à chaque build' },
       { path: '/api/v1/catalog.ndjson', role: 'Catalogue machine en NDJSON', update: 'à chaque build' },
+      { path: '/api/v1/articles/recent.json', role: 'Fenêtre bornée des publications françaises récentes', update: 'à chaque build' },
       { path: '/api/v1/search-index.json', role: 'Index de recherche bilingue partagé', update: 'à chaque build' },
       { path: '/api/v1/agent-bench.json', role: 'Benchmark déterministe FR/EN de l’Agent Surface et du MCP', update: 'à chaque build publié' },
       { path: '/api/v1/claims.json', role: 'Graphe affirmation-source', update: 'à chaque build' },
@@ -4061,6 +4172,7 @@ export function buildAgentManifest(posts: PostEntry[], guides: GuideEntry[]) {
       openapi: `${AGENT_SITE}/openapi.json`,
       catalog: `${AGENT_SITE}/api/v1/catalog.json`,
       catalogNdjson: `${AGENT_SITE}/api/v1/catalog.ndjson`,
+      recentArticles: `${AGENT_SITE}/api/v1/articles/recent.json`,
       searchIndex: `${AGENT_SITE}/api/v1/search-index.json`,
       agentBench: `${AGENT_SITE}/api/v1/agent-bench.json`,
       claims: `${AGENT_SITE}/api/v1/claims.json`,
@@ -4364,6 +4476,12 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       role: 'Catalogue machine en NDJSON',
       mediaType: 'application/x-ndjson',
       body: toNdjson(buildCatalogNdjsonRows(posts, guides)),
+    },
+    {
+      path: '/api/v1/articles/recent.json',
+      role: 'Fenêtre bornée des publications françaises récentes',
+      mediaType: 'application/json',
+      payload: buildRecentArticleFeed(posts),
     },
     {
       path: '/api/v1/search-index.json',
