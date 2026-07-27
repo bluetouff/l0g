@@ -1,0 +1,70 @@
+---
+title: "How to Read a Consumer Credit Securitisation (Auto, Card, BNPL ABS)"
+description: "A reference guide to consumer credit ABS: how a pool of auto loans, card balances or instalment payments becomes a rated bond, the tranche waterfall, the four credit-enhancement cushions (subordination, overcollateralization, excess spread, reserve account), reading the pool (FICO, expected cumulative loss, concentration), the early-amortisation triggers, and what separates these ABS from the CDOs that blew up in 2008. With the 2026 market as the worked example."
+summary: "A consumer credit ABS turns thousands of small loans (auto, cards, BNPL) into bonds sold in tranches. Reading it means looking at three things: the underlying pool, the thickness of the credit enhancement protecting the senior tranches, and the triggers that redirect cash flows under stress. A AAA rating does not say the pool is safe, it says it is protected by everything beneath it. This guide gives the grid, and recalls why these ABS are not the CDOs of 2008."
+pubDate: 2026-07-27T23:25:00+02:00
+updatedDate: 2026-07-27T23:25:00+02:00
+sourceGuide: "lire-une-titrisation-de-credit-a-la-consommation"
+sourceUpdatedDate: 2026-07-27T23:25:00+02:00
+tags: ["markets", "credit", "securitisation"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*An auto loan, a card balance, a pay-in-four: taken alone, each is a tiny bet on a household. Pooled by the thousand in a dedicated vehicle, they become a rated bond, bought by funds worldwide. This is consumer credit securitisation, the vehicle through which the borrower's risk leaves the lender's balance sheet and disperses, as we tracked in our analysis of the risk's journey, [from the credit card to the annuity](/en/analysis/from-the-credit-card-to-the-annuity/). Knowing how to read that ABS means answering three questions: what is in the pool, who absorbs losses first, and what triggers when things go wrong. This guide runs through the grid, with the 2026 market as the backdrop.*
+
+## What a consumer ABS is
+
+An ABS, for asset-backed security, is a security backed by a pool of non-mortgage receivables: auto loans, credit card balances, point-of-sale loans and instalment payments (BNPL). The mechanism is always the same. An originator transfers its receivables to a trust bankruptcy-remote from itself; that trust issues bonds whose cash flows, the borrowers' interest and principal, pay the investors. The difference from a [CLO, which our guide details](/en/guides/read-clos-and-leveraged-loans/), lies in the collateral: the CLO is backed by corporate loans, the consumer ABS by household credit, smaller, more numerous and more granular.
+
+The market is huge and growing. US ABS outstanding is around [$1.6 trillion, and 2026 issuance is expected near $385 billion, a post-financial-crisis record](https://coinlaw.io/asset-backed-securities-industry-statistics/), with autos in the lead at more than a third of volumes. That is the scale of the channel through which consumer credit refinances itself.
+
+## The waterfall and the four cushions
+
+The heart of an ABS is its protection structure, and that is where its soundness is read. The bonds issued are cut into ranked tranches, from the senior AAA to the equity tranche. Losses climb from the bottom up: the equity takes them first, the senior last. But before even the first tranche suffers, four cushions of credit enhancement absorb defaults, and they must be read in the order they are consumed.
+
+The first is excess spread, the gap between the interest collected on the pool, often high in subprime, and the interest paid to noteholders. This surplus mops up current losses month after month, without touching principal. The second is the reserve account, a cash cushion set up by the originator and refilled by excess spread. The third is overcollateralization: the pool of receivables is worth more than the bonds issued, and that excess collateral absorbs losses before the tranches. The fourth, finally, is subordination itself, the hierarchy where junior tranches protect senior ones. Reading an ABS means measuring the total thickness of these four cushions, because it is that, not the quality of the pool, that justifies the senior tranche's AAA rating.
+
+## Reading the pool
+
+Then comes the examination of the collateral, where the real risk lies. A few metrics place a pool. The average credit score first: a prime pool shows a high FICO, a [subprime pool runs around 550 or lower](https://www.autoremarketing.com/subprime/3-subprime-abs-pool-elements-pushing-losses-near-recessionary-peaks). Expected cumulative loss next, the most telling indicator: it measures the share of the pool the issuer expects to lose over the life of the deal, net of recoveries, and it can exceed 20% in a subprime auto pool against a few points in prime. Add loan maturity, seasoning, loan-to-value and concentration, geographic or by borrower. A single product, the auto ABS, thus covers two worlds that everything separates.
+
+<InfographicBars
+  title="Prime versus subprime: the same product, two worlds"
+  subtitle="Delinquencies of securitised auto loans, in percent."
+  max={16}
+  items={[
+    { label: "Prime, more than 30 days past due", value: 1.9, valueLabel: "1.9%", tone: "signal" },
+    { label: "Subprime, more than 60 days past due", value: 6.9, valueLabel: "6.9%", tone: "amber" },
+    { label: "Subprime, more than 30 days past due", value: 16, valueLabel: "16%", tone: "accent" },
+  ]}
+  note="For the same product, pool quality changes everything: subprime loses an order of magnitude more than prime."
+  source="Sources: IMF US ABS Monitor, Auto Remarketing, 2025-2026 data."
+  caption="The word ABS says nothing on its own: a prime pool and a subprime pool show delinquencies separated by close to a factor of ten. A subprime auto pool's expected cumulative loss can exceed 20%, against a few points in prime. Reading the pool always precedes reading the rating."
+/>
+
+## Triggers and early amortisation
+
+An ABS is not a frozen structure: it carries circuit breakers. These are the performance triggers, thresholds on delinquencies or cumulative losses that, if breached, alter the waterfall mid-course. Concretely, a tripped trigger redirects cash flows to pay down the senior tranches faster, cuts payments to the lower tranches, or forces an early amortisation that winds down the structure ahead of term. These mechanisms protect the senior investor at the junior's expense at the very moment the pool deteriorates. Reading them means understanding that the AAA tranche's protection is not only static, in the thickness of the cushions, but dynamic, in these circuits that reconfigure under stress.
+
+## What an ABS is not: the CDO of 2008
+
+Here is the misconception to avoid at all costs, because it conditions any risk judgement. These securitisations are readily conflated with the instruments that blew up the system in 2008. That is wrong, and the distinction is structural. The CDO that exploded then was not backed by loans, but by tranches of other securitisations, most often subordinated tranches of mortgage credit, a securitisation of securitisations. When house prices fell everywhere at once, correlation wiped out all the tranches at the same time, including the highest. A consumer ABS is of another nature: it is backed directly by thousands of small loans, granular and weakly correlated with each other, short-dated, amortising fast and offering real recoveries, repossessing the car for instance. That is why auto and card ABS came through 2008 without the mortgage CDOs' catastrophe. Confusing the two is getting the wrong crisis.
+
+## Reading pitfalls
+
+A few reflexes avoid the classic errors. The first is never to confuse the rating with the pool: a AAA does not mean the collateral is sound, but that the tranche is protected by everything beneath it; a mediocre pool can carry a very thick AAA tranche. The second is to watch excess spread, the first cushion consumed, which thins as funding cost rises: an ABS comfortable at low rates can tighten at high rates. The third is to doubt recoveries, which assume a liquid used-car market; in a recession, resale value collapses just as defaults climb. The fourth is valuation when these assets sit in private credit funds, where they are marked to model rather than to market, which we dug into in our analysis of [one asset, two prices](/en/analysis/private-credit-one-asset-two-prices/). The fifth, finally, is not to read an issuance record as a stress signal: the market can set volume records while pool quality erodes from the bottom.
+
+## Reading a consumer ABS in practice
+
+The method fits in a few moves. Start with the pool, never with the rating: average score, expected cumulative loss, maturity, concentration. Then measure the thickness of the enhancement, the four cushions stacked beneath the tranche you are looking at, because that is the true measure of its protection. Spot the triggers, those circuit breakers that will redirect cash flows on deterioration. Place the pool in the cycle by crossing it with the [household delinquencies tracked by the New York Fed](/en/guides/read-the-ny-fed-household-debt-report/), which give the collateral's macro context. And remember the founding distinction: a consumer ABS disperses a granular, amortising risk, it does not stack correlated tranches the way the 2008 CDO did. The rating is read only last, once one has understood what it protects and against what.
+
+---
+
+### Sources
+
+- [Coinlaw, "Asset-Backed Securities in 2026: A $1.6 Trillion Market" (ABS outstanding ~$1.6tn, 2026 issuance ~$385bn, autos in the lead)](https://coinlaw.io/asset-backed-securities-industry-statistics/)
+- [Auto Remarketing, "3 subprime ABS pool elements pushing losses to near recessionary peaks" (subprime FICO ~550 or lower, expected cumulative loss 20%+)](https://www.autoremarketing.com/subprime/3-subprime-abs-pool-elements-pushing-losses-near-recessionary-peaks)
+- [IMF, "US Asset-Backed Securities Monitor", October 2025 (prime auto delinquencies ~1.9%, subprime ~16%)](https://www.imfconnect.org/content/dam/imf/News%20and%20Generic%20Content/GMM/Special%20Features/GMM%20US%20ABS%20Monitor%20October%202025%20.pdf)
+- [NAIC, "Auto Asset-Backed Securities Primer" (trust structure, subordination, overcollateralization, excess spread, reserve account)](https://content.naic.org/sites/default/files/capital-markets-primer-auto-abs.pdf)

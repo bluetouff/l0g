@@ -1,0 +1,68 @@
+---
+title: "Lire une titrisation de crédit à la consommation (ABS auto, cartes, BNPL)"
+description: "Guide de référence sur les ABS de crédit à la consommation : comment un panier de prêts auto, de soldes de cartes ou de paiements fractionnés devient une obligation notée, la cascade des tranches, les quatre coussins de rehaussement de crédit (subordination, surdimensionnement, excess spread, compte de réserve), la lecture du pool (FICO, perte cumulée attendue, concentration), les triggers d'amortissement anticipé, et ce qui sépare ces ABS des CDO qui ont sauté en 2008. Avec le marché 2026 comme cas d'école."
+summary: "Un ABS de crédit à la consommation transforme des milliers de petits prêts (auto, cartes, BNPL) en obligations vendues par tranches. Le lire suppose de regarder trois choses : le pool sous-jacent, l'épaisseur du rehaussement de crédit qui protège les tranches senior, et les triggers qui redirigent les flux en cas de stress. Une note AAA ne dit pas que le pool est sûr, elle dit qu'il est protégé par tout ce qui se trouve en dessous. Ce guide donne la grille, et rappelle pourquoi ces ABS ne sont pas les CDO de 2008."
+pubDate: 2026-07-27T23:25:00+02:00
+updatedDate: 2026-07-27T23:25:00+02:00
+tags: ["marches", "crédit", "titrisation"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Un crédit auto, un solde de carte, un paiement en quatre fois : pris isolément, chacun est un pari minuscule sur un ménage. Regroupés par milliers dans un véhicule dédié, ils deviennent une obligation notée, achetée par des fonds du monde entier. C'est la titrisation du crédit à la consommation, le véhicule par lequel le risque de l'emprunteur quitte le bilan du prêteur pour se disperser, comme nous l'avons suivi dans notre analyse du voyage du risque, [de la carte à la rente](/posts/de-la-carte-a-la-rente-qui-detient-risque-consommateur/). Savoir lire cet ABS, c'est savoir répondre à trois questions : que contient le pool, qui absorbe les pertes en premier, et qu'est-ce qui se déclenche quand ça tourne mal. Ce guide déroule la grille, avec le marché de 2026 en toile de fond.*
+
+## Ce qu'est un ABS de consommation
+
+Un [ABS](/glossaire/#abs), pour asset-backed security, est un titre adossé à un panier de créances non immobilières : prêts automobiles, soldes de cartes de crédit, prêts au point de vente et paiements fractionnés (BNPL). Le mécanisme est toujours le même. Un originateur cède ses créances à un trust isolé de sa propre faillite ; ce trust émet des obligations dont les flux, intérêts et remboursements des emprunteurs, servent à payer les investisseurs. La différence avec un [CLO, que détaille notre guide](/guides/lire-les-clo-et-prets-a-effet-de-levier/), tient au collatéral : le CLO est adossé à des prêts d'entreprises, l'ABS de consommation à des crédits de ménages, plus petits, plus nombreux et plus granulaires.
+
+Le marché est massif et en croissance. L'encours des ABS américains avoisine [1 600 milliards de dollars, et l'émission 2026 est attendue autour de 385 milliards, un record depuis la crise financière](https://coinlaw.io/asset-backed-securities-industry-statistics/), l'automobile en tête avec plus du tiers des volumes. C'est dire l'ampleur du canal par lequel le crédit à la consommation se refinance.
+
+## La cascade et les quatre coussins
+
+Le cœur d'un ABS est sa structure de protection, et c'est là que se lit sa solidité. Les obligations émises sont découpées en [tranches](/glossaire/#tranche) hiérarchisées, de la senior notée AAA à la tranche equity. Les pertes remontent du bas vers le haut : l'equity encaisse d'abord, la senior en dernier. Mais avant même que la première tranche ne souffre, quatre coussins de [rehaussement de crédit](/glossaire/#rehaussement-de-credit) absorbent les défauts, et il faut savoir les lire dans l'ordre où ils se consument.
+
+Le premier est l'[excess spread](/glossaire/#excess-spread), l'écart entre les intérêts encaissés sur le pool, souvent élevés en subprime, et les intérêts versés aux porteurs. Cet excédent éponge les pertes courantes mois après mois, sans toucher au capital. Le deuxième est le compte de réserve, un matelas de liquidités constitué par l'originateur et rechargé par l'excess spread. Le troisième est le [surdimensionnement](/glossaire/#surdimensionnement) : le pool de créances vaut plus que les obligations émises, et cet excédent de collatéral absorbe les pertes avant les tranches. Le quatrième, enfin, est la subordination elle-même, cette hiérarchie où les tranches juniors protègent les seniors. Lire un ABS, c'est mesurer l'épaisseur totale de ces quatre coussins, car c'est elle, et non la qualité du pool, qui justifie la note AAA de la tranche senior.
+
+## Lire le pool
+
+Vient ensuite l'examen du collatéral, où se joue le vrai risque. Quelques métriques suffisent à situer un pool. Le score de crédit moyen d'abord : un pool prime affiche un FICO élevé, un [pool subprime tourne autour de 550 ou moins](https://www.autoremarketing.com/subprime/3-subprime-abs-pool-elements-pushing-losses-near-recessionary-peaks). La perte cumulée attendue ensuite, l'indicateur le plus parlant : elle mesure la part du pool que l'émetteur anticipe de perdre sur la durée de vie de l'opération, nette des recouvrements, et elle peut dépasser 20 % dans un pool subprime automobile contre quelques points en prime. S'y ajoutent la maturité des prêts, leur ancienneté, le ratio prêt sur valeur et la concentration, géographique ou par emprunteur. Un même produit, l'ABS auto, recouvre ainsi deux mondes que tout sépare.
+
+<InfographicBars
+  title="Prime contre subprime : le même produit, deux mondes"
+  subtitle="Impayés des prêts auto titrisés, en pourcentage."
+  max={16}
+  items={[
+    { label: "Prime, retard de plus de 30 jours", value: 1.9, valueLabel: "1,9 %", tone: "signal" },
+    { label: "Subprime, retard de plus de 60 jours", value: 6.9, valueLabel: "6,9 %", tone: "amber" },
+    { label: "Subprime, retard de plus de 30 jours", value: 16, valueLabel: "16 %", tone: "accent" },
+  ]}
+  note="À produit égal, la qualité du pool change tout : le subprime perd un ordre de grandeur de plus que le prime."
+  source="Sources : IMF US ABS Monitor, Auto Remarketing, données 2025-2026."
+  caption="Le mot ABS ne dit rien à lui seul : un pool prime et un pool subprime affichent des impayés séparés par un facteur proche de dix. La perte cumulée attendue d'un pool subprime auto peut dépasser 20 %, contre quelques points en prime. Lire le pool précède toujours la lecture de la note."
+/>
+
+## Les triggers et l'amortissement anticipé
+
+Un ABS n'est pas une structure figée : il embarque des disjoncteurs. Ce sont les triggers de performance, des seuils sur les impayés ou les pertes cumulées qui, s'ils sont franchis, modifient la cascade en cours de route. Concrètement, un trigger déclenché redirige les flux de trésorerie pour rembourser plus vite les tranches senior, coupe les versements aux tranches basses, ou provoque un amortissement anticipé qui liquide la structure avant terme. Ces mécanismes protègent l'investisseur senior au détriment du junior au moment précis où le pool se dégrade. Les lire, c'est comprendre que la protection de la tranche AAA n'est pas seulement statique, dans l'épaisseur des coussins, mais dynamique, dans ces circuits qui se reconfigurent sous stress.
+
+## Ce que l'ABS n'est pas : le CDO de 2008
+
+Voici le contresens à éviter absolument, car il conditionne tout jugement de risque. On assimile volontiers ces titrisations aux instruments qui ont fait sauter le système en 2008. C'est faux, et la distinction est structurelle. Le [CDO](/glossaire/#cdo) qui a explosé alors n'était pas adossé à des prêts, mais à des tranches d'autres titrisations, le plus souvent des tranches subordonnées de crédits immobiliers, une titrisation de titrisations. Quand les prix de l'immobilier ont chuté partout à la fois, la corrélation a laminé toutes les tranches en même temps, y compris les plus hautes. Un ABS de consommation est d'une autre nature : il est adossé directement à des milliers de petits prêts, granulaires et faiblement corrélés entre eux, de courte durée, qui s'amortissent vite et offrent des recouvrements réels, la reprise du véhicule par exemple. C'est pourquoi l'ABS auto et cartes a traversé 2008 sans la catastrophe des CDO immobiliers. Confondre les deux, c'est se tromper de crise.
+
+## Les pièges de lecture
+
+Quelques réflexes évitent les erreurs classiques. Le premier est de ne jamais confondre la note et le pool : un AAA ne signifie pas que le collatéral est sain, mais que la tranche est protégée par tout ce qui se trouve en dessous ; un pool médiocre peut porter une tranche AAA très épaisse. Le deuxième est de surveiller l'excess spread, premier coussin consommé, qui s'amincit quand le coût de financement monte : un ABS confortable à taux bas peut se tendre à taux élevés. Le troisième est de douter des recouvrements, qui supposent un marché de l'occasion liquide ; en récession, la valeur de reprise s'effondre au moment où les défauts montent. Le quatrième est la valorisation quand ces actifs sont logés dans des fonds de crédit privé, où ils sont marqués au modèle plutôt qu'au marché, ce que nous avons creusé dans notre analyse d'[un actif à deux prix](/posts/credit-prive-un-actif-deux-prix/). Le cinquième, enfin, est de ne pas lire un record d'émission comme un signal de stress : le marché peut battre des volumes tout en voyant la qualité des pools se dégrader par le bas.
+
+## Lire un ABS conso en pratique
+
+La méthode tient en quelques gestes. Commencer par le pool, jamais par la note : score moyen, perte cumulée attendue, maturité, concentration. Mesurer ensuite l'épaisseur du rehaussement, les quatre coussins empilés sous la tranche que l'on regarde, car c'est la vraie mesure de sa protection. Repérer les triggers, ces disjoncteurs qui redirigeront les flux en cas de dégradation. Situer le pool dans le cycle en croisant avec les [impayés des ménages suivis par la Fed de New York](/guides/lire-le-rapport-dette-et-credit-des-menages/), qui donnent le contexte macro du collatéral. Et se souvenir de la distinction fondatrice : un ABS de consommation disperse un risque granulaire et amortissable, il n'empile pas des tranches corrélées comme le faisait le CDO de 2008. La note, elle, ne se lit qu'en dernier, une fois compris ce qu'elle protège et contre quoi.
+
+---
+
+### Sources
+
+- [Coinlaw, « Asset-Backed Securities in 2026: A $1.6 Trillion Market » (encours ABS ~1 600 Md$, émission 2026 ~385 Md$, automobile en tête)](https://coinlaw.io/asset-backed-securities-industry-statistics/)
+- [Auto Remarketing, « 3 subprime ABS pool elements pushing losses to near recessionary peaks » (FICO subprime ~550 ou moins, perte cumulée attendue 20 %+)](https://www.autoremarketing.com/subprime/3-subprime-abs-pool-elements-pushing-losses-near-recessionary-peaks)
+- [FMI, « US Asset-Backed Securities Monitor », octobre 2025 (impayés prime auto ~1,9 %, subprime ~16 %)](https://www.imfconnect.org/content/dam/imf/News%20and%20Generic%20Content/GMM/Special%20Features/GMM%20US%20ABS%20Monitor%20October%202025%20.pdf)
+- [NAIC, « Auto Asset-Backed Securities Primer » (structure du trust, subordination, surdimensionnement, excess spread, compte de réserve)](https://content.naic.org/sites/default/files/capital-markets-primer-auto-abs.pdf)
