@@ -270,6 +270,7 @@ const jsonLd = {
     dateModified: dataset.updated?.toISOString(),
     isAccessibleForFree: true,
     license: 'https://creativecommons.org/licenses/by/4.0/',
+    creator: { '@id': `${site}/#org` },
   })),
 };
 const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');

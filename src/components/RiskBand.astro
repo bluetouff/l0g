@@ -1,11 +1,12 @@
 ---
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import riskScriptUrl from '../scripts/risk.js?url';
 
 /**
  * Tableau de bord consolidé de signaux : valeurs reprises des dashboards.
- * Le snapshot courant est injecté dans le HTML au build. /risk.js conserve
- * ensuite un rôle d'actualisation progressive et de signalement des replis.
+ * Le snapshot courant est injecté dans le HTML au build. Le script versionné
+ * conserve ensuite un rôle d'actualisation progressive et de signalement des replis.
  */
 
 type RiskSignal = {
@@ -204,7 +205,7 @@ const aggregateStatus = aggregateDate
   </p>
 </section>
 
-<script src="/risk.js?v=20260630-debt" defer is:inline></script>
+<script src={riskScriptUrl} defer is:inline></script>
 
 <style>
   .risk-band-head {

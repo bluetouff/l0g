@@ -9,6 +9,8 @@ import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../config/ent
 import { buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import pagefindInitUrl from '../scripts/pagefind-init.js?url';
+import interLatinUrl from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import jetBrainsMonoLatinUrl from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
 
 type AlternateLink = { hreflang: string; href: string };
 
@@ -78,6 +80,8 @@ const siteJsonLd = {
     <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={jetBrainsMonoLatinUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <meta name="generator" content={Astro.generator} />
 
     <script>

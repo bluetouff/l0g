@@ -110,6 +110,12 @@ for (const file of htmlFiles) {
         return [];
       }
     });
+  for (const dataset of jsonLd.filter((item) => item['@type'] === 'Dataset')) {
+    assert(
+      dataset.creator?.['@id'] === 'https://l0g.fr/#org',
+      `${name}: creator du Dataset absent ou incohérent`
+    );
+  }
 
   pages.set(canonical, { name, html, title, description, robots, canonical, alternates, jsonLd });
 
@@ -156,6 +162,23 @@ assert(maxInline <= 2_000, `index.html contient un script inline de ${maxInline}
 assert(!homeText.includes('modelContext.registerTool'), 'WebMCP est de nouveau injecté inline dans index.html');
 assert(/<script type="module" src="\/_astro\/WebMCPTools\.[^"]+\.js"><\/script>/.test(homeText), 'module WebMCP externe absent');
 assert(!homeText.includes('/_astro/pagefind-init.'), 'Pagefind ne doit pas être chargé sur la home');
+assert(!homeText.includes('/risk.js'), 'le script risque non versionné est encore chargé sur la home');
+assert(
+  /<script src="\/_astro\/risk\.[^"]+\.js" defer><\/script>/.test(homeText),
+  'asset risque versionné absent de la home'
+);
+const fontPreloads = [...homeText.matchAll(
+  /<link rel="preload" href="(\/_astro\/[^"]+\.woff2)" as="font" type="font\/woff2" crossorigin="anonymous">/g
+)].map((match) => match[1]);
+assert(fontPreloads.length === 2, `home: exactement deux polices critiques doivent être préchargées (${fontPreloads.length})`);
+assert(
+  fontPreloads.some((href) => href.includes('/inter-latin-wght-normal.')),
+  'home: préchargement de la police Inter latin absent'
+);
+assert(
+  fontPreloads.some((href) => href.includes('/jetbrains-mono-latin-wght-normal.')),
+  'home: préchargement de la police JetBrains Mono latin absent'
+);
 assert(!homeText.includes('source en attente'), 'la home contient encore un placeholder de risque');
 for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
   const tile = homeText.match(new RegExp(`<a[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</a>`))?.[1] ?? '';
@@ -278,6 +301,13 @@ const signalSlugs = [
   'thermometre-stress-dette',
 ];
 for (const slug of signalSlugs) {
+  const page = pages.get(`https://l0g.fr/series/${slug}/`);
+  const dataset = page?.jsonLd.find((item) => item['@type'] === 'Dataset');
+  assert(Boolean(dataset), `${slug}: Dataset JSON-LD absent`);
+  assert(
+    dataset?.creator?.['@id'] === 'https://l0g.fr/#org',
+    `${slug}: creator du Dataset absent ou incohérent`
+  );
   const svg = await readFile(join(root, 'api/v1/signals', slug, 'chart.svg'), 'utf8');
   assert(svg.includes('<svg') && svg.includes('width="1200"') && svg.includes('height="630"'), `${slug}: SVG réutilisable invalide`);
   assert(svg.includes(`Source : l0g.fr/series/${slug}/ · CC BY 4.0`), `${slug}: attribution SVG absente`);

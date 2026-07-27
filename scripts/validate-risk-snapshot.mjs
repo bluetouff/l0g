@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 const requiredSignals = ['us', 'eu', 'yen', 'energie', 'debt'];
 const risk = JSON.parse(readFileSync('public/risk.json', 'utf8'));
 const debtSnapshot = JSON.parse(readFileSync('public/debt-latest.json', 'utf8'));
-const riskScript = readFileSync('public/risk.js', 'utf8');
+const riskScript = readFileSync('src/scripts/risk.js', 'utf8');
 
 if (!Array.isArray(risk.indices)) {
   throw new Error('public/risk.json doit exposer un tableau indices.');
@@ -64,7 +64,7 @@ if (!risk.generated || Number.isNaN(Date.parse(risk.generated))) {
 }
 
 if (/\bFALLBACK\b|render\s*\(\s*\{/.test(riskScript)) {
-  throw new Error('public/risk.js ne doit pas embarquer de valeur de fallback pour les signaux.');
+  throw new Error('src/scripts/risk.js ne doit pas embarquer de valeur de fallback pour les signaux.');
 }
 
 const debtProvenance = risk.provenance?.debt;

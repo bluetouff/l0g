@@ -1,5 +1,5 @@
 /* Actualise le bandeau de signaux prérempli au build depuis /risk.json.
-   Servi depuis l'origine du site (self) -> compatible CSP stricte.
+   Servi comme actif versionné depuis l'origine du site -> compatible CSP stricte.
    Aucun appel tiers : le navigateur ne lit qu'un fichier local de l0g.fr. */
 (function () {
   var TONE = {
