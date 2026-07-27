@@ -23,17 +23,14 @@ The clearest signal comes from auto credit, that mass market touching nearly eve
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The auto canary</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Subprime auto borrowers more than 60 days past due, in percent.</text>
   <line x1="70" y1="240" x2="680" y2="240" stroke="#2a2c33" stroke-width="1"/>
-  <text x="60" y="150" fill="#8b909b" font-size="11" text-anchor="end">historical</text>
-  <text x="60" y="163" fill="#8b909b" font-size="11" text-anchor="end">average</text>
-  <line x1="70" y1="176" x2="680" y2="176" stroke="#8b909b" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <text x="686" y="180" fill="#8b909b" font-size="12">≈ 3.5%</text>
-  <rect x="430" y="96" width="120" height="144" fill="#ff4d87"/>
-  <text x="490" y="88" fill="#ff4d87" font-size="20" font-weight="700" text-anchor="middle">6.9%</text>
-  <text x="490" y="258" fill="#d6d9df" font-size="12" text-anchor="middle">January 2026</text>
-  <text x="150" y="230" fill="#5eead4" font-size="12" text-anchor="middle">normal level</text>
-  <rect x="120" y="200" width="60" height="40" fill="#2a2c33"/>
-  <text x="60" y="292" fill="#d6d9df" font-size="12">The highest since the 1990s, nearly double the long-run average.</text>
-  <text x="60" y="312" fill="#8b909b" font-size="10">Source: Bridgeforce, January 2026 data; Federal Reserve Bank of New York. Average benchmark indicative.</text>
+  <rect x="170" y="167" width="130" height="73" fill="#8b909b"/>
+  <text x="235" y="159" fill="#8b909b" font-size="13" font-weight="700" text-anchor="middle">≈ 3.5%</text>
+  <text x="235" y="262" fill="#8b909b" font-size="12" text-anchor="middle">historical average</text>
+  <rect x="430" y="96" width="130" height="144" fill="#ff4d87"/>
+  <text x="495" y="88" fill="#ff4d87" font-size="20" font-weight="700" text-anchor="middle">6.9%</text>
+  <text x="495" y="262" fill="#d6d9df" font-size="12" text-anchor="middle">January 2026</text>
+  <text x="60" y="290" fill="#d6d9df" font-size="12">The highest since the 1990s, nearly double the long-run average.</text>
+  <text x="60" y="310" fill="#8b909b" font-size="10">Source: Bridgeforce, January 2026 data; Federal Reserve Bank of New York. Benchmark indicative.</text>
 </svg>
 <figcaption>Auto credit speaks first because it is the last thing people stop repaying: losing the car often means losing the job. A 6.9% subprime delinquency is not an accident, it is a symptom.</figcaption>
 </figure>

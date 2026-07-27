@@ -21,17 +21,14 @@ Le signal le plus net vient du crédit automobile, ce marché de masse qui touch
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le canari automobile</text>
   <text x="32" y="59" fill="#8b909b" font-size="12">Emprunteurs auto subprime en retard de plus de 60 jours, en pourcentage.</text>
   <line x1="70" y1="240" x2="680" y2="240" stroke="#2a2c33" stroke-width="1"/>
-  <text x="60" y="150" fill="#8b909b" font-size="11" text-anchor="end">moyenne</text>
-  <text x="60" y="163" fill="#8b909b" font-size="11" text-anchor="end">historique</text>
-  <line x1="70" y1="176" x2="680" y2="176" stroke="#8b909b" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <text x="686" y="180" fill="#8b909b" font-size="12">≈ 3,5 %</text>
-  <rect x="430" y="96" width="120" height="144" fill="#ff4d87"/>
-  <text x="490" y="88" fill="#ff4d87" font-size="20" font-weight="700" text-anchor="middle">6,9 %</text>
-  <text x="490" y="258" fill="#d6d9df" font-size="12" text-anchor="middle">janvier 2026</text>
-  <text x="150" y="230" fill="#5eead4" font-size="12" text-anchor="middle">niveau normal</text>
-  <rect x="120" y="200" width="60" height="40" fill="#2a2c33"/>
-  <text x="60" y="292" fill="#d6d9df" font-size="12">Le plus haut depuis les années 1990, près du double de la moyenne de long terme.</text>
-  <text x="60" y="312" fill="#8b909b" font-size="10">Source : Bridgeforce, données janvier 2026 ; Federal Reserve Bank of New York. Repère de moyenne indicatif.</text>
+  <rect x="170" y="167" width="130" height="73" fill="#8b909b"/>
+  <text x="235" y="159" fill="#8b909b" font-size="13" font-weight="700" text-anchor="middle">≈ 3,5 %</text>
+  <text x="235" y="262" fill="#8b909b" font-size="12" text-anchor="middle">moyenne historique</text>
+  <rect x="430" y="96" width="130" height="144" fill="#ff4d87"/>
+  <text x="495" y="88" fill="#ff4d87" font-size="20" font-weight="700" text-anchor="middle">6,9 %</text>
+  <text x="495" y="262" fill="#d6d9df" font-size="12" text-anchor="middle">janvier 2026</text>
+  <text x="60" y="290" fill="#d6d9df" font-size="12">Le plus haut depuis les années 1990, près du double de la moyenne de long terme.</text>
+  <text x="60" y="310" fill="#8b909b" font-size="10">Source : Bridgeforce, données janvier 2026 ; Federal Reserve Bank of New York. Repère indicatif.</text>
 </svg>
 <figcaption>Le crédit auto est le premier à parler parce qu'il est le dernier qu'on cesse de rembourser : perdre sa voiture, c'est souvent perdre son emploi. Un impayé subprime à 6,9 % n'est pas un accident, c'est un symptôme.</figcaption>
 </figure>
