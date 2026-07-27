@@ -384,12 +384,32 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Champ de recherche : fond gris très foncé + contour cyan fin */
+.pagefind-ui__form { position: relative; }
+.pagefind-ui__form::before {
+  content: '⌕';
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0.95rem;
+  color: var(--color-signal);
+  font-size: 1.15rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 .pagefind-ui__search-input {
+  appearance: none;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 4.6rem 0.75rem 2.7rem;
+  font: inherit;
   background-color: var(--color-surface) !important;
   color: var(--color-paper) !important;
   border: 1px solid var(--color-signal) !important;
+  border-radius: var(--pagefind-ui-border-radius);
   box-shadow: none !important;
 }
+.pagefind-ui__search-input::-webkit-search-cancel-button { display: none; }
 .pagefind-ui__search-input::placeholder { color: var(--color-muted) !important; }
 .pagefind-ui__search-input:focus,
 .pagefind-ui__search-input:focus-visible {
@@ -398,11 +418,38 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-signal) 22%, transparent) !important;
 }
 .pagefind-ui__search-clear {
+  position: absolute;
+  top: 50%;
+  right: 0.9rem;
+  border: 0;
+  padding: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  transform: translateY(-50%);
+  cursor: pointer;
   color: var(--color-muted) !important;
   background: transparent !important;
 }
-/* Loupe : recolorée en cyan (si rendue via un masque) */
-.pagefind-ui__form::before { background-color: var(--color-signal) !important; }
+.pagefind-ui__message { min-height: 1.2rem; margin: 0.75rem 0 0; }
+.pagefind-ui__results,
+.pagefind-ui__result-sublist { list-style: none; margin: 0; padding: 0; }
+.pagefind-ui__result-title,
+.pagefind-ui__result-excerpt { margin: 0; }
+.pagefind-ui__result-excerpt { margin-top: 0.45rem; }
+.pagefind-ui__more {
+  display: block;
+  margin: 1rem auto 0;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  background: var(--color-surface);
+  color: var(--color-signal);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.pagefind-ui__more:hover { border-color: var(--color-signal); }
+.pagefind-ui__more[hidden] { display: none; }
 
 /* Item de nav "API" : aligné à droite, accent rose */
 .nav-tab.nav-api { margin-left: auto; color: var(--color-accent); }
@@ -503,7 +550,7 @@ a { color: inherit; text-decoration: none; }
 /* --- Page /recherche : grand champ + résultats en cartes --- */
 .pf-page { max-width: 46rem; }
 .pf-page .pagefind-ui__search-input {
-  font-size: 1.05rem; padding: 0.85rem 1rem;
+  font-size: 1.05rem; padding: 0.85rem 4.6rem 0.85rem 2.7rem;
   background: var(--color-surface); border: 1px solid var(--color-line);
   border-radius: 12px; color: var(--color-bright);
 }
@@ -524,7 +571,7 @@ a { color: inherit; text-decoration: none; }
   border-color: color-mix(in srgb, var(--color-signal) 30%, transparent);
 }
 .pf-page .pagefind-ui__result-nested {
-  margin-top: 0.55rem; padding-left: 2.1rem !important;
+  margin-top: 0.55rem; padding: 0.45rem 0 0.1rem 1rem !important;
   border-left: 2px solid color-mix(in srgb, var(--color-signal) 30%, transparent);
 }
 .pf-page .pagefind-ui__result-tags { margin-left: 0.65rem; }

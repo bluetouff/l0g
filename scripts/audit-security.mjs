@@ -73,6 +73,27 @@ if (JSON.parse(serialized).probe !== probe) {
 
 const htmlFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.html']));
 if (!htmlFiles.length) fail('Aucune page HTML construite à auditer dans dist');
+const cssFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.css']));
+for (const file of cssFiles) {
+  const css = await readFile(file, 'utf8');
+  if (/url\(\s*["']?data:font\//i.test(css)) {
+    fail(`${relative(ROOT, file)}: police data: incompatible avec font-src 'self'`);
+  }
+}
+const builtScriptFiles = await filesUnder(join(ROOT, 'dist/_astro'), new Set(['.js', '.mjs']));
+for (const file of builtScriptFiles) {
+  const script = await readFile(file, 'utf8');
+  if (/(?:\.innerHTML\s*=|\.outerHTML\s*=|insertAdjacentHTML\s*\(|document\.write\s*\(|new\s+DOMParser\s*\(\)\.parseFromString\s*\()/i.test(script)) {
+    fail(`${relative(ROOT, file)}: sink DOM incompatible avec Trusted Types strict`);
+  }
+}
+const pagefindInit = await readFile(join(ROOT, 'public/pagefind-init.js'), 'utf8');
+if (/(?:\.innerHTML\s*=|\.outerHTML\s*=|insertAdjacentHTML\s*\(|document\.write\s*\(|new\s+DOMParser\s*\(\)\.parseFromString\s*\()/i.test(pagefindInit)) {
+  fail('public/pagefind-init.js: sink DOM incompatible avec Trusted Types strict');
+}
+if (!/pagefind\.options\(\{\s*noWorker:\s*true\s*\}\)/.test(pagefindInit)) {
+  fail('public/pagefind-init.js: Pagefind doit désactiver Worker(url), sink TrustedScriptURL');
+}
 
 const apacheConfig = await readFile(join(ROOT, 'deploy/l0g.fr.apache.conf'), 'utf8');
 if (!apacheConfig.includes('<LocationMatch "^/(agents\\.json|openapi\\.json|llms(?:-full(?:-en)?)?\\.txt)$">')) {
@@ -120,6 +141,8 @@ for (const directive of [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'self'",
+  "trusted-types 'none'",
+  "require-trusted-types-for 'script'",
 ]) {
   if (!cspHeader.includes(directive)) fail(`Directive Apache manquante : ${directive}`);
 }
@@ -203,6 +226,8 @@ process.stdout.write(`${JSON.stringify({
   yamlVersion,
   sourceFiles: sourceFiles.length,
   htmlFiles: htmlFiles.length,
+  cssFiles: cssFiles.length,
+  builtScriptFiles: builtScriptFiles.length,
   executableInlineScripts,
   metaPolicies,
   redirectFallbacks,

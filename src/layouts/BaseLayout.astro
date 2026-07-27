@@ -206,11 +206,7 @@ const siteJsonLd = {
     <SiteFooter path={path} year={year} />
 
     {path.startsWith('/recherche') && (
-      <>
-        <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-        <script src="/pagefind/pagefind-ui.js" defer is:inline></script>
-        <script src="/pagefind-init.js" defer is:inline></script>
-      </>
+      <script src="/pagefind-init.js" defer is:inline></script>
     )}
 
     <script>

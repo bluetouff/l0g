@@ -544,31 +544,25 @@
             return reply({ error: 'route de contenu invalide', slug: slug });
           }
           var url = parsedUrl.toString();
-          try {
-            var res = await fetch(parsedUrl.pathname, { credentials: 'omit' });
-            if (!res.ok) return reply({ error: 'article introuvable', slug: slug, url: url });
-            var doc = new DOMParser().parseFromString(await res.text(), 'text/html');
-            var titleEl = doc.querySelector('article h1') || doc.querySelector('h1');
-            var bodyEl = doc.querySelector('.prose') || doc.querySelector('[data-pagefind-body]') || doc.querySelector('article');
-            var body = stripTags(bodyEl ? bodyEl.textContent : '');
-            var MAX = 16000;
-            var truncated = body.length > MAX;
-            if (truncated) body = body.slice(0, MAX);
-            return reply({
-              slug: slug,
-              canonicalId: document.canonicalId,
-              language: document.language,
-              translationStatus: document.translationStatus,
-              type: document.type,
-              url: url,
-              title: titleEl ? stripTags(titleEl.textContent) : slug,
-              words: body ? body.split(/\s+/).length : 0,
-              truncated: truncated,
-              text: body
-            });
-          } catch (e) {
-            return reply({ error: 'erreur de récupération', slug: slug, url: url });
-          }
+          // L'index canonique contient déjà le corps texte issu du build. Le
+          // réutiliser évite un second fetch et tout parsing HTML dans le DOM,
+          // donc aucun sink Trusted Types n'est nécessaire.
+          var body = stripTags(document.text);
+          var MAX = 16000;
+          var truncated = body.length > MAX;
+          if (truncated) body = body.slice(0, MAX);
+          return reply({
+            slug: slug,
+            canonicalId: document.canonicalId,
+            language: document.language,
+            translationStatus: document.translationStatus,
+            type: document.type,
+            url: url,
+            title: stripTags(document.title) || slug,
+            words: body ? body.split(/\s+/).length : 0,
+            truncated: truncated,
+            text: body
+          });
         }
       });
     } catch (e) {

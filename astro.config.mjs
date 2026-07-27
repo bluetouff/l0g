@@ -41,8 +41,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       // Astro réutilise ce seuil pour décider d'injecter un petit chunk JS
-      // directement dans le HTML. La CSP Apache interdit ce mode d'exécution.
-      assetsInlineLimit: (filePath) => filePath.endsWith('.js') ? false : undefined,
+      // ou une petite police en data:. La CSP Apache interdit ces deux modes
+      // d'exécution/chargement afin de garder script-src et font-src sur self.
+      assetsInlineLimit: (filePath) => /\.(?:m?js|woff2?)$/i.test(filePath) ? false : undefined,
     },
   },
 
