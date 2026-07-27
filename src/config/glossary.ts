@@ -215,6 +215,9 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'NDFI', nom: 'Non-Depository Financial Institution', def: "Institution financière non bancaire (fonds de crédit privé, capital-investissement, assureurs), sans dépôts. Au cœur du « shadow banking » car peu régulée comme les banques. Les grandes banques n'y sont souvent pas exposées en direct, mais par les crédits qu'elles leur consentent, ce qui reconnecte le système bancaire au crédit de l'ombre. Poste de risque en forte croissance dans les bilans." },
       { sigle: 'NBFI', nom: 'Non-Bank Financial Intermediation', def: "Intermédiation financière non bancaire : crédit ou transformation d'épargne hors des banques de dépôt, notamment via fonds monétaires, hedge funds, assureurs, crédit privé et véhicules de titrisation. Terme de surveillance privilégié par le Conseil de stabilité financière pour ce périmètre souvent appelé shadow banking." },
       { sigle: 'Arbitrage réglementaire', nom: 'Regulatory arbitrage', def: "Déplacement d'une activité vers le compartiment le moins régulé du système financier, pour échapper aux contraintes de fonds propres ou de transparence. Moteur de la croissance du non-bancaire depuis le durcissement des règles bancaires après 2008 : le risque ne disparaît pas, il change d'adresse." },
+      { sigle: 'Subprime', nom: 'Crédit à risque', def: "Crédit accordé à un emprunteur à faible score de solvabilité, rémunéré par un taux plus élevé pour compenser le risque de défaut. Au cœur de la crise de 2008 côté immobilier, le terme désigne aujourd'hui surtout le crédit auto et les cartes des ménages les plus fragiles, dont les impayés servent de baromètre avancé du stress du bas de la distribution." },
+      { sigle: 'BNPL', nom: 'Buy now, pay later', def: "Paiement fractionné « acheter maintenant, payer plus tard », souvent en quatre échéances sans intérêt affiché. Crédit à la consommation peu déclaré aux bureaux de crédit, d'où le surnom de dette fantôme : il échappe en partie aux statistiques d'endettement des ménages tout en pesant sur leur trésorerie." },
+      { sigle: 'Économie en K', nom: 'K-shaped economy', def: "Configuration où les trajectoires économiques divergent selon le revenu : le haut de la distribution prospère et soutient la consommation pendant que le bas décroche sous l'effet de l'inflation et du coût du crédit. Rend la moyenne agrégée trompeuse, car elle masque deux réalités opposées." },
       { sigle: 'AIMA', nom: 'Alternative Investment Management Association', def: "Association professionnelle mondiale des gérants d'actifs alternatifs (hedge funds, crédit privé)." },
       { sigle: 'Hyperscaler', nom: 'Géant du cloud', def: "Très grand opérateur d'infrastructure informatique en nuage, comme Microsoft, Google, Amazon ou Oracle, qui construit et exploite des centres de données à grande échelle. Au cœur du boom d'investissement dans l'IA." },
       { sigle: 'Capex', nom: "Dépenses d'investissement", def: "Capital expenditures : dépenses engagées pour acquérir ou construire des actifs durables, centres de données, serveurs, équipements. Le boom de l'IA se mesure d'abord à l'explosion de ces dépenses." },
@@ -456,7 +459,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-26';
+export const glossaryUpdatedIso = '2026-07-27';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
