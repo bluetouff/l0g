@@ -1,0 +1,476 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '28 juillet 2026';
+const commercialReady = false;
+---
+
+<BaseLayout
+  title="Conditions générales de vente et d’utilisation de l0g Watch"
+  description="Conditions contractuelles de l’abonnement l0g Watch : service, prix, paiement, rétractation, résiliation, conformité, données et règlement des litiges."
+>
+  <article
+    class="legal-page rise"
+    data-pagefind-body
+    data-l0gwatch-commercial-terms={commercialReady ? 'ready-v1' : 'blocked-v1'}
+  >
+    <header class="legal-hero">
+      <p class="mono-label glow">// conditions l0g Watch</p>
+      <h1 class="font-display glow">Conditions de vente et d’utilisation.</h1>
+      <p>
+        Ce document encadre le service numérique par abonnement disponible sur
+        <a href="https://watch.l0g.fr/">watch.l0g.fr</a>. Il complète la
+        <a href="https://watch.l0g.fr/confidentialite">notice de confidentialité Watch</a>.
+      </p>
+      <span>Dernière mise à jour : {updated}</span>
+    </header>
+
+    {!commercialReady && (
+      <aside class="legal-gate" role="status">
+        <strong>Vente actuellement fermée</strong>
+        <p>
+          Aucun lien de souscription payante n’est publié par Watch. L’ouverture reste bloquée
+          jusqu’à la publication des coordonnées contractuelles complètes et du médiateur de la
+          consommation désigné par l’opérateur.
+        </p>
+      </aside>
+    )}
+
+    <nav class="legal-index" aria-label="Sommaire des conditions">
+      <a href="#operateur">Opérateur</a>
+      <a href="#service">Service et prix</a>
+      <a href="#commande">Commande</a>
+      <a href="#retractation">Rétractation</a>
+      <a href="#resiliation">Résiliation</a>
+      <a href="#conformite">Conformité</a>
+      <a href="#litiges">Litiges</a>
+    </nav>
+
+    <section id="operateur" class="legal-section">
+      <p class="mono-label glow">// 01 opérateur et périmètre</p>
+      <h2>Un contrat avec l’opérateur de l0g.</h2>
+      <dl class="legal-specs">
+        <div>
+          <dt>Prestataire</dt>
+          <dd>l0g, Olivier Laurelli, entrepreneur individuel</dd>
+        </div>
+        <div>
+          <dt>SIREN</dt>
+          <dd>809 005 010</dd>
+        </div>
+        <div>
+          <dt>Localité</dt>
+          <dd>Chartres (28000), France</dd>
+        </div>
+        <div>
+          <dt>Contact</dt>
+          <dd>
+            <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>
+            <span aria-hidden="true"> · </span>
+            <a href="tel:+33695328721">06 95 32 87 21</a>
+          </dd>
+        </div>
+        <div>
+          <dt>TVA</dt>
+          <dd>TVA non applicable</dd>
+        </div>
+      </dl>
+      <p class="legal-note">
+        Ces conditions visent les particuliers et, pour les règles d’utilisation du service, les
+        professionnels. Les dispositions impératives du droit de la consommation s’appliquent aux
+        consommateurs. Aucune vente n’est ouverte tant que les mentions signalées dans l’encadré
+        ci-dessus ne sont pas complétées.
+      </p>
+    </section>
+
+    <section id="service" class="legal-section">
+      <p class="mono-label glow">// 02 service et prix</p>
+      <h2>Une veille privée, pas un conseil financier.</h2>
+      <p>
+        l0g Watch fournit un compte privé, un cockpit de veille, des comparaisons de périodes, des
+        alertes choisies, un brief quotidien et un historique borné. Les lectures conservent leurs
+        dates, sources et réserves. Le service ne passe aucun ordre, ne conserve aucun actif et ne
+        fournit aucun conseil personnalisé en investissement.
+      </p>
+      <div class="legal-price-grid">
+        <article>
+          <span>Mensuel</span>
+          <strong>12 €</strong>
+          <p>Facturation chaque mois jusqu’à résiliation.</p>
+        </article>
+        <article>
+          <span>Annuel</span>
+          <strong>120 €</strong>
+          <p>Facturation chaque année jusqu’à résiliation.</p>
+        </article>
+      </div>
+      <p>
+        Le prix, la périodicité et le total exigible sont rappelés sur la page Stripe avant le
+        paiement. Aucun supplément n’est ajouté par Watch. La formule annuelle représente un
+        engagement payé pour douze mois, renouvelé seulement si elle n’a pas été résiliée avant sa
+        prochaine échéance.
+      </p>
+    </section>
+
+    <section id="commande" class="legal-section">
+      <p class="mono-label glow">// 03 commande, paiement et activation</p>
+      <h2>Un paiement externe et une activation bornée.</h2>
+      <ol class="legal-steps">
+        <li>Watch présente les caractéristiques essentielles, le prix et les présentes conditions.</li>
+        <li>Un clic explicite ouvre la page de paiement Stripe. Aucun composant Stripe n’est chargé auparavant.</li>
+        <li>La page de paiement rappelle le caractère récurrent du prix et exige l’acceptation des conditions avant la validation comportant une obligation de paiement.</li>
+        <li>Stripe confirme le paiement sur un support durable et transmet à Watch l’état nécessaire à l’activation.</li>
+        <li>Watch envoie un code à usage unique, valable 30 minutes, puis le client choisit son mot de passe.</li>
+      </ol>
+      <p>
+        Stripe traite les données de carte et fournit les justificatifs de paiement. Watch ne
+        reçoit aucun numéro de carte. Si le code n’arrive pas ou si l’activation échoue, le client
+        peut écrire à <a href="mailto:olivier@l0g.fr?subject=Activation%20Watch">olivier@l0g.fr</a>.
+      </p>
+    </section>
+
+    <section id="retractation" class="legal-section">
+      <p class="mono-label glow">// 04 droit de rétractation</p>
+      <h2>Quatorze jours pour changer d’avis.</h2>
+      <p>
+        Le consommateur peut se rétracter sans motif pendant quatorze jours à compter de la
+        conclusion du contrat. l0g accorde l’accès dès l’activation sans réduire ce droit : une
+        rétractation reçue dans le délai entraîne la fin de l’accès et le remboursement intégral
+        des sommes payées, par le même moyen de paiement, au plus tard quatorze jours après la
+        notification.
+      </p>
+      <p>
+        La demande peut être envoyée à
+        <a href="mailto:olivier@l0g.fr?subject=R%C3%A9tractation%20l0g%20Watch">
+          olivier@l0g.fr
+        </a>
+        au moyen d’une déclaration dénuée d’ambiguïté ou du modèle ci-dessous. Il suffit de
+        l’envoyer avant la fin du délai.
+      </p>
+      <div class="withdrawal-model" aria-labelledby="withdrawal-title">
+        <strong id="withdrawal-title">Modèle de formulaire de rétractation</strong>
+        <p>À l’attention de l0g, Olivier Laurelli, entrepreneur individuel :</p>
+        <p>
+          Je vous notifie ma rétractation du contrat de prestation l0g Watch souscrit le
+          [date]. Adresse électronique utilisée pour la souscription : [adresse]. Nom :
+          [nom]. Date : [date].
+        </p>
+      </div>
+      <p class="legal-source">
+        Cadre :
+        <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226842/">
+          article L221-18 du code de la consommation
+        </a>
+        et
+        <a href="https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032887060/">
+          formulaire type prévu à l’article R221-1
+        </a>.
+      </p>
+    </section>
+
+    <section id="resiliation" class="legal-section">
+      <p class="mono-label glow">// 05 durée et résiliation</p>
+      <h2>Une résiliation en ligne, sans obstacle.</h2>
+      <p>
+        Le client peut arrêter le renouvellement depuis le lien « Gérer ou résilier » affiché dans
+        son compte Watch et sur la page de présentation lorsque la vente est ouverte. Ce lien mène
+        au portail client Stripe. La résiliation est gratuite, confirmée par voie électronique et
+        prend effet à la fin de la période déjà payée. Aucun nouveau prélèvement n’est alors
+        effectué.
+      </p>
+      <p>
+        Une demande peut aussi être adressée à
+        <a href="mailto:olivier@l0g.fr?subject=R%C3%A9siliation%20l0g%20Watch">
+          olivier@l0g.fr
+        </a>. La suppression du compte intervient séparément, depuis le cockpit, après la fin de
+        l’accès payant.
+      </p>
+      <p class="legal-source">
+        Cadre :
+        <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046190107/">
+          article L215-1-1 du code de la consommation
+        </a>.
+      </p>
+    </section>
+
+    <section id="conformite" class="legal-section">
+      <p class="mono-label glow">// 06 conformité et disponibilité</p>
+      <h2>La garantie légale reste entière.</h2>
+      <p>
+        l0g répond des défauts de conformité qui apparaissent pendant la fourniture continue du
+        service numérique. Le consommateur peut demander une mise en conformité sans frais, sans
+        retard injustifié et sans inconvénient majeur. Lorsque la loi le prévoit, il peut obtenir
+        une réduction du prix ou la résolution du contrat. Ces droits ne sont pas limités par les
+        présentes conditions.
+      </p>
+      <p>
+        Les sources financières peuvent être retardées, corrigées ou temporairement indisponibles.
+        Watch signale les qualités dégradées connues et ne promet ni exhaustivité instantanée, ni
+        performance financière. Cette limite éditoriale ne retire aucune obligation de conformité
+        portant sur le service vendu.
+      </p>
+      <p class="legal-source">
+        Cadre :
+        <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044132956/">
+          articles L224-25-12 et suivants du code de la consommation
+        </a>.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <p class="mono-label glow">// 07 compte, sécurité et usage</p>
+      <h2>Un accès personnel et un usage loyal.</h2>
+      <p>
+        Le titulaire protège ses identifiants, utilise une adresse électronique qu’il contrôle et
+        ne partage pas son accès. Les tentatives d’intrusion, l’extraction automatisée abusive, le
+        contournement des limites de sécurité et l’usage illicite sont interdits.
+      </p>
+      <p>
+        l0g peut suspendre l’accès nécessairement et proportionnellement en cas d’impayé, d’attaque,
+        de compromission ou de violation grave. Le client est informé du motif et des moyens de
+        régularisation, sauf urgence de sécurité. Les modalités détaillées figurent dans les
+        <a href="https://watch.l0g.fr/conditions">conditions d’utilisation Watch</a>.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <p class="mono-label glow">// 08 données personnelles</p>
+      <h2>Deux notices pour deux traitements distincts.</h2>
+      <p>
+        Le compte, les préférences, l’abonnement et les journaux propres à Watch sont décrits dans
+        la <a href="https://watch.l0g.fr/confidentialite">notice Watch</a>. La consultation du site
+        éditorial relève de la <a href="/rgpd/">notice l0g.fr</a>. Stripe applique sa propre
+        <a href="https://stripe.com/fr/privacy">politique de confidentialité</a> au paiement et au
+        portail de facturation.
+      </p>
+    </section>
+
+    <section id="litiges" class="legal-section">
+      <p class="mono-label glow">// 09 réclamation, médiation et droit applicable</p>
+      <h2>Un recours amiable avant le contentieux.</h2>
+      <p>
+        Toute réclamation peut être envoyée à <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.
+        l0g répond sur le fond et recherche une solution amiable. Le consommateur peut ensuite
+        recourir gratuitement au médiateur de la consommation désigné par l’opérateur. Son nom,
+        son adresse et son site seront publiés ici avant toute ouverture des ventes.
+      </p>
+      <p>
+        Le droit français s’applique, sans priver le consommateur des protections impératives de
+        son pays de résidence. Les règles légales de compétence juridictionnelle restent
+        applicables.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <p class="mono-label glow">// 10 évolution du contrat</p>
+      <h2>Des changements annoncés avant leur application.</h2>
+      <p>
+        La version acceptée lors de la souscription reste la référence du contrat. Une modification
+        matérielle concernant le prix, le service, la durée ou les droits du client est annoncée
+        sur un support durable avant son entrée en vigueur. Elle ne s’applique pas rétroactivement
+        aux périodes déjà payées.
+      </p>
+    </section>
+
+    <footer class="legal-footer">
+      <span>Version du {updated}</span>
+      <a href="https://watch.l0g.fr/">Présentation Watch</a>
+      <a href="https://watch.l0g.fr/confidentialite">Confidentialité Watch</a>
+      <a href="/rgpd/">Mentions légales l0g</a>
+    </footer>
+  </article>
+
+  <style>
+    .legal-page {
+      width: min(100%, 52rem);
+      margin-inline: auto;
+    }
+    .legal-hero {
+      padding: clamp(1rem, 4vw, 2.5rem) 0;
+    }
+    .legal-hero h1 {
+      max-width: 48rem;
+      margin-top: 0.8rem;
+      color: var(--color-bright);
+      font-size: clamp(2.2rem, 7vw, 4.8rem);
+      line-height: 0.98;
+    }
+    .legal-hero > p:not(.mono-label) {
+      max-width: 44rem;
+      margin-top: 1.4rem;
+      color: var(--color-paper);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .legal-hero > span {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+    .legal-page a {
+      color: var(--color-signal);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+    .legal-gate {
+      border: 1px solid color-mix(in srgb, var(--color-amber) 52%, var(--color-line));
+      border-radius: 10px 3px 10px 10px;
+      padding: 1rem 1.1rem;
+      background: color-mix(in srgb, var(--color-amber) 8%, transparent);
+    }
+    .legal-gate strong {
+      color: var(--color-amber);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .legal-gate p {
+      margin-top: 0.45rem;
+      color: var(--color-paper);
+      line-height: 1.65;
+    }
+    .legal-index {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.4rem;
+    }
+    .legal-index a {
+      border: 1px solid var(--color-line);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-decoration: none;
+    }
+    .legal-section {
+      border-top: 1px solid var(--color-line);
+      margin-top: 3.2rem;
+      padding-top: 2rem;
+      scroll-margin-top: 2rem;
+    }
+    .legal-section h2 {
+      max-width: 44rem;
+      margin-top: 0.65rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      line-height: 1.08;
+    }
+    .legal-section > p,
+    .legal-section > ol {
+      max-width: 46rem;
+      margin-top: 1rem;
+      color: var(--color-paper);
+      line-height: 1.75;
+    }
+    .legal-specs {
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      margin-top: 1.2rem;
+      padding: 0.25rem 1rem;
+    }
+    .legal-specs > div {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      gap: 1rem;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0.7rem 0;
+    }
+    .legal-specs > div:last-child {
+      border-bottom: 0;
+    }
+    .legal-specs dt {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .legal-specs dd {
+      color: var(--color-paper);
+    }
+    .legal-note,
+    .legal-source {
+      border-left: 2px solid var(--color-signal);
+      padding-left: 1rem;
+    }
+    .legal-price-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+    .legal-price-grid article {
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      padding: 1rem;
+      background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+    }
+    .legal-price-grid span {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+    .legal-price-grid strong {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-bright);
+      font-size: 2rem;
+    }
+    .legal-price-grid p {
+      margin-top: 0.35rem;
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+    .legal-steps {
+      padding-left: 1.25rem;
+    }
+    .legal-steps li + li {
+      margin-top: 0.55rem;
+    }
+    .withdrawal-model {
+      border: 1px dashed color-mix(in srgb, var(--color-signal) 52%, var(--color-line));
+      border-radius: 10px;
+      margin-top: 1.2rem;
+      padding: 1rem 1.1rem;
+      background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+    }
+    .withdrawal-model strong {
+      color: var(--color-bright);
+    }
+    .withdrawal-model p {
+      margin-top: 0.55rem;
+      color: var(--color-paper);
+      line-height: 1.65;
+    }
+    .legal-source {
+      color: var(--color-muted) !important;
+      font-size: 0.88rem;
+    }
+    .legal-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+      border-top: 1px solid var(--color-line);
+      margin-top: 3.5rem;
+      padding-top: 1.2rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+    @media (max-width: 560px) {
+      .legal-specs > div,
+      .legal-price-grid {
+        grid-template-columns: 1fr;
+      }
+      .legal-specs > div {
+        gap: 0.2rem;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '27 juillet 2026';
+const updated = '28 juillet 2026';
 ---
 
 <BaseLayout
@@ -15,7 +15,8 @@ const updated = '27 juillet 2026';
     </h1>
     <p class="rgpd-lede">
       Cette page identifie l'opérateur de l0g et décrit les traitements de données liés à la
-      consultation de l0g.fr, à la mesure locale de son usage et aux prises de contact.
+      consultation de l0g.fr, à la mesure locale de son usage, aux prises de contact et aux
+      contributions volontaires traitées par Stripe lorsqu’elles sont activées.
     </p>
     <span class="rgpd-meta">Dernière mise à jour : {updated}</span>
   </section>
@@ -24,6 +25,8 @@ const updated = '27 juillet 2026';
     <div class="rgpd-note">
       Cette notice couvre le site éditorial l0g.fr. Le service authentifié <a class="link-term" href="https://watch.l0g.fr/">l0g Watch</a> utilise un compte,
       une session serveur et des préférences privées. Il dispose donc de sa <a class="link-term" href="https://watch.l0g.fr/confidentialite">notice propre</a>.
+      Les conditions contractuelles de ce service sont publiées sur la page
+      <a class="link-term" href="/cgv/">Conditions l0g Watch</a>.
     </div>
   </section>
 
@@ -107,6 +110,24 @@ const updated = '27 juillet 2026';
           <li><strong class="text-bright">Durée :</strong> le temps nécessaire au traitement et au suivi de la demande, puis, si nécessaire, selon les délais légaux applicables.</li>
         </ul>
       </article>
+
+      <article class="leak card" style="--c: var(--color-amber)">
+        <span class="leak-h">Contribution volontaire via Stripe</span>
+        <p class="leak-d">
+          Lorsque les liens de soutien sont activés et que vous choisissez de les suivre, Stripe
+          héberge la page de paiement. l0g ne charge auparavant aucun script ou traceur Stripe.
+          Stripe transmet ensuite les informations de transaction nécessaires au suivi du
+          soutien et aux obligations comptables. Aucun soutien n’accorde un accès Watch.
+        </p>
+        <ul class="leak-sub">
+          <li><strong class="text-bright">Données :</strong> identité et coordonnées de facturation fournies à Stripe, montant, date, devise, état et référence de transaction ;</li>
+          <li><strong class="text-bright">Finalités :</strong> traiter le soutien, répondre aux demandes, prévenir les erreurs et tenir les justificatifs comptables ;</li>
+          <li><strong class="text-bright">Base légale :</strong> exécution de la contribution demandée et obligations légales comptables ;</li>
+          <li><strong class="text-bright">Destinataires :</strong> l’opérateur et Stripe pour le paiement ;</li>
+          <li><strong class="text-bright">Transferts :</strong> Stripe décrit les lieux de traitement et garanties applicables dans sa <a class="link-term" href="https://stripe.com/fr/privacy" rel="noopener">politique de confidentialité</a> ;</li>
+          <li><strong class="text-bright">Durée :</strong> durée nécessaire au traitement, puis délais légaux de conservation des pièces comptables.</li>
+        </ul>
+      </article>
     </div>
   </section>
 
@@ -129,6 +150,7 @@ const updated = '27 juillet 2026';
       traitements fondés sur l'intérêt légitime pour des raisons tenant à votre situation.
       Écrivez à <a class="link-term" href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>. Une preuve
       d'identité ne sera demandée qu'en cas de doute raisonnable sur l'identité du demandeur.
+      Vous pouvez aussi définir des directives relatives au sort de vos données après votre décès.
       Vous pouvez enfin introduire une réclamation auprès de la{' '}
       <a class="link-term" href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.
     </div>
