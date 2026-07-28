@@ -1,8 +1,6 @@
 import type { APIRoute } from 'astro';
 import { topics } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
-import { glossaryEntries } from '../config/glossary.ts';
-import { primaryInstitutions } from '../config/primary-sources.ts';
 import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
 import { loadAgentContent } from '../lib/agent-content.ts';
@@ -52,13 +50,13 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## English reference guides');
-  for (const g of guidesEn) {
+  for (const g of guidesEn.slice(0, 12)) {
     lines.push(`- [${g.data.title}](${SITE}/en/guides/${g.id}/): ${g.data.summary ?? g.data.description}`);
   }
   lines.push('');
 
   lines.push('## Recent English analyses');
-  for (const p of postsEn.slice(0, 20)) {
+  for (const p of postsEn.slice(0, 12)) {
     lines.push(`- [${p.data.title}](${SITE}/en/analysis/${p.id}/): ${p.data.description} (${d(p.data.pubDate)})`);
   }
   lines.push('');
@@ -136,13 +134,13 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Changelog editorial');
-  for (const entry of editorialChangelog) {
+  for (const entry of editorialChangelog.slice(0, 8)) {
     lines.push(`- ${entry.date} · ${entry.kind} · [${entry.title}](${SITE}/changelog-editorial/): ${entry.summary}`);
   }
   lines.push('');
 
   lines.push('## Guides de reference');
-  for (const g of guides) {
+  for (const g of guides.slice(0, 20)) {
     lines.push(`- [${g.data.title}](${SITE}/guides/${g.id}/): ${g.data.summary ?? g.data.description}`);
   }
   lines.push('');
@@ -168,23 +166,12 @@ export const GET: APIRoute = async () => {
 
   lines.push('## Sources primaires');
   lines.push(`- [Hub sources primaires](${SITE}/sources/): institutions, cadences, limites et liens de verification.`);
-  for (const source of primaryInstitutions) {
-    lines.push(`- [${source.shortName}](${SITE}/sources/${source.slug}/): ${source.description}`);
-  }
+  lines.push(`- [Registre machine des sources](${SITE}/api/v1/sources.json): institutions primaires et hôtes effectivement cités dans le corpus.`);
   lines.push('');
 
   lines.push('## Glossaire');
-  lines.push(`- [Atlas de l'opacite financiere](${SITE}/glossaire/): ${glossaryEntries.length} sigles et notions de macro, finance, crypto, energie et regulation. Les entrees enrichies relient definition, intuition, articles, guides, datasets, signaux, sources primaires et concepts voisins.`);
-  for (const term of glossaryEntries) {
-    const atlasParts = term.atlas
-      ? [
-          term.atlas.formula ? `formule: ${term.atlas.formula}` : null,
-          term.atlas.related?.length ? `concepts voisins: ${term.atlas.related.join(', ')}` : null,
-          term.atlas.sources?.length ? `sources: ${term.atlas.sources.map((source) => source.label).join(', ')}` : null,
-        ].filter(Boolean).join('; ')
-      : '';
-    lines.push(`- [${term.sigle}](${SITE}${term.url}): ${term.nom} - ${term.def}${atlasParts ? ` Atlas: ${atlasParts}.` : ''}`);
-  }
+  lines.push(`- [Atlas de l'opacite financiere](${SITE}/glossaire/): sigles et notions de macro, finance, crypto, energie et regulation, reliés aux analyses, guides, données et sources primaires.`);
+  lines.push(`- [Index de recherche machine](${SITE}/api/v1/search-index.json): documents et entrées de référence interrogeables sans dupliquer le glossaire dans cette carte concise.`);
   lines.push('');
 
   lines.push('## Acces machine');
@@ -223,12 +210,11 @@ export const GET: APIRoute = async () => {
   lines.push('');
 
   lines.push('## Optional');
-  for (const p of posts.slice(20)) {
-    lines.push(`- [${p.data.title}](${SITE}/posts/${p.id}/): ${p.data.description}`);
-  }
-  for (const p of postsEn.slice(20)) {
-    lines.push(`- [${p.data.title}](${SITE}/en/analysis/${p.id}/): ${p.data.description}`);
-  }
+  lines.push(`- [Archives françaises](${SITE}/): toutes les analyses publiées, avec navigation par date et sujet.`);
+  lines.push(`- [Archives anglaises](${SITE}/en/): analyses et guides de référence disponibles en anglais.`);
+  lines.push(`- [Corpus français intégral](${SITE}/llms-full.txt): contenu complet à charger seulement lorsqu'une tâche exige les textes sources.`);
+  lines.push(`- [Corpus anglais intégral](${SITE}/llms-full-en.txt): complete English content for tasks that require the source texts.`);
+  lines.push(`- [Catalogue JSON](${SITE}/api/v1/catalog.json): inventaire exhaustif et structuré des articles, guides et sujets.`);
   lines.push('');
 
   return textResponse(lines.join('\n'), 'text/plain; charset=utf-8');

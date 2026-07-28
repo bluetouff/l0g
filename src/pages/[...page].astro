@@ -115,32 +115,6 @@ const needCards = [
     </section>
   )}
 
-  {isFirst && (
-    <section class="home-risk" aria-label="Les signaux de risque">
-      <RiskBand />
-    </section>
-  )}
-
-  {isFirst && (
-    <section class="home-needs rise" aria-labelledby="home-needs-title">
-      <SectionSignature index="02" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
-      <div class="need-grid">
-        {needCards.map((card, index) => (
-          <a href={card.href} class="need-card instrument-plate">
-            <span class="need-card-top">
-              <span class="need-index">{String(index + 1).padStart(2, '0')}</span>
-              <L0gGlyph name={card.glyph} size="lg" />
-            </span>
-            <span class="need-eyebrow">{card.eyebrow}</span>
-            <strong>{card.title}</strong>
-            <p>{card.text}</p>
-            <small>{card.cta} <i aria-hidden="true">›</i></small>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
-
   {!isFirst && (
     <header class="rise border-b border-dashed border-line pb-8">
       <p class="mono-label" style="color: var(--color-signal)">$ ls /analyses | page {page.currentPage}</p>
@@ -156,7 +130,7 @@ const needCards = [
   {hero && (
     <section class="home-featured" aria-labelledby="featured-title">
       {isFirst
-        ? <SectionSignature index="03" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
+        ? <SectionSignature index="01" eyebrow="à la une" title="L’analyse à retenir" id="featured-title" />
         : <>
             <p class="mono-label" style="color: var(--color-signal)">// à la une</p>
             <h2 id="featured-title" class="section-title">L’analyse à retenir</h2>
@@ -172,6 +146,32 @@ const needCards = [
         accent={hero.accent}
         accentLabel={hero.accentLabel}
       />
+    </section>
+  )}
+
+  {isFirst && (
+    <section class="home-risk" aria-label="Les signaux de risque">
+      <RiskBand />
+    </section>
+  )}
+
+  {isFirst && (
+    <section class="home-needs rise" aria-labelledby="home-needs-title">
+      <SectionSignature index="03" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
+      <div class="need-grid">
+        {needCards.map((card, index) => (
+          <a href={card.href} class="need-card instrument-plate">
+            <span class="need-card-top">
+              <span class="need-index">{String(index + 1).padStart(2, '0')}</span>
+              <L0gGlyph name={card.glyph} size="lg" />
+            </span>
+            <span class="need-eyebrow">{card.eyebrow}</span>
+            <strong>{card.title}</strong>
+            <p>{card.text}</p>
+            <small>{card.cta} <i aria-hidden="true">›</i></small>
+          </a>
+        ))}
+      </div>
     </section>
   )}
 

@@ -141,7 +141,7 @@ const aggregateStatus = aggregateDate
 
 <section class="rise my-8" data-pagefind-ignore>
   <div class="risk-band-head">
-    <h2 class="mono-label glow"><span>01</span>// signaux de risque</h2>
+    <h2 class="mono-label glow"><span>02</span>// signaux de risque</h2>
     <nav aria-label="Accès aux signaux de risque">
       <a class="mono-label risk-history-link" href="/maintenant/">lecture complète</a>
       <a class="mono-label risk-history-link" href="/series/">historique & provenance</a>
@@ -156,7 +156,7 @@ const aggregateStatus = aggregateDate
           data-risk={it.key}
           data-degraded={isDegraded(it.signal) ? 'true' : 'false'}
         >
-          <a href={it.href} target="_blank" rel="noopener" class="risk-tile-main">
+          <a href={`/maintenant/#signal-${it.key}`} class="risk-tile-main">
             <div class="flex items-center justify-between">
               <span class="mono-label">{it.label}</span>
               <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">›</span>
@@ -187,12 +187,13 @@ const aggregateStatus = aggregateDate
             <div class="risk-status" data-status>
               {it.signal ? statusText(it.signal) : 'source indisponible au build'}
             </div>
-          </a>
-          {it.signal && (
-            <a class="risk-proof-link" href={`/maintenant/#signal-${it.key}`}>
+            <span class="risk-proof-link">
               <span aria-hidden="true">i</span> Vérifier ce chiffre
-            </a>
-          )}
+            </span>
+          </a>
+          <a class="risk-dashboard-link" href={it.href} target="_blank" rel="noopener">
+            Ouvrir le dashboard <span aria-hidden="true">↗</span>
+          </a>
         </article>
       ))
     }
@@ -262,7 +263,19 @@ const aggregateStatus = aggregateDate
     border-radius: 50%;
     font-size: 0.54rem;
   }
-  .risk-proof-link:hover { color: var(--color-signal); }
+  .risk-tile-main:hover .risk-proof-link { color: var(--color-signal); }
+  .risk-dashboard-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+  .risk-dashboard-link:hover { color: var(--color-bright); }
   .risk-fill {
     height: 100%;
     width: 0;

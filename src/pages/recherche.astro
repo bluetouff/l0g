@@ -54,6 +54,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (function () {
       function input() { return document.querySelector('.pf-page .pagefind-ui__search-input'); }
+      function focusInput(attempts) {
+        var el = input();
+        if (el) { el.focus(); return; }
+        if (attempts > 0) setTimeout(function () { focusInput(attempts - 1); }, 60);
+      }
       function runSearch(q, push) {
         var el = input();
         if (!el) { setTimeout(function () { runSearch(q, push); }, 60); return; }
@@ -63,8 +68,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (push) history.replaceState(null, '', '/recherche/?q=' + encodeURIComponent(q));
       }
       function start() {
-        var q = new URLSearchParams(location.search).get('q');
+        var params = new URLSearchParams(location.search);
+        var q = params.get('q');
         if (q) runSearch(q, false);
+        else if (params.get('focus') === '1') focusInput(20);
         document.querySelectorAll('.s-chip').forEach(function (b) {
           b.addEventListener('click', function () { runSearch(b.dataset.q, true); });
         });

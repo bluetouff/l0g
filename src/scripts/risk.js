@@ -138,15 +138,28 @@
       });
   }
 
-  fetch('/risk.json', { cache: 'no-store' })
-    .then(function (r) {
-      return r.ok ? r.json() : null;
-    })
-    .then(function (data) {
-      return hasSignal(data, 'debt') ? data : loadDebtSnapshot(data);
-    })
-    .then(render)
-    .catch(function () {
-      loadDebtSnapshot(null).then(render).catch(function () {});
-    });
+  function refresh() {
+    fetch('/risk.json', { cache: 'no-store' })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (data) {
+        return hasSignal(data, 'debt') ? data : loadDebtSnapshot(data);
+      })
+      .then(render)
+      .catch(function () {
+        loadDebtSnapshot(null).then(render).catch(function () {});
+      });
+  }
+
+  function scheduleRefresh() {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(refresh, { timeout: 3000 });
+    } else {
+      window.setTimeout(refresh, 1200);
+    }
+  }
+
+  if (document.readyState === 'complete') scheduleRefresh();
+  else window.addEventListener('load', scheduleRefresh, { once: true });
 })();

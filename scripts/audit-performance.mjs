@@ -160,7 +160,25 @@ assert(home.length <= 90_000, `index.html dépasse 90 Ko (${home.length} octets)
 assert(homeGzip.length <= 16_000, `index.html gzip dépasse 16 Ko (${homeGzip.length} octets)`);
 assert(maxInline <= 2_000, `index.html contient un script inline de ${maxInline} octets`);
 assert(!homeText.includes('modelContext.registerTool'), 'WebMCP est de nouveau injecté inline dans index.html');
-assert(/<script type="module" src="\/_astro\/WebMCPTools\.[^"]+\.js"><\/script>/.test(homeText), 'module WebMCP externe absent');
+const webMcpLoaderHref = homeText.match(/<script type="module" src="(\/_astro\/WebMCPTools\.[^"]+\.js)"><\/script>/)?.[1];
+assert(Boolean(webMcpLoaderHref), 'chargeur WebMCP externe absent');
+if (webMcpLoaderHref) {
+  const webMcpLoader = await readFile(new URL(`.${webMcpLoaderHref}`, rootUrl), 'utf8');
+  assert(Buffer.byteLength(webMcpLoader) <= 2_000, `chargeur WebMCP trop lourd (${Buffer.byteLength(webMcpLoader)} octets)`);
+  assert(webMcpLoader.includes('modelContext'), 'détection de compatibilité WebMCP absente du chargeur');
+  assert(webMcpLoader.includes('import('), 'import dynamique WebMCP absent du chargeur');
+  assert(!webMcpLoader.includes('registerTool'), 'le runtime WebMCP est encore inclus dans le chargeur critique');
+}
+const astroJsFiles = (await walk(join(root, '_astro'))).filter((file) => file.endsWith('.js'));
+const webMcpRuntimeFiles = [];
+for (const file of astroJsFiles) {
+  const source = await readFile(file, 'utf8');
+  if (source.includes('registerTool') && source.includes('modelContext')) webMcpRuntimeFiles.push(file);
+}
+assert(webMcpRuntimeFiles.length === 1, `runtime WebMCP conditionnel introuvable ou dupliqué (${webMcpRuntimeFiles.length})`);
+for (const file of webMcpRuntimeFiles) {
+  assert(!homeText.includes(`/_astro/${relative(join(root, '_astro'), file)}`), 'runtime WebMCP encore chargé directement par la home');
+}
 assert(!homeText.includes('/_astro/pagefind-init.'), 'Pagefind ne doit pas être chargé sur la home');
 assert(!homeText.includes('/risk.js'), 'le script risque non versionné est encore chargé sur la home');
 assert(
@@ -180,11 +198,18 @@ assert(
   'home: préchargement de la police JetBrains Mono latin absent'
 );
 assert(!homeText.includes('source en attente'), 'la home contient encore un placeholder de risque');
+const featuredPosition = homeText.indexOf('id="featured-title"');
+const riskPosition = homeText.indexOf('class="home-risk"');
+const needsPosition = homeText.indexOf('id="home-needs-title"');
+assert(featuredPosition > 0 && featuredPosition < riskPosition, 'home: analyse vedette absente ou placée après les signaux');
+assert(riskPosition < needsPosition, 'home: signaux absents ou placés après les cartes d’orientation');
 for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
-  const tile = homeText.match(new RegExp(`<a[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</a>`))?.[1] ?? '';
+  const tile = homeText.match(new RegExp(`<article[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</article>`))?.[1] ?? '';
   assert(Boolean(tile), `home: carte risque ${key} absente`);
   assert(/data-value[^>]*>\s*\d+(?:[.,]\d+)?\s*</.test(tile), `home: valeur statique ${key} absente`);
   assert(/data-status[^>]*>\s*[^<\s][^<]*</.test(tile), `home: statut statique ${key} absent`);
+  assert(new RegExp(`href="/maintenant/#signal-${key}"[^>]*class="risk-tile-main"`).test(tile), `home: preuve interne ${key} non prioritaire`);
+  assert(/class="risk-dashboard-link"[^>]*target="_blank"/.test(tile), `home: dashboard secondaire ${key} absent`);
 }
 
 const glossary = await readFile(new URL('glossaire/index.html', rootUrl));
@@ -197,6 +222,13 @@ assert(/<script src="\/_astro\/pagefind-init\.[^"]+\.js" defer><\/script>/.test(
 assert(!search.includes('/pagefind-init.js'), 'initialiseur Pagefind non versionné encore chargé sur /recherche/');
 assert(!search.includes('/pagefind/pagefind-ui.js'), 'UI Pagefind à sinks DOM encore chargée sur /recherche/');
 assert(/<meta name="robots" content="noindex,follow">/.test(search), '/recherche/ doit être noindex,follow');
+assert(search.includes('aria-keyshortcuts="/ Meta+K Control+K"'), '/recherche/: raccourcis clavier non documentés');
+const searchPageScriptHref = search.match(/src="(\/_astro\/recherche\.astro[^"]+\.js)"/)?.[1];
+assert(Boolean(searchPageScriptHref), '/recherche/: script de page versionné absent');
+if (searchPageScriptHref) {
+  const searchPageScript = await readFile(new URL(`.${searchPageScriptHref}`, rootUrl), 'utf8');
+  assert(searchPageScript.includes('focus') && searchPageScript.includes('.focus()'), '/recherche/: focus demandé par raccourci non pris en charge');
+}
 
 const notFound = await readFile(new URL('404.html', rootUrl), 'utf8');
 assert(/<meta name="robots" content="noindex,follow">/.test(notFound), '/404.html doit être noindex,follow');
@@ -336,6 +368,10 @@ const apache = await readFile(new URL('../deploy/l0g.fr.apache.conf', import.met
 for (const mime of ['text/plain', 'text/javascript', 'application/x-ndjson', 'application/wasm']) {
   assert(apache.includes(mime), `compression Apache absente pour ${mime}`);
 }
+assert((apache.match(/Protocols h2 http\/1\.1/g) || []).length === 2, 'HTTP/2 absent d’un vhost TLS');
+assert(apache.includes('BrotliCompressionQuality 5'), 'qualité Brotli attendue absente');
+assert(apache.includes('AddOutputFilterByType BROTLI_COMPRESS'), 'compression Brotli absente');
+assert(apache.includes('AddOutputFilterByType DEFLATE'), 'repli gzip absent');
 assert(apache.includes('<LocationMatch "^/_astro/">'), 'cache fingerprinté /_astro absent');
 assert(apache.includes('max-age=31536000, immutable'), 'cache immutable /_astro absent');
 

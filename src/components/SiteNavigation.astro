@@ -109,7 +109,7 @@ function isActive(item: NavItem): boolean {
       </a>
     ))}
 
-    <a href="/recherche/" class="nav-tab nav-search" aria-current={currentPath.startsWith('/recherche') ? 'page' : undefined}>
+    <a href="/recherche/" class="nav-tab nav-search" aria-keyshortcuts="/ Meta+K Control+K" aria-current={currentPath.startsWith('/recherche') ? 'page' : undefined}>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="11" cy="11" r="6"></circle>
         <path d="m16 16 4 4"></path>
@@ -157,7 +157,7 @@ function isActive(item: NavItem): boolean {
   </nav>
 
   <nav class="mobile-nav" aria-label="Navigation mobile">
-    <a href="/recherche/" class="mobile-search" aria-label="Rechercher sur l0g">
+    <a href="/recherche/" class="mobile-search" aria-label="Rechercher sur l0g" aria-keyshortcuts="/ Meta+K Control+K">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="11" cy="11" r="6"></circle>
         <path d="m16 16 4 4"></path>
@@ -215,6 +215,38 @@ function isActive(item: NavItem): boolean {
     document.querySelectorAll('.nav-explorer[open]').forEach(function (menu) {
       if (!menu.contains(event.target)) menu.removeAttribute('open');
     });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.defaultPrevented || event.repeat) return;
+    var target = event.target;
+    var isEditable = target instanceof Element && (
+      target.matches('input, textarea, select')
+      || target.getAttribute('contenteditable') === 'true'
+      || Boolean(target.closest('[contenteditable="true"]'))
+    );
+    if (isEditable) return;
+
+    var slash = event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey;
+    var commandK = event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey) && !event.altKey;
+    if (!slash && !commandK) return;
+
+    event.preventDefault();
+    if (location.pathname.replace(/\/$/, '') !== '/recherche') {
+      location.assign('/recherche/?focus=1');
+      return;
+    }
+
+    var attempts = 0;
+    function focusSearch() {
+      var input = document.querySelector('.pf-page .pagefind-ui__search-input');
+      if (input) {
+        input.focus();
+        return;
+      }
+      attempts += 1;
+      if (attempts < 20) window.setTimeout(focusSearch, 50);
+    }
+    focusSearch();
   });
 </script>
 

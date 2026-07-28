@@ -10,6 +10,12 @@ bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh" \
 
 grep -Fq 'AuthUserFile /etc/apache2/l0g-stats.htpasswd' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
+test "$(grep -Fc 'Protocols h2 http/1.1' "${ROOT}/deploy/l0g.fr.apache.conf")" -eq 2
+grep -Fq 'BrotliCompressionQuality 5' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'AddOutputFilterByType BROTLI_COMPRESS' "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'Module Apache requis absent' "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq "HTTP_VERSION=" "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq "Content-Encoding:[[:space:]]*br" "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'Require valid-user' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq '<LocationMatch "^/stats(?:/|$)">' \
   "${ROOT}/deploy/l0g.fr.apache.conf"

@@ -24,13 +24,16 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
 });
 
 test('la configuration versionnée sert les fichiers vivants et neutralise les anciens scripts', async () => {
-  const [apache, service, installer, activator, euroActivator, agentSurface] = await Promise.all([
+  const [apache, service, installer, activator, euroActivator, agentSurface, riskClient, riskBand, home] = await Promise.all([
     readFile(new URL('deploy/l0g.fr.apache.conf', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/l0g-risk.service', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/install-server.sh', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/activate-zen.sh', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/activate-euromacro-zen.sh', root), 'utf8'),
     readFile(new URL('src/lib/agent-surface.ts', root), 'utf8'),
+    readFile(new URL('src/scripts/risk.js', root), 'utf8'),
+    readFile(new URL('src/components/RiskBand.astro', root), 'utf8'),
+    readFile(new URL('src/pages/[...page].astro', root), 'utf8'),
   ]);
   for (const alias of [
     'Alias /risk.json /var/www/l0g-data/risk.json',
@@ -59,4 +62,13 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   for (const field of ['rawValue:', 'producerRepository:', 'producerRevision:', 'producerRevisionStatus:']) {
     assert.ok(debtSchema.includes(field), `DebtRiskTileSignal doit publier ${field.slice(0, -1)}`);
   }
+  assert.ok(riskClient.includes("window.addEventListener('load', scheduleRefresh, { once: true })"));
+  assert.ok(riskClient.includes('window.requestIdleCallback(refresh, { timeout: 3000 })'));
+  assert.ok(riskClient.indexOf('function refresh()') < riskClient.indexOf("fetch('/risk.json'"));
+  assert.match(riskBand, /href=\{`\/maintenant\/#signal-\$\{it\.key\}`\} class="risk-tile-main"/);
+  assert.match(riskBand, /class="risk-dashboard-link" href=\{it\.href\}/);
+  assert.ok(
+    home.indexOf('<section class="home-featured"') < home.indexOf('<section class="home-risk"'),
+    'l’analyse vedette doit précéder les signaux',
+  );
 });

@@ -24,6 +24,7 @@ const claims = readJson('dist/api/v1/claims.json');
 const searchIndex = readJson('dist/api/v1/search-index.json');
 const sources = readJson('dist/api/v1/sources.json');
 const integrity = readJson('dist/api/v1/integrity.json');
+const llms = readFileSync('dist/llms.txt', 'utf8');
 const llmsFull = readFileSync('dist/llms-full.txt', 'utf8');
 const llmsFullEn = readFileSync('dist/llms-full-en.txt', 'utf8');
 
@@ -220,6 +221,13 @@ assert(!translations.some((translation) => {
   return collection.find((item) => item.language === 'en' && item.slug === translation.id)?.translationStatus === 'missing-source';
 }), 'une traduction pointe vers une source française absente');
 
+assert(/^\s*#\s+\S+/m.test(llms), 'llms.txt doit contenir un titre H1 Markdown');
+assert(/\[[^\]]+\]\(https:\/\/l0g\.fr\/[^)]*\)/.test(llms), 'llms.txt doit contenir au moins un lien interne annoté');
+assert(Buffer.byteLength(llms, 'utf8') >= 50, 'llms.txt est trop court pour orienter un agent');
+assert(Buffer.byteLength(llms, 'utf8') <= 64_000, 'llms.txt dépasse le budget concis de 64 Ko');
+assert((llms.match(/\[[^\]]+\]\(https:\/\/l0g\.fr\/[^)]*\)/g) || []).length <= 160, 'llms.txt contient trop de liens pour rester une carte concise');
+assert(llms.includes('https://l0g.fr/llms-full.txt'), 'llms.txt ne pointe pas vers le corpus français intégral');
+assert(llms.includes('https://l0g.fr/llms-full-en.txt'), 'llms.txt ne pointe pas vers le corpus anglais intégral');
 assert(llmsFullEn.includes('REFERENCE GUIDE:') && llmsFullEn.includes('ANALYSIS:'), 'llms-full-en.txt ne contient pas les collections anglaises');
 assert(llmsFull.includes('Corpus anglais distinct : https://l0g.fr/llms-full-en.txt'), 'llms-full.txt ne pointe pas vers le corpus anglais distinct');
 assert(!llmsFull.includes('ENGLISH ANALYSIS :'), 'llms-full.txt gonflé par le corpus anglais');

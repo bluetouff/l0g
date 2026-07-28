@@ -31,6 +31,17 @@ for command in cat chmod cmp cp curl date grep install ln mkdir mv readlink rm s
 done
 [ -x "$APACHECTL" ] || { echo "apache2ctl absent" >&2; exit 1; }
 [ -f "$SOURCE" ] || { echo "Vhost source absent: $SOURCE" >&2; exit 1; }
+APACHE_MODULES="$("$APACHECTL" -M 2>&1)"
+for module in http2_module brotli_module deflate_module filter_module setenvif_module; do
+  if ! printf '%s\n' "$APACHE_MODULES" | grep -Eq "[[:space:]]${module}[[:space:]]"; then
+    echo "Module Apache requis absent: ${module}. Exécuter: sudo a2enmod http2 brotli deflate filter setenvif" >&2
+    exit 1
+  fi
+done
+if ! curl --version | grep -Fq "HTTP2"; then
+  echo "Le curl serveur ne prend pas en charge HTTP/2; preuve d'activation impossible." >&2
+  exit 1
+fi
 if [ -L "$LEGACY_HTTP" ] && [ -L "$LEGACY_HTTPS" ] \
    && [ ! -e "$ACTIVE" ] && [ ! -L "$ACTIVE" ]; then
   VHOST_MODE="legacy"
@@ -126,6 +137,16 @@ cmp -s "$SOURCE" "$TARGET"
 "$APACHECTL" configtest
 systemctl reload apache2
 systemctl is-active --quiet apache2
+
+HTTP_VERSION="$(curl -fsS --http2 --max-time 20 -o /dev/null -w '%{http_version}' https://l0g.fr/)"
+[ "$HTTP_VERSION" = "2" ] || {
+  echo "HTTP/2 non négocié après rechargement (version obtenue: ${HTTP_VERSION})." >&2
+  exit 1
+}
+BROTLI_HEADERS="$(curl -fsS --max-time 20 -H 'Accept-Encoding: br' -D - -o /dev/null https://l0g.fr/)"
+printf '%s\n' "$BROTLI_HEADERS" | grep -Eiq "^Content-Encoding:[[:space:]]*br[[:space:]]*$"
+GZIP_HEADERS="$(curl -fsS --max-time 20 -H 'Accept-Encoding: gzip' -D - -o /dev/null https://l0g.fr/)"
+printf '%s\n' "$GZIP_HEADERS" | grep -Eiq "^Content-Encoding:[[:space:]]*gzip[[:space:]]*$"
 
 HEADERS="$(curl -fsSI --max-time 20 https://l0g.fr/)"
 printf '%s\n' "$HEADERS" | grep -Fiq "Content-Security-Policy:"
