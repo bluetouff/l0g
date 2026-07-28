@@ -1,0 +1,65 @@
+---
+title: "How to Read Sovereign CDS"
+description: "A reference guide to sovereign credit default swaps: what insurance against a state's default is, the premium in basis points as a risk thermometer, the credit event and the role of ISDA and its Determinations Committee, auction settlement, the CDS-bond basis that says what the cash spread does not, and the special case of redenomination risk in the euro area. With Italy as the worked example."
+summary: "A sovereign CDS is a contract insuring against a state's default, whose premium, in basis points, offers a second reading of country risk, sometimes faster than the bond. Reading it means understanding the premium, the ISDA-defined credit event, auction settlement and the CDS-bond basis. In the euro area, redenomination risk is added. Italy, Europe's most traded sovereign CDS, serves as illustration."
+pubDate: 2026-07-28T10:24:00+02:00
+updatedDate: 2026-07-28T10:24:00+02:00
+sourceGuide: "lire-les-cds-souverains"
+sourceUpdatedDate: 2026-07-28T10:24:00+02:00
+tags: ["markets", "bonds", "sovereign risk"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*A bond spread tells how much a state pays to borrow; a CDS tells how much the market charges to insure it against default. These are two measures of the same risk, and they do not always coincide, which is what makes the second one interesting. The sovereign credit default swap is a thermometer of its own, more liquid on some names, sometimes faster to react, and governed by its own rules, those of ISDA. Reading it means having a second opinion on a country's solvency, provided one knows its mechanics. This guide runs through them, with Italy as the worked example.*
+
+## What a sovereign CDS is
+
+A sovereign CDS is a bilateral insurance contract. The protection buyer pays a periodic premium to the seller; in exchange, if the reference state suffers a credit event, the seller compensates the loss. The premium, called the CDS spread, is expressed in basis points of the insured notional, on an annual basis, and the reference maturity is five years, the most liquid. This premium is the direct translation of perceived default risk: it rises when the market judges default more likely, falls when it is reassured.
+
+The market is concentrated on a few names. Italy is the [most traded sovereign CDS in the European Union, with an average daily notional of about $571 million, and its five-year CDS traded around 30 basis points in mid-2026](https://en.macromicro.me/series/27135/italy-5year-cds). Thirty basis points is the annual price, $30,000, to insure ten million of Italian debt against default: a low level, consistent with the calm in spreads we described in our analysis of [Italy's borrowed calm](/en/analysis/italys-borrowed-calm/).
+
+<InfographicBars
+  title="The CDS, a sovereign risk thermometer"
+  subtitle="Illustrative orders of magnitude for the 5-year CDS, in basis points."
+  max={250}
+  items={[
+    { label: "Core sovereign, AAA-rated", value: 12, valueLabel: "≈ 10-15 bp", tone: "signal" },
+    { label: "Euro periphery (Italy ≈ 30 bp)", value: 35, valueLabel: "≈ 30-40 bp", tone: "blue" },
+    { label: "Sovereign under stress", value: 250, valueLabel: "200 bp and up", tone: "accent" },
+  ]}
+  note="The CDS translates a default probability: at 40% recovery, 30 bp imply about 0.5% default per year."
+  source="Illustrative orders of magnitude; Italy 5-year ~30 bp (MacroMicro, mid-2026)."
+  caption="The CDS premium reads as a default probability: roughly, the annual premium divided by one minus the recovery rate gives the implied annual default risk. The per-tier levels are illustrative; Italy at about 30 basis points is the real benchmark."
+/>
+
+## The credit event and ISDA
+
+A CDS's whole value rests on the definition of what triggers payment, and that is where the contract turns technical. CDS are governed by [ISDA](https://www.isda.org/a/cKwEE/TheCreditEventProcess.pdf) documentation, which standardises credit events: failure to pay, restructuring, and for sovereigns repudiation or moratorium. Recognising an event is not left to the parties: it falls to an ISDA Determinations Committee, made up of ten sell-side and five buy-side members, which decides from public information. On an event, settlement most often runs through an organised auction that sets the recovery rate, hence the amount paid, equal to one hundred minus that recovery.
+
+That architecture has reading consequences. A CDS covers only ISDA-defined events: a state can see its debt fall sharply, inflicting heavy losses, without any credit event being declared, if the legal form does not fit the grid. The CDS insures against a characterised default, not against a mere mark-to-market loss.
+
+## The CDS-bond basis
+
+The CDS comes into its own when set against the bond, and that gap has a name: the CDS-bond basis. In theory, the CDS premium and the bond's credit spread for the same issuer should coincide, since they measure the same risk. In practice, they diverge, and the divergence is a signal. A negative basis, a CDS cheaper than the bond, often betrays funding frictions or balance-sheet constraints that weigh on the cash instrument without touching the derivative. Reading the basis means crossing two markets to spot which moves first, and the CDS, more liquid and shortable without holding the bond, sometimes reacts before the cash spread we describe in our guide on [credit spreads](/en/guides/read-credit-spreads-oas/).
+
+## The euro-area case: redenomination
+
+A euro-area sovereign CDS hides a subtlety no other carries: redenomination risk, the probability that a state leaves the euro and repays in a devalued national currency. Recent contracts include clauses treating a redenomination outside the reference currencies as a credit event, so the Italian or French CDS carries, on top of the classic default risk, an insurance premium against the bloc's break-up. That is why, in a stress episode, these CDS can jump faster than solvency alone would justify, and why the ECB's backstop, the TPI, weighs indirectly on their level, as we analyse in our guide on [European sovereign debt](/en/guides/read-european-sovereign-debt/).
+
+## Reading pitfalls
+
+A few reflexes avoid errors. The first is not to confuse the CDS with an exact default probability: the conversion depends on an assumed recovery rate, and a liquidity or scarcity premium can inflate the level. The second is to account for market size: on a thinly traded sovereign, the CDS can overreact for lack of depth, and its move say more about positioning than about risk. The third is to remember that the CDS insures a legally defined event, not a market loss. The fourth, specific to the euro area, is never to forget the redenomination component, which can make the CDS diverge from the simple credit spread.
+
+## Reading a sovereign CDS in practice
+
+The method fits in a few moves. Read the premium in basis points as a thermometer, converting it mentally into a default probability via recovery. Systematically compare the CDS with the bond spread to read the basis and spot the market that moves first. Check the name's liquidity before interpreting a move. And, for a euro-area sovereign, isolate the redenomination component from pure default risk. The CDS is not a truth superior to the spread, it is a second opinion, governed by its own rules, and its true usefulness is in the gap it keeps with the cash market.
+
+---
+
+### Sources
+
+- [MacroMicro, "Italy 5-Year Credit Default Swaps" (Italy ~30 bp at 5 years, most traded EU sovereign CDS, daily notional ~$571m)](https://en.macromicro.me/series/27135/italy-5year-cds)
+- [ISDA, "The Credit Event Process" (credit events, Determinations Committee, auction settlement)](https://www.isda.org/a/cKwEE/TheCreditEventProcess.pdf)
+- [ESRB, "Credit default swaps – analysis and policies" (European sovereign CDS market, notionals and concentration)](https://www.esrb.europa.eu/pub/pdf/reports/esrb.report250411_creditdefaultswaps.en.pdf)

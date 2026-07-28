@@ -1,0 +1,66 @@
+---
+title: "How to Read the Balance of Payments and the Current Account"
+description: "A reference guide to the balance of payments: the three accounts (current, capital, financial), the iron accounting identity that a current account deficit must be financed by capital inflows, the link with savings and investment, the net international investment position and America's eroding exorbitant privilege, and the reading pitfalls. With the US external accounts of 2026 as the worked example."
+summary: "The balance of payments is the accounting of a country's exchanges with the rest of the world. Its iron identity links the current account, the capital account and the financial account: a current account deficit, like America's, is necessarily financed by capital inflows, because a country that spends more than it produces borrows from the world. Reading it means separating trade flows from capital flows, and tracking the net international investment position. The US accounts of 2026 serve as illustration."
+pubDate: 2026-07-28T10:25:00+02:00
+updatedDate: 2026-07-28T10:25:00+02:00
+sourceGuide: "lire-la-balance-des-paiements"
+sourceUpdatedDate: 2026-07-28T10:25:00+02:00
+tags: ["macro", "dollar", "debt"]
+category: macro
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*The balance of payments is one of the rare places in economics where an accounting identity cannot lie. It records everything a country exchanges with the rest of the world, goods, services, income and capital, and these flows balance by construction. Its lesson is brutal and often misunderstood: a country that buys more from the world than it sells must, in the same motion, borrow the difference from it. The trade deficit and the capital inflow are two sides of the same coin. Reading the balance of payments means grasping that mechanism, and what it says about how an economy is financed. This guide runs through it, with the US accounts of 2026 as the backdrop.*
+
+## The three accounts
+
+The balance of payments reads in three blocks. The current account first, the most followed: it records exchanges of goods and services, investment and labour income, and transfers. Its balance says whether a country lives above or below its means vis-à-vis the world. The capital account next, marginal, recording a few wealth transfers. The financial account finally, which records cross-border asset flows: purchases and sales of bonds, equities, real estate, direct investment.
+
+The key is that these three accounts sum to zero, up to measurement error. It is not an economic law, it is an accounting identity: every unit spent abroad must be financed by something. Understanding the balance of payments means first internalising that balancing constraint.
+
+## The iron identity
+
+From that identity flows the most counterintuitive truth of the subject. A current account deficit is not a hole opening into a void: it is necessarily offset by a financial account surplus, that is, by net capital inflows. A country that imports more than it exports borrows the difference from the rest of the world, by selling it assets. Current account deficit and capital import are the same reality seen from both sides.
+
+That mechanism has a second face, on the savings side. The current account balance equals, by identity, the gap between national saving and national investment. A country that invests more than it saves must fill the gap with foreign saving, which shows up as a current account deficit. The United States is the canonical example: they consume and invest more than they produce and save, and the world lends them the difference by buying their Treasuries, a flow we track in our piece on [the marginal buyer of US debt](/en/analysis/who-buys-the-bill-deluge-us-treasury-marginal-buyer/).
+
+## The US case
+
+The 2026 figures give the identity flesh. The US current account deficit [widened to $226.8 billion in the first quarter of 2026, or 2.9% of gross domestic product, from 2.8% the previous quarter](https://www.bea.gov/news/2026/us-international-transactions-and-investment-position-1st-quarter-2026-and-annual-update). In mirror, the financial account recorded about $209 billion of net inflows, the exact reflection of that deficit: the world lent the United States roughly what they overspent.
+
+<InfographicBars
+  title="The identity in mirror (Q1 2026)"
+  subtitle="US external accounts, in billions of dollars."
+  max={230}
+  items={[
+    { label: "Current account deficit", value: 227, valueLabel: "$227bn", tone: "accent" },
+    { label: "Net capital inflows (financial account)", value: 209, valueLabel: "$209bn", tone: "signal" },
+  ]}
+  note="The two nearly match: the deficit is financed by borrowing from the world. The gap is measurement error."
+  source="Source: Bureau of Economic Analysis, international transactions, Q1 2026."
+  caption="The current account deficit and the capital inflows are two sides of the same coin. The United States spends about $227 billion more than it produces over the quarter, and the rest of the world lends roughly as much by buying its assets. Source: BEA."
+/>
+
+## The external position and the exorbitant privilege
+
+Summed year after year, these deficits build a debt: the net international investment position, the difference between what residents hold abroad and what foreigners hold at home. For the United States, it reached minus $21.27 trillion at end-March 2026, a colossal net indebtedness to the world. For a long time, that figure worried less than it should have, thanks to the exorbitant privilege: the United States earned more on its foreign assets, often risky and profitable, than it paid on its debt, largely low-yielding Treasuries. The income balance stayed positive despite a massive debtor position.
+
+That privilege is eroding. Recent revisions suggest the net international investment position has deteriorated to the point where the return differential no longer offsets the gap in holdings, a structural shift in how US investment income evolves. In other words, America's external debt is starting to cost more than it earns, a turn to watch closely, tied to the rise in rates and the swelling of the debt we track elsewhere.
+
+## Reading pitfalls
+
+A few reflexes avoid misreadings. The first, and most important, is that the accounting identity says nothing about causation: it establishes that current account deficit and capital inflows coincide, not which causes which. A deficit can reflect a hunger for consumption, but also the attractiveness of a country that draws in the world's capital; the [causal arrow does not read off the balance](https://www.piie.com/blogs/realtime-economics/2026/dont-blame-americas-current-account-deficit-dollar). The second is to scale the balances to GDP rather than in dollars, to judge their sustainability. The third is to distinguish, within the current account, the trade balance from the income balance, which tell different stories. The fourth is that the net international investment position contains, like reserves, valuation effects: it moves with equity markets and the exchange rate, not only with flows.
+
+## Reading the balance of payments in practice
+
+The method fits in a few moves. Start from the identity: a current account deficit is always a capital inflow, and vice versa, which steers the question towards financing. Read the current account as the savings-investment gap, to connect the external balance to the domestic macro. Track the net international investment position and the income balance to judge sustainability, keeping in mind the erosion of the exorbitant privilege. Finally, cross the balance with foreign-holdings data, like the [Treasury's TIC figures](/en/guides/read-tic-data-us-debt/) and the offshore dollar plumbing we describe in our analysis of [eurodollars](/en/analysis/eurodollars-the-offshore-dollar/). The balance of payments does not judge, it constrains: it says no country can durably spend without someone, somewhere, agreeing to finance it.
+
+---
+
+### Sources
+
+- [Bureau of Economic Analysis, "U.S. International Transactions and Investment Position, 1st Quarter 2026" (current account deficit $226.8bn, 2.9% of GDP; financial account; net international investment position -$21.27tn)](https://www.bea.gov/news/2026/us-international-transactions-and-investment-position-1st-quarter-2026-and-annual-update)
+- [Peterson Institute for International Economics, "Don't blame America's current account deficit on the dollar", 2026 (causation and reading the identity)](https://www.piie.com/blogs/realtime-economics/2026/dont-blame-americas-current-account-deficit-dollar)
+- [Haver Analytics, "Q1 Current Account: Modest Slippage in Early 2026" (quarterly dynamics of the US current account)](https://www.haver.com/articles/q1-current-account-modest-slippage-in-early-2026)

@@ -1,0 +1,63 @@
+---
+title: "Lire les CDS souverains"
+description: "Guide de référence sur les credit default swaps souverains : ce qu'est une assurance contre le défaut d'un État, la prime en points de base comme thermomètre du risque, l'événement de crédit et le rôle de l'ISDA et de son comité de détermination, le règlement par enchère, la base CDS-obligataire qui dit ce que le spread au comptant ne dit pas, et le cas particulier du risque de redénomination dans la zone euro. Avec l'Italie comme cas d'école."
+summary: "Un CDS souverain est un contrat d'assurance contre le défaut d'un État, dont la prime, exprimée en points de base, offre une seconde lecture du risque pays, parfois plus rapide que l'obligation. Le lire suppose de comprendre la prime, l'événement de crédit défini par l'ISDA, le règlement par enchère et la base CDS-obligataire. En zone euro s'ajoute la question du risque de redénomination. L'Italie, CDS souverain le plus traité d'Europe, sert d'illustration."
+pubDate: 2026-07-28T10:24:00+02:00
+updatedDate: 2026-07-28T10:24:00+02:00
+tags: ["marches", "obligataire", "risque souverain"]
+category: marches
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Un spread obligataire dit combien un État paie pour emprunter ; un CDS dit combien le marché demande pour l'assurer contre le défaut. Ce sont deux mesures du même risque, et elles ne coïncident pas toujours, ce qui fait tout l'intérêt du second. Le credit default swap souverain est un thermomètre à part, plus liquide sur certains noms, parfois plus rapide à réagir, et gouverné par ses propres règles, celles de l'ISDA. Le lire, c'est disposer d'une seconde opinion sur la solvabilité d'un pays, à condition d'en connaître la mécanique. Ce guide la déroule, avec l'Italie comme cas d'école.*
+
+## Ce qu'est un CDS souverain
+
+Un [CDS](/glossaire/#cds) souverain est un contrat bilatéral d'assurance. L'acheteur de protection verse une prime périodique au vendeur ; en échange, si l'État de référence subit un événement de crédit, le vendeur l'indemnise de la perte. La prime, appelée spread du CDS, est exprimée en points de base du montant notionnel assuré, sur une base annuelle, et la maturité de référence est le cinq ans, la plus liquide. Cette prime est la traduction directe du risque de défaut perçu : elle monte quand le marché juge le défaut plus probable, baisse quand il se rassure.
+
+Le marché est concentré sur quelques signatures. L'Italie est le [CDS souverain le plus traité de l'Union européenne, avec un notionnel quotidien moyen d'environ 571 millions de dollars, et son CDS à cinq ans évoluait autour de 30 points de base à la mi-2026](https://en.macromicro.me/series/27135/italy-5year-cds). Trente points de base, c'est le prix annuel, 30 000 dollars, pour assurer dix millions de dette italienne contre le défaut : un niveau bas, cohérent avec le calme des spreads que nous décrivions dans notre analyse du [rachat italien](/posts/rachat-italien-btp-bund-trompe-l-oeil/).
+
+<InfographicBars
+  title="Le CDS, thermomètre du risque souverain"
+  subtitle="Ordres de grandeur illustratifs du CDS à 5 ans, en points de base."
+  max={250}
+  items={[
+    { label: "Souverain cœur, noté AAA", value: 12, valueLabel: "≈ 10-15 pb", tone: "signal" },
+    { label: "Périphérie euro (Italie ≈ 30 pb)", value: 35, valueLabel: "≈ 30-40 pb", tone: "blue" },
+    { label: "Souverain sous tension", value: 250, valueLabel: "200 pb et plus", tone: "accent" },
+  ]}
+  note="Le CDS traduit une probabilité de défaut : à recouvrement de 40 %, 30 pb impliquent environ 0,5 % de défaut par an."
+  source="Ordres de grandeur illustratifs ; Italie 5 ans ~30 pb (MacroMicro, mi-2026)."
+  caption="La prime du CDS se lit comme une probabilité de défaut : approximativement, la prime annuelle divisée par un moins le taux de recouvrement donne le risque de défaut annuel implicite. Les niveaux par tier sont illustratifs, l'Italie à environ 30 points de base est le repère réel."
+/>
+
+## L'événement de crédit et l'ISDA
+
+Toute la valeur d'un CDS tient à la définition de ce qui déclenche le paiement, et c'est là que le contrat devient technique. Les CDS sont régis par la documentation de l'[ISDA](https://www.isda.org/a/cKwEE/TheCreditEventProcess.pdf), qui standardise les événements de crédit : défaut de paiement, restructuration, et pour les souverains le répudiation ou moratoire. La reconnaissance d'un événement n'est pas laissée aux parties : elle revient à un comité de détermination de l'ISDA, composé de dix membres côté vendeur et cinq côté acheteur, qui tranche à partir d'informations publiques. En cas d'événement, le règlement se fait le plus souvent par une enchère organisée qui fixe le taux de recouvrement, donc le montant versé, égal à cent moins ce recouvrement.
+
+Cette architecture a des conséquences de lecture. Un CDS ne couvre que les événements définis par l'ISDA : un État peut voir sa dette se déprécier fortement, infliger de lourdes pertes, sans qu'aucun événement de crédit ne soit déclaré, si la forme juridique n'entre pas dans la grille. Le CDS assure contre un défaut caractérisé, pas contre une simple moins-value.
+
+## La base CDS-obligataire
+
+Le CDS prend tout son sens quand on le confronte à l'obligation, et cet écart porte un nom : la [base CDS-obligataire](/glossaire/#base-cds-obligataire). En théorie, la prime du CDS et le spread de crédit de l'obligation du même émetteur devraient coïncider, puisqu'ils mesurent le même risque. En pratique, ils divergent, et la divergence est un signal. Une base négative, un CDS moins cher que l'obligation, trahit souvent des frictions de financement ou des contraintes de bilan qui pèsent sur le comptant sans toucher le dérivé. Lire la base, c'est croiser deux marchés pour repérer lequel bouge en premier, et le CDS, plus liquide et vendable à découvert sans détenir le titre, réagit parfois avant le spread au comptant que nous décrivons dans notre guide sur [les spreads de crédit](/guides/lire-les-spreads-de-credit/).
+
+## Le cas de la zone euro : la redénomination
+
+Un CDS souverain de la zone euro cache une subtilité qu'aucun autre ne porte : le [risque de redénomination](/glossaire/#risque-de-redenomination), soit la probabilité qu'un État quitte l'euro et rembourse dans une monnaie nationale dévaluée. Les contrats récents intègrent des clauses qui traitent une redénomination hors des devises de référence comme un événement de crédit, si bien que le CDS italien ou français porte, en plus du risque de défaut classique, une prime d'assurance contre l'éclatement de la zone. C'est ce qui explique qu'en épisode de stress, ces CDS puissent bondir plus vite que la solvabilité seule ne le justifierait, et pourquoi le filet de la BCE, le TPI, pèse indirectement sur leur niveau, comme nous l'analysons dans notre guide sur [la dette souveraine européenne](/guides/lire-la-dette-souveraine-europeenne/).
+
+## Les pièges de lecture
+
+Quelques réflexes évitent les erreurs. Le premier est de ne pas confondre le CDS avec une probabilité de défaut exacte : la conversion dépend d'un taux de recouvrement supposé, et une prime de liquidité ou de rareté peut gonfler le niveau. Le deuxième est de tenir compte de la taille du marché : sur un souverain peu traité, le CDS peut surréagir faute de profondeur, et son mouvement dire plus sur le positionnement que sur le risque. Le troisième est de se rappeler que le CDS assure un événement juridiquement défini, pas une perte de marché. Le quatrième, propre à la zone euro, est de ne jamais oublier la composante redénomination, qui peut faire diverger le CDS du simple spread de crédit.
+
+## Lire un CDS souverain en pratique
+
+La méthode tient en quelques gestes. Lire la prime en points de base comme un thermomètre, en la convertissant mentalement en probabilité de défaut via le recouvrement. Comparer systématiquement le CDS au spread obligataire pour lire la base et repérer le marché qui bouge en premier. Vérifier la liquidité du nom avant d'interpréter un mouvement. Et, pour un souverain de la zone euro, isoler la part de redénomination du risque de défaut pur. Le CDS n'est pas une vérité supérieure au spread, c'est une seconde opinion, gouvernée par ses propres règles, et sa vraie utilité est dans l'écart qu'il entretient avec le comptant.
+
+---
+
+### Sources
+
+- [MacroMicro, « Italy 5-Year Credit Default Swaps » (Italie ~30 pb à 5 ans, CDS souverain le plus traité de l'UE, notionnel quotidien ~571 M$)](https://en.macromicro.me/series/27135/italy-5year-cds)
+- [ISDA, « The Credit Event Process » (événements de crédit, comité de détermination, règlement par enchère)](https://www.isda.org/a/cKwEE/TheCreditEventProcess.pdf)
+- [ESRB, « Credit default swaps – analysis and policies » (marché des CDS souverains européens, notionnels et concentration)](https://www.esrb.europa.eu/pub/pdf/reports/esrb.report250411_creditdefaultswaps.en.pdf)
