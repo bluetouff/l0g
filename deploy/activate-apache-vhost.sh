@@ -118,7 +118,7 @@ rollback() {
       ln -s "$(cat "${BACKUP_DIR}/legacy-https.link")" "$LEGACY_HTTPS"
     fi
     "$APACHECTL" configtest
-    systemctl reload apache2
+    systemctl restart apache2
     echo "Activation Apache refusée; restauration depuis ${BACKUP_DIR}." >&2
   fi
   exit "$exit_code"
@@ -135,13 +135,16 @@ rm -f -- "$LEGACY_HTTP" "$LEGACY_HTTPS"
 
 cmp -s "$SOURCE" "$TARGET"
 "$APACHECTL" configtest
-systemctl reload apache2
+# Un redémarrage complet est requis lorsque a2enmod vient d'activer
+# mod_http2 ou mod_brotli : un simple graceful reload conserve le
+# processus parent sans les nouveaux modules DSO.
+systemctl restart apache2
 systemctl is-active --quiet apache2
 
 HTTP_VERSION="$(curl -fsS --http2 --max-time 20 -o /dev/null -w '%{http_version}' https://l0g.fr/)"
 [ "$HTTP_VERSION" = "2" ] || {
-  echo "HTTP/2 non négocié après rechargement (version obtenue: ${HTTP_VERSION})." >&2
-  exit 1
+  echo "HTTP/2 non négocié après redémarrage (version obtenue: ${HTTP_VERSION})." >&2
+  rollback 1
 }
 BROTLI_HEADERS="$(curl -fsS --max-time 20 -H 'Accept-Encoding: br' -D - -o /dev/null https://l0g.fr/)"
 printf '%s\n' "$BROTLI_HEADERS" | grep -Eiq "^Content-Encoding:[[:space:]]*br[[:space:]]*$"

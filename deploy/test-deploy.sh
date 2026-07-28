@@ -14,7 +14,10 @@ test "$(grep -Fc 'Protocols h2 http/1.1' "${ROOT}/deploy/l0g.fr.apache.conf")" -
 grep -Fq 'BrotliCompressionQuality 5' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'AddOutputFilterByType BROTLI_COMPRESS' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'Module Apache requis absent' "${ROOT}/deploy/activate-apache-vhost.sh"
+test "$(grep -Fc 'systemctl restart apache2' \
+  "${ROOT}/deploy/activate-apache-vhost.sh")" -eq 2
 grep -Fq "HTTP_VERSION=" "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'rollback 1' "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq "Content-Encoding:[[:space:]]*br" "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'Require valid-user' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq '<LocationMatch "^/stats(?:/|$)">' \
