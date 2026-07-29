@@ -1,0 +1,117 @@
+---
+title: "Private credit: risk begins where the data ends"
+description: "The FSB captures $220bn of bank credit lines to private credit funds, while commercial estimates exceed twice that amount. Inside the regulatory data gap."
+pubDate: 2026-07-29T17:00:00+02:00
+updatedDate: 2026-07-29T17:00:00+02:00
+tags: ["private credit", "banks", "insurance", "regulation", "systemic risk", "data"]
+draft: false
+sourceArticle: "credit-prive-risque-trou-donnees"
+sourceUpdatedDate: 2026-07-29
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+The most important signal regulators have sent about [private credit](/en/glossary/credit-prive/) is not the announcement of a giant default. It is an admission about measurement. On 6 May 2026, the Financial Stability Board, or FSB, published fifty pages on a market estimated at **$1.5 trillion to $2 trillion** at the end of 2024. Its most unsettling conclusion lies in one gap: data supplied by its members capture about **$220 billion** of drawn and undrawn bank credit lines to private credit funds, while commercial databases suggest an amount **more than twice as large**.
+
+The FSB is not saying that $440 billion of losses are hiding on balance sheets. It is saying something more basic: for one direct exposure that authorities are trying to monitor, the range runs from one to more than two. After a decade of rapid growth outside traditional banking statistics, the regulatory turning point is therefore not yet an accident. It is the discovery that the system's map does not match its territory.
+
+## The number that breaks the narrative
+
+The FSB report first makes the strongest case for the sector. Private credit finances companies that banks serve less well, offers tailored solutions and disperses risk beyond bank balance sheets. Closed-end funds, with no permanent redemption promise, are also less exposed to an immediate run than deposit-funded banks.
+
+But the strength of that defence depends on what is actually measured. The FSB's **$220 billion** is neither the global stock of private credit nor the loans made directly to its corporate borrowers. It covers bank credit lines, whether used or still available, extended to private credit funds in the data that members could aggregate. Commercial estimates exceed **$440 billion**, the lower bound obtained by doubling $220 billion because the report says "more than twice".
+
+<InfographicBars
+  title="$220bn visible, over $440bn estimated"
+  items={[
+    { label: "Data from FSB members", value: 220, valueLabel: "≈ $220bn", tone: "blue" },
+    { label: "Commercial lower bound", value: 440, valueLabel: "> $440bn", tone: "accent" },
+  ]}
+  max={460}
+  fontScale={1.5}
+  note="Lower bound, not an exact estimate."
+  notes={["Method: 220 × 2; FSB says « more than twice »."]}
+  source="Source: FSB, 6 May 2026."
+  caption="The report does not reveal **$220bn of losses**. It shows that the same bank exposure can measure about $220bn in authorities' data and more than $440bn in commercial datasets. Scope: drawn and undrawn bank credit lines to funds."
+/>
+
+Both estimates remain small relative to bank assets and CET1 capital, the FSB stresses. That is reassuring, but incomplete. It excludes banks also lending to the same companies as the funds, portfolio financing, bank-manager partnerships, [NAV loans](/en/glossary/nav-loan/) and synthetic risk transfers. An exposure that looks modest line by line may become less modest when several business units finance the same risk under different names.
+
+The problem is also concentrated. In research cited by the FSB on bank lending to US BDCs, the top five banks carry **63%** of committed amounts and the top ten about **84%**. These ratios come from a sample of large bank holding companies subject to Fed stress tests. They do not describe the entire market, but show why a system-wide average can obscure the nodes that matter.
+
+## The American regulatory paradox
+
+The Federal Reserve has documented the hole itself. In a technical note published on 26 February 2026, it explains that private credit loans are **not separately identified** in the US Z.1 Financial Accounts. Domestic loans sit among businesses' "unidentified miscellaneous liabilities". The corresponding claims held by private debt funds are not assigned to a lender sector and appear as accounting discrepancies.
+
+Supervision then began compensating for statistics. On 10 April, [Bloomberg reported via Fortune](https://fortune.com/2026/04/10/federal-reserve-us-banks-exposure-private-credit-firms-insurers-treasury-department/) that Fed examiners were asking major banks for details of their lending to private credit funds. The report relies on people familiar with the matter and the Fed did not comment. It should therefore be treated as **well-sourced reporting**, not as a public collection whose questionnaire can be inspected.
+
+The Treasury made its move official. On 1 April, it announced a series of meetings with US and international insurance regulators on recent events, emerging risks and risk-management practices in private credit. The same Bloomberg report says an internal team was assembled for the work. The meeting with US state insurance supervisors is a public fact; the team's composition remains a press report.
+
+This sequence captures the paradox. Authorities want to determine whether private credit can transmit a shock through the system. To do so, they use ad hoc requests, commercial providers and proxies precisely because regular accounts do not yet isolate the object they are monitoring.
+
+## Insurers and the denominator problem
+
+Life insurance makes the data gap visible. The FSB explains that assets can be classified as corporate bonds, private placements or structured products depending on the filer and jurisdiction. Its proxy, based on private placements and private ratings, suggests that about **10%** of North American life insurer portfolios may be private credit, against roughly 3% for non-life insurers. In the International Association of Insurance Supervisors' collection, most jurisdictions remain below **5% of total insurance-sector assets**, but definitions differ.
+
+A Chicago Fed research paper, revised on 27 April 2026, finds **$849 billion**, or **14% of US life insurer balance sheets** in 2024, under a broader definition including private credit to financial borrowers and privately placed ABS. Barclays, according to the trade press, estimates that holdings grew by more than **20% in 2025** to around **10% of total assets**, and exceeded 15% at some private-equity-affiliated insurers, including Athene and Global Atlantic. Moody's, finally, measures **$807 billion** of private credit and illiquid assets at year-end 2025, or **20% of the industry's fixed-income portfolio**.
+
+These numbers do not form a time series. They measure different universes, dates and denominators.
+
+<InfographicBars
+  title="Four measures, four scopes"
+  items={[
+    { label: "IAIS: total assets, most jurisdictions", value: 5, valueLabel: "< 5%", tone: "muted" },
+    { label: "FSB / S&P: life portfolios", value: 10, valueLabel: "≈ 10%", tone: "blue" },
+    { label: "Chicago Fed: US life balance sheets", value: 14, valueLabel: "14%", tone: "amber" },
+    { label: "Moody's: fixed income, private + illiquid", value: 20, valueLabel: "20%", tone: "accent" },
+  ]}
+  max={20}
+  fontScale={1.5}
+  note="Different scopes and denominators."
+  notes={["Measurement comparison, not a risk ranking."]}
+  source="Sources: FSB, IAIS, S&P, Chicago Fed, Moody's."
+  caption="From below 5% to 20%, the gap does not prove that one calculation is wrong. It shows that **« private credit » changes content across collections**. Moody's includes illiquid assets and divides by fixed income; the Chicago Fed divides its own measure by life insurer balance sheets."
+/>
+
+The dispersion is not an editorial footnote. It is the risk. If a supervisor cannot link a loan, its vehicle, its private rating, its ultimate insurer and any offshore reinsurance, it cannot aggregate leverage or detect that the same potential loss crosses several affiliated entities.
+
+The [Apollo, Athene and reinsurance triangle](/en/analysis/apollo-the-triangular-domino/) showed how a manager originates credit, how its insurer provides long-term funding and how liabilities move between jurisdictions. The systemic question begins when that triangle is no longer one case but an architecture reproduced across groups. Our investigation into [life insurers, retirement savings and Bermuda](/en/analysis/life-insurers-retirement-savings-private-credit-bermuda/) details that channel.
+
+## From the triangle and the circle to the network
+
+The [circle of synthetic risk transfers](/en/analysis/the-risk-that-goes-in-circles/) asked another question: what is a transfer worth if the bank also finances the protection buyer? The FSB report now connects these architectures. It cites credit lines to funds, revolvers to companies also borrowing from those funds, insurers holding the assets, private equity controlling some insurers and SRTs held by private credit funds.
+
+The network is also beginning to be measured. In May 2026, Chicago Fed researchers reconstructed life insurers' bond portfolios from regulatory filings. Between 2016 and 2024, private placements rose from **14% to 22%** of their corporate bond holdings. Athene, Apollo's subsidiary, sits near the centre of the private-placement network with **more than 40 systematic connections**, compared with only five for MassMutual, despite the latter being the largest holder by volume.
+
+The same study supplies an important counterpoint. Overall portfolio similarity declined and diversification into private credit reduced some average interconnectedness. Systematic overlaps nevertheless increased in private placements and cluster among a subset of insurers sharing strategies or asset managers. The risk therefore does not look like a crowd holding exactly the same listed asset. It looks like a few clusters linked by the same origination channels.
+
+## The Dimon-Bessent line still has force
+
+Jamie Dimon does not deny the sector's weaknesses. In his 2025 JPMorgan shareholder letter, he cites weaker standards, PIK, aggressive private ratings, poor transparency and insufficiently rigorous marks. Yet he concludes that, "in the great scheme of things", a $1.8 trillion market probably does not present systemic risk. On 15 April, Scott Bessent defended a similar line on CNBC: none of the Treasury's work had revealed a systemic problem.
+
+That reading is not merely industry messaging. In its May 2026 analysis, the European Central Bank finds that direct euro-area exposures are small in aggregate. In its severe scenario, bank losses tied to private credit do not exceed **1.3% of equity**, while direct losses at insurers and pension funds remain absorbable. Closed-end funds have little redemption risk; insurers have long-dated liabilities; bank loans to funds are often senior.
+
+The FSB is equally careful: its members have reported no system-wide stress. Opacity is not evidence of hidden losses. A data gap does not mechanically turn a market into a crisis.
+
+The weakness of the "too small to matter" thesis lies elsewhere. The numerator is uncertain, scope changes by source, and indirect exposures are absent from the figure meant to demonstrate smallness. The sound conclusion is not that Dimon or Bessent are wrong. It is that the confidence placed in their conclusion depends on data that authorities themselves describe as incomplete.
+
+## The real turning point
+
+The FSB already lists the elements of the future map: a harmonised definition, assets by strategy, bank lending by facility type, committed and drawn capital, insurer allocations, private-equity ownership of insurers, fund and borrower leverage, redemptions and SRT holdings. It also calls for identifiers that can connect one borrower to several lenders and for transparency beyond the first layer of investment vehicles.
+
+That is the turning point. A spectacular default would provide a name, a date and a loss amount. It would arrive too late to reveal the structure. The data hole acts earlier: it prevents authorities from knowing whether a bank line, a private bond held by an insurer, a reinsurance arrangement and an SRT tranche are four independent risks or four entries around the same borrower.
+
+The simultaneous awakening of the FSB, Fed, Treasury, ECB and insurance supervisors does not prove that a crisis is imminent. It proves that the market has outgrown the statistical machinery built to follow it. Private credit's first systemic risk may not be its volume. It may be the width of the uncertainty interval around that volume, its holders and its connections.
+
+## Sources
+
+1. Financial Stability Board, [*Report on Vulnerabilities in Private Credit*](https://www.fsb.org/uploads/P060526.pdf), 6 May 2026: market size at end-2024, roughly $220bn of bank lines, commercial estimates above twice that amount, interconnections, data limitations and proposed metrics.
+2. Federal Reserve, [Financial Accounts Z.1, Technical Q&A](https://www.federalreserve.gov/releases/z1/z1_technical_qa.htm), 26 February 2026: private credit loans not separately identified, unidentified miscellaneous liabilities and discrepancies between borrower and lender sectors.
+3. U.S. Treasury, [meetings with insurance regulators](https://home.treasury.gov/news/press-releases/sb0430), 1 April 2026.
+4. Bloomberg via Fortune, [*Fed seeks details on U.S. banks' exposure to private credit firms*](https://fortune.com/2026/04/10/federal-reserve-us-banks-exposure-private-credit-firms-insurers-treasury-department/), 10 April 2026: Fed supervisory queries and the Treasury team, attributed to people familiar with the matter.
+5. Federal Reserve Bank of Chicago, [*Life Insurers' Private Credit Investments and Annuity Market Share Capture*](https://www.chicagofed.org/publications/working-papers/2025/2025-09), revised 27 April 2026: $849bn, 14% of life insurer balance sheets in 2024 and the role of PE-owned insurers.
+6. Federal Reserve Bank of Chicago, [*Assessing Life Insurers' Interconnectedness Through Corporate Credit Investments*](https://www.chicagofed.org/publications/chicago-fed-insights/2026/assessing-life-insurers-interconnectedness), May 2026: private placements, portfolio overlaps, Athene and MassMutual.
+7. European Central Bank, [*Stress in global private credit markets and its implications for euro area financial stability*](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202605_04~3f2135af91.en.html), May 2026: exposures, loss scenario and definitional limits.
+8. JPMorganChase, [Jamie Dimon's 2025 shareholder letter](https://www.jpmorganchase.com/ir/annual-report/2025/ar-ceo-letters): relative size, transparency, valuations, credit standards and systemic-risk assessment.
+9. American Investment Council, [transcript of Scott Bessent's CNBC forum remarks](https://www.investmentcouncil.org/what-they-are-saying-regulators-affirm-private-credit-does-not-pose-systemic-risk/), 15 April 2026. An interested trade-group source, used only for the remarks attributed to Bessent.
+10. Insurance Business, [Barclays estimate of life insurer exposures](https://www.insurancebusinessmag.com/us/news/breaking-news/rising-private-credit-defaults-draw-focus-to-insurers-growing-exposure-576534.aspx), 26 May 2026. A secondary estimate because no public Barclays note was located.
+11. Moody's, [*Private Credit*](https://www.moodys.com/web/en/us/insights/credit-risk/private-credit.html): $807bn of private credit and illiquid assets at year-end 2025, equal to 20% of US life insurers' fixed-income portfolio.

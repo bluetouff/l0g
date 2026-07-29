@@ -23,6 +23,7 @@ import InfographicBars from '../../components/infographic/InfographicBars.astro'
     { label: "Encaissé", value: 2.72, valueLabel: "2,72 M$", tone: "signal" },
     { label: "Prix payé", value: 1.1, valueLabel: "1,1 M$", tone: "muted" },
   ]}
+  fontScale={1.5}
   note="Ligne d'accent rose optionnelle"
   notes={["Ligne grise 1.", "Ligne grise 2."]}
   source="Sources : ..."
@@ -36,6 +37,8 @@ import InfographicBars from '../../components/infographic/InfographicBars.astro'
   Base commune, à réutiliser pour tout nouveau type de graphe.
 - `InfographicBars.astro` : barres horizontales étiquetées (comparaisons, parts).
   Les valeurs sont mises à l'échelle du `max` (ou du plus grand item).
+- `fontScale` : facteur optionnel de 0,75 à 1,6 pour renforcer la lisibilité
+  des libellés, notamment dans les SVG denses affichés sur mobile.
 
 ## Tons disponibles
 
