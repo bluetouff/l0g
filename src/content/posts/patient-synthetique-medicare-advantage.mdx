@@ -1,0 +1,146 @@
+---
+title: "Le patient synthétique : le diagnostic qui rapporte"
+description: "Medicare Advantage paie davantage quand un assuré paraît plus malade. Enquête sur le codage, la sélection des patients et 76 Md$ de surcoût."
+pubDate: 2026-07-29T18:30:00+02:00
+updatedDate: 2026-07-29T18:30:00+02:00
+tags: ["Medicare Advantage", "assurance santé", "États-Unis", "régulation", "fraude", "données"]
+draft: false
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Dans Medicare Advantage, un patient existe deux fois. Il y a la personne qui consulte, reçoit un soin et supporte une maladie. Puis il y a son double administratif : une collection de diagnostics transformée en score de risque. C'est ce second patient qui détermine une partie du chèque mensuel versé par l'État fédéral à son assureur. Plus il paraît malade, plus le chèque augmente. L'ingénierie financière la plus troublante de l'assurance santé américaine ne se loge donc pas dans un produit dérivé. Elle se loge dans le dossier médical.*
+
+Le principe est légitime. Medicare doit payer davantage un régime qui couvre des personnes réellement plus malades, faute de quoi chaque assureur aurait intérêt à éviter les patients coûteux. Le problème commence lorsque le diagnostic n'est plus seulement une information clinique mais une unité de revenu. En mars 2026, la commission indépendante qui conseille le Congrès sur Medicare, MedPAC, a estimé que le programme verserait **615 milliards de dollars** aux plans Medicare Advantage cette année, soit **76 milliards, ou 14 %, de plus** que si les mêmes bénéficiaires étaient restés dans Medicare traditionnel.
+
+MedPAC ne qualifie pas ces 76 milliards de fraude et précise qu'ils ne mesurent ni les profits ni les frais administratifs des assureurs. Son calcul révèle néanmoins une mécanique singulière : avant les effets de sélection et de codage, les dépenses auraient été inférieures de 3 milliards à celles de Medicare traditionnel. La sélection favorable ajoute 57 milliards ; le codage plus intense, après correction réglementaire, en ajoute 22. L'avantage initial disparaît et devient un surcoût massif.
+
+## Un dossier médical devient une formule de paiement
+
+Medicare Advantage, ou Medicare Part C, permet à un bénéficiaire de confier sa couverture à un assureur privé plutôt que de rester dans le régime traditionnel payé acte par acte. CMS, l'agence fédérale qui administre Medicare, verse alors au plan une somme fixe chaque mois pour chaque adhérent. Cette capitation est corrigée en fonction de l'âge, de certaines caractéristiques démographiques et des diagnostics transmis par le plan.
+
+Le calcul est explicite. CMS regroupe les diagnostics dans des catégories cliniques hiérarchisées, les **Hierarchical Condition Categories**, ou HCC. Chaque catégorie porte un coefficient représentant le coût attendu de la pathologie. Le score de risque additionne ces coefficients et les facteurs démographiques. Le paiement final correspond au taux de base du plan multiplié par ce score, comme l'explique l'[inspection générale du département de la Santé](https://oig.hhs.gov/documents/evaluation/10028/OEI-03-23-00380.pdf#page=4).
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 558" role="img" aria-label="Transformation des diagnostics d'un assuré Medicare Advantage en paiement mensuel à son assureur" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="558" fill="#0c0d10"></rect>
+  <text x="32" y="42" fill="#f5f6f8" font-size="25" font-weight="700">Du diagnostic au paiement</text>
+  <text x="32" y="70" fill="#8b909b" font-size="18">La donnée clinique devient un facteur financier.</text>
+
+  <rect x="54" y="98" width="612" height="76" rx="8" fill="#20232b" stroke="#7aa2f7" stroke-width="2"></rect>
+  <text x="78" y="130" fill="#7aa2f7" font-size="20" font-weight="700">1. Sources de diagnostics</text>
+  <text x="78" y="158" fill="#d6d9df" font-size="18">Soins, visite à domicile, examen rétrospectif du dossier</text>
+
+  <path d="M360 174 L360 205" stroke="#8b909b" stroke-width="3"></path>
+  <path d="M350 197 L360 211 L370 197" fill="none" stroke="#8b909b" stroke-width="3"></path>
+
+  <rect x="54" y="214" width="612" height="76" rx="8" fill="#20232b" stroke="#f5b13d" stroke-width="2"></rect>
+  <text x="78" y="246" fill="#f5b13d" font-size="20" font-weight="700">2. Classement dans les HCC</text>
+  <text x="78" y="274" fill="#d6d9df" font-size="18">Chaque catégorie reçoit un coefficient de coût attendu</text>
+
+  <path d="M360 290 L360 321" stroke="#8b909b" stroke-width="3"></path>
+  <path d="M350 313 L360 327 L370 313" fill="none" stroke="#8b909b" stroke-width="3"></path>
+
+  <rect x="54" y="330" width="612" height="76" rx="8" fill="#20232b" stroke="#5eead4" stroke-width="2"></rect>
+  <text x="78" y="362" fill="#5eead4" font-size="20" font-weight="700">3. Score de risque individuel</text>
+  <text x="78" y="390" fill="#d6d9df" font-size="18">Somme des HCC et des facteurs démographiques</text>
+
+  <path d="M360 406 L360 437" stroke="#8b909b" stroke-width="3"></path>
+  <path d="M350 429 L360 443 L370 429" fill="none" stroke="#8b909b" stroke-width="3"></path>
+
+  <rect x="54" y="446" width="612" height="64" rx="8" fill="#ff4d87" opacity="0.92"></rect>
+  <text x="78" y="474" fill="#0c0d10" font-size="20" font-weight="700">4. Paiement mensuel au plan</text>
+  <text x="78" y="499" fill="#0c0d10" font-size="18">Taux de base × score de risque</text>
+
+  <text x="54" y="540" fill="#8b909b" font-size="16">Source : HHS-OIG, octobre 2024. Schéma simplifié du modèle CMS-HCC.</text>
+</svg>
+<figcaption>Le diagnostic possède une valeur monétaire parce qu'il modifie le score. Le modèle protège en principe les plans qui couvrent les patients les plus coûteux. Il crée aussi une incitation à documenter chaque pathologie, réelle ou non, qui augmente le paiement.</figcaption>
+</figure>
+
+Le mécanisme n'est pas marginal. En 2025, **55 % des bénéficiaires éligibles** avaient choisi Medicare Advantage, soit environ 34,9 millions de personnes. Une différence minime de score, multipliée par des millions d'adhérents et douze mensualités, devient une ligne de revenu considérable. MedPAC résume l'effet : documenter un HCC supplémentaire peut augmenter significativement le paiement reçu pour un assuré.
+
+## Le premier arbitrage sélectionne le bon assuré
+
+Le premier gain n'exige aucune modification du dossier médical. Il vient de la **sélection favorable**. Dans la définition de MedPAC, elle apparaît lorsque les personnes dont le score surestime les dépenses futures rejoignent plus souvent Medicare Advantage que celles dont le score les sous-estime. Le plan peut alors être payé pour un risque statistique plus élevé que les soins effectivement consommés.
+
+Cette sélection n'est pas nécessairement organisée. Les réseaux de médecins, les avantages proposés, la préférence des personnes pour certains modes de soins et des différences de santé mal saisies par le modèle peuvent suffire. Elle n'en produit pas moins un effet financier. MedPAC lui attribue **57 milliards de dollars** sur le surcoût estimé de 76 milliards en 2026.
+
+Une procédure fédérale montre toutefois que l'incitation peut sortir du modèle passif. En mai 2025, le Department of Justice a déposé une [plainte contre Aetna, Elevance, Humana et trois courtiers](https://www.justice.gov/opa/pr/united-states-files-false-claims-act-complaint-against-three-national-health-insurance). Le gouvernement allègue que les assureurs ont versé des centaines de millions de dollars aux intermédiaires en échange d'inscriptions et qu'Aetna et Humana les ont incités à détourner des bénéficiaires handicapés jugés moins rentables. Il s'agit d'allégations contestables devant le juge : aucune responsabilité n'a encore été établie. Leur logique économique rejoint néanmoins le problème mesuré par MedPAC. Le score est censé neutraliser le coût du malade ; les acteurs auraient encore intérêt à choisir qui entre.
+
+## Le second arbitrage fabrique le bon score
+
+Une fois le bénéficiaire inscrit, le deuxième levier consiste à rendre son profil plus complet, donc souvent plus malade sur le papier. Les plans peuvent organiser des évaluations de risque à domicile, les **health risk assessments**, puis examiner rétrospectivement les dossiers afin d'identifier des diagnostics que le médecin n'aurait pas transmis. Ces outils peuvent corriger une information incomplète et améliorer le suivi. Ils peuvent aussi produire un code payable sans produire de soin.
+
+L'[HHS-OIG a isolé ce risque dans les données de 2022](https://oig.hhs.gov/reports/all/2024/medicare-advantage-questionable-use-of-health-risk-assessments-continues-to-drive-up-payments-to-plans-by-billions/). Des diagnostics apparus uniquement dans les évaluations de risque ou les examens de dossiers associés, sans visite, examen, procédure ni fourniture ultérieure portant ces diagnostics, ont généré **7,5 milliards de dollars de paiements en 2023** pour 1,7 million d'adhérents. Les évaluations à domicile et les examens qui leur étaient liés représentaient 63 % de cette somme. Vingt sociétés concentraient 80 % des paiements.
+
+L'inspection ne conclut pas que les 7,5 milliards étaient tous indus. Elle pose une alternative plus dérangeante : soit les diagnostics étaient inexacts et les paiements impropres, soit des maladies sérieuses avaient été identifiées sans que les patients reçoivent ensuite les soins nécessaires. Dans les deux cas, le code a mieux circulé que le soin.
+
+Le même rapport indique que CMS avait identifié **12,7 milliards de dollars de surpaiements nets** pour l'exercice 2023 à partir de diagnostics transmis par les plans mais non étayés par les dossiers médicaux. Cette mesure n'est pas à additionner aux 7,5 milliards : les périmètres se recoupent et les méthodes diffèrent. Elle confirme seulement que l'écart entre diagnostic facturable et diagnostic démontrable est une catégorie budgétaire, pas une anecdote.
+
+<InfographicBars
+  title="De 3 Md$ d’économie à 76 Md$ de surcoût"
+  items={[
+    { label: "Surcoût total face à Medicare traditionnel", value: 76, valueLabel: "+ 76 Md$", tone: "accent" },
+    { label: "Effet de la sélection favorable", value: 57, valueLabel: "+ 57 Md$", tone: "blue" },
+    { label: "Effet du codage après correction CMS", value: 22, valueLabel: "+ 22 Md$", tone: "amber" },
+  ]}
+  max={80}
+  fontScale={1.45}
+  note="Point de départ : 3 Md$ d'économie."
+  notes={["Calcul MedPAC : - 3 + 57 + 22 = + 76 Md$."]}
+  source="Source : MedPAC, mars 2026, pages 345 à 348."
+  caption="Les **57 Md$ et 22 Md$ sont des composantes**, pas des estimations de fraude. Le calcul part d'une dépense inférieure d'environ 3 Md$ avant sélection et codage. MedPAC précise aussi que les 76 Md$ ne mesurent pas les profits des plans."
+/>
+
+## Trois dossiers judiciaires exposent la chaîne
+
+Les affaires conclues en 2026 permettent de suivre l'incitation depuis l'assureur jusqu'au prestataire de codage. Elles n'ont pas toutes le même statut juridique.
+
+En janvier, les affiliés de Kaiser Permanente ont accepté de verser **556 millions de dollars** pour solder des allégations au titre du False Claims Act. Le gouvernement soutenait que des médecins avaient été poussés à ajouter, parfois plus d'un an après la consultation, des diagnostics étrangers au motif de la visite. Des objectifs financiers auraient été assignés aux médecins et aux établissements. Le [Department of Justice précise expressément](https://www.justice.gov/usao-ndca/pr/kaiser-permanente-affiliates-pay-556m-resolve-false-claims-act-allegations) que l'accord ne constitue pas une détermination de responsabilité.
+
+En mars, Aetna a accepté de payer **117,7 millions de dollars** pour résoudre d'autres allégations. Le dossier décrit une asymétrie remarquable : les examens de dossiers servaient à ajouter les codes ouvrant droit à davantage de paiements, mais certains codes déjà transmis, que ces mêmes examens ne confirmaient pas, n'auraient pas été retirés. **106,2 millions** de l'accord concernent ce mécanisme ; 11,5 millions concernent des codes d'obésité morbide incompatibles avec l'indice de masse corporelle enregistré. Là encore, [le règlement ne vaut pas jugement de responsabilité](https://www.justice.gov/usao-edpa/pr/aetna-agrees-pay-1177-million-resolve-allegations-it-violated-false-claims-act).
+
+En juin, Matrix Medical Network, prestataire d'évaluations à domicile, a conclu un règlement de **36,5 millions de dollars** accompagné d'un accord d'intégrité de cinq ans. La différence est importante : selon le [communiqué du procureur fédéral de Manhattan](https://www.justice.gov/usao-sdny/pr/united-states-announces-365-million-settlement-medicare-fraud-lawsuit-against-matrix), Matrix a effectué des admissions factuelles. L'entreprise facturait généralement entre 350 et 450 dollars chaque évaluation et avait signalé des maladies chroniques sans informations cliniques suffisantes. Certaines n'apparaissaient chez aucun autre professionnel de santé dans les deux années précédant ou suivant la visite.
+
+Ces montants de règlement ne mesurent ni le rendement du système ni la totalité des paiements indus. Ils documentent trois endroits où la même donnée pouvait être monétisée : l'addendum médical, l'examen asymétrique du dossier et la visite à domicile sous-traitée.
+
+## Le codage intensif n'est pas synonyme de fraude
+
+L'analyse serait fausse si elle assimilait chaque écart de codage à un faux diagnostic. MedPAC cite plusieurs causes. Les plans peuvent documenter plus complètement des maladies réelles que les médecins de Medicare traditionnel, lesquels n'ont pas toujours intérêt à transmettre tous les codes possibles. Les évaluations de risque peuvent découvrir une pathologie négligée et déclencher une prise en charge. Le modèle apporte aussi une protection indispensable aux personnes dont les soins sont réellement coûteux.
+
+Medicare Advantage offre par ailleurs des prestations absentes du régime traditionnel, réduit certaines franchises et impose un plafond annuel de reste à charge. Les bénéficiaires déclarent généralement être satisfaits de leur couverture. Les 76 milliards supplémentaires financent en partie ces avantages, même si tous les bénéficiaires de Medicare, y compris ceux qui restent dans le régime traditionnel, les subventionnent par leurs cotisations et leurs impôts. MedPAC estime ainsi que le surpaiement des plans relève les primes de Part B d'environ **11 milliards de dollars en 2026**, soit 175 dollars par bénéficiaire sur l'année.
+
+La réforme du modèle V28 montre aussi que la régulation peut produire un effet. MedPAC avait estimé l'écart de paiement à 20 % en 2025 ; il le ramène à 14 % pour 2026, principalement grâce à la fin du déploiement de ce modèle et à une croissance plus lente des scores. Le mécanisme n'est donc ni immuable ni intégralement capturé par les assureurs.
+
+Mais la correction reste partielle. Après l'ajustement réglementaire minimal de 5,9 %, les scores Medicare Advantage seraient encore **4 % plus élevés** que ceux de bénéficiaires comparables dans le régime traditionnel, soit les 22 milliards attribués au codage. CMS pourrait appliquer une correction supérieure au minimum légal. Selon MedPAC, il ne l'a jamais fait.
+
+## Une porte se ferme en 2027
+
+CMS a finalement ciblé l'un des outils les plus contestés. À partir de 2027, les diagnostics tirés d'un examen de dossier qui n'est relié à aucune rencontre précise avec le patient ne compteront plus dans le score, sauf exception lorsqu'un bénéficiaire change d'organisation Medicare Advantage. Les diagnostics provenant uniquement d'un appel audio seront également exclus.
+
+L'agence estime que la suppression de ces examens non reliés retranchera **1,53 %** aux paiements par rapport au scénario qui les conservait. Pourtant, sous l'effet notamment de la hausse des coûts de référence, les [paiements aux plans progresseraient encore de 2,48 %, soit plus de 13 milliards de dollars](https://www.cms.gov/newsroom/fact-sheets/2027-medicare-advantage-part-d-rate-announcement). CMS prévoit en outre une hausse moyenne de 2,5 % des scores liée à l'évolution de la population et aux pratiques de codage.
+
+La réforme ferme donc une porte, pas le bâtiment. Elle ne supprime pas les diagnostics associés à une rencontre réelle, les évaluations de risque à domicile ni l'incitation générale à maximiser les HCC. Deux recommandations de l'HHS-OIG restent ouvertes : restreindre davantage les diagnostics provenant uniquement des visites à domicile et auditer spécifiquement leur validité. CMS n'avait pas approuvé ces deux recommandations lors de la publication du rapport.
+
+## Le risque change de forme
+
+Dans notre enquête sur le [trou statistique du crédit privé](/posts/credit-prive-risque-trou-donnees/), le risque venait d'une donnée absente : les autorités ne pouvaient pas relier les expositions. Ici, l'incitation fonctionne en sens inverse. La donnée existe parce qu'elle est payable. Le système récompense la production d'une représentation administrative du malade, parfois plus vite qu'il ne vérifie le malade réel.
+
+Le [voyage du crédit à la consommation jusqu'à la rente](/posts/de-la-carte-a-la-rente-qui-detient-risque-consommateur/) montrait comment une créance change de détenteur. Medicare Advantage montre comment une information change de nature. Le diagnostic part de la consultation, devient un HCC, puis un score et enfin un flux fédéral. À chaque étape, sa signification clinique s'éloigne un peu de sa valeur financière.
+
+Le test est désormais observable. Si l'exclusion des examens non reliés en 2027 réduit durablement l'écart de codage, si les audits récupèrent davantage de paiements indus et si les maladies détectées à domicile donnent lieu à des soins vérifiables, la figure du patient synthétique perdra de sa pertinence. Si les scores continuent de progresser plus vite que le coût des patients comparables, le problème ne sera pas un prestataire déviant. Il sera dans le prix attaché au diagnostic lui-même.
+
+## Limites
+
+Les estimations de MedPAC reposent sur des contrefactuels : elles comparent les paiements observés à ce qu'auraient coûté les mêmes bénéficiaires dans Medicare traditionnel. Elles sont sensibles aux données, au modèle de risque et aux hypothèses de sélection. Les 57 milliards de sélection favorable, les 22 milliards de codage et les 7,5 milliards liés aux évaluations de risque ne décrivent pas le même périmètre et ne doivent pas être additionnés.
+
+Les règlements Kaiser et Aetna résolvent des allégations sans détermination de responsabilité. Matrix a réalisé des admissions factuelles dans son accord, mais ses pratiques ne démontrent pas que tous les prestataires ou tous les plans agissent de la même manière. Enfin, un diagnostic absent des autres données de soins peut être faux ou révéler un défaut de suivi ; les données disponibles ne permettent pas toujours de trancher entre les deux.
+
+## Sources
+
+1. Medicare Payment Advisory Commission, [*The Medicare Advantage Program: Status Report*](https://www.medpac.gov/wp-content/uploads/2026/03/Mar26_Ch12_MedPAC_Report_To_Congress_SEC.pdf), mars 2026, notamment pages 343 à 348, 351 à 352 et 386 à 387 : paiements, sélection favorable, intensité de codage, contrepoints et méthode.
+2. HHS Office of Inspector General, [*Medicare Advantage: Questionable Use of Health Risk Assessments Continues To Drive Up Payments to Plans by Billions*](https://oig.hhs.gov/documents/evaluation/10028/OEI-03-23-00380.pdf), octobre 2024 : modèle HCC, 7,5 Md$, 1,7 million d'adhérents, concentration et limites.
+3. Centers for Medicare & Medicaid Services, [*2027 Medicare Advantage and Part D Rate Announcement*](https://www.cms.gov/newsroom/fact-sheets/2027-medicare-advantage-part-d-rate-announcement), 6 avril 2026 : exclusion des diagnostics non reliés, effets sur les paiements et évolution attendue des scores.
+4. U.S. Department of Justice, [règlement Kaiser Permanente](https://www.justice.gov/usao-ndca/pr/kaiser-permanente-affiliates-pay-556m-resolve-false-claims-act-allegations), 14 janvier 2026.
+5. U.S. Department of Justice, [règlement Aetna](https://www.justice.gov/usao-edpa/pr/aetna-agrees-pay-1177-million-resolve-allegations-it-violated-false-claims-act), 10 mars 2026.
+6. U.S. Department of Justice, [règlement Matrix Medical Network](https://www.justice.gov/usao-sdny/pr/united-states-announces-365-million-settlement-medicare-fraud-lawsuit-against-matrix), 3 juin 2026.
+7. U.S. Department of Justice, [plainte visant trois assureurs et trois courtiers Medicare Advantage](https://www.justice.gov/opa/pr/united-states-files-false-claims-act-complaint-against-three-national-health-insurance), 1er mai 2025 : commissions alléguées, orientation des adhérents et absence de détermination de responsabilité.

@@ -1,0 +1,148 @@
+---
+title: "The synthetic patient: the diagnosis that pays"
+description: "Medicare Advantage pays more when an enrollee looks sicker. Inside diagnosis coding, patient selection and a projected $76bn payment gap."
+pubDate: 2026-07-29T18:30:00+02:00
+updatedDate: 2026-07-29T18:30:00+02:00
+tags: ["Medicare Advantage", "health insurance", "United States", "regulation", "fraud", "data"]
+draft: false
+sourceArticle: "patient-synthetique-medicare-advantage"
+sourceUpdatedDate: 2026-07-29
+---
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*In Medicare Advantage, a patient exists twice. There is the person who visits a doctor, receives care and lives with an illness. Then there is the administrative double: a collection of diagnoses converted into a risk score. This second patient determines part of the monthly cheque the federal government sends to the insurer. The sicker that patient looks, the larger the cheque. The most disturbing financial engineering in American health insurance therefore sits not in a derivative, but in the medical record.*
+
+The principle is legitimate. Medicare must pay more to a plan covering genuinely sicker people, otherwise every insurer would have an incentive to avoid costly patients. The problem begins when a diagnosis becomes not only clinical information but a unit of revenue. In March 2026, the independent commission advising Congress on Medicare, MedPAC, estimated that the programme would pay **$615 billion** to Medicare Advantage plans this year, **$76 billion, or 14%, more** than if the same beneficiaries had remained in traditional Medicare.
+
+MedPAC does not call the $76 billion fraud and states that the estimate measures neither plan profits nor administrative expenses. Its calculation nevertheless reveals a peculiar mechanism. Before selection and coding effects, spending would have been $3 billion below traditional Medicare. Favourable selection adds $57 billion; more intensive coding, after the regulatory adjustment, adds $22 billion. An initial saving disappears and becomes a large additional cost.
+
+## A medical record becomes a payment formula
+
+Medicare Advantage, or Medicare Part C, allows a beneficiary to receive coverage from a private insurer instead of remaining in the traditional fee-for-service programme. CMS, the federal agency administering Medicare, then pays the plan a fixed monthly amount for every enrollee. That capitated payment is adjusted for age, certain demographic characteristics and diagnoses submitted by the plan.
+
+The calculation is explicit. CMS groups diagnoses into **Hierarchical Condition Categories**, or HCCs. Each category carries a coefficient representing the expected cost of the condition. The risk score adds those coefficients and demographic factors. The final payment equals the plan's base rate multiplied by the score, as the [Department of Health and Human Services inspector general explains](https://oig.hhs.gov/documents/evaluation/10028/OEI-03-23-00380.pdf#page=4).
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 558" role="img" aria-label="How a Medicare Advantage enrollee's diagnoses become a monthly payment to the insurer" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="558" fill="#0c0d10"></rect>
+  <text x="32" y="42" fill="#f5f6f8" font-size="25" font-weight="700">From diagnosis to payment</text>
+  <text x="32" y="70" fill="#8b909b" font-size="18">Clinical data becomes a financial factor.</text>
+
+  <rect x="54" y="98" width="612" height="76" rx="8" fill="#20232b" stroke="#7aa2f7" stroke-width="2"></rect>
+  <text x="78" y="130" fill="#7aa2f7" font-size="20" font-weight="700">1. Sources of diagnoses</text>
+  <text x="78" y="158" fill="#d6d9df" font-size="18">Care, home assessment, retrospective chart review</text>
+
+  <path d="M360 174 L360 205" stroke="#8b909b" stroke-width="3"></path>
+  <path d="M350 197 L360 211 L370 197" fill="none" stroke="#8b909b" stroke-width="3"></path>
+
+  <rect x="54" y="214" width="612" height="76" rx="8" fill="#20232b" stroke="#f5b13d" stroke-width="2"></rect>
+  <text x="78" y="246" fill="#f5b13d" font-size="20" font-weight="700">2. Grouping into HCCs</text>
+  <text x="78" y="274" fill="#d6d9df" font-size="18">Each category receives an expected-cost coefficient</text>
+
+  <path d="M360 290 L360 321" stroke="#8b909b" stroke-width="3"></path>
+  <path d="M350 313 L360 327 L370 313" fill="none" stroke="#8b909b" stroke-width="3"></path>
+
+  <rect x="54" y="330" width="612" height="76" rx="8" fill="#20232b" stroke="#5eead4" stroke-width="2"></rect>
+  <text x="78" y="362" fill="#5eead4" font-size="20" font-weight="700">3. Individual risk score</text>
+  <text x="78" y="390" fill="#d6d9df" font-size="18">Sum of HCCs and demographic factors</text>
+
+  <path d="M360 406 L360 437" stroke="#8b909b" stroke-width="3"></path>
+  <path d="M350 429 L360 443 L370 429" fill="none" stroke="#8b909b" stroke-width="3"></path>
+
+  <rect x="54" y="446" width="612" height="64" rx="8" fill="#ff4d87" opacity="0.92"></rect>
+  <text x="78" y="474" fill="#0c0d10" font-size="20" font-weight="700">4. Monthly payment to the plan</text>
+  <text x="78" y="499" fill="#0c0d10" font-size="18">Base rate × risk score</text>
+
+  <text x="54" y="540" fill="#8b909b" font-size="16">Source: HHS-OIG, October 2024. Simplified CMS-HCC model.</text>
+</svg>
+<figcaption>A diagnosis has monetary value because it changes the score. The model is designed to protect plans covering the costliest patients. It also creates an incentive to document every condition, real or otherwise, that increases payment.</figcaption>
+</figure>
+
+The mechanism is not marginal. In 2025, **55% of eligible beneficiaries** had chosen Medicare Advantage, about 34.9 million people. A small difference in scores, multiplied across millions of enrollees and twelve monthly payments, becomes a significant revenue line. MedPAC puts it plainly: documenting one additional HCC can materially increase the payment for an enrollee.
+
+## The first arbitrage selects the right enrollee
+
+The first gain requires no change to the medical record. It comes from **favourable selection**. MedPAC defines this as beneficiaries whose scores overpredict future spending enrolling in Medicare Advantage more often than beneficiaries whose scores underpredict it. In other words, a plan may be paid for more statistical risk than the care its members actually consume.
+
+This selection is not necessarily organised. Provider networks, benefit design, individual preferences about how to receive care and health differences that the model fails to capture can be sufficient. The financial effect remains. MedPAC attributes **$57 billion** of the estimated $76 billion payment gap in 2026 to favourable selection.
+
+A federal case shows how the incentive can move beyond passive selection. In May 2025, the Department of Justice filed a [complaint against Aetna, Elevance, Humana and three brokers](https://www.justice.gov/opa/pr/united-states-files-false-claims-act-complaint-against-three-national-health-insurance). The government alleges that insurers paid hundreds of millions of dollars to intermediaries for enrolments and that Aetna and Humana pressured them to steer away disabled beneficiaries considered less profitable. These remain allegations to be tested in court: no liability has been determined. Their economic logic nevertheless matches MedPAC's measurement problem. Risk adjustment is supposed to neutralise the cost of illness, yet actors may still have an incentive to choose who enters.
+
+## The second arbitrage manufactures the right score
+
+Once a beneficiary is enrolled, the second lever is to make the profile more complete and therefore often sicker on paper. Plans can arrange in-home **health risk assessments**, then retrospectively review medical records to find diagnoses that the physician did not submit. These tools can correct incomplete information and improve follow-up. They can also produce a payable code without producing care.
+
+The [HHS inspector general isolated the risk in 2022 data](https://oig.hhs.gov/reports/all/2024/medicare-advantage-questionable-use-of-health-risk-assessments-continues-to-drive-up-payments-to-plans-by-billions/). Diagnoses appearing only in risk assessments or linked chart reviews, with no other visit, test, procedure or supply carrying those diagnoses, generated **$7.5 billion of payments in 2023** for 1.7 million enrollees. In-home assessments and the reviews linked to them represented 63% of that amount. Twenty companies generated 80% of the payments.
+
+The inspector general does not conclude that all $7.5 billion was improper. It presents a more troubling fork: either the diagnoses were inaccurate and payments were improper, or serious conditions had been identified without patients subsequently receiving necessary care. Either way, the code travelled better than the care.
+
+The same report says CMS identified **$12.7 billion in net overpayments** in fiscal 2023 from plan-submitted diagnoses unsupported by medical records. That measure should not be added to the $7.5 billion: the scopes overlap and the methods differ. It confirms only that the distance between a payable diagnosis and a demonstrable diagnosis is a budget category, not an anecdote.
+
+<InfographicBars
+  title="How a $3bn saving becomes a $76bn extra cost"
+  items={[
+    { label: "Total above traditional Medicare", value: 76, valueLabel: "+ $76bn", tone: "accent" },
+    { label: "Favourable-selection effect", value: 57, valueLabel: "+ $57bn", tone: "blue" },
+    { label: "Coding effect after CMS adjustment", value: 22, valueLabel: "+ $22bn", tone: "amber" },
+  ]}
+  max={80}
+  fontScale={1.45}
+  note="Starting point: $3bn lower spending."
+  notes={["MedPAC calculation: - $3bn + $57bn + $22bn = + $76bn."]}
+  source="Source: MedPAC, March 2026, pages 345 to 348."
+  caption="The **$57bn and $22bn are components**, not fraud estimates. The calculation begins with spending about $3bn below traditional Medicare before selection and coding. MedPAC also states that the $76bn is not a measure of plan profits."
+/>
+
+## Three cases expose the chain
+
+Cases resolved in 2026 trace the incentive from insurer to coding contractor. They do not all have the same legal status.
+
+In January, Kaiser Permanente affiliates agreed to pay **$556 million** to settle False Claims Act allegations. The government said physicians were pressured to add diagnoses, sometimes more than a year after the consultation, that had nothing to do with the visit. Financial targets were allegedly assigned to physicians and facilities. The [Department of Justice expressly states](https://www.justice.gov/usao-ndca/pr/kaiser-permanente-affiliates-pay-556m-resolve-false-claims-act-allegations) that the settlement is not a determination of liability.
+
+In March, Aetna agreed to pay **$117.7 million** to resolve separate allegations. The case describes a striking asymmetry: chart reviews were used to add codes producing extra payment, while previously submitted codes that the same reviews did not support were allegedly left in place. **$106.2 million** of the settlement addresses that mechanism; $11.5 million concerns morbid-obesity codes inconsistent with recorded body-mass index. Again, the [settlement is not a liability judgment](https://www.justice.gov/usao-edpa/pr/aetna-agrees-pay-1177-million-resolve-allegations-it-violated-false-claims-act).
+
+In June, Matrix Medical Network, an in-home assessment contractor, entered a **$36.5 million** settlement and a five-year corporate integrity agreement. The distinction matters: according to the [federal prosecutor in Manhattan](https://www.justice.gov/usao-sdny/pr/united-states-announces-365-million-settlement-medicare-fraud-lawsuit-against-matrix), Matrix made factual admissions. It generally charged $350 to $450 per assessment and reported chronic conditions without sufficient clinical information. Some appeared in no record from any other provider in the two years before or after the home visit.
+
+These settlement values measure neither the system's return nor the full amount of improper payments. They document three places where the same data could be monetised: the medical-record addendum, the asymmetric chart review and the outsourced home visit.
+
+## Intensive coding is not synonymous with fraud
+
+The analysis would be wrong if it treated every coding difference as a false diagnosis. MedPAC lists several causes. Plans may document real conditions more completely than traditional Medicare physicians, who do not always have an incentive to submit every possible code. Risk assessments can discover a neglected condition and trigger care. The model also provides essential protection for people whose treatment is genuinely costly.
+
+Medicare Advantage also offers benefits absent from traditional Medicare, reduces some cost sharing and includes an annual out-of-pocket limit. Enrollees generally report satisfaction with their coverage. The extra $76 billion helps finance these benefits, even though all Medicare beneficiaries, including those in traditional Medicare, subsidise them through taxes and premiums. MedPAC estimates that higher plan payments will raise aggregate Part B premiums by about **$11 billion in 2026**, or $175 per beneficiary over the year.
+
+The V28 model reform also shows that regulation can work. MedPAC estimated the payment gap at 20% in 2025 and lowers it to 14% for 2026, mainly because V28 finished phasing in and risk-score growth slowed. The mechanism is neither immutable nor entirely captured by insurers.
+
+But the correction remains incomplete. After the minimum 5.9% regulatory adjustment, Medicare Advantage scores are still projected to be **4% higher** than scores for comparable traditional Medicare beneficiaries, producing the $22 billion coding component. CMS has the authority to impose a larger adjustment than the statutory minimum. According to MedPAC, it has never done so.
+
+## One door closes in 2027
+
+CMS has finally targeted one of the most contested tools. Starting in 2027, diagnoses found in a chart review that is not linked to a specific patient encounter will no longer count towards the score, except when a beneficiary switches from one Medicare Advantage organisation to another. Diagnoses originating only in an audio call will also be excluded.
+
+The agency estimates that removing these unlinked reviews will subtract **1.53%** from payments relative to retaining them. Yet, driven in part by higher underlying costs, [payments to plans are still projected to rise by 2.48%, or more than $13 billion](https://www.cms.gov/newsroom/fact-sheets/2027-medicare-advantage-part-d-rate-announcement). CMS also expects average risk scores to grow 2.5% because of population changes and coding practices.
+
+The reform therefore closes a door, not the building. It does not eliminate diagnoses associated with a real encounter, in-home risk assessments or the general incentive to maximise HCCs. Two HHS-OIG recommendations remain open: further restrict diagnoses produced only by home assessments and audit their validity. CMS had not concurred with either recommendation when the report was issued.
+
+## The risk changes form
+
+In our investigation into private credit's [regulatory data gap](/en/analysis/private-credit-risk-begins-where-data-ends/), risk came from missing data: authorities could not connect exposures. Here the incentive works in reverse. The data exists because it is payable. The system rewards production of an administrative representation of illness, sometimes faster than it verifies the real patient.
+
+The [journey from consumer credit to an annuity](/en/analysis/from-the-credit-card-to-the-annuity/) showed how a claim changes holders. Medicare Advantage shows how information changes nature. A diagnosis leaves the consultation, becomes an HCC, then a score and finally a federal cash flow. At every stage, its clinical meaning moves a little further from its financial value.
+
+The test is now observable. If the 2027 exclusion of unlinked reviews durably reduces coding differences, if audits recover more improper payments and if conditions detected at home lead to verifiable care, the synthetic patient will become a weaker description. If scores continue to grow faster than the cost of comparable patients, the problem will not be a rogue contractor. It will lie in the price attached to the diagnosis itself.
+
+## Limitations
+
+MedPAC's estimates rely on counterfactuals: they compare observed payments with what the same beneficiaries might have cost in traditional Medicare. They are sensitive to data, the risk model and selection assumptions. The $57 billion favourable-selection effect, $22 billion coding effect and $7.5 billion tied to risk assessments do not describe the same scope and should not be added.
+
+The Kaiser and Aetna settlements resolve allegations without a determination of liability. Matrix made factual admissions in its agreement, but its conduct does not establish that every contractor or plan behaves in the same way. Finally, a diagnosis missing from other care data may be false or may reveal failed follow-up; available data cannot always distinguish between the two.
+
+## Sources
+
+1. Medicare Payment Advisory Commission, [*The Medicare Advantage Program: Status Report*](https://www.medpac.gov/wp-content/uploads/2026/03/Mar26_Ch12_MedPAC_Report_To_Congress_SEC.pdf), March 2026, especially pages 343 to 348, 351 to 352 and 386 to 387: payments, favourable selection, coding intensity, counterpoints and methodology.
+2. HHS Office of Inspector General, [*Medicare Advantage: Questionable Use of Health Risk Assessments Continues To Drive Up Payments to Plans by Billions*](https://oig.hhs.gov/documents/evaluation/10028/OEI-03-23-00380.pdf), October 2024: HCC model, $7.5bn, 1.7 million enrollees, concentration and limitations.
+3. Centers for Medicare & Medicaid Services, [*2027 Medicare Advantage and Part D Rate Announcement*](https://www.cms.gov/newsroom/fact-sheets/2027-medicare-advantage-part-d-rate-announcement), 6 April 2026: exclusion of unlinked diagnoses, payment effects and expected score growth.
+4. U.S. Department of Justice, [Kaiser Permanente settlement](https://www.justice.gov/usao-ndca/pr/kaiser-permanente-affiliates-pay-556m-resolve-false-claims-act-allegations), 14 January 2026.
+5. U.S. Department of Justice, [Aetna settlement](https://www.justice.gov/usao-edpa/pr/aetna-agrees-pay-1177-million-resolve-allegations-it-violated-false-claims-act), 10 March 2026.
+6. U.S. Department of Justice, [Matrix Medical Network settlement](https://www.justice.gov/usao-sdny/pr/united-states-announces-365-million-settlement-medicare-fraud-lawsuit-against-matrix), 3 June 2026.
+7. U.S. Department of Justice, [complaint against three insurers and three Medicare Advantage brokers](https://www.justice.gov/opa/pr/united-states-files-false-claims-act-complaint-against-three-national-health-insurance), 1 May 2025: alleged commissions, enrollee steering and absence of a liability determination.
