@@ -52,7 +52,7 @@ D'où la relance de mars 2025, sous une étiquette recentrée. Le nom même dép
 
 La stratégie s'organise autour de quatre chantiers : orienter l'épargne des citoyens, élargir l'offre de financement pour les entreprises, intégrer et mettre à l'échelle les infrastructures de marché, et faire converger la supervision. Les trois premiers sont techniques et négociables. Le quatrième est politique et explosif, nous y reviendrons.
 
-## Ce que Bruxelles a mis sur la table
+## L'arsenal déjà déposé
 
 Il faut créditer la Commission d'une chose : elle n'est pas restée au stade du communiqué. En un peu plus d'un an, plusieurs textes concrets ont été déposés, et c'est la matière législative qui se négocie aujourd'hui.
 

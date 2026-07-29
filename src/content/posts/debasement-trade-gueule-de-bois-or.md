@@ -11,7 +11,7 @@ draft: false
 
 Six mois plus tard, le décor est méconnaissable. L'or est repassé [sous les 4 000 dollars, en repli d'environ 28 % par rapport à son pic de janvier ; l'argent a chuté de plus de moitié, sous les 59 dollars ; le bitcoin est retombé sous 62 000 dollars, à moitié de son record, au contact de sa moyenne mobile à deux cents semaines](https://www.coindesk.com/markets/2026/06/24/gold-silver-and-bitcoin-tumble-as-debasement-trade-unwinds). Les trois refuges supposés ont été balayés ensemble, pendant qu'un seul actif tenait la corde : les actions américaines, tirées par les semiconducteurs et la mémoire. Le pari sur la fin de la monnaie a perdu contre le pari sur l'intelligence artificielle.
 
-## Ce qui a fait plier le trade
+## Le ressort qui a fait plier le trade
 
 La bascule n'a rien de mystérieux, et elle tient à un seul paramètre : les taux réels. Le debasement trade prospère quand détenir de la monnaie coûte cher, c'est-à-dire quand l'inflation ronge des taux bas. Il s'effondre dès que la banque centrale durcit le ton. Or c'est exactement ce qu'a fait la Réserve fédérale nouvelle version. Sous la présidence de Kevin Warsh, [les marchés se sont mis à anticiper deux hausses de taux d'ici mars 2027, portant les Fed funds vers 4,00 à 4,25 %](https://www.coindesk.com/markets/2026/06/24/gold-silver-and-bitcoin-tumble-as-debasement-trade-unwinds), un virage que nous avions vu s'amorcer dès son [premier FOMC](/posts/warsh-premier-fomc-juin-2026/). Un actif sans rendement comme l'or, ou spéculatif comme le bitcoin, supporte mal la perspective d'un cash mieux rémunéré : sa prime de rareté ne compense plus le coût d'opportunité.
 

@@ -43,7 +43,7 @@ La preuve la plus spectaculaire du rachat italien fut le moment, fin 2025, où l
 
 Et la fragilité affleure dès que le vent tourne. Au premier trimestre 2026, [le choc de la guerre d'Iran a frappé le BTP plus durement que l'OAT](https://research-center.amundi.com/article/view-italy-and-its-government-debt), repoussant le spread italien une trentaine de points au-dessus de son niveau d'avant-guerre et de nouveau au-dessus de la France. Dans le calme, l'Italie tient ; au premier stress venu, elle reste la première vendue. Le trompe-l'œil se dissipe précisément quand on en aurait le plus besoin.
 
-## Ce que le calme oublie
+## Sous le calme, les chiffres de fond
 
 Sous la surface tranquille, les chiffres de fond n'ont pas disparu. La dette publique italienne reste attendue autour de [136 % du PIB à l'horizon 2028](https://research-center.amundi.com/article/view-italy-and-its-government-debt), et la croissance, 0,5 % en 2025, 0,7 % en 2026, est trop faible pour éroder ce fardeau par le dénominateur. La trajectoire de désendettement ne doit reprendre qu'après 2027, une fois dissipé l'effet du superbonus sur les recettes. D'ici là, l'Italie navigue à vue entre un plan de relance qui s'achève, une élection en 2027 et un filet de la BCE dont on parle peu mais qui travaille en silence.
 
