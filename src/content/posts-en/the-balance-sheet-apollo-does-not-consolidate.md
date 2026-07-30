@@ -1,12 +1,12 @@
 ---
-title: "Athora, the balance sheet Apollo does not consolidate"
+title: "The balance sheet Apollo does not consolidate"
 description: "Athora left Athene's accounting perimeter in 2018. Yet Apollo and Athene still hold 26% of its shares, appoint five directors, manage or advise $57.2 billion of its assets and supported its acquisition of PIC. An eight-year investigation into legal separation, economic dependencies and risks now exposed to the United Kingdom."
 pubDate: 2026-07-30T23:40:00+02:00
-updatedDate: 2026-07-30T23:40:00+02:00
+updatedDate: 2026-07-31T00:53:00+02:00
 tags: ["apollo", "athora", "insurance", "private credit", "governance", "risk", "united kingdom"]
 draft: false
-sourceArticle: "athora-bilan-apollo-non-consolide"
-sourceUpdatedDate: 2026-07-30
+sourceArticle: "bilan-apollo-non-consolide"
+sourceUpdatedDate: 2026-07-31
 ---
 
 *On 1 January 2018, $6.3 billion of assets left Athene's consolidated accounts. The US insurer had just diluted its European subsidiary, renamed Athora, among private investors. Eight years later, the public record shows a separation that is legally real but economically incomplete. Apollo and its subsidiary Athene together hold 26% of Athora's shares, have five representatives on its board, Apollo manages or advises $57.2 billion of its assets, and Athora recorded €139 million of expenses with Apollo in 2025. Since March 2026, the acquisition of Pension Insurance Corporation has taken the Athora group to €139 billion of assets under management and administration. The balance sheet was not hidden. It was fragmented across companies, currencies, jurisdictions and reports. This investigation reconstructs the relationship document by document, and stops exactly where the documents stop.*
@@ -141,7 +141,7 @@ Athora's 2025 annual report shows the assets financing promises to policyholders
 
 The strategy is explicit. On pages 19 and 22, Athora says it seeks an illiquidity and complexity premium, notably through Apollo's origination capabilities, with an illustrative 25% to 35% allocation to private assets. This does not mean Apollo issued or owns every such asset. The June 2026 memorandum gives one useful boundary: debt and equity investments in Apollo-owned entities represent less than 2% of AuMA. That is a narrow measure. It does not disclose the share of assets originated, selected or managed by Apollo.
 
-Valuation difficulty appears in the IFRS hierarchy. On page 121 of the [2025 annual report](https://www.athora.com/files/files/Athora-2025-Annual-Report.pdf), recurring assets at fair value total €87.969 billion: €53.719 billion in [Level 1](/en/glossary/niveau-1/), €13.236 billion in [Level 2](/en/glossary/niveau-2/) and €21.014 billion in [Level 3](/en/glossary/niveau-3/). Our calculation, 21.014 divided by 87.969, gives 23.9% of assets whose valuation uses significant unobservable inputs.
+Valuation difficulty appears in the IFRS hierarchy. On page 121 of the [2025 annual report](https://www.athora.com/files/files/Athora%2D2025-Annual-Report.pdf), recurring assets at fair value total €87.969 billion: €53.719 billion in [Level 1](/en/glossary/niveau-1/), €13.236 billion in [Level 2](/en/glossary/niveau-2/) and €21.014 billion in [Level 3](/en/glossary/niveau-3/). Our calculation, 21.014 divided by 87.969, gives 23.9% of assets whose valuation uses significant unobservable inputs.
 
 A Level 3 asset is not a hidden loss. It is an asset whose price requires more judgement. EY made the valuation of these €21.0 billion a key audit matter. On page 87, the auditor describes tests of models, assumptions, yields, spreads and samples, then concludes that the valuations were reasonable. The audit reduces the risk of material error. It does not create a continuous market price where none exists.
 
@@ -186,9 +186,9 @@ These protections do not disprove the conflicts. They show that Athora identifie
 
 ## PIC changes the scale and the supervisor
 
-On 27 March 2026, Athora [completed the acquisition of Pension Insurance Corporation Group](https://www.athora.com/news/athora-group-completes-acquisition-pension-insurance-corporation-group-and-announces-plans) for an announced price of about £5.7 billion. PIC insures the defined-benefit pensions of British companies. The transaction took Athora to €139 billion of AuMA and 3.1 million policyholders, according to the completion release. PIC represents about 45% of the new group.
+On 27 March 2026, Athora [completed the acquisition of Pension Insurance Corporation Group](https://www.athora.com/news/athora%2Dgroup-completes-acquisition-pension-insurance-corporation-group-and-announces-plans) for an announced price of about £5.7 billion. PIC insures the defined-benefit pensions of British companies. The transaction took Athora to €139 billion of AuMA and 3.1 million policyholders, according to the completion release. PIC represents about 45% of the new group.
 
-The financing combines equity and debt. Athora [announced on 6 March 2026](https://www.athora.com/news/athora-holding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory) €3.5 billion of new common-equity commitments from existing and new investors, including Apollo and Athene. Its offering memorandum also discloses a term facility of up to £2.2 billion, of which £1.6 billion was drawn at 31 March, and a €1.635 billion revolving credit facility, of which €255 million was drawn.
+The financing combines equity and debt. Athora [announced on 6 March 2026](https://www.athora.com/news/athora%2Dholding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory) €3.5 billion of new common-equity commitments from existing and new investors, including Apollo and Athene. Its offering memorandum also discloses a term facility of up to £2.2 billion, of which £1.6 billion was drawn at 31 March, and a €1.635 billion revolving credit facility, of which €255 million was drawn.
 
 The prudential centre of gravity is meant to follow. Athora plans to move its headquarters to the United Kingdom by late 2027, subject to approvals, and says the PRA is ultimately expected to become the group supervisor after a transition with the Bermuda Monetary Authority.
 
@@ -242,10 +242,10 @@ A statement by Athora or Apollo is attributed to its issuer. The audit report es
 4. Apollo Global Management, [Form 10-K for 2025](https://www.sec.gov/Archives/edgar/data/1858681/000185868126000013/apo-20251231.htm), definitions of *Athora* and *Athora Non-Sub-Advised Assets*, note 18 *Related Party Transactions*: AUM, fees, capital, commitments and termination of the cooperation agreement.
 5. Apollo IG Core Replacement, [Form 10 filed on 1 August 2025](https://www.sec.gov/Archives/edgar/data/2074450/000119312525171681/d61895d1012g.htm), pages 211-212, *Strategic Relationship with Insurance Businesses*: influence, allocation, permanent capital vehicles and potential conflicts.
 6. Athora Holding Ltd., [2025 Financial Condition Report](https://www.athora.com/files/files/2025-Athora_Financial_Condition_Report.pdf), pages 5, 7 and 15-19: solvency, ownership, board, Apollo expenses, termination of the cooperation agreement and retrocession treaty.
-7. Athora Holding Ltd., [2025 Annual Report](https://www.athora.com/files/files/Athora-2025-Annual-Report.pdf), pages 19, 22-26, 87 and 121-124: strategy, allocation, private credit, audit and fair-value hierarchy.
+7. Athora Holding Ltd., [2025 Annual Report](https://www.athora.com/files/files/Athora%2D2025-Annual-Report.pdf), pages 19, 22-26, 87 and 121-124: strategy, allocation, private credit, audit and fair-value hierarchy.
 8. Athora Holding Ltd., [Offering Memorandum dated 24 June 2026](https://www.athora.com/files/files/Offering%20Memorandum.pdf), sections *Risk Factors*, *Shareholders*, *The PIC Transaction* and *Private credit*; the ownership snapshot is on numbered page 122: PIC financing, ownership, governance, conflicts and private credit.
-9. Athora Holding Ltd., [€3.5 billion capital raise and regulatory-approval announcement](https://www.athora.com/news/athora-holding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory), 6 March 2026.
-10. Athora Holding Ltd., [PIC acquisition completion and planned headquarters move](https://www.athora.com/news/athora-group-completes-acquisition-pension-insurance-corporation-group-and-announces-plans), 27 March 2026.
+9. Athora Holding Ltd., [€3.5 billion capital raise and regulatory-approval announcement](https://www.athora.com/news/athora%2Dholding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory), 6 March 2026.
+10. Athora Holding Ltd., [PIC acquisition completion and planned headquarters move](https://www.athora.com/news/athora%2Dgroup-completes-acquisition-pension-insurance-corporation-group-and-announces-plans), 27 March 2026.
 11. EIOPA, [consultation page](https://www.eiopa.europa.eu/consultations/consultation-supervisory-statement-authorisation-and-ongoing-supervision-re-insurance-undertakings-related-private-equity_en) and [draft supervisory statement](https://www.eiopa.europa.eu/document/download/8482a091-9f56-4dcb-97bf-c11c26d2ef83_en?filename=EIOPA-BoS-25-683_Private-Equity-Supervisory-Statement.pdf), pages 8-10, consultation opened on 3 February and closed on 30 April 2026.
 12. Prudential Regulation Authority, [CP8/26, Funded reinsurance](https://www.bankofengland.co.uk/prudential-regulation/publication/2026/april/funded-reinsurance-consultation-paper), 29 April 2026: share of new BPA business ceded, counterparty risk, private collateral and proposed prudential treatment.
 

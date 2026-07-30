@@ -1,8 +1,8 @@
 ---
-title: "Athora, le bilan qu'Apollo ne consolide pas"
+title: "Le bilan qu'Apollo ne consolide pas"
 description: "Athora a quitté le périmètre comptable d'Athene en 2018. Apollo et Athene détiennent pourtant encore 26 % de ses actions, désignent cinq administrateurs, gèrent ou conseillent 57,2 milliards de dollars de ses actifs et ont soutenu son rachat de PIC. Enquête documentée sur huit années de séparation juridique, de dépendances économiques et de risques désormais exposés au Royaume-Uni."
 pubDate: 2026-07-30T23:40:00+02:00
-updatedDate: 2026-07-30T23:40:00+02:00
+updatedDate: 2026-07-31T00:53:00+02:00
 tags: ["apollo", "athora", "assurance", "crédit privé", "gouvernance", "risque", "royaume-uni"]
 draft: false
 ---
@@ -133,13 +133,13 @@ Cette déclaration n'est pas une décision de justice sur le contrôle d'Athora.
 
 Le document détaille aussi les conflits possibles : conditions préférentielles accordées à Athene ou Athora, co-investissements, transactions croisées, allocation d'opportunités, détention de différentes tranches d'une même structure et substitution possible du capital d'un assureur à un engagement direct d'Apollo. Il ne prouve pas qu'une transaction particulière a lésé Athora. Il prouve que le gérant identifie lui-même ces canaux comme des conflits à encadrer.
 
-## Le bilan d'Athora sous la loupe
+## Sous la loupe : le bilan d'Athora
 
 Le rapport annuel 2025 d'Athora permet de regarder les actifs qui financent les promesses faites aux assurés. Le groupe déclare 75,547 milliards d'euros d'actifs sous gestion et administration, dont 51,475 milliards d'actifs du compte général sous gestion. La répartition publiée page 24 comprend 14,6 milliards de dette souveraine et supranationale, 10,9 milliards d'obligations d'entreprise cotées, 9,3 milliards de crédit privé, 7,2 milliards de prêts hypothécaires, 4,8 milliards de dérivés nets et trésorerie, 3,9 milliards d'alternatifs et autres actifs, et 0,8 milliard d'immobilier de placement.
 
 La stratégie est revendiquée. Pages 19 et 22, Athora explique rechercher une prime d'illiquidité et de complexité, notamment grâce aux capacités d'origination d'Apollo, avec une allocation illustrative de 25 % à 35 % en actifs privés. Cela ne signifie pas que tous ces actifs sont émis par Apollo, ni qu'Apollo en est propriétaire. Le mémorandum de juin 2026 donne même une borne utile : les investissements en dette ou en actions dans des entités détenues par Apollo représentent moins de 2 % de l'AuMA. Cette mesure est étroite. Elle ne révèle pas la part des actifs originés, sélectionnés ou gérés par Apollo.
 
-La difficulté de valorisation apparaît dans la hiérarchie IFRS. Page 121 du [rapport annuel 2025](https://www.athora.com/files/files/Athora-2025-Annual-Report.pdf), les actifs récurrents à la juste valeur totalisent 87,969 milliards d'euros : 53,719 milliards en [niveau 1](/glossaire/niveau-1/), 13,236 milliards en [niveau 2](/glossaire/niveau-2/) et 21,014 milliards en [niveau 3](/glossaire/niveau-3/). Notre calcul, 21,014 divisé par 87,969, donne 23,9 % d'actifs dont la valorisation recourt à des données non observables significatives.
+La difficulté de valorisation apparaît dans la hiérarchie IFRS. Page 121 du [rapport annuel 2025](https://www.athora.com/files/files/Athora%2D2025-Annual-Report.pdf), les actifs récurrents à la juste valeur totalisent 87,969 milliards d'euros : 53,719 milliards en [niveau 1](/glossaire/niveau-1/), 13,236 milliards en [niveau 2](/glossaire/niveau-2/) et 21,014 milliards en [niveau 3](/glossaire/niveau-3/). Notre calcul, 21,014 divisé par 87,969, donne 23,9 % d'actifs dont la valorisation recourt à des données non observables significatives.
 
 Un actif de niveau 3 n'est pas une perte cachée. C'est un actif dont le prix demande davantage de jugement. EY a précisément fait de la valorisation de ces 21,0 milliards un point clé de son audit. Page 87, l'auditeur décrit ses tests sur les modèles, hypothèses, rendements, spreads et échantillons, puis conclut que les valorisations sont raisonnables. L'audit réduit le risque d'erreur matérielle ; il ne crée pas un prix de marché continu là où il n'en existe pas.
 
@@ -185,9 +185,9 @@ Ces protections ne réfutent pas l'existence des conflits. Elles montrent qu'Ath
 
 ## PIC fait changer le risque d'échelle et de superviseur
 
-Le 27 mars 2026, Athora a [achevé l'acquisition de Pension Insurance Corporation Group](https://www.athora.com/news/athora-group-completes-acquisition-pension-insurance-corporation-group-and-announces-plans) pour un prix annoncé d'environ 5,7 milliards de livres. PIC assure les retraites à prestations définies d'entreprises britanniques. L'opération porte Athora à 139 milliards d'euros d'AuMA et 3,1 millions d'assurés, selon le communiqué de réalisation. PIC représente environ 45 % du nouvel ensemble.
+Le 27 mars 2026, Athora a [achevé l'acquisition de Pension Insurance Corporation Group](https://www.athora.com/news/athora%2Dgroup-completes-acquisition-pension-insurance-corporation-group-and-announces-plans) pour un prix annoncé d'environ 5,7 milliards de livres. PIC assure les retraites à prestations définies d'entreprises britanniques. L'opération porte Athora à 139 milliards d'euros d'AuMA et 3,1 millions d'assurés, selon le communiqué de réalisation. PIC représente environ 45 % du nouvel ensemble.
 
-Le financement combine capital et dette. Athora a [annoncé le 6 mars 2026](https://www.athora.com/news/athora-holding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory) 3,5 milliards d'euros de nouveaux engagements de fonds propres, venus d'investisseurs existants et nouveaux, dont Apollo et Athene. Son mémorandum d'offre indique également une facilité à terme pouvant atteindre 2,2 milliards de livres, dont 1,6 milliard tiré au 31 mars, ainsi qu'une ligne de crédit renouvelable de 1,635 milliard d'euros, tirée à hauteur de 255 millions.
+Le financement combine capital et dette. Athora a [annoncé le 6 mars 2026](https://www.athora.com/news/athora%2Dholding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory) 3,5 milliards d'euros de nouveaux engagements de fonds propres, venus d'investisseurs existants et nouveaux, dont Apollo et Athene. Son mémorandum d'offre indique également une facilité à terme pouvant atteindre 2,2 milliards de livres, dont 1,6 milliard tiré au 31 mars, ainsi qu'une ligne de crédit renouvelable de 1,635 milliard d'euros, tirée à hauteur de 255 millions.
 
 Le centre de gravité prudentiel doit suivre. Athora prévoit de déplacer son siège au Royaume-Uni d'ici fin 2027, sous réserve des autorisations, et indique que la PRA devrait devenir à terme le superviseur du groupe, après une transition avec la Bermuda Monetary Authority.
 
@@ -241,10 +241,10 @@ Une déclaration d'Athora ou d'Apollo est attribuée à son émetteur. Le rappor
 4. Apollo Global Management, [Form 10-K pour l'exercice 2025](https://www.sec.gov/Archives/edgar/data/1858681/000185868126000013/apo-20251231.htm), définitions *Athora* et *Athora Non-Sub-Advised Assets*, note 18 *Related Party Transactions* : encours, commissions, capital, engagements et fin de l'accord de coopération.
 5. Apollo IG Core Replacement, [Form 10 déposé le 1er août 2025](https://www.sec.gov/Archives/edgar/data/2074450/000119312525171681/d61895d1012g.htm), pages 211-212, *Strategic Relationship with Insurance Businesses* : influence, allocation, véhicules de capital permanent et conflits potentiels.
 6. Athora Holding Ltd., [Financial Condition Report 2025](https://www.athora.com/files/files/2025-Athora_Financial_Condition_Report.pdf), pages 5, 7, 15-19 : solvabilité, actionnariat, conseil, charges envers Apollo, fin de l'accord de coopération et traité de rétrocession.
-7. Athora Holding Ltd., [Annual Report 2025](https://www.athora.com/files/files/Athora-2025-Annual-Report.pdf), pages 19, 22-26, 87 et 121-124 : stratégie, allocation, crédit privé, audit et hiérarchie de juste valeur.
+7. Athora Holding Ltd., [Annual Report 2025](https://www.athora.com/files/files/Athora%2D2025-Annual-Report.pdf), pages 19, 22-26, 87 et 121-124 : stratégie, allocation, crédit privé, audit et hiérarchie de juste valeur.
 8. Athora Holding Ltd., [Offering Memorandum du 24 juin 2026](https://www.athora.com/files/files/Offering%20Memorandum.pdf), sections *Risk Factors*, *Shareholders*, *The PIC Transaction* et *Private credit* ; la photographie de l'actionnariat figure à la page numérotée 122 : financement de PIC, actionnariat, gouvernance, conflits et crédit privé.
-9. Athora Holding Ltd., [annonce de la levée de 3,5 milliards d'euros et de l'autorisation prudentielle](https://www.athora.com/news/athora-holding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory), 6 mars 2026.
-10. Athora Holding Ltd., [réalisation du rachat de PIC et projet de transfert du siège](https://www.athora.com/news/athora-group-completes-acquisition-pension-insurance-corporation-group-and-announces-plans), 27 mars 2026.
+9. Athora Holding Ltd., [annonce de la levée de 3,5 milliards d'euros et de l'autorisation prudentielle](https://www.athora.com/news/athora%2Dholding-ltd-secures-eu35-billion-common-equity-commitments-and-receives-regulatory), 6 mars 2026.
+10. Athora Holding Ltd., [réalisation du rachat de PIC et projet de transfert du siège](https://www.athora.com/news/athora%2Dgroup-completes-acquisition-pension-insurance-corporation-group-and-announces-plans), 27 mars 2026.
 11. EIOPA, [page de la consultation](https://www.eiopa.europa.eu/consultations/consultation-supervisory-statement-authorisation-and-ongoing-supervision-re-insurance-undertakings-related-private-equity_en) et [projet de déclaration prudentielle](https://www.eiopa.europa.eu/document/download/8482a091-9f56-4dcb-97bf-c11c26d2ef83_en?filename=EIOPA-BoS-25-683_Private-Equity-Supervisory-Statement.pdf), pages 8-10, consultation ouverte le 3 février et fermée le 30 avril 2026.
 12. Prudential Regulation Authority, [CP8/26, Funded reinsurance](https://www.bankofengland.co.uk/prudential-regulation/publication/2026/april/funded-reinsurance-consultation-paper), 29 avril 2026 : part des nouvelles opérations BPA cédées, risque de contrepartie, collatéral privé et projet de traitement prudentiel.
 

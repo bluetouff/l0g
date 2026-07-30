@@ -210,7 +210,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'Consolidation is a binary accounting boundary. Economic influence can continue outside it through capital, contracts, mandates and governance.',
-      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
+      articles: [{ label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
       guides: [{ label: 'Reading life-insurer health', href: '/en/guides/read-life-insurer-health/', detail: 'Capital, asset quality, liabilities and reinsurance.', kind: 'guide' }],
       sources: [
         { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Corporate filings and consolidation disclosures.', kind: 'source' },
@@ -227,7 +227,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'The label identifies a relationship, not a wrongdoing. The analytical question is whether pricing, approval and disclosure withstand the conflict.',
-      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Capital, board seats, fees and related insurance contracts.', kind: 'article' }],
+      articles: [{ label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Capital, board seats, fees and related insurance contracts.', kind: 'article' }],
       sources: [
         { label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ias-24-related-party-disclosures/', detail: 'IAS 24 definitions and disclosure requirements.', kind: 'source' },
         { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Issuer disclosures of related-party transactions.', kind: 'source' },
@@ -243,7 +243,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'Level 1 starts from a directly observable market price.',
-      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and Level 3 exposure.', kind: 'article' }],
+      articles: [{ label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and Level 3 exposure.', kind: 'article' }],
       sources: [{ label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-13-fair-value-measurement/', detail: 'IFRS 13 fair-value hierarchy.', kind: 'source' }],
       related: ['niveau-2', 'niveau-3'],
     },
@@ -256,7 +256,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'Level 2 is model-assisted, but its important inputs remain observable in markets.',
-      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and Level 3 exposure.', kind: 'article' }],
+      articles: [{ label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and Level 3 exposure.', kind: 'article' }],
       sources: [{ label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-13-fair-value-measurement/', detail: 'IFRS 13 fair-value hierarchy.', kind: 'source' }],
       related: ['niveau-1', 'niveau-3'],
     },
@@ -270,7 +270,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     atlas: {
       intuition: 'Level 3 measures dependence on judgement. It is not a synonym for hidden loss.',
       articles: [
-        { label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and audit evidence.', kind: 'article' },
+        { label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and audit evidence.', kind: 'article' },
         { label: 'Private credit, one asset, two prices', href: '/en/analysis/private-credit-one-asset-two-prices/', detail: 'Model valuations and market-price divergence.', kind: 'article' },
       ],
       guides: [{ label: 'Reading private-credit risk', href: '/en/guides/read-private-credit-risk/', detail: 'Valuation, defaults, leverage and liquidity.', kind: 'guide' }],

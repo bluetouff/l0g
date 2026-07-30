@@ -73,6 +73,7 @@ if (JSON.parse(serialized).probe !== probe) {
 
 const htmlFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.html']));
 if (!htmlFiles.length) fail('Aucune page HTML construite à auditer dans dist');
+const modSecurityResponsePhrases = ['ora-'];
 const cssFiles = await filesUnder(join(ROOT, 'dist'), new Set(['.css']));
 for (const file of cssFiles) {
   const css = await readFile(file, 'utf8');
@@ -154,6 +155,12 @@ let thirdPartyResources = 0;
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
   const relativeFile = relative(ROOT, file);
+  const htmlLower = html.toLowerCase();
+  for (const phrase of modSecurityResponsePhrases) {
+    if (htmlLower.includes(phrase)) {
+      fail(`${relativeFile}: motif ${phrase.toUpperCase()} bloqué par OWASP CRS 951100 dans la réponse HTML`);
+    }
+  }
   const elements = scanHtmlElements(html);
   const cspMeta = elements.find((element) => element.name === 'meta' &&
     element.attributes.get('http-equiv')?.toLowerCase() === 'content-security-policy');
