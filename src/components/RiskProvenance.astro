@@ -190,6 +190,8 @@ const citation = [
     position: relative;
     z-index: 4;
     display: grid;
+    min-width: 0;
+    max-width: 100%;
     gap: 0.85rem;
     margin-top: 0.65rem;
     border: 1px solid color-mix(in srgb, var(--color-signal) 28%, var(--color-line));
@@ -240,15 +242,18 @@ const citation = [
     text-transform: uppercase;
   }
   .proof-panel dd {
+    min-width: 0;
     color: var(--color-paper);
     font-size: 0.66rem;
     line-height: 1.45;
+    overflow-wrap: anywhere;
   }
   .proof-method,
   .proof-caveat {
     color: var(--color-muted);
     font-size: 0.65rem;
     line-height: 1.52;
+    overflow-wrap: anywhere;
   }
   .proof-warnings {
     padding-left: 1rem;
@@ -265,9 +270,12 @@ const citation = [
     font-size: 0.58rem;
     line-height: 1.45;
   }
+  .proof-formula li,
+  .proof-warnings li { overflow-wrap: anywhere; }
   .proof-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .proof-actions a,
   .proof-actions button {
+    max-width: 100%;
     border: 1px solid var(--color-line);
     border-radius: 999px;
     padding: 0.35rem 0.58rem;
@@ -286,11 +294,10 @@ const citation = [
   }
   .is-compact[open] { z-index: 20; }
   .is-compact .proof-panel {
-    width: min(20rem, calc(100vw - 3rem));
+    width: 100%;
     padding: 0.72rem;
   }
   @media (max-width: 480px) {
-    .is-compact .proof-panel { width: 100%; }
     .proof-panel dl div { grid-template-columns: 1fr; gap: 0.15rem; }
   }
 </style>

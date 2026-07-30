@@ -109,9 +109,11 @@ function statusText(signal: RiskSignal) {
 function isDegraded(signal?: RiskSignal) {
   return Boolean(signal && (
     signal.sourceStatus === 'fallback'
-    || signal.fallbackUsed
+    || signal.fallbackLayer === 'aggregator'
     || signal.timelinessStatus === 'stale'
-    || signal.qualityStatus !== 'nominal'
+    || signal.qualityStatus === 'degraded'
+    || signal.qualityStatus === 'unknown'
+    || (signal.fallbackUsed && signal.qualityStatus !== 'official-delayed')
   ));
 }
 
@@ -132,9 +134,16 @@ const aggregateDate = formatDate(
   true,
 );
 const degradedCount = items.filter((item) => isDegraded(item.signal)).length;
+const officialDelayedCount = items.filter((item) => (
+  item.signal?.qualityStatus === 'official-delayed' && !isDegraded(item.signal)
+)).length;
 const aggregateStatus = aggregateDate
   ? ` Assemblage ${aggregateDate}${snapshot.status === 'degraded'
-      ? ` · état dégradé visible${degradedCount ? ` (${degradedCount})` : ''}`
+      ? degradedCount
+        ? ` · état dégradé visible (${degradedCount})`
+        : officialDelayedCount
+          ? ` · source officielle différée (${officialDelayedCount})`
+          : ' · état dégradé déclaré'
       : ''}.`
   : '';
 ---
@@ -156,10 +165,16 @@ const aggregateStatus = aggregateDate
           data-risk={it.key}
           data-degraded={isDegraded(it.signal) ? 'true' : 'false'}
         >
-          <a href={`/maintenant/#signal-${it.key}`} class="risk-tile-main">
+          <a
+            href={it.href}
+            class="risk-tile-main risk-dashboard-link"
+            target="_blank"
+            rel="noopener"
+            aria-label={`Ouvrir l’app ${it.label}`}
+          >
             <div class="flex items-center justify-between">
               <span class="mono-label">{it.label}</span>
-              <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">›</span>
+              <span class="risk-arrow text-muted transition-transform group-hover:translate-x-0.5">↗</span>
             </div>
             <div class="risk-reading mt-3 flex items-baseline gap-2">
               <span
@@ -187,12 +202,12 @@ const aggregateStatus = aggregateDate
             <div class="risk-status" data-status>
               {it.signal ? statusText(it.signal) : 'source indisponible au build'}
             </div>
-            <span class="risk-proof-link">
-              <span aria-hidden="true">i</span> Vérifier ce chiffre
+            <span class="risk-app-cta">
+              Ouvrir l’app <span aria-hidden="true">↗</span>
             </span>
           </a>
-          <a class="risk-dashboard-link" href={it.href} target="_blank" rel="noopener">
-            Ouvrir le dashboard <span aria-hidden="true">↗</span>
+          <a class="risk-proof-link" href={`/maintenant/#signal-${it.key}`}>
+            <span aria-hidden="true">i</span> Vérifier ce chiffre
           </a>
         </article>
       ))
@@ -240,11 +255,24 @@ const aggregateStatus = aggregateDate
     overflow: hidden;
   }
   .risk-tile-main { display: block; }
+  .risk-app-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 650;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+  .risk-tile-main:hover .risk-app-cta { color: var(--color-signal); }
   .risk-proof-link {
     display: inline-flex;
     align-items: center;
     gap: 0.38rem;
-    margin-top: 0.7rem;
+    margin-top: 0.58rem;
     border-top: 1px solid var(--color-line);
     padding-top: 0.58rem;
     color: var(--color-muted);
@@ -263,19 +291,12 @@ const aggregateStatus = aggregateDate
     border-radius: 50%;
     font-size: 0.54rem;
   }
-  .risk-tile-main:hover .risk-proof-link { color: var(--color-signal); }
+  .risk-proof-link:hover { color: var(--color-signal); }
   .risk-dashboard-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.55rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.54rem;
-    letter-spacing: 0.045em;
-    text-transform: uppercase;
+    border-radius: 8px;
+    outline-offset: 4px;
   }
-  .risk-dashboard-link:hover { color: var(--color-bright); }
+  .risk-dashboard-link:focus-visible { outline: 2px solid var(--color-signal); }
   .risk-fill {
     height: 100%;
     width: 0;

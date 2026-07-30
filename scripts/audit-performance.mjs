@@ -208,8 +208,14 @@ for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
   assert(Boolean(tile), `home: carte risque ${key} absente`);
   assert(/data-value[^>]*>\s*\d+(?:[.,]\d+)?\s*</.test(tile), `home: valeur statique ${key} absente`);
   assert(/data-status[^>]*>\s*[^<\s][^<]*</.test(tile), `home: statut statique ${key} absent`);
-  assert(new RegExp(`href="/maintenant/#signal-${key}"[^>]*class="risk-tile-main"`).test(tile), `home: preuve interne ${key} non prioritaire`);
-  assert(/class="risk-dashboard-link"[^>]*target="_blank"/.test(tile), `home: dashboard secondaire ${key} absent`);
+  assert(
+    /class="risk-tile-main risk-dashboard-link"[^>]*target="_blank"/.test(tile),
+    `home: accès principal au dashboard ${key} absent`,
+  );
+  assert(
+    new RegExp(`class="risk-proof-link"[^>]*href="/maintenant/#signal-${key}"`).test(tile),
+    `home: preuve interne ${key} absente`,
+  );
 }
 
 const glossary = await readFile(new URL('glossaire/index.html', rootUrl));

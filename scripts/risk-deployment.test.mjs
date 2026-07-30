@@ -65,8 +65,10 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(riskClient.includes("window.addEventListener('load', scheduleRefresh, { once: true })"));
   assert.ok(riskClient.includes('window.requestIdleCallback(refresh, { timeout: 3000 })'));
   assert.ok(riskClient.indexOf('function refresh()') < riskClient.indexOf("fetch('/risk.json'"));
-  assert.match(riskBand, /href=\{`\/maintenant\/#signal-\$\{it\.key\}`\} class="risk-tile-main"/);
-  assert.match(riskBand, /class="risk-dashboard-link" href=\{it\.href\}/);
+  assert.match(riskBand, /href=\{it\.href\}[\s\S]*?class="risk-tile-main risk-dashboard-link"[\s\S]*?target="_blank"/);
+  assert.match(riskBand, /class="risk-proof-link" href=\{`\/maintenant\/#signal-\$\{it\.key\}`\}/);
+  assert.match(riskBand, /signal\.fallbackUsed && signal\.qualityStatus !== 'official-delayed'/);
+  assert.match(riskClient, /item\.fallbackUsed && item\.qualityStatus !== 'official-delayed'/);
   assert.ok(
     home.indexOf('<section class="home-featured"') < home.indexOf('<section class="home-risk"'),
     'l’analyse vedette doit précéder les signaux',

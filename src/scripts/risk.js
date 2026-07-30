@@ -56,6 +56,17 @@
     return 'source ' + (sourceDate || 'non datée');
   }
 
+  function isDegraded(item) {
+    return Boolean(item && (
+      item.sourceStatus === 'fallback'
+      || item.fallbackLayer === 'aggregator'
+      || item.timelinessStatus === 'stale'
+      || item.qualityStatus === 'degraded'
+      || item.qualityStatus === 'unknown'
+      || (item.fallbackUsed && item.qualityStatus !== 'official-delayed')
+    ));
+  }
+
   function render(data) {
     if (!data || !Array.isArray(data.indices)) return;
     data.indices.forEach(function (it) {
@@ -66,7 +77,7 @@
       var lvlEl = tile.querySelector('[data-level]');
       var fillEl = tile.querySelector('[data-fill]');
       var statusEl = tile.querySelector('[data-status]');
-      var degraded = it.sourceStatus === 'fallback' || it.fallbackUsed || it.timelinessStatus === 'stale' || !['nominal'].includes(it.qualityStatus);
+      var degraded = isDegraded(it);
       tile.dataset.degraded = degraded ? 'true' : 'false';
       if (valEl) {
         valEl.textContent = it.value != null ? it.value : '—';
@@ -87,10 +98,21 @@
       try {
         var d = formatDate(data.aggregateGeneratedAt || data.updated || data.generated, true);
         var count = data.indices.filter(function (item) {
-          return item && (item.sourceStatus === 'fallback' || item.fallbackUsed || item.timelinessStatus === 'stale' || item.qualityStatus !== 'nominal');
+          return isDegraded(item);
         }).length;
+        var officialDelayedCount = data.indices.filter(function (item) {
+          return item && item.qualityStatus === 'official-delayed' && !isDegraded(item);
+        }).length;
+        var statusDetail = '';
+        if (data.status === 'degraded') {
+          statusDetail = count
+            ? ' · état dégradé visible (' + count + ')'
+            : officialDelayedCount
+              ? ' · source officielle différée (' + officialDelayedCount + ')'
+              : ' · état dégradé déclaré';
+        }
         upd.textContent = d
-          ? ' Assemblage ' + d + (data.status === 'degraded' ? ' · état dégradé visible' + (count ? ' (' + count + ')' : '') : '') + '.'
+          ? ' Assemblage ' + d + statusDetail + '.'
           : '';
       } catch (e) {}
     }

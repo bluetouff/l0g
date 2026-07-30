@@ -448,8 +448,19 @@ const jsonLd = {
   .now-empty { --plate-accent: var(--color-muted); padding: 1.2rem; }
   .now-empty strong { color: var(--color-bright); }
   .now-empty p { max-width: 44rem; margin-top: 0.5rem; color: var(--color-muted); line-height: 1.6; }
-  .signal-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
-  .signal-card { --plate-accent: var(--color-signal); min-width: 0; scroll-margin-top: 1rem; padding: 0.9rem; }
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: start;
+  }
+  .signal-card {
+    --plate-accent: var(--color-signal);
+    min-width: 0;
+    align-self: start;
+    scroll-margin-top: 1rem;
+    padding: 0.9rem;
+  }
   .signal-reading { display: flex; justify-content: space-between; gap: 0.65rem; align-items: start; }
   .signal-reading > div { min-width: 0; }
   .signal-reading span,
