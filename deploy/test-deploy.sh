@@ -6,9 +6,11 @@ TMP="$(mktemp -d)"
 trap 'rm -rf -- "$TMP"' EXIT
 
 bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh" \
-  "${ROOT}/deploy/activate-apache-vhost.sh"
+  "${ROOT}/deploy/activate-apache-vhost.sh" "${ROOT}/deploy/install-human-traffic.sh"
 
 grep -Fq 'AuthUserFile /etc/apache2/l0g-stats.htpasswd' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'Alias /api/v1/human-traffic.json /var/www/l0g-data/human-traffic.json' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 test "$(grep -Fc 'Protocols h2 http/1.1' "${ROOT}/deploy/l0g.fr.apache.conf")" -eq 2
 grep -Fq 'BrotliCompressionQuality 5' "${ROOT}/deploy/l0g.fr.apache.conf"
@@ -27,6 +29,10 @@ grep -Fq 'Cache-Control "private, no-store, max-age=0"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'https://l0g.fr/stats/)" = 401' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/api/v1/human-traffic.json)" = 200' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'minimum_public_cohort !== 5' \
+  "${ROOT}/deploy/install-human-traffic.sh"
 grep -Fq 'VHOST_MODE="hardened"' "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'Topologie de vhost l0g inattendue' \
   "${ROOT}/deploy/activate-apache-vhost.sh"

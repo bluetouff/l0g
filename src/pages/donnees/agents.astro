@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
-import { AGENT_VERSION } from '../../config/agent-contract.mjs';
+import { AGENT_VERSION, MCP_COMPACT_PUBLIC_PATH, MCP_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const agentFrUrl = new URL('/donnees/agents/', Astro.site).toString();
@@ -20,6 +20,11 @@ const trustItems = [
 ];
 
 const endpoints = [
+  {
+    path: MCP_COMPACT_PUBLIC_PATH,
+    label: 'MCP compact',
+    role: 'Porte d’entrée normale à six tools. get_risk_state est le produit principal pour l’état courant, le diff, l’historique et le replay.',
+  },
   {
     path: '/agents.json',
     label: 'Découverte',
@@ -128,6 +133,8 @@ const endpoints = [
 ];
 
 const flow = [
+  `Connecter le client à ${MCP_COMPACT_PUBLIC_PATH} et commencer par get_risk_state pour toute question sur le risque.`,
+  `N’utiliser ${MCP_PUBLIC_PATH} que pour les workflows de recherche nécessitant le catalogue expert.`,
   'Découvrir la surface avec /agents.json.',
   'Lire /api/v1/freshness.json pour dater le corpus et les signaux de dashboards.',
   'Vérifier les empreintes avec /api/v1/integrity.json si la réponse dépend d’un corpus figé.',
@@ -149,7 +156,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/donnees/agents/#agent-surface`,
-  headline: `Agent Surface v${AGENT_VERSION}`,
+  headline: `API financière pour agents IA et MCP compact`,
   description:
     'Documentation de la surface M2M de l0g.fr : agents.json, OpenAPI, séries de risque nommées, Risk Diff, Black Box, claims, sources, fraîcheur et règles de citation.',
   inLanguage: 'fr',
@@ -161,8 +168,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title={`Agent Surface v${AGENT_VERSION}`}
-  description="Documentation de la surface M2M de l0g.fr : manifeste agents.json, OpenAPI, séries nommées et versionnées, Risk Diff, Black Box, evidence graph, claims sourcées et règles de citation."
+  title="API financière pour agents IA et MCP compact"
+  description="Données de risque macro sourcées pour agents IA : MCP compact, get_risk_state, OpenAPI, séries, Risk Diff, Black Box, claims et preuves."
   ogImage="/og-donnees.png"
   ogImageAlt={`Agent Surface v${AGENT_VERSION} l0g.fr : API bilingue, séries nommées, Agent Bench, evidence graph, claims et sources`}
   sidebar={false}
@@ -173,7 +180,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <article class="agent-page rise" data-pagefind-body>
     <section class="agent-hero">
       <p class="mono-label glow">// agent surface v{AGENT_VERSION}</p>
-      <h1 class="agent-title font-display glow">Une surface M2M pour lire l0g sans scraper.</h1>
+      <h1 class="agent-title font-display glow">API financière et MCP compact pour agents IA</h1>
       <p class="agent-lede">
         Agent Surface v{AGENT_VERSION} expose le corpus français et anglais sous forme de JSON statique et NDJSON : catalogue,
         evidence graph, trois claims structurants typés maximum par article, sources primaires, fraîcheur, Risk Diff,

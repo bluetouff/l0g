@@ -42,12 +42,15 @@ et par les dashboards :
 - `/ressources-journalistes/` et `/en/press-resources/` : graphiques, exports,
   code d'intégration, citations recommandées et limites de réutilisation.
 - `/api/mcp/compact` : façade MCP recommandée à six outils, avec découverte,
-  recherche, documents, preuves, research packs et état du risque.
+  recherche, documents, preuves, research packs et `get_risk_state`, produit
+  principal pour l’état courant, le diff, l’historique et le replay.
 - `/api/mcp` : surface MCP complète en lecture seule, conservée pour compatibilité
   et usages experts autour d'Agent Surface, Risk Diff, Black Box, claims, sources,
   intégrité et changefeed.
 - `/api/v1/toolset-manifest.json` : versions et empreintes anti-dérive des contrats
   d'outils MCP complet et compact.
+- `/api/v1/human-traffic.json` : GET HTML humains agrégés par jour, page et
+  domaine référent, sans identifiant persistant et avec seuil k=5.
 - `/llms.txt` et `/llms-full.txt` : cartes textuelles pour agents et RAG.
 
 Les détails de calcul et les limites de modèle sont dans
@@ -255,6 +258,8 @@ sudo apt-get install apache2-utils
 sudo htpasswd -cB /etc/apache2/l0g-stats.htpasswd bluetouff
 sudo chown root:www-data /etc/apache2/l0g-stats.htpasswd
 sudo chmod 0640 /etc/apache2/l0g-stats.htpasswd
+# Agrégat quotidien des GET HTML humains, à installer avant le vhost qui publie son JSON
+sudo deploy/install-human-traffic.sh
 sudo cp deploy/l0g.fr.apache.conf /etc/apache2/sites-available/
 sudo a2ensite l0g.fr.apache.conf
 sudo certbot --apache -d l0g.fr -d www.l0g.fr   # ou certonly puis reload

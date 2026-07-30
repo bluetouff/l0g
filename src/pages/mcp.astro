@@ -82,9 +82,9 @@ const appLd = {
   '@id': `${SITE}/mcp/#mcp`,
   name: 'Serveur MCP l0g',
   description:
-    "Serveur Model Context Protocol en lecture seule pour l0g.fr : resources, prompts sélectionnés par l’utilisateur et tools pour Agent Surface, OpenAPI, Risk Diff, Black Box, claims, preuves et sources, via le transport Streamable HTTP.",
+    "Endpoint MCP en lecture seule pour interroger l’état du risque macro, ses variations, son historique et ses preuves via get_risk_state.",
   documentation: `${SITE}/mcp`,
-  url: ENDPOINT,
+  url: COMPACT_ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
   inLanguage: 'fr',
   isAccessibleForFree: true,
@@ -92,8 +92,8 @@ const appLd = {
 ---
 
 <BaseLayout
-  title="Serveur MCP"
-  description="Serveur Model Context Protocol de l0g.fr : resources, quatre prompts sélectionnés par l’utilisateur et tools pour Agent Surface, Risk Diff, Black Box, claims, preuves et sources."
+  title="MCP finance : état du risque sourcé pour agents"
+  description="Endpoint MCP finance en lecture seule : get_risk_state fournit état macro courant, diff 1/7/30 jours, historique et replay avec sources et limites."
   sidebar={false}
   alternateLinks={mcpAlternateLinks}
 >
@@ -102,7 +102,7 @@ const appLd = {
   <section data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// mcp</p>
     <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      Serveur <span style="color: var(--color-accent)">MCP</span>
+      MCP <span style="color: var(--color-accent)">finance & risque</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
       l0g expose ses données aux agents IA via le Model Context Protocol, en lecture seule.
@@ -125,6 +125,12 @@ const appLd = {
       <code>discover_l0g</code>, <code>search_l0g</code>, <code>get_document</code>, <code>get_evidence</code>,
       <code>build_research_pack</code> et <code>get_risk_state</code>. Le MCP complet reste disponible à <code>{ENDPOINT}</code>.
       Les empreintes des contrats sont publiées dans <a class="link-term" href="/api/v1/toolset-manifest.json">toolset-manifest.json</a>.
+    </div>
+    <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-paper" style="border-color: color-mix(in srgb, var(--color-signal) 55%, var(--color-line));">
+      <strong class="text-signal">Produit agentique principal :</strong> <code>get_risk_state</code> regroupe l’état courant,
+      le diff sur 1, 7 ou 30 jours, l’historique par instrument et le replay Black Box.
+      Chaque réponse conserve une date de référence, la source canonique, la méthodologie,
+      la couverture et les limites de lecture. Commencer par ce tool pour toute question sur le risque.
     </div>
     <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/mcp/">English MCP documentation →</a></p>
   </section>
@@ -284,7 +290,8 @@ const appLd = {
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// tools</h2>
       <p class="mt-3 max-w-2xl text-paper">
-        Les tools sont réservés aux opérations : recherche, filtrage, diff, replay, historique,
+        <code>get_risk_state</code> est le chemin normal pour lire le risque. Le catalogue complet ci-dessous
+        sert aux workflows experts de recherche, filtrage, preuve, diff, replay, historique,
         extraction de sous-graphe ou lecture ciblée. La recherche plein texte reste locale et déterministe,
         sans base vectorielle ni fournisseur externe. Les articles longs sont paginables, avec
         curseur de continuation, accès direct aux sources et références séparées. Chaque réponse expose un résumé humain dans
@@ -346,7 +353,12 @@ curl -s -X POST ${COMPACT_ENDPOINT} \\
 curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`}</code></pre>
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
+
+curl -s -X POST ${COMPACT_ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_risk_state","arguments":{"mode":"current"}}}'`}</code></pre>
     </div>
 
     <div>

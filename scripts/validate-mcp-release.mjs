@@ -72,8 +72,9 @@ export async function validateRelease({ tag = null, sha = null, requireMain = fa
   const version = versions.manifest;
   if (!SEMVER.test(version)) fail(`version non SemVer: ${version}`);
   if (manifest.name !== 'io.github.bluetouff/l0g') fail(`namespace inattendu: ${manifest.name}`);
-  const remote = manifest.remotes?.find((item) => item.type === 'streamable-http');
-  if (remote?.url !== 'https://l0g.fr/api/mcp') fail('endpoint Streamable HTTP canonique absent');
+  const remotes = manifest.remotes?.filter((item) => item.type === 'streamable-http') ?? [];
+  if (remotes[0]?.url !== 'https://l0g.fr/api/mcp/compact') fail('endpoint compact recommandé absent ou non prioritaire');
+  if (!remotes.some((remote) => remote.url === 'https://l0g.fr/api/mcp')) fail('surface de recherche complète absente');
 
   if (tag && tag !== `mcp-v${version}`) {
     fail(`le tag ${tag} ne correspond pas à mcp-v${version}`);

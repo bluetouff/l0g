@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 
 const SEMANTIC_VERSIONS = {
   get_risk_indices: '2.1.0',
+  get_risk_state: '2.0.0',
   build_research_pack: '1.1.0',
 };
 
@@ -47,6 +48,9 @@ export function buildToolsetManifest({ serverVersion, protocolVersion, fullTools
   return {
     serverVersion,
     protocolVersion,
+    primaryTool: 'get_risk_state',
+    recommendedSurface: paths.compact,
+    researchSurface: paths.full,
     toolsetHash: sha256(allTools),
     tools: allTools,
     surfaces: {

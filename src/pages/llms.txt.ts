@@ -201,10 +201,11 @@ export const GET: APIRoute = async () => {
   lines.push(`- [Schéma signaux](${SITE}/api/v1/signals/schema.json): contrat machine des lignes meta, observation et level-change.`);
   lines.push(`- [Catalogue](${SITE}/api/v1/catalog.json): articles, guides et sujets, en JSON.`);
   lines.push(`- [Flux Atom des risques](${SITE}/api/v1/risk.xml): changements de niveau de risque.`);
-  lines.push(`- [MCP compact](${SITE}${MCP_COMPACT_PUBLIC_PATH}): façade Model Context Protocol recommandée en lecture seule, à six outils : discover_l0g, search_l0g, get_document, get_evidence, build_research_pack et get_risk_state.`);
+  lines.push(`- [MCP compact](${SITE}${MCP_COMPACT_PUBLIC_PATH}): porte d’entrée Model Context Protocol recommandée. Commencer par get_risk_state pour l’état courant, le diff 1/7/30 jours, l’historique ou le replay ; utiliser les cinq autres primitives pour la recherche et la preuve.`);
   lines.push(`- [MCP complet](${SITE}${MCP_PUBLIC_PATH}): surface Streamable HTTP compatible et experte, avec les outils spécialisés Risk Diff, Black Box, historique, claims, sources et evidence graph. Doc : ${SITE}/mcp`);
   lines.push(`- [Manifeste des outils MCP](${SITE}/api/v1/toolset-manifest.json): versions et empreintes anti-dérive des surfaces complète et compacte.`);
-  lines.push(`- [Statistiques MCP anonymisées](${SITE}/api/mcp/usage): volumes techniques agrégés sur 91 jours, sans IP, cookie, session, empreinte ni user-agent ; familles client masquées sous cinq initialisations.`);
+  lines.push(`- [Statistiques MCP anonymisées](${SITE}/api/mcp/usage): séries par endpoint, KPI get_risk_state, résultats, p50/p95, tailles et familles client ; user-agents internes exclus et seuil k=5.`);
+  lines.push(`- [Lectures humaines HTML](${SITE}/api/v1/human-traffic.json): GET HTML agrégés par jour, page et domaine référent, sans identifiant persistant et avec seuil k=5.`);
   lines.push(`- [Corpus integral](${SITE}/llms-full.txt): texte complet de toutes les analyses et guides.`);
   lines.push(`- [English full corpus](${SITE}/llms-full-en.txt): complete English analyses and guides in a separate context file.`);
   lines.push('');

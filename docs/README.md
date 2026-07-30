@@ -27,7 +27,7 @@ prouve pas à elle seule que l'état de production correspond au dépôt.
 - `/methodologie/` et `/methodologie/{instrument}/` : modèles, sources, calculs et limites ;
 - `/protocole-editorial/` : explication du contrat éditorial stable ;
 - `/donnees/agents/`, `/agents.json` et `/openapi.json` : version Agent Surface définie dans `src/config/agent-contract.mjs` ;
-- `/mcp/`, `/api/mcp/compact` et `/api/mcp` : documentation, façade MCP compacte recommandée et surface complète ;
+- `/mcp/`, `/api/mcp/compact` et `/api/mcp` : documentation, porte d’entrée compacte avec `get_risk_state` prioritaire, puis surface complète de recherche ;
 - `/api/v1/toolset-manifest.json` : versions et empreintes anti-dérive des outils MCP ;
 - `/preuves/` et `/api/v1/integrity.json` : traçabilité et empreintes ;
 - `/backtests/` et `/api/v1/signals/history.*` : observations point-in-time.

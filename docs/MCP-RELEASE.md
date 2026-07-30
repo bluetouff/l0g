@@ -31,11 +31,12 @@ la source du binaire de production ni une preuve que la version annoncée est vi
 - `zen` n'exécute ni `git pull` ni `npm ci`. Il télécharge les trois assets publics et refuse
   l'archive si l'empreinte, l'identité du workflow, le tag, le SHA source ou le manifeste interne
   ne convergent pas.
-- Le Registry est mis à jour par OIDC uniquement après que `https://l0g.fr/api/mcp` expose la
-  version et le SHA attendus avec `releaseAttested: true`. La façade recommandée
-  `https://l0g.fr/api/mcp/compact` est ensuite vérifiée avec ses six outils. Les deux remotes sont
-  déclarés au Registry : surface complète d'abord pour la compatibilité des clients existants,
-  puis façade compacte recommandée pour les nouvelles intégrations.
+- Le Registry est mis à jour par OIDC uniquement après que
+  `https://l0g.fr/api/mcp/compact` expose la version et le SHA attendus avec
+  `releaseAttested: true`, puis que ses six outils et le contrat de
+  `get_risk_state` sont validés. Les deux remotes sont déclarés au Registry :
+  façade compacte en premier pour les intégrations normales, surface complète
+  ensuite pour les workflows de recherche et la compatibilité.
 
 Documentation officielle :
 

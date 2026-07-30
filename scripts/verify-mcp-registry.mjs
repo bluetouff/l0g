@@ -29,8 +29,12 @@ for (let attempt = 1; attempt <= attempts; attempt += 1) {
     const [entry] = latestEntries;
     const server = entry.server;
     if (server.version !== expectedVersion) throw new Error(`Registry=${server.version}, attendu=${expectedVersion}`);
-    if (!server.remotes?.some((remote) => remote.type === 'streamable-http' && remote.url === 'https://l0g.fr/api/mcp')) {
-      throw new Error('endpoint canonique absent du Registry');
+    const remotes = server.remotes?.filter((remote) => remote.type === 'streamable-http') ?? [];
+    if (remotes[0]?.url !== 'https://l0g.fr/api/mcp/compact') {
+      throw new Error('endpoint compact absent ou non prioritaire dans le Registry');
+    }
+    if (!remotes.some((remote) => remote.url === 'https://l0g.fr/api/mcp')) {
+      throw new Error('surface complète absente du Registry');
     }
     process.stdout.write(`${JSON.stringify({ ok: true, version: server.version, status: 'latest' })}\n`);
     process.exit(0);

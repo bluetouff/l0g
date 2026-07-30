@@ -85,7 +85,12 @@ const surfaces = [
   {
     need: 'Mesurer l’usage MCP',
     endpoint: '/api/mcp/usage',
-    use: 'Rapport agrégé sur 91 jours : volumes, tools, resources, prompts et familles client masquées sous cinq initialisations.',
+    use: 'Séries quotidiennes par endpoint : événements, résultats, p50/p95, tailles, familles client et KPI get_risk_state.',
+  },
+  {
+    need: 'Mesurer les lectures humaines',
+    endpoint: '/api/v1/human-traffic.json',
+    use: 'GET HTML humains agrégés par jour, page et domaine référent, sans cookie ni identifiant persistant.',
   },
 ];
 
@@ -118,6 +123,7 @@ const rules = [
 ];
 
 const curlExamples = [
+  `curl -s -X POST https://l0g.fr${MCP_COMPACT_PUBLIC_PATH} -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_risk_state","arguments":{"mode":"current"}}}'`,
   'curl -s https://l0g.fr/agents.json',
   'curl -s https://l0g.fr/api/v1/freshness.json',
   'curl -s https://l0g.fr/api/v1/risk-diff.json',
@@ -132,9 +138,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   '@id': `${site}/agents/#guide`,
-  headline: 'Utiliser l0g avec un agent',
+  headline: 'Données financières pour agents IA : MCP, API et preuves',
   description:
-    'Guide pratique pour connecter un agent IA à l0g.fr : MCP, Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, evidence graph, historique des signaux, citations et vérification.',
+    'Guide pratique pour connecter un agent IA à des données de risque macro sourcées : endpoint MCP compact, get_risk_state, API, preuves et historique.',
   inLanguage: 'fr',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -144,8 +150,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout
-  title="Utiliser l0g avec un agent"
-  description="Guide pratique pour connecter un agent IA à l0g.fr : MCP public, Agent Surface, OpenAPI, Risk Diff, Black Box, NDJSON, evidence graph, historique des signaux, citations et vérification."
+  title="Agents IA : données financières, MCP et API"
+  description="Connecter un agent IA à des données de risque macro sourcées : MCP compact, get_risk_state, API, preuves, historique et replay point-in-time."
   ogImage="/og-donnees.png"
   ogImageAlt="Utiliser l0g avec un agent : MCP, Agent Surface et evidence graph"
   sidebar={false}
@@ -155,7 +161,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <article class="agent-guide rise" data-pagefind-body>
     <section class="guide-hero">
       <p class="mono-label glow">// agent-ready</p>
-      <h1 class="guide-title font-display glow">Utiliser l0g avec un agent</h1>
+      <h1 class="guide-title font-display glow">Données financières pour agents IA</h1>
       <p class="guide-lede">
         l0g expose désormais une surface machine lisible sans scraping : manifeste,
         contrat OpenAPI, Risk Diff, Black Box Recorder, flux NDJSON, evidence graph,
@@ -170,55 +176,72 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="mono-label glow">// preuve d'usage</p>
       <h2 class="usage-title font-display">Statistiques MCP anonymisées</h2>
       <p class="usage-lede">
-        Fenêtre glissante de 91 jours. l0g compte des événements techniques agrégés,
-        sans IP, cookie, session, empreinte ni user-agent. Les noms libres déclarés dans
-        <code>clientInfo</code> sont immédiatement ramenés à une famille fermée ; les cohortes
-        inférieures à cinq initialisations restent masquées.
+        Fenêtre glissante de 91 jours, ventilée par endpoint. l0g compte initialisations,{' '}
+        <code>tools/list</code>, appels, succès/erreurs, latence p50/p95 et taille de réponse.
+        Les user-agents internes l0g sont exclus avant agrégation. Aucune IP, aucun cookie,
+        aucune session, aucune empreinte et aucune chaîne user-agent ne sont conservés.
       </p>
 
       <div class="usage-cards" aria-live="polite">
+        <article><span>Requêtes MCP</span><strong data-usage-stat="requests">…</strong></article>
         <article><span>Initialisations</span><strong data-usage-stat="initializations">…</strong></article>
+        <article><span><code>tools/list</code></span><strong data-usage-stat="tools_list">…</strong></article>
         <article><span>Appels de tools</span><strong data-usage-stat="tool_calls">…</strong></article>
-        <article><span>Resources lues</span><strong data-usage-stat="resource_reads">…</strong></article>
-        <article><span>Prompts rendus</span><strong data-usage-stat="prompt_gets">…</strong></article>
-        <article><span><code>clientInfo</code> déclaré</span><strong data-usage-stat="client_info_declaration_rate">…</strong></article>
       </div>
       <p class="usage-status" data-usage-status>Chargement du rapport public…</p>
 
+      <article class="usage-primary">
+        <div>
+          <span class="mono-label">KPI produit principal</span>
+          <h3><code>get_risk_state</code></h3>
+          <p>
+            État courant, diff, historique et replay dans un contrat sourcé unique.
+            Les autres tools sont des parcours de recherche secondaires.
+          </p>
+        </div>
+        <dl>
+          <div><dt>appels</dt><dd data-product-stat="count">…</dd></div>
+          <div><dt>part des tools</dt><dd data-product-stat="share_of_tool_calls">…</dd></div>
+          <div><dt>succès mesuré</dt><dd data-product-stat="success_rate">…</dd></div>
+          <div><dt>latence p95</dt><dd data-product-stat="latency_p95">…</dd></div>
+        </dl>
+      </article>
+
       <div class="usage-tables">
         <section>
-          <h3>Tools les plus appelés</h3>
+          <h3>Endpoints</h3>
           <div class="usage-table-wrap">
             <table>
-              <thead><tr><th>Tool</th><th>Appels</th></tr></thead>
-              <tbody data-usage-tools></tbody>
+              <thead><tr><th>Surface</th><th>Requêtes · succès · p95</th></tr></thead>
+              <tbody data-usage-endpoints></tbody>
             </table>
           </div>
         </section>
         <section>
-          <h3>Familles déclarées via <code>clientInfo</code></h3>
+          <h3>Série quotidienne par endpoint</h3>
           <div class="usage-table-wrap">
             <table>
-              <thead><tr><th>Famille</th><th>Initialisations</th></tr></thead>
+              <thead><tr><th>Date · surface</th><th>Requêtes · tools</th></tr></thead>
+              <tbody data-usage-daily></tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h3>Familles <code>clientInfo</code></h3>
+          <div class="usage-table-wrap">
+            <table>
+              <thead><tr><th>Famille stable</th><th>Initialisations</th></tr></thead>
               <tbody data-usage-clients></tbody>
             </table>
           </div>
+          <p class="usage-status" data-taxonomy-status></p>
         </section>
         <section>
-          <h3>Resources les plus lues</h3>
+          <h3>Parcours secondaires</h3>
           <div class="usage-table-wrap">
             <table>
-              <thead><tr><th>Famille</th><th>Lectures</th></tr></thead>
-              <tbody data-usage-resources></tbody>
-            </table>
-          </div>
-        </section>
-        <section>
-          <h3>Prompts les plus rendus</h3>
-          <div class="usage-table-wrap">
-            <table>
-              <thead><tr><th>Prompt</th><th>Rendus</th></tr></thead>
-              <tbody data-usage-prompts></tbody>
+              <thead><tr><th>Tool</th><th>Appels</th></tr></thead>
+              <tbody data-usage-secondary-tools></tbody>
             </table>
           </div>
         </section>
@@ -227,8 +250,38 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="usage-method">
         <strong>Limites de mesure.</strong> Sans identifiant technique, l0g ne peut pas
         compter des personnes, distinguer deux agents derrière une même intégration ni qualifier
-        un appelant de récurrent. Les appels de tools ne sont pas reliés aux familles de clients.
+        un appelant de récurrent. Les jours historiques antérieurs au nouveau contrat gardent
+        leurs volumes, mais pas l’endpoint, le résultat, la latence ni la taille.{' '}
         <a href="/rgpd/">Lire le cadre de confidentialité</a>.
+      </p>
+    </section>
+
+    <section class="guide-section usage-section" data-human-traffic data-pagefind-ignore>
+      <p class="mono-label glow">// vrai KPI humain</p>
+      <h2 class="usage-title font-display">Lectures de documents HTML</h2>
+      <p class="usage-lede">
+        Uniquement les GET 200 de documents HTML, hors crawlers connus, feeds, assets,
+        API/MCP et user-agents internes. L’agrégat conserve le jour, la page et le domaine
+        référent, jamais l’IP, un cookie, une session ou un identifiant persistant.
+      </p>
+      <div class="usage-cards">
+        <article><span>GET HTML publiés</span><strong data-human-stat="html_gets">…</strong></article>
+        <article><span>Jours publiés</span><strong data-human-stat="days_published">…</strong></article>
+      </div>
+      <p class="usage-status" data-human-status>Chargement du rapport humain…</p>
+      <div class="usage-tables">
+        <section>
+          <h3>Pages les plus lues</h3>
+          <div class="usage-table-wrap"><table><thead><tr><th>Page</th><th>GET HTML</th></tr></thead><tbody data-human-pages></tbody></table></div>
+        </section>
+        <section>
+          <h3>Domaines référents</h3>
+          <div class="usage-table-wrap"><table><thead><tr><th>Domaine</th><th>GET HTML</th></tr></thead><tbody data-human-referrers></tbody></table></div>
+        </section>
+      </div>
+      <p class="usage-method">
+        <strong>Interprétation.</strong> Un GET HTML est une lecture servie, pas une personne unique.
+        Les jours, pages et référents sous le seuil de confidentialité k=5 ne sont pas publiés.
       </p>
     </section>
 
@@ -307,20 +360,21 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
   <script>
     const root = document.querySelector<HTMLElement>('[data-mcp-usage]');
     const status = root?.querySelector<HTMLElement>('[data-usage-status]');
-    const tools = root?.querySelector<HTMLTableSectionElement>('[data-usage-tools]');
+    const endpoints = root?.querySelector<HTMLTableSectionElement>('[data-usage-endpoints]');
+    const daily = root?.querySelector<HTMLTableSectionElement>('[data-usage-daily]');
     const clients = root?.querySelector<HTMLTableSectionElement>('[data-usage-clients]');
-    const resources = root?.querySelector<HTMLTableSectionElement>('[data-usage-resources]');
-    const prompts = root?.querySelector<HTMLTableSectionElement>('[data-usage-prompts]');
+    const secondaryTools = root?.querySelector<HTMLTableSectionElement>('[data-usage-secondary-tools]');
+    const taxonomyStatus = root?.querySelector<HTMLElement>('[data-taxonomy-status]');
     const count = new Intl.NumberFormat('fr-FR');
     const percent = new Intl.NumberFormat('fr-FR', { style: 'percent', maximumFractionDigits: 1 });
 
-    function addRow(target: HTMLTableSectionElement | null | undefined, label: string, value: number) {
+    function addRow(target: HTMLTableSectionElement | null | undefined, label: string, value: number | string) {
       if (!target) return;
       const row = document.createElement('tr');
       const name = document.createElement('td');
       const total = document.createElement('td');
       name.textContent = label;
-      total.textContent = count.format(value);
+      total.textContent = typeof value === 'number' ? count.format(value) : value;
       row.append(name, total);
       target.append(row);
     }
@@ -345,18 +399,47 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
         const key = element.dataset.usageStat ?? '';
         const value = report.totals?.[key];
         element.textContent = key.endsWith('_rate')
-          ? (typeof value === 'number' ? percent.format(value) : 'Indisponible')
-          : (typeof value === 'number' ? count.format(value) : 'Indisponible');
+          ? (typeof value === 'number' ? percent.format(value) : 'n.d.')
+          : (typeof value === 'number' ? count.format(value) : 'n.d.');
       }
 
-      for (const row of (report.tools ?? []).slice(0, 10)) addRow(tools, row.name, row.count);
+      const product = report.product_kpi ?? {};
+      for (const element of root?.querySelectorAll<HTMLElement>('[data-product-stat]') ?? []) {
+        const key = element.dataset.productStat ?? '';
+        const value = key === 'latency_p95' ? product.latency_ms?.p95 : product[key];
+        element.textContent = key === 'latency_p95'
+          ? (typeof value === 'number' ? `${count.format(value)} ms` : 'À mesurer')
+          : key.endsWith('_rate') || key.startsWith('share_')
+            ? (typeof value === 'number' ? percent.format(value) : 'À mesurer')
+            : (typeof value === 'number' ? count.format(value) : 'n.d.');
+      }
+
+      for (const row of report.endpoints ?? []) {
+        const success = typeof row.success_rate === 'number' ? percent.format(row.success_rate) : 'historique partiel';
+        const p95 = typeof row.latency_ms?.p95 === 'number' ? `${count.format(row.latency_ms.p95)} ms` : 'p95 à mesurer';
+        addRow(endpoints, row.endpoint, `${count.format(row.requests)} · ${success} · ${p95}`);
+      }
+      for (const row of (report.daily ?? []).slice(-14).reverse()) {
+        addRow(daily, `${row.date} · ${row.endpoint}`, `${count.format(row.requests)} · ${count.format(row.events?.tool_calls ?? 0)}`);
+      }
       for (const row of (report.clients ?? []).slice(0, 10)) addRow(clients, row.family, row.count);
-      for (const row of (report.resources ?? []).slice(0, 10)) addRow(resources, row.family, row.count);
-      for (const row of (report.prompts ?? []).slice(0, 10)) addRow(prompts, row.name, row.count);
-      addEmpty(tools, 'Aucun appel agrégé à ce stade.');
+      let secondaryCount = 0;
+      for (const row of report.tools ?? []) {
+        if (row.name === 'get_risk_state' || secondaryCount >= 8) continue;
+        addRow(secondaryTools, row.name, row.count);
+        secondaryCount += 1;
+      }
+      addEmpty(endpoints, 'Aucune surface au-dessus du seuil.');
+      addEmpty(daily, 'Aucun jour au-dessus du seuil.');
       addEmpty(clients, 'Cohortes encore inférieures au seuil public.');
-      addEmpty(resources, 'Aucune lecture agrégée à ce stade.');
-      addEmpty(prompts, 'Aucun rendu agrégé à ce stade.');
+      addEmpty(secondaryTools, 'Aucun parcours secondaire agrégé.');
+
+      if (taxonomyStatus) {
+        const otherShare = report.taxonomy?.other_share;
+        taxonomyStatus.textContent = report.taxonomy?.decision_ready
+          ? `Taxonomie décisionnelle. Part de other : ${percent.format(otherShare ?? 0)}.`
+          : `Taxonomie non décisionnelle. Part de other : ${typeof otherShare === 'number' ? percent.format(otherShare) : 'indisponible'}. Diagnostic privé de 7 jours en cours.`;
+      }
 
       if (status) {
         const freshness = report.updated_at
@@ -368,11 +451,41 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       }
     } catch {
       if (status) status.textContent = 'Le rapport d’usage est momentanément indisponible. Aucun chiffre de remplacement n’est estimé.';
-      for (const element of root?.querySelectorAll<HTMLElement>('[data-usage-stat]') ?? []) element.textContent = 'Indisponible';
-      addEmpty(tools, 'Rapport indisponible.');
+      for (const element of root?.querySelectorAll<HTMLElement>('[data-usage-stat]') ?? []) element.textContent = 'n.d.';
+      addEmpty(endpoints, 'Rapport indisponible.');
+      addEmpty(daily, 'Rapport indisponible.');
       addEmpty(clients, 'Rapport indisponible.');
-      addEmpty(resources, 'Rapport indisponible.');
-      addEmpty(prompts, 'Rapport indisponible.');
+      addEmpty(secondaryTools, 'Rapport indisponible.');
+    }
+
+    const humanRoot = document.querySelector<HTMLElement>('[data-human-traffic]');
+    const humanStatus = humanRoot?.querySelector<HTMLElement>('[data-human-status]');
+    const humanPages = humanRoot?.querySelector<HTMLTableSectionElement>('[data-human-pages]');
+    const humanReferrers = humanRoot?.querySelector<HTMLTableSectionElement>('[data-human-referrers]');
+    try {
+      const response = await fetch('/api/v1/human-traffic.json', { headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error('human_traffic_unavailable');
+      const report = await response.json();
+      for (const element of humanRoot?.querySelectorAll<HTMLElement>('[data-human-stat]') ?? []) {
+        const value = report.totals?.[element.dataset.humanStat ?? ''];
+        element.textContent = typeof value === 'number' ? count.format(value) : 'n.d.';
+      }
+      const pages = new Map<string, number>();
+      const referrers = new Map<string, number>();
+      for (const day of report.daily ?? []) {
+        for (const row of day.pages ?? []) pages.set(row.page, (pages.get(row.page) ?? 0) + row.count);
+        for (const row of day.referrers ?? []) referrers.set(row.domain, (referrers.get(row.domain) ?? 0) + row.count);
+      }
+      for (const [page, total] of [...pages].sort((a, b) => b[1] - a[1]).slice(0, 10)) addRow(humanPages, page, total);
+      for (const [domain, total] of [...referrers].sort((a, b) => b[1] - a[1]).slice(0, 10)) addRow(humanReferrers, domain, total);
+      addEmpty(humanPages, 'Aucune page au-dessus du seuil.');
+      addEmpty(humanReferrers, 'Aucun référent au-dessus du seuil.');
+      if (humanStatus) humanStatus.textContent = `Rapport généré le ${new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(report.generated_at))}.`;
+    } catch {
+      if (humanStatus) humanStatus.textContent = 'Le rapport humain est momentanément indisponible. Aucun chiffre de remplacement n’est estimé.';
+      for (const element of humanRoot?.querySelectorAll<HTMLElement>('[data-human-stat]') ?? []) element.textContent = 'n.d.';
+      addEmpty(humanPages, 'Rapport indisponible.');
+      addEmpty(humanReferrers, 'Rapport indisponible.');
     }
   </script>
 
@@ -446,6 +559,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     }
 
     .usage-cards article,
+    .usage-primary,
     .usage-tables > section {
       border: 1px solid var(--color-line);
       border-radius: 8px;
@@ -480,6 +594,52 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       color: var(--color-muted);
       font-family: var(--font-mono);
       font-size: 0.7rem;
+    }
+
+    .usage-primary {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-color: color-mix(in srgb, var(--color-signal) 55%, var(--color-line));
+    }
+
+    .usage-primary h3 {
+      margin-top: 0.35rem;
+      color: var(--color-bright);
+      font-size: 1.15rem;
+    }
+
+    .usage-primary p {
+      margin-top: 0.45rem;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .usage-primary dl {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .usage-primary dl div {
+      border-left: 1px solid var(--color-line);
+      padding-left: 0.7rem;
+    }
+
+    .usage-primary dt {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+    }
+
+    .usage-primary dd {
+      margin-top: 0.3rem;
+      color: var(--color-signal);
+      font-family: var(--font-display);
+      font-size: 1.3rem;
     }
 
     .usage-tables {
@@ -548,11 +708,16 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
     @media (min-width: 720px) {
       .usage-cards {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .usage-tables {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .usage-primary {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        align-items: center;
       }
     }
 

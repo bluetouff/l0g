@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '28 juillet 2026';
+const updated = '30 juillet 2026';
 ---
 
 <BaseLayout
@@ -68,31 +68,37 @@ const updated = '28 juillet 2026';
           Le serveur enregistre l'adresse IP, l'horodatage, la ressource demandée, le référent et
           le user-agent. Ces données servent à assurer la sécurité et la disponibilité du service,
           à diagnostiquer les erreurs et à produire des statistiques de fréquentation agrégées avec
-          <strong class="text-bright">GoAccess</strong>, exécuté localement.
+          <strong class="text-bright">GoAccess</strong>, exécuté localement. Un second agrégat
+          décisionnel ne conserve que les GET 200 de documents HTML après exclusion des crawlers
+          connus, feeds, assets, API/MCP et user-agents internes.
         </p>
         <ul class="leak-sub">
           <li><strong class="text-bright">Base légale :</strong> intérêt légitime de l'opérateur à sécuriser, maintenir et mesurer son service ;</li>
           <li><strong class="text-bright">Destinataire :</strong> Olivier Laurelli, dans le cadre de l'administration du serveur ;</li>
           <li><strong class="text-bright">Durée :</strong> 14 jours, puis suppression automatique par rotation ;</li>
           <li><strong class="text-bright">Mesure :</strong> adresses IP masquées avant la production des statistiques ; aucun profil individuel.</li>
+          <li><strong class="text-bright">KPI humain :</strong> agrégation sur 91 jours par date, page et domaine référent seulement ; aucune IP, chemin de référent, session ou chaîne user-agent n’est recopié dans ce rapport ; les jours, pages et domaines sous cinq GET HTML ne sont pas publiés.</li>
         </ul>
       </article>
 
       <article class="leak card" style="--c: var(--color-accent)">
         <span class="leak-h">Statistiques d’usage du serveur MCP</span>
         <p class="leak-d">
-          Le serveur MCP produit des compteurs techniques agrégés sur les initialisations, les
-          tools appelés, les familles de resources lues et les prompts rendus. Lorsqu’un client
-          déclare <code class="rgpd-code">clientInfo.name</code>, ce nom libre est immédiatement
-          classé dans une liste fermée de familles connues ou dans la catégorie
-          <code class="rgpd-code">other</code>. Le nom d’origine et sa version ne sont pas écrits.
+          Le serveur MCP produit des compteurs techniques agrégés par jour et endpoint sur les
+          initialisations, <code class="rgpd-code">tools/list</code>, appels, succès/erreurs,
+          latence et taille de réponse. Lorsqu’un client déclare
+          <code class="rgpd-code">clientInfo.name</code>, ce nom est classé dans huit familles
+          stables ou dans <code class="rgpd-code">other</code>. Pour corriger cette taxonomie,
+          un libellé normalisé sans version est conservé dans le fichier privé du service pendant
+          sept jours. Il n’est accessible que depuis le serveur et seulement sous forme agrégée
+          à partir de cinq occurrences. Aucun de ces libellés n’est publié.
         </p>
         <ul class="leak-sub">
-          <li><strong class="text-bright">Données exclues :</strong> aucune IP, adresse réseau, empreinte, session, cookie ou chaîne user-agent n’entre dans l’agrégat MCP ;</li>
+          <li><strong class="text-bright">Données exclues :</strong> les user-agents internes l0g sont exclus avant agrégation ; aucune IP, adresse réseau, empreinte, session, cookie, chaîne user-agent, contenu de requête ou contenu de réponse n’est conservé ;</li>
           <li><strong class="text-bright">Finalité :</strong> mesurer l’usage, la qualité et l’adoption de l’interface publique MCP ;</li>
           <li><strong class="text-bright">Base légale :</strong> intérêt légitime de l’opérateur à maintenir et mesurer son service public ;</li>
-          <li><strong class="text-bright">Durée :</strong> fenêtre glissante de 91 jours ;</li>
-          <li><strong class="text-bright">Publication :</strong> les familles de clients sous cinq initialisations sont masquées ; aucun utilisateur ou appelant récurrent n’est estimé.</li>
+          <li><strong class="text-bright">Durée :</strong> fenêtre glissante de 91 jours pour les compteurs ; sept jours pour les libellés normalisés de diagnostic <code class="rgpd-code">other</code> ;</li>
+          <li><strong class="text-bright">Publication :</strong> seuil de confidentialité k=5 pour les familles et séries publiques ; aucun utilisateur ou appelant récurrent n’est estimé.</li>
         </ul>
       </article>
 

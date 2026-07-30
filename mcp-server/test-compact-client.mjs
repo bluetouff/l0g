@@ -41,9 +41,22 @@ try {
   if (!pack.structuredContent?.documents?.length || !Array.isArray(pack.structuredContent?.citationUrls)) throw new Error('build_research_pack compact incomplet');
 
   const risk = await call('get_risk_state', { mode: 'current' });
-  if (!risk.structuredContent?.indices) throw new Error('get_risk_state sans indices courants');
+  if (!risk.structuredContent?.indices || risk.structuredContent?.mode !== 'current' || risk.structuredContent?.primary !== true) {
+    throw new Error('get_risk_state sans contrat courant stable');
+  }
+  if (!risk.structuredContent?.asOf || !risk.structuredContent?.source || !risk.structuredContent?.methodology) {
+    throw new Error('get_risk_state sans date, source ou méthodologie');
+  }
+  if ((risk.content || []).filter((item) => item.type === 'resource_link').length < 2) {
+    throw new Error('get_risk_state sans liens source et méthode');
+  }
 
-  console.log(`MCP compact OK: ${tools.length} tools, ${bytes} octets, resource_link et six appels validés.`);
+  const invalidHistory = await call('get_risk_state', { mode: 'history' });
+  if (invalidHistory.isError !== true || !invalidHistory.structuredContent?.error) {
+    throw new Error('get_risk_state history accepte un instrument absent');
+  }
+
+  console.log(`MCP compact OK: ${tools.length} tools, ${bytes} octets, get_risk_state prioritaire et contrats validés.`);
 } finally {
   await client.close();
 }

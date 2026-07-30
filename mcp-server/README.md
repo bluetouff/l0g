@@ -9,6 +9,10 @@ Endpoints publics visés :
 - `https://l0g.fr/api/mcp/compact` : façade recommandée à six tools ;
 - `https://l0g.fr/api/mcp` : surface complète conservée pour compatibilité et usages experts.
 
+`get_risk_state` est le produit principal de la façade compacte. Son contrat
+regroupe l’état courant, le diff 1/7/30 jours, l’historique par instrument et le
+replay point-in-time avec date de référence, source, méthode et limites.
+
 Le contrat anti-dérive est publié sur `https://l0g.fr/api/v1/toolset-manifest.json`.
 
 ## État de déploiement
@@ -65,10 +69,14 @@ agent / client MCP
   symlink `current` pointe sur la même release, puis rechargé après la bascule.
 - Mode **stateless + réponse JSON** : pas de session à stocker, un serveur et un
   transport neufs par requête.
-- Un agrégat MCP séparé compte initialisations, tools, familles de resources, prompts et
-  familles fermées issues de `clientInfo`. Il n'utilise aucune IP, session, empreinte,
-  chaîne user-agent ni valeur libre persistante. Les écritures atomiques sont regroupées
-  hors du chemin de réponse MCP et vidées proprement à l'arrêt. Rapport public : `/api/mcp/usage`.
+- Un agrégat MCP séparé compte par jour et endpoint les initialisations,
+  `tools/list`, appels, succès/erreurs, latences p50/p95, tailles de réponse,
+  tools, resources, prompts et familles stables issues de `clientInfo`.
+  Les user-agents internes l0g sont exclus avant agrégation. Aucune IP, session,
+  empreinte, chaîne user-agent, requête ou réponse n’est conservée. Les libellés
+  normalisés classés `other` restent sept jours dans le fichier privé afin de
+  corriger la taxonomie ; seuls ceux atteignant k=5 sont visibles dans le
+  diagnostic local `/_l0g/mcp-client-taxonomy`. Rapport public : `/api/mcp/usage`.
 
 ## Resources exposées
 
@@ -309,6 +317,14 @@ curl -s -X POST https://l0g.fr/api/mcp/compact \
 Ou pointer un client compatible (Claude Desktop via `mcp-remote`, l'inspecteur MCP, etc.)
 sur `https://l0g.fr/api/mcp/compact`. Remplacer l'URL par `https://l0g.fr/api/mcp`
 uniquement pour les outils spécialisés de la surface complète.
+
+Après sept jours de collecte, l’opérateur peut lire les libellés normalisés qui
+composent encore `other`. Le chemin n’est pas proxifié par Apache et refuse toute
+requête non locale :
+
+```bash
+curl -fsS http://127.0.0.1:8848/_l0g/mcp-client-taxonomy
+```
 
 ## Mises à jour
 

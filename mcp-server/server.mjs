@@ -675,6 +675,20 @@ const BlackBoxOutput = ToolOutput.extend({
   frames: z.array(z.any()).optional(),
   policy: AnyRecord.optional(),
 }).passthrough();
+const RiskStateOutput = ToolOutput.extend({
+  mode: z.enum(['current', 'diff', 'history', 'replay']),
+  primary: z.literal(true),
+  request: z.object({
+    instrument: z.enum(['us', 'eu', 'yen', 'energie', 'debt']).nullable(),
+    window: z.enum(['1d', '7d', '30d']).nullable(),
+    date: z.string().nullable(),
+    limit: z.number().int(),
+  }).strict(),
+  asOf: z.string().nullable(),
+  source: z.string(),
+  methodology: z.string(),
+  interpretation: z.array(z.string()),
+}).passthrough();
 const OpenapiOutput = ToolOutput.extend({
   openapi: z.string().optional(),
   info: AnyRecord.optional(),
@@ -2921,8 +2935,9 @@ export function buildServer(data, options = {}) {
           contracts: {
             toolsetManifest: `${SITE}/api/v1/toolset-manifest.json`,
             openapi: `${SITE}/openapi.json`,
-            fullMcp: `${SITE}/api/mcp`,
-            compactMcp: `${SITE}/api/mcp/compact`,
+            recommendedMcp: `${SITE}/api/mcp/compact`,
+            primaryTool: 'get_risk_state',
+            researchMcp: `${SITE}/api/mcp`,
           },
         }, undefined, [
           resourceLink(`${SITE}/agents.json`, 'agents.json', 'Manifeste de découverte Agent Surface.', { priority: 1, lastModified: freshnessState.generated }),
@@ -2989,22 +3004,103 @@ export function buildServer(data, options = {}) {
     server.registerTool(
       'get_risk_state',
       {
-        title: 'Get risk state',
-        description: 'État de risque courant, diff 1/7/30 jours, historique par instrument ou replay Black Box point-in-time.',
+        title: 'Get l0g risk state (primary)',
+        description: 'Produit agentique principal de l0g. Renvoie un contrat stable et sourcé pour l’état courant, le diff 1/7/30 jours, l’historique d’un instrument ou un replay Black Box point-in-time. Commencer ici pour toute question sur le risque.',
         inputSchema: {
           mode: z.enum(['current', 'diff', 'history', 'replay']).default('current').describe('Vue de risque demandée.'),
-          instrument: z.enum(['us', 'eu', 'yen', 'energie', 'debt']).optional().describe('Instrument pour l’historique.'),
+          instrument: z.enum(['us', 'eu', 'yen', 'energie', 'debt']).optional().describe('Instrument requis lorsque mode=history.'),
           window: z.enum(['1d', '7d', '30d']).default('7d').describe('Fenêtre de diff.'),
-          date: z.string().optional().describe('Date YYYY-MM-DD pour le replay.'),
+          date: z.string().optional().describe('Date YYYY-MM-DD requise lorsque mode=replay.'),
           limit: z.number().int().min(1).max(200).default(50).describe('Nombre maximum d’observations ou frames.'),
         },
-        outputSchema: CompositeToolOutput,
+        outputSchema: RiskStateOutput,
       },
       async ({ mode, instrument, window, date, limit }) => {
-        if (mode === 'diff') return invoke('get_risk_diff', { window });
-        if (mode === 'history') return invoke('get_signal_history', { key: instrument, limit });
-        if (mode === 'replay') return invoke('get_black_box', { date, limitFrames: Math.min(limit, 30) });
-        return invoke('get_risk_indices', {});
+        const request = {
+          instrument: instrument || null,
+          window: mode === 'diff' ? window : null,
+          date: mode === 'replay' ? date || null : null,
+          limit,
+        };
+        if (mode === 'history' && !instrument) {
+          return errorReply({
+            error: 'instrument requis pour mode=history',
+            mode,
+            primary: true,
+            request,
+            asOf: null,
+            source: `${SITE}/api/v1/signals/history.json`,
+            methodology: `${SITE}/series/`,
+            interpretation: ['Choisir us, eu, yen, energie ou debt.', 'Les scores 0-100 sont normalisés par instrument.'],
+          });
+        }
+        const parsedReplayDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date)
+          ? new Date(`${date}T00:00:00Z`)
+          : null;
+        if (mode === 'replay' && (!parsedReplayDate || Number.isNaN(parsedReplayDate.getTime()) || parsedReplayDate.toISOString().slice(0, 10) !== date)) {
+          return errorReply({
+            error: 'date YYYY-MM-DD valide requise pour mode=replay',
+            mode,
+            primary: true,
+            request,
+            asOf: null,
+            source: `${SITE}/api/v1/black-box.json`,
+            methodology: `${SITE}/black-box/`,
+            interpretation: ['Le replay utilise uniquement une frame déjà publiée.', 'Aucune reconstruction rétroactive n’est produite.'],
+          });
+        }
+
+        let result;
+        let source;
+        let methodology;
+        if (mode === 'diff') {
+          result = await invoke('get_risk_diff', { window });
+          source = `${SITE}/api/v1/risk-diff.json`;
+          methodology = `${SITE}/risk-diff/`;
+        } else if (mode === 'history') {
+          result = await invoke('get_signal_history', { key: instrument, limit });
+          source = `${SITE}/api/v1/signals/history.json`;
+          methodology = `${SITE}/series/`;
+        } else if (mode === 'replay') {
+          result = await invoke('get_black_box', { date, limitFrames: Math.min(limit, 30) });
+          source = `${SITE}/api/v1/black-box.json`;
+          methodology = `${SITE}/black-box/`;
+        } else {
+          result = await invoke('get_risk_indices', {});
+          source = `${SITE}/api/v1/risk.json`;
+          methodology = `${SITE}/methodologie/`;
+        }
+
+        const original = result.structuredContent || {};
+        const asOf = original.frame?.date
+          || original.latestFrame?.date
+          || original.anchorDate
+          || original.updated
+          || original.generated
+          || original.snapshot
+          || null;
+        const payload = {
+          ...original,
+          mode,
+          primary: true,
+          request,
+          asOf,
+          source,
+          methodology,
+          interpretation: [
+            'Les scores 0-100 sont normalisés séparément par instrument et ne sont pas directement comparables.',
+            'Les dates, la fraîcheur, la couverture et les limites font partie du résultat.',
+            'Ce résultat décrit un état de risque public, pas une probabilité ni un conseil en investissement.',
+          ],
+        };
+        const originalText = result.content?.find((item) => item.type === 'text')?.text;
+        if (result.isError) return errorReply(payload, originalText);
+        const links = [
+          ...(result.content || []).filter((item) => item.type === 'resource_link'),
+          resourceLink(source, `risk-state-${mode}`, 'Source JSON canonique de cette vue de risque.', { priority: 1 }),
+          resourceLink(methodology, 'risk-methodology', 'Méthodologie et limites de lecture.', { mimeType: 'text/html', priority: 0.95 }),
+        ];
+        return reply(payload, originalText, links);
       },
     );
   }
@@ -3038,6 +3134,60 @@ function send(res, code, obj, extraHeaders = {}) {
   const body = JSON.stringify(obj);
   res.writeHead(code, { ...SECURE_HEADERS, ...extraHeaders, 'Content-Type': 'application/json; charset=utf-8' });
   res.end(body);
+}
+
+function observeResponse(res, captureLimit = 1_048_576) {
+  const originalWrite = res.write;
+  const originalEnd = res.end;
+  let bytes = 0;
+  let capturedBytes = 0;
+  const captured = [];
+
+  function measure(chunk, encoding) {
+    if (chunk === undefined || chunk === null || typeof chunk === 'function') return;
+    const buffer = Buffer.isBuffer(chunk)
+      ? chunk
+      : Buffer.from(chunk, typeof encoding === 'string' ? encoding : undefined);
+    bytes += buffer.length;
+    if (capturedBytes >= captureLimit) return;
+    const remaining = captureLimit - capturedBytes;
+    const fragment = buffer.subarray(0, remaining);
+    captured.push(fragment);
+    capturedBytes += fragment.length;
+  }
+
+  res.write = function measuredWrite(chunk, ...args) {
+    measure(chunk, args[0]);
+    return originalWrite.call(this, chunk, ...args);
+  };
+  res.end = function measuredEnd(chunk, ...args) {
+    measure(chunk, args[0]);
+    return originalEnd.call(this, chunk, ...args);
+  };
+
+  return {
+    responseBytes() {
+      return bytes;
+    },
+    outcome(statusCode) {
+      if (statusCode < 200 || statusCode >= 400) return 'error';
+      if (!captured.length) return 'success';
+      try {
+        const payload = JSON.parse(Buffer.concat(captured).toString('utf8'));
+        const messages = Array.isArray(payload) ? payload : [payload];
+        return messages.some((message) => message?.error || message?.result?.isError === true)
+          ? 'error'
+          : 'success';
+      } catch {
+        return 'success';
+      }
+    },
+  };
+}
+
+function isLocalRequest(req) {
+  const address = req.socket?.remoteAddress;
+  return (address === '127.0.0.1' || address === '::1') && !req.headers['x-forwarded-for'];
 }
 
 function rateLimitHeaders() {
@@ -3090,8 +3240,43 @@ const httpServer = http.createServer(async (req, res) => {
     }
   }
 
+  if (url.pathname === '/_l0g/mcp-client-taxonomy') {
+    if (req.method !== 'GET' || !isLocalRequest(req)) return send(res, 404, { error: 'not found' });
+    try {
+      return send(res, 200, await usageStore.privateClientTaxonomyReport());
+    } catch (error) {
+      console.error('[l0g-mcp] private taxonomy report failed', error?.message || error);
+      return send(res, 503, { error: 'taxonomy report unavailable' });
+    }
+  }
+
   const usageEndpoint = `${MCP_PATH.replace(/\/$/, '')}/usage`;
   if (url.pathname !== MCP_PATH && url.pathname !== MCP_COMPACT_PATH && url.pathname !== usageEndpoint) return send(res, 404, { error: 'not found' });
+
+  let telemetryBody;
+  if (req.method === 'POST' && (url.pathname === MCP_PATH || url.pathname === MCP_COMPACT_PATH)) {
+    const startedAt = performance.now();
+    const responseObservation = observeResponse(res);
+    let telemetryRecorded = false;
+    const recordTelemetry = (forcedOutcome = null) => {
+      if (telemetryRecorded) return;
+      telemetryRecorded = true;
+      usageStore.recordRequest({
+        surface: url.pathname === MCP_COMPACT_PATH ? 'compact' : 'full',
+        body: telemetryBody,
+        statusCode: res.statusCode,
+        outcome: forcedOutcome || responseObservation.outcome(res.statusCode),
+        durationMs: performance.now() - startedAt,
+        responseBytes: responseObservation.responseBytes(),
+        userAgent: req.headers['user-agent'],
+      });
+    };
+    res.once('finish', () => recordTelemetry());
+    res.once('close', () => {
+      if (!res.writableFinished) recordTelemetry('error');
+    });
+  }
+
   if (!hostAllowed(req)) return send(res, 421, { error: 'host non autorisé' });
   if (!originAllowed(req)) return send(res, 403, { error: 'origin non autorisée' });
 
@@ -3145,6 +3330,7 @@ const httpServer = http.createServer(async (req, res) => {
     try {
       const raw = Buffer.concat(chunks).toString('utf8');
       body = raw ? JSON.parse(raw) : undefined;
+      telemetryBody = body;
     } catch {
       return send(res, 400, { jsonrpc: '2.0', error: { code: -32700, message: 'Parse error' }, id: null });
     }
@@ -3156,9 +3342,6 @@ const httpServer = http.createServer(async (req, res) => {
         enableJsonResponse: true, // réponse JSON, pas de SSE
       });
       res.on('close', () => { transport.close(); server.close(); });
-      res.on('finish', () => {
-        if (res.statusCode >= 200 && res.statusCode < 300) usageStore.recordRpc(body);
-      });
       await server.connect(transport);
       await transport.handleRequest(req, res, body);
     } catch (e) {

@@ -1,0 +1,12 @@
+[Unit]
+Description=Refresh l0g human HTML traffic aggregate daily
+
+[Timer]
+OnCalendar=*-*-* 02:17:00 Europe/Paris
+Persistent=true
+RandomizedDelaySec=10m
+AccuracySec=1m
+Unit=l0g-human-traffic.service
+
+[Install]
+WantedBy=timers.target

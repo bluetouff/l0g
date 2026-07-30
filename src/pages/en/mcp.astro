@@ -80,9 +80,9 @@ const appLd = {
   '@type': 'WebAPI',
   '@id': `${enUrl}#mcp`,
   name: 'l0g MCP server',
-  description: 'Read-only Model Context Protocol server for l0g.fr: resources, user-selected prompts and tools for Agent Surface, Risk Diff, Black Box, claims, evidence and primary sources through Streamable HTTP.',
+  description: 'Read-only finance MCP endpoint for current macro risk, 1/7/30-day changes, signal history and sourced point-in-time replay through get_risk_state.',
   documentation: enUrl,
-  url: ENDPOINT,
+  url: COMPACT_ENDPOINT,
   provider: { '@id': `${SITE}/#org` },
   inLanguage: 'en',
   isAccessibleForFree: true,
@@ -90,8 +90,8 @@ const appLd = {
 ---
 
 <EnglishLayout
-  title="MCP server"
-  description="English documentation for the l0g.fr Model Context Protocol server: read-only resources, four user-selected prompts and tools for Agent Surface, Risk Diff, Black Box, claims and evidence."
+  title="Finance MCP: sourced risk state for AI agents"
+  description="Read-only finance MCP endpoint: get_risk_state returns current macro risk, 1/7/30-day changes, signal history and replay with sources and limits."
   canonical={enUrl}
   alternateLinks={alternateLinks}
 >
@@ -100,7 +100,7 @@ const appLd = {
   <section data-pagefind-body>
     <p class="mono-label glow" style="color: var(--color-signal)">// mcp</p>
     <h1 class="mt-3 font-display text-4xl leading-none tracking-wider glow sm:text-5xl">
-      MCP <span style="color: var(--color-accent)">server</span>
+      Finance <span style="color: var(--color-accent)">MCP & risk</span>
     </h1>
     <p class="mt-4 max-w-2xl text-paper">
       l0g exposes its data to AI agents through the Model Context Protocol, read-only. An agent can query Agent Surface, the OpenAPI contract, NDJSON feeds, Risk Diff, Black Box Recorder, claims, the evidence graph, sources, freshness, integrity, changefeed, signal history or full article text without scraping the site. No key or authentication. Usage measurement is aggregated without IP addresses, cookies, sessions, fingerprints or user-agent strings in MCP telemetry.
@@ -116,6 +116,12 @@ const appLd = {
       <code>discover_l0g</code>, <code>search_l0g</code>, <code>get_document</code>, <code>get_evidence</code>,
       <code>build_research_pack</code> and <code>get_risk_state</code>. The full MCP remains available at <code>{ENDPOINT}</code>.
       Contract fingerprints are published in <a class="link-term" href="/api/v1/toolset-manifest.json">toolset-manifest.json</a>.
+    </div>
+    <div class="mt-4 max-w-2xl rounded-lg border border-line p-4 text-sm text-paper" style="border-color: color-mix(in srgb, var(--color-signal) 55%, var(--color-line));">
+      <strong class="text-signal">Primary agent product:</strong> <code>get_risk_state</code> unifies current risk,
+      1/7/30-day changes, instrument history and Black Box replay. Every response preserves
+      its reference date, canonical source, methodology, coverage and interpretation limits.
+      Start here for any risk question.
     </div>
     <p class="language-switch mono-label"><a class="link-term" href="/mcp/">Version française →</a></p>
   </section>
@@ -162,7 +168,7 @@ const appLd = {
 
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// tools</h2>
-      <p class="mt-3 max-w-2xl text-paper">Tools are reserved for operations: search, filtering, diff, replay, history, subgraph extraction or targeted reading. Full-text search remains local and deterministic, with no vector database or external provider. Long articles are paginated with continuation cursors, direct source access and separate references.</p>
+      <p class="mt-3 max-w-2xl text-paper"><code>get_risk_state</code> is the normal path for risk. The full catalog below supports expert research, filtering, evidence, replay, history, subgraph extraction and targeted reading. Full-text search remains local and deterministic, with no vector database or external provider.</p>
       <div class="mcp-table mt-3"><table><thead><tr><th>Tool</th><th>Arguments</th><th>Returns</th></tr></thead><tbody>{tools.map(([name, args, desc]) => (<tr><td><code>{name}</code></td><td class="text-muted">{args}</td><td>{desc}</td></tr>))}</tbody></table></div>
     </div>
 
@@ -198,7 +204,12 @@ curl -s -X POST ${COMPACT_ENDPOINT} \\
 curl -s -X POST ${COMPACT_ENDPOINT} \\
   -H 'Content-Type: application/json' \\
   -H 'Accept: application/json, text/event-stream' \\
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`}</code></pre>
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
+
+curl -s -X POST ${COMPACT_ENDPOINT} \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_risk_state","arguments":{"mode":"current"}}}'`}</code></pre>
     </div>
 
     <div>

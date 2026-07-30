@@ -434,11 +434,32 @@ const usageUrl = `${URL_.replace(/\/$/, '')}/usage`;
 const usageResponse = await fetch(usageUrl, { headers: { Accept: 'application/json' } });
 if (!usageResponse.ok) throw new Error(`usage report HTTP ${usageResponse.status}`);
 const usage = await usageResponse.json();
-if (usage.schema_version !== '1.0.0' || usage.retention_days !== 91 || !usage.totals) {
+if (
+  usage.schema_version !== '2.0.0'
+  || usage.retention_days !== 91
+  || usage.minimum_public_cohort !== 5
+  || !usage.totals
+  || !Array.isArray(usage.endpoints)
+  || !Array.isArray(usage.daily)
+  || usage.product_kpi?.name !== 'get_risk_state'
+) {
   throw new Error('usage report incomplet');
 }
 if (usage.enabled && (usage.totals.initializations < 1 || usage.totals.tool_calls < 1 || usage.totals.resource_reads < 1 || usage.totals.prompt_gets < 1)) {
   throw new Error('usage report actif sans compteurs MCP attendus');
+}
+if (
+  usage.enabled
+  && (
+    usage.totals.requests < 1
+    || usage.totals.successes < 1
+    || !Number.isFinite(usage.totals.latency_ms?.p50)
+    || !Number.isFinite(usage.totals.latency_ms?.p95)
+    || !Number.isFinite(usage.totals.response_bytes?.average)
+    || !usage.endpoints.some((entry) => entry.endpoint === '/api/mcp')
+  )
+) {
+  throw new Error('usage report actif sans séries décisionnelles');
 }
 if (/ip|address|fingerprint|user.?agent/i.test(JSON.stringify(Object.keys(usage.measurement || {})))) {
   throw new Error('usage report expose une dimension identifiante');

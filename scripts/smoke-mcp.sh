@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-MCP_URL="${L0G_MCP_URL:-https://l0g.fr/api/mcp}"
+MCP_URL="${L0G_MCP_URL:-https://l0g.fr/api/mcp/compact}"
 PAYLOAD='{"jsonrpc":"2.0","id":1,"method":"ping","params":{}}'
 
 tmp_body="$(mktemp)"
@@ -46,6 +46,7 @@ run_case \
   "Not Acceptable" \
   -X POST \
   "$MCP_URL" \
+  -H "User-Agent: l0g-mcp-smoke/1" \
   -H "Content-Type: application/json" \
   -d "$PAYLOAD"
 
@@ -55,6 +56,7 @@ run_case \
   "unsupported content type" \
   -X POST \
   "$MCP_URL" \
+  -H "User-Agent: l0g-mcp-smoke/1" \
   -H "Accept: application/json, text/event-stream" \
   -d "$PAYLOAD"
 
@@ -64,6 +66,7 @@ run_case \
   "\"result\":{}" \
   -X POST \
   "$MCP_URL" \
+  -H "User-Agent: l0g-mcp-smoke/1" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
   -d "$PAYLOAD"

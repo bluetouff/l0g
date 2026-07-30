@@ -1,7 +1,10 @@
 {
-  "serverVersion": "1.23.2",
+  "serverVersion": "1.24.0",
   "protocolVersion": "2025-11-25",
-  "toolsetHash": "4c50683e547086c5312c1dba62b51f607daa16c7aea44fe724eca26b729b83f8",
+  "primaryTool": "get_risk_state",
+  "recommendedSurface": "/api/mcp/compact",
+  "researchSurface": "/api/mcp",
+  "toolsetHash": "ed6c32e6ffe7abffed6525f9089cbd6725b2dd2150607f0ab01a6043d766ff76",
   "tools": [
     {
       "name": "build_research_pack",
@@ -141,10 +144,10 @@
     },
     {
       "name": "get_risk_state",
-      "semanticVersion": "1.0.0",
-      "descriptionHash": "364e6b4469e2e4bad930592af2f81e57d9931bd5966d51079c7f7d3ada445d84",
-      "inputSchemaHash": "cb838f7e63982b6c913c8fc91633f3b43b273a7d6e5859d10423f49d6385c78f",
-      "outputSchemaHash": "5d3d890902f61f4bf3d87ec3ee2f499cffb21be322a3dbcf3104357c220682df",
+      "semanticVersion": "2.0.0",
+      "descriptionHash": "9f788a1cc042bb7446b4493942fa5001be6156cdc789125f829e2aa4c5148698",
+      "inputSchemaHash": "deda5d0d9ada9c90dc5e5100013fb668c320081810158c0999963f28911a9408",
+      "outputSchemaHash": "27130c73546b37f2a8bec89fee79380427185440a5c186419c5cba974c837e29",
       "changeType": "initial"
     },
     {
@@ -244,7 +247,7 @@
     },
     "compact": {
       "path": "/api/mcp/compact",
-      "toolsetHash": "53ceef981c0a42fc915c8cf36a828b667adb9185a8ee38904080e6b321afeff9",
+      "toolsetHash": "9c5bd74d6462b2ee673379666d73c6dd96103b03c5189c0033ed846628be6cba",
       "tools": [
         "build_research_pack",
         "discover_l0g",
@@ -254,7 +257,7 @@
         "search_l0g"
       ],
       "toolCount": 6,
-      "toolsListBytes": 11276
+      "toolsListBytes": 12373
     }
   }
 }

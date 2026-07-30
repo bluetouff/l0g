@@ -5,7 +5,7 @@ function argument(name, fallback = null) {
   return index >= 0 ? process.argv[index + 1] : fallback;
 }
 
-const endpoint = argument('--endpoint', 'https://l0g.fr/api/mcp');
+const endpoint = argument('--endpoint', 'https://l0g.fr/api/mcp/compact');
 const expectedVersion = argument('--version');
 const expectedSha = argument('--sha');
 const attempts = Number.parseInt(argument('--attempts', '1'), 10);

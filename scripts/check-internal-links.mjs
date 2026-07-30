@@ -22,6 +22,7 @@ const RUNTIME_ENDPOINTS = new Set([
   '/api/mcp/compact',
   '/api/mcp/usage',
   '/api/v1/history.ndjson',
+  '/api/v1/human-traffic.json',
 ]);
 
 function walkFiles(dir, out = []) {

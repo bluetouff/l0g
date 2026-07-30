@@ -67,6 +67,10 @@ fi
   echo "$HTPASSWD doit être en mode 0640" >&2
   exit 1
 }
+[ -s /var/www/l0g-data/human-traffic.json ] || {
+  echo "Rapport humain absent; exécuter d’abord: sudo deploy/install-human-traffic.sh" >&2
+  exit 1
+}
 
 mkdir -p "$BACKUP_DIR"
 chmod 0700 "$BACKUP_DIR"
@@ -163,6 +167,7 @@ printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp)" = 405 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/usage)" = 200 ]
+[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/v1/human-traffic.json)" = 200 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/btc/)" = 301 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/usd/)" = 301 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/marches-us/)" = 301 ]

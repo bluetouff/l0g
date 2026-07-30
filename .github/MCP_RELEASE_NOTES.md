@@ -1,7 +1,8 @@
 # Serveur MCP public l0g.fr
 
-Cette release publie le daemon distant en lecture seule exposé sur
-`https://l0g.fr/api/mcp` et référencé dans le Registry officiel sous le nom
+Cette release publie le daemon distant en lecture seule dont la porte d’entrée est
+`https://l0g.fr/api/mcp/compact`, avec `get_risk_state` comme produit principal,
+et référencé dans le Registry officiel sous le nom
 `io.github.bluetouff/l0g`.
 
 ## Périmètre
