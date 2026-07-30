@@ -5,7 +5,7 @@ import test from 'node:test';
 const maintenantPath = new URL('../src/pages/maintenant.astro', import.meta.url);
 const provenancePath = new URL('../src/components/RiskProvenance.astro', import.meta.url);
 
-test('les cartes de signaux ouvertes restent lisibles sans étirer les cartes fermées', async () => {
+test('les cartes de signaux restent une liste compacte et lisible quand plusieurs preuves sont ouvertes', async () => {
   const [maintenant, provenance] = await Promise.all([
     readFile(maintenantPath, 'utf8'),
     readFile(provenancePath, 'utf8'),
@@ -13,11 +13,15 @@ test('les cartes de signaux ouvertes restent lisibles sans étirer les cartes fe
 
   assert.match(
     maintenant,
-    /\.signal-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);[\s\S]*?align-items:\s*start;/,
+    /\.signal-grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\);/,
   );
   assert.match(
     maintenant,
-    /\.signal-card\s*\{[\s\S]*?min-width:\s*0;[\s\S]*?align-self:\s*start;/,
+    /\.signal-card\s*\{[\s\S]*?display:\s*grid;[\s\S]*?grid-template-columns:\s*minmax\(11rem,\s*0\.75fr\)\s*minmax\(0,\s*1\.5fr\);/,
+  );
+  assert.match(
+    maintenant,
+    /\.signal-card\s*>\s*:global\(\.risk-provenance\)\s*\{\s*grid-column:\s*1\s*\/\s*-1;/,
   );
   assert.match(
     provenance,

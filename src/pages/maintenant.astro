@@ -450,14 +450,16 @@ const jsonLd = {
   .now-empty p { max-width: 44rem; margin-top: 0.5rem; color: var(--color-muted); line-height: 1.6; }
   .signal-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.75rem;
-    align-items: start;
   }
   .signal-card {
     --plate-accent: var(--color-signal);
+    display: grid;
+    grid-template-columns: minmax(11rem, 0.75fr) minmax(0, 1.5fr);
+    column-gap: 1rem;
+    align-items: start;
     min-width: 0;
-    align-self: start;
     scroll-margin-top: 1rem;
     padding: 0.9rem;
   }
@@ -469,7 +471,8 @@ const jsonLd = {
   .signal-reading small { margin-top: 0.25rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.54rem; line-height: 1.35; }
   .signal-reading > strong { color: var(--color-signal); font-family: var(--font-display); font-size: 1.45rem; }
   .signal-reading > strong small { display: inline; color: var(--color-muted); font-size: 0.56rem; }
-  .signal-card > p { margin-top: 0.75rem; color: var(--color-muted); font-size: 0.67rem; line-height: 1.5; }
+  .signal-card > p { color: var(--color-muted); font-size: 0.67rem; line-height: 1.5; }
+  .signal-card > :global(.risk-provenance) { grid-column: 1 / -1; }
   .latest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; overflow: hidden; border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; background: var(--color-line); }
   .latest-card { display: flex; min-width: 0; flex-direction: column; padding: 1rem; background: var(--color-surface); }
   .latest-card > span { color: var(--color-line-strong); font-family: var(--font-display); font-size: 1.6rem; }
@@ -485,7 +488,6 @@ const jsonLd = {
   .now-note a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; }
   @media (max-width: 900px) {
     .now-stats { grid-template-columns: 1fr 1fr; }
-    .signal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .latest-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 640px) {
@@ -494,7 +496,8 @@ const jsonLd = {
     .visit-panel { grid-template-columns: auto minmax(0, 1fr); }
     .visit-panel button { grid-column: 1 / -1; width: 100%; }
     .change-grid,
-    .signal-grid,
     .latest-grid { grid-template-columns: 1fr; }
+    .signal-card { grid-template-columns: 1fr; }
+    .signal-card > p { margin-top: 0.75rem; }
   }
 </style>
