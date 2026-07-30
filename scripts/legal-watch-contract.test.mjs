@@ -16,7 +16,11 @@ test("publie les conditions Watch sans ouvrir la vente prématurément", async (
     /data-l0gwatch-commercial-terms=\{commercialReady \? 'ready-v1' : 'blocked-v1'\}/,
   );
   assert.match(terms, /const commercialReady = false/);
-  assert.match(terms, /Vente actuellement fermée/);
+  assert.match(terms, /Abonnements non disponibles/);
+  assert.doesNotMatch(
+    terms,
+    /mentions signalées|coordonnées contractuelles complètes|L’ouverture reste bloquée/,
+  );
   assert.match(terms, /12 €/);
   assert.match(terms, /120 €/);
   assert.match(terms, /Quatorze jours pour changer d’avis/);
