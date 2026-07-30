@@ -203,6 +203,82 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'perimetre-de-consolidation',
+    sigle: 'Consolidation perimeter',
+    nom: 'The boundary of group accounts',
+    def: 'The accounting boundary within which a parent combines, line by line, the assets, liabilities, income and expenses of entities it controls. Deconsolidation does not make an entity disappear: stakes, commitments and related-party transactions may remain disclosed as investments or separate notes.',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'Consolidation is a binary accounting boundary. Economic influence can continue outside it through capital, contracts, mandates and governance.',
+      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
+      guides: [{ label: 'Reading life-insurer health', href: '/en/guides/read-life-insurer-health/', detail: 'Capital, asset quality, liabilities and reinsurance.', kind: 'guide' }],
+      sources: [
+        { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Corporate filings and consolidation disclosures.', kind: 'source' },
+        { label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-10-consolidated-financial-statements/', detail: 'IFRS 10 and the control-based consolidation framework.', kind: 'source' },
+      ],
+      related: ['partie-liee', 'niveau-1', 'niveau-2', 'niveau-3'],
+    },
+  },
+  {
+    slug: 'partie-liee',
+    sigle: 'Related party',
+    nom: 'A relationship requiring disclosure and oversight',
+    def: 'A person or entity connected to a company through control, significant influence, common management or another relationship defined by accounting standards. A related-party transaction is not improper by itself, but it requires disclosure and governance suited to the risk of conflicts of interest.',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'The label identifies a relationship, not a wrongdoing. The analytical question is whether pricing, approval and disclosure withstand the conflict.',
+      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Capital, board seats, fees and related insurance contracts.', kind: 'article' }],
+      sources: [
+        { label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ias-24-related-party-disclosures/', detail: 'IAS 24 definitions and disclosure requirements.', kind: 'source' },
+        { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Issuer disclosures of related-party transactions.', kind: 'source' },
+      ],
+      related: ['perimetre-de-consolidation', 'niveau-3'],
+    },
+  },
+  {
+    slug: 'niveau-1',
+    sigle: 'Level 1',
+    nom: 'Quoted fair value',
+    def: 'The IFRS fair-value category based on unadjusted quoted prices in an active market for identical assets or liabilities. It is the tier least dependent on a valuation model.',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'Level 1 starts from a directly observable market price.',
+      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and Level 3 exposure.', kind: 'article' }],
+      sources: [{ label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-13-fair-value-measurement/', detail: 'IFRS 13 fair-value hierarchy.', kind: 'source' }],
+      related: ['niveau-2', 'niveau-3'],
+    },
+  },
+  {
+    slug: 'niveau-2',
+    sigle: 'Level 2',
+    nom: 'Observable-input fair value',
+    def: 'The IFRS fair-value category using observable inputs other than a direct quoted price for the identical asset, such as rates, spreads, curves or prices of comparable instruments.',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'Level 2 is model-assisted, but its important inputs remain observable in markets.',
+      articles: [{ label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and Level 3 exposure.', kind: 'article' }],
+      sources: [{ label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-13-fair-value-measurement/', detail: 'IFRS 13 fair-value hierarchy.', kind: 'source' }],
+      related: ['niveau-1', 'niveau-3'],
+    },
+  },
+  {
+    slug: 'niveau-3',
+    sigle: 'Level 3',
+    nom: 'Unobservable-input fair value',
+    def: 'The IFRS fair-value category in which significant unobservable inputs enter the model. It signals more estimation uncertainty and judgement, not necessarily a loss or an impaired asset.',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'Level 3 measures dependence on judgement. It is not a synonym for hidden loss.',
+      articles: [
+        { label: 'Athora, the balance sheet Apollo does not consolidate', href: '/en/analysis/athora-the-balance-sheet-apollo-does-not-consolidate/', detail: 'Athora fair-value hierarchy and audit evidence.', kind: 'article' },
+        { label: 'Private credit, one asset, two prices', href: '/en/analysis/private-credit-one-asset-two-prices/', detail: 'Model valuations and market-price divergence.', kind: 'article' },
+      ],
+      guides: [{ label: 'Reading private-credit risk', href: '/en/guides/read-private-credit-risk/', detail: 'Valuation, defaults, leverage and liquidity.', kind: 'guide' }],
+      sources: [{ label: 'IFRS Foundation', href: 'https://www.ifrs.org/issued-standards/list-of-standards/ifrs-13-fair-value-measurement/', detail: 'IFRS 13 fair-value hierarchy.', kind: 'source' }],
+      related: ['niveau-1', 'niveau-2', 'credit-prive'],
+    },
+  },
+  {
     slug: 'prime-de-terme',
     sigle: 'Term premium',
     nom: 'Compensation for holding duration',

@@ -192,6 +192,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Réassurance adossée à l’actif', nom: 'Asset-intensive reinsurance', def: "Cession de réserves d'assurance-vie ou de rentes à un réassureur, souvent affilié au même groupe et installé offshore, aux Bermudes en particulier. Le réassureur reprend les engagements et réinvestit les actifs, fréquemment en crédit privé et en produits structurés, sous un régime prudentiel plus souple que celui du régulateur d'origine." },
       { sigle: 'NAIC', nom: 'National Association of Insurance Commissioners', def: "Association des régulateurs d'assurance des États américains, qui harmonise les règles prudentielles du secteur. Son bureau des valeurs mobilières (SVO) fixe le traitement en capital des actifs détenus par les assureurs ; ses réformes de 2026 lui permettent d'outrepasser des notations jugées trop favorables." },
       { sigle: 'AUM', nom: 'Assets Under Management', def: "Encours sous gestion : montant total des actifs gérés par un fonds ou une société de gestion." },
+      { sigle: 'Périmètre de consolidation', nom: 'Consolidation perimeter', def: "Frontière comptable dans laquelle une maison mère additionne ligne par ligne les actifs, passifs, produits et charges des entités qu'elle contrôle. Une société déconsolidée ne disparaît pas : les participations, engagements et transactions peuvent rester publiés comme investissements ou opérations avec des parties liées." },
+      { sigle: 'Partie liée', nom: 'Related party', def: "Personne ou entité reliée à une entreprise par le contrôle, une influence notable, des dirigeants communs ou d'autres liens définis par les normes comptables. Une transaction avec une partie liée n'est pas irrégulière par nature, mais elle exige une information et une gouvernance adaptées au risque de conflit d'intérêts." },
+      { sigle: 'Niveau 1', nom: 'Level 1 fair value', def: "Catégorie IFRS de juste valeur fondée sur des prix cotés, non ajustés, sur un marché actif pour des actifs ou passifs identiques. C'est le niveau qui dépend le moins d'un modèle de valorisation." },
+      { sigle: 'Niveau 2', nom: 'Level 2 fair value', def: "Catégorie IFRS de juste valeur utilisant des données observables autres qu'un prix coté direct pour l'actif identique, par exemple des taux, spreads, courbes ou prix d'instruments comparables." },
+      { sigle: 'Niveau 3', nom: 'Level 3 fair value', def: "Catégorie IFRS de juste valeur dans laquelle des données non observables significatives entrent dans le modèle. Elle signale davantage d'incertitude et de jugement dans l'estimation, pas nécessairement une perte ou un actif dégradé." },
       { sigle: 'PIK', nom: 'Payment In Kind', def: "Paiement en nature : intérêts d'une dette versés non en cash mais en dette supplémentaire. Signal de tension sur la trésorerie de l'emprunteur." },
       { sigle: 'LP', nom: 'Limited Partner', def: "Investisseur commanditaire d'un fonds (assureur, fonds de pension, family office) qui apporte le capital sans gérer." },
       { sigle: 'ETF', nom: 'Exchange-Traded Fund', def: "Fonds indiciel coté en bourse, qui réplique un indice ou un panier d'actifs et se négocie comme une action." },
@@ -481,7 +486,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-27';
+export const glossaryUpdatedIso = '2026-07-30';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
