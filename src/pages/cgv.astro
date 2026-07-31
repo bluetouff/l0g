@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '30 juillet 2026';
-const commercialReady = false;
+const updated = '31 juillet 2026';
+const consumerMediatorContractActive = true;
+const salesActivationApproved = false;
+const commercialReady = consumerMediatorContractActive && salesActivationApproved;
 ---
 
 <BaseLayout
@@ -58,8 +60,8 @@ const commercialReady = false;
           <dd>809 005 010</dd>
         </div>
         <div>
-          <dt>Localité</dt>
-          <dd>Chartres (28000), France</dd>
+          <dt>Adresse</dt>
+          <dd>5 rue de Volaille, 28000 Chartres, France</dd>
         </div>
         <div>
           <dt>Contact</dt>
@@ -71,7 +73,7 @@ const commercialReady = false;
         </div>
         <div>
           <dt>TVA</dt>
-          <dd>TVA non applicable</dd>
+          <dd>TVA non applicable, article 293 B du CGI</dd>
         </div>
       </dl>
       <p class="legal-note">
@@ -103,10 +105,10 @@ const commercialReady = false;
         </article>
       </div>
       <p>
-        Le prix, la périodicité et le total exigible sont rappelés sur la page Stripe avant le
-        paiement. Aucun supplément n’est ajouté par Watch. La formule annuelle représente un
-        engagement payé pour douze mois, renouvelé seulement si elle n’a pas été résiliée avant sa
-        prochaine échéance.
+        Les prix sont indiqués en euros, TVA non applicable, article 293 B du CGI. Le prix, la
+        périodicité et le total exigible sont rappelés sur la page Stripe avant le paiement. Aucun
+        supplément n’est ajouté par Watch. La formule annuelle représente un engagement payé pour
+        douze mois, renouvelé seulement si elle n’a pas été résiliée avant sa prochaine échéance.
       </p>
     </section>
 
@@ -248,10 +250,23 @@ const commercialReady = false;
       <h2>Un recours amiable avant le contentieux.</h2>
       <p>
         Toute réclamation peut être envoyée à <a href="mailto:olivier@l0g.fr">olivier@l0g.fr</a>.
-        l0g répond sur le fond et recherche une solution amiable. Le consommateur peut ensuite
-        recourir gratuitement au médiateur de la consommation désigné par l’opérateur. Son nom,
-        son adresse et son site seront publiés ici avant toute ouverture des ventes.
+        l0g répond sur le fond et recherche une solution amiable.
       </p>
+      {consumerMediatorContractActive ? (
+        <p>
+          Après une réclamation écrite préalable restée sans solution, le consommateur peut
+          saisir gratuitement le Centre de la Médiation de la Consommation des Conciliateurs de
+          Justice (CM2C), 49 rue de Ponthieu, 75008 Paris, par courrier postal, par e-mail à{' '}
+          <a href="mailto:litiges@cm2c.net">litiges@cm2c.net</a>, par téléphone au{' '}
+          <a href="tel:+33189470014">01 89 47 00 14</a> ou depuis le{' '}
+          <a href="https://www.cm2c.net/declarer-un-litige.php">formulaire de saisine en ligne</a>.
+        </p>
+      ) : (
+        <p>
+          Le nom, l’adresse et le site du médiateur de la consommation conventionné seront publiés
+          ici avant toute ouverture des ventes aux consommateurs.
+        </p>
+      )}
       <p>
         Le droit français s’applique, sans priver le consommateur des protections impératives de
         son pays de résidence. Les règles légales de compétence juridictionnelle restent
