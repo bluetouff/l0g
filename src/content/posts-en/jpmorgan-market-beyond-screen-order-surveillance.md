@@ -13,7 +13,7 @@ sourceUpdatedDate: 2026-07-31
 
 The distinction defines this investigation. Missing data do not prove manipulation. They prevent the very control designed to detect it. The problem becomes more serious in light of the past: in September 2020, JPMorgan had admitted manipulation in precious metals and US Treasuries, promised remediation and described a strengthened system to the CFTC. Part of the market nevertheless remained invisible to it.
 
-This two-part investigation reconstructs the record from orders issued by the CFTC, Federal Reserve and Office of the Comptroller of the Currency, the Department of Justice criminal case, Securities and Exchange Commission action and JPMorgan's own SEC filings. This part establishes chronology and risk. Part two will examine sponsored access, the surveillance pipeline and the material missing from the public record.
+This two-part investigation reconstructs the record from orders issued by the CFTC, Federal Reserve and Office of the Comptroller of the Currency, the Department of Justice criminal case, Securities and Exchange Commission action and JPMorgan's own SEC filings. This part establishes chronology and risk. [Part two](/en/analysis/jpmorgan-market-surveillance-black-box/) examines sponsored access, the surveillance pipeline and the material missing from the public record.
 
 ## An established scandal
 
@@ -137,7 +137,7 @@ Three qualifications prevent a false reading:
 - the message count gives neither a total dollar value nor the size of any position;
 - the CFTC sanctioned a supervision failure, not new manipulation across every missing message.
 
-JPMorgan said most activity came from sponsored access trading for three significant algorithmic firms. The order names neither the venue nor the firms. Part two will examine this architecture because it changes the origin of orders without removing the need for complete surveillance data.
+JPMorgan said most activity came from sponsored access trading for three significant algorithmic firms. The order names neither the venue nor the firms. [Part two](/en/analysis/jpmorgan-market-surveillance-black-box/) examines this architecture because it changes the origin of orders without removing the need for complete surveillance data.
 
 ## A golden source without reconciliation
 
@@ -193,7 +193,7 @@ Part one supports a narrow conclusion. JPMorgan admitted a vast historical manip
 
 The central risk is therefore one of knowledge. A bank can count alerts, calibrate scenarios and hire control staff while remaining unaware of a massive upstream absence. Without end-to-end reconciliation, the dashboard measures only data received.
 
-Part two, to be published separately, will examine sponsored access, venue inventories, mandated reports, independent review, public unknowns and tests for remediation.
+The investigation continues in [“After the fines: the black box inside JPMorgan market surveillance”](/en/analysis/jpmorgan-market-surveillance-black-box/): sponsored access, venue inventories, mandated reports, independent review, public unknowns and tests for remediation.
 
 ## Primary sources
 

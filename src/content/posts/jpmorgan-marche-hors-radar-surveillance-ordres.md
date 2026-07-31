@@ -11,7 +11,7 @@ draft: false
 
 Cette distinction porte toute l'enquête. Une donnée absente ne prouve pas une manipulation. Elle empêche précisément le contrôle destiné à la détecter. Le problème devient plus grave à la lumière du passé : en septembre 2020, JPMorgan venait de reconnaître des manipulations sur les métaux précieux et les Treasuries, de promettre une remédiation et de présenter à la CFTC un système renforcé. Une partie du marché restait pourtant invisible à ce système.
 
-Cette enquête en deux volets reconstitue le dossier à partir des ordres de la CFTC, de la Réserve fédérale et de l'Office of the Comptroller of the Currency, du dossier pénal du Department of Justice, des décisions de la Securities and Exchange Commission et des propres rapports de JPMorgan déposés à la SEC. La présente partie établit la chronologie et la nature du risque. La seconde partie examinera l'accès sponsorisé, la chaîne technique de surveillance et le contenu absent du dossier public.
+Cette enquête en deux volets reconstitue le dossier à partir des ordres de la CFTC, de la Réserve fédérale et de l'Office of the Comptroller of the Currency, du dossier pénal du Department of Justice, des décisions de la Securities and Exchange Commission et des propres rapports de JPMorgan déposés à la SEC. La présente partie établit la chronologie et la nature du risque. [La seconde partie](/posts/jpmorgan-boite-noire-controle-marches/) examine l'accès sponsorisé, la chaîne technique de surveillance et le contenu absent du dossier public.
 
 ## Un scandale déjà établi
 
@@ -135,7 +135,7 @@ Trois précisions évitent les contresens :
 - le nombre de messages ne donne ni valeur totale en dollars, ni taille des positions ;
 - la CFTC sanctionne ici un défaut de supervision, pas une nouvelle manipulation portant sur chaque message absent.
 
-Selon JPMorgan, l'essentiel de cette activité provenait d'un accès sponsorisé accordé à trois sociétés algorithmiques importantes. L'ordonnance ne nomme ni la plateforme ni ces trois firmes. La seconde partie examinera cette architecture, car elle déplace l'origine des ordres sans supprimer le besoin d'un contrôle complet.
+Selon JPMorgan, l'essentiel de cette activité provenait d'un accès sponsorisé accordé à trois sociétés algorithmiques importantes. L'ordonnance ne nomme ni la plateforme ni ces trois firmes. [La seconde partie](/posts/jpmorgan-boite-noire-controle-marches/) examine cette architecture, car elle déplace l'origine des ordres sans supprimer le besoin d'un contrôle complet.
 
 ## Une source dorée sans rapprochement
 
@@ -191,7 +191,7 @@ Le premier volet aboutit à une conclusion étroite. JPMorgan a reconnu un vaste
 
 Le risque essentiel est donc un risque de connaissance. Une banque peut compter ses alertes, calibrer ses scénarios et renforcer ses équipes tout en ignorant une absence massive en amont. Sans rapprochement de bout en bout, le tableau de bord mesure uniquement les données reçues.
 
-La seconde partie, à paraître, ouvrira cette chaîne : accès sponsorisé, inventaire des plateformes, rapports obligatoires, contrôleur indépendant, inconnues publiques et tests utiles pour suivre la remédiation.
+La suite de l'enquête, [« Après les amendes : la boîte noire du contrôle des marchés chez JPMorgan »](/posts/jpmorgan-boite-noire-controle-marches/), ouvre cette chaîne : accès sponsorisé, inventaire des plateformes, rapports obligatoires, contrôleur indépendant, inconnues publiques et tests utiles pour suivre la remédiation.
 
 ## Sources primaires
 
