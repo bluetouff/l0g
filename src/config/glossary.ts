@@ -181,6 +181,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Crédit privé & marchés',
     accent: '#ff4d87',
     entries: [
+      { sigle: 'Message d’ordre', nom: 'Order message', def: "Instruction électronique envoyée à une plateforme pour créer, modifier, annuler ou exécuter un ordre. Un message d'ordre n'est donc pas nécessairement une transaction : un même ordre peut produire plusieurs messages avant une éventuelle exécution.", guide: '/posts/jpmorgan-marche-hors-radar-surveillance-ordres/' },
+      { sigle: 'Spoofing', nom: 'Ordre trompeur destiné à être annulé', def: "Pratique consistant à placer une offre d'achat ou de vente avec l'intention de l'annuler avant exécution afin de donner une fausse impression d'offre ou de demande. Une annulation rapide ne suffit pas à prouver un spoofing : l'intention préalable et l'ensemble de la séquence doivent être établis.", guide: '/posts/jpmorgan-marche-hors-radar-surveillance-ordres/' },
       { sigle: 'Crédit privé', nom: 'Private credit', def: "Prêts accordés directement par des gérants non bancaires à des entreprises, sans cotation ni marché secondaire actif. Marché illiquide, peu réglementé et valorisé au modèle, de l'ordre de 1 300 milliards de dollars aux États-Unis.", guide: '/guides/analyser-credit-prive/' },
       { sigle: 'BDC', nom: 'Business Development Company', def: "Véhicule coté américain qui prête aux entreprises de taille moyenne. Pilier du crédit privé, souvent à effet de levier." },
       { sigle: 'Interval fund', nom: 'Fonds à intervalle', def: "Fonds semi-liquide qui n'autorise les rachats que par fenêtres périodiques et plafonnées. Tout en détenant des actifs illiquides, d'où un risque de gating en cas d'afflux de sorties." },
