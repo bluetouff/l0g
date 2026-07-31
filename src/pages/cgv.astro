@@ -38,17 +38,63 @@ const commercialReady = consumerMediatorContractActive && salesActivationApprove
     )}
 
     <nav class="legal-index" aria-label="Sommaire des conditions">
-      <a href="#operateur">Opérateur</a>
       <a href="#service">Service et prix</a>
       <a href="#commande">Commande</a>
+      <a href="#operateur">Opérateur</a>
       <a href="#retractation">Rétractation</a>
       <a href="#resiliation">Résiliation</a>
       <a href="#conformite">Conformité</a>
       <a href="#litiges">Litiges</a>
     </nav>
 
+    <section id="service" class="legal-section">
+      <p class="mono-label glow">// 01 service et prix</p>
+      <h2>Une veille privée, pas un conseil financier.</h2>
+      <p>
+        l0g Watch fournit un compte privé, un cockpit de veille, des comparaisons de périodes, des
+        alertes choisies, un brief quotidien et un historique borné. Les lectures conservent leurs
+        dates, sources et réserves. Le service ne passe aucun ordre, ne conserve aucun actif et ne
+        fournit aucun conseil personnalisé en investissement.
+      </p>
+      <div class="legal-price-grid">
+        <article>
+          <span>Mensuel</span>
+          <strong>12 €</strong>
+          <p>Facturation chaque mois jusqu’à résiliation.</p>
+        </article>
+        <article>
+          <span>Annuel</span>
+          <strong>120 €</strong>
+          <p>Facturation chaque année jusqu’à résiliation.</p>
+        </article>
+      </div>
+      <p>
+        Les prix sont indiqués en euros, TVA non applicable, article 293 B du CGI. Le prix, la
+        périodicité et le total exigible sont rappelés sur la page Stripe avant le paiement. Aucun
+        supplément n’est ajouté par Watch. La formule annuelle représente un engagement payé pour
+        douze mois, renouvelé seulement si elle n’a pas été résiliée avant sa prochaine échéance.
+      </p>
+    </section>
+
+    <section id="commande" class="legal-section">
+      <p class="mono-label glow">// 02 commande, paiement et activation</p>
+      <h2>Un paiement externe et une activation bornée.</h2>
+      <ol class="legal-steps">
+        <li>Watch présente les caractéristiques essentielles, le prix et les présentes conditions.</li>
+        <li>Un clic explicite ouvre la page de paiement Stripe. Aucun composant Stripe n’est chargé auparavant.</li>
+        <li>La page de paiement rappelle le caractère récurrent du prix et exige l’acceptation des conditions avant la validation comportant une obligation de paiement.</li>
+        <li>Stripe confirme le paiement sur un support durable et transmet à Watch l’état nécessaire à l’activation.</li>
+        <li>Watch envoie un code à usage unique, valable 30 jours, puis le client choisit son mot de passe.</li>
+      </ol>
+      <p>
+        Stripe traite les données de carte et fournit les justificatifs de paiement. Watch ne
+        reçoit aucun numéro de carte. Si le code n’arrive pas ou si l’activation échoue, le client
+        peut écrire à <a href="mailto:olivier@l0g.fr?subject=Activation%20Watch">olivier@l0g.fr</a>.
+      </p>
+    </section>
+
     <section id="operateur" class="legal-section">
-      <p class="mono-label glow">// 01 opérateur et périmètre</p>
+      <p class="mono-label glow">// 03 opérateur et périmètre</p>
       <h2>Un contrat avec l’opérateur de l0g.</h2>
       <dl class="legal-specs">
         <div>
@@ -80,52 +126,6 @@ const commercialReady = consumerMediatorContractActive && salesActivationApprove
         Ces conditions visent les particuliers et, pour les règles d’utilisation du service, les
         professionnels. Les dispositions impératives du droit de la consommation s’appliquent aux
         consommateurs.
-      </p>
-    </section>
-
-    <section id="service" class="legal-section">
-      <p class="mono-label glow">// 02 service et prix</p>
-      <h2>Une veille privée, pas un conseil financier.</h2>
-      <p>
-        l0g Watch fournit un compte privé, un cockpit de veille, des comparaisons de périodes, des
-        alertes choisies, un brief quotidien et un historique borné. Les lectures conservent leurs
-        dates, sources et réserves. Le service ne passe aucun ordre, ne conserve aucun actif et ne
-        fournit aucun conseil personnalisé en investissement.
-      </p>
-      <div class="legal-price-grid">
-        <article>
-          <span>Mensuel</span>
-          <strong>12 €</strong>
-          <p>Facturation chaque mois jusqu’à résiliation.</p>
-        </article>
-        <article>
-          <span>Annuel</span>
-          <strong>120 €</strong>
-          <p>Facturation chaque année jusqu’à résiliation.</p>
-        </article>
-      </div>
-      <p>
-        Les prix sont indiqués en euros, TVA non applicable, article 293 B du CGI. Le prix, la
-        périodicité et le total exigible sont rappelés sur la page Stripe avant le paiement. Aucun
-        supplément n’est ajouté par Watch. La formule annuelle représente un engagement payé pour
-        douze mois, renouvelé seulement si elle n’a pas été résiliée avant sa prochaine échéance.
-      </p>
-    </section>
-
-    <section id="commande" class="legal-section">
-      <p class="mono-label glow">// 03 commande, paiement et activation</p>
-      <h2>Un paiement externe et une activation bornée.</h2>
-      <ol class="legal-steps">
-        <li>Watch présente les caractéristiques essentielles, le prix et les présentes conditions.</li>
-        <li>Un clic explicite ouvre la page de paiement Stripe. Aucun composant Stripe n’est chargé auparavant.</li>
-        <li>La page de paiement rappelle le caractère récurrent du prix et exige l’acceptation des conditions avant la validation comportant une obligation de paiement.</li>
-        <li>Stripe confirme le paiement sur un support durable et transmet à Watch l’état nécessaire à l’activation.</li>
-        <li>Watch envoie un code à usage unique, valable 30 jours, puis le client choisit son mot de passe.</li>
-      </ol>
-      <p>
-        Stripe traite les données de carte et fournit les justificatifs de paiement. Watch ne
-        reçoit aucun numéro de carte. Si le code n’arrive pas ou si l’activation échoue, le client
-        peut écrire à <a href="mailto:olivier@l0g.fr?subject=Activation%20Watch">olivier@l0g.fr</a>.
       </p>
     </section>
 

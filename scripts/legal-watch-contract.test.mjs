@@ -28,6 +28,22 @@ test("publie les conditions Watch validées pour l’ouverture", async () => {
   );
   assert.match(terms, /12 €/);
   assert.match(terms, /120 €/);
+  assert.match(terms, /\/\/ 01 service et prix/);
+  assert.match(terms, /\/\/ 02 commande, paiement et activation/);
+  assert.match(terms, /\/\/ 03 opérateur et périmètre/);
+  assert.match(
+    terms,
+    /href="#service"[\s\S]*href="#commande"[\s\S]*href="#operateur"/,
+  );
+  assert.ok(
+    terms.indexOf('<section id="service"') <
+      terms.indexOf('<section id="commande"') &&
+      terms.indexOf('<section id="commande"') <
+        terms.indexOf('<section id="operateur"') &&
+      terms.indexOf('<section id="operateur"') <
+        terms.indexOf('<section id="retractation"'),
+    "l’opérateur doit être la troisième section",
+  );
   assert.match(terms, /valable 30 jours/);
   assert.doesNotMatch(terms, /valable 30 minutes/);
   assert.match(terms, /TVA non applicable, article 293 B du CGI/);
