@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const updated = '31 juillet 2026';
 const consumerMediatorContractActive = true;
-const salesActivationApproved = false;
+const salesActivationApproved = true;
 const commercialReady = consumerMediatorContractActive && salesActivationApproved;
 ---
 
@@ -120,7 +120,7 @@ const commercialReady = consumerMediatorContractActive && salesActivationApprove
         <li>Un clic explicite ouvre la page de paiement Stripe. Aucun composant Stripe n’est chargé auparavant.</li>
         <li>La page de paiement rappelle le caractère récurrent du prix et exige l’acceptation des conditions avant la validation comportant une obligation de paiement.</li>
         <li>Stripe confirme le paiement sur un support durable et transmet à Watch l’état nécessaire à l’activation.</li>
-        <li>Watch envoie un code à usage unique, valable 30 minutes, puis le client choisit son mot de passe.</li>
+        <li>Watch envoie un code à usage unique, valable 30 jours, puis le client choisit son mot de passe.</li>
       </ol>
       <p>
         Stripe traite les données de carte et fournit les justificatifs de paiement. Watch ne

@@ -4,7 +4,7 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-test("publie les conditions Watch sans ouvrir la vente prématurément", async () => {
+test("publie les conditions Watch validées pour l’ouverture", async () => {
   const [terms, privacy, footer] = await Promise.all([
     readFile(new URL("src/pages/cgv.astro", root), "utf8"),
     readFile(new URL("src/pages/rgpd.astro", root), "utf8"),
@@ -16,7 +16,7 @@ test("publie les conditions Watch sans ouvrir la vente prématurément", async (
     /data-l0gwatch-commercial-terms=\{commercialReady \? 'ready-v1' : 'blocked-v1'\}/,
   );
   assert.match(terms, /const consumerMediatorContractActive = true/);
-  assert.match(terms, /const salesActivationApproved = false/);
+  assert.match(terms, /const salesActivationApproved = true/);
   assert.match(
     terms,
     /const commercialReady = consumerMediatorContractActive && salesActivationApproved/,
@@ -28,6 +28,8 @@ test("publie les conditions Watch sans ouvrir la vente prématurément", async (
   );
   assert.match(terms, /12 €/);
   assert.match(terms, /120 €/);
+  assert.match(terms, /valable 30 jours/);
+  assert.doesNotMatch(terms, /valable 30 minutes/);
   assert.match(terms, /TVA non applicable, article 293 B du CGI/);
   assert.match(terms, /5 rue de Volaille, 28000 Chartres, France/);
   assert.match(terms, /Quatorze jours pour changer d’avis/);
