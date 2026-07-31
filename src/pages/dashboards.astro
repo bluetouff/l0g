@@ -118,9 +118,19 @@ const trustItems = [
             </dl>
 
             <footer class="mt-auto flex items-center gap-5 pt-5">
-              <a href={d.href} target="_blank" rel="noopener" class="fiche-cta">
-                Ouvrir l'outil <span aria-hidden="true">›</span>
+              <a
+                href={d.l0gEntry?.href ?? d.href}
+                target={d.l0gEntry ? undefined : '_blank'}
+                rel={d.l0gEntry ? undefined : 'noopener'}
+                class="fiche-cta"
+              >
+                {d.l0gEntry?.label ?? "Ouvrir l'outil"} <span aria-hidden="true">›</span>
               </a>
+              {d.l0gEntry && (
+                <a href={d.href} target="_blank" rel="noopener" class="link-term text-xs">
+                  ouvrir 13FLOW
+                </a>
+              )}
               {d.methodologyHref && (
                 <a href={d.methodologyHref} class="link-term text-xs">
                   méthode

@@ -11,6 +11,10 @@ export interface Dashboard {
   label: string;
   sub: string;
   href: string;
+  l0gEntry?: {
+    href: string;
+    label: string;
+  };
   glyph: string;
   accent: 'teal' | 'blue' | 'pink' | 'amber';
   // --- fiche produit (/dashboards/) ---
@@ -106,6 +110,10 @@ export const dashboards: Dashboard[] = [
     label: '13FLOW',
     sub: 'Confluence 13F × Form 4',
     href: 'https://13flow.eu',
+    l0gEntry: {
+      href: '/confluence/',
+      label: 'Voir les confluences',
+    },
     glyph: '∩',
     accent: 'teal',
     slug: '13flow',
