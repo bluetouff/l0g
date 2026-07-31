@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
+import WatchCard from '../../components/WatchCard.astro';
 import { MCP_COMPACT_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -97,9 +98,10 @@ const jsonLd = {
       </div>
     </div>
 
-    <aside class="terminal-card" aria-label="l0g English terminal summary" data-pagefind-ignore>
-      <div class="terminal-top"><span></span><span></span><span></span></div>
-      <pre><code>{`$ l0g --english
+    <aside class="en-hero-rail" aria-label="l0g English highlights" data-pagefind-ignore>
+      <div class="terminal-card">
+        <div class="terminal-top"><span></span><span></span><span></span></div>
+        <pre><code>{`$ l0g --english
 surface: partial, explicit, curated
 corpus: ${guideCount} reference guides
 method: primary sources > narrative
@@ -107,6 +109,8 @@ data: json · ndjson · csv · mcp
 tracking: none
 license: CC BY 4.0
 status: readable by humans and agents`}</code></pre>
+      </div>
+      <WatchCard lang="en" />
     </aside>
   </section>
 
@@ -236,7 +240,8 @@ status: readable by humans and agents`}</code></pre>
     filter: blur(28px);
     opacity: .72;
   }
-  .en-hero-copy, .terminal-card { position: relative; z-index: 1; }
+  .en-hero-copy, .en-hero-rail { position: relative; z-index: 1; }
+  .en-hero-rail { display: grid; align-content: start; gap: 1rem; }
   .en-hero-copy { max-width: 43rem; }
   .en-title {
     margin-top: .75rem;
@@ -470,7 +475,7 @@ status: readable by humans and agents`}</code></pre>
   }
   @media (min-width: 960px) {
     .en-home-hero { grid-template-columns: minmax(0, 1.02fr) minmax(21rem, .98fr); }
-    .terminal-card { margin-top: 1.05rem; }
+    .en-hero-rail { margin-top: 1.05rem; }
   }
   @media (max-width: 520px) {
     .en-home-hero { padding: 1.05rem; }

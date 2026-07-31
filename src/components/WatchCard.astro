@@ -1,0 +1,248 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+  compact?: boolean;
+}
+
+const { lang = 'fr', compact = false } = Astro.props;
+
+const copy = lang === 'en'
+  ? {
+      title: 'Your private monitoring memory.',
+      description: 'Watch remembers what changed and alerts you only when the evidence holds.',
+      availability: 'Subscriptions open',
+      cta: 'Discover Watch',
+      label: 'Open l0g Watch in a new tab',
+    }
+  : {
+      title: 'La mémoire privée de votre veille.',
+      description: 'Watch mémorise ce qui a changé et ne vous alerte que lorsque la preuve tient.',
+      availability: 'Souscriptions ouvertes',
+      cta: 'Découvrir Watch',
+      label: 'Ouvrir l0g Watch dans un nouvel onglet',
+    };
+---
+
+<a
+  class:list={['watch-card', { compact }]}
+  href="https://watch.l0g.fr/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={copy.label}
+  data-pagefind-ignore
+>
+  <span class="watch-card-top">
+    <span class="watch-wordmark"><b>l<span>0</span>g</b> watch</span>
+    <span class="watch-new">new</span>
+  </span>
+
+  <span class="watch-signal" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i>
+  </span>
+
+  <span class="watch-availability"><i aria-hidden="true"></i>{copy.availability}</span>
+  <strong>{copy.title}</strong>
+  <span class="watch-description">{copy.description}</span>
+  <span class="watch-cta">{copy.cta}<i aria-hidden="true">↗</i></span>
+</a>
+
+<style>
+  .watch-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 16px 4px 16px 16px;
+    padding: 1rem;
+    color: var(--color-paper);
+    background:
+      linear-gradient(var(--surface-elevated), var(--surface-elevated)) padding-box,
+      linear-gradient(135deg,
+        color-mix(in srgb, var(--color-signal) 68%, transparent),
+        color-mix(in srgb, var(--color-accent) 52%, var(--color-line)) 55%,
+        color-mix(in srgb, var(--color-amber) 58%, transparent)
+      ) border-box;
+    box-shadow:
+      inset 0 1px 0 var(--edge-highlight),
+      0 18px 45px color-mix(in srgb, #000 18%, transparent);
+    text-decoration: none;
+    isolation: isolate;
+  }
+  .watch-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--color-signal) 16%, transparent), transparent 9rem),
+      radial-gradient(circle at 92% 100%, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 10rem),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-line) 18%, transparent) 0 1px, transparent 1px 36px);
+    opacity: 0.9;
+  }
+  .watch-card::after {
+    content: '';
+    position: absolute;
+    top: -3.25rem;
+    right: -2.75rem;
+    z-index: -1;
+    width: 8rem;
+    height: 8rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 24%, transparent);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 1.35rem color-mix(in srgb, var(--color-accent) 4%, transparent),
+      0 0 0 2.7rem color-mix(in srgb, var(--color-signal) 3%, transparent);
+  }
+  .watch-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .watch-wordmark {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 650;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  .watch-wordmark b {
+    color: var(--color-bright);
+    font-size: 0.76rem;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+  .watch-wordmark b span { color: var(--color-signal); }
+  .watch-new {
+    border: 1px solid color-mix(in srgb, var(--color-accent) 62%, transparent);
+    border-radius: 999px;
+    padding: 0.16rem 0.42rem 0.13rem;
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 18%, transparent);
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .watch-signal {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    height: 1.7rem;
+    margin: 0.9rem 0 0.6rem;
+  }
+  .watch-signal::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      color-mix(in srgb, var(--color-signal) 25%, transparent),
+      var(--color-signal) 34%,
+      var(--color-accent) 70%,
+      color-mix(in srgb, var(--color-amber) 50%, transparent)
+    );
+  }
+  .watch-signal i {
+    position: relative;
+    z-index: 1;
+    width: 0.25rem;
+    height: 0.25rem;
+    justify-self: center;
+    border-radius: 50%;
+    background: var(--color-signal);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--color-signal) 68%, transparent);
+  }
+  .watch-signal i:nth-child(2) { translate: 0 -0.35rem; }
+  .watch-signal i:nth-child(3) {
+    width: 0.42rem;
+    height: 0.42rem;
+    translate: 0 0.32rem;
+    background: var(--color-accent);
+    box-shadow: 0 0 13px color-mix(in srgb, var(--color-accent) 75%, transparent);
+  }
+  .watch-signal i:nth-child(4) { translate: 0 -0.2rem; background: var(--color-accent); }
+  .watch-signal i:nth-child(5) { background: var(--color-amber); }
+  .watch-card > strong {
+    display: block;
+    max-width: 15rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+  }
+  .watch-availability {
+    display: flex;
+    align-items: center;
+    gap: 0.42rem;
+    margin-bottom: 0.46rem;
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 680;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .watch-availability i {
+    width: 0.34rem;
+    height: 0.34rem;
+    flex: none;
+    border-radius: 50%;
+    background: var(--color-amber);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--color-amber) 72%, transparent);
+  }
+  .watch-description {
+    display: block;
+    max-width: 16rem;
+    margin-top: 0.52rem;
+    color: var(--color-muted);
+    font-size: 0.73rem;
+    line-height: 1.5;
+  }
+  .watch-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.8rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 650;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .watch-cta i {
+    color: var(--color-amber);
+    font-size: 0.82rem;
+    font-style: normal;
+    transition: transform 0.18s ease;
+  }
+  .watch-card:hover,
+  .watch-card:focus-visible {
+    background:
+      linear-gradient(color-mix(in srgb, var(--color-signal) 4%, var(--surface-elevated)), color-mix(in srgb, var(--color-signal) 4%, var(--surface-elevated))) padding-box,
+      linear-gradient(135deg, var(--color-signal), var(--color-accent) 58%, var(--color-amber)) border-box;
+  }
+  .watch-card:hover > strong,
+  .watch-card:focus-visible > strong { color: var(--color-signal); }
+  .watch-card:hover .watch-cta i,
+  .watch-card:focus-visible .watch-cta i { transform: translate(2px, -2px); }
+  .watch-card:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  .watch-card.compact { padding: 0.88rem; }
+  .watch-card.compact .watch-signal { margin-top: 0.72rem; margin-bottom: 0.5rem; }
+  .watch-card.compact > strong { font-size: 1.02rem; }
+  .watch-card.compact .watch-description { font-size: 0.69rem; }
+  @media (prefers-reduced-motion: reduce) {
+    .watch-cta i { transition: none; }
+    .watch-card:hover .watch-cta i,
+    .watch-card:focus-visible .watch-cta i { transform: none; }
+  }
+</style>

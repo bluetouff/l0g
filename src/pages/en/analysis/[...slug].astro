@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import WatchCard from '../../../components/WatchCard.astro';
 import { organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
 import { isTranslationStale } from '../../../lib/agent-surface.ts';
@@ -92,6 +93,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 
   <div class="read-progress" aria-hidden="true"><span></span></div>
 
+  <div class="en-article-shell">
   <article class="rise max-w-2xl" data-pagefind-body>
     <header class="post-head mb-10">
       <p class="mono-label glow post-kicker">// analysis</p>
@@ -170,6 +172,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>
   </article>
 
+  <aside class="en-article-sidebar" aria-label="Discover l0g Watch" data-pagefind-ignore>
+    <WatchCard lang="en" compact />
+  </aside>
+  </div>
+
   <script>
     // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
     (function () {
@@ -215,6 +222,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 </EnglishGuidesLayout>
 
 <style>
+  .en-article-shell { display: grid; gap: 2rem; align-items: start; }
+  .en-article-sidebar { min-width: 0; }
   .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
   .read-progress > span {
     display: block; height: 100%; width: 100%;
@@ -299,5 +308,13 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     color: var(--color-muted);
     font-size: 0.86rem;
     line-height: 1.6;
+  }
+  @media (min-width: 960px) {
+    .en-article-shell {
+      grid-template-columns: minmax(0, 42rem) 290px;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .en-article-sidebar { position: sticky; top: 2rem; }
   }
 </style>
