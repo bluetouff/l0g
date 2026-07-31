@@ -14,12 +14,21 @@ INSTALL_ROOT="/usr/local/lib/l0g-human-traffic"
 UNIT_DIR="/etc/systemd/system"
 DATA_DIR="/var/www/l0g-data"
 
-for command in install mkdir node systemctl; do
+for command in getent install mkdir node systemctl; do
   command -v "$command" >/dev/null 2>&1 || {
     echo "Commande requise absente: $command" >&2
     exit 1
   }
 done
+
+getent passwd l0grisk >/dev/null || {
+  echo "Compte système l0grisk absent; installer d’abord l’agrégateur de risque." >&2
+  exit 1
+}
+getent group l0grisk >/dev/null || {
+  echo "Groupe système l0grisk absent; installer d’abord l’agrégateur de risque." >&2
+  exit 1
+}
 
 for source in \
   "${ROOT}/scripts/human-traffic-report.mjs" \
@@ -38,8 +47,8 @@ done
 
 install -d -o root -g root -m 0755 \
   "${INSTALL_ROOT}/scripts" \
-  "${INSTALL_ROOT}/mcp-server" \
-  "$DATA_DIR"
+  "${INSTALL_ROOT}/mcp-server"
+install -d -o l0grisk -g l0grisk -m 0755 "$DATA_DIR"
 install -o root -g root -m 0644 \
   "${ROOT}/scripts/human-traffic-report.mjs" \
   "${INSTALL_ROOT}/scripts/human-traffic-report.mjs"
