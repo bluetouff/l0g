@@ -254,6 +254,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Titrisation', nom: 'Securitization', def: "Technique consistant à regrouper des créances (prêts, obligations) dans un véhicule dédié qui émet des titres adossés à ces actifs, répartis en tranches de risque. Au cœur des CLO comme des CDO subprime, pour le meilleur et pour le pire.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'ABS', nom: 'Asset-Backed Security', def: "Titre adossé à un panier de créances autres qu'immobilières : prêts auto, cartes de crédit, paiements fractionnés (BNPL), redevances. Les créances sont logées dans un trust isolé de la faillite de l'originateur, qui émet des tranches de la senior (AAA) à l'equity. Véhicule par lequel le risque du crédit à la consommation quitte le bilan des prêteurs pour se disperser chez les investisseurs.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'ABF', nom: 'Asset-Based Finance', def: "Finance adossée aux actifs : financement de portefeuilles de créances (conso, équipement, redevances) via la titrisation, aussi appelée specialty finance ou crédit privé structuré. Compartiment en forte croissance du crédit privé, où des gérants comme Apollo ou KKR originent, structurent et détiennent la dette, souvent adossée aux primes de rentes des assureurs qu'ils contrôlent." },
+      { sigle: "Financement d'entrepôt", nom: 'Warehouse financing', def: "Ligne ou structure temporaire qui finance un stock de prêts ou de créances avant leur vente ou leur titrisation. Si la sortie tarde, la durée et le coût de portage augmentent ; une baisse du collatéral peut aussi imposer davantage de capital ou réduire le montant avancé." },
       { sigle: 'Rehaussement de crédit', nom: 'Credit enhancement', def: "Ensemble des protections qui permettent aux tranches senior d'une titrisation d'atteindre la note AAA : subordination, surdimensionnement, excess spread et compte de réserve. Mesure combien de pertes le pool peut absorber avant que les investisseurs seniors ne soient touchés. Lire un ABS, c'est d'abord lire l'épaisseur de ce coussin.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'Surdimensionnement', nom: 'Overcollateralization', def: "Excédent de la valeur du pool de créances sur le montant des titres émis : le collatéral vaut plus que la dette qu'il garantit, et cet écart absorbe les premières pertes avant les tranches. Forme clé de rehaussement de crédit, il se réduit à mesure que les défauts s'accumulent." },
       { sigle: 'Excess spread', nom: 'Excess spread', def: "Écart entre les intérêts encaissés sur les créances du pool et les intérêts versés aux porteurs de titres. Cet excédent absorbe les pertes courantes et alimente le compte de réserve. Premier coussin consommé en cas de dégradation, il s'amincit quand le coût de financement monte." },
@@ -486,7 +487,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-30';
+export const glossaryUpdatedIso = '2026-07-31';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {

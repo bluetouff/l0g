@@ -2,7 +2,7 @@
 title: "The balance sheet Apollo does not consolidate"
 description: "Athora left Athene's accounting perimeter in 2018. Yet Apollo and Athene still hold 26% of its shares, appoint five directors, manage or advise $57.2 billion of its assets and supported its acquisition of PIC. An eight-year investigation into legal separation, economic dependencies and risks now exposed to the United Kingdom."
 pubDate: 2026-07-30T23:40:00+02:00
-updatedDate: 2026-07-31T00:53:00+02:00
+updatedDate: 2026-07-31T01:50:00+02:00
 tags: ["apollo", "athora", "insurance", "private credit", "governance", "risk", "united kingdom"]
 draft: false
 sourceArticle: "bilan-apollo-non-consolide"
@@ -226,7 +226,7 @@ They establish something else with enough precision to matter: Athora remains li
 
 The distinction between consolidation and influence is the heart of the investigation. Consolidation is a binary accounting rule. Influence runs by degree through mandates, seats, contractual rights, origination and financing. With PIC, this architecture now carries a significant part of the British pensions market. The relevant risk is not that a balance sheet vanished. It is that a reader, policyholder or investor stops at the accounting boundary and never reconstructs the economic system continuing beyond it.
 
-For the wider l0g corpus, read [Apollo, the triangular domino](/en/analysis/apollo-the-triangular-domino/), our investigation into [life insurers, private credit and Bermuda](/en/analysis/life-insurers-retirement-savings-private-credit-bermuda/), [the lender of next-to-last resort](/en/analysis/the-lender-of-next-to-last-resort/) and [Private credit, one asset, two prices](/en/analysis/private-credit-one-asset-two-prices/). The methods are set out in the guides to [reading life-insurer health](/en/guides/read-life-insurer-health/) and [reading private-credit risk](/en/guides/read-private-credit-risk/).
+For the wider l0g corpus, read [Apollo, the triangular domino](/en/analysis/apollo-the-triangular-domino/), the investigation into [Atlas risk when the warehouse does not clear](/en/analysis/when-credit-warehouse-does-not-clear-atlas-apollo-athene/), our work on [life insurers, private credit and Bermuda](/en/analysis/life-insurers-retirement-savings-private-credit-bermuda/), [the lender of next-to-last resort](/en/analysis/the-lender-of-next-to-last-resort/) and [Private credit, one asset, two prices](/en/analysis/private-credit-one-asset-two-prices/). The methods are set out in the guides to [reading life-insurer health](/en/guides/read-life-insurer-health/) and [reading private-credit risk](/en/guides/read-private-credit-risk/).
 
 ## Method and scope
 

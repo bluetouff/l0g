@@ -2,7 +2,7 @@
 title: "Le bilan qu'Apollo ne consolide pas"
 description: "Athora a quitté le périmètre comptable d'Athene en 2018. Apollo et Athene détiennent pourtant encore 26 % de ses actions, désignent cinq administrateurs, gèrent ou conseillent 57,2 milliards de dollars de ses actifs et ont soutenu son rachat de PIC. Enquête documentée sur huit années de séparation juridique, de dépendances économiques et de risques désormais exposés au Royaume-Uni."
 pubDate: 2026-07-30T23:40:00+02:00
-updatedDate: 2026-07-31T00:53:00+02:00
+updatedDate: 2026-07-31T01:50:00+02:00
 tags: ["apollo", "athora", "assurance", "crédit privé", "gouvernance", "risque", "royaume-uni"]
 draft: false
 ---
@@ -225,7 +225,7 @@ Ils établissent autre chose, avec une précision suffisante pour mériter l'att
 
 La différence entre consolidation et influence est le cœur de l'enquête. La première est une règle comptable binaire. La seconde circule par degrés, à travers les mandats, les sièges, les droits contractuels, l'origination et le financement. Avec PIC, cette architecture porte désormais une part importante du marché britannique des retraites. Le risque pertinent n'est pas qu'un bilan ait disparu. Il est que le lecteur, l'assuré ou même l'investisseur s'arrête à la frontière comptable et ne reconstitue jamais le système économique qui continue au-delà.
 
-Pour replacer cette enquête dans le corpus l0g, lire [Apollo, le domino triangulaire](/posts/apollo-domino-triangulaire/), notre analyse des [assureurs-vie, du crédit privé et des Bermudes](/posts/assureurs-vie-epargne-retraite-credit-prive-bermudes/), l'enquête sur le [prêteur d'avant-dernier ressort](/posts/fhlb-preteur-avant-dernier-ressort/) et [Crédit privé, un actif, deux prix](/posts/credit-prive-un-actif-deux-prix/). Les méthodes sont détaillées dans les guides [lire la solidité d'un assureur-vie](/guides/lire-la-solidite-d-un-assureur-vie/) et [analyser le crédit privé](/guides/analyser-credit-prive/).
+Pour replacer cette enquête dans le corpus l0g, lire [Apollo, le domino triangulaire](/posts/apollo-domino-triangulaire/), l'enquête sur [le risque Atlas quand l'entrepôt ne se vide plus](/posts/atlas-entrepot-credit-risque-apollo-athene/), notre analyse des [assureurs-vie, du crédit privé et des Bermudes](/posts/assureurs-vie-epargne-retraite-credit-prive-bermudes/), l'enquête sur le [prêteur d'avant-dernier ressort](/posts/fhlb-preteur-avant-dernier-ressort/) et [Crédit privé, un actif, deux prix](/posts/credit-prive-un-actif-deux-prix/). Les méthodes sont détaillées dans les guides [lire la solidité d'un assureur-vie](/guides/lire-la-solidite-d-un-assureur-vie/) et [analyser le crédit privé](/guides/analyser-credit-prive/).
 
 ## Méthode et périmètre
 
