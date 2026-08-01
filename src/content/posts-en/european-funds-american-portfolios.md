@@ -2,7 +2,7 @@
 title: "European funds, American portfolios"
 description: "In Q1 2026, Irish funds made €135 billion of net purchases in equities and bonds, including €66 billion in US securities. The figure reveals a channel to Wall Street, but not yet the European origin of the capital."
 pubDate: 2026-08-01T04:55:00+02:00
-updatedDate: 2026-08-01T04:55:00+02:00
+updatedDate: 2026-08-01T10:45:00+02:00
 tags: ["investment funds", "united states", "europe", "capital flows", "nbfi", "savings"]
 draft: false
 sourceArticle: "fonds-europeens-portefeuilles-americains"
@@ -103,6 +103,6 @@ The available evidence therefore supports a two-part answer. **Euro area residen
 
 The right policy indicator is not the volume domiciled in Dublin or Luxembourg. It would cross, for every period, **the residence of the fund investor, the residence of the issuer and net transactions**, while separating price and currency effects. Without that matrix, Europe can improve its financial plumbing without knowing precisely which economy receives the capital flowing through it.
 
-The third instalment will follow the reverse path: how a fall in US assets can travel back into European funds, investors and markets.
+[The third instalment now follows the reverse path](/en/analysis/us-shock-european-financial-plumbing/): how a fall in US assets can travel back into European funds, investors and markets through redemptions, margin and bank balance sheets.
 
 **Primary sources:** [Central Bank of Ireland, Q1 2026 investment fund statistics](https://www.centralbank.ie/docs/default-source/statistics/data-and-analysis/other-financial-sector-statistics/investment-funds/2026q1---information-release-investment-fund-statistics.pdf?sfvrsn=ac14701a_4) and [Q3 2024 holder distribution](https://www.centralbank.ie/docs/default-source/statistics/data-and-analysis/other-financial-sector-statistics/investment-funds/2024q3---information-release-investment-fund-statistics.pdf?sfvrsn=e967641a_4); [ECB, US holdings of euro area residents, November 2025](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202511_01~fdf147a04a.en.html); [ECB Blog, NBFI portfolio reallocation, 15 May 2026](https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20260515~969ddfcf06.en.html); [ECB, drivers of flows into US equities, May 2026](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/focus/2026/html/ecb.fsrbox202605_04~fd7b91dd22.en.html); [European Commission, Savings and Investments Union, updated 17 July 2026](https://finance.ec.europa.eu/regulation-and-supervision/savings-and-investments-union_en). Additions and ratios explicitly identified as such are l0g calculations based on rounded official figures. This is not investment advice.

@@ -2,7 +2,7 @@
 title: "Fonds européens, portefeuilles américains"
 description: "Au premier trimestre 2026, les fonds irlandais ont acheté en net 135 milliards d'euros d'actions et d'obligations, dont 66 milliards de titres américains. Cette donnée révèle un canal vers Wall Street, mais pas encore l'origine européenne du capital."
 pubDate: 2026-08-01T04:50:00+02:00
-updatedDate: 2026-08-01T04:50:00+02:00
+updatedDate: 2026-08-01T10:45:00+02:00
 tags: ["fonds d'investissement", "états-unis", "europe", "flux de capitaux", "nbfi", "épargne"]
 draft: false
 quickTake:
@@ -105,6 +105,6 @@ Les données disponibles autorisent donc une réponse en deux temps. **Oui, les 
 
 Le bon indicateur politique ne serait pas le volume domicilié à Dublin ou au Luxembourg. Il croiserait, pour chaque période, **la résidence du porteur, la résidence de l'émetteur et les transactions nettes**, en isolant les effets de prix et de change. Sans cette matrice, l'Europe peut améliorer sa tuyauterie financière sans savoir précisément quelle économie reçoit le capital qui y circule.
 
-Le troisième volet examinera le trajet inverse : comment une baisse des actifs américains peut revenir vers les fonds, les investisseurs et les marchés européens.
+[Le troisième volet suit désormais le trajet inverse](/posts/choc-americain-plomberie-financiere-europeenne/) : comment une baisse des actifs américains peut revenir vers les fonds, les investisseurs et les marchés européens par les rachats, la marge et les bilans bancaires.
 
 **Sources principales :** [Banque centrale d'Irlande, statistiques des fonds au premier trimestre 2026](https://www.centralbank.ie/docs/default-source/statistics/data-and-analysis/other-financial-sector-statistics/investment-funds/2026q1---information-release-investment-fund-statistics.pdf?sfvrsn=ac14701a_4) et [répartition des porteurs au troisième trimestre 2024](https://www.centralbank.ie/docs/default-source/statistics/data-and-analysis/other-financial-sector-statistics/investment-funds/2024q3---information-release-investment-fund-statistics.pdf?sfvrsn=e967641a_4) ; [BCE, détentions américaines des résidents de la zone euro, novembre 2025](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202511_01~fdf147a04a.en.html) ; [BCE Blog, réallocation des portefeuilles des NBFI, 15 mai 2026](https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20260515~969ddfcf06.en.html) ; [BCE, moteurs des flux vers les actions américaines, mai 2026](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/focus/2026/html/ecb.fsrbox202605_04~fd7b91dd22.en.html) ; [Commission européenne, Union de l'épargne et de l'investissement, mise à jour du 17 juillet 2026](https://finance.ec.europa.eu/regulation-and-supervision/savings-and-investments-union_en). Les additions et ratios explicitement signalés sont des calculs l0g à partir de montants officiels arrondis. Ceci n'est pas un conseil en investissement.
