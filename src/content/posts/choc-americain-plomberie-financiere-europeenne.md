@@ -175,7 +175,7 @@ La BCE et l'ESRB écrivaient en février 2026 que les liens entre banques et NBF
 
 La thèse est réfutable. Une correction américaine accompagnée de rachats contenus, d'appels de marge absorbés, de dépôts NBFI stables et d'un repo bancaire qui continue à fonctionner resterait principalement une perte de portefeuille. À l'inverse, des sorties synchronisées, des ventes forcées, des retraits de financement court et une hausse des décotes montreraient que la plomberie transmet le choc.
 
-Le quatrième volet examinera l'autorité chargée de voir cette chaîne dans son ensemble lorsque le fonds, le gestionnaire, l'investisseur, l'actif et la banque relèvent de plusieurs juridictions.
+[Le quatrième volet examine la supervision fragmentée de cette chaîne](/posts/risque-europeen-supervision-nationale-fonds/) lorsque le fonds, le gestionnaire, l'investisseur, l'actif et la banque relèvent de plusieurs juridictions.
 
 ## Sources
 

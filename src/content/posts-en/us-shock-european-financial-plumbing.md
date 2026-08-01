@@ -173,7 +173,7 @@ In February 2026, the ECB and ESRB wrote that bank-NBFI linkages **did not then 
 
 The thesis is falsifiable. A US correction accompanied by contained redemptions, absorbed margin calls, stable NBFI deposits and a functioning bank repo market would remain mainly a portfolio loss. Synchronised outflows, forced sales, withdrawals of short-term funding and rising haircuts would instead show that the plumbing is transmitting the shock.
 
-The fourth instalment will examine which authority can see the whole chain when the fund, manager, investor, asset and bank fall under several jurisdictions.
+[The fourth instalment examines the fragmented supervision of this chain](/en/analysis/european-risk-national-fund-supervision/) when the fund, manager, investor, asset and bank fall under several jurisdictions.
 
 ## Sources
 
