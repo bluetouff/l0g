@@ -2,7 +2,7 @@
 title: "Deux petits États, 12 000 milliards en transit"
 description: "Au 31 mars 2026, les fonds domiciliés en Irlande et au Luxembourg totalisaient 11 875 milliards d'euros de valeur nette. Les dernières observations publiées portent ce total à 12 301 milliards, mais à deux dates différentes. Premier volet d'une enquête sur la différence entre domicile du fonds, gestionnaire, investisseur, devise et émetteur final."
 pubDate: 2026-07-31T23:20:00+02:00
-updatedDate: 2026-07-31T23:20:00+02:00
+updatedDate: 2026-08-01T05:00:00+02:00
 tags: ["irlande", "luxembourg", "fonds d'investissement", "europe", "flux de capitaux", "régulation"]
 draft: false
 quickTake:
@@ -151,6 +151,6 @@ Le chiffre de 12 000 milliards ne prouve ni une fragilité systémique, ni une f
 
 Cette séparation évite deux récits également faux. Le premier ferait de ces milliers de milliards la richesse de l'Irlande et du Luxembourg. Le second traiterait tout actif domicilié chez eux comme un financement européen. La donnée de domicile ne permet aucune de ces conclusions.
 
-Le prochain volet suivra les portefeuilles, en séparant enfin titre libellé en dollars et émetteur américain, capital européen et capital extra-européen, flux de souscription et effet de valorisation.
+[Le deuxième volet suit les portefeuilles](/posts/fonds-europeens-portefeuilles-americains/), en séparant titre libellé en dollars et émetteur américain, capital européen et capital extra-européen, flux de souscription et effet de valorisation.
 
 **Sources principales :** [Banque centrale d'Irlande, statistiques des fonds au premier trimestre 2026](https://www.centralbank.ie/docs/default-source/statistics/data-and-analysis/other-financial-sector-statistics/investment-funds/2026q1---information-release-investment-fund-statistics.pdf?sfvrsn=ac14701a_4) ; [CSSF, actifs nets des OPC au 31 mars 2026](https://www.cssf.lu/fr/2026/04/situation-globale-des-organismes-de-placement-collectif-a-la-fin-du-mois-de-mars-2026/) et [au 31 mai 2026](https://www.cssf.lu/fr/2026/07/situation-globale-des-organismes-de-placement-collectif-a-la-fin-du-mois-de-mai-2026/) ; [BCE, *The international role of the euro*, juin 2026](https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.cs.html) ; [BCE, *Financial Integration and Structure in the Euro Area*, mai 2026](https://www.ecb.europa.eu/press/fie/html/ecb.fie202605~c4c6cabe93.en.html) ; [BCE, *The geography of capital allocation in the euro area*, 2024](https://op.europa.eu/en/publication-detail/-/publication/af5f5818-be7f-11ef-91ed-01aa75ed71a1/language-en) ; [directive 2009/65/CE sur les OPCVM](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32009L0065). Calculs l0g à partir des valeurs non arrondies lorsque celles-ci sont publiées. Ceci n'est pas un conseil en investissement.
