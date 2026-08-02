@@ -46,6 +46,10 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
     assert.ok(apache.includes(alias), `Alias Apache absent: ${alias}`);
   }
   assert.ok(service.includes('ExecStart=/usr/bin/python3 /usr/local/lib/l0g-risk/l0g-risk.py'));
+  assert.ok(
+    service.includes('SupplementaryGroups=usdashboard'),
+    'le service doit pouvoir lire le bundle macro privé sans élargir ses permissions globales',
+  );
   assert.ok(!service.includes('/usr/local/bin/l0g-risk.py'));
   assert.ok(installer.includes("'ExecStartPost='"), 'le reset des anciens ExecStartPost doit être explicite');
   assert.ok(installer.indexOf('verify-producer-deployment.py') < installer.indexOf('systemctl restart l0g-risk.service'));

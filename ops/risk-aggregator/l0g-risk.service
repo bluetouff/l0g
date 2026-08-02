@@ -7,6 +7,7 @@ Wants=network-online.target
 Type=oneshot
 User=l0grisk
 Group=l0grisk
+SupplementaryGroups=usdashboard
 EnvironmentFile=-/etc/l0g-risk.env
 ExecStart=/usr/bin/python3 /usr/local/lib/l0g-risk/l0g-risk.py
 ExecStartPost=/usr/bin/python3 /usr/local/lib/l0g-risk/api-build.py
