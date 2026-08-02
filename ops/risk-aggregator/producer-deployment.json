@@ -44,21 +44,21 @@
     },
     "yen": {
       "repository": "https://github.com/bluetouff/carry-yen-monitor",
-      "revision": "6e4260cd635c11104d1c87b14e8d5ccb8417cd05",
+      "revision": "fead2f0b4c2984b2df1e5bb1e047e45ce6f1afb4",
       "files": [
         {
           "path": "/opt/yct/build_snapshot.py",
-          "sha256": "bd94ac4decfbf886a1c05fe8b478321329924dfbafc3bb7dfaadc1f9b0b600cf"
+          "sha256": "2683d2363a81011fdb91f61da890b541edc49535ac61e3c19edd4783e909e212"
         }
       ]
     },
     "energie": {
       "repository": "https://github.com/bluetouff/energie-stress-monitor",
-      "revision": "795f950add82a9e08db39402adac9e514a223e23",
+      "revision": "4ee8cb3759bb1300ae8e2052d51ebb5db209e997",
       "files": [
         {
           "path": "/opt/energie/builder.py",
-          "sha256": "c66af5fa611d38ccef08e391ef13122f9911e3b35d82ae2cbeb00bda00411f9b"
+          "sha256": "9906374cf822556e6293f013848225d32f56f90ac0ed8dbba74ab2d11e16d063"
         }
       ]
     },
