@@ -34,7 +34,7 @@ Atlas occupe précisément cette position. Dans une [présentation publiée par 
   <line x1="368" y1="153" x2="418" y2="153" stroke="#5eead4" stroke-width="2"/>
   <polygon points="418,153 408,147 408,159" fill="#5eead4"/>
   <rect x="420" y="116" width="142" height="74" rx="5" fill="#15171c" stroke="#2a2c33"/>
-  <text x="491" y="146" fill="#d6d9df" font-size="12" text-anchor="middle">titrisation / vente</text>
+  <text x="491" y="146" fill="#d6d9df" font-size="11" text-anchor="middle">titrisation / vente</text>
   <text x="491" y="166" fill="#8b909b" font-size="10" text-anchor="middle">financement plus long</text>
   <line x1="562" y1="153" x2="614" y2="153" stroke="#5eead4" stroke-width="2"/>
   <polygon points="614,153 604,147 604,159" fill="#5eead4"/>
@@ -46,16 +46,19 @@ Atlas occupe précisément cette position. Dans une [présentation publiée par 
   <text x="103" y="309" fill="#8b909b" font-size="10" text-anchor="middle">ou tirages existants</text>
   <line x1="174" y1="297" x2="224" y2="297" stroke="#ff4d87" stroke-width="2"/>
   <polygon points="224,297 214,291 214,303" fill="#ff4d87"/>
-  <rect x="226" y="250" width="190" height="94" rx="5" fill="#21131a" stroke="#ff4d87" stroke-width="2"/>
-  <text x="321" y="280" fill="#ff4d87" font-size="13" font-weight="700" text-anchor="middle">ACTIFS IMMOBILISÉS</text>
-  <text x="321" y="303" fill="#d6d9df" font-size="10" text-anchor="middle">durée et coût de financement montent</text>
-  <text x="321" y="322" fill="#d6d9df" font-size="10" text-anchor="middle">décotes et appels de collatéral possibles</text>
-  <line x1="416" y1="297" x2="472" y2="297" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 5"/>
-  <line x1="472" y1="277" x2="472" y2="317" stroke="#ff4d87" stroke-width="4"/>
-  <rect x="510" y="250" width="178" height="94" rx="5" fill="#15171c" stroke="#f5b13d"/>
-  <text x="599" y="278" fill="#f5b13d" font-size="11" font-weight="700" text-anchor="middle">QUI PORTE LE RISQUE ?</text>
-  <text x="599" y="301" fill="#d6d9df" font-size="10" text-anchor="middle">réponse dans les contrats :</text>
-  <text x="599" y="320" fill="#8b909b" font-size="10" text-anchor="middle">décotes, tranches, recours, backstops</text>
+  <rect x="226" y="244" width="200" height="116" rx="5" fill="#21131a" stroke="#ff4d87" stroke-width="2"/>
+  <text x="326" y="269" fill="#ff4d87" font-size="13" font-weight="700" text-anchor="middle">ACTIFS IMMOBILISÉS</text>
+  <text x="326" y="292" fill="#d6d9df" font-size="10" text-anchor="middle">durée plus longue</text>
+  <text x="326" y="309" fill="#d6d9df" font-size="10" text-anchor="middle">coût de financement accru</text>
+  <text x="326" y="326" fill="#d6d9df" font-size="10" text-anchor="middle">décotes possibles</text>
+  <text x="326" y="343" fill="#d6d9df" font-size="10" text-anchor="middle">appels de collatéral</text>
+  <line x1="426" y1="302" x2="474" y2="302" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="474" y1="282" x2="474" y2="322" stroke="#ff4d87" stroke-width="4"/>
+  <rect x="500" y="244" width="188" height="116" rx="5" fill="#15171c" stroke="#f5b13d"/>
+  <text x="594" y="269" fill="#f5b13d" font-size="11" font-weight="700" text-anchor="middle">QUI PORTE LE RISQUE ?</text>
+  <text x="594" y="292" fill="#d6d9df" font-size="10" text-anchor="middle">réponse dans les contrats :</text>
+  <text x="594" y="315" fill="#8b909b" font-size="9" text-anchor="middle">décotes, tranches, recours</text>
+  <text x="594" y="332" fill="#8b909b" font-size="9" text-anchor="middle">et backstops</text>
   <text x="32" y="386" fill="#d6d9df" font-size="11">Le défaut des emprunteurs n'est pas nécessaire pour créer un besoin de liquidité.</text>
   <text x="32" y="406" fill="#8b909b" font-size="10">Sources : Réserve fédérale ; Apollo IG Core Replacement, Form 10 du 1er août 2025.</text>
 </svg>
@@ -161,11 +164,12 @@ Surtout, cette garantie a un périmètre précis. Elle couvre le prix d'achat di
   <rect x="596" y="98" width="92" height="68" rx="5" fill="#15171c" stroke="#f5b13d"/>
   <text x="642" y="126" fill="#f5b13d" font-size="12" font-weight="700" text-anchor="middle">AARe</text>
   <text x="642" y="147" fill="#d6d9df" font-size="10" text-anchor="middle">5e + lettre</text>
-  <rect x="214" y="205" width="292" height="70" rx="6" fill="#15171c" stroke="#5eead4"/>
-  <text x="360" y="233" fill="#5eead4" font-size="12" font-weight="700" text-anchor="middle">CRÉDIT SUISSE : BÉNÉFICIAIRE</text>
-  <text x="360" y="255" fill="#8b909b" font-size="10" text-anchor="middle">prix d'achat différé, pas portefeuille général Atlas</text>
-  <line x1="370" y1="166" x2="370" y2="205" stroke="#f5b13d" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <line x1="642" y1="166" x2="506" y2="224" stroke="#f5b13d" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="198" y="198" width="324" height="84" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="360" y="225" fill="#5eead4" font-size="12" font-weight="700" text-anchor="middle">CRÉDIT SUISSE : BÉNÉFICIAIRE</text>
+  <text x="360" y="249" fill="#8b909b" font-size="10" text-anchor="middle">prix d'achat différé envers Credit Suisse</text>
+  <text x="360" y="266" fill="#8b909b" font-size="10" text-anchor="middle">pas le portefeuille général d'Atlas</text>
+  <line x1="370" y1="166" x2="370" y2="198" stroke="#f5b13d" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="642" y1="166" x2="522" y2="217" stroke="#f5b13d" stroke-width="1.5" stroke-dasharray="5 4"/>
   <line x1="32" y1="310" x2="688" y2="310" stroke="#2a2c33" stroke-width="2"/>
   <text x="32" y="341" fill="#ff4d87" font-size="12" font-weight="700">HORS DE CETTE GARANTIE</text>
   <text x="32" y="367" fill="#d6d9df" font-size="11">Pertes de crédit, décotes, appels de collatéral et refinancement des entrepôts</text>

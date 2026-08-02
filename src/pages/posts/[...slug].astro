@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleNavigator from '../../components/ArticleNavigator.astro';
 import SupportCard from '../../components/SupportCard.astro';
 import WatchCard from '../../components/WatchCard.astro';
+import WeeklyCta from '../../components/WeeklyCta.astro';
 import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
@@ -404,6 +405,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     <div class="prose">
       <Content />
     </div>
+
+    <WeeklyCta variant="article" />
 
     <div class="share mt-14" data-pagefind-ignore>
       <span class="mono-label share-label">// partager</span>

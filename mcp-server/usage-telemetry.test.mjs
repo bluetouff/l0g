@@ -113,10 +113,40 @@ test('publie les séries endpoint, résultats, quantiles et le KPI get_risk_stat
   assert.equal(report.product_kpi.share_of_tool_calls, 0.833333);
   assert.equal(report.product_kpi.success_rate, 0.8);
   assert.deepEqual(report.product_kpi.latency_ms, { p50: 50, p95: 500 });
+  assert.deepEqual(report.product_kpi.recurring_usage, {
+    metric: 'repeat_active_days',
+    active_days: 1,
+    repeat_active_days: 0,
+    first_active_day: '2026-07-30',
+    last_active_day: '2026-07-30',
+    returning_clients: null,
+    interpretation: 'Jours avec au moins un appel get_risk_state, puis jours actifs après le premier jour observé. Ce signal mesure la récurrence du produit, pas des clients uniques.',
+  });
   assert.equal(report.endpoints.find((row) => row.endpoint === '/api/mcp/compact')?.requests, 15);
   assert.equal(report.endpoints.some((row) => row.endpoint === '/api/mcp'), false);
   assert.deepEqual(report.clients, [{ family: 'anthropic', count: 5 }]);
   assert.equal(report.daily.length, 1);
+});
+
+test('mesure les jours de retour de get_risk_state sans inventer de clients uniques', () => {
+  let state = aggregateMcpUsage(
+    emptyState(),
+    observation({ body: { method: 'tools/call', params: { name: 'get_risk_state' } } }),
+    new Date('2026-07-28T12:00:00Z'),
+  );
+  state = aggregateMcpUsage(
+    state,
+    observation({ body: { method: 'tools/call', params: { name: 'get_risk_state' } } }),
+    new Date('2026-07-30T12:00:00Z'),
+  );
+  const report = buildPublicMcpUsageReport(state);
+
+  assert.equal(report.product_kpi.recurring_usage.active_days, 2);
+  assert.equal(report.product_kpi.recurring_usage.repeat_active_days, 1);
+  assert.equal(report.product_kpi.recurring_usage.first_active_day, '2026-07-28');
+  assert.equal(report.product_kpi.recurring_usage.last_active_day, '2026-07-30');
+  assert.equal(report.product_kpi.recurring_usage.returning_clients, null);
+  assert.match(report.limitations.join(' '), /identifiant persistant/);
 });
 
 test('garde les libellés other privés sept jours et applique k supérieur ou égal à cinq', () => {

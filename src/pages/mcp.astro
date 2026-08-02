@@ -135,6 +135,30 @@ const appLd = {
     <p class="mono-label mt-4" data-pagefind-ignore><a class="link-term" href="/en/mcp/">English MCP documentation →</a></p>
   </section>
 
+  <section class="risk-quickstart" data-pagefind-ignore aria-labelledby="risk-quickstart-title">
+    <div class="quickstart-head">
+      <div>
+        <p class="mono-label">// exemple en une minute</p>
+        <h2 id="risk-quickstart-title">Un endpoint, un tool, cinq champs à conserver.</h2>
+      </div>
+      <span aria-hidden="true">60s</span>
+    </div>
+    <ol>
+      <li><strong>Connecter</strong><code>{COMPACT_ENDPOINT}</code></li>
+      <li><strong>Appeler</strong><code>get_risk_state(&#123; "mode": "current", "window": "7d" &#125;)</code></li>
+      <li><strong>Lire</strong><code>asOf · freshness · variation · canonical · attribution</code></li>
+    </ol>
+    <pre class="mcp-code"><code>{`{
+  "name": "get_risk_state",
+  "arguments": { "mode": "current", "window": "7d" }
+}`}</code></pre>
+    <p>
+      La réponse regroupe les niveaux courants, leur fraîcheur instrument par instrument,
+      la variation sur sept jours, l’URL JSON canonique et l’attribution
+      <code>Source : l0g.fr</code>. Les sources amont HTTPS restent attachées aux instruments.
+    </p>
+  </section>
+
   <section class="mt-12 space-y-10" data-pagefind-ignore>
     <div>
       <h2 class="mono-label glow" style="color: var(--color-signal)">// pourquoi</h2>
@@ -395,7 +419,25 @@ curl -s -X POST ${COMPACT_ENDPOINT} \\
   </section>
 </BaseLayout>
 
-<style>
+  <style>
+  .risk-quickstart {
+    max-width: 58rem;
+    margin-top: 2rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 52%, var(--color-line));
+    border-radius: 14px 4px 14px 14px;
+    padding: clamp(1rem, 3vw, 1.35rem);
+    background: radial-gradient(80% 110% at 100% 0, color-mix(in srgb, var(--color-signal) 8%, transparent), transparent 72%), var(--color-surface);
+  }
+  .quickstart-head { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+  .quickstart-head .mono-label { color: var(--color-signal); }
+  .quickstart-head h2 { margin-top: .5rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 1.8rem); line-height: 1.15; }
+  .quickstart-head > span { color: color-mix(in srgb, var(--color-signal) 45%, var(--color-line)); font-family: var(--font-display); font-size: 2.3rem; font-weight: 800; }
+  .risk-quickstart ol { display: grid; gap: 1px; overflow: hidden; margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-line); }
+  .risk-quickstart li { display: grid; gap: .35rem; min-width: 0; padding: .7rem; background: var(--color-ink); }
+  .risk-quickstart li strong { color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; }
+  .risk-quickstart li code { overflow-wrap: anywhere; color: var(--color-paper); font-size: .72rem; }
+  .risk-quickstart > p { margin-top: .8rem; color: var(--color-muted); font-size: .82rem; line-height: 1.6; }
+  @media (min-width: 760px) { .risk-quickstart ol { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   .mcp-code {
     background: color-mix(in srgb, var(--color-signal) 6%, transparent);
     border: 1px solid var(--color-line);

@@ -562,6 +562,25 @@ function mergeToolRows(endpoints) {
     .sort((left, right) => right.count - left.count || left.name.localeCompare(right.name));
 }
 
+function buildRecurringToolUsage(days, toolName) {
+  const activeDays = days
+    .map((day) => ({
+      day: day.day,
+      calls: mergeToolRows(day.endpoints).find((row) => row.name === toolName)?.count ?? 0,
+    }))
+    .filter((day) => day.calls > 0);
+
+  return {
+    metric: 'repeat_active_days',
+    active_days: activeDays.length,
+    repeat_active_days: Math.max(0, activeDays.length - 1),
+    first_active_day: activeDays.at(0)?.day ?? null,
+    last_active_day: activeDays.at(-1)?.day ?? null,
+    returning_clients: null,
+    interpretation: 'Jours avec au moins un appel get_risk_state, puis jours actifs après le premier jour observé. Ce signal mesure la récurrence du produit, pas des clients uniques.',
+  };
+}
+
 function mergeEndpointRows(endpoints, surface) {
   const total = emptyEndpoint(surface);
   for (const endpoint of endpoints.filter((item) => item.surface === surface)) {
@@ -672,6 +691,7 @@ export function buildPublicMcpUsageReport(state, minimumCohort = MCP_USAGE_MINIM
     latency_ms: { p50: null, p95: null },
     response_bytes: { average: null, p50: null, p95: null },
   };
+  const recurringUsage = buildRecurringToolUsage(value.days, 'get_risk_state');
   const endpointTotals = ['compact', 'full', 'legacy']
     .map((surface) => mergeEndpointRows(allEndpoints, surface))
     .filter((row) => row.requests >= minimumCohort || Object.values(row.events).reduce((sum, count) => sum + count, 0) >= minimumCohort)
@@ -687,6 +707,7 @@ export function buildPublicMcpUsageReport(state, minimumCohort = MCP_USAGE_MINIM
       latency: 'p50 et p95 sont estimés depuis des histogrammes bornés ; aucune durée individuelle n’est conservée.',
       response_size: 'Taille de réponse agrégée en octets et histogrammes bornés ; aucun contenu de réponse n’est conservé.',
       clients: 'Huit familles stables dérivées de clientInfo.name ; les libellés other restent privés sept jours pour recalibrer la taxonomie.',
+      recurring_usage: 'Le KPI de récurrence compte les jours où get_risk_state est utilisé, puis les jours actifs après le premier jour observé. Il ne repose pas sur les initialisations.',
       privacy: 'User-agents internes l0g exclus avant agrégation ; aucune IP, session, empreinte, cookie ou chaîne user-agent n’est conservé.',
     },
     totals: {
@@ -705,6 +726,7 @@ export function buildPublicMcpUsageReport(state, minimumCohort = MCP_USAGE_MINIM
     product_kpi: {
       ...primaryTool,
       share_of_tool_calls: ratio(primaryTool.count, totals.events.toolCalls),
+      recurring_usage: recurringUsage,
       role: 'Produit agentique principal de l0g ; le reste du catalogue est présenté comme parcours secondaire.',
     },
     taxonomy: {
@@ -735,6 +757,7 @@ export function buildPublicMcpUsageReport(state, minimumCohort = MCP_USAGE_MINIM
       'Les familles client et diagnostics sous le seuil k=5 sont masqués.',
       'Les appels de tools ne sont pas reliés à une personne ni à une famille client en mode MCP stateless.',
       'Aucune donnée ne permet de compter des personnes ou des intégrations uniques.',
+      'returning_clients reste null : la récurrence publiée porte sur les jours actifs de get_risk_state, sans identifiant persistant.',
     ],
   };
 }

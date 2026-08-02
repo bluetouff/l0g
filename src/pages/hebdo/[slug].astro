@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WeeklyIssue from '../../components/WeeklyIssue.astro';
+import { weeklyEditions } from '../../config/weekly-editions.ts';
+
+export function getStaticPaths() {
+  return weeklyEditions.map((edition) => ({ params: { slug: edition.slug }, props: { edition } }));
+}
+
+const { edition } = Astro.props;
+---
+
+<BaseLayout title={`${edition.title} · L’hebdo`} description={edition.description} sidebar={false}>
+  <main class="issue-page">
+    <a class="back" href="/hebdo/">← Toutes les éditions</a>
+    <WeeklyIssue edition={edition} headingLevel="h1" />
+  </main>
+  <style>
+    .issue-page { max-width: 72rem; margin: 0 auto; }
+    .back { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; }
+    .issue-page :global(.weekly-issue) { margin-top: 1.5rem; }
+  </style>
+</BaseLayout>

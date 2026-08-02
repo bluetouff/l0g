@@ -1,0 +1,220 @@
+---
+import type { WeeklyEdition } from '../config/weekly-editions.ts';
+import { buildWeeklyCitationText } from '../lib/weekly-package.ts';
+
+interface Props {
+  edition: WeeklyEdition;
+  headingLevel?: 'h1' | 'h2';
+}
+
+const { edition, headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+const root = `/hebdo/${edition.slug}`;
+const published = new Intl.DateTimeFormat('fr-FR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'Europe/Paris',
+}).format(new Date(edition.publishedAt));
+const citation = buildWeeklyCitationText(edition);
+---
+
+<article class="weekly-issue" data-pagefind-body>
+  <header class="issue-head">
+    <div class="issue-coordinate">
+      <span>édition</span>
+      <strong>{String(edition.issue).padStart(2, '0')}</strong>
+      <time datetime={edition.publishedAt}>{published}</time>
+    </div>
+    <div>
+      <p class="mono-label">// le dossier de la semaine</p>
+      <Heading>{edition.title}</Heading>
+      <p class="issue-lead">{edition.lead}</p>
+    </div>
+  </header>
+
+  <div class="issue-grid">
+    <section class="issue-reading">
+      <p class="mono-label">// l’analyse</p>
+      <h3><a href={edition.analysis.href}>{edition.analysis.title}</a></h3>
+      <p>{edition.analysis.update}</p>
+      <a class="text-link" href={edition.analysis.href}>Lire l’enquête complète <span aria-hidden="true">›</span></a>
+    </section>
+
+    <aside class="hero-number">
+      <span>le chiffre</span>
+      <strong>{edition.number.value}</strong>
+      <p>{edition.number.label}</p>
+      <small>{edition.number.context}</small>
+    </aside>
+  </div>
+
+  <section class="mechanism-grid" aria-label="Lecture de la semaine">
+    <article>
+      <span>01</span>
+      <h3>Le mécanisme</h3>
+      <p>{edition.mechanism}</p>
+    </article>
+    <article>
+      <span>02</span>
+      <h3>Le test suivant</h3>
+      <p>{edition.test}</p>
+    </article>
+  </section>
+
+  <figure class="issue-chart">
+    <img
+      src={`${root}/graphique.svg`}
+      alt={`${edition.chart.title}. ${edition.chart.subtitle} ${edition.chart.note}`}
+      width="1200"
+      height="700"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>
+      <span>{edition.chart.note}</span>
+      <nav aria-label="Téléchargements du graphique">
+        <a href={`${root}/graphique.svg`} download>SVG</a>
+        <a href={`${root}/donnees.csv`} download>CSV</a>
+        <a href={edition.chart.sourceUrl}>source SEC</a>
+      </nav>
+    </figcaption>
+  </figure>
+
+  <section class="quote-card">
+    <div>
+      <p class="mono-label">// citation prête à copier</p>
+      <blockquote>« {edition.quote} »</blockquote>
+      <small>Source : l0g.fr, édition {String(edition.issue).padStart(2, '0')}.</small>
+    </div>
+    <button type="button" data-copy-value={edition.quote}><span data-copy-label>Copier</span></button>
+  </section>
+
+  <section class="distribution" aria-labelledby={`distribution-${edition.issue}`}>
+    <div class="distribution-head">
+      <div>
+        <p class="mono-label">// à lire, citer et réutiliser</p>
+        <h3 id={`distribution-${edition.issue}`}>Les formats utiles sont disponibles ici.</h3>
+      </div>
+      <a href="/ressources-journalistes/">Ressources presse</a>
+    </div>
+    <div class="distribution-grid">
+      <details>
+        <summary>Post LinkedIn centré sur le chiffre</summary>
+        <pre>{edition.linkedin}</pre>
+        <div><button type="button" data-copy-value={edition.linkedin}><span data-copy-label>Copier</span></button><a href={`${root}/linkedin.txt`}>TXT</a></div>
+      </details>
+      <details>
+        <summary>Thread X</summary>
+        <pre>{edition.threadX.join('\n\n')}</pre>
+        <div><button type="button" data-copy-value={edition.threadX.join('\n\n')}><span data-copy-label>Copier</span></button><a href={`${root}/thread-x.txt`}>TXT</a></div>
+      </details>
+      <details>
+        <summary>Référence bibliographique</summary>
+        <pre>{citation}</pre>
+        <div><button type="button" data-copy-value={citation}><span data-copy-label>Copier</span></button><a href={`${root}/citation.txt`}>TXT</a></div>
+      </details>
+    </div>
+  </section>
+
+  <section class="issue-sources">
+    <p class="mono-label">// sources primaires</p>
+    <ol>
+      {edition.sources.map((source) => (
+        <li><a href={source.href}>{source.label}</a><span>{source.role}</span></li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="issue-limits">
+    <p class="mono-label">// limites</p>
+    <ul>{edition.limits.map((limit) => <li>{limit}</li>)}</ul>
+  </section>
+</article>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-value]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const label = button.querySelector<HTMLElement>('[data-copy-label]');
+      const value = button.dataset.copyValue;
+      if (!label || !value || !window.isSecureContext || !navigator.clipboard) {
+        if (label) label.textContent = 'Indisponible';
+        return;
+      }
+      const original = label.textContent;
+      try {
+        await navigator.clipboard.writeText(value);
+        label.textContent = 'Copié';
+      } catch {
+        label.textContent = 'Indisponible';
+      }
+      window.setTimeout(() => { label.textContent = original; }, 1600);
+    });
+  });
+</script>
+
+<style>
+  .weekly-issue { margin-top: clamp(3.5rem, 8vw, 6rem); }
+  .issue-head { display: grid; gap: 1.2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-line); }
+  .issue-coordinate { display: grid; grid-template-columns: auto auto; align-content: start; justify-content: start; column-gap: 0.7rem; }
+  .issue-coordinate span { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .issue-coordinate strong { grid-row: 2; color: var(--color-signal); font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5rem); line-height: 0.9; }
+  .issue-coordinate time { grid-column: 2; grid-row: 2; align-self: end; padding-bottom: 0.3rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.65rem; }
+  .issue-head .mono-label { color: var(--color-signal); }
+  .issue-head h1, .issue-head h2 { max-width: 52rem; margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.35rem); line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
+  .issue-lead { max-width: 48rem; margin-top: 1rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.68; }
+  .issue-grid { display: grid; gap: 1rem; margin-top: 1rem; }
+  .issue-reading, .hero-number { border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; padding: 1.1rem; background: var(--color-surface); }
+  .issue-reading .mono-label { color: var(--color-accent); }
+  .issue-reading h3 { margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.3rem; line-height: 1.25; }
+  .issue-reading h3 a { color: inherit; }
+  .issue-reading p { margin-top: 0.6rem; color: var(--color-muted); font-size: 0.84rem; line-height: 1.6; }
+  .text-link { display: inline-block; margin-top: 0.9rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; }
+  .hero-number { border-color: color-mix(in srgb, var(--color-amber) 42%, var(--color-line)); background: radial-gradient(90% 130% at 100% 0, color-mix(in srgb, var(--color-amber) 10%, transparent), transparent 70%), var(--color-surface); }
+  .hero-number > span { color: var(--color-amber); font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-number strong { display: block; margin-top: 0.65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.3rem, 7vw, 4.5rem); line-height: 0.95; }
+  .hero-number p { margin-top: 0.65rem; color: var(--color-paper); font-weight: 650; }
+  .hero-number small { display: block; margin-top: 0.55rem; color: var(--color-muted); font-size: 0.69rem; line-height: 1.5; }
+  .mechanism-grid { display: grid; gap: 1px; overflow: hidden; margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 12px 3px 12px 12px; background: var(--color-line); }
+  .mechanism-grid article { padding: 1.1rem; background: var(--color-surface); }
+  .mechanism-grid span { color: var(--color-line-strong); font-family: var(--font-display); font-size: 1.8rem; }
+  .mechanism-grid h3 { margin-top: 0.3rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+  .mechanism-grid p { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.6; }
+  .issue-chart { margin: 2rem 0 2.5rem; padding-bottom: 0.9rem; }
+  .issue-chart img { display: block; width: 100%; height: auto; border: 1px solid var(--color-line); border-radius: 14px; background: #0b0f14; }
+  .issue-chart figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.7rem 1rem; margin-top: 0.75rem; color: var(--color-muted); font-size: 0.72rem; line-height: 1.5; }
+  .issue-chart figcaption > span { max-width: 44rem; }
+  .issue-chart nav { display: flex; gap: 0.45rem; }
+  .issue-chart nav a, .distribution-grid div a { border: 1px solid var(--color-line-strong); border-radius: 999px; padding: 0.3rem 0.55rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; }
+  .quote-card { display: grid; gap: 1rem; align-items: center; border: 1px solid color-mix(in srgb, var(--color-accent) 44%, var(--color-line)); border-radius: 4px 14px 14px 14px; padding: 1.2rem; background: color-mix(in srgb, var(--color-accent) 5%, var(--color-surface)); }
+  .quote-card .mono-label { color: var(--color-accent); }
+  .quote-card blockquote { max-width: 48rem; margin-top: 0.75rem; color: var(--color-bright); font-family: var(--font-read); font-size: 1.08rem; line-height: 1.65; }
+  .quote-card small { display: block; margin-top: 0.55rem; color: var(--color-muted); font-size: 0.66rem; }
+  .quote-card button, .distribution-grid button { justify-self: start; border: 1px solid color-mix(in srgb, var(--color-accent) 54%, var(--color-line)); border-radius: 999px; padding: 0.5rem 0.7rem; color: var(--color-accent); background: transparent; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+  .distribution { margin-top: 3rem; }
+  .distribution-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
+  .distribution-head .mono-label { color: var(--color-signal); }
+  .distribution-head h3 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.5rem; }
+  .distribution-head > a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; }
+  .distribution-grid { display: grid; gap: 0.7rem; margin-top: 1rem; }
+  .distribution-grid details { min-width: 0; border: 1px solid var(--color-line); border-radius: 9px; padding: 0.85rem; background: var(--color-surface); }
+  .distribution-grid summary { color: var(--color-paper); cursor: pointer; font-family: var(--font-mono); font-size: 0.7rem; }
+  .distribution-grid pre { max-height: 20rem; overflow: auto; margin-top: 0.8rem; border: 1px solid var(--color-line); border-radius: 7px; padding: 0.75rem; color: var(--color-muted); background: var(--color-ink); font-size: 0.67rem; line-height: 1.55; white-space: pre-wrap; }
+  .distribution-grid details > div { display: flex; gap: 0.5rem; margin-top: 0.7rem; }
+  .distribution-grid button { color: var(--color-signal); border-color: color-mix(in srgb, var(--color-signal) 54%, var(--color-line)); }
+  .issue-sources, .issue-limits { margin-top: 2.5rem; border-top: 1px dashed var(--color-line); padding-top: 1rem; }
+  .issue-sources .mono-label { color: var(--color-signal); }
+  .issue-sources ol { display: grid; gap: 0.65rem; margin: 0.9rem 0 0 1.1rem; }
+  .issue-sources li { padding-left: 0.3rem; color: var(--color-paper); font-size: 0.78rem; line-height: 1.5; }
+  .issue-sources li::marker { color: var(--color-signal); font-family: var(--font-mono); }
+  .issue-sources a { color: var(--color-bright); }
+  .issue-sources span { display: block; color: var(--color-muted); }
+  .issue-limits .mono-label { color: var(--color-amber); }
+  .issue-limits ul { display: grid; gap: 0.45rem; margin-top: 0.8rem; padding-left: 1rem; color: var(--color-muted); font-size: 0.74rem; line-height: 1.55; }
+  @media (min-width: 760px) {
+    .issue-head { grid-template-columns: 10rem minmax(0, 1fr); }
+    .issue-grid { grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr); }
+    .mechanism-grid, .distribution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .quote-card { grid-template-columns: minmax(0, 1fr) auto; }
+  }
+</style>

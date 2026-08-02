@@ -6,6 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import L0gGlyph from '../components/L0gGlyph.astro';
 import RiskProvenance from '../components/RiskProvenance.astro';
 import SectionSignature from '../components/SectionSignature.astro';
+import WeeklyCta from '../components/WeeklyCta.astro';
 import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
 import { buildRiskDiffSurface } from '../lib/risk-diff.ts';
 import { riskSignalMeta } from '../config/risk-signals.ts';
@@ -166,6 +167,8 @@ const jsonLd = {
       </div>
       <button type="button" id="visit-mark">Marquer comme lu</button>
     </section>
+
+    <WeeklyCta variant="now" />
 
     <section class="now-section" aria-labelledby="changes-title">
       <SectionSignature

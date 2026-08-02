@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = '30 juillet 2026';
+const updated = '2 août 2026';
 ---
 
 <BaseLayout
@@ -39,7 +39,7 @@ const updated = '30 juillet 2026';
       <div class="spec"><span class="spec-k">Publication</span><span class="spec-v">Olivier Laurelli, directeur de la publication</span></div>
       <div class="spec"><span class="spec-k">TVA</span><span class="spec-v">Non applicable</span></div>
       <div class="spec"><span class="spec-k">Hébergement</span><span class="spec-v">l0g : Olivier Laurelli (EI), SIREN 809 005 010, Chartres (28000), 06 95 32 87 21. Serveur dédié administré par l'opérateur.</span></div>
-      <div class="spec"><span class="spec-k">Nature</span><span class="spec-v">l0g.fr est un site statique avec application locale dans le navigateur : aucune base de données de comptes et aucun formulaire. Cette description ne couvre pas le service distinct watch.l0g.fr.</span></div>
+      <div class="spec"><span class="spec-k">Nature</span><span class="spec-v">l0g.fr est un site statique avec application locale dans le navigateur : aucune base de données de comptes ni liste de diffusion. Cette description ne couvre pas le service distinct watch.l0g.fr.</span></div>
       <div class="spec"><span class="spec-k">Propriété</span><span class="spec-v">l0g / Olivier Laurelli (EI). Les licences applicables au code, aux textes, aux données et aux éléments tiers sont précisées dans le <a class="link-term" href="https://github.com/bluetouff/l0g/blob/main/LICENSE" rel="noopener">fichier de licence du dépôt</a>.</span></div>
     </div>
   </section>
@@ -98,7 +98,7 @@ const updated = '30 juillet 2026';
           <li><strong class="text-bright">Finalité :</strong> mesurer l’usage, la qualité et l’adoption de l’interface publique MCP ;</li>
           <li><strong class="text-bright">Base légale :</strong> intérêt légitime de l’opérateur à maintenir et mesurer son service public ;</li>
           <li><strong class="text-bright">Durée :</strong> fenêtre glissante de 91 jours pour les compteurs ; sept jours pour les libellés normalisés de diagnostic <code class="rgpd-code">other</code> ;</li>
-          <li><strong class="text-bright">Publication :</strong> seuil de confidentialité k=5 pour les familles et séries publiques ; aucun utilisateur ou appelant récurrent n’est estimé.</li>
+          <li><strong class="text-bright">Publication :</strong> seuil de confidentialité k=5 pour les familles et séries publiques ; la récurrence porte sur les jours où <code class="rgpd-code">get_risk_state</code> est actif après son premier jour observé, jamais sur un utilisateur ou un appelant récurrent estimé.</li>
         </ul>
       </article>
 
@@ -140,7 +140,7 @@ const updated = '30 juillet 2026';
   <section class="mt-14" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// cookies &amp; stockage local</p>
     <ul class="nope">
-      <li>l0g.fr ne dépose aucun cookie et n'intègre aucune régie publicitaire, aucun pixel de suivi ni aucun réseau social. Le cookie de session strictement nécessaire de Watch est documenté dans la notice propre à ce service.</li>
+      <li>l0g.fr ne dépose aucun cookie et n'intègre aucune régie publicitaire, aucun pixel de suivi ni aucun réseau social. L’Hebdo ne collecte aucune adresse et n’utilise pas de liste de diffusion. Le cookie de session strictement nécessaire de Watch est documenté dans la notice propre à ce service.</li>
       <li>La préférence de thème est enregistrée dans le stockage local du navigateur sous la clé <code class="rgpd-code">l0g-theme</code>. Elle reste sur l'appareil et peut être supprimée dans les réglages du navigateur.</li>
       <li>Aucun script de mesure d'audience tiers : la fréquentation est mesurée localement à partir des journaux serveur.</li>
       <li>Les polices et la recherche sont servies par l0g ; la recherche s'exécute dans le navigateur.</li>

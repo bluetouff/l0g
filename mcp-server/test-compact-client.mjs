@@ -47,6 +47,12 @@ try {
   if (!risk.structuredContent?.asOf || !risk.structuredContent?.source || !risk.structuredContent?.methodology) {
     throw new Error('get_risk_state sans date, source ou méthodologie');
   }
+  if (!risk.structuredContent?.freshness?.instruments?.length || risk.structuredContent?.variation?.window !== '7d') {
+    throw new Error('get_risk_state current sans fraîcheur compacte ou variation 7d');
+  }
+  if (risk.structuredContent?.attribution?.requiredLabel !== 'Source : l0g.fr' || !risk.structuredContent?.canonical?.url) {
+    throw new Error('get_risk_state sans source canonique ou attribution l0g');
+  }
   if ((risk.content || []).filter((item) => item.type === 'resource_link').length < 2) {
     throw new Error('get_risk_state sans liens source et méthode');
   }

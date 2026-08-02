@@ -176,17 +176,18 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       <p class="mono-label glow">// preuve d'usage</p>
       <h2 class="usage-title font-display">Statistiques MCP anonymisées</h2>
       <p class="usage-lede">
-        Fenêtre glissante de 91 jours, ventilée par endpoint. l0g compte initialisations,{' '}
-        <code>tools/list</code>, appels, succès/erreurs, latence p50/p95 et taille de réponse.
+        Fenêtre glissante de 91 jours, ventilée par endpoint. Le KPI visible privilégie les
+        appels de <code>get_risk_state</code> et ses jours d’usage répété. Les initialisations
+        restent un diagnostic de protocole, pas une mesure d’adoption.
         Les user-agents internes l0g sont exclus avant agrégation. Aucune IP, aucun cookie,
         aucune session, aucune empreinte et aucune chaîne user-agent ne sont conservés.
       </p>
 
       <div class="usage-cards" aria-live="polite">
-        <article><span>Requêtes MCP</span><strong data-usage-stat="requests">…</strong></article>
-        <article><span>Initialisations</span><strong data-usage-stat="initializations">…</strong></article>
-        <article><span><code>tools/list</code></span><strong data-usage-stat="tools_list">…</strong></article>
-        <article><span>Appels de tools</span><strong data-usage-stat="tool_calls">…</strong></article>
+        <article><span>Appels <code>get_risk_state</code></span><strong data-product-stat="count">…</strong></article>
+        <article><span>Jours actifs</span><strong data-product-stat="active_days">…</strong></article>
+        <article><span>Jours actifs répétés</span><strong data-product-stat="repeat_active_days">…</strong></article>
+        <article><span>Part des tools</span><strong data-product-stat="share_of_tool_calls">…</strong></article>
       </div>
       <p class="usage-status" data-usage-status>Chargement du rapport public…</p>
 
@@ -200,8 +201,8 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
           </p>
         </div>
         <dl>
-          <div><dt>appels</dt><dd data-product-stat="count">…</dd></div>
-          <div><dt>part des tools</dt><dd data-product-stat="share_of_tool_calls">…</dd></div>
+          <div><dt>jours actifs</dt><dd data-product-stat="active_days">…</dd></div>
+          <div><dt>jours actifs répétés</dt><dd data-product-stat="repeat_active_days">…</dd></div>
           <div><dt>succès mesuré</dt><dd data-product-stat="success_rate">…</dd></div>
           <div><dt>latence p95</dt><dd data-product-stat="latency_p95">…</dd></div>
         </dl>
@@ -227,7 +228,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
           </div>
         </section>
         <section>
-          <h3>Familles <code>clientInfo</code></h3>
+          <h3>Initialisations déclarées, diagnostic</h3>
           <div class="usage-table-wrap">
             <table>
               <thead><tr><th>Famille stable</th><th>Initialisations</th></tr></thead>
@@ -248,9 +249,10 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       </div>
 
       <p class="usage-method">
-        <strong>Limites de mesure.</strong> Sans identifiant technique, l0g ne peut pas
-        compter des personnes, distinguer deux agents derrière une même intégration ni qualifier
-        un appelant de récurrent. Les jours historiques antérieurs au nouveau contrat gardent
+        <strong>Limites de mesure.</strong> « Jours actifs répétés » compte les jours avec au moins
+        un appel à <code>get_risk_state</code> après son premier jour observé. Ce n’est pas un nombre
+        de clients récurrents : sans identifiant persistant, l0g ne peut pas compter des personnes
+        ou des intégrations uniques. Les jours historiques antérieurs au nouveau contrat gardent
         leurs volumes, mais pas l’endpoint, le résultat, la latence ni la taille.{' '}
         <a href="/rgpd/">Lire le cadre de confidentialité</a>.
       </p>
@@ -406,7 +408,11 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
       const product = report.product_kpi ?? {};
       for (const element of root?.querySelectorAll<HTMLElement>('[data-product-stat]') ?? []) {
         const key = element.dataset.productStat ?? '';
-        const value = key === 'latency_p95' ? product.latency_ms?.p95 : product[key];
+        const value = key === 'latency_p95'
+          ? product.latency_ms?.p95
+          : key === 'active_days' || key === 'repeat_active_days'
+            ? product.recurring_usage?.[key]
+            : product[key];
         element.textContent = key === 'latency_p95'
           ? (typeof value === 'number' ? `${count.format(value)} ms` : 'À mesurer')
           : key.endsWith('_rate') || key.startsWith('share_')
@@ -452,6 +458,7 @@ const safeJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
     } catch {
       if (status) status.textContent = 'Le rapport d’usage est momentanément indisponible. Aucun chiffre de remplacement n’est estimé.';
       for (const element of root?.querySelectorAll<HTMLElement>('[data-usage-stat]') ?? []) element.textContent = 'n.d.';
+      for (const element of root?.querySelectorAll<HTMLElement>('[data-product-stat]') ?? []) element.textContent = 'n.d.';
       addEmpty(endpoints, 'Rapport indisponible.');
       addEmpty(daily, 'Rapport indisponible.');
       addEmpty(clients, 'Rapport indisponible.');

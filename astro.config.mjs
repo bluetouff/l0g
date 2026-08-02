@@ -7,8 +7,10 @@ import { glossaryRedirects } from './src/config/glossary-redirects.mjs';
 import { legacySurfaceRedirects } from './src/config/legacy-surface-redirects.mjs';
 import { glossaryAtlasEntries } from './src/config/glossary.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
+import { weeklySitemapLastmods } from './src/config/weekly-editions.ts';
 
 const indexedGlossaryUrls = new Set(glossaryAtlasEntries.map((entry) => `https://l0g.fr${entry.url}`));
+const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +28,7 @@ export default defineConfig({
       ),
     serialize: (item) => ({
       ...item,
-      lastmod: sitemapLastmod(item.url),
+      lastmod: weeklyLastmods.get(item.url) ?? sitemapLastmod(item.url),
     }),
   })],
 

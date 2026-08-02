@@ -3,8 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { buildSignalHistorySurface } from '../lib/signal-history.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
+import { latestWeeklyEdition } from '../config/weekly-editions.ts';
+import { buildWeeklyCitationText } from '../lib/weekly-package.ts';
 
 const history = buildSignalHistorySurface();
+const weekly = latestWeeklyEdition();
+const weeklyRoot = `/hebdo/${weekly.slug}`;
+const weeklyCitation = buildWeeklyCitationText(weekly);
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const pageUrl = `${site}/ressources-journalistes/`;
 const trustItems = [
@@ -76,6 +81,29 @@ const jsonLd = {
           <strong>3. Contextualiser</strong>
           <p>Chaque score 0-100 possède sa propre méthode. Deux niveaux identiques ne sont pas économiquement comparables.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="press-section weekly-package" aria-labelledby="weekly-package-title">
+      <div class="weekly-package-copy">
+        <p class="mono-label glow">// le dossier de la semaine</p>
+        <span class="weekly-issue">édition {String(weekly.issue).padStart(2, '0')}</span>
+        <h2 id="weekly-package-title">{weekly.title}</h2>
+        <p>{weekly.description}</p>
+        <blockquote>« {weekly.quote} »</blockquote>
+        <p class="citation">{weeklyCitation}</p>
+      </div>
+      <div class="weekly-package-assets">
+        <img src={`${weeklyRoot}/graphique.svg`} alt={`${weekly.chart.title}. ${weekly.chart.note}`} width="1200" height="700" loading="lazy" decoding="async" />
+        <nav aria-label="Formats disponibles pour cette édition">
+          <a href={weekly.analysis.href}>analyse</a>
+          <a href={`${weeklyRoot}/graphique.svg`} download>SVG</a>
+          <a href={`${weeklyRoot}/donnees.csv`} download>CSV</a>
+          <a href={`${weeklyRoot}/citation.txt`}>citation</a>
+          <a href={`${weeklyRoot}/linkedin.txt`}>LinkedIn</a>
+          <a href={`${weeklyRoot}/thread-x.txt`}>thread X</a>
+          <a href={weeklyRoot}>édition web</a>
+        </nav>
       </div>
     </section>
 
@@ -176,6 +204,16 @@ const jsonLd = {
     .principle-grid strong { color: var(--color-signal); font-family: var(--font-mono); }
     .principle-grid p, .info-card li, .contact-card p { color: var(--color-muted); line-height: 1.65; margin-top: .5rem; }
     .resource-grid { display: grid; gap: 1.2rem; margin-top: 1.2rem; }
+    .weekly-package { display: grid; gap: 1rem; border: 1px solid color-mix(in srgb, var(--color-signal) 42%, var(--color-line)); border-radius: 12px 3px 12px 12px; padding: 1rem; background: radial-gradient(90% 120% at 0 0, color-mix(in srgb, var(--color-signal) 8%, transparent), transparent 70%), var(--color-surface); }
+    .weekly-package-copy { min-width: 0; }
+    .weekly-package .mono-label { color: var(--color-signal); }
+    .weekly-issue { display: inline-block; margin-top: .65rem; color: var(--color-amber); font-family: var(--font-mono); font-size: .65rem; text-transform: uppercase; }
+    .weekly-package h2 { margin-top: .45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.55rem; line-height: 1.15; }
+    .weekly-package-copy > p:not(.mono-label):not(.citation) { margin-top: .6rem; color: var(--color-muted); line-height: 1.6; }
+    .weekly-package blockquote { margin-top: 1rem; border-left: 2px solid var(--color-accent); padding-left: .8rem; color: var(--color-paper); font-family: var(--font-read); line-height: 1.6; }
+    .weekly-package-assets img { display: block; width: 100%; height: auto; border: 1px solid var(--color-line); border-radius: 9px; background: #0b0f14; }
+    .weekly-package-assets nav { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .7rem; }
+    .weekly-package-assets a { border: 1px solid color-mix(in srgb, var(--color-signal) 45%, var(--color-line)); border-radius: 999px; padding: .34rem .58rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; }
     .resource-card { background: color-mix(in srgb, var(--color-surface) 48%, transparent); border: 1px solid var(--color-line); border-radius: 10px; overflow: hidden; }
     .resource-card > img { background: #0b0f14; display: block; height: auto; width: 100%; }
     .resource-body { padding: 1rem; }
@@ -199,6 +237,7 @@ const jsonLd = {
     @media (min-width: 760px) {
       .principle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .resource-grid, .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .weekly-package { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; }
     }
     @media (max-width: 560px) {
       .resource-card dl { grid-template-columns: 1fr; }

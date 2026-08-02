@@ -1,0 +1,72 @@
+---
+interface Props {
+  variant?: 'home' | 'article' | 'now';
+}
+
+const { variant = 'article' } = Astro.props;
+---
+
+<aside class:list={['weekly-cta', `is-${variant}`]} data-pagefind-ignore aria-label="Lire l’hebdo l0g">
+  <span class="weekly-mark" aria-hidden="true"><i></i><b>7j</b></span>
+  <div>
+    <p class="mono-label">// l’hebdo l0g</p>
+    <strong>Un chiffre. Le mécanisme. Le test suivant.</strong>
+    <small>Une nouvelle édition publique chaque dimanche à 08 h 30</small>
+  </div>
+  <a href="/hebdo/">Lire l’édition <span aria-hidden="true">›</span></a>
+</aside>
+
+<style>
+  .weekly-cta {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.9rem;
+    align-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 38%, var(--color-line));
+    border-radius: 12px 3px 12px 12px;
+    padding: 0.95rem;
+    background:
+      linear-gradient(115deg, color-mix(in srgb, var(--color-signal) 7%, var(--color-surface)), var(--color-surface) 55%);
+  }
+  .weekly-mark {
+    position: relative;
+    display: grid;
+    width: 3.2rem;
+    height: 3.2rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 52%, var(--color-line));
+    border-radius: 50%;
+  }
+  .weekly-mark::before,
+  .weekly-mark i {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  .weekly-mark::before { inset: 0.38rem; border: 1px dashed color-mix(in srgb, var(--color-accent) 45%, transparent); }
+  .weekly-mark i { top: -0.12rem; width: 0.42rem; height: 0.42rem; background: var(--color-signal); box-shadow: 0 0 12px var(--color-signal); }
+  .weekly-mark b { color: var(--color-bright); font-family: var(--font-mono); font-size: 0.72rem; }
+  .weekly-cta .mono-label { color: var(--color-signal); }
+  .weekly-cta strong { display: block; margin-top: 0.22rem; color: var(--color-bright); font-size: 0.88rem; line-height: 1.35; }
+  .weekly-cta small { display: block; margin-top: 0.25rem; color: var(--color-muted); font-size: 0.64rem; line-height: 1.4; }
+  .weekly-cta > a {
+    border: 1px solid color-mix(in srgb, var(--color-signal) 58%, var(--color-line));
+    border-radius: 999px;
+    padding: 0.58rem 0.78rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .weekly-cta > a:hover { color: var(--color-ink); background: var(--color-signal); }
+  .is-home { margin-top: 1.2rem; }
+  .is-article { margin-top: 3rem; }
+  .is-now { margin-top: 1rem; }
+  @media (max-width: 620px) {
+    .weekly-cta { grid-template-columns: auto minmax(0, 1fr); }
+    .weekly-cta > a { grid-column: 1 / -1; }
+  }
+</style>

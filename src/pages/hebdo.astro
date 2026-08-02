@@ -1,100 +1,159 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { buildArticleEvidence } from '../lib/article-evidence.ts';
+import WeeklyIssue from '../components/WeeklyIssue.astro';
+import {
+  WEEKLY_SCHEDULE,
+  latestWeeklyEdition,
+  weeklyEditions,
+} from '../config/weekly-editions.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
-const posts = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-const enriched = posts.map((post) => ({
-  post,
-  evidence: buildArticleEvidence(post.body ?? '', {
-    published: post.data.pubDate,
-    updated: post.data.updatedDate,
-    title: post.data.title,
-    articleSlug: post.id,
-    url: `https://l0g.fr/posts/${post.id}/`,
-  }),
-}));
-const mechanisms = enriched.slice(0, 3);
-if (!mechanisms.some((item) => item.evidence.primary.length > 0)) {
-  const sourced = enriched.slice(3).find((item) => item.evidence.primary.length > 0);
-  if (sourced) mechanisms[2] = sourced;
-}
-const primary = mechanisms
-  .flatMap((item) => item.evidence.primary.flatMap((source) => source.links.map((link) => ({ source, link, post: item.post }))))
-  .at(0);
-const editionDate = process.env.L0G_BUILD_TIMESTAMP
-  ? new Date(process.env.L0G_BUILD_TIMESTAMP)
-  : (mechanisms[0]?.post.data.pubDate ?? new Date());
-const edition = new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(editionDate);
+const edition = latestWeeklyEdition();
+const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Periodical',
+  '@id': `${site}/hebdo/#periodical`,
+  name: "L'hebdo l0g",
+  description: 'Une édition hebdomadaire centrée sur un chiffre, son mécanisme, son prochain test et des formats faciles à réutiliser.',
+  url: `${site}/hebdo/`,
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  publisher: { '@id': `${site}/#org` },
+};
 ---
 
 <BaseLayout
-  title="La note hebdomadaire l0g"
-  description="Trois mécanismes récents à surveiller, un schéma de transmission et une source primaire à ouvrir. Une édition déterministe produite depuis le flux RSS l0g."
+  title="L’hebdo l0g : un chiffre, un mécanisme, un test"
+  description="Chaque dimanche, une analyse centrée sur un chiffre, son mécanisme, le test suivant, un graphique SVG, son CSV et les formats à réutiliser."
+  sidebar={false}
 >
-  <article class="weekly-note">
-    <header>
-      <p class="mono-label text-signal">// rendez-vous hebdomadaire</p>
-      <h1>Trois mécanismes à garder en tête</h1>
-      <p class="weekly-date">Édition du {edition}, composée automatiquement depuis le flux éditorial.</p>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <main class="weekly-page">
+    <header class="weekly-hero rise">
+      <div class="hero-copy">
+        <p class="mono-label">// l’hebdo l0g</p>
+        <h1>Une idée forte, lisible en quelques minutes.</h1>
+        <p class="hero-lede">
+          Chaque dimanche, l’Hebdo isole un chiffre, explique son mécanisme et indique ce qu’il
+          faudra vérifier ensuite. Le graphique, les données et les sources restent accessibles.
+        </p>
+        <dl class="delivery-contract">
+          <div><dt>nouvelle édition</dt><dd>{WEEKLY_SCHEDULE.weekday}</dd></div>
+          <div><dt>heure</dt><dd>{WEEKLY_SCHEDULE.time}</dd></div>
+          <div><dt>fuseau</dt><dd>{WEEKLY_SCHEDULE.timeZone}</dd></div>
+          <div><dt>accès</dt><dd>libre</dd></div>
+        </dl>
+      </div>
     </header>
 
-    <ol class="mechanisms" aria-label="Trois mécanismes de la semaine">
-      {mechanisms.map(({ post }, index) => (
-        <li>
-          <span class="mechanism-index">0{index + 1}</span>
-          <div>
-            <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
-            <p>{post.data.description}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
+    <WeeklyIssue edition={edition} />
 
-    <figure class="weekly-chart">
-      <svg viewBox="0 0 900 250" role="img" aria-labelledby="weekly-chart-title weekly-chart-desc">
-        <title id="weekly-chart-title">Chaîne de lecture des trois mécanismes</title>
-        <desc id="weekly-chart-desc">Les trois analyses alimentent une lecture commune du risque, puis une liste de variables à surveiller.</desc>
-        <defs>
-          <linearGradient id="weekly-line" x1="0" x2="1"><stop stop-color="#5eead4"/><stop offset=".55" stop-color="#ff4d87"/><stop offset="1" stop-color="#f5b13d"/></linearGradient>
-        </defs>
-        <path d="M110 80 H365 M110 125 H365 M110 170 H365 M535 125 H790" stroke="url(#weekly-line)" stroke-width="3" fill="none"/>
-        <g fill="#0b0d10" stroke="#5eead4" stroke-width="2"><circle cx="80" cy="80" r="32"/><circle cx="80" cy="125" r="32"/><circle cx="80" cy="170" r="32"/></g>
-        <g fill="#e8e9ed" font-family="JetBrains Mono, monospace" font-size="18" text-anchor="middle"><text x="80" y="86">01</text><text x="80" y="131">02</text><text x="80" y="176">03</text></g>
-        <rect x="365" y="77" width="170" height="96" rx="16" fill="#11151a" stroke="#ff4d87" stroke-width="2"/>
-        <text x="450" y="118" fill="#e8e9ed" font-family="JetBrains Mono, monospace" font-size="18" text-anchor="middle">transmission</text>
-        <text x="450" y="145" fill="#9ba1ad" font-family="Inter, sans-serif" font-size="15" text-anchor="middle">du choc au signal</text>
-        <rect x="790" y="92" width="92" height="66" rx="14" fill="#11151a" stroke="#f5b13d" stroke-width="2"/>
-        <text x="836" y="131" fill="#e8e9ed" font-family="JetBrains Mono, monospace" font-size="17" text-anchor="middle">veille</text>
-      </svg>
-      <figcaption>Le graphique ne produit pas un score : il matérialise la chaîne de lecture commune aux trois analyses.</figcaption>
-    </figure>
-
-    <section class="primary-source">
-      <p class="mono-label text-signal">// source primaire à ouvrir</p>
-      {primary ? (
-        <p><a href={primary.link.href}>{primary.link.label}</a> <span>via {primary.source.source.name}, citée dans <a href={`/posts/${primary.post.id}/`}>{primary.post.data.title}</a>.</span></p>
-      ) : (
-        <p>Aucune source primaire détectée dans les trois entrées. L’édition reste publiée, mais ce manque est rendu explicite.</p>
-      )}
+    <section class="factory" aria-labelledby="factory-title">
+      <div class="factory-head">
+        <div>
+          <p class="mono-label">// tous les formats</p>
+          <h2 id="factory-title">Un même sujet, six façons de l’utiliser.</h2>
+        </div>
+        <span>1 → 6</span>
+      </div>
+      <ol>
+        <li><span>01</span><strong>Analyse ou dossier</strong><p>Le raisonnement complet, les sources et les limites.</p></li>
+        <li><span>02</span><strong>SVG + CSV</strong><p>Le graphique et les données exactes qui le produisent.</p></li>
+        <li><span>03</span><strong>Citation</strong><p>Un extrait attribué, prêt à reprendre sans déformer.</p></li>
+        <li><span>04</span><strong>LinkedIn</strong><p>Un post construit autour du chiffre central.</p></li>
+        <li><span>05</span><strong>Thread X</strong><p>Le mécanisme découpé, avec sa limite et son lien canonique.</p></li>
+        <li><span>06</span><strong>Édition web</strong><p>La lecture courte, sourcée et conservée à une adresse stable.</p></li>
+      </ol>
     </section>
-  </article>
+
+    <section class="watch-boundary" aria-labelledby="watch-title">
+      <div class="watch-mark" aria-hidden="true"><span>7j</span><i></i><b>veille</b></div>
+      <div>
+        <p class="mono-label">// deux rythmes complémentaires</p>
+        <h2 id="watch-title">L’Hebdo explique. Watch surveille.</h2>
+        <p>
+          L’Hebdo propose une lecture publique chaque semaine. l0g Watch conserve votre historique
+          de veille et vous alerte lorsque de nouveaux éléments vérifiables apparaissent.
+        </p>
+        <a href="https://watch.l0g.fr/" target="_blank" rel="noopener noreferrer">Découvrir l0g Watch <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="weekly-archive" aria-labelledby="archive-title">
+      <p class="mono-label">// archives</p>
+      <h2 id="archive-title">Toutes les éditions gardent une URL stable.</h2>
+      <ol>
+        {weeklyEditions
+          .slice()
+          .sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))
+          .map((item) => (
+            <li>
+              <span>{String(item.issue).padStart(2, '0')}</span>
+              <a href={`/hebdo/${item.slug}/`}>{item.title}</a>
+              <time datetime={item.publishedAt}>{new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeZone: 'Europe/Paris' }).format(new Date(item.publishedAt))}</time>
+            </li>
+          ))}
+      </ol>
+    </section>
+  </main>
 
   <style>
-    .weekly-note { max-width: 850px; }
-    .weekly-note h1 { margin-top: .65rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.04; }
-    .weekly-date { color: var(--color-muted); margin-top: 1rem; }
-    .mechanisms { list-style: none; padding: 0; margin: 3rem 0; display: grid; gap: 1.25rem; }
-    .mechanisms li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid var(--color-line); }
-    .mechanism-index { color: var(--color-signal); font-family: var(--font-mono); }
-    .mechanisms h2 { font-size: 1.15rem; }
-    .mechanisms p { color: var(--color-muted); margin-top: .45rem; }
-    .weekly-chart { margin: 2.5rem 0 3rem; padding-bottom: .75rem; }
-    .weekly-chart svg { width: 100%; height: auto; border: 1px solid var(--color-line); background: #0b0d10; border-radius: 16px; }
-    .weekly-chart figcaption { color: var(--color-muted); font-size: .86rem; margin-top: .7rem; }
-    .primary-source { border-left: 3px solid var(--color-signal); padding: 1rem 1.25rem; background: color-mix(in srgb, var(--color-signal) 5%, transparent); }
-    .primary-source p:last-child { margin-top: .55rem; }
-    .primary-source span { color: var(--color-muted); }
+    .weekly-page { max-width: 72rem; margin: 0 auto; }
+    .weekly-hero { display: grid; gap: 1.2rem; }
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--color-line);
+      border-radius: 16px 4px 16px 16px;
+      padding: clamp(1.3rem, 4vw, 2.4rem);
+      background:
+        radial-gradient(70% 100% at 100% 0, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 72%),
+        radial-gradient(85% 120% at 0 100%, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 70%),
+        var(--color-surface);
+    }
+    .hero-copy::after { content: '7j'; position: absolute; right: clamp(1rem, 4vw, 2rem); top: 0.5rem; color: color-mix(in srgb, var(--color-line-strong) 58%, transparent); font-family: var(--font-display); font-size: clamp(5rem, 16vw, 10rem); font-weight: 800; line-height: 1; pointer-events: none; }
+    .hero-copy > * { position: relative; z-index: 1; }
+    .hero-copy .mono-label { color: var(--color-signal); }
+    .hero-copy h1 { max-width: 48rem; margin-top: 0.8rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 4.5rem); line-height: 0.98; letter-spacing: -0.05em; text-wrap: balance; }
+    .hero-lede { max-width: 46rem; margin-top: 1.2rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1rem, 2vw, 1.18rem); line-height: 1.7; }
+    .delivery-contract { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; overflow: hidden; margin-top: 1.5rem; border: 1px solid var(--color-line); border-radius: 10px; background: var(--color-line); }
+    .delivery-contract div { display: flex; flex-direction: column-reverse; padding: 0.72rem; background: color-mix(in srgb, var(--color-surface) 82%, var(--color-ink)); }
+    .delivery-contract dt { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .delivery-contract dd { margin-bottom: 0.15rem; color: var(--color-signal); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; }
+    .factory, .watch-boundary, .weekly-archive { margin-top: clamp(4rem, 9vw, 7rem); }
+    .factory-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+    .factory .mono-label, .weekly-archive .mono-label { color: var(--color-signal); }
+    .factory h2, .watch-boundary h2, .weekly-archive h2 { margin-top: 0.55rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.35rem); line-height: 1.12; }
+    .factory-head > span { color: var(--color-line-strong); font-family: var(--font-display); font-size: 2rem; }
+    .factory ol { display: grid; gap: 1px; overflow: hidden; margin-top: 1.1rem; border: 1px solid var(--color-line); border-radius: 14px 4px 14px 14px; background: var(--color-line); }
+    .factory li { min-width: 0; padding: 1rem; background: var(--color-surface); list-style: none; }
+    .factory li > span { color: var(--color-line-strong); font-family: var(--font-display); font-size: 1.7rem; }
+    .factory li strong { display: block; margin-top: 0.55rem; color: var(--color-bright); }
+    .factory li p { margin-top: 0.4rem; color: var(--color-muted); font-size: 0.74rem; line-height: 1.5; }
+    .watch-boundary { display: grid; gap: 1.2rem; border: 1px solid color-mix(in srgb, var(--color-accent) 38%, var(--color-line)); border-radius: 4px 16px 16px 16px; padding: clamp(1.2rem, 4vw, 2rem); background: radial-gradient(70% 100% at 0 0, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 72%), var(--color-surface); }
+    .watch-mark { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; }
+    .watch-mark i { display: block; width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 12px color-mix(in srgb, var(--color-accent) 65%, transparent); }
+    .watch-mark b { color: var(--color-accent); font-weight: 700; }
+    .watch-boundary .mono-label { color: var(--color-accent); }
+    .watch-boundary p:not(.mono-label) { max-width: 48rem; margin-top: 0.7rem; color: var(--color-muted); line-height: 1.65; }
+    .watch-boundary a { display: inline-block; margin-top: 1rem; border: 1px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-line)); border-radius: 999px; padding: .55rem .75rem; color: var(--color-accent); font-family: var(--font-mono); font-size: .65rem; font-weight: 700; text-transform: uppercase; }
+    .watch-boundary a:hover { color: var(--color-ink); background: var(--color-accent); }
+    .weekly-archive > ol { margin-top: 1rem; border-top: 1px solid var(--color-line); }
+    .weekly-archive li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.8rem; align-items: center; border-bottom: 1px solid var(--color-line); padding: 0.85rem 0; }
+    .weekly-archive li > span { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.66rem; }
+    .weekly-archive a { color: var(--color-bright); font-weight: 650; }
+    .weekly-archive time { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.62rem; }
+    @media (min-width: 760px) {
+      .factory ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .watch-boundary { grid-template-columns: 10rem minmax(0, 1fr); align-items: center; }
+    }
+    @media (max-width: 600px) {
+      .delivery-contract { grid-template-columns: 1fr; }
+      .weekly-archive li { grid-template-columns: auto minmax(0, 1fr); }
+      .weekly-archive time { grid-column: 2; }
+    }
   </style>
 </BaseLayout>

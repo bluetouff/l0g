@@ -3018,7 +3018,7 @@ export function buildServer(data, options = {}) {
       async ({ mode, instrument, window, date, limit }) => {
         const request = {
           instrument: instrument || null,
-          window: mode === 'diff' ? window : null,
+          window: mode === 'diff' || mode === 'current' ? window : null,
           date: mode === 'replay' ? date || null : null,
           limit,
         };
@@ -3053,6 +3053,7 @@ export function buildServer(data, options = {}) {
         let result;
         let source;
         let methodology;
+        let variation = null;
         if (mode === 'diff') {
           result = await invoke('get_risk_diff', { window });
           source = `${SITE}/api/v1/risk-diff.json`;
@@ -3069,6 +3070,16 @@ export function buildServer(data, options = {}) {
           result = await invoke('get_risk_indices', {});
           source = `${SITE}/api/v1/risk.json`;
           methodology = `${SITE}/methodologie/`;
+          const diff = await invoke('get_risk_diff', { window });
+          if (!diff.isError) {
+            const diffPayload = diff.structuredContent || {};
+            variation = {
+              window,
+              anchorDate: diffPayload.anchorDate || null,
+              generated: diffPayload.generated || null,
+              ...(diffPayload.selectedWindow || {}),
+            };
+          }
         }
 
         const original = result.structuredContent || {};
@@ -3079,6 +3090,35 @@ export function buildServer(data, options = {}) {
           || original.generated
           || original.snapshot
           || null;
+        const currentIndices = Array.isArray(original.indices)
+          ? original.indices
+          : original.indices && typeof original.indices === 'object'
+            ? Object.entries(original.indices).map(([key, value]) => ({
+                key,
+                ...(value && typeof value === 'object' ? value : {}),
+              }))
+            : [];
+        const freshnessSummary = mode === 'current' ? {
+          generated: freshness?.generated || original.generated || null,
+          asOf,
+          instruments: currentIndices.map((item) => ({
+            instrument: item.key || null,
+            timelinessStatus: item.timelinessStatus || null,
+            qualityStatus: item.qualityStatus || null,
+            sourceStatus: item.sourceStatus || null,
+            sourceUpdatedAt: item.sourceUpdatedAt || null,
+            sourcePublishedAt: item.sourcePublishedAt || null,
+            staleAfter: item.staleAfter || null,
+          })),
+          policy: freshness?.freshnessPolicy || null,
+        } : original.freshness || null;
+        const canonicalSources = currentIndices
+          .filter((item) => typeof item.sourceSnapshotUrl === 'string' && /^https:\/\//.test(item.sourceSnapshotUrl))
+          .map((item) => ({
+            instrument: item.key || null,
+            url: item.sourceSnapshotUrl,
+            updatedAt: item.sourceUpdatedAt || null,
+          }));
         const payload = {
           ...original,
           mode,
@@ -3087,6 +3127,19 @@ export function buildServer(data, options = {}) {
           asOf,
           source,
           methodology,
+          freshness: freshnessSummary,
+          variation,
+          canonical: {
+            url: source,
+            methodology,
+            upstreamSources: canonicalSources,
+          },
+          attribution: {
+            publisher: 'l0g.fr',
+            requiredLabel: 'Source : l0g.fr',
+            canonicalUrl: source,
+            license: 'CC BY 4.0',
+          },
           interpretation: [
             'Les scores 0-100 sont normalisés séparément par instrument et ne sont pas directement comparables.',
             'Les dates, la fraîcheur, la couverture et les limites font partie du résultat.',

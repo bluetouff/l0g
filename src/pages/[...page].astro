@@ -8,6 +8,7 @@ import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
 import RiskBand from '../components/RiskBand.astro';
 import SectionSignature from '../components/SectionSignature.astro';
+import WeeklyCta from '../components/WeeklyCta.astro';
 import { readingTime } from '../lib/reading-time.ts';
 import { accentForTags, topicLabelForTags, topics } from '../config/topics.ts';
 
@@ -114,6 +115,8 @@ const needCards = [
       </div>
     </section>
   )}
+
+  {isFirst && <WeeklyCta variant="home" />}
 
   {!isFirst && (
     <header class="rise border-b border-dashed border-line pb-8">

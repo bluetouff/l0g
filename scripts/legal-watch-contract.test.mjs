@@ -60,13 +60,12 @@ test("publie les conditions Watch validées pour l’ouverture", async () => {
   assert.match(terms, /01 89 47 00 14/);
   assert.match(terms, /https:\/\/www\.cm2c\.net\/declarer-un-litige\.php/);
   assert.match(terms, /https:\/\/watch\.l0g\.fr\/conditions/);
-  assert.doesNotMatch(terms, /Buttondown/i);
   assert.doesNotMatch(terms, /—/);
 
   assert.match(privacy, /Contribution volontaire via Stripe/);
   assert.match(privacy, /https:\/\/watch\.l0g\.fr\/confidentialite/);
   assert.match(privacy, /href="\/cgv\/"/);
-  assert.doesNotMatch(privacy, /Buttondown/i);
+  assert.match(privacy, /aucune base de données de comptes ni liste de diffusion/);
 
   assert.match(footer, /\['\/cgv\/', 'Conditions Watch', 'proof'\]/);
 });

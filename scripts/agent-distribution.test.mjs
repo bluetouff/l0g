@@ -48,6 +48,8 @@ test('les deux mesures publiques déclarent leur seuil et leurs exclusions', asy
 
   assert.match(telemetry, /MCP_USAGE_MINIMUM_PUBLIC_COHORT = 5/);
   assert.match(telemetry, /isInternalL0gUserAgent/);
+  assert.match(telemetry, /repeat_active_days/);
+  assert.match(telemetry, /returning_clients: null/);
   assert.match(human, /HUMAN_TRAFFIC_MINIMUM_COHORT = 5/);
   assert.match(human, /CRAWLER_USER_AGENT/);
   assert.match(apache, /Alias \/api\/v1\/human-traffic\.json/);
