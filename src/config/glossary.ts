@@ -61,6 +61,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'VIX', nom: 'CBOE Volatility Index', def: "Indice de la volatilité implicite attendue du S&P 500 sur 30 jours, calculé par le Cboe à partir des options, exprimé en pourcentage annualisé. Surnommé « indice de la peur » : il bondit dans les chutes de marché. Moyenne de long terme autour de 19-20 ; sous 15, complaisance ; au-delà de 30, tension.", guide: '/guides/lire-la-volatilite-vix-move/' },
       { sigle: 'VVIX', nom: 'Volatilité de la volatilité', def: "Indice mesurant la volatilité implicite des options sur le VIX lui-même. Un VVIX élevé alors que le VIX est bas révèle une nervosité tapie sous la surface, des investisseurs qui se couvrent contre un retournement soudain.", guide: '/guides/lire-la-volatilite-vix-move/' },
       { sigle: 'PIB', nom: 'Produit intérieur brut', def: "Valeur totale des biens et services produits dans un pays sur une période. Mesure de référence de l'activité économique." },
+      { sigle: 'Demande privée intérieure', nom: 'Real final sales to private domestic purchasers', def: "Agrégat du BEA égal aux dépenses de consommation plus l'investissement privé fixe, après correction des prix. Il exclut les variations de stocks, les dépenses publiques et le solde commercial. Moins volatil que le PIB agrégé, il aide à isoler le moteur domestique privé sans mesurer sa répartition entre ménages.", guide: '/posts/pib-americain-demande-privee-t2-2026/' },
       { sigle: 'Involution', nom: 'Neijuan, la concurrence auto-destructrice', def: "Terme chinois (neijuan) désignant la concurrence excessive où la surcapacité force chaque producteur à baisser ses prix pour écouler des volumes, détruisant les marges de tous sans éliminer personne. Ennemi officiel de la politique économique chinoise depuis 2025 : loi sur les prix interdisant la vente à perte, plans de réduction de capacité pour dix industries. Tant que la capacité survit, le trop-plein se déverse à l'export." },
       { sigle: 'LGFV', nom: 'Local Government Financing Vehicle', def: "Véhicule de financement des collectivités locales chinoises : société ad hoc qui emprunte en gageant des terrains publics et se rembourse grâce aux cessions foncières. Pilier du financement local pendant deux décennies, fragilisé par l'effondrement immobilier qui a tari les recettes foncières. Sa dette, en partie hors bilan, est estimée entre 14 800 et 58 000 milliards de yuans selon les sources." },
       { sigle: 'Trois lignes rouges', nom: 'Three red lines', def: "Dispositif prudentiel imposé par Pékin en 2020 pour brider l'endettement des promoteurs immobiliers, via trois ratios financiers plafonnés (dette sur actifs, dette nette sur fonds propres, trésorerie sur dette à court terme). Déclencheur assumé du dégonflement de la bulle et de la vague de défauts qui a suivi." },
@@ -494,7 +495,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-07-31';
+export const glossaryUpdatedIso = '2026-08-02';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
