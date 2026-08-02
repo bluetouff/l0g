@@ -274,6 +274,11 @@ assert(profile?.title === 'Bluetouff, auteur et analyste de l0g · l0g.fr', '/ab
 assert(profilePage?.mainEntity?.['@type'] === 'Person', '/about/: ProfilePage Person absent');
 assert(profilePage?.mainEntity?.['@id'] === 'https://l0g.fr/about/#bluetouff', '/about/: identifiant Person incorrect');
 assert(
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?(?:Z|[+-]\d{2}:\d{2})$/.test(profilePage?.dateModified ?? '')
+    && !Number.isNaN(Date.parse(profilePage.dateModified)),
+  '/about/: dateModified doit être un DateTime ISO 8601 avec fuseau horaire'
+);
+assert(
   profilePage?.mainEntity?.sameAs?.includes('https://github.com/bluetouff')
     && profilePage?.mainEntity?.sameAs?.includes('https://x.com/bluetouff'),
   '/about/: profils officiels sameAs incomplets'
