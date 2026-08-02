@@ -55,6 +55,11 @@ prise sur confiance : `verify-producer-deployment.py` relit les fichiers sous
 doit donc modifier ensemble sa révision et les empreintes de ses points d'entrée
 et dépendances locales.
 
+Le journal opérationnel de schéma 3 archive aussi, pour chaque signal, le dépôt,
+la révision et son statut de déclaration. La surface canonique n'attribue une
+version de méthode que si ces champs correspondent exactement à ce manifeste ;
+les anciennes lignes restent explicitement non versionnées.
+
 ## Installation serveur
 
 Le script d'installation effectue une migration atomique et réversible :

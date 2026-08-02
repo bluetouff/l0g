@@ -17,7 +17,7 @@ import os
 import tempfile
 
 
-SCHEMA_VERSION = "2"
+SCHEMA_VERSION = "3"
 INDEX_KEYS = ("us", "eu", "yen", "energie", "debt")
 COLUMNS = (
     ["date", "snapshot", "generated", "status"]
@@ -27,6 +27,9 @@ COLUMNS = (
     + [f"{key}_quality_status" for key in INDEX_KEYS]
     + [f"{key}_source_updated_at" for key in INDEX_KEYS]
     + [f"{key}_fallback" for key in INDEX_KEYS]
+    + [f"{key}_producer_repository" for key in INDEX_KEYS]
+    + [f"{key}_producer_revision" for key in INDEX_KEYS]
+    + [f"{key}_producer_revision_status" for key in INDEX_KEYS]
     + [
         "conf_count",
         "conf_conviction",
@@ -58,6 +61,9 @@ def _flatten(risk):
         record[f"{key}_quality_status"] = item.get("qualityStatus")
         record[f"{key}_source_updated_at"] = item.get("sourceUpdatedAt")
         record[f"{key}_fallback"] = item.get("fallbackUsed")
+        record[f"{key}_producer_repository"] = item.get("producerRepository")
+        record[f"{key}_producer_revision"] = item.get("producerRevision")
+        record[f"{key}_producer_revision_status"] = item.get("producerRevisionStatus")
     record["conf_count"] = confluence.get("count")
     record["conf_conviction"] = confluence.get("conviction")
     record["conf_top_ticker"] = top.get("ticker")
@@ -117,7 +123,7 @@ def _write_manifest(path, ndjson_path, rows):
         first, last = records[0].get("snapshot"), records[-1].get("snapshot")
     manifest = {
         "schema": SCHEMA_VERSION,
-        "description": "Archive opérationnelle best-effort des cinq indices. Append-only sur le serveur, distincte de la Black Box attestée.",
+        "description": "Archive opérationnelle best-effort des cinq indices et de la révision de chaque producteur. Append-only sur le serveur, distincte de la Black Box attestée.",
         "rows": rows,
         "coverage": {"first": first, "last": last},
         "columns": COLUMNS,

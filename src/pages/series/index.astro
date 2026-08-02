@@ -216,9 +216,9 @@ const jsonLd = {
       <p>
         <code>seriesDate</code> est la date de publication l0g. <code>evidenceTier</code> distingue
         <code>operational-archive</code>, <code>attested-archive</code> et <code>current-snapshot</code>.
-        <code>observedAt</code> décrit la date économique amont et peut rester vide. Les points
-        antérieurs au lancement du registre méthodologique du 17 juillet 2026 restent marqués
-        <code>unversioned-legacy</code> : ils ne sont ni supprimés ni requalifiés rétroactivement.
+        <code>observedAt</code> décrit la date économique amont et peut rester vide. Un point ne reçoit
+        une version de méthode que si sa révision producteur correspond au manifeste vérifié. Les
+        autres restent <code>unversioned-legacy</code> : ils ne sont ni supprimés ni requalifiés.
       </p>
       <p>
         Import opérationnel : <strong>{history.coverage.operationalImport.status}</strong>,

@@ -78,6 +78,9 @@ class AggregatorContractTest(unittest.TestCase):
             "status": "degraded",
             "indices": [item("us", 42), item("eu", 41), item("yen", 39), item("energie", 43), item("debt", 54)],
         }
+        for current in payload["indices"]:
+            current["producerRevision"] = f"{current['key']}-revision"
+            current["producerRevisionStatus"] = "reported"
         with tempfile.TemporaryDirectory() as directory:
             self.assertTrue(history.append_snapshot(directory, payload))
             self.assertFalse(history.append_snapshot(directory, payload))
@@ -85,6 +88,12 @@ class AggregatorContractTest(unittest.TestCase):
             self.assertEqual(row["debt"], 54)
             self.assertEqual(row["energie_source_status"], "ok")
             self.assertIn("debt_source_updated_at", row)
+            self.assertEqual(row["us_producer_repository"], "https://github.com/bluetouff/macro_dashboard")
+            self.assertEqual(row["us_producer_revision"], "us-revision")
+            self.assertEqual(row["us_producer_revision_status"], "reported")
+            manifest = json.loads((pathlib.Path(directory) / "index.json").read_text())
+            self.assertEqual(manifest["schema"], "3")
+            self.assertIn("us_producer_revision", manifest["columns"])
 
     def test_energy_eia_daily_fallback_is_visible(self):
         original_fetch = RISK.fetch_json

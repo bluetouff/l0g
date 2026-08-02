@@ -34,6 +34,18 @@ type RiskIndexInput = {
   lastSuccessAt?: string | null;
   staleAfter?: string;
   timelinessStatus?: string;
+  producerRepository?: string | null;
+  producerRevision?: string | null;
+  producerRevisionStatus?: string;
+};
+
+type ProducerDeployment = {
+  repository?: string;
+  revision?: string;
+};
+
+type ProducerDeploymentManifest = {
+  producers?: Partial<Record<SignalKey, ProducerDeployment>>;
 };
 
 type RiskEventInput = {
@@ -226,6 +238,38 @@ function readJson<T>(rel: string, fallback: T): T {
   }
 }
 
+const producerDeployment = readJson<ProducerDeploymentManifest>(
+  'ops/risk-aggregator/producer-deployment.json',
+  { producers: {} },
+);
+
+function verifiedProducerProvenance(
+  key: SignalKey,
+  repository: unknown,
+  revision: unknown,
+  revisionStatus: unknown,
+) {
+  const expected = producerDeployment.producers?.[key];
+  const meta = riskSignalMeta[key];
+  if (
+    revisionStatus !== 'reported'
+    || typeof repository !== 'string'
+    || typeof revision !== 'string'
+    || !/^[a-f0-9]{40}$/.test(revision)
+    || repository !== expected?.repository
+    || revision !== expected?.revision
+    || (meta.calculation?.sourceCode && meta.calculation.sourceCode !== expected.repository)
+    || (meta.calculation?.sourceRevision && meta.calculation.sourceRevision !== expected.revision)
+  ) {
+    return null;
+  }
+  return {
+    methodologyVersion: meta.identity.methodologyVersion,
+    calculatorRepo: expected.repository,
+    calculatorRevision: expected.revision,
+  };
+}
+
 function isoOrNull(value: unknown): string | null {
   if (!value) return null;
   const date = new Date(String(value));
@@ -321,9 +365,7 @@ function normalizeObservation(
     : sha256(stableStringify(parsed));
   const methodologyVersion = typeof parsed.methodologyVersion === 'string'
     ? parsed.methodologyVersion
-    : options.current
-      ? identity.methodologyVersion
-      : null;
+    : null;
   const archivedAt = frame ? isoOrNull(frame.computedAt) : isoOrNull(parsed.archivedAt);
   const appendOnlyVerified = Boolean(frame);
   const evidenceTier: SignalEvidenceTier = frame
@@ -336,7 +378,7 @@ function normalizeObservation(
       : null;
   const limitations = Array.isArray(parsed.limitations) ? parsed.limitations.map(String) : [];
   if (!methodologyVersion) {
-    limitations.push('Point antérieur au registre méthodologique versionné lancé le 17 juillet 2026.');
+    limitations.push('Point sans provenance méthodologique vérifiable pour cette observation ; il reste explicitement non versionné.');
   }
   if (!parsed.sourcePublishedAt && key !== 'debt') {
     limitations.push('Date de publication de la source amont non exposée par le snapshot historique.');
@@ -483,6 +525,12 @@ function readOperationalObservations(computedAt: string): SignalObservation[] {
       const qualityStatusRaw = row[`${key}_quality_status`];
       const sourcePublishedAt = isoOrNull(row[`${key}_source_updated_at`]);
       const fallbackUsed = row[`${key}_fallback`] === true;
+      const producer = verifiedProducerProvenance(
+        key,
+        row[`${key}_producer_repository`],
+        row[`${key}_producer_revision`],
+        row[`${key}_producer_revision_status`],
+      );
       const payload = {
         recordType: 'observation' as const,
         instrument: key,
@@ -500,7 +548,18 @@ function readOperationalObservations(computedAt: string): SignalObservation[] {
         sourceUrl: meta.source,
         methodologyUrl: meta.methodology,
         sourceSnapshotUrl: `${SITE}/api/v1/history.ndjson`,
-        snapshotHash: sha256(stableStringify({ snapshot, key, value, tone: row[`${key}_tone`] })),
+        methodologyVersion: producer?.methodologyVersion ?? null,
+        calculatorRepo: producer?.calculatorRepo ?? null,
+        calculatorRevision: producer?.calculatorRevision ?? null,
+        snapshotHash: sha256(stableStringify({
+          snapshot,
+          key,
+          value,
+          tone: row[`${key}_tone`],
+          producerRepository: row[`${key}_producer_repository`],
+          producerRevision: row[`${key}_producer_revision`],
+          producerRevisionStatus: row[`${key}_producer_revision_status`],
+        })),
         evidenceTier: 'operational-archive' as const,
         sourceStatus: sourceStatusRaw === 'fallback' ? 'fallback' : sourceStatusRaw === 'ok' ? 'ok' : 'unknown',
         qualityStatus: ['nominal', 'degraded', 'official-delayed'].includes(String(qualityStatusRaw))
@@ -551,6 +610,12 @@ function currentObservations(computedAt: string): SignalObservation[] {
       );
       const retrievedAt = isoOrNull(item.retrievedAt ?? provenance?.retrievedAt ?? (key === 'debt' ? debt?.retrievedAt : null));
       const observedAt = isoOrNull(item.observedAt ?? provenance?.observedAt);
+      const producer = verifiedProducerProvenance(
+        key,
+        item.producerRepository,
+        item.producerRevision,
+        item.producerRevisionStatus,
+      );
       const signalPayload = {
         key,
         value: item.value ?? null,
@@ -558,6 +623,9 @@ function currentObservations(computedAt: string): SignalObservation[] {
         level: item.level ?? null,
         tone: item.tone ?? null,
         provenance,
+        producerRepository: item.producerRepository ?? null,
+        producerRevision: item.producerRevision ?? null,
+        producerRevisionStatus: item.producerRevisionStatus ?? null,
       };
       const snapshotHash = sha256(stableStringify(signalPayload));
       const sourceUrl = String(provenance?.latestJsonUrl ?? provenance?.source ?? meta.source);
@@ -580,12 +648,13 @@ function currentObservations(computedAt: string): SignalObservation[] {
         sourceUrl,
         methodologyUrl: meta.methodology,
         sourceSnapshotUrl,
+        methodologyVersion: producer?.methodologyVersion ?? null,
         sourceStatus: item.sourceStatus ?? provenance?.sourceStatus ?? 'unknown',
         qualityStatus: item.qualityStatus ?? provenance?.qualityStatus ?? 'unknown',
         fallbackUsed: item.fallbackUsed === true || provenance?.fallbackUsed === true,
         fallbackReason: item.fallbackReason ?? provenance?.fallbackReason ?? null,
-        calculatorRepo: provenance?.calculator ?? meta.calculation?.sourceCode ?? null,
-        calculatorRevision: provenance?.calculatorRevision ?? meta.calculation?.sourceRevision ?? null,
+        calculatorRepo: producer?.calculatorRepo ?? null,
+        calculatorRevision: producer?.calculatorRevision ?? null,
         snapshotHash,
         pointInTime: true,
         backtestUsable: true,
@@ -650,7 +719,7 @@ function historyPolicy(): SignalHistoryPolicy {
     dateDiscipline:
       'seriesDate date la publication l0g archivée ; observedAt date le phénomène amont ; sourcePublishedAt date la publication amont ; retrievedAt date la collecte ; computedAt date le calcul.',
     methodologyDiscipline:
-      'Chaque point expose methodologyVersion. Les frames antérieures au 17 juillet 2026 restent explicitement unversioned-legacy.',
+      'Chaque point expose methodologyVersion lorsque sa révision producteur correspond au manifeste vérifié ; toute provenance absente ou divergente reste explicitement unversioned-legacy.',
     noRetroactiveBackfill:
       'Aucune valeur absente n’est interpolée. Le passé importé provient exclusivement du journal opérationnel réellement publié ; la preuve attestée commence à la première frame Black Box.',
     backtestRule: 'Utiliser observations et seriesDate, filtrer evidenceTier selon le niveau de preuve requis. Les levelChanges sont des alertes dérivées, pas des points de série.',
