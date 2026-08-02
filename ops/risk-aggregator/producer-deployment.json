@@ -1,22 +1,30 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-07-21",
+  "verifiedAt": "2026-08-03",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
-      "revision": "012d7ab63e894fbccd83a87382794f3f64499e9a",
+      "revision": "87a6b00daf483ff4b44aaa9902d3fdf47645748b",
       "files": [
         {
           "path": "/opt/macro_dashboard/app_server.py",
-          "sha256": "92af6c9a165b6a87dd4091752458df8ef62f65da5ec55cd22724293006a27a45"
+          "sha256": "69e9f58d7fd094f389c6990bdb0991d73e43b8db55a377d4b02cc7067d531249"
         },
         {
           "path": "/opt/macro_dashboard/catalog.py",
-          "sha256": "4f8b13694c060010c63c3a508da2b5e12ef1569de50c75c63fcdd71c8b64aab3"
+          "sha256": "314c51c78717a408f2d13870a3d8431444cc1cb30df0878ee8f554b55c233cd1"
         },
         {
-          "path": "/opt/macro_dashboard/data.py",
-          "sha256": "1c4c2456b0751b74e426a60ce270ecb3868c0ad8dfd7a1463e142d367fd6323c"
+          "path": "/opt/macro_dashboard/scoring.py",
+          "sha256": "45a321b2d04a899a74a74deab0526b94b70861671d687a371a365bd62c5fd7ef"
+        },
+        {
+          "path": "/opt/macro_dashboard/snapshot_contract.py",
+          "sha256": "5447ae67320dd27559c2a968d6f5490e3b538e62759fe94550a46e5c3fcf9f97"
+        },
+        {
+          "path": "/opt/macro_dashboard/snapshot_builder.py",
+          "sha256": "367a9065c58dd4172fb2adaeebd2de473bb32a198e971c40df6e0952f0782ab4"
         }
       ]
     },

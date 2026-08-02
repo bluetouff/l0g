@@ -20,6 +20,7 @@ export interface MethodologyPage {
   dashboardUrl: string;
   repoUrl: string;
   updated: string;
+  updatedIso?: string;
   quickRead: string[];
   sources: MethodologySource[];
   calculation: string[];
@@ -519,16 +520,17 @@ export const methodologyPages: MethodologyPage[] = [
     accent: 'teal',
     title: 'US Macro Dashboard : lire le régime macro américain',
     description:
-      'Méthodologie du dashboard macro US : séries FRED, z-scores, backtest historique et conversion du score dans le bandeau l0g.',
+      'Méthodologie du dashboard macro US : 47 séries FRED, score composite borné, calibration interne et reconstruction rétrospective.',
     question:
       "Croissance, inflation, emploi, conditions financières : où pointe le risque macro américain ?",
     dashboardUrl: 'https://us.l0g.fr',
     repoUrl: 'https://github.com/bluetouff/macro_dashboard',
-    updated: methodologyUpdated,
+    updated: '3 août 2026',
+    updatedIso: '2026-08-03',
     quickRead: [
-      "Le dashboard agrège des séries FRED dans une lecture de stress macro américain.",
-      "Le score source est un z-score signé centré sur 0 ; l0g le convertit en échelle 0-100 pour le tableau de bord consolidé de signaux.",
-      "La valeur utile est autant dans les composantes que dans le chiffre final.",
+      "Le dashboard agrège 47 séries FRED réparties en huit familles de stress macro américain.",
+      "Le score source combine z-score signé, drift et momentum ; ce n'est ni une probabilité de récession ni une prévision datée.",
+      "Chaque composante est bornée à ±5 équivalents-z avant agrégation afin qu'une variation extrême ne domine pas seule l'indice.",
     ],
     sources: [
       {
@@ -547,15 +549,17 @@ export const methodologyPages: MethodologyPage[] = [
       },
     ],
     calculation: [
-      "Les séries sont téléchargées depuis FRED, mises en cache, puis transformées selon les règles du catalogue local.",
-      "Chaque indicateur contribue à un stress signé, pondéré par famille macro.",
-      "Le score est calibré sur l'historique et les récessions NBER pour vérifier sa capacité à signaler les régimes passés.",
-      "Le moteur combine écart à la normale, drift et momentum par moyenne pondérée des composantes disponibles, au lieu de retenir mécaniquement le signal le plus élevé.",
-      "Le backtest mesure aussi les alertes hors fenêtre de récession et pénalise les séries qui produisent trop de faux positifs.",
+      "Chaque série est orientée pour qu'une valeur positive représente davantage de stress ; les séries non stationnaires utilisent un vrai glissement annuel calendaire avant normalisation.",
+      "Le moteur combine z-score glissant sur cinq ans, drift 2015-2019 et momentum à trois et douze mois par moyenne 50 % / 25 % / 25 % des composantes applicables.",
+      "Les composantes sont saturées symétriquement à ±5 équivalents-z, puis les poids sont renormalisés si une composante est volontairement absente.",
+      "La calibration observe le même score composite 3, 6 et 12 mois avant quatre récessions NBER et pénalise les franchissements du seuil de vigilance hors récession.",
+      "Les scores famille et global sont des moyennes pondérées des séries valides ; un snapshot incomplet, non fini, périmé ou dont les empreintes divergent est refusé.",
       "Pour l'API l0g, le z-score source est projeté sur une échelle 0-100 en respectant les seuils d'alerte de l'application.",
     ],
     formula:
-      "z_source = moyenne pondérée des stress par série\n" +
+      "composante_bornée = clip(composante_orientée, -5, +5)\n" +
+      "score_série = moyenne pondérée disponible (z 50 %, drift 25 %, momentum 25 %)\n" +
+      "z_source = somme(score_série × poids_empirique) / somme(poids_empirique)\n" +
       "conversion l0g :\n" +
       "0   -> 30\n" +
       "1.5 -> 55\n" +
@@ -569,8 +573,9 @@ export const methodologyPages: MethodologyPage[] = [
     limits: [
       "FRED agrège des séries dont les calendriers, révisions et définitions varient.",
       "Les récessions NBER sont datées ex post ; elles ne constituent pas une vérité temps réel.",
-      "La calibration repose sur quatre récessions seulement ; la pénalité de faux positifs réduit le sur-apprentissage mais ne transforme pas l'échantillon en preuve statistique large.",
-      "La moyenne pondérée z-score, drift et momentum réduit le biais d'alerte, mais reste sensible au choix des poids de composantes.",
+      "La calibration est in-sample et repose sur quatre récessions seulement ; la pénalité de faux positifs ne transforme pas cet échantillon en validation prédictive hors échantillon.",
+      "L'historique est reconstruit avec les vintages FRED actuels : il exclut les dates d'observation futures mais ne rejoue ni délais de publication ni révisions comme ALFRED.",
+      "La moyenne pondérée et la saturation réduisent la domination d'une composante, mais les fenêtres, seuils et poids restent des hypothèses de modèle.",
       "Un choc de marché peut précéder les séries macro mensuelles.",
       "La conversion 0-100 est une normalisation l0g, pas l'échelle native du dashboard.",
       "Le score 0-100 sert au bandeau de lecture ; il ne rend pas le risque US statistiquement équivalent aux autres instruments.",
@@ -578,7 +583,7 @@ export const methodologyPages: MethodologyPage[] = [
     useFor: [
       "Situer le régime macro américain en un coup d'œil.",
       "Surveiller les familles de séries qui passent en stress.",
-      "Comparer le risque US aux lectures euro, yen et énergie.",
+      "Suivre le risque US parallèlement aux lectures euro, yen et énergie sans comparer directement leurs niveaux natifs.",
     ],
     notFor: [
       "Prédire la prochaine décision de la Fed.",
@@ -586,9 +591,9 @@ export const methodologyPages: MethodologyPage[] = [
       "Produire un signal d'achat ou de vente.",
     ],
     reproducibility: [
-      "Le dépôt documente les fichiers de catalogue, données et calcul.",
-      "La clé FRED reste côté environnement et n'est pas codée en dur.",
-      "Le cache accélère les relances sans modifier la méthode.",
+      "Le dépôt versionne le catalogue, le moteur commun, la méthode, les tests et le contrat de snapshot.",
+      "Le service public ne détient aucune clé FRED ; un builder séparé génère le bundle avec le SHA Git exact du calculateur.",
+      "Le manifest expose version de méthode, couverture, dates source et empreintes SHA-256 ; le serveur refuse toute divergence.",
     ],
   },
 ];

@@ -50,9 +50,32 @@ export const riskSignalMeta: Record<RiskSignalKey, RiskSignalMeta> & Record<stri
       description: 'Stress macroéconomique américain normalisé sur 0-100 à partir du signal publié par US Macro Dashboard.',
       identityVersion: '1.0.0',
       identityEffectiveFrom: VERSIONED_FROM,
-      methodologyVersion: '1.0.0',
-      methodologyEffectiveFrom: VERSIONED_FROM,
+      methodologyVersion: '2.0.0',
+      methodologyEffectiveFrom: '2026-08-03',
       methodologyChangelog: CHANGELOG,
+    },
+    calculation: {
+      summary:
+        'Score composite de 47 séries FRED orientées dans le sens du stress, calculé par le moteur versionné puis agrégé par moyenne pondérée.',
+      sourceCode: 'https://github.com/bluetouff/macro_dashboard',
+      sourceRevision: '87a6b00daf483ff4b44aaa9902d3fdf47645748b',
+      formula: [
+        'z = z-score glissant 5 ans du niveau, ou du vrai glissement annuel pour les séries non stationnaires',
+        'drift = écart au niveau moyen 2015-2019, lorsque cette comparaison est pertinente',
+        'momentum = moyenne de la variation 3 mois annualisée et de la variation 1 an',
+        'composante_bornée = clip(composante orientée, -5, +5)',
+        'score_série = moyenne pondérée des composantes disponibles : z 50 %, drift 25 %, momentum 25 %',
+        'score_global = somme(score_série × poids_empirique) / somme(poids_empirique)',
+      ],
+      thresholds: [
+        { label: 'Vigilance', value: 1.5 },
+        { label: 'Critique', value: 2.5 },
+      ],
+      notes: [
+        'Le score natif est un indicateur relatif, pas une probabilité de récession.',
+        'La calibration est in-sample sur quatre récessions NBER et pénalise les faux positifs hors récession.',
+        'La reconstruction utilise les vintages FRED actuels et ne constitue pas un historique point-in-time ALFRED.',
+      ],
     },
   },
   eu: {

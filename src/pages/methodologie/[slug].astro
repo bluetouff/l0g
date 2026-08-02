@@ -18,7 +18,8 @@ interface Props {
 }
 
 const { page } = Astro.props;
-const updatedDate = new Date(`${methodologyUpdatedIso}T00:00:00+02:00`);
+const pageUpdatedIso = page.updatedIso ?? methodologyUpdatedIso;
+const updatedDate = new Date(`${pageUpdatedIso}T00:00:00+02:00`);
 const isRiskBandInstrument = page.slug !== '13flow';
 const signalEntry = SIGNAL_KEYS
   .map((key) => ({ key, meta: riskSignalMeta[key] }))
@@ -41,7 +42,7 @@ const jsonLd = {
   headline: page.title,
   description: page.description,
   inLanguage: 'fr',
-  dateModified: methodologyUpdatedIso,
+  dateModified: pageUpdatedIso,
   publisher: { '@id': `${site}/#org` },
   about: page.label,
   isAccessibleForFree: true,
@@ -149,13 +150,13 @@ const trustItems = [
       <p class="mono-label glow" style="color: var(--a)">// comment interpréter</p>
       <div class="split">
         <div>
-          <h2 class="method-h">Ce que le signal dit</h2>
+          <h2 class="method-h">Portée du signal</h2>
           <ul class="method-list">
             {page.interpretation.map((item) => <li>{item}</li>)}
           </ul>
         </div>
         <div>
-          <h2 class="method-h">Ce qu'il ne dit pas</h2>
+          <h2 class="method-h">Limites de lecture</h2>
           <ul class="method-list muted">
             {page.limits.map((item) => <li>{item}</li>)}
           </ul>
