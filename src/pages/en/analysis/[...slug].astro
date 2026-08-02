@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
 import WatchCard from '../../../components/WatchCard.astro';
 import { organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
@@ -167,6 +168,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         l0g, “{post.data.title}”, l0g.fr, published {fmt(post.data.pubDate)}, updated {updatedLabel}, {url}
       </p>
     </div>
+
+    <AiEditorialDisclosure lang="en" />
 
     <hr class="hairline mt-12" />
     <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>

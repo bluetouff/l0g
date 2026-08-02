@@ -6,6 +6,7 @@ import SupportCard from '../../components/SupportCard.astro';
 import WatchCard from '../../components/WatchCard.astro';
 import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
+import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
@@ -435,6 +436,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     </p>
 
     <ArticleEvidence evidence={evidence} />
+
+    <AiEditorialDisclosure lang="fr" />
 
     <section class="revision-box" data-pagefind-ignore>
       <p class="mono-label">// historique des révisions</p>

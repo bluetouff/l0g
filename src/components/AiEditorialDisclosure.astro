@@ -1,0 +1,49 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isEnglish = lang === 'en';
+const label = isEnglish ? '// editorial transparency' : '// transparence éditoriale';
+const ariaLabel = isEnglish
+  ? 'Transparency about the use of artificial intelligence'
+  : "Transparence sur l’usage de l’intelligence artificielle";
+const linkLabel = isEnglish ? 'Read the editorial protocol.' : 'Consulter le protocole éditorial.';
+const text = isEnglish
+  ? 'Articles published on l0g are the product of analytical dialogue with artificial intelligence, used as a tool for research, challenging hypotheses and deepening the analysis. AI is neither a source nor an author. The selection, verification and interpretation of sources remain human responsibilities, as do editorial choices and the final approval of the texts. Full legal responsibility for the published content is assumed by l0g and its author.'
+  : 'Les articles publiés sur l0g sont le fruit d’un travail de dialogue analytique avec l’intelligence artificielle, utilisée comme outil de recherche, de confrontation des hypothèses et d’approfondissement. L’IA ne constitue ni une source ni un auteur. La sélection, la vérification et l’interprétation des sources restent humaines, tout comme les choix éditoriaux et la validation finale des textes. La responsabilité juridique des contenus publiés est intégralement assumée par l0g et leur auteur.';
+---
+
+<aside class="ai-editorial-disclosure" aria-label={ariaLabel} data-pagefind-ignore>
+  <p class="mono-label">{label}</p>
+  <p>{text} <a href="/protocole-editorial/">{linkLabel}</a></p>
+</aside>
+
+<style>
+  .ai-editorial-disclosure {
+    margin-top: 2.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 24%, var(--color-line));
+    border-left: 2px solid var(--color-signal);
+    border-radius: 0 10px 10px 0;
+    background: color-mix(in srgb, var(--color-signal) 4%, transparent);
+    padding: 1rem 1.1rem;
+  }
+  .ai-editorial-disclosure .mono-label {
+    margin: 0;
+    color: var(--color-signal);
+  }
+  .ai-editorial-disclosure p:last-child {
+    margin: 0.55rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+  .ai-editorial-disclosure a {
+    color: var(--color-signal);
+    text-underline-offset: 0.2em;
+  }
+  .ai-editorial-disclosure a:hover {
+    color: var(--color-paper);
+  }
+</style>

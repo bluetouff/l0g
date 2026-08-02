@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
@@ -187,6 +188,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
       published={guide.data.pubDate}
       updated={updated}
     />
+
+    <AiEditorialDisclosure lang="fr" />
 
     <hr class="hairline mt-12" />
     <a href="/glossaire/" class="mono-label link-term mt-6 inline-block">$ cd ../glossaire</a>
