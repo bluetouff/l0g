@@ -90,7 +90,10 @@ test('exécute le collecteur sans root avec un accès borné aux logs Apache', a
   assert.match(service, /^User=l0grisk$/m);
   assert.match(service, /^Group=l0grisk$/m);
   assert.match(service, /^SupplementaryGroups=adm$/m);
+  assert.match(service, /^ExecStart=\/opt\/nodejs-lts\/bin\/node /m);
   assert.match(service, /^CapabilityBoundingSet=$/m);
   assert.match(service, /^ReadOnlyPaths=\/var\/log\/apache2 /m);
   assert.match(installer, /getent group adm/);
+  assert.match(installer, /NODE_BIN="\/opt\/nodejs-lts\/bin\/node"/);
+  assert.match(installer, /"\$NODE_MAJOR" -lt 22/);
 });

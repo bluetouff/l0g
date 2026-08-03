@@ -13,13 +13,23 @@ ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 INSTALL_ROOT="/usr/local/lib/l0g-human-traffic"
 UNIT_DIR="/etc/systemd/system"
 DATA_DIR="/var/www/l0g-data"
+NODE_BIN="/opt/nodejs-lts/bin/node"
 
-for command in getent install mkdir node systemctl; do
+for command in getent install mkdir systemctl; do
   command -v "$command" >/dev/null 2>&1 || {
     echo "Commande requise absente: $command" >&2
     exit 1
   }
 done
+[ -x "$NODE_BIN" ] || {
+  echo "Runtime Node.js LTS absent: ${NODE_BIN}; exécuter d’abord deploy/install-node24-runtime.sh" >&2
+  exit 1
+}
+NODE_MAJOR="$("$NODE_BIN" -p 'Number.parseInt(process.versions.node.split(".")[0], 10)')"
+if [[ ! "$NODE_MAJOR" =~ ^[0-9]+$ ]] || [ "$NODE_MAJOR" -lt 22 ]; then
+  echo "Node.js 22 ou supérieur est requis pour le collecteur de trafic." >&2
+  exit 1
+fi
 
 getent passwd l0grisk >/dev/null || {
   echo "Compte système l0grisk absent; installer d’abord l’agrégateur de risque." >&2
@@ -68,7 +78,7 @@ install -o root -g root -m 0644 \
 
 systemctl daemon-reload
 systemctl start l0g-human-traffic.service
-node -e '
+"$NODE_BIN" -e '
   const fs = require("node:fs");
   const path = "/var/www/l0g-data/human-traffic.json";
   const report = JSON.parse(fs.readFileSync(path, "utf8"));

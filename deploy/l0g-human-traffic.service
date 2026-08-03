@@ -9,7 +9,7 @@ User=l0grisk
 Group=l0grisk
 SupplementaryGroups=adm
 UMask=0022
-ExecStart=/usr/bin/node /usr/local/lib/l0g-human-traffic/scripts/human-traffic-report.mjs --output /var/www/l0g-data/human-traffic.json --apache-log-dir /var/log/apache2
+ExecStart=/opt/nodejs-lts/bin/node /usr/local/lib/l0g-human-traffic/scripts/human-traffic-report.mjs --output /var/www/l0g-data/human-traffic.json --apache-log-dir /var/log/apache2
 
 NoNewPrivileges=yes
 PrivateTmp=yes
