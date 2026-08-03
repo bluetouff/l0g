@@ -87,3 +87,11 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
     'l’analyse vedette doit précéder les signaux',
   );
 });
+
+test('le push valide le contrat sans sonder une production pas encore activée', async () => {
+  const workflow = await readFile(new URL('.github/workflows/risk-producers.yml', root), 'utf8');
+  const probeStep = workflow.slice(workflow.indexOf('- name: Probe deployed producers'));
+
+  assert.ok(probeStep.startsWith('- name: Probe deployed producers'));
+  assert.match(probeStep, /if: github\.event_name == 'workflow_dispatch'[\s\S]*?run: node scripts\/check-risk-producers\.mjs/);
+});

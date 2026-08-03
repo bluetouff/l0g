@@ -93,6 +93,10 @@ requireCondition(
   risk.includes('cancel-in-progress: true'),
   'les contrôles risque obsolètes doivent être annulés',
 );
+requireCondition(
+  /Probe deployed producers[\s\S]*?if: github\.event_name == 'workflow_dispatch'[\s\S]*?node scripts\/check-risk-producers\.mjs/.test(risk),
+  'le push doit valider le contrat sans sonder une production pas encore activée',
+);
 
 const mcpRelease = workflows.get('publish-mcp.yml') || '';
 requireCondition(

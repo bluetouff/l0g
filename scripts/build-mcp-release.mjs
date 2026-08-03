@@ -35,6 +35,7 @@ await mkdir(join(releaseDir, 'src/config'), { recursive: true, mode: 0o755 });
 for (const path of [
   'server.json',
   'mcp-server/server.mjs',
+  'mcp-server/schemas/signal-freshness.mjs',
   'mcp-server/usage-telemetry.mjs',
   'mcp-server/package.json',
   'mcp-server/package-lock.json',
@@ -42,6 +43,7 @@ for (const path of [
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
   'src/config/agent-contract.mjs',
+  'src/config/signal-freshness-contract.mjs',
 ]) {
   const target = join(releaseDir, path);
   await mkdir(dirname(target), { recursive: true, mode: 0o755 });
@@ -79,6 +81,7 @@ await writeFile(join(releaseDir, 'release.env'), `MCP_GIT_SHA=${sha}\nMCP_RELEAS
 const criticalPaths = [
   'server.json',
   'mcp-server/server.mjs',
+  'mcp-server/schemas/signal-freshness.mjs',
   'mcp-server/usage-telemetry.mjs',
   'mcp-server/package.json',
   'mcp-server/package-lock.json',
@@ -86,6 +89,7 @@ const criticalPaths = [
   'mcp-server/deploy/verify-release.mjs',
   'src/lib/agent-prompts.mjs',
   'src/config/agent-contract.mjs',
+  'src/config/signal-freshness-contract.mjs',
   'LICENSE',
   'README.md',
   'NOTICE.md',

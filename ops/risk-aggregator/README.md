@@ -12,7 +12,9 @@ de chaque producteur. Chaque entrée d'`indices` publie séparément :
 
 - `sourceStatus` : `ok` ou `fallback` ; une source totalement absente figure
   dans `summary.missing` ;
-- `sourceUpdatedAt`, `retrievedAt`, `lastAttemptAt`, `lastSuccessAt` ;
+- `sourceUpdatedAt`, `sourceCheckedAt`, `retrievedAt`, `lastAttemptAt`,
+  `lastSuccessAt` ; `sourceUpdatedAt` date la publication des données tandis
+  que `sourceCheckedAt` date le dernier contrôle réussi du producteur ;
 - `staleAfter`, `ageSeconds`, `timelinessStatus` ;
 - `qualityStatus`, `fallbackUsed`, `fallbackLayer`, `fallbackReason` et
   `warnings`.
@@ -115,6 +117,12 @@ systemctl cat l0g-risk.service --no-pager
 curl -fsS https://l0g.fr/risk.json | jq '{generated,status,summary,indices}'
 curl -fsS https://l0g.fr/api/v1/history.ndjson | tail -n 1 | jq .
 ```
+
+Le workflow `risk producers` sépare volontairement les deux phases : les tests
+de contrat tournent à chaque push concerné, puis le sondage public complet est
+déclenché manuellement après l'activation. Ce sondage post-déploiement doit être
+vert avant de clore la livraison ; l'exécuter avant la bascule ne testerait que
+la révision précédente.
 
 Le déploiement ne doit être déclaré réussi que si les cinq signaux sont
 présents, les dates sont distinctes et un test de panne contrôlé publie bien

@@ -193,10 +193,12 @@ performance bloque une régression susceptible de provoquer du CLS.
 - CodeQL conserve la suite `security-extended` sur les changements de code et
   les pull requests, avec annulation des analyses devenues obsolètes. Les
   changements purement éditoriaux ou statiques sont exclus.
-- Le contrôle de bout en bout des producteurs de risque reste disponible à la
-  demande et lors d'une modification de sa chaîne. Le timer serveur
-  `l0g-risk.timer`, configuré toutes les 15 minutes, reste le mécanisme de
-  production des agrégats.
+- Une modification de la chaîne risque valide automatiquement ses contrats
+  locaux. Le contrôle de bout en bout de la production s'exécute ensuite à la
+  demande, après activation de la révision serveur : un push ne peut donc plus
+  être déclaré en échec uniquement parce que la production sert encore la
+  révision précédente. Le timer serveur `l0g-risk.timer`, configuré toutes les
+  15 minutes, reste le mécanisme de production des agrégats.
 - `npm run test:ci-policy` bloque la réintroduction silencieuse d'un cron et
   vérifie les principaux garde-fous de coût et de sécurité.
 

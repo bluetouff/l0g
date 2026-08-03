@@ -28,6 +28,7 @@ import { z } from 'zod';
 import { parse as parseHtml } from 'node-html-parser';
 import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
 import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs';
+import { SignalFreshnessSchema } from './schemas/signal-freshness.mjs';
 import { createMcpUsageStore } from './usage-telemetry.mjs';
 
 const NODE_MAJOR = Number.parseInt(process.versions.node.split('.')[0], 10);
@@ -714,39 +715,6 @@ const NdjsonOutput = ToolOutput.extend({
   recordType: z.string().nullable().optional(),
   records: z.array(z.any()).optional(),
 }).passthrough();
-const SignalFreshnessSchema = z.object({
-  key: z.enum(['us', 'eu', 'yen', 'energie', 'debt']),
-  label: z.string(),
-  source: z.string().url(),
-  methodology: z.string().url(),
-  observedAt: z.string().datetime({ offset: true }).nullable(),
-  sourcePublishedAt: z.string().datetime({ offset: true }).nullable(),
-  retrievedAt: z.string().datetime({ offset: true }).nullable(),
-  lastAttemptAt: z.string().datetime({ offset: true }).nullable(),
-  lastSuccessAt: z.string().datetime({ offset: true }).nullable(),
-  computedAt: z.string().datetime({ offset: true }),
-  staleAfter: z.string(),
-  expiresAt: z.string().datetime({ offset: true }).nullable(),
-  timelinessStatus: z.enum(['fresh', 'stale', 'unknown']),
-  sourceStatus: z.enum(['ok', 'fallback', 'missing']),
-  qualityStatus: z.enum(['nominal', 'degraded', 'official-delayed', 'unknown', 'missing']),
-  fallbackUsed: z.boolean(),
-  fallbackReason: z.string().nullable(),
-  warnings: z.array(z.string()),
-  coverageStatus: z.enum(['complete', 'partial', 'missing']),
-  coverage: z.object({
-    signalPresent: z.boolean(),
-    observedAt: z.boolean(),
-    sourcePublishedAt: z.boolean(),
-    retrievedAt: z.boolean(),
-    lastAttemptAt: z.boolean(),
-    lastSuccessAt: z.boolean(),
-    computedAt: z.boolean(),
-    staleAfter: z.boolean(),
-  }).strict(),
-  missing: z.array(z.enum(['signalPresent', 'observedAt', 'sourcePublishedAt', 'retrievedAt', 'lastAttemptAt', 'lastSuccessAt', 'computedAt', 'staleAfter'])),
-  note: z.string(),
-}).strict();
 const FreshnessOutput = ToolOutput.extend({
   version: z.string().optional(),
   generated: z.string().optional(),

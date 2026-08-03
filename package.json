@@ -29,7 +29,7 @@
     "test:human-traffic": "node --test scripts/human-traffic-report.test.mjs",
     "test:agent-distribution": "node --test scripts/agent-distribution.test.mjs",
     "generate:toolset": "node scripts/generate-toolset-manifest.mjs",
-    "test:mcp-toolset": "node scripts/generate-toolset-manifest.mjs --check",
+    "test:mcp-toolset": "node --experimental-strip-types --test scripts/signal-freshness-contract.test.mjs && node scripts/generate-toolset-manifest.mjs --check",
     "test:glossary": "node scripts/validate-glossary.mjs",
     "test:seo": "node scripts/validate-seo.mjs",
     "test:sitemap-lastmod": "node --test scripts/sitemap-lastmod.test.mjs",

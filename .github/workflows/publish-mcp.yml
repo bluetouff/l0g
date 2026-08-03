@@ -89,9 +89,11 @@ jobs:
         run: |
           git diff --exit-code -- \
             server.json mcp-server/server.mjs mcp-server/usage-telemetry.mjs \
+            mcp-server/schemas/signal-freshness.mjs \
             mcp-server/package.json mcp-server/package-lock.json \
             mcp-server/deploy/l0g-mcp.service mcp-server/deploy/verify-release.mjs \
-            src/lib/agent-prompts.mjs src/config/agent-contract.mjs
+            src/lib/agent-prompts.mjs src/config/agent-contract.mjs \
+            src/config/signal-freshness-contract.mjs
           mkdir -p release
           node scripts/build-mcp-release.mjs --output release --tag "$GITHUB_REF_NAME" --sha "$GITHUB_SHA"
           RELEASE_NAME="l0g-mcp-${MCP_VERSION}"

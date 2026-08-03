@@ -1,5 +1,5 @@
 export const AGENT_VERSION = '1.18.0';
-export const MCP_VERSION = '1.24.2';
+export const MCP_VERSION = '1.24.3';
 export const MCP_PROTOCOL_VERSION = '2025-11-25';
 export const MCP_PUBLIC_PATH = '/api/mcp';
 export const MCP_COMPACT_PUBLIC_PATH = '/api/mcp/compact';
