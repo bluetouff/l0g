@@ -62,6 +62,13 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   );
   assert.ok(!service.includes('/usr/local/bin/l0g-risk.py'));
   assert.ok(installer.includes("'ExecStartPost='"), 'le reset des anciens ExecStartPost doit être explicite');
+  assert.ok(installer.includes('"${DROPIN_DIR}/override.conf"'), 'le drop-in historique doit être sauvegardé');
+  assert.ok(installer.includes('rm -f -- "${DROPIN_DIR}/override.conf"'), 'le drop-in historique doit être retiré');
+  assert.ok(installer.includes("grep -Fq '/usr/local/bin/'"), 'la configuration effective doit exclure les anciens scripts');
+  assert.ok(
+    installer.indexOf('rm -f -- "${DROPIN_DIR}/override.conf"') < installer.lastIndexOf('systemctl daemon-reload'),
+    'le drop-in historique doit être retiré avant le rechargement systemd',
+  );
   assert.ok(installer.indexOf('verify-producer-deployment.py') < installer.indexOf('systemctl restart l0g-risk.service'));
   assert.ok(
     humanTrafficInstaller.includes('install -d -o l0grisk -g l0grisk -m 0755 "$DATA_DIR"'),

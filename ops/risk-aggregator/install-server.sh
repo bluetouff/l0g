@@ -51,7 +51,8 @@ for path in \
   /etc/systemd/system/l0g-risk.service \
   /etc/systemd/system/l0g-risk.timer \
   "${DROPIN_DIR}/98-revisions.conf" \
-  "${DROPIN_DIR}/99-versioned-paths.conf"; do
+  "${DROPIN_DIR}/99-versioned-paths.conf" \
+  "${DROPIN_DIR}/override.conf"; do
   label="$(printf '%s' "$path" | sed 's#/#__#g')"
   if [ -e "$path" ]; then
     cp -a "$path" "${BACKUP}/${label}"
@@ -91,6 +92,7 @@ rollback() {
   restore_path /etc/systemd/system/l0g-risk.timer
   restore_path "${DROPIN_DIR}/98-revisions.conf"
   restore_path "${DROPIN_DIR}/99-versioned-paths.conf"
+  restore_path "${DROPIN_DIR}/override.conf"
   if [ -n "$OLD_LINK_TARGET" ]; then
     ln -sfn "$OLD_LINK_TARGET" "${CURRENT_LINK}.rollback"
     mv -Tf "${CURRENT_LINK}.rollback" "$CURRENT_LINK"
@@ -152,10 +154,15 @@ printf '%s\n' \
   'ExecStartPost=/usr/bin/python3 /usr/local/lib/l0g-risk/risk_history.py /var/www/l0g-data' \
   >"${WORK}/99-versioned-paths.conf"
 install -o root -g root -m 0644 "${WORK}/99-versioned-paths.conf" "${DROPIN_DIR}/99-versioned-paths.conf"
+rm -f -- "${DROPIN_DIR}/override.conf"
 
 echo "4/6 Vérification systemd et activation"
 systemd-analyze verify /etc/systemd/system/l0g-risk.service /etc/systemd/system/l0g-risk.timer
 systemctl daemon-reload
+if systemctl show l0g-risk.service -p ExecStartPost --value | grep -Fq '/usr/local/bin/'; then
+  echo "STOP : un ancien ExecStartPost /usr/local/bin reste actif." >&2
+  false
+fi
 systemctl restart l0g-risk.service
 systemctl enable --now l0g-risk.timer
 

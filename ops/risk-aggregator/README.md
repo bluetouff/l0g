@@ -72,8 +72,9 @@ Le script d'installation effectue une migration atomique et réversible :
 1. il vérifie les cinq producteurs avant d'annoncer leurs révisions ;
 2. il crée une release immuable dans `/usr/local/lib/l0g-risk-<revision>` ;
 3. il remplace le lien `/usr/local/lib/l0g-risk` atomiquement ;
-4. il réinitialise `ExecStart` et `ExecStartPost`, y compris si un ancien
-   `override.conf` ajoute encore les scripts de `/usr/local/bin` ;
+4. il sauvegarde puis retire l'ancien `override.conf`, réinitialise `ExecStart`
+   et `ExecStartPost`, puis refuse toute configuration effective qui référence
+   encore les scripts de `/usr/local/bin` ;
 5. il sauvegarde unités, drop-ins et données, puis restaure l'ensemble si
    systemd ou le contrat de sortie échoue.
 
