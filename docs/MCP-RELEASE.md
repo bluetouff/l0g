@@ -85,6 +85,16 @@ Prérequis : Node 22+, `curl`, GNU `tar`, `sha256sum`, `flock` et une version de
 qui fournit `gh attestation verify`. Le checkout historique `/opt/l0g-mcp` sert une dernière fois
 à installer les unités ; il n'est plus lu par le daemon après la première release atomique.
 
+Sur Debian 13, installer le runtime LTS officiel dédié aux services MCP avant la migration :
+
+```bash
+sudo deploy/install-node24-runtime.sh
+```
+
+Ce script vérifie une archive officielle Node.js 24 par empreinte figée, préserve le paquet
+Debian et revient à la configuration systemd précédente si l'identité MCP change ou si le
+contrôle de santé échoue.
+
 Le paquet `gh` de Debian 13 est actuellement trop ancien et ne contient pas la commande
 `attestation`. Installer la CLI depuis le dépôt officiel GitHub, après vérification de son
 keyring public :

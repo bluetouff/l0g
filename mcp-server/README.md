@@ -230,13 +230,16 @@ Les resources inexistantes renvoient une erreur protocolaire MCP, pas un documen
 > Hypothèses : Apache sert déjà l0g.fr en HTTPS, le site est déployé dans
 > `/var/www/html/l0g/current`. Node 22+ requis.
 
-### 1. Installer Node 22+ (si absent)
+### 1. Installer Node 24 LTS pour les services MCP
 
 ```bash
-node -v   # si < 22, installer la LTS :
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo deploy/install-node24-runtime.sh
 ```
+
+Le script installe le binaire officiel Node.js 24.18.1 sous `/opt`, vérifie son SHA-256
+figé, ne remplace pas le paquet Debian et bascule uniquement les services MCP via des
+drop-ins systemd. Il conserve l'identité du daemon actif et restaure la configuration
+précédente si le contrôle de santé échoue.
 
 ### 2. Installer une fois le poller de releases attestées
 

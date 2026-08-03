@@ -36,6 +36,7 @@ const mcpPackage = JSON.parse(await readFile(join(ROOT, 'mcp-server', 'package.j
 const mcpLock = JSON.parse(await readFile(join(ROOT, 'mcp-server', 'package-lock.json'), 'utf8'));
 const mcpServerSource = await readFile(join(ROOT, 'mcp-server', 'server.mjs'), 'utf8');
 const mcpDeploySource = await readFile(join(ROOT, 'mcp-server/deploy/l0g-mcp-deploy.sh'), 'utf8');
+const nodeInstallerSource = await readFile(join(ROOT, 'deploy/install-node24-runtime.sh'), 'utf8');
 const lockedVersion = (name) => lock.packages?.[`node_modules/${name}`]?.version || '';
 const lockedVersions = (sourceLock, name) => Object.entries(sourceLock.packages || {})
   .filter(([path]) => path === `node_modules/${name}` || path.endsWith(`/node_modules/${name}`))
@@ -63,6 +64,19 @@ if (mcpPackage.engines?.node !== '>=22'
     || !mcpServerSource.includes('NODE_MAJOR < 22')
     || !mcpDeploySource.includes('"$NODE_MAJOR" -lt 22')) {
   fail('Le runtime MCP doit refuser les versions Node.js hors support antérieures à 22');
+}
+for (const invariant of [
+  'NODE_VERSION="24.18.1"',
+  'NODE_SHA256="d6c664df3f3f61458e8c277585571328522d705166723a7c7823a9253a4d15a0"',
+  "--proto '=https' --tlsv1.2",
+  'sha256sum -c SHA256SUMS',
+  'ExecStart=/opt/nodejs-lts/bin/node',
+  'AFTER_ID" = "$BEFORE_ID',
+  'readlink -f "/proc/${MCP_PID}/exe"',
+]) {
+  if (!nodeInstallerSource.includes(invariant)) {
+    fail(`Installateur Node.js MCP incomplet : ${invariant}`);
+  }
 }
 if (!honoVersions.length || honoVersions.some((version) => {
   const [major, minor, patch] = version.split('.').map(Number);
