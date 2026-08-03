@@ -81,7 +81,7 @@ Le tag ne doit pas être déplacé. Une correction crée une nouvelle version Se
 
 ## Migration unique de zen
 
-Prérequis : Node 20+, `curl`, GNU `tar`, `sha256sum`, `flock` et une version de GitHub CLI
+Prérequis : Node 22+, `curl`, GNU `tar`, `sha256sum`, `flock` et une version de GitHub CLI
 qui fournit `gh attestation verify`. Le checkout historique `/opt/l0g-mcp` sert une dernière fois
 à installer les unités ; il n'est plus lu par le daemon après la première release atomique.
 

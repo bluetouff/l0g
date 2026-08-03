@@ -228,12 +228,12 @@ Les resources inexistantes renvoient une erreur protocolaire MCP, pas un documen
 ## Déploiement atomique (Debian, serveur « zen »)
 
 > Hypothèses : Apache sert déjà l0g.fr en HTTPS, le site est déployé dans
-> `/var/www/html/l0g/current`. Node 20+ requis.
+> `/var/www/html/l0g/current`. Node 22+ requis.
 
-### 1. Installer Node 20+ (si absent)
+### 1. Installer Node 22+ (si absent)
 
 ```bash
-node -v   # si < 20, installer la LTS :
+node -v   # si < 22, installer la LTS :
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
