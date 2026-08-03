@@ -49,6 +49,9 @@ SOURCES = [
         "key": "yen",
         "type": "yct",
         "url": os.environ.get("L0G_YEN_URL", "https://yct.l0g.fr/data.json"),
+        "status_url": os.environ.get(
+            "L0G_YEN_STATUS_URL", "https://yct.l0g.fr/status.json"
+        ),
     },
     {
         "key": "energie",
@@ -183,13 +186,16 @@ def source_date(payload):
     return None
 
 
-def quality_fields(item, key, attempt_at, source_updated_at, source_url):
+def quality_fields(
+    item, key, attempt_at, source_updated_at, source_url, source_checked_at=None
+):
     seconds, duration = STALE_AFTER[key]
-    source_time = parse_iso(source_updated_at)
+    checked_at = iso_z(source_checked_at)
+    freshness_time = parse_iso(checked_at or source_updated_at)
     attempt_time = parse_iso(attempt_at)
     age_seconds = None
-    if source_time and attempt_time:
-        age_seconds = max(0, round((attempt_time - source_time).total_seconds()))
+    if freshness_time and attempt_time:
+        age_seconds = max(0, round((attempt_time - freshness_time).total_seconds()))
     item.update(
         {
             "sourceStatus": "ok",
@@ -215,6 +221,8 @@ def quality_fields(item, key, attempt_at, source_updated_at, source_url):
             "producerRevisionStatus": "reported" if os.environ.get(f"L0G_{key.upper()}_REVISION") else "unreported",
         }
     )
+    if checked_at:
+        item["sourceCheckedAt"] = checked_at
     return item
 
 
@@ -356,6 +364,21 @@ def _parse_date(value):
 
 def idx_yct(src, attempt_at):
     data = fetch_json(src["url"])
+    status = fetch_json(src["status_url"])
+    checked_at = iso_z(status.get("checked_at"))
+    if status.get("status") != "ok" or not checked_at:
+        raise ValueError("statut yct absent ou non nominal")
+    attempt_time = parse_iso(attempt_at)
+    checked_time = parse_iso(checked_at)
+    if attempt_time and checked_time and checked_time - attempt_time > datetime.timedelta(minutes=5):
+        raise ValueError("horloge yct située dans le futur")
+    source_statuses = status.get("sources") or {}
+    for required in ("cot", "tff", "fed", "fx", "boj"):
+        if (source_statuses.get(required) or {}).get("status") not in {
+            "fresh",
+            "verified-config",
+        }:
+            raise ValueError(f"source yct non nominale: {required}")
     by_date = {}
     for row in data.get("cot") or []:
         date = row.get("d")
@@ -400,6 +423,7 @@ def idx_yct(src, attempt_at):
         attempt_at,
         source_date(data),
         src["url"],
+        checked_at,
     )
 
 

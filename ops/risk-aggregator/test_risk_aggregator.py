@@ -49,6 +49,39 @@ class AggregatorContractTest(unittest.TestCase):
         self.assertEqual(current["value"], 31)
         self.assertEqual(current["sourceStatus"], "ok")
 
+    def test_yen_freshness_uses_verified_check_without_republishing_unchanged_data(self):
+        data = {
+            "generated": "2026-08-02T16:15:24Z",
+            "cot": [{"d": "2026-07-28", "net": -100, "oi": 200}],
+            "rates": {"fed": 3.625, "boj": 1.0},
+            "fx": [
+                {"d": "2026-06-30", "v": 162.4},
+                {"d": "2026-07-31", "v": 160.2},
+            ],
+        }
+        status = {
+            "checked_at": "2026-08-03T08:03:22Z",
+            "status": "ok",
+            "sources": {
+                "cot": {"status": "fresh"},
+                "tff": {"status": "fresh"},
+                "fed": {"status": "fresh"},
+                "fx": {"status": "fresh"},
+                "boj": {"status": "verified-config"},
+            },
+        }
+        source = {
+            "url": "https://yct.example/data.json",
+            "status_url": "https://yct.example/status.json",
+        }
+        with patch.object(RISK, "fetch_json", side_effect=[data, status]):
+            current = RISK.idx_yct(source, "2026-08-03T08:30:00Z")
+
+        self.assertEqual(current["sourceUpdatedAt"], "2026-08-02T16:15:24Z")
+        self.assertEqual(current["sourceCheckedAt"], "2026-08-03T08:03:22Z")
+        self.assertEqual(current["ageSeconds"], 1598)
+        self.assertEqual(current["timelinessStatus"], "fresh")
+
     def test_naive_timestamp_is_rejected(self):
         self.assertIsNone(RISK.iso_z("2026-07-21 07:53"))
 

@@ -75,6 +75,7 @@ type RiskSnapshotInput = {
     fallbackReason?: string | null;
     sourceUpdatedAt?: string | null;
     sourcePublishedAt?: string | null;
+    sourceCheckedAt?: string | null;
     observedAt?: string | null;
     retrievedAt?: string | null;
     lastAttemptAt?: string | null;
@@ -204,6 +205,9 @@ function buildSignalFreshness(risk?: RiskSnapshotInput | null) {
     const sourcePublishedAt = isoDateTimeOrNull(
       String(item?.sourcePublishedAt ?? item?.sourceUpdatedAt ?? provenance.sourcePublishedAt ?? provenance.generatedAt ?? '') || null,
     );
+    const sourceCheckedAt = isoDateTimeOrNull(
+      String(item?.sourceCheckedAt ?? provenance.sourceCheckedAt ?? '') || null,
+    );
     const retrievedAt = isoDateTimeOrNull(
       String(item?.retrievedAt ?? provenance.retrievedAt ?? '') || null,
     );
@@ -214,9 +218,9 @@ function buildSignalFreshness(risk?: RiskSnapshotInput | null) {
       String(item?.lastSuccessAt ?? provenance.lastSuccessAt ?? '') || null,
     );
     const staleAfter = item?.staleAfter || String(provenance.staleAfter ?? SIGNAL_STALE_AFTER[key] ?? 'P1D');
-    // lastSuccessAt mesure la disponibilité de la collecte, pas l'âge de la
-    // donnée économique. Sans date producteur/observation, rester unknown.
-    const freshnessAnchor = sourcePublishedAt ?? observedAt;
+    // sourceCheckedAt atteste un contrôle amont sans prétendre que la donnée a
+    // changé. À défaut, revenir à la publication puis à l'observation.
+    const freshnessAnchor = sourceCheckedAt ?? sourcePublishedAt ?? observedAt;
     const expiresAt = freshnessAnchor ? addDurationIso(freshnessAnchor, staleAfter) : null;
     const timelinessStatus = expiresAt && Date.parse(computedAt) > Date.parse(expiresAt)
       ? 'stale'
@@ -256,6 +260,7 @@ function buildSignalFreshness(risk?: RiskSnapshotInput | null) {
       methodology: meta.methodology,
       observedAt,
       sourcePublishedAt,
+      sourceCheckedAt,
       retrievedAt,
       lastAttemptAt,
       lastSuccessAt,
@@ -1837,6 +1842,7 @@ export function buildOpenApiContract() {
             'methodology',
             'observedAt',
             'sourcePublishedAt',
+            'sourceCheckedAt',
             'retrievedAt',
             'lastAttemptAt',
             'lastSuccessAt',
@@ -1862,6 +1868,7 @@ export function buildOpenApiContract() {
             methodology: { type: 'string', format: 'uri' },
             observedAt: { type: ['string', 'null'], format: 'date-time' },
             sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
+            sourceCheckedAt: { type: ['string', 'null'], format: 'date-time' },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
             lastAttemptAt: { type: ['string', 'null'], format: 'date-time' },
             lastSuccessAt: { type: ['string', 'null'], format: 'date-time' },
@@ -2954,6 +2961,7 @@ export function buildOpenApiContract() {
             fallbackReason: { type: ['string', 'null'] },
             sourceUpdatedAt: { type: ['string', 'null'], format: 'date-time' },
             sourcePublishedAt: { type: ['string', 'null'], format: 'date-time' },
+            sourceCheckedAt: { type: ['string', 'null'], format: 'date-time' },
             retrievedAt: { type: ['string', 'null'], format: 'date-time' },
             lastAttemptAt: { type: ['string', 'null'], format: 'date-time' },
             lastSuccessAt: { type: ['string', 'null'], format: 'date-time' },

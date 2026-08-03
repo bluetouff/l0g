@@ -46,6 +46,18 @@ test('un ancien score conservé par l’agrégateur fait échouer le moniteur', 
   assert.ok(report.errors.some((error) => error.includes('repli agrégateur actif')));
 });
 
+test('une publication inchangée reste saine après un contrôle producteur récent', () => {
+  const input = fixture();
+  const yen = input.aggregate.indices.find((item) => item.key === 'yen');
+  input.yen.generated = '2026-07-17T04:17:33Z';
+  yen.sourceUpdatedAt = input.yen.generated;
+  yen.sourceCheckedAt = '2026-07-18T09:55:00Z';
+  yen.timelinessStatus = 'fresh';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, true);
+  assert.ok(!report.errors.some((error) => error.includes('yen: producteur ancien')));
+});
+
 test('un échec explique sa cause dans le résumé GitHub et dans une annotation sûre', () => {
   const input = fixture();
   input.aggregate.version = '1-legacy';
