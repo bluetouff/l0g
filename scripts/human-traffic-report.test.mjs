@@ -1,9 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import {
   buildHumanTrafficReport,
   parseHumanHtmlRequest,
 } from './human-traffic-report.mjs';
+
+const root = new URL('../', import.meta.url);
 
 function log({
   ip = '203.0.113.9',
@@ -77,4 +80,17 @@ test('masque un jour entier sous k et coupe la rétention', () => {
   const report = buildHumanTrafficReport(lines, { now: new Date('2026-07-30T20:00:00Z') });
   assert.deepEqual(report.daily, []);
   assert.equal(report.totals.html_gets, 0);
+});
+
+test('exécute le collecteur sans root avec un accès borné aux logs Apache', async () => {
+  const [service, installer] = await Promise.all([
+    readFile(new URL('deploy/l0g-human-traffic.service', root), 'utf8'),
+    readFile(new URL('deploy/install-human-traffic.sh', root), 'utf8'),
+  ]);
+  assert.match(service, /^User=l0grisk$/m);
+  assert.match(service, /^Group=l0grisk$/m);
+  assert.match(service, /^SupplementaryGroups=adm$/m);
+  assert.match(service, /^CapabilityBoundingSet=$/m);
+  assert.match(service, /^ReadOnlyPaths=\/var\/log\/apache2 /m);
+  assert.match(installer, /getent group adm/);
 });

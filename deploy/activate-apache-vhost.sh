@@ -32,9 +32,9 @@ done
 [ -x "$APACHECTL" ] || { echo "apache2ctl absent" >&2; exit 1; }
 [ -f "$SOURCE" ] || { echo "Vhost source absent: $SOURCE" >&2; exit 1; }
 APACHE_MODULES="$("$APACHECTL" -M 2>&1)"
-for module in http2_module brotli_module deflate_module filter_module setenvif_module; do
+for module in http2_module brotli_module deflate_module filter_module setenvif_module reqtimeout_module; do
   if ! printf '%s\n' "$APACHE_MODULES" | grep -Eq "[[:space:]]${module}[[:space:]]"; then
-    echo "Module Apache requis absent: ${module}. Exécuter: sudo a2enmod http2 brotli deflate filter setenvif" >&2
+    echo "Module Apache requis absent: ${module}. Exécuter: sudo a2enmod http2 brotli deflate filter setenvif reqtimeout" >&2
     exit 1
   fi
 done
@@ -162,6 +162,7 @@ if printf '%s\n' "$HEADERS" | grep -Eiq "^Content-Security-Policy:.*script-src[^
   exit 1
 fi
 printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
+printf '%s\n' "$HEADERS" | grep -Fiq "X-XSS-Protection: 0"
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/index.html)" = 401 ]
 [ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats)" = 401 ]

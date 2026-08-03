@@ -12,6 +12,12 @@ SERVICE="l0g-mcp.service"
 KEEP_RELEASES=5
 SMOKE_PORT=18848
 
+NODE_MAJOR="$(node -p 'Number.parseInt(process.versions.node.split(".")[0], 10)')"
+if [[ ! "$NODE_MAJOR" =~ ^[0-9]+$ ]] || [ "$NODE_MAJOR" -lt 22 ]; then
+  echo "Déploiement MCP refusé : Node.js 22 ou supérieur est requis." >&2
+  exit 1
+fi
+
 mkdir -p "$RELEASES"
 exec 9>"${BASE}/deploy.lock"
 flock -n 9 || exit 0

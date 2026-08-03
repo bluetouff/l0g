@@ -29,6 +29,10 @@ getent group l0grisk >/dev/null || {
   echo "Groupe système l0grisk absent; installer d’abord l’agrégateur de risque." >&2
   exit 1
 }
+getent group adm >/dev/null || {
+  echo "Groupe système adm absent; lecture bornée des logs Apache impossible." >&2
+  exit 1
+}
 
 for source in \
   "${ROOT}/scripts/human-traffic-report.mjs" \

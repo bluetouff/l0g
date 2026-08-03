@@ -30,6 +30,12 @@ import { agentPrompts, renderAgentPrompt } from '../src/lib/agent-prompts.mjs';
 import { MCP_PROTOCOL_VERSION, MCP_VERSION } from '../src/config/agent-contract.mjs';
 import { createMcpUsageStore } from './usage-telemetry.mjs';
 
+const NODE_MAJOR = Number.parseInt(process.versions.node.split('.')[0], 10);
+if (!Number.isInteger(NODE_MAJOR) || NODE_MAJOR < 22) {
+  process.stderr.write('Node.js 22 ou supérieur est requis pour exécuter le serveur MCP.\n');
+  process.exit(1);
+}
+
 // --- configuration (variables d'environnement, valeurs par défaut sûres) ---
 const HOST = process.env.MCP_HOST || '127.0.0.1';
 const PORT = parsePositiveInteger(process.env.MCP_PORT, 8848, { min: 1, max: 65535 });

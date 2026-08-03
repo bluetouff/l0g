@@ -1,5 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
+import { stripHtmlTags } from '../src/lib/html-utils.ts';
 
 const root = join(process.cwd(), 'dist');
 const collisions = [];
@@ -26,14 +27,13 @@ async function audit(path) {
     for (const match of html.matchAll(regex)) {
       const start = Math.max(0, match.index - 45);
       const end = Math.min(html.length, match.index + match[0].length + 45);
+      const context = stripHtmlTags(html.slice(start, end))
+        .replace(/\s+/g, ' ')
+        .trim();
       collisions.push({
         file: relative(root, path),
         side,
-        context: html
-          .slice(start, end)
-          .replace(/<[^>]+>/g, '')
-          .replace(/\s+/g, ' ')
-          .trim(),
+        context,
       });
     }
   }

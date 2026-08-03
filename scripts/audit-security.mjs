@@ -32,15 +32,49 @@ async function filesUnder(root, extensions) {
 }
 
 const lock = JSON.parse(await readFile(join(ROOT, 'package-lock.json'), 'utf8'));
+const mcpPackage = JSON.parse(await readFile(join(ROOT, 'mcp-server', 'package.json'), 'utf8'));
+const mcpLock = JSON.parse(await readFile(join(ROOT, 'mcp-server', 'package-lock.json'), 'utf8'));
+const mcpServerSource = await readFile(join(ROOT, 'mcp-server', 'server.mjs'), 'utf8');
+const mcpDeploySource = await readFile(join(ROOT, 'mcp-server/deploy/l0g-mcp-deploy.sh'), 'utf8');
 const lockedVersion = (name) => lock.packages?.[`node_modules/${name}`]?.version || '';
+const lockedVersions = (sourceLock, name) => Object.entries(sourceLock.packages || {})
+  .filter(([path]) => path === `node_modules/${name}` || path.endsWith(`/node_modules/${name}`))
+  .map(([, metadata]) => metadata.version)
+  .filter(Boolean);
 const astroVersion = lockedVersion('astro');
 const yamlVersion = lockedVersion('js-yaml');
+const mcpSdkVersion = mcpLock.packages?.['node_modules/@modelcontextprotocol/sdk']?.version || '';
+const honoVersions = lockedVersions(mcpLock, '@hono/node-server');
+const fastUriVersions = [
+  ...lockedVersions(lock, 'fast-uri'),
+  ...lockedVersions(mcpLock, 'fast-uri'),
+];
 
 if (!atLeast(astroVersion, '7.1.0')) {
   fail(`Astro ${astroVersion || 'absent'} reste dans la plage GHSA-4g3v-8h47-v7g6`);
 }
 if (!atLeast(yamlVersion, '4.3.0')) {
   fail(`js-yaml ${yamlVersion || 'absent'} reste dans la plage GHSA-52cp-r559-cp3m`);
+}
+if (!atLeast(mcpSdkVersion, '1.30.0')) {
+  fail(`SDK MCP ${mcpSdkVersion || 'absent'} antérieur à la version maintenue attendue 1.30.0`);
+}
+if (mcpPackage.engines?.node !== '>=22'
+    || !mcpServerSource.includes('NODE_MAJOR < 22')
+    || !mcpDeploySource.includes('"$NODE_MAJOR" -lt 22')) {
+  fail('Le runtime MCP doit refuser les versions Node.js hors support antérieures à 22');
+}
+if (!honoVersions.length || honoVersions.some((version) => {
+  const [major, minor, patch] = version.split('.').map(Number);
+  return major === 2 && minor === 0 && patch <= 9;
+})) {
+  fail(`@hono/node-server vulnérable ou absent dans le lockfile MCP (${honoVersions.join(', ') || 'absent'})`);
+}
+if (mcpPackage.overrides?.['@hono/node-server'] !== honoVersions[0]) {
+  fail(`override @hono/node-server non aligné sur le lockfile MCP (${mcpPackage.overrides?.['@hono/node-server'] || 'absent'} / ${honoVersions[0] || 'absent'})`);
+}
+if (!fastUriVersions.length || fastUriVersions.some((version) => !atLeast(version, '3.1.4'))) {
+  fail(`fast-uri doit rester corrigé dans tous les lockfiles (${fastUriVersions.join(', ') || 'absent'})`);
 }
 
 const sourceFiles = await filesUnder(join(ROOT, 'src'), new Set(['.astro', '.js', '.mjs', '.ts']));
@@ -97,15 +131,41 @@ if (!/pagefind\.options\(\{\s*noWorker:\s*true\s*\}\)/.test(pagefindInit)) {
 }
 
 const apacheConfig = await readFile(join(ROOT, 'deploy/l0g.fr.apache.conf'), 'utf8');
+const mcpApacheConfig = await readFile(join(ROOT, 'mcp-server/deploy/apache-l0g-mcp.conf'), 'utf8');
+for (const directive of [
+  'ServerTokens Prod',
+  'ServerSignature Off',
+  'TraceEnable Off',
+  'RequestReadTimeout handshake=10-20,MinRate=500 header=10-30,MinRate=500 body=10,MinRate=500',
+  'Header always set X-XSS-Protection "0"',
+]) {
+  if (!apacheConfig.includes(directive)) fail(`Durcissement Apache manquant : ${directive}`);
+}
 if (!apacheConfig.includes('<LocationMatch "^/(agents\\.json|openapi\\.json|llms(?:-full(?:-en)?)?\\.txt)$">')) {
   fail('CORS public borné absent pour agents.json, openapi.json et llms*.txt');
 }
 if (!apacheConfig.includes('<Location "/api/mcp/compact">') || !apacheConfig.includes('http://127.0.0.1:8848/mcp/compact')) {
   fail('reverse proxy MCP compact absent');
 }
+for (const directive of ['ProxyRequests Off', 'ProxyPreserveHost On', 'ProxyAddHeaders Off']) {
+  if (!apacheConfig.includes(directive)) fail(`Durcissement proxy MCP manquant : ${directive}`);
+  if (!mcpApacheConfig.includes(directive)) fail(`Durcissement proxy MCP autonome manquant : ${directive}`);
+}
+if ((mcpApacheConfig.match(/RequestHeader set X-Forwarded-For "expr=%\{REMOTE_ADDR\}"/g) || []).length !== 2
+    || mcpApacheConfig.includes('%{REMOTE_ADDR}s')) {
+  fail('Le proxy MCP autonome doit remplacer X-Forwarded-For par l’adresse cliente Apache');
+}
 const compactLocation = apacheConfig.match(/<Location "\/api\/mcp\/compact">([\s\S]*?)<\/Location>/)?.[1] || '';
-if (!compactLocation.includes('Header always unset Access-Control-Allow-Origin') || !compactLocation.includes('<LimitExcept POST GET>')) {
-  fail('MCP compact doit rester sans CORS générique et borné à GET/POST');
+if (!compactLocation.includes('Header always unset Access-Control-Allow-Origin')
+    || !compactLocation.includes('<LimitExcept POST GET>')
+    || !compactLocation.includes('RequestHeader set X-Forwarded-For "expr=%{REMOTE_ADDR}"')
+    || !compactLocation.includes('RequestHeader unset Proxy')) {
+  fail('MCP compact doit rester sans CORS générique, borné à GET/POST et recevoir une IP proxy fiable');
+}
+const fullMcpLocation = apacheConfig.match(/<Location "\/api\/mcp">([\s\S]*?)<\/Location>/)?.[1] || '';
+if (!fullMcpLocation.includes('RequestHeader set X-Forwarded-For "expr=%{REMOTE_ADDR}"')
+    || !fullMcpLocation.includes('RequestHeader unset Proxy')) {
+  fail('MCP complet doit recevoir une IP proxy fiable et neutraliser Proxy');
 }
 const cspHeader = apacheConfig
   .match(/Header always set Content-Security-Policy "([\s\S]*?)"/i)?.[1]
@@ -228,6 +288,9 @@ process.stdout.write(`${JSON.stringify({
   ok: true,
   astroVersion,
   yamlVersion,
+  mcpSdkVersion,
+  honoVersions,
+  fastUriVersions,
   sourceFiles: sourceFiles.length,
   htmlFiles: htmlFiles.length,
   cssFiles: cssFiles.length,

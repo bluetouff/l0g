@@ -11,14 +11,24 @@ const failures = [];
 const pages = new Map();
 
 function decodeHtml(value) {
-  return String(value || '')
-    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)))
-    .replace(/&#([0-9]+);/g, (_, code) => String.fromCodePoint(Number.parseInt(code, 10)))
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'")
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>');
+  const named = new Map([
+    ['amp', '&'],
+    ['quot', '"'],
+    ['#39', "'"],
+    ['apos', "'"],
+    ['lt', '<'],
+    ['gt', '>'],
+  ]);
+  return String(value || '').replace(/&(?:#x[0-9a-f]+|#[0-9]+|amp|quot|#39|apos|lt|gt);/gi, (entity) => {
+    const name = entity.slice(1, -1).toLowerCase();
+    if (named.has(name)) return named.get(name);
+    const radix = name.startsWith('#x') ? 16 : 10;
+    const digits = name.slice(radix === 16 ? 2 : 1);
+    const codePoint = Number.parseInt(digits, radix);
+    if (!Number.isInteger(codePoint) || codePoint < 0 || codePoint > 0x10ffff
+        || (codePoint >= 0xd800 && codePoint <= 0xdfff)) return entity;
+    return String.fromCodePoint(codePoint);
+  });
 }
 
 function jsonLdObjects(value) {
@@ -270,6 +280,7 @@ for (const page of pages.values()) {
 
 const profile = pages.get('https://l0g.fr/about/');
 const profilePage = profile?.jsonLd.find((item) => item['@type'] === 'ProfilePage');
+const profileSameAs = new Set(profilePage?.mainEntity?.sameAs || []);
 assert(profile?.title === 'Bluetouff, auteur et analyste de l0g · l0g.fr', '/about/: title auteur incorrect');
 assert(profilePage?.mainEntity?.['@type'] === 'Person', '/about/: ProfilePage Person absent');
 assert(profilePage?.mainEntity?.['@id'] === 'https://l0g.fr/about/#bluetouff', '/about/: identifiant Person incorrect');
@@ -279,8 +290,8 @@ assert(
   '/about/: dateModified doit être un DateTime ISO 8601 avec fuseau horaire'
 );
 assert(
-  profilePage?.mainEntity?.sameAs?.includes('https://github.com/bluetouff')
-    && profilePage?.mainEntity?.sameAs?.includes('https://x.com/bluetouff'),
+  profileSameAs.has('https://github.com/bluetouff')
+    && profileSameAs.has('https://x.com/bluetouff'),
   '/about/: profils officiels sameAs incomplets'
 );
 assert(

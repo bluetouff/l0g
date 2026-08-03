@@ -24,6 +24,7 @@
  */
 // @ts-nocheck -- WebMCP est encore un draft sans types DOM stables.
 import { topics } from '../config/topics.ts';
+import { stripHtmlTags } from '../lib/html-utils.ts';
 
   const site = window.location.origin;
   const topicsList = topics.map((topic) => ({
@@ -50,7 +51,7 @@ import { topics } from '../config/topics.ts';
 
     // --- helpers ---
     function stripTags(s) {
-      return String(s || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      return stripHtmlTags(String(s || '')).replace(/\s+/g, ' ').trim();
     }
     // Réponse au format « content blocks » MCP, le plus interopérable pour la distillation.
     function reply(payload) {

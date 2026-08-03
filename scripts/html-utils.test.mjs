@@ -14,6 +14,7 @@ test('le scanner ignore le faux HTML contenu dans script et lit les attributs ci
 
 test('le texte brut retire les balises complètes sans avaler les comparaisons', () => {
   assert.equal(stripHtmlTags('1 < 2 <strong title=">">solide</strong>'), '1 < 2  solide ');
+  assert.doesNotMatch(stripHtmlTags('<scr<script>ipt>contenu</scr</script>ipt>'), /<script/i);
   assert.equal(removeHtmlElementBlocks('avant<figure><svg><text>x</text></svg></figure>après', 'figure'), 'avant après');
 });
 

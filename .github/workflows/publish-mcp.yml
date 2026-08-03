@@ -53,6 +53,9 @@ jobs:
           npm ci
           npm ci --prefix mcp-server --omit=dev
 
+      - name: Refuse vulnerable dependency trees
+        run: npm run test:dependencies
+
       - name: Build Agent Surface used by release tests
         env:
           L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive

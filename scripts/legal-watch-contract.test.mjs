@@ -58,7 +58,7 @@ test("publie les conditions Watch validées pour l’ouverture", async () => {
   assert.match(terms, /Justice \(CM2C\), 49 rue de Ponthieu, 75008 Paris/);
   assert.match(terms, /litiges@cm2c\.net/);
   assert.match(terms, /01 89 47 00 14/);
-  assert.match(terms, /https:\/\/www\.cm2c\.net\/declarer-un-litige\.php/);
+  assert.ok(terms.includes('https://www.cm2c.net/declarer-un-litige.php'));
   assert.match(terms, /https:\/\/watch\.l0g\.fr\/conditions/);
   assert.doesNotMatch(terms, /—/);
 

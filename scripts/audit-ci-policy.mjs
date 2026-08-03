@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const workflowsDir = join(root, '.github', 'workflows');
+const rootPackage = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
 
 function requireCondition(condition, message) {
   if (!condition) throw new Error(`CI policy: ${message}`);
@@ -20,6 +21,22 @@ const workflows = new Map(
     ]),
   ),
 );
+
+for (const [name, source] of workflows) {
+  const actionRefs = [...source.matchAll(/\buses:\s+([^\s#]+)/g)].map((match) => match[1]);
+  const mutableRefs = actionRefs.filter((reference) => !/@[0-9a-f]{40}$/i.test(reference));
+  requireCondition(
+    mutableRefs.length === 0,
+    `${name}: actions non épinglées sur un SHA immuable (${mutableRefs.join(', ')})`,
+  );
+
+  const checkoutCount = actionRefs.filter((reference) => reference.startsWith('actions/checkout@')).length;
+  const hardenedCheckoutCount = (source.match(/persist-credentials:\s*false/g) || []).length;
+  requireCondition(
+    checkoutCount === hardenedCheckoutCount,
+    `${name}: chaque checkout doit désactiver la persistance des credentials`,
+  );
+}
 
 const scheduled = [...workflows]
   .filter(([, source]) => /^\s*schedule:\s*$/m.test(source) || /^\s*cron:\s*/m.test(source))
@@ -40,6 +57,14 @@ requireCondition(
 requireCondition(
   build.includes('npm run test:ci-policy'),
   'le build doit vérifier la politique CI avant publication',
+);
+requireCondition(
+  build.includes('npm run test:dependencies'),
+  'le build doit refuser les dépendances vulnérables avant publication',
+);
+requireCondition(
+  build.includes('npm run build') && rootPackage.scripts?.build?.includes('npm run test:secrets'),
+  'le build doit analyser les secrets accidentels dans les sources et artefacts',
 );
 const productionInstalls = build
   .split('\n')
@@ -67,6 +92,12 @@ requireCondition(risk.includes('paths:'), 'le contrôle risque doit rester lié 
 requireCondition(
   risk.includes('cancel-in-progress: true'),
   'les contrôles risque obsolètes doivent être annulés',
+);
+
+const mcpRelease = workflows.get('publish-mcp.yml') || '';
+requireCondition(
+  mcpRelease.includes('npm run test:dependencies'),
+  'la release MCP doit réauditer ses dépendances avant publication',
 );
 
 process.stdout.write(
