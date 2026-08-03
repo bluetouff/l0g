@@ -19,6 +19,7 @@ export type SignalEvidenceTier = 'attested-archive' | 'operational-archive' | 'c
 type RiskIndexInput = {
   key?: string;
   value?: number;
+  rawValue?: number;
   scale?: number;
   level?: string;
   tone?: string;
@@ -619,6 +620,7 @@ function currentObservations(computedAt: string): SignalObservation[] {
       const signalPayload = {
         key,
         value: item.value ?? null,
+        rawValue: item.rawValue ?? null,
         scale: item.scale ?? 100,
         level: item.level ?? null,
         tone: item.tone ?? null,
@@ -641,7 +643,13 @@ function currentObservations(computedAt: string): SignalObservation[] {
         retrievedAt,
         computedAt,
         value: typeof item.value === 'number' ? item.value : null,
-        rawValue: typeof provenance?.scoreRaw === 'number' ? provenance.scoreRaw : typeof item.value === 'number' ? item.value : null,
+        rawValue: typeof item.rawValue === 'number'
+          ? item.rawValue
+          : typeof provenance?.scoreRaw === 'number'
+            ? provenance.scoreRaw
+            : typeof item.value === 'number'
+              ? item.value
+              : null,
         scale: typeof item.scale === 'number' ? item.scale : 100,
         level: item.level ?? null,
         tone: item.tone ?? null,

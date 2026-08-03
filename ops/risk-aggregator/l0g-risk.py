@@ -334,7 +334,14 @@ def idx_us(src, attempt_at):
         os.path.getmtime(US_PARQUET), tz=datetime.timezone.utc
     ).isoformat(timespec="seconds").replace("+00:00", "Z")
     return quality_fields(
-        {"key": "us", "value": value, "scale": 100, "level": level, "tone": tone},
+        {
+            "key": "us",
+            "value": value,
+            "rawValue": round(zscore, 8),
+            "scale": 100,
+            "level": level,
+            "tone": tone,
+        },
         "us",
         attempt_at,
         modified,

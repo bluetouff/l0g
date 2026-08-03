@@ -230,6 +230,18 @@ export const editorialProtocol = {
 
 export const editorialChangelog: EditorialChangelogEntry[] = [
   {
+    date: '2026-08-03',
+    title: 'US Macro v2 : rupture de série explicitée',
+    kind: 'méthode',
+    summary:
+      'Le passage du signal US Macro normalisé de 41 à 31 coïncide avec l’activation du calculateur v2 et ne décrit pas une détente macro en une journée. La méthode utilise désormais le vrai glissement annuel calendaire pour les séries non stationnaires, borne les composantes, calibre le score composite et remplace la série BTFP discontinue. Les points antérieurs restent legacy et ne sont pas comparables directement à la v2.',
+    links: [
+      { label: 'méthodologie US', href: '/methodologie/us-macro/' },
+      { label: 'série datée', href: '/series/barometre-stress-macro-us/' },
+      { label: 'code source', href: 'https://github.com/bluetouff/macro_dashboard' },
+    ],
+  },
+  {
     date: '2026-07-18',
     title: 'Revue canonique sélective et dépendances signal-claim fermées',
     kind: 'méthode',

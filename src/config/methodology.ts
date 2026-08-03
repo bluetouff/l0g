@@ -579,6 +579,8 @@ export const methodologyPages: MethodologyPage[] = [
       "Un choc de marché peut précéder les séries macro mensuelles.",
       "La conversion 0-100 est une normalisation l0g, pas l'échelle native du dashboard.",
       "Le score 0-100 sert au bandeau de lecture ; il ne rend pas le risque US statistiquement équivalent aux autres instruments.",
+      "La mise en production de la v2 le 3 août 2026 constitue une rupture de série : le passage normalisé de 41 à 31 reflète le changement de méthode et ne doit pas être lu comme une détente macro en une journée.",
+      "Les points antérieurs à la v2 restent visibles comme historique legacy, mais aucune variation ne doit être calculée à travers cette rupture.",
     ],
     useFor: [
       "Situer le régime macro américain en un coup d'œil.",

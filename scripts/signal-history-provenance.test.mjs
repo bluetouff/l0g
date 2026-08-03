@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import { dirname, resolve } from 'node:path';
 import test from 'node:test';
 
@@ -56,5 +57,40 @@ test('la méthode opérationnelle est attribuée uniquement à la révision prod
     assert.equal(divergent?.calculatorRevision, null);
   } finally {
     await Promise.all([rm(historyPath, { force: true }), rm(metaPath, { force: true })]);
+  }
+});
+
+test('la valeur native courante reste distincte de la normalisation 0-100', async () => {
+  const temporary = await mkdtemp(resolve(tmpdir(), 'l0g-signal-history-'));
+  const previousCwd = process.cwd();
+  await mkdir(resolve(temporary, 'public'), { recursive: true });
+  await writeFile(resolve(temporary, 'public/risk.json'), JSON.stringify({
+    updated: '2026-08-03T08:00:00Z',
+    indices: [{
+      key: 'us',
+      value: 31,
+      rawValue: 0.04,
+      scale: 100,
+      level: 'Modéré',
+      tone: 'moderate',
+      sourceStatus: 'ok',
+      qualityStatus: 'nominal',
+      fallbackUsed: false,
+      sourceUpdatedAt: '2026-08-03T04:03:17Z',
+    }],
+  }));
+
+  try {
+    process.chdir(temporary);
+    const { buildSignalHistorySurface } = await import(`../src/lib/signal-history.ts?raw=${process.pid}`);
+    const current = buildSignalHistorySurface().observations.find((item) => (
+      item.instrument === 'us' && item.evidenceTier === 'current-snapshot'
+    ));
+
+    assert.equal(current?.value, 31);
+    assert.equal(current?.rawValue, 0.04);
+  } finally {
+    process.chdir(previousCwd);
+    await rm(temporary, { force: true, recursive: true });
   }
 });

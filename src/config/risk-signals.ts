@@ -75,6 +75,8 @@ export const riskSignalMeta: Record<RiskSignalKey, RiskSignalMeta> & Record<stri
         'Le score natif est un indicateur relatif, pas une probabilité de récession.',
         'La calibration est in-sample sur quatre récessions NBER et pénalise les faux positifs hors récession.',
         'La reconstruction utilise les vintages FRED actuels et ne constitue pas un historique point-in-time ALFRED.',
+        'La méthode v2 crée une rupture au 3 août 2026 : le passage normalisé de 41 à 31 ne représente pas une détente macro en une journée.',
+        'Les points antérieurs à la v2 restent des preuves legacy, mais ne sont pas comparables directement aux valeurs calculées par la v2.',
       ],
     },
   },

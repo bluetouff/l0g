@@ -7,6 +7,8 @@ import json
 import pathlib
 import tempfile
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 
 ROOT = pathlib.Path(__file__).parent
@@ -27,6 +29,26 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_us_normalization_keeps_methodology_anchors(self):
+        self.assertEqual(RISK._us_zscore_to_100(0.0), 30)
+        self.assertEqual(RISK._us_zscore_to_100(0.04), 31)
+        self.assertEqual(RISK._us_zscore_to_100(1.5), 55)
+        self.assertEqual(RISK._us_zscore_to_100(2.5), 75)
+
+    def test_us_index_exposes_native_zscore_before_normalization(self):
+        result = SimpleNamespace(returncode=0, stdout="0.04\n", stderr="")
+        with (
+            patch.object(RISK.subprocess, "run", return_value=result),
+            patch.object(RISK.os.path, "getmtime", return_value=1_785_728_197),
+        ):
+            current = RISK.idx_us(
+                {"key": "us", "url": "file:///snapshot.parquet"},
+                "2026-08-03T08:00:00Z",
+            )
+        self.assertEqual(current["rawValue"], 0.04)
+        self.assertEqual(current["value"], 31)
+        self.assertEqual(current["sourceStatus"], "ok")
+
     def test_naive_timestamp_is_rejected(self):
         self.assertIsNone(RISK.iso_z("2026-07-21 07:53"))
 
