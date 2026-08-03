@@ -6,7 +6,24 @@ TMP="$(mktemp -d)"
 trap 'rm -rf -- "$TMP"' EXIT
 
 bash -n "${ROOT}/deploy/deploy.sh" "${ROOT}/deploy/activate-worker.sh" \
-  "${ROOT}/deploy/activate-apache-vhost.sh" "${ROOT}/deploy/install-human-traffic.sh"
+  "${ROOT}/deploy/activate-apache-vhost.sh" "${ROOT}/deploy/install-human-traffic.sh" \
+  "${ROOT}/deploy/repair-zen-backup-manifest.sh"
+
+VENV_FIXTURE="${TMP}/venv-fixture"
+mkdir -p "${VENV_FIXTURE}/lib/python3.13/site-packages/demo_package-1.2.3.dist-info"
+: >"${VENV_FIXTURE}/pyvenv.cfg"
+cat >"${VENV_FIXTURE}/lib/python3.13/site-packages/demo_package-1.2.3.dist-info/METADATA" <<'EOF'
+Metadata-Version: 2.1
+Name: demo-package
+Version: 1.2.3
+EOF
+printf '%s\n' 'raise SystemExit("code du virtualenv exécuté")' \
+  >"${VENV_FIXTURE}/lib/python3.13/site-packages/sitecustomize.py"
+python3 "${ROOT}/deploy/zen-venv-inventory.py" "$VENV_FIXTURE" \
+  >"${TMP}/venv-inventory.txt"
+grep -Fxq 'demo-package==1.2.3' "${TMP}/venv-inventory.txt"
+grep -Fq '/usr/local/libexec/zen-venv-inventory "$v"' \
+  "${ROOT}/deploy/repair-zen-backup-manifest.sh"
 
 grep -Fq 'AuthUserFile /etc/apache2/l0g-stats.htpasswd' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
