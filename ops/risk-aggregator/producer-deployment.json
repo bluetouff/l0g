@@ -30,15 +30,35 @@
     },
     "eu": {
       "repository": "https://github.com/bluetouff/euro-macro-dashboard",
-      "revision": "88613ecff7f23b526c652ed6b30b14aa73090263",
+      "revision": "ff4503f7c4acb777946b3df7724c9573deb6543d",
       "files": [
         {
           "path": "/opt/euromacro/build_snapshot.py",
-          "sha256": "f533469a300303e8eb6473333bb629415441387a6f5c88785b828b7729b32741"
+          "sha256": "e3ab3e3303719de85fe025cb69301199632d326328141a1d7814ed450662a7c9"
+        },
+        {
+          "path": "/opt/euromacro/catalog.py",
+          "sha256": "f5528e88961167901564ddd09e67b122a292e4a202a3fc7b9a20dd36b5a24a75"
+        },
+        {
+          "path": "/opt/euromacro/data.py",
+          "sha256": "407ca1b68b0ea259290e955e15f180678ae311f3786e0e65d2d9604efcae22aa"
+        },
+        {
+          "path": "/opt/euromacro/snapshot_contract.py",
+          "sha256": "d1e27f0e8b90995095b862102582a0e68a1c4869cb9c761f26a63a2b5522d477"
+        },
+        {
+          "path": "/opt/euromacro/validate_snapshot.py",
+          "sha256": "333ab33c406c0f5419b11506f7e9fe54d17905b67ea241156c95b4d47be42fcd"
+        },
+        {
+          "path": "/opt/euromacro/requirements-prod.txt",
+          "sha256": "fb192228f3c8ba444a10b148552c7f38e4bba6806e9d6d40cea7e57b3b175d89"
         },
         {
           "path": "/opt/euromacro/deploy/refresh.sh",
-          "sha256": "a48c2c1ee60d27f875899bdedb89f7af5aebe6883ff434b5126997926bd7ff5d"
+          "sha256": "652642462169f87b47dffaf8dbe44ec8c4888747f836ebe2600db0a02b880544"
         }
       ]
     },

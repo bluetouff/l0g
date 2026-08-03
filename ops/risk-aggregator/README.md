@@ -58,7 +58,10 @@ doit donc modifier ensemble sa révision et les empreintes de ses points d'entr�
 et dépendances locales.
 
 Le journal opérationnel de schéma 3 archive aussi, pour chaque signal, le dépôt,
-la révision et son statut de déclaration. La surface canonique n'attribue une
+la révision déclarée, la révision publiée par le producteur quand elle existe et
+son statut de déclaration. Pour Euro, l’agrégateur refuse désormais un
+`source_sha` absent ou différent du manifeste : un déploiement indépendant ne
+peut plus être présenté sous l’ancienne provenance. La surface canonique n'attribue une
 version de méthode que si ces champs correspondent exactement à ce manifeste ;
 les anciennes lignes restent explicitement non versionnées.
 
@@ -95,13 +98,16 @@ sudo ops/risk-aggregator/activate-zen.sh "$revision" \
   /chemin/stage/debt-risk-radar
 ```
 
-Le producteur Euro dispose d'un activateur ciblé. Il atteste le hash de
-`build_snapshot.py`, sauvegarde le générateur et les snapshots actifs, exige un
-`generated_at` UTC explicite, puis active l'agrégateur avec la même révision :
+Le producteur Euro dispose d'un activateur coordonné. Une mise à jour partielle
+de `build_snapshot.py` est interdite : l’activateur atteste ensemble le
+générateur, le catalogue, le moteur de données, le contrat, le validateur, les
+dépendances déclarées et `refresh.sh`. Il sauvegarde le code et les snapshots
+actifs, écrit le SHA producteur déclaré dans `DEPLOYED_SHA`, exige un snapshot
+UTC de qualité nominale portant ce même SHA, puis active l'agrégateur :
 
 ```sh
 sudo ops/risk-aggregator/activate-euromacro-zen.sh "$revision" \
-  /chemin/stage/euromacro/build_snapshot.py
+  /chemin/stage/euromacro-release
 ```
 
 Le contrôle préliminaire échoue volontairement si un producteur n'a pas encore

@@ -90,6 +90,7 @@ type RiskSnapshotInput = {
     producerRepository?: string;
     producerRevision?: string | null;
     producerRevisionStatus?: string;
+    sourceRevision?: string | null;
   }>;
   provenance?: Record<string, Record<string, unknown>>;
 };
@@ -2909,6 +2910,7 @@ export function buildOpenApiContract() {
             producerRepository: { type: 'string', format: 'uri' },
             producerRevision: { type: ['string', 'null'] },
             producerRevisionStatus: { enum: ['reported', 'unreported'] },
+            sourceRevision: { type: ['string', 'null'], pattern: '^[a-f0-9]{40}$' },
             calculation: {
               anyOf: [
                 {

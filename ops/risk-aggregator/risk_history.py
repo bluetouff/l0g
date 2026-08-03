@@ -64,6 +64,7 @@ def _flatten(risk):
         record[f"{key}_producer_repository"] = item.get("producerRepository")
         record[f"{key}_producer_revision"] = item.get("producerRevision")
         record[f"{key}_producer_revision_status"] = item.get("producerRevisionStatus")
+        record[f"{key}_source_revision"] = item.get("sourceRevision")
     record["conf_count"] = confluence.get("count")
     record["conf_conviction"] = confluence.get("conviction")
     record["conf_top_ticker"] = top.get("ticker")

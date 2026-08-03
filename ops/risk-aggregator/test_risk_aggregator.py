@@ -49,6 +49,42 @@ class AggregatorContractTest(unittest.TestCase):
         self.assertEqual(current["value"], 31)
         self.assertEqual(current["sourceStatus"], "ok")
 
+    def test_euro_revision_matches_the_public_snapshot(self):
+        revision = "f" * 40
+        snapshot = {
+            "generated_at": "2026-08-03T05:55:26Z",
+            "source_sha": revision,
+            "global_score": 41.4,
+            "regime": {"label": "Expansion", "color": "#00a878"},
+        }
+        with (
+            patch.object(RISK, "fetch_json", return_value=snapshot),
+            patch.dict(RISK.os.environ, {"L0G_EU_REVISION": revision}),
+        ):
+            current = RISK.idx_euro(
+                {"key": "eu", "url": "https://euro.example/snapshot.json"},
+                "2026-08-03T08:00:00Z",
+            )
+        self.assertEqual(current["sourceRevision"], revision)
+        self.assertEqual(current["producerRevision"], revision)
+
+    def test_euro_revision_drift_fails_closed(self):
+        snapshot = {
+            "generated_at": "2026-08-03T05:55:26Z",
+            "source_sha": "e" * 40,
+            "global_score": 41.4,
+            "regime": {"label": "Expansion", "color": "#00a878"},
+        }
+        with (
+            patch.object(RISK, "fetch_json", return_value=snapshot),
+            patch.dict(RISK.os.environ, {"L0G_EU_REVISION": "f" * 40}),
+        ):
+            with self.assertRaisesRegex(ValueError, "différente du manifeste"):
+                RISK.idx_euro(
+                    {"key": "eu", "url": "https://euro.example/snapshot.json"},
+                    "2026-08-03T08:00:00Z",
+                )
+
     def test_yen_freshness_uses_verified_check_without_republishing_unchanged_data(self):
         data = {
             "generated": "2026-08-02T16:15:24Z",
@@ -136,6 +172,7 @@ class AggregatorContractTest(unittest.TestCase):
         for current in payload["indices"]:
             current["producerRevision"] = f"{current['key']}-revision"
             current["producerRevisionStatus"] = "reported"
+            current["sourceRevision"] = f"{current['key']}-source-revision"
         with tempfile.TemporaryDirectory() as directory:
             self.assertTrue(history.append_snapshot(directory, payload))
             self.assertFalse(history.append_snapshot(directory, payload))
@@ -146,6 +183,7 @@ class AggregatorContractTest(unittest.TestCase):
             self.assertEqual(row["us_producer_repository"], "https://github.com/bluetouff/macro_dashboard")
             self.assertEqual(row["us_producer_revision"], "us-revision")
             self.assertEqual(row["us_producer_revision_status"], "reported")
+            self.assertEqual(row["us_source_revision"], "us-source-revision")
             manifest = json.loads((pathlib.Path(directory) / "index.json").read_text())
             self.assertEqual(manifest["schema"], "3")
             self.assertIn("us_producer_revision", manifest["columns"])

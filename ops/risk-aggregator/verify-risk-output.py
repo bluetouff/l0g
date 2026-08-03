@@ -55,6 +55,8 @@ def main() -> int:
         expected_revision = (manifest.get("producers") or {}).get(key, {}).get("revision")
         if item.get("producerRevision") != expected_revision or item.get("producerRevisionStatus") != "reported":
             errors.append(f"{key}: révision producteur non publiée")
+        if key == "eu" and item.get("sourceRevision") != expected_revision:
+            errors.append("eu: révision du snapshot différente du manifeste")
         for field in ("sourceUpdatedAt", "lastAttemptAt", "lastSuccessAt"):
             if not item.get(field):
                 errors.append(f"{key}: {field} absent")

@@ -21,6 +21,16 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
   }
   assert.equal(new Set(paths).size, paths.length, 'un fichier actif ne doit appartenir qu’à un producteur');
   assert.ok(paths.includes('/opt/euromacro/build_snapshot.py'), 'le générateur Euro doit être attesté');
+  for (const path of [
+    '/opt/euromacro/catalog.py',
+    '/opt/euromacro/data.py',
+    '/opt/euromacro/snapshot_contract.py',
+    '/opt/euromacro/validate_snapshot.py',
+    '/opt/euromacro/requirements-prod.txt',
+    '/opt/euromacro/deploy/refresh.sh',
+  ]) {
+    assert.ok(paths.includes(path), `la dépendance Euro doit être attestée: ${path}`);
+  }
 });
 
 test('la configuration versionnée sert les fichiers vivants et neutralise les anciens scripts', async () => {
@@ -65,7 +75,11 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(activator.indexOf('check_stage energie') < activator.indexOf('systemctl restart energie-snapshot.service'));
   assert.ok(activator.includes('/var/www/html/energie/snapshot.json'));
   assert.ok(!activator.includes('/opt/energie/web/snapshot.json'));
-  assert.ok(euroActivator.indexOf('sha256sum "$EURO_STAGE"') < euroActivator.indexOf('systemctl restart euromacro-snapshot.service'));
+  assert.ok(euroActivator.includes('RUNTIME_FILES=('), 'la release Euro doit être validée comme un lot');
+  assert.ok(euroActivator.indexOf('sha256sum "$source"') < euroActivator.indexOf('systemctl restart euromacro-snapshot.service'));
+  assert.ok(euroActivator.includes('d.get("source_sha") == sys.argv[1]'));
+  assert.ok(euroActivator.includes('d.get("quality") or {}).get("status") == "ok"'));
+  assert.ok(euroActivator.indexOf('systemctl stop euromacro-snapshot.timer') < euroActivator.indexOf('install -o euromacro'));
   assert.ok(euroActivator.indexOf('systemctl restart euromacro-snapshot.service') < euroActivator.indexOf('install-server.sh'));
   assert.ok(euroActivator.includes('/var/www/html/euromacro/snapshot.json'));
   const debtSchema = agentSurface.slice(

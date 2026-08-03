@@ -284,6 +284,12 @@ def _tone_from_hex(value, fallback):
 
 def idx_euro(src, attempt_at):
     data = fetch_json(src["url"])
+    source_revision = str(data.get("source_sha") or "").strip().lower()
+    if not re.fullmatch(r"[a-f0-9]{40}", source_revision):
+        raise ValueError("source_sha euro absent ou invalide")
+    declared_revision = os.environ.get("L0G_EU_REVISION") or ""
+    if declared_revision and source_revision != declared_revision:
+        raise ValueError("révision publiée par euro différente du manifeste")
     score = data.get("global_score")
     if score is None:
         raise ValueError("global_score manquant")
@@ -291,7 +297,7 @@ def idx_euro(src, attempt_at):
     regime = data.get("regime") or {}
     raw = (regime.get("label") or "").split("/")[0].strip()
     label = re.sub(r"[^\w +().\-]", "", raw)[:24] or level_uniform(value)[0]
-    return quality_fields(
+    item = quality_fields(
         {
             "key": "eu",
             "value": value,
@@ -304,6 +310,8 @@ def idx_euro(src, attempt_at):
         source_date(data),
         src["url"],
     )
+    item["sourceRevision"] = source_revision
+    return item
 
 
 US_WARNING, US_DANGER = 1.5, 2.5
