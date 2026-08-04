@@ -225,7 +225,14 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 </EnglishGuidesLayout>
 
 <style>
-  .en-article-shell { display: grid; gap: 2rem; align-items: start; }
+  .en-article-shell {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    gap: 2rem;
+    align-items: start;
+  }
+  .en-article-shell > article { width: 100%; min-width: 0; }
   .en-article-sidebar { min-width: 0; }
   .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
   .read-progress > span {
@@ -243,6 +250,13 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     font-size: 0.66rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+  .post-meta,
+  .post-tags { min-width: 0; }
+  .post-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0;
   }
   .en-trust span,
   .en-trust a {
