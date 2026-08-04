@@ -2,7 +2,7 @@
 title: "Le boom américain de l'IA est-il vraiment américain ?"
 description: "Les États-Unis concentrent la demande, le logiciel et les centres de données, mais leur boom de l'IA repose sur une chaîne matérielle largement importée. Décomposition de la valeur réellement produite sur le territoire."
 pubDate: 2026-08-04T10:35:00+02:00
-updatedDate: 2026-08-04T10:35:00+02:00
+updatedDate: 2026-08-04T11:00:00+02:00
 tags: ["ia", "états-unis", "commerce", "investissement"]
 draft: false
 quickTake:
@@ -51,7 +51,6 @@ Au premier trimestre 2026, les quatre composantes d'investissement du proxy ajou
     <text x="628" y="145" fill="#b8fff5">+0,99</text>
     <polygon points="495,122 501,128 495,134 489,128" fill="#f5b13d"/>
     <text x="506" y="121" fill="#f5b13d" font-weight="700">net +0,50</text>
-
     <text x="32" y="217" fill="#d6d9df">2025 T2</text>
     <rect x="367.5" y="196" width="2.5" height="28" rx="2" fill="#ff4d87"/>
     <rect x="370" y="196" width="255" height="28" rx="4" fill="#5eead4"/>
@@ -59,7 +58,6 @@ Au premier trimestre 2026, les quatre composantes d'investissement du proxy ajou
     <text x="635" y="215" fill="#b8fff5">+1,02</text>
     <polygon points="622.5,192 628.5,198 622.5,204 616.5,198" fill="#f5b13d"/>
     <text x="634" y="191" fill="#f5b13d" font-weight="700">net +1,01</text>
-
     <text x="32" y="287" fill="#d6d9df">2025 T3</text>
     <rect x="367.5" y="266" width="2.5" height="28" rx="2" fill="#ff4d87"/>
     <rect x="370" y="266" width="107.5" height="28" rx="4" fill="#5eead4"/>
@@ -67,7 +65,6 @@ Au premier trimestre 2026, les quatre composantes d'investissement du proxy ajou
     <text x="487.5" y="285" fill="#b8fff5">+0,43</text>
     <polygon points="475,262 481,268 475,274 469,268" fill="#f5b13d"/>
     <text x="486" y="261" fill="#f5b13d" font-weight="700">net +0,42</text>
-
     <text x="32" y="357" fill="#d6d9df">2025 T4</text>
     <rect x="217.5" y="336" width="152.5" height="28" rx="4" fill="#ff4d87"/>
     <rect x="370" y="336" width="187.5" height="28" rx="4" fill="#5eead4"/>
@@ -75,7 +72,6 @@ Au premier trimestre 2026, les quatre composantes d'investissement du proxy ajou
     <text x="567.5" y="355" fill="#b8fff5">+0,75</text>
     <polygon points="405,332 411,338 405,344 399,338" fill="#f5b13d"/>
     <text x="416" y="331" fill="#f5b13d" font-weight="700">net +0,14</text>
-
     <text x="32" y="427" fill="#d6d9df">2026 T1</text>
     <rect x="257.5" y="406" width="112.5" height="28" rx="4" fill="#ff4d87"/>
     <rect x="370" y="406" width="295" height="28" rx="4" fill="#5eead4"/>
