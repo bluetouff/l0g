@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { open, readdir, stat } from 'node:fs/promises';
 import { basename, extname, join, relative } from 'node:path';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
@@ -24,16 +24,21 @@ function lineNumber(source, index) {
 }
 
 async function scanFile(path, displayName) {
-  const metadata = await stat(path);
-  if (!metadata.isFile() || metadata.size > MAX_TEXT_BYTES) return;
-  const buffer = await readFile(path);
-  if (buffer.includes(0)) return;
-  const source = buffer.toString('utf8');
-  for (const [rule, pattern] of rules) {
-    pattern.lastIndex = 0;
-    for (const match of source.matchAll(pattern)) {
-      findings.push(`${displayName}:${lineNumber(source, match.index)} (${rule})`);
+  const handle = await open(path, 'r');
+  try {
+    const metadata = await handle.stat();
+    if (!metadata.isFile() || metadata.size > MAX_TEXT_BYTES) return;
+    const buffer = await handle.readFile();
+    if (buffer.length > MAX_TEXT_BYTES || buffer.includes(0)) return;
+    const source = buffer.toString('utf8');
+    for (const [rule, pattern] of rules) {
+      pattern.lastIndex = 0;
+      for (const match of source.matchAll(pattern)) {
+        findings.push(`${displayName}:${lineNumber(source, match.index)} (${rule})`);
+      }
     }
+  } finally {
+    await handle.close();
   }
 }
 
