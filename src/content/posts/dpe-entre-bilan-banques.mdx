@@ -1,0 +1,122 @@
+---
+title: "Le DPE entre dans le bilan des banques"
+description: "Le DPE ne fixe pas un taux. Mais la BCE mesure déjà un durcissement du crédit aux logements énergivores et un assouplissement pour les rénovés."
+pubDate: 2026-08-05T12:42:50+02:00
+updatedDate: 2026-08-05T12:42:50+02:00
+tags: ["immobilier", "crédit", "climat", "banques", "europe"]
+draft: false
+---
+
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*Un [DPE](/glossaire/dpe/) ne dicte pas le taux d'un prêt immobilier. Il ne permet pas non plus de prédire le prix d'une maison. Mais il entre progressivement dans le raisonnement des banques. Dans son enquête de juillet 2026, la Banque centrale européenne (BCE) constate que les banques de la zone euro ont assoupli leurs critères internes pour les logements déjà performants ou destinés à le devenir, et les ont durcis pour les logements qui resteront peu performants. Le signal est réel. Sa portée doit être décrite avec précision : il s'agit de règles internes de décision, pas d'un barème public des taux ni d'une carte des refus de crédit.*
+
+## Le DPE est une donnée juridique avant d'être un signal financier
+
+Le diagnostic de performance énergétique, ou DPE, classe un logement de A à G selon sa performance énergétique et climatique. En France, son numéro d'identification délivré après transmission à l'ADEME est indispensable à sa validité. Les annonces de vente ou de location doivent afficher les lettres des classements et, pour les logements concernés, la mention de consommation excessive. Elles affichent aussi une fourchette de facture énergétique théorique. Cette dernière est établie pour un usage standard : le ministère rappelle qu'elle ne peut pas être comparée à la facture réelle d'un ménage, qui dépend notamment de la météo, des occupants et de leurs usages.[^dpe]
+
+Cette distinction paraît administrative, mais elle évite une erreur fréquente. Un DPE n'est pas le budget réel d'un foyer et encore moins un score de solvabilité. Il devient pertinent pour le crédit parce qu'un achat immobilier combine plusieurs éléments : capacité de remboursement, coût des travaux, possibilité de louer, valeur du bien qui sert de garantie et conditions de revente. Le classement énergétique peut informer certains de ces éléments ; il ne les résume pas.
+
+La réglementation française rend déjà cette information plus concrète. Les loyers des logements F et G sont gelés depuis août 2022. Les logements classés G sont progressivement exclus du marché locatif depuis 2025, les F le seront à partir de 2028 et les E à partir de 2034, sous les conditions prévues par les textes.[^dpe] Cela ne rend pas un logement invendable ni automatiquement non finançable. Cela ajoute, pour un propriétaire bailleur comme pour un acquéreur, une question de travaux et de calendrier.
+
+## La BCE observe une bifurcation des critères, pas une grille de taux
+
+La source la plus nette est l'[enquête trimestrielle de la BCE sur la distribution du crédit](https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/ecb.blssurvey2026q2~baa6b60429.en.html), menée du 15 au 30 juin 2026 auprès de 159 banques, avec un taux de réponse de 100 %. Elle demande aux banques si le climat et la performance énergétique modifient leurs *credit standards*, c'est-à-dire leurs lignes directrices et critères internes d'approbation. Ce ne sont pas les termes effectivement signés dans chaque contrat.[^bls]
+
+Sur les douze mois allant du troisième trimestre 2025 au deuxième trimestre 2026, le solde net des banques répondantes est de -20 pour les bâtiments à bonne ou haute performance énergétique, actuelle ou visée grâce au prêt demandé. Il est de +14 pour les bâtiments à faible performance persistante, sans amélioration ou avec une amélioration limitée. Dans cette enquête, un chiffre négatif signifie qu'il y a davantage de banques qui signalent un assouplissement qu'un durcissement ; un chiffre positif signifie l'inverse. Il ne s'agit ni d'une baisse de 20 % des taux, ni de 20 % des crédits concernés.[^bls]
+
+<InfographicBars
+  title="Crédit : l'énergie crée un écart"
+  subtitle="Zone euro, réponses nettes des banques"
+  max={30}
+  compact
+  items={[
+    { label: "Bonne ou haute : assouplissement", value: 20, valueLabel: "-20", tone: "signal" },
+    { label: "Faible persistante : durcissement", value: 14, valueLabel: "+14", tone: "accent" },
+    { label: "Prévision performants : assouplissement", value: 26, valueLabel: "-26", tone: "blue" },
+    { label: "Prévision faible : durcissement", value: 12, valueLabel: "+12", tone: "amber" },
+  ]}
+  notes={[
+    "- : plus de banques assouplissent.",
+    "+ : plus de banques durcissent.",
+  ]}
+  source="Source : BCE, BLS, tableau 19, 21 juillet 2026."
+  caption="Les barres représentent des soldes nets de réponses de banques, et non des taux moyens, des volumes de prêts ou des probabilités de refus."
+/>
+
+La BCE emploie une classification européenne plus large que le seul DPE français. Elle définit la bonne ou haute performance comme un certificat énergétique A à C, présent ou visé après le prêt, généralement pour un bâtiment neuf, moderne ou profondément rénové. La faible performance correspond à D à G lorsque le prêt n'apporte aucune amélioration substantielle. En l'absence de certificat, une banque peut utiliser l'âge du bâtiment, une rénovation importante ou la consommation d'énergie comme indicateur indirect.[^bls]
+
+Cette précision change la lecture française. Les classes F et G, les « passoires thermiques », sont bien dans le groupe bas de l'enquête BCE, mais le groupe couvre aussi D et E. Inversement, un projet de rénovation peut faire passer un bien dans le groupe favorable avant même que les travaux soient achevés. L'enquête ne permet donc pas d'affirmer qu'une banque française facture un écart donné entre deux classes de DPE, ni qu'elle refuse un dossier F ou G.
+
+La demande de crédit suit la même direction, avec le même statut d'enquête. Le solde net des banques qui constatent une hausse de la demande liée au climat atteint +28 pour les bâtiments déjà performants ou ciblant une bonne performance, et -15 pour les bâtiments durablement peu performants. Les banques interrogées prévoient encore +22 et -7 respectivement pour les douze mois suivants.[^bls]
+
+## Deux risques climatiques, deux mécanismes de crédit
+
+Il serait tentant de résumer ce résultat à la seule isolation. La BCE invite à ne pas le faire. Elle sépare le risque de transition, lié aux normes, aux coûts d'énergie et aux travaux nécessaires, du risque physique, lié par exemple à des événements météorologiques ou à la localisation du bien. Le premier peut favoriser le financement d'une rénovation ; le second peut peser sur la capacité de remboursement ou la valeur de la garantie, quel que soit le DPE.[^bls]
+
+Pour les crédits immobiliers aux ménages, le risque physique est le principal facteur climatique de durcissement signalé par les banques : +12 en solde net sur les douze mois observés. La performance énergétique du bâtiment a, au total, un effet net d'assouplissement de -5. Les deux chiffres ne se compensent pas logement par logement. Ils résument des réponses agrégées, sur des mécanismes distincts.
+
+<InfographicBars
+  title="Deux risques, deux effets de crédit"
+  subtitle="Zone euro, réponses nettes des banques"
+  max={15}
+  compact
+  items={[
+    { label: "Risque physique : durcissement", value: 12, valueLabel: "+12", tone: "accent" },
+    { label: "Performance énergétique : assoupl.", value: 5, valueLabel: "-5", tone: "signal" },
+    { label: "Coût en capital : durcissement", value: 2, valueLabel: "+2", tone: "amber" },
+    { label: "Soutien budgétaire : effet nul", value: 0, valueLabel: "0", tone: "muted" },
+  ]}
+  notes={[
+    "Période : T3 2025 à T2 2026.",
+    "Direction déclarée, pas perte mesurée.",
+  ]}
+  source="Source : BCE, BLS, tableau 20, 21 juillet 2026."
+  caption="Le risque physique et le risque de transition sont séparés dans l'enquête. Un bon classement énergétique ne dit rien, à lui seul, de l'exposition d'un bien aux aléas physiques."
+/>
+
+Cette nuance est aussi utile pour le lecteur qui cherche un effet sur les prix. La BCE a indiqué en mai que, *si* les écarts de conditions de crédit se creusaient et *s'ils* se reflétaient dans les prix immobiliers, la valeur des garanties deviendrait plus sensible au climat.[^ecb-speech] C'est un mécanisme possible, pas un résultat déjà observé pour chaque marché local. À ce stade, les données publiées ici ne mesurent ni décote moyenne d'un logement mal classé, ni pertes bancaires liées au DPE.
+
+## La rénovation devient une variable financière, sans encore résoudre le financement
+
+L'enjeu européen est massif. Selon la Commission européenne, 85 % des bâtiments de l'Union ont été construits avant 2000, 75 % ont une mauvaise performance énergétique et le rythme annuel de rénovation reste autour de 1 %.[^epbd] Ces proportions décrivent le parc de bâtiments de l'Union, pas l'échantillon de prêts de la BCE. Elles signalent surtout l'écart entre le stock à traiter et la capacité de rénovation annuelle.
+
+Dans l'enquête bancaire, l'investissement dans la performance énergétique est le premier moteur de la demande de crédit immobilier liée au climat : +28 en solde net sur les douze mois observés. Les taux préférentiels pour améliorer la durabilité du bien (+17) et le soutien budgétaire lié au climat (+9) contribuent aussi positivement à cette demande. L'incertitude sur la réglementation future la freine en revanche (-6).[^bls]
+
+On peut y voir une tension simple. Un bien peu performant peut nécessiter des travaux pour rester louable, moins coûteux à habiter ou plus facile à revendre. Mais l'investissement initial augmente le besoin de financement de ménages qui ne disposent pas tous d'une capacité d'emprunt supplémentaire. La BCE observe l'orientation du crédit, pas l'accessibilité sociale de ces travaux. Elle ne dit pas quel ménage reçoit une subvention, quel reste à charge il supporte ni quelle rénovation est effectivement réalisée.
+
+Le droit européen ne comble pas cette inconnue par lui-même. La directive européenne révisée sur la performance énergétique des bâtiments devait être transposée avant le 29 mai 2026. Le 15 juillet, la Commission a toutefois ouvert une procédure contre les 27 États membres pour transposition incomplète. Elle leur a donné deux mois pour répondre.[^epbd] La direction réglementaire est européenne, mais les règles effectivement applicables, les aides et le calendrier restent nationaux.
+
+## Le bilan bancaire commence par la donnée, pas par une condamnation du bien
+
+Le changement le plus tangible n'est pas encore un taux affiché au guichet. Il est dans les systèmes de mesure des banques. Dans une consultation du 10 avril 2026, l'Autorité bancaire européenne (EBA) propose de collecter, pour les portefeuilles de prêts hypothécaires aux ménages, les expositions immobilières par classe de performance énergétique. Elle estime que cette ventilation fournit un indicateur pertinent et proportionné des vulnérabilités de transition. Le document précise que les normes d'efficacité, le coût de l'énergie et les besoins de rénovation peuvent affecter à la fois la capacité de remboursement et la valeur de la garantie.[^eba]
+
+Le statut du texte compte : c'est une consultation sur des déclarations prudentielles, pas une règle finale imposant à une banque de refuser un prêt à un logement mal classé. Son intérêt est ailleurs. Une fois la performance énergétique reliée dans les reportings à l'encours, aux dépréciations, aux garanties et aux paramètres de risque, elle devient une variable que les banques et superviseurs peuvent suivre portefeuille par portefeuille.
+
+Pour comprendre la solidité d'une banque, ce nouvel axe ne remplace pas les fondamentaux, détaillés dans notre guide [lire la solidité d'une banque](/guides/lire-la-solidite-d-une-banque/) : capital, liquidité, pertes de crédit et concentration des risques. Il ajoute une granularité au risque immobilier. Notre précédente lecture de l'[enquête BCE sur le crédit](/posts/resserrement-credit-bce-enquete-fissure-credit-prive/) permet de replacer ce signal dans le mouvement plus large des conditions de financement de la zone euro.
+
+## Le périmètre exact des conclusions
+
+Trois constats sont documentés. Premièrement, les banques de la zone euro déclarent déjà traiter différemment les bâtiments performants ou en voie de rénovation et ceux qui restent peu performants. Deuxièmement, le risque physique apparaît comme un facteur de crédit distinct et plus restrictif en solde net. Troisièmement, les superviseurs préparent une mesure plus fine de ces expositions.
+
+Trois conclusions plus fortes ne sont pas étayées par ces données. Elles ne prouvent pas qu'un DPE F ou G entraîne un refus de prêt. Elles ne chiffrent pas un écart de taux par classe énergétique, ni une baisse de prix des logements concernés. Elles ne démontrent pas non plus que la rénovation est finançable pour tous les ménages qui en ont besoin.
+
+Le risque le plus concret est donc une divergence progressive : les ménages capables d'acheter un bien performant ou de financer les travaux accèdent plus facilement au crédit, tandis que ceux qui acquièrent un bien ancien avec peu de marge doivent cumuler prix d'achat, coût de rénovation, dépenses d'énergie et règles locatives. La BCE mesure les premiers signes de cette divergence bancaire. Son ampleur sociale, pays par pays et ménage par ménage, reste à établir avec des données de prêts, de revenus, de travaux et de prix qui ne sont pas encore publiées de façon comparable.
+
+---
+
+**Sources primaires et officielles**
+
+- [BCE, *The euro area bank lending survey*, deuxième trimestre 2026, 21 juillet 2026](https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/ecb.blssurvey2026q2~baa6b60429.en.html) : tableau 19, tableau 20, définitions et méthode de l'enquête.
+- [Ministère de la Transition écologique, DPE](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe) : validité, affichage, estimation théorique des coûts et calendrier des logements F et G.
+- [Commission européenne, directive sur la performance énergétique des bâtiments](https://energy.ec.europa.eu/topics/energy-efficiency/energy-performance-buildings/energy-performance-buildings-directive_en) et [procédure de juillet 2026](https://energy.ec.europa.eu/news/commission-calls-eu-countries-transpose-reinforced-rules-energy-performance-buildings-2026-07-15_en) : données de parc, calendrier et état de la transposition.
+- [EBA, consultation sur le module de stress tests, 10 avril 2026, p. 6](https://www.eba.europa.eu/sites/default/files/2026-04/3bcb008b-2b61-4b86-8049-17c0c0aec85c/CP%20Module%204%20-%20Stress%20testing.pdf) : collecte par classes de performance énergétique, statut consultatif.
+
+**Limites de lecture.** L'enquête BCE est une enquête agrégée d'opinion de banques, non un fichier de prêts individuels. Ses soldes nets ne sont ni des taux, ni des volumes, ni des probabilités de défaut ou de refus. Les catégories énergétiques de la BCE peuvent reposer sur un certificat, l'âge du bâtiment, une rénovation ou la consommation, et ne se réduisent pas au DPE français. Les données ADEME sur les DPE sont utiles pour la statistique mais l'ADEME précise que la qualité des diagnostics transmis relève des diagnostiqueurs ; elles demandent une méthode de redressement avant toute estimation nationale.[^ademe] Données et textes consultés le 5 août 2026.
+
+[^dpe]: [Ministère de la Transition écologique, « Diagnostic de performance énergétique »](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe).
+[^bls]: [BCE, *The euro area bank lending survey - Second quarter of 2026*](https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/ecb.blssurvey2026q2~baa6b60429.en.html), section 5.5, tableaux 19 et 20, notes méthodologiques.
+[^ecb-speech]: [BCE, « Climate change and monetary policy », 5 mai 2026](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260505_1~2e47b4c747.en.html). L'article reprend cette relation comme une hypothèse conditionnelle formulée par la BCE.
+[^epbd]: [Commission européenne, directive sur la performance énergétique des bâtiments](https://energy.ec.europa.eu/topics/energy-efficiency/energy-performance-buildings/energy-performance-buildings-directive_en) ; [procédure de transposition du 15 juillet 2026](https://energy.ec.europa.eu/news/commission-calls-eu-countries-transpose-reinforced-rules-energy-performance-buildings-2026-07-15_en).
+[^eba]: [EBA, *Consultation Paper, Module on Stress testing*, 10 avril 2026, p. 6](https://www.eba.europa.eu/sites/default/files/2026-04/3bcb008b-2b61-4b86-8049-17c0c0aec85c/CP%20Module%204%20-%20Stress%20testing.pdf).
+[^ademe]: [ADEME, avertissement sur les données DPE](https://data.ademe.fr/applications/dpe-logements-existants-depuis-juillet-2021-etiquettes-dpe).

@@ -23,6 +23,7 @@ interface Props {
   notes?: string[];
   source?: string;
   caption?: string;
+  compact?: boolean;
 }
 
 const TONES: Record<Tone, string> = {
@@ -33,11 +34,11 @@ const TONES: Record<Tone, string> = {
   muted: '#8b909b',
 };
 
-const { title, subtitle, items, max, fontScale = 1, note, notes = [], source, caption } = Astro.props;
+const { title, subtitle, items, max, fontScale = 1, note, notes = [], source, caption, compact = false } = Astro.props;
 const textScale = Math.min(1.6, Math.max(0.75, fontScale));
 
-const W = 720;
-const x0 = 40;
+const W = compact ? 420 : 720;
+const x0 = compact ? 24 : 40;
 const barW = W - 2 * x0;
 const trackH = 26;
 const maxV = max ?? Math.max(...items.map((i) => i.value), 0.0001);
@@ -89,11 +90,11 @@ const H = y + 12;
     role="img"
     aria-label={title}
     xmlns="http://www.w3.org/2000/svg"
-    style="width:100%;height:auto;font-family:ui-monospace,monospace"
+    style={`width:100%;max-width:${compact ? `${W}px` : '100%'};height:auto;font-family:ui-monospace,monospace;display:block${compact ? ';margin-inline:auto' : ''}`}
   >
     <rect width={W} height={H} fill="#0c0d10"></rect>
-    <text x="32" y="38" fill="#f5f6f8" font-size={17 * textScale} font-weight="700">{title}</text>
-    {subtitle && <text x="32" y="59" fill="#8b909b" font-size={12 * textScale}>{subtitle}</text>}
+    <text x={compact ? 16 : 32} y="38" fill="#f5f6f8" font-size={17 * textScale} font-weight="700">{title}</text>
+    {subtitle && <text x={compact ? 16 : 32} y="59" fill="#8b909b" font-size={12 * textScale}>{subtitle}</text>}
 
     {rows.map((r) => (
       <>

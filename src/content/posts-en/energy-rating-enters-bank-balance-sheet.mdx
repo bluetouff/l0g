@@ -1,0 +1,124 @@
+---
+title: "When an Energy Rating Enters the Bank Balance Sheet"
+description: "An energy rating does not set a mortgage rate. But the ECB already finds easier credit standards for efficient homes and tighter ones for persistently weak buildings."
+pubDate: 2026-08-05T12:42:50+02:00
+updatedDate: 2026-08-05T12:42:50+02:00
+tags: ["housing", "credit", "climate", "banks", "europe"]
+draft: false
+sourceArticle: "dpe-entre-bilan-banques"
+sourceUpdatedDate: 2026-08-05
+---
+
+import InfographicBars from '../../components/infographic/InfographicBars.astro';
+
+*An energy certificate does not dictate a mortgage rate, and it cannot forecast the sale price of a home. But it is progressively entering bank credit judgement. In its July 2026 survey, the European Central Bank (ECB) found that euro-area banks had eased their internal credit standards for buildings that are already energy-efficient or will become so through the requested loan, while tightening them for persistently low-performing buildings. That is a real signal, with a narrow meaning: it records banks' internal approval criteria, not a public rate card or a map of mortgage rejections.*
+
+## A certificate is a legal document before it becomes a credit input
+
+France's *diagnostic de performance énergétique* (DPE) is a legally required energy-performance certificate that rates a home from A to G. Its registration number, issued after transmission to ADEME, is required for validity. Property listings for sale or rent must display the energy and climate labels and, where applicable, the excessive-energy-use warning. They must also show a range for a theoretical annual energy bill. The French ministry stresses that this estimate is based on standard use and cannot be compared with a household's actual bills, which vary with weather, occupancy and behaviour.[^dpe]
+
+That distinction is more than administrative. A DPE is not a household budget and it is not a credit score. It matters for lending because a property purchase combines repayment capacity, renovation cost, the ability to rent, the value of the property pledged as collateral and resale conditions. Energy performance can inform some of those inputs. It does not sum them up.
+
+French rules already make the information economically material. Rents on F and G homes have been frozen since August 2022. G-rated homes are progressively excluded from the rental market from 2025, F-rated homes from 2028 and E-rated homes from 2034, subject to the rules that apply to each case.[^dpe] That does not make a property unsellable or automatically unfinanceable. It adds a renovation and timing question for a landlord or buyer.
+
+## The ECB measures a split in standards, not a split in rates
+
+The clearest source is the ECB's [July 2026 bank lending survey](https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/ecb.blssurvey2026q2~baa6b60429.en.html), conducted from 15 to 30 June among 159 banks with a 100% response rate. It asks whether climate and energy performance affect banks' *credit standards*, meaning their internal guidelines or loan-approval criteria. They are not the contractual terms ultimately signed by every borrower.[^bls]
+
+For the twelve months from the third quarter of 2025 to the second quarter of 2026, the net balance of responding banks was -20 for buildings with good or high current or targeted energy performance. It was +14 for buildings with persistently low performance and no or limited planned improvement. In this survey, a negative number means that more banks reported easing than tightening; a positive number means the reverse. It is neither a 20% cut in mortgage rates nor a share of loans.[^bls]
+
+<InfographicBars
+  title="Energy performance splits credit"
+  subtitle="Euro area, net bank responses"
+  max={30}
+  compact
+  items={[
+    { label: "Good / high: easing", value: 20, valueLabel: "-20", tone: "signal" },
+    { label: "Persistent low: tightening", value: 14, valueLabel: "+14", tone: "accent" },
+    { label: "Efficient outlook: easing", value: 26, valueLabel: "-26", tone: "blue" },
+    { label: "Low-performance outlook: tighter", value: 12, valueLabel: "+12", tone: "amber" },
+  ]}
+  notes={[
+    "-: more banks report easing.",
+    "+: more banks report tightening.",
+  ]}
+  source="Source: ECB BLS, Table 19, 21 July 2026."
+  caption="The bars are net balances of bank responses, not average rates, mortgage volumes or rejection probabilities."
+/>
+
+The ECB uses a Europe-wide classification that is broader than the French DPE alone. It defines good or high performance as an energy-performance certificate of A to C, current or targeted after the requested loan, generally for a new, modern or deeply renovated building. Low performance means D to G where the loan brings no material improvement. If no certificate is available, a bank may use the building's age, major renovation history or energy consumption as a proxy.[^bls]
+
+That matters for any French reading. F and G, often called thermal sieves, are in the ECB's low-performance group, but so are D and E. Conversely, a renovation project can place a building in the more favourable group before the work has been completed. The survey does not establish a French bank's rate differential by DPE class, and it does not prove that an F- or G-rated home is rejected.
+
+Loan demand points in the same direction, with the same survey limitation. The net balance of banks reporting a climate-related increase in mortgage demand was +28 for homes that are efficient or targeting good performance, and -15 for persistently low-performing homes. Banks expect +22 and -7 respectively over the following twelve months.[^bls]
+
+## Physical and transition risk travel through different channels
+
+It would be too simple to reduce the finding to insulation. The ECB separates transition risk, linked to rules, energy costs and the investment needed to renovate, from physical risk, linked for example to weather events and the location of the property. The first can support lending for renovation; the second can weigh on repayment capacity or collateral value regardless of an energy label.[^bls]
+
+For household mortgage lending, physical risk was the largest climate-related tightening factor reported by banks, at +12 in net terms over the observed twelve months. Energy performance had a net easing effect of -5. Those figures do not offset each other home by home. They aggregate bank answers to different mechanisms.
+
+<InfographicBars
+  title="Two climate risks, two effects"
+  subtitle="Euro area, net bank responses"
+  max={15}
+  compact
+  items={[
+    { label: "Physical risk: tightening", value: 12, valueLabel: "+12", tone: "accent" },
+    { label: "Energy performance: easing", value: 5, valueLabel: "-5", tone: "signal" },
+    { label: "Climate capital cost: tightening", value: 2, valueLabel: "+2", tone: "amber" },
+    { label: "Climate fiscal support: no effect", value: 0, valueLabel: "0", tone: "muted" },
+  ]}
+  notes={[
+    "Period: Q3 2025 to Q2 2026.",
+    "Stated direction, not measured loss.",
+  ]}
+  source="Source: ECB BLS, Table 20, 21 July 2026."
+  caption="The ECB separates physical from transition risk. A strong energy rating alone says nothing about a building's exposure to physical hazards."
+/>
+
+This caution also matters for readers looking for an effect on prices. In May, the ECB said that *if* credit-condition differentials widened and *if* they were reflected in property prices, collateral values would become more climate-sensitive.[^ecb-speech] That is a possible transmission mechanism, not an observed result for each local market. The data used here measure neither an average discount for poorly rated homes nor bank losses caused by a DPE class.
+
+## Renovation is becoming a finance variable without yet solving affordability
+
+Europe's stock problem is large. The European Commission says 85% of EU buildings were built before 2000, 75% have poor energy performance and the annual renovation rate remains around 1%.[^epbd] Those figures describe the EU building stock, not the ECB mortgage sample. They show the gap between the stock that needs work and the annual capacity to renovate it.
+
+In the bank survey, investment in building energy performance is the main driver of climate-related mortgage demand, at +28 in net terms over the past twelve months. Lending rates aimed at raising real-estate sustainability (+17) and climate-related fiscal support (+9) also support this demand. Uncertainty over future climate rules is a drag (-6).[^bls]
+
+The tension is straightforward. A weakly performing home may need work to remain rentable, cheaper to occupy or easier to resell. But that initial investment increases financing needs for households that may not have extra borrowing capacity. The ECB observes credit direction, not the social affordability of the work. It does not report which household receives a grant, the remaining out-of-pocket cost or whether the renovation is actually completed.
+
+EU law does not resolve that uncertainty by itself. The revised Energy Performance of Buildings Directive had to be transposed by 29 May 2026. On 15 July, however, the Commission opened infringement procedures against all 27 member states for incomplete transposition, giving them two months to respond.[^epbd] The direction is European; the applicable rules, aid schemes and timing still vary nationally.
+
+## A bank balance sheet starts with data, not a verdict on a home
+
+The most concrete shift is not yet a mortgage rate displayed at a branch. It is in bank measurement systems. In a 10 April 2026 consultation, the European Banking Authority (EBA) proposed collecting household mortgage exposures by real-estate energy-performance bucket. It calls the breakdown a relevant and proportionate proxy for transition vulnerabilities, and notes that efficiency standards, energy costs and renovation needs may affect both borrowers' repayment capacity and collateral value.[^eba]
+
+The status of the document matters: it is a consultation on supervisory reporting, not a final rule telling a bank to deny credit to a weakly rated home. Its significance lies elsewhere. Once energy performance is linked in reporting to exposures, impairments, collateral and risk parameters, it becomes a variable banks and supervisors can monitor across mortgage books.
+
+That new lens does not replace the traditional building blocks of bank analysis: capital, liquidity, credit losses and risk concentration, set out in our guide to [reading bank health](/en/guides/read-bank-health/). It adds granularity to real-estate risk. Our [earlier reading of the ECB credit survey](/en/analysis/eurozone-credit-tightening-ecb-survey-private-credit-crack/) places this signal in the wider movement of euro-area lending conditions.
+
+## What the evidence establishes, and what it does not
+
+Three points are documented. First, euro-area banks already report treating buildings that are efficient or moving toward efficiency differently from persistently low-performing buildings. Second, physical risk is a distinct and more restrictive climate factor in net terms. Third, supervisors are preparing more granular measurement of those exposures.
+
+Three stronger claims are not supported by these data. They do not show that an F- or G-rated home causes a mortgage denial. They do not quantify a rate spread by energy class or a property-price discount. And they do not show that renovation is affordable for every household that needs it.
+
+The most concrete risk is therefore a gradual divergence. Households able to buy an efficient home or fund renovation may find credit easier to obtain, while those buying an older home with little room in their budget may have to carry the purchase price, renovation cost, energy expenditure and rental rules together. The ECB records early signs of that banking divergence. Its social scale, country by country and household by household, requires comparable loan, income, renovation and price data that are not yet publicly available.
+
+---
+
+**Primary and official sources**
+
+- [ECB, *The euro area bank lending survey*, second quarter 2026, 21 July 2026](https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/ecb.blssurvey2026q2~baa6b60429.en.html): Tables 19 and 20, definitions and survey method.
+- [French Ministry for Ecological Transition, DPE](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe): validity, listing requirements, theoretical cost estimate and the F/G timetable.
+- [European Commission, Energy Performance of Buildings Directive](https://energy.ec.europa.eu/topics/energy-efficiency/energy-performance-buildings/energy-performance-buildings-directive_en) and [July 2026 enforcement action](https://energy.ec.europa.eu/news/commission-calls-eu-countries-transpose-reinforced-rules-energy-performance-buildings-2026-07-15_en): building-stock figures, timetable and transposition status.
+- [EBA, stress-testing module consultation, 10 April 2026, p. 6](https://www.eba.europa.eu/sites/default/files/2026-04/3bcb008b-2b61-4b86-8049-17c0c0aec85c/CP%20Module%204%20-%20Stress%20testing.pdf): energy-performance buckets in mortgage reporting, consultation status.
+
+**Reading limits.** The ECB survey aggregates bank opinions; it is not a loan-level file. Its net balances are not rates, volumes, default probabilities or rejection probabilities. The ECB energy categories may use a certificate, building age, renovation history or consumption, and cannot be reduced to the French DPE. ADEME's DPE data are useful for statistics, but ADEME says diagnosticians remain responsible for the quality of submitted records; a reweighting method is needed before using them as a national estimate.[^ademe] Data and legal texts checked on 5 August 2026.
+
+[^dpe]: [French Ministry for Ecological Transition, DPE](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe).
+[^bls]: [ECB, *The euro area bank lending survey - Second quarter of 2026*](https://www.ecb.europa.eu/stats/ecb_surveys/bank_lending_survey/html/ecb.blssurvey2026q2~baa6b60429.en.html), section 5.5, Tables 19 and 20, methodological notes.
+[^ecb-speech]: [ECB, "Climate change and monetary policy", 5 May 2026](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260505_1~2e47b4c747.en.html). This article treats the relationship as the ECB's conditional hypothesis.
+[^epbd]: [European Commission, Energy Performance of Buildings Directive](https://energy.ec.europa.eu/topics/energy-efficiency/energy-performance-buildings/energy-performance-buildings-directive_en); [15 July 2026 transposition action](https://energy.ec.europa.eu/news/commission-calls-eu-countries-transpose-reinforced-rules-energy-performance-buildings-2026-07-15_en).
+[^eba]: [EBA, *Consultation Paper, Module on Stress testing*, 10 April 2026, p. 6](https://www.eba.europa.eu/sites/default/files/2026-04/3bcb008b-2b61-4b86-8049-17c0c0aec85c/CP%20Module%204%20-%20Stress%20testing.pdf).
+[^ademe]: [ADEME, DPE data warning](https://data.ademe.fr/applications/dpe-logements-existants-depuis-juillet-2021-etiquettes-dpe).
