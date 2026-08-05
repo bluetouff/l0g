@@ -58,7 +58,7 @@ export const riskSignalMeta: Record<RiskSignalKey, RiskSignalMeta> & Record<stri
       summary:
         'Score composite de 47 séries FRED orientées dans le sens du stress, calculé par le moteur versionné puis agrégé par moyenne pondérée.',
       sourceCode: 'https://github.com/bluetouff/macro_dashboard',
-      sourceRevision: '87a6b00daf483ff4b44aaa9902d3fdf47645748b',
+      sourceRevision: '69480400cddaf60c6be49bdd742edf8bfc7bc5bd',
       formula: [
         'z = z-score glissant 5 ans du niveau, ou du vrai glissement annuel pour les séries non stationnaires',
         'drift = écart au niveau moyen 2015-2019, lorsque cette comparaison est pertinente',

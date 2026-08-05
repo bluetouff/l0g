@@ -9,7 +9,7 @@ const metaRelative = `.cache/signal-history-provenance-${process.pid}.meta.json`
 const historyPath = resolve(historyRelative);
 const metaPath = resolve(metaRelative);
 const repository = 'https://github.com/bluetouff/macro_dashboard';
-const revision = '87a6b00daf483ff4b44aaa9902d3fdf47645748b';
+const revision = '69480400cddaf60c6be49bdd742edf8bfc7bc5bd';
 
 test('la méthode opérationnelle est attribuée uniquement à la révision producteur attestée', async () => {
   await mkdir(dirname(historyPath), { recursive: true });

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-03",
+  "verifiedAt": "2026-08-05",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
-      "revision": "87a6b00daf483ff4b44aaa9902d3fdf47645748b",
+      "revision": "69480400cddaf60c6be49bdd742edf8bfc7bc5bd",
       "files": [
         {
           "path": "/opt/macro_dashboard/app_server.py",
-          "sha256": "69e9f58d7fd094f389c6990bdb0991d73e43b8db55a377d4b02cc7067d531249"
+          "sha256": "54e22555b0de155cc964204514f60e745b6bee38d4f1c85606ff4a27f743f26a"
         },
         {
           "path": "/opt/macro_dashboard/catalog.py",
@@ -20,7 +20,7 @@
         },
         {
           "path": "/opt/macro_dashboard/snapshot_contract.py",
-          "sha256": "5447ae67320dd27559c2a968d6f5490e3b538e62759fe94550a46e5c3fcf9f97"
+          "sha256": "ee8a4e4197c61452c2178e97b16b830272a7b35668440fc8e1277d3885378239"
         },
         {
           "path": "/opt/macro_dashboard/snapshot_builder.py",
