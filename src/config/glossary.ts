@@ -259,6 +259,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Cov-lite', nom: 'Covenant-lite', def: "Prêt émis avec peu ou pas de clauses de sauvegarde (covenants) obligeant l'emprunteur à respecter des ratios financiers. Devenu la norme du marché des prêts à effet de levier, il retarde le constat de défaut mais réduit le recouvrement des créanciers.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'Tranche', nom: 'Tranche de titrisation', def: "Part d'un véhicule de titrisation portant un niveau de risque défini. Les tranches senior (AAA) sont payées en premier et absorbent les pertes en dernier ; la tranche equity, en bas, encaisse les premières pertes contre le rendement le plus élevé. La hiérarchie s'appelle la cascade.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'Titrisation', nom: 'Securitization', def: "Technique consistant à regrouper des créances (prêts, obligations) dans un véhicule dédié qui émet des titres adossés à ces actifs, répartis en tranches de risque. Au cœur des CLO comme des CDO subprime, pour le meilleur et pour le pire.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
+      { sigle: 'Escrow', nom: 'Compte de provision hypothécaire', def: "Aux États-Unis, compte géré par le servicer d'un prêt immobilier pour prélever chaque mois une provision destinée notamment à l'assurance habitation et aux impôts fonciers. La mensualité totale peut donc monter quand la prime d'assurance est révisée, même si le taux et le capital du prêt restent inchangés.", guide: '/posts/facture-assurance-risque-credit-immobilier-americain/' },
       { sigle: 'ABS', nom: 'Asset-Backed Security', def: "Titre adossé à un panier de créances autres qu'immobilières : prêts auto, cartes de crédit, paiements fractionnés (BNPL), redevances. Les créances sont logées dans un trust isolé de la faillite de l'originateur, qui émet des tranches de la senior (AAA) à l'equity. Véhicule par lequel le risque du crédit à la consommation quitte le bilan des prêteurs pour se disperser chez les investisseurs.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
       { sigle: 'ABF', nom: 'Asset-Based Finance', def: "Finance adossée aux actifs : financement de portefeuilles de créances (conso, équipement, redevances) via la titrisation, aussi appelée specialty finance ou crédit privé structuré. Compartiment en forte croissance du crédit privé, où des gérants comme Apollo ou KKR originent, structurent et détiennent la dette, souvent adossée aux primes de rentes des assureurs qu'ils contrôlent." },
       { sigle: "Financement d'entrepôt", nom: 'Warehouse financing', def: "Ligne ou structure temporaire qui finance un stock de prêts ou de créances avant leur vente ou leur titrisation. Si la sortie tarde, la durée et le coût de portage augmentent ; une baisse du collatéral peut aussi imposer davantage de capital ou réduire le montant avancé." },
@@ -497,7 +498,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-08-02';
+export const glossaryUpdatedIso = '2026-08-05';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
