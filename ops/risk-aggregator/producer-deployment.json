@@ -74,11 +74,11 @@
     },
     "energie": {
       "repository": "https://github.com/bluetouff/energie-stress-monitor",
-      "revision": "4ee8cb3759bb1300ae8e2052d51ebb5db209e997",
+      "revision": "003033fa1c52b920a1a33dc2f5d6844be672a90b",
       "files": [
         {
           "path": "/opt/energie/builder.py",
-          "sha256": "9906374cf822556e6293f013848225d32f56f90ac0ed8dbba74ab2d11e16d063"
+          "sha256": "003cb9d1095f0f0a95ed03a337e34009c7d5d37617aac2444133a3636cd3db92"
         }
       ]
     },
