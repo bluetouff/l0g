@@ -2,6 +2,7 @@
 title: "Quand 110 milliards de collatéral ne suffisent pas à emprunter 6 milliards"
 description: "Les négociations de SoftBank pour lever au moins 6 milliards de dollars via un margin loan adossé à sa participation dans OpenAI sont au point mort."
 pubDate: 2026-06-11
+updatedDate: 2026-08-06T16:30:00+02:00
 tags: ["AI", "Private credit", "Finance"]
 draft: false
 ---
@@ -9,6 +10,8 @@ draft: false
 *... Et c'est un symptôme inquiétant pour toute la BigTech*
 
 ---
+
+> **Mise à jour du 6 août 2026.** SoftBank a depuis divulgué un prêt de 10 Md$ conclu le 5 août pour un véhicule de Vision Fund 2. Le document public prévoit un compte de collatéral en cash et des remboursements anticipés si, notamment, la juste valeur des actions préférentielles d’OpenAI baisse fortement. Il ne permet pas d’établir que ce prêt est le même dossier que les discussions rapportées ci-dessous, ni d’interpréter le blocage de juin comme un refus général de monétiser la participation OpenAI. Notre analyse actualisée, plus limitée, est disponible ici : [la valorisation d’OpenAI devient un risque de liquidité](/posts/softbank-openai-risque-liquidite/).
 
 Le mercredi 10 juin, Bloomberg révélait que les négociations de SoftBank pour lever au moins 6 milliards de dollars via un margin loan adossé à sa participation dans OpenAI étaient au point mort. Le titre a chuté jusqu'à 9,7 % à Tokyo. Vu de loin, un accroc de financement. Vu de près, l'un des signaux les plus froids envoyés par le marché du crédit depuis le début du cycle IA.
 

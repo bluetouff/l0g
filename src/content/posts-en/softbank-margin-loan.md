@@ -2,15 +2,17 @@
 title: "When $110 billion of collateral isn't enough to borrow $6 billion"
 description: "SoftBank's talks to raise at least $6 billion via a margin loan backed by its stake in OpenAI have stalled."
 pubDate: 2026-07-14T10:18:00+02:00
-updatedDate: 2026-07-14T10:18:00+02:00
+updatedDate: 2026-08-06T16:30:00+02:00
 tags: ["AI", "Private credit", "Finance"]
 draft: false
 sourceArticle: "softbank-margin-loan"
-sourceUpdatedDate: 2026-06-11
+sourceUpdatedDate: 2026-08-06T16:30:00+02:00
 ---
 *... And it's a worrying symptom for all of BigTech*
 
 ---
+
+> **Update, 6 August 2026.** SoftBank has since disclosed a $10bn loan agreement entered into on 5 August for a Vision Fund 2 vehicle. The public document provides for a cash-collateral account and mandatory prepayments if, among other things, the fair value of OpenAI preferred shares falls significantly. It does not establish that this facility is the same transaction as the talks reported below, or that June’s stalled talks were a general refusal to monetise the OpenAI stake. Our narrower, updated analysis is here: [OpenAI’s private valuation becomes a liquidity risk](/en/analysis/softbank-openai-liquidity-risk/).
 
 On Wednesday 10 June, Bloomberg revealed that SoftBank's talks to raise at least $6 billion via a margin loan backed by its stake in OpenAI had stalled. The stock fell as much as 9.7% in Tokyo. From afar, a funding hiccup. Up close, one of the coldest signals the credit market has sent since the start of the AI cycle.
 
