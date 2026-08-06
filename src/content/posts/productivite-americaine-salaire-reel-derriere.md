@@ -1,8 +1,8 @@
 ---
 title: "Productivité américaine : le salaire réel reste derrière"
 description: "Au T2 2026, la productivité du travail américaine progresse de 1,4 % en rythme annualisé, tandis que la rémunération réelle horaire recule de 3,1 %. Les chiffres du BLS éclairent un risque de partage de la croissance, sans établir une relation de cause à effet avec l'IA ou la politique économique."
-pubDate: 2026-08-06T14:45:00+02:00
-updatedDate: 2026-08-06T14:45:00+02:00
+pubDate: 2026-08-06T14:54:33+02:00
+updatedDate: 2026-08-06T14:54:33+02:00
 tags: ["États-Unis", "productivité", "salaires", "emploi", "inflation"]
 draft: false
 ---

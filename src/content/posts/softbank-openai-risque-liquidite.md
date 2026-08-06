@@ -1,7 +1,8 @@
 ---
 title: "SoftBank : la valorisation d’OpenAI devient un risque de liquidité"
 description: "Le 5 août, un véhicule de SoftBank a signé un prêt de 10 milliards de dollars. Le contrat prévoit du collatéral en cash et des remboursements anticipés si la valeur des actions préférentielles d’OpenAI baisse fortement. Ce n’est pas un défaut, mais une clause qui relie une valorisation privée à la trésorerie du groupe."
-pubDate: 2026-08-06T16:30:00+02:00
+pubDate: 2026-08-06T10:54:28+02:00
+updatedDate: 2026-08-06T11:35:34+02:00
 tags: ["IA", "crédit", "liquidité", "OpenAI", "SoftBank"]
 draft: false
 quickTake:

@@ -1,12 +1,12 @@
 ---
 title: "SoftBank: OpenAI’s Private Valuation Becomes a Liquidity Risk"
 description: "On 5 August, a SoftBank vehicle signed a $10 billion loan. The contract calls for cash collateral and mandatory prepayments if the fair value of OpenAI preferred shares falls significantly. This is not a default, but it does link a private valuation to the group’s cash position."
-pubDate: 2026-08-06T16:30:00+02:00
-updatedDate: 2026-08-06T16:30:00+02:00
+pubDate: 2026-08-06T10:54:28+02:00
+updatedDate: 2026-08-06T11:35:34+02:00
 tags: ["AI", "credit", "liquidity", "OpenAI", "SoftBank"]
 draft: false
 sourceArticle: "softbank-openai-risque-liquidite"
-sourceUpdatedDate: 2026-08-06T16:30:00+02:00
+sourceUpdatedDate: 2026-08-06T11:35:34+02:00
 ---
 
 *A financing contract does not settle OpenAI’s value. It sets out what happens if that value falls far enough to become a cash issue.*
