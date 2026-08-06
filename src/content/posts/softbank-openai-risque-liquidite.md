@@ -12,9 +12,9 @@ quickTake:
 
 *Un contrat de financement ne tranche pas la valeur d’OpenAI. Il organise ce qui arrive si cette valeur baisse assez pour devenir un sujet de trésorerie.*
 
-Le 5 août, **SVF II TSUBAKI (DE) LLC**, une filiale entièrement détenue par Vision Fund 2, l’un des fonds d’investissement de SoftBank, a signé un accord de prêt de **10 milliards de dollars**. Le tirage était attendu en août. SoftBank Group en est le garant, et l’échéance du principal est fixée à août 2028. Le produit peut servir aux besoins généraux de SoftBank Group et de Vision Fund 2, pas uniquement à financer OpenAI.[^q1]
+Le 5 août, **SVF II TSUBAKI (DE) LLC**, une filiale entièrement détenue par Vision Fund 2, l’un des fonds d’investissement de SoftBank, a signé un accord de prêt de **10 milliards de dollars**. Le tirage était attendu en août. SoftBank Group en est le garant, et l’échéance du principal est fixée à août 2028. Le produit peut servir aux besoins généraux de SoftBank Group et de Vision Fund 2, pas uniquement à financer OpenAI. [Rapport financier SoftBank, pp. 69-70](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf)
 
-La ligne la plus importante est ailleurs. Le document financier précise que, dans certains cas prévus par le contrat, une **baisse importante de la juste valeur** des actions préférentielles d’OpenAI détenues par Vision Fund 2 entraîne le dépôt de collatéral en cash et un remboursement anticipé obligatoire. La juste valeur est l’estimation inscrite dans les comptes, pas un cours de Bourse observé en continu. Le contrat ne publie ni le seuil de déclenchement, ni la décote appliquée, ni le montant de cash initial. Il ne rapporte pas non plus qu’une telle clause ait été activée.[^q1]
+La ligne la plus importante est ailleurs. Le document financier précise que, dans certains cas prévus par le contrat, une **baisse importante de la juste valeur** des actions préférentielles d’OpenAI détenues par Vision Fund 2 entraîne le dépôt de collatéral en cash et un remboursement anticipé obligatoire. La juste valeur est l’estimation inscrite dans les comptes, pas un cours de Bourse observé en continu. Le contrat ne publie ni le seuil de déclenchement, ni la décote appliquée, ni le montant de cash initial. Il ne rapporte pas non plus qu’une telle clause ait été activée. [Rapport financier SoftBank, p. 70](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf)
 
 Le risque n’est donc pas « OpenAI baisse, SoftBank fait défaut ». C’est plus concret et plus limité : une valeur privée, sans cours coté en continu, entre dans la mécanique d’une dette qui peut exiger du cash avant son échéance.
 
@@ -58,7 +58,7 @@ Le risque n’est donc pas « OpenAI baisse, SoftBank fait défaut ». C’est p
 
 ## Une dette adossée au cash, pas aux actions à vendre
 
-Ce point de vocabulaire change l’analyse. Le rapport décrit comme collatéral un **compte de cash de l’emprunteur** : des liquidités sont mises de côté en garantie du prêteur. Il ne dit pas que les banques détiennent les actions OpenAI et pourront les vendre. Les actions préférentielles servent néanmoins de référence pour déterminer si des protections contractuelles doivent être renforcées.[^q1]
+Ce point de vocabulaire change l’analyse. Le rapport décrit comme collatéral un **compte de cash de l’emprunteur** : des liquidités sont mises de côté en garantie du prêteur. Il ne dit pas que les banques détiennent les actions OpenAI et pourront les vendre. Les actions préférentielles servent néanmoins de référence pour déterminer si des protections contractuelles doivent être renforcées. [Rapport financier SoftBank, p. 70](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf)
 
 Un tel montage ne rend pas une action privée liquide. Il tente de protéger le prêteur avant de devoir la liquider. Si la condition est remplie, le besoin apparaît du côté de la trésorerie : il faut affecter davantage de cash au compte prévu ou réduire la dette. C’est la différence entre un risque de valeur, qui touche d’abord le bilan, et un risque de liquidité, qui touche la capacité à payer à une date donnée.
 
@@ -66,7 +66,7 @@ La publication ne permet pas d’aller plus loin. Elle ne dit pas comment est ca
 
 ## Un calendrier de financement très rapproché
 
-Au 30 juin, SoftBank indiquait avoir investi cumulativement **44,6 Md$** dans OpenAI et évaluait cette participation à **89,6 Md$**. Le groupe a ensuite réalisé une deuxième tranche de 10 Md$ le 1er juillet. Une troisième tranche de 10 Md$ est prévue le 1er octobre, sous réserve des conditions annoncées. Cette suite d’engagements ne démontre pas une difficulté de financement, mais elle donne de l’importance à toute clause qui immobilise du cash.[^q1][^july]
+Au 30 juin, SoftBank indiquait avoir investi cumulativement **44,6 Md$** dans OpenAI et évaluait cette participation à **89,6 Md$**. [Rapport financier SoftBank, p. 4](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf) Le groupe a ensuite réalisé une deuxième tranche de 10 Md$ le 1er juillet. Une troisième tranche de 10 Md$ est prévue le 1er octobre, sous réserve des conditions annoncées. [Communiqué SoftBank du 1er juillet 2026](https://group.softbank/media/Project/sbg/sbg/news/press/2026/20260701/pdf/20260701_en.pdf) Cette suite d’engagements ne démontre pas une difficulté de financement, mais elle donne de l’importance à toute clause qui immobilise du cash.
 
 <figure class="infographic" style="margin-bottom:1.25rem">
 <svg viewBox="0 0 900 420" role="img" aria-label="Calendrier des investissements OpenAI et des échéances de financement de SoftBank entre juin 2026 et août 2028" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:Inter,ui-sans-serif,system-ui,sans-serif">
@@ -100,13 +100,13 @@ Au 30 juin, SoftBank indiquait avoir investi cumulativement **44,6 Md$** dans Op
 <figcaption>Les engagements OpenAI et les financements n’ont ni la même finalité ni la même échéance. Le schéma les place sur une seule ligne de temps sans supposer que l’un rembourse l’autre. Sources : [rapport financier SoftBank, pp. 4-5 et 70](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf) ; [communiqué SoftBank du 1er juillet 2026](https://group.softbank/media/Project/sbg/sbg/news/press/2026/20260701/pdf/20260701_en.pdf).</figcaption>
 </figure>
 
-Le bridge de 40 Md$ a été mis en place principalement pour l’investissement OpenAI et arrive à échéance le 25 mars 2027. Le rapport indique que 20 Md$ avaient été tirés en avril, qu’un remboursement de 3,6 Md$ est intervenu pendant le trimestre, puis qu’un nouveau tirage de 10 Md$ a financé la tranche de juillet.[^q1] Ce bridge et le prêt d’août n’ont pas la même structure : il serait imprudent de présenter le second comme le refinancement du premier sans document le disant.
+Le bridge de 40 Md$ a été mis en place principalement pour l’investissement OpenAI et arrive à échéance le 25 mars 2027. Le rapport indique que 20 Md$ avaient été tirés en avril, qu’un remboursement de 3,6 Md$ est intervenu pendant le trimestre, puis qu’un nouveau tirage de 10 Md$ a financé la tranche de juillet. [Rapport financier SoftBank, pp. 4-5](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf) Ce bridge et le prêt d’août n’ont pas la même structure : il serait imprudent de présenter le second comme le refinancement du premier sans document le disant.
 
 ## Une correction nécessaire du signal de juin
 
 En juin, Bloomberg avait rapporté le blocage de discussions sur un autre margin loan de 6 Md$ adossé à la participation OpenAI. Notre [analyse publiée alors](/posts/softbank-margin-loan/) en tirait un signal de défiance très fort sur la monétisation de cet actif privé.
 
-La divulgation du 6 août oblige à resserrer cette conclusion. Des banques mandatées, parmi lesquelles Goldman Sachs, JPMorgan, Mizuho, Apollo Global Funding et SMBC, ont bien participé à l’arrangement d’un nouveau prêt de 10 Md$ pour un véhicule de Vision Fund 2.[^q1] Les documents publics ne disent pas si ce financement est le même dossier que celui évoqué en juin, ni si les négociations, le collatéral et les conditions sont comparables. Ils ne permettent donc ni de conclure que les banques ont « refusé OpenAI », ni d’affirmer qu’elles ont changé d’avis.
+La divulgation du 6 août oblige à resserrer cette conclusion. Des banques mandatées, parmi lesquelles Goldman Sachs, JPMorgan, Mizuho, Apollo Global Funding et SMBC, ont bien participé à l’arrangement d’un nouveau prêt de 10 Md$ pour un véhicule de Vision Fund 2. [Rapport financier SoftBank, p. 70](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf) Les documents publics ne disent pas si ce financement est le même dossier que celui évoqué en juin, ni si les négociations, le collatéral et les conditions sont comparables. Ils ne permettent donc ni de conclure que les banques ont « refusé OpenAI », ni d’affirmer qu’elles ont changé d’avis.
 
 Le fait nouveau est plus précis : SoftBank a accepté un financement où une baisse de valeur privée peut déclencher une protection en cash. Cela ne valide pas la valorisation d’OpenAI. Cela ne prouve pas non plus qu’elle est erronée. Cela rend visible le passage possible du bilan à la trésorerie.
 
@@ -123,9 +123,8 @@ Sans ces données, l’analyse doit rester au conditionnel. Le mécanisme de tra
 
 ## Sources
 
-[^q1]: SoftBank Group, [Financial Report for the Three-Month Period Ended June 30, 2026](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf), publié le 6 août 2026 : investissement OpenAI, bridge de 40 Md$, prêt SVF2 de 10 Md$, emprunteur, garantie, échéance, collatéral et clauses, pp. 4-5 et 69-70.
-
-[^july]: SoftBank Group, [Investment in OpenAI](https://group.softbank/media/Project/sbg/sbg/news/press/2026/20260701/pdf/20260701_en.pdf), 1er juillet 2026 : deuxième tranche de 10 Md$, troisième tranche prévue le 1er octobre sous réserve des conditions annoncées, financement par tirage de 10 Md$ du bridge.
+1. SoftBank Group, [Financial Report for the Three-Month Period Ended June 30, 2026](https://group.softbank/media/Project/sbg/sbg/pdf/ir/financials/financial_reports/financial-report_q1fy2026_01_en.pdf), publié le 6 août 2026 : investissement OpenAI, bridge de 40 Md$, prêt SVF2 de 10 Md$, emprunteur, garantie, échéance, collatéral et clauses, pp. 4-5 et 69-70.
+2. SoftBank Group, [Investment in OpenAI](https://group.softbank/media/Project/sbg/sbg/news/press/2026/20260701/pdf/20260701_en.pdf), 1er juillet 2026 : deuxième tranche de 10 Md$, troisième tranche prévue le 1er octobre sous réserve des conditions annoncées, financement par tirage de 10 Md$ du bridge.
 
 ## Limites
 
