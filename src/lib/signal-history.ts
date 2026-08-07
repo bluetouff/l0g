@@ -399,7 +399,10 @@ function normalizeObservation(
   return {
     recordType: 'observation',
     schemaVersion: VERSION,
-    recordId: `obs:${key}:${seriesDate}:${parsedHash.slice(0, 12)}`,
+    // Deux publications peuvent attester le même snapshot avec des frames Black Box
+    // distinctes. L'identifiant public doit alors conserver les deux preuves, sans
+    // confondre leur provenance ; sourceRecordId reste l'identifiant du snapshot.
+    recordId: `obs:${key}:${seriesDate}:${parsedHash.slice(0, 12)}${frame ? `:${frame.frameId}` : ''}`,
     sourceRecordId,
     instrument: key,
     seriesId: identity.seriesId,
@@ -713,8 +716,19 @@ function levelChanges(): SignalLevelChange[] {
 }
 
 function mergeObservations(observations: SignalObservation[]) {
+  // Quand la frame est disponible, sa provenance remplace le snapshot courant
+  // identique. En revanche, deux frames distinctes restent deux preuves
+  // distinctes, même si leur sourceRecordId est commun.
+  const archivedSourceRecordIds = new Set(
+    observations
+      .filter((item) => item.archiveFrameId && item.sourceRecordId)
+      .map((item) => item.sourceRecordId as string),
+  );
   const byId = new Map<string, SignalObservation>();
-  for (const observation of observations) byId.set(observation.recordId, observation);
+  for (const observation of observations) {
+    if (!observation.archiveFrameId && archivedSourceRecordIds.has(observation.recordId)) continue;
+    byId.set(observation.recordId, observation);
+  }
   return Array.from(byId.values()).sort(
     (a, b) => a.seriesDate.localeCompare(b.seriesDate) || a.instrument.localeCompare(b.instrument)
   );
