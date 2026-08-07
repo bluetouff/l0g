@@ -2,10 +2,12 @@
 title: "CLARITY Act : le texte qui va redessiner la régulation crypto aux États-Unis"
 description: "Comment un projet de loi de 309 pages s'apprête à mettre fin à dix ans de guerre de juridictions entre SEC et CFTC, et ce que ça change pour l'industrie."
 pubDate: 2026-05-17
-updatedDate: 2026-05-17
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "régulation", "crypto", "politique us"]
 draft: false
 ---
+
+> **Mise à jour du 7 août 2026.** Le CLARITY Act n'est pas devenu loi. Le suivi officiel le donne toujours comme adopté par la Chambre, sans adoption par le Sénat. La pause programmée du Sénat, du 10 août au 11 septembre, ne clôt pas la procédure, mais ramène la séquence avant les midterms à quatorze jours de séance prévus, du 14 septembre au 2 octobre. Notre nouveau point de situation sépare les faits des scénarios : [CLARITY Act : la fenêtre avant les midterms](/posts/clarity-act-fenetre-avant-midterms/).
 
 ## Une bataille de dix ans qui touche à sa fin
 

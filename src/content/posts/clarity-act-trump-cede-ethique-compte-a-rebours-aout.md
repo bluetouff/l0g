@@ -2,10 +2,12 @@
 title: "CLARITY Act : Trump cède sur l'éthique, le compte à rebours d'août commence"
 description: "Le 20 juillet 2026 au soir, Donald Trump a accepté une clause éthique dans le CLARITY Act, l'obstacle qu'il incarnait lui-même. Trois jours plus tôt, le projet fusionné du Sénat était sorti sans cette clause, provoquant l'opposition frontale de trois sénateurs démocrates. Le texte définitif n'est pas public, les démocrates ne l'ont pas vu, et il reste une dizaine de jours de séance avant la pause du 7 août. Décryptage d'une course contre la montre, scénarios datés à l'appui."
 pubDate: 2026-07-21T15:51:00+02:00
-updatedDate: 2026-07-21T15:51:00+02:00
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "crypto", "régulation", "politique us", "stablecoins"]
 draft: false
 ---
+
+> **Mise à jour du 7 août 2026.** L'accord de principe décrit dans cet article n'a pas encore produit une loi. H.R. 3633 reste officiellement adopté par la Chambre, sans adoption par le Sénat. La pause du 10 août au 11 septembre déplace la prochaine fenêtre avant les midterms aux quatorze jours de séance prévus entre le 14 septembre et le 2 octobre. Voir l'état de la procédure et les scénarios, explicitement conditionnels, dans [CLARITY Act : la fenêtre avant les midterms](/posts/clarity-act-fenetre-avant-midterms/).
 
 *Le blocage venait du sommet, la levée aussi. Le 20 juillet 2026 au soir, selon [The Block](https://www.theblock.co/post/409000/trump-agrees-to-ethics-provision-crypto-bill), Donald Trump a accepté une disposition éthique dans le CLARITY Act, le texte censé répartir la régulation crypto entre la SEC et la CFTC. La provision restreindrait la façon dont les hauts responsables publics, président, vice-président, membres du Congrès et autres fonctionnaires fédéraux, tirent profit des actifs numériques pendant leur mandat. Cette clause vise d'abord ses propres intérêts, l'obstacle que nous avions identifié comme central dans notre analyse de [Trump, premier obstacle à sa propre loi crypto](/posts/clarity-act-trump-obstacle-conflit-interets/). Le paradoxe se dénoue donc par où il s'était noué. Mais l'accord arrive tard, sur un texte que personne n'a encore lu, et face à un calendrier qui se compte désormais en jours de séance.*
 

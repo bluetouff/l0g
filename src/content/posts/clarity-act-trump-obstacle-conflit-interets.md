@@ -2,10 +2,12 @@
 title: "CLARITY Act : Trump, premier obstacle à sa propre loi crypto"
 description: "Le CLARITY Act, priorité de l'industrie crypto américaine, bute sur un obstacle paradoxal : les intérêts personnels du président. La disposition anti conflit d'intérêts que réclament les démocrates vise d'abord Donald Trump et sa famille, dont les ventures crypto ont généré des milliards. Sans elle, pas de 60 voix au Sénat ; avec elle, la Maison Blanche menace de bloquer."
 pubDate: 2026-06-22T11:00:00+02:00
-updatedDate: 2026-07-21T15:51:00+02:00
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "crypto", "régulation", "politique us", "stablecoins"]
 draft: false
 ---
+
+> **Mise à jour du 7 août 2026.** Le conflit décrit dans cet article reste un sujet de négociation, pas un régime juridique adopté. H.R. 3633 est toujours officiellement adopté par la Chambre, sans adoption par le Sénat. La prochaine fenêtre avant les midterms dépend de quatorze jours de séance prévus entre le 14 septembre et le 2 octobre, après la pause d'août. Notre nouvel article distingue cette contrainte de calendrier des scénarios politiques : [CLARITY Act : la fenêtre avant les midterms](/posts/clarity-act-fenetre-avant-midterms/).
 
 *Le CLARITY Act est la priorité numéro un de l'industrie crypto américaine, le texte censé répartir clairement la régulation des actifs numériques entre la SEC et la CFTC. Il a franchi sa commission sénatoriale, il est inscrit au calendrier, la Maison Blanche le pousse. Et pourtant il pourrait échouer pour une raison que peu avaient anticipée : son plus gros obstacle n'est pas un lobby bancaire ni un désaccord technique, c'est le président lui-même. La disposition que réclament les démocrates pour livrer leurs voix vise directement les intérêts crypto de Donald Trump et de sa famille, et l'administration refuse tout texte qui le cible.*
 

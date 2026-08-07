@@ -2,12 +2,15 @@
 title: "The CLARITY Act: the bill set to redraw crypto regulation in the United States"
 description: "How a 309-page bill is about to end ten years of turf war between the SEC and the CFTC, and what it changes for the industry."
 pubDate: 2026-07-14T10:22:00+02:00
-updatedDate: 2026-07-14T10:22:00+02:00
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["regulation", "crypto", "us politics"]
 draft: false
 sourceArticle: "clarity-act-regulation-crypto-etats-unis"
-sourceUpdatedDate: 2026-05-17
+sourceUpdatedDate: 2026-08-07
 ---
+
+> **Update, 7 August 2026.** The CLARITY Act has not become law. The official tracker still labels it Passed House, not Passed Senate. The Senate's planned state work period from 10 August through 11 September does not close the procedure, but it leaves fourteen scheduled session days, from 14 September through 2 October, for the pre-midterm sequence. Our new status article separates facts from scenarios: [CLARITY Act: the window before the midterms](/en/analysis/clarity-act-window-before-midterms/).
+
 ## A ten-year battle nearing its end
 
 On 14 May 2026, at 10:30 in the Senate's Dirksen room, the Banking Committee adopts by **15 votes to 9** the Digital Asset Market Clarity Act. Two Democrats, Ruben Gallego (Arizona) and Angela Alsobrooks (Maryland), cross the aisle to join the thirteen Republicans. For the first time since the origin of the crypto debate in Congress, a complete market-structure text clears the critical stage of a Senate committee with a documented bipartisan vote (source: TheStreet Crypto, 14 May 2026).

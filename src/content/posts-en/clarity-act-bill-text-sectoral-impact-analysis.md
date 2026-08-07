@@ -2,12 +2,14 @@
 title: "The CLARITY Act under the scalpel: the new architecture of US crypto"
 description: "The CLARITY Act text as reported in the Senate runs to 594 pages and in fact contains two laws: a full overhaul of digital-asset regulation and a ban on a central bank digital currency. Its keystone is a maturity test that shifts an asset from the SEC to the CFTC. A section-by-section sectoral impact analysis of the official text: issuers, exchanges, DeFi, stablecoins, banks, and the blind spots. Nothing invented, everything sourced to the text."
 pubDate: 2026-07-23T10:56:00+02:00
-updatedDate: 2026-07-23T10:56:00+02:00
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "crypto", "regulation", "us politics", "stablecoins"]
 draft: false
 sourceArticle: "clarity-act-texte-analyse-impact-sectoriel"
-sourceUpdatedDate: 2026-07-23
+sourceUpdatedDate: 2026-08-07
 ---
+
+> **Update, 7 August 2026.** The analysis below concerns a text, not a regime in force. H.R. 3633 remains officially Passed House, not Passed Senate. After the 10 August to 11 September break, the calendar provides fourteen scheduled days, from 14 September through 2 October, before the election period. Procedure and scenarios are set out in [CLARITY Act: the window before the midterms](/en/analysis/clarity-act-window-before-midterms/).
 
 *The text exists, and it is massive. The CLARITY Act as reported in the Senate, referenced [H.R. 3633 RS](https://www.congress.gov/119/bills/hr3633/BILLS-119hr3633rs.pdf), runs to 594 pages and carries two official titles: the "Digital Asset Market Clarity Act of 2025" and the "Anti-CBDC Surveillance State Act." This is not a light-touch deregulation, it is the construction of an entire regulatory regime, with registration, mandatory disclosures, custody and anti-money-laundering compliance. Its keystone is one mechanism: a maturity test that decides whether an asset falls to the securities regulator, the SEC, or the commodities regulator, the CFTC. We read the text to draw a sector-by-sector impact analysis, each claim tied to its section. One preliminary point: this reported version does not contain the ethics clause targeting public officials whose negotiation made July's headlines, a separate matter we covered in our piece on [the August countdown](/en/analysis/clarity-act-trump-concedes-ethics-august-countdown/).*
 

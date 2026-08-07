@@ -2,10 +2,12 @@
 title: "CLARITY Act, le texte au scalpel : la nouvelle architecture de la crypto américaine"
 description: "Le texte du CLARITY Act tel que rapporté au Sénat compte 594 pages et contient en réalité deux lois : une refonte complète de la régulation des actifs numériques et l'interdiction d'une monnaie numérique de banque centrale. Sa clé de voûte est un test de maturité qui fait basculer un actif de la SEC vers la CFTC. Analyse d'impact sectoriel, section par section, du texte officiel : émetteurs, bourses, DeFi, stablecoins, banques, et les angles morts. Rien d'inventé, tout sourcé au texte."
 pubDate: 2026-07-23T10:56:00+02:00
-updatedDate: 2026-07-23T10:56:00+02:00
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "crypto", "régulation", "politique us", "stablecoins"]
 draft: false
 ---
+
+> **Mise à jour du 7 août 2026.** L'analyse ci-dessous porte sur un texte, pas sur une loi en vigueur. H.R. 3633 reste officiellement adopté par la Chambre, sans adoption par le Sénat. Après la pause du 10 août au 11 septembre, le calendrier prévoit quatorze jours de séance, du 14 septembre au 2 octobre, avant la période électorale. La procédure et les scénarios sont détaillés dans [CLARITY Act : la fenêtre avant les midterms](/posts/clarity-act-fenetre-avant-midterms/).
 
 *Le texte existe, et il est massif. La version du CLARITY Act rapportée au Sénat, référencée [H.R. 3633 RS](https://www.congress.gov/119/bills/hr3633/BILLS-119hr3633rs.pdf), compte 594 pages et porte en réalité deux titres officiels : le « Digital Asset Market Clarity Act of 2025 » et l'« Anti-CBDC Surveillance State Act ». Ce n'est pas un texte de dérégulation légère, c'est la construction d'un régime réglementaire entier, avec enregistrement, informations obligatoires, garde et conformité anti-blanchiment. Sa clé de voûte tient en un mécanisme : un test de maturité qui décide si un actif relève du gendarme boursier, la [SEC](/glossaire/#sec), ou du gendarme des matières premières, la [CFTC](/glossaire/#cftc). Nous avons lu le texte pour en tirer une analyse d'impact secteur par secteur, chaque affirmation renvoyant à sa section. Précision liminaire : cette version rapportée ne contient pas la clause éthique visant les responsables publics dont la négociation faisait l'actualité de juillet, sujet distinct que nous avons traité dans notre article sur [le compte à rebours d'août](/posts/clarity-act-trump-cede-ethique-compte-a-rebours-aout/).*
 

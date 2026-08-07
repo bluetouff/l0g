@@ -2,12 +2,14 @@
 title: "CLARITY Act: Trump concedes on ethics, the August countdown begins"
 description: "On the evening of 20 July 2026, Donald Trump agreed to an ethics provision in the CLARITY Act, the very obstacle he embodied. Three days earlier, the Senate's merged draft had come out without that clause, drawing the outright opposition of three Democratic senators. The final text is not public, Democrats have not seen it, and about ten session days remain before the 7 August recess. An X-ray of a race against the clock, with dated scenarios."
 pubDate: 2026-07-21T15:51:00+02:00
-updatedDate: 2026-07-21T15:51:00+02:00
+updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["crypto", "regulation", "us politics", "stablecoins"]
 draft: false
 sourceArticle: "clarity-act-trump-cede-ethique-compte-a-rebours-aout"
-sourceUpdatedDate: 2026-07-21
+sourceUpdatedDate: 2026-08-07
 ---
+
+> **Update, 7 August 2026.** The in-principle agreement described here has not yet produced a law. H.R. 3633 remains officially Passed House, not Passed Senate. The 10 August to 11 September break shifts the next pre-midterm window to the fourteen scheduled days between 14 September and 2 October. See the procedural status and explicitly conditional scenarios in [CLARITY Act: the window before the midterms](/en/analysis/clarity-act-window-before-midterms/).
 
 *The blockage came from the top, and so did its lifting. On the evening of 20 July 2026, according to [The Block](https://www.theblock.co/post/409000/trump-agrees-to-ethics-provision-crypto-bill), Donald Trump agreed to an ethics provision in the CLARITY Act, the text meant to split crypto regulation between the SEC and the CFTC. The provision would restrict how senior public officials, president, vice president, members of Congress and other federal officials, profit from digital assets while in office. This clause targets his own interests first, the obstacle we identified as central in our analysis of [Trump, the first obstacle to his own crypto law](/en/analysis/clarity-act-trump-conflict-of-interest/). The paradox thus unwinds where it was tied. But the agreement comes late, on a text no one has yet read, and against a calendar now counted in session days.*
 
