@@ -2,7 +2,7 @@
 title: "L’argent d’Epstein, 3/4 : client, courtier ou investisseur ?"
 description: "Highbridge, Valar, les actions Apollo et ESW révèlent quatre comptabilités différentes. Les confondre transforme des honoraires, des apports et des valorisations en fortune fictive."
 pubDate: 2026-08-08T05:30:00+02:00
-updatedDate: 2026-08-08T05:30:00+02:00
+updatedDate: 2026-08-08T07:17:41+02:00
 tags: ["Jeffrey Epstein", "Highbridge", "Valar Ventures", "Apollo", "Leon Black", "ESW", "private equity", "enquête"]
 draft: false
 ---
@@ -251,7 +251,7 @@ Le quatrième et dernier volet suivra ces actifs après sa mort : inventaire de 
 
 Cette enquête croise les [documents du DOJ](https://www.justice.gov/epstein), les pièces du contentieux entre les Îles Vierges américaines et JPMorgan, les filings EDGAR de la SEC et les dépositions publiées par la Chambre des représentants. Les identifiants EFTA sont conservés même lorsque l’URL directe d’un PDF du DOJ est intermittente. Les tableaux d’avocats sont traités comme des sélections jusqu’à preuve de leur exhaustivité ; les brouillons non signés ne prouvent pas une exécution.
 
-Le contrôle fait apparaître cinq écarts non résolus : 263 157 actions Apollo dans les relevés contre 263 257 chez Dechert ; 14,55 millions de paid-in Fund II contre 14,25 millions de coût interne ; 6 675 actions ESW théoriques après regroupement contre 6 671 déclarées ; 30 dollars entre le prix du brouillon et le crédit bancaire ; Financial Trust encore déclaré par ESW en mars 2013 malgré le paiement de novembre 2012.
+Le contrôle fait apparaître quatre écarts non résolus : 263 157 actions Apollo dans les relevés contre 263 257 chez Dechert ; 14,55 millions de paid-in Fund II contre 14,25 millions de coût interne ; 6 675 actions ESW théoriques après regroupement contre 6 671 déclarées ; Financial Trust encore déclaré par ESW en mars 2013 malgré le paiement de novembre 2012.
 
 *Lire [la version anglaise](/en/analysis/epstein-money-client-broker-investor/).*
 

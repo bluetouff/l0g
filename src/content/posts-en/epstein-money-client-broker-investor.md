@@ -2,9 +2,9 @@
 title: "Epstein’s money, 3/4: client, broker or investor?"
 description: "Highbridge, Valar, Apollo shares and ESW produce four different ledgers. Combining fees, contributions and valuations manufactures wealth that never existed."
 pubDate: 2026-08-08T05:30:00+02:00
-updatedDate: 2026-08-08T05:30:00+02:00
+updatedDate: 2026-08-08T07:17:41+02:00
 sourceArticle: "argent-epstein-client-courtier-investisseur"
-sourceUpdatedDate: 2026-08-08T05:30:00+02:00
+sourceUpdatedDate: 2026-08-08T07:17:41+02:00
 tags: ["Jeffrey Epstein", "Highbridge", "Valar Ventures", "Apollo", "Leon Black", "ESW", "private equity", "investigation"]
 draft: false
 ---
@@ -253,7 +253,7 @@ The fourth and final installment will follow those assets after his death: the e
 
 This investigation cross-checks [DOJ releases](https://www.justice.gov/epstein), exhibits in the U.S. Virgin Islands litigation against JPMorgan, SEC EDGAR filings and testimony released by the House. EFTA identifiers are preserved even when a direct DOJ PDF URL is intermittent. Lawyers’ transaction charts are treated as selected lists unless shown to be exhaustive; unsigned drafts do not establish execution.
 
-The control ledger retains five unresolved discrepancies: 263,157 Apollo shares in the statements versus 263,257 in Dechert; $14.55 million Fund II paid-in capital versus a $14.25 million internal cost basis; 6,675 theoretical ESW shares after the reverse split versus 6,671 disclosed; $30 between the draft price and bank credit; and ESW still listing Financial Trust in March 2013 despite the November 2012 payment.
+The control ledger retains four unresolved discrepancies: 263,157 Apollo shares in the statements versus 263,257 in Dechert; $14.55 million Fund II paid-in capital versus a $14.25 million internal cost basis; 6,675 theoretical ESW shares after the reverse split versus 6,671 disclosed; and ESW still listing Financial Trust in March 2013 despite the November 2012 payment.
 
 *Read the [French original](/posts/argent-epstein-client-courtier-investisseur/).*
 
