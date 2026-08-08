@@ -1,10 +1,10 @@
 ---
 title: "Epstein’s money, 3/4: client, broker or investor?"
 description: "Highbridge, Valar, Apollo shares and ESW produce four different ledgers. Combining fees, contributions and valuations manufactures wealth that never existed."
-pubDate: 2026-08-07T17:00:00+02:00
-updatedDate: 2026-08-07T17:00:00+02:00
+pubDate: 2026-08-08T05:30:00+02:00
+updatedDate: 2026-08-08T05:30:00+02:00
 sourceArticle: "argent-epstein-client-courtier-investisseur"
-sourceUpdatedDate: 2026-08-07T17:00:00+02:00
+sourceUpdatedDate: 2026-08-08T05:30:00+02:00
 tags: ["Jeffrey Epstein", "Highbridge", "Valar Ventures", "Apollo", "Leon Black", "ESW", "private equity", "investigation"]
 draft: false
 ---

@@ -1,8 +1,8 @@
 ---
 title: "L’argent d’Epstein, 3/4 : client, courtier ou investisseur ?"
 description: "Highbridge, Valar, les actions Apollo et ESW révèlent quatre comptabilités différentes. Les confondre transforme des honoraires, des apports et des valorisations en fortune fictive."
-pubDate: 2026-08-07T17:00:00+02:00
-updatedDate: 2026-08-07T17:00:00+02:00
+pubDate: 2026-08-08T05:30:00+02:00
+updatedDate: 2026-08-08T05:30:00+02:00
 tags: ["Jeffrey Epstein", "Highbridge", "Valar Ventures", "Apollo", "Leon Black", "ESW", "private equity", "enquête"]
 draft: false
 ---
