@@ -1,0 +1,101 @@
+---
+const publicationUrl = '/publications/l-argent-d-epstein/';
+---
+
+<aside class="epstein-epub" data-pagefind-ignore aria-labelledby="epstein-epub-title">
+  <img
+    src="/publications/l-argent-d-epstein-cover.png"
+    width="1600"
+    height="2560"
+    loading="lazy"
+    decoding="async"
+    alt="Couverture de L’argent d’Epstein"
+  />
+  <div>
+    <p class="epstein-label">// édition complète</p>
+    <h2 id="epstein-epub-title">Sept enquêtes réunies dans un volume.</h2>
+    <p>
+      Retrouvez ce chapitre, les six autres volets, vingt infographies et leurs sources
+      dans l’édition numérique de <cite>L’argent d’Epstein</cite>.
+    </p>
+    <a href={publicationUrl}>
+      Découvrir l’EPUB gratuit <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</aside>
+
+<style>
+  .epstein-epub {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1.35rem;
+    margin: 3rem 0 2rem;
+    padding: 1.2rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 38%, var(--color-line));
+    border-radius: 12px;
+    background:
+      linear-gradient(120deg, color-mix(in srgb, var(--color-signal) 8%, transparent), transparent 55%),
+      var(--surface-elevated);
+  }
+
+  .epstein-epub img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.32);
+  }
+
+  .epstein-label {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .epstein-epub h2 {
+    margin: 0.45rem 0 0;
+    color: var(--color-bright);
+    font-family: var(--font-read);
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    font-weight: 650;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .epstein-epub p:not(.epstein-label) {
+    margin: 0.7rem 0 0;
+    color: var(--color-prose);
+    font-family: var(--font-read);
+    font-size: 0.87rem;
+    line-height: 1.6;
+  }
+
+  .epstein-epub a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-signal) 40%, transparent);
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 480px) {
+    .epstein-epub {
+      grid-template-columns: 4.5rem minmax(0, 1fr);
+      align-items: start;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+</style>

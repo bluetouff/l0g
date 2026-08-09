@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" viewBox="0 0 480 820" role="img" aria-labelledby="timeline-title-fr timeline-desc-fr" style="width:100%;height:auto;display:block;max-width:720px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<ns0:title id="timeline-title-fr">De l’alerte précoce aux signalements rétrospectifs</ns0:title>
+<ns0:desc id="timeline-desc-fr">Frise parallèle de JPMorgan et Deutsche Bank entre 2002 et 2019, montrant les alertes, décisions de maintien, passage de relais et déclarations tardives.</ns0:desc>
+<ns0:rect width="480" height="820" rx="16" fill="#090b10"/>
+<ns0:text x="28" y="42" fill="#f4f6f8" font-size="22" font-weight="750">ALERTES, ARBITRAGES, SORTIES</ns0:text>
+<ns0:text x="28" y="68" fill="#9aa4b2" font-size="13">Deux banques successives, une continuité du risque</ns0:text>
+<ns0:text x="28" y="108" fill="#75a7ff" font-size="16" font-weight="750">JPMORGAN</ns0:text>
+<ns0:rect x="28" y="124" width="424" height="70" rx="10" fill="#14233a" stroke="#75a7ff"/>
+<ns0:text x="46" y="153" fill="#75a7ff" font-size="15" font-weight="750">2002</ns0:text>
+<ns0:text x="112" y="151" fill="#f4f6f8" font-size="18" font-weight="750">Premier SAR</ns0:text>
+<ns0:text x="112" y="176" fill="#b6c1ce" font-size="15">194 300 $ signalés</ns0:text>
+<ns0:rect x="28" y="208" width="424" height="70" rx="10" fill="#14233a" stroke="#75a7ff"/>
+<ns0:text x="46" y="237" fill="#75a7ff" font-size="15" font-weight="750">2011</ns0:text>
+<ns0:text x="112" y="235" fill="#f4f6f8" font-size="18" font-weight="750">Conserver le client</ns0:text>
+<ns0:text x="112" y="260" fill="#b6c1ce" font-size="15">Décision après revue interne</ns0:text>
+<ns0:rect x="28" y="292" width="424" height="78" rx="10" fill="#14233a" stroke="#75a7ff"/>
+<ns0:text x="46" y="322" fill="#75a7ff" font-size="15" font-weight="750">2013</ns0:text>
+<ns0:text x="112" y="320" fill="#f4f6f8" font-size="18" font-weight="750">Sortie directe</ns0:text>
+<ns0:text x="112" y="346" fill="#b6c1ce" font-size="15">Travail tiers encore autorisé</ns0:text>
+<ns0:path d="M240 389 V409" fill="none" stroke="#d9a441" stroke-width="3"/>
+<ns0:path d="M232 400 L240 410 L248 400" fill="none" stroke="#d9a441" stroke-width="3"/>
+<ns0:text x="28" y="441" fill="#f08bb4" font-size="16" font-weight="750">DEUTSCHE BANK</ns0:text>
+<ns0:rect x="28" y="457" width="424" height="70" rx="10" fill="#341927" stroke="#f08bb4"/>
+<ns0:text x="46" y="486" fill="#f08bb4" font-size="15" font-weight="750">2013</ns0:text>
+<ns0:text x="112" y="484" fill="#f4f6f8" font-size="18" font-weight="750">Ouverture</ns0:text>
+<ns0:text x="112" y="509" fill="#cdb8c1" font-size="15">Client classé haut risque</ns0:text>
+<ns0:rect x="28" y="541" width="424" height="70" rx="10" fill="#341927" stroke="#f08bb4"/>
+<ns0:text x="46" y="570" fill="#f08bb4" font-size="15" font-weight="750">2015</ns0:text>
+<ns0:text x="112" y="568" fill="#f4f6f8" font-size="18" font-weight="750">Maintien sous conditions</ns0:text>
+<ns0:text x="112" y="593" fill="#cdb8c1" font-size="15">Conditions non transmises</ns0:text>
+<ns0:rect x="28" y="625" width="424" height="70" rx="10" fill="#341927" stroke="#f08bb4"/>
+<ns0:text x="46" y="654" fill="#f08bb4" font-size="15" font-weight="750">2018</ns0:text>
+<ns0:text x="112" y="652" fill="#f4f6f8" font-size="18" font-weight="750">Lettre de sortie</ns0:text>
+<ns0:text x="112" y="677" fill="#cdb8c1" font-size="15">21 décembre</ns0:text>
+<ns0:rect x="28" y="709" width="424" height="70" rx="10" fill="#341927" stroke="#f08bb4"/>
+<ns0:text x="46" y="738" fill="#f08bb4" font-size="15" font-weight="750">2019</ns0:text>
+<ns0:text x="112" y="736" fill="#f4f6f8" font-size="18" font-weight="750">SAR rétrospectifs</ns0:text>
+<ns0:text x="112" y="761" fill="#cdb8c1" font-size="15">Plus de 250 M$ selon le Sénat</ns0:text>
+<ns0:text x="28" y="803" fill="#6f7a89" font-size="11.5">Dates de dépôt ≠ dates de détection juridique du soupçon.</ns0:text>
+</ns0:svg>

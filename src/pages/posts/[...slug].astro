@@ -9,6 +9,7 @@ import ArticleQuickTake from '../../components/ArticleQuickTake.astro';
 import ArticleEvidence from '../../components/ArticleEvidence.astro';
 import AiEditorialDisclosure from '../../components/AiEditorialDisclosure.astro';
 import CitationBox from '../../components/CitationBox.astro';
+import EpsteinEpubCard from '../../components/EpsteinEpubCard.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { ORGANIZATION_ID, organizationEntity } from '../../config/entities.ts';
@@ -27,6 +28,16 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const epsteinPublicationSlugs = new Set([
+  'argent-epstein-fortune-sans-grand-livre',
+  'argent-epstein-ce-que-les-banques-voyaient',
+  'argent-epstein-client-courtier-investisseur',
+  'argent-epstein-dernier-grand-livre',
+  'deutsche-bank-epstein-exception-conformite',
+  'barclays-staley-maxwell-deux-dossiers-une-frontiere',
+  'epstein-banques-europeennes-six-relations-a-ne-pas-confondre',
+]);
+const hasEpsteinEpub = epsteinPublicationSlugs.has(post.id);
 const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const { Content, headings } = await render(post);
 
@@ -405,6 +416,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty
     <div class="prose">
       <Content />
     </div>
+
+    {hasEpsteinEpub && <EpsteinEpubCard />}
 
     <WeeklyCta variant="article" />
 

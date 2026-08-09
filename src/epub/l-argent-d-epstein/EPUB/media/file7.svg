@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" viewBox="0 0 480 680" role="img" aria-labelledby="books-title-fr books-desc-fr" style="width:100%;max-width:480px;height:auto;display:block;margin:0 auto;background:#0c111b;border:1px solid #253047;border-radius:14px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<ns0:title id="books-title-fr">Quatre unités comptables à ne pas additionner</ns0:title>
+<ns0:desc id="books-desc-fr">Quatre cartes verticales distinguent les revenus, le capital, la propriété et la valeur, avec un avertissement contre le double comptage.</ns0:desc>
+<ns0:rect width="480" height="680" rx="14" fill="#0c111b"/>
+<ns0:text x="24" y="42" fill="#f6f8fb" font-size="21" font-weight="760">QUATRE LIVRES, PAS UN TOTAL</ns0:text>
+<ns0:text x="24" y="66" fill="#9ca9bb" font-size="13.5">Nature, date et périmètre doivent rester séparés.</ns0:text>
+<ns0:rect x="24" y="94" width="432" height="100" rx="10" fill="#17243b" stroke="#5f8ff3"/>
+<ns0:text x="42" y="123" fill="#7da4f7" font-size="13" font-weight="750">01 · REVENUS</ns0:text>
+<ns0:text x="42" y="158" fill="#ffffff" font-size="26" font-weight="780">15 M$</ns0:text>
+<ns0:text x="162" y="156" fill="#c2cbd7" font-size="14">Highbridge, honoraires encaissés</ns0:text>
+<ns0:text x="42" y="181" fill="#79c6a3" font-size="12" font-weight="700">VIREMENT ET FACTURE ÉTABLIS</ns0:text>
+<ns0:rect x="24" y="210" width="432" height="100" rx="10" fill="#142b31" stroke="#45a3a8"/>
+<ns0:text x="42" y="239" fill="#67c2c7" font-size="13" font-weight="750">02 · CAPITAL</ns0:text>
+<ns0:text x="42" y="274" fill="#ffffff" font-size="26" font-weight="780">40 M$</ns0:text>
+<ns0:text x="162" y="272" fill="#c2cbd7" font-size="13">Valar, engagements de souscription</ns0:text>
+<ns0:text x="42" y="297" fill="#f0c36a" font-size="12" font-weight="700">PROMESSE DE FINANCEMENT, PAS VALEUR</ns0:text>
+<ns0:rect x="24" y="326" width="432" height="100" rx="10" fill="#17243b" stroke="#b58af1"/>
+<ns0:text x="42" y="355" fill="#c3a4f5" font-size="13" font-weight="750">03 · PROPRIÉTÉ</ns0:text>
+<ns0:text x="42" y="390" fill="#ffffff" font-size="26" font-weight="780">263 157</ns0:text>
+<ns0:text x="184" y="388" fill="#c2cbd7" font-size="14">actions Apollo cotées</ns0:text>
+<ns0:text x="42" y="413" fill="#f0c36a" font-size="12" font-weight="700">ACTION DE L’ÉMETTEUR, PAS FONDS APOLLO</ns0:text>
+<ns0:rect x="24" y="442" width="432" height="100" rx="10" fill="#17243b" stroke="#e28c9d"/>
+<ns0:text x="42" y="471" fill="#eea1b0" font-size="13" font-weight="750">04 · VALEUR</ns0:text>
+<ns0:text x="42" y="506" fill="#ffffff" font-size="26" font-weight="780">90,44 M$</ns0:text>
+<ns0:text x="184" y="504" fill="#c2cbd7" font-size="14">Valar, estimation fin 2018</ns0:text>
+<ns0:text x="42" y="529" fill="#f0c36a" font-size="12" font-weight="700">ESTIMATION NON AUDITÉE ET NON RÉALISÉE</ns0:text>
+<ns0:rect x="24" y="570" width="432" height="78" rx="10" fill="#321b22" stroke="#c95870"/>
+<ns0:text x="240" y="603" text-anchor="middle" fill="#ffbdca" font-size="19" font-weight="760">NE PAS ADDITIONNER</ns0:text>
+<ns0:text x="240" y="629" text-anchor="middle" fill="#d8adb6" font-size="12.5">Ces montants n’ont ni la même unité ni la même date.</ns0:text>
+</ns0:svg>

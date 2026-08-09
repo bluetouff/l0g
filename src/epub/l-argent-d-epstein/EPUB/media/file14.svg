@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" viewBox="0 0 480 790" role="img" aria-labelledby="db-control-fr-title db-control-fr-desc" style="width:100%;height:auto;display:block;max-width:680px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<ns0:title id="db-control-fr-title">La chaîne de contrôle de la relation Epstein chez Deutsche Bank</ns0:title>
+<ns0:desc id="db-control-fr-desc">Schéma vertical montrant un risque documenté en 2013, une approbation sans comité formel, un réexamen en 2015, des conditions mal transmises et une activité finalement jugée normale pour ce client en 2017.</ns0:desc>
+<ns0:rect width="480" height="790" rx="16" fill="#090b10"/>
+<ns0:text x="28" y="42" fill="#f4f6f8" font-size="19" font-weight="750">DU RISQUE CONNU À LA NORME INTERNE</ns0:text>
+<ns0:text x="28" y="68" fill="#9aa4b2" font-size="14">La conformité existe, mais la chaîne se déforme</ns0:text>
+<ns0:path d="M240 126V694" stroke="#394252" stroke-width="3"/>
+<ns0:g>
+<ns0:circle cx="240" cy="132" r="11" fill="#ff4d87"/>
+<ns0:rect x="34" y="96" width="172" height="82" rx="10" fill="#2c1621" stroke="#ff4d87"/>
+<ns0:text x="50" y="122" fill="#ff7aa8" font-size="14" font-weight="750">AVRIL 2013</ns0:text>
+<ns0:text x="50" y="146" fill="#f4f6f8" font-size="15" font-weight="700">Risque documenté</ns0:text>
+<ns0:text x="50" y="166" fill="#b7bec9" font-size="12">et revenu potentiel chiffré</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="240" cy="260" r="11" fill="#f5b13d"/>
+<ns0:rect x="274" y="210" width="172" height="108" rx="10" fill="#2b2315" stroke="#f5b13d"/>
+<ns0:text x="290" y="236" fill="#ffd189" font-size="14" font-weight="750">MAI 2013</ns0:text>
+<ns0:text x="290" y="260" fill="#f4f6f8" font-size="15" font-weight="700">Approbation</ns0:text>
+<ns0:text x="290" y="280" fill="#f4f6f8" font-size="15" font-weight="700">par courriel</ns0:text>
+<ns0:text x="290" y="302" fill="#b7bec9" font-size="12">sans réunion formelle</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="240" cy="392" r="11" fill="#75a7ff"/>
+<ns0:rect x="34" y="334" width="172" height="122" rx="10" fill="#14233a" stroke="#75a7ff"/>
+<ns0:text x="50" y="360" fill="#9ec0ff" font-size="14" font-weight="750">JANVIER 2015</ns0:text>
+<ns0:text x="50" y="384" fill="#f4f6f8" font-size="15" font-weight="700">Poursuite sous</ns0:text>
+<ns0:text x="50" y="404" fill="#f4f6f8" font-size="15" font-weight="700">conditions</ns0:text>
+<ns0:text x="50" y="426" fill="#b7bec9" font-size="12">sans procès-verbal</ns0:text>
+<ns0:text x="50" y="444" fill="#b7bec9" font-size="12">conforme</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="240" cy="526" r="11" fill="#9b8cff"/>
+<ns0:rect x="274" y="466" width="172" height="120" rx="10" fill="#211c3b" stroke="#9b8cff"/>
+<ns0:text x="290" y="492" fill="#bdb4ff" font-size="14" font-weight="750">2015-2016</ns0:text>
+<ns0:text x="290" y="516" fill="#f4f6f8" font-size="15" font-weight="700">Transmission</ns0:text>
+<ns0:text x="290" y="536" fill="#f4f6f8" font-size="15" font-weight="700">rompue</ns0:text>
+<ns0:text x="290" y="558" fill="#b7bec9" font-size="10.5">équipe et surveillance</ns0:text>
+<ns0:text x="290" y="576" fill="#b7bec9" font-size="12">incomplètes</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="240" cy="660" r="11" fill="#5eead4"/>
+<ns0:rect x="34" y="616" width="172" height="90" rx="10" fill="#12302d" stroke="#5eead4"/>
+<ns0:text x="50" y="642" fill="#82f2e2" font-size="14" font-weight="750">MARS 2017</ns0:text>
+<ns0:text x="50" y="666" fill="#f4f6f8" font-size="15" font-weight="700">Alerte classée</ns0:text>
+<ns0:text x="50" y="686" fill="#b7bec9" font-size="12">« normal pour ce client »</ns0:text>
+</ns0:g>
+<ns0:rect x="34" y="730" width="412" height="34" rx="8" fill="#151a23"/>
+<ns0:text x="240" y="752" text-anchor="middle" fill="#d9a441" font-size="13" font-weight="700">Étiqueter le risque ne suffit pas à le contrôler.</ns0:text>
+</ns0:svg>

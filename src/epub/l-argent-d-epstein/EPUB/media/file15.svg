@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" viewBox="0 0 480 850" role="img" aria-labelledby="db-exit-fr-title db-exit-fr-desc" style="width:100%;height:auto;display:block;max-width:680px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<ns0:title id="db-exit-fr-title">La sortie opérationnelle de Deutsche Bank entre décembre 2018 et juillet 2019</ns0:title>
+<ns0:desc id="db-exit-fr-desc">Frise verticale distinguant la décision de sortie du 21 décembre 2018, l’échéance du 28 février 2019, la lettre de référence de mars, un ordre d’espèces en avril, des comptes encore soldés en mai et la fermeture urgente après l’arrestation de juillet.</ns0:desc>
+<ns0:rect width="480" height="850" rx="16" fill="#090b10"/>
+<ns0:text x="28" y="42" fill="#f4f6f8" font-size="20" font-weight="750">SORTIR N’EST PAS UNE DATE UNIQUE</ns0:text>
+<ns0:text x="28" y="68" fill="#9aa4b2" font-size="14">Décision, transfert, services et clôture finale</ns0:text>
+<ns0:line x1="78" y1="112" x2="78" y2="762" stroke="#394252" stroke-width="4"/>
+<ns0:g>
+<ns0:circle cx="78" cy="132" r="12" fill="#ff4d87"/>
+<ns0:text x="110" y="126" fill="#ff7aa8" font-size="14" font-weight="750">21 DÉC. 2018</ns0:text>
+<ns0:text x="110" y="151" fill="#f4f6f8" font-size="16" font-weight="700">Décision et lettre de sortie</ns0:text>
+<ns0:text x="110" y="174" fill="#aeb6c2" font-size="12.5">La banque annonce la fin de la relation.</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="78" cy="265" r="12" fill="#f5b13d"/>
+<ns0:text x="110" y="259" fill="#ffd189" font-size="14" font-weight="750">28 FÉV. 2019</ns0:text>
+<ns0:text x="110" y="284" fill="#f4f6f8" font-size="16" font-weight="700">Échéance donnée au client</ns0:text>
+<ns0:text x="110" y="307" fill="#aeb6c2" font-size="12.5">Des services subsistent après ce délai.</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="78" cy="398" r="12" fill="#75a7ff"/>
+<ns0:text x="110" y="392" fill="#9ec0ff" font-size="14" font-weight="750">18 MARS 2019</ns0:text>
+<ns0:text x="110" y="417" fill="#f4f6f8" font-size="16" font-weight="700">Lettre de référence</ns0:text>
+<ns0:text x="110" y="440" fill="#aeb6c2" font-size="12.5">Adressée à une banque recevant les actifs.</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="78" cy="531" r="12" fill="#9b8cff"/>
+<ns0:text x="110" y="525" fill="#bdb4ff" font-size="14" font-weight="750">9 AVRIL 2019</ns0:text>
+<ns0:text x="110" y="550" fill="#f4f6f8" font-size="16" font-weight="700">50 000 € en espèces organisés</ns0:text>
+<ns0:text x="110" y="573" fill="#aeb6c2" font-size="12.5">Service documenté pendant la sortie.</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="78" cy="664" r="12" fill="#5eead4"/>
+<ns0:text x="110" y="658" fill="#82f2e2" font-size="14" font-weight="750">3 MAI 2019</ns0:text>
+<ns0:text x="110" y="683" fill="#f4f6f8" font-size="14.5" font-weight="700">Au moins neuf comptes approvisionnés</ns0:text>
+<ns0:text x="110" y="706" fill="#aeb6c2" font-size="12.5">1 776 680 $ au total selon Reuters.</ns0:text>
+</ns0:g>
+<ns0:g>
+<ns0:circle cx="78" cy="782" r="12" fill="#ff4d87"/>
+<ns0:text x="110" y="776" fill="#ff7aa8" font-size="14" font-weight="750">JUILLET 2019</ns0:text>
+<ns0:text x="110" y="801" fill="#f4f6f8" font-size="14.5" font-weight="700">Clôture urgente après l’arrestation</ns0:text>
+<ns0:text x="110" y="824" fill="#aeb6c2" font-size="12.5">La liste mentionne 28 comptes.</ns0:text>
+</ns0:g>
+</ns0:svg>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" viewBox="0 0 480 675" role="img" aria-labelledby="risk-form-fr-title risk-form-fr-desc" style="width:100%;height:auto;display:block;overflow:hidden;max-width:680px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<ns0:title id="risk-form-fr-title">Le risque change de forme entre les établissements</ns0:title>
+<ns0:desc id="risk-form-fr-desc">Quatre étapes montrent un client direct, un compte hérité, une personne liée et un prestataire payé, avec la question de contrôle propre à chacune.</ns0:desc>
+<ns0:rect width="480" height="675" rx="16" fill="#090b10"/>
+<ns0:text x="28" y="42" fill="#f4f6f8" font-size="21" font-weight="750">LE RISQUE CHANGE DE FORME</ns0:text>
+<ns0:text x="28" y="68" fill="#9aa4b2" font-size="13">Chaque relation appelle un contrôle différent</ns0:text>
+<ns0:line x1="70" y1="112" x2="70" y2="602" stroke="#394252" stroke-width="4"/>
+<ns0:circle cx="70" cy="132" r="12" fill="#ff4d87"/>
+<ns0:text x="104" y="126" fill="#ff7aa8" font-size="13.5" font-weight="750">CLIENT DIRECT</ns0:text>
+<ns0:text x="104" y="154" fill="#f4f6f8" font-size="17" font-weight="720">Entrée, surveillance, sortie</ns0:text>
+<ns0:text x="104" y="179" fill="#b7bec9" font-size="10.5">Qui accepte le risque et sur quelles conditions ?</ns0:text>
+<ns0:circle cx="70" cy="264" r="12" fill="#75a7ff"/>
+<ns0:text x="104" y="258" fill="#9ec0ff" font-size="13.5" font-weight="750">COMPTE HÉRITÉ</ns0:text>
+<ns0:text x="104" y="286" fill="#f4f6f8" font-size="17" font-weight="720">Revue après une acquisition</ns0:text>
+<ns0:text x="104" y="311" fill="#b7bec9" font-size="9.8">Quand le nouveau propriétaire réévalue-t-il le client ?</ns0:text>
+<ns0:circle cx="70" cy="396" r="12" fill="#5eead4"/>
+<ns0:text x="104" y="390" fill="#82f2e2" font-size="13.5" font-weight="750">PERSONNE LIÉE</ns0:text>
+<ns0:text x="104" y="418" fill="#f4f6f8" font-size="17" font-weight="720">Le risque dépasse un seul nom</ns0:text>
+<ns0:text x="104" y="443" fill="#b7bec9" font-size="9.8">Quels liens, entités et bénéficiaires sont examinés ?</ns0:text>
+<ns0:circle cx="70" cy="528" r="12" fill="#e38bd2"/>
+<ns0:text x="104" y="522" fill="#f0a9e4" font-size="13.5" font-weight="750">PRESTATAIRE PAYÉ</ns0:text>
+<ns0:text x="104" y="550" fill="#f4f6f8" font-size="17" font-weight="720">Mandat, résultat, bénéficiaire</ns0:text>
+<ns0:text x="104" y="575" fill="#b7bec9" font-size="10.5">Qui valide la mission et mesure le service rendu ?</ns0:text>
+<ns0:rect x="26" y="618" width="428" height="34" rx="9" fill="#171b22" stroke="#394252"/>
+<ns0:text x="44" y="640" fill="#d3d8df" font-size="11">Une même personne peut réapparaître sous plusieurs formes.</ns0:text>
+</ns0:svg>
