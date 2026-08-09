@@ -44,7 +44,7 @@ function localReferences(markup) {
 function assertSvgTextFits(label, source, width, margin) {
   for (const match of source.matchAll(/<ns0:text\b([^>]*)>([^<]*)<\/ns0:text>/gu)) {
     const attributes = match[1];
-    const text = match[2].replaceAll('&amp;', '&').replaceAll('&#39;', '’');
+    const text = match[2].replaceAll('&#39;', '’').replaceAll('&amp;', '&');
     const x = Number(attributes.match(/\bx="([0-9.]+)"/u)?.[1] ?? 0);
     const fontSize = Number(attributes.match(/font-size="([0-9.]+)"/u)?.[1] ?? 16);
     const anchor = attributes.match(/text-anchor="([^"]+)"/u)?.[1] ?? 'start';
