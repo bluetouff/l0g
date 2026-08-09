@@ -2,7 +2,7 @@
 title: "Epstein et les banques européennes : six relations à ne pas confondre"
 description: "Deutsche Bank, Edmond de Rothschild, HSBC, BNP Paribas, UBS et Barclays apparaissent dans des pièces de nature différente. Un compte, une carte, une mission de conseil et un dossier de gouvernance ne prouvent pas la même chose."
 pubDate: 2026-08-09T17:22:00+02:00
-updatedDate: 2026-08-09T17:22:00+02:00
+updatedDate: 2026-08-09T18:24:19+02:00
 tags: ["Jeffrey Epstein", "Ghislaine Maxwell", "banques européennes", "Deutsche Bank", "Edmond de Rothschild", "HSBC", "BNP Paribas", "UBS", "Barclays", "conformité", "enquête"]
 draft: false
 ---
@@ -49,7 +49,7 @@ Cette enquête complète [notre série sur l'argent d'Epstein](/posts/argent-eps
 <figcaption>Les catégories sont descriptives. Elles ne classent ni la gravité morale, ni une responsabilité juridique. Chaque dossier conserve sa propre chaîne de preuve.</figcaption>
 </figure>
 
-## Edmond de Rothschild : une mission payée, pas un compte documenté
+## Edmond de Rothschild : une mission rémunérée documentée
 
 Un accord daté du 5 octobre 2015 indique que Southern Trust Company collaborait avec Ariane de Rothschild, pour le compte d'Edmond de Rothschild Holding, sur des affaires en cours entre la holding et les États-Unis. Il prévoit que le groupe Rothschild verse **25 millions de dollars** à Southern Trust au plus tard trois jours après un paiement d'Edmond de Rothschild Holding aux États-Unis. Le document décrit Epstein comme président de Southern Trust et précise que le travail devait se poursuivre selon ce qu'Epstein et Ariane de Rothschild conviendraient. [EFTA00587465, pages 1 et 2, copie indexée du fichier FBI VOL00009](https://yirah.fi/epstein/en/document/EFTA00587465)
 
@@ -137,7 +137,7 @@ Les sources permettent de poser des questions précises sans présumer leur rép
 
 8. **Le ministère américain de la Justice peut-il relier chaque affirmation documentaire à une pièce stable ?** Un index public associant les contrats, tableaux d'opérations, courriels et relevés à leurs identifiants complets permettrait de contrôler davantage les enquêtes de presse sans republier les données personnelles des victimes ou des tiers.
 
-## Une carte de relations, pas un verdict collectif
+## La méthode : identifier chaque relation et sa preuve
 
 Ces six dossiers ne décrivent pas une même « banque d'Epstein » à l'échelle européenne. Ils montrent une architecture plus difficile à contrôler : un client direct peut être quitté par un établissement et réapparaître ailleurs ; un compte peut être hérité lors d'une acquisition ; une personne liée peut conserver sa propre relation bancaire ; une société contrôlée par le client peut devenir prestataire d'un groupe financier ; un dirigeant peut enfin devenir la principale source d'une vérification portant sur sa propre conduite.
 

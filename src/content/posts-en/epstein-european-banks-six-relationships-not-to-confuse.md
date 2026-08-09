@@ -2,7 +2,7 @@
 title: "Epstein and Europe's banks: six relationships that require separate proof"
 description: "Deutsche Bank, Edmond de Rothschild, HSBC, BNP Paribas, UBS and Barclays appear in records of different kinds. An account, a card, an advisory engagement and a governance case do not prove the same thing."
 pubDate: 2026-08-09T17:22:00+02:00
-updatedDate: 2026-08-09T17:22:00+02:00
+updatedDate: 2026-08-09T18:24:19+02:00
 sourceArticle: "epstein-banques-europeennes-six-relations-a-ne-pas-confondre"
 sourceUpdatedDate: 2026-08-09T17:22:00+02:00
 tags: ["Jeffrey Epstein", "Ghislaine Maxwell", "European banks", "Deutsche Bank", "Edmond de Rothschild", "HSBC", "BNP Paribas", "UBS", "Barclays", "compliance", "investigation"]
@@ -51,7 +51,7 @@ This investigation complements [our series on Epstein's money](/en/analysis/epst
 <figcaption>The categories are descriptive. They do not rank moral gravity or legal responsibility. Each record retains its own chain of evidence.</figcaption>
 </figure>
 
-## Edmond de Rothschild: a paid engagement, not a documented account
+## Edmond de Rothschild: a documented paid engagement
 
 An agreement dated 5 October 2015 states that Southern Trust Company had been collaborating with Ariane de Rothschild, on behalf of Edmond de Rothschild Holding, on outstanding matters between the holding company and the United States. It provides for the Rothschild Group to pay **$25 million** to Southern Trust no later than three days after Edmond de Rothschild Holding made a payment to the United States. The document identifies Epstein as Southern Trust's president and says the work was to continue as agreed from time to time between Epstein and Ariane de Rothschild. [EFTA00587465, pages 1 and 2, indexed copy from FBI VOL00009](https://yirah.fi/epstein/en/document/EFTA00587465)
 
@@ -139,7 +139,7 @@ The sources support precise questions without presuming their answers. The insti
 
 8. **Can the US Department of Justice connect every documentary claim to a stable record?** A public index linking agreements, transaction tables, emails and statements to their full identifiers would allow further checking of press investigations without republishing personal information about victims or third parties.
 
-## A map of relationships, not a collective verdict
+## Method: identify each relationship and its evidence
 
 These six records do not describe a single European “Epstein bank”. They show an architecture that is harder to control: a direct client can leave one institution and reappear elsewhere; an account can be inherited in an acquisition; a linked person can retain a separate banking relationship; a company controlled by the client can become a service provider to a financial group; and a senior executive can become the principal source for a review of his own conduct.
 
