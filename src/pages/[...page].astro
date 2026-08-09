@@ -193,32 +193,9 @@ const needCards = [
     </section>
   )}
 
-  {isFirst && (
-    <section class="home-topics" aria-labelledby="followed-topics-title">
-      <SectionSignature
-        index="05"
-        eyebrow="dossiers"
-        title="Les sujets suivis"
-        id="followed-topics-title"
-        href="/sujets/"
-        linkLabel="Tous les sujets"
-      />
-      <div class="topic-grid">
-        {followedTopics.map((topic, index) => (
-          <a href={`/sujet/${topic.slug}/`} class="topic-card" style={`--topic-accent:${topic.accent === 'pink' ? 'var(--color-accent)' : topic.accent === 'amber' ? 'var(--color-amber)' : topic.accent === 'blue' ? '#7aa2f7' : 'var(--color-signal)'}`}>
-            <span class="topic-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}<i></i><b></b></span>
-            <strong>{topic.label}</strong>
-            <p>{topic.question}</p>
-            <span class="topic-cta">Ouvrir le dossier ›</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
-
   <section class="pb-4 latest-feed" id="dernieres-analyses">
     {isFirst
-      ? <SectionSignature index="06" eyebrow="chronologie" title="Les dernières analyses" description={`${page.total} entrées publiées, de la plus récente à la plus ancienne.`} />
+      ? <SectionSignature index="05" eyebrow="chronologie" title="Les dernières analyses" description={`${page.total} entrées publiées, de la plus récente à la plus ancienne.`} />
       : <div class="section-heading feed-heading">
           <div>
             <p class="mono-label" style="color: var(--color-signal)">// archives</p>
@@ -253,6 +230,29 @@ const needCards = [
     previousLabel="Précédent"
     nextLabel="Suivant"
   />
+
+  {isFirst && (
+    <section class="home-topics" aria-labelledby="followed-topics-title">
+      <SectionSignature
+        index="06"
+        eyebrow="dossiers"
+        title="Les sujets suivis"
+        id="followed-topics-title"
+        href="/sujets/"
+        linkLabel="Tous les sujets"
+      />
+      <div class="topic-grid">
+        {followedTopics.map((topic, index) => (
+          <a href={`/sujet/${topic.slug}/`} class="topic-card" style={`--topic-accent:${topic.accent === 'pink' ? 'var(--color-accent)' : topic.accent === 'amber' ? 'var(--color-amber)' : topic.accent === 'blue' ? '#7aa2f7' : 'var(--color-signal)'}`}>
+            <span class="topic-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}<i></i><b></b></span>
+            <strong>{topic.label}</strong>
+            <p>{topic.question}</p>
+            <span class="topic-cta">Ouvrir le dossier ›</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>
 
 <style>

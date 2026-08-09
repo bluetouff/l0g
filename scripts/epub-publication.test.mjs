@@ -177,6 +177,10 @@ test('la publication reste accessible depuis l’accueil et la navigation', () =
   assert.match(spotlight, /href=\{publicationUrl\}/u);
   assert.match(spotlight, /href=\{epubUrl\}/u);
   assert.match(home, /<PublicationSpotlight headingLevel="h3"/u);
+  assert.ok(
+    home.indexOf('id="dernieres-analyses"') < home.indexOf('class="home-topics"'),
+    'les dernières analyses doivent précéder les sujets suivis',
+  );
   assert.match(navigation, /href: '\/publications\/', label: 'Publications'/u);
   assert.match(footer, /\['\/publications\/', 'Publications'/u);
 });
