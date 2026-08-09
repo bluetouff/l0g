@@ -44,24 +44,29 @@ Le point est essentiel. Un classement KYC élevé n’est pas une protection en 
 </g>
 <g>
 <circle cx="240" cy="260" r="11" fill="#f5b13d"/>
-<rect x="274" y="218" width="172" height="86" rx="10" fill="#2b2315" stroke="#f5b13d"/>
-<text x="290" y="244" fill="#ffd189" font-size="14" font-weight="750">MAI 2013</text>
-<text x="290" y="268" fill="#f4f6f8" font-size="15" font-weight="700">Approbation par courriel</text>
-<text x="290" y="288" fill="#b7bec9" font-size="12">sans comité formel réuni</text>
+<rect x="274" y="210" width="172" height="108" rx="10" fill="#2b2315" stroke="#f5b13d"/>
+<text x="290" y="236" fill="#ffd189" font-size="14" font-weight="750">MAI 2013</text>
+<text x="290" y="260" fill="#f4f6f8" font-size="15" font-weight="700">Approbation</text>
+<text x="290" y="280" fill="#f4f6f8" font-size="15" font-weight="700">par courriel</text>
+<text x="290" y="302" fill="#b7bec9" font-size="12">sans réunion formelle</text>
 </g>
 <g>
 <circle cx="240" cy="392" r="11" fill="#75a7ff"/>
-<rect x="34" y="348" width="172" height="90" rx="10" fill="#14233a" stroke="#75a7ff"/>
-<text x="50" y="374" fill="#9ec0ff" font-size="14" font-weight="750">JANVIER 2015</text>
-<text x="50" y="398" fill="#f4f6f8" font-size="15" font-weight="700">Poursuite sous conditions</text>
-<text x="50" y="418" fill="#b7bec9" font-size="12">sans procès-verbal conforme</text>
+<rect x="34" y="334" width="172" height="122" rx="10" fill="#14233a" stroke="#75a7ff"/>
+<text x="50" y="360" fill="#9ec0ff" font-size="14" font-weight="750">JANVIER 2015</text>
+<text x="50" y="384" fill="#f4f6f8" font-size="15" font-weight="700">Poursuite sous</text>
+<text x="50" y="404" fill="#f4f6f8" font-size="15" font-weight="700">conditions</text>
+<text x="50" y="426" fill="#b7bec9" font-size="12">sans procès-verbal</text>
+<text x="50" y="444" fill="#b7bec9" font-size="12">conforme</text>
 </g>
 <g>
 <circle cx="240" cy="526" r="11" fill="#9b8cff"/>
-<rect x="274" y="482" width="172" height="90" rx="10" fill="#211c3b" stroke="#9b8cff"/>
-<text x="290" y="508" fill="#bdb4ff" font-size="14" font-weight="750">2015-2016</text>
-<text x="290" y="532" fill="#f4f6f8" font-size="15" font-weight="700">Transmission rompue</text>
-<text x="290" y="552" fill="#b7bec9" font-size="12">équipe et surveillance incomplètes</text>
+<rect x="274" y="466" width="172" height="120" rx="10" fill="#211c3b" stroke="#9b8cff"/>
+<text x="290" y="492" fill="#bdb4ff" font-size="14" font-weight="750">2015-2016</text>
+<text x="290" y="516" fill="#f4f6f8" font-size="15" font-weight="700">Transmission</text>
+<text x="290" y="536" fill="#f4f6f8" font-size="15" font-weight="700">rompue</text>
+<text x="290" y="558" fill="#b7bec9" font-size="12">équipe et surveillance</text>
+<text x="290" y="576" fill="#b7bec9" font-size="12">incomplètes</text>
 </g>
 <g>
 <circle cx="240" cy="660" r="11" fill="#5eead4"/>
