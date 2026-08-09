@@ -4,7 +4,7 @@ description: "Deutsche Bank, Edmond de Rothschild, HSBC, BNP Paribas, UBS and Ba
 pubDate: 2026-08-09T17:22:00+02:00
 updatedDate: 2026-08-09T18:24:19+02:00
 sourceArticle: "epstein-banques-europeennes-six-relations-a-ne-pas-confondre"
-sourceUpdatedDate: 2026-08-09T17:22:00+02:00
+sourceUpdatedDate: 2026-08-09T18:24:19+02:00
 tags: ["Jeffrey Epstein", "Ghislaine Maxwell", "European banks", "Deutsche Bank", "Edmond de Rothschild", "HSBC", "BNP Paribas", "UBS", "Barclays", "compliance", "investigation"]
 draft: false
 ---
