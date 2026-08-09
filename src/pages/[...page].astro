@@ -6,6 +6,7 @@ import HomeSidebar from '../components/HomeSidebar.astro';
 import L0gGlyph, { type GlyphName } from '../components/L0gGlyph.astro';
 import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
+import PublicationSpotlight from '../components/PublicationSpotlight.astro';
 import RiskBand from '../components/RiskBand.astro';
 import SectionSignature from '../components/SectionSignature.astro';
 import WeeklyCta from '../components/WeeklyCta.astro';
@@ -36,10 +37,10 @@ const { page } = Astro.props as { page: PaginatedPosts };
 const isFirst = page.currentPage === 1;
 const pageTitle = isFirst
   ? 'l0g : les angles morts de la finance'
-  : `Analyses financières — page ${page.currentPage}`;
+  : `Analyses financières, page ${page.currentPage}`;
 const pageDescription = isFirst
   ? 'Enquêtes sur les mécanismes financiers invisibles : bilans, collatéral, crédit privé, levier et chaînes de contagion.'
-  : `Archives des analyses l0g sur la finance, la macroéconomie, le crédit et les risques systémiques — page ${page.currentPage} sur ${page.lastPage}.`;
+  : `Archives des analyses l0g sur la finance, la macroéconomie, le crédit et les risques systémiques, page ${page.currentPage} sur ${page.lastPage}.`;
 
 const items = page.data.map((post: PostEntry, i: number) => ({
   post,
@@ -122,7 +123,7 @@ const needCards = [
     <header class="rise border-b border-dashed border-line pb-8">
       <p class="mono-label" style="color: var(--color-signal)">$ ls /analyses | page {page.currentPage}</p>
       <h1 class="mt-4 font-display text-[clamp(2rem,5vw,3rem)] leading-tight tracking-wider glow">
-        Analyses financières <span style="color: var(--color-accent)">— page {page.currentPage}</span>
+        Analyses financières <span style="color: var(--color-accent)">, page {page.currentPage}</span>
       </h1>
       <p class="mt-4 max-w-xl text-muted">
         Archives des enquêtes l0g, de la plus récente à la plus ancienne.
@@ -159,8 +160,22 @@ const needCards = [
   )}
 
   {isFirst && (
+    <section class="home-publication rise" aria-labelledby="home-publication-title">
+      <SectionSignature
+        index="03"
+        eyebrow="édition numérique"
+        title="Sept enquêtes réunies dans un volume"
+        id="home-publication-title"
+        href="/publications/"
+        linkLabel="Toutes les publications"
+      />
+      <PublicationSpotlight headingLevel="h3" />
+    </section>
+  )}
+
+  {isFirst && (
     <section class="home-needs rise" aria-labelledby="home-needs-title">
-      <SectionSignature index="03" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
+      <SectionSignature index="04" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
       <div class="need-grid">
         {needCards.map((card, index) => (
           <a href={card.href} class="need-card instrument-plate">
@@ -181,7 +196,7 @@ const needCards = [
   {isFirst && (
     <section class="home-topics" aria-labelledby="followed-topics-title">
       <SectionSignature
-        index="04"
+        index="05"
         eyebrow="dossiers"
         title="Les sujets suivis"
         id="followed-topics-title"
@@ -203,7 +218,7 @@ const needCards = [
 
   <section class="pb-4 latest-feed" id="dernieres-analyses">
     {isFirst
-      ? <SectionSignature index="05" eyebrow="chronologie" title="Les dernières analyses" description={`${page.total} entrées publiées, de la plus récente à la plus ancienne.`} />
+      ? <SectionSignature index="06" eyebrow="chronologie" title="Les dernières analyses" description={`${page.total} entrées publiées, de la plus récente à la plus ancienne.`} />
       : <div class="section-heading feed-heading">
           <div>
             <p class="mono-label" style="color: var(--color-signal)">// archives</p>
@@ -312,6 +327,7 @@ const needCards = [
   :root[data-theme='light'] .home-action.primary { color: #fff; }
   .home-needs,
   .home-featured,
+  .home-publication,
   .home-topics,
   .home-risk,
   .latest-feed { margin-top: 3.4rem; }
@@ -480,6 +496,8 @@ const needCards = [
   @media (max-width: 520px) {
     .home-actions { display: grid; grid-template-columns: 1fr; }
     .home-action { width: 100%; }
+    .home-publication :global(.section-signature) { grid-template-columns: 1fr; }
+    .home-publication :global(.section-signature > a) { justify-self: start; }
   }
   @media (prefers-reduced-motion: reduce) {
     .home-action:hover,

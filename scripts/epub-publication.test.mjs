@@ -9,6 +9,11 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const SOURCE = join(ROOT, 'src/epub/l-argent-d-epstein');
 const EPUB = join(ROOT, 'public/publications/l-argent-d-epstein-l0g.epub');
 const PAGE = join(ROOT, 'src/pages/publications/l-argent-d-epstein.astro');
+const PUBLICATIONS_INDEX = join(ROOT, 'src/pages/publications/index.astro');
+const PUBLICATION_SPOTLIGHT = join(ROOT, 'src/components/PublicationSpotlight.astro');
+const HOME = join(ROOT, 'src/pages/[...page].astro');
+const NAVIGATION = join(ROOT, 'src/components/SiteNavigation.astro');
+const FOOTER = join(ROOT, 'src/components/SiteFooter.astro');
 const MAPS = [
   {
     path: join(ROOT, 'public/publications/l-argent-d-epstein-carte-consolidee-1.png'),
@@ -159,4 +164,19 @@ test('la page de publication expose le bon fichier et sa traçabilité', () => {
   }
 
   assert.equal(sha256.length, 64);
+});
+
+test('la publication reste accessible depuis l’accueil et la navigation', () => {
+  const index = readFileSync(PUBLICATIONS_INDEX, 'utf8');
+  const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
+  const home = readFileSync(HOME, 'utf8');
+  const navigation = readFileSync(NAVIGATION, 'utf8');
+  const footer = readFileSync(FOOTER, 'utf8');
+
+  assert.match(index, /<PublicationSpotlight/u);
+  assert.match(spotlight, /href=\{publicationUrl\}/u);
+  assert.match(spotlight, /href=\{epubUrl\}/u);
+  assert.match(home, /<PublicationSpotlight headingLevel="h3"/u);
+  assert.match(navigation, /href: '\/publications\/', label: 'Publications'/u);
+  assert.match(footer, /\['\/publications\/', 'Publications'/u);
 });

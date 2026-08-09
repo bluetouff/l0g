@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
+---
+
+<BaseLayout
+  title="Publications numériques"
+  description="Les enquêtes l0g réunies en éditions numériques gratuites, structurées et vérifiables."
+  ogImage="/og-l-argent-d-epstein.png"
+  ogImageAlt="L’argent d’Epstein, sept enquêtes réunies dans une édition EPUB l0g"
+>
+  <PageHero
+    index="06"
+    kicker="éditions l0g"
+    title="Lire les enquêtes."
+    highlight="Conserver leurs preuves."
+    description="Les publications numériques réunissent des séries d’articles dans un ordre de lecture continu, avec leurs sources, leurs limites et leurs documents associés."
+    secondary="Chaque édition reste reliée aux pages canoniques afin que les corrections et les mises à jour demeurent vérifiables."
+    glyph="read"
+    accent="var(--color-amber)"
+    stats={[
+      { value: 1, label: 'édition disponible' },
+      { value: 7, label: 'enquêtes réunies' },
+      { value: 20, label: 'infographies adaptées' },
+    ]}
+  />
+
+  <section class="publication-list" aria-labelledby="publication-list-title">
+    <p class="mono-label">// catalogue</p>
+    <h2 id="publication-list-title">Édition disponible</h2>
+    <PublicationSpotlight />
+  </section>
+</BaseLayout>
+
+<style>
+  .publication-list { margin-top: 2.8rem; }
+  .publication-list > .mono-label { color: var(--color-amber); }
+  .publication-list > h2 {
+    margin: 0.35rem 0 1rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+    line-height: 1.12;
+  }
+</style>

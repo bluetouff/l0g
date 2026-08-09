@@ -1,0 +1,228 @@
+---
+interface Props {
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+const publicationUrl = '/publications/l-argent-d-epstein/';
+const epubUrl = '/publications/l-argent-d-epstein-l0g.epub';
+---
+
+<article class="publication-spotlight">
+  <a class="publication-cover" href={publicationUrl} aria-label="Découvrir l’édition L’argent d’Epstein">
+    <span class="cover-aura" aria-hidden="true"></span>
+    <img
+      src="/publications/l-argent-d-epstein-cover.png"
+      width="1600"
+      height="2560"
+      alt="Couverture de L’argent d’Epstein"
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+
+  <div class="publication-copy">
+    <div class="publication-meta">
+      <p class="mono-label">// édition complète · août 2026</p>
+      <span>EPUB 3</span>
+    </div>
+    <Heading>L’argent <em>d’Epstein</em></Heading>
+    <p class="publication-deck">Fortune, banques, investissements et succession.</p>
+    <p class="publication-description">
+      Sept enquêtes réunies dans un ordre de lecture continu, avec leurs sources,
+      leurs calculs, leurs limites et les questions qui restent ouvertes.
+    </p>
+
+    <ul class="publication-facts" aria-label="Contenu de l’édition">
+      <li><strong>7</strong><span>enquêtes</span></li>
+      <li><strong>20</strong><span>infographies</span></li>
+      <li><strong>194 Ko</strong><span>téléchargement</span></li>
+      <li><strong>CC BY 4.0</strong><span>licence</span></li>
+    </ul>
+
+    <div class="publication-actions">
+      <a class="publication-primary" href={publicationUrl}>Découvrir l’édition <span aria-hidden="true">›</span></a>
+      <a class="publication-secondary" href={epubUrl} download="L-argent-d-Epstein-l0g.epub">
+        Télécharger l’EPUB
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .publication-spotlight {
+    display: grid;
+    grid-template-columns: minmax(10rem, 13.5rem) minmax(0, 1fr);
+    gap: clamp(1.2rem, 4vw, 2.4rem);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 34%, var(--color-line));
+    border-radius: 18px 5px 18px 18px;
+    padding: clamp(1rem, 3vw, 1.65rem);
+    background:
+      radial-gradient(circle at 12% 30%, color-mix(in srgb, var(--color-amber) 12%, transparent), transparent 31%),
+      radial-gradient(circle at 92% 10%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 29%),
+      color-mix(in srgb, var(--color-surface) 72%, transparent);
+    box-shadow: inset 0 1px 0 var(--edge-highlight), 0 24px 70px color-mix(in srgb, #000 22%, transparent);
+  }
+  .publication-spotlight::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 1rem;
+    height: 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-amber) 52%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--color-amber) 52%, var(--color-line));
+    background: var(--color-ink);
+  }
+  .publication-cover {
+    display: block;
+    position: relative;
+    align-self: center;
+    width: 100%;
+    max-width: 13.5rem;
+    margin-inline: auto;
+    perspective: 900px;
+  }
+  .cover-aura {
+    position: absolute;
+    inset: 12% -10% -4%;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-amber) 22%, transparent);
+    filter: blur(30px);
+    opacity: 0.62;
+  }
+  .publication-cover img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    border: 1px solid color-mix(in srgb, var(--color-paper) 18%, transparent);
+    border-radius: 3px 8px 8px 3px;
+    box-shadow: -8px 12px 28px rgba(0, 0, 0, 0.42), inset 10px 0 18px rgba(255, 255, 255, 0.04);
+    transform: rotateY(5deg) rotateZ(-0.7deg);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .publication-cover:hover img {
+    transform: rotateY(1deg) rotateZ(0deg) translateY(-2px);
+    box-shadow: -5px 16px 34px rgba(0, 0, 0, 0.48);
+  }
+  .publication-copy { align-self: center; min-width: 0; }
+  .publication-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.55rem 1rem;
+  }
+  .publication-meta p { color: var(--color-amber); }
+  .publication-meta > span {
+    border: 1px solid color-mix(in srgb, var(--color-amber) 45%, var(--color-line));
+    border-radius: 999px;
+    padding: 0.25rem 0.55rem;
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .publication-copy h2,
+  .publication-copy h3 {
+    margin-top: 0.65rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4.2vw, 3rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  .publication-copy h2 em,
+  .publication-copy h3 em { color: var(--color-accent); font-style: normal; }
+  .publication-deck {
+    margin-top: 0.65rem;
+    color: var(--color-paper);
+    font-family: var(--font-read);
+    font-size: clamp(0.98rem, 2vw, 1.16rem);
+    line-height: 1.45;
+  }
+  .publication-description {
+    max-width: 43rem;
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+  .publication-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 1.1rem;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.7rem 0;
+  }
+  .publication-facts li {
+    min-width: 0;
+    border-left: 1px solid var(--color-line);
+    padding: 0 0.65rem;
+  }
+  .publication-facts li:first-child { border-left: 0; padding-left: 0; }
+  .publication-facts strong,
+  .publication-facts span { display: block; }
+  .publication-facts strong {
+    overflow-wrap: anywhere;
+    color: var(--color-bright);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+  .publication-facts span {
+    margin-top: 0.18rem;
+    color: var(--color-muted);
+    font-size: 0.67rem;
+  }
+  .publication-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .publication-actions a {
+    display: inline-flex;
+    min-height: 2.65rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    transition: transform 0.16s, border-color 0.16s, background 0.16s;
+  }
+  .publication-actions a:hover { transform: translateY(-1px); }
+  .publication-primary { color: var(--color-ink); background: var(--color-amber); }
+  .publication-primary span { font-size: 1rem; line-height: 0; }
+  .publication-secondary { border: 1px solid var(--color-line-strong); color: var(--color-paper); }
+  .publication-secondary:hover { border-color: var(--color-amber); }
+  :root[data-theme='light'] .publication-primary { color: #1a1509; }
+  @media (max-width: 680px) {
+    .publication-spotlight { grid-template-columns: minmax(5.6rem, 7.2rem) minmax(0, 1fr); gap: 1rem; }
+    .publication-cover { align-self: start; }
+    .publication-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .publication-facts li { border-left: 0; padding: 0.35rem 0; }
+    .publication-facts li:nth-child(even) { border-left: 1px solid var(--color-line); padding-left: 0.65rem; }
+    .publication-actions { display: grid; grid-template-columns: 1fr; }
+    .publication-actions a { width: 100%; }
+  }
+  @media (max-width: 430px) {
+    .publication-spotlight { align-items: start; padding: 0.85rem; }
+    .publication-copy h2,
+    .publication-copy h3 { font-size: clamp(1.45rem, 8vw, 1.9rem); }
+    .publication-description { grid-column: 1 / -1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .publication-cover img,
+    .publication-actions a { transition: none; }
+    .publication-cover:hover img,
+    .publication-actions a:hover { transform: none; }
+  }
+</style>
