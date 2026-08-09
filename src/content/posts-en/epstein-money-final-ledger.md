@@ -2,7 +2,7 @@
 title: "Epstein’s money, 4/4: the final ledger"
 description: "In seven years, Jeffrey Epstein’s estate sold his homes, paid survivors, settled with the Virgin Islands and repaid a loan. Published reporting also identifies a $111.6 million tax refund."
 pubDate: 2026-08-08T10:02:48+02:00
-updatedDate: 2026-08-08T10:02:48+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "argent-epstein-dernier-grand-livre"
 sourceUpdatedDate: 2026-08-08T10:02:48+02:00
 tags: ["Jeffrey Epstein", "estate", "1953 Trust", "survivors", "U.S. Virgin Islands", "IRS", "Valar", "investigation"]
@@ -33,7 +33,7 @@ The petition’s footnote matters. Values remained subject to appraisal and date
 <g class="desktop">
 <rect width="760" height="540" rx="16" fill="#0b1120"/>
 <text x="38" y="52" fill="#f7f9fc" font-size="26" font-weight="760">THE FORTUNE CHANGES FORM</text>
-<text x="38" y="82" fill="#99a7bb" font-size="15">Four cut-off dates, four defined scopes. The line is not a return calculation.</text>
+<text x="38" y="82" fill="#99a7bb" font-size="13">Four cut-off dates, four defined scopes. The line is not a return calculation.</text>
 <line x1="86" y1="290" x2="676" y2="290" stroke="#34425c" stroke-width="4"/>
 <path d="M86 290 C172 290 202 382 282 382 S398 162 474 162 S584 250 676 250" fill="none" stroke="#5d8df4" stroke-width="5"/>
 <circle cx="86" cy="290" r="12" fill="#78a2ff" stroke="#dce7ff" stroke-width="3"/>
@@ -213,7 +213,7 @@ The public notice adds a possible deduction. Class counsel will ask for up to 30
 <figcaption>The $12.5 million transferred in 2026 sits in a court-supervised account. It does not yet mean $12.5 million has reached class members.</figcaption>
 </figure>
 
-## The Virgin Islands: $117.28 million, not $105 million plus $80 million
+## The Virgin Islands published settlement total: $117.28 million
 
 The [settlement announced by the U.S. Virgin Islands Department of Justice on November 30, 2022](https://usvidoj.com/u-s-virgin-islands-attorney-general-settles-sex-trafficking-case-against-estate-of-jeffrey-epstein-and-co-defendants-for-over-105-million/) required $105 million in cash, $450,000 for environmental remediation around Great St. James and half the proceeds from Little St. James.
 
@@ -282,7 +282,7 @@ That estimate does not sit on top of the balance sheet. Valar is already inside 
 <text x="516" y="242" fill="#d9b2bc" font-size="13">$22.5M class balance</text>
 <text x="516" y="269" fill="#d9b2bc" font-size="13">$4.5M unpaid fees</text>
 <text x="516" y="311" fill="#f0c36a" font-size="12" font-weight="720">ALSO: UNKNOWN</text>
-<text x="516" y="334" fill="#c7a5ad" font-size="12">claims + taxes to be determined</text>
+<text x="516" y="334" fill="#c7a5ad" font-size="11">claims + taxes to be determined</text>
 <path d="M380 396 L380 430" stroke="#65738a" stroke-width="3"/>
 <path d="M371 422 L380 432 L389 422" fill="none" stroke="#65738a" stroke-width="3"/>
 <rect x="38" y="444" width="684" height="126" rx="14" fill="#171e2c" stroke="#68579a"/>
@@ -334,7 +334,7 @@ The final ledger therefore ends with a precise, provisional answer. **At June 30
 
 Epstein’s fortune did not fall through one hidden trapdoor. It fragmented among survivors, the territory, tax authorities, creditors, professionals and illiquid holdings. Any future inheritance is the residual variable in that equation, not its starting point.
 
-## What the accounts let us say
+## Conclusions supported by the accounts
 
 The amounts cited here are distinguished by their basis: primary document, reported figure, derived calculation or unknown. Quarterly accountings 17 through 27 are read alongside the probate inventory, the USVI settlement, the 2026 class agreement, the will and the 1953 Trust. Reported property prices never become net proceeds without closing records. Valar estimates are never added to a balance that already includes them.
 

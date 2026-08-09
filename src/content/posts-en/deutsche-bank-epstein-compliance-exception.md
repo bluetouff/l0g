@@ -2,7 +2,7 @@
 title: "Deutsche Bank and Epstein: the compliance exception"
 description: "From 2013 to 2019, the record shows how a high-risk client became a commercial exception and why Deutsche Bank’s exit stretched over months."
 pubDate: 2026-08-09T12:23:00+02:00
-updatedDate: 2026-08-09T12:23:00+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "deutsche-bank-epstein-exception-conformite"
 sourceUpdatedDate: 2026-08-09T12:23:00+02:00
 tags: ["Deutsche Bank", "Jeffrey Epstein", "compliance", "money laundering", "NYDFS", "banks", "investigation"]
@@ -50,7 +50,7 @@ That distinction matters. A high KYC rating is not a safeguard by itself. It wor
 <text x="290" y="236" fill="#ffd189" font-size="14" font-weight="750">MAY 2013</text>
 <text x="290" y="260" fill="#f4f6f8" font-size="15" font-weight="700">Approval</text>
 <text x="290" y="280" fill="#f4f6f8" font-size="15" font-weight="700">by email</text>
-<text x="290" y="302" fill="#b7bec9" font-size="12">without a formal meeting</text>
+<text x="290" y="302" fill="#b7bec9" font-size="11">without a formal meeting</text>
 </g>
 <g>
 <circle cx="240" cy="392" r="11" fill="#75a7ff"/>
@@ -93,7 +93,7 @@ The system then broke in two places. The conditions were not communicated to eve
 
 That sentence does not establish an illicit purpose for the payment. It establishes a weak benchmark. If atypical behaviour repeats for long enough, the client’s past becomes the standard of normality. Monitoring turns circular: what looks like the same client’s previous behaviour is treated as ordinary.
 
-## The accounts show signals, not criminal proof
+## The limited reach of account signals
 
 The Butterfly Trust illustrates the problem. Deutsche Bank opened checking and money-market accounts for it in January 2014. The NYDFS later counted more than 120 wires totalling $2.65 million to trust beneficiaries, with stated purposes including hotels, tuition and rent. The regulator also cited more than $7 million in apparent settlement payments through law firms and more than $6 million in apparent legal expenses. [NYDFS, paragraphs 28 to 32](https://www.dfs.ny.gov/system/files/documents/2020/07/ea20200706_deutsche_bank_consent_order.pdf)
 

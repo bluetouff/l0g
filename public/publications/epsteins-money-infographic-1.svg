@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ledger-title-en ledger-desc-en" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,monospace">
+<title id="ledger-title-en">Four public numbers with four different scopes</title>
+<desc id="ledger-desc-en">Four vertical cards distinguish Bear Stearns salary, the Wexner allegation, Financial Trust fees and Southern Trust fees. The numbers should not be added together.</desc>
+<text x="24" y="40" fill="#f5f6f8" font-size="20" font-weight="700">ONE FORTUNE, NO</text>
+<text x="24" y="64" fill="#f5f6f8" font-size="20" font-weight="700">CONTINUOUS LEDGER</text>
+<text x="24" y="94" fill="#a8adb7" font-size="12">Different accounting objects, sometimes at the same time.</text>
+<line x1="48" y1="148" x2="48" y2="564" stroke="#313641" stroke-width="2"></line>
+<circle cx="48" cy="148" r="8" fill="#7aa2f7"></circle>
+<rect x="80" y="130" width="376" height="116" rx="10" fill="#151820" stroke="#7aa2f7" stroke-opacity="0.65"></rect>
+<text x="102" y="158" fill="#7aa2f7" font-size="13" font-weight="700">1976-1981 · JOB</text>
+<text x="102" y="190" fill="#f5f6f8" font-size="26" font-weight="700">$42,000</text>
+<text x="102" y="214" fill="#d6d9df" font-size="13">documented annual salary in April 1979</text>
+<text x="102" y="234" fill="#8b909b" font-size="11">Source: personnel file</text>
+<circle cx="48" cy="286" r="8" fill="#ff4d87"></circle>
+<rect x="80" y="268" width="376" height="116" rx="10" fill="#151820" stroke="#ff4d87" stroke-opacity="0.65"></rect>
+<text x="102" y="296" fill="#ff4d87" font-size="13" font-weight="700">1991-2007 · WEXNER</text>
+<text x="102" y="328" fill="#f5f6f8" font-size="16" font-weight="700">“several hundred million dollars”</text>
+<text x="102" y="352" fill="#d6d9df" font-size="13">alleged misappropriation; $100m returned</text>
+<text x="102" y="372" fill="#8b909b" font-size="11">Lawyers’ proffer, not judgment</text>
+<circle cx="48" cy="424" r="8" fill="#f5b13d"></circle>
+<rect x="80" y="406" width="376" height="116" rx="10" fill="#151820" stroke="#f5b13d" stroke-opacity="0.65"></rect>
+<text x="102" y="434" fill="#f5b13d" font-size="13" font-weight="700">2000-2006 · FINANCIAL TRUST</text>
+<text x="102" y="466" fill="#f5f6f8" font-size="26" font-weight="700">≈ $300m</text>
+<text x="102" y="490" fill="#d6d9df" font-size="11">aggregate fees, with no public client allocation</text>
+<text x="102" y="510" fill="#8b909b" font-size="11">Available financial statements</text>
+<circle cx="48" cy="562" r="8" fill="#5eead4"></circle>
+<rect x="80" y="544" width="376" height="116" rx="10" fill="#151820" stroke="#5eead4" stroke-opacity="0.65"></rect>
+<text x="102" y="572" fill="#5eead4" font-size="13" font-weight="700">2013-2017 · SOUTHERN TRUST</text>
+<text x="102" y="604" fill="#f5f6f8" font-size="23" font-weight="700">$183,999,980</text>
+<text x="102" y="628" fill="#d6d9df" font-size="12">exact fees, three reconciled payment sources</text>
+<text x="102" y="648" fill="#8b909b" font-size="11">Contracts, invoices and wires</text>
+<rect x="24" y="704" width="432" height="92" rx="10" fill="#11141a" stroke="#313641"></rect>
+<text x="46" y="734" fill="#f58b57" font-size="13" font-weight="700">READING RULE</text>
+<text x="46" y="760" fill="#d6d9df" font-size="13">Salary, allegation and fees are not items to</text>
+<text x="46" y="780" fill="#d6d9df" font-size="13">add together into one net-worth figure.</text>
+</svg>

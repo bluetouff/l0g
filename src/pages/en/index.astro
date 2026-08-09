@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import EnglishLayout from '../../layouts/EnglishGuidesLayout.astro';
 import WatchCard from '../../components/WatchCard.astro';
+import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
 import { MCP_COMPACT_PUBLIC_PATH } from '../../config/agent-contract.mjs';
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
@@ -38,6 +39,7 @@ const primaryCards = [
 ];
 
 const routes = [
+  { href: '/en/publications/', label: 'Publications', text: 'Free long-form editions that preserve sources, structure and correction paths.' },
   ...(analysisCount > 0
     ? [{ href: '/en/analysis/', label: `${analysisCount} analysis pieces`, text: 'Sourced, antithesis-tested essays on AI finance, credit plumbing and systemic risk.' }]
     : []),
@@ -68,7 +70,7 @@ const jsonLd = {
   '@type': 'WebPage',
   '@id': `${SITE}/en/#webpage`,
   name: 'l0g in English',
-  description: 'English entry points for l0g.fr: reference guides, methodology, sources, API, MCP, dashboards, glossary and risk replay surfaces.',
+  description: 'English entry points for l0g.fr: investigations, publications, reference guides, methodology, sources, API, MCP, glossary and risk replay surfaces.',
   inLanguage: 'en',
   isPartOf: { '@id': `${SITE}/#website` },
 };
@@ -76,7 +78,7 @@ const jsonLd = {
 
 <EnglishLayout
   title="l0g in English"
-  description="English entry points for l0g.fr: reference guides, methodology, sources, API, MCP, dashboards, glossary and risk replay surfaces."
+  description="English entry points for l0g.fr: investigations, publications, reference guides, methodology, sources, API, MCP, glossary and risk replay surfaces."
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 
@@ -89,7 +91,7 @@ const jsonLd = {
         <span class="title-line">where it matters.</span>
       </h1>
       <p class="en-lede">
-        l0g is a French, open-source risk-intelligence project that maps financial opacity with public data, primary sources and machine-readable evidence. This English layer exposes the durable core: guides, methods, sources, APIs, MCP and replayable risk surfaces.
+        l0g is a French, open-source risk-intelligence project that maps financial opacity with public data, primary sources and machine-readable evidence. This English layer includes selected investigations, free publications, guides, methods, sources, APIs, MCP and replayable risk surfaces.
       </p>
       <div class="en-hero-actions" data-pagefind-ignore>
         <a href="/en/guides/" class="en-cta primary">read the guides</a>
@@ -119,6 +121,12 @@ status: readable by humans and agents`}</code></pre>
     <span><strong>API</strong> JSON / NDJSON / CSV</span>
     <span><strong>MCP</strong> read-only server</span>
     <span><strong>0</strong> trackers</span>
+  </section>
+
+  <section class="publication-highlight" aria-labelledby="english-publication-title">
+    <p class="mono-label" style="color: var(--color-amber)">// new English publication</p>
+    <h2 id="english-publication-title">Seven Epstein investigations in one EPUB.</h2>
+    <PublicationSpotlight lang="en" headingLevel="h3" />
   </section>
 
   <section class="primary-grid" aria-label="Main English entry points">
@@ -187,7 +195,7 @@ status: readable by humans and agents`}</code></pre>
     <p class="mono-label glow" style="color: var(--color-signal)">// caveat</p>
     <h2>English is a layer, not a disguise.</h2>
     <p>
-      The original journal remains French. The English layer is intentionally limited to evergreen guides, methods, sources and machine surfaces, because these are the parts worth keeping stable across languages.
+      The original journal remains French. The English layer is curated around selected investigations, durable publications, guides, methods, sources and machine-readable surfaces.
     </p>
     <div class="en-hero-actions">
       <a href="/" class="en-cta ghost">go to the French site</a>
@@ -197,6 +205,8 @@ status: readable by humans and agents`}</code></pre>
 </EnglishLayout>
 
 <style>
+  .publication-highlight { margin-top: clamp(2.4rem, 6vw, 4.5rem); }
+  .publication-highlight > h2 { margin: .35rem 0 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.12; }
   .en-home-hero {
     position: relative;
     display: grid;

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="books-title-en books-desc-en" style="width:100%;max-width:480px;height:auto;display:block;margin:0 auto;background:#0c111b;border:1px solid #253047;border-radius:14px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="books-title-en">Four accounting units that cannot be added together</title>
+<desc id="books-desc-en">Four vertical cards distinguish income, capital, ownership and value, with a warning against double counting.</desc>
+<rect width="480" height="680" rx="14" fill="#0c111b"></rect>
+<text x="24" y="42" fill="#f6f8fb" font-size="21" font-weight="760">FOUR LEDGERS, NOT ONE TOTAL</text>
+<text x="24" y="66" fill="#9ca9bb" font-size="14">Nature, date and scope must remain separate.</text>
+<rect x="24" y="94" width="432" height="100" rx="10" fill="#17243b" stroke="#5f8ff3"></rect>
+<text x="42" y="123" fill="#7da4f7" font-size="13" font-weight="750">01 · INCOME</text>
+<text x="42" y="158" fill="#ffffff" font-size="26" font-weight="780">$15m</text>
+<text x="162" y="156" fill="#c2cbd7" font-size="14">Highbridge fees received</text>
+<text x="42" y="181" fill="#79c6a3" font-size="12" font-weight="700">WIRE AND INVOICE ESTABLISHED</text>
+<rect x="24" y="210" width="432" height="100" rx="10" fill="#142b31" stroke="#45a3a8"></rect>
+<text x="42" y="239" fill="#67c2c7" font-size="13" font-weight="750">02 · CAPITAL</text>
+<text x="42" y="274" fill="#ffffff" font-size="26" font-weight="780">$40m</text>
+<text x="162" y="272" fill="#c2cbd7" font-size="14">Valar subscription commitments</text>
+<text x="42" y="297" fill="#f0c36a" font-size="12" font-weight="700">FUNDING PROMISE, NOT VALUE</text>
+<rect x="24" y="326" width="432" height="100" rx="10" fill="#17243b" stroke="#b58af1"></rect>
+<text x="42" y="355" fill="#c3a4f5" font-size="13" font-weight="750">03 · OWNERSHIP</text>
+<text x="42" y="390" fill="#ffffff" font-size="26" font-weight="780">263,157</text>
+<text x="184" y="388" fill="#c2cbd7" font-size="14">listed Apollo shares</text>
+<text x="42" y="413" fill="#f0c36a" font-size="12" font-weight="700">ISSUER STOCK, NOT AN APOLLO FUND</text>
+<rect x="24" y="442" width="432" height="100" rx="10" fill="#17243b" stroke="#e28c9d"></rect>
+<text x="42" y="471" fill="#eea1b0" font-size="13" font-weight="750">04 · VALUE</text>
+<text x="42" y="506" fill="#ffffff" font-size="26" font-weight="780">$90.44m</text>
+<text x="184" y="504" fill="#c2cbd7" font-size="14">Valar estimate at end-2018</text>
+<text x="42" y="529" fill="#f0c36a" font-size="12" font-weight="700">UNAUDITED AND UNREALIZED ESTIMATE</text>
+<rect x="24" y="570" width="432" height="78" rx="10" fill="#321b22" stroke="#c95870"></rect>
+<text x="240" y="603" text-anchor="middle" fill="#ffbdca" font-size="19" font-weight="760">DO NOT ADD THEM</text>
+<text x="240" y="629" text-anchor="middle" fill="#d8adb6" font-size="12">These figures have neither the same unit nor the same date.</text>
+</svg>

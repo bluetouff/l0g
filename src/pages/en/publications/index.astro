@@ -1,0 +1,46 @@
+---
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import PublicationSpotlight from '../../../components/PublicationSpotlight.astro';
+import { SITE_URL } from '../../../config/entities.ts';
+
+const pageUrl = `${SITE_URL}/en/publications/`;
+---
+
+<EnglishLayout
+  title="English publications"
+  description="Free English l0g publications that preserve source links, reading order, limitations and correction paths."
+  canonical={pageUrl}
+  alternateLinks={[
+    { hreflang: 'en', href: pageUrl },
+    { hreflang: 'fr', href: `${SITE_URL}/publications/` },
+    { hreflang: 'x-default', href: `${SITE_URL}/publications/` },
+  ]}
+  ogImage="/og-epsteins-money.png"
+  ogImageAlt="Epstein's Money, the first free English EPUB edition from l0g"
+>
+  <header class="publication-index rise" data-pagefind-body>
+    <p class="mono-label glow">// l0g editions</p>
+    <h1>Read the investigation.<span>Keep its evidence.</span></h1>
+    <p>
+      l0g publications assemble related investigations into a continuous reading order.
+      Sources, limitations and links to the canonical articles remain attached to every edition.
+    </p>
+  </header>
+
+  <section class="publication-list" aria-labelledby="publication-list-title">
+    <p class="mono-label">// available now</p>
+    <h2 id="publication-list-title">English edition</h2>
+    <PublicationSpotlight lang="en" />
+  </section>
+</EnglishLayout>
+
+<style>
+  .publication-index { max-width: 56rem; padding: clamp(2rem, 6vw, 5rem) 0; }
+  .publication-index > .mono-label { color: var(--color-signal); }
+  .publication-index h1 { margin-top: .6rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 5.8rem); letter-spacing: -.055em; line-height: .92; }
+  .publication-index h1 span { display: block; color: var(--color-accent); }
+  .publication-index > p:last-child { max-width: 46rem; margin-top: 1.4rem; color: var(--color-prose); font-family: var(--font-read); font-size: 1.05rem; line-height: 1.75; }
+  .publication-list { padding-top: 2.5rem; border-top: 1px solid var(--color-line); }
+  .publication-list > .mono-label { color: var(--color-amber); }
+  .publication-list > h2 { margin: .35rem 0 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.12; }
+</style>

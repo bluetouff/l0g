@@ -1,21 +1,67 @@
 ---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 interface Props {
   headingLevel?: 'h2' | 'h3';
+  lang?: 'fr' | 'en';
 }
 
-const { headingLevel = 'h2' } = Astro.props;
+const { headingLevel = 'h2', lang = 'fr' } = Astro.props;
 const Heading = headingLevel;
-const publicationUrl = '/publications/l-argent-d-epstein/';
-const epubUrl = '/publications/l-argent-d-epstein-l0g.epub';
+const isEnglish = lang === 'en';
+const publicationUrl = isEnglish ? '/en/publications/epsteins-money/' : '/publications/l-argent-d-epstein/';
+const epubUrl = isEnglish ? '/publications/epsteins-money-l0g.epub' : '/publications/l-argent-d-epstein-l0g.epub';
+const coverUrl = isEnglish ? '/publications/epsteins-money-cover.png' : '/publications/l-argent-d-epstein-cover.png';
+const epubPath = join(process.cwd(), 'public/publications', isEnglish ? 'epsteins-money-l0g.epub' : 'l-argent-d-epstein-l0g.epub');
+const epubBytes = readFileSync(epubPath).length;
+const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
+const copy = isEnglish
+  ? {
+      coverLabel: "Discover the Epstein's Money edition",
+      coverAlt: "Cover of Epstein's Money",
+      meta: '// complete edition · August 2026',
+      titleLead: "Epstein's",
+      titleAccent: 'Money',
+      deck: 'Fortune, banks, investments and the estate.',
+      description: 'Seven investigations in one reading sequence, with their sources, calculations, limitations and unresolved questions.',
+      factsLabel: 'Edition contents',
+      investigations: 'investigations',
+      infographics: 'infographics',
+      download: 'download',
+      license: 'license',
+      discover: 'Explore the edition',
+      downloadLabel: 'Download the EPUB',
+      fileName: 'Epsteins-Money-l0g.epub',
+      size: formattedSize,
+    }
+  : {
+      coverLabel: 'Découvrir l’édition L’argent d’Epstein',
+      coverAlt: 'Couverture de L’argent d’Epstein',
+      meta: '// édition complète · août 2026',
+      titleLead: 'L’argent',
+      titleAccent: 'd’Epstein',
+      deck: 'Fortune, banques, investissements et succession.',
+      description: 'Sept enquêtes réunies dans un ordre de lecture continu, avec leurs sources, leurs calculs, leurs limites et les questions qui restent ouvertes.',
+      factsLabel: 'Contenu de l’édition',
+      investigations: 'enquêtes',
+      infographics: 'infographies',
+      download: 'téléchargement',
+      license: 'licence',
+      discover: 'Découvrir l’édition',
+      downloadLabel: 'Télécharger l’EPUB',
+      fileName: 'L-argent-d-Epstein-l0g.epub',
+      size: formattedSize,
+    };
 ---
 
 <article class="publication-spotlight">
-  <a class="publication-cover" href={publicationUrl} aria-label="Découvrir l’édition L’argent d’Epstein">
+  <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
-      src="/publications/l-argent-d-epstein-cover.png"
+      src={coverUrl}
       width="1600"
       height="2560"
-      alt="Couverture de L’argent d’Epstein"
+      alt={copy.coverAlt}
       loading="lazy"
       decoding="async"
     />
@@ -23,27 +69,24 @@ const epubUrl = '/publications/l-argent-d-epstein-l0g.epub';
 
   <div class="publication-copy">
     <div class="publication-meta">
-      <p class="mono-label">// édition complète · août 2026</p>
+      <p class="mono-label">{copy.meta}</p>
       <span>EPUB 3</span>
     </div>
-    <Heading>L’argent <em>d’Epstein</em></Heading>
-    <p class="publication-deck">Fortune, banques, investissements et succession.</p>
-    <p class="publication-description">
-      Sept enquêtes réunies dans un ordre de lecture continu, avec leurs sources,
-      leurs calculs, leurs limites et les questions qui restent ouvertes.
-    </p>
+    <Heading>{copy.titleLead} <em>{copy.titleAccent}</em></Heading>
+    <p class="publication-deck">{copy.deck}</p>
+    <p class="publication-description">{copy.description}</p>
 
-    <ul class="publication-facts" aria-label="Contenu de l’édition">
-      <li><strong>7</strong><span>enquêtes</span></li>
-      <li><strong>20</strong><span>infographies</span></li>
-      <li><strong>194 Ko</strong><span>téléchargement</span></li>
-      <li><strong>CC BY 4.0</strong><span>licence</span></li>
+    <ul class="publication-facts" aria-label={copy.factsLabel}>
+      <li><strong>7</strong><span>{copy.investigations}</span></li>
+      <li><strong>20</strong><span>{copy.infographics}</span></li>
+      <li><strong>{copy.size}</strong><span>{copy.download}</span></li>
+      <li><strong>CC BY 4.0</strong><span>{copy.license}</span></li>
     </ul>
 
     <div class="publication-actions">
-      <a class="publication-primary" href={publicationUrl}>Découvrir l’édition <span aria-hidden="true">›</span></a>
-      <a class="publication-secondary" href={epubUrl} download="L-argent-d-Epstein-l0g.epub">
-        Télécharger l’EPUB
+      <a class="publication-primary" href={publicationUrl}>{copy.discover} <span aria-hidden="true">›</span></a>
+      <a class="publication-secondary" href={epubUrl} download={copy.fileName}>
+        {copy.downloadLabel}
       </a>
     </div>
   </div>

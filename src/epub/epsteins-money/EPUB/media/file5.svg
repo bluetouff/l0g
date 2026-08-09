@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sar-title-en sar-desc-en" style="width:100%;height:auto;display:block;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="sar-title-en">The two 2019 JPMorgan reports overlap in time</title>
+<desc id="sar-desc-en">Both SARs begin on 1 October 2003. The August report ends in May 2019 and the September report in July 2019. Their amounts do not form a deduplicated total.</desc>
+<rect width="720" height="470" rx="16" fill="#090b10"></rect>
+<text x="36" y="45" fill="#f4f6f8" font-size="28" font-weight="750">ONE BILLION, TWO SCOPES</text>
+<text x="36" y="76" fill="#9aa4b2" font-size="18">Same start, near-identical periods, missing lists</text>
+<text x="36" y="130" fill="#75a7ff" font-size="18" font-weight="700">26 SEPTEMBER 2019 SAR</text>
+<rect x="36" y="146" width="648" height="82" rx="12" fill="#14233a" stroke="#75a7ff" stroke-width="2"></rect>
+<text x="58" y="180" fill="#f4f6f8" font-size="26" font-weight="750">4,725 wires · $1,081,819,653</text>
+<text x="58" y="208" fill="#b6c1ce" font-size="18">1 Oct 2003 → 22 Jul 2019</text>
+<text x="36" y="273" fill="#f08bb4" font-size="18" font-weight="700">13 AUGUST 2019 SAR</text>
+<rect x="36" y="289" width="612" height="82" rx="12" fill="#341927" stroke="#f08bb4" stroke-width="2"></rect>
+<text x="58" y="323" fill="#f4f6f8" font-size="26" font-weight="750">469 wires · $200,979,535</text>
+<text x="58" y="351" fill="#cdb8c1" font-size="18">1 Oct 2003 → 29 May 2019</text>
+<line x1="648" y1="289" x2="684" y2="228" stroke="#f08bb4" stroke-width="2" stroke-dasharray="5 6"></line>
+<rect x="36" y="401" width="648" height="44" rx="9" fill="#201a12" stroke="#d9a441"></rect>
+<text x="360" y="429" text-anchor="middle" fill="#f0c66c" font-size="20" font-weight="750">$1.2828bn = GROSS SUM, NOT UNIQUE TOTAL</text>
+</svg>

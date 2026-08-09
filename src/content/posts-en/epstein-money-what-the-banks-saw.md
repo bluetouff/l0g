@@ -1,8 +1,8 @@
 ---
-title: "Epstein’s money, 2/4: what the banks saw"
+title: "Epstein’s money, 2/4: the banks’ record"
 description: "From JPMorgan to Deutsche Bank, the record shows less a blind spot than a succession of alerts, internal decisions and massive reports filed after the fact."
 pubDate: 2026-08-07T17:00:00+02:00
-updatedDate: 2026-08-07T17:00:00+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "argent-epstein-ce-que-les-banques-voyaient"
 sourceUpdatedDate: 2026-08-07T17:00:00+02:00
 tags: ["Jeffrey Epstein", "banks", "JPMorgan", "Deutsche Bank", "BNY Mellon", "Bank of America", "money laundering", "investigation"]
@@ -19,7 +19,7 @@ The record establishes something else: **signals existed, but their consequences
 
 As [the first instalment](/en/analysis/epstein-money-fortune-without-ledger/) showed, Epstein’s fortune cannot be reduced to a single number. Neither can his banking infrastructure. The JPMorgan, Deutsche Bank, BNY Mellon and Bank of America figures describe overlapping scopes. The same wire can be seen by the payer’s bank, the beneficiary’s bank and a correspondent bank. Adding them together produces a scandalous-looking number, not an accounting.
 
-## A SAR measures a signal, not a crime
+## The exact scope of a SAR
 
 The Bank Secrecy Act requires US banks to report certain transactions when they know, suspect or have reason to suspect that the activity may involve illegal funds, seek to evade reporting requirements or have no apparent business or lawful purpose. According to [FinCEN](https://www.fincen.gov/resources/answers-frequently-asked-bank-secrecy-act-bsa-questions), the clock starts when the institution initially detects facts that may form the basis for a filing: thirty days in principle, up to sixty when no suspect has yet been identified.
 
@@ -269,7 +269,7 @@ That is not three separate lots of $7.4 million in new money. It is a payment ch
 <figcaption>The BNY letter and the Amador expert report trace this chain. It shows why aggregates from the sending and receiving banks cannot be added together.</figcaption>
 </figure>
 
-## Bank of America: observe the payer, not the client
+## Bank of America and the payer-side record
 
 Bank of America occupied a different position. The records do not present it as Epstein’s main bank, but as the bank for Leon Black-controlled accounts that sent money to Financial Trust at JPMorgan and later Southern Trust at Deutsche Bank.
 

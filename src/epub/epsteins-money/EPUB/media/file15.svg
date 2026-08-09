@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 850" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="db-exit-en-title db-exit-en-desc" style="width:100%;height:auto;display:block;max-width:680px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="db-exit-en-title">Deutsche Bank’s operational exit from December 2018 to July 2019</title>
+<desc id="db-exit-en-desc">A vertical timeline separating the 21 December 2018 exit decision, the 28 February 2019 deadline, a March reference letter, an April cash order, funded accounts in May and urgent closure following the July arrest.</desc>
+<rect width="480" height="850" rx="16" fill="#090b10"></rect>
+<text x="28" y="42" fill="#f4f6f8" font-size="22" font-weight="750">EXIT IS NOT A SINGLE DATE</text>
+<text x="28" y="68" fill="#9aa4b2" font-size="14">Decision, transfer, services and final closure</text>
+<line x1="78" y1="112" x2="78" y2="762" stroke="#394252" stroke-width="4"></line>
+<g>
+<circle cx="78" cy="132" r="12" fill="#ff4d87"></circle>
+<text x="110" y="126" fill="#ff7aa8" font-size="14" font-weight="750">21 DEC. 2018</text>
+<text x="110" y="151" fill="#f4f6f8" font-size="16" font-weight="700">Exit decision and letter</text>
+<text x="110" y="174" fill="#aeb6c2" font-size="12.5">The bank announces the relationship’s end.</text>
+</g>
+<g>
+<circle cx="78" cy="265" r="12" fill="#f5b13d"></circle>
+<text x="110" y="259" fill="#ffd189" font-size="14" font-weight="750">28 FEB. 2019</text>
+<text x="110" y="284" fill="#f4f6f8" font-size="16" font-weight="700">Deadline given to the client</text>
+<text x="110" y="307" fill="#aeb6c2" font-size="12.5">Some services continue afterwards.</text>
+</g>
+<g>
+<circle cx="78" cy="398" r="12" fill="#75a7ff"></circle>
+<text x="110" y="392" fill="#9ec0ff" font-size="14" font-weight="750">18 MARCH 2019</text>
+<text x="110" y="417" fill="#f4f6f8" font-size="16" font-weight="700">Reference letter</text>
+<text x="110" y="440" fill="#aeb6c2" font-size="12.5">Sent to a bank receiving the assets.</text>
+</g>
+<g>
+<circle cx="78" cy="531" r="12" fill="#9b8cff"></circle>
+<text x="110" y="525" fill="#bdb4ff" font-size="14" font-weight="750">9 APRIL 2019</text>
+<text x="110" y="550" fill="#f4f6f8" font-size="16" font-weight="700">€50,000 cash order arranged</text>
+<text x="110" y="573" fill="#aeb6c2" font-size="12.5">A service documented during the exit.</text>
+</g>
+<g>
+<circle cx="78" cy="664" r="12" fill="#5eead4"></circle>
+<text x="110" y="658" fill="#82f2e2" font-size="14" font-weight="750">3 MAY 2019</text>
+<text x="110" y="683" fill="#f4f6f8" font-size="16" font-weight="700">At least nine funded accounts</text>
+<text x="110" y="706" fill="#aeb6c2" font-size="12.5">Combined $1,776,680, according to Reuters.</text>
+</g>
+<g>
+<circle cx="78" cy="782" r="12" fill="#ff4d87"></circle>
+<text x="110" y="776" fill="#ff7aa8" font-size="14" font-weight="750">JULY 2019</text>
+<text x="110" y="801" fill="#f4f6f8" font-size="16" font-weight="700">Urgent closure after the arrest</text>
+<text x="110" y="824" fill="#aeb6c2" font-size="12.5">The list contains 28 accounts.</text>
+</g>
+</svg>

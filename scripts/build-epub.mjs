@@ -1,12 +1,20 @@
 import { cpSync, mkdtempSync, mkdirSync, readdirSync, renameSync, rmSync, statSync, utimesSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { dirname, join, relative, resolve } from 'node:path';
+import { basename, dirname, join, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
-const SOURCE = join(ROOT, 'src/epub/l-argent-d-epstein');
-const OUTPUT = join(ROOT, 'public/publications/l-argent-d-epstein-l0g.epub');
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
+const BOOKS = [
+  {
+    source: join(ROOT, 'src/epub/l-argent-d-epstein'),
+    output: join(ROOT, 'public/publications/l-argent-d-epstein-l0g.epub'),
+  },
+  {
+    source: join(ROOT, 'src/epub/epsteins-money'),
+    output: join(ROOT, 'public/publications/epsteins-money-l0g.epub'),
+  },
+];
 
 function listFiles(directory) {
   return readdirSync(directory, { withFileTypes: true })
@@ -29,30 +37,32 @@ function runZip(cwd, args) {
   }
 }
 
-const work = mkdtempSync(join(tmpdir(), 'l0g-epub-build-'));
-const stagedSource = join(work, 'source');
-const stagedOutput = join(work, 'l-argent-d-epstein-l0g.epub');
+for (const [index, book] of BOOKS.entries()) {
+  const work = mkdtempSync(join(tmpdir(), `l0g-epub-build-${index}-`));
+  const stagedSource = join(work, 'source');
+  const stagedOutput = join(work, basename(book.output));
 
-try {
-  cpSync(SOURCE, stagedSource, { recursive: true });
+  try {
+    cpSync(book.source, stagedSource, { recursive: true });
 
-  for (const path of listFiles(stagedSource)) {
-    utimesSync(path, FIXED_TIME, FIXED_TIME);
+    for (const path of listFiles(stagedSource)) {
+      utimesSync(path, FIXED_TIME, FIXED_TIME);
+    }
+
+    runZip(stagedSource, ['-X', '-0', stagedOutput, 'mimetype']);
+
+    const contentFiles = listFiles(stagedSource)
+      .map((path) => relative(stagedSource, path))
+      .filter((path) => path !== 'mimetype');
+
+    runZip(stagedSource, ['-X', '-9', '-D', stagedOutput, ...contentFiles]);
+
+    mkdirSync(dirname(book.output), { recursive: true });
+    renameSync(stagedOutput, book.output);
+
+    const bytes = statSync(book.output).size;
+    console.log(`EPUB construit : ${relative(ROOT, book.output)} (${bytes} octets)`);
+  } finally {
+    rmSync(work, { recursive: true, force: true });
   }
-
-  runZip(stagedSource, ['-X', '-0', stagedOutput, 'mimetype']);
-
-  const contentFiles = listFiles(stagedSource)
-    .map((path) => relative(stagedSource, path))
-    .filter((path) => path !== 'mimetype');
-
-  runZip(stagedSource, ['-X', '-9', '-D', stagedOutput, ...contentFiles]);
-
-  mkdirSync(dirname(OUTPUT), { recursive: true });
-  renameSync(stagedOutput, OUTPUT);
-
-  const bytes = statSync(OUTPUT).size;
-  console.log(`EPUB construit : ${relative(ROOT, OUTPUT)} (${bytes} octets)`);
-} finally {
-  rmSync(work, { recursive: true, force: true });
 }

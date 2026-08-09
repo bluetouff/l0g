@@ -2,7 +2,7 @@
 title: "Epstein’s money, 1/4: the fortune without a ledger"
 description: "From Bear Stearns to Leon Black, the available records reconstruct part of Jeffrey Epstein’s fortune and show exactly what remains missing."
 pubDate: 2026-08-07T13:30:00+02:00
-updatedDate: 2026-08-07T13:30:00+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "argent-epstein-fortune-sans-grand-livre"
 sourceUpdatedDate: 2026-08-07T13:30:00+02:00
 tags: ["Jeffrey Epstein", "finance", "wealth management", "tax", "U.S. Virgin Islands", "investigation"]
@@ -58,20 +58,20 @@ The power of attorney presents the same documentary problem. Public sources esta
 <circle cx="48" cy="286" r="8" fill="#ff4d87"/>
 <rect x="80" y="268" width="376" height="116" rx="10" fill="#151820" stroke="#ff4d87" stroke-opacity="0.65"/>
 <text x="102" y="296" fill="#ff4d87" font-size="13" font-weight="700">1991-2007 · WEXNER</text>
-<text x="102" y="328" fill="#f5f6f8" font-size="19" font-weight="700">“several hundred million dollars”</text>
+<text x="102" y="328" fill="#f5f6f8" font-size="16" font-weight="700">“several hundred million dollars”</text>
 <text x="102" y="352" fill="#d6d9df" font-size="13">alleged misappropriation; $100m returned</text>
 <text x="102" y="372" fill="#8b909b" font-size="11">Lawyers’ proffer, not judgment</text>
 <circle cx="48" cy="424" r="8" fill="#f5b13d"/>
 <rect x="80" y="406" width="376" height="116" rx="10" fill="#151820" stroke="#f5b13d" stroke-opacity="0.65"/>
 <text x="102" y="434" fill="#f5b13d" font-size="13" font-weight="700">2000-2006 · FINANCIAL TRUST</text>
 <text x="102" y="466" fill="#f5f6f8" font-size="26" font-weight="700">≈ $300m</text>
-<text x="102" y="490" fill="#d6d9df" font-size="13">aggregate fees, with no public client allocation</text>
+<text x="102" y="490" fill="#d6d9df" font-size="11">aggregate fees, with no public client allocation</text>
 <text x="102" y="510" fill="#8b909b" font-size="11">Available financial statements</text>
 <circle cx="48" cy="562" r="8" fill="#5eead4"/>
 <rect x="80" y="544" width="376" height="116" rx="10" fill="#151820" stroke="#5eead4" stroke-opacity="0.65"/>
 <text x="102" y="572" fill="#5eead4" font-size="13" font-weight="700">2013-2017 · SOUTHERN TRUST</text>
 <text x="102" y="604" fill="#f5f6f8" font-size="23" font-weight="700">$183,999,980</text>
-<text x="102" y="628" fill="#d6d9df" font-size="13">exact fees, three reconciled payment sources</text>
+<text x="102" y="628" fill="#d6d9df" font-size="12">exact fees, three reconciled payment sources</text>
 <text x="102" y="648" fill="#8b909b" font-size="11">Contracts, invoices and wires</text>
 <rect x="24" y="704" width="432" height="92" rx="10" fill="#11141a" stroke="#313641"/>
 <text x="46" y="734" fill="#f58b57" font-size="13" font-weight="700">READING RULE</text>
@@ -99,7 +99,7 @@ The problem is not a total absence of tax material. Financial statements, return
 
 The 2019 proffer and the scarcity of other demonstrable clients strongly suggest a concentration around Wexner. But that inference cannot honestly be converted into an exact client breakdown without Financial Trust’s books. The public record supports the conclusion that Epstein made enormous amounts from wealth management and advice before Leon Black. It does not support the sentence: “Here is every client and exactly what each one paid.”
 
-## Southern Trust: three payers, no remainder
+## Southern Trust: an exact three-payer reconciliation
 
 Southern Trust Company, organized in 2012, is far less opaque for 2013 through 2017. Accounting expert Bruce G. Amador’s report in the U.S. Virgin Islands lawsuit against JPMorgan cites the company’s annual financial statements and identifies Southern Trust as Epstein’s only entity generating significant revenue during that period.
 
@@ -176,7 +176,7 @@ The reconciliation is straightforward. $169.8 million minus $158 million equals 
 <desc id="black-desc-en">Four vertical cards distinguish Dechert fees, the Senate bank-wire table, the Senate narrative and the wider table. The 2017 loans are separated as receivables.</desc>
 <text x="24" y="40" fill="#f5f6f8" font-size="19" font-weight="700">BLACK TO EPSTEIN</text>
 <text x="24" y="64" fill="#f5f6f8" font-size="19" font-weight="700">SCOPE CHANGES THE TOTAL</text>
-<text x="24" y="92" fill="#a8adb7" font-size="12">Fees, wires and loans are different accounting categories.</text>
+<text x="24" y="92" fill="#a8adb7" font-size="11">Fees, wires and loans are different accounting categories.</text>
 <rect x="24" y="120" width="432" height="90" rx="10" fill="#151820" stroke="#5eead4" stroke-opacity="0.7"/>
 <text x="46" y="148" fill="#5eead4" font-size="13" font-weight="700">DECHERT FEES</text>
 <text x="46" y="180" fill="#f5f6f8" font-size="26" font-weight="700">$158m</text>
@@ -226,7 +226,7 @@ The real-estate portfolio confirms pre-Black accumulation: the Manhattan residen
 
 Financial Trust fees, the $15 million Highbridge payment, investment income and Wexner-related transfers therefore provide partial and sometimes enormous explanations. They do not form a year-by-year bridge from a $42,000 salary in 1979 to $289 million in assets in 2012. The missing link is not one secret. It is the set of general ledgers, bank statements, complete tax returns, executed agreements and recovery settlements required to eliminate double counting.
 
-## What the records support
+## Findings supported by the records
 
 Four conclusions survive a hostile audit.
 

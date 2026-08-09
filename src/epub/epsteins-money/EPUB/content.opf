@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="3.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="epub-id-1" prefix="schema: http://schema.org/">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:identifier id="epub-id-1">urn:uuid:f4e046aa-61ec-5b27-938b-28439a1d4475</dc:identifier>
+    <dc:title id="epub-title-1">Epstein&apos;s Money</dc:title>
+    <dc:date id="epub-date">2026-08-09</dc:date>
+    <dc:language>en</dc:language>
+    <dc:creator id="epub-creator-1">l0g</dc:creator>
+    <meta refines="#epub-creator-1" property="role" scheme="marc:relators">aut</meta>
+    <dc:subject>Jeffrey Epstein</dc:subject><dc:subject>banks</dc:subject><dc:subject>compliance</dc:subject><dc:subject>financial opacity</dc:subject><dc:subject>Europe</dc:subject>
+    <dc:description>Seven investigations into Jeffrey Epstein&apos;s documented fortune, the banks that processed related flows and the European banking relationships found in the public record.</dc:description>
+    <dc:publisher>l0g.fr</dc:publisher><dc:type>text</dc:type><dc:source>https://l0g.fr/en/publications/epsteins-money/</dc:source>
+    <dc:rights>Texts licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).</dc:rights>
+    <meta name="cover" content="cover_png" /><meta property="dcterms:modified">2026-08-09T21:15:00Z</meta>
+    <meta property="schema:accessMode">textual</meta><meta property="schema:accessMode">visual</meta><meta property="schema:accessModeSufficient">textual</meta>
+    <meta property="schema:accessibilityFeature">alternativeText</meta><meta property="schema:accessibilityFeature">readingOrder</meta><meta property="schema:accessibilityFeature">structuralNavigation</meta><meta property="schema:accessibilityFeature">tableOfContents</meta>
+    <meta property="schema:accessibilityHazard">none</meta><meta property="schema:accessibilitySummary">The book follows an explicit reading order, provides a structured table of contents and includes a text description for every infographic.</meta>
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" /><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav" />
+    <item id="stylesheet1" href="styles/stylesheet1.css" media-type="text/css" /><item id="cover_xhtml" href="text/cover.xhtml" media-type="application/xhtml+xml" properties="svg" /><item id="title_page_xhtml" href="text/title_page.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch001_xhtml" href="text/ch001.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch002_xhtml" href="text/ch002.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch003_xhtml" href="text/ch003.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch004_xhtml" href="text/ch004.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch005_xhtml" href="text/ch005.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch006_xhtml" href="text/ch006.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch007_xhtml" href="text/ch007.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch008_xhtml" href="text/ch008.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch009_xhtml" href="text/ch009.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch010_xhtml" href="text/ch010.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch011_xhtml" href="text/ch011.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch012_xhtml" href="text/ch012.xhtml" media-type="application/xhtml+xml" />
+    <item properties="cover-image" id="cover_png" href="media/cover.png" media-type="image/png" />
+    <item id="file0_svg" href="media/file0.svg" media-type="image/svg+xml" />
+    <item id="file1_svg" href="media/file1.svg" media-type="image/svg+xml" />
+    <item id="file2_svg" href="media/file2.svg" media-type="image/svg+xml" />
+    <item id="file3_svg" href="media/file3.svg" media-type="image/svg+xml" />
+    <item id="file4_svg" href="media/file4.svg" media-type="image/svg+xml" />
+    <item id="file5_svg" href="media/file5.svg" media-type="image/svg+xml" />
+    <item id="file6_svg" href="media/file6.svg" media-type="image/svg+xml" />
+    <item id="file7_svg" href="media/file7.svg" media-type="image/svg+xml" />
+    <item id="file8_svg" href="media/file8.svg" media-type="image/svg+xml" />
+    <item id="file9_svg" href="media/file9.svg" media-type="image/svg+xml" />
+    <item id="file10_svg" href="media/file10.svg" media-type="image/svg+xml" />
+    <item id="file11_svg" href="media/file11.svg" media-type="image/svg+xml" />
+    <item id="file12_svg" href="media/file12.svg" media-type="image/svg+xml" />
+    <item id="file13_svg" href="media/file13.svg" media-type="image/svg+xml" />
+    <item id="file14_svg" href="media/file14.svg" media-type="image/svg+xml" />
+    <item id="file15_svg" href="media/file15.svg" media-type="image/svg+xml" />
+    <item id="file16_svg" href="media/file16.svg" media-type="image/svg+xml" />
+    <item id="file17_svg" href="media/file17.svg" media-type="image/svg+xml" />
+    <item id="file18_svg" href="media/file18.svg" media-type="image/svg+xml" />
+    <item id="file19_svg" href="media/file19.svg" media-type="image/svg+xml" />
+  </manifest>
+  <spine toc="ncx" page-progression-direction="ltr"><itemref idref="cover_xhtml" /><itemref idref="title_page_xhtml" linear="yes" /><itemref idref="nav" />
+    <itemref idref="ch001_xhtml" />
+    <itemref idref="ch002_xhtml" />
+    <itemref idref="ch003_xhtml" />
+    <itemref idref="ch004_xhtml" />
+    <itemref idref="ch005_xhtml" />
+    <itemref idref="ch006_xhtml" />
+    <itemref idref="ch007_xhtml" />
+    <itemref idref="ch008_xhtml" />
+    <itemref idref="ch009_xhtml" />
+    <itemref idref="ch010_xhtml" />
+    <itemref idref="ch011_xhtml" />
+    <itemref idref="ch012_xhtml" />
+  </spine>
+  <guide><reference type="toc" title="Epstein&apos;s Money" href="nav.xhtml" /><reference type="cover" title="Cover" href="text/cover.xhtml" /></guide>
+</package>

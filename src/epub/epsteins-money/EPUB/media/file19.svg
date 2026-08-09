@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="risk-form-en-title risk-form-en-desc" style="width:100%;height:auto;display:block;overflow:hidden;max-width:680px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="risk-form-en-title">Risk changes form across financial institutions</title>
+<desc id="risk-form-en-desc">Four stages show a direct client, inherited account, linked person and paid service provider, with the control question specific to each.</desc>
+<rect width="480" height="675" rx="16" fill="#090b10"></rect>
+<text x="28" y="42" fill="#f4f6f8" font-size="21" font-weight="750">RISK CHANGES FORM</text>
+<text x="28" y="68" fill="#9aa4b2" font-size="13">Each relationship requires a different control</text>
+<line x1="70" y1="112" x2="70" y2="602" stroke="#394252" stroke-width="4"></line>
+<circle cx="70" cy="132" r="12" fill="#ff4d87"></circle>
+<text x="104" y="126" fill="#ff7aa8" font-size="13.5" font-weight="750">DIRECT CLIENT</text>
+<text x="104" y="154" fill="#f4f6f8" font-size="17" font-weight="720">Onboarding, monitoring, exit</text>
+<text x="104" y="179" fill="#b7bec9" font-size="10">Who accepts the risk and under which conditions?</text>
+<circle cx="70" cy="264" r="12" fill="#75a7ff"></circle>
+<text x="104" y="258" fill="#9ec0ff" font-size="13.5" font-weight="750">INHERITED ACCOUNT</text>
+<text x="104" y="286" fill="#f4f6f8" font-size="17" font-weight="720">Review after an acquisition</text>
+<text x="104" y="311" fill="#b7bec9" font-size="12.5">When does the new owner reassess the client?</text>
+<circle cx="70" cy="396" r="12" fill="#5eead4"></circle>
+<text x="104" y="390" fill="#82f2e2" font-size="13.5" font-weight="750">LINKED PERSON</text>
+<text x="104" y="418" fill="#f4f6f8" font-size="17" font-weight="720">Risk extends beyond one name</text>
+<text x="104" y="443" fill="#b7bec9" font-size="10">Which links, entities and beneficiaries are reviewed?</text>
+<circle cx="70" cy="528" r="12" fill="#e38bd2"></circle>
+<text x="104" y="522" fill="#f0a9e4" font-size="13.5" font-weight="750">PAID SERVICE PROVIDER</text>
+<text x="104" y="550" fill="#f4f6f8" font-size="17" font-weight="720">Mandate, result, beneficiary</text>
+<text x="104" y="575" fill="#b7bec9" font-size="10">Who approves the work and measures what was delivered?</text>
+<rect x="26" y="618" width="428" height="34" rx="9" fill="#171b22" stroke="#394252"></rect>
+<text x="44" y="640" fill="#d3d8df" font-size="12.5">One person can reappear in several different forms.</text>
+</svg>

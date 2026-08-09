@@ -14,6 +14,17 @@ const PUBLICATION_SPOTLIGHT = join(ROOT, 'src/components/PublicationSpotlight.as
 const HOME = join(ROOT, 'src/pages/[...page].astro');
 const NAVIGATION = join(ROOT, 'src/components/SiteNavigation.astro');
 const FOOTER = join(ROOT, 'src/components/SiteFooter.astro');
+const ENGLISH_SOURCE = join(ROOT, 'src/epub/epsteins-money');
+const ENGLISH_EPUB = join(ROOT, 'public/publications/epsteins-money-l0g.epub');
+const ENGLISH_PAGE = join(ROOT, 'src/pages/en/publications/epsteins-money.astro');
+const ENGLISH_PUBLICATIONS_INDEX = join(ROOT, 'src/pages/en/publications/index.astro');
+const ENGLISH_HOME = join(ROOT, 'src/pages/en/index.astro');
+const ENGLISH_LAYOUT = join(ROOT, 'src/layouts/EnglishGuidesLayout.astro');
+const ENGLISH_COVER = join(ROOT, 'public/publications/epsteins-money-cover.png');
+const ENGLISH_PREVIEWS = [
+  join(ROOT, 'public/publications/epsteins-money-infographic-1.svg'),
+  join(ROOT, 'public/publications/epsteins-money-infographic-2.svg'),
+];
 const MAPS = [
   {
     path: join(ROOT, 'public/publications/l-argent-d-epstein-carte-consolidee-1.png'),
@@ -36,8 +47,8 @@ function listFiles(directory) {
     .sort((a, b) => a.localeCompare(b, 'en'));
 }
 
-function textualFiles() {
-  return listFiles(SOURCE).filter((path) => /\.(?:css|ncx|opf|xhtml|xml)$/u.test(path));
+function textualFiles(source = SOURCE) {
+  return listFiles(source).filter((path) => /\.(?:css|ncx|opf|xhtml|xml)$/u.test(path));
 }
 
 function localReferences(markup) {
@@ -47,7 +58,7 @@ function localReferences(markup) {
 }
 
 function assertSvgTextFits(label, source, width, margin) {
-  for (const match of source.matchAll(/<ns0:text\b([^>]*)>([^<]*)<\/ns0:text>/gu)) {
+  for (const match of source.matchAll(/<(?:ns0:)?text\b([^>]*)>([^<]*)<\/(?:ns0:)?text>/gu)) {
     const attributes = match[1];
     const text = match[2].replaceAll('&#39;', '’').replaceAll('&amp;', '&');
     const x = Number(attributes.match(/\bx="([0-9.]+)"/u)?.[1] ?? 0);
@@ -183,4 +194,92 @@ test('la publication reste accessible depuis l’accueil et la navigation', () =
   );
   assert.match(navigation, /href: '\/publications\/', label: 'Publications'/u);
   assert.match(footer, /\['\/publications\/', 'Publications'/u);
+});
+
+test('the English archive is a valid EPUB container and matches its versioned source', () => {
+  assert.ok(existsSync(ENGLISH_EPUB), 'the public English EPUB must exist');
+  const entries = execFileSync('unzip', ['-Z1', ENGLISH_EPUB], { encoding: 'utf8' }).trim().split('\n');
+  assert.equal(entries[0], 'mimetype');
+  assert.equal(entries.filter((entry) => entry === 'mimetype').length, 1);
+  const listing = execFileSync('unzip', ['-lv', ENGLISH_EPUB], { encoding: 'utf8' });
+  const mimetypeLine = listing.split('\n').find((line) => /\bmimetype\s*$/u.test(line));
+  assert.match(mimetypeLine ?? '', /\bStored\b/u);
+  assert.equal(execFileSync('unzip', ['-p', ENGLISH_EPUB, 'mimetype'], { encoding: 'utf8' }), 'application/epub+zip');
+
+  const expected = listFiles(ENGLISH_SOURCE).map((path) => relative(ENGLISH_SOURCE, path)).sort();
+  assert.deepEqual(entries.sort(), expected);
+  for (const path of textualFiles(ENGLISH_SOURCE)) {
+    const archived = execFileSync('unzip', ['-p', ENGLISH_EPUB, relative(ENGLISH_SOURCE, path)], { encoding: 'utf8' });
+    assert.equal(archived, readFileSync(path, 'utf8'), relative(ROOT, path));
+  }
+});
+
+test('the English edition preserves all seven investigations and twenty infographics', () => {
+  const corpus = textualFiles(ENGLISH_SOURCE).map((path) => readFileSync(path, 'utf8')).join('\n');
+  const opf = readFileSync(join(ENGLISH_SOURCE, 'EPUB/content.opf'), 'utf8');
+  const svgFiles = listFiles(join(ENGLISH_SOURCE, 'EPUB/media')).filter((path) => path.endsWith('.svg'));
+  const articleChapters = ['ch003.xhtml', 'ch004.xhtml', 'ch005.xhtml', 'ch006.xhtml', 'ch008.xhtml', 'ch009.xhtml', 'ch010.xhtml'];
+
+  assert.equal(corpus.includes('\u{2014}'), false, 'no em dash may enter the English EPUB');
+  assert.equal(svgFiles.length, 20);
+  assert.equal((corpus.match(/class="infographic-image"/gu) ?? []).length, 20);
+  assert.equal(articleChapters.filter((chapter) => existsSync(join(ENGLISH_SOURCE, 'EPUB/text', chapter))).length, 7);
+  assert.match(opf, /<dc:language>en<\/dc:language>/u);
+  assert.match(opf, /schema:accessibilitySummary/u);
+  assert.match(opf, /https:\/\/l0g\.fr\/en\/publications\/epsteins-money\//u);
+
+  for (const path of svgFiles) {
+    const svg = readFileSync(path, 'utf8');
+    assert.doesNotMatch(svg, /<(?:script|foreignObject|iframe|object|embed)\b/iu);
+    assert.doesNotMatch(svg, /\son[a-z]+\s*=/iu);
+    assert.doesNotMatch(svg, /(?:href|src)\s*=\s*["'](?:https?:|data:|javascript:)/iu);
+    const width = Number(svg.match(/viewBox="0 0 ([0-9.]+)/u)?.[1]);
+    assert.ok(Number.isFinite(width), `${relative(ROOT, path)} must declare a viewBox`);
+    assertSvgTextFits(relative(ROOT, path), svg, width, 12);
+  }
+});
+
+test('all local links and fragments in the English EPUB resolve', () => {
+  for (const path of textualFiles(ENGLISH_SOURCE).filter((file) => /\.(?:ncx|opf|xhtml|xml)$/u.test(file))) {
+    const markup = readFileSync(path, 'utf8');
+    for (const reference of localReferences(markup)) {
+      const [rawTarget, fragment] = reference.split('#');
+      const targetPath = rawTarget ? normalize(join(dirname(path), decodeURI(rawTarget))) : path;
+      assert.ok(existsSync(targetPath), `${relative(ROOT, path)} references ${reference}`);
+      if (fragment) {
+        const target = readFileSync(targetPath, 'utf8');
+        assert.ok(target.includes(`id="${decodeURIComponent(fragment)}"`), `${relative(ROOT, path)} references missing fragment ${reference}`);
+      }
+    }
+  }
+});
+
+test('the English download page exposes the exact file, checksum, cover and safe previews', () => {
+  const page = readFileSync(ENGLISH_PAGE, 'utf8');
+  const bytes = readFileSync(ENGLISH_EPUB);
+  assert.match(page, /\/publications\/epsteins-money-l0g\.epub/u);
+  assert.match(page, /createHash\('sha256'\)/u);
+  assert.match(page, /download="Epsteins-Money-l0g\.epub"/u);
+  assert.match(page, /\/publications\/epsteins-money-cover\.png/u);
+  assert.match(page, /epsteins-money-infographic-1\.svg/u);
+  assert.match(page, /epsteins-money-infographic-2\.svg/u);
+  assert.equal(createHash('sha256').update(bytes).digest('hex').length, 64);
+
+  const cover = readFileSync(ENGLISH_COVER);
+  assert.equal(cover.subarray(1, 4).toString('ascii'), 'PNG');
+  assert.equal(cover.readUInt32BE(16), 1600);
+  assert.equal(cover.readUInt32BE(20), 2560);
+  for (const preview of ENGLISH_PREVIEWS) assert.ok(existsSync(preview));
+});
+
+test('the English publication is discoverable from navigation and home', () => {
+  const index = readFileSync(ENGLISH_PUBLICATIONS_INDEX, 'utf8');
+  const home = readFileSync(ENGLISH_HOME, 'utf8');
+  const layout = readFileSync(ENGLISH_LAYOUT, 'utf8');
+  const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
+  assert.match(index, /<PublicationSpotlight lang="en"/u);
+  assert.match(home, /<PublicationSpotlight lang="en"/u);
+  assert.match(layout, /href: '\/en\/publications\/'/u);
+  assert.match(spotlight, /epsteins-money-l0g\.epub/u);
+  assert.match(spotlight, /epsteins-money-cover\.png/u);
 });

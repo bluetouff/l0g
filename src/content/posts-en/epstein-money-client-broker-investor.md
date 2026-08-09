@@ -2,7 +2,7 @@
 title: "Epstein’s money, 3/4: client, broker or investor?"
 description: "Highbridge, Valar, Apollo shares and ESW produce four different ledgers. Combining fees, contributions and valuations manufactures wealth that never existed."
 pubDate: 2026-08-08T05:30:00+02:00
-updatedDate: 2026-08-08T07:17:41+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "argent-epstein-client-courtier-investisseur"
 sourceUpdatedDate: 2026-08-08T07:17:41+02:00
 tags: ["Jeffrey Epstein", "Highbridge", "Valar Ventures", "Apollo", "Leon Black", "ESW", "private equity", "investigation"]
@@ -17,7 +17,7 @@ The same confusion runs through Epstein’s wealth. The documents variously cast
 
 After examining [the documentary origins of Epstein’s wealth](/en/analysis/epstein-money-fortune-without-ledger/) and [what the banks could see](/en/analysis/epstein-money-what-the-banks-saw/), this third installment follows the capital itself. It relies on a deduplicated ledger: every line carries a date, legal entity, economic category, scope and source. Unsigned drafts are excluded from realized income. Whole-fund financials never replace an individual limited partner’s account. Unrealized estimates remain estimates.
 
-## Four ledgers, no grand total
+## Four separate ledgers
 
 A financial number only makes sense with its accounting unit. We separated four ledgers:
 
@@ -57,7 +57,7 @@ The same asset can move from one ledger to another over time. A $10 million cont
 <text x="42" y="529" fill="#f0c36a" font-size="12" font-weight="700">UNAUDITED AND UNREALIZED ESTIMATE</text>
 <rect x="24" y="570" width="432" height="78" rx="10" fill="#321b22" stroke="#c95870"/>
 <text x="240" y="603" text-anchor="middle" fill="#ffbdca" font-size="19" font-weight="760">DO NOT ADD THEM</text>
-<text x="240" y="629" text-anchor="middle" fill="#d8adb6" font-size="13">These figures have neither the same unit nor the same date.</text>
+<text x="240" y="629" text-anchor="middle" fill="#d8adb6" font-size="12">These figures have neither the same unit nor the same date.</text>
 </svg>
 <figcaption>The ledger prevents the same asset from being counted repeatedly or a share count from becoming a dollar amount.</figcaption>
 </figure>
@@ -167,8 +167,8 @@ Indyke separately put the estate’s current accounting at just over $100 millio
 <title id="valar-title-en">Valar commitments, contributions and values</title>
 <desc id="valar-desc-en">Two funds and four successive dates show why Valar values cannot be added together.</desc>
 <rect width="480" height="760" rx="14" fill="#0c111b"/>
-<text x="24" y="42" fill="#f6f8fb" font-size="21" font-weight="760">VALAR: SAME CAPITAL, SEVERAL STATES</text>
-<text x="24" y="66" fill="#9ca9bb" font-size="14">Commitment, paid-in capital and value are distinct measures.</text>
+<text x="24" y="42" fill="#f6f8fb" font-size="18.5" font-weight="760">VALAR: SAME CAPITAL, SEVERAL STATES</text>
+<text x="24" y="66" fill="#9ca9bb" font-size="11">Commitment, paid-in capital and value are distinct measures.</text>
 <rect x="24" y="94" width="432" height="104" rx="10" fill="#17243b" stroke="#5f8ff3"/>
 <text x="42" y="123" fill="#7da4f7" font-size="13" font-weight="750">FUND II</text>
 <text x="42" y="157" fill="#ffffff" font-size="25" font-weight="780">$15m committed</text>
@@ -195,7 +195,7 @@ Indyke separately put the estate’s current accounting at just over $100 millio
 <figcaption>The 2026 estimate is neither sale proceeds nor available cash. It overlaps with value already carried in the estate’s accounting.</figcaption>
 </figure>
 
-## Apollo: shareholder of the company, not investor in its funds
+## Apollo: documented ownership at company level
 
 “Apollo” covers at least four distinct scopes. The first is **Apollo Global Management, LLC**, the company listed in 2011. The second consists of private funds managed by Apollo. The third includes LLCs formed by individual executives for opportunities the funds declined. The fourth is made up of outside companies in which those executives, Epstein or Leon Black may have invested.
 

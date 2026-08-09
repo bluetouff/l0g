@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 790" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="db-control-en-title db-control-en-desc" style="width:100%;height:auto;display:block;max-width:680px;margin:0 auto;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="db-control-en-title">The control chain for Deutsche Bank’s Epstein relationship</title>
+<desc id="db-control-en-desc">A vertical diagram showing documented risk in 2013, approval without a formal committee meeting, a 2015 review, poorly transmitted conditions and activity eventually treated as normal for this client in 2017.</desc>
+<rect width="480" height="790" rx="16" fill="#090b10"></rect>
+<text x="28" y="42" fill="#f4f6f8" font-size="21" font-weight="750">FROM KNOWN RISK TO INTERNAL NORM</text>
+<text x="28" y="68" fill="#9aa4b2" font-size="14">Compliance exists, but the chain is distorted</text>
+<path d="M240 126V694" stroke="#394252" stroke-width="3"></path>
+<g>
+<circle cx="240" cy="132" r="11" fill="#ff4d87"></circle>
+<rect x="34" y="96" width="172" height="82" rx="10" fill="#2c1621" stroke="#ff4d87"></rect>
+<text x="50" y="122" fill="#ff7aa8" font-size="14" font-weight="750">APRIL 2013</text>
+<text x="50" y="146" fill="#f4f6f8" font-size="15" font-weight="700">Risk documented</text>
+<text x="50" y="166" fill="#b7bec9" font-size="12">and revenue forecast</text>
+</g>
+<g>
+<circle cx="240" cy="260" r="11" fill="#f5b13d"></circle>
+<rect x="274" y="210" width="172" height="108" rx="10" fill="#2b2315" stroke="#f5b13d"></rect>
+<text x="290" y="236" fill="#ffd189" font-size="14" font-weight="750">MAY 2013</text>
+<text x="290" y="260" fill="#f4f6f8" font-size="15" font-weight="700">Approval</text>
+<text x="290" y="280" fill="#f4f6f8" font-size="15" font-weight="700">by email</text>
+<text x="290" y="302" fill="#b7bec9" font-size="11">without a formal meeting</text>
+</g>
+<g>
+<circle cx="240" cy="392" r="11" fill="#75a7ff"></circle>
+<rect x="34" y="334" width="172" height="122" rx="10" fill="#14233a" stroke="#75a7ff"></rect>
+<text x="50" y="360" fill="#9ec0ff" font-size="14" font-weight="750">JANUARY 2015</text>
+<text x="50" y="384" fill="#f4f6f8" font-size="15" font-weight="700">Continue with</text>
+<text x="50" y="404" fill="#f4f6f8" font-size="15" font-weight="700">conditions</text>
+<text x="50" y="426" fill="#b7bec9" font-size="12">without compliant</text>
+<text x="50" y="444" fill="#b7bec9" font-size="12">minutes</text>
+</g>
+<g>
+<circle cx="240" cy="526" r="11" fill="#9b8cff"></circle>
+<rect x="274" y="466" width="172" height="120" rx="10" fill="#211c3b" stroke="#9b8cff"></rect>
+<text x="290" y="492" fill="#bdb4ff" font-size="14" font-weight="750">2015-2016</text>
+<text x="290" y="516" fill="#f4f6f8" font-size="15" font-weight="700">Transmission</text>
+<text x="290" y="536" fill="#f4f6f8" font-size="15" font-weight="700">breaks</text>
+<text x="290" y="558" fill="#b7bec9" font-size="12">teams receive</text>
+<text x="290" y="576" fill="#b7bec9" font-size="12">incomplete rules</text>
+</g>
+<g>
+<circle cx="240" cy="660" r="11" fill="#5eead4"></circle>
+<rect x="34" y="616" width="172" height="90" rx="10" fill="#12302d" stroke="#5eead4"></rect>
+<text x="50" y="642" fill="#82f2e2" font-size="14" font-weight="750">MARCH 2017</text>
+<text x="50" y="666" fill="#f4f6f8" font-size="15" font-weight="700">Alert closed</text>
+<text x="50" y="686" fill="#b7bec9" font-size="12">“normal for this client”</text>
+</g>
+<rect x="34" y="730" width="412" height="34" rx="8" fill="#151a23"></rect>
+<text x="240" y="752" text-anchor="middle" fill="#d9a441" font-size="13" font-weight="700">Labelling risk is not the same as controlling it.</text>
+</svg>

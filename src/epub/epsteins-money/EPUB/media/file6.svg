@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wire-title-en wire-desc-en" style="width:100%;height:auto;display:block;background:#090b10;border:1px solid #252b36;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="wire-title-en">A payment chain observed by several banks</title>
+<desc id="wire-desc-en">June 2007 chain from an Epstein account at BNY to Ghislaine Maxwell at JPMorgan, Air Ghislaine and then Sikorsky.</desc>
+<rect width="720" height="500" rx="16" fill="#090b10"></rect>
+<text x="36" y="45" fill="#f4f6f8" font-size="28" font-weight="750">ONE FLOW, SEVERAL LEDGERS</text>
+<text x="36" y="76" fill="#9aa4b2" font-size="18">The helicopter payment chain, June 2007</text>
+<circle cx="105" cy="180" r="54" fill="#14233a" stroke="#75a7ff" stroke-width="2"></circle>
+<text x="105" y="174" text-anchor="middle" fill="#f4f6f8" font-size="21" font-weight="750">BNY</text>
+<text x="105" y="198" text-anchor="middle" fill="#aeb9c7" font-size="16">Epstein</text>
+<circle cx="360" cy="180" r="62" fill="#221a32" stroke="#ae8cff" stroke-width="2"></circle>
+<text x="360" y="169" text-anchor="middle" fill="#f4f6f8" font-size="21" font-weight="750">JPMORGAN</text>
+<text x="360" y="194" text-anchor="middle" fill="#c2b7d7" font-size="16">Maxwell</text>
+<circle cx="608" cy="180" r="58" fill="#341927" stroke="#f08bb4" stroke-width="2"></circle>
+<text x="608" y="169" text-anchor="middle" fill="#f4f6f8" font-size="20" font-weight="750">AIR</text>
+<text x="608" y="194" text-anchor="middle" fill="#cdb8c1" font-size="16">GHISLAINE</text>
+<path d="M164 180 H287" stroke="#d9a441" stroke-width="4"></path>
+<path d="M277 171 L290 180 L277 189" fill="none" stroke="#d9a441" stroke-width="4"></path>
+<text x="225" y="145" text-anchor="middle" fill="#f0c66c" font-size="19" font-weight="700">$7.4m</text>
+<text x="225" y="205" text-anchor="middle" fill="#9aa4b2" font-size="15">15 Jun</text>
+<path d="M424 180 H543" stroke="#d9a441" stroke-width="4"></path>
+<path d="M533 171 L546 180 L533 189" fill="none" stroke="#d9a441" stroke-width="4"></path>
+<text x="484" y="145" text-anchor="middle" fill="#f0c66c" font-size="19" font-weight="700">$7.4m</text>
+<text x="484" y="205" text-anchor="middle" fill="#9aa4b2" font-size="15">same day</text>
+<path d="M608 242 V318" stroke="#d9a441" stroke-width="4"></path>
+<path d="M599 308 L608 321 L617 308" fill="none" stroke="#d9a441" stroke-width="4"></path>
+<rect x="475" y="325" width="209" height="67" rx="12" fill="#201a12" stroke="#d9a441"></rect>
+<text x="579" y="352" text-anchor="middle" fill="#f4f6f8" font-size="20" font-weight="750">SIKORSKY</text>
+<text x="579" y="377" text-anchor="middle" fill="#d9c39a" font-size="17">$7.3m · 18 Jun</text>
+<rect x="36" y="426" width="648" height="48" rx="9" fill="#121722"></rect>
+<text x="360" y="456" text-anchor="middle" fill="#f4f6f8" font-size="19" font-weight="700">BNY + JPMORGAN ≠ TWICE THE SAME MONEY</text>
+</svg>

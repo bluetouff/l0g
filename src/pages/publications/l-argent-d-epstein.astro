@@ -108,6 +108,11 @@ const bookJsonLd = {
   title={title}
   description={description}
   sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: pageUrl },
+    { hreflang: 'en', href: `${SITE_URL}/en/publications/epsteins-money/` },
+    { hreflang: 'x-default', href: pageUrl },
+  ]}
   ogImage="/og-l-argent-d-epstein.png"
   ogImageAlt="L’argent d’Epstein, sept enquêtes réunies dans une édition EPUB l0g"
 >

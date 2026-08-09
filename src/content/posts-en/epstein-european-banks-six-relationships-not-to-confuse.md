@@ -2,7 +2,7 @@
 title: "Epstein and Europe's banks: six relationships that require separate proof"
 description: "Deutsche Bank, Edmond de Rothschild, HSBC, BNP Paribas, UBS and Barclays appear in records of different kinds. An account, a card, an advisory engagement and a governance case do not prove the same thing."
 pubDate: 2026-08-09T17:22:00+02:00
-updatedDate: 2026-08-09T18:24:19+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "epstein-banques-europeennes-six-relations-a-ne-pas-confondre"
 sourceUpdatedDate: 2026-08-09T18:24:19+02:00
 tags: ["Jeffrey Epstein", "Ghislaine Maxwell", "European banks", "Deutsche Bank", "Edmond de Rothschild", "HSBC", "BNP Paribas", "UBS", "Barclays", "compliance", "investigation"]
@@ -21,14 +21,14 @@ This investigation complements [our series on Epstein's money](/en/analysis/epst
 <desc id="euro-banks-map-en-desc">The map distinguishes a direct client, French and Swiss accounts, an inherited account, a Maxwell account, an advisory engagement and a governance case.</desc>
 <rect width="480" height="890" rx="16" fill="#090b10"/>
 <text x="28" y="42" fill="#f4f6f8" font-size="20" font-weight="750">SIX BANKS, DISTINCT EVIDENCE</text>
-<text x="28" y="68" fill="#9aa4b2" font-size="13">Appearing in a record does not make the cases equivalent</text>
+<text x="28" y="68" fill="#9aa4b2" font-size="11">Appearing in a record does not make the cases equivalent</text>
 <rect x="26" y="96" width="428" height="112" rx="12" fill="#2c1621" stroke="#ff4d87" stroke-width="1.5"/>
 <text x="44" y="124" fill="#ff7aa8" font-size="13.5" font-weight="750">DEUTSCHE BANK</text>
 <text x="44" y="153" fill="#f4f6f8" font-size="17" font-weight="720">Epstein as a direct client</text>
 <text x="44" y="179" fill="#b7bec9" font-size="12.5">Failures found by New York's financial regulator</text>
 <rect x="26" y="224" width="428" height="112" rx="12" fill="#2b2315" stroke="#f5b13d" stroke-width="1.5"/>
 <text x="44" y="252" fill="#ffd189" font-size="13.5" font-weight="750">HSBC</text>
-<text x="44" y="281" fill="#f4f6f8" font-size="17" font-weight="720">Paris account closed, Swiss accounts listed</text>
+<text x="44" y="281" fill="#f4f6f8" font-size="14.5" font-weight="720">Paris account closed, Swiss accounts listed</text>
 <text x="44" y="307" fill="#b7bec9" font-size="12.5">The Swiss timeline remains incomplete</text>
 <rect x="26" y="352" width="428" height="112" rx="12" fill="#14233a" stroke="#75a7ff" stroke-width="1.5"/>
 <text x="44" y="380" fill="#9ec0ff" font-size="13.5" font-weight="750">BNP PARIBAS</text>
@@ -44,7 +44,7 @@ This investigation complements [our series on Epstein's money](/en/analysis/epst
 <text x="44" y="691" fill="#b7bec9" font-size="12.5">No Epstein account established by these records</text>
 <rect x="26" y="736" width="428" height="126" rx="12" fill="#2a1f29" stroke="#e38bd2" stroke-width="1.5"/>
 <text x="44" y="764" fill="#f0a9e4" font-size="13.5" font-weight="750">EDMOND DE ROTHSCHILD</text>
-<text x="44" y="793" fill="#f4f6f8" font-size="17" font-weight="720">Southern Trust paid as a service provider</text>
+<text x="44" y="793" fill="#f4f6f8" font-size="15.5" font-weight="720">Southern Trust paid as a service provider</text>
 <text x="44" y="819" fill="#b7bec9" font-size="12.5">$25m agreement, payments totalling $24,999,980</text>
 <text x="44" y="842" fill="#b7bec9" font-size="12.5">This is not proof of an Epstein account</text>
 </svg>
@@ -94,7 +94,7 @@ On 22 July 2019, sixteen days after Epstein's arrest, UBS moved **$130,000** fro
 <circle cx="70" cy="132" r="12" fill="#ff4d87"/>
 <text x="104" y="126" fill="#ff7aa8" font-size="13.5" font-weight="750">DIRECT CLIENT</text>
 <text x="104" y="154" fill="#f4f6f8" font-size="17" font-weight="720">Onboarding, monitoring, exit</text>
-<text x="104" y="179" fill="#b7bec9" font-size="12.5">Who accepts the risk and under which conditions?</text>
+<text x="104" y="179" fill="#b7bec9" font-size="10">Who accepts the risk and under which conditions?</text>
 <circle cx="70" cy="264" r="12" fill="#75a7ff"/>
 <text x="104" y="258" fill="#9ec0ff" font-size="13.5" font-weight="750">INHERITED ACCOUNT</text>
 <text x="104" y="286" fill="#f4f6f8" font-size="17" font-weight="720">Review after an acquisition</text>
@@ -102,11 +102,11 @@ On 22 July 2019, sixteen days after Epstein's arrest, UBS moved **$130,000** fro
 <circle cx="70" cy="396" r="12" fill="#5eead4"/>
 <text x="104" y="390" fill="#82f2e2" font-size="13.5" font-weight="750">LINKED PERSON</text>
 <text x="104" y="418" fill="#f4f6f8" font-size="17" font-weight="720">Risk extends beyond one name</text>
-<text x="104" y="443" fill="#b7bec9" font-size="12.5">Which links, entities and beneficiaries are reviewed?</text>
+<text x="104" y="443" fill="#b7bec9" font-size="10">Which links, entities and beneficiaries are reviewed?</text>
 <circle cx="70" cy="528" r="12" fill="#e38bd2"/>
 <text x="104" y="522" fill="#f0a9e4" font-size="13.5" font-weight="750">PAID SERVICE PROVIDER</text>
 <text x="104" y="550" fill="#f4f6f8" font-size="17" font-weight="720">Mandate, result, beneficiary</text>
-<text x="104" y="575" fill="#b7bec9" font-size="12.5">Who approves the work and measures what was delivered?</text>
+<text x="104" y="575" fill="#b7bec9" font-size="10">Who approves the work and measures what was delivered?</text>
 <rect x="26" y="618" width="428" height="34" rx="9" fill="#171b22" stroke="#394252"/>
 <text x="44" y="640" fill="#d3d8df" font-size="12.5">One person can reappear in several different forms.</text>
 </svg>

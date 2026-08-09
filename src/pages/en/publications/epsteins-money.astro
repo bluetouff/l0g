@@ -1,0 +1,337 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../../config/entities.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const title = "Epstein's Money, the complete investigation in EPUB";
+const description =
+  "Download Epstein's Money, a free English EPUB edition bringing together seven sourced l0g investigations, twenty infographics and their stated limitations.";
+const pageUrl = `${SITE_URL}/en/publications/epsteins-money/`;
+const frenchUrl = `${SITE_URL}/publications/l-argent-d-epstein/`;
+const epubUrl = '/publications/epsteins-money-l0g.epub';
+const coverUrl = '/publications/epsteins-money-cover.png';
+const infographicOneUrl = '/publications/epsteins-money-infographic-1.svg';
+const infographicTwoUrl = '/publications/epsteins-money-infographic-2.svg';
+const epubBytes = readFileSync(join(process.cwd(), 'public/publications/epsteins-money-l0g.epub'));
+const epubSize = `${new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(epubBytes.length / 1024)} KB`;
+const epubSha256 = createHash('sha256').update(epubBytes).digest('hex');
+
+const parts = [
+  {
+    number: 'I',
+    title: 'Reconstructing the money',
+    introduction:
+      "Four investigations follow the documented origins of Epstein's fortune, the information held by banks, his different roles around private investments and the administration of his estate.",
+    chapters: [
+      { index: '01', title: 'The fortune without a ledger', href: '/en/analysis/epstein-money-fortune-without-ledger/' },
+      { index: '02', title: 'The record held by the banks', href: '/en/analysis/epstein-money-what-the-banks-saw/' },
+      { index: '03', title: 'Client, broker or investor?', href: '/en/analysis/epstein-money-client-broker-investor/' },
+      { index: '04', title: 'The final ledger', href: '/en/analysis/epstein-money-final-ledger/' },
+    ],
+  },
+  {
+    number: 'II',
+    title: 'The European laboratory',
+    introduction:
+      'Three investigations identify the precise scope of the Deutsche Bank and Barclays records, then separate six European banking relationships according to the evidence available for each one.',
+    chapters: [
+      { index: '05', title: 'Deutsche Bank and the compliance exception', href: '/en/analysis/deutsche-bank-epstein-compliance-exception/' },
+      { index: '06', title: 'Barclays, Staley and Maxwell', href: '/en/analysis/barclays-staley-maxwell-two-records-one-boundary/' },
+      { index: '07', title: 'Six European banking relationships', href: '/en/analysis/epstein-european-banks-six-relationships-not-to-confuse/' },
+    ],
+  },
+];
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: "Epstein's Money",
+  description,
+  author: { '@id': AUTHOR_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  datePublished: '2026-08-09',
+  dateModified: '2026-08-09',
+  inLanguage: 'en',
+  translationOfWork: { '@id': `${frenchUrl}#book` },
+  bookFormat: 'https://schema.org/EBook',
+  isAccessibleForFree: true,
+  url: pageUrl,
+  image: `${SITE_URL}${coverUrl}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: parts.flatMap((part) => part.chapters.map((chapter) => ({
+    '@type': 'Article',
+    name: chapter.title,
+    url: `${SITE_URL}${chapter.href}`,
+  }))),
+  associatedMedia: {
+    '@type': 'MediaObject',
+    contentUrl: `${SITE_URL}${epubUrl}`,
+    encodingFormat: 'application/epub+zip',
+    contentSize: `${epubBytes.length} bytes`,
+    sha256: epubSha256,
+  },
+};
+---
+
+<EnglishLayout
+  title={title}
+  description={description}
+  canonical={pageUrl}
+  alternateLinks={[
+    { hreflang: 'en', href: pageUrl },
+    { hreflang: 'fr', href: frenchUrl },
+    { hreflang: 'x-default', href: frenchUrl },
+  ]}
+  ogImage="/og-epsteins-money.png"
+  ogImageAlt="Epstein's Money, seven sourced investigations in a free English EPUB edition"
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
+
+  <article class="epstein-publication rise" data-pagefind-body>
+    <section class="publication-hero">
+      <div class="cover-stage" aria-label="Cover of Epstein's Money">
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · investigation · 2026</span>
+          <img
+            src={coverUrl}
+            width="1600"
+            height="2560"
+            alt="Black cover of Epstein's Money, fortune, banks and European opacity"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <span class="cover-caption">English digital edition · August 2026</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="mono-label glow">// l0g publication</p>
+        <h1>Epstein's <span>Money</span></h1>
+        <p class="hero-deck">Seven investigations in one continuous reading sequence.</p>
+        <p class="hero-lede">
+          Revenues, transfers, investments, bank accounts, settlements and estate statements
+          describe different facts. This edition brings the records together while keeping
+          their sources, accounting boundaries and unanswered questions visible.
+        </p>
+
+        <div class="hero-actions" data-pagefind-ignore>
+          <a class="download-action" href={epubUrl} download="Epsteins-Money-l0g.epub">
+            <span>Download the EPUB</span>
+            <small>Free · {epubSize}</small>
+          </a>
+          <a class="contents-action" href="#contents">Browse the seven investigations <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <ul class="proof-line" aria-label="Edition features">
+          <li>7 investigations</li>
+          <li>20 infographics</li>
+          <li>Clickable sources</li>
+          <li>CC BY 4.0</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="reading-section">
+      <div class="section-index" aria-hidden="true">01</div>
+      <div>
+        <p class="mono-label glow">a book-length audit trail</p>
+        <h2>Follow the money without erasing its boundaries.</h2>
+      </div>
+      <div class="reading-copy">
+        <p>
+          The articles were published separately because every record carries its own standard
+          of proof. The EPUB restores the continuity between the documented fortune, bank
+          decisions, private investments, estate accounts and European banking relationships.
+        </p>
+        <p>
+          The reading sequence works like an audit. It identifies the available documents,
+          isolates incompatible totals, marks missing records and directs unresolved questions
+          to the institutions or record holders most likely to answer them.
+        </p>
+      </div>
+    </section>
+
+    <section class="visuals-section" aria-labelledby="visuals-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">02</div>
+        <div>
+          <p class="mono-label glow">built for e-readers</p>
+          <h2 id="visuals-title">Twenty infographics, adapted in English.</h2>
+          <p>Every visual is embedded in the EPUB with a text alternative. These two samples show the mobile-safe format used throughout the edition.</p>
+        </div>
+      </header>
+
+      <div class="visuals-grid">
+        <figure class="visual-card">
+          <a href={infographicOneUrl} target="_blank" rel="noopener" aria-label="Open the first infographic at full size">
+            <img src={infographicOneUrl} width="480" height="820" alt="Evidence ladder separating documented, attributed and unknown parts of Epstein's fortune" loading="lazy" decoding="async" />
+            <span>Open full size ↗</span>
+          </a>
+          <figcaption>Documented fortune and missing ledgers</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <a href={infographicTwoUrl} target="_blank" rel="noopener" aria-label="Open the second infographic at full size">
+            <img src={infographicTwoUrl} width="480" height="820" alt="Timeline of JPMorgan and Deutsche Bank alerts, decisions and exits" loading="lazy" decoding="async" />
+            <span>Open full size ↗</span>
+          </a>
+          <figcaption>Bank alerts, decisions and exits</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="contents-section" id="contents">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">03</div>
+        <div><p class="mono-label glow">edition structure</p><h2>Seven chapters in two parts.</h2></div>
+      </header>
+
+      <div class="parts-grid">
+        {parts.map((part) => (
+          <article class="part-card">
+            <header>
+              <span>Part {part.number}</span>
+              <h3>{part.title}</h3>
+              <p>{part.introduction}</p>
+            </header>
+            <ol>
+              {part.chapters.map((chapter) => (
+                <li><a href={chapter.href}><span>{chapter.index}</span><strong>{chapter.title}</strong><b aria-hidden="true">↗</b></a></li>
+              ))}
+            </ol>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="edition-section">
+      <div>
+        <p class="mono-label glow">verifiable edition</p>
+        <h2>A publication designed for durable review.</h2>
+        <p>
+          The EPUB 3 file contains a structured table of contents, an explicit reading order,
+          text descriptions for all twenty infographics and links to the canonical English
+          articles. Corrections remain attached to those public pages.
+        </p>
+      </div>
+      <dl class="file-card">
+        <div><dt>Format</dt><dd>EPUB 3</dd></div>
+        <div><dt>Language</dt><dd>English</dd></div>
+        <div><dt>Revision</dt><dd>9 August 2026</dd></div>
+        <div><dt>Size</dt><dd>{epubSize}</dd></div>
+        <div class="checksum"><dt>SHA-256</dt><dd>{epubSha256}</dd></div>
+      </dl>
+    </section>
+
+    <section class="about-section">
+      <div class="about-mark" aria-hidden="true">l0g_</div>
+      <div>
+        <p class="mono-label glow">about l0g</p>
+        <h2>Public records, visible limits, reproducible claims.</h2>
+        <p>
+          l0g is an independent editorial observatory focused on risk mechanisms, financial
+          opacity and economic systems. Its investigations start with public documents,
+          distinguish established facts from attributed information and unknowns, and publish
+          their sources and limitations.
+        </p>
+        <div class="about-links"><a href="/en/editorial-protocol/">Read the editorial protocol</a><a href="/en/about/">About the project</a></div>
+      </div>
+    </section>
+
+    <section class="final-download" data-pagefind-ignore>
+      <div><p class="mono-label glow">complete edition</p><h2>Read all seven investigations in one volume.</h2><p>Free, no form, no tracker, licensed under CC BY 4.0.</p></div>
+      <a href={epubUrl} download="Epsteins-Money-l0g.epub">Download the EPUB<span>{epubSize} · EPUB 3</span></a>
+    </section>
+  </article>
+</EnglishLayout>
+
+<style>
+  .epstein-publication { max-width: 72rem; margin: 0 auto; }
+  .publication-hero { position: relative; display: grid; grid-template-columns: minmax(15rem,.82fr) minmax(0,1.18fr); align-items: center; gap: clamp(2.5rem,7vw,6.5rem); min-height: 42rem; padding: clamp(2rem,4vw,3.5rem) 0 clamp(4rem,8vw,7rem); border-bottom: 1px solid var(--color-line); }
+  .publication-hero::before { position: absolute; top: 0; right: 0; width: min(42rem,70%); height: 1px; background: linear-gradient(90deg,transparent,var(--color-signal)); content: ''; }
+  .cover-stage { display: flex; min-width: 0; flex-direction: column; align-items: center; perspective: 1200px; }
+  .book-shell { display: grid; grid-template-columns: 1.2rem minmax(0,19rem); width: min(100%,20.2rem); filter: drop-shadow(0 32px 42px rgba(0,0,0,.45)); transform: rotateY(-5deg) rotateZ(-.7deg); }
+  .book-spine { display: flex; align-items: flex-end; justify-content: center; border: 1px solid color-mix(in srgb,var(--color-signal) 48%,var(--color-line)); border-right: 0; border-radius: 8px 0 0 9px; padding: .9rem 0 .75rem; background: #08090b; color: #75c8bc; font-family: var(--font-mono); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .book-shell img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb,var(--color-signal) 36%,var(--color-line)); border-radius: 0 9px 9px 0; }
+  .cover-caption { margin-top: 1.4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+  .hero-copy { min-width: 0; }
+  .hero-copy > .mono-label, .reading-section .mono-label, .section-heading .mono-label, .edition-section .mono-label, .about-section .mono-label, .final-download .mono-label { color: var(--color-signal); }
+  .hero-copy h1 { max-width: 12ch; margin: .45rem 0 .8rem; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(3rem,7.2vw,6.4rem); font-weight: 760; letter-spacing: -.065em; line-height: .9; }
+  .hero-copy h1 span { display: block; color: var(--color-accent); font-weight: 610; }
+  .hero-deck { max-width: 34rem; margin: 1.5rem 0 0; color: var(--color-signal); font-family: var(--font-read); font-size: clamp(1.25rem,2.4vw,1.8rem); font-weight: 590; line-height: 1.25; }
+  .hero-lede, .reading-copy, .edition-section p, .about-section p { color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
+  .hero-lede { max-width: 40rem; margin-top: 1.25rem; font-size: 1.03rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+  .hero-actions a { display: inline-flex; min-height: 3.7rem; align-items: center; justify-content: center; border-radius: 6px; }
+  .download-action { min-width: 13.5rem; flex-direction: column; align-items: flex-start !important; padding: .72rem 1.15rem; background: var(--color-signal); color: var(--color-ink); }
+  .download-action span { font-family: var(--font-mono); font-size: .82rem; font-weight: 800; letter-spacing: .045em; text-transform: uppercase; }
+  .download-action small { margin-top: .15rem; font-weight: 650; opacity: .76; }
+  .contents-action { gap: .7rem; border: 1px solid var(--color-line-strong); padding: 0 1.1rem; color: var(--color-paper); font-family: var(--font-mono); font-size: .72rem; }
+  .proof-line { display: flex; flex-wrap: wrap; gap: .55rem 1.4rem; margin-top: 1.4rem; padding: 0; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; letter-spacing: .055em; list-style: none; text-transform: uppercase; }
+  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.5rem,4vw,4rem); padding: clamp(4rem,8vw,7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .section-index { color: var(--color-line-strong); font-family: var(--font-mono); font-size: 2.5rem; font-weight: 800; line-height: 1; }
+  h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(2rem,4vw,3.6rem); font-weight: 650; letter-spacing: -.045em; line-height: 1.04; }
+  .reading-copy p { margin: 0 0 1.15rem; }
+  .visuals-section, .contents-section { padding: clamp(4rem,8vw,7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .section-heading { display: grid; grid-template-columns: 4rem minmax(0,1fr); gap: clamp(1.5rem,4vw,4rem); }
+  .section-heading p:last-child { max-width: 48rem; margin-top: 1.25rem; color: var(--color-prose); line-height: 1.75; }
+  .visuals-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; max-width: 58rem; margin: 3rem auto 0; }
+  .visual-card { margin: 0; }
+  .visual-card a { position: relative; display: block; overflow: hidden; border: 1px solid var(--color-line); border-radius: 12px; background: #090b10; }
+  .visual-card img { display: block; width: 100%; height: auto; }
+  .visual-card a span { position: absolute; right: .7rem; bottom: .7rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: .35rem .55rem; background: rgba(5,7,10,.84); color: #fff; font-family: var(--font-mono); font-size: .58rem; text-transform: uppercase; }
+  .visual-card figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; text-transform: uppercase; }
+  .parts-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.4rem; margin-top: 3rem; }
+  .part-card { min-width: 0; border: 1px solid var(--color-line); border-radius: 12px; padding: clamp(1.1rem,3vw,1.7rem); background: color-mix(in srgb,var(--color-surface) 72%,transparent); }
+  .part-card header > span { color: var(--color-amber); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+  .part-card h3 { margin-top: .4rem; color: var(--color-bright); font-family: var(--font-read); font-size: 1.65rem; }
+  .part-card header p { min-height: 6.2rem; margin-top: .7rem; color: var(--color-muted); line-height: 1.6; }
+  .part-card ol { margin-top: 1.1rem; padding: 0; border-top: 1px solid var(--color-line); list-style: none; }
+  .part-card li a { display: grid; grid-template-columns: 2rem minmax(0,1fr) auto; align-items: center; gap: .7rem; border-bottom: 1px solid var(--color-line); padding: .8rem 0; color: var(--color-paper); }
+  .part-card li a > span { color: var(--color-signal); font-family: var(--font-mono); font-size: .66rem; }
+  .part-card li b { color: var(--color-muted); }
+  .edition-section { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(17rem,.7fr); gap: clamp(2rem,6vw,5rem); padding: clamp(4rem,8vw,7rem) 0; border-bottom: 1px solid var(--color-line); }
+  .edition-section p { margin-top: 1.25rem; }
+  .file-card { margin: 0; border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: color-mix(in srgb,var(--color-surface) 78%,transparent); }
+  .file-card > div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--color-line); padding: .65rem 0; }
+  .file-card dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; text-transform: uppercase; }
+  .file-card dd { margin: 0; color: var(--color-paper); font-size: .8rem; text-align: right; }
+  .file-card .checksum { display: block; border: 0; }
+  .checksum dd { margin-top: .45rem; overflow-wrap: anywhere; color: var(--color-signal); font-family: var(--font-mono); font-size: .58rem; text-align: left; }
+  .about-section { display: grid; grid-template-columns: 10rem minmax(0,1fr); gap: clamp(2rem,6vw,5rem); padding: clamp(4rem,8vw,7rem) 0; }
+  .about-mark { color: var(--color-signal); font-family: var(--font-mono); font-size: clamp(2.8rem,8vw,5.5rem); font-weight: 800; }
+  .about-section p { max-width: 48rem; margin-top: 1.25rem; }
+  .about-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.4rem; }
+  .about-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; }
+  .final-download { display: flex; align-items: center; justify-content: space-between; gap: 2rem; border: 1px solid color-mix(in srgb,var(--color-signal) 45%,var(--color-line)); border-radius: 14px; padding: clamp(1.4rem,4vw,2.5rem); background: color-mix(in srgb,var(--color-signal) 6%,var(--color-surface)); }
+  .final-download h2 { font-size: clamp(1.7rem,3.2vw,2.8rem); }
+  .final-download p:last-child { margin-top: .7rem; color: var(--color-muted); }
+  .final-download > a { display: flex; min-width: 14rem; flex-direction: column; border-radius: 7px; padding: .9rem 1.1rem; background: var(--color-signal); color: var(--color-ink); font-family: var(--font-mono); font-size: .78rem; font-weight: 800; text-align: center; text-transform: uppercase; }
+  .final-download > a span { margin-top: .2rem; font-size: .6rem; opacity: .72; }
+  @media (max-width: 800px) {
+    .publication-hero { grid-template-columns: minmax(10rem,.68fr) minmax(0,1.32fr); gap: 2rem; min-height: 0; }
+    .reading-section { grid-template-columns: 3rem minmax(0,1fr); }
+    .reading-copy { grid-column: 2; }
+    .edition-section { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 620px) {
+    .publication-hero { grid-template-columns: 1fr; }
+    .cover-stage { max-width: 15rem; margin-inline: auto; }
+    .hero-copy { text-align: left; }
+    .hero-copy h1 { font-size: clamp(3rem,18vw,5rem); }
+    .hero-actions { display: grid; }
+    .hero-actions a { width: 100%; }
+    .proof-line { gap: .55rem 1rem; }
+    .reading-section, .section-heading { grid-template-columns: 2.5rem minmax(0,1fr); gap: 1rem; }
+    .reading-copy { grid-column: 1 / -1; }
+    .visuals-grid, .parts-grid { grid-template-columns: 1fr; }
+    .part-card header p { min-height: 0; }
+    .about-section { grid-template-columns: 1fr; }
+    .about-mark { font-size: 3rem; }
+    .final-download { align-items: stretch; flex-direction: column; }
+    .final-download > a { min-width: 0; }
+  }
+</style>

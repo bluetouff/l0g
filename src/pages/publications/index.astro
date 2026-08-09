@@ -7,6 +7,11 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
 <BaseLayout
   title="Publications numériques"
   description="Les enquêtes l0g réunies en éditions numériques gratuites, structurées et vérifiables."
+  alternateLinks={[
+    { hreflang: 'fr', href: 'https://l0g.fr/publications/' },
+    { hreflang: 'en', href: 'https://l0g.fr/en/publications/' },
+    { hreflang: 'x-default', href: 'https://l0g.fr/publications/' },
+  ]}
   ogImage="/og-l-argent-d-epstein.png"
   ogImageAlt="L’argent d’Epstein, sept enquêtes réunies dans une édition EPUB l0g"
 >

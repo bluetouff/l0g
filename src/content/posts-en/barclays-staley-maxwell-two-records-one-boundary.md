@@ -2,7 +2,7 @@
 title: "Barclays, Staley and Maxwell: two records, one boundary"
 description: "The Staley ruling documents a governance failure. Files analysed by Reuters describe a Maxwell account. Neither record establishes a Barclays account in Epstein's name."
 pubDate: 2026-08-09T15:18:00+02:00
-updatedDate: 2026-08-09T15:18:00+02:00
+updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "barclays-staley-maxwell-deux-dossiers-une-frontiere"
 sourceUpdatedDate: 2026-08-09T15:18:00+02:00
 tags: ["Barclays", "Jes Staley", "Ghislaine Maxwell", "Jeffrey Epstein", "FCA", "governance", "banks", "investigation"]
@@ -37,7 +37,7 @@ The comparison with other banks is covered in [our investigation into the signal
 <rect x="26" y="530" width="428" height="126" rx="13" fill="#2c1621" stroke="#ff4d87" stroke-width="1.5"/>
 <text x="46" y="562" fill="#ff7aa8" font-size="14" font-weight="750">NOT ESTABLISHED BY THIS EVIDENCE</text>
 <text x="46" y="598" fill="#f4f6f8" font-size="17" font-weight="720">A Barclays account in Epstein's name</text>
-<text x="46" y="626" fill="#b7bec9" font-size="13.5">The Maxwell account does not support that inference.</text>
+<text x="46" y="626" fill="#b7bec9" font-size="11.5">The Maxwell account does not support that inference.</text>
 </svg>
 <figcaption>The amounts do not describe the same thing as the Staley sanction. They should neither be added together nor presented as proof of an account or flows belonging to Epstein at Barclays.</figcaption>
 </figure>
@@ -67,7 +67,7 @@ That negative finding must be read literally. It was the stated result of a revi
 <circle cx="72" cy="252" r="11" fill="#9b8cff"/>
 <text x="104" y="247" fill="#bdb4ff" font-size="13.5" font-weight="750">SUMMER AND OCTOBER</text>
 <text x="104" y="273" fill="#f4f6f8" font-size="16" font-weight="700">Interviews and records review</text>
-<text x="104" y="296" fill="#b7bec9" font-size="12.5">The board does not obtain the complete picture.</text>
+<text x="104" y="296" fill="#b7bec9" font-size="11.5">The board does not obtain the complete picture.</text>
 <circle cx="72" cy="374" r="11" fill="#f5b13d"/>
 <text x="104" y="369" fill="#ffd189" font-size="13.5" font-weight="750">6 AND 7 OCTOBER</text>
 <text x="104" y="395" fill="#f4f6f8" font-size="16" font-weight="700">Staley checks and approves</text>
