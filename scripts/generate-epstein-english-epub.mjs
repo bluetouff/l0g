@@ -14,6 +14,8 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeStringify from 'rehype-stringify';
 import GithubSlugger from 'github-slugger';
+import { fromHtml } from 'hast-util-from-html';
+import { toText } from 'hast-util-to-text';
 import sharp from 'sharp';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
@@ -98,15 +100,8 @@ function escapeXml(value) {
     .replaceAll("'", '&apos;');
 }
 
-function decodeHtml(value) {
-  return String(value)
-    .replace(/<[^>]+>/gu, '')
-    .replaceAll('&amp;', '&')
-    .replaceAll('&lt;', '<')
-    .replaceAll('&gt;', '>')
-    .replaceAll('&quot;', '"')
-    .replaceAll('&#x27;', "'")
-    .replaceAll('&#39;', "'");
+function plainText(value) {
+  return toText(fromHtml(String(value), { fragment: true })).trim();
 }
 
 function frontmatter(source, key) {
@@ -179,7 +174,7 @@ function sectionHeadings(html, articleNumber) {
   for (let index = 0; index < headings.length; index += 1) {
     const match = headings[index];
     const next = headings[index + 1];
-    const label = decodeHtml(match[1]);
+    const label = plainText(match[1]);
     const id = `c${articleNumber}-${slugger.slug(label)}`;
     const content = html.slice(match.index + match[0].length, next?.index ?? html.length);
     sections.push({ id, label, html: `<section id="${id}" class="level2">\n<h2>${match[1]}</h2>${content}\n</section>` });
@@ -192,8 +187,8 @@ function extractInfographics(html, articleNumber, infographicOffset) {
   let nextOffset = infographicOffset;
   const rewritten = html.replace(/<svg\b[\s\S]*?<\/svg>/gu, (svg) => {
     const fileName = `file${nextOffset}.svg`;
-    const title = decodeHtml(svg.match(/<title[^>]*>([\s\S]*?)<\/title>/u)?.[1] ?? `Infographic ${nextOffset + 1}`);
-    const description = decodeHtml(svg.match(/<desc[^>]*>([\s\S]*?)<\/desc>/u)?.[1] ?? title);
+    const title = plainText(svg.match(/<title[^>]*>([\s\S]*?)<\/title>/u)?.[1] ?? `Infographic ${nextOffset + 1}`);
+    const description = plainText(svg.match(/<desc[^>]*>([\s\S]*?)<\/desc>/u)?.[1] ?? title);
     const clean = sanitizeSvg(svg, `article ${articleNumber}, ${fileName}`);
     writeFileSync(join(MEDIA_ROOT, fileName), clean);
     nextOffset += 1;
