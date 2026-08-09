@@ -166,9 +166,13 @@ const inlineScriptSizes = [...homeText.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\
   .map((match) => Buffer.byteLength(match[1]));
 const maxInline = Math.max(0, ...inlineScriptSizes);
 
-assert(home.length <= 90_000, `index.html dépasse 90 Ko (${home.length} octets)`);
-assert(homeGzip.length <= 16_000, `index.html gzip dépasse 16 Ko (${homeGzip.length} octets)`);
+// Les styles critiques sont intégrés au document : le budget porte sur le
+// transfert HTML+CSS complet, sans requête de feuille de style bloquante.
+assert(home.length <= 200_000, `index.html dépasse 200 Ko (${home.length} octets)`);
+assert(homeGzip.length <= 32_000, `index.html gzip dépasse 32 Ko (${homeGzip.length} octets)`);
 assert(maxInline <= 2_000, `index.html contient un script inline de ${maxInline} octets`);
+assert(!/<link\s[^>]*rel="stylesheet"/i.test(homeText), 'home: feuille CSS externe bloquante détectée');
+assert(!/class="[^"]*\brise\b[^"]*\bhome-intro\b|class="[^"]*\bhome-intro\b[^"]*\brise\b/.test(homeText), 'home: animation d’entrée appliquée au contenu LCP');
 assert(!homeText.includes('modelContext.registerTool'), 'WebMCP est de nouveau injecté inline dans index.html');
 const webMcpLoaderHref = homeText.match(/<script type="module" src="(\/_astro\/WebMCPTools\.[^"]+\.js)"><\/script>/)?.[1];
 assert(Boolean(webMcpLoaderHref), 'chargeur WebMCP externe absent');

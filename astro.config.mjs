@@ -8,6 +8,7 @@ import { legacySurfaceRedirects } from './src/config/legacy-surface-redirects.mj
 import { glossaryAtlasEntries } from './src/config/glossary.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 import { weeklySitemapLastmods } from './src/config/weekly-editions.ts';
+import inlineHomeStyles from './scripts/inline-home-styles.mjs';
 
 const indexedGlossaryUrls = new Set(glossaryAtlasEntries.map((entry) => `https://l0g.fr${entry.url}`));
 const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
@@ -30,7 +31,7 @@ export default defineConfig({
       ...item,
       lastmod: weeklyLastmods.get(item.url) ?? sitemapLastmod(item.url),
     }),
-  })],
+  }), inlineHomeStyles()],
 
   redirects: Object.fromEntries(
     Object.entries({
