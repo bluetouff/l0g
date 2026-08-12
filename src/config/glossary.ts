@@ -232,6 +232,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'NBFI', nom: 'Non-Bank Financial Intermediation', def: "Intermédiation financière non bancaire : crédit ou transformation d'épargne hors des banques de dépôt, notamment via fonds monétaires, hedge funds, assureurs, crédit privé et véhicules de titrisation. Terme de surveillance privilégié par le Conseil de stabilité financière pour ce périmètre souvent appelé shadow banking." },
       { sigle: 'Arbitrage réglementaire', nom: 'Regulatory arbitrage', def: "Déplacement d'une activité vers le compartiment le moins régulé du système financier, pour échapper aux contraintes de fonds propres ou de transparence. Moteur de la croissance du non-bancaire depuis le durcissement des règles bancaires après 2008 : le risque ne disparaît pas, il change d'adresse." },
       { sigle: 'Subprime', nom: 'Crédit à risque', def: "Crédit accordé à un emprunteur à faible score de solvabilité, rémunéré par un taux plus élevé pour compenser le risque de défaut. Au cœur de la crise de 2008 côté immobilier, le terme désigne aujourd'hui surtout le crédit auto et les cartes des ménages les plus fragiles, dont les impayés servent de baromètre avancé du stress du bas de la distribution." },
+      { sigle: 'Negative equity', nom: 'Valeur nette négative', def: "Situation dans laquelle le capital restant dû sur un actif dépasse sa valeur de marché. Pour une automobile, elle apparaît par exemple lorsqu'un véhicule vaut 20 000 dollars alors que 25 000 dollars restent à rembourser. L'écart devient une contrainte de trésorerie si le véhicule est vendu ou remplacé avant l'extinction du prêt." },
       { sigle: 'BNPL', nom: 'Buy now, pay later', def: "Paiement fractionné « acheter maintenant, payer plus tard », souvent en quatre échéances sans intérêt affiché. Crédit à la consommation peu déclaré aux bureaux de crédit, d'où le surnom de dette fantôme : il échappe en partie aux statistiques d'endettement des ménages tout en pesant sur leur trésorerie." },
       { sigle: 'Économie en K', nom: 'K-shaped economy', def: "Configuration où les trajectoires économiques divergent selon le revenu : le haut de la distribution prospère et soutient la consommation pendant que le bas décroche sous l'effet de l'inflation et du coût du crédit. Rend la moyenne agrégée trompeuse, car elle masque deux réalités opposées." },
       { sigle: 'AIMA', nom: 'Alternative Investment Management Association', def: "Association professionnelle mondiale des gérants d'actifs alternatifs (hedge funds, crédit privé)." },
@@ -501,7 +502,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-08-05';
+export const glossaryUpdatedIso = '2026-08-12';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
