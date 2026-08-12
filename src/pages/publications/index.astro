@@ -6,35 +6,38 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
 
 <BaseLayout
   title="Publications numériques"
-  description="Les enquêtes l0g réunies en éditions numériques gratuites, structurées et vérifiables."
+  description="Les essais et enquêtes l0g réunis en éditions numériques gratuites, structurées et vérifiables."
   alternateLinks={[
     { hreflang: 'fr', href: 'https://l0g.fr/publications/' },
     { hreflang: 'en', href: 'https://l0g.fr/en/publications/' },
     { hreflang: 'x-default', href: 'https://l0g.fr/publications/' },
   ]}
-  ogImage="/og-l-argent-d-epstein.png"
-  ogImageAlt="L’argent d’Epstein, sept enquêtes réunies dans une édition EPUB l0g"
+  ogImage="/publications/auditer-l-opacite-cover.jpg"
+  ogImageAlt="Auditer l’Opacité et L’argent d’Epstein, deux publications numériques l0g"
 >
   <PageHero
     index="06"
     kicker="éditions l0g"
     title="Lire les enquêtes."
-    highlight="Conserver leurs preuves."
-    description="Les publications numériques réunissent des séries d’articles dans un ordre de lecture continu, avec leurs sources, leurs limites et leurs documents associés."
-    secondary="Chaque édition reste reliée aux pages canoniques afin que les corrections et les mises à jour demeurent vérifiables."
+    highlight="Prolonger l’analyse."
+    description="Les publications numériques réunissent essais et séries d’articles dans un ordre de lecture continu, avec leurs sources, leurs limites et leurs documents associés."
+    secondary="Chaque édition précise son cadre, ses droits et les éléments nécessaires pour contrôler son intégrité."
     glyph="read"
     accent="var(--color-amber)"
     stats={[
-      { value: 1, label: 'édition disponible' },
-      { value: 7, label: 'enquêtes réunies' },
-      { value: 20, label: 'infographies adaptées' },
+      { value: 2, label: 'éditions disponibles' },
+      { value: 20, label: 'chapitres et enquêtes' },
+      { value: 2, label: 'EPUB gratuits' },
     ]}
   />
 
   <section class="publication-list" aria-labelledby="publication-list-title">
     <p class="mono-label">// catalogue</p>
-    <h2 id="publication-list-title">Édition disponible</h2>
-    <PublicationSpotlight />
+    <h2 id="publication-list-title">Éditions disponibles</h2>
+    <div class="publication-grid">
+      <PublicationSpotlight publication="auditer-opacite" />
+      <PublicationSpotlight />
+    </div>
   </section>
 </BaseLayout>
 
@@ -48,4 +51,5 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     font-size: clamp(1.55rem, 3vw, 2.15rem);
     line-height: 1.12;
   }
+  .publication-grid { display: grid; gap: 1.25rem; }
 </style>

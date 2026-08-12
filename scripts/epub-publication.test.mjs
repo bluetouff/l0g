@@ -25,6 +25,10 @@ const ENGLISH_PREVIEWS = [
   join(ROOT, 'public/publications/epsteins-money-infographic-1.svg'),
   join(ROOT, 'public/publications/epsteins-money-infographic-2.svg'),
 ];
+const AUDITER_SOURCE = join(ROOT, 'src/epub/auditer-l-opacite');
+const AUDITER_EPUB = join(ROOT, 'public/publications/auditer-l-opacite-bluetouff.epub');
+const AUDITER_PAGE = join(ROOT, 'src/pages/publications/auditer-l-opacite.astro');
+const AUDITER_COVER = join(ROOT, 'public/publications/auditer-l-opacite-cover.jpg');
 const MAPS = [
   {
     path: join(ROOT, 'public/publications/l-argent-d-epstein-carte-consolidee-1.png'),
@@ -73,6 +77,28 @@ function assertSvgTextFits(label, source, width, margin) {
       `${label} risque de déborder : « ${text} » (${left.toFixed(1)} à ${right.toFixed(1)} sur ${width})`,
     );
   }
+}
+
+function jpegDimensions(image) {
+  let offset = 2;
+  const frameMarkers = new Set([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf]);
+  while (offset + 9 < image.length) {
+    if (image[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+    const marker = image[offset + 1];
+    if (frameMarkers.has(marker)) {
+      return { height: image.readUInt16BE(offset + 5), width: image.readUInt16BE(offset + 7) };
+    }
+    if (marker === 0xd8 || marker === 0xd9) {
+      offset += 2;
+      continue;
+    }
+    const segmentLength = image.readUInt16BE(offset + 2);
+    offset += 2 + segmentLength;
+  }
+  throw new Error('dimensions JPEG introuvables');
 }
 
 test('l’archive EPUB respecte les contraintes de conteneur', () => {
@@ -282,4 +308,88 @@ test('the English publication is discoverable from navigation and home', () => {
   assert.match(layout, /href: '\/en\/publications\/'/u);
   assert.match(spotlight, /epsteins-money-l0g\.epub/u);
   assert.match(spotlight, /epsteins-money-cover\.png/u);
+});
+
+test('l’essai Auditer l’Opacité est un conteneur EPUB valide et reproductible', () => {
+  assert.ok(existsSync(AUDITER_EPUB), 'le fichier EPUB public doit exister');
+  const entries = execFileSync('unzip', ['-Z1', AUDITER_EPUB], { encoding: 'utf8' }).trim().split('\n');
+  assert.equal(entries[0], 'mimetype');
+  assert.equal(entries.filter((entry) => entry === 'mimetype').length, 1);
+
+  const listing = execFileSync('unzip', ['-lv', AUDITER_EPUB], { encoding: 'utf8' });
+  const mimetypeLine = listing.split('\n').find((line) => /\bmimetype\s*$/u.test(line));
+  assert.match(mimetypeLine ?? '', /\bStored\b/u);
+  assert.equal(execFileSync('unzip', ['-p', AUDITER_EPUB, 'mimetype'], { encoding: 'utf8' }), 'application/epub+zip');
+
+  const expected = listFiles(AUDITER_SOURCE).map((path) => relative(AUDITER_SOURCE, path)).sort();
+  assert.deepEqual(entries.sort(), expected);
+  for (const path of textualFiles(AUDITER_SOURCE)) {
+    const archived = execFileSync('unzip', ['-p', AUDITER_EPUB, relative(AUDITER_SOURCE, path)], { encoding: 'utf8' });
+    assert.equal(archived, readFileSync(path, 'utf8'), relative(ROOT, path));
+  }
+});
+
+test('l’essai conserve ses treize chapitres et adopte la charte l0g sans contenu actif', () => {
+  const corpus = textualFiles(AUDITER_SOURCE).map((path) => readFileSync(path, 'utf8')).join('\n');
+  const opf = readFileSync(join(AUDITER_SOURCE, 'EPUB/content.opf'), 'utf8');
+  const css = readFileSync(join(AUDITER_SOURCE, 'EPUB/styles/stylesheet1.css'), 'utf8');
+  const chapters = Array.from({ length: 13 }, (_, index) => `ch${String(index + 6).padStart(3, '0')}.xhtml`);
+
+  assert.equal(corpus.includes('\u{2014}'), false, 'aucun tiret quadratin ne doit être publié');
+  assert.equal(chapters.filter((chapter) => existsSync(join(AUDITER_SOURCE, 'EPUB/text', chapter))).length, 13);
+  assert.doesNotMatch(corpus, /<(?:script|iframe|object|embed|foreignObject)\b/iu);
+  assert.doesNotMatch(corpus, /\son[a-z]+\s*=/iu);
+  assert.match(opf, /https:\/\/l0g\.fr\/publications\/auditer-l-opacite\//u);
+  assert.match(opf, /schema:accessibilitySummary/u);
+  assert.match(opf, /© 2026 Bluetouff/u);
+  assert.match(css, /#0c0d10/u);
+  assert.match(css, /#5eead4/u);
+  assert.match(css, /#ff4d87/u);
+  assert.match(css, /#f5b13d/u);
+});
+
+test('tous les liens et fragments de l’essai Auditer l’Opacité se résolvent', () => {
+  for (const path of textualFiles(AUDITER_SOURCE).filter((file) => /\.(?:ncx|opf|xhtml|xml)$/u.test(file))) {
+    const markup = readFileSync(path, 'utf8');
+    for (const reference of localReferences(markup)) {
+      const [rawTarget, fragment] = reference.split('#');
+      const targetPath = rawTarget ? normalize(join(dirname(path), decodeURI(rawTarget))) : path;
+      assert.ok(existsSync(targetPath), `${relative(ROOT, path)} référence ${reference}`);
+      if (fragment) {
+        const target = readFileSync(targetPath, 'utf8');
+        assert.ok(target.includes(`id="${decodeURIComponent(fragment)}"`), `${relative(ROOT, path)} référence le fragment absent ${reference}`);
+      }
+    }
+  }
+});
+
+test('la page Auditer l’Opacité expose le fichier, la couverture, deux cartes et le checksum', () => {
+  const page = readFileSync(AUDITER_PAGE, 'utf8');
+  const bytes = readFileSync(AUDITER_EPUB);
+  const cover = readFileSync(AUDITER_COVER);
+
+  assert.match(page, /\/publications\/auditer-l-opacite-bluetouff\.epub/u);
+  assert.match(page, /download="Auditer-l-opacite-Bluetouff\.epub"/u);
+  assert.match(page, /createHash\('sha256'\)/u);
+  assert.equal((page.match(/<svg\b/gu) ?? []).length, 2);
+  assert.equal(page.includes('\u{2014}'), false);
+  assert.equal(createHash('sha256').update(bytes).digest('hex').length, 64);
+  assert.equal(cover.subarray(0, 2).toString('hex'), 'ffd8');
+  assert.deepEqual(jpegDimensions(cover), { width: 1600, height: 2560 });
+});
+
+test('le catalogue et la home gardent leurs cartes lisibles et ordonnées sur mobile', () => {
+  const index = readFileSync(PUBLICATIONS_INDEX, 'utf8');
+  const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
+  const home = readFileSync(HOME, 'utf8');
+
+  assert.ok(index.indexOf('publication="auditer-opacite"') < index.lastIndexOf('<PublicationSpotlight />'));
+  assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: 1fr/u);
+  assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/u);
+  assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?\.publication-actions a \{ width: 100%; \}/u);
+
+  const articles = home.indexOf('id="dernieres-analyses"');
+  const epsteinCard = home.lastIndexOf('<PublicationSpotlight headingLevel="h3" />');
+  const topics = home.indexOf('<section class="home-topics"');
+  assert.ok(articles < epsteinCard && epsteinCard < topics, 'la carte Epstein doit suivre les articles et précéder les sujets');
 });

@@ -14,6 +14,11 @@ const BOOKS = [
     source: join(ROOT, 'src/epub/epsteins-money'),
     output: join(ROOT, 'public/publications/epsteins-money-l0g.epub'),
   },
+  {
+    source: join(ROOT, 'src/epub/auditer-l-opacite'),
+    output: join(ROOT, 'public/publications/auditer-l-opacite-bluetouff.epub'),
+    fixedTime: new Date('2026-08-12T17:00:00Z'),
+  },
 ];
 
 function listFiles(directory) {
@@ -46,7 +51,8 @@ for (const [index, book] of BOOKS.entries()) {
     cpSync(book.source, stagedSource, { recursive: true });
 
     for (const path of listFiles(stagedSource)) {
-      utimesSync(path, FIXED_TIME, FIXED_TIME);
+      const fixedTime = book.fixedTime ?? FIXED_TIME;
+      utimesSync(path, fixedTime, fixedTime);
     }
 
     runZip(stagedSource, ['-X', '-0', stagedOutput, 'mimetype']);

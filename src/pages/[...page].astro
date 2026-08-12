@@ -160,22 +160,8 @@ const needCards = [
   )}
 
   {isFirst && (
-    <section class="home-publication rise" aria-labelledby="home-publication-title">
-      <SectionSignature
-        index="03"
-        eyebrow="édition numérique"
-        title="Sept enquêtes réunies dans un volume"
-        id="home-publication-title"
-        href="/publications/"
-        linkLabel="Toutes les publications"
-      />
-      <PublicationSpotlight headingLevel="h3" />
-    </section>
-  )}
-
-  {isFirst && (
     <section class="home-needs rise" aria-labelledby="home-needs-title">
-      <SectionSignature index="04" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
+      <SectionSignature index="03" eyebrow="choisir une entrée" title="Que cherchez-vous ?" id="home-needs-title" />
       <div class="need-grid">
         {needCards.map((card, index) => (
           <a href={card.href} class="need-card instrument-plate">
@@ -195,7 +181,7 @@ const needCards = [
 
   <section class="pb-4 latest-feed" id="dernieres-analyses">
     {isFirst
-      ? <SectionSignature index="05" eyebrow="chronologie" title="Les dernières analyses" />
+      ? <SectionSignature index="04" eyebrow="chronologie" title="Les dernières analyses" />
       : <div class="section-heading feed-heading">
           <div>
             <p class="mono-label" style="color: var(--color-signal)">// archives</p>
@@ -230,6 +216,20 @@ const needCards = [
     previousLabel="Précédent"
     nextLabel="Suivant"
   />
+
+  {isFirst && (
+    <section class="home-publication rise" aria-labelledby="home-publication-title">
+      <SectionSignature
+        index="05"
+        eyebrow="édition numérique"
+        title="Sept enquêtes réunies dans un volume"
+        id="home-publication-title"
+        href="/publications/"
+        linkLabel="Toutes les publications"
+      />
+      <PublicationSpotlight headingLevel="h3" />
+    </section>
+  )}
 
   {isFirst && (
     <section class="home-topics" aria-labelledby="followed-topics-title">

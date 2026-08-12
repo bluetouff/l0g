@@ -5,18 +5,53 @@ import { join } from 'node:path';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
+  publication?: 'epstein' | 'auditer-opacite';
 }
 
-const { headingLevel = 'h2', lang = 'fr' } = Astro.props;
+const { headingLevel = 'h2', lang = 'fr', publication = 'epstein' } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
-const publicationUrl = isEnglish ? '/en/publications/epsteins-money/' : '/publications/l-argent-d-epstein/';
-const epubUrl = isEnglish ? '/publications/epsteins-money-l0g.epub' : '/publications/l-argent-d-epstein-l0g.epub';
-const coverUrl = isEnglish ? '/publications/epsteins-money-cover.png' : '/publications/l-argent-d-epstein-cover.png';
-const epubPath = join(process.cwd(), 'public/publications', isEnglish ? 'epsteins-money-l0g.epub' : 'l-argent-d-epstein-l0g.epub');
+const isAuditer = !isEnglish && publication === 'auditer-opacite';
+const publicationUrl = isAuditer
+  ? '/publications/auditer-l-opacite/'
+  : isEnglish
+    ? '/en/publications/epsteins-money/'
+    : '/publications/l-argent-d-epstein/';
+const epubFile = isAuditer
+  ? 'auditer-l-opacite-bluetouff.epub'
+  : isEnglish
+    ? 'epsteins-money-l0g.epub'
+    : 'l-argent-d-epstein-l0g.epub';
+const epubUrl = `/publications/${epubFile}`;
+const coverUrl = isAuditer
+  ? '/publications/auditer-l-opacite-cover.jpg'
+  : isEnglish
+    ? '/publications/epsteins-money-cover.png'
+    : '/publications/l-argent-d-epstein-cover.png';
+const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isEnglish
+const copy = isAuditer
+  ? {
+      coverLabel: 'Découvrir l’essai Auditer l’Opacité',
+      coverAlt: 'Couverture de l’essai Auditer l’Opacité de Bluetouff',
+      meta: '// essai · édition l0g · août 2026',
+      titleLead: 'Auditer',
+      titleAccent: 'l’opacité',
+      deck: 'Anatomie d’une crise qu’on ne veut pas voir.',
+      description: 'Un essai en treize chapitres pour lire les zones d’opacité et les canaux de transmission du risque dans la finance contemporaine, sans calendrier d’effondrement.',
+      factsLabel: 'Contenu de l’essai',
+      facts: [
+        { value: '13', label: 'chapitres' },
+        { value: '5', label: 'parties' },
+        { value: formattedSize, label: 'téléchargement' },
+        { value: 'Sources', label: 'bibliographie + lexique' },
+      ],
+      discover: 'Découvrir l’essai',
+      downloadLabel: 'Télécharger l’EPUB',
+      fileName: 'Auditer-l-opacite-Bluetouff.epub',
+    }
+  : isEnglish
   ? {
       coverLabel: "Discover the Epstein's Money edition",
       coverAlt: "Cover of Epstein's Money",
@@ -26,14 +61,15 @@ const copy = isEnglish
       deck: 'Fortune, banks, investments and the estate.',
       description: 'Seven investigations in one reading sequence, with their sources, calculations, limitations and unresolved questions.',
       factsLabel: 'Edition contents',
-      investigations: 'investigations',
-      infographics: 'infographics',
-      download: 'download',
-      license: 'license',
+      facts: [
+        { value: '7', label: 'investigations' },
+        { value: '20', label: 'infographics' },
+        { value: formattedSize, label: 'download' },
+        { value: 'CC BY 4.0', label: 'license' },
+      ],
       discover: 'Explore the edition',
       downloadLabel: 'Download the EPUB',
       fileName: 'Epsteins-Money-l0g.epub',
-      size: formattedSize,
     }
   : {
       coverLabel: 'Découvrir l’édition L’argent d’Epstein',
@@ -44,18 +80,19 @@ const copy = isEnglish
       deck: 'Fortune, banques, investissements et succession.',
       description: 'Sept enquêtes réunies dans un ordre de lecture continu, avec leurs sources, leurs calculs, leurs limites et les questions qui restent ouvertes.',
       factsLabel: 'Contenu de l’édition',
-      investigations: 'enquêtes',
-      infographics: 'infographies',
-      download: 'téléchargement',
-      license: 'licence',
+      facts: [
+        { value: '7', label: 'enquêtes' },
+        { value: '20', label: 'infographies' },
+        { value: formattedSize, label: 'téléchargement' },
+        { value: 'CC BY 4.0', label: 'licence' },
+      ],
       discover: 'Découvrir l’édition',
       downloadLabel: 'Télécharger l’EPUB',
       fileName: 'L-argent-d-Epstein-l0g.epub',
-      size: formattedSize,
     };
 ---
 
-<article class="publication-spotlight">
+<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
@@ -72,15 +109,12 @@ const copy = isEnglish
       <p class="mono-label">{copy.meta}</p>
       <span>EPUB 3</span>
     </div>
-    <Heading>{copy.titleLead} <em>{copy.titleAccent}</em></Heading>
+    <Heading>{copy.titleLead}{' '}<em>{copy.titleAccent}</em></Heading>
     <p class="publication-deck">{copy.deck}</p>
     <p class="publication-description">{copy.description}</p>
 
     <ul class="publication-facts" aria-label={copy.factsLabel}>
-      <li><strong>7</strong><span>{copy.investigations}</span></li>
-      <li><strong>20</strong><span>{copy.infographics}</span></li>
-      <li><strong>{copy.size}</strong><span>{copy.download}</span></li>
-      <li><strong>CC BY 4.0</strong><span>{copy.license}</span></li>
+      {copy.facts.map((fact) => <li><strong>{fact.value}</strong><span>{fact.label}</span></li>)}
     </ul>
 
     <div class="publication-actions">
@@ -94,20 +128,22 @@ const copy = isEnglish
 
 <style>
   .publication-spotlight {
+    --publication-card-accent: var(--color-amber);
     display: grid;
     grid-template-columns: minmax(10rem, 13.5rem) minmax(0, 1fr);
     gap: clamp(1.2rem, 4vw, 2.4rem);
     position: relative;
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-amber) 34%, var(--color-line));
+    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 34%, var(--color-line));
     border-radius: 18px 5px 18px 18px;
     padding: clamp(1rem, 3vw, 1.65rem);
     background:
-      radial-gradient(circle at 12% 30%, color-mix(in srgb, var(--color-amber) 12%, transparent), transparent 31%),
+      radial-gradient(circle at 12% 30%, color-mix(in srgb, var(--publication-card-accent) 12%, transparent), transparent 31%),
       radial-gradient(circle at 92% 10%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 29%),
       color-mix(in srgb, var(--color-surface) 72%, transparent);
     box-shadow: inset 0 1px 0 var(--edge-highlight), 0 24px 70px color-mix(in srgb, #000 22%, transparent);
   }
+  .publication-spotlight--auditer { --publication-card-accent: var(--color-signal); }
   .publication-spotlight::after {
     content: '';
     position: absolute;
@@ -115,13 +151,12 @@ const copy = isEnglish
     right: -1px;
     width: 1rem;
     height: 1rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-amber) 52%, var(--color-line));
-    border-left: 1px solid color-mix(in srgb, var(--color-amber) 52%, var(--color-line));
+    border-bottom: 1px solid color-mix(in srgb, var(--publication-card-accent) 52%, var(--color-line));
+    border-left: 1px solid color-mix(in srgb, var(--publication-card-accent) 52%, var(--color-line));
     background: var(--color-ink);
   }
   .publication-cover {
     display: block;
-    position: relative;
     align-self: center;
     width: 100%;
     max-width: 13.5rem;
@@ -130,18 +165,16 @@ const copy = isEnglish
   }
   .publication-cover img {
     display: block;
-    position: relative;
     width: 100%;
     height: auto;
     border: 1px solid color-mix(in srgb, var(--color-paper) 18%, transparent);
     border-radius: 3px 8px 8px 3px;
     box-shadow: -8px 12px 28px rgba(0, 0, 0, 0.42), inset 10px 0 18px rgba(255, 255, 255, 0.04);
     transform: rotateY(5deg) rotateZ(-0.7deg);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
   }
   .publication-cover:hover img {
     transform: rotateY(1deg) rotateZ(0deg) translateY(-2px);
-    box-shadow: -5px 16px 34px rgba(0, 0, 0, 0.48);
   }
   .publication-copy { align-self: center; min-width: 0; }
   .publication-meta {
@@ -151,12 +184,12 @@ const copy = isEnglish
     justify-content: space-between;
     gap: 0.55rem 1rem;
   }
-  .publication-meta p { color: var(--color-amber); }
+  .publication-meta p { color: var(--publication-card-accent); }
   .publication-meta > span {
-    border: 1px solid color-mix(in srgb, var(--color-amber) 45%, var(--color-line));
+    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 45%, var(--color-line));
     border-radius: 999px;
     padding: 0.25rem 0.55rem;
-    color: var(--color-amber);
+    color: var(--publication-card-accent);
     font-family: var(--font-mono);
     font-size: 0.58rem;
     font-weight: 700;
@@ -233,14 +266,15 @@ const copy = isEnglish
     transition: transform 0.16s, border-color 0.16s, background 0.16s;
   }
   .publication-actions a:hover { transform: translateY(-1px); }
-  .publication-primary { color: var(--color-ink); background: var(--color-amber); }
+  .publication-primary { color: var(--color-ink); background: var(--publication-card-accent); }
   .publication-primary span { font-size: 1rem; line-height: 0; }
   .publication-secondary { border: 1px solid var(--color-line-strong); color: var(--color-paper); }
-  .publication-secondary:hover { border-color: var(--color-amber); }
+  .publication-secondary:hover { border-color: var(--publication-card-accent); }
   :root[data-theme='light'] .publication-primary { color: #1a1509; }
   @media (max-width: 680px) {
-    .publication-spotlight { grid-template-columns: minmax(5.6rem, 7.2rem) minmax(0, 1fr); gap: 1rem; }
-    .publication-cover { align-self: start; }
+    .publication-spotlight { grid-template-columns: 1fr; gap: 1.35rem; padding: 1rem; }
+    .publication-cover { align-self: start; max-width: 10.5rem; }
+    .publication-copy { width: 100%; }
     .publication-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .publication-facts li { border-left: 0; padding: 0.35rem 0; }
     .publication-facts li:nth-child(even) { border-left: 1px solid var(--color-line); padding-left: 0.65rem; }
@@ -249,9 +283,10 @@ const copy = isEnglish
   }
   @media (max-width: 430px) {
     .publication-spotlight { align-items: start; padding: 0.85rem; }
+    .publication-cover { max-width: 8.7rem; }
     .publication-copy h2,
     .publication-copy h3 { font-size: clamp(1.45rem, 8vw, 1.9rem); }
-    .publication-description { grid-column: 1 / -1; }
+    .publication-meta { align-items: flex-start; }
   }
   @media (prefers-reduced-motion: reduce) {
     .publication-cover img,

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta name="dtb:uid" content="https://l0g.fr/publications/auditer-l-opacite/"/>
+    <meta name="dtb:depth" content="1"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+    <meta name="cover" content="cover_jpg"/>
+  </head>
+  <docTitle>
+    <text>Auditer l’Opacité</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="navPoint-0" playOrder="1">
+      <navLabel>
+        <text>Auditer l’Opacité</text>
+      </navLabel>
+      <content src="text/title_page.xhtml"/>
+    </navPoint>
+    <navPoint id="navPoint-2" playOrder="2">
+        <navLabel>
+          <text>Sommaire</text>
+        </navLabel>
+        <content src="text/ch002.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-3" playOrder="3">
+        <navLabel>
+          <text>LiminairePréface</text>
+        </navLabel>
+        <content src="text/ch003.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-4" playOrder="4">
+        <navLabel>
+          <text>AvertissementNote au lecteur, sur Bitcoin</text>
+        </navLabel>
+        <content src="text/ch004.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-5" playOrder="5">
+        <navLabel>
+          <text>OuverturePrologue</text>
+        </navLabel>
+        <content src="text/ch005.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-6" playOrder="6">
+        <navLabel>
+          <text>Chapitre 1Crises et bascules : pourquoi cette époque n'est pas comme les autres</text>
+        </navLabel>
+        <content src="text/ch006.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-7" playOrder="7">
+        <navLabel>
+          <text>Chapitre 2La grande déconnexion : prix, valeur, et tout ce qui se cache entre les deux</text>
+        </navLabel>
+        <content src="text/ch007.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-8" playOrder="8">
+        <navLabel>
+          <text>Chapitre 3Le retour du prêteur de l'ombre</text>
+        </navLabel>
+        <content src="text/ch008.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-9" playOrder="9">
+        <navLabel>
+          <text>Chapitre 4La fabrique du flou</text>
+        </navLabel>
+        <content src="text/ch009.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-10" playOrder="10">
+        <navLabel>
+          <text>Chapitre 5Quand l'assureur devient banquier</text>
+        </navLabel>
+        <content src="text/ch010.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-11" playOrder="11">
+        <navLabel>
+          <text>Chapitre 6Le yield comme drogue</text>
+        </navLabel>
+        <content src="text/ch011.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-12" playOrder="12">
+        <navLabel>
+          <text>Chapitre 7Quand la crypto absorbe la finance ancienne</text>
+        </navLabel>
+        <content src="text/ch012.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-13" playOrder="13">
+        <navLabel>
+          <text>Chapitre 8Le grand pari du dollar synthétique</text>
+        </navLabel>
+        <content src="text/ch013.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-14" playOrder="14">
+        <navLabel>
+          <text>Chapitre 9La fin du consensus monétaire</text>
+        </navLabel>
+        <content src="text/ch014.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-15" playOrder="15">
+        <navLabel>
+          <text>Chapitre 10Le yen, les Treasuries, la mèche japonaise</text>
+        </navLabel>
+        <content src="text/ch015.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-16" playOrder="16">
+        <navLabel>
+          <text>Chapitre 11Le régulateur a toujours un coup de retard</text>
+        </navLabel>
+        <content src="text/ch016.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-17" playOrder="17">
+        <navLabel>
+          <text>Chapitre 12Le mirage de la décentralisation</text>
+        </navLabel>
+        <content src="text/ch017.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-18" playOrder="18">
+        <navLabel>
+          <text>Chapitre 13Ce qu'elle peut quand même</text>
+        </navLabel>
+        <content src="text/ch018.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-19" playOrder="19">
+        <navLabel>
+          <text>ConclusionÉpilogue</text>
+        </navLabel>
+        <content src="text/ch019.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-20" playOrder="20">
+        <navLabel>
+          <text>Sources et bibliographie</text>
+        </navLabel>
+        <content src="text/ch020.xhtml"/>
+      </navPoint>
+      <navPoint id="navPoint-21" playOrder="21">
+        <navLabel>
+          <text>Lexique des acronymes et termes techniques</text>
+        </navLabel>
+        <content src="text/ch021.xhtml"/>
+      </navPoint>
+    </navMap>
+</ncx>
