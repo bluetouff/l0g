@@ -1,0 +1,196 @@
+---
+title: "When Data Center Debt Reaches ETFs"
+description: "Bonds linked to data centers already appear in funds, ETFs and the collateral behind certain repos. Their journey shows how risk can spread and what Nvidia's announcement still leaves unresolved."
+pubDate: 2026-08-12T08:16:00+02:00
+updatedDate: 2026-08-12T08:16:00+02:00
+sourceArticle: "du-data-center-au-fonds-qui-porte-le-risque"
+sourceUpdatedDate: 2026-08-12T08:16:00+02:00
+tags: ["data-centers", "bond-funds", "etf", "money-market-funds", "artificial-intelligence"]
+lang: en
+draft: false
+---
+
+One line stands out in the portfolio of the [State Street Ultra Short Term Bond ETF](https://www.ssga.com/us/en/intermediary/etfs/state-street-ultra-short-term-bond-etf-ulst). The fund seeks short-duration, high-quality investments. On August 10, 2026, it held exactly $4,609,114.91 of Lohrasp Enterprise II notes, whose final legal maturity falls on July 17, 2056.
+
+This bond has two calendars. Its final maturity falls in 2056, while [presale analyses indicate an anticipated repayment date five years after issuance](https://www.datacenterdynamics.com/en/news/520-million-in-asset-backed-securities-issued-secured-by-virginia-data-center/). Duration measures, among other things, how sensitive a bond's price is to interest-rate movements. Its calculation takes expected cash flows and contractual options into account. A bond can therefore have a distant final maturity while contributing to a short-duration portfolio. The main test will come at the anticipated repayment date: if available cash is insufficient, the possible outcomes can include refinancing, an asset sale or continuation of the debt under the mechanisms that apply after that date.
+
+The Lohrasp line mainly reveals what happens after a data center is built. Debt leaves the original circle of financiers. It circulates through bond funds, listed ETFs and, in another form, the collateral received by certain money market funds.
+
+## The 2056 bond inside an “ultra short” ETF
+
+A data center collects rent from its customers. That revenue pays for power, cooling, maintenance and other operating costs. Part of the remaining cash can then service the debt.
+
+To raise money, the owner may place the building, its contracts and its income inside a vehicle that issues bonds. The investor provides capital, receives interest and obtains a promise of repayment. The bond can later be sold.
+
+When a fund buys it, the bond joins a portfolio containing dozens or hundreds of lines. A saver who owns a share of that fund then bears an economic fraction of the risk attached to the debt.
+
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="en-chain-title en-chain-desc" preserveAspectRatio="xMidYMid meet" font-family="Inter, Arial, sans-serif">
+  <title id="en-chain-title">How risk leaves the data center</title>
+  <desc id="en-chain-desc">Data center rent flows into a vehicle that repays bonds held by funds. The value of those bonds affects the value of fund shares.</desc>
+  <rect x="16" y="16" width="688" height="728" rx="24" fill="#08111f" stroke="#334155" stroke-width="2" />
+  <text x="42" y="62" fill="#f8fafc" font-size="28" font-weight="700">From building to portfolio</text>
+
+  <rect x="72" y="96" width="576" height="104" rx="18" fill="#0f2338" stroke="#38bdf8" stroke-width="2" />
+  <text x="98" y="136" fill="#7dd3fc" font-size="23" font-weight="700">The data center collects rent</text>
+  <text x="98" y="170" fill="#f8fafc" font-size="19">Operating expenses are paid first.</text>
+  <path d="M360 200 L360 240" fill="none" stroke="#64748b" stroke-width="3" />
+  <path d="M352 232 L360 242 L368 232" fill="none" stroke="#64748b" stroke-width="3" />
+
+  <rect x="72" y="242" width="576" height="104" rx="18" fill="#10261f" stroke="#34d399" stroke-width="2" />
+  <text x="98" y="282" fill="#6ee7b7" font-size="23" font-weight="700">The vehicle repays its debt</text>
+  <text x="98" y="316" fill="#f8fafc" font-size="19">Interest, principal and reserves follow the contracts.</text>
+  <path d="M360 346 L360 386" fill="none" stroke="#64748b" stroke-width="3" />
+  <path d="M352 378 L360 388 L368 378" fill="none" stroke="#64748b" stroke-width="3" />
+
+  <rect x="72" y="388" width="576" height="104" rx="18" fill="#211936" stroke="#a78bfa" stroke-width="2" />
+  <text x="98" y="428" fill="#c4b5fd" font-size="23" font-weight="700">The fund buys a bond</text>
+  <text x="98" y="462" fill="#f8fafc" font-size="19">Its price rises or falls inside the portfolio.</text>
+  <path d="M360 492 L360 532" fill="none" stroke="#64748b" stroke-width="3" />
+  <path d="M352 524 L360 534 L368 524" fill="none" stroke="#64748b" stroke-width="3" />
+
+  <rect x="72" y="534" width="576" height="104" rx="18" fill="#2a1e12" stroke="#f59e0b" stroke-width="2" />
+  <text x="98" y="574" fill="#fbbf24" font-size="23" font-weight="700">The fund share passes on the result</text>
+  <text x="98" y="608" fill="#f8fafc" font-size="19">The investor indirectly bears a fraction of the risk.</text>
+
+  <rect x="72" y="668" width="576" height="48" rx="14" fill="#321b24" stroke="#fb7185" stroke-width="2" />
+  <text x="98" y="699" fill="#fecdd3" font-size="18">The loss order depends on each issuance's contracts.</text>
+</svg>
+
+Suppose one bond accounts for 1% of an ETF and loses 20% of its value. It removes roughly 0.2% from the portfolio before fees and movements in other assets. The loss reaches the fund shareholder, far from the building and its owner.
+
+U.S. regulatory filings show that this diffusion has already begun.
+
+## Iskandar appears in 39 portfolios
+
+In April 2026, CloudHQ was seeking to raise $1.4 billion against two Virginia data centers. The transaction, issued through Iskandar Enterprise and Kaveh Enterprise, produced several bond classes called A21, A22 and A23. Each has a CUSIP, an identifier that functions like a barcode in U.S. markets.
+
+We searched those three CUSIPs in N-PORT forms filed with the SEC. [Form N-PORT](https://www.sec.gov/data-research/sec-markets-data/form-n-port-data-sets) provides the monthly inventory of registered U.S. funds. The search produced 39 funds and 47 Iskandar lines, because some portfolios held more than one class. Their reported value totaled $150,635,144.63.
+
+That total brings together three reporting dates: April 30, May 31 and June 30. It measures the footprint found in the filings while purchases and sales continued afterward. The $150.64 million is neither a single-date balance nor an August 12 balance and remains separate from more recent snapshots.
+
+The [John Hancock Bond Fund](https://www.sec.gov/Archives/edgar/data/45288/000004528826000006/primary_doc.xml) held the largest line at $29.65 million. The [BlackRock Global Allocation Fund](https://www.sec.gov/Archives/edgar/data/834237/000207169126015449/primary_doc.xml) reported $10.88 million across two classes. The [Franklin Total Return Fund](https://www.sec.gov/Archives/edgar/data/809707/000207169126014450/primary_doc.xml), the [iShares Flexible Income Active ETF](https://www.sec.gov/Archives/edgar/data/1804196/000141036826066781/primary_doc.xml) and the [Franklin Core Plus Bond Fund](https://www.sec.gov/Archives/edgar/data/872625/000207169126014421/primary_doc.xml) also exceeded $10 million each.
+
+Iskandar generally occupied a modest place in these portfolios. That dispersion cushions the effect of an isolated problem for each fund while extending the number of exposed investors. Seven ETFs accounted for $21.71 million, or 14.411% of the observed subset. Two Lincoln Variable Insurance Products Trust funds, [LVIP BlackRock Global Allocation](https://www.sec.gov/Archives/edgar/data/914036/000141036826078247/primary_doc.xml) and [LVIP BlackRock Inflation Protected Bond](https://www.sec.gov/Archives/edgar/data/914036/000141036826078273/primary_doc.xml), held $2.19 million. They can serve as investment options in variable insurance contracts. Their presence in N-PORT does not reveal what insurers hold in their general accounts.
+
+State Street's daily files extend the trail to August 10. Four ETFs then held Iskandar or Lohrasp. The two issuances represented 2.827807% of [PRAB](https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-prab.xlsx). In [ULST](https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-ulst.xlsx), Lohrasp accounted for 0.882695%, worth $4.61 million.
+
+At DoubleLine, the [DABS ETF](https://doubleline.com/wp-content/uploads/holdings/DoubleLine_DABS_Holdings_08-07-2026.pdf) held $2.31 million of Iskandar A23 on August 7. Eleven lines that could be identified with certainty as CloudHQ, QTS, Switch or CyrusOne totaled $13.11 million and 8.72% of the fund. We excluded ambiguous abbreviations, so the amount is a floor. As of August 10, [DoubleLine reported a duration of 2.07 years](https://doubleline.com/funds/asset-backed-securities-etf/) for DABS as a whole. That measure reflects the portfolio's rate sensitivity based on expected cash flows; it is not an average of final legal maturities.
+
+## The April 2031 appointment
+
+The Iskandar bonds found in the funds legally mature on April 17, 2056. [Data Center Dynamics](https://www.datacenterdynamics.com/en/news/cloudhq-seeks-14-billion-in-abs-funding/) reports an anticipated repayment date in April 2031. That date makes 2031 the transaction's first major financial test. The 2056 maturity is the final legal deadline; bond prices can react much earlier.
+
+The structure targets repayment in 2031. Rent and reserves may contribute. If a large balance remains, possible outcomes include new financing, an asset sale or continuation of the debt under the mechanisms that apply after the anticipated date. Because the offering memorandum is absent from the public record, the intended mix and the precise room for manoeuvre remain unknown.
+
+The terms available in 2031 will depend on market conditions and the state of the two data centers. Higher rates would raise the cost. A tenant credit deterioration would make the rent stream less attractive. Unplanned power work would increase capital needs. More cautious lenders could demand a higher yield or more equity. In each case, bond values could decline years before 2056.
+
+The CloudHQ 2026-1 offering memorandum and indenture remain absent from the public record we were able to review. Those documents set the consequences of incomplete repayment in 2031 and allocate payments and losses among the sponsor, reserves and the A21, A22, A23, B1 and B2 classes. The observed funds mainly hold A21. The precise rights attached to each class cannot be reconstructed from the available public documents alone.
+
+## Five repos and an unexpected detour
+
+Filings dated July 31 show Iskandar or Lohrasp in five transactions entered into by prime money market funds. This time, the bond appears through a repo.
+
+In a repo, the fund advances cash to a bank or broker, which agrees to return it with compensation. A basket of securities is placed with an intermediary as collateral. In the five transactions observed, final repo maturities ranged from August 3 to November 13, 2026, even though some bonds in the baskets legally run to 2056. If the counterparty defaults, the fund may exercise its contractual rights over the collateral and try to sell it to recover its claim.
+
+<svg viewBox="0 0 720 720" width="100%" role="img" aria-labelledby="en-repo-title en-repo-desc" preserveAspectRatio="xMidYMid meet" font-family="Inter, Arial, sans-serif">
+  <title id="en-repo-title">Two uses of an Iskandar bond</title>
+  <desc id="en-repo-desc">Inside an ETF, the fund owns the bond. Inside a repo, it appears among the securities delivered by a counterparty.</desc>
+  <rect x="16" y="16" width="688" height="688" rx="24" fill="#08111f" stroke="#334155" stroke-width="2" />
+  <text x="42" y="62" fill="#f8fafc" font-size="28" font-weight="700">Two uses of one bond</text>
+
+  <rect x="42" y="96" width="636" height="218" rx="20" fill="#10261f" stroke="#34d399" stroke-width="2" />
+  <text x="68" y="136" fill="#6ee7b7" font-size="23" font-weight="700">Inside a bond fund</text>
+  <rect x="68" y="170" width="220" height="78" rx="14" fill="#15382c" stroke="#34d399" stroke-width="2" />
+  <text x="92" y="202" fill="#f8fafc" font-size="19" font-weight="700">Fund or ETF</text>
+  <text x="92" y="230" fill="#cbd5e1" font-size="17">direct ownership</text>
+  <path d="M288 209 L410 209" fill="none" stroke="#34d399" stroke-width="4" />
+  <path d="M400 201 L412 209 L400 217" fill="none" stroke="#34d399" stroke-width="4" />
+  <rect x="412" y="170" width="238" height="78" rx="14" fill="#15382c" stroke="#34d399" stroke-width="2" />
+  <text x="436" y="202" fill="#f8fafc" font-size="19" font-weight="700">Iskandar bond</text>
+  <text x="436" y="230" fill="#cbd5e1" font-size="17">price risk passed on</text>
+  <text x="68" y="286" fill="#f8fafc" font-size="18">A price fall immediately affects the portfolio.</text>
+
+  <rect x="42" y="344" width="636" height="292" rx="20" fill="#2a1e12" stroke="#f59e0b" stroke-width="2" />
+  <text x="68" y="384" fill="#fbbf24" font-size="23" font-weight="700">Inside a money fund repo</text>
+  <rect x="68" y="418" width="218" height="78" rx="14" fill="#3a2916" stroke="#f59e0b" stroke-width="2" />
+  <text x="92" y="450" fill="#f8fafc" font-size="19" font-weight="700">Money market fund</text>
+  <text x="92" y="478" fill="#cbd5e1" font-size="17">provides the cash</text>
+  <path d="M286 457 L406 457" fill="none" stroke="#f59e0b" stroke-width="4" />
+  <path d="M396 449 L408 457 L396 465" fill="none" stroke="#f59e0b" stroke-width="4" />
+  <rect x="408" y="418" width="242" height="78" rx="14" fill="#3a2916" stroke="#f59e0b" stroke-width="2" />
+  <text x="432" y="450" fill="#f8fafc" font-size="19" font-weight="700">Bank or broker</text>
+  <text x="432" y="478" fill="#cbd5e1" font-size="17">must return the cash</text>
+  <path d="M529 496 L529 532" fill="none" stroke="#f59e0b" stroke-width="3" />
+  <path d="M521 524 L529 534 L537 524" fill="none" stroke="#f59e0b" stroke-width="3" />
+  <rect x="178" y="534" width="472" height="66" rx="14" fill="#321b24" stroke="#fb7185" stroke-width="2" />
+  <text x="202" y="562" fill="#fecdd3" font-size="18" font-weight="700">Collateral basket</text>
+  <text x="202" y="586" fill="#f8fafc" font-size="16">Iskandar or Lohrasp is only one small part.</text>
+  <text x="68" y="622" fill="#f8fafc" font-size="17">The bond matters if the counterparty defaults.</text>
+
+  <text x="42" y="680" fill="#94a3b8" font-size="17">The contract determines when this bond affects the fund.</text>
+</svg>
+
+The five funds had advanced between $400 million and $1.51 billion to BNP Paribas, Wells Fargo Securities, TD Securities or Goldman Sachs. The collateral baskets contained a total of $16.04 million in Iskandar or Lohrasp bonds:
+
+| Money market fund | Counterparty | Repo amount | Bond inside the basket |
+|---|---|---:|---:|
+| [Federated Hermes Institutional Prime Obligations](https://www.sec.gov/Archives/edgar/data/856517/000119312526339544/primary_doc.xml) | BNP Paribas | $521.25m | $2.26m Iskandar |
+| [Federated Hermes Prime Cash Obligations](https://www.sec.gov/Archives/edgar/data/856517/000119312526339547/primary_doc.xml) | BNP Paribas | $1.51bn | $6.54m Iskandar |
+| [Schwab Prime Advantage Money Fund](https://www.sec.gov/Archives/edgar/data/857156/000141036826078476/primary_doc.xml) | Wells Fargo Securities | $750m | $3.00m Lohrasp |
+| [JPMorgan Liquid Assets Money Market Fund](https://www.sec.gov/Archives/edgar/data/763852/000207169126017556/primary_doc.xml) | TD Securities USA | $400m | $2.25m Lohrasp |
+| [JPMorgan Prime Money Market Fund](https://www.sec.gov/Archives/edgar/data/1217286/000207169126017558/primary_doc.xml) | Goldman Sachs | $650m | $2.00m Lohrasp |
+
+Data center bonds represented between 0.286% and 0.517% of each collateral basket. Total collateral covered between 102.04% and 115.00% of the cash advanced. That overcollateralization can absorb part of a price decline; its effectiveness depends on sale proceeds, timing and costs.
+
+A loss attributable to the data center bond would require a specific sequence: counterparty default, exercise of rights over the collateral, then sale proceeds falling short of the claim and costs. A [JPMorgan disclosure filed with the SEC](https://www.sec.gov/Archives/edgar/data/1659326/000119312526217424/d44657d485bpos.htm) describes this general liquidation risk.
+
+The $150.64 million found in registered funds measures direct holdings on several dates. The $16.04 million in repos measures collateral as of July 31. We therefore keep the two sums separate. Their juxtaposition still reveals how far the securities have traveled: bonds backed by data centers already serve as collateral in the short-term financing channels of major financial institutions.
+
+## Contracts will decide the fate of the $500 billion
+
+On August 10, [Nvidia announced](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Partners-With-Apollo-BlackRock-Blackstone-Brookfield-Goldman-Sachs-and-KKR-to-Establish-AI-Compute-Infrastructure-Financing-Platforms-to-Mobilize-Over-500-Billion-of-Third-Party-Capital/default.aspx) platforms with Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR. [Reuters specifies](https://www.reuters.com/technology/wall-street-giants-partner-with-nvidia-500-billion-ai-financing-deal-ft-reports-2026-08-10/) that Nvidia signed six memorandums of understanding aimed at mobilizing more than $500 billion in third-party capital for AI compute infrastructure.
+
+If the program proceeds, capital will be deployed through separate transactions over time. Their structures may vary across equity, loans, bonds, dedicated vehicles or combinations of those instruments. The release gives the intended scale. It does not quantify capital already committed, each partner's contribution or a deployment timetable.
+
+Jensen Huang also discussed an option for Nvidia to backstop as much as $125 billion, or 25% of potential transactions, according to Reuters. That figure is a theoretical ceiling mentioned by the chief executive. Nvidia's effective exposure will arise from contracts that are actually signed and will depend on the assets covered, beneficiaries, triggering events, duration and recourse terms.
+
+The distribution begins inside each project. The owner commits equity and assets. Financial partners and banks may retain part of the loans. Bonds sold into the market transfer another part of the risk to their buyers. When those bonds enter an ETF, price changes reach the fund's shareholders. When they enter a repo, the money market fund encounters a more distant exposure that first depends on counterparty default.
+
+Iskandar and Lohrasp let us observe those final two paths in securities that have already been issued. The documents reviewed connect them to CloudHQ and Cloud Capital. None of the public sources reviewed links them to Nvidia's six platforms. Their role here is limited to tracing the circulation of existing data center debt.
+
+A $100 million loss on a future project could therefore be divided among several parties. Nvidia's contractual share would depend on capital it had invested, support it had actually provided and the ranking of those claims. The information released on August 10 does not allow that share to be calculated.
+
+## At the edge of the private documents
+
+Public filings make it possible to follow a bond once it enters a fund. The loss waterfall sits inside contracts that are far less accessible.
+
+What exactly happens if CloudHQ fails to repay all principal in April 2031? CloudHQ, the Iskandar and Kaveh entities, the trustee and the other transaction parties hold the contracts needed to clarify remedies and the full payment waterfall. Rating agencies can separately publish the assumptions and scenarios underlying their analyses.
+
+What economic life do managers assign to these 2056 bonds, and which assumptions do they use for 2031? State Street, DoubleLine, BlackRock, Franklin, John Hancock and the other funds involved have their own refinancing and liquidity scenarios. In the five repos, Federated Hermes, JPMorgan, Schwab and their counterparties also know the haircuts applied to Iskandar and Lohrasp and the rules for replacing collateral.
+
+How much of this debt sits with insurers? Detailed holdings remain behind the [NAIC's](https://content.naic.org/prod_serv_idp_info_pro.htm) paid data licenses. The two Lincoln funds found in the filings concern variable contracts and provide no information about the general accounts of Athene, Global Atlantic or another company. The NAIC, state regulators and insurers hold the material needed to complete this part of the picture.
+
+How much have the six platforms already committed, in what form and under which guarantees? Nvidia, Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR can make the program traceable by publishing the vehicles, amounts, guarantee contracts, bond issuances and CUSIPs.
+
+As of August 12, 2026, the $500 billion is a target for third-party capital to be mobilized over time. The disclosures about those memorandums of understanding do not establish how much capital is legally committed.
+
+The risk already appears in existing transactions. The owner commits capital and the asset. Lenders bear the credit they retain. Bond buyers face refinancing risk. ETF shareholders absorb movements in those securities in proportion to their portfolio weight. Money market funds encounter a conditional exposure when the bonds enter repo collateral. Nvidia's direct financial exposure will depend on capital invested and contractual support actually provided; the company also remains commercially exposed to its customers' ability to finance purchases.
+
+Following the program will require reading the contracts as each project is financed, then searching for the securities in portfolios after they are sold. That is where, far from the initial announcement, the final holders of the risk will become visible.
+
+## Primary sources
+
+- [SEC, Form N-PORT data and description](https://www.sec.gov/data-research/sec-markets-data/form-n-port-data-sets)
+- [SEC, Form N-MFP data and description](https://www.sec.gov/data-research/sec-markets-data/dera-form-n-mfp-data-sets)
+- [State Street, PRAB daily holdings](https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-prab.xlsx)
+- [State Street, PRIV daily holdings](https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-priv.xlsx)
+- [State Street, PRSD daily holdings](https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-prsd.xlsx)
+- [State Street, ULST daily holdings](https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-ulst.xlsx)
+- [DoubleLine, DABS holdings as of August 7, 2026](https://doubleline.com/wp-content/uploads/holdings/DoubleLine_DABS_Holdings_08-07-2026.pdf)
+- [Data Center Dynamics, CloudHQ 2026-1](https://www.datacenterdynamics.com/en/news/cloudhq-seeks-14-billion-in-abs-funding/)
+- [Data Center Dynamics, $520 million Lohrasp issuance](https://www.datacenterdynamics.com/en/news/520-million-in-asset-backed-securities-issued-secured-by-virginia-data-center/)
+- [KBRA, Lohrasp Enterprise II 2026-1](https://www.kbra.com/publications/ZSCHQRWC/kbra-assigns-preliminary-ratings-to-lohrasp-enterprise-ii-llc-series-2026-1)
+- [Cloud Capital, closing of the $520 million Lohrasp issuance](https://www.prnewswire.com/news-releases/cloud-capital-launches-new-data-center-abs-master-trust-completes-520-million-triple-a-rated-issuance-302838401.html)
+- [NAIC, licensed financial data](https://content.naic.org/prod_serv_idp_info_pro.htm)
+- [Nvidia, six financing platforms announced on August 10, 2026](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Partners-With-Apollo-BlackRock-Blackstone-Brookfield-Goldman-Sachs-and-KKR-to-Establish-AI-Compute-Infrastructure-Financing-Platforms-to-Mobilize-Over-500-Billion-of-Third-Party-Capital/default.aspx)
+- [Reuters, announcement and Nvidia's potential backstop, August 10, 2026](https://www.reuters.com/technology/wall-street-giants-partner-with-nvidia-500-billion-ai-financing-deal-ft-reports-2026-08-10/)
