@@ -78,7 +78,7 @@ const copy = isAuditer
       titleLead: 'L’argent',
       titleAccent: 'd’Epstein',
       deck: 'Fortune, banques, investissements et succession.',
-      description: 'Sept enquêtes réunies dans un ordre de lecture continu, avec leurs sources, leurs calculs, leurs limites et les questions qui restent ouvertes.',
+      description: 'Sept enquêtes dans un ordre de lecture continu, avec sources, calculs, limites et questions ouvertes.',
       factsLabel: 'Contenu de l’édition',
       facts: [
         { value: '7', label: 'enquêtes' },
@@ -132,36 +132,19 @@ const copy = isAuditer
     display: grid;
     grid-template-columns: minmax(10rem, 13.5rem) minmax(0, 1fr);
     gap: clamp(1.2rem, 4vw, 2.4rem);
-    position: relative;
     overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--publication-card-accent) 34%, var(--color-line));
-    border-radius: 18px 5px 18px 18px;
+    border-radius: 18px;
     padding: clamp(1rem, 3vw, 1.65rem);
-    background:
-      radial-gradient(circle at 12% 30%, color-mix(in srgb, var(--publication-card-accent) 12%, transparent), transparent 31%),
-      radial-gradient(circle at 92% 10%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 29%),
-      color-mix(in srgb, var(--color-surface) 72%, transparent);
-    box-shadow: inset 0 1px 0 var(--edge-highlight), 0 24px 70px color-mix(in srgb, #000 22%, transparent);
+    background: var(--color-surface);
   }
   .publication-spotlight--auditer { --publication-card-accent: var(--color-signal); }
-  .publication-spotlight::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 1rem;
-    height: 1rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--publication-card-accent) 52%, var(--color-line));
-    border-left: 1px solid color-mix(in srgb, var(--publication-card-accent) 52%, var(--color-line));
-    background: var(--color-ink);
-  }
   .publication-cover {
     display: block;
     align-self: center;
     width: 100%;
     max-width: 13.5rem;
     margin-inline: auto;
-    perspective: 900px;
   }
   .publication-cover img {
     display: block;
@@ -169,12 +152,7 @@ const copy = isAuditer
     height: auto;
     border: 1px solid color-mix(in srgb, var(--color-paper) 18%, transparent);
     border-radius: 3px 8px 8px 3px;
-    box-shadow: -8px 12px 28px rgba(0, 0, 0, 0.42), inset 10px 0 18px rgba(255, 255, 255, 0.04);
-    transform: rotateY(5deg) rotateZ(-0.7deg);
-    transition: transform 0.2s;
-  }
-  .publication-cover:hover img {
-    transform: rotateY(1deg) rotateZ(0deg) translateY(-2px);
+    box-shadow: -8px 12px 28px rgba(0, 0, 0, 0.42);
   }
   .publication-copy { align-self: center; min-width: 0; }
   .publication-meta {
@@ -263,13 +241,10 @@ const copy = isAuditer
     font-weight: 700;
     letter-spacing: 0.055em;
     text-transform: uppercase;
-    transition: transform 0.16s, border-color 0.16s, background 0.16s;
   }
-  .publication-actions a:hover { transform: translateY(-1px); }
   .publication-primary { color: var(--color-ink); background: var(--publication-card-accent); }
   .publication-primary span { font-size: 1rem; line-height: 0; }
   .publication-secondary { border: 1px solid var(--color-line-strong); color: var(--color-paper); }
-  .publication-secondary:hover { border-color: var(--publication-card-accent); }
   :root[data-theme='light'] .publication-primary { color: #1a1509; }
   @media (max-width: 680px) {
     .publication-spotlight { grid-template-columns: 1fr; gap: 1.35rem; padding: 1rem; }
@@ -287,11 +262,5 @@ const copy = isAuditer
     .publication-copy h2,
     .publication-copy h3 { font-size: clamp(1.45rem, 8vw, 1.9rem); }
     .publication-meta { align-items: flex-start; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .publication-cover img,
-    .publication-actions a { transition: none; }
-    .publication-cover:hover img,
-    .publication-actions a:hover { transform: none; }
   }
 </style>
