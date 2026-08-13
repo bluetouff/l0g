@@ -1,0 +1,489 @@
+---
+title: "Digital euro, 1/6: the euro that changes its debtor"
+description: "A bank deposit and a digital euro carry the same name but not the same debtor. That balance-sheet difference explains the holding limit, the waterfall and the continuing role of banks."
+pubDate: 2026-08-13T10:30:00+02:00
+updatedDate: 2026-08-13T10:30:00+02:00
+sourceArticle: "euro-numerique-1-euro-change-de-debiteur"
+sourceUpdatedDate: 2026-08-13T10:30:00+02:00
+tags: ["digital euro", "ECB", "money", "banks", "payments", "investigation"]
+draft: false
+---
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*This article opens a six-part investigation into the digital euro. Our [parameter-by-parameter CBDC guide](/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/) provides the broader design map. Before privacy, programmable money, costs or suppliers, one question governs all the others: when your screen shows €100, who actually owes you that money?*
+
+The digital euro is often presented as Europe’s answer to Visa, Mastercard, stablecoins or the decline of cash. Those dimensions matter. They come after a more elementary mechanism.
+
+Today, €100 recorded in a current account is a debt owed by a bank to its customer. Tomorrow, €100 in digital euros would be a direct debt of the Eurosystem, which comprises the European Central Bank and the national central banks of the euro area.
+
+The number would remain the same. The unit would remain the euro. The counterparty would change.
+
+That migration between two balance sheets explains the project’s entire architecture: a holding limit, no interest, automatic mechanisms linking the wallet to a bank account, and distribution left to banks and other payment service providers.
+
+> **State of the file on 13 August 2026.** The final regulation has not been adopted. The Commission presented its proposal in June 2023, the Council agreed its mandate in December 2025 and Parliament authorised interinstitutional negotiations on 9 July 2026. The ECB has not decided to issue the digital euro. The Eurosystem has [selected 36 payment service providers](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260714~8cd07d9d45.en.html) for the 12-month pilot due to start in the second half of 2027. The pilot will use a beta version without legal tender status. A possible first issuance in 2029 remains a conditional timetable, not a settled launch date.
+
+## The same euro, two debtors
+
+Everyday language flattens a distinction that bank accounting keeps precise.
+
+When a customer holds €100 in a current account, those €100 sit on the liability side of the bank’s balance sheet. The bank owes that amount to the customer. It undertakes to convert it at par into banknotes, transfer it to another bank or use it to execute a payment.
+
+That claim benefits from strong protection. In the European Union, deposit guarantee schemes cover up to **€100,000 per depositor per bank**, with enhanced temporary regimes for certain life events. The guarantee sharply reduces the economic risk borne by most individuals.
+
+The asset remains a commercial bank liability.
+
+A €100 banknote belongs to another layer of the monetary system. It appears as a liability of the Eurosystem. The holder no longer bears the credit risk of a particular commercial bank.
+
+The digital euro would add a third form. Like the banknote, it would be a direct liability of the Eurosystem. Like the deposit, it would be usable on a screen, remotely and almost instantly.
+
+That combination changes the question.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 560" width="100%" role="img" aria-labelledby="forms-en-title forms-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="forms-en-title">Three forms of one hundred euros and their debtors</title>
+<desc id="forms-en-desc">Comparison between a bank deposit, a banknote and the envisaged digital euro. The deposit is a commercial bank liability. The banknote and digital euro are Eurosystem liabilities, while digital euro access would remain managed by a payment service provider.</desc>
+<style>{`.forms-en-mobile{display:none}@media (max-width:640px){.forms-en-desktop{display:none}.forms-en-mobile{display:block}}`}</style>
+<g class="forms-en-desktop">
+<rect width="760" height="560" rx="16" fill="#0b0f14"/>
+<text x="34" y="50" fill="#f7f9fc" font-size="25" font-weight="760">€100: SAME UNIT, THREE FORMS</text>
+<text x="34" y="78" fill="#99a7bb" font-size="14">The key differences are the debtor and the access model.</text>
+<rect x="28" y="112" width="224" height="348" rx="15" fill="#16212c" stroke="#4f6478"/>
+<text x="48" y="148" fill="#9eb1c4" font-size="14" font-weight="750">BANK DEPOSIT</text>
+<text x="48" y="202" fill="#ffffff" font-size="40" font-weight="790">€100</text>
+<line x1="48" y1="224" x2="232" y2="224" stroke="#3a4654"/>
+<text x="48" y="258" fill="#dce6ef" font-size="14" font-weight="700">Debtor</text>
+<text x="48" y="281" fill="#b6c4d1" font-size="13">The commercial bank</text>
+<text x="48" y="321" fill="#dce6ef" font-size="14" font-weight="700">Service relationship</text>
+<text x="48" y="344" fill="#b6c4d1" font-size="13">Customer and bank</text>
+<text x="48" y="384" fill="#dce6ef" font-size="14" font-weight="700">Protection</text>
+<text x="48" y="407" fill="#b6c4d1" font-size="13">Guarantee up to €100,000</text>
+<text x="48" y="433" fill="#7f93a6" font-size="12">per depositor and per bank</text>
+<rect x="268" y="112" width="224" height="348" rx="15" fill="#16212c" stroke="#5e7fa0"/>
+<text x="288" y="148" fill="#a9c4df" font-size="14" font-weight="750">BANKNOTE</text>
+<text x="288" y="202" fill="#ffffff" font-size="40" font-weight="790">€100</text>
+<line x1="288" y1="224" x2="472" y2="224" stroke="#3a4654"/>
+<text x="288" y="258" fill="#dce6ef" font-size="14" font-weight="700">Debtor</text>
+<text x="288" y="281" fill="#b6c4d1" font-size="13">The Eurosystem</text>
+<text x="288" y="321" fill="#dce6ef" font-size="14" font-weight="700">Access model</text>
+<text x="288" y="344" fill="#b6c4d1" font-size="13">Physical bearer instrument</text>
+<text x="288" y="384" fill="#dce6ef" font-size="14" font-weight="700">Holding limit</text>
+<text x="288" y="407" fill="#b6c4d1" font-size="13">No comparable ceiling</text>
+<text x="288" y="433" fill="#7f93a6" font-size="12">but strong physical frictions</text>
+<rect x="508" y="112" width="224" height="348" rx="15" fill="#18282a" stroke="#5fb8ac"/>
+<text x="528" y="148" fill="#83d8cb" font-size="14" font-weight="750">DIGITAL EURO</text>
+<text x="528" y="202" fill="#ffffff" font-size="40" font-weight="790">€100</text>
+<line x1="528" y1="224" x2="712" y2="224" stroke="#3a5554"/>
+<text x="528" y="258" fill="#e0f1ef" font-size="14" font-weight="700">Debtor</text>
+<text x="528" y="281" fill="#bdd8d4" font-size="13">The Eurosystem</text>
+<text x="528" y="321" fill="#e0f1ef" font-size="14" font-weight="700">Service relationship</text>
+<text x="528" y="344" fill="#bdd8d4" font-size="13">Customer and PSP</text>
+<text x="528" y="369" fill="#7fa7a1" font-size="12">No ECB service contract</text>
+<text x="528" y="407" fill="#e0f1ef" font-size="14" font-weight="700">Holding limit</text>
+<text x="528" y="430" fill="#bdd8d4" font-size="13">Planned, amount unknown</text>
+<line x1="34" y1="495" x2="726" y2="495" stroke="#3a4654"/>
+<text x="34" y="526" fill="#d7e3ee" font-size="14">Same face value, but the claim does not rest on the same balance sheet.</text>
+<text x="34" y="548" fill="#71869a" font-size="11">Sources: European Commission, Council of the EU, ECB, EBA. Status on 13 August 2026.</text>
+</g>
+<g class="forms-en-mobile" transform="scale(2.17)">
+<rect width="350" height="258" rx="10" fill="#0b0f14"/>
+<text x="16" y="23" fill="#f7f9fc" font-size="13.5" font-weight="760">€100: WHO OWES IT TO YOU?</text>
+<text x="16" y="38" fill="#8fa3b7" font-size="8.5">Same unit, different debtors and access</text>
+<rect x="12" y="49" width="326" height="54" rx="7" fill="#16212c" stroke="#4f6478"/>
+<text x="23" y="66" fill="#9eb1c4" font-size="8.5" font-weight="750">BANK DEPOSIT</text>
+<text x="327" y="68" text-anchor="end" fill="#ffffff" font-size="17" font-weight="790">€100</text>
+<text x="23" y="82" fill="#dce6ef" font-size="8.5">Debtor: commercial bank</text>
+<text x="23" y="95" fill="#7f93a6" font-size="7.5">Guarantee: up to €100,000 per bank</text>
+<rect x="12" y="110" width="326" height="54" rx="7" fill="#16212c" stroke="#5e7fa0"/>
+<text x="23" y="127" fill="#a9c4df" font-size="8.5" font-weight="750">BANKNOTE</text>
+<text x="327" y="129" text-anchor="end" fill="#ffffff" font-size="17" font-weight="790">€100</text>
+<text x="23" y="143" fill="#dce6ef" font-size="8.5">Debtor: Eurosystem</text>
+<text x="23" y="156" fill="#7f93a6" font-size="7.5">Bearer instrument, no similar cap</text>
+<rect x="12" y="171" width="326" height="61" rx="7" fill="#18282a" stroke="#5fb8ac"/>
+<text x="23" y="188" fill="#83d8cb" font-size="8.5" font-weight="750">ENVISAGED DIGITAL EURO</text>
+<text x="327" y="190" text-anchor="end" fill="#ffffff" font-size="17" font-weight="790">€100</text>
+<text x="23" y="204" fill="#e0f1ef" font-size="8.5">Debtor: Eurosystem · service: PSP</text>
+<text x="23" y="217" fill="#7fa7a1" font-size="7.5">Holding cap planned, amount unknown</text>
+<text x="16" y="249" fill="#71869a" font-size="7">Commission · Council · ECB · EBA · 13.08.2026</text>
+</g>
+</svg>
+<figcaption>The deposit guarantee protects the depositor but does not change the identity of the debtor. The digital euro would combine a public liability with distribution by private intermediaries.</figcaption>
+</figure>
+
+The word “safe” needs precision here.
+
+A deposit covered up to €100,000 provides strong protection to an individual. For the amount held in digital euros, the new asset would remove direct exposure to the solvency of a particular commercial bank. It would not remove operational risks, fraud, the loss of an offline device or legally required controls.
+
+The primary difference concerns the issuer of the liability.
+
+It also separates the digital euro from a stablecoin. A stablecoin remains a private issuer’s liability, backed by assets whose quality, liquidity and legal structure require examination. The digital euro would be the monetary unit itself, recorded on the liability side of the Eurosystem.
+
+## What a conversion actually does
+
+The ECB explains the public-facing operation by comparing it with an ATM withdrawal.
+
+Withdrawing €100 reduces the bank account by €100 and gives the customer a banknote. Conversion into digital euros would follow the same economic logic, using digital central bank money instead of the banknote.
+
+Accounting takes the explanation one step further.
+
+Consider a customer converting a €1,000 deposit into €1,000 in digital euros, with the bank already holding the necessary reserves.
+
+Before the operation:
+
+- the household owns a €1,000 claim on its bank;
+- the bank owes €1,000 to the household;
+- the bank holds €1,000 in reserves at the Eurosystem;
+- those reserves appear as a Eurosystem liability.
+
+After the operation:
+
+- the household owns €1,000 in digital euros, a direct claim on the Eurosystem;
+- the bank’s liability to that customer falls by €1,000;
+- the bank’s reserves fall by the same amount;
+- on the liability side of the Eurosystem, €1,000 in bank reserves is replaced by €1,000 in digital euros held by the public.
+
+The consolidated Eurosystem balance sheet does not necessarily expand in this simple case. Its composition changes. The commercial bank’s balance sheet contracts on both sides: fewer reserves among its assets, fewer deposits among its liabilities.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 680" width="100%" role="img" aria-labelledby="balance-en-title balance-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="balance-en-title">Conversion of one thousand euros from a bank deposit into digital euro</title>
+<desc id="balance-en-desc">Before conversion, the household holds a deposit, the bank owes it money and owns reserves. After conversion, the household holds digital euro, the bank’s deposit and reserves fall, and the Eurosystem replaces a liability to the bank with a liability to the public.</desc>
+<style>{`.balance-en-mobile{display:none}@media (max-width:640px){.balance-en-desktop{display:none}.balance-en-mobile{display:block}}`}</style>
+<g class="balance-en-desktop">
+<rect width="760" height="680" rx="16" fill="#0b0f14"/>
+<text x="34" y="50" fill="#f7f9fc" font-size="24" font-weight="760">CONVERTING €1,000: THE DEBT MOVES</text>
+<text x="34" y="78" fill="#99a7bb" font-size="14">Simplified case: the bank uses reserves it already holds.</text>
+<rect x="28" y="112" width="320" height="420" rx="15" fill="#151e28" stroke="#4a6075"/>
+<text x="50" y="151" fill="#a9bdd0" font-size="16" font-weight="760">BEFORE</text>
+<rect x="50" y="174" width="276" height="88" rx="10" fill="#1d2b38"/>
+<text x="66" y="200" fill="#dce6ef" font-size="13" font-weight="720">HOUSEHOLD · ASSET</text>
+<text x="66" y="235" fill="#ffffff" font-size="22" font-weight="780">+ €1,000 deposit</text>
+<rect x="50" y="278" width="276" height="112" rx="10" fill="#1d2b38"/>
+<text x="66" y="304" fill="#dce6ef" font-size="13" font-weight="720">COMMERCIAL BANK</text>
+<text x="66" y="336" fill="#b9c8d5" font-size="14">Asset: + €1,000 reserves</text>
+<text x="66" y="365" fill="#b9c8d5" font-size="14">Liability: + €1,000 deposit</text>
+<rect x="50" y="406" width="276" height="92" rx="10" fill="#1d2b38"/>
+<text x="66" y="432" fill="#dce6ef" font-size="13" font-weight="720">EUROSYSTEM · LIABILITY</text>
+<text x="66" y="468" fill="#b9c8d5" font-size="14">+ €1,000 bank reserves</text>
+<line x1="366" y1="315" x2="394" y2="315" stroke="#69c6b8" stroke-width="5" stroke-linecap="round"/>
+<polygon points="394,305 412,315 394,325" fill="#69c6b8"/>
+<text x="380" y="291" text-anchor="middle" fill="#8ad9ce" font-size="12" font-weight="720">€1,000</text>
+<rect x="412" y="112" width="320" height="420" rx="15" fill="#162727" stroke="#54aa9e"/>
+<text x="434" y="151" fill="#88d7cb" font-size="16" font-weight="760">AFTER</text>
+<rect x="434" y="174" width="276" height="88" rx="10" fill="#1c3433"/>
+<text x="450" y="200" fill="#e0f1ef" font-size="13" font-weight="720">HOUSEHOLD · ASSET</text>
+<text x="450" y="235" fill="#ffffff" font-size="22" font-weight="780">+ €1,000 digital euro</text>
+<rect x="434" y="278" width="276" height="112" rx="10" fill="#1c3433"/>
+<text x="450" y="304" fill="#e0f1ef" font-size="13" font-weight="720">COMMERCIAL BANK</text>
+<text x="450" y="336" fill="#bedbd7" font-size="14">Asset: - €1,000 reserves</text>
+<text x="450" y="365" fill="#bedbd7" font-size="14">Liability: - €1,000 deposit</text>
+<rect x="434" y="406" width="276" height="92" rx="10" fill="#1c3433"/>
+<text x="450" y="432" fill="#e0f1ef" font-size="13" font-weight="720">EUROSYSTEM · LIABILITY</text>
+<text x="450" y="461" fill="#bedbd7" font-size="13">- €1,000 bank reserves</text>
+<text x="450" y="484" fill="#bedbd7" font-size="13">+ €1,000 digital euro</text>
+<rect x="28" y="560" width="704" height="82" rx="12" fill="#111820" stroke="#344555"/>
+<text x="48" y="592" fill="#dce6ef" font-size="14" font-weight="720">What changes</text>
+<text x="48" y="616" fill="#aebdca" font-size="13">The household changes debtor. The bank loses a deposit and reserves.</text>
+<text x="48" y="636" fill="#71869a" font-size="11">If the bank must rebuild reserves, replacement funding becomes the subject of part 2.</text>
+</g>
+<g class="balance-en-mobile" transform="scale(2.17)">
+<rect width="350" height="313" rx="10" fill="#0b0f14"/>
+<text x="15" y="22" fill="#f7f9fc" font-size="12.5" font-weight="760">CONVERTING €1,000</text>
+<text x="15" y="37" fill="#8fa3b7" font-size="8">Simplified case with reserves available</text>
+<rect x="12" y="48" width="326" height="103" rx="8" fill="#151e28" stroke="#4a6075"/>
+<text x="23" y="66" fill="#a9bdd0" font-size="9" font-weight="760">BEFORE</text>
+<text x="23" y="84" fill="#ffffff" font-size="10.5" font-weight="750">Household: +€1,000 deposit</text>
+<text x="23" y="101" fill="#b9c8d5" font-size="8.5">Bank asset: +€1,000 reserves</text>
+<text x="23" y="117" fill="#b9c8d5" font-size="8.5">Bank liability: +€1,000 deposit</text>
+<text x="23" y="133" fill="#7f93a6" font-size="7.5">Eurosystem: +€1,000 reserves as liability</text>
+<line x1="175" y1="157" x2="175" y2="171" stroke="#69c6b8" stroke-width="3" stroke-linecap="round"/>
+<polygon points="169,170 175,180 181,170" fill="#69c6b8"/>
+<rect x="12" y="184" width="326" height="103" rx="8" fill="#162727" stroke="#54aa9e"/>
+<text x="23" y="202" fill="#88d7cb" font-size="9" font-weight="760">AFTER</text>
+<text x="23" y="220" fill="#ffffff" font-size="10.5" font-weight="750">Household: +€1,000 digital euro</text>
+<text x="23" y="237" fill="#bedbd7" font-size="8.5">Bank asset: -€1,000 reserves</text>
+<text x="23" y="253" fill="#bedbd7" font-size="8.5">Bank liability: -€1,000 deposit</text>
+<text x="23" y="269" fill="#7fa7a1" font-size="7.5">Eurosystem: reserves -€1,000, digital euro +€1,000</text>
+<text x="15" y="304" fill="#71869a" font-size="7">The debtor changes. No euro disappears.</text>
+</g>
+</svg>
+<figcaption>This representation isolates the initial conversion. It does not model the bank’s reaction, its funding cost or a liquidity crisis.</figcaption>
+</figure>
+
+The operation does not mean that €1,000 has “left the economy”.
+
+Its accounting nature has changed.
+
+The banking question comes next. The deposit was a source of funding for the bank. Its loss can be absorbed through available reserves, market funding, borrowing from the Eurosystem or an adjustment of assets. Those responses do not carry the same price or the same effect on liquidity and credit.
+
+The second part of this investigation will examine that chain. The first must establish what is moving.
+
+## Public money distributed by private actors
+
+The public nature of the digital euro may create the impression that every European would have an account managed directly by the ECB.
+
+The envisaged architecture says something else.
+
+The Council describes the digital euro as a direct Eurosystem liability towards the user. It also specifies that no payment service account or contractual relationship would be established between that user and the ECB or the relevant national central bank.
+
+The contract would be with a payment service provider, or PSP. A bank, payment institution or designated public entity would handle functions such as:
+
+- opening and managing access;
+- the mobile or physical interface;
+- authentication;
+- funding and defunding;
+- customer support;
+- checks required by anti-money laundering and counter-terrorist financing rules;
+- dispute management and parts of fraud handling.
+
+The Eurosystem would issue the money and settle payments. Intermediaries would keep the customer relationship.
+
+A more accurate formula than “an ECB account” is therefore:
+
+> **public money held for the user, but distributed and serviced by intermediaries.**
+
+The structure would also protect the holder from the failure of the service provider. In the Council’s position, the rights represented by digital euros would remain the user’s property and sit beyond the reach of the PSP’s creditors.
+
+The choice is not purely technical. It prevents the ECB from directly managing hundreds of millions of customer relationships while keeping the monetary infrastructure at the centre. It also preserves the role of banks in a distribution chain that the new money could theoretically compete with.
+
+The tension is present from the first layer of the project: the customer’s claim leaves the bank’s liabilities, while the commercial relationship remains largely bank-based.
+
+## The cap constrains the store of value
+
+European institutions use precise language. The cap is intended to limit the digital euro’s use **as a store of value**.
+
+Its main target is the amount of liquid wealth that a person could permanently place on the Eurosystem balance sheet rather than on that of a commercial bank.
+
+The Commission proposal instructs the ECB to develop limiting instruments. The Council position makes the logic more explicit: unrestricted use as a store of value could, in its view, affect financial stability, credit provision and monetary policy implementation.
+
+Parliament also retains the principle of a cap.
+
+The institutions still differ on governance. The Council wants the ECB to set individual limits under an overall ceiling agreed by the Council and reviewed at least every two years. Parliament proposes that the EU ceiling be set by the Commission on an ECB recommendation, with Parliament enjoying full decision-making powers.
+
+The trilogues must settle that difference.
+
+The amount itself remains unknown.
+
+Other brakes on accumulation would reinforce the cap. The project envisages a non-interest-bearing digital euro. The Council and Parliament positions also contemplate stricter rules for legal persons, potentially including no persistent balance. Those choices reduce the digital euro’s appeal as an investment while preserving its payment capacity.
+
+In October 2025, the ECB published an analysis of hypothetical caps ranging from **€500 to €3,000 per person**. That range came from a request by the co-legislators. The ECB repeatedly states that the exercise is neither its full calibration method nor its position on the appropriate level.
+
+The accurate statement fits in one sentence:
+
+> **€3,000 is a tested hypothesis, not the announced future cap for the digital euro.**
+
+The final amount would be calibrated closer to any possible issuance, taking account of usage, bank liquidity, monetary policy and the condition of the financial system.
+
+## A holding cap is not a payment cap
+
+The project seeks to separate two functions of money.
+
+The wallet would be limited as a storage location. A payment could mobilise more than the balance held.
+
+Two mechanisms would provide that separation.
+
+The **waterfall** would automatically send to a linked bank account the portion of an incoming payment that pushes the wallet beyond its cap.
+
+The **reverse waterfall** would convert commercial bank money into digital euros on the fly when a payment exceeds the available digital euro balance.
+
+Take a purely illustrative cap of €3,000.
+
+A wallet containing €2,800 receives a €1,000 payment. Two hundred euros fill the wallet. The remaining €800 is swept into the linked bank account.
+
+A wallet containing €300 must make a €2,000 payment. The reverse waterfall pulls €1,700 from the linked bank account, converts it and settles the full €2,000 to the beneficiary.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 610" width="100%" role="img" aria-labelledby="waterfall-en-title waterfall-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="waterfall-en-title">How a waterfall and reverse waterfall would work</title>
+<desc id="waterfall-en-desc">With a hypothetical three-thousand-euro cap, an incoming payment above the cap is swept into the bank account. A payment larger than the wallet balance is automatically topped up from the bank account.</desc>
+<style>{`.waterfall-en-mobile{display:none}@media (max-width:640px){.waterfall-en-desktop{display:none}.waterfall-en-mobile{display:block}}`}</style>
+<g class="waterfall-en-desktop">
+<rect width="760" height="610" rx="16" fill="#0b0f14"/>
+<text x="34" y="50" fill="#f7f9fc" font-size="24" font-weight="760">THE CAP LIMITS THE BALANCE, NOT THE PAYMENT</text>
+<text x="34" y="78" fill="#99a7bb" font-size="14">Illustration with a hypothetical €3,000 cap, which has not been decided.</text>
+<rect x="28" y="112" width="338" height="382" rx="15" fill="#151f2a" stroke="#50687e"/>
+<text x="50" y="149" fill="#a9bdd0" font-size="15" font-weight="760">WATERFALL · INCOMING PAYMENT</text>
+<text x="50" y="181" fill="#d6e1eb" font-size="13">Wallet before</text>
+<text x="326" y="181" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€2,800</text>
+<line x1="50" y1="198" x2="344" y2="198" stroke="#344555"/>
+<text x="50" y="230" fill="#d6e1eb" font-size="13">Payment received</text>
+<text x="326" y="230" text-anchor="end" fill="#8fd1c6" font-size="20" font-weight="780">+ €1,000</text>
+<rect x="50" y="258" width="294" height="58" rx="9" fill="#1c3031"/>
+<text x="66" y="282" fill="#bfe0db" font-size="12">The wallet reaches its cap</text>
+<text x="326" y="301" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€3,000</text>
+<line x1="197" y1="326" x2="197" y2="348" stroke="#70c7ba" stroke-width="4" stroke-linecap="round"/>
+<polygon points="189,346 197,359 205,346" fill="#70c7ba"/>
+<rect x="50" y="366" width="294" height="82" rx="9" fill="#1b2733"/>
+<text x="66" y="392" fill="#d6e1eb" font-size="12">Excess sent to the bank account</text>
+<text x="326" y="425" text-anchor="end" fill="#ffffff" font-size="25" font-weight="790">€800</text>
+<rect x="394" y="112" width="338" height="382" rx="15" fill="#162727" stroke="#54aa9e"/>
+<text x="416" y="149" fill="#88d7cb" font-size="15" font-weight="760">REVERSE WATERFALL · PAYMENT SENT</text>
+<text x="416" y="181" fill="#dcebea" font-size="13">Wallet before</text>
+<text x="692" y="181" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€300</text>
+<line x1="416" y1="198" x2="710" y2="198" stroke="#355756"/>
+<text x="416" y="230" fill="#dcebea" font-size="13">Payment requested</text>
+<text x="692" y="230" text-anchor="end" fill="#8fd1c6" font-size="20" font-weight="780">€2,000</text>
+<rect x="416" y="258" width="294" height="82" rx="9" fill="#1c3433"/>
+<text x="432" y="284" fill="#c3dfdb" font-size="12">Top-up pulled from the bank account</text>
+<text x="692" y="317" text-anchor="end" fill="#ffffff" font-size="25" font-weight="790">€1,700</text>
+<line x1="563" y1="351" x2="563" y2="373" stroke="#70c7ba" stroke-width="4" stroke-linecap="round"/>
+<polygon points="555,371 563,384 571,371" fill="#70c7ba"/>
+<rect x="416" y="391" width="294" height="57" rx="9" fill="#1b302f"/>
+<text x="432" y="416" fill="#dcebea" font-size="12">Full amount paid to beneficiary</text>
+<text x="692" y="438" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€2,000</text>
+<rect x="28" y="522" width="704" height="52" rx="10" fill="#111820" stroke="#344555"/>
+<text x="48" y="554" fill="#d7e3ee" font-size="14" font-weight="720">The limit constrains wealth stored in digital euro, not the face value of the purchase.</text>
+<text x="34" y="596" fill="#71869a" font-size="11">Sources: COM(2023) 369, Council mandate, ECB pilot FAQ.</text>
+</g>
+<g class="waterfall-en-mobile" transform="scale(2.17)">
+<rect width="350" height="281" rx="10" fill="#0b0f14"/>
+<text x="15" y="22" fill="#f7f9fc" font-size="12" font-weight="760">CAPPED BALANCE, FULL PAYMENT</text>
+<text x="15" y="37" fill="#8fa3b7" font-size="7.5">Example at €3,000, amount not decided</text>
+<rect x="12" y="49" width="326" height="94" rx="8" fill="#151f2a" stroke="#50687e"/>
+<text x="23" y="66" fill="#a9bdd0" font-size="8.5" font-weight="760">WATERFALL · MONEY IN</text>
+<text x="23" y="84" fill="#d6e1eb" font-size="8">Wallet €2,800 + payment €1,000</text>
+<text x="23" y="102" fill="#ffffff" font-size="10.5" font-weight="760">Final balance: €3,000</text>
+<text x="23" y="122" fill="#8fd1c6" font-size="9" font-weight="720">€800 swept into the bank account</text>
+<rect x="12" y="152" width="326" height="94" rx="8" fill="#162727" stroke="#54aa9e"/>
+<text x="23" y="169" fill="#88d7cb" font-size="8.5" font-weight="760">REVERSE WATERFALL · MONEY OUT</text>
+<text x="23" y="187" fill="#dcebea" font-size="8">Wallet €300 · payment €2,000</text>
+<text x="23" y="205" fill="#8fd1c6" font-size="9" font-weight="720">€1,700 pulled from the bank account</text>
+<text x="23" y="226" fill="#ffffff" font-size="10.5" font-weight="760">Beneficiary receives: €2,000</text>
+<text x="15" y="265" fill="#d7e3ee" font-size="8.5" font-weight="720">The cap applies to the stored balance.</text>
+<text x="15" y="277" fill="#71869a" font-size="6.5">Commission · Council · ECB pilot</text>
+</g>
+</svg>
+<figcaption>The linked bank account makes the wallet usable even with a low balance. Access to the digital euro would not necessarily require a bank account, but these automatic functions require a linked liquidity source.</figcaption>
+</figure>
+
+The architecture therefore allows people to hold few digital euros while using them frequently.
+
+It also creates a deeper consequence: the bank account remains the main liquidity pool for many users. The digital euro can become the payment rail without becoming the place where savings remain.
+
+That combination serves the ECB’s stated objective: preserve payment usefulness while moderating deposit substitution.
+
+## Why banknotes receive different treatment
+
+An individual can hold more than €3,000 in banknotes. The future digital euro would be subject to a limit.
+
+Both are forms of public money.
+
+The ECB itself offers part of the explanation in its 2023 legal opinion. Depositors already have the right to convert sight deposits into cash, but large banknote holdings face practical obstacles: withdrawal, transport, storage, insurance, loss and theft.
+
+Those frictions slow and complicate conversion at scale.
+
+A central bank digital currency would sharply reduce the physical cost. A few actions could move part of a bank deposit into a liquid public asset available around the clock.
+
+The difference in friction therefore helps explain the difference in treatment.
+
+The proportionality debate remains open.
+
+The ECB’s closing report recalls that limiting public money’s store-of-value function should be necessary, appropriate and as little intrusive as possible. It also notes that the freedom to hold cash has no comparable restriction.
+
+Several researchers commissioned by the European Parliament have drawn a direct criticism from that point. A cap set too low could deprive the digital euro of one of its most distinctive attributes: giving the public a digital store of central bank money, particularly when confidence in banks deteriorates.
+
+The project therefore pursues two objectives that pull in different directions:
+
+- give the public digital access to the safest money in the architecture;
+- prevent that access from removing too much funding from banks.
+
+The level of the cap will embody that trade-off.
+
+## What the cap protects, and what it does not prove
+
+Retail deposits are generally a stable and attractive source of bank funding. A lasting migration into digital euro would change that funding structure.
+
+A bank could respond by using reserves, offering depositors a better rate, raising market funding, borrowing from the Eurosystem or adjusting its loan and securities portfolios.
+
+A cap reduces in advance the amount that can migrate to this particular public destination.
+
+In stress, it acts as a maximum capacity. It does not remove a depositor’s desire to leave a bank. It limits the share that can be parked in digital euro. The remainder can still seek other destinations: another bank, cash, a money-market fund, a foreign asset, a stablecoin or any other available instrument.
+
+The cap is therefore not a general guarantee against bank runs.
+
+The cap does not establish a general fragility of European banks. The ECB concludes that the system could absorb the conversion in its simulations of hypothetical caps up to €3,000.
+
+Its function remains revealing.
+
+The digital euro is designed to open the central bank balance sheet to the public while rationing that access. The system’s safety depends less on the abstract existence of the new money than on its dosage.
+
+## Six claims put back in place
+
+| Claim | Verdict on 13 August 2026 | What the documents show |
+|---|---|---|
+| “The cap will be €3,000” | **False at this stage** | €3,000 is the top of a hypothetical range tested at the co-legislators’ request. |
+| “Every citizen will have a direct ECB account” | **Misleading** | The digital euro would be a Eurosystem liability, while the contract and service would sit with a PSP. |
+| “Payments above the cap will be impossible” | **False** | The reverse waterfall could mobilise a linked account automatically. |
+| “A deposit and a digital euro are exactly the same asset” | **False in accounting terms** | The first is a bank liability, the second would be a Eurosystem liability. |
+| “The cap proves that banks are fragile” | **Unsubstantiated** | It is a safeguard against disintermediation and certain stress scenarios, not a diagnosis of insolvency. |
+| “The digital euro is a plan to abolish cash” | **Contrary to the current package** | A parallel proposal seeks to protect cash acceptance, access and resilience. |
+
+## The choice made visible by the project
+
+The digital euro reveals a quiet feature of modern economies.
+
+Most euros used every day are not banknotes issued by the central bank. They are debts issued by commercial banks, made usable as money through regulation, deposit insurance, payment systems and convertibility at par into public money.
+
+The project adds a digital choice between those two layers.
+
+A low cap would preserve more bank funding. It would confine the digital euro to payments and reduce its value as a public store of value.
+
+A high cap would give central bank money more room in household portfolios. It would also move more deposits, liquidity and potentially funding towards a closer relationship with the Eurosystem.
+
+The debate is therefore less about a payment application than about how much digital public money a citizen should be allowed to hold.
+
+The central formulation of this first part can now be stated:
+
+> **The digital euro cap is a boundary between two balance sheets. The higher it rises, the more the public can replace a bank liability with a Eurosystem liability. The lower it falls, the more the current bank funding architecture is preserved.**
+
+That formulation does not condemn the cap. It describes its function.
+
+The ECB says the system could absorb the hypothetical levels it tested. In its most severe flight-to-safety scenario, a €3,000 cap corresponds to **€699 billion in potential deposit outflows**, or **8.2% of retail sight deposits**. Its model covers **2,025 banks** and concludes that the impact would remain manageable.
+
+That result will not be treated as a forecast.
+
+The next part will reconstruct the stress test line by line: confidential data, assumed behaviour, reserves, collateral, central bank refinancing, thirteen banks at the regulatory threshold, nine of them more constrained.
+
+The nature of the asset is now established. The remaining task is to measure what moving it would actually do to the system.
+
+---
+
+## Method
+
+This article separates four levels of evidence:
+
+- features written into the Commission proposal;
+- the negotiating positions of the Council and Parliament;
+- technical choices presented by the ECB and tested in the pilot;
+- model results, which remain conditional on their assumptions.
+
+The balance-sheet entries are deliberately simplified. They describe a conversion funded with reserves already available. They do not model commercial bank responses, the interbank market, refinancing operations or a crisis.
+
+The €500 to €3,000 range and the €699 billion result belong to the stress test requested by the co-legislators. They do not describe the final cap or an adoption forecast.
+
+## Sources
+
+- [European Commission, proposal COM(2023) 369 on the establishment of the digital euro, 28 June 2023, especially Articles 13, 15, 16 and 22 to 24](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2023%3A369%3AFIN)
+- [Council of the European Union, negotiating mandate ST 16695/25, 17 December 2025, especially recitals 9 and 31 to 34](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf)
+- [Council of the European Union, presentation of its position, 19 December 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/single-currency-council-agrees-position-on-the-digital-euro-and-on-strengthening-the-role-of-cash/)
+- [European Parliament, ECON position, 23 June 2026](https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/)
+- [European Parliament, authorisation to open negotiations, 9 July 2026](https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/)
+- [ECB, Opinion CON/2023/34 on the digital euro, 31 October 2023, paragraphs 10.1 to 10.10](https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_con_2023_34.en.pdf)
+- [ECB, “How would the digital euro work?”, conversion of a deposit into central bank money](https://www.ecb.europa.eu/euro/digital_euro/how-it-works/html/index.en.html)
+- [ECB, closing report of the preparation phase, 30 October 2025, section on holding-limit calibration](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html)
+- [ECB, pilot FAQ, questions 39 to 41 on the limit, waterfall and reverse waterfall](https://www.ecb.europa.eu/euro/digital_euro/pilot/html/ecb.faq-digital-euro-pilot.en.html)
+- [ECB, selection of 36 payment service providers for the 2027 pilot, 14 July 2026](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260714~8cd07d9d45.en.html)
+- [ECB, technical data on the financial-stability impact, October 2025](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_technical_annex_financial_stability_impact_digital_euro.en.pdf)
+- [European Banking Authority, harmonised €100,000 deposit guarantee](https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/depositor-protection/deposit-guarantee-schemes-data)
+- [Christian Hofmann, ECON-commissioned study on holding caps, 2023](https://www.europarl.europa.eu/RegData/etudes/IDAN/2023/741511/IPOL_IDA%282023%29741511_EN.pdf)
+- [Seraina Grünewald, ECON-commissioned legal study, 2023](https://www.europarl.europa.eu/RegData/etudes/IDAN/2023/741518/IPOL_IDA%282023%29741518_EN.pdf)
+
+## Limits
+
+The final regulation may change the governance of the cap, the role of intermediaries, the rules for businesses and some functions.
+
+The draft rulebook and pilot specifications do not fully determine the product that might eventually be issued.
+
+The €100,000 guarantee includes eligibility rules, aggregation by institution and specific temporary protections that are not detailed here.
+
+The accounting presentation does not measure the profitability, funding cost or liquidity of individual banks. Those questions belong to part 2.
