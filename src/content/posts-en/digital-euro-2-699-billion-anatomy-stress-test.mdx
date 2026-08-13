@@ -1,0 +1,811 @@
+---
+title: "Digital euro, 2/6: the €699 billion stress test"
+description: "The ECB simulated €699 billion of deposit outflows. Data, reserves, collateral and refinancing: the anatomy of an extreme scenario."
+pubDate: 2026-08-13T14:05:00+02:00
+updatedDate: 2026-08-13T14:05:00+02:00
+tags: ["digital euro", "ECB", "banks", "liquidity", "stress test", "investigation"]
+draft: false
+sourceArticle: "euro-numerique-2-699-milliards-anatomie-stress-test"
+sourceUpdatedDate: 2026-08-13T14:05:00+02:00
+---
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*This is the second part of our six-part investigation into the digital euro. The [first article](/en/analysis/digital-euro-1-the-euro-that-changes-its-debtor/) showed that conversion leaves the number of euros unchanged but changes the balance sheet carrying the liability. This second part follows the movement to its conclusion: how much deposit funding can change nature, how banks replace it, and when collateral becomes the final constraint.*
+
+> **Status of the file as of 13 August 2026.** No final digital euro holding limit has been set. The values from €500 to €3,000 analysed by the ECB were tested in response to a technical request from the co-legislators. They are neither a decision nor the central bank’s final position.
+
+€699 billion.
+
+The figure is correct in a very specific sense. It appears in the most severe scenario published by the European Central Bank in October 2025. Every eligible person seeks to convert the maximum permitted amount into digital euros, subject to the sight deposits actually available. The movement takes place rapidly, simultaneously and across the euro area.
+
+With a hypothetical €3,000 cap, the model produces €699 billion of deposit outflows. That is 2.2% of banking-sector assets and 8.2% of the retail sight deposits included in the exercise.
+
+The same figure becomes misleading as soon as the wrong sentence is attached to it.
+
+The ECB is not forecasting a €699 billion bank run. It does not assume that the digital euro causes the crisis. Nor does it establish that banks could lose €699 billion at no economic cost. It builds an extreme shock and then asks whether institutions can replace the lost funding before exhausting liquidity and collateral.
+
+The aggregate answer is reassuring. The detailed answer remains conditional.
+
+## Seven things to remember
+
+- The €699 billion figure belongs to an extreme scenario in which confidence in banks has already broken down.
+- The banking crisis is assumed to be external to the digital euro.
+- The ECB uses supervisory data for 2,025 banks and a confidential collection on deposit distributions.
+- Banks can use reserves, markets in normal times, and Eurosystem refinancing.
+- With a €3,000 cap, 13 banks reach a 100% LCR and 9 lack standard collateral to remain at that level.
+- These outcomes mean neither failure nor insolvency.
+- The model uses first-quarter 2024 balance sheets, when the system was much more liquid than in August 2026.
+
+## A test requested by lawmakers
+
+The ECB’s [technical report](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_technical_annex_financial_stability_impact_digital_euro.en.pdf) responds to a specific request arising during the legislative negotiations.
+
+Parliament’s rapporteur and the co-legislators wanted the impact of hypothetical caps up to €3,000 on:
+
+- bank deposits;
+- the liquidity coverage ratio, or LCR;
+- the net stable funding ratio, or NSFR;
+- profitability;
+- lending;
+- the loan-to-deposit ratio.
+
+Our [guide to bank health](/en/guides/read-bank-health/) places these ratios within a bank’s complete balance sheet.
+
+In his [10 October 2025 letter to ECON Chair Aurore Lalucq](https://www.ecb.europa.eu/pub/pdf/other/ecb.mepletter251010_Lalucq~ac176b0edd.en.pdf), Piero Cipollone states that the work represents neither the ECB’s complete final methodology nor its position on the appropriate cap.
+
+That changes how the number should be read.
+
+€3,000 is not a threshold first selected by the ECB and then validated by its own model. It is the upper bound of a range the institution was asked to test.
+
+## Two scenarios built on different mechanisms
+
+The ECB constructs two environments.
+
+### Business as usual
+
+This represents expected use under normal conditions.
+
+A survey asks euro area residents:
+
+- whether they would try the digital euro;
+- how much they would hold;
+- whether the wallet would be funded from deposits, cash or other assets;
+- whether they would pre-fund it or use a linked account.
+
+On average, 66% of respondents are treated as likely to try the system.
+
+The declared funding source is not exclusively bank money. The ECB estimates that 23% would come from other assets, including 16% from cash. That portion causes no deposit outflow.
+
+With a €3,000 cap, average desired digital euro holdings reach roughly €450 per person, of which just under €400 would come from bank accounts. The cap rises sharply while desired balances rise much more slowly. An ordinary user does not necessarily fill the available capacity.
+
+### Flight to safety
+
+The second scenario starts with a loss of confidence in the banking system as a whole.
+
+Its starting point matters:
+
+> the crisis is assumed to be external to the digital euro.
+
+Each depositor then seeks the maximum permitted amount, subject to two constraints:
+
+1. the tested holding limit;
+2. sight deposits actually available.
+
+Conversion happens rapidly and simultaneously across all banks.
+
+The model therefore does not estimate the probability of the panic. It measures how much the digital euro could absorb if the panic already existed.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 940" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="outflow-title-en outflow-desc-en" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0a111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="outflow-title-en">How the model calculates 699 billion euros</title>
+  <desc id="outflow-desc-en">The scenario begins with a loss of confidence, applies the lower of the cap and each depositor’s sight balance, and aggregates outflows across 2,025 banks.</desc>
+  <defs>
+    <linearGradient id="outflow-bg-en" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a111a" />
+      <stop offset="100%" stop-color="#12243a" />
+    </linearGradient>
+    <marker id="outflow-arrow-en" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#62d8c6" />
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="478" height="938" rx="14" fill="url(#outflow-bg-en)" />
+  <text x="24" y="38" fill="#f4f7fb" font-size="20" font-weight="750">HOW THE MODEL CALCULATES</text>
+  <text x="24" y="64" fill="#62d8c6" font-size="24" font-weight="800">€699bn</text>
+  <text x="24" y="86" fill="#9fb1c5" font-size="12">Flight-to-safety, hypothetical €3,000 holding cap</text>
+
+  <g transform="translate(20 116)">
+    <rect width="440" height="112" rx="12" fill="#172337" stroke="#7fa7ff" />
+    <circle cx="34" cy="34" r="18" fill="#7fa7ff" />
+    <text x="34" y="40" text-anchor="middle" fill="#07131d" font-size="16" font-weight="800">1</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">System-wide confidence shock</text>
+    <text x="24" y="64" fill="#dce6f0" font-size="13">The banking shock already exists.</text>
+    <text x="24" y="87" fill="#dce6f0" font-size="13">The digital euro did not cause it.</text>
+  </g>
+
+  <path d="M240 234 V266" stroke="#62d8c6" stroke-width="3" marker-end="url(#outflow-arrow-en)" />
+
+  <g transform="translate(20 282)">
+    <rect width="440" height="126" rx="12" fill="#152c31" stroke="#62d8c6" />
+    <circle cx="34" cy="34" r="18" fill="#62d8c6" />
+    <text x="34" y="40" text-anchor="middle" fill="#07131d" font-size="16" font-weight="800">2</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Bank-level data</text>
+    <text x="24" y="64" fill="#e2f1ee" font-size="13">2,025 institutions, Q1 2024 data.</text>
+    <text x="24" y="87" fill="#e2f1ee" font-size="13">Depositor counts and sight-balance</text>
+    <text x="24" y="108" fill="#e2f1ee" font-size="13">distribution from DRDEPO.</text>
+  </g>
+
+  <path d="M240 414 V446" stroke="#62d8c6" stroke-width="3" marker-end="url(#outflow-arrow-en)" />
+
+  <g transform="translate(20 462)">
+    <rect width="440" height="126" rx="12" fill="#251d33" stroke="#d98bff" />
+    <circle cx="34" cy="34" r="18" fill="#d98bff" />
+    <text x="34" y="40" text-anchor="middle" fill="#16091c" font-size="16" font-weight="800">3</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Individual rule</text>
+    <text x="24" y="67" fill="#f0e8f4" font-size="15" font-weight="700">demand = lower of:</text>
+    <text x="24" y="94" fill="#f0e8f4" font-size="13">tested cap and available sight balance</text>
+    <text x="24" y="116" fill="#cdbed7" font-size="12">All depositors demand it simultaneously.</text>
+  </g>
+
+  <path d="M240 594 V626" stroke="#62d8c6" stroke-width="3" marker-end="url(#outflow-arrow-en)" />
+
+  <g transform="translate(20 642)">
+    <rect width="440" height="116" rx="12" fill="#332619" stroke="#ffb86b" />
+    <circle cx="34" cy="34" r="18" fill="#ffb86b" />
+    <text x="34" y="40" text-anchor="middle" fill="#1c1005" font-size="16" font-weight="800">4</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Euro area aggregation</text>
+    <text x="28" y="72" fill="#ffcf9a" font-size="20" font-weight="800">€500 : €156bn</text>
+    <text x="28" y="100" fill="#ffcf9a" font-size="20" font-weight="800">€3,000 : €699bn</text>
+  </g>
+
+  <g transform="translate(20 790)">
+    <rect width="136" height="112" rx="10" fill="#111b26" stroke="#3b5269" />
+    <text x="14" y="25" fill="#7fa7ff" font-size="11" font-weight="750">MAY OVERSTATE</text>
+    <text x="14" y="51" fill="#d9e2ec" font-size="11">People banking</text>
+    <text x="14" y="68" fill="#d9e2ec" font-size="11">with several banks</text>
+    <text x="14" y="85" fill="#d9e2ec" font-size="11">are not all fully</text>
+    <text x="14" y="102" fill="#d9e2ec" font-size="11">deduplicated.</text>
+  </g>
+  <g transform="translate(172 790)">
+    <rect width="136" height="112" rx="10" fill="#111b26" stroke="#3b5269" />
+    <text x="14" y="25" fill="#d98bff" font-size="11" font-weight="750">MAY UNDERSTATE</text>
+    <text x="14" y="51" fill="#d9e2ec" font-size="11">Savings and term</text>
+    <text x="14" y="68" fill="#d9e2ec" font-size="11">deposits are not</text>
+    <text x="14" y="85" fill="#d9e2ec" font-size="11">withdrawn in this</text>
+    <text x="14" y="102" fill="#d9e2ec" font-size="11">calculation.</text>
+  </g>
+  <g transform="translate(324 790)">
+    <rect width="136" height="112" rx="10" fill="#111b26" stroke="#3b5269" />
+    <text x="14" y="25" fill="#ffb86b" font-size="11" font-weight="750">NOT MODELLED</text>
+    <text x="14" y="51" fill="#d9e2ec" font-size="11">Exceptional ECB</text>
+    <text x="14" y="68" fill="#d9e2ec" font-size="11">crisis response</text>
+    <text x="14" y="85" fill="#d9e2ec" font-size="11">and other safe</text>
+    <text x="14" y="102" fill="#d9e2ec" font-size="11">destinations.</text>
+  </g>
+
+  <text x="24" y="924" fill="#8199af" font-size="10.5">Source: ECB, October 2025 technical report. l0g synthesis.</text>
+</svg>
+<figcaption>The €699 billion figure is not obtained by mechanically multiplying the population by €3,000. The model uses bank-level sight-deposit distributions while retaining documented limitations.</figcaption>
+</figure>
+
+## The assumptions bound the scenario’s scope
+
+The flight-to-safety scenario stacks harsh assumptions:
+
+- all eligible depositors open a wallet;
+- everyone demands the maximum available;
+- the move is simultaneous;
+- the interbank market is closed in the stress simulation;
+- banks still seek to preserve at least a 100% LCR and NSFR.
+
+Reality could be milder through this channel.
+
+The report acknowledges that accounts held at multiple banks may count the same person more than once. That can overstate the digital euro’s true absorption capacity.
+
+Reality could also be harsher for the banking system as a whole.
+
+The model withdraws neither savings nor term deposits. It does not capture corporate flight into other assets, even though non-financial companies hold 31% of overnight deposits. More than one-third of eligible household overnight deposits are held in accounts above €100,000. Those depositors could seek to move much more than the digital cap during a general banking crisis.
+
+The ECB explicitly notes that substantial outflows would occur even without a digital euro, towards cash, safer securities, other banks or digital assets including stablecoins.
+
+The scenario therefore isolates one precise question:
+
+> how much can the new public destination add to a flight that already exists?
+
+It does not reconstruct the entire crisis.
+
+## Digitalisation offsetting the outflows
+
+The normal scenario contains another element that is rarely quoted.
+
+The ECB projects that declining banknote use for payments would leave more money on bank accounts. Its average scenario estimates **€127 billion of additional deposits by 2034** from this trend.
+
+In the business-as-usual calculations, that inflow more than offsets expected digital euro outflows even with a €3,000 cap.
+
+This is a counterfactual:
+
+- without the continuing digitalisation trend, the wallet causes a small net deposit outflow;
+- with the trend, banks receive more deposits than they lose to the digital euro.
+
+Digitalisation is not revenue created by the project. It is a change in payment form that would probably occur anyway.
+
+The report therefore publishes results both with and without the effect. This article uses the unoffset version when isolating the digital euro’s own shock.
+
+## Behind the figure: 2,025 bank balance sheets
+
+The main strength of the work lies in its data.
+
+The ECB does not simply multiply the cap by population. It uses:
+
+- FINREP;
+- COREP;
+- supervisory liquidity returns;
+- reserves;
+- HQLA;
+- eligible collateral;
+- market access;
+- data from 115 significant institutions;
+- data from 1,910 less significant institutions;
+- a dedicated collection called DRDEPO.
+
+The [preliminary methodology](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep241212_14erpb_Annex_to_preliminary_methodology_for_holding_limit_calibration.en.pdf) describes DRDEPO as covering:
+
+- sight, savings and term deposits;
+- twelve balance buckets;
+- depositor counts;
+- account counts;
+- average remuneration;
+- deposit-guarantee coverage;
+- prudentially stable deposits;
+- internal liquidity targets.
+
+This granularity explains why the outflow curve flattens as the cap rises. Many depositors do not have €3,000 available at sight. Raising the cap from €500 to €3,000 does not multiply the outflow by six.
+
+It also explains why the exact result cannot be reproduced publicly. The decisive inputs remain confidential.
+
+## A bank’s three funding options
+
+The model assigns a bank-specific deposit outflow.
+
+Each institution then re-optimises its balance sheet to maximise profit under constraints including:
+
+- LCR;
+- NSFR;
+- available reserves;
+- collateral;
+- market access;
+- the price of different funding sources;
+- its internal liquidity target.
+
+Three broad responses are available.
+
+### 1. Use its own reserves
+
+The bank transfers reserves to the Eurosystem to fund customer conversion.
+
+This is immediate but reduces the liquidity buffer and the interest earned on reserves.
+
+### 2. Obtain reserves in the market
+
+In normal conditions it can borrow from other banks, secured or unsecured and at several maturities. It can also issue bonds.
+
+The model assumes that institutions without market access during the previous three years remain unable to access it.
+
+In flight-to-safety, the interbank market is closed for everyone.
+
+### 3. Borrow from the Eurosystem
+
+The bank can obtain reserves against eligible collateral.
+
+The model distinguishes:
+
+- HQLA;
+- eligible non-HQLA collateral;
+- residual penalty funding against assets that are not currently eligible.
+
+That last category does not describe a facility already promised by the ECB. It is a stress indicator measuring the need left over when ordinary monetary-policy operations are no longer sufficient.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1040" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="funding-title-en funding-desc-en" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0a111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="funding-title-en">The funding funnel after a deposit outflow</title>
+  <desc id="funding-desc-en">The bank first uses reserves, then markets in normal times, followed by central-bank funding against collateral. Residual funding identifies the most constrained banks.</desc>
+  <defs>
+    <linearGradient id="funding-bg-en" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a111a" />
+      <stop offset="100%" stop-color="#15283d" />
+    </linearGradient>
+    <marker id="funding-arrow-en" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#65d9c8" />
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="478" height="1038" rx="14" fill="url(#funding-bg-en)" />
+  <text x="24" y="38" fill="#f4f7fb" font-size="20" font-weight="750">THE BANK FUNDING PATH</text>
+  <text x="24" y="63" fill="#9fb1c5" font-size="12">Simplified order of funding resources in the model</text>
+
+  <g transform="translate(35 92)">
+    <rect width="410" height="92" rx="12" fill="#322116" stroke="#ffb86b" />
+    <text x="22" y="31" fill="#ffcb96" font-size="12" font-weight="750">SHOCK</text>
+    <text x="22" y="61" fill="#ffffff" font-size="19" font-weight="800">Retail deposit outflow</text>
+    <text x="285" y="61" fill="#ffcb96" font-size="15" font-weight="700">up to €699bn</text>
+  </g>
+
+  <path d="M240 190 V228" stroke="#65d9c8" stroke-width="3" marker-end="url(#funding-arrow-en)" />
+
+  <g transform="translate(50 244)">
+    <rect width="380" height="104" rx="12" fill="#172337" stroke="#7fa7ff" />
+    <text x="22" y="30" fill="#9bb9ff" font-size="12" font-weight="750">1. OWN RESERVES</text>
+    <text x="22" y="60" fill="#ffffff" font-size="15" font-weight="700">First absorption line</text>
+    <text x="22" y="84" fill="#dbe5f0" font-size="12">Reduces the bank’s liquidity buffer.</text>
+  </g>
+
+  <path d="M240 354 V392" stroke="#65d9c8" stroke-width="3" marker-end="url(#funding-arrow-en)" />
+
+  <g transform="translate(65 408)">
+    <rect width="350" height="116" rx="12" fill="#152c31" stroke="#65d9c8" />
+    <text x="22" y="30" fill="#8ce9dc" font-size="12" font-weight="750">2. MARKETS AND BONDS</text>
+    <text x="22" y="60" fill="#ffffff" font-size="14" font-weight="700">Secured or unsecured, several maturities</text>
+    <text x="22" y="85" fill="#ddf1ee" font-size="12">Available in the normal scenario.</text>
+    <text x="22" y="105" fill="#ffb86b" font-size="12" font-weight="700">Interbank market closed in flight-to-safety.</text>
+  </g>
+
+  <path d="M240 530 V568" stroke="#65d9c8" stroke-width="3" marker-end="url(#funding-arrow-en)" />
+
+  <g transform="translate(80 584)">
+    <rect width="320" height="116" rx="12" fill="#251d33" stroke="#d98bff" />
+    <text x="22" y="30" fill="#e4a9ff" font-size="12" font-weight="750">3. STANDARD REFINANCING</text>
+    <text x="22" y="60" fill="#ffffff" font-size="14" font-weight="700">Eurosystem against eligible collateral</text>
+    <text x="22" y="85" fill="#eee6f2" font-size="12">HQLA or eligible non-HQLA assets.</text>
+    <text x="22" y="105" fill="#eee6f2" font-size="12">Collateral replaces market access.</text>
+  </g>
+
+  <path d="M240 706 V744" stroke="#ffb86b" stroke-width="3" marker-end="url(#funding-arrow-en)" />
+
+  <g transform="translate(95 760)">
+    <rect width="290" height="122" rx="12" fill="#3a1e20" stroke="#ff718a" />
+    <text x="20" y="30" fill="#ff99aa" font-size="12" font-weight="750">4. RESIDUAL NEED</text>
+    <text x="20" y="59" fill="#ffffff" font-size="14" font-weight="700">Currently ineligible assets</text>
+    <text x="20" y="84" fill="#f6e3e7" font-size="12">Residual need serves as a stress</text>
+    <text x="20" y="103" fill="#f6e3e7" font-size="12">indicator within the model.</text>
+  </g>
+
+  <g transform="translate(20 904)">
+    <rect width="210" height="88" rx="10" fill="#111b26" stroke="#ffb86b" />
+    <text x="16" y="27" fill="#ffcb96" font-size="12" font-weight="750">13 BANKS</text>
+    <text x="16" y="51" fill="#e6edf5" font-size="12">reach the 100%</text>
+    <text x="16" y="70" fill="#e6edf5" font-size="12">LCR threshold</text>
+  </g>
+  <g transform="translate(250 904)">
+    <rect width="210" height="88" rx="10" fill="#111b26" stroke="#ff718a" />
+    <text x="16" y="27" fill="#ff99aa" font-size="12" font-weight="750">9 BANKS</text>
+    <text x="16" y="51" fill="#e6edf5" font-size="12">hit the standard</text>
+    <text x="16" y="70" fill="#e6edf5" font-size="12">collateral constraint</text>
+  </g>
+
+  <text x="24" y="1025" fill="#8199af" font-size="10.5">Hypothetical cap: €3,000. Source: ECB. l0g synthesis.</text>
+</svg>
+<figcaption>The model does not assume that €699 billion remains unfunded. It tests sequential access to reserves, markets and the central-bank balance sheet.</figcaption>
+</figure>
+
+## The Eurosystem balance sheet absorbs part of the shock
+
+The decisive mechanism appears at the third stage.
+
+When a household converts a deposit into digital euros, its bank loses both the deposit and the reserves needed for settlement. If it then borrows those reserves from the Eurosystem, bank funding returns through another door.
+
+The new relationship is:
+
+- the household holds a direct claim on the Eurosystem;
+- the bank owes more to the Eurosystem;
+- collateral posted by the bank becomes encumbered.
+
+The shock therefore changes less the total amount of liquidity than its distribution, price and legal form.
+
+This explains how a €699 billion outflow can produce a contained aggregate outcome. The central bank is not an outside observer of the tested system. Its balance sheet forms part of the solution.
+
+The model does not promise unconditional liquidity. Ordinary refinancing requires collateral. The ability to mobilise acceptable assets without exhausting prudential ratios therefore forms the final bottleneck, beyond the face value of deposits lost.
+
+## Thirteen banks at the threshold, nine facing collateral
+
+The most useful chart in the report is not the €699 billion chart.
+
+It counts the institutions reaching the model’s constraints.
+
+| Hypothetical cap | Banks reaching 100% LCR | Banks reaching 100% NSFR | Banks constrained by standard collateral |
+|---:|---:|---:|---:|
+| €500 | 2 | 0 | 1 |
+| €1,000 | 6 | 0 | 5 |
+| €2,000 | 10 | 0 | 7 |
+| €3,000 | 13 | 0 | 9 |
+
+At €3,000:
+
+- the 13 banks represent 0.3% of banking-sector assets;
+- the 9 collateral-constrained banks represent 0.1%;
+- the 13 institutions are located in six countries;
+
+"Constrained" requires a precise meaning.
+
+A bank at a 100% LCR is neither insolvent nor failed. It has reached the regulatory minimum retained by the model. Prudential rules can allow an institution to fall temporarily below 100% during stress, because liquidity buffers are meant to be used.
+
+The nine banks present the more informative case. They lack enough unencumbered eligible non-HQLA collateral to rebuild their position through standard monetary-policy operations while preserving a 100% LCR.
+
+The report assigns them residual penalty funding. It does not say that they stop paying. It signals that an intervention outside the ordinary framework would be required under the assumptions.
+
+## The thirteen banks remain confidential
+
+The ECB withheld some breakdowns requested by the co-legislators because they could identify individual institutions.
+
+Public accounts cannot recreate the ranking.
+
+The result depends on data absent from annual reports:
+
+- unique depositor counts;
+- individual balance distribution;
+- customers banking with several institutions;
+- stable-deposit classifications;
+- internal liquidity targets;
+- genuinely free and eligible collateral;
+- internal links within institutional protection schemes;
+- each bank’s funding prices.
+
+A relatively low reported LCR therefore proves nothing.
+
+A bank can operate closer to 100% while having wealthy depositors, excellent market access or abundant collateral. Another can report a higher ratio while serving many small-balance customers able to fill the entire digital euro cap.
+
+We can build a public sensitivity indicator. We cannot turn it into an identification of the ECB’s confidential banks.
+
+## Retail banks absorb the largest shock
+
+The business-model distribution confirms a simple intuition.
+
+The largest outflows relative to balance-sheet size affect:
+
+- small market lenders;
+- retail lenders;
+- diversified lenders.
+
+They rely more heavily on household deposits that can be directly substituted by the digital euro.
+
+Exposure does not automatically mean fragility. It must be set against reserves, collateral, group support and market access.
+
+Germany provides a particularly useful illustration.
+
+Savings banks and cooperative banks are highly exposed to retail deposits. They also belong to networks capable of redistributing liquidity between local institutions, regional associations and central institutions.
+
+## Germany tests the same risk with two other models
+
+The Bundesbank has published two studies that complement the euro area exercise.
+
+### The immediate 2024 shock
+
+[Technical Paper 05/2024](https://www.bundesbank.de/resource/blob/923936/9afb8f618fe4d88a4da87c25daade93a/472B63F073F071307366337C94F8C870/2024-05-technical-paper-data.pdf) assumes rapid conversion with little time for banks to adapt.
+
+Savings banks and cooperative institutions suffer the largest deposit outflows.
+
+With a €3,000 cap:
+
+- the aggregate liquidity shortfall measured through the LCR remains at or below roughly 2% of the stock of HQLA;
+- no savings or cooperative bank faces a shortfall if liquidity can be efficiently redistributed within the networks.
+
+Mutual liquidity support transforms the outcome.
+
+### The new 2026 equilibrium
+
+[Discussion Paper 19/2026](https://www.bundesbank.de/resource/blob/992082/b37cbcba83efb0b449bd81fad1325bd6/472B63F073F071307366337C94F8C870/2026-07-31-dkp-19-data.pdf), published on 31 July 2026, examines the long term.
+
+It starts with 1,156 German banks and removes 104 without retail deposits. The 1,052 simulated banks can:
+
+- raise deposit rates;
+- issue more bank bonds;
+- adjust liquidity buffers;
+- trade off funding cost against liquidity risk.
+
+The model does not explicitly include central-bank refinancing.
+
+In its most adverse scenario with a €3,000 cap, it finds:
+
+- a roughly 0.2 percentage point decline in ROE;
+- a roughly 7 percentage point decline in the LCR.
+
+Even a contained effect carries a cost.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1070" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="models-title-en models-desc-en" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0a111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="models-title-en">Three models of digital euro banking risk</title>
+  <desc id="models-desc-en">Comparison of the ECB 2025 model, the Bundesbank 2024 short-term model and the Bundesbank 2026 long-term model.</desc>
+  <defs>
+    <linearGradient id="models-bg-en" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a111a" />
+      <stop offset="100%" stop-color="#14253a" />
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="478" height="1068" rx="14" fill="url(#models-bg-en)" />
+  <text x="24" y="38" fill="#f4f7fb" font-size="20" font-weight="750">COMPARING THE THREE MODELS</text>
+  <text x="24" y="63" fill="#9fb1c5" font-size="12">Similar conclusions reached through different mechanisms</text>
+
+  <g transform="translate(20 92)">
+    <rect width="440" height="278" rx="13" fill="#172337" stroke="#7fa7ff" stroke-width="1.5" />
+    <text x="22" y="32" fill="#9bb9ff" font-size="12" font-weight="750">ECB 2025 · EURO AREA · IMMEDIATE SHOCK</text>
+    <text x="22" y="64" fill="#ffffff" font-size="18" font-weight="800">2,025 banks</text>
+    <text x="230" y="64" fill="#ffffff" font-size="18" font-weight="800">Q1 2024 data</text>
+    <text x="22" y="100" fill="#dce6f0" font-size="13">Reserves, markets, bonds and central-bank</text>
+    <text x="22" y="122" fill="#dce6f0" font-size="13">funding under collateral constraints.</text>
+    <text x="22" y="154" fill="#7fa7ff" font-size="12" font-weight="750">RESULT AT €3,000</text>
+    <text x="22" y="184" fill="#ffffff" font-size="15" font-weight="700">€699bn of outflows</text>
+    <text x="22" y="210" fill="#ffffff" font-size="15" font-weight="700">13 banks reach a 100% LCR</text>
+    <text x="22" y="236" fill="#ffffff" font-size="15" font-weight="700">9 hit the standard collateral constraint</text>
+    <text x="22" y="262" fill="#aebed0" font-size="11">The central bank is part of the absorption mechanism.</text>
+  </g>
+
+  <g transform="translate(20 394)">
+    <rect width="440" height="278" rx="13" fill="#152c31" stroke="#65d9c8" stroke-width="1.5" />
+    <text x="22" y="32" fill="#8ce9dc" font-size="12" font-weight="750">BUNDESBANK 2024 · GERMANY · SHORT TERM</text>
+    <text x="22" y="64" fill="#ffffff" font-size="18" font-weight="800">Rapid conversion</text>
+    <text x="230" y="64" fill="#ffffff" font-size="18" font-weight="800">little adaptation</text>
+    <text x="22" y="100" fill="#ddf1ee" font-size="13">The model tests HQLA redistribution</text>
+    <text x="22" y="122" fill="#ddf1ee" font-size="13">within savings and cooperative networks.</text>
+    <text x="22" y="154" fill="#65d9c8" font-size="12" font-weight="750">RESULT AT €3,000</text>
+    <text x="22" y="184" fill="#ffffff" font-size="15" font-weight="700">Aggregate shortfall up to roughly 2% of HQLA</text>
+    <text x="22" y="210" fill="#ffffff" font-size="15" font-weight="700">No shortfall in the relevant networks</text>
+    <text x="22" y="236" fill="#ffffff" font-size="15" font-weight="700">if internal liquidity circulates efficiently</text>
+    <text x="22" y="262" fill="#afcfc9" font-size="11">Group structure can offset retail exposure.</text>
+  </g>
+
+  <g transform="translate(20 696)">
+    <rect width="440" height="306" rx="13" fill="#251d33" stroke="#d98bff" stroke-width="1.5" />
+    <text x="22" y="32" fill="#e4a9ff" font-size="12" font-weight="750">BUNDESBANK 2026 · GERMANY · LONG TERM</text>
+    <text x="22" y="64" fill="#ffffff" font-size="18" font-weight="800">1,052 retail banks</text>
+    <text x="250" y="64" fill="#ffffff" font-size="18" font-weight="800">Q1 2025 data</text>
+    <text x="22" y="100" fill="#eee6f2" font-size="13">Deposit-rate increases, bank bonds</text>
+    <text x="22" y="122" fill="#eee6f2" font-size="13">and a new funding equilibrium.</text>
+    <text x="22" y="147" fill="#ffb86b" font-size="12" font-weight="700">Central-bank refinancing excluded.</text>
+    <text x="22" y="179" fill="#d98bff" font-size="12" font-weight="750">ADVERSE SCENARIO AT €3,000</text>
+    <text x="22" y="211" fill="#ffffff" font-size="17" font-weight="800">ROE: roughly -0.2 percentage point</text>
+    <text x="22" y="241" fill="#ffffff" font-size="17" font-weight="800">LCR: roughly -7 percentage points</text>
+    <text x="22" y="273" fill="#cdbed7" font-size="12">The shock is absorbable but permanently changes</text>
+    <text x="22" y="293" fill="#cdbed7" font-size="12">the price and structure of bank funding.</text>
+  </g>
+
+  <text x="24" y="1045" fill="#8199af" font-size="10.5">Bundesbank papers express the authors’ views.</text>
+</svg>
+<figcaption>Converging outcomes do not make the models interchangeable. One uses the Eurosystem balance sheet, another network support, and the third market prices and deposit rates.</figcaption>
+</figure>
+
+## Absorbing the shock changes funding costs
+
+The ECB stress test is primarily a liquidity exercise.
+
+It establishes that the shock can be funded under the assumptions. It does not establish that bank funding structures remain unchanged.
+
+Replacement funding can produce:
+
+- lost interest on depleted reserves;
+- more expensive market debt;
+- more encumbered assets;
+- greater Eurosystem reliance;
+- higher deposit rates to retain customers;
+- pass-through into lending prices;
+- longer-term balance-sheet reduction.
+
+In the normal scenario without the digitalisation offset, Chart 12 in the full report translates the net-interest-income channel into an ROE decline ranging from 9 to 18 basis points depending on the cap. At €3,000 the value is 18 basis points.
+
+The ECB judges this small relative to historical ROE volatility.
+
+The calculation excludes several elements:
+
+- banks do not raise deposit remuneration to contain outflows;
+- no broader confidence shock is added to funding spreads;
+- revenues from digital euro services are excluded;
+- cash-management savings are excluded;
+- potential payment fees are excluded.
+
+The result is therefore neither wholly favourable nor wholly adverse. It isolates a profitability channel using observed funding prices.
+
+There is even a small inconsistency between the official documents: the summary presentation gives a range of 8 to 18 basis points while the full annex and chart show 9 to 18. We use the full annex.
+
+## Lending barely moves in the model
+
+The ECB also examines loan-to-deposit ratios and survival under stress.
+
+At €3,000:
+
+- loan-to-deposit ratios change little for most business models;
+- small market lenders rise by roughly 2 percentage points;
+- liquidity survival periods barely decline;
+- adding the digital euro shock to the extreme LiST scenario does not materially change survival periods.
+
+That stability partly follows from the model’s structure.
+
+Banks re-optimise funding in order to keep carrying their assets. Credit contraction is not the first adjustment mechanism.
+
+Over time, a persistent increase in funding costs could still alter the supply or price of credit. The 2026 Bundesbank paper is better suited to that structural transition, although it too remains partial.
+
+The stress test demonstrates funding absorption with the asset side largely maintained. It does not settle the macroeconomic credit question.
+
+## The monetary setting has already changed
+
+The ECB simulations use first-quarter 2024 data.
+
+At that time, average euro area excess liquidity stood at **€3,428.3 billion**. The deposit facility rate was 4%.
+
+On 12 August 2026 the [ECB reported €2,121.5 billion of excess liquidity](https://www.ecb.europa.eu/mopo/liq/html/index.en.html). The decline is roughly **€1,307 billion**, or **38%**. The [deposit facility rate is now 2.25%](https://www.bundesbank.de/resource/blob/962026/183c9ebc93a583d8c0a0e1d1cd3986c6/472B63F073F071307366337C94F8C870/2026-07-23-beschluesse-download.pdf).
+
+| Environment | Excess liquidity | Deposit facility |
+|---|---:|---:|
+| ECB model data period, Q1 2024 | €3,428.3bn | 4.00% |
+| Position on 12 August 2026 | €2,121.5bn | 2.25% |
+
+These figures are not a coverage ratio for the €699 billion shock. Reserves are unevenly distributed, collateral matters, and the Eurosystem can create new reserves against eligible assets.
+
+The comparison nevertheless shows one clear fact:
+
+> the aggregate buffer used as the model’s starting point has already fallen substantially.
+
+Prudential ratios have also declined for significant institutions. In the first quarter of 2026 their aggregate LCR stood at 153.93% and their NSFR at 125.63%. These are not perfectly comparable with the model’s 166% and 128%, which include smaller banks and use a different aggregation. They nevertheless confirm that calibration cannot be frozen on a 2024 balance sheet.
+
+The ECB report acknowledges this point: the exercise must be repeated close to launch.
+
+## Interest rates create two opposite effects
+
+Lower rates change the problem through two channels.
+
+### Unit replacement cost
+
+A bank loses a deposit that may pay little interest and replaces it with reserves, market funding or central-bank borrowing priced near policy rates.
+
+When monetary policy is tight and deposit rates remain sticky, this funding advantage is large. Each lost euro costs more to replace.
+
+The ECB report therefore finds a greater per-unit profitability impact in a tighter environment.
+
+### Demand for digital euros
+
+The digital euro would be unremunerated.
+
+When bank deposit rates are high, holding a large amount at 0% carries a meaningful opportunity cost. As rates fall, that gap narrows and public money becomes relatively more attractive.
+
+The 2026 Bundesbank paper emphasises this second channel: in moderate or low-rate environments, banks may need to pay more to retain deposits.
+
+A rate cut can therefore reduce the replacement cost of one euro while increasing the quantity customers want to move.
+
+The appropriate cap depends on both effects.
+
+## €699 billion measures the digital euro channel
+
+The ECB compares the shock with historical episodes.
+
+The 8.2% outflow from retail sight deposits is below the 20.9% seen in Cyprus in 2013 and the 25.9% seen in Greece in 2015. It is above the 6.4% Belgian outflow associated with the announcement of an attractive public savings product.
+
+Definitions and time periods differ. The comparison is useful only for scale.
+
+It mainly shows that the cap constrains the amounts reachable through the digital euro. Total outflows can take other routes.
+
+A systemic crisis could involve:
+
+- digital euros up to the cap;
+- banknotes;
+- transfers to other banks;
+- money-market funds;
+- sovereign securities;
+- foreign currencies;
+- stablecoins.
+
+The headline figure must therefore not be read as the complete cost of a panic. It measures the additional outlet created by public digital money.
+
+## The cap can also stabilise a smaller banking system
+
+The literature does not uniformly treat all disintermediation as harmful.
+
+[BIS Working Paper 1280](https://www.bis.org/publ/work1280.pdf) distinguishes two movements. Our [parameter-by-parameter CBDC guide](/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/) explains the design choices that shape these effects.
+
+### Slow disintermediation
+
+In normal times, part of the deposit base moves into central bank money.
+
+Banks lose funding but also reduce leverage. In the authors’ model, this contraction can reduce structural fragility.
+
+### Fast disintermediation
+
+During panic, uncapped CBDC offers a public safe asset that can be stored at scale.
+
+This channel increases the probability and severity of runs.
+
+The model’s preferred trade-off lies between €1,500 and €2,500 depending on demand assumptions. Those values are not a recommendation for the euro area. They depend on a German survey and a specific macroeconomic model.
+
+The conceptual result matters more than the number:
+
+> a cap can permit useful slow disintermediation while blocking the fast run.
+
+The [IMF’s 2025 review](https://www.imf.org/-/media/files/publications/ftn063/2025/english/ftnea2025008.pdf) reaches a similar conclusion. Risks are generally manageable with appropriate design, but there is no one-way relationship between a lower cap and greater stability. A cap that is too restrictive can undermine the CBDC’s purpose or leave flows to move into less controllable assets.
+
+## The public-data replication perimeter
+
+Public documents allow us to verify:
+
+- the definition of the two scenarios;
+- aggregate outflows of €156 billion and €699 billion;
+- the 8.2% share of retail sight deposits;
+- 13 banks at the LCR threshold;
+- 9 banks constrained by collateral;
+- no bank at the NSFR threshold;
+- aggregate ratio orders of magnitude;
+- the profitability channel;
+- differences across business models;
+- the decline in excess liquidity since 2024.
+
+They also support a public sensitivity analysis for banking groups that disclose enough data:
+
+- shocks of 1%, 3%, 5% or 8.2% of retail sight deposits;
+- reserves and cash;
+- HQLA;
+- LCR;
+- NSFR;
+- loan-to-deposit ratio;
+- wholesale funding;
+- unencumbered assets.
+
+## Confidential inputs prevent exact replication
+
+Public data do not provide:
+
+- exact deposits per person;
+- customers present at several banks;
+- internal liquidity targets;
+- collateral actually mobilisable on the day;
+- institution-specific refinancing costs;
+- the exact distribution of liquidity inside mutual networks;
+- the identities of the thirteen banks.
+
+Any named list would create false precision.
+
+An l0g indicator can measure public sensitivity. It will not pretend to recreate the ECB’s confidential ranking.
+
+## The stress test’s exact scope
+
+The ECB establishes a more limited and more interesting proposition than the reassuring slogan.
+
+In its extreme scenario:
+
+1. a €3,000 cap limits the digital euro channel to €699 billion;
+2. the overwhelming majority of banks has reserves or collateral;
+3. the Eurosystem balance sheet can replace part of the lost funding;
+4. aggregate regulatory ratios remain above 100%;
+5. the final bottleneck concerns nine small banks representing 0.1% of assets.
+
+The test does not prove:
+
+- that €699 billion would be costless;
+- that bank funding structures would remain unchanged;
+- that credit would be identical over several years;
+- that a broader crisis could not occur;
+- that the outcome would be the same with 2026 or 2029 liquidity.
+
+The decisive variable is therefore not only the number displayed in the wallet.
+
+It has four components:
+
+> **cap, reserves, collateral, refinancing.**
+
+The cap determines the maximum size of the channel. The other three determine whether banks can absorb it.
+
+## Next: who can see the payment?
+
+The third part will leave bank balance sheets and follow the data.
+
+The ECB says it would not be able to directly link online payments to an identity and that offline use would offer cash-like privacy. At the same time, banks remain subject to customer-identification rules, a central fraud mechanism will generate real-time scores, and an alias service will map phone numbers to digital accounts.
+
+The next question is therefore much more concrete:
+
+> **who knows the identity, amount, counterparty and device at every stage of a digital euro payment?**
+
+## Sources and method
+
+This article relies primarily on:
+
+- the ECB’s [October 2025 technical report](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_technical_annex_financial_stability_impact_digital_euro.en.pdf) and [summary presentation](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251015_17erpb_item3_holdinglimits.en.pdf);
+- the [methodological annex on DRDEPO and bank balance sheets](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep241212_14erpb_Annex_to_preliminary_methodology_for_holding_limit_calibration.en.pdf);
+- the ECB papers [Central bank digital currency and bank intermediation](https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op293~652cf2b1aa.en.pdf), [Know your holding limits](https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op326~d5c223d9b4.en.pdf), and [Digital euro safeguards](https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op346~3b4318a919.en.pdf);
+- the Bundesbank’s [short-term paper](https://www.bundesbank.de/resource/blob/923936/9afb8f618fe4d88a4da87c25daade93a/472B63F073F071307366337C94F8C870/2024-05-technical-paper-data.pdf) and [July 2026 long-term paper](https://www.bundesbank.de/resource/blob/992082/b37cbcba83efb0b449bd81fad1325bd6/472B63F073F071307366337C94F8C870/2026-07-31-dkp-19-data.pdf);
+- [BIS Working Paper 1280](https://www.bis.org/publ/work1280.pdf) and the [IMF review](https://www.imf.org/-/media/files/publications/ftn063/2025/english/ftnea2025008.pdf);
+- ECB data on [liquidity in the first quarter of 2024](https://www.ecb.europa.eu/press/economic-bulletin/focus/2024/html/ecb.ebbox202404_07~223bbd0d58.en.html), [daily liquidity in August 2026](https://www.ecb.europa.eu/mopo/liq/html/index.en.html), and [first-quarter 2026 prudential ratios](https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260619~b2252c1d8a.en.html).
+
+Values read directly from official charts are identified as such. Bundesbank research papers express the authors’ views and not necessarily those of the institution. No bank is identified from confidential information.
