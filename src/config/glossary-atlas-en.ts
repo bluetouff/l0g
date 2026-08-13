@@ -203,6 +203,41 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'pseudonymisation',
+    sigle: 'Pseudonymisation',
+    nom: 'Identity separation with a retained re-linking key',
+    def: 'Processing that replaces or separates direct identity while retaining additional information that can reconnect the data to a person. Under the GDPR, pseudonymised data remain personal data.',
+    guide: '/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/',
+    ...macroSection,
+    atlas: {
+      intuition: 'Pseudonymisation removes the direct name from one domain. Its protection depends on keeping the re-linking information separate and controlled.',
+      whyNow: 'The online digital euro design relies on pseudonymised accounts and transactions, so persistent identifiers and access to the re-linking key determine the practical privacy boundary.',
+      articles: [{ label: 'Digital euro, 3/6: as private as cash?', href: '/en/analysis/digital-euro-3-as-private-as-cash/', detail: 'Identities, aliases, fraud scoring and the offline privacy boundary.', kind: 'article' }],
+      guides: [{ label: 'Reading a CBDC parameter by parameter', href: '/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/', detail: 'Issuer, ledger, access, holding limits and privacy.', kind: 'guide' }],
+      sources: [
+        { label: 'ECB digital euro privacy', href: 'https://www.ecb.europa.eu/euro/digital_euro/features/privacy/html/index.en.html', detail: 'Privacy objectives for online and offline use.', kind: 'source' },
+        { label: 'Council negotiating mandate', href: 'https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf', detail: 'Legal separation of identity and central transaction data.', kind: 'source' },
+      ],
+      related: ['tokenisation'],
+    },
+  },
+  {
+    slug: 'tokenisation',
+    sigle: 'Tokenisation',
+    nom: 'Substitution of data with a purpose-specific token',
+    def: 'Replacement of data with a surrogate token used in a defined context. An authorised actor can recover the underlying data through a mapping table, whose protection determines the confidentiality of the arrangement.',
+    guide: '/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/',
+    ...macroSection,
+    atlas: {
+      intuition: 'A token reduces direct exposure of the underlying value. It does not erase the value or the mapping needed by authorised actors.',
+      whyNow: 'The proposed SEPI service uses tokens and cryptograms for QR codes, payment links and NFC, making key ownership, token lifetime and detokenisation rights central design questions.',
+      articles: [{ label: 'Digital euro, 3/6: as private as cash?', href: '/en/analysis/digital-euro-3-as-private-as-cash/', detail: 'SEPI, technical identifiers and the limits of data substitution.', kind: 'article' }],
+      guides: [{ label: 'Reading a CBDC parameter by parameter', href: '/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/', detail: 'Issuer, ledger, access, holding limits and privacy.', kind: 'guide' }],
+      sources: [{ label: 'ECB digital euro rulebook', href: 'https://www.ecb.europa.eu/euro/digital_euro/timeline/rulebook/html/index.en.html', detail: 'Draft technical specifications for SEPI and payment-data exchange.', kind: 'source' }],
+      related: ['pseudonymisation'],
+    },
+  },
+  {
     slug: 'perimetre-de-consolidation',
     sigle: 'Consolidation perimeter',
     nom: 'The boundary of group accounts',

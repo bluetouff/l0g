@@ -1,0 +1,958 @@
+---
+title: "Euro numérique, 3/6 : privé comme du cash ?"
+description: "Qui voit quoi lors d’un paiement en euros numériques ? Identité, alias, score antifraude et usage hors ligne, à partir du rulebook de la BCE."
+pubDate: 2026-08-14T00:20:00+02:00
+updatedDate: 2026-08-14T00:20:00+02:00
+tags: ["euro numérique", "BCE", "vie privée", "paiements", "données", "enquête"]
+draft: false
+quickTake:
+  fact: "En ligne, le PSP connaîtrait l’identité de son client tandis que l’Eurosystème traiterait des comptes et transactions pseudonymisés. Le projet prévoit néanmoins des identifiants persistants, un annuaire d’alias et un mécanisme antifraude transversal."
+  importance: "La confidentialité dépend moins de l’absence de données que de la capacité à empêcher leur rapprochement entre le PSP, le règlement, l’alias, SEPI et le moteur antifraude."
+  uncertainty: "Le rulebook v0.91 est un brouillon non contraignant. La liste finale des données du mécanisme antifraude, les durées de conservation et l’architecture hors ligne ne sont pas entièrement publiques."
+---
+
+*Ce texte constitue le troisième volet de notre enquête en six parties sur l’euro numérique. Le [premier article](/posts/euro-numerique-1-euro-change-de-debiteur/) suivait la monnaie d’un bilan à l’autre. Le [deuxième](/posts/euro-numerique-2-699-milliards-anatomie-stress-test/) reconstruisait les 699 milliards d’euros de sorties de dépôts du stress test de la BCE. Ce troisième volet quitte les bilans pour suivre une autre matière : les données.*
+
+> **État du dossier au 14 août 2026.** Le règlement final n’est pas adopté. Le projet de rulebook v0.91 publié le 2 juillet 2026 est préliminaire, non contraignant et incomplet, notamment pour le hors ligne. La documentation du pilote 2027 est distincte. Les propriétés décrites ci-dessous correspondent donc à l’architecture actuellement proposée et ne décrivent pas un produit définitif.
+
+Vous payez un café en euros numériques.
+
+Votre banque sait qui vous êtes. Elle a ouvert le compte, vérifié votre identité et authentifié le paiement.
+
+Le commerçant connaît le produit vendu. Son prestataire connaît le montant, le terminal et le compte à créditer.
+
+La plateforme centrale doit vérifier le solde, enregistrer le transfert et renvoyer un statut. Un service d’alias peut avoir résolu un numéro de téléphone. Un autre composant peut calculer un score de fraude à partir de références techniques, du contexte de transaction et, dans le projet actuel, d’une plage d’adresse IP.
+
+La BCE affirme pourtant qu’elle ne pourra pas relier directement le paiement à votre identité.
+
+Ces phrases peuvent être vraies en même temps.
+
+Le système n’est pas conçu pour supprimer toutes les données. Il est conçu pour les séparer : l’identité chez le prestataire de paiement, le compte et le règlement dans l’infrastructure centrale, les valeurs substitutives chez SEPI, les signaux transversaux dans le mécanisme antifraude.
+
+La vraie question n’est donc pas de savoir si une donnée existe.
+
+Elle est de savoir qui peut la rapprocher des autres.
+
+## À retenir en huit lignes
+
+- Le mode en ligne reposerait sur un compte individuel et n’offrirait pas l’anonymat d’un billet numérique.
+- Le PSP connaîtrait l’identité de son propre client et conserverait les informations nécessaires au paiement, à l’AML, à la fraude et aux litiges.
+- L’Eurosystème traiterait des identifiants et transactions pseudonymisés, sans recevoir normalement le nom civil.
+- Pseudonymisé ne signifie pas anonyme : une information supplémentaire permet de retrouver la personne.
+- Le service d’alias relierait actuellement un numéro de téléphone à un compte numérique et au PSP compétent.
+- Le mécanisme central antifraude chercherait des anomalies entre plusieurs PSP et traiterait des métadonnées techniques.
+- Le corpus public documente le commerçant, sa catégorie et le montant. Il n’établit aucune collecte générale du détail de chaque article acheté.
+- Le mode hors ligne pourrait offrir une confidentialité réellement proche du cash pour le détail du paiement, mais son implémentation finale reste à construire et à auditer.
+
+## Privé vis-à-vis de qui ?
+
+Le mot « privé » devient presque inutile lorsqu’on ne précise pas l’acteur concerné.
+
+Une transaction peut être :
+
+- privée vis-à-vis de la BCE ;
+- identifiable par la banque du payeur ;
+- visible par le commerçant ;
+- analysée sous pseudonyme par un moteur antifraude ;
+- accessible à une autorité dans une enquête ciblée ;
+- inconnue des annonceurs ;
+- enregistrée localement sur le téléphone.
+
+Ces situations ne se contredisent pas.
+
+La [page consacrée à la confidentialité](https://www.ecb.europa.eu/euro/digital_euro/features/privacy/html/index.en.html) emploie une formulation précise : l’Eurosystème ne pourrait pas **relier directement** l’utilisateur à ses paiements en ligne. Les données reçues par la BCE seraient pseudonymisées. Le PSP, lui, accéderait aux informations nécessaires pour appliquer le droit européen, notamment les règles de lutte contre le blanchiment et le financement du terrorisme.
+
+Le mot « directement » porte une grande partie de la promesse.
+
+Il signifie que le système central ne devrait pas lire une ligne telle que :
+
+> Olivier Laurelli, 4,20 euros, café X, 8 h 42.
+
+Il ne signifie pas que le système ne reçoitrait ni montant, ni horaire, ni référence, ni identifiant de compte, ni identifiant de PSP.
+
+Le [mandat du Conseil](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf) autorise même explicitement les banques centrales et certains services de soutien à traiter, selon leurs fonctions, un identifiant de compte numérique, le montant d’une transaction en ligne et une plage d’adresse IP de la session. Il leur impose simultanément de ne pas pouvoir attribuer ces données à une personne, y compris en les croisant avec les autres informations qu’ils détiennent.
+
+L’architecture ne repose donc pas sur une cécité générale.
+
+Elle repose sur une interdiction et une impossibilité technique de franchir la dernière étape vers l’identité.
+
+## Quatre mots que le débat mélange constamment
+
+Avant de suivre un paiement, il faut distinguer quatre protections très différentes.
+
+Pour replacer ces protections dans l’architecture monétaire, notre [guide de lecture d’une CBDC](/guides/lire-une-cbdc-euro-numerique-parametre-par-parametre/) passe en revue l’émetteur, le registre, l’accès, les plafonds et la confidentialité.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 540" width="100%" role="img" aria-labelledby="terms-fr-title terms-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="terms-fr-title">Quatre protections différentes pour les données de paiement</title>
+<desc id="terms-fr-desc">Anonymisation, pseudonymisation, tokenisation et chiffrement ne suppriment pas les mêmes risques et ne permettent pas les mêmes retours vers l'identité.</desc>
+<style>{`.terms-fr-mobile{display:none}@media (max-width:640px){.terms-fr-desktop{display:none}.terms-fr-mobile{display:block}}`}</style>
+<g class="terms-fr-desktop">
+<rect width="760" height="540" rx="16" fill="#0b0f14"/>
+<text x="32" y="48" fill="#f7f9fc" font-size="24" font-weight="760">QUATRE MOTS, QUATRE PROTECTIONS</text>
+<text x="32" y="76" fill="#94a3b8" font-size="14">La présence d’un code à la place du nom ne suffit pas à rendre une donnée anonyme.</text>
+<rect x="30" y="112" width="165" height="330" rx="14" fill="#14232b" stroke="#5eead4"/>
+<text x="47" y="148" fill="#5eead4" font-size="15" font-weight="760">ANONYMISÉ</text>
+<text x="47" y="184" fill="#f7f9fc" font-size="14">Le lien raisonnable</text>
+<text x="47" y="205" fill="#f7f9fc" font-size="14">avec la personne</text>
+<text x="47" y="226" fill="#f7f9fc" font-size="14">est rompu.</text>
+<line x1="47" y1="252" x2="178" y2="252" stroke="#36515b"/>
+<text x="47" y="282" fill="#a8bac5" font-size="12">Retour à l’identité :</text>
+<text x="47" y="305" fill="#5eead4" font-size="13" font-weight="720">non prévu</text>
+<text x="47" y="350" fill="#a8bac5" font-size="12">Exemple visé :</text>
+<text x="47" y="373" fill="#dce6eb" font-size="12">statistique réellement</text>
+<text x="47" y="392" fill="#dce6eb" font-size="12">agrégée et non</text>
+<text x="47" y="411" fill="#dce6eb" font-size="12">réidentifiable</text>
+<rect x="208" y="112" width="165" height="330" rx="14" fill="#182236" stroke="#8fa9ff"/>
+<text x="225" y="148" fill="#8fa9ff" font-size="15" font-weight="760">PSEUDONYMISÉ</text>
+<text x="225" y="184" fill="#f7f9fc" font-size="14">Le nom devient un</text>
+<text x="225" y="205" fill="#f7f9fc" font-size="14">identifiant technique.</text>
+<text x="225" y="226" fill="#f7f9fc" font-size="14">Le lien existe ailleurs.</text>
+<line x1="225" y1="252" x2="356" y2="252" stroke="#3b4d70"/>
+<text x="225" y="282" fill="#aab7d7" font-size="12">Retour à l’identité :</text>
+<text x="225" y="305" fill="#8fa9ff" font-size="13" font-weight="720">oui, avec la clé</text>
+<text x="225" y="350" fill="#aab7d7" font-size="12">Exemple euro :</text>
+<text x="225" y="373" fill="#dde4f6" font-size="12">user ID, DEAN ou</text>
+<text x="225" y="392" fill="#dde4f6" font-size="12">compte central sans</text>
+<text x="225" y="411" fill="#dde4f6" font-size="12">nom civil</text>
+<rect x="386" y="112" width="165" height="330" rx="14" fill="#291d33" stroke="#db8cff"/>
+<text x="403" y="148" fill="#db8cff" font-size="15" font-weight="760">TOKENISÉ</text>
+<text x="403" y="184" fill="#f7f9fc" font-size="14">Une valeur remplace</text>
+<text x="403" y="205" fill="#f7f9fc" font-size="14">la donnée dans un</text>
+<text x="403" y="226" fill="#f7f9fc" font-size="14">canal précis.</text>
+<line x1="403" y1="252" x2="534" y2="252" stroke="#594063"/>
+<text x="403" y="282" fill="#cab7d2" font-size="12">Retour à la donnée :</text>
+<text x="403" y="305" fill="#db8cff" font-size="13" font-weight="720">oui, si autorisé</text>
+<text x="403" y="350" fill="#cab7d2" font-size="12">Exemple euro :</text>
+<text x="403" y="373" fill="#eee3f2" font-size="12">token QR, lien ou</text>
+<text x="403" y="392" fill="#eee3f2" font-size="12">NFC géré par</text>
+<text x="403" y="411" fill="#eee3f2" font-size="12">SEPI</text>
+<rect x="564" y="112" width="165" height="330" rx="14" fill="#302418" stroke="#ffb86b"/>
+<text x="581" y="148" fill="#ffb86b" font-size="15" font-weight="760">CHIFFRÉ</text>
+<text x="581" y="184" fill="#f7f9fc" font-size="14">Le contenu reste</text>
+<text x="581" y="205" fill="#f7f9fc" font-size="14">illisible sans la clé.</text>
+<text x="581" y="226" fill="#f7f9fc" font-size="14">Le message existe.</text>
+<line x1="581" y1="252" x2="712" y2="252" stroke="#665039"/>
+<text x="581" y="282" fill="#d4c2ab" font-size="12">Lecture :</text>
+<text x="581" y="305" fill="#ffb86b" font-size="13" font-weight="720">oui, par le destinataire</text>
+<text x="581" y="350" fill="#d4c2ab" font-size="12">Exemple euro :</text>
+<text x="581" y="373" fill="#f1e7da" font-size="12">objets transmis</text>
+<text x="581" y="392" fill="#f1e7da" font-size="12">entre deux PSP</text>
+<text x="581" y="411" fill="#f1e7da" font-size="12">via le DESP</text>
+<rect x="30" y="470" width="699" height="43" rx="9" fill="#111923" stroke="#344556"/>
+<text x="48" y="497" fill="#dce6ef" font-size="13">Le mode en ligne repose sur des données pseudonymisées.</text>
+</g>
+<g class="terms-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="249" rx="9" fill="#0b0f14"/>
+<text x="15" y="22" fill="#f7f9fc" font-size="14" font-weight="760">QUATRE PROTECTIONS DIFFÉRENTES</text>
+<text x="15" y="36" fill="#94a3b8" font-size="8">Un code à la place du nom ne suffit pas.</text>
+<rect x="13" y="47" width="324" height="39" rx="7" fill="#14232b" stroke="#5eead4"/>
+<text x="23" y="63" fill="#5eead4" font-size="9" font-weight="760">ANONYMISÉ</text><text x="327" y="63" text-anchor="end" fill="#f7f9fc" font-size="9">lien rompu</text>
+<text x="23" y="78" fill="#b7c8d0" font-size="8">Retour raisonnable à l’identité non prévu.</text>
+<rect x="13" y="94" width="324" height="39" rx="7" fill="#182236" stroke="#8fa9ff"/>
+<text x="23" y="110" fill="#8fa9ff" font-size="9" font-weight="760">PSEUDONYMISÉ</text><text x="327" y="110" text-anchor="end" fill="#f7f9fc" font-size="9">clé séparée</text>
+<text x="23" y="125" fill="#bdc9e5" font-size="8">La personne peut être retrouvée avec une information en plus.</text>
+<rect x="13" y="141" width="324" height="39" rx="7" fill="#291d33" stroke="#db8cff"/>
+<text x="23" y="157" fill="#db8cff" font-size="9" font-weight="760">TOKENISÉ</text><text x="327" y="157" text-anchor="end" fill="#f7f9fc" font-size="9">valeur substitutive</text>
+<text x="23" y="172" fill="#d2c2d9" font-size="8">Un acteur autorisé peut retrouver la donnée sous-jacente.</text>
+<rect x="13" y="188" width="324" height="39" rx="7" fill="#302418" stroke="#ffb86b"/>
+<text x="23" y="204" fill="#ffb86b" font-size="9" font-weight="760">CHIFFRÉ</text><text x="327" y="204" text-anchor="end" fill="#f7f9fc" font-size="9">lecture avec clé</text>
+<text x="23" y="219" fill="#d8c9b8" font-size="8">Le contenu est protégé, les métadonnées peuvent subsister.</text>
+<text x="15" y="241" fill="#9fb0c0" font-size="8">Le mode en ligne relève de la pseudonymisation.</text>
+</g>
+</svg>
+<figcaption>Anonymisation, pseudonymisation, tokenisation et chiffrement ne désignent ni le même traitement ni le même risque de retour vers l’identité.</figcaption>
+</figure>
+
+### Anonymiser
+
+L’anonymisation rompt raisonnablement le lien avec une personne.
+
+Une statistique correctement agrégée peut être anonyme. Un numéro de compte stable dont une banque conserve la table de correspondance ne l’est pas.
+
+### Pseudonymiser
+
+La [pseudonymisation](/glossaire/pseudonymisation/) remplace ou sépare l’identité. Une information supplémentaire permet de réattribuer la donnée.
+
+Le RGPD continue donc de s’appliquer.
+
+Le projet de rulebook décrit précisément l’alias comme un identifiant pseudonyme qui ne peut être attribué à une personne que par le PSP distributeur ou par l’utilisateur. Le principe vaut plus largement pour les comptes et identifiants techniques envoyés vers l’infrastructure centrale.
+
+### Tokeniser
+
+La [tokenisation](/glossaire/tokenisation/) remplace une information par une valeur substitutive pour un usage déterminé.
+
+Le service SEPI peut générer un token de QR code, de lien de paiement ou de NFC. Un PSP autorisé doit toutefois pouvoir demander la donnée sous-jacente afin de poursuivre le paiement.
+
+Le token masque la donnée tout en conservant une correspondance réversible.
+
+### Chiffrer
+
+Le chiffrement rend un contenu illisible sans la clé.
+
+Le service de règlement peut transporter entre PSP des objets chiffrés qu’il n’a pas besoin de lire entièrement. L’existence d’un contenu chiffré n’efface pas les métadonnées nécessaires au routage, à l’horodatage ou au statut.
+
+## La transaction après séparation de l’identité
+
+Le projet de rulebook v0.91 présente plusieurs domaines.
+
+Le PSP gère la relation client. La Digital Euro Service Platform, ou DESP, regroupe notamment :
+
+- la gestion des accès et des comptes ;
+- l’annuaire d’alias ;
+- le règlement ;
+- SEPI ;
+- le risque et la fraude ;
+- les litiges ;
+- l’échange de données ;
+- le service hors ligne.
+
+Le [document de gestion des données](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D1_-_Front-end_implementation_specifications_7_Data_management.en.pdf) décrit un modèle simplifié. Il précise qu’il ne représente ni la totalité du système, ni la manière dont chaque information sera stockée.
+
+Cette limite est importante.
+
+Une donnée présente dans le modèle n’est pas nécessairement visible par tous les acteurs. Une donnée absente du diagramme peut déjà exister dans les systèmes du PSP.
+
+La carte suivante décrit un paiement en ligne typique, sans prétendre que chaque champ suit le même parcours dans tous les cas.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 600" width="100%" role="img" aria-labelledby="flow-fr-title flow-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="flow-fr-title">Qui voit quoi lors d'un paiement en ligne en euros numériques</title>
+<desc id="flow-fr-desc">Le PSP du payeur connaît l'identité. L'alias lookup résout le compte. Le mécanisme antifraude calcule un score. Le DESP règle le montant à partir d'identifiants techniques. Le PSP du bénéficiaire connaît son propre client.</desc>
+<style>{`.flow-fr-mobile{display:none}@media (max-width:640px){.flow-fr-desktop{display:none}.flow-fr-mobile{display:block}}`}</style>
+<defs>
+<marker id="flow-fr-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#71859a"/></marker>
+</defs>
+<g class="flow-fr-desktop">
+<rect width="760" height="600" rx="16" fill="#0b0f14"/>
+<text x="32" y="48" fill="#f7f9fc" font-size="24" font-weight="760">UN PAIEMENT EN LIGNE, CINQ REGARDS</text>
+<text x="32" y="76" fill="#94a3b8" font-size="14">La séparation des rôles remplace l’anonymat.</text>
+<rect x="28" y="116" width="112" height="152" rx="13" fill="#172337" stroke="#8fa9ff"/>
+<text x="84" y="147" text-anchor="middle" fill="#8fa9ff" font-size="13" font-weight="760">PAYEUR</text>
+<text x="43" y="179" fill="#f7f9fc" font-size="12">voit montant</text>
+<text x="43" y="199" fill="#f7f9fc" font-size="12">et bénéficiaire</text>
+<text x="43" y="229" fill="#9fb0c0" font-size="11">terminal local</text>
+<rect x="156" y="116" width="132" height="152" rx="13" fill="#172337" stroke="#8fa9ff"/>
+<text x="222" y="147" text-anchor="middle" fill="#8fa9ff" font-size="13" font-weight="760">PSP PAYEUR</text>
+<text x="171" y="179" fill="#f7f9fc" font-size="12">identité réelle</text>
+<text x="171" y="199" fill="#f7f9fc" font-size="12">DEAN, alias</text>
+<text x="171" y="219" fill="#f7f9fc" font-size="12">montant, appareil</text>
+<text x="171" y="242" fill="#9fb0c0" font-size="11">KYC, AML, fraude</text>
+<rect x="304" y="116" width="132" height="152" rx="13" fill="#24202f" stroke="#d98bff"/>
+<text x="370" y="147" text-anchor="middle" fill="#d98bff" font-size="13" font-weight="760">SERVICES</text>
+<text x="319" y="179" fill="#f7f9fc" font-size="12">alias lookup</text>
+<text x="319" y="199" fill="#f7f9fc" font-size="12">token SEPI</text>
+<text x="319" y="219" fill="#f7f9fc" font-size="12">score RFM</text>
+<text x="319" y="242" fill="#bfaec7" font-size="11">identité civile absente</text>
+<rect x="452" y="116" width="132" height="152" rx="13" fill="#142b2c" stroke="#5eead4"/>
+<text x="518" y="147" text-anchor="middle" fill="#5eead4" font-size="13" font-weight="760">RÈGLEMENT</text>
+<text x="467" y="179" fill="#f7f9fc" font-size="12">UETR, montant</text>
+<text x="467" y="199" fill="#f7f9fc" font-size="12">comptes techniques</text>
+<text x="467" y="219" fill="#f7f9fc" font-size="12">heure, statut</text>
+<text x="467" y="242" fill="#a7c6c4" font-size="11">transfert atomique</text>
+<rect x="600" y="116" width="132" height="152" rx="13" fill="#172337" stroke="#8fa9ff"/>
+<text x="666" y="147" text-anchor="middle" fill="#8fa9ff" font-size="13" font-weight="760">PSP BÉNÉF.</text>
+<text x="615" y="179" fill="#f7f9fc" font-size="12">identité client</text>
+<text x="615" y="199" fill="#f7f9fc" font-size="12">montant reçu</text>
+<text x="615" y="219" fill="#f7f9fc" font-size="12">terminal marchand</text>
+<text x="615" y="242" fill="#9fb0c0" font-size="11">historique, litige</text>
+<line x1="140" y1="192" x2="152" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"/>
+<line x1="288" y1="192" x2="300" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"/>
+<line x1="436" y1="192" x2="448" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"/>
+<line x1="584" y1="192" x2="596" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"/>
+<rect x="28" y="305" width="704" height="214" rx="14" fill="#111923" stroke="#344556"/>
+<text x="48" y="339" fill="#f7f9fc" font-size="16" font-weight="760">PÉRIMÈTRE DE CHAQUE ACTEUR</text>
+<line x1="48" y1="357" x2="712" y2="357" stroke="#344556"/>
+<text x="48" y="389" fill="#8fa9ff" font-size="12" font-weight="720">IDENTITÉ CIVILE</text>
+<text x="236" y="389" fill="#f7f9fc" font-size="12">chez chaque PSP pour son propre client</text>
+<text x="48" y="421" fill="#5eead4" font-size="12" font-weight="720">MONTANT ET STATUT</text>
+<text x="236" y="421" fill="#f7f9fc" font-size="12">nécessaires au règlement central</text>
+<text x="48" y="453" fill="#d98bff" font-size="12" font-weight="720">SIGNAUX DE FRAUDE</text>
+<text x="236" y="453" fill="#f7f9fc" font-size="12">analysés sous identifiants techniques</text>
+<text x="48" y="485" fill="#ffb86b" font-size="12" font-weight="720">DÉTAIL DU PANIER</text>
+<text x="236" y="485" fill="#f7f9fc" font-size="12">connu du marchand ; présence centrale générale non établie</text>
+<text x="32" y="563" fill="#7f91a3" font-size="11">Schéma synthétique. Les objets visibles et chiffrés varient selon P2P, POS et e-commerce.</text>
+</g>
+<g class="flow-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="276" rx="9" fill="#0b0f14"/>
+<text x="15" y="22" fill="#f7f9fc" font-size="14" font-weight="760">UN PAIEMENT EN LIGNE</text>
+<text x="15" y="36" fill="#94a3b8" font-size="8">La séparation des rôles remplace l’anonymat.</text>
+<rect x="14" y="49" width="322" height="35" rx="7" fill="#172337" stroke="#8fa9ff"/>
+<text x="24" y="64" fill="#8fa9ff" font-size="9" font-weight="760">1 · PSP PAYEUR</text><text x="326" y="64" text-anchor="end" fill="#f7f9fc" font-size="9">identité réelle</text>
+<text x="24" y="77" fill="#aab8c8" font-size="8">DEAN, alias, montant, appareil, KYC et AML</text>
+<rect x="14" y="91" width="322" height="35" rx="7" fill="#24202f" stroke="#d98bff"/>
+<text x="24" y="106" fill="#d98bff" font-size="9" font-weight="760">2 · ALIAS, SEPI, RFM</text><text x="326" y="106" text-anchor="end" fill="#f7f9fc" font-size="9">codes et score</text>
+<text x="24" y="119" fill="#c7b8ce" font-size="8">Routage, token et analyse antifraude</text>
+<rect x="14" y="133" width="322" height="35" rx="7" fill="#142b2c" stroke="#5eead4"/>
+<text x="24" y="148" fill="#5eead4" font-size="9" font-weight="760">3 · RÈGLEMENT DESP</text><text x="326" y="148" text-anchor="end" fill="#f7f9fc" font-size="9">identité civile absente</text>
+<text x="24" y="161" fill="#b2cdcb" font-size="8">UETR, montant, comptes techniques, heure et statut</text>
+<rect x="14" y="175" width="322" height="35" rx="7" fill="#172337" stroke="#8fa9ff"/>
+<text x="24" y="190" fill="#8fa9ff" font-size="9" font-weight="760">4 · PSP BÉNÉFICIAIRE</text><text x="326" y="190" text-anchor="end" fill="#f7f9fc" font-size="9">son client connu</text>
+<text x="24" y="203" fill="#aab8c8" font-size="8">Montant reçu, terminal, historique et litige</text>
+<rect x="14" y="219" width="322" height="37" rx="7" fill="#111923" stroke="#344556"/>
+<text x="24" y="234" fill="#ffb86b" font-size="9" font-weight="760">PANIER DÉTAILLÉ</text>
+<text x="24" y="248" fill="#d5dee7" font-size="8">Connu du marchand ; présence centrale générale non établie.</text>
+<text x="15" y="270" fill="#8295a7" font-size="8">Flux variable selon P2P, POS et e-commerce.</text>
+</g>
+</svg>
+<figcaption>Le nom reste chez le PSP. Les références, montants et statuts nécessaires au paiement continuent de circuler dans l’infrastructure technique.</figcaption>
+</figure>
+
+## Le périmètre de données du PSP
+
+Le PSP est la partie la moins mystérieuse du dispositif.
+
+Il ouvre le compte, vérifie l’identité et attribue ou demande les identifiants nécessaires. Il peut gérer :
+
+- le DEAN, le numéro de compte propre à l’euro numérique ;
+- l’alias éventuel ;
+- le compte bancaire lié ;
+- les paramètres de waterfall ;
+- les instruments et appareils ;
+- l’historique ;
+- les remboursements ;
+- les litiges ;
+- les alertes de fraude.
+
+La [FAQ de la BCE](https://www.ecb.europa.eu/euro/digital_euro/faqs/html/ecb.faq_digital_euro.en.html) le dit clairement : pour les transactions en ligne, les PSP pourraient identifier les utilisateurs afin d’appliquer les règles AML.
+
+La confidentialité vis-à-vis de l’Eurosystème ne rend donc pas le paiement invisible à la banque.
+
+Elle tente d’empêcher que l’infrastructure publique reçoive la dernière table de correspondance entre compte technique et identité civile.
+
+## Les données nécessaires au règlement central
+
+Le service de règlement ne peut pas fonctionner sans données transactionnelles.
+
+Il doit :
+
+- vérifier qu’un montant peut être transféré ;
+- débiter et créditer les inscriptions techniques ;
+- gérer le funding ou le defunding lorsque le plafond intervient ;
+- garantir que tout se produit atomiquement ;
+- renvoyer un statut ;
+- permettre de retrouver une transaction en cas d’erreur ou de litige.
+
+Le projet utilise notamment une **UETR**, une référence unique de bout en bout, ainsi qu’un horodatage d’acceptation.
+
+Le [projet de spécification de règlement](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_7_-_Settlement.en.pdf) indique que le DESP assemble les éléments envoyés par les PSP et ne transmet à chaque partie que les informations nécessaires.
+
+Certains objets peuvent être chiffrés lorsqu’ils doivent seulement traverser le DESP pour atteindre l’autre PSP.
+
+D’autres éléments restent nécessaires à la plateforme :
+
+- UETR ;
+- heure ;
+- identifiants de PSP ;
+- comptes ou inscriptions techniques ;
+- montant ;
+- statut ;
+- présence éventuelle d’un funding, d’un defunding, d’un remboursement ou d’une réservation.
+
+Une référence capable de retrouver une opération n’est pas une identité.
+
+Elle devient un quasi-identifiant lorsqu’elle peut être rapprochée d’une autre source.
+
+## Le numéro de téléphone devient une adresse monétaire
+
+Le projet autorise un paiement à partir d’un DEAN ou d’un alias plus simple.
+
+Dans le [draft actuel du service d’alias](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_2_-_Access_management_and_alias_lookup.en.pdf), le seul type supplémentaire prévu est le numéro de téléphone mobile.
+
+Le service doit pouvoir répondre à deux questions :
+
+- quel DEAN correspond à ce numéro ?
+- quel PSP peut recevoir la demande ?
+
+Le numéro ne doit pas nécessairement être révélé à l’Eurosystème comme identité civile. Il reste pourtant une donnée très proche de la personne dans la vie courante.
+
+L’annuaire crée donc une infrastructure sensible :
+
+> téléphone → DEAN → PSP.
+
+Cette commodité ouvre des questions classiques :
+
+- une requête permet-elle de savoir qu’un numéro utilise l’euro numérique ?
+- un attaquant peut-il tester des millions de numéros ?
+- les recherches infructueuses sont-elles journalisées ?
+- que se passe-t-il après un changement de numéro ?
+- comment résister au SIM swap ?
+- combien de temps l’ancien alias reste-t-il conservé ?
+- qui peut administrer la table ?
+
+Le rulebook décrit les appels API.
+
+Il ne publie pas encore toutes les réponses opérationnelles à ces questions.
+
+## Le périmètre de protection de SEPI
+
+Le service **Secure Exchange of Payment Information**, ou SEPI, intervient notamment dans les QR codes, les liens de paiement et le NFC.
+
+Son rôle consiste à générer des valeurs substitutives et à valider des cryptogrammes.
+
+Pour le NFC, SEPI produit lors de l’enrôlement une valeur substitutive et des clés de session. À chaque transaction, le terminal génère un cryptogramme à partir de métadonnées et d’une clé. Le PSP envoie ensuite le cryptogramme, le token et les données nécessaires au service, qui recalcule le résultat pour vérifier l’authenticité.
+
+Pour le QR ou le lien de paiement, le token réduit la quantité d’information directement exposée et peut être spécifique à la transaction.
+
+Le [marché public SEPI](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00644136-en-ts.pdf) prévoit aussi la détokenisation : un PSP autorisé peut obtenir les données associées à la valeur substitutive.
+
+Les questions déterminantes deviennent :
+
+- qui possède les clés ?
+- le prestataire qui exploite SEPI voit-il les données sous-jacentes ?
+- les tokens sont-ils toujours uniques ?
+- combien de temps vivent-ils ?
+- les journaux de tokenisation peuvent-ils relier plusieurs paiements ?
+- qui peut demander la détokenisation ?
+
+SEPI améliore la confidentialité du transport.
+
+Sa sécurité dépend de la séparation entre la valeur visible et la table qui permet de l’ouvrir.
+
+## Le profil technique produit par le moteur antifraude
+
+Le mécanisme central de risque et fraude constitue le point le plus sensible du mode en ligne.
+
+Le [marché publié par la BCE](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00646738-en-ts.pdf) lui assigne deux fonctions.
+
+Avant le règlement, il doit calculer un score en temps réel à partir des détails fournis par le PSP.
+
+Après le règlement, il doit rechercher des schémas de fraude à partir d’une vue transversale des transactions entre PSP, recevoir des statistiques, conserver certaines informations liées aux scores et produire des rapports de situation.
+
+La logique est compréhensible.
+
+Un fraudeur peut déplacer des fonds entre plusieurs banques. Chaque PSP ne voit qu’un fragment. Un système transversal détecte des motifs qu’aucun intermédiaire isolé ne peut observer.
+
+La même propriété crée le risque de concentration.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 520" width="100%" role="img" aria-labelledby="corr-fr-title corr-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="corr-fr-title">Le profil technique produit par le moteur antifraude</title>
+<desc id="corr-fr-desc">Le mécanisme antifraude peut combiner une référence de paiement, un montant, un horaire, un PSP, une plage IP et un score. L'identité directe reste au PSP, mais la corrélation peut produire un profil technique.</desc>
+<style>{`.corr-fr-mobile{display:none}@media (max-width:640px){.corr-fr-desktop{display:none}.corr-fr-mobile{display:block}}`}</style>
+<defs><marker id="corr-fr-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#7f91a4"/></marker></defs>
+<g class="corr-fr-desktop">
+<rect width="760" height="520" rx="16" fill="#0b0f14"/>
+<text x="32" y="48" fill="#f7f9fc" font-size="24" font-weight="760">LA CORRÉLATION PRODUIT UN MOTIF</text>
+<text x="32" y="76" fill="#94a3b8" font-size="14">La réidentification n’est pas la seule forme de connaissance.</text>
+<rect x="32" y="112" width="188" height="288" rx="14" fill="#172337" stroke="#8fa9ff"/>
+<text x="52" y="145" fill="#8fa9ff" font-size="14" font-weight="760">CHEZ LE PSP</text>
+<text x="52" y="178" fill="#f7f9fc" font-size="14">Identité civile</text>
+<text x="52" y="202" fill="#f7f9fc" font-size="14">Compte et DEAN</text>
+<text x="52" y="226" fill="#f7f9fc" font-size="14">Historique client</text>
+<text x="52" y="250" fill="#f7f9fc" font-size="14">Appareil connu</text>
+<line x1="52" y1="278" x2="200" y2="278" stroke="#3b4d70"/>
+<text x="52" y="307" fill="#aab8d8" font-size="12">Lien direct :</text>
+<text x="52" y="330" fill="#8fa9ff" font-size="14" font-weight="720">oui</text>
+<text x="52" y="367" fill="#aab8d8" font-size="11">Contrôles KYC, AML</text>
+<text x="52" y="385" fill="#aab8d8" font-size="11">et fraude internes</text>
+<rect x="286" y="112" width="188" height="288" rx="14" fill="#291d33" stroke="#d98bff"/>
+<text x="306" y="145" fill="#d98bff" font-size="14" font-weight="760">AU RFM CENTRAL</text>
+<text x="306" y="178" fill="#f7f9fc" font-size="14">Payment ID / UETR</text>
+<text x="306" y="202" fill="#f7f9fc" font-size="14">Montant et heure</text>
+<text x="306" y="226" fill="#f7f9fc" font-size="14">PSP payeur</text>
+<text x="306" y="250" fill="#f7f9fc" font-size="14">Plage IP prévue</text>
+<line x1="306" y1="278" x2="454" y2="278" stroke="#594063"/>
+<text x="306" y="307" fill="#cbb9d3" font-size="12">Nom civil :</text>
+<text x="306" y="330" fill="#d98bff" font-size="14" font-weight="720">non prévu</text>
+<text x="306" y="367" fill="#cbb9d3" font-size="11">Jeu final incomplet</text>
+<text x="306" y="385" fill="#cbb9d3" font-size="11">dans le draft public</text>
+<rect x="540" y="112" width="188" height="288" rx="14" fill="#142b2c" stroke="#5eead4"/>
+<text x="560" y="145" fill="#5eead4" font-size="14" font-weight="760">PROFIL PRODUIT</text>
+<text x="560" y="178" fill="#f7f9fc" font-size="14">Répétition</text>
+<text x="560" y="202" fill="#f7f9fc" font-size="14">Vitesse des flux</text>
+<text x="560" y="226" fill="#f7f9fc" font-size="14">Réseau entre PSP</text>
+<text x="560" y="250" fill="#f7f9fc" font-size="14">Anomalies</text>
+<line x1="560" y1="278" x2="708" y2="278" stroke="#365b59"/>
+<text x="560" y="307" fill="#b3cfcc" font-size="12">Résultat :</text>
+<text x="560" y="330" fill="#5eead4" font-size="14" font-weight="720">profil technique</text>
+<text x="560" y="367" fill="#b3cfcc" font-size="11">Utile contre la fraude,</text>
+<text x="560" y="385" fill="#b3cfcc" font-size="11">sensible pour la vie privée</text>
+<line x1="220" y1="256" x2="280" y2="256" stroke="#7f91a4" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#corr-fr-arrow)"/>
+<line x1="474" y1="256" x2="534" y2="256" stroke="#7f91a4" stroke-width="2" marker-end="url(#corr-fr-arrow)"/>
+<text x="250" y="241" text-anchor="middle" fill="#8295a7" font-size="10">séparation</text>
+<text x="504" y="241" text-anchor="middle" fill="#8295a7" font-size="10">corrélation</text>
+<rect x="32" y="435" width="696" height="48" rx="9" fill="#111923" stroke="#344556"/>
+<text x="52" y="465" fill="#e1e8ef" font-size="13">Le test essentiel : empêcher que la clé d’identité entre dans le domaine de corrélation.</text>
+</g>
+<g class="corr-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="239" rx="9" fill="#0b0f14"/>
+<text x="15" y="22" fill="#f7f9fc" font-size="14" font-weight="760">LA CORRÉLATION PRODUIT UN MOTIF</text>
+<text x="15" y="36" fill="#94a3b8" font-size="8">Un système peut reconnaître un comportement sous pseudonyme.</text>
+<rect x="14" y="49" width="322" height="47" rx="7" fill="#172337" stroke="#8fa9ff"/>
+<text x="24" y="65" fill="#8fa9ff" font-size="9" font-weight="760">PSP · IDENTITÉ DIRECTE</text>
+<text x="24" y="80" fill="#d5deea" font-size="8">Nom, compte, historique et appareil du client</text>
+<rect x="14" y="104" width="322" height="55" rx="7" fill="#291d33" stroke="#d98bff"/>
+<text x="24" y="120" fill="#d98bff" font-size="9" font-weight="760">RFM · DONNÉES TECHNIQUES</text>
+<text x="24" y="135" fill="#ded3e3" font-size="8">UETR, montant, heure, PSP et plage IP prévue</text>
+<text x="24" y="149" fill="#ab98b4" font-size="8">La liste finale reste incomplète publiquement.</text>
+<rect x="14" y="167" width="322" height="45" rx="7" fill="#142b2c" stroke="#5eead4"/>
+<text x="24" y="183" fill="#5eead4" font-size="9" font-weight="760">RÉSULTAT · PROFIL TECHNIQUE</text>
+<text x="24" y="198" fill="#cbe0de" font-size="8">Répétition, vitesse, réseau et anomalies entre PSP</text>
+<text x="15" y="231" fill="#8295a7" font-size="8">La clé d’identité doit rester hors du domaine de corrélation.</text>
+</g>
+</svg>
+<figcaption>Un mécanisme antifraude peut produire une connaissance comportementale sans recevoir directement le nom civil. La protection dépend alors du périmètre des données, de la conservation et de la séparation des clés.</figcaption>
+</figure>
+
+Le [draft Risk and Fraud Management](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_4_-_Risk_and_fraud.en.pdf) montre que le score central se trouve sur le chemin critique des paiements P2P et e-commerce. Le PSP doit recevoir le résultat avant de finaliser sa décision. Pour certains paiements en magasin, il peut continuer sans attendre afin de ne pas dépasser la latence permise.
+
+La version publique mentionne notamment :
+
+- Payment ID ;
+- UETR ;
+- identifiant du PSP payeur ;
+- plage d’adresse IP de la session ;
+- statut et type de fraude dans les remontées quotidiennes.
+
+Plusieurs champs restent des placeholders.
+
+Le corpus ne permet donc pas de connaître le jeu final utilisé par le modèle.
+
+Le [Conseil](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf) autorise les services de soutien à traiter un identifiant unique de compte, le montant et une plage IP afin de fournir la fraude et les litiges. Il exige parallèlement que ces données ne permettent pas d’identifier directement l’utilisateur.
+
+Le débat sérieux se trouve ici.
+
+Un moteur n’a pas besoin de connaître un nom pour reconnaître :
+
+- une répétition ;
+- un rythme ;
+- un réseau de comptes ;
+- une géographie approximative ;
+- une succession d’appareils ;
+- un comportement inhabituel.
+
+Cette capacité est utile contre la fraude.
+
+Elle peut aussi créer un profil technique durable.
+
+Les questions sans réponse publique complète sont nombreuses :
+
+- durée de conservation des scores ;
+- profondeur de l’historique ;
+- variables finales ;
+- utilisation de machine learning ;
+- entraînement sur données réelles ;
+- accès des opérateurs techniques ;
+- explication d’un faux positif ;
+- possibilité de contester ;
+- granularité des rapports transmis aux régulateurs ;
+- rapprochement possible avec les autres services du DESP.
+
+L’annexe détaillée des scénarios de risque demeure confidentielle.
+
+## Le niveau de détail commercial
+
+La formule « la BCE connaîtra vos achats » mélange trois niveaux.
+
+### Le commerçant
+
+Il connaît évidemment le panier vendu.
+
+Son système de caisse peut conserver la liste des produits, le prix unitaire, les remises et la facture.
+
+### Le PSP acquéreur
+
+Il connaît le commerçant, le montant, le terminal et les informations nécessaires au paiement.
+
+### L’infrastructure centrale
+
+Le modèle de données documente notamment :
+
+- le montant ;
+- le commerçant ou son compte ;
+- un **Merchant Category Code**, ou MCC ;
+- le contexte du paiement ;
+- une référence ou une information de remise facultative ;
+- un éventuel pourboire ou montant additionnel.
+
+Le MCC décrit une catégorie d’activité : restauration, transport, hébergement, services médicaux.
+
+Il ne décrit pas nécessairement le contenu du panier.
+
+Le corpus public actuel ne démontre pas que le DESP recevrait systématiquement :
+
+> café, croissant, marque, composition et quantité.
+
+Une référence libre ou structurée peut néanmoins contenir une information sensible si le PSP ou le commerçant la renseigne.
+
+La bonne conclusion est donc :
+
+> **l’infrastructure centrale transporte le montant et peut acheminer un MCC chiffré entre acteurs autorisés. Le corpus public ne démontre ni que le DESP lit ce code en clair, ni une collecte généralisée du détail de chaque produit.**
+
+## Les pseudonymes statiques vieillissent mal
+
+Un pseudonyme peut être sûr le jour de sa création et devenir révélateur plus tard.
+
+La [CNIL et la BfDI](https://cnil.fr/en/confidentiality-digital-euro-where-are-we) ont insisté en mai 2026 sur le risque des identifiants statiques.
+
+Supposons que l’infrastructure centrale voie pendant des mois le même identifiant technique.
+
+Elle ignore le nom.
+
+Une seule opération peut pourtant être connue de l’extérieur :
+
+- un montant rare ;
+- une heure précise ;
+- un reçu ;
+- un contrôle ;
+- un incident ;
+- un funding bancaire observé au même moment.
+
+Si ce rapprochement révèle l’utilisateur derrière le pseudonyme, toutes les autres opérations liées au même identifiant deviennent corrélables.
+
+Les autorités recommandent donc d’étudier des identifiants dynamiques, renouvelés régulièrement ou propres à chaque contexte.
+
+Le projet actuel utilise plusieurs références :
+
+- user ID ;
+- preuve technique hachée ;
+- DEAN ;
+- UETR ;
+- token ;
+- identifiant d’appareil ;
+- identifiant de score.
+
+Toutes ne jouent pas le même rôle et toutes ne sont pas forcément visibles par le même service.
+
+L’enquête doit obtenir une réponse claire à trois questions :
+
+1. quels identifiants restent stables ?
+2. quels services peuvent les voir ensemble ?
+3. quelle information supplémentaire permet de revenir à la personne ?
+
+## Le seuil de confidentialité que les autorités demandaient
+
+Dès 2022, l’EDPB proposait un seuil en dessous duquel les petits paiements en ligne ne seraient ni tracés ni enregistrés par l’intermédiaire aux fins ordinaires de contrôle.
+
+L’idée consiste à reproduire une propriété du cash : un café ne déclenche pas automatiquement la même traçabilité qu’un virement important.
+
+L’[avis conjoint EDPB-EDPS de 2023](https://www.edpb.europa.eu/system/files/2023-10/edpb_edps_jointopinion_022023_digitaleuro_en.pdf) demande également :
+
+- de définir précisément les données de transaction ;
+- de rendre la pseudonymisation obligatoire dans le texte juridique ;
+- de justifier la nécessité du mécanisme antifraude central ;
+- d’étudier des solutions moins centralisées ;
+- de préciser les responsabilités des différents contrôleurs.
+
+Le mode en ligne documenté en 2026 reste un système de compte à règlement central.
+
+Nous n’avons pas trouvé dans le rulebook v0.91 un seuil général rendant les petits paiements en ligne non suivis par le PSP.
+
+Le Parlement soutient les technologies de type zero-knowledge proof dans sa position de négociation. Cette orientation politique n’est pas encore une propriété démontrée de tous les flux techniques.
+
+## Le mode hors ligne change réellement la réponse
+
+Le paiement hors ligne ne constitue pas seulement un mode dégradé du système en ligne.
+
+Il vise une architecture différente.
+
+La valeur serait chargée sur un dispositif sécurisé. Le transfert se produirait directement entre deux appareils proches, sans intervention d’un PSP ou du DESP au moment du paiement. La [BCE](https://www.ecb.europa.eu/euro/digital_euro/faqs/html/ecb.faq_digital_euro.en.html) affirme que les détails personnels de l’opération ne seraient connus que du payeur et du bénéficiaire.
+
+Le [mandat du Conseil](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf) va plus loin : les PSP ne devraient traiter pour le hors ligne que les informations nécessaires au chargement, au retrait et à l’authenticité du dispositif. Les données de transaction hors ligne ne devraient pas être surveillées ni conservées par l’intermédiaire.
+
+Cette différence est substantielle.
+
+Elle ne signifie pas qu’aucune donnée n’existe.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 540" width="100%" role="img" aria-labelledby="offline-fr-title offline-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="offline-fr-title">Cycle de vie d'un paiement hors ligne en euros numériques</title>
+<desc id="offline-fr-desc">Le chargement est connu du PSP, le paiement se déroule localement entre deux appareils, puis le retrait ou la reconnexion redevient visible. Le détail des paiements intermédiaires ne devrait pas remonter.</desc>
+<style>{`.offline-fr-mobile{display:none}@media (max-width:640px){.offline-fr-desktop{display:none}.offline-fr-mobile{display:block}}`}</style>
+<defs><marker id="offline-fr-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#71859a"/></marker></defs>
+<g class="offline-fr-desktop">
+<rect width="760" height="540" rx="16" fill="#0b0f14"/>
+<text x="32" y="48" fill="#f7f9fc" font-size="24" font-weight="760">HORS LIGNE : PRIVÉ AU MILIEU, VISIBLE AUX BORDS</text>
+<text x="32" y="76" fill="#94a3b8" font-size="14">L’objectif cash-like concerne le détail de la transaction locale.</text>
+<rect x="34" y="120" width="202" height="266" rx="15" fill="#172337" stroke="#8fa9ff"/>
+<text x="54" y="154" fill="#8fa9ff" font-size="14" font-weight="760">1 · CHARGEMENT</text>
+<text x="54" y="190" fill="#f7f9fc" font-size="14">PSP connaît :</text>
+<text x="54" y="219" fill="#d9e2ed" font-size="13">identité</text>
+<text x="54" y="243" fill="#d9e2ed" font-size="13">montant</text>
+<text x="54" y="267" fill="#d9e2ed" font-size="13">date</text>
+<text x="54" y="291" fill="#d9e2ed" font-size="13">dispositif</text>
+<line x1="54" y1="316" x2="216" y2="316" stroke="#3b4d70"/>
+<text x="54" y="346" fill="#9fb0c0" font-size="12">Contrôle AML à la</text>
+<text x="54" y="365" fill="#9fb0c0" font-size="12">frontière du système</text>
+<rect x="279" y="120" width="202" height="266" rx="15" fill="#142b2c" stroke="#5eead4"/>
+<text x="299" y="154" fill="#5eead4" font-size="14" font-weight="760">2 · PAIEMENT LOCAL</text>
+<text x="299" y="190" fill="#f7f9fc" font-size="14">Deux appareils :</text>
+<text x="299" y="219" fill="#d9ebe9" font-size="13">montant local</text>
+<text x="299" y="243" fill="#d9ebe9" font-size="13">clés et jetons</text>
+<text x="299" y="267" fill="#d9ebe9" font-size="13">mise à jour du solde</text>
+<text x="299" y="291" fill="#d9ebe9" font-size="13">historique sécurisé</text>
+<line x1="299" y1="316" x2="461" y2="316" stroke="#365b59"/>
+<text x="299" y="346" fill="#a7c6c3" font-size="12">Aucun détail central</text>
+<text x="299" y="365" fill="#a7c6c3" font-size="12">visé pendant l’opération</text>
+<rect x="524" y="120" width="202" height="266" rx="15" fill="#302418" stroke="#ffb86b"/>
+<text x="544" y="154" fill="#ffb86b" font-size="14" font-weight="760">3 · RETOUR EN LIGNE</text>
+<text x="544" y="190" fill="#f7f9fc" font-size="14">PSP revoit :</text>
+<text x="544" y="219" fill="#eadfd1" font-size="13">identité</text>
+<text x="544" y="243" fill="#eadfd1" font-size="13">montant retiré</text>
+<text x="544" y="267" fill="#eadfd1" font-size="13">date</text>
+<text x="544" y="291" fill="#eadfd1" font-size="13">dispositif</text>
+<line x1="544" y1="316" x2="706" y2="316" stroke="#665039"/>
+<text x="544" y="346" fill="#d2c0a9" font-size="12">Les paiements intermédiaires</text>
+<text x="544" y="365" fill="#d2c0a9" font-size="12">restent dans le dispositif</text>
+<line x1="236" y1="253" x2="273" y2="253" stroke="#71859a" stroke-width="2" marker-end="url(#offline-fr-arrow)"/>
+<line x1="481" y1="253" x2="518" y2="253" stroke="#71859a" stroke-width="2" marker-end="url(#offline-fr-arrow)"/>
+<rect x="34" y="421" width="692" height="78" rx="11" fill="#111923" stroke="#344556"/>
+<text x="52" y="450" fill="#ff9aae" font-size="12" font-weight="760">ARBITRAGE</text>
+<text x="150" y="450" fill="#e2e9f0" font-size="12">plus la récupération après perte est complète, plus le système doit pouvoir prouver le solde.</text>
+<text x="52" y="477" fill="#d8e1e9" font-size="12">La résistance à la double dépense dépend encore du protocole et du matériel retenus.</text>
+</g>
+<g class="offline-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="249" rx="9" fill="#0b0f14"/>
+<text x="15" y="22" fill="#f7f9fc" font-size="13" font-weight="760">HORS LIGNE : VISIBLE AUX BORDS</text>
+<text x="15" y="36" fill="#94a3b8" font-size="8">La transaction locale vise une confidentialité proche du cash.</text>
+<rect x="14" y="49" width="322" height="45" rx="7" fill="#172337" stroke="#8fa9ff"/>
+<text x="24" y="65" fill="#8fa9ff" font-size="9" font-weight="760">1 · CHARGEMENT IDENTIFIÉ</text>
+<text x="24" y="80" fill="#d5deea" font-size="8">Le PSP connaît identité, montant, date et dispositif.</text>
+<rect x="14" y="102" width="322" height="52" rx="7" fill="#142b2c" stroke="#5eead4"/>
+<text x="24" y="118" fill="#5eead4" font-size="9" font-weight="760">2 · PAIEMENT ENTRE APPAREILS</text>
+<text x="24" y="133" fill="#cbe0de" font-size="8">Solde, clés, jetons et historique restent localement.</text>
+<text x="24" y="146" fill="#91b5b2" font-size="8">Aucun détail central visé pendant l’opération.</text>
+<rect x="14" y="162" width="322" height="45" rx="7" fill="#302418" stroke="#ffb86b"/>
+<text x="24" y="178" fill="#ffb86b" font-size="9" font-weight="760">3 · RETOUR EN LIGNE IDENTIFIÉ</text>
+<text x="24" y="193" fill="#e1d6c8" font-size="8">Le PSP voit le montant ; l’historique détaillé reste local.</text>
+<text x="15" y="222" fill="#ff9aae" font-size="8" font-weight="720">Perte, récupération et double dépense restent à arbitrer.</text>
+<text x="15" y="239" fill="#8295a7" font-size="8">Architecture finale hors ligne encore incomplète.</text>
+</g>
+</svg>
+<figcaption>La confidentialité cash-like vise la transaction locale. Le chargement et le retrait restent des événements identifiés, comparables aux frontières d’un retrait et d’un dépôt de billets.</figcaption>
+</figure>
+
+## L’historique local du mode hors ligne
+
+Le draft des flux de bout en bout contient un parcours de consultation de l’historique hors ligne.
+
+L’application interroge le stockage sécurisé du dispositif, puis affiche les opérations à l’utilisateur.
+
+Cette précision évite un raccourci.
+
+« Les détails ne remontent pas à la BCE » ne signifie pas « aucune trace n’existe sur le téléphone ».
+
+Une trace locale est nécessaire pour l’usage, la mise à jour du solde, la sécurité ou la présentation à l’utilisateur.
+
+La question est de savoir si elle peut sortir du domaine sécurisé :
+
+- sauvegarde cloud ;
+- télémétrie ;
+- analyse d’incident ;
+- extraction par un attaquant ;
+- mise à jour du logiciel ;
+- procédure judiciaire ;
+- compromission du secure element.
+
+La documentation publique ne permet pas encore de trancher ces points.
+
+## La double dépense : l’endroit où la cryptographie rencontre la politique
+
+Un billet remis à une personne ne reste pas simultanément dans la main du payeur.
+
+Un fichier peut être copié.
+
+Le mode hors ligne doit donc empêcher qu’une même valeur soit dépensée plusieurs fois sans demander l’autorisation d’un serveur au moment de chaque transaction.
+
+L’[expertise publiée par l’EDPB en 2025](https://www.edpb.europa.eu/documents/support-pool-of-experts/the-digital-euro-and-its-token-based-offline-modality_en) conclut qu’une solution à la fois privée et résistante à la double dépense est techniquement envisageable.
+
+Elle étudie plusieurs outils :
+
+- signatures aveugles ;
+- matériel sécurisé ;
+- limites de montant ;
+- réconciliation différée ;
+- détection après coup ;
+- révélation de l’identité uniquement lorsqu’un utilisateur dépense deux fois la même valeur.
+
+Cette étude ne valide pas le futur système de la BCE.
+
+Elle montre que le problème possède des solutions, avec des compromis.
+
+Un matériel sécurisé peut être attaqué. Une réconciliation fréquente réduit l’autonomie hors ligne. Une révélation conditionnelle exige une architecture capable de conserver une preuve cachée. Une limite basse réduit le risque au prix de l’utilité.
+
+Le Parlement veut que la double dépense soit traitée avant le lancement.
+
+Le protocole final n’est pas public.
+
+## Perdre le téléphone ou récupérer l’argent
+
+Le mandat de négociation du Parlement envisage que la perte du dispositif entraîne la perte des euros hors ligne sans remboursement.
+
+Cette règle peut sembler brutale.
+
+Elle possède une logique de confidentialité.
+
+Pour restaurer exactement un solde après la destruction d’un appareil, un système doit généralement disposer quelque part :
+
+- d’une copie ;
+- d’un état récent ;
+- d’une preuve ;
+- ou d’une capacité à reconstituer les transactions.
+
+Plus la récupération est complète, plus le système central doit connaître l’état de la valeur hors ligne.
+
+Plus le dispositif ressemble à un billet, plus la perte risque d’être définitive.
+
+Ce choix ne relève pas seulement de l’expérience utilisateur.
+
+Il détermine la quantité de données nécessaire au fonctionnement.
+
+## Les autorités pourront-elles retrouver une opération ?
+
+Le projet ne crée pas une zone située hors du droit.
+
+Les paiements en ligne restent soumis aux règles de :
+
+- lutte contre le blanchiment ;
+- lutte contre le financement du terrorisme ;
+- sanctions ;
+- fraude ;
+- enquête judiciaire ;
+- droits du payeur ;
+- remboursement ;
+- conservation réglementaire.
+
+Le PSP possède la relation avec l’identité.
+
+Une autorité compétente peut demander des données selon la base légale applicable.
+
+La confidentialité promise vis-à-vis de l’Eurosystème ne signifie donc pas l’impossibilité d’une identification ciblée.
+
+Elle cherche à empêcher une identification générale et quotidienne par la banque centrale.
+
+La distinction entre ces deux pouvoirs doit rester nette :
+
+- **surveillance systématique** : constitution permanente d’un historique nominatif central ;
+- **réidentification ciblée** : accès à une information chez un PSP dans le cadre d’une procédure légale.
+
+Le corpus public décrit l’interdiction du premier.
+
+Le droit commun maintient le second.
+
+## Le grand angle mort : combien de temps ?
+
+Le projet justifie de nombreuses conservations :
+
+- suivi du statut ;
+- remboursement ;
+- transaction non autorisée ;
+- litige ;
+- fraude ;
+- AML ;
+- sanctions ;
+- sécurité ;
+- audit ;
+- changement de PSP.
+
+Les documents publics ne fournissent pas encore une matrice complète des durées.
+
+Nous ne savons pas précisément combien de temps seraient conservés :
+
+- UETR ;
+- historiques dans le DESP ;
+- scores de fraude ;
+- adresses IP ;
+- recherches d’alias ;
+- tokens et tables de détokenisation ;
+- identifiants d’appareil ;
+- logs d’administration ;
+- sauvegardes ;
+- faux positifs corrigés.
+
+Une architecture de protection des données ne se juge pas seulement sur les champs collectés.
+
+Elle se juge sur la durée pendant laquelle ils peuvent être rapprochés.
+
+## Six mythes, six verdicts
+
+| Affirmation | Verdict au 14 août 2026 |
+|---|---|
+| « La BCE verra nominativement chaque achat » | Non étayé par le design actuel. Le nom resterait chez le PSP et les données centrales seraient pseudonymisées. |
+| « Personne ne pourra retrouver un paiement en ligne » | Faux. Le PSP connaît son client et conserve les informations nécessaires au droit applicable. |
+| « Le système saura exactement quels produits ont été achetés » | Non établi. Montant, commerçant, MCC et références peuvent circuler, pas nécessairement le panier détaillé. |
+| « Le moteur antifraude central équivaut déjà à une base de surveillance nominative » | Non démontré. Il peut toutefois construire un profil technique transversal sans connaître directement le nom. |
+| « Un paiement hors ligne ne produit aucune donnée » | Faux. Chargement, dispositif, solde local, historique local et retrait produisent des données. Le détail ne devrait pas remonter au centre. |
+| « Le mode hors ligne est déjà aussi anonyme qu’un billet » | Trop affirmatif. C’est l’objectif politique et technique, mais le protocole final reste à construire et auditer. |
+
+## État des preuves et questions ouvertes
+
+| Proposition | État de la preuve |
+|---|---|
+| Le PSP connaîtrait l’identité de son client | établi par le modèle de distribution et les obligations KYC/AML |
+| L’Eurosystème ne devrait pas recevoir le nom civil dans le règlement ordinaire | objectif juridique et technique convergent |
+| Les comptes et transactions en ligne seraient pseudonymisés | prévu par le Conseil et soutenu par les autorités de protection |
+| Le DESP traiterait montant, comptes techniques, références et statuts | documenté dans les spécifications provisoires |
+| Le numéro de téléphone pourrait servir d’alias | documenté, actuellement seul type supplémentaire prévu |
+| Le RFM analyserait des motifs entre plusieurs PSP | documenté par le marché public et le draft |
+| Le jeu final de données du RFM est connu | non, plusieurs champs et l’annexe de risque restent incomplets ou confidentiels |
+| La BCE recevrait systématiquement le panier détaillé | non établi |
+| Les identifiants seraient tous dynamiques | non démontré |
+| Un seuil de confidentialité existe pour les petits paiements en ligne | recommandé par l’EDPB ; absent du rulebook actuel |
+| Le détail des paiements hors ligne ne remonterait pas | objectif explicite du Conseil et de la BCE |
+| Le protocole hors ligne garantit déjà l’anonymat et l’absence de double dépense | non, implémentation non finalisée |
+| La perte du dispositif entraînerait toujours la perte des fonds | position du Parlement ; statut législatif non définitif |
+
+## La conclusion dépend d’un verbe : relier
+
+La BCE peut concevoir une infrastructure qui ne reçoit pas directement les noms.
+
+Le PSP peut conserver l’identité.
+
+SEPI peut remplacer certaines données par des tokens.
+
+Le service de règlement peut chiffrer les objets destinés aux autres PSP.
+
+Le moteur antifraude peut travailler sur des identifiants techniques.
+
+La confidentialité de l’ensemble dépend pourtant d’un seul test :
+
+> **un acteur peut-il relier les fragments ?**
+
+La pseudonymisation fonctionne si la clé reste séparée.
+
+La tokenisation fonctionne si la table de correspondance est protégée.
+
+Le chiffrement fonctionne si les clés et métadonnées sont maîtrisées.
+
+Le hors ligne fonctionne si les appareils honnêtes peuvent échanger sans créer un historique central et sans permettre la double dépense.
+
+Le projet européen possède une architecture crédible pour éviter qu’une base centrale affiche immédiatement le nom de chaque payeur.
+
+Il ne possède pas encore, dans le corpus public, toutes les preuves permettant d’affirmer que les corrélations seront durablement impossibles.
+
+C’est cette frontière qu’il faudra surveiller à chaque nouvelle version du rulebook, du règlement et des contrats techniques.
+
+## Prochaine pièce : argent programmable ou droit ordinaire ?
+
+Le quatrième volet portera sur un autre mélange fréquent.
+
+Une monnaie programmable porte des restrictions dans l’unité elle-même : date d’expiration, catégories d’achat ou conditions intrinsèques.
+
+Un compte ordinaire peut déjà être gelé, saisi ou bloqué sur une base légale sans que l’euro qu’il contient soit programmable.
+
+Le prochain article séparera donc :
+
+- monnaie programmable ;
+- paiements conditionnels ;
+- réservations de fonds ;
+- sanctions ;
+- fraude ;
+- gel judiciaire ;
+- modification future de la loi.
+
+## Sources et méthode
+
+Ce volet repose principalement sur :
+
+- la [proposition de règlement de la Commission](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2023%3A369%3AFIN) ;
+- le [mandat de négociation du Conseil](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf), notamment ses articles 34 à 37 et annexes III à V ;
+- la [position ECON du Parlement](https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability) et l’[autorisation de négocier](https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/digital-euro-meps-ready-to-start-negotiations) ;
+- la [page de confidentialité de la BCE](https://www.ecb.europa.eu/euro/digital_euro/features/privacy/html/index.en.html) et sa [FAQ](https://www.ecb.europa.eu/euro/digital_euro/faqs/html/ecb.faq_digital_euro.en.html) ;
+- le [rulebook v0.91](https://www.ecb.europa.eu/euro/digital_euro/timeline/rulebook/html/index.en.html), particulièrement les annexes consacrées à la [gestion des données](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D1_-_Front-end_implementation_specifications_7_Data_management.en.pdf), à l’[accès et aux alias](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_2_-_Access_management_and_alias_lookup.en.pdf), à [SEPI](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_3_-_SEPI_service_-_NFC.en.pdf), au [risque et à la fraude](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_4_-_Risk_and_fraud.en.pdf), au [règlement](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_7_-_Settlement.en.pdf) et aux [flux de bout en bout](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_B2_-_End-to-end_process_flows.en.pdf) ;
+- le [Statement 04/2022 de l’EDPB](https://www.edpb.europa.eu/system/files/2022-10/edpb_statement_20221010_digital_euro_en.pdf), l’[avis conjoint EDPB-EDPS 02/2023](https://www.edpb.europa.eu/system/files/2023-10/edpb_edps_jointopinion_022023_digitaleuro_en.pdf) et l’[expertise sur le mode hors ligne](https://www.edpb.europa.eu/documents/support-pool-of-experts/the-digital-euro-and-its-token-based-offline-modality_en) ;
+- l’[analyse conjointe de la CNIL et de la BfDI](https://cnil.fr/en/confidentiality-digital-euro-where-are-we) ;
+- les marchés publics de la BCE relatifs au [risque et à la fraude](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00646738-en-ts.pdf), à l’[alias lookup](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/pro-009485_digital_euro_-_alias_lookup_-_cn_3825-2024.pdf), à [SEPI](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00644136-en-ts.pdf) et au [mode hors ligne](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2024-ojs020-00058107-en.pdf).
+
+Le corpus distingue systématiquement une donnée présente dans un modèle, une donnée effectivement envoyée par une API, une donnée visible en clair, une donnée simplement routée et une donnée dont la conservation est démontrée. Lorsque la documentation contient un placeholder ou réserve une partie des exigences à une annexe confidentielle, l’article le signale au lieu de compléter le vide par une hypothèse.
