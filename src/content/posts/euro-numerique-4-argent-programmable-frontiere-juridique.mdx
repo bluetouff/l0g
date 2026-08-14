@@ -1,0 +1,858 @@
+---
+title: "Euro numérique, 4/6 : argent programmable, la frontière juridique"
+description: "Les textes interdisent les euros à expiration ou fléchés, permettent les paiements conditionnels et n’effacent ni gels ni saisies. Enquête sur l’endroit où vit réellement la règle."
+pubDate: 2026-08-14T08:30:00+02:00
+updatedDate: 2026-08-14T08:30:00+02:00
+tags: ["euro numérique", "BCE", "monnaie programmable", "paiements", "droit", "enquête"]
+draft: false
+quickTake:
+  fact: "Dans leurs positions de négociation, la Commission, le Conseil et le Parlement interdisent une logique intrinsèque limitant la fongibilité de chaque euro numérique. Ils permettent en parallèle les paiements conditionnels et la réservation de fonds."
+  importance: "Un paiement peut être automatisé ou refusé, et des avoirs peuvent être gelés ou saisis, sans que l’unité monétaire soit programmable. Le pouvoir dépend de l’endroit où la règle est logée et de l’acteur qui la décide."
+  uncertainty: "Le règlement final et le compromis de trilogue ne sont pas adoptés. Les circuits techniques de la conditionnalité, des recours, du gel et de la saisie restent partiellement ouverts."
+---
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Ce texte constitue le quatrième volet de notre enquête en six parties sur l’euro numérique. Le [premier article](/posts/euro-numerique-1-euro-change-de-debiteur/) suivait la monnaie d’un bilan à l’autre. Le [deuxième](/posts/euro-numerique-2-699-milliards-anatomie-stress-test/) reconstruisait les 699 milliards d’euros du stress test bancaire. Le [troisième](/posts/euro-numerique-3-prive-comme-du-cash/) suivait les données à travers les PSP, l’infrastructure centrale, les alias et le moteur antifraude. Ce quatrième volet suit une autre chose invisible : la règle qui décide si une valeur peut circuler.*
+
+> **État du dossier au 14 août 2026.** La Commission a présenté sa proposition en juin 2023. Le Conseil a adopté son mandat de négociation en décembre 2025. Le Parlement a autorisé les négociations interinstitutionnelles le 9 juillet 2026. Le règlement final n’est pas adopté. Le [rulebook v0.91](https://www.ecb.europa.eu/euro/digital_euro/timeline/rulebook/html/index.en.html), publié le 2 juillet 2026, reste un projet préliminaire et non contraignant.
+
+Vous commandez un ordinateur.
+
+Six cents euros sont réservés sur votre compte. Le vendeur ne les reçoit qu’après confirmation de la livraison.
+
+Vous êtes ensuite victime d’un faux positif antifraude. Un second paiement est refusé.
+
+Ailleurs, les avoirs d’une personne visée par une sanction européenne sont gelés. Dans une autre affaire, un juge empêche un débiteur de déplacer une somme.
+
+Quatre situations produisent le même symptôme immédiat : la somme ne circule pas librement.
+
+Aucun de ces exemples ne suffit à démontrer que l’euro est programmable.
+
+La [monnaie programmable](/glossaire/#monnaie-programmable) commence lorsque la restriction appartient à la valeur elle-même : cet euro n’achète que de l’alimentation, cet euro cesse de fonctionner vendredi, cet euro ne peut circuler qu’entre certains bénéficiaires. La règle suit alors l’unité après le transfert et la rend différente des autres euros.
+
+Le projet européen trace une frontière plus étroite que le débat public. Il interdit cette logique intrinsèque, tout en permettant les paiements conditionnels et les réservations, sans supprimer les limites d’instrument ni le droit des sanctions, de la fraude ou de l’exécution judiciaire.
+
+La bonne question n’est donc pas :
+
+> « Un paiement peut-il être bloqué ? »
+
+La réponse est déjà oui dans le système bancaire actuel.
+
+La question utile est :
+
+> **Où vit la règle, qui la choisit, disparaît-elle au règlement et quel recours permet de la contester ?**
+
+## À retenir en neuf lignes
+
+- La Commission, le Conseil et le Parlement reprennent la même interdiction : l’euro numérique ne doit pas être de la monnaie programmable.
+- Leur définition vise une logique intrinsèque limitant la pleine fongibilité de chaque unité.
+- Une date d’expiration ou une restriction générale par produit entrerait dans cette catégorie.
+- Un paiement après livraison agit sur l’ordre et non sur les euros reçus.
+- Une préautorisation bloque temporairement une somme, comme le font déjà les cartes dans certains usages.
+- Un PSP peut refuser une transaction pour fraude sans transformer le solde en bons spécialisés.
+- Une sanction ou une saisie vise une personne, un compte ou un bien sur une base juridique.
+- Le risque le plus crédible se trouve à la périphérie : une application peut reproduire une expérience très restrictive autour d’euros juridiquement fongibles.
+- La BCE ne pourrait pas activer seule l’expiration dans le cadre actuel. Une future loi pourrait en revanche modifier la règle.
+
+## Six mécanismes cachés derrière un seul mot
+
+Le mot « programmable » sert aujourd’hui à désigner presque tout ce qui automatise ou empêche un paiement.
+
+Cette extension efface précisément la différence que le droit essaie de protéger.
+
+Une règle peut porter sur :
+
+1. l’unité monétaire ;
+2. l’ordre de paiement ;
+3. une somme réservée avant règlement ;
+4. l’instrument utilisé ;
+5. le compte ;
+6. une personne ou son patrimoine.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 650" width="100%" role="img" aria-labelledby="layers4-fr-title layers4-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="layers4-fr-title">Six endroits différents où une règle peut agir sur un paiement</title>
+<desc id="layers4-fr-desc">La règle peut porter sur l’unité monétaire, l’ordre de paiement, une réservation, l’instrument, le compte ou une personne et son patrimoine. Seule la première catégorie correspond directement à la monnaie programmable.</desc>
+<style>{`.layers4-fr-mobile{display:none}@media (max-width:640px){.layers4-fr-desktop{display:none}.layers4-fr-mobile{display:block}}`}</style>
+<g class="layers4-fr-desktop">
+<rect width="760" height="650" rx="16" fill="#0b0f14"/>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">OÙ VIT LA RÈGLE ?</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">Même résultat apparent, six objets juridiques différents.</text>
+<rect x="30" y="108" width="220" height="208" rx="14" fill="#2b1928" stroke="#ff7ea8"/>
+<text x="48" y="142" fill="#ff9abb" font-size="15" font-weight="760">1. UNITÉ MONÉTAIRE</text>
+<text x="48" y="176" fill="#f7f9fc" font-size="14">« Cet euro expire vendredi »</text>
+<text x="48" y="201" fill="#f7f9fc" font-size="14">« alimentation seulement »</text>
+<line x1="48" y1="225" x2="232" y2="225" stroke="#5d354e"/>
+<text x="48" y="253" fill="#d7b9c5" font-size="12">La restriction suit la valeur.</text>
+<text x="48" y="276" fill="#ff9abb" font-size="13" font-weight="720">MONNAIE PROGRAMMABLE</text>
+<text x="48" y="297" fill="#d7b9c5" font-size="12">Interdite par l’article 24.</text>
+<rect x="270" y="108" width="220" height="208" rx="14" fill="#172337" stroke="#7fa7ff"/>
+<text x="288" y="142" fill="#9bb9ff" font-size="15" font-weight="760">2. ORDRE DE PAIEMENT</text>
+<text x="288" y="176" fill="#f7f9fc" font-size="14">« payer après livraison »</text>
+<text x="288" y="201" fill="#f7f9fc" font-size="14">« payer chaque mois »</text>
+<line x1="288" y1="225" x2="472" y2="225" stroke="#3b4d70"/>
+<text x="288" y="253" fill="#bdc9e5" font-size="12">La condition disparaît au règlement.</text>
+<text x="288" y="276" fill="#9bb9ff" font-size="13" font-weight="720">PAIEMENT CONDITIONNEL</text>
+<text x="288" y="297" fill="#bdc9e5" font-size="12">Autorisé et exploré.</text>
+<rect x="510" y="108" width="220" height="208" rx="14" fill="#152c31" stroke="#62d8c6"/>
+<text x="528" y="142" fill="#7ee5d6" font-size="15" font-weight="760">3. RÉSERVATION</text>
+<text x="528" y="176" fill="#f7f9fc" font-size="14">hôtel, location, usage</text>
+<text x="528" y="198" fill="#f7f9fc" font-size="14">montant bloqué</text>
+<text x="528" y="217" fill="#f7f9fc" font-size="14">avant paiement</text>
+<line x1="528" y1="232" x2="712" y2="232" stroke="#36515b"/>
+<text x="528" y="253" fill="#b7d5d0" font-size="12">La somme est indisponible,</text>
+<text x="528" y="272" fill="#b7d5d0" font-size="12">pas spécialisée.</text>
+<text x="528" y="297" fill="#7ee5d6" font-size="13" font-weight="720">PRÉAUTORISATION</text>
+<rect x="30" y="340" width="220" height="208" rx="14" fill="#302418" stroke="#ffb86b"/>
+<text x="48" y="374" fill="#ffca91" font-size="15" font-weight="760">4. INSTRUMENT</text>
+<text x="48" y="408" fill="#f7f9fc" font-size="14">plafond, sans contact, carte</text>
+<text x="48" y="433" fill="#f7f9fc" font-size="14">blocage de sécurité</text>
+<line x1="48" y1="457" x2="232" y2="457" stroke="#665039"/>
+<text x="48" y="485" fill="#d8c9b8" font-size="12">La carte est limitée.</text>
+<text x="48" y="508" fill="#ffca91" font-size="13" font-weight="720">CONTRÔLE D’ACCÈS</text>
+<text x="48" y="529" fill="#d8c9b8" font-size="12">Les euros restent ordinaires.</text>
+<rect x="270" y="340" width="220" height="208" rx="14" fill="#251d33" stroke="#d98bff"/>
+<text x="288" y="374" fill="#e2adff" font-size="15" font-weight="760">5. COMPTE</text>
+<text x="288" y="408" fill="#f7f9fc" font-size="14">plafond de détention</text>
+<text x="288" y="430" fill="#f7f9fc" font-size="14">transfert automatique</text>
+<text x="288" y="451" fill="#f7f9fc" font-size="14">de l’excédent</text>
+<line x1="288" y1="465" x2="472" y2="465" stroke="#594063"/>
+<text x="288" y="490" fill="#d2c2d9" font-size="12">La quantité ou la disponibilité</text>
+<text x="288" y="509" fill="#d2c2d9" font-size="12">est encadrée.</text>
+<text x="288" y="534" fill="#e2adff" font-size="13" font-weight="720">RÈGLE D’ARCHITECTURE</text>
+<rect x="510" y="340" width="220" height="208" rx="14" fill="#18272c" stroke="#8dd7a9"/>
+<text x="528" y="374" fill="#9be5b6" font-size="15" font-weight="760">6. PERSONNE / BIEN</text>
+<text x="528" y="408" fill="#f7f9fc" font-size="14">sanction, gel, saisie</text>
+<text x="528" y="430" fill="#f7f9fc" font-size="14">décision d’une autorité</text>
+<text x="528" y="451" fill="#f7f9fc" font-size="14">ou d’un juge</text>
+<line x1="528" y1="465" x2="712" y2="465" stroke="#3c5a48"/>
+<text x="528" y="490" fill="#bfd7c7" font-size="12">Le droit bloque la disposition.</text>
+<text x="528" y="513" fill="#9be5b6" font-size="13" font-weight="720">RESTRICTION JURIDIQUE</text>
+<text x="528" y="534" fill="#bfd7c7" font-size="12">La monnaie reste fongible.</text>
+<rect x="30" y="576" width="700" height="45" rx="10" fill="#111923" stroke="#344556"/>
+<text x="50" y="604" fill="#dce6ef" font-size="13">Le test décisif : la restriction suit-elle les euros après leur transfert ?</text>
+</g>
+<g class="layers4-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="299" rx="9" fill="#0b0f14"/>
+<text x="15" y="21" fill="#f7f9fc" font-size="13" font-weight="760">OÙ VIT LA RÈGLE ?</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.4">Seule une restriction qui suit l’unité est de la monnaie programmable.</text>
+<rect x="12" y="45" width="326" height="35" rx="6" fill="#2b1928" stroke="#ff7ea8"/>
+<text x="21" y="59" fill="#ff9abb" font-size="8.4" font-weight="760">UNITÉ</text><text x="329" y="59" text-anchor="end" fill="#f7f9fc" font-size="8.4">expire, biens limités</text>
+<text x="21" y="72" fill="#d7b9c5" font-size="7.2">La restriction suit la valeur : monnaie programmable.</text>
+<rect x="12" y="86" width="326" height="35" rx="6" fill="#172337" stroke="#7fa7ff"/>
+<text x="21" y="100" fill="#9bb9ff" font-size="8.4" font-weight="760">ORDRE</text><text x="329" y="100" text-anchor="end" fill="#f7f9fc" font-size="8.4">après livraison</text>
+<text x="21" y="113" fill="#bdc9e5" font-size="7.2">La condition disparaît au règlement.</text>
+<rect x="12" y="127" width="326" height="35" rx="6" fill="#152c31" stroke="#62d8c6"/>
+<text x="21" y="141" fill="#7ee5d6" font-size="8.4" font-weight="760">RÉSERVATION</text><text x="329" y="141" text-anchor="end" fill="#f7f9fc" font-size="8.4">somme bloquée</text>
+<text x="21" y="154" fill="#b7d5d0" font-size="7.2">Indisponible avant paiement, libre ensuite.</text>
+<rect x="12" y="168" width="326" height="35" rx="6" fill="#302418" stroke="#ffb86b"/>
+<text x="21" y="182" fill="#ffca91" font-size="8.4" font-weight="760">INSTRUMENT</text><text x="329" y="182" text-anchor="end" fill="#f7f9fc" font-size="8.4">carte ou app</text>
+<text x="21" y="195" fill="#d8c9b8" font-size="7.2">Le moyen d’accès est limité.</text>
+<rect x="12" y="209" width="326" height="35" rx="6" fill="#251d33" stroke="#d98bff"/>
+<text x="21" y="223" fill="#e2adff" font-size="8.4" font-weight="760">COMPTE</text><text x="329" y="223" text-anchor="end" fill="#f7f9fc" font-size="8.4">plafond de stock</text>
+<text x="21" y="236" fill="#d2c2d9" font-size="7.2">La quantité ou la disponibilité est encadrée.</text>
+<rect x="12" y="250" width="326" height="35" rx="6" fill="#18272c" stroke="#8dd7a9"/>
+<text x="21" y="264" fill="#9be5b6" font-size="8.4" font-weight="760">PERSONNE / BIEN</text><text x="329" y="264" text-anchor="end" fill="#f7f9fc" font-size="8.4">gel ou saisie</text>
+<text x="21" y="277" fill="#bfd7c7" font-size="7.2">Le droit bloque le pouvoir de disposer des avoirs.</text>
+<text x="15" y="294" fill="#9fb0c0" font-size="7.4">Test : la règle survit-elle au transfert ?</text>
+</g>
+</svg>
+<figcaption>Le débat sur la programmabilité devient lisible dès que l’on identifie l’objet visé par la règle.</figcaption>
+</figure>
+
+Le premier cas est celui que les textes appellent *programmable money*. Les cinq autres peuvent produire un blocage très réel sans modifier la nature de l’euro.
+
+Le test le plus simple consiste à regarder ce qui reste après le règlement.
+
+Si le commerçant reçoit des euros librement transférables, la condition a gouverné le paiement. Si la restriction continue de suivre la valeur, la monnaie elle-même a perdu une partie de sa fongibilité.
+
+## L’article 24 ferme la porte dans les trois textes
+
+La [proposition de la Commission](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52023PC0369) pose la distinction dès 2023.
+
+Elle définit la monnaie programmable comme des unités portant une logique intrinsèque qui limite la pleine fongibilité de chacune d’elles. Son considérant 55 donne deux exemples très concrets : des unités utilisables seulement pour certains biens ou services, ou soumises à une date après laquelle elles ne fonctionnent plus.
+
+Le paiement conditionnel suit une autre logique. Un logiciel déclenche une opération lorsque des conditions prédéfinies et acceptées sont remplies. La Commission cite notamment les ordres permanents, les paiements entre machines, l’assurance, la location et la maintenance facturée à l’usage.
+
+Le [mandat du Conseil](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf) reprend les mêmes définitions. Son article 24 autorise la BCE à publier des standards interopérables et à fournir des fonctions de règlement, y compris la réservation de fonds. Il se termine par une phrase sans réserve :
+
+> **The digital euro shall not be programmable money.**
+
+Le [rapport A10-0185/2026 du Parlement](https://www.europarl.europa.eu/doceo/document/A-10-2026-0185_EN.pdf) reproduit la même architecture. Son article 2 sépare l’ordre automatique de la logique intrinsèque. Son article 24 autorise standards et réservation, puis reprend la même interdiction. Le Parlement a confirmé ce mandat de négociation le [9 juillet 2026](https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/).
+
+Au début du trilogue, les trois institutions convergent donc sur le noyau juridique :
+
+| Élément | Commission | Conseil | Parlement |
+|---|---|---|---|
+| Condition attachée à l’ordre | autorisée | autorisée | autorisée |
+| Réservation de fonds | possible | prévue | prévue |
+| Restriction intrinsèque de l’unité | interdite | interdite | interdite |
+| Expiration ou biens imposés | exemples de l’interdiction | incompatibles avec la fongibilité | exemples de l’interdiction |
+
+La négociation peut encore modifier de nombreuses dispositions. Elle ne part pas d’un désaccord institutionnel sur ce point précis.
+
+## Pourquoi la fongibilité est la frontière
+
+Deux unités sont fongibles lorsqu’elles peuvent se remplacer à valeur égale.
+
+Un billet de 20 euros ne contient normalement aucune information disant qu’il ne peut payer que de l’essence ou qu’il cessera de valoir à la fin du mois. Un dépôt bancaire de 20 euros peut être bloqué avec le compte, mais il reste exprimé dans la même unité que les autres dépôts et les billets.
+
+Une valeur « alimentation avant vendredi » fonctionne autrement. Elle ressemble à un bon, à un titre ou à un coupon. Sa valeur pratique dépend du commerçant, du produit et du calendrier.
+
+L’[avis juridique de la BCE de 2023](https://eur-lex.europa.eu/eli/C/2024/669/oj/eng) pousse ce raisonnement jusqu’aux traités. Une limitation portant sur le lieu, le moment ou le bénéficiaire rendrait selon elle l’instrument comparable à un voucher, incompatible avec le [cours légal](/glossaire/#cours-legal), la valeur faciale et la conversion à parité. La BCE ajoute qu’elle ne possède aucun mandat pour émettre des vouchers.
+
+Cette position est forte. Elle s’ajoute à l’interdiction législative proposée.
+
+Elle reste un avis de la BCE, pas un arrêt déjà rendu par la Cour de justice sur un euro numérique en circulation.
+
+La conclusion juridique la plus solide est donc double :
+
+- le texte secondaire interdirait explicitement la monnaie programmable ;
+- la BCE estime en outre qu’une telle émission dépasserait son mandat même sans cette phrase.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 570" width="100%" role="img" aria-labelledby="settle4-fr-title settle4-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="settle4-fr-title">Différence entre paiement conditionnel et monnaie programmable avant et après le règlement</title>
+<desc id="settle4-fr-desc">Dans le paiement conditionnel, des euros ordinaires sont réservés puis deviennent libres chez le bénéficiaire. Dans la monnaie programmable, la restriction reste attachée à la valeur après le transfert.</desc>
+<style>{`.settle4-fr-mobile{display:none}@media (max-width:640px){.settle4-fr-desktop{display:none}.settle4-fr-mobile{display:block}}`}</style>
+<defs><marker id="settle4-fr-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#62d8c6"/></marker><marker id="settle4-fr-arrow2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#ff7ea8"/></marker></defs>
+<g class="settle4-fr-desktop">
+<rect width="760" height="570" rx="16" fill="#0b0f14"/>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">AVANT ET APRÈS LE RÈGLEMENT</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">La frontière se voit au moment où le bénéficiaire reçoit les fonds.</text>
+<rect x="30" y="108" width="700" height="188" rx="14" fill="#14272d" stroke="#62d8c6"/>
+<text x="50" y="140" fill="#7ee5d6" font-size="16" font-weight="760">PAIEMENT CONDITIONNEL</text>
+<rect x="50" y="164" width="160" height="92" rx="10" fill="#101923" stroke="#3a5960"/>
+<text x="130" y="191" text-anchor="middle" fill="#f7f9fc" font-size="14" font-weight="720">600 € ordinaires</text>
+<text x="130" y="215" text-anchor="middle" fill="#a9bec5" font-size="12">solde disponible</text>
+<text x="130" y="238" text-anchor="middle" fill="#a9bec5" font-size="12">puis réservé</text>
+<path d="M225 210 H316" stroke="#62d8c6" stroke-width="3" marker-end="url(#settle4-fr-arrow)"/>
+<text x="270" y="194" text-anchor="middle" fill="#9adfd5" font-size="11">livraison</text>
+<text x="270" y="230" text-anchor="middle" fill="#9adfd5" font-size="11">confirmée</text>
+<rect x="332" y="164" width="160" height="92" rx="10" fill="#101923" stroke="#3a5960"/>
+<text x="412" y="191" text-anchor="middle" fill="#f7f9fc" font-size="14" font-weight="720">règlement</text>
+<text x="412" y="215" text-anchor="middle" fill="#a9bec5" font-size="12">la condition s’éteint</text>
+<text x="412" y="238" text-anchor="middle" fill="#a9bec5" font-size="12">au transfert</text>
+<path d="M507 210 H588" stroke="#62d8c6" stroke-width="3" marker-end="url(#settle4-fr-arrow)"/>
+<rect x="604" y="164" width="106" height="92" rx="10" fill="#18332f" stroke="#62d8c6"/>
+<text x="657" y="190" text-anchor="middle" fill="#7ee5d6" font-size="13" font-weight="760">600 € LIBRES</text>
+<text x="657" y="215" text-anchor="middle" fill="#c6ded9" font-size="11">chez le</text>
+<text x="657" y="232" text-anchor="middle" fill="#c6ded9" font-size="11">bénéficiaire</text>
+<rect x="30" y="320" width="700" height="188" rx="14" fill="#2b1928" stroke="#ff7ea8"/>
+<text x="50" y="352" fill="#ff9abb" font-size="16" font-weight="760">MONNAIE PROGRAMMABLE</text>
+<rect x="50" y="376" width="160" height="92" rx="10" fill="#171019" stroke="#6a3a55"/>
+<text x="130" y="403" text-anchor="middle" fill="#f7f9fc" font-size="14" font-weight="720">600 € marqués</text>
+<text x="130" y="427" text-anchor="middle" fill="#d6b6c3" font-size="12">« énergie seulement »</text>
+<text x="130" y="450" text-anchor="middle" fill="#d6b6c3" font-size="12">jusqu’au 31 décembre</text>
+<path d="M225 422 H316" stroke="#ff7ea8" stroke-width="3" marker-end="url(#settle4-fr-arrow2)"/>
+<text x="270" y="406" text-anchor="middle" fill="#f3a6c0" font-size="11">transfert</text>
+<text x="270" y="442" text-anchor="middle" fill="#f3a6c0" font-size="11">effectué</text>
+<rect x="332" y="376" width="160" height="92" rx="10" fill="#171019" stroke="#6a3a55"/>
+<text x="412" y="403" text-anchor="middle" fill="#f7f9fc" font-size="14" font-weight="720">la règle persiste</text>
+<text x="412" y="427" text-anchor="middle" fill="#d6b6c3" font-size="12">elle suit la valeur</text>
+<text x="412" y="450" text-anchor="middle" fill="#d6b6c3" font-size="12">après règlement</text>
+<path d="M507 422 H588" stroke="#ff7ea8" stroke-width="3" marker-end="url(#settle4-fr-arrow2)"/>
+<rect x="604" y="376" width="106" height="92" rx="10" fill="#3a1f30" stroke="#ff7ea8"/>
+<text x="657" y="400" text-anchor="middle" fill="#ff9abb" font-size="12.5" font-weight="760">600 € LIMITÉS</text>
+<text x="657" y="425" text-anchor="middle" fill="#e3c6d1" font-size="11">même chez le</text>
+<text x="657" y="442" text-anchor="middle" fill="#e3c6d1" font-size="11">bénéficiaire</text>
+<rect x="30" y="526" width="700" height="24" rx="8" fill="#111923"/>
+<text x="380" y="543" text-anchor="middle" fill="#dce6ef" font-size="12">L’état après règlement détermine la fongibilité.</text>
+</g>
+<g class="settle4-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="262" rx="9" fill="#0b0f14"/>
+<text x="15" y="21" fill="#f7f9fc" font-size="13" font-weight="760">AVANT ET APRÈS LE RÈGLEMENT</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.4">Le bénéficiaire reçoit-il des euros libres ?</text>
+<rect x="12" y="46" width="326" height="93" rx="7" fill="#14272d" stroke="#62d8c6"/>
+<text x="22" y="61" fill="#7ee5d6" font-size="8.5" font-weight="760">PAIEMENT CONDITIONNEL</text>
+<text x="22" y="78" fill="#f7f9fc" font-size="8">600 € ordinaires sont réservés.</text>
+<text x="22" y="94" fill="#c6ded9" font-size="8">Livraison confirmée : la condition s’éteint.</text>
+<rect x="22" y="105" width="306" height="23" rx="5" fill="#18332f"/>
+<text x="175" y="120" text-anchor="middle" fill="#7ee5d6" font-size="8.2" font-weight="720">Le bénéficiaire reçoit 600 € libres.</text>
+<rect x="12" y="151" width="326" height="93" rx="7" fill="#2b1928" stroke="#ff7ea8"/>
+<text x="22" y="166" fill="#ff9abb" font-size="8.5" font-weight="760">MONNAIE PROGRAMMABLE</text>
+<text x="22" y="183" fill="#f7f9fc" font-size="8">600 € portent « énergie seulement ».</text>
+<text x="22" y="199" fill="#e3c6d1" font-size="8">Le transfert a lieu, la règle reste attachée.</text>
+<rect x="22" y="210" width="306" height="23" rx="5" fill="#3a1f30"/>
+<text x="175" y="225" text-anchor="middle" fill="#ff9abb" font-size="8.2" font-weight="720">Le bénéficiaire reçoit 600 € limités.</text>
+<text x="15" y="257" fill="#9fb0c0" font-size="7.2">Test juridique : la règle survit-elle au transfert ?</text>
+</g>
+</svg>
+<figcaption>Un paiement peut être automatisé sans transmettre une restriction aux euros reçus.</figcaption>
+</figure>
+
+## Le sort des euros après un paiement conditionnel
+
+La [plateforme d’innovation de la BCE](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep250926_innovationplatform.en.pdf) a testé cette séparation en 2025 avec environ 70 participants issus des paiements, des banques, de la technologie, du commerce et de la recherche.
+
+L’environnement était simulé, simplifié et sans vrais euros. Il ne représentait pas le produit final.
+
+Son intérêt vient de l’architecture choisie.
+
+L’Eurosystème fournissait le socle :
+
+- règlement ;
+- réservation de fonds ;
+- standards ;
+- environnement technique commun.
+
+Les PSP définissaient la couche de conditionnalité :
+
+- livraison confirmée ;
+- jalon accompli ;
+- durée consommée ;
+- tarif calculé ;
+- événement déclencheur.
+
+Le rapport décrit explicitement une séparation entre la couche de règlement et la couche conditionnelle. Les acteurs privés sont censés développer les services à valeur ajoutée, tandis que l’Eurosystème fournit l’infrastructure commune.
+
+Cette séparation possède un avantage institutionnel évident : la BCE n’a pas à décider si votre colis est arrivé ou si un chantier a atteint 40 % d’avancement.
+
+Elle crée un nouveau centre de pouvoir : l’acteur qui certifie le fait.
+
+### Paiement après livraison
+
+La somme est réservée.
+
+Le transporteur ou le client confirme la livraison.
+
+Le commerçant reçoit des euros ordinaires.
+
+La condition a déterminé le moment du transfert. Elle ne détermine pas l’usage futur de l’argent reçu.
+
+### Paiement par jalons
+
+Un prestataire reçoit une fraction du prix à chaque étape acceptée.
+
+Le mécanisme automatise un contrat. Chaque versement réglé devient un avoir ordinaire.
+
+### Paiement à l’usage
+
+Le montant dépend d’une durée, d’une consommation ou d’un passage.
+
+Le système peut calculer le meilleur tarif de transport, la charge électrique ou la durée d’une location. Le risque principal se déplace vers la qualité des données et le plafond accepté par l’utilisateur.
+
+### Remboursement automatique
+
+Un train en retard, un service annulé ou une condition d’assurance peut déclencher un paiement au bénéfice du client.
+
+La règle automatise une obligation. Elle ne marque pas les euros remboursés.
+
+## La réservation de fonds existe déjà sous une autre forme
+
+Le [rulebook v0.91](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91.en.pdf) décrit une préautorisation lorsque le montant ou l’heure du paiement ne sont pas connus à la caisse.
+
+Dans l’infrastructure centrale, cette préautorisation correspond à une réservation d’avoirs.
+
+Le projet permet :
+
+- un règlement total ;
+- un règlement partiel ;
+- plusieurs règlements partiels ;
+- une annulation ;
+- une expiration ;
+- une modification du montant ou de la durée.
+
+Deux protections sont déjà écrites dans ce brouillon.
+
+Un règlement supérieur au montant réservé exige une autorisation pour la différence. Une hausse de la réservation ou une prolongation de sa durée exige également l’autorisation du payeur. La partie inutilisée est libérée lorsque la réservation est annulée, échoue ou expire.
+
+Les montants réservés continuent de compter dans le [plafond de détention](/glossaire/#plafond-de-detention). Un utilisateur ne pourrait donc pas contourner ce plafond en empilant des réservations.
+
+Ces règles restent celles d’un projet, pas d’une implémentation achevée. L’[annexe de règlement](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_7_-_Settlement.en.pdf) définit la transaction de réservation, mais précise en note que sa couverture détaillée sera ajoutée dans une version ultérieure du rulebook.
+
+Ce mécanisme ressemble moins à une monnaie programmée qu’à la pratique familière de l’hôtel ou de la location de voiture.
+
+La [directive PSD2](https://eur-lex.europa.eu/eli/dir/2015/2366/2025-01-17/eng) permet déjà de bloquer une somme lorsqu’un paiement par carte est initié et que le montant final n’est pas connu, à condition que le payeur ait accepté le montant exact à bloquer. Les fonds doivent ensuite être libérés sans retard injustifié lorsque le montant final est connu.
+
+Une somme bloquée ne devient pas une nouvelle sorte d’euro.
+
+## L’oracle devient la pièce sensible
+
+« Payer après livraison » paraît simple jusqu’au moment où il faut décider ce que signifie livré.
+
+Le colis peut être :
+
+- déposé devant une porte ;
+- déclaré livré par le transporteur ;
+- reçu vide ;
+- endommagé ;
+- envoyé à la mauvaise adresse ;
+- contesté par le client.
+
+La condition a besoin d’un oracle, c’est-à-dire d’un acteur ou d’un système autorisé à déclarer que l’événement a eu lieu.
+
+Cet oracle peut être le client, le commerçant, le transporteur, un capteur, une administration, un assureur, un arbitre ou plusieurs sources combinées.
+
+La couche conditionnelle déplace ainsi une partie du pouvoir économique.
+
+Le litige ne porte plus seulement sur le paiement. Il porte sur la vérité du fait qui le déclenche.
+
+Trois garanties deviennent centrales :
+
+1. savoir quelle donnée a été utilisée ;
+2. pouvoir contester l’événement ;
+3. attribuer la responsabilité lorsque l’oracle se trompe ou devient indisponible.
+
+Le corpus public ne fournit pas encore une architecture complète de responsabilité pour tous ces services. La plateforme d’innovation identifie l’arbitrage comme un besoin possible. Le rulebook décrit des litiges techniques et antifraude, mais pas une juridiction universelle des conditions commerciales.
+
+## Le portefeuille enfant montre la vraie zone grise
+
+La plateforme d’innovation évoque des portefeuilles supervisés pour enfants avec des limites de dépenses. Il s’agit d’idées proposées par des participants, pas d’une fonctionnalité adoptée.
+
+Trois versions produiraient trois qualifications différentes.
+
+### Un plafond quotidien
+
+Le parent limite le montant dépensé par jour ou désactive les achats en ligne.
+
+La règle porte sur l’instrument. Elle ressemble aux contrôles parentaux déjà proposés par certaines cartes.
+
+### Une liste de catégories autorisées
+
+L’application refuse l’alcool, les jeux ou certains commerçants.
+
+Les euros restent peut-être libres dans l’infrastructure centrale, mais le compte ou l’interface limite leur usage. La qualification dépend alors du caractère volontaire, révocable, portable et contournable par un autre instrument.
+
+### Des unités qui restent marquées
+
+Les fonds reçus ne peuvent jamais quitter les catégories autorisées, même après transfert.
+
+La restriction suit la valeur et atteint la fongibilité. Elle se rapproche directement de la monnaie programmable interdite.
+
+Le cas enfant montre pourquoi une définition purement technique ne suffit pas. Une restriction peut vivre dans l’application et reproduire presque le même résultat pratique qu’une règle inscrite dans l’unité.
+
+## Une couche distincte pour les aides sociales conditionnelles
+
+L’interdiction ne rend pas les politiques publiques conditionnelles impossibles.
+
+Une administration peut déjà distribuer :
+
+- un titre restaurant ;
+- un chèque énergie ;
+- une carte sociale ;
+- une remise ciblée ;
+- un remboursement après justificatif ;
+- un paiement direct au fournisseur.
+
+La [directive PSD2](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366) reconnaît d’ailleurs des instruments utilisables dans un réseau limité ou pour une gamme très limitée de biens et services.
+
+La frontière se trouve entre deux modèles.
+
+Dans le premier, une aide est versée lorsque l’éligibilité est vérifiée. Le bénéficiaire reçoit ensuite des euros ordinaires.
+
+Dans le second, la valeur versée reste limitée à certains produits, certains commerçants ou une certaine durée.
+
+Le second modèle peut exister comme bon ou instrument spécialisé. Il ne devrait pas être présenté comme l’euro numérique général, pleinement fongible, si l’article 24 est respecté.
+
+Cette architecture produit une conséquence politique importante :
+
+> **L’interdiction ne supprime pas l’argent fléché. Elle oblige à rendre visible la couche qui le flèche.**
+
+## La programmabilité peut être déplacée à la périphérie
+
+Le risque le plus crédible ne ressemble pas forcément à une BCE écrivant « nourriture » dans chaque euro.
+
+Il peut prendre une forme plus banale :
+
+- l’utilisateur reçoit des euros juridiquement fongibles ;
+- son application refuse certains commerçants ;
+- l’administration ou le fournisseur contrôle les paramètres ;
+- il ne dispose pas d’alternative simple ;
+- la restriction est difficile à retirer ;
+- la conversion vers du cash ou de la monnaie bancaire devient compliquée.
+
+L’unité reste libre en théorie. Le pouvoir d’achat devient conditionné en pratique.
+
+Le considérant 55 de la Commission et du Parlement contient une formule utile : les paiements conditionnels ne doivent avoir ni pour objet ni pour effet de transformer l’euro numérique en monnaie programmable.
+
+Cette clause devrait empêcher un contournement trop évident par l’interface.
+
+Elle ne fournit pas encore un test complet pour les services périphériques.
+
+Un audit sérieux devra poser au moins six questions :
+
+| Question | Indice de service optionnel | Indice de programmabilité périphérique |
+|---|---|---|
+| L’utilisateur choisit-il réellement ? | oui, consentement séparé | condition imposée |
+| Peut-il utiliser les services de base sans cette couche ? | oui | non ou très difficilement |
+| Peut-il changer de PSP ou d’interface ? | facilement | restriction captive |
+| Peut-il convertir ou transférer les fonds ? | à parité | sortie empêchée |
+| La règle s’éteint-elle au règlement ? | oui | elle suit le solde ou les transferts |
+| Existe-t-il un recours lisible ? | contrat et contestation | décision opaque ou irrévocable |
+
+Le Parlement apporte un indice supplémentaire. Son rapport précise qu’en cas de changement d’urgence depuis un PSP indisponible, certains services additionnels, dont les paiements conditionnels, peuvent devoir être rétablis auprès du nouveau fournisseur. Le compte et les avoirs peuvent survivre alors que la logique conditionnelle ne suit pas automatiquement.
+
+## Qualifier juridiquement un paiement bloqué
+
+L’article 68 de PSD2 autorise déjà les plafonds de dépense convenus et le blocage d’un instrument pour des raisons objectivement justifiées de sécurité, de suspicion d’utilisation non autorisée ou frauduleuse et, dans certains cas, de risque de non-paiement.
+
+Le PSP doit informer le payeur lorsque cela est possible, puis débloquer ou remplacer l’instrument lorsque le motif disparaît.
+
+Le futur euro numérique ajouterait un mécanisme antifraude transversal, étudié dans le volet précédent. Un score pourrait conduire le PSP à refuser une transaction.
+
+La distinction juridique ne rend pas ce pouvoir bénin.
+
+Un faux positif peut empêcher une personne de payer son loyer ou d’acheter un billet. Un modèle opaque peut reproduire un blocage systématique autour d’euros parfaitement fongibles.
+
+La bonne qualification évite seulement de se tromper de remède.
+
+Pour un refus antifraude, les questions sont :
+
+- quel motif ?
+- quelle donnée ?
+- quel délai ?
+- quel recours ?
+- quelle responsabilité ?
+
+Pour une monnaie programmable, les questions seraient :
+
+- quelle restriction intrinsèque ?
+- qui l’a attachée à l’unité ?
+- survit-elle au transfert ?
+- la valeur reste-t-elle échangeable à parité ?
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 590" width="100%" role="img" aria-labelledby="blocked4-fr-title blocked4-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="blocked4-fr-title">Quatre raisons juridiques différentes pour lesquelles un paiement peut être impossible</title>
+<desc id="blocked4-fr-desc">Une préautorisation, un refus antifraude, un gel de sanctions et une saisie judiciaire peuvent tous empêcher un paiement. Chacun porte sur un objet distinct et repose sur une autorité différente.</desc>
+<style>{`.blocked4-fr-mobile{display:none}@media (max-width:640px){.blocked4-fr-desktop{display:none}.blocked4-fr-mobile{display:block}}`}</style>
+<g class="blocked4-fr-desktop">
+<rect width="760" height="590" rx="16" fill="#0b0f14"/>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">QUATRE BASES JURIDIQUES D’UN PAIEMENT BLOQUÉ</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">Le même symptôme peut venir de quatre droits différents.</text>
+<rect x="30" y="110" width="335" height="188" rx="14" fill="#14272d" stroke="#62d8c6"/>
+<text x="50" y="142" fill="#7ee5d6" font-size="15" font-weight="760">PRÉAUTORISATION</text>
+<text x="50" y="172" fill="#f7f9fc" font-size="14">Une somme est réservée.</text>
+<text x="50" y="195" fill="#f7f9fc" font-size="14">Elle reste dans le plafond.</text>
+<line x1="50" y1="218" x2="345" y2="218" stroke="#36515b"/>
+<text x="50" y="244" fill="#b7d5d0" font-size="12">Décideur : payeur et commerçant</text>
+<text x="50" y="265" fill="#b7d5d0" font-size="12">Objet : montant avant règlement</text>
+<text x="50" y="286" fill="#7ee5d6" font-size="12.5" font-weight="720">Issue : règlement, annulation ou expiration</text>
+<rect x="395" y="110" width="335" height="188" rx="14" fill="#302418" stroke="#ffb86b"/>
+<text x="415" y="142" fill="#ffca91" font-size="15" font-weight="760">REFUS ANTIFRAUDE</text>
+<text x="415" y="172" fill="#f7f9fc" font-size="14">Le PSP refuse un ordre.</text>
+<text x="415" y="195" fill="#f7f9fc" font-size="14">Le solde reste d’usage général.</text>
+<line x1="415" y1="218" x2="710" y2="218" stroke="#665039"/>
+<text x="415" y="244" fill="#d8c9b8" font-size="12">Décideur : PSP selon le droit des paiements</text>
+<text x="415" y="265" fill="#d8c9b8" font-size="12">Objet : transaction ou instrument</text>
+<text x="415" y="286" fill="#ffca91" font-size="12.5" font-weight="720">Issue : motif, contestation, déblocage</text>
+<rect x="30" y="326" width="335" height="188" rx="14" fill="#18272c" stroke="#8dd7a9"/>
+<text x="50" y="358" fill="#9be5b6" font-size="15" font-weight="760">GEL DE SANCTIONS</text>
+<text x="50" y="388" fill="#f7f9fc" font-size="14">Une personne ou entité est ciblée.</text>
+<text x="50" y="411" fill="#f7f9fc" font-size="14">Ses avoirs deviennent indisponibles.</text>
+<line x1="50" y1="434" x2="345" y2="434" stroke="#3c5a48"/>
+<text x="50" y="460" fill="#bfd7c7" font-size="12">Décideur : Union, exécution par le PSP</text>
+<text x="50" y="481" fill="#bfd7c7" font-size="12">Objet : personne, compte et avoirs</text>
+<text x="50" y="502" fill="#9be5b6" font-size="12.5" font-weight="720">Issue : dégel ou recours contre la mesure</text>
+<rect x="395" y="326" width="335" height="188" rx="14" fill="#251d33" stroke="#d98bff"/>
+<text x="415" y="358" fill="#e2adff" font-size="15" font-weight="760">SAISIE OU GEL JUDICIAIRE</text>
+<text x="415" y="388" fill="#f7f9fc" font-size="14">Un juge ou une autorité agit</text>
+<text x="415" y="411" fill="#f7f9fc" font-size="14">sur un bien ou une créance.</text>
+<line x1="415" y1="434" x2="710" y2="434" stroke="#594063"/>
+<text x="415" y="460" fill="#d2c2d9" font-size="12">Décideur : autorité compétente</text>
+<text x="415" y="481" fill="#d2c2d9" font-size="12">Objet : patrimoine du titulaire</text>
+<text x="415" y="502" fill="#e2adff" font-size="12.5" font-weight="720">Issue : procédure, exemptions et recours</text>
+<rect x="30" y="538" width="700" height="28" rx="8" fill="#111923"/>
+<text x="380" y="557" text-anchor="middle" fill="#dce6ef" font-size="12">Aucun de ces mécanismes n’exige un euro portant une catégorie d’achat ou une date d’expiration.</text>
+</g>
+<g class="blocked4-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="272" rx="9" fill="#0b0f14"/>
+<text x="15" y="21" fill="#f7f9fc" font-size="12.5" font-weight="760">« PAIEMENT IMPOSSIBLE » : QUEL DROIT ?</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.3">La base juridique permet de situer le pouvoir.</text>
+<rect x="12" y="46" width="326" height="46" rx="6" fill="#14272d" stroke="#62d8c6"/>
+<text x="21" y="61" fill="#7ee5d6" font-size="8.2" font-weight="760">PRÉAUTORISATION</text><text x="329" y="61" text-anchor="end" fill="#f7f9fc" font-size="8">montant réservé</text>
+<text x="21" y="76" fill="#b7d5d0" font-size="7.2">Accord commercial, avant règlement, puis libération.</text>
+<rect x="12" y="100" width="326" height="46" rx="6" fill="#302418" stroke="#ffb86b"/>
+<text x="21" y="115" fill="#ffca91" font-size="8.2" font-weight="760">ANTIFRAUDE</text><text x="329" y="115" text-anchor="end" fill="#f7f9fc" font-size="8">ordre refusé</text>
+<text x="21" y="130" fill="#d8c9b8" font-size="7.2">Décision du PSP, motif et recours selon le droit.</text>
+<rect x="12" y="154" width="326" height="46" rx="6" fill="#18272c" stroke="#8dd7a9"/>
+<text x="21" y="169" fill="#9be5b6" font-size="8.2" font-weight="760">SANCTIONS</text><text x="329" y="169" text-anchor="end" fill="#f7f9fc" font-size="8">personne ciblée</text>
+<text x="21" y="184" fill="#bfd7c7" font-size="7.2">Gel d’avoirs sur base juridique européenne.</text>
+<rect x="12" y="208" width="326" height="46" rx="6" fill="#251d33" stroke="#d98bff"/>
+<text x="21" y="223" fill="#e2adff" font-size="8.2" font-weight="760">SAISIE / GEL</text><text x="329" y="223" text-anchor="end" fill="#f7f9fc" font-size="8">bien ou créance</text>
+<text x="21" y="238" fill="#d2c2d9" font-size="7.2">Autorité ou juge, procédure et exemptions.</text>
+<text x="15" y="268" fill="#9fb0c0" font-size="7.2">Même blocage pratique, quatre bases différentes.</text>
+</g>
+</svg>
+<figcaption>Un blocage réel peut relever d’un contrat, de la fraude, des sanctions ou d’une procédure judiciaire sans programmer l’unité monétaire.</figcaption>
+</figure>
+
+## Les sanctions ciblent une personne et ses avoirs
+
+Le mandat du Conseil prévoit un contrôle spécifique des personnes et entités visées par les mesures financières restrictives de l’Union.
+
+Les PSP devraient vérifier leurs utilisateurs immédiatement après une nouvelle mesure ou une modification, puis au moins une fois par jour. Pour ces sanctions ciblées précises, le texte cherche à éviter un nouveau contrôle nominatif de chaque transaction instantanée, afin de réduire les faux positifs et les rejets inutiles.
+
+La logique est :
+
+1. une personne ou une entité figure sur une liste ;
+2. le PSP identifie son client ;
+3. les avoirs sont gelés ou les fonds ne peuvent pas être mis à sa disposition.
+
+La logique n’est pas :
+
+> chaque unité contient une liste noire.
+
+Le gel peut produire un blocage total. Il repose néanmoins sur une mesure juridique ciblée, susceptible d’être modifiée, levée ou contestée selon les procédures applicables.
+
+La monnaie reste exprimée dans la même unité. C’est la capacité de la personne à en disposer qui disparaît.
+
+## Le gel pénal et la confiscation relèvent encore d’un autre droit
+
+La [directive 2024/1260](https://eur-lex.europa.eu/eli/dir/2024/1260/oj) définit le bien de manière très large : corporel ou incorporel, meuble ou immeuble, y compris les cryptoactifs et les instruments prouvant un droit ou un intérêt.
+
+Elle définit le gel comme l’interdiction temporaire de transférer, détruire, convertir, déplacer ou disposer du bien, ou comme une prise temporaire de garde ou de contrôle.
+
+Le Conseil et le Parlement veulent par ailleurs qualifier les euros numériques d’actifs immatériels appartenant à leurs utilisateurs.
+
+La combinaison permet une inférence robuste : des avoirs en euros numériques pourraient, en principe, faire l’objet d’un gel ou d’une confiscation pénale lorsque les conditions légales sont réunies.
+
+Le texte disponible ne décrit pas encore le bouton ou l’API qui exécuterait cette décision.
+
+Le circuit dépendra :
+
+- du droit national ;
+- de l’autorité compétente ;
+- du rôle du PSP ;
+- de l’architecture finale du DESP ;
+- du traitement des avoirs hors ligne ;
+- des droits des tiers et des voies de recours.
+
+Il serait donc excessif d’écrire que la BCE pourrait confisquer discrétionnairement les fonds. Il serait tout aussi faux de présenter l’euro numérique comme insaisissable par nature.
+
+## La saisie civile reste un angle mort réel
+
+Le [règlement 655/2014](https://eur-lex.europa.eu/eli/reg/2014/655/oj/) permet à un créancier d’obtenir une ordonnance européenne empêchant le transfert ou le retrait de fonds sur un compte bancaire dans certains litiges transfrontaliers.
+
+Son champ repose sur deux catégories précises :
+
+- un compte contenant des fonds ;
+- détenu auprès d’un établissement de crédit.
+
+Le règlement exclut en outre les comptes détenus par ou auprès des banques centrales lorsqu’elles agissent comme autorités monétaires.
+
+L’euro numérique formerait un objet hybride :
+
+- une dette de l’Eurosystème ;
+- un actif appartenant à l’utilisateur ;
+- un compte et un service administrés par un PSP ;
+- un PSP qui pourrait ne pas être une banque.
+
+Le droit public disponible ne permet pas de conclure que l’ordonnance européenne actuelle s’appliquerait automatiquement, ni qu’elle serait impossible.
+
+La question opérationnelle reste entière : à qui le juge enverrait-il l’ordre ?
+
+Au PSP qui gère la relation client ? À l’infrastructure centrale ? Aux deux ? Comment traiter une réservation en cours, un compte joint, une somme légalement insaisissable ou des avoirs stockés hors ligne ?
+
+Cette lacune mérite mieux qu’une réponse binaire.
+
+La protection patrimoniale proposée concerne clairement les créanciers du PSP. Si l’intermédiaire fait faillite, ses créanciers ne doivent pas pouvoir atteindre les euros numériques des clients.
+
+Elle ne crée pas une immunité générale contre les créanciers personnels de l’utilisateur, le fisc, le pénal ou les sanctions.
+
+> **Monnaie de banque centrale ne signifie pas patrimoine hors du droit.**
+
+## Qui possède réellement le bouton ?
+
+Le débat public concentre souvent tous les pouvoirs sur la BCE.
+
+Les textes distribuent au contraire les décisions entre plusieurs acteurs.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 650" width="100%" role="img" aria-labelledby="actors4-fr-title actors4-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<title id="actors4-fr-title">Répartition des pouvoirs autour de l’euro numérique</title>
+<desc id="actors4-fr-desc">Le législateur définit la monnaie et ses limites, la BCE fournit l’infrastructure dans le cadre de la loi, les PSP développent les services, l’utilisateur consent, et les autorités ou juges appliquent les restrictions légales.</desc>
+<style>{`.actors4-fr-mobile{display:none}@media (max-width:640px){.actors4-fr-desktop{display:none}.actors4-fr-mobile{display:block}}`}</style>
+<g class="actors4-fr-desktop">
+<rect width="760" height="650" rx="16" fill="#0b0f14"/>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">QUI PEUT DÉCIDER QUOI ?</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">La décision est répartie entre plusieurs acteurs.</text>
+<rect x="270" y="112" width="220" height="94" rx="14" fill="#172337" stroke="#7fa7ff"/>
+<text x="380" y="143" text-anchor="middle" fill="#9bb9ff" font-size="15" font-weight="760">PARLEMENT + CONSEIL</text>
+<text x="380" y="169" text-anchor="middle" fill="#f7f9fc" font-size="12.5">définissent la monnaie, l’interdiction</text>
+<text x="380" y="188" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et les compétences</text>
+<rect x="42" y="244" width="210" height="122" rx="14" fill="#14272d" stroke="#62d8c6"/>
+<text x="147" y="274" text-anchor="middle" fill="#7ee5d6" font-size="15" font-weight="760">BCE / EUROSYSTÈME</text>
+<text x="147" y="301" text-anchor="middle" fill="#f7f9fc" font-size="12.5">standards, règlement, réservation</text>
+<text x="147" y="322" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et décision éventuelle d’émettre</text>
+<text x="147" y="347" text-anchor="middle" fill="#a9bec5" font-size="11.5">dans le cadre du règlement</text>
+<rect x="275" y="244" width="210" height="122" rx="14" fill="#302418" stroke="#ffb86b"/>
+<text x="380" y="274" text-anchor="middle" fill="#ffca91" font-size="15" font-weight="760">PSP / FOURNISSEURS</text>
+<text x="380" y="301" text-anchor="middle" fill="#f7f9fc" font-size="12.5">logique métier, interface, oracle</text>
+<text x="380" y="322" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et services additionnels</text>
+<text x="380" y="347" text-anchor="middle" fill="#d8c9b8" font-size="11.5">soumis au droit des paiements</text>
+<rect x="508" y="244" width="210" height="122" rx="14" fill="#251d33" stroke="#d98bff"/>
+<text x="613" y="274" text-anchor="middle" fill="#e2adff" font-size="15" font-weight="760">UTILISATEUR</text>
+<text x="613" y="301" text-anchor="middle" fill="#f7f9fc" font-size="12.5">accepte une condition, un mandat</text>
+<text x="613" y="322" text-anchor="middle" fill="#f7f9fc" font-size="12.5">ou une préautorisation</text>
+<text x="613" y="347" text-anchor="middle" fill="#d2c2d9" font-size="11.5">consentement et révocation</text>
+<rect x="158" y="410" width="210" height="122" rx="14" fill="#18272c" stroke="#8dd7a9"/>
+<text x="263" y="440" text-anchor="middle" fill="#9be5b6" font-size="15" font-weight="760">COMMISSION</text>
+<text x="263" y="467" text-anchor="middle" fill="#f7f9fc" font-size="12.5">actes délégués ou d’exécution</text>
+<text x="263" y="488" text-anchor="middle" fill="#f7f9fc" font-size="12.5">dans les matières prévues</text>
+<text x="263" y="513" text-anchor="middle" fill="#bfd7c7" font-size="11.5">ne renverse pas seule la loi</text>
+<rect x="392" y="410" width="210" height="122" rx="14" fill="#2b1928" stroke="#ff7ea8"/>
+<text x="497" y="440" text-anchor="middle" fill="#ff9abb" font-size="15" font-weight="760">AUTORITÉS / JUGES</text>
+<text x="497" y="467" text-anchor="middle" fill="#f7f9fc" font-size="12.5">sanctions, AML, gel, saisie</text>
+<text x="497" y="488" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et confiscation</text>
+<text x="497" y="513" text-anchor="middle" fill="#d7b9c5" font-size="11.5">sur une base juridique ciblée</text>
+<path d="M380 206 V228" stroke="#7fa7ff" stroke-width="2"/>
+<path d="M147 228 H613" stroke="#52657b" stroke-width="1.5"/>
+<path d="M147 228 V244 M380 228 V244 M613 228 V244" stroke="#52657b" stroke-width="1.5"/>
+<path d="M380 366 V390" stroke="#52657b" stroke-width="1.5"/>
+<path d="M263 390 H497" stroke="#52657b" stroke-width="1.5"/>
+<path d="M263 390 V410 M497 390 V410" stroke="#52657b" stroke-width="1.5"/>
+<rect x="90" y="570" width="580" height="48" rx="10" fill="#111923" stroke="#344556"/>
+<text x="380" y="590" text-anchor="middle" fill="#ffca91" font-size="12" font-weight="720">L’ARTICLE 24 ENCADRE LES POUVOIRS TECHNIQUES DE LA BCE</text>
+<text x="380" y="607" text-anchor="middle" fill="#dce6ef" font-size="11.5">Une modification substantielle passerait par une nouvelle procédure législative.</text>
+</g>
+<g class="actors4-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="299" rx="9" fill="#0b0f14"/>
+<text x="15" y="21" fill="#f7f9fc" font-size="13" font-weight="760">QUI PEUT DÉCIDER QUOI ?</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.4">Le pouvoir est réparti entre plusieurs autorités.</text>
+<rect x="12" y="46" width="326" height="37" rx="6" fill="#172337" stroke="#7fa7ff"/>
+<text x="21" y="61" fill="#9bb9ff" font-size="8.3" font-weight="760">PARLEMENT + CONSEIL</text>
+<text x="21" y="74" fill="#bdc9e5" font-size="7.2">Définissent la monnaie, l’interdiction et les compétences.</text>
+<rect x="12" y="90" width="326" height="37" rx="6" fill="#14272d" stroke="#62d8c6"/>
+<text x="21" y="105" fill="#7ee5d6" font-size="8.3" font-weight="760">BCE / EUROSYSTÈME</text>
+<text x="21" y="118" fill="#b7d5d0" font-size="7.2">Standards, règlement et réservation dans le cadre de la loi.</text>
+<rect x="12" y="134" width="326" height="37" rx="6" fill="#302418" stroke="#ffb86b"/>
+<text x="21" y="149" fill="#ffca91" font-size="8.3" font-weight="760">PSP / FOURNISSEURS</text>
+<text x="21" y="162" fill="#d8c9b8" font-size="7.2">Services, interface, oracle et logique métier.</text>
+<rect x="12" y="178" width="326" height="37" rx="6" fill="#251d33" stroke="#d98bff"/>
+<text x="21" y="193" fill="#e2adff" font-size="8.3" font-weight="760">UTILISATEUR</text>
+<text x="21" y="206" fill="#d2c2d9" font-size="7.2">Consentement, modification et révocation selon le service.</text>
+<rect x="12" y="222" width="158" height="40" rx="6" fill="#18272c" stroke="#8dd7a9"/>
+<text x="21" y="237" fill="#9be5b6" font-size="8" font-weight="760">COMMISSION</text>
+<text x="21" y="251" fill="#bfd7c7" font-size="6.8">Actes encadrés.</text>
+<rect x="180" y="222" width="158" height="40" rx="6" fill="#2b1928" stroke="#ff7ea8"/>
+<text x="189" y="237" fill="#ff9abb" font-size="8" font-weight="760">AUTORITÉS / JUGES</text>
+<text x="189" y="251" fill="#d7b9c5" font-size="6.8">Gel, saisie, sanctions.</text>
+<rect x="12" y="271" width="326" height="19" rx="5" fill="#111923"/>
+<text x="175" y="284" text-anchor="middle" fill="#ffca91" font-size="7.2" font-weight="720">L’expiration exigerait une nouvelle procédure législative.</text>
+</g>
+</svg>
+<figcaption>Le futur règlement distribue les compétences entre le législateur, la BCE, les intermédiaires, l’utilisateur et les autorités chargées d’appliquer le droit.</figcaption>
+</figure>
+
+Le Parlement et le Conseil peuvent interdire ou autoriser une architecture monétaire. Ils peuvent aussi modifier ultérieurement la loi.
+
+La Commission peut recevoir des pouvoirs délégués ou d’exécution dans les matières que le règlement lui confie. Elle ne peut pas transformer seule une interdiction législative en autorisation générale.
+
+La BCE peut fournir standards, réservation, règlement et infrastructure, puis décider éventuellement d’émettre après l’adoption de la loi. Ses mesures doivent rester dans le cadre du règlement et de ses compétences.
+
+Les PSP peuvent développer les services conditionnels, choisir certains oracles, gérer les interfaces et appliquer la fraude. Ils restent soumis au droit des paiements, au RGPD, à la protection des consommateurs et à la concurrence.
+
+L’utilisateur accepte une préautorisation, un ordre récurrent ou une condition. Le consentement ne rend pas toute restriction licite. Il doit être compréhensible et, selon le service, modifiable ou révocable.
+
+Les autorités et les juges appliquent sanctions, AML, gel, confiscation, saisie ou règles fiscales sur une base juridique propre.
+
+Cette répartition compte parce qu’elle détermine le recours. On ne conteste pas une erreur de livraison, un faux positif antifraude et une sanction européenne devant le même acteur ni avec le même droit.
+
+## La BCE pourrait-elle activer l’expiration par une mise à jour ?
+
+Dans le cadre actuellement négocié, non.
+
+L’article 24 interdit la monnaie programmable. L’article 5 limite les mesures, règles et standards de la BCE au cadre du règlement et à ses compétences. L’article 24a du Conseil et du Parlement lui permet de surveiller et d’intégrer des technologies nouvelles après évaluation de leur maturité, de leurs dépendances et de leurs risques.
+
+Cet article 24a permet l’évolution technique.
+
+Il ne permet pas de renverser l’article 24.
+
+Transformer l’euro numérique général en unités à expiration ou à usage imposé demanderait au minimum une modification juridique majeure. Elle passerait par une nouvelle procédure politique, avec Parlement, Conseil, contrôle juridictionnel possible et confrontation au cours légal ainsi qu’à la fongibilité.
+
+Une protection législative n’est pourtant jamais éternelle.
+
+Un futur législateur peut modifier un règlement. Affirmer que l’expiration arrivera automatiquement parce que l’infrastructure est numérique est faux. Affirmer qu’aucune majorité future ne pourrait jamais changer la loi l’est aussi.
+
+La formulation exacte est moins spectaculaire et plus solide :
+
+> **La BCE ne pourrait pas activer seule la programmabilité interdite dans le cadre actuel. Une évolution substantielle devrait devenir une décision législative visible.**
+
+## Neuf mythes, neuf verdicts
+
+| Affirmation | Verdict au 14 août 2026 |
+|---|---|
+| « La BCE pourra faire expirer vos euros par un réglage » | Faux dans le cadre actuel. L’expiration intrinsèque appartient aux exemples interdits et l’article 24 lie la BCE. |
+| « Un paiement après livraison est de l’argent programmable » | Faux. La condition gouverne l’exécution et disparaît au règlement. |
+| « Une somme réservée prouve que l’euro est programmable » | Faux. La réservation bloque temporairement un montant avant paiement. |
+| « Un plafond de détention limite ce que vous pouvez acheter » | Catégorie erronée. Il limite le stock, pas la destination de chaque unité. |
+| « Un gel de sanctions est une programmation de la monnaie » | Non. Il vise une personne ou une entité et ses avoirs sur une base juridique. |
+| « L’interdiction rendra toute saisie impossible » | Faux. Le droit pénal et les droits nationaux de l’exécution continuent de s’appliquer. |
+| « Les euros numériques sont protégés contre tous les créanciers » | Faux. La protection explicite vise les créanciers du PSP, pas tous les créanciers du titulaire. |
+| « Un portefeuille enfant avec catégories interdites est forcément licite » | Non démontré. Une restriction périphérique peut reproduire le comportement d’un bon et doit passer le test de fongibilité, de choix et de sortie. |
+| « La loi actuelle garantit l’avenir pour toujours » | Faux. Elle crée un verrou sérieux qui peut être modifié par une future procédure législative. |
+
+## État des preuves et questions ouvertes
+
+| Proposition | État de la preuve |
+|---|---|
+| Les trois institutions interdisent la monnaie programmable | établi dans leurs positions de négociation |
+| L’expiration intrinsèque et les restrictions par biens sont visées | établi par les considérants et définitions |
+| Les paiements conditionnels sont autorisés | établi |
+| La BCE pourrait fournir standards et réservation | établi dans les trois textes |
+| Le marché fournirait principalement la logique conditionnelle | documenté par la plateforme d’innovation et les textes |
+| La préautorisation prévoit règlements partiels et nouvelle autorisation en cas d’augmentation | documenté dans le rulebook v0.91 |
+| Les services additionnels sont toujours portables sans friction | non établi |
+| Une restriction d’application reproduisant un voucher serait automatiquement interdite | principe « objet ou effet » pertinent, test final non publié |
+| Les sanctions et refus antifraude resteront possibles | établi dans les mandats et le droit des paiements |
+| Les avoirs numériques peuvent en principe relever du gel pénal | inférence juridique forte, exécution technique non documentée |
+| La saisie civile européenne s’appliquera automatiquement | non établi |
+| La BCE peut supprimer seule l’interdiction | incompatible avec le cadre actuel |
+
+## Le risque opérationnel au-delà de la frontière juridique
+
+Le projet européen ne prévoit pas un euro à expiration, géolocalisé ou réservé à certains achats.
+
+Cette affirmation repose sur une interdiction écrite dans les positions de la Commission, du Conseil et du Parlement, renforcée par l’analyse juridique de la BCE sur le cours légal et la fongibilité.
+
+La conclusion ne retire rien aux vrais pouvoirs qui entoureront cette monnaie.
+
+Un paiement pourra être réservé par contrat, refusé pour fraude, bloqué par une sanction, gelé dans une procédure pénale ou saisi selon le droit applicable. Une application privée ou publique pourra aussi tenter de construire des services fortement restrictifs autour d’euros juridiquement libres.
+
+Le point de surveillance se déplace donc.
+
+Il ne suffit pas de vérifier que le mot *programmable* a disparu du coeur monétaire. Il faut auditer :
+
+- les interfaces ;
+- les oracles ;
+- le consentement ;
+- les règles de sortie ;
+- la portabilité ;
+- les faux positifs ;
+- les ordres de gel ;
+- les voies de recours.
+
+La question la plus utile de ce quatrième volet tient en une phrase :
+
+> **La restriction appartient-elle aux euros, ou au pouvoir qu’un acteur exerce autour d’eux ?**
+
+Le projet actuel répond clairement pour l’unité : elle doit rester fongible.
+
+Il reste à documenter, service par service, la manière dont les pouvoirs périphériques seront encadrés.
+
+## Prochaine pièce : qui paiera l’euro numérique ?
+
+Le cinquième volet quittera le droit pour suivre les coûts.
+
+La BCE construit l’infrastructure centrale. Les banques et PSP doivent intégrer le compte, l’application, le hors ligne, la fraude, l’assistance et les terminaux. Les services de base seraient gratuits pour le particulier, tandis que les frais marchands seraient plafonnés.
+
+Le prochain article cherchera donc le payeur réel : Eurosystème, banques, commerçants, contribuables ou clients par d’autres canaux.
+
+## Sources et méthode
+
+Ce volet repose principalement sur :
+
+- la [proposition COM(2023) 369 de la Commission](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52023PC0369), notamment les définitions, les considérants 55 et 56 et l’article 24 ;
+- le [mandat ST-16695/25 du Conseil](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf), notamment les articles 2, 4, 5, 24, 24a, 29 et 30a ;
+- le [rapport A10-0185/2026 du Parlement](https://www.europarl.europa.eu/doceo/document/A-10-2026-0185_EN.pdf), notamment les définitions, les considérants 55 et 56 et les articles 24, 24a, 29 et 30a ;
+- l’[avis CON/2023/34 de la BCE](https://eur-lex.europa.eu/eli/C/2024/669/oj/eng), en particulier son analyse du cours légal, de la fongibilité et des vouchers ;
+- le rapport de la [plateforme d’innovation de la BCE](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep250926_innovationplatform.en.pdf), utilisé en distinguant les tests simulés des fonctionnalités adoptées ;
+- le [rulebook v0.91](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91.en.pdf) et son [annexe de règlement](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.derdgpr260702_Digital_euro_scheme_rulebook_v0.91_-_Annex_D2_-_Back-end_implementation_specifications_7_-_Settlement.en.pdf) pour les paiements récurrents, la préautorisation et la réservation ;
+- la [directive PSD2 consolidée](https://eur-lex.europa.eu/eli/dir/2015/2366/2025-01-17/eng), notamment les articles 68 et 75 ;
+- la [directive 2024/1260](https://eur-lex.europa.eu/eli/dir/2024/1260/oj) sur le gel et la confiscation en matière pénale ;
+- le [règlement 655/2014](https://eur-lex.europa.eu/eli/reg/2014/655/oj/) sur l’ordonnance européenne de saisie conservatoire des comptes bancaires.
+
+L’article distingue les textes adoptés, les positions de négociation, les brouillons techniques, les expérimentations et les inférences juridiques. Le rapport parlementaire a été extrait et contrôlé article par article. La question de la saisie civile demeure volontairement ouverte, car le corpus disponible ne décrit pas encore un circuit complet applicable à l’objet hybride que serait le compte d’euros numériques.
