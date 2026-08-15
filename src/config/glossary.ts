@@ -66,6 +66,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'LGFV', nom: 'Local Government Financing Vehicle', def: "Véhicule de financement des collectivités locales chinoises : société ad hoc qui emprunte en gageant des terrains publics et se rembourse grâce aux cessions foncières. Pilier du financement local pendant deux décennies, fragilisé par l'effondrement immobilier qui a tari les recettes foncières. Sa dette, en partie hors bilan, est estimée entre 14 800 et 58 000 milliards de yuans selon les sources." },
       { sigle: 'Trois lignes rouges', nom: 'Three red lines', def: "Dispositif prudentiel imposé par Pékin en 2020 pour brider l'endettement des promoteurs immobiliers, via trois ratios financiers plafonnés (dette sur actifs, dette nette sur fonds propres, trésorerie sur dette à court terme). Déclencheur assumé du dégonflement de la bulle et de la vague de défauts qui a suivi." },
       { sigle: 'BCE', nom: 'Banque centrale européenne', def: "Institution qui conduit la politique monétaire de la zone euro : fixation des taux directeurs, contrôle de l'inflation.", guide: 'lire-le-bilan-bce-target2' },
+      { sigle: 'PSP', nom: 'Prestataire de services de paiement', def: "Acteur réglementé qui fournit des services de paiement, par exemple une banque, un établissement de paiement ou un établissement de monnaie électronique. Dans le projet d'euro numérique, les PSP distribueraient la monnaie, identifieraient les clients, géreraient les comptes et interfaces et assureraient l'assistance de premier niveau." },
       { sigle: 'Eurosystème', nom: 'Eurosystem', def: "Ensemble formé par la BCE et les banques centrales nationales des pays de la zone euro. C'est lui, et non la seule BCE, qui porte les portefeuilles de titres et exécute la politique monétaire ; ses comptes consolidés paraissent chaque semaine.", guide: 'lire-le-bilan-bce-target2' },
       { sigle: 'Clé de capital', nom: 'Capital key', def: "Quote-part de chaque banque centrale nationale dans le capital de la BCE, calculée sur la population et le PIB du pays (environ 26 % pour l'Allemagne, 20 % pour la France). Elle répartit les achats d'actifs, les risques et les revenus au sein de l'Eurosystème.", guide: 'lire-le-bilan-bce-target2' },
       { sigle: 'Target2', nom: 'Système de paiement T2 de la zone euro', def: "Système de règlement brut en temps réel des paiements de gros montant de la zone euro. Les soldes Target2, créances et dettes des banques centrales nationales envers la BCE, cumulent les flux transfrontières : plus de 1 000 milliards d'euros de créance pour la Bundesbank. Un thermomètre de flux, pas un prêt caché.", guide: 'lire-le-bilan-bce-target2' },
@@ -505,7 +506,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-08-14';
+export const glossaryUpdatedIso = '2026-08-15';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {

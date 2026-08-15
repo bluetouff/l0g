@@ -1,0 +1,881 @@
+---
+title: "Digital euro, 6/6: who controls the machine?"
+description: "The monetary core is designed to remain public. The app, fraud engine, offline mode and part of the network will depend on private contracts lasting up to fifteen years. Our investigation tests the operational sovereignty of the machine."
+pubDate: 2026-08-15T14:02:00+02:00
+updatedDate: 2026-08-15T14:02:00+02:00
+tags: ["digital euro", "ECB", "sovereignty", "infrastructure", "cybersecurity", "payments", "investigation"]
+draft: false
+sourceArticle: "euro-numerique-6-qui-controle-machine"
+sourceUpdatedDate: 2026-08-15T14:02:00+02:00
+---
+
+*This article closes our six-part investigation into the digital euro. The [fifth part](/en/analysis/digital-euro-5-price-of-sovereignty/) followed the bill. This final part enters the machine itself: central banks, procurement, suppliers, code, keys, phones and networks. The final question is who can take control when something breaks.*
+
+The euro displayed in a digital wallet would be a public liability.
+
+The application displaying it would not necessarily be public.
+
+The software producing a fraud score, the table resolving a phone number, the chip holding offline value and part of the network transporting messages could depend on private companies engaged for ten or fifteen years.
+
+That architecture is not an anomaly. A central bank is not meant to manufacture every phone, code every application and lay every fibre connection. Sovereignty does not require the state to write every line of code.
+
+It requires something else: the ability to see, modify, replace and rebuild the system when a supplier, network or gatekeeper is no longer available.
+
+> **Status as of 15 August 2026.** The final regulation has not been adopted and no issuance decision has been made. Five external components already have framework agreements. Six national central banks have been selected for the core. A separate connectivity procurement is under way. Published ceilings are not expenditure and framework agreements do not guarantee that full development has been ordered.
+
+## Seven things to remember
+
+- Issuance, holdings and central settlement would remain inside the Eurosystem.
+- Six national central banks have been selected for core components.
+- Five specialist services have two ranked providers each, producing ten framework agreements.
+- Their combined estimated value is €432.1 million; their ceilings total €1.164 billion.
+- Alias, app and SEPI can run for up to ten years; fraud and offline for up to fifteen.
+- The offline procurement publishes especially strong rights to use, modify and redistribute the solution; equivalent public evidence is not available for the other four components.
+- The hardest dependency may sit outside the ECB contracts: app stores, operating systems, secure elements, HSMs and networks.
+
+## Public money inside a hybrid machine
+
+The current design can be read through four layers.
+
+The first is monetary. The Eurosystem would issue digital euros, record holdings and perform final settlement. Neither a commercial bank nor an IT supplier would carry the monetary liability.
+
+The second is the Digital Euro Service Platform, or DESP. Its core should be supplied by central banks, while five specialist components are entrusted to private companies under ECB governance.
+
+The third is distribution. Banks and other [PSPs](/en/glossary/#psp) would retain the customer relationship: identity, account, support, local fraud controls, disputes, funding and defunding.
+
+The fourth sits in the citizen's pocket and between data centres: smartphones, operating systems, app stores, secure elements, HSMs, telecoms and network providers.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-arch-en-t a6-arch-en-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-arch-en-t">The digital euro machine in four layers</title><desc id="a6-arch-en-d">The monetary core is public, specialist services combine public and private control, PSPs distribute the money, and devices and networks create external dependencies.</desc><defs><linearGradient id="a6-arch-en-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient><marker id="a6-arch-en-arr" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#68d9c8"/></marker></defs><rect x="1" y="1" width="478" height="1028" rx="15" fill="url(#a6-arch-en-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">THE MACHINE IN FOUR LAYERS</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Sovereignty changes with the layer being examined</text><g transform="translate(20 94)"><rect width="440" height="170" rx="13" fill="#132b2c" stroke="#68d9c8" stroke-width="1.4"/><text x="20" y="29" fill="#8ce8db" font-size="12" font-weight="800">1. MONEY AND LEDGER</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">Six national central banks</text><text x="20" y="91" fill="#dceae7" font-size="13">Issuance, holdings, final settlement and limits.</text><text x="20" y="116" fill="#dceae7" font-size="13">The monetary liability remains in the Eurosystem.</text><rect x="290" y="117" width="126" height="31" rx="999" fill="#0e1d1f" stroke="#68d9c8"/><text x="353" y="137" text-anchor="middle" fill="#a7f0e5" font-size="11" font-weight="800">PUBLIC CONTROL</text></g><path d="M240 270V306" stroke="#68d9c8" stroke-width="3" marker-end="url(#a6-arch-en-arr)"/><g transform="translate(20 322)"><rect width="440" height="186" rx="13" fill="#172337" stroke="#8facff" stroke-width="1.4"/><text x="20" y="29" fill="#a7c0ff" font-size="12" font-weight="800">2. DESP SERVICES</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">Public core + five private components</text><text x="20" y="92" fill="#dce7ef" font-size="13">Aliases, fraud, app, offline and SEPI.</text><text x="20" y="117" fill="#dce7ef" font-size="13">ECB governance, contractual development and operation.</text><rect x="20" y="138" width="178" height="30" rx="999" fill="#101923" stroke="#8facff"/><text x="109" y="158" text-anchor="middle" fill="#c4d3ff" font-size="11" font-weight="800">PUBLIC + EU PRIVATE</text></g><path d="M240 514V550" stroke="#68d9c8" stroke-width="3" marker-end="url(#a6-arch-en-arr)"/><g transform="translate(20 566)"><rect width="440" height="170" rx="13" fill="#30251a" stroke="#ffbd78" stroke-width="1.4"/><text x="20" y="29" fill="#ffd09d" font-size="12" font-weight="800">3. DISTRIBUTION</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">Banks and other PSPs</text><text x="20" y="91" fill="#f4e8d8" font-size="13">KYC, accounts, interfaces, support, disputes and funding.</text><text x="20" y="116" fill="#f4e8d8" font-size="13">The customer relationship stays private and regulated.</text><rect x="265" y="119" width="151" height="29" rx="999" fill="#21170f" stroke="#ffbd78"/><text x="340" y="138" text-anchor="middle" fill="#ffe0b7" font-size="11" font-weight="800">REGULATED PRIVATE</text></g><path d="M240 742V778" stroke="#ffbd78" stroke-width="3" marker-end="url(#a6-arch-en-arr)"/><g transform="translate(20 794)"><rect width="440" height="170" rx="13" fill="#321d22" stroke="#ff8498" stroke-width="1.4"/><text x="20" y="29" fill="#ffa6b5" font-size="12" font-weight="800">4. DEVICES AND NETWORKS</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">OS, stores, secure elements and NSPs</text><text x="20" y="91" fill="#f2e2e5" font-size="13">Apple, Google, OEMs, HSMs, TSMs, telecoms and data centres.</text><text x="20" y="116" fill="#f2e2e5" font-size="13">EU law constrains these dependencies without removing them.</text><rect x="258" y="119" width="158" height="29" rx="999" fill="#211116" stroke="#ff8498"/><text x="337" y="138" text-anchor="middle" fill="#ffc3cd" font-size="11" font-weight="800">MIXED DEPENDENCIES</text></g><rect x="20" y="982" width="440" height="28" rx="8" fill="#0f1822" stroke="#68d9c8"/><text x="240" y="1001" text-anchor="middle" fill="#dfeaf0" font-size="11.5">Final test: who can take over each layer without external permission?</text><text x="24" y="1022" fill="#75899d" font-size="10">Sources: ECB, procurements, Council mandate. l0g synthesis.</text></svg>
+<figcaption>The money remains public. Experience, distribution and several hardware dependencies rely on separate contractual layers.</figcaption>
+</figure>
+
+This decomposition avoids two caricatures.
+
+The first says private companies will issue the euro. They will not carry the monetary debt and cannot create balances at will.
+
+The second says everything will remain under direct Frankfurt control. An infrastructure can retain a public core while depending in daily operation on software, keys and devices administered elsewhere.
+
+Sovereignty sits precisely at the interfaces between these layers.
+
+## Six central banks for the core
+
+In July 2025 the Governing Council selected six national central banks:
+
+- Banca d'Italia;
+- Banco de España;
+- Banque de France;
+- Deutsche Bundesbank;
+- Lietuvos bankas;
+- Oesterreichische Nationalbank.
+
+The [ECB describes](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html) centralised settlement in which the Eurosystem records and verifies holdings and settlements.
+
+That choice protects the most important element: the monetary ledger and issuance capacity remain public.
+
+It does not yet make the public architecture fully visible.
+
+The open corpus does not allocate precise functions among the six central banks. It does not publicly establish:
+
+- which bank develops issuance;
+- which operates the ledger;
+- where active sites are located;
+- how quorum works;
+- who holds root keys;
+- how many sites can continue in isolation;
+- how another central bank would take over a component.
+
+Some discretion can protect operational security. It also limits public verification of recovery topology.
+
+The conclusion should remain measured: lack of public detail proves neither fragile centralisation nor weak separation of duties. It simply prevents outsiders from verifying the recovery design.
+
+## Five private components, ten framework agreements
+
+In October 2025 the ECB published the ranked suppliers for five components.
+
+### Alias lookup
+
+The service links the DEAN, the PSP and an alias such as a phone number in order to route a payment.
+
+First: Sapient GmbH and Tremend Software Consulting.
+
+Second: equensWorldline SE Germany.
+
+Estimated value: €27.9 million. Ceiling: €55.8 million. Maximum duration: ten years.
+
+### Risk and Fraud Management
+
+The component provides real-time risk scores, post-settlement analysis and a cross-PSP perspective.
+
+First: Feedzai.
+
+Second: Capgemini Deutschland.
+
+Estimated value: €79.1 million. Ceiling: €237.3 million. Maximum duration: fifteen years.
+
+### App and SDK
+
+The ECB plans one common app and an SDK allowing PSPs to embed digital euro services in their own interfaces.
+
+First: Almaviva and Fabrick.
+
+Second: Sapient and Tremend.
+
+Estimated value: €76.8 million. Ceiling: €153.6 million. Maximum duration: ten years.
+
+### Offline solution
+
+The component should support consecutive payments without a third party in the transaction, for P2P and point-of-sale use, with funding, defunding, maintenance, hosting and a service desk.
+
+First: G+D advance52 and G+D Currency Technology.
+
+Second: equensWorldline.
+
+Estimated value: €220.7 million. Ceiling: €662.1 million. Maximum duration: fifteen years.
+
+### SEPI
+
+The Secure Exchange of Payment Information tokenises and detokenises payment information, creates values usable in QR codes, links and NFC, and manages their lifecycle.
+
+First: Senacor FCS.
+
+Second: equensWorldline.
+
+Estimated value: €27.6 million. Ceiling: €55.2 million. Maximum duration: ten years.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-contracts-en-t a6-contracts-en-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-contracts-en-t">Five components and ten framework agreements</title><desc id="a6-contracts-en-d">For each component, the ECB ranked one first provider and one second provider. Estimated values and ceilings are not expenditure.</desc><defs><linearGradient id="a6-contracts-en-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs><rect x="1" y="1" width="478" height="1118" rx="15" fill="url(#a6-contracts-en-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">5 COMPONENTS, 10 AGREEMENTS</text><text x="24" y="65" fill="#9fb1c5" font-size="12">First ranked, second if required</text><g transform="translate(20 92)"><rect width="440" height="166" rx="12" fill="#172337" stroke="#8facff"/><text x="18" y="27" fill="#a7c0ff" font-size="12" font-weight="800">ALIAS LOOKUP · 10 YEARS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Sapient + Tremend</text><text x="18" y="82" fill="#dce7ef" font-size="13">2. equensWorldline</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">€27.9m estimated</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">€55.8m ceiling</text><text x="18" y="144" fill="#8598aa" font-size="11">9 tenders · quality 60% · price 40%</text></g><g transform="translate(20 274)"><rect width="440" height="166" rx="12" fill="#251d33" stroke="#dda0ff"/><text x="18" y="27" fill="#e8b7ff" font-size="12" font-weight="800">RISK AND FRAUD · 15 YEARS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Feedzai</text><text x="18" y="82" fill="#eee6f2" font-size="13">2. Capgemini Deutschland</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">€79.1m estimated</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">€237.3m ceiling</text><text x="18" y="144" fill="#9e8ea9" font-size="11">8 tenders · quality 70% · price 30%</text></g><g transform="translate(20 456)"><rect width="440" height="166" rx="12" fill="#13253a" stroke="#68d9c8"/><text x="18" y="27" fill="#8ce8db" font-size="12" font-weight="800">APP AND SDK · 10 YEARS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Almaviva + Fabrick</text><text x="18" y="82" fill="#dceae7" font-size="13">2. Sapient + Tremend</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">€76.8m estimated</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">€153.6m ceiling</text><text x="18" y="144" fill="#859e9a" font-size="11">10 tenders · quality 60% · price 40%</text></g><g transform="translate(20 638)"><rect width="440" height="166" rx="12" fill="#30251a" stroke="#ffbd78"/><text x="18" y="27" fill="#ffd09d" font-size="12" font-weight="800">OFFLINE SOLUTION · 15 YEARS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. G+D advance52 + Currency Technology</text><text x="18" y="82" fill="#f4e8d8" font-size="13">2. equensWorldline</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">€220.7m estimated</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">€662.1m ceiling</text><text x="18" y="144" fill="#b59a79" font-size="11">4 tenders · quality 70% · price 30%</text></g><g transform="translate(20 820)"><rect width="440" height="166" rx="12" fill="#321d22" stroke="#ff8498"/><text x="18" y="27" fill="#ffa6b5" font-size="12" font-weight="800">SEPI · 10 YEARS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Senacor FCS</text><text x="18" y="82" fill="#f2e2e5" font-size="13">2. equensWorldline</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">€27.6m estimated</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">€55.2m ceiling</text><text x="18" y="144" fill="#ac858e" font-size="11">4 tenders · quality 60% · price 40%</text></g><rect x="20" y="1006" width="440" height="76" rx="10" fill="#0f1822" stroke="#68d9c8"/><text x="38" y="1031" fill="#8ce8db" font-size="12" font-weight="800">KEY DISTINCTION</text><text x="38" y="1054" fill="#edf3f8" font-size="12.5">The second provider opens a contractual option.</text><text x="38" y="1074" fill="#edf3f8" font-size="12.5">Operational failover requires a separate test.</text><text x="24" y="1108" fill="#75899d" font-size="10">Sources: ECB award notices, October 2025. l0g synthesis.</text></svg>
+<figcaption>The ECB ranked two teams per component. The second agreement opens a contractual recovery path whose technical readiness remains to be tested.</figcaption>
+</figure>
+
+Quality carries 60% of the selection weight for alias, app and SEPI, and 70% for fraud and offline. Price accounts for the balance.
+
+The five procedures received 35 tenders in total.
+
+Competition at award time does not guarantee competition after ten years of integration, data and accumulated knowledge.
+
+## Estimated values, ceilings and orders
+
+The combined estimated value is **€432.1 million**.
+
+The combined ceiling is **€1.164 billion**.
+
+The two figures require discipline.
+
+Estimated value indicates the expected scale of the procedure.
+
+The ceiling is the maximum amount that may be ordered over the life of the agreement.
+
+The framework agreement itself does not automatically create expenditure. The [ECB stated](https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews251002.en.html) at the time of selection that no money becomes payable solely because the agreements were signed. Work is triggered progressively through specific requests or agreements.
+
+The ceiling can cover:
+
+- roughly two years of development;
+- staggered roll-out;
+- maintenance;
+- operations;
+- hosting;
+- service desk;
+- extensions up to ten or fifteen years.
+
+The €1.164 billion sum therefore does not mean the ECB has paid one billion euros to the suppliers.
+
+Nor should it be added mechanically to the €1.3 billion public development estimate discussed in part five. Scope and duration probably overlap in part.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 970" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-values-en-t a6-values-en-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-values-en-t">Estimated values and ceilings of external procurements</title><desc id="a6-values-en-d">Bars compare estimated value and contractual maximum for five components and the network procurement.</desc><defs><linearGradient id="a6-values-en-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs><rect x="1" y="1" width="478" height="968" rx="15" fill="url(#a6-values-en-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">PROCUREMENT VALUES</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Estimated values and contractual maxima</text><g transform="translate(24 102)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Alias</text><rect x="0" y="15" width="12" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="25" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">€27.9m</text><text x="355" y="46" fill="#ffd09d" font-size="11">€55.8m</text></g><g transform="translate(24 200)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Fraud</text><rect x="0" y="15" width="36" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="108" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">€79.1m</text><text x="355" y="46" fill="#ffd09d" font-size="11">€237.3m</text></g><g transform="translate(24 298)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">App + SDK</text><rect x="0" y="15" width="35" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="70" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">€76.8m</text><text x="355" y="46" fill="#ffd09d" font-size="11">€153.6m</text></g><g transform="translate(24 396)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Offline</text><rect x="0" y="15" width="100" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="300" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">€220.7m</text><text x="355" y="46" fill="#ffd09d" font-size="11">€662.1m</text></g><g transform="translate(24 494)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">SEPI</text><rect x="0" y="15" width="12" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="25" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">€27.6m</text><text x="355" y="46" fill="#ffd09d" font-size="11">€55.2m</text></g><g transform="translate(24 592)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Connectivity, 2 lots</text><rect x="0" y="15" width="74" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="161" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">€162.84m</text><text x="355" y="46" fill="#ffd09d" font-size="11">€355.32m</text></g><g transform="translate(20 700)"><rect width="440" height="110" rx="12" fill="#172337" stroke="#8facff"/><text x="20" y="30" fill="#a7c0ff" font-size="12" font-weight="800">FIVE AWARDED COMPONENTS</text><text x="20" y="64" fill="#fff" font-size="21" font-weight="850">€432.1m estimated</text><text x="238" y="64" fill="#ffbd78" font-size="21" font-weight="850">€1.164bn ceiling</text><text x="20" y="91" fill="#9fb1c5" font-size="11">Development, maintenance, operations and options may overlap.</text></g><g transform="translate(20 828)"><rect width="440" height="94" rx="12" fill="#321d22" stroke="#ff8498"/><text x="20" y="29" fill="#ffa6b5" font-size="12" font-weight="800">INCLUDING CONNECTIVITY</text><text x="20" y="60" fill="#fff" font-size="18" font-weight="850">€594.94m estimated · €1.51932bn ceilings</text><text x="20" y="82" fill="#cca0a8" font-size="11">The network procurement had no located award by 15 August 2026.</text></g><text x="24" y="950" fill="#ffbd78" font-size="12" font-weight="800">CEILING = MAXIMUM ORDER VALUE</text><text x="24" y="966" fill="#75899d" font-size="10">Sources: ECB procurement notices. l0g calculations.</text></svg>
+<figcaption>The offline solution dominates the published envelopes. Contractual ceilings state the maximum order value over the full agreement.</figcaption>
+</figure>
+
+Offline illustrates the difference.
+
+Its estimated value is roughly 51% of the five-procedure total. Its ceiling is close to 57%.
+
+That concentration can reflect:
+
+- cryptographic complexity;
+- secure hardware;
+- double-spending protection;
+- maintenance;
+- hosting;
+- a long operating period;
+- several forms of device.
+
+It does not establish that €662.1 million will be spent.
+
+## What the second provider actually guarantees
+
+The ECB initially directs requests to the first-ranked provider. The second is approached if required.
+
+That structure buys a contractual option. It can protect against:
+
+- refusal;
+- incapacity;
+- disruption;
+- additional demand;
+- a decision to replace the first provider.
+
+It does not demonstrate technical failover.
+
+Active redundancy requires harder questions.
+
+Does the second provider receive the first provider's code?
+
+Does it have the same data, keys and environments?
+
+Does it retain a ready team?
+
+Is there a common or compatible implementation?
+
+How many days separate failure from recovery?
+
+Can service continue during the transition?
+
+Can the ECB operate between the two suppliers?
+
+The public notices do not answer.
+
+The rigorous result is therefore:
+
+> **The ECB has bought contractual redundancy. Operational redundancy remains to be demonstrated.**
+
+The distinction is particularly important for the fraud engine.
+
+Another supplier can reproduce an API. Taking over a system that has accumulated rules, statistics, models and operating procedures over several years requires more than a standby contract.
+
+The same challenge applies to aliases. The second provider must import a complete mapping table, prove its integrity, continue lookups and preserve anti-enumeration controls.
+
+For SEPI, tokens, keys and HSMs must move without breaking live payments.
+
+For the app, a new team must rebuild, sign and republish a compatible version in the stores.
+
+For offline, code, applets, keys, provisioning and hardware support all need to move.
+
+A procurement option performs none of those operations by itself.
+
+## Corporate concentration behind the ten agreements
+
+The ten agreements do not correspond to ten fully independent corporate groups.
+
+Sapient and Tremend appear together for alias and app. [Publicis Groupe acquired Tremend](https://www.publicisgroupe.com/en/news/press-releases/publicis-groupe-announces-tremend-acquisition-to-expand-european-delivery-of-publicis-sapient-s-digital-business-transformation-capabilities) in 2022 to expand Publicis Sapient's delivery capacity.
+
+They remain identifiable entities in the consortium, but they are not two independent centres of control.
+
+equensWorldline is ranked second on three components: alias, offline and SEPI.
+
+That does not mean Worldline operates all three. It means a meaningful share of the fallback architecture sits within the same group.
+
+The effect can be positive: pan-European payment expertise, interface knowledge and industrial capacity.
+
+It can also create correlated risk: a legal, financial, technical or governance problem at the group could affect several fallback options.
+
+Fabrick belongs to the Sella ecosystem. [Its own communication](https://landing.fabrick.com/hubfs/mkt/press-release/PR_DIGITAL%20EURO_03102025.pdf) also cites Mastercard and Reale Mutua among its shareholders or supporters.
+
+A non-European minority investor does not establish non-European control. It does show that an "European provider" can remain embedded in global capital and technology networks.
+
+A serious assessment must therefore examine:
+
+- control;
+- voting rights;
+- subcontracting;
+- software dependencies;
+- data access;
+- replacement capacity.
+
+The flag over the headquarters is not enough.
+
+## The European-control clause is a real barrier
+
+The five external procedures require candidates, consortium members and subcontractors to be established in the Union and controlled by Union nationals or entities.
+
+Control can be assessed through:
+
+- capital;
+- voting rights;
+- direct or indirect decision power.
+
+Contractors must also prevent cooperation with third-country actors from harming security interests or the supply of critical inputs.
+
+This goes beyond a location requirement.
+
+It reduces the risk that a company directly controlled from a third country holds one of the selected components.
+
+It also gives the ECB leverage over changes of control and critical subcontractors.
+
+Its protection remains bounded by what it controls.
+
+It does not guarantee that:
+
+- the cloud is European;
+- every library is maintained in Europe;
+- the HSM is European;
+- the operating system is European;
+- the secure element is European;
+- the build chain is independent;
+- no foreign patent is required;
+- support never passes through a subsidiary outside the EEA.
+
+Legal sovereignty over the contractor is a foundation.
+
+It is not a full technical supply-chain map.
+
+## The opaque subcontracting layer
+
+Eight of the ten award agreements report subcontracting. Two report none.
+
+The same notices generally omit:
+
+- names;
+- functions;
+- amounts;
+- percentages;
+- data access;
+- production access;
+- operating countries.
+
+A contractor can subcontract very different functions:
+
+- cloud;
+- SOC;
+- development;
+- support;
+- HSM;
+- TSM;
+- testing;
+- machine-learning models;
+- connectivity.
+
+The European-control clause should apply to relevant parties in the procedures.
+
+The public cannot verify the actual chain.
+
+That opacity is not enough to establish a dangerous dependency. It prevents measurement of concentration and access rights.
+
+A sovereign payment infrastructure should be able to publish at least:
+
+- the list of critical subcontractors;
+- their function;
+- their country;
+- their potential access;
+- the approval mechanism for replacement.
+
+Commercial confidentiality does not require concealing the existence of a critical dependency.
+
+## Ten or fifteen years: continuity and lock-in
+
+The maximum durations are striking.
+
+Alias, app and SEPI can reach ten years.
+
+Fraud and offline can reach fifteen.
+
+The notices provide a coherent rationale:
+
+- roughly two years of development;
+- progressive roll-out;
+- scaling after the initial period;
+- stability during mass onboarding;
+- long-term maintenance and operation.
+
+A central bank cannot change its fraud engine or offline solution as if it were changing a communications agency.
+
+Duration protects continuity.
+
+It can also concentrate:
+
+- knowledge;
+- procedures;
+- models;
+- tools;
+- teams;
+- bargaining power.
+
+A long contract is not automatically lock-in.
+
+Lock-in begins when exit cannot be demonstrated.
+
+The relevant questions are:
+
+- Is the code available?
+- Are formats open?
+- Can data be exported?
+- Can keys be migrated?
+- Are builds reproducible?
+- Can public teams operate the service?
+- Are extensions conditional on an exit test?
+
+A duration clause protects service.
+
+A recovery exercise protects sovereignty.
+
+## What rights over the code?
+
+The clearest answer concerns offline.
+
+The [procurement notice](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/change_notice_2025-ojs198-00675829-en-ts.pdf) says the ECB seeks an end-to-end solution with full rights to:
+
+- use it;
+- modify it;
+- redistribute it to participating intermediaries.
+
+That is a meaningful recovery guarantee.
+
+It does not answer every question.
+
+The code may include:
+
+- third-party libraries;
+- proprietary firmware;
+- patents;
+- closed build tools;
+- hardware modules;
+- components with restricted redistribution.
+
+The exact scope of the rights still matters.
+
+The pilot offers a positive signal. Its documentation provides for selected components:
+
+- specifications;
+- APIs;
+- a reference implementation;
+- offline SDK source code;
+- a sample application;
+- test scripts.
+
+These deliverables improve integration and auditability.
+
+They concern a beta pilot and do not prove that the full production implementation will be published.
+
+For alias, fraud, app and SEPI, the public notices describe development, maintenance and operation. They do not publish an IP clause as explicit as the offline clause.
+
+The accurate statement is:
+
+> **Modification and recovery rights are not publicly verifiable for four components.**
+
+That does not mean the detailed contracts omit them.
+
+It means one essential sovereignty property remains behind the restricted e-tendering platform.
+
+## Open standards, open code and recovery
+
+The rulebook and APIs can be public while the supplier implementation remains proprietary.
+
+An open standard enables:
+
+- several PSPs;
+- compliance;
+- interoperability;
+- certification;
+- alternative development.
+
+It does not guarantee:
+
+- repository access;
+- reproducible builds;
+- key control;
+- production control;
+- operating competence.
+
+Open-source code helps without solving everything.
+
+A central bank can possess a repository and still depend on:
+
+- a closed CI chain;
+- a specific cloud;
+- an app store;
+- an HSM;
+- a supplier that alone understands the runbooks.
+
+A more useful hierarchy is:
+
+1. public standard;
+2. complete specification;
+3. accessible source;
+4. modification rights;
+5. reproducible build;
+6. keys under control;
+7. documented operations;
+8. tested recovery.
+
+Sovereignty begins with legal rights.
+
+It is confirmed by successful operation without the incumbent supplier.
+
+## Who holds root access?
+
+The agreements often cover more than development.
+
+Fraud, app and offline include operation. Offline explicitly includes hosting, running and a service desk.
+
+The public notices do not detail:
+
+- cloud provider;
+- data centres;
+- administrator accounts;
+- bastions;
+- HSMs;
+- root keys;
+- backups;
+- RTO and RPO;
+- restoration procedures;
+- emergency access;
+- authorised staff.
+
+Asking who holds root access does not imply one person has a single button capable of changing the currency.
+
+It asks who can:
+
+- deploy a release;
+- sign a binary;
+- administer production;
+- restore after an incident;
+- extract a log;
+- run the component during a crisis.
+
+The infrastructure can be governed by the ECB and operated daily by a supplier.
+
+Sovereignty requires the central bank to be able to take over that operation in an extreme case, directly or through another provider.
+
+## The smartphone remains an external boundary
+
+The digital euro app must be distributed at least through the official Android and iOS stores. It must also run on older supported versions and different devices, including wearables.
+
+The developer can be European.
+
+The distribution channel and part of the hardware are not.
+
+### NFC has been opened
+
+In July 2024 the European Commission made Apple's EEA NFC access commitments legally binding for ten years.
+
+Third-party wallets can use Host Card Emulation, be selected by default and use Face ID or Touch ID under the agreed conditions.
+
+That remedy reduces Apple's ability to lock online proximity payments inside Apple Pay.
+
+### What HCE actually provides
+
+The [ECB had warned](https://www.ecb.europa.eu/pub/pdf/other/ecb.letter240419_Breton~fe4828c691.en.pdf) that HCE access alone does not satisfy its vision for mobile offline payments.
+
+A secure element provides a tamper-resistant hardware environment. It can be embedded, integrated or linked to an eSIM.
+
+The offline solution must prevent copying and double spending without consulting a server during the transaction.
+
+Hardware therefore becomes a functional monetary component even though it does not issue the money.
+
+### Law seeks to open the hardware
+
+Article 33 in the Council mandate requires fair, reasonable and non-discriminatory access to the hardware and software functions needed by digital euro services.
+
+Member states must designate authorities and provide penalties.
+
+The text can turn a commercial negotiation into a legal obligation.
+
+Several points still require proof:
+
+- FRAND price;
+- timing;
+- storage capacity;
+- provisioning;
+- parity with the native wallet;
+- wearable support;
+- support duration;
+- access on devices not designated as gatekeepers.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1090" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-off-en-t a6-off-en-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-off-en-t">The offline payment dependency chain</title><desc id="a6-off-en-d">Payment between two devices can be local while installation, funding, keys and maintenance depend on a chain of suppliers.</desc><defs><linearGradient id="a6-off-en-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient><marker id="a6-off-en-arr" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#ffbd78"/></marker></defs><rect x="1" y="1" width="478" height="1088" rx="15" fill="url(#a6-off-en-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">OFFLINE: THREE STAGES</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Provisioning, transaction and maintenance</text><g transform="translate(20 94)"><rect width="440" height="255" rx="13" fill="#30251a" stroke="#ffbd78"/><text x="20" y="29" fill="#ffd09d" font-size="12" font-weight="800">BEFORE PAYMENT</text><text x="20" y="62" fill="#fff" font-size="18" font-weight="850">Provision the instrument</text><text x="20" y="95" fill="#f4e8d8" font-size="13">App store → OS → SDK → OEM → secure element</text><text x="20" y="121" fill="#f4e8d8" font-size="13">TSM / eSIM → PSP → HSM → offline service</text><path d="M60 165H380" stroke="#ffbd78" stroke-width="3" marker-end="url(#a6-off-en-arr)"/><g transform="translate(20 187)"><rect width="94" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="47" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">STORE / OS</text><text x="47" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">Apple, Google</text></g><g transform="translate(127 187)"><rect width="94" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="47" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">SECURE ELEMENT</text><text x="47" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">OEM, chip, eSIM</text></g><g transform="translate(234 187)"><rect width="78" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="39" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">PSP / HSM</text><text x="39" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">keys and account</text></g><g transform="translate(325 187)"><rect width="95" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="47.5" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">OFFLINE</text><text x="47.5" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">G+D / backup</text></g></g><path d="M240 356V394" stroke="#68d9c8" stroke-width="3"/><g transform="translate(20 410)"><rect width="440" height="245" rx="13" fill="#132b2c" stroke="#68d9c8" stroke-width="1.5"/><text x="20" y="29" fill="#8ce8db" font-size="12" font-weight="800">DURING PAYMENT</text><text x="20" y="62" fill="#fff" font-size="18" font-weight="850">Two devices, direct transfer</text><g transform="translate(42 104)"><rect width="118" height="88" rx="14" fill="#0e1d1f" stroke="#68d9c8"/><text x="59" y="35" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">DEVICE A</text><text x="59" y="60" text-anchor="middle" fill="#a7f0e5" font-size="11">local balance</text></g><path d="M176 148H304" stroke="#68d9c8" stroke-width="4"/><path d="M294 139L309 148L294 157" fill="none" stroke="#68d9c8" stroke-width="3"/><text x="240" y="128" text-anchor="middle" fill="#a7f0e5" font-size="11" font-weight="750">P2P / POS</text><g transform="translate(320 104)"><rect width="78" height="88" rx="14" fill="#0e1d1f" stroke="#68d9c8"/><text x="39" y="35" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">B</text><text x="39" y="60" text-anchor="middle" fill="#a7f0e5" font-size="11">local balance</text></g><text x="220" y="222" text-anchor="middle" fill="#dceae7" font-size="12.5">No third party joins the honest transaction.</text></g><path d="M240 662V700" stroke="#ff8498" stroke-width="3"/><g transform="translate(20 716)"><rect width="440" height="260" rx="13" fill="#321d22" stroke="#ff8498"/><text x="20" y="29" fill="#ffa6b5" font-size="12" font-weight="800">AFTER AND AROUND PAYMENT</text><text x="20" y="62" fill="#fff" font-size="18" font-weight="850">Update, revoke and fund</text><text x="20" y="98" fill="#f2e2e5" font-size="13">• identified funding and defunding</text><text x="20" y="126" fill="#f2e2e5" font-size="13">• key and applet rotation</text><text x="20" y="154" fill="#f2e2e5" font-size="13">• compromised device and revocation list</text><text x="20" y="182" fill="#f2e2e5" font-size="13">• end of support for an OS or secure element</text><text x="20" y="210" fill="#f2e2e5" font-size="13">• migration to another provider</text><rect x="20" y="225" width="400" height="24" rx="7" fill="#211116" stroke="#ff8498"/><text x="220" y="242" text-anchor="middle" fill="#ffc3cd" font-size="10.8">Cash-like use relies on a complex provisioning chain.</text></g><rect x="20" y="996" width="440" height="57" rx="10" fill="#0f1822" stroke="#8facff"/><text x="38" y="1020" fill="#a7c0ff" font-size="12" font-weight="800">ARTICLE 33</text><text x="38" y="1041" fill="#edf3f8" font-size="12">Law seeks FRAND access. Price, timing and parity still need testing.</text><text x="24" y="1077" fill="#75899d" font-size="10">Sources: ECB, European Commission, Council mandate. l0g synthesis.</text></svg>
+<figcaption>The offline transfer can be direct between two devices. Creation, updates and recovery of the instrument depend on a much longer chain.</figcaption>
+</figure>
+
+The paradox is clear.
+
+The transaction most similar to cash may rely on the longest private provisioning chain.
+
+A robust design therefore needs several paths:
+
+- multiple manufacturers;
+- multiple secure elements;
+- a physical card;
+- a relay device;
+- provisioning independent of the mobile operator;
+- portable applets;
+- keys under public control;
+- a tested exit from one OEM.
+
+## A sixth procurement for the network
+
+A separate procurement covers connectivity among:
+
+- PSPs;
+- national central banks;
+- the DESP;
+- components distributed across several sites and data centres.
+
+The procedure contains two lots.
+
+Its total estimated value is **€162.84 million**, with a **€355.32 million ceiling** and a maximum duration of ten years.
+
+The same bidder may apply for both lots but cannot win both. The ECB is seeking two distinct network operators.
+
+Lot 1 is restricted to Union entities controlled from the Union.
+
+Lot 2 is open to European and non-European entities.
+
+We found no official award notice in the public corpus examined as of 15 August 2026.
+
+Opening one lot outside the Union does not mean a foreign operator would control the currency.
+
+The network operator controls neither holdings, issuance nor settlement decisions.
+
+It can still become critical for:
+
+- availability;
+- routing;
+- DDoS protection;
+- metadata;
+- support;
+- continuity between data centres.
+
+The network captures the distinction between monetary control and operational dependency.
+
+A design can preserve ledger sovereignty while exposing availability to an external chain.
+
+## A six-test sovereignty framework
+
+A single score out of ten would be attractive and misleading.
+
+The public core would score well. The secure element would remain uncertain. Offline rights are stronger than the published fraud rights. Connectivity remains unresolved.
+
+An average would erase those differences.
+
+The article therefore uses six tests.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1040" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-tests-en-t a6-tests-en-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-tests-en-t">The six sovereignty tests</title><desc id="a6-tests-en-d">Operational sovereignty is assessed through governance, visibility, modification, replacement, continuity and reconstruction.</desc><defs><linearGradient id="a6-tests-en-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs><rect x="1" y="1" width="478" height="1038" rx="15" fill="url(#a6-tests-en-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">THE SIX SOVEREIGNTY TESTS</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Separate evidence for each capability</text><g transform="translate(20 94)"><rect width="440" height="132" rx="12" fill="#132b2c" stroke="#68d9c8"/><circle cx="35" cy="37" r="19" fill="#68d9c8"/><text x="35" y="43" text-anchor="middle" fill="#07131d" font-size="16" font-weight="850">1</text><text x="68" y="31" fill="#8ce8db" font-size="13" font-weight="850">GOVERN</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">Who decides, certifies and orders correction?</text><text x="20" y="91" fill="#dceae7" font-size="12.5">Strength: public issuance, ledger and rulebook.</text><text x="20" y="114" fill="#dceae7" font-size="12.5">Blind spot: exact role split across the six NCBs.</text></g><g transform="translate(20 242)"><rect width="440" height="132" rx="12" fill="#172337" stroke="#8facff"/><circle cx="35" cy="37" r="19" fill="#8facff"/><text x="35" y="43" text-anchor="middle" fill="#07131d" font-size="16" font-weight="850">2</text><text x="68" y="31" fill="#a7c0ff" font-size="13" font-weight="850">SEE</text><text x="68" y="50" fill="#fff" font-size="13.5" font-weight="750">Who inspects code, logs, models</text><text x="68" y="68" fill="#fff" font-size="13.5" font-weight="750">and subcontractors?</text><text x="20" y="91" fill="#dce7ef" font-size="12.5">Strength: standards and ECB contractual control.</text><text x="20" y="114" fill="#dce7ef" font-size="12.5">Blind spot: public audit rights and subcontractor chain.</text></g><g transform="translate(20 390)"><rect width="440" height="132" rx="12" fill="#251d33" stroke="#dda0ff"/><circle cx="35" cy="37" r="19" fill="#dda0ff"/><text x="35" y="43" text-anchor="middle" fill="#16091c" font-size="16" font-weight="850">3</text><text x="68" y="31" fill="#e8b7ff" font-size="13" font-weight="850">MODIFY</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">Can the Eurosystem fix it without the supplier?</text><text x="20" y="91" fill="#eee6f2" font-size="12.5">Strength: full published rights for offline.</text><text x="20" y="114" fill="#eee6f2" font-size="12.5">Blind spot: four other components not publicly verifiable.</text></g><g transform="translate(20 538)"><rect width="440" height="132" rx="12" fill="#30251a" stroke="#ffbd78"/><circle cx="35" cy="37" r="19" fill="#ffbd78"/><text x="35" y="43" text-anchor="middle" fill="#1c1005" font-size="16" font-weight="850">4</text><text x="68" y="31" fill="#ffd09d" font-size="13" font-weight="850">REPLACE</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">Can the second provider take over production?</text><text x="20" y="91" fill="#f4e8d8" font-size="12.5">Strength: two agreements per component.</text><text x="20" y="114" fill="#f4e8d8" font-size="12.5">Blind spot: time, code, data, keys and failover unproven.</text></g><g transform="translate(20 686)"><rect width="440" height="132" rx="12" fill="#321d22" stroke="#ff8498"/><circle cx="35" cy="37" r="19" fill="#ff8498"/><text x="35" y="43" text-anchor="middle" fill="#1c0710" font-size="16" font-weight="850">5</text><text x="68" y="31" fill="#ffa6b5" font-size="13" font-weight="850">CONTINUE</text><text x="68" y="50" fill="#fff" font-size="13.5" font-weight="750">What remains without a store, network</text><text x="68" y="68" fill="#fff" font-size="13.5" font-weight="750">or secure element?</text><text x="20" y="91" fill="#f2e2e5" font-size="12.5">Strength: EU law, two network lots, card alternatives.</text><text x="20" y="114" fill="#f2e2e5" font-size="12.5">Blind spot: hardware access and operational parity.</text></g><g transform="translate(20 834)"><rect width="440" height="132" rx="12" fill="#11202a" stroke="#68d9c8"/><circle cx="35" cy="37" r="19" fill="#68d9c8"/><text x="35" y="43" text-anchor="middle" fill="#07131d" font-size="16" font-weight="850">6</text><text x="68" y="31" fill="#8ce8db" font-size="13" font-weight="850">REBUILD</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">Are source, builds, keys and skills sufficient?</text><text x="20" y="91" fill="#dceae7" font-size="12.5">Strength: pilot references and SDK source planned.</text><text x="20" y="114" fill="#dceae7" font-size="12.5">Blind spot: production coverage and another-team exercise.</text></g><rect x="20" y="986" width="440" height="28" rx="8" fill="#0f1822" stroke="#ffbd78"/><text x="240" y="1005" text-anchor="middle" fill="#edf3f8" font-size="11.5">The pilot should measure recovery after failure.</text><text x="24" y="1030" fill="#75899d" font-size="10">l0g analysis framework based on public contracts and architecture.</text></svg>
+<figcaption>Operational sovereignty is measured through verifiable capabilities, independently of the supplier's registered office.</figcaption>
+</figure>
+
+### Govern
+
+The Eurosystem keeps issuance, settlement, the rulebook and general certification.
+
+The main publication gap concerns the allocation of core responsibilities among the six central banks.
+
+### See
+
+The contracts give the ECB control rights.
+
+The public does not know the exact scope of code, log, model and subcontractor audits.
+
+### Modify
+
+The offline guarantee is explicit.
+
+Rights over the other four components remain publicly unverifiable.
+
+### Replace
+
+Two providers are ranked.
+
+Failover time, compatibility and key transfer are not demonstrated.
+
+### Continue
+
+EU law opens NFC and seeks to open hardware access.
+
+Continuity without a store, secure element or network operator remains untested.
+
+### Rebuild
+
+The pilot provides specifications and selected references.
+
+A complete rebuild by a different team is not documented.
+
+## The pilot should break something
+
+The twelve-month pilot planned for the second half of 2027 should test P2P, point of sale, e-commerce, the app, SDK, funding, defunding and offline with 36 PSPs and 19 national central banks.
+
+Functional success is not enough.
+
+A sovereignty pilot should trigger controlled failures.
+
+### Remove the first supplier
+
+The second should take over a component within a measured period.
+
+The report should publish:
+
+- preparation;
+- transfer;
+- data;
+- keys;
+- downtime;
+- corrective action.
+
+### Rebuild from source
+
+A new team should reconstruct a release using:
+
+- source;
+- dependencies;
+- documentation;
+- scripts;
+- secrets managed by the Eurosystem.
+
+### Lose a gatekeeper
+
+The test should simulate:
+
+- app-store removal;
+- unavailable secure element;
+- unsupported operating system;
+- manufacturer abandoning a device.
+
+A card or relay device should preserve continuity.
+
+### Lose one network
+
+Traffic should fail over from one NSP lot to the other, with latency, errors and metadata exposure measured.
+
+### Lose an HSM
+
+Keys should be restored or rotated without breaking balances or instruments.
+
+### Publish the result
+
+Useful transparency need not publish an exploitable attack plan.
+
+It can disclose:
+
+- scenario;
+- target;
+- time;
+- result;
+- deviation;
+- correction.
+
+> **The pilot should measure Europe's ability to repair and recover the digital euro after a failure.**
+
+## What the six articles established
+
+This investigation began with an accounting question.
+
+### 1. A euro that changes debtor
+
+The [first part](/en/analysis/digital-euro-1-the-euro-that-changes-its-debtor/) showed that conversion leaves the number of euros unchanged. It moves the liability from a commercial bank to the Eurosystem.
+
+### 2. A cap protecting a banking model
+
+The [second part](/en/analysis/digital-euro-2-699-billion-anatomy-stress-test/) reconstructed the €699 billion extreme scenario. The system survives in the model because banks replace deposits with reserves, markets or central-bank funding against collateral.
+
+### 3. Privacy through separation
+
+The [third part](/en/analysis/digital-euro-3-as-private-as-cash/) followed the data. The ECB should not directly receive civil identity in central flows, while PSPs retain identity and common services process pseudonyms and metadata.
+
+### 4. A real ban and distinct legal powers
+
+The [fourth part](/en/analysis/digital-euro-4-programmable-money-legal-boundary/) separated programmable money, conditional payments, fraud, sanctions and seizure. The ban protects fungibility, not the absence of every legal block.
+
+### 5. A still-fragmented bill
+
+The [fifth part](/en/analysis/digital-euro-5-price-of-sovereignty/) showed that public cost numbers cover different perimeters. The fee model will determine who finances distribution and whether Wero receives common infrastructure or suffers duplication.
+
+### 6. Sovereignty proven by recovery
+
+This final part closes the loop.
+
+The money can be public, privacy-preserving, non-programmable and less dependent on international card schemes.
+
+Those properties do not prove the machine can be repaired without its supplier.
+
+## Who controls the machine?
+
+The future digital euro would take the form of a hybrid infrastructure.
+
+Its monetary core remains public.
+
+Specialist services are contracted to companies controlled in the Union.
+
+Distribution relies on PSPs.
+
+Mobile use partly depends on global platforms and hardware.
+
+The design contains real safeguards:
+
+- public issuance;
+- six central banks;
+- two agreements per component;
+- European-control requirements;
+- common standards;
+- strong published offline rights;
+- competition law and DMA intervention.
+
+It also retains real blind spots:
+
+- specific orders;
+- subcontractors;
+- clouds;
+- key custody;
+- code rights for four components;
+- failover time;
+- secure-element access;
+- network award;
+- core allocation among the six central banks.
+
+Operational sovereignty rests on an exit path.
+
+An infrastructure is sovereign when the authority accountable for it can:
+
+- inspect;
+- correct;
+- migrate;
+- revoke;
+- fail over;
+- rebuild.
+
+The conclusion of this investigation fits in one sentence:
+
+> **Operational sovereignty will be measured by the Eurosystem's ability to take back the machine, replace its operators and continue serving citizens when a supplier, network or gatekeeper disappears.**
+
+## Sources and method
+
+This article relies primarily on:
+
+1. [ECB, selected providers](https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews251002.en.html).
+
+2. [ECB, preparation phase closing report](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html).
+
+3. [Alias Lookup award notice](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00645762-en-ts.pdf).
+
+4. [Risk and Fraud Management award notice](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00646738-en-ts.pdf).
+
+5. [App and SDK award notice](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00646903-en-ts.pdf).
+
+6. [Offline award notice](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/change_notice_2025-ojs198-00675829-en-ts.pdf).
+
+7. [SEPI award notice](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00644136-en-ts.pdf).
+
+8. [NSP Connectivity procurement](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs166-00566721-en-ts.pdf).
+
+9. [ECB letter on Apple, NFC and the secure element](https://www.ecb.europa.eu/pub/pdf/other/ecb.letter240419_Breton~fe4828c691.en.pdf).
+
+10. [European Commission, Apple NFC commitments](https://ec.europa.eu/commission/presscorner/api/files/document/print/fin/ip_24_3706/IP_24_3706_EN.pdf).
+
+11. [Council of the European Union, Article 33 and architecture](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf).
+
+12. [ECB, pilot business architecture](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.dep260512_PSP_Participation_Agreement_Appendix_2.C_Pilot_Business_Architecture.en.pdf).
+
+13. [Publicis Groupe, acquisition of Tremend](https://www.publicisgroupe.com/en/news/press-releases/publicis-groupe-announces-tremend-acquisition-to-expand-european-delivery-of-publicis-sapient-s-digital-business-transformation-capabilities).
+
+14. [Fabrick, digital euro framework announcement](https://landing.fabrick.com/hubfs/mkt/press-release/PR_DIGITAL%20EURO_03102025.pdf).
+
+The estimated-value and ceiling totals are l0g additions of amounts published in procurement notices. They are not expenditure and are not added to the €1.3 billion overall development estimate without reconciling scope.
+
+## Limits
+
+- Full contracts and specific orders are not public.
+- Subcontractor names and functions are generally not published.
+- Code rights are explicit in the offline notice, not in the other four public notices.
+- Clouds, data centres, keys, RTO, RPO and exit clauses are not public.
+- No official NSP award result was identified in the corpus examined.
+- The precise allocation of roles among the six central banks is not public.
+- Practical and commercial access to the secure element remains to be demonstrated.

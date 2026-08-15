@@ -1,0 +1,881 @@
+---
+title: "Euro numérique, 6/6 : qui contrôle la machine ?"
+description: "Le cœur monétaire doit rester public. L'application, l'antifraude, le mode hors ligne et une partie du réseau dépendront de contrats privés pouvant durer quinze ans. Notre enquête teste la souveraineté opérationnelle de la machine."
+pubDate: 2026-08-15T14:02:00+02:00
+updatedDate: 2026-08-15T14:02:00+02:00
+tags: ["euro numérique", "BCE", "souveraineté", "infrastructure", "cybersécurité", "paiements", "enquête"]
+draft: false
+quickTake:
+  fact: "Le cœur d'émission et de règlement doit rester dans l'Eurosystème, avec six banques centrales nationales. Cinq composants spécialisés ont en parallèle donné lieu à dix accords-cadres privés, pour 432,1 millions d'euros de valeurs estimées et 1,164 milliard de plafonds."
+  importance: "La nationalité des titulaires ne suffit pas à garantir la souveraineté. Le test décisif est la capacité de l'Eurosystème à voir, modifier, remplacer et reconstruire chaque composant sans perdre le code, les clés, les données ou l'accès au matériel."
+  uncertainty: "Les commandes effectivement passées, les sous-traitants, les clouds, la garde des clés, les clauses de sortie et les droits sur le code ne sont pas tous publics. Un second fournisseur par composant ne prouve pas qu'une bascule technique fonctionne."
+---
+
+*Ce texte clôt notre enquête en six volets sur l'euro numérique. Le [cinquième article](/posts/euro-numerique-5-prix-souverainete/) suivait la facture. Ce dernier volet entre dans la machine : banques centrales, marchés publics, fournisseurs, code, clés, téléphones et réseaux. La question finale porte sur la reprise du contrôle lorsqu'un élément casse.*
+
+L'euro qui s'affichera dans un portefeuille numérique serait une dette publique.
+
+L'application qui l'affiche ne le serait pas nécessairement.
+
+Le logiciel qui produit un score de fraude, la table qui résout un numéro de téléphone, la puce qui conserve des fonds hors ligne et une partie du réseau qui transporte les messages pourraient dépendre d'entreprises privées engagées pour dix ou quinze ans.
+
+Cette architecture n'est pas une anomalie. Une banque centrale n'a pas vocation à fabriquer chaque téléphone, coder chaque application et poser chaque fibre. La souveraineté ne demande pas que l'État écrive toutes les lignes de code.
+
+Elle demande autre chose : pouvoir voir, modifier, remplacer et reconstruire le système lorsque le fournisseur, le réseau ou le gatekeeper n'est plus disponible.
+
+> **État du dossier au 15 août 2026.** Le règlement final n'est pas adopté et la décision d'émettre n'est pas prise. Cinq composants externes ont toutefois déjà donné lieu à des accords-cadres. Le cœur a été confié à six banques centrales nationales. Un marché séparé de connectivité est engagé. Les plafonds publiés ne sont pas des dépenses et les accords-cadres ne garantissent pas qu'un développement complet soit commandé.
+
+## Sept éléments à retenir
+
+- L'émission, les avoirs et le règlement central resteraient dans l'Eurosystème.
+- Six banques centrales nationales ont été retenues pour les composants de cœur.
+- Cinq services spécialisés ont deux fournisseurs classés chacun, soit dix accords-cadres.
+- Leur valeur estimée cumulée atteint 432,1 millions d'euros ; leurs plafonds totalisent 1,164 milliard.
+- Les contrats peuvent aller jusqu'à dix ans pour alias, application et SEPI, quinze ans pour fraude et offline.
+- Le marché offline publie des droits d'utilisation, de modification et de redistribution particulièrement forts ; le même niveau n'est pas vérifiable publiquement pour les quatre autres composants.
+- La dépendance la plus difficile se situe peut-être hors des contrats BCE : stores, systèmes d'exploitation, secure elements, HSM et réseaux.
+
+## Une monnaie publique dans une machine hybride
+
+Le design actuel peut se lire en quatre couches.
+
+La première est monétaire. L'Eurosystème émettrait l'euro numérique, enregistrerait les avoirs et réaliserait le règlement final. La dette ne serait portée ni par une banque commerciale, ni par un fournisseur informatique.
+
+La deuxième est la Digital Euro Service Platform, ou DESP. Son cœur doit être fourni par des banques centrales, tandis que cinq composants spécialisés sont confiés à des entreprises privées sous gouvernance de la BCE.
+
+La troisième est la distribution. Les banques et autres [PSP](/glossaire/psp/) conserveraient la relation client : identité, compte, assistance, fraude locale, litiges, funding et defunding.
+
+La quatrième se trouve dans la poche du citoyen et entre les datacentres : smartphone, système d'exploitation, app store, secure element, HSM, télécoms et fournisseurs réseau.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-arch-fr-t a6-arch-fr-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-arch-fr-t">La machine de l'euro numérique en quatre couches</title><desc id="a6-arch-fr-d">Le cœur monétaire est public, les services spécialisés sont publics et privés, la distribution revient aux PSP, tandis que les appareils et réseaux créent des dépendances extérieures.</desc><defs><linearGradient id="a6-arch-fr-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient><marker id="a6-arch-fr-arr" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#68d9c8"/></marker></defs><rect x="1" y="1" width="478" height="1028" rx="15" fill="url(#a6-arch-fr-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">LA MACHINE EN QUATRE COUCHES</text><text x="24" y="65" fill="#9fb1c5" font-size="12">La souveraineté varie selon la couche observée</text><g transform="translate(20 94)"><rect width="440" height="170" rx="13" fill="#132b2c" stroke="#68d9c8" stroke-width="1.4"/><text x="20" y="29" fill="#8ce8db" font-size="12" font-weight="800">1. MONNAIE ET REGISTRE</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">Six banques centrales nationales</text><text x="20" y="91" fill="#dceae7" font-size="13">Émission, avoirs, règlement final, limites.</text><text x="20" y="116" fill="#dceae7" font-size="13">La dette monétaire reste dans l'Eurosystème.</text><rect x="290" y="117" width="126" height="31" rx="999" fill="#0e1d1f" stroke="#68d9c8"/><text x="353" y="137" text-anchor="middle" fill="#a7f0e5" font-size="11" font-weight="800">CONTRÔLE PUBLIC</text></g><path d="M240 270V306" stroke="#68d9c8" stroke-width="3" marker-end="url(#a6-arch-fr-arr)"/><g transform="translate(20 322)"><rect width="440" height="186" rx="13" fill="#172337" stroke="#8facff" stroke-width="1.4"/><text x="20" y="29" fill="#a7c0ff" font-size="12" font-weight="800">2. SERVICES DESP</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">Cœur public + cinq composants privés</text><text x="20" y="92" fill="#dce7ef" font-size="13">Alias, fraude, application, offline et SEPI.</text><text x="20" y="117" fill="#dce7ef" font-size="13">Gouvernance BCE, développement et opération contractuels.</text><rect x="20" y="138" width="178" height="30" rx="999" fill="#101923" stroke="#8facff"/><text x="109" y="158" text-anchor="middle" fill="#c4d3ff" font-size="11" font-weight="800">PUBLIC + PRIVÉ EUROPÉEN</text></g><path d="M240 514V550" stroke="#68d9c8" stroke-width="3" marker-end="url(#a6-arch-fr-arr)"/><g transform="translate(20 566)"><rect width="440" height="170" rx="13" fill="#30251a" stroke="#ffbd78" stroke-width="1.4"/><text x="20" y="29" fill="#ffd09d" font-size="12" font-weight="800">3. DISTRIBUTION</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">Banques et autres PSP</text><text x="20" y="91" fill="#f4e8d8" font-size="13">KYC, compte, interface, support, litiges, funding.</text><text x="20" y="116" fill="#f4e8d8" font-size="13">La relation client reste privée et réglementée.</text><rect x="265" y="119" width="151" height="29" rx="999" fill="#21170f" stroke="#ffbd78"/><text x="340" y="138" text-anchor="middle" fill="#ffe0b7" font-size="11" font-weight="800">PRIVÉ RÉGLEMENTÉ</text></g><path d="M240 742V778" stroke="#ffbd78" stroke-width="3" marker-end="url(#a6-arch-fr-arr)"/><g transform="translate(20 794)"><rect width="440" height="170" rx="13" fill="#321d22" stroke="#ff8498" stroke-width="1.4"/><text x="20" y="29" fill="#ffa6b5" font-size="12" font-weight="800">4. APPAREILS ET RÉSEAUX</text><text x="20" y="61" fill="#fff" font-size="18" font-weight="850">OS, stores, secure elements, NSP</text><text x="20" y="91" fill="#f2e2e5" font-size="13">Apple, Google, OEM, HSM, TSM, télécoms et datacentres.</text><text x="20" y="116" fill="#f2e2e5" font-size="13">Le droit européen encadre, sans supprimer la dépendance.</text><rect x="258" y="119" width="158" height="29" rx="999" fill="#211116" stroke="#ff8498"/><text x="337" y="138" text-anchor="middle" fill="#ffc3cd" font-size="11" font-weight="800">DÉPENDANCES MIXTES</text></g><rect x="20" y="982" width="440" height="28" rx="8" fill="#0f1822" stroke="#68d9c8"/><text x="240" y="1001" text-anchor="middle" fill="#dfeaf0" font-size="11.5">Test final : qui peut reprendre chaque couche sans permission extérieure ?</text><text x="24" y="1022" fill="#75899d" font-size="10">Sources : BCE, marchés publics, mandat du Conseil. Synthèse l0g.</text></svg>
+<figcaption>La monnaie reste publique. L'expérience, la distribution et plusieurs dépendances matérielles reposent sur des couches contractuelles distinctes.</figcaption>
+</figure>
+
+Cette décomposition évite deux caricatures.
+
+La première affirme que des sociétés privées émettront l'euro. Elles ne porteront pas la dette monétaire et ne pourront pas créer un solde à leur convenance.
+
+La seconde affirme que tout restera sous contrôle direct de Francfort. Une infrastructure peut garder un cœur public tout en dépendant, pour fonctionner chaque jour, de logiciels, de clés et d'appareils administrés ailleurs.
+
+La souveraineté se joue précisément dans les interfaces entre ces couches.
+
+## Six banques centrales pour le cœur
+
+Le Conseil des gouverneurs a retenu en juillet 2025 six banques centrales nationales :
+
+- Banca d'Italia ;
+- Banco de España ;
+- Banque de France ;
+- Deutsche Bundesbank ;
+- Lietuvos bankas ;
+- Oesterreichische Nationalbank.
+
+La [BCE décrit](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html) un règlement centralisé dans lequel l'Eurosystème enregistre et vérifie les avoirs et les règlements.
+
+Ce choix protège l'élément le plus important : le grand livre monétaire et la capacité d'émission restent publics.
+
+Il ne rend pas encore l'architecture publique totalement lisible.
+
+Le corpus ouvert ne répartit pas précisément les fonctions entre les six banques centrales. Il ne permet pas de savoir publiquement :
+
+- laquelle développe l'émission ;
+- laquelle opère le registre ;
+- où se trouvent les sites actifs ;
+- comment le quorum est construit ;
+- qui détient les clés racines ;
+- combien de sites peuvent continuer isolément ;
+- comment une autre banque centrale reprendrait un composant.
+
+Cette discrétion peut protéger la sécurité opérationnelle. Elle limite aussi l'audit public de la résilience.
+
+Le point doit rester mesuré : l'absence de détail public ne prouve ni centralisation fragile ni mauvaise séparation des rôles. Elle empêche simplement de vérifier la topologie de reprise.
+
+## Cinq composants privés, dix accords-cadres
+
+En octobre 2025, la BCE a publié les fournisseurs classés pour cinq composants.
+
+### Alias lookup
+
+Le service doit relier le DEAN, le PSP et un alias comme le numéro de téléphone afin de router le paiement.
+
+Premier : Sapient GmbH et Tremend Software Consulting.
+
+Second : equensWorldline SE Germany.
+
+Valeur estimée : 27,9 millions d'euros. Plafond : 55,8 millions. Durée maximale : dix ans.
+
+### Risk and Fraud Management
+
+Le composant doit produire un score de risque en temps réel, analyser les transactions après règlement et fournir une vision transversale aux PSP.
+
+Premier : Feedzai.
+
+Second : Capgemini Deutschland.
+
+Valeur estimée : 79,1 millions d'euros. Plafond : 237,3 millions. Durée maximale : quinze ans.
+
+### Application et SDK
+
+La BCE prévoit une application commune et un SDK permettant aux PSP d'intégrer l'euro numérique à leurs propres interfaces.
+
+Premier : Almaviva et Fabrick.
+
+Second : Sapient et Tremend.
+
+Valeur estimée : 76,8 millions d'euros. Plafond : 153,6 millions. Durée maximale : dix ans.
+
+### Solution hors ligne
+
+La brique doit permettre des paiements successifs sans tiers dans la transaction, en P2P et au point de vente, avec funding, defunding, maintenance, hébergement et service desk.
+
+Premier : G+D advance52 et G+D Currency Technology.
+
+Second : equensWorldline.
+
+Valeur estimée : 220,7 millions d'euros. Plafond : 662,1 millions. Durée maximale : quinze ans.
+
+### SEPI
+
+Le Secure Exchange of Payment Information doit tokeniser et détokeniser des informations de paiement, générer des valeurs utilisables dans un QR code, un lien ou le NFC, puis gérer leur cycle de vie.
+
+Premier : Senacor FCS.
+
+Second : equensWorldline.
+
+Valeur estimée : 27,6 millions d'euros. Plafond : 55,2 millions. Durée maximale : dix ans.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-contracts-fr-t a6-contracts-fr-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-contracts-fr-t">Cinq composants et dix accords-cadres</title><desc id="a6-contracts-fr-d">Pour chaque composant, la BCE a classé un fournisseur premier et un second. Les valeurs estimées et plafonds ne sont pas des dépenses.</desc><defs><linearGradient id="a6-contracts-fr-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs><rect x="1" y="1" width="478" height="1118" rx="15" fill="url(#a6-contracts-fr-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">5 COMPOSANTS, 10 ACCORDS</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Premier classé, second si nécessaire</text><g transform="translate(20 92)"><rect width="440" height="166" rx="12" fill="#172337" stroke="#8facff"/><text x="18" y="27" fill="#a7c0ff" font-size="12" font-weight="800">ALIAS LOOKUP · 10 ANS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Sapient + Tremend</text><text x="18" y="82" fill="#dce7ef" font-size="13">2. equensWorldline</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">27,9 M€ estimés</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">55,8 M€ plafond</text><text x="18" y="144" fill="#8598aa" font-size="11">9 offres · qualité 60 % · prix 40 %</text></g><g transform="translate(20 274)"><rect width="440" height="166" rx="12" fill="#251d33" stroke="#dda0ff"/><text x="18" y="27" fill="#e8b7ff" font-size="12" font-weight="800">RISQUE ET FRAUDE · 15 ANS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Feedzai</text><text x="18" y="82" fill="#eee6f2" font-size="13">2. Capgemini Deutschland</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">79,1 M€ estimés</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">237,3 M€ plafond</text><text x="18" y="144" fill="#9e8ea9" font-size="11">8 offres · qualité 70 % · prix 30 %</text></g><g transform="translate(20 456)"><rect width="440" height="166" rx="12" fill="#13253a" stroke="#68d9c8"/><text x="18" y="27" fill="#8ce8db" font-size="12" font-weight="800">APPLICATION ET SDK · 10 ANS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Almaviva + Fabrick</text><text x="18" y="82" fill="#dceae7" font-size="13">2. Sapient + Tremend</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">76,8 M€ estimés</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">153,6 M€ plafond</text><text x="18" y="144" fill="#859e9a" font-size="11">10 offres · qualité 60 % · prix 40 %</text></g><g transform="translate(20 638)"><rect width="440" height="166" rx="12" fill="#30251a" stroke="#ffbd78"/><text x="18" y="27" fill="#ffd09d" font-size="12" font-weight="800">SOLUTION OFFLINE · 15 ANS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. G+D advance52 + Currency Technology</text><text x="18" y="82" fill="#f4e8d8" font-size="13">2. equensWorldline</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">220,7 M€ estimés</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">662,1 M€ plafond</text><text x="18" y="144" fill="#b59a79" font-size="11">4 offres · qualité 70 % · prix 30 %</text></g><g transform="translate(20 820)"><rect width="440" height="166" rx="12" fill="#321d22" stroke="#ff8498"/><text x="18" y="27" fill="#ffa6b5" font-size="12" font-weight="800">SEPI · 10 ANS MAX.</text><text x="18" y="56" fill="#fff" font-size="14" font-weight="800">1. Senacor FCS</text><text x="18" y="82" fill="#f2e2e5" font-size="13">2. equensWorldline</text><text x="18" y="113" fill="#8ce8db" font-size="14" font-weight="850">27,6 M€ estimés</text><text x="230" y="113" fill="#ffbd78" font-size="14" font-weight="850">55,2 M€ plafond</text><text x="18" y="144" fill="#ac858e" font-size="11">4 offres · qualité 60 % · prix 40 %</text></g><rect x="20" y="1006" width="440" height="76" rx="10" fill="#0f1822" stroke="#68d9c8"/><text x="38" y="1031" fill="#8ce8db" font-size="12" font-weight="800">DISTINCTION CLÉ</text><text x="38" y="1054" fill="#edf3f8" font-size="12.5">Le second fournisseur ouvre une option contractuelle.</text><text x="38" y="1074" fill="#edf3f8" font-size="12.5">La bascule opérationnelle exige un test séparé.</text><text x="24" y="1108" fill="#75899d" font-size="10">Sources : avis d'attribution BCE, octobre 2025. Synthèse l0g.</text></svg>
+<figcaption>La BCE a classé deux équipes par composant. Le second titulaire ouvre une voie contractuelle de secours dont l'état de préparation technique reste à vérifier.</figcaption>
+</figure>
+
+La qualité pèse 60 % de la sélection pour alias, application et SEPI, 70 % pour fraude et offline. Les prix représentent le reste.
+
+Au total, les cinq procédures ont reçu 35 offres.
+
+L'existence d'une compétition réelle au moment de l'attribution ne garantit pas qu'elle subsistera après dix ans d'intégration, de données et de connaissances accumulées.
+
+## Valeurs estimées, plafonds et commandes
+
+La somme des valeurs estimées atteint **432,1 millions d'euros**.
+
+La somme des plafonds atteint **1,164 milliard d'euros**.
+
+Ces deux chiffres demandent une discipline de lecture.
+
+La valeur estimée indique l'ordre de grandeur anticipé de la procédure.
+
+Le plafond définit le maximum susceptible d'être commandé pendant la durée de l'accord.
+
+L'accord-cadre lui-même n'entraîne pas automatiquement une dépense. La [BCE l'a précisé](https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews251002.en.html) au moment de la sélection : aucune somme n'est due du seul fait de la signature. Les travaux sont déclenchés progressivement par des commandes ou accords spécifiques.
+
+Le plafond peut couvrir :
+
+- deux années de développement ;
+- déploiement progressif ;
+- maintenance ;
+- exploitation ;
+- hébergement ;
+- service desk ;
+- extensions jusqu'à dix ou quinze ans.
+
+L'addition de 1,164 milliard ne signifie donc pas que la BCE a versé un milliard aux fournisseurs.
+
+Elle ne doit pas non plus être ajoutée mécaniquement aux 1,3 milliard de développement public présentés dans le cinquième volet. Les périmètres et les horizons se chevauchent probablement en partie.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 970" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-values-fr-t a6-values-fr-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-values-fr-t">Valeurs estimées et plafonds des marchés externes</title><desc id="a6-values-fr-d">Les barres comparent la valeur estimée et le maximum contractuel pour cinq composants et le marché réseau.</desc><defs><linearGradient id="a6-values-fr-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs><rect x="1" y="1" width="478" height="968" rx="15" fill="url(#a6-values-fr-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">VALEURS DES MARCHÉS</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Valeurs estimées et maxima contractuels</text><g transform="translate(24 102)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Alias</text><rect x="0" y="15" width="12" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="25" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">27,9 M€</text><text x="355" y="46" fill="#ffd09d" font-size="11">55,8 M€</text></g><g transform="translate(24 200)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Fraude</text><rect x="0" y="15" width="36" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="108" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">79,1 M€</text><text x="355" y="46" fill="#ffd09d" font-size="11">237,3 M€</text></g><g transform="translate(24 298)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">App + SDK</text><rect x="0" y="15" width="35" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="70" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">76,8 M€</text><text x="355" y="46" fill="#ffd09d" font-size="11">153,6 M€</text></g><g transform="translate(24 396)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Offline</text><rect x="0" y="15" width="100" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="300" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">220,7 M€</text><text x="355" y="46" fill="#ffd09d" font-size="11">662,1 M€</text></g><g transform="translate(24 494)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">SEPI</text><rect x="0" y="15" width="12" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="25" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">27,6 M€</text><text x="355" y="46" fill="#ffd09d" font-size="11">55,2 M€</text></g><g transform="translate(24 592)"><text x="0" y="0" fill="#eef4f8" font-size="12" font-weight="750">Connectivité, 2 lots</text><rect x="0" y="15" width="74" height="13" rx="3" fill="#68d9c8"/><rect x="0" y="34" width="161" height="13" rx="3" fill="#ffbd78"/><text x="280" y="27" fill="#8ce8db" font-size="11">162,84 M€</text><text x="355" y="46" fill="#ffd09d" font-size="11">355,32 M€</text></g><g transform="translate(20 700)"><rect width="440" height="110" rx="12" fill="#172337" stroke="#8facff"/><text x="20" y="30" fill="#a7c0ff" font-size="12" font-weight="800">CINQ COMPOSANTS ATTRIBUÉS</text><text x="20" y="64" fill="#fff" font-size="21" font-weight="850">432,1 M€ estimés</text><text x="238" y="64" fill="#ffbd78" font-size="21" font-weight="850">1,164 Md€ plafond</text><text x="20" y="91" fill="#9fb1c5" font-size="11">Développement, maintenance, exploitation et options peuvent se chevaucher.</text></g><g transform="translate(20 828)"><rect width="440" height="94" rx="12" fill="#321d22" stroke="#ff8498"/><text x="20" y="29" fill="#ffa6b5" font-size="12" font-weight="800">AVEC LA CONNECTIVITÉ</text><text x="20" y="60" fill="#fff" font-size="18" font-weight="850">594,94 M€ estimés · 1,51932 Md€ de plafonds</text><text x="20" y="82" fill="#cca0a8" font-size="11">Le marché réseau n'était pas attribué dans le corpus au 15 août 2026.</text></g><text x="24" y="950" fill="#ffbd78" font-size="12" font-weight="800">PLAFOND = COMMANDE MAXIMALE</text><text x="24" y="966" fill="#75899d" font-size="10">Sources : avis de marchés BCE. Calculs l0g.</text></svg>
+<figcaption>La solution offline domine les enveloppes publiées. Les plafonds indiquent la commande maximale possible sur toute la durée du contrat.</figcaption>
+</figure>
+
+Le cas offline illustre la différence.
+
+Sa valeur estimée représente environ 51 % du total des cinq procédures. Son plafond représente près de 57 %.
+
+Cette concentration peut refléter :
+
+- la complexité cryptographique ;
+- le matériel sécurisé ;
+- la lutte contre la double dépense ;
+- la maintenance ;
+- l'hébergement ;
+- la très longue période d'exploitation ;
+- le besoin de plusieurs formes d'appareil.
+
+Elle ne permet pas de conclure que 662,1 millions seront dépensés.
+
+## La portée réelle du second fournisseur
+
+La BCE adresse d'abord ses demandes au fournisseur classé premier. Le second est contacté si nécessaire.
+
+Cette construction procure une option contractuelle. Elle peut protéger contre :
+
+- un refus ;
+- une incapacité ;
+- une rupture ;
+- un besoin supplémentaire ;
+- une volonté de remplacement.
+
+Elle ne démontre pas une bascule technique.
+
+Pour parler de redondance active, il faudrait répondre à des questions plus exigeantes.
+
+Le second fournisseur reçoit-il le code du premier ?
+
+Dispose-t-il des mêmes données, clés et environnements ?
+
+Maintient-il une équipe prête ?
+
+Une implémentation commune ou compatible existe-t-elle ?
+
+Combien de jours séparent l'incident de la reprise ?
+
+Le service peut-il continuer pendant la transition ?
+
+La BCE peut-elle opérer elle-même entre les deux ?
+
+Les avis publics ne répondent pas.
+
+Le résultat le plus rigoureux est donc :
+
+> **La BCE a acheté une redondance contractuelle. La redondance opérationnelle reste à démontrer.**
+
+La distinction est particulièrement importante pour le moteur antifraude.
+
+Un autre fournisseur peut reproduire une API. Reprendre un système ayant accumulé règles, statistiques, modèles et procédures pendant plusieurs années exige davantage qu'un contrat de secours.
+
+La même difficulté apparaît pour l'alias. Le second doit pouvoir reprendre une table de mapping complète, prouver son intégrité, continuer les requêtes et conserver les protections contre l'énumération.
+
+Pour SEPI, il faut migrer les tokens, les clés et les HSM sans casser les paiements en cours.
+
+Pour l'app, il faut reconstruire, signer et republier une version compatible dans les stores.
+
+Pour l'offline, il faut reprendre le code, les applets, les clés, le provisioning et le support matériel.
+
+Une option de marché ne réalise aucune de ces opérations à elle seule.
+
+## La concentration économique derrière les dix accords
+
+Les dix accords ne correspondent pas à dix groupes économiques distincts.
+
+Sapient et Tremend apparaissent ensemble sur l'alias et l'application. [Publicis Groupe a acquis Tremend](https://www.publicisgroupe.com/en/news/press-releases/publicis-groupe-announces-tremend-acquisition-to-expand-european-delivery-of-publicis-sapient-s-digital-business-transformation-capabilities) en 2022 afin de renforcer les capacités de livraison de Publicis Sapient.
+
+Les deux sociétés restent des entités identifiables dans le groupement, mais ne constituent pas deux pôles de contrôle totalement indépendants.
+
+equensWorldline est classé second sur trois composants : alias, offline et SEPI.
+
+Cette présence n'implique pas que Worldline opère trois briques. Elle signifie qu'une partie importante de la solution de repli se concentre dans le même groupe.
+
+L'effet peut être positif : expertise paneuropéenne, connaissance des interfaces et capacité industrielle.
+
+Il peut aussi créer une corrélation : un problème juridique, financier, technique ou de gouvernance chez le groupe affecterait plusieurs options de secours.
+
+Fabrick appartient à l'écosystème Sella. [Sa propre communication](https://landing.fabrick.com/hubfs/mkt/press-release/PR_DIGITAL%20EURO_03102025.pdf) cite aussi Mastercard et Reale Mutua parmi ses soutiens au capital.
+
+La présence d'un investisseur minoritaire non européen n'établit aucun contrôle non européen. Elle montre que « fournisseur européen » ne signifie pas entreprise isolée de tout capital ou partenariat mondial.
+
+L'analyse sérieuse doit donc regarder :
+
+- contrôle ;
+- droits de vote ;
+- sous-traitance ;
+- dépendances logicielles ;
+- accès aux données ;
+- capacité de remplacement.
+
+Le drapeau du siège ne suffit pas.
+
+## La clause européenne est une vraie barrière
+
+Les cinq procédures externes imposent aux candidats, membres de groupements et sous-traitants d'être établis dans l'Union et contrôlés par des ressortissants ou entités de l'Union.
+
+Le contrôle peut être évalué à travers :
+
+- le capital ;
+- les droits de vote ;
+- le pouvoir de décision direct ou indirect.
+
+Les titulaires doivent aussi éviter que leurs coopérations avec des acteurs de pays tiers ne compromettent les intérêts de sécurité ou l'approvisionnement critique.
+
+Cette clause est plus forte qu'une obligation de localisation.
+
+Elle protège contre une entreprise directement pilotée depuis une juridiction extérieure pour les composants sélectionnés.
+
+Elle donne également à la BCE un moyen de surveiller les changements de contrôle et les sous-traitants critiques.
+
+Sa portée reste limitée à l'objet qu'elle contrôle.
+
+Elle ne garantit pas que :
+
+- le cloud est européen ;
+- chaque bibliothèque est maintenue en Europe ;
+- le HSM est européen ;
+- le système d'exploitation est européen ;
+- le secure element est européen ;
+- la chaîne de compilation est indépendante ;
+- aucun brevet étranger n'est nécessaire ;
+- le support ne passe jamais par une filiale hors EEE.
+
+La souveraineté juridique du titulaire constitue une fondation.
+
+Elle ne cartographie pas toute la supply chain.
+
+## Une sous-traitance largement opaque
+
+Les avis d'attribution indiquent un recours à la sous-traitance pour huit des dix accords. Deux déclarent l'absence de sous-traitance.
+
+Les mêmes avis ne donnent généralement pas :
+
+- les noms ;
+- les fonctions ;
+- les montants ;
+- les pourcentages ;
+- l'accès aux données ;
+- l'accès à la production ;
+- les pays d'opération.
+
+Le titulaire peut sous-traiter des fonctions aussi différentes que :
+
+- cloud ;
+- SOC ;
+- développement ;
+- support ;
+- HSM ;
+- TSM ;
+- tests ;
+- modèle d'apprentissage ;
+- connectivité.
+
+La clause de contrôle européen s'applique en principe aux acteurs concernés par les procédures.
+
+Le public ne peut pas vérifier la chaîne réelle.
+
+Cette opacité ne suffit pas à conclure à une dépendance problématique. Elle empêche de mesurer la concentration et les droits d'accès.
+
+Une infrastructure de paiement souveraine devrait pouvoir publier au minimum :
+
+- la liste des sous-traitants critiques ;
+- leur fonction ;
+- leur pays ;
+- leur accès potentiel ;
+- le mécanisme d'approbation d'un remplacement.
+
+La confidentialité commerciale n'exige pas de cacher l'existence d'une dépendance critique.
+
+## Dix ou quinze ans : continuité et verrouillage
+
+Les durées maximales peuvent surprendre.
+
+Alias, application et SEPI peuvent atteindre dix ans.
+
+Fraude et offline peuvent atteindre quinze ans.
+
+Les avis donnent une justification cohérente :
+
+- environ deux ans de développement ;
+- mise en service progressive ;
+- montée en charge après la phase initiale ;
+- besoin de stabilité pendant l'onboarding massif ;
+- maintenance et exploitation de long terme.
+
+Une banque centrale ne change pas son moteur antifraude ou sa solution hors ligne comme elle change un prestataire de communication.
+
+La durée protège la continuité.
+
+Elle peut aussi concentrer :
+
+- la connaissance ;
+- les procédures ;
+- les modèles ;
+- les outils ;
+- les équipes ;
+- le pouvoir de négociation.
+
+Un contrat long n'est pas automatiquement un lock-in.
+
+Le lock-in apparaît lorsque la sortie n'est pas démontrable.
+
+Les bonnes questions sont donc :
+
+- le code est-il repris ?
+- les formats sont-ils ouverts ?
+- les données sont-elles exportables ?
+- les clés peuvent-elles être migrées ?
+- les builds sont-ils reproductibles ?
+- les équipes publiques savent-elles opérer ?
+- les extensions sont-elles conditionnées à un test de sortie ?
+
+Une clause de durée protège le service. Un test de reprise protège la souveraineté.
+
+## Quels droits sur le code ?
+
+La réponse la plus claire concerne l'offline.
+
+L'[avis de marché](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/change_notice_2025-ojs198-00675829-en-ts.pdf) indique que la BCE cherche une solution de bout en bout avec les droits complets pour :
+
+- l'utiliser ;
+- la modifier ;
+- la redistribuer aux intermédiaires participants.
+
+Cette clause constitue une garantie de reprise sérieuse.
+
+Elle n'épuise pas toutes les questions.
+
+Le code peut contenir :
+
+- bibliothèques tierces ;
+- firmware propriétaire ;
+- brevets ;
+- outils de compilation fermés ;
+- modules matériels ;
+- composants dont la redistribution est limitée.
+
+Il faut encore connaître le périmètre précis des droits.
+
+Le pilote apporte un signal favorable. Sa documentation prévoit pour certaines briques :
+
+- spécifications ;
+- API ;
+- implémentation de référence ;
+- code source d'un SDK offline ;
+- application exemple ;
+- scripts de test.
+
+Ces livrables facilitent l'intégration et l'audit.
+
+Ils concernent une version bêta et ne prouvent pas que toute l'implémentation de production sera publiée.
+
+Pour l'alias, le moteur antifraude, l'application et SEPI, les avis publics décrivent développement, maintenance et opération. Ils ne publient pas une clause de droits aussi explicite que celle de l'offline.
+
+La formulation correcte est :
+
+> **Les droits de modification et de reprise ne sont pas vérifiables publiquement pour quatre composants.**
+
+Cette phrase ne signifie pas qu'ils sont absents des contrats détaillés.
+
+Elle signifie qu'une propriété essentielle de souveraineté demeure derrière la plateforme d'e-tendering.
+
+## Standards ouverts, code ouvert et reprise
+
+Le rulebook et les API peuvent être publics tandis que l'implémentation reste propriétaire.
+
+Un standard ouvert permet :
+
+- plusieurs PSP ;
+- conformité ;
+- interopérabilité ;
+- certification ;
+- développement alternatif.
+
+Il ne garantit pas :
+
+- accès au dépôt ;
+- build reproductible ;
+- contrôle des clés ;
+- maîtrise de la production ;
+- compétences pour opérer.
+
+Le code open source aide lui aussi sans résoudre tout le problème.
+
+Une banque centrale peut posséder un dépôt et dépendre encore :
+
+- d'une chaîne CI fermée ;
+- d'un cloud spécifique ;
+- d'un app store ;
+- d'un HSM ;
+- d'un fournisseur qui seul connaît les procédures.
+
+La hiérarchie la plus utile est donc :
+
+1. standard public ;
+2. spécification complète ;
+3. code accessible ;
+4. droits de modification ;
+5. build reproductible ;
+6. clés sous contrôle ;
+7. exploitation documentée ;
+8. reprise testée.
+
+La souveraineté commence avec le droit.
+
+Elle se confirme par une opération réussie sans le fournisseur historique.
+
+## Qui détient les droits root ?
+
+Les contrats couvrent souvent plus que le développement.
+
+Le moteur antifraude, l'application et l'offline incluent l'opération. L'offline couvre explicitement hébergement, fonctionnement et service desk.
+
+Les avis publics ne détaillent pas :
+
+- le cloud ;
+- les datacentres ;
+- les comptes administrateurs ;
+- les bastions ;
+- les HSM ;
+- les clés racines ;
+- les sauvegardes ;
+- les RTO et RPO ;
+- les procédures de restauration ;
+- les accès d'urgence ;
+- les personnels habilités.
+
+La question « qui possède les droits root ? » n'implique pas l'existence d'un bouton unique capable de modifier la monnaie.
+
+Elle demande qui peut :
+
+- déployer une version ;
+- signer un binaire ;
+- administrer la production ;
+- restaurer après incident ;
+- extraire un journal ;
+- faire tourner le service pendant une crise.
+
+Une infrastructure peut être gouvernée par la BCE et opérée au quotidien par un titulaire.
+
+La souveraineté exige que la banque centrale sache reprendre cette opération dans une situation extrême, directement ou par un autre fournisseur.
+
+## Le smartphone reste une frontière extérieure
+
+L'application euro numérique doit être distribuée au moins dans les stores officiels Android et iOS. Elle doit aussi fonctionner sur des versions anciennes encore supportées et sur différents appareils, dont des wearables.
+
+Le développeur peut être européen.
+
+Le canal de distribution et une partie du matériel ne le sont pas.
+
+### Le NFC a été ouvert
+
+En juillet 2024, la Commission européenne a rendu juridiquement contraignants pendant dix ans les engagements d'Apple sur l'accès NFC dans l'EEE.
+
+Les wallets tiers peuvent utiliser Host Card Emulation, être choisis par défaut et s'appuyer sur Face ID ou Touch ID dans les conditions prévues.
+
+Cette ouverture réduit le pouvoir de verrouillage d'Apple sur les paiements de proximité en ligne.
+
+### Ce que HCE permet réellement
+
+La [BCE avait averti](https://www.ecb.europa.eu/pub/pdf/other/ecb.letter240419_Breton~fe4828c691.en.pdf) qu'un accès HCE ne suffit pas pour sa vision du paiement hors ligne mobile.
+
+Le secure element offre un environnement matériel résistant aux manipulations. Il peut être intégré, embarqué ou lié à une eSIM.
+
+La solution offline doit prévenir la copie et la double dépense sans serveur interrogé pendant la transaction.
+
+Le matériel devient donc un élément monétaire fonctionnel, même s'il n'émet pas la monnaie.
+
+### Le droit cherche à ouvrir le matériel
+
+L'article 33 du mandat du Conseil prévoit un accès équitable, raisonnable et non discriminatoire aux fonctions matérielles et logicielles nécessaires.
+
+Les États membres doivent désigner des autorités et prévoir des sanctions.
+
+Le texte peut transformer une négociation commerciale en obligation légale.
+
+Il reste à démontrer :
+
+- le prix FRAND ;
+- le délai ;
+- la capacité de stockage ;
+- le provisioning ;
+- la parité avec le wallet natif ;
+- le support des wearables ;
+- la durée de support ;
+- l'accès sur les appareils non désignés comme gatekeepers.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1090" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-off-fr-t a6-off-fr-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-off-fr-t">Chaîne de dépendance du paiement offline</title><desc id="a6-off-fr-d">Le paiement entre deux appareils peut être local, tandis que l'installation, le financement, les clés et la maintenance dépendent d'une chaîne de fournisseurs.</desc><defs><linearGradient id="a6-off-fr-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient><marker id="a6-off-fr-arr" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#ffbd78"/></marker></defs><rect x="1" y="1" width="478" height="1088" rx="15" fill="url(#a6-off-fr-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">OFFLINE : TROIS TEMPS</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Provisionnement, transaction et maintenance</text><g transform="translate(20 94)"><rect width="440" height="255" rx="13" fill="#30251a" stroke="#ffbd78"/><text x="20" y="29" fill="#ffd09d" font-size="12" font-weight="800">AVANT LE PAIEMENT</text><text x="20" y="62" fill="#fff" font-size="18" font-weight="850">Provisionner l'instrument</text><text x="20" y="95" fill="#f4e8d8" font-size="13">App store → OS → SDK → OEM → secure element</text><text x="20" y="121" fill="#f4e8d8" font-size="13">TSM / eSIM → PSP → HSM → service offline</text><path d="M60 165H380" stroke="#ffbd78" stroke-width="3" marker-end="url(#a6-off-fr-arr)"/><g transform="translate(20 187)"><rect width="94" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="47" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">STORE / OS</text><text x="47" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">Apple, Google</text></g><g transform="translate(127 187)"><rect width="94" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="47" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">SECURE ELEMENT</text><text x="47" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">OEM, puce, eSIM</text></g><g transform="translate(234 187)"><rect width="78" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="39" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">PSP / HSM</text><text x="39" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">clés et compte</text></g><g transform="translate(325 187)"><rect width="95" height="45" rx="9" fill="#21170f" stroke="#ffbd78"/><text x="47.5" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="750">OFFLINE</text><text x="47.5" y="35" text-anchor="middle" fill="#cdb699" font-size="9.5">G+D / secours</text></g></g><path d="M240 356V394" stroke="#68d9c8" stroke-width="3"/><g transform="translate(20 410)"><rect width="440" height="245" rx="13" fill="#132b2c" stroke="#68d9c8" stroke-width="1.5"/><text x="20" y="29" fill="#8ce8db" font-size="12" font-weight="800">PENDANT LE PAIEMENT</text><text x="20" y="62" fill="#fff" font-size="18" font-weight="850">Deux appareils, transfert direct</text><g transform="translate(42 104)"><rect width="118" height="88" rx="14" fill="#0e1d1f" stroke="#68d9c8"/><text x="59" y="35" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">APPAREIL A</text><text x="59" y="60" text-anchor="middle" fill="#a7f0e5" font-size="11">solde local</text></g><path d="M176 148H304" stroke="#68d9c8" stroke-width="4"/><path d="M294 139L309 148L294 157" fill="none" stroke="#68d9c8" stroke-width="3"/><text x="240" y="128" text-anchor="middle" fill="#a7f0e5" font-size="11" font-weight="750">P2P / POS</text><g transform="translate(320 104)"><rect width="78" height="88" rx="14" fill="#0e1d1f" stroke="#68d9c8"/><text x="39" y="35" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">B</text><text x="39" y="60" text-anchor="middle" fill="#a7f0e5" font-size="11">solde local</text></g><text x="220" y="222" text-anchor="middle" fill="#dceae7" font-size="12.5">Aucun tiers n'intervient dans la transaction honnête.</text></g><path d="M240 662V700" stroke="#ff8498" stroke-width="3"/><g transform="translate(20 716)"><rect width="440" height="260" rx="13" fill="#321d22" stroke="#ff8498"/><text x="20" y="29" fill="#ffa6b5" font-size="12" font-weight="800">APRÈS ET AUTOUR DU PAIEMENT</text><text x="20" y="62" fill="#fff" font-size="18" font-weight="850">Mettre à jour, révoquer, financer</text><text x="20" y="98" fill="#f2e2e5" font-size="13">• funding et defunding identifiés</text><text x="20" y="126" fill="#f2e2e5" font-size="13">• rotation des clés et applets</text><text x="20" y="154" fill="#f2e2e5" font-size="13">• appareil compromis et liste de révocation</text><text x="20" y="182" fill="#f2e2e5" font-size="13">• fin de support d'un OS ou d'un secure element</text><text x="20" y="210" fill="#f2e2e5" font-size="13">• migration vers un autre fournisseur</text><rect x="20" y="225" width="400" height="24" rx="7" fill="#211116" stroke="#ff8498"/><text x="220" y="242" text-anchor="middle" fill="#ffc3cd" font-size="10.8">L'usage proche du cash dépend d'une chaîne complexe.</text></g><rect x="20" y="996" width="440" height="57" rx="10" fill="#0f1822" stroke="#8facff"/><text x="38" y="1020" fill="#a7c0ff" font-size="12" font-weight="800">ARTICLE 33</text><text x="38" y="1041" fill="#edf3f8" font-size="12">Le droit vise un accès FRAND. Le prix, le délai et la parité restent à tester.</text><text x="24" y="1077" fill="#75899d" font-size="10">Sources : BCE, Commission européenne, mandat du Conseil. Synthèse l0g.</text></svg>
+<figcaption>Le transfert offline peut être direct entre deux appareils. La création, la mise à jour et la reprise de l'instrument dépendent d'une chaîne beaucoup plus longue.</figcaption>
+</figure>
+
+Le paradoxe est clair.
+
+La transaction la plus proche du cash pourrait être celle dont le provisioning dépend le plus d'acteurs privés.
+
+Une architecture robuste doit donc prévoir plusieurs chemins :
+
+- plusieurs fabricants ;
+- plusieurs secure elements ;
+- carte physique ;
+- appareil relais ;
+- provisioning indépendant de l'opérateur télécom ;
+- applet portable ;
+- clés sous contrôle public ;
+- test d'abandon d'un OEM.
+
+## Un sixième marché pour le réseau
+
+Un marché séparé concerne la connectivité entre :
+
+- les PSP ;
+- les banques centrales nationales ;
+- la DESP ;
+- les composants répartis entre plusieurs sites et datacentres.
+
+La procédure prévoit deux lots.
+
+La valeur estimée totale est de **162,84 millions d'euros** et le plafond de **355,32 millions** sur une durée pouvant atteindre dix ans.
+
+Un même candidat peut soumissionner aux deux lots, mais ne peut en remporter qu'un. La BCE cherche donc deux opérateurs distincts.
+
+Le lot 1 est réservé aux entités de l'Union contrôlées dans l'Union.
+
+Le lot 2 est ouvert aux acteurs européens et non européens.
+
+Nous n'avons identifié aucun avis officiel d'attribution dans le corpus public examiné au 15 août 2026.
+
+Cette ouverture hors Union ne signifie pas qu'un acteur étranger contrôlerait la monnaie.
+
+L'opérateur réseau ne décide ni des avoirs, ni de l'émission, ni du règlement.
+
+Il peut néanmoins devenir critique pour :
+
+- la disponibilité ;
+- le routage ;
+- la protection DDoS ;
+- les métadonnées ;
+- le support ;
+- la continuité entre datacentres.
+
+Le réseau illustre parfaitement la différence entre contrôle monétaire et dépendance opérationnelle.
+
+Une solution peut préserver la souveraineté du grand livre tout en exposant la disponibilité à une chaîne extérieure.
+
+## Une grille de souveraineté en six tests
+
+Attribuer une note globale sur dix serait séduisant et trompeur.
+
+Le cœur public recevrait une bonne note. Le secure element une note incertaine. Les droits offline seraient plus forts que les droits publiés sur l'antifraude. La connectivité resterait en cours.
+
+La moyenne écraserait ces différences.
+
+L'article retient donc six tests.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1040" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a6-tests-fr-t a6-tests-fr-d" style="font-family:system-ui,sans-serif;background:#0a111a"><title id="a6-tests-fr-t">Les six tests de souveraineté</title><desc id="a6-tests-fr-d">La souveraineté opérationnelle est évaluée par la gouvernance, la visibilité, la modification, le remplacement, la continuité et la reconstruction.</desc><defs><linearGradient id="a6-tests-fr-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs><rect x="1" y="1" width="478" height="1038" rx="15" fill="url(#a6-tests-fr-bg)" stroke="#304459"/><text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">LES SIX TESTS DE SOUVERAINETÉ</text><text x="24" y="65" fill="#9fb1c5" font-size="12">Une preuve distincte pour chaque capacité</text><g transform="translate(20 94)"><rect width="440" height="132" rx="12" fill="#132b2c" stroke="#68d9c8"/><circle cx="35" cy="37" r="19" fill="#68d9c8"/><text x="35" y="43" text-anchor="middle" fill="#07131d" font-size="16" font-weight="850">1</text><text x="68" y="31" fill="#8ce8db" font-size="13" font-weight="850">GOUVERNER</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">Qui décide, certifie et impose une correction ?</text><text x="20" y="91" fill="#dceae7" font-size="12.5">Atout : émission, registre et rulebook publics.</text><text x="20" y="114" fill="#dceae7" font-size="12.5">Angle mort : répartition précise entre les six BCN.</text></g><g transform="translate(20 242)"><rect width="440" height="132" rx="12" fill="#172337" stroke="#8facff"/><circle cx="35" cy="37" r="19" fill="#8facff"/><text x="35" y="43" text-anchor="middle" fill="#07131d" font-size="16" font-weight="850">2</text><text x="68" y="31" fill="#a7c0ff" font-size="13" font-weight="850">VOIR</text><text x="68" y="50" fill="#fff" font-size="13.5" font-weight="750">Qui inspecte code, logs, modèles</text><text x="68" y="68" fill="#fff" font-size="13.5" font-weight="750">et sous-traitants ?</text><text x="20" y="91" fill="#dce7ef" font-size="12.5">Atout : standards et contrôle contractuel BCE.</text><text x="20" y="114" fill="#dce7ef" font-size="12.5">Angle mort : droits d'audit et chaîne de sous-traitance non publics.</text></g><g transform="translate(20 390)"><rect width="440" height="132" rx="12" fill="#251d33" stroke="#dda0ff"/><circle cx="35" cy="37" r="19" fill="#dda0ff"/><text x="35" y="43" text-anchor="middle" fill="#16091c" font-size="16" font-weight="850">3</text><text x="68" y="31" fill="#e8b7ff" font-size="13" font-weight="850">MODIFIER</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">L'Eurosystème peut-il corriger sans le titulaire ?</text><text x="20" y="91" fill="#eee6f2" font-size="12.5">Atout : droits complets publiés pour offline.</text><text x="20" y="114" fill="#eee6f2" font-size="12.5">Angle mort : quatre autres composants non vérifiables publiquement.</text></g><g transform="translate(20 538)"><rect width="440" height="132" rx="12" fill="#30251a" stroke="#ffbd78"/><circle cx="35" cy="37" r="19" fill="#ffbd78"/><text x="35" y="43" text-anchor="middle" fill="#1c1005" font-size="16" font-weight="850">4</text><text x="68" y="31" fill="#ffd09d" font-size="13" font-weight="850">REMPLACER</text><text x="68" y="50" fill="#fff" font-size="13.5" font-weight="750">Le second fournisseur peut-il</text><text x="68" y="68" fill="#fff" font-size="13.5" font-weight="750">reprendre la production ?</text><text x="20" y="91" fill="#f4e8d8" font-size="12.5">Atout : deux accords par composant.</text><text x="20" y="114" fill="#f4e8d8" font-size="12.5">Angle mort : délai, code, données, clés et bascule non démontrés.</text></g><g transform="translate(20 686)"><rect width="440" height="132" rx="12" fill="#321d22" stroke="#ff8498"/><circle cx="35" cy="37" r="19" fill="#ff8498"/><text x="35" y="43" text-anchor="middle" fill="#1c0710" font-size="16" font-weight="850">5</text><text x="68" y="31" fill="#ffa6b5" font-size="13" font-weight="850">CONTINUER</text><text x="68" y="50" fill="#fff" font-size="13.5" font-weight="750">Que reste-t-il sans store, réseau</text><text x="68" y="68" fill="#fff" font-size="13.5" font-weight="750">ou secure element ?</text><text x="20" y="91" fill="#f2e2e5" font-size="12.5">Atout : droit européen, deux lots réseau, cartes alternatives.</text><text x="20" y="114" fill="#f2e2e5" font-size="12.5">Angle mort : accès matériel et parité opérationnelle.</text></g><g transform="translate(20 834)"><rect width="440" height="132" rx="12" fill="#11202a" stroke="#68d9c8"/><circle cx="35" cy="37" r="19" fill="#68d9c8"/><text x="35" y="43" text-anchor="middle" fill="#07131d" font-size="16" font-weight="850">6</text><text x="68" y="31" fill="#8ce8db" font-size="13" font-weight="850">RECONSTRUIRE</text><text x="68" y="56" fill="#fff" font-size="15" font-weight="750">Sources, builds, clés et compétences suffisent-ils ?</text><text x="20" y="91" fill="#dceae7" font-size="12.5">Atout : références et SDK prévus dans le pilote.</text><text x="20" y="114" fill="#dceae7" font-size="12.5">Angle mort : couverture production et exercice par une autre équipe.</text></g><rect x="20" y="986" width="440" height="28" rx="8" fill="#0f1822" stroke="#ffbd78"/><text x="240" y="1005" text-anchor="middle" fill="#edf3f8" font-size="11.5">Le pilote doit mesurer la reprise après une défaillance.</text><text x="24" y="1030" fill="#75899d" font-size="10">Cadre d'analyse l0g, fondé sur les contrats et l'architecture publique.</text></svg>
+<figcaption>La souveraineté opérationnelle se mesure par une série de capacités vérifiables, indépendamment du siège social du fournisseur.</figcaption>
+</figure>
+
+### Gouverner
+
+L'Eurosystème garde l'émission, le règlement, le rulebook et la certification générale.
+
+Le point à publier davantage concerne la répartition du cœur entre les six banques centrales.
+
+### Voir
+
+Les contrats donnent à la BCE des pouvoirs de contrôle.
+
+Le public ne connaît pas le périmètre exact des audits de code, des logs, des modèles et des sous-traitants.
+
+### Modifier
+
+La garantie offline est explicite.
+
+Le niveau de droits sur les quatre autres composants demeure non vérifiable publiquement.
+
+### Remplacer
+
+Deux fournisseurs sont classés.
+
+Le délai de bascule, la compatibilité et le transfert des clés ne sont pas démontrés.
+
+### Continuer
+
+Le droit européen ouvre le NFC et cherche à ouvrir le matériel.
+
+La continuité sans store, sans secure element ou sans un opérateur réseau reste à tester.
+
+### Reconstruire
+
+Le pilote prévoit des spécifications et certaines références.
+
+Une reconstruction complète par une équipe différente n'est pas documentée.
+
+## Le pilote doit casser quelque chose
+
+Le pilote de douze mois prévu à partir du second semestre 2027 doit tester les paiements P2P, le point de vente, l'e-commerce, l'application, le SDK, le funding, le defunding et l'offline avec 36 PSP et 19 banques centrales nationales.
+
+La réussite fonctionnelle ne suffit pas.
+
+Un pilote souverain doit provoquer des pannes contrôlées.
+
+### Retirer le premier fournisseur
+
+Le second doit reprendre un composant dans un délai mesuré.
+
+Le rapport doit publier :
+
+- préparation ;
+- transfert ;
+- données ;
+- clés ;
+- indisponibilité ;
+- corrections.
+
+### Repartir du code
+
+Une nouvelle équipe doit reconstruire une version depuis :
+
+- sources ;
+- dépendances ;
+- documentation ;
+- scripts ;
+- secrets gérés par l'Eurosystème.
+
+### Perdre un gatekeeper
+
+Le test doit simuler :
+
+- retrait d'un app store ;
+- secure element inaccessible ;
+- OS non supporté ;
+- fabricant qui abandonne un modèle.
+
+Une carte ou un dispositif relais doit permettre la continuité.
+
+### Perdre un réseau
+
+Le trafic doit basculer d'un lot NSP à l'autre, avec mesure de la latence, des erreurs et des métadonnées exposées.
+
+### Perdre un HSM
+
+Les clés doivent être restaurées ou tournées sans casser les soldes ni les instruments.
+
+### Publier le résultat
+
+La transparence utile ne demande pas de révéler un plan d'attaque exploitable.
+
+Elle peut publier :
+
+- scénario ;
+- délai ;
+- objectif ;
+- résultat ;
+- écart ;
+- correctif.
+
+> **Le pilote devrait mesurer la capacité de l'Europe à réparer et reprendre l'euro numérique après une défaillance.**
+
+## Ce que les six volets ont établi
+
+Cette enquête a commencé par une question comptable.
+
+### 1. Un euro qui change de débiteur
+
+Le [premier volet](/posts/euro-numerique-1-euro-change-de-debiteur/) a montré que la conversion ne change pas le nombre d'euros. Elle déplace la dette d'une banque commerciale vers l'Eurosystème.
+
+### 2. Un plafond qui protège un modèle bancaire
+
+Le [deuxième volet](/posts/euro-numerique-2-699-milliards-anatomie-stress-test/) a reconstruit les 699 milliards du scénario extrême. Le système tient dans le modèle parce que les banques remplacent les dépôts par des réserves, du marché ou du refinancement contre collatéral.
+
+### 3. Une confidentialité fondée sur la séparation
+
+Le [troisième volet](/posts/euro-numerique-3-prive-comme-du-cash/) a suivi les données. La BCE ne devrait pas recevoir directement le nom dans les flux centraux, tandis que les PSP gardent l'identité et que les services communs manipulent des pseudonymes et métadonnées.
+
+### 4. Une interdiction réelle, des pouvoirs distincts
+
+Le [quatrième volet](/posts/euro-numerique-4-argent-programmable-frontiere-juridique/) a séparé monnaie programmable, paiement conditionnel, fraude, sanction et saisie. L'interdiction protège la fongibilité, pas l'absence de tout blocage juridique.
+
+### 5. Une facture encore fragmentée
+
+Le [cinquième volet](/posts/euro-numerique-5-prix-souverainete/) a montré que les chiffres publics couvrent des périmètres différents. Le modèle de rémunération déterminera qui supporte la distribution et si Wero bénéficie d'une infrastructure commune ou subit une duplication.
+
+### 6. Une souveraineté à démontrer par la reprise
+
+Ce dernier volet referme la boucle.
+
+La monnaie peut être publique, confidentielle, non programmable et moins dépendante des schémas internationaux.
+
+Ces propriétés n'assurent pas que la machine soit réparable sans son fournisseur.
+
+## Qui contrôle la machine ?
+
+Le futur euro numérique prendrait la forme d'une infrastructure hybride.
+
+Son cœur monétaire reste public.
+
+Ses services spécialisés sont contractualisés auprès d'entreprises contrôlées dans l'Union.
+
+Sa distribution repose sur les PSP.
+
+Son usage mobile dépend en partie de plateformes et de matériels mondiaux.
+
+Cette construction possède de vrais garde-fous :
+
+- émission publique ;
+- six banques centrales ;
+- deux accords par composant ;
+- exigences de contrôle européen ;
+- standards communs ;
+- droits forts publiés pour l'offline ;
+- intervention du droit de la concurrence et du DMA.
+
+Elle conserve de vrais angles morts :
+
+- commandes effectivement passées ;
+- sous-traitants ;
+- clouds ;
+- garde des clés ;
+- droits de code pour quatre composants ;
+- délais de bascule ;
+- accès au secure element ;
+- attribution du réseau ;
+- répartition du cœur entre les six banques centrales.
+
+La souveraineté opérationnelle repose sur une voie de sortie.
+
+Une infrastructure est souveraine lorsque l'autorité qui en répond peut :
+
+- inspecter ;
+- corriger ;
+- migrer ;
+- révoquer ;
+- basculer ;
+- reconstruire.
+
+La conclusion de cette enquête tient en une phrase :
+
+> **La souveraineté opérationnelle se mesurera à la capacité de l'Eurosystème à reprendre la machine, changer ses opérateurs et continuer à servir les citoyens lorsqu'un fournisseur, un réseau ou un gatekeeper disparaît.**
+
+## Sources et méthode
+
+Ce volet repose principalement sur :
+
+1. [BCE, sélection des fournisseurs](https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews251002.en.html).
+
+2. [BCE, rapport de clôture de la phase de préparation](https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html).
+
+3. [Marché Alias Lookup](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00645762-en-ts.pdf).
+
+4. [Marché Risk and Fraud Management](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00646738-en-ts.pdf).
+
+5. [Marché Application et SDK](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00646903-en-ts.pdf).
+
+6. [Marché Offline](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/change_notice_2025-ojs198-00675829-en-ts.pdf).
+
+7. [Marché SEPI](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs189-00644136-en-ts.pdf).
+
+8. [Marché NSP Connectivity](https://www.ecb.europa.eu/ecb/jobsproc/proc/pdf/2025-ojs166-00566721-en-ts.pdf).
+
+9. [BCE, lettre sur Apple, NFC et secure element](https://www.ecb.europa.eu/pub/pdf/other/ecb.letter240419_Breton~fe4828c691.en.pdf).
+
+10. [Commission européenne, engagements NFC d'Apple](https://ec.europa.eu/commission/presscorner/api/files/document/print/fin/ip_24_3706/IP_24_3706_EN.pdf).
+
+11. [Conseil de l'Union européenne, article 33 et architecture](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf).
+
+12. [BCE, architecture fonctionnelle du pilote](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.dep260512_PSP_Participation_Agreement_Appendix_2.C_Pilot_Business_Architecture.en.pdf).
+
+13. [Publicis Groupe, acquisition de Tremend](https://www.publicisgroupe.com/en/news/press-releases/publicis-groupe-announces-tremend-acquisition-to-expand-european-delivery-of-publicis-sapient-s-digital-business-transformation-capabilities).
+
+14. [Fabrick, annonce relative à l'accord-cadre](https://landing.fabrick.com/hubfs/mkt/press-release/PR_DIGITAL%20EURO_03102025.pdf).
+
+Les totaux de valeurs estimées et de plafonds sont des additions l0g des montants publiés dans les avis. Ils ne constituent pas des dépenses et ne sont pas additionnés au coût global de 1,3 milliard sans réconciliation de périmètre.
+
+## Limites
+
+- Les contrats complets et commandes spécifiques ne sont pas publics.
+- Les noms et fonctions des sous-traitants ne sont généralement pas publiés.
+- Les droits de code sont explicitement visibles dans l'avis offline, pas dans les quatre autres avis.
+- Les clouds, datacentres, clés, RTO, RPO et clauses de sortie ne sont pas publics.
+- Aucun résultat officiel du marché NSP n'a été identifié dans le corpus examiné.
+- La répartition précise des fonctions entre les six banques centrales n'est pas publique.
+- L'accès pratique et tarifaire au secure element reste à démontrer.
