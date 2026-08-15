@@ -1,0 +1,34 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import AnalysisToolCard from '../../../components/AnalysisToolCard.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+---
+
+<EnglishGuidesLayout
+  title="Analysis tools"
+  description="Interactive l0g tools for adjusting assumptions, comparing scenarios and reproducing sourced economic reasoning without trackers or remote calculations."
+  alternateLinks={[
+    { hreflang: 'en', href: new URL('/en/tools/', Astro.site).toString() },
+    { hreflang: 'fr', href: new URL('/outils/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/outils/', Astro.site).toString() },
+  ]}
+>
+  <section class="tools-hero rise" data-pagefind-ignore>
+    <p class="mono-label">$ ls /en/tools</p>
+    <h1>Change an assumption.<span>See the mechanism move.</span></h1>
+    <p>These small tools extend l0g investigations. They expose units, formulas, sources and limits so a scenario cannot be mistaken for a forecast. Every calculation stays in the browser.</p>
+  </section>
+
+  <section class="tools-grid" aria-label="l0g analysis tools" data-pagefind-body>
+    {analysisTools.map((tool) => <AnalysisToolCard tool={tool} lang="en" />)}
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .tools-hero { border-bottom: 1px dashed var(--color-line); padding-bottom: 2rem; }
+  .tools-hero .mono-label { color: var(--color-signal); }
+  .tools-hero h1 { max-width: 50rem; margin-top: 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.04; }
+  .tools-hero h1 span { display: block; color: var(--color-signal); }
+  .tools-hero > p:last-child { max-width: 47rem; margin-top: 1rem; color: var(--color-muted); line-height: 1.65; }
+  .tools-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+</style>

@@ -33,7 +33,7 @@ La facture dépend du système finalement construit : une infrastructure commune
 
 <DigitalEuroCostSimulator lang="fr" />
 
-Le scénario par défaut prend 10 % des paiements par carte de la zone euro en 2025, une commission actuelle moyenne de 0,50 %, une MSC online de 0,30 %, une inter-PSP illustrative de 0,18 % et 10 % de paiements hors ligne sans frais. Ces valeurs ne sont ni décidées ni anticipées. Elles servent à répondre à une question simple : lorsqu’un taux change, qui gagne, qui perd et combien de volume faut-il pour répartir les coûts fixes ?
+Le scénario par défaut prend 10 % des paiements par carte de la zone euro en 2025, une commission carte illustrative de 0,50 %, une MSC online de 0,30 %, un équivalent ad valorem inter-PSP de 0,18 % et 10 % de paiements hors ligne sans frais. Ces valeurs ne sont ni décidées ni anticipées. Elles servent à répondre à une question simple : lorsqu’un taux change, qui gagne, qui perd et combien de volume faut-il pour répartir les coûts fixes ?
 
 La sensibilité constitue le résultat le plus utile. Le coût public par transaction chute lorsque le volume augmente. Les économies des commerçants disparaissent si la MSC se rapproche du tarif carte. Le reste brut de l’acquéreur devient négatif si l’inter-PSP dépasse la commission qu’il encaisse. Le principe *no worse-off* protège les grands commerçants qui négocient déjà mieux que la moyenne.
 
@@ -307,7 +307,9 @@ L’Eurosystème ne facture ni scheme fee ni settlement fee.
 
 Dans une présentation illustrative, la BCE utilise environ **0,18 euro d’inter-PSP** sur une transaction de 100 euros.
 
-Le chiffre est parfois converti à tort en MSC de 0,18 %. Il représente uniquement le transfert entre PSP dans l’exemple de la BCE.
+Sur ce seul panier de 100 euros, 0,18 euro équivaut arithmétiquement à 0,18 %. Cette égalité disparaît dès que le montant du paiement change. Le chiffre ne constitue donc ni une MSC de 0,18 %, ni la preuve que l’inter-PSP finale sera proportionnelle à la valeur.
+
+Le simulateur sépare désormais les deux conventions. Son scénario publié utilise l’équivalent ad valorem afin de reproduire la répartition présentée dans l’article. Le mode fixe applique 0,18 euro à chaque transaction et montre immédiatement l’effet du panier moyen.
 
 L’acquéreur doit encore financer :
 
@@ -319,9 +321,9 @@ L’acquéreur doit encore financer :
 - la certification ;
 - sa marge.
 
-La MSC finale doit être plus élevée que l’inter-PSP si l’acquéreur veut couvrir ses coûts.
+La MSC collectée doit être plus élevée que le revenu inter-PSP total si l’acquéreur veut couvrir ses coûts.
 
-Le simulateur affiche une alerte lorsque l’utilisateur place l’inter-PSP au-dessus de la MSC applicable.
+Le simulateur affiche une alerte lorsque cette allocation rend le reste brut de l’acquéreur négatif, que l’inter-PSP soit saisie comme un taux ou comme un montant fixe.
 
 Cette alerte traduit directement le problème économique.
 
@@ -731,7 +733,7 @@ Ce volet repose principalement sur :
 
 12. EPI, déploiement et audience déclarée de Wero en 2026 : [élargissement de l’actionnariat](https://epicompany.eu/media-insights/epi-welcomes-erste-bank-oesterreich-raiffeisen-bank-international-and-raiffeisen-landesbanken-as-new-shareholders/) et [migration d’iDEAL vers Wero](https://epicompany.eu/media-insights/successful-first-phase-marks-major-next-steps-in-ideal-to-wero-migration/).
 
-Les calculs du simulateur partent des volumes de cartes 2025 et d’hypothèses explicitement modifiables. Ils ne constituent ni une prévision d’adoption, ni une recommandation de commission, ni une estimation officielle du bénéfice social.
+Les calculs du simulateur partent des volumes de cartes 2025 et d’hypothèses explicitement modifiables. Ils ne constituent ni une prévision d’adoption, ni une recommandation de commission, ni une estimation officielle du bénéfice social. L’inter-PSP peut être modélisée en pourcentage de la valeur ou en montant fixe par transaction afin de ne pas confondre ces deux unités.
 
 ## Limites
 

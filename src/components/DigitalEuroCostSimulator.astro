@@ -1,11 +1,33 @@
 ---
+import {
+  DIGITAL_EURO_CARD_BASE,
+  DIGITAL_EURO_COST_DEFAULTS,
+  DIGITAL_EURO_COST_MODEL_VERSION,
+  calculateDigitalEuroCost,
+} from '../lib/digital-euro-cost-model.ts';
+
 interface Props {
   lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+  fullPageHref?: string;
+  articleHref?: string;
 }
 
-const { lang = 'fr' } = Astro.props;
+const {
+  lang = 'fr',
+  mode = 'embed',
+  fullPageHref,
+  articleHref,
+} = Astro.props;
 const isFr = lang === 'fr';
-const id = `digital-euro-cost-${lang}`;
+const isFull = mode === 'full';
+const id = `digital-euro-cost-${lang}-${mode}`;
+const resolvedFullPageHref = fullPageHref ?? (isFr
+  ? '/outils/prix-euro-numerique/'
+  : '/en/tools/digital-euro-cost/');
+const resolvedArticleHref = articleHref ?? (isFr
+  ? '/posts/euro-numerique-5-prix-souverainete/'
+  : '/en/analysis/digital-euro-5-price-of-sovereignty/');
 
 const copy = isFr
   ? {
@@ -23,8 +45,15 @@ const copy = isFr
       adoption: 'Part des paiements carte transférée',
       cardFee: 'Commission carte actuelle',
       digitalFee: 'MSC euro numérique proposée',
-      interPsp: 'Commission inter-PSP',
+      interPsp: 'Inter-PSP',
+      interPspMode: 'Unité de l’inter-PSP',
+      interPspRate: '% du montant',
+      interPspFixed: '€ par transaction',
+      interPspRateHint: 'Le scénario publié normalise 0,18 € sur 100 € en équivalent ad valorem de 0,18 %.',
+      interPspFixedHint: 'Le mode fixe applique le même montant à chaque transaction, quel que soit le panier.',
       offline: 'Part hors ligne sans commission',
+      noWorseOffControl: 'Appliquer la protection individuelle du compromis parlementaire',
+      noWorseOffHint: 'Si elle est active, la MSC ne peut pas dépasser le tarif carte propre au commerçant. Ce point reste soumis au texte final.',
       publicAssumptions: 'Hypothèses de coût public',
       development: 'Développement Eurosystème',
       annualOpex: 'Exploitation annuelle',
@@ -49,11 +78,37 @@ const copy = isFr
       acquirerShort: 'Acquéreur',
       distributorShort: 'Distributeur',
       noWorse: 'Le plafond individuel s’active : la MSC en ligne est ramenée au tarif carte de ce commerçant.',
-      negative: 'Incohérence économique : l’inter-PSP dépasse la MSC applicable. Le reste brut de l’acquéreur devient négatif.',
+      negative: 'Incohérence économique : le revenu inter-PSP dépasse la MSC collectée. Le reste brut de l’acquéreur devient négatif.',
       offlineShift: 'La part hors ligne est gratuite au point de paiement : son coût doit être financé ailleurs dans la chaîne.',
+      fixedFeeWarning: 'Une commission fixe dépend du nombre de paiements, tandis qu’un taux dépend de leur valeur. À panier moyen identique, les deux unités peuvent produire des répartitions très différentes.',
       method: 'Formules et périmètre',
-      methodText: 'Le modèle applique la part d’adoption aux volumes carte 2025. La règle no worse-off retient le minimum entre la MSC proposée et le tarif carte du commerçant. La part hors ligne ne génère ni MSC ni inter-PSP. Les montants privés sont des recettes brutes avant coûts propres, fraude, support et marge.',
-      source: 'Sources : statistiques BCE 2025 et estimations de coût BCE. Les taux de commission sont modifiables et illustratifs.',
+      observed: 'Données observées',
+      assumptions: 'Hypothèses manipulables',
+      equations: 'Calculs',
+      boundaries: 'Ce que le modèle ne mesure pas',
+      observedText: 'La base additionne les deux semestres 2025 de la BCE : 3 530 718 386 134,85 € et 91 708 654 727 paiements carte envoyés dans la zone euro. Le second semestre est encore signalé provisoire dans l’API BCE.',
+      adoptionHelp: 'Adoption : part uniforme du nombre et de la valeur des paiements carte transférée vers l’euro numérique. Le panier moyen reste donc constant.',
+      cardFeeHelp: 'Commission carte : contrefactuel marchand illustratif. Les profils ne sont ni des moyennes officielles ni des tarifs recommandés.',
+      digitalFeeHelp: 'MSC : hypothèse de commission online payée par le commerçant. Son niveau final est inconnu.',
+      interPspHelp: 'Inter-PSP : partage interne entre l’acquéreur et le PSP distributeur. Le modèle distingue un taux sur la valeur et un montant fixe par transaction pour éviter de confondre les unités.',
+      offlineHelp: 'Hors ligne : part du volume et du nombre de transactions qui ne génère aucune recette privée dans le scénario parlementaire.',
+      publicHelp: 'Coûts publics : 1,3 Md€ de développement et 320 M€ par an sont les estimations BCE. La durée d’amortissement reste une convention du scénario.',
+      equationValue: 'Valeur transférée = valeur carte 2025 × adoption.',
+      equationTransactions: 'Transactions transférées = nombre carte 2025 × adoption.',
+      equationMsc: 'MSC applicable = minimum entre MSC proposée et commission carte lorsque la protection individuelle est active.',
+      equationMerchant: 'Coût euro numérique = valeur transférée × part online × MSC applicable. Économie = coût carte contrefactuel − coût euro numérique.',
+      equationPrivate: 'Revenu distributeur = valeur online × taux inter-PSP, ou transactions online × montant fixe. Reste acquéreur = MSC collectée − revenu distributeur.',
+      equationPublic: 'Coût public complet par transaction = (OPEX annuel + développement ÷ amortissement) ÷ transactions transférées.',
+      boundaryText: 'Le modèle n’est ni une prévision d’adoption, ni un coût social total, ni un compte de résultat. Il exclut notamment les coûts propres des banques, PSP et commerçants, la fraude, le support, la fiscalité, l’actualisation, les usages P2P et la valeur de résilience. Il affecte toute la couche publique aux seuls paiements marchands, ce qui constitue une convention volontairement conservatrice.',
+      source: 'Sources primaires : séries PAY de la BCE, estimation de coûts BCE du 30 octobre 2025, positions de négociation du Parlement et du Conseil. Modèle v',
+      openFull: 'Ouvrir l’outil en pleine largeur',
+      backArticle: 'Revenir à l’article source',
+      copyScenario: 'Copier le résumé',
+      downloadCsv: 'Exporter le scénario en CSV',
+      copied: 'Résumé copié',
+      downloaded: 'CSV généré localement',
+      copyUnavailable: 'Copie indisponible dans ce contexte',
+      averageTicket: 'Panier carte moyen implicite',
       live: 'Scénario recalculé',
     }
   : {
@@ -71,8 +126,15 @@ const copy = isFr
       adoption: 'Share of card payments migrated',
       cardFee: 'Current card merchant fee',
       digitalFee: 'Proposed digital euro MSC',
-      interPsp: 'Inter-PSP fee',
+      interPsp: 'Inter-PSP',
+      interPspMode: 'Inter-PSP unit',
+      interPspRate: '% of payment value',
+      interPspFixed: '€ per transaction',
+      interPspRateHint: 'The published scenario normalises €0.18 on €100 as a 0.18% ad valorem equivalent.',
+      interPspFixedHint: 'Fixed mode applies the same amount to each transaction, whatever the basket size.',
       offline: 'Fee-free offline share',
+      noWorseOffControl: 'Apply Parliament’s individual merchant protection',
+      noWorseOffHint: 'When enabled, the MSC cannot exceed this merchant’s own card fee. The final legislation may differ.',
       publicAssumptions: 'Public-cost assumptions',
       development: 'Eurosystem development',
       annualOpex: 'Annual operations',
@@ -97,37 +159,50 @@ const copy = isFr
       acquirerShort: 'Acquirer',
       distributorShort: 'Distributor',
       noWorse: 'The individual cap applies: the online MSC is reduced to this merchant’s existing card fee.',
-      negative: 'Economic inconsistency: the inter-PSP fee exceeds the applicable MSC. The acquirer’s gross remainder is negative.',
+      negative: 'Economic inconsistency: inter-PSP revenue exceeds the MSC collected. The acquirer’s gross remainder is negative.',
       offlineShift: 'The offline share is free at the point of payment, so its cost must be funded elsewhere in the chain.',
+      fixedFeeWarning: 'A fixed fee follows the number of payments, whereas a rate follows their value. At the same average ticket, the two units can produce very different allocations.',
       method: 'Formulas and scope',
-      methodText: 'The model applies adoption to 2025 card volumes. The no worse-off rule uses the lower of the proposed MSC and the merchant’s existing card fee. The offline share generates neither MSC nor inter-PSP revenue. Private amounts are gross revenue before each provider’s own costs, fraud, support and margin.',
-      source: 'Sources: ECB 2025 payment statistics and ECB cost estimates. Fee rates are adjustable illustrations.',
+      observed: 'Observed data',
+      assumptions: 'Adjustable assumptions',
+      equations: 'Calculations',
+      boundaries: 'What the model does not measure',
+      observedText: 'The base adds both ECB 2025 half-years: €3,530,718,386,134.85 and 91,708,654,727 card payments sent in the euro area. The ECB API still marks the second half as provisional.',
+      adoptionHelp: 'Adoption: the same share of card-payment value and count migrates to the digital euro, keeping the implied average ticket constant.',
+      cardFeeHelp: 'Card fee: an illustrative merchant counterfactual. Presets are neither official averages nor recommendations.',
+      digitalFeeHelp: 'MSC: assumed online merchant charge. Its final level is unknown.',
+      interPspHelp: 'Inter-PSP: internal allocation between acquirer and distributing PSP. The model separates a value-based rate from a fixed amount per transaction so the units cannot be confused.',
+      offlineHelp: 'Offline: share of value and count that generates no private fee revenue in Parliament’s scenario.',
+      publicHelp: 'Public costs: €1.3bn development and €320m a year are ECB estimates. The amortisation period remains a scenario convention.',
+      equationValue: 'Migrated value = 2025 card value × adoption.',
+      equationTransactions: 'Migrated transactions = 2025 card count × adoption.',
+      equationMsc: 'Applicable MSC = the lower of proposed MSC and card fee when individual protection is enabled.',
+      equationMerchant: 'Digital-euro charge = migrated value × online share × applicable MSC. Savings = counterfactual card cost − digital-euro charge.',
+      equationPrivate: 'Distributor revenue = online value × inter-PSP rate, or online transactions × fixed amount. Acquirer remainder = collected MSC − distributor revenue.',
+      equationPublic: 'Full public cost per transaction = (annual OPEX + development ÷ amortisation) ÷ migrated transactions.',
+      boundaryText: 'This is neither an adoption forecast, a total social-cost estimate nor a profit-and-loss account. It excludes bank, PSP and merchant implementation costs, fraud, support, tax, discounting, P2P uses and resilience value. It allocates the entire public layer to merchant payments, a deliberately conservative convention.',
+      source: 'Primary sources: ECB PAY series, ECB cost estimate of 30 October 2025, and Parliament and Council negotiating positions. Model v',
+      openFull: 'Open the full-width tool',
+      backArticle: 'Return to the source article',
+      copyScenario: 'Copy scenario summary',
+      downloadCsv: 'Export scenario as CSV',
+      copied: 'Summary copied',
+      downloaded: 'CSV generated locally',
+      copyUnavailable: 'Copy unavailable in this context',
+      averageTicket: 'Implied average card ticket',
       live: 'Scenario recalculated',
     };
 
-const baseline = {
-  cardValue: 3_530_718_386_134.8506,
-  cardTransactions: 91_708_654_727,
-  adoption: 10,
-  cardFee: 0.5,
-  digitalFee: 0.3,
-  interPsp: 0.18,
-  offline: 10,
-  development: 1.3e9,
-  annualOpex: 320e6,
-  amortisation: 10,
-};
-
-const volume = baseline.cardValue * (baseline.adoption / 100);
-const transactionCount = baseline.cardTransactions * (baseline.adoption / 100);
-const onlineShare = 1 - baseline.offline / 100;
-const applicableMsc = Math.min(baseline.digitalFee, baseline.cardFee);
-const currentCost = volume * baseline.cardFee / 100;
-const digitalCost = volume * onlineShare * applicableMsc / 100;
-const distributorRevenue = volume * onlineShare * baseline.interPsp / 100;
-const acquirerRemainder = digitalCost - distributorRevenue;
-const opexPerTransaction = baseline.annualOpex / transactionCount * 100;
-const fullPerTransaction = (baseline.annualOpex + baseline.development / baseline.amortisation) / transactionCount * 100;
+const baseline = DIGITAL_EURO_COST_DEFAULTS;
+const initial = calculateDigitalEuroCost(baseline);
+const volume = initial.volume;
+const transactionCount = initial.transactions;
+const currentCost = initial.currentCost;
+const digitalCost = initial.digitalCost;
+const distributorRevenue = initial.distributorRevenue;
+const acquirerRemainder = initial.acquirerRemainder;
+const opexPerTransaction = initial.opexPerTransaction;
+const fullPerTransaction = initial.fullPerTransaction;
 
 const decimal = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
 const money = (value: number) => {
@@ -141,12 +216,16 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
 ---
 
 <section
-  class="de-sim"
+  class:list={['de-sim', isFull && 'de-sim--full']}
   id={id}
   data-digital-euro-cost-simulator
   data-lang={lang}
-  data-card-value={baseline.cardValue}
-  data-card-transactions={baseline.cardTransactions}
+  data-mode={mode}
+  data-card-value={DIGITAL_EURO_CARD_BASE.value}
+  data-card-transactions={DIGITAL_EURO_CARD_BASE.transactions}
+  data-copy-copied={copy.copied}
+  data-download-ready={copy.downloaded}
+  data-copy-unavailable={copy.copyUnavailable}
   data-pagefind-ignore
   aria-labelledby={`${id}-title`}
 >
@@ -198,10 +277,31 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
         <i><span>0 %</span><span>1 %</span></i>
       </label>
 
+      <label class="de-sim__toggle" for={`${id}-no-worse-off`}>
+        <input id={`${id}-no-worse-off`} data-input="noWorseOff" type="checkbox" checked />
+        <span><b>{copy.noWorseOffControl}</b><small>{copy.noWorseOffHint}</small></span>
+      </label>
+
+      <fieldset class="de-sim__unit" data-inter-psp-unit>
+        <legend>{copy.interPspMode}</legend>
+        <div>
+          <label for={`${id}-inter-rate`}>
+            <input id={`${id}-inter-rate`} name={`${id}-inter-mode`} data-inter-mode="rate" type="radio" value="rate" checked />
+            <span>{copy.interPspRate}</span>
+          </label>
+          <label for={`${id}-inter-fixed`}>
+            <input id={`${id}-inter-fixed`} name={`${id}-inter-mode`} data-inter-mode="fixed" type="radio" value="fixed" />
+            <span>{copy.interPspFixed}</span>
+          </label>
+        </div>
+        <small data-inter-mode-hint="rate">{copy.interPspRateHint}</small>
+        <small data-inter-mode-hint="fixed" hidden>{copy.interPspFixedHint}</small>
+      </fieldset>
+
       <label class="de-sim__control" for={`${id}-inter-psp`}>
         <span><b>{copy.interPsp}</b><output for={`${id}-inter-psp`} data-input-output="interPsp">{isFr ? '0,18 %' : '0.18%'}</output></span>
         <input id={`${id}-inter-psp`} data-input="interPsp" type="range" min="0" max="0.6" step="0.01" value="0.18" />
-        <i><span>0 %</span><span>{isFr ? '0,60 %' : '0.60%'}</span></i>
+        <i><span data-inter-min>0 %</span><span data-inter-max>{isFr ? '0,60 %' : '0.60%'}</span></i>
       </label>
 
       <label class="de-sim__control" for={`${id}-offline`}>
@@ -243,6 +343,7 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
       <div class="de-sim__flow">
         <div><span>{copy.annualFlow}</span><strong data-result="volume">{moneyBillions(volume)}</strong></div>
         <div><span>{copy.transactions}</span><strong data-result="transactions">{countBillions(transactionCount)}</strong></div>
+        <div><span>{copy.averageTicket}</span><strong data-result="averageTicket">{isFr ? `${decimal.format(initial.averageCardTicket)} €` : `€${decimal.format(initial.averageCardTicket)}`}</strong></div>
       </div>
 
       <article class="de-sim__panel de-sim__panel--merchant">
@@ -284,6 +385,7 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
       <div class="de-sim__warnings">
         <p data-warning="noWorse" hidden>{copy.noWorse}</p>
         <p data-warning="negative" hidden>{copy.negative}</p>
+        <p data-warning="fixed" hidden>{copy.fixedFeeWarning}</p>
         <p data-warning="offline">{copy.offlineShift}</p>
       </div>
 
@@ -291,25 +393,80 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
     </section>
   </div>
 
-  <details class="de-sim__method">
+  <details class="de-sim__method" open={isFull}>
     <summary>{copy.method}</summary>
-    <p>{copy.methodText}</p>
-    <small>{copy.source}</small>
+    <div class="de-sim__method-body">
+      <section>
+        <h4>{copy.observed}</h4>
+        <p>{copy.observedText}</p>
+      </section>
+      <section>
+        <h4>{copy.assumptions}</h4>
+        <dl>
+          <div><dt>{copy.adoption}</dt><dd>{copy.adoptionHelp}</dd></div>
+          <div><dt>{copy.cardFee}</dt><dd>{copy.cardFeeHelp}</dd></div>
+          <div><dt>{copy.digitalFee}</dt><dd>{copy.digitalFeeHelp}</dd></div>
+          <div><dt>{copy.interPsp}</dt><dd>{copy.interPspHelp}</dd></div>
+          <div><dt>{copy.offline}</dt><dd>{copy.offlineHelp}</dd></div>
+          <div><dt>{copy.publicAssumptions}</dt><dd>{copy.publicHelp}</dd></div>
+        </dl>
+      </section>
+      <section>
+        <h4>{copy.equations}</h4>
+        <ol>
+          <li>{copy.equationValue}</li>
+          <li>{copy.equationTransactions}</li>
+          <li>{copy.equationMsc}</li>
+          <li>{copy.equationMerchant}</li>
+          <li>{copy.equationPrivate}</li>
+          <li>{copy.equationPublic}</li>
+        </ol>
+      </section>
+      <section>
+        <h4>{copy.boundaries}</h4>
+        <p>{copy.boundaryText}</p>
+      </section>
+      <small>{copy.source}{DIGITAL_EURO_COST_MODEL_VERSION}.</small>
+    </div>
   </details>
+
+  <footer class="de-sim__actions">
+    {isFull ? (
+      <>
+        <button type="button" data-copy-scenario>{copy.copyScenario}</button>
+        <button type="button" data-download-csv>{copy.downloadCsv}</button>
+        <a href={resolvedArticleHref}>{copy.backArticle}</a>
+      </>
+    ) : (
+      <a href={resolvedFullPageHref} data-full-page-link>{copy.openFull}<span aria-hidden="true"> →</span></a>
+    )}
+    <span role="status" aria-live="polite" data-action-status></span>
+  </footer>
 </section>
 
 <script>
+  import {
+    DIGITAL_EURO_COST_DEFAULTS,
+    DIGITAL_EURO_COST_MODEL_VERSION,
+    DIGITAL_EURO_COST_QUERY_KEYS,
+    calculateDigitalEuroCost,
+    normalizeDigitalEuroCostInputs,
+    type DigitalEuroCostInputs,
+    type DigitalEuroCostResults,
+  } from '../lib/digital-euro-cost-model.ts';
+
   const initialiseDigitalEuroCostSimulators = () => {
     document.querySelectorAll<HTMLElement>('[data-digital-euro-cost-simulator]:not([data-ready])').forEach((root) => {
       root.dataset.ready = 'true';
 
       const lang = root.dataset.lang === 'fr' ? 'fr' : 'en';
       const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
-      const cardValue = Number(root.dataset.cardValue) || 3_530_718_386_134.8506;
-      const cardTransactions = Number(root.dataset.cardTransactions) || 91_708_654_727;
       const controls = Array.from(root.querySelectorAll<HTMLInputElement>('[data-input]'));
       const form = root.querySelector<HTMLFormElement>('[data-controls]');
       const liveSummary = root.querySelector<HTMLElement>('[data-live-summary]');
+      const fullMode = root.dataset.mode === 'full';
+      let currentInputs: DigitalEuroCostInputs = { ...DIGITAL_EURO_COST_DEFAULTS };
+      let currentResults: DigitalEuroCostResults = calculateDigitalEuroCost(currentInputs);
 
       const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
       const integer = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
@@ -333,76 +490,156 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
       const countBillions = (value: number) => `${number.format(value / 1e9)} ${lang === 'fr' ? 'Md' : 'bn'}`;
       const cents = (value: number) => `${number.format(value)} ${lang === 'fr' ? 'c€' : '¢'}`;
       const percent = (value: number, digits = 2) => `${new Intl.NumberFormat(locale, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value)} %`;
+      const euros = (value: number) => lang === 'fr' ? `${number.format(value)} €` : `€${number.format(value)}`;
 
-      const render = () => {
-        const adoption = read('adoption', 10);
-        const cardFee = read('cardFee', 0.5);
-        const digitalFee = read('digitalFee', 0.3);
-        const interPsp = read('interPsp', 0.18);
-        const offline = read('offline', 10);
-        const development = read('development', 1.3) * 1e9;
-        const annualOpex = read('annualOpex', 320) * 1e6;
-        const amortisation = read('amortisation', 10);
+      const mode = () => root.querySelector<HTMLInputElement>('[data-inter-mode]:checked')?.value === 'fixed' ? 'fixed' : 'rate';
+      const noWorseOff = () => input('noWorseOff')?.checked ?? true;
+      const readInputs = () => normalizeDigitalEuroCostInputs({
+        adoption: read('adoption', DIGITAL_EURO_COST_DEFAULTS.adoption),
+        cardFee: read('cardFee', DIGITAL_EURO_COST_DEFAULTS.cardFee),
+        digitalFee: read('digitalFee', DIGITAL_EURO_COST_DEFAULTS.digitalFee),
+        interPsp: read('interPsp', DIGITAL_EURO_COST_DEFAULTS.interPsp),
+        interPspMode: mode(),
+        offline: read('offline', DIGITAL_EURO_COST_DEFAULTS.offline),
+        development: read('development', DIGITAL_EURO_COST_DEFAULTS.development / 1e9) * 1e9,
+        annualOpex: read('annualOpex', DIGITAL_EURO_COST_DEFAULTS.annualOpex / 1e6) * 1e6,
+        amortisation: read('amortisation', DIGITAL_EURO_COST_DEFAULTS.amortisation),
+        noWorseOff: noWorseOff(),
+      });
 
-        const volume = cardValue * adoption / 100;
-        const transactions = cardTransactions * adoption / 100;
-        const onlineShare = 1 - offline / 100;
-        const applicableMsc = Math.min(digitalFee, cardFee);
-        const currentCost = volume * cardFee / 100;
-        const digitalCost = volume * onlineShare * applicableMsc / 100;
-        const distributor = volume * onlineShare * interPsp / 100;
-        const acquirer = digitalCost - distributor;
-        const savings = currentCost - digitalCost;
-        const opexPerTransaction = annualOpex / transactions * 100;
-        const fullPerTransaction = (annualOpex + development / amortisation) / transactions * 100;
+      const scenarioParams = (inputs: DigitalEuroCostInputs) => {
+        const params = new URLSearchParams();
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.adoption, String(inputs.adoption));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.cardFee, String(inputs.cardFee));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.digitalFee, String(inputs.digitalFee));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.interPsp, String(inputs.interPsp));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.interPspMode, inputs.interPspMode);
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.offline, String(inputs.offline));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.development, String(inputs.development / 1e9));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.annualOpex, String(inputs.annualOpex / 1e6));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.amortisation, String(inputs.amortisation));
+        params.set(DIGITAL_EURO_COST_QUERY_KEYS.noWorseOff, inputs.noWorseOff ? '1' : '0');
+        return params;
+      };
 
-        write(output('adoption'), `${integer.format(adoption)} %`);
-        write(output('cardFee'), percent(cardFee));
-        write(output('digitalFee'), percent(digitalFee));
-        write(output('interPsp'), percent(interPsp));
-        write(output('offline'), `${integer.format(offline)} %`);
-        write(output('development'), lang === 'fr' ? `${number.format(development / 1e9)} Md€` : `€${number.format(development / 1e9)}bn`);
-        write(output('annualOpex'), lang === 'fr' ? `${integer.format(annualOpex / 1e6)} M€` : `€${integer.format(annualOpex / 1e6)}m`);
-        write(output('amortisation'), `${integer.format(amortisation)} ${lang === 'fr' ? 'ans' : 'years'}`);
+      const applyInputs = (candidate: Partial<DigitalEuroCostInputs>) => {
+        const values = normalizeDigitalEuroCostInputs(candidate);
+        const set = (name: string, value: number) => {
+          const control = input(name);
+          if (control) control.value = String(value);
+        };
+        set('adoption', values.adoption);
+        set('cardFee', values.cardFee);
+        set('digitalFee', values.digitalFee);
+        set('interPsp', values.interPsp);
+        set('offline', values.offline);
+        set('development', values.development / 1e9);
+        set('annualOpex', values.annualOpex / 1e6);
+        set('amortisation', values.amortisation);
+        const nwo = input('noWorseOff');
+        if (nwo) nwo.checked = values.noWorseOff;
+        root.querySelectorAll<HTMLInputElement>('[data-inter-mode]').forEach((radio) => {
+          radio.checked = radio.value === values.interPspMode;
+        });
+      };
 
-        write(result('volume'), moneyBillions(volume));
-        write(result('transactions'), countBillions(transactions));
-        write(result('currentCost'), money(currentCost));
-        write(result('digitalCost'), money(digitalCost));
-        write(result('savings'), money(savings));
-        write(result('totalMsc'), money(digitalCost));
-        write(result('distributor'), money(distributor));
-        write(result('acquirer'), money(acquirer));
-        write(result('opexPerTransaction'), cents(opexPerTransaction));
-        write(result('fullPerTransaction'), cents(fullPerTransaction));
+      const readQuery = () => {
+        const params = new URLSearchParams(window.location.search);
+        const knownKeys = new Set<string>(Object.values(DIGITAL_EURO_COST_QUERY_KEYS));
+        if (![...params.keys()].some((key) => knownKeys.has(key))) return;
+        const numeric = (key: string) => {
+          const value = Number(params.get(key));
+          return Number.isFinite(value) ? value : undefined;
+        };
+        applyInputs({
+          adoption: numeric(DIGITAL_EURO_COST_QUERY_KEYS.adoption),
+          cardFee: numeric(DIGITAL_EURO_COST_QUERY_KEYS.cardFee),
+          digitalFee: numeric(DIGITAL_EURO_COST_QUERY_KEYS.digitalFee),
+          interPsp: numeric(DIGITAL_EURO_COST_QUERY_KEYS.interPsp),
+          interPspMode: params.get(DIGITAL_EURO_COST_QUERY_KEYS.interPspMode) === 'fixed' ? 'fixed' : 'rate',
+          offline: numeric(DIGITAL_EURO_COST_QUERY_KEYS.offline),
+          development: numeric(DIGITAL_EURO_COST_QUERY_KEYS.development) == null ? undefined : Number(params.get(DIGITAL_EURO_COST_QUERY_KEYS.development)) * 1e9,
+          annualOpex: numeric(DIGITAL_EURO_COST_QUERY_KEYS.annualOpex) == null ? undefined : Number(params.get(DIGITAL_EURO_COST_QUERY_KEYS.annualOpex)) * 1e6,
+          amortisation: numeric(DIGITAL_EURO_COST_QUERY_KEYS.amortisation),
+          noWorseOff: params.get(DIGITAL_EURO_COST_QUERY_KEYS.noWorseOff) !== '0',
+        });
+      };
+
+      const render = (syncUrl = true) => {
+        const inputs = readInputs();
+        const results = calculateDigitalEuroCost(inputs);
+        currentInputs = inputs;
+        currentResults = results;
+
+        write(output('adoption'), `${integer.format(inputs.adoption)} %`);
+        write(output('cardFee'), percent(inputs.cardFee));
+        write(output('digitalFee'), percent(inputs.digitalFee));
+        write(output('interPsp'), inputs.interPspMode === 'fixed' ? euros(inputs.interPsp) : percent(inputs.interPsp));
+        write(output('offline'), `${integer.format(inputs.offline)} %`);
+        write(output('development'), lang === 'fr' ? `${number.format(inputs.development / 1e9)} Md€` : `€${number.format(inputs.development / 1e9)}bn`);
+        write(output('annualOpex'), lang === 'fr' ? `${integer.format(inputs.annualOpex / 1e6)} M€` : `€${integer.format(inputs.annualOpex / 1e6)}m`);
+        write(output('amortisation'), `${integer.format(inputs.amortisation)} ${lang === 'fr' ? 'ans' : 'years'}`);
+
+        write(result('volume'), moneyBillions(results.volume));
+        write(result('transactions'), countBillions(results.transactions));
+        write(result('averageTicket'), euros(results.averageCardTicket));
+        write(result('currentCost'), money(results.currentCost));
+        write(result('digitalCost'), money(results.digitalCost));
+        write(result('savings'), money(results.savings));
+        write(result('totalMsc'), money(results.digitalCost));
+        write(result('distributor'), money(results.distributorRevenue));
+        write(result('acquirer'), money(results.acquirerRemainder));
+        write(result('opexPerTransaction'), cents(results.opexPerTransaction));
+        write(result('fullPerTransaction'), cents(results.fullPerTransaction));
 
         const digitalBar = root.querySelector<HTMLElement>('[data-bar="digital"]');
-        digitalBar?.style.setProperty('--value', `${currentCost > 0 ? Math.min(digitalCost / currentCost * 100, 100) : 0}%`);
+        digitalBar?.style.setProperty('--value', `${results.currentCost > 0 ? Math.min(results.digitalCost / results.currentCost * 100, 100) : 0}%`);
 
-        const totalAllocation = Math.max(digitalCost, distributor, 1);
-        root.querySelector<HTMLElement>('[data-allocation="acquirer"]')?.style.setProperty('--share', `${Math.max(acquirer, 0) / totalAllocation * 100}%`);
-        root.querySelector<HTMLElement>('[data-allocation="distributor"]')?.style.setProperty('--share', `${Math.min(distributor / totalAllocation * 100, 100)}%`);
+        const totalAllocation = Math.max(results.digitalCost, results.distributorRevenue, 1);
+        root.querySelector<HTMLElement>('[data-allocation="acquirer"]')?.style.setProperty('--share', `${Math.max(results.acquirerRemainder, 0) / totalAllocation * 100}%`);
+        root.querySelector<HTMLElement>('[data-allocation="distributor"]')?.style.setProperty('--share', `${Math.min(results.distributorRevenue / totalAllocation * 100, 100)}%`);
 
         const noWorse = root.querySelector<HTMLElement>('[data-warning="noWorse"]');
         const negative = root.querySelector<HTMLElement>('[data-warning="negative"]');
         const offlineWarning = root.querySelector<HTMLElement>('[data-warning="offline"]');
-        if (noWorse) noWorse.hidden = digitalFee <= cardFee;
-        if (negative) negative.hidden = interPsp <= applicableMsc;
-        if (offlineWarning) offlineWarning.hidden = offline === 0;
-        root.dataset.economicState = interPsp > applicableMsc ? 'negative-acquirer' : 'balanced';
+        const fixedWarning = root.querySelector<HTMLElement>('[data-warning="fixed"]');
+        if (noWorse) noWorse.hidden = !results.capApplied;
+        if (negative) negative.hidden = !results.negativeAcquirer;
+        if (offlineWarning) offlineWarning.hidden = inputs.offline === 0;
+        if (fixedWarning) fixedWarning.hidden = inputs.interPspMode !== 'fixed';
+        root.dataset.economicState = results.negativeAcquirer ? 'negative-acquirer' : 'balanced';
+
+        root.querySelectorAll<HTMLElement>('[data-inter-mode-hint]').forEach((hint) => {
+          hint.hidden = hint.dataset.interModeHint !== inputs.interPspMode;
+        });
+        write(root.querySelector('[data-inter-min]'), inputs.interPspMode === 'fixed' ? euros(0) : '0 %');
+        write(root.querySelector('[data-inter-max]'), inputs.interPspMode === 'fixed' ? euros(0.6) : percent(0.6));
 
         root.querySelectorAll<HTMLButtonElement>('[data-preset-fee]').forEach((button) => {
-          button.setAttribute('aria-pressed', String(Math.abs(Number(button.dataset.presetFee) - cardFee) < 0.001));
+          button.setAttribute('aria-pressed', String(Math.abs(Number(button.dataset.presetFee) - inputs.cardFee) < 0.001));
         });
 
         if (liveSummary) {
           liveSummary.textContent = lang === 'fr'
-            ? `Scénario recalculé : ${money(savings)} d’économies commerçants et ${cents(fullPerTransaction)} de coût public complet par transaction.`
-            : `Scenario recalculated: ${money(savings)} in merchant savings and ${cents(fullPerTransaction)} in full public cost per transaction.`;
+            ? `Scénario recalculé : ${money(results.savings)} d’économies commerçants et ${cents(results.fullPerTransaction)} de coût public complet par transaction.`
+            : `Scenario recalculated: ${money(results.savings)} in merchant savings and ${cents(results.fullPerTransaction)} in full public cost per transaction.`;
+        }
+
+        const params = scenarioParams(inputs);
+        if (fullMode && syncUrl) {
+          const next = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+          window.history.replaceState(null, '', next);
+        }
+        const fullPageLink = root.querySelector<HTMLAnchorElement>('[data-full-page-link]');
+        if (fullPageLink) {
+          const target = new URL(fullPageLink.getAttribute('href') || '/', window.location.origin);
+          target.search = params.toString();
+          fullPageLink.href = `${target.pathname}${target.search}`;
         }
       };
 
-      controls.forEach((control) => control.addEventListener('input', render));
+      controls.forEach((control) => control.addEventListener('input', () => render()));
+      root.querySelectorAll<HTMLInputElement>('[data-inter-mode]').forEach((control) => control.addEventListener('change', () => render()));
       root.querySelectorAll<HTMLButtonElement>('[data-preset-fee]').forEach((button) => {
         button.addEventListener('click', () => {
           const cardFee = input('cardFee');
@@ -410,8 +647,63 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
           render();
         });
       });
-      form?.addEventListener('reset', () => window.setTimeout(render, 0));
-      render();
+      form?.addEventListener('reset', () => window.setTimeout(() => render(), 0));
+
+      root.querySelector<HTMLButtonElement>('[data-copy-scenario]')?.addEventListener('click', async () => {
+        const status = root.querySelector<HTMLElement>('[data-action-status]');
+        if (!window.isSecureContext || !navigator.clipboard?.writeText) {
+          write(status, root.dataset.copyUnavailable || 'Copy unavailable');
+          return;
+        }
+        const unit = currentInputs.interPspMode === 'fixed' ? euros(currentInputs.interPsp) : percent(currentInputs.interPsp);
+        const summary = lang === 'fr'
+          ? `Euro numérique : adoption ${integer.format(currentInputs.adoption)} %, commission carte ${percent(currentInputs.cardFee)}, MSC ${percent(currentInputs.digitalFee)}, inter-PSP ${unit}, hors ligne ${integer.format(currentInputs.offline)} %. Résultats : ${money(currentResults.savings)} d’économies commerçants, ${money(currentResults.distributorRevenue)} pour le PSP distributeur, ${money(currentResults.acquirerRemainder)} de reste acquéreur et ${cents(currentResults.fullPerTransaction)} de coût public complet par transaction. ${window.location.href}`
+          : `Digital euro: ${integer.format(currentInputs.adoption)}% adoption, ${percent(currentInputs.cardFee)} card fee, ${percent(currentInputs.digitalFee)} MSC, ${unit} inter-PSP, ${integer.format(currentInputs.offline)}% offline. Results: ${money(currentResults.savings)} merchant savings, ${money(currentResults.distributorRevenue)} distributor revenue, ${money(currentResults.acquirerRemainder)} acquirer remainder and ${cents(currentResults.fullPerTransaction)} full public cost per transaction. ${window.location.href}`;
+        try {
+          await navigator.clipboard.writeText(summary);
+          write(status, root.dataset.copyCopied || 'Copied');
+        } catch {
+          write(status, root.dataset.copyUnavailable || 'Copy unavailable');
+        }
+      });
+
+      root.querySelector<HTMLButtonElement>('[data-download-csv]')?.addEventListener('click', () => {
+        const status = root.querySelector<HTMLElement>('[data-action-status]');
+        const rows: Array<[string, string | number]> = [
+          ['model_version', DIGITAL_EURO_COST_MODEL_VERSION],
+          ['adoption_percent', currentInputs.adoption],
+          ['card_fee_percent', currentInputs.cardFee],
+          ['digital_euro_msc_percent', currentInputs.digitalFee],
+          ['inter_psp_mode', currentInputs.interPspMode],
+          ['inter_psp_value', currentInputs.interPsp],
+          ['offline_percent', currentInputs.offline],
+          ['development_eur', currentInputs.development],
+          ['annual_opex_eur', currentInputs.annualOpex],
+          ['amortisation_years', currentInputs.amortisation],
+          ['no_worse_off', String(currentInputs.noWorseOff)],
+          ['migrated_value_eur', currentResults.volume],
+          ['migrated_transactions', currentResults.transactions],
+          ['merchant_savings_eur', currentResults.savings],
+          ['distributor_revenue_eur', currentResults.distributorRevenue],
+          ['acquirer_remainder_eur', currentResults.acquirerRemainder],
+          ['full_public_cost_cents_per_transaction', currentResults.fullPerTransaction],
+        ];
+        const escapeCsv = (value: string | number) => `"${String(value).replace(/"/g, '""')}"`;
+        const csv = `metric,value\r\n${rows.map(([key, value]) => `${escapeCsv(key)},${escapeCsv(value)}`).join('\r\n')}\r\n`;
+        const href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = lang === 'fr' ? 'scenario-prix-euro-numerique.csv' : 'digital-euro-cost-scenario.csv';
+        link.hidden = true;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(href), 1_000);
+        write(status, root.dataset.downloadReady || 'CSV generated locally');
+      });
+
+      if (fullMode) readQuery();
+      render(!fullMode);
     });
   };
 
@@ -443,6 +735,9 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
     font-family: var(--font-read);
     line-height: 1.45;
   }
+
+  .de-sim--full { margin-top: 1.25rem; }
+  .de-sim--full .de-sim__layout { grid-template-columns: minmax(19rem, 0.78fr) minmax(0, 1.22fr); }
 
   .de-sim::before {
     position: absolute;
@@ -481,6 +776,7 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
     font-size: clamp(1.75rem, 4.8vw, 2.65rem);
     line-height: 1.02;
     letter-spacing: -0.035em;
+    text-wrap: balance;
   }
 
   .de-sim__intro {
@@ -565,6 +861,68 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
     border: 0;
     padding: 0;
   }
+
+  .de-sim__unit {
+    min-width: 0;
+    margin: 0.65rem 0 0;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    padding: 0.7rem;
+    background: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  .de-sim__unit legend {
+    padding: 0 0.3rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .de-sim__unit > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem; }
+  .de-sim__unit label {
+    display: flex;
+    min-width: 0;
+    min-height: 2.5rem;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    padding: 0.5rem;
+    color: var(--color-paper);
+    background: color-mix(in srgb, var(--color-surface-2) 74%, transparent);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    line-height: 1.3;
+    cursor: pointer;
+  }
+  .de-sim__unit input { flex: 0 0 auto; accent-color: var(--color-signal); }
+  .de-sim__unit small {
+    display: block;
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-size: 0.58rem;
+    line-height: 1.5;
+  }
+
+  .de-sim__toggle {
+    display: flex;
+    min-width: 0;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-top: 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 28%, var(--color-line));
+    border-radius: 10px;
+    padding: 0.72rem;
+    background: color-mix(in srgb, var(--color-signal) 5%, transparent);
+    cursor: pointer;
+  }
+  .de-sim__toggle input { flex: 0 0 auto; margin-top: 0.18rem; accent-color: var(--color-signal); }
+  .de-sim__toggle span { display: grid; min-width: 0; gap: 0.25rem; }
+  .de-sim__toggle b { color: var(--color-paper); font-size: 0.66rem; line-height: 1.35; }
+  .de-sim__toggle small { color: var(--color-muted); font-size: 0.57rem; line-height: 1.48; }
 
   .de-sim__presets legend {
     margin-bottom: 0.45rem;
@@ -712,7 +1070,7 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
 
   .de-sim__flow {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
     gap: 0.6rem;
     margin-bottom: 0.65rem;
   }
@@ -834,25 +1192,91 @@ const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢
 
   .de-sim__method { border-top: 1px solid var(--color-line); background: color-mix(in srgb, var(--color-ink) 32%, transparent); }
   .de-sim__method summary { padding-inline: 1.35rem; color: var(--color-signal); }
-  .de-sim__method p { margin: 0; padding: 0 1.35rem; color: var(--color-paper); font-size: 0.7rem; line-height: 1.62; }
-  .de-sim__method small { display: block; padding: 0.7rem 1.35rem 1rem; color: var(--color-muted); font-size: 0.58rem; line-height: 1.5; }
+  .de-sim__method-body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    padding: 0 1.35rem 1.2rem;
+  }
+  .de-sim__method-body section {
+    min-width: 0;
+    border: 1px solid var(--color-line);
+    border-radius: 9px;
+    padding: 0.85rem;
+    background: color-mix(in srgb, var(--color-surface) 72%, transparent);
+  }
+  .de-sim__method-body h4 {
+    margin: 0 0 0.55rem;
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .de-sim__method-body p,
+  .de-sim__method-body dd,
+  .de-sim__method-body li {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: 0.66rem;
+    line-height: 1.62;
+  }
+  .de-sim__method-body dl { display: grid; gap: 0.55rem; margin: 0; }
+  .de-sim__method-body dt { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.58rem; font-weight: 750; }
+  .de-sim__method-body dd { margin-top: 0.12rem; }
+  .de-sim__method-body ol { display: grid; gap: 0.45rem; margin: 0; padding-left: 1.2rem; }
+  .de-sim__method-body li::marker { color: var(--color-signal); font-family: var(--font-mono); }
+  .de-sim__method-body > small { grid-column: 1 / -1; display: block; color: var(--color-muted); font-size: 0.58rem; line-height: 1.5; }
+
+  .de-sim__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+    border-top: 1px solid var(--color-line);
+    padding: 0.8rem 1.35rem;
+    background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+  }
+  .de-sim__actions a,
+  .de-sim__actions button {
+    min-height: 2.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 44%, var(--color-line));
+    border-radius: 999px;
+    padding: 0.58rem 0.8rem;
+    color: var(--color-signal);
+    background: color-mix(in srgb, var(--color-signal) 7%, var(--color-surface));
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 750;
+    line-height: 1.35;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .de-sim__actions a:hover,
+  .de-sim__actions button:hover { border-color: var(--color-signal); color: var(--color-bright); }
+  .de-sim__actions [data-action-status] { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.58rem; }
   .de-sim [hidden] { display: none !important; }
 
   @media (max-width: 760px) {
     .de-sim__header { display: grid; padding: 1.15rem 1rem 0.9rem; }
     .de-sim__badge { justify-self: start; }
     .de-sim__source-line { display: grid; padding-inline: 1rem; }
-    .de-sim__layout { grid-template-columns: minmax(0, 1fr); }
+    .de-sim__layout,
+    .de-sim--full .de-sim__layout { grid-template-columns: minmax(0, 1fr); }
     .de-sim__controls,
     .de-sim__results { padding: 1rem; }
-    .de-sim__method summary,
-    .de-sim__method p,
-    .de-sim__method small { padding-inline: 1rem; }
+    .de-sim__method summary { padding-inline: 1rem; }
+    .de-sim__method-body { grid-template-columns: minmax(0, 1fr); padding-inline: 1rem; }
+    .de-sim__actions { padding-inline: 1rem; }
   }
 
   @media (max-width: 410px) {
+    .de-sim__header h3 { font-size: 1.6rem; }
     .de-sim__flow { grid-template-columns: minmax(0, 1fr); }
     .de-sim__presets button { flex: 1 1 7rem; }
+    .de-sim__unit > div { grid-template-columns: minmax(0, 1fr); }
+    .de-sim__actions a,
+    .de-sim__actions button { width: 100%; text-align: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {

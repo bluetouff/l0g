@@ -1,0 +1,58 @@
+---
+import type { AnalysisTool } from '../config/analysis-tools.ts';
+
+interface Props {
+  tool: AnalysisTool;
+  lang?: 'fr' | 'en';
+}
+
+const { tool, lang = 'fr' } = Astro.props;
+const copy = tool[lang];
+const isFr = lang === 'fr';
+---
+
+<article class="analysis-tool-card">
+  <header>
+    <span>{copy.eyebrow}</span>
+    <b>v{tool.version}</b>
+  </header>
+  <h2>{copy.title}</h2>
+  <p class="analysis-tool-question">{copy.question}</p>
+  <p>{copy.description}</p>
+  <footer>
+    <a href={copy.href}>{isFr ? 'Ouvrir l’outil' : 'Open tool'} <span aria-hidden="true">→</span></a>
+    <a href={copy.articleHref}>{copy.articleLabel}</a>
+  </footer>
+</article>
+
+<style>
+  .analysis-tool-card {
+    display: grid;
+    min-width: 0;
+    gap: 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 30%, var(--color-line));
+    border-radius: 16px 4px 16px 16px;
+    padding: clamp(1rem, 3vw, 1.45rem);
+    background:
+      radial-gradient(90% 120% at 0 0, color-mix(in srgb, var(--color-signal) 10%, transparent), transparent 66%),
+      color-mix(in srgb, var(--color-surface) 91%, transparent);
+    box-shadow: var(--shadow-elevated);
+  }
+  header { display: flex; min-width: 0; align-items: center; justify-content: space-between; gap: 1rem; }
+  header span,
+  header b {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  header b { color: var(--color-muted); }
+  h2 { color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.25rem, 3vw, 1.65rem); line-height: 1.15; }
+  p { max-width: 46rem; color: var(--color-muted); font-size: 0.84rem; line-height: 1.6; }
+  .analysis-tool-question { color: var(--color-paper); font-size: 0.94rem; font-weight: 650; }
+  footer { display: flex; flex-wrap: wrap; gap: 0.7rem 1.2rem; margin-top: 0.35rem; }
+  footer a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; text-decoration: none; }
+  footer a:last-child { color: var(--color-muted); }
+  footer a:hover { color: var(--color-bright); }
+</style>

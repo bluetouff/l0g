@@ -1,0 +1,68 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import DigitalEuroCostSimulator from '../../../components/DigitalEuroCostSimulator.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import { DIGITAL_EURO_COST_MODEL_VERSION, DIGITAL_EURO_COST_SOURCES } from '../../../lib/digital-euro-cost-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'digital-euro-cost');
+if (!tool) throw new Error('Digital euro cost tool is not registered');
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title,
+  description: tool.en.description,
+  url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  softwareVersion: DIGITAL_EURO_COST_MODEL_VERSION,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: DIGITAL_EURO_COST_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout
+  title="Digital euro cost simulator"
+  description="Test digital euro adoption, merchant fees, offline use and public costs with explicit formulas, ECB sources, scope and limitations."
+  alternateLinks={[
+    { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+    { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <section class="tool-hero rise" data-pagefind-ignore>
+    <p class="mono-label">// economic simulator · v{DIGITAL_EURO_COST_MODEL_VERSION}</p>
+    <h1>The price of sovereignty</h1>
+    <p>Adjust the assumptions to follow merchant savings, PSP compensation and public cost per transaction. The tool now separates an inter-PSP rate from a fixed amount per payment.</p>
+    <small>Results are scenario identities built on the ECB’s 2025 card base. They forecast neither adoption nor the final legislation.</small>
+  </section>
+
+  <DigitalEuroCostSimulator lang="en" mode="full" />
+
+  <section class="tool-notes" data-pagefind-body>
+    <article><p class="mono-label">// private allocation</p><h2>One envelope, several distributions</h2><p>The MSC is total merchant revenue in the scenario. Inter-PSP compensation takes a share for the distributor. A negative acquirer remainder signals that the selected combination cannot fund the private chain.</p></article>
+    <article><p class="mono-label">// reproducibility</p><h2>Inspect the model outside the interface</h2><p>The static <a href={tool.modelHref}>model.json</a> file exposes variables, defaults, units, bounds, formulas and primary sources. The CSV button exports the displayed scenario.</p></article>
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .tool-hero { border: 1px solid var(--color-line); border-radius: 14px; padding: clamp(1rem, 3vw, 1.7rem); background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-hero .mono-label { color: var(--color-signal); }
+  .tool-hero h1 { max-width: 48rem; margin-top: 0.8rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.04; }
+  .tool-hero > p:not(.mono-label) { max-width: 48rem; margin-top: 0.9rem; color: var(--color-paper); font-size: 1rem; line-height: 1.65; }
+  .tool-hero small { display: block; max-width: 48rem; margin-top: 0.6rem; color: var(--color-muted); line-height: 1.55; }
+  .tool-notes { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-notes article { min-width: 0; border: 1px solid var(--color-line); border-radius: 11px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 70%, transparent); }
+  .tool-notes .mono-label { color: var(--color-signal); }
+  .tool-notes h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; }
+  .tool-notes article > p:last-child { margin-top: 0.5rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.6; }
+  .tool-notes a { color: var(--color-signal); }
+  @media (min-width: 760px) { .tool-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

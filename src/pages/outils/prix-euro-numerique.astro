@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import DigitalEuroCostSimulator from '../../components/DigitalEuroCostSimulator.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import { DIGITAL_EURO_COST_MODEL_VERSION, DIGITAL_EURO_COST_SOURCES } from '../../lib/digital-euro-cost-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'digital-euro-cost');
+if (!tool) throw new Error('Digital euro cost tool is not registered');
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title,
+  description: tool.fr.description,
+  url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript pour manipuler les hypothèses. Les formules, sources et limites restent lisibles sans interaction.',
+  softwareVersion: DIGITAL_EURO_COST_MODEL_VERSION,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: DIGITAL_EURO_COST_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  title="Simulateur du coût de l’euro numérique"
+  description="Testez adoption, commissions, offline et coûts publics de l’euro numérique. Formules, sources BCE, périmètre et limites sont explicités."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="01"
+    kicker="simulateur économique"
+    title="Le prix de la souveraineté"
+    description="Déplacez les hypothèses pour suivre les économies des commerçants, la rémunération des PSP et le coût public par transaction. L’outil distingue maintenant un taux inter-PSP d’un montant fixe par opération."
+    secondary="Les résultats sont des identités de scénario fondées sur la base carte 2025 de la BCE. Ils ne prévoient ni l’adoption ni le texte final."
+    glyph="observe"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${DIGITAL_EURO_COST_MODEL_VERSION}`, label: 'modèle auditable' },
+      { value: '2025', label: 'base carte BCE' },
+      { value: 'local', label: 'calcul navigateur' },
+    ]}
+  />
+
+  <DigitalEuroCostSimulator lang="fr" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article>
+      <p class="mono-label">// comment lire le résultat</p>
+      <h2>Une enveloppe, plusieurs répartitions</h2>
+      <p>La MSC est la recette marchande totale du scénario. L’inter-PSP en prélève une part pour le distributeur. Si cette part dépasse la MSC collectée, le reste acquéreur devient négatif : la combinaison choisie ne finance pas la chaîne privée.</p>
+    </article>
+    <article>
+      <p class="mono-label">// convention publique</p>
+      <h2>Un coût par transaction volontairement sévère</h2>
+      <p>Le calcul affecte tout le développement et tout l’OPEX de l’Eurosystème aux paiements marchands transférés. Il ignore donc que l’infrastructure servirait aussi le P2P, l’inclusion et la résilience.</p>
+    </article>
+  </section>
+
+  <section class="tool-sources">
+    <header>
+      <p class="mono-label">// sources et reproductibilité</p>
+      <h2>Le modèle peut être contrôlé hors de l’interface</h2>
+      <p>Le fichier JSON statique expose les variables, valeurs par défaut, unités, bornes, formules et sources. Le CSV exporte le scénario affiché.</p>
+      <a href={tool.modelHref}>Consulter model.json</a>
+    </header>
+    <ol>
+      {DIGITAL_EURO_COST_SOURCES.map((source) => (
+        <li><a href={source.url}>{source.label}</a><span>{source.role}</span></li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-reading article,
+  .tool-sources { min-width: 0; border: 1px solid var(--color-line); border-radius: 12px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-reading .mono-label,
+  .tool-sources .mono-label { color: var(--color-signal); }
+  .tool-reading h2,
+  .tool-sources h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+  .tool-reading article > p:last-child,
+  .tool-sources header > p { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.62; }
+  .tool-sources { display: grid; gap: 1rem; margin-top: 1rem; }
+  .tool-sources header > a { display: inline-block; margin-top: 0.65rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; }
+  .tool-sources ol { display: grid; gap: 0.55rem; margin: 0; padding-left: 1.25rem; }
+  .tool-sources li { color: var(--color-muted); font-size: 0.7rem; line-height: 1.45; }
+  .tool-sources li a { color: var(--color-paper); overflow-wrap: anywhere; }
+  .tool-sources li span { display: block; color: var(--color-muted); }
+  @media (min-width: 760px) {
+    .tool-reading { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tool-sources { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); padding: 1.25rem; }
+  }
+</style>

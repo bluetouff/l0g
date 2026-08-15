@@ -31,7 +31,7 @@ The bill depends on what is ultimately built: a genuinely reusable common infras
 
 <DigitalEuroCostSimulator lang="en" />
 
-The default scenario takes 10% of euro-area card payments in 2025, a current average merchant fee of 0.50%, a digital euro online MSC of 0.30%, an illustrative inter-PSP fee of 0.18%, and a 10% fee-free offline share. None of these inputs has been decided or forecast. They are there to answer a simple question: when one rate changes, who gains, who loses, and how much volume is needed to spread the fixed cost?
+The default scenario takes 10% of euro-area card payments in 2025, an illustrative current card fee of 0.50%, a digital euro online MSC of 0.30%, a 0.18% ad valorem inter-PSP equivalent, and a 10% fee-free offline share. None of these inputs has been decided or forecast. They are there to answer a simple question: when one rate changes, who gains, who loses, and how much volume is needed to spread the fixed cost?
 
 Sensitivity is the most useful result. Public cost per transaction falls as adoption rises. Merchant savings disappear as the MSC approaches the card price. The acquirer remainder turns negative if the inter-PSP fee exceeds the fee it collects. The no worse-off principle protects large merchants that already negotiate below the market average.
 
@@ -309,7 +309,9 @@ The Eurosystem charges neither a scheme fee nor a settlement fee.
 
 In one illustration, the ECB uses roughly **€0.18 of inter-PSP compensation** on a €100 transaction.
 
-The figure is sometimes misread as a 0.18% MSC. It covers only the transfer between PSPs in the ECB example.
+For that €100 basket alone, €0.18 is arithmetically equivalent to 0.18%. The equality disappears as soon as the payment value changes. The figure is therefore neither a 0.18% MSC nor proof that the final inter-PSP fee will be proportional to value.
+
+The simulator now separates both conventions. Its published scenario uses the ad valorem equivalent to reproduce the allocation shown in this article. Fixed mode applies €0.18 to every transaction and makes the effect of the average ticket visible.
 
 The acquirer still has to fund:
 
@@ -321,9 +323,9 @@ The acquirer still has to fund:
 - certification;
 - its margin.
 
-The final MSC must exceed the inter-PSP fee if the acquirer is to cover its own cost.
+Total MSC revenue must exceed total inter-PSP revenue if the acquirer is to cover its own cost.
 
-The simulator shows a warning when the user moves the inter-PSP fee above the applicable MSC.
+The simulator shows a warning whenever the selected allocation makes the acquirer’s gross remainder negative, whether inter-PSP compensation is entered as a rate or as a fixed amount.
 
 The alert makes the economic constraint visible.
 
@@ -735,7 +737,7 @@ This article relies primarily on:
 
 12. EPI, Wero roll-out and reported audience in 2026: [shareholder expansion](https://epicompany.eu/media-insights/epi-welcomes-erste-bank-oesterreich-raiffeisen-bank-international-and-raiffeisen-landesbanken-as-new-shareholders/) and [the iDEAL-to-Wero migration](https://epicompany.eu/media-insights/successful-first-phase-marks-major-next-steps-in-ideal-to-wero-migration/).
 
-The simulator uses 2025 card volumes and explicitly adjustable assumptions. It is neither an adoption forecast, nor a recommended fee, nor an official estimate of social benefit.
+The simulator uses 2025 card volumes and explicitly adjustable assumptions. It is neither an adoption forecast, nor a recommended fee, nor an official estimate of social benefit. Inter-PSP compensation can be modelled as a percentage of value or as a fixed amount per transaction so that the two units cannot be confused.
 
 ## Limits
 

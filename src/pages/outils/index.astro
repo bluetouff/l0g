@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import AnalysisToolCard from '../../components/AnalysisToolCard.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+---
+
+<BaseLayout
+  title="Outils d’analyse"
+  description="Les simulateurs pédagogiques de l0g pour manipuler des hypothèses, comparer des scénarios et reproduire un raisonnement économique sourcé."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL('/outils/', Astro.site).toString() },
+    { hreflang: 'en', href: new URL('/en/tools/', Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL('/outils/', Astro.site).toString() },
+  ]}
+>
+  <PageHero
+    index="05"
+    kicker="outils d’analyse"
+    title="Manipuler une hypothèse."
+    highlight="Voir ce qu’elle change."
+    description="Ces petits outils prolongent les enquêtes l0g. Ils rendent les unités, formules, sources et limites visibles afin de comparer des scénarios sans transformer une hypothèse en prévision."
+    secondary="Chaque calcul reste local dans le navigateur. Aucun scénario n’est envoyé, stocké ou suivi."
+    glyph="observe"
+    accent="var(--color-signal)"
+    stats={[
+      { value: analysisTools.length, label: analysisTools.length > 1 ? 'outils publics' : 'outil public' },
+      { value: '0 tiers', label: 'appel navigateur' },
+      { value: 'ouvert', label: 'formules et limites' },
+    ]}
+  />
+
+  <section class="tools-grid" aria-label="Outils d’analyse l0g" data-pagefind-body>
+    {analysisTools.map((tool) => <AnalysisToolCard tool={tool} lang="fr" />)}
+  </section>
+
+  <aside class="tools-contract" data-pagefind-ignore>
+    <p class="mono-label">// contrat de lecture</p>
+    <p>Un outil d’analyse ne prévoit pas l’avenir. Il expose un mécanisme, permet de déplacer ses hypothèses et signale les configurations incohérentes. Les données observées restent séparées des paramètres illustratifs.</p>
+  </aside>
+</BaseLayout>
+
+<style>
+  .tools-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .tools-contract { max-width: 48rem; margin-top: 1.4rem; border-left: 2px solid var(--color-amber); padding-left: 1rem; }
+  .tools-contract .mono-label { color: var(--color-amber); }
+  .tools-contract p:last-child { margin-top: 0.4rem; color: var(--color-muted); font-size: 0.78rem; line-height: 1.6; }
+</style>
