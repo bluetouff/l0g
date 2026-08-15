@@ -1,3 +1,5 @@
+import generatedWeeklyEditions from './weekly-editions.generated.json' with { type: 'json' };
+
 export const WEEKLY_SCHEDULE = {
   weekday: 'dimanche',
   weekdayIso: 7,
@@ -14,7 +16,13 @@ export type WeeklyChartPoint = {
   nature: string;
   scope: string;
   tone: 'signal' | 'accent' | 'amber';
-  additive: false;
+  additive: boolean;
+};
+
+export type WeeklyAnalysisLink = {
+  title: string;
+  href: string;
+  publishedAt: string;
 };
 
 export type WeeklyEdition = {
@@ -44,15 +52,25 @@ export type WeeklyEdition = {
     observationDate: string;
     sourceLabel: string;
     sourceUrl: string;
+    csvValueColumn?: string;
+    calloutLabel?: string;
     points: WeeklyChartPoint[];
   };
   quote: string;
   linkedin: string;
   threadX: string[];
   sources: Array<{ label: string; href: string; role: string }>;
+  sourcesEyebrow?: string;
+  includedAnalyses?: WeeklyAnalysisLink[];
+  automation?: {
+    strategy: 'published-metadata-v1';
+    generatedAt: string;
+    windowStart: string;
+    windowEnd: string;
+  };
 };
 
-export const weeklyEditions: WeeklyEdition[] = [
+export const manualWeeklyEditions: WeeklyEdition[] = [
   {
     issue: 1,
     slug: '2026-08-02-atlas-athene',
@@ -165,8 +183,13 @@ export const weeklyEditions: WeeklyEdition[] = [
   },
 ];
 
-export function latestWeeklyEdition() {
-  return [...weeklyEditions].sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))[0];
+export const weeklyEditions: WeeklyEdition[] = [
+  ...manualWeeklyEditions,
+  ...(generatedWeeklyEditions as WeeklyEdition[]),
+].sort((left, right) => left.publishedAt.localeCompare(right.publishedAt));
+
+export function latestWeeklyEdition(editions = weeklyEditions) {
+  return [...editions].sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))[0];
 }
 
 export function weeklyPackageRoot(edition: WeeklyEdition) {

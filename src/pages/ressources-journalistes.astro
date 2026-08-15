@@ -4,12 +4,13 @@ import TrustBar from '../components/TrustBar.astro';
 import { buildSignalHistorySurface } from '../lib/signal-history.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import { latestWeeklyEdition } from '../config/weekly-editions.ts';
-import { buildWeeklyCitationText } from '../lib/weekly-package.ts';
+import { buildWeeklyCitationText, weeklyChartDimensions } from '../lib/weekly-package.ts';
 
 const history = buildSignalHistorySurface();
 const weekly = latestWeeklyEdition();
 const weeklyRoot = `/hebdo/${weekly.slug}`;
 const weeklyCitation = buildWeeklyCitationText(weekly);
+const weeklyChartSize = weeklyChartDimensions(weekly);
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const pageUrl = `${site}/ressources-journalistes/`;
 const trustItems = [
@@ -94,7 +95,7 @@ const jsonLd = {
         <p class="citation">{weeklyCitation}</p>
       </div>
       <div class="weekly-package-assets">
-        <img src={`${weeklyRoot}/graphique.svg`} alt={`${weekly.chart.title}. ${weekly.chart.note}`} width="1200" height="700" loading="lazy" decoding="async" />
+        <img src={`${weeklyRoot}/graphique.svg`} alt={`${weekly.chart.title}. ${weekly.chart.note}`} width={weeklyChartSize.width} height={weeklyChartSize.height} loading="lazy" decoding="async" />
         <nav aria-label="Formats disponibles pour cette édition">
           <a href={weekly.analysis.href}>analyse</a>
           <a href={`${weeklyRoot}/graphique.svg`} download>SVG</a>

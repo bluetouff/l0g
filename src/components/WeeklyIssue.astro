@@ -1,6 +1,6 @@
 ---
 import type { WeeklyEdition } from '../config/weekly-editions.ts';
-import { buildWeeklyCitationText } from '../lib/weekly-package.ts';
+import { buildWeeklyCitationText, weeklyChartDimensions } from '../lib/weekly-package.ts';
 
 interface Props {
   edition: WeeklyEdition;
@@ -17,6 +17,7 @@ const published = new Intl.DateTimeFormat('fr-FR', {
   timeZone: 'Europe/Paris',
 }).format(new Date(edition.publishedAt));
 const citation = buildWeeklyCitationText(edition);
+const chartDimensions = weeklyChartDimensions(edition);
 ---
 
 <article class="weekly-issue" data-pagefind-body>
@@ -25,6 +26,7 @@ const citation = buildWeeklyCitationText(edition);
       <span>édition</span>
       <strong>{String(edition.issue).padStart(2, '0')}</strong>
       <time datetime={edition.publishedAt}>{published}</time>
+      {edition.automation && <small>assemblage automatique</small>}
     </div>
     <div>
       <p class="mono-label">// le dossier de la semaine</p>
@@ -66,8 +68,8 @@ const citation = buildWeeklyCitationText(edition);
     <img
       src={`${root}/graphique.svg`}
       alt={`${edition.chart.title}. ${edition.chart.subtitle} ${edition.chart.note}`}
-      width="1200"
-      height="700"
+      width={chartDimensions.width}
+      height={chartDimensions.height}
       loading="lazy"
       decoding="async"
     />
@@ -76,7 +78,7 @@ const citation = buildWeeklyCitationText(edition);
       <nav aria-label="Téléchargements du graphique">
         <a href={`${root}/graphique.svg`} download>SVG</a>
         <a href={`${root}/donnees.csv`} download>CSV</a>
-        <a href={edition.chart.sourceUrl}>source SEC</a>
+        <a href={edition.chart.sourceUrl}>source du graphique</a>
       </nav>
     </figcaption>
   </figure>
@@ -118,7 +120,7 @@ const citation = buildWeeklyCitationText(edition);
   </section>
 
   <section class="issue-sources">
-    <p class="mono-label">// sources primaires</p>
+    <p class="mono-label">{edition.sourcesEyebrow ?? '// sources primaires'}</p>
     <ol>
       {edition.sources.map((source) => (
         <li><a href={source.href}>{source.label}</a><span>{source.role}</span></li>
@@ -160,6 +162,7 @@ const citation = buildWeeklyCitationText(edition);
   .issue-coordinate span { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
   .issue-coordinate strong { grid-row: 2; color: var(--color-signal); font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5rem); line-height: 0.9; }
   .issue-coordinate time { grid-column: 2; grid-row: 2; align-self: end; padding-bottom: 0.3rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.65rem; }
+  .issue-coordinate small { grid-column: 1 / -1; margin-top: 0.55rem; color: var(--color-accent); font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; }
   .issue-head .mono-label { color: var(--color-signal); }
   .issue-head h1, .issue-head h2 { max-width: 52rem; margin-top: 0.7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.35rem); line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
   .issue-lead { max-width: 48rem; margin-top: 1rem; border-left: 2px solid var(--color-signal); padding-left: 1rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.68; }

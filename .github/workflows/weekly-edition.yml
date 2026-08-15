@@ -1,0 +1,79 @@
+name: weekly-edition
+
+on:
+  schedule:
+    # GitHub utilise UTC. Les deux passages couvrent 08 h 30 à Paris en heure
+    # d’été comme en heure d’hiver ; le générateur est idempotent.
+    - cron: '30 6,7 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: weekly-edition-main
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: github.repository == 'bluetouff/l0g'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Require the current main commit
+        run: |
+          test "$GITHUB_REF" = "refs/heads/main"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          test "$GITHUB_SHA" = "$(git rev-parse refs/remotes/origin/main)"
+
+      - name: Install the locked toolchain
+        run: npm ci --no-audit --no-fund
+
+      - name: Freeze every due edition
+        run: npm run weekly:update
+
+      - name: Detect a newly generated edition
+        id: changes
+        run: |
+          if git diff --quiet -- src/config/weekly-editions.generated.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            test "$(git diff --name-only)" = "src/config/weekly-editions.generated.json"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate the frozen edition and security policy
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          npm run test:hebdo
+          npm run test:ci-policy
+          npm run test:secrets
+          git diff --check
+
+      - name: Commit the immutable weekly snapshot
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- src/config/weekly-editions.generated.json
+          git commit -m "Publie l'Hebdo automatique"
+          git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
+
+      - name: Start the regular signed release
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run build.yml --repo "$GITHUB_REPOSITORY" --ref main

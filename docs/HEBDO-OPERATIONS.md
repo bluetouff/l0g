@@ -1,45 +1,90 @@
-# L'hebdo l0g : publication hebdomadaire
+# L'Hebdo l0g : publication automatique
 
-Ce guide organise la mise en ligne de l'édition web. L'Hebdo ne collecte aucune adresse électronique et n'envoie aucun message.
+L'Hebdo assemble chaque semaine les analyses déjà publiées sur l0g. Il ne collecte aucune adresse électronique, n'envoie aucun message et ne génère aucun fait économique nouveau.
 
 ## Cadence
 
 - Nouvelle édition chaque dimanche à 08 h 30, fuseau `Europe/Paris`.
-- Une URL stable par édition.
+- Deux déclenchements UTC couvrent automatiquement l'heure d'été et l'heure d'hiver.
+- Une URL stable par édition, sous `/hebdo/YYYY-MM-DD/`.
+- Une archive chronologique sur `/hebdo/` et un flux `/hebdo/rss.xml`.
 - Aucune inscription, liste de diffusion ou mesure d'ouverture.
 
-## Périmètre par rapport à Watch
+## Source éditoriale
 
-- L'Hebdo est une lecture publique hebdomadaire.
-- l0g Watch conserve une veille privée et peut envoyer des alertes liées aux éléments suivis.
-- Aucun formulaire, compte ou préférence Watch ne doit être reproduit sur l0g.fr.
-- La page de l'Hebdo peut présenter Watch comme le service de surveillance complémentaire, sans confondre les deux usages.
+Les fichiers publics non brouillons de `src/content/posts/` constituent l'unique corpus d'entrée. Le générateur reprend seulement :
 
-## Préparer une édition
+- le titre ;
+- la description ;
+- la date de publication ;
+- la fiche `quickTake` lorsqu'elle existe.
 
-Chaque entrée de `src/config/weekly-editions.ts` constitue la source unique. Elle fournit :
+Le focus est le dernier article de la fenêtre possédant une fiche `quickTake`. À défaut, le dernier article publié est utilisé. Ce choix facilite une synthèse structurée mais ne classe pas l'importance des sujets.
+
+Le nombre et le graphique mesurent uniquement les publications de la fenêtre. Les faits, leur importance et leurs incertitudes sont recopiés sans reformulation depuis les métadonnées déjà relues. Toutes les sources économiques restent accessibles dans les analyses liées.
+
+## Registre figé
+
+`src/config/weekly-editions.generated.json` est append-only dans le fonctionnement normal. Chaque entrée fournit :
 
 - la page de l'édition ;
 - le graphique SVG ;
 - le fichier CSV ;
 - la citation TXT ;
 - le post LinkedIn TXT ;
-- le thread X TXT.
+- le thread X TXT ;
+- la liste des analyses incluses ;
+- la fenêtre et l'instant de génération.
 
-Avant publication :
+Une édition passée n'est pas recalculée lorsque le contenu source change. Une correction historique doit donc être explicite, relue et documentée comme une correction éditoriale.
 
-1. Vérifier chaque chiffre dans la source primaire.
-2. Vérifier les unités, dates, périmètres et recouvrements possibles.
-3. Relire la citation, le post LinkedIn et chaque message du thread X.
-4. Contrôler le rendu du SVG sur ordinateur et mobile.
-5. Exécuter `npm run test:hebdo` puis le build complet.
+## Chaîne automatique
 
-## Publier le dimanche à 08 h 30
+Le workflow `.github/workflows/weekly-edition.yml` :
 
-1. Préparer et valider l'édition avant le créneau de publication.
-2. Fusionner suffisamment tôt pour que le build et la publication soient terminés avant 08 h 30.
-3. Vérifier l'URL de l'édition, l'analyse liée, le SVG, le CSV et les fichiers texte.
-4. Vérifier l'apparition de l'édition sur `/hebdo/` et dans le sitemap.
-5. Publier ensuite les formats LinkedIn et X avec le lien canonique de l'édition.
+1. vérifie qu'il travaille sur le dépôt canonique et sur le dernier commit de `main` ;
+2. installe la toolchain verrouillée ;
+3. calcule chaque échéance manquante avec le fuseau `Europe/Paris` ;
+4. ajoute uniquement les nouvelles éditions au registre figé ;
+5. exécute les tests Hebdo, la politique CI, le contrôle des secrets et `git diff --check` ;
+6. refuse toute modification autre que le registre généré ;
+7. crée un commit en avance rapide sur `main` ;
+8. déclenche le workflow `build.yml`, qui construit, atteste et publie la release statique selon la chaîne habituelle.
 
-La cadence est un engagement éditorial. Un build vert ne suffit pas : l'URL publique et les fichiers associés doivent être contrôlés après chaque publication.
+Les deux passages dominicaux sont idempotents. Le second sert de rattrapage lors du changement d'heure ou d'un léger retard du planificateur GitHub.
+
+## Vérifications locales
+
+Contrôler le registre sans le modifier :
+
+```sh
+npm run weekly:check
+```
+
+Générer les échéances dues :
+
+```sh
+npm run weekly:update
+```
+
+Valider le produit :
+
+```sh
+npm run test:hebdo
+npm run test:ci-policy
+npm run build
+```
+
+## Reprise après incident
+
+Si une édition manque, lancer manuellement `weekly-edition` depuis GitHub Actions. Le générateur rattrape toutes les échéances absentes dans l'ordre, puis déclenche la release normale.
+
+Ne jamais créer une édition vide à la main pour masquer un échec. Si aucune analyse n'a été publiée dans une fenêtre, le générateur produit une édition de continuité qui dit explicitement zéro et n'en déduit aucun signal économique.
+
+Après publication, vérifier :
+
+1. `/hebdo/` et la nouvelle URL datée ;
+2. les liens précédent et suivant ;
+3. `graphique.svg`, `donnees.csv`, `citation.txt`, `linkedin.txt` et `thread-x.txt` ;
+4. `/hebdo/rss.xml` et le sitemap ;
+5. le SHA public dans `/source.env`.

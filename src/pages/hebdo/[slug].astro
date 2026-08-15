@@ -4,20 +4,44 @@ import WeeklyIssue from '../../components/WeeklyIssue.astro';
 import { weeklyEditions } from '../../config/weekly-editions.ts';
 
 export function getStaticPaths() {
-  return weeklyEditions.map((edition) => ({ params: { slug: edition.slug }, props: { edition } }));
+  const editions = [...weeklyEditions].sort((left, right) => left.publishedAt.localeCompare(right.publishedAt));
+  return editions.map((edition, index) => ({
+    params: { slug: edition.slug },
+    props: {
+      edition,
+      older: editions[index - 1],
+      newer: editions[index + 1],
+    },
+  }));
 }
 
-const { edition } = Astro.props;
+const { edition, older, newer } = Astro.props;
 ---
 
 <BaseLayout title={`${edition.title} · L’hebdo`} description={edition.description} sidebar={false}>
   <main class="issue-page">
     <a class="back" href="/hebdo/">← Toutes les éditions</a>
     <WeeklyIssue edition={edition} headingLevel="h1" />
+    <nav class="issue-navigation" aria-label="Naviguer entre les éditions de l’Hebdo">
+      {older
+        ? <a href={`/hebdo/${older.slug}/`} rel="prev"><span>édition précédente</span><strong>{String(older.issue).padStart(2, '0')} · {older.title}</strong></a>
+        : <span aria-hidden="true"></span>}
+      <a class="all" href="/hebdo/">Toutes les éditions</a>
+      {newer
+        ? <a href={`/hebdo/${newer.slug}/`} rel="next"><span>édition suivante</span><strong>{String(newer.issue).padStart(2, '0')} · {newer.title}</strong></a>
+        : <span aria-hidden="true"></span>}
+    </nav>
   </main>
   <style>
     .issue-page { max-width: 72rem; margin: 0 auto; }
     .back { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; }
     .issue-page :global(.weekly-issue) { margin-top: 1.5rem; }
+    .issue-navigation { display: grid; gap: .75rem; margin-top: 4rem; border-top: 1px solid var(--color-line); padding-top: 1.2rem; }
+    .issue-navigation > a:not(.all) { display: grid; gap: .3rem; border: 1px solid var(--color-line); border-radius: 10px 3px 10px 10px; padding: .9rem; color: var(--color-bright); background: var(--color-surface); }
+    .issue-navigation > a:last-child { text-align: right; }
+    .issue-navigation span { color: var(--color-muted); font-family: var(--font-mono); font-size: .58rem; letter-spacing: .06em; text-transform: uppercase; }
+    .issue-navigation strong { font-size: .76rem; line-height: 1.4; }
+    .issue-navigation .all { align-self: center; color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; text-align: center; text-transform: uppercase; }
+    @media (min-width: 760px) { .issue-navigation { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; } }
   </style>
 </BaseLayout>

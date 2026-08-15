@@ -9,6 +9,11 @@ import {
 import { serializeInlineScriptData } from '../lib/security.ts';
 
 const edition = latestWeeklyEdition();
+const archiveYears = new Map<string, typeof weeklyEditions>();
+for (const item of [...weeklyEditions].sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))) {
+  const year = item.publishedAt.slice(0, 4);
+  archiveYears.set(year, [...(archiveYears.get(year) ?? []), item]);
+}
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -83,20 +88,27 @@ const jsonLd = {
     </section>
 
     <section class="weekly-archive" aria-labelledby="archive-title">
-      <p class="mono-label">// archives</p>
-      <h2 id="archive-title">Toutes les éditions gardent une URL stable.</h2>
-      <ol>
-        {weeklyEditions
-          .slice()
-          .sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))
-          .map((item) => (
+      <div class="archive-head">
+        <div>
+          <p class="mono-label">// archives</p>
+          <h2 id="archive-title">Toutes les éditions gardent une URL stable.</h2>
+        </div>
+        <a href="/hebdo/rss.xml" type="application/rss+xml">Flux RSS de l’Hebdo</a>
+      </div>
+      {[...archiveYears].map(([year, editions]) => (
+        <section class="archive-year" aria-labelledby={`archive-${year}`}>
+          <h3 id={`archive-${year}`}>{year} <span>{editions.length} édition{editions.length > 1 ? 's' : ''}</span></h3>
+          <ol>
+            {editions.map((item) => (
             <li>
               <span>{String(item.issue).padStart(2, '0')}</span>
               <a href={`/hebdo/${item.slug}/`}>{item.title}</a>
               <time datetime={item.publishedAt}>{new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeZone: 'Europe/Paris' }).format(new Date(item.publishedAt))}</time>
             </li>
-          ))}
-      </ol>
+            ))}
+          </ol>
+        </section>
+      ))}
     </section>
   </main>
 
@@ -141,7 +153,12 @@ const jsonLd = {
     .watch-boundary p:not(.mono-label) { max-width: 48rem; margin-top: 0.7rem; color: var(--color-muted); line-height: 1.65; }
     .watch-boundary a { display: inline-block; margin-top: 1rem; border: 1px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-line)); border-radius: 999px; padding: .55rem .75rem; color: var(--color-accent); font-family: var(--font-mono); font-size: .65rem; font-weight: 700; text-transform: uppercase; }
     .watch-boundary a:hover { color: var(--color-ink); background: var(--color-accent); }
-    .weekly-archive > ol { margin-top: 1rem; border-top: 1px solid var(--color-line); }
+    .archive-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
+    .archive-head > a { color: var(--color-signal); font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; }
+    .archive-year { margin-top: 1.5rem; }
+    .archive-year h3 { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.2rem; }
+    .archive-year h3 span { color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; font-weight: 400; text-transform: uppercase; }
+    .archive-year > ol { margin-top: .65rem; border-top: 1px solid var(--color-line); }
     .weekly-archive li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.8rem; align-items: center; border-bottom: 1px solid var(--color-line); padding: 0.85rem 0; }
     .weekly-archive li > span { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.66rem; }
     .weekly-archive a { color: var(--color-bright); font-weight: 650; }

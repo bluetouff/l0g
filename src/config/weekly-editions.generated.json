@@ -1,0 +1,290 @@
+[
+  {
+    "issue": 2,
+    "slug": "2026-08-09",
+    "publishedAt": "2026-08-09T08:30:00+02:00",
+    "title": "L’Hebdo du 9 août. SoftBank : la valorisation d’OpenAI devient un risque de liquidité",
+    "description": "Édition automatisée du 9 août : 15 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "SoftBank : la valorisation d’OpenAI devient un risque de liquidité",
+      "href": "/posts/softbank-openai-risque-liquidite/",
+      "update": "Le 5 août, un véhicule de SoftBank a signé un prêt de 10 milliards de dollars. Le contrat prévoit du collatéral en cash et des remboursements anticipés si la valeur des actions préférentielles d’OpenAI baisse fortement. Ce n’est pas un défaut, mais une clause qui relie une valorisation privée à la trésorerie du groupe."
+    },
+    "lead": "Un véhicule détenu par Vision Fund 2 a signé le 5 août un prêt de 10 Md$, garanti par SoftBank Group. Une baisse importante de la juste valeur des actions préférentielles d’OpenAI peut, parmi d’autres cas prévus, déclencher un dépôt de cash et un remboursement anticipé.",
+    "number": {
+      "value": "15",
+      "label": "analyses publiées du 2 août à 08 h 30 au 9 août à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "La valeur d’un actif non coté peut alors créer un besoin de trésorerie contractuel, même sans vente de cet actif ni défaut de SoftBank.",
+    "test": "Le seuil de baisse, le montant initial du cash déposé, les décotes et la méthode détaillée de valorisation ne sont pas publics. Le tirage était seulement prévu en août dans le rapport publié le 6 août.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "15 analyses publiées en sept jours",
+      "subtitle": "du 2 août à 08 h 30 au 9 août à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-08-09",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "COMPTER, PAS CLASSER",
+      "points": [
+        {
+          "label": "dim 02/08",
+          "shortLabel": "dim 02/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-02",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 03/08",
+          "shortLabel": "lun 03/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-03",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 04/08",
+          "shortLabel": "mar 04/08",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-08-04",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 05/08",
+          "shortLabel": "mer 05/08",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-08-05",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 06/08",
+          "shortLabel": "jeu 06/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-06",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 07/08",
+          "shortLabel": "ven 07/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-07",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 08/08",
+          "shortLabel": "sam 08/08",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-08-08",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 09/08",
+          "shortLabel": "dim 09/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-09",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Un véhicule détenu par Vision Fund 2 a signé le 5 août un prêt de 10 Md$, garanti par SoftBank Group. Une baisse importante de la juste valeur des actions préférentielles d’OpenAI peut, parmi d’autres cas prévus, déclencher un dépôt de cash et un remboursement anticipé.",
+    "linkedin": "15 analyses publiées sur l0g du 2 août à 08 h 30 au 9 août à 08 h 30.\n\nFocus structuré : SoftBank : la valorisation d’OpenAI devient un risque de liquidité.\n\nUn véhicule détenu par Vision Fund 2 a signé le 5 août un prêt de 10 Md$, garanti par SoftBank Group. Une baisse importante de la juste valeur des actions préférentielles d’OpenAI peut, parmi d’autres cas prévus, déclencher un dépôt de cash et un remboursement anticipé.\n\nPourquoi le lire : La valeur d’un actif non coté peut alors créer un besoin de trésorerie contractuel, même sans vente de cet actif ni défaut de SoftBank.\n\nLimite à garder : Le seuil de baisse, le montant initial du cash déposé, les décotes et la méthode détaillée de valorisation ne sont pas publics. Le tirage était seulement prévu en août dans le rapport publié le 6 août.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-08-09/",
+    "threadX": [
+      "1/6 L’Hebdo l0g du 9 août compte 15 analyses publiées. Focus : SoftBank : la valorisation d’OpenAI devient un risque de liquidité.",
+      "2/6 Un véhicule détenu par Vision Fund 2 a signé le 5 août un prêt de 10 Md$, garanti par SoftBank Group.",
+      "3/6 Une baisse importante de la juste valeur des actions préférentielles d’OpenAI peut, parmi d’autres cas prévus, déclencher un dépôt de cash et un remboursement anticipé.",
+      "4/6 Pourquoi le lire : La valeur d’un actif non coté peut alors créer un besoin de trésorerie contractuel, même sans vente de cet actif ni défaut de SoftBank.",
+      "5/6 Limite : Le seuil de baisse, le montant initial du cash déposé, les décotes et la méthode détaillée de valorisation ne sont pas publics. Le tirage était seulement prévu en août dans le rapport publié le 6 août.",
+      "6/6 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-08-09/"
+    ],
+    "sources": [
+      {
+        "label": "L’argent d’Epstein, 4/4 : le dernier grand livre",
+        "href": "/posts/argent-epstein-dernier-grand-livre/",
+        "role": "Analyse publiée le 8 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’argent d’Epstein, 3/4 : client, courtier ou investisseur ?",
+        "href": "/posts/argent-epstein-client-courtier-investisseur/",
+        "role": "Analyse publiée le 8 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’argent d’Epstein, 2/4 : ce que les banques voyaient",
+        "href": "/posts/argent-epstein-ce-que-les-banques-voyaient/",
+        "role": "Analyse publiée le 7 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’argent d’Epstein, 1/4 : la fortune sans grand livre",
+        "href": "/posts/argent-epstein-fortune-sans-grand-livre/",
+        "role": "Analyse publiée le 7 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "CLARITY Act : la fenêtre avant les midterms",
+        "href": "/posts/clarity-act-fenetre-avant-midterms/",
+        "role": "Analyse publiée le 7 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Assurance-vie à Hong Kong : Pékin taxe une brèche dans sa muraille financière",
+        "href": "/posts/assurance-vie-hong-kong-taxe-chine-muraille-financiere/",
+        "role": "Analyse publiée le 6 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Productivité américaine : le salaire réel reste derrière",
+        "href": "/posts/productivite-americaine-salaire-reel-derriere/",
+        "role": "Analyse publiée le 6 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SoftBank : la valorisation d’OpenAI devient un risque de liquidité",
+        "href": "/posts/softbank-openai-risque-liquidite/",
+        "role": "Analyse publiée le 6 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le prêt immobilier américain face à la facture d’assurance",
+        "href": "/posts/facture-assurance-risque-credit-immobilier-americain/",
+        "role": "Analyse publiée le 5 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le DPE entre dans le bilan des banques",
+        "href": "/posts/dpe-entre-bilan-banques/",
+        "role": "Analyse publiée le 5 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le Golden Age du Buy Now Pay Later",
+        "href": "/posts/golden-age-buy-now-pay-later/",
+        "role": "Analyse publiée le 4 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le boom américain de l'IA est-il vraiment américain ?",
+        "href": "/posts/boom-americain-ia-vraiment-americain/",
+        "role": "Analyse publiée le 4 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les strip-clubs annoncent-ils vraiment les récessions ?",
+        "href": "/posts/strip-clubs-annoncent-ils-recessions/",
+        "role": "Analyse publiée le 2 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "PIB américain : 1,5 % en surface, 3,9 % dans la demande privée",
+        "href": "/posts/pib-americain-demande-privee-t2-2026/",
+        "role": "Analyse publiée le 2 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Yen : 163 412 contrats vendeurs avant le choc",
+        "href": "/posts/yen-163412-contrats-vendeurs-avant-choc/",
+        "role": "Analyse publiée le 2 août 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "L’argent d’Epstein, 4/4 : le dernier grand livre",
+        "href": "/posts/argent-epstein-dernier-grand-livre/",
+        "publishedAt": "2026-08-08T08:02:48.000Z"
+      },
+      {
+        "title": "L’argent d’Epstein, 3/4 : client, courtier ou investisseur ?",
+        "href": "/posts/argent-epstein-client-courtier-investisseur/",
+        "publishedAt": "2026-08-08T03:30:00.000Z"
+      },
+      {
+        "title": "L’argent d’Epstein, 2/4 : ce que les banques voyaient",
+        "href": "/posts/argent-epstein-ce-que-les-banques-voyaient/",
+        "publishedAt": "2026-08-07T15:00:00.000Z"
+      },
+      {
+        "title": "L’argent d’Epstein, 1/4 : la fortune sans grand livre",
+        "href": "/posts/argent-epstein-fortune-sans-grand-livre/",
+        "publishedAt": "2026-08-07T11:30:00.000Z"
+      },
+      {
+        "title": "CLARITY Act : la fenêtre avant les midterms",
+        "href": "/posts/clarity-act-fenetre-avant-midterms/",
+        "publishedAt": "2026-08-06T23:30:00.000Z"
+      },
+      {
+        "title": "Assurance-vie à Hong Kong : Pékin taxe une brèche dans sa muraille financière",
+        "href": "/posts/assurance-vie-hong-kong-taxe-chine-muraille-financiere/",
+        "publishedAt": "2026-08-06T20:00:12.000Z"
+      },
+      {
+        "title": "Productivité américaine : le salaire réel reste derrière",
+        "href": "/posts/productivite-americaine-salaire-reel-derriere/",
+        "publishedAt": "2026-08-06T12:54:33.000Z"
+      },
+      {
+        "title": "SoftBank : la valorisation d’OpenAI devient un risque de liquidité",
+        "href": "/posts/softbank-openai-risque-liquidite/",
+        "publishedAt": "2026-08-06T08:54:28.000Z"
+      },
+      {
+        "title": "Le prêt immobilier américain face à la facture d’assurance",
+        "href": "/posts/facture-assurance-risque-credit-immobilier-americain/",
+        "publishedAt": "2026-08-05T12:15:00.000Z"
+      },
+      {
+        "title": "Le DPE entre dans le bilan des banques",
+        "href": "/posts/dpe-entre-bilan-banques/",
+        "publishedAt": "2026-08-05T10:42:50.000Z"
+      },
+      {
+        "title": "Le Golden Age du Buy Now Pay Later",
+        "href": "/posts/golden-age-buy-now-pay-later/",
+        "publishedAt": "2026-08-04T11:42:00.000Z"
+      },
+      {
+        "title": "Le boom américain de l'IA est-il vraiment américain ?",
+        "href": "/posts/boom-americain-ia-vraiment-americain/",
+        "publishedAt": "2026-08-04T08:35:00.000Z"
+      },
+      {
+        "title": "Les strip-clubs annoncent-ils vraiment les récessions ?",
+        "href": "/posts/strip-clubs-annoncent-ils-recessions/",
+        "publishedAt": "2026-08-02T11:20:00.000Z"
+      },
+      {
+        "title": "PIB américain : 1,5 % en surface, 3,9 % dans la demande privée",
+        "href": "/posts/pib-americain-demande-privee-t2-2026/",
+        "publishedAt": "2026-08-02T08:35:00.000Z"
+      },
+      {
+        "title": "Yen : 163 412 contrats vendeurs avant le choc",
+        "href": "/posts/yen-163412-contrats-vendeurs-avant-choc/",
+        "publishedAt": "2026-08-02T07:45:00.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-08-15T13:00:00.000Z",
+      "windowStart": "2026-08-02T08:30:00+02:00",
+      "windowEnd": "2026-08-09T08:30:00+02:00"
+    }
+  }
+]

@@ -42,9 +42,21 @@ const scheduled = [...workflows]
   .filter(([, source]) => /^\s*schedule:\s*$/m.test(source) || /^\s*cron:\s*/m.test(source))
   .map(([name]) => name);
 requireCondition(
-  scheduled.length === 0,
-  `aucun workflow récurrent autorisé, trouvé dans ${scheduled.join(', ')}`,
+  scheduled.length === 1 && scheduled[0] === 'weekly-edition.yml',
+  `seul weekly-edition.yml peut être récurrent, trouvé dans ${scheduled.join(', ') || 'aucun'}`,
 );
+
+const weekly = workflows.get('weekly-edition.yml') || '';
+requireCondition(weekly.includes("cron: '30 6,7 * * 0'"), 'la double fenêtre UTC de l’Hebdo doit couvrir le changement d’heure parisien');
+requireCondition(weekly.includes("if: github.repository == 'bluetouff/l0g'"), 'le cron Hebdo doit être borné au dépôt canonique');
+requireCondition(weekly.includes('timeout-minutes: 10'), 'le cron Hebdo doit conserver sa limite de 10 minutes');
+requireCondition(weekly.includes('contents: write') && weekly.includes('actions: write'), 'le cron Hebdo doit déclarer ses deux permissions minimales');
+requireCondition(weekly.includes('npm run weekly:update'), 'le cron Hebdo doit utiliser le générateur versionné');
+requireCondition(weekly.includes('npm run test:hebdo') && weekly.includes('npm run test:secrets'), 'le cron Hebdo doit valider le produit et les secrets avant commit');
+requireCondition(weekly.includes('git add -- src/config/weekly-editions.generated.json'), 'le cron Hebdo ne doit indexer que le registre généré');
+requireCondition(weekly.includes('gh workflow run build.yml') && weekly.includes('--ref main'), 'le cron Hebdo doit déclencher la chaîne de release signée');
+requireCondition(!weekly.includes('pull_request_target:'), 'le cron Hebdo ne doit pas être exposé à pull_request_target');
+requireCondition(rootPackage.scripts?.['weekly:update']?.includes('generate-weekly-editions.mjs --write'), 'le script weekly:update doit rester explicite');
 
 const build = workflows.get('build.yml') || '';
 requireCondition(build.includes('branches: [main]'), 'le build doit rester lié à main');
@@ -105,5 +117,5 @@ requireCondition(
 );
 
 process.stdout.write(
-  `CI policy OK: ${workflowNames.length} workflows, aucun cron, contrôles sécurité et métier ciblés.\n`,
+  `CI policy OK: ${workflowNames.length} workflows, un cron Hebdo borné, contrôles sécurité et métier ciblés.\n`,
 );
