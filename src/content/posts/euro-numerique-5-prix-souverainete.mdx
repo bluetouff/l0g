@@ -1,0 +1,745 @@
+---
+title: "Euro numérique, 5/6 : le prix de la souveraineté"
+description: "La BCE chiffre son infrastructure, les banques leur transformation et les commerçants attendent encore le prix de chaque paiement. Notre enquête reconstitue une facture que personne ne publie dans son ensemble."
+pubDate: 2026-08-14T18:30:00+02:00
+updatedDate: 2026-08-14T18:30:00+02:00
+tags: ["euro numérique", "BCE", "banques", "paiements", "Wero", "souveraineté", "enquête"]
+draft: false
+quickTake:
+  fact: "La BCE estime sa couche à 1,3 milliard d’euros de développement puis 320 millions par an. Elle chiffre l’investissement bancaire entre 4 et 5,77 milliards, contre 18 milliards pour l’étude PwC commandée par l’industrie. Ces montants ne couvrent ni les mêmes acteurs ni les mêmes fonctions."
+  importance: "Le futur plafond des commissions décidera qui finance la distribution. L’intégration avec Wero déterminera ensuite si l’infrastructure publique réduit la dépendance européenne ou duplique un système déjà en construction."
+  uncertainty: "Le règlement, la MSC, l’inter-PSP fee, la rémunération de la banque de funding et l’adoption restent ouverts. Le simulateur de l’article utilise des hypothèses modifiables, jamais des prévisions."
+---
+
+import DigitalEuroCostSimulator from '../../components/DigitalEuroCostSimulator.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Ce texte constitue le cinquième volet de notre enquête en six parties sur l’euro numérique. Le [premier article](/posts/euro-numerique-1-euro-change-de-debiteur/) suivait la nature de la monnaie, le [deuxième](/posts/euro-numerique-2-699-milliards-anatomie-stress-test/) testait le risque bancaire, le [troisième](/posts/euro-numerique-3-prive-comme-du-cash/) cartographiait les flux de données et le [quatrième](/posts/euro-numerique-4-argent-programmable-frontiere-juridique/) traçait la frontière juridique de la programmabilité. Cette fois, nous suivons la facture. Elle part du bilan de l’Eurosystème, traverse les systèmes bancaires, arrive sur les terminaux des commerçants et se termine dans un modèle de commissions encore inachevé.*
+
+Quatre chiffres dominent le débat : 1,3 milliard d’euros, 320 millions par an, 5,77 milliards et 18 milliards.
+
+Ils portent sur des périmètres différents et peuvent donc tous être exacts, alors qu’aucun ne représente le coût total de l’euro numérique.
+
+Le premier chiffre concerne le développement de la couche Eurosystème jusqu’à une première émission potentielle. Le deuxième projette son fonctionnement annuel. Le troisième est une estimation de la BCE pour l’investissement bancaire après mutualisation. Le quatrième vient d’une étude PwC commandée par les associations bancaires, avec un univers plus large et d’autres hypothèses sur les systèmes à modifier.
+
+Les additionner produirait une fausse précision. Les opposer comme un minimum et un maximum produirait la même erreur.
+
+La facture dépend du système finalement construit : une infrastructure commune réellement réutilisable, ou une nouvelle couche venant s’ajouter aux cartes, aux virements instantanés et à Wero.
+
+> **État du dossier au 14 août 2026.** Le règlement final n’est pas adopté. Les plafonds de commission, le traitement des paiements hors ligne, la rémunération du PSP distribuant l’euro numérique et celle de la banque tenant le compte de funding restent en négociation. Le simulateur ci-dessous ne prédit donc ni l’adoption ni les frais définitifs. Il rend visibles les transferts économiques produits par des hypothèses modifiables.
+
+## Testez la facture avant de lire
+
+<DigitalEuroCostSimulator lang="fr" />
+
+Le scénario par défaut prend 10 % des paiements par carte de la zone euro en 2025, une commission actuelle moyenne de 0,50 %, une MSC online de 0,30 %, une inter-PSP illustrative de 0,18 % et 10 % de paiements hors ligne sans frais. Ces valeurs ne sont ni décidées ni anticipées. Elles servent à répondre à une question simple : lorsqu’un taux change, qui gagne, qui perd et combien de volume faut-il pour répartir les coûts fixes ?
+
+La sensibilité constitue le résultat le plus utile. Le coût public par transaction chute lorsque le volume augmente. Les économies des commerçants disparaissent si la MSC se rapproche du tarif carte. Le reste brut de l’acquéreur devient négatif si l’inter-PSP dépasse la commission qu’il encaisse. Le principe *no worse-off* protège les grands commerçants qui négocient déjà mieux que la moyenne.
+
+Le modèle économique se joue précisément dans ces écarts.
+
+## Les cinq couches de la facture
+
+Le projet possède au moins cinq couches économiques.
+
+La première appartient à l’Eurosystème : développement, règlement, application, alias, fraude, offline et maintenance centrale.
+
+La deuxième appartient aux banques distributrices : KYC, comptes, applications, core banking, fraude, litiges, comptabilité et relation client.
+
+La troisième appartient aux PSP non bancaires, dont aucune estimation consolidée n’est publiée.
+
+La quatrième appartient aux commerçants et à leurs acquéreurs : terminaux, caisse, e-commerce, certification, support et commission par transaction.
+
+La cinquième est collective. Une dépense couverte par le seigneuriage ne produit pas forcément une ligne budgétaire, mais elle réduit ou mobilise le revenu de banque centrale.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 990" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t1 d1" style="font-family:system-ui,sans-serif;background:#0a111a">
+<title id="t1">Une facture, cinq périmètres</title>
+<desc id="d1">Les coûts publiés concernent l'Eurosystème, les banques, les autres PSP, les commerçants et le coût collectif. Aucun coût total de possession n'est publié.</desc>
+<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs>
+<rect x="1" y="1" width="478" height="988" rx="15" fill="url(#g1)" stroke="#304459"/>
+<text x="24" y="40" fill="#f4f7fb" font-size="21" font-weight="800">UNE FACTURE, CINQ PÉRIMÈTRES</text>
+<text x="24" y="66" fill="#9fb1c5" font-size="12">Les sous-totaux publiés ne forment pas un total consolidé</text>
+<g transform="translate(20 94)"><rect width="440" height="142" rx="12" fill="#13253a" stroke="#68d9c8"/><text x="20" y="30" fill="#8ce8db" font-size="12" font-weight="800">1. EUROSYSTÈME</text><text x="20" y="61" fill="#fff" font-size="22" font-weight="850">1,3 Md€ + 320 M€/an</text><text x="20" y="88" fill="#dbe7ee" font-size="13">Développement central puis exploitation.</text><text x="20" y="111" fill="#dbe7ee" font-size="13">Le revenu monétaire finance une scheme fee nulle.</text><text x="20" y="132" fill="#91a5b8" font-size="11">Estimation BCE, design final encore conditionnel.</text></g>
+<g transform="translate(20 254)"><rect width="440" height="162" rx="12" fill="#172337" stroke="#8facff"/><text x="20" y="30" fill="#a7c0ff" font-size="12" font-weight="800">2. BANQUES</text><text x="20" y="61" fill="#fff" font-size="21" font-weight="850">BCE : 4 à 5,77 Md€</text><text x="20" y="89" fill="#fff" font-size="21" font-weight="850">PwC : 18 Md€</text><text x="20" y="116" fill="#dbe7ee" font-size="13">Univers, synergies, filiales et horizon différents.</text><text x="20" y="139" fill="#ffbd78" font-size="12" font-weight="750">Estimations alternatives aux périmètres distincts.</text></g>
+<g transform="translate(20 434)"><rect width="440" height="130" rx="12" fill="#251d33" stroke="#dda0ff"/><text x="20" y="30" fill="#e8b7ff" font-size="12" font-weight="800">3. PSP NON BANCAIRES</text><text x="20" y="62" fill="#fff" font-size="22" font-weight="850">INCONNU</text><text x="20" y="88" fill="#eee6f2" font-size="13">App, KYC, fraude, support, litiges et funding.</text><text x="20" y="111" fill="#c8b9d0" font-size="11">Aucune estimation consolidée publique.</text></g>
+<g transform="translate(20 582)"><rect width="440" height="142" rx="12" fill="#30251a" stroke="#ffbd78"/><text x="20" y="30" fill="#ffd09d" font-size="12" font-weight="800">4. COMMERÇANTS</text><text x="20" y="62" fill="#fff" font-size="22" font-weight="850">INTÉGRATION + MSC</text><text x="20" y="88" fill="#f4e8d8" font-size="13">POS, e-commerce, certification et assistance.</text><text x="20" y="111" fill="#f4e8d8" font-size="13">La commission sera plafonnée, son niveau reste inconnu.</text><text x="20" y="132" fill="#c9ab89" font-size="11">Les petits et grands commerçants partent de tarifs différents.</text></g>
+<g transform="translate(20 742)"><rect width="440" height="142" rx="12" fill="#321d22" stroke="#ff8498"/><text x="20" y="30" fill="#ffa6b5" font-size="12" font-weight="800">5. COÛT COLLECTIF</text><text x="20" y="62" fill="#fff" font-size="22" font-weight="850">SEIGNEURIAGE ET OPPORTUNITÉ</text><text x="20" y="88" fill="#f2e2e5" font-size="13">Le coût réduit ou mobilise le revenu de banque centrale.</text><text x="20" y="111" fill="#f2e2e5" font-size="13">L'effet final dépend du bilan, des taux et de l'adoption.</text><text x="20" y="132" fill="#cca0a8" font-size="11">Le coût peut transiter par le revenu monétaire.</text></g>
+<rect x="20" y="906" width="440" height="56" rx="10" fill="#0f1822" stroke="#ff8498"/>
+<text x="40" y="930" fill="#ff9aac" font-size="12" font-weight="800">VERDICT</text>
+<text x="40" y="950" fill="#edf3f8" font-size="13">Aucun coût total de possession n'est publié au 14 août 2026.</text>
+<text x="24" y="980" fill="#75899d" font-size="10.5">Sources : BCE, Commission, PwC, ECA. Synthèse l0g.</text>
+</svg>
+<figcaption>Les montants publiés couvrent des couches différentes. Aucune estimation ne consolide encore toute la durée de vie de l’infrastructure.</figcaption>
+</figure>
+
+Un coût total de possession devrait suivre chaque couche pendant plusieurs années, avec :
+
+- investissement initial ;
+- exploitation ;
+- mises à jour ;
+- sécurité ;
+- matériel ;
+- fournisseurs ;
+- support ;
+- fraude ;
+- litiges ;
+- réversibilité ;
+- coûts d’opportunité ;
+- revenus de compensation.
+
+Aucune publication ne fait ce travail.
+
+La BCE publie sa propre couche et une estimation de l’investissement bancaire. PwC chiffre la transformation des banques. La Cour des comptes européenne documente l’opacité du marché des cartes. La banque centrale néerlandaise interroge les commerçants. EPI communique sur Wero.
+
+Ces pièces permettent de reconstruire le mécanisme. Elles ne forment pas encore un grand livre complet.
+
+## 1,3 milliard pour la couche publique
+
+La [BCE estime](https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251030~8c5b5beef0.en.html) le développement de l’Eurosystème à environ **1,3 milliard d’euros** jusqu’à une première émission potentielle.
+
+Le montant doit couvrir les composants centraux développés par les banques centrales et ceux confiés à des fournisseurs :
+
+- application et SDK ;
+- solution hors ligne ;
+- gestion des risques et fraudes ;
+- alias lookup ;
+- SEPI ;
+- règlement ;
+- rulebook ;
+- tests ;
+- préparation opérationnelle.
+
+À partir de 2029, la BCE projette environ **320 millions d’euros par an** de fonctionnement.
+
+Cette date ne vaut pas décision d’émission. Elle sert d’horizon de planification.
+
+Sur une base nominale très simple :
+
+- développement plus cinq années d’exploitation : 2,9 milliards d’euros ;
+- développement plus dix années : 4,5 milliards.
+
+Ces deux additions sont des scénarios l0g. Elles ne tiennent compte ni de l’inflation, ni de l’actualisation, ni d’une montée en charge, ni de nouvelles dépenses.
+
+Elles replacent simplement les 1,3 milliard dans la durée de vie du système, dont la facture publique serait plus élevée.
+
+### Le financement du coût public par le seigneuriage
+
+La BCE explique que l’Eurosystème assumera ses dépenses comme il assume celles des billets, grâce au seigneuriage.
+
+Le terme peut donner l’impression d’une ressource gratuite.
+
+Le mécanisme est plus concret.
+
+La monnaie émise constitue un passif de la banque centrale. Les actifs détenus en contrepartie peuvent produire un revenu. L’euro numérique serait non rémunéré dans les textes actuels, tandis que les actifs correspondants peuvent rapporter des intérêts.
+
+Les dépenses sont alors absorbées par ce revenu.
+
+Trois résultats sont possibles.
+
+**Un revenu additionnel couvre le projet.** L’euro numérique augmente suffisamment le bilan rémunérateur pour compenser son coût.
+
+**La monnaie numérique remplace des billets.** Le revenu monétaire change peu, mais la structure des dépenses évolue.
+
+**Le coût réduit le résultat net.** Les banques centrales nationales reçoivent moins de bénéfices ou constituent moins de réserves, ce qui peut finir par toucher les finances publiques.
+
+La bonne formulation est donc :
+
+> **Le seigneuriage évite une scheme fee facturée par l’Eurosystème. Il ne rend pas l’infrastructure économiquement gratuite.**
+
+Un [papier de la BCE sur la rentabilité des CBDC](https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op360~35915b25bd.en.pdf) calcule dans un scénario moyen une hausse du revenu net d’intérêt de 1,17 milliard d’euros par an. Le résultat dépend d’un encours de 125 milliards, de son origine et des taux moyens retenus.
+
+Il ne constitue pas une prévision de bénéfice pour le futur euro numérique.
+
+Il montre que le résultat public dépend autant du bilan que du code informatique.
+
+## Le conflit d’estimation des coûts bancaires
+
+Trois estimations circulent pour les banques.
+
+La [Commission européenne](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52023SC0233) évaluait en 2023 leur investissement entre **2,8 et 5,4 milliards d’euros**.
+
+La [BCE](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_a_view_on_recent_assessments_of_digital_euro_investment_costs_for_the_euro_area_banking_sector.en.pdf) retient en 2025 une fourchette de **4 à 5,77 milliards sur quatre ans**.
+
+L’[étude PwC](https://www.ebf.eu/wp-content/uploads/2025/06/PwC-Digital-Euro-Cost-Study-2025.pdf), commandée par l’EACB, l’EBF et l’ESBG, obtient **18 milliards d’euros**. Un scénario élargi peut monter jusqu’à 30 milliards.
+
+Ces montants ne sont pas trois mesures du même objet.
+
+PwC part de 19 banques ou groupes dans neuf marchés. L’étude recense les modifications commerciales, techniques et opérationnelles, puis extrapole à la zone euro. Environ 75 % du coût viendrait de la couche technique. Les répondants estiment mobiliser près de 46 % de leurs ressources qualifiées pertinentes chaque année pendant quatre ans.
+
+Le chiffre de 18 milliards exclut pourtant :
+
+- le mode hors ligne ;
+- les comptes multiples ;
+- l’acquisition commerçant ;
+- les coûts de fonctionnement récurrents.
+
+Le montant paraît élevé et reste incomplet.
+
+La BCE repart ensuite des mêmes données, corrige certains lots et applique des synergies beaucoup plus fortes.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1060" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t3 d3" style="font-family:system-ui,sans-serif;background:#0a111a">
+<title id="t3">Comparaison des périmètres de coût à 5,77 et 18 milliards d’euros</title>
+<desc id="d3">Le pont de la BCE retire certains postes et applique des synergies plus fortes. PwC maintient que les coûts sont déplacés et que certaines filiales restent autonomes.</desc>
+<defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#16283e"/></linearGradient></defs>
+<rect x="1" y="1" width="478" height="1058" rx="15" fill="url(#g3)" stroke="#304459"/>
+<text x="24" y="39" fill="#f4f7fb" font-size="20" font-weight="800">5,77 Md€ VS 18 Md€</text>
+<text x="24" y="65" fill="#9fb1c5" font-size="12">Comparaison de deux architectures de coût</text>
+<g transform="translate(20 92)"><rect width="440" height="396" rx="13" fill="#172337" stroke="#8facff"/><text x="20" y="30" fill="#a7c0ff" font-size="12" font-weight="800">PONT BCE 2025</text><text x="20" y="63" fill="#fff" font-size="22" font-weight="850">124 M€ par banque</text><text x="20" y="91" fill="#dce7ef" font-size="13">Base détaillée issue des bundles PwC</text><rect x="20" y="112" width="400" height="142" rx="10" fill="#101923" stroke="#3b5269"/><text x="34" y="136" fill="#ffbd78" font-size="12" font-weight="800">CORRECTIONS EXPLICITES : -20,1 M€</text><text x="34" y="163" fill="#dce7ef" font-size="12.5">Carte physique : -6,0 M€</text><text x="34" y="187" fill="#dce7ef" font-size="12.5">POS : -7,0 M€</text><text x="34" y="211" fill="#dce7ef" font-size="12.5">ATM : -5,1 M€</text><text x="34" y="235" fill="#dce7ef" font-size="12.5">Calcul des frais : -2,0 M€</text><text x="20" y="284" fill="#fff" font-size="19" font-weight="800">Base ajustée : 103,9 M€</text><text x="20" y="316" fill="#dce7ef" font-size="13">Puis synergies de groupe : 90 à 98 % pour certains IPS</text><text x="20" y="342" fill="#dce7ef" font-size="13">Synergies de marché : 25 à 40 % selon scénario</text><text x="20" y="368" fill="#dce7ef" font-size="13">Univers : 1 929 banques retail, groupes consolidés</text><text x="20" y="390" fill="#8facff" font-size="14" font-weight="850">Résultat base : 5,77 Md€</text></g>
+<g transform="translate(20 510)"><rect width="440" height="396" rx="13" fill="#30251a" stroke="#ffbd78"/><text x="20" y="30" fill="#ffd09d" font-size="12" font-weight="800">RÉPONSE PWC / BANQUES 2026</text><text x="20" y="63" fill="#fff" font-size="22" font-weight="850">18 Md€ maintenus</text><text x="20" y="91" fill="#f4e8d8" font-size="13">Après relecture du rulebook 0.9 et de la note BCE</text><text x="20" y="132" fill="#f4e8d8" font-size="13">Synergies de groupe revendiquées : plus de 79 %</text><text x="20" y="160" fill="#f4e8d8" font-size="13">754 banques supportent un coût direct</text><text x="20" y="188" fill="#f4e8d8" font-size="13">1 828 banques utilisent entièrement la plateforme du groupe</text><rect x="20" y="214" width="400" height="132" rx="10" fill="#21170f" stroke="#ff8498"/><text x="34" y="238" fill="#ffa6b5" font-size="12" font-weight="800">OBJECTION</text><text x="34" y="266" fill="#f4e8d8" font-size="12.5">Même carte, POS ou ATM : nouveau schéma et certification.</text><text x="34" y="292" fill="#f4e8d8" font-size="12.5">L'outsourcing devient licence, frais de service et lock-in.</text><text x="34" y="318" fill="#f4e8d8" font-size="12.5">Les filiales sur IT distinct gardent des coûts locaux.</text><text x="20" y="378" fill="#ffbd78" font-size="14" font-weight="850">Résultat : 18 Md€ de change costs</text></g>
+<rect x="20" y="928" width="440" height="88" rx="11" fill="#11202a" stroke="#68d9c8"/>
+<text x="38" y="953" fill="#8ce8db" font-size="12" font-weight="800">LE VRAI DÉSACCORD</text>
+<text x="38" y="977" fill="#edf3f8" font-size="12.5">Quel coût peut être mutualisé, et à quel prix futur du fournisseur ?</text>
+<text x="38" y="999" fill="#edf3f8" font-size="12.5">Le TCO récurrent reste absent des deux calculs.</text>
+<text x="24" y="1042" fill="#75899d" font-size="10.5">Sources : BCE octobre 2025, PwC juin 2025 et mars 2026.</text>
+</svg>
+<figcaption>Le désaccord porte surtout sur les frontières du coût incrémental, la consolidation des groupes et le prix futur des fournisseurs.</figcaption>
+</figure>
+
+### Le pont entre 124 et 103,9 millions
+
+La note BCE permet de suivre une partie du calcul.
+
+Elle utilise comme base détaillée environ **124 millions d’euros par banque** dans les lots PwC, puis retranche quatre postes :
+
+| Poste | Correction BCE |
+|---|---:|
+| Carte physique | -6,0 M€ |
+| Terminaux POS | -7,0 M€ |
+| ATM | -5,1 M€ |
+| Calcul des frais | -2,0 M€ |
+| **Total** | **-20,1 M€** |
+
+La base passe donc mécaniquement à **103,9 millions par banque**, avant les synergies.
+
+Pourquoi retirer ces coûts ?
+
+La carte physique existe déjà et son émission est souvent externalisée. Une partie des POS sera renouvelée naturellement. Beaucoup d’ATM possèdent déjà le NFC ou un lecteur QR. Le DESP calculera certaines commissions.
+
+La [mise à jour PwC de mars 2026](https://www.ebf.eu/wp-content/uploads/2026/04/2026-03-24_Digital-Euro-Cost-Study_Update.pdf) répond poste par poste.
+
+Le plastique ne constitue que le support visible d’une carte. Il faut ajouter protocoles, cryptographie, certification et cycle de vie.
+
+Un POS compatible NFC doit encore recevoir le logiciel, être intégré à la caisse puis recertifié.
+
+Un ATM équipé d’un lecteur ne possède pas les flux de funding, de defunding, de sécurité et de rapprochement nécessaires.
+
+Le DESP peut calculer la commission. La banque doit toujours la recevoir, la vérifier, la comptabiliser et régler les écarts.
+
+Les deux camps ne débattent donc pas de l’existence du matériel visible. Ils débattent du nombre de couches nouvelles cachées derrière ce matériel.
+
+### Les synergies changent l’univers
+
+La BCE applique ensuite des synergies de groupe très élevées, parfois comprises entre 90 et 98 % pour les réseaux mutualistes ou les établissements partageant une même plateforme.
+
+Elle ajoute des synergies de marché grâce :
+
+- aux fournisseurs communs ;
+- à l’outsourcing ;
+- aux plateformes nationales ;
+- au *digital euro as a service*.
+
+Son scénario de base utilise environ 30 % de synergies de marché.
+
+PwC affirme dans sa mise à jour avoir déjà intégré plus de 79 % de synergies moyennes de groupe. L’étude concentre les coûts directs sur 754 banques retail, tandis que 1 828 établissements utiliseraient entièrement la plateforme du groupe.
+
+La divergence vient aussi de deux unités de calcul différentes.
+
+Une filiale juridique peut être presque gratuite si elle partage tout le système du groupe.
+
+Elle peut rester coûteuse si son core banking, ses procédures, son marché national ou ses fournisseurs diffèrent.
+
+L’externalisation complique encore la comparaison.
+
+Un fournisseur peut développer une fonction une seule fois. Les banques paieront ensuite :
+
+- intégration ;
+- abonnement ;
+- licence ;
+- service ;
+- support ;
+- marge ;
+- switching.
+
+La baisse du CAPEX peut ainsi s’accompagner d’un coût total de possession élevé.
+
+Aucune des deux grandes estimations ne publie un TCO à dix ou quinze ans incluant les tarifs futurs des fournisseurs.
+
+## La chaîne de rémunération
+
+Le projet cherche à concilier trois engagements :
+
+1. services de base gratuits pour le particulier ;
+2. rémunération suffisante des PSP ;
+3. coût maîtrisé pour le commerçant.
+
+Le [mandat parlementaire](https://www.europarl.europa.eu/doceo/document/A-10-2026-0185_EN.pdf) interdit de facturer directement ou indirectement l’ouverture, la détention, la gestion, les paiements de base et au moins un instrument.
+
+Les services additionnels peuvent être vendus séparément.
+
+La chaîne marchande repose sur deux commissions.
+
+La **merchant service charge**, ou MSC, est payée par le commerçant à son PSP acquéreur.
+
+L’**inter-PSP fee** est versée par l’acquéreur au PSP qui distribue l’euro numérique au consommateur.
+
+L’Eurosystème ne facture ni scheme fee ni settlement fee.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 1010" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t2 d2" style="font-family:system-ui,sans-serif;background:#0a111a">
+<title id="t2">Cent euros, trois chaînes de rémunération</title>
+<desc id="d2">Comparaison entre une carte internationale, un euro numérique à quatre coins et un euro numérique avec une banque de funding distincte.</desc>
+<defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#15283e"/></linearGradient><marker id="arr2" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#68d9c8"/></marker></defs>
+<rect x="1" y="1" width="478" height="1008" rx="15" fill="url(#g2)" stroke="#304459"/>
+<text x="24" y="40" fill="#f4f7fb" font-size="21" font-weight="800">100 € : QUI REÇOIT QUOI ?</text>
+<text x="24" y="66" fill="#9fb1c5" font-size="12">HYPOTHÈSES ILLUSTRATIVES</text>
+<g transform="translate(20 92)"><rect width="440" height="240" rx="13" fill="#172337" stroke="#8facff"/><text x="20" y="30" fill="#a7c0ff" font-size="12" font-weight="800">CARTE INTERNATIONALE, MOYENNE ILLUSTRATIVE</text><text x="20" y="63" fill="#fff" font-size="24" font-weight="850">Commerçant : environ 0,50 €</text><path d="M220 92H390" stroke="#68d9c8" stroke-width="3" marker-end="url(#arr2)"/><text x="20" y="98" fill="#dce7ef" font-size="13">MSC</text><text x="20" y="126" fill="#dce7ef" font-size="13">Interchange + scheme + processing</text><text x="20" y="150" fill="#dce7ef" font-size="13">+ marge acquéreur + risque + service</text><rect x="20" y="172" width="400" height="46" rx="9" fill="#101923" stroke="#3b5269"/><text x="34" y="191" fill="#ffbd78" font-size="11.5" font-weight="750">DONNÉE INCOMPLÈTE</text><text x="34" y="208" fill="#cad6df" font-size="11.5">Les contrats et NDAs empêchent une ventilation publique complète.</text></g>
+<g transform="translate(20 354)"><rect width="440" height="262" rx="13" fill="#152c31" stroke="#68d9c8"/><text x="20" y="30" fill="#8ce8db" font-size="12" font-weight="800">EURO NUMÉRIQUE, MODÈLE À QUATRE COINS</text><text x="20" y="60" fill="#fff" font-size="15" font-weight="750">Commerçant</text><path d="M110 56H180" stroke="#68d9c8" stroke-width="3" marker-end="url(#arr2)"/><text x="194" y="60" fill="#fff" font-size="15" font-weight="750">PSP acquéreur</text><path d="M300 56H370" stroke="#68d9c8" stroke-width="3" marker-end="url(#arr2)"/><text x="20" y="103" fill="#dceae7" font-size="13">MSC finale : inconnue et plafonnée</text><text x="20" y="131" fill="#dceae7" font-size="13">Inter-PSP illustrative : environ 0,18 €</text><text x="20" y="159" fill="#dceae7" font-size="13">Scheme fee Eurosystème : 0 €</text><text x="20" y="187" fill="#dceae7" font-size="13">Settlement fee Eurosystème : 0 €</text><rect x="20" y="207" width="400" height="34" rx="8" fill="#0e1b1e" stroke="#68d9c8"/><text x="34" y="229" fill="#b8f0e7" font-size="11.5">Les 0,18 € couvrent uniquement le transfert inter-PSP.</text></g>
+<g transform="translate(20 638)"><rect width="440" height="300" rx="13" fill="#30251a" stroke="#ffbd78"/><text x="20" y="30" fill="#ffd09d" font-size="12" font-weight="800">EURO NUMÉRIQUE, MODÈLE À SIX COINS</text><text x="20" y="62" fill="#fff" font-size="15" font-weight="750">Compte bancaire lié</text><path d="M155 58H220" stroke="#ffbd78" stroke-width="3" marker-end="url(#arr2)"/><text x="234" y="62" fill="#fff" font-size="15" font-weight="750">PSP wallet</text><text x="20" y="100" fill="#f4e8d8" font-size="13">La banque de funding authentifie et fournit la liquidité.</text><text x="20" y="128" fill="#f4e8d8" font-size="13">Le PSP wallet gère le compte euro numérique.</text><text x="20" y="156" fill="#f4e8d8" font-size="13">Le PSP acquéreur sert le commerçant.</text><rect x="20" y="181" width="400" height="78" rx="10" fill="#21170f" stroke="#ff8498"/><text x="34" y="204" fill="#ffa6b5" font-size="12" font-weight="800">ANGLE MORT</text><text x="34" y="226" fill="#f4e8d8" font-size="12">Qui rémunère la banque de funding tierce ?</text><text x="34" y="247" fill="#f4e8d8" font-size="12">Le compromis final ne fixe pas encore la réponse.</text><text x="20" y="285" fill="#c9ab89" font-size="11">Le modèle doit associer responsabilité opérationnelle et revenu.</text></g>
+<text x="24" y="980" fill="#75899d" font-size="10.5">Sources : BCE compensation model, Parlement, ECA. Synthèse l0g.</text>
+</svg>
+<figcaption>L’illustration de 0,18 euro représente une inter-PSP possible. La commission totale du commerçant comprend d’autres composantes.</figcaption>
+</figure>
+
+### Le périmètre réel des 18 centimes
+
+Dans une présentation illustrative, la BCE utilise environ **0,18 euro d’inter-PSP** sur une transaction de 100 euros.
+
+Le chiffre est parfois converti à tort en MSC de 0,18 %. Il représente uniquement le transfert entre PSP dans l’exemple de la BCE.
+
+L’acquéreur doit encore financer :
+
+- son infrastructure ;
+- son contrat commerçant ;
+- le support ;
+- la fraude ;
+- les litiges ;
+- la certification ;
+- sa marge.
+
+La MSC finale doit être plus élevée que l’inter-PSP si l’acquéreur veut couvrir ses coûts.
+
+Le simulateur affiche une alerte lorsque l’utilisateur place l’inter-PSP au-dessus de la MSC applicable.
+
+Cette alerte traduit directement le problème économique.
+
+### Le sixième coin
+
+Le modèle classique comporte :
+
+- consommateur ;
+- PSP du consommateur ;
+- Eurosystème ;
+- PSP acquéreur ;
+- commerçant.
+
+Le reverse waterfall peut tirer les fonds depuis un compte tenu dans une autre banque.
+
+Une sixième partie intervient alors : la banque de funding.
+
+Elle :
+
+- tient le compte ;
+- authentifie ;
+- transfère la liquidité ;
+- gère une partie du risque ;
+- peut traiter l’incident ou la fraude.
+
+Cette banque peut être distincte du PSP qui fournit le portefeuille.
+
+Les banques demandent une rémunération spécifique.
+
+Les PSP non bancaires répondent qu’elle augmenterait leur coût et renforcerait l’avantage des banques qui possèdent déjà les dépôts.
+
+Le [rapport BCE/ERPB sur l’intégration dans l’écosystème](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251030_digital_euro_fit_payment_ecosystem_report.en.pdf) reconnaît que les positions sont parfois mutuellement incompatibles.
+
+Le futur modèle doit donc répondre à une question simple :
+
+> **Peut-on imposer à une banque une responsabilité opérationnelle sans lui attribuer une part identifiable du revenu ?**
+
+## Le Parlement organise le plafond
+
+Le compromis ECON construit un mécanisme en plusieurs temps.
+
+### Une phase transitoire
+
+Les plafonds de MSC et d’inter-PSP sont fondés sur les moyens numériques comparables, notamment les cartes de débit domestiques et internationales.
+
+La Commission fixe et publie les niveaux avec l’assistance technique de la BCE.
+
+Le calcul doit intégrer :
+
+- les frais observés sur les douze mois précédents ;
+- la valeur des transactions ;
+- les coûts de raccordement ;
+- l’absence de scheme et processing fees de l’Eurosystème ;
+- un partage de l’économie entre PSP et commerçants.
+
+### Un no worse-off individuel
+
+Le plafond moyen ne suffit pas.
+
+Un PSP ne peut pas facturer à un commerçant plus que ce qu’il lui facture déjà pour un moyen comparable.
+
+Cette protection est importante pour :
+
+- les grands commerçants négociant très bas ;
+- les pays dotés de schémas domestiques efficaces ;
+- les contrats bénéficiant déjà de tarifs favorables.
+
+Dans le simulateur, le grand commerçant actuellement à 0,25 % ne subit pas automatiquement une MSC de 0,30 %. Son tarif online reste plafonné à 0,25 %.
+
+### Une MSC all-in
+
+Le Parlement veut agréger les charges transactionnelles dans une MSC unique, exprimée en pourcentage de la valeur traitée.
+
+La règle répond à une faiblesse du marché des cartes.
+
+La [Cour des comptes européenne](https://www.eca.europa.eu/ECAPublications/SR-2025-01/SR-2025-01_EN.pdf) souligne que les contrats, les structures tarifaires et les clauses de confidentialité rendent l’observation des commissions extrêmement difficile.
+
+Une MSC standardisée faciliterait :
+
+- comparaison ;
+- contrôle ;
+- least-cost routing ;
+- publication de statistiques.
+
+Elle ne supprimera pas forcément tous les frais fixes ou tous les services additionnels. Le texte final devra empêcher qu’ils reconstruisent la commission sous un autre nom.
+
+### L’offline divise encore les institutions
+
+Le Parlement veut des transactions hors ligne sans inter-PSP fee et les présente comme entièrement gratuites.
+
+Le Conseil envisage un mécanisme de compensation par proxy : les acquéreurs alimenteraient un fonds commun redistribué selon les opérations de funding et de defunding.
+
+Le compromis final devra choisir entre deux principes.
+
+**La transaction offline ressemble au cash et ne rémunère personne à chaque échange.**
+
+**Les PSP doivent néanmoins être compensés pour maintenir les dispositifs, charger les fonds et supporter les risques.**
+
+Le coût ne disparaît pas lorsque la commission disparaît.
+
+Il change de base de répartition.
+
+## Le plafond redistribue les revenus du paiement
+
+Une commission moyenne peut masquer de fortes différences.
+
+La BCE illustre une transaction de 100 euros par carte internationale avec un coût moyen d’environ 0,50 euro. Certains petits commerçants approchent un euro. De grands groupes peuvent se situer autour de 0,25 euro.
+
+Le même plafond euro numérique produira donc trois effets.
+
+**Les petits commerçants gagnent beaucoup** s’ils passent de 0,90 à 0,30 %.
+
+**Le commerçant moyen gagne modérément** s’il passe de 0,50 à 0,30 %.
+
+**Le grand commerçant peut perdre** si un plafond moyen remplace son contrat à 0,25 %. Le no worse-off évite cet effet.
+
+L’[enquête de la banque centrale néerlandaise](https://www.dnb.nl/en/publications/research-publications/occasional-study/nr-3-2025-attitudes-of-dutch-merchants-towards-the-digital-euro/) auprès de 1 023 commerçants montre bien ce problème.
+
+79 % craignent des frais élevés.
+
+Environ deux tiers craignent les investissements nécessaires.
+
+Le marché néerlandais possède déjà des paiements de compte à compte efficaces et peu coûteux. Une moyenne européenne ne constitue pas forcément un progrès local.
+
+Le bon plafond doit donc arbitrer entre :
+
+- harmonisation ;
+- concurrence ;
+- viabilité des acquéreurs ;
+- protection individuelle ;
+- différences nationales.
+
+## Le scénario central comme test de sensibilité
+
+Avec les hypothèses par défaut du simulateur :
+
+- 10 % des paiements par carte migrent ;
+- la valeur annuelle atteint environ 353 milliards d’euros ;
+- les commerçants économisent mécaniquement environ 812 millions ;
+- les PSP perçoivent environ 953 millions de MSC ;
+- environ 572 millions vont au PSP distributeur dans l’illustration ;
+- l’acquéreur conserve environ 381 millions avant ses propres coûts ;
+- l’OPEX public représente environ 3,49 centimes par transaction ;
+- l’OPEX et le développement amorti représentent environ 4,91 centimes.
+
+Le calcul sert à révéler quatre contraintes, sans conclure à la rentabilité de l’euro numérique.
+
+### L’adoption dilue le coût fixe
+
+À 5 % d’adoption, la couche publique coûte mécaniquement deux fois plus par transaction qu’à 10 %.
+
+Une infrastructure souveraine peu utilisée peut être utile pour la résilience.
+
+Elle reste chère par opération.
+
+### La commission commerçant finance tout l’écosystème privé
+
+Une MSC très basse maximise l’économie du commerçant.
+
+Elle réduit la capacité de l’acquéreur et du PSP distributeur à couvrir leurs coûts.
+
+### L’inter-PSP fixe la répartition interne
+
+Pour un même prix marchand, augmenter l’inter-PSP enrichit la distribution et appauvrit l’acquisition.
+
+La commission ne crée pas de ressource supplémentaire.
+
+Elle partage la même enveloppe.
+
+### L’offline gratuit déplace la facture
+
+Plus la part offline augmente, plus l’économie du commerçant progresse dans le modèle parlementaire.
+
+La maintenance et le risque doivent alors être couverts ailleurs.
+
+Le simulateur offre ainsi un test de cohérence pour les promesses politiques.
+
+## Une nouvelle pression tarifaire sur Visa et Mastercard
+
+La souveraineté des paiements est l’une des justifications principales du projet.
+
+La [BCE](https://www.ecb.europa.eu/pub/pdf/other/ecb.reportcardschemes202502~1614226b0a.en.pdf) estime que les schémas internationaux traitaient environ 61 % des transactions par carte de la zone euro en 2022 et environ 64 % des transactions électroniques initiées par des cartes émises dans la zone euro en 2023.
+
+Treize pays dépendent entièrement de ces schémas pour les cartes en magasin.
+
+La Cour des comptes européenne évalue la part combinée de Visa et Mastercard à près de 90 % du segment international.
+
+L’euro numérique pourrait supprimer une partie des frais de schéma et offrir une alternative commune en euros.
+
+Il ne reproduit pas automatiquement toutes les fonctions des cartes :
+
+- crédit ;
+- récompenses ;
+- garanties commerciales ;
+- chargeback international ;
+- paiements hors zone euro ;
+- conversion de devises ;
+- acceptation mondiale.
+
+Le scénario le plus plausible est une pression progressive sur le pouvoir tarifaire.
+
+Un commerçant disposant d’un rail public et d’une solution européenne de compte à compte peut mieux négocier.
+
+La souveraineté acquiert alors une valeur économique avant même de conquérir la majorité du marché.
+
+## Wero change l’équation de souveraineté
+
+Wero constitue déjà un rail privé européen. EPI indiquait au milieu de 2026 que la solution desservait environ **56 millions d’utilisateurs**, avec :
+
+- P2P en Belgique, France et Allemagne ;
+- e-commerce en Allemagne ;
+- extension en Belgique et en France ;
+- migration de Payconiq au Luxembourg ;
+- migration progressive d’iDEAL aux Pays-Bas.
+
+Ces chiffres viennent de l’opérateur et ne documentent ni l’activité réelle des 56 millions d’utilisateurs, ni des volumes marchands stabilisés. Ils attestent toutefois la construction d’un wallet et d’un schéma A2A européens.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 480 990" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t4 d4" style="font-family:system-ui,sans-serif;background:#0a111a">
+<title id="t4">Quatre scénarios entre Wero et l'euro numérique</title>
+<desc id="d4">Le rapport entre Wero et l'euro numérique peut prendre la forme de duplication, cannibalisation, intégration ou couche d'acceptation commune.</desc>
+<defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a111a"/><stop offset="1" stop-color="#14263a"/></linearGradient></defs>
+<rect x="1" y="1" width="478" height="988" rx="15" fill="url(#g4)" stroke="#304459"/>
+<text x="24" y="40" fill="#f4f7fb" font-size="20" font-weight="800">WERO + EURO NUMÉRIQUE</text>
+<text x="24" y="66" fill="#9fb1c5" font-size="12">Quatre trajectoires possibles pour la souveraineté des paiements</text>
+<g transform="translate(20 94)"><rect width="440" height="180" rx="13" fill="#321d22" stroke="#ff8498"/><text x="20" y="30" fill="#ffa6b5" font-size="12" font-weight="800">1. DUPLICATION</text><text x="20" y="62" fill="#fff" font-size="20" font-weight="850">Deux apps, deux rails, deux certifications</text><text x="20" y="92" fill="#f2e2e5" font-size="13">Wero et le public financent chacun l'acceptation.</text><text x="20" y="118" fill="#f2e2e5" font-size="13">Coûts fixes doublés et volumes fragmentés.</text><text x="20" y="151" fill="#ffbd78" font-size="12" font-weight="750">RISQUE : le coût augmente si l'échelle reste faible.</text></g>
+<g transform="translate(20 294)"><rect width="440" height="180" rx="13" fill="#30251a" stroke="#ffbd78"/><text x="20" y="30" fill="#ffd09d" font-size="12" font-weight="800">2. CANNIBALISATION PUBLIQUE</text><text x="20" y="62" fill="#fff" font-size="20" font-weight="850">Cours légal + acceptation obligatoire</text><text x="20" y="92" fill="#f4e8d8" font-size="13">L'euro numérique concurrence Wero sur les mêmes usages.</text><text x="20" y="118" fill="#f4e8d8" font-size="13">L'infrastructure publique absorbe scheme et processing.</text><text x="20" y="151" fill="#ffbd78" font-size="12" font-weight="750">RISQUE : affaiblir le champion privé européen.</text></g>
+<g transform="translate(20 494)"><rect width="440" height="180" rx="13" fill="#172337" stroke="#8facff"/><text x="20" y="30" fill="#a7c0ff" font-size="12" font-weight="800">3. INTÉGRATION</text><text x="20" y="62" fill="#fff" font-size="20" font-weight="850">Wero devient l'interface</text><text x="20" y="92" fill="#dce7ef" font-size="13">Même wallet, choix entre compte bancaire et euro numérique.</text><text x="20" y="118" fill="#dce7ef" font-size="13">Wero garde marque, UX, fidélité et services.</text><text x="20" y="151" fill="#8facff" font-size="12" font-weight="750">CONDITION : partage clair des frais, données et responsabilités.</text></g>
+<g transform="translate(20 694)"><rect width="440" height="206" rx="13" fill="#152c31" stroke="#68d9c8"/><text x="20" y="30" fill="#8ce8db" font-size="12" font-weight="800">4. COMMON ACCEPTANCE LAYER</text><text x="20" y="62" fill="#fff" font-size="20" font-weight="850">Un rail ouvert pour plusieurs solutions</text><text x="20" y="92" fill="#dceae7" font-size="13">NFC, QR, API et standards communs.</text><text x="20" y="118" fill="#dceae7" font-size="13">Les rails communs réduisent l'investissement réseau de Wero.</text><text x="20" y="144" fill="#dceae7" font-size="13">Le commerçant peut choisir le rail le moins coûteux.</text><text x="20" y="177" fill="#68d9c8" font-size="12" font-weight="800">PROMESSE BCE : transformer le coût public en bien commun.</text></g>
+<rect x="20" y="920" width="440" height="44" rx="9" fill="#101923" stroke="#3b5269"/>
+<text x="38" y="947" fill="#edf3f8" font-size="12.5">La gouvernance détermine le résultat avec la technologie.</text>
+<text x="24" y="981" fill="#75899d" font-size="10.5">Sources : EPI, ECB Fit in the Ecosystem. Synthèse l0g.</text>
+</svg>
+<figcaption>Wero peut être doublonné, concurrencé, intégré ou renforcé par une couche d’acceptation commune.</figcaption>
+</figure>
+
+### Duplication
+
+L’euro numérique et Wero construisent chacun :
+
+- app ;
+- alias ;
+- QR ;
+- NFC ;
+- acquisition ;
+- certification ;
+- fraude.
+
+L’Europe paie deux fois et divise les volumes.
+
+### Cannibalisation publique
+
+Le cours légal et l’acceptation obligatoire donnent à l’euro numérique un avantage réglementaire.
+
+Le financement par seigneuriage retire certaines commissions de la chaîne.
+
+Wero peut perdre l’incitation privée à investir.
+
+### Intégration
+
+Wero devient l’une des interfaces.
+
+L’utilisateur choisit dans le même wallet :
+
+- compte bancaire ;
+- euro numérique.
+
+La monnaie publique fournit le règlement.
+
+Wero conserve :
+
+- marque ;
+- UX ;
+- services ;
+- fidélité ;
+- abonnement ;
+- présence commerciale.
+
+### Couche d’acceptation commune
+
+La BCE met en avant un scénario plus ambitieux.
+
+Les standards de l’euro numérique deviennent une infrastructure ouverte utilisable par :
+
+- Wero ;
+- schémas domestiques ;
+- autres solutions A2A ;
+- nouveaux entrants.
+
+Le commerçant adapte son terminal une fois.
+
+Plusieurs rails peuvent fonctionner sur les mêmes interfaces.
+
+Le coût public devient alors un bien commun.
+
+Cette promesse dépend de la gouvernance.
+
+Il faut répondre à plusieurs questions :
+
+- qui contrôle les standards ?
+- qui certifie ?
+- le commerçant choisit-il le rail ?
+- le least-cost routing est-il permis ?
+- Wero conserve-t-il sa marque ?
+- les données sont-elles partagées ?
+- les fournisseurs sont-ils réellement interchangeables ?
+
+L’intégration n’est pas un résultat automatique de l’interopérabilité.
+
+Elle nécessite un accord économique.
+
+## Gagnants et perdants potentiels
+
+| Acteur | Gains possibles | Coûts ou risques |
+|---|---|---|
+| Ménages | gratuité de base, offline, concurrence, monnaie publique | coûts bancaires répercutés, complexité, coût public indirect |
+| Petits commerçants | baisse de MSC, règlement rapide, pouvoir de négociation | intégration, terminal, support |
+| Grands commerçants | résilience, least-cost routing | gain tarifaire limité, nouveau projet |
+| Banques | inter-PSP, relation client, services additionnels | investissement, dépôts, fraude, plafond de revenu |
+| PSP non bancaires | accès à la monnaie publique, concurrence | dépendance au funding, KYC, rémunération contestée |
+| Wero | standards communs, acceptation paneuropéenne | duplication ou cannibalisation |
+| Visa et Mastercard | maintien des services mondiaux | volumes euro et pouvoir tarifaire sous pression |
+| Eurosystème | ancre monétaire et résilience | investissement, OPEX, responsabilité opérationnelle |
+
+Le tableau ne désigne aucun gagnant certain.
+
+Le résultat dépend de la combinaison entre :
+
+- adoption ;
+- frais ;
+- mutualisation ;
+- responsabilité ;
+- interopérabilité ;
+- parts de marché.
+
+## Le prix de la souveraineté
+
+Une infrastructure souveraine n’a pas besoin d’être moins chère à chaque transaction pour produire une valeur.
+
+Elle peut fournir :
+
+- résilience ;
+- autonomie stratégique ;
+- continuité offline ;
+- concurrence ;
+- standard ouvert ;
+- pouvoir de négociation ;
+- accès à la monnaie publique.
+
+Cette valeur ne dispense pas de compter.
+
+La souveraineté peut devenir un mot permettant de soustraire le projet au calcul économique.
+
+L’enquête produit la conclusion inverse.
+
+> **La souveraineté devient crédible lorsque son coût, son financement et ses bénéficiaires sont visibles.**
+
+Au 14 août 2026, trois inconnues restent décisives.
+
+### Le coût total de possession
+
+L’investissement initial est partiellement documenté.
+
+L’exploitation bancaire, les fournisseurs, les commerçants et la sortie du système ne le sont pas.
+
+### Le modèle de rémunération
+
+La MSC et l’inter-PSP sont plafonnées en principe.
+
+Le niveau, la banque de funding et l’offline restent ouverts.
+
+### L’articulation avec Wero
+
+Une infrastructure commune peut réduire le coût de la souveraineté.
+
+Une duplication peut l’augmenter massivement.
+
+Le sixième et dernier volet entrera dans la machine : marchés publics, fournisseurs, banques centrales, systèmes d’exploitation, secure elements, droits sur le code et réversibilité. Il posera cette question :
+
+> **Qui contrôle l’infrastructure une fois la facture payée ?**
+
+## Sources et méthode
+
+Ce volet repose principalement sur :
+
+1. [BCE, passage à la phase suivante et estimation des coûts publics](https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251030~8c5b5beef0.en.html).
+
+2. [BCE, analyse des coûts d’investissement bancaire](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_a_view_on_recent_assessments_of_digital_euro_investment_costs_for_the_euro_area_banking_sector.en.pdf).
+
+3. [BCE et ERPB, intégration dans l’écosystème des paiements](https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251030_digital_euro_fit_payment_ecosystem_report.en.pdf).
+
+4. [PwC, Digital Euro Cost Study 2025](https://www.ebf.eu/wp-content/uploads/2025/06/PwC-Digital-Euro-Cost-Study-2025.pdf).
+
+5. [PwC, informations complémentaires de mars 2026](https://www.ebf.eu/wp-content/uploads/2026/04/2026-03-24_Digital-Euro-Cost-Study_Update.pdf).
+
+6. [Parlement européen, compromis ECON sur les frais](https://www.europarl.europa.eu/doceo/document/A-10-2026-0185_EN.pdf).
+
+7. [Conseil de l’Union européenne, mandat de négociation](https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf).
+
+8. [Cour des comptes européenne, Special Report 01/2025](https://www.eca.europa.eu/ECAPublications/SR-2025-01/SR-2025-01_EN.pdf).
+
+9. [Banque centrale néerlandaise, enquête auprès de 1 023 commerçants](https://www.dnb.nl/en/publications/research-publications/occasional-study/nr-3-2025-attitudes-of-dutch-merchants-towards-the-digital-euro/).
+
+10. BCE, statistiques de paiement 2025 : [premier semestre](https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2025h1~36edd636c8.en.html), [second semestre](https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2025h2~23986fb4a6.en.html), [nombre exact](https://data.ecb.europa.eu/data/datasets/PAY/PAY.H.U2.W0.CP0.1._Z.N.PN) et [valeur exacte](https://data.ecb.europa.eu/data/datasets/PAY/PAY.H.U2.W0.CP0.1._Z.N.EUR).
+
+11. [BCE, rapport sur les schémas de cartes](https://www.ecb.europa.eu/pub/pdf/other/ecb.reportcardschemes202502~1614226b0a.en.pdf).
+
+12. EPI, déploiement et audience déclarée de Wero en 2026 : [élargissement de l’actionnariat](https://epicompany.eu/media-insights/epi-welcomes-erste-bank-oesterreich-raiffeisen-bank-international-and-raiffeisen-landesbanken-as-new-shareholders/) et [migration d’iDEAL vers Wero](https://epicompany.eu/media-insights/successful-first-phase-marks-major-next-steps-in-ideal-to-wero-migration/).
+
+Les calculs du simulateur partent des volumes de cartes 2025 et d’hypothèses explicitement modifiables. Ils ne constituent ni une prévision d’adoption, ni une recommandation de commission, ni une estimation officielle du bénéfice social.
+
+## Limites
+
+- Le règlement final n’est pas adopté.
+- Le niveau des commissions reste inconnu.
+- Le Parlement et le Conseil divergent sur l’offline.
+- Les données de MSC actuelles restent incomplètes.
+- Les estimations bancaires reposent sur des méthodes intéressées et non entièrement reproductibles.
+- Les prix futurs des fournisseurs ne sont pas publics.
+- Les audiences annoncées par Wero ne mesurent pas l’usage actif.
+- Le simulateur affecte la totalité du coût public aux transactions marchandes, alors que l’infrastructure servira aussi le P2P, l’inclusion et la résilience.

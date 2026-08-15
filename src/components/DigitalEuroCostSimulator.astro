@@ -1,0 +1,862 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `digital-euro-cost-${lang}`;
+
+const copy = isFr
+  ? {
+      eyebrow: 'SIMULATEUR L0G',
+      title: 'Qui paie la facture ?',
+      intro: 'Déplacez les hypothèses pour suivre les économies des commerçants, la rémunération des PSP et le coût public par transaction.',
+      badge: 'modèle de sensibilité',
+      sourceLabel: 'Base statistique',
+      sourceText: 'Zone euro 2025 : 91,7 Md de paiements par carte, pour 3 531 Md€.',
+      controls: 'Hypothèses',
+      merchantProfile: 'Profil du commerçant',
+      small: 'Petit · 0,90 %',
+      average: 'Moyen · 0,50 %',
+      large: 'Grand · 0,25 %',
+      adoption: 'Part des paiements carte transférée',
+      cardFee: 'Commission carte actuelle',
+      digitalFee: 'MSC euro numérique proposée',
+      interPsp: 'Commission inter-PSP',
+      offline: 'Part hors ligne sans commission',
+      publicAssumptions: 'Hypothèses de coût public',
+      development: 'Développement Eurosystème',
+      annualOpex: 'Exploitation annuelle',
+      amortisation: 'Durée d’amortissement',
+      years: 'ans',
+      reset: 'Réinitialiser le scénario',
+      results: 'Résultats du scénario',
+      annualFlow: 'Flux annuel transféré',
+      transactions: 'Transactions annuelles',
+      merchantPanel: 'Commerçants',
+      currentCost: 'Coût carte actuel',
+      digitalCost: 'Nouvelle commission',
+      savings: 'Économies annuelles',
+      privatePanel: 'Chaîne privée',
+      totalMsc: 'MSC collectée',
+      distributor: 'PSP distributeur',
+      acquirer: 'Reste acquéreur',
+      publicPanel: 'Couche publique',
+      opexPerTransaction: 'OPEX par transaction',
+      fullPerTransaction: 'OPEX + développement amorti',
+      onlineAllocation: 'Répartition de la MSC en ligne',
+      acquirerShort: 'Acquéreur',
+      distributorShort: 'Distributeur',
+      noWorse: 'Le plafond individuel s’active : la MSC en ligne est ramenée au tarif carte de ce commerçant.',
+      negative: 'Incohérence économique : l’inter-PSP dépasse la MSC applicable. Le reste brut de l’acquéreur devient négatif.',
+      offlineShift: 'La part hors ligne est gratuite au point de paiement : son coût doit être financé ailleurs dans la chaîne.',
+      method: 'Formules et périmètre',
+      methodText: 'Le modèle applique la part d’adoption aux volumes carte 2025. La règle no worse-off retient le minimum entre la MSC proposée et le tarif carte du commerçant. La part hors ligne ne génère ni MSC ni inter-PSP. Les montants privés sont des recettes brutes avant coûts propres, fraude, support et marge.',
+      source: 'Sources : statistiques BCE 2025 et estimations de coût BCE. Les taux de commission sont modifiables et illustratifs.',
+      live: 'Scénario recalculé',
+    }
+  : {
+      eyebrow: 'L0G SIMULATOR',
+      title: 'Who pays the bill?',
+      intro: 'Move the assumptions to track merchant savings, PSP compensation and the public cost per transaction.',
+      badge: 'sensitivity model',
+      sourceLabel: 'Statistical base',
+      sourceText: 'Euro area 2025: 91.7bn card payments, worth €3.531tn.',
+      controls: 'Assumptions',
+      merchantProfile: 'Merchant profile',
+      small: 'Small · 0.90%',
+      average: 'Average · 0.50%',
+      large: 'Large · 0.25%',
+      adoption: 'Share of card payments migrated',
+      cardFee: 'Current card merchant fee',
+      digitalFee: 'Proposed digital euro MSC',
+      interPsp: 'Inter-PSP fee',
+      offline: 'Fee-free offline share',
+      publicAssumptions: 'Public-cost assumptions',
+      development: 'Eurosystem development',
+      annualOpex: 'Annual operations',
+      amortisation: 'Amortisation period',
+      years: 'years',
+      reset: 'Reset scenario',
+      results: 'Scenario results',
+      annualFlow: 'Annual value migrated',
+      transactions: 'Annual transactions',
+      merchantPanel: 'Merchants',
+      currentCost: 'Current card cost',
+      digitalCost: 'New merchant charge',
+      savings: 'Annual savings',
+      privatePanel: 'Private chain',
+      totalMsc: 'MSC collected',
+      distributor: 'Distributing PSP',
+      acquirer: 'Acquirer remainder',
+      publicPanel: 'Public layer',
+      opexPerTransaction: 'OPEX per transaction',
+      fullPerTransaction: 'OPEX + amortised development',
+      onlineAllocation: 'Online MSC allocation',
+      acquirerShort: 'Acquirer',
+      distributorShort: 'Distributor',
+      noWorse: 'The individual cap applies: the online MSC is reduced to this merchant’s existing card fee.',
+      negative: 'Economic inconsistency: the inter-PSP fee exceeds the applicable MSC. The acquirer’s gross remainder is negative.',
+      offlineShift: 'The offline share is free at the point of payment, so its cost must be funded elsewhere in the chain.',
+      method: 'Formulas and scope',
+      methodText: 'The model applies adoption to 2025 card volumes. The no worse-off rule uses the lower of the proposed MSC and the merchant’s existing card fee. The offline share generates neither MSC nor inter-PSP revenue. Private amounts are gross revenue before each provider’s own costs, fraud, support and margin.',
+      source: 'Sources: ECB 2025 payment statistics and ECB cost estimates. Fee rates are adjustable illustrations.',
+      live: 'Scenario recalculated',
+    };
+
+const baseline = {
+  cardValue: 3_530_718_386_134.8506,
+  cardTransactions: 91_708_654_727,
+  adoption: 10,
+  cardFee: 0.5,
+  digitalFee: 0.3,
+  interPsp: 0.18,
+  offline: 10,
+  development: 1.3e9,
+  annualOpex: 320e6,
+  amortisation: 10,
+};
+
+const volume = baseline.cardValue * (baseline.adoption / 100);
+const transactionCount = baseline.cardTransactions * (baseline.adoption / 100);
+const onlineShare = 1 - baseline.offline / 100;
+const applicableMsc = Math.min(baseline.digitalFee, baseline.cardFee);
+const currentCost = volume * baseline.cardFee / 100;
+const digitalCost = volume * onlineShare * applicableMsc / 100;
+const distributorRevenue = volume * onlineShare * baseline.interPsp / 100;
+const acquirerRemainder = digitalCost - distributorRevenue;
+const opexPerTransaction = baseline.annualOpex / transactionCount * 100;
+const fullPerTransaction = (baseline.annualOpex + baseline.development / baseline.amortisation) / transactionCount * 100;
+
+const decimal = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const money = (value: number) => {
+  const absolute = Math.abs(value);
+  if (absolute >= 1e9) return isFr ? `${decimal.format(value / 1e9)} Md€` : `€${decimal.format(value / 1e9)}bn`;
+  return isFr ? `${decimal.format(value / 1e6)} M€` : `€${decimal.format(value / 1e6)}m`;
+};
+const moneyBillions = (value: number) => isFr ? `${decimal.format(value / 1e9)} Md€` : `€${decimal.format(value / 1e9)}bn`;
+const countBillions = (value: number) => `${decimal.format(value / 1e9)} ${isFr ? 'Md' : 'bn'}`;
+const cents = (value: number) => `${decimal.format(value)} ${isFr ? 'c€' : '¢'}`;
+---
+
+<section
+  class="de-sim"
+  id={id}
+  data-digital-euro-cost-simulator
+  data-lang={lang}
+  data-card-value={baseline.cardValue}
+  data-card-transactions={baseline.cardTransactions}
+  data-pagefind-ignore
+  aria-labelledby={`${id}-title`}
+>
+  <header class="de-sim__header">
+    <div>
+      <p class="de-sim__eyebrow">{copy.eyebrow}</p>
+      <h3 id={`${id}-title`}>{copy.title}</h3>
+      <p class="de-sim__intro">{copy.intro}</p>
+    </div>
+    <span class="de-sim__badge">{copy.badge}</span>
+  </header>
+
+  <p class="de-sim__source-line">
+    <strong>{copy.sourceLabel}</strong>
+    <span>{copy.sourceText}</span>
+  </p>
+
+  <div class="de-sim__layout">
+    <form class="de-sim__controls" data-controls>
+      <div class="de-sim__section-heading">
+        <span>01</span>
+        <h4>{copy.controls}</h4>
+      </div>
+
+      <fieldset class="de-sim__presets">
+        <legend>{copy.merchantProfile}</legend>
+        <div>
+          <button type="button" data-preset-fee="0.9" aria-pressed="false">{copy.small}</button>
+          <button type="button" data-preset-fee="0.5" aria-pressed="true">{copy.average}</button>
+          <button type="button" data-preset-fee="0.25" aria-pressed="false">{copy.large}</button>
+        </div>
+      </fieldset>
+
+      <label class="de-sim__control" for={`${id}-adoption`}>
+        <span><b>{copy.adoption}</b><output for={`${id}-adoption`} data-input-output="adoption">10 %</output></span>
+        <input id={`${id}-adoption`} data-input="adoption" type="range" min="1" max="50" step="1" value="10" />
+        <i><span>1 %</span><span>50 %</span></i>
+      </label>
+
+      <label class="de-sim__control" for={`${id}-card-fee`}>
+        <span><b>{copy.cardFee}</b><output for={`${id}-card-fee`} data-input-output="cardFee">{isFr ? '0,50 %' : '0.50%'}</output></span>
+        <input id={`${id}-card-fee`} data-input="cardFee" type="range" min="0.1" max="1.5" step="0.05" value="0.5" />
+        <i><span>{isFr ? '0,10 %' : '0.10%'}</span><span>{isFr ? '1,50 %' : '1.50%'}</span></i>
+      </label>
+
+      <label class="de-sim__control" for={`${id}-digital-fee`}>
+        <span><b>{copy.digitalFee}</b><output for={`${id}-digital-fee`} data-input-output="digitalFee">{isFr ? '0,30 %' : '0.30%'}</output></span>
+        <input id={`${id}-digital-fee`} data-input="digitalFee" type="range" min="0" max="1" step="0.05" value="0.3" />
+        <i><span>0 %</span><span>1 %</span></i>
+      </label>
+
+      <label class="de-sim__control" for={`${id}-inter-psp`}>
+        <span><b>{copy.interPsp}</b><output for={`${id}-inter-psp`} data-input-output="interPsp">{isFr ? '0,18 %' : '0.18%'}</output></span>
+        <input id={`${id}-inter-psp`} data-input="interPsp" type="range" min="0" max="0.6" step="0.01" value="0.18" />
+        <i><span>0 %</span><span>{isFr ? '0,60 %' : '0.60%'}</span></i>
+      </label>
+
+      <label class="de-sim__control" for={`${id}-offline`}>
+        <span><b>{copy.offline}</b><output for={`${id}-offline`} data-input-output="offline">10 %</output></span>
+        <input id={`${id}-offline`} data-input="offline" type="range" min="0" max="50" step="5" value="10" />
+        <i><span>0 %</span><span>50 %</span></i>
+      </label>
+
+      <details class="de-sim__advanced">
+        <summary>{copy.publicAssumptions}</summary>
+        <div>
+          <label class="de-sim__control" for={`${id}-development`}>
+            <span><b>{copy.development}</b><output for={`${id}-development`} data-input-output="development">{isFr ? '1,3 Md€' : '€1.3bn'}</output></span>
+            <input id={`${id}-development`} data-input="development" type="range" min="0.5" max="3" step="0.1" value="1.3" />
+            <i><span>{isFr ? '0,5 Md€' : '€0.5bn'}</span><span>{isFr ? '3 Md€' : '€3bn'}</span></i>
+          </label>
+          <label class="de-sim__control" for={`${id}-annual-opex`}>
+            <span><b>{copy.annualOpex}</b><output for={`${id}-annual-opex`} data-input-output="annualOpex">{isFr ? '320 M€' : '€320m'}</output></span>
+            <input id={`${id}-annual-opex`} data-input="annualOpex" type="range" min="100" max="800" step="10" value="320" />
+            <i><span>{isFr ? '100 M€' : '€100m'}</span><span>{isFr ? '800 M€' : '€800m'}</span></i>
+          </label>
+          <label class="de-sim__control" for={`${id}-amortisation`}>
+            <span><b>{copy.amortisation}</b><output for={`${id}-amortisation`} data-input-output="amortisation">10 {copy.years}</output></span>
+            <input id={`${id}-amortisation`} data-input="amortisation" type="range" min="5" max="20" step="1" value="10" />
+            <i><span>5 {copy.years}</span><span>20 {copy.years}</span></i>
+          </label>
+        </div>
+      </details>
+
+      <button class="de-sim__reset" type="reset" data-reset>{copy.reset}</button>
+    </form>
+
+    <section class="de-sim__results" aria-labelledby={`${id}-results`}>
+      <div class="de-sim__section-heading">
+        <span>02</span>
+        <h4 id={`${id}-results`}>{copy.results}</h4>
+      </div>
+
+      <div class="de-sim__flow">
+        <div><span>{copy.annualFlow}</span><strong data-result="volume">{moneyBillions(volume)}</strong></div>
+        <div><span>{copy.transactions}</span><strong data-result="transactions">{countBillions(transactionCount)}</strong></div>
+      </div>
+
+      <article class="de-sim__panel de-sim__panel--merchant">
+        <header><span>03</span><h5>{copy.merchantPanel}</h5></header>
+        <dl>
+          <div><dt>{copy.currentCost}</dt><dd data-result="currentCost">{money(currentCost)}</dd></div>
+          <div><dt>{copy.digitalCost}</dt><dd data-result="digitalCost">{money(digitalCost)}</dd></div>
+          <div class="de-sim__highlight"><dt>{copy.savings}</dt><dd data-result="savings">{money(currentCost - digitalCost)}</dd></div>
+        </dl>
+        <div class="de-sim__comparison" aria-hidden="true">
+          <span style="--value:100%"></span>
+          <span data-bar="digital" style={`--value:${digitalCost / currentCost * 100}%`}></span>
+        </div>
+      </article>
+
+      <article class="de-sim__panel de-sim__panel--private">
+        <header><span>04</span><h5>{copy.privatePanel}</h5></header>
+        <dl>
+          <div><dt>{copy.totalMsc}</dt><dd data-result="totalMsc">{money(digitalCost)}</dd></div>
+          <div><dt>{copy.distributor}</dt><dd data-result="distributor">{money(distributorRevenue)}</dd></div>
+          <div><dt>{copy.acquirer}</dt><dd data-result="acquirer">{money(acquirerRemainder)}</dd></div>
+        </dl>
+        <p class="de-sim__allocation-label">{copy.onlineAllocation}</p>
+        <div class="de-sim__allocation" aria-hidden="true">
+          <span data-allocation="acquirer" style={`--share:${Math.max(acquirerRemainder / digitalCost * 100, 0)}%`}></span>
+          <span data-allocation="distributor" style={`--share:${Math.min(distributorRevenue / digitalCost * 100, 100)}%`}></span>
+        </div>
+        <div class="de-sim__legend"><span>{copy.acquirerShort}</span><span>{copy.distributorShort}</span></div>
+      </article>
+
+      <article class="de-sim__panel de-sim__panel--public">
+        <header><span>05</span><h5>{copy.publicPanel}</h5></header>
+        <dl>
+          <div><dt>{copy.opexPerTransaction}</dt><dd data-result="opexPerTransaction">{cents(opexPerTransaction)}</dd></div>
+          <div class="de-sim__highlight"><dt>{copy.fullPerTransaction}</dt><dd data-result="fullPerTransaction">{cents(fullPerTransaction)}</dd></div>
+        </dl>
+      </article>
+
+      <div class="de-sim__warnings">
+        <p data-warning="noWorse" hidden>{copy.noWorse}</p>
+        <p data-warning="negative" hidden>{copy.negative}</p>
+        <p data-warning="offline">{copy.offlineShift}</p>
+      </div>
+
+      <p class="sr-only" aria-live="polite" aria-atomic="true" data-live-summary>{copy.live}</p>
+    </section>
+  </div>
+
+  <details class="de-sim__method">
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <small>{copy.source}</small>
+  </details>
+</section>
+
+<script>
+  const initialiseDigitalEuroCostSimulators = () => {
+    document.querySelectorAll<HTMLElement>('[data-digital-euro-cost-simulator]:not([data-ready])').forEach((root) => {
+      root.dataset.ready = 'true';
+
+      const lang = root.dataset.lang === 'fr' ? 'fr' : 'en';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const cardValue = Number(root.dataset.cardValue) || 3_530_718_386_134.8506;
+      const cardTransactions = Number(root.dataset.cardTransactions) || 91_708_654_727;
+      const controls = Array.from(root.querySelectorAll<HTMLInputElement>('[data-input]'));
+      const form = root.querySelector<HTMLFormElement>('[data-controls]');
+      const liveSummary = root.querySelector<HTMLElement>('[data-live-summary]');
+
+      const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+      const integer = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
+
+      const input = (name: string) => root.querySelector<HTMLInputElement>(`[data-input="${name}"]`);
+      const output = (name: string) => root.querySelector<HTMLOutputElement>(`[data-input-output="${name}"]`);
+      const result = (name: string) => root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+      const read = (name: string, fallback: number) => {
+        const value = Number(input(name)?.value);
+        return Number.isFinite(value) ? value : fallback;
+      };
+      const write = (element: Element | null, value: string) => {
+        if (element) element.textContent = value;
+      };
+      const money = (value: number) => {
+        const absolute = Math.abs(value);
+        if (absolute >= 1e9) return lang === 'fr' ? `${number.format(value / 1e9)} Md€` : `€${number.format(value / 1e9)}bn`;
+        return lang === 'fr' ? `${number.format(value / 1e6)} M€` : `€${number.format(value / 1e6)}m`;
+      };
+      const moneyBillions = (value: number) => lang === 'fr' ? `${number.format(value / 1e9)} Md€` : `€${number.format(value / 1e9)}bn`;
+      const countBillions = (value: number) => `${number.format(value / 1e9)} ${lang === 'fr' ? 'Md' : 'bn'}`;
+      const cents = (value: number) => `${number.format(value)} ${lang === 'fr' ? 'c€' : '¢'}`;
+      const percent = (value: number, digits = 2) => `${new Intl.NumberFormat(locale, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value)} %`;
+
+      const render = () => {
+        const adoption = read('adoption', 10);
+        const cardFee = read('cardFee', 0.5);
+        const digitalFee = read('digitalFee', 0.3);
+        const interPsp = read('interPsp', 0.18);
+        const offline = read('offline', 10);
+        const development = read('development', 1.3) * 1e9;
+        const annualOpex = read('annualOpex', 320) * 1e6;
+        const amortisation = read('amortisation', 10);
+
+        const volume = cardValue * adoption / 100;
+        const transactions = cardTransactions * adoption / 100;
+        const onlineShare = 1 - offline / 100;
+        const applicableMsc = Math.min(digitalFee, cardFee);
+        const currentCost = volume * cardFee / 100;
+        const digitalCost = volume * onlineShare * applicableMsc / 100;
+        const distributor = volume * onlineShare * interPsp / 100;
+        const acquirer = digitalCost - distributor;
+        const savings = currentCost - digitalCost;
+        const opexPerTransaction = annualOpex / transactions * 100;
+        const fullPerTransaction = (annualOpex + development / amortisation) / transactions * 100;
+
+        write(output('adoption'), `${integer.format(adoption)} %`);
+        write(output('cardFee'), percent(cardFee));
+        write(output('digitalFee'), percent(digitalFee));
+        write(output('interPsp'), percent(interPsp));
+        write(output('offline'), `${integer.format(offline)} %`);
+        write(output('development'), lang === 'fr' ? `${number.format(development / 1e9)} Md€` : `€${number.format(development / 1e9)}bn`);
+        write(output('annualOpex'), lang === 'fr' ? `${integer.format(annualOpex / 1e6)} M€` : `€${integer.format(annualOpex / 1e6)}m`);
+        write(output('amortisation'), `${integer.format(amortisation)} ${lang === 'fr' ? 'ans' : 'years'}`);
+
+        write(result('volume'), moneyBillions(volume));
+        write(result('transactions'), countBillions(transactions));
+        write(result('currentCost'), money(currentCost));
+        write(result('digitalCost'), money(digitalCost));
+        write(result('savings'), money(savings));
+        write(result('totalMsc'), money(digitalCost));
+        write(result('distributor'), money(distributor));
+        write(result('acquirer'), money(acquirer));
+        write(result('opexPerTransaction'), cents(opexPerTransaction));
+        write(result('fullPerTransaction'), cents(fullPerTransaction));
+
+        const digitalBar = root.querySelector<HTMLElement>('[data-bar="digital"]');
+        digitalBar?.style.setProperty('--value', `${currentCost > 0 ? Math.min(digitalCost / currentCost * 100, 100) : 0}%`);
+
+        const totalAllocation = Math.max(digitalCost, distributor, 1);
+        root.querySelector<HTMLElement>('[data-allocation="acquirer"]')?.style.setProperty('--share', `${Math.max(acquirer, 0) / totalAllocation * 100}%`);
+        root.querySelector<HTMLElement>('[data-allocation="distributor"]')?.style.setProperty('--share', `${Math.min(distributor / totalAllocation * 100, 100)}%`);
+
+        const noWorse = root.querySelector<HTMLElement>('[data-warning="noWorse"]');
+        const negative = root.querySelector<HTMLElement>('[data-warning="negative"]');
+        const offlineWarning = root.querySelector<HTMLElement>('[data-warning="offline"]');
+        if (noWorse) noWorse.hidden = digitalFee <= cardFee;
+        if (negative) negative.hidden = interPsp <= applicableMsc;
+        if (offlineWarning) offlineWarning.hidden = offline === 0;
+        root.dataset.economicState = interPsp > applicableMsc ? 'negative-acquirer' : 'balanced';
+
+        root.querySelectorAll<HTMLButtonElement>('[data-preset-fee]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(Math.abs(Number(button.dataset.presetFee) - cardFee) < 0.001));
+        });
+
+        if (liveSummary) {
+          liveSummary.textContent = lang === 'fr'
+            ? `Scénario recalculé : ${money(savings)} d’économies commerçants et ${cents(fullPerTransaction)} de coût public complet par transaction.`
+            : `Scenario recalculated: ${money(savings)} in merchant savings and ${cents(fullPerTransaction)} in full public cost per transaction.`;
+        }
+      };
+
+      controls.forEach((control) => control.addEventListener('input', render));
+      root.querySelectorAll<HTMLButtonElement>('[data-preset-fee]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const cardFee = input('cardFee');
+          if (cardFee && button.dataset.presetFee) cardFee.value = button.dataset.presetFee;
+          render();
+        });
+      });
+      form?.addEventListener('reset', () => window.setTimeout(render, 0));
+      render();
+    });
+  };
+
+  initialiseDigitalEuroCostSimulators();
+</script>
+
+<style>
+  .de-sim,
+  .de-sim * { box-sizing: border-box; }
+
+  .de-sim {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 2rem 0 2.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 34%, var(--color-line));
+    border-radius: 18px 5px 18px 18px;
+    color: var(--color-paper);
+    background:
+      radial-gradient(85% 55% at 0 0, color-mix(in srgb, var(--color-signal) 12%, transparent), transparent 66%),
+      radial-gradient(70% 50% at 100% 0, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 72%),
+      linear-gradient(color-mix(in srgb, var(--color-line) 18%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-line) 18%, transparent) 1px, transparent 1px),
+      color-mix(in srgb, var(--color-surface) 96%, var(--color-ink));
+    background-size: auto, auto, 24px 24px, 24px 24px, auto;
+    box-shadow: 0 28px 70px color-mix(in srgb, #000 24%, transparent);
+    font-family: var(--font-read);
+    line-height: 1.45;
+  }
+
+  .de-sim::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-signal), var(--color-accent) 58%, var(--color-amber));
+    content: '';
+  }
+
+  .de-sim__header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.35rem 1.35rem 1rem;
+  }
+
+  .de-sim__eyebrow,
+  .de-sim__section-heading span,
+  .de-sim__panel header span {
+    margin: 0;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .de-sim__header h3 {
+    margin: 0.35rem 0 0;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4.8vw, 2.65rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .de-sim__intro {
+    max-width: 42rem;
+    margin: 0.7rem 0 0;
+    color: var(--color-paper);
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+
+  .de-sim__badge {
+    flex: 0 0 auto;
+    border: 1px solid color-mix(in srgb, var(--color-amber) 54%, var(--color-line));
+    border-radius: 999px;
+    padding: 0.35rem 0.6rem;
+    color: var(--color-amber);
+    background: color-mix(in srgb, var(--color-amber) 7%, transparent);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .de-sim__source-line {
+    display: flex;
+    gap: 0.55rem 0.8rem;
+    align-items: baseline;
+    margin: 0;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.7rem 1.35rem;
+    background: color-mix(in srgb, var(--color-ink) 35%, transparent);
+    font-size: 0.68rem;
+    line-height: 1.45;
+  }
+
+  .de-sim__source-line strong {
+    flex: 0 0 auto;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .de-sim__source-line span { color: var(--color-muted); }
+
+  .de-sim__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 1px;
+    background: var(--color-line);
+  }
+
+  .de-sim__controls,
+  .de-sim__results {
+    min-width: 0;
+    margin: 0;
+    padding: 1.2rem;
+    background: color-mix(in srgb, var(--color-surface) 96%, transparent);
+  }
+
+  .de-sim__section-heading {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+
+  .de-sim__section-heading h4 {
+    margin: 0;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: -0.015em;
+  }
+
+  .de-sim__presets {
+    min-width: 0;
+    margin: 0 0 1rem;
+    border: 0;
+    padding: 0;
+  }
+
+  .de-sim__presets legend {
+    margin-bottom: 0.45rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .de-sim__presets > div { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  .de-sim__presets button,
+  .de-sim__reset {
+    min-height: 2.5rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 999px;
+    padding: 0.55rem 0.72rem;
+    color: var(--color-paper);
+    background: color-mix(in srgb, var(--color-surface-2) 86%, transparent);
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    font-weight: 750;
+    cursor: pointer;
+  }
+
+  .de-sim__presets button[aria-pressed='true'] {
+    border-color: var(--color-signal);
+    color: var(--color-bright);
+    background: color-mix(in srgb, var(--color-signal) 12%, var(--color-surface));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-signal) 25%, transparent);
+  }
+
+  .de-sim__control {
+    display: block;
+    margin: 0;
+    border-top: 1px solid var(--color-line);
+    padding: 0.75rem 0 0.7rem;
+  }
+
+  .de-sim__control > span,
+  .de-sim__control > i {
+    display: flex;
+    gap: 0.8rem;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .de-sim__control b {
+    color: var(--color-paper);
+    font-size: 0.72rem;
+    font-weight: 650;
+    line-height: 1.35;
+  }
+
+  .de-sim__control output {
+    flex: 0 0 auto;
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .de-sim__control > i {
+    margin-top: 0.15rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.51rem;
+    font-style: normal;
+  }
+
+  .de-sim input[type='range'] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 2.25rem;
+    margin: 0.3rem 0 0;
+    border: 0;
+    padding: 0;
+    accent-color: var(--color-signal);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .de-sim input[type='range']::-webkit-slider-runnable-track {
+    height: 0.34rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-signal) 60%, var(--color-line)), var(--color-line-strong));
+  }
+
+  .de-sim input[type='range']::-webkit-slider-thumb {
+    width: 1.18rem;
+    height: 1.18rem;
+    margin-top: -0.42rem;
+    appearance: none;
+    border: 3px solid var(--color-surface);
+    border-radius: 50%;
+    background: var(--color-signal);
+    box-shadow: 0 0 0 1px var(--color-signal), 0 0 18px color-mix(in srgb, var(--color-signal) 40%, transparent);
+  }
+
+  .de-sim input[type='range']::-moz-range-track {
+    height: 0.34rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-signal) 60%, var(--color-line)), var(--color-line-strong));
+  }
+
+  .de-sim input[type='range']::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    border: 3px solid var(--color-surface);
+    border-radius: 50%;
+    background: var(--color-signal);
+    box-shadow: 0 0 0 1px var(--color-signal);
+  }
+
+  .de-sim button:focus-visible,
+  .de-sim summary:focus-visible,
+  .de-sim input:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
+
+  .de-sim__advanced {
+    margin-top: 0.4rem;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-ink) 24%, transparent);
+  }
+
+  .de-sim__advanced summary,
+  .de-sim__method summary {
+    min-height: 2.75rem;
+    padding: 0.75rem;
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 750;
+    cursor: pointer;
+  }
+
+  .de-sim__advanced > div { padding: 0 0.75rem 0.3rem; }
+  .de-sim__reset { width: 100%; margin-top: 0.75rem; color: var(--color-muted); }
+  .de-sim__reset:hover { border-color: var(--color-accent); color: var(--color-bright); }
+
+  .de-sim__flow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .de-sim__flow > div {
+    min-width: 0;
+    border: 1px solid color-mix(in srgb, var(--color-signal) 30%, var(--color-line));
+    border-radius: 10px 3px 10px 10px;
+    padding: 0.8rem;
+    background: color-mix(in srgb, var(--color-signal) 6%, var(--color-surface));
+  }
+
+  .de-sim__flow span,
+  .de-sim__panel dt,
+  .de-sim__allocation-label {
+    display: block;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    line-height: 1.35;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+
+  .de-sim__flow strong {
+    display: block;
+    overflow-wrap: anywhere;
+    margin-top: 0.35rem;
+    color: var(--color-bright);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 4vw, 1.85rem);
+    line-height: 1;
+  }
+
+  .de-sim__panel {
+    margin-top: 0.6rem;
+    border: 1px solid var(--color-line);
+    border-radius: 11px 3px 11px 11px;
+    padding: 0.8rem;
+    background: color-mix(in srgb, var(--color-surface-2) 82%, transparent);
+  }
+
+  .de-sim__panel header { display: flex; gap: 0.5rem; align-items: baseline; }
+  .de-sim__panel header h5 { margin: 0; color: var(--color-bright); font-family: var(--font-display); font-size: 0.86rem; }
+  .de-sim__panel dl { display: grid; gap: 1px; margin: 0.65rem 0 0; background: var(--color-line); }
+  .de-sim__panel dl > div { min-width: 0; padding: 0.52rem 0.6rem; background: var(--color-surface); }
+  .de-sim__panel dd { overflow-wrap: anywhere; margin: 0.18rem 0 0; color: var(--color-paper); font-family: var(--font-display); font-size: 1rem; font-weight: 750; }
+  .de-sim__panel .de-sim__highlight { background: color-mix(in srgb, var(--color-signal) 8%, var(--color-surface)); }
+  .de-sim__panel .de-sim__highlight dd { color: var(--color-signal); }
+
+  .de-sim__comparison {
+    display: grid;
+    gap: 0.28rem;
+    margin-top: 0.65rem;
+  }
+
+  .de-sim__comparison span {
+    display: block;
+    width: var(--value);
+    max-width: 100%;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: var(--color-line-strong);
+    transition: width 180ms ease;
+  }
+
+  .de-sim__comparison span:last-child { background: linear-gradient(90deg, var(--color-signal), var(--color-accent)); }
+  .de-sim__allocation-label { margin: 0.75rem 0 0.3rem; }
+
+  .de-sim__allocation {
+    display: flex;
+    width: 100%;
+    height: 0.55rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--color-line);
+  }
+
+  .de-sim__allocation span { width: var(--share); transition: width 180ms ease; }
+  .de-sim__allocation span:first-child { background: var(--color-signal); }
+  .de-sim__allocation span:last-child { background: var(--color-accent); }
+
+  .de-sim__legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+  }
+
+  .de-sim__legend span::before {
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    background: var(--color-signal);
+    content: '';
+  }
+
+  .de-sim__legend span:last-child::before { background: var(--color-accent); }
+
+  .de-sim__warnings { display: grid; gap: 0.4rem; margin-top: 0.65rem; }
+  .de-sim__warnings p {
+    margin: 0;
+    border-left: 2px solid var(--color-amber);
+    padding: 0.55rem 0.65rem;
+    color: var(--color-paper);
+    background: color-mix(in srgb, var(--color-amber) 7%, transparent);
+    font-size: 0.63rem;
+    line-height: 1.52;
+  }
+
+  .de-sim__warnings p[data-warning='negative'] {
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  }
+
+  .de-sim__method { border-top: 1px solid var(--color-line); background: color-mix(in srgb, var(--color-ink) 32%, transparent); }
+  .de-sim__method summary { padding-inline: 1.35rem; color: var(--color-signal); }
+  .de-sim__method p { margin: 0; padding: 0 1.35rem; color: var(--color-paper); font-size: 0.7rem; line-height: 1.62; }
+  .de-sim__method small { display: block; padding: 0.7rem 1.35rem 1rem; color: var(--color-muted); font-size: 0.58rem; line-height: 1.5; }
+  .de-sim [hidden] { display: none !important; }
+
+  @media (max-width: 760px) {
+    .de-sim__header { display: grid; padding: 1.15rem 1rem 0.9rem; }
+    .de-sim__badge { justify-self: start; }
+    .de-sim__source-line { display: grid; padding-inline: 1rem; }
+    .de-sim__layout { grid-template-columns: minmax(0, 1fr); }
+    .de-sim__controls,
+    .de-sim__results { padding: 1rem; }
+    .de-sim__method summary,
+    .de-sim__method p,
+    .de-sim__method small { padding-inline: 1rem; }
+  }
+
+  @media (max-width: 410px) {
+    .de-sim__flow { grid-template-columns: minmax(0, 1fr); }
+    .de-sim__presets button { flex: 1 1 7rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .de-sim__comparison span,
+    .de-sim__allocation span { transition: none; }
+  }
+</style>
