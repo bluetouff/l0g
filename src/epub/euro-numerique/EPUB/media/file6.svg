@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="100%" role="img" aria-labelledby="flow-fr-title flow-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="flow-fr-title">Qui voit quoi lors d'un paiement en ligne en euros numériques</title>
+<desc id="flow-fr-desc">Le PSP du payeur connaît l'identité. L'alias lookup résout le compte. Le mécanisme antifraude calcule un score. Le DESP règle le montant à partir d'identifiants techniques. Le PSP du bénéficiaire connaît son propre client.</desc>
+<defs>
+<marker id="flow-fr-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#71859a"></path></marker>
+</defs>
+<g class="flow-fr-desktop">
+<rect width="760" height="600" rx="16" fill="#0b0f14"></rect>
+<text x="32" y="48" fill="#f7f9fc" font-size="24" font-weight="760">UN PAIEMENT EN LIGNE, CINQ REGARDS</text>
+<text x="32" y="76" fill="#94a3b8" font-size="14">La séparation des rôles remplace l’anonymat.</text>
+<rect x="28" y="116" width="112" height="152" rx="13" fill="#172337" stroke="#8fa9ff"></rect>
+<text x="84" y="147" text-anchor="middle" fill="#8fa9ff" font-size="13" font-weight="760">PAYEUR</text>
+<text x="43" y="179" fill="#f7f9fc" font-size="12">voit montant</text>
+<text x="43" y="199" fill="#f7f9fc" font-size="12">et bénéficiaire</text>
+<text x="43" y="229" fill="#9fb0c0" font-size="11">terminal local</text>
+<rect x="156" y="116" width="132" height="152" rx="13" fill="#172337" stroke="#8fa9ff"></rect>
+<text x="222" y="147" text-anchor="middle" fill="#8fa9ff" font-size="13" font-weight="760">PSP PAYEUR</text>
+<text x="171" y="179" fill="#f7f9fc" font-size="12">identité réelle</text>
+<text x="171" y="199" fill="#f7f9fc" font-size="12">DEAN, alias</text>
+<text x="171" y="219" fill="#f7f9fc" font-size="12">montant, appareil</text>
+<text x="171" y="242" fill="#9fb0c0" font-size="11">KYC, AML, fraude</text>
+<rect x="304" y="116" width="132" height="152" rx="13" fill="#24202f" stroke="#d98bff"></rect>
+<text x="370" y="147" text-anchor="middle" fill="#d98bff" font-size="13" font-weight="760">SERVICES</text>
+<text x="319" y="179" fill="#f7f9fc" font-size="12">alias lookup</text>
+<text x="319" y="199" fill="#f7f9fc" font-size="12">token SEPI</text>
+<text x="319" y="219" fill="#f7f9fc" font-size="12">score RFM</text>
+<text x="319" y="242" fill="#bfaec7" font-size="11">identité civile absente</text>
+<rect x="452" y="116" width="132" height="152" rx="13" fill="#142b2c" stroke="#5eead4"></rect>
+<text x="518" y="147" text-anchor="middle" fill="#5eead4" font-size="13" font-weight="760">RÈGLEMENT</text>
+<text x="467" y="179" fill="#f7f9fc" font-size="12">UETR, montant</text>
+<text x="467" y="199" fill="#f7f9fc" font-size="12">comptes techniques</text>
+<text x="467" y="219" fill="#f7f9fc" font-size="12">heure, statut</text>
+<text x="467" y="242" fill="#a7c6c4" font-size="11">transfert atomique</text>
+<rect x="600" y="116" width="132" height="152" rx="13" fill="#172337" stroke="#8fa9ff"></rect>
+<text x="666" y="147" text-anchor="middle" fill="#8fa9ff" font-size="13" font-weight="760">PSP BÉNÉF.</text>
+<text x="615" y="179" fill="#f7f9fc" font-size="12">identité client</text>
+<text x="615" y="199" fill="#f7f9fc" font-size="12">montant reçu</text>
+<text x="615" y="219" fill="#f7f9fc" font-size="12">terminal marchand</text>
+<text x="615" y="242" fill="#9fb0c0" font-size="11">historique, litige</text>
+<line x1="140" y1="192" x2="152" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"></line>
+<line x1="288" y1="192" x2="300" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"></line>
+<line x1="436" y1="192" x2="448" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"></line>
+<line x1="584" y1="192" x2="596" y2="192" stroke="#71859a" stroke-width="2" marker-end="url(#flow-fr-arrow)"></line>
+<rect x="28" y="305" width="704" height="214" rx="14" fill="#111923" stroke="#344556"></rect>
+<text x="48" y="339" fill="#f7f9fc" font-size="16" font-weight="760">PÉRIMÈTRE DE CHAQUE ACTEUR</text>
+<line x1="48" y1="357" x2="712" y2="357" stroke="#344556"></line>
+<text x="48" y="389" fill="#8fa9ff" font-size="12" font-weight="720">IDENTITÉ CIVILE</text>
+<text x="236" y="389" fill="#f7f9fc" font-size="12">chez chaque PSP pour son propre client</text>
+<text x="48" y="421" fill="#5eead4" font-size="12" font-weight="720">MONTANT ET STATUT</text>
+<text x="236" y="421" fill="#f7f9fc" font-size="12">nécessaires au règlement central</text>
+<text x="48" y="453" fill="#d98bff" font-size="12" font-weight="720">SIGNAUX DE FRAUDE</text>
+<text x="236" y="453" fill="#f7f9fc" font-size="12">analysés sous identifiants techniques</text>
+<text x="48" y="485" fill="#ffb86b" font-size="12" font-weight="720">DÉTAIL DU PANIER</text>
+<text x="236" y="485" fill="#f7f9fc" font-size="12">connu du marchand ; présence centrale générale non établie</text>
+<text x="32" y="563" fill="#7f91a3" font-size="11">Schéma synthétique. Les objets visibles et chiffrés varient selon P2P, POS et e-commerce.</text>
+</g>
+<g class="flow-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="276" rx="9" fill="#0b0f14"></rect>
+<text x="15" y="22" fill="#f7f9fc" font-size="14" font-weight="760">UN PAIEMENT EN LIGNE</text>
+<text x="15" y="36" fill="#94a3b8" font-size="8">La séparation des rôles remplace l’anonymat.</text>
+<rect x="14" y="49" width="322" height="35" rx="7" fill="#172337" stroke="#8fa9ff"></rect>
+<text x="24" y="64" fill="#8fa9ff" font-size="9" font-weight="760">1 · PSP PAYEUR</text><text x="326" y="64" text-anchor="end" fill="#f7f9fc" font-size="9">identité réelle</text>
+<text x="24" y="77" fill="#aab8c8" font-size="8">DEAN, alias, montant, appareil, KYC et AML</text>
+<rect x="14" y="91" width="322" height="35" rx="7" fill="#24202f" stroke="#d98bff"></rect>
+<text x="24" y="106" fill="#d98bff" font-size="9" font-weight="760">2 · ALIAS, SEPI, RFM</text><text x="326" y="106" text-anchor="end" fill="#f7f9fc" font-size="9">codes et score</text>
+<text x="24" y="119" fill="#c7b8ce" font-size="8">Routage, token et analyse antifraude</text>
+<rect x="14" y="133" width="322" height="35" rx="7" fill="#142b2c" stroke="#5eead4"></rect>
+<text x="24" y="148" fill="#5eead4" font-size="9" font-weight="760">3 · RÈGLEMENT DESP</text><text x="326" y="148" text-anchor="end" fill="#f7f9fc" font-size="9">identité civile absente</text>
+<text x="24" y="161" fill="#b2cdcb" font-size="8">UETR, montant, comptes techniques, heure et statut</text>
+<rect x="14" y="175" width="322" height="35" rx="7" fill="#172337" stroke="#8fa9ff"></rect>
+<text x="24" y="190" fill="#8fa9ff" font-size="9" font-weight="760">4 · PSP BÉNÉFICIAIRE</text><text x="326" y="190" text-anchor="end" fill="#f7f9fc" font-size="9">son client connu</text>
+<text x="24" y="203" fill="#aab8c8" font-size="8">Montant reçu, terminal, historique et litige</text>
+<rect x="14" y="219" width="322" height="37" rx="7" fill="#111923" stroke="#344556"></rect>
+<text x="24" y="234" fill="#ffb86b" font-size="9" font-weight="760">PANIER DÉTAILLÉ</text>
+<text x="24" y="248" fill="#d5dee7" font-size="8">Connu du marchand ; présence centrale générale non établie.</text>
+<text x="15" y="270" fill="#8295a7" font-size="8">Flux variable selon P2P, POS et e-commerce.</text>
+</g>
+</svg>

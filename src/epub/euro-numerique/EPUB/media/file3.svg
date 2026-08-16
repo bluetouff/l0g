@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 1040" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="funding-title-fr funding-desc-fr" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0a111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="funding-title-fr">L’entonnoir de financement après une sortie de dépôts</title>
+  <desc id="funding-desc-fr">La banque utilise d’abord ses réserves, puis le marché en temps normal, puis le refinancement de banque centrale contre collatéral. Le financement résiduel signale les banques les plus contraintes.</desc>
+  <defs>
+    <linearGradient id="funding-bg-fr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a111a"></stop>
+      <stop offset="100%" stop-color="#15283d"></stop>
+    </linearGradient>
+    <marker id="funding-arrow-fr" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#65d9c8"></path>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="478" height="1038" rx="14" fill="url(#funding-bg-fr)"></rect>
+  <text x="24" y="38" fill="#f4f7fb" font-size="20" font-weight="750">CIRCUIT DU FINANCEMENT BANCAIRE</text>
+  <text x="24" y="63" fill="#9fb1c5" font-size="12">Ordre simplifié des ressources disponibles dans le modèle</text>
+  <g transform="translate(35 92)">
+    <rect width="410" height="92" rx="12" fill="#322116" stroke="#ffb86b"></rect>
+    <text x="22" y="31" fill="#ffcb96" font-size="12" font-weight="750">CHOC</text>
+    <text x="22" y="61" fill="#ffffff" font-size="19" font-weight="800">Sortie de dépôts retail</text>
+    <text x="285" y="61" fill="#ffcb96" font-size="15" font-weight="700">jusqu’à 699 Md€</text>
+  </g>
+  <path d="M240 190 V228" stroke="#65d9c8" stroke-width="3" marker-end="url(#funding-arrow-fr)"></path>
+  <g transform="translate(50 244)">
+    <rect width="380" height="104" rx="12" fill="#172337" stroke="#7fa7ff"></rect>
+    <text x="22" y="30" fill="#9bb9ff" font-size="12" font-weight="750">1. RÉSERVES PROPRES</text>
+    <text x="22" y="60" fill="#ffffff" font-size="15" font-weight="700">Première ligne d’absorption</text>
+    <text x="22" y="84" fill="#dbe5f0" font-size="12">Réduit le coussin de liquidité de la banque.</text>
+  </g>
+  <path d="M240 354 V392" stroke="#65d9c8" stroke-width="3" marker-end="url(#funding-arrow-fr)"></path>
+  <g transform="translate(65 408)">
+    <rect width="350" height="116" rx="12" fill="#152c31" stroke="#65d9c8"></rect>
+    <text x="22" y="30" fill="#8ce9dc" font-size="12" font-weight="750">2. MARCHÉ ET OBLIGATIONS</text>
+    <text x="22" y="60" fill="#ffffff" font-size="14" font-weight="700">Sécurisé ou non, plusieurs maturités</text>
+    <text x="22" y="85" fill="#ddf1ee" font-size="12">Disponible dans le scénario normal.</text>
+    <text x="22" y="105" fill="#ffb86b" font-size="12" font-weight="700">Marché interbancaire fermé en flight-to-safety.</text>
+  </g>
+  <path d="M240 530 V568" stroke="#65d9c8" stroke-width="3" marker-end="url(#funding-arrow-fr)"></path>
+  <g transform="translate(80 584)">
+    <rect width="320" height="116" rx="12" fill="#251d33" stroke="#d98bff"></rect>
+    <text x="22" y="30" fill="#e4a9ff" font-size="12" font-weight="750">3. REFINANCEMENT STANDARD</text>
+    <text x="22" y="60" fill="#ffffff" font-size="14" font-weight="700">Eurosystème contre collatéral éligible</text>
+    <text x="22" y="85" fill="#eee6f2" font-size="12">HQLA ou actifs éligibles non-HQLA.</text>
+    <text x="22" y="105" fill="#eee6f2" font-size="12">Le collatéral remplace l’accès au marché.</text>
+  </g>
+  <path d="M240 706 V744" stroke="#ffb86b" stroke-width="3" marker-end="url(#funding-arrow-fr)"></path>
+  <g transform="translate(95 760)">
+    <rect width="290" height="122" rx="12" fill="#3a1e20" stroke="#ff718a"></rect>
+    <text x="20" y="30" fill="#ff99aa" font-size="12" font-weight="750">4. BESOIN RÉSIDUEL</text>
+    <text x="20" y="59" fill="#ffffff" font-size="14" font-weight="700">Actifs actuellement non éligibles</text>
+    <text x="20" y="84" fill="#f6e3e7" font-size="12">Ce besoin résiduel sert d’indicateur</text>
+    <text x="20" y="103" fill="#f6e3e7" font-size="12">de stress dans le modèle.</text>
+  </g>
+  <g transform="translate(20 904)">
+    <rect width="210" height="88" rx="10" fill="#111b26" stroke="#ffb86b"></rect>
+    <text x="16" y="27" fill="#ffcb96" font-size="12" font-weight="750">13 BANQUES</text>
+    <text x="16" y="51" fill="#e6edf5" font-size="12">atteignent le seuil</text>
+    <text x="16" y="70" fill="#e6edf5" font-size="12">de 100 % de LCR</text>
+  </g>
+  <g transform="translate(250 904)">
+    <rect width="210" height="88" rx="10" fill="#111b26" stroke="#ff718a"></rect>
+    <text x="16" y="27" fill="#ff99aa" font-size="12" font-weight="750">9 BANQUES</text>
+    <text x="16" y="51" fill="#e6edf5" font-size="12">butent sur le collatéral</text>
+    <text x="16" y="70" fill="#e6edf5" font-size="12">standard</text>
+  </g>
+</svg>

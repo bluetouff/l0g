@@ -1,0 +1,101 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const isFr = lang === 'fr';
+const pagePath = isFr ? '/publications/euro-numerique/' : '/en/publications/digital-euro/';
+const alternatePath = isFr ? '/en/publications/digital-euro/' : '/publications/euro-numerique/';
+const epubPath = isFr ? '/publications/euro-numerique-enquete-l0g.epub' : '/publications/digital-euro-investigation-l0g.epub';
+const coverPath = isFr ? '/publications/euro-numerique-cover.png' : '/publications/digital-euro-cover.png';
+const epubFile = isFr ? '../../../public/publications/euro-numerique-enquete-l0g.epub' : '../../../public/publications/digital-euro-investigation-l0g.epub';
+const epubBytes = readFileSync(new URL(epubFile, import.meta.url));
+const epubSize = `${new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 1 }).format(epubBytes.length / 1024 / 1024)} MB`;
+const epubSha256 = createHash('sha256').update(epubBytes).digest('hex');
+const pageUrl = `${SITE_URL}${pagePath}`;
+const title = isFr ? 'L’euro numérique, l’enquête complète en EPUB' : 'The Digital Euro, the complete investigation in EPUB';
+const description = isFr
+  ? 'Six enquêtes en sources ouvertes sur les bilans, les données, le droit, les coûts et l’infrastructure de l’euro numérique.'
+  : 'Six open-source investigations into the balance sheets, data, law, costs and infrastructure of the digital euro.';
+const chapters = isFr
+  ? ['L’euro qui change de débiteur', 'Le stress test à 699 milliards', 'Privé comme du cash ?', 'La frontière juridique de la programmabilité', 'Le prix de la souveraineté', 'Qui contrôle la machine ?']
+  : ['The euro that changes its debtor', 'The €699 billion stress test', 'As private as cash?', 'The legal boundary of programmability', 'The price of sovereignty', 'Who controls the machine?'];
+const bookJsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`, name: isFr ? 'L’euro numérique' : 'The Digital Euro', description,
+  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID }, datePublished: '2026-08-16', dateModified: '2026-08-16',
+  inLanguage: lang, bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true, url: pageUrl,
+  image: `${SITE_URL}${coverPath}`, license: 'https://creativecommons.org/licenses/by/4.0/',
+  associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${epubPath}`, encodingFormat: 'application/epub+zip', contentSize: `${epubBytes.length} bytes`, sha256: epubSha256 },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}/publications/euro-numerique/` },
+    { hreflang: 'en', href: `${SITE_URL}/en/publications/digital-euro/` },
+    { hreflang: 'x-default', href: `${SITE_URL}/publications/euro-numerique/` },
+  ]}
+  ogImage={coverPath}
+  ogImageAlt={isFr ? 'Couverture de L’euro numérique' : 'Cover of The Digital Euro'}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
+  <article class="book-page rise" data-pagefind-body>
+    <section class="book-hero">
+      <div class="cover-wrap"><img src={coverPath} width="1600" height="2560" alt={isFr ? 'Couverture de L’euro numérique, enquête en sources ouvertes' : 'Cover of The Digital Euro, an open-source investigation'} /></div>
+      <div class="hero-copy">
+        <p class="mono-label glow">// {isFr ? 'publication l0g' : 'l0g publication'}</p>
+        <h1>{isFr ? 'L’euro numérique' : 'The Digital Euro'}</h1>
+        <p class="deck">{isFr ? 'Enquêter sur une monnaie qui n’existe pas encore.' : 'Investigating a currency that does not yet exist.'}</p>
+        <p>{description}</p>
+        <div class="actions">
+          <a class="download" href={epubPath} download>{isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'} <small>{epubSize}</small></a>
+          <a class="language" href={alternatePath}>{isFr ? 'Read in English' : 'Lire en français'}</a>
+        </div>
+        <ul class="proof"><li>{isFr ? '6 enquêtes' : '6 investigations'}</li><li>{isFr ? 'Sources cliquables' : 'Clickable sources'}</li><li>{isFr ? 'EPUB 3 accessible' : 'Accessible EPUB 3'}</li><li>CC BY 4.0</li></ul>
+      </div>
+    </section>
+    <section class="method">
+      <div><p class="mono-label">// {isFr ? 'méthode' : 'method'}</p><h2>{isFr ? 'Une enquête en sources ouvertes.' : 'An open-source investigation.'}</h2></div>
+      <div><p>{isFr ? 'Les textes législatifs, rapports de stabilité financière, projets de règles, marchés publics, estimations de coûts et documents techniques sont traités selon leur statut et leur périmètre.' : 'Legislative texts, financial-stability reports, draft rules, procurement notices, cost estimates and technical documents are treated according to their status and scope.'}</p><p>{isFr ? 'Un scénario de test ne devient pas une décision. Un plafond contractuel ne devient pas une dépense. Une pièce manquante reste une limite de vérification.' : 'A test scenario does not become a decision. A contractual ceiling does not become expenditure. A missing record remains a verification limit.'}</p></div>
+    </section>
+    <section class="contents" id="sommaire">
+      <p class="mono-label">// {isFr ? 'sommaire' : 'contents'}</p>
+      <h2>{isFr ? 'Six couches d’une même infrastructure.' : 'Six layers of one infrastructure.'}</h2>
+      <ol>{chapters.map((chapter, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{chapter}</li>)}</ol>
+    </section>
+    <section class="integrity"><strong>SHA-256</strong><code>{epubSha256}</code></section>
+  </article>
+</BaseLayout>
+
+<style>
+  .book-page { max-width: 1120px; margin: 0 auto; }
+  .book-hero { display: grid; grid-template-columns: minmax(250px, .72fr) minmax(0, 1.28fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; padding: 2rem 0 4.5rem; }
+  .cover-wrap { perspective: 1200px; }
+  .cover-wrap img { display: block; width: 100%; border: 1px solid rgba(103,222,207,.35); box-shadow: -22px 26px 60px rgba(0,0,0,.48), 8px 8px 0 #101923; transform: rotateY(4deg); }
+  .hero-copy h1 { margin: .35rem 0 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6.8rem); line-height: .9; letter-spacing: -.06em; }
+  .deck { max-width: 19em; color: var(--color-amber); font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1.18; }
+  .hero-copy > p:not(.mono-label,.deck) { max-width: 42rem; color: var(--color-muted); font-size: 1.05rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0 1.25rem; }
+  .actions a { padding: .9rem 1.1rem; border: 1px solid var(--color-border); text-decoration: none; }
+  .download { color: #081014; background: var(--color-teal); font-weight: 800; } .download small { margin-left: .5rem; opacity: .7; }
+  .language { color: var(--color-bright); }
+  .proof { display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; list-style: none; }
+  .proof li { padding: .35rem .65rem; border: 1px solid var(--color-border); color: var(--color-muted); font-family: var(--font-mono); font-size: .72rem; }
+  .method { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; padding: 3rem 0; border-top: 1px solid var(--color-border); }
+  .method h2,.contents h2 { color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); }
+  .method p { color: var(--color-muted); }
+  .contents { padding: 3rem 0; border-top: 1px solid var(--color-border); }
+  .contents ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; padding: 1px; background: var(--color-border); list-style: none; }
+  .contents li { display: flex; gap: 1rem; padding: 1rem; color: var(--color-bright); background: var(--color-bg); }
+  .contents li span { color: var(--color-teal); font-family: var(--font-mono); }
+  .integrity { display: grid; gap: .4rem; padding: 1rem; border: 1px solid var(--color-border); color: var(--color-muted); }
+  .integrity code { overflow-wrap: anywhere; color: var(--color-teal); }
+  @media (max-width: 760px) { .book-hero,.method { grid-template-columns: 1fr; } .cover-wrap { max-width: 380px; margin: 0 auto; } .contents ol { grid-template-columns: 1fr; } }
+</style>

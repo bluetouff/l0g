@@ -5,25 +5,32 @@ import { join } from 'node:path';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro';
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein' } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
-const publicationUrl = isAuditer
+const isDigitalEuro = publication === 'digital-euro';
+const publicationUrl = isDigitalEuro
+  ? isEnglish ? '/en/publications/digital-euro/' : '/publications/euro-numerique/'
+  : isAuditer
   ? '/publications/auditer-l-opacite/'
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isAuditer
+const epubFile = isDigitalEuro
+  ? isEnglish ? 'digital-euro-investigation-l0g.epub' : 'euro-numerique-enquete-l0g.epub'
+  : isAuditer
   ? 'auditer-l-opacite-bluetouff.epub'
   : isEnglish
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isAuditer
+const coverUrl = isDigitalEuro
+  ? isEnglish ? '/publications/digital-euro-cover.png' : '/publications/euro-numerique-cover.png'
+  : isAuditer
   ? '/publications/auditer-l-opacite-cover.jpg'
   : isEnglish
     ? '/publications/epsteins-money-cover.png'
@@ -31,7 +38,23 @@ const coverUrl = isAuditer
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isAuditer
+const copy = isDigitalEuro
+  ? isEnglish
+    ? {
+        coverLabel: 'Discover The Digital Euro', coverAlt: 'Cover of The Digital Euro', meta: '// open-source investigation · August 2026',
+        titleLead: 'The Digital', titleAccent: 'Euro', deck: 'Balance sheets, data, law, costs and infrastructure.',
+        description: 'Six investigations into a currency that does not yet exist, with public records, test assumptions, unresolved choices and verification limits kept distinct.',
+        factsLabel: 'Edition contents', facts: [{ value: '6', label: 'investigations' }, { value: '23', label: 'infographics' }, { value: formattedSize, label: 'download' }, { value: 'CC BY 4.0', label: 'license' }],
+        discover: 'Explore the edition', downloadLabel: 'Download the EPUB', fileName: 'The-Digital-Euro-l0g.epub',
+      }
+    : {
+        coverLabel: 'Découvrir L’euro numérique', coverAlt: 'Couverture de L’euro numérique', meta: '// enquête en sources ouvertes · août 2026',
+        titleLead: 'L’euro', titleAccent: 'numérique', deck: 'Bilans, données, droit, coûts et infrastructure.',
+        description: 'Six enquêtes sur une monnaie qui n’existe pas encore, en séparant pièces publiques, hypothèses de test, choix ouverts et limites de vérification.',
+        factsLabel: 'Contenu de l’édition', facts: [{ value: '6', label: 'enquêtes' }, { value: '22', label: 'infographies' }, { value: formattedSize, label: 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
+        discover: 'Découvrir l’édition', downloadLabel: 'Télécharger l’EPUB', fileName: 'Euro-numerique-l0g.epub',
+      }
+  : isAuditer
   ? {
       coverLabel: 'Découvrir l’essai Auditer l’Opacité',
       coverAlt: 'Couverture de l’essai Auditer l’Opacité de Bluetouff',
@@ -92,7 +115,7 @@ const copy = isAuditer
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
@@ -139,6 +162,7 @@ const copy = isAuditer
     background: var(--color-surface);
   }
   .publication-spotlight--auditer { --publication-card-accent: var(--color-signal); }
+  .publication-spotlight--digital-euro { --publication-card-accent: var(--color-teal); }
   .publication-cover {
     display: block;
     align-self: center;

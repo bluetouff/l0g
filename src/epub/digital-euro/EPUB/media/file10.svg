@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 650" width="100%" role="img" aria-labelledby="layers4-en-title layers4-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="layers4-en-title">Six different places where a rule can act on a payment</title>
+<desc id="layers4-en-desc">A rule may target the monetary unit, payment instruction, reservation, instrument, account, or a person and their property. Only the first category directly constitutes programmable money.</desc>
+<g class="layers4-en-desktop">
+<rect width="760" height="650" rx="16" fill="#0b0f14"></rect>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">WHERE DOES THE RULE LIVE?</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">Same apparent result, six different legal objects.</text>
+<rect x="30" y="108" width="220" height="208" rx="14" fill="#2b1928" stroke="#ff7ea8"></rect>
+<text x="48" y="142" fill="#ff9abb" font-size="15" font-weight="760">1. MONETARY UNIT</text>
+<text x="48" y="176" fill="#f7f9fc" font-size="14">“This euro expires Friday”</text>
+<text x="48" y="201" fill="#f7f9fc" font-size="14">“food only”</text>
+<line x1="48" y1="225" x2="232" y2="225" stroke="#5d354e"></line>
+<text x="48" y="253" fill="#d7b9c5" font-size="12">The restriction follows the value.</text>
+<text x="48" y="276" fill="#ff9abb" font-size="13" font-weight="720">PROGRAMMABLE MONEY</text>
+<text x="48" y="297" fill="#d7b9c5" font-size="12">Prohibited by Article 24.</text>
+<rect x="270" y="108" width="220" height="208" rx="14" fill="#172337" stroke="#7fa7ff"></rect>
+<text x="288" y="142" fill="#9bb9ff" font-size="15" font-weight="760">2. PAYMENT INSTRUCTION</text>
+<text x="288" y="176" fill="#f7f9fc" font-size="14">“pay after delivery”</text>
+<text x="288" y="201" fill="#f7f9fc" font-size="14">“pay every month”</text>
+<line x1="288" y1="225" x2="472" y2="225" stroke="#3b4d70"></line>
+<text x="288" y="253" fill="#bdc9e5" font-size="12">The condition ends at settlement.</text>
+<text x="288" y="276" fill="#9bb9ff" font-size="13" font-weight="720">CONDITIONAL PAYMENT</text>
+<text x="288" y="297" fill="#bdc9e5" font-size="12">Allowed and explored.</text>
+<rect x="510" y="108" width="220" height="208" rx="14" fill="#152c31" stroke="#62d8c6"></rect>
+<text x="528" y="142" fill="#7ee5d6" font-size="15" font-weight="760">3. RESERVATION</text>
+<text x="528" y="176" fill="#f7f9fc" font-size="14">hotel, rental, usage</text>
+<text x="528" y="201" fill="#f7f9fc" font-size="14">amount blocked before payment</text>
+<line x1="528" y1="225" x2="712" y2="225" stroke="#36515b"></line>
+<text x="528" y="253" fill="#b7d5d0" font-size="12">The amount is unavailable,</text>
+<text x="528" y="272" fill="#b7d5d0" font-size="12">not specialised.</text>
+<text x="528" y="297" fill="#7ee5d6" font-size="13" font-weight="720">PRE-AUTHORISATION</text>
+<rect x="30" y="340" width="220" height="208" rx="14" fill="#302418" stroke="#ffb86b"></rect>
+<text x="48" y="374" fill="#ffca91" font-size="15" font-weight="760">4. INSTRUMENT</text>
+<text x="48" y="408" fill="#f7f9fc" font-size="14">limit, contactless, card</text>
+<text x="48" y="433" fill="#f7f9fc" font-size="14">security block</text>
+<line x1="48" y1="457" x2="232" y2="457" stroke="#665039"></line>
+<text x="48" y="485" fill="#d8c9b8" font-size="12">The instrument is limited.</text>
+<text x="48" y="508" fill="#ffca91" font-size="13" font-weight="720">ACCESS CONTROL</text>
+<text x="48" y="529" fill="#d8c9b8" font-size="12">The euros remain ordinary.</text>
+<rect x="270" y="340" width="220" height="208" rx="14" fill="#251d33" stroke="#d98bff"></rect>
+<text x="288" y="374" fill="#e2adff" font-size="15" font-weight="760">5. ACCOUNT</text>
+<text x="288" y="408" fill="#f7f9fc" font-size="14">holding limit</text>
+<text x="288" y="433" fill="#f7f9fc" font-size="14">automatic transfer of excess</text>
+<line x1="288" y1="457" x2="472" y2="457" stroke="#594063"></line>
+<text x="288" y="485" fill="#d2c2d9" font-size="12">The quantity or availability</text>
+<text x="288" y="504" fill="#d2c2d9" font-size="12">is constrained.</text>
+<text x="288" y="529" fill="#e2adff" font-size="13" font-weight="720">ARCHITECTURE RULE</text>
+<rect x="510" y="340" width="220" height="208" rx="14" fill="#18272c" stroke="#8dd7a9"></rect>
+<text x="528" y="374" fill="#9be5b6" font-size="15" font-weight="760">6. PERSON / PROPERTY</text>
+<text x="528" y="408" fill="#f7f9fc" font-size="14">sanction, freeze, seizure</text>
+<text x="528" y="433" fill="#f7f9fc" font-size="14">authority or court decision</text>
+<line x1="528" y1="457" x2="712" y2="457" stroke="#3c5a48"></line>
+<text x="528" y="485" fill="#bfd7c7" font-size="12">Law blocks disposal.</text>
+<text x="528" y="508" fill="#9be5b6" font-size="13" font-weight="720">LEGAL RESTRICTION</text>
+<text x="528" y="529" fill="#bfd7c7" font-size="12">The money remains fungible.</text>
+<rect x="30" y="576" width="700" height="45" rx="10" fill="#111923" stroke="#344556"></rect>
+<text x="50" y="604" fill="#dce6ef" font-size="13">Decisive test: does the restriction follow the euros after transfer?</text>
+</g>
+<g class="layers4-en-mobile" transform="scale(2.1714)">
+<rect width="350" height="299" rx="9" fill="#0b0f14"></rect>
+<text x="15" y="21" fill="#f7f9fc" font-size="13" font-weight="760">WHERE DOES THE RULE LIVE?</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.4">Only a restriction following the unit is programmable money.</text>
+<rect x="12" y="45" width="326" height="35" rx="6" fill="#2b1928" stroke="#ff7ea8"></rect>
+<text x="21" y="59" fill="#ff9abb" font-size="8.4" font-weight="760">UNIT</text><text x="329" y="59" text-anchor="end" fill="#f7f9fc" font-size="8.4">expiry, restricted goods</text>
+<text x="21" y="72" fill="#d7b9c5" font-size="7.2">The restriction follows value: programmable money.</text>
+<rect x="12" y="86" width="326" height="35" rx="6" fill="#172337" stroke="#7fa7ff"></rect>
+<text x="21" y="100" fill="#9bb9ff" font-size="8.4" font-weight="760">INSTRUCTION</text><text x="329" y="100" text-anchor="end" fill="#f7f9fc" font-size="8.4">after delivery</text>
+<text x="21" y="113" fill="#bdc9e5" font-size="7.2">The condition ends at settlement.</text>
+<rect x="12" y="127" width="326" height="35" rx="6" fill="#152c31" stroke="#62d8c6"></rect>
+<text x="21" y="141" fill="#7ee5d6" font-size="8.4" font-weight="760">RESERVATION</text><text x="329" y="141" text-anchor="end" fill="#f7f9fc" font-size="8.4">blocked amount</text>
+<text x="21" y="154" fill="#b7d5d0" font-size="7.2">Unavailable before payment, free afterwards.</text>
+<rect x="12" y="168" width="326" height="35" rx="6" fill="#302418" stroke="#ffb86b"></rect>
+<text x="21" y="182" fill="#ffca91" font-size="8.4" font-weight="760">INSTRUMENT</text><text x="329" y="182" text-anchor="end" fill="#f7f9fc" font-size="8.4">card or app</text>
+<text x="21" y="195" fill="#d8c9b8" font-size="7.2">The access tool is limited.</text>
+<rect x="12" y="209" width="326" height="35" rx="6" fill="#251d33" stroke="#d98bff"></rect>
+<text x="21" y="223" fill="#e2adff" font-size="8.4" font-weight="760">ACCOUNT</text><text x="329" y="223" text-anchor="end" fill="#f7f9fc" font-size="8.4">holding cap</text>
+<text x="21" y="236" fill="#d2c2d9" font-size="7.2">The quantity or availability is constrained.</text>
+<rect x="12" y="250" width="326" height="35" rx="6" fill="#18272c" stroke="#8dd7a9"></rect>
+<text x="21" y="264" fill="#9be5b6" font-size="8.4" font-weight="760">PERSON / PROPERTY</text><text x="329" y="264" text-anchor="end" fill="#f7f9fc" font-size="8.4">freeze or seizure</text>
+<text x="21" y="277" fill="#bfd7c7" font-size="7.2">Law blocks the power to dispose of assets.</text>
+<text x="15" y="294" fill="#9fb0c0" font-size="7.4">Test: does the rule survive transfer?</text>
+</g>
+</svg>

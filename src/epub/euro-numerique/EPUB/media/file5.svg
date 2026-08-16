@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 540" width="100%" role="img" aria-labelledby="terms-fr-title terms-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="terms-fr-title">Quatre protections différentes pour les données de paiement</title>
+<desc id="terms-fr-desc">Anonymisation, pseudonymisation, tokenisation et chiffrement ne suppriment pas les mêmes risques et ne permettent pas les mêmes retours vers l'identité.</desc>
+<g class="terms-fr-desktop">
+<rect width="760" height="540" rx="16" fill="#0b0f14"></rect>
+<text x="32" y="48" fill="#f7f9fc" font-size="24" font-weight="760">QUATRE MOTS, QUATRE PROTECTIONS</text>
+<text x="32" y="76" fill="#94a3b8" font-size="14">La présence d’un code à la place du nom ne suffit pas à rendre une donnée anonyme.</text>
+<rect x="30" y="112" width="165" height="330" rx="14" fill="#14232b" stroke="#5eead4"></rect>
+<text x="47" y="148" fill="#5eead4" font-size="15" font-weight="760">ANONYMISÉ</text>
+<text x="47" y="184" fill="#f7f9fc" font-size="14">Le lien raisonnable</text>
+<text x="47" y="205" fill="#f7f9fc" font-size="14">avec la personne</text>
+<text x="47" y="226" fill="#f7f9fc" font-size="14">est rompu.</text>
+<line x1="47" y1="252" x2="178" y2="252" stroke="#36515b"></line>
+<text x="47" y="282" fill="#a8bac5" font-size="12">Retour à l’identité :</text>
+<text x="47" y="305" fill="#5eead4" font-size="13" font-weight="720">non prévu</text>
+<text x="47" y="350" fill="#a8bac5" font-size="12">Exemple visé :</text>
+<text x="47" y="373" fill="#dce6eb" font-size="12">statistique réellement</text>
+<text x="47" y="392" fill="#dce6eb" font-size="12">agrégée et non</text>
+<text x="47" y="411" fill="#dce6eb" font-size="12">réidentifiable</text>
+<rect x="208" y="112" width="165" height="330" rx="14" fill="#182236" stroke="#8fa9ff"></rect>
+<text x="225" y="148" fill="#8fa9ff" font-size="15" font-weight="760">PSEUDONYMISÉ</text>
+<text x="225" y="184" fill="#f7f9fc" font-size="14">Le nom devient un</text>
+<text x="225" y="205" fill="#f7f9fc" font-size="14">identifiant technique.</text>
+<text x="225" y="226" fill="#f7f9fc" font-size="14">Le lien existe ailleurs.</text>
+<line x1="225" y1="252" x2="356" y2="252" stroke="#3b4d70"></line>
+<text x="225" y="282" fill="#aab7d7" font-size="12">Retour à l’identité :</text>
+<text x="225" y="305" fill="#8fa9ff" font-size="13" font-weight="720">oui, avec la clé</text>
+<text x="225" y="350" fill="#aab7d7" font-size="12">Exemple euro :</text>
+<text x="225" y="373" fill="#dde4f6" font-size="12">user ID, DEAN ou</text>
+<text x="225" y="392" fill="#dde4f6" font-size="12">compte central sans</text>
+<text x="225" y="411" fill="#dde4f6" font-size="12">nom civil</text>
+<rect x="386" y="112" width="165" height="330" rx="14" fill="#291d33" stroke="#db8cff"></rect>
+<text x="403" y="148" fill="#db8cff" font-size="15" font-weight="760">TOKENISÉ</text>
+<text x="403" y="184" fill="#f7f9fc" font-size="14">Une valeur remplace</text>
+<text x="403" y="205" fill="#f7f9fc" font-size="14">la donnée dans un</text>
+<text x="403" y="226" fill="#f7f9fc" font-size="14">canal précis.</text>
+<line x1="403" y1="252" x2="534" y2="252" stroke="#594063"></line>
+<text x="403" y="282" fill="#cab7d2" font-size="12">Retour à la donnée :</text>
+<text x="403" y="305" fill="#db8cff" font-size="13" font-weight="720">oui, si autorisé</text>
+<text x="403" y="350" fill="#cab7d2" font-size="12">Exemple euro :</text>
+<text x="403" y="373" fill="#eee3f2" font-size="12">token QR, lien ou</text>
+<text x="403" y="392" fill="#eee3f2" font-size="12">NFC géré par</text>
+<text x="403" y="411" fill="#eee3f2" font-size="12">SEPI</text>
+<rect x="564" y="112" width="165" height="330" rx="14" fill="#302418" stroke="#ffb86b"></rect>
+<text x="581" y="148" fill="#ffb86b" font-size="15" font-weight="760">CHIFFRÉ</text>
+<text x="581" y="184" fill="#f7f9fc" font-size="14">Le contenu reste</text>
+<text x="581" y="205" fill="#f7f9fc" font-size="14">illisible sans la clé.</text>
+<text x="581" y="226" fill="#f7f9fc" font-size="14">Le message existe.</text>
+<line x1="581" y1="252" x2="712" y2="252" stroke="#665039"></line>
+<text x="581" y="282" fill="#d4c2ab" font-size="12">Lecture :</text>
+<text x="581" y="305" fill="#ffb86b" font-size="13" font-weight="720">oui, par le destinataire</text>
+<text x="581" y="350" fill="#d4c2ab" font-size="12">Exemple euro :</text>
+<text x="581" y="373" fill="#f1e7da" font-size="12">objets transmis</text>
+<text x="581" y="392" fill="#f1e7da" font-size="12">entre deux PSP</text>
+<text x="581" y="411" fill="#f1e7da" font-size="12">via le DESP</text>
+<rect x="30" y="470" width="699" height="43" rx="9" fill="#111923" stroke="#344556"></rect>
+<text x="48" y="497" fill="#dce6ef" font-size="13">Le mode en ligne repose sur des données pseudonymisées.</text>
+</g>
+<g class="terms-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="249" rx="9" fill="#0b0f14"></rect>
+<text x="15" y="22" fill="#f7f9fc" font-size="14" font-weight="760">QUATRE PROTECTIONS DIFFÉRENTES</text>
+<text x="15" y="36" fill="#94a3b8" font-size="8">Un code à la place du nom ne suffit pas.</text>
+<rect x="13" y="47" width="324" height="39" rx="7" fill="#14232b" stroke="#5eead4"></rect>
+<text x="23" y="63" fill="#5eead4" font-size="9" font-weight="760">ANONYMISÉ</text><text x="327" y="63" text-anchor="end" fill="#f7f9fc" font-size="9">lien rompu</text>
+<text x="23" y="78" fill="#b7c8d0" font-size="8">Retour raisonnable à l’identité non prévu.</text>
+<rect x="13" y="94" width="324" height="39" rx="7" fill="#182236" stroke="#8fa9ff"></rect>
+<text x="23" y="110" fill="#8fa9ff" font-size="9" font-weight="760">PSEUDONYMISÉ</text><text x="327" y="110" text-anchor="end" fill="#f7f9fc" font-size="9">clé séparée</text>
+<text x="23" y="125" fill="#bdc9e5" font-size="8">La personne peut être retrouvée avec une information en plus.</text>
+<rect x="13" y="141" width="324" height="39" rx="7" fill="#291d33" stroke="#db8cff"></rect>
+<text x="23" y="157" fill="#db8cff" font-size="9" font-weight="760">TOKENISÉ</text><text x="327" y="157" text-anchor="end" fill="#f7f9fc" font-size="9">valeur substitutive</text>
+<text x="23" y="172" fill="#d2c2d9" font-size="8">Un acteur autorisé peut retrouver la donnée sous-jacente.</text>
+<rect x="13" y="188" width="324" height="39" rx="7" fill="#302418" stroke="#ffb86b"></rect>
+<text x="23" y="204" fill="#ffb86b" font-size="9" font-weight="760">CHIFFRÉ</text><text x="327" y="204" text-anchor="end" fill="#f7f9fc" font-size="9">lecture avec clé</text>
+<text x="23" y="219" fill="#d8c9b8" font-size="8">Le contenu est protégé, les métadonnées peuvent subsister.</text>
+<text x="15" y="241" fill="#9fb0c0" font-size="8">Le mode en ligne relève de la pseudonymisation.</text>
+</g>
+</svg>

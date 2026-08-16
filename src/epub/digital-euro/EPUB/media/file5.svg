@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 1070" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="models-title-en models-desc-en" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0a111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="models-title-en">Three models of digital euro banking risk</title>
+  <desc id="models-desc-en">Comparison of the ECB 2025 model, the Bundesbank 2024 short-term model and the Bundesbank 2026 long-term model.</desc>
+  <defs>
+    <linearGradient id="models-bg-en" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a111a"></stop>
+      <stop offset="100%" stop-color="#14253a"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="478" height="1068" rx="14" fill="url(#models-bg-en)"></rect>
+  <text x="24" y="38" fill="#f4f7fb" font-size="20" font-weight="750">COMPARING THE THREE MODELS</text>
+  <text x="24" y="63" fill="#9fb1c5" font-size="12">Similar conclusions reached through different mechanisms</text>
+  <g transform="translate(20 92)">
+    <rect width="440" height="278" rx="13" fill="#172337" stroke="#7fa7ff" stroke-width="1.5"></rect>
+    <text x="22" y="32" fill="#9bb9ff" font-size="12" font-weight="750">ECB 2025 · EURO AREA · IMMEDIATE SHOCK</text>
+    <text x="22" y="64" fill="#ffffff" font-size="18" font-weight="800">2,025 banks</text>
+    <text x="230" y="64" fill="#ffffff" font-size="18" font-weight="800">Q1 2024 data</text>
+    <text x="22" y="100" fill="#dce6f0" font-size="13">Reserves, markets, bonds and central-bank</text>
+    <text x="22" y="122" fill="#dce6f0" font-size="13">funding under collateral constraints.</text>
+    <text x="22" y="154" fill="#7fa7ff" font-size="12" font-weight="750">RESULT AT €3,000</text>
+    <text x="22" y="184" fill="#ffffff" font-size="15" font-weight="700">€699bn of outflows</text>
+    <text x="22" y="210" fill="#ffffff" font-size="15" font-weight="700">13 banks reach a 100% LCR</text>
+    <text x="22" y="236" fill="#ffffff" font-size="15" font-weight="700">9 hit the standard collateral constraint</text>
+    <text x="22" y="262" fill="#aebed0" font-size="11">The central bank is part of the absorption mechanism.</text>
+  </g>
+  <g transform="translate(20 394)">
+    <rect width="440" height="278" rx="13" fill="#152c31" stroke="#65d9c8" stroke-width="1.5"></rect>
+    <text x="22" y="32" fill="#8ce9dc" font-size="12" font-weight="750">BUNDESBANK 2024 · GERMANY · SHORT TERM</text>
+    <text x="22" y="64" fill="#ffffff" font-size="18" font-weight="800">Rapid conversion</text>
+    <text x="230" y="64" fill="#ffffff" font-size="18" font-weight="800">little adaptation</text>
+    <text x="22" y="100" fill="#ddf1ee" font-size="13">The model tests HQLA redistribution</text>
+    <text x="22" y="122" fill="#ddf1ee" font-size="13">within savings and cooperative networks.</text>
+    <text x="22" y="154" fill="#65d9c8" font-size="12" font-weight="750">RESULT AT €3,000</text>
+    <text x="22" y="184" fill="#ffffff" font-size="15" font-weight="700">Aggregate shortfall up to roughly 2% of HQLA</text>
+    <text x="22" y="210" fill="#ffffff" font-size="15" font-weight="700">No shortfall in the relevant networks</text>
+    <text x="22" y="236" fill="#ffffff" font-size="15" font-weight="700">if internal liquidity circulates efficiently</text>
+    <text x="22" y="262" fill="#afcfc9" font-size="11">Group structure can offset retail exposure.</text>
+  </g>
+  <g transform="translate(20 696)">
+    <rect width="440" height="306" rx="13" fill="#251d33" stroke="#d98bff" stroke-width="1.5"></rect>
+    <text x="22" y="32" fill="#e4a9ff" font-size="12" font-weight="750">BUNDESBANK 2026 · GERMANY · LONG TERM</text>
+    <text x="22" y="64" fill="#ffffff" font-size="18" font-weight="800">1,052 retail banks</text>
+    <text x="250" y="64" fill="#ffffff" font-size="18" font-weight="800">Q1 2025 data</text>
+    <text x="22" y="100" fill="#eee6f2" font-size="13">Deposit-rate increases, bank bonds</text>
+    <text x="22" y="122" fill="#eee6f2" font-size="13">and a new funding equilibrium.</text>
+    <text x="22" y="147" fill="#ffb86b" font-size="12" font-weight="700">Central-bank refinancing excluded.</text>
+    <text x="22" y="179" fill="#d98bff" font-size="12" font-weight="750">ADVERSE SCENARIO AT €3,000</text>
+    <text x="22" y="211" fill="#ffffff" font-size="17" font-weight="800">ROE: roughly -0.2 percentage point</text>
+    <text x="22" y="241" fill="#ffffff" font-size="17" font-weight="800">LCR: roughly -7 percentage points</text>
+    <text x="22" y="273" fill="#cdbed7" font-size="12">The shock is absorbable but permanently changes</text>
+    <text x="22" y="293" fill="#cdbed7" font-size="12">the price and structure of bank funding.</text>
+  </g>
+</svg>

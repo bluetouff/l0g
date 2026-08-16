@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="three-euros-title-fr three-euros-desc-fr" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0b111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="three-euros-title-fr">Cent euros sous trois formes</title>
+  <desc id="three-euros-desc-fr">Comparaison entre un billet, un dépôt bancaire et un futur avoir en euro numérique selon le débiteur, l’accès et les limites prévues.</desc>
+  <defs>
+    <linearGradient id="three-euros-bg-fr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b111a"></stop>
+      <stop offset="100%" stop-color="#111d2c"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="478" height="818" rx="14" fill="url(#three-euros-bg-fr)"></rect>
+  <text x="24" y="38" fill="#f4f7fb" font-size="21" font-weight="750">100 € SOUS TROIS FORMES</text>
+  <text x="24" y="64" fill="#9fb1c5" font-size="12">Même unité de compte, engagements différents</text>
+  <g transform="translate(20 94)">
+    <rect width="440" height="174" rx="12" fill="#13253a" stroke="#63d6c5" stroke-width="1.5"></rect>
+    <circle cx="38" cy="39" r="21" fill="#63d6c5"></circle>
+    <text x="38" y="46" text-anchor="middle" fill="#07131d" font-size="17" font-weight="800">1</text>
+    <text x="72" y="34" fill="#ffffff" font-size="17" font-weight="750">Billet de 100 €</text>
+    <text x="72" y="57" fill="#b9c8d8" font-size="12">Monnaie centrale physique</text>
+    <text x="24" y="91" fill="#7ee5d6" font-size="11" font-weight="700">DÉBITEUR</text>
+    <text x="122" y="91" fill="#edf2f7" font-size="13">Eurosystème</text>
+    <text x="24" y="119" fill="#7ee5d6" font-size="11" font-weight="700">ACCÈS</text>
+    <text x="122" y="119" fill="#edf2f7" font-size="13">détention directe du billet</text>
+    <text x="24" y="147" fill="#7ee5d6" font-size="11" font-weight="700">PLAFOND</text>
+    <text x="122" y="147" fill="#edf2f7" font-size="13">aucun plafond général de détention</text>
+  </g>
+  <g transform="translate(20 292)">
+    <rect width="440" height="174" rx="12" fill="#172337" stroke="#7fa7ff" stroke-width="1.5"></rect>
+    <circle cx="38" cy="39" r="21" fill="#7fa7ff"></circle>
+    <text x="38" y="46" text-anchor="middle" fill="#07131d" font-size="17" font-weight="800">2</text>
+    <text x="72" y="34" fill="#ffffff" font-size="17" font-weight="750">Dépôt bancaire de 100 €</text>
+    <text x="72" y="57" fill="#b9c8d8" font-size="12">Monnaie commerciale scripturale</text>
+    <text x="24" y="91" fill="#9bb9ff" font-size="11" font-weight="700">DÉBITEUR</text>
+    <text x="122" y="91" fill="#edf2f7" font-size="13">banque commerciale</text>
+    <text x="24" y="119" fill="#9bb9ff" font-size="11" font-weight="700">PROTECTION</text>
+    <text x="122" y="119" fill="#edf2f7" font-size="13">garantie jusqu’à 100 000 €</text>
+    <text x="24" y="147" fill="#9bb9ff" font-size="11" font-weight="700">PLAFOND</text>
+    <text x="122" y="147" fill="#edf2f7" font-size="13">pas de plafond monétaire comparable</text>
+  </g>
+  <g transform="translate(20 490)">
+    <rect width="440" height="174" rx="12" fill="#251d33" stroke="#da8cff" stroke-width="1.5"></rect>
+    <circle cx="38" cy="39" r="21" fill="#da8cff"></circle>
+    <text x="38" y="46" text-anchor="middle" fill="#16091c" font-size="17" font-weight="800">3</text>
+    <text x="72" y="34" fill="#ffffff" font-size="17" font-weight="750">Euro numérique de 100 €</text>
+    <text x="72" y="57" fill="#cdbed7" font-size="12">Monnaie centrale numérique envisagée</text>
+    <text x="24" y="91" fill="#e6adff" font-size="11" font-weight="700">DÉBITEUR</text>
+    <text x="122" y="91" fill="#f2edf5" font-size="13">Eurosystème</text>
+    <text x="24" y="119" fill="#e6adff" font-size="11" font-weight="700">ACCÈS</text>
+    <text x="122" y="119" fill="#f2edf5" font-size="13">via une banque ou un PSP</text>
+    <text x="24" y="147" fill="#e6adff" font-size="11" font-weight="700">PLAFOND</text>
+    <text x="122" y="147" fill="#f2edf5" font-size="13">prévu, montant encore indécis</text>
+  </g>
+  <rect x="20" y="700" width="440" height="88" rx="12" fill="#101923" stroke="#304459"></rect>
+  <text x="40" y="730" fill="#ffb86b" font-size="12" font-weight="750">POINT CLÉ</text>
+  <text x="40" y="754" fill="#e5ebf2" font-size="13">La conversion ne change pas le nombre d’euros.</text>
+  <text x="40" y="775" fill="#e5ebf2" font-size="13">Elle change le bilan qui porte la dette.</text>
+</svg>

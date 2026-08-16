@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 650" width="100%" role="img" aria-labelledby="actors4-fr-title actors4-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="actors4-fr-title">Répartition des pouvoirs autour de l’euro numérique</title>
+<desc id="actors4-fr-desc">Le législateur définit la monnaie et ses limites, la BCE fournit l’infrastructure dans le cadre de la loi, les PSP développent les services, l’utilisateur consent, et les autorités ou juges appliquent les restrictions légales.</desc>
+<g class="actors4-fr-desktop">
+<rect width="760" height="650" rx="16" fill="#0b0f14"></rect>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">QUI PEUT DÉCIDER QUOI ?</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">La décision est répartie entre plusieurs acteurs.</text>
+<rect x="270" y="112" width="220" height="94" rx="14" fill="#172337" stroke="#7fa7ff"></rect>
+<text x="380" y="143" text-anchor="middle" fill="#9bb9ff" font-size="15" font-weight="760">PARLEMENT + CONSEIL</text>
+<text x="380" y="169" text-anchor="middle" fill="#f7f9fc" font-size="12.5">définissent la monnaie, l’interdiction</text>
+<text x="380" y="188" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et les compétences</text>
+<rect x="42" y="244" width="210" height="122" rx="14" fill="#14272d" stroke="#62d8c6"></rect>
+<text x="147" y="274" text-anchor="middle" fill="#7ee5d6" font-size="15" font-weight="760">BCE / EUROSYSTÈME</text>
+<text x="147" y="301" text-anchor="middle" fill="#f7f9fc" font-size="12.5">standards, règlement, réservation</text>
+<text x="147" y="322" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et décision éventuelle d’émettre</text>
+<text x="147" y="347" text-anchor="middle" fill="#a9bec5" font-size="11.5">dans le cadre du règlement</text>
+<rect x="275" y="244" width="210" height="122" rx="14" fill="#302418" stroke="#ffb86b"></rect>
+<text x="380" y="274" text-anchor="middle" fill="#ffca91" font-size="15" font-weight="760">PSP / FOURNISSEURS</text>
+<text x="380" y="301" text-anchor="middle" fill="#f7f9fc" font-size="12.5">logique métier, interface, oracle</text>
+<text x="380" y="322" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et services additionnels</text>
+<text x="380" y="347" text-anchor="middle" fill="#d8c9b8" font-size="11.5">soumis au droit des paiements</text>
+<rect x="508" y="244" width="210" height="122" rx="14" fill="#251d33" stroke="#d98bff"></rect>
+<text x="613" y="274" text-anchor="middle" fill="#e2adff" font-size="15" font-weight="760">UTILISATEUR</text>
+<text x="613" y="301" text-anchor="middle" fill="#f7f9fc" font-size="12.5">accepte une condition, un mandat</text>
+<text x="613" y="322" text-anchor="middle" fill="#f7f9fc" font-size="12.5">ou une préautorisation</text>
+<text x="613" y="347" text-anchor="middle" fill="#d2c2d9" font-size="11.5">consentement et révocation</text>
+<rect x="158" y="410" width="210" height="122" rx="14" fill="#18272c" stroke="#8dd7a9"></rect>
+<text x="263" y="440" text-anchor="middle" fill="#9be5b6" font-size="15" font-weight="760">COMMISSION</text>
+<text x="263" y="467" text-anchor="middle" fill="#f7f9fc" font-size="12.5">actes délégués ou d’exécution</text>
+<text x="263" y="488" text-anchor="middle" fill="#f7f9fc" font-size="12.5">dans les matières prévues</text>
+<text x="263" y="513" text-anchor="middle" fill="#bfd7c7" font-size="11.5">ne renverse pas seule la loi</text>
+<rect x="392" y="410" width="210" height="122" rx="14" fill="#2b1928" stroke="#ff7ea8"></rect>
+<text x="497" y="440" text-anchor="middle" fill="#ff9abb" font-size="15" font-weight="760">AUTORITÉS / JUGES</text>
+<text x="497" y="467" text-anchor="middle" fill="#f7f9fc" font-size="12.5">sanctions, AML, gel, saisie</text>
+<text x="497" y="488" text-anchor="middle" fill="#f7f9fc" font-size="12.5">et confiscation</text>
+<text x="497" y="513" text-anchor="middle" fill="#d7b9c5" font-size="11.5">sur une base juridique ciblée</text>
+<path d="M380 206 V228" stroke="#7fa7ff" stroke-width="2"></path>
+<path d="M147 228 H613" stroke="#52657b" stroke-width="1.5"></path>
+<path d="M147 228 V244 M380 228 V244 M613 228 V244" stroke="#52657b" stroke-width="1.5"></path>
+<path d="M380 366 V390" stroke="#52657b" stroke-width="1.5"></path>
+<path d="M263 390 H497" stroke="#52657b" stroke-width="1.5"></path>
+<path d="M263 390 V410 M497 390 V410" stroke="#52657b" stroke-width="1.5"></path>
+<rect x="90" y="570" width="580" height="48" rx="10" fill="#111923" stroke="#344556"></rect>
+<text x="380" y="590" text-anchor="middle" fill="#ffca91" font-size="12" font-weight="720">L’ARTICLE 24 ENCADRE LES POUVOIRS TECHNIQUES DE LA BCE</text>
+<text x="380" y="607" text-anchor="middle" fill="#dce6ef" font-size="11.5">Une modification substantielle passerait par une nouvelle procédure législative.</text>
+</g>
+<g class="actors4-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="299" rx="9" fill="#0b0f14"></rect>
+<text x="15" y="21" fill="#f7f9fc" font-size="13" font-weight="760">QUI PEUT DÉCIDER QUOI ?</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.4">Le pouvoir est réparti entre plusieurs autorités.</text>
+<rect x="12" y="46" width="326" height="37" rx="6" fill="#172337" stroke="#7fa7ff"></rect>
+<text x="21" y="61" fill="#9bb9ff" font-size="8.3" font-weight="760">PARLEMENT + CONSEIL</text>
+<text x="21" y="74" fill="#bdc9e5" font-size="7.2">Définissent la monnaie, l’interdiction et les compétences.</text>
+<rect x="12" y="90" width="326" height="37" rx="6" fill="#14272d" stroke="#62d8c6"></rect>
+<text x="21" y="105" fill="#7ee5d6" font-size="8.3" font-weight="760">BCE / EUROSYSTÈME</text>
+<text x="21" y="118" fill="#b7d5d0" font-size="7.2">Standards, règlement et réservation dans le cadre de la loi.</text>
+<rect x="12" y="134" width="326" height="37" rx="6" fill="#302418" stroke="#ffb86b"></rect>
+<text x="21" y="149" fill="#ffca91" font-size="8.3" font-weight="760">PSP / FOURNISSEURS</text>
+<text x="21" y="162" fill="#d8c9b8" font-size="7.2">Services, interface, oracle et logique métier.</text>
+<rect x="12" y="178" width="326" height="37" rx="6" fill="#251d33" stroke="#d98bff"></rect>
+<text x="21" y="193" fill="#e2adff" font-size="8.3" font-weight="760">UTILISATEUR</text>
+<text x="21" y="206" fill="#d2c2d9" font-size="7.2">Consentement, modification et révocation selon le service.</text>
+<rect x="12" y="222" width="158" height="40" rx="6" fill="#18272c" stroke="#8dd7a9"></rect>
+<text x="21" y="237" fill="#9be5b6" font-size="8" font-weight="760">COMMISSION</text>
+<text x="21" y="251" fill="#bfd7c7" font-size="6.8">Actes encadrés.</text>
+<rect x="180" y="222" width="158" height="40" rx="6" fill="#2b1928" stroke="#ff7ea8"></rect>
+<text x="189" y="237" fill="#ff9abb" font-size="8" font-weight="760">AUTORITÉS / JUGES</text>
+<text x="189" y="251" fill="#d7b9c5" font-size="6.8">Gel, saisie, sanctions.</text>
+<rect x="12" y="271" width="326" height="19" rx="5" fill="#111923"></rect>
+<text x="175" y="284" text-anchor="middle" fill="#ffca91" font-size="7.2" font-weight="720">L’expiration exigerait une nouvelle procédure législative.</text>
+</g>
+</svg>

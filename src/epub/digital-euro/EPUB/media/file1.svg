@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 680" width="100%" role="img" aria-labelledby="balance-en-title balance-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="balance-en-title">Conversion of one thousand euros from a bank deposit into digital euro</title>
+<desc id="balance-en-desc">Before conversion, the household holds a deposit, the bank owes it money and owns reserves. After conversion, the household holds digital euro, the bank’s deposit and reserves fall, and the Eurosystem replaces a liability to the bank with a liability to the public.</desc>
+<g class="balance-en-desktop">
+<rect width="760" height="680" rx="16" fill="#0b0f14"></rect>
+<text x="34" y="50" fill="#f7f9fc" font-size="24" font-weight="760">CONVERTING €1,000: THE DEBT MOVES</text>
+<text x="34" y="78" fill="#99a7bb" font-size="14">Simplified case: the bank uses reserves it already holds.</text>
+<rect x="28" y="112" width="320" height="420" rx="15" fill="#151e28" stroke="#4a6075"></rect>
+<text x="50" y="151" fill="#a9bdd0" font-size="16" font-weight="760">BEFORE</text>
+<rect x="50" y="174" width="276" height="88" rx="10" fill="#1d2b38"></rect>
+<text x="66" y="200" fill="#dce6ef" font-size="13" font-weight="720">HOUSEHOLD · ASSET</text>
+<text x="66" y="235" fill="#ffffff" font-size="22" font-weight="780">+ €1,000 deposit</text>
+<rect x="50" y="278" width="276" height="112" rx="10" fill="#1d2b38"></rect>
+<text x="66" y="304" fill="#dce6ef" font-size="13" font-weight="720">COMMERCIAL BANK</text>
+<text x="66" y="336" fill="#b9c8d5" font-size="14">Asset: + €1,000 reserves</text>
+<text x="66" y="365" fill="#b9c8d5" font-size="14">Liability: + €1,000 deposit</text>
+<rect x="50" y="406" width="276" height="92" rx="10" fill="#1d2b38"></rect>
+<text x="66" y="432" fill="#dce6ef" font-size="13" font-weight="720">EUROSYSTEM · LIABILITY</text>
+<text x="66" y="468" fill="#b9c8d5" font-size="14">+ €1,000 bank reserves</text>
+<line x1="366" y1="315" x2="394" y2="315" stroke="#69c6b8" stroke-width="5" stroke-linecap="round"></line>
+<polygon points="394,305 412,315 394,325" fill="#69c6b8"></polygon>
+<text x="380" y="291" text-anchor="middle" fill="#8ad9ce" font-size="12" font-weight="720">€1,000</text>
+<rect x="412" y="112" width="320" height="420" rx="15" fill="#162727" stroke="#54aa9e"></rect>
+<text x="434" y="151" fill="#88d7cb" font-size="16" font-weight="760">AFTER</text>
+<rect x="434" y="174" width="276" height="88" rx="10" fill="#1c3433"></rect>
+<text x="450" y="200" fill="#e0f1ef" font-size="13" font-weight="720">HOUSEHOLD · ASSET</text>
+<text x="450" y="235" fill="#ffffff" font-size="22" font-weight="780">+ €1,000 digital euro</text>
+<rect x="434" y="278" width="276" height="112" rx="10" fill="#1c3433"></rect>
+<text x="450" y="304" fill="#e0f1ef" font-size="13" font-weight="720">COMMERCIAL BANK</text>
+<text x="450" y="336" fill="#bedbd7" font-size="14">Asset: - €1,000 reserves</text>
+<text x="450" y="365" fill="#bedbd7" font-size="14">Liability: - €1,000 deposit</text>
+<rect x="434" y="406" width="276" height="92" rx="10" fill="#1c3433"></rect>
+<text x="450" y="432" fill="#e0f1ef" font-size="13" font-weight="720">EUROSYSTEM · LIABILITY</text>
+<text x="450" y="461" fill="#bedbd7" font-size="13">- €1,000 bank reserves</text>
+<text x="450" y="484" fill="#bedbd7" font-size="13">+ €1,000 digital euro</text>
+<rect x="28" y="560" width="704" height="82" rx="12" fill="#111820" stroke="#344555"></rect>
+<text x="48" y="592" fill="#dce6ef" font-size="14" font-weight="720">What changes</text>
+<text x="48" y="616" fill="#aebdca" font-size="13">The household changes debtor. The bank loses a deposit and reserves.</text>
+<text x="48" y="636" fill="#71869a" font-size="11">If the bank must rebuild reserves, replacement funding becomes the subject of part 2.</text>
+</g>
+<g class="balance-en-mobile" transform="scale(2.17)">
+<rect width="350" height="313" rx="10" fill="#0b0f14"></rect>
+<text x="15" y="22" fill="#f7f9fc" font-size="12.5" font-weight="760">CONVERTING €1,000</text>
+<text x="15" y="37" fill="#8fa3b7" font-size="8">Simplified case with reserves available</text>
+<rect x="12" y="48" width="326" height="103" rx="8" fill="#151e28" stroke="#4a6075"></rect>
+<text x="23" y="66" fill="#a9bdd0" font-size="9" font-weight="760">BEFORE</text>
+<text x="23" y="84" fill="#ffffff" font-size="10.5" font-weight="750">Household: +€1,000 deposit</text>
+<text x="23" y="101" fill="#b9c8d5" font-size="8.5">Bank asset: +€1,000 reserves</text>
+<text x="23" y="117" fill="#b9c8d5" font-size="8.5">Bank liability: +€1,000 deposit</text>
+<text x="23" y="133" fill="#7f93a6" font-size="7.5">Eurosystem: +€1,000 reserves as liability</text>
+<line x1="175" y1="157" x2="175" y2="171" stroke="#69c6b8" stroke-width="3" stroke-linecap="round"></line>
+<polygon points="169,170 175,180 181,170" fill="#69c6b8"></polygon>
+<rect x="12" y="184" width="326" height="103" rx="8" fill="#162727" stroke="#54aa9e"></rect>
+<text x="23" y="202" fill="#88d7cb" font-size="9" font-weight="760">AFTER</text>
+<text x="23" y="220" fill="#ffffff" font-size="10.5" font-weight="750">Household: +€1,000 digital euro</text>
+<text x="23" y="237" fill="#bedbd7" font-size="8.5">Bank asset: -€1,000 reserves</text>
+<text x="23" y="253" fill="#bedbd7" font-size="8.5">Bank liability: -€1,000 deposit</text>
+<text x="23" y="269" fill="#7fa7a1" font-size="7.5">Eurosystem: reserves -€1,000, digital euro +€1,000</text>
+<text x="15" y="304" fill="#71869a" font-size="7">The debtor changes. No euro disappears.</text>
+</g>
+</svg>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" width="100%" role="img" aria-labelledby="forms-en-title forms-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="forms-en-title">Three forms of one hundred euros and their debtors</title>
+<desc id="forms-en-desc">Comparison between a bank deposit, a banknote and the envisaged digital euro. The deposit is a commercial bank liability. The banknote and digital euro are Eurosystem liabilities, while digital euro access would remain managed by a payment service provider.</desc>
+<g class="forms-en-desktop">
+<rect width="760" height="560" rx="16" fill="#0b0f14"></rect>
+<text x="34" y="50" fill="#f7f9fc" font-size="25" font-weight="760">€100: SAME UNIT, THREE FORMS</text>
+<text x="34" y="78" fill="#99a7bb" font-size="14">The key differences are the debtor and the access model.</text>
+<rect x="28" y="112" width="224" height="348" rx="15" fill="#16212c" stroke="#4f6478"></rect>
+<text x="48" y="148" fill="#9eb1c4" font-size="14" font-weight="750">BANK DEPOSIT</text>
+<text x="48" y="202" fill="#ffffff" font-size="40" font-weight="790">€100</text>
+<line x1="48" y1="224" x2="232" y2="224" stroke="#3a4654"></line>
+<text x="48" y="258" fill="#dce6ef" font-size="14" font-weight="700">Debtor</text>
+<text x="48" y="281" fill="#b6c4d1" font-size="13">The commercial bank</text>
+<text x="48" y="321" fill="#dce6ef" font-size="14" font-weight="700">Service relationship</text>
+<text x="48" y="344" fill="#b6c4d1" font-size="13">Customer and bank</text>
+<text x="48" y="384" fill="#dce6ef" font-size="14" font-weight="700">Protection</text>
+<text x="48" y="407" fill="#b6c4d1" font-size="13">Guarantee up to €100,000</text>
+<text x="48" y="433" fill="#7f93a6" font-size="12">per depositor and per bank</text>
+<rect x="268" y="112" width="224" height="348" rx="15" fill="#16212c" stroke="#5e7fa0"></rect>
+<text x="288" y="148" fill="#a9c4df" font-size="14" font-weight="750">BANKNOTE</text>
+<text x="288" y="202" fill="#ffffff" font-size="40" font-weight="790">€100</text>
+<line x1="288" y1="224" x2="472" y2="224" stroke="#3a4654"></line>
+<text x="288" y="258" fill="#dce6ef" font-size="14" font-weight="700">Debtor</text>
+<text x="288" y="281" fill="#b6c4d1" font-size="13">The Eurosystem</text>
+<text x="288" y="321" fill="#dce6ef" font-size="14" font-weight="700">Access model</text>
+<text x="288" y="344" fill="#b6c4d1" font-size="13">Physical bearer instrument</text>
+<text x="288" y="384" fill="#dce6ef" font-size="14" font-weight="700">Holding limit</text>
+<text x="288" y="407" fill="#b6c4d1" font-size="13">No comparable ceiling</text>
+<text x="288" y="433" fill="#7f93a6" font-size="12">but strong physical frictions</text>
+<rect x="508" y="112" width="224" height="348" rx="15" fill="#18282a" stroke="#5fb8ac"></rect>
+<text x="528" y="148" fill="#83d8cb" font-size="14" font-weight="750">DIGITAL EURO</text>
+<text x="528" y="202" fill="#ffffff" font-size="40" font-weight="790">€100</text>
+<line x1="528" y1="224" x2="712" y2="224" stroke="#3a5554"></line>
+<text x="528" y="258" fill="#e0f1ef" font-size="14" font-weight="700">Debtor</text>
+<text x="528" y="281" fill="#bdd8d4" font-size="13">The Eurosystem</text>
+<text x="528" y="321" fill="#e0f1ef" font-size="14" font-weight="700">Service relationship</text>
+<text x="528" y="344" fill="#bdd8d4" font-size="13">Customer and PSP</text>
+<text x="528" y="369" fill="#7fa7a1" font-size="12">No ECB service contract</text>
+<text x="528" y="407" fill="#e0f1ef" font-size="14" font-weight="700">Holding limit</text>
+<text x="528" y="430" fill="#bdd8d4" font-size="13">Planned, amount unknown</text>
+<line x1="34" y1="495" x2="726" y2="495" stroke="#3a4654"></line>
+<text x="34" y="526" fill="#d7e3ee" font-size="14">The debtor changes with the form of money.</text>
+<text x="34" y="548" fill="#71869a" font-size="11">Sources: European Commission, Council of the EU, ECB, EBA. Status on 13 August 2026.</text>
+</g>
+<g class="forms-en-mobile" transform="scale(2.17)">
+<rect width="350" height="258" rx="10" fill="#0b0f14"></rect>
+<text x="16" y="23" fill="#f7f9fc" font-size="13.5" font-weight="760">€100: WHO OWES IT TO YOU?</text>
+<text x="16" y="38" fill="#8fa3b7" font-size="8.5">Same unit, different debtors and access</text>
+<rect x="12" y="49" width="326" height="54" rx="7" fill="#16212c" stroke="#4f6478"></rect>
+<text x="23" y="66" fill="#9eb1c4" font-size="8.5" font-weight="750">BANK DEPOSIT</text>
+<text x="327" y="68" text-anchor="end" fill="#ffffff" font-size="17" font-weight="790">€100</text>
+<text x="23" y="82" fill="#dce6ef" font-size="8.5">Debtor: commercial bank</text>
+<text x="23" y="95" fill="#7f93a6" font-size="7.5">Guarantee: up to €100,000 per bank</text>
+<rect x="12" y="110" width="326" height="54" rx="7" fill="#16212c" stroke="#5e7fa0"></rect>
+<text x="23" y="127" fill="#a9c4df" font-size="8.5" font-weight="750">BANKNOTE</text>
+<text x="327" y="129" text-anchor="end" fill="#ffffff" font-size="17" font-weight="790">€100</text>
+<text x="23" y="143" fill="#dce6ef" font-size="8.5">Debtor: Eurosystem</text>
+<text x="23" y="156" fill="#7f93a6" font-size="7.5">Bearer instrument, no similar cap</text>
+<rect x="12" y="171" width="326" height="61" rx="7" fill="#18282a" stroke="#5fb8ac"></rect>
+<text x="23" y="188" fill="#83d8cb" font-size="8.5" font-weight="750">ENVISAGED DIGITAL EURO</text>
+<text x="327" y="190" text-anchor="end" fill="#ffffff" font-size="17" font-weight="790">€100</text>
+<text x="23" y="204" fill="#e0f1ef" font-size="8.5">Debtor: Eurosystem · service: PSP</text>
+<text x="23" y="217" fill="#7fa7a1" font-size="7.5">Holding cap planned, amount unknown</text>
+<text x="16" y="249" fill="#71869a" font-size="7">Commission · Council · ECB · EBA · 13.08.2026</text>
+</g>
+</svg>

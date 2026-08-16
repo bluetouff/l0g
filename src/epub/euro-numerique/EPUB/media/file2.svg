@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 940" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="outflow-title-fr outflow-desc-fr" style="display:block;width:100%;height:auto;max-width:720px;margin:0 auto;background:#0a111a;border:1px solid rgba(255,255,255,0.12);border-radius:14px;font-family:system-ui,sans-serif">
+  <title id="outflow-title-fr">Comment le modèle calcule 699 milliards d’euros</title>
+  <desc id="outflow-desc-fr">Le scénario part d’une crise de confiance, applique à chaque déposant le minimum entre le plafond et son solde à vue, puis agrège les sorties dans 2 025 banques.</desc>
+  <defs>
+    <linearGradient id="outflow-bg-fr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a111a"></stop>
+      <stop offset="100%" stop-color="#12243a"></stop>
+    </linearGradient>
+    <marker id="outflow-arrow-fr" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#62d8c6"></path>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="478" height="938" rx="14" fill="url(#outflow-bg-fr)"></rect>
+  <text x="24" y="38" fill="#f4f7fb" font-size="20" font-weight="750">COMMENT LE MODÈLE CALCULE</text>
+  <text x="24" y="64" fill="#62d8c6" font-size="24" font-weight="800">699 Md€</text>
+  <text x="24" y="86" fill="#9fb1c5" font-size="12">Scénario flight-to-safety, plafond hypothétique de 3 000 €</text>
+  <g transform="translate(20 116)">
+    <rect width="440" height="112" rx="12" fill="#172337" stroke="#7fa7ff"></rect>
+    <circle cx="34" cy="34" r="18" fill="#7fa7ff"></circle>
+    <text x="34" y="40" text-anchor="middle" fill="#07131d" font-size="16" font-weight="800">1</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Crise de confiance systémique</text>
+    <text x="24" y="64" fill="#dce6f0" font-size="13">Le choc bancaire existe déjà.</text>
+    <text x="24" y="87" fill="#dce6f0" font-size="13">L’euro numérique n’en est pas la cause.</text>
+  </g>
+  <path d="M240 234 V266" stroke="#62d8c6" stroke-width="3" marker-end="url(#outflow-arrow-fr)"></path>
+  <g transform="translate(20 282)">
+    <rect width="440" height="126" rx="12" fill="#152c31" stroke="#62d8c6"></rect>
+    <circle cx="34" cy="34" r="18" fill="#62d8c6"></circle>
+    <text x="34" y="40" text-anchor="middle" fill="#07131d" font-size="16" font-weight="800">2</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Données banque par banque</text>
+    <text x="24" y="64" fill="#e2f1ee" font-size="13">2 025 établissements, données Q1 2024.</text>
+    <text x="24" y="87" fill="#e2f1ee" font-size="13">Nombre de déposants et distribution</text>
+    <text x="24" y="108" fill="#e2f1ee" font-size="13">des soldes à vue via DRDEPO.</text>
+  </g>
+  <path d="M240 414 V446" stroke="#62d8c6" stroke-width="3" marker-end="url(#outflow-arrow-fr)"></path>
+  <g transform="translate(20 462)">
+    <rect width="440" height="126" rx="12" fill="#251d33" stroke="#d98bff"></rect>
+    <circle cx="34" cy="34" r="18" fill="#d98bff"></circle>
+    <text x="34" y="40" text-anchor="middle" fill="#16091c" font-size="16" font-weight="800">3</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Règle individuelle</text>
+    <text x="24" y="67" fill="#f0e8f4" font-size="15" font-weight="700">demande = minimum de :</text>
+    <text x="24" y="94" fill="#f0e8f4" font-size="13">plafond testé et solde à vue disponible</text>
+    <text x="24" y="116" fill="#cdbed7" font-size="12">Tous les déposants demandent simultanément.</text>
+  </g>
+  <path d="M240 594 V626" stroke="#62d8c6" stroke-width="3" marker-end="url(#outflow-arrow-fr)"></path>
+  <g transform="translate(20 642)">
+    <rect width="440" height="116" rx="12" fill="#332619" stroke="#ffb86b"></rect>
+    <circle cx="34" cy="34" r="18" fill="#ffb86b"></circle>
+    <text x="34" y="40" text-anchor="middle" fill="#1c1005" font-size="16" font-weight="800">4</text>
+    <text x="64" y="31" fill="#ffffff" font-size="15" font-weight="750">Agrégation dans toute la zone euro</text>
+    <text x="28" y="72" fill="#ffcf9a" font-size="20" font-weight="800">500 € : 156 Md€</text>
+    <text x="28" y="100" fill="#ffcf9a" font-size="20" font-weight="800">3 000 € : 699 Md€</text>
+  </g>
+  <g transform="translate(20 790)">
+    <rect width="136" height="112" rx="10" fill="#111b26" stroke="#3b5269"></rect>
+    <text x="14" y="25" fill="#7fa7ff" font-size="11" font-weight="750">PEUT SURESTIMER</text>
+    <text x="14" y="51" fill="#d9e2ec" font-size="11">Les clients de</text>
+    <text x="14" y="68" fill="#d9e2ec" font-size="11">plusieurs banques</text>
+    <text x="14" y="85" fill="#d9e2ec" font-size="11">ne sont pas tous</text>
+    <text x="14" y="102" fill="#d9e2ec" font-size="11">dédupliqués.</text>
+  </g>
+  <g transform="translate(172 790)">
+    <rect width="136" height="112" rx="10" fill="#111b26" stroke="#3b5269"></rect>
+    <text x="14" y="25" fill="#d98bff" font-size="11" font-weight="750">PEUT SOUS-ESTIMER</text>
+    <text x="14" y="51" fill="#d9e2ec" font-size="11">Épargne et dépôts</text>
+    <text x="14" y="68" fill="#d9e2ec" font-size="11">à terme ne sont</text>
+    <text x="14" y="85" fill="#d9e2ec" font-size="11">pas retirés dans</text>
+    <text x="14" y="102" fill="#d9e2ec" font-size="11">ce calcul.</text>
+  </g>
+  <g transform="translate(324 790)">
+    <rect width="136" height="112" rx="10" fill="#111b26" stroke="#3b5269"></rect>
+    <text x="14" y="25" fill="#ffb86b" font-size="11" font-weight="750">NON MODÉLISÉ</text>
+    <text x="14" y="51" fill="#d9e2ec" font-size="11">Réaction de crise</text>
+    <text x="14" y="68" fill="#d9e2ec" font-size="11">extraordinaire de</text>
+    <text x="14" y="85" fill="#d9e2ec" font-size="11">la BCE et autres</text>
+    <text x="14" y="102" fill="#d9e2ec" font-size="11">destinations.</text>
+  </g>
+</svg>

@@ -7,6 +7,16 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
   {
+    source: join(ROOT, 'src/epub/euro-numerique'),
+    output: join(ROOT, 'public/publications/euro-numerique-enquete-l0g.epub'),
+    fixedTime: new Date('2026-08-16T10:00:00Z'),
+  },
+  {
+    source: join(ROOT, 'src/epub/digital-euro'),
+    output: join(ROOT, 'public/publications/digital-euro-investigation-l0g.epub'),
+    fixedTime: new Date('2026-08-16T10:00:00Z'),
+  },
+  {
     source: join(ROOT, 'src/epub/l-argent-d-epstein'),
     output: join(ROOT, 'public/publications/l-argent-d-epstein-l0g.epub'),
   },

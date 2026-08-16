@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 590" width="100%" role="img" aria-labelledby="blocked4-en-title blocked4-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="blocked4-en-title">Four different legal reasons why a payment may be impossible</title>
+<desc id="blocked4-en-desc">A pre-authorisation, fraud refusal, sanctions freeze and judicial seizure can all stop a payment. Each targets a different object and relies on a different authority.</desc>
+<g class="blocked4-en-desktop">
+<rect width="760" height="590" rx="16" fill="#0b0f14"></rect>
+<text x="32" y="46" fill="#f7f9fc" font-size="24" font-weight="760">FOUR LEGAL PATHS TO A BLOCKED PAYMENT</text>
+<text x="32" y="74" fill="#94a3b8" font-size="14">The same symptom can come from four different legal regimes.</text>
+<rect x="30" y="110" width="335" height="188" rx="14" fill="#14272d" stroke="#62d8c6"></rect>
+<text x="50" y="142" fill="#7ee5d6" font-size="15" font-weight="760">PRE-AUTHORISATION</text>
+<text x="50" y="172" fill="#f7f9fc" font-size="14">An amount is reserved.</text>
+<text x="50" y="195" fill="#f7f9fc" font-size="14">It still counts towards the cap.</text>
+<line x1="50" y1="218" x2="345" y2="218" stroke="#36515b"></line>
+<text x="50" y="244" fill="#b7d5d0" font-size="12">Decision: payer and merchant</text>
+<text x="50" y="265" fill="#b7d5d0" font-size="12">Object: amount before settlement</text>
+<text x="50" y="286" fill="#7ee5d6" font-size="12.5" font-weight="720">Outcome: settlement, cancellation or expiry</text>
+<rect x="395" y="110" width="335" height="188" rx="14" fill="#302418" stroke="#ffb86b"></rect>
+<text x="415" y="142" fill="#ffca91" font-size="15" font-weight="760">FRAUD REFUSAL</text>
+<text x="415" y="172" fill="#f7f9fc" font-size="14">The PSP refuses an instruction.</text>
+<text x="415" y="195" fill="#f7f9fc" font-size="14">The balance remains general-purpose.</text>
+<line x1="415" y1="218" x2="710" y2="218" stroke="#665039"></line>
+<text x="415" y="244" fill="#d8c9b8" font-size="12">Decision: PSP under payments law</text>
+<text x="415" y="265" fill="#d8c9b8" font-size="12">Object: transaction or instrument</text>
+<text x="415" y="286" fill="#ffca91" font-size="12.5" font-weight="720">Outcome: reason, challenge, unblocking</text>
+<rect x="30" y="326" width="335" height="188" rx="14" fill="#18272c" stroke="#8dd7a9"></rect>
+<text x="50" y="358" fill="#9be5b6" font-size="15" font-weight="760">SANCTIONS FREEZE</text>
+<text x="50" y="388" fill="#f7f9fc" font-size="14">A person or entity is targeted.</text>
+<text x="50" y="411" fill="#f7f9fc" font-size="14">Their assets become unavailable.</text>
+<line x1="50" y1="434" x2="345" y2="434" stroke="#3c5a48"></line>
+<text x="50" y="460" fill="#bfd7c7" font-size="12">Decision: Union, executed by PSP</text>
+<text x="50" y="481" fill="#bfd7c7" font-size="12">Object: person, account and assets</text>
+<text x="50" y="502" fill="#9be5b6" font-size="12.5" font-weight="720">Outcome: unfreezing or legal challenge</text>
+<rect x="395" y="326" width="335" height="188" rx="14" fill="#251d33" stroke="#d98bff"></rect>
+<text x="415" y="358" fill="#e2adff" font-size="15" font-weight="760">SEIZURE OR JUDICIAL FREEZE</text>
+<text x="415" y="388" fill="#f7f9fc" font-size="14">A court or authority acts</text>
+<text x="415" y="411" fill="#f7f9fc" font-size="14">on property or a claim.</text>
+<line x1="415" y1="434" x2="710" y2="434" stroke="#594063"></line>
+<text x="415" y="460" fill="#d2c2d9" font-size="12">Decision: competent authority</text>
+<text x="415" y="481" fill="#d2c2d9" font-size="12">Object: holder’s property</text>
+<text x="415" y="502" fill="#e2adff" font-size="12.5" font-weight="720">Outcome: procedure, exemptions and remedies</text>
+<rect x="30" y="538" width="700" height="28" rx="8" fill="#111923"></rect>
+<text x="380" y="557" text-anchor="middle" fill="#dce6ef" font-size="12">None of these mechanisms requires euros carrying a spending category or expiry date.</text>
+</g>
+<g class="blocked4-en-mobile" transform="scale(2.1714)">
+<rect width="350" height="272" rx="9" fill="#0b0f14"></rect>
+<text x="15" y="21" fill="#f7f9fc" font-size="12.5" font-weight="760">“PAYMENT IMPOSSIBLE”: WHICH LAW?</text>
+<text x="15" y="34" fill="#94a3b8" font-size="7.3">The legal basis locates the power.</text>
+<rect x="12" y="46" width="326" height="46" rx="6" fill="#14272d" stroke="#62d8c6"></rect>
+<text x="21" y="61" fill="#7ee5d6" font-size="8.2" font-weight="760">PRE-AUTHORISATION</text><text x="329" y="61" text-anchor="end" fill="#f7f9fc" font-size="8">amount reserved</text>
+<text x="21" y="76" fill="#b7d5d0" font-size="7.2">Commercial agreement before settlement, then release.</text>
+<rect x="12" y="100" width="326" height="46" rx="6" fill="#302418" stroke="#ffb86b"></rect>
+<text x="21" y="115" fill="#ffca91" font-size="8.2" font-weight="760">FRAUD CONTROL</text><text x="329" y="115" text-anchor="end" fill="#f7f9fc" font-size="8">instruction refused</text>
+<text x="21" y="130" fill="#d8c9b8" font-size="7.2">PSP decision, reason and remedy under law.</text>
+<rect x="12" y="154" width="326" height="46" rx="6" fill="#18272c" stroke="#8dd7a9"></rect>
+<text x="21" y="169" fill="#9be5b6" font-size="8.2" font-weight="760">SANCTIONS</text><text x="329" y="169" text-anchor="end" fill="#f7f9fc" font-size="8">targeted person</text>
+<text x="21" y="184" fill="#bfd7c7" font-size="7.2">Asset freeze under EU law.</text>
+<rect x="12" y="208" width="326" height="46" rx="6" fill="#251d33" stroke="#d98bff"></rect>
+<text x="21" y="223" fill="#e2adff" font-size="8.2" font-weight="760">SEIZURE / FREEZE</text><text x="329" y="223" text-anchor="end" fill="#f7f9fc" font-size="8">property or claim</text>
+<text x="21" y="238" fill="#d2c2d9" font-size="7.2">Authority or court, procedure and exemptions.</text>
+<text x="15" y="268" fill="#9fb0c0" font-size="7.2">Same practical block, four different legal bases.</text>
+</g>
+</svg>

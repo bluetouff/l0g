@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="fr" xml:lang="fr"><head><meta charset="utf-8" /><meta name="generator" content="l0g" /><title>Euro numérique, 1/6 : l’euro qui change de débiteur</title><link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" /></head><body epub:type="bodymatter"><section id="article-1" class="level1 article-chapter"><p class="chapter-kicker">Volet 1 sur 6</p><h1>L’euro qui change de débiteur</h1><p class="chapter-dek">Le débiteur d’un euro dépend de sa forme : banque commerciale pour le dépôt, Eurosystème pour l’euro numérique. Ce premier volet suit les mouvements de bilan et les raisons du plafond d’accès à la monnaie publique.</p><p class="chapter-meta">Publié le 13 août 2026 · <a href="https://l0g.fr/posts/euro-numerique-1-euro-change-de-debiteur/">Article canonique sur l0g.fr</a></p><p><em>Ce texte ouvre une enquête en six volets sur l’euro numérique. Le dossier suivra successivement la nature de cette monnaie, le stress test bancaire de la BCE, les flux de données, la frontière entre paiements conditionnels et argent programmable, le coût économique du projet, puis les fournisseurs qui construisent son infrastructure. Notre <a href="https://l0g.fr/guides/lire-une-cbdc-euro-numerique-parametre-par-parametre/">guide de lecture d’une CBDC</a> présente séparément chacun de ces paramètres. Ce premier article pose la question sans laquelle les cinq suivants seraient illisibles : que possède-t-on réellement lorsque l’écran d’une banque affiche 100 euros ?</em></p>
+<blockquote>
+<p><strong>État du dossier au 13 août 2026.</strong> La Commission a présenté sa proposition en 2023. Le Conseil a adopté son mandat de négociation en décembre 2025. Le Parlement a autorisé les négociations interinstitutionnelles le 9 juillet 2026. Le règlement final n’est pas adopté, aucun plafond définitif n’a été fixé et l’horizon 2029 avancé par la BCE reste conditionnel. L’Eurosystème a <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260714~8cd07d9d45.en.html">sélectionné 36 prestataires de paiement</a> pour le pilote de douze mois prévu au second semestre 2027. Ce pilote utilisera une version bêta sans cours légal.</p>
+</blockquote>
+<p>L’application bancaire affiche 100 euros. Un billet de 100 euros porte le même nombre. Un futur portefeuille d’euros numériques pourrait lui aussi afficher 100 euros.</p>
+<p>Ces trois montants seraient égaux pour payer une dette. Ils ne correspondraient pourtant pas au même engagement comptable.</p>
+<p>Le billet figure au passif de l’Eurosystème. Le dépôt inscrit sur un compte courant figure au passif d’une banque commerciale. L’euro numérique, selon l’architecture proposée, figurerait directement au passif de la BCE ou d’une banque centrale nationale de la zone euro.</p>
+<p>La conversion garderait donc l’unité de compte et changerait le débiteur.</p>
+<p>Cette différence semble abstraite tant que toutes les formes de l’euro s’échangent à parité, que les banques fonctionnent normalement et que la garantie des dépôts remplit son rôle. Elle devient centrale dès que l’Union européenne envisage de rendre la monnaie de banque centrale accessible au public dans un portefeuille numérique, à toute heure, sans transporter de billets.</p>
+<p>Le plafond de détention se comprend à partir de là. Il ne sert pas seulement à brider une nouvelle application. Il place une limite entre deux bilans : celui des banques commerciales et celui de l’Eurosystème.</p>
+<section id="c1-à-retenir-en-six-lignes" class="level2"><h2>À retenir en six lignes</h2>
+<ul>
+<li>L’essentiel de la monnaie utilisée au quotidien est constitué de dépôts créés par les banques commerciales.</li>
+<li>Un euro numérique serait une dette de l’Eurosystème envers son détenteur.</li>
+<li>L’utilisateur ne disposerait pourtant pas d’un compte de détail directement géré par la BCE : une banque ou un autre prestataire resterait son interlocuteur.</li>
+<li>Le plafond porterait sur le stock d’euros numériques détenus. Un compte bancaire lié pourrait compléter automatiquement un paiement supérieur à ce stock.</li>
+<li>Les fonctions dites <em>waterfall</em> et <em>reverse waterfall</em> reconnecteraient le portefeuille à un compte bancaire pour recevoir ou payer au-delà du plafond.</li>
+<li>Le chiffre de 3 000 euros n’est pas adopté. Il appartient à une fourchette d’hypothèses testée à la demande des colégislateurs.</li>
+</ul>
+</section>
+<section id="c1-le-débiteur-dépend-de-la-forme-de-leuro" class="level2"><h2>Le débiteur dépend de la forme de l’euro</h2>
+<p>La <a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/comment-est-creee-la-monnaie">Banque de France</a> rappelle que plus de 90 % de la monnaie en circulation dans la zone euro est scripturale, c’est-à-dire inscrite sur des comptes bancaires. Cette monnaie est créée principalement lorsque les banques accordent des crédits. Le billet, lui, est émis par la banque centrale.</p>
+<p>Dans la vie courante, cette dualité reste presque invisible. Un commerçant accepte indifféremment un billet de 50 euros, un virement de 50 euros ou un paiement par carte débitant un compte de 50 euros. Le système repose sur la possibilité de convertir la monnaie bancaire en monnaie centrale à parité, ainsi que sur la réglementation, la supervision, la liquidité fournie par la banque centrale et la garantie des dépôts.</p>
+<p>Le <a href="https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf">mandat adopté par le Conseil en décembre 2025</a> formule la différence sans détour. L’euro numérique devrait être un élément de passif direct au bilan de la BCE ou des banques centrales nationales envers ses utilisateurs. Le même texte précise que son émission pourrait notamment convertir les réserves de banque centrale détenues par les prestataires de paiement en avoirs numériques destinés au public.</p>
+<p>La formule « euro numérique » recouvre donc deux propriétés à ne pas mélanger :</p>
+<ol>
+<li><strong>la valeur monétaire serait publique</strong>, car portée par le bilan de l’Eurosystème ;</li>
+<li><strong>la relation de service resterait intermédiée</strong>, car l’accès, l’application, l’assistance et les contrôles seraient assurés par des prestataires de paiement.</li>
+</ol>
+<figure class="infographic">
+<img src="../media/file0.svg" class="infographic-image" alt="Comparaison entre un billet, un dépôt bancaire et un futur avoir en euro numérique selon le débiteur, l’accès et les limites prévues." />
+<figcaption>Le schéma présente l’architecture envisagée. Le règlement définitif reste en négociation. PSP : prestataire de services de paiement.</figcaption>
+</figure>
+</section>
+<section id="c1-le-prestataire-gère-laccès-à-la-créance-sur-leurosystème" class="level2"><h2>Le prestataire gère l’accès à la créance sur l’Eurosystème</h2>
+<p>L’expression « monnaie de banque centrale accessible au public » suscite une image intuitive : chacun ouvrirait un compte auprès de la BCE comme il ouvre aujourd’hui un compte dans une banque de détail.</p>
+<p>Le dispositif envisagé suit une autre voie.</p>
+<p>Dans la position du Conseil, l’utilisateur établirait une relation contractuelle avec un prestataire de paiement afin d’ouvrir et de gérer son compte d’euros numériques. Aucun compte de service ni contrat de détail ne serait conclu avec la BCE ou une banque centrale nationale. Le prestataire gérerait l’interface et les opérations au nom de l’utilisateur.</p>
+<p>Le débiteur monétaire et le fournisseur du service seraient donc deux entités différentes.</p>
+<p>Cette séparation permet à l’Eurosystème de ne pas accueillir directement des centaines de millions de clients, de réutiliser les procédures bancaires d’identification et d’assistance, puis de laisser les banques et autres PSP fournir les applications. Elle maintient aussi ces intermédiaires au centre du système que la monnaie publique est censée compléter.</p>
+<p>Le mandat du Conseil ajoute une protection juridique importante. Il propose de qualifier l’euro numérique d’actif immatériel donnant des droits réels à son utilisateur. Le prestataire ne deviendrait pas propriétaire des avoirs et ses créanciers ne devraient pas pouvoir les saisir en cas d’insolvabilité. Cette construction reste celle d’un mandat de négociation, mais elle montre l’objectif : conserver une créance publique tout en externalisant la relation opérationnelle.</p>
+<blockquote>
+<p><strong>Mythe : chaque Européen aura un compte bancaire à la BCE.</strong></p>
+<p><strong>Verdict :</strong> l’euro numérique serait porté par le bilan de l’Eurosystème, tandis que le compte de paiement, l’application et la relation client resteraient gérés par un intermédiaire. La créance serait publique et la relation de service resterait intermédiée.</p>
+</blockquote>
+</section>
+<section id="c1-quand-1-000-euros-changent-de-bilan" class="level2"><h2>Quand 1 000 euros changent de bilan</h2>
+<p>Prenons un client qui demande à convertir 1 000 euros de son compte courant en euros numériques.</p>
+<p>Avant l’opération, le client détient une créance de 1 000 euros sur sa banque. Au passif de cette banque figure le dépôt correspondant. La banque possède par ailleurs des actifs, parmi lesquels des réserves auprès de l’Eurosystème.</p>
+<p>La conversion peut suivre un premier chemin simple :</p>
+<ol>
+<li>le compte bancaire du client est débité de 1 000 euros ;</li>
+<li>le passif « dépôts » de la banque diminue de 1 000 euros ;</li>
+<li>la banque remet 1 000 euros de réserves à l’Eurosystème ;</li>
+<li>le passif « réserves bancaires » de l’Eurosystème diminue ;</li>
+<li>un passif « euros numériques détenus par le public » apparaît pour le même montant.</li>
+</ol>
+<p>Dans ce cas, le bilan de l’Eurosystème ne grossit pas nécessairement. Sa composition change : moins de réserves dues à la banque, davantage de monnaie numérique due au particulier.</p>
+<p>Une banque peut toutefois manquer de réserves disponibles ou préférer conserver son coussin de liquidité. Elle peut alors emprunter sur le marché interbancaire, obtenir des réserves auprès de l’Eurosystème contre collatéral ou modifier d’autres postes de son bilan. Le <a href="https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op293~652cf2b1aa.en.pdf">papier de travail de la BCE consacré à l’intermédiation bancaire</a> détaille ces différents canaux.</p>
+<p>Lorsque la banque remplace le dépôt perdu par un emprunt à l’Eurosystème, la séquence produit deux relations nouvelles :</p>
+<ul>
+<li>le particulier détient une créance directe sur l’Eurosystème ;</li>
+<li>la banque porte davantage de dette envers l’Eurosystème.</li>
+</ul>
+<p>La monnaie n’a pas disparu. Le financement bancaire a changé de source et le bilan de la banque centrale peut s’allonger.</p>
+<figure class="infographic">
+<img src="../media/file1.svg" class="infographic-image" alt="Le dépôt bancaire du ménage baisse, les réserves de la banque sont transférées à l’Eurosystème et une dette en euro numérique apparaît. Si la banque se refinance, elle remplace le dépôt par une dette envers l’Eurosystème." />
+<figcaption>La transformation d’un dépôt en euro numérique peut être absorbée par les réserves de la banque ou entraîner un financement de remplacement. L’article 2 reconstruira les scénarios utilisés par la BCE.</figcaption>
+</figure>
+</section>
+<section id="c1-la-conversion-retire-une-ressource-au-bilan-bancaire" class="level2"><h2>La conversion retire une ressource au bilan bancaire</h2>
+<p>La taille spectaculaire d’une éventuelle migration vers l’euro numérique peut produire une image trompeuse : des centaines de milliards « quitteraient le système ».</p>
+<p>Le changement porte d’abord sur la nature du passif.</p>
+<p>Pour le ménage, un actif bancaire devient un actif de banque centrale. Pour la banque, une dette envers le déposant disparaît. Elle perd simultanément les réserves nécessaires au règlement de la conversion, sauf si elle les récupère par un autre canal. Pour l’Eurosystème, la monnaie due aux banques sous forme de réserves peut devenir une monnaie due directement au public.</p>
+<p>La banque peut absorber l’opération de plusieurs façons : utiliser ses réserves, emprunter à d’autres banques, émettre une dette de marché, mobiliser du collatéral auprès de l’Eurosystème ou réduire certains actifs. Ces solutions ne présentent ni le même prix, ni la même maturité, ni les mêmes contraintes prudentielles.</p>
+<p>Un dépôt de détail constitue généralement un financement précieux. Il peut être stable, peu coûteux et durable. Son remplacement par du financement de marché ou de banque centrale peut modifier la marge, la liquidité, le collatéral disponible et, à terme, les conditions de crédit. L’ampleur réelle dépendrait du comportement des utilisateurs, du niveau des réserves, des taux, du fonctionnement du marché interbancaire et de la réaction de la BCE.</p>
+<p>Le plafond sert à contenir cette transformation avant qu’elle ne commence. Il donne à l’Eurosystème une borne supérieure sur l’une des destinations possibles des dépôts.</p>
+<p>Cette borne ne bloque ni un virement vers une autre banque, ni un retrait de billets, ni l’achat d’un fonds monétaire, d’une obligation, d’une devise ou d’un cryptoactif. Elle encadre uniquement la quantité pouvant être stockée sous forme de monnaie numérique publique.</p>
+</section>
+<section id="c1-le-plafond-encadre-le-stock-détenu" class="level2"><h2>Le plafond encadre le stock détenu</h2>
+<p>Un futur plafond de détention ne signifierait pas qu’un particulier serait incapable de payer une dépense supérieure à ce montant.</p>
+<p>Le <a href="https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf">mandat du Conseil</a> prévoit deux mécanismes automatisés.</p>
+<h3>Le reverse waterfall</h3>
+<p>Un utilisateur détient 1 000 euros numériques et souhaite payer 5 000 euros. Avec son autorisation, les 4 000 euros manquants seraient prélevés sur un compte bancaire lié, convertis puis intégrés au paiement. Le portefeuille n’aurait pas besoin d’être préfinancé à hauteur de l’achat.</p>
+<h3>Le waterfall</h3>
+<p>Un utilisateur reçoit un paiement qui ferait dépasser son plafond. L’excédent serait automatiquement transféré vers le compte bancaire lié. Le portefeuille conserverait au maximum le stock autorisé.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Situation</th><th align="right">Portefeuille numérique</th><th align="right">Compte bancaire lié</th><th>Résultat</th></tr></thead><tbody><tr><td>Solde de 1 000 €, paiement de 5 000 €</td><td align="right">fournit 1 000 €</td><td align="right">fournit 4 000 €</td><td>paiement de 5 000 € exécuté</td></tr><tr><td>Solde proche du plafond, réception de 2 000 €</td><td align="right">conserve jusqu’au plafond</td><td align="right">reçoit l’excédent</td><td>paiement intégral reçu</td></tr><tr><td>Solde nul, achat en ligne</td><td align="right">peut être alimenté à la demande</td><td align="right">fournit le montant</td><td>usage possible sans stock préalable</td></tr></tbody></table>
+<p>La fonction de paiement pourrait donc rester large alors que la fonction de réserve de valeur serait restreinte.</p>
+<p>Cette distinction traverse tout le projet. Le <a href="https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html">rapport de clôture de la BCE</a> explique que le plafond ne doit pas supprimer entièrement la capacité de conserver de la valeur, mais la modérer afin de préserver le rôle des banques dans le financement de l’économie. La même architecture permettrait de payer de gros montants sans conserver durablement une grosse quantité de monnaie centrale.</p>
+<blockquote>
+<p><strong>Mythe : un plafond de 3 000 euros interdirait d’acheter un bien de 5 000 euros.</strong></p>
+<p><strong>Verdict :</strong> le projet sépare le montant du paiement et le stock détenu. Un compte bancaire lié pourrait fournir automatiquement la différence. Le chiffre de 3 000 euros reste, lui, une hypothèse et non une décision.</p>
+</blockquote>
+</section>
+<section id="c1-le-compte-bancaire-revient-par-la-porte-de-service" class="level2"><h2>Le compte bancaire revient par la porte de service</h2>
+<p>Le reverse waterfall résout un problème d’usage et crée une dépendance structurelle.</p>
+<p>Un particulier pourrait théoriquement accéder à l’euro numérique sans ouvrir un compte dans une banque commerciale, notamment grâce aux dispositifs publics prévus pour les personnes exclues des services bancaires. Pourtant, de nombreux usages en ligne deviendraient beaucoup plus simples avec un compte privé lié. Le compte bancaire resterait alors le réservoir principal de liquidité, tandis que l’euro numérique servirait de rail de paiement alimenté à la demande.</p>
+<p>L’étude juridique réalisée en 2023 par <a href="https://www.europarl.europa.eu/RegData/etudes/IDAN/2023/741518/IPOL_IDA%282023%29741518_EN.pdf">Seraina Grünewald à la demande de la commission ECON</a> identifiait déjà cette tension. Selon l’autrice, un plafond trop faible pourrait rendre l’euro numérique peu utile comme monnaie autonome et renforcer la nécessité de conserver un compte bancaire. Elle proposait que la BCE soit prête à relever, voire à supprimer progressivement, la limite après une phase d’introduction. Le document précise que ces analyses n’engagent pas la position officielle du Parlement.</p>
+<p>La critique porte sur la fonction même du projet. Une monnaie publique très plafonnée ressemble de moins en moins à un équivalent numérique du billet et de plus en plus à un instrument public spécialisé dans le paiement. Elle offre un accès au bilan de la banque centrale, mais rationne cet accès dès qu’il devient une solution de stockage.</p>
+<p>Le choix peut être justifié par la stabilité financière. Il reste un choix politique et monétaire, avec un coût d’opportunité pour l’utilisateur.</p>
+</section>
+<section id="c1-les-recettes-des-entreprises-retourneraient-rapidement-aux-bilans-bancaires" class="level2"><h2>Les recettes des entreprises retourneraient rapidement aux bilans bancaires</h2>
+<p>Le traitement des entreprises rend l’intention encore plus visible.</p>
+<p>Dans sa position, le Conseil envisage des limites plus strictes pour les personnes morales, y compris un plafond nul. Les commerçants pourraient accumuler les paiements reçus pendant la journée, puis transférer le solde vers leur compte bancaire à la fermeture, comme une caisse physique vidée en fin de journée.</p>
+<p>La <a href="https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability">position adoptée par la commission ECON en juin 2026</a>, ensuite autorisée à entrer en négociation par la plénière, suit une logique voisine : les entreprises ne conserveraient pas durablement d’euros numériques, avec une fenêtre pouvant aller jusqu’à vingt-quatre heures pour les paiements entrants.</p>
+<p>Un commerçant accepterait donc une monnaie publique dotée du cours légal, mais le système reconvertirait rapidement ses recettes en monnaie bancaire privée.</p>
+<p>Cette règle limite fortement le risque qu’une grande entreprise transfère sa trésorerie vers l’Eurosystème. Elle protège une part importante du financement bancaire et empêche le stock total d’euros numériques de croître à travers les soldes professionnels.</p>
+<p>Elle produit aussi un paradoxe : l’euro numérique est présenté comme une infrastructure publique souveraine, tandis que les recettes des entreprises sont programmées pour revenir vers les bilans bancaires.</p>
+</section>
+<section id="c1-le-paradoxe-du-cash" class="level2"><h2>Le paradoxe du cash</h2>
+<p>Le public peut déjà convertir ses dépôts en monnaie de banque centrale en retirant des billets. Pourquoi plafonner la version numérique d’un actif dont la version physique ne connaît pas de plafond général de détention ?</p>
+<p>La BCE reconnaît cette difficulté.</p>
+<p>Dans son <a href="https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_con_2023_34.en.pdf">avis juridique d’octobre 2023</a>, elle rappelle que les déposants peuvent convertir leurs dépôts à vue en espèces à tout moment. Elle souligne aussitôt les obstacles pratiques à la détention de grosses quantités de billets : perte, vol, transport et stockage.</p>
+<p>Son rapport de 2025 va plus loin. Il indique qu’une restriction imposée à la liberté de détenir une quantité importante d’euros numériques, liberté considérée comme sans limite équivalente pour le cash, doit rester proportionnée aux objectifs de stabilité financière et de politique monétaire.</p>
+<p>Le numérique change la physique de la conversion.</p>
+<p>Retirer 100 000 euros en billets demande une préparation, un déplacement, un stockage sécurisé et l’acceptation d’un risque matériel. Transférer une somme vers un portefeuille numérique pourrait prendre quelques gestes. Le plafond compense en partie la disparition de ces frictions.</p>
+<p>Cette explication ne remplace pas les motifs juridiques officiels, qui portent sur la stabilité financière et la transmission monétaire. Elle aide à comprendre pourquoi deux passifs du même Eurosystème peuvent être traités différemment.</p>
+<blockquote>
+<p><strong>Inférence l0g :</strong> la contrainte vise moins la nature monétaire de l’euro numérique que la vitesse et l’échelle auxquelles il pourrait concurrencer les dépôts. Le billet est sans plafond général, mais physiquement difficile à accumuler et déplacer. Le portefeuille est simple à remplir, donc juridiquement borné.</p>
+</blockquote>
+</section>
+<section id="c1-la-garantie-protège-les-dépôts-jusquà-100-000-euros" class="level2"><h2>La garantie protège les dépôts jusqu’à 100 000 euros</h2>
+<p>Présenter un dépôt bancaire comme une créance exposée au risque de la banque peut donner une image inutilement alarmiste.</p>
+<p>L’Union européenne garantit les dépôts éligibles jusqu’à 100 000 euros par déposant et par banque. Selon les <a href="https://www.eba.europa.eu/publications-and-media/press-releases/eu-deposit-guarantee-scheme-funds-protect-depositors-against-bank-failures-continue-grow-and-have">données publiées par l’Autorité bancaire européenne en juin 2026</a>, les fonds disponibles dans les systèmes nationaux de garantie atteignaient 85 milliards d’euros à la fin de 2025 et protégeaient 9 100 milliards d’euros de dépôts couverts. Le cadre vise un remboursement dans les sept jours suivant une défaillance bancaire. Ces fonds ne constituent pas une réserve intégrale couvrant chaque euro garanti : des contributions extraordinaires et des financements complémentaires peuvent être mobilisés lorsque nécessaire.</p>
+<p>Cette protection est substantielle. Elle rend le dépôt de détail beaucoup plus sûr qu’une créance ordinaire sur une entreprise privée.</p>
+<p>Elle ne transforme toutefois pas la banque commerciale en banque centrale.</p>
+<p>Le dépôt reste inscrit au passif de l’établissement. La garantie intervient si celui-ci fait défaut. L’euro numérique serait directement inscrit au passif de l’Eurosystème dès sa détention. La distinction porte donc sur le débiteur initial, le mécanisme de protection et le traitement d’une éventuelle défaillance.</p>
+<p>Au-dessous de 100 000 euros, la différence de risque économique peut sembler faible en période normale. En période de panique, la disponibilité immédiate d’une créance de banque centrale peut devenir plus attractive qu’une créance couverte par un mécanisme de garantie activé après la défaillance.</p>
+<p>Le plafond sert notamment à borner cette préférence dans un scénario de fuite vers la sécurité.</p>
+</section>
+<section id="c1-trois-objectifs-et-une-liberté-à-arbitrer" class="level2"><h2>Trois objectifs et une liberté à arbitrer</h2>
+<p>La calibration du plafond cherche à concilier quatre intérêts qui ne coïncident pas spontanément.</p>
+<h3>1. Un moyen de paiement réellement utile</h3>
+<p>Un plafond trop bas peut compliquer le versement d’un salaire, le financement du portefeuille hors ligne, le paiement sans compte bancaire lié ou la gestion d’un budget mensuel. Les mécanismes automatiques corrigent une partie de ces difficultés, au prix d’une architecture plus complexe.</p>
+<h3>2. La stabilité du financement bancaire</h3>
+<p>Un plafond élevé permettrait à davantage de dépôts de devenir durablement de la monnaie centrale. Les banques devraient retenir les déposants en rémunérant mieux leurs comptes, mobiliser davantage de réserves ou trouver un financement de remplacement.</p>
+<h3>3. La transmission de la politique monétaire</h3>
+<p>Une migration importante modifierait la demande de réserves, la taille du bilan de l’Eurosystème et le rôle de la banque centrale dans le financement du secteur bancaire. Le plafond touche donc aussi à l’organisation opérationnelle de la politique monétaire.</p>
+<h3>4. L’accès du public à la monnaie publique</h3>
+<p>Plus la limite est faible, moins le citoyen peut choisir librement entre monnaie bancaire et monnaie de banque centrale. L’objectif de stabilité réduit alors l’une des propriétés qui rendent précisément l’euro numérique différent d’un moyen de paiement privé.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plafond plus faible</th><th>Plafond plus élevé</th></tr></thead><tbody><tr><td>limite les sorties de dépôts</td><td>élargit l’accès à la monnaie publique</td></tr><tr><td>réduit le besoin de refinancement bancaire</td><td>renforce la concurrence avec les dépôts</td></tr><tr><td>rapproche l’euro numérique d’un rail de paiement</td><td>lui rend une véritable fonction de réserve de valeur</td></tr><tr><td>augmente l’importance du compte bancaire lié</td><td>permet davantage d’autonomie vis-à-vis des banques</td></tr><tr><td>facilite la maîtrise du bilan de l’Eurosystème</td><td>exige plus de liquidité et de collatéral dans le système</td></tr></tbody></table>
+<p>Le bon niveau ne se déduit donc pas d’un besoin de paiement moyen. Il dépend aussi du contexte monétaire, de la structure des dépôts, du niveau de réserves, de la capacité de refinancement des banques et du degré d’accès à la monnaie publique que le législateur juge souhaitable.</p>
+</section>
+<section id="c1-larbitrage-porte-sur-laccès-à-la-monnaie-publique" class="level2"><h2>L’arbitrage porte sur l’accès à la monnaie publique</h2>
+<p>Le débat public sur l’euro numérique oppose souvent deux récits trop simples.</p>
+<p>Le premier décrit un outil de surveillance conçu pour supprimer le cash. Le second réduit toute critique à une peur irrationnelle de la technologie.</p>
+<p>Le plafond ouvre une controverse plus solide.</p>
+<p>La BCE le présente comme une protection nécessaire contre la désintermédiation, les sorties excessives de dépôts et les perturbations de la politique monétaire. Son rapport de clôture explique explicitement que la limite doit préserver le rôle des banques dans l’octroi de crédit. Dans une déclaration de novembre 2025, Piero Cipollone indiquait également que l’architecture avait été conçue pour éviter la désintermédiation des banques.</p>
+<p>Des analyses commandées par le Parlement acceptent le risque sans accepter automatiquement la réponse. Grünewald considère qu’un plafond peut être utile lors de l’introduction, mais qu’une limite trop basse affaiblirait l’objectif de monnaie publique et devrait pouvoir augmenter. <a href="https://www.europarl.europa.eu/RegData/etudes/IDAN/2023/741511/IPOL_IDA%282023%29741511_EN.pdf">Christian Hofmann</a> discute l’idée qu’un accès plus large à une valeur refuge publique pourrait aussi améliorer la gestion des crises, à condition que la banque centrale remplace correctement la liquidité retirée aux banques. Son étude a été commandée par la commission ECON et ne représente pas la position officielle du Parlement.</p>
+<p>La question utile devient alors mesurable : quelle quantité de monnaie publique le public peut-il détenir sans imposer au système bancaire un ajustement disproportionné ?</p>
+<p>Cette question ne possède pas une réponse éternelle. Un plafond supportable lorsque les banques disposent de réserves abondantes peut produire un autre résultat dans un environnement de liquidité plus rare. Une limite adaptée à une demande quotidienne peut se révéler trop faible pour l’inclusion ou trop élevée pendant une panique bancaire.</p>
+</section>
+<section id="c1-3-000-euros-reste-une-hypothèse-de-test" class="level2"><h2>3 000 euros reste une hypothèse de test</h2>
+<p>Le montant de 3 000 euros circule depuis plusieurs années au point d’être souvent présenté comme une décision.</p>
+<p>Il ne l’est pas.</p>
+<p>La proposition de la Commission de 2023 prévoit des outils limitant la fonction de réserve de valeur, sans fixer de chiffre. À la demande des colégislateurs, la BCE a ensuite testé en 2025 une fourchette de plafonds hypothétiques allant de 500 à 3 000 euros. Son document technique précise que ces simulations ne représentent ni sa méthodologie finale complète, ni sa position définitive sur le montant approprié.</p>
+<p>Les institutions divergent encore sur la gouvernance de la limite.</p>
+<ul>
+<li>Le Conseil veut que la BCE fixe les plafonds individuels dans le respect d’un plafond global adopté par le Conseil, sur recommandation de la BCE préparée avec la Commission. Cette décision serait réexaminée au moins tous les deux ans.</li>
+<li>Le Parlement soutient lui aussi un plafond individuel, mais sa position de négociation attribue un rôle différent à la Commission et revendique un plein pouvoir de décision parlementaire sur le plafond européen.</li>
+<li>Le texte final dépendra des négociations interinstitutionnelles, puis la BCE devra encore décider si elle émet effectivement l’euro numérique.</li>
+</ul>
+<p>La <a href="https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/digital-euro-meps-ready-to-start-negotiations">plénière du Parlement</a> a autorisé l’ouverture des négociations par 416 voix contre 169, avec 22 abstentions, le 9 juillet 2026. Cette étape donne un mandat de négociation. Elle ne crée ni l’euro numérique, ni son plafond.</p>
+<blockquote>
+<p><strong>Règle de lecture pour tout le dossier :</strong> 3 000 euros signifie « hypothèse haute testée dans une demande technique des colégislateurs ». La formule « futur plafond de 3 000 euros » reste factuellement injustifiée au 13 août 2026.</p>
+</blockquote>
+</section>
+<section id="c1-les-acquis-et-les-inconnues-au-début-de-lenquête" class="level2"><h2>Les acquis et les inconnues au début de l’enquête</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Proposition</th><th>État de la preuve au 13 août 2026</th></tr></thead><tbody><tr><td>L’euro numérique serait un passif direct de l’Eurosystème</td><td>architecture convergente des textes et positions actuels</td></tr><tr><td>L’utilisateur aurait un compte de détail directement à la BCE</td><td>faux dans l’architecture envisagée</td></tr><tr><td>Une banque ou un autre PSP gérerait la relation client</td><td>prévu par les textes en négociation</td></tr><tr><td>Un plafond de détention existerait</td><td>soutenu par le Conseil, le Parlement et la BCE</td></tr><tr><td>Le plafond empêcherait de payer un montant supérieur</td><td>faux, grâce aux mécanismes automatisés envisagés</td></tr><tr><td>Les avoirs porteraient intérêt</td><td>non dans les positions actuelles du Conseil et du Parlement</td></tr><tr><td>Les entreprises pourraient stocker librement des euros numériques</td><td>non, des limites très strictes ou nulles sont prévues</td></tr><tr><td>Le plafond définitif serait de 3 000 euros</td><td>faux à ce stade</td></tr><tr><td>Le règlement serait adopté</td><td>non</td></tr><tr><td>Une émission aurait été décidée pour 2029</td><td>non, il s’agit d’un calendrier conditionnel de préparation</td></tr></tbody></table>
+</section>
+<section id="c1-prochaine-pièce--les-699-milliards" class="level2"><h2>Prochaine pièce : les 699 milliards</h2>
+<p>Le plafond place une frontière entre deux bilans. Reste à mesurer ce qui pourrait la traverser.</p>
+<p>Dans son <a href="https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_technical_annex_financial_stability_impact_digital_euro.en.pdf">scénario extrême de <em>flight-to-safety</em></a>, la BCE estime qu’un plafond hypothétique de 3 000 euros pourrait permettre la conversion de 699 milliards d’euros de dépôts, soit 8,2 % des dépôts de détail à vue retenus dans son modèle. Le chiffre impressionne et se prête aux titres alarmistes.</p>
+<p>Il ne constitue ni une prévision d’adoption, ni un bank run annoncé, ni la conclusion d’un risque systémique. Il résulte d’un ensemble d’hypothèses sur les déposants, leurs soldes, la vitesse de conversion, les réserves des banques, le marché interbancaire, le collatéral et le refinancement par l’Eurosystème.</p>
+<p>Le <a href="ch003.xhtml#article-2">deuxième volet</a> reconstruit ce calcul ligne par ligne. Il explique pourquoi 3 000 euros deviennent 699 milliards, comment les banques sont supposées réagir, ce que la moyenne européenne masque et pourquoi les données publiques ne permettent pas d’identifier proprement les treize établissements les plus contraints du modèle.</p>
+</section>
+<section id="c1-sources-et-méthode" class="level2"><h2>Sources et méthode</h2>
+<p>Ce premier volet repose principalement sur :</p>
+<ul>
+<li>la <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2023%3A369%3AFIN">proposition de règlement de la Commission</a> de juin 2023 ;</li>
+<li>le <a href="https://data.consilium.europa.eu/doc/document/ST-16695-2025-INIT/en/pdf">mandat de négociation du Conseil</a> adopté en décembre 2025 ;</li>
+<li>la <a href="https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability">position de la commission ECON</a> et l’autorisation de négocier donnée par la <a href="https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/digital-euro-meps-ready-to-start-negotiations">plénière</a> en juillet 2026 ;</li>
+<li>l’<a href="https://www.ecb.europa.eu/pub/pdf/legal/ecb.leg_con_2023_34.en.pdf">avis juridique de la BCE</a>, son <a href="https://www.ecb.europa.eu/euro/digital_euro/progress/html/ecb.deprp202510.en.html">rapport de clôture de la phase de préparation</a>, son <a href="https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op293~652cf2b1aa.en.pdf">étude sur l’intermédiation bancaire</a> et ses <a href="https://www.ecb.europa.eu/euro/digital_euro/timeline/profuse/shared/pdf/ecb.deprep251010_technical_annex_financial_stability_impact_digital_euro.en.pdf">données techniques sur les plafonds</a> ;</li>
+<li>le <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260714~8cd07d9d45.en.html">communiqué de la BCE sur la sélection de 36 prestataires de paiement</a> pour le pilote de 2027 ;</li>
+<li>les données de l’<a href="https://www.eba.europa.eu/publications-and-media/press-releases/eu-deposit-guarantee-scheme-funds-protect-depositors-against-bank-failures-continue-grow-and-have">Autorité bancaire européenne</a> sur la garantie des dépôts ;</li>
+<li>l’<a href="https://www.europarl.europa.eu/RegData/etudes/IDAN/2023/741511/IPOL_IDA%282023%29741511_EN.pdf">analyse de Christian Hofmann</a> sur les plafonds de détention ;</li>
+<li>l’<a href="https://www.europarl.europa.eu/RegData/etudes/IDAN/2023/741518/IPOL_IDA%282023%29741518_EN.pdf">analyse juridique de Seraina Grünewald</a>, commandée par la commission ECON mais ne représentant pas la position officielle du Parlement.</li>
+</ul>
+<p>Les éléments tirés du Conseil et du Parlement sont systématiquement présentés comme des positions de négociation. Les chiffres de la BCE sont qualifiés comme résultats de modèles lorsqu’ils ne décrivent pas une observation. Aucun montant de plafond n’est présenté comme adopté.</p>
+</section>
+<section id="c1-limites" class="level2"><h2>Limites</h2>
+<p>Le règlement final peut encore modifier la gouvernance du plafond, le rôle des intermédiaires, les règles applicables aux entreprises et certaines fonctions.</p>
+<p>Le projet de règlement, le projet de règles opérationnelles et les spécifications du pilote ne déterminent pas entièrement le produit qui pourrait être émis.</p>
+<p>La garantie de 100 000 euros comporte des règles d’éligibilité, d’agrégation par établissement et de protection temporaire qui ne sont pas détaillées ici.</p>
+<p>La présentation comptable ne mesure ni la rentabilité, ni le coût de financement, ni la liquidité de chaque banque. Ces questions appartiennent au deuxième volet.</p></section></section></body></html>

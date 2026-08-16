@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 610" width="100%" role="img" aria-labelledby="waterfall-en-title waterfall-en-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,&#x27;Segoe UI&#x27;,sans-serif">
+<title id="waterfall-en-title">How a waterfall and reverse waterfall would work</title>
+<desc id="waterfall-en-desc">With a hypothetical three-thousand-euro cap, an incoming payment above the cap is swept into the bank account. A payment larger than the wallet balance is automatically topped up from the bank account.</desc>
+<g class="waterfall-en-desktop">
+<rect width="760" height="610" rx="16" fill="#0b0f14"></rect>
+<text x="34" y="50" fill="#f7f9fc" font-size="24" font-weight="760">HOW THE HOLDING CAP WORKS DURING PAYMENTS</text>
+<text x="34" y="78" fill="#99a7bb" font-size="14">Illustration with a hypothetical €3,000 cap, which has not been decided.</text>
+<rect x="28" y="112" width="338" height="382" rx="15" fill="#151f2a" stroke="#50687e"></rect>
+<text x="50" y="149" fill="#a9bdd0" font-size="15" font-weight="760">WATERFALL · INCOMING PAYMENT</text>
+<text x="50" y="181" fill="#d6e1eb" font-size="13">Wallet before</text>
+<text x="326" y="181" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€2,800</text>
+<line x1="50" y1="198" x2="344" y2="198" stroke="#344555"></line>
+<text x="50" y="230" fill="#d6e1eb" font-size="13">Payment received</text>
+<text x="326" y="230" text-anchor="end" fill="#8fd1c6" font-size="20" font-weight="780">+ €1,000</text>
+<rect x="50" y="258" width="294" height="58" rx="9" fill="#1c3031"></rect>
+<text x="66" y="282" fill="#bfe0db" font-size="12">The wallet reaches its cap</text>
+<text x="326" y="301" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€3,000</text>
+<line x1="197" y1="326" x2="197" y2="348" stroke="#70c7ba" stroke-width="4" stroke-linecap="round"></line>
+<polygon points="189,346 197,359 205,346" fill="#70c7ba"></polygon>
+<rect x="50" y="366" width="294" height="82" rx="9" fill="#1b2733"></rect>
+<text x="66" y="392" fill="#d6e1eb" font-size="12">Excess sent to the bank account</text>
+<text x="326" y="425" text-anchor="end" fill="#ffffff" font-size="25" font-weight="790">€800</text>
+<rect x="394" y="112" width="338" height="382" rx="15" fill="#162727" stroke="#54aa9e"></rect>
+<text x="416" y="149" fill="#88d7cb" font-size="15" font-weight="760">REVERSE WATERFALL · PAYMENT SENT</text>
+<text x="416" y="181" fill="#dcebea" font-size="13">Wallet before</text>
+<text x="692" y="181" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€300</text>
+<line x1="416" y1="198" x2="710" y2="198" stroke="#355756"></line>
+<text x="416" y="230" fill="#dcebea" font-size="13">Payment requested</text>
+<text x="692" y="230" text-anchor="end" fill="#8fd1c6" font-size="20" font-weight="780">€2,000</text>
+<rect x="416" y="258" width="294" height="82" rx="9" fill="#1c3433"></rect>
+<text x="432" y="284" fill="#c3dfdb" font-size="12">Top-up pulled from the bank account</text>
+<text x="692" y="317" text-anchor="end" fill="#ffffff" font-size="25" font-weight="790">€1,700</text>
+<line x1="563" y1="351" x2="563" y2="373" stroke="#70c7ba" stroke-width="4" stroke-linecap="round"></line>
+<polygon points="555,371 563,384 571,371" fill="#70c7ba"></polygon>
+<rect x="416" y="391" width="294" height="57" rx="9" fill="#1b302f"></rect>
+<text x="432" y="416" fill="#dcebea" font-size="12">Full amount paid to beneficiary</text>
+<text x="692" y="438" text-anchor="end" fill="#ffffff" font-size="20" font-weight="780">€2,000</text>
+<rect x="28" y="522" width="704" height="52" rx="10" fill="#111820" stroke="#344555"></rect>
+<text x="48" y="554" fill="#d7e3ee" font-size="14" font-weight="720">The holding limit applies to stored wealth; payments can draw on the linked account.</text>
+<text x="34" y="596" fill="#71869a" font-size="11">Sources: COM(2023) 369, Council mandate, ECB pilot FAQ.</text>
+</g>
+<g class="waterfall-en-mobile" transform="scale(2.17)">
+<rect width="350" height="281" rx="10" fill="#0b0f14"></rect>
+<text x="15" y="22" fill="#f7f9fc" font-size="12" font-weight="760">PAYMENTS DRAW ON THE LINKED ACCOUNT</text>
+<text x="15" y="37" fill="#8fa3b7" font-size="7.5">Example at €3,000, amount not decided</text>
+<rect x="12" y="49" width="326" height="94" rx="8" fill="#151f2a" stroke="#50687e"></rect>
+<text x="23" y="66" fill="#a9bdd0" font-size="8.5" font-weight="760">WATERFALL · MONEY IN</text>
+<text x="23" y="84" fill="#d6e1eb" font-size="8">Wallet €2,800 + payment €1,000</text>
+<text x="23" y="102" fill="#ffffff" font-size="10.5" font-weight="760">Final balance: €3,000</text>
+<text x="23" y="122" fill="#8fd1c6" font-size="9" font-weight="720">€800 swept into the bank account</text>
+<rect x="12" y="152" width="326" height="94" rx="8" fill="#162727" stroke="#54aa9e"></rect>
+<text x="23" y="169" fill="#88d7cb" font-size="8.5" font-weight="760">REVERSE WATERFALL · MONEY OUT</text>
+<text x="23" y="187" fill="#dcebea" font-size="8">Wallet €300 · payment €2,000</text>
+<text x="23" y="205" fill="#8fd1c6" font-size="9" font-weight="720">€1,700 pulled from the bank account</text>
+<text x="23" y="226" fill="#ffffff" font-size="10.5" font-weight="760">Beneficiary receives: €2,000</text>
+<text x="15" y="265" fill="#d7e3ee" font-size="8.5" font-weight="720">The cap applies to the stored balance.</text>
+<text x="15" y="277" fill="#71869a" font-size="6.5">Commission · Council · ECB pilot</text>
+</g>
+</svg>
