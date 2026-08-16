@@ -286,5 +286,314 @@
       "windowStart": "2026-08-02T08:30:00+02:00",
       "windowEnd": "2026-08-09T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 3,
+    "slug": "2026-08-16",
+    "publishedAt": "2026-08-16T08:30:00+02:00",
+    "title": "L’Hebdo du 16 août. Euro numérique, 6/6 : qui contrôle la machine ?",
+    "description": "Édition automatisée du 16 août : 17 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Euro numérique, 6/6 : qui contrôle la machine ?",
+      "href": "/posts/euro-numerique-6-qui-controle-machine/",
+      "update": "Le cœur monétaire doit rester public. L'application, l'antifraude, le mode hors ligne et une partie du réseau dépendront de contrats privés pouvant durer quinze ans. Notre enquête teste la souveraineté opérationnelle de la machine."
+    },
+    "lead": "Le cœur d'émission et de règlement doit rester dans l'Eurosystème, avec six banques centrales nationales. Cinq composants spécialisés ont en parallèle donné lieu à dix accords-cadres privés, pour 432,1 millions d'euros de valeurs estimées et 1,164 milliard de plafonds.",
+    "number": {
+      "value": "17",
+      "label": "analyses publiées du 9 août à 08 h 30 au 16 août à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "La nationalité des titulaires ne suffit pas à garantir la souveraineté. Le test décisif est la capacité de l'Eurosystème à voir, modifier, remplacer et reconstruire chaque composant sans perdre le code, les clés, les données ou l'accès au matériel.",
+    "test": "Les commandes effectivement passées, les sous-traitants, les clouds, la garde des clés, les clauses de sortie et les droits sur le code ne sont pas tous publics. Un second fournisseur par composant ne prouve pas qu'une bascule technique fonctionne.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "17 analyses publiées en sept jours",
+      "subtitle": "du 9 août à 08 h 30 au 16 août à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-08-16",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "COMPTER, PAS CLASSER",
+      "points": [
+        {
+          "label": "dim 09/08",
+          "shortLabel": "dim 09/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-09",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 10/08",
+          "shortLabel": "lun 10/08",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-08-10",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 11/08",
+          "shortLabel": "mar 11/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-11",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 12/08",
+          "shortLabel": "mer 12/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-12",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 13/08",
+          "shortLabel": "jeu 13/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-13",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 14/08",
+          "shortLabel": "ven 14/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-14",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 15/08",
+          "shortLabel": "sam 15/08",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-08-15",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 16/08",
+          "shortLabel": "dim 16/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-16",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Le cœur d'émission et de règlement doit rester dans l'Eurosystème, avec six banques centrales nationales. Cinq composants spécialisés ont en parallèle donné lieu à dix accords-cadres privés, pour 432,1 millions d'euros de valeurs estimées et 1,164 milliard de plafonds.",
+    "linkedin": "17 analyses publiées sur l0g du 9 août à 08 h 30 au 16 août à 08 h 30.\n\nFocus structuré : Euro numérique, 6/6 : qui contrôle la machine ?.\n\nLe cœur d'émission et de règlement doit rester dans l'Eurosystème, avec six banques centrales nationales. Cinq composants spécialisés ont en parallèle donné lieu à dix accords-cadres privés, pour 432,1 millions d'euros de valeurs estimées et 1,164 milliard de plafonds.\n\nPourquoi le lire : La nationalité des titulaires ne suffit pas à garantir la souveraineté. Le test décisif est la capacité de l'Eurosystème à voir, modifier, remplacer et reconstruire chaque composant sans perdre le code, les clés, les données ou l'accès au matériel.\n\nLimite à garder : Les commandes effectivement passées, les sous-traitants, les clouds, la garde des clés, les clauses de sortie et les droits sur le code ne sont pas tous publics. Un second fournisseur par composant ne prouve pas qu'une bascule technique fonctionne.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-08-16/",
+    "threadX": [
+      "1/7 L’Hebdo l0g du 16 août compte 17 analyses publiées. Focus : Euro numérique, 6/6 : qui contrôle la machine ?.",
+      "2/7 Le cœur d'émission et de règlement doit rester dans l'Eurosystème, avec six banques centrales nationales.",
+      "3/7 Cinq composants spécialisés ont en parallèle donné lieu à dix accords-cadres privés, pour 432,1 millions d'euros de valeurs estimées et 1,164 milliard de plafonds.",
+      "4/7 Pourquoi le lire : La nationalité des titulaires ne suffit pas à garantir la souveraineté.",
+      "5/7 Le test décisif est la capacité de l'Eurosystème à voir, modifier, remplacer et reconstruire chaque composant sans perdre le code, les clés, les données ou l'accès au matériel.",
+      "6/7 Limite : Les commandes effectivement passées, les sous-traitants, les clouds, la garde des clés, les clauses de sortie et les droits sur le code ne sont pas tous publics. Un second fournisseur par composant ne prouve pas qu'une bascule technique fonctionne.",
+      "7/7 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-08-16/"
+    ],
+    "sources": [
+      {
+        "label": "Euro numérique, 6/6 : qui contrôle la machine ?",
+        "href": "/posts/euro-numerique-6-qui-controle-machine/",
+        "role": "Analyse publiée le 15 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Euro numérique, 5/6 : le prix de la souveraineté",
+        "href": "/posts/euro-numerique-5-prix-souverainete/",
+        "role": "Analyse publiée le 14 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Euro numérique, 4/6 : argent programmable, la frontière juridique",
+        "href": "/posts/euro-numerique-4-argent-programmable-frontiere-juridique/",
+        "role": "Analyse publiée le 14 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Euro numérique, 3/6 : privé comme du cash ?",
+        "href": "/posts/euro-numerique-3-prive-comme-du-cash/",
+        "role": "Analyse publiée le 14 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Euro numérique, 2/6 : le stress test à 699 milliards",
+        "href": "/posts/euro-numerique-2-699-milliards-anatomie-stress-test/",
+        "role": "Analyse publiée le 13 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Euro numérique, 1/6 : l’euro qui change de débiteur",
+        "href": "/posts/euro-numerique-1-euro-change-de-debiteur/",
+        "role": "Analyse publiée le 13 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qui paie les pertes du QE ? La taxe invisible que la BCE étudie pour les banques",
+        "href": "/posts/qui-paie-pertes-qe-taxe-invisible-bce-banques/",
+        "role": "Analyse publiée le 13 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La voiture à crédit, thermomètre du consommateur américain",
+        "href": "/posts/la-voiture-a-credit-thermometre-consommateur-americain/",
+        "role": "Analyse publiée le 12 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quand la dette des data centers arrive dans les ETF",
+        "href": "/posts/du-data-center-au-fonds-qui-porte-le-risque/",
+        "role": "Analyse publiée le 12 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L'ABS qui n'en est pas un : la nouvelle frontière des data centers",
+        "href": "/posts/l-abs-qui-n-en-est-pas-frontiere-data-centers/",
+        "role": "Analyse publiée le 12 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Du GPU à l'obligation : comment un data center recycle le capital de l'IA",
+        "href": "/posts/nvidia-du-gpu-a-l-obligation-data-center/",
+        "role": "Analyse publiée le 11 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : les 500 milliards qui n'existent pas encore",
+        "href": "/posts/nvidia-500-milliards-qui-n-existent-pas-encore/",
+        "role": "Analyse publiée le 11 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Plus vous empruntez, plus l’indice vous achète ?",
+        "href": "/posts/plus-vous-empruntez-plus-indice-vous-achete/",
+        "role": "Analyse publiée le 11 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "KOSPI : anatomie d’une liquidation concentrée sur deux titres",
+        "href": "/posts/kospi-liquidation-concentree-samsung-sk-hynix/",
+        "role": "Analyse publiée le 10 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Epstein et les banques européennes : six relations à ne pas confondre",
+        "href": "/posts/epstein-banques-europeennes-six-relations-a-ne-pas-confondre/",
+        "role": "Analyse publiée le 9 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Barclays, Staley et Maxwell : deux dossiers, une frontière",
+        "href": "/posts/barclays-staley-maxwell-deux-dossiers-une-frontiere/",
+        "role": "Analyse publiée le 9 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Deutsche Bank et Epstein : l’exception de conformité",
+        "href": "/posts/deutsche-bank-epstein-exception-conformite/",
+        "role": "Analyse publiée le 9 août 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Euro numérique, 6/6 : qui contrôle la machine ?",
+        "href": "/posts/euro-numerique-6-qui-controle-machine/",
+        "publishedAt": "2026-08-15T12:02:00.000Z"
+      },
+      {
+        "title": "Euro numérique, 5/6 : le prix de la souveraineté",
+        "href": "/posts/euro-numerique-5-prix-souverainete/",
+        "publishedAt": "2026-08-14T16:30:00.000Z"
+      },
+      {
+        "title": "Euro numérique, 4/6 : argent programmable, la frontière juridique",
+        "href": "/posts/euro-numerique-4-argent-programmable-frontiere-juridique/",
+        "publishedAt": "2026-08-14T06:30:00.000Z"
+      },
+      {
+        "title": "Euro numérique, 3/6 : privé comme du cash ?",
+        "href": "/posts/euro-numerique-3-prive-comme-du-cash/",
+        "publishedAt": "2026-08-13T22:20:00.000Z"
+      },
+      {
+        "title": "Euro numérique, 2/6 : le stress test à 699 milliards",
+        "href": "/posts/euro-numerique-2-699-milliards-anatomie-stress-test/",
+        "publishedAt": "2026-08-13T12:05:00.000Z"
+      },
+      {
+        "title": "Euro numérique, 1/6 : l’euro qui change de débiteur",
+        "href": "/posts/euro-numerique-1-euro-change-de-debiteur/",
+        "publishedAt": "2026-08-13T08:30:00.000Z"
+      },
+      {
+        "title": "Qui paie les pertes du QE ? La taxe invisible que la BCE étudie pour les banques",
+        "href": "/posts/qui-paie-pertes-qe-taxe-invisible-bce-banques/",
+        "publishedAt": "2026-08-12T22:15:00.000Z"
+      },
+      {
+        "title": "La voiture à crédit, thermomètre du consommateur américain",
+        "href": "/posts/la-voiture-a-credit-thermometre-consommateur-americain/",
+        "publishedAt": "2026-08-12T08:08:00.000Z"
+      },
+      {
+        "title": "Quand la dette des data centers arrive dans les ETF",
+        "href": "/posts/du-data-center-au-fonds-qui-porte-le-risque/",
+        "publishedAt": "2026-08-12T06:16:00.000Z"
+      },
+      {
+        "title": "L'ABS qui n'en est pas un : la nouvelle frontière des data centers",
+        "href": "/posts/l-abs-qui-n-en-est-pas-frontiere-data-centers/",
+        "publishedAt": "2026-08-12T05:25:00.000Z"
+      },
+      {
+        "title": "Du GPU à l'obligation : comment un data center recycle le capital de l'IA",
+        "href": "/posts/nvidia-du-gpu-a-l-obligation-data-center/",
+        "publishedAt": "2026-08-11T14:00:00.000Z"
+      },
+      {
+        "title": "Nvidia : les 500 milliards qui n'existent pas encore",
+        "href": "/posts/nvidia-500-milliards-qui-n-existent-pas-encore/",
+        "publishedAt": "2026-08-11T12:50:00.000Z"
+      },
+      {
+        "title": "Plus vous empruntez, plus l’indice vous achète ?",
+        "href": "/posts/plus-vous-empruntez-plus-indice-vous-achete/",
+        "publishedAt": "2026-08-11T08:00:00.000Z"
+      },
+      {
+        "title": "KOSPI : anatomie d’une liquidation concentrée sur deux titres",
+        "href": "/posts/kospi-liquidation-concentree-samsung-sk-hynix/",
+        "publishedAt": "2026-08-10T10:00:00.000Z"
+      },
+      {
+        "title": "Epstein et les banques européennes : six relations à ne pas confondre",
+        "href": "/posts/epstein-banques-europeennes-six-relations-a-ne-pas-confondre/",
+        "publishedAt": "2026-08-09T15:22:00.000Z"
+      },
+      {
+        "title": "Barclays, Staley et Maxwell : deux dossiers, une frontière",
+        "href": "/posts/barclays-staley-maxwell-deux-dossiers-une-frontiere/",
+        "publishedAt": "2026-08-09T13:18:00.000Z"
+      },
+      {
+        "title": "Deutsche Bank et Epstein : l’exception de conformité",
+        "href": "/posts/deutsche-bank-epstein-exception-conformite/",
+        "publishedAt": "2026-08-09T10:23:00.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-08-16T07:09:27.056Z",
+      "windowStart": "2026-08-09T08:30:00+02:00",
+      "windowEnd": "2026-08-16T08:30:00+02:00"
+    }
   }
 ]
