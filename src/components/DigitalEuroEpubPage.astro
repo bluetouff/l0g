@@ -48,7 +48,7 @@ const bookJsonLd = {
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
   <article class="book-page rise" data-pagefind-body>
     <section class="book-hero">
-      <div class="cover-wrap"><img src={coverPath} width="1600" height="2560" alt={isFr ? 'Couverture de L’euro numérique, enquête en sources ouvertes' : 'Cover of The Digital Euro, an open-source investigation'} /></div>
+      <div class="cover-wrap"><img src={coverPath} width="1600" height="2560" alt={isFr ? 'Couverture de L’euro numérique, enquête en sources ouvertes' : 'Cover of The Digital Euro, an open-source investigation'} loading="lazy" decoding="async" /></div>
       <div class="hero-copy">
         <p class="mono-label glow">// {isFr ? 'publication l0g' : 'l0g publication'}</p>
         <h1>{isFr ? 'L’euro numérique' : 'The Digital Euro'}</h1>
