@@ -1,176 +1,325 @@
 ---
 title: "The risk that goes in circles"
-description: "An investigation into synthetic risk transfer, the most elegant and most circular mechanism in US finance. A bank keeps its loans on its balance sheet but sells their risk to a hedge fund, often with money the bank itself lent it. The loan does not move, the risk seems to vanish, the capital is freed. More than a trillion dollars of loans are already hedged this way, and AI data-centre debt is pouring in. Anatomy of a circle regulators are only starting to see."
+description: "European banks use synthetic risk transfers to reduce the capital attached to loan portfolios that remain on their balance sheets. The market is growing fast. The ECB and BIS are now watching a less visible question: who finances the investors absorbing that risk, and how far does the transfer remain genuine at system level?"
 pubDate: 2026-07-28T14:13:00+02:00
-updatedDate: 2026-07-28T14:13:00+02:00
-tags: ["international", "banks", "private credit", "securitisation", "risk"]
+updatedDate: 2026-08-18T18:38:00+02:00
+tags: ["risk", "banks", "securitisation", "private credit", "regulation", "Europe"]
 draft: false
 sourceArticle: "transfert-synthetique-risque-srt-cercle"
-sourceUpdatedDate: 2026-07-28
+sourceUpdatedDate: 2026-08-18
 ---
 
-*There is in US finance a sleight of hand so elegant it becomes unsettling. A bank holds a portfolio of loans it would rather not carry, because they weigh on its regulatory capital. The intuitive solution would be to sell the loans. It does something subtler: it keeps the loans on its balance sheet but sells their risk to an outside investor, a hedge fund or a private credit fund, which agrees to absorb the first losses in exchange for a double-digit return. The loan does not move an inch. The risk, though, seems to evaporate. And the capital tied up behind that risk is suddenly freed, ready to fund new loans. This operation is called synthetic risk transfer, and it has quietly hedged more than a trillion dollars of bank loans. The problem is not that it exists. The problem is what happens when you follow the risk to the end: it often comes back, through a side door, into the very bank that thought it had shed it.*
+*A bank can keep a loan on its balance sheet while transferring part of its credit risk to an investor. If the supervisor recognises that the transfer is sufficiently significant, the capital requirement attached to those exposures can fall. The mechanism is legitimate, supervised and, at present, authorities do not describe SRTs as an imminent systemic threat. But the European market is expanding quickly. A second question follows: when the funds absorbing the risk are themselves financed by banks, how far has that risk actually left the banking system?*
 
-## The sleight of hand
+One detail changes the entire story: **the loan does not move**.
 
-Let us start with the mechanics, because everything else follows. In an SRT, the bank keeps legal ownership of its loans but buys protection against their default. Technically, it proceeds like a securitisation, cutting the portfolio into risk tranches, but without selling the assets: it sells only insurance on the first-loss tranche, the one that absorbs defaults first. The most common instrument is the credit-linked note: the investor pays capital upfront, collects a high coupon, and gets its capital back at maturity, less any losses on the reference portfolio. If the loans perform, it pockets a double-digit return; if they sour, it loses its stake, and the bank is compensated.
+In a synthetic securitisation, the bank keeps the asset, continues to manage the borrower relationship and continues to receive the loan's cash flows. What it transfers is a defined layer of potential credit losses on a reference portfolio.
 
-The intended effect is not economic, it is regulatory. By transferring the first-loss tranche, the bank can show its supervisor that it has shed most of the portfolio's credit risk, and therefore reduce the capital it must hold against it. Recent deals let banks [cut their capital requirements by an average of 43 basis points](https://www.risk.net/risk-quantum/7963229/srt-issuance-hits-%E2%82%AC260bn-as-capital-relief-grows), a considerable relief on balance sheets of hundreds of billions. The loan stays on the books, the client sees nothing, but the capital behind it is freed. It is the logical extension of the fight over capital we described in our analysis of [the Basel III rollback](/en/analysis/basel-iii-rollback-us-regulators-bank-capital/): what regulation demands on one side, engineering takes back on the other.
+The [Bank for International Settlements](https://www.bis.org/publ/qtrpdf/r_qt2603c.htm) describes three main structures: a credit-linked note, or CLN, issued directly by the bank; a financial guarantee or credit derivative with an investor; or a CLN issued by a special-purpose vehicle that itself provides the protection to the bank.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 360" role="img" aria-label="Mechanics of a synthetic risk transfer: the bank keeps the loans and sells the first-loss protection" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="360" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Sell the risk, keep the loan</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">The loan never leaves the balance sheet; only the first-loss protection is sold.</text>
-  <rect x="40" y="86" width="300" height="210" fill="none" stroke="#2a2c33" stroke-width="1"/>
-  <text x="54" y="108" fill="#d6d9df" font-size="12" font-weight="700">Bank</text>
-  <text x="54" y="126" fill="#8b909b" font-size="11">Loan portfolio (stays on balance sheet)</text>
-  <rect x="54" y="140" width="272" height="86" fill="#5eead4"/>
-  <text x="66" y="170" fill="#0c0d10" font-size="12" font-weight="700">Senior tranche</text>
-  <text x="66" y="188" fill="#0c0d10" font-size="11">kept by the bank</text>
-  <rect x="54" y="234" width="272" height="46" fill="#ff4d87"/>
-  <text x="66" y="262" fill="#0c0d10" font-size="12" font-weight="700">First-loss tranche (protected)</text>
-  <rect x="440" y="150" width="240" height="120" fill="none" stroke="#2a2c33" stroke-width="1"/>
-  <text x="454" y="176" fill="#d6d9df" font-size="12" font-weight="700">Investor</text>
-  <text x="454" y="194" fill="#8b909b" font-size="11">hedge fund, private credit,</text>
-  <text x="454" y="210" fill="#8b909b" font-size="11">insurer, pension fund</text>
-  <text x="454" y="236" fill="#ff4d87" font-size="11">collects a high return,</text>
-  <text x="454" y="252" fill="#ff4d87" font-size="11">absorbs the first losses</text>
-  <line x1="326" y1="257" x2="440" y2="220" stroke="#ff4d87" stroke-width="2"/>
-  <text x="330" y="300" fill="#ff4d87" font-size="11">protection ↗</text>
-  <line x1="440" y1="240" x2="326" y2="272" stroke="#5eead4" stroke-width="2"/>
-  <text x="330" y="320" fill="#5eead4" font-size="11">capital upfront ↙</text>
-  <text x="40" y="346" fill="#8b909b" font-size="10">Result: regulatory capital freed, loans unchanged. Diagram based on the standard SRT structure.</text>
-</svg>
-<figcaption>The bank does not sell its loans, it sells the insurance on their first losses. On the surface, it has shed the risk and freed capital. The question, and the whole investigation rests here, is where that risk actually lands, and with whose money.</figcaption>
-</figure>
+The acronym SRT requires one clarification. In this article it means **synthetic risk transfer**. In Europe, the same initials are also used for **significant risk transfer**, the prudential recognition that a synthetic or traditional securitisation has transferred enough risk to justify capital relief. The concepts often overlap, but they are not identical.
 
-## A market steps out of the shadows
+That matters because the bank does not decide on its own that the risk has disappeared.
 
-Long confidential, reserved for a few European banks and a handful of specialist funds, the SRT has become a mass market. The trigger, on the American side, dates to 2023, when the Federal Reserve [recognised credit-linked notes as eligible for capital relief](https://www.philadelphiafed.org/the-economy/banking-and-financial-markets/banking-trends-synthetic-risk-transfers). US banks rushed in, to the point of now accounting for nearly 30% of global flow. The scale is dizzying: by the end of last year, banks had transferred the credit risk of [more than €905 billion, roughly a trillion dollars of loans, up 26% year on year](https://www.bloomberg.com/news/articles/2026-06-04/banks-offload-1-trillion-loan-risk-to-srt-investors-iacpm-says). The reference pool of European deals hit a [record €260 billion in 2024](https://www.risk.net/risk-quantum/7963229/srt-issuance-hits-%E2%82%AC260bn-as-capital-relief-grows), and US issuance rose from $29 billion to $41 billion in a year.
+In the European Union, the supervisor must recognise the significant transfer before the bank can take the prudential benefit. The [ECB](https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260324~2b54f795e3.en.html) assesses both the individual transaction and the bank's broader risk-management framework.
+
+## What the bank is actually buying
+
+The attraction becomes clear once risk-weighted assets, or RWA, enter the calculation.
+
+The BIS gives a deliberately simplified example. A bank holds a **€1 billion loan portfolio** with a 65% risk weight. Before the transfer, that produces €650 million of RWA. The portfolio is split into three tranches: 1% junior, 7% mezzanine and 92% senior. The bank retains the junior and senior tranches while hedging the 7% mezzanine tranche through a CLN.
+
+In the BIS illustration, RWA then falls from roughly **€650 million to €263 million**. Assuming a 12.5% CET1 ratio, required capital falls from roughly **€82 million to €33 million**.
+
+This is not an estimate of the average return generated by an actual SRT. Nor has the bank created €49 million of new capital. It is a stylised example showing why paying for protection can be preferable to selling loans, shrinking the balance sheet or issuing new equity.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 300" role="img" aria-label="Growth of US synthetic risk transfer issuance between 2024 and 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="300" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The market steps out of the shadows</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">US SRT issuance, in billions of dollars.</text>
-  <line x1="70" y1="230" x2="680" y2="230" stroke="#2a2c33" stroke-width="1"/>
-  <rect x="150" y="150" width="140" height="80" fill="#8b909b"/>
-  <text x="220" y="140" fill="#8b909b" font-size="14" font-weight="700" text-anchor="middle">29</text>
-  <text x="220" y="252" fill="#d6d9df" font-size="12" text-anchor="middle">2024</text>
-  <rect x="430" y="117" width="140" height="113" fill="#ff4d87"/>
-  <text x="500" y="107" fill="#ff4d87" font-size="14" font-weight="700" text-anchor="middle">41</text>
-  <text x="500" y="252" fill="#d6d9df" font-size="12" text-anchor="middle">2025</text>
-  <text x="60" y="282" fill="#d6d9df" font-size="12">+41% in a year. Globally, more than $1 trillion of loans are now hedged this way.</text>
-  <text x="60" y="298" fill="#8b909b" font-size="10">Sources: Bloomberg (IACPM), Risk.net, Philadelphia Fed. Annual US issuance.</text>
+<svg viewBox="0 0 720 430" role="img" aria-label="Simplified BIS synthetic risk transfer example: one billion euro portfolio, seven percent mezzanine tranche protected, lower RWA and required capital" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="430" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">€1bn of loans, same balance sheet, different capital charge</text>
+  <text x="32" y="60" fill="#8b909b" font-size="11">Stylised BIS example. The numbers explain the mechanism, not an average real-world deal.</text>
+
+  <rect x="36" y="90" width="292" height="210" rx="4" fill="none" stroke="#2a2c33"/>
+  <text x="52" y="116" fill="#d6d9df" font-size="12" font-weight="700">Reference portfolio: €1,000m</text>
+  <rect x="52" y="138" width="260" height="28" fill="#ff4d87"/>
+  <text x="64" y="157" fill="#0c0d10" font-size="11" font-weight="700">Junior 1%: retained</text>
+  <rect x="52" y="174" width="260" height="52" fill="#f5b13d"/>
+  <text x="64" y="196" fill="#0c0d10" font-size="11" font-weight="700">Mezzanine 7%: protected by CLN</text>
+  <text x="64" y="214" fill="#0c0d10" font-size="10">credit risk transferred to investor</text>
+  <rect x="52" y="234" width="260" height="50" fill="#5eead4"/>
+  <text x="64" y="256" fill="#0c0d10" font-size="11" font-weight="700">Senior 92%: retained</text>
+  <text x="64" y="274" fill="#0c0d10" font-size="10">remains with the bank</text>
+
+  <text x="356" y="112" fill="#8b909b" font-size="11">BEFORE SRT</text>
+  <text x="356" y="142" fill="#f5f6f8" font-size="28" font-weight="700">€650m</text>
+  <text x="356" y="160" fill="#8b909b" font-size="11">RWA</text>
+  <text x="356" y="196" fill="#f5f6f8" font-size="22" font-weight="700">~ €82m</text>
+  <text x="356" y="214" fill="#8b909b" font-size="11">capital at 12.5%</text>
+
+  <line x1="484" y1="132" x2="544" y2="132" stroke="#7aa2f7" stroke-width="2"/>
+  <polygon points="544,132 534,126 534,138" fill="#7aa2f7"/>
+
+  <text x="568" y="112" fill="#8b909b" font-size="11">AFTER SRT</text>
+  <text x="568" y="142" fill="#5eead4" font-size="28" font-weight="700">€263m</text>
+  <text x="568" y="160" fill="#8b909b" font-size="11">RWA</text>
+  <text x="568" y="196" fill="#5eead4" font-size="22" font-weight="700">~ €33m</text>
+  <text x="568" y="214" fill="#8b909b" font-size="11">capital at 12.5%</text>
+
+  <rect x="356" y="248" width="324" height="52" rx="4" fill="#15171c"/>
+  <text x="372" y="270" fill="#d6d9df" font-size="11">The loan stays on balance sheet.</text>
+  <text x="372" y="288" fill="#d6d9df" font-size="11">The regulatory risk weight changes.</text>
+
+  <line x1="36" y1="336" x2="684" y2="336" stroke="#2a2c33"/>
+  <text x="36" y="362" fill="#f5f6f8" font-size="12" font-weight="700">What the example does not attempt to measure</text>
+  <text x="36" y="384" fill="#8b909b" font-size="10">Actual protection cost, future losses, tax, amortisation, capital redeployment or deal-specific structure.</text>
+  <text x="36" y="412" fill="#8b909b" font-size="9">SOURCE: BIS, The rise and risks of synthetic risk transfers, Annex A, 16 March 2026.</text>
 </svg>
-<figcaption>In a year, US issuance jumped more than 40%, and the United States now makes up nearly a third of a global market hedging more than a trillion dollars of loans. What was a niche tool has become a pillar of bank capital management.</figcaption>
+<figcaption>Stylised BIS example. The reduction in required capital comes from lower RWA after the mezzanine tranche is protected. The reference loans remain on the bank's balance sheet.</figcaption>
 </figure>
 
-On the other side of the table, a constellation of buyers has specialised. The big names of private credit and hedge funds, Magnetar, Ares, Apollo, Blue Owl, KKR, Blackstone, compete for the first-loss tranches, whose target returns reach the mid-teens. Some have built dedicated lines of tens of billions. In December 2025, Blackstone took the [first-loss protection on a €2 billion portfolio of large corporate loans from ABN AMRO](https://www.globenewswire.com/de/news-release/2025/12/11/3203635/0/en/ABN-AMRO-announces-significant-risk-transfer-transaction-with-Blackstone.html). These investors take real risk and book real losses when a portfolio sours; on that point, the market works as advertised.
+This optimisation is not inherently suspect. It can reduce risk concentration, diversify who absorbs losses and allow a bank to preserve a lending relationship it does not want to sell.
 
-## The awkward question: how much risk, really?
+The useful question therefore lies elsewhere: **who bears the losses after the transaction, how is that investor funded, and can it keep bearing them when the cycle turns?**
 
-This is where the elegance starts to crack. An SRT transfers only one tranche, usually thin, the first loss. The bank keeps the senior tranche, that is, the catastrophe risk: the one that materialises only if losses exceed the cushion sold. In normal times, that tail risk is negligible, and the transfer looks complete. In a correlated shock, where many loans default at once, losses can pierce the first-loss tranche and climb back to the bank, precisely when it thought itself protected. Researchers put the question bluntly in a note with a telling title, ["synthetic, but how much risk transfer?"](https://www.suerf.org/publications/suerf-policy-notes-and-briefs/synthetic-but-how-much-risk-transfer/): the capital relief is immediate and certain, the disappearance of the risk is partial and conditional.
+## Europe has accelerated
 
-Add counterparty risk. The protection is only worth something if the investor can pay. In structures backed by a credit-linked note, the capital is paid upfront and locked, which limits that risk; but in unfunded variants, where the protection rests on a mere contractual promise, the bank stays exposed to the failure of its insurer. And these insurers are leveraged funds, less regulated than banks, and that is where the structure reveals its hidden flaw.
+European numbers require some discipline because several different quantities are often mixed together.
 
-## The circle
+In May 2026, the ECB reported that the **significant institutions it supervises** had originated synthetic securitisations covering **€258 billion of underlying portfolios in 2025**, up from €175 billion in 2024. That was a **47% year-on-year increase** and a 90% increase between 2022 and 2025.
 
-Here is the heart of the investigation, and the reason an attentive investor should worry. To buy these first-loss tranches at attractive returns, private credit funds and hedge funds use leverage, that is, borrowed money. And from whom do they borrow? Often from the banks themselves. A bank sells the risk of its loans to a fund, and another bank, sometimes the same one, lends that fund the money to buy the protection. The risk goes out the door and comes back through the window. The Financial Stability Board has put a name on this: ["circles of risk"](https://www.bloomberg.com/news/articles/2025-12-08/srts-what-are-significant-risk-transfers-and-why-are-regulators-worried), where bank credit lent to the funds that buy back bank risk reintroduces that risk into the system. The International Monetary Fund devoted a working paper to the mechanism with a limpid title, ["Recycling Risk"](https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025200-source-pdf.pdf).
+Within the same perimeter, the stock of underlying exposures rose from **€223 billion at the end of 2022 to €570 billion at the end of 2025**.
+
+Those figures measure the notional value of the reference portfolios. **A €258 billion reference pool does not mean €258 billion of risk was transferred, nor €258 billion of CLNs was issued.** Only selected tranches are protected.
+
+Internationally, the BIS estimated that SRTs protected loan portfolios approaching **€800 billion** at the end of 2024. Using a different scope and methodology, the Basel Committee estimated roughly **€750 billion** of protected assets in Canada, the euro area, the United States and the United Kingdom, equal to around **1.1% of total bank assets** in those jurisdictions.
+
+The two numbers should not be added together. Their difference is informative: the BIS notes that there is still **no global data repository or consistent regulatory reporting** covering SRT issuance, pricing and credit performance across jurisdictions.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 320" role="img" aria-label="The circle of risk: the bank sells the risk to a fund that finances it with a bank loan, so the risk returns to the system" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="320" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The circle of risk</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">The risk leaves the bank, then returns through the leverage that funds its buyer.</text>
-  <rect x="40" y="96" width="150" height="70" fill="none" stroke="#5eead4" stroke-width="1.5"/>
-  <text x="54" y="126" fill="#5eead4" font-size="12" font-weight="700">1. Bank</text>
-  <text x="54" y="146" fill="#d6d9df" font-size="11">sells the risk</text>
-  <rect x="230" y="96" width="150" height="70" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
-  <text x="244" y="126" fill="#f5b13d" font-size="12" font-weight="700">2. Fund</text>
-  <text x="244" y="146" fill="#d6d9df" font-size="11">buys the protection</text>
-  <rect x="420" y="96" width="160" height="70" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
-  <text x="434" y="126" fill="#f5b13d" font-size="12" font-weight="700">3. Fund</text>
-  <text x="434" y="146" fill="#d6d9df" font-size="11">borrows with leverage</text>
-  <rect x="530" y="200" width="150" height="70" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
-  <text x="544" y="230" fill="#ff4d87" font-size="12" font-weight="700">4. from a</text>
-  <text x="544" y="250" fill="#ff4d87" font-size="12" font-weight="700">bank</text>
-  <line x1="190" y1="131" x2="230" y2="131" stroke="#8b909b" stroke-width="2"/>
-  <text x="196" y="124" fill="#8b909b" font-size="14">→</text>
-  <line x1="380" y1="131" x2="420" y2="131" stroke="#8b909b" stroke-width="2"/>
-  <text x="386" y="124" fill="#8b909b" font-size="14">→</text>
-  <line x1="500" y1="166" x2="590" y2="200" stroke="#8b909b" stroke-width="2"/>
-  <line x1="530" y1="235" x2="115" y2="235" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 4"/>
-  <line x1="115" y1="235" x2="115" y2="166" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="150" y="228" fill="#ff4d87" font-size="12" font-weight="700">the risk re-enters the banking system</text>
-  <text x="40" y="306" fill="#8b909b" font-size="10">Based on the warnings of the FSB ("circles of risk") and the IMF ("Recycling Risk"). Schematic representation.</text>
+<svg viewBox="0 0 720 410" role="img" aria-label="Growth of synthetic securitisations by ECB supervised significant institutions: 175 billion euros in 2024, 258 billion in 2025, and underlying stock rising from 223 to 570 billion between 2022 and 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="410" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Europe's synthetic market is changing scale</text>
+  <text x="32" y="60" fill="#8b909b" font-size="11">ECB significant institutions. Notional amounts of underlying reference portfolios.</text>
+
+  <text x="38" y="102" fill="#d6d9df" font-size="12" font-weight="700">ANNUAL ISSUANCE</text>
+  <line x1="38" y1="260" x2="338" y2="260" stroke="#2a2c33"/>
+  <rect x="82" y="169" width="84" height="91" fill="#8b909b"/>
+  <rect x="210" y="126" width="84" height="134" fill="#ff4d87"/>
+  <text x="124" y="158" text-anchor="middle" fill="#d6d9df" font-size="15" font-weight="700">175</text>
+  <text x="252" y="115" text-anchor="middle" fill="#ff4d87" font-size="15" font-weight="700">258</text>
+  <text x="124" y="282" text-anchor="middle" fill="#8b909b" font-size="11">2024</text>
+  <text x="252" y="282" text-anchor="middle" fill="#d6d9df" font-size="11">2025</text>
+  <text x="38" y="310" fill="#ff4d87" font-size="13" font-weight="700">+47% year on year</text>
+
+  <line x1="360" y1="88" x2="360" y2="330" stroke="#2a2c33"/>
+
+  <text x="390" y="102" fill="#d6d9df" font-size="12" font-weight="700">UNDERLYING STOCK</text>
+  <text x="390" y="150" fill="#8b909b" font-size="12">end-2022</text>
+  <text x="390" y="180" fill="#f5f6f8" font-size="28" font-weight="700">€223bn</text>
+  <line x1="500" y1="170" x2="556" y2="170" stroke="#7aa2f7" stroke-width="2"/>
+  <polygon points="556,170 546,164 546,176" fill="#7aa2f7"/>
+  <text x="578" y="150" fill="#8b909b" font-size="12">end-2025</text>
+  <text x="578" y="180" fill="#5eead4" font-size="28" font-weight="700">570</text>
+  <text x="578" y="198" fill="#5eead4" font-size="11">€bn</text>
+
+  <rect x="390" y="234" width="286" height="76" rx="4" fill="#15171c"/>
+  <text x="406" y="256" fill="#f5b13d" font-size="11" font-weight="700">Do not confuse</text>
+  <text x="406" y="276" fill="#d6d9df" font-size="10">Reference portfolio is not the transferred tranche</text>
+  <text x="406" y="294" fill="#d6d9df" font-size="10">Not the CLN amount, not the expected loss.</text>
+
+  <line x1="32" y1="346" x2="688" y2="346" stroke="#2a2c33"/>
+  <text x="32" y="372" fill="#8b909b" font-size="9">SOURCE: ECB, Pedro Machado, Strengthening the supervisory grip on securitisation, 14 May 2026.</text>
+  <text x="32" y="390" fill="#8b909b" font-size="9">The ECB specifies that the figures above exclude traditional securitisations.</text>
 </svg>
-<figcaption>The transfer is real on paper, but financing the buyer makes it partly circular. When the bank lends to the fund that insures it, it has not removed the risk, it has disguised and moved it one notch, towards a more opaque and more leveraged player. The capital relief, meanwhile, stayed very real.</figcaption>
+<figcaption>Growth is fast, but the amounts need to be read correctly: the ECB is measuring reference portfolios here, not the size of the risk tranches actually transferred.</figcaption>
 </figure>
 
-The consequence is twofold. First, the capital relief can be partly illusory: the bank shows less risk, but the banking system as a whole still carries as much, or more, since it now has a leveraged intermediary in the middle. Second, the risk has changed regulator: leaving a supervised, marked and capitalised bank balance sheet, it landed at a less regulated fund, whose leverage amplifies losses, and which we file under [non-bank financial intermediation](/en/analysis/shadow-banking-nonbank-intermediation/). It is the same translation we documented for consumer credit, [from the credit card to the annuity](/en/analysis/from-the-credit-card-to-the-annuity/): the risk does not disappear, it migrates towards the least visible compartment.
+The BIS provides another useful benchmark. In its sample of 44 issuing banks at end-2024, SRTs protected around **5% of loans on average**. Estimated capital relief was around **43 basis points of CET1** on average, with a few cases above 100 basis points.
 
-## The new fuel: AI data-centre debt
+The market has therefore become meaningful without yet dominating aggregate bank balance sheets. The ten largest issuers represented 64% of the outstanding amount in the BIS sample, while 90% of protected assets were wholesale exposures, mostly corporate loans.
 
-If this already-strained market suddenly worries more, it is because of what is pouring into it. US banks have lent colossal sums to finance the construction of data centres for artificial intelligence, a debt whose architecture we described in our investigation of [the debt behind AI](/en/analysis/the-debt-behind-ai/). That exposure has swelled to the point of becoming, in a Bank of America survey, the [top systemic credit risk named by 48% of managers for 2026](https://startupfortune.com/ai-data-center-debt-has-climbed-to-the-top-of-wall-streets-credit-risk-watchlist/). What do banks do with this parcel that has grown too heavy? They transfer it. Morgan Stanley, Citi, JPMorgan and Goldman Sachs have begun [offloading the risk of their AI infrastructure loans to private credit, hedge funds and pension funds via SRTs](https://www.fortune.com/2025/12/04/morgan-stanley-significant-risk-transfer-loans-data-center-ai-infrastructure-exposure). The head of credit risk sharing at Man Group sums up the worry in a phrase: the sums involved are "out of scale to anything we've thought about, ever."
+## The more interesting part begins with the investor
 
-The structure then becomes doubly circular. A bank lends to a data-centre developer; it transfers the risk of that loan to a private credit fund; that fund is sometimes the same one financing, elsewhere, the construction of the data centre or the AI company that will fill it. The risk turns inside a small circle of players who carry, through different vehicles, both ends of the same chain. If the AI bet disappoints, it will not be independent counterparties that absorb the shock, but a handful of funds exposed everywhere at once.
+The transfer is economically useful when the investor taking the tranche can actually absorb the losses.
 
-## The last circle: when risk turns liquid
+Buyers are mostly non-banks: credit funds, asset managers, hedge funds, pension funds, insurers and, in some jurisdictions, public institutions. Modern structures are often funded or collateralised upfront, materially reducing the risk that an investor promises protection it cannot subsequently deliver.
 
-The chain does not stop at the private credit fund. It now has an extra link, perhaps the most vertiginous, because it brings the risk all the way to the ordinary saver in a form that erases every trace of it: the ETF, that listed index fund which trades on an exchange like a stock. To grasp the danger, one must first grasp how an ETF manufactures its liquidity, because that is exactly where the trap closes.
+In May 2026, the ECB said **unfunded** protection provided by counterparties other than governments and development banks represented only **11% of outstanding protected tranches**. That is an important resilience feature and belongs in any serious assessment.
 
-An ETF does not keep its assets in a frozen vault. Its liquidity rests on a discreet mechanism, the creation and redemption of shares. Authorised intermediaries, the authorised participants, can at any moment create new shares by delivering the underlying securities to the fund, or destroy shares by taking those securities back. This back-and-forth anchors the share price to the portfolio's real value: if the share trades too dear, more are created to bring the price down; too cheap, some are destroyed to support it. The system is ingenious, but it rests entirely on one condition: that the underlying securities themselves buy and sell without friction. As long as the underlying is liquid, so is the share.
+An investor can nevertheless finance its purchase.
 
-Yet that is precisely what private credit lacks. A private loan does not sell in a day, often not in a month; it has no continuous market price, only an estimate, a subject we dug into in our analysis of [one asset, two prices](/en/analysis/private-credit-one-asset-two-prices/). Wrapping such assets in an ETF amounts to promising daily liquidity on assets that have none. The creation-redemption mechanism jams the moment too many holders want out at once: the authorised participants cannot liquidate the underlying fast enough, the share detaches from its theoretical value, and the exit, wide in appearance, turns out to be narrow. It is a risk transfer of a new kind, no longer credit but liquidity, and it is more insidious because it looks painless as long as flows come in. Bond ETFs did, it is true, come through the March 2020 shock without breaking, their discount later closing; but they held listed bonds, not private loans stripped of a price.
+A CLN can be pledged as collateral in repo. The fund contributes some capital and borrows the remainder from a bank. The BIS reports that such financing is typically subject to substantial haircuts, often **40-60%**, daily margining and cross-collateralisation arrangements.
 
-This is no textbook hypothesis. The first widely distributed private credit ETF was [launched in late February 2025 by State Street with Apollo](https://www.cnbc.com/2025/02/27/state-street-apollo-team-up-to-launch-first-of-its-kind-private-credit-etf.html). To keep its liquidity promise, it was allowed to hold [between 10% and 35% of private assets, well beyond the usual 15% illiquid limit in an ETF, thanks to an agreement under which Apollo commits to buying those assets back, which immediately worried the SEC](https://www.wealthmanagement.com/etfs/state-street-apollo-s-private-credit-etf-raises-sec-concern). The regulator asked the only question that matters: if a single player, Apollo, provides the liquidity by buying back assets it originated itself, at what price will it do so, and what happens the day it stops buying? The promised liquidity then no longer rests on a deep market, but on the goodwill of a single counterparty, in a position of conflict of interest.
+Another distinction is essential: **the available evidence does not justify writing that banks generally finance their own SRTs**.
+
+The BIS says the bank financing the investor is generally different from the bank that originated the transaction. This is an interconnected banking system, not necessarily a closed loop inside one institution.
+
+That changes the risk without removing it.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 300" role="img" aria-label="The liquidity illusion of a private credit ETF: a liquid share sitting on an illiquid underlying" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="300" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The liquidity illusion</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">A liquid ETF share, sitting on private credit that is not.</text>
-  <rect x="110" y="86" width="500" height="48" fill="#5eead4"/>
-  <text x="360" y="115" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="middle">ETF share: continuously listed, appears liquid</text>
-  <rect x="345" y="134" width="30" height="46" fill="#f5b13d"/>
-  <text x="392" y="161" fill="#f5b13d" font-size="11">liquidity = one player's promise</text>
-  <rect x="110" y="180" width="500" height="48" fill="#ff4d87"/>
-  <text x="360" y="209" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="middle">Private credit (10 to 35%): illiquid, no continuous price</text>
-  <text x="60" y="258" fill="#d6d9df" font-size="12">In calm, price ≈ value. In a rush, the door narrows and the share trades below value.</text>
-  <text x="60" y="286" fill="#8b909b" font-size="10">Sources: SEC, CNBC, WealthManagement. Case of the PRIV ETF (State Street / Apollo, 2025). Schematic.</text>
+<svg viewBox="0 0 720 430" role="img" aria-label="Synthetic risk transfer chain and potential circle of risk: Bank A transfers a tranche to a fund, Bank B finances the fund against CLN collateral, creating a channel for risk to return to the banking sector" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="430" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Risk leaves one bank. Does it leave banking?</text>
+  <text x="32" y="60" fill="#8b909b" font-size="11">The BIS « circle of risk » is a potential channel, not a measure of the whole market.</text>
+
+  <rect x="34" y="102" width="174" height="94" rx="5" fill="#15171c" stroke="#5eead4"/>
+  <text x="50" y="128" fill="#5eead4" font-size="12" font-weight="700">BANK A</text>
+  <text x="50" y="148" fill="#d6d9df" font-size="10">keeps the loans</text>
+  <text x="50" y="165" fill="#d6d9df" font-size="10">transfers one layer</text>
+  <text x="50" y="182" fill="#d6d9df" font-size="10">of credit risk</text>
+
+  <rect x="272" y="102" width="176" height="94" rx="5" fill="#15171c" stroke="#f5b13d"/>
+  <text x="288" y="128" fill="#f5b13d" font-size="12" font-weight="700">FUND / NBFI</text>
+  <text x="288" y="148" fill="#d6d9df" font-size="10">provides protection</text>
+  <text x="288" y="165" fill="#d6d9df" font-size="10">and bears losses</text>
+  <text x="288" y="182" fill="#d6d9df" font-size="10">on the tranche</text>
+
+  <rect x="512" y="102" width="174" height="94" rx="5" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="528" y="128" fill="#7aa2f7" font-size="12" font-weight="700">BANK B</text>
+  <text x="528" y="148" fill="#d6d9df" font-size="10">finances the fund</text>
+  <text x="528" y="165" fill="#d6d9df" font-size="10">via repo / credit</text>
+  <text x="528" y="182" fill="#d6d9df" font-size="10">CLN as collateral</text>
+
+  <line x1="208" y1="140" x2="272" y2="140" stroke="#ff4d87" stroke-width="2"/>
+  <polygon points="272,140 262,134 262,146" fill="#ff4d87"/>
+  <text x="216" y="128" fill="#ff4d87" font-size="9">RISK</text>
+
+  <line x1="512" y1="168" x2="448" y2="168" stroke="#7aa2f7" stroke-width="2"/>
+  <polygon points="448,168 458,162 458,174" fill="#7aa2f7"/>
+  <text x="460" y="158" fill="#7aa2f7" font-size="9">FUNDING</text>
+
+  <path d="M600 198 C600 278 500 306 360 306 C220 306 122 270 122 198" fill="none" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 5"/>
+  <polygon points="122,198 116,211 128,211" fill="#ff4d87"/>
+  <text x="248" y="290" fill="#ff4d87" font-size="11" font-weight="700">potential channel back into the banking sector</text>
+
+  <rect x="34" y="330" width="652" height="58" rx="4" fill="#15171c"/>
+  <text x="50" y="351" fill="#d6d9df" font-size="10">Observed mitigants: repo haircuts often 40-60%, daily margining and</text>
+  <text x="50" y="368" fill="#d6d9df" font-size="10">overcollateralisation. The BIS assesses observed investor leverage as modest on average.</text>
+  <text x="50" y="384" fill="#8b909b" font-size="9">The financing bank is generally distinct from the SRT originator.</text>
+
+  <text x="34" y="414" fill="#8b909b" font-size="9">SOURCE: BIS, The rise and risks of synthetic risk transfers, « Investor leverage » and « Interlinkages », 2026.</text>
 </svg>
-<figcaption>The ETF promises an immediate exit from contents that do not sell fast. Between the liquid share and the illiquid credit, a single bridge: one player's commitment to buy back. When the rush comes, that bridge gives way first, and the promised liquidity vanishes exactly when it is most needed.</figcaption>
+<figcaption>The prudential issue is not that one bank mechanically takes back the exact risk it has just sold. It is that another banking exposure can appear elsewhere in the chain, notably through financing provided to the investor.</figcaption>
 </figure>
 
-Here is the point to remember, and it reaches well beyond this one fund. In these wrappers, liquidity is not a property of the assets, it is a promise made by a counterparty. And a promise is worth only as long as the one making it has an interest in keeping it. Yet that interest evaporates exactly when it would be needed, when everyone wants to sell. The journey of risk, which we followed to a retiree's annuity [from the credit card to the annuity](/en/analysis/from-the-credit-card-to-the-annuity/), now sometimes ends in a retail brokerage account, in an instrument with the look of a stock and the substance of an illiquid loan. The saver thinks they hold liquidity; they hold, in reality, the last link of a chain that began with a loan a bank judged too heavy to keep.
+## What the ECB is still trying to measure
 
-## The other reading: a legitimate tool, not a bomb
+On 24 March 2026, ECB Supervisory Board member Pedro Machado disclosed a **new survey of a broad set of banks** on SRT investor financing. Its scope explicitly includes funding provided by significant banks to investors buying securitisations originated by other banks.
 
-It would be dishonest to paint the SRT as pure artifice, because the instrument has real virtues, and the regulators themselves have not banned it. The first argument in its favour is that it achieves genuine risk-sharing. A bank heavily concentrated on one sector, commercial real estate, AI, leveraged credit, can, through the SRT, redistribute that concentration to long-term investors, insurers and pension funds, who seek precisely that return and hold their positions to maturity. Seen that way, the SRT makes the system more resilient, not less, by dispersing a risk otherwise lodged in a few balance sheets.
+Two months later, the ECB framed the problem more directly. As volumes rise, bank-nonbank interconnections deepen in ways that are **not always fully mapped**.
 
-The second argument is that these deals are bilateral, documented and known to the supervisor, unlike the opaque derivatives of before 2008. The Basel Committee published in February 2026 a [detailed report on these markets](https://www.jonesday.com/en/insights/2026/03/basel-committee-publishes-report-on-synthetic-risk-transfer-markets), a sign that authorities are following them closely rather than discovering them after the fact. Its conclusion is not a ban, but tighter monitoring, possible limits on capital relief, and better coordination between bank and non-bank supervisors. The third argument, made by the buying funds, is that banning leverage on these deals would dry up financing useful to the economy without removing the underlying risk. The first-loss tranche finds sophisticated buyers who know what they are buying, and this market has so far absorbed its losses without systemic incident.
+It also said data gaps and data-quality issues still prevent a fully reliable assessment of spillover risks, particularly regarding exposures to investors, investor characteristics and post-transaction performance of reference portfolios.
 
-## What the circle will not forgive
+That is where the real risk angle sits.
 
-These counterpoints hold in calm times. They all say the same thing: as long as losses stay within the thickness of the sold tranche, as long as the buying funds can pay, as long as leverage stays contained, the SRT is a prudent management tool. The problem is that these three conditions degrade together, and precisely at the wrong moment. A correlated shock, on AI debt for instance, would do three things at once: it would pierce the first-loss tranches and send losses back to the banks; it would test the leveraged funds' ability to honour their protection; and it would push the lending banks to cut those same funds' leverage lines, drying up the market just when it needs to work. The three nets would tear at the same time.
+The market is not unknown to supervisors. Individual transactions are supervised. Protection structures are documented. What remains incomplete is the **cross-sectional map**, bank by bank, fund by fund and jurisdiction by jurisdiction.
 
-That is why this mechanism should be read not as a fraud, but as an optimisation at the seam between the regulated and the unregulated, where risk is not removed but relabelled. The investor contemplating a US bank's freed capital should not ask "where did the risk go", but "who holds it now, and is it the bank that lent them the money to hold it". The answer, more and more, draws a circle. And a circle, in finance, has an unpleasant property: it has no end by which to hold it when everything starts turning the wrong way. To judge a bank's real soundness, one must now read what it has transferred as much as what it holds, an exercise our guide on [a bank's soundness](/en/guides/read-bank-health/) no longer exhausts on its own. The risk that goes in circles always ends up back where it started.
+The BIS reaches the same diagnosis. It uses the expression **“circles of risk”** for situations in which risk transferred from a bank to a fund can return indirectly to banking because another bank finances the fund's purchase.
 
----
+It immediately adds that available evidence suggests these loops remain modest in scale.
 
-### Sources
+That second sentence is what prevents a serious subject from becoming an artificial crisis narrative.
 
-- [Bloomberg, "Banks Offload $1 Trillion Loan Risk to SRT Investors, IACPM Says", 4 June 2026 (hedged exposure > €905bn / ~$1tn, +26% year on year)](https://www.bloomberg.com/news/articles/2026-06-04/banks-offload-1-trillion-loan-risk-to-srt-investors-iacpm-says)
-- [Bloomberg, "Banks Love Significant Risk Transfers, and That Has Regulators Worried", 8 December 2025 (FSB warning on "circles of risk")](https://www.bloomberg.com/news/articles/2025-12-08/srts-what-are-significant-risk-transfers-and-why-are-regulators-worried)
-- [Risk.net, "SRT issuance hits €260bn as capital relief grows" (record reference pool in 2024, average 43 basis points of capital relief)](https://www.risk.net/risk-quantum/7963229/srt-issuance-hits-%E2%82%AC260bn-as-capital-relief-grows)
-- [Philadelphia Fed, "Banking Trends: Synthetic Risk Transfers" (2023 Fed guidance on credit-linked notes, mechanics and rise)](https://www.philadelphiafed.org/the-economy/banking-and-financial-markets/banking-trends-synthetic-risk-transfers)
-- [Basel Committee, report on synthetic risk transfer markets, February 2026 (Jones Day summary: monitoring, possible limits on capital relief)](https://www.jonesday.com/en/insights/2026/03/basel-committee-publishes-report-on-synthetic-risk-transfer-markets)
-- [IMF, "Recycling Risk: Synthetic Risk Transfers", working paper 2025/200 (circularity and risk recycling)](https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025200-source-pdf.pdf)
-- [SUERF, "Synthetic, but how much risk transfer?" (share of risk actually transferred, retained tail risk)](https://www.suerf.org/publications/suerf-policy-notes-and-briefs/synthetic-but-how-much-risk-transfer/)
-- [Fortune, "Morgan Stanley explores significant risk transfer for data center and AI infrastructure exposure", 4 December 2025](https://www.fortune.com/2025/12/04/morgan-stanley-significant-risk-transfer-loans-data-center-ai-infrastructure-exposure)
-- [Startup Fortune, "AI data center debt has climbed to the top of Wall Street's credit risk watchlist" (top systemic risk named by 48% of BofA managers)](https://startupfortune.com/ai-data-center-debt-has-climbed-to-the-top-of-wall-streets-credit-risk-watchlist/)
-- [ABN AMRO, "ABN AMRO announces significant risk transfer transaction with Blackstone", 11 December 2025 (first-loss protection on €2bn of corporate loans)](https://www.globenewswire.com/de/news-release/2025/12/11/3203635/0/en/ABN-AMRO-announces-significant-risk-transfer-transaction-with-Blackstone.html)
-- [CNBC, "State Street, Apollo team up to launch first of its kind private credit ETF", 27 February 2025 (launch of the PRIV ETF)](https://www.cnbc.com/2025/02/27/state-street-apollo-team-up-to-launch-first-of-its-kind-private-credit-etf.html)
-- [WealthManagement, "State Street, Apollo's Private Credit ETF Raises SEC Concern" (10 to 35% private assets, Apollo as sole liquidity provider, SEC concerns on valuation and liquidity)](https://www.wealthmanagement.com/etfs/state-street-apollo-s-private-credit-etf-raises-sec-concern)
+## An ECB study adds three harder questions
+
+An [ECB Working Paper published in March 2026](https://www.ecb.europa.eu/press/research-publications/working-papers/html/index.en.html), by Alex Osberghaus and Glenn Schepens, uses euro-area transaction-level data to study SRT use.
+
+The authors report three results worth watching.
+
+First, banks tend to transfer loans that are relatively capital-intensive compared with their estimated economic risk. That is consistent with RWA optimisation being a central use of the instrument.
+
+Second, their analysis finds weaker internal borrower monitoring after a synthetic transfer.
+
+Third, banks are more likely to sell protection to non-bank investors with which they already have a lending relationship.
+
+The paper matters because it uses micro data that are not available to the public. Its status must also remain explicit: **it is a research Working Paper, not an official ECB policy position**. Its findings complement prudential evidence; they do not by themselves establish a systemic vulnerability.
+
+The ECB itself noted in March that observed leverage among these investors remains modest on average and that system-wide round-tripping risks appear contained for now.
+
+## Private credit makes the map wider
+
+SRTs sit inside a much broader web of bank and non-bank financial relationships.
+
+In its [June 2026 Risk Assessment Report](https://www.eba.europa.eu/publications-and-media/publications/risk-assessment-report-june-2026), the European Banking Authority identified almost **€150 billion** of EU/EEA bank exposures to private-credit funds and related asset managers in June 2025. Those exposures were spread across 79 banks in 13 Member States and represented 0.6% of total assets on average.
+
+That figure does **not** measure SRT financing.
+
+It includes several kinds of exposure to the private-credit ecosystem, and the EBA explicitly calls it an indicative measure constrained by reporting thresholds and available data.
+
+Its relevance is different. A fund buying an SRT tranche can have several other relationships with banks: credit lines, collateralised financing, lending to common borrowers, vehicle financing or links through asset managers.
+
+Systemic risk therefore depends less on the legal label attached to one transaction than on the **sum of dependencies** connecting participants.
+
+## A credible stress scenario
+
+The useful scenario is not “SRTs cause the next financial crisis”.
+
+Primary sources available as of 18 August 2026 do not support that claim.
+
+A more rigorous sequence looks like this:
+
+1. a recession or sector shock raises defaults across several reference portfolios;
+2. protected tranches begin absorbing the losses defined in their contracts;
+3. CLNs pledged as collateral may lose value or become harder to price;
+4. banks financing some investors may demand more collateral or reduce credit;
+5. investor appetite for new SRT protection may weaken;
+6. banks that had incorporated renewal of those protections into capital planning must adapt by retaining more RWA, raising capital, selling assets or slowing some new lending.
+
+The BIS therefore presents SRTs less as a likely source of the original shock than as a possible **transmission amplifier**, capable under stress of reinforcing both tighter bank lending and adverse bank-NBFI feedback loops.
+
+The ECB watches three concrete channels: **rollover risk**, counterparty risk in unfunded structures and **flowback risk**, when capital requirements on retained senior tranches rise again.
+
+Its May 2026 assessment remains reassuring: it had found **no material maturity wall**, no acute concentration of unfunded counterparty exposures and no immediate system-wide flowback vulnerability.
+
+That is exactly why the issue is worth mapping before stress makes the exercise far more costly.
+
+## Europe wants securitisation to grow at the same time
+
+The apparent contradiction is not really one.
+
+The European Commission wants to revive securitisation as a risk-sharing and financing tool. Its [reform package presented in June 2025](https://finance.ec.europa.eu/financial-markets/financial-markets-policy/securities-markets/securitisation_en) aims to simplify parts of the framework and make prudential treatment more risk-sensitive. The [Council adopted its negotiating position in December 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/savings-and-investment-union-council-agrees-position-on-revitalising-the-eu-s-securitisation-market/).
+
+The ECB supports a sound securitisation market while arguing that simplification must not weaken transparency or the quality of the risk transfer.
+
+Since January 2026 it has also operated a fast-track process for sufficiently simple and standardised SRT transactions. In the first four months of 2026, only two transactions had used that route, both assessed in eight working days.
+
+Europe's objective is therefore to expand a tool supervisors consider useful **while improving visibility into the chains that form around it**.
+
+The policy challenge is not to prevent risk transfer. It is to make sure that microprudential capital relief at one bank does not, through accumulated cross-exposures, become a macroprudential blind spot.
+
+## What we know, and what we do not
+
+Several conclusions are sufficiently documented to state firmly.
+
+The market is growing rapidly, particularly in Europe. The loans remain on bank balance sheets. A tranche of credit risk is genuinely transferred and, in most modern structures, protection is funded or collateralised. Capital relief is real when recognised by supervisors. Some funds use bank financing for SRT positions. Banks and the investors buying protection are interconnected.
+
+Several stronger claims would go beyond the evidence.
+
+Public data do not show that SRTs are currently a crisis in waiting. They do not show that banks generally finance their own risk transfers. They do not allow us to quantify precisely how much transferred risk returns indirectly to banking. And the hundreds of billions of “protected” portfolios are neither expected losses nor the amount of investor capital actually committed.
+
+That boundary between **what can be measured** and **what remains only partially mapped** may be the most important signal in the entire market.
+
+The risk is not mysterious. It changes owner, legal form and sometimes funding source.
+
+The question is whether, when a shock arrives, the institution that agreed to absorb it still has the resources to do so without relying on the same banking system that wanted to shed it.
+
+### Method and limitations
+
+Data cut-off: **18 August 2026**.
+
+ECB, BIS and Basel Committee amounts are not added together because their scopes, dates and methodologies differ. “Protected” or “securitised” portfolio amounts refer to underlying reference assets, not to the size of the risk tranche transferred.
+
+This article prioritises supervisors, public institutions and primary research publications. Research papers are explicitly labelled as research. Secondary or paywalled figures used in the previous version of this article were removed whenever a primary source could establish the underlying fact.
+
+### Primary sources
+
+- [Bank for International Settlements, *The rise and risks of synthetic risk transfers*, 16 March 2026](https://www.bis.org/publ/qtrpdf/r_qt2603c.htm)
+- [Basel Committee on Banking Supervision, *Synthetic risk transfers*, 17 February 2026](https://www.bis.org/bcbs/publ/d607.htm)
+- [ECB, Pedro Machado, *Changing the tune but not the tone: synthetic risk transfers in Europe*, 24 March 2026](https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260324~2b54f795e3.en.html)
+- [ECB, Pedro Machado, *Strengthening the supervisory grip on securitisation: reading the data, anticipating the risks*, 14 May 2026](https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260514~4917539c35.en.html)
+- [ECB Working Paper Series No. 3210, *Synthetic, but how much risk transfer?*, 27 March 2026](https://www.ecb.europa.eu/press/research-publications/working-papers/html/index.en.html)
+- [European Banking Authority, *Risk Assessment Report*, June 2026](https://www.eba.europa.eu/publications-and-media/publications/risk-assessment-report-june-2026)
+- [European Commission, Securitisation policy file](https://finance.ec.europa.eu/financial-markets/financial-markets-policy/securities-markets/securitisation_en)
+- [Council of the European Union, position on reviving the EU securitisation market, 19 December 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/savings-and-investment-union-council-agrees-position-on-revitalising-the-eu-s-securitisation-market/)
+
+For the broader migration of credit risk towards non-bank finance, see [The migration of credit risk](/en/posts/the-migration-of-credit-risk/).

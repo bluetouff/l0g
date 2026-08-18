@@ -1,174 +1,323 @@
 ---
 title: "Le risque qui tourne en rond"
-description: "Enquête sur le transfert synthétique de risque, la mécanique la plus élégante et la plus circulaire de la finance américaine. Une banque garde ses prêts à son bilan, mais en vend le risque à un hedge fund, souvent avec l'argent que la banque lui a elle-même prêté. Le prêt ne bouge pas, le risque semble s'évaporer, le capital est libéré. Plus de mille milliards de dollars de prêts sont déjà couverts ainsi, et la dette des data centers d'IA s'y engouffre. Anatomie d'un cercle que les régulateurs commencent à peine à voir."
+description: "Les banques européennes utilisent les transferts synthétiques de risque pour alléger le capital associé à des portefeuilles qui restent à leur bilan. Le marché grossit vite. La BCE et la BRI surveillent désormais une question moins visible : qui finance les investisseurs qui absorbent ce risque, et jusqu'où le transfert reste-t-il réel à l'échelle du système ?"
 pubDate: 2026-07-28T14:13:00+02:00
-updatedDate: 2026-07-28T14:13:00+02:00
-tags: ["international", "banques", "crédit privé", "titrisation", "risque"]
+updatedDate: 2026-08-18T18:38:00+02:00
+tags: ["risque", "banques", "titrisation", "crédit privé", "régulation", "Europe"]
 draft: false
 ---
 
-*Il y a dans la finance américaine un tour de main si élégant qu'il en devient inquiétant. Une banque détient un portefeuille de prêts qu'elle préférerait ne plus porter, parce qu'il pèse sur son capital réglementaire. La solution intuitive serait de vendre ces prêts. Elle fait autre chose, de plus subtil : elle garde les prêts à son bilan, mais en vend le risque à un investisseur extérieur, un hedge fund ou un fonds de crédit privé, qui accepte d'éponger les premières pertes contre un rendement à deux chiffres. Le prêt ne bouge pas d'un centimètre. Le risque, lui, semble s'évaporer. Et le capital immobilisé derrière ce risque est soudain libéré, prêt à financer de nouveaux prêts. Cette opération s'appelle le transfert synthétique de risque, et elle a discrètement couvert plus de mille milliards de dollars de prêts bancaires. Le problème n'est pas qu'elle existe. Le problème est ce qui se passe quand on suit le risque jusqu'au bout : il revient souvent, par une porte dérobée, dans la banque qui croyait s'en être débarrassée.*
+*Une banque peut garder un prêt à son bilan tout en transférant une partie de son risque de crédit à un investisseur. Si le superviseur reconnaît que ce transfert est suffisamment important, les exigences de fonds propres associées peuvent baisser. La mécanique est légitime, surveillée et, à ce stade, les autorités ne décrivent pas les SRT comme une menace systémique imminente. Mais le marché européen accélère très vite. Et une seconde question apparaît : lorsque les fonds qui absorbent le risque se financent eux-mêmes auprès de banques, jusqu'où le risque a-t-il réellement quitté le système bancaire ?*
 
-## Le tour de passe-passe
+Le détail qui change toute l'histoire tient en une phrase : **le prêt ne bouge pas**.
 
-Commençons par la mécanique, car tout le reste en découle. Dans un [SRT](/glossaire/#srt), la banque conserve la propriété juridique de ses prêts, mais achète une protection contre leur défaut. Techniquement, elle procède comme une [titrisation](/glossaire/#titrisation), en découpant le portefeuille en [tranches](/glossaire/#tranche) de risque, mais sans céder les actifs : elle vend seulement une assurance sur la tranche de première perte, celle qui absorbe les défauts en premier. L'instrument le plus courant est la note indexée sur le crédit, la [CLN](/glossaire/#cln) : l'investisseur verse un capital d'avance, encaisse un coupon élevé, et récupère son capital à l'échéance, diminué des pertes éventuelles du portefeuille. Si les prêts tournent bien, il empoche un rendement à deux chiffres ; s'ils tournent mal, il perd sa mise, et la banque est indemnisée.
+Dans une titrisation synthétique, la banque conserve l'actif, continue à gérer la relation avec son client et continue à percevoir les flux du prêt. Ce qu'elle transfère est une partie des pertes potentielles attachées à un portefeuille de crédits.
 
-L'effet recherché n'est pas économique, il est réglementaire. En transférant la tranche de première perte, la banque peut démontrer à son superviseur qu'elle a cédé l'essentiel du risque de crédit du portefeuille, et donc réduire le capital qu'elle doit détenir en face. Les opérations récentes ont permis aux banques de [réduire leurs exigences de fonds propres de 43 points de base en moyenne](https://www.risk.net/risk-quantum/7963229/srt-issuance-hits-%E2%82%AC260bn-as-capital-relief-grows), un allègement considérable rapporté à des bilans de centaines de milliards. Le prêt reste au bilan, le client ne voit rien, mais le capital derrière lui est libéré. C'est le prolongement logique du bras de fer sur les fonds propres que nous avons décrit dans notre analyse du [détricotage de Bâle III](/posts/bale-iii-rollback-regulateurs-us-capital-bancaire/) : ce que la régulation exige d'un côté, l'ingénierie le reprend de l'autre.
+La [Banque des règlements internationaux](https://www.bis.org/publ/qtrpdf/r_qt2603c.htm) décrit trois structures principales : une *credit-linked note* (CLN) émise directement par la banque, une garantie ou un dérivé de crédit conclu avec un investisseur, ou une CLN émise par un véhicule qui fournit lui-même la protection à la banque.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 360" role="img" aria-label="Mécanique d'un transfert synthétique de risque : la banque garde les prêts et vend la protection de première perte" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="360" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Vendre le risque, garder le prêt</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Le prêt ne quitte jamais le bilan ; seule la protection de première perte est vendue.</text>
-  <rect x="40" y="86" width="300" height="210" fill="none" stroke="#2a2c33" stroke-width="1"/>
-  <text x="54" y="108" fill="#d6d9df" font-size="12" font-weight="700">Banque</text>
-  <text x="54" y="126" fill="#8b909b" font-size="11">Portefeuille de prêts (reste au bilan)</text>
-  <rect x="54" y="140" width="272" height="86" fill="#5eead4"/>
-  <text x="66" y="170" fill="#0c0d10" font-size="12" font-weight="700">Tranche senior</text>
-  <text x="66" y="188" fill="#0c0d10" font-size="11">conservée par la banque</text>
-  <rect x="54" y="234" width="272" height="46" fill="#ff4d87"/>
-  <text x="66" y="262" fill="#0c0d10" font-size="12" font-weight="700">Tranche première perte (protégée)</text>
-  <rect x="440" y="150" width="240" height="120" fill="none" stroke="#2a2c33" stroke-width="1"/>
-  <text x="454" y="176" fill="#d6d9df" font-size="12" font-weight="700">Investisseur</text>
-  <text x="454" y="194" fill="#8b909b" font-size="11">hedge fund, crédit privé,</text>
-  <text x="454" y="210" fill="#8b909b" font-size="11">assureur, fonds de pension</text>
-  <text x="454" y="236" fill="#ff4d87" font-size="11">encaisse un rendement élevé,</text>
-  <text x="454" y="252" fill="#ff4d87" font-size="11">absorbe les premières pertes</text>
-  <line x1="326" y1="257" x2="440" y2="220" stroke="#ff4d87" stroke-width="2"/>
-  <text x="330" y="300" fill="#ff4d87" font-size="11">protection ↗</text>
-  <line x1="440" y1="240" x2="326" y2="272" stroke="#5eead4" stroke-width="2"/>
-  <text x="330" y="320" fill="#5eead4" font-size="11">capital d'avance ↙</text>
-  <text x="40" y="346" fill="#8b909b" font-size="10">Résultat : capital réglementaire libéré, prêts inchangés. Schéma d'après la structure standard d'un SRT.</text>
-</svg>
-<figcaption>La banque ne vend pas ses prêts, elle vend l'assurance de leurs premières pertes. En apparence, elle s'est délestée du risque et a libéré du capital. La question, toute l'enquête tient là, est de savoir où ce risque atterrit vraiment, et avec l'argent de qui.</figcaption>
-</figure>
+Le terme SRT demande une précision. Dans cet article, il désigne **synthetic risk transfer**. En Europe, les mêmes trois lettres servent aussi à parler de **significant risk transfer**, c'est-à-dire la reconnaissance prudentielle qu'une titrisation, synthétique ou traditionnelle, a effectivement transféré une part suffisamment importante du risque pour justifier un allègement de capital. Les deux notions se recouvrent souvent, mais elles ne sont pas synonymes.
 
-## Un marché sorti de l'ombre
+C'est important, parce que la banque ne décide pas seule que le risque a disparu.
 
-Longtemps confidentiel, réservé à quelques banques européennes et à une poignée de fonds spécialisés, le SRT est devenu un marché de masse. L'événement déclencheur, côté américain, remonte à 2023, quand la Réserve fédérale a [reconnu les notes indexées sur le crédit comme éligibles à l'allègement de capital](https://www.philadelphiafed.org/the-economy/banking-and-financial-markets/banking-trends-synthetic-risk-transfers). Les banques américaines s'y sont engouffrées, au point de représenter désormais près de 30 % du flux mondial. L'ampleur donne le vertige : à la fin de l'an dernier, les banques avaient transféré le risque de crédit de [plus de 905 milliards d'euros, soit environ mille milliards de dollars de prêts, en hausse de 26 % sur un an](https://www.bloomberg.com/news/articles/2026-06-04/banks-offload-1-trillion-loan-risk-to-srt-investors-iacpm-says). Le pool de référence des opérations européennes a atteint un [record de 260 milliards d'euros en 2024](https://www.risk.net/risk-quantum/7963229/srt-issuance-hits-%E2%82%AC260bn-as-capital-relief-grows), et l'émission américaine est passée de 29 à 41 milliards de dollars en un an.
+Dans l'Union européenne, le superviseur doit reconnaître le transfert significatif avant que l'établissement puisse en tirer le bénéfice prudentiel. La [BCE](https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260324~2b54f795e3.en.html) examine la transaction et le dispositif global de gestion des risques de la banque.
+
+## Ce que la banque achète réellement
+
+L'intérêt du montage apparaît immédiatement lorsqu'on regarde les actifs pondérés du risque, les RWA.
+
+La BRI donne un exemple volontairement simplifié. Une banque détient **1 milliard d'euros de prêts** pondérés à 65 %. Avant transfert, cela représente 650 millions d'euros de RWA. Le portefeuille est découpé en trois tranches : 1 % de junior, 7 % de mezzanine et 92 % de senior. La banque conserve la junior et la senior mais protège la tranche mezzanine de 7 % au moyen d'une CLN.
+
+Dans le calcul illustratif de la BRI, les RWA passent alors d'environ **650 à 263 millions d'euros**. Avec une hypothèse de CET1 de 12,5 %, le capital requis passe d'environ **82 à 33 millions d'euros**.
+
+Ce n'est pas un rendement moyen observé sur le marché. Ce n'est pas non plus une création de 49 millions d'euros de capital. C'est un exemple pédagogique qui montre pourquoi une banque peut préférer payer une protection plutôt que vendre les prêts, réduire son bilan ou émettre de nouvelles actions.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 300" role="img" aria-label="Croissance de l'émission américaine de transferts synthétiques de risque entre 2024 et 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="300" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le marché sort de l'ombre</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Émission américaine de SRT, en milliards de dollars.</text>
-  <line x1="70" y1="230" x2="680" y2="230" stroke="#2a2c33" stroke-width="1"/>
-  <rect x="150" y="150" width="140" height="80" fill="#8b909b"/>
-  <text x="220" y="140" fill="#8b909b" font-size="14" font-weight="700" text-anchor="middle">29</text>
-  <text x="220" y="252" fill="#d6d9df" font-size="12" text-anchor="middle">2024</text>
-  <rect x="430" y="117" width="140" height="113" fill="#ff4d87"/>
-  <text x="500" y="107" fill="#ff4d87" font-size="14" font-weight="700" text-anchor="middle">41</text>
-  <text x="500" y="252" fill="#d6d9df" font-size="12" text-anchor="middle">2025</text>
-  <text x="60" y="282" fill="#d6d9df" font-size="12">+41 % en un an. À l'échelle mondiale, plus de 1 000 milliards de dollars de prêts sont désormais couverts.</text>
-  <text x="60" y="298" fill="#8b909b" font-size="10">Sources : Bloomberg (IACPM), Risk.net, Philadelphia Fed. Émission américaine annuelle.</text>
+<svg viewBox="0 0 720 430" role="img" aria-label="Exemple simplifié de transfert synthétique de risque publié par la BRI : portefeuille de 1 milliard d'euros, tranche mezzanine de 7 pour cent protégée, baisse des RWA et du capital requis" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="430" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">1 Md€ de prêts, le même bilan, une autre charge en capital</text>
+  <text x="32" y="60" fill="#8b909b" font-size="11">Exemple stylisé de la BRI. Les chiffres illustrent la mécanique, pas une opération moyenne.</text>
+
+  <rect x="36" y="90" width="292" height="210" rx="4" fill="none" stroke="#2a2c33"/>
+  <text x="52" y="116" fill="#d6d9df" font-size="12" font-weight="700">Portefeuille de référence : 1 000 M€</text>
+  <rect x="52" y="138" width="260" height="28" fill="#ff4d87"/>
+  <text x="64" y="157" fill="#0c0d10" font-size="11" font-weight="700">Junior 1 % : conservée</text>
+  <rect x="52" y="174" width="260" height="52" fill="#f5b13d"/>
+  <text x="64" y="196" fill="#0c0d10" font-size="11" font-weight="700">Mezzanine 7 % : protégée par CLN</text>
+  <text x="64" y="214" fill="#0c0d10" font-size="10">risque transféré à l'investisseur</text>
+  <rect x="52" y="234" width="260" height="50" fill="#5eead4"/>
+  <text x="64" y="256" fill="#0c0d10" font-size="11" font-weight="700">Senior 92 % : conservée</text>
+  <text x="64" y="274" fill="#0c0d10" font-size="10">reste au bilan de la banque</text>
+
+  <text x="356" y="112" fill="#8b909b" font-size="11">AVANT SRT</text>
+  <text x="356" y="142" fill="#f5f6f8" font-size="28" font-weight="700">650 M€</text>
+  <text x="356" y="160" fill="#8b909b" font-size="11">RWA</text>
+  <text x="356" y="196" fill="#f5f6f8" font-size="22" font-weight="700">~ 82 M€</text>
+  <text x="356" y="214" fill="#8b909b" font-size="11">capital requis à 12,5 %</text>
+
+  <line x1="484" y1="132" x2="544" y2="132" stroke="#7aa2f7" stroke-width="2"/>
+  <polygon points="544,132 534,126 534,138" fill="#7aa2f7"/>
+
+  <text x="568" y="112" fill="#8b909b" font-size="11">APRÈS SRT</text>
+  <text x="568" y="142" fill="#5eead4" font-size="28" font-weight="700">263 M€</text>
+  <text x="568" y="160" fill="#8b909b" font-size="11">RWA</text>
+  <text x="568" y="196" fill="#5eead4" font-size="22" font-weight="700">~ 33 M€</text>
+  <text x="568" y="214" fill="#8b909b" font-size="11">capital requis à 12,5 %</text>
+
+  <rect x="356" y="248" width="324" height="52" rx="4" fill="#15171c"/>
+  <text x="372" y="270" fill="#d6d9df" font-size="11">Le prêt reste au bilan.</text>
+  <text x="372" y="288" fill="#d6d9df" font-size="11">La pondération du risque, elle, change.</text>
+
+  <line x1="36" y1="336" x2="684" y2="336" stroke="#2a2c33"/>
+  <text x="36" y="362" fill="#f5f6f8" font-size="12" font-weight="700">Ce que l'exemple ne prétend pas mesurer</text>
+  <text x="36" y="384" fill="#8b909b" font-size="10">Coût réel de la protection, pertes futures, fiscalité, amortissement, capital redéployé, structure exacte d'une transaction.</text>
+  <text x="36" y="412" fill="#8b909b" font-size="9">SOURCE : BRI, The rise and risks of synthetic risk transfers, annexe A, 16 mars 2026.</text>
 </svg>
-<figcaption>En un an, l'émission américaine a bondi de plus de 40 %, et les États-Unis pèsent désormais près du tiers d'un marché mondial qui couvre plus de mille milliards de dollars de prêts. Ce qui était un outil de niche est devenu un pilier de la gestion du capital bancaire.</figcaption>
+<figcaption>Exemple stylisé publié par la BRI. La baisse du capital requis vient de la modification des RWA après transfert de la tranche mezzanine. Le prêt de référence reste dans le bilan de la banque.</figcaption>
 </figure>
 
-De l'autre côté de la table, une constellation d'acheteurs s'est spécialisée. Les grands noms du crédit privé et des hedge funds, Magnetar, Ares, Apollo, Blue Owl, KKR, Blackstone, se disputent les tranches de première perte, dont les rendements cibles atteignent le milieu de la fourchette à deux chiffres. Certains ont bâti des lignes dédiées de plusieurs dizaines de milliards. En décembre 2025, Blackstone a ainsi pris la [protection de première perte sur un portefeuille de deux milliards d'euros de grands prêts corporate d'ABN AMRO](https://www.globenewswire.com/de/news-release/2025/12/11/3203635/0/en/ABN-AMRO-announces-significant-risk-transfer-transaction-with-Blackstone.html). Ces investisseurs prennent un vrai risque et encaissent de vraies pertes quand un portefeuille se dégrade ; sur ce point, le marché fonctionne comme annoncé.
+Cette optimisation n'est pas automatiquement suspecte. Elle peut réduire une concentration de risque, diversifier les porteurs de pertes et permettre à une banque de conserver une relation de crédit qu'elle ne souhaite pas céder.
 
-## La question qui fâche : combien de risque, vraiment ?
+La question utile est donc ailleurs : **qui porte les pertes après l'opération, avec quel financement et avec quelle capacité à tenir lorsque le cycle se retourne ?**
 
-C'est ici que l'élégance du montage commence à se fissurer. Un SRT ne transfère qu'une tranche, généralement mince, la première perte. La banque conserve la tranche senior, c'est-à-dire le risque de catastrophe : celui qui ne se matérialise que si les pertes dépassent le coussin vendu. En temps normal, ce risque de queue est négligeable, et le transfert paraît complet. En cas de choc corrélé, où de nombreux prêts font défaut en même temps, les pertes peuvent percer la tranche de première perte et remonter jusqu'à la banque, précisément au moment où elle croyait être protégée. Des chercheurs posent la question sans détour dans une note au titre éloquent, [« synthétique, mais quel transfert de risque, au juste ? »](https://www.suerf.org/publications/suerf-policy-notes-and-briefs/synthetic-but-how-much-risk-transfer/) : l'allègement de capital est immédiat et certain, la disparition du risque, elle, est partielle et conditionnelle.
+## L'Europe a accéléré
 
-S'ajoute un risque de contrepartie. La protection ne vaut que si l'investisseur peut payer. Dans les structures adossées à une note indexée, le capital est versé d'avance et immobilisé, ce qui limite ce risque ; mais dans les variantes non financées, où la protection repose sur une simple promesse contractuelle, la banque reste exposée à la défaillance de son assureur. Or ces assureurs sont des fonds à effet de levier, moins régulés que les banques, et c'est là que le montage révèle son vice caché.
+Les chiffres européens demandent un peu de discipline, parce que plusieurs grandeurs circulent dans le débat.
 
-## Le cercle
+En mai 2026, la BCE a indiqué que les **institutions significatives qu'elle supervise** avaient originé en 2025 des titrisations synthétiques portant sur **258 milliards d'euros de portefeuilles sous-jacents**, contre 175 milliards en 2024. La hausse est de **47 % en un an** et de 90 % entre 2022 et 2025.
 
-Voici le cœur de l'enquête, et la raison pour laquelle un investisseur attentif devrait s'inquiéter. Pour acheter ces tranches de première perte à des rendements attractifs, les fonds de crédit privé et les hedge funds utilisent de l'effet de levier, c'est-à-dire de l'argent emprunté. Et à qui empruntent-ils ? Souvent aux banques elles-mêmes. Une banque vend le risque de ses prêts à un fonds, et une autre banque, parfois la même, prête à ce fonds l'argent pour acheter cette protection. Le risque sort par la porte et rentre par la fenêtre. Le Conseil de stabilité financière a mis un nom sur ce phénomène : des [« cercles de risque »](https://www.bloomberg.com/news/articles/2025-12-08/srts-what-are-significant-risk-transfers-and-why-are-regulators-worried), où le crédit bancaire prêté aux fonds qui rachètent le risque bancaire réintroduit ce risque dans le système. Le Fonds monétaire international a consacré à ce mécanisme un document de travail au titre limpide, [« recycler le risque »](https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025200-source-pdf.pdf).
+Dans le même périmètre, le stock d'expositions sous-jacentes est passé de **223 milliards d'euros fin 2022 à 570 milliards fin 2025**.
+
+Ces montants représentent la valeur notionnelle des portefeuilles de référence. **258 milliards d'euros de portefeuille ne signifient pas 258 milliards d'euros de risque effectivement cédé, ni 258 milliards d'euros de CLN émises.** Seules certaines tranches sont protégées.
+
+À l'échelle internationale, la BRI estimait à la fin de 2024 que les portefeuilles de prêts protégés par des SRT approchaient **800 milliards d'euros**. Le Comité de Bâle, avec un périmètre et une méthodologie différents, estimait environ **750 milliards d'euros** d'actifs protégés au Canada, dans la zone euro, aux États-Unis et au Royaume-Uni, soit environ **1,1 % des actifs bancaires** de ces juridictions.
+
+Ces deux chiffres ne doivent pas être additionnés. Leur écart est au contraire instructif : la BRI souligne qu'il n'existe toujours **ni dépôt de données mondial ni reporting réglementaire homogène** couvrant les émissions, le prix et la performance de crédit des SRT entre juridictions.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 320" role="img" aria-label="Le cercle du risque : la banque vend le risque à un fonds qui le finance par un prêt bancaire, si bien que le risque revient dans le système" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="320" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le cercle du risque</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Le risque quitte la banque, puis y revient par le levier qui finance son acheteur.</text>
-  <rect x="40" y="96" width="150" height="70" fill="none" stroke="#5eead4" stroke-width="1.5"/>
-  <text x="54" y="126" fill="#5eead4" font-size="12" font-weight="700">1. Banque</text>
-  <text x="54" y="146" fill="#d6d9df" font-size="11">vend le risque</text>
-  <rect x="230" y="96" width="150" height="70" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
-  <text x="244" y="126" fill="#f5b13d" font-size="12" font-weight="700">2. Fonds</text>
-  <text x="244" y="146" fill="#d6d9df" font-size="11">achète la protection</text>
-  <rect x="420" y="96" width="160" height="70" fill="none" stroke="#f5b13d" stroke-width="1.5"/>
-  <text x="434" y="126" fill="#f5b13d" font-size="12" font-weight="700">3. Fonds</text>
-  <text x="434" y="146" fill="#d6d9df" font-size="11">emprunte à effet de levier</text>
-  <rect x="530" y="200" width="150" height="70" fill="none" stroke="#ff4d87" stroke-width="1.5"/>
-  <text x="544" y="230" fill="#ff4d87" font-size="12" font-weight="700">4. auprès d'une</text>
-  <text x="544" y="250" fill="#ff4d87" font-size="12" font-weight="700">banque</text>
-  <line x1="190" y1="131" x2="230" y2="131" stroke="#8b909b" stroke-width="2"/>
-  <text x="196" y="124" fill="#8b909b" font-size="14">→</text>
-  <line x1="380" y1="131" x2="420" y2="131" stroke="#8b909b" stroke-width="2"/>
-  <text x="386" y="124" fill="#8b909b" font-size="14">→</text>
-  <line x1="500" y1="166" x2="590" y2="200" stroke="#8b909b" stroke-width="2"/>
-  <line x1="530" y1="235" x2="115" y2="235" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 4"/>
-  <line x1="115" y1="235" x2="115" y2="166" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="150" y="228" fill="#ff4d87" font-size="12" font-weight="700">le risque re-rentre dans le système bancaire</text>
-  <text x="40" y="306" fill="#8b909b" font-size="10">D'après les mises en garde du FSB (« circles of risk ») et du FMI (« Recycling Risk »). Représentation schématique.</text>
+<svg viewBox="0 0 720 410" role="img" aria-label="Croissance des titrisations synthétiques des institutions significatives supervisées par la BCE : 175 milliards d'euros en 2024, 258 milliards en 2025, et stock sous-jacent de 223 à 570 milliards entre 2022 et 2025" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="410" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le marché synthétique européen change d'échelle</text>
+  <text x="32" y="60" fill="#8b909b" font-size="11">Institutions significatives supervisées par la BCE. Montants notionnels des portefeuilles sous-jacents.</text>
+
+  <text x="38" y="102" fill="#d6d9df" font-size="12" font-weight="700">ÉMISSIONS ANNUELLES</text>
+  <line x1="38" y1="260" x2="338" y2="260" stroke="#2a2c33"/>
+  <rect x="82" y="169" width="84" height="91" fill="#8b909b"/>
+  <rect x="210" y="126" width="84" height="134" fill="#ff4d87"/>
+  <text x="124" y="158" text-anchor="middle" fill="#d6d9df" font-size="15" font-weight="700">175</text>
+  <text x="252" y="115" text-anchor="middle" fill="#ff4d87" font-size="15" font-weight="700">258</text>
+  <text x="124" y="282" text-anchor="middle" fill="#8b909b" font-size="11">2024</text>
+  <text x="252" y="282" text-anchor="middle" fill="#d6d9df" font-size="11">2025</text>
+  <text x="38" y="310" fill="#ff4d87" font-size="13" font-weight="700">+47 % sur un an</text>
+
+  <line x1="360" y1="88" x2="360" y2="330" stroke="#2a2c33"/>
+
+  <text x="390" y="102" fill="#d6d9df" font-size="12" font-weight="700">STOCK SOUS-JACENT</text>
+  <text x="390" y="150" fill="#8b909b" font-size="12">fin 2022</text>
+  <text x="390" y="180" fill="#f5f6f8" font-size="28" font-weight="700">223 Md€</text>
+  <line x1="500" y1="170" x2="556" y2="170" stroke="#7aa2f7" stroke-width="2"/>
+  <polygon points="556,170 546,164 546,176" fill="#7aa2f7"/>
+  <text x="578" y="150" fill="#8b909b" font-size="12">fin 2025</text>
+  <text x="578" y="180" fill="#5eead4" font-size="28" font-weight="700">570</text>
+  <text x="578" y="198" fill="#5eead4" font-size="11">Md€</text>
+
+  <rect x="390" y="234" width="286" height="76" rx="4" fill="#15171c"/>
+  <text x="406" y="256" fill="#f5b13d" font-size="11" font-weight="700">À ne pas confondre</text>
+  <text x="406" y="276" fill="#d6d9df" font-size="10">Portefeuille de référence : pas la tranche transférée</text>
+  <text x="406" y="294" fill="#d6d9df" font-size="10">Pas le montant de CLN, pas la perte attendue.</text>
+
+  <line x1="32" y1="346" x2="688" y2="346" stroke="#2a2c33"/>
+  <text x="32" y="372" fill="#8b909b" font-size="9">SOURCE : BCE, Pedro Machado, Strengthening the supervisory grip on securitisation, 14 mai 2026.</text>
+  <text x="32" y="390" fill="#8b909b" font-size="9">La BCE précise que les chiffres ci-dessus excluent les titrisations traditionnelles.</text>
 </svg>
-<figcaption>Le transfert est réel sur le papier, mais le financement de l'acheteur le rend partiellement circulaire. Quand la banque prête au fonds qui l'assure, elle n'a pas supprimé le risque, elle l'a déguisé et déplacé d'un cran, vers un acteur plus opaque et plus endetté. L'allègement de capital, lui, est resté bien réel.</figcaption>
+<figcaption>La croissance est rapide, mais les montants doivent être lus correctement : la BCE mesure ici les portefeuilles de référence, pas la taille des tranches de risque effectivement transférées.</figcaption>
 </figure>
 
-La conséquence est double. D'abord, l'allègement de capital peut être en partie illusoire : la banque affiche moins de risque, mais le système bancaire dans son ensemble en porte toujours autant, voire davantage, puisqu'il a désormais un intermédiaire à effet de levier au milieu. Ensuite, le risque a changé de régulateur : parti d'un bilan bancaire surveillé, marqué et capitalisé, il a atterri chez un fonds moins régulé, dont le levier amplifie les pertes, et que nous rangeons dans l'[intermédiation financière non bancaire](/posts/shadow-banking-intermediation-non-bancaire/). C'est la même translation que nous avons documentée pour le crédit à la consommation, [de la carte à la rente](/posts/de-la-carte-a-la-rente-qui-detient-risque-consommateur/) : le risque ne disparaît pas, il migre vers le compartiment le moins visible.
+La BRI apporte un autre repère utile. Dans son échantillon de 44 banques émettrices à fin 2024, les SRT protégeaient en moyenne environ **5 % des prêts**. L'allègement estimé représentait environ **43 points de base de CET1** en moyenne, avec quelques cas au-dessus de 100 points de base.
 
-## Le nouveau carburant : la dette des data centers
+Le marché est donc devenu important sans être, pour l'instant, dominant dans le bilan bancaire agrégé. Les dix plus gros émetteurs représentaient 64 % du montant en circulation dans l'échantillon de la BRI, et 90 % des actifs protégés étaient des prêts de gros, principalement des crédits aux entreprises.
 
-Si ce marché déjà tendu inquiète soudain davantage, c'est à cause de ce qui s'y déverse. Les banques américaines ont prêté des sommes colossales pour financer la construction de centres de données destinés à l'intelligence artificielle, une dette dont nous avons décrit l'architecture dans notre enquête sur [la dette derrière l'IA](/posts/la-dette-derriere-l-ia-spv-obligations-credit-prive/). Cette exposition a enflé au point de devenir, selon une enquête de Bank of America, le [premier risque systémique de crédit cité par 48 % des gérants pour 2026](https://startupfortune.com/ai-data-center-debt-has-climbed-to-the-top-of-wall-streets-credit-risk-watchlist/). Que font les banques de ce paquet devenu trop lourd ? Elles le transfèrent. Morgan Stanley, Citi, JPMorgan et Goldman Sachs ont commencé à [refiler le risque de leurs prêts d'infrastructure IA au crédit privé, aux hedge funds et aux fonds de pension via des SRT](https://www.fortune.com/2025/12/04/morgan-stanley-significant-risk-transfer-loans-data-center-ai-infrastructure-exposure). Le responsable du partage de risque de crédit chez Man Group résume l'inquiétude d'une phrase : les montants en jeu sont « hors d'échelle avec tout ce que nous avons pu imaginer, jamais ».
+## La partie réellement intéressante commence chez l'investisseur
 
-Le montage devient alors doublement circulaire. Une banque prête à un développeur de data center ; elle transfère le risque de ce prêt à un fonds de crédit privé ; ce fonds est parfois le même qui finance, par ailleurs, la construction du data center ou l'entreprise d'IA qui le remplira. Le risque tourne à l'intérieur d'un cercle restreint d'acteurs qui portent, à travers des véhicules différents, les deux bouts de la même chaîne. Si le pari de l'IA déçoit, ce ne sont pas des contreparties indépendantes qui absorberont le choc, mais un petit nombre de fonds exposés partout à la fois.
+Le transfert est économiquement utile si l'investisseur qui prend la tranche est capable d'absorber les pertes.
 
-## Le dernier cercle : quand le risque devient liquide
+Les acheteurs sont principalement des acteurs non bancaires : fonds de crédit, gestionnaires d'actifs, hedge funds, fonds de pension, assureurs ou institutions publiques selon les juridictions. Les structures contemporaines sont souvent financées ou collatéralisées à l'avance, ce qui réduit fortement le risque que l'investisseur promette une protection qu'il ne pourrait ensuite pas honorer.
 
-La chaîne ne s'arrête pas au fonds de crédit privé. Elle a désormais un maillon supplémentaire, peut-être le plus vertigineux, car il ramène le risque jusqu'à l'épargnant ordinaire sous une forme qui en efface toute trace : l'ETF, ce fonds indiciel coté qui s'échange en Bourse comme une action. Pour comprendre le danger, il faut d'abord comprendre comment un ETF fabrique sa liquidité, car c'est exactement là que le piège se referme.
+En mai 2026, la BCE indiquait que les protections **non financées** fournies par des contreparties autres que les gouvernements et banques de développement ne représentaient que **11 % des tranches protégées en circulation**. C'est un élément de robustesse qu'une analyse sérieuse doit conserver.
 
-Un ETF ne garde pas ses actifs dans un coffre figé. Sa liquidité tient à un mécanisme discret, la création-rachat de parts. Des intermédiaires agréés, les participants autorisés, peuvent à tout moment fabriquer de nouvelles parts en apportant au fonds les titres sous-jacents, ou en détruire en récupérant ces titres. Ce va-et-vient arrime le prix de la part à la valeur réelle du portefeuille : si la part s'échange trop cher, on en crée pour faire retomber le prix ; trop bon marché, on en détruit pour le soutenir. Le système est ingénieux, mais il repose tout entier sur une condition : que les titres sous-jacents, eux, s'achètent et se vendent sans friction. Tant que le sous-jacent est liquide, la part l'est aussi.
+Mais un investisseur peut aussi financer son achat.
 
-Or c'est précisément ce qui fait défaut au crédit privé. Un prêt privé ne se vend pas en une journée, souvent pas en un mois ; il n'a pas de prix de marché continu, seulement une estimation, un sujet que nous avons creusé dans notre analyse d'[un actif à deux prix](/posts/credit-prive-un-actif-deux-prix/). Emballer de tels actifs dans un ETF revient à promettre une liquidité quotidienne sur des actifs qui n'en ont aucune. Le mécanisme de création-rachat se grippe dès que trop de porteurs veulent sortir en même temps : les participants autorisés ne peuvent pas liquider assez vite le sous-jacent, la part décroche de sa valeur théorique, et la porte de sortie, large en apparence, se révèle étroite. C'est un transfert de risque d'un genre nouveau, non plus de crédit mais de liquidité, et il est plus insidieux parce qu'il paraît indolore tant que les flux entrent. Les ETF obligataires ont, il est vrai, traversé le choc de mars 2020 sans se rompre, leur décote se résorbant ensuite ; mais ils détenaient des obligations cotées, pas des prêts privés dépourvus de prix.
+Une CLN peut servir de collatéral dans un repo. Le fonds apporte une partie du capital et emprunte le reste à une banque. La BRI rapporte que ces financements sont généralement assortis de décotes élevées, souvent **40 à 60 %**, avec appels de marge quotidiens et possibilités de recours à d'autres actifs du fonds.
 
-Ce n'est pas une hypothèse d'école. Le premier ETF de crédit privé de grande diffusion a été [lancé fin février 2025 par State Street avec Apollo](https://www.cnbc.com/2025/02/27/state-street-apollo-team-up-to-launch-first-of-its-kind-private-credit-etf.html). Pour tenir sa promesse de liquidité, il a été autorisé à détenir [entre 10 et 35 % d'actifs privés, bien au-delà de la limite habituelle de 15 % d'illiquide dans un ETF, grâce à un accord par lequel Apollo s'engage à racheter ces actifs, ce qui a aussitôt inquiété la SEC](https://www.wealthmanagement.com/etfs/state-street-apollo-s-private-credit-etf-raises-sec-concern). Le régulateur a posé la seule question qui compte : si un unique acteur, Apollo, fournit la liquidité en rachetant des actifs qu'il a lui-même originés, à quel prix le fera-t-il, et que se passe-t-il le jour où il cesse d'acheter ? La liquidité promise ne repose alors plus sur un marché profond, mais sur la bonne volonté d'une seule contrepartie, en situation de conflit d'intérêts.
+Autre précision essentielle : **les données disponibles n'autorisent pas à écrire que les banques financent généralement leurs propres SRT**.
+
+La BRI indique au contraire que la banque qui finance l'investisseur est en général différente de la banque qui a originé la transaction. C'est un système bancaire interconnecté, pas nécessairement une boucle fermée au sein du même établissement.
+
+La distinction change la nature du risque sans le faire disparaître.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 300" role="img" aria-label="L'illusion de liquidité d'un ETF de crédit privé : une part liquide posée sur un sous-jacent illiquide" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="720" height="300" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">L'illusion de liquidité</text>
-  <text x="32" y="59" fill="#8b909b" font-size="12">Une part d'ETF liquide, posée sur un crédit privé qui ne l'est pas.</text>
-  <rect x="110" y="86" width="500" height="48" fill="#5eead4"/>
-  <text x="360" y="115" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="middle">Part d'ETF : cotée en continu, paraît liquide</text>
-  <rect x="345" y="134" width="30" height="46" fill="#f5b13d"/>
-  <text x="392" y="161" fill="#f5b13d" font-size="11">liquidité = promesse d'un seul acteur</text>
-  <rect x="110" y="180" width="500" height="48" fill="#ff4d87"/>
-  <text x="360" y="209" fill="#0c0d10" font-size="12" font-weight="700" text-anchor="middle">Crédit privé (10 à 35 %) : illiquide, sans prix continu</text>
-  <text x="60" y="258" fill="#d6d9df" font-size="12">En calme, prix ≈ valeur. Dans la ruée, la porte se rétrécit et la part décote sous sa valeur.</text>
-  <text x="60" y="286" fill="#8b909b" font-size="10">Sources : SEC, CNBC, WealthManagement. Cas de l'ETF PRIV (State Street / Apollo, 2025). Schéma.</text>
+<svg viewBox="0 0 720 430" role="img" aria-label="Chaîne de transfert synthétique et cercle de risque potentiel : Banque A transfère une tranche à un fonds, Banque B finance le fonds avec la CLN en collatéral, créant un canal de retour du risque vers le secteur bancaire" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+  <rect width="720" height="430" fill="#0c0d10"/>
+  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le risque sort d'une banque. Sort-il du système bancaire ?</text>
+  <text x="32" y="60" fill="#8b909b" font-size="11">Le « cercle de risque » décrit par la BRI est un canal potentiel, pas une mesure de l'ensemble du marché.</text>
+
+  <rect x="34" y="102" width="174" height="94" rx="5" fill="#15171c" stroke="#5eead4"/>
+  <text x="50" y="128" fill="#5eead4" font-size="12" font-weight="700">BANQUE A</text>
+  <text x="50" y="148" fill="#d6d9df" font-size="10">conserve les prêts</text>
+  <text x="50" y="165" fill="#d6d9df" font-size="10">transfère une tranche</text>
+  <text x="50" y="182" fill="#d6d9df" font-size="10">du risque de crédit</text>
+
+  <rect x="272" y="102" width="176" height="94" rx="5" fill="#15171c" stroke="#f5b13d"/>
+  <text x="288" y="128" fill="#f5b13d" font-size="12" font-weight="700">FONDS / NBFI</text>
+  <text x="288" y="148" fill="#d6d9df" font-size="10">achète la protection</text>
+  <text x="288" y="165" fill="#d6d9df" font-size="10">et porte les pertes</text>
+  <text x="288" y="182" fill="#d6d9df" font-size="10">sur la tranche</text>
+
+  <rect x="512" y="102" width="174" height="94" rx="5" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="528" y="128" fill="#7aa2f7" font-size="12" font-weight="700">BANQUE B</text>
+  <text x="528" y="148" fill="#d6d9df" font-size="10">finance le fonds</text>
+  <text x="528" y="165" fill="#d6d9df" font-size="10">par repo / crédit</text>
+  <text x="528" y="182" fill="#d6d9df" font-size="10">CLN en collatéral</text>
+
+  <line x1="208" y1="140" x2="272" y2="140" stroke="#ff4d87" stroke-width="2"/>
+  <polygon points="272,140 262,134 262,146" fill="#ff4d87"/>
+  <text x="216" y="128" fill="#ff4d87" font-size="9">RISQUE</text>
+
+  <line x1="512" y1="168" x2="448" y2="168" stroke="#7aa2f7" stroke-width="2"/>
+  <polygon points="448,168 458,162 458,174" fill="#7aa2f7"/>
+  <text x="460" y="158" fill="#7aa2f7" font-size="9">FINANCEMENT</text>
+
+  <path d="M600 198 C600 278 500 306 360 306 C220 306 122 270 122 198" fill="none" stroke="#ff4d87" stroke-width="2" stroke-dasharray="6 5"/>
+  <polygon points="122,198 116,211 128,211" fill="#ff4d87"/>
+  <text x="248" y="290" fill="#ff4d87" font-size="11" font-weight="700">canal de retour potentiel vers le secteur bancaire</text>
+
+  <rect x="34" y="330" width="652" height="58" rx="4" fill="#15171c"/>
+  <text x="50" y="351" fill="#d6d9df" font-size="10">Mitigants observés : décotes repo souvent 40-60 %, appels de marge quotidiens,</text>
+  <text x="50" y="368" fill="#d6d9df" font-size="10">surcollatéralisation. La BRI juge le levier observé modeste en moyenne.</text>
+  <text x="50" y="384" fill="#8b909b" font-size="9">La banque de financement est généralement distincte de la banque qui origine le SRT.</text>
+
+  <text x="34" y="414" fill="#8b909b" font-size="9">SOURCE : BRI, The rise and risks of synthetic risk transfers, sections « Investor leverage » et « Interlinkages », 2026.</text>
 </svg>
-<figcaption>L'ETF promet une sortie immédiate sur un contenu qui ne se vend pas vite. Entre la part liquide et le crédit illiquide, un seul pont : l'engagement d'un acteur à racheter. Quand la ruée arrive, c'est ce pont qui cède en premier, et la liquidité promise s'évanouit au moment où l'on en a le plus besoin.</figcaption>
+<figcaption>Le point prudentiel n'est pas qu'une banque reprend mécaniquement le risque qu'elle vient de céder. Le risque est qu'une autre exposition bancaire apparaisse ailleurs dans la chaîne, notamment via le financement de l'investisseur.</figcaption>
 </figure>
 
-Voilà le point à retenir, et il porte bien au-delà de ce fonds précis. Dans ces enveloppes, la liquidité n'est pas une propriété des actifs, c'est une promesse faite par une contrepartie. Et une promesse ne vaut que tant que celui qui la fait a intérêt à la tenir. Or cet intérêt s'évapore exactement quand on en aurait besoin, au moment où tout le monde veut vendre. Le voyage du risque, que nous avions suivi jusqu'à la rente d'un retraité [de la carte à la rente](/posts/de-la-carte-a-la-rente-qui-detient-risque-consommateur/), s'achève désormais parfois dans un compte-titres de particulier, dans un instrument qui a l'apparence d'une action et la substance d'un prêt illiquide. L'épargnant croit détenir de la liquidité ; il détient en réalité le dernier maillon d'une chaîne qui a commencé par un prêt qu'une banque jugeait trop lourd à garder.
+## Ce que la BCE cherche encore à mesurer
 
-## L'autre lecture : un outil légitime, pas une bombe
+Le 24 mars 2026, Pedro Machado, membre du conseil de surveillance prudentielle de la BCE, a annoncé une **nouvelle enquête auprès d'un large ensemble de banques** sur le financement des investisseurs en SRT. Le périmètre inclut explicitement les financements accordés par des banques significatives à des investisseurs achetant des titrisations originées par d'autres banques.
 
-Il serait malhonnête de peindre le SRT en pur artifice, car l'instrument a des vertus réelles, et les régulateurs eux-mêmes ne l'ont pas interdit. Le premier argument en sa faveur est qu'il réalise un vrai partage de risque. Une banque très concentrée sur un secteur, l'immobilier commercial, l'IA, le crédit à effet de levier, peut, grâce au SRT, redistribuer cette concentration vers des investisseurs de long terme, assureurs et fonds de pension, qui cherchent précisément ce rendement et détiennent leurs positions jusqu'à l'échéance. Vu ainsi, le SRT rend le système plus résilient, pas moins, en dispersant un risque autrement logé dans quelques bilans.
+Deux mois plus tard, la BCE formulait le problème plus directement : les interconnexions entre banques et finance non bancaire se renforcent à mesure que les volumes augmentent, **sans être toujours complètement cartographiées**.
 
-Le deuxième argument est que ces opérations sont bilatérales, documentées et connues du superviseur, à la différence des dérivés opaques d'avant 2008. Le comité de Bâle a publié en février 2026 un [rapport détaillé sur ces marchés](https://www.jonesday.com/en/insights/2026/03/basel-committee-publishes-report-on-synthetic-risk-transfer-markets), signe que les autorités les suivent de près plutôt que de les découvrir après coup. Sa conclusion n'est pas l'interdiction, mais un durcissement de la surveillance, d'éventuelles limites à l'allègement de capital et une meilleure coordination entre superviseurs bancaires et non bancaires. Le troisième argument, défendu par les fonds acheteurs, est qu'interdire le levier sur ces opérations reviendrait à tarir un financement utile à l'économie, sans supprimer le risque sous-jacent. La tranche de première perte trouve des acheteurs sophistiqués qui savent ce qu'ils achètent, et ce marché a jusqu'ici absorbé ses pertes sans incident systémique.
+Elle ajoutait que les lacunes et problèmes de qualité des données empêchent encore une évaluation pleinement fiable des risques de contagion, notamment sur les expositions aux investisseurs, la composition de leur base et la performance des portefeuilles après transaction.
 
-## Le point où le cercle se referme
+C'est ici que se situe le vrai angle de risque.
 
-Ces contrepoints tiennent en temps calme. Ils disent tous la même chose : tant que les pertes restent dans l'épaisseur de la tranche vendue, tant que les fonds acheteurs peuvent payer, tant que le levier reste maîtrisé, le SRT est un outil de gestion prudente. Le problème est que ces trois conditions se dégradent ensemble, et précisément au mauvais moment. Un choc corrélé, sur la dette IA par exemple, ferait trois choses à la fois : il percerait les tranches de première perte et renverrait des pertes vers les banques ; il éprouverait la capacité des fonds à effet de levier à honorer leur protection ; et il pousserait les banques prêteuses à couper les lignes de levier de ces mêmes fonds, tarissant le marché au moment où il faudrait qu'il fonctionne. Les trois filets se déchireraient en même temps.
+Le marché n'est pas inconnu des superviseurs. Les transactions sont surveillées. Les mécanismes de protection sont documentés. Mais la vision **transversale**, banque par banque, fonds par fonds, juridiction par juridiction, reste incomplète.
 
-C'est pourquoi cette mécanique mérite d'être lue non comme une fraude, mais comme une optimisation à la couture entre le régulé et le non-régulé, là où le risque n'est pas supprimé mais réétiqueté. L'investisseur qui contemple le capital libéré d'une banque américaine ne devrait pas se demander « où le risque est-il parti », mais « qui le détient désormais, et est-ce la banque qui lui a prêté l'argent pour le détenir ». La réponse, de plus en plus, dessine un cercle. Et un cercle, en finance, a une propriété désagréable : il n'a pas de bout par lequel on puisse le tenir quand tout se met à tourner dans le mauvais sens. Pour juger la solidité réelle d'une banque, il faut désormais lire ce qu'elle a transféré autant que ce qu'elle détient, un exercice que notre guide sur [la solidité d'une banque](/guides/lire-la-solidite-d-une-banque/) n'épuise plus à lui seul. Le risque qui tourne en rond finit toujours par revenir à son point de départ.
+La BRI fait le même diagnostic. Elle parle de **« circles of risk »**, des situations dans lesquelles le risque transféré par une banque à un fonds peut revenir indirectement vers le secteur bancaire parce qu'une autre banque finance l'achat du fonds.
 
----
+Elle précise immédiatement que les éléments disponibles suggèrent une échelle encore modeste de ces boucles.
 
-### Sources
+C'est cette seconde phrase qui empêche de transformer un sujet sérieux en récit de crise artificiel.
 
-- [Bloomberg, « Banks Offload $1 Trillion Loan Risk to SRT Investors, IACPM Says », 4 juin 2026 (encours couvert > 905 Md€ / ~1 000 Md$, +26 % sur un an)](https://www.bloomberg.com/news/articles/2026-06-04/banks-offload-1-trillion-loan-risk-to-srt-investors-iacpm-says)
-- [Bloomberg, « Banks Love Significant Risk Transfers, and That Has Regulators Worried », 8 décembre 2025 (mise en garde du FSB sur les « cercles de risque »)](https://www.bloomberg.com/news/articles/2025-12-08/srts-what-are-significant-risk-transfers-and-why-are-regulators-worried)
-- [Risk.net, « SRT issuance hits €260bn as capital relief grows » (pool de référence record en 2024, allègement de capital de 43 points de base en moyenne)](https://www.risk.net/risk-quantum/7963229/srt-issuance-hits-%E2%82%AC260bn-as-capital-relief-grows)
-- [Philadelphia Fed, « Banking Trends: Synthetic Risk Transfers » (guidance de la Fed 2023 sur les notes indexées, mécanique et essor)](https://www.philadelphiafed.org/the-economy/banking-and-financial-markets/banking-trends-synthetic-risk-transfers)
-- [Comité de Bâle, rapport sur les marchés du transfert synthétique de risque, février 2026 (synthèse Jones Day : surveillance, limites possibles au capital relief)](https://www.jonesday.com/en/insights/2026/03/basel-committee-publishes-report-on-synthetic-risk-transfer-markets)
-- [FMI, « Recycling Risk: Synthetic Risk Transfers », document de travail 2025/200 (circularité et recyclage du risque)](https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025200-source-pdf.pdf)
-- [SUERF, « Synthetic, but how much risk transfer? » (part du risque réellement transférée, risque de queue conservé)](https://www.suerf.org/publications/suerf-policy-notes-and-briefs/synthetic-but-how-much-risk-transfer/)
-- [Fortune, « Morgan Stanley explores significant risk transfer for data center and AI infrastructure exposure », 4 décembre 2025](https://www.fortune.com/2025/12/04/morgan-stanley-significant-risk-transfer-loans-data-center-ai-infrastructure-exposure)
-- [Startup Fortune, « AI data center debt has climbed to the top of Wall Street's credit risk watchlist » (premier risque systémique cité par 48 % des gérants BofA)](https://startupfortune.com/ai-data-center-debt-has-climbed-to-the-top-of-wall-streets-credit-risk-watchlist/)
-- [ABN AMRO, « ABN AMRO announces significant risk transfer transaction with Blackstone », 11 décembre 2025 (protection de première perte sur 2 Md€ de prêts corporate)](https://www.globenewswire.com/de/news-release/2025/12/11/3203635/0/en/ABN-AMRO-announces-significant-risk-transfer-transaction-with-Blackstone.html)
-- [CNBC, « State Street, Apollo team up to launch first of its kind private credit ETF », 27 février 2025 (lancement de l'ETF PRIV)](https://www.cnbc.com/2025/02/27/state-street-apollo-team-up-to-launch-first-of-its-kind-private-credit-etf.html)
-- [WealthManagement, « State Street, Apollo's Private Credit ETF Raises SEC Concern » (10 à 35 % d'actifs privés, Apollo fournisseur unique de liquidité, inquiétudes de la SEC sur valorisation et liquidité)](https://www.wealthmanagement.com/etfs/state-street-apollo-s-private-credit-etf-raises-sec-concern)
+## Une étude de la BCE ajoute trois questions plus difficiles
+
+Un [Working Paper de la BCE publié en mars 2026](https://www.ecb.europa.eu/press/research-publications/working-papers/html/index.en.html), signé Alex Osberghaus et Glenn Schepens, utilise des données transactionnelles de la zone euro pour étudier l'usage des SRT.
+
+Les auteurs trouvent trois résultats qui méritent attention.
+
+Premièrement, les banques ont tendance à transférer les prêts qui coûtent beaucoup de capital relativement à leur risque économique estimé. C'est cohérent avec l'objectif d'optimisation des RWA.
+
+Deuxièmement, leur analyse trouve une baisse de l'intensité du suivi interne des emprunteurs après transfert synthétique du risque.
+
+Troisièmement, les banques sont plus susceptibles de vendre la protection à des investisseurs non bancaires avec lesquels elles entretiennent déjà une relation de crédit.
+
+Ce travail est particulièrement intéressant parce qu'il utilise des données microéconomiques que le public ne possède pas. Mais son statut doit être conservé : **c'est un Working Paper de recherche, pas une position de politique officielle de la BCE**. Ses résultats complètent le diagnostic prudentiel, ils ne permettent pas à eux seuls de conclure à une vulnérabilité systémique.
+
+La BCE elle-même souligne en mars que le levier observé chez ces investisseurs reste modeste en moyenne et que le risque de *round-tripping* à l'échelle du système paraît, pour le moment, contenu.
+
+## Le private credit élargit encore la carte
+
+Les SRT s'inscrivent dans un ensemble beaucoup plus vaste d'interconnexions entre banques et finance non bancaire.
+
+Dans son [Risk Assessment Report de juin 2026](https://www.eba.europa.eu/publications-and-media/publications/risk-assessment-report-june-2026), l'Autorité bancaire européenne estime à près de **150 milliards d'euros** les expositions des banques de l'UE et de l'EEE aux fonds de private credit et aux gestionnaires liés à cette activité en juin 2025. Ces expositions étaient réparties entre 79 banques dans 13 États membres et représentaient en moyenne 0,6 % de leurs actifs.
+
+Ce chiffre ne mesure **pas** le financement des SRT.
+
+Il inclut plusieurs formes d'exposition à l'écosystème du crédit privé et l'EBA précise elle-même qu'il s'agit d'une mesure indicative, contrainte par les seuils de reporting et les données disponibles.
+
+Sa valeur est ailleurs : il montre qu'un fonds qui achète une tranche SRT peut avoir plusieurs autres relations avec les banques. Lignes de crédit, financement collatéralisé, prêts aux mêmes entreprises, financement de véhicules ou de gestionnaires peuvent créer plusieurs chemins de transmission autour d'un même choc.
+
+Le risque systémique dépend donc moins de l'étiquette juridique d'une transaction que de la **somme des dépendances** entre les acteurs.
+
+## Le scénario de stress crédible
+
+Le scénario utile n'est pas « les SRT provoquent la prochaine crise ».
+
+Les sources primaires disponibles au 18 août 2026 ne permettent pas de soutenir cette thèse.
+
+Un scénario plus rigoureux ressemble à ceci :
+
+1. une récession ou un choc sectoriel augmente les défauts dans plusieurs portefeuilles de référence ;
+2. les tranches protégées commencent à absorber les pertes prévues par les contrats ;
+3. les CLN utilisées comme collatéral peuvent perdre de la valeur ou devenir plus difficiles à évaluer ;
+4. les banques qui financent certains investisseurs peuvent demander davantage de collatéral ou réduire leurs lignes ;
+5. l'appétit des investisseurs pour de nouveaux SRT peut se contracter ;
+6. les banques qui avaient intégré le renouvellement de ces protections dans leur trajectoire de capital doivent alors trouver une autre solution : conserver davantage de RWA, lever du capital, céder des actifs ou ralentir certains nouveaux crédits.
+
+La BRI décrit alors le SRT moins comme le point de départ d'une crise que comme un **amplificateur potentiel** : un mécanisme capable, sous stress, de renforcer simultanément le resserrement du crédit bancaire et les boucles banques-NBFI.
+
+La BCE surveille trois catégories très concrètes : le **rollover risk**, le risque de contrepartie pour les protections non financées et le **flowback risk**, lorsque les exigences de capital sur les tranches senior conservées remontent.
+
+Son constat de mai 2026 reste cependant rassurant : elle ne détecte **aucun mur matériel de maturités**, aucune concentration aiguë de contreparties non financées et aucune vulnérabilité immédiate de *flowback* au niveau du système.
+
+C'est précisément pour cela que le sujet mérite d'être suivi maintenant, avant qu'un stress ne rende la cartographie beaucoup plus coûteuse.
+
+## L'Europe veut en même temps développer la titrisation
+
+Le paradoxe n'est qu'apparent.
+
+La Commission européenne souhaite relancer un marché de la titrisation qu'elle considère comme un outil de partage du risque et de financement de l'économie. Son [paquet de réforme présenté en juin 2025](https://finance.ec.europa.eu/financial-markets/financial-markets-policy/securities-markets/securitisation_en) vise notamment à simplifier certaines obligations et à rendre le traitement prudentiel plus sensible au risque. Le [Conseil a arrêté sa position en décembre 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/savings-and-investment-union-council-agrees-position-on-revitalising-the-eu-s-securitisation-market/).
+
+La BCE soutient le principe d'un marché de la titrisation robuste, tout en demandant que la simplification ne réduise ni la transparence ni la qualité du transfert de risque.
+
+Depuis janvier 2026, elle applique même une procédure accélérée à certaines opérations SRT simples et standardisées. Au cours des quatre premiers mois de 2026, seules deux opérations avaient utilisé cette voie, toutes deux évaluées en huit jours ouvrés.
+
+L'objectif européen consiste donc à faire grossir un outil que le superviseur juge utile **tout en améliorant la visibilité sur les chaînes qu'il crée**.
+
+Le défi n'est pas d'interdire le transfert du risque. Il est de vérifier qu'un allègement microprudentiel pour une banque ne se transforme pas, par accumulation d'expositions croisées, en angle mort macroprudentiel.
+
+## Ce que nous savons, et ce que nous ne savons pas
+
+À ce stade, plusieurs éléments sont suffisamment documentés pour être affirmés.
+
+Le marché grossit rapidement, surtout en Europe. Les prêts restent au bilan des banques. Une tranche du risque est réellement transférée et, dans la majorité des structures contemporaines, la protection est préfinancée ou collatéralisée. Le capital relief est réel lorsqu'il est reconnu par le superviseur. Des fonds utilisent du financement bancaire pour certaines positions. Les banques et les acheteurs de risque sont interconnectés.
+
+Plusieurs affirmations seraient en revanche excessives.
+
+Les données publiques ne montrent pas que les SRT constituent aujourd'hui une crise en préparation. Elles ne montrent pas non plus que les banques financent généralement leurs propres transferts de risque. Elles ne permettent pas de mesurer précisément la part du risque transféré qui revient indirectement au secteur bancaire. Enfin, les centaines de milliards de portefeuilles « protégés » ne correspondent ni aux pertes attendues ni au montant de capital effectivement placé par les investisseurs.
+
+Cette frontière entre **ce qui est mesuré** et **ce qui reste à cartographier** est probablement le signal le plus important.
+
+Le risque n'a rien de mystérieux. Il change de propriétaire, de forme et parfois de source de financement.
+
+La question est de savoir si, lorsqu'un choc arrive, celui qui s'est engagé à l'absorber possède encore les ressources pour le faire sans solliciter le même système bancaire qui avait voulu s'en délester.
+
+### Méthode et limites
+
+Données arrêtées au **18 août 2026**.
+
+Les montants BCE, BRI et Comité de Bâle ne sont pas additionnés : leurs périmètres, dates et méthodologies diffèrent. Les chiffres de « portefeuilles protégés » ou « titrisés » désignent la valeur des actifs de référence, pas la taille des tranches de risque transférées.
+
+L'article privilégie les publications des superviseurs et organismes publics. Les travaux de recherche sont identifiés comme tels. Les données secondaires ou payantes utilisées dans la version antérieure de cet article n'ont pas été retenues lorsqu'une source primaire permettait d'établir le fait.
+
+### Sources primaires
+
+- [Banque des règlements internationaux, *The rise and risks of synthetic risk transfers*, 16 mars 2026](https://www.bis.org/publ/qtrpdf/r_qt2603c.htm)
+- [Comité de Bâle sur le contrôle bancaire, *Synthetic risk transfers*, 17 février 2026](https://www.bis.org/bcbs/publ/d607.htm)
+- [BCE, Pedro Machado, *Changing the tune but not the tone: synthetic risk transfers in Europe*, 24 mars 2026](https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260324~2b54f795e3.en.html)
+- [BCE, Pedro Machado, *Strengthening the supervisory grip on securitisation: reading the data, anticipating the risks*, 14 mai 2026](https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260514~4917539c35.en.html)
+- [BCE, Working Paper Series No. 3210, *Synthetic, but how much risk transfer?*, 27 mars 2026](https://www.ecb.europa.eu/press/research-publications/working-papers/html/index.en.html)
+- [Autorité bancaire européenne, *Risk Assessment Report*, juin 2026](https://www.eba.europa.eu/publications-and-media/publications/risk-assessment-report-june-2026)
+- [Commission européenne, dossier « Securitisation »](https://finance.ec.europa.eu/financial-markets/financial-markets-policy/securities-markets/securitisation_en)
+- [Conseil de l'Union européenne, position sur la réforme du marché de la titrisation, 19 décembre 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/savings-and-investment-union-council-agrees-position-on-revitalising-the-eu-s-securitisation-market/)
+
+Pour replacer le sujet dans la migration plus générale du risque de crédit vers les acteurs non bancaires : [La migration du risque de crédit : hors des banques, hors du regard](/posts/migration-risque-credit-hors-du-regard-reglementaire/).
