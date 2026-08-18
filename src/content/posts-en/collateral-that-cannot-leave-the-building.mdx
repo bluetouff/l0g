@@ -1,0 +1,264 @@
+---
+title: "The collateral that cannot leave the building"
+description: "A GPU-backed loan earned an investment-grade rating in March 2026. The security package shows the rating prices the customer, not the chip."
+pubDate: 2026-08-18T21:30:00+02:00
+updatedDate: 2026-08-18T21:30:00+02:00
+tags: ["GPU", "data centers", "private credit", "collateral", "artificial intelligence", "securitisation", "systemic risk"]
+draft: false
+sourceArticle: "gpu-collateral-ce-que-le-preteur-recupere"
+sourceUpdatedDate: 2026-08-18
+---
+
+On 31 March 2026, CoreWeave closed an $8.5 billion facility rated A3 by Moody's and A (low) by DBRS. The company presented it as the first GPU-backed financing to reach investment grade. Six weeks later, on 18 May, it closed a $3.1 billion facility rated Ba2 and BB+. On 10 August, a third one, $2.6 billion, also Ba2 and BB+.
+
+Same issuer, same technology, same claimed asset class. Five rating notches apart, and 325 basis points of extra margin between the first and the third.
+
+That gap is not visible in the silicon. It is visible in the security package, and in the identity of whoever pays the monthly bill.
+
+## Five lines to keep
+
+- The pledge on the A3 facility covers three inseparable things: the equipment, the customer contract and the data centre lease.
+- The advance reaches 90% of cost during installation, on an asset whose resale value nobody agrees on.
+- The 10 August facility runs about five years, backed by customer contracts averaging around three years.
+- A lender enforcing its security does not recover portable cards. It recovers a bundle worth something only while plugged in.
+- The Bank of England wrote in July 2026 that chips with short and uncertain lifecycles funded by long debt create a maturity mismatch.
+
+## Three objects in a single pledge
+
+The DDTL 4.0 facility presentation published by CoreWeave describes the perimeter precisely. The lender obtains a first-priority security interest in, first, all tangible and intangible assets of the borrower, including cloud infrastructure equipment, collateral accounts and the equity interests of the borrower; second, the underlying customer contract for cloud services; third, the corresponding data centre leases.
+
+The closing release uses a broader formula still: the facility is [secured by substantially all assets of CoreWeave Compute Acquisition Co. VIII, LLC](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000129/ex991.htm), a dedicated vehicle.
+
+These three elements are not cumulative guarantees the lender could exercise separately. They form a single economic asset, and the contractual drafting acknowledges it.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 700" width="100%" role="img" aria-labelledby="en-gpu-pledge-title en-gpu-pledge-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="en-gpu-pledge-title">Composition of the security package in a GPU-backed facility</title>
+<desc id="en-gpu-pledge-desc">The first-priority security interest covers the equipment, the customer contract and the data centre lease at once. None of the three keeps its value in isolation.</desc>
+<rect x="1" y="1" width="718" height="698" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">ONE PLEDGE, THREE INSEPARABLE OBJECTS</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">DDTL 4.0 facility, $8.5bn, closed 31 March 2026</text>
+
+<rect x="32" y="92" width="656" height="118" rx="12" fill="#121419" stroke="#5eead4"/>
+<text x="54" y="120" fill="#5eead4" font-size="12" font-weight="700">1. THE EQUIPMENT</text>
+<text x="54" y="149" fill="#f5f6f8" font-size="17" font-weight="700">Tangible and intangible assets of the borrower</text>
+<text x="54" y="173" fill="#d6d9df" font-size="13">Cloud infrastructure, collateral accounts, equity of the vehicle.</text>
+<text x="54" y="195" fill="#8b909b" font-size="12">Portable in theory. Worthless outside a powered site.</text>
+
+<rect x="32" y="226" width="656" height="118" rx="12" fill="#121419" stroke="#f5b13d"/>
+<text x="54" y="254" fill="#f5b13d" font-size="12" font-weight="700">2. THE CUSTOMER CONTRACT</text>
+<text x="54" y="283" fill="#f5f6f8" font-size="17" font-weight="700">The underlying cloud services contract</text>
+<text x="54" y="307" fill="#d6d9df" font-size="13">Take-or-pay. This is what produces the repayment cash flow.</text>
+<text x="54" y="329" fill="#8b909b" font-size="12">Not portable. Its value tracks the payer's creditworthiness.</text>
+
+<rect x="32" y="360" width="656" height="118" rx="12" fill="#121419" stroke="#7aa2f7"/>
+<text x="54" y="388" fill="#7aa2f7" font-size="12" font-weight="700">3. THE LEASE</text>
+<text x="54" y="417" fill="#f5f6f8" font-size="17" font-weight="700">The corresponding data centre leases</text>
+<text x="54" y="441" fill="#d6d9df" font-size="13">The hall, the power, the cooling, the interconnect.</text>
+<text x="54" y="463" fill="#8b909b" font-size="12">Immovable by nature. Owned by a third party in colocation.</text>
+
+<rect x="32" y="500" width="656" height="76" rx="12" fill="#0f1822" stroke="#3a4049"/>
+<text x="54" y="528" fill="#8b909b" font-size="12" font-weight="700">ADVANCE TERMS</text>
+<text x="54" y="556" fill="#f5f6f8" font-size="15">90% loan-to-cost during installation, then a 1.2x debt service coverage ratio.</text>
+
+<rect x="32" y="596" width="656" height="76" rx="12" fill="#1a1015" stroke="#ff4d87"/>
+<text x="54" y="624" fill="#ff8fb0" font-size="12" font-weight="700">IMPLICATION</text>
+<text x="54" y="652" fill="#f5f6f8" font-size="15">Seizing the chip without the lease and the contract seizes an unusable object.</text>
+</svg>
+<figcaption>Source: CoreWeave, DDTL 4.0 facility presentation, March 2026, and closing release of 31 March 2026 filed with the SEC.</figcaption>
+</figure>
+
+The starting point is a physical fact often lost from view. An accelerator produces nothing on its own. It needs sized power, cooling, a very high bandwidth interconnect to the other cards in the same cluster, and an operator running the whole thing. The building side of this was covered in the investigation into [how a data centre recycles capital](/en/analysis/nvidia-from-gpu-to-bond-data-center/). Seen from the loan agreement, the same dependency changes nature: it becomes a property of the security.
+
+In the colocation model, the developer supplies the shell and the tenant installs its own servers. The card therefore belongs to the borrower, but sits in a building it does not own, connected to power it does not control. Quinn Emanuel describes this model in [its February 2026 alert on litigation risks in AI data centre financing](https://www.quinnemanuel.com/media/4dzkfccz/client-alert-ai-data-center-financing-and-litigation-risks.pdf), noting that converting a purpose-built AI facility to another use is expensive and complex.
+
+## The right to seize, and the difficulty of using it
+
+On paper, enforcement is ordinary. Sections 9-609 and 9-610 of the US Uniform Commercial Code let a secured party repossess the asset and dispose of it after default. Section 9-626 in turn frames the borrower's remedies where the sale was not conducted in a commercially reasonable manner.
+
+Quinn Emanuel expects that last point to become the battlefield. The authors describe a predictable sequence: margin calls, demands for additional collateral, then borrower challenges to the lender's valuation, to any implied waiver of the covenant breach, and to the reasonableness of the disposition.
+
+They go further on liquidation value itself. If compute demand contracts, purpose-built AI facilities become, in their words, stranded assets with limited alternative use and depressed liquidation value. The comparative point matters: a warehouse re-lets, while a white room dense with power and shaped around a cluster re-lets only to another firm in the same trade, at the precise moment that trade is in trouble.
+
+The firm also describes the transmission mechanism linking this collateral to the rest of the system: if GPU collateral loses value, the neocloud tenant cannot service its debt, and that failure in turn undermines the cash flows backing data centre securitisations. The first link in that chain is a private loan agreement, the last a security sitting in funds. The full path was documented in [the investigation into data centre debt reaching money market funds](/en/analysis/from-data-center-to-money-market-fund-who-bears-the-risk/), and the legal characterisation of those securities in [the one on the ABS boundary](/en/analysis/the-abs-that-isn-t-one-new-data-center-boundary/).
+
+## The rating tracks the payer, not the pledge
+
+Three facilities from the same issuer, closed within four and a half months, test the hypothesis directly.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 620" width="100%" role="img" aria-labelledby="en-gpu-three-title en-gpu-three-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="en-gpu-three-title">Comparison of three CoreWeave compute-backed facilities in 2026</title>
+<desc id="en-gpu-three-desc">The March 2026 facility is rated A3 at 225 basis points, those of May and August Ba2 at 450 then 550 basis points, on hardware of the same nature.</desc>
+<rect x="1" y="1" width="718" height="618" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">SAME ISSUER, SAME HARDWARE, THREE PRICES</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">CoreWeave facilities backed by compute infrastructure, 2026</text>
+
+<rect x="32" y="90" width="212" height="330" rx="12" fill="#121419" stroke="#5eead4"/>
+<text x="50" y="118" fill="#5eead4" font-size="12" font-weight="700">DDTL 4.0</text>
+<text x="50" y="140" fill="#8b909b" font-size="11">31 March 2026</text>
+<text x="50" y="172" fill="#f5f6f8" font-size="26" font-weight="700">$8.5bn</text>
+<line x1="50" y1="190" x2="226" y2="190" stroke="#2b3038"/>
+<text x="50" y="214" fill="#8b909b" font-size="11">RATING</text>
+<text x="50" y="240" fill="#5eead4" font-size="22" font-weight="700">A3 / A (low)</text>
+<text x="50" y="268" fill="#8b909b" font-size="11">MARGIN</text>
+<text x="50" y="292" fill="#f5f6f8" font-size="20" font-weight="700">SOFR + 225 bp</text>
+<text x="50" y="318" fill="#8b909b" font-size="11">MATURITY</text>
+<text x="50" y="340" fill="#d6d9df" font-size="14">March 2032, about 6 years</text>
+<text x="50" y="372" fill="#8b909b" font-size="11">COUNTERPARTY</text>
+<text x="50" y="394" fill="#d6d9df" font-size="13">One contract with a</text>
+<text x="50" y="412" fill="#d6d9df" font-size="13">leading AI enterprise</text>
+
+<rect x="254" y="90" width="212" height="330" rx="12" fill="#121419" stroke="#f5b13d"/>
+<text x="272" y="118" fill="#f5b13d" font-size="12" font-weight="700">DDTL 5.0</text>
+<text x="272" y="140" fill="#8b909b" font-size="11">18 May 2026</text>
+<text x="272" y="172" fill="#f5f6f8" font-size="26" font-weight="700">$3.1bn</text>
+<line x1="272" y1="190" x2="448" y2="190" stroke="#2b3038"/>
+<text x="272" y="214" fill="#8b909b" font-size="11">RATING</text>
+<text x="272" y="240" fill="#f5b13d" font-size="22" font-weight="700">Ba2 / BB+</text>
+<text x="272" y="268" fill="#8b909b" font-size="11">MARGIN</text>
+<text x="272" y="292" fill="#f5f6f8" font-size="20" font-weight="700">SOFR + 450 bp</text>
+<text x="272" y="318" fill="#8b909b" font-size="11">MATURITY</text>
+<text x="272" y="340" fill="#d6d9df" font-size="14">about 5.5 years</text>
+<text x="272" y="372" fill="#8b909b" font-size="11">COUNTERPARTY</text>
+<text x="272" y="394" fill="#d6d9df" font-size="13">Two customer contracts,</text>
+<text x="272" y="412" fill="#d6d9df" font-size="13">not named</text>
+
+<rect x="476" y="90" width="212" height="330" rx="12" fill="#121419" stroke="#ff4d87"/>
+<text x="494" y="118" fill="#ff8fb0" font-size="12" font-weight="700">DDTL 5.5</text>
+<text x="494" y="140" fill="#8b909b" font-size="11">10 August 2026</text>
+<text x="494" y="172" fill="#f5f6f8" font-size="26" font-weight="700">$2.6bn</text>
+<line x1="494" y1="190" x2="670" y2="190" stroke="#2b3038"/>
+<text x="494" y="214" fill="#8b909b" font-size="11">RATING</text>
+<text x="494" y="240" fill="#ff8fb0" font-size="22" font-weight="700">Ba2 / BB+</text>
+<text x="494" y="268" fill="#8b909b" font-size="11">MARGIN</text>
+<text x="494" y="292" fill="#f5f6f8" font-size="20" font-weight="700">SOFR + 550 bp</text>
+<text x="494" y="318" fill="#8b909b" font-size="11">MATURITY</text>
+<text x="494" y="340" fill="#d6d9df" font-size="14">about 5 years</text>
+<text x="494" y="372" fill="#8b909b" font-size="11">COUNTERPARTY</text>
+<text x="494" y="394" fill="#d6d9df" font-size="13">Contracts averaging</text>
+<text x="494" y="412" fill="#d6d9df" font-size="13">about three years</text>
+
+<rect x="32" y="444" width="656" height="146" rx="12" fill="#0f1822" stroke="#3a4049"/>
+<text x="54" y="472" fill="#8b909b" font-size="12" font-weight="700">READING</text>
+<text x="54" y="500" fill="#f5f6f8" font-size="15">325 basis points and five notches separate the first facility from the third.</text>
+<text x="54" y="524" fill="#f5f6f8" font-size="15">The pledged hardware is of the same nature in all three cases.</text>
+<text x="54" y="552" fill="#5eead4" font-size="15" font-weight="700">What changes is the identity and commitment length of the payer.</text>
+<text x="54" y="576" fill="#8b909b" font-size="12">Perimeters are not strictly comparable: vehicles, customers and structures differ.</text>
+</svg>
+<figcaption>Sources: CoreWeave closing releases of 31 March, 18 May and 10 August 2026, and the corresponding 8-K filings with the SEC. l0g comparison.</figcaption>
+</figure>
+
+The gap calls for a caveat. These three facilities are not three successive issues of one instrument: the vehicles differ, the customers differ, the guarantee structure differs in detail. A hurried reader would see a collapse of confidence in four months, and that would be a methodological error.
+
+The cautious conclusion is more interesting than the spectacular one. On comparable hardware, the rating and the margin follow the quality and the length of the customer contract. The investment-grade facility is the one whose customer contract is strongest. The two speculative-grade facilities are those whose counterparties are unnamed, or whose contracts are shorter. The hardware pledge itself does not vary in the same proportion.
+
+That reverses how the phrase "GPU-backed financing" is used. What earns an A3 is a payment promise from a high-quality customer, secured incidentally by hardware, not a stock of cards. The general approach to assessing this kind of debt is set out in the guide on [reading a credit rating](/en/guides/read-credit-ratings/).
+
+## The gap between the loan and the contract that repays it
+
+The 10 August 2026 release contains the single most direct data point in the file. The facility runs about five years. The customer contracts backing it average about three.
+
+Two years of debt are therefore not covered by the contractual cash flow identified at signing. That balance rests on an assumption: that the infrastructure will be renewed with the same customer, re-let to another, or resold at a sufficient value.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 420" width="100%" role="img" aria-labelledby="en-gpu-gap-title en-gpu-gap-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="en-gpu-gap-title">Tenor gap between the five-year facility and three-year customer contracts</title>
+<desc id="en-gpu-gap-desc">The 10 August 2026 facility runs about five years while the customer contracts backing it average about three, leaving two years covered by a residual value assumption.</desc>
+<rect x="1" y="1" width="718" height="418" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">TWO YEARS WITH NO IDENTIFIED CONTRACT</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">DDTL 5.5 facility, $2.6bn, closed 10 August 2026</text>
+
+<text x="32" y="112" fill="#8b909b" font-size="12" font-weight="700">DEBT TENOR</text>
+<rect x="32" y="124" width="600" height="34" rx="6" fill="#7aa2f7"/>
+<text x="52" y="147" fill="#0c0d10" font-size="15" font-weight="700">about 5 years</text>
+
+<text x="32" y="196" fill="#8b909b" font-size="12" font-weight="700">AVERAGE CUSTOMER CONTRACT LENGTH</text>
+<rect x="32" y="208" width="360" height="34" rx="6" fill="#5eead4"/>
+<text x="52" y="231" fill="#0c0d10" font-size="15" font-weight="700">about 3 years</text>
+<rect x="392" y="208" width="240" height="34" rx="6" fill="#1a1015" stroke="#ff4d87" stroke-dasharray="5 4"/>
+<text x="412" y="231" fill="#ff8fb0" font-size="15" font-weight="700">2 years to cover</text>
+
+<line x1="392" y1="118" x2="392" y2="256" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 4"/>
+
+<rect x="32" y="284" width="600" height="108" rx="12" fill="#0f1822" stroke="#3a4049"/>
+<text x="54" y="312" fill="#8b909b" font-size="12" font-weight="700">WHAT COVERS THE LAST TWO YEARS</text>
+<text x="54" y="340" fill="#f5f6f8" font-size="14">A renewal, a re-let to another customer, or a resale of the hardware.</text>
+<text x="54" y="364" fill="#ff8fb0" font-size="14" font-weight="700">None of the three is contractually secured at signing.</text>
+</svg>
+<figcaption>Source: CoreWeave, closing release for the DDTL 5.5 facility, 10 August 2026 (SEC filing). l0g representation of the disclosed tenor gap.</figcaption>
+</figure>
+
+There is nothing abnormal about that gap in itself. Asset finance almost always rests on a terminal value. Auto leasing, aviation and commercial real estate all work this way. The difference lies in the quality of the information available about that terminal value.
+
+For an aircraft or an office building there are long series, comparable transactions and independent appraisers whose profession is regulated. For a compute accelerator two generations old there are estimates that diverge by a factor of three.
+
+## Nobody agrees on what the chip is worth
+
+Quinn Emanuel sums up the state of knowledge in one line: nobody agrees on what GPUs are actually worth. Useful lives adopted by companies sit around six years, while engineers cited by the firm estimate three to four, and some analysts two to three.
+
+The letter sent on 22 January 2026 to the Treasury Secretary by [Senator Elizabeth Warren and three colleagues](https://www.banking.senate.gov/imo/media/doc/20260122_final_letter_to_secretary_bessent_re_ai_debtpdf.pdf) uses the same upper bound, six years, while saying it suspects it is too generous. The product cadence supports them: Nvidia and AMD moved from a two-year release cycle to an annual one, and that shortening brings forward the date at which a generation stops being the reference.
+
+Observed prices complicate the picture rather than settling it, and the divergence between sources is itself a finding.
+
+Quinn Emanuel reports a 70 to 90% decline in H100 rental rates since 2023. Series published by Silicon Data tell a more nuanced story: on the hyperscaler segment, the rate moves from a peak of $9.39 per GPU-hour in December 2024 to a range of $6.20 to $6.64 in late 2025, roughly a 30% decline; on marketplaces, from $2.50 to $3.19 in mid-2024 to $1.92 to $2.00 in late 2025; on the neocloud segment, the rate holds between $3.01 and $3.40 in late 2025, above its 2024 level.
+
+Part of the gap between these two readings is a comparison artefact. Setting a marketplace price against the peak of a hyperscaler rate produces a dramatic fall that mixes two distinct segments. Within a segment, the decline is closer to 30%, and the neocloud segment holds up.
+
+That nuance is less reassuring than it looks. It means the hardware's value depends on the segment it is operated in, hence on the operator, hence once again on the contract. A batch of cards sold after a default does not land on the neocloud segment at $3.20 an hour: it lands where prices are lowest, at the moment seized supply arrives on the market.
+
+The counterargument deserves stating, because it is solid. Older generations keep producing revenue well beyond the darkest scenarios, and the resilience of neocloud pricing shows it. A chip outdated for frontier training remains usable for inference, fine-tuning or academic workloads. The thesis of a zero residual value at three years is not supported by prices observed in 2026.
+
+## The scale reached, and what the authorities are writing
+
+CoreWeave carried roughly $35.1 billion of debt at 30 June 2026, against $2,575 million of quarterly revenue, a $626 million net loss and $6,422 million of capital expenditure in the second quarter alone. Its revenue backlog stood at about $104 billion. On 10 August the company said it had raised more than $30 billion of debt and equity year to date.
+
+It is not alone. Quinn Emanuel cites transactions by Fluidstack for $10 billion, Lambda for $500 million and Crusoe Energy.
+
+The Bank of England devoted several pages to the subject in its [Financial Stability Report of 7 July 2026](https://www.bankofengland.co.uk/financial-stability-report/2026/july-2026). The Financial Policy Committee notes that five hyperscalers represented 3% of outstanding US investment-grade debt at end-2025 but more than 15% of year-to-date issuance by May 2026, and that AI-linked companies accounted for 41% of non-refinance high-yield issuance while making up 1% of the index. It cites a JP Morgan estimate of $2 trillion of funding needed for AI chips over five years, and an OECD figure showing private credit's share of AI investment financing rising from 9% in 2024 to 34% in 2025.
+
+The formulation that bears directly on this subject is the following: chips have short and uncertain lifecycles, which may make it harder to attract enough capital. The Committee also writes that it is particularly concerned that a number of these vulnerabilities could crystallise simultaneously.
+
+The January 2026 Senate letter puts the expected private credit share of the sector's funding at $800 billion over two years, and notes that Morgan Stanley was considering a risk transfer on a portfolio of data centre loans, a mechanism described in [the investigation into synthetic risk transfer](/en/analysis/the-risk-that-goes-in-circles/). Reading this type of exposure is covered in the guide on [private credit risk](/en/guides/read-private-credit-risk/).
+
+## Checkpoints
+
+Four observable items allow this file to be tracked without relying on press releases.
+
+The first is the launch margin on the next facilities, read against the rating obtained and the average length of the contracts backing them. The triptych of margin, rating and contract length says more than the amount raised. The method is set out in the guide on [credit spreads](/en/guides/read-credit-spreads-oas/).
+
+The second is contract length relative to debt maturity. A convergence of the two would signal new discipline; a widening gap would signal the opposite.
+
+The third is accounting: any downward revision of a useful life, at an operator or a hyperscaler, acts directly on the residual value carrying the back end of these loans.
+
+The fourth is judicial. The first enforcement dispute over this collateral will set the practical case law: what a court treats as a commercially reasonable sale of accelerator cards, and what becomes of a pledge whose exercise requires taking over a lease held by a third party.
+
+The underlying question is not whether a GPU is worth zero in three years. It will not be worth zero. It is what a creditor can extract from it at the precise moment it needs to, which is when its borrower has defaulted, when compute demand is contracting and when several comparable batches reach the market at once. At that moment, the value of the pledge and the solvency of the debtor stop being two independent variables.
+
+## Sources
+
+- [CoreWeave, closing release for the $8.5 billion facility, 31 March 2026 (SEC filing)](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000129/ex991.htm)
+- [CoreWeave, DDTL 4.0 facility presentation, March 2026](https://s205.q4cdn.com/133937190/files/doc_presentations/2026/Mar/2026-03-DDTL-4-Overview.pdf)
+- [CoreWeave, closing release for the $3.1 billion facility, 18 May 2026](https://investors.coreweave.com/news/news-details/2026/CoreWeave-Closes-3-1-Billion-Loan-Facility-Expanding-Access-to-Public-Markets-for-GPU-Backed-Financing/default.aspx)
+- [CoreWeave, closing release for the $2.6 billion DDTL 5.5 facility, 10 August 2026 (SEC filing)](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex991pr.htm)
+- [CoreWeave, second quarter 2026 results (SEC filing)](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm)
+- [Quinn Emanuel Urquhart & Sullivan, Emerging Litigation Risks in Financing the AI Data Centers Boom, February 2026](https://www.quinnemanuel.com/media/4dzkfccz/client-alert-ai-data-center-financing-and-litigation-risks.pdf)
+- [Bank of England, Financial Stability Report, 7 July 2026](https://www.bankofengland.co.uk/financial-stability-report/2026/july-2026)
+- [Bank of England, Financial Stability Report July 2026 (PDF)](https://www.bankofengland.co.uk/-/media/boe/files/financial-stability-report/2026/financial-stability-report-july-2026.pdf)
+- [US Senate, letter from Senator Warren and three colleagues to the Treasury Secretary on AI-related debt, 22 January 2026](https://www.banking.senate.gov/imo/media/doc/20260122_final_letter_to_secretary_bessent_re_ai_debtpdf.pdf)
+- [Silicon Data, H100 rental price history](https://www.silicondata.com/blog/h100-rental-price-over-time)
+- [Uniform Commercial Code, Article 9, sections 9-609, 9-610 and 9-626](https://www.law.cornell.edu/ucc/9)
+
+## Limits
+
+Facility characteristics come from the borrower's releases and the filings that reproduce them. The full credit agreements are not public: the exact definition of the collateral perimeter, covenant thresholds, collateral valuation mechanics and the landlord's rights cannot be verified line by line.
+
+The comparison across the three facilities covers transactions whose vehicles, customers and structures differ. It illuminates a pricing trend; it is not a homogeneous series.
+
+The identity of the customer on the A3-rated facility is not publicly disclosed. The assessment of its credit quality rests on the ratings assigned by the agencies, not on direct examination of the counterparty.
+
+The rental price series come from a market data vendor whose methodology rests on an internal history anchored to published indices. They are not an official source and are cited here because they partly contradict another source in the file, not because they are authoritative.
+
+The useful lives cited reflect orders of magnitude reported by a law firm and a parliamentary letter, not an exhaustive survey of each operator's accounting policy.
+
+Finally, this article describes a risk structure, not a forecast. No default on this type of facility is recorded as at the date of publication, and the main issuer's backlog is growing.
