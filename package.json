@@ -27,7 +27,7 @@
     "test:digital-euro-tool": "node --experimental-strip-types --test scripts/digital-euro-cost-model.test.mjs",
     "test:security": "node --experimental-strip-types --test scripts/html-utils.test.mjs && node --experimental-strip-types scripts/audit-security.mjs",
     "test:secrets": "node scripts/audit-secrets.mjs",
-    "test:dependencies": "npm audit --audit-level=moderate && npm audit --prefix mcp-server --omit=dev --audit-level=moderate",
+    "test:dependencies": "node scripts/test-dependencies.mjs",
     "test:mcp-usage": "node --test mcp-server/usage-telemetry.test.mjs",
     "test:human-traffic": "node --test scripts/human-traffic-report.test.mjs",
     "test:agent-distribution": "node --test scripts/agent-distribution.test.mjs",
