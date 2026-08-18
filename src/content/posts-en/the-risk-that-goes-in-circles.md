@@ -322,4 +322,4 @@ This article prioritises supervisors, public institutions and primary research p
 - [European Commission, Securitisation policy file](https://finance.ec.europa.eu/financial-markets/financial-markets-policy/securities-markets/securitisation_en)
 - [Council of the European Union, position on reviving the EU securitisation market, 19 December 2025](https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/savings-and-investment-union-council-agrees-position-on-revitalising-the-eu-s-securitisation-market/)
 
-For the broader migration of credit risk towards non-bank finance, see [The migration of credit risk](/en/posts/the-migration-of-credit-risk/).
+For the broader migration of credit risk towards non-bank finance, see [The migration of credit risk](/en/analysis/the-migration-of-credit-risk/).
