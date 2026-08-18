@@ -1,6 +1,6 @@
 ---
 title: "Le crédit privé entre dans la machine à CLO"
-description: "Les prêts de crédit privé sont de plus en plus accumulés dans des warehouses financés par les dealers avant d'être titrisés en CLO. En juin 2026, la Fed a consacré une enquête spéciale à cette mécanique. Elle montre une demande en forte hausse, mais aussi un resserrement des conditions lié à la qualité et à la valorisation du collatéral."
+description: "Les prêts de crédit privé passent de plus en plus par des warehouses financés par des dealers avant titrisation en CLO. Selon une enquête de la Fed (juin 2026), la demande monte mais les conditions se resserrent avec la qualité et la valorisation."
 pubDate: 2026-08-18T18:50:00+02:00
 updatedDate: 2026-08-18T18:50:00+02:00
 tags: ["crédit privé", "CLO", "banques", "titrisation", "risque", "liquidité"]
