@@ -21,7 +21,7 @@ In the July 22, 2026 H.4.1 release, the asset side shows [6 462,797 billion USD 
 
 On the liability side, the same release reports 4 151,474 billion USD in bank and institution deposits, 2 419,323 billion in currency in circulation, and 352 703 billion in reverse repo, plus the Treasury cash balances. The reported [total balance-sheet size](https://www.federalreserve.gov/releases/h41/current/default.htm) is 6 747,378 billion USD.
 
-The principle is simple. Assets have an average yield, liabilities have a measurable cost, and the Fed also has operating costs. The [seigniorage](/glossary/#seigniorage) link is therefore an accounting outcome.
+The principle is simple. Assets have an average yield, liabilities have a measurable cost, and the Fed also has operating costs. The [seigniorage](/glossaire/seigneuriage/) link is therefore an accounting outcome.
 
 In the Federal Reserve's [combined quarterly report for March 2026](https://www.federalreserve.gov/aboutthefed/files/quarterly-report-20260515.pdf), complete available income is shown at 1,372 million USD, and net remittances to the Treasury at 949 million after expense and adjustment mechanics.
 
