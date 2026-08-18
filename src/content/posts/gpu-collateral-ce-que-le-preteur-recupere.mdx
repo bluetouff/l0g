@@ -1,0 +1,262 @@
+---
+title: "Le collatéral qui ne peut pas sortir du bâtiment"
+description: "Un prêt adossé à des GPU a décroché une notation investment grade en mars 2026. Le paquet de sûretés montre que la note porte sur le contrat client, pas sur la puce."
+pubDate: 2026-08-18T21:00:00+02:00
+updatedDate: 2026-08-18T21:00:00+02:00
+tags: ["gpu", "data-centers", "credit-prive", "collateral", "intelligence-artificielle", "titrisation", "risque-systemique"]
+draft: false
+---
+
+Le 31 mars 2026, CoreWeave a bouclé une facilité de 8,5 milliards de dollars notée A3 par Moody's et A (low) par DBRS. L'entreprise l'a présentée comme le premier financement adossé à des GPU à décrocher une notation investment grade. Six semaines plus tard, le 18 mai, elle bouclait une facilité de 3,1 milliards notée Ba2 et BB+. Le 10 août, une troisième, de 2,6 milliards, également Ba2 et BB+.
+
+Même émetteur, même technologie, même classe d'actif revendiquée. Cinq crans de notation d'écart, et 325 points de base de marge en plus entre la première et la troisième.
+
+Cet écart ne se lit pas dans les puces. Il se lit dans le paquet de sûretés, et dans l'identité de celui qui paie la facture mensuelle.
+
+## À retenir en cinq lignes
+
+- Le nantissement de la facilité A3 porte sur trois choses indissociables : l'équipement, le contrat client et le bail du data center.
+- L'avance atteint 90 % du [coût](/glossaire/loan-to-cost/) en phase d'installation, sur un actif dont personne ne s'accorde sur la valeur de revente.
+- La facilité du 10 août court sur environ cinq ans, adossée à des contrats clients d'environ trois ans en moyenne.
+- Un prêteur qui saisit ne récupère pas des cartes transportables, mais un ensemble dont la valeur dépend de l'électricité, du bâtiment et d'un locataire.
+- La Banque d'Angleterre écrit en juillet 2026 que des puces à cycle de vie court et incertain financées par de la dette longue créent un risque de transformation.
+
+## Trois objets dans un seul gage
+
+La présentation de la facilité DDTL 4.0 publiée par CoreWeave décrit précisément l'assiette. Le prêteur obtient une sûreté de premier rang sur, premièrement, l'ensemble des actifs corporels et incorporels de l'emprunteur, dont l'équipement d'infrastructure cloud, les comptes de nantissement et les titres de l'emprunteur ; deuxièmement, le contrat client sous-jacent de services cloud, de type [take-or-pay](/glossaire/take-or-pay/) ; troisièmement, les baux de data center correspondants.
+
+Le communiqué officiel de clôture retient une formule plus large encore : la facilité est [garantie par la quasi-totalité des actifs de CoreWeave Compute Acquisition Co. VIII, LLC](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000129/ex991.htm), un véhicule dédié.
+
+Ces trois éléments ne sont pas des garanties cumulatives que le prêteur pourrait exercer séparément. Ils forment un seul actif économique, et la formulation contractuelle le reconnaît.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 700" width="100%" role="img" aria-labelledby="gpu-gage-title gpu-gage-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="gpu-gage-title">Composition du paquet de sûretés d'une facilité adossée à des GPU</title>
+<desc id="gpu-gage-desc">La sûreté de premier rang porte simultanément sur l'équipement, le contrat client et le bail du data center. Aucun des trois ne conserve sa valeur isolé des deux autres.</desc>
+<rect x="1" y="1" width="718" height="698" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">UN GAGE, TROIS OBJETS INDISSOCIABLES</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">Facilité DDTL 4.0, 8,5 Md$, clôturée le 31 mars 2026</text>
+
+<rect x="32" y="92" width="656" height="118" rx="12" fill="#121419" stroke="#5eead4"/>
+<text x="54" y="120" fill="#5eead4" font-size="12" font-weight="700">1. L'ÉQUIPEMENT</text>
+<text x="54" y="149" fill="#f5f6f8" font-size="17" font-weight="700">Actifs corporels et incorporels de l'emprunteur</text>
+<text x="54" y="173" fill="#d6d9df" font-size="13">Infrastructure cloud, comptes de nantissement, titres du véhicule.</text>
+<text x="54" y="195" fill="#8b909b" font-size="12">Transportable en théorie. Sans valeur hors d'un site alimenté.</text>
+
+<rect x="32" y="226" width="656" height="118" rx="12" fill="#121419" stroke="#f5b13d"/>
+<text x="54" y="254" fill="#f5b13d" font-size="12" font-weight="700">2. LE CONTRAT CLIENT</text>
+<text x="54" y="283" fill="#f5f6f8" font-size="17" font-weight="700">Le contrat de services cloud sous-jacent</text>
+<text x="54" y="307" fill="#d6d9df" font-size="13">Take-or-pay. C'est lui qui produit les flux de remboursement.</text>
+<text x="54" y="329" fill="#8b909b" font-size="12">Non transportable. Sa valeur dépend de la solvabilité du payeur.</text>
+
+<rect x="32" y="360" width="656" height="118" rx="12" fill="#121419" stroke="#7aa2f7"/>
+<text x="54" y="388" fill="#7aa2f7" font-size="12" font-weight="700">3. LE BAIL</text>
+<text x="54" y="417" fill="#f5f6f8" font-size="17" font-weight="700">Les baux de data center correspondants</text>
+<text x="54" y="441" fill="#d6d9df" font-size="13">Le local, l'électricité, le refroidissement, l'interconnexion.</text>
+<text x="54" y="463" fill="#8b909b" font-size="12">Immobile par nature. Détenu par un tiers dans le modèle colocation.</text>
+
+<rect x="32" y="500" width="656" height="76" rx="12" fill="#0f1822" stroke="#3a4049"/>
+<text x="54" y="528" fill="#8b909b" font-size="12" font-weight="700">CONDITIONS D'AVANCE</text>
+<text x="54" y="556" fill="#f5f6f8" font-size="15">90 % du coût en phase d'installation, puis couverture du service de la dette de 1,2x.</text>
+
+<rect x="32" y="596" width="656" height="76" rx="12" fill="#1a1015" stroke="#ff4d87"/>
+<text x="54" y="624" fill="#ff8fb0" font-size="12" font-weight="700">CONSÉQUENCE</text>
+<text x="54" y="652" fill="#f5f6f8" font-size="15">Saisir la puce sans le bail ni le contrat revient à saisir un objet inutilisable.</text>
+</svg>
+<figcaption>Source : CoreWeave, présentation de la facilité DDTL 4.0, mars 2026, et communiqué de clôture du 31 mars 2026 déposé auprès de la SEC.</figcaption>
+</figure>
+
+Le point de départ du raisonnement tient dans une évidence physique souvent perdue de vue. Un accélérateur de calcul ne produit rien seul. Il lui faut une alimentation dimensionnée, un refroidissement, un réseau d'interconnexion à très haut débit vers les autres cartes du même cluster, et un opérateur qui exploite l'ensemble. Le sujet a été traité ici sous l'angle du bâtiment dans l'enquête sur [le recyclage financier d'un data center](/posts/nvidia-du-gpu-a-l-obligation-data-center/). Vue depuis le contrat de prêt, la même dépendance change de nature : elle devient une caractéristique de la sûreté.
+
+Dans le modèle de colocation, le développeur fournit la coque et le locataire installe ses propres serveurs. La carte appartient donc à l'emprunteur, mais elle se trouve dans un immeuble qui ne lui appartient pas, raccordée à une alimentation qu'il ne contrôle pas. Le cabinet Quinn Emanuel décrit ce modèle dans [son alerte de février 2026 sur les risques contentieux du financement des data centers d'IA](https://www.quinnemanuel.com/media/4dzkfccz/client-alert-ai-data-center-financing-and-litigation-risks.pdf), en soulignant que la conversion d'une installation conçue pour l'IA vers un autre usage est coûteuse et complexe.
+
+## Le droit de saisir, et la difficulté d'en faire quelque chose
+
+Sur le papier, la mécanique de réalisation est banale. Les sections 9-609 et 9-610 de l'[Uniform Commercial Code](/glossaire/ucc-article-9/) américain permettent au créancier garanti de reprendre le bien et d'en disposer après défaut. La section 9-626 encadre en retour les recours de l'emprunteur lorsque la vente n'a pas été menée de façon commercialement raisonnable.
+
+Quinn Emanuel anticipe que ce dernier point deviendra le champ de bataille. Les auteurs décrivent une séquence prévisible : appels de marge, exigence de collatéral additionnel, puis contestation par l'emprunteur de l'évaluation retenue par le prêteur, de son éventuelle renonciation tacite à invoquer le manquement, et du caractère raisonnable de la vente des biens saisis.
+
+Ils vont plus loin sur la valeur de liquidation elle-même. Si la demande de calcul se contracte, les installations conçues spécifiquement pour l'IA deviennent selon eux des actifs échoués à usage alternatif limité et à valeur de liquidation déprimée. Le mot important est comparatif : un entrepôt logistique se reloue, une salle blanche gorgée de puissance électrique et taillée pour un cluster ne se reloue qu'à un acteur du même métier, au moment précis où ce métier va mal.
+
+Le cabinet décrit aussi le mécanisme de propagation qui relie ce collatéral au reste du système : si la valeur du gage GPU baisse, le locataire [neocloud](/glossaire/neocloud/) ne peut plus servir sa dette, et cette défaillance fragilise à son tour les flux qui rémunèrent les titrisations de data centers. Le premier maillon de cette chaîne est un contrat de prêt privé, le dernier un titre logé dans des fonds. Le trajet complet a été documenté ici dans [l'enquête sur l'arrivée de la dette des data centers dans les ETF](/posts/du-data-center-au-fonds-qui-porte-le-risque/), et la question de la qualification juridique de ces titres dans [celle consacrée à la frontière de l'ABS](/posts/l-abs-qui-n-en-est-pas-frontiere-data-centers/).
+
+## La note porte sur le payeur, pas sur le gage
+
+Trois facilités du même émetteur, bouclées en quatre mois et demi, permettent de tester directement l'hypothèse.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 620" width="100%" role="img" aria-labelledby="gpu-troisfac-title gpu-troisfac-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="gpu-troisfac-title">Comparaison des trois facilités CoreWeave adossées à du matériel de calcul en 2026</title>
+<desc id="gpu-troisfac-desc">La facilité de mars 2026 est notée A3 avec une marge de 225 points de base, celles de mai et août Ba2 avec 450 puis 550 points de base, pour un matériel de même nature.</desc>
+<rect x="1" y="1" width="718" height="618" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">MÊME ÉMETTEUR, MÊME MATÉRIEL, TROIS PRIX</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">Facilités CoreWeave adossées à de l'infrastructure de calcul, 2026</text>
+
+<rect x="32" y="90" width="212" height="330" rx="12" fill="#121419" stroke="#5eead4"/>
+<text x="50" y="118" fill="#5eead4" font-size="12" font-weight="700">DDTL 4.0</text>
+<text x="50" y="140" fill="#8b909b" font-size="11">31 mars 2026</text>
+<text x="50" y="172" fill="#f5f6f8" font-size="26" font-weight="700">8,5 Md$</text>
+<line x1="50" y1="190" x2="226" y2="190" stroke="#2b3038"/>
+<text x="50" y="214" fill="#8b909b" font-size="11">NOTATION</text>
+<text x="50" y="240" fill="#5eead4" font-size="22" font-weight="700">A3 / A (low)</text>
+<text x="50" y="268" fill="#8b909b" font-size="11">MARGE</text>
+<text x="50" y="292" fill="#f5f6f8" font-size="20" font-weight="700">SOFR + 225 pb</text>
+<text x="50" y="318" fill="#8b909b" font-size="11">MATURITÉ</text>
+<text x="50" y="340" fill="#d6d9df" font-size="14">mars 2032, environ 6 ans</text>
+<text x="50" y="372" fill="#8b909b" font-size="11">CONTREPARTIE</text>
+<text x="50" y="394" fill="#d6d9df" font-size="13">Un contrat client avec</text>
+<text x="50" y="412" fill="#d6d9df" font-size="13">une grande entreprise d'IA</text>
+
+<rect x="254" y="90" width="212" height="330" rx="12" fill="#121419" stroke="#f5b13d"/>
+<text x="272" y="118" fill="#f5b13d" font-size="12" font-weight="700">DDTL 5.0</text>
+<text x="272" y="140" fill="#8b909b" font-size="11">18 mai 2026</text>
+<text x="272" y="172" fill="#f5f6f8" font-size="26" font-weight="700">3,1 Md$</text>
+<line x1="272" y1="190" x2="448" y2="190" stroke="#2b3038"/>
+<text x="272" y="214" fill="#8b909b" font-size="11">NOTATION</text>
+<text x="272" y="240" fill="#f5b13d" font-size="22" font-weight="700">Ba2 / BB+</text>
+<text x="272" y="268" fill="#8b909b" font-size="11">MARGE</text>
+<text x="272" y="292" fill="#f5f6f8" font-size="20" font-weight="700">SOFR + 450 pb</text>
+<text x="272" y="318" fill="#8b909b" font-size="11">MATURITÉ</text>
+<text x="272" y="340" fill="#d6d9df" font-size="14">environ 5,5 ans</text>
+<text x="272" y="372" fill="#8b909b" font-size="11">CONTREPARTIE</text>
+<text x="272" y="394" fill="#d6d9df" font-size="13">Deux contrats clients,</text>
+<text x="272" y="412" fill="#d6d9df" font-size="13">non nommés</text>
+
+<rect x="476" y="90" width="212" height="330" rx="12" fill="#121419" stroke="#ff4d87"/>
+<text x="494" y="118" fill="#ff8fb0" font-size="12" font-weight="700">DDTL 5.5</text>
+<text x="494" y="140" fill="#8b909b" font-size="11">10 août 2026</text>
+<text x="494" y="172" fill="#f5f6f8" font-size="26" font-weight="700">2,6 Md$</text>
+<line x1="494" y1="190" x2="670" y2="190" stroke="#2b3038"/>
+<text x="494" y="214" fill="#8b909b" font-size="11">NOTATION</text>
+<text x="494" y="240" fill="#ff8fb0" font-size="22" font-weight="700">Ba2 / BB+</text>
+<text x="494" y="268" fill="#8b909b" font-size="11">MARGE</text>
+<text x="494" y="292" fill="#f5f6f8" font-size="20" font-weight="700">SOFR + 550 pb</text>
+<text x="494" y="318" fill="#8b909b" font-size="11">MATURITÉ</text>
+<text x="494" y="340" fill="#d6d9df" font-size="14">environ 5 ans</text>
+<text x="494" y="372" fill="#8b909b" font-size="11">CONTREPARTIE</text>
+<text x="494" y="394" fill="#d6d9df" font-size="13">Contrats d'environ</text>
+<text x="494" y="412" fill="#d6d9df" font-size="13">trois ans en moyenne</text>
+
+<rect x="32" y="444" width="656" height="146" rx="12" fill="#0f1822" stroke="#3a4049"/>
+<text x="54" y="472" fill="#8b909b" font-size="12" font-weight="700">LECTURE</text>
+<text x="54" y="500" fill="#f5f6f8" font-size="15">325 points de base et cinq crans séparent la première facilité de la troisième.</text>
+<text x="54" y="524" fill="#f5f6f8" font-size="15">Le matériel gagé est de même nature dans les trois cas.</text>
+<text x="54" y="552" fill="#5eead4" font-size="15" font-weight="700">La variable qui change est l'identité et la durée d'engagement du payeur.</text>
+<text x="54" y="576" fill="#8b909b" font-size="12">Les périmètres ne sont pas strictement comparables : véhicules, clients et structures diffèrent.</text>
+</svg>
+<figcaption>Sources : communiqués de clôture CoreWeave des 31 mars, 18 mai et 10 août 2026, et dépôt 8-K correspondant auprès de la SEC. Comparaison l0g.</figcaption>
+</figure>
+
+L'écart appelle une précaution. Ces trois facilités ne sont pas trois émissions successives d'un même instrument : les véhicules diffèrent, les clients diffèrent, la structure de garantie diffère dans le détail. Un lecteur pressé y verrait un effondrement de la confiance en quatre mois, et ce serait une erreur de méthode.
+
+La conclusion prudente est plus intéressante que la conclusion spectaculaire. À matériel comparable, la notation et la marge suivent la qualité et la durée du contrat client. La facilité investment grade est celle dont le contrat client est le plus solide. Les deux facilités spéculatives sont celles dont les contreparties ne sont pas nommées, ou dont les contrats sont plus courts. Le gage matériel, lui, ne varie pas dans les mêmes proportions.
+
+Ce constat renverse la façon dont l'expression « financement adossé à des GPU » est employée. La note A3 récompense une promesse de paiement émanant d'un client de qualité, sécurisée accessoirement par du matériel, non un stock de cartes. La démarche générale d'évaluation de ce type de dette est décrite dans le guide sur [la lecture d'une notation de crédit](/guides/lire-une-notation-de-credit/).
+
+## L'écart entre le prêt et le contrat qui le rembourse
+
+Le communiqué du 10 août 2026 contient la donnée la plus directe de tout le dossier. La facilité court sur environ cinq ans. Les contrats clients qui l'adossent durent en moyenne environ trois ans.
+
+Deux années de dette ne sont donc pas couvertes par le flux contractuel identifié au moment de la signature. Ce solde repose sur une hypothèse de [valeur résiduelle](/glossaire/valeur-residuelle/) : que l'infrastructure sera reconduite auprès du même client, relouée à un autre, ou revendue à une valeur suffisante.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 420" width="100%" role="img" aria-labelledby="gpu-ecart-title gpu-ecart-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="gpu-ecart-title">Écart de durée entre la facilité de cinq ans et les contrats clients de trois ans</title>
+<desc id="gpu-ecart-desc">La facilité du 10 août 2026 court sur environ cinq ans tandis que les contrats clients qui l'adossent durent environ trois ans, laissant deux années couvertes par une hypothèse de valeur résiduelle.</desc>
+<rect x="1" y="1" width="718" height="418" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">DEUX ANS SANS CONTRAT IDENTIFIÉ</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">Facilité DDTL 5.5, 2,6 Md$, clôturée le 10 août 2026</text>
+
+<text x="32" y="112" fill="#8b909b" font-size="12" font-weight="700">DURÉE DE LA DETTE</text>
+<rect x="32" y="124" width="600" height="34" rx="6" fill="#7aa2f7"/>
+<text x="52" y="147" fill="#0c0d10" font-size="15" font-weight="700">environ 5 ans</text>
+
+<text x="32" y="196" fill="#8b909b" font-size="12" font-weight="700">DURÉE MOYENNE DES CONTRATS CLIENTS</text>
+<rect x="32" y="208" width="360" height="34" rx="6" fill="#5eead4"/>
+<text x="52" y="231" fill="#0c0d10" font-size="15" font-weight="700">environ 3 ans</text>
+<rect x="392" y="208" width="240" height="34" rx="6" fill="#1a1015" stroke="#ff4d87" stroke-dasharray="5 4"/>
+<text x="412" y="231" fill="#ff8fb0" font-size="15" font-weight="700">2 ans à couvrir</text>
+
+<line x1="392" y1="118" x2="392" y2="256" stroke="#ff4d87" stroke-width="1" stroke-dasharray="3 4"/>
+
+<rect x="32" y="284" width="600" height="108" rx="12" fill="#0f1822" stroke="#3a4049"/>
+<text x="54" y="312" fill="#8b909b" font-size="12" font-weight="700">COUVERTURE DES DEUX DERNIÈRES ANNÉES</text>
+<text x="54" y="340" fill="#f5f6f8" font-size="14">Une reconduction, une relocation à un autre client, ou une revente du matériel.</text>
+<text x="54" y="364" fill="#ff8fb0" font-size="14" font-weight="700">Aucune de ces trois issues n'est contractuellement acquise à la signature.</text>
+</svg>
+<figcaption>Source : CoreWeave, communiqué de clôture de la facilité DDTL 5.5 du 10 août 2026 (dépôt SEC). Représentation l0g de l'écart de durée déclaré.</figcaption>
+</figure>
+
+Cet écart n'a rien d'anormal en soi. Un financement d'actif repose presque toujours sur une valeur terminale. Le crédit-bail automobile, l'aéronautique et l'immobilier commercial fonctionnent ainsi. La différence tient à la qualité de l'information disponible sur cette valeur terminale.
+
+Pour un avion ou un immeuble de bureaux, il existe des séries longues, des transactions comparables et des évaluateurs indépendants dont le métier est encadré. Pour un accélérateur de calcul de génération n-2, il existe des estimations qui divergent d'un facteur trois.
+
+## Personne ne s'accorde sur la valeur de la puce
+
+Quinn Emanuel résume l'état des connaissances en une phrase : personne ne s'accorde sur la valeur réelle des GPU. Les durées d'utilité retenues par les entreprises tournent autour de six ans, quand des ingénieurs cités par le cabinet estiment la vie utile à trois ou quatre ans, et certains analystes à deux ou trois.
+
+La lettre adressée le 22 janvier 2026 au secrétaire au Trésor par [Elizabeth Warren et trois de ses collègues](https://www.banking.senate.gov/imo/media/doc/20260122_final_letter_to_secretary_bessent_re_ai_debtpdf.pdf) retient la même fourchette haute, six ans, en indiquant la soupçonner trop généreuse. La cadence produit va dans leur sens : Nvidia et AMD sont passés d'un cycle de sortie de deux ans à un cycle annuel, et ce raccourcissement rapproche mécaniquement la date à laquelle une génération cesse d'être la référence.
+
+Les prix observés compliquent le tableau plutôt qu'ils ne le tranchent, et la divergence entre les sources est en elle-même un résultat.
+
+Quinn Emanuel avance une baisse de 70 à 90 % des tarifs de location des H100 depuis 2023. Les séries publiées par Silicon Data racontent une histoire plus nuancée : sur le segment des hyperscalers, le tarif passe d'un pic de 9,39 dollars par GPU et par heure en décembre 2024 à une fourchette de 6,20 à 6,64 dollars fin 2025, soit environ 30 % de baisse ; sur le segment des places de marché, de 2,50 à 3,19 dollars mi-2024 à 1,92 à 2,00 dollars fin 2025 ; sur le segment des neoclouds, le tarif se maintient entre 3,01 et 3,40 dollars fin 2025, au-dessus de son niveau de 2024.
+
+L'écart entre ces deux lectures s'explique en partie par un artefact de comparaison. Rapporter un prix de place de marché au pic d'un tarif d'hyperscaler produit une chute spectaculaire qui mélange deux segments distincts. À segment constant, la baisse se situe plutôt autour de 30 %, et le segment neocloud résiste.
+
+Cette nuance ne rassure pas autant qu'il y paraît. Elle signifie que la valeur du matériel dépend du segment sur lequel il est exploité, donc de l'exploitant, donc à nouveau du contrat. Un lot de cartes vendu à la casse après un défaut ne se retrouve pas sur le segment neocloud à 3,20 dollars de l'heure : il se retrouve sur le segment où les prix sont les plus bas, au moment où l'offre saisie arrive sur le marché.
+
+Il faut ajouter le contre-argument, parce qu'il est solide. Les générations anciennes continuent de produire du revenu bien au-delà des scénarios les plus sombres, et le maintien des tarifs sur le segment neocloud le montre. Une puce dépassée pour l'entraînement de modèles de pointe reste utilisable pour l'inférence, l'affinage ou des charges académiques. La thèse d'une valeur résiduelle nulle à trois ans n'est pas étayée par les prix observés en 2026.
+
+## L'échelle atteinte, et la réponse des autorités
+
+CoreWeave portait environ 35,1 milliards de dollars de dette au 30 juin 2026, pour 2 575 millions de revenus trimestriels, 626 millions de perte nette et 6 422 millions d'investissements sur le seul deuxième trimestre. Son carnet de commandes atteignait environ 104 milliards. L'entreprise indiquait le 10 août avoir levé plus de 30 milliards de dette et de fonds propres depuis le début de l'année.
+
+L'entreprise n'est pas seule. Quinn Emanuel cite des opérations conduites par Fluidstack pour 10 milliards de dollars, Lambda pour 500 millions et Crusoe Energy.
+
+La Banque d'Angleterre a consacré à ce sujet plusieurs pages de son [rapport de stabilité financière du 7 juillet 2026](https://www.bankofengland.co.uk/financial-stability-report/2026/july-2026). Le comité de politique financière y relève que cinq hyperscalers représentaient 3 % de l'encours de dette investment grade américaine fin 2025 mais plus de 15 % des émissions depuis le début de l'année en mai 2026, et que les entreprises liées à l'IA pesaient 41 % des émissions à haut rendement hors refinancement pour 1 % de l'indice. Elle cite une estimation de JP Morgan de 2 000 milliards de dollars de financement nécessaires pour les puces d'IA sur cinq ans, et une statistique de l'OCDE selon laquelle la part du [crédit privé](/glossaire/credit-prive/) dans le financement de l'investissement en IA est passée de 9 % en 2024 à 34 % en 2025.
+
+La formulation qui touche directement au sujet est la suivante : les puces ont des cycles de vie courts et incertains, au point de compliquer l'attraction de capitaux suffisants. Le comité écrit par ailleurs être particulièrement préoccupé par la possibilité que plusieurs de ces vulnérabilités se matérialisent simultanément.
+
+La lettre sénatoriale de janvier 2026 chiffre pour sa part à 800 milliards de dollars la part attendue des fonds de crédit privé dans le financement du secteur sur deux ans, et relève que Morgan Stanley envisageait un transfert de risque sur un portefeuille de prêts data centers, mécanisme décrit ici dans [l'enquête sur le transfert synthétique de risque](/posts/transfert-synthetique-risque-srt-cercle/). La lecture de ce type d'exposition est détaillée dans le guide sur [l'analyse du crédit privé](/guides/analyser-credit-prive/).
+
+## Les points de contrôle
+
+Quatre éléments observables permettent de suivre ce dossier sans dépendre des communiqués.
+
+Le premier est la marge à l'émission des prochaines facilités, rapportée à la notation obtenue et à la durée moyenne des contrats adossés. Le triptyque marge, note, durée de contrat dit plus que le montant levé. La méthode est décrite dans le guide sur [la lecture des spreads de crédit](/guides/lire-les-spreads-de-credit/).
+
+Le deuxième est la durée des contrats clients relativement à la maturité de la dette. Un rapprochement des deux durées signalerait une discipline nouvelle ; un élargissement de l'écart signalerait l'inverse.
+
+Le troisième est comptable : toute révision à la baisse d'une durée d'utilité, chez un opérateur comme chez un hyperscaler, agit directement sur la valeur résiduelle qui porte la fin de ces prêts.
+
+Le quatrième est judiciaire. Le premier contentieux de réalisation sur ce collatéral fixera la jurisprudence pratique : ce qu'un tribunal considère comme une vente commercialement raisonnable de cartes accélératrices, et ce qu'il advient d'un gage dont l'exercice suppose de reprendre aussi un bail détenu par un tiers.
+
+La question de fond n'est pas de savoir si un GPU vaut zéro dans trois ans. Il ne vaudra pas zéro. Elle est de savoir ce qu'un créancier peut en tirer au moment précis où il en a besoin, c'est-à-dire quand son emprunteur a fait défaut, quand la demande de calcul se contracte et quand plusieurs lots comparables arrivent au même moment sur le marché. À cet instant, la valeur du gage et la solvabilité du débiteur cessent d'être deux variables indépendantes.
+
+## Sources
+
+- [CoreWeave, communiqué de clôture de la facilité de 8,5 milliards de dollars, 31 mars 2026 (dépôt SEC)](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000129/ex991.htm)
+- [CoreWeave, présentation de la facilité DDTL 4.0, mars 2026](https://s205.q4cdn.com/133937190/files/doc_presentations/2026/Mar/2026-03-DDTL-4-Overview.pdf)
+- [CoreWeave, communiqué de clôture de la facilité de 3,1 milliards de dollars, 18 mai 2026](https://investors.coreweave.com/news/news-details/2026/CoreWeave-Closes-3-1-Billion-Loan-Facility-Expanding-Access-to-Public-Markets-for-GPU-Backed-Financing/default.aspx)
+- [CoreWeave, communiqué de clôture de la facilité DDTL 5.5 de 2,6 milliards de dollars, 10 août 2026 (dépôt SEC)](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex991pr.htm)
+- [CoreWeave, résultats du deuxième trimestre 2026 (dépôt SEC)](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm)
+- [Quinn Emanuel Urquhart & Sullivan, Emerging Litigation Risks in Financing the AI Data Centers Boom, février 2026](https://www.quinnemanuel.com/media/4dzkfccz/client-alert-ai-data-center-financing-and-litigation-risks.pdf)
+- [Bank of England, Financial Stability Report, 7 juillet 2026](https://www.bankofengland.co.uk/financial-stability-report/2026/july-2026)
+- [Bank of England, Financial Stability Report de juillet 2026 (PDF)](https://www.bankofengland.co.uk/-/media/boe/files/financial-stability-report/2026/financial-stability-report-july-2026.pdf)
+- [Sénat américain, lettre de la sénatrice Warren et de trois collègues au secrétaire au Trésor sur la dette liée à l'IA, 22 janvier 2026](https://www.banking.senate.gov/imo/media/doc/20260122_final_letter_to_secretary_bessent_re_ai_debtpdf.pdf)
+- [Silicon Data, historique des tarifs de location du H100](https://www.silicondata.com/blog/h100-rental-price-over-time)
+- [Uniform Commercial Code, article 9, sections 9-609, 9-610 et 9-626](https://www.law.cornell.edu/ucc/9)
+
+## Limites
+
+Les caractéristiques des facilités proviennent des communiqués de l'emprunteur et des dépôts qui les reprennent. Les contrats de crédit complets ne sont pas publics : les définitions exactes de l'assiette du gage, les seuils de covenant, les modalités d'évaluation du collatéral et les droits du bailleur ne peuvent pas être vérifiés ligne à ligne.
+
+La comparaison entre les trois facilités porte sur des opérations dont les véhicules, les clients et les structures diffèrent. Elle éclaire une tendance de tarification, elle ne constitue pas une série homogène.
+
+L'identité du client de la facilité notée A3 n'est pas divulguée publiquement. L'appréciation de sa qualité de crédit repose sur la notation attribuée par les agences, non sur un examen direct de la contrepartie.
+
+Les séries de tarifs de location proviennent d'un fournisseur de données de marché dont la méthodologie repose sur un historique interne ancré sur des indices publiés. Elles ne constituent pas une source officielle et sont citées ici parce qu'elles contredisent partiellement une autre source du dossier, non parce qu'elles feraient autorité.
+
+Les durées d'utilité citées reflètent des ordres de grandeur rapportés par un cabinet d'avocats et par un courrier parlementaire, non un relevé exhaustif des politiques comptables de chaque opérateur.
+
+Enfin, cet article décrit une structure de risque, pas une prévision. Aucun défaut sur ce type de facilité n'est constaté à la date de publication, et le carnet de commandes de l'émetteur principal progresse.
