@@ -101,7 +101,7 @@ Ces deux estimations ne sont pas des bilans comptables définitifs. Elles provie
 C'est presque l'ordre de grandeur du sucre actuellement absorbé par l'éthanol.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 410" role="img" aria-label="Retournement des attentes sur le bilan sucrier indien entre décembre 2025 et juin 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+<svg viewBox="0 0 720 410" role="img" aria-label="Retournement des attentes sur le bilan sucrier indien entre décembre 2025 et juin 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace;overflow:visible">
   <rect width="720" height="410" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le coussin de sécurité a disparu dans les prévisions</text>
   <text x="32" y="60" fill="#8b909b" font-size="11">Deux instantanés de marché rapportés par Reuters. Millions de tonnes.</text>

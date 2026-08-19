@@ -103,7 +103,7 @@ These are not final audited supply-demand balances. They were produced at differ
 That is almost the same order of magnitude as the sugar currently absorbed by ethanol.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 410" role="img" aria-label="Reversal in expectations for India's sugar balance between December 2025 and June 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
+<svg viewBox="0 0 720 410" role="img" aria-label="Reversal in expectations for India's sugar balance between December 2025 and June 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace;overflow:visible">
   <rect width="720" height="410" fill="#0c0d10"/>
   <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The expected safety cushion disappeared</text>
   <text x="32" y="60" fill="#8b909b" font-size="11">Two market snapshots reported by Reuters. Million tonnes.</text>
