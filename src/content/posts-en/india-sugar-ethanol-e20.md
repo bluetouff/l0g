@@ -102,38 +102,6 @@ These are not final audited supply-demand balances. They were produced at differ
 
 That is almost the same order of magnitude as the sugar currently absorbed by ethanol.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 720 410" role="img" aria-label="Reversal in expectations for India's sugar balance between December 2025 and June 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace;overflow:visible">
-  <rect width="720" height="410" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">The expected safety cushion disappeared</text>
-  <text x="32" y="60" fill="#8b909b" font-size="11">Two market snapshots reported by Reuters. Million tonnes.</text>
-
-  <text x="52" y="104" fill="#8b909b" font-size="11">DECEMBER 2025</text>
-  <rect x="52" y="124" width="252" height="42" fill="#5eead4"/>
-  <text x="66" y="151" fill="#0c0d10" font-size="12" font-weight="700">Net production 30.9</text>
-  <rect x="52" y="174" width="236" height="42" fill="#7aa2f7"/>
-  <text x="66" y="201" fill="#0c0d10" font-size="12" font-weight="700">Consumption 29.0</text>
-  <text x="52" y="248" fill="#5eead4" font-size="24" font-weight="700">+1.9 Mt</text>
-  <text x="52" y="268" fill="#8b909b" font-size="10">expected surplus</text>
-
-  <line x1="352" y1="94" x2="352" y2="294" stroke="#2a2c33"/>
-
-  <text x="394" y="104" fill="#8b909b" font-size="11">JUNE 2026</text>
-  <rect x="394" y="124" width="228" height="42" fill="#5eead4"/>
-  <text x="408" y="151" fill="#0c0d10" font-size="12" font-weight="700">Production 27.9</text>
-  <rect x="394" y="174" width="233" height="42" fill="#7aa2f7"/>
-  <text x="408" y="201" fill="#0c0d10" font-size="12" font-weight="700">Consumption 28.5</text>
-  <text x="394" y="248" fill="#ff4d87" font-size="24" font-weight="700">-0.6 Mt</text>
-  <text x="394" y="268" fill="#8b909b" font-size="10">expected deficit</text>
-
-  <rect x="52" y="314" width="575" height="52" rx="4" fill="#15171c"/>
-  <text x="68" y="336" fill="#f5b13d" font-size="12" font-weight="700">Swing in expected balance: roughly -2.5 Mt</text>
-  <text x="68" y="354" fill="#d6d9df" font-size="10">Enough to turn ethanol from surplus absorber into adjustment variable.</text>
-
-  <text x="32" y="396" fill="#8b909b" font-size="9">SOURCES: Reuters, 18 Dec 2025 and 22 Jun 2026. Estimates, not a final official balance.</text>
-</svg>
-<figcaption>The decisive point is the disappearance of the expected cushion. A policy built around nearly two million tonnes of surplus is much harder to maintain once the market starts anticipating a deficit.</figcaption>
-</figure>
 
 ## Ethanol was designed as a surplus absorber
 

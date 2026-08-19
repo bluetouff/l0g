@@ -100,38 +100,6 @@ Ces deux estimations ne sont pas des bilans comptables définitifs. Elles provie
 
 C'est presque l'ordre de grandeur du sucre actuellement absorbé par l'éthanol.
 
-<figure class="infographic" style="padding-bottom:1.75rem; overflow: visible">
-<svg viewBox="0 0 720 410" overflow="visible" preserveAspectRatio="xMinYMin meet" role="img" aria-label="Retournement des attentes sur le bilan sucrier indien entre décembre 2025 et juin 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace;overflow:visible">
-  <rect width="720" height="410" fill="#0c0d10"/>
-  <text x="32" y="38" fill="#f5f6f8" font-size="17" font-weight="700">Le coussin de sécurité a disparu dans les prévisions</text>
-  <text x="32" y="60" fill="#8b909b" font-size="11">Deux instantanés de marché rapportés par Reuters. Millions de tonnes.</text>
-
-  <text x="52" y="104" fill="#8b909b" font-size="11">DÉCEMBRE 2025</text>
-  <rect x="52" y="124" width="252" height="42" fill="#5eead4"/>
-  <text x="66" y="151" fill="#0c0d10" font-size="12" font-weight="700">Production nette 30,9</text>
-  <rect x="52" y="174" width="236" height="42" fill="#7aa2f7"/>
-  <text x="66" y="201" fill="#0c0d10" font-size="12" font-weight="700">Consommation 29,0</text>
-  <text x="52" y="248" fill="#5eead4" font-size="24" font-weight="700">+1,9 Mt</text>
-  <text x="52" y="268" fill="#8b909b" font-size="10">surplus attendu</text>
-
-  <line x1="352" y1="94" x2="352" y2="294" stroke="#2a2c33"/>
-
-  <text x="394" y="104" fill="#8b909b" font-size="11">JUIN 2026</text>
-  <rect x="394" y="124" width="228" height="42" fill="#5eead4"/>
-  <text x="408" y="151" fill="#0c0d10" font-size="12" font-weight="700">Production 27,9</text>
-  <rect x="394" y="174" width="233" height="42" fill="#7aa2f7"/>
-  <text x="408" y="201" fill="#0c0d10" font-size="12" font-weight="700">Consommation 28,5</text>
-  <text x="394" y="248" fill="#ff4d87" font-size="24" font-weight="700">-0,6 Mt</text>
-  <text x="394" y="268" fill="#8b909b" font-size="10">déficit attendu</text>
-
-  <rect x="52" y="314" width="575" height="52" rx="4" fill="#15171c"/>
-  <text x="68" y="336" fill="#f5b13d" font-size="12" font-weight="700">Basculement du solde attendu : environ -2,5 Mt</text>
-  <text x="68" y="354" fill="#d6d9df" font-size="10">Assez pour transformer l'éthanol d'absorbeur de surplus en variable d'ajustement.</text>
-
-  <text x="32" y="396" fill="#8b909b" font-size="9">SOURCES : Reuters, 18 décembre 2025 et 22 juin 2026. Estimations, pas bilan final officiel.</text>
-</svg>
-<figcaption>Le point décisif est la disparition du coussin attendu. Une politique conçue avec près de deux millions de tonnes de surplus devient beaucoup plus difficile à tenir lorsque le marché anticipe un déficit.</figcaption>
-</figure>
 
 ## L'éthanol a été conçu comme un absorbeur de surplus
 
