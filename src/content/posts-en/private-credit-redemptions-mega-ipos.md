@@ -58,7 +58,7 @@ Above all, the first quarter of 2026 saw, for the first time in the sector's his
   <path d="M 370 104 L 375 94 L 380 104 Z" fill="#f5b13d"/>
   <text x="388" y="128" fill="#f5b13d" font-size="13" font-weight="700">+$4.3bn</text>
   <text x="388" y="146" fill="#f5b13d" font-size="13" font-weight="700">(+56%)</text>
-  <text x="34" y="352" fill="#8b909b" font-size="10">Sources: Stanger & Co. · The Kobeissi Letter (June 2026).</text>
+  <text x="34" y="352" fill="#8b909b" font-size="10">Sources: Stanger &amp; Co. · The Kobeissi Letter (June 2026).</text>
 </svg>
 <figcaption>Figure 1. Redemption requests go from about $7.7bn to $12bn in one quarter across the basket of funds tracked by Stanger. In Q2, Cliffwater ($5.3bn) and Blackstone ($4.5bn) account for most of it.</figcaption>
 </figure>
@@ -102,7 +102,7 @@ The warnings are not new: Jeffrey Gundlach compared the enthusiasm for private c
   <path d="M 232 168 L 232 106" stroke="#ff4d87" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#lg-arrR)"/>
   <text x="240" y="134" fill="#ff4d87" font-size="10" font-weight="600">redemptions · 5% cap</text>
   <rect x="40" y="170" width="250" height="56" rx="8" fill="#1a1d24" stroke="#3a3f4b" stroke-width="1.2"/>
-  <text x="165" y="194" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Evergreen funds & BDCs</text>
+  <text x="165" y="194" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Evergreen funds &amp; BDCs</text>
   <text x="165" y="212" text-anchor="middle" fill="#8b909b" font-size="10">valued to model, illiquid</text>
   <path d="M 165 226 L 165 290" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <text x="173" y="262" fill="#8b909b" font-size="10">loans</text>

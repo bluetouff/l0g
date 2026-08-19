@@ -55,7 +55,7 @@ Surtout, le premier trimestre 2026 a vu, pour la première fois dans l'histoire 
   <path d="M 370 104 L 375 94 L 380 104 Z" fill="#f5b13d"/>
   <text x="388" y="128" fill="#f5b13d" font-size="13" font-weight="700">+4,3 Md$</text>
   <text x="388" y="146" fill="#f5b13d" font-size="13" font-weight="700">(+56 %)</text>
-  <text x="34" y="352" fill="#8b909b" font-size="10">Sources : Stanger & Co. · The Kobeissi Letter (juin 2026).</text>
+  <text x="34" y="352" fill="#8b909b" font-size="10">Sources : Stanger &amp; Co. · The Kobeissi Letter (juin 2026).</text>
 </svg>
 <figcaption>Figure 1. Les demandes de rachat passent d'environ 7,7 à 12 milliards de dollars en un trimestre sur le panier de fonds suivi par Stanger. Au T2, Cliffwater (5,3 Md$) et Blackstone (4,5 Md$) en représentent l'essentiel.</figcaption>
 </figure>
@@ -99,7 +99,7 @@ Les avertissements ne datent pas d'hier : Jeffrey Gundlach comparait dès juin 2
   <path d="M 232 168 L 232 106" stroke="#ff4d87" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#lg-arrR)"/>
   <text x="240" y="134" fill="#ff4d87" font-size="10" font-weight="600">rachats · plafond 5 %</text>
   <rect x="40" y="170" width="250" height="56" rx="8" fill="#1a1d24" stroke="#3a3f4b" stroke-width="1.2"/>
-  <text x="165" y="194" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Fonds evergreen & BDC</text>
+  <text x="165" y="194" text-anchor="middle" fill="#e7e9ee" font-size="12" font-weight="600">Fonds evergreen &amp; BDC</text>
   <text x="165" y="212" text-anchor="middle" fill="#8b909b" font-size="10">valorisé au modèle, peu liquide</text>
   <path d="M 165 226 L 165 290" stroke="#6b7280" stroke-width="1.6" fill="none" marker-end="url(#lg-arr)"/>
   <text x="173" y="262" fill="#8b909b" font-size="10">prêts</text>

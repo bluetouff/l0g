@@ -109,7 +109,7 @@ Les données de notation et d’encours sont arrêtées trois jours ouvrés avan
   <text x="62" y="427" fill="#cbd5e1" font-size="12">Les poids d’un même émetteur sont ensuite plafonnés.</text>
   <rect x="225" y="476" width="310" height="58" rx="29" fill="#451a2a" stroke="#fb7185"/>
   <text x="380" y="511" fill="#fda4af" font-size="18" font-weight="700" text-anchor="middle">PLAFOND ÉMETTEUR : 3 %</text>
-  <text x="40" y="570" fill="#64748b" font-size="11">Source : S&P Dow Jones Indices, juillet 2026.</text>
+  <text x="40" y="570" fill="#64748b" font-size="11">Source : S&amp;P Dow Jones Indices, juillet 2026.</text>
 </g>
 <g class="mobile" transform="scale(2.17)">
   <text x="16" y="20" fill="#f8fafc" font-size="9.3" font-weight="700">La dette doit devenir indexable</text>
@@ -126,7 +126,7 @@ Les données de notation et d’encours sont arrêtées trois jours ouvrés avan
   <text x="23" y="201" fill="#cbd5e1" font-size="4.8">puis agrégation par émetteur</text>
   <rect x="89" y="220" width="172" height="27" rx="13.5" fill="#451a2a" stroke="#fb7185" stroke-width=".5"/>
   <text x="175" y="237" fill="#fda4af" font-size="6.5" font-weight="700" text-anchor="middle">PLAFOND : 3 %</text>
-  <text x="16" y="268" fill="#64748b" font-size="4.7">Source : S&P DJI, juillet 2026.</text>
+  <text x="16" y="268" fill="#64748b" font-size="4.7">Source : S&amp;P DJI, juillet 2026.</text>
 </g>
 </svg>
 <figcaption style="margin-top:.65rem;color:#64748b;font-size:.82rem">Le poids de la dette n’intervient qu’après la sélection. Une grande dette high yield, privée, trop petite, trop courte ou non libellée en dollars peut rester entièrement hors de cet indice.</figcaption>
