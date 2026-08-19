@@ -6,12 +6,11 @@ import HomeSidebar from '../components/HomeSidebar.astro';
 import L0gGlyph, { type GlyphName } from '../components/L0gGlyph.astro';
 import PostCard from '../components/PostCard.astro';
 import PostHero from '../components/PostHero.astro';
-import PublicationSpotlight from '../components/PublicationSpotlight.astro';
 import RiskBand from '../components/RiskBand.astro';
 import SectionSignature from '../components/SectionSignature.astro';
 import WeeklyCta from '../components/WeeklyCta.astro';
 import { readingTime } from '../lib/reading-time.ts';
-import { accentForTags, topicLabelForTags, topics } from '../config/topics.ts';
+import { accentForTags, topicLabelForTags } from '../config/topics.ts';
 
 type PostEntry = CollectionEntry<'posts'>;
 type PaginatedPosts = {
@@ -52,7 +51,6 @@ const items = page.data.map((post: PostEntry, i: number) => ({
 const hero = isFirst ? items[0] : null;
 const feed = isFirst ? items.slice(1) : items;
 const pageHref = (n: number) => (n <= 1 ? '/' : `/${n}/`);
-const followedTopics = topics.slice(0, 6);
 const needCards = [
   {
     glyph: 'understand' as GlyphName,
@@ -217,42 +215,6 @@ const needCards = [
     nextLabel="Suivant"
   />
 
-  {isFirst && (
-    <section class="home-publication rise" aria-labelledby="home-publication-title">
-      <SectionSignature
-        index="05"
-        eyebrow="édition numérique"
-        title="Sept enquêtes réunies dans un volume"
-        id="home-publication-title"
-        href="/publications/"
-        linkLabel="Toutes les publications"
-      />
-      <PublicationSpotlight headingLevel="h3" />
-    </section>
-  )}
-
-  {isFirst && (
-    <section class="home-topics" aria-labelledby="followed-topics-title">
-      <SectionSignature
-        index="06"
-        eyebrow="dossiers"
-        title="Les sujets suivis"
-        id="followed-topics-title"
-        href="/sujets/"
-        linkLabel="Tous les sujets"
-      />
-      <div class="topic-grid">
-        {followedTopics.map((topic, index) => (
-          <a href={`/sujet/${topic.slug}/`} class="topic-card" style={`--topic-accent:${topic.accent === 'pink' ? 'var(--color-accent)' : topic.accent === 'amber' ? 'var(--color-amber)' : topic.accent === 'blue' ? '#7aa2f7' : 'var(--color-signal)'}`}>
-            <span class="topic-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}<i></i><b></b></span>
-            <strong>{topic.label}</strong>
-            <p>{topic.question}</p>
-            <span class="topic-cta">Ouvrir le dossier ›</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
 </BaseLayout>
 
 <style>
@@ -327,8 +289,6 @@ const needCards = [
   :root[data-theme='light'] .home-action.primary { color: #fff; }
   .home-needs,
   .home-featured,
-  .home-publication,
-  .home-topics,
   .home-risk,
   .latest-feed { margin-top: 3.4rem; }
   .section-title {
@@ -413,69 +373,6 @@ const needCards = [
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-  .topic-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
-  .topic-card {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--color-line);
-    border-radius: 13px 4px 13px 13px;
-    padding: 0.85rem 0.9rem 0.95rem;
-    background: color-mix(in srgb, var(--color-surface) 45%, transparent);
-    box-shadow: inset 0 1px 0 var(--edge-highlight);
-    transition: border-color 0.16s, background 0.16s, transform 0.16s;
-  }
-  .topic-card:hover {
-    transform: translateY(-1px);
-    border-color: color-mix(in srgb, var(--topic-accent) 55%, var(--color-line));
-    background: color-mix(in srgb, var(--topic-accent) 5%, transparent);
-  }
-  .topic-card::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 0.7rem;
-    height: 0.7rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--topic-accent) 45%, var(--color-line));
-    border-left: 1px solid color-mix(in srgb, var(--topic-accent) 45%, var(--color-line));
-    background: var(--color-ink);
-  }
-  .topic-index {
-    display: grid;
-    grid-template-columns: auto minmax(1.4rem, 3.5rem) auto;
-    align-items: center;
-    gap: 0.35rem;
-    width: min(7.2rem, 65%);
-    margin-bottom: 0.65rem;
-    color: var(--topic-accent);
-    font-family: var(--font-mono);
-    font-size: 0.59rem;
-    letter-spacing: 0.08em;
-  }
-  .topic-index i { height: 1px; background: color-mix(in srgb, var(--topic-accent) 45%, transparent); }
-  .topic-index b { width: 0.34rem; height: 0.34rem; border: 1px solid var(--topic-accent); border-radius: 50%; }
-  .topic-card strong { color: var(--color-bright); font-size: 0.92rem; }
-  .topic-card p {
-    display: -webkit-box;
-    overflow: hidden;
-    margin-top: 0.45rem;
-    color: var(--color-muted);
-    font-family: var(--font-read);
-    font-size: 0.76rem;
-    line-height: 1.45;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-  .topic-card .topic-cta {
-    display: block;
-    margin-top: 0.65rem;
-    color: var(--topic-accent);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
   .home-risk {
     margin-top: 1.65rem;
     border-top: 1px solid var(--color-line);
@@ -486,22 +383,17 @@ const needCards = [
   .feed-heading { margin-bottom: 0.9rem; }
   .feed-heading > p { color: var(--color-muted); }
   @media (min-width: 560px) {
-    .need-grid,
-    .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .need-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (min-width: 880px) {
     .need-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
   @media (max-width: 520px) {
     .home-actions { display: grid; grid-template-columns: 1fr; }
     .home-action { width: 100%; }
-    .home-publication :global(.section-signature) { grid-template-columns: 1fr; }
-    .home-publication :global(.section-signature > a) { justify-self: start; }
   }
   @media (prefers-reduced-motion: reduce) {
     .home-action:hover,
-    .need-card:hover,
-    .topic-card:hover { transform: none; }
+    .need-card:hover { transform: none; }
   }
 </style>

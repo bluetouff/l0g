@@ -203,21 +203,15 @@ test('la page de publication expose le bon fichier et sa traçabilité', () => {
   assert.equal(sha256.length, 64);
 });
 
-test('la publication reste accessible depuis l’accueil et la navigation', () => {
+test('la publication reste accessible depuis l’index et la navigation', () => {
   const index = readFileSync(PUBLICATIONS_INDEX, 'utf8');
   const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
-  const home = readFileSync(HOME, 'utf8');
   const navigation = readFileSync(NAVIGATION, 'utf8');
   const footer = readFileSync(FOOTER, 'utf8');
 
   assert.match(index, /<PublicationSpotlight/u);
   assert.match(spotlight, /href=\{publicationUrl\}/u);
   assert.match(spotlight, /href=\{epubUrl\}/u);
-  assert.match(home, /<PublicationSpotlight headingLevel="h3"/u);
-  assert.ok(
-    home.indexOf('id="dernieres-analyses"') < home.indexOf('class="home-topics"'),
-    'les dernières analyses doivent précéder les sujets suivis',
-  );
   assert.match(navigation, /href: '\/publications\/', label: 'Publications'/u);
   assert.match(footer, /\['\/publications\/', 'Publications'/u);
 });
@@ -378,18 +372,12 @@ test('la page Auditer l’Opacité expose le fichier, la couverture, deux cartes
   assert.deepEqual(jpegDimensions(cover), { width: 1600, height: 2560 });
 });
 
-test('le catalogue et la home gardent leurs cartes lisibles et ordonnées sur mobile', () => {
+test('le catalogue et la home gardent leurs cartes lisibles sur mobile', () => {
   const index = readFileSync(PUBLICATIONS_INDEX, 'utf8');
   const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
-  const home = readFileSync(HOME, 'utf8');
 
   assert.ok(index.indexOf('publication="auditer-opacite"') < index.lastIndexOf('<PublicationSpotlight />'));
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: 1fr/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?\.publication-actions a \{ width: 100%; \}/u);
-
-  const articles = home.indexOf('id="dernieres-analyses"');
-  const epsteinCard = home.lastIndexOf('<PublicationSpotlight headingLevel="h3" />');
-  const topics = home.indexOf('<section class="home-topics"');
-  assert.ok(articles < epsteinCard && epsteinCard < topics, 'la carte Epstein doit suivre les articles et précéder les sujets');
 });
