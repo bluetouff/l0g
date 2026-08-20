@@ -1,0 +1,488 @@
+---
+title: "The extra degree"
+description: "At Bugey, the Rhône has a normal limit, a second tier activated when RTE requires units, and then a case-by-case exceptional decision. Part three of our investigation into water and European electricity asks who turns a grid need into an extra degree, and when the river's actual response becomes known."
+pubDate: 2026-08-20T18:20:00+02:00
+updatedDate: 2026-08-20T18:20:00+02:00
+tags: ["France", "electricity", "water", "nuclear", "RTE", "ASNR", "environment", "investigation"]
+draft: false
+sourceArticle: "degre-de-trop-rejets-thermiques-nucleaire"
+sourceUpdatedDate: 2026-08-20
+quickTake:
+  fact: "On 10 July 2026, ASNR allowed Bugey reactors 4 and 5 to continue discharging water as long as the Rhône's daily average upstream-downstream warming remained at or below 1°C, and only while RTE required their operation. Projections were not expected to take downstream temperature above 28°C."
+  importance: "The decision created a third tier beyond the normal summer limit of 26°C and the permanent exceptional-climatic-conditions regime at 27°C. The minimum output requested by RTE is not public."
+  uncertainty: "The 28°C figure is a projection used to support the decision, not its direct operative limit. A preliminary ecological assessment is due by 31 October 2026 and the final assessment by 31 March 2027."
+---
+
+import ThermalThresholdSelector from '../../components/ThermalThresholdSelector.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*On 10 July 2026, France did not decide that the Rhône could now rise freely to 28°C. It took a narrower and more revealing decision. Bugey reactors 4 and 5 could continue discharging water into the river provided that daily average warming between upstream and downstream remained at or below 1°C, and only while RTE required the units for grid security. The projections examined by ASNR indicated that this rule should not take downstream temperature above 28°C. The distinction is legal. It is also political: the river limit is public, while the number of megawatts the grid wanted to preserve is not.*
+
+This third part continues the investigation that began with [a few centimetres of the Danube](/en/analysis/how-much-is-one-centimetre-of-danube-worth/) and then widened to [Europe's wet megawatt](/en/analysis/wet-megawatt-europe-water-electricity/).
+
+The scale of the question has changed.
+
+It is no longer enough to ask whether a power plant depends on water. We need to understand **who arbitrates when the river and the grid demand different things**.
+
+## Three steps for the same Rhône
+
+French **[thermal-discharge limits](/glossaire/rejet-thermique/)** do not operate through one national threshold.
+
+Each site has its own prescriptions, often split by season, river flow, upstream temperature and cooling design.
+
+At Bugey, permanent regulation already contains two tiers.
+
+From 1 May to 15 September, the ordinary regime caps mean downstream temperature at **26°C** and upstream-downstream warming at **5°C**.
+
+When that first tier can no longer be met while RTE asks for minimum output to be maintained, the **[exceptional climatic conditions](/glossaire/cce/)** regime, CCE, allows the relevant units to operate with a downstream maximum of **27°C** and warming capped at **1°C**. This second tier is already written into permanent regulation. ASNR is informed, but it does not adopt a fresh decision each time the tier is activated. ([ASNR, July 2025 technical note](https://www.asnr.fr/sites/asnr/files/2025-07/rejets-thermique-des-centrales-nucleaires-pendant-les-periodes-estivales.pdf))
+
+On 10 July 2026, a third tier appeared.
+
+EDF had submitted a request two days earlier. The energy ministry had confirmed that keeping reactors 4 and 5 operating from 12 to 20 July constituted a public necessity. ASNR then applied Article R. 593-40 of the Environmental Code and adopted a temporary case-by-case modification. ([ASNR decision 2026-DC-052](https://reglementation-controle.asnr.fr/reglementation/bulletin-officiel-de-l-asnr/installations-nucleaires/decisions-individuelles/decision-no-2026-dc-052-de-l-asnr-du-10-juillet-2026))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 455" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The three thermal-discharge tiers applying at Bugey in summer 2026: normal conditions, exceptional climatic conditions and a temporary ASNR decision" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="455" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Bugey: three regulatory steps</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">The third tier is not simply a higher CCE limit.</text>
+  <rect x="28" y="92" width="204" height="244" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="46" y="120" fill="#5eead4" font-size="12" font-weight="800">1. NORMAL</text>
+  <text x="46" y="140" fill="#9ca3ae" font-size="9">1 May to 15 September</text>
+  <text x="46" y="187" fill="#f3f5f8" font-size="20" font-weight="800">≤ 26°C</text>
+  <text x="46" y="205" fill="#aeb4be" font-size="9">mean downstream temperature</text>
+  <line x1="46" y1="226" x2="210" y2="226" stroke="#2c323d"/>
+  <text x="46" y="255" fill="#f3f5f8" font-size="18" font-weight="800">ΔT ≤ 5°C</text>
+  <text x="46" y="274" fill="#aeb4be" font-size="9">ordinary operation</text>
+  <text x="46" y="308" fill="#7f8793" font-size="9">Permanent prescription</text>
+  <rect x="258" y="92" width="204" height="244" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="276" y="120" fill="#7aa2f7" font-size="12" font-weight="800">2. CCE</text>
+  <text x="276" y="140" fill="#9ca3ae" font-size="9">RTE requires the units</text>
+  <text x="276" y="187" fill="#f3f5f8" font-size="20" font-weight="800">≤ 27°C</text>
+  <text x="276" y="205" fill="#aeb4be" font-size="9">mean downstream temperature</text>
+  <line x1="276" y1="226" x2="440" y2="226" stroke="#2c323d"/>
+  <text x="276" y="255" fill="#f3f5f8" font-size="18" font-weight="800">ΔT ≤ 1°C</text>
+  <text x="276" y="274" fill="#aeb4be" font-size="9">planned temporary exposure</text>
+  <text x="276" y="308" fill="#7f8793" font-size="9">Permanent second tier</text>
+  <rect x="488" y="92" width="204" height="244" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="506" y="120" fill="#ff4d87" font-size="12" font-weight="800">3. R. 593-40</text>
+  <text x="506" y="140" fill="#9ca3ae" font-size="9">12 to 20 July 2026</text>
+  <text x="506" y="187" fill="#f3f5f8" font-size="20" font-weight="800">ΔT ≤ 1°C</text>
+  <text x="506" y="205" fill="#aeb4be" font-size="9">direct operative limit</text>
+  <line x1="506" y1="226" x2="670" y2="226" stroke="#2c323d"/>
+  <text x="506" y="253" fill="#f5b13d" font-size="14" font-weight="800">projected ≤ 28°C</text>
+  <text x="506" y="274" fill="#aeb4be" font-size="9">reactors 4 and 5 only</text>
+  <text x="506" y="308" fill="#7f8793" font-size="9">Case-by-case ASNR decision</text>
+  <path d="M232 214 H258" stroke="#89909b" stroke-width="2"/>
+  <polygon points="258,214 248,208 248,220" fill="#89909b"/>
+  <path d="M462 214 H488" stroke="#89909b" stroke-width="2"/>
+  <polygon points="488,214 478,208 478,220" fill="#89909b"/>
+  <rect x="28" y="365" width="664" height="52" rx="6" fill="#111318" stroke="#2a303a"/>
+  <text x="44" y="387" fill="#f5b13d" font-size="10" font-weight="800">Method point</text>
+  <text x="44" y="405" fill="#c7ccd5" font-size="9">28°C supports the assessment. Article 1 directly caps warming at 1°C.</text>
+  <text x="24" y="443" fill="#777f8c" font-size="9">SOURCES: EDF Open Data; ASNR July 2025 note and decision 2026-DC-052.</text>
+</svg>
+<figcaption>The first two tiers are permanent. The third requires an exceptional situation, a public necessity and a temporary ASNR decision.</figcaption>
+</figure>
+
+The shorthand “26, 27, 28” helps explain the staircase. It must not erase the exact construction of the decision.
+
+The operative article adopted on 10 July does not turn 28°C into an automatic ceiling. It caps **daily average warming after mixing at 1°C**. The 28°C figure appears in the reasoning: based on projected upstream temperatures, the 1°C cap was not expected to take the Rhône beyond the reference used for cyprinid waters in that section of the river.
+
+## A degree in the river is not a degree of reactor safety
+
+The phrase “reactor cooling” creates a persistent confusion.
+
+In a pressurised-water reactor, the primary circuit transfers heat to the secondary circuit. Steam in the secondary circuit drives the turbine and then has to be condensed. At that stage, water from the river or sea is used to move waste heat into the environment. ([ASNR, cooling principle](https://www.asnr.fr/sites/asnr/files/2025-07/rejets-thermique-des-centrales-nucleaires-pendant-les-periodes-estivales.pdf))
+
+A reduction caused by thermal-discharge rules therefore primarily means that the plant must comply with an environmental or hydrological prescription. It does not automatically mean the reactor core can no longer be kept safely cooled.
+
+Chooz makes that distinction unusually clear.
+
+On 11 July 2026, the Meuse was flowing at **21.3 m³/s**. EDF said **6.3 m³/s** was sufficient to cool its reactors. Unit 2 was nevertheless shut down preventively in order to comply with the 1998 Franco-Belgian intergovernmental agreement on Meuse flow. ([EDF, Chooz, 11 July 2026](https://www.edf.fr/la-centrale-nucleaire-de-chooz/les-actualites-de-la-centrale-nucleaire-de-chooz/adaptation-de-la-production-de-la-centrale-nucleaire-de-chooz-en-raison-des-conditions-climatiques))
+
+The constraint was real.
+
+It arose from a water-sharing rule, not from the physical loss of the ability to keep the reactor in a safe state.
+
+At least four mechanisms need to remain separate:
+
+- nuclear equipment safety during extreme heat;
+- condenser efficiency when intake water is warmer;
+- environmental limits on downstream temperature and warming;
+- river-flow, basin or international sharing rules.
+
+A fifth layer appears when RTE asks for a unit to remain online.
+
+## One site, two thermal signatures
+
+Bugey provides an almost controlled comparison.
+
+Reactor 3 uses **[once-through cooling](/glossaire/refroidissement-en-circuit-ouvert/)**. Water crosses the condenser and returns directly to the Rhône. ASNR says an open circuit typically withdraws **40 to 60 m³/s** and can warm the receiving water by several degrees.
+
+Reactors 4 and 5 use **[cooling towers](/glossaire/tour-aerorefrigerante/)**. Make-up water of roughly **2 m³/s** replaces evaporation and renews the circuit. Residual warming in the river is then measured in tenths of a degree. ([ASNR, July 2025 technical note](https://www.asnr.fr/sites/asnr/files/2025-07/rejets-thermique-des-centrales-nucleaires-pendant-les-periodes-estivales.pdf))
+
+The 10 July decision translates that design difference directly.
+
+Reactor 3 had to shut if the Rhône kept warming. Reactors 4 and 5 could be kept at a minimum level of generation.
+
+
+## RTE asks, the ministry confirms, ASNR decides
+
+Public discussion can make it sound as if one authority simply “raises the limit”.
+
+The actual chain is more fragmented.
+
+EDF observes weather, hydrology and unit status. It submits a request when it concludes that ordinary and permanent prescriptions may no longer be sufficient.
+
+RTE states the electricity-system need and requires a minimum generation level.
+
+The energy ministry confirms that maintaining this output constitutes a public necessity.
+
+ASNR assesses the exceptional situation, the proposed limit and the monitoring programme. It legally decides the temporary modification.
+
+Regional state services responsible for water and biodiversity are consulted on the monitoring arrangement.
+
+EDF then operates the units within the adopted limits and reports actual temperatures and any observed ecological repercussions each day. ([ASNR decision 2026-DC-052, Articles 1 to 4](https://reglementation-controle.asnr.fr/content/download/210156/file/2026-DC-052.pdf))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decision chain between EDF, RTE, the ministry, ASNR and environmental monitoring for a temporary thermal-discharge modification" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="500" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Who turns a grid need into a prescription?</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">RTE does not authorise the discharge. ASNR does not define grid need alone.</text>
+  <rect x="42" y="91" width="180" height="70" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="58" y="116" fill="#7aa2f7" font-size="11" font-weight="800">WEATHER + HYDROLOGY</text>
+  <text x="58" y="137" fill="#c4cad2" font-size="9">forecasts, temperature, flow</text>
+  <rect x="42" y="205" width="180" height="82" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="58" y="230" fill="#f5b13d" font-size="11" font-weight="800">EDF</text>
+  <text x="58" y="250" fill="#c4cad2" font-size="9">requests the modification</text>
+  <text x="58" y="268" fill="#ff9abb" font-size="8">8 July file not public</text>
+  <rect x="270" y="91" width="180" height="82" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="286" y="116" fill="#ff4d87" font-size="11" font-weight="800">RTE</text>
+  <text x="286" y="136" fill="#c4cad2" font-size="9">requires minimum output</text>
+  <text x="286" y="154" fill="#ff9abb" font-size="8">MW and exact reason not public</text>
+  <rect x="498" y="91" width="180" height="82" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="514" y="116" fill="#f5b13d" font-size="11" font-weight="800">MINISTRY</text>
+  <text x="514" y="136" fill="#c4cad2" font-size="9">confirms public necessity</text>
+  <text x="514" y="154" fill="#ff9abb" font-size="8">9 July letter not public</text>
+  <rect x="270" y="226" width="180" height="88" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="286" y="251" fill="#5eead4" font-size="11" font-weight="800">ASNR</text>
+  <text x="286" y="271" fill="#c4cad2" font-size="9">assesses and decides</text>
+  <text x="286" y="289" fill="#91f2df" font-size="8">public decision 2026-DC-052</text>
+  <rect x="270" y="362" width="180" height="82" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="286" y="387" fill="#7aa2f7" font-size="11" font-weight="800">OPERATION</text>
+  <text x="286" y="407" fill="#c4cad2" font-size="9">adjusted output + monitoring</text>
+  <text x="286" y="425" fill="#91f2df" font-size="8">daily temperature reporting</text>
+  <path d="M132 161 V205" stroke="#8e96a2" stroke-width="2"/>
+  <polygon points="132,205 126,195 138,195" fill="#8e96a2"/>
+  <path d="M222 246 H270" stroke="#8e96a2" stroke-width="2"/>
+  <polygon points="270,246 260,240 260,252" fill="#8e96a2"/>
+  <path d="M360 173 V226" stroke="#8e96a2" stroke-width="2"/>
+  <polygon points="360,226 354,216 366,216" fill="#8e96a2"/>
+  <path d="M498 132 H450" stroke="#8e96a2" stroke-width="2"/>
+  <polygon points="450,132 460,126 460,138" fill="#8e96a2"/>
+  <path d="M360 314 V362" stroke="#8e96a2" stroke-width="2"/>
+  <polygon points="360,362 354,352 366,352" fill="#8e96a2"/>
+  <rect x="42" y="340" width="180" height="104" rx="7" fill="#111318" stroke="#39404c"/>
+  <text x="58" y="366" fill="#d9dde4" font-size="10" font-weight="800">MISSING FILES</text>
+  <text x="58" y="388" fill="#c1c7d0" font-size="8">• minimum output requested</text>
+  <text x="58" y="405" fill="#c1c7d0" font-size="8">• grid case without operation</text>
+  <text x="58" y="422" fill="#c1c7d0" font-size="8">• monitoring appendix D</text>
+  <text x="24" y="484" fill="#777f8c" font-size="9">SOURCE: ASNR 2026-DC-052. Institutional reading and l0g document inventory.</text>
+</svg>
+<figcaption>The procedure contains real checks, but public documents describe the river far better than the electricity need used to justify the decision.</figcaption>
+</figure>
+
+This chain contains real safeguards.
+
+It also contains a blind spot.
+
+The decision says RTE required a “minimum level of electricity generation” from reactors 4 and 5 until 20 July. It does not state the number.
+
+EDF's 8 July request is not attached.
+
+The ministry's 9 July letter is not published.
+
+Appendix D, which describes the specific monitoring programme, is not annexed to the public decision.
+
+The reader can therefore see:
+
+- the ordinary environmental limit;
+- the temporary warming cap;
+- the authorised units;
+- the period;
+- the ecological reporting deadlines.
+
+The reader cannot see:
+
+- the minimum MW requested;
+- the exact grid constraint;
+- the alternatives considered;
+- the no-operation scenario;
+- the MWh the decision was meant to preserve.
+
+Transparency is asymmetric.
+
+**The river is described in degrees. The grid is still described by a general phrase: power-system security.**
+
+## Comfortable national adequacy can coexist with a local request
+
+On 25 June, RTE said the heatwave required no particular vigilance for national security of supply.
+
+Average demand was expected at 58 GW. Air conditioning added 10 to 14 GW relative to seasonal conditions, but available resources remained sufficient. ([RTE, 25 June 2026](https://www.rte-france.com/actualites/canicule-securite-approvisionnement-electricite-appelle-aucune-vigilance-particuliere))
+
+The same day, RTE required Nogent 2 to remain online under CCE rules. Two days later, it requested Bugey 4 and 5.
+
+The contradiction is only apparent.
+
+A system can have enough energy nationally and still face a constraint involving:
+
+- a geographic area;
+- a transmission corridor;
+- reserves;
+- voltage;
+- stability;
+- a particular hour when solar output falls.
+
+The documents collected do not allow us to choose between those explanations.
+
+The rigorous wording therefore remains the wording used by EDF and ASNR: RTE required the units to contribute to power-system security.
+
+The investigation needs the detailed RTE requests before that phrase can become a technical diagnosis.
+
+## Summer 2026 did not apply one national rule
+
+Different plants followed different decisions during the same heat episode.
+
+| Site | Ordinary regime | Exceptional mechanism documented in 2026 |
+|---|---|---|
+| Bugey | 26°C downstream in summer, ΔT 5°C | CCE at 27°C and ΔT 1°C, then R. 593-40 decision with ΔT 1°C and downstream projected below 28°C |
+| Nogent | 28°C downstream, ΔT 3°C | unit 2 held under CCE up to 30°C when RTE required it |
+| Saint-Alban | 28°C downstream in summer, ΔT 3°C | CCE at 29°C; the selected EDF dataset does not specify this regime's ΔT |
+| Golfech | 28°C downstream, ΔT 1.25°C in summer | CCE available up to 30°C, while unit 2 was repeatedly stopped under ordinary rules |
+| Tricastin | 28°C downstream, ΔT varies with flow | CCE at 29°C and ΔT 3°C |
+| Chooz | site-specific Meuse thermal rules | shutdown can also follow the Franco-Belgian flow agreement |
+
+These thresholds are not an ecological fragility league table.
+
+They arise from site-specific legal texts, measurement points, seasons and cooling designs. EDF's open dataset contains **51 records**, not one number per plant. ([EDF Open Data, thermal-discharge thresholds and limits](https://opendata.edf.fr/datasets/seuils-et-limites-des-rejets-thermiques-aux-abords-des-centrales-nucleaires-d-edf-sa))
+
+A number removed from that context becomes misleading very quickly.
+
+## Test the published rule
+
+The selector below returns documented rules for five plants.
+
+It shows how date, Tricastin canal flow, an RTE request and Bugey's temporary decision change the applicable regime.
+
+<ThermalThresholdSelector lang="en" />
+
+[Open the full-width selector](/en/tools/thermal-discharge-thresholds/).
+
+The tool does not simulate a thermal plume or a biological response.
+
+It does not decide whether RTE should require a unit.
+
+It simply exposes a documentary logic currently spread across EDF data, decrees, ASNR decisions and operating notices.
+
+## The grid decides quickly; the ecosystem answers slowly
+
+The procedure operates under severe time pressure.
+
+Weather and hydrological conditions can only be forecast accurately a few days ahead. ASNR repeatedly notes that limitation. Electricity decisions may therefore have to be taken within hours or days.
+
+Upstream temperature, downstream temperature and warming can be measured immediately.
+
+Dissolved oxygen, some physico-chemical parameters and visible fish mortality can be monitored quickly.
+
+Cyanobacteria require sampling and laboratory analysis. EDF's monitoring framework uses enhanced frequency and a **1 mm³/L** vigilance threshold for potentially toxic cyanobacteria.
+
+At sites concerned by *Naegleria fowleri*, the framework includes daily monitoring during sensitive periods, with vigilance and action levels written into site-specific prescriptions.
+
+Diatoms, phytoplankton and especially fish-community structure respond over longer periods. EDF describes fish populations as a compartment whose dynamics are assessed over weeks, months or even years. The protocol leaves at least one month between two fishing surveys so as not to add stress to fish already exposed to high temperatures. ([EDF, surface-water monitoring in an exceptional situation](https://www.asnr.fr/sites/asnr/files/2025-07/dossier-edf-surveillance-eaux-de-surface-en-situation-exceptionnelle.pdf))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Time lag between an immediate electricity decision and the time required to measure ecological effects of thermal discharges" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="470" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// The grid decides now; the river answers later</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">The evidence calendar is not the operating calendar.</text>
+  <line x1="52" y1="130" x2="670" y2="130" stroke="#343a45" stroke-width="3"/>
+  <circle cx="72" cy="130" r="8" fill="#ff4d87"/>
+  <circle cx="205" cy="130" r="8" fill="#f5b13d"/>
+  <circle cx="350" cy="130" r="8" fill="#7aa2f7"/>
+  <circle cx="505" cy="130" r="8" fill="#5eead4"/>
+  <circle cx="650" cy="130" r="8" fill="#5eead4"/>
+  <text x="72" y="100" text-anchor="middle" fill="#ff4d87" font-size="10" font-weight="800">DAY 0</text>
+  <text x="205" y="100" text-anchor="middle" fill="#f5b13d" font-size="10" font-weight="800">DAYS</text>
+  <text x="350" y="100" text-anchor="middle" fill="#7aa2f7" font-size="10" font-weight="800">WEEKS</text>
+  <text x="505" y="100" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="800">31 OCT</text>
+  <text x="650" y="100" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="800">31 MAR</text>
+  <rect x="38" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="52" y="190" fill="#ff4d87" font-size="10" font-weight="800">DECISION</text>
+  <text x="52" y="211" fill="#c8cdd5" font-size="8">weather</text>
+  <text x="52" y="228" fill="#c8cdd5" font-size="8">RTE need</text>
+  <text x="52" y="245" fill="#c8cdd5" font-size="8">ASNR limit</text>
+  <rect x="176" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="190" y="190" fill="#f5b13d" font-size="10" font-weight="800">FAST</text>
+  <text x="190" y="211" fill="#c8cdd5" font-size="8">temperature</text>
+  <text x="190" y="228" fill="#c8cdd5" font-size="8">oxygen</text>
+  <text x="190" y="245" fill="#c8cdd5" font-size="8">visible mortality</text>
+  <rect x="314" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="328" y="190" fill="#7aa2f7" font-size="10" font-weight="800">DELAYED</text>
+  <text x="328" y="211" fill="#c8cdd5" font-size="8">cyanobacteria</text>
+  <text x="328" y="228" fill="#c8cdd5" font-size="8">phytoplankton</text>
+  <text x="328" y="245" fill="#c8cdd5" font-size="8">diatoms</text>
+  <rect x="452" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="466" y="190" fill="#5eead4" font-size="10" font-weight="800">2026 REPORT</text>
+  <text x="466" y="211" fill="#c8cdd5" font-size="8">operation</text>
+  <text x="466" y="228" fill="#c8cdd5" font-size="8">initial impact</text>
+  <text x="466" y="245" fill="#c8cdd5" font-size="8">possible remedy</text>
+  <rect x="590" y="166" width="100" height="100" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="604" y="190" fill="#5eead4" font-size="10" font-weight="800">FINAL</text>
+  <text x="604" y="211" fill="#c8cdd5" font-size="8">definitive</text>
+  <text x="604" y="228" fill="#c8cdd5" font-size="8">Bugey</text>
+  <text x="604" y="245" fill="#c8cdd5" font-size="8">assessment</text>
+  <rect x="38" y="310" width="652" height="104" rx="7" fill="#111318" stroke="#2f3540"/>
+  <text x="54" y="336" fill="#f3f5f8" font-size="11" font-weight="800">2022 operating experience</text>
+  <text x="54" y="358" fill="#c8cdd5" font-size="9">24 cumulative days: Tricastin 9, Bugey 8, Golfech 6, Saint-Alban 1.</text>
+  <text x="54" y="378" fill="#c8cdd5" font-size="9">No attributable lasting effect identified in the sites and parameters studied.</text>
+  <text x="54" y="398" fill="#f5b13d" font-size="9">Saint-Alban: small 2022 biological differences, no longer observed in 2023.</text>
+  <text x="24" y="455" fill="#777f8c" font-size="9">SOURCES: ASNR 2022-2025 reviews; Bugey decision 2026-DC-052; EDF monitoring file.</text>
+</svg>
+<figcaption>The operating decision can precede an interpretable signal from slow-response biological compartments. Extended monitoring and delayed reports are meant to bridge that gap.</figcaption>
+</figure>
+
+The 10 July Bugey decision sets out that timetable explicitly.
+
+EDF had to report actual downstream temperatures and any observed ecological repercussions daily to ASNR, the ministry, the prefecture and the regional environmental authority.
+
+A preliminary report is due by **31 October 2026**.
+
+The final assessment is due by **31 March 2027**.
+
+Compensatory measures are required if impacts on habitats or species are identified.
+
+This article therefore appears before the complete verdict.
+
+That limitation is not external to the investigation. It is one of its findings.
+
+## The 2022 evidence is reassuring without closing the issue
+
+During summer 2022, temporary decisions were used for **24 cumulative days**: 9 at Tricastin, 8 at Bugey, 6 at Golfech and 1 at Saint-Alban. Blayais did not ultimately use them. ([ASNR, 2022 summer operating experience](https://reglementation-controle.asnr.fr/information/archives-des-actualites/l-asn-tire-le-retour-d-experience-des-decisions-prises-pendant-la-canicule-de-l-ete-2022))
+
+Enhanced monitoring found no particular upstream-downstream difference at Golfech, Tricastin and Bugey in the physico-chemical and microbiological parameters studied. No fish mortality or deterioration in environmental health was identified.
+
+At Saint-Alban, small differences in phytoplankton and benthic diatoms were observed during the summer but did not persist beyond the season. A difference in juvenile fish structure was still visible in autumn 2022 and was no longer observed in 2023. ([ASNR, July 2025 technical note](https://www.asnr.fr/sites/asnr/files/2025-07/rejets-thermique-des-centrales-nucleaires-pendant-les-periodes-estivales.pdf))
+
+The useful conclusion is narrow:
+
+**the 2022 monitoring did not identify a lasting effect attributable to the temporary authorisations in the sites and parameters studied.**
+
+That sentence does not establish that one extra degree would be harmless:
+
+- for a different duration;
+- under a different flow;
+- in another river;
+- across several plants in the same basin;
+- through repeated hotter summers.
+
+ASNR itself calls for a territorial approach to potential cumulative effects where several sites share a basin.
+
+## A rare decision, and governance that needs clearer evidence
+
+EDF estimates that losses caused by high temperatures and low river flows have averaged roughly **0.3% of annual nuclear output** since 2000. ([EDF, adapting the fleet to climatic conditions](https://www.edf.fr/la-centrale-nucleaire-du-blayais/les-actualites-de-la-centrale-nucleaire-du-blayais/adaptation-de-la-production-de-la-centrale-du-blayais-en-raison-des-conditions-climatiques))
+
+That average prevents a claim that the French fleet is structurally unable to operate in summer.
+
+It does not resolve the governance question raised by a few concentrated days.
+
+An exceptional authorisation can be:
+
+- legally constrained;
+- technically justified;
+- monitored;
+- temporary;
+- and still insufficiently documented for the public on the electricity side.
+
+The 10 July decision describes the Rhône, the units, the warming cap, the authorities receiving daily reports and the ecological timetable.
+
+It refers to a minimum generation level without publishing it.
+
+That number would connect the environmental decision to the electricity system.
+
+It would allow the public to ask:
+
+- how many MWh were preserved;
+- what alternative would have replaced the units;
+- what cost or risk the system avoided;
+- how much additional heat corresponded to each MWh maintained.
+
+Without those documents, public debate is pushed toward two incomplete stories.
+
+One says the state sacrificed a river to nuclear power.
+
+The other says a small adjustment with no lasting effect was enough to secure the grid.
+
+The evidence supports a more demanding conclusion.
+
+**An exceptional authorisation is neither proof of danger nor proof of harmlessness. It is a decision under uncertainty.**
+
+The quality of that decision depends on two forms of transparency.
+
+The first already exists to a considerable extent: temperature, warming, monitoring and ecological reporting deadlines.
+
+The second still needs to be built: MW requested, grid reason, alternatives and MWh actually preserved.
+
+The extra degree therefore reaches beyond one degree measured in the Rhône.
+
+It is the point at which the electricity output asked of the river should become as public as the temperature imposed on it.
+
+### Established findings
+
+French regulation distinguishes an ordinary regime and, for some sites, a permanent second tier of exceptional climatic conditions activated when RTE requires minimum output.
+
+The 10 July 2026 Bugey decision temporarily added a third tier under Article R. 593-40. It covered reactors 4 and 5, capped daily average warming at 1°C and applied only while RTE required their operation.
+
+Different cooling designs explain why reactor 3 had to stop while reactors 4 and 5 could remain online.
+
+The 2022 monitoring did not identify a lasting effect attributable to the temporary authorisations in the sites and parameters studied.
+
+### Remaining blind spots
+
+Public documents do not reveal the minimum output requested by RTE, the exact grid reason, the alternative scenario or the MWh preserved.
+
+The final ecological effect of the 2026 Bugey decision is not yet known. The regulatory deadlines are 31 October 2026 for the preliminary report and 31 March 2027 for the final assessment.
+
+The 2022 evidence cannot be extrapolated automatically to every duration, basin or future repetition.
+
+### Method and limitations
+
+Data cut-off: **20 August 2026**.
+
+The threshold matrix is based first on EDF's open dataset and then on legal decisions and operator notices. Strict and inclusive signs, seasonal periods and measurement points are retained where available. EDF's portal reports 51 records, an irregular update frequency and a last dataset modification on 31 July 2024. The 2026 notices document recent activations without being treated as a consolidated legal update of the dataset.
+
+The “26, 27, 28” summary is used as a teaching device. ASNR decision 2026-DC-052 directly caps daily average warming at 1°C. The 28°C downstream figure belongs to its forecast and environmental reasoning.
+
+CCN and CCE describe published permanent regimes. The R. 593-40 modification is a distinct exceptional situation.
+
+The 2026 chronology is reconstructed from EDF notices. Hourly output and detailed RTE requests remain to be collected before any economic calculation.
+
+The 2022 ecological findings are reported within the exact perimeter described by ASNR. Failure to identify a lasting effect is not general proof that no effect exists.
+
+### Main sources
+
+- [ASNR decision 2026-DC-052, 10 July 2026](https://reglementation-controle.asnr.fr/reglementation/bulletin-officiel-de-l-asnr/installations-nucleaires/decisions-individuelles/decision-no-2026-dc-052-de-l-asnr-du-10-juillet-2026)
+- [ASNR, Thermal discharges from nuclear plants during summer periods, July 2025](https://www.asnr.fr/sites/asnr/files/2025-07/rejets-thermique-des-centrales-nucleaires-pendant-les-periodes-estivales.pdf)
+- [ASNR, operating experience from the temporary decisions of summer 2022](https://reglementation-controle.asnr.fr/information/archives-des-actualites/l-asn-tire-le-retour-d-experience-des-decisions-prises-pendant-la-canicule-de-l-ete-2022)
+- [EDF Open Data, thermal-discharge thresholds and limits around nuclear plants](https://opendata.edf.fr/datasets/seuils-et-limites-des-rejets-thermiques-aux-abords-des-centrales-nucleaires-d-edf-sa)
+- [EDF, surface-water monitoring in an exceptional situation](https://www.asnr.fr/sites/asnr/files/2025-07/dossier-edf-surveillance-eaux-de-surface-en-situation-exceptionnelle.pdf)
+- [RTE, security of supply during the heatwave, 25 June 2026](https://www.rte-france.com/actualites/canicule-securite-approvisionnement-electricite-appelle-aucune-vigilance-particuliere)
+- [EDF, Bugey chronology, June-July 2026](https://www.edf.fr/actualites-des-unites-de-production-de-la-centrale-nucleaire-du-bugey)
+- [EDF, Bugey 4 and 5 under CCE, 13 August 2026](https://www.edf.fr/maintien-en-production-des-unites-de-production-ndeg4-et-ndeg5-dans-le-contexte-des-conditions-climatiques-exceptionnelles-cce)
+- [EDF, Nogent-sur-Seine adaptation and CCE in June 2026](https://www.edf.fr/adaptation-de-la-production-de-l-unite-de-production-ndeg2-de-la-centrale-de-nogent-sur-seine-en-raison-des-conditions-climatiques)
+- [EDF, Chooz, Meuse flow and the Franco-Belgian agreement, 11 July 2026](https://www.edf.fr/la-centrale-nucleaire-de-chooz/les-actualites-de-la-centrale-nucleaire-de-chooz/adaptation-de-la-production-de-la-centrale-nucleaire-de-chooz-en-raison-des-conditions-climatiques)
+- [EDF, Saint-Alban 1 under CCE, 17 August 2026](https://www.edf.fr/la-centrale-nucleaire-de-saint-alban-saint-maurice/les-actualites-de-la-centrale-nucleaire-de-saint-alban/maintien-en-production-de-l-unite-de-production-ndeg1-dans-le-contexte-des-conditions-climatiques-exceptionnelles-cce)
+- [EDF, Golfech shutdown of 29 July and reconnection of 7 August 2026](https://www.edf.fr/la-centrale-nucleaire-de-golfech/les-actualites-de-la-centrale-nucleaire-de-golfech/l-unite-de-production-ndeg2-reconnectee-au-reseau-electrique-national-2)
+- [EDF, adapting the nuclear fleet to high temperatures and low river flows](https://www.edf.fr/la-centrale-nucleaire-du-blayais/les-actualites-de-la-centrale-nucleaire-du-blayais/adaptation-de-la-production-de-la-centrale-du-blayais-en-raison-des-conditions-climatiques)
+
+*Next part: the dam that does more than generate kilowatt-hours, an investigation into the time value of stored water when the system must choose between producing today and preserving flexibility for tomorrow.*

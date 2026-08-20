@@ -1,0 +1,46 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import ThermalThresholdSelector from '../../../components/ThermalThresholdSelector.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import {
+  THERMAL_THRESHOLD_DATA_DATE,
+  THERMAL_THRESHOLD_MODEL_VERSION,
+  THERMAL_THRESHOLD_SOURCES,
+} from '../../../lib/thermal-threshold-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'thermal-discharge-thresholds');
+if (!tool) throw new Error('Thermal threshold tool is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title, description: tool.en.description, url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'en',
+  isAccessibleForFree: true, softwareVersion: THERMAL_THRESHOLD_MODEL_VERSION,
+  dateModified: THERMAL_THRESHOLD_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: THERMAL_THRESHOLD_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout title="Which thermal-discharge threshold applies?" description="Retrieve the published thermal-discharge rule by plant, season, flow and RTE context. Local tool with explicit sources and limits." alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <section class="tool-hero rise" data-pagefind-ignore>
+    <p class="mono-label">// analysis tool · v{THERMAL_THRESHOLD_MODEL_VERSION}</p>
+    <h1>Thermal-discharge threshold selector</h1>
+    <p>The rule is public. Its activation depends on the plant, date and grid context.</p>
+    <small>Five French nuclear plants. No scenario predicts river temperature, reactor safety or biological response.</small>
+  </section>
+  <ThermalThresholdSelector lang="en" mode="full" />
+</EnglishGuidesLayout>
+
+<style>
+  .tool-hero { border:1px solid var(--color-line); border-radius:14px; padding:clamp(1rem,3vw,1.7rem); background:color-mix(in srgb,var(--color-surface) 72%,transparent); }
+  .tool-hero .mono-label { color:var(--color-signal); }
+  .tool-hero h1 { max-width:48rem; margin-top:.8rem; color:var(--color-bright); font-family:var(--font-display); font-size:clamp(2rem,5vw,3.5rem); line-height:1.04; }
+  .tool-hero>p:not(.mono-label) { max-width:48rem; margin-top:.9rem; color:var(--color-paper); font-size:1rem; line-height:1.65; }
+  .tool-hero small { display:block; max-width:48rem; margin-top:.6rem; color:var(--color-muted); line-height:1.55; }
+</style>

@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ThermalThresholdSelector from '../../components/ThermalThresholdSelector.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import {
+  THERMAL_THRESHOLD_DATA_DATE,
+  THERMAL_THRESHOLD_MODEL_VERSION,
+  THERMAL_THRESHOLD_SOURCES,
+} from '../../lib/thermal-threshold-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'thermal-discharge-thresholds');
+if (!tool) throw new Error('Thermal threshold tool is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title, description: tool.fr.description, url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'fr',
+  isAccessibleForFree: true, softwareVersion: THERMAL_THRESHOLD_MODEL_VERSION,
+  dateModified: THERMAL_THRESHOLD_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: THERMAL_THRESHOLD_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout title="Quel seuil thermique s’applique ?" description="Retrouvez la règle de rejet thermique publiée selon le site, la saison, le débit et le contexte RTE. Outil local, sources et limites explicites." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <PageHero index="01" kicker="outil d’analyse" title="Le sélecteur des seuils thermiques" description="La règle est publique. Son activation dépend du site, de la date et du contexte réseau." secondary="Cinq centrales françaises. Aucun scénario ne prédit la température du fleuve, la sûreté du réacteur ou la réponse biologique." glyph="observe" accent="var(--color-signal)" stats={[
+    { value: `v${THERMAL_THRESHOLD_MODEL_VERSION}`, label: 'moteur auditable' },
+    { value: '5', label: 'centrales documentées' },
+    { value: 'local', label: 'aucune donnée envoyée' },
+  ]} />
+  <ThermalThresholdSelector lang="fr" mode="full" />
+</BaseLayout>

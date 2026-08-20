@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'thermal-discharge-thresholds',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-20',
+    modelHref: '/outils/seuils-rejets-thermiques/model.json',
+    fr: {
+      title: 'Le sélecteur des seuils thermiques',
+      eyebrow: 'eau et électricité',
+      description: 'Choisissez une centrale, une date, un débit et le contexte RTE pour retrouver la règle publiée sans la confondre avec une prévision du fleuve.',
+      question: 'Quelle limite s’applique, et sur quelle base documentaire ?',
+      href: '/outils/seuils-rejets-thermiques/',
+      articleHref: '/posts/degre-de-trop-rejets-thermiques-nucleaire/',
+      articleLabel: 'Lire le troisième volet de l’enquête',
+    },
+    en: {
+      title: 'Thermal-discharge threshold selector',
+      eyebrow: 'water and electricity',
+      description: 'Choose a plant, date, flow and RTE context to retrieve the published rule without treating it as a river forecast.',
+      question: 'Which limit applies, and which public document supports it?',
+      href: '/en/tools/thermal-discharge-thresholds/',
+      articleHref: '/en/analysis/the-extra-degree-thermal-discharges-nuclear/',
+      articleLabel: 'Read part three of the investigation',
+    },
+  },
+  {
     id: 'wet-megawatt-counter',
     version: '1.0.0',
     status: 'active',

@@ -1,0 +1,372 @@
+---
+import {
+  THERMAL_THRESHOLD_DATA_DATE,
+  THERMAL_THRESHOLD_DEFAULTS,
+  THERMAL_THRESHOLD_MODEL_VERSION,
+  THERMAL_THRESHOLD_SOURCES,
+  evaluateThermalThreshold,
+} from '../lib/thermal-threshold-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const isFull = mode === 'full';
+const id = `thermal-threshold-${lang}-${mode}`;
+const initial = evaluateThermalThreshold(THERMAL_THRESHOLD_DEFAULTS);
+
+const copy = lang === 'fr'
+  ? {
+      eyebrow: '// outil l0g',
+      title: 'Quel seuil thermique s’applique ?',
+      intro: 'Choisissez un site, une date et le contexte réseau. L’outil restitue les règles publiées. Il ne décide ni du besoin exprimé par RTE, ni de l’effet écologique réel.',
+      site: 'Centrale',
+      date: 'Date',
+      flow: 'Débit du canal',
+      flowUnit: 'm³/s',
+      rte: 'RTE requiert le fonctionnement pour la sûreté du réseau',
+      temporary: 'Décision temporaire ASNR 2026-DC-052 active',
+      regime: 'Régime applicable',
+      downstream: 'Température aval',
+      delta: 'Échauffement amont-aval',
+      scope: 'Périmètre',
+      basis: 'Base documentaire',
+      normal: 'Conditions climatiques normales',
+      cce: 'Conditions climatiques exceptionnelles',
+      exceptional: 'Situation exceptionnelle, article R. 593-40',
+      notSpecified: 'Non précisé dans le jeu retenu',
+      projected: 'projection, pas limite opératoire directe',
+      unitsAll: 'Unités du site selon les prescriptions applicables',
+      unitsBugey45: 'Réacteurs 4 et 5 uniquement',
+      method: 'Méthode et limites',
+      methodText: 'Le moteur applique une sélection de prescriptions publiques EDF et ASNR pour cinq sites. Une requête de RTE active le second niveau permanent lorsqu’il existe. La décision temporaire de Bugey ne peut être sélectionnée que du 12 au 20 juillet 2026 et seulement si RTE requiert les réacteurs 4 et 5. Les textes consolidés et les mesures de l’exploitant restent la référence juridique et opérationnelle.',
+      warning: 'Cet outil décrit une règle publiée. Il ne prédit pas la température réelle du fleuve, la conformité future, la sûreté du réacteur ou la réponse biologique.',
+      source: 'Sources : EDF Open Data, note technique ASNR de juillet 2025 et décision ASNR 2026-DC-052.',
+      openFull: 'Ouvrir en pleine largeur',
+      backArticle: 'Revenir à l’enquête',
+      outside: 'La décision temporaire Bugey n’était pas applicable à cette date.',
+      needsRte: 'La décision temporaire exige aussi une requête de RTE.',
+      tempAvailable: 'Disponible uniquement pour Bugey du 12 au 20 juillet 2026.',
+      summer: 'régime estival',
+      winter: 'régime hors été',
+      lowFlow: 'débit inférieur à 480 m³/s',
+      highFlow: 'débit supérieur ou égal à 480 m³/s',
+      siteOptions: {
+        bugey: 'Bugey',
+        tricastin: 'Tricastin',
+        golfech: 'Golfech',
+        nogent: 'Nogent-sur-Seine',
+        saintalban: 'Saint-Alban',
+      },
+    }
+  : {
+      eyebrow: '// l0g tool',
+      title: 'Which thermal limit applies?',
+      intro: 'Choose a plant, date and grid context. The tool returns published rules. It does not decide whether RTE needs the unit or predict the actual ecological effect.',
+      site: 'Plant',
+      date: 'Date',
+      flow: 'Canal flow',
+      flowUnit: 'm³/s',
+      rte: 'RTE requires operation for grid security',
+      temporary: 'Temporary ASNR decision 2026-DC-052 is active',
+      regime: 'Applicable regime',
+      downstream: 'Downstream temperature',
+      delta: 'Upstream-downstream warming',
+      scope: 'Scope',
+      basis: 'Documentary basis',
+      normal: 'Normal climatic conditions',
+      cce: 'Exceptional climatic conditions',
+      exceptional: 'Exceptional situation under Article R. 593-40',
+      notSpecified: 'Not specified in the selected dataset',
+      projected: 'projection, not the direct operative limit',
+      unitsAll: 'Plant units under the applicable prescriptions',
+      unitsBugey45: 'Reactors 4 and 5 only',
+      method: 'Method and limitations',
+      methodText: 'The rule engine applies a selected set of public EDF and ASNR prescriptions for five sites. An RTE requirement activates the permanent second tier where available. The temporary Bugey decision can only be selected from 12 to 20 July 2026 and only when RTE requires reactors 4 and 5. Consolidated legal texts and operator measurements remain the legal and operational reference.',
+      warning: 'This tool describes a published rule. It does not forecast river temperature, future compliance, reactor safety or biological response.',
+      source: 'Sources: EDF Open Data, ASNR July 2025 technical note and ASNR decision 2026-DC-052.',
+      openFull: 'Open the full-width tool',
+      backArticle: 'Return to the investigation',
+      outside: 'The temporary Bugey decision did not apply on this date.',
+      needsRte: 'The temporary decision also requires an RTE request.',
+      tempAvailable: 'Available only for Bugey from 12 to 20 July 2026.',
+      summer: 'summer regime',
+      winter: 'non-summer regime',
+      lowFlow: 'flow below 480 m³/s',
+      highFlow: 'flow at or above 480 m³/s',
+      siteOptions: {
+        bugey: 'Bugey',
+        tricastin: 'Tricastin',
+        golfech: 'Golfech',
+        nogent: 'Nogent-sur-Seine',
+        saintalban: 'Saint-Alban',
+      },
+    };
+---
+
+<section class:list={['threshold-tool', isFull && 'threshold-tool--full']} id={id} data-threshold-tool data-lang={lang}>
+  <header class="threshold-tool__header">
+    <p class="threshold-tool__eyebrow">{copy.eyebrow}</p>
+    <h3>{copy.title}</h3>
+    <p>{copy.intro}</p>
+  </header>
+
+  <div class="threshold-tool__grid">
+    <form class="threshold-tool__controls" data-threshold-form>
+      <label>
+        <span>{copy.site}</span>
+        <select data-threshold-site>
+          <option value="bugey">{copy.siteOptions.bugey}</option>
+          <option value="tricastin">{copy.siteOptions.tricastin}</option>
+          <option value="golfech">{copy.siteOptions.golfech}</option>
+          <option value="nogent">{copy.siteOptions.nogent}</option>
+          <option value="saintalban">{copy.siteOptions.saintalban}</option>
+        </select>
+      </label>
+
+      <label>
+        <span>{copy.date}</span>
+        <input type="date" value={THERMAL_THRESHOLD_DEFAULTS.date} min="2026-01-01" max="2027-12-31" data-threshold-date />
+      </label>
+
+      <label class="threshold-tool__flow" data-threshold-flow-row hidden>
+        <span>{copy.flow}</span>
+        <span class="threshold-tool__input-with-unit">
+          <input type="number" min="0" max="5000" step="1" value={THERMAL_THRESHOLD_DEFAULTS.canalFlowM3s} inputmode="decimal" data-threshold-flow />
+          <small>{copy.flowUnit}</small>
+        </span>
+      </label>
+
+      <label class="threshold-tool__check">
+        <input type="checkbox" data-threshold-rte />
+        <span>{copy.rte}</span>
+      </label>
+
+      <label class="threshold-tool__check threshold-tool__temporary" data-threshold-temporary-row>
+        <input type="checkbox" data-threshold-temporary />
+        <span>{copy.temporary}</span>
+      </label>
+
+      <p class="threshold-tool__context" data-threshold-context>{copy.tempAvailable}</p>
+    </form>
+
+    <div class="threshold-tool__results" aria-live="polite">
+      <div class="threshold-tool__regime">
+        <span>{copy.regime}</span>
+        <strong data-threshold-result="regime">{copy.normal}</strong>
+        <small data-threshold-result="qualifier">{copy.summer}</small>
+      </div>
+
+      <div class="threshold-tool__metrics">
+        <div>
+          <span>{copy.downstream}</span>
+          <strong data-threshold-result="downstream">{initial.downstream}</strong>
+        </div>
+        <div>
+          <span>{copy.delta}</span>
+          <strong data-threshold-result="delta">{initial.delta}</strong>
+        </div>
+      </div>
+
+      <div class="threshold-tool__text-result">
+        <span>{copy.scope}</span>
+        <strong data-threshold-result="scope">{copy.unitsAll}</strong>
+      </div>
+      <div class="threshold-tool__text-result">
+        <span>{copy.basis}</span>
+        <strong data-threshold-result="basis">{isFr ? 'EDF Open Data, décision Bugey 2014 modifiée' : initial.basis}</strong>
+      </div>
+      <p class="threshold-tool__warning">{copy.warning}</p>
+    </div>
+  </div>
+
+  <details class="threshold-tool__details">
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <p class="threshold-tool__source">{copy.source}</p>
+    <ol>{THERMAL_THRESHOLD_SOURCES.map((source) => <li><a href={source.url}>{source.label}</a></li>)}</ol>
+    <p>Model v{THERMAL_THRESHOLD_MODEL_VERSION} · {THERMAL_THRESHOLD_DATA_DATE}</p>
+  </details>
+  <footer class="threshold-tool__links">
+    {isFull
+      ? <a href={isFr ? '/posts/degre-de-trop-rejets-thermiques-nucleaire/' : '/en/analysis/the-extra-degree-thermal-discharges-nuclear/'}>{copy.backArticle}</a>
+      : <a href={isFr ? '/outils/seuils-rejets-thermiques/' : '/en/tools/thermal-discharge-thresholds/'}>{copy.openFull}</a>}
+    <a href="/outils/seuils-rejets-thermiques/model.json">model.json</a>
+  </footer>
+</section>
+
+<script>
+  import { evaluateThermalThreshold } from '../lib/thermal-threshold-model.ts';
+
+  const initialiseThermalThresholdSelectors = () => {
+    const TEXT = {
+      fr: {
+        normal: 'Conditions climatiques normales',
+        cce: 'Conditions climatiques exceptionnelles',
+        exceptional: 'Situation exceptionnelle, article R. 593-40',
+        projected: 'projection, pas limite opératoire directe',
+        all: 'Unités du site selon les prescriptions applicables',
+        bugey45: 'Réacteurs 4 et 5 uniquement',
+        summer: 'régime estival',
+        winter: 'régime hors été',
+        allYear: 'règle valable toute l’année',
+        lowFlow: 'débit inférieur à 480 m³/s',
+        highFlow: 'débit supérieur ou égal à 480 m³/s',
+        outside: 'La décision temporaire Bugey n’était pas applicable à cette date.',
+        needsRte: 'La décision temporaire exige aussi une requête de RTE.',
+        available: 'Disponible uniquement pour Bugey du 12 au 20 juillet 2026.',
+        notSpecified: 'Non précisé dans le jeu retenu',
+        bases: {
+          'EDF Open Data, amended 2014 Bugey decision': 'EDF Open Data, décision Bugey 2014 modifiée',
+          'EDF Open Data, amended 2008 Tricastin decision': 'EDF Open Data, décision Tricastin 2008 modifiée',
+          'EDF Open Data, decree of 18 September 2006': 'EDF Open Data, arrêté du 18 septembre 2006',
+          'EDF Open Data, decree of 29 December 2004': 'EDF Open Data, arrêté du 29 décembre 2004',
+          'EDF Open Data, 2014 Saint-Alban decision': 'EDF Open Data, décision Saint-Alban 2014',
+          'Permanent second tier, ASNR July 2025 note': 'Second niveau permanent, note ASNR juillet 2025',
+          'Permanent second tier, EDF Open Data': 'Second niveau permanent, EDF Open Data',
+          'Permanent second tier, EDF Open Data and EDF 25 June 2026': 'Second niveau permanent, EDF Open Data et EDF 25 juin 2026',
+          'ASNR 2026-DC-052, 12 to 20 July 2026': 'ASNR 2026-DC-052, 12 au 20 juillet 2026',
+        },
+      },
+      en: {
+        normal: 'Normal climatic conditions',
+        cce: 'Exceptional climatic conditions',
+        exceptional: 'Exceptional situation under Article R. 593-40',
+        projected: 'projection, not the direct operative limit',
+        all: 'Plant units under the applicable prescriptions',
+        bugey45: 'Reactors 4 and 5 only',
+        summer: 'summer regime',
+        winter: 'non-summer regime',
+        allYear: 'year-round rule',
+        lowFlow: 'flow below 480 m³/s',
+        highFlow: 'flow at or above 480 m³/s',
+        outside: 'The temporary Bugey decision did not apply on this date.',
+        needsRte: 'The temporary decision also requires an RTE request.',
+        available: 'Available only for Bugey from 12 to 20 July 2026.',
+        notSpecified: 'Not specified in the selected dataset',
+        bases: {},
+      },
+    };
+
+    document.querySelectorAll<HTMLElement>('[data-threshold-tool]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const t = TEXT[lang] as any;
+      const site = root.querySelector<HTMLSelectElement>('[data-threshold-site]');
+      const dateInput = root.querySelector<HTMLInputElement>('[data-threshold-date]');
+      const flowInput = root.querySelector<HTMLInputElement>('[data-threshold-flow]');
+      const flowRow = root.querySelector<HTMLElement>('[data-threshold-flow-row]');
+      const rte = root.querySelector<HTMLInputElement>('[data-threshold-rte]');
+      const temporary = root.querySelector<HTMLInputElement>('[data-threshold-temporary]');
+      const temporaryRow = root.querySelector<HTMLElement>('[data-threshold-temporary-row]');
+      const context = root.querySelector<HTMLElement>('[data-threshold-context]');
+      const result = (name: string) => root.querySelector<HTMLElement>(`[data-threshold-result="${name}"]`)!;
+
+      if (!site || !dateInput || !flowInput || !flowRow || !rte || !temporary || !temporaryRow || !context) return;
+
+      const update = () => {
+        const selected = evaluateThermalThreshold({
+          site: site.value as any,
+          date: dateInput.value,
+          canalFlowM3s: Number(flowInput.value),
+          rteRequired: rte.checked,
+          temporaryBugeyDecision: temporary.checked,
+        });
+        flowRow.hidden = !selected.showFlow;
+        temporaryRow.hidden = !selected.showTemporary;
+        temporary.disabled = !selected.temporaryAvailable;
+        if (!selected.temporaryAvailable) temporary.checked = false;
+        context.textContent = selected.contextStatus === 'hidden' ? '' : t[selected.contextStatus];
+        result('regime').textContent = t[selected.regime];
+        result('qualifier').textContent = t[selected.qualifier];
+        const localise = (value: string) => lang === 'fr' ? value.replaceAll('.', ',') : value;
+        result('downstream').textContent = selected.regime === 'exceptional'
+          ? (lang === 'fr' ? '≤ 28 °C projeté' : 'projected ≤ 28 °C')
+          : localise(selected.downstream);
+        result('delta').textContent = selected.delta === 'Not specified' ? t.notSpecified : localise(selected.delta);
+        result('scope').textContent = t[selected.scope];
+        result('basis').textContent = t.bases[selected.basis] || selected.basis;
+      };
+
+      [site, dateInput, flowInput, rte, temporary].forEach((node) => {
+        node.addEventListener('input', update);
+        node.addEventListener('change', update);
+      });
+      update();
+    });
+  };
+  initialiseThermalThresholdSelectors();
+  document.addEventListener('astro:page-load', initialiseThermalThresholdSelectors);
+</script>
+
+<style>
+  .threshold-tool {
+    --bg: #0c0d10;
+    --panel: #15171c;
+    --line: #2a2f39;
+    --text: #f3f5f8;
+    --muted: #9299a5;
+    --cyan: #5eead4;
+    --blue: #7aa2f7;
+    --amber: #f5b13d;
+    --pink: #ff4d87;
+    margin: 2rem 0;
+    padding: 1.1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .threshold-tool * { box-sizing: border-box; }
+  .threshold-tool__eyebrow { margin: 0 0 .35rem; color: var(--cyan); font-size: .76rem; font-weight: 800; letter-spacing: .04em; }
+  .threshold-tool h3 { margin: 0; color: var(--text); font-size: 1.12rem; line-height: 1.3; }
+  .threshold-tool__header > p:last-child { margin: .55rem 0 0; max-width: 68rem; color: #c6cbd3; font-size: .78rem; line-height: 1.55; }
+  .threshold-tool__grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: .9rem; margin-top: 1rem; }
+  .threshold-tool__controls, .threshold-tool__results { min-width: 0; padding: .9rem; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+  .threshold-tool__controls { display: grid; gap: .72rem; align-content: start; }
+  .threshold-tool__controls label:not(.threshold-tool__check) { display: grid; gap: .35rem; color: #dce1e7; font-size: .68rem; }
+  .threshold-tool select, .threshold-tool input[type="date"], .threshold-tool input[type="number"] { width: 100%; min-width: 0; padding: .62rem .68rem; border: 1px solid #353b47; border-radius: 6px; background: #0f1115; color: var(--text); font: inherit; font-size: .74rem; }
+  .threshold-tool__input-with-unit { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .45rem; align-items: center; }
+  .threshold-tool__input-with-unit small { color: var(--muted); font-size: .64rem; }
+  .threshold-tool__check { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .55rem; align-items: start; padding: .64rem .7rem; border: 1px solid #2e3440; border-radius: 6px; background: #101217; color: #cfd4dc; font-size: .66rem; line-height: 1.45; }
+  .threshold-tool__check input { margin-top: .12rem; accent-color: var(--pink); }
+  .threshold-tool__check:has(input:disabled) { opacity: .5; }
+  .threshold-tool__context { min-height: 2em; margin: 0; color: #9ba2ad; font-size: .61rem; line-height: 1.45; }
+  .threshold-tool__regime { padding: .82rem; border-left: 3px solid var(--amber); border-radius: 6px; background: #101217; }
+  .threshold-tool__regime span, .threshold-tool__metrics span, .threshold-tool__text-result span { display: block; color: var(--muted); font-size: .6rem; line-height: 1.4; text-transform: uppercase; letter-spacing: .04em; }
+  .threshold-tool__regime strong { display: block; margin-top: .35rem; color: var(--amber); font-size: 1rem; line-height: 1.3; }
+  .threshold-tool__regime small { display: block; margin-top: .3rem; color: #c5cad2; font-size: .62rem; line-height: 1.4; }
+  .threshold-tool__metrics { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .65rem; margin-top: .7rem; }
+  .threshold-tool__metrics > div { min-width: 0; padding: .76rem; border: 1px solid #2d333e; border-radius: 6px; background: #101217; }
+  .threshold-tool__metrics strong { display: block; margin-top: .32rem; color: var(--cyan); font-size: 1.15rem; line-height: 1.15; overflow-wrap: anywhere; }
+  .threshold-tool__metrics > div:nth-child(2) strong { color: var(--blue); }
+  .threshold-tool__text-result { margin-top: .65rem; padding: .7rem .76rem; border: 1px solid #2d333e; border-radius: 6px; background: #101217; }
+  .threshold-tool__text-result strong { display: block; margin-top: .3rem; color: #e0e4ea; font-size: .67rem; line-height: 1.45; overflow-wrap: anywhere; }
+  .threshold-tool__warning { margin: .72rem 0 0; padding: .65rem .72rem; border-left: 2px solid var(--pink); background: rgba(255,77,135,.06); color: #c8cdd5; font-size: .62rem; line-height: 1.5; }
+  .threshold-tool__details { margin-top: .85rem; border-top: 1px solid var(--line); padding-top: .75rem; }
+  .threshold-tool__details summary { cursor: pointer; color: #d9dde4; font-size: .68rem; font-weight: 800; }
+  .threshold-tool__details p { margin: .55rem 0 0; color: #aeb4be; font-size: .62rem; line-height: 1.55; }
+  .threshold-tool__source { color: #7f8793 !important; }
+  .threshold-tool__details ol { margin:.55rem 0 0; padding-left:1.15rem; }
+  .threshold-tool__details li { color:#aeb4be; font-size:.62rem; line-height:1.5; }
+  .threshold-tool__details li + li { margin-top:.35rem; }
+  .threshold-tool__details a, .threshold-tool__links a { color:var(--cyan); overflow-wrap:anywhere; }
+  .threshold-tool__links { display:flex; flex-wrap:wrap; gap:.7rem 1rem; margin-top:.8rem; }
+  .threshold-tool__links a { font-size:.64rem; text-decoration:none; }
+  [hidden] { display: none !important; }
+  @media (max-width: 720px) {
+    .threshold-tool { padding: .9rem; }
+    .threshold-tool__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 440px) {
+    .threshold-tool__metrics { grid-template-columns: 1fr; }
+    .threshold-tool h3 { font-size: 1rem; }
+  }
+</style>
