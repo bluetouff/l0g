@@ -1,0 +1,483 @@
+---
+title: "The wet megawatt Europe cannot count"
+description: "Europe's main registers track power plants but do not link each unit to its water, cooling system, thresholds and losses. Part two of our investigation into water and electricity."
+pubDate: 2026-08-20T16:00:00+02:00
+updatedDate: 2026-08-20T16:00:00+02:00
+tags: ["Europe", "electricity", "water", "nuclear", "hydropower", "data", "risk", "investigation"]
+draft: false
+sourceArticle: "megawatt-humide-europe-eau-electricite"
+sourceUpdatedDate: 2026-08-20
+quickTake:
+  fact: "Within the ENTSO-E member-state perimeter presented for 2023, hydropower and nuclear already totalled 294.3 GW, or 28.3% of capacity, before classifying the water-cooled share of classic thermal generation."
+  importance: "The registers reviewed track capacity, output and outages. None systematically links each unit to its water body, cooling system, local thresholds and water-related deratings."
+  uncertainty: "294.3 GW is a floor for water-coupled capacity, not an estimate of megawatts simultaneously at risk. Technologies, basins and constraint mechanisms must remain separate."
+---
+
+import WetMegawattCounter from '../../components/WetMegawattCounter.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Europe can say almost in real time how many megawatts are coming out of a power plant. It can publish the unit's capacity, fuel, outages and sometimes its quarter-hourly production. A more elementary question remains surprisingly difficult: what water does that plant depend on? Across the main public systems reviewed for this article, no current and harmonised register links every European unit to its river, sea, cooling system, water-level or temperature thresholds and the megawatts actually lost when one of those thresholds is crossed. The first part of this investigation followed [a few centimetres of the Danube](/en/analysis/how-much-is-one-centimetre-of-danube-worth/). The second looks for the missing column that could have made the risk visible before the pumps stopped.*
+
+The **wet megawatt** is an analytical category proposed by l0g, not a regulatory statistic.
+
+It describes electrical capacity whose generation or cooling depends directly on a body of water, its stock, level, flow or temperature.
+
+The definition fits in one sentence. Edge cases appear immediately.
+
+A run-of-river turbine, a reservoir dam, a closed-loop pumped-storage plant, a coastal reactor and a coal plant using once-through river cooling are all connected to water. They do not share the same function, vulnerability or effect on the resource.
+
+A single score would flatten those differences, so this investigation does without one.
+
+It begins with a narrower question: **what can Europe actually measure today?**
+
+## The simplest question still has no answer
+
+Opening Europe's main databases creates an impression of documentary abundance.
+
+The [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) publishes units, capacity, technology, output, cross-border flows and outages.
+
+[PRIS](https://pris.iaea.org/PRIS/), the International Atomic Energy Agency's reactor database, tracks reactors, design characteristics, capacity and operating history.
+
+[Eurostat](https://ec.europa.eu/eurostat/cache/metadata/en/nrg_inf_epc_esms.htm) reports national capacity by electricity source and technology.
+
+The [European Environment Agency](https://www.eea.europa.eu/en/analysis/indicators/water-abstraction-by-source-and) publishes water abstraction by sector and country.
+
+The [European Industrial Emissions Portal](https://industry.eea.europa.eu/) locates major sites and reports energy inputs and emissions.
+
+Each source sees one part of a power plant.
+
+None provides, across the European fleet, a standard record containing:
+
+```text
+unit + current capacity + water body + cooling system
++ flow threshold + temperature threshold + observed loss
+```
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison of information available in five major European databases on power plants, water and water-related events" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="470" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// The data exists. The register does not.</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">Simplified view of fields exposed by major public systems.</text>
+  <g font-size="9" fill="#aeb4be" text-anchor="middle">
+    <text x="286" y="95">CAPACITY</text>
+    <text x="364" y="95">UNIT / SITE</text>
+    <text x="442" y="95">COOLING</text>
+    <text x="520" y="95">WATER</text>
+    <text x="598" y="95">LIMITS</text>
+    <text x="664" y="95">EVENTS</text>
+  </g>
+  <g font-size="11" fill="#e5e8ed">
+    <text x="34" y="132">ENTSO-E</text>
+    <text x="34" y="184">IAEA PRIS</text>
+    <text x="34" y="236">EUROSTAT</text>
+    <text x="34" y="288">EEA WATER</text>
+    <text x="34" y="340">JRC-PPDB 2019</text>
+  </g>
+  <g stroke="#292d36">
+    <line x1="250" y1="108" x2="690" y2="108"/>
+    <line x1="250" y1="160" x2="690" y2="160"/>
+    <line x1="250" y1="212" x2="690" y2="212"/>
+    <line x1="250" y1="264" x2="690" y2="264"/>
+    <line x1="250" y1="316" x2="690" y2="316"/>
+    <line x1="250" y1="368" x2="690" y2="368"/>
+  </g>
+  <g>
+    <circle cx="286" cy="128" r="9" fill="#5eead4"/><circle cx="364" cy="128" r="9" fill="#5eead4"/>
+    <circle cx="442" cy="128" r="9" fill="#313640"/><circle cx="520" cy="128" r="9" fill="#313640"/>
+    <circle cx="598" cy="128" r="9" fill="#313640"/><circle cx="664" cy="128" r="9" fill="#f5b13d"/>
+    <circle cx="286" cy="180" r="9" fill="#5eead4"/><circle cx="364" cy="180" r="9" fill="#5eead4"/>
+    <circle cx="442" cy="180" r="9" fill="#f5b13d"/><circle cx="520" cy="180" r="9" fill="#f5b13d"/>
+    <circle cx="598" cy="180" r="9" fill="#313640"/><circle cx="664" cy="180" r="9" fill="#f5b13d"/>
+    <circle cx="286" cy="232" r="9" fill="#f5b13d"/><circle cx="364" cy="232" r="9" fill="#313640"/>
+    <circle cx="442" cy="232" r="9" fill="#313640"/><circle cx="520" cy="232" r="9" fill="#313640"/>
+    <circle cx="598" cy="232" r="9" fill="#313640"/><circle cx="664" cy="232" r="9" fill="#313640"/>
+    <circle cx="286" cy="284" r="9" fill="#313640"/><circle cx="364" cy="284" r="9" fill="#313640"/>
+    <circle cx="442" cy="284" r="9" fill="#f5b13d"/><circle cx="520" cy="284" r="9" fill="#5eead4"/>
+    <circle cx="598" cy="284" r="9" fill="#313640"/><circle cx="664" cy="284" r="9" fill="#313640"/>
+    <circle cx="286" cy="336" r="9" fill="#5eead4"/><circle cx="364" cy="336" r="9" fill="#5eead4"/>
+    <circle cx="442" cy="336" r="9" fill="#5eead4"/><circle cx="520" cy="336" r="9" fill="#5eead4"/>
+    <circle cx="598" cy="336" r="9" fill="#313640"/><circle cx="664" cy="336" r="9" fill="#313640"/>
+  </g>
+  <g font-size="9" fill="#0c0d10" text-anchor="middle" font-weight="800">
+    <text x="664" y="131">~</text>
+    <text x="442" y="183">~</text><text x="520" y="183">~</text><text x="664" y="183">~</text>
+    <text x="286" y="235">~</text>
+    <text x="442" y="287">~</text>
+  </g>
+  <rect x="24" y="390" width="672" height="48" rx="5" fill="#15171c" stroke="#2b3039"/>
+  <circle cx="44" cy="414" r="7" fill="#5eead4"/><text x="58" y="418" fill="#cfd4dc" font-size="9">structured field</text>
+  <circle cx="176" cy="414" r="7" fill="#f5b13d"/><text x="190" y="418" fill="#cfd4dc" font-size="9">partial or indirect</text>
+  <circle cx="338" cy="414" r="7" fill="#313640"/><text x="352" y="418" fill="#cfd4dc" font-size="9">absent from standard register</text>
+  <text x="536" y="418" fill="#ff4d87" font-size="9">JRC 2019: incomplete</text>
+  <text x="24" y="458" fill="#777f8c" font-size="9">SOURCES: ENTSO-E, PRIS, Eurostat, EEA, JRC-PPDB-OPEN. l0g synthesis, 20 Aug 2026.</text>
+</svg>
+<figcaption>The problem is not a complete absence of data. It is the separation of that data across institutions, scopes and update schedules.</figcaption>
+</figure>
+
+That fragmentation produces a practical blind spot.
+
+An ENTSO-E outage can show that a unit lost 500 MW. The public reason does not necessarily identify river temperature or intake level as the cause. An EEA statistic can show that the power sector abstracts tens of billions of cubic metres. It may not allow the reader to trace that abstraction back to the plant that depends on it.
+
+Energy and hydrological data often meet only after the event, when the operator publishes a notice.
+
+## An old database already contained the right columns
+
+The European Commission's Joint Research Centre has already moved close to the solution.
+
+The [JRC-PPDB-OPEN](https://data.jrc.ec.europa.eu/dataset/9810feeb-f062-49cd-8e76-8d8cfd488a05) database contains unit-level fields named `water_type`, `cooling_type`, `water_withdrawal` and `water_consumption`.
+
+The Energy and Industry Geography Lab documentation even distinguishes air cooling, mechanical draught towers, natural draught towers and once-through cooling. ([JRC, EIGL documentation](https://joint-research-centre.ec.europa.eu/system/files/2023-11/Data%20documentation%20EIGL%20v1_6.pdf))
+
+That is almost exactly the missing column.
+
+The problem is its age and coverage.
+
+The public database is version 1.0, issued in 2019. Its update frequency is listed as irregular. The JRC describes it as a first attempt at a more coherent European plant database while explicitly acknowledging that it remains incomplete.
+
+Since then, reactors have closed, others have entered service, fossil plants have moved into reserve, cooling arrangements have changed and environmental rules have been amended.
+
+A database can have the right architecture and still describe yesterday's fleet.
+
+That is the first conclusion of this investigation: **Europe does not need to invent the data model. It needs to maintain it.**
+
+## A 294.3 GW floor
+
+A defensible measurement can begin before the perfect register exists.
+
+Red Eléctrica's European panorama, based on ENTSO-E member-state data for 2023, reports:
+
+- **199.9 GW of hydropower**;
+- **94.4 GW of nuclear**;
+- **319.6 GW of classic thermal capacity**;
+- **1,040.2 GW of total capacity**.
+
+Hydropower and nuclear therefore total **294.3 GW**, or **28.3% of capacity** in that perimeter. ([Red Eléctrica, European panorama 2023](https://www.sistemaelectrico-ree.es/en/2023/spanish-electricity-system/european-landscape/generation))
+
+This is a floor for water-coupled capacity.
+
+Hydropower uses water directly as energy or storage. Operating reactors need a heat sink, usually a river, estuary, sea or water-fed cooling tower.
+
+The calculation deliberately leaves out the share of 319.6 GW of classic thermal capacity that also depends on wet cooling.
+
+That share is not zero. It is simply not consolidated in a current public European register.
+
+PRIS provides a more current cross-check for nuclear capacity. Adding the national pages of the twelve EU countries still operating reactors produced **96.2 GW net** in our calculation as of 20 August 2026. The comparison should not be used to mix vintages. It simply confirms that the 2023 figure of 94.4 GW remains in the right range.
+
+The larger unknown lies elsewhere.
+
+How many gigawatts of gas, coal, lignite, oil, waste or biomass use freshwater once-through cooling? How many have towers? How many are coastal? How many use air or treated wastewater?
+
+The tool below shows why that single missing column materially changes the total.
+
+## Test the perimeter
+
+<WetMegawattCounter lang="en" />
+
+[Open the full-width counter](/en/tools/wet-megawatt-counter/).
+
+The slider is not an estimate.
+
+It makes one accounting relationship visible: every percentage point of classic thermal capacity classified as water-cooled adds roughly **3.2 GW** to the perimeter. The result therefore depends less on a sophisticated formula than on a basic field that is not maintained in a common current register.
+
+## Abstraction is not consumption
+
+The word “use” creates another source of confusion.
+
+For 2000-2022, the EEA estimates that power-plant cooling accounted for an annual average of **72.3 billion cubic metres of water abstraction**, equal to **36%** of abstraction by EU economic sectors, excluding hydropower. For 2020-2023, the volume had declined to about **62 billion cubic metres**, around 33% of the total. ([EEA, water abstraction](https://www.eea.europa.eu/en/analysis/indicators/water-abstraction-by-source-and))
+
+The EEA links much of the decline to the shift from fossil generation towards renewables.
+
+It does not mean that 72 or 62 billion cubic metres disappear every year.
+
+**Once-through cooling** withdraws a large volume, passes it through a heat exchanger and returns most of it at a higher temperature.
+
+A wet cooling tower withdraws far less, recirculates the water, but loses a larger share through evaporation.
+
+Air cooling nearly removes water demand, at the cost of investment, auxiliary power and lower efficiency when ambient air is hot.
+
+The reference ranges published by [Climate-ADAPT](https://climate-adapt.eea.europa.eu/en/metadata/adaptation-options/reducing-water-consumption-for-cooling-of-thermal-generation-plants) for a conventional thermal plant illustrate the paradox.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison of water abstraction and consumption for once-through cooling, wet recirculating towers and dry cooling" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="510" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// The trap hidden inside the word “use”</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">Indicative ranges per MWh. Abstraction and consumption describe different constraints.</text>
+  <rect x="32" y="88" width="318" height="244" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="50" y="116" fill="#7aa2f7" font-size="12" font-weight="800">ONCE-THROUGH</text>
+  <text x="50" y="145" fill="#cfd4dc" font-size="9">Water crosses the condenser and returns to the source.</text>
+  <text x="50" y="184" fill="#8b929e" font-size="9">ABSTRACTION</text>
+  <text x="50" y="210" fill="#f3f5f8" font-size="18" font-weight="800">75,710 to 189,270 L/MWh</text>
+  <text x="50" y="246" fill="#8b929e" font-size="9">NET CONSUMPTION</text>
+  <text x="50" y="272" fill="#5eead4" font-size="18" font-weight="800">380 to 1,200 L/MWh</text>
+  <path d="M60 302 H286" stroke="#7aa2f7" stroke-width="5"/>
+  <path d="M286 302 l-12 -7 v14 z" fill="#7aa2f7"/>
+  <path d="M286 318 H82" stroke="#5eead4" stroke-width="3" stroke-dasharray="6 4"/>
+  <path d="M82 318 l12 -7 v14 z" fill="#5eead4"/>
+  <rect x="370" y="88" width="318" height="244" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="388" y="116" fill="#f5b13d" font-size="12" font-weight="800">WET TOWER</text>
+  <text x="388" y="145" fill="#cfd4dc" font-size="9">Water recirculates. Heat leaves mainly through evaporation.</text>
+  <text x="388" y="184" fill="#8b929e" font-size="9">ABSTRACTION</text>
+  <text x="388" y="210" fill="#f3f5f8" font-size="18" font-weight="800">1,890 to 4,540 L/MWh</text>
+  <text x="388" y="246" fill="#8b929e" font-size="9">NET CONSUMPTION</text>
+  <text x="388" y="272" fill="#ff4d87" font-size="18" font-weight="800">1,820 to 4,169 L/MWh</text>
+  <path d="M398 304 C438 282 486 282 526 304 C566 326 614 326 654 304" fill="none" stroke="#f5b13d" stroke-width="4"/>
+  <path d="M526 304 V282" stroke="#ff4d87" stroke-width="3"/>
+  <path d="M526 282 l-7 11 h14 z" fill="#ff4d87"/>
+  <rect x="32" y="354" width="318" height="100" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="50" y="382" fill="#5eead4" font-size="11" font-weight="800">DRY COOLING</text>
+  <text x="50" y="407" fill="#d2d7df" font-size="9">Water nearly disappears, but fans, cost and</text>
+  <text x="50" y="424" fill="#d2d7df" font-size="9">heat-related output penalties take its place.</text>
+  <rect x="370" y="354" width="318" height="100" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="388" y="382" fill="#ff4d87" font-size="11" font-weight="800">HYBRID SYSTEM</text>
+  <text x="388" y="407" fill="#d2d7df" font-size="9">Dry mode saves water. Wet mode returns when</text>
+  <text x="388" y="424" fill="#d2d7df" font-size="9">heat makes every available megawatt more valuable.</text>
+  <text x="24" y="490" fill="#777f8c" font-size="9">SOURCE: EEA Climate-ADAPT. Reference ranges, not plant-level measurements.</text>
+</svg>
+<figcaption>Once-through systems withdraw huge volumes but return most of the water. Towers sharply reduce abstraction while often increasing the share consumed through evaporation.</figcaption>
+</figure>
+
+The EEA estimates that **65% of European electricity generation still relies on water for cooling**. It also estimates power cooling at roughly **20% of the EU's annual net water consumption**. ([EEA, Water savings for a water-resilient Europe](https://www.eea.europa.eu/en/analysis/publications/water-savings-for-a-water-resilient-europe))
+
+The two numbers answer different questions.
+
+The first describes dependence of generation.
+
+The second describes the fraction of water not immediately returned to the same environment.
+
+A debate that mixes them can make a plant look far more or far less vulnerable than it is.
+
+## Water is not one risk
+
+The first article provided three neighbouring cases on the Danube.
+
+Paks faced a **local intake-level constraint**.
+
+Cernavodă reached the limit of its **pump suction basin**.
+
+Kozloduy kept producing through a pumping station built in a deep bay.
+
+The same river therefore produced three different outcomes.
+
+The label “river-cooled plant” is not enough.
+
+At minimum, the register needs to distinguish:
+
+- available flow;
+- water level at the intake;
+- upstream temperature;
+- downstream temperature or permitted thermal rise;
+- evaporative consumption;
+- allocation rules among competing users;
+- water quality, salinity and organisms capable of blocking an intake.
+
+A coastal plant is not exposed to low river flow. It can still lose output when seawater becomes too warm or jellyfish, algae or fish obstruct filters.
+
+A wet tower provides more protection from an immediate low river level, but continues to consume water and loses efficiency in hot and humid air.
+
+Dry cooling reduces water dependence while making available output more sensitive to air temperature.
+
+The wet megawatt is therefore not a label for a fragile technology.
+
+It is a **physical link that must be qualified**.
+
+## Hydropower contains four different machines
+
+Hydropower creates another measurement problem.
+
+The open [JRC Hydro-power plants](https://github.com/energy-modelling-toolkit/hydro-power-database) database contains 4,264 European plants and distinguishes typology, capacity, head, useful reservoir volume and, when directly available, energy storage capacity.
+
+The project is valuable. Its authors also state that it is an open project originating in JRC work, not an exhaustive official Commission product.
+
+More importantly, the single label “hydro” hides four distinct power-system functions.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison of run-of-river hydropower, reservoir hydropower, open-loop pumped storage and closed-loop pumped storage" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="500" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Four hydropowers, four dependencies</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">Installed capacity does not reveal how far water can be shifted through time.</text>
+  <rect x="30" y="88" width="320" height="174" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="48" y="116" fill="#5eead4" font-size="11" font-weight="800">1. RUN-OF-RIVER</text>
+  <path d="M52 178 C98 158 142 194 188 174 C232 154 276 186 326 166" fill="none" stroke="#3985a3" stroke-width="18" opacity=".9"/>
+  <circle cx="190" cy="174" r="15" fill="#0c0d10" stroke="#5eead4" stroke-width="3"/>
+  <text x="48" y="222" fill="#d1d6de" font-size="9">Today's flow largely determines today's output.</text>
+  <text x="48" y="239" fill="#d1d6de" font-size="9">Little ability to move generation through time.</text>
+  <rect x="370" y="88" width="320" height="174" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="388" y="116" fill="#7aa2f7" font-size="11" font-weight="800">2. RESERVOIR</text>
+  <path d="M398 196 H662 V158 C620 144 574 174 532 160 C486 144 444 178 398 160 Z" fill="#245e79"/>
+  <rect x="520" y="144" width="18" height="68" fill="#2d323c"/>
+  <text x="388" y="222" fill="#d1d6de" font-size="9">Water becomes inventory. Generating today</text>
+  <text x="388" y="239" fill="#d1d6de" font-size="9">reduces the option available tomorrow.</text>
+  <rect x="30" y="282" width="320" height="174" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="48" y="310" fill="#f5b13d" font-size="11" font-weight="800">3. OPEN-LOOP PUMPED STORAGE</text>
+  <path d="M52 344 H154 V324 H236 V390 H326" fill="none" stroke="#367f9d" stroke-width="14"/>
+  <path d="M166 360 H224" stroke="#f5b13d" stroke-width="3"/>
+  <polygon points="224,360 214,354 214,366" fill="#f5b13d"/>
+  <path d="M224 378 H166" stroke="#7aa2f7" stroke-width="3"/>
+  <polygon points="166,378 176,372 176,384" fill="#7aa2f7"/>
+  <text x="48" y="416" fill="#d1d6de" font-size="9">Electricity storage and natural inflows</text>
+  <text x="48" y="433" fill="#d1d6de" font-size="9">interact inside the same reservoirs.</text>
+  <rect x="370" y="282" width="320" height="174" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="388" y="310" fill="#ff4d87" font-size="11" font-weight="800">4. CLOSED-LOOP PUMPED STORAGE</text>
+  <ellipse cx="446" cy="350" rx="50" ry="19" fill="#245e79"/>
+  <ellipse cx="614" cy="390" rx="50" ry="19" fill="#245e79"/>
+  <path d="M490 352 C528 354 536 382 570 388" fill="none" stroke="#7aa2f7" stroke-width="3"/>
+  <path d="M570 374 C532 372 524 344 490 338" fill="none" stroke="#f5b13d" stroke-width="3"/>
+  <text x="388" y="416" fill="#d1d6de" font-size="9">The same stock mainly cycles between two</text>
+  <text x="388" y="433" fill="#d1d6de" font-size="9">reservoirs. Natural-flow exposure is much lower.</text>
+  <text x="24" y="485" fill="#777f8c" font-size="9">SOURCE: JRC Hydro-power plants database. Simplified l0g typology.</text>
+</svg>
+<figcaption>Adding all hydro capacity measures its connection to water. It does not measure a common sensitivity to drought.</figcaption>
+</figure>
+
+Run-of-river output follows immediate flow.
+
+Reservoir hydropower can shift energy through time, but remains constrained by inflows, irrigation, drinking water, flood control, ecological flows and conservation strategy.
+
+Open-loop pumped storage combines electricity storage with natural hydrology.
+
+Closed-loop pumped storage mainly recycles the same water between two reservoirs. It remains water-coupled while being much less exposed to river flow. The open or closed distinction depends on whether the system remains continuously connected to a naturally flowing water source. ([IHA, pumped-storage hydropower](https://www.hydropower.org/factsheets/pumped-storage))
+
+A hydro total that does not separate those four categories measures installed capacity. It does not measure vulnerability.
+
+## The threshold turns dependence into an observed loss
+
+A plant can depend on water for fifty years without losing a single MWh for that reason.
+
+Vulnerability becomes observable when a threshold is crossed.
+
+The threshold may be physical: the pump no longer has enough submergence.
+
+It may be thermodynamic: intake water becomes too warm to condense steam efficiently.
+
+It may be environmental: the downstream temperature or authorised thermal rise is reached.
+
+It may be institutional: a reservoir must maintain ecological flow or supply agriculture.
+
+It may be biological: an intake becomes blocked.
+
+The JRC has already implemented water-abstraction and temperature constraints in the open-source power model [Dispa-SET](https://github.com/energy-modelling-toolkit/Dispa-SET). Its work shows how a withdrawal or temperature limit can cap maximum output and force shutdown when the compatible capacity falls below the unit's technical minimum. ([JRC, Water-related modelling in electric power systems](https://publications.jrc.ec.europa.eu/repository/bitstream/JRC109941/kjna29039enn.pdf))
+
+The model can represent the relationship.
+
+The public register does not yet supply current, harmonised parameters for every site.
+
+That is the second conclusion of this investigation: **water coupling can be mapped from technology, but actual loss requires site-specific thresholds.**
+
+## A database organised around evidence, not a score
+
+A future public register will only be useful if it makes its gaps visible. The architecture proposed here therefore organises evidence before producing a total.
+
+Each asset would receive an evidence grade:
+
+- **A** when an operator or regulator documents the water source, system and event;
+- **B** when the asset and water link are confirmed but a threshold is still missing;
+- **C** when it remains a candidate requiring verification;
+- **D** when contradictions are too large for inclusion in a total.
+
+The register could use five linked tables:
+
+```text
+plants
+water links
+thresholds
+events
+sources
+```
+
+This structure prevents several realities from being compressed into one row.
+
+One site may use seawater for one unit and a tower for another. A threshold may vary by season. An event may begin as an environmental restriction and later become a physical intake constraint. A unit can move from operation to reserve or permanent closure.
+
+Every published result would need to display documentary completeness.
+
+A headline such as “380 GW coupled to water” would mean little without four accompanying numbers:
+
+- share with confirmed water source;
+- share with confirmed cooling system;
+- share with a local threshold located;
+- share with a documented water event.
+
+The missing data is part of the result.
+
+## Four indicators, four questions
+
+The investigation will use four main measures.
+
+**Water-Coupled Capacity** asks how much capacity directly uses water to generate, store or cool.
+
+**Freshwater-Exposed Capacity** isolates dependence on rivers, lakes, canals and reservoirs rather than combining them with seawater.
+
+**Freshwater Once-Through Exposure** identifies thermal and nuclear units using once-through freshwater cooling, generally the category most sensitive to flow, level and river temperature.
+
+**Observed Water Derating** adds only MW and MWh actually lost during documented events.
+
+A fifth indicator, the **Basin Concentration Ratio**, will measure the share of dispatchable capacity or output linked to the same river basin.
+
+That matters when one hydrological shock affects several technologies.
+
+The 2026 Danube episode reduced nuclear, hydropower and coal output. Counting each plant separately understates correlation. Adding every riverside plant overstates the probability of a common outage.
+
+The river basin provides the intermediate scale.
+
+## The first number must never become a prophecy
+
+The 294.3 GW floor has a precise use.
+
+It establishes that water is not a marginal dimension of Europe's electricity system.
+
+It does not justify writing that 294.3 GW is threatened by the next drought.
+
+A coastal reactor does not depend on rainfall in the same way as an Alpine reservoir.
+
+A closed-loop pumped-storage plant can remain a source of power during dry conditions.
+
+A river reactor using towers may retain more margin than a once-through site.
+
+A once-through site can remain robust because of a deep intake, as Kozloduy showed on the Danube.
+
+The map should therefore look less like a danger map than a map of the **conditions under which a megawatt exists**.
+
+That distinction matters.
+
+Electricity statistics present capacity as a property of the machine.
+
+This investigation shows that part of that capacity also belongs to its environment: a level, flow, temperature, bay, reservoir, permit and sometimes only a few centimetres of margin.
+
+Models can already represent that dependence, and the old database supplies the right columns. Operational data, permits and hydrological series exist across public bodies and operators. The systems reviewed do not connect them in a living register.
+
+Until that register exists, Europe will know how many megawatts it has built.
+
+It will know much less precisely how many still work when the water changes.
+
+### Method and limitations
+
+Data cut-off: **20 August 2026**.
+
+The 294.3 GW figure adds hydropower and nuclear categories in Red Eléctrica's 2023 panorama of ENTSO-E member states. The perimeter extends beyond the European Union and the vintage does not exactly describe the 2026 fleet. It is used because it provides one coherent table across all technologies and a common denominator.
+
+The 2026 nuclear cross-check is an l0g sum of net capacities published by PRIS for the twelve EU countries still operating reactors: Belgium, Bulgaria, Czechia, Spain, Finland, France, Hungary, the Netherlands, Romania, Slovakia, Slovenia and Sweden. It is used only to validate the order of magnitude.
+
+The water-per-MWh ranges come from an EEA Climate-ADAPT option based on a reference conventional thermal plant. They must not be applied mechanically to each European power station.
+
+JRC Hydro-power plants is an open dataset originating in JRC work. Its authors state that it is not an official Commission product and that completeness varies by variable.
+
+The proposed method prioritises operator, regulator, TSO and hydrological-agency sources. A future total should include only A- and B-grade assets and display the undocumented share.
+
+### Main sources and datasets
+
+- [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)
+- [Red Eléctrica, 2023 European installed-capacity panorama](https://www.sistemaelectrico-ree.es/en/2023/spanish-electricity-system/european-landscape/generation)
+- [IAEA, Power Reactor Information System](https://pris.iaea.org/PRIS/)
+- [Eurostat, Electricity production capacities by main fuel groups and operator](https://ec.europa.eu/eurostat/cache/metadata/en/nrg_inf_epc_esms.htm)
+- [EEA, Water abstraction by source and economic sector](https://www.eea.europa.eu/en/analysis/indicators/water-abstraction-by-source-and)
+- [EEA, Water savings for a water-resilient Europe](https://www.eea.europa.eu/en/analysis/publications/water-savings-for-a-water-resilient-europe)
+- [EEA Climate-ADAPT, Reducing water consumption for cooling of thermal generation plants](https://climate-adapt.eea.europa.eu/en/metadata/adaptation-options/reducing-water-consumption-for-cooling-of-thermal-generation-plants)
+- [JRC Open Power Plants Database](https://data.jrc.ec.europa.eu/dataset/9810feeb-f062-49cd-8e76-8d8cfd488a05)
+- [JRC, Energy and Industry Geography Lab documentation](https://joint-research-centre.ec.europa.eu/system/files/2023-11/Data%20documentation%20EIGL%20v1_6.pdf)
+- [JRC Hydro-power plants database](https://github.com/energy-modelling-toolkit/hydro-power-database)
+- [International Hydropower Association, open-loop and closed-loop pumped storage](https://www.hydropower.org/factsheets/pumped-storage)
+- [JRC, Water-related modelling in electric power systems](https://publications.jrc.ec.europa.eu/repository/bitstream/JRC109941/kjna29039enn.pdf)
+- [European Industrial Emissions Portal](https://industry.eea.europa.eu/)
+
+*Next: The degree too far, an investigation into thermal limits, temporary exemptions and the way France arbitrates between electricity production and river temperature.*

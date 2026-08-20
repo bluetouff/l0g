@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import WetMegawattCounter from '../../components/WetMegawattCounter.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import {
+  WET_MEGAWATT_DATA_DATE,
+  WET_MEGAWATT_DATA_VINTAGE,
+  WET_MEGAWATT_MODEL_VERSION,
+  WET_MEGAWATT_SOURCES,
+} from '../../lib/wet-megawatt-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'wet-megawatt-counter');
+if (!tool) throw new Error('Wet megawatt tool is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title, description: tool.fr.description, url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'fr',
+  isAccessibleForFree: true, softwareVersion: WET_MEGAWATT_MODEL_VERSION,
+  dateModified: WET_MEGAWATT_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: WET_MEGAWATT_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout title="Combien de mégawatts européens dépendent de l’eau ?" description="Testez l’effet d’une colonne de refroidissement manquante sur le périmètre des capacités européennes liées à l’eau. Données, hypothèse et limites séparées." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <PageHero index="01" kicker="outil d’analyse" title="Le compteur de mégawatts humides" description="Le plancher est observé. La part du thermique refroidie par eau reste votre hypothèse." secondary={`Capacités ${WET_MEGAWATT_DATA_VINTAGE}, périmètre des membres ENTSO-E publié par Red Eléctrica. Aucun scénario ne prédit une panne.`} glyph="observe" accent="var(--color-signal)" stats={[
+    { value: `v${WET_MEGAWATT_MODEL_VERSION}`, label: 'modèle auditable' },
+    { value: '1', label: 'hypothèse modifiable' },
+    { value: 'local', label: 'aucune donnée envoyée' },
+  ]} />
+  <WetMegawattCounter lang="fr" mode="full" />
+</BaseLayout>

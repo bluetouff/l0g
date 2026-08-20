@@ -1,0 +1,219 @@
+---
+import {
+  WET_MEGAWATT_DATA_VINTAGE,
+  WET_MEGAWATT_DEFAULTS,
+  WET_MEGAWATT_MODEL_VERSION,
+  WET_MEGAWATT_OBSERVED,
+  WET_MEGAWATT_PRESETS,
+  WET_MEGAWATT_SOURCES,
+  calculateWetMegawatt,
+} from '../lib/wet-megawatt-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const isFull = mode === 'full';
+const id = `wet-megawatt-${lang}-${mode}`;
+const initial = calculateWetMegawatt(WET_MEGAWATT_DEFAULTS);
+const floorShare = initial.knownFloorGW / WET_MEGAWATT_OBSERVED.totalCapacityGW * 100;
+const selectedShare = initial.classifiedThermalGW / WET_MEGAWATT_OBSERVED.totalCapacityGW * 100;
+
+const copy = isFr ? {
+  eyebrow: 'COMPTEUR DE PÉRIMÈTRE',
+  title: 'Classez la colonne manquante',
+  intro: 'Le nucléaire et l’hydraulique forment un plancher observable. Le curseur classe une part hypothétique du thermique classique comme refroidie par eau.',
+  badge: 'calcul local · zéro tracker',
+  assumption: 'Part du thermique classique refroidie par eau',
+  presets: 'Repères de scénario',
+  result: 'Capacité couplée à l’eau',
+  totalShare: 'Part de la capacité totale',
+  thermalAdded: 'Thermique ajouté au plancher',
+  unclassified: 'Thermique restant à classer',
+  sensitivity: 'Ajout par point de pourcentage',
+  floor: 'Plancher hydro + nucléaire',
+  classified: 'Thermique classé',
+  remainder: 'Reste du parc',
+  warning: 'Le curseur n’est pas une estimation du parc réellement refroidi par eau. Le résultat ne mesure ni exposition à l’eau douce, ni probabilité de panne simultanée.',
+  data: 'Données observées',
+  method: 'Formule et unités',
+  limits: 'Limites de lecture',
+  sources: 'Sources',
+  methodText: 'Capacité couplée = 199,9 GW hydro + 94,4 GW nucléaire + 319,6 GW thermique × part choisie. La part du total utilise 1 040,2 GW comme dénominateur.',
+  limitsText: 'Millésime 2023 et périmètre des pays membres d’ENTSO-E dans le panorama Red Eléctrica. Le thermique inclut plusieurs combustibles et systèmes de refroidissement. Aucun scénario ne vaut inventaire unité par unité.',
+  openFull: 'Ouvrir en pleine largeur',
+  backArticle: 'Revenir à l’enquête',
+} : {
+  eyebrow: 'PERIMETER COUNTER',
+  title: 'Classify the missing column',
+  intro: 'Nuclear and hydropower provide an observable floor. The slider classifies an assumed share of classic thermal capacity as water-cooled.',
+  badge: 'local calculation · zero tracker',
+  assumption: 'Share of classic thermal capacity cooled by water',
+  presets: 'Scenario markers',
+  result: 'Water-coupled capacity',
+  totalShare: 'Share of total capacity',
+  thermalAdded: 'Thermal capacity added to the floor',
+  unclassified: 'Thermal capacity still unclassified',
+  sensitivity: 'Added per percentage point',
+  floor: 'Hydro + nuclear floor',
+  classified: 'Thermal classified',
+  remainder: 'Rest of fleet',
+  warning: 'The slider is not an estimate of the fleet actually cooled by water. The result measures neither freshwater exposure nor simultaneous outage probability.',
+  data: 'Observed data',
+  method: 'Formula and units',
+  limits: 'Reading limits',
+  sources: 'Sources',
+  methodText: 'Water-coupled capacity = 199.9 GW hydro + 94.4 GW nuclear + 319.6 GW thermal × selected share. The total share uses 1,040.2 GW as denominator.',
+  limitsText: '2023 vintage and the ENTSO-E member-state perimeter in Red Eléctrica’s panorama. Classic thermal covers several fuels and cooling systems. No scenario is a unit-level inventory.',
+  openFull: 'Open the full-width tool',
+  backArticle: 'Return to the investigation',
+};
+
+const decimal = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 1 });
+---
+
+<section class:list={['wm-tool', isFull && 'wm-tool--full']} id={id} data-wet-megawatt data-lang={lang} style={`--floor:${floorShare}%;--selected:${selectedShare}%`}>
+  <header class="wm-head">
+    <div>
+      <p class="wm-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="wm-badge">{copy.badge}</span>
+  </header>
+
+  <div class="wm-grid">
+    <form class="wm-controls" aria-labelledby={`${id}-assumption`}>
+      <h3 id={`${id}-assumption`}>{copy.assumption}</h3>
+      <div class="wm-inputs">
+        <input aria-labelledby={`${id}-assumption`} type="range" name="thermalShare-range" min="0" max="100" step="1" value={WET_MEGAWATT_DEFAULTS.thermalWaterCooledSharePct} />
+        <label><input aria-labelledby={`${id}-assumption`} type="number" name="thermalShare" min="0" max="100" step="1" value={WET_MEGAWATT_DEFAULTS.thermalWaterCooledSharePct} inputmode="decimal" /><span>%</span></label>
+      </div>
+      <p class="wm-preset-label">{copy.presets}</p>
+      <div class="wm-presets">
+        {WET_MEGAWATT_PRESETS.map((value) => <button type="button" data-preset={value} aria-pressed={value === WET_MEGAWATT_DEFAULTS.thermalWaterCooledSharePct ? 'true' : 'false'}>{value}%</button>)}
+      </div>
+      <div class="wm-observed">
+        <p>{copy.data} · {WET_MEGAWATT_DATA_VINTAGE}</p>
+        <dl>
+          <div><dt>Hydro</dt><dd>{decimal.format(WET_MEGAWATT_OBSERVED.hydroGW)} GW</dd></div>
+          <div><dt>{isFr ? 'Nucléaire' : 'Nuclear'}</dt><dd>{decimal.format(WET_MEGAWATT_OBSERVED.nuclearGW)} GW</dd></div>
+          <div><dt>{isFr ? 'Thermique classique' : 'Classic thermal'}</dt><dd>{decimal.format(WET_MEGAWATT_OBSERVED.classicThermalGW)} GW</dd></div>
+          <div><dt>Total</dt><dd>{decimal.format(WET_MEGAWATT_OBSERVED.totalCapacityGW)} GW</dd></div>
+        </dl>
+      </div>
+    </form>
+
+    <section class="wm-results" aria-labelledby={`${id}-result`}>
+      <h3 id={`${id}-result`}>{copy.result}</h3>
+      <strong data-result="capacity">{decimal.format(initial.waterCoupledCapacityGW)} GW</strong>
+      <p class="wm-share"><span data-result="share">{decimal.format(initial.waterCoupledSharePct)}%</span> {copy.totalShare.toLowerCase()}</p>
+      <div class="wm-bar" aria-hidden="true"><i></i><b></b><span></span></div>
+      <div class="wm-legend">
+        <span><i class="is-floor"></i>{copy.floor}</span>
+        <span><i class="is-selected"></i>{copy.classified}</span>
+        <span><i class="is-rest"></i>{copy.remainder}</span>
+      </div>
+      <dl class="wm-breakdown">
+        <div><dt>{copy.thermalAdded}</dt><dd data-result="added">{decimal.format(initial.classifiedThermalGW)} GW</dd></div>
+        <div><dt>{copy.unclassified}</dt><dd data-result="unclassified">{decimal.format(initial.unclassifiedThermalGW)} GW</dd></div>
+        <div><dt>{copy.sensitivity}</dt><dd>{decimal.format(initial.addedPerPercentagePointGW)} GW</dd></div>
+      </dl>
+      <p class="wm-warning" role="status" aria-live="polite">{copy.warning}</p>
+    </section>
+  </div>
+
+  <div class="wm-details">
+    <details><summary>{copy.method}</summary><p>{copy.methodText}</p></details>
+    <details><summary>{copy.limits}</summary><p>{copy.limitsText}</p></details>
+    <details><summary>{copy.sources}</summary><ol>{WET_MEGAWATT_SOURCES.map((source) => <li><a href={source.url}>{source.label}</a><span>{source.role}</span></li>)}</ol><p>Model v{WET_MEGAWATT_MODEL_VERSION}</p></details>
+  </div>
+
+  <footer class="wm-links">
+    {isFull ? <a href={isFr ? '/posts/megawatt-humide-europe-eau-electricite/' : '/en/analysis/wet-megawatt-europe-water-electricity/'}>{copy.backArticle}</a> : <a href={isFr ? '/outils/compteur-megawatt-humide/' : '/en/tools/wet-megawatt-counter/'}>{copy.openFull}</a>}
+    <a href="/outils/compteur-megawatt-humide/model.json">model.json</a>
+  </footer>
+</section>
+
+<script>
+  import { calculateWetMegawatt, normalizeWetMegawattInputs } from '../lib/wet-megawatt-model.ts';
+
+  const initialiseWetMegawattCounters = () => {
+    document.querySelectorAll<HTMLElement>('[data-wet-megawatt]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const locale = root.dataset.lang === 'en' ? 'en-GB' : 'fr-FR';
+      const decimal = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
+      const range = root.querySelector<HTMLInputElement>('[name="thermalShare-range"]');
+      const number = root.querySelector<HTMLInputElement>('[name="thermalShare"]');
+      if (!range || !number) return;
+      const write = (key: string, value: string) => {
+        const target = root.querySelector<HTMLElement>(`[data-result="${key}"]`);
+        if (target) target.textContent = value;
+      };
+      const update = (raw: number) => {
+        const input = normalizeWetMegawattInputs({ thermalWaterCooledSharePct: raw });
+        const result = calculateWetMegawatt(input);
+        range.value = String(input.thermalWaterCooledSharePct);
+        number.value = String(input.thermalWaterCooledSharePct);
+        write('capacity', `${decimal.format(result.waterCoupledCapacityGW)} GW`);
+        write('share', `${decimal.format(result.waterCoupledSharePct)}%`);
+        write('added', `${decimal.format(result.classifiedThermalGW)} GW`);
+        write('unclassified', `${decimal.format(result.unclassifiedThermalGW)} GW`);
+        root.style.setProperty('--selected', `${result.classifiedThermalGW / 1_040.2 * 100}%`);
+        root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.preset) === input.thermalWaterCooledSharePct)));
+      };
+      range.addEventListener('input', () => update(Number(range.value)));
+      number.addEventListener('input', () => update(Number(number.value)));
+      root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => button.addEventListener('click', () => update(Number(button.dataset.preset))));
+      update(Number(number.value));
+    });
+  };
+  initialiseWetMegawattCounters();
+  document.addEventListener('astro:page-load', initialiseWetMegawattCounters);
+</script>
+
+<style>
+  .wm-tool { --wm-accent:#5eead4; --wm-secondary:#f5b13d; min-width:0; margin:1.4rem 0 1.8rem; border:1px solid color-mix(in srgb,var(--wm-accent) 32%,var(--color-line)); border-radius:16px 4px 16px 16px; padding:clamp(.9rem,3vw,1.35rem); background:radial-gradient(110% 120% at 0 0,color-mix(in srgb,var(--wm-accent) 8%,transparent),transparent 65%),color-mix(in srgb,var(--color-surface) 94%,#080b10); box-shadow:var(--shadow-elevated); }
+  .wm-head { display:grid; gap:.8rem; }
+  .wm-eyebrow,.wm-badge,h3,.wm-links a,.wm-preset-label { font-family:var(--font-mono); }
+  .wm-eyebrow { margin:0; color:var(--wm-accent); font-size:.64rem; font-weight:750; letter-spacing:.1em; }
+  .wm-head h2 { margin:.35rem 0 0; color:var(--color-bright); font-family:var(--font-display); font-size:clamp(1.3rem,3.5vw,1.8rem); line-height:1.12; }
+  .wm-head div>p:last-child { max-width:52rem; margin:.55rem 0 0; color:var(--color-muted); font-size:.82rem; line-height:1.6; }
+  .wm-badge { align-self:start; justify-self:start; border:1px solid color-mix(in srgb,var(--wm-accent) 45%,transparent); border-radius:999px; padding:.35rem .55rem; color:var(--wm-accent); font-size:.58rem; white-space:nowrap; }
+  .wm-grid { display:grid; gap:.8rem; margin-top:1rem; }
+  .wm-controls,.wm-results { min-width:0; border:1px solid var(--color-line); border-radius:11px; padding:.9rem; background:color-mix(in srgb,var(--color-bg) 58%,transparent); }
+  h3 { margin:0; color:var(--color-paper); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; }
+  .wm-inputs { display:grid; grid-template-columns:minmax(0,1fr) 6.3rem; gap:.7rem; align-items:center; margin-top:1rem; }
+  input[type='range'] { width:100%; accent-color:var(--wm-accent); }
+  .wm-inputs label { display:grid; grid-template-columns:1fr auto; align-items:center; border:1px solid var(--color-line); border-radius:7px; background:var(--color-bg); }
+  input[type='number'] { width:100%; min-width:0; border:0; padding:.45rem .5rem; background:transparent; color:var(--color-bright); font-family:var(--font-mono); font-size:.72rem; }
+  .wm-inputs label span { padding-right:.5rem; color:var(--color-muted); font-family:var(--font-mono); font-size:.65rem; }
+  .wm-preset-label { margin:.85rem 0 .4rem; color:var(--color-muted); font-size:.6rem; text-transform:uppercase; }
+  .wm-presets { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.35rem; }
+  .wm-presets button { min-width:0; border:1px solid var(--color-line); border-radius:7px; padding:.45rem .2rem; background:var(--color-bg); color:var(--color-paper); font-family:var(--font-mono); font-size:.62rem; cursor:pointer; }
+  .wm-presets button[aria-pressed='true'] { border-color:var(--wm-accent); color:var(--wm-accent); }
+  input:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible { outline:2px solid var(--wm-accent); outline-offset:2px; }
+  .wm-observed { margin-top:1rem; border-top:1px dashed var(--color-line); padding-top:.75rem; }
+  .wm-observed>p { margin:0 0 .35rem; color:var(--color-muted); font-family:var(--font-mono); font-size:.6rem; text-transform:uppercase; }
+  .wm-observed dl,.wm-breakdown { margin:0; }
+  .wm-observed dl div,.wm-breakdown div { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.8rem; border-bottom:1px solid color-mix(in srgb,var(--color-line) 65%,transparent); padding:.45rem 0; }
+  dt { color:var(--color-muted); font-size:.66rem; } dd { margin:0; color:var(--color-bright); font-family:var(--font-mono); font-size:.68rem; text-align:right; }
+  .wm-results>strong { display:block; margin-top:.7rem; color:var(--wm-accent); font-family:var(--font-mono); font-size:clamp(1.5rem,5vw,2.1rem); }
+  .wm-share { margin:.2rem 0 .75rem; color:var(--color-muted); font-size:.68rem; } .wm-share span { color:var(--color-paper); font-family:var(--font-mono); }
+  .wm-bar { display:flex; height:1.1rem; overflow:hidden; border:1px solid var(--color-line); border-radius:999px; background:var(--color-bg); }
+  .wm-bar i { width:var(--floor); background:var(--wm-accent); } .wm-bar b { width:var(--selected); background:var(--wm-secondary); } .wm-bar span { flex:1; background:#2b3039; }
+  .wm-legend { display:flex; flex-wrap:wrap; gap:.45rem .8rem; margin:.55rem 0 .75rem; }
+  .wm-legend span { color:var(--color-muted); font-size:.58rem; } .wm-legend i { display:inline-block; width:.55rem; height:.55rem; margin-right:.3rem; border-radius:2px; }
+  .wm-legend .is-floor { background:var(--wm-accent); } .wm-legend .is-selected { background:var(--wm-secondary); } .wm-legend .is-rest { background:#2b3039; }
+  .wm-warning { margin:.75rem 0 0; border:1px solid color-mix(in srgb,var(--wm-secondary) 35%,var(--color-line)); border-radius:8px; padding:.65rem; color:var(--color-muted); font-size:.64rem; line-height:1.5; }
+  .wm-details { display:grid; gap:.45rem; margin-top:.8rem; } .wm-details details { border:1px solid var(--color-line); border-radius:8px; padding:.65rem .75rem; }
+  .wm-details summary { color:var(--color-paper); font-family:var(--font-mono); font-size:.65rem; cursor:pointer; }
+  .wm-details p,.wm-details li { color:var(--color-muted); font-size:.65rem; line-height:1.55; } .wm-details ol { padding-left:1.1rem; } .wm-details li+li { margin-top:.45rem; } .wm-details li a { color:var(--color-paper); overflow-wrap:anywhere; } .wm-details li span { display:block; }
+  .wm-links { display:flex; flex-wrap:wrap; gap:.7rem 1rem; margin-top:.8rem; } .wm-links a { color:var(--wm-accent); font-size:.63rem; text-decoration:none; }
+  @media(min-width:720px){ .wm-head{grid-template-columns:minmax(0,1fr) auto}.wm-grid{grid-template-columns:minmax(0,1fr) minmax(18rem,1fr)}.wm-details{grid-template-columns:repeat(3,minmax(0,1fr))}.wm-tool--full{padding:1.35rem} }
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>

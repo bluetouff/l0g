@@ -23,9 +23,9 @@ The mechanism requires more precision.
 
 ## What Treasury actually changed
 
-U.S. debt buybacks did not begin this week.
+U.S. **[Treasury buybacks](/glossaire/treasury-buyback/)** did not begin this week.
 
-The current programme has existed since May 2024. Liquidity-support operations provide a regular opportunity to sell previously issued securities in the secondary market, including **off-the-run** bonds: older issues that are less liquid than the most recent benchmarks. Our [guide to the Treasury market](/en/guides/read-us-treasuries-market/) explains that distinction and the formation of long-term yields.
+The current programme has existed since May 2024. Liquidity-support operations provide a regular opportunity to sell previously issued securities in the secondary market, including **[off-the-run](/glossaire/off-the-run/)** bonds: older issues that are less liquid than the most recent benchmarks. Our [guide to the Treasury market](/en/guides/read-us-treasuries-market/) explains that distinction and the formation of long-term yields.
 
 There are two official objectives.
 

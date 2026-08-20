@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'wet-megawatt-counter',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-20',
+    modelHref: '/outils/compteur-megawatt-humide/model.json',
+    fr: {
+      title: 'Le compteur de mégawatts humides',
+      eyebrow: 'eau et électricité',
+      description: 'Classez une part du thermique classique comme refroidie par eau et mesurez l’effet comptable sur le périmètre européen, sans le confondre avec un risque de panne.',
+      question: 'Combien de gigawatts le registre incomplet laisse-t-il hors du plancher observable ?',
+      href: '/outils/compteur-megawatt-humide/',
+      articleHref: '/posts/megawatt-humide-europe-eau-electricite/',
+      articleLabel: 'Lire l’enquête source',
+    },
+    en: {
+      title: 'The wet megawatt counter',
+      eyebrow: 'water and electricity',
+      description: 'Classify a share of classic thermal capacity as water-cooled and see the accounting effect without turning it into an outage-risk estimate.',
+      question: 'How many gigawatts sit outside the observable floor because the register is incomplete?',
+      href: '/en/tools/wet-megawatt-counter/',
+      articleHref: '/en/analysis/wet-megawatt-europe-water-electricity/',
+      articleLabel: 'Read the source investigation',
+    },
+  },
+  {
     id: 'danube-centimetre-value',
     version: '1.0.0',
     status: 'active',

@@ -1,0 +1,481 @@
+---
+title: "Le mégawatt humide que l'Europe ne sait pas compter"
+description: "Les principaux registres européens suivent les centrales, mais ne relient pas chaque unité à son eau, son refroidissement, ses seuils et ses pertes. Deuxième volet de notre enquête sur l'eau et l'électricité."
+pubDate: 2026-08-20T16:00:00+02:00
+updatedDate: 2026-08-20T16:00:00+02:00
+tags: ["Europe", "électricité", "eau", "nucléaire", "hydroélectricité", "données", "risque", "enquête"]
+draft: false
+quickTake:
+  fact: "Dans le périmètre des membres ENTSO-E présenté pour 2023, l'hydraulique et le nucléaire totalisaient déjà 294,3 GW, soit 28,3 % de la capacité, avant même de classer la part du thermique classique refroidie par l'eau."
+  importance: "Les registres examinés suivent la puissance, la production et les indisponibilités. Aucun ne relie systématiquement chaque unité à sa masse d'eau, son type de refroidissement, ses seuils et ses pertes hydriques."
+  uncertainty: "294,3 GW est un plancher de capacité liée à l'eau, pas une estimation des mégawatts simultanément vulnérables. Les catégories, les bassins et les mécanismes de contrainte doivent être séparés."
+---
+
+import WetMegawattCounter from '../../components/WetMegawattCounter.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*L'Europe peut dire presque en temps réel combien de mégawatts sortent d'une centrale. Elle peut publier sa puissance, son combustible, ses indisponibilités et parfois sa production quart d'heure par quart d'heure. Une question plus élémentaire reste pourtant difficile : de quelle eau cette centrale dépend-elle ? Dans les principaux systèmes publics examinés pour cet article, aucun registre actuel et homogène ne relie chaque unité européenne à sa rivière, sa mer, son circuit de refroidissement, ses seuils de niveau ou de température et les mégawatts effectivement perdus lorsque l'un de ces seuils est franchi. Le premier volet de cette enquête suivait [quelques centimètres de Danube](/posts/combien-vaut-un-centimetre-de-danube/). Le deuxième cherche la colonne qui aurait permis de voir le risque avant l'arrêt des pompes.*
+
+Le **[mégawatt humide](/glossaire/megawatt-humide/)** est une catégorie d'analyse proposée par l0g, pas une statistique réglementaire.
+
+Il désigne une capacité électrique dont la production ou le refroidissement dépend directement d'une masse d'eau, de son stock, de son niveau, de son débit ou de sa température.
+
+La définition tient en une phrase. Les cas limites apparaissent aussitôt.
+
+Une turbine au fil de l'eau, un barrage-réservoir, une STEP en boucle fermée, un réacteur côtier et une centrale à charbon en circuit ouvert ont tous un lien avec l'eau. Ils n'ont ni la même fonction, ni la même vulnérabilité, ni le même impact sur la ressource.
+
+Un score unique écraserait ces différences. Nous l'écartons.
+
+Elle commence par une question plus modeste : **que sait réellement mesurer l'Europe aujourd'hui ?**
+
+## La question la plus simple reste sans réponse
+
+Ouvrir les principales bases européennes produit une impression de richesse documentaire.
+
+La plateforme de transparence d'[ENTSO-E](https://transparency.entsoe.eu/) publie les unités, les capacités, les technologies, la production, les échanges et les indisponibilités.
+
+[PRIS](https://pris.iaea.org/PRIS/), la base de l'Agence internationale de l'énergie atomique, suit les réacteurs, leurs caractéristiques, leur puissance et leur historique d'exploitation.
+
+[Eurostat](https://ec.europa.eu/eurostat/cache/metadata/en/nrg_inf_epc_esms.htm) fournit les capacités nationales selon les sources d'électricité et les technologies.
+
+L'[Agence européenne pour l'environnement](https://www.eea.europa.eu/en/analysis/indicators/water-abstraction-by-source-and) publie les prélèvements d'eau par secteur et par pays.
+
+Le [portail européen des émissions industrielles](https://industry.eea.europa.eu/) localise les grands sites, leurs apports énergétiques et leurs émissions.
+
+Chacune de ces sources voit une partie de la centrale.
+
+Aucune ne fournit, pour l'ensemble du parc européen, une ligne du type :
+
+```text
+unité + puissance actuelle + masse d'eau + refroidissement
++ seuil de débit + seuil de température + perte observée
+```
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison des informations disponibles dans cinq grandes bases européennes sur les centrales, l'eau et les événements hydriques" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="470" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// La donnée existe, le registre n'existe pas</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">Vue simplifiée des champs accessibles dans les principaux systèmes publics.</text>
+  <g font-size="9" fill="#aeb4be" text-anchor="middle">
+    <text x="286" y="95">PUISSANCE</text>
+    <text x="364" y="95">UNITÉ / LIEU</text>
+    <text x="442" y="95">REFROID.</text>
+    <text x="520" y="95">EAU</text>
+    <text x="598" y="95">SEUILS</text>
+    <text x="664" y="95">ÉVÉN.</text>
+  </g>
+  <g font-size="11" fill="#e5e8ed">
+    <text x="34" y="132">ENTSO-E</text>
+    <text x="34" y="184">PRIS / AIEA</text>
+    <text x="34" y="236">EUROSTAT</text>
+    <text x="34" y="288">EEA EAU</text>
+    <text x="34" y="340">JRC-PPDB 2019</text>
+  </g>
+  <g stroke="#292d36">
+    <line x1="250" y1="108" x2="690" y2="108"/>
+    <line x1="250" y1="160" x2="690" y2="160"/>
+    <line x1="250" y1="212" x2="690" y2="212"/>
+    <line x1="250" y1="264" x2="690" y2="264"/>
+    <line x1="250" y1="316" x2="690" y2="316"/>
+    <line x1="250" y1="368" x2="690" y2="368"/>
+  </g>
+  <g>
+    <circle cx="286" cy="128" r="9" fill="#5eead4"/><circle cx="364" cy="128" r="9" fill="#5eead4"/>
+    <circle cx="442" cy="128" r="9" fill="#313640"/><circle cx="520" cy="128" r="9" fill="#313640"/>
+    <circle cx="598" cy="128" r="9" fill="#313640"/><circle cx="664" cy="128" r="9" fill="#f5b13d"/>
+    <circle cx="286" cy="180" r="9" fill="#5eead4"/><circle cx="364" cy="180" r="9" fill="#5eead4"/>
+    <circle cx="442" cy="180" r="9" fill="#f5b13d"/><circle cx="520" cy="180" r="9" fill="#f5b13d"/>
+    <circle cx="598" cy="180" r="9" fill="#313640"/><circle cx="664" cy="180" r="9" fill="#f5b13d"/>
+    <circle cx="286" cy="232" r="9" fill="#f5b13d"/><circle cx="364" cy="232" r="9" fill="#313640"/>
+    <circle cx="442" cy="232" r="9" fill="#313640"/><circle cx="520" cy="232" r="9" fill="#313640"/>
+    <circle cx="598" cy="232" r="9" fill="#313640"/><circle cx="664" cy="232" r="9" fill="#313640"/>
+    <circle cx="286" cy="284" r="9" fill="#313640"/><circle cx="364" cy="284" r="9" fill="#313640"/>
+    <circle cx="442" cy="284" r="9" fill="#f5b13d"/><circle cx="520" cy="284" r="9" fill="#5eead4"/>
+    <circle cx="598" cy="284" r="9" fill="#313640"/><circle cx="664" cy="284" r="9" fill="#313640"/>
+    <circle cx="286" cy="336" r="9" fill="#5eead4"/><circle cx="364" cy="336" r="9" fill="#5eead4"/>
+    <circle cx="442" cy="336" r="9" fill="#5eead4"/><circle cx="520" cy="336" r="9" fill="#5eead4"/>
+    <circle cx="598" cy="336" r="9" fill="#313640"/><circle cx="664" cy="336" r="9" fill="#313640"/>
+  </g>
+  <g font-size="9" fill="#0c0d10" text-anchor="middle" font-weight="800">
+    <text x="664" y="131">~</text>
+    <text x="442" y="183">~</text><text x="520" y="183">~</text><text x="664" y="183">~</text>
+    <text x="286" y="235">~</text>
+    <text x="442" y="287">~</text>
+  </g>
+  <rect x="24" y="390" width="672" height="48" rx="5" fill="#15171c" stroke="#2b3039"/>
+  <circle cx="44" cy="414" r="7" fill="#5eead4"/><text x="58" y="418" fill="#cfd4dc" font-size="9">champ structuré</text>
+  <circle cx="176" cy="414" r="7" fill="#f5b13d"/><text x="190" y="418" fill="#cfd4dc" font-size="9">partiel ou indirect</text>
+  <circle cx="338" cy="414" r="7" fill="#313640"/><text x="352" y="418" fill="#cfd4dc" font-size="9">absent du registre standard</text>
+  <text x="536" y="418" fill="#ff4d87" font-size="9">JRC 2019 : incomplet</text>
+  <text x="24" y="458" fill="#777f8c" font-size="9">SOURCES : ENTSO-E, PRIS, Eurostat, EEA, JRC-PPDB-OPEN. Synthèse l0g au 20 août 2026.</text>
+</svg>
+<figcaption>Le problème n'est pas une absence totale de données. Il tient à leur séparation entre plusieurs institutions, plusieurs périmètres et plusieurs calendriers de mise à jour.</figcaption>
+</figure>
+
+Cette fragmentation produit un angle mort très concret.
+
+Une indisponibilité ENTSO-E peut montrer qu'une unité perd 500 MW. Le motif public n'indique pas nécessairement qu'une température de rivière ou un niveau de prise d'eau en est la cause. Une statistique EEA peut montrer que le secteur électrique prélève des dizaines de milliards de mètres cubes. Elle ne permet pas toujours de remonter jusqu'à la centrale qui dépend de ce prélèvement.
+
+La donnée énergétique et la donnée hydrologique se rencontrent souvent seulement après l'événement, lorsque l'opérateur publie un communiqué.
+
+## Une ancienne base possédait déjà les bonnes colonnes
+
+Le Centre commun de recherche de la Commission européenne a déjà approché le problème.
+
+La base [JRC-PPDB-OPEN](https://data.jrc.ec.europa.eu/dataset/9810feeb-f062-49cd-8e76-8d8cfd488a05) contient, au niveau des unités, les champs `water_type`, `cooling_type`, `water_withdrawal` et `water_consumption`.
+
+La documentation de l'Energy and Industry Geography Lab distingue même les principaux dispositifs : refroidissement à l'air, tour à tirage mécanique, tour à tirage naturel et circuit ouvert. ([JRC, documentation EIGL](https://joint-research-centre.ec.europa.eu/system/files/2023-11/Data%20documentation%20EIGL%20v1_6.pdf))
+
+C'est presque exactement la colonne qui manque.
+
+Le problème vient de la date et de la couverture.
+
+La version publique est la version 1.0, publiée en 2019. Sa fréquence de mise à jour est indiquée comme irrégulière. Le JRC la décrit comme une première tentative plus cohérente que les sources fragmentées, tout en précisant qu'elle reste incomplète.
+
+Entre-temps, des réacteurs ont fermé, d'autres sont entrés en service, des centrales fossiles ont été mises en réserve, des systèmes de refroidissement ont été modifiés et les règles environnementales ont évolué.
+
+Une base peut posséder la bonne architecture et donner une image périmée du parc.
+
+C'est la première conclusion de cette enquête : **l'Europe n'a pas besoin d'inventer le schéma de données. Elle doit le maintenir.**
+
+## Un plancher de 294,3 GW
+
+Une mesure honnête peut néanmoins commencer sans attendre la base parfaite.
+
+Le panorama européen publié par Red Eléctrica à partir des données des membres d'ENTSO-E donne pour 2023 :
+
+- **199,9 GW d'hydraulique** ;
+- **94,4 GW de nucléaire** ;
+- **319,6 GW de thermique classique** ;
+- **1 040,2 GW de capacité totale**.
+
+L'hydraulique et le nucléaire totalisent donc **294,3 GW**, soit **28,3 % de la capacité** dans ce périmètre. ([Red Eléctrica, panorama européen 2023](https://www.sistemaelectrico-ree.es/en/2023/spanish-electricity-system/european-landscape/generation))
+
+Ce chiffre constitue un plancher de capacité liée à l'eau.
+
+L'hydraulique utilise directement l'eau comme énergie ou comme stock. Les réacteurs en service ont besoin d'un puits froid, généralement une rivière, un estuaire, la mer ou une tour alimentée en eau.
+
+Le calcul laisse volontairement de côté la part des 319,6 GW de thermique classique qui dépend également d'un refroidissement humide.
+
+Cette part n'est pas nulle. Elle n'est simplement pas consolidée dans un registre européen public actuel.
+
+La base PRIS permet de contrôler l'ordre de grandeur du nucléaire avec des statuts plus récents. Les pages nationales des douze pays de l'Union exploitant encore des réacteurs totalisaient **96,2 GW nets** selon notre addition arrêtée au 20 août 2026. Ce rapprochement n'autorise pas à mélanger les millésimes : il montre seulement que le chiffre 2023 de 94,4 GW reste du bon ordre de grandeur.
+
+Le véritable inconnu reste ailleurs.
+
+Combien de gigawatts à gaz, charbon, lignite, fioul, déchets ou biomasse utilisent un circuit ouvert en eau douce ? Combien disposent de tours ? Combien sont côtiers ? Combien utilisent de l'air ou des eaux usées ?
+
+Le simulateur ci-dessous montre pourquoi cette seule colonne manquante modifie fortement le total.
+
+## Testez le périmètre
+
+<WetMegawattCounter lang="fr" />
+
+[Ouvrir le compteur en pleine largeur](/outils/compteur-megawatt-humide/).
+
+Le curseur n'est pas une estimation.
+
+Il rend visible une relation comptable : chaque point de pourcentage du thermique classique classé comme refroidi par eau ajoute environ **3,2 GW** au périmètre. Le résultat dépend donc moins d'une formule sophistiquée que d'une information de base qui n'est pas tenue à jour dans un registre commun.
+
+## Prélever n'est pas consommer
+
+Le mot « utiliser » produit une autre confusion. Un **[prélèvement d’eau](/glossaire/prelevement-d-eau/)** compte le volume retiré du milieu. La **[consommation d’eau](/glossaire/consommation-d-eau/)** ne retient que la part qui n’y revient pas immédiatement.
+
+Sur la période 2000-2022, l'EEA estime que le refroidissement des centrales représentait en moyenne **72,3 milliards de mètres cubes de prélèvements par an**, soit **36 %** des prélèvements des secteurs économiques de l'Union, hors hydroélectricité. Pour la période 2020-2023, ce volume avait reculé vers **62 milliards de mètres cubes**, soit environ 33 % du total. ([EEA, water abstraction](https://www.eea.europa.eu/en/analysis/indicators/water-abstraction-by-source-and))
+
+L'EEA relie notamment cette baisse au recul du thermique fossile et à la progression des renouvelables.
+
+Elle ne signifie pas que 72 ou 62 milliards de mètres cubes disparaissent chaque année.
+
+Un **[refroidissement en circuit ouvert](/glossaire/refroidissement-en-circuit-ouvert/)** prélève une grande quantité d'eau, la fait passer dans un échangeur puis la restitue presque entièrement, plus chaude.
+
+Une tour humide prélève beaucoup moins, recycle l'eau, mais en perd une part plus importante par évaporation.
+
+Le refroidissement à l'air réduit presque à zéro les besoins en eau, au prix d'un investissement, d'une consommation auxiliaire et d'une baisse de rendement lorsque l'air est chaud.
+
+Les ordres de grandeur publiés par [Climate-ADAPT](https://climate-adapt.eea.europa.eu/en/metadata/adaptation-options/reducing-water-consumption-for-cooling-of-thermal-generation-plants), pour une centrale thermique conventionnelle de référence, illustrent ce paradoxe.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison entre prélèvement et consommation d'eau pour le refroidissement en circuit ouvert, en tour humide et à sec" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="510" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le piège du mot « utiliser »</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">Plages indicatives par MWh. Prélèvement et consommation racontent deux contraintes différentes.</text>
+  <rect x="32" y="88" width="318" height="244" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="50" y="116" fill="#7aa2f7" font-size="12" font-weight="800">CIRCUIT OUVERT</text>
+  <text x="50" y="145" fill="#cfd4dc" font-size="9">L'eau traverse le condenseur puis retourne au milieu.</text>
+  <text x="50" y="184" fill="#8b929e" font-size="9">PRÉLÈVEMENT</text>
+  <text x="50" y="210" fill="#f3f5f8" font-size="18" font-weight="800">75 710 à 189 270 L/MWh</text>
+  <text x="50" y="246" fill="#8b929e" font-size="9">CONSOMMATION NETTE</text>
+  <text x="50" y="272" fill="#5eead4" font-size="18" font-weight="800">380 à 1 200 L/MWh</text>
+  <path d="M60 302 H286" stroke="#7aa2f7" stroke-width="5"/>
+  <path d="M286 302 l-12 -7 v14 z" fill="#7aa2f7"/>
+  <path d="M286 318 H82" stroke="#5eead4" stroke-width="3" stroke-dasharray="6 4"/>
+  <path d="M82 318 l12 -7 v14 z" fill="#5eead4"/>
+  <rect x="370" y="88" width="318" height="244" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="388" y="116" fill="#f5b13d" font-size="12" font-weight="800">TOUR HUMIDE</text>
+  <text x="388" y="145" fill="#cfd4dc" font-size="9">L'eau recircule. La chaleur part surtout par évaporation.</text>
+  <text x="388" y="184" fill="#8b929e" font-size="9">PRÉLÈVEMENT</text>
+  <text x="388" y="210" fill="#f3f5f8" font-size="18" font-weight="800">1 890 à 4 540 L/MWh</text>
+  <text x="388" y="246" fill="#8b929e" font-size="9">CONSOMMATION NETTE</text>
+  <text x="388" y="272" fill="#ff4d87" font-size="18" font-weight="800">1 820 à 4 169 L/MWh</text>
+  <path d="M398 304 C438 282 486 282 526 304 C566 326 614 326 654 304" fill="none" stroke="#f5b13d" stroke-width="4"/>
+  <path d="M526 304 V282" stroke="#ff4d87" stroke-width="3"/>
+  <path d="M526 282 l-7 11 h14 z" fill="#ff4d87"/>
+  <rect x="32" y="354" width="318" height="100" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="50" y="382" fill="#5eead4" font-size="11" font-weight="800">REFROIDISSEMENT SEC</text>
+  <text x="50" y="407" fill="#d2d7df" font-size="9">Eau presque supprimée, mais ventilateurs, coût</text>
+  <text x="50" y="424" fill="#d2d7df" font-size="9">et pénalité de puissance pendant les fortes chaleurs.</text>
+  <rect x="370" y="354" width="318" height="100" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="388" y="382" fill="#ff4d87" font-size="11" font-weight="800">SYSTÈME HYBRIDE</text>
+  <text x="388" y="407" fill="#d2d7df" font-size="9">Le sec économise l'eau. L'humide revient lorsque</text>
+  <text x="388" y="424" fill="#d2d7df" font-size="9">la chaleur rend chaque mégawatt plus précieux.</text>
+  <text x="24" y="490" fill="#777f8c" font-size="9">SOURCE : EEA Climate-ADAPT. Plages de référence, pas données de chaque centrale.</text>
+</svg>
+<figcaption>Un circuit ouvert prélève énormément mais rend l'essentiel de l'eau. Une tour réduit fortement le prélèvement tout en augmentant souvent la part consommée par évaporation.</figcaption>
+</figure>
+
+L'EEA estime que **65 % de la production électrique européenne dépend encore de l'eau pour son refroidissement**. Elle évalue en parallèle la part du refroidissement à environ **20 % de la consommation nette annuelle d'eau** de l'Union. ([EEA, Water savings for a water-resilient Europe](https://www.eea.europa.eu/en/analysis/publications/water-savings-for-a-water-resilient-europe))
+
+Les deux nombres répondent à deux questions différentes.
+
+Le premier décrit une dépendance de production.
+
+Le second décrit la fraction de l'eau qui ne retourne pas immédiatement au même milieu.
+
+Un débat qui mélange les deux peut faire paraître une centrale beaucoup plus ou beaucoup moins vulnérable qu'elle ne l'est.
+
+## L'eau n'est pas un risque unique
+
+Le premier article a fourni trois cas voisins sur le Danube.
+
+Paks a rencontré un problème de **niveau local au droit des pompes**.
+
+Cernavodă a atteint la limite de son **bassin d'aspiration**.
+
+Kozloduy a continué à produire grâce à une station de pompage construite dans une baie profonde.
+
+Le même fleuve a donc produit trois résultats différents.
+
+La catégorie « centrale riveraine » ne suffit pas.
+
+Il faut au minimum distinguer :
+
+- le débit disponible ;
+- la hauteur d'eau à la prise ;
+- la température en amont ;
+- la température ou l'échauffement autorisé en aval ;
+- la consommation par évaporation ;
+- les règles de partage entre usages ;
+- la qualité de l'eau, la salinité et les organismes qui peuvent colmater une prise.
+
+Une centrale côtière n'est pas exposée au faible débit d'une rivière. Elle peut toutefois perdre de la puissance si l'eau de mer devient trop chaude ou si des méduses, algues ou poissons obstruent ses filtres.
+
+Une tour humide protège davantage contre le faible niveau immédiat d'un fleuve, mais elle continue à consommer de l'eau et perd de l'efficacité lorsque l'air est chaud et humide.
+
+Le refroidissement sec réduit la dépendance à l'eau, tout en rendant la puissance disponible plus sensible à la température de l'air.
+
+Le mégawatt humide ne désigne donc pas une technologie fragile.
+
+Il désigne un **lien physique à qualifier**.
+
+## Il existe quatre hydroélectricités différentes
+
+L'hydraulique crée une difficulté supplémentaire.
+
+La base ouverte [JRC Hydro-power plants](https://github.com/energy-modelling-toolkit/hydro-power-database) recense 4 264 centrales européennes et distingue leur typologie, leur capacité, leur hauteur de chute, leur volume utile et, lorsque l'information existe directement, leur capacité de stockage.
+
+Ce travail est précieux. Ses auteurs précisent qu'il s'agit d'un projet ouvert issu de travaux initiés au JRC, et non d'un produit officiel exhaustif de la Commission.
+
+Surtout, l'étiquette « hydro » rassemble quatre fonctions électriques différentes.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison entre hydroélectricité au fil de l'eau, barrage-réservoir, pompage-turbinage ouvert et pompage-turbinage fermé" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="500" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Quatre hydroélectricités, quatre dépendances</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">La puissance installée ne dit pas combien d'eau peut être déplacée dans le temps.</text>
+  <rect x="30" y="88" width="320" height="174" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="48" y="116" fill="#5eead4" font-size="11" font-weight="800">1. FIL DE L'EAU</text>
+  <path d="M52 178 C98 158 142 194 188 174 C232 154 276 186 326 166" fill="none" stroke="#3985a3" stroke-width="18" opacity=".9"/>
+  <circle cx="190" cy="174" r="15" fill="#0c0d10" stroke="#5eead4" stroke-width="3"/>
+  <text x="48" y="222" fill="#d1d6de" font-size="9">Le débit du jour fixe presque directement</text>
+  <text x="48" y="239" fill="#d1d6de" font-size="9">la production. Peu de capacité de report.</text>
+  <rect x="370" y="88" width="320" height="174" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="388" y="116" fill="#7aa2f7" font-size="11" font-weight="800">2. RÉSERVOIR</text>
+  <path d="M398 196 H662 V158 C620 144 574 174 532 160 C486 144 444 178 398 160 Z" fill="#245e79"/>
+  <rect x="520" y="144" width="18" height="68" fill="#2d323c"/>
+  <text x="388" y="222" fill="#d1d6de" font-size="9">L'eau devient un stock. Produire aujourd'hui</text>
+  <text x="388" y="239" fill="#d1d6de" font-size="9">réduit l'option disponible demain.</text>
+  <rect x="30" y="282" width="320" height="174" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="48" y="310" fill="#f5b13d" font-size="11" font-weight="800">3. STEP OUVERTE</text>
+  <path d="M52 344 H154 V324 H236 V390 H326" fill="none" stroke="#367f9d" stroke-width="14"/>
+  <path d="M166 360 H224" stroke="#f5b13d" stroke-width="3"/>
+  <polygon points="224,360 214,354 214,366" fill="#f5b13d"/>
+  <path d="M224 378 H166" stroke="#7aa2f7" stroke-width="3"/>
+  <polygon points="166,378 176,372 176,384" fill="#7aa2f7"/>
+  <text x="48" y="416" fill="#d1d6de" font-size="9">Stockage électrique et apports naturels</text>
+  <text x="48" y="433" fill="#d1d6de" font-size="9">se mélangent dans les mêmes bassins.</text>
+  <rect x="370" y="282" width="320" height="174" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="388" y="310" fill="#ff4d87" font-size="11" font-weight="800">4. STEP FERMÉE</text>
+  <ellipse cx="446" cy="350" rx="50" ry="19" fill="#245e79"/>
+  <ellipse cx="614" cy="390" rx="50" ry="19" fill="#245e79"/>
+  <path d="M490 352 C528 354 536 382 570 388" fill="none" stroke="#7aa2f7" stroke-width="3"/>
+  <path d="M570 374 C532 372 524 344 490 338" fill="none" stroke="#f5b13d" stroke-width="3"/>
+  <text x="388" y="416" fill="#d1d6de" font-size="9">Le même stock circule principalement entre</text>
+  <text x="388" y="433" fill="#d1d6de" font-size="9">deux bassins. Exposition au débit bien plus faible.</text>
+  <text x="24" y="485" fill="#777f8c" font-size="9">SOURCE : JRC Hydro-power plants database. Typologie simplifiée par l0g.</text>
+</svg>
+<figcaption>Additionner toutes les capacités hydrauliques donne une mesure de leur lien à l'eau. Cela ne donne pas leur sensibilité commune à une sécheresse.</figcaption>
+</figure>
+
+Le fil de l'eau dépend du débit instantané.
+
+Le réservoir permet de déplacer l'énergie dans le temps, mais reste contraint par les apports, l'irrigation, l'eau potable, les crues, les débits écologiques et la stratégie de conservation.
+
+Une **[STEP](/glossaire/step/)** ouverte combine stockage électrique et hydrologie naturelle.
+
+Une STEP fermée recycle principalement le même stock entre deux bassins. Elle demeure liée à l'eau, tout en étant beaucoup moins exposée au débit d'un fleuve. La distinction ouverte ou fermée dépend de la présence, ou non, d'une connexion durable à un cours d'eau naturel. ([IHA, pumped-storage hydropower](https://www.hydropower.org/factsheets/pumped-storage))
+
+Un total hydro qui ne sépare pas ces quatre catégories mesure une capacité installée. Il ne mesure pas une vulnérabilité.
+
+## Le seuil transforme la dépendance en perte réelle
+
+Une centrale peut dépendre de l'eau pendant cinquante ans sans perdre un seul MWh pour cette raison.
+
+La vulnérabilité devient observable lorsqu'un seuil est franchi.
+
+Ce seuil peut être physique : la pompe n'est plus assez immergée.
+
+Il peut être thermodynamique : l'eau d'entrée devient trop chaude pour condenser efficacement la vapeur.
+
+Il peut être environnemental : la température aval ou l'échauffement autorisé est atteint.
+
+Il peut être institutionnel : un barrage doit conserver un débit écologique ou fournir de l'eau à l'agriculture.
+
+Il peut enfin être biologique : une prise est obstruée.
+
+Le JRC a déjà intégré des contraintes de prélèvement et de température dans le modèle électrique open source [Dispa-SET](https://github.com/energy-modelling-toolkit/Dispa-SET). Ses travaux montrent qu'une limite de retrait d'eau ou de température peut plafonner la puissance maximale, puis forcer l'arrêt lorsque la puissance compatible avec la contrainte tombe sous le minimum technique de l'unité. ([JRC, Water-related modelling in electric power systems](https://publications.jrc.ec.europa.eu/repository/bitstream/JRC109941/kjna29039enn.pdf))
+
+Le modèle sait représenter la relation.
+
+Le registre public ne lui fournit pas encore partout des paramètres actuels et homogènes.
+
+C'est la deuxième conclusion de l'enquête : **la capacité liée à l'eau peut être cartographiée par la technologie, mais la perte réelle exige des seuils propres au site.**
+
+## Une base construite autour des preuves, pas autour d'un score
+
+Un futur registre public ne pourra être utile que s'il rend ses lacunes visibles. L'architecture proposée ici organise donc les preuves avant de produire un total.
+
+Chaque actif devra recevoir un niveau de confiance :
+
+- **A** lorsque l'opérateur ou le régulateur documente la source d'eau, le système et l'événement ;
+- **B** lorsque l'actif et son lien à l'eau sont confirmés mais qu'un seuil manque ;
+- **C** lorsqu'il reste un candidat à vérifier ;
+- **D** lorsque les données sont trop contradictoires pour entrer dans un total.
+
+Le registre pourrait être organisé en cinq tables liées :
+
+```text
+centrales
+liaisons avec l'eau
+seuils
+événements
+sources
+```
+
+Cette architecture évite d'écraser plusieurs réalités dans une seule ligne.
+
+Une centrale peut utiliser l'eau de mer pour une unité et une tour pour une autre. Un seuil peut changer selon la saison. Un événement peut commencer par une limite environnementale puis devenir une contrainte physique. Le statut d'une unité peut évoluer entre exploitation, réserve et fermeture.
+
+Tout résultat publié devra montrer sa complétude.
+
+Un nombre comme « 380 GW liés à l'eau » n'aura de sens qu'accompagné de quatre autres informations :
+
+- part avec source d'eau confirmée ;
+- part avec refroidissement confirmé ;
+- part avec seuil local retrouvé ;
+- part avec événement hydrique documenté.
+
+Le trou documentaire fait partie du résultat.
+
+## Quatre indicateurs, quatre questions
+
+Le dossier utilisera quatre mesures principales.
+
+**Water-Coupled Capacity** répondra à : combien de capacité utilise directement l'eau pour produire, stocker ou refroidir ?
+
+**Freshwater-Exposed Capacity** isolera la dépendance à une rivière, un lac, un canal ou un réservoir, sans mélanger l'eau de mer.
+
+**Freshwater Once-Through Exposure** ciblera les centrales thermiques ou nucléaires en circuit ouvert sur eau douce, généralement les plus sensibles au débit, au niveau et à la température du milieu.
+
+**Observed Water Derating** additionnera uniquement les MW et MWh réellement perdus lors d'événements documentés.
+
+Un cinquième indicateur, le **Basin Concentration Ratio**, mesurera la part de capacité pilotable ou de production reliée à un même bassin.
+
+Ce dernier devient important lorsque plusieurs technologies partagent le même choc.
+
+L'été 2026 a réduit sur le Danube du nucléaire, de l'hydraulique et du charbon. Compter chaque centrale séparément sous-estime la corrélation. Additionner toutes les centrales riveraines surestime la probabilité d'un arrêt commun.
+
+Le bassin fournit l'échelle intermédiaire.
+
+## Le premier chiffre ne doit jamais devenir une prophétie
+
+Le plancher de 294,3 GW possède une utilité précise.
+
+Il montre que la dimension hydrique n'est pas marginale dans le système électrique européen.
+
+Il ne permet pas d'écrire que 294,3 GW sont menacés par la prochaine sécheresse.
+
+Une centrale nucléaire côtière ne dépend pas de la pluie de la même manière qu'un barrage alpin.
+
+Une STEP fermée peut fournir de la puissance pendant un épisode sec.
+
+Un réacteur fluvial équipé de tours peut conserver davantage de marge qu'un site en circuit ouvert.
+
+Un site en circuit ouvert peut rester robuste grâce à une prise profonde, comme Kozloduy l'a montré sur le Danube.
+
+La carte devra donc ressembler moins à une carte du danger qu'à une carte des **conditions d'existence du mégawatt**.
+
+C'est une différence importante.
+
+Les statistiques électriques présentent la capacité comme une propriété de la machine.
+
+L'enquête montre qu'une partie de cette capacité appartient aussi à son environnement : un niveau, un débit, une température, une baie, un réservoir, une autorisation et parfois quelques centimètres de marge.
+
+Les modèles savent déjà représenter cette dépendance, et l'ancienne base fournit les bonnes colonnes. Données d'exploitation, permis et séries hydrologiques existent chez plusieurs producteurs publics ou opérateurs. Les systèmes examinés ne les relient pas dans un registre vivant.
+
+Tant que ce registre n'existe pas, l'Europe saura combien de mégawatts elle a construits.
+
+Elle saura beaucoup moins précisément combien peuvent encore fonctionner lorsque l'eau change.
+
+### Méthode et limites
+
+Données arrêtées au **20 août 2026**.
+
+Le chiffre de 294,3 GW additionne les catégories hydraulique et nucléaire du panorama 2023 des membres d'ENTSO-E publié par Red Eléctrica. Son périmètre dépasse l'Union européenne et son millésime ne décrit pas exactement le parc 2026. Il est utilisé parce qu'il fournit un tableau cohérent de toutes les technologies et un même dénominateur.
+
+Le contrôle nucléaire 2026 repose sur une addition l0g des capacités nettes publiées par PRIS pour les douze pays de l'Union ayant encore des réacteurs en service : Belgique, Bulgarie, Tchéquie, Espagne, Finlande, France, Hongrie, Pays-Bas, Roumanie, Slovaquie, Slovénie et Suède. Il sert uniquement à vérifier l'ordre de grandeur.
+
+Les plages d'eau par MWh viennent d'une option d'adaptation EEA Climate-ADAPT fondée sur une centrale thermique conventionnelle de référence. Elles ne doivent pas être appliquées automatiquement à chaque centrale européenne.
+
+Le projet JRC Hydro-power plants est un jeu de données ouvert issu de travaux initiés au JRC. Ses auteurs précisent qu'il ne s'agit pas d'un produit officiel de la Commission et que la complétude varie selon les variables.
+
+La méthode proposée privilégie les sources des opérateurs, régulateurs, gestionnaires de réseau et agences hydrologiques. Un futur total ne devrait intégrer que les actifs de confiance A ou B et devrait afficher la part non documentée.
+
+### Sources principales et jeux de données
+
+- [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)
+- [Red Eléctrica, panorama européen de la capacité installée 2023](https://www.sistemaelectrico-ree.es/en/2023/spanish-electricity-system/european-landscape/generation)
+- [IAEA, Power Reactor Information System](https://pris.iaea.org/PRIS/)
+- [Eurostat, Electricity production capacities by main fuel groups and operator](https://ec.europa.eu/eurostat/cache/metadata/en/nrg_inf_epc_esms.htm)
+- [EEA, Water abstraction by source and economic sector](https://www.eea.europa.eu/en/analysis/indicators/water-abstraction-by-source-and)
+- [EEA, Water savings for a water-resilient Europe](https://www.eea.europa.eu/en/analysis/publications/water-savings-for-a-water-resilient-europe)
+- [EEA Climate-ADAPT, Reducing water consumption for cooling of thermal generation plants](https://climate-adapt.eea.europa.eu/en/metadata/adaptation-options/reducing-water-consumption-for-cooling-of-thermal-generation-plants)
+- [JRC Open Power Plants Database](https://data.jrc.ec.europa.eu/dataset/9810feeb-f062-49cd-8e76-8d8cfd488a05)
+- [JRC, documentation de l'Energy and Industry Geography Lab](https://joint-research-centre.ec.europa.eu/system/files/2023-11/Data%20documentation%20EIGL%20v1_6.pdf)
+- [JRC Hydro-power plants database](https://github.com/energy-modelling-toolkit/hydro-power-database)
+- [International Hydropower Association, open-loop and closed-loop pumped storage](https://www.hydropower.org/factsheets/pumped-storage)
+- [JRC, Water-related modelling in electric power systems](https://publications.jrc.ec.europa.eu/repository/bitstream/JRC109941/kjna29039enn.pdf)
+- [European Industrial Emissions Portal](https://industry.eea.europa.eu/)
+
+*Prochain volet : Le degré de trop, enquête sur les seuils thermiques, les dérogations et la manière dont la France arbitre entre production électrique et température des fleuves.*

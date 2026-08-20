@@ -1,0 +1,47 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import WetMegawattCounter from '../../../components/WetMegawattCounter.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import {
+  WET_MEGAWATT_DATA_DATE,
+  WET_MEGAWATT_DATA_VINTAGE,
+  WET_MEGAWATT_MODEL_VERSION,
+  WET_MEGAWATT_SOURCES,
+} from '../../../lib/wet-megawatt-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'wet-megawatt-counter');
+if (!tool) throw new Error('Wet megawatt tool is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title, description: tool.en.description, url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'en',
+  isAccessibleForFree: true, softwareVersion: WET_MEGAWATT_MODEL_VERSION,
+  dateModified: WET_MEGAWATT_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: WET_MEGAWATT_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout title="How much European power capacity depends on water?" description="Test how one missing cooling field changes the accounting perimeter of European water-coupled capacity. Data, assumption and limits remain separate." alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <section class="tool-hero rise" data-pagefind-ignore>
+    <p class="mono-label">// analysis tool · v{WET_MEGAWATT_MODEL_VERSION}</p>
+    <h1>The wet megawatt counter</h1>
+    <p>The floor is observed. The water-cooled share of classic thermal capacity remains your assumption.</p>
+    <small>Capacity vintage {WET_MEGAWATT_DATA_VINTAGE}, ENTSO-E member-state perimeter published by Red Eléctrica. No scenario predicts an outage.</small>
+  </section>
+  <WetMegawattCounter lang="en" mode="full" />
+</EnglishGuidesLayout>
+
+<style>
+  .tool-hero { border:1px solid var(--color-line); border-radius:14px; padding:clamp(1rem,3vw,1.7rem); background:color-mix(in srgb,var(--color-surface) 72%,transparent); }
+  .tool-hero .mono-label { color:var(--color-signal); }
+  .tool-hero h1 { max-width:48rem; margin-top:.8rem; color:var(--color-bright); font-family:var(--font-display); font-size:clamp(2rem,5vw,3.5rem); line-height:1.04; }
+  .tool-hero>p:not(.mono-label) { max-width:48rem; margin-top:.9rem; color:var(--color-paper); font-size:1rem; line-height:1.65; }
+  .tool-hero small { display:block; max-width:48rem; margin-top:.6rem; color:var(--color-muted); line-height:1.55; }
+</style>

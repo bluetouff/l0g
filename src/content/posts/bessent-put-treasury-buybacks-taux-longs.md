@@ -21,9 +21,9 @@ Il faut être beaucoup plus précis.
 
 ## La modification du 19 août
 
-Les rachats de dette publique américaine n'ont pas commencé cette semaine.
+Les **[rachats de dette par le Trésor américain](/glossaire/treasury-buyback/)** n'ont pas commencé cette semaine.
 
-Le programme actuel existe depuis mai 2024. Les rachats de soutien à la liquidité donnent une possibilité régulière de céder dans le marché secondaire des titres déjà émis, notamment des obligations dites **off-the-run**, c'est-à-dire des anciennes souches devenues moins liquides que les titres les plus récents. Notre [guide du marché des Treasuries](/guides/lire-le-marche-des-treasuries/) revient sur cette distinction et sur la formation des taux longs.
+Le programme actuel existe depuis mai 2024. Les rachats de soutien à la liquidité donnent une possibilité régulière de céder dans le marché secondaire des titres déjà émis, notamment des obligations dites **[off-the-run](/glossaire/off-the-run/)**, c'est-à-dire des anciennes souches devenues moins liquides que les titres les plus récents. Notre [guide du marché des Treasuries](/guides/lire-le-marche-des-treasuries/) revient sur cette distinction et sur la formation des taux longs.
 
 L'objectif officiel est double.
 
