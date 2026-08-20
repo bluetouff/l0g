@@ -376,7 +376,8 @@ test('le catalogue et la home gardent leurs cartes lisibles sur mobile', () => {
   const index = readFileSync(PUBLICATIONS_INDEX, 'utf8');
   const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
 
-  assert.ok(index.indexOf('publication="auditer-opacite"') < index.lastIndexOf('<PublicationSpotlight />'));
+  assert.ok(index.lastIndexOf('<PublicationSpotlight />') < index.indexOf('publication="auditer-opacite"'));
+  assert.match(spotlight, /meta: '\/\/ essai · édition l0g · mai 2026'/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: 1fr/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/u);
   assert.match(spotlight, /@media \(max-width: 680px\)[\s\S]*?\.publication-actions a \{ width: 100%; \}/u);
