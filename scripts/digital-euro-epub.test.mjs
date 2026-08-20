@@ -12,6 +12,11 @@ const EN_EPUB = join(ROOT, 'public/publications/digital-euro-investigation-l0g.e
 const FR_PAGE = join(ROOT, 'src/pages/publications/euro-numerique.astro');
 const EN_PAGE = join(ROOT, 'src/pages/en/publications/digital-euro.astro');
 const PAGE_COMPONENT = join(ROOT, 'src/components/DigitalEuroEpubPage.astro');
+const PUBLICATION_SPOTLIGHT = join(ROOT, 'src/components/PublicationSpotlight.astro');
+const FR_VISUALS = [
+  { path: join(ROOT, 'public/publications/euro-numerique-frontieres.png'), width: 1672, height: 941 },
+  { path: join(ROOT, 'public/publications/euro-numerique-infrastructure.png'), width: 1672, height: 941 },
+];
 
 function listFiles(directory) {
   return readdirSync(directory, { withFileTypes: true })
@@ -95,4 +100,21 @@ test('the bilingual publication pages expose both exact downloads', () => {
   assert.match(component, /createHash\('sha256'\)/u);
   assert.match(component, /hreflang: 'fr'/u);
   assert.match(component, /hreflang: 'en'/u);
+});
+
+test('la carte catalogue mène à la page et les deux planches restent disponibles en taille réelle', () => {
+  const component = readFileSync(PAGE_COMPONENT, 'utf8');
+  const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
+  assert.match(spotlight, /publication-title-link" href=\{publicationUrl\}/u);
+  assert.match(spotlight, /isDigitalEuro[\s\S]*?'\/publications\/euro-numerique\/'/u);
+  for (const visual of FR_VISUALS) {
+    const image = readFileSync(visual.path);
+    assert.equal(image.subarray(1, 4).toString('ascii'), 'PNG');
+    assert.equal(image.readUInt32BE(16), visual.width);
+    assert.equal(image.readUInt32BE(20), visual.height);
+    assert.match(component, new RegExp(visual.path.split('/').at(-1).replaceAll('.', '\\.'), 'u'));
+  }
+  assert.match(component, /class="visual-scroll" tabindex="0"/u);
+  assert.match(component, /Ouvrir en grand/u);
+  assert.match(component, /loading="lazy" decoding="async"/u);
 });

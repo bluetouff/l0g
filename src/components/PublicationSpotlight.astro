@@ -132,7 +132,7 @@ const copy = isDigitalEuro
       <p class="mono-label">{copy.meta}</p>
       <span>EPUB 3</span>
     </div>
-    <Heading>{copy.titleLead}{' '}<em>{copy.titleAccent}</em></Heading>
+    <Heading><a class="publication-title-link" href={publicationUrl}>{copy.titleLead}{' '}<em>{copy.titleAccent}</em></a></Heading>
     <p class="publication-deck">{copy.deck}</p>
     <p class="publication-description">{copy.description}</p>
 
@@ -208,6 +208,12 @@ const copy = isDigitalEuro
   }
   .publication-copy h2 em,
   .publication-copy h3 em { color: var(--color-accent); font-style: normal; }
+  .publication-title-link { color: inherit; text-decoration: none; }
+  .publication-title-link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--publication-card-accent);
+    text-underline-offset: 0.14em;
+  }
   .publication-deck {
     margin-top: 0.65rem;
     color: var(--color-paper);

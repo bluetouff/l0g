@@ -21,15 +21,65 @@ const title = isFr ? 'L’euro numérique, l’enquête complète en EPUB' : 'Th
 const description = isFr
   ? 'Six enquêtes en sources ouvertes sur les bilans, les données, le droit, les coûts et l’infrastructure de l’euro numérique.'
   : 'Six open-source investigations into the balance sheets, data, law, costs and infrastructure of the digital euro.';
+const downloadName = isFr ? 'Euro-numerique-l0g.epub' : 'The-Digital-Euro-l0g.epub';
+
 const chapters = isFr
-  ? ['L’euro qui change de débiteur', 'Le stress test à 699 milliards', 'Privé comme du cash ?', 'La frontière juridique de la programmabilité', 'Le prix de la souveraineté', 'Qui contrôle la machine ?']
-  : ['The euro that changes its debtor', 'The €699 billion stress test', 'As private as cash?', 'The legal boundary of programmability', 'The price of sovereignty', 'Who controls the machine?'];
+  ? [
+      { index: '01', title: 'L’euro qui change de débiteur', summary: 'Nature monétaire, bilan et distribution', href: '/posts/euro-numerique-1-euro-change-de-debiteur/' },
+      { index: '02', title: 'Le stress test à 699 milliards', summary: 'Plafonds, dépôts et refinancement bancaire', href: '/posts/euro-numerique-2-699-milliards-anatomie-stress-test/' },
+      { index: '03', title: 'Privé comme du cash ?', summary: 'Données, alias, fraude et paiement hors ligne', href: '/posts/euro-numerique-3-prive-comme-du-cash/' },
+      { index: '04', title: 'La frontière juridique de la programmabilité', summary: 'Monnaie, paiement conditionnel et contrôle légal', href: '/posts/euro-numerique-4-argent-programmable-frontiere-juridique/' },
+      { index: '05', title: 'Le prix de la souveraineté', summary: 'Coûts publics, facture bancaire et rémunération', href: '/posts/euro-numerique-5-prix-souverainete/' },
+      { index: '06', title: 'Qui contrôle la machine ?', summary: 'Infrastructure, fournisseurs et capacité de reprise', href: '/posts/euro-numerique-6-qui-controle-machine/' },
+    ]
+  : [
+      { index: '01', title: 'The euro that changes its debtor', summary: 'Monetary nature, balance sheets and distribution', href: '/en/analysis/digital-euro-1-the-euro-that-changes-its-debtor/' },
+      { index: '02', title: 'The €699 billion stress test', summary: 'Holding limits, deposits and bank funding', href: '/en/analysis/digital-euro-2-699-billion-anatomy-stress-test/' },
+      { index: '03', title: 'As private as cash?', summary: 'Data, aliases, fraud and offline payments', href: '/en/analysis/digital-euro-3-as-private-as-cash/' },
+      { index: '04', title: 'The legal boundary of programmability', summary: 'Money, conditional payments and legal controls', href: '/en/analysis/digital-euro-4-programmable-money-legal-boundary/' },
+      { index: '05', title: 'The price of sovereignty', summary: 'Public costs, bank investment and compensation', href: '/en/analysis/digital-euro-5-price-of-sovereignty/' },
+      { index: '06', title: 'Who controls the machine?', summary: 'Infrastructure, suppliers and recovery capacity', href: '/en/analysis/digital-euro-6-who-controls-the-machine/' },
+    ];
+
+const visuals = [
+  {
+    src: '/publications/euro-numerique-frontieres.png',
+    label: 'Données, droit et confidentialité',
+    title: 'Les frontières de l’euro numérique',
+    alt: 'Carte de synthèse sur les données visibles par les acteurs, le paiement en ligne et hors ligne, le stress test bancaire, la programmabilité et les zones grises de l’euro numérique',
+  },
+  {
+    src: '/publications/euro-numerique-infrastructure.png',
+    label: 'Infrastructure, fournisseurs et coûts',
+    title: 'Qui contrôle la machine ?',
+    alt: 'Carte de synthèse sur l’architecture publique et privée, les banques centrales, les fournisseurs, les coûts et les points de contrôle de l’euro numérique',
+  },
+];
+
 const bookJsonLd = {
-  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`, name: isFr ? 'L’euro numérique' : 'The Digital Euro', description,
-  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID }, datePublished: '2026-08-16', dateModified: '2026-08-16',
-  inLanguage: lang, bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true, url: pageUrl,
-  image: `${SITE_URL}${coverPath}`, license: 'https://creativecommons.org/licenses/by/4.0/',
-  associatedMedia: { '@type': 'MediaObject', contentUrl: `${SITE_URL}${epubPath}`, encodingFormat: 'application/epub+zip', contentSize: `${epubBytes.length} bytes`, sha256: epubSha256 },
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: isFr ? 'L’euro numérique' : 'The Digital Euro',
+  description,
+  author: { '@id': AUTHOR_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  datePublished: '2026-08-16',
+  dateModified: '2026-08-20',
+  inLanguage: lang,
+  bookFormat: 'https://schema.org/EBook',
+  isAccessibleForFree: true,
+  url: pageUrl,
+  image: `${SITE_URL}${coverPath}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.href}` })),
+  associatedMedia: {
+    '@type': 'MediaObject',
+    contentUrl: `${SITE_URL}${epubPath}`,
+    encodingFormat: 'application/epub+zip',
+    contentSize: `${epubBytes.length} bytes`,
+    sha256: epubSha256,
+  },
 };
 ---
 
@@ -46,56 +96,296 @@ const bookJsonLd = {
   ogImageAlt={isFr ? 'Couverture de L’euro numérique' : 'Cover of The Digital Euro'}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
-  <article class="book-page rise" data-pagefind-body>
-    <section class="book-hero">
-      <div class="cover-wrap"><img src={coverPath} width="1600" height="2560" alt={isFr ? 'Couverture de L’euro numérique, enquête en sources ouvertes' : 'Cover of The Digital Euro, an open-source investigation'} loading="lazy" decoding="async" /></div>
+
+  <article class="epub-page rise" data-pagefind-body>
+    <section class="publication-hero">
+      <div class="cover-stage" aria-label={isFr ? 'Couverture de L’euro numérique' : 'Cover of The Digital Euro'}>
+        <div class="cover-aura" aria-hidden="true"></div>
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · {isFr ? 'enquête' : 'investigation'} · 2026</span>
+          <img
+            src={coverPath}
+            width="1600"
+            height="2560"
+            alt={isFr ? 'Couverture de L’euro numérique, enquête en sources ouvertes' : 'Cover of The Digital Euro, an open-source investigation'}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <span class="cover-caption">{isFr ? 'Édition numérique · août 2026' : 'Digital edition · August 2026'}</span>
+      </div>
+
       <div class="hero-copy">
         <p class="mono-label glow">// {isFr ? 'publication l0g' : 'l0g publication'}</p>
-        <h1>{isFr ? 'L’euro numérique' : 'The Digital Euro'}</h1>
-        <p class="deck">{isFr ? 'Enquêter sur une monnaie qui n’existe pas encore.' : 'Investigating a currency that does not yet exist.'}</p>
-        <p>{description}</p>
-        <div class="actions">
-          <a class="download" href={epubPath} download>{isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'} <small>{epubSize}</small></a>
-          <a class="language" href={alternatePath}>{isFr ? 'Read in English' : 'Lire en français'}</a>
+        <h1>{isFr ? <>L’euro <span>numérique</span></> : <>The Digital <span>Euro</span></>}</h1>
+        <p class="hero-deck">{isFr ? 'Enquêter sur une monnaie qui n’existe pas encore.' : 'Investigating a currency that does not yet exist.'}</p>
+        <p class="hero-lede">
+          {isFr
+            ? 'Cette édition rassemble six enquêtes pour suivre le projet couche par couche : nature monétaire, stabilité bancaire, données, droit, coûts et infrastructure.'
+            : 'This edition brings together six investigations that follow the project layer by layer: monetary nature, banking stability, data, law, costs and infrastructure.'}
+        </p>
+
+        <div class="hero-actions">
+          <a class="download-action" href={epubPath} download={downloadName}>
+            <span>{isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'}</span>
+            <small>{isFr ? 'Gratuit' : 'Free'} · {epubSize}</small>
+          </a>
+          <a class="contents-action" href="#sommaire">
+            {isFr ? 'Parcourir les six enquêtes' : 'Browse the six investigations'} <span aria-hidden="true">↓</span>
+          </a>
         </div>
-        <ul class="proof"><li>{isFr ? '6 enquêtes' : '6 investigations'}</li><li>{isFr ? 'Sources cliquables' : 'Clickable sources'}</li><li>{isFr ? 'EPUB 3 accessible' : 'Accessible EPUB 3'}</li><li>CC BY 4.0</li></ul>
+
+        <ul class="proof-line" aria-label={isFr ? 'Caractéristiques de l’édition' : 'Edition features'}>
+          <li>{isFr ? '6 enquêtes' : '6 investigations'}</li>
+          <li>{isFr ? '22 infographies' : '23 infographics'}</li>
+          <li>{isFr ? 'Sources cliquables' : 'Clickable sources'}</li>
+          <li>CC BY 4.0</li>
+        </ul>
+
+        <a class="language-link" href={alternatePath}>{isFr ? 'Read in English' : 'Lire en français'} <span aria-hidden="true">↗</span></a>
       </div>
     </section>
-    <section class="method">
-      <div><p class="mono-label">// {isFr ? 'méthode' : 'method'}</p><h2>{isFr ? 'Une enquête en sources ouvertes.' : 'An open-source investigation.'}</h2></div>
-      <div><p>{isFr ? 'Les textes législatifs, rapports de stabilité financière, projets de règles, marchés publics, estimations de coûts et documents techniques sont traités selon leur statut et leur périmètre.' : 'Legislative texts, financial-stability reports, draft rules, procurement notices, cost estimates and technical documents are treated according to their status and scope.'}</p><p>{isFr ? 'Un scénario de test ne devient pas une décision. Un plafond contractuel ne devient pas une dépense. Une pièce manquante reste une limite de vérification.' : 'A test scenario does not become a decision. A contractual ceiling does not become expenditure. A missing record remains a verification limit.'}</p></div>
+
+    <section class="reading-section">
+      <div class="section-index" aria-hidden="true">01</div>
+      <div class="reading-heading">
+        <p class="mono-label glow">{isFr ? 'une infrastructure en six couches' : 'one infrastructure in six layers'}</p>
+        <h2>{isFr ? 'Lire les pièces dans leur ordre de preuve.' : 'Read the records in their order of proof.'}</h2>
+      </div>
+      <div class="reading-copy">
+        <p>
+          {isFr
+            ? 'Le règlement final, le plafond de détention et plusieurs choix techniques restent ouverts. L’enquête sépare donc ce qui est adopté, ce qui est proposé, ce qui a seulement été testé et ce que les sources publiques ne permettent pas encore de vérifier.'
+            : 'The final regulation, holding limit and several technical choices remain open. The investigation therefore separates adopted provisions, proposals, test assumptions and what public records still cannot establish.'}
+        </p>
+        <p>
+          {isFr
+            ? 'L’EPUB conserve l’ordre de lecture, les liens vers les textes canoniques, les sources, les limites et les alternatives textuelles des infographies. Le dossier reste ainsi lisible hors ligne tout en gardant un chemin vers chaque correction publique.'
+            : 'The EPUB preserves reading order, canonical links, sources, limitations and text alternatives for the infographics. It remains readable offline while retaining a path to every public correction.'}
+        </p>
+      </div>
     </section>
-    <section class="contents" id="sommaire">
-      <p class="mono-label">// {isFr ? 'sommaire' : 'contents'}</p>
-      <h2>{isFr ? 'Six couches d’une même infrastructure.' : 'Six layers of one infrastructure.'}</h2>
-      <ol>{chapters.map((chapter, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{chapter}</li>)}</ol>
+
+    {isFr && (
+      <section class="visuals-section" aria-labelledby="visuals-title">
+        <header class="section-heading">
+          <div class="section-index" aria-hidden="true">02</div>
+          <div>
+            <p class="mono-label glow">lecture panoramique</p>
+            <h2 id="visuals-title">Le dossier en deux grandes cartes.</h2>
+            <p>
+              Les deux planches rapprochent les acteurs, les flux de données, les hypothèses de stress,
+              les contrats et les coûts. Ouvrez chaque image en taille réelle pour examiner les détails.
+            </p>
+          </div>
+        </header>
+
+        <div class="visuals-stack">
+          {visuals.map((visual, index) => (
+            <figure class="visual-card">
+              <div class="visual-card-heading">
+                <span>Planche {String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <p>{visual.label}</p>
+                  <h3>{visual.title}</h3>
+                </div>
+              </div>
+              <p class="mobile-pan-note">Balayez horizontalement pour lire la planche, ou ouvrez-la en grand.</p>
+              <div class="visual-scroll" tabindex="0" aria-label={`Vue défilante de la planche ${index + 1}`}>
+                <a class="visual-link" href={visual.src} target="_blank" rel="noopener" aria-label={`Ouvrir en grand : ${visual.title}`}>
+                  <img src={visual.src} width="1672" height="941" alt={visual.alt} loading="lazy" decoding="async" />
+                  <span class="visual-zoom">Ouvrir en grand ↗</span>
+                </a>
+              </div>
+              <figcaption>
+                Synthèse l0g des volets {index === 0 ? '3 et 4, avec le stress test du volet 2' : '5 et 6'}.
+                Les sources et les limites détaillées restent attachées aux chapitres correspondants.
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="contents-section" id="sommaire">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">{isFr ? '03' : '02'}</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'architecture de l’édition' : 'edition structure'}</p>
+          <h2>{isFr ? 'Six enquêtes, un ordre de lecture.' : 'Six investigations, one reading order.'}</h2>
+        </div>
+      </header>
+
+      <ol class="chapter-grid">
+        {chapters.map((chapter) => (
+          <li>
+            <a href={chapter.href}>
+              <span class="chapter-index">{chapter.index}</span>
+              <span class="chapter-copy"><strong>{chapter.title}</strong><small>{chapter.summary}</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ol>
     </section>
-    <section class="integrity"><strong>SHA-256</strong><code>{epubSha256}</code></section>
+
+    <section class="edition-section">
+      <div class="edition-panel">
+        <div>
+          <p class="mono-label glow">{isFr ? 'édition vérifiable' : 'verifiable edition'}</p>
+          <h2>{isFr ? 'Un volume autonome, relié aux sources.' : 'A standalone volume linked to its sources.'}</h2>
+          <p>
+            {isFr
+              ? 'Le fichier EPUB 3 contient un sommaire structuré, un ordre de lecture explicite, les infographies adaptées et les liens vers les six articles publics. Aucun formulaire ni compte n’est requis pour le télécharger.'
+              : 'The EPUB 3 file contains a structured table of contents, an explicit reading order, adapted infographics and links to all six public articles. No form or account is required to download it.'}
+          </p>
+        </div>
+
+        <dl class="file-card">
+          <div><dt>Format</dt><dd>EPUB 3</dd></div>
+          <div><dt>{isFr ? 'Langue' : 'Language'}</dt><dd>{isFr ? 'Français' : 'English'}</dd></div>
+          <div><dt>{isFr ? 'Révision' : 'Revision'}</dt><dd>{isFr ? '20 août 2026' : '20 August 2026'}</dd></div>
+          <div><dt>{isFr ? 'Taille' : 'Size'}</dt><dd>{epubSize}</dd></div>
+          <div class="checksum"><dt>SHA-256</dt><dd>{epubSha256}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="method-section">
+      <div class="method-mark" aria-hidden="true">{isFr ? 'preuve' : 'proof'}</div>
+      <div>
+        <p class="mono-label glow">{isFr ? 'méthode l0g' : 'l0g method'}</p>
+        <h2>{isFr ? 'Chaque statut reste visible.' : 'Every status remains visible.'}</h2>
+        <p>
+          {isFr
+            ? 'Textes législatifs, documents de la BCE, marchés publics, études commandées et scénarios de test ne décrivent pas le même degré de décision. L’édition conserve ces distinctions et signale les inconnues au lieu de les combler.'
+            : 'Legislative texts, ECB documents, procurement records, commissioned studies and test scenarios do not carry the same decision status. The edition preserves those distinctions and marks unknowns instead of filling them in.'}
+        </p>
+        <div class="method-links">
+          <a href={isFr ? '/protocole-editorial/' : '/en/about/'}>{isFr ? 'Lire le protocole éditorial' : 'Read about l0g'}</a>
+          <a href={isFr ? '/outils/prix-euro-numerique/' : '/en/tools/digital-euro-cost/'}>{isFr ? 'Tester le simulateur de coûts' : 'Open the cost simulator'}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-download" data-pagefind-ignore>
+      <div>
+        <p class="mono-label glow">{isFr ? 'lecture complète' : 'complete edition'}</p>
+        <h2>{isFr ? 'Emporter les six enquêtes dans un seul volume.' : 'Take all six investigations in one volume.'}</h2>
+        <p>{isFr ? 'Gratuit, sans formulaire et sous licence CC BY 4.0.' : 'Free, without a form, under a CC BY 4.0 licence.'}</p>
+      </div>
+      <a href={epubPath} download={downloadName}>
+        {isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'}
+        <span>{epubSize} · EPUB 3</span>
+      </a>
+    </section>
   </article>
 </BaseLayout>
 
 <style>
-  .book-page { max-width: 1120px; margin: 0 auto; }
-  .book-hero { display: grid; grid-template-columns: minmax(250px, .72fr) minmax(0, 1.28fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; padding: 2rem 0 4.5rem; }
-  .cover-wrap { perspective: 1200px; }
-  .cover-wrap img { display: block; width: 100%; border: 1px solid rgba(103,222,207,.35); box-shadow: -22px 26px 60px rgba(0,0,0,.48), 8px 8px 0 #101923; transform: rotateY(4deg); }
-  .hero-copy h1 { margin: .35rem 0 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6.8rem); line-height: .9; letter-spacing: -.06em; }
-  .deck { max-width: 19em; color: var(--color-amber); font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1.18; }
-  .hero-copy > p:not(.mono-label,.deck) { max-width: 42rem; color: var(--color-muted); font-size: 1.05rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0 1.25rem; }
-  .actions a { padding: .9rem 1.1rem; border: 1px solid var(--color-border); text-decoration: none; }
-  .download { color: #081014; background: var(--color-teal); font-weight: 800; } .download small { margin-left: .5rem; opacity: .7; }
-  .language { color: var(--color-bright); }
-  .proof { display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; list-style: none; }
-  .proof li { padding: .35rem .65rem; border: 1px solid var(--color-border); color: var(--color-muted); font-family: var(--font-mono); font-size: .72rem; }
-  .method { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; padding: 3rem 0; border-top: 1px solid var(--color-border); }
-  .method h2,.contents h2 { color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); }
-  .method p { color: var(--color-muted); }
-  .contents { padding: 3rem 0; border-top: 1px solid var(--color-border); }
-  .contents ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; padding: 1px; background: var(--color-border); list-style: none; }
-  .contents li { display: flex; gap: 1rem; padding: 1rem; color: var(--color-bright); background: var(--color-bg); }
-  .contents li span { color: var(--color-teal); font-family: var(--font-mono); }
-  .integrity { display: grid; gap: .4rem; padding: 1rem; border: 1px solid var(--color-border); color: var(--color-muted); }
-  .integrity code { overflow-wrap: anywhere; color: var(--color-teal); }
-  @media (max-width: 760px) { .book-hero,.method { grid-template-columns: 1fr; } .cover-wrap { max-width: 380px; margin: 0 auto; } .contents ol { grid-template-columns: 1fr; } }
+  .epub-page { max-width: 76rem; margin: 0 auto; }
+  .publication-hero {
+    position: relative; display: grid; grid-template-columns: minmax(15rem,.78fr) minmax(0,1.22fr); align-items: center; overflow: hidden;
+    gap: clamp(2.5rem,7vw,6.5rem); min-height: 42rem; padding: clamp(2rem,4vw,3.5rem) 0 clamp(4rem,8vw,7rem); border-bottom: 1px solid var(--color-line);
+  }
+  .publication-hero::before { position: absolute; top: 0; right: 0; width: min(42rem,70%); height: 1px; background: linear-gradient(90deg,transparent,var(--color-signal)); content: ''; }
+  .cover-stage { position: relative; display: flex; flex-direction: column; align-items: center; min-width: 0; perspective: 1200px; }
+  .cover-aura { position: absolute; inset: 18% -8% 8%; border-radius: 50%; background: radial-gradient(circle at 32% 22%,color-mix(in srgb,var(--color-signal) 27%,transparent),transparent 44%),radial-gradient(circle at 78% 74%,color-mix(in srgb,var(--color-accent) 18%,transparent),transparent 48%); filter: blur(32px); opacity: .76; }
+  .book-shell { position: relative; display: grid; grid-template-columns: 1.2rem minmax(0,19rem); width: min(100%,20.2rem); filter: drop-shadow(0 32px 42px rgba(0,0,0,.45)); transform: rotateY(-5deg) rotateZ(-.7deg); transform-style: preserve-3d; }
+  .book-shell::after { position: absolute; right: -.35rem; bottom: .35rem; width: .5rem; height: calc(100% - .7rem); border-radius: 0 6px 6px 0; background: repeating-linear-gradient(0deg,#e4e0d8 0 1px,#b9b6af 1px 2px); content: ''; transform: translateZ(-1px); }
+  .book-spine { display: flex; align-items: flex-end; justify-content: center; border: 1px solid color-mix(in srgb,var(--color-signal) 48%,var(--color-line)); border-right: 0; border-radius: 8px 0 0 9px; padding: .9rem 0 .75rem; background: #050b0f; color: #75c8bc; font-family: var(--font-mono); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .book-shell img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb,var(--color-signal) 36%,var(--color-line)); border-radius: 0 9px 9px 0; background: #050608; }
+  .cover-caption { position: relative; margin-top: 1.4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; }
+  .hero-copy { min-width: 0; }
+  .hero-copy h1 { max-width: 12ch; margin: .45rem 0 .8rem; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(3rem,7.2vw,6.4rem); font-weight: 760; letter-spacing: -.065em; line-height: .9; }
+  .hero-copy h1 span { display: block; color: var(--color-accent); font-weight: 610; }
+  .hero-deck { max-width: 34rem; margin: 1.5rem 0 0; color: var(--color-signal); font-family: var(--font-read); font-size: clamp(1.25rem,2.4vw,1.8rem); font-weight: 590; letter-spacing: -.025em; line-height: 1.25; }
+  .hero-lede { max-width: 40rem; margin: 1.25rem 0 0; color: var(--color-prose); font-family: var(--font-read); font-size: 1.03rem; line-height: 1.75; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: .8rem; margin-top: 2rem; }
+  .download-action,.contents-action { display: inline-flex; align-items: center; justify-content: center; min-height: 3.7rem; border-radius: 6px; text-decoration: none; transition: border-color 160ms ease,background 160ms ease,transform 160ms ease; }
+  .download-action { flex-direction: column; align-items: flex-start; min-width: 13.5rem; padding: .72rem 1.15rem; background: var(--color-signal); color: #071113; font-weight: 850; }
+  .download-action small { margin-top: .12rem; opacity: .72; font-family: var(--font-mono); font-size: .63rem; }
+  .contents-action { border: 1px solid var(--color-line); padding: .8rem 1.05rem; color: var(--color-bright); }
+  .download-action:hover,.contents-action:hover { transform: translateY(-2px); }
+  .contents-action:hover { border-color: var(--color-signal); }
+  .proof-line { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+  .proof-line li { border: 1px solid var(--color-line); border-radius: 999px; padding: .35rem .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .language-link { display: inline-block; margin-top: 1.1rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; text-decoration: none; }
+  .section-index { color: color-mix(in srgb,var(--color-signal) 56%,var(--color-muted)); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .16em; }
+  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.2rem,4vw,3.5rem); padding: clamp(3.5rem,8vw,6rem) 0; border-bottom: 1px solid var(--color-line); }
+  .reading-heading h2,.section-heading h2,.edition-panel h2,.method-section h2,.final-download h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.9rem,4vw,3.35rem); letter-spacing: -.045em; line-height: 1.02; }
+  .reading-copy p,.section-heading p:last-child,.edition-panel p,.method-section > div:last-child > p,.final-download p { color: var(--color-prose); font-family: var(--font-read); line-height: 1.72; }
+  .reading-copy p:first-child { margin-top: 0; }
+  .section-heading { display: grid; grid-template-columns: 4rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3.5rem); align-items: start; }
+  .section-heading > div:last-child { max-width: 52rem; }
+  .section-heading p:last-child { max-width: 48rem; margin-top: 1rem; }
+  .visuals-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .visuals-stack { display: grid; gap: clamp(2.5rem,6vw,4.5rem); margin-top: 2.4rem; }
+  .visual-card { margin: 0; overflow: hidden; border: 1px solid color-mix(in srgb,var(--color-signal) 38%,var(--color-line)); border-radius: 16px; background: linear-gradient(145deg,rgba(8,20,29,.96),rgba(5,10,16,.98)); box-shadow: 0 26px 54px rgba(0,0,0,.25); }
+  .visual-card-heading { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; align-items: center; padding: 1rem 1.15rem; border-bottom: 1px solid var(--color-line); }
+  .visual-card-heading > span { color: var(--color-amber); font-family: var(--font-mono); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
+  .visual-card-heading p { margin: 0; color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .09em; text-transform: uppercase; }
+  .visual-card-heading h3 { margin: .25rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.25rem,3vw,2rem); }
+  .visual-scroll { max-width: 100%; overflow: hidden; background: #030a11; scrollbar-color: var(--color-signal) #07121b; }
+  .visual-scroll:focus-visible { outline: 2px solid var(--color-signal); outline-offset: -2px; }
+  .visual-link { position: relative; display: block; width: 100%; }
+  .visual-link img { display: block; width: 100%; height: auto; }
+  .visual-zoom { position: absolute; right: 1rem; bottom: 1rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: .5rem .72rem; background: rgba(3,10,17,.86); color: #fff; font-family: var(--font-mono); font-size: .64rem; backdrop-filter: blur(8px); }
+  .mobile-pan-note { display: none; }
+  .visual-card figcaption { padding: .9rem 1.15rem 1rem; color: var(--color-muted); font-family: var(--font-read); font-size: .82rem; line-height: 1.55; }
+  .contents-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .chapter-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 2.3rem 0 0; padding: 1px; background: var(--color-line); list-style: none; }
+  .chapter-grid li { min-width: 0; background: var(--color-bg); }
+  .chapter-grid a { display: grid; grid-template-columns: 2.2rem minmax(0,1fr) auto; gap: .9rem; align-items: start; min-height: 7.3rem; padding: 1.2rem; color: inherit; text-decoration: none; transition: background 160ms ease; }
+  .chapter-grid a:hover { background: color-mix(in srgb,var(--color-signal) 8%,var(--color-bg)); }
+  .chapter-index { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; }
+  .chapter-copy { display: grid; gap: .45rem; }
+  .chapter-copy strong { color: var(--color-bright); font-family: var(--font-read); font-size: 1.08rem; line-height: 1.25; }
+  .chapter-copy small { color: var(--color-muted); font-size: .75rem; line-height: 1.45; }
+  .chapter-arrow { color: var(--color-amber); }
+  .edition-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .edition-panel { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); gap: clamp(2rem,6vw,5rem); align-items: start; border: 1px solid var(--color-line); border-radius: 14px; padding: clamp(1.4rem,4vw,2.6rem); background: color-mix(in srgb,var(--color-surface) 82%,#06151b); }
+  .edition-panel p { max-width: 43rem; }
+  .file-card { margin: 0; border: 1px solid color-mix(in srgb,var(--color-signal) 38%,var(--color-line)); border-radius: 10px; padding: .45rem 1rem; background: rgba(2,11,16,.45); }
+  .file-card > div { display: flex; justify-content: space-between; gap: 1rem; padding: .72rem 0; border-bottom: 1px solid var(--color-line); }
+  .file-card > div:last-child { border-bottom: 0; }
+  .file-card dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .file-card dd { margin: 0; color: var(--color-bright); font-family: var(--font-mono); font-size: .7rem; text-align: right; }
+  .file-card .checksum { display: grid; }
+  .file-card .checksum dd { overflow-wrap: anywhere; color: var(--color-signal); text-align: left; line-height: 1.5; }
+  .method-section { display: grid; grid-template-columns: minmax(10rem,.45fr) minmax(0,1.55fr); gap: clamp(2rem,7vw,6rem); align-items: center; padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .method-mark { overflow: hidden; color: color-mix(in srgb,var(--color-signal) 25%,transparent); font-family: var(--font-display); font-size: clamp(3.5rem,9vw,7.5rem); font-weight: 900; letter-spacing: -.07em; line-height: .8; writing-mode: vertical-rl; }
+  .method-links { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; margin-top: 1.4rem; }
+  .method-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; }
+  .final-download { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 2rem; align-items: center; margin: clamp(3.5rem,8vw,6.5rem) 0 1rem; border: 1px solid color-mix(in srgb,var(--color-amber) 40%,var(--color-line)); border-radius: 14px; padding: clamp(1.5rem,4vw,2.5rem); background: linear-gradient(120deg,color-mix(in srgb,var(--color-amber) 8%,var(--color-surface)),var(--color-surface)); }
+  .final-download h2 { max-width: 18ch; font-size: clamp(1.8rem,3.7vw,3rem); }
+  .final-download > div > p:last-child { margin-bottom: 0; }
+  .final-download > a { display: grid; gap: .22rem; min-width: 13.5rem; border-radius: 7px; padding: .9rem 1.15rem; background: var(--color-amber); color: #111008; font-weight: 850; text-decoration: none; }
+  .final-download > a span { opacity: .7; font-family: var(--font-mono); font-size: .63rem; }
+  @media (max-width: 820px) {
+    .publication-hero { grid-template-columns: 1fr; min-height: 0; }
+    .cover-stage { width: min(100%,22rem); margin: 0 auto; }
+    .reading-section { grid-template-columns: 2.2rem 1fr; }
+    .reading-copy { grid-column: 2; }
+    .edition-panel,.method-section { grid-template-columns: 1fr; }
+    .method-mark { display: none; }
+    .final-download { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .section-heading { grid-template-columns: 2.2rem minmax(0,1fr); }
+    .chapter-grid { grid-template-columns: 1fr; }
+    .visual-card-heading { grid-template-columns: 1fr; gap: .45rem; }
+    .mobile-pan-note { display: block; margin: 0; border-bottom: 1px solid var(--color-line); padding: .65rem 1rem; color: var(--color-amber); font-family: var(--font-mono); font-size: .6rem; line-height: 1.5; }
+    .visual-scroll { overflow-x: auto; overscroll-behavior-inline: contain; }
+    .visual-link { width: 62rem; max-width: none; }
+    .visual-zoom { position: sticky; right: 1rem; float: right; margin: -3.1rem 1rem .7rem 0; }
+    .hero-actions a { width: 100%; }
+    .download-action { align-items: center; }
+    .proof-line li { flex: 1 1 calc(50% - .45rem); text-align: center; }
+    .edition-panel { padding: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .download-action,.contents-action,.chapter-grid a { transition: none; }
+    .download-action:hover,.contents-action:hover { transform: none; }
+  }
 </style>
