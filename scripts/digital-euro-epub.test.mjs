@@ -107,6 +107,8 @@ test('la carte catalogue mène à la page et les deux planches restent disponibl
   const spotlight = readFileSync(PUBLICATION_SPOTLIGHT, 'utf8');
   assert.match(spotlight, /publication-title-link" href=\{publicationUrl\}/u);
   assert.match(spotlight, /isDigitalEuro[\s\S]*?'\/publications\/euro-numerique\/'/u);
+  assert.match(spotlight, /discover: 'Découvrir l’enquête'/u);
+  assert.match(spotlight, /publication-spotlight--digital-euro \{ --publication-card-accent: var\(--color-signal\); \}/u);
   for (const visual of FR_VISUALS) {
     const image = readFileSync(visual.path);
     assert.equal(image.subarray(1, 4).toString('ascii'), 'PNG');
