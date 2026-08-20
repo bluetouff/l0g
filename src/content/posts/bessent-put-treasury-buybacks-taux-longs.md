@@ -2,7 +2,7 @@
 title: "Le seuil que Bessent n'a jamais annoncé"
 description: "Le Trésor relève de 2 à au moins 4 Md$ le plafond de rachats longs. Trop petit pour être un QE, ce changement interroge sa réaction aux taux longs."
 pubDate: 2026-08-20T09:53:00+02:00
-updatedDate: 2026-08-20T09:53:00+02:00
+updatedDate: 2026-08-20T13:30:00+02:00
 tags: ["États-Unis", "Treasury", "obligations", "taux", "Bessent", "dette", "liquidité"]
 draft: false
 ---
@@ -43,27 +43,27 @@ La capacité supplémentaire est donc d'au moins **14 milliards de dollars**, si
 
 Le 19 août, le Trésor a précisé qu'un calendrier prévisionnel révisé serait publié ultérieurement. Les 28 milliards ne sont donc ni un engagement d'achat, ni le montant effectivement exécuté : c'est la capacité maximale déduite des sept opérations du calendrier du 5 août.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 360 480" role="img" aria-label="Hausse du plafond des rachats du Trésor américain sur les maturités 10 à 30 ans entre le calendrier du 5 août et l'annonce du 19 août 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="360" height="480" fill="#0c0d10"/>
-  <text x="20" y="34" fill="#f5f6f8" font-size="19" font-weight="700">Deux semaines, deux messages</text>
-  <text x="20" y="56" fill="#8b909b" font-size="13">Sept opérations longues le 5 août.</text>
-  <rect x="20" y="80" width="320" height="112" rx="6" fill="#15171c" stroke="#7aa2f7"/>
-  <text x="36" y="108" fill="#7aa2f7" font-size="15" font-weight="700">5 AOÛT : CALENDRIER INITIAL</text>
-  <text x="36" y="136" fill="#d6d9df" font-size="15">7 opérations longues</text>
-  <text x="36" y="162" fill="#f5f6f8" font-size="25" font-weight="700">2 Md$ par opération</text>
-  <text x="36" y="182" fill="#8b909b" font-size="14">Capacité maximale : 14 Md$</text>
-  <line x1="180" y1="204" x2="180" y2="222" stroke="#f5b13d" stroke-width="2"/>
-  <polygon points="180,232 174,220 186,220" fill="#f5b13d"/>
-  <rect x="20" y="244" width="320" height="112" rx="6" fill="#15171c" stroke="#ff4d87"/>
-  <text x="36" y="272" fill="#ff4d87" font-size="15" font-weight="700">19 AOÛT : MODIFICATION</text>
-  <text x="36" y="300" fill="#d6d9df" font-size="15">Mêmes segments longs</text>
-  <text x="36" y="326" fill="#ff4d87" font-size="25" font-weight="700">≥4 Md$ / opération</text>
-  <text x="36" y="346" fill="#8b909b" font-size="14">Capacité : au moins 28 Md$</text>
-  <rect x="20" y="374" width="320" height="48" rx="6" fill="#15171c"/>
-  <text x="36" y="396" fill="#f5b13d" font-size="15" font-weight="700">+14 Md$ de capacité au minimum</text>
-  <text x="20" y="442" fill="#8b909b" font-size="12">Sources : calendrier Treasury du 5 août ;</text>
-  <text x="20" y="462" fill="#8b909b" font-size="12">annonce du 19 août.</text>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 480" role="img" aria-label="Hausse du plafond des rachats du Trésor américain sur les maturités 10 à 30 ans entre le calendrier du 5 août et l'annonce du 19 août 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <rect x="1" y="1" width="718" height="478" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">Deux semaines, deux messages</text>
+  <text x="32" y="70" fill="#8b909b" font-size="12">Sept opérations longues dans le calendrier du 5 août.</text>
+  <rect x="32" y="92" width="656" height="112" rx="12" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="54" y="120" fill="#7aa2f7" font-size="12" font-weight="700">5 AOÛT : CALENDRIER INITIAL</text>
+  <text x="54" y="146" fill="#d6d9df" font-size="15">7 opérations longues</text>
+  <text x="54" y="174" fill="#f5f6f8" font-size="26" font-weight="700">2 Md$ par opération</text>
+  <text x="54" y="194" fill="#8b909b" font-size="13">Capacité maximale : 14 Md$</text>
+  <line x1="360" y1="214" x2="360" y2="232" stroke="#f5b13d" stroke-width="2"/>
+  <polygon points="360,242 352,228 368,228" fill="#f5b13d"/>
+  <rect x="32" y="252" width="656" height="112" rx="12" fill="#15171c" stroke="#ff4d87"/>
+  <text x="54" y="280" fill="#ff4d87" font-size="12" font-weight="700">19 AOÛT : MODIFICATION</text>
+  <text x="54" y="306" fill="#d6d9df" font-size="15">Mêmes segments longs</text>
+  <text x="54" y="334" fill="#ff4d87" font-size="26" font-weight="700">Au moins 4 Md$ par opération</text>
+  <text x="54" y="354" fill="#8b909b" font-size="13">Capacité : au moins 28 Md$</text>
+  <rect x="32" y="384" width="656" height="44" rx="12" fill="#15171c"/>
+  <text x="54" y="412" fill="#f5b13d" font-size="14" font-weight="700">Au moins 14 Md$ de capacité supplémentaire</text>
+  <text x="32" y="450" fill="#8b909b" font-size="11">Sources : calendrier Treasury du 5 août 2026 ;</text>
+  <text x="32" y="468" fill="#8b909b" font-size="11">annonce du 19 août 2026.</text>
 </svg>
 <figcaption>Le changement de taille est réel mais modeste à l'échelle du marché. L'information nouvelle tient surtout au moment où le calendrier a été modifié.</figcaption>
 </figure>
@@ -90,29 +90,26 @@ Le principe de *regular and predictable issuance* réduit l'intérêt du market 
 
 Le buyback devait hériter de la même philosophie.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 360 540" role="img" aria-label="Principes du programme de rachats du Trésor en 2023 et lecture que le marché peut faire de la modification du 19 août 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="360" height="540" fill="#0c0d10"/>
-  <text x="20" y="34" fill="#f5f6f8" font-size="19" font-weight="700">Un programme de plomberie</text>
-  <text x="20" y="56" fill="#f5f6f8" font-size="19" font-weight="700">peut être lu autrement</text>
-  <text x="20" y="78" fill="#8b909b" font-size="13">Principes 2023, changement du 19 août.</text>
-  <rect x="20" y="98" width="320" height="142" rx="6" fill="#15171c" stroke="#5eead4"/>
-  <text x="36" y="126" fill="#5eead4" font-size="15" font-weight="700">CHARTE D'ORIGINE</text>
-  <text x="36" y="154" fill="#d6d9df" font-size="15">• Régulier et prévisible</text>
-  <text x="36" y="178" fill="#d6d9df" font-size="15">• Pas tactique ou ad hoc</text>
-  <text x="36" y="202" fill="#d6d9df" font-size="15">• Pas un outil contre le stress aigu</text>
-  <text x="36" y="226" fill="#d6d9df" font-size="15">• Pas de pilotage de maturité</text>
-  <line x1="180" y1="250" x2="180" y2="266" stroke="#f5b13d" stroke-width="2"/>
-  <polygon points="180,276 174,264 186,264" fill="#f5b13d"/>
-  <rect x="20" y="288" width="320" height="128" rx="6" fill="#15171c" stroke="#ff4d87"/>
-  <text x="36" y="316" fill="#ff4d87" font-size="15" font-weight="700">19 AOÛT 2026</text>
-  <text x="36" y="344" fill="#d6d9df" font-size="15">Modification hors du calendrier</text>
-  <text x="36" y="368" fill="#d6d9df" font-size="15">après la poussée du rendement</text>
-  <text x="36" y="390" fill="#d6d9df" font-size="15">à 30 ans.</text>
-  <text x="20" y="454" fill="#f5b13d" font-size="15" font-weight="700">Cela peut changer la perception,</text>
-  <text x="20" y="476" fill="#f5b13d" font-size="15" font-weight="700">sans prouver une cible de taux.</text>
-  <text x="20" y="510" fill="#8b909b" font-size="12">Source : Joshua Frost, Treasury,</text>
-  <text x="20" y="528" fill="#8b909b" font-size="12">21 septembre 2023 ; 19 août 2026.</text>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 540" role="img" aria-label="Principes du programme de rachats du Trésor en 2023 et lecture que le marché peut faire de la modification du 19 août 2026" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <rect x="1" y="1" width="718" height="538" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">Un programme de plomberie peut être lu autrement</text>
+  <text x="32" y="70" fill="#8b909b" font-size="12">Principes de 2023, changement du 19 août 2026.</text>
+  <rect x="32" y="94" width="656" height="142" rx="12" fill="#15171c" stroke="#5eead4"/>
+  <text x="54" y="122" fill="#5eead4" font-size="12" font-weight="700">CHARTE D'ORIGINE</text>
+  <text x="54" y="152" fill="#d6d9df" font-size="14">• Régulier et prévisible</text>
+  <text x="54" y="178" fill="#d6d9df" font-size="14">• Pas tactique ou ad hoc</text>
+  <text x="54" y="204" fill="#d6d9df" font-size="14">• Pas un outil contre le stress aigu</text>
+  <text x="54" y="230" fill="#d6d9df" font-size="14">• Pas de pilotage de maturité</text>
+  <line x1="360" y1="250" x2="360" y2="266" stroke="#f5b13d" stroke-width="2"/>
+  <polygon points="360,276 352,262 368,262" fill="#f5b13d"/>
+  <rect x="32" y="288" width="656" height="128" rx="12" fill="#15171c" stroke="#ff4d87"/>
+  <text x="54" y="316" fill="#ff4d87" font-size="12" font-weight="700">19 AOÛT 2026</text>
+  <text x="54" y="346" fill="#d6d9df" font-size="14">Modification hors du calendrier,</text>
+  <text x="54" y="370" fill="#d6d9df" font-size="14">après la poussée du rendement à 30 ans.</text>
+  <text x="32" y="464" fill="#f5b13d" font-size="15" font-weight="700">Cela peut changer la perception, sans prouver une cible de taux.</text>
+  <text x="32" y="510" fill="#8b909b" font-size="11">Source : Joshua Frost, Treasury, 21 septembre 2023 ;</text>
+  <text x="32" y="528" fill="#8b909b" font-size="11">annonce du 19 août 2026.</text>
 </svg>
 <figcaption>Le point critique n'est pas juridique. Il est institutionnel : une modification hors calendrier peut inciter le marché à chercher une lecture tactique, sans prouver que le Trésor cible un rendement.</figcaption>
 </figure>
@@ -275,27 +272,26 @@ Le changement annoncé est faible à l'échelle du financement trimestriel. Il n
 
 La détente intervenue après l'annonce reste néanmoins compatible avec l'hypothèse d'un effet de signal, parmi d'autres explications possibles.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 360 480" role="img" aria-label="Réaction indicative du rendement du Treasury à 30 ans autour de l'annonce des buybacks du 19 août 2026 et comparaison avec le besoin de financement trimestriel du Trésor" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="360" height="480" fill="#0c0d10"/>
-  <text x="20" y="34" fill="#f5f6f8" font-size="19" font-weight="700">Petit flux, gros signal</text>
-  <text x="20" y="56" fill="#8b909b" font-size="13">Échelle du 19 août 2026.</text>
-  <rect x="20" y="80" width="320" height="138" rx="6" fill="#15171c"/>
-  <text x="36" y="108" fill="#d6d9df" font-size="15" font-weight="700">RENDEMENT À 30 ANS</text>
-  <text x="36" y="146" fill="#ff4d87" font-size="32" font-weight="700">5,34 %</text>
-  <text x="36" y="168" fill="#8b909b" font-size="14">Pic récent, plus haut depuis 2007</text>
-  <text x="36" y="198" fill="#5eead4" font-size="26" font-weight="700">vers 5,18 %</text>
-  <text x="36" y="216" fill="#8b909b" font-size="14">après l'annonce, selon Reuters</text>
-  <rect x="20" y="242" width="320" height="126" rx="6" fill="#15171c"/>
-  <text x="36" y="270" fill="#d6d9df" font-size="15" font-weight="700">ÉCHELLE DES FLUX</text>
-  <text x="36" y="302" fill="#ff4d87" font-size="21" font-weight="700">4 Md$</text>
-  <text x="36" y="322" fill="#d6d9df" font-size="14">maximum par rachat long</text>
-  <text x="36" y="352" fill="#7aa2f7" font-size="21" font-weight="700">739 Md$</text>
-  <text x="36" y="370" fill="#d6d9df" font-size="14">borrowing net prévu au T3</text>
-  <text x="20" y="410" fill="#f5b13d" font-size="15" font-weight="700">La taille seule n'attribue pas</text>
-  <text x="20" y="432" fill="#f5b13d" font-size="15" font-weight="700">le mouvement observé.</text>
-  <text x="20" y="458" fill="#8b909b" font-size="12">Sources : Treasury, 3 août 2026 ;</text>
-  <text x="20" y="476" fill="#8b909b" font-size="12">Reuters, 19 août 2026.</text>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 480" role="img" aria-label="Réaction indicative du rendement du Treasury à 30 ans autour de l'annonce des buybacks du 19 août 2026 et comparaison avec le besoin de financement trimestriel du Trésor" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <rect x="1" y="1" width="718" height="478" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">Petit flux, gros signal</text>
+  <text x="32" y="70" fill="#8b909b" font-size="12">Échelle autour du 19 août 2026.</text>
+  <rect x="32" y="92" width="656" height="148" rx="12" fill="#15171c"/>
+  <text x="54" y="120" fill="#d6d9df" font-size="12" font-weight="700">RENDEMENT À 30 ANS</text>
+  <text x="54" y="158" fill="#ff4d87" font-size="28" font-weight="700">5,34 %</text>
+  <text x="54" y="180" fill="#8b909b" font-size="13">Pic récent, plus haut depuis 2007</text>
+  <text x="54" y="210" fill="#5eead4" font-size="24" font-weight="700">Vers 5,18 %</text>
+  <text x="54" y="228" fill="#8b909b" font-size="13">Après l'annonce, selon Reuters</text>
+  <rect x="32" y="256" width="656" height="124" rx="12" fill="#15171c"/>
+  <text x="54" y="284" fill="#d6d9df" font-size="12" font-weight="700">ÉCHELLE DES FLUX</text>
+  <text x="54" y="326" fill="#ff4d87" font-size="22" font-weight="700">4 Md$</text>
+  <text x="54" y="350" fill="#d6d9df" font-size="13">maximum par rachat long</text>
+  <text x="360" y="326" fill="#7aa2f7" font-size="22" font-weight="700">739 Md$</text>
+  <text x="360" y="350" fill="#d6d9df" font-size="13">borrowing net prévu au T3</text>
+  <text x="32" y="416" fill="#f5b13d" font-size="14" font-weight="700">La taille seule n'attribue pas le mouvement observé.</text>
+  <text x="32" y="450" fill="#8b909b" font-size="11">Sources : Treasury, 3 août 2026 ;</text>
+  <text x="32" y="468" fill="#8b909b" font-size="11">Reuters, 19 août 2026.</text>
 </svg>
 <figcaption>Le graphique ne compare pas des flux comptablement identiques. Il montre l'échelle. Un buyback de 4 milliards est minuscule face aux besoins de financement du trimestre. Cela rend un effet de signal plausible, mais ne l'isole pas causalement.</figcaption>
 </figure>

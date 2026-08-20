@@ -2,7 +2,7 @@
 title: "The yield threshold Bessent never announced"
 description: "Treasury raises from $2bn to at least $4bn its cap on long-bond buybacks. Too small to be QE, the move poses questions about its reaction to long yields."
 pubDate: 2026-08-20T09:53:00+02:00
-updatedDate: 2026-08-20T09:53:00+02:00
+updatedDate: 2026-08-20T13:30:00+02:00
 tags: ["United States", "Treasury", "bonds", "yields", "Bessent", "debt", "liquidity"]
 draft: false
 sourceArticle: "bessent-put-treasury-buybacks-taux-longs"
@@ -45,27 +45,27 @@ The additional capacity is therefore at least **$14 billion**, assuming all affe
 
 On 19 August, Treasury said that it would release an updated tentative schedule later. The $28 billion figure is therefore neither a purchase commitment nor the amount actually executed: it is the maximum capacity inferred from the seven operations in the 5 August schedule.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 360 480" role="img" aria-label="Increase in U.S. Treasury long-end buyback caps between the 5 August schedule and the 19 August 2026 announcement" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="360" height="480" fill="#0c0d10"/>
-  <text x="20" y="34" fill="#f5f6f8" font-size="19" font-weight="700">Two weeks, two messages</text>
-  <text x="20" y="56" fill="#8b909b" font-size="13">Seven long-end operations on 5 August.</text>
-  <rect x="20" y="80" width="320" height="112" rx="6" fill="#15171c" stroke="#7aa2f7"/>
-  <text x="36" y="108" fill="#7aa2f7" font-size="15" font-weight="700">5 AUGUST: ORIGINAL SCHEDULE</text>
-  <text x="36" y="136" fill="#d6d9df" font-size="15">7 long-end operations</text>
-  <text x="36" y="162" fill="#f5f6f8" font-size="25" font-weight="700">$2bn per operation</text>
-  <text x="36" y="182" fill="#8b909b" font-size="14">Maximum capacity: $14bn</text>
-  <line x1="180" y1="204" x2="180" y2="222" stroke="#f5b13d" stroke-width="2"/>
-  <polygon points="180,232 174,220 186,220" fill="#f5b13d"/>
-  <rect x="20" y="244" width="320" height="112" rx="6" fill="#15171c" stroke="#ff4d87"/>
-  <text x="36" y="272" fill="#ff4d87" font-size="15" font-weight="700">19 AUGUST: CHANGE</text>
-  <text x="36" y="300" fill="#d6d9df" font-size="15">Same long-end sectors</text>
-  <text x="36" y="326" fill="#ff4d87" font-size="25" font-weight="700">≥$4bn / operation</text>
-  <text x="36" y="346" fill="#8b909b" font-size="14">Capacity: at least $28bn</text>
-  <rect x="20" y="374" width="320" height="48" rx="6" fill="#15171c"/>
-  <text x="36" y="396" fill="#f5b13d" font-size="15" font-weight="700">At least $14bn more capacity</text>
-  <text x="20" y="442" fill="#8b909b" font-size="12">Sources: Treasury schedule, 5 August;</text>
-  <text x="20" y="462" fill="#8b909b" font-size="12">announcement, 19 August.</text>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 480" role="img" aria-label="Increase in U.S. Treasury long-end buyback caps between the 5 August schedule and the 19 August 2026 announcement" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <rect x="1" y="1" width="718" height="478" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">Two weeks, two messages</text>
+  <text x="32" y="70" fill="#8b909b" font-size="12">Seven long-end operations in the 5 August schedule.</text>
+  <rect x="32" y="92" width="656" height="112" rx="12" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="54" y="120" fill="#7aa2f7" font-size="12" font-weight="700">5 AUGUST: ORIGINAL SCHEDULE</text>
+  <text x="54" y="146" fill="#d6d9df" font-size="15">7 long-end operations</text>
+  <text x="54" y="174" fill="#f5f6f8" font-size="26" font-weight="700">$2bn per operation</text>
+  <text x="54" y="194" fill="#8b909b" font-size="13">Maximum capacity: $14bn</text>
+  <line x1="360" y1="214" x2="360" y2="232" stroke="#f5b13d" stroke-width="2"/>
+  <polygon points="360,242 352,228 368,228" fill="#f5b13d"/>
+  <rect x="32" y="252" width="656" height="112" rx="12" fill="#15171c" stroke="#ff4d87"/>
+  <text x="54" y="280" fill="#ff4d87" font-size="12" font-weight="700">19 AUGUST: CHANGE</text>
+  <text x="54" y="306" fill="#d6d9df" font-size="15">Same long-end sectors</text>
+  <text x="54" y="334" fill="#ff4d87" font-size="26" font-weight="700">At least $4bn per operation</text>
+  <text x="54" y="354" fill="#8b909b" font-size="13">Capacity: at least $28bn</text>
+  <rect x="32" y="384" width="656" height="44" rx="12" fill="#15171c"/>
+  <text x="54" y="412" fill="#f5b13d" font-size="14" font-weight="700">At least $14bn of additional capacity</text>
+  <text x="32" y="450" fill="#8b909b" font-size="11">Sources: Treasury schedule, 5 August 2026;</text>
+  <text x="32" y="468" fill="#8b909b" font-size="11">announcement, 19 August 2026.</text>
 </svg>
 <figcaption>The increase is real but small relative to the Treasury market. The new information lies mainly in the timing of the schedule change.</figcaption>
 </figure>
@@ -92,28 +92,26 @@ Regular and predictable issuance reduces the incentive for market timing.
 
 Buybacks were meant to inherit the same philosophy.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 360 540" role="img" aria-label="The original U.S. Treasury buyback design and the market reading that may follow the 19 August 2026 change" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="360" height="540" fill="#0c0d10"/>
-  <text x="20" y="34" fill="#f5f6f8" font-size="19" font-weight="700">A plumbing programme</text>
-  <text x="20" y="56" fill="#f5f6f8" font-size="19" font-weight="700">can be read differently</text>
-  <text x="20" y="78" fill="#8b909b" font-size="13">2023 design, 19 August 2026 change.</text>
-  <rect x="20" y="98" width="320" height="142" rx="6" fill="#15171c" stroke="#5eead4"/>
-  <text x="36" y="126" fill="#5eead4" font-size="15" font-weight="700">ORIGINAL CHARTER</text>
-  <text x="36" y="154" fill="#d6d9df" font-size="15">• Regular and predictable</text>
-  <text x="36" y="178" fill="#d6d9df" font-size="15">• Not tactical or ad hoc</text>
-  <text x="36" y="202" fill="#d6d9df" font-size="15">• Not an acute-stress tool</text>
-  <text x="36" y="226" fill="#d6d9df" font-size="15">• No maturity steering</text>
-  <line x1="180" y1="250" x2="180" y2="266" stroke="#f5b13d" stroke-width="2"/>
-  <polygon points="180,276 174,264 186,264" fill="#f5b13d"/>
-  <rect x="20" y="288" width="320" height="128" rx="6" fill="#15171c" stroke="#ff4d87"/>
-  <text x="36" y="316" fill="#ff4d87" font-size="15" font-weight="700">19 AUGUST 2026</text>
-  <text x="36" y="344" fill="#d6d9df" font-size="15">Outside Quarterly Refunding,</text>
-  <text x="36" y="368" fill="#d6d9df" font-size="15">after the yield surge.</text>
-  <text x="20" y="454" fill="#f5b13d" font-size="15" font-weight="700">It can change perception,</text>
-  <text x="20" y="476" fill="#f5b13d" font-size="15" font-weight="700">not prove a yield target.</text>
-  <text x="20" y="510" fill="#8b909b" font-size="12">Source: Joshua Frost, Treasury,</text>
-  <text x="20" y="528" fill="#8b909b" font-size="12">21 September 2023; 19 August 2026.</text>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 540" role="img" aria-label="The original U.S. Treasury buyback design and the market reading that may follow the 19 August 2026 change" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <rect x="1" y="1" width="718" height="538" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">A plumbing programme can be read differently</text>
+  <text x="32" y="70" fill="#8b909b" font-size="12">2023 design, 19 August 2026 change.</text>
+  <rect x="32" y="94" width="656" height="142" rx="12" fill="#15171c" stroke="#5eead4"/>
+  <text x="54" y="122" fill="#5eead4" font-size="12" font-weight="700">ORIGINAL CHARTER</text>
+  <text x="54" y="152" fill="#d6d9df" font-size="14">• Regular and predictable</text>
+  <text x="54" y="178" fill="#d6d9df" font-size="14">• Not tactical or ad hoc</text>
+  <text x="54" y="204" fill="#d6d9df" font-size="14">• Not an acute-stress tool</text>
+  <text x="54" y="230" fill="#d6d9df" font-size="14">• No maturity steering</text>
+  <line x1="360" y1="250" x2="360" y2="266" stroke="#f5b13d" stroke-width="2"/>
+  <polygon points="360,276 352,262 368,262" fill="#f5b13d"/>
+  <rect x="32" y="288" width="656" height="128" rx="12" fill="#15171c" stroke="#ff4d87"/>
+  <text x="54" y="316" fill="#ff4d87" font-size="12" font-weight="700">19 AUGUST 2026</text>
+  <text x="54" y="346" fill="#d6d9df" font-size="14">Outside Quarterly Refunding,</text>
+  <text x="54" y="370" fill="#d6d9df" font-size="14">after the yield surge.</text>
+  <text x="32" y="464" fill="#f5b13d" font-size="15" font-weight="700">It can change perception, not prove a yield target.</text>
+  <text x="32" y="510" fill="#8b909b" font-size="11">Source: Joshua Frost, Treasury, 21 September 2023;</text>
+  <text x="32" y="528" fill="#8b909b" font-size="11">announcement, 19 August 2026.</text>
 </svg>
 <figcaption>The critical issue is institutional rather than legal. A change outside the schedule can invite a tactical reading without proving that Treasury targets a yield.</figcaption>
 </figure>
@@ -276,27 +274,26 @@ The announced change is small relative to quarterly financing needs. It therefor
 
 The rally after the announcement is nevertheless consistent with a signalling effect, among other possible explanations.
 
-<figure class="infographic" style="padding-bottom:1.75rem">
-<svg viewBox="0 0 360 480" role="img" aria-label="Indicative 30-year Treasury yield reaction around the 19 August 2026 buyback announcement and comparison with quarterly borrowing needs" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,monospace">
-  <rect width="360" height="480" fill="#0c0d10"/>
-  <text x="20" y="34" fill="#f5f6f8" font-size="19" font-weight="700">Small flow, large signal</text>
-  <text x="20" y="56" fill="#8b909b" font-size="13">Scale around 19 August 2026.</text>
-  <rect x="20" y="80" width="320" height="138" rx="6" fill="#15171c"/>
-  <text x="36" y="108" fill="#d6d9df" font-size="15" font-weight="700">30-YEAR YIELD</text>
-  <text x="36" y="146" fill="#ff4d87" font-size="32" font-weight="700">5.34%</text>
-  <text x="36" y="168" fill="#8b909b" font-size="14">Recent peak, highest since 2007</text>
-  <text x="36" y="198" fill="#5eead4" font-size="26" font-weight="700">toward 5.18%</text>
-  <text x="36" y="216" fill="#8b909b" font-size="14">after the announcement, Reuters</text>
-  <rect x="20" y="242" width="320" height="126" rx="6" fill="#15171c"/>
-  <text x="36" y="270" fill="#d6d9df" font-size="15" font-weight="700">FLOW SCALE</text>
-  <text x="36" y="302" fill="#ff4d87" font-size="21" font-weight="700">$4bn</text>
-  <text x="36" y="322" fill="#d6d9df" font-size="14">maximum per long-end buyback</text>
-  <text x="36" y="352" fill="#7aa2f7" font-size="21" font-weight="700">$739bn</text>
-  <text x="36" y="370" fill="#d6d9df" font-size="14">projected Q3 net borrowing</text>
-  <text x="20" y="410" fill="#f5b13d" font-size="15" font-weight="700">Size alone cannot attribute</text>
-  <text x="20" y="432" fill="#f5b13d" font-size="15" font-weight="700">the observed move.</text>
-  <text x="20" y="458" fill="#8b909b" font-size="12">Sources: Treasury, 3 August 2026;</text>
-  <text x="20" y="476" fill="#8b909b" font-size="12">Reuters, 19 August 2026.</text>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 480" role="img" aria-label="Indicative 30-year Treasury yield reaction around the 19 August 2026 buyback announcement and comparison with quarterly borrowing needs" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <rect x="1" y="1" width="718" height="478" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">Small flow, large signal</text>
+  <text x="32" y="70" fill="#8b909b" font-size="12">Scale around 19 August 2026.</text>
+  <rect x="32" y="92" width="656" height="148" rx="12" fill="#15171c"/>
+  <text x="54" y="120" fill="#d6d9df" font-size="12" font-weight="700">30-YEAR YIELD</text>
+  <text x="54" y="158" fill="#ff4d87" font-size="28" font-weight="700">5.34%</text>
+  <text x="54" y="180" fill="#8b909b" font-size="13">Recent peak, highest since 2007</text>
+  <text x="54" y="210" fill="#5eead4" font-size="24" font-weight="700">Toward 5.18%</text>
+  <text x="54" y="228" fill="#8b909b" font-size="13">After the announcement, Reuters</text>
+  <rect x="32" y="256" width="656" height="124" rx="12" fill="#15171c"/>
+  <text x="54" y="284" fill="#d6d9df" font-size="12" font-weight="700">FLOW SCALE</text>
+  <text x="54" y="326" fill="#ff4d87" font-size="22" font-weight="700">$4bn</text>
+  <text x="54" y="350" fill="#d6d9df" font-size="13">maximum per long-end buyback</text>
+  <text x="360" y="326" fill="#7aa2f7" font-size="22" font-weight="700">$739bn</text>
+  <text x="360" y="350" fill="#d6d9df" font-size="13">projected Q3 net borrowing</text>
+  <text x="32" y="416" fill="#f5b13d" font-size="14" font-weight="700">Size alone cannot attribute the observed move.</text>
+  <text x="32" y="450" fill="#8b909b" font-size="11">Sources: Treasury, 3 August 2026;</text>
+  <text x="32" y="468" fill="#8b909b" font-size="11">Reuters, 19 August 2026.</text>
 </svg>
 <figcaption>The chart does not compare accounting-identical flows. It shows scale. A $4 billion buyback is tiny relative to quarterly financing needs. That makes a signalling effect plausible, but does not isolate it causally.</figcaption>
 </figure>
