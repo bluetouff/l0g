@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import DanubeCentimetreCalculator from '../../components/DanubeCentimetreCalculator.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import {
+  DANUBE_CENTIMETRE_DATA_DATE,
+  DANUBE_CENTIMETRE_MODEL_VERSION,
+  DANUBE_CENTIMETRE_SOURCES,
+} from '../../lib/danube-centimetre-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'danube-centimetre-value');
+if (!tool) throw new Error('Danube centimetre tool is not registered');
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title,
+  description: tool.fr.description,
+  url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript sert à manipuler les hypothèses. Les formules, les sources et les limites restent lisibles sans interaction.',
+  softwareVersion: DANUBE_CENTIMETRE_MODEL_VERSION,
+  dateModified: DANUBE_CENTIMETRE_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: DANUBE_CENTIMETRE_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  title="Combien vaut un centimètre de Danube ? Le calculateur"
+  description="Chiffrez un scénario de production électrique préservée par un relèvement local du Danube. Hypothèses séparées, formules visibles et sources primaires."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="01"
+    kicker="calculateur de scénario"
+    title="Un centimètre n’a pas de prix fixe"
+    description="Il faut d’abord préciser où il est mesuré, combien de mégawatts il permettrait de maintenir et pendant combien de temps. Le calculateur garde ces questions séparées."
+    secondary="Les capacités proposées sont documentées. Le prix de remplacement, la durée, le relèvement et le coût des travaux restent vos hypothèses."
+    glyph="observe"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${DANUBE_CENTIMETRE_MODEL_VERSION}`, label: 'modèle auditable' },
+      { value: '5', label: 'variables explicites' },
+      { value: 'local', label: 'aucune donnée envoyée' },
+    ]}
+  />
+
+  <DanubeCentimetreCalculator lang="fr" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article>
+      <p class="mono-label">// ce que chiffre le modèle</p>
+      <h2>Une valeur conditionnelle</h2>
+      <p>Le résultat brut correspond à l’énergie maintenue multipliée par un prix de remplacement. La division par le relèvement local donne un ordre de grandeur par centimètre, pas une loi physique du fleuve.</p>
+    </article>
+    <article>
+      <p class="mono-label">// le test décisif</p>
+      <h2>Le coût des travaux est-il récupéré ?</h2>
+      <p>Le seuil d’amortissement indique le nombre d’heures de production nécessaires pour couvrir le coût saisi. Il ne tranche ni la sûreté, ni l’écologie, ni la navigation.</p>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-reading article { min-width: 0; border: 1px solid var(--color-line); border-radius: 12px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-reading .mono-label { color: var(--color-signal); }
+  .tool-reading h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+  .tool-reading article > p:last-child { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.62; }
+  @media (min-width: 760px) { .tool-reading { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

@@ -1,0 +1,72 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import DanubeCentimetreCalculator from '../../../components/DanubeCentimetreCalculator.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import {
+  DANUBE_CENTIMETRE_DATA_DATE,
+  DANUBE_CENTIMETRE_MODEL_VERSION,
+  DANUBE_CENTIMETRE_SOURCES,
+} from '../../../lib/danube-centimetre-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'danube-centimetre-value');
+if (!tool) throw new Error('Danube centimetre tool is not registered');
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title,
+  description: tool.en.description,
+  url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  softwareVersion: DANUBE_CENTIMETRE_MODEL_VERSION,
+  dateModified: DANUBE_CENTIMETRE_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: DANUBE_CENTIMETRE_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout
+  title="How much is one centimetre of Danube worth? Calculator"
+  description="Value a scenario in which a local Danube lift preserves electricity generation, with separate assumptions, visible formulas and primary sources."
+  alternateLinks={[
+    { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+    { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <section class="tool-hero rise" data-pagefind-ignore>
+    <p class="mono-label">// scenario calculator · v{DANUBE_CENTIMETRE_MODEL_VERSION}</p>
+    <h1>A centimetre has no fixed price</h1>
+    <p>Its value depends on where it is measured, how much capacity it might keep online and for how long. The calculator keeps those questions separate.</p>
+    <small>Preset capacities are documented. Replacement price, duration, local lift and intervention cost remain your assumptions.</small>
+  </section>
+
+  <DanubeCentimetreCalculator lang="en" mode="full" />
+
+  <section class="tool-notes" data-pagefind-body>
+    <article><p class="mono-label">// what is valued</p><h2>A conditional result</h2><p>Gross avoided cost is preserved energy multiplied by a replacement price. Dividing it by the local lift produces an indicative value per centimetre, not a physical law of the river.</p></article>
+    <article><p class="mono-label">// the economic test</p><h2>Would the works pay back?</h2><p>Break-even duration is the operating time required to cover the entered intervention cost. It settles neither safety nor environmental and navigation trade-offs.</p></article>
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .tool-hero { border: 1px solid var(--color-line); border-radius: 14px; padding: clamp(1rem, 3vw, 1.7rem); background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-hero .mono-label { color: var(--color-signal); }
+  .tool-hero h1 { max-width: 48rem; margin-top: 0.8rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.04; }
+  .tool-hero > p:not(.mono-label) { max-width: 48rem; margin-top: 0.9rem; color: var(--color-paper); font-size: 1rem; line-height: 1.65; }
+  .tool-hero small { display: block; max-width: 48rem; margin-top: 0.6rem; color: var(--color-muted); line-height: 1.55; }
+  .tool-notes { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-notes article { min-width: 0; border: 1px solid var(--color-line); border-radius: 11px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 70%, transparent); }
+  .tool-notes .mono-label { color: var(--color-signal); }
+  .tool-notes h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.1rem; }
+  .tool-notes article > p:last-child { margin-top: 0.5rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.6; }
+  @media (min-width: 760px) { .tool-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

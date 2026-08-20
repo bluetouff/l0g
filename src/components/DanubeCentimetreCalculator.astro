@@ -1,0 +1,351 @@
+---
+import {
+  DANUBE_CENTIMETRE_DEFAULTS,
+  DANUBE_CENTIMETRE_MODEL_VERSION,
+  DANUBE_CENTIMETRE_PRESETS,
+  DANUBE_CENTIMETRE_SOURCES,
+  calculateDanubeCentimetre,
+} from '../lib/danube-centimetre-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const isFull = mode === 'full';
+const id = `danube-centimetre-${lang}-${mode}`;
+const initial = calculateDanubeCentimetre(DANUBE_CENTIMETRE_DEFAULTS);
+
+const copy = isFr
+  ? {
+      eyebrow: 'CALCULATEUR DE SCÉNARIO',
+      title: 'Donnez un prix à votre hypothèse',
+      intro: 'Choisissez la puissance maintenue, le temps gagné et un coût de remplacement. Le relèvement local reste une donnée séparée, jamais une conversion automatique en mégawatts.',
+      badge: 'calcul local · zéro tracker',
+      presets: 'Exercices de départ',
+      presetsNote: 'Seules les puissances viennent de données publiées. Durée, prix, relèvement et coût des travaux sont des hypothèses modifiables.',
+      assumptions: 'Hypothèses du scénario',
+      capacity: 'Puissance maintenue',
+      duration: 'Durée gagnée',
+      price: 'Prix de remplacement',
+      lift: 'Relèvement local attribué aux travaux',
+      cost: 'Coût de l’intervention',
+      results: 'Résultats',
+      energy: 'Énergie préservée',
+      gross: 'Coût brut de remplacement évité',
+      perCm: 'Ordre de grandeur brut par centimètre',
+      breakEven: 'Seuil d’amortissement',
+      net: 'Solde après coût des travaux',
+      recovered: 'Le scénario amortit le coût saisi.',
+      notRecovered: 'Le coût saisi n’est pas amorti sur la durée choisie.',
+      noProduction: 'Sans puissance ou sans prix de remplacement, aucun seuil d’amortissement fini ne peut être calculé.',
+      warning: 'Ce résultat ne mesure pas une relation physique entre niveau d’eau et puissance. Il valorise uniquement le scénario affiché.',
+      method: 'Formules visibles',
+      methodIntro: 'Calcul simple, sans actualisation ni optimisation du marché.',
+      limits: 'Périmètre et limites',
+      limitsText: 'Sont exclus : équilibrage, congestions, démarrage thermique, combustible, carbone, couvertures, effets écologiques, navigation et valeur de sûreté. La durée réellement préservée et le relèvement imputable aux travaux exigent un contrefactuel hydrologique séparé.',
+      sources: 'Sources des capacités proposées',
+      openFull: 'Ouvrir en pleine largeur',
+      backArticle: 'Revenir à l’article',
+      hours: 'h',
+      days: 'j',
+    }
+  : {
+      eyebrow: 'SCENARIO CALCULATOR',
+      title: 'Put a price on your assumptions',
+      intro: 'Choose maintained capacity, time gained and a replacement cost. Local water lift remains a separate input, never an automatic conversion into megawatts.',
+      badge: 'local calculation · zero tracker',
+      presets: 'Starting exercises',
+      presetsNote: 'Only the capacity figures come from published data. Duration, price, lift and intervention cost are adjustable assumptions.',
+      assumptions: 'Scenario assumptions',
+      capacity: 'Capacity kept online',
+      duration: 'Operating time preserved',
+      price: 'Replacement electricity price',
+      lift: 'Local lift attributed to the works',
+      cost: 'Intervention cost',
+      results: 'Results',
+      energy: 'Energy preserved',
+      gross: 'Gross replacement cost avoided',
+      perCm: 'Indicative gross value per centimetre',
+      breakEven: 'Break-even duration',
+      net: 'Balance after intervention cost',
+      recovered: 'The entered cost is recovered in this scenario.',
+      notRecovered: 'The entered cost is not recovered over the selected duration.',
+      noProduction: 'With no maintained capacity or replacement price, no finite break-even duration can be calculated.',
+      warning: 'This result does not measure a physical relationship between water level and output. It values only the displayed scenario.',
+      method: 'Visible formulas',
+      methodIntro: 'A simple calculation, with no discounting or market optimisation.',
+      limits: 'Scope and limitations',
+      limitsText: 'Excluded: balancing, congestion, thermal starts, fuel, carbon, hedges, ecological effects, navigation and safety value. The duration actually preserved and the lift attributable to works require a separate hydrological counterfactual.',
+      sources: 'Sources for preset capacities',
+      openFull: 'Open the full-width tool',
+      backArticle: 'Return to the article',
+      hours: 'h',
+      days: 'd',
+    };
+
+const decimal = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const money = (value: number) => {
+  const absolute = Math.abs(value);
+  const sign = value < 0 ? '-' : '';
+  if (absolute >= 1e9) return isFr ? `${sign}${decimal.format(absolute / 1e9)} Md€` : `${sign}€${decimal.format(absolute / 1e9)}bn`;
+  if (absolute >= 1e6) return isFr ? `${sign}${decimal.format(absolute / 1e6)} M€` : `${sign}€${decimal.format(absolute / 1e6)}m`;
+  if (absolute >= 1e3) return isFr ? `${sign}${decimal.format(absolute / 1e3)} k€` : `${sign}€${decimal.format(absolute / 1e3)}k`;
+  return isFr ? `${decimal.format(value)} €` : `€${decimal.format(value)}`;
+};
+const energy = initial.energyMWh >= 1_000
+  ? `${decimal.format(initial.energyGWh)} GWh`
+  : `${decimal.format(initial.energyMWh)} MWh`;
+const breakEven = initial.breakEvenHours == null
+  ? '∞'
+  : initial.breakEvenHours >= 48
+    ? `${decimal.format(initial.breakEvenDays ?? 0)} ${copy.days}`
+    : `${decimal.format(initial.breakEvenHours)} ${copy.hours}`;
+---
+
+<section class:list={['dc-tool', isFull && 'dc-tool--full']} id={id} data-danube-sim data-lang={lang} data-mode={mode}>
+  <header class="dc-head">
+    <div>
+      <p class="dc-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="dc-badge">{copy.badge}</span>
+  </header>
+
+  <section class="dc-presets" aria-labelledby={`${id}-presets`}>
+    <div>
+      <h3 id={`${id}-presets`}>{copy.presets}</h3>
+      <p>{copy.presetsNote}</p>
+    </div>
+    <div class="dc-preset-row">
+      {DANUBE_CENTIMETRE_PRESETS.map((preset, index) => (
+        <button type="button" data-preset={preset.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+          <span>{isFr ? preset.labelFr : preset.labelEn}</span>
+          <small>{isFr ? preset.noteFr : preset.noteEn}</small>
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <div class="dc-grid">
+    <form class="dc-controls" aria-labelledby={`${id}-assumptions`}>
+      <h3 id={`${id}-assumptions`}>{copy.assumptions}</h3>
+
+      <div class="dc-control">
+        <span id={`${id}-capacity`}>{copy.capacity}<b>MW</b></span>
+        <div><input aria-labelledby={`${id}-capacity`} type="range" name="capacityMW-range" min="0" max="5000" step="5" value={DANUBE_CENTIMETRE_DEFAULTS.capacityMW} /><input aria-labelledby={`${id}-capacity`} type="number" name="capacityMW" min="0" max="5000" step="5" value={DANUBE_CENTIMETRE_DEFAULTS.capacityMW} inputmode="decimal" /></div>
+      </div>
+
+      <div class="dc-control">
+        <span id={`${id}-duration`}>{copy.duration}<b>{copy.hours}</b></span>
+        <div><input aria-labelledby={`${id}-duration`} type="range" name="durationHours-range" min="0" max="2160" step="1" value={DANUBE_CENTIMETRE_DEFAULTS.durationHours} /><input aria-labelledby={`${id}-duration`} type="number" name="durationHours" min="0" max="2160" step="1" value={DANUBE_CENTIMETRE_DEFAULTS.durationHours} inputmode="decimal" /></div>
+      </div>
+
+      <div class="dc-control">
+        <span id={`${id}-price`}>{copy.price}<b>€/MWh</b></span>
+        <div><input aria-labelledby={`${id}-price`} type="range" name="replacementPriceEurMWh-range" min="0" max="1000" step="5" value={DANUBE_CENTIMETRE_DEFAULTS.replacementPriceEurMWh} /><input aria-labelledby={`${id}-price`} type="number" name="replacementPriceEurMWh" min="0" max="1000" step="5" value={DANUBE_CENTIMETRE_DEFAULTS.replacementPriceEurMWh} inputmode="decimal" /></div>
+      </div>
+
+      <div class="dc-control">
+        <span id={`${id}-lift`}>{copy.lift}<b>cm</b></span>
+        <div><input aria-labelledby={`${id}-lift`} type="range" name="localLiftCm-range" min="0.1" max="200" step="0.1" value={DANUBE_CENTIMETRE_DEFAULTS.localLiftCm} /><input aria-labelledby={`${id}-lift`} type="number" name="localLiftCm" min="0.1" max="200" step="0.1" value={DANUBE_CENTIMETRE_DEFAULTS.localLiftCm} inputmode="decimal" /></div>
+      </div>
+
+      <div class="dc-control">
+        <span id={`${id}-cost`}>{copy.cost}<b>€</b></span>
+        <div><input aria-labelledby={`${id}-cost`} type="range" name="interventionCostEur-range" min="0" max="500000000" step="100000" value={DANUBE_CENTIMETRE_DEFAULTS.interventionCostEur} /><input aria-labelledby={`${id}-cost`} type="number" name="interventionCostEur" min="0" max="500000000" step="100000" value={DANUBE_CENTIMETRE_DEFAULTS.interventionCostEur} inputmode="decimal" /></div>
+      </div>
+    </form>
+
+    <section class="dc-results" aria-labelledby={`${id}-results`}>
+      <h3 id={`${id}-results`}>{copy.results}</h3>
+      <div class="dc-primary-result">
+        <span>{copy.gross}</span>
+        <strong data-result="gross">{money(initial.grossAvoidedCostEur)}</strong>
+      </div>
+      <dl>
+        <div><dt>{copy.energy}</dt><dd data-result="energy">{energy}</dd></div>
+        <div><dt>{copy.perCm}</dt><dd data-result="perCm">{money(initial.grossValuePerCmEur)}</dd></div>
+        <div><dt>{copy.breakEven}</dt><dd data-result="breakEven">{breakEven}</dd></div>
+        <div><dt>{copy.net}</dt><dd data-result="net" class:list={[initial.netBalanceEur < 0 && 'is-negative']}>{money(initial.netBalanceEur)}</dd></div>
+      </dl>
+      <p class:list={['dc-status', !initial.interventionRecovered && 'is-warning']} data-result="status" role="status" aria-live="polite">{initial.interventionRecovered ? copy.recovered : copy.notRecovered}</p>
+      <p class="dc-warning">{copy.warning}</p>
+    </section>
+  </div>
+
+  <div class="dc-details">
+    <details>
+      <summary>{copy.method}</summary>
+      <p>{copy.methodIntro}</p>
+      <code>Énergie / Energy = MW × h</code>
+      <code>Coût brut / Gross cost = MWh × €/MWh</code>
+      <code>Valeur / Value per cm = coût brut / gross cost ÷ cm</code>
+      <code>Seuil / Break-even = coût travaux / intervention cost ÷ (MW × €/MWh)</code>
+    </details>
+    <details>
+      <summary>{copy.limits}</summary>
+      <p>{copy.limitsText}</p>
+    </details>
+    <details>
+      <summary>{copy.sources}</summary>
+      <ol>{DANUBE_CENTIMETRE_SOURCES.map((source) => <li><a href={source.url}>{source.label}</a><span>{source.role}</span></li>)}</ol>
+      <p>Model v{DANUBE_CENTIMETRE_MODEL_VERSION}</p>
+    </details>
+  </div>
+
+  <footer class="dc-links">
+    {isFull
+      ? <a href={isFr ? '/posts/combien-vaut-un-centimetre-de-danube/' : '/en/analysis/how-much-is-one-centimetre-of-danube-worth/'}>{copy.backArticle}</a>
+      : <a href={isFr ? '/outils/prix-centimetre-danube/' : '/en/tools/value-of-danube-centimetre/'}>{copy.openFull}</a>}
+    <a href="/outils/prix-centimetre-danube/model.json">model.json</a>
+  </footer>
+</section>
+
+<script>
+  import {
+    DANUBE_CENTIMETRE_DEFAULTS,
+    DANUBE_CENTIMETRE_PRESETS,
+    calculateDanubeCentimetre,
+    normalizeDanubeCentimetreInputs,
+  } from '../lib/danube-centimetre-model.ts';
+
+  const initialiseDanubeCalculators = () => {
+    document.querySelectorAll<HTMLElement>('[data-danube-sim]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+      const copy = lang === 'fr'
+        ? { recovered: 'Le scénario amortit le coût saisi.', notRecovered: 'Le coût saisi n’est pas amorti sur la durée choisie.', noProduction: 'Sans puissance ou sans prix de remplacement, aucun seuil d’amortissement fini ne peut être calculé.', hours: 'h', days: 'j' }
+        : { recovered: 'The entered cost is recovered in this scenario.', notRecovered: 'The entered cost is not recovered over the selected duration.', noProduction: 'With no maintained capacity or replacement price, no finite break-even duration can be calculated.', hours: 'h', days: 'd' };
+      const decimal = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+      const fields = ['capacityMW', 'durationHours', 'replacementPriceEurMWh', 'localLiftCm', 'interventionCostEur'] as const;
+      type Field = typeof fields[number];
+
+      const input = (name: string) => form.elements.namedItem(name) as HTMLInputElement | null;
+      const read = (): Partial<Record<Field, number>> => Object.fromEntries(fields.map((name) => [name, Number(input(name)?.value)]));
+      const setPair = (name: Field, value: number) => {
+        const number = input(name);
+        const range = input(`${name}-range`);
+        if (number) number.value = String(value);
+        if (range) range.value = String(value);
+      };
+      const money = (value: number) => {
+        const absolute = Math.abs(value);
+        const sign = value < 0 ? '-' : '';
+        if (absolute >= 1e9) return lang === 'fr' ? `${sign}${decimal.format(absolute / 1e9)} Md€` : `${sign}€${decimal.format(absolute / 1e9)}bn`;
+        if (absolute >= 1e6) return lang === 'fr' ? `${sign}${decimal.format(absolute / 1e6)} M€` : `${sign}€${decimal.format(absolute / 1e6)}m`;
+        if (absolute >= 1e3) return lang === 'fr' ? `${sign}${decimal.format(absolute / 1e3)} k€` : `${sign}€${decimal.format(absolute / 1e3)}k`;
+        return lang === 'fr' ? `${decimal.format(value)} €` : `€${decimal.format(value)}`;
+      };
+      const write = (key: string, value: string) => {
+        const target = root.querySelector<HTMLElement>(`[data-result="${key}"]`);
+        if (target) target.textContent = value;
+      };
+
+      const update = () => {
+        const inputs = normalizeDanubeCentimetreInputs(read());
+        const results = calculateDanubeCentimetre(inputs);
+        fields.forEach((name) => setPair(name, inputs[name]));
+        write('energy', results.energyMWh >= 1_000 ? `${decimal.format(results.energyGWh)} GWh` : `${decimal.format(results.energyMWh)} MWh`);
+        write('gross', money(results.grossAvoidedCostEur));
+        write('perCm', money(results.grossValuePerCmEur));
+        write('breakEven', results.breakEvenHours == null ? '∞' : results.breakEvenHours >= 48 ? `${decimal.format(results.breakEvenDays ?? 0)} ${copy.days}` : `${decimal.format(results.breakEvenHours)} ${copy.hours}`);
+        write('net', money(results.netBalanceEur));
+        const net = root.querySelector<HTMLElement>('[data-result="net"]');
+        net?.classList.toggle('is-negative', results.netBalanceEur < 0);
+        const status = root.querySelector<HTMLElement>('[data-result="status"]');
+        if (status) {
+          status.textContent = results.breakEvenHours == null ? copy.noProduction : results.interventionRecovered ? copy.recovered : copy.notRecovered;
+          status.classList.toggle('is-warning', !results.interventionRecovered || results.breakEvenHours == null);
+        }
+      };
+
+      fields.forEach((name) => {
+        const number = input(name);
+        const range = input(`${name}-range`);
+        range?.addEventListener('input', () => { if (number) number.value = range.value; update(); });
+        number?.addEventListener('input', () => { if (range) range.value = number.value; update(); });
+      });
+
+      root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const preset = DANUBE_CENTIMETRE_PRESETS.find((item) => item.id === button.dataset.preset);
+          if (!preset) return;
+          fields.forEach((name) => setPair(name, preset.inputs[name]));
+          root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          update();
+        });
+      });
+
+      fields.forEach((name) => setPair(name, DANUBE_CENTIMETRE_DEFAULTS[name]));
+      update();
+    });
+  };
+
+  initialiseDanubeCalculators();
+  document.addEventListener('astro:page-load', initialiseDanubeCalculators);
+</script>
+
+<style>
+  .dc-tool { --dc-accent: #5eead4; --dc-warn: #f5b13d; min-width: 0; margin: 1.4rem 0 1.8rem; border: 1px solid color-mix(in srgb, var(--dc-accent) 32%, var(--color-line)); border-radius: 16px 4px 16px 16px; padding: clamp(0.9rem, 3vw, 1.35rem); background: radial-gradient(110% 120% at 0 0, color-mix(in srgb, var(--dc-accent) 8%, transparent), transparent 65%), color-mix(in srgb, var(--color-surface) 94%, #080b10); box-shadow: var(--shadow-elevated); }
+  .dc-head { display: grid; gap: 0.8rem; }
+  .dc-eyebrow, .dc-badge, h3, .dc-links a { font-family: var(--font-mono); }
+  .dc-eyebrow { margin: 0; color: var(--dc-accent); font-size: 0.64rem; font-weight: 750; letter-spacing: 0.1em; }
+  .dc-head h2 { margin: 0.35rem 0 0; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.3rem, 3.5vw, 1.8rem); line-height: 1.12; }
+  .dc-head div > p:last-child { max-width: 52rem; margin: 0.55rem 0 0; color: var(--color-muted); font-size: 0.82rem; line-height: 1.6; }
+  .dc-badge { align-self: start; justify-self: start; border: 1px solid color-mix(in srgb, var(--dc-accent) 45%, transparent); border-radius: 999px; padding: 0.35rem 0.55rem; color: var(--dc-accent); font-size: 0.58rem; white-space: nowrap; }
+  .dc-presets { margin-top: 1rem; border-top: 1px dashed var(--color-line); padding-top: 0.9rem; }
+  h3 { margin: 0; color: var(--color-paper); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .dc-presets > div:first-child p { margin: 0.35rem 0 0; color: var(--color-muted); font-size: 0.7rem; line-height: 1.5; }
+  .dc-preset-row { display: grid; gap: 0.5rem; margin-top: 0.7rem; }
+  .dc-preset-row button { min-width: 0; border: 1px solid var(--color-line); border-radius: 9px; padding: 0.65rem; background: color-mix(in srgb, var(--color-bg) 55%, transparent); color: var(--color-paper); text-align: left; cursor: pointer; }
+  .dc-preset-row button[aria-pressed='true'] { border-color: var(--dc-accent); background: color-mix(in srgb, var(--dc-accent) 8%, var(--color-bg)); }
+  .dc-preset-row span { display: block; font-size: 0.72rem; font-weight: 700; }
+  .dc-preset-row small { display: block; margin-top: 0.25rem; color: var(--color-muted); font-size: 0.6rem; line-height: 1.4; }
+  .dc-grid { display: grid; gap: 0.8rem; margin-top: 0.9rem; }
+  .dc-controls, .dc-results { min-width: 0; border: 1px solid var(--color-line); border-radius: 11px; padding: 0.9rem; background: color-mix(in srgb, var(--color-bg) 58%, transparent); }
+  .dc-control { display: block; margin-top: 0.85rem; }
+  .dc-control > span { display: flex; justify-content: space-between; gap: 0.7rem; color: var(--color-paper); font-size: 0.7rem; }
+  .dc-control b { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500; }
+  .dc-control > div { display: grid; grid-template-columns: minmax(0, 1fr) 6.3rem; gap: 0.65rem; align-items: center; margin-top: 0.4rem; }
+  input[type='range'] { width: 100%; accent-color: var(--dc-accent); }
+  input[type='number'] { width: 100%; min-width: 0; border: 1px solid var(--color-line); border-radius: 7px; padding: 0.45rem 0.5rem; background: var(--color-bg); color: var(--color-bright); font-family: var(--font-mono); font-size: 0.68rem; }
+  input:focus-visible, button:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--dc-accent); outline-offset: 2px; }
+  .dc-primary-result { margin-top: 0.8rem; border-bottom: 1px dashed var(--color-line); padding-bottom: 0.75rem; }
+  .dc-primary-result span { display: block; color: var(--color-muted); font-size: 0.68rem; }
+  .dc-primary-result strong { display: block; margin-top: 0.3rem; color: var(--dc-accent); font-family: var(--font-mono); font-size: clamp(1.25rem, 4vw, 1.5rem); line-height: 1.15; overflow-wrap: anywhere; }
+  .dc-results dl { display: grid; gap: 0; margin: 0.35rem 0 0; }
+  .dc-results dl div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.8rem; border-bottom: 1px solid color-mix(in srgb, var(--color-line) 65%, transparent); padding: 0.55rem 0; }
+  .dc-results dt { color: var(--color-muted); font-size: 0.66rem; line-height: 1.35; }
+  .dc-results dd { margin: 0; color: var(--color-bright); font-family: var(--font-mono); font-size: 0.7rem; text-align: right; }
+  .dc-results dd.is-negative { color: var(--dc-warn); }
+  .dc-status { margin: 0.7rem 0 0; border-left: 2px solid var(--dc-accent); padding-left: 0.6rem; color: var(--color-paper); font-size: 0.68rem; line-height: 1.5; }
+  .dc-status.is-warning { border-color: var(--dc-warn); color: var(--dc-warn); }
+  .dc-warning { margin: 0.75rem 0 0; border: 1px solid color-mix(in srgb, var(--dc-warn) 35%, var(--color-line)); border-radius: 8px; padding: 0.65rem; color: var(--color-muted); font-size: 0.64rem; line-height: 1.5; }
+  .dc-details { display: grid; gap: 0.45rem; margin-top: 0.8rem; }
+  .dc-details details { border: 1px solid var(--color-line); border-radius: 8px; padding: 0.65rem 0.75rem; }
+  .dc-details summary { color: var(--color-paper); font-family: var(--font-mono); font-size: 0.65rem; cursor: pointer; }
+  .dc-details p, .dc-details li { color: var(--color-muted); font-size: 0.65rem; line-height: 1.55; }
+  .dc-details code { display: block; margin-top: 0.45rem; color: var(--dc-accent); font-size: 0.6rem; white-space: normal; overflow-wrap: anywhere; }
+  .dc-details ol { padding-left: 1.1rem; }
+  .dc-details li + li { margin-top: 0.45rem; }
+  .dc-details li a { color: var(--color-paper); overflow-wrap: anywhere; }
+  .dc-details li span { display: block; }
+  .dc-links { display: flex; flex-wrap: wrap; gap: 0.7rem 1rem; margin-top: 0.8rem; }
+  .dc-links a { color: var(--dc-accent); font-size: 0.63rem; text-decoration: none; }
+  @media (min-width: 720px) {
+    .dc-head { grid-template-columns: minmax(0, 1fr) auto; }
+    .dc-preset-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .dc-grid { grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr); }
+    .dc-details { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .dc-tool--full { padding: 1.35rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+</style>

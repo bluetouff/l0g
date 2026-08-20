@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'danube-centimetre-value',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-20',
+    modelHref: '/outils/prix-centimetre-danube/model.json',
+    fr: {
+      title: 'Le prix d’un centimètre de Danube',
+      eyebrow: 'économie de l’électricité',
+      description: 'Testez puissance, durée, prix de remplacement, relèvement local et coût des travaux sans inventer de relation physique entre eau et mégawatts.',
+      question: 'Combien d’heures de production faut-il préserver pour amortir une intervention ?',
+      href: '/outils/prix-centimetre-danube/',
+      articleHref: '/posts/combien-vaut-un-centimetre-de-danube/',
+      articleLabel: 'Lire l’enquête source',
+    },
+    en: {
+      title: 'The price of one centimetre of Danube',
+      eyebrow: 'power economics',
+      description: 'Test capacity, duration, replacement price, local lift and intervention cost without inventing a physical water-to-power relationship.',
+      question: 'How many preserved operating hours would repay an intervention?',
+      href: '/en/tools/value-of-danube-centimetre/',
+      articleHref: '/en/analysis/how-much-is-one-centimetre-of-danube-worth/',
+      articleLabel: 'Read the source investigation',
+    },
+  },
+  {
     id: 'digital-euro-cost',
     version: '1.1.0',
     status: 'active',

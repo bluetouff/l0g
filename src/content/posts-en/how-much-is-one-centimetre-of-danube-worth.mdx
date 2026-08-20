@@ -1,0 +1,351 @@
+---
+title: "How much is one centimetre of Danube worth?"
+description: "In the summer of 2026, Romania and Hungary blasted rock, mobilised barges and built sills to preserve electricity generation. The Danube was not empty: it had become too low at the exact point where some pumps had to draw water. Part one of our investigation into water, Europe's invisible power fuel."
+pubDate: 2026-08-20T13:28:00+02:00
+updatedDate: 2026-08-20T13:28:00+02:00
+tags: ["Europe", "electricity", "water", "nuclear", "hydropower", "Danube", "risk"]
+draft: false
+sourceArticle: "combien-vaut-un-centimetre-de-danube"
+sourceUpdatedDate: 2026-08-20
+---
+
+import DanubeCentimetreCalculator from '../../components/DanubeCentimetreCalculator.astro';
+
+*On 30 July 2026, Hungary's Paks nuclear plant published a counter-intuitive statement. The Danube still contained enough water to cool all four units. Yet the plant was preparing to shut them down. The problem was not the river's total volume, but a matter of centimetres: the water surface had fallen below the suction inlets of pumps used during normal operation. To preserve its megawatts, Hungary would soon try to raise the Danube locally. In Romania, the military blasted a rock formation and prepared four material-loaded barges to redirect water towards Cernavodă. Europe was not merely short of water. It was discovering that electricity can depend on the precise geometry of a river.*
+
+This article opens our investigation, **Water, the invisible fuel of European electricity**.
+
+Fuel is a metaphor here. Water does not create the heat in a nuclear or coal plant. It removes that heat. In a hydro turbine, water becomes the energy source itself. On the Danube in the summer of 2026, both functions deteriorated at the same time.
+
+The crisis therefore removed more than hydropower. It reduced the ability to cool nuclear and coal plants, disrupted navigation and increased several countries' need for imported electricity.
+
+The most revealing constraint was nevertheless smaller than any power market: **the water margin above a pump intake**.
+
+## The river was not empty
+
+On 1 August, Romania's hydrological institute measured a flow of **1,550 cubic metres per second** at Baziaș, where the Danube enters the country. The long-run July average is 4,700 m³/s. Flow was then expected to decline towards 1,450 m³/s, against an August average of 3,900 m³/s. The river was therefore carrying roughly two-thirds less water than in an average summer at that location. It was still moving an enormous volume every second. ([INHGA](https://www.hidro.ro/en/bulletin/diagnoza-si-prognoza-hidrologica-pentru-dunare-la-intrarea-in-tara-si-pe-sectorul-romanesc-01-08-2026/))
+
+This is where ordinary language becomes misleading.
+
+A river has **flow**, **level**, **temperature** and local geometry. Those quantities are related, but they are not interchangeable.
+
+At Paks, MVM explained on 30 July that flow would still have been sufficient to cool the units. The constraint was different: the Danube surface had fallen below the suction inlet level of the pumps used in normal operation. A plant can sit downstream from a very large flow and still lack the water depth needed at the exact point where equipment must draw it. ([MVM Paks](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260730_leallas))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A river can retain substantial flow while becoming too shallow for a power plant water intake" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="410" fill="#0c0d10"/>
+  <text x="26" y="34" fill="#5eead4" font-size="15" font-weight="700">// Enough flow, not enough depth</text>
+  <text x="26" y="56" fill="#8b909b" font-size="10">Simplified intake diagram. The binding constraint appears at the pump.</text>
+  <rect x="34" y="92" width="652" height="156" rx="6" fill="#12141a" stroke="#2a2e38"/>
+  <path d="M34 142 C130 130 202 154 292 140 C392 124 478 150 686 134 L686 248 L34 248 Z" fill="#1c5d79" opacity="0.92"/>
+  <path d="M34 174 C130 162 202 186 292 172 C392 156 478 182 686 166" fill="none" stroke="#5eead4" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="48" y="118" fill="#d6d9df" font-size="10">required level</text>
+  <text x="48" y="188" fill="#d6d9df" font-size="10">observed level</text>
+  <rect x="458" y="108" width="76" height="154" rx="5" fill="#22262f" stroke="#7aa2f7"/>
+  <rect x="478" y="154" width="36" height="52" rx="3" fill="#0c0d10" stroke="#ff4d87" stroke-width="2"/>
+  <circle cx="496" cy="180" r="8" fill="none" stroke="#ff4d87" stroke-width="2"/>
+  <line x1="496" y1="172" x2="496" y2="188" stroke="#ff4d87"/>
+  <line x1="488" y1="180" x2="504" y2="180" stroke="#ff4d87"/>
+  <text x="548" y="172" fill="#ff4d87" font-size="11" font-weight="700">pump intake</text>
+  <text x="548" y="190" fill="#d6d9df" font-size="9">insufficient submersion</text>
+  <text x="548" y="206" fill="#d6d9df" font-size="9">for normal operation</text>
+  <line x1="446" y1="174" x2="522" y2="174" stroke="#f5b13d" stroke-width="2"/>
+  <polygon points="522,174 512,168 512,180" fill="#f5b13d"/>
+  <rect x="34" y="282" width="308" height="82" rx="5" fill="#15171c"/>
+  <text x="50" y="306" fill="#f5f6f8" font-size="11" font-weight="700">Four units generating</text>
+  <text x="50" y="334" fill="#5eead4" font-size="20" font-weight="700">~100 m³/s</text>
+  <text x="50" y="352" fill="#8b909b" font-size="9">water need reported by Paks</text>
+  <rect x="378" y="282" width="308" height="82" rx="5" fill="#15171c"/>
+  <text x="394" y="306" fill="#f5f6f8" font-size="11" font-weight="700">Four units shut and cooled</text>
+  <text x="394" y="334" fill="#7aa2f7" font-size="20" font-weight="700">max. 2.5 m³/s</text>
+  <text x="394" y="352" fill="#8b909b" font-size="9">safety cooling remains, at a much lower flow</text>
+  <text x="26" y="394" fill="#8b909b" font-size="9">SOURCE: MVM Paksi Atomerőmű, 30 July 2026. Diagram not to scale.</text>
+</svg>
+<figcaption>A falling water level can disable an intake before a river lacks flow in the ordinary sense. At Paks, MVM explicitly separated total water availability from the depth required by the pumps.</figcaption>
+</figure>
+
+That detail changes the nature of the risk.
+
+If the problem were only total water volume, the solution would be to wait for rain. When the constraint is the height at an intake, several engineering responses become possible: lower the pipes, add pumps, dredge a channel, slow the current locally or raise the surface artificially.
+
+That is exactly what Hungary and Romania attempted.
+
+## Three days to lose three-quarters of Paks
+
+Paks supplies close to half of Hungary's domestic electricity generation and has around 2,000 MW across four units. ([MVM Paks](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260730_leallas))
+
+On 19 July, MVM announced that all four units had returned to nominal output. At that point, the constraint was still river temperature: measurements had fallen back below the 29.5 °C intervention threshold. ([MVM, 19 July](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260719_nevleges))
+
+Eight days later, the problem had changed.
+
+On 27 July, the gauge reached **-106 cm** at Paks, a new record. MVM removed 254 MW from Unit 1. The next day, at **-112 cm**, the operator removed another 237 MW from Unit 3. On 29 July, at **-118 cm**, that unit began shutting down. ([MVM, 27 July](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260727_vizallas)) ([MVM, 28 July](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260728_vizallas)) ([MVM, 29 July](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260729_vizallas))
+
+On 30 July, MVM estimated that a full shutdown could become necessary within 24 to 72 hours. The river was then 28 cm below the previous 2018 record, which itself was already more than one metre below the 100-year minimum used in the plant's original design.
+
+On 1 August, the last turbine-generator still operating on Unit 1 was stopped. On 2 August, the same happened on Unit 4. Only Unit 2 remained, at 50% power. MVM asked the public to curb demand, especially between 5 pm and 10 pm, when solar output declines and a dispatchable megawatt becomes more valuable. ([MVM, 1 August](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260801_Uzemiesemeny)) ([MVM, 2 August](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/Uzemiesemeny_20260802))
+
+A second turbine-generator restarted on 10 August. Four days later, Paks was still operating at around one-quarter of its capacity, with two turbine-generators online, while Hungary began works to raise the local river level. The partial restart did not restore nominal output. ([Reuters, 15 August](https://www.reuters.com/business/environment/hungary-sink-two-barges-near-nuclear-plant-raise-danube-levels-ensure-cooling-2026-08-15/))
+
+This was not a nuclear accident in the ordinary meaning of the term.
+
+MVM has procedures for four stages of low-water conditions. Once units are shut, water requirements fall from around 100 to no more than 2.5 m³/s for all four units. Additional mobile pumps are available to keep the plant cooled safely even if the river drops further.
+
+The immediate risk concerned **generation**, pump reliability and the ability to preserve required margins. A preventive shutdown is itself one of the safety measures.
+
+## Blasting rock to buy days
+
+At Cernavodă, the problem took a different form.
+
+Romania's two reactors use water from the Danube-Black Sea Canal, which is supplied by the river. Together they normally provide around one-fifth of the country's electricity.
+
+Nuclearelectrica announced on 27 July that Unit 1 would shut the following morning. On 29 July, the operator prepared to stop Unit 2 as well. Overnight analysis nevertheless showed that operating parameters still allowed a temporary continuation, and the reactor remained connected. ([Nuclearelectrica, Unit 1](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/07/RC-current-report-debit-dunare-bvb.pdf)) ([Nuclearelectrica, Unit 2](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/07/en-RC-current-report-Unitatea-2-CNE-Cernavoda-ramane-conectata-la-SEN-.pdf))
+
+The Romanian government then turned the Bala branch into an emergency construction site.
+
+The water authority continued dredging, prepared four material-loaded barges and sought to build a directional structure to push more flow towards the Old Danube branch and Cernavodă. The defence ministry deployed 102 military personnel. Specialists carried out a controlled blast of a rock formation in the riverbed to support the redistribution of flow. ([Romanian Ministry of Defence](https://english.mapn.ro/cpresa/6832_ministry-of-national-defence-contributes-to-national-efforts-to-safeguard-energy-security)) ([Apele Române release carried by AGERPRES](https://agerpres.ro/comunicate/2026/08/03/comunicat-de-presa---administratia-nationala-apele-romane--1581838))
+
+On 4 August, Nuclearelectrica confirmed that the authorities' measures had raised the water level and that Unit 2 was still operating at nominal output. The operator kept its warning in place: the forecast remained negative. ([Nuclearelectrica, 4 August](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/08/en-RC-update-status-U2-.pdf))
+
+The respite was real but limited.
+
+On 13 August, Unit 2 began a controlled shutdown. Nuclearelectrica said the significant and continuing decline in the Danube no longer allowed the necessary operating margins to be maintained. Both units remained safely shut, with no impact on personnel, the public or the environment. ([Nuclearelectrica, 13 August](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/08/CR-Controlled-shutdown-U2.pdf))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Measures taken in Romania to redirect part of the Danube towards the Cernavoda nuclear plant" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="430" fill="#0c0d10"/>
+  <text x="26" y="34" fill="#5eead4" font-size="15" font-weight="700">// Cernavodă: reshaping the river to buy time</text>
+  <text x="26" y="56" fill="#8b909b" font-size="10">The works raised the local level but did not prevent the final Unit 2 shutdown.</text>
+  <path d="M44 112 C150 82 254 146 354 116 C458 84 554 116 676 92" fill="none" stroke="#1c5d79" stroke-width="46" stroke-linecap="round"/>
+  <path d="M44 112 C150 82 254 146 354 116 C458 84 554 116 676 92" fill="none" stroke="#5eead4" stroke-width="2" stroke-dasharray="7 6"/>
+  <rect x="104" y="84" width="76" height="40" rx="4" fill="#20242c" stroke="#f5b13d"/>
+  <text x="121" y="108" fill="#f5b13d" font-size="10" font-weight="700">BLASTING</text>
+  <rect x="248" y="126" width="76" height="40" rx="4" fill="#20242c" stroke="#7aa2f7"/>
+  <text x="263" y="150" fill="#7aa2f7" font-size="10" font-weight="700">DREDGING</text>
+  <g transform="translate(390 86)">
+    <rect x="0" y="0" width="48" height="20" rx="3" fill="#ff4d87"/>
+    <rect x="56" y="8" width="48" height="20" rx="3" fill="#ff4d87"/>
+    <rect x="112" y="0" width="48" height="20" rx="3" fill="#ff4d87"/>
+    <rect x="168" y="8" width="48" height="20" rx="3" fill="#ff4d87"/>
+    <text x="60" y="50" fill="#d6d9df" font-size="10">4 barges prepared</text>
+  </g>
+  <line x1="574" y1="122" x2="650" y2="154" stroke="#5eead4" stroke-width="3"/>
+  <polygon points="650,154 638,154 643,143" fill="#5eead4"/>
+  <text x="536" y="174" fill="#d6d9df" font-size="10">flow redirected</text>
+  <text x="536" y="190" fill="#d6d9df" font-size="10">towards Cernavodă</text>
+  <rect x="40" y="232" width="194" height="116" rx="5" fill="#15171c"/>
+  <text x="56" y="258" fill="#5eead4" font-size="11" font-weight="700">28 JULY</text>
+  <text x="56" y="286" fill="#d6d9df" font-size="10">Unit 1 shut</text>
+  <text x="56" y="306" fill="#8b909b" font-size="9">exceptionally low level</text>
+  <text x="56" y="326" fill="#8b909b" font-size="9">controlled preventive action</text>
+  <rect x="263" y="232" width="194" height="116" rx="5" fill="#15171c"/>
+  <text x="279" y="258" fill="#f5b13d" font-size="11" font-weight="700">4 AUGUST</text>
+  <text x="279" y="286" fill="#d6d9df" font-size="10">Unit 2 nominal</text>
+  <text x="279" y="306" fill="#8b909b" font-size="9">level raised by works</text>
+  <text x="279" y="326" fill="#8b909b" font-size="9">forecast still negative</text>
+  <rect x="486" y="232" width="194" height="116" rx="5" fill="#15171c"/>
+  <text x="502" y="258" fill="#ff4d87" font-size="11" font-weight="700">13 AUGUST</text>
+  <text x="502" y="286" fill="#d6d9df" font-size="10">Unit 2 shut</text>
+  <text x="502" y="306" fill="#8b909b" font-size="9">the Danube keeps falling</text>
+  <text x="502" y="326" fill="#8b909b" font-size="9">both units remain safe</text>
+  <text x="26" y="396" fill="#8b909b" font-size="9">SOURCES: Nuclearelectrica, Romanian Defence Ministry, Apele Române.</text>
+</svg>
+<figcaption>Romania obtained an operational reprieve by changing the local distribution of flow. The exact value of the days gained remains difficult to calculate without a public hydrological counterfactual.</figcaption>
+</figure>
+
+The sequence invites a calculation: how much was one centimetre of Danube worth?
+
+## Price your own scenario
+
+<DanubeCentimetreCalculator lang="en" />
+
+The calculator starts at **705 MW**, rounded from Cernavodă Unit 2's published installed capacity of 704.8 MW. That figure is observed. Preserved time, replacement price, local lift and intervention cost are assumptions. Change them: they drive the answer.
+
+The arithmetic fits on a few lines. The reasoning calls for more care.
+
+The observed water level after the works must be compared with the level that would have prevailed without intervention. The preserved MWh must then be measured, valued at the hourly replacement cost, and reduced by construction expenses and the impact on navigation, aquatic systems and other river users.
+
+The first centimetre that puts a pump back inside its operating range can preserve hundreds of megawatts. The next centimetre may change nothing. The value is **non-linear** and depends on the hour.
+
+## One river, several competing power stations
+
+The crisis became regional because the Danube serves more than one technology.
+
+In Serbia, the energy ministry said in early August that Đerdap 1 was producing only around **20%** of its normal level and Đerdap 2 around **30%**. The equipment was mechanically available; river flow constrained generation. ([Serbian Ministry of Mining and Energy](https://mre.gov.rs/vest/sr/17041/djedovic-handanovic-za-rts-najniza-proizvodnja-na-djerdapu-od-kad-je-pusten-u-rad-neophodna-racionalna-potrosnja-struje.php))
+
+The ministry also said some units at the Kostolac coal complex had reduced output by roughly one-third because the Danube level constrained cooling.
+
+EPS estimated that imports were then covering around **10%** of Serbian demand, mainly to compensate for weak hydropower. Daily electricity consumption reached 100 to 105 GWh, close to the 110 to 115 GWh seen during the coldest winter peaks. ([EPS](https://www.eps.rs/eng/vesti/Pages/dir-rts.aspx))
+
+The drought therefore removed, at the same time:
+
+- hydropower at Đerdap;
+- thermal output at Kostolac;
+- nuclear production at Paks and Cernavodă;
+- export headroom in neighbouring countries that might normally provide relief.
+
+Bulgaria adds a paradox. Kozloduy continued to generate according to schedule, but the Bulgarian government asked Serbia to examine whether Đerdap operations could, within technical limits, help keep downstream Danube levels above critical thresholds. The hydro complex being asked to support nuclear cooling was itself short of the flow required for its own electricity production. ([Kozloduy NPP](https://www.kznpp.org/en/news/673))
+
+That accumulation matters more than any single outage.
+
+A power system can withstand one plant outage by using hydropower. It can withstand a weak hydro year by using nuclear or thermal generation. When the same river weakens all three, technological diversification is no longer enough. Real diversification must also be **hydrological and geographical**.
+
+## Kozloduy did not read the same river
+
+The best way to avoid a bad diagnosis is to examine the plant that did not shut.
+
+Kozloduy is in Bulgaria, on the same Danube. On 31 July, both operating units were generating according to schedule even though river levels were described as the lowest in decades.
+
+The operator attributes that resilience to the design of its intake. The pumping station sits in a deep bay and was designed using a century of Danube water-level observations. An automated system continuously measures the level in front of the station. ([Kozloduy NPP](https://www.kznpp.org/en/news/673))
+
+Kozloduy also makes an often-missed distinction: Danube water cools steam in condensers in the conventional part of the plant. It does not circulate through the nuclear reactor.
+
+Paks follows the same general thermodynamic principle, but the local geometry of its intakes made it more exposed to the 2026 record. MVM says work has already begun on lowering suction pipes so that the plant can, within a few years, generate at even lower river levels.
+
+Cernavodă relies on a suction basin supplied by the Danube-Black Sea Canal. River, canal and basin gauges do not share the same reference. That is why thresholds mentioned in Romanian statements cannot be directly compared with negative gauge readings at Paks.
+
+Krško, on the Sava, provides a fourth design. Cooling towers initially allowed full reactor power to be maintained despite low flow. They consume electricity, however, and net output falls when cooling water and air are warm. On 6 August, reactor power was reduced to 80% to respect a daily maximum of 28 °C at the mixing point and a maximum temperature rise of 3 °C. ([Krško NPP](https://www.nek.si/novice/novice/nek-obratuje-z-znizano-mocjo-reaktorja))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simplified comparison of water intake and cooling systems at Paks, Cernavoda and Kozloduy" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="430" fill="#0c0d10"/>
+  <text x="26" y="34" fill="#5eead4" font-size="15" font-weight="700">// Same river, different vulnerabilities</text>
+  <text x="26" y="56" fill="#8b909b" font-size="10">Reactor technology alone does not explain site resilience.</text>
+  <rect x="34" y="92" width="208" height="258" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="50" y="120" fill="#ff4d87" font-size="12" font-weight="700">PAKS</text>
+  <path d="M50 178 C92 166 138 184 226 168 L226 232 L50 232 Z" fill="#1c5d79"/>
+  <line x1="50" y1="196" x2="226" y2="196" stroke="#5eead4" stroke-dasharray="5 4"/>
+  <rect x="166" y="144" width="32" height="70" fill="#20242c" stroke="#7aa2f7"/>
+  <circle cx="182" cy="184" r="7" fill="none" stroke="#ff4d87" stroke-width="2"/>
+  <text x="50" y="262" fill="#d6d9df" font-size="10">intake became too high</text>
+  <text x="50" y="280" fill="#8b909b" font-size="9">relative to local level</text>
+  <text x="50" y="316" fill="#ff4d87" font-size="10" font-weight="700">2026: near-shutdown</text>
+  <rect x="256" y="92" width="208" height="258" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="272" y="120" fill="#f5b13d" font-size="12" font-weight="700">CERNAVODĂ</text>
+  <path d="M272 178 C320 168 364 184 448 170 L448 232 L272 232 Z" fill="#1c5d79"/>
+  <rect x="322" y="146" width="84" height="76" rx="4" fill="#20242c" stroke="#7aa2f7"/>
+  <rect x="344" y="174" width="40" height="34" fill="#0c0d10" stroke="#f5b13d"/>
+  <text x="272" y="262" fill="#d6d9df" font-size="10">suction basin supplied by</text>
+  <text x="272" y="280" fill="#8b909b" font-size="9">Danube-Black Sea Canal</text>
+  <text x="272" y="316" fill="#f5b13d" font-size="10" font-weight="700">2026: fully shut</text>
+  <rect x="478" y="92" width="208" height="258" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="494" y="120" fill="#5eead4" font-size="12" font-weight="700">KOZLODUY</text>
+  <path d="M494 178 C538 166 592 186 670 168 L670 232 L494 232 Z" fill="#1c5d79"/>
+  <path d="M548 170 C558 138 606 138 618 170 L618 224 L548 224 Z" fill="#20242c" stroke="#7aa2f7"/>
+  <circle cx="583" cy="202" r="8" fill="none" stroke="#5eead4" stroke-width="2"/>
+  <text x="494" y="262" fill="#d6d9df" font-size="10">pumping station inside</text>
+  <text x="494" y="280" fill="#8b909b" font-size="9">a dedicated deep bay</text>
+  <text x="494" y="316" fill="#5eead4" font-size="10" font-weight="700">2026: schedule maintained</text>
+  <rect x="34" y="370" width="652" height="34" rx="4" fill="#20242c"/>
+  <text x="50" y="391" fill="#d6d9df" font-size="10">Reading: resilience depends on intake, pumps, cooling circuit and local thresholds.</text>
+  <text x="26" y="420" fill="#8b909b" font-size="9">SOURCES: MVM, Nuclearelectrica, Kozloduy NPP. Simplified, not to scale.</text>
+</svg>
+<figcaption>Three river-based nuclear plants can respond very differently to the same hydrological episode. Intake geometry becomes part of the electricity capacity that is actually available.</figcaption>
+</figure>
+
+The comparison blocks two easy conclusions.
+
+The first would be: “nuclear power cannot withstand drought”. Kozloduy shows that site design can provide much larger margins. Krško shows that cooling towers add flexibility, with costs and limits.
+
+The second would be: “this is only a nuclear problem”. Đerdap and Kostolac show the opposite. The Danube simultaneously constrained renewable generation and a fossil plant.
+
+The issue is not one isolated technology. It is the **wet megawatt**, installed capacity that exists in practice only when a water resource remains available at the right location, in the right condition and at the right temperature.
+
+## The grid prevented failure, not the bill
+
+No generalised power collapse followed these outages.
+
+The European grid did its job. Countries mobilised imports, available thermal plants, hydropower in other basins, daytime solar, reserves and lower demand during tight hours.
+
+In Serbia, imports covered around 10% of consumption at the height of the episode. In Hungary, MVM asked for voluntary demand reductions between 5 pm and 10 pm. ([EPS](https://www.eps.rs/eng/vesti/Pages/dir-rts.aspx)) ([MVM, 2 August](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/Uzemiesemeny_20260802))
+
+The grid absorbed the shock, but it did not cancel the cost.
+
+It explains how [ENTSO-E's Summer Outlook 2026](https://www.entsoe.eu/outlooks/seasonal/) could identify no major systemic adequacy risk across most of Europe, then be followed weeks later by dramatic outages around the Danube. A continental system can remain adequate while one country loses a large share of low-cost generation and becomes more dependent on neighbours.
+
+Interconnection does not erase the shock. It transforms it.
+
+Missing generation becomes:
+
+- an import bill;
+- more coal or gas generation elsewhere;
+- tighter evening hours;
+- a request for conservation;
+- less export capacity among neighbours;
+- a larger risk if the same basin affects several countries together.
+
+This is where the value of a centimetre becomes hourly.
+
+A centimetre preserving 500 MW in a solar-rich afternoon does not have the same value as the same centimetre at 8 pm, when demand remains high and photovoltaic output is gone. Nor is it worth the same if neighbours have surplus hydro or are suffering the same drought.
+
+The logic can be written without inventing a result:
+
+```text
+value of one centimetre
+= preserved MWh × hourly replacement cost
+- intervention cost
+- costs shifted to other river uses
+```
+
+The hardest term is not the electricity price. It is the world without intervention.
+
+How many days would Cernavodă Unit 2 have run without the barges and blasting? How much of the observed rise came from the works, weather or river dynamics? What flow was removed from other branches? Public documents establish a reprieve, but not yet its precise net value.
+
+That limitation needs to remain visible.
+
+## Repair the river or adapt the plants
+
+Emergency works have an immediate economic logic. If a few days of nuclear production are worth more than an intervention, sinking barges or depositing rock can be rational.
+
+They raise a longer-term question.
+
+Paks says work on lowering suction intakes is already under way and should allow the plant, within a few years, to generate at an even lower river level. Hungary also began constructing a bed sill near the plant. Two 80-metre barges were prepared to raise the local level temporarily. ([Reuters, 15 August](https://www.reuters.com/business/environment/hungary-sink-two-barges-near-nuclear-plant-raise-danube-levels-ensure-cooling-2026-08-15/))
+
+
+Those adaptations are not neutral.
+
+Lowering an intake can move the problem to an even lower threshold. A sill changes velocity, sediment, navigation and ecosystems. Wet cooling towers reduce instantaneous withdrawals but consume water through evaporation, use electricity and lower efficiency. Dry cooling saves more water but requires higher capital expenditure and carries a larger performance penalty during heat.
+
+These cases do not point to one universal solution.
+
+It leads to a different way of counting electricity capacity.
+
+Two gigawatts installed at Paks are not two gigawatts available when the intake reaches its threshold. A coal plant that is mechanically available can likewise lose output if its condenser lacks cooling water.
+
+Europe still often adds those megawatts as if they were independent.
+
+The summer of 2026 showed that they can share the same physical risk.
+
+The Danube was not empty. It had become too shallow at a few decisive locations, too warm at others and too weak to deliver all the energy expected from its current.
+
+At that point, one centimetre of river was no longer just a hydrological observation.
+
+It was electricity capacity.
+
+### Method and limitations
+
+Data cut-off: **20 August 2026**.
+
+The Paks chronology is based on MVM's public notices. It is not a substitute for a complete hourly REMIT series. Published water levels use the local Paks gauge and cannot be directly compared with altimetric references at Cernavodă.
+
+Đerdap and Kostolac figures come from Serbia's energy ministry and EPS. The percentages describe disclosed production levels or reductions, not necessarily permanent technical availability.
+
+The net effect of Romanian and Hungarian emergency works is not quantified because no complete public counterfactual is available. The article therefore separates observed facts, announced objectives and calculations that remain to be performed.
+
+The controlled shutdowns described here were not nuclear accidents. They were measures used to preserve safety margins and equipment reliability as hydrological conditions deteriorated.
+
+### Main sources
+
+- [MVM Paksi Atomerőmű, operational notices from July and August 2026](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260730_leallas)
+- [Reuters, works to raise the local Danube level at Paks, 15 August 2026](https://www.reuters.com/business/environment/hungary-sink-two-barges-near-nuclear-plant-raise-danube-levels-ensure-cooling-2026-08-15/)
+- [Nuclearelectrica, 2026 current reports](https://nuclearelectrica.ro/ir/en/reports/current-reports/)
+- [INHGA, Danube diagnosis and forecast, 1 August 2026](https://www.hidro.ro/en/bulletin/diagnoza-si-prognoza-hidrologica-pentru-dunare-la-intrarea-in-tara-si-pe-sectorul-romanesc-01-08-2026/)
+- [Romanian Ministry of Defence, Bala branch works](https://english.mapn.ro/cpresa/6832_ministry-of-national-defence-contributes-to-national-efforts-to-safeguard-energy-security)
+- [Kozloduy NPP, operation under low Danube levels](https://www.kznpp.org/en/news/673)
+- [Serbian Ministry of Mining and Energy, Đerdap and Kostolac constraints](https://mre.gov.rs/vest/sr/17041/djedovic-handanovic-za-rts-najniza-proizvodnja-na-djerdapu-od-kad-je-pusten-u-rad-neophodna-racionalna-potrosnja-struje.php)
+- [EPS, Serbian system balance and imports](https://www.eps.rs/eng/vesti/Pages/dir-rts.aspx)
+- [Krško NPP, operation during low Sava flow and elevated temperature](https://www.nek.si/en/news/news/operation-of-the-krsko-nuclear-power-plant-nek-during-low-flow-and-elevated-temperatures-of-the)
+- [Krško NPP, reactor power reduced to 80%, 6 August 2026](https://www.nek.si/novice/novice/nek-obratuje-z-znizano-mocjo-reaktorja)
+- [JRC, current drought situation in Europe](https://joint-research-centre.ec.europa.eu/european-and-global-drought-observatories/current-drought-situation-europe_en)
+- [ENTSO-E, Summer Outlook 2026](https://www.entsoe.eu/outlooks/seasonal/)
+
+*Next part: The wet megawatt, a map of European electricity capacity whose use depends directly on a river, reservoir, estuary or the sea.*
