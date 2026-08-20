@@ -372,6 +372,34 @@ a { color: inherit; text-decoration: none; }
 }
 .prose figure figcaption { margin-top: 0.75em; }
 
+@media (max-width: 480px) {
+  /* Keep dense inline SVG charts readable without allowing them to widen the page. */
+  .prose figure.infographic-readable {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scrollbar-color: var(--color-line-strong) transparent;
+    scrollbar-width: thin;
+  }
+  .prose figure.infographic-readable::before {
+    content: "↔ Faites défiler le graphique pour le lire";
+    display: block;
+    margin: 0 0 0.6rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+  }
+  :root:lang(en) .prose figure.infographic-readable::before {
+    content: "↔ Scroll the chart to read it";
+  }
+  .prose figure.infographic-readable > svg {
+    width: 45rem;
+    min-width: 45rem;
+    max-width: none;
+  }
+}
+
 .prose table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 .prose th, .prose td { text-align: left; padding: 0.55em 0.8em; border-bottom: 1px solid var(--color-line); }
 .prose th {

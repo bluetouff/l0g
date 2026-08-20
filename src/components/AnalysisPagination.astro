@@ -1,4 +1,6 @@
 ---
+import { buildPaginationItems } from '../lib/pagination.ts';
+
 interface Props {
   currentPage: number;
   totalPages: number;
@@ -17,7 +19,7 @@ const {
   nextLabel,
 } = Astro.props;
 
-const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+const items = buildPaginationItems(currentPage, totalPages);
 ---
 
 {
@@ -29,13 +31,13 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
         <span class="pager-step is-disabled" aria-disabled="true">‹ {previousLabel}</span>
       )}
       <span class="pager-nums">
-        {pages.map((page) =>
-          page === currentPage ? (
-            <span class="pager-num is-current" aria-current="page">{page}</span>
-          ) : (
-            <a class="pager-num" href={pageHref(page)}>{page}</a>
-          )
-        )}
+        {items.map((item) => item.type === 'gap' ? (
+          <span class="pager-gap" aria-hidden="true">…</span>
+        ) : item.page === currentPage ? (
+          <span class="pager-num is-current" aria-current="page">{item.page}</span>
+        ) : (
+          <a class="pager-num" href={pageHref(item.page)} aria-label={`Page ${item.page}`}>{item.page}</a>
+        ))}
       </span>
       {currentPage < totalPages ? (
         <a class="pager-step" href={pageHref(currentPage + 1)} rel="next">{nextLabel} ›</a>
@@ -48,7 +50,8 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
 <style>
   .pager {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
@@ -74,7 +77,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     pointer-events: none;
     opacity: 0.55;
   }
-  .pager-nums { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.3rem; }
+  .pager-nums { display: flex; align-items: center; justify-content: center; gap: 0.3rem; min-width: 0; }
   .pager-num {
     display: inline-flex;
     align-items: center;
@@ -94,8 +97,18 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     background: var(--color-signal);
     font-weight: 700;
   }
+  .pager-gap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25rem;
+    height: 1.9rem;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+  }
   @media (max-width: 480px) {
-    .pager { flex-wrap: wrap; justify-content: center; }
-    .pager-nums { order: 3; width: 100%; }
+    .pager { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .pager-step:last-child { justify-self: end; }
+    .pager-nums { grid-column: 1 / -1; grid-row: 2; }
   }
 </style>
