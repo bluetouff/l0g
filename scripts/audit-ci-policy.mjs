@@ -60,8 +60,13 @@ requireCondition(rootPackage.scripts?.['weekly:update']?.includes('generate-week
 
 const build = workflows.get('build.yml') || '';
 requireCondition(build.includes('branches: [main]'), 'le build doit rester lié à main');
+requireCondition(build.includes('pull_request:'), 'le vrai build doit valider les pull requests avant fusion');
 requireCondition(build.includes('workflow_dispatch:'), 'le build manuel doit rester disponible');
 requireCondition(build.includes('timeout-minutes: 15'), 'le build doit conserver sa limite de 15 minutes');
+requireCondition(
+  build.includes("cancel-in-progress: ${{ github.event_name == 'pull_request' }}"),
+  'les validations PR obsolètes doivent être annulées sans interrompre une publication main',
+);
 requireCondition(
   build.includes('mcp-server/package-lock.json'),
   'le cache npm doit couvrir le lockfile MCP',
@@ -78,12 +83,25 @@ requireCondition(
   build.includes('npm run build') && rootPackage.scripts?.build?.includes('npm run test:secrets'),
   'le build doit analyser les secrets accidentels dans les sources et artefacts',
 );
+const validatePr = build.match(/  validate-pr:[\s\S]*?\n  build:/)?.[0] || '';
+requireCondition(
+  validatePr.includes("if: github.event_name == 'pull_request'") && validatePr.includes('contents: read'),
+  'la validation PR doit être strictement bornée et en lecture seule',
+);
+requireCondition(
+  validatePr.includes('ref: black-box-archive') && validatePr.includes('persist-credentials: false'),
+  'la validation PR doit monter les preuves Black Box sans conserver de credentials',
+);
+requireCondition(
+  validatePr.includes('npm run check') && validatePr.includes('npm run build'),
+  'la validation PR doit exécuter les contrôles Astro et le build complet',
+);
 const productionInstalls = build
   .split('\n')
   .filter((line) => line.includes('npm ci') && line.includes('--omit=dev'));
 requireCondition(
-  productionInstalls.length === 1,
-  `une seule installation MCP production est attendue, trouvé ${productionInstalls.length}`,
+  productionInstalls.length === 2,
+  `une installation MCP production est attendue par validation PR et publication, trouvé ${productionInstalls.length}`,
 );
 
 const codeql = workflows.get('codeql.yml') || '';

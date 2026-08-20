@@ -19,21 +19,83 @@ on:
       - .github/workflows/publish-mcp.yml
       - .github/workflows/risk-producers.yml
       - renovate.json
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - CITATION.cff
+      - SECURITY.md
+      - MEMOIRE-LOCALE.md
+      - docs/**
+      - .github/MCP_RELEASE_NOTES.md
+      - .github/workflows/codeql.yml
+      - .github/workflows/publish-mcp.yml
+      - .github/workflows/risk-producers.yml
+      - renovate.json
   workflow_dispatch:
 
-permissions:
-  contents: write # nécessaire uniquement pour pousser sur la branche `built`
-  id-token: write # nécessaire pour les attestations Sigstore/GitHub OIDC
-  attestations: write
-  artifact-metadata: write
+permissions: {}
 
 concurrency:
   group: build-${{ github.ref }}
-  # Une publication forme une transaction built + archive. Ne pas couper entre les deux pushes.
-  cancel-in-progress: false
+  # Les validations PR obsolètes peuvent être coupées. Une publication main forme
+  # une transaction built + archive et ne doit jamais être interrompue entre les pushes.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  validate-pr:
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout append-only Black Box archive
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: black-box-archive
+          path: .black-box-archive
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            mcp-server/package-lock.json
+
+      - name: Install (lockfile strict)
+        run: |
+          npm ci --no-audit --no-fund
+          npm ci --prefix mcp-server --omit=dev --no-audit --no-fund
+
+      - name: Validate pull request
+        env:
+          L0G_BLACK_BOX_ARCHIVE_DIR: ${{ github.workspace }}/.black-box-archive
+        run: |
+          node scripts/black-box-archive.mjs validate --archive .black-box-archive
+          npm run test:dependencies
+          npm run test:ci-policy
+          npm run test:editorial-protocol
+          npm run test:deploy
+          npm run check
+          npm run build
+
   build:
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: write # nécessaire uniquement pour pousser sur la branche `built`
+      id-token: write # nécessaire pour les attestations Sigstore/GitHub OIDC
+      attestations: write
+      artifact-metadata: write
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
