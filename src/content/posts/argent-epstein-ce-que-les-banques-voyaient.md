@@ -1,5 +1,6 @@
 ---
 title: "L’argent d’Epstein, 2/4 : ce que les banques voyaient"
+seoTitle: "Banques et Epstein : alertes, arbitrages et signalements | l0g"
 description: "De JPMorgan à Deutsche Bank, les pièces décrivent moins un angle mort qu’une succession d’alertes, d’arbitrages et de signalements massifs déposés après coup."
 pubDate: 2026-08-07T17:00:00+02:00
 updatedDate: 2026-08-07T17:00:00+02:00

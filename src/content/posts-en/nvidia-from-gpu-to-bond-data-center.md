@@ -1,5 +1,6 @@
 ---
 title: "From GPU to Bond: How a Data Center Recycles AI Capital"
+seoTitle: "Nvidia data center: from GPUs to $525 million of notes | l0g"
 description: "In Columbus, COL4 hosts Nvidia clusters and later backed $525 million of notes. A documented anatomy of how a data center recycles capital."
 pubDate: 2026-08-11T16:00:00+02:00
 updatedDate: 2026-08-11T16:00:00+02:00

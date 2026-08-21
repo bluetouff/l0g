@@ -1,5 +1,6 @@
 ---
 title: "Epstein’s money, 2/4: the banks’ record"
+seoTitle: "Banks and Epstein: alerts, decisions and suspicious reports | l0g"
 description: "From JPMorgan to Deutsche Bank, the record shows less a blind spot than a succession of alerts, internal decisions and massive reports filed after the fact."
 pubDate: 2026-08-07T17:00:00+02:00
 updatedDate: 2026-08-09T23:46:15+02:00

@@ -40,7 +40,7 @@ const alternateLinks = [
   { hreflang: 'x-default', href: frUrl },
 ];
 
-const shareTitle = post.data.title;
+const shareTitle = post.data.ogTitle ?? post.data.seoTitle ?? post.data.title;
 const u = encodeURIComponent(url);
 const t = encodeURIComponent(shareTitle);
 const share = {
@@ -84,6 +84,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
 
 <EnglishGuidesLayout
   title={post.data.title}
+  seoTitle={post.data.seoTitle}
+  ogTitle={post.data.ogTitle}
   description={post.data.description}
   ogType="article"
   ogImage={ogImage}

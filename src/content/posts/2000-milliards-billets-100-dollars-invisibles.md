@@ -1,5 +1,6 @@
 ---
 title: "Les 2 000 milliards de dollars que personne ne voit circuler"
+seoTitle: "Billets de 100 dollars : circulation, étranger et seigneuriage | l0g"
 description: "Fin 2025, les billets de 100 dollars représentaient 1 989 milliards de dollars. Leur géographie, leur fonction de réserve et le seigneuriage qu'ils procurent à la Fed."
 pubDate: 2026-08-16T17:19:23+02:00
 updatedDate: 2026-08-16T17:19:23+02:00

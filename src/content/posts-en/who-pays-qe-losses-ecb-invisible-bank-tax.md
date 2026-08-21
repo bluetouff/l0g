@@ -1,5 +1,6 @@
 ---
 title: "Who pays for QE losses? The invisible tax the ECB is considering for banks"
+seoTitle: "ECB QE losses: reserve requirements and the bill for banks | l0g"
 description: "Doubling minimum reserves from 1% to 2% could shift nearly €4 billion of annual interest from banks to the Eurosystem. The mechanism, winners and limits."
 pubDate: 2026-08-13T00:15:00+02:00
 updatedDate: 2026-08-13T00:15:00+02:00

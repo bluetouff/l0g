@@ -7,6 +7,10 @@ const posts = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
   schema: z.object({
     title: z.string(),
+    // Titre exact de l'element <title>. Il reste distinct du H1 editorial.
+    seoTitle: z.string().optional(),
+    // Titre social optionnel. Par defaut, les cartes reprennent le titre SEO.
+    ogTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
@@ -59,6 +63,10 @@ const postsEn = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts-en' }),
   schema: z.object({
     title: z.string(),
+    // Exact <title> value, kept separate from the editorial H1.
+    seoTitle: z.string().optional(),
+    // Optional social title. Social cards fall back to the SEO title.
+    ogTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),

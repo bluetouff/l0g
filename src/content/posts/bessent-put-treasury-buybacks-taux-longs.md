@@ -1,5 +1,6 @@
 ---
 title: "Le seuil que Bessent n'a jamais annoncé"
+seoTitle: "Rachats du Treasury : le seuil implicite de Bessent sur les taux | l0g"
 description: "Le Trésor relève de 2 à au moins 4 Md$ le plafond de rachats longs. Trop petit pour être un QE, ce changement interroge sa réaction aux taux longs."
 pubDate: 2026-08-20T09:53:00+02:00
 updatedDate: 2026-08-20T13:30:00+02:00

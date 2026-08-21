@@ -1,5 +1,6 @@
 ---
 title: "Le crédit privé entre dans la machine à CLO"
+seoTitle: "Crédit privé : des warehouses bancaires aux CLO | l0g"
 description: "Les prêts de crédit privé passent de plus en plus par des warehouses financés par des dealers avant titrisation en CLO. Selon une enquête de la Fed (juin 2026), la demande monte mais les conditions se resserrent avec la qualité et la valorisation."
 pubDate: 2026-08-18T18:50:00+02:00
 updatedDate: 2026-08-18T18:50:00+02:00

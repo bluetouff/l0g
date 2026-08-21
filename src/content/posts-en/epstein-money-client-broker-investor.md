@@ -1,5 +1,6 @@
 ---
 title: "Epstein’s money, 3/4: client, broker or investor?"
+seoTitle: "Epstein's fortune: client, broker or investor? Part 3 | l0g"
 description: "Highbridge, Valar, Apollo shares and ESW produce four different ledgers. Combining fees, contributions and valuations manufactures wealth that never existed."
 pubDate: 2026-08-08T05:30:00+02:00
 updatedDate: 2026-08-09T23:46:15+02:00

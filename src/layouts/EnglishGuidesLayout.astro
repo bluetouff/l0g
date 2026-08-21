@@ -12,6 +12,7 @@ interface Props {
   title?: string;
   description?: string;
   seoTitle?: string;
+  ogTitle?: string;
   seoDescription?: string;
   robots?: 'index,follow' | 'noindex,follow';
   ogType?: 'website' | 'article';
@@ -25,6 +26,7 @@ const {
   title = 'l0g in English',
   description = 'English entry points from l0g.fr: reference guides, methodology, API, MCP and machine-readable risk intelligence.',
   seoTitle,
+  ogTitle,
   seoDescription,
   robots = 'index,follow',
   ogType = 'website',
@@ -36,10 +38,11 @@ const {
 
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
-const seo = buildSeoMetadata(seoTitle || title, seoDescription || description);
+const seo = buildSeoMetadata(title, seoDescription || description, { seoTitle });
 const fullTitle = seo.fullTitle;
+const socialTitle = (ogTitle ?? '').trim() || fullTitle;
 const metaDescription = seo.description;
-const socialImageAlt = ogImageAlt ?? `${fullTitle}: l0g.fr social card`;
+const socialImageAlt = ogImageAlt ?? `${socialTitle}: l0g.fr social card`;
 const year = new Date().getFullYear();
 
 const hasPage = (path: string) => existsSync(join(process.cwd(), path));
@@ -126,7 +129,7 @@ const siteJsonLd = {
     ))}
 
     <meta property="og:type" content={ogType} />
-    <meta property="og:title" content={fullTitle} />
+    <meta property="og:title" content={socialTitle} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_US" />
@@ -138,7 +141,7 @@ const siteJsonLd = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@bluetouff" />
     <meta name="twitter:creator" content="@bluetouff" />
-    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:title" content={socialTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />

@@ -1,5 +1,6 @@
 ---
 title: "Barclays, Staley et Maxwell : deux dossiers, une frontière"
+seoTitle: "Barclays, Staley et Maxwell : gouvernance, compte et preuves | l0g"
 description: "Le jugement Staley documente une défaillance de gouvernance. Des fichiers analysés par Reuters décrivent un compte Maxwell. Aucun de ces éléments n’établit un compte Barclays au nom d’Epstein."
 pubDate: 2026-08-09T15:18:00+02:00
 updatedDate: 2026-08-09T15:18:00+02:00

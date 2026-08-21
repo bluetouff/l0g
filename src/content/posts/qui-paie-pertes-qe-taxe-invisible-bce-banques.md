@@ -1,5 +1,6 @@
 ---
 title: "Qui paie les pertes du QE ? La taxe invisible que la BCE étudie pour les banques"
+seoTitle: "Pertes du QE : réserves obligatoires et facture des banques | l0g"
 description: "Doubler les réserves obligatoires de 1 % à 2 % déplacerait près de 4 milliards d’euros d’intérêts annuels des banques vers l’Eurosystème. Le mécanisme, ses gagnants et ses limites."
 pubDate: 2026-08-13T00:15:00+02:00
 updatedDate: 2026-08-13T00:15:00+02:00

@@ -1,5 +1,6 @@
 ---
 title: "Deutsche Bank and Epstein: the compliance exception"
+seoTitle: "Deutsche Bank and Epstein: anatomy of a compliance exception | l0g"
 description: "From 2013 to 2019, the record shows how a high-risk client became a commercial exception and why Deutsche Bank’s exit stretched over months."
 pubDate: 2026-08-09T12:23:00+02:00
 updatedDate: 2026-08-09T23:46:15+02:00

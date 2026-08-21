@@ -1,5 +1,6 @@
 ---
 title: "KOSPI: anatomy of a liquidation concentrated in two stocks"
+seoTitle: "KOSPI: Samsung, SK Hynix and the liquidation loop | l0g"
 description: "Samsung Electronics and SK Hynix made up 52% of the KOSPI as 2x ETFs, margin credit and forced sales turned a chip shock into a concentrated liquidation loop."
 pubDate: 2026-08-10T12:00:00+02:00
 updatedDate: 2026-08-10T12:00:00+02:00

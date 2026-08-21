@@ -1,5 +1,6 @@
 ---
 title: "L'Inde a mis son sucre dans le réservoir"
+seoTitle: "Sucre indien et E20 : arbitrage entre éthanol et alimentation | l0g"
 description: "En février, New Delhi cherchait encore à exporter davantage de sucre. En mai, il interdisait les exportations. En août, il envisage d'en importer et de réduire la canne destinée à l'éthanol. Ce retournement ne prouve pas que l'E20 a créé la tension. Il révèle quelque chose de plus intéressant : le sucre indien est devenu une variable d'ajustement entre énergie, alimentation et climat."
 pubDate: 2026-08-19T05:12:00+02:00
 updatedDate: 2026-08-19T05:12:00+02:00

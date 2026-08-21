@@ -1,5 +1,6 @@
 ---
 title: "Pourquoi la Fed peut gagner de l'argent sans imprimer, et pourquoi elle peut aussi en perdre"
+seoTitle: "Bilan de la Fed : origine de ses profits et de ses pertes | l0g"
 description: "Le bénéfice de la Fed vient de la structure de son bilan. Tant que ses actifs rémunérés rapportent plus que ses passifs coûteux, elle reverse au Trésor. En cas de remontée des coûts de passif ou de tension de valorisation, l'écart peut se refermer."
 pubDate: 2026-08-18T12:00:00+02:00
 updatedDate: 2026-08-18T12:00:00+02:00

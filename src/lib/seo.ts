@@ -1,8 +1,10 @@
+import { fromHtml } from 'hast-util-from-html';
+import { toText } from 'hast-util-to-text';
+
 const TITLE_SUFFIX = ' · l0g.fr';
 
 function plainText(value: string) {
-  return String(value || '')
-    .replace(/<[^>]+>/g, ' ')
+  return toText(fromHtml(String(value || ''), { fragment: true }))
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -23,15 +25,20 @@ function shorten(value: string, max: number) {
   return `${candidate.slice(0, cut > 0 ? cut : budget).replace(/[\s,:;|.?]+$/u, '')}…`;
 }
 
-export function buildSeoMetadata(title: string, description: string) {
+export function buildSeoMetadata(
+  title: string,
+  description: string,
+  options: { seoTitle?: string } = {}
+) {
   const editorialTitle = plainText(title) || 'l0g.fr';
+  const explicitSeoTitle = plainText(options.seoTitle ?? '');
   const titleBudget = editorialTitle === 'l0g.fr' ? 60 : 60 - TITLE_SUFFIX.length;
   const shortTitle = editorialTitle === 'l0g.fr'
     ? 'l0g.fr · Cartographier le risque économique'
     : shorten(editorialTitle, titleBudget);
   return {
     title: shortTitle,
-    fullTitle: editorialTitle === 'l0g.fr' ? shortTitle : `${shortTitle}${TITLE_SUFFIX}`,
+    fullTitle: explicitSeoTitle || (editorialTitle === 'l0g.fr' ? shortTitle : `${shortTitle}${TITLE_SUFFIX}`),
     description: shorten(description, 155),
   };
 }

@@ -1,5 +1,6 @@
 ---
 title: "L’argent d’Epstein, 4/4 : le dernier grand livre"
+seoTitle: "Succession Epstein : ventes, indemnisations et dernier bilan | l0g"
 description: "En sept ans, la succession Epstein a vendu ses maisons, indemnisé des victimes, payé les Îles Vierges et remboursé un prêt. La presse rapporte aussi un remboursement fiscal de 111,6 millions de dollars."
 pubDate: 2026-08-08T10:02:48+02:00
 updatedDate: 2026-08-08T10:02:48+02:00

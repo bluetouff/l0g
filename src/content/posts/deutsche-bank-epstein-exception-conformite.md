@@ -1,5 +1,6 @@
 ---
 title: "Deutsche Bank et Epstein : l’exception de conformité"
+seoTitle: "Deutsche Bank et Epstein : anatomie d’une exception de conformité | l0g"
 description: "De 2013 à 2019, les pièces montrent comment un client à haut risque est devenu une exception commerciale et pourquoi la sortie bancaire s’est étirée."
 pubDate: 2026-08-09T12:23:00+02:00
 updatedDate: 2026-08-09T12:23:00+02:00

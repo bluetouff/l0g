@@ -1,5 +1,6 @@
 ---
 title: "Nvidia : les 500 milliards qui n'existent pas encore"
+seoTitle: "Nvidia : audit des 500 milliards de dollars de financements | l0g"
 description: "Nvidia veut mobiliser plus de 500 milliards de dollars. L'audit des six partenaires révèle surtout des objectifs, de la dette, des co-investisseurs et des plateformes déjà en place."
 pubDate: 2026-08-11T14:50:00+02:00
 updatedDate: 2026-08-11T14:50:00+02:00

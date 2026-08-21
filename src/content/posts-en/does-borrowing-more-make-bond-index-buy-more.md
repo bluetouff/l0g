@@ -1,5 +1,6 @@
 ---
 title: "Does borrowing more make the bond index buy more?"
+seoTitle: "Bond indices: does more borrowing increase index weight? | l0g"
 description: "Major bond indices weight eligible debt by market value. The equation, LQD’s 3% issuer cap and the limits of a mechanism that is often reduced to a slogan."
 pubDate: 2026-08-11T10:00:00+02:00
 updatedDate: 2026-08-11T10:00:00+02:00

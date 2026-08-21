@@ -207,7 +207,7 @@ const articleJsonLd = {
 const safeArticleJsonLd = JSON.stringify(articleJsonLd).replace(/</g, '\\u003c');
 
 // Partage : URL absolue + textes encodés. Liens HTML purs, aucun script tiers.
-const shareTitle = post.data.title;
+const shareTitle = post.data.ogTitle ?? post.data.seoTitle ?? post.data.title;
 const u = encodeURIComponent(shareUrl);
 const t = encodeURIComponent(shareTitle);
 const share = {
@@ -271,6 +271,8 @@ const quickUncertainty = post.data.quickTake?.uncertainty
 
 <BaseLayout
   title={post.data.title}
+  seoTitle={post.data.seoTitle}
+  ogTitle={post.data.ogTitle}
   description={post.data.description}
   ogType="article"
   ogImage={ogImage}

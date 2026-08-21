@@ -1,5 +1,6 @@
 ---
 title: "Plus vous empruntez, plus l’indice vous achète ?"
+seoTitle: "Indices obligataires : emprunter plus augmente-t-il le poids ? | l0g"
 description: "Les grands indices obligataires pondèrent la dette éligible par sa valeur de marché. Équation, cas LQD, plafond de 3 % et limites d’une mécanique souvent résumée trop vite."
 pubDate: 2026-08-11T10:00:00+02:00
 updatedDate: 2026-08-11T10:00:00+02:00

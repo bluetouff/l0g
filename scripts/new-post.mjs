@@ -70,9 +70,11 @@ const filePath = path.join(POSTS_DIR, `${slug}.md`);
 // JSON est un sous-ensemble sûr des scalaires YAML entre guillemets et couvre
 // aussi les retours ligne, contrairement à un échappement partiel manuel.
 const yamlTitle = JSON.stringify(title);
+const yamlSeoTitle = JSON.stringify(`${title} | l0g`);
 
 const body = `---
 title: ${yamlTitle}
+seoTitle: ${yamlSeoTitle}
 description: ""
 pubDate: ${parisNowISO()}
 tags: []

@@ -18,6 +18,7 @@ interface Props {
   title?: string;
   description?: string;
   seoTitle?: string;
+  ogTitle?: string;
   seoDescription?: string;
   robots?: 'index,follow' | 'noindex,follow';
   ogType?: 'website' | 'article';
@@ -33,6 +34,7 @@ const {
   title = 'l0g.fr',
   description = 'Cartographier le risque des systèmes économiques. Macro, crédit privé, crypto sur données publiques : analyses aux sources primaires et outils de monitoring en accès libre, par Bluetouff.',
   seoTitle,
+  ogTitle,
   seoDescription,
   robots = 'index,follow',
   ogType = 'website',
@@ -46,10 +48,11 @@ const {
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
-const seo = buildSeoMetadata(seoTitle || title, seoDescription || description);
+const seo = buildSeoMetadata(title, seoDescription || description, { seoTitle });
 const fullTitle = seo.fullTitle;
+const socialTitle = (ogTitle ?? '').trim() || fullTitle;
 const metaDescription = seo.description;
-const socialImageAlt = ogImageAlt ?? `${fullTitle} — carte sociale l0g.fr`;
+const socialImageAlt = ogImageAlt ?? `${socialTitle} - carte sociale l0g.fr`;
 const year = new Date().getFullYear();
 const path = Astro.url.pathname;
 const hasContextSidebar = Astro.slots.has('sidebar');
@@ -107,7 +110,7 @@ const siteJsonLd = {
     {alternateLinks.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 
     <meta property="og:type" content={ogType} />
-    <meta property="og:title" content={fullTitle} />
+    <meta property="og:title" content={socialTitle} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale} />
@@ -119,7 +122,7 @@ const siteJsonLd = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@bluetouff" />
     <meta name="twitter:creator" content="@bluetouff" />
-    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:title" content={socialTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />

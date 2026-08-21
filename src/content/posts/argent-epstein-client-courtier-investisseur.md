@@ -1,5 +1,6 @@
 ---
 title: "L’argent d’Epstein, 3/4 : client, courtier ou investisseur ?"
+seoTitle: "Fortune d’Epstein : client, courtier ou investisseur ? 3/4 | l0g"
 description: "Highbridge, Valar, les actions Apollo et ESW révèlent quatre comptabilités différentes. Les confondre transforme des honoraires, des apports et des valorisations en fortune fictive."
 pubDate: 2026-08-08T05:30:00+02:00
 updatedDate: 2026-08-08T07:17:41+02:00

@@ -1,5 +1,6 @@
 ---
 title: "KOSPI : anatomie d’une liquidation concentrée sur deux titres"
+seoTitle: "KOSPI : Samsung, SK Hynix et la boucle de liquidation | l0g"
 description: "Samsung et SK Hynix pesaient 52 % du KOSPI quand ETF 2x, crédit sur titres et ventes forcées ont transformé le choc des puces en boucle de liquidation."
 pubDate: 2026-08-10T12:00:00+02:00
 updatedDate: 2026-08-10T12:00:00+02:00

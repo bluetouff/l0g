@@ -1,5 +1,6 @@
 ---
 title: "Du GPU à l'obligation : comment un data center recycle le capital de l'IA"
+seoTitle: "Data center Nvidia : du GPU à 525 millions de dollars de notes | l0g"
 description: "À Columbus, COL4 héberge des clusters Nvidia et a ensuite servi de support à 525 millions de dollars de notes. Anatomie documentée du recyclage financier d'un data center."
 pubDate: 2026-08-11T16:00:00+02:00
 updatedDate: 2026-08-11T16:00:00+02:00
