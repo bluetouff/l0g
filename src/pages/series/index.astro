@@ -2,14 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import SignalHistoryChart from '../../components/SignalHistoryChart.astro';
 import { buildSignalHistorySurface } from '../../lib/signal-history.ts';
+import type { SignalChartSeries } from '../../lib/signal-chart.ts';
 
 const history = buildSignalHistorySurface();
-const chartWidth = 920;
-const chartHeight = 330;
-const chartPadX = 50;
-const chartPadY = 32;
-const chartBottom = 42;
 const colors: Record<string, string> = {
   us: '#5eead4',
   eu: '#7aa2f7',
@@ -33,24 +30,18 @@ const dailySeries = history.instruments.map((series) => {
   }
   return { series, observations: [...byDay.values()] };
 });
-const allTimes = dailySeries.flatMap(({ observations }) => observations.map((item) => Date.parse(item.seriesDate)));
-const chartMin = allTimes.length ? Math.min(...allTimes) : 0;
-const chartMax = allTimes.length ? Math.max(...allTimes) : 1;
-const chartSpan = Math.max(1, chartMax - chartMin);
-const chartLines = dailySeries.map(({ series, observations }) => {
-  const points = observations.map((item) => ({
-    item,
-    x: chartPadX + ((Date.parse(item.seriesDate) - chartMin) / chartSpan) * (chartWidth - chartPadX * 2),
-    y: chartHeight - chartBottom - ((item.value as number) / 100) * (chartHeight - chartPadY - chartBottom),
-  }));
-  return {
-    series,
+const chartSeries: SignalChartSeries[] = dailySeries.map(({ series, observations }) => ({
+    key: series.key,
+    name: series.shortName,
     color: colors[series.key],
     dashPattern: dashPatterns[series.key],
-    points,
-    path: points.map((point, index) => `${index ? 'L' : 'M'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' '),
-  };
-});
+    points: observations.map((item) => ({
+      date: item.seriesDate,
+      value: item.value as number,
+      evidence: item.evidenceTier,
+      methodologyVersion: item.methodologyVersion,
+    })),
+  }));
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const trustItems = [
   { label: 'archive append-only', href: '/black-box/' },
@@ -114,65 +105,8 @@ const jsonLd = {
 
     <section class="series-section" aria-labelledby="history-chart-title">
       <p class="mono-label glow">// variations comparées</p>
-      <h2 id="history-chart-title" class="chart-title">Cinq courbes quotidiennes, une lecture de 0 à 100.</h2>
-      <p class="chart-subtitle">
-        Dernier snapshot publié de chaque jour UTC, du {new Date(chartMin).toISOString().slice(0, 10)} au {new Date(chartMax).toISOString().slice(0, 10)}.
-      </p>
-      <div class="history-chart">
-        {allTimes.length ? (
-          <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label="Historique quotidien comparé des cinq signaux de risque l0g, de 0 à 100">
-            {[0, 25, 50, 75, 100].map((tick) => {
-              const y = chartHeight - chartBottom - (tick / 100) * (chartHeight - chartPadY - chartBottom);
-              return (
-                <g>
-                  <line x1={chartPadX} y1={y} x2={chartWidth - chartPadX} y2={y} stroke="rgba(154,163,175,.20)" />
-                  <text x="8" y={y + 4} fill="#9aa3af" font-size="12" font-family="monospace">{tick}</text>
-                </g>
-              );
-            })}
-            {chartLines.map((line) => (
-              <g>
-                <path d={line.path} fill="none" stroke={line.color} stroke-width="2.6" stroke-dasharray={line.dashPattern} stroke-linejoin="round" stroke-linecap="round" />
-                {line.points.map((point) => point.item.evidenceTier === 'current-snapshot' ? (
-                  <rect x={point.x - 3.2} y={point.y - 3.2} width="6.4" height="6.4" rx=".7" fill={line.color} stroke="var(--color-bright)" stroke-width="1">
-                    <title>{`${line.series.shortName} · ${point.item.seriesDate.slice(0, 10)} · ${point.item.value}/100 · ${point.item.evidenceTier}`}</title>
-                  </rect>
-                ) : (
-                  <circle
-                    cx={point.x}
-                    cy={point.y}
-                    r="2.8"
-                    fill={point.item.evidenceTier === 'attested-archive' ? line.color : 'var(--color-surface)'}
-                    stroke={line.color}
-                    stroke-width={point.item.evidenceTier === 'attested-archive' ? '.8' : '1.5'}
-                  >
-                    <title>{`${line.series.shortName} · ${point.item.seriesDate.slice(0, 10)} · ${point.item.value}/100 · ${point.item.evidenceTier}`}</title>
-                  </circle>
-                ))}
-              </g>
-            ))}
-            <text x={chartPadX} y={chartHeight - 12} fill="#9aa3af" font-size="12" font-family="monospace">
-              {new Date(chartMin).toISOString().slice(0, 10)}
-            </text>
-            <text x={chartWidth - chartPadX} y={chartHeight - 12} text-anchor="end" fill="#9aa3af" font-size="12" font-family="monospace">
-              {new Date(chartMax).toISOString().slice(0, 10)}
-            </text>
-          </svg>
-        ) : <p>Aucun point numérique disponible.</p>}
-      </div>
-      <div class="chart-legend" aria-label="Légende">
-        {chartLines.map((line) => (
-          <span>
-            <svg viewBox="0 0 28 8" aria-hidden="true"><line x1="1" y1="4" x2="27" y2="4" stroke={line.color} stroke-width="2.4" stroke-dasharray={line.dashPattern} /></svg>
-            {line.series.shortName}
-          </span>
-        ))}
-      </div>
-      <div class="evidence-legend" aria-label="Niveaux de preuve">
-        <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="3" fill="var(--color-surface)" stroke="currentColor" stroke-width="1.5" /></svg>historique opérationnel</span>
-        <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="3" fill="currentColor" /></svg>archive attestée</span>
-        <span><svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2.5" width="7" height="7" rx="1" fill="currentColor" /></svg>point courant</span>
-      </div>
+      <h2 id="history-chart-title" class="chart-title">Que font les cinq signaux de risque en ce moment ?</h2>
+      <SignalHistoryChart series={chartSeries} />
       <p class="chart-caption">
         Chaque score est normalisé sur 0-100 selon sa propre méthode : les niveaux sont comparables
         visuellement, pas économiquement. Un point par jour UTC est retenu, toujours le dernier
@@ -243,15 +177,6 @@ const jsonLd = {
     .series-metrics .date { font-size: .85rem; }
     .series-section { margin-top: 3rem; }
     .chart-title { margin-top: .75rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.45rem; }
-    .chart-subtitle { margin-top: .4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .72rem; }
-    .history-chart { margin-top: 1rem; border: 1px solid var(--color-line); border-radius: 8px; padding: .8rem .8rem 1.2rem; overflow-x: auto; background: color-mix(in srgb, var(--color-surface) 45%, transparent); }
-    .history-chart svg { display: block; min-width: 48rem; width: 100%; height: auto; }
-    .chart-legend { display: flex; flex-wrap: wrap; gap: .55rem 1rem; margin-top: .8rem; }
-    .chart-legend span { display: inline-flex; align-items: center; gap: .4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; }
-    .chart-legend svg { width: 1.5rem; height: .5rem; flex: 0 0 auto; }
-    .evidence-legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: .55rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; }
-    .evidence-legend span { display: inline-flex; align-items: center; gap: .35rem; }
-    .evidence-legend svg { width: .8rem; height: .8rem; color: var(--color-paper); }
     .chart-caption { margin-top: .75rem; padding-bottom: .35rem; max-width: 58rem; color: var(--color-muted); font-size: .85rem; line-height: 1.6; }
     .series-grid { display: grid; gap: 1rem; margin-top: 1rem; }
     @media (min-width: 820px) { .series-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

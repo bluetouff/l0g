@@ -1,0 +1,182 @@
+---
+import {
+  buildSignalChartSnapshot,
+  SIGNAL_CHART_DAY_MS,
+  type SignalChartSeries,
+} from '../lib/signal-chart.ts';
+
+interface Props {
+  series: SignalChartSeries[];
+}
+
+const { series } = Astro.props;
+const width = 920;
+const height = 360;
+const padX = 50;
+const padTop = 32;
+const padBottom = 48;
+const allTimes = series.flatMap((item) => item.points.map((point) => Date.parse(point.date))).filter(Number.isFinite);
+const absoluteStart = allTimes.length ? Math.min(...allTimes) : 0;
+const absoluteEnd = allTimes.length ? Math.max(...allTimes) : 1;
+const start = Math.max(absoluteStart, absoluteEnd - 7 * SIGNAL_CHART_DAY_MS);
+const snapshot = buildSignalChartSnapshot(series, start, absoluteEnd);
+const xFor = (date: string) => padX + Math.max(0, Math.min(1, (Date.parse(date) - start) / Math.max(1, absoluteEnd - start))) * (width - padX * 2);
+const yFor = (value: number) => height - padBottom - (value / 100) * (height - padTop - padBottom);
+const payload = JSON.stringify(series);
+const formatDate = (value: number) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(value));
+const plural = (count: number, singular: string, pluralForm: string) => `${count} ${count === 1 ? singular : pluralForm}`;
+const strongest = snapshot.strongest;
+const strongestText = strongest?.delta != null
+  ? ` Plus fort mouvement : ${strongest.name}, ${strongest.delta > 0 ? '+' : ''}${strongest.delta.toFixed(1).replace('.0', '')} points.`
+  : '';
+const summaryText = `Depuis sept jours : ${plural(snapshot.counts.up, 'score monte', 'scores montent')}, ${plural(snapshot.counts.down, 'baisse', 'baissent')}, ${plural(snapshot.counts.flat, 'reste stable', 'restent stables')}.${strongestText}`;
+---
+
+<div class="signal-chart" data-signal-history-chart>
+  <span data-chart-data hidden>{payload}</span>
+
+  <p class="chart-answer" data-chart-summary aria-live="polite">{summaryText}</p>
+
+  <div class="chart-toolbar">
+    <div class="window-buttons" aria-label="Période du graphique">
+      <button type="button" data-window="1" aria-pressed="false">24 h</button>
+      <button type="button" class="is-active" data-window="7" aria-pressed="true">7 j</button>
+      <button type="button" data-window="30" aria-pressed="false">30 j</button>
+      <button type="button" data-window="free" aria-pressed="false">libre</button>
+    </div>
+    <p class="chart-hint">Cliquez une série pour l’isoler</p>
+  </div>
+
+  <div class="free-range" data-free-range hidden>
+    <label>Du <input type="date" data-range-start /></label>
+    <label>au <input type="date" data-range-end /></label>
+    <button type="button" data-range-apply>Afficher</button>
+  </div>
+
+  <p class="chart-subtitle" data-chart-subtitle>
+    Fenêtre du {new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(start))} au {new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(absoluteEnd))}. La comparaison prend le dernier point publié au plus tard au début de la période.
+  </p>
+
+  <div class="chart-shell">
+    <svg data-chart-plot viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Historique quotidien comparé des cinq signaux de risque l0g, de 0 à 100">
+      <defs>
+        <linearGradient id="series-chart-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ff4d87" stop-opacity=".08" />
+          <stop offset=".48" stop-color="#7aa2f7" stop-opacity=".025" />
+          <stop offset="1" stop-color="#5eead4" stop-opacity=".06" />
+        </linearGradient>
+        <filter id="series-chart-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+      </defs>
+      <rect x={padX} y={padTop} width={width - padX * 2} height={height - padTop - padBottom} rx="8" fill="url(#series-chart-bg)" />
+      {[0, 25, 50, 75, 100].map((tick) => {
+        const y = yFor(tick);
+        return (
+          <g>
+            <line x1={padX} y1={y} x2={width - padX} y2={y} class="grid-line" />
+            <text x="8" y={y + 4} class="axis-label">{tick}</text>
+          </g>
+        );
+      })}
+      <g data-series-layer filter="url(#series-chart-glow)">
+        {snapshot.series.map((item) => {
+          const coordinates = item.visiblePoints.map((point) => ({ point, x: xFor(point.date), y: yFor(point.value) }));
+          const path = coordinates.map(({ x, y }, index) => `${index ? 'L' : 'M'} ${x.toFixed(2)} ${y.toFixed(2)}`).join(' ');
+          return (
+            <g>
+              <path d={path} fill="none" stroke={item.color} stroke-width="2.8" stroke-dasharray={item.dashPattern} stroke-linejoin="round" stroke-linecap="round" />
+              {coordinates.map(({ point, x, y }) => point.evidence === 'current-snapshot' ? (
+                <rect x={x - 4} y={y - 4} width="8" height="8" rx="1" fill={item.color} stroke="#f8fafc" stroke-width="1.2">
+                  <title>{`${item.name} · ${point.date.slice(0, 10)} · ${point.value}/100`}</title>
+                </rect>
+              ) : (
+                <circle cx={x} cy={y} r="3.6" fill={point.evidence === 'attested-archive' ? item.color : '#0b0f14'} stroke={item.color} stroke-width="1.4">
+                  <title>{`${item.name} · ${point.date.slice(0, 10)} · ${point.value}/100`}</title>
+                </circle>
+              ))}
+            </g>
+          );
+        })}
+      </g>
+      <text data-axis-start x={padX} y={height - 13} class="axis-label">{formatDate(start)}</text>
+      <text data-axis-end x={width - padX} y={height - 13} text-anchor="end" class="axis-label">{formatDate(absoluteEnd)}</text>
+    </svg>
+
+    <div class="chart-tooltip" data-chart-tooltip hidden aria-live="polite">
+      <strong data-tooltip-name></strong>
+      <time data-tooltip-date></time>
+      <span class="tooltip-score" data-tooltip-value></span>
+      <span data-tooltip-evidence></span>
+      <span data-tooltip-method></span>
+    </div>
+  </div>
+
+  <div class="chart-legend" aria-label="Séries affichées">
+    {series.map((item) => (
+      <button type="button" data-series-toggle={item.key} aria-pressed="false" style={`--series-color: ${item.color}`}>
+        <svg viewBox="0 0 30 8" aria-hidden="true"><line x1="1" y1="4" x2="29" y2="4" stroke={item.color} stroke-width="2.8" stroke-dasharray={item.dashPattern} /></svg>
+        {item.name}
+      </button>
+    ))}
+  </div>
+
+  <div class="evidence-legend" aria-label="Niveaux de preuve">
+    <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="3" fill="var(--color-surface)" stroke="currentColor" stroke-width="1.5" /></svg>historique opérationnel</span>
+    <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="3" fill="currentColor" /></svg>archive attestée</span>
+    <span><svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2.5" width="7" height="7" rx="1" fill="currentColor" /></svg>point courant</span>
+  </div>
+</div>
+
+<script>
+  import '../scripts/signal-history-chart.ts';
+</script>
+
+<style>
+  .signal-chart { position: relative; }
+  .chart-answer { margin-top: 1rem; border: 1px solid color-mix(in srgb, var(--color-signal) 48%, var(--color-line)); border-radius: 10px; padding: .9rem 1rem; background: linear-gradient(110deg, color-mix(in srgb, var(--color-signal) 10%, transparent), color-mix(in srgb, var(--color-surface) 72%, transparent)); color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1rem, 2.4vw, 1.2rem); line-height: 1.5; box-shadow: inset 3px 0 0 var(--color-signal); }
+  .chart-toolbar { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: .8rem; }
+  .window-buttons { display: inline-flex; gap: .25rem; border: 1px solid var(--color-line); border-radius: 9px; padding: .25rem; background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  button { font: inherit; }
+  .window-buttons button, .free-range button { border: 1px solid transparent; border-radius: 6px; padding: .42rem .7rem; background: transparent; color: var(--color-muted); font-family: var(--font-mono); font-size: .72rem; cursor: pointer; }
+  .window-buttons button:hover, .window-buttons button:focus-visible, .window-buttons button.is-active { border-color: color-mix(in srgb, var(--color-signal) 56%, var(--color-line)); background: color-mix(in srgb, var(--color-signal) 12%, var(--color-surface)); color: var(--color-bright); }
+  .chart-hint { color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; }
+  .free-range { display: flex; flex-wrap: wrap; align-items: end; gap: .65rem; margin-top: .75rem; border: 1px solid var(--color-line); border-radius: 8px; padding: .75rem; }
+  .free-range[hidden] { display: none; }
+  .free-range label { display: grid; gap: .3rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; }
+  .free-range input { border: 1px solid var(--color-line); border-radius: 6px; padding: .42rem .55rem; background: var(--color-surface); color: var(--color-paper); color-scheme: dark; font-family: var(--font-mono); }
+  .free-range button { border-color: var(--color-signal); color: var(--color-bright); }
+  .chart-subtitle { margin-top: .75rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; line-height: 1.55; }
+  .chart-shell { position: relative; margin-top: .7rem; border: 1px solid var(--color-line); border-radius: 12px; padding: .55rem; overflow: hidden; background: radial-gradient(circle at 70% 0%, rgba(122,162,247,.08), transparent 36%), color-mix(in srgb, var(--color-surface) 62%, #07090d); box-shadow: 0 18px 55px rgba(0,0,0,.18); }
+  .chart-shell::after { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.012) 3px 4px); content: ''; }
+  .chart-shell svg { position: relative; z-index: 1; display: block; width: 100%; height: auto; touch-action: manipulation; }
+  :global(.grid-line) { stroke: rgba(154,163,175,.2); stroke-width: 1; }
+  :global(.axis-label) { fill: #9aa3af; font-family: var(--font-mono); font-size: 12px; }
+  :global(.chart-point:focus-within > :not(title):not(:last-child)) { filter: brightness(1.35); }
+  .chart-tooltip { position: absolute; z-index: 4; width: min(15rem, calc(100% - 16px)); border: 1px solid color-mix(in srgb, var(--color-signal) 55%, var(--color-line)); border-radius: 9px; padding: .72rem .8rem; background: rgba(7,9,13,.96); color: var(--color-paper); font-family: var(--font-mono); font-size: .7rem; line-height: 1.45; box-shadow: 0 12px 35px rgba(0,0,0,.4); pointer-events: none; }
+  .chart-tooltip[hidden] { display: none; }
+  .chart-tooltip strong, .chart-tooltip span, .chart-tooltip time { display: block; }
+  .chart-tooltip strong { color: var(--color-bright); }
+  .chart-tooltip time { margin-top: .25rem; color: var(--color-muted); }
+  .chart-tooltip .tooltip-score { margin: .35rem 0; color: var(--color-signal); font-size: 1.25rem; font-weight: 700; }
+  .chart-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; margin-top: .7rem; }
+  .chart-legend button { display: flex; align-items: center; gap: .45rem; min-width: 0; border: 1px solid var(--color-line); border-radius: 8px; padding: .52rem .62rem; background: color-mix(in srgb, var(--color-surface) 54%, transparent); color: var(--color-muted); font-family: var(--font-mono); font-size: .67rem; line-height: 1.3; text-align: left; cursor: pointer; transition: border-color .15s ease, opacity .15s ease, transform .15s ease; }
+  .chart-legend button:hover, .chart-legend button:focus-visible { border-color: var(--series-color); color: var(--color-bright); transform: translateY(-1px); }
+  .chart-legend button.is-selected { border-color: var(--series-color); background: color-mix(in srgb, var(--series-color) 10%, var(--color-surface)); color: var(--color-bright); box-shadow: inset 3px 0 0 var(--series-color); }
+  .chart-legend button.is-muted { opacity: .38; }
+  .chart-legend svg { width: 1.7rem; height: .5rem; flex: 0 0 auto; }
+  .evidence-legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; }
+  .evidence-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .evidence-legend svg { width: .8rem; height: .8rem; color: var(--color-paper); }
+  @media (min-width: 760px) { .chart-legend { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  @media (max-width: 560px) {
+    .chart-toolbar { align-items: flex-start; flex-direction: column; }
+    .chart-hint { order: -1; }
+    .window-buttons { width: 100%; }
+    .window-buttons button { flex: 1; padding-inline: .35rem; }
+    .chart-shell { padding: .25rem; }
+    .chart-legend { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .chart-legend button { transition: none; } }
+</style>
