@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison entre prélèvement et consommation d&#x27;eau pour le refroidissement en circuit ouvert, en tour humide et à sec" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="510" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le piège du mot « utiliser »</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">Plages indicatives par MWh. Prélèvement et consommation racontent deux contraintes différentes.</text>
+  <rect x="32" y="88" width="318" height="244" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="50" y="116" fill="#7aa2f7" font-size="12" font-weight="800">CIRCUIT OUVERT</text>
+  <text x="50" y="145" fill="#cfd4dc" font-size="9">L'eau traverse le condenseur puis retourne au milieu.</text>
+  <text x="50" y="184" fill="#8b929e" font-size="9">PRÉLÈVEMENT</text>
+  <text x="50" y="210" fill="#f3f5f8" font-size="18" font-weight="800">75 710 à 189 270 L/MWh</text>
+  <text x="50" y="246" fill="#8b929e" font-size="9">CONSOMMATION NETTE</text>
+  <text x="50" y="272" fill="#5eead4" font-size="18" font-weight="800">380 à 1 200 L/MWh</text>
+  <path d="M60 302 H286" stroke="#7aa2f7" stroke-width="5"></path>
+  <path d="M286 302 l-12 -7 v14 z" fill="#7aa2f7"></path>
+  <path d="M286 318 H82" stroke="#5eead4" stroke-width="3" stroke-dasharray="6 4"></path>
+  <path d="M82 318 l12 -7 v14 z" fill="#5eead4"></path>
+  <rect x="370" y="88" width="318" height="244" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="388" y="116" fill="#f5b13d" font-size="12" font-weight="800">TOUR HUMIDE</text>
+  <text x="388" y="145" fill="#cfd4dc" font-size="9">L'eau recircule. La chaleur part surtout par évaporation.</text>
+  <text x="388" y="184" fill="#8b929e" font-size="9">PRÉLÈVEMENT</text>
+  <text x="388" y="210" fill="#f3f5f8" font-size="18" font-weight="800">1 890 à 4 540 L/MWh</text>
+  <text x="388" y="246" fill="#8b929e" font-size="9">CONSOMMATION NETTE</text>
+  <text x="388" y="272" fill="#ff4d87" font-size="18" font-weight="800">1 820 à 4 169 L/MWh</text>
+  <path d="M398 304 C438 282 486 282 526 304 C566 326 614 326 654 304" fill="none" stroke="#f5b13d" stroke-width="4"></path>
+  <path d="M526 304 V282" stroke="#ff4d87" stroke-width="3"></path>
+  <path d="M526 282 l-7 11 h14 z" fill="#ff4d87"></path>
+  <rect x="32" y="354" width="318" height="100" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="50" y="382" fill="#5eead4" font-size="11" font-weight="800">REFROIDISSEMENT SEC</text>
+  <text x="50" y="407" fill="#d2d7df" font-size="9">Eau presque supprimée, mais ventilateurs, coût</text>
+  <text x="50" y="424" fill="#d2d7df" font-size="9">et pénalité de puissance pendant les fortes chaleurs.</text>
+  <rect x="370" y="354" width="318" height="100" rx="7" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="388" y="382" fill="#ff4d87" font-size="11" font-weight="800">SYSTÈME HYBRIDE</text>
+  <text x="388" y="407" fill="#d2d7df" font-size="9">Le sec économise l'eau. L'humide revient lorsque</text>
+  <text x="388" y="424" fill="#d2d7df" font-size="9">la chaleur rend chaque mégawatt plus précieux.</text>
+  <text x="24" y="490" fill="#777f8c" font-size="9">SOURCE : EEA Climate-ADAPT. Plages de référence, pas données de chaque centrale.</text>
+</svg>

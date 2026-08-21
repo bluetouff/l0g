@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Décalage entre la décision électrique immédiate et les délais nécessaires pour mesurer les effets écologiques des rejets thermiques" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="470" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le réseau choisit maintenant, le fleuve répond plus tard</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Le calendrier de la preuve n'est pas celui de l'exploitation.</text>
+  <line x1="52" y1="130" x2="670" y2="130" stroke="#343a45" stroke-width="3"></line>
+  <circle cx="72" cy="130" r="8" fill="#ff4d87"></circle>
+  <circle cx="205" cy="130" r="8" fill="#f5b13d"></circle>
+  <circle cx="350" cy="130" r="8" fill="#7aa2f7"></circle>
+  <circle cx="505" cy="130" r="8" fill="#5eead4"></circle>
+  <circle cx="650" cy="130" r="8" fill="#5eead4"></circle>
+  <text x="72" y="100" text-anchor="middle" fill="#ff4d87" font-size="10" font-weight="800">J0</text>
+  <text x="205" y="100" text-anchor="middle" fill="#f5b13d" font-size="10" font-weight="800">JOURS</text>
+  <text x="350" y="100" text-anchor="middle" fill="#7aa2f7" font-size="10" font-weight="800">SEMAINES</text>
+  <text x="505" y="100" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="800">31 OCT.</text>
+  <text x="650" y="100" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="800">31 MARS</text>
+  <rect x="38" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="52" y="190" fill="#ff4d87" font-size="10" font-weight="800">DÉCISION</text>
+  <text x="52" y="211" fill="#c8cdd5" font-size="8">météo</text>
+  <text x="52" y="228" fill="#c8cdd5" font-size="8">besoin RTE</text>
+  <text x="52" y="245" fill="#c8cdd5" font-size="8">limite ASNR</text>
+  <rect x="176" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="190" y="190" fill="#f5b13d" font-size="10" font-weight="800">RAPIDE</text>
+  <text x="190" y="211" fill="#c8cdd5" font-size="8">thermie</text>
+  <text x="190" y="228" fill="#c8cdd5" font-size="8">oxygène</text>
+  <text x="190" y="245" fill="#c8cdd5" font-size="8">mortalité visible</text>
+  <rect x="314" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="328" y="190" fill="#7aa2f7" font-size="10" font-weight="800">DIFFÉRÉ</text>
+  <text x="328" y="211" fill="#c8cdd5" font-size="8">cyanobactéries</text>
+  <text x="328" y="228" fill="#c8cdd5" font-size="8">phytoplancton</text>
+  <text x="328" y="245" fill="#c8cdd5" font-size="8">diatomées</text>
+  <rect x="452" y="166" width="124" height="100" rx="6" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="466" y="190" fill="#5eead4" font-size="10" font-weight="800">BILAN 2026</text>
+  <text x="466" y="211" fill="#c8cdd5" font-size="8">fonctionnement</text>
+  <text x="466" y="228" fill="#c8cdd5" font-size="8">impact préliminaire</text>
+  <text x="466" y="245" fill="#c8cdd5" font-size="8">compensation éventuelle</text>
+  <rect x="590" y="166" width="100" height="100" rx="6" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="604" y="190" fill="#5eead4" font-size="10" font-weight="800">FINAL</text>
+  <text x="604" y="211" fill="#c8cdd5" font-size="8">évaluation</text>
+  <text x="604" y="228" fill="#c8cdd5" font-size="8">définitive</text>
+  <text x="604" y="245" fill="#c8cdd5" font-size="8">Bugey 2027</text>
+  <rect x="38" y="310" width="652" height="104" rx="7" fill="#111318" stroke="#2f3540"></rect>
+  <text x="54" y="336" fill="#f3f5f8" font-size="11" font-weight="800">Retour d'expérience 2022</text>
+  <text x="54" y="358" fill="#c8cdd5" font-size="9">24 jours cumulés d'utilisation : Tricastin 9, Bugey 8, Golfech 6, Saint-Alban 1.</text>
+  <text x="54" y="378" fill="#c8cdd5" font-size="9">Pas d'effet durable attribuable mis en évidence dans les paramètres et sites étudiés.</text>
+  <text x="54" y="398" fill="#f5b13d" font-size="9">Saint-Alban : différences biologiques légères en 2022, non persistantes en 2023.</text>
+  <text x="24" y="455" fill="#777f8c" font-size="9">SOURCES : ASNR, retours 2022-2025 ; décision Bugey 2026-DC-052 ; dossier EDF de surveillance.</text>
+</svg>

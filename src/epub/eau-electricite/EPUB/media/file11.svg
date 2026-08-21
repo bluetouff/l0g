@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 438" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Les multiples fonctions de la chaîne Durance-Verdon : électricité, irrigation, eau potable, industrie, environnement et tourisme" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="438" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Devant la vanne, six valeurs de l'eau</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Chaîne Durance-Verdon, description de l'opérateur.</text>
+  <rect x="254" y="142" width="212" height="132" rx="10" fill="#15171c" stroke="#5eead4" stroke-width="2"></rect>
+  <text x="278" y="173" fill="#5eead4" font-size="11" font-weight="800">SYSTÈME INTÉGRÉ</text>
+  <text x="278" y="208" fill="#f3f5f8" font-size="20" font-weight="800">16 barrages</text>
+  <text x="278" y="236" fill="#f3f5f8" font-size="20" font-weight="800">23 centrales</text>
+  <text x="360" y="254" fill="#8b929e" font-size="8.5" text-anchor="middle">
+    <tspan x="360" dy="0">la même eau peut être turbinée</tspan>
+    <tspan x="360" dy="12">plusieurs fois</tspan>
+  </text>
+  <rect x="28" y="91" width="162" height="68" rx="6" fill="#111318" stroke="#7aa2f7"></rect>
+  <text x="44" y="116" fill="#7aa2f7" font-size="10" font-weight="800">ÉLECTRICITÉ</text>
+  <text x="44" y="137" fill="#c7ccd5" font-size="9">production et pointe</text>
+  <path d="M190 128 L254 174" stroke="#56606c" stroke-width="2"></path>
+  <rect x="28" y="190" width="162" height="68" rx="6" fill="#111318" stroke="#f5b13d"></rect>
+  <text x="44" y="215" fill="#f5b13d" font-size="10" font-weight="800">IRRIGATION</text>
+  <text x="44" y="236" fill="#c7ccd5" font-size="9">80 000 hectares</text>
+  <path d="M190 224 L254 214" stroke="#56606c" stroke-width="2"></path>
+  <rect x="28" y="289" width="162" height="68" rx="6" fill="#111318" stroke="#ff4d87"></rect>
+  <text x="44" y="314" fill="#ff4d87" font-size="10" font-weight="800">EAU POTABLE</text>
+  <text x="44" y="335" fill="#c7ccd5" font-size="9">3 millions de personnes</text>
+  <path d="M190 323 L254 252" stroke="#56606c" stroke-width="2"></path>
+  <rect x="530" y="91" width="162" height="68" rx="6" fill="#111318" stroke="#5eead4"></rect>
+  <text x="546" y="116" fill="#5eead4" font-size="10" font-weight="800">INDUSTRIE</text>
+  <text x="546" y="137" fill="#c7ccd5" font-size="9">près de 400 entreprises</text>
+  <path d="M530 128 L466 174" stroke="#56606c" stroke-width="2"></path>
+  <rect x="530" y="190" width="162" height="68" rx="6" fill="#111318" stroke="#7aa2f7"></rect>
+  <text x="546" y="215" fill="#7aa2f7" font-size="10" font-weight="800">ENVIRONNEMENT</text>
+  <text x="546" y="236" fill="#c7ccd5" font-size="9">débit réservé et milieux</text>
+  <path d="M530 224 L466 214" stroke="#56606c" stroke-width="2"></path>
+  <rect x="530" y="289" width="162" height="68" rx="6" fill="#111318" stroke="#f5b13d"></rect>
+  <text x="546" y="314" fill="#f5b13d" font-size="10" font-weight="800">TOURISME</text>
+  <text x="546" y="335" fill="#c7ccd5" font-size="9">niveaux estivaux des lacs</text>
+  <path d="M530 323 L466 252" stroke="#56606c" stroke-width="2"></path>
+  <rect x="116" y="384" width="488" height="27" rx="4" fill="#111318" stroke="#2b323c"></rect>
+  <text x="132" y="402" fill="#f5b13d" font-size="9">Le prix de l'électricité est une variable de décision, pas l'unique hiérarchie sociale.</text>
+  <text x="24" y="425" fill="#777f8c" font-size="9">SOURCES : EDF Hydro Méditerranée ; DREAL Provence-Alpes-Côte d'Azur.</text>
+</svg>

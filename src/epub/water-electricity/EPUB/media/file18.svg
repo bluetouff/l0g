@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Qualitative comparison of once-through, wet tower, hybrid and dry cooling" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="456" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Cooling means choosing a tradeoff</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Qualitative comparison. Actual performance remains site-specific.</text>
+  <text x="28" y="102" fill="#8b929e" font-size="9">CRITERION</text>
+  <text x="170" y="102" fill="#7aa2f7" font-size="10" font-weight="800">ONCE-THROUGH</text>
+  <text x="322" y="102" fill="#5eead4" font-size="10" font-weight="800">WET TOWER</text>
+  <text x="466" y="102" fill="#f5b13d" font-size="10" font-weight="800">HYBRID</text>
+  <text x="604" y="102" fill="#ff4d87" font-size="10" font-weight="800">DRY</text>
+  <line x1="28" y1="119" x2="692" y2="119" stroke="#303844"></line>
+  <text x="28" y="154" fill="#c7ccd5" font-size="10">Withdrawal</text>
+  <text x="170" y="154" fill="#ff4d87" font-size="13" font-weight="800">very high</text>
+  <text x="322" y="154" fill="#5eead4" font-size="13" font-weight="800">low</text>
+  <text x="466" y="154" fill="#5eead4" font-size="13" font-weight="800">flexible</text>
+  <text x="604" y="154" fill="#5eead4" font-size="13" font-weight="800">minimal</text>
+  <line x1="28" y1="174" x2="692" y2="174" stroke="#252c35"></line>
+  <text x="28" y="209" fill="#c7ccd5" font-size="10">Consumption</text>
+  <text x="170" y="209" fill="#5eead4" font-size="13" font-weight="800">low</text>
+  <text x="322" y="209" fill="#ff4d87" font-size="13" font-weight="800">evaporation</text>
+  <text x="466" y="209" fill="#f5b13d" font-size="13" font-weight="800">intermediate</text>
+  <text x="604" y="209" fill="#5eead4" font-size="13" font-weight="800">minimal</text>
+  <line x1="28" y1="229" x2="692" y2="229" stroke="#252c35"></line>
+  <text x="28" y="264" fill="#c7ccd5" font-size="10">Efficiency</text>
+  <text x="170" y="264" fill="#5eead4" font-size="13" font-weight="800">high</text>
+  <text x="322" y="264" fill="#7aa2f7" font-size="13" font-weight="800">good</text>
+  <text x="466" y="264" fill="#f5b13d" font-size="13" font-weight="800">dispatchable</text>
+  <text x="604" y="264" fill="#ff4d87" font-size="13" font-weight="800">penalised</text>
+  <line x1="28" y1="284" x2="692" y2="284" stroke="#252c35"></line>
+  <text x="28" y="319" fill="#c7ccd5" font-size="10">Exposed medium</text>
+  <text x="170" y="319" fill="#aeb4be" font-size="10">river or sea</text>
+  <text x="322" y="319" fill="#aeb4be" font-size="10">air + chemistry</text>
+  <text x="466" y="319" fill="#aeb4be" font-size="10">air + water</text>
+  <text x="604" y="319" fill="#aeb4be" font-size="10">air + noise</text>
+  <line x1="28" y1="339" x2="692" y2="339" stroke="#252c35"></line>
+  <text x="28" y="374" fill="#c7ccd5" font-size="10">Heatwave</text>
+  <text x="170" y="374" fill="#f5b13d" font-size="10">warm water</text>
+  <text x="322" y="374" fill="#f5b13d" font-size="10">wet-bulb limit</text>
+  <text x="466" y="374" fill="#7aa2f7" font-size="10">combined modes</text>
+  <text x="604" y="374" fill="#ff4d87" font-size="10">hot air</text>
+  <rect x="28" y="404" width="664" height="26" rx="4" fill="#111318"></rect>
+  <text x="44" y="422" fill="#f5b13d" font-size="9">No column dominates all five criteria. The site determines the compromise.</text>
+  <text x="24" y="447" fill="#777f8c" font-size="9">SOURCES: French Court of Auditors; EU-BRITE industrial cooling BREF.</text>
+</svg>

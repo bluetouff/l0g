@@ -7,6 +7,16 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
   {
+    source: join(ROOT, 'src/epub/eau-electricite'),
+    output: join(ROOT, 'public/publications/eau-electricite-europe-l0g.epub'),
+    fixedTime: new Date('2026-08-21T15:30:00Z'),
+  },
+  {
+    source: join(ROOT, 'src/epub/water-electricity'),
+    output: join(ROOT, 'public/publications/water-electricity-europe-l0g.epub'),
+    fixedTime: new Date('2026-08-21T15:30:00Z'),
+  },
+  {
     source: join(ROOT, 'src/epub/euro-numerique'),
     output: join(ROOT, 'public/publications/euro-numerique-enquete-l0g.epub'),
     fixedTime: new Date('2026-08-16T10:00:00Z'),

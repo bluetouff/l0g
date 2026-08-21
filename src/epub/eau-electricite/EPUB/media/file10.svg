@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 468" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison des méthodes de calcul du stock hydraulique en France, Norvège, Suisse et sur la plateforme ENTSO-E" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="468" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Un stock en MWh, quatre périmètres</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Les chiffres sont utiles. Leur méthode doit voyager avec eux.</text>
+  <rect x="28" y="88" width="316" height="142" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="46" y="116" fill="#5eead4" font-size="12" font-weight="800">FRANCE</text>
+  <text x="46" y="141" fill="#f3f5f8" font-size="16" font-weight="800">énergie de tête</text>
+  <path d="M55 190 H135" stroke="#5eead4" stroke-width="3"></path>
+  <rect x="135" y="174" width="46" height="32" rx="4" fill="#283039"></rect>
+  <text x="148" y="195" fill="#f3f5f8" font-size="9">A</text>
+  <path d="M181 190 H246" stroke="#606a77" stroke-width="2" stroke-dasharray="5 4"></path>
+  <rect x="246" y="174" width="46" height="32" rx="4" fill="#1c222a"></rect>
+  <text x="259" y="195" fill="#7f8793" font-size="9">B</text>
+  <text x="46" y="218" fill="#8b929e" font-size="9">RTE compte la centrale directement reliée.</text>
+  <rect x="376" y="88" width="316" height="142" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="394" y="116" fill="#7aa2f7" font-size="12" font-weight="800">NORVÈGE</text>
+  <text x="394" y="141" fill="#f3f5f8" font-size="16" font-weight="800">cascade en aval</text>
+  <path d="M403 190 H483" stroke="#7aa2f7" stroke-width="3"></path>
+  <rect x="483" y="174" width="46" height="32" rx="4" fill="#283039"></rect>
+  <text x="496" y="195" fill="#f3f5f8" font-size="9">A</text>
+  <path d="M529 190 H572" stroke="#7aa2f7" stroke-width="3"></path>
+  <rect x="572" y="174" width="46" height="32" rx="4" fill="#283039"></rect>
+  <text x="585" y="195" fill="#f3f5f8" font-size="9">B</text>
+  <text x="394" y="218" fill="#8b929e" font-size="9">NVE additionne les centrales situées plus bas.</text>
+  <rect x="28" y="258" width="316" height="142" rx="7" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="46" y="286" fill="#ff4d87" font-size="12" font-weight="800">SUISSE</text>
+  <text x="46" y="311" fill="#f3f5f8" font-size="16" font-weight="800">complexe optimisé</text>
+  <path d="M55 360 H135" stroke="#ff4d87" stroke-width="3"></path>
+  <rect x="135" y="344" width="46" height="32" rx="4" fill="#283039"></rect>
+  <text x="148" y="365" fill="#f3f5f8" font-size="9">A</text>
+  <path d="M181 360 H224" stroke="#ff4d87" stroke-width="3"></path>
+  <rect x="224" y="344" width="46" height="32" rx="4" fill="#283039"></rect>
+  <text x="237" y="365" fill="#f3f5f8" font-size="9">B</text>
+  <text x="46" y="388" fill="#8b929e" font-size="9">ElCom retient la cascade liée et cogérée.</text>
+  <rect x="376" y="258" width="316" height="142" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="394" y="286" fill="#f5b13d" font-size="12" font-weight="800">ENTSO-E</text>
+  <text x="394" y="311" fill="#f3f5f8" font-size="16" font-weight="800">pas de méthode standard</text>
+  <rect x="394" y="336" width="280" height="42" rx="5" fill="#111318" stroke="#343c47"></rect>
+  <text x="410" y="354" fill="#c7ccd5" font-size="9">réservoirs + pompage possibles</text>
+  <text x="410" y="370" fill="#c7ccd5" font-size="9">agrégation réalisée localement</text>
+  <rect x="28" y="421" width="664" height="24" rx="4" fill="#111318"></rect>
+  <text x="44" y="438" fill="#f5b13d" font-size="9">Comparer exige de publier : cascade, STEP, actifs couverts, volume mort et puissance disponible.</text>
+  <text x="24" y="459" fill="#777f8c" font-size="9">SOURCES : RTE ; NVE ; ElCom ; ENTSO-E Transparency Platform.</text>
+</svg>

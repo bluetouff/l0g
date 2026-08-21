@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 438" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison between the information seen by an adequacy model and by a power plant pump" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="438" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// The model and the pump read different sheets</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">An outage can be represented correctly while its physical trigger remains invisible.</text>
+  <rect x="30" y="91" width="310" height="290" rx="8" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="50" y="121" fill="#7aa2f7" font-size="12" font-weight="800">THE ADEQUACY MODEL</text>
+  <rect x="50" y="145" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="66" y="163" fill="#f3f5f8" font-size="10" font-weight="700">Available capacity</text>
+  <text x="66" y="178" fill="#89919d" font-size="9">MW by zone and technology</text>
+  <rect x="50" y="197" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="66" y="215" fill="#f3f5f8" font-size="10" font-weight="700">Probabilistic scenarios</text>
+  <text x="66" y="230" fill="#89919d" font-size="9">weather, outages and demand</text>
+  <rect x="50" y="249" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="66" y="267" fill="#f3f5f8" font-size="10" font-weight="700">Accessible imports</text>
+  <text x="66" y="282" fill="#89919d" font-size="9">capacity between zones</text>
+  <rect x="50" y="301" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="66" y="319" fill="#f3f5f8" font-size="10" font-weight="700">Verdict</text>
+  <text x="66" y="334" fill="#89919d" font-size="9">LOLE, LOLP and EENS</text>
+  <rect x="380" y="91" width="310" height="290" rx="8" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="400" y="121" fill="#ff4d87" font-size="12" font-weight="800">THE POWER PLANT PUMP</text>
+  <rect x="400" y="145" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="416" y="163" fill="#f3f5f8" font-size="10" font-weight="700">Local water level</text>
+  <text x="416" y="178" fill="#89919d" font-size="9">centimetres at the intake</text>
+  <rect x="400" y="197" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="416" y="215" fill="#f3f5f8" font-size="10" font-weight="700">Flow and temperature</text>
+  <text x="416" y="230" fill="#89919d" font-size="9">real m³/s and degrees</text>
+  <rect x="400" y="249" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="416" y="267" fill="#f3f5f8" font-size="10" font-weight="700">Geometry and equipment</text>
+  <text x="416" y="282" fill="#89919d" font-size="9">intake, pump and suction margin</text>
+  <rect x="400" y="301" width="270" height="42" rx="5" fill="#101318"></rect>
+  <text x="416" y="319" fill="#f3f5f8" font-size="10" font-weight="700">Verdict</text>
+  <text x="416" y="334" fill="#89919d" font-size="9">operate, derate or stop</text>
+  <rect x="179" y="397" width="362" height="24" rx="4" fill="#111318"></rect>
+  <text x="197" y="414" fill="#f5b13d" font-size="9">The same MW loss, two levels of explanation.</text>
+</svg>

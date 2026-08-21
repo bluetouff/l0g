@@ -5,7 +5,7 @@ import { join } from 'node:path';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity';
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein' } = Astro.props;
@@ -13,14 +13,19 @@ const Heading = headingLevel;
 const isEnglish = lang === 'en';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
 const isDigitalEuro = publication === 'digital-euro';
-const publicationUrl = isDigitalEuro
+const isWaterElectricity = publication === 'water-electricity';
+const publicationUrl = isWaterElectricity
+  ? isEnglish ? '/en/publications/water-electricity/' : '/publications/eau-electricite/'
+  : isDigitalEuro
   ? isEnglish ? '/en/publications/digital-euro/' : '/publications/euro-numerique/'
   : isAuditer
   ? '/publications/auditer-l-opacite/'
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isDigitalEuro
+const epubFile = isWaterElectricity
+  ? isEnglish ? 'water-electricity-europe-l0g.epub' : 'eau-electricite-europe-l0g.epub'
+  : isDigitalEuro
   ? isEnglish ? 'digital-euro-investigation-l0g.epub' : 'euro-numerique-enquete-l0g.epub'
   : isAuditer
   ? 'auditer-l-opacite-bluetouff.epub'
@@ -28,7 +33,9 @@ const epubFile = isDigitalEuro
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isDigitalEuro
+const coverUrl = isWaterElectricity
+  ? isEnglish ? '/publications/water-electricity-cover.png' : '/publications/eau-electricite-cover.png'
+  : isDigitalEuro
   ? isEnglish ? '/publications/digital-euro-cover.png' : '/publications/euro-numerique-cover.png'
   : isAuditer
   ? '/publications/auditer-l-opacite-cover.jpg'
@@ -38,7 +45,23 @@ const coverUrl = isDigitalEuro
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isDigitalEuro
+const copy = isWaterElectricity
+  ? isEnglish
+    ? {
+        coverLabel: 'Discover The Water Behind Electricity', coverAlt: 'Cover of The Water Behind Electricity', meta: '// illustrated investigation · August 2026',
+        titleLead: 'The water behind', titleAccent: 'electricity', deck: 'Danube, dams, power plants, grid and adaptation.',
+        description: 'Six investigations following the physical water behind European electricity, with 20 infographics, primary sources and links to six educational tools.',
+        factsLabel: 'Edition contents', facts: [{ value: '6', label: 'investigations' }, { value: '20', label: 'infographics' }, { value: '6', label: 'linked tools' }, { value: formattedSize, label: 'download' }],
+        discover: 'Explore the edition', downloadLabel: 'Download the EPUB', fileName: 'The-Water-Behind-Electricity-l0g.epub',
+      }
+    : {
+        coverLabel: 'Découvrir L’eau derrière l’électricité', coverAlt: 'Couverture de L’eau derrière l’électricité', meta: '// enquête illustrée · août 2026',
+        titleLead: 'L’eau derrière', titleAccent: 'l’électricité', deck: 'Danube, barrages, centrales, réseau et adaptation.',
+        description: 'Six enquêtes sur l’eau physique de l’électricité européenne, avec 20 infographies, des sources primaires et les liens vers six outils pédagogiques.',
+        factsLabel: 'Contenu de l’édition', facts: [{ value: '6', label: 'enquêtes' }, { value: '20', label: 'infographies' }, { value: '6', label: 'outils liés' }, { value: formattedSize, label: 'téléchargement' }],
+        discover: 'Découvrir l’enquête', downloadLabel: 'Télécharger l’EPUB', fileName: 'L-eau-derriere-l-electricite-l0g.epub',
+      }
+  : isDigitalEuro
   ? isEnglish
     ? {
         coverLabel: 'Discover The Digital Euro', coverAlt: 'Cover of The Digital Euro', meta: '// open-source investigation · August 2026',
@@ -115,7 +138,7 @@ const copy = isDigitalEuro
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
@@ -163,6 +186,7 @@ const copy = isDigitalEuro
   }
   .publication-spotlight--auditer { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--digital-euro { --publication-card-accent: var(--color-signal); }
+  .publication-spotlight--water { --publication-card-accent: #65e4d2; }
   .publication-cover {
     display: block;
     align-self: center;

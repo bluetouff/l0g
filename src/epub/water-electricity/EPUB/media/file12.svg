@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 466" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five layers of electricity analysis, from the seasonal outlook to the actual river" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="466" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// One crisis, five resolutions</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Each layer answers a different question.</text>
+  <rect x="32" y="88" width="656" height="56" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="50" y="112" fill="#7aa2f7" font-size="11" font-weight="800">SEASON</text>
+  <text x="142" y="112" fill="#f3f5f8" font-size="11" font-weight="700">ENTSO-E Summer Outlook</text>
+  <text x="142" y="132" fill="#aeb4be" font-size="9">Months, bidding zones, scenarios, LOLE and EENS</text>
+  <rect x="54" y="158" width="612" height="56" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="72" y="182" fill="#5eead4" font-size="11" font-weight="800">7 DAYS</text>
+  <text x="164" y="182" fill="#f3f5f8" font-size="11" font-weight="700">Short-Term Adequacy</text>
+  <text x="164" y="202" fill="#aeb4be" font-size="9">Latest forecasts, outages, exchanges and proposed actions</text>
+  <rect x="76" y="228" width="568" height="56" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="94" y="252" fill="#f5b13d" font-size="11" font-weight="800">GRID</text>
+  <text x="186" y="252" fill="#f3f5f8" font-size="11" font-weight="700">Operational security</text>
+  <text x="186" y="272" fill="#aeb4be" font-size="9">Flows, voltage, stability, reserves, N-1 and congestion</text>
+  <rect x="98" y="298" width="524" height="56" rx="7" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="116" y="322" fill="#ff4d87" font-size="11" font-weight="800">ASSET</text>
+  <text x="208" y="322" fill="#f3f5f8" font-size="11" font-weight="700">Plant and water intake</text>
+  <text x="208" y="342" fill="#aeb4be" font-size="9">Unit, pump, threshold, efficiency and local rule</text>
+  <rect x="120" y="368" width="480" height="56" rx="7" fill="#15171c" stroke="#9b8cff"></rect>
+  <text x="138" y="392" fill="#9b8cff" font-size="11" font-weight="800">RIVER</text>
+  <text x="230" y="392" fill="#f3f5f8" font-size="11" font-weight="700">Actual hydrology</text>
+  <text x="230" y="412" fill="#aeb4be" font-size="9">Centimetres, m³/s, temperature and riverbed geometry</text>
+</svg>

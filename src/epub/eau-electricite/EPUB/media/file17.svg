@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 446" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paks : coût public, chantier connu et dénominateurs encore manquants" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="446" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Paks : le prix existe, le ratio manque</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">État documentaire au 21 août 2026.</text>
+  <rect x="28" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="46" y="115" fill="#f5b13d" font-size="10" font-weight="800">BUDGET TRANSFÉRÉ</text>
+  <text x="46" y="150" fill="#f3f5f8" font-size="19" font-weight="800">6,165 Md HUF</text>
+  <text x="46" y="174" fill="#8b929e" font-size="9">coût final encore inconnu</text>
+  <rect x="257" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="275" y="115" fill="#7aa2f7" font-size="10" font-weight="800">MATÉRIAUX ANNONCÉS</text>
+  <text x="275" y="150" fill="#f3f5f8" font-size="19" font-weight="800">145 000 m³</text>
+  <text x="275" y="174" fill="#8b929e" font-size="9">de pierre dans le Danube</text>
+  <rect x="486" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="504" y="115" fill="#5eead4" font-size="10" font-weight="800">EFFET ANNONCÉ AU 19/08</text>
+  <text x="504" y="150" fill="#f3f5f8" font-size="19" font-weight="800">+10 à 15 cm</text>
+  <text x="504" y="174" fill="#8b929e" font-size="9">arrêt total évité</text>
+  <path d="M130 222 H590" stroke="#39424e" stroke-width="3"></path>
+  <polygon points="590,222 578,215 578,229" fill="#39424e"></polygon>
+  <text x="232" y="213" fill="#aeb4be" font-size="9">le chantier devient une capacité électrique seulement après mesure</text>
+  <rect x="28" y="252" width="664" height="126" rx="8" fill="#111318" stroke="#ff4d87"></rect>
+  <text x="46" y="280" fill="#ff4d87" font-size="11" font-weight="800">DÉNOMINATEURS PUBLICS ENCORE ABSENTS</text>
+  <text x="46" y="310" fill="#c7ccd5" font-size="10">• MW réellement sécurisés à chaque heure</text>
+  <text x="46" y="334" fill="#c7ccd5" font-size="10">• MWh de déclassement évités sur la durée de vie</text>
+  <text x="370" y="310" fill="#c7ccd5" font-size="10">• maintenance, retrait et coût final</text>
+  <text x="370" y="334" fill="#c7ccd5" font-size="10">• impact aval, navigation et Natura 2000</text>
+  <text x="46" y="361" fill="#f5b13d" font-size="10" font-weight="800">Sans ces pièces : aucun coût fiable par MWh préservé.</text>
+  <text x="24" y="430" fill="#777f8c" font-size="9">SOURCES : Magyar Közlöny ; MTI ; Reuters.</text>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 438" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structure of the Swiss 2026-27 hydropower reserve: 250 GWh withheld out of 8,160 GWh from 1 February to 15 May 2027" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="438" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Switzerland: paying to keep water stored</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Mandatory hydropower reserve for winter 2026-27.</text>
+  <rect x="28" y="90" width="430" height="72" rx="7" fill="#15171c" stroke="#2f3742"></rect>
+  <text x="44" y="114" fill="#aeb4be" font-size="10">Reference energy in eligible reservoirs</text>
+  <text x="44" y="145" fill="#f3f5f8" font-size="20" font-weight="800">8,160 GWh</text>
+  <rect x="44" y="171" width="398" height="18" rx="9" fill="#252c35"></rect>
+  <rect x="44" y="171" width="12" height="18" rx="9" fill="#ff4d87"></rect>
+  <text x="44" y="210" fill="#ff4d87" font-size="13" font-weight="800">250 GWh withheld</text>
+  <text x="202" y="210" fill="#8b929e" font-size="10">3.06% of the perimeter</text>
+  <rect x="486" y="90" width="206" height="120" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="504" y="116" fill="#f5b13d" font-size="11" font-weight="800">ASSOCIATED POWER</text>
+  <text x="504" y="150" fill="#f3f5f8" font-size="20" font-weight="800">≥ 3 MW/GWh</text>
+  <text x="504" y="171" fill="#aeb4be" font-size="9">at least 750 MW in total</text>
+  <text x="504" y="190" fill="#7f8793" font-size="9">aggregate regulatory minimum</text>
+  <line x1="60" y1="276" x2="660" y2="276" stroke="#303844" stroke-width="3"></line>
+  <circle cx="90" cy="276" r="8" fill="#7aa2f7"></circle>
+  <circle cx="630" cy="276" r="8" fill="#5eead4"></circle>
+  <text x="60" y="252" fill="#7aa2f7" font-size="11" font-weight="800">1 February 2027</text>
+  <text x="558" y="252" fill="#5eead4" font-size="11" font-weight="800">15 May 2027</text>
+  <text x="236" y="300" fill="#aeb4be" font-size="10">energy remains outside the ordinary market</text>
+  <rect x="28" y="332" width="205" height="64" rx="6" fill="#111318" stroke="#2c333d"></rect>
+  <text x="44" y="356" fill="#f5b13d" font-size="10" font-weight="800">ACTIVATION</text>
+  <text x="44" y="376" fill="#c7ccd5" font-size="9">only if the day-ahead</text>
+  <text x="44" y="390" fill="#c7ccd5" font-size="9">market fails to clear</text>
+  <rect x="257" y="332" width="205" height="64" rx="6" fill="#111318" stroke="#2c333d"></rect>
+  <text x="273" y="356" fill="#7aa2f7" font-size="10" font-weight="800">DIVERSIFICATION</text>
+  <text x="273" y="376" fill="#c7ccd5" font-size="9">≤ 30% in one connected</text>
+  <text x="273" y="390" fill="#c7ccd5" font-size="9">hydropower complex</text>
+  <rect x="486" y="332" width="206" height="64" rx="6" fill="#111318" stroke="#2c333d"></rect>
+  <text x="502" y="356" fill="#5eead4" font-size="10" font-weight="800">IF UNUSED</text>
+  <text x="502" y="376" fill="#c7ccd5" font-size="9">the energy is released</text>
+  <text x="502" y="390" fill="#c7ccd5" font-size="9">at the end of the period</text>
+  <text x="24" y="425" fill="#777f8c" font-size="9">SOURCE: ElCom, Directive 1/2026, 6 July 2026.</text>
+</svg>

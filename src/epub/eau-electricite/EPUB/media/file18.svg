@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison qualitative des circuits ouvert, tour humide, hybride et sec" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="456" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Refroidir signifie choisir un compromis</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Comparaison qualitative. Les performances réelles restent propres au site.</text>
+  <text x="28" y="102" fill="#8b929e" font-size="9">CRITÈRE</text>
+  <text x="170" y="102" fill="#7aa2f7" font-size="10" font-weight="800">CIRCUIT OUVERT</text>
+  <text x="322" y="102" fill="#5eead4" font-size="10" font-weight="800">TOUR HUMIDE</text>
+  <text x="466" y="102" fill="#f5b13d" font-size="10" font-weight="800">HYBRIDE</text>
+  <text x="604" y="102" fill="#ff4d87" font-size="10" font-weight="800">SEC</text>
+  <line x1="28" y1="119" x2="692" y2="119" stroke="#303844"></line>
+  <text x="28" y="154" fill="#c7ccd5" font-size="10">Prélèvement</text>
+  <text x="170" y="154" fill="#ff4d87" font-size="13" font-weight="800">très élevé</text>
+  <text x="322" y="154" fill="#5eead4" font-size="13" font-weight="800">faible</text>
+  <text x="466" y="154" fill="#5eead4" font-size="13" font-weight="800">modulable</text>
+  <text x="604" y="154" fill="#5eead4" font-size="13" font-weight="800">minime</text>
+  <line x1="28" y1="174" x2="692" y2="174" stroke="#252c35"></line>
+  <text x="28" y="209" fill="#c7ccd5" font-size="10">Consommation</text>
+  <text x="170" y="209" fill="#5eead4" font-size="13" font-weight="800">faible</text>
+  <text x="322" y="209" fill="#ff4d87" font-size="13" font-weight="800">évaporation</text>
+  <text x="466" y="209" fill="#f5b13d" font-size="13" font-weight="800">intermédiaire</text>
+  <text x="604" y="209" fill="#5eead4" font-size="13" font-weight="800">minime</text>
+  <line x1="28" y1="229" x2="692" y2="229" stroke="#252c35"></line>
+  <text x="28" y="264" fill="#c7ccd5" font-size="10">Rendement</text>
+  <text x="170" y="264" fill="#5eead4" font-size="13" font-weight="800">élevé</text>
+  <text x="322" y="264" fill="#7aa2f7" font-size="13" font-weight="800">bon</text>
+  <text x="466" y="264" fill="#f5b13d" font-size="13" font-weight="800">pilotable</text>
+  <text x="604" y="264" fill="#ff4d87" font-size="13" font-weight="800">pénalisé</text>
+  <line x1="28" y1="284" x2="692" y2="284" stroke="#252c35"></line>
+  <text x="28" y="319" fill="#c7ccd5" font-size="10">Milieu exposé</text>
+  <text x="170" y="319" fill="#aeb4be" font-size="10">fleuve ou mer</text>
+  <text x="322" y="319" fill="#aeb4be" font-size="10">air + chimie</text>
+  <text x="466" y="319" fill="#aeb4be" font-size="10">air + eau</text>
+  <text x="604" y="319" fill="#aeb4be" font-size="10">air + bruit</text>
+  <line x1="28" y1="339" x2="692" y2="339" stroke="#252c35"></line>
+  <text x="28" y="374" fill="#c7ccd5" font-size="10">Canicule</text>
+  <text x="170" y="374" fill="#f5b13d" font-size="10">eau chaude</text>
+  <text x="322" y="374" fill="#f5b13d" font-size="10">bulbe humide</text>
+  <text x="466" y="374" fill="#7aa2f7" font-size="10">modes combinés</text>
+  <text x="604" y="374" fill="#ff4d87" font-size="10">air très chaud</text>
+  <rect x="28" y="404" width="664" height="26" rx="4" fill="#111318"></rect>
+  <text x="44" y="422" fill="#f5b13d" font-size="9">Aucune colonne ne domine sur les cinq critères. Le site décide du compromis.</text>
+  <text x="24" y="447" fill="#777f8c" font-size="9">SOURCES : Cour des comptes ; EU-BRITE, BREF refroidissement industriel.</text>
+</svg>

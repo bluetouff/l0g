@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison entre hydroélectricité au fil de l&#x27;eau, barrage-réservoir, pompage-turbinage ouvert et pompage-turbinage fermé" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="500" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Quatre hydroélectricités, quatre dépendances</text>
+  <text x="24" y="55" fill="#8b909b" font-size="10">La puissance installée ne dit pas combien d'eau peut être déplacée dans le temps.</text>
+  <rect x="30" y="88" width="320" height="174" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="48" y="116" fill="#5eead4" font-size="11" font-weight="800">1. FIL DE L'EAU</text>
+  <path d="M52 178 C98 158 142 194 188 174 C232 154 276 186 326 166" fill="none" stroke="#3985a3" stroke-width="18" opacity=".9"></path>
+  <circle cx="190" cy="174" r="15" fill="#0c0d10" stroke="#5eead4" stroke-width="3"></circle>
+  <text x="48" y="222" fill="#d1d6de" font-size="9">Le débit du jour fixe presque directement</text>
+  <text x="48" y="239" fill="#d1d6de" font-size="9">la production. Peu de capacité de report.</text>
+  <rect x="370" y="88" width="320" height="174" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="388" y="116" fill="#7aa2f7" font-size="11" font-weight="800">2. RÉSERVOIR</text>
+  <path d="M398 196 H662 V158 C620 144 574 174 532 160 C486 144 444 178 398 160 Z" fill="#245e79"></path>
+  <rect x="520" y="144" width="18" height="68" fill="#2d323c"></rect>
+  <text x="388" y="222" fill="#d1d6de" font-size="9">L'eau devient un stock. Produire aujourd'hui</text>
+  <text x="388" y="239" fill="#d1d6de" font-size="9">réduit l'option disponible demain.</text>
+  <rect x="30" y="282" width="320" height="174" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="48" y="310" fill="#f5b13d" font-size="11" font-weight="800">3. STEP OUVERTE</text>
+  <path d="M52 344 H154 V324 H236 V390 H326" fill="none" stroke="#367f9d" stroke-width="14"></path>
+  <path d="M166 360 H224" stroke="#f5b13d" stroke-width="3"></path>
+  <polygon points="224,360 214,354 214,366" fill="#f5b13d"></polygon>
+  <path d="M224 378 H166" stroke="#7aa2f7" stroke-width="3"></path>
+  <polygon points="166,378 176,372 176,384" fill="#7aa2f7"></polygon>
+  <text x="48" y="416" fill="#d1d6de" font-size="9">Stockage électrique et apports naturels</text>
+  <text x="48" y="433" fill="#d1d6de" font-size="9">se mélangent dans les mêmes bassins.</text>
+  <rect x="370" y="282" width="320" height="174" rx="7" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="388" y="310" fill="#ff4d87" font-size="11" font-weight="800">4. STEP FERMÉE</text>
+  <ellipse cx="446" cy="350" rx="50" ry="19" fill="#245e79"></ellipse>
+  <ellipse cx="614" cy="390" rx="50" ry="19" fill="#245e79"></ellipse>
+  <path d="M490 352 C528 354 536 382 570 388" fill="none" stroke="#7aa2f7" stroke-width="3"></path>
+  <path d="M570 374 C532 372 524 344 490 338" fill="none" stroke="#f5b13d" stroke-width="3"></path>
+  <text x="388" y="416" fill="#d1d6de" font-size="9">Le même stock circule principalement entre</text>
+  <text x="388" y="433" fill="#d1d6de" font-size="9">deux bassins. Exposition au débit bien plus faible.</text>
+  <text x="24" y="485" fill="#777f8c" font-size="9">SOURCE : JRC Hydro-power plants database. Typologie simplifiée par l0g.</text>
+</svg>

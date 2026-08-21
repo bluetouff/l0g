@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simplified comparison of water intake and cooling systems at Paks, Cernavoda and Kozloduy" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="430" fill="#0c0d10"></rect>
+  <text x="26" y="34" fill="#5eead4" font-size="15" font-weight="700">// Same river, different vulnerabilities</text>
+  <text x="26" y="56" fill="#8b909b" font-size="10">Reactor technology alone does not explain site resilience.</text>
+  <rect x="34" y="92" width="208" height="258" rx="7" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="50" y="120" fill="#ff4d87" font-size="12" font-weight="700">PAKS</text>
+  <path d="M50 178 C92 166 138 184 226 168 L226 232 L50 232 Z" fill="#1c5d79"></path>
+  <line x1="50" y1="196" x2="226" y2="196" stroke="#5eead4" stroke-dasharray="5 4"></line>
+  <rect x="166" y="144" width="32" height="70" fill="#20242c" stroke="#7aa2f7"></rect>
+  <circle cx="182" cy="184" r="7" fill="none" stroke="#ff4d87" stroke-width="2"></circle>
+  <text x="50" y="262" fill="#d6d9df" font-size="10">intake became too high</text>
+  <text x="50" y="280" fill="#8b909b" font-size="9">relative to local level</text>
+  <text x="50" y="316" fill="#ff4d87" font-size="10" font-weight="700">2026: near-shutdown</text>
+  <rect x="256" y="92" width="208" height="258" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="272" y="120" fill="#f5b13d" font-size="12" font-weight="700">CERNAVODĂ</text>
+  <path d="M272 178 C320 168 364 184 448 170 L448 232 L272 232 Z" fill="#1c5d79"></path>
+  <rect x="322" y="146" width="84" height="76" rx="4" fill="#20242c" stroke="#7aa2f7"></rect>
+  <rect x="344" y="174" width="40" height="34" fill="#0c0d10" stroke="#f5b13d"></rect>
+  <text x="272" y="262" fill="#d6d9df" font-size="10">suction basin supplied by</text>
+  <text x="272" y="280" fill="#8b909b" font-size="9">Danube-Black Sea Canal</text>
+  <text x="272" y="316" fill="#f5b13d" font-size="10" font-weight="700">2026: fully shut</text>
+  <rect x="478" y="92" width="208" height="258" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="494" y="120" fill="#5eead4" font-size="12" font-weight="700">KOZLODUY</text>
+  <path d="M494 178 C538 166 592 186 670 168 L670 232 L494 232 Z" fill="#1c5d79"></path>
+  <path d="M548 170 C558 138 606 138 618 170 L618 224 L548 224 Z" fill="#20242c" stroke="#7aa2f7"></path>
+  <circle cx="583" cy="202" r="8" fill="none" stroke="#5eead4" stroke-width="2"></circle>
+  <text x="494" y="262" fill="#d6d9df" font-size="10">pumping station inside</text>
+  <text x="494" y="280" fill="#8b909b" font-size="9">a dedicated deep bay</text>
+  <text x="494" y="316" fill="#5eead4" font-size="10" font-weight="700">2026: schedule maintained</text>
+  <rect x="34" y="370" width="652" height="34" rx="4" fill="#20242c"></rect>
+  <text x="50" y="391" fill="#d6d9df" font-size="10">Reading: resilience depends on intake, pumps, cooling circuit and local thresholds.</text>
+  <text x="26" y="420" fill="#8b909b" font-size="9">SOURCES: MVM, Nuclearelectrica, Kozloduy NPP. Simplified, not to scale.</text>
+</svg>

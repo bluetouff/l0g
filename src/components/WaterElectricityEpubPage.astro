@@ -1,0 +1,459 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const isFr = lang === 'fr';
+const pagePath = isFr ? '/publications/eau-electricite/' : '/en/publications/water-electricity/';
+const alternatePath = isFr ? '/en/publications/water-electricity/' : '/publications/eau-electricite/';
+const epubPath = isFr ? '/publications/eau-electricite-europe-l0g.epub' : '/publications/water-electricity-europe-l0g.epub';
+const coverPath = isFr ? '/publications/eau-electricite-cover.png' : '/publications/water-electricity-cover.png';
+const epubFile = isFr ? '../../../public/publications/eau-electricite-europe-l0g.epub' : '../../../public/publications/water-electricity-europe-l0g.epub';
+const epubBytes = readFileSync(new URL(epubFile, import.meta.url));
+const epubSize = `${new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 1 }).format(epubBytes.length / 1024 / 1024)} MB`;
+const epubSha256 = createHash('sha256').update(epubBytes).digest('hex');
+const pageUrl = `${SITE_URL}${pagePath}`;
+const title = isFr ? 'L’eau derrière l’électricité' : 'The Water Behind Electricity';
+const seoTitle = isFr ? 'Eau et électricité en Europe : l’enquête EPUB | l0g' : 'Water and electricity in Europe: illustrated EPUB | l0g';
+const ogTitle = isFr ? 'Du Danube aux centrales : l’eau derrière l’électricité' : 'From the Danube to power plants: water behind electricity';
+const description = isFr
+  ? 'Six enquêtes illustrées sur le Danube, les barrages, les centrales, le refroidissement et le coût de l’adaptation électrique.'
+  : 'Six illustrated investigations into the Danube, dams, power plants, cooling and the cost of adapting Europe’s electricity system.';
+const downloadName = isFr ? 'L-eau-derriere-l-electricite-l0g.epub' : 'The-Water-Behind-Electricity-l0g.epub';
+
+const chapters = isFr
+  ? [
+      { index: '01', title: 'Combien vaut un centimètre de Danube ?', summary: 'Niveau d’eau, prises et production préservée', href: '/posts/combien-vaut-un-centimetre-de-danube/' },
+      { index: '02', title: 'Le mégawatt humide que l’Europe ne sait pas compter', summary: 'Centrales, eau et registre européen manquant', href: '/posts/megawatt-humide-europe-eau-electricite/' },
+      { index: '03', title: 'Le degré de trop', summary: 'Rejets thermiques, seuils et besoin du réseau', href: '/posts/degre-de-trop-rejets-thermiques-nucleaire/' },
+      { index: '04', title: 'Le barrage qui choisit de ne pas produire', summary: 'Stocks, valeur de l’eau et arbitrage dans le temps', href: '/posts/barrage-choisit-ne-pas-produire/' },
+      { index: '05', title: 'Le modèle, la pompe et le prix de l’adéquation', summary: 'Ce que le modèle voit et ce que le système paie', href: '/posts/modele-pompe-prix-adequation/' },
+      { index: '06', title: 'Le prix du refroidissement', summary: 'Tours, air, eau recyclée, mer et adaptation', href: '/posts/prix-refroidissement-eau-electricite/' },
+    ]
+  : [
+      { index: '01', title: 'How much is one centimetre of Danube worth?', summary: 'Water levels, intakes and preserved generation', href: '/en/analysis/how-much-is-one-centimetre-of-danube-worth/' },
+      { index: '02', title: 'The wet megawatt Europe cannot count', summary: 'Power plants, water and Europe’s missing register', href: '/en/analysis/wet-megawatt-europe-water-electricity/' },
+      { index: '03', title: 'The extra degree', summary: 'Thermal discharges, limits and grid needs', href: '/en/analysis/the-extra-degree-thermal-discharges-nuclear/' },
+      { index: '04', title: 'The dam that chooses not to generate', summary: 'Stocks, water value and decisions through time', href: '/en/analysis/the-dam-that-chooses-not-to-generate/' },
+      { index: '05', title: 'The model, the pump and the price of adequacy', summary: 'What the model sees and what the system pays', href: '/en/analysis/model-pump-price-of-adequacy/' },
+      { index: '06', title: 'The price of cooling', summary: 'Towers, air, reclaimed water, sea and adaptation', href: '/en/analysis/price-of-cooling-water-electricity/' },
+    ];
+
+const tools = isFr
+  ? [
+      ['Un centimètre de Danube', '/outils/prix-centimetre-danube/'],
+      ['Le compteur de mégawatt humide', '/outils/compteur-megawatt-humide/'],
+      ['Les seuils de rejet thermique', '/outils/seuils-rejets-thermiques/'],
+      ['L’arbitre du réservoir', '/outils/arbitre-reservoir/'],
+      ['Le modèle et la pompe', '/outils/modele-pompe-adequation/'],
+      ['Le devis du refroidissement', '/outils/devis-adaptation-refroidissement/'],
+    ]
+  : [
+      ['One centimetre of Danube', '/en/tools/value-of-danube-centimetre/'],
+      ['The wet megawatt counter', '/en/tools/wet-megawatt-counter/'],
+      ['Thermal discharge thresholds', '/en/tools/thermal-discharge-thresholds/'],
+      ['The reservoir arbitrator', '/en/tools/reservoir-arbitrator/'],
+      ['The model and the pump', '/en/tools/model-pump-adequacy/'],
+      ['The cooling adaptation quote', '/en/tools/cooling-adaptation-quote/'],
+    ];
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: isFr ? 'L’eau derrière l’électricité' : 'The Water Behind Electricity',
+  description,
+  author: { '@id': AUTHOR_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  datePublished: '2026-08-21',
+  dateModified: '2026-08-21',
+  inLanguage: lang,
+  bookFormat: 'https://schema.org/EBook',
+  isAccessibleForFree: true,
+  url: pageUrl,
+  image: `${SITE_URL}${coverPath}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.href}` })),
+  associatedMedia: {
+    '@type': 'MediaObject',
+    contentUrl: `${SITE_URL}${epubPath}`,
+    encodingFormat: 'application/epub+zip',
+    contentSize: `${epubBytes.length} bytes`,
+    sha256: epubSha256,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  seoTitle={seoTitle}
+  ogTitle={ogTitle}
+  description={description}
+  lang={lang}
+  ogLocale={isFr ? 'fr_FR' : 'en_US'}
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}/publications/eau-electricite/` },
+    { hreflang: 'en', href: `${SITE_URL}/en/publications/water-electricity/` },
+    { hreflang: 'x-default', href: `${SITE_URL}/publications/eau-electricite/` },
+  ]}
+  ogImage={coverPath}
+  ogImageAlt={isFr ? 'Couverture de L’eau derrière l’électricité' : 'Cover of The Water Behind Electricity'}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
+
+  <article class="epub-page rise" data-pagefind-body>
+    <section class="publication-hero">
+      <div class="cover-stage" aria-label={isFr ? 'Couverture de L’eau derrière l’électricité' : 'Cover of The Water Behind Electricity'}>
+        <div class="cover-aura" aria-hidden="true"></div>
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · {isFr ? 'enquête' : 'investigation'} · 2026</span>
+          <img
+            src={coverPath}
+            width="1600"
+            height="2560"
+            alt={isFr ? 'Couverture de L’eau derrière l’électricité, enquête en sources ouvertes' : 'Cover of The Water Behind Electricity, an open-source investigation'}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <span class="cover-caption">{isFr ? 'Édition numérique · août 2026' : 'Digital edition · August 2026'}</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="mono-label glow">// {isFr ? 'publication l0g' : 'l0g publication'}</p>
+        <h1>{isFr ? <>L’eau derrière <span>l’électricité</span></> : <>The water behind <span>electricity</span></>}</h1>
+        <p class="hero-deck">{isFr ? 'Le combustible invisible du système électrique.' : 'The power system’s invisible fuel.'}</p>
+        <p class="hero-lede">
+          {isFr
+            ? 'Du Danube aux tours de refroidissement, cette édition suit l’eau qui permet de produire, celle que les barrages gardent et le coût des solutions quand elle vient à manquer.'
+            : 'From the Danube to cooling towers, this edition follows the water that enables generation, the water dams hold and the cost of responding when it becomes scarce.'}
+        </p>
+
+        <div class="hero-actions">
+          <a class="download-action" href={epubPath} download={downloadName}>
+            <span>{isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'}</span>
+            <small>{isFr ? 'Gratuit' : 'Free'} · {epubSize}</small>
+          </a>
+          <a class="contents-action" href="#sommaire">
+            {isFr ? 'Parcourir les six enquêtes' : 'Browse the six investigations'} <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <ul class="proof-line" aria-label={isFr ? 'Caractéristiques de l’édition' : 'Edition features'}>
+          <li>{isFr ? '6 enquêtes' : '6 investigations'}</li>
+          <li>{isFr ? '20 infographies' : '20 infographics'}</li>
+          <li>{isFr ? '6 outils liés' : '6 linked tools'}</li>
+          <li>{isFr ? 'Sources cliquables' : 'Clickable sources'}</li>
+          <li>CC BY 4.0</li>
+        </ul>
+
+        <a class="language-link" href={alternatePath}>{isFr ? 'Read in English' : 'Lire en français'} <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="reading-section">
+      <div class="section-index" aria-hidden="true">01</div>
+      <div class="reading-heading">
+        <p class="mono-label glow">{isFr ? 'une chaîne physique en six étapes' : 'one physical chain in six steps'}</p>
+        <h2>{isFr ? 'Suivre le mégawatt jusqu’à sa source d’eau.' : 'Follow the megawatt back to its water source.'}</h2>
+      </div>
+      <div class="reading-copy">
+        <p>
+          {isFr
+            ? 'Le sujet paraît technique, mais la question de départ est très concrète : que se passe-t-il quand l’eau est trop basse, trop chaude, gardée pour plus tard ou simplement absente des registres de capacité ?'
+            : 'The subject may sound technical, but the opening question is concrete: what happens when water is too low, too warm, held for later or simply missing from capacity registers?'}
+        </p>
+        <p>
+          {isFr
+            ? 'L’EPUB conserve l’ordre de lecture, les liens vers les textes canoniques, les sources, les limites et les alternatives textuelles des infographies. Le dossier reste ainsi lisible hors ligne tout en gardant un chemin vers chaque correction publique.'
+            : 'The EPUB preserves reading order, canonical links, sources, limitations and text alternatives for the infographics. It remains readable offline while retaining a path to every public correction.'}
+        </p>
+      </div>
+    </section>
+
+    <section class="visuals-section" aria-labelledby="visuals-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">02</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'lecture panoramique' : 'panoramic view'}</p>
+          <h2 id="visuals-title">{isFr ? 'Le trajet invisible d’un mégawatt.' : 'The invisible journey of a megawatt.'}</h2>
+          <p>{isFr ? 'Deux cartes relient le niveau du fleuve, la centrale, le réseau et la facture de l’adaptation.' : 'Two maps connect river level, the power plant, the grid and the adaptation bill.'}</p>
+        </div>
+      </header>
+
+      <div class="visuals-stack">
+        <figure class="visual-card">
+          <div class="visual-card-heading"><span>01</span><div><p>{isFr ? 'chaîne physique' : 'physical chain'}</p><h3>{isFr ? 'De l’eau au mégawatt livré' : 'From water to delivered megawatt'}</h3></div></div>
+          <p class="mobile-pan-note">{isFr ? 'Balayez horizontalement pour lire la carte.' : 'Swipe horizontally to read the map.'}</p>
+          <div class="visual-scroll" tabindex="0" aria-label={isFr ? 'Schéma de la chaîne entre eau, centrale, réseau et adaptation' : 'Diagram linking water, power plant, grid and adaptation'}>
+            <svg class="wide-visual" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={isFr ? 'Du niveau d’eau au coût de l’électricité adaptée' : 'From water level to the cost of adapted electricity'}>
+              <rect width="900" height="500" fill="#061018" />
+              <path d="M72 258 C170 222 250 292 348 250 S530 216 642 254 S780 278 842 238" fill="none" stroke="#36b9c7" stroke-width="20" opacity=".35" />
+              <path d="M72 258 C170 222 250 292 348 250 S530 216 642 254 S780 278 842 238" fill="none" stroke="#65e4d2" stroke-width="3" />
+              {[
+                [95, 105, isFr ? 'EAU' : 'WATER', isFr ? 'niveau · débit · température' : 'level · flow · temperature', '#65e4d2'],
+                [300, 330, isFr ? 'CENTRALE' : 'POWER PLANT', isFr ? 'prise · pompe · refroidissement' : 'intake · pump · cooling', '#7aa2f7'],
+                [520, 92, isFr ? 'RÉSEAU' : 'GRID', isFr ? 'demande · imports · réserve' : 'demand · imports · reserve', '#f5b13d'],
+                [700, 326, isFr ? 'ADAPTATION' : 'ADAPTATION', isFr ? 'coût par MWh protégé' : 'cost per protected MWh', '#ff6b9b'],
+              ].map(([x, y, label, detail, color]) => (
+                <g>
+                  <rect x={x} y={y} width="170" height="84" rx="10" fill="#111a24" stroke={String(color)} stroke-width="2" />
+                  <text x={Number(x) + 16} y={Number(y) + 31} fill={String(color)} font-family="ui-monospace,monospace" font-size="15" font-weight="800">{label}</text>
+                  <text x={Number(x) + 16} y={Number(y) + 57} fill="#c2cbd4" font-family="ui-monospace,monospace" font-size="10">{detail}</text>
+                </g>
+              ))}
+              <text x="450" y="466" text-anchor="middle" fill="#8996a3" font-family="ui-monospace,monospace" font-size="12">{isFr ? 'La capacité nominale ne suffit pas : le lieu et l’eau décident de la capacité disponible.' : 'Nameplate capacity is not enough: place and water determine available capacity.'}</text>
+            </svg>
+          </div>
+          <figcaption>{isFr ? 'L’enquête relie une contrainte locale à ses conséquences électriques et au prix des réponses.' : 'The investigation links a local constraint to its power-system consequences and the price of responding.'}</figcaption>
+        </figure>
+
+        <figure class="visual-card">
+          <div class="visual-card-heading"><span>02</span><div><p>{isFr ? 'ordre de lecture' : 'reading order'}</p><h3>{isFr ? 'Six questions, du fleuve à l’investissement' : 'Six questions, from river to investment'}</h3></div></div>
+          <p class="mobile-pan-note">{isFr ? 'Balayez horizontalement pour lire la carte.' : 'Swipe horizontally to read the map.'}</p>
+          <div class="visual-scroll" tabindex="0" aria-label={isFr ? 'Carte des six chapitres de l’enquête' : 'Map of the investigation’s six chapters'}>
+            <svg class="wide-visual" viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={isFr ? 'Les six étapes de l’enquête sur l’eau et l’électricité' : 'The six stages of the water and electricity investigation'}>
+              <rect width="900" height="470" fill="#061018" />
+              <path d="M115 164 H785 M115 306 H785" stroke="#304353" stroke-width="3" />
+              {[
+                [80, 110, '01', isFr ? 'CENTIMÈTRE' : 'CENTIMETRE', isFr ? 'Que vaut le niveau ?' : 'What is level worth?'],
+                [310, 110, '02', isFr ? 'REGISTRE' : 'REGISTER', isFr ? 'Où dépend-on de l’eau ?' : 'Where does water matter?'],
+                [540, 110, '03', isFr ? 'DEGRÉ' : 'DEGREE', isFr ? 'Qui autorise la chaleur ?' : 'Who permits the heat?'],
+                [80, 252, '04', isFr ? 'RÉSERVOIR' : 'RESERVOIR', isFr ? 'Quand garder l’eau ?' : 'When should water wait?'],
+                [310, 252, '05', isFr ? 'ADÉQUATION' : 'ADEQUACY', isFr ? 'Quel coût le modèle oublie ?' : 'What cost does the model omit?'],
+                [540, 252, '06', isFr ? 'DEVIS' : 'QUOTE', isFr ? 'Quelle adaptation choisir ?' : 'Which adaptation fits?'],
+              ].map(([x, y, index, label, detail], rowIndex) => (
+                <g>
+                  <circle cx={Number(x) + 30} cy={Number(y) + 45} r="27" fill={rowIndex === 5 ? '#ff6b9b' : '#65e4d2'} />
+                  <text x={Number(x) + 30} y={Number(y) + 51} text-anchor="middle" fill="#061018" font-family="ui-monospace,monospace" font-size="15" font-weight="900">{index}</text>
+                  <text x={Number(x) + 68} y={Number(y) + 35} fill="#f3f6f8" font-family="ui-monospace,monospace" font-size="14" font-weight="800">{label}</text>
+                  <text x={Number(x) + 68} y={Number(y) + 58} fill="#9ba8b4" font-family="ui-monospace,monospace" font-size="10">{detail}</text>
+                </g>
+              ))}
+              <rect x="720" y="138" width="125" height="194" rx="12" fill="#101a24" stroke="#f5b13d" />
+              <text x="782" y="178" text-anchor="middle" fill="#f5b13d" font-family="ui-monospace,monospace" font-size="12" font-weight="800">{isFr ? 'RÉSULTAT' : 'OUTPUT'}</text>
+              <text x="782" y="216" text-anchor="middle" fill="#f3f6f8" font-family="ui-monospace,monospace" font-size="18" font-weight="900">20</text>
+              <text x="782" y="237" text-anchor="middle" fill="#9ba8b4" font-family="ui-monospace,monospace" font-size="10">{isFr ? 'infographies' : 'infographics'}</text>
+              <text x="782" y="276" text-anchor="middle" fill="#f3f6f8" font-family="ui-monospace,monospace" font-size="18" font-weight="900">6</text>
+              <text x="782" y="297" text-anchor="middle" fill="#9ba8b4" font-family="ui-monospace,monospace" font-size="10">{isFr ? 'outils' : 'tools'}</text>
+              <text x="450" y="430" text-anchor="middle" fill="#8996a3" font-family="ui-monospace,monospace" font-size="12">{isFr ? 'Chaque chapitre conserve ses sources, ses limites et son lien canonique.' : 'Every chapter retains its sources, limits and canonical link.'}</text>
+            </svg>
+          </div>
+          <figcaption>{isFr ? 'Le parcours évite le jargon en partant de questions observables, puis remonte vers le système.' : 'The reading path avoids jargon by starting with observable questions before moving to the wider system.'}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="contents-section" id="sommaire">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">03</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'architecture de l’édition' : 'edition structure'}</p>
+          <h2>{isFr ? 'Six enquêtes, un ordre de lecture.' : 'Six investigations, one reading order.'}</h2>
+        </div>
+      </header>
+
+      <ol class="chapter-grid">
+        {chapters.map((chapter) => (
+          <li>
+            <a href={chapter.href}>
+              <span class="chapter-index">{chapter.index}</span>
+              <span class="chapter-copy"><strong>{chapter.title}</strong><small>{chapter.summary}</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="tools-section" aria-labelledby="tools-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">04</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'prolonger la lecture' : 'extend the reading'}</p>
+          <h2 id="tools-title">{isFr ? 'Six outils pour tester les mécanismes.' : 'Six tools for testing the mechanisms.'}</h2>
+          <p>{isFr ? 'Les calculateurs restent sur le site pour garder l’EPUB léger, sûr et lisible hors ligne. Aucun compte et aucun tracker.' : 'The calculators remain on the site so the EPUB stays light, safe and readable offline. No account and no tracker.'}</p>
+        </div>
+      </header>
+      <ul class="tool-grid">
+        {tools.map(([label, href], index) => <li><a href={href}><span>{String(index + 1).padStart(2, '0')}</span><strong>{label}</strong><b aria-hidden="true">↗</b></a></li>)}
+      </ul>
+    </section>
+
+    <section class="edition-section">
+      <div class="edition-panel">
+        <div>
+          <p class="mono-label glow">{isFr ? 'édition vérifiable' : 'verifiable edition'}</p>
+          <h2>{isFr ? 'Un volume autonome, relié aux sources.' : 'A standalone volume linked to its sources.'}</h2>
+          <p>
+            {isFr
+              ? 'Le fichier EPUB 3 contient un sommaire structuré, un ordre de lecture explicite, les infographies adaptées et les liens vers les six articles publics. Aucun formulaire ni compte n’est requis pour le télécharger.'
+              : 'The EPUB 3 file contains a structured table of contents, an explicit reading order, adapted infographics and links to all six public articles. No form or account is required to download it.'}
+          </p>
+        </div>
+
+        <dl class="file-card">
+          <div><dt>Format</dt><dd>EPUB 3</dd></div>
+          <div><dt>{isFr ? 'Langue' : 'Language'}</dt><dd>{isFr ? 'Français' : 'English'}</dd></div>
+          <div><dt>{isFr ? 'Révision' : 'Revision'}</dt><dd>{isFr ? '21 août 2026' : '21 August 2026'}</dd></div>
+          <div><dt>{isFr ? 'Taille' : 'Size'}</dt><dd>{epubSize}</dd></div>
+          <div class="checksum"><dt>SHA-256</dt><dd>{epubSha256}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="method-section">
+      <div class="method-mark" aria-hidden="true">{isFr ? 'preuve' : 'proof'}</div>
+      <div>
+        <p class="mono-label glow">{isFr ? 'méthode l0g' : 'l0g method'}</p>
+        <h2>{isFr ? 'Les chiffres gardent leur dénominateur.' : 'Every figure keeps its denominator.'}</h2>
+        <p>
+          {isFr
+            ? 'Un niveau de fleuve, un coût de chantier, une capacité nominale et un MWh réellement préservé ne décrivent pas la même chose. L’édition conserve les unités, les dates, les périmètres et les limites qui permettent de les interpréter.'
+            : 'River level, construction cost, nameplate capacity and an actually preserved MWh do not describe the same thing. The edition retains the units, dates, scope and limits needed to interpret them.'}
+        </p>
+        <div class="method-links">
+          <a href={isFr ? '/protocole-editorial/' : '/en/about/'}>{isFr ? 'Lire le protocole éditorial' : 'Read about l0g'}</a>
+          <a href={isFr ? '/outils/' : '/en/tools/'}>{isFr ? 'Découvrir tous les outils' : 'Discover all tools'}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-download" data-pagefind-ignore>
+      <div>
+        <p class="mono-label glow">{isFr ? 'lecture complète' : 'complete edition'}</p>
+        <h2>{isFr ? 'Emporter les six enquêtes dans un seul volume.' : 'Take all six investigations in one volume.'}</h2>
+        <p>{isFr ? 'Gratuit, sans formulaire et sous licence CC BY 4.0.' : 'Free, without a form, under a CC BY 4.0 licence.'}</p>
+      </div>
+      <a href={epubPath} download={downloadName}>
+        {isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'}
+        <span>{epubSize} · EPUB 3</span>
+      </a>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .epub-page { max-width: 76rem; margin: 0 auto; }
+  .publication-hero {
+    position: relative; display: grid; grid-template-columns: minmax(15rem,.78fr) minmax(0,1.22fr); align-items: center; overflow: hidden;
+    gap: clamp(2.5rem,7vw,6.5rem); min-height: 42rem; padding: clamp(2rem,4vw,3.5rem) 0 clamp(4rem,8vw,7rem); border-bottom: 1px solid var(--color-line);
+  }
+  .publication-hero::before { position: absolute; top: 0; right: 0; width: min(42rem,70%); height: 1px; background: linear-gradient(90deg,transparent,var(--color-signal)); content: ''; }
+  .cover-stage { position: relative; display: flex; flex-direction: column; align-items: center; min-width: 0; perspective: 1200px; }
+  .cover-aura { position: absolute; inset: 18% -8% 8%; border-radius: 50%; background: radial-gradient(circle at 32% 22%,color-mix(in srgb,var(--color-signal) 27%,transparent),transparent 44%),radial-gradient(circle at 78% 74%,color-mix(in srgb,var(--color-accent) 18%,transparent),transparent 48%); filter: blur(32px); opacity: .76; }
+  .book-shell { position: relative; display: grid; grid-template-columns: 1.2rem minmax(0,19rem); width: min(100%,20.2rem); filter: drop-shadow(0 32px 42px rgba(0,0,0,.45)); transform: rotateY(-5deg) rotateZ(-.7deg); transform-style: preserve-3d; }
+  .book-shell::after { position: absolute; right: -.35rem; bottom: .35rem; width: .5rem; height: calc(100% - .7rem); border-radius: 0 6px 6px 0; background: repeating-linear-gradient(0deg,#e4e0d8 0 1px,#b9b6af 1px 2px); content: ''; transform: translateZ(-1px); }
+  .book-spine { display: flex; align-items: flex-end; justify-content: center; border: 1px solid color-mix(in srgb,var(--color-signal) 48%,var(--color-line)); border-right: 0; border-radius: 8px 0 0 9px; padding: .9rem 0 .75rem; background: #050b0f; color: #75c8bc; font-family: var(--font-mono); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .book-shell img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb,var(--color-signal) 36%,var(--color-line)); border-radius: 0 9px 9px 0; background: #050608; }
+  .cover-caption { position: relative; margin-top: 1.4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; }
+  .hero-copy { min-width: 0; }
+  .hero-copy h1 { max-width: 12ch; margin: .45rem 0 .8rem; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(3rem,7.2vw,6.4rem); font-weight: 760; letter-spacing: -.065em; line-height: .9; }
+  .hero-copy h1 span { display: block; color: var(--color-accent); font-weight: 610; }
+  .hero-deck { max-width: 34rem; margin: 1.5rem 0 0; color: var(--color-signal); font-family: var(--font-read); font-size: clamp(1.25rem,2.4vw,1.8rem); font-weight: 590; letter-spacing: -.025em; line-height: 1.25; }
+  .hero-lede { max-width: 40rem; margin: 1.25rem 0 0; color: var(--color-prose); font-family: var(--font-read); font-size: 1.03rem; line-height: 1.75; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: .8rem; margin-top: 2rem; }
+  .download-action,.contents-action { display: inline-flex; align-items: center; justify-content: center; min-height: 3.7rem; border-radius: 6px; text-decoration: none; transition: border-color 160ms ease,background 160ms ease,transform 160ms ease; }
+  .download-action { flex-direction: column; align-items: flex-start; min-width: 13.5rem; padding: .72rem 1.15rem; background: var(--color-signal); color: #071113; font-weight: 850; }
+  .download-action small { margin-top: .12rem; opacity: .72; font-family: var(--font-mono); font-size: .63rem; }
+  .contents-action { border: 1px solid var(--color-line); padding: .8rem 1.05rem; color: var(--color-bright); }
+  .download-action:hover,.contents-action:hover { transform: translateY(-2px); }
+  .contents-action:hover { border-color: var(--color-signal); }
+  .proof-line { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+  .proof-line li { border: 1px solid var(--color-line); border-radius: 999px; padding: .35rem .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .language-link { display: inline-block; margin-top: 1.1rem; color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; text-decoration: none; }
+  .section-index { color: color-mix(in srgb,var(--color-signal) 56%,var(--color-muted)); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .16em; }
+  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.2rem,4vw,3.5rem); padding: clamp(3.5rem,8vw,6rem) 0; border-bottom: 1px solid var(--color-line); }
+  .reading-heading h2,.section-heading h2,.edition-panel h2,.method-section h2,.final-download h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.9rem,4vw,3.35rem); letter-spacing: -.045em; line-height: 1.02; }
+  .reading-copy p,.section-heading p:last-child,.edition-panel p,.method-section > div:last-child > p,.final-download p { color: var(--color-prose); font-family: var(--font-read); line-height: 1.72; }
+  .reading-copy p:first-child { margin-top: 0; }
+  .section-heading { display: grid; grid-template-columns: 4rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3.5rem); align-items: start; }
+  .section-heading > div:last-child { max-width: 52rem; }
+  .section-heading p:last-child { max-width: 48rem; margin-top: 1rem; }
+  .visuals-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .visuals-stack { display: grid; gap: clamp(2.5rem,6vw,4.5rem); margin-top: 2.4rem; }
+  .visual-card { margin: 0; overflow: hidden; border: 1px solid color-mix(in srgb,var(--color-signal) 38%,var(--color-line)); border-radius: 16px; background: linear-gradient(145deg,rgba(8,20,29,.96),rgba(5,10,16,.98)); box-shadow: 0 26px 54px rgba(0,0,0,.25); }
+  .visual-card-heading { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; align-items: center; padding: 1rem 1.15rem; border-bottom: 1px solid var(--color-line); }
+  .visual-card-heading > span { color: var(--color-amber); font-family: var(--font-mono); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
+  .visual-card-heading p { margin: 0; color: var(--color-signal); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .09em; text-transform: uppercase; }
+  .visual-card-heading h3 { margin: .25rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.25rem,3vw,2rem); }
+  .visual-scroll { max-width: 100%; overflow: hidden; background: #030a11; scrollbar-color: var(--color-signal) #07121b; }
+  .wide-visual { display: block; width: 100%; height: auto; }
+  .visual-scroll:focus-visible { outline: 2px solid var(--color-signal); outline-offset: -2px; }
+  .visual-link { position: relative; display: block; width: 100%; }
+  .visual-link img { display: block; width: 100%; height: auto; }
+  .visual-zoom { position: absolute; right: 1rem; bottom: 1rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: .5rem .72rem; background: rgba(3,10,17,.86); color: #fff; font-family: var(--font-mono); font-size: .64rem; backdrop-filter: blur(8px); }
+  .mobile-pan-note { display: none; }
+  .visual-card figcaption { padding: .9rem 1.15rem 1rem; color: var(--color-muted); font-family: var(--font-read); font-size: .82rem; line-height: 1.55; }
+  .contents-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .chapter-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 2.3rem 0 0; padding: 1px; background: var(--color-line); list-style: none; }
+  .chapter-grid li { min-width: 0; background: var(--color-bg); }
+  .chapter-grid a { display: grid; grid-template-columns: 2.2rem minmax(0,1fr) auto; gap: .9rem; align-items: start; min-height: 7.3rem; padding: 1.2rem; color: inherit; text-decoration: none; transition: background 160ms ease; }
+  .chapter-grid a:hover { background: color-mix(in srgb,var(--color-signal) 8%,var(--color-bg)); }
+  .chapter-index { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; }
+  .chapter-copy { display: grid; gap: .45rem; }
+  .chapter-copy strong { color: var(--color-bright); font-family: var(--font-read); font-size: 1.08rem; line-height: 1.25; }
+  .chapter-copy small { color: var(--color-muted); font-size: .75rem; line-height: 1.45; }
+  .chapter-arrow { color: var(--color-amber); }
+  .tools-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .tool-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .75rem; margin: 2.2rem 0 0; padding: 0; list-style: none; }
+  .tool-grid li { min-width: 0; }
+  .tool-grid a { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .75rem; align-items: center; min-height: 5.2rem; border: 1px solid var(--color-line); border-radius: 10px; padding: .9rem; background: color-mix(in srgb,var(--color-surface) 84%,#05151b); color: inherit; text-decoration: none; transition: border-color 160ms ease,transform 160ms ease; }
+  .tool-grid a:hover { border-color: var(--color-signal); transform: translateY(-2px); }
+  .tool-grid span { color: var(--color-signal); font-family: var(--font-mono); font-size: .68rem; }
+  .tool-grid strong { color: var(--color-bright); font-family: var(--font-read); font-size: .94rem; line-height: 1.3; }
+  .tool-grid b { color: var(--color-amber); font-weight: 500; }
+  .edition-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .edition-panel { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); gap: clamp(2rem,6vw,5rem); align-items: start; border: 1px solid var(--color-line); border-radius: 14px; padding: clamp(1.4rem,4vw,2.6rem); background: color-mix(in srgb,var(--color-surface) 82%,#06151b); }
+  .edition-panel p { max-width: 43rem; }
+  .file-card { margin: 0; border: 1px solid color-mix(in srgb,var(--color-signal) 38%,var(--color-line)); border-radius: 10px; padding: .45rem 1rem; background: rgba(2,11,16,.45); }
+  .file-card > div { display: flex; justify-content: space-between; gap: 1rem; padding: .72rem 0; border-bottom: 1px solid var(--color-line); }
+  .file-card > div:last-child { border-bottom: 0; }
+  .file-card dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .file-card dd { margin: 0; color: var(--color-bright); font-family: var(--font-mono); font-size: .7rem; text-align: right; }
+  .file-card .checksum { display: grid; }
+  .file-card .checksum dd { overflow-wrap: anywhere; color: var(--color-signal); text-align: left; line-height: 1.5; }
+  .method-section { display: grid; grid-template-columns: minmax(10rem,.45fr) minmax(0,1.55fr); gap: clamp(2rem,7vw,6rem); align-items: center; padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .method-mark { overflow: hidden; color: color-mix(in srgb,var(--color-signal) 25%,transparent); font-family: var(--font-display); font-size: clamp(3.5rem,9vw,7.5rem); font-weight: 900; letter-spacing: -.07em; line-height: .8; writing-mode: vertical-rl; }
+  .method-links { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; margin-top: 1.4rem; }
+  .method-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: .72rem; }
+  .final-download { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 2rem; align-items: center; margin: clamp(3.5rem,8vw,6.5rem) 0 1rem; border: 1px solid color-mix(in srgb,var(--color-amber) 40%,var(--color-line)); border-radius: 14px; padding: clamp(1.5rem,4vw,2.5rem); background: linear-gradient(120deg,color-mix(in srgb,var(--color-amber) 8%,var(--color-surface)),var(--color-surface)); }
+  .final-download h2 { max-width: 18ch; font-size: clamp(1.8rem,3.7vw,3rem); }
+  .final-download > div > p:last-child { margin-bottom: 0; }
+  .final-download > a { display: grid; gap: .22rem; min-width: 13.5rem; border-radius: 7px; padding: .9rem 1.15rem; background: var(--color-amber); color: #111008; font-weight: 850; text-decoration: none; }
+  .final-download > a span { opacity: .7; font-family: var(--font-mono); font-size: .63rem; }
+  @media (max-width: 820px) {
+    .publication-hero { grid-template-columns: 1fr; min-height: 0; }
+    .cover-stage { width: min(100%,22rem); margin: 0 auto; }
+    .reading-section { grid-template-columns: 2.2rem 1fr; }
+    .reading-copy { grid-column: 2; }
+    .edition-panel,.method-section { grid-template-columns: 1fr; }
+    .method-mark { display: none; }
+    .final-download { grid-template-columns: 1fr; }
+    .tool-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  }
+  @media (max-width: 640px) {
+    .section-heading { grid-template-columns: 2.2rem minmax(0,1fr); }
+    .chapter-grid { grid-template-columns: 1fr; }
+    .visual-card-heading { grid-template-columns: 1fr; gap: .45rem; }
+    .mobile-pan-note { display: block; margin: 0; border-bottom: 1px solid var(--color-line); padding: .65rem 1rem; color: var(--color-amber); font-family: var(--font-mono); font-size: .6rem; line-height: 1.5; }
+    .visual-scroll { overflow-x: auto; overscroll-behavior-inline: contain; }
+    .wide-visual { width: 48rem; max-width: none; }
+    .visual-link { width: 62rem; max-width: none; }
+    .visual-zoom { position: sticky; right: 1rem; float: right; margin: -3.1rem 1rem .7rem 0; }
+    .hero-actions a { width: 100%; }
+    .download-action { align-items: center; }
+    .proof-line li { flex: 1 1 calc(50% - .45rem); text-align: center; }
+    .edition-panel { padding: 1rem; }
+    .tool-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .download-action,.contents-action,.chapter-grid a,.tool-grid a { transition: none; }
+    .download-action:hover,.contents-action:hover { transform: none; }
+  }
+</style>

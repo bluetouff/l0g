@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesures prises en Roumanie pour rediriger une partie du Danube vers la centrale de Cernavoda" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="430" fill="#0c0d10"></rect>
+  <text x="26" y="34" fill="#5eead4" font-size="15" font-weight="700">// Cernavodă : transformer le fleuve pour gagner du temps</text>
+  <text x="26" y="56" fill="#8b909b" font-size="10">Les travaux ont relevé localement le niveau, sans empêcher l'arrêt final de l'unité 2.</text>
+  <path d="M44 112 C150 82 254 146 354 116 C458 84 554 116 676 92" fill="none" stroke="#1c5d79" stroke-width="46" stroke-linecap="round"></path>
+  <path d="M44 112 C150 82 254 146 354 116 C458 84 554 116 676 92" fill="none" stroke="#5eead4" stroke-width="2" stroke-dasharray="7 6"></path>
+  <rect x="104" y="84" width="76" height="40" rx="4" fill="#20242c" stroke="#f5b13d"></rect>
+  <text x="120" y="108" fill="#f5b13d" font-size="10" font-weight="700">DÉROCTAGE</text>
+  <rect x="248" y="126" width="76" height="40" rx="4" fill="#20242c" stroke="#7aa2f7"></rect>
+  <text x="266" y="150" fill="#7aa2f7" font-size="10" font-weight="700">DRAGAGE</text>
+  <g transform="translate(390 86)">
+    <rect x="0" y="0" width="48" height="20" rx="3" fill="#ff4d87"></rect>
+    <rect x="56" y="8" width="48" height="20" rx="3" fill="#ff4d87"></rect>
+    <rect x="112" y="0" width="48" height="20" rx="3" fill="#ff4d87"></rect>
+    <rect x="168" y="8" width="48" height="20" rx="3" fill="#ff4d87"></rect>
+    <text x="58" y="50" fill="#d6d9df" font-size="10">4 barges préparées</text>
+  </g>
+  <line x1="574" y1="122" x2="650" y2="154" stroke="#5eead4" stroke-width="3"></line>
+  <polygon points="650,154 638,154 643,143" fill="#5eead4"></polygon>
+  <text x="536" y="174" fill="#d6d9df" font-size="10">débit redirigé</text>
+  <text x="536" y="190" fill="#d6d9df" font-size="10">vers Cernavodă</text>
+  <rect x="40" y="232" width="194" height="116" rx="5" fill="#15171c"></rect>
+  <text x="56" y="258" fill="#5eead4" font-size="11" font-weight="700">28 JUILLET</text>
+  <text x="56" y="286" fill="#d6d9df" font-size="10">Unité 1 arrêtée</text>
+  <text x="56" y="306" fill="#8b909b" font-size="9">niveau exceptionnellement bas</text>
+  <text x="56" y="326" fill="#8b909b" font-size="9">arrêt contrôlé et préventif</text>
+  <rect x="263" y="232" width="194" height="116" rx="5" fill="#15171c"></rect>
+  <text x="279" y="258" fill="#f5b13d" font-size="11" font-weight="700">4 AOÛT</text>
+  <text x="279" y="286" fill="#d6d9df" font-size="10">Unité 2 au nominal</text>
+  <text x="279" y="306" fill="#8b909b" font-size="9">niveau relevé par les travaux</text>
+  <text x="279" y="326" fill="#8b909b" font-size="9">prévisions encore défavorables</text>
+  <rect x="486" y="232" width="194" height="116" rx="5" fill="#15171c"></rect>
+  <text x="502" y="258" fill="#ff4d87" font-size="11" font-weight="700">13 AOÛT</text>
+  <text x="502" y="286" fill="#d6d9df" font-size="10">Unité 2 arrêtée</text>
+  <text x="502" y="306" fill="#8b909b" font-size="9">le Danube continue de baisser</text>
+  <text x="502" y="326" fill="#8b909b" font-size="9">les deux unités restent sûres</text>
+  <text x="26" y="396" fill="#8b909b" font-size="9">SOURCES : Nuclearelectrica, MApN, Apele Române. Représentation fonctionnelle, non géographique.</text>
+</svg>

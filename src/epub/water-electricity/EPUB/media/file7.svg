@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decision chain between EDF, RTE, the ministry, ASNR and environmental monitoring for a temporary thermal-discharge modification" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="500" fill="#0c0d10"></rect>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Who turns a grid need into a prescription?</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">RTE does not authorise the discharge. ASNR does not define grid need alone.</text>
+  <rect x="42" y="91" width="180" height="70" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="58" y="116" fill="#7aa2f7" font-size="11" font-weight="800">WEATHER + HYDROLOGY</text>
+  <text x="58" y="137" fill="#c4cad2" font-size="9">forecasts, temperature, flow</text>
+  <rect x="42" y="205" width="180" height="82" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="58" y="230" fill="#f5b13d" font-size="11" font-weight="800">EDF</text>
+  <text x="58" y="250" fill="#c4cad2" font-size="9">requests the modification</text>
+  <text x="58" y="268" fill="#ff9abb" font-size="8">8 July file not public</text>
+  <rect x="270" y="91" width="180" height="82" rx="7" fill="#15171c" stroke="#ff4d87"></rect>
+  <text x="286" y="116" fill="#ff4d87" font-size="11" font-weight="800">RTE</text>
+  <text x="286" y="136" fill="#c4cad2" font-size="9">requires minimum output</text>
+  <text x="286" y="154" fill="#ff9abb" font-size="8">MW and exact reason not public</text>
+  <rect x="498" y="91" width="180" height="82" rx="7" fill="#15171c" stroke="#f5b13d"></rect>
+  <text x="514" y="116" fill="#f5b13d" font-size="11" font-weight="800">MINISTRY</text>
+  <text x="514" y="136" fill="#c4cad2" font-size="9">confirms public necessity</text>
+  <text x="514" y="154" fill="#ff9abb" font-size="8">9 July letter not public</text>
+  <rect x="270" y="226" width="180" height="88" rx="7" fill="#15171c" stroke="#5eead4"></rect>
+  <text x="286" y="251" fill="#5eead4" font-size="11" font-weight="800">ASNR</text>
+  <text x="286" y="271" fill="#c4cad2" font-size="9">assesses and decides</text>
+  <text x="286" y="289" fill="#91f2df" font-size="8">public decision 2026-DC-052</text>
+  <rect x="270" y="362" width="180" height="82" rx="7" fill="#15171c" stroke="#7aa2f7"></rect>
+  <text x="286" y="387" fill="#7aa2f7" font-size="11" font-weight="800">OPERATION</text>
+  <text x="286" y="407" fill="#c4cad2" font-size="9">adjusted output + monitoring</text>
+  <text x="286" y="425" fill="#91f2df" font-size="8">daily temperature reporting</text>
+  <path d="M132 161 V205" stroke="#8e96a2" stroke-width="2"></path>
+  <polygon points="132,205 126,195 138,195" fill="#8e96a2"></polygon>
+  <path d="M222 246 H270" stroke="#8e96a2" stroke-width="2"></path>
+  <polygon points="270,246 260,240 260,252" fill="#8e96a2"></polygon>
+  <path d="M360 173 V226" stroke="#8e96a2" stroke-width="2"></path>
+  <polygon points="360,226 354,216 366,216" fill="#8e96a2"></polygon>
+  <path d="M498 132 H450" stroke="#8e96a2" stroke-width="2"></path>
+  <polygon points="450,132 460,126 460,138" fill="#8e96a2"></polygon>
+  <path d="M360 314 V362" stroke="#8e96a2" stroke-width="2"></path>
+  <polygon points="360,362 354,352 366,352" fill="#8e96a2"></polygon>
+  <rect x="42" y="340" width="180" height="104" rx="7" fill="#111318" stroke="#39404c"></rect>
+  <text x="58" y="366" fill="#d9dde4" font-size="10" font-weight="800">MISSING FILES</text>
+  <text x="58" y="388" fill="#c1c7d0" font-size="8">• minimum output requested</text>
+  <text x="58" y="405" fill="#c1c7d0" font-size="8">• grid case without operation</text>
+  <text x="58" y="422" fill="#c1c7d0" font-size="8">• monitoring appendix D</text>
+  <text x="24" y="484" fill="#777f8c" font-size="9">SOURCE: ASNR 2026-DC-052. Institutional reading and l0g document inventory.</text>
+</svg>

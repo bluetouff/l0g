@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Une rivière peut conserver un débit important tout en devenant trop basse pour la prise d&#x27;eau d&#x27;une centrale" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="410" fill="#0c0d10"></rect>
+  <text x="26" y="34" fill="#5eead4" font-size="15" font-weight="700">// Assez de débit, pas assez de hauteur</text>
+  <text x="26" y="56" fill="#8b909b" font-size="10">Schéma simplifié d'une prise d'eau. La contrainte apparaît au droit de la pompe.</text>
+  <rect x="34" y="92" width="652" height="156" rx="6" fill="#12141a" stroke="#2a2e38"></rect>
+  <path d="M34 142 C130 130 202 154 292 140 C392 124 478 150 686 134 L686 248 L34 248 Z" fill="#1c5d79" opacity="0.92"></path>
+  <path d="M34 174 C130 162 202 186 292 172 C392 156 478 182 686 166" fill="none" stroke="#5eead4" stroke-width="2" stroke-dasharray="6 5"></path>
+  <text x="48" y="118" fill="#d6d9df" font-size="10">niveau nécessaire</text>
+  <text x="48" y="188" fill="#d6d9df" font-size="10">niveau observé</text>
+  <rect x="458" y="108" width="76" height="154" rx="5" fill="#22262f" stroke="#7aa2f7"></rect>
+  <rect x="478" y="154" width="36" height="52" rx="3" fill="#0c0d10" stroke="#ff4d87" stroke-width="2"></rect>
+  <circle cx="496" cy="180" r="8" fill="none" stroke="#ff4d87" stroke-width="2"></circle>
+  <line x1="496" y1="172" x2="496" y2="188" stroke="#ff4d87"></line>
+  <line x1="488" y1="180" x2="504" y2="180" stroke="#ff4d87"></line>
+  <text x="548" y="172" fill="#ff4d87" font-size="11" font-weight="700">prise de pompe</text>
+  <text x="548" y="190" fill="#d6d9df" font-size="9">submersion insuffisante</text>
+  <text x="548" y="206" fill="#d6d9df" font-size="9">pour le régime normal</text>
+  <line x1="446" y1="174" x2="522" y2="174" stroke="#f5b13d" stroke-width="2"></line>
+  <polygon points="522,174 512,168 512,180" fill="#f5b13d"></polygon>
+  <rect x="34" y="282" width="308" height="82" rx="5" fill="#15171c"></rect>
+  <text x="50" y="306" fill="#f5f6f8" font-size="11" font-weight="700">Unités en production</text>
+  <text x="50" y="334" fill="#5eead4" font-size="20" font-weight="700">~100 m³/s</text>
+  <text x="50" y="352" fill="#8b909b" font-size="9">besoin annoncé pour les quatre blocs de Paks</text>
+  <rect x="378" y="282" width="308" height="82" rx="5" fill="#15171c"></rect>
+  <text x="394" y="306" fill="#f5f6f8" font-size="11" font-weight="700">Quatre blocs arrêtés et refroidis</text>
+  <text x="394" y="334" fill="#7aa2f7" font-size="20" font-weight="700">max. 2,5 m³/s</text>
+  <text x="394" y="352" fill="#8b909b" font-size="9">le besoin de sûreté subsiste, mais devient bien plus faible</text>
+  <text x="26" y="394" fill="#8b909b" font-size="9">SOURCE : MVM Paksi Atomerőmű, communiqué du 30 juillet 2026. Schéma non à l'échelle.</text>
+</svg>
