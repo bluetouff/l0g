@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import CoolingAdaptationEstimator from '../../../components/CoolingAdaptationEstimator.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import { COOLING_QUOTE_DATA_DATE, COOLING_QUOTE_MODEL_VERSION, COOLING_QUOTE_SOURCES } from '../../../lib/cooling-adaptation-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'cooling-adaptation-quote');
+if (!tool) throw new Error('Cooling adaptation quote is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title, description: tool.en.description, url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'en',
+  isAccessibleForFree: true, softwareVersion: COOLING_QUOTE_MODEL_VERSION,
+  dateModified: COOLING_QUOTE_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: COOLING_QUOTE_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout lang="en" seoTitle="Cooling adaptation cost calculator | l0g" title="What does each MWh secured by cooling adaptation cost?" description="Test CAPEX, OPEX, construction outages, auxiliary power and water balances to calculate adaptation cost per secured MW and MWh." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <PageHero index="01" kicker="analysis tool" title="The cooling adaptation quote" description="A public cost becomes comparable only with secured MW, preserved MWh and the adaptation lifetime." secondary="Three teaching scenarios. No network call, uploaded data or investment recommendation." glyph="observe" accent="var(--color-signal)" stats={[
+    { value: `v${COOLING_QUOTE_MODEL_VERSION}`, label: 'auditable engine' },
+    { value: '2', label: 'water balances kept apart' },
+    { value: 'local', label: 'zero tracking' },
+  ]} />
+  <CoolingAdaptationEstimator lang="en" mode="full" />
+</BaseLayout>

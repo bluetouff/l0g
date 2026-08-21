@@ -1,0 +1,385 @@
+---
+title: "The price of cooling"
+seoTitle: "Power plant cooling: costs and adaptation options | l0g"
+ogTitle: "Paks, towers, air and sea: the real price of cooling"
+description: "Paks, cooling towers, dry cooling, reclaimed water or seawater: an investigation into the real cost of adapting power plant cooling."
+pubDate: 2026-08-21T14:20:00+02:00
+updatedDate: 2026-08-21T14:20:00+02:00
+tags: ["Europe", "electricity", "water", "cooling", "nuclear", "Paks", "adaptation", "investigation"]
+draft: false
+sourceArticle: "prix-refroidissement-eau-electricite"
+sourceUpdatedDate: 2026-08-21
+quickTake:
+  fact: "The Gazette issue governing the Paks works transfers HUF 6,164,698,854 to drought and water-shortage response. The announced project uses 145,000 m³ of rock. By 19 August, authorities attributed a local 10-15 cm rise and avoidance of a complete shutdown to the interventions."
+  importance: "A tower, river sill, air, reclaimed water or seawater does not eliminate the constraint. Each option changes the balance among withdrawal, consumption, efficiency, land, chemistry, ecology and the grid."
+  uncertainty: "Available public costs still lack the central denominator: capacity actually secured, derating avoided, lifetime and full environmental cost."
+---
+
+import CoolingAdaptationEstimator from '../../components/CoolingAdaptationEstimator.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*The Hungarian government knows the construction price: HUF 6.165 billion. It also knows the amount of rock: 145,000 m³. By 19 August it said engineering work had raised the Danube locally by 10 to 15 centimetres and prevented a complete shutdown of Paks. The decisive number is still missing: how many megawatt-hours did those centimetres actually buy?*
+
+This sixth and final instalment closes the investigation opened with [one centimetre of Danube](/en/analysis/how-much-is-one-centimetre-of-danube-worth/), followed by Europe's [wet megawatt](/en/analysis/wet-megawatt-europe-water-electricity/), [French thermal limits](/en/analysis/the-extra-degree-thermal-discharges-nuclear/), [water held behind dams](/en/analysis/the-dam-that-chooses-not-to-generate/) and [the physical price of adequacy](/en/analysis/model-pump-price-of-adequacy/).
+
+The first five articles documented dependence.
+
+The final one examines the bill for adaptation.
+
+The conclusion appears immediately: **no technology eliminates cooling**. It moves heat, water, cost or risk into another system.
+
+## Six billion forints for a few centimetres
+
+On 12 August 2026, Hungary classified the water-management works protecting Paks as priority investments under an emergency procedure.
+
+The plan combines a riverbed sill, bank works and two 80-metre barges that can be partially submerged. The decree accelerates the procedure and requires several hydraulic and environmental approvals to be regularised after construction has begun. The same decisions transfer exactly **HUF 6,164,698,854** to drought and water-shortage response. ([Hungarian Gazette, 12 August 2026](http://magyarkozlony.hu/hivatalos-lapok/ZESdc5X2ExtTq5liwRyP6a736c86c65e4/dokumentumok/9e53fcd585e531768b4cf37f04c76489a80f90ef/letoltes))
+
+State news agency MTI gives the physical scale: 35,000 m³ of rock for the first transverse ridge, followed by 110,000 m³ to stabilise the riverbed and protect the structure from erosion. The announced gross cost of **HUF 6.165 billion** also covers road reconstruction and riverbank restoration. ([MTI, 13 August 2026](https://mti.hu/hirek/2026/08/13/magyar-peter-tobb-mint-6-milliard-forintba-kerul-paks-es-dunaszentbenedek-kozotti))
+
+On 19 August, the prime minister said the measures had added roughly 10 to 15 centimetres locally, kept the two remaining turbines online and allowed a gradual restart of the other six to be planned. A complete shutdown had been avoided, although full output had not yet been confirmed. ([Reuters, 19 August 2026](https://www.reuters.com/business/energy/hungarys-nuclear-plant-avoids-shutdown-water-level-expected-stay-high-enough-2026-08-19/))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 446" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paks: public cost, known construction scale and still-missing denominators" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="446" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Paks: the price exists, the ratio does not</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Public evidence available on 21 August 2026.</text>
+  <rect x="28" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="46" y="115" fill="#f5b13d" font-size="10" font-weight="800">BUDGET TRANSFER</text>
+  <text x="46" y="150" fill="#f3f5f8" font-size="19" font-weight="800">HUF 6.165bn</text>
+  <text x="46" y="174" fill="#8b929e" font-size="9">final cost still unknown</text>
+  <rect x="257" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="275" y="115" fill="#7aa2f7" font-size="10" font-weight="800">ANNOUNCED MATERIAL</text>
+  <text x="275" y="150" fill="#f3f5f8" font-size="19" font-weight="800">145,000 m³</text>
+  <text x="275" y="174" fill="#8b929e" font-size="9">of rock in the Danube</text>
+  <rect x="486" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="504" y="115" fill="#5eead4" font-size="10" font-weight="800">REPORTED BY 19 AUGUST</text>
+  <text x="504" y="150" fill="#f3f5f8" font-size="19" font-weight="800">+10 to 15 cm</text>
+  <text x="504" y="174" fill="#8b929e" font-size="9">complete shutdown avoided</text>
+  <path d="M130 222 H590" stroke="#39424e" stroke-width="3"/>
+  <polygon points="590,222 578,215 578,229" fill="#39424e"/>
+  <text x="219" y="213" fill="#aeb4be" font-size="9">construction becomes capacity only after measurement</text>
+  <rect x="28" y="252" width="664" height="126" rx="8" fill="#111318" stroke="#ff4d87"/>
+  <text x="46" y="280" fill="#ff4d87" font-size="11" font-weight="800">PUBLIC DENOMINATORS STILL MISSING</text>
+  <text x="46" y="310" fill="#c7ccd5" font-size="10">• capacity secured in each hour</text>
+  <text x="46" y="334" fill="#c7ccd5" font-size="10">• lifetime derating avoided</text>
+  <text x="370" y="310" fill="#c7ccd5" font-size="10">• maintenance, removal and final cost</text>
+  <text x="370" y="334" fill="#c7ccd5" font-size="10">• downstream, navigation and Natura 2000 effects</text>
+  <text x="46" y="361" fill="#f5b13d" font-size="10" font-weight="800">Without them: no reliable cost per preserved MWh.</text>
+  <text x="24" y="430" fill="#777f8c" font-size="9">SOURCES: Hungarian Gazette; MTI; Reuters.</text>
+</svg>
+<figcaption>The budget and construction scale are documented. The consolidated electricity benefit is not.</figcaption>
+</figure>
+
+Paks looks attractive because the intervention is inexpensive relative to an entire power plant.
+
+The comparison remains incomplete.
+
+A river sill may buy several centimetres quickly. It can also alter river morphology, navigation, habitats and downstream flow. Lifetime, maintenance and flood behaviour belong in the account.
+
+## Four timelines, four bills
+
+Adaptations do not operate on the same clock.
+
+**Emergency action** takes days: dredging, barges, temporary pumps, imports and demand reduction.
+
+A **retrofit** transforms an existing site over months or years: lower intake, new bay, pumps, buffer basin, cooling tower or hybrid system.
+
+**New design** chooses a coast, tower, deep intake, reclaimed-water source or larger climate margin before construction.
+
+The **power system** spreads risk across storage, interconnection, renewables, flexible demand and reserve capacity.
+
+A forty-year-old plant will not automatically receive the same investment as a reactor expected to operate beyond 2100.
+
+Cost must be divided by the years in which the adaptation actually protects output.
+
+## A cooling tower trades river withdrawals for evaporation
+
+France's Court of Auditors reviewed potential cooling-tower retrofits at three thermally sensitive once-through sites: Saint-Alban, Bugey 2-3 and Tricastin.
+
+EDF's exploratory studies give an order of magnitude of roughly **EUR 500 million per tower**, before maintenance that remains poorly quantified, land and landscape constraints, chemical discharges from biocide treatment and generation outages during construction. ([French Court of Auditors, 2024, p. 344](https://www.ccomptes.fr/sites/default/files/2024-03/20240312-RPA-2024-CDVI-adaptation-parcs-nucleaire-hydro-electrique.pdf))
+
+The report's key distinction is that installing towers **would not save water**, but would reduce river warming.
+
+Once-through cooling withdraws very large volumes and returns almost all of them at a higher temperature.
+
+Recirculating cooling withdraws much less, but a larger share leaves the basin through evaporation. For France's closed-loop nuclear fleet, the Court reports average evaporation equal to 24% of water withdrawn in 2021.
+
+Policy can therefore improve withdrawal and worsen net consumption at the same time.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Qualitative comparison of once-through, wet tower, hybrid and dry cooling" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="456" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Cooling means choosing a tradeoff</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Qualitative comparison. Actual performance remains site-specific.</text>
+  <text x="28" y="102" fill="#8b929e" font-size="9">CRITERION</text>
+  <text x="170" y="102" fill="#7aa2f7" font-size="10" font-weight="800">ONCE-THROUGH</text>
+  <text x="322" y="102" fill="#5eead4" font-size="10" font-weight="800">WET TOWER</text>
+  <text x="466" y="102" fill="#f5b13d" font-size="10" font-weight="800">HYBRID</text>
+  <text x="604" y="102" fill="#ff4d87" font-size="10" font-weight="800">DRY</text>
+  <line x1="28" y1="119" x2="692" y2="119" stroke="#303844"/>
+  <text x="28" y="154" fill="#c7ccd5" font-size="10">Withdrawal</text>
+  <text x="170" y="154" fill="#ff4d87" font-size="13" font-weight="800">very high</text>
+  <text x="322" y="154" fill="#5eead4" font-size="13" font-weight="800">low</text>
+  <text x="466" y="154" fill="#5eead4" font-size="13" font-weight="800">flexible</text>
+  <text x="604" y="154" fill="#5eead4" font-size="13" font-weight="800">minimal</text>
+  <line x1="28" y1="174" x2="692" y2="174" stroke="#252c35"/>
+  <text x="28" y="209" fill="#c7ccd5" font-size="10">Consumption</text>
+  <text x="170" y="209" fill="#5eead4" font-size="13" font-weight="800">low</text>
+  <text x="322" y="209" fill="#ff4d87" font-size="13" font-weight="800">evaporation</text>
+  <text x="466" y="209" fill="#f5b13d" font-size="13" font-weight="800">intermediate</text>
+  <text x="604" y="209" fill="#5eead4" font-size="13" font-weight="800">minimal</text>
+  <line x1="28" y1="229" x2="692" y2="229" stroke="#252c35"/>
+  <text x="28" y="264" fill="#c7ccd5" font-size="10">Efficiency</text>
+  <text x="170" y="264" fill="#5eead4" font-size="13" font-weight="800">high</text>
+  <text x="322" y="264" fill="#7aa2f7" font-size="13" font-weight="800">good</text>
+  <text x="466" y="264" fill="#f5b13d" font-size="13" font-weight="800">dispatchable</text>
+  <text x="604" y="264" fill="#ff4d87" font-size="13" font-weight="800">penalised</text>
+  <line x1="28" y1="284" x2="692" y2="284" stroke="#252c35"/>
+  <text x="28" y="319" fill="#c7ccd5" font-size="10">Exposed medium</text>
+  <text x="170" y="319" fill="#aeb4be" font-size="10">river or sea</text>
+  <text x="322" y="319" fill="#aeb4be" font-size="10">air + chemistry</text>
+  <text x="466" y="319" fill="#aeb4be" font-size="10">air + water</text>
+  <text x="604" y="319" fill="#aeb4be" font-size="10">air + noise</text>
+  <line x1="28" y1="339" x2="692" y2="339" stroke="#252c35"/>
+  <text x="28" y="374" fill="#c7ccd5" font-size="10">Heatwave</text>
+  <text x="170" y="374" fill="#f5b13d" font-size="10">warm water</text>
+  <text x="322" y="374" fill="#f5b13d" font-size="10">wet-bulb limit</text>
+  <text x="466" y="374" fill="#7aa2f7" font-size="10">combined modes</text>
+  <text x="604" y="374" fill="#ff4d87" font-size="10">hot air</text>
+  <rect x="28" y="404" width="664" height="26" rx="4" fill="#111318"/>
+  <text x="44" y="422" fill="#f5b13d" font-size="9">No column dominates all five criteria. The site determines the compromise.</text>
+  <text x="24" y="447" fill="#777f8c" font-size="9">SOURCES: French Court of Auditors; EU-BRITE industrial cooling BREF.</text>
+</svg>
+<figcaption>The best withdrawal result is not necessarily the best consumption or efficiency result.</figcaption>
+</figure>
+
+EDF also plans **EUR 612.6 million** of climate-adaptation investment from 2022 to 2038, excluding potential EUR 500 million towers. The total includes extreme-heat measures, heat-sink work, tornado protection and dikes. The Court notes that part of climate expenditure remains mixed into safety, maintenance and operating budgets.
+
+EUR 500 million is therefore not enough to rank a tower.
+
+The missing figure is the output protected over its life.
+
+## Air buys water independence with efficiency
+
+Dry cooling rejects heat through convection to air.
+
+It nearly eliminates dependence on cooling water, while adding fans, footprint, noise and a performance penalty. High air temperature degrades condenser vacuum precisely when heatwaves often increase electricity demand.
+
+Europe's cooling reference document describes dry cooling as a solution used where water is unavailable or expensive, while once-through cooling remains highly efficient where a reliable water source and suitable receiving environment exist. Hybrid systems can switch between modes, at the price of more complex infrastructure. ([EU-BRITE, Industrial Cooling Systems BREF](https://bureau-industrial-transformation.jrc.ec.europa.eu/index.php/reference/industrial-cooling-systems))
+
+The Joint Research Centre's PESETA IV model tests recirculating towers and dry cooling in Europe's 2050 electricity system.
+
+In its dynamic 2 °C-compatible scenario, adaptation reduces climate-related nuclear generation loss from roughly **-2.8% to -0.6%**. Benefits are strongest in southern Europe. ([JRC, PESETA IV, Energy Supply](https://joint-research-centre.ec.europa.eu/projects-and-activities/peseta-climate-change-projects/jrc-peseta-iv/energy-supply_en))
+
+The result demonstrates system-level physical potential.
+
+It is not an engineering quote. The model simplifies sites, omits some extremes and does not reproduce retrofit outages plant by plant.
+
+## Reclaimed water builds a second plant
+
+Treated wastewater can reduce competition with rivers and drinking water.
+
+It still has to be transported and conditioned for industrial cooling.
+
+Palo Verde in Arizona is the most developed nuclear example. The plant is not located near a large natural water body. Municipal effluent travels roughly 36 miles, nearly 58 km, then receives tertiary treatment on site before feeding evaporative towers. The chain includes pipelines, pumps, reservoirs, chemicals, evaporation ponds and long-term water contracts. ([OSTI, Palo Verde Water Cycle Model](https://www.osti.gov/servlets/purl/1866034))
+
+Palo Verde proves technical feasibility.
+
+It does not prove that every European plant has a large enough treatment facility nearby, adequate summer flow or compatible water quality.
+
+In Poland, the Turów thermal power plant developed a membrane installation of roughly **12,000 m³ per day** to treat industrial effluent and return it to site processes. ([PGE, Integrated Report 2022](https://www.raportzintegrowany2022.gkpge.pl/en/esg-foundation-of-development/environment/a-responsible-approach-to-water-resources-management/))
+
+A serious European map would connect each large power station to nearby wastewater plants, then add distance, elevation, quality, pumping energy and concentrate disposal.
+
+Reclaimed water is not a free source.
+
+It is another industrial system.
+
+## Seawater shifts the constraint to the coast
+
+Poland's planned first nuclear power plant at Lubiatowo-Kopalino illustrates the other major strategy: leave the river.
+
+The environmental decision selects open seawater cooling and tunnels bored beneath the seabed. It requires a maximum intake velocity of 0.3 m/s, discharge diffusers, a dedicated fish recovery and return system, and chemical and thermal monitoring. ([GDOŚ, environmental decision of 19 September 2023](https://www.gov.pl/web/gdos/decyzja-generalnego-dyrektora-ochrony-srodowiska-z-dnia-19-wrzesnia-2023-r-znak-doos-oa420512015125))
+
+The study compared open seawater cooling with towers using seawater or desalinated seawater. Towers ranked best on environmental criteria alone. Open cooling won the overall multicriteria analysis selected by the developer. ([PEJ, environmental impact report](https://pej.pl/en/press-center/news/polskie-elektrownie-jadrowe-sp-z-o-o-submits-the-environmental-impact-assessment-report-for-the-first-nuclear-power-plant-in-poland/))
+
+The sea removes river-flow scarcity.
+
+It adds tunnels, pumping, corrosion, biofouling, entrainment, a thermal plume and exposure to storms and sea-level rise.
+
+## Newbuild chooses; existing assets negotiate
+
+Existing fleets must adapt equipment, land and permits designed decades earlier.
+
+New nuclear can integrate the constraint at the drawing-board stage.
+
+The Bugey EPR2 project includes a Rhône pumping station, closed or semi-closed circuits and cooling towers. Its initial public file described two 200-metre towers or four 161-metre towers. EDF later said it had selected two towers. ([CNDP, Bugey EPR2 project](https://www.debatpublic.fr/construction-dune-paire-de-reacteurs-epr2-sur-le-site-du-bugey-5849), [EDF, local information commission meeting, December 2025](https://concertation-epr2.edf.fr/blog/epr2-bugey-a-la-reunion-publique-de-la-cli-le-10-decembre-2025-1))
+
+No public document identified here isolates cooling CAPEX, auxiliary consumption and the complete water balance.
+
+Paks II provides the other decisive case.
+
+Its environmental study already compared direct Danube cooling, several intake configurations and wet towers. It also modelled extreme low flows and cumulative effects with the existing fleet. Direct river cooling was selected after a cost-benefit analysis. ([Paks II, environmental permitting file](https://www.paks2.hu/web/paks-2-en/environmental-permitting))
+
+Summer 2026 does not invalidate that work.
+
+It creates a duty to update it: compare observed levels, the riverbed sill still under construction and the future intake geometry with historical licensing assumptions.
+
+Retrofit negotiates with an existing site.
+
+Newbuild must avoid constructing the next vulnerability.
+
+## Test an adaptation quote
+
+Public costs for Paks and French towers contain a numerator.
+
+They still lack a complete denominator.
+
+The calculator offers three datasets: a fictional demo, Paks public cost only and the French tower public order of magnitude only. In both real presets, secured MW and preserved MWh deliberately remain empty.
+
+<CoolingAdaptationEstimator lang="en" />
+
+## Secured megawatts as the denominator
+
+CAPEX alone favours quick interventions and penalises heavy equipment without measuring the life of the protection.
+
+The useful ratio starts with capacity and energy actually preserved.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 458" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Full-cost formula for a megawatt secured through cooling adaptation" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="458" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Full cost of a secured megawatt</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">A common accounting frame for very different options.</text>
+  <rect x="28" y="88" width="204" height="52" rx="6" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="44" y="112" fill="#7aa2f7" font-size="10" font-weight="800">ANNUALISED CAPEX</text>
+  <text x="44" y="130" fill="#c7ccd5" font-size="9">lifetime + discount rate</text>
+  <rect x="258" y="88" width="204" height="52" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="274" y="112" fill="#5eead4" font-size="10" font-weight="800">OPEX AND CHEMISTRY</text>
+  <text x="274" y="130" fill="#c7ccd5" font-size="9">maintenance + treatment</text>
+  <rect x="488" y="88" width="204" height="52" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="504" y="112" fill="#f5b13d" font-size="10" font-weight="800">AUXILIARY POWER</text>
+  <text x="504" y="130" fill="#c7ccd5" font-size="9">pumps + fans</text>
+  <rect x="28" y="162" width="204" height="52" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="44" y="186" fill="#ff4d87" font-size="10" font-weight="800">CONSTRUCTION OUTAGE</text>
+  <text x="44" y="204" fill="#c7ccd5" font-size="9">generation not produced</text>
+  <rect x="258" y="162" width="204" height="52" rx="6" fill="#15171c" stroke="#a78bfa"/>
+  <text x="274" y="186" fill="#a78bfa" font-size="10" font-weight="800">WATER AND DISCHARGES</text>
+  <text x="274" y="204" fill="#c7ccd5" font-size="9">withdrawal ≠ consumption</text>
+  <rect x="488" y="162" width="204" height="52" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="504" y="186" fill="#f5b13d" font-size="10" font-weight="800">EXTERNALITIES</text>
+  <text x="504" y="204" fill="#c7ccd5" font-size="9">river, air, sea, grid</text>
+  <text x="349" y="254" fill="#8b929e" font-size="18" font-weight="800">÷</text>
+  <rect x="78" y="278" width="252" height="72" rx="8" fill="#111318" stroke="#5eead4" stroke-width="2"/>
+  <text x="98" y="305" fill="#5eead4" font-size="11" font-weight="800">CAPACITY ACTUALLY SECURED</text>
+  <text x="98" y="330" fill="#c7ccd5" font-size="9">during the target climate scenario</text>
+  <rect x="390" y="278" width="252" height="72" rx="8" fill="#111318" stroke="#7aa2f7" stroke-width="2"/>
+  <text x="410" y="305" fill="#7aa2f7" font-size="11" font-weight="800">DERATING AVOIDED OVER LIFE</text>
+  <text x="410" y="330" fill="#c7ccd5" font-size="9">across the adaptation lifetime</text>
+  <rect x="78" y="382" width="564" height="38" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="98" y="406" fill="#ff8bad" font-size="10" font-weight="800">Without a denominator: visible price, unknown effectiveness.</text>
+  <text x="24" y="447" fill="#777f8c" font-size="9">METHOD: l0g, based on transparency recommendations from the Court of Auditors.</text>
+</svg>
+<figcaption>The final ratio should be published with the climate scenario, lifetime and availability assumptions.</figcaption>
+</figure>
+
+Two ratios must remain separate.
+
+```text
+Cost per secured kW = CAPEX / capacity actually secured
+
+Annualised cost per preserved MWh =
+(CAPEX annuity + OPEX + auxiliaries + annualised construction outage)
+/ annual derating avoided
+```
+
+The water balance also remains separate:
+
+```text
+withdrawal before and after
+net consumption before and after
+water source
+critical season
+```
+
+A EUR 500 million tower may be rational if it protects large output for several decades.
+
+A HUF 6.165 billion river structure may be rational if it avoids months of outage with controlled impacts.
+
+Neither judgement is possible from CAPEX alone.
+
+## The adaptation portfolio
+
+Resilient cooling is not one technology.
+
+A coastal site may retain marine once-through cooling.
+
+A new river plant may use towers or a hybrid system.
+
+An older asset may justify a lower intake rather than a complete retrofit.
+
+A strongly interconnected region may accept a few days of derating if storage, flexible demand and neighbours absorb the shock.
+
+The optimum depends on five variables:
+
+- remaining asset life;
+- basin and future climate;
+- capacity actually needed by the power system;
+- cost of unavailability;
+- environment receiving the shifted constraint.
+
+The series began with a river too low for a pump.
+
+It ends with an accounting gap.
+
+Europe has technical options.
+
+It rarely publishes the number of megawatt-hours each one actually secures.
+
+### Established findings
+
+Hungary announced works costing about HUF 6.165 billion and the use of 145,000 m³ of rock to protect Paks water intake.
+
+France's Court of Auditors reports an order of magnitude of EUR 500 million per retrofit tower at the sites studied and EUR 612.6 million of planned adaptation investment excluding those towers.
+
+Wet towers sharply reduce withdrawal and thermal discharge, while increasing net evaporation and chemical-treatment requirements.
+
+The JRC estimates that less water-intensive cooling can greatly reduce climate-related nuclear losses in its European 2050 scenario.
+
+Marine and reclaimed-water systems reduce freshwater competition while creating new infrastructure and impacts.
+
+### Primary sources
+
+- [Hungarian Gazette, Decrees 122/2026 and 1256/2026 on Paks works](http://magyarkozlony.hu/hivatalos-lapok/ZESdc5X2ExtTq5liwRyP6a736c86c65e4/dokumentumok/9e53fcd585e531768b4cf37f04c76489a80f90ef/letoltes)
+- [Hungarian government, decisions on cooling-water supply at Paks](https://kormany.hu/hirek/a-kormany-dontesei-a-paksi-atomeromu-hutovizenek-biztositasara)
+- [MTI, cost and rock volume of the Paks sill](https://mti.hu/hirek/2026/08/13/magyar-peter-tobb-mint-6-milliard-forintba-kerul-paks-es-dunaszentbenedek-kozotti)
+- [French Court of Auditors, adaptation of nuclear and hydro fleets](https://www.ccomptes.fr/sites/default/files/2024-03/20240312-RPA-2024-CDVI-adaptation-parcs-nucleaire-hydro-electrique.pdf)
+- [JRC, PESETA IV, Energy Supply](https://joint-research-centre.ec.europa.eu/projects-and-activities/peseta-climate-change-projects/jrc-peseta-iv/energy-supply_en)
+- [EU-BRITE, Industrial Cooling Systems BREF](https://bureau-industrial-transformation.jrc.ec.europa.eu/index.php/reference/industrial-cooling-systems)
+- [CNDP, Bugey EPR2 project](https://www.debatpublic.fr/construction-dune-paire-de-reacteurs-epr2-sur-le-site-du-bugey-5849)
+- [Paks II environmental-permitting file](https://www.paks2.hu/web/paks-2-en/environmental-permitting)
+- [GDOŚ, Lubiatowo-Kopalino environmental decision](https://www.gov.pl/web/gdos/decyzja-generalnego-dyrektora-ochrony-srodowiska-z-dnia-19-wrzesnia-2023-r-znak-doos-oa420512015125)
+- [OSTI, Palo Verde Water Cycle Model](https://www.osti.gov/servlets/purl/1866034)
+- [PGE, water management and reuse at Turów](https://www.raportzintegrowany2022.gkpge.pl/en/esg-foundation-of-development/environment/a-responsible-approach-to-water-resources-management/)
+
+### Market source for the immediate Paks outcome
+
+- [Reuters, 19 August 2026, complete shutdown avoided and 10-15 cm local rise](https://www.reuters.com/business/energy/hungarys-nuclear-plant-avoids-shutdown-water-level-expected-stay-high-enough-2026-08-19/)
+
+### Limits of the evidence
+
+A final cost per preserved MWh cannot yet be calculated for Paks, Cernavodă or the French sites.
+
+Public data do not fully separate cooling costs for Bugey EPR2 and Paks II.
+
+Dry, hybrid and reclaimed-water performance remains site-specific and cannot be transferred from one power station to another without engineering studies.
+
+The interactive tool replaces neither hydraulic modelling nor safety or environmental assessment.
+
+### Method
+
+Data and documents cut off on **21 August 2026**.
+
+Forint and euro figures are not converted or plotted on one scale because their perimeter, date, currency and lifetime differ.
+
+The Paks and EDF tower tool presets reproduce only documented public costs. Missing denominators remain zero.

@@ -1,0 +1,440 @@
+---
+import {
+  COOLING_QUOTE_DATA_DATE,
+  COOLING_QUOTE_DEFAULTS,
+  COOLING_QUOTE_MODEL_VERSION,
+  COOLING_QUOTE_SOURCES,
+  evaluateCoolingQuote,
+} from '../lib/cooling-adaptation-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embedded' | 'full';
+}
+
+const { lang = 'fr', mode = 'embedded' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `cooling-quote-${lang}`;
+const initial = evaluateCoolingQuote(COOLING_QUOTE_DEFAULTS);
+const toolHref = isFr ? '/outils/devis-adaptation-refroidissement/' : '/en/tools/cooling-adaptation-quote/';
+const articleHref = isFr ? '/posts/prix-refroidissement-eau-electricite/' : '/en/analysis/price-of-cooling-water-electricity/';
+
+const copy = isFr
+  ? {
+      eyebrow: '// outil l0g',
+      title: 'Le devis du refroidissement',
+      intro: 'Ajoutez le dénominateur manquant aux coûts publics : MW sécurisés, MWh préservés, durée de vie, arrêt de chantier, auxiliaires et bilan hydrique.',
+      demo: 'Démo fictive',
+      paks: 'Paks, coût public',
+      tower: 'Tour EDF, coût public',
+      presetNote: 'Les préréglages Paks et tour EDF ne remplissent volontairement pas les données encore absentes des sources publiques.',
+      currency: 'Devise',
+      siteCapacity: 'Puissance nette du site',
+      securedCapacity: 'Puissance réellement sécurisée',
+      annualPreserved: 'Déclassement annuel évité',
+      capex: 'CAPEX',
+      opex: 'OPEX annuel',
+      outage: 'Arrêt imputable aux travaux',
+      price: 'Prix du remplacement',
+      life: 'Durée de vie de l’adaptation',
+      discount: 'Taux d’actualisation',
+      auxiliaryLoad: 'Pénalité auxiliaire',
+      auxiliaryHours: 'Heures d’activation par an',
+      withdrawalBefore: 'Prélèvement avant',
+      withdrawalAfter: 'Prélèvement après',
+      consumptionBefore: 'Consommation avant',
+      consumptionAfter: 'Consommation après',
+      destination: 'Milieu recevant la contrainte',
+      million: 'millions',
+      mw: 'MW',
+      mwhYear: 'MWh/an',
+      days: 'jours',
+      eurMWh: '/MWh',
+      years: 'ans',
+      pct: '%',
+      hours: 'h/an',
+      m3MWh: 'm³/MWh',
+      annualCost: 'Coût annuel équivalent',
+      costKW: 'CAPEX par kW sécurisé',
+      costMWh: 'Coût par MWh préservé',
+      outageCost: 'Coût brut de l’arrêt',
+      auxiliaryEnergy: 'Énergie auxiliaire annuelle',
+      payback: 'Amortissement simple',
+      withdrawalChange: 'Variation du prélèvement',
+      consumptionChange: 'Variation de la consommation',
+      constraint: 'Contrainte déplacée vers',
+      missing: 'Calcul incomplet',
+      complete: 'Dénominateurs renseignés',
+      missingText: 'Le coût public existe, mais le ratio reste impossible tant que les champs signalés ne sont pas documentés.',
+      caveat: 'Le résultat reste financier et pédagogique. Il ne calcule ni sûreté, ni écologie, ni permis, ni hydrologie, ni flux de réseau. Prélèvement et consommation restent séparés.',
+      method: 'Méthode, formules et sources',
+      methodText: 'Le CAPEX et le coût ponctuel de l’arrêt sont annualisés avec un facteur de récupération du capital. OPEX et auxiliaires sont ajoutés. Le total est divisé par les MWh de déclassement évités. Le coût par kW utilise uniquement le CAPEX et la puissance sécurisée.',
+      formulas: [
+        'Coût annuel = annuité(CAPEX + coût de l’arrêt) + OPEX + coût des auxiliaires',
+        'Coût/MWh = coût annuel ÷ MWh de déclassement évités',
+        'Coût/kW = CAPEX ÷ puissance sécurisée',
+        'Prélèvement et consommation sont comparés séparément, sans conversion automatique',
+      ],
+      noData: 'n.d.',
+      destinations: {
+        river: 'fleuve et morphologie',
+        air: 'atmosphère et rendement',
+        sea: 'milieu marin et littoral',
+        chemistry: 'traitement et chimie',
+        grid: 'réseau et flexibilité',
+        mixed: 'plusieurs milieux',
+      },
+      missingLabels: {
+        securedCapacity: 'MW sécurisés',
+        preservedEnergy: 'MWh préservés',
+        lifetime: 'durée de vie',
+        replacementPrice: 'prix de remplacement',
+      },
+      privacy: 'Calcul local, sans appel réseau, cookie ou stockage.',
+      financeSection: 'Finance et disponibilité',
+      waterSection: 'Bilan hydrique séparé',
+      openTool: 'Ouvrir le simulateur en pleine page',
+      backToArticle: 'Lire l’enquête complète',
+    }
+  : {
+      eyebrow: '// l0g tool',
+      title: 'The cooling adaptation quote',
+      intro: 'Add the missing denominator to public cost figures: secured MW, preserved MWh, lifetime, construction outage, auxiliary power and separate water balances.',
+      demo: 'Fictional demo',
+      paks: 'Paks, public cost only',
+      tower: 'EDF tower, public cost only',
+      presetNote: 'The Paks and EDF tower presets deliberately leave public-data gaps empty.',
+      currency: 'Currency',
+      siteCapacity: 'Net site capacity',
+      securedCapacity: 'Capacity actually secured',
+      annualPreserved: 'Annual derating avoided',
+      capex: 'CAPEX',
+      opex: 'Annual OPEX',
+      outage: 'Construction-related outage',
+      price: 'Replacement power price',
+      life: 'Adaptation lifetime',
+      discount: 'Discount rate',
+      auxiliaryLoad: 'Auxiliary load penalty',
+      auxiliaryHours: 'Operating hours per year',
+      withdrawalBefore: 'Withdrawal before',
+      withdrawalAfter: 'Withdrawal after',
+      consumptionBefore: 'Consumption before',
+      consumptionAfter: 'Consumption after',
+      destination: 'Destination of the shifted constraint',
+      million: 'million',
+      mw: 'MW',
+      mwhYear: 'MWh/year',
+      days: 'days',
+      eurMWh: '/MWh',
+      years: 'years',
+      pct: '%',
+      hours: 'h/year',
+      m3MWh: 'm³/MWh',
+      annualCost: 'Equivalent annual cost',
+      costKW: 'CAPEX per secured kW',
+      costMWh: 'Cost per preserved MWh',
+      outageCost: 'Gross outage cost',
+      auxiliaryEnergy: 'Annual auxiliary energy',
+      payback: 'Simple payback',
+      withdrawalChange: 'Withdrawal change',
+      consumptionChange: 'Consumption change',
+      constraint: 'Constraint shifted towards',
+      missing: 'Incomplete calculation',
+      complete: 'Denominators supplied',
+      missingText: 'The public cost exists, but the ratio remains impossible until the highlighted fields are documented.',
+      caveat: 'This is a financial teaching model. It calculates no safety, ecology, permitting, hydrology or grid flows. Withdrawal and consumption remain separate.',
+      method: 'Method, formulas and sources',
+      methodText: 'CAPEX and the one-off outage cost are annualised with a capital recovery factor. OPEX and auxiliary energy are added. The total is divided by annual derating avoided. Cost per kW uses CAPEX and secured capacity only.',
+      formulas: [
+        'Annual cost = annuity(CAPEX + outage cost) + OPEX + auxiliary cost',
+        'Cost/MWh = annual cost ÷ annual derating avoided',
+        'Cost/kW = CAPEX ÷ secured capacity',
+        'Withdrawal and consumption are compared separately, without automatic conversion',
+      ],
+      noData: 'n/a',
+      destinations: {
+        river: 'river and morphology',
+        air: 'air and efficiency',
+        sea: 'marine and coastal systems',
+        chemistry: 'treatment and chemistry',
+        grid: 'grid and flexibility',
+        mixed: 'several systems',
+      },
+      missingLabels: {
+        securedCapacity: 'secured MW',
+        preservedEnergy: 'preserved MWh',
+        lifetime: 'lifetime',
+        replacementPrice: 'replacement price',
+      },
+      privacy: 'Local calculation with no network call, cookie or storage.',
+      financeSection: 'Finance and availability',
+      waterSection: 'Separate water balance',
+      openTool: 'Open the full-page calculator',
+      backToArticle: 'Read the full investigation',
+    };
+---
+
+<section class="cooling-quote" id={id} data-cooling-quote data-lang={lang}>
+  <header class="cooling-quote__header">
+    <p class="cooling-quote__eyebrow">{copy.eyebrow}</p>
+    <h3>{copy.title}</h3>
+    <p>{copy.intro}</p>
+    <a class="cooling-quote__cta" href={mode === 'full' ? articleHref : toolHref}>
+      {mode === 'full' ? copy.backToArticle : copy.openTool}<span aria-hidden="true"> →</span>
+    </a>
+  </header>
+
+  <div class="cooling-quote__presets" role="group" aria-label={copy.title}>
+    <button type="button" class="is-active" data-preset="demo">{copy.demo}</button>
+    <button type="button" data-preset="paks">{copy.paks}</button>
+    <button type="button" data-preset="frenchTower">{copy.tower}</button>
+  </div>
+  <p class="cooling-quote__preset-note">{copy.presetNote}</p>
+
+  <div class="cooling-quote__grid">
+    <form class="cooling-quote__controls" data-form>
+      <div class="cooling-quote__section-title">{copy.financeSection}</div>
+      <label>
+        <span>{copy.currency}</span>
+        <select data-input="currency">
+          <option value="EUR" selected>EUR</option>
+          <option value="HUF">HUF</option>
+          <option value="USD">USD</option>
+        </select>
+      </label>
+      <label><span>{copy.siteCapacity}</span><span class="cooling-quote__unit"><input type="number" min="0" max="100000" step="1" value={COOLING_QUOTE_DEFAULTS.siteCapacityMW} data-input="siteCapacityMW"/><small>{copy.mw}</small></span></label>
+      <label><span>{copy.securedCapacity}</span><span class="cooling-quote__unit"><input type="number" min="0" max="100000" step="1" value={COOLING_QUOTE_DEFAULTS.securedCapacityMW} data-input="securedCapacityMW"/><small>{copy.mw}</small></span></label>
+      <label><span>{copy.annualPreserved}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000000" step="1000" value={COOLING_QUOTE_DEFAULTS.annualMWhPreserved} data-input="annualMWhPreserved"/><small>{copy.mwhYear}</small></span></label>
+      <label><span>{copy.capex}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000" step="0.1" value={COOLING_QUOTE_DEFAULTS.capexMillion} data-input="capexMillion"/><small>{copy.million}</small></span></label>
+      <label><span>{copy.opex}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000" step="0.1" value={COOLING_QUOTE_DEFAULTS.annualOpexMillion} data-input="annualOpexMillion"/><small>{copy.million}</small></span></label>
+      <label><span>{copy.outage}</span><span class="cooling-quote__unit"><input type="number" min="0" max="3650" step="1" value={COOLING_QUOTE_DEFAULTS.constructionOutageDays} data-input="constructionOutageDays"/><small>{copy.days}</small></span></label>
+      <label><span>{copy.price}</span><span class="cooling-quote__unit"><input type="number" min="0" max="100000" step="1" value={COOLING_QUOTE_DEFAULTS.replacementPricePerMWh} data-input="replacementPricePerMWh"/><small data-currency-price>EUR{copy.eurMWh}</small></span></label>
+      <label><span>{copy.life}</span><span class="cooling-quote__unit"><input type="number" min="0" max="100" step="1" value={COOLING_QUOTE_DEFAULTS.lifeYears} data-input="lifeYears"/><small>{copy.years}</small></span></label>
+      <label><span>{copy.discount}</span><span class="cooling-quote__unit"><input type="number" min="0" max="50" step="0.1" value={COOLING_QUOTE_DEFAULTS.discountRatePct} data-input="discountRatePct"/><small>{copy.pct}</small></span></label>
+      <label><span>{copy.auxiliaryLoad}</span><span class="cooling-quote__unit"><input type="number" min="0" max="30" step="0.1" value={COOLING_QUOTE_DEFAULTS.auxiliaryLoadPct} data-input="auxiliaryLoadPct"/><small>{copy.pct}</small></span></label>
+      <label><span>{copy.auxiliaryHours}</span><span class="cooling-quote__unit"><input type="number" min="0" max="8760" step="10" value={COOLING_QUOTE_DEFAULTS.auxiliaryHoursPerYear} data-input="auxiliaryHoursPerYear"/><small>{copy.hours}</small></span></label>
+
+      <div class="cooling-quote__section-title">{copy.waterSection}</div>
+      <label><span>{copy.withdrawalBefore}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000" step="0.1" value={COOLING_QUOTE_DEFAULTS.withdrawalBeforeM3MWh} data-input="withdrawalBeforeM3MWh"/><small>{copy.m3MWh}</small></span></label>
+      <label><span>{copy.withdrawalAfter}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000" step="0.1" value={COOLING_QUOTE_DEFAULTS.withdrawalAfterM3MWh} data-input="withdrawalAfterM3MWh"/><small>{copy.m3MWh}</small></span></label>
+      <label><span>{copy.consumptionBefore}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000" step="0.1" value={COOLING_QUOTE_DEFAULTS.consumptionBeforeM3MWh} data-input="consumptionBeforeM3MWh"/><small>{copy.m3MWh}</small></span></label>
+      <label><span>{copy.consumptionAfter}</span><span class="cooling-quote__unit"><input type="number" min="0" max="1000000" step="0.1" value={COOLING_QUOTE_DEFAULTS.consumptionAfterM3MWh} data-input="consumptionAfterM3MWh"/><small>{copy.m3MWh}</small></span></label>
+      <label>
+        <span>{copy.destination}</span>
+        <select data-input="constraintDestination">
+          {Object.entries(copy.destinations).map(([value, label]) => <option value={value} selected={value === COOLING_QUOTE_DEFAULTS.constraintDestination}>{label}</option>)}
+        </select>
+      </label>
+      <p class="cooling-quote__privacy">{copy.privacy}</p>
+    </form>
+
+    <div class="cooling-quote__results" aria-live="polite">
+      <div class="cooling-quote__hero">
+        <span>{copy.costMWh}</span>
+        <strong data-result="costPerMWhPreserved">{initial.costPerMWhPreserved.toFixed(1)} EUR/MWh</strong>
+        <small data-result="completionStatus">{copy.complete}</small>
+      </div>
+      <div class="cooling-quote__metrics">
+        <div><span>{copy.annualCost}</span><strong data-result="annualEquivalentCost">{(initial.annualEquivalentCost / 1_000_000).toFixed(2)} M EUR/an</strong></div>
+        <div><span>{copy.costKW}</span><strong data-result="costPerKWSecured">{initial.costPerKWSecured.toFixed(0)} EUR/kW</strong></div>
+        <div><span>{copy.outageCost}</span><strong data-result="outageCost">{(initial.outageCost / 1_000_000).toFixed(2)} M EUR</strong></div>
+        <div><span>{copy.auxiliaryEnergy}</span><strong data-result="auxiliaryMWh">{initial.auxiliaryMWh.toFixed(0)} MWh/an</strong></div>
+        <div><span>{copy.payback}</span><strong data-result="simplePaybackYears">{Number.isFinite(initial.simplePaybackYears) ? `${initial.simplePaybackYears.toFixed(1)} ${copy.years}` : copy.noData}</strong></div>
+        <div><span>{copy.constraint}</span><strong data-result="constraintDestination">{copy.destinations.mixed}</strong></div>
+      </div>
+      <div class="cooling-quote__water">
+        <div><span>{copy.withdrawalChange}</span><strong data-result="withdrawalChange">-67.0 m³/MWh</strong></div>
+        <div><span>{copy.consumptionChange}</span><strong data-result="consumptionChange">+1.7 m³/MWh</strong></div>
+      </div>
+      <div class="cooling-quote__missing" data-result="missingBox" hidden>
+        <strong>{copy.missing}</strong>
+        <p>{copy.missingText}</p>
+        <ul data-result="missingList"></ul>
+      </div>
+      <p class="cooling-quote__warning">{copy.caveat}</p>
+    </div>
+  </div>
+
+  <details class="cooling-quote__details">
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <ul>{copy.formulas.map((formula) => <li>{formula}</li>)}</ul>
+    <ol>{COOLING_QUOTE_SOURCES.map((source) => <li><a href={source.url}>{source.label}</a></li>)}</ol>
+    <p>Model v{COOLING_QUOTE_MODEL_VERSION} · {COOLING_QUOTE_DATA_DATE}</p>
+  </details>
+</section>
+
+<script>
+  import { COOLING_QUOTE_PRESETS, evaluateCoolingQuote } from '../lib/cooling-adaptation-model.ts';
+
+  const initialiseCoolingQuotes = () => {
+    document.querySelectorAll<HTMLElement>('[data-cooling-quote]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const inputs = Array.from(root.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-input]'));
+      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-preset]'));
+      const text = lang === 'fr'
+        ? {
+            noData: 'n.d.', year: 'an', years: 'ans',
+            complete: 'Dénominateurs renseignés', missing: 'Calcul incomplet',
+            missingLabels: { securedCapacity: 'MW sécurisés', preservedEnergy: 'MWh préservés', lifetime: 'durée de vie', replacementPrice: 'prix de remplacement' },
+            destinations: { river: 'fleuve et morphologie', air: 'atmosphère et rendement', sea: 'milieu marin et littoral', chemistry: 'traitement et chimie', grid: 'réseau et flexibilité', mixed: 'plusieurs milieux' },
+          }
+        : {
+            noData: 'n/a', year: 'year', years: 'years',
+            complete: 'Denominators supplied', missing: 'Incomplete calculation',
+            missingLabels: { securedCapacity: 'secured MW', preservedEnergy: 'preserved MWh', lifetime: 'lifetime', replacementPrice: 'replacement price' },
+            destinations: { river: 'river and morphology', air: 'air and efficiency', sea: 'marine and coastal systems', chemistry: 'treatment and chemistry', grid: 'grid and flexibility', mixed: 'several systems' },
+          };
+
+      const input = (name: string) => root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-input="${name}"]`);
+      const result = (name: string) => root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+      const value = (name: string) => {
+        const node = input(name);
+        return node instanceof HTMLInputElement ? Number(node.value) : node?.value;
+      };
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const fmt = (number: number, digits = 1) => Number.isFinite(number)
+        ? new Intl.NumberFormat(locale, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(number)
+        : text.noData;
+      const currency = () => String(value('currency') || 'EUR');
+
+      const set = (name: string, content: string) => {
+        const node = result(name);
+        if (node) node.textContent = content;
+      };
+
+      const formatMoney = (amount: number, useMillions = true) => {
+        if (!Number.isFinite(amount)) return text.noData;
+        const unit = currency();
+        if (useMillions) return `${fmt(amount / 1_000_000, 2)} M ${unit}`;
+        return `${fmt(amount, 0)} ${unit}`;
+      };
+
+      const signedWater = (delta: number, pct: number) => {
+        if (!Number.isFinite(delta)) return text.noData;
+        const sign = delta > 0 ? '+' : '';
+        const pctPart = Number.isFinite(pct) ? ` (${sign}${fmt(pct, 1)}%)` : '';
+        return `${sign}${fmt(delta, 1)} m³/MWh${pctPart}`;
+      };
+
+      const update = () => {
+        const evaluated = evaluateCoolingQuote({
+          currency: String(value('currency')) as 'EUR' | 'HUF' | 'USD',
+          siteCapacityMW: Number(value('siteCapacityMW')),
+          securedCapacityMW: Number(value('securedCapacityMW')),
+          annualMWhPreserved: Number(value('annualMWhPreserved')),
+          capexMillion: Number(value('capexMillion')),
+          annualOpexMillion: Number(value('annualOpexMillion')),
+          constructionOutageDays: Number(value('constructionOutageDays')),
+          replacementPricePerMWh: Number(value('replacementPricePerMWh')),
+          lifeYears: Number(value('lifeYears')),
+          discountRatePct: Number(value('discountRatePct')),
+          auxiliaryLoadPct: Number(value('auxiliaryLoadPct')),
+          auxiliaryHoursPerYear: Number(value('auxiliaryHoursPerYear')),
+          withdrawalBeforeM3MWh: Number(value('withdrawalBeforeM3MWh')),
+          withdrawalAfterM3MWh: Number(value('withdrawalAfterM3MWh')),
+          consumptionBeforeM3MWh: Number(value('consumptionBeforeM3MWh')),
+          consumptionAfterM3MWh: Number(value('consumptionAfterM3MWh')),
+          constraintDestination: String(value('constraintDestination')) as any,
+        });
+
+        const unit = evaluated.inputs.currency;
+        set('costPerMWhPreserved', Number.isFinite(evaluated.costPerMWhPreserved) ? `${fmt(evaluated.costPerMWhPreserved, 1)} ${unit}/MWh` : text.noData);
+        set('annualEquivalentCost', formatMoney(evaluated.annualEquivalentCost));
+        set('costPerKWSecured', Number.isFinite(evaluated.costPerKWSecured) ? `${fmt(evaluated.costPerKWSecured, 0)} ${unit}/kW` : text.noData);
+        set('outageCost', formatMoney(evaluated.outageCost));
+        set('auxiliaryMWh', `${fmt(evaluated.auxiliaryMWh, 0)} MWh/${lang === 'fr' ? 'an' : 'year'}`);
+        set('simplePaybackYears', Number.isFinite(evaluated.simplePaybackYears) ? `${fmt(evaluated.simplePaybackYears, 1)} ${evaluated.simplePaybackYears > 1 ? text.years : text.year}` : text.noData);
+        set('constraintDestination', text.destinations[evaluated.inputs.constraintDestination as keyof typeof text.destinations]);
+        set('withdrawalChange', signedWater(evaluated.withdrawalDeltaM3MWh, evaluated.withdrawalChangePct));
+        set('consumptionChange', signedWater(evaluated.consumptionDeltaM3MWh, evaluated.consumptionChangePct));
+
+        root.querySelectorAll<HTMLElement>('[data-currency-price]').forEach((node) => { node.textContent = `${unit}/MWh`; });
+
+        const missing = Object.entries(evaluated.completeness)
+          .filter(([key, complete]) => ['securedCapacity', 'preservedEnergy', 'lifetime', 'replacementPrice'].includes(key) && !complete)
+          .map(([key]) => text.missingLabels[key as keyof typeof text.missingLabels]);
+        const missingBox = result('missingBox');
+        const missingList = result('missingList');
+        if (missingBox) missingBox.hidden = missing.length === 0;
+        if (missingList) {
+          const items = missing.map((item) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item;
+            return listItem;
+          });
+          missingList.replaceChildren(...items);
+        }
+        set('completionStatus', missing.length === 0 ? text.complete : text.missing);
+      };
+
+      const applyPreset = (name: string) => {
+        const preset = COOLING_QUOTE_PRESETS[name as keyof typeof COOLING_QUOTE_PRESETS];
+        if (!preset) return;
+        Object.entries(preset).forEach(([key, presetValue]) => {
+          const node = input(key);
+          if (!node) return;
+          node.value = String(presetValue);
+        });
+        buttons.forEach((button) => button.classList.toggle('is-active', button.dataset.preset === name));
+        update();
+      };
+
+      buttons.forEach((button) => button.addEventListener('click', () => applyPreset(button.dataset.preset || 'demo')));
+      inputs.forEach((node) => node.addEventListener('input', update));
+      inputs.forEach((node) => node.addEventListener('change', update));
+      update();
+    });
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialiseCoolingQuotes, { once: true });
+  else initialiseCoolingQuotes();
+  document.addEventListener('astro:page-load', initialiseCoolingQuotes);
+</script>
+
+<style>
+  .cooling-quote{margin:2rem 0;padding:1.05rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#0c0d10;color:#eef1f5;box-shadow:0 16px 44px rgba(0,0,0,.22);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden}
+  .cooling-quote *{box-sizing:border-box}
+  .cooling-quote__header{max-width:780px}
+  .cooling-quote__eyebrow{margin:0 0 .35rem;color:#5eead4;font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+  .cooling-quote h3{margin:0;color:#f6f7f9;font-family:inherit;font-size:1.16rem;line-height:1.25}
+  .cooling-quote__header>p:not(.cooling-quote__eyebrow){margin:.62rem 0 0;color:#aeb4be;font-size:.82rem;line-height:1.55}
+  .cooling-quote__cta{display:inline-flex;align-items:center;margin-top:.78rem;border:1px solid rgba(94,234,212,.58);border-radius:6px;background:rgba(94,234,212,.08);color:#5eead4;padding:.56rem .72rem;font-size:.72rem;font-weight:800;line-height:1.2;text-decoration:none}
+  .cooling-quote__cta:hover,.cooling-quote__cta:focus-visible{border-color:#5eead4;background:rgba(94,234,212,.14);color:#9ff6e8}
+  .cooling-quote__presets{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 .45rem}
+  .cooling-quote__presets button{appearance:none;border:1px solid #303844;border-radius:6px;background:#111318;color:#aeb4be;padding:.52rem .72rem;font:700 .72rem/1.1 inherit;cursor:pointer}
+  .cooling-quote__presets button.is-active{border-color:#5eead4;background:#182321;color:#5eead4}
+  .cooling-quote__preset-note{margin:0 0 .8rem;color:#7f8793;font-size:.65rem;line-height:1.45}
+  .cooling-quote__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:.85rem}
+  .cooling-quote__controls,.cooling-quote__results{min-width:0;padding:.82rem;border:1px solid #252c35;border-radius:8px;background:#111318}
+  .cooling-quote__section-title{margin:.1rem 0 .35rem;color:#f5b13d;font-size:.69rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+  .cooling-quote__section-title:not(:first-child){margin-top:1rem}
+  .cooling-quote__controls label{display:grid;grid-template-columns:minmax(0,1fr) minmax(112px,152px);gap:.7rem;align-items:center;padding:.42rem 0;border-bottom:1px solid rgba(255,255,255,.055);color:#c7ccd5;font-size:.72rem;line-height:1.32}
+  .cooling-quote__controls select,.cooling-quote input{width:100%;min-width:0;border:1px solid #343d49;border-radius:6px;background:#0c0d10;color:#fff;padding:.49rem .52rem;font:700 .78rem/1 inherit;outline:none}
+  .cooling-quote select:focus,.cooling-quote input:focus{border-color:#5eead4;box-shadow:0 0 0 2px rgba(94,234,212,.12)}
+  .cooling-quote__unit{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.32rem}
+  .cooling-quote small{color:#89919d;font-size:.64rem;white-space:nowrap}
+  .cooling-quote__privacy{margin:.72rem 0 0;color:#7f8793;font-size:.65rem;line-height:1.45}
+  .cooling-quote__hero{padding:.83rem;border:1px solid #33404b;border-radius:8px;background:linear-gradient(135deg,rgba(94,234,212,.08),rgba(122,162,247,.04))}
+  .cooling-quote__hero span,.cooling-quote__metrics span,.cooling-quote__water span{display:block;color:#8f98a5;font-size:.64rem;text-transform:uppercase;letter-spacing:.04em}
+  .cooling-quote__hero strong{display:block;margin:.32rem 0 .22rem;color:#5eead4;font-size:1.3rem;line-height:1.15;overflow-wrap:anywhere}
+  .cooling-quote__hero small{color:#f5b13d;font-weight:700}
+  .cooling-quote__metrics{display:grid;grid-template-columns:1fr 1fr;gap:.52rem;margin-top:.62rem}
+  .cooling-quote__metrics>div,.cooling-quote__water>div{min-width:0;padding:.67rem;border:1px solid #272e38;border-radius:7px;background:#0d1014}
+  .cooling-quote__metrics strong,.cooling-quote__water strong{display:block;margin-top:.3rem;color:#f2f4f7;font-size:.83rem;line-height:1.25;overflow-wrap:anywhere}
+  .cooling-quote__water{display:grid;grid-template-columns:1fr 1fr;gap:.52rem;margin-top:.52rem}
+  .cooling-quote__missing{margin-top:.62rem;padding:.68rem;border-left:2px solid #ff4d87;background:rgba(255,77,135,.07);color:#efb5c8;font-size:.68rem;line-height:1.45}
+  .cooling-quote__missing strong{color:#ff8bad}
+  .cooling-quote__missing p{margin:.25rem 0}
+  .cooling-quote__missing ul{margin:.25rem 0 0;padding-left:1.1rem}
+  .cooling-quote__warning{margin:.65rem 0 0;padding:.65rem .7rem;border-left:2px solid #f5b13d;background:rgba(245,177,61,.06);color:#b9c0ca;font-size:.66rem;line-height:1.5}
+  .cooling-quote__details{margin-top:.78rem;padding:.7rem .8rem;border:1px solid #252c35;border-radius:8px;background:#0f1217;color:#aeb4be;font-size:.7rem;line-height:1.55}
+  .cooling-quote__details summary{cursor:pointer;color:#dfe3e8;font-weight:800}
+  .cooling-quote__details a{color:#7aa2f7;overflow-wrap:anywhere}
+  .cooling-quote__details li+li{margin-top:.28rem}
+  [hidden]{display:none!important}
+  @media(max-width:760px){.cooling-quote{padding:.8rem}.cooling-quote__grid{grid-template-columns:1fr}.cooling-quote__controls label{grid-template-columns:1fr minmax(110px,150px)}}
+  @media(max-width:480px){.cooling-quote__controls label{grid-template-columns:1fr}.cooling-quote__metrics,.cooling-quote__water{grid-template-columns:1fr}.cooling-quote h3{font-size:1.04rem}.cooling-quote__hero strong{font-size:1.14rem}.cooling-quote__presets button{flex:1 1 100%}}
+</style>

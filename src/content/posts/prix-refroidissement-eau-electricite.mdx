@@ -1,0 +1,383 @@
+---
+title: "Le prix du refroidissement"
+seoTitle: "Refroidissement des centrales : coûts et solutions | l0g"
+ogTitle: "Paks, tours, air et mer : le vrai prix du refroidissement"
+description: "Paks, tours aéroréfrigérantes, air, eau recyclée ou mer : enquête sur le coût réel de l’adaptation du refroidissement électrique."
+pubDate: 2026-08-21T14:20:00+02:00
+updatedDate: 2026-08-21T14:20:00+02:00
+tags: ["Europe", "électricité", "eau", "refroidissement", "nucléaire", "Paks", "adaptation", "enquête"]
+draft: false
+quickTake:
+  fact: "Le numéro du Journal officiel qui encadre les travaux de Paks transfère 6 164 698 854 forints aux missions de lutte contre la sécheresse et la pénurie d'eau. Le projet annoncé mobilise 145 000 m³ de pierre. Au 19 août, les autorités attribuaient aux interventions une hausse locale de 10 à 15 cm et l'évitement d'un arrêt total."
+  importance: "Une tour, un seuil fluvial, l'air, l'eau usée ou la mer ne suppriment pas la contrainte. Chaque option change le bilan entre prélèvement, consommation, rendement, terrain, chimie, écologie et réseau."
+  uncertainty: "Les coûts publics disponibles manquent encore du dénominateur central : MW réellement sécurisés, MWh de déclassement évités, durée de vie et coût écologique complet."
+---
+
+import CoolingAdaptationEstimator from '../../components/CoolingAdaptationEstimator.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Le gouvernement hongrois connaît le prix du chantier : 6,165 milliards de forints. Il connaît aussi le volume de pierre : 145 000 m³. Au 19 août, il estimait que les interventions avaient relevé localement le Danube de 10 à 15 cm et évité l'arrêt complet de Paks. Le chiffre décisif reste pourtant absent : combien de mégawattheures ces centimètres ont-ils réellement achetés ?*
+
+Ce sixième et dernier volet referme l'enquête ouverte avec [le centimètre de Danube](/posts/combien-vaut-un-centimetre-de-danube/), prolongée par [le mégawatt humide](/posts/megawatt-humide-europe-eau-electricite/), [le degré supplémentaire dans le fleuve](/posts/degre-de-trop-rejets-thermiques-nucleaire/), [l'eau conservée derrière les barrages](/posts/barrage-choisit-ne-pas-produire/) et [le prix physique de l'adéquation](/posts/modele-pompe-prix-adequation/).
+
+Les cinq premiers articles ont documenté la dépendance.
+
+Le dernier examine la facture des réponses.
+
+La conclusion apparaît dès le départ : **aucune solution ne supprime le refroidissement**. Elle déplace la chaleur, l'eau, le coût ou le risque vers un autre milieu.
+
+## Six milliards de forints pour quelques centimètres
+
+Le 12 août 2026, le gouvernement hongrois a classé en urgence les travaux destinés à maintenir le niveau du Danube près de Paks parmi les investissements prioritaires.
+
+Le plan associe un seuil de fond, des travaux de rive et deux barges de 80 mètres pouvant être partiellement immergées. Le décret autorise une procédure accélérée, avec plusieurs régularisations hydrauliques et environnementales après le début du chantier. Le même ensemble de décisions transfère exactement **6 164 698 854 HUF** au dispositif de lutte contre la sécheresse et la pénurie d'eau. ([Magyar Közlöny, 12 août 2026](http://magyarkozlony.hu/hivatalos-lapok/ZESdc5X2ExtTq5liwRyP6a736c86c65e4/dokumentumok/9e53fcd585e531768b4cf37f04c76489a80f90ef/letoltes))
+
+L'agence publique MTI détaille le chantier : 35 000 m³ de pierre pour former une première nervure transversale, puis 110 000 m³ pour stabiliser le lit et protéger l'ouvrage contre l'érosion. Le coût brut annoncé de **6,165 milliards de forints** inclut aussi des travaux de voirie et la remise en état des berges. ([MTI, 13 août 2026](https://mti.hu/hirek/2026/08/13/magyar-peter-tobb-mint-6-milliard-forintba-kerul-paks-es-dunaszentbenedek-kozotti))
+
+Le 19 août, le Premier ministre indiquait que les mesures avaient ajouté environ 10 à 15 cm au niveau local, maintenu les deux turbines encore actives et permis d'envisager le redémarrage progressif des six autres. L'arrêt total avait été évité, mais le retour à pleine puissance restait encore à confirmer. ([Reuters, 19 août 2026](https://www.reuters.com/business/energy/hungarys-nuclear-plant-avoids-shutdown-water-level-expected-stay-high-enough-2026-08-19/))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 446" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paks : coût public, chantier connu et dénominateurs encore manquants" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="446" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Paks : le prix existe, le ratio manque</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">État documentaire au 21 août 2026.</text>
+  <rect x="28" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="46" y="115" fill="#f5b13d" font-size="10" font-weight="800">BUDGET TRANSFÉRÉ</text>
+  <text x="46" y="150" fill="#f3f5f8" font-size="19" font-weight="800">6,165 Md HUF</text>
+  <text x="46" y="174" fill="#8b929e" font-size="9">coût final encore inconnu</text>
+  <rect x="257" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="275" y="115" fill="#7aa2f7" font-size="10" font-weight="800">MATÉRIAUX ANNONCÉS</text>
+  <text x="275" y="150" fill="#f3f5f8" font-size="19" font-weight="800">145 000 m³</text>
+  <text x="275" y="174" fill="#8b929e" font-size="9">de pierre dans le Danube</text>
+  <rect x="486" y="88" width="206" height="104" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="504" y="115" fill="#5eead4" font-size="10" font-weight="800">EFFET ANNONCÉ AU 19/08</text>
+  <text x="504" y="150" fill="#f3f5f8" font-size="19" font-weight="800">+10 à 15 cm</text>
+  <text x="504" y="174" fill="#8b929e" font-size="9">arrêt total évité</text>
+  <path d="M130 222 H590" stroke="#39424e" stroke-width="3"/>
+  <polygon points="590,222 578,215 578,229" fill="#39424e"/>
+  <text x="232" y="213" fill="#aeb4be" font-size="9">le chantier devient une capacité électrique seulement après mesure</text>
+  <rect x="28" y="252" width="664" height="126" rx="8" fill="#111318" stroke="#ff4d87"/>
+  <text x="46" y="280" fill="#ff4d87" font-size="11" font-weight="800">DÉNOMINATEURS PUBLICS ENCORE ABSENTS</text>
+  <text x="46" y="310" fill="#c7ccd5" font-size="10">• MW réellement sécurisés à chaque heure</text>
+  <text x="46" y="334" fill="#c7ccd5" font-size="10">• MWh de déclassement évités sur la durée de vie</text>
+  <text x="370" y="310" fill="#c7ccd5" font-size="10">• maintenance, retrait et coût final</text>
+  <text x="370" y="334" fill="#c7ccd5" font-size="10">• impact aval, navigation et Natura 2000</text>
+  <text x="46" y="361" fill="#f5b13d" font-size="10" font-weight="800">Sans ces pièces : aucun coût fiable par MWh préservé.</text>
+  <text x="24" y="430" fill="#777f8c" font-size="9">SOURCES : Magyar Közlöny ; MTI ; Reuters.</text>
+</svg>
+<figcaption>Le budget et le chantier sont documentés. Le bénéfice électrique consolidé ne l'est pas encore.</figcaption>
+</figure>
+
+Le cas Paks est séduisant parce que le coût semble faible face à celui d'une centrale.
+
+Cette comparaison reste incomplète.
+
+Un seuil fluvial peut acheter rapidement quelques centimètres. Il peut aussi modifier la morphologie du fleuve, la navigation, les habitats et la distribution du débit vers l'aval. Sa durée de vie, son entretien et son comportement lors d'une crue doivent entrer dans le calcul.
+
+## Quatre horizons, quatre factures
+
+Toutes les adaptations ne répondent pas au même calendrier.
+
+L'**urgence** agit en quelques jours : dragage, barges, pompes temporaires, imports et réduction de demande.
+
+Le **retrofit** transforme un site existant sur plusieurs mois ou années : prise abaissée, nouvelle baie, pompes, bassin tampon, tour d'appoint ou système hybride.
+
+La **conception neuve** choisit dès l'origine une côte, une tour, une prise profonde, une source d'eau recyclée ou des marges climatiques plus fortes.
+
+Le **système électrique** répartit le risque entre stockage, interconnexions, renouvelables, demande flexible et capacités de réserve.
+
+Une centrale âgée de quarante ans ne recevra pas automatiquement le même investissement qu'un réacteur conçu pour fonctionner après 2100.
+
+Le coût doit être rapporté à la durée pendant laquelle l'ouvrage protège effectivement la production.
+
+## La tour échange le débit contre l'évaporation
+
+La Cour des comptes a étudié l'ajout de tours aéroréfrigérantes sur trois sites français thermosensibles actuellement en circuit ouvert : Saint-Alban, Bugey 2-3 et Tricastin.
+
+Les études exploratoires d'EDF donnent un ordre de grandeur d'environ **500 M€ par tour**, auquel s'ajoutent une maintenance encore mal chiffrée, les contraintes foncières et paysagères, les rejets chimiques liés aux biocides et les indisponibilités de production pendant les travaux. ([Cour des comptes, 2024, p. 344](https://www.ccomptes.fr/sites/default/files/2024-03/20240312-RPA-2024-CDVI-adaptation-parcs-nucleaire-hydro-electrique.pdf))
+
+La phrase la plus importante du rapport tient en une distinction : installer ces tours **ne susciterait pas d'économie d'eau**, mais réduirait le réchauffement des rivières.
+
+Le circuit ouvert prélève un volume très important et en restitue presque tout au milieu, plus chaud.
+
+Le circuit recirculé prélève beaucoup moins, mais une part plus importante quitte le bassin sous forme de vapeur. Pour le parc français en circuit fermé, la Cour rapporte une évaporation moyenne équivalente à 24 % de l'eau prélevée en 2021.
+
+Une politique peut donc améliorer le prélèvement et dégrader la consommation nette en même temps.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison qualitative des circuits ouvert, tour humide, hybride et sec" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="456" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Refroidir signifie choisir un compromis</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Comparaison qualitative. Les performances réelles restent propres au site.</text>
+  <text x="28" y="102" fill="#8b929e" font-size="9">CRITÈRE</text>
+  <text x="170" y="102" fill="#7aa2f7" font-size="10" font-weight="800">CIRCUIT OUVERT</text>
+  <text x="322" y="102" fill="#5eead4" font-size="10" font-weight="800">TOUR HUMIDE</text>
+  <text x="466" y="102" fill="#f5b13d" font-size="10" font-weight="800">HYBRIDE</text>
+  <text x="604" y="102" fill="#ff4d87" font-size="10" font-weight="800">SEC</text>
+  <line x1="28" y1="119" x2="692" y2="119" stroke="#303844"/>
+  <text x="28" y="154" fill="#c7ccd5" font-size="10">Prélèvement</text>
+  <text x="170" y="154" fill="#ff4d87" font-size="13" font-weight="800">très élevé</text>
+  <text x="322" y="154" fill="#5eead4" font-size="13" font-weight="800">faible</text>
+  <text x="466" y="154" fill="#5eead4" font-size="13" font-weight="800">modulable</text>
+  <text x="604" y="154" fill="#5eead4" font-size="13" font-weight="800">minime</text>
+  <line x1="28" y1="174" x2="692" y2="174" stroke="#252c35"/>
+  <text x="28" y="209" fill="#c7ccd5" font-size="10">Consommation</text>
+  <text x="170" y="209" fill="#5eead4" font-size="13" font-weight="800">faible</text>
+  <text x="322" y="209" fill="#ff4d87" font-size="13" font-weight="800">évaporation</text>
+  <text x="466" y="209" fill="#f5b13d" font-size="13" font-weight="800">intermédiaire</text>
+  <text x="604" y="209" fill="#5eead4" font-size="13" font-weight="800">minime</text>
+  <line x1="28" y1="229" x2="692" y2="229" stroke="#252c35"/>
+  <text x="28" y="264" fill="#c7ccd5" font-size="10">Rendement</text>
+  <text x="170" y="264" fill="#5eead4" font-size="13" font-weight="800">élevé</text>
+  <text x="322" y="264" fill="#7aa2f7" font-size="13" font-weight="800">bon</text>
+  <text x="466" y="264" fill="#f5b13d" font-size="13" font-weight="800">pilotable</text>
+  <text x="604" y="264" fill="#ff4d87" font-size="13" font-weight="800">pénalisé</text>
+  <line x1="28" y1="284" x2="692" y2="284" stroke="#252c35"/>
+  <text x="28" y="319" fill="#c7ccd5" font-size="10">Milieu exposé</text>
+  <text x="170" y="319" fill="#aeb4be" font-size="10">fleuve ou mer</text>
+  <text x="322" y="319" fill="#aeb4be" font-size="10">air + chimie</text>
+  <text x="466" y="319" fill="#aeb4be" font-size="10">air + eau</text>
+  <text x="604" y="319" fill="#aeb4be" font-size="10">air + bruit</text>
+  <line x1="28" y1="339" x2="692" y2="339" stroke="#252c35"/>
+  <text x="28" y="374" fill="#c7ccd5" font-size="10">Canicule</text>
+  <text x="170" y="374" fill="#f5b13d" font-size="10">eau chaude</text>
+  <text x="322" y="374" fill="#f5b13d" font-size="10">bulbe humide</text>
+  <text x="466" y="374" fill="#7aa2f7" font-size="10">modes combinés</text>
+  <text x="604" y="374" fill="#ff4d87" font-size="10">air très chaud</text>
+  <rect x="28" y="404" width="664" height="26" rx="4" fill="#111318"/>
+  <text x="44" y="422" fill="#f5b13d" font-size="9">Aucune colonne ne domine sur les cinq critères. Le site décide du compromis.</text>
+  <text x="24" y="447" fill="#777f8c" font-size="9">SOURCES : Cour des comptes ; EU-BRITE, BREF refroidissement industriel.</text>
+</svg>
+<figcaption>Le meilleur bilan sur le prélèvement n'est pas forcément le meilleur bilan sur la consommation ou le rendement.</figcaption>
+</figure>
+
+EDF programme par ailleurs **612,6 M€** d'investissements d'adaptation entre 2022 et 2038, hors éventuelles tours à 500 M€ l'unité. Le total couvre notamment les grands chauds, les sources froides, les tornades et les digues. La Cour souligne qu'une partie des coûts climatiques reste mêlée aux dépenses de sûreté, de maintenance et d'exploitation.
+
+Le chiffre de 500 M€ ne suffit donc pas à classer une tour.
+
+Il manque le nombre de MWh qu'elle protégerait pendant sa durée de vie.
+
+## L'air rachète l'eau au prix du rendement
+
+Le refroidissement sec évacue la chaleur par convection vers l'air.
+
+Il réduit presque à zéro la dépendance à une ressource hydraulique de refroidissement, mais ajoute des ventilateurs, de l'emprise, du bruit et une pénalité de performance. La chaleur extérieure dégrade précisément le vide du condenseur au moment où les vagues de chaleur augmentent souvent la demande électrique.
+
+Le document européen de référence sur les systèmes de refroidissement décrit le sec comme une solution employée lorsque l'eau est indisponible ou chère, tandis que le circuit ouvert reste très performant sur le plan énergétique lorsqu'un grand volume d'eau fiable et un milieu récepteur adapté existent. Les systèmes hybrides permettent de passer d'un mode à l'autre, au prix d'une infrastructure plus complexe. ([EU-BRITE, Industrial Cooling Systems BREF](https://bureau-industrial-transformation.jrc.ec.europa.eu/index.php/reference/industrial-cooling-systems))
+
+Le modèle PESETA IV du Centre commun de recherche teste l'effet de tours recirculées et du refroidissement sec sur le système électrique de 2050.
+
+Dans le scénario dynamique compatible avec 2 °C de réchauffement, l'adaptation fait passer la perte de production nucléaire liée au climat d'environ **-2,8 % à -0,6 %**. Le bénéfice est particulièrement important dans le sud de l'Europe. ([JRC, PESETA IV, Energy Supply](https://joint-research-centre.ec.europa.eu/projects-and-activities/peseta-climate-change-projects/jrc-peseta-iv/energy-supply_en))
+
+Le résultat démontre un potentiel physique à l'échelle européenne.
+
+Il ne constitue pas un devis industriel. Le modèle simplifie les sites, ne reproduit pas tous les extrêmes et n'intègre pas les arrêts de chantier propres à chaque retrofit.
+
+## L'eau usée construit une seconde usine
+
+L'eau usée traitée permet de réduire la concurrence avec les rivières et l'eau potable.
+
+Elle doit encore être transportée et préparée pour un circuit industriel.
+
+Palo Verde, en Arizona, fournit le cas nucléaire le plus spectaculaire. La centrale n'est située près d'aucune grande masse d'eau naturelle. Des effluents municipaux sont transportés sur environ 36 miles, soit près de 58 km, puis subissent un traitement tertiaire sur le site avant d'alimenter les tours de refroidissement. La chaîne intègre des conduites, des pompes, des réservoirs, des produits chimiques, des bassins d'évaporation et un contrat d'approvisionnement de long terme. ([OSTI, Palo Verde Water Cycle Model](https://www.osti.gov/servlets/purl/1866034))
+
+Palo Verde prouve la faisabilité technique.
+
+Il ne prouve pas que chaque centrale européenne dispose d'une station d'épuration assez proche, d'un débit estival suffisant ou d'une qualité d'eau compatible.
+
+En Pologne, la centrale thermique de Turów a développé une installation membranaire d'environ **12 000 m³ par jour** afin de traiter des effluents industriels et de les réinjecter dans les processus du site. ([PGE, rapport intégré 2022](https://www.raportzintegrowany2022.gkpge.pl/en/esg-foundation-of-development/environment/a-responsible-approach-to-water-resources-management/))
+
+Une cartographie européenne sérieuse devrait relier chaque grande centrale aux stations d'épuration situées à proximité, puis ajouter la distance, l'altitude, la qualité, l'énergie de pompage et le devenir des concentrats.
+
+L'eau recyclée n'est pas une source gratuite.
+
+C'est une nouvelle infrastructure industrielle.
+
+## La mer déplace la contrainte vers le littoral
+
+La première centrale nucléaire polonaise prévue à Lubiatowo-Kopalino illustre l'autre grande stratégie : quitter la rivière.
+
+La décision environnementale retient un circuit ouvert utilisant l'eau de la mer Baltique et des tunnels réalisés par tunneliers sous le fond marin. Elle impose notamment une vitesse maximale de 0,3 m/s à l'entrée, des diffuseurs de rejet, un système dédié de récupération et de retour des poissons, ainsi qu'une surveillance chimique et thermique. ([GDOŚ, décision environnementale du 19 septembre 2023](https://www.gov.pl/web/gdos/decyzja-generalnego-dyrektora-ochrony-srodowiska-z-dnia-19-wrzesnia-2023-r-znak-doos-oa420512015125))
+
+L'étude avait comparé le circuit ouvert marin avec des tours fonctionnant à l'eau de mer ou à l'eau dessalée. Les tours obtenaient le meilleur classement sur les seuls critères environnementaux. Le circuit ouvert a remporté l'analyse multicritère globale retenue par le maître d'ouvrage. ([PEJ, rapport d'impact](https://pej.pl/en/press-center/news/polskie-elektrownie-jadrowe-sp-z-o-o-submits-the-environmental-impact-assessment-report-for-the-first-nuclear-power-plant-in-poland/))
+
+La mer évite le manque de débit fluvial.
+
+Elle ajoute des tunnels, du pompage, de la corrosion, du biofouling, des organismes aspirés, un panache thermique et une exposition côtière aux tempêtes et à l'élévation du niveau marin.
+
+## Le neuf choisit, l'existant négocie
+
+Le parc existant doit adapter des équipements, du foncier et des permis conçus plusieurs décennies plus tôt.
+
+Le nouveau nucléaire peut intégrer la contrainte dès le plan initial.
+
+Le projet EPR2 du Bugey prévoit une station de pompage sur le Rhône, des circuits fermés ou semi-fermés et des tours aéroréfrigérantes. La fiche publique initiale présentait deux tours de 200 mètres ou quatre tours de 161 mètres. EDF a ensuite indiqué avoir retenu l'option de deux tours. ([CNDP, projet EPR2 Bugey](https://www.debatpublic.fr/construction-dune-paire-de-reacteurs-epr2-sur-le-site-du-bugey-5849), [EDF, réunion publique de la CLI, décembre 2025](https://concertation-epr2.edf.fr/blog/epr2-bugey-a-la-reunion-publique-de-la-cli-le-10-decembre-2025-1))
+
+Aucun document public identifié n'isole encore le CAPEX du refroidissement, sa consommation auxiliaire et son bilan hydrique complet.
+
+Paks II fournit l'autre cas décisif.
+
+Son étude d'impact avait déjà comparé le refroidissement direct par le Danube, plusieurs configurations de prise et les tours humides. Elle avait aussi modélisé de faibles débits extrêmes et les effets cumulés avec le parc existant. Le projet a retenu le Danube après une analyse coût-avantage. ([Paks II, dossier environnemental](https://www.paks2.hu/web/paks-2-en/environmental-permitting))
+
+L'été 2026 n'annule pas ces travaux.
+
+Il crée une obligation de mise à jour : confronter les niveaux réellement observés, le seuil de fond encore en chantier et la géométrie de la future prise aux hypothèses historiques du permis.
+
+Le retrofit négocie avec un site existant.
+
+Le neuf doit éviter de construire la vulnérabilité suivante.
+
+## Testez un devis d'adaptation
+
+Les coûts publics de Paks et des tours françaises contiennent un numérateur.
+
+Ils ne contiennent pas encore le dénominateur complet.
+
+Le calculateur propose trois jeux de données : une démo fictive, le seul coût public de Paks et le seul ordre de grandeur public d'une tour EDF. Dans les deux cas réels, les MW sécurisés et les MWh préservés restent volontairement vides.
+
+<CoolingAdaptationEstimator lang="fr" />
+
+## Le mégawatt sécurisé comme dénominateur
+
+Le CAPEX seul favorise les solutions rapides et pénalise les équipements lourds sans mesurer leur durée de protection.
+
+Le bon ratio commence par la puissance et l'énergie réellement préservées.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 458" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Formule du coût complet d'un mégawatt sécurisé par une adaptation du refroidissement" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="458" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le coût complet du MW sécurisé</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Une comptabilité commune pour comparer des solutions très différentes.</text>
+  <rect x="28" y="88" width="204" height="52" rx="6" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="44" y="112" fill="#7aa2f7" font-size="10" font-weight="800">CAPEX ANNUALISÉ</text>
+  <text x="44" y="130" fill="#c7ccd5" font-size="9">durée de vie + taux</text>
+  <rect x="258" y="88" width="204" height="52" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="274" y="112" fill="#5eead4" font-size="10" font-weight="800">OPEX ET CHIMIE</text>
+  <text x="274" y="130" fill="#c7ccd5" font-size="9">maintenance + traitement</text>
+  <rect x="488" y="88" width="204" height="52" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="504" y="112" fill="#f5b13d" font-size="10" font-weight="800">AUXILIAIRES</text>
+  <text x="504" y="130" fill="#c7ccd5" font-size="9">pompes + ventilateurs</text>
+  <rect x="28" y="162" width="204" height="52" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="44" y="186" fill="#ff4d87" font-size="10" font-weight="800">ARRÊT DE CHANTIER</text>
+  <text x="44" y="204" fill="#c7ccd5" font-size="9">MWh non produits</text>
+  <rect x="258" y="162" width="204" height="52" rx="6" fill="#15171c" stroke="#a78bfa"/>
+  <text x="274" y="186" fill="#a78bfa" font-size="10" font-weight="800">EAU ET REJETS</text>
+  <text x="274" y="204" fill="#c7ccd5" font-size="9">prélèvement ≠ consommation</text>
+  <rect x="488" y="162" width="204" height="52" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="504" y="186" fill="#f5b13d" font-size="10" font-weight="800">EXTERNALITÉS</text>
+  <text x="504" y="204" fill="#c7ccd5" font-size="9">fleuve, air, mer, réseau</text>
+  <text x="349" y="254" fill="#8b929e" font-size="18" font-weight="800">÷</text>
+  <rect x="78" y="278" width="252" height="72" rx="8" fill="#111318" stroke="#5eead4" stroke-width="2"/>
+  <text x="98" y="305" fill="#5eead4" font-size="11" font-weight="800">MW RÉELLEMENT SÉCURISÉS</text>
+  <text x="98" y="330" fill="#c7ccd5" font-size="9">pendant le scénario climatique cible</text>
+  <rect x="390" y="278" width="252" height="72" rx="8" fill="#111318" stroke="#7aa2f7" stroke-width="2"/>
+  <text x="410" y="305" fill="#7aa2f7" font-size="11" font-weight="800">MWh DE DÉCLASSEMENT ÉVITÉS</text>
+  <text x="410" y="330" fill="#c7ccd5" font-size="9">sur toute la durée de l'adaptation</text>
+  <rect x="78" y="382" width="564" height="38" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="98" y="406" fill="#ff8bad" font-size="10" font-weight="800">Sans dénominateur : prix visible, efficacité inconnue.</text>
+  <text x="24" y="447" fill="#777f8c" font-size="9">MÉTHODE : l0g, à partir des recommandations de transparence de la Cour des comptes.</text>
+</svg>
+<figcaption>Le ratio final doit être publié avec le scénario climatique, la durée de vie et les hypothèses de disponibilité.</figcaption>
+</figure>
+
+Deux ratios doivent être distingués.
+
+```text
+Coût par kW sécurisé = CAPEX / puissance réellement sécurisée
+
+Coût annualisé par MWh préservé =
+(annuité du CAPEX + OPEX + auxiliaires + coût annualisé du chantier)
+/ MWh de déclassement évités
+```
+
+Le bilan hydrique doit rester séparé :
+
+```text
+prélèvement avant et après
+consommation nette avant et après
+source de l'eau
+période critique
+```
+
+Une tour à 500 M€ peut être rationnelle si elle protège une forte production pendant plusieurs décennies.
+
+Un ouvrage fluvial à 6,165 milliards de forints peut être rationnel s'il évite des mois d'arrêt avec des impacts maîtrisés.
+
+Aucun de ces jugements n'est possible avec le seul CAPEX.
+
+## Le portefeuille d'adaptation
+
+Le refroidissement résilient ne désigne pas une technologie unique.
+
+Un site côtier peut conserver un circuit ouvert marin.
+
+Une centrale fluviale neuve peut adopter des tours ou un système hybride.
+
+Un actif ancien peut justifier une prise abaissée plutôt qu'un retrofit complet.
+
+Une région très interconnectée peut accepter quelques jours de déclassement si le stockage, la demande flexible et les voisins absorbent le choc.
+
+L'optimum dépend de cinq variables :
+
+- la durée de vie résiduelle ;
+- le bassin et son climat futur ;
+- la puissance réellement nécessaire au système ;
+- le coût de l'indisponibilité ;
+- le milieu vers lequel la contrainte sera déplacée.
+
+La série a commencé avec un fleuve trop bas pour une pompe.
+
+Elle s'achève sur une comptabilité encore absente.
+
+L'Europe possède des solutions techniques.
+
+Elle publie rarement le nombre de mégawattheures réellement sécurisés par chacune.
+
+### Résultats établis
+
+Le gouvernement hongrois a annoncé un chantier d'environ 6,165 milliards de forints et l'emploi de 145 000 m³ de pierre pour protéger l'admission d'eau de Paks.
+
+La Cour des comptes rapporte un ordre de grandeur de 500 M€ par tour rétrofitée sur les sites français étudiés et 612,6 M€ d'investissements d'adaptation programmés hors ces tours.
+
+Une tour humide réduit fortement les prélèvements et le rejet thermique, mais augmente la consommation nette par évaporation et exige des traitements chimiques.
+
+Le JRC estime que des refroidissements moins intensifs en eau peuvent réduire fortement les pertes nucléaires liées au climat dans son scénario européen de 2050.
+
+Les solutions marines et recyclées réduisent la concurrence sur l'eau douce tout en créant de nouvelles infrastructures et de nouveaux impacts.
+
+### Sources primaires
+
+- [Magyar Közlöny, décrets 122/2026 et 1256/2026 relatifs aux travaux de Paks](http://magyarkozlony.hu/hivatalos-lapok/ZESdc5X2ExtTq5liwRyP6a736c86c65e4/dokumentumok/9e53fcd585e531768b4cf37f04c76489a80f90ef/letoltes)
+- [Gouvernement hongrois, décisions sur l'alimentation en eau de Paks](https://kormany.hu/hirek/a-kormany-dontesei-a-paksi-atomeromu-hutovizenek-biztositasara)
+- [MTI, coût et volume de pierre du seuil de Paks](https://mti.hu/hirek/2026/08/13/magyar-peter-tobb-mint-6-milliard-forintba-kerul-paks-es-dunaszentbenedek-kozotti)
+- [Cour des comptes, adaptation des parcs nucléaire et hydro-électrique](https://www.ccomptes.fr/sites/default/files/2024-03/20240312-RPA-2024-CDVI-adaptation-parcs-nucleaire-hydro-electrique.pdf)
+- [JRC, PESETA IV, Energy Supply](https://joint-research-centre.ec.europa.eu/projects-and-activities/peseta-climate-change-projects/jrc-peseta-iv/energy-supply_en)
+- [EU-BRITE, BREF sur les systèmes de refroidissement industriels](https://bureau-industrial-transformation.jrc.ec.europa.eu/index.php/reference/industrial-cooling-systems)
+- [CNDP, projet EPR2 du Bugey](https://www.debatpublic.fr/construction-dune-paire-de-reacteurs-epr2-sur-le-site-du-bugey-5849)
+- [Paks II, dossier d'autorisation environnementale](https://www.paks2.hu/web/paks-2-en/environmental-permitting)
+- [GDOŚ, décision environnementale de Lubiatowo-Kopalino](https://www.gov.pl/web/gdos/decyzja-generalnego-dyrektora-ochrony-srodowiska-z-dnia-19-wrzesnia-2023-r-znak-doos-oa420512015125)
+- [OSTI, Palo Verde Water Cycle Model](https://www.osti.gov/servlets/purl/1866034)
+- [PGE, gestion de l'eau et réutilisation à Turów](https://www.raportzintegrowany2022.gkpge.pl/en/esg-foundation-of-development/environment/a-responsible-approach-to-water-resources-management/)
+
+### Source de marché pour le résultat immédiat des travaux de Paks
+
+- [Reuters, 19 août 2026, arrêt total évité et hausse locale de 10 à 15 cm](https://www.reuters.com/business/energy/hungarys-nuclear-plant-avoids-shutdown-water-level-expected-stay-high-enough-2026-08-19/)
+
+### Limites de la démonstration
+
+Le coût final par MWh préservé à Paks, Cernavodă et sur les sites français ne peut pas encore être calculé.
+
+Les données publiques ne ventilent pas entièrement les coûts de refroidissement des projets EPR2 du Bugey et de Paks II.
+
+Les performances du sec, de l'hybride et de l'eau recyclée restent propres au site et ne doivent pas être transférées d'une centrale à une autre sans étude d'ingénierie.
+
+L'outil interactif ne remplace ni un modèle hydraulique, ni une étude de sûreté, ni une évaluation écologique.
+
+### Méthode
+
+Données et documents arrêtés au **21 août 2026**.
+
+Les montants en forints et en euros ne sont pas convertis ni placés sur une même échelle graphique, car ils concernent des périmètres, des dates, des monnaies et des durées différentes.
+
+Les préréglages Paks et tour EDF de l'outil reproduisent uniquement les coûts publics documentés. Les dénominateurs manquants restent à zéro.

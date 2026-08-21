@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CoolingAdaptationEstimator from '../../components/CoolingAdaptationEstimator.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import { COOLING_QUOTE_DATA_DATE, COOLING_QUOTE_MODEL_VERSION, COOLING_QUOTE_SOURCES } from '../../lib/cooling-adaptation-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'cooling-adaptation-quote');
+if (!tool) throw new Error('Cooling adaptation quote is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title, description: tool.fr.description, url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'fr',
+  isAccessibleForFree: true, softwareVersion: COOLING_QUOTE_MODEL_VERSION,
+  dateModified: COOLING_QUOTE_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: COOLING_QUOTE_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout seoTitle="Coût du refroidissement : simulateur d’adaptation | l0g" title="Combien coûte un MWh sécurisé par le refroidissement ?" description="Testez CAPEX, OPEX, arrêt de chantier, auxiliaires et bilan hydrique pour calculer le coût d’une adaptation par MW et MWh sécurisés." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <PageHero index="01" kicker="outil d’analyse" title="Le devis du refroidissement" description="Un coût public ne devient comparable qu’avec ses MW sécurisés, ses MWh préservés et sa durée de vie." secondary="Trois scénarios pédagogiques. Aucun appel réseau, aucune donnée envoyée, aucune recommandation d’investissement." glyph="observe" accent="var(--color-signal)" stats={[
+    { value: `v${COOLING_QUOTE_MODEL_VERSION}`, label: 'moteur auditable' },
+    { value: '2', label: 'bilans d’eau séparés' },
+    { value: 'local', label: 'aucun suivi' },
+  ]} />
+  <CoolingAdaptationEstimator lang="fr" mode="full" />
+</BaseLayout>

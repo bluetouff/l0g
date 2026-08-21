@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'cooling-adaptation-quote',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-21',
+    modelHref: '/outils/devis-adaptation-refroidissement/model.json',
+    fr: {
+      title: 'Le devis du refroidissement',
+      eyebrow: 'eau et électricité',
+      description: 'Annualisez CAPEX, arrêt de chantier, OPEX et auxiliaires, puis comparez le coût aux MW sécurisés et aux MWh de déclassement évités.',
+      question: 'Combien coûte réellement un MWh sécurisé par l’adaptation ?',
+      href: '/outils/devis-adaptation-refroidissement/',
+      articleHref: '/posts/prix-refroidissement-eau-electricite/',
+      articleLabel: 'Lire l’enquête sur le prix du refroidissement',
+    },
+    en: {
+      title: 'The cooling adaptation quote',
+      eyebrow: 'water and electricity',
+      description: 'Annualise CAPEX, construction outages, OPEX and auxiliary power, then compare the bill with secured MW and derating avoided.',
+      question: 'What does each MWh secured by adaptation really cost?',
+      href: '/en/tools/cooling-adaptation-quote/',
+      articleHref: '/en/analysis/price-of-cooling-water-electricity/',
+      articleLabel: 'Read the investigation into the price of cooling',
+    },
+  },
+  {
     id: 'adequacy-pump-model',
     version: '1.0.0',
     status: 'active',
