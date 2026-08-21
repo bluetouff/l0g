@@ -95,6 +95,8 @@ test('les pages bilingues, les couvertures et le catalogue exposent les édition
   assert.match(component, /createHash\('sha256'\)/u);
   assert.match(component, /loading="lazy"/u);
   assert.match(component, /decoding="async"/u);
+  assert.match(component, /eau-electricite-infographie\.png/u);
+  assert.match(component, /class="visual-card summary-visual"/u);
   assert.equal((component.match(/\/outils\//gu) ?? []).length >= 7, true);
   assert.equal((component.match(/\/en\/tools\//gu) ?? []).length >= 7, true);
   assert.match(spotlight, /publication === 'water-electricity'/u);
@@ -106,4 +108,8 @@ test('les pages bilingues, les couvertures et le catalogue exposent les édition
     assert.equal(image.readUInt32BE(16), 1600);
     assert.equal(image.readUInt32BE(20), 2560);
   }
+  const summaryImage = readFileSync(join(ROOT, 'public/publications/eau-electricite-infographie.png'));
+  assert.equal(summaryImage.subarray(1, 4).toString('ascii'), 'PNG');
+  assert.equal(summaryImage.readUInt32BE(16), 1055);
+  assert.equal(summaryImage.readUInt32BE(20), 1491);
 });

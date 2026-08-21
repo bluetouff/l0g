@@ -181,11 +181,29 @@ const bookJsonLd = {
         <div class="section-index" aria-hidden="true">02</div>
         <div>
           <p class="mono-label glow">{isFr ? 'lecture panoramique' : 'panoramic view'}</p>
-          <h2 id="visuals-title">{isFr ? 'Le trajet invisible d’un mégawatt.' : 'The invisible journey of a megawatt.'}</h2>
-          <p>{isFr ? 'Deux cartes relient le niveau du fleuve, la centrale, le réseau et la facture de l’adaptation.' : 'Two maps connect river level, the power plant, the grid and the adaptation bill.'}</p>
+          <h2 id="visuals-title">{isFr ? 'Les six volets, en une carte.' : 'The invisible journey of a megawatt.'}</h2>
+          <p>{isFr ? 'Cette infographie relie le niveau du fleuve, les centrales, le réseau et le prix de l’adaptation.' : 'Two maps connect river level, the power plant, the grid and the adaptation bill.'}</p>
         </div>
       </header>
 
+      {isFr ? (
+        <div class="visuals-stack">
+          <figure class="visual-card summary-visual">
+            <a class="visual-link" href="/publications/eau-electricite-infographie.png" aria-label="Ouvrir l’infographie complète en pleine résolution">
+              <img
+                src="/publications/eau-electricite-infographie.png"
+                width="1055"
+                height="1491"
+                loading="lazy"
+                decoding="async"
+                alt="Infographie des six volets de l’enquête : centimètre critique, mégawatt humide, degré de trop, barrage arbitre, adéquation face au terrain et prix du refroidissement, autour du Danube et du système électrique européen."
+              />
+              <span class="visual-zoom" aria-hidden="true">Pleine résolution ↗</span>
+            </a>
+            <figcaption>Du Danube au coût du refroidissement : une vue d’ensemble des six mécanismes étudiés dans la série.</figcaption>
+          </figure>
+        </div>
+      ) : (
       <div class="visuals-stack">
         <figure class="visual-card">
           <div class="visual-card-heading"><span>01</span><div><p>{isFr ? 'chaîne physique' : 'physical chain'}</p><h3>{isFr ? 'De l’eau au mégawatt livré' : 'From water to delivered megawatt'}</h3></div></div>
@@ -247,6 +265,7 @@ const bookJsonLd = {
           <figcaption>{isFr ? 'Le parcours évite le jargon en partant de questions observables, puis remonte vers le système.' : 'The reading path avoids jargon by starting with observable questions before moving to the wider system.'}</figcaption>
         </figure>
       </div>
+      )}
     </section>
 
     <section class="contents-section" id="sommaire">
@@ -353,7 +372,7 @@ const bookJsonLd = {
   .book-shell img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb,var(--color-signal) 36%,var(--color-line)); border-radius: 0 9px 9px 0; background: #050608; }
   .cover-caption { position: relative; margin-top: 1.4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; }
   .hero-copy { min-width: 0; }
-  .hero-copy h1 { max-width: 12ch; margin: .45rem 0 .8rem; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(3rem,7.2vw,6.4rem); font-weight: 760; letter-spacing: -.065em; line-height: .9; }
+  .hero-copy h1 { max-width: 13ch; margin: .45rem 0 .8rem; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(2.35rem,4.5vw,4.25rem); font-weight: 740; letter-spacing: -.045em; line-height: .96; }
   .hero-copy h1 span { display: block; color: var(--color-accent); font-weight: 610; }
   .hero-deck { max-width: 34rem; margin: 1.5rem 0 0; color: var(--color-signal); font-family: var(--font-read); font-size: clamp(1.25rem,2.4vw,1.8rem); font-weight: 590; letter-spacing: -.025em; line-height: 1.25; }
   .hero-lede { max-width: 40rem; margin: 1.25rem 0 0; color: var(--color-prose); font-family: var(--font-read); font-size: 1.03rem; line-height: 1.75; }
@@ -387,7 +406,8 @@ const bookJsonLd = {
   .visual-scroll:focus-visible { outline: 2px solid var(--color-signal); outline-offset: -2px; }
   .visual-link { position: relative; display: block; width: 100%; }
   .visual-link img { display: block; width: 100%; height: auto; }
-  .visual-zoom { position: absolute; right: 1rem; bottom: 1rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: .5rem .72rem; background: rgba(3,10,17,.86); color: #fff; font-family: var(--font-mono); font-size: .64rem; backdrop-filter: blur(8px); }
+  .summary-visual { width: min(100%,66rem); margin-inline: auto; }
+  .visual-zoom { display: block; width: max-content; margin: .75rem 1rem 0 auto; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: .5rem .72rem; background: rgba(3,10,17,.86); color: #fff; font-family: var(--font-mono); font-size: .64rem; }
   .mobile-pan-note { display: none; }
   .visual-card figcaption { padding: .9rem 1.15rem 1rem; color: var(--color-muted); font-family: var(--font-read); font-size: .82rem; line-height: 1.55; }
   .contents-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
@@ -445,7 +465,7 @@ const bookJsonLd = {
     .visual-scroll { overflow-x: auto; overscroll-behavior-inline: contain; }
     .wide-visual { width: 48rem; max-width: none; }
     .visual-link { width: 62rem; max-width: none; }
-    .visual-zoom { position: sticky; right: 1rem; float: right; margin: -3.1rem 1rem .7rem 0; }
+    .summary-visual .visual-link { width: 100%; }
     .hero-actions a { width: 100%; }
     .download-action { align-items: center; }
     .proof-line li { flex: 1 1 calc(50% - .45rem); text-align: center; }
