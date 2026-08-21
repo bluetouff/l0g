@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, normalize, relative, resolve } from 'node:path';
 import test from 'node:test';
+import { XMLValidator } from 'fast-xml-parser';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const REVISION = 'e85fc63797c76e749b143398fca5cbccaba44de2';
@@ -41,8 +42,11 @@ for (const edition of editions) {
     assert.match(execFileSync('unzip', ['-lv', edition.epub], { encoding: 'utf8' }).split('\n').find((line) => /\bmimetype\s*$/u.test(line)) ?? '', /\bStored\b/u);
     assert.deepEqual(entries.sort(), listFiles(edition.source).map((path) => relative(edition.source, path)).sort());
     for (const path of textualFiles(edition.source)) {
-      assert.equal(execFileSync('unzip', ['-p', edition.epub, relative(edition.source, path)], { encoding: 'utf8' }), readFileSync(path, 'utf8'));
-      if (/\.(?:ncx|opf|svg|xhtml|xml)$/u.test(path)) execFileSync('xmllint', ['--noout', path]);
+      const markup = readFileSync(path, 'utf8');
+      assert.equal(execFileSync('unzip', ['-p', edition.epub, relative(edition.source, path)], { encoding: 'utf8' }), markup);
+      if (/\.(?:ncx|opf|svg|xhtml|xml)$/u.test(path)) {
+        assert.equal(XMLValidator.validate(markup), true, `${relative(ROOT, path)} doit être du XML valide`);
+      }
     }
   });
 
