@@ -2,33 +2,31 @@
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AnalysisToolCard from '../../../components/AnalysisToolCard.astro';
 import { analysisTools } from '../../../config/analysis-tools.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'l0g analysis tools',
+  description: 'Interactive, sourced, free and tracker-free economic simulators.', url: `${SITE}/en/tools/`, inLanguage: 'en',
+  mainEntity: { '@type': 'ItemList', numberOfItems: analysisTools.length, itemListElement: analysisTools.map((tool, index) => ({ '@type': 'ListItem', position: index + 1, item: { '@type': 'WebApplication', name: tool.en.title, url: `${SITE}${tool.en.href}`, description: tool.en.description, applicationCategory: 'EducationalApplication', isAccessibleForFree: true } })) },
+};
 ---
 
-<EnglishGuidesLayout
-  title="Analysis tools"
-  description="Interactive l0g tools for adjusting assumptions, comparing scenarios and reproducing sourced economic reasoning without trackers or remote calculations."
-  alternateLinks={[
-    { hreflang: 'en', href: new URL('/en/tools/', Astro.site).toString() },
-    { hreflang: 'fr', href: new URL('/outils/', Astro.site).toString() },
-    { hreflang: 'x-default', href: new URL('/outils/', Astro.site).toString() },
-  ]}
->
+<EnglishGuidesLayout seoTitle="Economic analysis tools and simulators | l0g" ogTitle="The interactive l0g analysis lab" title="Analysis laboratory" description="Six interactive economic tools to test assumptions, understand mechanisms and continue reading l0g investigations. Free, sourced and tracker-free." alternateLinks={[
+  { hreflang: 'en', href: new URL('/en/tools/', Astro.site).toString() },
+  { hreflang: 'fr', href: new URL('/outils/', Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL('/outils/', Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <section class="tools-hero rise" data-pagefind-ignore>
-    <p class="mono-label">$ ls /en/tools</p>
-    <h1>Change an assumption.<span>See the mechanism move.</span></h1>
-    <p>These small tools extend l0g investigations. They expose units, formulas, sources and limits so a scenario cannot be mistaken for a forecast. Every calculation stays in the browser.</p>
+    <div class="tools-hero__copy"><p class="mono-label">// l0g lab · open assumptions</p><h1>See the mechanism.<span>Touch the assumptions.</span></h1><p>Every tool starts with an investigation. Move the inputs, observe the result, then return to the article for facts, sources and limitations.</p></div>
+    <div class="tools-console" aria-label="Tool contract"><p><span>tools</span><strong>{analysisTools.length}</strong></p><p><span>remote_calls</span><strong>0</strong></p><p><span>tracking</span><strong>off</strong></p><p><span>models</span><strong>open</strong></p></div>
   </section>
-
-  <section class="tools-grid" aria-label="l0g analysis tools" data-pagefind-body>
-    {analysisTools.map((tool) => <AnalysisToolCard tool={tool} lang="en" />)}
-  </section>
+  <nav class="tools-jump" aria-label="Quick access to tools">{analysisTools.map((tool, index) => <a href={tool.en.href}><span>{String(index + 1).padStart(2, '0')}</span>{tool.en.title}</a>)}</nav>
+  <section class="tools-grid" aria-label="l0g analysis tools" data-pagefind-body>{analysisTools.map((tool, index) => <AnalysisToolCard tool={tool} lang="en" index={index} featured={index < 2} />)}</section>
+  <aside class="tools-contract" data-pagefind-ignore><div><p class="mono-label">// reading contract</p><h2>A scenario is not a forecast.</h2></div><p>Observed data stay separate from illustrative inputs. Units, formulas, sources and limitations are public. Inconsistent configurations are flagged. Every calculation stays in your browser.</p></aside>
 </EnglishGuidesLayout>
 
 <style>
-  .tools-hero { border-bottom: 1px dashed var(--color-line); padding-bottom: 2rem; }
-  .tools-hero .mono-label { color: var(--color-signal); }
-  .tools-hero h1 { max-width: 50rem; margin-top: 1rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.04; }
-  .tools-hero h1 span { display: block; color: var(--color-signal); }
-  .tools-hero > p:last-child { max-width: 47rem; margin-top: 1rem; color: var(--color-muted); line-height: 1.65; }
-  .tools-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .tools-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(15rem,.65fr);gap:clamp(1.4rem,5vw,4rem);overflow:hidden;border:1px solid var(--color-line);border-radius:24px 6px 24px 24px;padding:clamp(1.3rem,4vw,2.6rem);background:radial-gradient(70% 130% at 8% 0,color-mix(in srgb,var(--color-signal) 16%,transparent),transparent 70%),linear-gradient(145deg,color-mix(in srgb,var(--color-surface) 95%,transparent),color-mix(in srgb,var(--color-bg) 96%,transparent));box-shadow:0 25px 80px rgba(0,0,0,.22)}.tools-hero::after{content:"LAB";position:absolute;right:-.03em;bottom:-.2em;color:color-mix(in srgb,var(--color-signal) 4%,transparent);font:900 clamp(5rem,18vw,13rem)/.75 var(--font-display);letter-spacing:-.08em;pointer-events:none}.tools-hero__copy{position:relative;z-index:1}.tools-hero .mono-label{color:var(--color-signal)}.tools-hero h1{max-width:48rem;margin-top:1rem;color:var(--color-bright);font-family:var(--font-display);font-size:clamp(2.25rem,6vw,4.8rem);line-height:.98;letter-spacing:-.045em}.tools-hero h1 span{display:block;color:var(--color-signal)}.tools-hero__copy>p:last-child{max-width:44rem;margin-top:1.2rem;color:var(--color-muted);font-size:clamp(.88rem,2vw,1rem);line-height:1.7}.tools-console{position:relative;z-index:1;align-self:end;border:1px solid color-mix(in srgb,var(--color-signal) 32%,var(--color-line));border-radius:12px;padding:.4rem .9rem;background:color-mix(in srgb,var(--color-bg) 84%,transparent)}.tools-console p{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0;padding:.62rem 0;border-bottom:1px solid var(--color-line);font:650 .66rem/1 var(--font-mono)}.tools-console p:last-child{border:0}.tools-console span{color:var(--color-muted)}.tools-console strong{color:var(--color-signal);text-transform:uppercase}.tools-jump{display:flex;gap:.5rem;overflow-x:auto;margin:1rem 0;padding:.25rem 0;scrollbar-width:thin}.tools-jump a{display:flex;flex:0 0 auto;align-items:center;gap:.5rem;border:1px solid var(--color-line);border-radius:999px;padding:.5rem .72rem;background:color-mix(in srgb,var(--color-surface) 72%,transparent);color:var(--color-muted);font:650 .62rem/1 var(--font-mono);text-decoration:none}.tools-jump a span{color:var(--color-signal)}.tools-jump a:hover{border-color:var(--color-signal);color:var(--color-bright)}.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.tools-contract{display:grid;grid-template-columns:minmax(15rem,.7fr) minmax(0,1.3fr);gap:2rem;margin-top:1.2rem;border:1px solid color-mix(in srgb,var(--color-amber) 35%,var(--color-line));border-radius:16px;padding:clamp(1rem,3vw,1.5rem);background:linear-gradient(120deg,color-mix(in srgb,var(--color-amber) 8%,transparent),transparent)}.tools-contract .mono-label{color:var(--color-amber)}.tools-contract h2{margin-top:.4rem;color:var(--color-bright);font-family:var(--font-display);font-size:1.25rem}.tools-contract>p{align-self:center;color:var(--color-muted);font-size:.79rem;line-height:1.65}@media(max-width:820px){.tools-hero{grid-template-columns:1fr}.tools-console{max-width:28rem}.tools-grid{grid-template-columns:1fr}.tools-contract{grid-template-columns:1fr;gap:.8rem}}
 </style>

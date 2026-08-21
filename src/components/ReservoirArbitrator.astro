@@ -9,9 +9,10 @@ import {
 
 interface Props {
   lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
 }
 
-const { lang = 'fr' } = Astro.props;
+const { lang = 'fr', mode = 'embed' } = Astro.props;
 const isFr = lang === 'fr';
 const id = `reservoir-arbitrator-${lang}`;
 const initial = evaluateReservoirArbitrator(RESERVOIR_ARBITRATOR_DEFAULTS);
@@ -63,6 +64,8 @@ const copy = isFr
         'STEP restituable = énergie pompée × rendement aller-retour',
       ],
       scenario: 'Scénario illustratif, aucune donnée utilisateur n’est enregistrée.',
+      fullLink: 'Ouvrir l’outil en pleine largeur',
+      articleLink: 'Revenir à l’enquête sur les barrages',
     }
   : {
       eyebrow: '// l0g tool',
@@ -110,6 +113,8 @@ const copy = isFr
         'Pumped output = pumping energy × round-trip efficiency',
       ],
       scenario: 'Illustrative scenario. No user data is stored.',
+      fullLink: 'Open the full-width tool',
+      articleLink: 'Return to the investigation on dams',
     };
 ---
 
@@ -219,6 +224,11 @@ const copy = isFr
     <ol>{RESERVOIR_ARBITRATOR_SOURCES.map((source) => <li><a href={source.url}>{isFr ? source.labelFr : source.labelEn}</a></li>)}</ol>
     <p>Model v{RESERVOIR_ARBITRATOR_MODEL_VERSION} · {RESERVOIR_ARBITRATOR_DATA_DATE}</p>
   </details>
+  <footer class="reservoir-tool__footer">
+    <a href={mode === 'full' ? (isFr ? '/posts/barrage-choisit-ne-pas-produire/' : '/en/analysis/the-dam-that-chooses-not-to-generate/') : (isFr ? '/outils/arbitre-reservoir/' : '/en/tools/reservoir-arbitrator/')}>
+      {mode === 'full' ? copy.articleLink : copy.fullLink} <span aria-hidden="true">→</span>
+    </a>
+  </footer>
 </section>
 
 <script>
@@ -364,6 +374,9 @@ const copy = isFr
   .reservoir-tool__details summary{cursor:pointer;color:#dfe3e8;font-weight:800}
   .reservoir-tool__details a{color:#7aa2f7;overflow-wrap:anywhere}
   .reservoir-tool__details li+li{margin-top:.3rem}
+  .reservoir-tool__footer{display:flex;justify-content:flex-end;margin-top:.8rem}
+  .reservoir-tool__footer a{display:inline-flex;align-items:center;gap:.55rem;border:1px solid #5eead4;border-radius:7px;padding:.65rem .8rem;background:rgba(94,234,212,.07);color:#5eead4;font-size:.72rem;font-weight:800;text-decoration:none}
+  .reservoir-tool__footer a:hover{background:rgba(94,234,212,.14);color:#f6f7f9}
   [hidden]{display:none!important}
   @media(max-width:720px){.reservoir-tool{padding:.8rem}.reservoir-tool__grid{grid-template-columns:1fr}.reservoir-tool__controls label{grid-template-columns:1fr}.reservoir-tool__input-unit{grid-template-columns:minmax(0,1fr) auto}.reservoir-tool__metrics{grid-template-columns:1fr 1fr}}
   @media(max-width:430px){.reservoir-tool__tabs{width:100%}.reservoir-tool__tabs button{flex:1;padding:.55rem .35rem}.reservoir-tool__metrics{grid-template-columns:1fr}.reservoir-tool h3{font-size:1.05rem}.reservoir-tool__hero strong{font-size:1.18rem}}

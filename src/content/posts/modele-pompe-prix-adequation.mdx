@@ -1,0 +1,508 @@
+---
+title: "Le modèle, la pompe et le prix de l'adéquation"
+seoTitle: "Adéquation électrique : les limites du modèle ENTSO-E | l0g"
+ogTitle: "Danube 2026 : quand le modèle rencontre la pompe"
+description: "ENTSO-E n'identifiait aucun risque systémique pour l'été 2026. Au 19 août, ce verdict tenait malgré les arrêts du Danube. Contre-audit d'un modèle qui mesure l'adéquation, pas le prix physique de sa réussite."
+pubDate: 2026-08-21T11:20:00+02:00
+updatedDate: 2026-08-21T11:20:00+02:00
+tags: ["Europe", "électricité", "eau", "ENTSO-E", "adéquation", "Danube", "modélisation", "enquête"]
+draft: false
+quickTake:
+  fact: "Le Summer Outlook 2026 n'identifiait aucun risque systémique d'adéquation dans la majeure partie de l'Europe. Au 19 août, la Commission européenne confirmait encore l'absence de risque à court terme, malgré les pertes de production liées au Danube."
+  importance: "Le verdict tenait sur son objet étroit au 19 août : l'Europe couvrait sa demande. Il ne mesure toutefois ni le coût des imports, ni le recours aux mesures de demande, ni les travaux d'urgence, ni la fragilité locale des prises d'eau."
+  uncertainty: "Les fichiers publics ne permettent pas encore d'identifier précisément les profils de déclassement hydrique utilisés pour Paks, Cernavodă, Đerdap et Kostolac dans les mêmes scénarios climatiques."
+---
+
+import AdequacyPumpComparator from '../../components/AdequacyPumpComparator.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Le 30 juillet 2026, l'opérateur de Paks a publié une phrase qui résume toute la limite d'un modèle continental. Le Danube transportait encore assez d'eau pour refroidir la centrale. Pourtant, son niveau était devenu trop bas au droit des embouchures d'aspiration des pompes. Pour le système européen, il restait des gigawatts, des importations et des réserves. Pour la pompe, il restait quelques centimètres.*
+
+Le 29 mai, ENTSO-E avait conclu que la majeure partie de l'Europe ne présentait **aucun risque systémique d'adéquation** pour l'été. Deux mois plus tard, plusieurs réacteurs étaient arrêtés ou réduits, la production hydraulique du Danube s'effondrait et certains pays appelaient leurs consommateurs à déplacer la demande.
+
+Le modèle et la pompe avaient-ils donné deux réponses incompatibles ?
+
+Non.
+
+Ils ne répondaient pas à la même question.
+
+Ce cinquième volet prolonge l'enquête ouverte sur le [centimètre de Danube](/posts/combien-vaut-un-centimetre-de-danube/), le [mégawatt humide](/posts/megawatt-humide-europe-eau-electricite/), le [degré supplémentaire dans le fleuve](/posts/degre-de-trop-rejets-thermiques-nucleaire/) et [l'eau conservée derrière les barrages](/posts/barrage-choisit-ne-pas-produire/).
+
+Il ne cherche pas à démontrer qu'ENTSO-E s'est trompé.
+
+Il cherche à montrer ce que signifie exactement **avoir raison** lorsqu'un système évite le manque d'électricité grâce aux interconnexions, au solaire, aux réserves, à la demande flexible et à des interventions d'urgence que l'indicateur final ne raconte pas.
+
+## Le modèle n'avait pas promis le fonctionnement de chaque centrale
+
+Le Summer Outlook n'est pas une météo de la production électrique.
+
+ENTSO-E le présente comme une évaluation probabiliste de l'**adéquation des ressources** : la capacité du système à couvrir la demande à chaque heure avec la production, le stockage, les échanges et les flexibilités disponibles.
+
+Trois indicateurs structurent le verdict :
+
+- **LOLE**, le nombre attendu d'heures pendant lesquelles l'offre pourrait ne pas couvrir la demande ;
+- **LOLP**, la probabilité qu'au moins une heure de déficit apparaisse ;
+- **EENS**, la quantité attendue d'énergie non servie.
+
+Une LOLE non nulle n'annonce pas un blackout. Elle signale un risque dans certains scénarios. Une EENS nulle ou très faible n'affirme pas que le système sera détendu, peu coûteux ou écologiquement neutre.
+
+Le rapport saisonnier s'insère en outre dans une chaîne beaucoup plus longue. Les gestionnaires nationaux produisent leurs propres études, les centres de coordination régionaux recalculent quotidiennement l'adéquation des sept jours suivants, puis les opérateurs traitent la sécurité du réseau et la physique de chaque actif en temps réel. ([ENTSO-E, Summer Outlook 2026](https://www.entsoe.eu/outlooks/seasonal/))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 466" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cinq couches d'analyse électrique, de l'étude saisonnière au niveau réel du fleuve" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="466" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Une crise, cinq résolutions</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Chaque couche répond à une question différente.</text>
+
+  <rect x="32" y="88" width="656" height="56" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="50" y="112" fill="#7aa2f7" font-size="11" font-weight="800">SAISON</text>
+  <text x="142" y="112" fill="#f3f5f8" font-size="11" font-weight="700">ENTSO-E Summer Outlook</text>
+  <text x="142" y="132" fill="#aeb4be" font-size="9">Mois, zones de marché, scénarios, LOLE et EENS</text>
+
+  <rect x="54" y="158" width="612" height="56" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="72" y="182" fill="#5eead4" font-size="11" font-weight="800">7 JOURS</text>
+  <text x="164" y="182" fill="#f3f5f8" font-size="11" font-weight="700">Short-Term Adequacy</text>
+  <text x="164" y="202" fill="#aeb4be" font-size="9">Prévisions récentes, pannes, échanges et actions proposées</text>
+
+  <rect x="76" y="228" width="568" height="56" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="94" y="252" fill="#f5b13d" font-size="11" font-weight="800">RÉSEAU</text>
+  <text x="186" y="252" fill="#f3f5f8" font-size="11" font-weight="700">Sécurité opérationnelle</text>
+  <text x="186" y="272" fill="#aeb4be" font-size="9">Flux, tension, stabilité, réserves, N-1 et congestions</text>
+
+  <rect x="98" y="298" width="524" height="56" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="116" y="322" fill="#ff4d87" font-size="11" font-weight="800">ACTIF</text>
+  <text x="208" y="322" fill="#f3f5f8" font-size="11" font-weight="700">Centrale et prise d'eau</text>
+  <text x="208" y="342" fill="#aeb4be" font-size="9">Unité, pompe, seuil, rendement et règle locale</text>
+
+  <rect x="120" y="368" width="480" height="56" rx="7" fill="#15171c" stroke="#9b8cff"/>
+  <text x="138" y="392" fill="#9b8cff" font-size="11" font-weight="800">FLEUVE</text>
+  <text x="230" y="392" fill="#f3f5f8" font-size="11" font-weight="700">Hydrologie réelle</text>
+  <text x="230" y="412" fill="#aeb4be" font-size="9">Centimètres, m³/s, température et géométrie du lit</text>
+
+  <text x="24" y="451" fill="#777f8c" font-size="9">SOURCES : ENTSO-E ; ACER ; opérateurs nationaux. Schéma analytique l0g.</text>
+</svg>
+<figcaption>Le rapport saisonnier n'est pas la dernière couche de décision. Il est la première d'un dispositif qui gagne en précision à mesure que l'exploitation approche.</figcaption>
+</figure>
+
+Le succès ou l'échec du Summer Outlook doit donc être jugé sur la question qu'il pose réellement : l'Europe a-t-elle disposé de ressources suffisantes pour éviter une pénurie d'électricité ?
+
+Au 19 août, la réponse était oui.
+
+## Le modèle voit déjà la chaleur et la sécheresse
+
+Une critique sérieuse doit commencer par ce que le modèle fait bien.
+
+ENTSO-E n'additionne pas simplement des capacités installées autour d'une demande moyenne. Depuis 2020, l'évaluation saisonnière utilise une simulation probabiliste séquentielle et horaire. Elle associe des scénarios météorologiques cohérents dans le temps et l'espace à des indisponibilités aléatoires de centrales et d'interconnexions.
+
+Pour l'été 2026, ENTSO-E indique avoir utilisé **36 projections estivales** issues de plusieurs modèles climatiques alignés sur le scénario SSP2-4.5. Plusieurs échantillons hydrologiques vont d'une saison humide à une saison très sèche. La demande varie avec la température, comme la production éolienne et solaire. ([ENTSO-E, questions méthodologiques du Summer Outlook](https://www.entsoe.eu/outlooks/seasonal/))
+
+La base climatique pan-européenne, PECD, est élaborée avec Copernicus. Elle contient des variables cohérentes pour la température, les précipitations, le vent, le solaire et les apports hydroélectriques. Sa version 4.2 inclut des projections climatiques et plusieurs trajectoires d'émissions. ([Copernicus, Pan-European Climate Database](https://www.copernicus.eu/en/access-data/copernicus-services-catalogue/climate-and-energy-related-variables-pan-european-climate))
+
+Le modèle hydro peut représenter :
+
+- les apports naturels ;
+- les réservoirs ;
+- les lâchers minimaux ;
+- le pompage ;
+- les contraintes environnementales ;
+- les cascades ;
+- la perte de puissance liée à une baisse de hauteur de chute.
+
+Les méthodologies européennes permettent aussi aux gestionnaires de fournir des profils horaires de déclassement climatique pour des capacités thermiques ou nucléaires. Les exercices de long terme incluent par exemple des indisponibilités nucléaires françaises intégrant les contraintes thermiques.
+
+La conclusion est importante : **le refroidissement n'est pas absent par principe des modèles européens**.
+
+La question non résolue concerne les données effectivement utilisées en 2026.
+
+Dans les publications lisibles, nous n'avons pas trouvé de correspondance permettant de relier un scénario climatique précis aux seuils locaux de Paks, Cernavodă, Kozloduy ou Kostolac. ENTSO-E publie bien un classeur de capacité, mais sa page de téléchargement et le rapport ne fournissent pas une table explicative reliant chaque profil aux prises d'eau. Nous ne pouvons donc pas affirmer que ces actifs étaient ignorés. Nous ne pouvons pas non plus vérifier publiquement comment leurs pertes étaient corrélées à la même sécheresse du Danube.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 438" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison entre les données observées par un modèle d'adéquation et celles observées par la pompe d'une centrale" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="438" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le modèle et la pompe ne lisent pas la même feuille</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Une perte d'actif peut être correctement représentée sans que son déclencheur physique soit visible.</text>
+
+  <rect x="30" y="91" width="310" height="290" rx="8" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="50" y="121" fill="#7aa2f7" font-size="12" font-weight="800">LE MODÈLE D'ADÉQUATION</text>
+  <rect x="50" y="145" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="66" y="163" fill="#f3f5f8" font-size="10" font-weight="700">Capacité disponible</text>
+  <text x="66" y="178" fill="#89919d" font-size="9">MW par zone et technologie</text>
+  <rect x="50" y="197" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="66" y="215" fill="#f3f5f8" font-size="10" font-weight="700">Scénarios probabilistes</text>
+  <text x="66" y="230" fill="#89919d" font-size="9">météo, pannes et demande</text>
+  <rect x="50" y="249" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="66" y="267" fill="#f3f5f8" font-size="10" font-weight="700">Importations accessibles</text>
+  <text x="66" y="282" fill="#89919d" font-size="9">capacités entre zones</text>
+  <rect x="50" y="301" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="66" y="319" fill="#f3f5f8" font-size="10" font-weight="700">Verdict</text>
+  <text x="66" y="334" fill="#89919d" font-size="9">LOLE, LOLP et EENS</text>
+
+  <rect x="380" y="91" width="310" height="290" rx="8" fill="#15171c" stroke="#ff4d87"/>
+  <text x="400" y="121" fill="#ff4d87" font-size="12" font-weight="800">LA POMPE DE LA CENTRALE</text>
+  <rect x="400" y="145" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="416" y="163" fill="#f3f5f8" font-size="10" font-weight="700">Hauteur locale</text>
+  <text x="416" y="178" fill="#89919d" font-size="9">centimètres au droit de la prise</text>
+  <rect x="400" y="197" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="416" y="215" fill="#f3f5f8" font-size="10" font-weight="700">Débit et température</text>
+  <text x="416" y="230" fill="#89919d" font-size="9">m³/s et degrés réels</text>
+  <rect x="400" y="249" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="416" y="267" fill="#f3f5f8" font-size="10" font-weight="700">Géométrie et équipement</text>
+  <text x="416" y="282" fill="#89919d" font-size="9">embouchure, pompe, marge d'aspiration</text>
+  <rect x="400" y="301" width="270" height="42" rx="5" fill="#101318"/>
+  <text x="416" y="319" fill="#f3f5f8" font-size="10" font-weight="700">Verdict</text>
+  <text x="416" y="334" fill="#89919d" font-size="9">fonctionner, réduire ou s'arrêter</text>
+
+  <rect x="179" y="397" width="362" height="24" rx="4" fill="#111318"/>
+  <text x="197" y="414" fill="#f5b13d" font-size="9">Même perte de MW, deux niveaux d'explication.</text>
+</svg>
+<figcaption>Le modèle peut recevoir un profil de disponibilité juste sans publier la relation entre ce profil et la cote réelle de la prise d'eau.</figcaption>
+</figure>
+
+## Le Danube a produit un choc composé
+
+Le problème de l'été 2026 n'est pas qu'une centrale a subi un événement rare.
+
+Le même bassin a retiré plusieurs formes d'électricité au même moment.
+
+À **Paks**, le niveau du Danube est descendu sous la hauteur nécessaire au fonctionnement normal des pompes. L'opérateur indiquait le 30 juillet que le débit total restait suffisant, mais que la géométrie des prises imposait de réduire puis d'arrêter progressivement les groupes. ([MVM Paks, 30 juillet 2026](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260730_leallas))
+
+À **Cernavodă**, l'unité 1 a été arrêtée le 28 juillet. L'unité 2 a conservé sa puissance nominale le 4 août après des mesures des autorités roumaines destinées à relever localement le niveau du Danube, avant un arrêt contrôlé le 13 août. ([Nuclearelectrica, état de l'unité 2, 4 août 2026](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/08/en-RC-update-status-U2-.pdf))
+
+À **Đerdap**, le ministère serbe de l'Énergie indiquait début août une production réduite à environ 20 % de la normale pour le premier complexe et 30 % pour le second. Certaines unités thermiques de **Kostolac** avaient également réduit leur puissance en raison des conditions de refroidissement. ([Ministère serbe de l'Énergie, 2 août 2026](https://mre.gov.rs/vest/sr/17041/djedovic-handanovic-za-rts-najniza-proizvodnja-na-djerdapu-od-kad-je-pusten-u-rad-neophodna-racionalna-potrosnja-struje.php))
+
+Le choc touchait donc :
+
+- l'énergie primaire de l'hydraulique ;
+- le refroidissement du nucléaire ;
+- le refroidissement thermique ;
+- la demande de climatisation ;
+- les pays voisins sollicités pour exporter ;
+- la navigation et les autres usages du fleuve.
+
+Une cohérence météorologique ne suffit pas à représenter cette chaîne.
+
+Le même scénario sec doit être converti en pertes simultanées pour chaque actif, avec des fonctions de réponse différentes. Paks dépendait d'une cote de prise. Cernavodă dépendait de son bassin d'aspiration. Đerdap dépendait du débit turbinable. Kostolac dépendait de son système de refroidissement.
+
+C'est cette **corrélation technico-hydrologique de bassin** que les fichiers publics ne permettent pas encore de contrôler.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Le choc composé du Danube affecte simultanément nucléaire, hydraulique, thermique et besoins d'importation" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="460" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Un bassin, plusieurs pertes de capacité</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">La corrélation climatique doit devenir une corrélation entre actifs.</text>
+
+  <rect x="252" y="92" width="216" height="78" rx="9" fill="#171a20" stroke="#9b8cff" stroke-width="2"/>
+  <text x="278" y="121" fill="#9b8cff" font-size="11" font-weight="800">DANUBE 2026</text>
+  <text x="278" y="145" fill="#f3f5f8" font-size="12" font-weight="700">chaleur + sécheresse</text>
+  <text x="278" y="160" fill="#89919d" font-size="9">niveau, débit et température</text>
+
+  <path d="M288 170 L139 221" stroke="#56606c" stroke-width="2"/>
+  <path d="M330 170 L286 221" stroke="#56606c" stroke-width="2"/>
+  <path d="M390 170 L434 221" stroke="#56606c" stroke-width="2"/>
+  <path d="M432 170 L581 221" stroke="#56606c" stroke-width="2"/>
+
+  <rect x="32" y="221" width="188" height="92" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="50" y="248" fill="#ff4d87" font-size="11" font-weight="800">PAKS</text>
+  <text x="50" y="270" fill="#f3f5f8" font-size="10">niveau sous les prises</text>
+  <text x="50" y="289" fill="#89919d" font-size="9">nucléaire réduit puis arrêté</text>
+
+  <rect x="236" y="221" width="188" height="92" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="254" y="248" fill="#7aa2f7" font-size="11" font-weight="800">CERNAVODĂ</text>
+  <text x="254" y="270" fill="#f3f5f8" font-size="10">bassin d'aspiration trop bas</text>
+  <text x="254" y="289" fill="#89919d" font-size="9">deux unités indisponibles</text>
+
+  <rect x="440" y="221" width="116" height="92" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="458" y="248" fill="#5eead4" font-size="11" font-weight="800">ĐERDAP</text>
+  <text x="458" y="270" fill="#f3f5f8" font-size="10">débit turbinable</text>
+  <text x="458" y="289" fill="#89919d" font-size="9">hydro en forte baisse</text>
+
+  <rect x="572" y="221" width="116" height="92" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="590" y="248" fill="#f5b13d" font-size="11" font-weight="800">KOSTOLAC</text>
+  <text x="590" y="270" fill="#f3f5f8" font-size="10">refroidissement</text>
+  <text x="590" y="289" fill="#89919d" font-size="9">thermique réduit</text>
+
+  <path d="M126 313 L240 362" stroke="#56606c" stroke-width="2"/>
+  <path d="M330 313 L306 362" stroke="#56606c" stroke-width="2"/>
+  <path d="M498 313 L414 362" stroke="#56606c" stroke-width="2"/>
+  <path d="M630 313 L480 362" stroke="#56606c" stroke-width="2"/>
+
+  <rect x="197" y="362" width="326" height="54" rx="7" fill="#111318" stroke="#f5b13d"/>
+  <text x="220" y="386" fill="#f5b13d" font-size="11" font-weight="800">PLUS D'IMPORTS ET DE FLEXIBILITÉ</text>
+  <text x="220" y="404" fill="#aeb4be" font-size="9">alors que les voisins subissent une partie du même choc</text>
+
+  <text x="24" y="447" fill="#777f8c" font-size="9">SOURCES : MVM ; Nuclearelectrica ; ministère serbe de l'Énergie.</text>
+</svg>
+<figcaption>La sécheresse n'est pas un simple facteur hydro. Elle peut toucher plusieurs technologies et réduire simultanément la disponibilité des voisins supposés exporter.</figcaption>
+</figure>
+
+## Les commentaires nationaux savaient davantage que le résumé continental
+
+Le document de commentaires nationaux d'ENTSO-E contient une phrase rarement mise en avant : ces pages donnent un contexte propre à chaque système qui **peut ne pas être représenté dans les modèles pan-européens d'adéquation**. ([ENTSO-E, Country Comments 2026](https://www.entsoe.eu/Documents/SDC%20documents/seasonal/SOR2026/CountryComments-Summer_Outlook_2026.pdf))
+
+La Hongrie y décrivait explicitement les longues vagues de chaleur, les températures élevées de l'eau et les faibles niveaux des grands fleuves comme des risques possibles. Elle rappelait aussi que les importations restaient presque constamment nécessaires et que la croissance du photovoltaïque augmentait les besoins de réserve.
+
+Le risque qui a frappé Paks était donc connu dans le récit national.
+
+La page roumaine mentionnait la sécheresse, la baisse possible des réservoirs et l'effet direct sur l'hydroélectricité. Elle ne signalait pas explicitement qu'un niveau trop bas du Danube pouvait arrêter les deux réacteurs de Cernavodă.
+
+Cette différence ne prouve pas que le profil de Cernavodă était absent du modèle.
+
+Elle montre une frontière de transparence : le document public le plus lisible expliquait correctement le risque hydro, mais pas le mécanisme nucléaire qui allait devenir central.
+
+## Le verdict de mai a survécu au mois d'août
+
+Le 29 mai, ENTSO-E n'identifiait aucun risque systémique pour l'essentiel de l'Europe continentale.
+
+Le 11 août, alors que la production avait déjà été réduite par le niveau ou la température de l'eau, le groupe européen de coordination confirmait l'absence de risque d'adéquation à court terme. Il décrivait néanmoins une situation tendue, le rôle décisif des échanges, l'aide du solaire en journée et l'utilité des mesures volontaires de réduction de demande en Hongrie. ([Commission européenne, 11 août 2026](https://energy.ec.europa.eu/news/europes-electricity-system-remains-stable-despite-extreme-weather-2026-08-11_en))
+
+Le 13 août, la deuxième unité de Cernavodă était arrêtée.
+
+Le 19 août, la Commission maintenait le même diagnostic : approvisionnement stable, aucune menace immédiate d'adéquation, mais tension persistante et coordination renforcée. Elle demandait aussi de préserver les flux du Danube lorsque des travaux nationaux cherchaient à relever localement le niveau pour la production électrique. ([Commission européenne, 19 août 2026](https://energy.ec.europa.eu/news/electricity-coordination-group-discusses-extreme-weather-impacts-electricity-security-supply-central-2026-08-19_en))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chronologie entre le verdict du Summer Outlook du 29 mai et les événements du Danube en août 2026" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="440" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le verdict a tenu, la tension aussi</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Adéquation positive ne signifie pas fonctionnement inchangé.</text>
+
+  <line x1="70" y1="132" x2="650" y2="132" stroke="#303844" stroke-width="3"/>
+  <circle cx="88" cy="132" r="8" fill="#5eead4"/>
+  <circle cx="230" cy="132" r="8" fill="#ff4d87"/>
+  <circle cx="372" cy="132" r="8" fill="#7aa2f7"/>
+  <circle cx="514" cy="132" r="8" fill="#ff4d87"/>
+  <circle cx="632" cy="132" r="8" fill="#5eead4"/>
+
+  <text x="56" y="104" fill="#5eead4" font-size="10" font-weight="800">29 MAI</text>
+  <text x="198" y="104" fill="#ff4d87" font-size="10" font-weight="800">30 JUIL.</text>
+  <text x="344" y="104" fill="#7aa2f7" font-size="10" font-weight="800">11 AOÛT</text>
+  <text x="486" y="104" fill="#ff4d87" font-size="10" font-weight="800">13 AOÛT</text>
+  <text x="604" y="104" fill="#5eead4" font-size="10" font-weight="800">19 AOÛT</text>
+
+  <rect x="34" y="166" width="118" height="116" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="48" y="190" fill="#f3f5f8" font-size="9" font-weight="700">Summer Outlook</text>
+  <text x="48" y="210" fill="#aeb4be" font-size="9">pas de risque</text>
+  <text x="48" y="226" fill="#aeb4be" font-size="9">systémique pour</text>
+  <text x="48" y="242" fill="#aeb4be" font-size="9">la majorité</text>
+
+  <rect x="176" y="166" width="118" height="116" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="190" y="190" fill="#f3f5f8" font-size="9" font-weight="700">Paks explique</text>
+  <text x="190" y="210" fill="#aeb4be" font-size="9">la prise d'eau</text>
+  <text x="190" y="226" fill="#aeb4be" font-size="9">et prépare</text>
+  <text x="190" y="242" fill="#aeb4be" font-size="9">de nouveaux arrêts</text>
+
+  <rect x="318" y="166" width="118" height="116" rx="6" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="332" y="190" fill="#f3f5f8" font-size="9" font-weight="700">Groupe UE</text>
+  <text x="332" y="210" fill="#aeb4be" font-size="9">situation tendue</text>
+  <text x="332" y="226" fill="#aeb4be" font-size="9">pas de risque</text>
+  <text x="332" y="242" fill="#aeb4be" font-size="9">à court terme</text>
+
+  <rect x="460" y="166" width="118" height="116" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="474" y="190" fill="#f3f5f8" font-size="9" font-weight="700">Cernavodă 2</text>
+  <text x="474" y="210" fill="#aeb4be" font-size="9">arrêtée après</text>
+  <text x="474" y="226" fill="#aeb4be" font-size="9">l'unité 1</text>
+
+  <rect x="590" y="166" width="102" height="116" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="604" y="190" fill="#f3f5f8" font-size="9" font-weight="700">Groupe UE</text>
+  <text x="604" y="210" fill="#aeb4be" font-size="9">système stable</text>
+  <text x="604" y="226" fill="#aeb4be" font-size="9">coordination</text>
+  <text x="604" y="242" fill="#aeb4be" font-size="9">renforcée</text>
+
+  <rect x="58" y="330" width="604" height="54" rx="7" fill="#111318" stroke="#f5b13d"/>
+  <text x="78" y="352" fill="#f5b13d" font-size="10" font-weight="800">Résultat observé</text>
+  <text x="78" y="371" fill="#c7ccd5" font-size="9">la demande est couverte, mais avec une autre production, davantage d'échanges et des mesures d'urgence.</text>
+
+  <text x="24" y="425" fill="#777f8c" font-size="9">SOURCES : ENTSO-E ; Commission européenne ; MVM ; Nuclearelectrica.</text>
+</svg>
+<figcaption>Le résultat final confirme l'adéquation. La chronologie montre toutefois que cette adéquation a été activement reconstruite pendant la crise.</figcaption>
+</figure>
+
+Le modèle avait donc raison sur son objet principal.
+
+Le résultat ne dit pas encore combien cette réussite a coûté.
+
+## Testez la différence entre une zone et une sous-région
+
+Le simulateur suivant n'est pas un modèle de réseau.
+
+Il illustre une situation simple : une zone de marché peut disposer d'assez de capacité et d'importations pour couvrir toute sa demande, tandis qu'une partie de cette zone reste déficitaire si les flux ne peuvent pas tous l'atteindre ou si ses propres actifs sont simultanément contraints.
+
+Les valeurs par défaut sont fictives. Elles ne reproduisent ni la Hongrie, ni la Roumanie, ni ENTSO-E.
+
+<AdequacyPumpComparator lang="fr" />
+
+[Ouvrir Le modèle et la pompe en pleine largeur](/outils/modele-pompe-adequation/)
+
+La différence entre les deux verdicts explique pourquoi une annonce d'adéquation continentale n'annule jamais le besoin d'études nationales, de calculs de flux et de mesures au niveau de chaque centrale.
+
+## Avoir raison peut coûter cher
+
+L'indicateur d'adéquation valorise un résultat indispensable : la demande a été couverte.
+
+Il ne distingue pas toujours deux chemins très différents vers ce résultat.
+
+Dans un premier système, la production domestique conserve une marge abondante.
+
+Dans un second, la même EENS nulle est obtenue grâce à :
+
+- des importations plus élevées ;
+- une production fossile supplémentaire ;
+- des batteries et réserves davantage sollicitées ;
+- une réduction volontaire ou industrielle de la demande ;
+- des travaux hydrauliques d'urgence ;
+- des prescriptions environnementales exceptionnelles ;
+- une marge finale très faible.
+
+Le consommateur reçoit son électricité dans les deux cas.
+
+La résilience n'est pourtant pas identique.
+
+Pour évaluer la qualité du résultat, il faudrait publier à côté de LOLE et EENS un **registre des mesures nécessaires à l'adéquation** :
+
+| Dimension | Question à ajouter |
+|---|---|
+| Marge | Combien de MW restaient après toutes les mesures ? |
+| Imports | Quelle énergie a été importée et depuis quels voisins ? |
+| Coût | Quel prix de marché, d'équilibrage ou de réserve a été payé ? |
+| Carbone | Quelle production supplémentaire a remplacé les actifs hydriques ? |
+| Demande | Quel volume a été déplacé, réduit ou interrompu ? |
+| Physique | Quels travaux ou adaptations ont permis de conserver des MW ? |
+| Environnement | Quelles limites ou allocations d'eau ont été modifiées ? |
+
+Le Summer Outlook n'a pas vocation à fournir seul toutes ces réponses.
+
+Le problème apparaît lorsque son verdict est lu comme une mesure complète de résilience.
+
+## Le filet à sept jours fonctionne, mais sa méthode reste inachevée
+
+Le rapport saisonnier n'est pas laissé seul jusqu'à l'été suivant.
+
+Les centres de coordination régionaux exécutent chaque jour une évaluation de l'adéquation des sept jours suivants. L'outil commun combine un calcul probabiliste et un calcul déterministe. Si un risque apparaît au niveau pan-européen, une analyse régionale plus détaillée peut être déclenchée. ([ACER, Risk Preparedness](https://acer.europa.eu/electricity/security-of-supply/risk-preparedness))
+
+Le suivi publié par ACER en décembre 2025 offre une lecture nuancée de ce filet.
+
+Les centres avaient mis en œuvre 100 % des obligations fondamentales visées par le règlement électrique pour cette tâche. Pour la méthodologie STSAA complète, ils déclaraient avoir mis en œuvre **59 % des dispositions pertinentes**. La page de synthèse d'ACER arrondit aujourd'hui ce taux à 60 %.
+
+Les autres parts étaient classées comme non applicables, « autres » ou non démarrées. ACER précise qu'une partie de la catégorie « autres » pouvait être proche d'une mise en œuvre complète. Le chiffre ne constitue donc ni une note de précision ni un taux d'échec. ([ACER, RCC Monitoring Report 2024](https://www.acer.europa.eu/sites/default/files/documents/Publications/ACER-2025-RCC-monitoring-report-for-2024.pdf))
+
+L'agence identifiait néanmoins trois priorités directement pertinentes pour l'été 2026 :
+
+- représenter plus complètement les batteries ;
+- intégrer de manière cohérente la réponse de la demande ;
+- prendre en compte les indisponibilités des lignes à courant alternatif à haute tension.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 444" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="État de mise en œuvre du système européen d'adéquation à sept jours selon le suivi ACER publié en 2025" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="444" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Le filet à sept jours, vu par ACER</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Suivi réalisé en 2025 sur les centres de coordination régionaux.</text>
+
+  <rect x="32" y="91" width="304" height="116" rx="8" fill="#15171c" stroke="#5eead4"/>
+  <text x="52" y="119" fill="#5eead4" font-size="11" font-weight="800">EXIGENCE RÉGLEMENTAIRE VISÉE</text>
+  <text x="52" y="158" fill="#f3f5f8" font-size="20" font-weight="800">100 % mise en œuvre</text>
+  <text x="52" y="181" fill="#89919d" font-size="9">évaluation des sept jours effectuée en rotation</text>
+
+  <rect x="384" y="91" width="304" height="116" rx="8" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="404" y="119" fill="#7aa2f7" font-size="11" font-weight="800">MÉTHODOLOGIE STSAA</text>
+  <text x="404" y="158" fill="#f3f5f8" font-size="20" font-weight="800">59 % déclarés</text>
+  <text x="404" y="181" fill="#89919d" font-size="9">60 % après arrondi sur la page ACER</text>
+
+  <rect x="32" y="238" width="656" height="58" rx="7" fill="#111318" stroke="#343c47"/>
+  <text x="50" y="261" fill="#aeb4be" font-size="10">Autres catégories du rapport, avec arrondis :</text>
+  <text x="50" y="281" fill="#f5b13d" font-size="10" font-weight="700">33 % « autres » · 7 % non applicables · 2 % non démarrées</text>
+
+  <text x="32" y="334" fill="#f3f5f8" font-size="11" font-weight="800">Priorités d'amélioration identifiées</text>
+  <rect x="32" y="352" width="202" height="54" rx="6" fill="#15171c" stroke="#ff4d87"/>
+  <text x="50" y="375" fill="#ff4d87" font-size="10" font-weight="800">BATTERIES</text>
+  <text x="50" y="393" fill="#89919d" font-size="9">représentation cohérente</text>
+  <rect x="259" y="352" width="202" height="54" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="277" y="375" fill="#f5b13d" font-size="10" font-weight="800">DEMANDE FLEXIBLE</text>
+  <text x="277" y="393" fill="#89919d" font-size="9">implicite et explicite</text>
+  <rect x="486" y="352" width="202" height="54" rx="6" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="504" y="375" fill="#7aa2f7" font-size="10" font-weight="800">PANNES HVAC</text>
+  <text x="504" y="393" fill="#89919d" font-size="9">rapprocher l'outil du réel</text>
+
+  <text x="24" y="432" fill="#777f8c" font-size="9">SOURCE : ACER, Regional Coordination Centres reporting obligations in 2024, décembre 2025.</text>
+</svg>
+<figcaption>Le taux de 59 % mesure un état de mise en œuvre de la méthode, pas la fiabilité statistique d'une prévision particulière.</figcaption>
+</figure>
+
+Cette couche à court terme est exactement celle qui devrait adapter les hypothèses de mai à la réalité de juillet.
+
+Les résultats détaillés de l'été 2026 ne sont toutefois pas publiés de manière suffisamment accessible pour répondre à quatre questions simples :
+
+1. Quand les profils réels de Paks et Cernavodă ont-ils été injectés ?
+2. Une évaluation régionale spécifique a-t-elle été déclenchée ?
+3. Quelle marge subsistait avant les mesures volontaires et les ressources hors marché ?
+4. Quels voisins étaient réellement capables d'exporter après leurs propres pertes hydriques ?
+
+## Un modèle peut être juste et sous-informatif
+
+Le Summer Outlook a réussi son test le plus visible : l'Europe n'a pas connu de pénurie systémique d'électricité au cœur de la crise documentée dans cet article.
+
+Cette réussite repose justement sur la capacité du système à réagir.
+
+Les interconnexions ont déplacé l'électricité vers les zones tendues. Le solaire a réduit la pression au milieu de la journée. Des consommateurs ont déplacé leur demande. Des unités pilotables ont produit davantage. Des opérateurs ont modifié le fonctionnement des centrales et, parfois, le fleuve lui-même.
+
+Le modèle saisonnier n'avait pas à prédire chacune de ces décisions.
+
+Il devrait en revanche permettre au public de comprendre :
+
+- quelles pertes hydriques étaient déjà contenues dans les scénarios ;
+- lesquelles ont obligé à réviser les hypothèses ;
+- quelle marge restait avant et après les mesures ;
+- quel coût et quelles externalités ont accompagné l'absence d'énergie non servie.
+
+L'adéquation est une condition de la résilience.
+
+Elle n'en est pas la totalité.
+
+Lorsque le modèle annonce que les lumières resteront allumées et que la pompe annonce qu'elle ne peut plus aspirer, les deux peuvent avoir raison.
+
+La première réponse décrit le système qui compense.
+
+La seconde révèle ce qu'il doit compenser.
+
+### Résultats établis
+
+ENTSO-E a intégré la chaleur, la sécheresse, les renouvelables, l'hydro, les pannes et les échanges dans une simulation probabiliste horaire.
+
+Le verdict d'absence de risque systémique a été confirmé par la Commission les 11 et 19 août, malgré les pertes de production du Danube.
+
+Les commentaires nationaux indiquaient explicitement le risque de faibles niveaux fluviaux en Hongrie, tandis que la page roumaine décrivait principalement le risque hydroélectrique.
+
+Le suivi ACER montre que l'outil à sept jours fonctionne dans tous les centres régionaux, tout en restant partiellement aligné avec l'ensemble de la méthodologie STSAA.
+
+### Sources primaires
+
+- [ENTSO-E, Summer Outlook 2026, rapport, données et questions méthodologiques](https://www.entsoe.eu/outlooks/seasonal/)
+- [ENTSO-E, Country Comments Summer Outlook 2026](https://www.entsoe.eu/Documents/SDC%20documents/seasonal/SOR2026/CountryComments-Summer_Outlook_2026.pdf)
+- [ACER, méthodologie des évaluations d'adéquation à court terme et saisonnières](https://eepublicdownloads.entsoe.eu/clean-documents/sdc-documents/seasonal/Methodology%20for%20Short-term%20and%20Seasonal%20Adequacy%20Assessment%20-%20ACER%20Decision%2008-2020%20on%20the%20RPR8.pdf)
+- [ACER, suivi 2025 des centres de coordination régionaux](https://www.acer.europa.eu/sites/default/files/documents/Publications/ACER-2025-RCC-monitoring-report-for-2024.pdf)
+- [Copernicus, Pan-European Climate Database](https://www.copernicus.eu/en/access-data/copernicus-services-catalogue/climate-and-energy-related-variables-pan-european-climate)
+- [Commission européenne, groupe de coordination du 11 août 2026](https://energy.ec.europa.eu/news/europes-electricity-system-remains-stable-despite-extreme-weather-2026-08-11_en)
+- [Commission européenne, groupe de coordination du 19 août 2026](https://energy.ec.europa.eu/news/electricity-coordination-group-discusses-extreme-weather-impacts-electricity-security-supply-central-2026-08-19_en)
+- [MVM Paks, faible niveau du Danube et géométrie des prises, 30 juillet 2026](https://atomeromu.mvm.hu/hu-HU/Rolunk/Hirek/20260730_leallas)
+- [Nuclearelectrica, arrêt de l'unité 1, 28 juillet 2026](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/07/RC-current-report-debit-dunare-bvb.pdf)
+- [Nuclearelectrica, maintien de l'unité 2, 30 juillet 2026](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/07/en-RC-current-report-Unitatea-2-CNE-Cernavoda-ramane-conectata-la-SEN-.pdf)
+- [Nuclearelectrica, état de l'unité 2, 4 août 2026](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/08/en-RC-update-status-U2-.pdf)
+- [Nuclearelectrica, arrêt contrôlé de l'unité 2, 13 août 2026](https://nuclearelectrica.ro/ir/wp-content/uploads/sites/3/2026/08/CR-Controlled-shutdown-U2.pdf)
+- [Ministère serbe de l'Énergie, situation de Đerdap et Kostolac](https://mre.gov.rs/vest/sr/17041/djedovic-handanovic-za-rts-najniza-proizvodnja-na-djerdapu-od-kad-je-pusten-u-rad-neophodna-racionalna-potrosnja-struje.php)
+
+### Limites de la démonstration
+
+Nous ne pouvons pas affirmer que Paks ou Cernavodă étaient absents du modèle.
+
+Nous ne pouvons pas encore vérifier si les pertes hydro, nucléaire et thermique du Danube étaient associées au même scénario climatique.
+
+L'absence d'énergie non servie ne permet pas à elle seule de calculer le coût, le carbone ou la fragilité résiduelle du système.
+
+Le simulateur intégré ne reproduit ni les flux électriques réels ni la méthode d'ENTSO-E.
+
+### Méthode et limites
+
+Documents et événements arrêtés au **21 août 2026**.
+
+Le contre-audit compare l'objet déclaré des modèles, leurs documents méthodologiques, les commentaires nationaux et les événements observés. Le classeur public `SOR26_Supply.xlsx` a été identifié comme une pièce centrale encore à auditer. Une conclusion site par site exige sa lecture, le dictionnaire des profils et les réponses des TSOs.
+
+Le verdict « pas de risque d'adéquation à court terme » provient de la Commission européenne. Il ne signifie pas absence de tension opérationnelle ou de mesures préventives.

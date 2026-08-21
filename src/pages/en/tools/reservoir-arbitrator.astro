@@ -1,0 +1,42 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import ReservoirArbitrator from '../../../components/ReservoirArbitrator.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import { RESERVOIR_ARBITRATOR_DATA_DATE, RESERVOIR_ARBITRATOR_MODEL_VERSION, RESERVOIR_ARBITRATOR_SOURCES } from '../../../lib/reservoir-arbitrator-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'reservoir-arbitrator');
+if (!tool) throw new Error('Reservoir arbitrator is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title, description: tool.en.description, url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'en',
+  isAccessibleForFree: true, softwareVersion: RESERVOIR_ARBITRATOR_MODEL_VERSION,
+  dateModified: RESERVOIR_ARBITRATOR_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: RESERVOIR_ARBITRATOR_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout seoTitle="Reservoir arbitrator: water value and pumping | l0g" title="When should a dam hold water?" description="Compare an immediate sale, waiting and pumped storage with a local model that exposes assumptions, formulas, sources and limits." alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <section class="tool-hero rise" data-pagefind-ignore>
+    <p class="mono-label">// analysis tool · v{RESERVOIR_ARBITRATOR_MODEL_VERSION}</p>
+    <h1>The reservoir arbitrator</h1>
+    <p>Stored water is not automatically usable, and generating now is not always optimal.</p>
+    <small>Local teaching scenario. No live price, hydrological forecast or remote calculation.</small>
+  </section>
+  <ReservoirArbitrator lang="en" mode="full" />
+</EnglishGuidesLayout>
+
+<style>
+  .tool-hero{border:1px solid var(--color-line);border-radius:14px;padding:clamp(1rem,3vw,1.7rem);background:color-mix(in srgb,var(--color-surface) 72%,transparent)}
+  .tool-hero .mono-label{color:var(--color-amber)}
+  .tool-hero h1{max-width:48rem;margin-top:.8rem;color:var(--color-bright);font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);line-height:1.04}
+  .tool-hero>p:not(.mono-label){max-width:48rem;margin-top:.9rem;color:var(--color-paper);font-size:1rem;line-height:1.65}
+  .tool-hero small{display:block;max-width:48rem;margin-top:.6rem;color:var(--color-muted);line-height:1.55}
+</style>

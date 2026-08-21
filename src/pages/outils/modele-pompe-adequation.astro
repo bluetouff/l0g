@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import AdequacyPumpComparator from '../../components/AdequacyPumpComparator.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import { ADEQUACY_PUMP_DATA_DATE, ADEQUACY_PUMP_MODEL_VERSION, ADEQUACY_PUMP_SOURCES } from '../../lib/adequacy-pump-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'adequacy-pump-model');
+if (!tool) throw new Error('Adequacy pump model is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title, description: tool.fr.description, url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'fr',
+  isAccessibleForFree: true, softwareVersion: ADEQUACY_PUMP_MODEL_VERSION,
+  dateModified: ADEQUACY_PUMP_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: ADEQUACY_PUMP_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout seoTitle="Adéquation électrique : comparer marge zonale et locale | l0g" title="Une zone adéquate peut-elle rester fragile localement ?" description="Testez demande, imports, pertes hydriques et flexibilité pour comparer marge zonale et poche locale. Modèle pédagogique, local et sourcé." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <PageHero index="01" kicker="outil d’analyse" title="Le modèle et la pompe" description="Une marge positive à l’échelle d’une zone ne décrit pas chaque contrainte physique locale." secondary="Trois scénarios illustratifs. Aucun flux réseau réel, aucune prévision, aucune donnée envoyée." glyph="observe" accent="var(--color-signal)" stats={[
+    { value: `v${ADEQUACY_PUMP_MODEL_VERSION}`, label: 'moteur auditable' },
+    { value: '2', label: 'échelles comparées' },
+    { value: 'local', label: 'aucun suivi' },
+  ]} />
+  <AdequacyPumpComparator lang="fr" mode="full" />
+</BaseLayout>

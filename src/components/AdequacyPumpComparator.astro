@@ -1,0 +1,328 @@
+---
+import {
+  ADEQUACY_PUMP_DATA_DATE,
+  ADEQUACY_PUMP_DEFAULTS,
+  ADEQUACY_PUMP_MODEL_VERSION,
+  ADEQUACY_PUMP_SOURCES,
+  evaluateAdequacyPump,
+} from '../lib/adequacy-pump-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `adequacy-pump-${lang}`;
+const initial = evaluateAdequacyPump(ADEQUACY_PUMP_DEFAULTS);
+
+const copy = isFr
+  ? {
+      eyebrow: '// outil l0g',
+      title: 'Le modèle et la pompe',
+      intro: 'Le même scénario produit deux verdicts : une marge pour toute la zone et une marge pour une sous-région. L’outil illustre la différence entre adéquation agrégée et contrainte locale.',
+      presets: { basinShock: 'Choc de bassin', comfortable: 'Marge confortable', limitedImports: 'Imports limités' },
+      zone: 'Zone de marché',
+      local: 'Sous-région',
+      demand: 'Demande',
+      domestic: 'Capacité domestique avant choc',
+      imports: 'Capacité d’importation',
+      hydroLoss: 'Hydro indisponible',
+      coolingLoss: 'Thermique ou nucléaire perdu par l’eau',
+      flexibility: 'Batteries, réserve et demande flexible',
+      localImports: 'Part des imports accessible localement',
+      baseline: 'Marge avant choc hydrique',
+      postWater: 'Marge après choc, avant mesures',
+      finalZone: 'Marge zonale après mesures',
+      finalLocal: 'Marge locale après mesures',
+      accessibleImports: 'Imports accessibles localement',
+      positiveBefore: 'Adéquation positive avant mesures supplémentaires',
+      positiveAfter: 'Adéquation positive uniquement après mesures',
+      deficit: 'Déficit zonal dans ce scénario',
+      localPositive: 'Marge locale positive dans ce scénario',
+      localDeficit: 'Sous-région déficitaire malgré la marge zonale',
+      verdicts: {
+        positive: 'Marges zonale et locale positives',
+        measures: 'Zone adéquate seulement après flexibilité',
+        localDeficit: 'Zone adéquate, poche locale déficitaire',
+        measuresLocalDeficit: 'Zone sauvée par les mesures, poche locale encore déficitaire',
+        zoneDeficit: 'Déficit zonal même après les mesures',
+      },
+      mw: 'MW',
+      pct: '%',
+      method: 'Méthode et limites',
+      methodText: 'La marge zonale additionne capacité domestique, importations et flexibilités, puis retire la demande et les pertes hydriques. La marge locale n’utilise qu’une part paramétrable des importations et ses propres pertes. Aucun flux électrique réel, critère N-1, tension ou stabilité n’est calculé.',
+      warning: 'Ce simulateur ne reproduit ni ENTSO-E ni un réseau AC. Une marge positive ne signifie pas absence de congestion, de coût, de stress opérationnel ou de risque de sûreté.',
+      scenario: 'Scénario pédagogique local, sans appel réseau, cookie ni stockage.',
+      fullLink: 'Ouvrir l’outil en pleine largeur',
+      articleLink: 'Revenir au contre-audit du modèle',
+    }
+  : {
+      eyebrow: '// l0g tool',
+      title: 'The model and the pump',
+      intro: 'The same scenario produces two verdicts: one margin for the whole bidding zone and one for a sub-region. The tool illustrates the gap between aggregate adequacy and local constraints.',
+      presets: { basinShock: 'Basin shock', comfortable: 'Comfortable margin', limitedImports: 'Limited imports' },
+      zone: 'Bidding zone',
+      local: 'Sub-region',
+      demand: 'Demand',
+      domestic: 'Domestic capacity before the shock',
+      imports: 'Import capacity',
+      hydroLoss: 'Unavailable hydro',
+      coolingLoss: 'Thermal or nuclear capacity lost to water constraints',
+      flexibility: 'Batteries, reserves and demand flexibility',
+      localImports: 'Share of imports accessible locally',
+      baseline: 'Margin before the water shock',
+      postWater: 'Margin after the shock, before measures',
+      finalZone: 'Zonal margin after measures',
+      finalLocal: 'Local margin after measures',
+      accessibleImports: 'Imports accessible locally',
+      positiveBefore: 'Adequacy positive before additional measures',
+      positiveAfter: 'Adequacy positive only after measures',
+      deficit: 'Zonal deficit in this scenario',
+      localPositive: 'Local margin positive in this scenario',
+      localDeficit: 'Local shortfall despite a positive zonal margin',
+      verdicts: {
+        positive: 'Zonal and local margins are positive',
+        measures: 'Zone adequate only after flexibility',
+        localDeficit: 'Zone adequate, local pocket in deficit',
+        measuresLocalDeficit: 'Measures save the zone, but the local pocket remains short',
+        zoneDeficit: 'Zonal deficit even after measures',
+      },
+      mw: 'MW',
+      pct: '%',
+      method: 'Method and limitations',
+      methodText: 'The zonal margin adds domestic capacity, imports and flexibility, then subtracts demand and water-related losses. The local margin uses only a chosen share of imports and its own losses. No real power flow, N-1 criterion, voltage or stability is calculated.',
+      warning: 'This simulator reproduces neither ENTSO-E nor an AC grid. A positive margin does not mean the absence of congestion, cost, operational stress or safety risk.',
+      scenario: 'Local teaching scenario with no network call, cookie or storage.',
+      fullLink: 'Open the full-width tool',
+      articleLink: 'Return to the model audit',
+    };
+---
+
+<section class="adequacy-tool" id={id} data-adequacy-tool data-lang={lang}>
+  <header class="adequacy-tool__header">
+    <p class="adequacy-tool__eyebrow">{copy.eyebrow}</p>
+    <h3>{copy.title}</h3>
+    <p>{copy.intro}</p>
+  </header>
+
+  <div class="adequacy-tool__presets" role="group" aria-label={copy.title}>
+    <button type="button" class="is-active" data-preset="basinShock">{copy.presets.basinShock}</button>
+    <button type="button" data-preset="comfortable">{copy.presets.comfortable}</button>
+    <button type="button" data-preset="limitedImports">{copy.presets.limitedImports}</button>
+  </div>
+
+  <div class="adequacy-tool__grid">
+    <form class="adequacy-tool__controls" data-adequacy-form>
+      <fieldset>
+        <legend>{copy.zone}</legend>
+        <label><span>{copy.demand}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="200000" step="50" value={ADEQUACY_PUMP_DEFAULTS.zoneDemandMw} data-input="zoneDemandMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.domestic}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="200000" step="50" value={ADEQUACY_PUMP_DEFAULTS.zoneDomesticMw} data-input="zoneDomesticMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.imports}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.importCapacityMw} data-input="importCapacityMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.hydroLoss}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.hydroLossMw} data-input="hydroLossMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.coolingLoss}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.waterCoolingLossMw} data-input="waterCoolingLossMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.flexibility}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.flexibilityMw} data-input="flexibilityMw"/><small>{copy.mw}</small></span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>{copy.local}</legend>
+        <label><span>{copy.demand}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.localDemandMw} data-input="localDemandMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.domestic}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.localDomesticMw} data-input="localDomesticMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.hydroLoss}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.localHydroLossMw} data-input="localHydroLossMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.coolingLoss}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.localWaterCoolingLossMw} data-input="localWaterCoolingLossMw"/><small>{copy.mw}</small></span></label>
+        <label><span>{copy.localImports}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100" step="1" value={ADEQUACY_PUMP_DEFAULTS.localImportSharePct} data-input="localImportSharePct"/><small>{copy.pct}</small></span></label>
+        <label><span>{copy.flexibility}</span><span class="adequacy-tool__input-unit"><input type="number" min="0" max="100000" step="50" value={ADEQUACY_PUMP_DEFAULTS.localFlexibilityMw} data-input="localFlexibilityMw"/><small>{copy.mw}</small></span></label>
+      </fieldset>
+      <p class="adequacy-tool__scenario">{copy.scenario}</p>
+    </form>
+
+    <div class="adequacy-tool__results" aria-live="polite">
+      <div class="adequacy-tool__hero">
+        <span>{copy.finalZone}</span>
+        <strong data-result="finalZoneMarginMw">{initial.finalZoneMarginMw} MW</strong>
+        <small data-result="dualVerdict">{copy.verdicts.measuresLocalDeficit}</small>
+      </div>
+
+      <div class="adequacy-tool__metrics">
+        <div><span>{copy.baseline}</span><strong data-result="baselineMarginMw">{initial.baselineMarginMw} MW</strong></div>
+        <div><span>{copy.postWater}</span><strong data-result="postWaterMarginMw">{initial.postWaterMarginMw} MW</strong></div>
+        <div><span>{copy.finalLocal}</span><strong data-result="finalLocalMarginMw">{initial.finalLocalMarginMw} MW</strong></div>
+        <div><span>{copy.accessibleImports}</span><strong data-result="localAccessibleImportsMw">{initial.localAccessibleImportsMw} MW</strong></div>
+      </div>
+
+      <div class="adequacy-tool__status-grid">
+        <p data-result="zoneStatus">{copy.positiveAfter}</p>
+        <p data-result="localStatus">{copy.localDeficit}</p>
+      </div>
+      <p class="adequacy-tool__warning">{copy.warning}</p>
+    </div>
+  </div>
+
+  <details class="adequacy-tool__details">
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <ol>{ADEQUACY_PUMP_SOURCES.map((source) => <li><a href={source.url}>{source.label}</a></li>)}</ol>
+    <p>Model v{ADEQUACY_PUMP_MODEL_VERSION} · {ADEQUACY_PUMP_DATA_DATE}</p>
+  </details>
+  <footer class="adequacy-tool__footer">
+    <a href={mode === 'full' ? (isFr ? '/posts/modele-pompe-prix-adequation/' : '/en/analysis/model-pump-price-of-adequacy/') : (isFr ? '/outils/modele-pompe-adequation/' : '/en/tools/model-pump-adequacy/')}>
+      {mode === 'full' ? copy.articleLink : copy.fullLink} <span aria-hidden="true">→</span>
+    </a>
+  </footer>
+</section>
+
+<script>
+  import {
+    ADEQUACY_PUMP_PRESETS,
+    evaluateAdequacyPump,
+  } from '../lib/adequacy-pump-model.ts';
+
+  const initialiseAdequacyTools = () => {
+    document.querySelectorAll<HTMLElement>('[data-adequacy-tool]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const inputs = Array.from(root.querySelectorAll<HTMLInputElement>('[data-input]'));
+      const presetButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-preset]'));
+      const result = (name: string) => root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+      const number = (name: string) => Number(root.querySelector<HTMLInputElement>(`[data-input="${name}"]`)?.value ?? 0);
+      const format = (value: number) => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 0 }).format(value);
+      const mw = (value: number) => `${value > 0 ? '+' : ''}${format(value)} MW`;
+
+      const text = lang === 'fr'
+        ? {
+            zone: {
+              'positive-before-measures': 'Adéquation positive avant mesures supplémentaires',
+              'positive-after-measures': 'Adéquation positive uniquement après mesures',
+              deficit: 'Déficit zonal dans ce scénario',
+            },
+            local: { positive: 'Marge locale positive dans ce scénario', deficit: 'Sous-région déficitaire malgré la marge zonale' },
+            dual: {
+              positive: 'Marges zonale et locale positives',
+              measures: 'Zone adéquate seulement après flexibilité',
+              'local-deficit': 'Zone adéquate, poche locale déficitaire',
+              'measures-local-deficit': 'Zone sauvée par les mesures, poche locale encore déficitaire',
+              'zone-deficit': 'Déficit zonal même après les mesures',
+            },
+          }
+        : {
+            zone: {
+              'positive-before-measures': 'Adequacy positive before additional measures',
+              'positive-after-measures': 'Adequacy positive only after measures',
+              deficit: 'Zonal deficit in this scenario',
+            },
+            local: { positive: 'Local margin positive in this scenario', deficit: 'Local shortfall despite a positive zonal margin' },
+            dual: {
+              positive: 'Zonal and local margins are positive',
+              measures: 'Zone adequate only after flexibility',
+              'local-deficit': 'Zone adequate, local pocket in deficit',
+              'measures-local-deficit': 'Measures save the zone, but the local pocket remains short',
+              'zone-deficit': 'Zonal deficit even after measures',
+            },
+          };
+
+      const set = (name: string, value: string) => {
+        const node = result(name);
+        if (node) node.textContent = value;
+      };
+
+      const update = () => {
+        const evaluated = evaluateAdequacyPump({
+          zoneDemandMw: number('zoneDemandMw'),
+          zoneDomesticMw: number('zoneDomesticMw'),
+          importCapacityMw: number('importCapacityMw'),
+          hydroLossMw: number('hydroLossMw'),
+          waterCoolingLossMw: number('waterCoolingLossMw'),
+          flexibilityMw: number('flexibilityMw'),
+          localDemandMw: number('localDemandMw'),
+          localDomesticMw: number('localDomesticMw'),
+          localHydroLossMw: number('localHydroLossMw'),
+          localWaterCoolingLossMw: number('localWaterCoolingLossMw'),
+          localImportSharePct: number('localImportSharePct'),
+          localFlexibilityMw: number('localFlexibilityMw'),
+        });
+        set('baselineMarginMw', mw(evaluated.baselineMarginMw));
+        set('postWaterMarginMw', mw(evaluated.postWaterMarginMw));
+        set('finalZoneMarginMw', mw(evaluated.finalZoneMarginMw));
+        set('finalLocalMarginMw', mw(evaluated.finalLocalMarginMw));
+        set('localAccessibleImportsMw', `${format(evaluated.localAccessibleImportsMw)} MW`);
+        set('zoneStatus', text.zone[evaluated.zoneVerdict]);
+        set('localStatus', text.local[evaluated.localVerdict]);
+        set('dualVerdict', text.dual[evaluated.dualVerdict]);
+      };
+
+      const applyPreset = (key: string) => {
+        const preset = ADEQUACY_PUMP_PRESETS[key as keyof typeof ADEQUACY_PUMP_PRESETS];
+        if (!preset) return;
+        Object.entries(preset).forEach(([name, value]) => {
+          const input = root.querySelector<HTMLInputElement>(`[data-input="${name}"]`);
+          if (input) input.value = String(value);
+        });
+        presetButtons.forEach((button) => {
+          const active = button.dataset.preset === key;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+        update();
+      };
+
+      presetButtons.forEach((button) => button.addEventListener('click', () => applyPreset(button.dataset.preset ?? 'basinShock')));
+      inputs.forEach((input) => input.addEventListener('input', () => {
+        presetButtons.forEach((button) => {
+          button.classList.remove('is-active');
+          button.setAttribute('aria-pressed', 'false');
+        });
+        update();
+      }));
+      update();
+    });
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialiseAdequacyTools, { once: true });
+  else initialiseAdequacyTools();
+  document.addEventListener('astro:page-load', initialiseAdequacyTools);
+</script>
+
+<style>
+  .adequacy-tool{margin:2rem 0;padding:1.05rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#0c0d10;color:#eef1f5;box-shadow:0 16px 44px rgba(0,0,0,.22);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden}
+  .adequacy-tool *{box-sizing:border-box}
+  .adequacy-tool__header{max-width:780px}
+  .adequacy-tool__eyebrow{margin:0 0 .35rem;color:#5eead4;font-size:.76rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+  .adequacy-tool h3{margin:0;color:#f6f7f9;font-family:inherit;font-size:1.18rem;line-height:1.25}
+  .adequacy-tool__header>p:last-child{margin:.65rem 0 0;color:#aeb4be;font-size:.84rem;line-height:1.55}
+  .adequacy-tool__presets{display:flex;flex-wrap:wrap;gap:.42rem;margin:1rem 0 .8rem}
+  .adequacy-tool__presets button{appearance:none;border:1px solid #303945;border-radius:7px;background:#111318;color:#aeb4be;padding:.55rem .72rem;font:700 .72rem/1.1 inherit;cursor:pointer}
+  .adequacy-tool__presets button.is-active{border-color:#5eead4;background:rgba(94,234,212,.08);color:#5eead4}
+  .adequacy-tool__grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:.9rem}
+  .adequacy-tool__controls,.adequacy-tool__results{min-width:0;padding:.82rem;border:1px solid #252c35;border-radius:8px;background:#111318}
+  .adequacy-tool fieldset{margin:0;padding:0;border:0;min-width:0}
+  .adequacy-tool fieldset+fieldset{margin-top:1rem;padding-top:.8rem;border-top:1px solid #2a313b}
+  .adequacy-tool legend{padding:0 0 .25rem;color:#f5b13d;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .adequacy-tool__controls label{display:grid;grid-template-columns:minmax(0,1fr) minmax(108px,138px);gap:.7rem;align-items:center;padding:.43rem 0;border-bottom:1px solid rgba(255,255,255,.055);color:#c7ccd5;font-size:.72rem;line-height:1.35}
+  .adequacy-tool__input-unit{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.35rem}
+  .adequacy-tool input{width:100%;min-width:0;border:1px solid #343d49;border-radius:6px;background:#0c0d10;color:#fff;padding:.5rem .52rem;font:700 .8rem/1 inherit;outline:none}
+  .adequacy-tool input:focus{border-color:#5eead4;box-shadow:0 0 0 2px rgba(94,234,212,.12)}
+  .adequacy-tool small{color:#89919d;font-size:.66rem}
+  .adequacy-tool__scenario{margin:.7rem 0 0;color:#7f8793;font-size:.66rem;line-height:1.45}
+  .adequacy-tool__hero{padding:.85rem;border:1px solid #33404b;border-radius:8px;background:linear-gradient(135deg,rgba(94,234,212,.08),rgba(122,162,247,.04))}
+  .adequacy-tool__hero span,.adequacy-tool__metrics span{display:block;color:#8f98a5;font-size:.65rem;text-transform:uppercase;letter-spacing:.04em}
+  .adequacy-tool__hero strong{display:block;margin:.3rem 0 .22rem;color:#5eead4;font-size:1.32rem;line-height:1.15}
+  .adequacy-tool__hero small{color:#f5b13d;font-weight:700;line-height:1.35}
+  .adequacy-tool__metrics{display:grid;grid-template-columns:1fr 1fr;gap:.52rem;margin-top:.65rem}
+  .adequacy-tool__metrics>div{min-width:0;padding:.67rem;border:1px solid #272e38;border-radius:7px;background:#0d1014}
+  .adequacy-tool__metrics strong{display:block;margin-top:.3rem;color:#f2f4f7;font-size:.86rem;line-height:1.25;overflow-wrap:anywhere}
+  .adequacy-tool__status-grid{display:grid;grid-template-columns:1fr 1fr;gap:.52rem;margin-top:.62rem}
+  .adequacy-tool__status-grid p{margin:0;padding:.62rem;border-left:2px solid #7aa2f7;background:#0e1116;color:#b8c0ca;font-size:.68rem;line-height:1.45}
+  .adequacy-tool__warning{margin:.7rem 0 0;padding:.65rem .7rem;border-left:2px solid #ff4d87;background:rgba(255,77,135,.06);color:#c7b6bd;font-size:.67rem;line-height:1.5}
+  .adequacy-tool__details{margin-top:.8rem;padding:.7rem .8rem;border:1px solid #252c35;border-radius:8px;background:#0f1217;color:#aeb4be;font-size:.71rem;line-height:1.55}
+  .adequacy-tool__details summary{cursor:pointer;color:#dfe3e8;font-weight:800}
+  .adequacy-tool__details a{color:#7aa2f7;overflow-wrap:anywhere}
+  .adequacy-tool__details li+li{margin-top:.3rem}
+  .adequacy-tool__footer{display:flex;justify-content:flex-end;margin-top:.8rem}
+  .adequacy-tool__footer a{display:inline-flex;align-items:center;gap:.55rem;border:1px solid #5eead4;border-radius:7px;padding:.65rem .8rem;background:rgba(94,234,212,.07);color:#5eead4;font-size:.72rem;font-weight:800;text-decoration:none}
+  .adequacy-tool__footer a:hover{background:rgba(94,234,212,.14);color:#f6f7f9}
+  @media(max-width:760px){.adequacy-tool__grid{grid-template-columns:1fr}.adequacy-tool__controls label{grid-template-columns:minmax(0,1fr) minmax(104px,136px)}}
+  @media(max-width:470px){.adequacy-tool{padding:.78rem}.adequacy-tool__controls label{grid-template-columns:1fr}.adequacy-tool__metrics,.adequacy-tool__status-grid{grid-template-columns:1fr}.adequacy-tool h3{font-size:1.05rem}.adequacy-tool__hero strong{font-size:1.17rem}.adequacy-tool__presets button{flex:1 1 100%}}
+</style>

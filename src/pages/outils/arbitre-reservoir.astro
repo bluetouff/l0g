@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ReservoirArbitrator from '../../components/ReservoirArbitrator.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import { RESERVOIR_ARBITRATOR_DATA_DATE, RESERVOIR_ARBITRATOR_MODEL_VERSION, RESERVOIR_ARBITRATOR_SOURCES } from '../../lib/reservoir-arbitrator-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'reservoir-arbitrator');
+if (!tool) throw new Error('Reservoir arbitrator is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title, description: tool.fr.description, url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'fr',
+  isAccessibleForFree: true, softwareVersion: RESERVOIR_ARBITRATOR_MODEL_VERSION,
+  dateModified: RESERVOIR_ARBITRATOR_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: RESERVOIR_ARBITRATOR_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout seoTitle="Arbitre du réservoir : valeur de l’eau et pompage | l0g" title="Quand faut-il garder l’eau d’un barrage ?" description="Comparez vente immédiate, attente et pompage-turbinage avec un modèle local qui expose ses hypothèses, formules, sources et limites." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <PageHero index="02" kicker="outil d’analyse" title="L’arbitre du réservoir" description="L’eau stockée n’est pas automatiquement disponible, et produire maintenant n’est pas toujours optimal." secondary="Scénario pédagogique local. Aucun prix en direct, aucune prévision hydrologique, aucune donnée envoyée." glyph="observe" accent="var(--color-amber)" stats={[
+    { value: `v${RESERVOIR_ARBITRATOR_MODEL_VERSION}`, label: 'modèle auditable' },
+    { value: '2', label: 'modes comparés' },
+    { value: 'local', label: 'aucun suivi' },
+  ]} />
+  <ReservoirArbitrator lang="fr" mode="full" />
+</BaseLayout>

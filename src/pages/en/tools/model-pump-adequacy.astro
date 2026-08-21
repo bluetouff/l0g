@@ -1,0 +1,42 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import AdequacyPumpComparator from '../../../components/AdequacyPumpComparator.astro';
+import { analysisTools } from '../../../config/analysis-tools.ts';
+import { ADEQUACY_PUMP_DATA_DATE, ADEQUACY_PUMP_MODEL_VERSION, ADEQUACY_PUMP_SOURCES } from '../../../lib/adequacy-pump-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'adequacy-pump-model');
+if (!tool) throw new Error('Adequacy pump model is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'WebApplication', '@id': `${SITE}${tool.en.href}#app`,
+  name: tool.en.title, description: tool.en.description, url: `${SITE}${tool.en.href}`,
+  applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'en',
+  isAccessibleForFree: true, softwareVersion: ADEQUACY_PUMP_MODEL_VERSION,
+  dateModified: ADEQUACY_PUMP_DATA_DATE, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: ADEQUACY_PUMP_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout seoTitle="Power adequacy: compare zonal and local margins | l0g" title="Can an adequate zone remain locally fragile?" description="Adjust demand, imports, water losses and flexibility to compare a bidding-zone margin with a local pocket. Sourced, local teaching model." alternateLinks={[
+  { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+  { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+]}>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <section class="tool-hero rise" data-pagefind-ignore>
+    <p class="mono-label">// analysis tool · v{ADEQUACY_PUMP_MODEL_VERSION}</p>
+    <h1>The model and the pump</h1>
+    <p>A positive margin for a bidding zone does not describe every local physical constraint.</p>
+    <small>Three illustrative scenarios. No real grid flow, forecast or remote calculation.</small>
+  </section>
+  <AdequacyPumpComparator lang="en" mode="full" />
+</EnglishGuidesLayout>
+
+<style>
+  .tool-hero{border:1px solid var(--color-line);border-radius:14px;padding:clamp(1rem,3vw,1.7rem);background:color-mix(in srgb,var(--color-surface) 72%,transparent)}
+  .tool-hero .mono-label{color:var(--color-signal)}
+  .tool-hero h1{max-width:48rem;margin-top:.8rem;color:var(--color-bright);font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);line-height:1.04}
+  .tool-hero>p:not(.mono-label){max-width:48rem;margin-top:.9rem;color:var(--color-paper);font-size:1rem;line-height:1.65}
+  .tool-hero small{display:block;max-width:48rem;margin-top:.6rem;color:var(--color-muted);line-height:1.55}
+</style>
