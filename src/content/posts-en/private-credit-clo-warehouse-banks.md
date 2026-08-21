@@ -1,6 +1,6 @@
 ---
 title: "Private credit enters the CLO machine"
-seoTitle: "Private credit CLOs: the bank-funded warehouse pipeline | l0g"
+seoTitle: "Private credit CLOs: the bank warehouse pipeline | l0g"
 description: "Private credit loans are increasingly accumulated in dealer-financed warehouses before being securitised into CLOs. In June 2026, the Federal Reserve devoted special survey questions to this plumbing. Demand is rising sharply, while some lenders are tightening terms because of collateral quality and valuation uncertainty."
 pubDate: 2026-08-18T18:50:00+02:00
 updatedDate: 2026-08-18T18:50:00+02:00

@@ -1,6 +1,6 @@
 ---
 title: "Why the Fed can make money without printing, and why it can also lose"
-seoTitle: "Federal Reserve balance sheet: why the Fed earns and loses money | l0g"
+seoTitle: "Fed balance sheet: why the Fed earns and loses money | l0g"
 description: "The Federal Reserve's result is a balance-sheet outcome, not a printing press effect. As long as interest income on assets exceeds the cost of liabilities and the operating balance, it remits to the Treasury. If the margin narrows, the same mechanism can move into deferred remittances."
 pubDate: 2026-08-18T12:00:00+02:00
 updatedDate: 2026-08-18T12:00:00+02:00

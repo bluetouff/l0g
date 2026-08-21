@@ -1,6 +1,6 @@
 ---
 title: "Barclays, Staley and Maxwell: two records, one boundary"
-seoTitle: "Barclays, Staley and Maxwell: governance, account and evidence | l0g"
+seoTitle: "Barclays, Staley and Maxwell: governance and evidence | l0g"
 description: "The Staley ruling documents a governance failure. Files analysed by Reuters describe a Maxwell account. Neither record establishes a Barclays account in Epstein's name."
 pubDate: 2026-08-09T15:18:00+02:00
 updatedDate: 2026-08-09T23:46:15+02:00

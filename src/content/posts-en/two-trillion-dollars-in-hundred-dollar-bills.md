@@ -1,6 +1,6 @@
 ---
 title: "The $2 trillion nobody sees circulating"
-seoTitle: "US $100 bills: where is the $1.989 trillion in circulation? | l0g"
+seoTitle: "US $100 bills: where is the $1.989tn in circulation? | l0g"
 ogTitle: "The $100 bill: a $2 trillion offline reserve"
 description: "At the end of 2025, $100 bills were worth $1.989 trillion. Their geography, reserve role and the seigniorage they provide to the Federal Reserve."
 pubDate: 2026-08-16T17:49:23+02:00

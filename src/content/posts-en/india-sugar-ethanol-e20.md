@@ -1,6 +1,6 @@
 ---
 title: "India put its sugar in the fuel tank"
-seoTitle: "India's sugar and E20: ethanol, food and climate trade-offs | l0g"
+seoTitle: "India's sugar and E20: ethanol vs food security | l0g"
 description: "In February, New Delhi was still trying to export more sugar. In May it banned exports. In August it is considering imports and less cane-based ethanol. This reversal does not prove that E20 caused the squeeze. It reveals something more interesting: Indian sugar has become a balancing variable between energy, food and climate."
 pubDate: 2026-08-19T05:12:00+02:00
 updatedDate: 2026-08-19T05:12:00+02:00
