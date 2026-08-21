@@ -1,0 +1,389 @@
+---
+title: "The dam that chooses not to generate"
+seoTitle: "Hydropower reservoirs: why dams hold water | l0g"
+ogTitle: "The missing megawatt-hour: what stored water is worth"
+description: "Switzerland's 250 GWh reserve, water value, Norwegian imports and incomparable stock metrics: how hydropower dams arbitrate time."
+pubDate: 2026-08-21T08:30:00+02:00
+updatedDate: 2026-08-21T08:30:00+02:00
+tags: ["Europe", "electricity", "water", "hydropower", "storage", "Switzerland", "Norway", "investigation"]
+draft: false
+sourceArticle: "barrage-choisit-ne-pas-produire"
+sourceUpdatedDate: 2026-08-21
+quickTake:
+  fact: "On 6 July 2026, ElCom required 250 GWh of hydropower energy to be withheld from 1 February to 15 May 2027. The reserve can be called only if Switzerland's day-ahead market fails to match supply and demand."
+  importance: "A reservoir creates value when it generates, but also when it waits. That option becomes more valuable as solar compresses midday prices, evening peaks matter more and water serves several competing uses."
+  uncertainty: "Published European hydro stocks do not use a harmonised method. This article does not claim a continent-wide shift in hourly hydro dispatch without reproducing the primary time series."
+---
+
+import ReservoirArbitrator from '../../components/ReservoirArbitrator.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*On 6 July 2026, Switzerland's electricity regulator did not order more power generation. It ordered some possible generation to remain unproduced. From 1 February to 15 May 2027, 250 GWh must stay in hydropower reservoirs. That energy can be called only if the next-day market can no longer find enough supply to cover demand. Operators will therefore be paid to preserve energy they could otherwise have sold. The service being bought is not an extra megawatt-hour today. It is the option to generate one later.*
+
+This fourth instalment follows the investigation from the [Danube](/en/analysis/how-much-is-one-centimetre-of-danube-worth/) to Europe's [wet megawatt](/en/analysis/wet-megawatt-europe-water-electricity/) and then to France's [thermal discharge limits](/en/analysis/the-extra-degree-thermal-discharges-nuclear/).
+
+The direction now changes.
+
+The first three articles examined what electricity loses when water becomes too low or too warm. This one asks what water is worth when it **remains behind the dam**.
+
+## Switzerland buys an absence of generation
+
+Directive 1/2026 from the Federal Electricity Commission, ElCom, defines a compulsory hydropower reserve for the 2026-27 hydrological year.
+
+The scheme covers **250 GWh**, equal to **3.06%** of the 8,160 GWh reference energy held by Swiss storage plants with at least 10 GWh of capacity. The withholding period starts on 1 February 2027 and ends at midnight on 15 May. ElCom links that date to the point at which snowmelt normally starts refilling reservoirs and makes a late-winter shortage much less likely. ([ElCom, Directive 1/2026](https://www.elcom.admin.ch/dam/de/sd-web/mGUJrCTdfCde/1-2026_Weisung%20Eckwerte%20WResV_26_27_Verpflichtung_DE.pdf))
+
+Participation is not optional for covered facilities.
+
+Each participant's obligation is based on its rights in eligible reservoirs. Participants can choose the complexes in which they hold their share, but no hydraulically connected complex may contain more than 30% of the total reserve.
+
+The directive also requires at least **3 MW of installed and normally available capacity for each GWh withheld**. Applied to 250 GWh, the rule implies an aggregate minimum of 750 MW associated with the scheme. This arithmetic does not mean 750 MW will necessarily be called simultaneously. Allocation, outages and activation rules still matter.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 438" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structure of the Swiss 2026-27 hydropower reserve: 250 GWh withheld out of 8,160 GWh from 1 February to 15 May 2027" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="438" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Switzerland: paying to keep water stored</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Mandatory hydropower reserve for winter 2026-27.</text>
+  <rect x="28" y="90" width="430" height="72" rx="7" fill="#15171c" stroke="#2f3742"/>
+  <text x="44" y="114" fill="#aeb4be" font-size="10">Reference energy in eligible reservoirs</text>
+  <text x="44" y="145" fill="#f3f5f8" font-size="20" font-weight="800">8,160 GWh</text>
+  <rect x="44" y="171" width="398" height="18" rx="9" fill="#252c35"/>
+  <rect x="44" y="171" width="12" height="18" rx="9" fill="#ff4d87"/>
+  <text x="44" y="210" fill="#ff4d87" font-size="13" font-weight="800">250 GWh withheld</text>
+  <text x="202" y="210" fill="#8b929e" font-size="10">3.06% of the perimeter</text>
+  <rect x="486" y="90" width="206" height="120" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="504" y="116" fill="#f5b13d" font-size="11" font-weight="800">ASSOCIATED POWER</text>
+  <text x="504" y="150" fill="#f3f5f8" font-size="20" font-weight="800">≥ 3 MW/GWh</text>
+  <text x="504" y="171" fill="#aeb4be" font-size="9">at least 750 MW in total</text>
+  <text x="504" y="190" fill="#7f8793" font-size="9">aggregate regulatory minimum</text>
+  <line x1="60" y1="276" x2="660" y2="276" stroke="#303844" stroke-width="3"/>
+  <circle cx="90" cy="276" r="8" fill="#7aa2f7"/>
+  <circle cx="630" cy="276" r="8" fill="#5eead4"/>
+  <text x="60" y="252" fill="#7aa2f7" font-size="11" font-weight="800">1 February 2027</text>
+  <text x="558" y="252" fill="#5eead4" font-size="11" font-weight="800">15 May 2027</text>
+  <text x="236" y="300" fill="#aeb4be" font-size="10">energy remains outside the ordinary market</text>
+  <rect x="28" y="332" width="205" height="64" rx="6" fill="#111318" stroke="#2c333d"/>
+  <text x="44" y="356" fill="#f5b13d" font-size="10" font-weight="800">ACTIVATION</text>
+  <text x="44" y="376" fill="#c7ccd5" font-size="9">only if the day-ahead</text>
+  <text x="44" y="390" fill="#c7ccd5" font-size="9">market fails to clear</text>
+  <rect x="257" y="332" width="205" height="64" rx="6" fill="#111318" stroke="#2c333d"/>
+  <text x="273" y="356" fill="#7aa2f7" font-size="10" font-weight="800">DIVERSIFICATION</text>
+  <text x="273" y="376" fill="#c7ccd5" font-size="9">≤ 30% in one connected</text>
+  <text x="273" y="390" fill="#c7ccd5" font-size="9">hydropower complex</text>
+  <rect x="486" y="332" width="206" height="64" rx="6" fill="#111318" stroke="#2c333d"/>
+  <text x="502" y="356" fill="#5eead4" font-size="10" font-weight="800">IF UNUSED</text>
+  <text x="502" y="376" fill="#c7ccd5" font-size="9">the energy is released</text>
+  <text x="502" y="390" fill="#c7ccd5" font-size="9">at the end of the period</text>
+  <text x="24" y="425" fill="#777f8c" font-size="9">SOURCE: ElCom, Directive 1/2026, 6 July 2026.</text>
+</svg>
+<figcaption>The scheme does not purchase immediate output. It pays for future availability created by keeping energy in reservoirs.</figcaption>
+</figure>
+
+The compensation explicitly recognises an opportunity cost.
+
+ElCom will calculate the flat withholding payment from the average spread between Swiss first-quarter and second-quarter 2027 futures, multiplied by 1.3. Energy actually called from the reserve receives separate compensation. If the reserve is never used, participants regain control of the withheld energy without an additional payment.
+
+Activation requires a specific event: demand must exceed supply in the day-ahead market. The regulator also monitors behaviour designed to trigger that condition artificially.
+
+The reserve is therefore neither free inventory nor merely a full dam.
+
+It is a regulated option whose value starts with restraint.
+
+## One technology, three clocks
+
+Hydropower covers facilities that do not live in the same time frame.
+
+RTE classifies French plants by the time required to refill their upstream reserve. That taxonomy shows why lower output can be a physical loss in one case and a timing decision in another. ([RTE, hydropower generation](https://analysesetdonnees.rte-france.com/en/generation/hydropower))
+
+**Run-of-river**, with less than two hours of reserve, mainly follows current inflows. Water not turbined usually cannot be stored for months.
+
+**Pondage**, between two and 400 hours, can shift generation across a day or a week.
+
+A **seasonal reservoir**, above 400 hours, arbitrates across the season and the year.
+
+**Pumped storage** adds another mechanism. It consumes electricity to move water uphill and returns part of that energy later. It moves electricity through time, but creates neither snow nor rainfall.
+
+
+
+The distinction changes the meaning of lower generation.
+
+A run-of-river plant producing less during drought mainly suffers lower inflows. A reservoir producing less may face the same shortage, but it may also be preserving stock. A pumped-storage plant consuming more today is buying time, while returning less energy later because of cycle losses.
+
+## The minimum price at which a drop agrees to fall
+
+RTE describes reservoir management as a choice between immediate and deferred use.
+
+A plant generates when current market value exceeds the **opportunity value** of water held for later. That value depends on remaining stock, demand, future electricity and fuel prices, other available assets and the constraints of the valley. RTE notes that it can exceed the operating cost of some thermal generation. ([RTE, reservoir opportunity value](https://analysesetdonnees.rte-france.com/en/generation/hydropower))
+
+The result can look counterintuitive.
+
+A gas plant may generate today while a dam saves water. The decision does not say gas is the better technology. It says a scarce hydro megawatt-hour may be more useful later.
+
+Norway's regulator describes the same logic as **vannverdi**, water value.
+
+Set it too low and reservoirs may empty before winter ends, exposing the system to very high prices or rationing. Set it too high and too much water may remain when snowmelt begins, forcing spills without generation. Water value is therefore a price under uncertainty, not a number dictated by nature. ([NVE/RME, “Hva er vannverdi?”](https://www.nve.no/reguleringsmyndigheten/slik-fungerer-kraftsystemet/hva-er-vannverdi/))
+
+### Test a simplified allocation
+
+The tool below separates two cases.
+
+For a natural reservoir, it subtracts strategic reserves, non-power allocations already converted into an energy equivalent and technical unavailability. It then compares an immediate sale with a future value weighted by the share assumed still usable.
+
+For pumped storage, it applies round-trip efficiency to the electricity used for pumping.
+
+It knows neither future rainfall nor grid constraints nor concession rules. Its outputs are gross scenarios, not market recommendations.
+
+<ReservoirArbitrator lang="en" />
+
+## Importing wind to preserve rain
+
+Norway provides a documented system-level example of this choice.
+
+In the first quarter of 2026, its net electricity exports fell to **0.3 TWh**, from **7.3 TWh** one year earlier. Norway remained a net exporter in January, then became a net importer in February and March. ([NVE, first-quarter 2026 power report](https://www.nve.no/media/19972/kraftsituasjonen_2026q1.pdf))
+
+NVE found that net-import periods broadly coincided with high renewable generation in neighbouring countries. Norwegian hydropower output fell, imports covered a larger share of consumption and water was preserved for periods with less renewable output and higher prices.
+
+The deteriorating resource position strengthened that incentive.
+
+Norway's hydrological balance moved from **-7.4 TWh in week 1 to -23.2 TWh in week 13**. The measure combines deviations in reservoir storage, snow, soil and groundwater from historical norms. It is not simply a reservoir filling number, but a wider measure of future hydrological margin.
+
+
+
+The relationship should not be reduced to a single cause.
+
+Flows also depend on demand, congestion, cold weather, wind, plant availability and price spreads. NVE's report nevertheless establishes the mechanism: a system rich in reservoirs can import now to strengthen future flexibility.
+
+## Solar does not refill a reservoir
+
+On 11 August 2026, Europe's Electricity Coordination Group found that strong solar generation had eased pressure on prices in the middle of the day, while storage remained critical for moving that energy into evening peaks. ([European Commission, 11 August 2026](https://energy.ec.europa.eu/news/europes-electricity-system-remains-stable-despite-extreme-weather-2026-08-11_en))
+
+The shift increases the hourly value of hydro, but it does not remove the seasonal constraint.
+
+Pumped storage can charge at midday and discharge in the evening. The cycle loses some energy but gains time.
+
+A natural reservoir can also reduce midday generation and preserve stock. The difference is fundamental: its water comes from rain and snow. A day of cheap solar cannot refill the lake.
+
+Europe may replace a hydro energy shortfall over a whole summer with more solar output while remaining weaker on another dimension: the amount of dispatchable generation left after months of poor inflows.
+
+This article does not claim that every European reservoir has already moved output into the evening. Establishing that would require reproducing hourly profiles, separating run-of-river, reservoirs and pumping, and controlling for weather and prices. That work continues. The mechanism itself is already explicit in system-operator documents.
+
+## One TWh does not always mean the same TWh
+
+The most awkward documentary finding in this instalment lies in calculation methods.
+
+France, Norway, Switzerland and ENTSO-E all publish hydro storage in energy units. The figures therefore look immediately comparable.
+
+They are not always measuring the same perimeter.
+
+In France, RTE publishes a maximum national stock of **3,591 GWh** for lake-type plants. It is **head energy**, meaning the energy available in the one plant directly connected to the reservoir. ([RTE, hydraulic stock](https://www.services-rte.com/en/view-data-published-by-rte/hydraulic-stock.html))
+
+In Norway, NVE adds the energy equivalents of downstream plants in the same watercourse for each reservoir. The same water is therefore valued through the whole cascade it can pass. Calculated national capacity reached **87,438 GWh** in September 2025. ([NVE, reservoir-statistics method](https://www.nve.no/energi/analyser-og-statistikk/om-magasinstatistikken/))
+
+Switzerland likewise uses the full production cascade of a hydraulically connected and jointly optimised complex when calculating the energy content of a lake.
+
+ENTSO-E requires a weekly aggregate by bidding zone but states in its own documentation: **“No standard method.”** Reservoir and pumped-storage energy may appear in the same locally aggregated value. ([ENTSO-E Transparency Platform, Article 16.1.D](https://transparencyplatform.zendesk.com/hc/en-us/articles/16648275841684-Aggregate-Filling-Rate-of-Water-Reservoirs-and-Hydro-Storage-Plants-16-1-D))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 468" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison of hydropower stock calculation methods in France, Norway, Switzerland and the ENTSO-E platform" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="468" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// One MWh unit, four perimeters</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">The numbers are useful. Their methodology must travel with them.</text>
+  <rect x="28" y="88" width="316" height="142" rx="7" fill="#15171c" stroke="#5eead4"/>
+  <text x="46" y="116" fill="#5eead4" font-size="12" font-weight="800">FRANCE</text>
+  <text x="46" y="141" fill="#f3f5f8" font-size="16" font-weight="800">head energy only</text>
+  <path d="M55 190 H135" stroke="#5eead4" stroke-width="3"/>
+  <rect x="135" y="174" width="46" height="32" rx="4" fill="#283039"/>
+  <text x="148" y="195" fill="#f3f5f8" font-size="9">A</text>
+  <path d="M181 190 H246" stroke="#606a77" stroke-width="2" stroke-dasharray="5 4"/>
+  <rect x="246" y="174" width="46" height="32" rx="4" fill="#1c222a"/>
+  <text x="259" y="195" fill="#7f8793" font-size="9">B</text>
+  <text x="46" y="218" fill="#8b929e" font-size="9">RTE counts the directly linked plant.</text>
+  <rect x="376" y="88" width="316" height="142" rx="7" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="394" y="116" fill="#7aa2f7" font-size="12" font-weight="800">NORWAY</text>
+  <text x="394" y="141" fill="#f3f5f8" font-size="16" font-weight="800">downstream cascade</text>
+  <path d="M403 190 H483" stroke="#7aa2f7" stroke-width="3"/>
+  <rect x="483" y="174" width="46" height="32" rx="4" fill="#283039"/>
+  <text x="496" y="195" fill="#f3f5f8" font-size="9">A</text>
+  <path d="M529 190 H572" stroke="#7aa2f7" stroke-width="3"/>
+  <rect x="572" y="174" width="46" height="32" rx="4" fill="#283039"/>
+  <text x="585" y="195" fill="#f3f5f8" font-size="9">B</text>
+  <text x="394" y="218" fill="#8b929e" font-size="9">NVE adds plants further downstream.</text>
+  <rect x="28" y="258" width="316" height="142" rx="7" fill="#15171c" stroke="#ff4d87"/>
+  <text x="46" y="286" fill="#ff4d87" font-size="12" font-weight="800">SWITZERLAND</text>
+  <text x="46" y="311" fill="#f3f5f8" font-size="16" font-weight="800">jointly optimised complex</text>
+  <path d="M55 360 H135" stroke="#ff4d87" stroke-width="3"/>
+  <rect x="135" y="344" width="46" height="32" rx="4" fill="#283039"/>
+  <text x="148" y="365" fill="#f3f5f8" font-size="9">A</text>
+  <path d="M181 360 H224" stroke="#ff4d87" stroke-width="3"/>
+  <rect x="224" y="344" width="46" height="32" rx="4" fill="#283039"/>
+  <text x="237" y="365" fill="#f3f5f8" font-size="9">B</text>
+  <text x="46" y="388" fill="#8b929e" font-size="9">ElCom uses the connected full cascade.</text>
+  <rect x="376" y="258" width="316" height="142" rx="7" fill="#15171c" stroke="#f5b13d"/>
+  <text x="394" y="286" fill="#f5b13d" font-size="12" font-weight="800">ENTSO-E</text>
+  <text x="394" y="311" fill="#f3f5f8" font-size="16" font-weight="800">no standard method</text>
+  <rect x="394" y="336" width="280" height="42" rx="5" fill="#111318" stroke="#343c47"/>
+  <text x="410" y="354" fill="#c7ccd5" font-size="9">reservoirs + pumping may be combined</text>
+  <text x="410" y="370" fill="#c7ccd5" font-size="9">aggregation is performed locally</text>
+  <rect x="28" y="421" width="664" height="24" rx="4" fill="#111318"/>
+  <text x="44" y="438" fill="#f5b13d" font-size="9">Comparison needs: cascade, pumping, covered assets, dead storage and available power.</text>
+  <text x="24" y="459" fill="#777f8c" font-size="9">SOURCES: RTE; NVE; ElCom; ENTSO-E Transparency Platform.</text>
+</svg>
+<figcaption>Different methods do not make the data false. They make the perimeter essential.</figcaption>
+</figure>
+
+This is more than an accounting detail.
+
+A stock intended to secure a peak depends on both total energy and available power. A cascade can multiply the electricity produced from the same cubic metre but does not guarantee that every turbine is available at the same time. Pumped storage aggregated with natural reservoirs adds energy of a different origin.
+
+Two areas can therefore report 1 TWh without holding exactly the same electricity service.
+
+## The market is not alone at the gate
+
+Electric opportunity value does not always have the final word.
+
+EDF's Durance-Verdon chain contains **16 dams and 23 power plants** connected by a canal. The same water can generate repeatedly across the cascade. It must also irrigate **80,000 hectares**, supply drinking water to **3 million people**, serve almost **400 companies**, maintain ecological flows and support tourism. ([EDF, shared water management in Provence](https://www.edf.fr/l-art-de-la-gestion-partagee-de-l-eau-en-provence))
+
+The season changes the order of priorities.
+
+Winter gives more weight to electricity. Spring rebuilds storage. During summer, EDF says irrigation and tourist-compatible lake levels take priority. Autumn management also preserves room for floods.
+
+Filling trajectories are recalculated every two weeks with state services, irrigators, local authorities and basin organisations.
+
+During crisis conditions, the state can impose restrictions and rank uses. Provence's framework protects drinking and sanitary water, civil security, industrial safety and aquatic ecosystems. ([DREAL PACA, management of stored water during scarcity](https://www.paca.developpement-durable.gouv.fr/l-arrete-cadre-interdepartemental-revise-aci-a15967.html?lang=fr))
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 720 438" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The multiple functions of the Durance-Verdon system: power, irrigation, drinking water, industry, environment and tourism" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:8px;margin:18px 0 22px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <rect width="720" height="438" fill="#0c0d10"/>
+  <text x="24" y="34" fill="#5eead4" font-size="15" font-weight="700">// Six water values meet at the gate</text>
+  <text x="24" y="55" fill="#8b929e" font-size="10">Durance-Verdon chain, as described by the operator.</text>
+  <rect x="254" y="142" width="212" height="132" rx="10" fill="#15171c" stroke="#5eead4" stroke-width="2"/>
+  <text x="278" y="173" fill="#5eead4" font-size="11" font-weight="800">INTEGRATED SYSTEM</text>
+  <text x="278" y="208" fill="#f3f5f8" font-size="20" font-weight="800">16 dams</text>
+  <text x="278" y="236" fill="#f3f5f8" font-size="20" font-weight="800">23 power plants</text>
+  <text x="278" y="258" fill="#8b929e" font-size="9">the same water can generate repeatedly</text>
+  <rect x="28" y="91" width="162" height="68" rx="6" fill="#111318" stroke="#7aa2f7"/>
+  <text x="44" y="116" fill="#7aa2f7" font-size="10" font-weight="800">ELECTRICITY</text>
+  <text x="44" y="137" fill="#c7ccd5" font-size="9">energy and peak capacity</text>
+  <path d="M190 128 L254 174" stroke="#56606c" stroke-width="2"/>
+  <rect x="28" y="190" width="162" height="68" rx="6" fill="#111318" stroke="#f5b13d"/>
+  <text x="44" y="215" fill="#f5b13d" font-size="10" font-weight="800">IRRIGATION</text>
+  <text x="44" y="236" fill="#c7ccd5" font-size="9">80,000 hectares</text>
+  <path d="M190 224 L254 214" stroke="#56606c" stroke-width="2"/>
+  <rect x="28" y="289" width="162" height="68" rx="6" fill="#111318" stroke="#ff4d87"/>
+  <text x="44" y="314" fill="#ff4d87" font-size="10" font-weight="800">DRINKING WATER</text>
+  <text x="44" y="335" fill="#c7ccd5" font-size="9">3 million people</text>
+  <path d="M190 323 L254 252" stroke="#56606c" stroke-width="2"/>
+  <rect x="530" y="91" width="162" height="68" rx="6" fill="#111318" stroke="#5eead4"/>
+  <text x="546" y="116" fill="#5eead4" font-size="10" font-weight="800">INDUSTRY</text>
+  <text x="546" y="137" fill="#c7ccd5" font-size="9">almost 400 companies</text>
+  <path d="M530 128 L466 174" stroke="#56606c" stroke-width="2"/>
+  <rect x="530" y="190" width="162" height="68" rx="6" fill="#111318" stroke="#7aa2f7"/>
+  <text x="546" y="215" fill="#7aa2f7" font-size="10" font-weight="800">ENVIRONMENT</text>
+  <text x="546" y="236" fill="#c7ccd5" font-size="9">ecological flows and habitats</text>
+  <path d="M530 224 L466 214" stroke="#56606c" stroke-width="2"/>
+  <rect x="530" y="289" width="162" height="68" rx="6" fill="#111318" stroke="#f5b13d"/>
+  <text x="546" y="314" fill="#f5b13d" font-size="10" font-weight="800">TOURISM</text>
+  <text x="546" y="335" fill="#c7ccd5" font-size="9">summer lake levels</text>
+  <path d="M530 323 L466 252" stroke="#56606c" stroke-width="2"/>
+  <rect x="116" y="384" width="488" height="27" rx="4" fill="#111318" stroke="#2b323c"/>
+  <text x="132" y="402" fill="#f5b13d" font-size="9">The power price is one decision variable, not the whole social hierarchy.</text>
+  <text x="24" y="425" fill="#777f8c" font-size="9">SOURCES: EDF Hydro Méditerranée; DREAL Provence-Alpes-Côte d'Azur.</text>
+</svg>
+<figcaption>A non-power allocation is not merely lost revenue. It provides another public or economic service that spot prices do not fully value.</figcaption>
+</figure>
+
+That plurality complicates every calculation of “stored value”.
+
+A volume reserved for drinking water cannot automatically be translated into sacrificed GWh. The reservoir level, head, cascade, efficiency, timing and counterfactual all matter.
+
+The market can price the electricity opportunity cost.
+
+It cannot by itself price the total social benefit of water.
+
+## Eight fields missing from Europe's stock figures
+
+The problem is not a complete absence of data.
+
+It is an incomplete definition that too rarely travels with the number.
+
+A comparable hydro stock should state at least:
+
+- whether head energy or the full cascade is counted;
+- whether pumped storage is included;
+- the assets or perimeter covered;
+- dead storage and non-power reserves;
+- actually available power;
+- technical outages;
+- measurement date and revision method;
+- grid constraints that may block use of the stock.
+
+Spain offers an interesting model. Its weekly hydrological bulletin brings together reservoir volumes, allocations for irrigation and drinking water, theoretical stored hydropower energy and actual hydro generation. ([MITECO, weekly hydrological bulletin](https://www.miteco.gob.es/es/agua/temas/evaluacion-de-los-recursos-hidricos/boletin-hidrologico.html))
+
+The Spanish publication is not immediately comparable with French, Norwegian or Swiss figures. It nevertheless shows that physical water and its electricity equivalent can be published together.
+
+## The most valuable service may be the missing megawatt-hour
+
+A thermal plant burns fuel that can be purchased again.
+
+A reservoir follows a hydrological path no operator can order.
+
+Generating today reduces tomorrow's stock. Waiting creates the opposite risk: a lower future price, a new constraint or fresh inflows that force water to spill without generation.
+
+Hydropower's value lies in that choice.
+
+The Swiss reserve turns waiting into a security-of-supply product.
+
+Norway shows how imports can preserve a domestic resource.
+
+The Durance shows that agriculture, drinking water and ecosystems also stand before the gate.
+
+And Europe's fragmented methodologies show that storage figures are too often compared without comparing what they can actually do.
+
+A dam is not only a power plant that generates when water falls.
+
+It is an infrastructure that decides, under constraints, **when that fall has the greatest value and for whom**.
+
+### Established findings
+
+Switzerland requires a 250 GWh hydropower reserve for 2026-27, callable only if the day-ahead market fails to clear.
+
+RTE and NVE explicitly describe water storage as an opportunity-cost decision.
+
+NVE establishes that several import periods in the first quarter of 2026 coincided with lower hydro generation and water preservation for tighter periods.
+
+Stock-calculation methods differ across France, Norway and Switzerland, while ENTSO-E prescribes no standard method.
+
+### Findings outside the scope
+
+The investigation does not demonstrate that every European reservoir moved generation into evening peaks in 2026.
+
+It does not assign every Norwegian import to a single water-preservation decision.
+
+It does not convert agricultural, drinking-water or ecological allocations into electricity losses without reconstructing the cascade and counterfactual.
+
+It does not present the interactive tool as a real dispatch model.
+
+### Method and limitations
+
+Data and documents checked through **21 August 2026**.
+
+The 3.06% and 750 MW figures associated with the Swiss reserve are arithmetic derivations from regulatory values. The latter is not a forecast of power called.
+
+Norwegian production and exchange data used by NVE originate from the ENTSO-E Transparency Platform and were provisional at publication.
+
+France's 3,591 GWh and Norway's 87,438 GWh should not be compared as stocks with an identical perimeter. The systems differ greatly in size and their conversion methods are not the same.
+
+### Primary sources
+
+- [ElCom Directive 1/2026 on the 2026-27 hydropower reserve](https://www.elcom.admin.ch/dam/de/sd-web/mGUJrCTdfCde/1-2026_Weisung%20Eckwerte%20WResV_26_27_Verpflichtung_DE.pdf)
+- [NVE/RME, definition of water value](https://www.nve.no/reguleringsmyndigheten/slik-fungerer-kraftsystemet/hva-er-vannverdi/)
+- [NVE, first-quarter 2026 power-system report](https://www.nve.no/media/19972/kraftsituasjonen_2026q1.pdf)
+- [NVE, reservoir-statistics calculation method](https://www.nve.no/energi/analyser-og-statistikk/om-magasinstatistikken/)
+- [NVE, reservoir capacity updated to 87,438 GWh](https://www.nve.no/nytt-fra-nve/nyheter-energi/oppdaterte-tall-for-magasinkapasitet-i-norge/)
+- [RTE, hydropower categories and opportunity value](https://analysesetdonnees.rte-france.com/en/generation/hydropower)
+- [RTE, definition of French hydraulic stock](https://www.services-rte.com/en/view-data-published-by-rte/hydraulic-stock.html)
+- [ENTSO-E Transparency Platform, aggregate stored-energy methodology](https://transparencyplatform.zendesk.com/hc/en-us/articles/16648275841684-Aggregate-Filling-Rate-of-Water-Reservoirs-and-Hydro-Storage-Plants-16-1-D)
+- [European Commission, electricity coordination during the August 2026 drought](https://energy.ec.europa.eu/news/europes-electricity-system-remains-stable-despite-extreme-weather-2026-08-11_en)
+- [EDF Hydro Méditerranée, shared management of the Durance-Verdon system](https://www.edf.fr/l-art-de-la-gestion-partagee-de-l-eau-en-provence)
+- [DREAL Provence-Alpes-Côte d'Azur, management of stored water during scarcity](https://www.paca.developpement-durable.gouv.fr/l-arrete-cadre-interdepartemental-revise-aci-a15967.html?lang=fr)
+- [MITECO, Spanish weekly hydrological bulletin](https://www.miteco.gob.es/es/agua/temas/evaluacion-de-los-recursos-hidricos/boletin-hidrologico.html)

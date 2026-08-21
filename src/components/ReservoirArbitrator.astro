@@ -1,0 +1,370 @@
+---
+import {
+  RESERVOIR_ARBITRATOR_DATA_DATE,
+  RESERVOIR_ARBITRATOR_DEFAULTS,
+  RESERVOIR_ARBITRATOR_MODEL_VERSION,
+  RESERVOIR_ARBITRATOR_SOURCES,
+  evaluateReservoirArbitrator,
+} from '../lib/reservoir-arbitrator-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `reservoir-arbitrator-${lang}`;
+const initial = evaluateReservoirArbitrator(RESERVOIR_ARBITRATOR_DEFAULTS);
+
+const copy = isFr
+  ? {
+      eyebrow: '// outil l0g',
+      title: 'L’arbitre du réservoir',
+      intro: 'Comparez une vente immédiate, une attente et un cycle de pompage. Le calcul est pédagogique : il ne remplace ni un modèle hydrologique, ni le dispatch réel d’un barrage.',
+      reservoir: 'Réservoir naturel',
+      pumped: 'STEP',
+      stock: 'Stock énergétique publié',
+      strategic: 'Réserve stratégique',
+      nonPower: 'Allocation non électrique, déjà convertie en GWh',
+      unavailable: 'Indisponible techniquement',
+      nowPrice: 'Prix aujourd’hui',
+      futurePrice: 'Prix futur attendu',
+      futureAvailability: 'Part encore mobilisable à la date future',
+      pumpingInput: 'Électricité utilisée pour pomper',
+      efficiency: 'Rendement aller-retour',
+      pumpingPrice: 'Prix d’achat pour le pompage',
+      salePrice: 'Prix de revente futur',
+      gwh: 'GWh',
+      eurMWh: '€/MWh',
+      pct: '%',
+      mobilisable: 'Mobilisable maintenant',
+      blocked: 'Retenu ou indisponible',
+      immediate: 'Valeur brute maintenant',
+      future: 'Valeur brute future attendue',
+      breakEven: 'Prix futur d’équilibre',
+      deliverable: 'Énergie restituable',
+      pumpCost: 'Coût du pompage',
+      saleRevenue: 'Recette brute future',
+      margin: 'Marge brute de cycle',
+      pumpBreakEven: 'Prix de revente d’équilibre',
+      wait: 'Le scénario favorise l’attente',
+      sell: 'Le scénario favorise la vente immédiate',
+      balanced: 'Les deux options sont proches',
+      pump: 'Le cycle couvre son coût d’énergie',
+      noPump: 'Le cycle ne couvre pas son coût d’énergie',
+      over: 'Les allocations dépassent le stock publié. Le disponible est ramené à zéro.',
+      caveat: 'Valeurs brutes avant coûts fixes, contraintes de réseau, apports futurs, débits réservés, fiscalité et contrats. Une allocation en eau ne se convertit pas automatiquement en GWh.',
+      method: 'Méthode, formules et sources',
+      methodText: 'Pour un réservoir, le modèle retire du stock publié les réserves, usages non électriques déjà convertis par l’utilisateur et indisponibilités. Il compare ensuite la vente immédiate avec une valeur future pondérée par la part supposée encore mobilisable. Pour une STEP, il applique le rendement aller-retour à l’énergie de pompage puis compare la recette de revente au coût d’achat.',
+      formulas: [
+        'Mobilisable = stock publié - réserve - allocation non électrique - indisponibilité',
+        'Valeur future attendue = mobilisable × disponibilité future × prix futur',
+        'Seuil futur = prix actuel ÷ disponibilité future',
+        'STEP restituable = énergie pompée × rendement aller-retour',
+      ],
+      scenario: 'Scénario illustratif, aucune donnée utilisateur n’est enregistrée.',
+    }
+  : {
+      eyebrow: '// l0g tool',
+      title: 'The reservoir arbitrator',
+      intro: 'Compare an immediate sale, waiting, and a pumping cycle. This is a teaching model, not a hydrological forecast or a real dispatch engine.',
+      reservoir: 'Natural reservoir',
+      pumped: 'Pumped storage',
+      stock: 'Published stored energy',
+      strategic: 'Strategic reserve',
+      nonPower: 'Non-power allocation, already converted into GWh',
+      unavailable: 'Technically unavailable',
+      nowPrice: 'Price today',
+      futurePrice: 'Expected future price',
+      futureAvailability: 'Share still usable at the future date',
+      pumpingInput: 'Electricity used for pumping',
+      efficiency: 'Round-trip efficiency',
+      pumpingPrice: 'Pumping purchase price',
+      salePrice: 'Future sale price',
+      gwh: 'GWh',
+      eurMWh: '€/MWh',
+      pct: '%',
+      mobilisable: 'Usable now',
+      blocked: 'Withheld or unavailable',
+      immediate: 'Gross value now',
+      future: 'Expected future gross value',
+      breakEven: 'Future break-even price',
+      deliverable: 'Deliverable energy',
+      pumpCost: 'Pumping cost',
+      saleRevenue: 'Future gross revenue',
+      margin: 'Gross cycle margin',
+      pumpBreakEven: 'Break-even sale price',
+      wait: 'The scenario favours waiting',
+      sell: 'The scenario favours selling now',
+      balanced: 'The two options are close',
+      pump: 'The cycle covers its energy cost',
+      noPump: 'The cycle does not cover its energy cost',
+      over: 'Allocations exceed published stock. Usable energy is floored at zero.',
+      caveat: 'Gross values before fixed costs, grid constraints, future inflows, ecological flows, tax and contracts. A water allocation cannot be converted automatically into GWh.',
+      method: 'Method, formulas and sources',
+      methodText: 'For a reservoir, the model subtracts strategic reserves, user-converted non-power allocations and technical unavailability from published stock. It compares an immediate sale with a future value weighted by the assumed share still usable. For pumped storage, it applies round-trip efficiency to pumping energy and compares future revenue with the purchase cost.',
+      formulas: [
+        'Usable = published stock - reserve - non-power allocation - unavailability',
+        'Expected future value = usable × future availability × future price',
+        'Future threshold = current price ÷ future availability',
+        'Pumped output = pumping energy × round-trip efficiency',
+      ],
+      scenario: 'Illustrative scenario. No user data is stored.',
+    };
+---
+
+<section class="reservoir-tool" id={id} data-reservoir-tool data-lang={lang}>
+  <header class="reservoir-tool__header">
+    <p class="reservoir-tool__eyebrow">{copy.eyebrow}</p>
+    <h3>{copy.title}</h3>
+    <p>{copy.intro}</p>
+  </header>
+
+  <div class="reservoir-tool__tabs" role="group" aria-label={copy.title}>
+    <button type="button" class="is-active" data-reservoir-mode="reservoir" aria-pressed="true">{copy.reservoir}</button>
+    <button type="button" data-reservoir-mode="pumped" aria-pressed="false">{copy.pumped}</button>
+  </div>
+
+  <div class="reservoir-tool__grid">
+    <form class="reservoir-tool__controls" data-reservoir-form>
+      <div data-reservoir-panel="reservoir">
+        <label>
+          <span>{copy.stock}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="100000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.reportedStockGWh} data-input="reportedStockGWh"/><small>{copy.gwh}</small></span>
+        </label>
+        <label>
+          <span>{copy.strategic}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="100000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.strategicReserveGWh} data-input="strategicReserveGWh"/><small>{copy.gwh}</small></span>
+        </label>
+        <label>
+          <span>{copy.nonPower}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="100000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.nonPowerEquivalentGWh} data-input="nonPowerEquivalentGWh"/><small>{copy.gwh}</small></span>
+        </label>
+        <label>
+          <span>{copy.unavailable}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="100000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.technicalUnavailableGWh} data-input="technicalUnavailableGWh"/><small>{copy.gwh}</small></span>
+        </label>
+        <label>
+          <span>{copy.nowPrice}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="10000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.currentPriceEurMWh} data-input="currentPriceEurMWh"/><small>{copy.eurMWh}</small></span>
+        </label>
+        <label>
+          <span>{copy.futurePrice}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="10000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.futurePriceEurMWh} data-input="futurePriceEurMWh"/><small>{copy.eurMWh}</small></span>
+        </label>
+        <label>
+          <span>{copy.futureAvailability}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="100" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.futureAvailabilityPct} data-input="futureAvailabilityPct"/><small>{copy.pct}</small></span>
+        </label>
+      </div>
+
+      <div data-reservoir-panel="pumped" hidden>
+        <label>
+          <span>{copy.pumpingInput}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="100000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.pumpingInputGWh} data-input="pumpingInputGWh"/><small>{copy.gwh}</small></span>
+        </label>
+        <label>
+          <span>{copy.efficiency}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="1" max="100" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.roundTripEfficiencyPct} data-input="roundTripEfficiencyPct"/><small>{copy.pct}</small></span>
+        </label>
+        <label>
+          <span>{copy.pumpingPrice}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="10000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.pumpingPriceEurMWh} data-input="pumpingPriceEurMWh"/><small>{copy.eurMWh}</small></span>
+        </label>
+        <label>
+          <span>{copy.salePrice}</span>
+          <span class="reservoir-tool__input-unit"><input type="number" min="0" max="10000" step="1" value={RESERVOIR_ARBITRATOR_DEFAULTS.futureSalePriceEurMWh} data-input="futureSalePriceEurMWh"/><small>{copy.eurMWh}</small></span>
+        </label>
+      </div>
+      <p class="reservoir-tool__scenario">{copy.scenario}</p>
+    </form>
+
+    <div class="reservoir-tool__results" aria-live="polite">
+      <div data-reservoir-results="reservoir">
+        <div class="reservoir-tool__hero">
+          <span>{copy.mobilisable}</span>
+          <strong data-result="usableNowGWh">{initial.usableNowGWh.toFixed(1)} GWh</strong>
+          <small data-result="decision">{copy.wait}</small>
+        </div>
+        <div class="reservoir-tool__metrics">
+          <div><span>{copy.blocked}</span><strong data-result="deductionsGWh">{initial.deductionsGWh.toFixed(1)} GWh</strong></div>
+          <div><span>{copy.immediate}</span><strong data-result="immediateValueMEur">{initial.immediateValueMEur.toFixed(2)} M€</strong></div>
+          <div><span>{copy.future}</span><strong data-result="futureValueMEur">{initial.futureValueMEur.toFixed(2)} M€</strong></div>
+          <div><span>{copy.breakEven}</span><strong data-result="futureBreakEvenEurMWh">{initial.futureBreakEvenEurMWh.toFixed(1)} €/MWh</strong></div>
+        </div>
+        <p class="reservoir-tool__over" data-result="overAllocation" hidden>{copy.over}</p>
+      </div>
+
+      <div data-reservoir-results="pumped" hidden>
+        <div class="reservoir-tool__hero">
+          <span>{copy.deliverable}</span>
+          <strong data-result="pumpedDeliverableGWh">{initial.pumpedDeliverableGWh.toFixed(1)} GWh</strong>
+          <small data-result="pumpedDecision">{copy.pump}</small>
+        </div>
+        <div class="reservoir-tool__metrics">
+          <div><span>{copy.pumpCost}</span><strong data-result="pumpingCostMEur">{initial.pumpingCostMEur.toFixed(2)} M€</strong></div>
+          <div><span>{copy.saleRevenue}</span><strong data-result="pumpedRevenueMEur">{initial.pumpedRevenueMEur.toFixed(2)} M€</strong></div>
+          <div><span>{copy.margin}</span><strong data-result="pumpedMarginMEur">{initial.pumpedMarginMEur.toFixed(2)} M€</strong></div>
+          <div><span>{copy.pumpBreakEven}</span><strong data-result="pumpedBreakEvenEurMWh">{initial.pumpedBreakEvenEurMWh.toFixed(1)} €/MWh</strong></div>
+        </div>
+      </div>
+      <p class="reservoir-tool__warning">{copy.caveat}</p>
+    </div>
+  </div>
+
+  <details class="reservoir-tool__details">
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <ul>{copy.formulas.map((formula) => <li>{formula}</li>)}</ul>
+    <ol>{RESERVOIR_ARBITRATOR_SOURCES.map((source) => <li><a href={source.url}>{isFr ? source.labelFr : source.labelEn}</a></li>)}</ol>
+    <p>Model v{RESERVOIR_ARBITRATOR_MODEL_VERSION} · {RESERVOIR_ARBITRATOR_DATA_DATE}</p>
+  </details>
+</section>
+
+<script>
+  import { evaluateReservoirArbitrator } from '../lib/reservoir-arbitrator-model.ts';
+
+  const initialiseReservoirArbitrators = () => {
+    document.querySelectorAll<HTMLElement>('[data-reservoir-tool]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const modeButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-reservoir-mode]'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-reservoir-panel]'));
+      const resultPanels = Array.from(root.querySelectorAll<HTMLElement>('[data-reservoir-results]'));
+      const inputs = Array.from(root.querySelectorAll<HTMLInputElement>('[data-input]'));
+      const form = root.querySelector<HTMLFormElement>('[data-reservoir-form]');
+      let mode: 'reservoir' | 'pumped' = 'reservoir';
+
+      const number = (name: string) => {
+        const input = root.querySelector<HTMLInputElement>(`[data-input="${name}"]`);
+        return input ? Number(input.value) : 0;
+      };
+      const result = (name: string) => root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+      const format = (value: number, digits = 1) => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits,
+      }).format(value);
+      const money = (value: number) => `${format(value, 2)} M€`;
+      const gwh = (value: number) => `${format(value, 1)} GWh`;
+      const price = (value: number) => Number.isFinite(value) ? `${format(value, 1)} €/MWh` : '∞';
+
+      const decisionText = (decision: string) => {
+        const texts = lang === 'fr'
+          ? {
+              wait: 'Le scénario favorise l’attente',
+              sell: 'Le scénario favorise la vente immédiate',
+              balanced: 'Les deux options sont proches',
+              pump: 'Le cycle couvre son coût d’énergie',
+              'do-not-pump': 'Le cycle ne couvre pas son coût d’énergie',
+            }
+          : {
+              wait: 'The scenario favours waiting',
+              sell: 'The scenario favours selling now',
+              balanced: 'The two options are close',
+              pump: 'The cycle covers its energy cost',
+              'do-not-pump': 'The cycle does not cover its energy cost',
+            };
+        return texts[decision as keyof typeof texts] ?? '';
+      };
+
+      const update = () => {
+        const evaluated = evaluateReservoirArbitrator({
+          mode,
+          reportedStockGWh: number('reportedStockGWh'),
+          strategicReserveGWh: number('strategicReserveGWh'),
+          nonPowerEquivalentGWh: number('nonPowerEquivalentGWh'),
+          technicalUnavailableGWh: number('technicalUnavailableGWh'),
+          currentPriceEurMWh: number('currentPriceEurMWh'),
+          futurePriceEurMWh: number('futurePriceEurMWh'),
+          futureAvailabilityPct: number('futureAvailabilityPct'),
+          pumpingInputGWh: number('pumpingInputGWh'),
+          roundTripEfficiencyPct: number('roundTripEfficiencyPct'),
+          pumpingPriceEurMWh: number('pumpingPriceEurMWh'),
+          futureSalePriceEurMWh: number('futureSalePriceEurMWh'),
+        });
+
+        const set = (name: string, value: string) => {
+          const node = result(name);
+          if (node) node.textContent = value;
+        };
+        set('usableNowGWh', gwh(evaluated.usableNowGWh));
+        set('deductionsGWh', gwh(Math.min(evaluated.deductionsGWh, evaluated.inputs.reportedStockGWh)));
+        set('immediateValueMEur', money(evaluated.immediateValueMEur));
+        set('futureValueMEur', money(evaluated.futureValueMEur));
+        set('futureBreakEvenEurMWh', price(evaluated.futureBreakEvenEurMWh));
+        set('decision', decisionText(evaluated.decision));
+        set('pumpedDeliverableGWh', gwh(evaluated.pumpedDeliverableGWh));
+        set('pumpingCostMEur', money(evaluated.pumpingCostMEur));
+        set('pumpedRevenueMEur', money(evaluated.pumpedRevenueMEur));
+        set('pumpedMarginMEur', money(evaluated.pumpedMarginMEur));
+        set('pumpedBreakEvenEurMWh', price(evaluated.pumpedBreakEvenEurMWh));
+        set('pumpedDecision', decisionText(evaluated.decision));
+        const over = result('overAllocation');
+        if (over) over.hidden = evaluated.overAllocationGWh <= 0;
+      };
+
+      modeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          mode = button.dataset.reservoirMode === 'pumped' ? 'pumped' : 'reservoir';
+          modeButtons.forEach((candidate) => {
+            const active = candidate.dataset.reservoirMode === mode;
+            candidate.classList.toggle('is-active', active);
+            candidate.setAttribute('aria-pressed', String(active));
+          });
+          panels.forEach((panel) => { panel.hidden = panel.dataset.reservoirPanel !== mode; });
+          resultPanels.forEach((panel) => { panel.hidden = panel.dataset.reservoirResults !== mode; });
+          update();
+        });
+      });
+      inputs.forEach((input) => input.addEventListener('input', update));
+      form?.addEventListener('submit', (event) => event.preventDefault());
+      update();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialiseReservoirArbitrators, { once: true });
+  } else {
+    initialiseReservoirArbitrators();
+  }
+  document.addEventListener('astro:page-load', initialiseReservoirArbitrators);
+</script>
+
+<style>
+  .reservoir-tool{margin:2rem 0;padding:1.1rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#0c0d10;color:#eef1f5;box-shadow:0 16px 44px rgba(0,0,0,.22);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden}
+  .reservoir-tool *{box-sizing:border-box}
+  .reservoir-tool__header{max-width:760px}
+  .reservoir-tool__eyebrow{margin:0 0 .35rem;color:#5eead4;font-size:.76rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+  .reservoir-tool h3{margin:0;color:#f6f7f9;font-family:inherit;font-size:1.18rem;line-height:1.25}
+  .reservoir-tool__header>p:last-child{margin:.65rem 0 0;color:#aeb4be;font-size:.84rem;line-height:1.55}
+  .reservoir-tool__tabs{display:flex;gap:.45rem;margin:1rem 0 .8rem;padding:.25rem;border:1px solid #29303a;border-radius:8px;background:#111318;width:max-content;max-width:100%}
+  .reservoir-tool__tabs button{appearance:none;border:0;border-radius:6px;background:transparent;color:#aeb4be;padding:.55rem .8rem;font:700 .78rem/1.1 inherit;cursor:pointer}
+  .reservoir-tool__tabs button.is-active{background:#202733;color:#f5b13d}
+  .reservoir-tool__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.9rem}
+  .reservoir-tool__controls,.reservoir-tool__results{min-width:0;padding:.85rem;border:1px solid #252c35;border-radius:8px;background:#111318}
+  .reservoir-tool__controls label{display:grid;grid-template-columns:minmax(0,1fr) minmax(108px,142px);gap:.75rem;align-items:center;padding:.48rem 0;border-bottom:1px solid rgba(255,255,255,.06);color:#c7ccd5;font-size:.75rem;line-height:1.35}
+  .reservoir-tool__controls label:last-of-type{border-bottom:0}
+  .reservoir-tool__input-unit{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.35rem}
+  .reservoir-tool input{width:100%;min-width:0;border:1px solid #343d49;border-radius:6px;background:#0c0d10;color:#fff;padding:.52rem .55rem;font:700 .82rem/1 inherit;outline:none}
+  .reservoir-tool input:focus{border-color:#5eead4;box-shadow:0 0 0 2px rgba(94,234,212,.12)}
+  .reservoir-tool small{color:#89919d;font-size:.67rem}
+  .reservoir-tool__scenario{margin:.75rem 0 0;color:#7f8793;font-size:.67rem;line-height:1.45}
+  .reservoir-tool__hero{padding:.85rem;border:1px solid #33404b;border-radius:8px;background:linear-gradient(135deg,rgba(94,234,212,.08),rgba(122,162,247,.04))}
+  .reservoir-tool__hero span,.reservoir-tool__metrics span{display:block;color:#8f98a5;font-size:.67rem;text-transform:uppercase;letter-spacing:.04em}
+  .reservoir-tool__hero strong{display:block;margin:.32rem 0 .22rem;color:#5eead4;font-size:1.35rem;line-height:1.15}
+  .reservoir-tool__hero small{color:#f5b13d;font-weight:700}
+  .reservoir-tool__metrics{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.65rem}
+  .reservoir-tool__metrics>div{min-width:0;padding:.7rem;border:1px solid #272e38;border-radius:7px;background:#0d1014}
+  .reservoir-tool__metrics strong{display:block;margin-top:.32rem;color:#f2f4f7;font-size:.88rem;line-height:1.25;overflow-wrap:anywhere}
+  .reservoir-tool__warning,.reservoir-tool__over{margin:.7rem 0 0;padding:.65rem .7rem;border-left:2px solid #f5b13d;background:rgba(245,177,61,.06);color:#b9c0ca;font-size:.68rem;line-height:1.5}
+  .reservoir-tool__over{border-left-color:#ff4d87;color:#f0b7c9;background:rgba(255,77,135,.07)}
+  .reservoir-tool__details{margin-top:.8rem;padding:.7rem .8rem;border:1px solid #252c35;border-radius:8px;background:#0f1217;color:#aeb4be;font-size:.72rem;line-height:1.55}
+  .reservoir-tool__details summary{cursor:pointer;color:#dfe3e8;font-weight:800}
+  .reservoir-tool__details a{color:#7aa2f7;overflow-wrap:anywhere}
+  .reservoir-tool__details li+li{margin-top:.3rem}
+  [hidden]{display:none!important}
+  @media(max-width:720px){.reservoir-tool{padding:.8rem}.reservoir-tool__grid{grid-template-columns:1fr}.reservoir-tool__controls label{grid-template-columns:1fr}.reservoir-tool__input-unit{grid-template-columns:minmax(0,1fr) auto}.reservoir-tool__metrics{grid-template-columns:1fr 1fr}}
+  @media(max-width:430px){.reservoir-tool__tabs{width:100%}.reservoir-tool__tabs button{flex:1;padding:.55rem .35rem}.reservoir-tool__metrics{grid-template-columns:1fr}.reservoir-tool h3{font-size:1.05rem}.reservoir-tool__hero strong{font-size:1.18rem}}
+</style>
