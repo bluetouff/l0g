@@ -1,0 +1,375 @@
+---
+import {
+  INVOICE_PLATFORM_COST_DATA_DATE,
+  INVOICE_PLATFORM_COST_DEFAULTS,
+  INVOICE_PLATFORM_COST_FORMULA,
+  INVOICE_PLATFORM_COST_LIMITS_EN,
+  INVOICE_PLATFORM_COST_LIMITS_FR,
+  INVOICE_PLATFORM_COST_MODEL_VERSION,
+  INVOICE_PLATFORM_COST_PROFILES,
+  INVOICE_PLATFORM_PUBLIC_OFFERS,
+  calculateInvoicePlatformCosts,
+} from '../lib/invoice-platform-cost-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const isFull = mode === 'full';
+const id = `invoice-platform-cost-${lang}-${mode}`;
+const initialResults = calculateInvoicePlatformCosts(INVOICE_PLATFORM_COST_DEFAULTS);
+const limits = isFr ? INVOICE_PLATFORM_COST_LIMITS_FR : INVOICE_PLATFORM_COST_LIMITS_EN;
+
+const copy = isFr
+  ? {
+      eyebrow: 'CALCULATEUR DE COÛT DIRECT',
+      title: 'Le zéro tient-il encore avec votre profil ?',
+      intro: 'Renseignez volume, utilisateurs et besoin d’API. Le calcul chiffre uniquement les tarifs publics directement calculables sur 36 mois. Une inconnue reste une inconnue.',
+      badge: 'local · zéro tracker',
+      preset: 'Profil de départ',
+      custom: 'Personnalisé',
+      micro: 'Régime micro-entreprise',
+      newBusiness: 'Entreprise créée depuis moins de douze mois',
+      employees: 'Salariés',
+      users: 'Utilisateurs',
+      clients: 'Clients actifs',
+      flows: 'Factures, documents ou flux par mois',
+      received: 'Dont reçus par mois',
+      api: 'API requise',
+      results: 'Coût direct public sur 36 mois',
+      monthly: 'équivalent mensuel',
+      calculated: 'calcul public',
+      unknown: 'à confirmer',
+      unknownCost: 'Tarif non calculable',
+      source: 'source tarifaire',
+      note: 'Lecture',
+      method: 'Méthode et limites',
+      offers: 'Périmètre des offres',
+      openFull: 'Ouvrir le calculateur en pleine largeur',
+      backArticle: 'Revenir à l’article',
+      snapshot: `Photographie au ${INVOICE_PLATFORM_COST_DATA_DATE}`,
+      noRanking: 'Ce résultat ne constitue ni un classement, ni une recommandation.',
+    }
+  : {
+      eyebrow: 'DIRECT-COST CALCULATOR',
+      title: 'Does zero survive your company profile?',
+      intro: 'Enter volume, users and API needs. The tool prices only directly calculable public tariffs over 36 months. An unknown remains unknown.',
+      badge: 'local · zero tracker',
+      preset: 'Starting profile',
+      custom: 'Custom',
+      micro: 'Micro-business tax regime',
+      newBusiness: 'Business created less than twelve months ago',
+      employees: 'Employees',
+      users: 'Users',
+      clients: 'Active customers',
+      flows: 'Invoices, documents or flows per month',
+      received: 'Of which received per month',
+      api: 'API required',
+      results: 'Public direct cost over 36 months',
+      monthly: 'monthly equivalent',
+      calculated: 'public calculation',
+      unknown: 'confirmation required',
+      unknownCost: 'Price cannot be calculated',
+      source: 'pricing source',
+      note: 'How to read it',
+      method: 'Method and limitations',
+      offers: 'Offer scope',
+      openFull: 'Open the full-width calculator',
+      backArticle: 'Return to the article',
+      snapshot: `Snapshot taken on ${INVOICE_PLATFORM_COST_DATA_DATE}`,
+      noRanking: 'This result is neither a ranking nor a recommendation.',
+    };
+
+const currency = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 2,
+});
+---
+
+<section class:list={['ipc-tool', isFull && 'ipc-tool--full']} id={id} data-invoice-platform-cost data-lang={lang} data-mode={mode}>
+  <header class="ipc-head">
+    <div>
+      <p class="ipc-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="ipc-badge">{copy.badge}</span>
+  </header>
+
+  <div class="ipc-grid">
+    <form class="ipc-controls" aria-labelledby={`${id}-inputs`}>
+      <h3 id={`${id}-inputs`}>{copy.preset}</h3>
+
+      <label class="ipc-field ipc-field--wide">
+        <span>{copy.preset}</span>
+        <select name="profileId">
+          {INVOICE_PLATFORM_COST_PROFILES.map((profile) => (
+            <option value={profile.id} selected={profile.id === INVOICE_PLATFORM_COST_DEFAULTS.profileId}>
+              {isFr ? profile.labelFr : profile.labelEn}
+            </option>
+          ))}
+          <option value="custom">{copy.custom}</option>
+        </select>
+      </label>
+
+      <div class="ipc-checks">
+        <label><input type="checkbox" name="isMicro" checked={INVOICE_PLATFORM_COST_DEFAULTS.isMicro} /> <span>{copy.micro}</span></label>
+        <label><input type="checkbox" name="isNewBusiness" checked={INVOICE_PLATFORM_COST_DEFAULTS.isNewBusiness} /> <span>{copy.newBusiness}</span></label>
+        <label><input type="checkbox" name="apiRequired" checked={INVOICE_PLATFORM_COST_DEFAULTS.apiRequired} /> <span>{copy.api}</span></label>
+      </div>
+
+      <div class="ipc-number-grid">
+        <label class="ipc-field"><span>{copy.employees}</span><input type="number" name="employees" min="0" max="100000" step="1" value={INVOICE_PLATFORM_COST_DEFAULTS.employees} inputmode="numeric" /></label>
+        <label class="ipc-field"><span>{copy.users}</span><input type="number" name="users" min="1" max="100000" step="1" value={INVOICE_PLATFORM_COST_DEFAULTS.users} inputmode="numeric" /></label>
+        <label class="ipc-field"><span>{copy.clients}</span><input type="number" name="activeClients" min="0" max="10000000" step="1" value={INVOICE_PLATFORM_COST_DEFAULTS.activeClients} inputmode="numeric" /></label>
+        <label class="ipc-field"><span>{copy.flows}</span><input type="number" name="monthlyFlows" min="0" max="100000000" step="1" value={INVOICE_PLATFORM_COST_DEFAULTS.monthlyFlows} inputmode="numeric" /></label>
+        <label class="ipc-field ipc-field--wide"><span>{copy.received}</span><input type="number" name="monthlyReceived" min="0" max="100000000" step="1" value={INVOICE_PLATFORM_COST_DEFAULTS.monthlyReceived} inputmode="numeric" /></label>
+      </div>
+
+      <p class="ipc-snapshot">{copy.snapshot} · v{INVOICE_PLATFORM_COST_MODEL_VERSION}</p>
+    </form>
+
+    <section class="ipc-results" aria-labelledby={`${id}-results`}>
+      <div class="ipc-results-head">
+        <h3 id={`${id}-results`}>{copy.results}</h3>
+        <span data-summary>{INVOICE_PLATFORM_COST_DEFAULTS.monthlyFlows} {isFr ? 'flux/mois' : 'flows/month'}</span>
+      </div>
+      <div class="ipc-card-list" data-results aria-live="polite">
+        {initialResults.map((result) => (
+          <article class:list={['ipc-card', result.status === 'unknown' && 'is-unknown']} data-provider={result.id} data-cost={result.cost36mEur ?? ''}>
+            <div class="ipc-card-main">
+              <div class="ipc-card-title">
+                <h4>{result.name}</h4>
+                <span data-result-status>{result.status === 'calculated' ? copy.calculated : copy.unknown}</span>
+              </div>
+              <p data-model>{isFr ? result.modelFr : result.modelEn}</p>
+              <p class="ipc-result-note" data-note>{isFr ? result.noteFr : result.noteEn}</p>
+              <a href={result.sourceUrl} data-source>{copy.source}</a>
+            </div>
+            <div class="ipc-price">
+              <strong data-cost-value>{result.cost36mEur == null ? copy.unknownCost : currency.format(result.cost36mEur)}</strong>
+              <small data-monthly>{result.monthlyEquivalentEur == null ? '' : `${currency.format(result.monthlyEquivalentEur)} ${isFr ? '/ mois' : '/ month'}`}</small>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="ipc-disclaimer">{copy.noRanking}</p>
+    </section>
+  </div>
+
+  <div class="ipc-details">
+    <details>
+      <summary>{copy.method}</summary>
+      <p><code>{INVOICE_PLATFORM_COST_FORMULA}</code></p>
+      <ul>{limits.map((item) => <li>{item}</li>)}</ul>
+    </details>
+    <details>
+      <summary>{copy.offers}</summary>
+      <ol>
+        {INVOICE_PLATFORM_PUBLIC_OFFERS.map((offer) => (
+          <li><a href={offer.sourceUrl}>{offer.name}</a><span>{isFr ? offer.scopeFr : offer.scopeEn}</span></li>
+        ))}
+      </ol>
+    </details>
+  </div>
+
+  <footer class="ipc-links">
+    {isFull
+      ? <a href={isFr ? '/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/' : '/en/analysis/the-great-e-invoicing-toll-3-the-price-of-free/'}>{copy.backArticle}</a>
+      : <a href={isFr ? '/outils/cout-plateforme-facturation-electronique/' : '/en/tools/e-invoicing-platform-cost/'}>{copy.openFull}</a>}
+    <a href="/outils/cout-plateforme-facturation-electronique/model.json">model.json</a>
+  </footer>
+</section>
+
+<script>
+  import {
+    INVOICE_PLATFORM_COST_PROFILES,
+    calculateInvoicePlatformCosts,
+    normalizeInvoicePlatformCostInputs,
+  } from '../lib/invoice-platform-cost-model.ts';
+
+  const initialiseInvoicePlatformCostTools = () => {
+    document.querySelectorAll<HTMLElement>('[data-invoice-platform-cost]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const form = root.querySelector<HTMLFormElement>('form');
+      const resultList = root.querySelector<HTMLElement>('[data-results]');
+      if (!form || !resultList) return;
+
+      const currency = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+      const copy = lang === 'fr'
+        ? {
+            calculated: 'calcul public',
+            unknown: 'à confirmer',
+            unknownCost: 'Tarif non calculable',
+            perMonth: '/ mois',
+            flows: 'flux/mois',
+          }
+        : {
+            calculated: 'public calculation',
+            unknown: 'confirmation required',
+            unknownCost: 'Price cannot be calculated',
+            perMonth: '/ month',
+            flows: 'flows/month',
+          };
+
+      const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | null;
+      const number = (name: string) => Number((field(name) as HTMLInputElement | null)?.value);
+      const checked = (name: string) => Boolean((field(name) as HTMLInputElement | null)?.checked);
+
+      const read = () => normalizeInvoicePlatformCostInputs({
+        profileId: String((field('profileId') as HTMLSelectElement | null)?.value ?? 'custom'),
+        isMicro: checked('isMicro'),
+        isNewBusiness: checked('isNewBusiness'),
+        employees: number('employees'),
+        users: number('users'),
+        activeClients: number('activeClients'),
+        monthlyFlows: number('monthlyFlows'),
+        monthlyReceived: number('monthlyReceived'),
+        apiRequired: checked('apiRequired'),
+      });
+
+      const setInput = (name: string, value: number | boolean | string) => {
+        const target = field(name);
+        if (!target) return;
+        if (target instanceof HTMLInputElement && target.type === 'checkbox') {
+          target.checked = Boolean(value);
+        } else {
+          target.value = String(value);
+        }
+      };
+
+      const update = () => {
+        const inputs = read();
+        setInput('monthlyReceived', inputs.monthlyReceived);
+        const results = calculateInvoicePlatformCosts(inputs);
+        const cards = new Map(
+          Array.from(resultList.querySelectorAll<HTMLElement>('[data-provider]'))
+            .map((card) => [card.dataset.provider ?? '', card]),
+        );
+
+        results.forEach((result) => {
+          const card = cards.get(result.id);
+          if (!card) return;
+          card.classList.toggle('is-unknown', result.status !== 'calculated');
+          card.dataset.cost = result.cost36mEur == null ? '' : String(result.cost36mEur);
+
+          const status = card.querySelector<HTMLElement>('[data-result-status]');
+          const cost = card.querySelector<HTMLElement>('[data-cost-value]');
+          const monthly = card.querySelector<HTMLElement>('[data-monthly]');
+          const note = card.querySelector<HTMLElement>('[data-note]');
+          const model = card.querySelector<HTMLElement>('[data-model]');
+
+          if (status) status.textContent = result.status === 'calculated' ? copy.calculated : copy.unknown;
+          if (cost) cost.textContent = result.cost36mEur == null ? copy.unknownCost : currency.format(result.cost36mEur);
+          if (monthly) monthly.textContent = result.monthlyEquivalentEur == null ? '' : `${currency.format(result.monthlyEquivalentEur)} ${copy.perMonth}`;
+          if (note) note.textContent = lang === 'fr' ? result.noteFr : result.noteEn;
+          if (model) model.textContent = lang === 'fr' ? result.modelFr : result.modelEn;
+          resultList.append(card);
+        });
+
+        const summary = root.querySelector<HTMLElement>('[data-summary]');
+        if (summary) summary.textContent = `${inputs.monthlyFlows} ${copy.flows}`;
+      };
+
+      const profile = field('profileId') as HTMLSelectElement | null;
+      form.addEventListener('submit', (event) => event.preventDefault());
+      profile?.addEventListener('change', () => {
+        const selected = INVOICE_PLATFORM_COST_PROFILES.find((item) => item.id === profile.value);
+        if (selected) {
+          Object.entries(selected.inputs).forEach(([name, value]) => setInput(name, value));
+          setInput('profileId', selected.id);
+        }
+        update();
+      });
+
+      form.addEventListener('input', (event) => {
+        const target = event.target as HTMLInputElement | HTMLSelectElement | null;
+        if (target?.name !== 'profileId') setInput('profileId', 'custom');
+        update();
+      });
+
+      update();
+    });
+  };
+
+  initialiseInvoicePlatformCostTools();
+  document.addEventListener('astro:page-load', initialiseInvoicePlatformCostTools);
+</script>
+
+<style>
+  .ipc-tool { --ipc-accent: #5eead4; --ipc-warn: #f5b13d; min-width: 0; max-width: 100%; overflow: hidden; margin: 1.4rem 0 1.8rem; border: 1px solid color-mix(in srgb, var(--ipc-accent) 32%, var(--color-line)); border-radius: 16px 4px 16px 16px; padding: clamp(0.9rem, 3vw, 1.35rem); background: radial-gradient(115% 120% at 0 0, color-mix(in srgb, var(--ipc-accent) 8%, transparent), transparent 65%), color-mix(in srgb, var(--color-surface) 94%, #080b10); box-shadow: var(--shadow-elevated); }
+  .ipc-head { display: grid; gap: 0.8rem; min-width: 0; }
+  .ipc-eyebrow, .ipc-badge, h3, .ipc-links a, .ipc-card-title span, .ipc-snapshot { font-family: var(--font-mono); }
+  .ipc-eyebrow { margin: 0; color: var(--ipc-accent); font-size: 0.64rem; font-weight: 750; letter-spacing: 0.1em; }
+  .ipc-head h2 { margin: 0.35rem 0 0; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.3rem, 3.5vw, 1.8rem); line-height: 1.12; overflow-wrap: anywhere; }
+  .ipc-head div > p:last-child { max-width: 52rem; margin: 0.55rem 0 0; color: var(--color-muted); font-size: 0.82rem; line-height: 1.6; }
+  .ipc-badge { align-self: start; justify-self: start; border: 1px solid color-mix(in srgb, var(--ipc-accent) 45%, transparent); border-radius: 999px; padding: 0.35rem 0.55rem; color: var(--ipc-accent); font-size: 0.58rem; white-space: nowrap; }
+  .ipc-grid { display: grid; gap: 0.8rem; margin-top: 1rem; min-width: 0; }
+  .ipc-controls, .ipc-results { min-width: 0; max-width: 100%; border: 1px solid var(--color-line); border-radius: 11px; padding: 0.9rem; background: color-mix(in srgb, var(--color-bg) 58%, transparent); }
+  h3 { margin: 0; color: var(--color-paper); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ipc-field { display: grid; gap: 0.35rem; min-width: 0; }
+  .ipc-field span { color: var(--color-paper); font-size: 0.68rem; line-height: 1.35; }
+  .ipc-field--wide { grid-column: 1 / -1; }
+  select, input[type='number'] { width: 100%; min-width: 0; max-width: 100%; border: 1px solid var(--color-line); border-radius: 7px; padding: 0.5rem 0.55rem; background: var(--color-bg); color: var(--color-bright); font-family: var(--font-mono); font-size: 0.68rem; }
+  .ipc-number-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .ipc-checks { display: grid; gap: 0.5rem; margin-top: 0.8rem; border: 1px dashed var(--color-line); border-radius: 8px; padding: 0.65rem; }
+  .ipc-checks label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.5rem; align-items: start; color: var(--color-muted); font-size: 0.66rem; line-height: 1.4; }
+  input[type='checkbox'] { margin-top: 0.1rem; accent-color: var(--ipc-accent); }
+  input:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--ipc-accent); outline-offset: 2px; }
+  .ipc-snapshot { margin: 0.75rem 0 0; color: var(--color-muted); font-size: 0.58rem; }
+  .ipc-results-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; align-items: center; }
+  .ipc-results-head span { color: var(--ipc-accent); font-family: var(--font-mono); font-size: 0.62rem; }
+  .ipc-card-list { display: grid; gap: 0.55rem; margin-top: 0.75rem; min-width: 0; }
+  .ipc-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.65rem; min-width: 0; border: 1px solid color-mix(in srgb, var(--ipc-accent) 30%, var(--color-line)); border-radius: 9px; padding: 0.75rem; background: color-mix(in srgb, var(--ipc-accent) 4%, var(--color-bg)); }
+  .ipc-card.is-unknown { border-color: color-mix(in srgb, var(--ipc-warn) 35%, var(--color-line)); }
+  .ipc-card-main { min-width: 0; }
+  .ipc-card-title { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.35rem 0.7rem; }
+  .ipc-card-title h4 { min-width: 0; margin: 0; color: var(--color-bright); font-size: 0.78rem; overflow-wrap: anywhere; }
+  .ipc-card-title span { color: var(--ipc-accent); font-size: 0.55rem; text-transform: uppercase; }
+  .ipc-card.is-unknown .ipc-card-title span { color: var(--ipc-warn); }
+  .ipc-card-main > p { margin: 0.35rem 0 0; color: var(--color-muted); font-size: 0.62rem; line-height: 1.45; overflow-wrap: anywhere; }
+  .ipc-card-main .ipc-result-note { color: var(--color-paper); }
+  .ipc-card-main a { display: inline-block; max-width: 100%; margin-top: 0.35rem; color: var(--ipc-accent); font-family: var(--font-mono); font-size: 0.56rem; overflow-wrap: anywhere; }
+  .ipc-price { min-width: 0; border-top: 1px dashed var(--color-line); padding-top: 0.55rem; }
+  .ipc-price strong { display: block; color: var(--ipc-accent); font-family: var(--font-mono); font-size: 1rem; line-height: 1.2; overflow-wrap: anywhere; }
+  .ipc-card.is-unknown .ipc-price strong { color: var(--ipc-warn); font-size: 0.76rem; }
+  .ipc-price small { display: block; margin-top: 0.2rem; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.58rem; }
+  .ipc-disclaimer { margin: 0.8rem 0 0; border-left: 2px solid var(--ipc-warn); padding-left: 0.6rem; color: var(--color-muted); font-size: 0.64rem; line-height: 1.5; }
+  .ipc-details { display: grid; gap: 0.5rem; margin-top: 0.8rem; min-width: 0; }
+  .ipc-details details { min-width: 0; border: 1px solid var(--color-line); border-radius: 8px; padding: 0.65rem 0.75rem; }
+  .ipc-details summary { color: var(--color-paper); font-family: var(--font-mono); font-size: 0.65rem; cursor: pointer; }
+  .ipc-details p, .ipc-details li { color: var(--color-muted); font-size: 0.64rem; line-height: 1.55; overflow-wrap: anywhere; }
+  .ipc-details code { color: var(--ipc-accent); white-space: normal; overflow-wrap: anywhere; }
+  .ipc-details ul, .ipc-details ol { padding-left: 1.1rem; }
+  .ipc-details li + li { margin-top: 0.45rem; }
+  .ipc-details li a { color: var(--color-paper); overflow-wrap: anywhere; }
+  .ipc-details li span { display: block; }
+  .ipc-links { display: flex; flex-wrap: wrap; gap: 0.7rem 1rem; margin-top: 0.8rem; }
+  .ipc-links a { max-width: 100%; color: var(--ipc-accent); font-size: 0.63rem; overflow-wrap: anywhere; text-decoration: none; }
+  @media (min-width: 620px) {
+    .ipc-card { grid-template-columns: minmax(0, 1fr) minmax(8.5rem, auto); align-items: center; }
+    .ipc-price { border-top: 0; border-left: 1px dashed var(--color-line); padding: 0 0 0 0.75rem; text-align: right; }
+  }
+  @media (min-width: 760px) {
+    .ipc-head { grid-template-columns: minmax(0, 1fr) auto; }
+    .ipc-grid { grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr); align-items: start; }
+    .ipc-controls { position: sticky; top: 1rem; }
+    .ipc-details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ipc-tool--full { padding: 1.35rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+</style>

@@ -1,0 +1,441 @@
+---
+title: "Le grand péage de la facture, 3/5 : le prix du gratuit"
+seoTitle: "Facture électronique : ce que valent les offres à 0 € | l0g"
+ogTitle: "Le prix du gratuit"
+description: "Des plateformes agréées proposent réellement la facture électronique à 0 €. l0g a audité 19 offres pour comprendre les quotas, les produits d’appel et le coût de sortie."
+pubDate: 2026-08-22T10:51:11+02:00
+updatedDate: 2026-08-22T10:51:11+02:00
+tags: ["facturation électronique", "plateformes agréées", "prix", "TPE", "logiciels", "banques", "comptabilité", "freemium", "DGFiP", "enquête"]
+draft: false
+quickTake:
+  fact: "Dans un échantillon de 19 offres officielles consultées au 22 août 2026, l0g compte 13 entrées à 0 € non ambiguës selon une règle conservatrice. Dext reste un cas limite exclu du décompte."
+  importance: "La conformité peut réellement ne rien coûter directement. Le prix économique se déplace alors vers les utilisateurs, le volume, l’API, le logiciel, la banque, les paiements ou la sortie."
+  uncertainty: "Plusieurs acteurs ne publient ni le prix des dépassements, ni le coût autonome de leur plateforme, ni les conditions complètes de migration. Le coût total exige encore des devis et des tests clients."
+---
+
+import InvoicePlatformCostCalculator from '../../components/InvoicePlatformCostCalculator.astro';
+
+*Dans la réforme française de la facture électronique, le prix affiché à 0 € recouvre plusieurs réalités commerciales.*
+
+*Plusieurs opérateurs affichent explicitement 0 €. Qonto affirme proposer une facturation conforme, gratuite et illimitée sans imposer l’ouverture d’un compte professionnel. Dougs affiche un service à 0 €, sans limite de volume ni obligation d’achat. Indy, Abby et Tiime annoncent eux aussi un socle réglementaire gratuit. Le retrait du portail public n’oblige donc pas mécaniquement chaque entreprise à verser un abonnement à une plateforme privée.*
+
+*Le même zéro peut pourtant désigner des produits radicalement différents. Chez Pennylane, il est réservé aux micro-entreprises, à un utilisateur et à 1 200 factures par an. Chez B2BRouter, il couvre 24 transactions annuelles, factures reçues et déclarations fiscales comprises. Chez Shine Facture, les devis et factures ordinaires sont illimités mais la formule gratuite s’arrête à cinq clients. Sa FAQ annonce l’émission et la réception électroniques dans toutes les offres, tandis que la grille marque encore l’émission comme « à venir » pour Free. Chez Kolecto, le zéro est une offre de première année destinée aux créateurs. Ailleurs, la plateforme est « incluse » dans un logiciel, un compte ou un abonnement déjà payé.*
+
+Après [le portail public amputé](/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/) et [les 147 façades du registre de Bercy](/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/), ce troisième volet ouvre les grilles tarifaires. Il ne cherche pas la plateforme la moins chère. Il examine le périmètre du mot **gratuit**, ses exclusions et le seuil à partir duquel le zéro disparaît.
+
+## À retenir
+
+- Bercy n’a pas attribué un marché public à une liste fermée de prestataires. Les opérateurs candidatent, sont immatriculés après vérifications et tests, puis chaque entreprise choisit sa plateforme.
+- Dans l’échantillon de 19 offres publiques examiné par l0g, 13 présentent une entrée à 0 € non ambiguë selon une règle de comptage conservatrice. Dext reste hors décompte faute de périmètre autonome gratuit assez explicite sur l’e-reporting.
+- Une offre gratuite peut être autonome, réservée à un statut, limitée par un quota, financée par des services adjacents ou temporaire.
+- « Inclus sans surcoût » ne signifie pas « sans coût » lorsque le logiciel, le compte ou le cabinet est déjà payé.
+- Les prix publics permettent de calculer certains profils. Ils laissent souvent inconnus l’API, le multi-entités, l’intégration, le support ou les dépassements.
+- Le changement technique de plateforme est encadré depuis juillet 2026. Il ne résilie pas automatiquement le contrat commercial.
+- Les cas de forfaits à 1 700 € et d’abonnements bancaires à 30 € par mois apparaissent dans une question parlementaire. Ils restent des allégations à documenter, pas des faits généralisables.
+
+## Le choix de la plateforme reste celui de l’entreprise
+
+Une confusion brouille le débat avant même d’aborder les prix.
+
+L’État a choisi une architecture dans laquelle les factures passent par des opérateurs privés agréés. Il n’a pas choisi, par appel d’offres, la société que chaque artisan, indépendant ou PME devra payer.
+
+La [DGFiP décrit la procédure](https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees) comme une immatriculation. Un opérateur dépose un dossier, apporte des garanties et démontre sa capacité à assurer les fonctions réglementaires. L’immatriculation vaut trois ans et peut être retirée en cas de manquements répétés. La [publication officielle de janvier 2026](https://www.impots.gouv.fr/actualite/facturation-electronique-publication-de-la-liste-des-plateformes-agreees) ajoute que les plateformes de la liste principale ont satisfait aux exigences réglementaires, aux tests techniques et aux tests d’interopérabilité.
+
+Le fournisseur final reste un choix de gestion de l’entreprise. Dans une [réponse publiée par le Sénat le 6 août 2026](https://www.senat.fr/questions/base/2026/qSEQ260508821.html), le Gouvernement indique que ce choix dépend notamment des volumes, de la clientèle et du budget.
+
+Une entreprise est contrainte d’entrer dans le système, pas d’acheter une marque précise. La concurrence existe donc sur le papier. Sa qualité dépend ensuite de la lisibilité des offres, de la possibilité réelle de changer et de la capacité du client à comparer autre chose que des slogans.
+
+## Comment l0g a compté le zéro
+
+Cette enquête s’appuie sur une photographie arrêtée au **22 août 2026**.
+
+l0g a retenu 19 acteurs présents dans la liste principale de la DGFiP et représentant plusieurs familles : outils pour indépendants, logiciels de gestion, acteurs comptables, plateformes techniques, groupes bancaires et offres pour PME. L’échantillon n’est pas le marché entier. Il sert à tester la diversité des modèles commerciaux à partir de pages officielles accessibles publiquement.
+
+Une entrée a été comptée à 0 € lorsque la page officielle de l’opérateur affichait explicitement un plan gratuit ou un prix nul pouvant donner accès au circuit réglementaire, même si cette gratuité était limitée par un statut, un volume ou une période.
+
+Trois exclusions évitent de gonfler artificiellement le résultat :
+
+- une plateforme « incluse sans surcoût » dans un logiciel payant n’est pas comptée comme une offre autonome à zéro ;
+- un simple éditeur de factures gratuit n’est pas compté lorsque la page ne permet pas d’établir clairement que le service réglementaire complet est inclus ;
+- un essai gratuit n’est pas une offre gratuite durable.
+
+Avec cette règle, **13 des 19 pages examinées présentent une entrée à 0 € non ambiguë**. Les treize sont Qonto Facturation, Indy, Abby, Dougs Facturation, Tiime, Pennylane, SUPER PDP, B2BRouter, VosFactures, macompta.fr, Shine Facture, Kolecto et Odoo. Ce chiffre ne signifie pas que ces offres sont équivalentes. Il mesure uniquement la présence d’une porte d’entrée sans prix direct affiché.
+
+Les montants cités dans cet article sont hors taxes. Ils proviennent des pages commerciales des opérateurs et leur sont attribués. l0g n’a pas simulé une souscription complète auprès de chacun, ni audité les contrats obtenus après identification. Lorsqu’une information manque, elle reste inconnue.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 900" width="100%" role="img" aria-labelledby="free-models-title free-models-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="free-models-title">Six manières d’écrire zéro euro</title>
+<desc id="free-models-desc">Les offres gratuites peuvent être autonomes, réservées à un statut, limitées par un petit quota, gratuites jusqu’à un seuil élevé, limitées par un autre usage ou incluses dans un produit payé.</desc>
+<rect x="1" y="1" width="718" height="898" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">SIX MANIÈRES D’ÉCRIRE 0 €</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Le prix d’entrée ne décrit ni le périmètre, ni la durée, ni la sortie.</text>
+<rect x="30" y="106" width="320" height="190" rx="14" fill="#10211f" stroke="#5eead4"/>
+<text x="52" y="136" fill="#5eead4" font-size="13" font-weight="700">1. ZÉRO AUTONOME</text>
+<text x="52" y="168" fill="#f5f6f8" font-size="14">Le socle réglementaire est affiché</text>
+<text x="52" y="191" fill="#f5f6f8" font-size="14">à 0 €, parfois sans compte requis.</text>
+<text x="52" y="226" fill="#aeb4bf" font-size="12">Exemples publics :</text>
+<text x="52" y="248" fill="#aeb4bf" font-size="12">Qonto, Dougs, Indy, Abby, Tiime</text>
+<text x="52" y="272" fill="#f5b13d" font-size="11">À vérifier : utilisateurs, API, support.</text>
+<rect x="370" y="106" width="320" height="190" rx="14" fill="#151a23" stroke="#7aa2f7"/>
+<text x="392" y="136" fill="#7aa2f7" font-size="13" font-weight="700">2. STATUT RÉSERVÉ</text>
+<text x="392" y="168" fill="#f5f6f8" font-size="14">Le zéro dépend de la forme</text>
+<text x="392" y="191" fill="#f5f6f8" font-size="14">ou du régime de l’entreprise.</text>
+<text x="392" y="226" fill="#aeb4bf" font-size="12">Pennylane :</text>
+<text x="392" y="248" fill="#aeb4bf" font-size="12">micro, 1 utilisateur, 1 200/an</text>
+<text x="392" y="272" fill="#f5b13d" font-size="11">La croissance peut changer de plan.</text>
+<rect x="30" y="318" width="320" height="190" rx="14" fill="#211713" stroke="#f5b13d"/>
+<text x="52" y="348" fill="#f5b13d" font-size="13" font-weight="700">3. PETIT QUOTA</text>
+<text x="52" y="380" fill="#f5f6f8" font-size="14">Le plan gratuit existe, mais</text>
+<text x="52" y="403" fill="#f5f6f8" font-size="14">une activité normale le dépasse vite.</text>
+<text x="52" y="438" fill="#aeb4bf" font-size="12">B2BRouter : 24 transactions/an</text>
+<text x="52" y="460" fill="#aeb4bf" font-size="12">VosFactures : 3 documents/mois</text>
+<text x="52" y="484" fill="#f5b13d" font-size="11">Le mot facturable doit être défini.</text>
+<rect x="370" y="318" width="320" height="190" rx="14" fill="#111d25" stroke="#33b5e5"/>
+<text x="392" y="348" fill="#33b5e5" font-size="13" font-weight="700">4. SEUIL ÉLEVÉ</text>
+<text x="392" y="380" fill="#f5f6f8" font-size="14">Le zéro couvre un vrai volume,</text>
+<text x="392" y="403" fill="#f5f6f8" font-size="14">puis le tarif devient proportionnel.</text>
+<text x="392" y="438" fill="#aeb4bf" font-size="12">SUPER PDP : 1 000/mois</text>
+<text x="392" y="460" fill="#aeb4bf" font-size="12">macompta.fr : 20/mois hors abonnement</text>
+<text x="392" y="484" fill="#f5b13d" font-size="11">Le dépassement doit être simulé.</text>
+<rect x="30" y="530" width="320" height="190" rx="14" fill="#19151f" stroke="#c084fc"/>
+<text x="52" y="560" fill="#c084fc" font-size="13" font-weight="700">5. USAGE LIMITÉ</text>
+<text x="52" y="592" fill="#f5f6f8" font-size="14">La limite porte ailleurs que sur</text>
+<text x="52" y="615" fill="#f5f6f8" font-size="14">le nombre de factures.</text>
+<text x="52" y="650" fill="#aeb4bf" font-size="12">Shine Facture :</text>
+<text x="52" y="672" fill="#aeb4bf" font-size="12">factures annoncées illimitées, 5 clients</text>
+<text x="52" y="696" fill="#f5b13d" font-size="11">Le bon compteur n’est pas toujours visible.</text>
+<rect x="370" y="530" width="320" height="190" rx="14" fill="#211317" stroke="#ff4d87"/>
+<text x="392" y="560" fill="#ff8fb0" font-size="13" font-weight="700">6. BUNDLE OU PROMOTION</text>
+<text x="392" y="592" fill="#f5f6f8" font-size="14">La PA est incluse dans un produit</text>
+<text x="392" y="615" fill="#f5f6f8" font-size="14">payé, ou gratuite pendant un temps.</text>
+<text x="392" y="650" fill="#aeb4bf" font-size="12">Sage, Cegid, Dext : inclus</text>
+<text x="392" y="672" fill="#aeb4bf" font-size="12">Kolecto : première année créateur</text>
+<text x="392" y="696" fill="#f5b13d" font-size="11">Sans surcoût ne signifie pas sans coût.</text>
+<rect x="30" y="756" width="660" height="104" rx="13" fill="#111720" stroke="#3a4049"/>
+<text x="52" y="788" fill="#8b909b" font-size="12" font-weight="700">RÉSULTAT DE L’AUDIT PUBLIC</text>
+<text x="52" y="820" fill="#f5f6f8" font-size="15">13 SUR 19 : ENTRÉE À 0 € NON AMBIGUË.</text>
+<text x="52" y="846" fill="#d6d9df" font-size="12">Le périmètre du zéro compte davantage que sa présence dans le titre.</text>
+<text x="32" y="884" fill="#737985" font-size="9">SOURCES : grilles officielles des opérateurs, photographie l0g au 22 août 2026.</text>
+</svg>
+<figcaption>Le zéro est un prix d’entrée, pas une catégorie homogène. Les exemples sont attribués aux pages tarifaires officielles des opérateurs et ne constituent pas un classement.</figcaption>
+</figure>
+
+## Cinq offres autonomes à zéro euro
+
+Cinq pages officielles affichent un socle gratuit relativement large.
+
+[Qonto Facturation](https://qonto.com/fr/invoicing/free-software) affiche un outil à 0 €, sans carte bancaire ni compte bancaire requis. La page annonce des devis et factures illimités, la réception des factures fournisseurs, la centralisation des pièces et la synchronisation de comptes externes. Le compte professionnel reste un produit distinct, proposé à partir de 9 € par mois sur la grille consultée.
+
+[Dougs Facturation](https://www.dougs.fr/logiciel-facturation-gratuit/) va encore plus loin dans sa formulation : 0 € HT par mois, aucune limite de volume et aucune obligation d’achat. Le cabinet présente la plateforme agréée et l’e-reporting comme inclus dans ce pack. L’expertise comptable payante constitue le produit adjacent.
+
+[Indy](https://www.indy.fr/prix/) inscrit la facturation électronique, les devis et factures illimités dans son offre Essentiel à 0 €. Ses plans payants ajoutent notamment les relances, certaines déclarations, l’accompagnement et des fonctions comptables. Le compte professionnel est présenté comme optionnel.
+
+[Abby](https://abby.fr/tarifs/) place la facturation électronique dans son plan Basique gratuit, aux côtés des devis, factures, livres de recettes et alertes de seuils. L’éditeur présente l’émission, la réception et l’e-reporting comme inclus sans surcoût dans ce plan. Les fonctions bancaires, la TVA, les relances, le multi-utilisateur ou les stocks appartiennent aux niveaux supérieurs.
+
+[Tiime](https://www.tiime.fr/facturation-electronique) annonce également une plateforme gratuite, sans engagement, couvrant émission, réception et e-reporting. L’éditeur affirme que cette gratuité sera maintenue. Ses autres produits portent sur le compte professionnel, la comptabilité et la collaboration avec les cabinets.
+
+Ces pages ne permettent pas de préjuger de la qualité du service au 1er septembre. Elles établissent un point plus limité : **le coût direct de conformité peut réellement être nul**.
+
+L’analyse doit rester symétrique. Le gratuit n’est pas suspect par nature. Un acteur peut financer une brique réglementaire peu coûteuse à grande échelle grâce à des services optionnels plus rentables. Il peut aussi chercher à gagner une relation client avant ses concurrents. Ces deux motivations sont ordinaires dans le logiciel.
+
+La particularité vient de l’origine de la demande. Ici, le produit d’appel répond à une obligation légale touchant plusieurs millions d’entreprises. Le zéro peut donc réduire fortement le coût d’acquisition d’un client.
+
+## Le compteur caché derrière le zéro
+
+Le prix change souvent moins à cause de la facture électronique elle-même qu’à cause de l’unité choisie pour la mesurer.
+
+[Pennylane](https://www.pennylane.com/fr/facture-electronique-gratuite) limite son offre gratuite aux micro-entreprises, à un utilisateur et à 1 200 factures par an. La restriction est claire. Une activité qui change de statut ou ajoute un utilisateur sort du périmètre, même si son volume reste faible.
+
+[B2BRouter](https://www.b2brouter.net/fr/tarifs/) propose un plan Basic à 0 € à vie. Il couvre un utilisateur, dix contacts et 24 transactions annuelles. Le mot transaction est ici déterminant : il comprend les factures émises, les factures reçues et les déclarations fiscales. Deux factures fournisseurs par mois peuvent donc consommer le quota annuel sans qu’aucune facture client ne soit créée.
+
+[VosFactures](https://vosfactures.fr/tarifs) réserve son plan Micro gratuit à trois documents mensuels. Le plan Basique à 5 € par mois rend les documents illimités. Les niveaux suivants ajoutent davantage d’utilisateurs et de fonctions.
+
+[SUPER PDP](https://www.superpdp.tech/tarifs/) choisit le modèle inverse. Son compte en ligne est gratuit jusqu’à 1 000 factures par mois. L’API est ensuite tarifée à 0,01 €, 0,005 € ou 0,0025 € par facture selon le volume, avec 2 € pour la vérification KYC ou KYB et un minimum annuel de 10 €. La plateforme précise qu’au-delà de 1 000 factures mensuelles, le compte bascule vers la tarification API.
+
+[macompta.fr](https://www.macompta.fr/facturation-electronique) offre jusqu’à 20 flux mensuels à un non-abonné. Les paliers publics montent ensuite à 5, 10, 15 puis 20 € par mois jusqu’à 500 flux. Pour les abonnés à ses logiciels de comptabilité ou de facturation, la PA est incluse jusqu’à 250 factures mensuelles. Les [conditions de service](https://www.macompta.fr/conditions-generales-de-services) précisent qu’un flux d’e-reporting compte comme une facture et que chaque facture émise ou reçue est comptabilisée, quel que soit son statut.
+
+[Shine Facture](https://www.shine.fr/tarifs-shine-facture/) déplace la limite vers la clientèle. Le plan Free coûte 0 € et limite la base à cinq clients. La FAQ indique que réception et émission électroniques sont incluses sans surcoût dans toutes les offres. La grille détaillée marque pourtant encore l’émission électronique « à venir » pour Free au 22 août. l0g retient donc l’entrée gratuite, mais signale que la date d’activation de cette fonction doit être confirmée. Le plan Start revient à 9 € par mois en paiement annuel, ou 11 € en paiement mensuel. Le plan Plus revient à 20 € par mois en paiement annuel, ou 25 € en paiement mensuel, et ajoute un second accès.
+
+[Kolecto](https://www.kolecto.fr/tarifs) réserve son offre à 0 € aux douze premiers mois de certaines entreprises nouvellement créées. La grille normale dépend ensuite de l’effectif : 12 €, 39 € ou 99 € mensuels, avec des quotas annuels de factures et des modules complémentaires. Le mot gratuit décrit ici une période d’acquisition, pas le coût stabilisé de l’entreprise.
+
+Le passage au payant dépend donc du compteur retenu.
+
+Cela peut être le nombre de documents, de transactions, de clients, d’utilisateurs, de sociétés, d’adresses, de factures reçues, de jours d’e-reporting ou d’applications activées.
+
+## Plateformes incluses : un prix fondu dans l’abonnement
+
+Une deuxième famille d’offres ne facture pas séparément la plateforme agréée. Le client paie déjà autre chose.
+
+[Sage](https://www.sage.com/fr-fr/dematerialisation/facture-electronique/sage-plateforme-de-dematerialisation-partenaire/) indique que l’usage de sa PA est intégré dans plusieurs abonnements, avec des plafonds propres à chaque produit. Au-delà, la facturation se fait à la consommation. La page renvoie toutefois au commercial pour le prix des dépassements. Une entreprise déjà cliente peut donc ne subir aucun surcoût immédiat tout en restant incapable de calculer publiquement sa facture future au-delà du quota.
+
+[Cegid](https://www.cegid.com/fr/blog/comment-inscrire-entreprise-annuaire-facture-electronique/) annonce l’accès à sa PA sans surcoût pour plusieurs solutions Cegid et EBP. l0g n’a pas trouvé de grille unifiée permettant de comparer les plafonds, dépassements et configurations sur l’ensemble de la gamme.
+
+[Dext](https://help.dext.com/fr/articles/692764-la-reforme-de-la-facture-electronique-avec-dext) annonce la PA dans les abonnements existants sans surcoût. Son [compte gratuit](https://dext.com/fr/produits/logiciel-facturation-gratuit) documente la création et l’envoi de factures conformes, et affirme assurer la conformité pour l’envoi comme pour la réception. La documentation PA précise toutefois que l’e-reporting « arrive prochainement » et ne dit pas explicitement si cette fonction sera comprise dans le compte autonome à 0 €. Dext pourrait donc être qualifié de quatorzième entrée gratuite, mais l0g l’exclut du décompte strict tant que ce périmètre n’est pas publié sans ambiguïté.
+
+[Axonaut](https://axonaut.com/content/logiciel-facture-electronique) présente la PA comme incluse dans son logiciel de gestion. Ici encore, le client achète une suite comprenant CRM, facturation, trésorerie et fonctions administratives. Le coût de la PA prise isolément n’existe pas réellement.
+
+Cette nuance n’est pas un reproche. Une intégration native peut être la solution la moins chère pour une entreprise déjà équipée. Elle réduit les connecteurs, la formation et les doubles saisies. Elle peut aussi rendre la comparaison plus difficile, car le prix réglementaire disparaît dans un ensemble plus large.
+
+À l’autre extrême, certaines grilles affichent franchement un abonnement.
+
+[Docaposte](https://www.docaposte.com/solutions/facture-electronique/logiciel-facture-electronique) publie 19 € HT par mois pour son offre Starter, avec 50 réceptions et un archivage probatoire annoncé sur dix ans. Le niveau Standard atteint 69 € pour 100 documents et ajoute notamment l’e-reporting. Le niveau Avancé est affiché à 149 €.
+
+[Sellsy](https://go.sellsy.com/offres) facture par utilisateur avec deux licences minimum. Au moment de la collecte, l’offre Standard Facturation bénéficiait d’une promotion à 29 € par utilisateur et par mois pour la première année, contre un tarif normal public de 39 €, avec engagement annuel. Cette promotion expire le 31 août 2026. Prolonger 29 € sur trois ans produirait donc un faux calcul.
+
+[Odoo](https://www.odoo.com/fr_FR/pricing) occupe une position particulière. Son plan « Une App Gratuite » permet d’utiliser une application avec des utilisateurs illimités. L’application Facturation annonce l’envoi et la réception illimités. Le zéro tient tant que l’entreprise reste dans cette seule application. L’ajout d’autres applications ou le besoin d’une API externe conduit vers les plans payants.
+
+## Un calculateur qui conserve les inconnues
+
+Comparer ces offres avec un unique prix mensuel serait trompeur. Le calculateur l0g applique les grilles publiques à un profil, sur 36 mois, et laisse vides les cases qu’une source ne permet pas de remplir.
+
+<InvoicePlatformCostCalculator lang="fr" mode="embed" />
+
+Le profil proposé par défaut est volontairement simple : une micro-entreprise, un utilisateur, cinq clients actifs, 12 factures émises et 20 reçues par mois, sans API.
+
+Avec ces hypothèses, plusieurs offres affichent un coût direct de 0 € sur trois ans. SUPER PDP ressort à 2 €, correspondant au contrôle KYC ou KYB publié. B2BRouter atteint 330 € sur trois ans parce que le quota de 24 transactions annuelles est dépassé. VosFactures et macompta.fr atteignent 180 € dans le modèle. Docaposte ressort à 684 €. Sellsy atteint 2 568 € parce que la grille impose au moins deux licences et que la promotion ne couvre que la première année.
+
+Ces montants ne permettent pas d’élire un gagnant.
+
+Une offre à 684 € peut comprendre un archivage probatoire et un accompagnement que l’offre à 0 € ne documente pas. Une solution intégrée peut supprimer plusieurs heures de saisie. Un outil gratuit peut suffire parfaitement à un indépendant. La comparaison quantitative sert seulement à révéler le fonctionnement de la grille.
+
+La mention **tarif non calculable** est aussi informative que les montants. Elle apparaît lorsqu’un profil exige une API non tarifée, dépasse un quota sans prix public, ajoute trop d’utilisateurs ou dépend d’un devis.
+
+Dans un marché réglementaire, l’inconnu ne devrait pas être la valeur par défaut.
+
+## Les composantes du coût total
+
+Le prix direct de la plateforme n’est que le premier étage du coût total.
+
+Pour l’écrire sans jargon, il s’agit du coût total de possession, souvent abrégé TCO. La formule de travail de l0g est la suivante :
+
+> **Coût total sur 36 mois = prix direct + volume + utilisateurs et entités + installation et intégration + archivage et support + produits nécessaires + frais de paiement + coût de sortie**
+
+### Le volume
+
+Une facture émise, une facture reçue, un avoir, un rejet ou une journée d’e-reporting peuvent être comptés différemment selon les opérateurs. Une entreprise doit donc reconstituer ses flux avec la définition commerciale de chaque grille, pas avec son seul nombre de factures clients.
+
+### Les utilisateurs et les sociétés
+
+Le deuxième accès, le comptable interne, une filiale ou un nouvel établissement peuvent déclencher un changement de plan. La tarification par utilisateur rend la facture sensible à l’organisation de l’entreprise, même lorsque le volume ne bouge pas.
+
+### L’intégration
+
+Une interface web gratuite peut être inutilisable pour une entreprise qui doit raccorder un ERP, une caisse, un logiciel métier ou plusieurs systèmes comptables. L’API, la sandbox, le connecteur et le projet d’intégration peuvent alors représenter l’essentiel de la dépense.
+
+### L’archivage
+
+Stocker un fichier, conserver une preuve et proposer un archivage à valeur probatoire ne décrivent pas le même service. La durée, la restitution et l’accès après résiliation doivent être comparés séparément.
+
+### Le support
+
+Un centre d’aide, un chat, un accompagnement de paramétrage et un engagement de disponibilité sont quatre niveaux différents. Le prix zéro peut couvrir le logiciel sans couvrir le temps humain nécessaire au démarrage.
+
+### Les services financiers
+
+Le bouton de paiement, le prélèvement, l’affacturage, le crédit ou le compte professionnel peuvent générer des commissions indépendantes du prix de la PA. Ces services sont optionnels dans plusieurs offres. Ils peuvent aussi constituer le cœur du modèle économique.
+
+### La sortie
+
+Le contrat, les exports, la reprise des pièces jointes et la reconstruction des connecteurs forment le dernier étage. Il est invisible au moment de l’inscription et peut devenir décisif trois ans plus tard.
+
+## Le modèle économique du socle réglementaire gratuit
+
+Les produits vendus autour du socle réglementaire éclairent le financement des offres gratuites.
+
+Qonto commercialise des comptes professionnels, des cartes, des paiements et des financements. Indy propose des déclarations, un compte professionnel, un accompagnement et un lien de paiement. Dougs vend de l’expertise comptable. Abby monétise la banque, la TVA, les relances, les stocks et le multi-utilisateur. Tiime travaille avec les cabinets et propose d’autres briques de gestion.
+
+Kolecto appartient au groupe Crédit Agricole et bénéficie de la distribution de ses réseaux. Dext s’insère dans le travail des cabinets comptables. Sage, Cegid, Odoo, Sellsy et Axonaut utilisent la conformité pour renforcer des suites logicielles plus larges.
+
+La facture électronique possède trois qualités commerciales rares.
+
+Elle est obligatoire. Elle revient chaque mois. Elle contient des données qui alimentent naturellement la comptabilité, la trésorerie, le paiement et le crédit.
+
+Offrir le transport réglementaire peut donc réduire le coût d’acquisition d’un client pour des produits plus rentables. Le modèle ressemble au freemium classique, mais la loi fournit ici le besoin initial.
+
+Aucune conclusion sur l’usage des données ne peut être tirée de cette logique économique. Elle ne prouve ni revente, ni scoring abusif, ni contrainte cachée. Ces questions exigent les contrats, politiques de confidentialité et consentements propres à chaque opérateur.
+
+L’enquête établit seulement l’incitation : **celui qui reçoit la facture se trouve au meilleur endroit pour vendre les services suivants**.
+
+## Le changement de plateforme possède désormais une horloge
+
+Le droit français a renforcé la mobilité en juillet 2026.
+
+L’[article 7 du décret du 27 juillet 2026](https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054499510) impose aux plateformes de mettre gratuitement et sans condition à disposition de leurs clients une documentation sur le changement de plateforme. L’entreprise peut demander à tout moment la modification de ses informations d’adressage dans l’annuaire.
+
+La procédure suit ensuite des délais précis.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="mobility-clock-title mobility-clock-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="mobility-clock-title">L’horloge réglementaire du changement de plateforme</title>
+<desc id="mobility-clock-desc">La nouvelle plateforme notifie l’ancienne sous deux jours ouvrables, l’ancienne dispose de cinq jours pour s’opposer sur la volonté du client, puis la nouvelle a quinze jours pour mettre à jour l’annuaire. Le contrat commercial reste séparé.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">CHANGER DE PA : L’HORLOGE DU DÉCRET</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Décret n° 2026-677 du 27 juillet 2026, article 7</text>
+<line x1="92" y1="134" x2="92" y2="566" stroke="#3a4049" stroke-width="4"/>
+<circle cx="92" cy="150" r="17" fill="#5eead4"/>
+<text x="92" y="155" text-anchor="middle" fill="#08110f" font-size="11" font-weight="700">0</text>
+<rect x="134" y="112" width="526" height="78" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="156" y="141" fill="#5eead4" font-size="12" font-weight="700">ACCORD FORMEL DU CLIENT</text>
+<text x="156" y="166" fill="#f5f6f8" font-size="13">La plateforme d’arrivée reçoit un accord daté et signé.</text>
+<circle cx="92" cy="258" r="17" fill="#7aa2f7"/>
+<text x="92" y="263" text-anchor="middle" fill="#0b1020" font-size="10" font-weight="700">2 j</text>
+<rect x="134" y="220" width="526" height="78" rx="11" fill="#151a23" stroke="#7aa2f7"/>
+<text x="156" y="249" fill="#7aa2f7" font-size="12" font-weight="700">SOUS DEUX JOURS OUVRABLES</text>
+<text x="156" y="274" fill="#f5f6f8" font-size="13">L’arrivée communique l’accord à la plateforme de départ.</text>
+<circle cx="92" cy="366" r="17" fill="#f5b13d"/>
+<text x="92" y="371" text-anchor="middle" fill="#1a1103" font-size="10" font-weight="700">5 j</text>
+<rect x="134" y="320" width="526" height="94" rx="11" fill="#211713" stroke="#f5b13d"/>
+<text x="156" y="349" fill="#f5b13d" font-size="12" font-weight="700">CINQ JOURS POUR S’OPPOSER</text>
+<text x="156" y="374" fill="#f5f6f8" font-size="13">L’opposition doit remettre en cause la volonté du client,</text>
+<text x="156" y="396" fill="#f5f6f8" font-size="13">par exemple avec un accord formel plus récent.</text>
+<circle cx="92" cy="488" r="19" fill="#ff4d87"/>
+<text x="92" y="493" text-anchor="middle" fill="#21070f" font-size="9" font-weight="700">15 j</text>
+<rect x="134" y="442" width="526" height="94" rx="11" fill="#211317" stroke="#ff4d87"/>
+<text x="156" y="471" fill="#ff8fb0" font-size="12" font-weight="700">QUINZE JOURS APRÈS L’ACCORD</text>
+<text x="156" y="496" fill="#f5f6f8" font-size="13">La plateforme d’arrivée met à jour l’annuaire</text>
+<text x="156" y="518" fill="#f5f6f8" font-size="13">et informe l’entreprise.</text>
+<rect x="30" y="590" width="318" height="118" rx="12" fill="#111720" stroke="#5eead4"/>
+<text x="52" y="620" fill="#5eead4" font-size="12" font-weight="700">CONTINUITÉ TECHNIQUE</text>
+<text x="52" y="648" fill="#f5f6f8" font-size="13">Services de statuts maintenus un an.</text>
+<text x="52" y="672" fill="#f5f6f8" font-size="13">Informations de continuité fournies</text>
+<text x="52" y="694" fill="#f5f6f8" font-size="13">sous cinq jours ouvrés sur demande.</text>
+<rect x="372" y="590" width="318" height="118" rx="12" fill="#211713" stroke="#f5b13d"/>
+<text x="394" y="620" fill="#f5b13d" font-size="12" font-weight="700">CONTRAT SÉPARÉ</text>
+<text x="394" y="648" fill="#f5f6f8" font-size="13">La mise à jour de l’annuaire</text>
+<text x="394" y="672" fill="#f5f6f8" font-size="13">ne résilie pas automatiquement</text>
+<text x="394" y="694" fill="#f5f6f8" font-size="13">l’abonnement commercial.</text>
+<text x="32" y="740" fill="#737985" font-size="9">SOURCE : Légifrance, décret n° 2026-677, article 7. Délais exprimés en jours ouvrables.</text>
+</svg>
+<figcaption>Le droit facilite le transfert de l’adressage et maintient certains services pendant un an. Il distingue explicitement cette opération de la résiliation des contrats commerciaux.</figcaption>
+</figure>
+
+Dans les deux jours ouvrables suivant la réception de l’accord formel, la plateforme d’arrivée prévient la plateforme de départ. Celle-ci dispose de cinq jours ouvrables pour s’opposer, uniquement à partir d’éléments remettant en cause la volonté du client, par exemple l’existence d’un accord plus récent. Après accord exprès ou tacite, la plateforme d’arrivée a quinze jours ouvrables pour inscrire les nouvelles informations dans l’annuaire.
+
+Le texte protège aussi la continuité. Certains services liés aux statuts de traitement doivent être maintenus pendant un an. L’ancienne plateforme doit fournir, sur demande et dans un délai de cinq jours ouvrés, les informations dont elle dispose pour permettre la poursuite de l’activité.
+
+Le décret précise juste avant que la modification de l’annuaire ne préjuge pas de la validité, de l’exécution ou de la résiliation des contrats.
+
+La facture peut donc changer de tuyau sans que l’abonnement disparaisse.
+
+Une entreprise doit donc examiner séparément :
+
+- la procédure réglementaire de mobilité ;
+- le préavis commercial ;
+- la durée d’engagement ;
+- les frais éventuels ;
+- le format de restitution ;
+- les pièces jointes, journaux et preuves récupérables ;
+- le coût de reconstruction des connecteurs.
+
+Le prix du gratuit se révèle parfois au départ, pas à l’entrée.
+
+## Deux alertes tarifaires encore sans pièces publiques
+
+Une [question écrite publiée à l’Assemblée nationale le 21 juillet 2026](https://questions.assemblee-nationale.fr/q17/17-17109QE.htm) rapporte deux alertes attribuées à la CAPEB de Vendée.
+
+La députée Véronique Besse évoque des forfaits de mise en œuvre proposés par certains cabinets d’expertise comptable jusqu’à 1 700 €, ainsi que des comptes professionnels bancaires accompagnés d’un abonnement de gestion de facturation électronique à 30 € HT par mois présenté comme accessoire mais obligatoire.
+
+Le texte mentionne aussi un courrier du directeur départemental des finances publiques de la Vendée, daté du 9 juillet, jugeant inacceptables les dérives signalées tout en rappelant l’existence d’offres gratuites ou presque gratuites.
+
+Ces éléments méritent une enquête. Ils ne permettent pas encore d’écrire que les banques ou les experts-comptables facturent généralement de tels montants.
+
+La question parlementaire ne publie :
+
+- ni devis ;
+- ni contrat ;
+- ni nom d’établissement ;
+- ni détail des prestations comprises dans les 1 700 € ;
+- ni preuve du caractère réellement obligatoire du produit bancaire ;
+- ni nombre d’entreprises concernées.
+
+Un forfait élevé peut couvrir un audit de flux, du paramétrage, une migration, une formation et une intégration. Il peut aussi profiter de la confusion réglementaire pour vendre une prestation surdimensionnée. Le prix seul ne permet pas de trancher.
+
+Pour établir une pratique abusive, il faut obtenir les pièces, interroger les entreprises, demander le droit de réponse des prestataires et connaître la position de la DGCCRF, de l’ACPR et de l’Ordre des experts-comptables.
+
+l0g conserve donc ces montants comme **pistes documentaires**, pas comme résultats.
+
+## Le comparateur que Bercy ne publie pas
+
+La DGFiP publie la liste des plateformes autorisées. Elle fournit un logo et rappelle les critères réglementaires. Elle ne publie pas une grille normalisée des offres.
+
+Le Gouvernement estime que le marché contient des offres gratuites ou sans surcoût comparables au service minimal qu’aurait pu fournir le portail public. L’affirmation est crédible sur l’existence du zéro. Elle reste difficile à vérifier sur le mot comparable.
+
+Pour qu’une TPE puisse vraiment décider selon ses volumes, sa clientèle et son budget, la fiche publique de chaque plateforme devrait contenir au minimum :
+
+1. le prix autonome du socle réglementaire ;
+2. le statut ou la forme juridique éligible ;
+3. le nombre de factures émises et reçues incluses ;
+4. la manière de compter l’e-reporting, les avoirs et les rejets ;
+5. les utilisateurs, sociétés et établissements inclus ;
+6. le prix de dépassement ;
+7. le coût de l’API et de l’intégration ;
+8. la nature et la durée de l’archivage ;
+9. les canaux de support ;
+10. les produits adjacents nécessaires ;
+11. la durée d’engagement et le prix après promotion ;
+12. le lien vers la documentation réglementaire de mobilité ;
+13. les formats et frais de restitution.
+
+Une telle publication ne transformerait pas l’État en comparateur commercial. Elle normaliserait les informations indispensables à l’exercice du choix qu’il impose.
+
+Le marché pourrait toujours vendre du support, de l’automatisation, du crédit, du paiement ou de la comptabilité. Le client saurait seulement où finit la conformité et où commence le produit supplémentaire.
+
+## Résultat : un socle gratuit réel, des frontières variables
+
+L’enquête conduit à une conclusion nuancée.
+
+La gratuité promise existe. Plusieurs acteurs affichent un vrai socle à 0 €. Une micro-entreprise simple peut probablement se mettre en conformité sans abonnement dédié. Affirmer que toutes les entreprises devront payer un péage direct serait faux.
+
+Le zéro ne règle pas pour autant la question du coût.
+
+Une entreprise grandit, reçoit des factures, ajoute des salariés, raccorde un logiciel, ouvre une filiale, exige un support, automatise ses paiements puis change de fournisseur. Chacune de ces étapes peut déplacer la facture hors du socle gratuit.
+
+Le débat pertinent ne porte donc pas sur l’existence du gratuit. Il porte sur sa **frontière**.
+
+Combien de documents ? Combien de clients ? Combien d’utilisateurs ? Quelle API ? Quel archivage ? Quel produit obligatoire autour ? Quel prix après la promotion ? Quel contrat pour partir ?
+
+La plateforme à 0 € peut être une excellente affaire. Elle peut aussi être un produit d’appel rationnel vers une relation beaucoup plus large. Les deux propositions peuvent être vraies en même temps.
+
+Bercy a rendu le tuyau privé obligatoire. Le marché a rendu l’entrée parfois gratuite. Il manque encore la signalétique qui permettrait à des millions d’entreprises de savoir ce qu’elles achètent avant que le compteur démarre.
+
+## Méthode et sources principales
+
+**Date de coupe : 22 août 2026.** Les 19 acteurs de l’échantillon apparaissent dans la liste principale de la DGFiP à cette date. Le décompte retient treize entrées à zéro non ambiguës selon la règle méthodologique décrite dans l’article. Dext est conservé comme cas limite possible, sans être ajouté au chiffre. Les promotions sont datées. Les tarifs sur devis ne sont jamais estimés.
+
+Le calculateur chiffre le coût direct public sur 36 mois. Il ne note ni la sécurité, ni la qualité, ni le support, ni la productivité. Le nombre de flux saisi sert parfois d’approximation lorsque l’opérateur facture des documents ou transactions dont la définition doit encore être confirmée par devis.
+
+- [DGFiP, rôle et immatriculation des plateformes agréées](https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees)
+- [DGFiP, publication de la liste après tests](https://www.impots.gouv.fr/actualite/facturation-electronique-publication-de-la-liste-des-plateformes-agreees)
+- [DGFiP, liste officielle des plateformes agréées](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees)
+- [Sénat, réponse du Gouvernement sur les offres gratuites ou sans surcoût](https://www.senat.fr/questions/base/2026/qSEQ260508821.html)
+- [Légifrance, décret du 27 juillet 2026 sur la mobilité](https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054499510)
+- [Assemblée nationale, question sur les pratiques tarifaires signalées en Vendée](https://questions.assemblee-nationale.fr/q17/17-17109QE.htm)
+- [Qonto Facturation](https://qonto.com/fr/invoicing/free-software)
+- [Indy](https://www.indy.fr/prix/)
+- [Abby](https://abby.fr/tarifs/)
+- [Dougs Facturation](https://www.dougs.fr/logiciel-facturation-gratuit/)
+- [Tiime](https://www.tiime.fr/facturation-electronique)
+- [Pennylane](https://www.pennylane.com/fr/facture-electronique-gratuite)
+- [SUPER PDP](https://www.superpdp.tech/tarifs/)
+- [B2BRouter](https://www.b2brouter.net/fr/tarifs/)
+- [VosFactures](https://vosfactures.fr/tarifs)
+- [macompta.fr](https://www.macompta.fr/facturation-electronique)
+- [Shine Facture](https://www.shine.fr/tarifs-shine-facture/)
+- [Kolecto](https://www.kolecto.fr/tarifs)
+- [Docaposte e-Facture](https://www.docaposte.com/solutions/facture-electronique/logiciel-facture-electronique)
+- [Sage](https://www.sage.com/fr-fr/dematerialisation/facture-electronique/sage-plateforme-de-dematerialisation-partenaire/)
+- [Cegid](https://www.cegid.com/fr/blog/comment-inscrire-entreprise-annuaire-facture-electronique/)
+- [Dext, outil gratuit](https://dext.com/fr/produits/logiciel-facturation-gratuit)
+- [Dext, périmètre de la PA et e-reporting annoncé](https://help.dext.com/fr/articles/692764-la-reforme-de-la-facture-electronique-avec-dext)
+- [Odoo, tarification](https://www.odoo.com/fr_FR/pricing)
+- [Odoo, facturation électronique en France](https://www.odoo.com/fr_FR/electronic-invoicing/france)
+- [Sellsy](https://go.sellsy.com/offres)
+- [Axonaut](https://axonaut.com/content/prix)
+
+## Limites
+
+- L’échantillon de 19 acteurs illustre plusieurs modèles commerciaux sans couvrir l’ensemble du registre de la DGFiP.
+- L’audit porte sur des pages publiques. Il ne remplace ni une souscription identifiée, ni la lecture du contrat remis au client, ni un test de qualité du service.
+- Le calculateur utilise parfois le nombre de flux comme approximation. Les définitions de document, transaction et e-reporting restent propres à chaque opérateur.
+- Les tarifs et les périmètres peuvent changer après la date de coupe, notamment à l’expiration d’une promotion ou lors de l’activation d’une fonction annoncée.

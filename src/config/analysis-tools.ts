@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'invoice-platform-cost',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-22',
+    modelHref: '/outils/cout-plateforme-facturation-electronique/model.json',
+    fr: {
+      title: 'Le coût des plateformes agréées',
+      eyebrow: 'facturation électronique',
+      description: 'Comparez sur 36 mois les coûts directs publiquement calculables selon le volume, les utilisateurs, les clients et le besoin d’API.',
+      question: 'Le prix affiché reste-t-il nul lorsque votre entreprise grandit ?',
+      href: '/outils/cout-plateforme-facturation-electronique/',
+      articleHref: '/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/',
+      articleLabel: 'Lire le troisième volet de l’enquête',
+    },
+    en: {
+      title: 'Approved platform cost calculator',
+      eyebrow: 'electronic invoicing',
+      description: 'Compare publicly calculable direct costs over 36 months by volume, users, customers and API need.',
+      question: 'Does the displayed price stay at zero as the business grows?',
+      href: '/en/tools/e-invoicing-platform-cost/',
+      articleHref: '/en/analysis/the-great-e-invoicing-toll-3-the-price-of-free/',
+      articleLabel: 'Read part three of the investigation',
+    },
+  },
+  {
     id: 'cooling-adaptation-quote',
     version: '1.0.0',
     status: 'active',

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import InvoicePlatformCostCalculator from '../../components/InvoicePlatformCostCalculator.astro';
+import { analysisTools } from '../../config/analysis-tools.ts';
+import {
+  INVOICE_PLATFORM_COST_DATA_DATE,
+  INVOICE_PLATFORM_COST_MODEL_VERSION,
+  INVOICE_PLATFORM_PUBLIC_OFFERS,
+} from '../../lib/invoice-platform-cost-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const tool = analysisTools.find((item) => item.id === 'invoice-platform-cost');
+if (!tool) throw new Error('Invoice platform cost tool is not registered');
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${tool.fr.href}#app`,
+  name: tool.fr.title,
+  description: tool.fr.description,
+  url: `${SITE}${tool.fr.href}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript sert à manipuler les paramètres. Les sources, formules et limites restent visibles sans interaction.',
+  softwareVersion: INVOICE_PLATFORM_COST_MODEL_VERSION,
+  dateModified: INVOICE_PLATFORM_COST_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: INVOICE_PLATFORM_PUBLIC_OFFERS.map((offer) => offer.sourceUrl),
+};
+---
+
+<BaseLayout
+  title="Facture électronique : calculateur du coût des plateformes agréées"
+  description="Chiffrez le coût direct public sur 36 mois selon vos volumes, utilisateurs, clients et besoins d’intégration. Les tarifs inconnus restent inconnus."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(tool.fr.href, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(tool.en.href, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(tool.fr.href, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="03"
+    kicker="facturation électronique"
+    title="Le prix affiché n’est pas le coût complet"
+    description="Le calculateur compare seulement ce qui peut être chiffré à partir des grilles publiques. Il laisse les devis, l’intégration, le support et les coûts de sortie dans la catégorie inconnue."
+    secondary="Photographie tarifaire au 22 août 2026. Aucun classement de qualité, aucune donnée envoyée."
+    glyph="observe"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${INVOICE_PLATFORM_COST_MODEL_VERSION}`, label: 'modèle auditable' },
+      { value: String(INVOICE_PLATFORM_PUBLIC_OFFERS.length), label: 'offres documentées' },
+      { value: 'local', label: 'zéro tracker' },
+    ]}
+  />
+
+  <InvoicePlatformCostCalculator lang="fr" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article>
+      <p class="mono-label">// ce que chiffre l’outil</p>
+      <h2>Le coût direct public</h2>
+      <p>Le résultat additionne les éléments tarifaires explicitement publiés et applicables au profil saisi. Un prix sur devis, un quota ambigu ou une fonction non documentée ne devient jamais zéro.</p>
+    </article>
+    <article>
+      <p class="mono-label">// ce qu’il ne chiffre pas</p>
+      <h2>Le temps, la qualité et la dépendance</h2>
+      <p>Le support, la sécurité, l’intégration, les économies de saisie, les commissions de paiement et le coût de sortie exigent un devis ou un audit contractuel séparé.</p>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-reading article { min-width: 0; border: 1px solid var(--color-line); border-radius: 12px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-reading .mono-label { color: var(--color-signal); }
+  .tool-reading h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+  .tool-reading article > p:last-child { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.62; }
+  @media (min-width: 760px) { .tool-reading { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
