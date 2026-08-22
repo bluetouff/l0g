@@ -4,11 +4,11 @@ seoTitle: "French e-invoicing: the missing resilience evidence | l0g"
 ogTitle: "When the e-invoicing pipe breaks"
 description: "Audits, pilot, registry, incidents and degraded operation: what France has proved about mandatory e-invoicing, and what remains unpublished."
 pubDate: 2026-08-22T18:20:00+02:00
-updatedDate: 2026-08-22T18:20:00+02:00
+updatedDate: 2026-08-22T19:05:00+02:00
 tags: ["electronic invoicing", "approved platforms", "resilience", "cybersecurity", "DGFiP", "AIFE", "audit", "French Parliament", "small business", "investigation"]
 draft: false
 sourceArticle: "le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse"
-sourceUpdatedDate: 2026-08-22T18:20:00+02:00
+sourceUpdatedDate: 2026-08-22T19:05:00+02:00
 ---
 
 import InvoiceIncidentLog from '../../components/InvoiceIncidentLog.astro';
@@ -23,21 +23,21 @@ This investigation followed [the removal of the direct public service](/en/analy
 
 - The framework requires ISO/IEC 27001 certification, operation of the information system in the European Union, no extra-EU transfer of hosted service data, and SecNumCloud qualification when a cloud provider is used.
 - Interoperability tests are a condition of final registration. The initial compliance audit report may still be filed up to one year after registration and must review at least one month of subsequent activity.
-- The DGFiP registry, updated on 19 August, contains 148 platforms in its main list and 18 complete applications awaiting tests. Its main spreadsheet does not show the expiry date or a detailed status for each row.
+- The DGFiP registry, updated on 19 August, contains 148 platforms in its main list and 18 complete applications awaiting tests. But the published list does not show, for each platform, when its approval expires or whether its initial audit has been filed.
 - The national pilot began on 26 February 2026. The official pages reviewed describe its aims, while l0g found no quantified public results on them by 22 August.
 - The go-live guide protects payment continuity. It also requires companies to document incidents, control an alternative channel, prevent duplicates and regularise the flow.
 - DGFiP incidents in February and August 2026 demonstrate the reality of identity and authorised-access risk. No public evidence reviewed links them to electronic invoicing, the PPF, its directory, its concentrator or an approved platform.
-- A proportionate evidence request would cover aggregate results, audit status, recovery tests, critical dependencies, exit conditions and liability.
+- Aggregate results, audit status, recovery tests, critical dependencies, exit conditions and the division of liability still need to be published.
 
-## The safeguards are real
+## What approval already requires
 
-The inquiry must start fairly. Registration is more than a marketing declaration.
+Registration is more than a marketing declaration.
 
 [Article 242 nonies B of Annex II to the French General Tax Code](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29) requires security documentation, ISO/IEC 27001 certification covering the service, commitments concerning EU operation and data transfers, technical documentation, authentication controls and interoperability tests. When a cloud provider is involved, the platform must provide the reference or a copy of its SecNumCloud qualification. If qualification is still in progress, that evidence may be provided with the initial audit report.
 
 In [written answers published on 4 August 2026](https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf), the government presents the distributed model as protection against a single point of failure. It also cites security approval of state systems, end-to-end and penetration tests, incident management, backup, restoration and access logging.
 
-Those controls matter. They reduce identified risks. They do not, on their own, answer four operational questions: what load has been sustained, how long recovery takes, how much data can be lost and how a customer moves to another platform.
+The rules are demanding on paper. They still do not show what load has actually been sustained, how long recovery takes, what data might be lost or how a customer would change platforms in an emergency.
 
 ## The audit runs on several clocks
 
@@ -85,23 +85,20 @@ A surveillance report must then be filed by the end of the second year. Renewal,
 </svg>
 </figure>
 
-The precise conclusion is that **a platform may be finally registered while its complete initial audit report remains lawfully outstanding**. This does not mean the platform is non-compliant, that it faced no prior control or that it has yet to file its report. The registry should reveal the state of each application.
+In plain terms, **a platform may receive final registration before filing its complete initial audit report**. This does not mean the platform is non-compliant, that it faced no prior control or that it has yet to file its report. The registry should simply make the position of each application clear.
 
-## The registry shows 148 platforms and missing fields
+## 148 platforms, but no clear view of their audits
 
-The [DGFiP page modified on 19 August 2026](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees) publishes two files. l0g downloaded the spreadsheets on 22 August and counted every non-empty row:
+The [DGFiP page modified on 19 August 2026](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees) publishes two lists. They contain:
 
 - **148 platforms** in the list of operators meeting the conditions, including interoperability tests;
-- **18 operators** with a complete and compliant application, still awaiting those tests;
-- no duplicated name within either file.
+- **18 operators** with a complete and compliant application, still awaiting those tests.
 
-This update corrects the previous count of 147 and 16 in part two, which used an earlier snapshot.
+This update corrects the previous count of 147 and 16 in part two, which used an earlier version of the list.
 
-The main file has seven useful columns: trading name, address in three fields, website, contact and registration date. Two rows, CYCLOPE and LUNDI MATIN, display “à venir”, or “forthcoming”, in the date column. VENTYA shows 18 December 2026, a future date on the day of review. These three values are documentary anomalies that require an explanation. They provide no basis for inferring fraud or technical failure.
+[Article 41 septies B of Annex IV](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29) says the public list must include the approval’s expiry date, its status and, where applicable, the outstanding initial audit report. Yet the published list does not make those details clear for each platform. A business owner can check that a name appears, but not when its approval expires or where its initial audit stands.
 
-[Article 41 septies B of Annex IV](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29) also requires publication of the expiry date, registration status and, where applicable, the outstanding duty to file the initial report. The spreadsheet reviewed contains none of those fields. The grouping on the webpage provides a general category, while the main filename contains `attente_rapport_audit`, meaning “awaiting audit report”. It does not provide an explicit row-by-row state.
-
-This is an **apparent documentary gap that requires clarification**. Adding the required columns to the spreadsheet would resolve it.
+DGFiP can answer that question directly by publishing those three details for every operator.
 
 ## The public pilot still lacks measurable results
 
@@ -109,7 +106,7 @@ The [AIFE says](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/lacc
 
 By 22 August 2026, l0g had found no public report on those pages, the DGFiP pilot announcement or linked official documents giving exchanged volumes, success rates, latency, rejections, duplicates, incidents, resolution time or restoration results.
 
-That statement describes a bounded document search. It does not establish that AIFE or DGFiP failed to collect metrics, that no test took place or that no business participated. It leads to a simple request: **publish an aggregate pilot report with security-sensitive operational detail removed**.
+That does not mean the metrics do not exist, that no test took place or that no business participated. It means businesses and Parliament cannot see the results. An aggregate report would answer the question without exposing sensitive details.
 
 At a minimum, mandatory infrastructure deserves results on:
 
@@ -129,7 +126,7 @@ On 14 August, the [same ministry documented](https://presse.economie.gouv.fr/acc
 
 These cases concern DGFiP systems and access. **No public evidence reviewed links them to electronic invoicing, the PPF, its directory, its concentrator or an approved platform.** Treating them as evidence that the reform has been compromised would be false.
 
-They nevertheless establish a fact relevant to the debate: an authorised identity and third-party access can become an extraction path, even inside a regulated public system. In its [Cyber Threat Overview 2024](https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf), under “supply-chain attacks”, ANSSI had already described the growth of provider compromises used to reach customers indirectly.
+The connection to this investigation lies elsewhere: both intrusions used compromised legitimate credentials. Security therefore also depends on controlling authorised accounts and provider access. In its [Cyber Threat Overview 2024](https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf), in the section on supply-chain attacks, ANSSI had already described the growth of provider compromises used to reach customers indirectly.
 
 A distributed model reduces concentration in one gateway. It may still share dependencies: cloud infrastructure, identity, support software, exchange networks, libraries or administration providers. A count of brands is therefore not automatically a count of independent failure domains.
 
@@ -137,7 +134,7 @@ A distributed model reduces concentration in one gateway. It may still share dep
 
 The [DGFiP practical go-live guide](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf) provides an important economic safeguard. A temporary outage should not stop activity, the processing of a real transaction or payment. An alternative channel can maintain continuity when the expected flow is unavailable.
 
-That flexibility requires discipline: preserve statuses and errors, contact the relevant parties, link the copy to the initial invoice, prevent duplicate payment, booking, deduction or reporting, then transmit or regularise the same invoice after service recovery.
+In return, the company must preserve statuses and errors, contact the relevant parties, link the copy to the initial invoice, prevent duplicate payment, booking, deduction or reporting, then transmit or regularise the same invoice after service recovery.
 
 <figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
 <svg viewBox="0 0 720 830" width="100%" role="img" aria-labelledby="failure-en-title failure-en-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
@@ -191,33 +188,32 @@ l0g turned that guidance into a local incident log so a small business can apply
 
 The [standalone incident log](/en/tools/e-invoice-incident-log/) can remain open during an outage.
 
-## The registry leaves key guarantees incomparable
+## What a business cannot compare
 
-The registry helps a company choose a name. It offers no common public basis for comparing:
+The registry says which platforms are approved. It does not say:
 
-- contractual availability;
-- recovery time objective, or RTO;
-- recovery point objective, or RPO;
-- customer-notification time;
-- restoration and failover results;
-- dependencies shared by several brands;
-- emergency export during an outage;
-- insurance, liability caps and compensation mechanisms.
+- how long the service may remain unavailable;
+- how quickly it must restart and how much data may be lost;
+- when customers must be notified;
+- when restoration and failover were last tested;
+- which dependencies are shared by several brands;
+- how a customer can retrieve data and change provider during an outage;
+- who bears cash losses, duplicate processing and regularisation costs.
 
-Those controls may exist in certification files, confidential submissions, contracts, internal plans or insurance policies. This investigation does not conclude that they are absent. It concludes that the public registry provides no way to compare them even as platform use becomes mandatory.
+Answers may exist in contracts, audit files, internal plans or insurance policies. They remain scattered and difficult to compare even as platform use becomes mandatory.
 
-Reasonable transparency requires no detailed topology, configuration, vulnerability or trade secret. It can use ranges, aggregate indicators, test dates, statuses and attestations.
+Publishing service levels, exercise dates and attestations would not require disclosure of system architecture, vulnerabilities or trade secrets.
 
-## Twelve questions for parliamentary scrutiny
+## Twelve questions for the government
 
-Two written questions, [no. 16415](https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf) and [no. 16666](https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16666), received answers on 4 August. They allowed the government to set out its security doctrine. Scrutiny can now focus on operational evidence.
+Two written questions, [no. 16415](https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf) and [no. 16666](https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16666), received answers on 4 August. The government describes the safeguards it has planned. The following questions remain open.
 
 1. How many platforms have filed their initial audit report by 1 September 2026, and how many remain within the legal filing period?
 2. Which report dates, reservations, corrective actions and closure dates can be published for each platform?
-3. Why does the public spreadsheet omit the expiry date and detailed status required by Article 41 septies B?
+3. Why does the public list not show, for each platform, the expiry date and status required by Article 41 septies B?
 4. What volumes, success rates, latency, rejections and incidents did the pilot measure?
 5. Which load, restoration, corruption, failover and correlated-outage tests were performed?
-6. Which common availability, RTO and RPO targets apply to platforms and state systems?
+6. Which common availability, recovery-time and data-recovery commitments apply to platforms and state systems?
 7. How many platforms share an engine, cloud, identity provider or critical subcontractor?
 8. Which accelerated procedure applies when a platform or its support engine becomes unavailable for an extended period?
 9. Which incidents must be reported to businesses, DGFiP, CNIL and ANSSI, and within what time limits?
@@ -225,15 +221,15 @@ Two written questions, [no. 16415](https://questions.assemblee-nationale.fr/dyn/
 11. Which insurance and liability rules cover cash losses, duplicate processing and regularisation costs?
 12. Which opinions, impact assessments and security reports can be published before full rollout?
 
-None of these questions presumes a failure. They convert a promise of trust into verifiable objects.
+None of these questions presumes a failure. They ask only that the stated guarantees can be verified.
 
-## Democratic prudence before the switch
-
-Article 5 of France’s Environmental Charter establishes a precautionary principle for serious and irreversible environmental harm. Treating it as a direct legal basis for electronic invoicing would stretch the law. Public decision-making can still follow **democratic prudence**: the more compulsory an infrastructure becomes, the more accessible the evidence of resilience, reversibility and liability should be.
+## Ten days to show the system is ready
 
 The first general reception deadline is ten days away.
 
-Suspending the reform without evidence would create costs and uncertainty of its own. Going live while asking companies only to trust would abandon scrutiny the rules make possible. A proportionate path exists: publish the aggregate pilot report, complete the registry, show audit status, state recovery standards and guarantee a tested emergency exit.
+The point is not to delay the reform on the strength of a hypothetical scenario. It is to ask, before the switch, for the information the state would demand from any essential operator: test results, audit status, recovery times, the fallback procedure and a clear division of responsibility.
+
+Those elements can still be published: the pilot report, audit status, recovery commitments and the procedure allowing a business to retrieve its data or change provider in an emergency.
 
 Parliament has tools to obtain this evidence: written questions, hearings, information missions, budget scrutiny and document requests. Business owners, accountants, engineers and citizens can [find their representative on the National Assembly website](https://www.assemblee-nationale.fr/dyn/vos-deputes) and send these twelve questions.
 
@@ -241,9 +237,9 @@ Trust does not come from an “approved platform” logo. It comes from knowing 
 
 ## Method, limitations and main sources
 
-**Cut-off date: 22 August 2026.** l0g downloaded the two DGFiP spreadsheets and counted them row by row. SHA-256 hashes: `146796398c5fc9461ab8a44baa629d78e8e19249063c1eeeb07f62a5626ac058` for the main list and `b52644a8701472afc84da047e4eda1546e1939e0d1e4375c0dea2d9ddf496dee` for the list awaiting tests.
+**Cut-off date: 22 August 2026.** The counts of 148 and 18 come from the two DGFiP lists modified on 19 August and accessed on 22 August.
 
-The search for pilot results covered the cited AIFE and DGFiP pages and accessible linked documents. It does not cover internal material or confidential exchanges with platforms. The registry analysis concerns files available on 22 August and may be superseded by later corrections. Cyber incidents provide context for access risk, never evidence of an electronic invoicing breach.
+The search for pilot results covered the cited AIFE and DGFiP pages and accessible linked documents. It does not cover internal material or confidential exchanges with platforms. The registry analysis uses the version published on 22 August; the list may be corrected later. Cyber incidents provide context for access risk, never evidence of an electronic invoicing breach.
 
 - [Légifrance, registration conditions and audit timetable](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29)
 - [Légifrance, audit scope and review periods](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054606052/2026-07-29)
@@ -260,4 +256,4 @@ The search for pilot results covered the cited AIFE and DGFiP pages and accessib
 - [ANSSI, Cyber Threat Overview 2024, supply-chain section](https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf)
 - [French National Assembly, find your representative](https://www.assemblee-nationale.fr/dyn/vos-deputes)
 
-Text, registry analysis, infographics and tool model: **CC BY 4.0**. Tool code: l0g repository licence.
+Text, registry analysis, infographics and tool content: **CC BY 4.0**. Tool code: l0g repository licence.

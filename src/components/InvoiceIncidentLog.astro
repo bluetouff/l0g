@@ -34,6 +34,7 @@ const copy = isFr ? {
   empty: 'non renseigné',
   generatedTitle: 'JOURNAL D’INCIDENT DE FACTURATION ÉLECTRONIQUE',
   caution: 'Aide opérationnelle fondée sur le guide DGFiP. Ce journal ne remplace ni les procédures internes, ni le conseil juridique ou comptable.',
+  localBadge: 'dans ce navigateur',
 } : {
   eyebrow: '// local continuity log',
   title: 'Document an e-invoicing incident',
@@ -60,6 +61,7 @@ const copy = isFr ? {
   empty: 'not provided',
   generatedTitle: 'ELECTRONIC INVOICING INCIDENT LOG',
   caution: 'Operational aid based on the DGFiP guide. This log does not replace internal procedures or legal and accounting advice.',
+  localBadge: 'browser only',
 };
 ---
 
@@ -70,7 +72,7 @@ const copy = isFr ? {
       <h2>{copy.title}</h2>
       <p>{copy.intro}</p>
     </div>
-    <span class="incident-log__local">local_only</span>
+    <span class="incident-log__local">{copy.localBadge}</span>
   </header>
 
   <p class="incident-log__privacy"><strong>{isFr ? 'Confidentialité :' : 'Privacy:'}</strong> {copy.privacy}</p>

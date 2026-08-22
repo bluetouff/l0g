@@ -52,11 +52,11 @@ const jsonLd = {
     kicker="invoicing continuity"
     title="When the flow stops, the record becomes essential"
     description="The log turns the DGFiP go-live recommendations into seven checkable steps: identify, preserve, notify, maintain activity, block duplicates, regularise and close."
-    secondary="No upload, no storage and no tracker. The generated text remains in your browser."
+    secondary="No data are sent or retained. No tracker. The generated text remains in your browser."
     glyph="uncertainty"
     accent="var(--color-amber)"
     stats={[
-      { value: `v${INVOICE_INCIDENT_MODEL_VERSION}`, label: 'auditable model' },
+      { value: `v${INVOICE_INCIDENT_MODEL_VERSION}`, label: 'published method' },
       { value: String(INVOICE_INCIDENT_STEPS.length), label: 'continuity steps' },
       { value: '0', label: 'data transmitted' },
     ]}
