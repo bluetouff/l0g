@@ -1,0 +1,525 @@
+---
+title: "Le grand péage de la facture, 4/5 : qui lit vos factures ?"
+seoTitle: "Facture électronique : qui voit vraiment vos données ? | l0g"
+ogTitle: "Qui lit vos factures ?"
+description: "La facture complète circule entre plateformes. Bercy reçoit un double fiscal structuré qui gagne les lignes, quantités et prix en 2027."
+pubDate: 2026-08-22T13:00:00+02:00
+updatedDate: 2026-08-22T13:00:00+02:00
+tags: ["facturation électronique", "données", "vie privée", "plateformes agréées", "DGFiP", "cybersécurité", "intelligence artificielle", "banques", "comptabilité", "enquête"]
+draft: false
+quickTake:
+  fact: "La PA de l'émetteur et celle du destinataire traitent la facture complète. L'administration reçoit le fichier structuré prévu par les textes, les statuts et, selon le cas, les données de transaction et de paiement."
+  importance: "Le 1er septembre 2027, la dénomination précise, la quantité et le prix unitaire hors taxe deviennent eux aussi structurés. Le double fiscal gagne une résolution commerciale beaucoup plus fine."
+  uncertainty: "Les politiques publiques ne délimitent pas toujours le périmètre PA, ses sous-traitants, ses fonctions d'IA et ses produits financiers. Les DPA, annexes PA, audits et analyses d'impact restent les pièces décisives."
+---
+
+import InvoiceDataAccessMap from '../../components/InvoiceDataAccessMap.astro';
+
+*La réforme française organise deux flux distincts : le document commercial complet entre entreprises et un double structuré transmis à l'administration fiscale.*
+
+*La facture complète circule entre l'entreprise qui l'émet, sa plateforme agréée, la plateforme du client et le client. En parallèle, la plateforme de l'émetteur extrait les champs prévus par les textes et les transmet à l'administration. Des statuts, des informations de transaction et certaines données de paiement complètent ce fichier. À partir de septembre 2027, les lignes commerciales elles-mêmes gagnent une forme structurée : description précise, quantité, prix unitaire, remises et frais.*
+
+*Autour de cette chaîne obligatoire se branchent ensuite le logiciel, l'ERP, le cabinet comptable, la banque, le paiement, le crédit et parfois une intelligence artificielle. Chacun de ces embranchements répond à un contrat et à des droits différents. Le registre de Bercy ne les cartographie pas.*
+
+Après [le portail public amputé](/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/), [les 147 façades du registre](/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/) et [le prix du gratuit](/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/), ce quatrième volet suit la donnée. Il cherche à répondre à une question simple : **qui peut réellement voir quoi ?**
+
+Dans cet article, l'expression **double fiscal** désigne le fichier structuré, les statuts et les données réglementaires transmis à l'administration. Ce n'est pas une dénomination juridique officielle.
+
+## À retenir
+
+- La plateforme de l'émetteur et celle du destinataire doivent traiter le document complet. Une seule plateforme peut tenir les deux rôles si les entreprises utilisent le même opérateur.
+- L'annuaire central sert à l'adressage. Sa finalité légale n'est pas de stocker le contenu des factures.
+- L'administration reçoit un jeu structuré beaucoup plus large qu'un simple montant de TVA : identités, dates, catégories d'opération, bases, taux, montants, statuts et certaines données de paiement.
+- Le 1er septembre 2027, neuf informations commerciales supplémentaires deviennent structurées, dont la dénomination précise, la quantité et le prix unitaire hors taxe.
+- Les données hébergées du service PA doivent rester dans l'Union européenne. Cette exigence s'étend aux tiers qui peuvent techniquement y accéder.
+- Une politique générale mentionnant des sous-traitants américains ne prouve pas que les factures du périmètre PA quittent l'Union européenne. Il faut connaître le périmètre exact du service réglementé.
+- Les IA intégrées et les assistants externes connectés ne sont pas le même produit. Plusieurs opérateurs documentent explicitement cette différence.
+- La présence d'un compte bancaire ou d'un produit de crédit ne prouve pas que les factures alimentent automatiquement un score. Le jeu de données et le parcours d'activation doivent être vérifiés produit par produit.
+
+## Un document, deux circuits
+
+Le droit organise d'abord le transport du document commercial.
+
+La [section consacrée aux services des plateformes agréées](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29) impose à la plateforme de l'émetteur d'assurer le dépôt, le contrôle et la transmission de la facture. La plateforme du destinataire doit la recevoir et la mettre à disposition de son client. Selon le format utilisé, la chaîne peut contenir un fichier UBL, CII ou Factur-X, ainsi qu'une représentation lisible.
+
+Ces fonctions supposent que les plateformes traitent le document complet. Elles doivent vérifier sa structure, son adressage et certaines mentions, puis gérer le retour des statuts. L'entreprise cliente doit pouvoir le consulter, le refuser ou en suivre le paiement.
+
+Le second circuit est fiscal.
+
+La plateforme de l'émetteur extrait les données prévues par l'[article 41 septies D](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606114) et les adresse à l'administration. L'[article 242 nonies L](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046385779) fixe en principe un délai de vingt-quatre heures après le dépôt, sous réserve des règles particulières prévues pour certaines catégories de données.
+
+Le fichier fiscal n'est donc pas nécessairement le PDF ou le document intégral transmis au client. Il s'agit d'une représentation structurée réglementaire, complétée par les statuts et, selon la nature de l'opération, par des données de transaction ou de paiement.
+
+L'annuaire central constitue un troisième objet. Les textes lui assignent une finalité d'adressage : identifier la plateforme choisie par le destinataire et la bonne adresse électronique. Assimiler l'annuaire à un grand entrepôt de factures serait faux.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 940" width="100%" role="img" aria-labelledby="objects-fr-title objects-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="objects-fr-title">Une facture électronique produit trois objets distincts</title>
+<desc id="objects-fr-desc">Le document complet circule entre les entreprises et leurs plateformes. L'annuaire sert au routage. Un fichier structuré et des statuts sont transmis à l'administration.</desc>
+<rect x="1" y="1" width="718" height="938" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">UNE FACTURE, TROIS OBJETS</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Document, adresse et double fiscal suivent des circuits distincts.</text>
+<rect x="30" y="104" width="660" height="280" rx="14" fill="#10211f" stroke="#5eead4"/>
+<text x="52" y="136" fill="#5eead4" font-size="13" font-weight="700">1. LE DOCUMENT COMPLET</text>
+<text x="52" y="160" fill="#aeb4bf" font-size="11">Facture structurée, représentation lisible et pièces éventuelles.</text>
+<rect x="50" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"/>
+<text x="115" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">ÉMETTEUR</text>
+<text x="115" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">crée et valide</text>
+<text x="115" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">le document</text>
+<rect x="213" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"/>
+<text x="278" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">PA ÉMETTEUR</text>
+<text x="278" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">contrôle et</text>
+<text x="278" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">adresse</text>
+<rect x="376" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"/>
+<text x="441" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">PA CLIENT</text>
+<text x="441" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">reçoit et met</text>
+<text x="441" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">à disposition</text>
+<rect x="539" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"/>
+<text x="604" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">CLIENT</text>
+<text x="604" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">consulte, refuse</text>
+<text x="604" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">ou paie</text>
+<line x1="180" y1="244" x2="205" y2="244" stroke="#5eead4" stroke-width="3"/>
+<polygon points="205,244 195,238 195,250" fill="#5eead4"/>
+<line x1="343" y1="244" x2="368" y2="244" stroke="#5eead4" stroke-width="3"/>
+<polygon points="368,244 358,238 358,250" fill="#5eead4"/>
+<line x1="506" y1="244" x2="531" y2="244" stroke="#5eead4" stroke-width="3"/>
+<polygon points="531,244 521,238 521,250" fill="#5eead4"/>
+<text x="52" y="330" fill="#f5b13d" font-size="11">Une seule PA peut tenir les deux rôles si les entreprises ont le même opérateur.</text>
+<text x="52" y="353" fill="#8b909b" font-size="10">Le document complet n'est pas le seul fichier transmis dans le circuit fiscal.</text>
+<rect x="30" y="410" width="310" height="178" rx="14" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="52" y="442" fill="#f5b13d" font-size="13" font-weight="700">2. L'ANNUAIRE CENTRAL</text>
+<text x="52" y="476" fill="#f5f6f8" font-size="13">Identifie la PA et l'adresse</text>
+<text x="52" y="500" fill="#f5f6f8" font-size="13">de réception du client.</text>
+<text x="52" y="538" fill="#aeb4bf" font-size="11">Pas de contenu de facture.</text>
+<text x="52" y="560" fill="#aeb4bf" font-size="11">Finalité légale : routage.</text>
+<rect x="380" y="410" width="310" height="178" rx="14" fill="#151a28" stroke="#7aa2f7"/>
+<text x="402" y="442" fill="#7aa2f7" font-size="13" font-weight="700">3. LE DOUBLE FISCAL</text>
+<text x="402" y="476" fill="#f5f6f8" font-size="13">Fichier structuré, statuts,</text>
+<text x="402" y="500" fill="#f5f6f8" font-size="13">transactions et paiements.</text>
+<text x="402" y="538" fill="#aeb4bf" font-size="11">Transmis par la PA émettrice.</text>
+<text x="402" y="560" fill="#aeb4bf" font-size="11">Délai de principe : 24 heures.</text>
+<rect x="30" y="616" width="660" height="270" rx="14" fill="#17131b" stroke="#ff85ad"/>
+<text x="52" y="648" fill="#ff85ad" font-size="13" font-weight="700">AUTOUR DU TUYAU RÉGLEMENTÉ</text>
+<text x="52" y="672" fill="#aeb4bf" font-size="11">Des services optionnels peuvent ajouter de nouveaux lecteurs.</text>
+<rect x="50" y="704" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"/>
+<text x="144" y="732" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">LOGICIEL OU ERP</text>
+<text x="144" y="752" fill="#c8b7aa" font-size="10" text-anchor="middle">création et synchronisation</text>
+<rect x="266" y="704" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"/>
+<text x="360" y="732" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">EXPERT-COMPTABLE</text>
+<text x="360" y="752" fill="#c8b7aa" font-size="10" text-anchor="middle">accès selon mandat</text>
+<rect x="482" y="704" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"/>
+<text x="576" y="732" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">BANQUE ET PAIEMENT</text>
+<text x="576" y="752" fill="#c8b7aa" font-size="10" text-anchor="middle">rapprochement et règlement</text>
+<rect x="50" y="792" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"/>
+<text x="144" y="820" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">IA INTÉGRÉE</text>
+<text x="144" y="840" fill="#c8b7aa" font-size="10" text-anchor="middle">OCR, recherche, assistance</text>
+<rect x="266" y="792" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"/>
+<text x="360" y="820" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">ASSISTANT EXTERNE</text>
+<text x="360" y="840" fill="#c8b7aa" font-size="10" text-anchor="middle">données envoyées sur demande</text>
+<rect x="482" y="792" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"/>
+<text x="576" y="820" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">CRÉDIT OU AFFACTURAGE</text>
+<text x="576" y="840" fill="#c8b7aa" font-size="10" text-anchor="middle">si le service est activé</text>
+<text x="32" y="918" fill="#6f7580" font-size="10">Cadre français au 22 août 2026. Les accès optionnels dépendent des contrats.</text>
+</svg>
+</figure>
+
+## La chaîne obligatoire et les branches optionnelles
+
+La chaîne réglementaire suffit déjà à multiplier les systèmes qui traitent une facture. Elle ne dit pourtant rien du logiciel visible par l'utilisateur, du cabinet comptable ou des services financiers qu'il active autour.
+
+La carte ci-dessous permet de distinguer ces niveaux. Elle ne demande ni facture, ni SIREN, ni nom d'entreprise. Tous les calculs restent dans le navigateur.
+
+<InvoiceDataAccessMap lang="fr" mode="embed" />
+
+La carte utilise quatre catégories :
+
+- **document complet** : l'acteur peut traiter la facture elle-même ;
+- **données structurées** : il reçoit un jeu extrait ou dérivé ;
+- **adressage seulement** : il sait où envoyer le document sans en recevoir le contenu ;
+- **accès technique potentiel** : un hébergeur ou sous-traitant peut administrer le système sans qu'un salarié lise habituellement chaque facture.
+
+Une capacité d'accès technique ne prouve aucune consultation humaine. Elle suffit néanmoins à inclure le prestataire dans l'analyse de sécurité et de sous-traitance.
+
+## Les données reçues par Bercy dès septembre 2026
+
+La [table de correspondance publiée par la DGFiP en août 2026](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/japprof_donnees-de-facture-a-transmettre-a-ladministration-correspondance-flux_vf.pdf) permet de sortir du débat abstrait.
+
+Dès la première échéance, le double fiscal peut contenir plusieurs familles d'informations.
+
+| Famille | Exemples transmis |
+|---|---|
+| Identité | SIREN, numéros de TVA, pays du fournisseur et du client |
+| Document | date, numéro unique, facture rectifiée, devise |
+| Nature de l'opération | biens, services ou combinaison des deux |
+| Fiscalité | bases hors taxe par taux, taux, montants de TVA, exonérations, régimes particuliers |
+| Exécution | date de livraison, fin de prestation ou acompte |
+| Cycle de vie | dépôt, rejet, refus et statut encaissée |
+| Paiement | date d'encaissement et montant encaissé par taux lorsque ces données sont requises |
+| E-reporting | données des ventes B2C ou internationales qui ne passent pas par l'e-invoicing domestique |
+
+Les [statuts obligatoires](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606169) ne sont pas de simples notifications de confort. Ils font partie du dispositif fiscal et permettent de savoir qu'une facture a été déposée, rejetée, refusée ou encaissée.
+
+La formule « quelques données fiscales » minimise donc le dispositif. À l'inverse, écrire que l'administration reçoit systématiquement le document intégral l'exagère. La réalité se trouve entre les deux : Bercy reçoit un fichier structuré suffisamment détaillé pour automatiser des contrôles, sans que le texte impose la centralisation de chaque représentation lisible ou de chaque pièce jointe.
+
+## Septembre 2027, les lignes deviennent des données
+
+Un an plus tard, la granularité augmente nettement.
+
+À compter du 1er septembre 2027, l'[article 41 septies D](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606114) ajoute neuf informations structurées :
+
+- la dénomination précise du bien ou du service ;
+- la quantité ;
+- le prix unitaire hors taxe ;
+- les rabais, remises et ristournes ;
+- les frais et charges ;
+- l'adresse de livraison lorsqu'elle diffère de l'adresse du client ;
+- la date d'émission de la facture rectifiée ;
+- la mention d'escompte ;
+- l'éco-participation.
+
+Le saut est qualitatif. En 2026, le système connaît déjà l'identité des parties, la date, la catégorie de vente et les montants fiscaux. En 2027, il reçoit aussi la structure commerciale de la ligne.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 950" width="100%" role="img" aria-labelledby="granularity-fr-title granularity-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="granularity-fr-title">Le saut de granularité des données de facture entre 2026 et 2027</title>
+<desc id="granularity-fr-desc">En 2026, le fichier structuré contient les identités, dates, catégories et montants fiscaux. En 2027, il ajoute le détail des lignes, les quantités, prix unitaires, remises, frais et adresse de livraison.</desc>
+<rect x="1" y="1" width="718" height="948" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">2026 À 2027 : CHANGEMENT D'ÉCHELLE</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Le double fiscal passe du résumé au détail commercial structuré.</text>
+<rect x="30" y="108" width="320" height="600" rx="14" fill="#141a28" stroke="#7aa2f7"/>
+<text x="52" y="142" fill="#7aa2f7" font-size="14" font-weight="700">DÈS LE 1er SEPTEMBRE 2026</text>
+<text x="52" y="170" fill="#aeb4bf" font-size="11">Le fichier structuré contient notamment :</text>
+<circle cx="58" cy="208" r="4" fill="#7aa2f7"/>
+<text x="74" y="213" fill="#f5f6f8" font-size="12">SIREN et numéros de TVA</text>
+<circle cx="58" cy="246" r="4" fill="#7aa2f7"/>
+<text x="74" y="251" fill="#f5f6f8" font-size="12">Pays du vendeur et du client</text>
+<circle cx="58" cy="284" r="4" fill="#7aa2f7"/>
+<text x="74" y="289" fill="#f5f6f8" font-size="12">Date et numéro de facture</text>
+<circle cx="58" cy="322" r="4" fill="#7aa2f7"/>
+<text x="74" y="327" fill="#f5f6f8" font-size="12">Biens, services ou activité mixte</text>
+<circle cx="58" cy="360" r="4" fill="#7aa2f7"/>
+<text x="74" y="365" fill="#f5f6f8" font-size="12">Base hors taxe par taux</text>
+<circle cx="58" cy="398" r="4" fill="#7aa2f7"/>
+<text x="74" y="403" fill="#f5f6f8" font-size="12">Taux et montant de TVA</text>
+<circle cx="58" cy="436" r="4" fill="#7aa2f7"/>
+<text x="74" y="441" fill="#f5f6f8" font-size="12">Total HT, devise et régimes</text>
+<circle cx="58" cy="474" r="4" fill="#7aa2f7"/>
+<text x="74" y="479" fill="#f5f6f8" font-size="12">Date de livraison ou de service</text>
+<circle cx="58" cy="512" r="4" fill="#7aa2f7"/>
+<text x="74" y="517" fill="#f5f6f8" font-size="12">Dépôt, rejet, refus, encaissée</text>
+<circle cx="58" cy="550" r="4" fill="#7aa2f7"/>
+<text x="74" y="555" fill="#f5f6f8" font-size="12">Date et montant encaissé</text>
+<rect x="52" y="588" width="276" height="88" rx="10" fill="#101522" stroke="#394967"/>
+<text x="70" y="616" fill="#f5b13d" font-size="11" font-weight="700">NIVEAU PRINCIPAL</text>
+<text x="70" y="640" fill="#c5ceda" font-size="11">Identité, fiscalité, cycle de vie</text>
+<text x="70" y="661" fill="#c5ceda" font-size="11">et paiement de la facture.</text>
+<rect x="370" y="108" width="320" height="600" rx="14" fill="#13211e" stroke="#5eead4"/>
+<text x="392" y="142" fill="#5eead4" font-size="14" font-weight="700">AJOUTS DU 1er SEPTEMBRE 2027</text>
+<text x="392" y="170" fill="#aeb4bf" font-size="11">Neuf données deviennent structurées :</text>
+<circle cx="398" cy="208" r="4" fill="#5eead4"/>
+<text x="414" y="213" fill="#f5f6f8" font-size="12">Dénomination précise</text>
+<circle cx="398" cy="246" r="4" fill="#5eead4"/>
+<text x="414" y="251" fill="#f5f6f8" font-size="12">Quantité de biens ou services</text>
+<circle cx="398" cy="284" r="4" fill="#5eead4"/>
+<text x="414" y="289" fill="#f5f6f8" font-size="12">Prix unitaire hors taxe</text>
+<circle cx="398" cy="322" r="4" fill="#5eead4"/>
+<text x="414" y="327" fill="#f5f6f8" font-size="12">Rabais, remises, ristournes</text>
+<circle cx="398" cy="360" r="4" fill="#5eead4"/>
+<text x="414" y="365" fill="#f5f6f8" font-size="12">Frais et charges</text>
+<circle cx="398" cy="398" r="4" fill="#5eead4"/>
+<text x="414" y="403" fill="#f5f6f8" font-size="12">Adresse de livraison distincte</text>
+<circle cx="398" cy="436" r="4" fill="#5eead4"/>
+<text x="414" y="441" fill="#f5f6f8" font-size="12">Date de facture rectifiée</text>
+<circle cx="398" cy="474" r="4" fill="#5eead4"/>
+<text x="414" y="479" fill="#f5f6f8" font-size="12">Mention d'escompte</text>
+<circle cx="398" cy="512" r="4" fill="#5eead4"/>
+<text x="414" y="517" fill="#f5f6f8" font-size="12">Éco-participation</text>
+<rect x="392" y="558" width="276" height="118" rx="10" fill="#10201d" stroke="#376f67"/>
+<text x="410" y="586" fill="#f5b13d" font-size="11" font-weight="700">NOUVEAU NIVEAU</text>
+<text x="410" y="610" fill="#c5d7d3" font-size="11">Les lignes commerciales deviennent</text>
+<text x="410" y="631" fill="#c5d7d3" font-size="11">exploitables sans relire le PDF.</text>
+<text x="410" y="656" fill="#8b909b" font-size="10">La finalité d'usage reste à documenter.</text>
+<rect x="30" y="742" width="660" height="154" rx="14" fill="#211814" stroke="#f5b13d"/>
+<text x="52" y="774" fill="#f5b13d" font-size="13" font-weight="700">CE QUE CES CHAMPS PERMETTENT TECHNIQUEMENT</text>
+<text x="52" y="808" fill="#f5f6f8" font-size="12">Relier fournisseurs et clients, comparer des prix unitaires, suivre des volumes</text>
+<text x="52" y="832" fill="#f5f6f8" font-size="12">et observer des rythmes de commande ou d'encaissement.</text>
+<text x="52" y="866" fill="#aeb4bf" font-size="11">Capacité déduite du jeu de données, pas preuve d'un usage effectif.</text>
+<text x="32" y="925" fill="#6f7580" font-size="10">Sources : article 41 septies D et tableau DGFiP, juillet et août 2026.</text>
+</svg>
+</figure>
+
+À partir de ces champs, un système peut techniquement relier un fournisseur à un client, suivre des quantités, comparer des prix unitaires et observer des rythmes de commande ou d'encaissement. Cette phrase est une **inférence à partir du schéma de données**. Elle ne signifie pas que chaque usage est autorisé, développé ou appliqué à chaque entreprise.
+
+Les questions journalistiques portent donc sur les finalités :
+
+- quels contrôles automatisés seront effectivement exécutés ;
+- quelles bases pourront être rapprochées ;
+- combien de temps les lignes resteront accessibles ;
+- quels agents ou services pourront les consulter ;
+- quels indicateurs seront produits ;
+- quelle analyse d'impact a évalué la proportionnalité de cette granularité.
+
+Le ministère documente les champs. Il publie beaucoup moins clairement les usages, habilitations et durées associés.
+
+## Les garanties imposées aux plateformes agréées
+
+Les plateformes agréées ne sont pas de simples SaaS auxquels l'État aurait confié une mission sans garde-fou.
+
+L'[article 242 nonies B](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049330326/2026-09-01) impose plusieurs garanties :
+
+- une certification ISO 27001 couvrant le système d'information qui contribue au service ;
+- une qualification SecNumCloud lorsque la plateforme recourt à un hébergeur cloud entrant dans le périmètre ;
+- une exploitation du système depuis l'Union européenne ;
+- l'absence de transfert hors Union européenne des données hébergées du service ;
+- des audits de conformité et de surveillance ;
+- des contrôles sur les protocoles et l'interopérabilité.
+
+Le texte ajoute une précision décisive : ces exigences s'appliquent aussi aux tiers auxquels la plateforme recourt lorsqu'ils ont la possibilité technique d'obtenir les données du service.
+
+Un moteur de marque blanche, un hébergeur, un outil d'administration ou un support technique ne disparaît donc pas de la chaîne parce que son logo n'est pas visible par le client.
+
+Ces certifications ne rendent pas le système invulnérable. Elles n'empêchent ni le vol d'un compte utilisateur, ni une mauvaise attribution de droits, ni l'erreur humaine, ni la compromission d'un sous-traitant. Elles obligent en revanche l'opérateur à documenter une architecture, des contrôles et un périmètre.
+
+La portée réelle de ces garanties dépend donc de leur **périmètre**.
+
+## Où finit la plateforme agréée ?
+
+Une entreprise peut voir une seule interface et utiliser plusieurs services juridiques et techniques à la fois :
+
+- la plateforme agréée ;
+- le logiciel de facturation ;
+- le module comptable ;
+- le compte professionnel ;
+- le paiement ;
+- le crédit ;
+- le support ;
+- l'archivage ;
+- l'intelligence artificielle.
+
+La règle d'absence de transfert hors UE concerne les « données hébergées du service » réglementé. Une politique de confidentialité générale couvre souvent beaucoup plus large : navigation sur le site, prospection, tickets de support, données bancaires, campagnes marketing et fonctions d'IA.
+
+Cette superposition de services crée deux risques d'interprétation.
+
+La première consiste à lire le nom d'un prestataire américain dans une politique générale et à conclure que les factures réglementaires quittent l'Europe. Le prestataire peut ne traiter que le marketing ou le support.
+
+La seconde consiste à lire « hébergé en Europe » sur une page commerciale et à en déduire que chaque copie, journal, sauvegarde, console d'administration et outil d'IA est confiné dans le périmètre protégé.
+
+La preuve utile prend la forme d'une matrice reliant chaque donnée à son traitement :
+
+<div role="region" tabindex="0" aria-label="Matrice des traitements, défilable horizontalement" style="width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;padding-bottom:.5rem">
+
+| Donnée | Service | Rôle juridique | Sous-traitant | Localisation | Finalité | Durée |
+|---|---|---|---|---|---|---|
+| facture complète | PA | à documenter | à documenter | à documenter | transmission | à documenter |
+| fichier fiscal | PA | à documenter | à documenter | à documenter | DGFiP | à documenter |
+| copie comptable | logiciel | à documenter | à documenter | à documenter | comptabilité | à documenter |
+| donnée bancaire | paiement | à documenter | à documenter | à documenter | rapprochement | à documenter |
+| document envoyé à l'IA | assistant | à documenter | fournisseur IA | à documenter | requête choisie | à documenter |
+
+</div>
+
+Aucune matrice publique normalisée de ce type n'a été trouvée dans l'échantillon étudié par l0g.
+
+## Les politiques publiques racontent des produits différents
+
+l0g a examiné douze ensembles de documents publics. Les sept cas détaillés ci-dessous illustrent les principales frontières observées ; les cinq autres ont servi à rechercher les informations manquantes. L'objectif n'est pas de classer les plateformes. Une politique courte ne prouve pas une mauvaise pratique, pas plus qu'une politique très détaillée ne garantit l'absence d'incident. Le test consiste à voir si un lecteur peut distinguer le service PA du reste du produit.
+
+### Pennylane : deux IA, deux frontières
+
+La [politique de confidentialité de Pennylane](https://www.pennylane.com/fr/legal/privacy) distingue les traitements dont l'entreprise est responsable de ceux qu'elle réalise comme sous-traitant pour ses clients. Pour ces derniers, la pièce déterminante est la convention de traitement annexée au contrat.
+
+La politique prévoit également, sous conditions, des traitements ultérieurs pour produire des statistiques ou améliorer le service. Elle mentionne l'amélioration de produits et l'entraînement de modèles sur des **données d'usage**, pas l'entraînement général sur le contenu des factures. La portée exacte par rapport au service PA dépend donc du contrat et du jeu de données concerné.
+
+Pennylane documente ensuite deux chemins d'IA distincts.
+
+Son [assistant comptable intégré](https://help.pennylane.com/fr/articles/175002-utiliser-comptassistant) est présenté comme un outil dont les données restent en Europe et ne servent pas à entraîner les modèles de ses fournisseurs.
+
+Son [serveur MCP](https://help.pennylane.com/fr/articles/757740-connecter-votre-assistant-ia-au-mcp-pennylane) permet au contraire de connecter un assistant externe. Selon les droits accordés, celui-ci peut rechercher des factures de vente et d'achat, des transactions ou des déclarations de TVA. Pennylane demande alors à l'utilisateur d'évaluer les règles d'entraînement, d'hébergement, de transfert et de rétention du fournisseur choisi.
+
+La distinction est claire : IA intégrée d'un côté, sortie volontaire vers un tiers de l'autre.
+
+### Qonto : l'écosystème interne et la sortie MCP
+
+Qonto fait la même séparation.
+
+La page consacrée à ses [agents IA intégrés](https://qonto.com/fr/ai) affirme que les données restent en Europe, ne sont pas transmises aux fournisseurs de modèles et ne servent pas à entraîner leurs IA.
+
+La documentation du [serveur MCP Qonto](https://support-fr.qonto.com/hc/fr/articles/47588576515089-Comment-connecter-et-utiliser-le-serveur-MCP-de-Qonto) décrit un autre scénario. Un assistant externe peut, selon le rôle de l'utilisateur et les fonctions disponibles, consulter des transactions ainsi que des factures clients et fournisseurs. Qonto indique ne transmettre que les données nécessaires à chaque requête et permet de révoquer l'accès. La page consultée ne documente pas le stockage, l'entraînement ou la rétention chez le fournisseur de l'assistant : ces points restent à vérifier auprès de ce tiers.
+
+Révoquer la connexion coupe les nouveaux accès. Le sort des données déjà reçues dépend ensuite des engagements du fournisseur de l'assistant.
+
+### Dougs : l'IA documentaire est explicitement nommée
+
+La [politique de confidentialité de Dougs](https://www.dougs.fr/politique-confidentialite/) cite OpenAI et Anthropic parmi les prestataires susceptibles d'intervenir dans l'analyse documentaire et comptable.
+
+Les finalités publiées comprennent la lecture de factures, notes de frais et autres documents, la catégorisation comptable et certains contrôles de cohérence. Dougs affirme ne pas autoriser ces prestataires à entraîner leurs modèles pour leur propre compte avec les données traitées.
+
+La même politique documente un serveur MCP optionnel qui peut envoyer des données comptables, financières et des documents commerciaux à un assistant choisi par l'utilisateur.
+
+Elle décrit aussi des transferts généraux hors UE encadrés. Aucun de ces éléments ne prouve que les factures du périmètre PA quittent l'Union. Ils rendent nécessaire une question beaucoup plus précise : les factures réglementaires sont-elles isolées de ces traitements, ou l'IA s'exécute-t-elle dans une architecture compatible avec la règle européenne du service PA ?
+
+### Shine : factures, banque et crédit dans une même politique
+
+La [politique de Shine](https://www.shine.fr/privacy/fr/) couvre les données de facturation, les contrats, les transactions, le compte de paiement et certaines fonctions de crédit.
+
+Elle annonce Google Cloud dans l'Union européenne pour l'hébergement principal. Elle indique aussi que certains sous-traitants généraux peuvent impliquer des transferts hors UE avec des garanties appropriées. Cette seconde phrase ne démontre pas que les factures de la PA sont transférées hors Europe. Elle montre que la politique générale ne suffit pas à isoler le périmètre réglementé.
+
+Shine documente par ailleurs une co-responsabilité avec Froda lorsque l'utilisateur manifeste un intérêt pour un prêt professionnel. Le parcours financier est donc identifiable et conditionnel. Rien dans les pièces consultées ne permet d'affirmer que chaque facture nourrit automatiquement un score de crédit.
+
+La politique annonce une conservation des factures pendant dix ans et un droit de portabilité dans un format structuré, couramment utilisé et lisible par machine.
+
+### Dext : la facture se trouve dans une autre pièce juridique
+
+La [politique publique de Dext](https://dext.com/fr/privacy-policy) exclut expressément de son propre périmètre les données personnelles contenues dans les factures et reçus déposés par le client. Dext indique agir comme sous-traitant pour ces documents et renvoie à l'accord de traitement intégré à ses conditions.
+
+Cette séparation est juridiquement cohérente. Elle prouve aussi qu'une analyse fondée uniquement sur la page « confidentialité » peut manquer le document central.
+
+Pour auditer Dext, il faut donc obtenir l'accord de traitement applicable aux factures, la liste des sous-traitants documentaires, les localisations et la matrice des fonctions d'IA.
+
+### Tiime et macompta.fr : deux formes de transparence
+
+[Tiime publie une liste de sous-traitants](https://www.tiime.fr/soustraitants) avec leur fonction et leur localisation. At Tiime, l'entité portant la PA, apparaît en France. AWS et Google Cloud sont indiqués dans l'Union européenne pour certaines fonctions. Des outils généraux de support ou de ticketing mentionnent aussi des localisations « UE et États-Unis ».
+
+La liste est utile. Elle ne dit pas encore quel sous-traitant peut voir quelle donnée de facture, ni quel traitement relève précisément de la PA.
+
+Les [conditions de macompta.fr](https://www.macompta.fr/conditions-generales-de-services) nomment Oxeva et OVH pour l'hébergement en France, détaillent plusieurs durées et formats de récupération, et prévoient l'utilisation possible de données non personnelles pour des statistiques sectorielles. La question se déplace alors vers la méthode d'anonymisation et son audit.
+
+Ces exemples montrent que la transparence ne se résume pas à publier une liste de noms. Il faut relier chaque nom à un jeu de données et à une finalité.
+
+## Le comptable devient un lecteur par mandat
+
+L'expert-comptable est souvent le premier acteur auquel l'entreprise pense après son client. Son accès dépend pourtant du produit, du mandat et des permissions attribuées.
+
+Shine a par exemple documenté le passage d'une fonction d'auto-validation à un [partage automatique avec le cabinet](https://help.shine.fr/shine-facture/fr/articles/15885445-l-auto-validation-devient-partage-automatique). Lorsqu'un utilisateur importe une facture, le document peut être considéré comme approuvé et partagé avec le comptable, tout en restant visible dans l'interface.
+
+Cette automatisation peut éviter des manipulations inutiles. Elle doit aussi rendre lisibles :
+
+- le nom du cabinet ;
+- les collaborateurs habilités ;
+- les documents partagés ;
+- le moment du partage ;
+- la possibilité de désactiver l'automatisme ;
+- les outils et sous-traitants utilisés par le cabinet.
+
+Le secret professionnel du comptable ne remplace pas une bonne gestion des identités et des accès.
+
+## Banque, paiement et crédit : documenter chaque usage
+
+Une facture structurée se rapproche facilement d'une transaction bancaire. Le produit peut alors afficher l'échéance, proposer un paiement, suivre l'encaissement ou anticiper la trésorerie.
+
+Le même jeu permet techniquement d'observer la concentration de la clientèle, la régularité des paiements et la saisonnalité. Ces informations peuvent intéresser le financement et l'affacturage.
+
+La possibilité technique ne démontre pas l'usage effectif.
+
+Pour chaque produit financier, l'enquête doit établir :
+
+- si le client doit l'activer ;
+- quelles données sont transmises ;
+- à quelle entité ;
+- pour quelle finalité ;
+- si une décision entièrement automatisée existe ;
+- comment la contester ;
+- combien de temps les données sont conservées ;
+- si l'entreprise peut conserver la PA en refusant le service financier.
+
+Une interface qui réunit facture et compte bancaire est une intégration. Elle ne constitue pas, à elle seule, la preuve d'un scoring caché.
+
+## L'assistant externe ouvre une seconde sortie
+
+La règle européenne encadre le service PA obligatoire. Un utilisateur peut ensuite choisir de connecter un assistant externe et lui demander d'analyser une facture.
+
+Le transfert change alors de nature. Il est déclenché par l'entreprise et répond aux règles du fournisseur choisi.
+
+Pennylane, Qonto et Dougs documentent cette bascule avec des degrés de détail différents. Les trois préviennent que l'utilisateur doit examiner les conditions du fournisseur externe. Les données envoyées peuvent inclure une facture, une transaction ou une information fiscale.
+
+Le point de gouvernance dépasse la seule entreprise. Une facture contient aussi des informations sur son client, son fournisseur, des contacts, parfois des salariés ou des personnes physiques. Ces tiers n'ont pas nécessairement choisi l'assistant.
+
+Avant d'activer un MCP, une entreprise devrait donc connaître :
+
+1. la liste exacte des outils exposés ;
+2. les droits reproduits depuis le compte source ;
+3. les données minimales envoyées pour chaque requête ;
+4. la localisation et la durée de conservation ;
+5. l'usage éventuel pour l'entraînement ;
+6. le mécanisme de suppression ;
+7. les confirmations exigées pour une action sensible ;
+8. les journaux permettant d'auditer ce qui a été transmis.
+
+La connexion agentique peut être très utile. Elle doit être administrée comme un nouvel accès au système financier, pas comme un simple bouton de confort.
+
+## La CNIL, pièce documentaire encore absente
+
+Les ordres du jour publics montrent que la CNIL a examiné le [projet d'ordonnance en juillet 2021](https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-8-juillet-2021) et le [projet de décret en juin 2022](https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-23-juin-2022).
+
+Dans les sources publiques retrouvées par l0g, les avis correspondants et leurs annexes ne sont pas accessibles. Il n'a pas non plus été établi que la CNIL a examiné les conséquences cumulées du recentrage de 2024, de l'intermédiation privée obligatoire, du détail de ligne prévu pour 2027 et des nouveaux textes de juillet 2026.
+
+Cette absence documentaire interdit d'écrire que la CNIL a « validé » l'architecture finale.
+
+Les pièces demandées portent notamment sur :
+
+- les deux délibérations ;
+- les analyses d'impact ;
+- la minimisation des champs ;
+- les habilitations et durées ;
+- les usages analytiques ;
+- l'articulation avec l'IA, la banque et le crédit.
+
+## Le passeport de données qui manque au registre
+
+Bercy publie le nom, les coordonnées et le statut des plateformes. Le registre ne dit pas qui héberge, quel moteur supporte une marque blanche, quels sous-traitants peuvent accéder au document complet ni quelles fonctions réutilisent des données dérivées.
+
+Une fiche publique utile pourrait ajouter :
+
+1. l'entité juridique et son groupe de contrôle ;
+2. la plateforme support éventuelle ;
+3. les régions de production et de sauvegarde ;
+4. le périmètre ISO 27001 et SecNumCloud ;
+5. la liste des sous-traitants ayant un accès technique ;
+6. les accès humains et pays de support ;
+7. la durée de conservation du document, des données et des journaux ;
+8. les formats de restitution ;
+9. les fonctions d'IA intégrées et leurs fournisseurs ;
+10. les connecteurs externes disponibles ;
+11. les produits bancaires ou financiers utilisant des données de facture ;
+12. les incidents significatifs et la date du dernier audit.
+
+Cette fiche ne publierait ni secret industriel ni détail exploitable par un attaquant. Elle donnerait aux entreprises les informations nécessaires pour exercer le choix que l'État leur impose.
+
+## Cartographier l'écosystème du tuyau réglementé
+
+La réforme ne livre pas la facture entière à une foule indistincte.
+
+Le document complet suit une chaîne définie. Le double fiscal suit une autre chaîne. L'annuaire ne fait que router. Les services comptables, bancaires et d'IA apparaissent ensuite selon les choix et les contrats.
+
+Le cadre de la PA est exigeant : ISO 27001, SecNumCloud, exploitation dans l'Union, absence de transfert hors UE des données du service et extension aux tiers qui peuvent techniquement y accéder.
+
+Les règles existent, mais aucune carte publique ne montre précisément où elles s'appliquent.
+
+En septembre 2027, la facture structurée décrira aussi les lignes, les quantités et les prix unitaires. Cette finesse peut améliorer la conformité fiscale et automatiser la gestion. Elle augmente en même temps la valeur stratégique du jeu de données.
+
+La question vérifiable porte sur la traçabilité complète : quelle donnée, quel acteur, quelle finalité, quel pays, quelle durée et quel droit de sortie ?
+
+La facture électronique est une infrastructure de confiance. Pour mériter ce nom, elle doit rendre ses lecteurs aussi visibles que ses obligations.
+
+## Méthode et sources principales
+
+**Date de coupe : 22 août 2026.** l0g a cartographié la chaîne légale, les champs réglementaires et les documentations publiques de douze opérateurs. L'échantillon ne constitue ni un classement, ni un audit de conformité. Une information absente d'une page publique est traitée comme inconnue, pas comme une faute.
+
+Une politique générale mentionnant des transferts hors UE n'est jamais utilisée comme preuve que les données du service PA quittent l'Union. Une fonction d'IA proposée dans une suite logicielle n'est pas assimilée à un entraînement sur les factures. Un produit de crédit n'est pas assimilé à un score automatique sans document spécifique.
+
+- [Légifrance, conditions de sécurité et d'immatriculation des PA](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29)
+- [Légifrance, données structurées de facture en 2026 et 2027](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606114)
+- [DGFiP, tableau des données transmises à l'administration](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/japprof_donnees-de-facture-a-transmettre-a-ladministration-correspondance-flux_vf.pdf)
+- [Légifrance, délais et données de transaction ou de paiement](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000046385456/)
+- [Légifrance, statuts du cycle de vie](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606169)
+- [CNIL, ordre du jour du 8 juillet 2021](https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-8-juillet-2021)
+- [CNIL, ordre du jour du 23 juin 2022](https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-23-juin-2022)
+- [Pennylane, politique de confidentialité](https://www.pennylane.com/fr/legal/privacy)
+- [Pennylane, connexion d'un assistant IA par MCP](https://help.pennylane.com/fr/articles/757740-connecter-votre-assistant-ia-au-mcp-pennylane)
+- [Qonto, agents IA intégrés](https://qonto.com/fr/ai)
+- [Qonto, serveur MCP](https://support-fr.qonto.com/hc/fr/articles/47588576515089-Comment-connecter-et-utiliser-le-serveur-MCP-de-Qonto)
+- [Shine, politique de confidentialité](https://www.shine.fr/privacy/fr/)
+- [Dougs, politique de confidentialité](https://www.dougs.fr/politique-confidentialite/)
+- [Dext, politique de confidentialité](https://dext.com/fr/privacy-policy)
+- [Tiime, liste des sous-traitants](https://www.tiime.fr/soustraitants)
+- [macompta.fr, conditions générales et annexe PA](https://www.macompta.fr/conditions-generales-de-services)

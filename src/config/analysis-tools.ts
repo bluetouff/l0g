@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'invoice-data-access',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-22',
+    modelHref: '/outils/qui-peut-voir-ma-facture/model.json',
+    fr: {
+      title: 'Qui peut voir ma facture ?',
+      eyebrow: 'facturation électronique',
+      description: 'Cartographiez la chaîne réglementaire et les accès optionnels du logiciel, du comptable, de la banque ou de l’IA.',
+      question: 'Quels acteurs peuvent traiter le document complet ou son double structuré ?',
+      href: '/outils/qui-peut-voir-ma-facture/',
+      articleHref: '/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/',
+      articleLabel: 'Lire le quatrième volet de l’enquête',
+    },
+    en: {
+      title: 'Who can see my e-invoice?',
+      eyebrow: 'electronic invoicing',
+      description: 'Map the regulated chain and optional access by software, accountants, banks or AI.',
+      question: 'Which actors can process the full document or its structured tax twin?',
+      href: '/en/tools/who-can-see-my-e-invoice/',
+      articleHref: '/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/',
+      articleLabel: 'Read part four of the investigation',
+    },
+  },
+  {
     id: 'invoice-platform-cost',
     version: '1.0.0',
     status: 'active',

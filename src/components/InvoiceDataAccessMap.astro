@@ -1,0 +1,310 @@
+---
+import {
+  INVOICE_ACCESS_DATA_DATE,
+  INVOICE_ACCESS_DEFAULTS,
+  INVOICE_ACCESS_MODEL_VERSION,
+  INVOICE_ACCESS_NODES,
+  INVOICE_ACCESS_SOURCES,
+  activeInvoiceAccessNodes,
+} from '../lib/invoice-access-map-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const isFull = mode === 'full';
+const id = `invoice-data-access-${lang}-${mode}`;
+const initialNodes = activeInvoiceAccessNodes(INVOICE_ACCESS_DEFAULTS);
+const initialFull = initialNodes.filter((node) => node.level === 'full').length;
+const initialData = initialNodes.filter((node) => node.level === 'structured' || node.level === 'technical').length;
+
+const copy = isFr
+  ? {
+      eyebrow: 'CARTE DES ACCÈS',
+      title: 'Qui peut voir votre facture ?',
+      intro: 'Activez les services que vous utilisez. La carte sépare la chaîne obligatoire des accès ajoutés par votre logiciel, votre cabinet, votre banque ou un assistant IA.',
+      badge: 'local · aucune donnée envoyée',
+      controls: 'Votre configuration',
+      software: 'Logiciel ou ERP',
+      softwareHelp: 'Création, import ou synchronisation des factures.',
+      accountant: 'Expert-comptable',
+      accountantHelp: 'Accès autorisé au dossier et aux pièces.',
+      bank: 'Banque ou paiement intégré',
+      bankHelp: 'Rapprochement, règlement et trésorerie.',
+      credit: 'Crédit ou affacturage',
+      creditHelp: 'Uniquement si vous activez ce service.',
+      internalAi: 'IA intégrée',
+      internalAiHelp: 'OCR, recherche, catégorisation ou assistant du produit.',
+      externalAi: 'Assistant IA externe',
+      externalAiHelp: 'MCP ou autre connecteur vers un fournisseur choisi.',
+      chain: 'Chaîne de lecture potentielle',
+      mandatory: 'obligatoire',
+      optional: 'optionnel',
+      full: 'document complet',
+      structured: 'données structurées',
+      routing: 'adressage seulement',
+      technical: 'accès technique potentiel',
+      visible: 'acteurs visibles',
+      fullCount: 'avec le document complet',
+      dataCount: 'avec données ou accès technique',
+      warningTitle: 'Question à poser à votre PA',
+      warning: 'Pouvez-vous fournir la liste des personnes et sous-traitants pouvant accéder au document complet, la localisation de chaque traitement et la frontière entre le service PA, les fonctions IA et les produits financiers ?',
+      method: 'Méthode et limites',
+      source: 'source',
+      openFull: 'Ouvrir la carte en pleine largeur',
+      backArticle: 'Revenir à l’article',
+      noAudit: 'Cette carte décrit des catégories d’accès. Elle ne remplace pas le contrat, le DPA ou l’audit de votre plateforme.',
+      snapshot: `Photographie réglementaire au ${INVOICE_ACCESS_DATA_DATE}`,
+    }
+  : {
+      eyebrow: 'ACCESS MAP',
+      title: 'Who can see your invoice?',
+      intro: 'Enable the services you use. The map separates the mandatory chain from access added by software, accountants, banks or an AI assistant.',
+      badge: 'local · no data sent',
+      controls: 'Your setup',
+      software: 'Software or ERP',
+      softwareHelp: 'Invoice creation, import or synchronisation.',
+      accountant: 'Accountant',
+      accountantHelp: 'Authorised access to the workspace and documents.',
+      bank: 'Integrated bank or payments',
+      bankHelp: 'Matching, settlement and cash monitoring.',
+      credit: 'Credit or factoring',
+      creditHelp: 'Only when you activate the service.',
+      internalAi: 'Integrated AI',
+      internalAiHelp: 'OCR, search, categorisation or product assistant.',
+      externalAi: 'External AI assistant',
+      externalAiHelp: 'MCP or another connector to a chosen provider.',
+      chain: 'Potential access chain',
+      mandatory: 'mandatory',
+      optional: 'optional',
+      full: 'full document',
+      structured: 'structured data',
+      routing: 'routing only',
+      technical: 'potential technical access',
+      visible: 'visible actors',
+      fullCount: 'with the full document',
+      dataCount: 'with data or technical access',
+      warningTitle: 'Question for your platform',
+      warning: 'Can you provide the list of people and subcontractors that may access the full document, the location of each processing operation and the boundary between the approved platform service, AI features and financial products?',
+      method: 'Method and limitations',
+      source: 'source',
+      openFull: 'Open the full-width map',
+      backArticle: 'Return to the article',
+      noAudit: 'This map describes access categories. It does not replace your provider contract, DPA or audit.',
+      snapshot: `Regulatory snapshot taken on ${INVOICE_ACCESS_DATA_DATE}`,
+    };
+
+const levelLabel = (level: string) => {
+  if (level === 'full') return copy.full;
+  if (level === 'structured') return copy.structured;
+  if (level === 'routing') return copy.routing;
+  return copy.technical;
+};
+---
+
+<section class:list={['ida-tool', isFull && 'ida-tool--full']} id={id} data-invoice-data-access data-lang={lang}>
+  <header class="ida-head">
+    <div>
+      <p class="ida-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="ida-badge">{copy.badge}</span>
+  </header>
+
+  <div class="ida-grid">
+    <form class="ida-controls" aria-labelledby={`${id}-controls`}>
+      <h3 id={`${id}-controls`}>{copy.controls}</h3>
+
+      <label class="ida-switch">
+        <input type="checkbox" name="software" checked={INVOICE_ACCESS_DEFAULTS.software} />
+        <span><strong>{copy.software}</strong><small>{copy.softwareHelp}</small></span>
+      </label>
+      <label class="ida-switch">
+        <input type="checkbox" name="accountant" checked={INVOICE_ACCESS_DEFAULTS.accountant} />
+        <span><strong>{copy.accountant}</strong><small>{copy.accountantHelp}</small></span>
+      </label>
+      <label class="ida-switch">
+        <input type="checkbox" name="bank" checked={INVOICE_ACCESS_DEFAULTS.bank} />
+        <span><strong>{copy.bank}</strong><small>{copy.bankHelp}</small></span>
+      </label>
+      <label class="ida-switch">
+        <input type="checkbox" name="credit" checked={INVOICE_ACCESS_DEFAULTS.credit} />
+        <span><strong>{copy.credit}</strong><small>{copy.creditHelp}</small></span>
+      </label>
+      <label class="ida-switch">
+        <input type="checkbox" name="internalAi" checked={INVOICE_ACCESS_DEFAULTS.internalAi} />
+        <span><strong>{copy.internalAi}</strong><small>{copy.internalAiHelp}</small></span>
+      </label>
+      <label class="ida-switch">
+        <input type="checkbox" name="externalAi" checked={INVOICE_ACCESS_DEFAULTS.externalAi} />
+        <span><strong>{copy.externalAi}</strong><small>{copy.externalAiHelp}</small></span>
+      </label>
+
+      <p class="ida-snapshot">{copy.snapshot} · v{INVOICE_ACCESS_MODEL_VERSION}</p>
+    </form>
+
+    <section class="ida-map" aria-labelledby={`${id}-chain`}>
+      <div class="ida-map-head">
+        <h3 id={`${id}-chain`}>{copy.chain}</h3>
+        <div class="ida-summary" aria-live="polite">
+          <span><strong data-visible-count>{initialNodes.length}</strong> {copy.visible}</span>
+          <span><strong data-full-count>{initialFull}</strong> {copy.fullCount}</span>
+          <span><strong data-data-count>{initialData}</strong> {copy.dataCount}</span>
+        </div>
+      </div>
+
+      <div class="ida-chain" data-node-list>
+        {INVOICE_ACCESS_NODES.map((node) => (
+          <article
+            class:list={[
+              'ida-node',
+              `ida-node--${node.level}`,
+              !node.mandatory && 'ida-node--optional',
+              !node.mandatory && node.toggle && !INVOICE_ACCESS_DEFAULTS[node.toggle] && 'is-hidden',
+            ]}
+            data-node
+            data-toggle={node.toggle ?? ''}
+            data-level={node.level}
+          >
+            <div class="ida-node-top">
+              <span class="ida-kind">{node.mandatory ? copy.mandatory : copy.optional}</span>
+              <span class="ida-level">{levelLabel(node.level)}</span>
+            </div>
+            <h4>{isFr ? node.titleFr : node.titleEn}</h4>
+            <p>{isFr ? node.descriptionFr : node.descriptionEn}</p>
+            <small>{isFr ? node.caveatFr : node.caveatEn}</small>
+            <a href={node.sourceUrl}>{copy.source}</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <aside class="ida-warning">
+    <strong>{copy.warningTitle}</strong>
+    <p>{copy.warning}</p>
+  </aside>
+
+  <details class="ida-method">
+    <summary>{copy.method}</summary>
+    <p>{copy.noAudit}</p>
+    <ul>
+      {INVOICE_ACCESS_SOURCES.map((source) => (
+        <li><a href={source.url}>{isFr ? source.labelFr : source.labelEn}</a></li>
+      ))}
+    </ul>
+  </details>
+
+  <footer class="ida-links">
+    {isFull
+      ? <a href={isFr ? '/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/' : '/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/'}>{copy.backArticle}</a>
+      : <a href={isFr ? '/outils/qui-peut-voir-ma-facture/' : '/en/tools/who-can-see-my-e-invoice/'}>{copy.openFull}</a>}
+    <a href="/outils/qui-peut-voir-ma-facture/model.json">model.json</a>
+  </footer>
+</section>
+
+<script>
+  const initialiseInvoiceDataAccessMaps = () => {
+    document.querySelectorAll<HTMLElement>('[data-invoice-data-access]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+
+      const update = () => {
+        const values = new FormData(form);
+        const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-node]'));
+        nodes.forEach((node) => {
+          const toggle = node.dataset.toggle;
+          const visible = !toggle || values.has(toggle);
+          node.classList.toggle('is-hidden', !visible);
+        });
+        const visibleNodes = nodes.filter((node) => !node.classList.contains('is-hidden'));
+        const full = visibleNodes.filter((node) => node.dataset.level === 'full').length;
+        const data = visibleNodes.filter((node) => ['structured', 'technical'].includes(node.dataset.level ?? '')).length;
+        const set = (selector: string, value: number) => {
+          const target = root.querySelector<HTMLElement>(selector);
+          if (target) target.textContent = String(value);
+        };
+        set('[data-visible-count]', visibleNodes.length);
+        set('[data-full-count]', full);
+        set('[data-data-count]', data);
+      };
+
+      form.addEventListener('change', update);
+      update();
+    });
+  };
+
+  initialiseInvoiceDataAccessMaps();
+  document.addEventListener('astro:page-load', initialiseInvoiceDataAccessMaps);
+</script>
+
+<style>
+  .ida-tool { min-width: 0; max-width: 100%; margin: 1.5rem 0; border: 1px solid var(--color-line); border-radius: 16px; padding: clamp(0.9rem, 2vw, 1.35rem); background: color-mix(in srgb, var(--color-surface) 80%, #091018 20%); overflow: hidden; }
+  .ida-head { display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between; min-width: 0; }
+  .ida-head > div { min-width: 0; }
+  .ida-eyebrow { margin: 0; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.69rem; font-weight: 800; letter-spacing: 0.11em; }
+  .ida-head h2 { margin: 0.38rem 0 0; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.45rem, 4vw, 2.3rem); line-height: 1.02; overflow-wrap: anywhere; }
+  .ida-head p:last-child { max-width: 50rem; margin: 0.7rem 0 0; color: var(--color-muted); font-size: 0.84rem; line-height: 1.62; }
+  .ida-badge { flex: 0 0 auto; border: 1px solid color-mix(in srgb, var(--color-signal) 42%, transparent); border-radius: 999px; padding: 0.45rem 0.68rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.65rem; white-space: nowrap; }
+  .ida-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; margin-top: 1.1rem; min-width: 0; }
+  .ida-controls, .ida-map { min-width: 0; border: 1px solid var(--color-line); border-radius: 13px; background: color-mix(in srgb, var(--color-bg) 74%, transparent); }
+  .ida-controls { padding: 0.9rem; }
+  .ida-controls h3, .ida-map h3 { margin: 0; color: var(--color-bright); font-family: var(--font-display); font-size: 1rem; }
+  .ida-switch { display: flex; gap: 0.68rem; align-items: flex-start; border-bottom: 1px solid color-mix(in srgb, var(--color-line) 70%, transparent); padding: 0.75rem 0; cursor: pointer; }
+  .ida-switch:last-of-type { border-bottom: 0; }
+  .ida-switch input { flex: 0 0 auto; margin-top: 0.16rem; accent-color: var(--color-signal); }
+  .ida-switch span { min-width: 0; }
+  .ida-switch strong, .ida-switch small { display: block; overflow-wrap: anywhere; }
+  .ida-switch strong { color: var(--color-bright); font-size: 0.8rem; }
+  .ida-switch small { margin-top: 0.2rem; color: var(--color-muted); font-size: 0.7rem; line-height: 1.42; }
+  .ida-snapshot { margin: 0.8rem 0 0; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.62rem; }
+  .ida-map { padding: 0.9rem; overflow: hidden; }
+  .ida-map-head { display: grid; gap: 0.65rem; }
+  .ida-summary { display: flex; gap: 0.42rem; flex-wrap: wrap; }
+  .ida-summary span { border: 1px solid var(--color-line); border-radius: 999px; padding: 0.35rem 0.52rem; color: var(--color-muted); font-size: 0.63rem; }
+  .ida-summary strong { color: var(--color-bright); }
+  .ida-chain { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.7rem; margin-top: 0.85rem; min-width: 0; }
+  .ida-node { position: relative; min-width: 0; max-width: 100%; border: 1px solid var(--color-line); border-radius: 12px; padding: 0.78rem; background: color-mix(in srgb, var(--color-surface) 73%, transparent); overflow: hidden; }
+  .ida-node.is-hidden { display: none; }
+  .ida-node--full { border-color: color-mix(in srgb, #5eead4 52%, var(--color-line)); }
+  .ida-node--structured { border-color: color-mix(in srgb, #7aa2f7 55%, var(--color-line)); }
+  .ida-node--routing { border-color: color-mix(in srgb, #f5b13d 50%, var(--color-line)); }
+  .ida-node--technical { border-color: color-mix(in srgb, #ff85ad 45%, var(--color-line)); }
+  .ida-node--optional { background: color-mix(in srgb, var(--color-surface) 62%, #221a0c 38%); }
+  .ida-node-top { display: flex; gap: 0.45rem; align-items: center; justify-content: space-between; min-width: 0; }
+  .ida-kind, .ida-level { font-family: var(--font-mono); font-size: 0.59rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ida-kind { color: var(--color-signal); }
+  .ida-node--optional .ida-kind { color: #f5b13d; }
+  .ida-level { color: var(--color-muted); text-align: right; overflow-wrap: anywhere; }
+  .ida-node h4 { margin: 0.45rem 0 0; color: var(--color-bright); font-family: var(--font-display); font-size: 0.91rem; overflow-wrap: anywhere; }
+  .ida-node p { margin: 0.42rem 0 0; color: color-mix(in srgb, var(--color-text) 84%, var(--color-muted)); font-size: 0.72rem; line-height: 1.48; overflow-wrap: anywhere; }
+  .ida-node small { display: block; margin-top: 0.42rem; color: var(--color-muted); font-size: 0.64rem; line-height: 1.42; overflow-wrap: anywhere; }
+  .ida-node a { display: inline-block; margin-top: 0.48rem; color: var(--color-signal); font-family: var(--font-mono); font-size: 0.61rem; }
+  .ida-warning { margin-top: 1rem; border-left: 3px solid #f5b13d; border-radius: 8px; padding: 0.85rem 0.95rem; background: color-mix(in srgb, #2b200d 50%, var(--color-surface)); }
+  .ida-warning strong { color: #ffd68a; font-size: 0.78rem; }
+  .ida-warning p { margin: 0.35rem 0 0; color: color-mix(in srgb, var(--color-text) 83%, #e3c58d); font-size: 0.72rem; line-height: 1.55; overflow-wrap: anywhere; }
+  .ida-method { margin-top: 0.8rem; border: 1px solid var(--color-line); border-radius: 10px; padding: 0.65rem 0.8rem; }
+  .ida-method summary { cursor: pointer; color: var(--color-bright); font-size: 0.75rem; font-weight: 700; }
+  .ida-method p, .ida-method li { color: var(--color-muted); font-size: 0.69rem; line-height: 1.5; }
+  .ida-method ul { margin-bottom: 0; padding-left: 1.1rem; }
+  .ida-method a { color: var(--color-signal); overflow-wrap: anywhere; }
+  .ida-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.8rem; }
+  .ida-links a { color: var(--color-signal); font-family: var(--font-mono); font-size: 0.66rem; overflow-wrap: anywhere; }
+  @media (min-width: 620px) { .ida-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 760px) {
+    .ida-grid { grid-template-columns: minmax(235px, 0.34fr) minmax(0, 1fr); }
+    .ida-map-head { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+    .ida-summary { justify-content: flex-end; }
+  }
+  @media (min-width: 1040px) { .ida-tool--full .ida-chain { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 560px) {
+    .ida-head { display: grid; }
+    .ida-badge { justify-self: start; white-space: normal; }
+  }
+</style>

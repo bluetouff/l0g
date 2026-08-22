@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import InvoiceDataAccessMap from '../../components/InvoiceDataAccessMap.astro';
+import {
+  INVOICE_ACCESS_DATA_DATE,
+  INVOICE_ACCESS_MODEL_VERSION,
+  INVOICE_ACCESS_NODES,
+  INVOICE_ACCESS_SOURCES,
+} from '../../lib/invoice-access-map-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pagePath = '/outils/qui-peut-voir-ma-facture/';
+const enPath = '/en/tools/who-can-see-my-e-invoice/';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${pagePath}#app`,
+  name: 'Qui peut voir ma facture électronique ?',
+  description: 'Carte interactive de la chaîne obligatoire et des accès optionnels autour de la facture électronique française.',
+  url: `${SITE}${pagePath}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript sert uniquement à afficher ou masquer les services activés. Aucune donnée n’est envoyée.',
+  softwareVersion: INVOICE_ACCESS_MODEL_VERSION,
+  dateModified: INVOICE_ACCESS_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: INVOICE_ACCESS_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  title="Facture électronique : qui peut voir vos données ?"
+  description="Distinguez le document complet, le double fiscal, l’annuaire et les accès optionnels du logiciel, du comptable, de la banque ou de l’IA."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(pagePath, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(enPath, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(pagePath, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="04"
+    kicker="facturation électronique"
+    title="Une facture peut avoir plusieurs lecteurs"
+    description="La carte sépare la chaîne réglementaire des accès ajoutés par les outils de gestion, le cabinet comptable, la banque, le financement et les assistants d’intelligence artificielle."
+    secondary="Photographie au 22 août 2026. Aucun upload, aucun tracker, aucune donnée envoyée."
+    glyph="observe"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${INVOICE_ACCESS_MODEL_VERSION}`, label: 'modèle auditable' },
+      { value: String(INVOICE_ACCESS_NODES.length), label: 'catégories d’acteurs' },
+      { value: 'local', label: 'zéro collecte' },
+    ]}
+  />
+
+  <InvoiceDataAccessMap lang="fr" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article>
+      <p class="mono-label">// ce que montre l’outil</p>
+      <h2>Les accès possibles</h2>
+      <p>Le résultat distingue document complet, fichier structuré, adressage et accès technique. Il rappelle aussi le caractère obligatoire ou optionnel de chaque branche.</p>
+    </article>
+    <article>
+      <p class="mono-label">// ce qu’il ne peut pas savoir</p>
+      <h2>Votre architecture réelle</h2>
+      <p>Seuls votre contrat, votre DPA, la liste des sous-traitants et les droits de votre compte permettent de savoir quels acteurs précis accèdent à vos données.</p>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-reading article { min-width: 0; border: 1px solid var(--color-line); border-radius: 12px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-reading .mono-label { color: var(--color-signal); }
+  .tool-reading h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+  .tool-reading article > p:last-child { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.62; }
+  @media (min-width: 760px) { .tool-reading { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

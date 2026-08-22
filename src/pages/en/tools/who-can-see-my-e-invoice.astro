@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import InvoiceDataAccessMap from '../../../components/InvoiceDataAccessMap.astro';
+import {
+  INVOICE_ACCESS_DATA_DATE,
+  INVOICE_ACCESS_MODEL_VERSION,
+  INVOICE_ACCESS_NODES,
+  INVOICE_ACCESS_SOURCES,
+} from '../../../lib/invoice-access-map-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const frPath = '/outils/qui-peut-voir-ma-facture/';
+const pagePath = '/en/tools/who-can-see-my-e-invoice/';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${pagePath}#app`,
+  name: 'Who can see my French electronic invoice?',
+  description: 'Interactive map of the mandatory chain and optional access surrounding French electronic invoices.',
+  url: `${SITE}${pagePath}`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript only shows or hides enabled services. No data are transmitted.',
+  softwareVersion: INVOICE_ACCESS_MODEL_VERSION,
+  dateModified: INVOICE_ACCESS_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: INVOICE_ACCESS_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  title="French electronic invoicing: who can see your data?"
+  description="Separate the full document, tax twin, directory and optional access by software, accountants, banks or AI."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(frPath, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(pagePath, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(frPath, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="04"
+    kicker="electronic invoicing"
+    title="One invoice can have several readers"
+    description="The map separates the regulated chain from access added by management software, accountants, banks, finance and AI assistants."
+    secondary="Snapshot taken on 22 August 2026. No upload, no tracker and no data transmission."
+    glyph="observe"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${INVOICE_ACCESS_MODEL_VERSION}`, label: 'auditable model' },
+      { value: String(INVOICE_ACCESS_NODES.length), label: 'actor categories' },
+      { value: 'local', label: 'zero collection' },
+    ]}
+  />
+
+  <InvoiceDataAccessMap lang="en" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article>
+      <p class="mono-label">// what the tool shows</p>
+      <h2>Possible access</h2>
+      <p>The result distinguishes full documents, structured files, routing and technical access. It also identifies mandatory and optional branches.</p>
+    </article>
+    <article>
+      <p class="mono-label">// what it cannot know</p>
+      <h2>Your real architecture</h2>
+      <p>Only your contract, DPA, subprocessor list and account permissions can identify the exact organisations and people accessing your data.</p>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .tool-reading article { min-width: 0; border: 1px solid var(--color-line); border-radius: 12px; padding: 1rem; background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
+  .tool-reading .mono-label { color: var(--color-signal); }
+  .tool-reading h2 { margin-top: 0.45rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.15rem; }
+  .tool-reading article > p:last-child { margin-top: 0.55rem; color: var(--color-muted); font-size: 0.8rem; line-height: 1.62; }
+  @media (min-width: 760px) { .tool-reading { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
