@@ -27,8 +27,8 @@ export interface PrimarySourceInstitution {
   related: PrimarySourceLink[];
 }
 
-export const primarySourcesUpdated = '28 juin 2026';
-export const primarySourcesUpdatedIso = '2026-06-28';
+export const primarySourcesUpdated = '22 août 2026';
+export const primarySourcesUpdatedIso = '2026-08-22';
 
 export const primaryInstitutions: PrimarySourceInstitution[] = [
   {
@@ -416,6 +416,54 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
       { label: 'Yen Carry', href: '/methodologie/yen-carry/' },
       { label: 'Énergie', href: '/methodologie/energie/' },
       { label: 'Glossaire CFTC', href: '/glossaire/cftc/' },
+    ],
+  },
+  {
+    slug: 'dgfip-legifrance',
+    name: 'DGFiP & Légifrance',
+    shortName: 'DGFiP / Légifrance',
+    category: 'fiscalité & droit français',
+    accent: 'var(--color-signal)',
+    url: 'https://www.impots.gouv.fr/',
+    description:
+      'DGFiP et Légifrance : services fiscaux officiels, documentation administrative, textes consolidés, Journal officiel et jurisprudence française.',
+    why:
+      "Ces deux services permettent de distinguer une règle publiée par l'administration fiscale, le texte juridique qui la fonde et les informations effectivement rendues publiques.",
+    readFor: [
+      'Vérifier une règle fiscale, son calendrier et les documents opérationnels publiés par la DGFiP.',
+      'Retrouver la version datée d’un code, d’un décret, d’un arrêté ou d’un article du Journal officiel.',
+      'Comparer une communication administrative avec le périmètre exact du droit en vigueur.',
+    ],
+    datasets: [
+      {
+        name: 'Documentation DGFiP',
+        role: 'Services fiscaux officiels, guides, registres, formulaires et documentation destinée aux particuliers et aux professionnels.',
+        cadence: 'Au fil des publications',
+        delay: 'Variable selon le document',
+        url: 'https://www.impots.gouv.fr/documentation',
+      },
+      {
+        name: 'Légifrance',
+        role: 'Codes consolidés, Journal officiel, textes réglementaires, jurisprudence et publications officielles.',
+        cadence: 'Au fil des publications',
+        delay: 'Publication officielle',
+        url: 'https://www.legifrance.gouv.fr/',
+      },
+    ],
+    limits: [
+      'Un guide administratif explique une procédure, mais seul le texte applicable fixe la règle de droit.',
+      'Les textes consolidés évoluent : la date de version et la date d’entrée en vigueur doivent être vérifiées.',
+      'Une liste administrative peut documenter un statut sans exposer les dépendances techniques, les volumes ou les liens de contrôle sous-jacents.',
+    ],
+    verification: [
+      'Conserver la date de consultation et, sur Légifrance, la version du texte citée.',
+      'Distinguer page d’information, guide, fichier administratif et disposition normative.',
+      'Contrôler les fichiers annexes et leurs dates quand une page de synthèse renvoie vers un registre évolutif.',
+    ],
+    related: [
+      { label: 'Péage de la facture, volet 1', href: '/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/' },
+      { label: 'Péage de la facture, volet 2', href: '/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/' },
+      { label: 'Sources primaires', href: '/sources/' },
     ],
   },
   {
