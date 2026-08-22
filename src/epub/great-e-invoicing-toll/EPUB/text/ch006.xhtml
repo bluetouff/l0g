@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en"><head><meta charset="utf-8" /><meta name="generator" content="l0g" /><title>The great e-invoicing toll, 5/5: when the pipe breaks</title><link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" /></head><body epub:type="bodymatter"><section id="article-5" class="level1 article-chapter"><p class="chapter-kicker">Part 5 of 5</p><h1>The great e-invoicing toll, 5/5: when the pipe breaks</h1><p class="chapter-dek">Audits, pilot, registry, incidents and degraded operation: what France has proved about mandatory e-invoicing, and what remains unpublished.</p><p class="chapter-meta">Published 22 August 2026 · <a href="https://l0g.fr/en/analysis/the-great-e-invoicing-toll-5-when-the-pipe-breaks/">Canonical article on l0g.fr</a></p><p><em>On 1 September 2026, every business within the French VAT system must be able to receive electronic invoices through an approved platform. The system’s security will no longer be judged only by the quality of its rules. It will be tested by the first widespread rejection, compromised identity, correlated outage and restoration to an accurate accounting state.</em></p>
+<p><em>France has built substantial defences. It has yet to publish all the evidence Parliament, businesses and researchers need to measure their real-world resilience.</em></p>
+<p>This investigation followed <a href="ch002.xhtml#article-1">the removal of the direct public service</a>, <a href="ch003.xhtml#article-2">the multiplication of approved platforms</a>, <a href="ch004.xhtml#article-3">the boundaries of free plans</a> and <a href="ch005.xhtml#article-4">the readers of an invoice</a>. The fifth and final part asks what remains after everything is connected: <strong>what happens when the flow degrades?</strong></p>
+<section id="c5-key-points" class="level2"><h2>Key points</h2>
+<ul>
+<li>The framework requires ISO/IEC 27001 certification, operation of the information system in the European Union, no extra-EU transfer of hosted service data, and SecNumCloud qualification when a cloud provider is used.</li>
+<li>Interoperability tests are a condition of final registration. The initial compliance audit report may still be filed up to one year after registration and must review at least one month of subsequent activity.</li>
+<li>The DGFiP registry, updated on 19 August, contains 148 platforms in its main list and 18 complete applications awaiting tests. But the published list does not show, for each platform, when its approval expires or whether its initial audit has been filed.</li>
+<li>The national pilot began on 26 February 2026. The official pages reviewed describe its aims, while l0g found no quantified public results on them by 22 August.</li>
+<li>The go-live guide protects payment continuity. It also requires companies to document incidents, control an alternative channel, prevent duplicates and regularise the flow.</li>
+<li>DGFiP incidents in February and August 2026 demonstrate the reality of identity and authorised-access risk. No public evidence reviewed links them to electronic invoicing, the PPF, its directory, its concentrator or an approved platform.</li>
+<li>Aggregate results, audit status, recovery tests, critical dependencies, exit conditions and the division of liability still need to be published.</li>
+</ul>
+</section>
+<section id="c5-what-approval-already-requires" class="level2"><h2>What approval already requires</h2>
+<p>Registration is more than a marketing declaration.</p>
+<p><a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29">Article 242 nonies B of Annex II to the French General Tax Code</a> requires security documentation, ISO/IEC 27001 certification covering the service, commitments concerning EU operation and data transfers, technical documentation, authentication controls and interoperability tests. When a cloud provider is involved, the platform must provide the reference or a copy of its SecNumCloud qualification. If qualification is still in progress, that evidence may be provided with the initial audit report.</p>
+<p>In <a href="https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf">written answers published on 4 August 2026</a>, the government presents the distributed model as protection against a single point of failure. It also cites security approval of state systems, end-to-end and penetration tests, incident management, backup, restoration and access logging.</p>
+<p>The rules are demanding on paper. They still do not show what load has actually been sustained, how long recovery takes, what data might be lost or how a customer would change platforms in an emergency.</p>
+</section>
+<section id="c5-the-audit-runs-on-several-clocks" class="level2"><h2>The audit runs on several clocks</h2>
+<p>The words “approved platform” combine controls that do not all occur on the same day.</p>
+<p>The <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29">framework in force since 29 July 2026</a> allows the initial compliance report to be filed during the year following registration. <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054606052/2026-07-29">Article 41 septies A of Annex IV</a> says this audit must cover at least one month of activity after registration. When it identifies non-compliance, the announced corrective period may not exceed three months after the report is filed.</p>
+<p>A surveillance report must then be filed by the end of the second year. Renewal, requested before the three-year registration expires, includes a new compliance audit, followed by two surveillance audits during the first two years of the renewed cycle.</p>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<img src="../media/file8.svg" class="infographic-image" alt="Registration, interoperability tests, the initial audit, surveillance audit and renewal follow distinct timetables." />
+</figure>
+<p>In plain terms, <strong>a platform may receive final registration before filing its complete initial audit report</strong>. This does not mean the platform is non-compliant, that it faced no prior control or that it has yet to file its report. The registry should simply make the position of each application clear.</p>
+</section>
+<section id="c5-148-platforms-but-no-clear-view-of-their-audits" class="level2"><h2>148 platforms, but no clear view of their audits</h2>
+<p>The <a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees">DGFiP page modified on 19 August 2026</a> publishes two lists. They contain:</p>
+<ul>
+<li><strong>148 platforms</strong> in the list of operators meeting the conditions, including interoperability tests;</li>
+<li><strong>18 operators</strong> with a complete and compliant application, still awaiting those tests.</li>
+</ul>
+<p>This update corrects the previous count of 147 and 16 in part two, which used an earlier version of the list.</p>
+<p><a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29">Article 41 septies B of Annex IV</a> says the public list must include the approval’s expiry date, its status and, where applicable, the outstanding initial audit report. Yet the published list does not make those details clear for each platform. A business owner can check that a name appears, but not when its approval expires or where its initial audit stands.</p>
+<p>DGFiP can answer that question directly by publishing those three details for every operator.</p>
+</section>
+<section id="c5-the-public-pilot-still-lacks-measurable-results" class="level2"><h2>The public pilot still lacks measurable results</h2>
+<p>The <a href="https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/">AIFE says</a> the pilot started on 26 February 2026. Its <a href="https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b">B2B e-invoicing page</a> states the objectives: test real-world exchanges, secure the ramp-up and prepare participants.</p>
+<p>By 22 August 2026, l0g had found no public report on those pages, the DGFiP pilot announcement or linked official documents giving exchanged volumes, success rates, latency, rejections, duplicates, incidents, resolution time or restoration results.</p>
+<p>That does not mean the metrics do not exist, that no test took place or that no business participated. It means businesses and Parliament cannot see the results. An aggregate report would answer the question without exposing sensitive details.</p>
+<p>At a minimum, mandatory infrastructure deserves results on:</p>
+<ol>
+<li>platforms and businesses that were actually active;</li>
+<li>invoices and lifecycle events exchanged;</li>
+<li>sustained load and tested peaks;</li>
+<li>success, rejection and retransmission rates;</li>
+<li>resolution times;</li>
+<li>restoration, failover and correlated-outage exercises;</li>
+<li>gaps opened, fixed or accepted before go-live.</li>
+</ol>
+</section>
+<section id="c5-two-recent-intrusions-raise-the-evidence-threshold" class="level2"><h2>Two recent intrusions raise the evidence threshold</h2>
+<p>On 18 February 2026, the <a href="https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/">French Finance Ministry announced</a> illegal access to the national bank-account register, FICOBA, using a civil servant’s impersonated credentials. The statement estimated that <strong>1.2 million accounts</strong> may have been affected.</p>
+<p>On 14 August, the <a href="https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/">same ministry documented</a> another intrusion using impersonated credentials belonging to a DGFiP agent and an authorised third party. Investigators had established access to or extraction of data concerning <strong>678,000 individuals and businesses</strong>. The <a href="https://www.cnil.fr/fr/piratage-du-systeme-dinformation-des-impots-les-verifications-sont-en-cours">CNIL, notified of the breach</a>, said on 18 August that its checks were under way.</p>
+<p>These cases concern DGFiP systems and access. <strong>No public evidence reviewed links them to electronic invoicing, the PPF, its directory, its concentrator or an approved platform.</strong> Treating them as evidence that the reform has been compromised would be false.</p>
+<p>The connection to this investigation lies elsewhere: both intrusions used compromised legitimate credentials. Security therefore also depends on controlling authorised accounts and provider access. In its <a href="https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf">Cyber Threat Overview 2024</a>, in the section on supply-chain attacks, ANSSI had already described the growth of provider compromises used to reach customers indirectly.</p>
+<p>A distributed model reduces concentration in one gateway. It may still share dependencies: cloud infrastructure, identity, support software, exchange networks, libraries or administration providers. A count of brands is therefore not automatically a count of independent failure domains.</p>
+</section>
+<section id="c5-when-an-outage-becomes-the-companys-workload" class="level2"><h2>When an outage becomes the company’s workload</h2>
+<p>The <a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf">DGFiP practical go-live guide</a> provides an important economic safeguard. A temporary outage should not stop activity, the processing of a real transaction or payment. An alternative channel can maintain continuity when the expected flow is unavailable.</p>
+<p>In return, the company must preserve statuses and errors, contact the relevant parties, link the copy to the initial invoice, prevent duplicate payment, booking, deduction or reporting, then transmit or regularise the same invoice after service recovery.</p>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<img src="../media/file9.svg" class="infographic-image" alt="A company identifies the incident, preserves evidence, notifies parties, opens a continuity channel when needed, prevents duplicates, regularises and closes the case." />
+</figure>
+<p>l0g turned that guidance into a local incident log so a small business can apply it. The tool requests no invoice and sends no data. It generates a text file the business can retain in its own document system.</p>
+<blockquote>
+<p><strong>Interactive tool.</strong> <a href="https://l0g.fr/en/tools/e-invoice-incident-log/">The incident log</a> remains available on l0g.fr. The book preserves its context and limitations without embedding scripts.</p>
+</blockquote>
+<p>The <a href="https://l0g.fr/en/tools/e-invoice-incident-log/">standalone incident log</a> can remain open during an outage.</p>
+</section>
+<section id="c5-what-a-business-cannot-compare" class="level2"><h2>What a business cannot compare</h2>
+<p>The registry says which platforms are approved. It does not say:</p>
+<ul>
+<li>how long the service may remain unavailable;</li>
+<li>how quickly it must restart and how much data may be lost;</li>
+<li>when customers must be notified;</li>
+<li>when restoration and failover were last tested;</li>
+<li>which dependencies are shared by several brands;</li>
+<li>how a customer can retrieve data and change provider during an outage;</li>
+<li>who bears cash losses, duplicate processing and regularisation costs.</li>
+</ul>
+<p>Answers may exist in contracts, audit files, internal plans or insurance policies. They remain scattered and difficult to compare even as platform use becomes mandatory.</p>
+<p>Publishing service levels, exercise dates and attestations would not require disclosure of system architecture, vulnerabilities or trade secrets.</p>
+</section>
+<section id="c5-twelve-questions-for-the-government" class="level2"><h2>Twelve questions for the government</h2>
+<p>Two written questions, <a href="https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf">no. 16415</a> and <a href="https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16666">no. 16666</a>, received answers on 4 August. The government describes the safeguards it has planned. The following questions remain open.</p>
+<ol>
+<li>How many platforms have filed their initial audit report by 1 September 2026, and how many remain within the legal filing period?</li>
+<li>Which report dates, reservations, corrective actions and closure dates can be published for each platform?</li>
+<li>Why does the public list not show, for each platform, the expiry date and status required by Article 41 septies B?</li>
+<li>What volumes, success rates, latency, rejections and incidents did the pilot measure?</li>
+<li>Which load, restoration, corruption, failover and correlated-outage tests were performed?</li>
+<li>Which common availability, recovery-time and data-recovery commitments apply to platforms and state systems?</li>
+<li>How many platforms share an engine, cloud, identity provider or critical subcontractor?</li>
+<li>Which accelerated procedure applies when a platform or its support engine becomes unavailable for an extended period?</li>
+<li>Which incidents must be reported to businesses, DGFiP, CNIL and ANSSI, and within what time limits?</li>
+<li>Which emergency export is guaranteed so customers can continue, reconcile and move provider?</li>
+<li>Which insurance and liability rules cover cash losses, duplicate processing and regularisation costs?</li>
+<li>Which opinions, impact assessments and security reports can be published before full rollout?</li>
+</ol>
+<p>None of these questions presumes a failure. They ask only that the stated guarantees can be verified.</p>
+</section>
+<section id="c5-ten-days-to-show-the-system-is-ready" class="level2"><h2>Ten days to show the system is ready</h2>
+<p>The first general reception deadline is ten days away.</p>
+<p>The point is not to delay the reform on the strength of a hypothetical scenario. It is to ask, before the switch, for the information the state would demand from any essential operator: test results, audit status, recovery times, the fallback procedure and a clear division of responsibility.</p>
+<p>Those elements can still be published: the pilot report, audit status, recovery commitments and the procedure allowing a business to retrieve its data or change provider in an emergency.</p>
+<p>Parliament has tools to obtain this evidence: written questions, hearings, information missions, budget scrutiny and document requests. Business owners, accountants, engineers and citizens can <a href="https://www.assemblee-nationale.fr/dyn/vos-deputes">find their representative on the National Assembly website</a> and send these twelve questions.</p>
+<p>Trust does not come from an “approved platform” logo. It comes from knowing what the logo covers, what remains to be checked and what happens when the pipe breaks.</p>
+</section>
+<section id="c5-method-limitations-and-main-sources" class="level2"><h2>Method, limitations and main sources</h2>
+<p><strong>Cut-off date: 22 August 2026.</strong> The counts of 148 and 18 come from the two DGFiP lists modified on 19 August and accessed on 22 August.</p>
+<p>The search for pilot results covered the cited AIFE and DGFiP pages and accessible linked documents. It does not cover internal material or confidential exchanges with platforms. The registry analysis uses the version published on 22 August; the list may be corrected later. Cyber incidents provide context for access risk, never evidence of an electronic invoicing breach.</p>
+<ul>
+<li><a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29">Légifrance, registration conditions and audit timetable</a></li>
+<li><a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054606052/2026-07-29">Légifrance, audit scope and review periods</a></li>
+<li><a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29">Légifrance, required fields in the public registry</a></li>
+<li><a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees">DGFiP, approved-platform list, modified 19 August 2026</a></li>
+<li><a href="https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/">AIFE, platform support and pilot launch</a></li>
+<li><a href="https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b">AIFE, objectives of the B2B e-invoicing pilot</a></li>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf">DGFiP, practical go-live guide for 1 September 2026</a></li>
+<li><a href="https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf">French National Assembly, question no. 16415 and answer of 4 August 2026</a></li>
+<li><a href="https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16666">French National Assembly, question no. 16666 and answer of 4 August 2026</a></li>
+<li><a href="https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/">Finance Ministry, FICOBA incident announced 18 February 2026</a></li>
+<li><a href="https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/">Finance Ministry, illegal access announced 14 August 2026</a></li>
+<li><a href="https://www.cnil.fr/fr/piratage-du-systeme-dinformation-des-impots-les-verifications-sont-en-cours">CNIL, checks concerning the DGFiP breach, 18 August 2026</a></li>
+<li><a href="https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf">ANSSI, Cyber Threat Overview 2024, supply-chain section</a></li>
+<li><a href="https://www.assemblee-nationale.fr/dyn/vos-deputes">French National Assembly, find your representative</a></li>
+</ul>
+<p>Text, registry analysis, infographics and tool content: <strong>CC BY 4.0</strong>. Tool code: l0g repository licence.</p></section></section></body></html>

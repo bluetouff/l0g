@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 950" width="100%" role="img" aria-labelledby="granularity-en-title granularity-en-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="granularity-en-title">The data-granularity jump between 2026 and 2027</title>
+<desc id="granularity-en-desc">In 2026 the structured file contains identities, dates, categories and tax totals. In 2027 it adds line descriptions, quantities, unit prices, discounts, charges and the delivery address.</desc>
+<rect x="1" y="1" width="718" height="948" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">2026 TO 2027: A CHANGE OF SCALE</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">The tax twin moves from invoice summary to structured commercial detail.</text>
+<rect x="30" y="108" width="320" height="600" rx="14" fill="#141a28" stroke="#7aa2f7"></rect>
+<text x="52" y="142" fill="#7aa2f7" font-size="14" font-weight="700">FROM 1 SEPTEMBER 2026</text>
+<text x="52" y="170" fill="#aeb4bf" font-size="11">The structured file includes:</text>
+<circle cx="58" cy="208" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="213" fill="#f5f6f8" font-size="12">Company and VAT identifiers</text>
+<circle cx="58" cy="246" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="251" fill="#f5f6f8" font-size="12">Seller and buyer countries</text>
+<circle cx="58" cy="284" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="289" fill="#f5f6f8" font-size="12">Invoice date and number</text>
+<circle cx="58" cy="322" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="327" fill="#f5f6f8" font-size="12">Goods, services or a mixed sale</text>
+<circle cx="58" cy="360" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="365" fill="#f5f6f8" font-size="12">Tax base by VAT rate</text>
+<circle cx="58" cy="398" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="403" fill="#f5f6f8" font-size="12">VAT rates and amounts</text>
+<circle cx="58" cy="436" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="441" fill="#f5f6f8" font-size="12">Net total, currency and regimes</text>
+<circle cx="58" cy="474" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="479" fill="#f5f6f8" font-size="12">Delivery or service date</text>
+<circle cx="58" cy="512" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="517" fill="#f5f6f8" font-size="12">Filed, rejected, refused, paid</text>
+<circle cx="58" cy="550" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="555" fill="#f5f6f8" font-size="12">Payment date and amount</text>
+<rect x="52" y="588" width="276" height="88" rx="10" fill="#101522" stroke="#394967"></rect>
+<text x="70" y="616" fill="#f5b13d" font-size="11" font-weight="700">MAIN LEVEL</text>
+<text x="70" y="640" fill="#c5ceda" font-size="11">Identity, tax, lifecycle</text>
+<text x="70" y="661" fill="#c5ceda" font-size="11">and invoice payment.</text>
+<rect x="370" y="108" width="320" height="600" rx="14" fill="#13211e" stroke="#5eead4"></rect>
+<text x="392" y="142" fill="#5eead4" font-size="14" font-weight="700">ADDED ON 1 SEPTEMBER 2027</text>
+<text x="392" y="170" fill="#aeb4bf" font-size="11">Nine items become structured:</text>
+<circle cx="398" cy="208" r="4" fill="#5eead4"></circle>
+<text x="414" y="213" fill="#f5f6f8" font-size="12">Precise item description</text>
+<circle cx="398" cy="246" r="4" fill="#5eead4"></circle>
+<text x="414" y="251" fill="#f5f6f8" font-size="12">Quantity of goods or services</text>
+<circle cx="398" cy="284" r="4" fill="#5eead4"></circle>
+<text x="414" y="289" fill="#f5f6f8" font-size="12">Unit price before VAT</text>
+<circle cx="398" cy="322" r="4" fill="#5eead4"></circle>
+<text x="414" y="327" fill="#f5f6f8" font-size="12">Discounts, rebates, reductions</text>
+<circle cx="398" cy="360" r="4" fill="#5eead4"></circle>
+<text x="414" y="365" fill="#f5f6f8" font-size="12">Fees and charges</text>
+<circle cx="398" cy="398" r="4" fill="#5eead4"></circle>
+<text x="414" y="403" fill="#f5f6f8" font-size="12">Separate delivery address</text>
+<circle cx="398" cy="436" r="4" fill="#5eead4"></circle>
+<text x="414" y="441" fill="#f5f6f8" font-size="12">Corrected-invoice date</text>
+<circle cx="398" cy="474" r="4" fill="#5eead4"></circle>
+<text x="414" y="479" fill="#f5f6f8" font-size="12">Early-payment discount note</text>
+<circle cx="398" cy="512" r="4" fill="#5eead4"></circle>
+<text x="414" y="517" fill="#f5f6f8" font-size="12">Environmental contribution</text>
+<rect x="392" y="558" width="276" height="118" rx="10" fill="#10201d" stroke="#376f67"></rect>
+<text x="410" y="586" fill="#f5b13d" font-size="11" font-weight="700">NEW LEVEL</text>
+<text x="410" y="610" fill="#c5d7d3" font-size="11">Commercial lines become usable</text>
+<text x="410" y="631" fill="#c5d7d3" font-size="11">without rereading the PDF.</text>
+<text x="410" y="656" fill="#8b909b" font-size="10">Actual uses still require documentation.</text>
+<rect x="30" y="742" width="660" height="154" rx="14" fill="#211814" stroke="#f5b13d"></rect>
+<text x="52" y="774" fill="#f5b13d" font-size="13" font-weight="700">WHAT THESE FIELDS TECHNICALLY ENABLE</text>
+<text x="52" y="808" fill="#f5f6f8" font-size="12">Linking suppliers and customers, comparing unit prices, tracking volumes</text>
+<text x="52" y="832" fill="#f5f6f8" font-size="12">and observing ordering or payment rhythms.</text>
+<text x="52" y="866" fill="#aeb4bf" font-size="11">Capability inferred from the data, not proof of actual use.</text>
+<text x="32" y="925" fill="#6f7580" font-size="10">Sources: Article 41 septies D and DGFiP table, July and August 2026.</text>
+</svg>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="audit-fr-title audit-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="audit-fr-title">Les différentes étapes de contrôle d’une plateforme agréée</title>
+<desc id="audit-fr-desc">L’immatriculation, les tests d’interopérabilité, l’audit initial, l’audit de surveillance et le renouvellement suivent des calendriers distincts.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">L’AGRÉMENT SUIT PLUSIEURS HORLOGES</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Calendrier réglementaire, pas statut individuel d’une plateforme.</text>
+<line x1="94" y1="142" x2="94" y2="654" stroke="#39414d" stroke-width="4"></line>
+<circle cx="94" cy="146" r="12" fill="#5eead4"></circle>
+<rect x="132" y="106" width="526" height="86" rx="12" fill="#10211f" stroke="#5eead4"></rect>
+<text x="154" y="136" fill="#5eead4" font-size="13" font-weight="700">IMMATRICULATION ET TESTS</text>
+<text x="154" y="160" fill="#f5f6f8" font-size="11">Dossier, sécurité, ISO 27001 et interopérabilité.</text>
+<text x="154" y="179" fill="#aeb4bf" font-size="10">Les tests conditionnent l’immatriculation définitive.</text>
+<circle cx="94" cy="274" r="12" fill="#7aa2f7"></circle>
+<rect x="132" y="226" width="526" height="102" rx="12" fill="#141a28" stroke="#7aa2f7"></rect>
+<text x="154" y="256" fill="#7aa2f7" font-size="13" font-weight="700">AU PLUS TARD DANS L’ANNÉE</text>
+<text x="154" y="280" fill="#f5f6f8" font-size="11">Rapport initial d’audit de conformité.</text>
+<text x="154" y="300" fill="#aeb4bf" font-size="10">Au moins un mois d’activité après l’immatriculation.</text>
+<text x="154" y="317" fill="#aeb4bf" font-size="10">Correction éventuelle annoncée : trois mois maximum.</text>
+<circle cx="94" cy="410" r="12" fill="#f5b13d"></circle>
+<rect x="132" y="362" width="526" height="102" rx="12" fill="#1b1b14" stroke="#f5b13d"></rect>
+<text x="154" y="392" fill="#f5b13d" font-size="13" font-weight="700">AVANT LA FIN DE LA DEUXIÈME ANNÉE</text>
+<text x="154" y="416" fill="#f5f6f8" font-size="11">Rapport d’audit de surveillance.</text>
+<text x="154" y="436" fill="#aeb4bf" font-size="10">Il cible les modifications substantielles intervenues.</text>
+<text x="154" y="453" fill="#aeb4bf" font-size="10">Période observée : au moins un mois sur les six derniers.</text>
+<circle cx="94" cy="546" r="12" fill="#ff85ad"></circle>
+<rect x="132" y="498" width="526" height="102" rx="12" fill="#21151c" stroke="#ff85ad"></rect>
+<text x="154" y="528" fill="#ff85ad" font-size="13" font-weight="700">RENOUVELLEMENT À TROIS ANS</text>
+<text x="154" y="552" fill="#f5f6f8" font-size="11">Nouveau rapport de conformité avec la demande.</text>
+<text x="154" y="572" fill="#aeb4bf" font-size="10">Puis surveillance durant les deux années suivantes.</text>
+<circle cx="94" cy="654" r="12" fill="#8b909b"></circle>
+<rect x="132" y="626" width="526" height="60" rx="12" fill="#15171b" stroke="#4a505a"></rect>
+<text x="154" y="652" fill="#f5f6f8" font-size="11" font-weight="700">QUESTION PUBLIQUE</text>
+<text x="154" y="673" fill="#aeb4bf" font-size="10">Quel rapport a été remis, quand, et avec quelles réserves closes ?</text>
+<text x="32" y="724" fill="#6f7580" font-size="10">Sources : CGI annexe II, art. 242 nonies B et C ; annexe IV, art. 41 septies A. Consultation : 22 août 2026.</text>
+</svg>

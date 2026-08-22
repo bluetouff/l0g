@@ -12,8 +12,8 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     { hreflang: 'en', href: 'https://l0g.fr/en/publications/' },
     { hreflang: 'x-default', href: 'https://l0g.fr/publications/' },
   ]}
-  ogImage="/publications/eau-electricite-cover.png"
-  ogImageAlt="L’eau derrière l’électricité et les publications numériques l0g"
+  ogImage="/publications/grand-peage-facture-cover.png"
+  ogImageAlt="Le grand péage de la facture et les publications numériques l0g"
 >
   <PageHero
     index="06"
@@ -25,9 +25,9 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     glyph="read"
     accent="var(--color-amber)"
     stats={[
-      { value: 4, label: 'éditions disponibles' },
-      { value: 32, label: 'chapitres et enquêtes' },
-      { value: 4, label: 'EPUB gratuits' },
+      { value: 5, label: 'éditions disponibles' },
+      { value: 37, label: 'chapitres et enquêtes' },
+      { value: 5, label: 'EPUB gratuits' },
     ]}
   />
 
@@ -35,6 +35,7 @@ import PublicationSpotlight from '../../components/PublicationSpotlight.astro';
     <p class="mono-label">// catalogue</p>
     <h2 id="publication-list-title">Éditions disponibles</h2>
     <div class="publication-grid">
+      <PublicationSpotlight publication="e-invoicing" />
       <PublicationSpotlight publication="water-electricity" />
       <PublicationSpotlight publication="digital-euro" />
       <PublicationSpotlight />

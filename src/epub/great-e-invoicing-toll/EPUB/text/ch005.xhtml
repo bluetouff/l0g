@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en"><head><meta charset="utf-8" /><meta name="generator" content="l0g" /><title>The great e-invoicing toll, 4/5: who reads your invoices?</title><link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" /></head><body epub:type="bodymatter"><section id="article-4" class="level1 article-chapter"><p class="chapter-kicker">Part 4 of 5</p><h1>The great e-invoicing toll, 4/5: who reads your invoices?</h1><p class="chapter-dek">The full invoice travels between platforms. Bercy receives a structured tax twin that gains line descriptions, quantities and unit prices in 2027.</p><p class="chapter-meta">Published 22 August 2026 · <a href="https://l0g.fr/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/">Canonical article on l0g.fr</a></p><p><em>France's reform creates two distinct flows: the complete commercial document between businesses and a structured twin sent to the tax authority.</em></p>
+<p><em>The full invoice moves from the issuing company to its approved platform, then to the customer's platform and the customer. In parallel, the sender's platform extracts the fields required by law and sends them to the tax authority. Statuses, transaction information and some payment data complete the file. From September 2027, commercial lines themselves become structured: precise descriptions, quantities, unit prices, discounts and charges.</em></p>
+<p><em>Software, ERP systems, accountants, banks, payments, credit and sometimes artificial intelligence can then be connected around this mandatory chain. Each branch relies on different contracts and permissions. Bercy's registry does not map them.</em></p>
+<p>After <a href="ch002.xhtml#article-1">the amputated public portal</a>, <a href="ch003.xhtml#article-2">the 148 shopfronts in Bercy's registry</a> and <a href="ch004.xhtml#article-3">the price of free</a>, this fourth part follows the data. It asks a simple question: <strong>who can actually see what?</strong></p>
+<p>In this article, <strong>tax twin</strong> is l0g's shorthand for the structured file, statuses and regulated data sent to the tax authority. It is not an official legal term.</p>
+<section id="c4-key-points" class="level2"><h2>Key points</h2>
+<ul>
+<li>The sender's approved platform and the recipient's platform process the full document. One operator may perform both roles when the companies use the same platform.</li>
+<li>The central directory is used for routing. Its legal purpose is not to store invoice content.</li>
+<li>The tax authority receives much more than a VAT total: identities, dates, transaction categories, tax bases, rates, amounts, statuses and some payment data.</li>
+<li>On 1 September 2027, nine additional commercial items become structured, including the precise description, quantity and unit price before VAT.</li>
+<li>Data hosted by the approved-platform service must remain in the European Union. The requirement extends to third parties with technical access.</li>
+<li>A general privacy policy naming US subcontractors does not prove that regulated invoice data leave the EU. The precise boundary of the approved-platform service must be identified.</li>
+<li>Integrated AI and connected external assistants are not the same product. Several operators explicitly document the difference.</li>
+<li>A bank account or credit product does not prove that invoices automatically feed a score. The dataset and activation journey must be verified product by product.</li>
+</ul>
+</section>
+<section id="c4-one-document-two-circuits" class="level2"><h2>One document, two circuits</h2>
+<p>The law first organises transport of the commercial document.</p>
+<p>The <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29">section governing approved-platform services</a> requires the sender's platform to accept, check and transmit the invoice. The recipient's platform must receive it and make it available to its customer. Depending on the format, the chain may contain a UBL, CII or Factur-X file and a readable representation.</p>
+<p>Those functions require the platforms to process the full document. They check its structure, routing and certain mandatory information, then manage lifecycle statuses. The customer must be able to view the invoice, refuse it or follow payment.</p>
+<p>The second circuit is fiscal.</p>
+<p>The sender's platform extracts the fields listed in <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606114">Article 41 septies D</a> and sends them to the administration. <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046385779">Article 242 nonies L</a> generally sets a 24-hour deadline after filing, subject to specific rules for some categories of data.</p>
+<p>The tax file is therefore not necessarily the PDF or complete document sent to the customer. It is a regulated structured representation, supplemented by statuses and, depending on the transaction, payment or reporting data.</p>
+<p>The central directory is a third object. The texts assign it a routing purpose: identifying the recipient's chosen platform and electronic address. Treating the directory as a warehouse of invoices would be wrong.</p>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<img src="../media/file6.svg" class="infographic-image" alt="The full document moves between companies and platforms. The directory is used for routing. Structured data and statuses are sent to the tax authority." />
+</figure>
+</section>
+<section id="c4-the-mandatory-chain-and-optional-branches" class="level2"><h2>The mandatory chain and optional branches</h2>
+<p>The regulated chain already causes several systems to process an invoice. It says nothing about the interface visible to the user, the accounting firm or the financial services activated around it.</p>
+<p>The map below separates these levels. It asks for no invoice, company number or provider name. All interaction remains in the browser.</p>
+<blockquote>
+<p><strong>Interactive tool.</strong> <a href="https://l0g.fr/en/tools/who-can-see-my-e-invoice/">The invoice access map</a> remains available on l0g.fr. The book preserves its context and limitations without embedding scripts.</p>
+</blockquote>
+<p>The map uses four categories:</p>
+<ul>
+<li><strong>full document</strong>: the actor may process the invoice itself;</li>
+<li><strong>structured data</strong>: it receives an extracted or derived dataset;</li>
+<li><strong>routing only</strong>: it knows where to send the document without receiving its content;</li>
+<li><strong>potential technical access</strong>: a host or subcontractor may administer the system without a staff member routinely reading every invoice.</li>
+</ul>
+<p>Technical capability does not prove human consultation. It still places the provider inside the security and subcontracting analysis.</p>
+</section>
+<section id="c4-data-received-by-bercy-from-september-2026" class="level2"><h2>Data received by Bercy from September 2026</h2>
+<p>The <a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/japprof_donnees-de-facture-a-transmettre-a-ladministration-correspondance-flux_vf.pdf">correspondence table published by the DGFiP in August 2026</a> takes the discussion out of the abstract.</p>
+<p>From the first deadline, the tax twin may contain several families of information.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Family</th><th>Examples transmitted</th></tr></thead><tbody><tr><td>Identity</td><td>company identifiers, VAT numbers and seller or buyer countries</td></tr><tr><td>Document</td><td>date, unique number, corrected invoice and currency</td></tr><tr><td>Transaction type</td><td>goods, services or a combination</td></tr><tr><td>Tax</td><td>tax bases by rate, VAT rates and amounts, exemptions and special regimes</td></tr><tr><td>Performance</td><td>delivery, service-completion or advance-payment dates</td></tr><tr><td>Lifecycle</td><td>filed, rejected, refused and paid statuses</td></tr><tr><td>Payment</td><td>collection date and amount by VAT rate where required</td></tr><tr><td>E-reporting</td><td>B2C or international sales data outside domestic B2B e-invoicing</td></tr></tbody></table>
+<p>The <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606169">mandatory statuses</a> are not merely convenience notifications. They are part of the tax system and show that an invoice was filed, rejected, refused or collected.</p>
+<p>Calling these merely "a few tax fields" understates the system. Saying the administration systematically receives the complete commercial document overstates it. The reality sits between the two: Bercy receives a structured file rich enough for automated controls, without the texts requiring central storage of every readable representation or attachment.</p>
+</section>
+<section id="c4-september-2027-invoice-lines-become-data" class="level2"><h2>September 2027, invoice lines become data</h2>
+<p>One year later, the level of detail increases sharply.</p>
+<p>From 1 September 2027, <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606114">Article 41 septies D</a> adds nine structured items:</p>
+<ul>
+<li>the precise description of the good or service;</li>
+<li>quantity;</li>
+<li>unit price before VAT;</li>
+<li>discounts, rebates and reductions;</li>
+<li>fees and charges;</li>
+<li>the delivery address when it differs from the customer's address;</li>
+<li>the corrected invoice's issue date;</li>
+<li>the early-payment discount note;</li>
+<li>the environmental contribution.</li>
+</ul>
+<p>The shift is qualitative. In 2026 the system already knows the parties, the date, the type of sale and the tax amounts. In 2027 it also receives the commercial structure of each line.</p>
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<img src="../media/file7.svg" class="infographic-image" alt="In 2026 the structured file contains identities, dates, categories and tax totals. In 2027 it adds line descriptions, quantities, unit prices, discounts, charges and the delivery address." />
+</figure>
+<p>From those fields, a system can technically link a supplier to a customer, track quantities, compare unit prices and observe ordering or payment rhythms. This is an <strong>inference from the data schema</strong>. It does not mean that every possible use is authorised, built or applied to every company.</p>
+<p>The investigative questions concern purpose:</p>
+<ul>
+<li>which automated checks will actually run;</li>
+<li>which databases may be matched;</li>
+<li>how long line-level data remain accessible;</li>
+<li>which staff or services may consult them;</li>
+<li>which indicators will be produced;</li>
+<li>which impact assessment examined the proportionality of this granularity.</li>
+</ul>
+<p>The ministry documents the fields. It publishes the associated uses, access rights and retention periods much less clearly.</p>
+</section>
+<section id="c4-safeguards-imposed-on-approved-platforms" class="level2"><h2>Safeguards imposed on approved platforms</h2>
+<p>Approved platforms are not ordinary SaaS vendors given a public mission without safeguards.</p>
+<p><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049330326/2026-09-01">Article 242 nonies B</a> imposes several guarantees:</p>
+<ul>
+<li>ISO 27001 certification covering the information system contributing to the service;</li>
+<li>SecNumCloud qualification when the platform uses cloud hosting within the relevant scope;</li>
+<li>operation of the system from the European Union;</li>
+<li>no transfer outside the EU of data hosted by the service;</li>
+<li>compliance and surveillance audits;</li>
+<li>controls over protocols and interoperability.</li>
+</ul>
+<p>The article adds a decisive point: these requirements also apply to third parties used by the platform when they have the technical possibility of obtaining service data.</p>
+<p>A white-label engine, host, administration tool or technical-support provider does not disappear from the chain merely because its logo is invisible to the customer.</p>
+<p>The certifications do not make the system invulnerable. They do not prevent account theft, poor permission design, human error or a subcontractor breach. They do require an operator to document architecture, controls and scope.</p>
+<p>The practical reach of these safeguards therefore depends on their <strong>scope</strong>.</p>
+</section>
+<section id="c4-where-does-the-approved-platform-end" class="level2"><h2>Where does the approved platform end?</h2>
+<p>A company may see one interface while using several legal and technical services at once:</p>
+<ul>
+<li>the approved platform;</li>
+<li>invoicing software;</li>
+<li>accounting;</li>
+<li>a professional account;</li>
+<li>payments;</li>
+<li>credit;</li>
+<li>support;</li>
+<li>archiving;</li>
+<li>artificial intelligence.</li>
+</ul>
+<p>The no-transfer rule applies to "data hosted by the service" within the regulated PA scope. A general privacy policy often covers much more: website visits, marketing, support tickets, bank data, campaigns and AI features.</p>
+<p>This stack of services creates two interpretation risks.</p>
+<p>The first is to see a US supplier named in a general policy and conclude that regulated invoices leave Europe. That supplier may handle only marketing or support.</p>
+<p>The second is to read "hosted in Europe" on a sales page and assume that every copy, log, backup, admin console and AI tool sits inside the protected scope.</p>
+<p>Useful evidence takes the form of a matrix linking each dataset to its processing:</p>
+<div role="region" tabindex="0" aria-label="Processing matrix, horizontally scrollable" style="width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;padding-bottom:.5rem">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Data</th><th>Service</th><th>Legal role</th><th>Subcontractor</th><th>Location</th><th>Purpose</th><th>Retention</th></tr></thead><tbody><tr><td>full invoice</td><td>PA</td><td>not public</td><td>not public</td><td>not public</td><td>transmission</td><td>not public</td></tr><tr><td>tax file</td><td>PA</td><td>not public</td><td>not public</td><td>not public</td><td>DGFiP</td><td>not public</td></tr><tr><td>accounting copy</td><td>software</td><td>not public</td><td>not public</td><td>not public</td><td>accounting</td><td>not public</td></tr><tr><td>bank data</td><td>payment</td><td>not public</td><td>not public</td><td>not public</td><td>matching</td><td>not public</td></tr><tr><td>file sent to AI</td><td>assistant</td><td>not public</td><td>AI provider</td><td>not public</td><td>chosen request</td><td>not public</td></tr></tbody></table>
+</div>
+<p>No standardised public matrix of this kind was found in l0g's sample.</p>
+</section>
+<section id="c4-public-policies-describe-different-products" class="level2"><h2>Public policies describe different products</h2>
+<p>l0g examined twelve sets of public documents. The seven cases detailed below illustrate the main boundaries observed; the other five helped identify missing information. The purpose is not to rank platforms. A short policy does not prove bad practice, and a detailed policy does not guarantee that no incident will occur. The test is whether a reader can distinguish the approved-platform service from the rest of the product.</p>
+<h3>Pennylane: two AI paths, two boundaries</h3>
+<p><a href="https://www.pennylane.com/fr/legal/privacy">Pennylane's privacy policy</a> distinguishes processing for which the company is controller from processing it carries out as a processor for customers. For the latter, the decisive document is the data-processing agreement attached to the contract.</p>
+<p>The policy also allows, under conditions, later processing for statistics or product improvement. It mentions product improvement and model training using <strong>usage data</strong>, not a general training right over invoice content. The exact relationship with the approved-platform service therefore depends on the contract and dataset involved.</p>
+<p>Pennylane then documents two different AI routes.</p>
+<p>Its <a href="https://help.pennylane.com/fr/articles/175002-utiliser-comptassistant">integrated accounting assistant</a> is described as keeping data in Europe and preventing model providers from using those data for training.</p>
+<p>Its <a href="https://help.pennylane.com/fr/articles/757740-connecter-votre-assistant-ia-au-mcp-pennylane">MCP server</a>, by contrast, can connect an external assistant. Depending on permissions, that assistant may search sales and purchase invoices, transactions or VAT returns. Pennylane tells users to assess the chosen provider's training, hosting, transfer and retention rules.</p>
+<p>The distinction is clear: integrated AI on one side, a voluntary exit to a third party on the other.</p>
+<h3>Qonto: the internal ecosystem and the MCP exit</h3>
+<p>Qonto draws the same line.</p>
+<p>The page on its <a href="https://qonto.com/fr/ai">integrated AI agents</a> says data remain in Europe, are not shared with model providers and are not used to train their AI systems.</p>
+<p>The <a href="https://support-fr.qonto.com/hc/fr/articles/47588576515089-Comment-connecter-et-utiliser-le-serveur-MCP-de-Qonto">Qonto MCP server documentation</a> describes a different scenario. Depending on the user's role and the available functions, an external assistant may view transactions and customer or supplier invoices. Qonto says it sends only the data needed for each request and lets users revoke access. The page reviewed does not document storage, training or retention at the assistant provider; those points must be checked with that third party.</p>
+<p>Revoking the connection stops new access. The treatment of data already received then depends on the assistant provider's commitments.</p>
+<h3>Dougs: document AI is explicitly named</h3>
+<p><a href="https://www.dougs.fr/politique-confidentialite/">Dougs' privacy policy</a> names OpenAI and Anthropic among providers that may contribute to document and accounting analysis.</p>
+<p>The published purposes include reading invoices, expense reports and other documents, accounting categorisation and consistency checks. Dougs says those providers are not allowed to train their own models using the processed data.</p>
+<p>The same policy documents an optional MCP server capable of sending accounting, financial and commercial documents to an assistant chosen by the user.</p>
+<p>It also describes controlled general transfers outside the EU. None of those statements proves that regulated PA invoices leave the Union. They make a more precise question necessary: are regulated invoices isolated from those processes, or does the AI run inside an architecture compatible with the service's EU boundary?</p>
+<h3>Shine: invoices, banking and credit in one policy</h3>
+<p><a href="https://www.shine.fr/privacy/fr/">Shine's privacy policy</a> covers invoice data, contracts, transactions, payment accounts and some credit functions.</p>
+<p>It names Google Cloud in the European Union as its main host. It also says that some general subcontractors may involve extra-EU transfers with appropriate safeguards. The second statement does not prove that PA invoices are transferred outside Europe. It shows why a general policy is insufficient to isolate the regulated scope.</p>
+<p>Shine also documents joint controllership with Froda when a user expresses interest in a business loan. The financing journey is therefore identifiable and conditional. Nothing in the reviewed documents establishes that every invoice automatically feeds a credit score.</p>
+<p>The policy announces ten-year invoice retention and a right to portability in a structured, commonly used, machine-readable format.</p>
+<h3>Dext: the invoice sits in another legal document</h3>
+<p><a href="https://dext.com/fr/privacy-policy">Dext's public privacy policy</a> explicitly excludes personal data contained in invoices and receipts uploaded by the customer. Dext says it acts as processor for those documents and refers to the data-processing agreement incorporated into its terms.</p>
+<p>That separation is legally coherent. It also proves that an analysis based only on the public privacy page may miss the central document.</p>
+<p>Auditing Dext therefore requires the agreement applying to invoices, the document-subprocessor list, processing locations and the AI-function matrix.</p>
+<h3>Tiime and macompta.fr: two forms of transparency</h3>
+<p><a href="https://www.tiime.fr/soustraitants">Tiime publishes a subprocessor list</a> with functions and locations. At Tiime, the entity operating the PA, is listed in France. AWS and Google Cloud are listed in the European Union for some functions. General support or ticketing tools also show "EU and United States" locations.</p>
+<p>The list is useful. It still does not identify which subcontractor can see which invoice data, or which processing belongs specifically to the approved-platform service.</p>
+<p><a href="https://www.macompta.fr/conditions-generales-de-services">macompta.fr's terms</a> name Oxeva and OVH for French hosting, describe retention periods and recovery formats, and allow some use of non-personal data for sector statistics. The question then moves to the anonymisation method and its audit.</p>
+<p>These examples show that transparency is not merely a list of names. Each name must be linked to a dataset and purpose.</p>
+</section>
+<section id="c4-the-accountant-becomes-a-reader-under-an-engagement" class="level2"><h2>The accountant becomes a reader under an engagement</h2>
+<p>The accountant is often the first reader a company thinks of after its customer. Access still depends on the product, the engagement and workspace permissions.</p>
+<p>Shine, for example, documented a move from auto-validation to <a href="https://help.shine.fr/shine-facture/fr/articles/15885445-l-auto-validation-devient-partage-automatique">automatic sharing with the accounting firm</a>. When a user imports an invoice, the document may be treated as approved and shared with the accountant while remaining visible in the interface.</p>
+<p>The automation may remove unnecessary handling. It should also make clear:</p>
+<ul>
+<li>the firm's identity;</li>
+<li>authorised staff;</li>
+<li>which documents are shared;</li>
+<li>when sharing occurs;</li>
+<li>how to disable the automation;</li>
+<li>which tools and subcontractors the firm uses.</li>
+</ul>
+<p>Professional secrecy is not a substitute for sound identity and access management.</p>
+</section>
+<section id="c4-banking-payments-and-credit-document-each-use" class="level2"><h2>Banking, payments and credit: document each use</h2>
+<p>A structured invoice is easy to match with a bank transaction. A product may then display the due date, offer settlement, track collection or forecast cash.</p>
+<p>The same dataset can technically reveal customer concentration, payment regularity and seasonality. Those signals may be relevant to finance and factoring.</p>
+<p>Technical possibility does not establish actual use.</p>
+<p>For each financial product, an investigation must establish:</p>
+<ul>
+<li>whether the customer must activate it;</li>
+<li>which data are transmitted;</li>
+<li>to which entity;</li>
+<li>for what purpose;</li>
+<li>whether a fully automated decision exists;</li>
+<li>how to contest it;</li>
+<li>how long the data are retained;</li>
+<li>whether the business can keep the PA while refusing the financial service.</li>
+</ul>
+<p>An interface combining invoices and a payment account is integration. It is not, by itself, proof of hidden scoring.</p>
+</section>
+<section id="c4-an-external-assistant-opens-a-second-exit" class="level2"><h2>An external assistant opens a second exit</h2>
+<p>The EU rule governs the mandatory approved-platform service. A user may then choose to connect an external assistant and ask it to analyse an invoice.</p>
+<p>The transfer changes nature. It is initiated by the company and follows the chosen provider's rules.</p>
+<p>Pennylane, Qonto and Dougs document that shift with different levels of detail. All three tell users to examine the external provider's conditions. Data sent may include an invoice, transaction or tax information.</p>
+<p>The governance issue extends beyond the company itself. An invoice also contains information about customers, suppliers, contacts and sometimes employees or other individuals. Those parties did not necessarily choose the assistant.</p>
+<p>Before activating an MCP connection, a company should know:</p>
+<ol>
+<li>the exact list of exposed tools;</li>
+<li>the permissions reproduced from the source account;</li>
+<li>the minimum data sent for each request;</li>
+<li>location and retention;</li>
+<li>possible use for training;</li>
+<li>deletion mechanisms;</li>
+<li>confirmations required for sensitive actions;</li>
+<li>logs showing what was transmitted.</li>
+</ol>
+<p>Agentic connectivity can be extremely useful. It should be administered as a new access path into the financial system, not as a harmless convenience button.</p>
+</section>
+<section id="c4-the-missing-cnil-documents" class="level2"><h2>The missing CNIL documents</h2>
+<p>Public agendas show that the CNIL examined the <a href="https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-8-juillet-2021">draft ordinance in July 2021</a> and the <a href="https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-23-juin-2022">draft decree in June 2022</a>.</p>
+<p>In the public sources located by l0g, the corresponding opinions and annexes are not accessible. It has also not been established that the CNIL reviewed the cumulative consequences of the 2024 public-portal retrenchment, mandatory private intermediation, line-level detail from 2027 and the July 2026 texts.</p>
+<p>That documentary gap makes it impossible to write that the CNIL "approved" the final architecture.</p>
+<p>The requested documents include:</p>
+<ul>
+<li>the two deliberations;</li>
+<li>impact assessments;</li>
+<li>data minimisation analysis;</li>
+<li>access rights and retention;</li>
+<li>analytical uses;</li>
+<li>the interaction with AI, banking and credit.</li>
+</ul>
+</section>
+<section id="c4-the-data-passport-missing-from-the-registry" class="level2"><h2>The data passport missing from the registry</h2>
+<p>Bercy publishes the platform's name, contact details and status. The registry does not say who hosts the service, which engine supports a white-label brand, which subcontractors may access the full document or which features reuse derived data.</p>
+<p>A useful public sheet could add:</p>
+<ol>
+<li>the legal entity and controlling group;</li>
+<li>any support platform;</li>
+<li>production and backup regions;</li>
+<li>ISO 27001 and SecNumCloud scope;</li>
+<li>subcontractors with technical access;</li>
+<li>human access and support countries;</li>
+<li>document, data and log retention;</li>
+<li>export formats;</li>
+<li>integrated AI functions and providers;</li>
+<li>external connectors;</li>
+<li>bank or finance products using invoice data;</li>
+<li>significant incidents and the latest audit date.</li>
+</ol>
+<p>Such a sheet would disclose neither trade secrets nor operational detail useful to an attacker. It would give companies the information needed to exercise the choice the state imposes on them.</p>
+</section>
+<section id="c4-mapping-the-regulated-pipes-ecosystem" class="level2"><h2>Mapping the regulated pipe's ecosystem</h2>
+<p>The reform does not deliver every invoice to an indistinct crowd.</p>
+<p>The full document follows one defined chain. The tax twin follows another. The directory only routes. Accounting, banking and AI services then appear under individual choices and contracts.</p>
+<p>The PA framework is demanding: ISO 27001, SecNumCloud, EU operation, no extra-EU transfer of service data and extension to third parties with technical access.</p>
+<p>Rules exist, but no public map shows precisely where they apply.</p>
+<p>In September 2027, the structured invoice will also describe lines, quantities and unit prices. That resolution can improve tax compliance and automate business management. It also increases the strategic value of the dataset.</p>
+<p>The verifiable question is whether every processing step can be traced: which data, which actor, which purpose, which country, which duration and which exit right?</p>
+<p>Electronic invoicing is trust infrastructure. To deserve the name, it must make its readers as visible as its obligations.</p>
+<p>The investigation concludes by examining <a href="ch006.xhtml#article-5">what happens when the flow fails, degrades or requires regularisation</a>.</p>
+</section>
+<section id="c4-method-and-primary-sources" class="level2"><h2>Method and primary sources</h2>
+<p><strong>Cut-off date: 22 August 2026.</strong> l0g mapped the legal chain, regulated fields and public documentation of twelve operators. The sample is neither a ranking nor a compliance audit. Missing public information is treated as unknown, not as wrongdoing.</p>
+<p>A general policy mentioning extra-EU transfers is never used as proof that PA service data leave the Union. An AI feature in a software suite is not equated with training on invoices. A credit product is not equated with automatic scoring without a specific document.</p>
+<ul>
+<li><a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29">Légifrance, security and registration conditions for approved platforms</a></li>
+<li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606114">Légifrance, structured invoice data in 2026 and 2027</a></li>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/japprof_donnees-de-facture-a-transmettre-a-ladministration-correspondance-flux_vf.pdf">DGFiP, table of data transmitted to the tax authority</a></li>
+<li><a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000046385456/">Légifrance, transaction and payment reporting deadlines</a></li>
+<li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054606169">Légifrance, invoice lifecycle statuses</a></li>
+<li><a href="https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-8-juillet-2021">CNIL, agenda for 8 July 2021</a></li>
+<li><a href="https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-23-juin-2022">CNIL, agenda for 23 June 2022</a></li>
+<li><a href="https://www.pennylane.com/fr/legal/privacy">Pennylane, privacy policy</a></li>
+<li><a href="https://help.pennylane.com/fr/articles/757740-connecter-votre-assistant-ia-au-mcp-pennylane">Pennylane, connecting an AI assistant through MCP</a></li>
+<li><a href="https://qonto.com/fr/ai">Qonto, integrated AI agents</a></li>
+<li><a href="https://support-fr.qonto.com/hc/fr/articles/47588576515089-Comment-connecter-et-utiliser-le-serveur-MCP-de-Qonto">Qonto, MCP server</a></li>
+<li><a href="https://www.shine.fr/privacy/fr/">Shine, privacy policy</a></li>
+<li><a href="https://www.dougs.fr/politique-confidentialite/">Dougs, privacy policy</a></li>
+<li><a href="https://dext.com/fr/privacy-policy">Dext, privacy policy</a></li>
+<li><a href="https://www.tiime.fr/soustraitants">Tiime, subprocessor list</a></li>
+<li><a href="https://www.macompta.fr/conditions-generales-de-services">macompta.fr, terms and approved-platform annex</a></li>
+</ul></section></section></body></html>

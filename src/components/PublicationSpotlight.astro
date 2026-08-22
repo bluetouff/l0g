@@ -5,7 +5,7 @@ import { join } from 'node:path';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing';
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein' } = Astro.props;
@@ -14,7 +14,10 @@ const isEnglish = lang === 'en';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
-const publicationUrl = isWaterElectricity
+const isEInvoicing = publication === 'e-invoicing';
+const publicationUrl = isEInvoicing
+  ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
+  : isWaterElectricity
   ? isEnglish ? '/en/publications/water-electricity/' : '/publications/eau-electricite/'
   : isDigitalEuro
   ? isEnglish ? '/en/publications/digital-euro/' : '/publications/euro-numerique/'
@@ -23,7 +26,9 @@ const publicationUrl = isWaterElectricity
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isWaterElectricity
+const epubFile = isEInvoicing
+  ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
+  : isWaterElectricity
   ? isEnglish ? 'water-electricity-europe-l0g.epub' : 'eau-electricite-europe-l0g.epub'
   : isDigitalEuro
   ? isEnglish ? 'digital-euro-investigation-l0g.epub' : 'euro-numerique-enquete-l0g.epub'
@@ -33,7 +38,9 @@ const epubFile = isWaterElectricity
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isWaterElectricity
+const coverUrl = isEInvoicing
+  ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
+  : isWaterElectricity
   ? isEnglish ? '/publications/water-electricity-cover.png' : '/publications/eau-electricite-cover.png'
   : isDigitalEuro
   ? isEnglish ? '/publications/digital-euro-cover.png' : '/publications/euro-numerique-cover.png'
@@ -45,7 +52,23 @@ const coverUrl = isWaterElectricity
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isWaterElectricity
+const copy = isEInvoicing
+  ? isEnglish
+    ? {
+        coverLabel: 'Discover The Great E-Invoicing Toll', coverAlt: 'Cover of The Great E-Invoicing Toll', meta: '// illustrated investigation · August 2026',
+        titleLead: 'The Great', titleAccent: 'E-Invoicing Toll', deck: 'Public portal, platforms, prices, data and continuity.',
+        description: 'Five investigations into France’s mandatory e-invoicing infrastructure, with ten infographics, clickable sources and links to three practical tools.',
+        factsLabel: 'Edition contents', facts: [{ value: '5', label: 'investigations' }, { value: '10', label: 'infographics' }, { value: '3', label: 'linked tools' }, { value: formattedSize, label: 'download' }],
+        discover: 'Explore the edition', downloadLabel: 'Download the EPUB', fileName: 'The-Great-E-Invoicing-Toll-l0g.epub',
+      }
+    : {
+        coverLabel: 'Découvrir Le grand péage de la facture', coverAlt: 'Couverture du Grand péage de la facture', meta: '// enquête illustrée · août 2026',
+        titleLead: 'Le grand péage', titleAccent: 'de la facture', deck: 'Portail public, plateformes, prix, données et continuité.',
+        description: 'Cinq enquêtes sur l’infrastructure obligatoire de la facture électronique, avec dix infographies, des sources cliquables et trois outils pratiques.',
+        factsLabel: 'Contenu de l’édition', facts: [{ value: '5', label: 'enquêtes' }, { value: '10', label: 'infographies' }, { value: '3', label: 'outils liés' }, { value: formattedSize, label: 'téléchargement' }],
+        discover: 'Découvrir l’enquête', downloadLabel: 'Télécharger l’EPUB', fileName: 'Le-grand-peage-de-la-facture-l0g.epub',
+      }
+  : isWaterElectricity
   ? isEnglish
     ? {
         coverLabel: 'Discover The Water Behind Electricity', coverAlt: 'Cover of The Water Behind Electricity', meta: '// illustrated investigation · August 2026',
@@ -138,7 +161,7 @@ const copy = isWaterElectricity
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
@@ -187,6 +210,7 @@ const copy = isWaterElectricity
   .publication-spotlight--auditer { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--digital-euro { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--water { --publication-card-accent: #65e4d2; }
+  .publication-spotlight--invoice { --publication-card-accent: #ff6b9b; }
   .publication-cover {
     display: block;
     align-self: center;

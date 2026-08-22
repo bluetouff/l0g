@@ -1,0 +1,435 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const isFr = lang === 'fr';
+const pagePath = isFr ? '/publications/grand-peage-facture/' : '/en/publications/great-e-invoicing-toll/';
+const alternatePath = isFr ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/';
+const epubPath = isFr ? '/publications/grand-peage-facture-enquete-l0g.epub' : '/publications/great-e-invoicing-toll-investigation-l0g.epub';
+const coverPath = isFr ? '/publications/grand-peage-facture-cover.png' : '/publications/great-e-invoicing-toll-cover.png';
+const epubFile = isFr ? '../../../public/publications/grand-peage-facture-enquete-l0g.epub' : '../../../public/publications/great-e-invoicing-toll-investigation-l0g.epub';
+const epubBytes = readFileSync(new URL(epubFile, import.meta.url));
+const epubSize = `${new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 1 }).format(epubBytes.length / 1024 / 1024)} MB`;
+const epubSha256 = createHash('sha256').update(epubBytes).digest('hex');
+const pageUrl = `${SITE_URL}${pagePath}`;
+const title = isFr ? 'Le grand péage de la facture' : 'The Great E-Invoicing Toll';
+const seoTitle = isFr ? 'Facture électronique : l’enquête complète en EPUB | l0g' : 'France’s e-invoicing reform: EPUB investigation | l0g';
+const ogTitle = isFr ? 'Le grand péage de la facture : les cinq volets réunis' : 'The Great E-Invoicing Toll: all five investigations';
+const description = isFr
+  ? 'Cinq enquêtes illustrées sur le portail public, les plateformes agréées, leurs coûts, l’accès aux données et la continuité de la facture électronique.'
+  : 'Five illustrated investigations into France’s public portal, approved platforms, costs, data access and e-invoicing continuity.';
+const downloadName = isFr ? 'Le-grand-peage-de-la-facture-l0g.epub' : 'The-Great-E-Invoicing-Toll-l0g.epub';
+
+const chapters = isFr
+  ? [
+      { index: '01', title: 'Le portail amputé', summary: 'Pourquoi le portail public ne distribuera plus directement les factures', href: '/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/' },
+      { index: '02', title: '148 plateformes, combien de tuyaux ?', summary: 'Distinguer les marques enregistrées des infrastructures qui les font fonctionner', href: '/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/' },
+      { index: '03', title: 'Le prix du gratuit', summary: 'Lire les offres par leur périmètre, leurs options et leurs conditions de sortie', href: '/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/' },
+      { index: '04', title: 'Qui lit vos factures ?', summary: 'Suivre le contenu, les métadonnées, les journaux et leurs destinataires', href: '/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/' },
+      { index: '05', title: 'Le jour où le tuyau casse', summary: 'Préparer la preuve, le mode de secours, la reprise et les responsabilités', href: '/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/' },
+    ]
+  : [
+      { index: '01', title: 'The severed public portal', summary: 'Why the public portal will no longer distribute invoices directly', href: '/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/' },
+      { index: '02', title: '148 platforms, how many pipes?', summary: 'Separate registered brands from the infrastructure that runs them', href: '/en/analysis/the-great-e-invoicing-toll-2-147-platforms-how-many-pipes/' },
+      { index: '03', title: 'The price of free', summary: 'Read offers through scope, paid options and exit terms', href: '/en/analysis/the-great-e-invoicing-toll-3-the-price-of-free/' },
+      { index: '04', title: 'Who reads your invoices?', summary: 'Follow content, metadata, logs and their recipients', href: '/en/analysis/the-great-e-invoicing-toll-4-who-reads-your-invoices/' },
+      { index: '05', title: 'When the pipe breaks', summary: 'Prepare evidence, fallback, recovery and responsibility', href: '/en/analysis/the-great-e-invoicing-toll-5-when-the-pipe-breaks/' },
+    ];
+
+const tools = isFr
+  ? [
+      ['Calculer le coût d’une plateforme', '/outils/cout-plateforme-facturation-electronique/'],
+      ['Voir qui peut accéder à une facture', '/outils/qui-peut-voir-ma-facture/'],
+      ['Tenir un journal pendant un incident', '/outils/journal-incident-facture/'],
+    ]
+  : [
+      ['Calculate the cost of a platform', '/en/tools/e-invoicing-platform-cost/'],
+      ['See who may access an invoice', '/en/tools/who-can-see-my-e-invoice/'],
+      ['Keep a log during an incident', '/en/tools/e-invoice-incident-log/'],
+    ];
+
+const visualStages = isFr
+  ? [
+      { index: '01', label: 'PORTAIL', fact: ['Le PPF ne distribuera', 'plus directement', 'les factures.'], open: ['Publier les résultats', 'complets des pilotes.'], color: '#62dfd1' },
+      { index: '02', label: 'MARCHÉ', fact: ['148 marques figuraient', 'sur la liste DGFiP', 'au 22 août 2026.'], open: ['Cartographier moteurs,', 'hébergeurs et', 'dépendances communes.'], color: '#7aa2f7' },
+      { index: '03', label: 'PRIX', fact: ['Le coût dépend du', 'volume, des options', 'et de la sortie.'], open: ['Comparer le coût', 'complet dans la durée.'], color: '#e8ad49' },
+      { index: '04', label: 'DONNÉES', fact: ['Contenu, métadonnées', 'et journaux n’ont pas', 'les mêmes destinataires.'], open: ['Préciser les accès,', 'usages et durées', 'de conservation.'], color: '#b997ff' },
+      { index: '05', label: 'INCIDENT', fact: ['La reprise exige', 'preuves, export, secours', 'et responsabilités.'], open: ['Tester la bascule', 'et publier les délais.'], color: '#ff6b9b' },
+    ]
+  : [
+      { index: '01', label: 'PORTAL', fact: ['The PPF will no longer', 'distribute invoices', 'directly.'], open: ['Publish the complete', 'pilot results.'], color: '#62dfd1' },
+      { index: '02', label: 'MARKET', fact: ['148 brands appeared', 'on the DGFiP list', 'on 22 August 2026.'], open: ['Map shared engines,', 'hosts and technical', 'dependencies.'], color: '#7aa2f7' },
+      { index: '03', label: 'PRICE', fact: ['Cost depends on', 'volume, options', 'and exit terms.'], open: ['Compare total cost', 'over the full term.'], color: '#e8ad49' },
+      { index: '04', label: 'DATA', fact: ['Content, metadata', 'and logs do not have', 'the same recipients.'], open: ['Specify access, uses', 'and retention periods.'], color: '#b997ff' },
+      { index: '05', label: 'INCIDENT', fact: ['Recovery requires', 'evidence, export,', 'fallback and', 'accountability.'], open: ['Test the switch', 'and publish deadlines.'], color: '#ff6b9b' },
+    ];
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: title,
+  description,
+  author: { '@id': AUTHOR_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  datePublished: '2026-08-22',
+  dateModified: '2026-08-22',
+  inLanguage: lang,
+  bookFormat: 'https://schema.org/EBook',
+  isAccessibleForFree: true,
+  url: pageUrl,
+  image: `${SITE_URL}${coverPath}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.href}` })),
+  associatedMedia: {
+    '@type': 'MediaObject',
+    contentUrl: `${SITE_URL}${epubPath}`,
+    encodingFormat: 'application/epub+zip',
+    contentSize: `${epubBytes.length} bytes`,
+    sha256: epubSha256,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  seoTitle={seoTitle}
+  ogTitle={ogTitle}
+  description={description}
+  lang={lang}
+  ogLocale={isFr ? 'fr_FR' : 'en_US'}
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}/publications/grand-peage-facture/` },
+    { hreflang: 'en', href: `${SITE_URL}/en/publications/great-e-invoicing-toll/` },
+    { hreflang: 'x-default', href: `${SITE_URL}/publications/grand-peage-facture/` },
+  ]}
+  ogImage={coverPath}
+  ogImageAlt={isFr ? 'Couverture de l’enquête Le grand péage de la facture' : 'Cover of The Great E-Invoicing Toll investigation'}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
+
+  <article class="epub-page rise" data-pagefind-body>
+    <section class="publication-hero">
+      <div class="cover-stage" aria-label={isFr ? 'Couverture du Grand péage de la facture' : 'Cover of The Great E-Invoicing Toll'}>
+        <div class="cover-aura" aria-hidden="true"></div>
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · {isFr ? 'enquête' : 'investigation'} · 2026</span>
+          <img
+            src={coverPath}
+            width="1600"
+            height="2560"
+            alt={isFr ? 'Couverture du Grand péage de la facture, cinq enquêtes sur la facture électronique' : 'Cover of The Great E-Invoicing Toll, five investigations into e-invoicing'}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <span class="cover-caption">{isFr ? 'Édition numérique · août 2026' : 'Digital edition · August 2026'}</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="mono-label glow">// {isFr ? 'publication l0g' : 'l0g publication'}</p>
+        <h1>{isFr ? <>Le grand péage <span>de la facture</span></> : <>The Great <span>E-Invoicing Toll</span></>}</h1>
+        <p class="hero-deck">{isFr ? 'Du portail public aux plateformes agréées.' : 'From the public portal to approved platforms.'}</p>
+        <p class="hero-lede">
+          {isFr
+            ? 'Cinq volets pour suivre la nouvelle chaîne de la facture électronique, comprendre ce qu’elle coûte, qui peut lire quoi et comment une entreprise peut continuer à travailler si le service s’arrête.'
+            : 'Five parts tracing the new e-invoicing chain, what it costs, who may read what and how a business can keep working if the service stops.'}
+        </p>
+
+        <div class="hero-actions">
+          <a class="download-action" href={epubPath} download={downloadName}>
+            <span>{isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'}</span>
+            <small>{isFr ? 'Gratuit' : 'Free'} · {epubSize}</small>
+          </a>
+          <a class="contents-action" href="#sommaire">
+            {isFr ? 'Parcourir les cinq volets' : 'Browse the five parts'} <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <ul class="proof-line" aria-label={isFr ? 'Caractéristiques de l’édition' : 'Edition features'}>
+          <li>{isFr ? '5 enquêtes' : '5 investigations'}</li>
+          <li>{isFr ? '10 infographies' : '10 infographics'}</li>
+          <li>{isFr ? '3 outils liés' : '3 linked tools'}</li>
+          <li>{isFr ? 'Sources cliquables' : 'Clickable sources'}</li>
+          <li>CC BY 4.0</li>
+        </ul>
+
+        <a class="language-link" href={alternatePath}>{isFr ? 'Read in English' : 'Lire en français'} <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="reading-section">
+      <div class="section-index" aria-hidden="true">01</div>
+      <div class="reading-heading">
+        <p class="mono-label glow">{isFr ? 'une infrastructure obligatoire' : 'mandatory infrastructure'}</p>
+        <h2>{isFr ? 'La facture ne voyage plus seule.' : 'The invoice no longer travels alone.'}</h2>
+      </div>
+      <div class="reading-copy">
+        <p>
+          {isFr
+            ? 'Derrière le passage au numérique se trouvent des intermédiaires, des annuaires, des traitements, des contrats et des chemins de secours. L’enquête part de cette architecture concrète pour éviter de réduire le débat à une échéance réglementaire.'
+            : 'Behind the move to digital sit intermediaries, directories, processing steps, contracts and fallback paths. The investigation starts with this concrete architecture instead of reducing the debate to a regulatory deadline.'}
+        </p>
+        <p>
+          {isFr
+            ? 'L’EPUB ajoute une introduction et une conclusion aux cinq articles. Il conserve les sources, les limites, les liens canoniques et les alternatives textuelles des infographies afin que chaque élément puisse être contrôlé.'
+            : 'The EPUB adds an introduction and conclusion to the five articles. It preserves sources, limitations, canonical links and text alternatives for the infographics so that every element can be checked.'}
+        </p>
+      </div>
+    </section>
+
+    <section class="visuals-section" aria-labelledby="visuals-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">02</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'carte de l’enquête' : 'investigation map'}</p>
+          <h2 id="visuals-title">{isFr ? 'Cinq étapes, cinq décisions à rendre contrôlables.' : 'Five stages, five decisions that must be testable.'}</h2>
+          <p>{isFr ? 'La ligne centrale suit la facture. Au-dessus, ce que les documents permettent d’établir. En dessous, ce qui reste à publier, préciser ou tester.' : 'The centre line follows the invoice. Above it is what the records establish. Below it is what still needs to be published, specified or tested.'}</p>
+        </div>
+      </header>
+
+      <figure class="visual-card">
+        <div class="visual-card-heading">
+          <span>01 · 05</span>
+          <div><p>{isFr ? 'de l’émission à la reprise' : 'from issue to recovery'}</p><h3>{isFr ? 'L’architecture complète de la série' : 'The complete architecture of the series'}</h3></div>
+        </div>
+        <p class="mobile-pan-note">{isFr ? 'Balayez horizontalement pour lire la carte.' : 'Swipe horizontally to read the map.'}</p>
+        <div class="visual-scroll" tabindex="0" aria-label={isFr ? 'Carte détaillée des cinq volets de l’enquête sur la facture électronique' : 'Detailed map of the five-part e-invoicing investigation'}>
+          <svg class="wide-visual" viewBox="0 0 1020 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">{isFr ? 'Le parcours de l’enquête sur la facture électronique' : 'The path of the e-invoicing investigation'}</title>
+            <desc id="map-desc">{isFr ? 'Cinq étapes relient le portail public, le marché des plateformes, le prix, les données et la gestion d’incident. Chaque étape distingue un constat documenté d’une question à trancher.' : 'Five stages connect the public portal, platform market, price, data and incident management. Each stage separates a documented finding from a question that remains to be settled.'}</desc>
+            <rect width="1020" height="720" fill="#050b11" />
+            <path d="M0 0H1020V720H0Z" fill="url(#visual-grid)" opacity=".5" />
+            <defs><pattern id="visual-grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#243544" stroke-width="1" /></pattern></defs>
+            <text x="38" y="42" fill="#62dfd1" font-family="ui-monospace,monospace" font-size="12" font-weight="800">{isFr ? 'CE QUE LES DOCUMENTS ÉTABLISSENT' : 'WHAT THE RECORDS ESTABLISH'}</text>
+            <text x="38" y="682" fill="#e8ad49" font-family="ui-monospace,monospace" font-size="12" font-weight="800">{isFr ? 'CE QUI RESTE À PUBLIER, PRÉCISER OU TESTER' : 'WHAT STILL NEEDS TO BE PUBLISHED, SPECIFIED OR TESTED'}</text>
+            <path d="M88 350H932" stroke="#254352" stroke-width="30" stroke-linecap="round" />
+            <path d="M88 350H932" stroke="#62dfd1" stroke-width="3" stroke-dasharray="12 10" stroke-linecap="round" />
+            <text x="38" y="355" fill="#9fb0bb" font-family="ui-monospace,monospace" font-size="10">{isFr ? 'ÉMISSION' : 'ISSUE'}</text>
+            <text x="982" y="355" text-anchor="end" fill="#9fb0bb" font-family="ui-monospace,monospace" font-size="10">{isFr ? 'RÉCEPTION' : 'RECEIPT'}</text>
+            {visualStages.map((stage, index) => {
+              const x = 112 + index * 199;
+              return (
+                <g>
+                  <rect x={x - 88} y="68" width="176" height="188" rx="10" fill="#0d1720" stroke={stage.color} stroke-width="1.5" />
+                  <text x={x - 72} y="96" fill={stage.color} font-family="ui-monospace,monospace" font-size="11" font-weight="900">{stage.index} · {stage.label}</text>
+                  {stage.fact.map((line, lineIndex) => <text x={x - 72} y={132 + lineIndex * 25} fill="#e5eaed" font-family="ui-monospace,monospace" font-size="10.5">{line}</text>)}
+                  <text x={x - 72} y="232" fill="#788b98" font-family="ui-monospace,monospace" font-size="9.5">{isFr ? 'constat du volet' : 'chapter finding'} {index + 1}</text>
+                  <path d={`M${x} 256V320`} stroke={stage.color} stroke-width="2" />
+                  <circle cx={x} cy="350" r="31" fill="#07121a" stroke={stage.color} stroke-width="4" />
+                  <text x={x} y="357" text-anchor="middle" fill={stage.color} font-family="ui-monospace,monospace" font-size="19" font-weight="900">{stage.index}</text>
+                  <path d={`M${x} 380V428`} stroke={stage.color} stroke-width="2" />
+                  <rect x={x - 88} y="428" width="176" height="176" rx="10" fill="#10161d" stroke="#566574" stroke-width="1" />
+                  <text x={x - 72} y="458" fill="#e8ad49" font-family="ui-monospace,monospace" font-size="9.5" font-weight="800">{isFr ? 'À RENDRE VÉRIFIABLE' : 'TO MAKE VERIFIABLE'}</text>
+                  {stage.open.map((line, lineIndex) => <text x={x - 72} y={494 + lineIndex * 24} fill="#c7d0d6" font-family="ui-monospace,monospace" font-size="10.5">{line}</text>)}
+                </g>
+              );
+            })}
+            <rect x="366" y="630" width="288" height="38" rx="19" fill="#08151d" stroke="#536978" />
+            <text x="510" y="654" text-anchor="middle" fill="#9fb0bb" font-family="ui-monospace,monospace" font-size="10.5">{isFr ? 'Fait documenté ≠ garantie générale' : 'Documented fact ≠ general guarantee'}</text>
+          </svg>
+        </div>
+        <figcaption>{isFr ? 'La réforme est examinée comme une chaîne : architecture, marché, contrat, accès aux données puis continuité. Chaque chapitre fournit les pièces et les limites du constat résumé ici.' : 'The reform is examined as a chain: architecture, market, contract, data access and continuity. Each chapter provides the records and limitations behind the finding summarised here.'}</figcaption>
+      </figure>
+    </section>
+
+    <section class="contents-section" id="sommaire">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">03</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'architecture de l’édition' : 'edition structure'}</p>
+          <h2>{isFr ? 'Cinq enquêtes, un seul raisonnement.' : 'Five investigations, one line of reasoning.'}</h2>
+        </div>
+      </header>
+
+      <ol class="chapter-grid">
+        {chapters.map((chapter) => (
+          <li>
+            <a href={chapter.href}>
+              <span class="chapter-index">{chapter.index}</span>
+              <span class="chapter-copy"><strong>{chapter.title}</strong><small>{chapter.summary}</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="tools-section" aria-labelledby="tools-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">04</div>
+        <div>
+          <p class="mono-label glow">{isFr ? 'passer du texte à son cas' : 'apply the investigation'}</p>
+          <h2 id="tools-title">{isFr ? 'Trois outils pour préparer ses propres questions.' : 'Three tools for preparing your own questions.'}</h2>
+          <p>{isFr ? 'Les outils restent sur le site afin que l’EPUB demeure léger, sûr et lisible hors ligne. Aucun compte et aucun tracker.' : 'The tools remain on the website so the EPUB stays light, safe and readable offline. No account and no tracker.'}</p>
+        </div>
+      </header>
+      <ul class="tool-grid">
+        {tools.map(([label, href], index) => <li><a href={href}><span>{String(index + 1).padStart(2, '0')}</span><strong>{label}</strong><b aria-hidden="true">↗</b></a></li>)}
+      </ul>
+    </section>
+
+    <section class="edition-section">
+      <div class="edition-panel">
+        <div>
+          <p class="mono-label glow">{isFr ? 'édition vérifiable' : 'verifiable edition'}</p>
+          <h2>{isFr ? 'Un livre autonome, relié à ses preuves.' : 'A standalone book linked to its evidence.'}</h2>
+          <p>
+            {isFr
+              ? 'Le fichier EPUB 3 contient un sommaire structuré, un ordre de lecture explicite, les dix infographies adaptées et les liens vers les cinq articles publics. Aucun formulaire ni compte n’est requis pour le télécharger.'
+              : 'The EPUB 3 file contains a structured table of contents, an explicit reading order, ten adapted infographics and links to all five public articles. No form or account is required to download it.'}
+          </p>
+        </div>
+
+        <dl class="file-card">
+          <div><dt>Format</dt><dd>EPUB 3</dd></div>
+          <div><dt>{isFr ? 'Langue' : 'Language'}</dt><dd>{isFr ? 'Français' : 'English'}</dd></div>
+          <div><dt>{isFr ? 'Révision' : 'Revision'}</dt><dd>{isFr ? '22 août 2026' : '22 August 2026'}</dd></div>
+          <div><dt>{isFr ? 'Taille' : 'Size'}</dt><dd>{epubSize}</dd></div>
+          <div class="checksum"><dt>SHA-256</dt><dd>{epubSha256}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="method-section">
+      <div class="method-mark" aria-hidden="true">{isFr ? 'contrôle' : 'scrutiny'}</div>
+      <div>
+        <p class="mono-label glow">{isFr ? 'ce que le livre demande' : 'what the book asks'}</p>
+        <h2>{isFr ? 'Des réponses que chacun puisse vérifier.' : 'Answers that anyone can verify.'}</h2>
+        <p>
+          {isFr
+            ? 'Résultats des pilotes, dépendances communes, conditions de sortie, accès aux données, conservation, secours et responsabilités : la conclusion transforme les incertitudes relevées dans les cinq volets en questions précises pour les entreprises, l’administration et le Parlement.'
+            : 'Pilot results, shared dependencies, exit terms, data access, retention, fallback and responsibility: the conclusion turns the uncertainties found across the five parts into precise questions for businesses, public authorities and Parliament.'}
+        </p>
+        <div class="method-links">
+          <a href={isFr ? '/protocole-editorial/' : '/en/about/'}>{isFr ? 'Lire le protocole éditorial' : 'Read about l0g'}</a>
+          <a href={isFr ? '/outils/' : '/en/tools/'}>{isFr ? 'Découvrir tous les outils' : 'Discover all tools'}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-download" data-pagefind-ignore>
+      <div>
+        <p class="mono-label glow">{isFr ? 'lecture complète' : 'complete edition'}</p>
+        <h2>{isFr ? 'Emporter les cinq enquêtes dans un seul volume.' : 'Take all five investigations in one volume.'}</h2>
+        <p>{isFr ? 'Gratuit, sans formulaire et sous licence CC BY 4.0.' : 'Free, without a form, under a CC BY 4.0 licence.'}</p>
+      </div>
+      <a href={epubPath} download={downloadName}>
+        {isFr ? 'Télécharger l’EPUB' : 'Download the EPUB'}
+        <span>{epubSize} · EPUB 3</span>
+      </a>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .epub-page { max-width: 76rem; margin: 0 auto; }
+  .publication-hero { position: relative; display: grid; grid-template-columns: minmax(15rem,.78fr) minmax(0,1.22fr); align-items: center; overflow: hidden; gap: clamp(2.5rem,7vw,6.5rem); min-height: 42rem; padding: clamp(2rem,4vw,3.5rem) 0 clamp(4rem,8vw,7rem); border-bottom: 1px solid var(--color-line); }
+  .publication-hero::before { position: absolute; top: 0; right: 0; width: min(42rem,70%); height: 1px; background: linear-gradient(90deg,transparent,#ff6b9b); content: ''; }
+  .cover-stage { position: relative; display: flex; flex-direction: column; align-items: center; min-width: 0; perspective: 1200px; }
+  .cover-aura { position: absolute; inset: 18% -8% 8%; border-radius: 50%; background: radial-gradient(circle at 32% 22%,rgba(98,223,209,.27),transparent 44%),radial-gradient(circle at 78% 74%,rgba(255,107,155,.2),transparent 48%); filter: blur(32px); opacity: .8; }
+  .book-shell { position: relative; display: grid; grid-template-columns: 1.2rem minmax(0,19rem); width: min(100%,20.2rem); filter: drop-shadow(0 32px 42px rgba(0,0,0,.45)); transform: rotateY(-5deg) rotateZ(-.7deg); transform-style: preserve-3d; }
+  .book-shell::after { position: absolute; right: -.35rem; bottom: .35rem; width: .5rem; height: calc(100% - .7rem); border-radius: 0 6px 6px 0; background: repeating-linear-gradient(0deg,#e4e0d8 0 1px,#b9b6af 1px 2px); content: ''; transform: translateZ(-1px); }
+  .book-spine { display: flex; align-items: flex-end; justify-content: center; border: 1px solid rgba(98,223,209,.5); border-right: 0; border-radius: 8px 0 0 9px; padding: .9rem 0 .75rem; background: #050b0f; color: #75c8bc; font-family: var(--font-mono); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .book-shell img { display: block; width: 100%; height: auto; border: 1px solid rgba(98,223,209,.35); border-radius: 0 9px 9px 0; background: #050608; }
+  .cover-caption { position: relative; margin-top: 1.4rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; }
+  .hero-copy { min-width: 0; }
+  .hero-copy h1 { max-width: 13ch; margin: .45rem 0 .8rem; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(2.35rem,4.5vw,4.25rem); font-weight: 740; letter-spacing: -.045em; line-height: .96; }
+  .hero-copy h1 span { display: block; color: var(--color-accent); font-weight: 610; }
+  .hero-deck { max-width: 34rem; margin: 1.5rem 0 0; color: #62dfd1; font-family: var(--font-read); font-size: clamp(1.25rem,2.4vw,1.8rem); font-weight: 590; letter-spacing: -.025em; line-height: 1.25; }
+  .hero-lede { max-width: 40rem; margin: 1.25rem 0 0; color: var(--color-prose); font-family: var(--font-read); font-size: 1.03rem; line-height: 1.75; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: .8rem; margin-top: 2rem; }
+  .download-action,.contents-action { display: inline-flex; align-items: center; justify-content: center; min-height: 3.7rem; border-radius: 6px; text-decoration: none; transition: border-color 160ms ease,background 160ms ease,transform 160ms ease; }
+  .download-action { flex-direction: column; align-items: flex-start; min-width: 13.5rem; padding: .72rem 1.15rem; background: #62dfd1; color: #071113; font-weight: 850; }
+  .download-action small { margin-top: .12rem; opacity: .72; font-family: var(--font-mono); font-size: .63rem; }
+  .contents-action { gap: .45rem; border: 1px solid var(--color-line); padding: .8rem 1.05rem; color: var(--color-bright); }
+  .download-action:hover,.contents-action:hover { transform: translateY(-2px); }
+  .contents-action:hover { border-color: #62dfd1; }
+  .proof-line { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+  .proof-line li { border: 1px solid var(--color-line); border-radius: 999px; padding: .35rem .65rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .language-link { display: inline-block; margin-top: 1.1rem; color: #62dfd1; font-family: var(--font-mono); font-size: .7rem; text-decoration: none; }
+  .section-index { color: color-mix(in srgb,#62dfd1 56%,var(--color-muted)); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .16em; }
+  .reading-section { display: grid; grid-template-columns: 4rem minmax(15rem,.85fr) minmax(0,1.15fr); gap: clamp(1.2rem,4vw,3.5rem); padding: clamp(3.5rem,8vw,6rem) 0; border-bottom: 1px solid var(--color-line); }
+  .reading-heading h2,.section-heading h2,.edition-panel h2,.method-section h2,.final-download h2 { margin: .55rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.9rem,4vw,3.35rem); letter-spacing: -.045em; line-height: 1.02; }
+  .reading-copy p,.section-heading p:last-child,.edition-panel p,.method-section > div:last-child > p,.final-download p { color: var(--color-prose); font-family: var(--font-read); line-height: 1.72; }
+  .reading-copy p:first-child { margin-top: 0; }
+  .section-heading { display: grid; grid-template-columns: 4rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3.5rem); align-items: start; }
+  .section-heading > div:last-child { max-width: 52rem; }
+  .section-heading p:last-child { max-width: 48rem; margin-top: 1rem; }
+  .visuals-section,.contents-section,.tools-section,.edition-section { padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .visual-card { margin: 2.4rem 0 0; overflow: hidden; border: 1px solid rgba(98,223,209,.38); border-radius: 16px; background: linear-gradient(145deg,rgba(8,20,29,.96),rgba(5,10,16,.98)); box-shadow: 0 26px 54px rgba(0,0,0,.25); }
+  .visual-card-heading { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; align-items: center; padding: 1rem 1.15rem; border-bottom: 1px solid var(--color-line); }
+  .visual-card-heading > span { color: var(--color-amber); font-family: var(--font-mono); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
+  .visual-card-heading p { margin: 0; color: #62dfd1; font-family: var(--font-mono); font-size: .62rem; letter-spacing: .09em; text-transform: uppercase; }
+  .visual-card-heading h3 { margin: .25rem 0 0; color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.25rem,3vw,2rem); }
+  .visual-scroll { max-width: 100%; overflow: hidden; background: #030a11; scrollbar-color: #62dfd1 #07121b; }
+  .wide-visual { display: block; width: 100%; height: auto; }
+  .visual-scroll:focus-visible { outline: 2px solid #62dfd1; outline-offset: -2px; }
+  .mobile-pan-note { display: none; }
+  .visual-card figcaption { padding: .9rem 1.15rem 1.2rem; color: var(--color-muted); font-family: var(--font-read); font-size: .82rem; line-height: 1.55; }
+  .chapter-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 2.3rem 0 0; padding: 1px; background: var(--color-line); list-style: none; }
+  .chapter-grid li { min-width: 0; background: var(--color-bg); }
+  .chapter-grid a { display: grid; grid-template-columns: 2.2rem minmax(0,1fr) auto; gap: .9rem; align-items: start; min-height: 7.3rem; padding: 1.2rem; color: inherit; text-decoration: none; transition: background 160ms ease; }
+  .chapter-grid a:hover { background: color-mix(in srgb,#62dfd1 8%,var(--color-bg)); }
+  .chapter-index { color: #62dfd1; font-family: var(--font-mono); font-size: .72rem; }
+  .chapter-copy { display: grid; gap: .45rem; }
+  .chapter-copy strong { color: var(--color-bright); font-family: var(--font-read); font-size: 1.08rem; line-height: 1.25; }
+  .chapter-copy small { color: var(--color-muted); font-size: .75rem; line-height: 1.45; }
+  .chapter-arrow { color: var(--color-amber); }
+  .tool-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .75rem; margin: 2.2rem 0 0; padding: 0; list-style: none; }
+  .tool-grid li { min-width: 0; }
+  .tool-grid a { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .75rem; align-items: center; min-height: 5.2rem; border: 1px solid var(--color-line); border-radius: 10px; padding: .9rem; background: color-mix(in srgb,var(--color-surface) 84%,#05151b); color: inherit; text-decoration: none; transition: border-color 160ms ease,transform 160ms ease; }
+  .tool-grid a:hover { border-color: #62dfd1; transform: translateY(-2px); }
+  .tool-grid span { color: #62dfd1; font-family: var(--font-mono); font-size: .68rem; }
+  .tool-grid strong { color: var(--color-bright); font-family: var(--font-read); font-size: .94rem; line-height: 1.3; }
+  .tool-grid b { color: var(--color-amber); font-weight: 500; }
+  .edition-panel { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); gap: clamp(2rem,6vw,5rem); align-items: start; border: 1px solid var(--color-line); border-radius: 14px; padding: clamp(1.4rem,4vw,2.6rem); background: color-mix(in srgb,var(--color-surface) 82%,#06151b); }
+  .edition-panel p { max-width: 43rem; }
+  .file-card { margin: 0; border: 1px solid rgba(98,223,209,.38); border-radius: 10px; padding: .45rem 1rem; background: rgba(2,11,16,.45); }
+  .file-card > div { display: flex; justify-content: space-between; gap: 1rem; padding: .72rem 0; border-bottom: 1px solid var(--color-line); }
+  .file-card > div:last-child { border-bottom: 0; }
+  .file-card dt { color: var(--color-muted); font-family: var(--font-mono); font-size: .65rem; }
+  .file-card dd { margin: 0; color: var(--color-bright); font-family: var(--font-mono); font-size: .7rem; text-align: right; }
+  .file-card .checksum { display: grid; }
+  .file-card .checksum dd { overflow-wrap: anywhere; color: #62dfd1; text-align: left; line-height: 1.5; }
+  .method-section { display: grid; grid-template-columns: minmax(10rem,.45fr) minmax(0,1.55fr); gap: clamp(2rem,7vw,6rem); align-items: center; padding: clamp(3.5rem,8vw,6.5rem) 0; border-bottom: 1px solid var(--color-line); }
+  .method-mark { overflow: hidden; color: rgba(98,223,209,.2); font-family: var(--font-display); font-size: clamp(3.5rem,9vw,7.5rem); font-weight: 900; letter-spacing: -.07em; line-height: .8; writing-mode: vertical-rl; }
+  .method-links { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; margin-top: 1.4rem; }
+  .method-links a { color: #62dfd1; font-family: var(--font-mono); font-size: .72rem; }
+  .final-download { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 2rem; align-items: center; margin: clamp(3.5rem,8vw,6.5rem) 0 1rem; border: 1px solid rgba(232,173,73,.4); border-radius: 14px; padding: clamp(1.5rem,4vw,2.5rem); background: linear-gradient(120deg,rgba(232,173,73,.08),var(--color-surface)); }
+  .final-download h2 { max-width: 18ch; font-size: clamp(1.8rem,3.7vw,3rem); }
+  .final-download > div > p:last-child { margin-bottom: 0; }
+  .final-download > a { display: grid; gap: .22rem; min-width: 13.5rem; border-radius: 7px; padding: .9rem 1.15rem; background: var(--color-amber); color: #111008; font-weight: 850; text-decoration: none; }
+  .final-download > a span { opacity: .7; font-family: var(--font-mono); font-size: .63rem; }
+  @media (max-width: 820px) {
+    .publication-hero { grid-template-columns: 1fr; min-height: 0; }
+    .cover-stage { width: min(100%,22rem); margin: 0 auto; }
+    .reading-section { grid-template-columns: 2.2rem 1fr; }
+    .reading-copy { grid-column: 2; }
+    .edition-panel,.method-section { grid-template-columns: 1fr; }
+    .method-mark { display: none; }
+    .final-download { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .section-heading { grid-template-columns: 2.2rem minmax(0,1fr); }
+    .chapter-grid,.tool-grid { grid-template-columns: 1fr; }
+    .visual-card-heading { grid-template-columns: 1fr; gap: .45rem; }
+    .mobile-pan-note { display: block; margin: 0; border-bottom: 1px solid var(--color-line); padding: .65rem 1rem; color: var(--color-amber); font-family: var(--font-mono); font-size: .6rem; line-height: 1.5; }
+    .visual-scroll { overflow-x: auto; overscroll-behavior-inline: contain; }
+    .wide-visual { width: 62rem; max-width: none; }
+    .hero-actions a { width: 100%; }
+    .download-action { align-items: center; }
+    .proof-line li { flex: 1 1 calc(50% - .45rem); text-align: center; }
+    .edition-panel { padding: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .download-action,.contents-action,.chapter-grid a,.tool-grid a { transition: none; }
+    .download-action:hover,.contents-action:hover,.tool-grid a:hover { transform: none; }
+  }
+</style>

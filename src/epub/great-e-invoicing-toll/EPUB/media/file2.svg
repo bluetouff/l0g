@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="market-layers-title-en market-layers-desc-en" preserveAspectRatio="xMidYMid meet" overflow="hidden" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="market-layers-title-en">The four layers of the approved-platform market</title>
+<desc id="market-layers-desc-en">The public register shows brands and basic contact details, but does not fully show controlling groups, support engines, critical subcontractors or distribution channels.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">FOUR LAYERS OF THE MARKET</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">One visible offer can depend on several invisible operators.</text>
+<rect x="32" y="96" width="656" height="118" rx="12" fill="#121419" stroke="#5eead4"></rect>
+<text x="54" y="124" fill="#5eead4" font-size="12" font-weight="700">1. PUBLIC BRAND</text>
+<text x="54" y="154" fill="#f5f6f8" font-size="18" font-weight="700">Commercial name and registration status</text>
+<text x="54" y="179" fill="#d6d9df" font-size="13">What appears on the French tax authority's list.</text>
+<rect x="548" y="122" width="112" height="58" rx="9" fill="#0f2b27" stroke="#5eead4"></rect>
+<text x="604" y="145" text-anchor="middle" fill="#5eead4" font-size="21" font-weight="700">148</text>
+<text x="604" y="166" text-anchor="middle" fill="#b8e8df" font-size="10">main entries</text>
+<path d="M360 214 V246" stroke="#657080" stroke-width="3"></path>
+<path d="M354 238 L360 250 L366 238" fill="#657080"></path>
+<rect x="32" y="252" width="656" height="118" rx="12" fill="#121419" stroke="#7aa2f7"></rect>
+<text x="54" y="280" fill="#7aa2f7" font-size="12" font-weight="700">2. ENTITY AND GROUP</text>
+<text x="54" y="310" fill="#f5f6f8" font-size="18" font-weight="700">Registered company and controlling persons</text>
+<text x="54" y="335" fill="#d6d9df" font-size="13">Bercy requests the data but does not publish all of it.</text>
+<rect x="548" y="278" width="112" height="58" rx="9" fill="#17233b" stroke="#7aa2f7"></rect>
+<text x="604" y="302" text-anchor="middle" fill="#7aa2f7" font-size="13" font-weight="700">PARTIAL</text>
+<text x="604" y="323" text-anchor="middle" fill="#c5d6fa" font-size="10">in public data</text>
+<path d="M360 370 V402" stroke="#657080" stroke-width="3"></path>
+<path d="M354 394 L360 406 L366 394" fill="#657080"></path>
+<rect x="32" y="408" width="656" height="118" rx="12" fill="#121419" stroke="#f5b13d"></rect>
+<text x="54" y="436" fill="#f5b13d" font-size="12" font-weight="700">3. ENGINE AND DEPENDENCIES</text>
+<text x="54" y="466" fill="#f5f6f8" font-size="18" font-weight="700">Support PA, cloud and critical subcontractors</text>
+<text x="54" y="491" fill="#d6d9df" font-size="13">Several registrations may reuse the same solution.</text>
+<rect x="548" y="434" width="112" height="58" rx="9" fill="#2d2414" stroke="#f5b13d"></rect>
+<text x="604" y="458" text-anchor="middle" fill="#f5b13d" font-size="13" font-weight="700">NOT LISTED</text>
+<text x="604" y="479" text-anchor="middle" fill="#f0d49b" font-size="10">by the DGFiP</text>
+<path d="M360 526 V558" stroke="#657080" stroke-width="3"></path>
+<path d="M354 550 L360 562 L366 550" fill="#657080"></path>
+<rect x="32" y="564" width="656" height="118" rx="12" fill="#121419" stroke="#ff4d87"></rect>
+<text x="54" y="592" fill="#ff8fb0" font-size="12" font-weight="700">4. DISTRIBUTION</text>
+<text x="54" y="622" fill="#f5f6f8" font-size="18" font-weight="700">Bank, software vendor, accountant or network</text>
+<text x="54" y="647" fill="#d6d9df" font-size="13">The channel may direct more clients than the brand suggests.</text>
+<rect x="548" y="590" width="112" height="58" rx="9" fill="#301722" stroke="#ff4d87"></rect>
+<text x="604" y="614" text-anchor="middle" fill="#ff8fb0" font-size="13" font-weight="700">NOT LISTED</text>
+<text x="604" y="635" text-anchor="middle" fill="#f4bfd0" font-size="10">by the DGFiP</text>
+<rect x="32" y="704" width="656" height="34" rx="9" fill="#181b21" stroke="#3a4049"></rect>
+<text x="360" y="726" text-anchor="middle" fill="#d6d9df" font-size="12">Competition requires counting engines, groups, volumes and channels.</text>
+</svg>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="mobility-clock-title mobility-clock-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="mobility-clock-title">L’horloge réglementaire du changement de plateforme</title>
+<desc id="mobility-clock-desc">La nouvelle plateforme notifie l’ancienne sous deux jours ouvrables, l’ancienne dispose de cinq jours pour s’opposer sur la volonté du client, puis la nouvelle a quinze jours pour mettre à jour l’annuaire. Le contrat commercial reste séparé.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">CHANGER DE PA : L’HORLOGE DU DÉCRET</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Décret n° 2026-677 du 27 juillet 2026, article 7</text>
+<line x1="92" y1="134" x2="92" y2="566" stroke="#3a4049" stroke-width="4"></line>
+<circle cx="92" cy="150" r="17" fill="#5eead4"></circle>
+<text x="92" y="155" text-anchor="middle" fill="#08110f" font-size="11" font-weight="700">0</text>
+<rect x="134" y="112" width="526" height="78" rx="11" fill="#10211f" stroke="#5eead4"></rect>
+<text x="156" y="141" fill="#5eead4" font-size="12" font-weight="700">ACCORD FORMEL DU CLIENT</text>
+<text x="156" y="166" fill="#f5f6f8" font-size="13">La plateforme d’arrivée reçoit un accord daté et signé.</text>
+<circle cx="92" cy="258" r="17" fill="#7aa2f7"></circle>
+<text x="92" y="263" text-anchor="middle" fill="#0b1020" font-size="10" font-weight="700">2 j</text>
+<rect x="134" y="220" width="526" height="78" rx="11" fill="#151a23" stroke="#7aa2f7"></rect>
+<text x="156" y="249" fill="#7aa2f7" font-size="12" font-weight="700">SOUS DEUX JOURS OUVRABLES</text>
+<text x="156" y="274" fill="#f5f6f8" font-size="13">L’arrivée communique l’accord à la plateforme de départ.</text>
+<circle cx="92" cy="366" r="17" fill="#f5b13d"></circle>
+<text x="92" y="371" text-anchor="middle" fill="#1a1103" font-size="10" font-weight="700">5 j</text>
+<rect x="134" y="320" width="526" height="94" rx="11" fill="#211713" stroke="#f5b13d"></rect>
+<text x="156" y="349" fill="#f5b13d" font-size="12" font-weight="700">CINQ JOURS POUR S’OPPOSER</text>
+<text x="156" y="374" fill="#f5f6f8" font-size="13">L’opposition doit remettre en cause la volonté du client,</text>
+<text x="156" y="396" fill="#f5f6f8" font-size="13">par exemple avec un accord formel plus récent.</text>
+<circle cx="92" cy="488" r="19" fill="#ff4d87"></circle>
+<text x="92" y="493" text-anchor="middle" fill="#21070f" font-size="9" font-weight="700">15 j</text>
+<rect x="134" y="442" width="526" height="94" rx="11" fill="#211317" stroke="#ff4d87"></rect>
+<text x="156" y="471" fill="#ff8fb0" font-size="12" font-weight="700">QUINZE JOURS APRÈS L’ACCORD</text>
+<text x="156" y="496" fill="#f5f6f8" font-size="13">La plateforme d’arrivée met à jour l’annuaire</text>
+<text x="156" y="518" fill="#f5f6f8" font-size="13">et informe l’entreprise.</text>
+<rect x="30" y="590" width="318" height="118" rx="12" fill="#111720" stroke="#5eead4"></rect>
+<text x="52" y="620" fill="#5eead4" font-size="12" font-weight="700">CONTINUITÉ TECHNIQUE</text>
+<text x="52" y="648" fill="#f5f6f8" font-size="13">Services de statuts maintenus un an.</text>
+<text x="52" y="672" fill="#f5f6f8" font-size="13">Informations de continuité fournies</text>
+<text x="52" y="694" fill="#f5f6f8" font-size="13">sous cinq jours ouvrés sur demande.</text>
+<rect x="372" y="590" width="318" height="118" rx="12" fill="#211713" stroke="#f5b13d"></rect>
+<text x="394" y="620" fill="#f5b13d" font-size="12" font-weight="700">CONTRAT SÉPARÉ</text>
+<text x="394" y="648" fill="#f5f6f8" font-size="13">La mise à jour de l’annuaire</text>
+<text x="394" y="672" fill="#f5f6f8" font-size="13">ne résilie pas automatiquement</text>
+<text x="394" y="694" fill="#f5f6f8" font-size="13">l’abonnement commercial.</text>
+<text x="32" y="740" fill="#737985" font-size="9">SOURCE : Légifrance, décret n° 2026-677, article 7. Délais exprimés en jours ouvrables.</text>
+</svg>

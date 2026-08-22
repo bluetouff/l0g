@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 940" width="100%" role="img" aria-labelledby="objects-fr-title objects-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="objects-fr-title">Une facture électronique produit trois objets distincts</title>
+<desc id="objects-fr-desc">Le document complet circule entre les entreprises et leurs plateformes. L'annuaire sert au routage. Un fichier structuré et des statuts sont transmis à l'administration.</desc>
+<rect x="1" y="1" width="718" height="938" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">UNE FACTURE, TROIS OBJETS</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Document, adresse et double fiscal suivent des circuits distincts.</text>
+<rect x="30" y="104" width="660" height="280" rx="14" fill="#10211f" stroke="#5eead4"></rect>
+<text x="52" y="136" fill="#5eead4" font-size="13" font-weight="700">1. LE DOCUMENT COMPLET</text>
+<text x="52" y="160" fill="#aeb4bf" font-size="11">Facture structurée, représentation lisible et pièces éventuelles.</text>
+<rect x="50" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"></rect>
+<text x="115" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">ÉMETTEUR</text>
+<text x="115" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">crée et valide</text>
+<text x="115" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">le document</text>
+<rect x="213" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"></rect>
+<text x="278" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">PA ÉMETTEUR</text>
+<text x="278" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">contrôle et</text>
+<text x="278" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">adresse</text>
+<rect x="376" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"></rect>
+<text x="441" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">PA CLIENT</text>
+<text x="441" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">reçoit et met</text>
+<text x="441" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">à disposition</text>
+<rect x="539" y="194" width="130" height="100" rx="11" fill="#152a28" stroke="#3fae9f"></rect>
+<text x="604" y="224" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="middle">CLIENT</text>
+<text x="604" y="247" fill="#b7c6c3" font-size="10" text-anchor="middle">consulte, refuse</text>
+<text x="604" y="266" fill="#b7c6c3" font-size="10" text-anchor="middle">ou paie</text>
+<line x1="180" y1="244" x2="205" y2="244" stroke="#5eead4" stroke-width="3"></line>
+<polygon points="205,244 195,238 195,250" fill="#5eead4"></polygon>
+<line x1="343" y1="244" x2="368" y2="244" stroke="#5eead4" stroke-width="3"></line>
+<polygon points="368,244 358,238 358,250" fill="#5eead4"></polygon>
+<line x1="506" y1="244" x2="531" y2="244" stroke="#5eead4" stroke-width="3"></line>
+<polygon points="531,244 521,238 521,250" fill="#5eead4"></polygon>
+<text x="52" y="330" fill="#f5b13d" font-size="11">Une seule PA peut tenir les deux rôles si les entreprises ont le même opérateur.</text>
+<text x="52" y="353" fill="#8b909b" font-size="10">Le document complet n'est pas le seul fichier transmis dans le circuit fiscal.</text>
+<rect x="30" y="410" width="310" height="178" rx="14" fill="#1b1b14" stroke="#f5b13d"></rect>
+<text x="52" y="442" fill="#f5b13d" font-size="13" font-weight="700">2. L'ANNUAIRE CENTRAL</text>
+<text x="52" y="476" fill="#f5f6f8" font-size="13">Identifie la PA et l'adresse</text>
+<text x="52" y="500" fill="#f5f6f8" font-size="13">de réception du client.</text>
+<text x="52" y="538" fill="#aeb4bf" font-size="11">Pas de contenu de facture.</text>
+<text x="52" y="560" fill="#aeb4bf" font-size="11">Finalité légale : routage.</text>
+<rect x="380" y="410" width="310" height="178" rx="14" fill="#151a28" stroke="#7aa2f7"></rect>
+<text x="402" y="442" fill="#7aa2f7" font-size="13" font-weight="700">3. LE DOUBLE FISCAL</text>
+<text x="402" y="476" fill="#f5f6f8" font-size="13">Fichier structuré, statuts,</text>
+<text x="402" y="500" fill="#f5f6f8" font-size="13">transactions et paiements.</text>
+<text x="402" y="538" fill="#aeb4bf" font-size="11">Transmis par la PA émettrice.</text>
+<text x="402" y="560" fill="#aeb4bf" font-size="11">Délai de principe : 24 heures.</text>
+<rect x="30" y="616" width="660" height="270" rx="14" fill="#17131b" stroke="#ff85ad"></rect>
+<text x="52" y="648" fill="#ff85ad" font-size="13" font-weight="700">AUTOUR DU TUYAU RÉGLEMENTÉ</text>
+<text x="52" y="672" fill="#aeb4bf" font-size="11">Des services optionnels peuvent ajouter de nouveaux lecteurs.</text>
+<rect x="50" y="704" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"></rect>
+<text x="144" y="732" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">LOGICIEL OU ERP</text>
+<text x="144" y="752" fill="#c8b7aa" font-size="10" text-anchor="middle">création et synchronisation</text>
+<rect x="266" y="704" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"></rect>
+<text x="360" y="732" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">EXPERT-COMPTABLE</text>
+<text x="360" y="752" fill="#c8b7aa" font-size="10" text-anchor="middle">accès selon mandat</text>
+<rect x="482" y="704" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"></rect>
+<text x="576" y="732" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">BANQUE ET PAIEMENT</text>
+<text x="576" y="752" fill="#c8b7aa" font-size="10" text-anchor="middle">rapprochement et règlement</text>
+<rect x="50" y="792" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"></rect>
+<text x="144" y="820" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">IA INTÉGRÉE</text>
+<text x="144" y="840" fill="#c8b7aa" font-size="10" text-anchor="middle">OCR, recherche, assistance</text>
+<rect x="266" y="792" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"></rect>
+<text x="360" y="820" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">ASSISTANT EXTERNE</text>
+<text x="360" y="840" fill="#c8b7aa" font-size="10" text-anchor="middle">données envoyées sur demande</text>
+<rect x="482" y="792" width="188" height="66" rx="10" fill="#241b16" stroke="#a87747"></rect>
+<text x="576" y="820" fill="#f5f6f8" font-size="11" font-weight="700" text-anchor="middle">CRÉDIT OU AFFACTURAGE</text>
+<text x="576" y="840" fill="#c8b7aa" font-size="10" text-anchor="middle">si le service est activé</text>
+<text x="32" y="918" fill="#6f7580" font-size="10">Cadre français au 22 août 2026. Les accès optionnels dépendent des contrats.</text>
+</svg>

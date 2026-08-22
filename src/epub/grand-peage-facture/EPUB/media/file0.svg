@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 900" width="100%" role="img" aria-labelledby="ppf-architecture-title ppf-architecture-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="ppf-architecture-title">Le changement d’architecture du portail public de facturation</title>
+<desc id="ppf-architecture-desc">Avant octobre 2024, les entreprises devaient pouvoir choisir entre le portail public gratuit et une plateforme privée. Après le recentrage, elles doivent passer par une plateforme privée agréée, tandis que l’État conserve l’annuaire, le concentrateur et la collecte fiscale.</desc>
+<rect x="1" y="1" width="718" height="898" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="22" font-weight="700">RECENTRAGE DU PORTAIL PUBLIC</text>
+<text x="32" y="73" fill="#8b909b" font-size="12">Architecture prévue jusqu’en 2024, puis architecture recentrée</text>
+<rect x="26" y="98" width="668" height="342" rx="14" fill="#101319" stroke="#5eead4"></rect>
+<text x="48" y="130" fill="#5eead4" font-size="13" font-weight="700">MODÈLE INITIAL : DEUX PORTES D’ENTRÉE</text>
+<text x="48" y="153" fill="#aeb4bf" font-size="12">Chaque entreprise choisit sa voie pour émettre ou recevoir.</text>
+<rect x="48" y="181" width="188" height="82" rx="10" fill="#171a20" stroke="#7aa2f7"></rect>
+<text x="142" y="211" text-anchor="middle" fill="#7aa2f7" font-size="12" font-weight="700">ENTREPRISE</text>
+<text x="142" y="236" text-anchor="middle" fill="#f5f6f8" font-size="15">facture B2B</text>
+<path d="M236 222 H284" stroke="#7aa2f7" stroke-width="3" fill="none"></path>
+<path d="M276 216 L288 222 L276 228" fill="#7aa2f7"></path>
+<rect x="286" y="174" width="178" height="96" rx="10" fill="#10211f" stroke="#5eead4"></rect>
+<text x="375" y="203" text-anchor="middle" fill="#5eead4" font-size="12" font-weight="700">CHOIX A</text>
+<text x="375" y="228" text-anchor="middle" fill="#f5f6f8" font-size="15">portail public</text>
+<text x="375" y="250" text-anchor="middle" fill="#aeb4bf" font-size="12">service minimal gratuit</text>
+<rect x="486" y="174" width="182" height="96" rx="10" fill="#201912" stroke="#f5b13d"></rect>
+<text x="577" y="203" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">CHOIX B</text>
+<text x="577" y="228" text-anchor="middle" fill="#f5f6f8" font-size="15">plateforme privée</text>
+<text x="577" y="250" text-anchor="middle" fill="#aeb4bf" font-size="12">services commerciaux</text>
+<path d="M464 222 H486" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 5"></path>
+<path d="M375 270 V309 H475" stroke="#5eead4" stroke-width="3" fill="none"></path>
+<path d="M577 270 V309 H475" stroke="#f5b13d" stroke-width="3" fill="none"></path>
+<path d="M475 303 L487 309 L475 315" fill="#f5f6f8"></path>
+<rect x="486" y="292" width="182" height="94" rx="10" fill="#171a20" stroke="#d6d9df"></rect>
+<text x="577" y="321" text-anchor="middle" fill="#d6d9df" font-size="12" font-weight="700">PPF CENTRAL</text>
+<text x="577" y="346" text-anchor="middle" fill="#f5f6f8" font-size="14">annuaire + données</text>
+<text x="577" y="367" text-anchor="middle" fill="#8b909b" font-size="11">vers la DGFiP</text>
+<rect x="26" y="464" width="668" height="382" rx="14" fill="#151014" stroke="#ff4d87"></rect>
+<text x="48" y="497" fill="#ff8fb0" font-size="13" font-weight="700">APRÈS OCTOBRE 2024 : UNE PORTE PRIVÉE OBLIGATOIRE</text>
+<text x="48" y="520" fill="#aeb4bf" font-size="12">L’État reste au centre du routage et de la collecte fiscale.</text>
+<rect x="48" y="552" width="188" height="82" rx="10" fill="#171a20" stroke="#7aa2f7"></rect>
+<text x="142" y="582" text-anchor="middle" fill="#7aa2f7" font-size="12" font-weight="700">ENTREPRISE</text>
+<text x="142" y="607" text-anchor="middle" fill="#f5f6f8" font-size="15">facture B2B</text>
+<path d="M236 593 H300" stroke="#ff8fb0" stroke-width="3" fill="none"></path>
+<path d="M292 587 L304 593 L292 599" fill="#ff8fb0"></path>
+<rect x="304" y="545" width="196" height="96" rx="10" fill="#26151d" stroke="#ff4d87"></rect>
+<text x="402" y="574" text-anchor="middle" fill="#ff8fb0" font-size="12" font-weight="700">PASSAGE OBLIGÉ</text>
+<text x="402" y="599" text-anchor="middle" fill="#f5f6f8" font-size="15">plateforme agréée</text>
+<text x="402" y="621" text-anchor="middle" fill="#aeb4bf" font-size="12">opérateur privé</text>
+<path d="M500 593 H548" stroke="#ff8fb0" stroke-width="3" fill="none"></path>
+<path d="M540 587 L552 593 L540 599" fill="#ff8fb0"></path>
+<rect x="552" y="545" width="116" height="96" rx="10" fill="#171a20" stroke="#d6d9df"></rect>
+<text x="610" y="574" text-anchor="middle" fill="#d6d9df" font-size="11" font-weight="700">ANNUAIRE</text>
+<text x="610" y="599" text-anchor="middle" fill="#f5f6f8" font-size="13">public</text>
+<text x="610" y="621" text-anchor="middle" fill="#8b909b" font-size="10">routage</text>
+<path d="M610 641 V690" stroke="#d6d9df" stroke-width="3" fill="none"></path>
+<path d="M604 682 L610 694 L616 682" fill="#d6d9df"></path>
+<rect x="472" y="694" width="196" height="96" rx="10" fill="#171a20" stroke="#d6d9df"></rect>
+<text x="570" y="723" text-anchor="middle" fill="#d6d9df" font-size="11" font-weight="700">CONCENTRATEUR PUBLIC</text>
+<text x="570" y="748" text-anchor="middle" fill="#f5f6f8" font-size="14">données fiscales</text>
+<text x="570" y="770" text-anchor="middle" fill="#8b909b" font-size="10">vers la DGFiP</text>
+<rect x="48" y="692" width="376" height="98" rx="10" fill="#101319" stroke="#3a4049"></rect>
+<text x="68" y="720" fill="#8b909b" font-size="11" font-weight="700">CE QUI A ÉTÉ SUPPRIMÉ</text>
+<text x="68" y="746" fill="#f5f6f8" font-size="14">Saisie, dépôt, émission et réception B2B</text>
+<text x="68" y="768" fill="#f5f6f8" font-size="14">directement via un guichet public gratuit.</text>
+<text x="32" y="875" fill="#727985" font-size="11">Sources : DGFiP 2020, spécifications PPF, Bercy 15 octobre 2024.</text>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 830" width="100%" role="img" aria-labelledby="failure-en-title failure-en-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="failure-en-title">The continuity path during an electronic invoicing incident</title>
+<desc id="failure-en-desc">A company identifies the incident, preserves evidence, notifies parties, opens a continuity channel when needed, prevents duplicates, regularises and closes the case.</desc>
+<rect x="1" y="1" width="718" height="828" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">DEGRADED OPERATION IN SEVEN STEPS</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Maintain activity while keeping one accounting reality.</text>
+<rect x="42" y="112" width="286" height="108" rx="13" fill="#141a28" stroke="#7aa2f7"></rect>
+<text x="62" y="142" fill="#7aa2f7" font-size="13" font-weight="700">1. IDENTIFY</text>
+<text x="62" y="169" fill="#f5f6f8" font-size="11">Flow, invoice, period, status</text>
+<text x="62" y="190" fill="#aeb4bf" font-size="10">and the symptom actually observed.</text>
+<rect x="392" y="112" width="286" height="108" rx="13" fill="#10211f" stroke="#5eead4"></rect>
+<text x="412" y="142" fill="#5eead4" font-size="13" font-weight="700">2. PRESERVE</text>
+<text x="412" y="169" fill="#f5f6f8" font-size="11">Errors, timestamps, tickets,</text>
+<text x="412" y="190" fill="#aeb4bf" font-size="10">statuses and relevant exchanges.</text>
+<line x1="328" y1="166" x2="384" y2="166" stroke="#8b909b" stroke-width="3"></line><polygon points="384,166 373,159 373,173" fill="#8b909b"></polygon>
+<rect x="42" y="260" width="286" height="108" rx="13" fill="#1b1b14" stroke="#f5b13d"></rect>
+<text x="62" y="290" fill="#f5b13d" font-size="13" font-weight="700">3. NOTIFY</text>
+<text x="62" y="317" fill="#f5f6f8" font-size="11">Platform, vendor, provider,</text>
+<text x="62" y="338" fill="#aeb4bf" font-size="10">customer or supplier as required.</text>
+<rect x="392" y="260" width="286" height="108" rx="13" fill="#21151c" stroke="#ff85ad"></rect>
+<text x="412" y="290" fill="#ff85ad" font-size="13" font-weight="700">4. MAINTAIN</text>
+<text x="412" y="317" fill="#f5f6f8" font-size="11">Alternative channel if needed,</text>
+<text x="412" y="338" fill="#aeb4bf" font-size="10">copy linked to the original invoice.</text>
+<line x1="328" y1="314" x2="384" y2="314" stroke="#8b909b" stroke-width="3"></line><polygon points="384,314 373,307 373,321" fill="#8b909b"></polygon>
+<rect x="42" y="408" width="286" height="108" rx="13" fill="#201b12" stroke="#f59e0b"></rect>
+<text x="62" y="438" fill="#f59e0b" font-size="13" font-weight="700">5. LOCK</text>
+<text x="62" y="465" fill="#f5f6f8" font-size="11">One reference invoice,</text>
+<text x="62" y="486" fill="#aeb4bf" font-size="10">no duplicate processing.</text>
+<rect x="392" y="408" width="286" height="108" rx="13" fill="#122018" stroke="#69db7c"></rect>
+<text x="412" y="438" fill="#69db7c" font-size="13" font-weight="700">6. REGULARISE</text>
+<text x="412" y="465" fill="#f5f6f8" font-size="11">Same invoice, required data,</text>
+<text x="412" y="486" fill="#aeb4bf" font-size="10">reconciliation after recovery.</text>
+<line x1="328" y1="462" x2="384" y2="462" stroke="#8b909b" stroke-width="3"></line><polygon points="384,462 373,455 373,469" fill="#8b909b"></polygon>
+<rect x="217" y="570" width="286" height="108" rx="13" fill="#17191d" stroke="#aeb4bf"></rect>
+<text x="237" y="600" fill="#aeb4bf" font-size="13" font-weight="700">7. CLOSE</text>
+<text x="237" y="627" fill="#f5f6f8" font-size="11">Date recovery and reconciliation,</text>
+<text x="237" y="648" fill="#aeb4bf" font-size="10">retain evidence and follow-up actions.</text>
+<line x1="360" y1="516" x2="360" y2="562" stroke="#8b909b" stroke-width="3"></line><polygon points="360,562 353,551 367,551" fill="#8b909b"></polygon>
+<rect x="42" y="716" width="636" height="62" rx="12" fill="#101522" stroke="#394967"></rect>
+<text x="62" y="742" fill="#f5b13d" font-size="11" font-weight="700">CONTROL POINT</text>
+<text x="62" y="764" fill="#f5f6f8" font-size="10">Commercial continuity and later compliance must converge on one transaction.</text>
+<text x="32" y="808" fill="#6f7580" font-size="10">Source: DGFiP practical guide, questions 5, 6 and 13 to 29. Accessed 22 August 2026.</text>
+</svg>

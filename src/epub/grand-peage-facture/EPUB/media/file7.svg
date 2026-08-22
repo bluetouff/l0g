@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 950" width="100%" role="img" aria-labelledby="granularity-fr-title granularity-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="granularity-fr-title">Le saut de granularité des données de facture entre 2026 et 2027</title>
+<desc id="granularity-fr-desc">En 2026, le fichier structuré contient les identités, dates, catégories et montants fiscaux. En 2027, il ajoute le détail des lignes, les quantités, prix unitaires, remises, frais et adresse de livraison.</desc>
+<rect x="1" y="1" width="718" height="948" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">2026 À 2027 : CHANGEMENT D'ÉCHELLE</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Le double fiscal passe du résumé au détail commercial structuré.</text>
+<rect x="30" y="108" width="320" height="600" rx="14" fill="#141a28" stroke="#7aa2f7"></rect>
+<text x="52" y="142" fill="#7aa2f7" font-size="14" font-weight="700">DÈS LE 1er SEPTEMBRE 2026</text>
+<text x="52" y="170" fill="#aeb4bf" font-size="11">Le fichier structuré contient notamment :</text>
+<circle cx="58" cy="208" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="213" fill="#f5f6f8" font-size="12">SIREN et numéros de TVA</text>
+<circle cx="58" cy="246" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="251" fill="#f5f6f8" font-size="12">Pays du vendeur et du client</text>
+<circle cx="58" cy="284" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="289" fill="#f5f6f8" font-size="12">Date et numéro de facture</text>
+<circle cx="58" cy="322" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="327" fill="#f5f6f8" font-size="12">Biens, services ou activité mixte</text>
+<circle cx="58" cy="360" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="365" fill="#f5f6f8" font-size="12">Base hors taxe par taux</text>
+<circle cx="58" cy="398" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="403" fill="#f5f6f8" font-size="12">Taux et montant de TVA</text>
+<circle cx="58" cy="436" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="441" fill="#f5f6f8" font-size="12">Total HT, devise et régimes</text>
+<circle cx="58" cy="474" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="479" fill="#f5f6f8" font-size="12">Date de livraison ou de service</text>
+<circle cx="58" cy="512" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="517" fill="#f5f6f8" font-size="12">Dépôt, rejet, refus, encaissée</text>
+<circle cx="58" cy="550" r="4" fill="#7aa2f7"></circle>
+<text x="74" y="555" fill="#f5f6f8" font-size="12">Date et montant encaissé</text>
+<rect x="52" y="588" width="276" height="88" rx="10" fill="#101522" stroke="#394967"></rect>
+<text x="70" y="616" fill="#f5b13d" font-size="11" font-weight="700">NIVEAU PRINCIPAL</text>
+<text x="70" y="640" fill="#c5ceda" font-size="11">Identité, fiscalité, cycle de vie</text>
+<text x="70" y="661" fill="#c5ceda" font-size="11">et paiement de la facture.</text>
+<rect x="370" y="108" width="320" height="600" rx="14" fill="#13211e" stroke="#5eead4"></rect>
+<text x="392" y="142" fill="#5eead4" font-size="14" font-weight="700">AJOUTS DU 1er SEPTEMBRE 2027</text>
+<text x="392" y="170" fill="#aeb4bf" font-size="11">Neuf données deviennent structurées :</text>
+<circle cx="398" cy="208" r="4" fill="#5eead4"></circle>
+<text x="414" y="213" fill="#f5f6f8" font-size="12">Dénomination précise</text>
+<circle cx="398" cy="246" r="4" fill="#5eead4"></circle>
+<text x="414" y="251" fill="#f5f6f8" font-size="12">Quantité de biens ou services</text>
+<circle cx="398" cy="284" r="4" fill="#5eead4"></circle>
+<text x="414" y="289" fill="#f5f6f8" font-size="12">Prix unitaire hors taxe</text>
+<circle cx="398" cy="322" r="4" fill="#5eead4"></circle>
+<text x="414" y="327" fill="#f5f6f8" font-size="12">Rabais, remises, ristournes</text>
+<circle cx="398" cy="360" r="4" fill="#5eead4"></circle>
+<text x="414" y="365" fill="#f5f6f8" font-size="12">Frais et charges</text>
+<circle cx="398" cy="398" r="4" fill="#5eead4"></circle>
+<text x="414" y="403" fill="#f5f6f8" font-size="12">Adresse de livraison distincte</text>
+<circle cx="398" cy="436" r="4" fill="#5eead4"></circle>
+<text x="414" y="441" fill="#f5f6f8" font-size="12">Date de facture rectifiée</text>
+<circle cx="398" cy="474" r="4" fill="#5eead4"></circle>
+<text x="414" y="479" fill="#f5f6f8" font-size="12">Mention d'escompte</text>
+<circle cx="398" cy="512" r="4" fill="#5eead4"></circle>
+<text x="414" y="517" fill="#f5f6f8" font-size="12">Éco-participation</text>
+<rect x="392" y="558" width="276" height="118" rx="10" fill="#10201d" stroke="#376f67"></rect>
+<text x="410" y="586" fill="#f5b13d" font-size="11" font-weight="700">NOUVEAU NIVEAU</text>
+<text x="410" y="610" fill="#c5d7d3" font-size="11">Les lignes commerciales deviennent</text>
+<text x="410" y="631" fill="#c5d7d3" font-size="11">exploitables sans relire le PDF.</text>
+<text x="410" y="656" fill="#8b909b" font-size="10">La finalité d'usage reste à documenter.</text>
+<rect x="30" y="742" width="660" height="154" rx="14" fill="#211814" stroke="#f5b13d"></rect>
+<text x="52" y="774" fill="#f5b13d" font-size="13" font-weight="700">CE QUE CES CHAMPS PERMETTENT TECHNIQUEMENT</text>
+<text x="52" y="808" fill="#f5f6f8" font-size="12">Relier fournisseurs et clients, comparer des prix unitaires, suivre des volumes</text>
+<text x="52" y="832" fill="#f5f6f8" font-size="12">et observer des rythmes de commande ou d'encaissement.</text>
+<text x="52" y="866" fill="#aeb4bf" font-size="11">Capacité déduite du jeu de données, pas preuve d'un usage effectif.</text>
+<text x="32" y="925" fill="#6f7580" font-size="10">Sources : article 41 septies D et tableau DGFiP, juillet et août 2026.</text>
+</svg>

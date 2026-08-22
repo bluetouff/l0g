@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="market-layers-title-fr market-layers-desc-fr" preserveAspectRatio="xMidYMid meet" overflow="hidden" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="market-layers-title-fr">Les quatre couches du marché des plateformes agréées</title>
+<desc id="market-layers-desc-fr">Le registre public montre la marque et quelques coordonnées, mais il ne montre pas complètement le groupe de contrôle, le moteur technique, les sous-traitants ni les canaux de distribution.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"></rect>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">LES QUATRE COUCHES DU MARCHÉ</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">Une même offre visible peut reposer sur plusieurs acteurs invisibles.</text>
+<rect x="32" y="96" width="656" height="118" rx="12" fill="#121419" stroke="#5eead4"></rect>
+<text x="54" y="124" fill="#5eead4" font-size="12" font-weight="700">1. MARQUE PUBLIQUE</text>
+<text x="54" y="154" fill="#f5f6f8" font-size="18" font-weight="700">Nom commercial et statut d'immatriculation</text>
+<text x="54" y="179" fill="#d6d9df" font-size="13">Ce que voit la liste de la DGFiP.</text>
+<rect x="548" y="122" width="112" height="58" rx="9" fill="#0f2b27" stroke="#5eead4"></rect>
+<text x="604" y="145" text-anchor="middle" fill="#5eead4" font-size="21" font-weight="700">148</text>
+<text x="604" y="166" text-anchor="middle" fill="#b8e8df" font-size="10">lignes principales</text>
+<path d="M360 214 V246" stroke="#657080" stroke-width="3"></path>
+<path d="M354 238 L360 250 L366 238" fill="#657080"></path>
+<rect x="32" y="252" width="656" height="118" rx="12" fill="#121419" stroke="#7aa2f7"></rect>
+<text x="54" y="280" fill="#7aa2f7" font-size="12" font-weight="700">2. ENTITÉ ET GROUPE</text>
+<text x="54" y="310" fill="#f5f6f8" font-size="18" font-weight="700">Société immatriculée et personnes de contrôle</text>
+<text x="54" y="335" fill="#d6d9df" font-size="13">Bercy demande ces données, mais le registre ne les expose pas toutes.</text>
+<rect x="548" y="278" width="112" height="58" rx="9" fill="#17233b" stroke="#7aa2f7"></rect>
+<text x="604" y="302" text-anchor="middle" fill="#7aa2f7" font-size="13" font-weight="700">PARTIEL</text>
+<text x="604" y="323" text-anchor="middle" fill="#c5d6fa" font-size="10">dans le public</text>
+<path d="M360 370 V402" stroke="#657080" stroke-width="3"></path>
+<path d="M354 394 L360 406 L366 394" fill="#657080"></path>
+<rect x="32" y="408" width="656" height="118" rx="12" fill="#121419" stroke="#f5b13d"></rect>
+<text x="54" y="436" fill="#f5b13d" font-size="12" font-weight="700">3. MOTEUR ET DÉPENDANCES</text>
+<text x="54" y="466" fill="#f5f6f8" font-size="18" font-weight="700">PA support, cloud et sous-traitants critiques</text>
+<text x="54" y="491" fill="#d6d9df" font-size="13">Plusieurs immatriculations peuvent réutiliser une même solution.</text>
+<rect x="548" y="434" width="112" height="58" rx="9" fill="#2d2414" stroke="#f5b13d"></rect>
+<text x="604" y="458" text-anchor="middle" fill="#f5b13d" font-size="13" font-weight="700">NON LISTÉ</text>
+<text x="604" y="479" text-anchor="middle" fill="#f0d49b" font-size="10">par la DGFiP</text>
+<path d="M360 526 V558" stroke="#657080" stroke-width="3"></path>
+<path d="M354 550 L360 562 L366 550" fill="#657080"></path>
+<rect x="32" y="564" width="656" height="118" rx="12" fill="#121419" stroke="#ff4d87"></rect>
+<text x="54" y="592" fill="#ff8fb0" font-size="12" font-weight="700">4. DISTRIBUTION</text>
+<text x="54" y="622" fill="#f5f6f8" font-size="18" font-weight="700">Banque, logiciel, cabinet ou réseau professionnel</text>
+<text x="54" y="647" fill="#d6d9df" font-size="13">Le canal peut orienter plus de clients que la marque ne le laisse voir.</text>
+<rect x="548" y="590" width="112" height="58" rx="9" fill="#301722" stroke="#ff4d87"></rect>
+<text x="604" y="614" text-anchor="middle" fill="#ff8fb0" font-size="13" font-weight="700">NON LISTÉ</text>
+<text x="604" y="635" text-anchor="middle" fill="#f4bfd0" font-size="10">par la DGFiP</text>
+<rect x="32" y="704" width="656" height="34" rx="9" fill="#181b21" stroke="#3a4049"></rect>
+<text x="360" y="726" text-anchor="middle" fill="#d6d9df" font-size="12">Pour mesurer la concurrence, il faut compter moteurs, groupes, volumes et canaux.</text>
+</svg>
