@@ -3,8 +3,9 @@ import '../styles/global.css';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import CspMeta from '../components/CspMeta.astro';
-import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../config/entities.ts';
+import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
 import { buildSeoMetadata } from '../lib/seo.ts';
+import { serializeInlineScriptData } from '../lib/security.ts';
 
 type AlternateLink = { hreflang: string; href: string };
 
@@ -36,7 +37,6 @@ const {
   alternateLinks = [],
 } = Astro.props;
 
-const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const seo = buildSeoMetadata(title, seoDescription || description, { seoTitle });
 const fullTitle = seo.fullTitle;
@@ -81,15 +81,7 @@ const siteJsonLd = {
   '@graph': [
     organizationEntity,
     authorEntity,
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE}/#website`,
-      url: `${SITE}/`,
-      name: 'l0g',
-      inLanguage: 'en',
-      creator: { '@id': authorEntity['@id'] },
-      publisher: { '@id': ORGANIZATION_ID },
-    },
+    websiteEntity,
   ],
 };
 ---
@@ -100,7 +92,7 @@ const siteJsonLd = {
     <meta charset="utf-8" />
     <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
     <link rel="alternate" type="application/rss+xml" title="l0g.fr in English" href="/en/rss.xml" />
     <meta name="generator" content={Astro.generator} />
 
@@ -133,7 +125,7 @@ const siteJsonLd = {
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="l0g.fr" />
+    <meta property="og:site_name" content="l0g" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -147,7 +139,7 @@ const siteJsonLd = {
     <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(siteJsonLd).replace(/</g, '\\u003c')} />
+    <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(siteJsonLd)} />
   </head>
 
   <body class="en-shell">

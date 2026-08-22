@@ -37,6 +37,13 @@ function jsonLdObjects(value) {
   return [value, ...Object.values(value).flatMap(jsonLdObjects)];
 }
 
+function structuredImageUrl(image) {
+  if (typeof image === 'string') return image;
+  if (Array.isArray(image)) return image.map(structuredImageUrl).find(Boolean) || '';
+  if (image && typeof image === 'object') return image.contentUrl || image.url || '';
+  return '';
+}
+
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   const files = [];
@@ -134,33 +141,74 @@ for (const file of htmlFiles) {
     assert(description.length <= 155, `${name}: description anglaise trop longue (${description.length})`);
   }
 
-  const isArticle = /^posts\/[^/]+\/index\.html$/.test(name)
-    || /^guides\/[^/]+\/index\.html$/.test(name)
-    || /^en\/analysis\/(?!page\/)[^/]+\/index\.html$/.test(name)
+  const isNewsAnalysis = /^posts\/[^/]+\/index\.html$/.test(name)
+    || /^en\/analysis\/(?!page\/)[^/]+\/index\.html$/.test(name);
+  const isGuide = /^guides\/[^/]+\/index\.html$/.test(name)
     || /^en\/guides\/[^/]+\/index\.html$/.test(name);
+  const isArticle = isNewsAnalysis || isGuide;
   if (isArticle) {
-    const article = jsonLd.find((item) => item['@type'] === 'Article');
-    assert(Boolean(article), `${name}: Article JSON-LD absent`);
+    const expectedType = isNewsAnalysis ? 'NewsArticle' : 'Article';
+    const article = jsonLd.find((item) => item['@type'] === expectedType);
+    assert(Boolean(article), `${name}: ${expectedType} JSON-LD absent`);
     assert(article?.['@id'] === `${canonical}#article`, `${name}: identifiant Article instable`);
     assert(article?.url === canonical, `${name}: URL Article absente ou incohérente`);
+    const articleImageUrl = structuredImageUrl(article?.image);
     assert(
-      typeof article?.image === 'string' && article.image.startsWith('https://l0g.fr/'),
+      articleImageUrl.startsWith('https://l0g.fr/'),
       `${name}: image Article absolue absente`
     );
     assert(article?.isAccessibleForFree === true, `${name}: gratuité Article absente`);
-    assert(article?.author?.['@type'] === 'Organization', `${name}: author doit être une Organization`);
-    assert(article?.author?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant auteur instable`);
     assert(article?.publisher?.['@type'] === 'Organization', `${name}: publisher doit être une Organization`);
     assert(article?.publisher?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant publisher instable`);
-    assert(
-      /<a href="\/(?:en\/)?about\/" rel="author"[^>]*>(?:(?:Par|By) )?l0g<\/a>/.test(html),
-      `${name}: byline l0g cliquable absente`
+    const authorLink = elements.find((element) =>
+      element.name === 'a'
+      && element.attributes.get('href') === '/about/'
+      && element.attributes.get('rel') === 'author'
     );
+    if (isNewsAnalysis) {
+      assert(typeof article?.headline === 'string' && article.headline.length > 0, `${name}: headline NewsArticle absent`);
+      assert(Boolean(article?.datePublished), `${name}: datePublished NewsArticle absente`);
+      assert(Boolean(article?.dateModified), `${name}: dateModified NewsArticle absente`);
+      assert(article?.author?.['@type'] === 'Person', `${name}: author NewsArticle doit être une Person`);
+      assert(article?.author?.['@id'] === 'https://l0g.fr/about/#bluetouff', `${name}: identifiant auteur instable`);
+      assert(article?.author?.url === 'https://l0g.fr/about/', `${name}: profil auteur NewsArticle incohérent`);
+      assert(
+        Boolean(authorLink)
+          && /<a href="\/about\/" rel="author"[^>]*>(?:By )?Olivier Laurelli \/ bluetouff<\/a>/.test(html),
+        `${name}: signature personnelle cliquable absente`
+      );
+      const ogImage = elements.find((element) =>
+        element.name === 'meta' && element.attributes.get('property') === 'og:image'
+      )?.attributes.get('content') || '';
+      const visibleImage = elements.find((element) =>
+        element.name === 'img' && element.attributes.has('data-article-image')
+      );
+      const visibleImageUrl = visibleImage
+        ? new URL(decodeHtml(visibleImage.attributes.get('src')), canonical).toString()
+        : '';
+      assert(Boolean(visibleImage), `${name}: image principale absente du HTML`);
+      assert(articleImageUrl === ogImage, `${name}: NewsArticle.image diffère de og:image`);
+      assert(articleImageUrl === visibleImageUrl, `${name}: image HTML diffère de NewsArticle.image`);
+    } else {
+      assert(article?.author?.['@type'] === 'Organization', `${name}: author du guide doit être une Organization`);
+      assert(article?.author?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant auteur du guide instable`);
+      assert(
+        /<a href="\/(?:en\/)?about\/" rel="author"[^>]*>(?:(?:Par|By) )?l0g<\/a>/.test(html),
+        `${name}: byline l0g cliquable du guide absente`
+      );
+    }
   }
 }
 
 const home = await readFile(new URL('index.html', rootUrl));
 const homeText = home.toString('utf8');
+const homePage = pages.get('https://l0g.fr/');
+const homeWebsite = homePage?.jsonLd.find((item) => item['@type'] === 'WebSite');
+assert(homeWebsite?.name === 'l0g', 'home: WebSite.name doit être l0g');
+assert(homeWebsite?.alternateName === 'l0g.fr', 'home: WebSite.alternateName doit être l0g.fr');
+assert(homeWebsite?.url === 'https://l0g.fr/', 'home: WebSite.url incohérente');
+assert(homeWebsite?.publisher?.['@id'] === 'https://l0g.fr/#org', 'home: publisher WebSite incohérent');
+assert(homeWebsite?.creator?.['@id'] === 'https://l0g.fr/about/#bluetouff', 'home: creator WebSite incohérent');
 const homeGzip = gzipSync(home, { level: 9 });
 const inlineScriptSizes = [...homeText.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)]
   .map((match) => Buffer.byteLength(match[1]));

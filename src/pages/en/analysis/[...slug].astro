@@ -2,8 +2,9 @@
 import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
+import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
 import WatchCard from '../../../components/WatchCard.astro';
-import { organizationEntity } from '../../../config/entities.ts';
+import { authorEntity, organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
 import { isTranslationStale } from '../../../lib/agent-surface.ts';
 
@@ -21,6 +22,7 @@ const { Content } = await render(post);
 
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
 const updated = post.data.updatedDate ?? post.data.pubDate;
+const publishedLabel = fmt(post.data.pubDate);
 const updatedLabel = fmt(updated);
 const isoPub = post.data.pubDate.toISOString();
 const isoUpd = updated.toISOString();
@@ -30,6 +32,16 @@ const ogImage = post.data.ogImage ?? `/og/${post.id}.png`;
 const url = new URL(`/en/analysis/${post.id}/`, Astro.site).toString();
 const articleId = `${url}#article`;
 const imageUrl = new URL(ogImage, Astro.site).toString();
+const primaryImage = {
+  '@type': 'ImageObject',
+  '@id': `${imageUrl}#primary-image`,
+  url: imageUrl,
+  contentUrl: imageUrl,
+  width: 1200,
+  height: 630,
+  caption: post.data.title,
+  representativeOfPage: true,
+};
 const frUrl = sourcePost ? new URL(`/posts/${sourcePost.id}/`, Astro.site).toString() : new URL('/', Astro.site).toString();
 const sourceUpdated = sourcePost ? (sourcePost.data.updatedDate ?? sourcePost.data.pubDate) : post.data.sourceUpdatedDate;
 const translationIsStale = sourcePost && isTranslationStale(sourceUpdated, post.data.sourceUpdatedDate);
@@ -54,17 +66,18 @@ const ld = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Article',
+      '@type': 'NewsArticle',
       '@id': articleId,
       headline: post.data.title,
       description: post.data.description,
-      image: imageUrl,
+      image: primaryImage,
+      thumbnailUrl: imageUrl,
       url,
       datePublished: isoPub,
       dateModified: isoUpd,
       inLanguage: 'en',
       isAccessibleForFree: true,
-      author: organizationEntity,
+      author: authorEntity,
       publisher: organizationEntity,
       mainEntityOfPage: { '@id': url },
       isBasedOn: { '@type': 'Article', url: frUrl },
@@ -105,12 +118,24 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
         {post.data.title}
       </h1>
 
+      <ArticleHeroImage
+        src={ogImage}
+        alt={`Illustration for the analysis: ${post.data.title}`}
+        caption="Editorial illustration for this analysis."
+      />
+
       <p class="post-lede mt-5">{post.data.description}</p>
 
       <div class="post-meta mono-label mt-6">
-        <a href="/en/about/" rel="author" class="link-term">By l0g</a>
+        <a href="/about/" rel="author" class="link-term">By Olivier Laurelli / bluetouff</a>
         <span class="sep" aria-hidden="true">·</span>
-        <time datetime={isoUpd} data-pagefind-meta="date">last updated {updatedLabel}</time>
+        <time datetime={isoPub} data-pagefind-meta="date">published {publishedLabel}</time>
+        {post.data.updatedDate && (
+          <>
+            <span class="sep" aria-hidden="true">·</span>
+            <time datetime={isoUpd}>updated {updatedLabel}</time>
+          </>
+        )}
         <span class="sep" aria-hidden="true">·</span>
         <span>{rt} min read</span>
         {post.data.tags.length > 0 && <span class="sep" aria-hidden="true">·</span>}

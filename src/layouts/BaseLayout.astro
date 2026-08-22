@@ -5,7 +5,7 @@ import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import WebMCPTools from '../components/WebMCPTools.astro';
 import CspMeta from '../components/CspMeta.astro';
-import { authorEntity, ORGANIZATION_ID, organizationEntity } from '../config/entities.ts';
+import { authorEntity, organizationEntity, websiteEntity } from '../config/entities.ts';
 import { buildSeoMetadata } from '../lib/seo.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 import pagefindInitUrl from '../scripts/pagefind-init.js?url';
@@ -57,21 +57,12 @@ const year = new Date().getFullYear();
 const path = Astro.url.pathname;
 const hasContextSidebar = Astro.slots.has('sidebar');
 
-const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const siteJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     organizationEntity,
     authorEntity,
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE}/#website`,
-      url: `${SITE}/`,
-      name: 'l0g',
-      inLanguage: lang,
-      creator: { '@id': authorEntity['@id'] },
-      publisher: { '@id': ORGANIZATION_ID },
-    },
+    websiteEntity,
   ],
 };
 ---
@@ -82,7 +73,7 @@ const siteJsonLd = {
     <meta charset="utf-8" />
     <CspMeta />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
     <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={jetBrainsMonoLatinUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <meta name="generator" content={Astro.generator} />
@@ -114,7 +105,7 @@ const siteJsonLd = {
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale} />
-    <meta property="og:site_name" content="l0g.fr" />
+    <meta property="og:site_name" content="l0g" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

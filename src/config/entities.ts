@@ -1,7 +1,8 @@
 export const SITE_URL = 'https://l0g.fr';
 export const ORGANIZATION_ID = `${SITE_URL}/#org`;
-export const AUTHOR_PROFILE_URL = `${SITE_URL}/about/#bluetouff`;
-export const AUTHOR_ID = AUTHOR_PROFILE_URL;
+export const AUTHOR_PROFILE_URL = `${SITE_URL}/about/`;
+export const AUTHOR_ID = `${AUTHOR_PROFILE_URL}#bluetouff`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const organizationEntity = {
   '@type': 'Organization',
@@ -18,8 +19,8 @@ export const organizationEntity = {
 export const authorEntity = {
   '@type': 'Person',
   '@id': AUTHOR_ID,
-  name: 'Bluetouff',
-  alternateName: 'Olivier Laurelli',
+  name: 'Olivier Laurelli',
+  alternateName: 'bluetouff',
   url: AUTHOR_PROFILE_URL,
   description:
     'Auteur et analyste indépendant spécialisé dans les systèmes opaques, le risque systémique, la macroéconomie et la cybersécurité.',
@@ -35,4 +36,15 @@ export const authorEntity = {
     'Cybersecurity',
     'Open-source intelligence',
   ],
+};
+
+export const websiteEntity = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  url: `${SITE_URL}/`,
+  name: 'l0g',
+  alternateName: 'l0g.fr',
+  inLanguage: ['fr', 'en'],
+  creator: { '@id': AUTHOR_ID },
+  publisher: { '@id': ORGANIZATION_ID },
 };

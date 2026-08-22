@@ -12,7 +12,8 @@ import CitationBox from '../../components/CitationBox.astro';
 import EpsteinEpubCard from '../../components/EpsteinEpubCard.astro';
 import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import TrustBar from '../../components/TrustBar.astro';
-import { ORGANIZATION_ID, organizationEntity } from '../../config/entities.ts';
+import ArticleHeroImage from '../../components/ArticleHeroImage.astro';
+import { ORGANIZATION_ID, authorEntity, organizationEntity } from '../../config/entities.ts';
 import { topicForTag } from '../../config/topics.ts';
 import { topics, postMatchesTopic } from '../../config/topics.ts';
 import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
@@ -51,6 +52,17 @@ const iso = post.data.pubDate.toISOString();
 const rt = readingTime(post.body);
 const shareUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const imageUrl = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
+const primaryImage = {
+  '@type': 'ImageObject',
+  '@id': `${imageUrl}#primary-image`,
+  url: imageUrl,
+  contentUrl: imageUrl,
+  width: 1200,
+  height: 630,
+  caption: post.data.title,
+  representativeOfPage: true,
+};
 const englishPosts = await getCollection('postsEn', ({ data }) => !data.draft);
 const englishPost = englishPosts.find((entry) => entry.data.sourceArticle === post.id);
 const englishUrl = englishPost ? new URL(`/en/analysis/${englishPost.id}/`, Astro.site).toString() : null;
@@ -160,19 +172,20 @@ const articleJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Article',
+      '@type': 'NewsArticle',
       '@id': `${shareUrl}#article`,
       mainEntityOfPage: { '@id': shareUrl },
       headline: post.data.title,
       description: post.data.description,
       url: shareUrl,
-      image: ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`,
+      image: primaryImage,
+      thumbnailUrl: imageUrl,
       datePublished: post.data.pubDate.toISOString(),
       dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
       inLanguage: 'fr',
       isAccessibleForFree: true,
       license: 'https://creativecommons.org/licenses/by/4.0/',
-      author: organizationEntity,
+      author: authorEntity,
       publisher: organizationEntity,
       about: post.data.tags.map((tag) => ({ '@type': 'Thing', name: tag })),
       keywords: post.data.tags,
@@ -300,6 +313,12 @@ const quickUncertainty = post.data.quickTake?.uncertainty
         {post.data.title}
       </h1>
 
+      <ArticleHeroImage
+        src={ogImage}
+        alt={`Illustration de l’analyse : ${post.data.title}`}
+        caption="Illustration éditoriale de l’analyse."
+      />
+
       <ArticleQuickTake
         fact={quickFact}
         importance={quickImportance}
@@ -310,7 +329,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty
       <dl class:list={['post-meta', 'mt-6', post.data.updatedDate && 'has-update']}>
         <div>
           <dt>Auteur</dt>
-          <dd><a href="/about/" rel="author" class="link-term">l0g</a></dd>
+          <dd><a href="/about/" rel="author" class="link-term">Olivier Laurelli / bluetouff</a></dd>
         </div>
         <div>
           <dt>Publication</dt>
