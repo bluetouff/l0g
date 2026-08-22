@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'invoice-incident-log',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-22',
+    modelHref: '/outils/journal-incident-facture/model.json',
+    fr: {
+      title: 'Journal d’incident facture',
+      eyebrow: 'continuité de facturation',
+      description: 'Tracez localement une panne, les preuves, le canal de continuité, la prévention des doublons et la régularisation.',
+      question: 'Votre entreprise peut-elle démontrer ce qui s’est passé et ce qu’elle a corrigé ?',
+      href: '/outils/journal-incident-facture/',
+      articleHref: '/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/',
+      articleLabel: 'Lire la conclusion de l’enquête',
+    },
+    en: {
+      title: 'E-invoice incident log',
+      eyebrow: 'invoicing continuity',
+      description: 'Document an outage, evidence, continuity channel, duplicate controls and regularisation locally.',
+      question: 'Can your business show what happened and what it corrected?',
+      href: '/en/tools/e-invoice-incident-log/',
+      articleHref: '/en/analysis/the-great-e-invoicing-toll-5-when-the-pipe-breaks/',
+      articleLabel: 'Read the investigation conclusion',
+    },
+  },
+  {
     id: 'invoice-data-access',
     version: '1.0.0',
     status: 'active',

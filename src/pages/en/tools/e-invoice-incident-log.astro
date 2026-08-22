@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import InvoiceIncidentLog from '../../../components/InvoiceIncidentLog.astro';
+import {
+  INVOICE_INCIDENT_DATA_DATE,
+  INVOICE_INCIDENT_MODEL_VERSION,
+  INVOICE_INCIDENT_SOURCES,
+  INVOICE_INCIDENT_STEPS,
+} from '../../../lib/invoice-incident-log-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const frPath = '/outils/journal-incident-facture/';
+const pagePath = '/en/tools/e-invoice-incident-log/';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${pagePath}#app`,
+  name: 'Electronic invoicing incident log',
+  description: 'Local checklist to document an outage, maintain continuity, prevent duplicates and prepare regularisation.',
+  url: `${SITE}${pagePath}`,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript produces a local text file. No data are transmitted or retained.',
+  softwareVersion: INVOICE_INCIDENT_MODEL_VERSION,
+  dateModified: INVOICE_INCIDENT_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: INVOICE_INCIDENT_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  lang="en"
+  seoTitle="Electronic invoicing outage: incident log | l0g"
+  ogTitle="The electronic invoicing incident log"
+  title="Electronic invoicing incident log"
+  description="Document an outage, evidence, continuity channel, duplicate controls and regularisation. A local tool based on the DGFiP guide."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(frPath, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(pagePath, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(frPath, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="05"
+    kicker="invoicing continuity"
+    title="When the flow stops, the record becomes essential"
+    description="The log turns the DGFiP go-live recommendations into seven checkable steps: identify, preserve, notify, maintain activity, block duplicates, regularise and close."
+    secondary="No upload, no storage and no tracker. The generated text remains in your browser."
+    glyph="uncertainty"
+    accent="var(--color-amber)"
+    stats={[
+      { value: `v${INVOICE_INCIDENT_MODEL_VERSION}`, label: 'auditable model' },
+      { value: String(INVOICE_INCIDENT_STEPS.length), label: 'continuity steps' },
+      { value: '0', label: 'data transmitted' },
+    ]}
+  />
+
+  <InvoiceIncidentLog lang="en" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article><p class="mono-label">// use</p><h2>A good-faith record</h2><p>The file helps group relevant facts, actions and reconciliation work. It does not certify the invoice or your compliance.</p></article>
+    <article><p class="mono-label">// security</p><h2>Use a minimal reference</h2><p>Do not enter attachments, credentials, bank details or personal data. Keep sensitive evidence in your normal document system.</p></article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading{display:grid;gap:.9rem;margin-top:1rem}.tool-reading article{min-width:0;border:1px solid var(--color-line);border-radius:12px;padding:1rem;background:color-mix(in srgb,var(--color-surface) 72%,transparent)}.tool-reading .mono-label{color:var(--color-signal)}.tool-reading h2{margin-top:.45rem;color:var(--color-bright);font-family:var(--font-display);font-size:1.15rem}.tool-reading article>p:last-child{margin-top:.55rem;color:var(--color-muted);font-size:.8rem;line-height:1.62}@media(min-width:760px){.tool-reading{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

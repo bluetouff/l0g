@@ -1,0 +1,219 @@
+---
+import { INVOICE_INCIDENT_STEPS } from '../lib/invoice-incident-log-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const copy = isFr ? {
+  eyebrow: '// journal local de continuité',
+  title: 'Documenter un incident de facturation',
+  intro: 'Préparez une trace chronologique fondée sur le guide de démarrage de la DGFiP. Rien ne quitte votre navigateur et rien n’est conservé après fermeture de la page.',
+  privacy: 'N’inscrivez ni identifiant de connexion, ni IBAN, ni donnée personnelle. Utilisez une référence interne minimale.',
+  direction: 'Flux concerné',
+  directions: { received: 'Facture reçue', sent: 'Facture émise', reporting: 'E-reporting' },
+  started: 'Début de l’incident',
+  reference: 'Référence interne',
+  referenceHint: 'Ex. INCIDENT-2026-04',
+  actor: 'Plateforme ou prestataire',
+  actorHint: 'Nom utile au suivi',
+  symptom: 'Fait observé',
+  symptomHint: 'Message, statut ou comportement constaté, sans interprétation.',
+  steps: 'Checklist de continuité',
+  result: 'Journal prêt à copier',
+  copyButton: 'Copier le journal',
+  downloadButton: 'Télécharger en TXT',
+  copied: 'Journal copié.',
+  copyFailed: 'Copie impossible. Sélectionnez le texte manuellement.',
+  source: 'Source méthodologique : guide pratique DGFiP, questions 5, 6 et 13 à 29.',
+  pending: 'à traiter',
+  done: 'fait',
+  empty: 'non renseigné',
+  generatedTitle: 'JOURNAL D’INCIDENT DE FACTURATION ÉLECTRONIQUE',
+  caution: 'Aide opérationnelle fondée sur le guide DGFiP. Ce journal ne remplace ni les procédures internes, ni le conseil juridique ou comptable.',
+} : {
+  eyebrow: '// local continuity log',
+  title: 'Document an e-invoicing incident',
+  intro: 'Prepare a chronological record based on the DGFiP go-live guide. Nothing leaves your browser and nothing remains after the page is closed.',
+  privacy: 'Do not enter login credentials, bank details or personal data. Use a minimal internal reference.',
+  direction: 'Affected flow',
+  directions: { received: 'Received invoice', sent: 'Issued invoice', reporting: 'E-reporting' },
+  started: 'Incident start',
+  reference: 'Internal reference',
+  referenceHint: 'Example: INCIDENT-2026-04',
+  actor: 'Platform or provider',
+  actorHint: 'Name needed for follow-up',
+  symptom: 'Observed fact',
+  symptomHint: 'Record the message, status or behaviour without interpretation.',
+  steps: 'Continuity checklist',
+  result: 'Log ready to copy',
+  copyButton: 'Copy log',
+  downloadButton: 'Download TXT',
+  copied: 'Log copied.',
+  copyFailed: 'Copy failed. Select the text manually.',
+  source: 'Method source: DGFiP practical guide, questions 5, 6 and 13 to 29.',
+  pending: 'pending',
+  done: 'done',
+  empty: 'not provided',
+  generatedTitle: 'ELECTRONIC INVOICING INCIDENT LOG',
+  caution: 'Operational aid based on the DGFiP guide. This log does not replace internal procedures or legal and accounting advice.',
+};
+---
+
+<section class:list={['incident-log', `incident-log--${mode}`]} data-invoice-incident-log data-lang={lang} data-copy-done={copy.copied} data-copy-failed={copy.copyFailed} data-empty={copy.empty} data-done={copy.done} data-pending={copy.pending} data-title={copy.generatedTitle} data-caution={copy.caution}>
+  <header class="incident-log__header">
+    <div>
+      <p class="mono-label">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="incident-log__local">local_only</span>
+  </header>
+
+  <p class="incident-log__privacy"><strong>{isFr ? 'Confidentialité' : 'Privacy'} :</strong> {copy.privacy}</p>
+
+  <div class="incident-log__workspace">
+    <form class="incident-log__form" autocomplete="off" onsubmit="return false">
+      <div class="incident-log__fields">
+        <label>
+          <span>{copy.direction}</span>
+          <select data-field="direction">
+            {Object.entries(copy.directions).map(([value, label]) => <option value={value}>{label}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>{copy.started}</span>
+          <input type="datetime-local" data-field="started" />
+        </label>
+        <label>
+          <span>{copy.reference}</span>
+          <input type="text" maxlength="80" placeholder={copy.referenceHint} data-field="reference" />
+        </label>
+        <label>
+          <span>{copy.actor}</span>
+          <input type="text" maxlength="100" placeholder={copy.actorHint} data-field="actor" />
+        </label>
+      </div>
+      <label class="incident-log__symptom">
+        <span>{copy.symptom}</span>
+        <textarea rows="3" maxlength="600" placeholder={copy.symptomHint} data-field="symptom"></textarea>
+      </label>
+
+      <fieldset>
+        <legend>{copy.steps}</legend>
+        <div class="incident-log__steps">
+          {INVOICE_INCIDENT_STEPS.map((step) => (
+            <label class="incident-log__step">
+              <input type="checkbox" value={step.id} data-step />
+              <span>
+                <strong>{isFr ? step.titleFr : step.titleEn}</strong>
+                <small>{isFr ? step.detailFr : step.detailEn}</small>
+                <em>{isFr ? step.sourceSectionFr : step.sourceSectionEn}</em>
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </form>
+
+    <aside class="incident-log__output" aria-live="polite">
+      <p class="mono-label">// {copy.result}</p>
+      <pre tabindex="0" data-output></pre>
+      <div class="incident-log__actions">
+        <button type="button" data-copy>{copy.copyButton}</button>
+        <button type="button" data-download>{copy.downloadButton}</button>
+      </div>
+      <p class="incident-log__status" data-status></p>
+    </aside>
+  </div>
+
+  <footer>{copy.source}</footer>
+</section>
+
+<script>
+  const normaliseValue = (value: string, empty: string) => value.trim() || empty;
+
+  for (const root of document.querySelectorAll('[data-invoice-incident-log]')) {
+    if (!(root instanceof HTMLElement) || root.dataset.bound === 'true') continue;
+    root.dataset.bound = 'true';
+
+    const field = (name: string) => root.querySelector(`[data-field="${name}"]`);
+    const output = root.querySelector('[data-output]');
+    const status = root.querySelector('[data-status]');
+    const started = field('started');
+    if (!(output instanceof HTMLElement) || !(status instanceof HTMLElement)) continue;
+
+    if (started instanceof HTMLInputElement && !started.value) {
+      const now = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
+      started.value = now.toISOString().slice(0, 16);
+    }
+
+    const render = () => {
+      const empty = root.dataset.empty ?? '';
+      const lang = root.dataset.lang ?? 'fr';
+      const direction = field('direction');
+      const directionLabel = direction instanceof HTMLSelectElement
+        ? direction.options[direction.selectedIndex]?.text ?? empty
+        : empty;
+      const labels = lang === 'fr'
+        ? ['Flux', 'Début', 'Référence', 'Interlocuteur', 'Fait observé', 'Étapes']
+        : ['Flow', 'Started', 'Reference', 'Contact', 'Observed fact', 'Steps'];
+      const valueOf = (name: string) => {
+        const element = field(name);
+        return element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement
+          ? normaliseValue(element.value, empty)
+          : empty;
+      };
+      const steps = [...root.querySelectorAll('[data-step]')].map((element) => {
+        if (!(element instanceof HTMLInputElement)) return '';
+        const container = element.closest('label');
+        const title = container?.querySelector('strong')?.textContent?.trim() ?? empty;
+        const marker = element.checked ? root.dataset.done : root.dataset.pending;
+        return `[${element.checked ? 'x' : ' '}] ${title} (${marker})`;
+      }).filter(Boolean);
+      output.textContent = [
+        root.dataset.title ?? '',
+        '',
+        `${labels[0]}: ${directionLabel}`,
+        `${labels[1]}: ${valueOf('started')}`,
+        `${labels[2]}: ${valueOf('reference')}`,
+        `${labels[3]}: ${valueOf('actor')}`,
+        `${labels[4]}: ${valueOf('symptom')}`,
+        '',
+        `${labels[5]}:`,
+        ...steps,
+        '',
+        root.dataset.caution ?? '',
+      ].join('\n');
+      status.textContent = '';
+    };
+
+    root.querySelector('form')?.addEventListener('input', render);
+    root.querySelector('[data-copy]')?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(output.textContent ?? '');
+        status.textContent = root.dataset.copyDone ?? '';
+      } catch {
+        status.textContent = root.dataset.copyFailed ?? '';
+      }
+    });
+    root.querySelector('[data-download]')?.addEventListener('click', () => {
+      const blob = new Blob([output.textContent ?? ''], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = root.dataset.lang === 'fr' ? 'journal-incident-facture.txt' : 'e-invoice-incident-log.txt';
+      anchor.click();
+      URL.revokeObjectURL(url);
+    });
+    render();
+  }
+</script>
+
+<style>
+  .incident-log{max-width:100%;margin:1.5rem 0;border:1px solid color-mix(in srgb,var(--color-signal) 32%,var(--color-line));border-radius:18px;padding:clamp(1rem,3vw,1.5rem);overflow:hidden;background:radial-gradient(80% 120% at 0 0,color-mix(in srgb,var(--color-signal) 10%,transparent),transparent 72%),color-mix(in srgb,var(--color-surface) 88%,var(--color-bg))}.incident-log *{box-sizing:border-box}.incident-log__header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}.incident-log .mono-label{margin:0;color:var(--color-signal);font:650 .65rem/1.2 var(--font-mono)}.incident-log h2{margin:.45rem 0 0;color:var(--color-bright);font:700 clamp(1.3rem,3vw,1.85rem)/1.08 var(--font-display)}.incident-log__header div>p:last-child{max-width:52rem;margin:.65rem 0 0;color:var(--color-muted);font-size:.82rem;line-height:1.65}.incident-log__local{flex:0 0 auto;border:1px solid var(--color-signal);border-radius:999px;padding:.38rem .55rem;color:var(--color-signal);font:650 .58rem/1 var(--font-mono)}.incident-log__privacy{margin:1rem 0 0;border-left:3px solid var(--color-amber);padding:.75rem .85rem;background:color-mix(in srgb,var(--color-amber) 7%,transparent);color:var(--color-muted);font-size:.72rem;line-height:1.55}.incident-log__workspace{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(17rem,.78fr);gap:1rem;margin-top:1rem}.incident-log__form,.incident-log__output{min-width:0}.incident-log__fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}.incident-log label>span,.incident-log legend{display:block;margin-bottom:.35rem;color:var(--color-bright);font:650 .67rem/1.35 var(--font-mono)}.incident-log input[type='text'],.incident-log input[type='datetime-local'],.incident-log select,.incident-log textarea{display:block;width:100%;max-width:100%;border:1px solid var(--color-line);border-radius:8px;padding:.66rem .7rem;background:var(--color-bg);color:var(--color-bright);font:.72rem/1.4 var(--font-mono)}.incident-log textarea{resize:vertical;overflow-wrap:anywhere}.incident-log__symptom{display:block;margin-top:.75rem}.incident-log fieldset{min-width:0;margin:1rem 0 0;border:0;padding:0}.incident-log__steps{display:grid;gap:.55rem}.incident-log__step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.65rem;margin:0;border:1px solid var(--color-line);border-radius:10px;padding:.7rem;background:color-mix(in srgb,var(--color-bg) 70%,transparent);cursor:pointer}.incident-log__step input{width:1rem;height:1rem;margin-top:.1rem;accent-color:var(--color-signal)}.incident-log__step span{min-width:0}.incident-log__step strong{display:block;color:var(--color-bright);font:650 .72rem/1.35 var(--font-mono)}.incident-log__step small{display:block;margin-top:.23rem;color:var(--color-muted);font:.69rem/1.48 var(--font-sans);overflow-wrap:anywhere}.incident-log__step em{display:block;margin-top:.28rem;color:var(--color-signal);font:500 .55rem/1.3 var(--font-mono);font-style:normal}.incident-log__output{position:sticky;top:1rem;align-self:start;border:1px solid var(--color-line);border-radius:12px;padding:.85rem;background:var(--color-bg)}.incident-log__output pre{max-width:100%;min-height:24rem;margin:.65rem 0 0;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;color:var(--color-bright);font:.66rem/1.55 var(--font-mono)}.incident-log__actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.8rem}.incident-log button{border:1px solid var(--color-signal);border-radius:8px;padding:.58rem .7rem;background:color-mix(in srgb,var(--color-signal) 10%,transparent);color:var(--color-signal);font:650 .62rem/1 var(--font-mono);cursor:pointer}.incident-log button:hover{background:color-mix(in srgb,var(--color-signal) 18%,transparent)}.incident-log__status{min-height:1.2rem;margin:.45rem 0 0;color:var(--color-signal);font:.6rem/1.4 var(--font-mono)}.incident-log footer{margin-top:1rem;border-top:1px solid var(--color-line);padding-top:.75rem;color:var(--color-muted);font:.6rem/1.5 var(--font-mono)}.incident-log--embed{margin-block:1.75rem}
+  @media(max-width:760px){.incident-log__header{display:block}.incident-log__local{display:inline-block;margin-top:.75rem}.incident-log__workspace{grid-template-columns:1fr}.incident-log__fields{grid-template-columns:1fr}.incident-log__output{position:static}.incident-log__output pre{min-height:18rem}}
+</style>

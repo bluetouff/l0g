@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import InvoiceIncidentLog from '../../components/InvoiceIncidentLog.astro';
+import {
+  INVOICE_INCIDENT_DATA_DATE,
+  INVOICE_INCIDENT_MODEL_VERSION,
+  INVOICE_INCIDENT_SOURCES,
+  INVOICE_INCIDENT_STEPS,
+} from '../../lib/invoice-incident-log-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pagePath = '/outils/journal-incident-facture/';
+const enPath = '/en/tools/e-invoice-incident-log/';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${pagePath}#app`,
+  name: 'Journal d’incident de facturation électronique',
+  description: 'Checklist locale pour tracer une panne, assurer la continuité, prévenir les doublons et préparer la régularisation.',
+  url: `${SITE}${pagePath}`,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript produit un fichier texte local. Aucune donnée n’est envoyée ni conservée.',
+  softwareVersion: INVOICE_INCIDENT_MODEL_VERSION,
+  dateModified: INVOICE_INCIDENT_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: INVOICE_INCIDENT_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  seoTitle="Panne de facture électronique : journal d’incident | l0g"
+  ogTitle="Le journal d’incident facture"
+  title="Journal d’incident de facturation électronique"
+  description="Tracez une panne, les preuves, le canal de continuité, les doublons et la régularisation. Outil local fondé sur le guide DGFiP."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(pagePath, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(enPath, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(pagePath, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="05"
+    kicker="continuité de facturation"
+    title="Quand le circuit s’arrête, la trace devient essentielle"
+    description="Le journal transforme les recommandations de démarrage de la DGFiP en sept étapes vérifiables : identifier, prouver, alerter, maintenir l’activité, bloquer les doublons, régulariser et clore."
+    secondary="Aucun upload, aucun stockage, aucun tracker. Le texte généré reste dans votre navigateur."
+    glyph="uncertainty"
+    accent="var(--color-amber)"
+    stats={[
+      { value: `v${INVOICE_INCIDENT_MODEL_VERSION}`, label: 'modèle auditable' },
+      { value: String(INVOICE_INCIDENT_STEPS.length), label: 'étapes de continuité' },
+      { value: '0', label: 'donnée envoyée' },
+    ]}
+  />
+
+  <InvoiceIncidentLog lang="fr" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article><p class="mono-label">// usage</p><h2>Une trace de bonne foi</h2><p>Le fichier aide à regrouper les faits, démarches et rapprochements utiles. Il ne certifie ni la conformité de la facture, ni le respect de vos obligations.</p></article>
+    <article><p class="mono-label">// sécurité</p><h2>Une référence minimale</h2><p>Évitez les pièces, identifiants, coordonnées bancaires et données personnelles. Conservez les preuves sensibles dans votre système documentaire habituel.</p></article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading{display:grid;gap:.9rem;margin-top:1rem}.tool-reading article{min-width:0;border:1px solid var(--color-line);border-radius:12px;padding:1rem;background:color-mix(in srgb,var(--color-surface) 72%,transparent)}.tool-reading .mono-label{color:var(--color-signal)}.tool-reading h2{margin-top:.45rem;color:var(--color-bright);font-family:var(--font-display);font-size:1.15rem}.tool-reading article>p:last-child{margin-top:.55rem;color:var(--color-muted);font-size:.8rem;line-height:1.62}@media(min-width:760px){.tool-reading{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

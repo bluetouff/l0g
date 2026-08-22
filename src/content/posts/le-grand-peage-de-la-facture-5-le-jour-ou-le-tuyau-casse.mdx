@@ -1,0 +1,265 @@
+---
+title: "Le grand péage de la facture, 5/5 : le jour où le tuyau casse"
+seoTitle: "Facture électronique : les preuves de résilience manquantes | l0g"
+ogTitle: "Le jour où le tuyau casse"
+description: "Audits, pilote, registre, incidents et mode dégradé : ce que la France prouve déjà sur sa facture électronique obligatoire, et ce qui reste à publier."
+pubDate: 2026-08-22T18:20:00+02:00
+updatedDate: 2026-08-22T18:20:00+02:00
+tags: ["facturation électronique", "plateformes agréées", "résilience", "cybersécurité", "DGFiP", "AIFE", "audit", "Parlement", "TPE", "enquête"]
+draft: false
+quickTake:
+  fact: "La France impose de vraies exigences de sécurité et d’interopérabilité. Le droit permet toutefois au rapport initial d’audit d’arriver jusqu’à un an après l’immatriculation."
+  importance: "Au 22 août 2026, le registre public et les pages officielles consultées ne permettent pas de mesurer les résultats du pilote, les dépendances communes, les délais de reprise ou les garanties d’indemnisation."
+  uncertainty: "Cette absence de preuve publique ne démontre ni une panne future, ni une non-conformité. Elle empêche les entreprises et le Parlement d’évaluer indépendamment la résilience du dispositif obligatoire."
+---
+
+import InvoiceIncidentLog from '../../components/InvoiceIncidentLog.astro';
+
+*Le 1er septembre 2026, chaque entreprise assujettie à la TVA doit pouvoir recevoir ses factures électroniques par une plateforme agréée. La sécurité du système ne se mesurera plus seulement à la qualité de ses règles. Elle se mesurera au premier rejet massif, à la première identité compromise, à la première panne croisée et à la capacité de revenir à un état comptable exact.*
+
+*La France a construit des défenses sérieuses. Elle n’a pas encore publié toutes les preuves qui permettraient au Parlement, aux entreprises et aux chercheurs d’en mesurer la résistance réelle.*
+
+Cette enquête a suivi [le retrait du guichet public direct](/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/), [la multiplication des plateformes](/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/), [les frontières du gratuit](/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/) et [les lecteurs de la facture](/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/). Ce cinquième volet pose la question qui subsiste lorsque tout est branché : **que se passe-t-il lorsque le circuit se dégrade ?**
+
+## À retenir
+
+- Le cadre exige notamment une certification ISO/IEC 27001, l’exploitation du système dans l’Union européenne, l’absence de transfert hors UE des données hébergées du service et la qualification SecNumCloud lorsqu’un prestataire cloud est utilisé.
+- Les tests d’interopérabilité conditionnent l’immatriculation définitive. Le rapport initial d’audit de conformité peut toutefois être remis jusqu’à un an après la notification de l’immatriculation et doit examiner au moins un mois d’activité postérieur à celle-ci.
+- Le registre DGFiP modifié le 19 août contient 148 plateformes dans sa liste principale et 18 dossiers en attente des tests. Son XLSX principal n’affiche pas la fin de validité ni un statut détaillé par ligne.
+- Le pilote national a débuté le 26 février 2026. Les pages officielles consultées décrivent ses objectifs, mais l0g n’y a pas retrouvé de bilan quantifié au 22 août.
+- Le guide de démarrage protège la continuité des paiements. Il demande aussi aux entreprises de documenter l’incident, maîtriser un canal alternatif, empêcher les doublons et régulariser.
+- Les incidents DGFiP de février et d’août 2026 montrent la réalité du risque lié aux identités et aux accès habilités. Aucun élément public consulté ne les relie à la facturation électronique, au PPF, à son annuaire, à son concentrateur ou à une plateforme agréée.
+- La demande raisonnable porte sur une preuve publique proportionnée : résultats agrégés, calendrier des audits, tests de reprise, dépendances critiques, conditions de sortie et responsabilités.
+
+## Les défenses existent
+
+Le point de départ doit être loyal. L’agrément ne repose pas sur une simple déclaration commerciale.
+
+L’[article 242 nonies B de l’annexe II au CGI](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29) impose un dossier de sécurité, une certification ISO/IEC 27001 couvrant le service, des engagements sur l’exploitation dans l’Union européenne et les transferts, une documentation technique, des mécanismes d’authentification et des tests d’interopérabilité. Lorsqu’un prestataire cloud intervient, la plateforme doit fournir la référence ou la copie de sa qualification SecNumCloud. Si la qualification est encore en cours, la pièce peut être transmise avec le rapport initial d’audit.
+
+Dans leurs [réponses écrites publiées le 4 août 2026](https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf), les pouvoirs publics défendent le modèle distribué comme une protection contre un point de défaillance unique. Ils citent aussi l’homologation de sécurité des outils de l’État, les tests de bout en bout et d’intrusion, la gestion des incidents, la sauvegarde, la restauration et la traçabilité des accès.
+
+Ces garanties comptent. Elles réduisent des risques identifiés. Elles ne permettent toutefois pas, à elles seules, de répondre à quatre questions opérationnelles : quelle charge a été tenue, combien de temps une reprise prend, quelle donnée peut être perdue et comment un client bascule vers une autre plateforme.
+
+## L’audit arrive selon plusieurs horloges
+
+Le mot « agréée » regroupe des contrôles distincts qui ne se produisent pas tous le même jour.
+
+Le [cadre en vigueur depuis le 29 juillet 2026](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29) autorise la remise du rapport initial de conformité dans l’année suivant la notification de l’immatriculation. L’[article 41 septies A de l’annexe IV](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054606052/2026-07-29) précise que cet audit porte sur une période minimale d’un mois d’activité postérieure à cette notification. Lorsqu’il constate une non-conformité, le délai de correction annoncé ne peut dépasser trois mois après la remise du rapport.
+
+Un audit de surveillance doit ensuite être remis au plus tard à la fin de la deuxième année. Le renouvellement, demandé avant la fin de la validité de trois ans, comporte un nouvel audit de conformité, puis deux audits de surveillance pendant les deux premières années du cycle renouvelé.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="audit-fr-title audit-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="audit-fr-title">Les différentes étapes de contrôle d’une plateforme agréée</title>
+<desc id="audit-fr-desc">L’immatriculation, les tests d’interopérabilité, l’audit initial, l’audit de surveillance et le renouvellement suivent des calendriers distincts.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">L’AGRÉMENT SUIT PLUSIEURS HORLOGES</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Calendrier réglementaire, pas statut individuel d’une plateforme.</text>
+<line x1="94" y1="142" x2="94" y2="654" stroke="#39414d" stroke-width="4"/>
+<circle cx="94" cy="146" r="12" fill="#5eead4"/>
+<rect x="132" y="106" width="526" height="86" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="154" y="136" fill="#5eead4" font-size="13" font-weight="700">IMMATRICULATION ET TESTS</text>
+<text x="154" y="160" fill="#f5f6f8" font-size="11">Dossier, sécurité, ISO 27001 et interopérabilité.</text>
+<text x="154" y="179" fill="#aeb4bf" font-size="10">Les tests conditionnent l’immatriculation définitive.</text>
+<circle cx="94" cy="274" r="12" fill="#7aa2f7"/>
+<rect x="132" y="226" width="526" height="102" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="154" y="256" fill="#7aa2f7" font-size="13" font-weight="700">AU PLUS TARD DANS L’ANNÉE</text>
+<text x="154" y="280" fill="#f5f6f8" font-size="11">Rapport initial d’audit de conformité.</text>
+<text x="154" y="300" fill="#aeb4bf" font-size="10">Au moins un mois d’activité après l’immatriculation.</text>
+<text x="154" y="317" fill="#aeb4bf" font-size="10">Correction éventuelle annoncée : trois mois maximum.</text>
+<circle cx="94" cy="410" r="12" fill="#f5b13d"/>
+<rect x="132" y="362" width="526" height="102" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="154" y="392" fill="#f5b13d" font-size="13" font-weight="700">AVANT LA FIN DE LA DEUXIÈME ANNÉE</text>
+<text x="154" y="416" fill="#f5f6f8" font-size="11">Rapport d’audit de surveillance.</text>
+<text x="154" y="436" fill="#aeb4bf" font-size="10">Il cible les modifications substantielles intervenues.</text>
+<text x="154" y="453" fill="#aeb4bf" font-size="10">Période observée : au moins un mois sur les six derniers.</text>
+<circle cx="94" cy="546" r="12" fill="#ff85ad"/>
+<rect x="132" y="498" width="526" height="102" rx="12" fill="#21151c" stroke="#ff85ad"/>
+<text x="154" y="528" fill="#ff85ad" font-size="13" font-weight="700">RENOUVELLEMENT À TROIS ANS</text>
+<text x="154" y="552" fill="#f5f6f8" font-size="11">Nouveau rapport de conformité avec la demande.</text>
+<text x="154" y="572" fill="#aeb4bf" font-size="10">Puis surveillance durant les deux années suivantes.</text>
+<circle cx="94" cy="654" r="12" fill="#8b909b"/>
+<rect x="132" y="626" width="526" height="60" rx="12" fill="#15171b" stroke="#4a505a"/>
+<text x="154" y="652" fill="#f5f6f8" font-size="11" font-weight="700">QUESTION PUBLIQUE</text>
+<text x="154" y="673" fill="#aeb4bf" font-size="10">Quel rapport a été remis, quand, et avec quelles réserves closes ?</text>
+<text x="32" y="724" fill="#6f7580" font-size="10">Sources : CGI annexe II, art. 242 nonies B et C ; annexe IV, art. 41 septies A. Consultation : 22 août 2026.</text>
+</svg>
+</figure>
+
+La conséquence mérite une formulation exacte : **une plateforme peut être définitivement immatriculée alors que son rapport initial complet reste légalement à produire**. Cela ne signifie ni qu’elle est non conforme, ni qu’elle n’a subi aucun contrôle, ni que son rapport n’a pas déjà été remis. Le registre devrait permettre de savoir dans quel état se trouve chaque dossier.
+
+## Le registre montre 148 plateformes et plusieurs champs absents
+
+La [page DGFiP modifiée le 19 août 2026](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees) publie deux fichiers. l0g a téléchargé les XLSX le 22 août et recompté chaque ligne non vide :
+
+- **148 plateformes** dans la liste des opérateurs ayant satisfait aux conditions, tests d’interopérabilité compris ;
+- **18 opérateurs** ayant un dossier complet et conforme, encore en attente de ces tests ;
+- aucun nom dupliqué à l’intérieur de chaque fichier.
+
+Cette mise à jour corrige le décompte de 147 et 16 publié dans le deuxième volet à partir d’un snapshot antérieur.
+
+Le fichier principal contient sept colonnes utiles : nom commercial, adresse en trois champs, site, contact et date de délivrance. Deux lignes, CYCLOPE et LUNDI MATIN, affichent « à venir » dans la colonne de date. VENTYA affiche le 18 décembre 2026, une date future au jour de la consultation. Ces trois valeurs sont des anomalies documentaires à expliquer. Elles ne permettent d’inférer ni fraude, ni défaut technique.
+
+L’[article 41 septies B de l’annexe IV](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29) prévoit aussi la publication de la fin de validité, du statut de l’immatriculation et, lorsqu’elle subsiste, de l’obligation de produire le rapport initial. Le XLSX examiné ne contient pas ces champs. Le classement sur la page indique une catégorie générale, tandis que le nom du fichier principal comporte `attente_rapport_audit`. Il ne donne pas un état explicite ligne par ligne.
+
+Il s’agit d’un **écart documentaire apparent à clarifier**. Un tableur enrichi de ces champs suffirait à le résoudre.
+
+## Le pilote public manque encore de résultats mesurables
+
+L’[AIFE indique](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/) que le pilote a débuté le 26 février 2026. Sa [page consacrée à la facturation B2B](https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b) en expose les objectifs : tester les échanges en conditions réelles, sécuriser la montée en charge et préparer les acteurs.
+
+Au 22 août 2026, l0g n’a retrouvé sur ces pages, sur la page DGFiP annonçant le pilote et dans les documents officiels liés aucun bilan public donnant les volumes échangés, les taux de succès, les délais, les rejets, les doublons, les incidents, les temps de résolution ou les résultats de restauration.
+
+Cette phrase décrit une recherche documentaire délimitée. Elle ne prouve pas que l’AIFE ou la DGFiP ignorent ces mesures, qu’aucun test n’a été réalisé ou qu’aucune entreprise ne participe. Elle conduit à une demande simple : **publier un bilan agrégé du pilote, en retirant les détails qui exposeraient la sécurité des systèmes**.
+
+Une infrastructure obligatoire mérite au minimum des résultats sur :
+
+1. les plateformes et entreprises effectivement actives ;
+2. les factures et événements de cycle de vie échangés ;
+3. la charge soutenue et les pointes testées ;
+4. les taux de réussite, de rejet et de retransmission ;
+5. les temps de résolution ;
+6. les exercices de restauration, bascule et panne croisée ;
+7. les écarts ouverts, corrigés ou acceptés avant le démarrage.
+
+## Deux intrusions récentes changent le niveau d’exigence
+
+Le 18 février 2026, le [ministère des Finances a annoncé](https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/) des accès illégitimes à FICOBA à partir des identifiants usurpés d’un fonctionnaire. Le communiqué estimait alors que **1,2 million de comptes** avaient pu être concernés.
+
+Le 14 août, le [même ministère a documenté](https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/) une autre intrusion reposant sur les identifiants usurpés d’un agent de la DGFiP et d’un tiers habilité. Les investigations avaient établi la consultation ou l’extraction de données concernant **678 000 particuliers et professionnels**. La [CNIL, saisie de la violation](https://www.cnil.fr/fr/piratage-du-systeme-dinformation-des-impots-les-verifications-sont-en-cours), indiquait le 18 août que ses vérifications étaient en cours.
+
+Ces affaires concernent des systèmes et accès de la DGFiP. **Aucun élément public consulté ne les relie à la facturation électronique, au PPF, à l’annuaire, au concentrateur ou à une plateforme agréée.** Les utiliser comme preuve d’une compromission de la réforme serait faux.
+
+Elles établissent néanmoins un fait utile au débat : une identité habilitée et un accès tiers peuvent devenir le chemin d’une extraction, y compris dans un système public encadré. L’[ANSSI relevait déjà dans son Panorama de la cybermenace 2024](https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf), section « attaques par la chaîne d’approvisionnement », la progression des compromissions de prestataires permettant d’atteindre leurs clients par rebond.
+
+Le modèle distribué réduit la concentration dans un guichet unique. Il peut aussi partager des dépendances : cloud, identité, logiciel support, réseau d’échange, bibliothèque ou prestataire d’administration. Le nombre de marques ne mesure donc pas automatiquement le nombre de points de défaillance réellement indépendants.
+
+## Quand la panne devient le travail de l’entreprise
+
+Le [guide pratique de démarrage de la DGFiP](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf) apporte une protection économique importante. Une panne temporaire ne doit pas bloquer l’activité, le traitement d’une opération réelle ou le paiement. Un canal alternatif peut assurer la continuité lorsque le circuit attendu est indisponible.
+
+La souplesse vient avec une discipline : conserver les statuts et erreurs, contacter les parties, rattacher la copie à la facture initiale, empêcher tout double paiement, toute double comptabilisation, déduction ou déclaration, puis transmettre ou régulariser la même facture dès le retour du circuit.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie défilable horizontalement">
+<svg viewBox="0 0 720 830" width="100%" role="img" aria-labelledby="failure-fr-title failure-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="failure-fr-title">Le chemin de continuité en cas d’incident de facturation électronique</title>
+<desc id="failure-fr-desc">L’entreprise identifie l’incident, conserve les preuves, alerte, ouvre si nécessaire un canal de continuité, bloque les doublons, régularise et clôt le dossier.</desc>
+<rect x="1" y="1" width="718" height="828" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">LE CIRCUIT DÉGRADÉ EN SEPT ÉTAPES</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Continuer l’activité tout en gardant une seule réalité comptable.</text>
+<rect x="42" y="112" width="286" height="108" rx="13" fill="#141a28" stroke="#7aa2f7"/>
+<text x="62" y="142" fill="#7aa2f7" font-size="13" font-weight="700">1. IDENTIFIER</text>
+<text x="62" y="169" fill="#f5f6f8" font-size="11">Flux, facture, période, statut</text>
+<text x="62" y="190" fill="#aeb4bf" font-size="10">et symptôme effectivement observé.</text>
+<rect x="392" y="112" width="286" height="108" rx="13" fill="#10211f" stroke="#5eead4"/>
+<text x="412" y="142" fill="#5eead4" font-size="13" font-weight="700">2. CONSERVER</text>
+<text x="412" y="169" fill="#f5f6f8" font-size="11">Erreurs, horodatages, tickets,</text>
+<text x="412" y="190" fill="#aeb4bf" font-size="10">statuts et échanges utiles.</text>
+<line x1="328" y1="166" x2="384" y2="166" stroke="#8b909b" stroke-width="3"/><polygon points="384,166 373,159 373,173" fill="#8b909b"/>
+<rect x="42" y="260" width="286" height="108" rx="13" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="62" y="290" fill="#f5b13d" font-size="13" font-weight="700">3. ALERTER</text>
+<text x="62" y="317" fill="#f5f6f8" font-size="11">Plateforme, éditeur, prestataire,</text>
+<text x="62" y="338" fill="#aeb4bf" font-size="10">client ou fournisseur selon le cas.</text>
+<rect x="392" y="260" width="286" height="108" rx="13" fill="#21151c" stroke="#ff85ad"/>
+<text x="412" y="290" fill="#ff85ad" font-size="13" font-weight="700">4. MAINTENIR</text>
+<text x="412" y="317" fill="#f5f6f8" font-size="11">Canal alternatif si nécessaire,</text>
+<text x="412" y="338" fill="#aeb4bf" font-size="10">copie reliée à la facture initiale.</text>
+<line x1="328" y1="314" x2="384" y2="314" stroke="#8b909b" stroke-width="3"/><polygon points="384,314 373,307 373,321" fill="#8b909b"/>
+<rect x="42" y="408" width="286" height="108" rx="13" fill="#201b12" stroke="#f59e0b"/>
+<text x="62" y="438" fill="#f59e0b" font-size="13" font-weight="700">5. VERROUILLER</text>
+<text x="62" y="465" fill="#f5f6f8" font-size="11">Une facture de référence,</text>
+<text x="62" y="486" fill="#aeb4bf" font-size="10">aucun double traitement.</text>
+<rect x="392" y="408" width="286" height="108" rx="13" fill="#122018" stroke="#69db7c"/>
+<text x="412" y="438" fill="#69db7c" font-size="13" font-weight="700">6. RÉGULARISER</text>
+<text x="412" y="465" fill="#f5f6f8" font-size="11">Même facture, données attendues,</text>
+<text x="412" y="486" fill="#aeb4bf" font-size="10">rapprochement après rétablissement.</text>
+<line x1="328" y1="462" x2="384" y2="462" stroke="#8b909b" stroke-width="3"/><polygon points="384,462 373,455 373,469" fill="#8b909b"/>
+<rect x="217" y="570" width="286" height="108" rx="13" fill="#17191d" stroke="#aeb4bf"/>
+<text x="237" y="600" fill="#aeb4bf" font-size="13" font-weight="700">7. CLORE</text>
+<text x="237" y="627" fill="#f5f6f8" font-size="11">Retour à la normale daté,</text>
+<text x="237" y="648" fill="#aeb4bf" font-size="10">corrections et preuves conservées.</text>
+<line x1="360" y1="516" x2="360" y2="562" stroke="#8b909b" stroke-width="3"/><polygon points="360,562 353,551 367,551" fill="#8b909b"/>
+<rect x="42" y="716" width="636" height="62" rx="12" fill="#101522" stroke="#394967"/>
+<text x="62" y="742" fill="#f5b13d" font-size="11" font-weight="700">POINT DE CONTRÔLE</text>
+<text x="62" y="764" fill="#f5f6f8" font-size="10">Continuité commerciale et conformité future doivent converger vers une seule opération.</text>
+<text x="32" y="808" fill="#6f7580" font-size="10">Source : guide pratique DGFiP, questions 5, 6 et 13 à 29. Consultation : 22 août 2026.</text>
+</svg>
+</figure>
+
+Pour rendre cette discipline utilisable par une petite structure, l0g a transformé le guide en journal local. L’outil ne demande aucune facture et ne transmet rien. Il génère un fichier texte que l’entreprise peut classer dans son propre système documentaire.
+
+<InvoiceIncidentLog lang="fr" mode="embed" />
+
+La [version autonome du journal](/outils/journal-incident-facture/) peut rester ouverte pendant un incident.
+
+## Les garanties encore incomparables dans le registre
+
+Le registre permet de choisir un nom. Il ne permet pas de comparer publiquement, sur un socle commun :
+
+- la disponibilité contractuelle du service ;
+- le délai maximal de reprise, ou RTO ;
+- la perte de données maximale admissible, ou RPO ;
+- le délai de notification des clients ;
+- les résultats des tests de restauration et de bascule ;
+- les dépendances communes à plusieurs marques ;
+- l’export d’urgence disponible pendant une indisponibilité ;
+- les assurances, plafonds de responsabilité et mécanismes d’indemnisation.
+
+Ces garanties peuvent exister dans les certifications, les dossiers confidentiels, les contrats, les plans internes ou les assurances. L’enquête ne conclut pas à leur absence. Elle conclut à l’impossibilité de les comparer dans le registre public alors que le recours à une plateforme devient obligatoire.
+
+La transparence raisonnable n’exige aucune publication de topologie détaillée, de configuration, de vulnérabilité ou de secret industriel. Elle peut prendre la forme de fourchettes, d’indicateurs agrégés, de dates de tests, de statuts et d’attestations.
+
+## Douze questions prêtes pour le contrôle parlementaire
+
+Deux questions écrites, [n° 16415](https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf) et [n° 16666](https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16666), ont reçu une réponse le 4 août. Elles ont permis au Gouvernement d’exposer sa doctrine de sécurité. Le contrôle peut désormais se concentrer sur les preuves opérationnelles.
+
+1. Combien de plateformes ont remis leur rapport initial d’audit au 1er septembre 2026, et combien restent dans leur fenêtre réglementaire ?
+2. Pour chaque plateforme, quelles dates de remise, réserves, corrections et clôtures peuvent être publiées ?
+3. Pourquoi le XLSX public n’affiche-t-il pas la fin de validité et le statut détaillé prévus par l’article 41 septies B ?
+4. Quels volumes, taux de réussite, délais, rejets et incidents le pilote a-t-il mesurés ?
+5. Quels tests de charge, de restauration, de corruption, de bascule et de panne croisée ont été menés ?
+6. Quels objectifs communs de disponibilité, RTO et RPO s’appliquent aux plateformes et aux outils de l’État ?
+7. Combien de plateformes partagent un même moteur, cloud, fournisseur d’identité ou sous-traitant critique ?
+8. Quel protocole accéléré s’applique lorsqu’une plateforme ou son support devient durablement indisponible ?
+9. Quels incidents doivent être signalés aux entreprises, à la DGFiP, à la CNIL et à l’ANSSI, et sous quels délais ?
+10. Quel export d’urgence est garanti au client pour poursuivre, rapprocher et changer d’opérateur ?
+11. Quelles assurances et responsabilités couvrent les pertes de trésorerie, les doubles traitements et les coûts de régularisation ?
+12. Quels avis, analyses d’impact et bilans de sécurité peuvent être publiés avant la généralisation ?
+
+Ces questions ne présument aucune défaillance. Elles transforment une promesse de confiance en objets contrôlables.
+
+## Une prudence démocratique avant la bascule
+
+Le « principe de précaution » de l’article 5 de la Charte de l’environnement vise les dommages graves et irréversibles à l’environnement. L’appliquer directement à la facture électronique comme fondement juridique serait abusif. La décision publique peut en revanche suivre une **prudence démocratique** : plus une infrastructure est obligatoire, plus la preuve de sa résilience, de sa réversibilité et de ses responsabilités doit être accessible.
+
+Il reste dix jours avant la première échéance générale de réception.
+
+Suspendre la réforme sans démonstration créerait ses propres coûts et incertitudes. Basculer en demandant seulement aux entreprises de faire confiance renoncerait au contrôle que les textes rendent possible. Une voie proportionnée existe : publier le bilan agrégé du pilote, compléter le registre, donner le statut des audits, exposer les standards de reprise et garantir une sortie d’urgence testée.
+
+Le Parlement dispose des outils pour l’obtenir : questions écrites, auditions, mission d’information, contrôle budgétaire et demande de documents. Chaque dirigeant, comptable, informaticien ou citoyen peut [retrouver son député sur le site de l’Assemblée nationale](https://www.assemblee-nationale.fr/dyn/vos-deputes) et lui transmettre ces douze questions.
+
+La confiance ne naît pas du logo « plateforme agréée ». Elle naît de la capacité à vérifier ce que ce logo couvre, ce qu’il reste à contrôler et ce qui se produit le jour où le tuyau casse.
+
+## Méthode, limites et sources principales
+
+**Date de coupe : 22 août 2026.** Les deux XLSX de la DGFiP ont été téléchargés et recomptés ligne par ligne. Empreintes SHA-256 : `146796398c5fc9461ab8a44baa629d78e8e19249063c1eeeb07f62a5626ac058` pour la liste principale et `b52644a8701472afc84da047e4eda1546e1939e0d1e4375c0dea2d9ddf496dee` pour la liste en attente de tests.
+
+La recherche du bilan du pilote a porté sur les pages AIFE et DGFiP citées et leurs documents accessibles. Elle ne couvre ni les documents internes, ni les échanges confidentiels avec les plateformes. L’analyse du registre porte sur les fichiers disponibles le 22 août ; ils peuvent être corrigés après publication. Les incidents cyber sont utilisés comme contexte de risque lié aux accès, jamais comme preuve d’une atteinte à la facturation électronique.
+
+- [Légifrance, conditions d’immatriculation et calendrier des audits](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054552492/2026-07-29)
+- [Légifrance, contenu et périodes des audits](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000054606052/2026-07-29)
+- [Légifrance, champs du registre public](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29)
+- [DGFiP, liste des plateformes agréées, modifiée le 19 août 2026](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees)
+- [AIFE, accompagnement des plateformes et lancement du pilote](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/)
+- [AIFE, objectifs du pilote de facturation B2B](https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b)
+- [DGFiP, guide pratique de démarrage au 1er septembre 2026](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf)
+- [Assemblée nationale, question n° 16415 et réponse du 4 août 2026](https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16415.pdf)
+- [Assemblée nationale, question n° 16666 et réponse du 4 août 2026](https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE16666)
+- [Ministère des Finances, incident FICOBA du 18 février 2026](https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/)
+- [Ministère des Finances, accès illégitimes annoncés le 14 août 2026](https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/)
+- [CNIL, vérifications sur la violation DGFiP, 18 août 2026](https://www.cnil.fr/fr/piratage-du-systeme-dinformation-des-impots-les-verifications-sont-en-cours)
+- [ANSSI, Panorama de la cybermenace 2024, chaîne d’approvisionnement](https://www.cert.ssi.gouv.fr/uploads/CERTFR-2025-CTI-003.pdf)
+- [Assemblée nationale, rechercher son député](https://www.assemblee-nationale.fr/dyn/vos-deputes)
+
+Texte, analyse du registre, infographies et modèle de l’outil : **CC BY 4.0**. Code de l’outil : licence du dépôt l0g.
