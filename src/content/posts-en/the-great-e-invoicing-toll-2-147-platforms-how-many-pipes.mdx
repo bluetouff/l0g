@@ -1,0 +1,347 @@
+---
+title: "The great e-invoicing toll, 2/5: 147 platforms, how many pipes?"
+seoTitle: "French e-invoicing: 147 platforms, how many engines? | l0g"
+ogTitle: "147 approved platforms, but how many pipes behind the brands?"
+description: "Bercy lists 147 approved e-invoicing platforms. Its own guide allows several registrations to rely on the same underlying technical solution."
+pubDate: 2026-08-22T08:16:51+02:00
+updatedDate: 2026-08-22T08:16:51+02:00
+tags: ["electronic invoicing", "approved platforms", "DGFiP", "competition", "white label", "accounting software", "banks", "data", "investigation"]
+draft: false
+sourceArticle: "le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux"
+sourceUpdatedDate: 2026-08-22T08:16:51+02:00
+---
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Bercy publishes an impressive list. In the main file available on 22 August 2026, l0g counts **147 commercial names**. A second file adds **16 applicants** whose administrative files are complete but whose interoperability tests are still pending. At first sight, France appears to have created an extraordinarily fragmented market, with more than one hundred competitors capable of carrying invoices for millions of businesses.*
+
+*The list measures administrative status without mapping the market's structure. The French tax authority's own registration guide allows a company to obtain its own number while using all, or a large part, of a solution already operated by another approved platform. Two separate brands can hold two separate authorisations while sharing a technical dependency. Conversely, software used by thousands of businesses may remain absent from the register when it acts only as a Compatible Solution connected to an approved platform.*
+
+*The register counts authorised operators. It does not count genuinely independent engines, the groups that control them, shared clouds and subcontractors, or the banks, software vendors and accountancy networks that will steer companies towards a provider.*
+
+This second instalment follows the [investigation into France's truncated public portal](/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/). The first article tracked the public access point abandoned by the state. This one examines the private market that replaced it.
+
+## Key findings
+
+- The official snapshot of 22 August 2026 contains 147 names on the main list and 16 files on the waiting list.
+- These figures count registrations and brands, not independent technical engines.
+- The DGFiP guide explicitly describes arrangements in which an applicant reuses all or part of a support platform's solution.
+- Dext publicly states that its registration relies on a technology partnership with Serensia. The precise allocation of components between the two companies is not public.
+- At least six names on the register openly sell white-label or grey-label infrastructure to software vendors and distributors.
+- According to a report attributing the figures to the DGFiP, fifteen infrastructure platforms would carry most of the volume. Bercy publishes neither their names, nor a methodology, nor the corresponding volumes.
+
+## Official snapshot on 22 August 2026
+
+The [DGFiP page for approved platforms](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees) separates two populations.
+
+The [main list](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_rapport_audit.pdf) covers operators presented as meeting the required conditions, including interoperability tests. The [second list](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_test_interop.pdf) contains administratively complete files still awaiting technical validation.
+
+l0g's count of the files available on 22 August is **147 main entries and 16 pending entries**. These figures must always carry a date. The register changes as tests are completed, new applications arrive and publication errors are corrected. The main file still contains two dates shown as "forthcoming", a useful reminder that an official PDF is not a perfectly cleaned analytical database.
+
+Each line mainly contains a commercial name, an address, a website, a contact and a date. [Article 41 septies B of Annex IV to the French tax code](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000054606100/2026-08-09) defines the public fields. It does not require the publication of the underlying platform, subcontractors or volumes.
+
+The contrast matters. Since the decree of 27 July 2026, a platform's file must also identify the persons controlling it under company law. [The administration requests that information](https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054499503), but the register shown to businesses does not display it.
+
+Bercy therefore holds a richer map than the one it publishes.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 760" width="100%" role="img" aria-labelledby="market-layers-title-en market-layers-desc-en" preserveAspectRatio="xMidYMid meet" overflow="hidden" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="market-layers-title-en">The four layers of the approved-platform market</title>
+<desc id="market-layers-desc-en">The public register shows brands and basic contact details, but does not fully show controlling groups, support engines, critical subcontractors or distribution channels.</desc>
+<rect x="1" y="1" width="718" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">FOUR LAYERS OF THE MARKET</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">One visible offer can depend on several invisible operators.</text>
+<rect x="32" y="96" width="656" height="118" rx="12" fill="#121419" stroke="#5eead4"/>
+<text x="54" y="124" fill="#5eead4" font-size="12" font-weight="700">1. PUBLIC BRAND</text>
+<text x="54" y="154" fill="#f5f6f8" font-size="18" font-weight="700">Commercial name and registration status</text>
+<text x="54" y="179" fill="#d6d9df" font-size="13">What appears on the French tax authority's list.</text>
+<rect x="548" y="122" width="112" height="58" rx="9" fill="#0f2b27" stroke="#5eead4"/>
+<text x="604" y="145" text-anchor="middle" fill="#5eead4" font-size="21" font-weight="700">147</text>
+<text x="604" y="166" text-anchor="middle" fill="#b8e8df" font-size="10">main entries</text>
+<path d="M360 214 V246" stroke="#657080" stroke-width="3"/>
+<path d="M354 238 L360 250 L366 238" fill="#657080"/>
+<rect x="32" y="252" width="656" height="118" rx="12" fill="#121419" stroke="#7aa2f7"/>
+<text x="54" y="280" fill="#7aa2f7" font-size="12" font-weight="700">2. ENTITY AND GROUP</text>
+<text x="54" y="310" fill="#f5f6f8" font-size="18" font-weight="700">Registered company and controlling persons</text>
+<text x="54" y="335" fill="#d6d9df" font-size="13">Bercy requests the data but does not publish all of it.</text>
+<rect x="548" y="278" width="112" height="58" rx="9" fill="#17233b" stroke="#7aa2f7"/>
+<text x="604" y="302" text-anchor="middle" fill="#7aa2f7" font-size="13" font-weight="700">PARTIAL</text>
+<text x="604" y="323" text-anchor="middle" fill="#c5d6fa" font-size="10">in public data</text>
+<path d="M360 370 V402" stroke="#657080" stroke-width="3"/>
+<path d="M354 394 L360 406 L366 394" fill="#657080"/>
+<rect x="32" y="408" width="656" height="118" rx="12" fill="#121419" stroke="#f5b13d"/>
+<text x="54" y="436" fill="#f5b13d" font-size="12" font-weight="700">3. ENGINE AND DEPENDENCIES</text>
+<text x="54" y="466" fill="#f5f6f8" font-size="18" font-weight="700">Support PA, cloud and critical subcontractors</text>
+<text x="54" y="491" fill="#d6d9df" font-size="13">Several registrations may reuse the same solution.</text>
+<rect x="548" y="434" width="112" height="58" rx="9" fill="#2d2414" stroke="#f5b13d"/>
+<text x="604" y="458" text-anchor="middle" fill="#f5b13d" font-size="13" font-weight="700">NOT LISTED</text>
+<text x="604" y="479" text-anchor="middle" fill="#f0d49b" font-size="10">by the DGFiP</text>
+<path d="M360 526 V558" stroke="#657080" stroke-width="3"/>
+<path d="M354 550 L360 562 L366 550" fill="#657080"/>
+<rect x="32" y="564" width="656" height="118" rx="12" fill="#121419" stroke="#ff4d87"/>
+<text x="54" y="592" fill="#ff8fb0" font-size="12" font-weight="700">4. DISTRIBUTION</text>
+<text x="54" y="622" fill="#f5f6f8" font-size="18" font-weight="700">Bank, software vendor, accountant or network</text>
+<text x="54" y="647" fill="#d6d9df" font-size="13">The channel may direct more clients than the brand suggests.</text>
+<rect x="548" y="590" width="112" height="58" rx="9" fill="#301722" stroke="#ff4d87"/>
+<text x="604" y="614" text-anchor="middle" fill="#ff8fb0" font-size="13" font-weight="700">NOT LISTED</text>
+<text x="604" y="635" text-anchor="middle" fill="#f4bfd0" font-size="10">by the DGFiP</text>
+<rect x="32" y="704" width="656" height="34" rx="9" fill="#181b21" stroke="#3a4049"/>
+<text x="360" y="726" text-anchor="middle" fill="#d6d9df" font-size="12">Competition requires counting engines, groups, volumes and channels.</text>
+</svg>
+<figcaption>The public register answers a legal question: which operators are authorised. It is not yet a map of economic and technical dependencies.</figcaption>
+</figure>
+
+## A separate registration may rely on another operator's solution
+
+The most useful document is not a corporate announcement or a consultant's report. It is the [DGFiP user guide for registration applications](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_utilisateur_fe_ds_immatriculation_pdp.pdf), updated on 10 December 2025.
+
+Page 20 deals directly with white-label and grey-label structures.
+
+In the first case, the applicant uses **the entire solution** of a platform that has already been registered. It must submit the contract with the provider, the server location and a description of the technical link. The remaining technical documentation can be the material already filed by the support platform.
+
+In the second case, the applicant operates its own portal and user-authentication process, but reuses the support provider's solution for the other functions. Here again, most technical descriptions are those already submitted by the vendor.
+
+Outside these structures, the supplier of a component is treated as a subcontractor. The guide also says that a white-label operator hosting the entire code itself must follow the standard process.
+
+The mechanism can therefore separate as many as five objects:
+
+1. the brand seen by the company;
+2. the company holding the registration;
+3. the engine performing the regulatory functions;
+4. the host and subcontractors;
+5. the distributor retaining the client relationship.
+
+This architecture is neither secret nor irregular. It is contemplated by the administration and can lower development costs, speed up entry and stop every software vendor rebuilding the same infrastructure.
+
+The problem lies elsewhere: **the register does not disclose the relationships it permits**.
+
+## The Compatible Solution creates another invisible layer
+
+A second distinction widens the gap between the list and the real market.
+
+An Approved Platform can transmit and receive invoices, update the directory and send regulatory data to the administration. A Compatible Solution can create documents, run the interface or automate workflows, but must connect to an Approved Platform for the reserved acts.
+
+A business may therefore believe it is using only its ERP, invoicing software or accountant's tool. The regulatory engine operates behind the interface, sometimes without its brand being prominent.
+
+The register can produce two opposite illusions:
+
+- **overstating** the number of infrastructures by separately counting registrations that rely on the same solution;
+- **understating** the number of commercial interfaces by omitting Compatible Solutions distributing those infrastructures.
+
+## Dext's documented reliance on Serensia
+
+Dext and Serensia appear separately on the main list.
+
+Yet Dext states in its [help centre for the reform](https://help.dext.com/fr/articles/692764-la-reforme-de-la-facture-electronique-avec-dext) that it was registered "thanks to a technology partnership with Serensia". Dext describes itself as a hybrid Approved Platform, integrated into its pre-accounting product and included in existing subscriptions.
+
+That statement establishes a public technical dependency between two entries on the register. It does not establish that Dext and Serensia use exactly the same end-to-end system. Important documents remain unavailable:
+
+- does the structure fall under the guide's first or second case?
+- which functions does Dext operate directly?
+- who controls authentication, hosting, testing and incident recovery?
+- are Dext's volumes counted separately from those of the support engine?
+- could Dext switch infrastructure without redesignating every client?
+
+The Dext-Serensia link matters because it provides a verifiable example of what the register does not show.
+
+Serensia was [acquired by Quadient in June 2025](https://invest.quadient.com/fr/newsroom/3092110). A few months later, Quadient said its subsidiary had already secured [more than 215 million invoices a year](https://www.quadient.com/fr/news/serensia-traitera-plus-de-215-millions-de-factures-en-2026-leader-du-marche-francais), including white-label partnerships, or more than 10 per cent of the addressable market by its own calculation. The release named TotalEnergies, BPCE and Dalkia, and identified Cerfrance, a network representing 320,000 small and medium-sized businesses, as a white-label partner.
+
+Those volumes are operator claims. l0g does not convert them into observed market shares. They nevertheless show how a single infrastructure may expect to carry far more traffic than its single register entry suggests.
+
+## Public white-label infrastructure offers
+
+Serensia is not an isolated case. At least six operators on the main list publicly sell infrastructure designed to remain partly or entirely behind another software brand.
+
+### Iopole
+
+The [France Num profile for Iopole](https://www.francenum.gouv.fr/activateurs/iopole) describes a full-API platform for software vendors. The company says it helps them become either Compatible Solutions or separately registered Approved Platforms. It claims more than 300,000 user companies and leadership in white-label Approved Platforms. These are self-reported metrics, but the published references identify several software products connected to its infrastructure.
+
+### B2BRouter
+
+[B2BRouter](https://www.b2brouter.net/fr/api-facturation-electronique/) openly markets two structures. Under white label, the software vendor keeps its brand and user experience while B2BRouter provides compliance. Under grey label, the technology partner remains visible.
+
+### Docoon
+
+[Docoon](https://docoon.com/btp-et-architectes-la-facture-electronique-avec-docoon/) names several construction and architecture software vendors integrating its platform under grey label. It also sells white-label structures.
+
+### Seres
+
+[Docaposte sells the platform developed by its Seres subsidiary under white label](https://www.docaposte.com/solutions/facture-electronique/plateforme-agreee-marque-blanche). It is registered with the DGFiP under number 0020. The distributing vendor can retain its identity, pricing and customer relationship while using Seres's infrastructure and regulatory compliance.
+
+### Seqino
+
+[Seqino](https://seqino.com/qui-sommes-nous/) sells a grey-label API and a white-label product for vendors seeking their own registration. The company joined Crédit Mutuel Arkéa in 2025.
+
+### Serensia
+
+[Serensia directly markets its technology under white label](https://serensia.com/avis-d039expert/pourquoi-choisir-une-pdp-en-marque-blanche/), with maintenance and regulatory updates handled by the supplier.
+
+This is not an exhaustive survey. It establishes a documented floor: **at least six names on the main list openly present themselves as plumbing suppliers for other brands**.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 720" width="100%" role="img" aria-labelledby="numbers-title-en numbers-desc-en" preserveAspectRatio="xMidYMid meet" overflow="hidden" xmlns="http://www.w3.org/2000/svg" style="font-family:ui-monospace,SFMono-Regular,monospace;background:#0c0d10">
+<title id="numbers-title-en">What the numbers do and do not establish</title>
+<desc id="numbers-desc-en">The official list contains 147 main platforms and 16 pending files. The figure of fifteen infrastructure platforms comes from a secondary report. No official list names them.</desc>
+<rect x="1" y="1" width="718" height="718" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="46" fill="#f5f6f8" font-size="21" font-weight="700">FOUR NUMBERS, FOUR LEVELS OF EVIDENCE</text>
+<text x="32" y="70" fill="#8b909b" font-size="12">Snapshot of the files available on 22 August 2026.</text>
+<rect x="32" y="98" width="656" height="118" rx="12" fill="#10211f" stroke="#5eead4"/>
+<rect x="54" y="123" width="112" height="66" rx="9" fill="#0c302b" stroke="#5eead4"/>
+<text x="110" y="154" text-anchor="middle" fill="#5eead4" font-size="28" font-weight="700">147</text>
+<text x="110" y="176" text-anchor="middle" fill="#b8e8df" font-size="10">main list</text>
+<text x="190" y="138" fill="#5eead4" font-size="11" font-weight="700">PRIMARY SOURCE</text>
+<text x="190" y="164" fill="#f5f6f8" font-size="17" font-weight="700">Entries in the DGFiP's main file</text>
+<text x="190" y="188" fill="#c3cbc9" font-size="12">Visible authorisation, not proven independent engine.</text>
+<rect x="32" y="236" width="656" height="118" rx="12" fill="#142039" stroke="#7aa2f7"/>
+<rect x="54" y="261" width="112" height="66" rx="9" fill="#172b53" stroke="#7aa2f7"/>
+<text x="110" y="292" text-anchor="middle" fill="#7aa2f7" font-size="28" font-weight="700">16</text>
+<text x="110" y="314" text-anchor="middle" fill="#c5d6fa" font-size="10">tests pending</text>
+<text x="190" y="276" fill="#7aa2f7" font-size="11" font-weight="700">PRIMARY SOURCE</text>
+<text x="190" y="302" fill="#f5f6f8" font-size="17" font-weight="700">Complete files still in interoperability tests</text>
+<text x="190" y="326" fill="#c9d3e8" font-size="12">A separate population from the main list.</text>
+<rect x="32" y="374" width="656" height="118" rx="12" fill="#2b2315" stroke="#f5b13d"/>
+<rect x="54" y="399" width="112" height="66" rx="9" fill="#3b2d12" stroke="#f5b13d"/>
+<text x="110" y="430" text-anchor="middle" fill="#f5b13d" font-size="28" font-weight="700">15</text>
+<text x="110" y="452" text-anchor="middle" fill="#f0d49b" font-size="10">infrastructures</text>
+<text x="190" y="414" fill="#f5b13d" font-size="11" font-weight="700">ATTRIBUTED SECONDARY SOURCE</text>
+<text x="190" y="440" fill="#f5f6f8" font-size="17" font-weight="700">Estimate reported in the DGFiP's name</text>
+<text x="190" y="464" fill="#e4d5b8" font-size="12">l0g found no public methodology behind it.</text>
+<rect x="32" y="512" width="656" height="118" rx="12" fill="#2d151f" stroke="#ff4d87"/>
+<rect x="54" y="537" width="112" height="66" rx="9" fill="#3b1422" stroke="#ff4d87"/>
+<text x="110" y="568" text-anchor="middle" fill="#ff8fb0" font-size="28" font-weight="700">0</text>
+<text x="110" y="590" text-anchor="middle" fill="#f4bfd0" font-size="10">named official list</text>
+<text x="190" y="552" fill="#ff8fb0" font-size="11" font-weight="700">PUBLIC DOCUMENT FOUND</text>
+<text x="190" y="578" fill="#f5f6f8" font-size="17" font-weight="700">No official file names the fifteen</text>
+<text x="190" y="602" fill="#e5c4cf" font-size="12">No volumes by engine and no support links published.</text>
+<rect x="32" y="654" width="656" height="38" rx="9" fill="#181b21" stroke="#3a4049"/>
+<text x="360" y="678" text-anchor="middle" fill="#d6d9df" font-size="12">OPEN QUESTION: HOW MANY INFRASTRUCTURES?</text>
+</svg>
+<figcaption>The first two numbers are l0g counts of the official files. The third comes from a statement reported by Compta Online. The fourth measures the absence of an official publication that would make it verifiable.</figcaption>
+</figure>
+
+## Fifteen infrastructures, according to one report
+
+The figure behind the original title came from an [article by Compta Online](https://www.compta-online.com/plateformes-agreees-facturation-electronique-ao6026).
+
+The publication reports that, at a conference held on 6 July 2026 by the Paris regional order of chartered accountants, Sébastien Rabineau, head of the DGFiP's electronic-invoicing mission, described:
+
+- about 140 platforms;
+- 52 intending to issue invoices from 1 September 2026;
+- fifteen infrastructure platforms supporting white-label solutions and carrying most of the volume.
+
+The statement is plausible. It converges with the official guide and with the commercial offerings identified. It remains **secondary and incomplete**.
+
+As of publication, l0g has found:
+
+- no official list naming the fifteen;
+- no stable regulatory definition of an "infrastructure platform";
+- no breakdown of registrations by support platform;
+- no public data on the volumes actually carried by each engine.
+
+The figure cannot therefore be treated as an established fact. The rigorous wording is:
+
+> According to a report attributing the estimate to the DGFiP, about fifteen infrastructures may carry a large part of the market. Bercy does not publish the material needed to test that statement.
+
+## Several entries can belong to the same wider organisation
+
+Even without the support relationships, the official list already contains visible clusters.
+
+It includes **KOLECTO PA** and **KOLECTO PDP**, two lines pointing to the same domain. The [France Num profile for Kolecto](https://www.francenum.gouv.fr/activateurs/kolecto) says the company is wholly owned by Crédit Agricole. The two lines do not prove a single engine. They require an explanation of which entities, registration numbers and scopes are being distinguished.
+
+The list also contains **ECOSIO** and **ecosio InterCom, a Vertex Company**, using the same contact domain. Vertex [completed its acquisition of ecosio in August 2024](https://ir.vertexinc.com/news-releases/news-release-details/vertex-completes-acquisition-ecosio).
+
+Two entries cover **EDICOM France** and **EDICOM Group**, with the same domain and contact address. Two more cover **DOCOON** and **DOCOON IMMO / FREEDZ**, whose contacts point back to the Docoon group.
+
+These links are not enough to merge the entries in a competition analysis. A group may operate separate legal entities, environments or distinct products. They are enough to rule out a naive reading: **147 lines do not mean 147 independent owners**.
+
+## Consolidation began before the mandate
+
+The market is taking shape while specialists in invoicing, tax and accounting are being absorbed by larger groups.
+
+| Platform or vendor | Documented controlling group | Public transaction |
+|---|---|---|
+| Pagero | Thomson Reuters | [Acquisition completed in February 2024](https://www.thomsonreuters.com/en/press-releases/2024/february/thomson-reuters-successful-acquisition-of-pagero-paves-the-way-for-significant-growth-opportunities) |
+| ecosio | Vertex | [Acquisition completed in August 2024](https://ir.vertexinc.com/news-releases/news-release-details/vertex-completes-acquisition-ecosio) |
+| Chaintrust | Visma | [Acquisition announced in January 2024](https://www.visma.com/newsroom/visma-strengthens-presence-in-france-through-acquisition-of-chaintrust-d52f73d3) |
+| Dext | IRIS Software Group | [Acquisition completed in December 2024](https://www.iris.co.uk/news/iris-completes-dext-acquisition/) |
+| Serensia | Quadient | [Acquisition completed in June 2025](https://invest.quadient.com/fr/newsroom/3092110) |
+| Sellsy | TeamSystem | [Group integration announced in 2025](https://go.sellsy.com/teamsystem) |
+| Seqino | Crédit Mutuel Arkéa | [Integration stated by Seqino for 2025](https://seqino.com/qui-sommes-nous/) |
+| Kolecto | Crédit Agricole | [Wholly owned according to France Num](https://www.francenum.gouv.fr/activateurs/kolecto) |
+
+None of these transactions is abnormal. European regulatory infrastructure, accounting integrations and recurring access to business flows are logical assets for software, tax, banking and document-automation groups.
+
+Their accumulation changes the proper unit of analysis. A useful market analysis combines group, technology, distribution channel and commercial name.
+
+## Market power may sit in distribution
+
+The engine is only one possible point of concentration.
+
+According to Quadient, Cerfrance represents 320,000 small and medium-sized businesses and selected Serensia under white label. Kolecto is controlled by Crédit Agricole. Seqino belongs to Crédit Mutuel Arkéa and says its first bank distribution began in 2022. [TeamSystem says it supports more than 3.1 million businesses in Europe and processes more than 500 million electronic invoices a year](https://go.sellsy.com/teamsystem) across its platforms, figures applying to the group rather than the French Sellsy platform alone.
+
+A banking network, an accounting suite or a regulated profession can direct far more businesses than a technical specialist unknown to the public. Competition therefore operates across four connected markets:
+
+1. regulatory infrastructure;
+2. the daily user interface;
+3. distribution and designation in the directory;
+4. adjacent services such as payments, cash management, credit, factoring and accounting automation.
+
+Without directory and production statistics by group and engine, no serious market-share calculation is possible.
+
+## Data Bercy should publish
+
+Useful transparency would not require disclosing source code, commercial contracts or sensitive security details. An enriched register could show, for each entry:
+
+- the legal entity and official identifier;
+- its controlling group or persons;
+- whether a support platform is used;
+- the structure type, full solution, own portal or standard subcontracting;
+- key critical subcontractors and cloud provider, potentially in aggregated form;
+- the number of businesses designated in the directory;
+- direct and indirect volumes;
+- the continuity procedure if the support engine loses registration or suffers a prolonged outage.
+
+The law could protect sensitive details while disclosing essential dependencies. If individual data were considered protected, Bercy could at least publish aggregates by group and support platform.
+
+That transparency would serve two different needs. Businesses would know what they are actually choosing. Public authorities could measure the risk that one outage, one withdrawal of registration or one acquisition affects several brands at once.
+
+## Established findings
+
+It establishes that the DGFiP list is a register of permissions, not a map of competition.
+
+It establishes that the official process allows several registrations to rely on the same solution.
+
+It establishes that a white-label infrastructure market already exists and that several groups control multiple parts of the chain.
+
+It also establishes that Bercy requests more information from platforms than it returns to businesses.
+
+## Mapping the dependencies
+
+France can have 147 approved platforms and depend on a much smaller number of engines. It can also have 147 platforms while offering businesses hundreds of interfaces distributed through banks, software products and accountants.
+
+Both realities can coexist.
+
+The public number creates an impression of abundance. The real structure sits behind it: a smaller set of infrastructures, consolidating groups, powerful distributors and a multitude of visible brands.
+
+Bercy has created a register of doors. To judge competition and resilience, it now needs to publish the plan of the pipes.
+
+## Main sources
+
+- [DGFiP, official register of approved platforms](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees)
+- [DGFiP, main list available on 22 August 2026](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_rapport_audit.pdf)
+- [DGFiP, files awaiting interoperability tests](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_test_interop.pdf)
+- [DGFiP, registration application guide, updated 10 December 2025](https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_utilisateur_fe_ds_immatriculation_pdp.pdf)
+- [Légifrance, fields published in the official list](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000054606100/2026-08-09)
+- [Légifrance, identification of persons controlling a platform](https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054499503)
+- [Dext, technology partnership with Serensia](https://help.dext.com/fr/articles/692764-la-reforme-de-la-facture-electronique-avec-dext)
+- [Quadient, acquisition of Serensia](https://invest.quadient.com/fr/newsroom/3092110)
+- [Quadient, claimed Serensia and white-label volumes](https://www.quadient.com/fr/news/serensia-traitera-plus-de-215-millions-de-factures-en-2026-leader-du-marche-francais)
+- [France Num, Iopole's software-vendor infrastructure offer](https://www.francenum.gouv.fr/activateurs/iopole)
+- [Compta Online, report referring to fifteen infrastructure platforms](https://www.compta-online.com/plateformes-agreees-facturation-electronique-ao6026)
+
+## Limitations
+
+- This investigation does not provide an exact count of independent engines.
+- Two brands belonging to the same group do not necessarily use the same infrastructure.
+- Effective concentration cannot be measured before directory and production data are published.
+- White label is not a risk in itself. Shared infrastructure can improve testing, security and costs, but it can also concentrate dependencies. That difference must be measured.
