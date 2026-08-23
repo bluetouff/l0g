@@ -595,5 +595,322 @@
       "windowStart": "2026-08-09T08:30:00+02:00",
       "windowEnd": "2026-08-16T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 4,
+    "slug": "2026-08-23",
+    "publishedAt": "2026-08-23T08:30:00+02:00",
+    "title": "L’Hebdo du 23 août. Le grand péage de la facture, 5/5 : le jour où le tuyau casse",
+    "description": "Édition automatisée du 23 août : 18 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Le grand péage de la facture, 5/5 : le jour où le tuyau casse",
+      "href": "/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/",
+      "update": "Audits, pilote, registre, incidents et mode dégradé : ce que la France prouve déjà sur sa facture électronique obligatoire, et ce qui reste à publier."
+    },
+    "lead": "La France impose de vraies exigences de sécurité et d’interopérabilité. Le droit permet toutefois au rapport initial d’audit d’arriver jusqu’à un an après l’immatriculation.",
+    "number": {
+      "value": "18",
+      "label": "analyses publiées du 16 août à 08 h 30 au 23 août à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Au 22 août 2026, le registre public et les pages officielles consultées ne permettent pas de mesurer les résultats du pilote, les dépendances communes, les délais de reprise ou les garanties d’indemnisation.",
+    "test": "Cette absence de preuve publique ne démontre ni une panne future, ni une non-conformité. Elle empêche les entreprises et le Parlement d’évaluer indépendamment la résilience du dispositif obligatoire.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "18 analyses publiées en sept jours",
+      "subtitle": "du 16 août à 08 h 30 au 23 août à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-08-23",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "COMPTER, PAS CLASSER",
+      "points": [
+        {
+          "label": "dim 16/08",
+          "shortLabel": "dim 16/08",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-08-16",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 17/08",
+          "shortLabel": "lun 17/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-17",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 18/08",
+          "shortLabel": "mar 18/08",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-08-18",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 19/08",
+          "shortLabel": "mer 19/08",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-08-19",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 20/08",
+          "shortLabel": "jeu 20/08",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-08-20",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 21/08",
+          "shortLabel": "ven 21/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-21",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 22/08",
+          "shortLabel": "sam 22/08",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-08-22",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 23/08",
+          "shortLabel": "dim 23/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-23",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "La France impose de vraies exigences de sécurité et d’interopérabilité. Le droit permet toutefois au rapport initial d’audit d’arriver jusqu’à un an après l’immatriculation.",
+    "linkedin": "18 analyses publiées sur l0g du 16 août à 08 h 30 au 23 août à 08 h 30.\n\nFocus structuré : Le grand péage de la facture, 5/5 : le jour où le tuyau casse.\n\nLa France impose de vraies exigences de sécurité et d’interopérabilité. Le droit permet toutefois au rapport initial d’audit d’arriver jusqu’à un an après l’immatriculation.\n\nPourquoi le lire : Au 22 août 2026, le registre public et les pages officielles consultées ne permettent pas de mesurer les résultats du pilote, les dépendances communes, les délais de reprise ou les garanties d’indemnisation.\n\nLimite à garder : Cette absence de preuve publique ne démontre ni une panne future, ni une non-conformité. Elle empêche les entreprises et le Parlement d’évaluer indépendamment la résilience du dispositif obligatoire.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-08-23/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 23 août compte 18 analyses publiées. Focus : Le grand péage de la facture, 5/5 : le jour où le tuyau casse.",
+      "2/5 La France impose de vraies exigences de sécurité et d’interopérabilité. Le droit permet toutefois au rapport initial d’audit d’arriver jusqu’à un an après l’immatriculation.",
+      "3/5 Pourquoi le lire : Au 22 août 2026, le registre public et les pages officielles consultées ne permettent pas de mesurer les résultats du pilote, les dépendances communes, les délais de reprise ou les garanties d’indemnisation.",
+      "4/5 Limite : Cette absence de preuve publique ne démontre ni une panne future, ni une non-conformité. Elle empêche les entreprises et le Parlement d’évaluer indépendamment la résilience du dispositif obligatoire.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-08-23/"
+    ],
+    "sources": [
+      {
+        "label": "Le grand péage de la facture, 5/5 : le jour où le tuyau casse",
+        "href": "/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/",
+        "role": "Analyse publiée le 22 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le grand péage de la facture, 4/5 : qui lit vos factures ?",
+        "href": "/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/",
+        "role": "Analyse publiée le 22 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le grand péage de la facture, 3/5 : le prix du gratuit",
+        "href": "/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/",
+        "role": "Analyse publiée le 22 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le grand péage de la facture, 2/5 : 148 plateformes, combien de tuyaux ?",
+        "href": "/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/",
+        "role": "Analyse publiée le 22 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le grand péage de la facture, 1/5 : le portail amputé",
+        "href": "/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/",
+        "role": "Analyse publiée le 22 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le prix du refroidissement",
+        "href": "/posts/prix-refroidissement-eau-electricite/",
+        "role": "Analyse publiée le 21 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le modèle, la pompe et le prix de l'adéquation",
+        "href": "/posts/modele-pompe-prix-adequation/",
+        "role": "Analyse publiée le 21 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le barrage qui choisit de ne pas produire",
+        "href": "/posts/barrage-choisit-ne-pas-produire/",
+        "role": "Analyse publiée le 21 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le degré de trop",
+        "href": "/posts/degre-de-trop-rejets-thermiques-nucleaire/",
+        "role": "Analyse publiée le 20 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le mégawatt humide que l'Europe ne sait pas compter",
+        "href": "/posts/megawatt-humide-europe-eau-electricite/",
+        "role": "Analyse publiée le 20 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Combien vaut un centimètre de Danube ?",
+        "href": "/posts/combien-vaut-un-centimetre-de-danube/",
+        "role": "Analyse publiée le 20 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le seuil que Bessent n'a jamais annoncé",
+        "href": "/posts/bessent-put-treasury-buybacks-taux-longs/",
+        "role": "Analyse publiée le 20 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L'Inde a mis son sucre dans le réservoir",
+        "href": "/posts/inde-sucre-ethanol-e20/",
+        "role": "Analyse publiée le 19 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le collatéral qui ne peut pas sortir du bâtiment",
+        "href": "/posts/gpu-collateral-ce-que-le-preteur-recupere/",
+        "role": "Analyse publiée le 18 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le crédit privé entre dans la machine à CLO",
+        "href": "/posts/credit-prive-clo-warehouse-banques/",
+        "role": "Analyse publiée le 18 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "La garantie que personne n'a signée",
+        "href": "/posts/privatisation-fannie-freddie-garantie-non-ecrite/",
+        "role": "Analyse publiée le 18 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pourquoi la Fed peut gagner de l'argent sans imprimer, et pourquoi elle peut aussi en perdre",
+        "href": "/posts/pourquoi-la-fed-peut-gagner-sans-imprimer-mais-peut-aussi-perdre/",
+        "role": "Analyse publiée le 18 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les 2 000 milliards de dollars que personne ne voit circuler",
+        "href": "/posts/2000-milliards-billets-100-dollars-invisibles/",
+        "role": "Analyse publiée le 16 août 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Le grand péage de la facture, 5/5 : le jour où le tuyau casse",
+        "href": "/posts/le-grand-peage-de-la-facture-5-le-jour-ou-le-tuyau-casse/",
+        "publishedAt": "2026-08-22T16:20:00.000Z"
+      },
+      {
+        "title": "Le grand péage de la facture, 4/5 : qui lit vos factures ?",
+        "href": "/posts/le-grand-peage-de-la-facture-4-qui-lit-vos-factures/",
+        "publishedAt": "2026-08-22T11:00:00.000Z"
+      },
+      {
+        "title": "Le grand péage de la facture, 3/5 : le prix du gratuit",
+        "href": "/posts/le-grand-peage-de-la-facture-3-le-prix-du-gratuit/",
+        "publishedAt": "2026-08-22T08:51:11.000Z"
+      },
+      {
+        "title": "Le grand péage de la facture, 2/5 : 148 plateformes, combien de tuyaux ?",
+        "href": "/posts/le-grand-peage-de-la-facture-2-147-plateformes-combien-de-tuyaux/",
+        "publishedAt": "2026-08-22T06:16:51.000Z"
+      },
+      {
+        "title": "Le grand péage de la facture, 1/5 : le portail amputé",
+        "href": "/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/",
+        "publishedAt": "2026-08-22T04:22:13.000Z"
+      },
+      {
+        "title": "Le prix du refroidissement",
+        "href": "/posts/prix-refroidissement-eau-electricite/",
+        "publishedAt": "2026-08-21T12:20:00.000Z"
+      },
+      {
+        "title": "Le modèle, la pompe et le prix de l'adéquation",
+        "href": "/posts/modele-pompe-prix-adequation/",
+        "publishedAt": "2026-08-21T09:20:00.000Z"
+      },
+      {
+        "title": "Le barrage qui choisit de ne pas produire",
+        "href": "/posts/barrage-choisit-ne-pas-produire/",
+        "publishedAt": "2026-08-21T06:30:00.000Z"
+      },
+      {
+        "title": "Le degré de trop",
+        "href": "/posts/degre-de-trop-rejets-thermiques-nucleaire/",
+        "publishedAt": "2026-08-20T16:20:00.000Z"
+      },
+      {
+        "title": "Le mégawatt humide que l'Europe ne sait pas compter",
+        "href": "/posts/megawatt-humide-europe-eau-electricite/",
+        "publishedAt": "2026-08-20T14:00:00.000Z"
+      },
+      {
+        "title": "Combien vaut un centimètre de Danube ?",
+        "href": "/posts/combien-vaut-un-centimetre-de-danube/",
+        "publishedAt": "2026-08-20T11:28:00.000Z"
+      },
+      {
+        "title": "Le seuil que Bessent n'a jamais annoncé",
+        "href": "/posts/bessent-put-treasury-buybacks-taux-longs/",
+        "publishedAt": "2026-08-20T07:53:00.000Z"
+      },
+      {
+        "title": "L'Inde a mis son sucre dans le réservoir",
+        "href": "/posts/inde-sucre-ethanol-e20/",
+        "publishedAt": "2026-08-19T03:12:00.000Z"
+      },
+      {
+        "title": "Le collatéral qui ne peut pas sortir du bâtiment",
+        "href": "/posts/gpu-collateral-ce-que-le-preteur-recupere/",
+        "publishedAt": "2026-08-18T19:00:00.000Z"
+      },
+      {
+        "title": "Le crédit privé entre dans la machine à CLO",
+        "href": "/posts/credit-prive-clo-warehouse-banques/",
+        "publishedAt": "2026-08-18T16:50:00.000Z"
+      },
+      {
+        "title": "La garantie que personne n'a signée",
+        "href": "/posts/privatisation-fannie-freddie-garantie-non-ecrite/",
+        "publishedAt": "2026-08-18T16:30:00.000Z"
+      },
+      {
+        "title": "Pourquoi la Fed peut gagner de l'argent sans imprimer, et pourquoi elle peut aussi en perdre",
+        "href": "/posts/pourquoi-la-fed-peut-gagner-sans-imprimer-mais-peut-aussi-perdre/",
+        "publishedAt": "2026-08-18T10:00:00.000Z"
+      },
+      {
+        "title": "Les 2 000 milliards de dollars que personne ne voit circuler",
+        "href": "/posts/2000-milliards-billets-100-dollars-invisibles/",
+        "publishedAt": "2026-08-16T15:19:23.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-08-23T07:10:37.695Z",
+      "windowStart": "2026-08-16T08:30:00+02:00",
+      "windowEnd": "2026-08-23T08:30:00+02:00"
+    }
   }
 ]
