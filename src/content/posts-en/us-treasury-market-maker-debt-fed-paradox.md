@@ -3,12 +3,12 @@ title: "The Fed-Treasury paradox: who makes the market for U.S. debt?"
 seoTitle: "Is Treasury becoming market maker for U.S. debt? | l0g"
 ogTitle: "Treasury buys long while the Fed buys short"
 description: "Treasury long-end buybacks and Fed bill purchases create a duration paradox. A balance-sheet analysis of the emerging political boundary."
-pubDate: 2026-08-23T14:30:00+02:00
+pubDate: 2026-08-23T13:45:00+02:00
 tags: ["United States", "Treasury", "Federal Reserve", "bonds", "yields", "debt", "liquidity"]
 draft: false
 ogImage: "/illustrations/news/treasury-market-maker-buybacks-v1.jpg"
 sourceArticle: "tresor-americain-market-maker-dette-paradoxe-fed"
-sourceUpdatedDate: 2026-08-23T14:30:00+02:00
+sourceUpdatedDate: 2026-08-23T13:45:00+02:00
 ---
 
 *The U.S. Treasury is not a market maker for its debt in the technical sense. It does not quote continuously, offer an ask price or promise to absorb orders. Since 19 August 2026, however, it has looked more like a public buyer whose reaction function markets are trying to infer. That is the novelty: long-term yields fell before the first dollar of additional buybacks could settle. The signal came before the balance sheet.*

@@ -3,7 +3,7 @@ title: "Le paradoxe Fed-Trésor : qui fait le marché de la dette américaine ?"
 seoTitle: "Le Trésor devient-il market maker de sa dette ? | l0g"
 ogTitle: "Le Trésor achète le long, la Fed achète le court"
 description: "Les buybacks longs du Trésor et les achats de bills de la Fed dessinent un paradoxe de duration. Analyse des bilans et de la frontière politique."
-pubDate: 2026-08-23T14:30:00+02:00
+pubDate: 2026-08-23T13:45:00+02:00
 tags: ["États-Unis", "Treasury", "Federal Reserve", "obligations", "taux", "dette", "liquidité"]
 draft: false
 ogImage: "/illustrations/news/treasury-market-maker-buybacks-v1.jpg"
