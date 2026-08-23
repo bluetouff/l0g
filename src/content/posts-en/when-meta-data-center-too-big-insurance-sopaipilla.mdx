@@ -1,0 +1,237 @@
+---
+title: "$14 billion, $450 million of insurance: who carries Sopaipilla's risk?"
+seoTitle: "Meta data center insurance: PML and residual risk | l0g"
+ogTitle: "Sopaipilla: where does Meta's data center insurance stop?"
+description: "Meta's AI campus with BlackRock-managed funds concentrates $14.3bn of infrastructure around a $450mn property PML. An inquiry into the risk left behind."
+pubDate: 2026-08-23T15:10:00+02:00
+updatedDate: 2026-08-23T15:10:00+02:00
+tags: ["data centers", "insurance", "AI", "Meta", "BlackRock", "credit", "infrastructure", "risk"]
+draft: false
+ogImage: "/illustrations/news/data-center-insurance-boundary-v1.jpg"
+sourceArticle: "data-center-meta-trop-gros-assurance-sopaipilla"
+sourceUpdatedDate: 2026-08-23T15:10:00+02:00
+---
+
+import ReturnPeriodRiskCalculator from '../../components/ReturnPeriodRiskCalculator.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Picture a $14.3 billion industrial asset built for one user and financed with $12.6 billion of bonds. Now consider that its probable maximum loss during operations is estimated at $450 million. The tempting shortcut is to say that only 3% of the data center is insured. That shortcut is wrong. The two figures describe neither the same perimeter nor the same scenario. Yet they raise a valid question: when insurance stops at the modelled loss, who carries the casualty that exceeds the model?*
+
+The case is called **Sopaipilla**. This 960-megawatt IT-capacity campus, announced by Meta as a 1-gigawatt project, is under construction in El Paso, Texas. Ten data center buildings, a network building, six substations and other infrastructure are due to host Meta from December 2028. [Meta's 28 July announcement](https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-New-Strategic-Venture-with-BlackRock-to-Develop-Data-Center-in-El-Paso/default.aspx) sets out the structure: BlackRock-managed funds own 80% of the venture, Meta owns 20%, leases the full campus and provides contractual support. [S&P Global Ratings assigned a final A+ rating on 17 August](https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/3612754) to Sopaipilla Investor's amortising notes.
+
+The gap between $14.3 billion and $450 million reveals a change of scale rather than an absence of insurance. AI infrastructure has become so concentrated that financing must allocate risk among policies, corporate guarantees, project equity and creditors. Insurance remains central to the structure. It may no longer be its final layer.
+
+## What does the $14.3 billion asset actually include?
+
+The public perimeter first removes a major source of confusion. Meta describes approximately **$14 billion in total development costs for the buildings and long-lived power, cooling and connectivity infrastructure**. S&P gives a more precise **$14.3 billion commitment**, consisting of a $13.7 billion initial development budget plus a 5% contingency. GPUs and servers do not appear in this published definition. Claiming that $450 million covers a $14.3 billion campus “including chips” would therefore add assets that the official source does not include.
+
+The financing has also become clearer since the announcement. Meta referred to approximately $12.5 billion of debt. S&P's final note describes **$12.6 billion of amortising notes** maturing in November 2048. These proceeds, $1.3 billion of equity from BlackRock-affiliated funds and $300 million of interest income will finance the issuer's contribution to the project. Meta funds its 20% share through Bluebonnet Crossing LLC.
+
+Meta will be the initial sole user. Six leases cover five data-building regions and the network data center; two additional leases cover the administration and support buildings. The initial term is four years, followed by four four-year options, for a maximum of twenty years. S&P says minimum rent applies even when campus utilisation is low. Meta guarantees the tenant's payment obligations and carries operating, insurance, maintenance and some replacement costs. The credit therefore depends primarily on Meta's signature and the contracts, far more than on the resale value of the walls alone.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 520" role="img" aria-labelledby="sop-fin-title-en sop-fin-desc-en" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <title id="sop-fin-title-en">Who finances and pays for Sopaipilla</title>
+  <desc id="sop-fin-desc-en">BlackRock-affiliated funds hold 80 percent and Meta holds 20 percent. Meta leases the campus. Sopaipilla Investor issued 12.6 billion dollars of notes.</desc>
+  <rect x="1" y="1" width="718" height="518" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="44" fill="#f5f6f8" font-size="21" font-weight="700">Sopaipilla: the public financing circuit</text>
+  <text x="32" y="68" fill="#8b909b" font-size="12">Simplified from Meta's release and S&amp;P's final rating note.</text>
+  <rect x="32" y="94" width="300" height="112" rx="12" fill="#15171c" stroke="#ff4d87"/>
+  <text x="54" y="124" fill="#ff4d87" font-size="12" font-weight="700">BLACKROCK-AFFILIATED FUNDS</text>
+  <text x="54" y="156" fill="#f5f6f8" font-size="24" font-weight="700">80%</text>
+  <text x="54" y="182" fill="#d6d9df" font-size="12">Vehicle equity and financing</text>
+  <rect x="388" y="94" width="300" height="112" rx="12" fill="#15171c" stroke="#5eead4"/>
+  <text x="410" y="124" fill="#5eead4" font-size="12" font-weight="700">META</text>
+  <text x="410" y="156" fill="#f5f6f8" font-size="24" font-weight="700">20%</text>
+  <text x="410" y="182" fill="#d6d9df" font-size="12">Tenant, operator and contractual guarantor</text>
+  <path d="M182 206V246H350" fill="none" stroke="#ff4d87" stroke-width="2"/>
+  <path d="M538 206V246H370" fill="none" stroke="#5eead4" stroke-width="2"/>
+  <rect x="104" y="246" width="512" height="112" rx="12" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="128" y="278" fill="#7aa2f7" font-size="12" font-weight="700">PROJECT JOINT VENTURE</text>
+  <text x="128" y="310" fill="#f5f6f8" font-size="22" font-weight="700">$14.3bn committed</text>
+  <text x="128" y="336" fill="#d6d9df" font-size="12">Buildings + power + cooling + connectivity</text>
+  <path d="M360 358V398" stroke="#f5b13d" stroke-width="2"/>
+  <rect x="104" y="398" width="512" height="76" rx="12" fill="#15171c" stroke="#f5b13d"/>
+  <text x="128" y="430" fill="#f5b13d" font-size="12" font-weight="700">SOPAIPILLA INVESTOR</text>
+  <text x="128" y="456" fill="#f5f6f8" font-size="18" font-weight="700">$12.6bn of amortising notes</text>
+  <text x="32" y="502" fill="#8b909b" font-size="11">The published $14.3bn perimeter excludes GPUs.</text>
+</svg>
+<figcaption>The debt finances the majority interest held by BlackRock-affiliated funds. Meta's rents and guarantees structure the credit.</figcaption>
+</figure>
+
+## Why does $14.3 billion divided by $450 million prove nothing?
+
+The first figure is an aggregate development budget. The second is a **probable maximum loss**, or [PML](/glossaire/pml/), estimated for a single property casualty during operations. S&P defines the PML in this case as the largest physical damage loss expected from one casualty event. The independent insurance consultant modelled an electrical or mechanical fire affecting two nearby data buildings and a mechanical yard: up to $427 million during construction and $450 million during operations.
+
+This logic is common in large industrial risks. Insurance buyers do not always request a cheque equal to the replacement cost of every asset on a site. They seek a limit corresponding to the extreme loss that the model still regards as plausible, then retain or transfer the excess through other channels. The decisive questions concern the assumptions: how many buildings can one fire reach? Can shared infrastructure create a correlated loss? Does physical damage capture rent losses and the duration of interruption?
+
+[The Financial Times reported on 17 August](https://www.ft.com/content/adeca274-67a3-4ee8-94f1-f43e4f28be97), citing people familiar with the agreements, that the venture would pay about $5 million for all-risk property insurance capped at $427 million during construction and $450 million in operation, with the latter rising by 2% a year. The newspaper also described separate terrorism, rent-abatement and general-liability coverage. The full contracts are not public. These amounts must therefore be treated as attributed reporting on several policies, not as an exhaustive picture of the programme.
+
+| Risk family | Reported limit | What the source supports |
+| --- | ---: | --- |
+| Construction property damage | $427mn | PML used by S&P and all-risk limit reported by the FT |
+| Operational property damage | $450mn | Single-event PML according to S&P; opening limit reported by the FT, rising 2% annually |
+| Terrorism | $645mn | Separate coverage reported by the FT |
+| Delay-related rent abatement | up to $218mn | Separate coverage reported by the FT |
+| Commercial general liability | $50mn per event and $50mn aggregate | Limits reported by the FT |
+
+These limits cannot be added together to create $1.39 billion of general insurance. Each policy has its own trigger, exclusions, deductible, duration and likely definitions. A terrorism claim does not become an all-risk fire claim to top up a limit. Lost-rent coverage does not automatically pay for reconstruction. Adding the figures would produce a visually appealing but legally misleading total.
+
+## What does a 250-year or 500-year return period mean?
+
+S&P and the FT report that the selected fire scenario has a frequency of **1 in 250 to 1 in 500 years**. This wording does not mean that a countdown protects the site for two centuries. [The USGS](https://www.usgs.gov/water-science-school/science/floods-and-recurrence-intervals) explains that a return period is the inverse of an annual probability and that rare events can occur close together.
+
+Over twenty years, assuming a constant annual probability and independent years, a 250-year event has a cumulative probability of about **7.7%**. For 500 years, it is about **3.9%**. The calculation is correct under those assumptions. It says nothing about the quality of the fire model, changes in risk over time or the perimeter of damage captured.
+
+<ReturnPeriodRiskCalculator lang="en" />
+
+The Sopaipilla model is more concrete than a frequency alone. S&P says the maximum potential damage would arise just before substantial completion, with a fire in one of two nearby data buildings and a mechanical yard. The agency also reports that the consultant characterised wildfire, flood, storm and earthquake risks as minimal. That conclusion belongs to the reviewed report and its assumptions. It is neither a guarantee that no casualty will occur nor an independent validation by l0g.
+
+## Why does an AI campus concentrate so many risks?
+
+A traditional data center still resembled a highly electrified technical building. An AI campus now combines industrial systems that used to be assessed separately: buildings, high-voltage equipment, batteries, generators, liquid cooling, fibre, computing equipment, power supply and revenue contracts.
+
+[Swiss Re Institute](https://www.swissre.com/institute/research/sigma-research/sigma-insights-07-2026-insuring-ai-data-centre-risks.html) says a single construction project can exceed $20 billion and that its value may double after GPUs and other technology are installed. The reinsurer writes that the traditional market can support only a fraction of the limits demanded at competitive rates for some construction risks. It does not conclude that campuses are uninsurable. It shows that accumulated value exceeds the familiar logic of an isolated building.
+
+Geography compounds the concentration. Swiss Re estimates that more than a quarter of current and planned US capacity may lie in areas with at least three large-hail days a year, while about 40% may be in significant-to-very-high tornado-day zones. Those figures describe the US fleet, not Sopaipilla. They nevertheless illustrate the portfolio problem: a single storm, tornado or grid failure can affect several buildings, insured interests and lines of coverage.
+
+Risk also sits in shared dependencies. Swiss Re says power accounts for 45% of data-center outages in Uptime Institute's 2025 survey. Liquid cooling adds fluid networks above or near sensitive hardware. Lithium-ion batteries place a new ignition source inside data halls. Growing connectivity across power, cooling and security control systems also opens cyber scenarios with physical consequences.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 600" role="img" aria-labelledby="sop-layers-title-en sop-layers-desc-en" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <title id="sop-layers-title-en">The five risk layers of an artificial-intelligence campus</title>
+  <desc id="sop-layers-desc-en">The campus combines buildings, power, cooling, computer hardware and financial contracts. Each layer has different damage, coverage and residual risks.</desc>
+  <rect x="1" y="1" width="718" height="598" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="44" fill="#f5f6f8" font-size="21" font-weight="700">One campus, five layers of risk</text>
+  <text x="32" y="68" fill="#8b909b" font-size="12">Financial loss can travel across the layers.</text>
+  <g transform="translate(32 94)">
+    <rect width="656" height="82" rx="11" fill="#15171c" stroke="#7aa2f7"/><text x="22" y="30" fill="#7aa2f7" font-size="12" font-weight="700">1 · BUILDINGS</text><text x="22" y="56" fill="#d6d9df" font-size="12">Fire, hail, wind, water · physical damage</text><text x="634" y="44" fill="#8b909b" font-size="11" text-anchor="end">limits + deductibles</text>
+    <rect y="94" width="656" height="82" rx="11" fill="#15171c" stroke="#5eead4"/><text x="22" y="124" fill="#5eead4" font-size="12" font-weight="700">2 · POWER</text><text x="22" y="150" fill="#d6d9df" font-size="12">Grid, substations, batteries, on-site generation</text><text x="634" y="138" fill="#8b909b" font-size="11" text-anchor="end">possible interruption</text>
+    <rect y="188" width="656" height="82" rx="11" fill="#15171c" stroke="#5eead4"/><text x="22" y="218" fill="#5eead4" font-size="12" font-weight="700">3 · COOLING</text><text x="22" y="244" fill="#d6d9df" font-size="12">Pumps, pipes, heat, water availability</text><text x="634" y="232" fill="#8b909b" font-size="11" text-anchor="end">common-mode failure</text>
+    <rect y="282" width="656" height="82" rx="11" fill="#15171c" stroke="#ff4d87"/><text x="22" y="312" fill="#ff4d87" font-size="12" font-weight="700">4 · GPUS AND SERVERS</text><text x="22" y="338" fill="#d6d9df" font-size="12">Value, damage, replacement, obsolescence</text><text x="634" y="326" fill="#8b909b" font-size="11" text-anchor="end">emerging market</text>
+    <rect y="376" width="656" height="82" rx="11" fill="#15171c" stroke="#f5b13d"/><text x="22" y="406" fill="#f5b13d" font-size="12" font-weight="700">5 · LEASES, RENT AND DEBT</text><text x="22" y="432" fill="#d6d9df" font-size="12">Cash flow, termination, residual value, repayment</text><text x="634" y="420" fill="#8b909b" font-size="11" text-anchor="end">credit risk</text>
+  </g>
+  <text x="32" y="574" fill="#8b909b" font-size="11">Sources: Swiss Re, Marsh, Munich Re; l0g synthesis.</text>
+</svg>
+<figcaption>Insuring concrete does not insure operations, rent or the hardware's future value. Each layer requires a different contract.</figcaption>
+</figure>
+
+## Why does market capacity stop short of $14.3 billion?
+
+The first constraint is concentration. An insurer can readily diversify thousands of distant assets. Diversifying several billion dollars behind the same substations, pipes and construction schedule is harder. Swiss Re notes that programmes can conceal their own accumulation: buildings, equipment and a power plant may be presented through separate policies even though one event could affect all three.
+
+The second constraint is the size of each risk carrier. [Munich Re](https://www.munichre.com/specialty/north-america/en/insights/construction-and-engineering/insurers-race-to-keep-up-with-data-center-boom.html) says it can commit up to $250 million net on a construction project and up to $100 million on the cargo side. A multi-billion-dollar programme must therefore be assembled in layers across many insurers and reinsurers. The same article notes that servers are often outside the construction policy and move into separate cover later. There is no single insurer signing a cheque equal to the entire campus value.
+
+The third constraint is information. [Marsh](https://www.marsh.com/en/industries/technology/insights/the-market-has-appetite.html) offers a less alarming reading: according to the broker, occasional difficulty placing very large programmes often comes less from an absolute shortage of capital than from missing data and analytical frameworks that would let underwriters evaluate the risk. Marsh describes a capacity architecture combining retained risk, commercial insurance, reinsurance, captives, contract transfer and alternative capital. Its stated goal is to make the retained portion explicit, rather than transfer every dollar.
+
+That position requires context. Meta says Marsh provided it with project risk analysis and insurance services, while Marsh also acted as a technical adviser to the BlackRock funds. The release establishes both roles. It discloses neither the detailed mandates nor the separation procedures. That is enough to raise a governance question about the independence of analysis used by several parties. It is not enough to establish a conflict of interest.
+
+## Who pays after a covered casualty?
+
+The insurer pays first if the event meets the policy terms, after the deductible and up to the limit. For Sopaipilla, S&P says the project must procure property insurance equal to the PML. During construction, Meta also provides up to $427 million, less insurance proceeds, for certain insurable casualty events. If the project cannot obtain the full PML insurance during operations, Meta must fund the difference between insured amounts and the repairs required within that envelope.
+
+The second layer is contractual support. Meta guarantees tenant payments, certain construction costs, costs above 105% of the budget in specified cases, and mechanisms tied to residual value. The [official announcement](https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-New-Strategic-Venture-with-BlackRock-to-Develop-Data-Center-in-El-Paso/default.aspx) gives the [residual value guarantee](/glossaire/vrg/) an aggregate threshold of approximately $13 billion, declining over time. S&P believes this guarantee and termination fees cover outstanding debt in most foreseeable early-exit scenarios.
+
+That support is not $13 billion of all-risk insurance. The residual value guarantee responds to contractual events and to a shortfall between market value and a guaranteed threshold. It does not automatically convert every property loss into a full payment. The order of protection depends on the affected lease, the casualty cause, the repair timetable and accrued rent credits.
+
+Project equity comes next, held 80% by BlackRock-affiliated funds and 20% by Meta. Within the contractual and security structure, equity ordinarily absorbs economic losses before debt. The public documents do not allow a universal dollar-by-dollar waterfall to be reconstructed. Finally, if rent disappears, guarantees fail to trigger or prove insufficient, and recovery value remains below the debt, creditors are exposed.
+
+<figure class="infographic infographic-readable" style="padding-bottom:1.75rem" tabindex="0" aria-label="Horizontally scrollable infographic">
+<svg viewBox="0 0 720 590" role="img" aria-labelledby="sop-waterfall-title-en sop-waterfall-desc-en" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace,SFMono-Regular,monospace">
+  <title id="sop-waterfall-title-en">Indicative protection waterfall after a casualty</title>
+  <desc id="sop-waterfall-desc-en">Insurance responds subject to policy terms, followed by Meta's contractual support in covered cases and then project equity. Creditors can lose money if cash flow, guarantees and recovery value become insufficient.</desc>
+  <rect x="1" y="1" width="718" height="588" rx="16" fill="#0c0d10" stroke="#252830"/>
+  <text x="32" y="44" fill="#f5f6f8" font-size="21" font-weight="700">Which protection responds after the casualty?</text>
+  <text x="32" y="68" fill="#8b909b" font-size="12">Indicative waterfall. The full contracts are not public.</text>
+  <rect x="84" y="96" width="552" height="82" rx="12" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="108" y="128" fill="#7aa2f7" font-size="13" font-weight="700">1 · INSURANCE</text>
+  <text x="108" y="154" fill="#d6d9df" font-size="12">Covered trigger · deductible · limit · exclusions</text>
+  <path d="M360 178V212" stroke="#8b909b" stroke-width="2"/>
+  <rect x="84" y="212" width="552" height="82" rx="12" fill="#15171c" stroke="#5eead4"/>
+  <text x="108" y="244" fill="#5eead4" font-size="13" font-weight="700">2 · META'S CONTRACTUAL SUPPORT</text>
+  <text x="108" y="270" fill="#d6d9df" font-size="12">Only in the circumstances and limits provided</text>
+  <path d="M360 294V328" stroke="#8b909b" stroke-width="2"/>
+  <rect x="84" y="328" width="552" height="82" rx="12" fill="#15171c" stroke="#ff4d87"/>
+  <text x="108" y="360" fill="#ff4d87" font-size="13" font-weight="700">3 · VENTURE EQUITY</text>
+  <text x="108" y="386" fill="#d6d9df" font-size="12">BlackRock-affiliated funds + Meta</text>
+  <path d="M360 410V444" stroke="#8b909b" stroke-width="2"/>
+  <rect x="84" y="444" width="552" height="82" rx="12" fill="#15171c" stroke="#f5b13d"/>
+  <text x="108" y="476" fill="#f5b13d" font-size="13" font-weight="700">4 · CREDITORS</text>
+  <text x="108" y="502" fill="#d6d9df" font-size="12">If cash flow, guarantees and recoveries become insufficient</text>
+  <text x="32" y="558" fill="#8b909b" font-size="11">The useful question: where does each contract stop?</text>
+</svg>
+<figcaption>This waterfall describes an economic logic, not an exhaustive legal priority. The published terms do not resolve every case.</figcaption>
+</figure>
+
+## What scenario can reach creditors?
+
+A fire contained within one campus region illustrates the expected PML logic. The property policy responds, Meta fills gaps in the cases described by S&P, repairs remain compatible with the lease timetable and rent resumes. That is the scenario in which $450 million can be coherent with a much larger asset: the design compartmentalises the campus and prevents a loss from spreading throughout it.
+
+The next scenario is less visible: the campus remains standing, but shared infrastructure cannot operate. A long power outage, cooling failure or external disruption can stop computing without destroying $14.3 billion of buildings and equipment. The answer then depends on questions the public documents do not fully resolve. Is physical damage required? Is a failure at the electricity supplier covered? How long are interruption or rent-abatement losses indemnified? Where does retained risk begin?
+
+The third scenario turns industrial risk into credit risk. S&P says rent is abated for the first eighteen months of a repair period after certain operating casualties. If the estimated repair period exceeds eighteen months, Meta may terminate the affected lease **without a termination payment or residual value guarantee payment**. The agency considers this exposure sufficiently limited by relying on the insurance report, which estimates a construction-phase PML repair period of no more than twelve months.
+
+That conclusion therefore relies on two models lining up: the extreme fire remains within $450 million and repair remains below twelve months, while the termination right starts beyond eighteen months. If one event escaped both envelopes, a major protection could be absent. The clause predicts neither default nor certain loss. It identifies the exact point where a physical catastrophe could interrupt the rent that repays the notes.
+
+The A+ rating does not contradict that risk. S&P rates the debt one notch below Meta partly because lenders lack direct security over the physical assets and contracts at the joint-venture and landlord levels. Security mainly covers equity interests and certain accounts. The agency itself says project credit quality is determined by Meta's strength, construction-risk transfer, minimum rent and residual value guarantee.
+
+## Which risk can no property policy solve?
+
+A campus may never burn and still become a poor investment. Property insurance pays for a covered loss. It does not guarantee future compute demand, the economic usefulness of an architecture, the resale price of a server or the suitability of a cooling system for a new generation of chips.
+
+Marsh acknowledges that the GPU insurance market is not yet mature and that participants are still working through residual values, insurability and coverage terms. [Allianz Commercial](https://commercial.allianz.com/news-and-insights/reports/data-center-construction-risks.html) says operational risks, supply-chain constraints, uncertainty around AI monetisation and future adaptability increasingly determine project value. A functioning machine can lose much of its value without an insurable event.
+
+This is where Sopaipilla connects to two earlier l0g analyses without repeating them. [The debt behind AI](/en/analysis/the-debt-behind-ai/) followed SPVs and private credit. [The residual value guarantee](/en/analysis/residual-value-guarantee-ai-infrastructure-credit/) examined the wager on future asset values. Sopaipilla adds the physical boundary: before considering resale value, investors need to know which loss the insurance market is actually willing to carry.
+
+## Can insurance constrain the size of future campuses?
+
+The market is growing rapidly. Swiss Re expects global data-center insurance premiums to rise from **$10.6 billion to $24.2 billion by 2030**. That increase demonstrates insurance demand, not full coverage. The same report says financing needs push lenders to request very high limits while reinsurers can provide only a fraction of total cost at competitive prices for some traditional risks.
+
+Two interpretations remain available. The first sees a size constraint: as a campus concentrates more value, extreme cover becomes more expensive, scarce and difficult to syndicate. Beyond a threshold, the project becomes its own insurer for part of the loss. The second, advanced by Marsh, sees an immature market: better data, deeper engineering, captives and alternative capital could unlock more capacity.
+
+Both propositions can be true at once. Capacity may be sufficient for losses judged plausible and insufficient at an acceptable price for every conceivable loss. The real boundary is therefore not the policy limit alone. It is the amount of risk that Meta, the funds and creditors agree to retain after the technical analysis.
+
+## Which answers are still missing from the public record?
+
+Documents available as of 23 August 2026 establish the structure, budget, leases, final debt, several forms of Meta support and the PML. They do not publish the full policies. Several questions remain open:
+
+- does the property limit apply per event, per year or under another contractual aggregation?
+- which assets enter each policy, including computing equipment installed by Meta?
+- which non-damage outages and supplier failures are covered?
+- how would several policies respond to one correlated event affecting buildings, power and revenue?
+- what share of extreme risk is formally retained by the venture?
+- which exclusions or sub-limits reduce the published headline limits?
+- how do the residual value guarantee, rent credits and casualty clauses interact in an unmodelled case?
+- which procedures separated Marsh's two assignments for Meta and the BlackRock funds?
+
+The absence of a public answer does not prove a weakness. It sets the boundary of what can be claimed. A more precise conclusion would require the insurance contracts, the consultant's full reports and the lease schedules.
+
+## Where does the risk ultimately sit?
+
+Sopaipilla is insured. The project also has substantial contractual protection and a tenant whose credit quality supports the A+ rating. The public record does not support describing it as an almost naked asset facing catastrophe.
+
+It establishes something else. Property insurance is calibrated to a $450 million probable maximum loss, while the campus brings together $14.3 billion of long-lived infrastructure. Beyond the modelled scenario, risk does not disappear. It changes contract and carrier: Meta in some cases, venture shareholders in others, then creditors if rent, guarantees and recovery value no longer suffice.
+
+The useful boundary lies between **what insurance is willing to price** and **what finance is willing to retain**. Future AI campuses can continue to grow while their sponsors have the balance sheet, guarantees and investors required to absorb that gap. The $450 million figure finally makes the open question visible: do holders of the $12.6 billion notes know precisely where each protection stops and their own exposure begins?
+
+### Established perimeter
+
+This analysis relies on Meta's 28 July 2026 announcement, S&P's final 17 August note, insurance figures reported by the Financial Times on 17 August, and sector work by Swiss Re, Marsh, Munich Re and Allianz available as of 23 August 2026. The cumulative-probability calculations can be reproduced in the local tool above.
+
+### Limitations
+
+The insurance policies, complete lease schedules and the insurance consultant's full report are not public. The article therefore does not assign an exact legal payment priority and concludes neither that the project is underinsured nor that a conflict of interest exists. The three scenarios test the structure; they do not predict a casualty.
+
+### Sources
+
+- [Meta Platforms, venture announcement with BlackRock-managed funds](https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-New-Strategic-Venture-with-BlackRock-to-Develop-Data-Center-in-El-Paso/default.aspx), 28 July 2026: 80/20 ownership, cost perimeter, leases, residual value guarantee and adviser roles.
+- [S&P Global Ratings, final A+ rating on $12.6 billion of Sopaipilla Investor notes](https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/3612754), 17 August 2026: $14.3 billion budget, PML, Meta support, leases, security, casualty cases and credit sensitivities.
+- [Financial Times, *Meta and BlackRock's $14bn data centre exposes lenders to insurance gap*](https://www.ft.com/content/adeca274-67a3-4ee8-94f1-f43e4f28be97), 17 August 2026: amounts and premiums across separate covers, attributed to people familiar with the agreements.
+- [Fitch Ratings, Sopaipilla Investor entity page](https://www.fitchratings.com/entity/sopaipilla-investor-llc-97880262), July 2026: expected $12.274 billion issue and AA- expected rating at presale. This analysis uses S&P's more recent final note for realised amounts.
+- [Reuters, Meta-BlackRock project announcement](https://www.reuters.com/technology/meta-blackrock-partner-14-billion-el-paso-data-center-2026-07-28/), 28 July 2026: external-financing context for AI infrastructure.
+- [Swiss Re Institute, *Insuring AI: data centre value accumulation risks*](https://www.swissre.com/institute/research/sigma-research/sigma-insights-07-2026-insuring-ai-data-centre-risks.html), 27 March 2026: market capacity, natural hazards, fire, water, power, cyber and expected premiums.
+- [Marsh, *The market has appetite. The question is how much capacity is there?*](https://www.marsh.com/en/industries/technology/insights/the-market-has-appetite.html), August 2026: capacity architecture, information needs and the maturity of GPU insurance.
+- [Munich Re, *From $1.8bn to $28bn: Insurers race to keep up with data center boom*](https://www.munichre.com/specialty/north-america/en/insights/construction-and-engineering/insurers-race-to-keep-up-with-data-center-boom.html), July 2026: syndication, transitions between policies and insurer capacity.
+- [Allianz Commercial, *The data center construction boom: risks and claims trends*](https://commercial.allianz.com/news-and-insights/reports/data-center-construction-risks.html), August 2026: operational constraints, climate, supply chain and adaptability.
+- [U.S. Geological Survey, *Floods and Recurrence Intervals*](https://www.usgs.gov/water-science-school/science/floods-and-recurrence-intervals): return-period definition and annual exceedance probability.

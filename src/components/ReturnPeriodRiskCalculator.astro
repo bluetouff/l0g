@@ -1,0 +1,159 @@
+---
+import {
+  RETURN_PERIOD_DEFAULTS,
+  calculateReturnPeriodRisk,
+} from '../lib/return-period-risk.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `return-period-risk-${lang}`;
+const initial = calculateReturnPeriodRisk(RETURN_PERIOD_DEFAULTS);
+const format = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-US', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 2,
+});
+const copy = isFr ? {
+  eyebrow: 'CALCULATEUR DE PÉRIODE DE RETOUR',
+  title: 'Que signifie un événement « 1 sur 250 ans » sur vingt ans ?',
+  intro: 'Le calcul transforme une fréquence annuelle modélisée en probabilité cumulée sur la durée choisie.',
+  badge: 'calcul local · zéro tracker',
+  returnPeriod: 'Période de retour',
+  exposure: "Durée d'exposition",
+  years: 'ans',
+  result: 'Probabilité cumulée',
+  annual: 'Probabilité annuelle',
+  formula: 'Formule',
+  formulaText: 'Probabilité cumulée = 1 − (1 − 1/T)ᴺ, avec T pour la période de retour et N pour le nombre d’années.',
+  limits: 'Limites',
+  limitsText: 'Ce calcul suppose une probabilité annuelle constante et des années statistiquement indépendantes. Il ne valide ni le modèle d’incendie de Sopaipilla, ni son périmètre, ni la suffisance de la couverture.',
+  source: 'Repère méthodologique',
+  sourceText: 'L’USGS rappelle qu’une période de retour est l’inverse d’une probabilité annuelle et ne décrit pas un calendrier régulier.',
+} : {
+  eyebrow: 'RETURN-PERIOD CALCULATOR',
+  title: 'What does a “1-in-250-year” event mean over twenty years?',
+  intro: 'The calculation converts a modelled annual frequency into a cumulative probability over the selected exposure period.',
+  badge: 'local calculation · zero tracker',
+  returnPeriod: 'Return period',
+  exposure: 'Exposure period',
+  years: 'years',
+  result: 'Cumulative probability',
+  annual: 'Annual probability',
+  formula: 'Formula',
+  formulaText: 'Cumulative probability = 1 − (1 − 1/T)ᴺ, where T is the return period and N is the number of years.',
+  limits: 'Limits',
+  limitsText: 'This calculation assumes a constant annual probability and statistically independent years. It validates neither Sopaipilla’s fire model, nor its scope, nor the adequacy of its coverage.',
+  source: 'Methodological reference',
+  sourceText: 'The USGS notes that a return period is the inverse of an annual probability and does not describe a regular schedule.',
+};
+---
+
+<section class="rp-tool" id={id} data-return-period-risk data-lang={lang}>
+  <header class="rp-head">
+    <div>
+      <p class="rp-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="rp-badge">{copy.badge}</span>
+  </header>
+
+  <div class="rp-grid">
+    <form class="rp-controls" aria-label={copy.title}>
+      <label>
+        <span>{copy.returnPeriod}</span>
+        <span class="rp-number"><input name="returnPeriod" type="number" min="2" max="10000" step="1" value={RETURN_PERIOD_DEFAULTS.returnPeriodYears} inputmode="numeric" /><b>{copy.years}</b></span>
+      </label>
+      <div class="rp-presets" aria-label={copy.returnPeriod}>
+        {[100, 250, 500, 1000].map((value) => <button type="button" data-return-preset={value} aria-pressed={value === RETURN_PERIOD_DEFAULTS.returnPeriodYears ? 'true' : 'false'}>1/{value}</button>)}
+      </div>
+
+      <label>
+        <span>{copy.exposure}</span>
+        <span class="rp-number"><input name="exposure" type="number" min="1" max="100" step="1" value={RETURN_PERIOD_DEFAULTS.exposureYears} inputmode="numeric" /><b>{copy.years}</b></span>
+      </label>
+      <div class="rp-presets" aria-label={copy.exposure}>
+        {[4, 10, 16, 20].map((value) => <button type="button" data-exposure-preset={value} aria-pressed={value === RETURN_PERIOD_DEFAULTS.exposureYears ? 'true' : 'false'}>{value}</button>)}
+      </div>
+    </form>
+
+    <section class="rp-result" aria-live="polite">
+      <p>{copy.result}</p>
+      <strong data-result="cumulative">{format.format(initial.cumulativeProbabilityPct)} %</strong>
+      <div class="rp-meter" aria-hidden="true"><span style={`width:${initial.cumulativeProbabilityPct}%`}></span></div>
+      <dl>
+        <div><dt>{copy.annual}</dt><dd data-result="annual">{format.format(initial.annualProbabilityPct)} %</dd></div>
+        <div><dt>T</dt><dd data-result="period">{initial.returnPeriodYears} {copy.years}</dd></div>
+        <div><dt>N</dt><dd data-result="exposure">{initial.exposureYears} {copy.years}</dd></div>
+      </dl>
+    </section>
+  </div>
+
+  <div class="rp-details">
+    <details><summary>{copy.formula}</summary><p>{copy.formulaText}</p></details>
+    <details><summary>{copy.limits}</summary><p>{copy.limitsText}</p></details>
+    <details><summary>{copy.source}</summary><p><a href="https://www.usgs.gov/water-science-school/science/floods-and-recurrence-intervals">USGS, Floods and Recurrence Intervals</a>. {copy.sourceText}</p></details>
+  </div>
+</section>
+
+<script>
+  import {
+    calculateReturnPeriodRisk,
+    normalizeReturnPeriodRiskInputs,
+  } from '../lib/return-period-risk.ts';
+
+  const initialiseReturnPeriodRiskCalculators = () => {
+    document.querySelectorAll<HTMLElement>('[data-return-period-risk]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const locale = root.dataset.lang === 'en' ? 'en-US' : 'fr-FR';
+      const format = new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+      const returnPeriod = root.querySelector<HTMLInputElement>('[name="returnPeriod"]');
+      const exposure = root.querySelector<HTMLInputElement>('[name="exposure"]');
+      const meter = root.querySelector<HTMLElement>('.rp-meter span');
+      if (!returnPeriod || !exposure) return;
+
+      const write = (key: string, value: string) => {
+        const target = root.querySelector<HTMLElement>(`[data-result="${key}"]`);
+        if (target) target.textContent = value;
+      };
+      const update = () => {
+        const inputs = normalizeReturnPeriodRiskInputs({ returnPeriodYears: Number(returnPeriod.value), exposureYears: Number(exposure.value) });
+        const result = calculateReturnPeriodRisk(inputs);
+        returnPeriod.value = String(result.returnPeriodYears);
+        exposure.value = String(result.exposureYears);
+        const years = root.dataset.lang === 'en' ? 'years' : 'ans';
+        write('cumulative', `${format.format(result.cumulativeProbabilityPct)} %`);
+        write('annual', `${format.format(result.annualProbabilityPct)} %`);
+        write('period', `${result.returnPeriodYears} ${years}`);
+        write('exposure', `${result.exposureYears} ${years}`);
+        if (meter) meter.style.width = `${Math.min(100, result.cumulativeProbabilityPct)}%`;
+        root.querySelectorAll<HTMLButtonElement>('[data-return-preset]').forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.returnPreset) === result.returnPeriodYears)));
+        root.querySelectorAll<HTMLButtonElement>('[data-exposure-preset]').forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.exposurePreset) === result.exposureYears)));
+      };
+
+      returnPeriod.addEventListener('input', update);
+      exposure.addEventListener('input', update);
+      root.querySelectorAll<HTMLButtonElement>('[data-return-preset]').forEach((button) => button.addEventListener('click', () => { returnPeriod.value = String(button.dataset.returnPreset); update(); }));
+      root.querySelectorAll<HTMLButtonElement>('[data-exposure-preset]').forEach((button) => button.addEventListener('click', () => { exposure.value = String(button.dataset.exposurePreset); update(); }));
+      update();
+    });
+  };
+
+  initialiseReturnPeriodRiskCalculators();
+  document.addEventListener('astro:page-load', initialiseReturnPeriodRiskCalculators);
+</script>
+
+<style>
+  .rp-tool{--rp-accent:#5eead4;--rp-secondary:#f5b13d;min-width:0;margin:1.5rem 0 2rem;border:1px solid color-mix(in srgb,var(--rp-accent) 34%,var(--color-line));border-radius:16px 4px 16px 16px;padding:clamp(.9rem,3vw,1.35rem);background:radial-gradient(110% 130% at 0 0,color-mix(in srgb,var(--rp-accent) 8%,transparent),transparent 65%),color-mix(in srgb,var(--color-surface) 94%,#080b10);box-shadow:var(--shadow-elevated)}
+  .rp-head{display:grid;gap:.8rem}.rp-eyebrow,.rp-badge,.rp-controls label>span:first-child,.rp-presets button,.rp-result p,.rp-result dl,.rp-details{font-family:var(--font-mono)}
+  .rp-eyebrow{margin:0;color:var(--rp-accent);font-size:.64rem;font-weight:750;letter-spacing:.1em}.rp-head h2{margin:.35rem 0 0;color:var(--color-bright);font-family:var(--font-display);font-size:clamp(1.3rem,3.5vw,1.8rem);line-height:1.12}.rp-head div>p:last-child{max-width:52rem;margin:.55rem 0 0;color:var(--color-muted);font-size:.82rem;line-height:1.6}.rp-badge{align-self:start;justify-self:start;border:1px solid color-mix(in srgb,var(--rp-accent) 45%,transparent);border-radius:999px;padding:.35rem .55rem;color:var(--rp-accent);font-size:.58rem;white-space:nowrap}
+  .rp-grid{display:grid;gap:.8rem;margin-top:1rem}.rp-controls,.rp-result{min-width:0;border:1px solid var(--color-line);border-radius:11px;padding:.9rem;background:color-mix(in srgb,var(--color-bg) 58%,transparent)}.rp-controls label{display:grid;grid-template-columns:minmax(0,1fr) 8rem;gap:.65rem;align-items:center}.rp-controls label+div+label{margin-top:1rem}.rp-controls label>span:first-child{color:var(--color-paper);font-size:.68rem;text-transform:uppercase}.rp-number{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;border:1px solid var(--color-line);border-radius:7px;background:var(--color-bg)}.rp-number input{width:100%;min-width:0;border:0;padding:.5rem;background:transparent;color:var(--color-bright);font-family:var(--font-mono);font-size:.72rem}.rp-number b{padding-right:.5rem;color:var(--color-muted);font-family:var(--font-mono);font-size:.62rem;font-weight:500}.rp-presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.35rem;margin-top:.45rem}.rp-presets button{min-width:0;border:1px solid var(--color-line);border-radius:7px;padding:.42rem .2rem;background:var(--color-bg);color:var(--color-paper);font-size:.62rem;cursor:pointer}.rp-presets button[aria-pressed='true']{border-color:var(--rp-accent);color:var(--rp-accent)}
+  input:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--rp-accent);outline-offset:2px}.rp-result>p{margin:0;color:var(--color-muted);font-size:.65rem;text-transform:uppercase}.rp-result>strong{display:block;margin:.55rem 0;color:var(--rp-accent);font-family:var(--font-mono);font-size:clamp(1.8rem,7vw,2.7rem)}.rp-meter{height:1rem;overflow:hidden;border:1px solid var(--color-line);border-radius:999px;background:#262b33}.rp-meter span{display:block;height:100%;background:linear-gradient(90deg,var(--rp-accent),var(--rp-secondary));transition:width .18s ease}.rp-result dl{margin:.8rem 0 0}.rp-result dl div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.8rem;border-bottom:1px solid color-mix(in srgb,var(--color-line) 65%,transparent);padding:.45rem 0}.rp-result dt{color:var(--color-muted);font-size:.65rem}.rp-result dd{margin:0;color:var(--color-bright);font-size:.68rem}
+  .rp-details{display:grid;gap:.45rem;margin-top:.8rem}.rp-details details{border:1px solid var(--color-line);border-radius:8px;padding:.65rem .75rem}.rp-details summary{color:var(--color-paper);font-size:.65rem;cursor:pointer}.rp-details p{color:var(--color-muted);font-size:.65rem;line-height:1.55}.rp-details a{color:var(--rp-accent);overflow-wrap:anywhere}
+  @media(min-width:720px){.rp-head{grid-template-columns:minmax(0,1fr) auto}.rp-grid{grid-template-columns:minmax(0,1fr) minmax(18rem,1fr)}.rp-details{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(prefers-reduced-motion:reduce){.rp-meter span{transition:none}}
+</style>
