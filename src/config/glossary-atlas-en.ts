@@ -203,6 +203,46 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'cat-nat',
+    sigle: 'Cat Nat',
+    nom: 'France’s statutory natural-catastrophe insurance scheme',
+    def: 'A French legal regime that extends eligible property-damage policies to specified effects of a natural disaster recognised by decree. A national surcharge funds the scheme. Insurers may transfer part of the risk to CCR, whose unlimited cover benefits from a French state guarantee.',
+    guide: '/en/analysis/when-climate-turns-state-into-reinsurer/',
+    ...macroSection,
+    atlas: {
+      intuition: 'The household deals with its insurer. Behind that policy, the insurer may share the loss with CCR, while the French state covers the extreme tail through a guarantee.',
+      whyNow: 'Higher climate-related losses have depleted reserves more quickly and brought the public guarantee closer to the French budget debate.',
+      articles: [
+        { label: 'When climate turns the state into a reinsurer', href: '/en/analysis/when-climate-turns-state-into-reinsurer/', detail: 'Premiums, CCR, the public guarantee and the incentives created by national pooling.', kind: 'article' },
+      ],
+      sources: [
+        { label: 'French Insurance Code', href: 'https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006174047/', detail: 'Legal perimeter of the Cat Nat guarantee.', kind: 'source' },
+        { label: 'CCR 1982-2025 review', href: 'https://www.ccr.fr/wp-content/uploads/2026/06/20260622-rapport_Bilan_Cat_Nat_BD.pdf', detail: 'Premiums, losses, reserves and public-guarantee capacity.', kind: 'source' },
+      ],
+      related: ['reassurance'],
+    },
+  },
+  {
+    slug: 'reassurance',
+    sigle: 'Reinsurance',
+    nom: 'Insurance for an insurer',
+    def: 'A contract through which an insurer transfers part of its premiums and losses to another institution. The policyholder keeps the same insurer; the reinsurance treaty redistributes large or correlated losses between professional counterparties.',
+    guide: '/en/analysis/when-climate-turns-state-into-reinsurer/',
+    ...macroSection,
+    atlas: {
+      intuition: 'A reinsurer gives an insurer another balance sheet with which to absorb severe losses. It does not replace the insurer in the customer’s policy.',
+      whyNow: 'Natural catastrophes can hit many policies at once, making reinsurance and its ultimate backstops central to insurability.',
+      articles: [
+        { label: 'When climate turns the state into a reinsurer', href: '/en/analysis/when-climate-turns-state-into-reinsurer/', detail: 'How France layers policyholder, insurer, CCR and state balance sheets.', kind: 'article' },
+      ],
+      sources: [
+        { label: 'French Insurance Code, Article L. 431-9', href: 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073984/LEGISCTA000006187517/2025-01-08', detail: 'CCR reinsurance and the French state guarantee.', kind: 'source' },
+        { label: 'Cour des comptes, April 2026', href: 'https://www.vie-publique.fr/files/rapport/pdf/303004.pdf', detail: 'Treaty structure and financial sustainability of the French Cat Nat scheme.', kind: 'source' },
+      ],
+      related: ['cat-nat'],
+    },
+  },
+  {
     slug: 'pseudonymisation',
     sigle: 'Pseudonymisation',
     nom: 'Identity separation with a retained re-linking key',
