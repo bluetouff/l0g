@@ -6,6 +6,7 @@ description: "How France's Livret A savings fund social housing, SMEs and French
 pubDate: 2026-08-25T15:40:00+02:00
 tags: ["Livret A", "Savings Fund", "Caisse des Dépôts", "French government bonds", "regulated savings", "French debt"]
 draft: false
+ogImage: "/illustrations/news/livret-a-france-balance-sheet-v1.jpg"
 sourceArticle: "ce-que-votre-livret-a-finance-vraiment"
 sourceUpdatedDate: 2026-08-25T15:40:00+02:00
 ---

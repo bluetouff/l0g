@@ -6,6 +6,7 @@ description: "Logement social, PME, collectivités et OAT : le circuit document�
 pubDate: 2026-08-25T15:40:00+02:00
 tags: ["Livret A", "Fonds d’épargne", "Caisse des Dépôts", "OAT", "épargne réglementée", "dette française"]
 draft: false
+ogImage: "/illustrations/news/livret-a-france-balance-sheet-v1.jpg"
 quickTake:
   fact: "Le Livret A est un dépôt réglementé, pas un portefeuille individuel : son encours rejoint deux bilans, celui des banques et celui du Fonds d’épargne."
   importance: "Fin 2025, le Fonds d’épargne détenait près de 116 milliards d’euros d’OAT françaises, en plus de 244,9 milliards de prêts de long terme."
