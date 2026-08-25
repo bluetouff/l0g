@@ -111,6 +111,10 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'BIS', nom: 'Bank for International Settlements', def: "Banque des règlements internationaux, à Bâle. La « banque centrale des banques centrales », référence pour les statistiques bancaires et de dette mondiales." },
       { sigle: 'ADB', nom: 'Asian Development Bank', def: "Banque asiatique de développement, à Manille. Référence pour les prévisions de croissance et d'inflation de la région Asie-Pacifique." },
       { sigle: 'OAT', nom: 'Obligation assimilable du Trésor', def: "Titre de dette émis par l'État français à moyen et long terme. Son taux sert de référence au coût d'emprunt de la France.", guide: 'lire-la-dette-souveraine-europeenne' },
+      { sigle: 'OATi', nom: 'OAT indexée sur l’inflation française', def: "Obligation de l'État français dont le principal est revalorisé selon l'indice français des prix à la consommation hors tabac. Le coupon s'applique à ce principal indexé. À distinguer de l'OAT€i, liée à l'inflation harmonisée de la zone euro hors tabac.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
+      { sigle: 'Livret A', nom: 'Livret d’épargne réglementé', def: "Dépôt bancaire liquide, défiscalisé et garanti par l'État, dont le taux et le plafond sont réglementés. Une partie de la collecte est centralisée au Fonds d'épargne ; le solde reste dans les banques sous obligations d'emploi. Le titulaire ne possède pas directement les prêts ou les obligations financés.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
+      { sigle: 'Fonds d’épargne', nom: 'Fonds d’épargne de la Caisse des Dépôts', def: "Bilan géré par la Caisse des Dépôts qui reçoit une partie du Livret A, du LDDS et du LEP. Il transforme ces dépôts en prêts de long terme et conserve un portefeuille financier destiné au rendement, à la couverture des risques et à la liquidité.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
+      { sigle: 'Centralisation', nom: 'Centralisation de l’épargne réglementée', def: "Transfert d'une fraction des dépôts Livret A, LDDS et LEP collectés par les banques vers le Fonds d'épargne. Le taux diffère selon les produits et peut être ajusté par des règles destinées à préserver la couverture des prêts et la liquidité du système.", guide: '/posts/ce-que-votre-livret-a-finance-vraiment/' },
       { sigle: 'Gilt', nom: 'Obligation souveraine britannique', def: "Titre de dette émis par le Trésor britannique. Marché central pour le financement du Royaume-Uni, les fonds de pension, les assureurs et les stratégies de taux financées en repo.", guide: 'lire-la-dette-souveraine-europeenne' },
       { sigle: 'Bund', nom: 'Obligation fédérale allemande', def: "Titre de dette de l'État fédéral allemand, référence de la zone euro : son rendement sert de taux sans risque de fait, et tous les spreads souverains européens se mesurent contre lui. La réforme du frein à la dette de 2025 a fortement gonflé son offre.", guide: 'lire-la-dette-souveraine-europeenne' },
       { sigle: 'BTP', nom: 'Buono del Tesoro Poliennale', def: "Obligation à moyen et long terme de l'État italien. Deuxième plus gros stock de dette négociable de la zone euro, longtemps symbole du risque périphérique ; son spread contre le Bund est retombé à un plus-bas de quinze ans en 2026.", guide: 'lire-la-dette-souveraine-europeenne' },
@@ -544,7 +548,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-08-24';
+export const glossaryUpdatedIso = '2026-08-25';
 
 const seenSlugs = new Map<string, number>();
 const uniqueSlug = (value: string) => {
