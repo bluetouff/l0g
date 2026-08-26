@@ -104,7 +104,16 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
     agentSurface.indexOf('DebtRiskTileSignal:'),
     agentSurface.indexOf('RiskSignalProvenanceBucket:'),
   );
-  for (const field of ['rawValue:', 'producerRepository:', 'producerRevision:', 'producerRevisionStatus:']) {
+  for (const field of [
+    'rawValue:',
+    'observedAt:',
+    'observationStatus:',
+    'coverageStatus:',
+    'backtestUsable:',
+    'producerRepository:',
+    'producerRevision:',
+    'producerRevisionStatus:',
+  ]) {
     assert.ok(debtSchema.includes(field), `DebtRiskTileSignal doit publier ${field.slice(0, -1)}`);
   }
   assert.ok(riskClient.includes("window.addEventListener('load', scheduleRefresh, { once: true })"));
