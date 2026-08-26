@@ -204,7 +204,15 @@ if (englishGuideDocument.language !== 'en' || !englishGuideDocument.canonicalId?
 console.log('readResource(guide-en) ->', englishGuideDocument.canonicalId, '| language:', englishGuideDocument.language);
 
 const signalResource = await client.readResource({ uri: 'l0g://signals/yen/current' });
-console.log('readResource(signal) -> instrument:', JSON.parse(signalResource.contents?.[0]?.text || '{}').instrument);
+const signalDocument = JSON.parse(signalResource.contents?.[0]?.text || '{}');
+if (signalDocument.instrument !== 'yen' || !signalDocument.current) {
+  throw new Error('readResource(signal) doit distinguer un signal connu indisponible d’un instrument inconnu.');
+}
+if (signalDocument.current.availabilityStatus === 'unavailable'
+  && (signalDocument.current.value !== null || signalDocument.current.level !== 'INDISPONIBLE' || signalDocument.current.backtestUsable !== false)) {
+  throw new Error('readResource(signal) ne masque pas une valeur courante non attestée.');
+}
+console.log('readResource(signal) -> instrument:', signalDocument.instrument, '| availability:', signalDocument.current.availabilityStatus);
 
 async function call(name, args) {
   const r = await client.callTool({ name, arguments: args || {} });
@@ -240,8 +248,18 @@ async function expectReadResourceFailure(uri) {
 }
 
 const risk = await call('get_risk_indices');
-if (!risk.indices?.debt) throw new Error('get_risk_indices doit exposer le signal debt.');
-console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join(','), '| snapshot:', risk.snapshot);
+const expectedRiskKeys = ['us', 'eu', 'yen', 'energie', 'debt'];
+if (expectedRiskKeys.some((key) => !risk.indices?.[key])) {
+  throw new Error('get_risk_indices doit exposer les cinq instruments, y compris ceux explicitement indisponibles.');
+}
+for (const key of expectedRiskKeys) {
+  const signal = risk.indices[key];
+  if (signal.availabilityStatus === 'unavailable'
+    && (signal.value !== null || signal.level !== 'INDISPONIBLE' || signal.backtestUsable !== false)) {
+    throw new Error(`get_risk_indices expose une valeur non attestée pour ${key}.`);
+  }
+}
+console.log('get_risk_indices -> indices:', Object.keys(risk.indices || {}).join(','), '| unavailable:', (risk.unavailable || []).join(','), '| snapshot:', risk.snapshot);
 
 const signalHistory = await call('get_signal_history', { key: 'debt', limit: 5 });
 if (!signalHistory.current?.debt) throw new Error('get_signal_history(debt) doit exposer le signal courant debt.');

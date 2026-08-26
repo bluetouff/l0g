@@ -1158,9 +1158,50 @@ export function buildServer(data, options = {}) {
   const methodologies = catalog.methodologies || [];
   const primarySources = sources.primarySources || [];
   const referenceHosts = sources.referenceHosts || [];
-  const signals = { ...(risk?.indices || {}) };
+  const expectedSignalKeys = ['us', 'eu', 'yen', 'energie', 'debt'];
+  const historyCurrent = signalHistory?.current && typeof signalHistory.current === 'object'
+    ? signalHistory.current
+    : {};
+  const isUsableSignal = (signal) => signal
+    && typeof signal.value === 'number'
+    && typeof signal.observedAt === 'string'
+    && signal.observedAt.length > 0
+    && signal.sourceStatus === 'ok'
+    && ['ok', 'nominal'].includes(signal.qualityStatus)
+    && !['stale', 'unknown'].includes(signal.timelinessStatus)
+    && signal.coverageStatus === 'complete'
+    && Array.isArray(signal.missing)
+    && signal.missing.length === 0
+    && signal.backtestUsable === true;
+  const publishSignal = (key, signal) => {
+    if (isUsableSignal(signal)) return { ...signal, key, availabilityStatus: 'available' };
+    return {
+      ...(signal || {}),
+      key,
+      lastKnownValue: typeof signal?.value === 'number' ? signal.value : null,
+      value: null,
+      rawValue: null,
+      level: 'INDISPONIBLE',
+      tone: 'unavailable',
+      sourceStatus: signal?.sourceStatus || 'unavailable',
+      qualityStatus: signal?.qualityStatus || 'failed',
+      timelinessStatus: signal?.timelinessStatus || 'unknown',
+      observedAt: signal?.observedAt || null,
+      coverageStatus: signal?.coverageStatus || 'partial',
+      missing: Array.isArray(signal?.missing) && signal.missing.length ? signal.missing : ['observedAt'],
+      backtestUsable: false,
+      availabilityStatus: 'unavailable',
+      limitations: [
+        ...new Set([
+          ...(Array.isArray(signal?.limitations) ? signal.limitations : []),
+          'Valeur courante masquée tant que le signal ne satisfait pas le contrat de fraîcheur et de provenance.',
+        ]),
+      ],
+    };
+  };
+  const signalCandidates = { ...historyCurrent, ...(risk?.indices || {}) };
   if (debtRisk?.signal?.key === 'debt') {
-    signals.debt = {
+    signalCandidates.debt = {
       ...debtRisk.signal,
       label: debtRisk.provenance?.label || 'Debt Risk Radar',
       source: debtRisk.provenance?.source || `${SITE}/api/v1/debt-risk.json`,
@@ -1168,6 +1209,7 @@ export function buildServer(data, options = {}) {
       provenance: debtRisk.provenance || null,
     };
   }
+  const signals = Object.fromEntries(expectedSignalKeys.map((key) => [key, publishSignal(key, signalCandidates[key])]));
 
   function referencesForArticle(record) {
     const slug = record?.evidenceRef?.articleSlug || record?.slug;
@@ -1742,7 +1784,7 @@ export function buildServer(data, options = {}) {
   server.registerResource(
     'signal-current',
     new ResourceTemplate('l0g://signals/{instrument}/current', {
-      complete: { instrument: (value) => Object.keys(signals).filter((key) => key.startsWith(value)).slice(0, 20) },
+      complete: { instrument: (value) => expectedSignalKeys.filter((key) => key.startsWith(value)).slice(0, 20) },
     }),
     {
       title: 'Current signal',
@@ -1751,7 +1793,7 @@ export function buildServer(data, options = {}) {
     },
     async (uri, variables) => {
       const instrument = uriValue(variables.instrument);
-      if (!signals[instrument]) resourceNotFound('signal', instrument);
+      if (!expectedSignalKeys.includes(instrument)) resourceNotFound('signal', instrument);
       return resourceJson(uri.toString(), {
         instrument,
         snapshot: risk?.snapshot ?? null,
@@ -1840,7 +1882,11 @@ export function buildServer(data, options = {}) {
       return reply({
         snapshot: risk.snapshot ?? null,
         generated: risk.generated ?? null,
-        indices: risk.indices ?? {},
+        indices: signals,
+        complete: Object.values(signals).every((signal) => signal.availabilityStatus === 'available'),
+        unavailable: Object.entries(signals)
+          .filter(([, signal]) => signal.availabilityStatus !== 'available')
+          .map(([key]) => key),
         confluence: risk.confluence ?? null,
         source: SITE + '/api/',
       });
@@ -1862,7 +1908,6 @@ export function buildServer(data, options = {}) {
     },
     async ({ key, limit }) => {
       const history = signalHistory || {};
-      const historyCurrent = history.current && typeof history.current === 'object' ? history.current : signals;
       let observations = Array.isArray(history.observations) ? history.observations.slice() : [];
       let levelChanges = Array.isArray(history.levelChanges)
         ? history.levelChanges.slice()
@@ -1885,7 +1930,7 @@ export function buildServer(data, options = {}) {
         coverage: history.coverage || {},
         filters: { key: key || null },
         instruments,
-        current: key ? { [key]: historyCurrent[key] ?? null } : historyCurrent,
+        current: key ? { [key]: signals[key] ?? null } : signals,
         observations: observations.slice(0, limit),
         levelChanges: levelChanges.slice(0, limit),
         events: levelChanges.slice(0, limit),
