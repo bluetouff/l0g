@@ -147,6 +147,15 @@ function isoOrNull(value) {
   return new Date(value).toISOString();
 }
 
+function hasObservationContract(item) {
+  return Boolean(
+    isoOrNull(item?.observedAt)
+    && item?.observedAtMethod === 'latest-component-observation'
+    && isoOrNull(item?.observationWindow?.oldest)
+    && isoOrNull(item?.observationWindow?.latest),
+  );
+}
+
 function observationContract(sources) {
   const ceiling = Date.parse(attemptedAt) + 24 * 60 * 60 * 1000;
   const entries = (Array.isArray(sources) ? sources : [])
@@ -164,11 +173,16 @@ function observationContract(sources) {
     observationWindow: { oldest: entries[0].value, latest: entries.at(-1).value },
     observationTimePrecision: 'date',
     componentDates: Object.fromEntries(entries.map((entry) => [entry.key, entry.raw])),
+    observationStatus: 'known',
+    coverageStatus: 'complete',
+    missing: [],
+    backtestUsable: true,
   };
 }
 
 function freshnessDefaults(item, key) {
   const durations = { us: 'PT36H', eu: 'PT36H', yen: 'PT12H', energie: 'PT6H', debt: 'PT6H' };
+  const observationComplete = hasObservationContract(item);
   return {
     ...item,
     sourceStatus: item.sourceStatus || 'ok',
@@ -188,6 +202,17 @@ function freshnessDefaults(item, key) {
       : 'unknown',
     sourceSnapshotUrl: item.sourceSnapshotUrl || null,
     warnings: Array.isArray(item.warnings) ? item.warnings.map(String).slice(0, 10) : [],
+    observedAt: observationComplete ? isoOrNull(item.observedAt) : null,
+    observedAtMethod: observationComplete ? item.observedAtMethod : null,
+    observationWindow: observationComplete ? {
+      oldest: isoOrNull(item.observationWindow.oldest),
+      latest: isoOrNull(item.observationWindow.latest),
+    } : null,
+    observationTimePrecision: observationComplete ? (item.observationTimePrecision || 'date-time') : null,
+    observationStatus: observationComplete ? 'known' : 'missing',
+    coverageStatus: observationComplete ? 'complete' : 'partial',
+    missing: observationComplete ? [] : ['observedAt'],
+    backtestUsable: observationComplete && item.backtestUsable !== false,
   };
 }
 
@@ -209,7 +234,15 @@ function mergeAggregate(previous, aggregate) {
   if (!Array.isArray(aggregate?.indices)) {
     throw new Error('agrégateur: indices doit être un tableau');
   }
-  const indices = aggregate.indices.map((item) => freshnessDefaults(item, item.key));
+  const indices = aggregate.indices.map((item) => {
+    const normalized = freshnessDefaults(item, item.key);
+    if (normalized.observationStatus === 'known') return normalized;
+    return markFallback(
+      normalized,
+      item.key,
+      'Agrégateur sans date économique observedAt; valeur indisponible jusqu’au contrat v2 complet.',
+    );
+  });
   return {
     ...previous,
     ...aggregate,

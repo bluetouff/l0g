@@ -22,6 +22,11 @@ export const GET: APIRoute = () => {
   const expectedKeys = ['us', 'eu', 'yen', 'energie', 'debt'];
   const availableKeys = new Set((risk.indices || []).map((item: any) => item.key));
   const complete = expectedKeys.every((key) => availableKeys.has(key));
+  const observationComplete = expectedKeys.every((key) => {
+    const item = (risk.indices || []).find((signal: any) => signal.key === key);
+    return item?.observedAt && !Number.isNaN(Date.parse(item.observedAt)) &&
+      item.observedAtMethod === 'latest-component-observation';
+  });
   const snapshot = risk.aggregateGeneratedAt ?? risk.updated ?? null;
   const snapshotAge = snapshot ? Date.now() - Date.parse(snapshot) : Number.POSITIVE_INFINITY;
   const snapshotFresh = Number.isFinite(snapshotAge) && snapshotAge <= 30 * 60 * 1000;
@@ -75,15 +80,16 @@ export const GET: APIRoute = () => {
     /* confluence optionnel */
   }
 
-  const exposedIndices = complete && snapshotFresh ? indices : {};
+  const usable = complete && observationComplete && snapshotFresh;
+  const exposedIndices = usable ? indices : {};
   const payload = {
     schema: 'https://l0g.fr/api/',
     version: '2',
     generated: risk.generated ?? new Date().toISOString(),
     snapshot,
     staleAfter: 'PT30M',
-    status: complete && snapshotFresh ? (risk.status ?? 'unknown') : 'failed',
-    summary: complete && snapshotFresh ? (risk.summary ?? null) : {
+    status: usable ? (risk.status ?? 'unknown') : 'failed',
+    summary: usable ? (risk.summary ?? null) : {
       expected: expectedKeys.length,
       present: 0,
       ok: 0,
@@ -92,7 +98,11 @@ export const GET: APIRoute = () => {
       degraded: 0,
       missing: expectedKeys.map((key) => ({
         key,
-        reason: snapshotFresh ? 'absent du snapshot de build' : 'snapshot statique trop ancien, valeur retirée',
+        reason: !snapshotFresh
+          ? 'snapshot statique trop ancien, valeur retirée'
+          : !observationComplete
+            ? 'date économique observedAt absente, valeur retirée'
+            : 'absent du snapshot de build',
       })),
     },
     software: risk.software ?? null,

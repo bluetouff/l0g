@@ -33,11 +33,22 @@ for (const key of requiredSignals) {
   if (typeof item.fallbackUsed !== 'boolean') {
     throw new Error(`Signal ${key}: fallbackUsed doit etre booleen.`);
   }
-  if (!item.observedAt || Number.isNaN(Date.parse(item.observedAt))) {
-    throw new Error(`Signal ${key}: observedAt doit dater une observation économique amont.`);
+  const observedAtValid = Boolean(item.observedAt) && !Number.isNaN(Date.parse(item.observedAt));
+  if (item.sourceStatus === 'ok' && !observedAtValid) {
+    throw new Error(`Signal ${key}: une valeur disponible doit dater une observation économique amont.`);
   }
-  if (item.observedAtMethod !== 'latest-component-observation') {
+  if (observedAtValid && item.observedAtMethod !== 'latest-component-observation') {
     throw new Error(`Signal ${key}: observedAtMethod doit documenter le composite.`);
+  }
+  if (!observedAtValid && (
+    item.sourceStatus !== 'fallback'
+    || item.observationStatus !== 'missing'
+    || item.coverageStatus !== 'partial'
+    || item.backtestUsable !== false
+    || !Array.isArray(item.missing)
+    || !item.missing.includes('observedAt')
+  )) {
+    throw new Error(`Signal ${key}: une observation absente doit être explicitement retirée des usages courants et backtests.`);
   }
   if (!item.lastAttemptAt || Number.isNaN(Date.parse(item.lastAttemptAt))) {
     throw new Error(`Signal ${key}: lastAttemptAt doit etre une date ISO.`);

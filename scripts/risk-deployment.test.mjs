@@ -151,12 +151,13 @@ test('la découverte MCP publique ne fabrique pas de serveur OAuth', async () =>
 });
 
 test('la page Statut mesure fraîcheur, corpus et retards depuis les contrats servis', async () => {
-  const [page, client, confluencePage, confluenceClient, updater, staticRiskRoute] = await Promise.all([
+  const [page, client, confluencePage, confluenceClient, updater, validator, staticRiskRoute] = await Promise.all([
     readFile(new URL('src/pages/status.astro', root), 'utf8'),
     readFile(new URL('public/status-live.js', root), 'utf8'),
     readFile(new URL('src/pages/confluence.astro', root), 'utf8'),
     readFile(new URL('public/confluence-table.js', root), 'utf8'),
     readFile(new URL('scripts/update-risk-snapshot.mjs', root), 'utf8'),
+    readFile(new URL('scripts/validate-risk-snapshot.mjs', root), 'utf8'),
     readFile(new URL('src/pages/api/v1/risk.json.ts', root), 'utf8'),
   ]);
   assert.ok(!page.includes("getCollection('posts'"));
@@ -175,6 +176,12 @@ test('la page Statut mesure fraîcheur, corpus et retards depuis les contrats se
   assert.ok(client.includes('contrat v2 daté absent ou invalide'));
   assert.ok(updater.includes("atomicJsonWrite(CONFLUENCE_PATH"));
   assert.ok(updater.includes('items: []'));
+  assert.ok(updater.includes("observationStatus: observationComplete ? 'known' : 'missing'"));
+  assert.ok(updater.includes("'Agrégateur sans date économique observedAt; valeur indisponible"));
+  assert.ok(validator.includes("item.sourceStatus === 'ok' && !observedAtValid"));
+  assert.ok(validator.includes("item.backtestUsable !== false"));
+  assert.ok(staticRiskRoute.includes('complete && observationComplete && snapshotFresh'));
+  assert.ok(staticRiskRoute.includes('date économique observedAt absente, valeur retirée'));
   assert.ok(staticRiskRoute.includes('snapshot statique trop ancien, valeur retirée'));
   assert.ok(staticRiskRoute.includes('contractValid && !fallback ? conf.items : []'));
 });
