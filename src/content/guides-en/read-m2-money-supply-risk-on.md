@@ -47,7 +47,7 @@ The first trap is confusing stock and flow. A high M2 level is not a reservoir w
 
 The third trap is ignoring the dollar when discussing global M2. A weaker dollar mechanically raises non-U.S. money aggregates when translated into dollars. The fourth is treating a historical lag as a future clock.
 
-## How to use it without fooling yourself
+## A disciplined framework for using M2
 
 M2 remains useful if read as a conditional monetary climate gauge. Look at year-over-year growth rather than the raw level. Cross-check velocity and composition to see whether the move reflects risk appetite or a move into cash-like safety. Then compare it with other liquidity measures: reserves, the Treasury General Account, reverse [repo](/en/glossary/repo/), and money-market funding stress.
 

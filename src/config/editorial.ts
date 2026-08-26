@@ -300,7 +300,7 @@ export const editorialChangelog: EditorialChangelogEntry[] = [
   },
   {
     date: '2026-06-27',
-    title: 'Garde-fou contre l’illusion de précision',
+    title: 'Réduire l’illusion de précision',
     kind: 'protocole',
     summary:
       'Le protocole explicite que scores et badges doivent être soutenus par données complètes, calcul reproductible, couverture, fraîcheur, incertitude et performance historique.',

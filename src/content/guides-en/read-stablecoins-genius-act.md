@@ -47,7 +47,7 @@ Two protections complete the structure. In an issuer bankruptcy, reserves are se
 
 Full effectiveness comes no later than **January 18, 2027**, or earlier if regulators finalise rules before then. Many implementing rules are due around **July 18, 2026**.
 
-## An attestation is not an audit
+## The evidentiary limits of reserve attestations
 
 This is the point most commentary skips. A monthly reserve report is usually an attestation, not a full audit.
 
@@ -81,7 +81,7 @@ This makes stablecoin issuers an increasingly important marginal buyer of U.S. s
 
 The same logic also creates a risk. If stablecoins become a buyer of Treasury bills when they grow, a large redemption wave can turn them into a forced seller of Treasury bills at the worst possible moment. The stability of payment tokens and the liquidity of the Treasury bill market are now connected.
 
-## GENIUS versus MiCA
+## GENIUS and MiCA: two regulatory models
 
 The European Union's [MiCA framework](/en/guides/decode-mica-crypto-regulation/) also imposes reserve and redemption requirements for e-money tokens and asset-referenced tokens. Both regimes ban interest paid directly to stablecoin holders.
 

@@ -1,5 +1,5 @@
 ---
-title: "How to Read a 10-K Without Drowning: the SEC Annual Report"
+title: "How to Read a 10-K: the SEC Annual Report"
 description: "A reference guide to reading a Form 10-K: the map of the document, where to start, how to separate a real risk factor from boilerplate, how to read MD&A and the financial statement notes, and how to spot control weaknesses. The most complete document on a listed U.S. company, read by priority."
 pubDate: 2026-07-08T16:30:00+02:00
 updatedDate: 2026-07-08T16:30:00+02:00
@@ -27,7 +27,7 @@ A 10-K is organized into four parts. Part I describes the business: business ove
 
 Do not read from page one to the end. The effective order starts with management’s discussion and analysis, Item 7, where management explains results, liquidity and known trends in its own words. Then move to risk factors, Item 1A, looking for what changed. Finish with the footnotes to the financial statements, where the details nobody highlights are buried. That order moves from narrative to evidence, not the other way around.
 
-## Risk factors: new information versus boilerplate
+## Risk factors: identifying substantive changes
 
 Item 1A is a trap for naive readers, because much of it is boilerplate designed for legal protection. The technique is to compare the section year over year: a newly added, removed or rewritten risk says more than the entire list. Be especially wary of a risk described as purely hypothetical when it has already materialized. The SEC has sanctioned companies for presenting known problems as conditional risks, from Mylan, hit with a **$30 million** penalty, to Yahoo and SolarWinds in cybersecurity. The signal is not the length of the list. It is what is specific and what moved.
 

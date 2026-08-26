@@ -61,7 +61,7 @@ A transition clause allows firms already operating under national regimes to con
 
 More than seventy CASPs were authorised by the end of 2025. Mid-2026 is therefore the moment that separates compliant actors from the rest.
 
-## MiCA versus GENIUS: two philosophies
+## MiCA and GENIUS: two regulatory philosophies
 
 Europe and the United States now have two very different stablecoin regimes. Both forbid issuers from paying interest to stablecoin holders. But the philosophy differs.
 

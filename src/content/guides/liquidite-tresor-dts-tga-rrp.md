@@ -47,7 +47,7 @@ Les indicateurs avancés sont connus : un taux effectif des fed funds qui remont
 
 L'enjeu dépasse la technique. Un assèchement de liquidité, qu'il vienne d'une reconstitution du TGA ou d'un choc d'émission, se transmet d'abord aux marchés de financement, puis aux actifs risqués, par le canal du coût et de la disponibilité du collatéral. C'est aussi par là que la dette publique et la monnaie privée se rejoignent : les émetteurs de [stablecoins](/guides/stablecoins-genius-act/), devenus de gros acheteurs de bons du Trésor, ajoutent une demande nouvelle sur le segment court, tandis qu'une reconstitution massive du TGA peut, à l'inverse, drainer le système au pire moment. Suivre la liquidité, ce n'est pas chercher un signal d'achat, c'est connaître le calendrier des grands mouvements de cash, plafond de la dette, échéances fiscales, fins de trimestre, pour ne pas confondre une tension de plomberie avec un changement de cap monétaire.
 
-## Comment lire le risque, pas à pas
+## Méthode de lecture du risque
 
 Quelques réflexes suffisent. Suivre le TGA au jour le jour via le Daily Treasury Statement, et anticiper ses reconstitutions après un accord sur le plafond de la dette. Lire le RRP et les réserves dans le H.4.1 hebdomadaire pour situer le niveau d'amortisseur restant. Surveiller l'écart entre le taux des pensions et le taux des réserves, ainsi que le taux effectif des fed funds, comme thermomètres de rareté. Marquer au calendrier les fins de trimestre et les grosses échéances fiscales, moments classiques de tension. Et garder la formule de liquidité nette pour ce qu'elle est, une boussole de tendance, jamais un déclencheur d'opération. Le [FOMC](/glossaire/#fomc) pilote les taux, mais la plomberie, elle, se lit dans ces trois comptes.
 

@@ -27,7 +27,7 @@ Le cœur du texte tient en quelques obligations. Seuls des émetteurs agréés p
 
 Deux protections complètent l'édifice. En cas de faillite de l'émetteur, les réserves sortent de la masse et sont réservées aux porteurs, avec une créance superprioritaire en cas d'insuffisance. Et l'émetteur doit pouvoir geler, saisir ou détruire des jetons sur ordre légal. La loi entrera pleinement en vigueur au plus tard le **18 janvier 2027**, ou plus tôt si les régulateurs finalisent leurs règles avant, la plupart des textes d'application étant attendus pour le **18 juillet 2026**. Première traduction concrète : en décembre 2025, l'OCC a accordé des chartes conditionnelles à Circle, Paxos, Ripple et BitGo.
 
-## Attestation n'est pas audit
+## Les limites probatoires de l’attestation de réserves
 
 Voici le point que la plupart des analyses négligent. Un rapport de réserves mensuel est, dans l'immense majorité des cas, une attestation, pas un audit. L'attestation est un examen ponctuel, à une date donnée, par un cabinet comptable : elle constate qu'à cet instant les réserves déclarées existaient. Elle n'opine ni sur les contrôles internes, ni sur la solvabilité continue, ni sur ce qui se passe entre deux dates, ni toujours sur la qualité des contreparties.
 
@@ -49,11 +49,11 @@ Le sujet déborde la crypto et touche le cœur du marché obligataire. Pour resp
 
 Le raisonnement se retourne en risque. Si les stablecoins sont devenus un acheteur marginal de bons du Trésor à mesure qu'ils gonflent, alors une ruée massive, qui forcerait les émetteurs à vendre leurs réserves d'un coup pour rembourser les porteurs, deviendrait un vendeur forcé de dette publique au pire moment. La stabilité d'un jeton de paiement et la liquidité du marché des bons du Trésor sont désormais liées. C'est l'angle le plus négligé du débat, et le plus important pour qui suit la macro.
 
-## GENIUS contre MiCA : deux modèles
+## GENIUS et MiCA : deux modèles
 
 Les États-Unis ne sont pas seuls. L'Union européenne a posé son cadre avec [MiCA](/glossaire/#mica), dont les règles sur les jetons de monnaie électronique ([EMT](/glossaire/#emt)) et les jetons adossés à des actifs ([ART](/glossaire/#art)) imposent elles aussi réserves et droit au remboursement. Les deux régimes interdisent la rémunération des porteurs. Mais ils divergent : là où le GENIUS Act bâtit un cadre bancaire à trois classes d'émetteurs, MiCA plafonne l'usage des grands stablecoins non libellés en euro et exige un agrément européen. Circle a obtenu cet agrément et distribue l'USDC en Europe ; Tether ne l'a pas recherché, et l'USDT a été restreint sur plusieurs places européennes. Le marché reste dollarisé à près de **99 %**, ce qui nourrit en Europe une inquiétude de souveraineté monétaire que nous avons documentée à propos de [MiCA et de l'affaire Binance](/posts/binance-mica-lagarde/).
 
-## Comment lire le risque, pas à pas
+## Méthode de lecture du risque
 
 Quelques réflexes suffisent à évaluer un stablecoin. Lire d'abord le rapport de réserves mensuel : composition exacte, part de bons du Trésor contre dépôts bancaires contre pensions livrées, maturité. Vérifier ensuite la nature du contrôle, attestation ou audit, et l'identité du cabinet. Examiner le statut réglementaire de l'émetteur, agréé ou non sous le GENIUS Act et sous MiCA. Consulter l'historique de marché, capitalisation, écarts d'ancrage passés, profondeur des remboursements, sur des agrégateurs de données publics. Mesurer la concentration par chaîne, car une part écrasante de l'USDT circule sur une seule d'entre elles. Se méfier enfin de toute promesse de rendement : le GENIUS Act interdit l'intérêt aux porteurs, et un rendement offert par un intermédiaire signale un risque déplacé, non supprimé. Les stablecoins de paiement s'inscrivent par ailleurs dans la nouvelle [économie des intentions](/posts/economie-des-intentions/), où des agents règlent entre eux des micropaiements.
 

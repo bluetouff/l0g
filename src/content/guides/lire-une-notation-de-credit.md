@@ -11,7 +11,7 @@ draft: false
 
 *Une notation de crédit ressemble à une note d'école, et c'est le premier piège. Elle ne dit pas si une obligation est un bon placement, ni si son prix est juste. Elle dit une seule chose, avec une précision volontairement limitée : quelle est la probabilité que l'emprunteur ne rembourse pas. Cette opinion, produite par une poignée d'agences payées par les émetteurs qu'elles notent, gouverne des milliers de milliards d'euros d'allocation réglementée. La comprendre, c'est savoir ce qu'elle mesure, ce qu'elle vaut, et surtout ce qu'elle ne dit pas. Ce guide déroule les échelles, les taux de défaut, le conflit du modèle et la fracture entre note publique et note privée, en prolongement de notre guide sur [les spreads de crédit](/guides/lire-les-spreads-de-credit/).*
 
-## Ce qu'une note mesure, et ce qu'elle n'est pas
+## Le périmètre mesuré par une note de crédit
 
 Une notation de crédit est une opinion sur la capacité et la volonté d'un emprunteur à honorer sa dette, résumée dans un symbole. Elle porte sur le risque de défaut, parfois complété par une estimation de la perte en cas de défaut. Elle n'est ni un prix, ni une recommandation d'achat, ni une garantie. Une obligation notée AAA peut perdre 30 % de sa valeur si les taux montent, sans qu'aucun défaut ne survienne : la note ne dit rien du risque de marché, seulement du risque de crédit.
 
@@ -117,7 +117,7 @@ Ce conflit n'est pas théorique. Il pousse à la surenchère de notes favorables
 <figcaption>Dans le modèle dominant, l'émetteur paie l'agence qui le note. Le conflit est structurel et permanent, ce qui impose de croiser la note avec un signal de marché indépendant. Sources : SEC, GAO.</figcaption>
 </figure>
 
-## Note publique contre note privée : la zone grise
+## Notes publiques et privées : la zone grise
 
 La fracture la plus actuelle n'est pas entre agences, mais entre note publique et note privée. Une note publique est diffusée, suivie, révisée sous le regard du marché. Une note privée, ou « private letter rating », n'est communiquée qu'au souscripteur, souvent pour lui permettre de loger un actif dans une case réglementaire favorable. C'est le ressort des [rated feeder notes](/glossaire/rated-feeder-note/) qui font entrer du crédit privé dans les bilans d'assureurs, décrit dans notre guide sur [la solidité d'un assureur-vie](/guides/lire-la-solidite-d-un-assureur-vie/).
 

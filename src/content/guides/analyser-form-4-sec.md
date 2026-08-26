@@ -49,19 +49,19 @@ Reste un piège majeur du côté des ventes : beaucoup sont décidées des mois 
 
 Or, depuis le **1er avril 2023**, à la suite des amendements adoptés par la SEC le **14 décembre 2022**, les formulaires 4 et 5 comportent une **case à cocher obligatoire** indiquant si la transaction déclarée relève d'un plan 10b5-1, avec la date d'adoption du plan. Ces mêmes amendements ont introduit un délai de carence, en général **90 jours** pour les dirigeants et administrateurs avant la première vente sous un nouveau plan, interdit les plans qui se chevauchent et exigé une certification de bonne foi. Pour le lecteur, le gain est considérable : une vente cochée 10b5-1, adoptée bien avant, peut être écartée comme du bruit programmé. Une vente non cochée, discrétionnaire, mérite plus d'attention.
 
-## Routine contre opportuniste
+## Transactions routinières et opportunistes
 
 La distinction la plus puissante n'est ni dans le code ni dans la case, mais dans le comportement de l'initié dans la durée. Cohen, Malloy et Pomorski, dans une étude de référence publiée au *Journal of Finance* en 2012, séparent les initiés « de routine », qui négocient au même moment chaque année selon un schéma régulier, des initiés « opportunistes », dont les transactions sortent de tout schéma. Leur résultat est net : une fois retirées les transactions de routine, qui représentent plus de la moitié de l'univers, ce sont les transactions opportunistes qui concentrent l'essentiel du pouvoir prédictif. Une stratégie limitée aux seuls initiés opportunistes dégage des rendements anormaux de l'ordre de **82 points de base par mois** en pondération par la capitalisation, là où les transactions de routine n'en produisent pour ainsi dire aucun. Mieux : les transactions opportunistes anticipent les nouvelles et les événements à venir de l'entreprise.
 
 La leçon pratique tient en ceci : une vente régulière, à date fixe, signée d'un cadre qui vend toujours en mars, n'apprend rien. Un achat inhabituel, hors de tout calendrier, d'un dirigeant qui n'achète jamais, est le type de geste à isoler.
 
-## Comment le lire sur EDGAR, pas à pas
+## Méthode de lecture sur EDGAR
 
 Tout est public et gratuit. On recherche la société sur EDGAR, puis on filtre les dépôts sur le type `4`. Chaque dépôt s'ouvre sous une forme lisible et sous sa source XML.
 
 La lecture utile suit quatre réflexes. D'abord, repérer le code : on isole les lignes P et S, on met de côté les A, M et F. Ensuite, vérifier la case 10b5-1 sur les ventes, pour écarter le programmé. Puis lire la fonction du déclarant : un achat du directeur général ou du directeur financier pèse davantage que celui d'un administrateur non exécutif. Enfin, mesurer l'ampleur relative, en rapportant la transaction au nombre de titres détenus après l'opération, et repérer les achats groupés, plusieurs initiés de la même société achetant dans une fenêtre courte, souvent le signal le plus fort.
 
-## Les limites, sans complaisance
+## Les limites de l’analyse
 
 Le Form 4 reste un instrument partiel, et le lire honnêtement suppose d'en connaître les angles morts. Les échantillons sont petits : une seule société, parfois un seul initié, statistiquement fragile. Les ventes sont bruitées par nature, et même filtrées du 10b5-1, elles répondent à des motifs personnels. Les dons et les détentions indirectes brouillent la lecture de qui détient réellement quoi. Un actionnaire à plus de 10 % n'a pas nécessairement la connaissance fine d'un dirigeant opérationnel, si bien que tous les initiés ne se valent pas. Les dépôts tardifs existent encore, malgré le délai de deux jours. Et le tableau des dérivés, options et conversions, exige une lecture technique sous peine de contresens. Un achat isolé ne fait jamais une thèse d'investissement.
 

@@ -1,5 +1,5 @@
 ---
-title: "How to Read SEC Form 4: insider transactions without the noise"
+title: "How to Read SEC Form 4: classify insider transactions"
 description: "A reference guide to SEC Form 4: who files it, when, and how to separate signal from noise. Most insider transactions say little; open-market purchases matter. Transaction codes, the 10b5-1 checkbox, purchases versus sales, and how to read the filing on EDGAR."
 summary: "SEC Form 4 is the insider-transaction report that officers, directors and 10% shareholders must file within two business days after a change in beneficial ownership. It is the freshest public window into insider trading, but most lines are mechanical; the strongest signal is the rare open-market purchase."
 pubDate: 2026-06-21T11:00:00+02:00
@@ -49,7 +49,7 @@ Sales have a decisive filter: Rule **10b5-1**. It lets insiders adopt prearrange
 
 Since **April 1, 2023**, Forms 4 and 5 include a mandatory checkbox indicating whether a transaction was made under a 10b5-1 plan, along with the plan adoption date. The SEC also added cooling-off periods, restrictions on overlapping plans and good-faith certifications. For the reader, this is a major improvement: a sale checked as 10b5-1 and adopted well before the event can often be treated as programmed noise. A discretionary sale deserves more attention.
 
-## Routine versus opportunistic
+## Classifying routine and opportunistic transactions
 
 The strongest filter is behavioral. Cohen, Malloy and Pomorski, in a 2012 *Journal of Finance* study, separate “routine” insiders who trade at the same time every year from “opportunistic” insiders whose trades break their own pattern. The result is sharp: after removing routine trades, opportunistic trades carry most of the predictive power. Routine sales, especially from executives who always sell in March, teach little. An unusual purchase by a CEO or CFO who rarely buys is the signal to isolate.
 

@@ -60,7 +60,7 @@ For decades, the floating leg of swaps was indexed to [LIBOR](/glossaire/libor/)
 
 The shift is not just a change of name. LIBOR embedded a bank-risk premium and existed for several maturities; SOFR is an overnight, secured rate with no credit premium. The whole edifice of swaps had to be rebuilt on this new foundation, and once-common instruments, such as forward rate agreements, have virtually disappeared in the post-LIBOR world. It is one of the largest market overhauls ever undertaken, and it happened almost without a hitch.
 
-## The swap spread: swap versus Treasury
+## The swap spread: swaps and Treasuries
 
 Back to the gap between the swap curve and the government-bond curve. This [swap spread](/glossaire/swap-spread/) is the difference between the swap rate and the Treasury yield of the same maturity. Long positive, it reflected a logical premium: a swap with a bank is deemed slightly riskier than a government bond. Since 2015, however, the long-maturity swap spread has turned negative, an apparent anomaly where the swap rate is below the government yield.
 

@@ -80,7 +80,7 @@ Ce mécanisme, longtemps réservé aux jours d'échéance mensuelle, est devenu 
 
 Sur les indices, cela se traduit par un phénomène d'aimantation : à l'approche de la clôture, le sous-jacent tend à graviter vers les prix d'exercice où la position ouverte est la plus dense, parce que la couverture des dealers y devient stabilisatrice. Ce même effet, inversé, rend les journées d'échéance (les OpEx) plus volatiles, quand la disparition d'un gros bloc d'options change brutalement le positionnement des dealers.
 
-## Vanna, charm et les rallyes sans nouvelles
+## Vanna, charm et les rallyes alimentés par les options
 
 La couverture des dealers ne réagit pas qu'au prix. Elle réagit aussi à deux autres variables, ressort de mouvements en apparence inexplicables. La première est la volatilité : quand la volatilité implicite baisse, la couverture des dealers vendeurs de puts les pousse à acheter le sous-jacent, un flux appelé vanna qui peut nourrir un « rallye vanna », une hausse lente et régulière sans aucune nouvelle. La seconde est le temps qui passe : à mesure que l'échéance approche, l'érosion de la valeur temps (le charm) génère elle aussi des flux de couverture directionnels.
 

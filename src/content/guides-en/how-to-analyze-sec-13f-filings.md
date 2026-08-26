@@ -47,7 +47,7 @@ Finally, compare with the previous quarter. This is the most informative reading
 
 One rigorous reflex: always check the `putCall` field. A row can be a put option, and therefore bearish exposure, while appearing in the value column like any holding. Counting downside protection as a bullish bet is the most common and most expensive reading mistake.
 
-## The limits, without mercy
+## The hard limits
 
 This is where most analysis goes wrong, and where an honest reading adds value. 13F is useful precisely to the extent that you know its blind spots.
 

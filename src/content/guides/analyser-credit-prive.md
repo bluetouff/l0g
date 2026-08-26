@@ -1,5 +1,5 @@
 ---
-title: "Comment lire le crédit privé : un risque qu'on ne voit pas"
+title: "Comment lire le crédit privé : cartographier le risque invisible"
 description: "Guide de référence sur le crédit privé : sa nature, les raisons de son essor, et comment lire un risque sans prix de marché. Valorisation au modèle, intérêts PIK, prêts sur NAV, rachats sous gating : les quatre angles morts, le glossaire des véhicules, et la leçon de la séquence de stress 2025-2026."
 pubDate: 2026-06-21T12:00:00+02:00
 updatedDate: 2026-06-21T12:00:00+02:00
@@ -51,7 +51,7 @@ C'est toutefois du côté de la liquidité que le test a été le plus parlant. 
 
 Il faut toutefois se garder du récit catastrophiste. First Brands et Tricolor étaient surtout financés par des prêts syndiqués et des facilités adossées à des actifs, pas par du crédit privé senior classique. Et les chiffres de pertes restaient contenus : selon l'indice Cliffwater, la dette privée a rendu **9,33 %** sur 2025, pour des pertes réalisées de l'ordre de **0,70 %**, sous la moyenne historique. La crise de 2025-2026 ressemble davantage à un choc de fraude idiosyncratique doublé d'un décalage de liquidité dans les véhicules grand public qu'à un effondrement généralisé du crédit.
 
-## Comment lire le risque, pas à pas
+## Méthode de lecture du risque
 
 La bonne nouvelle, c'est que les BDC, cotées comme non cotées, déposent leurs comptes auprès de la SEC sur [EDGAR](/glossaire/#edgar). On y trouve de quoi documenter chacun des quatre drapeaux rouges.
 

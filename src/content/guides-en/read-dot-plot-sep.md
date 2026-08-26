@@ -1,5 +1,5 @@
 ---
-title: "How to Read the Dot Plot and the SEP: the Fed’s Projections, Without the Misread"
+title: "How to Read the Dot Plot and the SEP: Interpreting the Fed’s Projections"
 description: "A reference guide to the Federal Reserve dot plot and Summary of Economic Projections: what the dots really show, why they are neither a plan nor a forecast but a median of individual views on appropriate policy, how to read the central tendency, the neutral rate and the gap with market pricing. With the June 2026 SEP, the first under Warsh, where the 2026 median flipped from an implied cut to an implied hike."
 summary: "The dot plot is the cluster of rate projections in the Fed’s Summary of Economic Projections, published four times a year. Each FOMC participant marks the policy rate they judge appropriate for each year-end and the longer run. It is not a plan or promise, but a set of anonymous, individual, conditional views that can shift sharply from one quarter to the next."
 pubDate: 2026-07-08T18:00:00+02:00

@@ -71,7 +71,7 @@ Concrètement, un émetteur doit pouvoir exécuter un ordre légal de gel, de sa
 
 Cette bascule prolonge une question déjà posée sur l'infrastructure existante, celle des jetons gelables par leur émetteur sur ordre de l'[OFAC](/guides/ofac-sdn-list/), analysée dans le cas de l'[USDT sur Tron et des péages numériques d'Ormuz](/posts/iran-peages-ormuz-usdt-tron-ofac/). Le GENIUS Act la généralise et l'inscrit dans la loi. Un volet complémentaire d'identification de la clientèle, proposé le 22 juin 2026 par FinCEN avec l'OCC, la Réserve fédérale, la FDIC et la NCUA, ajoutera des obligations de vérification d'identité, avec une entrée en vigueur attendue plus tard, signe que tout le dispositif ne sera pas bouclé en une seule fois.
 
-## Ni titre, ni matière première
+## Le statut fédéral du stablecoin de paiement
 
 Un dernier trait structurant conditionne toute l'architecture. La loi qualifie le stablecoin de paiement conforme comme n'étant ni un titre financier ni une matière première. Ce choix retire de facto la SEC et la CFTC du circuit d'agrément, confié aux régulateurs bancaires. C'est le miroir du débat plus large sur la classification des crypto-actifs américains, que l'on peut suivre à travers le [CLARITY Act et la structure de marché crypto](/posts/clarity-act-regulation-crypto-etats-unis/). En contrepartie de cette clarté, la loi ferme une porte commerciale : un émetteur ne peut verser aucun intérêt ni rendement au porteur au seul titre de la détention du jeton.
 
@@ -111,7 +111,7 @@ Le GENIUS Act impose que la plupart des règles d'application soient prises dans
 <figcaption>La plupart des règles doivent être prises d'ici le <strong>18 juillet 2026</strong>, un an après la promulgation, l'entrée en vigueur intervenant au plus tard le <strong>18 janvier 2027</strong> ou cent vingt jours après les règles finales. Les six agences ont publié leurs projets, commentaires clos vers le 9 juin, mais aucun repli n'est prévu en cas de dépassement. Sources : Chapman and Cutler, tracker GENIUS Act ; Sullivan &amp; Cromwell ; Federal Register.</figcaption>
 </figure>
 
-## Comment lire l'architecture, pas à pas
+## Méthode de lecture de l’architecture
 
 La méthode tient en cinq réflexes. Premièrement, identifier la forme juridique de l'émetteur, car c'est elle, et non sa marque, qui désigne son régulateur. Deuxièmement, situer cet émetteur sur la carte : fédéral non bancaire et étranger relèvent de l'OCC, les filiales bancaires de l'agence de leur maison mère, l'émetteur d'État de son régulateur local sous réserve de certification par le Trésor. Troisièmement, vérifier le statut du texte applicable : un projet de règle n'est pas une règle finale, et les deux se distinguent par leur portée juridique. Quatrièmement, garder en tête la mécanique de la date d'entrée en vigueur, adossée au plus tôt entre janvier 2027 et cent vingt jours après les règles finales. Cinquièmement, ne jamais oublier que les obligations d'anti-blanchiment et de sanctions s'appliquent à tous, quel que soit le régulateur prudentiel.
 

@@ -111,7 +111,7 @@ Le troisième piège est celui de la précision. Le CPI est une estimation tiré
 <figcaption>En mai 2026, le headline atteint <strong>4,2 %</strong> sur un an, tiré par une énergie en hausse de <strong>23,5 %</strong> (essence : <strong>+40,5 %</strong>), pendant que le core reste à <strong>2,9 %</strong>. À elle seule, l'énergie a expliqué plus de <strong>60 %</strong> de la hausse mensuelle de l'indice tous postes. Source : Bureau of Labor Statistics, communiqué du 10 juin 2026.</figcaption>
 </figure>
 
-## CPI contre PCE : pourquoi la Fed regarde un autre indice
+## CPI et PCE : pourquoi la Fed regarde un autre indice
 
 Voici le malentendu le plus coûteux pour qui suit la politique monétaire. La cible d'inflation de **2 %** de la Réserve fédérale ne porte pas sur le CPI, mais sur le PCE, l'indice des prix des dépenses de consommation des ménages calculé par le Bureau of Economic Analysis. La Fed a marqué sa préférence pour le PCE dès 2000 et a inscrit la cible de 2 % en PCE dans son cadre formel en 2012, réaffirmé chaque année depuis.
 

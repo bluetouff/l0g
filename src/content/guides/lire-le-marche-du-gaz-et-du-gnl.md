@@ -11,7 +11,7 @@ draft: false
 
 *Le gaz naturel se lit à l'envers du pétrole. Le pétrole a un prix mondial, à quelques différentiels de qualité près, parce qu'un baril se transporte facilement partout. Le gaz, lui, reste longtemps prisonnier de ses tuyaux : sans gazoduc, il faut le liquéfier pour le déplacer, une opération coûteuse qui fragmente le marché en trois grandes régions aux prix distincts. Comprendre le gaz, c'est d'abord accepter qu'il n'a pas un prix, mais trois, et que l'essentiel se joue dans l'écart entre eux. Ce guide déroule les indices, la chaîne du GNL, les unités, l'arbitrage et les signaux, avec la crise d'Ormuz de 2026 comme fil rouge, en complément de notre [guide du marché pétrolier](/guides/lire-le-marche-petrolier/).*
 
-## Trois indices, pas un prix
+## Trois indices structurent le marché du gaz
 
 Le marché mondial du gaz s'organise autour de trois références. Le [Henry Hub](/glossaire/henry-hub/) est un point de livraison physique en Louisiane, prix directeur du gaz aux États-Unis et socle de la plupart des contrats d'export de GNL américain. Le [TTF](/glossaire/ttf/), Title Transfer Facility, est un point d'échange virtuel néerlandais devenu la référence européenne, coté en euros par mégawattheure. Le [JKM](/glossaire/jkm/), Japan-Korea Marker publié par S&P Global Platts, est l'indice du GNL spot livré en Asie du Nord-Est.
 

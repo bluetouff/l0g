@@ -87,7 +87,7 @@ Plusieurs erreurs reviennent. Confondre stock et flux, d'abord : une M2 élevée
 
 La bonne nouvelle, c'est que toutes les données primaires sont publiques et gratuites. La Fed publie le H.6, la base FRED de la Fed de Saint-Louis donne la M2 corrigée des variations saisonnières, sa version hebdomadaire, sa version réelle et sa vélocité. Pour relier la M2 aux autres robinets de liquidité, notre guide sur le [bilan de la Fed via le H.4.1](/guides/lire-h41-bilan-fed/) et celui sur la [liquidité du Trésor, le compte général et les prises en pension](/guides/liquidite-tresor-dts-tga-rrp/) montrent que la M2 n'est qu'une pièce d'un ensemble plus vaste, où comptent aussi les réserves bancaires et la plomberie du [marché repo](/posts/repo-collateral-fabrique-liquidite/).
 
-## Comment s'en servir sans se tromper
+## Un cadre discipliné pour utiliser la M2
 
 La M2 reste un indicateur utile, à condition de la traiter pour ce qu'elle est : une mesure de stock monétaire dont les variations comptent plus que le niveau, et dont le pouvoir de signal est conditionnel. Trois réflexes valent mieux que la superposition de deux courbes. Regarder la variation sur un an plutôt que le niveau brut, pour distinguer une vraie accélération d'une simple croissance tendancielle. Recouper avec la vélocité et avec la composition, pour savoir si la hausse traduit de l'appétit pour le risque ou un repli vers la sécurité. Et croiser avec les autres mesures de liquidité, réserves, compte du Trésor, conditions financières, plutôt que de tout résumer à un agrégat.
 

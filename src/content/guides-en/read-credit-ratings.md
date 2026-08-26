@@ -13,7 +13,7 @@ draft: false
 
 *A credit rating looks like a school grade, and that is the first trap. It does not say whether a bond is a good investment, nor whether its price is fair. It says one thing, with deliberately limited precision: how likely the borrower is not to repay. This opinion, produced by a handful of agencies paid by the very issuers they rate, governs trillions of regulated allocation. Understanding it means knowing what it measures, what it is worth, and above all what it does not say. This guide lays out the scales, the default rates, the model's conflict and the fracture between public and private ratings, as an extension of our guide on [credit spreads](/en/guides/read-credit-spreads-oas/).*
 
-## What a rating measures, and what it is not
+## The measurement scope of a credit rating
 
 A credit rating is an opinion on a borrower's ability and willingness to service its debt, summed up in a symbol. It bears on default risk, sometimes complemented by an estimate of the loss given default. It is neither a price, nor a buy recommendation, nor a guarantee. A bond rated AAA can lose 30% of its value if rates rise, without any default occurring: the rating says nothing about market risk, only about credit risk.
 
@@ -119,7 +119,7 @@ This conflict is not theoretical. It pushes toward a bias for favourable ratings
 <figcaption>In the dominant model, the issuer pays the agency that rates it. The conflict is structural and permanent, which makes it necessary to cross-check the rating with an independent market signal. Sources: SEC, GAO.</figcaption>
 </figure>
 
-## Public versus private rating: the grey zone
+## Public and private ratings: the grey zone
 
 The most current fracture is not between agencies, but between public and private ratings. A public rating is disseminated, tracked, revised under the market's gaze. A private rating, or "private letter rating", is disclosed only to the subscriber, often to let it fit an asset into a favourable regulatory box. It is the mechanism of the rated feeder notes that bring [private credit](/en/glossary/credit-prive/) onto insurers' balance sheets, described in our guide on [a life insurer's soundness](/en/guides/read-life-insurer-health/).
 

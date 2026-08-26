@@ -45,7 +45,7 @@ La suite a confirmé la limite. Le **21 mars 2025**, l'OFAC a retiré Tornado Ca
 
 Le délistage de Tornado Cash n'est pas un feu vert. Un mélangeur reste un instrument à très haut risque de blanchiment, la responsabilité objective demeure, et le profil de risque d'une opération ne change pas parce qu'une sanction est levée. La frontière tracée par les tribunaux sépare le code des personnes : on peut poursuivre un développeur ou une entité, plus difficilement un logiciel immuable. Les juges eux-mêmes ont suggéré que le Congrès pourrait mettre à jour l'IEEPA pour viser ces technologies, ce qui reste à faire. Tant que ce n'est pas le cas, la portée des sanctions sur la finance décentralisée demeure incertaine.
 
-## Comment lire et vérifier, pas à pas
+## Méthode de lecture et de vérification
 
 Quelques réflexes suffisent. Consulter la source officielle, l'outil de recherche de la liste des sanctions de l'OFAC, plutôt qu'un agrégateur tiers. Ne pas s'arrêter au nom : remonter la chaîne de propriété pour appliquer la règle des 50 %. Pour la crypto, vérifier le statut des adresses concernées, tout en distinguant le statut de sanction du risque de blanchiment, qui peut subsister sans sanction. Garder en tête que la liste évolue vite, désignations comme délistages, d'où l'importance de la dater. Une vérification de sanction protège du risque juridique, elle ne dispense pas de l'analyse du risque réel.
 

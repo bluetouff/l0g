@@ -1,5 +1,5 @@
 ---
-title: "Schedule 13D contre 13G : activisme ou détention passive"
+title: "Schedule 13D et 13G : activisme ou détention passive"
 description: "Guide de référence sur les schedules 13D et 13G de la SEC : le même seuil de 5 % du capital, deux déclarations dont la différence est l'intention. Le 13D trahit une visée d'influence, souvent activiste ; le 13G, un placement passif. Délais accélérés depuis 2024, rubrique de l'intention, doctrine du groupe, lecture sur EDGAR."
 pubDate: 2026-06-21T15:00:00+02:00
 updatedDate: 2026-06-21T15:00:00+02:00
@@ -35,11 +35,11 @@ Dans un 13D, une rubrique concentre l'information : la rubrique 4, « Purpose of
 
 Une subtilité fait trébucher les lecteurs pressés : la notion de groupe. Dès que plusieurs investisseurs agissent de concert pour acquérir ou voter des titres, ils forment un groupe dont les participations s'additionnent au regard du seuil de 5 %. La SEC a précisé qu'un groupe peut se former si un futur déclarant communique intentionnellement son intention de déposer un 13D pour pousser un tiers à acheter, et que ce tiers achète en conséquence. Ces meutes informelles, les « wolf packs », sont au cœur des batailles activistes modernes, et la lecture d'un seul 13D peut masquer une action coordonnée plus large.
 
-## Comment lire sur EDGAR, pas à pas
+## Méthode de lecture sur EDGAR
 
 Tout est public sur [EDGAR](/glossaire/#edgar). On recherche la société ou le déclarant, puis on filtre sur les types `SC 13D` et `SC 13G`, sans oublier les amendements suffixés `/A`. Quelques réflexes ordonnent la lecture. Vérifier d'abord la nature du dépôt : un 13D pèse plus qu'un 13G. Lire la rubrique 4 du 13D pour saisir l'intention. Repérer les bascules d'un 13G vers un 13D, signal d'un passage à l'action. Reconstituer enfin les éventuels groupes en croisant les déclarations déposées sur la même valeur dans une fenêtre rapprochée.
 
-## Les limites, sans complaisance
+## Les limites de l’analyse
 
 Ces déclarations ont des angles morts. Le seuil de 5 % laisse invisibles toutes les positions inférieures, et les participations synthétiques via dérivés ont longtemps échappé à la déclaration, un point que la SEC a précisé sans le clore entièrement. Un détenteur peut rester en 13G tout en approchant d'un seuil de quasi-contrôle. Les délais, bien que raccourcis, laissent une fenêtre d'accumulation discrète. Et la notion de groupe demeure d'interprétation délicate. Une déclaration de franchissement n'est pas une thèse d'investissement, c'est un point de départ d'enquête.
 

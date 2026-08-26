@@ -36,7 +36,7 @@ export const methodologyUpdated = '17 juillet 2026';
 export const methodologyUpdatedIso = '2026-07-17';
 
 export const riskBandScaleCaveat = {
-  title: 'Normalisation d’affichage, pas indice unique',
+  title: 'Une normalisation d’affichage commune',
   summary:
     'Les indicateurs du bandeau utilisent une échelle commune 0-100 pour rendre les signaux lisibles côte à côte. Ils ne mesurent ni le même phénomène, ni la même fréquence, ni le même horizon.',
   correctLabel: 'tableau de bord consolidé de signaux de risque',
@@ -231,7 +231,7 @@ export const methodologyPages: MethodologyPage[] = [
     shortLabel: 'Énergie',
     eyebrow: '// stress énergétique',
     accent: 'amber',
-    title: "Energie Monitor : lire la tension de marché, pas l'actualité brute",
+    title: "Energie Monitor : lire la tension du marché",
     description:
       "Méthodologie de l'Energie Monitor : indice de stress des marchés de l'énergie à partir de pétrole, gaz, électricité, positionnement et contexte EUR/USD.",
     question:

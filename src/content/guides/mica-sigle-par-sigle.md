@@ -37,7 +37,7 @@ C'est la disposition la plus politique de MiCA, et la plus négligée. Pour prot
 
 L'application a été échelonnée par ordre de risque. Les règles sur les stablecoins, EMT et ART, s'appliquent depuis le **30 juin 2024** ; le reste, dont la licence CASP et le règlement sur les transferts de fonds qui porte la « travel rule », depuis le **30 décembre 2024**. Une clause de transition permet aux prestataires déjà actifs sous droit national de continuer, mais elle s'éteint au plus tard le **1er juillet 2026**, avec des échéances variables d'un État à l'autre. Après cette date, fournir un service crypto à des clients européens sans licence MiCA est une infraction au droit de l'Union. Plus de soixante-dix CASP étaient agréés fin 2025 ; la falaise de la mi-2026 va trancher entre les conformes et les autres.
 
-## MiCA contre GENIUS : deux philosophies
+## MiCA et GENIUS : deux philosophies
 
 Les deux grands blocs ont désormais leur cadre, et leur comparaison éclaire. Tous deux interdisent de rémunérer les porteurs de stablecoins. Mais là où le [GENIUS Act américain](/guides/stablecoins-genius-act/) bâtit un régime bancaire favorable à l'expansion du dollar numérique, MiCA hérite de la logique de la monnaie électronique, confie la supervision à l'EBA et à l'ESMA, et surtout plafonne les stablecoins non européens. L'un veut diffuser sa monnaie, l'autre veut se protéger de celle de l'autre. C'est cette asymétrie qui a conduit Circle à obtenir un agrément MiCA pour ses jetons quand Tether ne l'a pas recherché, entraînant des restrictions sur l'USDT en Europe, un épisode que nous avons relié à la question de souveraineté dans notre article sur [MiCA et l'affaire Binance](/posts/binance-mica-lagarde/).
 
@@ -45,7 +45,7 @@ Les deux grands blocs ont désormais leur cadre, et leur comparaison éclaire. T
 
 MiCA n'est pas sans limites. La finance véritablement décentralisée, sans intermédiaire identifiable, échappe pour l'instant au règlement, et la Commission doit encore proposer un régime dédié. L'étiquette « jeton non fongible » ne protège pas si le jeton fonctionne en série interchangeable : il faut une analyse au cas par cas. La période de transition, laissée à l'appréciation de chaque État, crée des écarts de protection et un risque de course au moins-disant entre autorités. Et le chevauchement avec la réglementation des services de paiement complique l'émission d'EMT. Une classification n'est pas une garantie : elle situe un actif dans une grille, elle ne dit rien de la solidité de l'émetteur.
 
-## Comment s'y retrouver, pas à pas
+## Méthode de lecture des sigles
 
 La méthode tient en quelques gestes. Identifier d'abord la catégorie de l'actif : EMT, ART ou autre, car tout en découle. Vérifier ensuite, dans le registre de l'ESMA, que l'émetteur ou le prestataire est bien agréé, et auprès de quelle autorité nationale. Pour un stablecoin, regarder s'il relève de la supervision de l'EBA au titre des jetons significatifs, et s'il respecte les plafonds sur les devises non européennes. Distinguer enfin le statut d'agrément MiCA du risque réel de l'émetteur, que seule l'analyse des réserves révèle, comme pour tout [stablecoin](/glossaire/#stablecoin). Le passeport européen facilite l'accès, il ne remplace pas l'examen au fond.
 

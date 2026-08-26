@@ -1,5 +1,5 @@
 ---
-title: "Lire un 10-K sans se noyer : le rapport annuel de la SEC"
+title: "Lire un 10-K : le rapport annuel de la SEC"
 description: "Guide de référence pour lire un formulaire 10-K : la carte du document, par où commencer vraiment, comment distinguer un facteur de risque réel d'un passe-partout, lire la discussion de la direction et les notes aux comptes, repérer les faiblesses de contrôle. Le document le plus complet sur une société cotée, lu par priorités."
 pubDate: 2026-06-21T16:00:00+02:00
 updatedDate: 2026-06-21T16:00:00+02:00
@@ -25,7 +25,7 @@ Le 10-K s'organise en quatre parties. La première décrit l'entreprise : activi
 
 Surtout, ne pas lire de la première à la dernière page. L'ordre efficace commence par la discussion de la direction, la rubrique 7, où le management raconte les résultats, la liquidité et les tendances connues avec ses propres mots. On passe ensuite aux facteurs de risque, la rubrique 1A, en cherchant ce qui a changé. On termine par les notes de bas de page des comptes, là où se logent les détails que personne ne met en avant. Cet ordre va du récit aux preuves, et non l'inverse.
 
-## Facteurs de risque : le neuf contre le passe-partout
+## Facteurs de risque : repérer les changements substantiels
 
 La rubrique 1A est un piège pour le lecteur naïf, car l'essentiel y est du boilerplate destiné à se protéger juridiquement. La technique consiste à comparer la rubrique d'une année sur l'autre : un risque nouvellement ajouté, ou retiré, ou reformulé, en dit plus que la liste entière. Méfiance, surtout, devant un risque présenté comme purement hypothétique alors qu'il s'est déjà matérialisé : la SEC a sanctionné des sociétés pour avoir décrit au conditionnel des dangers qu'elles savaient réalisés, du laboratoire Mylan, condamné à une pénalité de **30 millions** de dollars, à Yahoo et à SolarWinds sur le volet cybersécurité. Le signal n'est pas la longueur de la liste, c'est ce qui y est spécifique et ce qui a bougé.
 
@@ -41,7 +41,7 @@ Le vrai travail d'analyse est dans les notes annexes aux états financiers, en r
 
 Deux derniers points méritent l'œil. La rubrique 9A traite du contrôle interne sur l'information financière : une faiblesse importante, une « material weakness », y est divulguée, et c'est un drapeau rouge sérieux. Le rapport de l'auditeur, enfin, met en avant les questions clés de l'audit, les points qui ont demandé le plus de jugement, autant d'indications sur les zones de fragilité comptable.
 
-## Comment lire, pas à pas
+## Méthode de lecture
 
 La méthode tient en quelques gestes. Récupérer le 10-K sur EDGAR et son équivalent de l'an passé. Lire d'abord la discussion de la direction, puis comparer les facteurs de risque d'une année sur l'autre pour isoler le neuf. Plonger ensuite dans les notes : segments, parties liées, dette, litiges, continuité d'exploitation. Reconstituer le pont entre résultat ajusté et résultat comptable. Vérifier enfin la rubrique des contrôles et les questions clés de l'audit. Un 10-K ne se lit pas comme un roman, il se sonde comme une mine.
 

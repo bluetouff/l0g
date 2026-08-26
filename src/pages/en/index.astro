@@ -86,8 +86,8 @@ const jsonLd = {
     <div class="en-hero-copy">
       <p class="mono-label glow" style="color: var(--color-signal)">$ open /en</p>
       <h1 class="en-title font-display glow">
-        <span class="title-line">Risk intelligence,</span>
-        <span class="title-line gradient-word">translated</span>
+        <span class="title-line">Risk intelligence,</span>{' '}
+        <span class="title-line gradient-word">translated</span>{' '}
         <span class="title-line">where it matters.</span>
       </h1>
       <p class="en-lede">
@@ -162,7 +162,7 @@ status: readable by humans and agents`}</code></pre>
     <div class="machine-head">
       <div>
         <p class="mono-label glow" style="color: var(--color-signal)">// machine-readable</p>
-        <h2 id="machine-title">Built for agents, not scraped by accident.</h2>
+        <h2 id="machine-title">A structured interface built for agents.</h2>
       </div>
       <a href="/en/mcp/" class="link-term">MCP documentation →</a>
     </div>
@@ -193,7 +193,7 @@ status: readable by humans and agents`}</code></pre>
 
   <section class="en-section final-cta" data-pagefind-ignore>
     <p class="mono-label glow" style="color: var(--color-signal)">// caveat</p>
-    <h2>English is a layer, not a disguise.</h2>
+    <h2>English as a full editorial layer.</h2>
     <p>
       The original journal remains French. The English layer is curated around selected investigations, durable publications, guides, methods, sources and machine-readable surfaces.
     </p>
@@ -250,15 +250,17 @@ status: readable by humans and agents`}</code></pre>
     filter: blur(28px);
     opacity: .72;
   }
-  .en-hero-copy, .en-hero-rail { position: relative; z-index: 1; }
+  .en-hero-copy, .en-hero-rail { position: relative; z-index: 1; min-width: 0; }
   .en-hero-rail { display: grid; align-content: start; gap: 1rem; }
   .en-hero-copy { max-width: 43rem; }
   .en-title {
     margin-top: .75rem;
+    width: 100%;
     max-width: 43rem;
     font-size: clamp(2.1rem, 4.8vw, 3.95rem);
     line-height: .98;
     letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
   }
   .title-line { display: block; }
   .gradient-word {
@@ -489,6 +491,6 @@ status: readable by humans and agents`}</code></pre>
   }
   @media (max-width: 520px) {
     .en-home-hero { padding: 1.05rem; }
-    .en-title { font-size: clamp(2.05rem, 14vw, 3.2rem); }
+    .en-title { font-size: clamp(2rem, 12vw, 3.2rem); }
   }
 </style>

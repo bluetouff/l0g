@@ -13,7 +13,7 @@ draft: false
 
 *Gas reads as the mirror image of oil. Oil has a world price, give or take a few quality differentials, because a barrel travels easily anywhere. Gas stays long a prisoner of its pipes: without a pipeline, it must be liquefied to be moved, a costly operation that fragments the market into three great regions with distinct prices. To understand gas is first to accept that it has no single price, but three, and that the essential plays out in the spread between them. This guide lays out the benchmarks, the LNG chain, the units, the arbitrage and the signals, with the 2026 Hormuz crisis as the thread, alongside our [oil market guide](/en/guides/read-oil-market/).*
 
-## Three benchmarks, not one price
+## Three benchmarks structure the gas market
 
 The world gas market is organised around three references. Henry Hub is a physical delivery point in Louisiana, the benchmark for US gas and the base of most US LNG export contracts. [TTF](/en/glossary/ttf/), the Title Transfer Facility, is a Dutch virtual trading point that has become Europe's reference, quoted in euros per megawatt-hour. JKM, the Japan-Korea Marker published by S&P Global Platts, is the benchmark for spot LNG delivered to Northeast Asia.
 

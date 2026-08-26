@@ -46,7 +46,7 @@ Comment fixe-t-on le taux fixe d'un swap ? À un niveau tel que, au départ, le 
 
 En reliant les taux de swap de toutes les maturités, on obtient la courbe des swaps, un étalon parallèle à celui des emprunts d'État. Les deux courbes se suivent de près, mais l'écart entre elles, on y reviendra, porte une information précieuse. Pour les banques et les entreprises, la courbe des swaps est souvent la référence de tarification la plus directe, car elle reflète le coût de couverture réel plutôt que le rendement d'un titre particulier.
 
-## OIS : le taux sans risque et les paris sur la banque centrale
+## OIS : référence de taux et anticipations de banque centrale
 
 Une famille de swaps mérite une attention spéciale, l'[OIS](/glossaire/ois/), pour Overnight Index Swap. Sa jambe variable n'est pas un taux à trois mois, mais le taux au jour le jour composé sur la période, le SOFR aux États-Unis. Comme ce taux au jour le jour suit de très près le taux directeur de la banque centrale, la cotation d'un OIS révèle directement ce que le marché anticipe de la politique monétaire. Lire la courbe OIS, c'est lire les paris sur les hausses et baisses de taux à venir, réunion de banque centrale par réunion.
 
@@ -58,7 +58,7 @@ Pendant des décennies, la jambe variable des swaps s'indexait sur le [LIBOR](/g
 
 La bascule n'est pas qu'un changement de nom. Le LIBOR incorporait une prime de risque bancaire et existait pour plusieurs maturités ; le SOFR est un taux au jour le jour, garanti, sans prime de crédit. Tout l'édifice des swaps a dû être reconstruit sur cette nouvelle fondation, et des instruments autrefois courants, comme les accords de taux futurs, ont quasiment disparu dans le monde post-LIBOR. C'est l'une des refontes de marché les plus vastes jamais menées, et elle s'est faite presque sans heurt.
 
-## Le swap spread : swap contre Treasury
+## Le swap spread : swaps et Treasuries
 
 Revenons à l'écart entre la courbe des swaps et celle des emprunts d'État. Ce [swap spread](/glossaire/swap-spread/) est la différence entre le taux de swap et le rendement du Treasury de même maturité. Longtemps positif, il traduisait une prime logique : un swap avec une banque est réputé un peu plus risqué qu'un titre d'État. Depuis 2015, pourtant, le swap spread des longues maturités est passé en territoire négatif, une anomalie apparente où le taux de swap est inférieur au rendement de l'État.
 

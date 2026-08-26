@@ -33,7 +33,7 @@ Un dépôt comporte trois blocs : une page de couverture, une page de synthèse,
 
 Le périmètre des titres dits « 13(f) » est défini par une liste officielle que la SEC met à jour chaque trimestre. Elle comprend les actions cotées sur les marchés américains, certaines options et bons de souscription, les parts de certains [ETF](/glossaire/#etf), et certains titres de dette convertible. Point souvent oublié : les parts de fonds ouverts, les fonds communs classiques, ne sont pas des titres 13(f) et n'apparaissent jamais. La liste officielle est le seul arbitre de l'éligibilité, et elle évolue d'un trimestre à l'autre.
 
-## Comment le lire sur EDGAR, pas à pas
+## Méthode de lecture sur EDGAR
 
 Tout est public et gratuit sur [EDGAR](/glossaire/#edgar), la base de la SEC. La marche à suivre tient en quelques étapes.
 
@@ -45,7 +45,7 @@ Enfin, comparer au trimestre précédent. C'est la lecture la plus instructive :
 
 Un réflexe de rigueur, enfin : toujours vérifier le champ `putCall`. Une ligne peut être une option de vente, donc une position baissière, qui apparaît pourtant dans la colonne des valeurs comme n'importe quelle détention. Compter une protection baissière comme un pari haussier est l'erreur de lecture la plus fréquente, et la plus coûteuse.
 
-## Les limites, sans complaisance
+## Les limites de l’analyse
 
 C'est ici que la plupart des analyses dérapent, et c'est ici que se trouve la vraie valeur ajoutée d'une lecture honnête. Le 13F est utile précisément dans la mesure où l'on connaît ses angles morts.
 

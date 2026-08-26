@@ -58,7 +58,7 @@ Le cœur d'un CLO est sa cascade, l'ordre dans lequel l'argent circule. Chaque t
 
 Ces tests vérifient en permanence que la valeur des prêts dépasse suffisamment celle des tranches. Si trop de prêts sont dégradés ou font défaut, un test échoue, et la cascade se reconfigure automatiquement : l'argent qui allait à l'equity est détourné pour rembourser par anticipation la tranche senior, jusqu'à ce que le coussin soit reconstitué. Le gérant du CLO doit aussi respecter des limites, notamment un plafond de prêts notés CCC, souvent autour de 7,5 % du portefeuille. Au-delà, la surcharge en actifs très risqués déclenche elle aussi des mécanismes de protection. Le CLO est donc un véhicule activement géré et doté d'un pare-feu interne, deux traits qui le distinguent d'un simple panier statique.
 
-## CLO n'est pas CDO : la leçon de 2008
+## CLO et CDO : des structures distinctes depuis 2008
 
 C'est la confusion la plus répandue, et il faut la dissiper. Le [CDO](/glossaire/cdo/) qui a fait sauter le système en 2008 partageait la technique du CLO, la titrisation en tranches, mais pas sa matière première. Les CDO de la crise étaient adossés à des crédits hypothécaires subprime, fortement corrélés entre eux : quand l'immobilier américain a baissé, tous les prêts se sont dégradés ensemble, et la diversification n'a rien protégé. Pire, on avait re-titrisé des tranches de CDO dans d'autres CDO, empilant l'opacité et le levier.
 

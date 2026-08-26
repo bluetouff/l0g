@@ -60,7 +60,7 @@ The heart of a CLO is its waterfall, the order in which money flows. Each quarte
 
 These tests continuously check that the value of the loans sufficiently exceeds that of the tranches. If too many loans are downgraded or default, a test fails, and the waterfall reconfigures automatically: money that went to the equity is diverted to prepay the senior tranche, until the cushion is rebuilt. The CLO manager must also respect limits, notably a cap on CCC-rated loans, often around 7.5% of the portfolio. Beyond it, the overload of very risky assets also triggers protective mechanisms. The CLO is therefore an actively managed vehicle with an internal firewall, two traits that set it apart from a static basket.
 
-## A CLO is not a CDO: the lesson of 2008
+## CLO and CDO: structural differences since 2008
 
 This is the most widespread confusion, and it must be dispelled. The [CDO](/glossaire/cdo/) that blew up the system in 2008 shared the CLO's technique, tranched securitization, but not its raw material. The crisis CDOs were backed by subprime mortgages, heavily correlated with one another: when U.S. housing fell, all the loans deteriorated together, and diversification protected nothing. Worse, tranches of CDOs had been re-securitized into other CDOs, piling opacity on leverage.
 

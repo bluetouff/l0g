@@ -24,7 +24,7 @@ const jsonLd = {
   </section>
   <nav class="tools-jump" aria-label="Quick access to tools">{analysisTools.map((tool, index) => <a href={tool.en.href}><span>{String(index + 1).padStart(2, '0')}</span>{tool.en.title}</a>)}</nav>
   <section class="tools-grid" aria-label="l0g analysis tools" data-pagefind-body>{analysisTools.map((tool, index) => <AnalysisToolCard tool={tool} lang="en" index={index} featured={index < 2} />)}</section>
-  <aside class="tools-contract" data-pagefind-ignore><div><p class="mono-label">// reading contract</p><h2>A scenario is not a forecast.</h2></div><p>Observed data stay separate from illustrative inputs. Units, formulas, sources and limitations are public. Inconsistent configurations are flagged. Every calculation stays in your browser.</p></aside>
+  <aside class="tools-contract" data-pagefind-ignore><div><p class="mono-label">// reading contract</p><h2>Scenarios test conditional outcomes.</h2></div><p>Observed data stay separate from illustrative inputs. Units, formulas, sources and limitations are public. Inconsistent configurations are flagged. Every calculation stays in your browser.</p></aside>
 </EnglishGuidesLayout>
 
 <style>

@@ -13,7 +13,7 @@ draft: false
 
 *No macro number moves markets faster than the U.S. CPI, and few are read so badly. A headline says “inflation is at X,” futures jump, and the actual information sits three layers deeper, in a component almost nobody checked. This guide explains what the Bureau of Labor Statistics actually measures, how the index is built, and how to move from the headline to the signal. The May 2026 release is the running example: it bundles almost every reading trap into one print.*
 
-## What CPI measures, and what it does not measure
+## The measurement scope of CPI
 
 The Consumer Price Index is a price index published every month by the Bureau of Labor Statistics. It measures the average change over time in the prices of a fixed basket of goods and services bought by households. Prices are collected monthly in **75** urban areas, from roughly **6,000** housing units for rent measures and **22,000** retail establishments for the rest, through visits, phone calls, websites and apps. The reference base is 1982–1984 = 100: an index level of 335 means the basket costs 3.35 times what it did in that base period.
 
@@ -113,7 +113,7 @@ The third trap is precision. CPI is an estimate from a sample, not a census of e
 <figcaption>In May 2026, headline CPI reached <strong>4.2%</strong> year over year, driven by energy up <strong>23.5%</strong> and gasoline up <strong>40.5%</strong>, while core stayed at <strong>2.9%</strong>. Energy alone explained more than <strong>60%</strong> of the monthly all-items increase. Source: Bureau of Labor Statistics, June 10, 2026 release.</figcaption>
 </figure>
 
-## CPI versus PCE: why the Fed watches another index
+## CPI and PCE: why the Fed watches another index
 
 This is the costliest misunderstanding for anyone following monetary policy. The Federal Reserve’s **2%** inflation target is not CPI. It is PCE, the price index for personal consumption expenditures calculated by the Bureau of Economic Analysis. The Fed signaled its preference for PCE in 2000 and embedded the 2% PCE target in its formal framework in 2012, reaffirmed every year since.
 

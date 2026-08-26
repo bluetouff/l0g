@@ -1,5 +1,5 @@
 ---
-title: "Schedule 13D vs 13G: activism or passive ownership"
+title: "Schedule 13D and 13G: activism or passive ownership"
 description: "A reference guide to SEC Schedules 13D and 13G: the same 5% ownership threshold, two disclosures whose real difference is intent. Schedule 13D signals influence, often activism; Schedule 13G signals passive ownership. Accelerated deadlines since 2024, the purpose-of-transaction item, group doctrine, and how to read the filings on EDGAR."
 summary: "Schedules 13D and 13G are SEC beneficial-ownership disclosures triggered when a person or group crosses 5% of a U.S.-listed company's equity class. Schedule 13D signals an intent to influence or control; Schedule 13G is the shorter passive-owner form. The difference is intent."
 pubDate: 2026-06-21T15:00:00+02:00
