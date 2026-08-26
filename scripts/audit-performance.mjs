@@ -268,7 +268,13 @@ assert(riskPosition < needsPosition, 'home: signaux absents ou placés après le
 for (const key of ['us', 'eu', 'yen', 'energie', 'debt']) {
   const tile = homeText.match(new RegExp(`<article[^>]*data-risk="${key}"[^>]*>([\\s\\S]*?)</article>`))?.[1] ?? '';
   assert(Boolean(tile), `home: carte risque ${key} absente`);
-  assert(/data-value[^>]*>\s*\d+(?:[.,]\d+)?\s*</.test(tile), `home: valeur statique ${key} absente`);
+  const hasNumericValue = /data-value[^>]*>\s*\d+(?:[.,]\d+)?\s*</.test(tile);
+  const failsClosed = /data-value[^>]*>\s*—\s*</.test(tile)
+    && /data-level[^>]*>\s*INDISPONIBLE\s*</.test(tile);
+  assert(
+    hasNumericValue || failsClosed,
+    `home: ${key} doit exposer une valeur statique ou un état INDISPONIBLE explicite`,
+  );
   assert(/data-status[^>]*>\s*[^<\s][^<]*</.test(tile), `home: statut statique ${key} absent`);
   assert(
     /class="risk-tile-main risk-dashboard-link"[^>]*target="_blank"/.test(tile),

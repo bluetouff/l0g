@@ -130,6 +130,9 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.match(nowPage, /filter\(\(signal\) => !isRiskSignalUnavailable\(signal\)\)/);
   assert.match(nowPage, /unavailable \? 'INDISPONIBLE'/);
   assert.match(topicPage, /unavailable \? 'INDISPONIBLE'/);
+  const performanceAudit = await readFile(new URL('scripts/audit-performance.mjs', root), 'utf8');
+  assert.ok(performanceAudit.includes('hasNumericValue || failsClosed'));
+  assert.ok(performanceAudit.includes('INDISPONIBLE explicite'));
   assert.ok(
     home.indexOf('<section class="home-featured"') < home.indexOf('<section class="home-risk"'),
     'l’analyse vedette doit précéder les signaux',
