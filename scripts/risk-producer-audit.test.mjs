@@ -54,7 +54,7 @@ function fixture() {
     },
     rawLast: { snapshot: '2026-07-18T09:52:00Z', debt: 54 },
     canonicalHistory: { coverage: { observations: 200, instruments: ['us', 'eu', 'yen', 'energie', 'debt'], operationalImport: { status: 'ok' } } },
-    currentSignals: { version: '2', generated: now, coverage: { currentObservations: 5 }, current },
+    currentSignals: { version: '2', generated: now, coverage: { currentObservations: 0, instruments: ['us', 'eu', 'yen', 'energie', 'debt'] }, current },
   };
 }
 

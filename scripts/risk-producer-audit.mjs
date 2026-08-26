@@ -147,8 +147,12 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
 
   const currentSignals = input.currentSignals || {};
   if (String(currentSignals.version) !== '2') errors.push('signaux courants: contrat v2 absent');
-  if (currentSignals.coverage?.currentObservations !== SIGNALS.length) {
-    errors.push(`signaux courants: couverture ${currentSignals.coverage?.currentObservations ?? 'absente'} != ${SIGNALS.length}`);
+  const currentKeys = Object.keys(currentSignals.current || {}).filter((key) => SIGNALS.includes(key));
+  if (currentKeys.length !== SIGNALS.length) {
+    errors.push(`signaux courants: ${currentKeys.length} instruments exposés != ${SIGNALS.length}`);
+  }
+  if (!SIGNALS.every((key) => currentSignals.coverage?.instruments?.includes(key))) {
+    errors.push('signaux courants: couverture incomplète des cinq instruments');
   }
   for (const key of SIGNALS) {
     const item = currentSignals.current?.[key];
