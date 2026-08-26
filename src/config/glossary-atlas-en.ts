@@ -1214,6 +1214,31 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'cet1',
+    sigle: 'CET1',
+    nom: 'Common Equity Tier 1 capital ratio',
+    def: 'A bank solvency ratio that compares its highest-quality loss-absorbing capital with risk-weighted assets. It shows the capital buffer available against unexpected losses, not the absence of credit losses or liquidity risk.',
+    guide: '/en/guides/read-bank-health/',
+    ...privateCreditSection,
+    atlas: {
+      intuition: 'A bank can record loan losses and still have a high CET1 ratio when earnings, provisions and capital absorb them. The ratio says how much hard capital remains relative to measured risk.',
+      formula: 'CET1 ratio = CET1 capital / risk-weighted assets',
+      whyNow: 'France can report rising business failures while its largest banking groups retain a 15.6% aggregate CET1 ratio because case counts and bank capital use different denominators.',
+      articles: [
+        { label: 'Where do the losses from 70,803 French business failures go?', href: '/en/analysis/france-business-failures-who-absorbs-losses/', detail: 'Firm size, recoveries, guarantees and the final creditor.', kind: 'article' },
+        { label: 'Held to maturity', href: '/en/analysis/held-to-maturity/', detail: 'Unrealised securities losses and the limits of regulatory capital.', kind: 'article' },
+      ],
+      guides: [
+        { label: 'Reading bank health', href: '/en/guides/read-bank-health/', detail: 'Capital, liquidity, asset quality and earnings.', kind: 'guide' },
+        { label: 'Reading bank stress tests', href: '/en/guides/read-bank-stress-tests/', detail: 'Projected losses, revenue and capital under severe scenarios.', kind: 'guide' },
+      ],
+      sources: [
+        { label: 'Basel Committee on Banking Supervision', href: 'https://www.bis.org/bcbs/basel3.htm', detail: 'International definitions and minimum capital framework.', kind: 'source' },
+        { label: 'European Banking Authority', href: 'https://www.eba.europa.eu/risk-and-data-analysis/risk-analysis/risk-monitoring/risk-dashboard', detail: 'Comparable European bank capital and asset-quality indicators.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'ofac',
     sigle: 'OFAC',
     nom: 'Office of Foreign Assets Control',
