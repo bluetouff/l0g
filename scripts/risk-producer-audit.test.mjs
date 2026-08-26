@@ -22,6 +22,14 @@ const indices = ['us', 'eu', 'yen', 'energie', 'debt'].map((key) => ({
 }));
 
 function fixture() {
+  const current = Object.fromEntries(indices.map((item) => [item.key, {
+    instrument: item.key,
+    value: item.value,
+    observedAt: item.observedAt,
+    backtestUsable: true,
+    sourceStatus: item.sourceStatus,
+    qualityStatus: item.qualityStatus,
+  }]));
   return {
     aggregate: { version: '2', status: 'degraded', generated: now, software: { revision: 'abc123', revisionStatus: 'reported', sourceSha256: 'a'.repeat(64) }, indices: indices.map((item) => ({ ...item })) },
     eu: { generated_at: generated.eu, global_score: 41.2 },
@@ -46,6 +54,7 @@ function fixture() {
     },
     rawLast: { snapshot: '2026-07-18T09:52:00Z', debt: 54 },
     canonicalHistory: { coverage: { observations: 200, instruments: ['us', 'eu', 'yen', 'energie', 'debt'], operationalImport: { status: 'ok' } } },
+    currentSignals: { version: '2', generated: now, coverage: { currentObservations: 5 }, current },
   };
 }
 
@@ -69,6 +78,18 @@ test('une date économique absente fait échouer le moniteur', () => {
   const report = auditRiskFlow(input, now);
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.includes('us: observedAt absent')));
+});
+
+test('la surface courante ne peut plus perdre observedAt silencieusement', () => {
+  const input = fixture();
+  input.currentSignals.current.eu.observedAt = null;
+  input.currentSignals.current.eu.backtestUsable = false;
+  input.currentSignals.current.eu.sourceStatus = 'fallback';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('signaux courants: eu observedAt absent')));
+  assert.ok(report.errors.some((error) => error.includes('signaux courants: eu non exploitable')));
+  assert.ok(report.errors.some((error) => error.includes('signaux courants: eu encore en fallback')));
 });
 
 test('une publication inchangée reste saine après un contrôle producteur récent', () => {

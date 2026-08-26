@@ -145,6 +145,22 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     errors.push('journal brut: colonne debt absente du dernier snapshot');
   }
 
+  const currentSignals = input.currentSignals || {};
+  if (String(currentSignals.version) !== '2') errors.push('signaux courants: contrat v2 absent');
+  if (currentSignals.coverage?.currentObservations !== SIGNALS.length) {
+    errors.push(`signaux courants: couverture ${currentSignals.coverage?.currentObservations ?? 'absente'} != ${SIGNALS.length}`);
+  }
+  for (const key of SIGNALS) {
+    const item = currentSignals.current?.[key];
+    if (!item) {
+      errors.push(`signaux courants: ${key} absent`);
+      continue;
+    }
+    if (!iso(item.observedAt)) errors.push(`signaux courants: ${key} observedAt absent/invalide`);
+    if (item.backtestUsable !== true) errors.push(`signaux courants: ${key} non exploitable pour backtest`);
+    if (item.sourceStatus === 'fallback') errors.push(`signaux courants: ${key} encore en fallback`);
+  }
+
   return {
     checkedAt: now,
     ok: errors.length === 0,
@@ -156,6 +172,7 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
       aggregateGenerated: aggregate.generated || aggregate.updated || null,
       rawHistoryLast: input.rawLast?.snapshot || null,
       canonicalObservations: input.canonicalHistory?.coverage?.observations || 0,
+      currentSignalsGenerated: currentSignals.generated || null,
       confluenceStatus: confluence.sourceStatus || null,
       confluenceRetrievedAt: confluence.lastSuccessAt || null,
       confluenceItems: confluenceItems.length,
@@ -182,6 +199,7 @@ export function renderRiskAuditMarkdown(report) {
     ['Génération agrégée', summary.aggregateGenerated || 'n/d'],
     ['Dernière ligne brute', summary.rawHistoryLast || 'n/d'],
     ['Observations fusionnées', summary.canonicalObservations ?? 0],
+    ['Signaux courants générés', summary.currentSignalsGenerated || 'n/d'],
     ['Confluence', `${summary.confluenceItems ?? 0} lignes · ${summary.confluenceStatus || 'n/d'}`],
     ['Dernière récupération Confluence', summary.confluenceRetrievedAt || 'n/d'],
   ];
