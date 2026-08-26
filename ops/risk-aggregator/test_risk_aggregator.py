@@ -17,6 +17,11 @@ RISK = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader
 SPEC.loader.exec_module(RISK)
 
+API_SPEC = importlib.util.spec_from_file_location("risk_api_build", ROOT / "api-build.py")
+API_BUILD = importlib.util.module_from_spec(API_SPEC)
+assert API_SPEC.loader
+API_SPEC.loader.exec_module(API_BUILD)
+
 
 def item(key, value, source_updated="2026-07-18T08:00:00Z"):
     return RISK.quality_fields(
@@ -29,6 +34,44 @@ def item(key, value, source_updated="2026-07-18T08:00:00Z"):
 
 
 class AggregatorContractTest(unittest.TestCase):
+    def test_public_api_carries_health_contracts_instead_of_presence_only(self):
+        risk = {
+            "generated": "2026-08-26T18:00:00Z",
+            "status": "ok",
+            "summary": {"expected": 5, "present": 5},
+            "indices": [
+                {
+                    "key": "us",
+                    "value": 30,
+                    "observedAt": "2026-08-25T00:00:00Z",
+                    "sourceStatus": "ok",
+                }
+            ],
+        }
+        confluence = {
+            "generated": "2026-08-26T18:00:00Z",
+            "updated": "2026-08-26T18:00:00Z",
+            "retrievedAt": "2026-08-26T18:00:00Z",
+            "lastAttemptAt": "2026-08-26T18:00:00Z",
+            "lastSuccessAt": "2026-08-26T18:00:00Z",
+            "sourceStatus": "ok",
+            "qualityStatus": "limited",
+            "fallbackUsed": False,
+            "fallbackReason": None,
+            "staleAfter": "PT26H",
+            "ageSeconds": 0,
+            "timelinessStatus": "fresh",
+            "provenanceStatus": "partial",
+            "freshness": {"edgarRefreshVerified": False},
+            "items": [{"ticker": "TEST", "score": 70, "quadrant": "conviction"}],
+            "note": "récupération l0g distincte de la publication EDGAR",
+        }
+        payload = API_BUILD.build_api_json(risk, confluence)
+        self.assertEqual(payload["staleAfter"], "PT30M")
+        self.assertEqual(payload["indices"]["us"]["observedAt"], "2026-08-25T00:00:00Z")
+        self.assertEqual(payload["confluence"]["provenanceStatus"], "partial")
+        self.assertFalse(payload["confluence"]["freshness"]["edgarRefreshVerified"])
+
     def test_us_normalization_keeps_methodology_anchors(self):
         self.assertEqual(RISK._us_zscore_to_100(0.0), 30)
         self.assertEqual(RISK._us_zscore_to_100(0.04), 31)
@@ -36,7 +79,11 @@ class AggregatorContractTest(unittest.TestCase):
         self.assertEqual(RISK._us_zscore_to_100(2.5), 75)
 
     def test_us_index_exposes_native_zscore_before_normalization(self):
-        result = SimpleNamespace(returncode=0, stdout="0.04\n", stderr="")
+        result = SimpleNamespace(
+            returncode=0,
+            stdout='{"score": 0.04, "oldest": "2026-04-01", "newest": "2026-08-01"}\n',
+            stderr="",
+        )
         with (
             patch.object(RISK.subprocess, "run", return_value=result),
             patch.object(RISK.os.path, "getmtime", return_value=1_785_728_197),
@@ -48,6 +95,9 @@ class AggregatorContractTest(unittest.TestCase):
         self.assertEqual(current["rawValue"], 0.04)
         self.assertEqual(current["value"], 31)
         self.assertEqual(current["sourceStatus"], "ok")
+        self.assertEqual(current["observedAt"], "2026-08-01T00:00:00Z")
+        self.assertEqual(current["observationWindow"]["oldest"], "2026-04-01T00:00:00Z")
+        self.assertEqual(current["observationTimePrecision"], "date")
 
     def test_euro_revision_matches_the_public_snapshot(self):
         revision = "f" * 40
@@ -56,6 +106,9 @@ class AggregatorContractTest(unittest.TestCase):
             "source_sha": revision,
             "global_score": 41.4,
             "regime": {"label": "Expansion", "color": "#00a878"},
+            "families": [
+                {"key": "stress", "indicators": [{"code": "CISS", "as_of": "2026-08-01"}]}
+            ],
         }
         with (
             patch.object(RISK, "fetch_json", return_value=snapshot),
@@ -67,6 +120,7 @@ class AggregatorContractTest(unittest.TestCase):
             )
         self.assertEqual(current["sourceRevision"], revision)
         self.assertEqual(current["producerRevision"], revision)
+        self.assertEqual(current["observedAt"], "2026-08-01T00:00:00Z")
 
     def test_euro_revision_drift_fails_closed(self):
         snapshot = {
@@ -170,6 +224,7 @@ class AggregatorContractTest(unittest.TestCase):
             "indices": [item("us", 42), item("eu", 41), item("yen", 39), item("energie", 43), item("debt", 54)],
         }
         for current in payload["indices"]:
+            current["observedAt"] = "2026-07-17T00:00:00Z"
             current["producerRevision"] = f"{current['key']}-revision"
             current["producerRevisionStatus"] = "reported"
             current["sourceRevision"] = f"{current['key']}-source-revision"
@@ -180,12 +235,14 @@ class AggregatorContractTest(unittest.TestCase):
             self.assertEqual(row["debt"], 54)
             self.assertEqual(row["energie_source_status"], "ok")
             self.assertIn("debt_source_updated_at", row)
+            self.assertEqual(row["us_observed_at"], "2026-07-17T00:00:00Z")
             self.assertEqual(row["us_producer_repository"], "https://github.com/bluetouff/macro_dashboard")
             self.assertEqual(row["us_producer_revision"], "us-revision")
             self.assertEqual(row["us_producer_revision_status"], "reported")
             self.assertEqual(row["us_source_revision"], "us-source-revision")
             manifest = json.loads((pathlib.Path(directory) / "index.json").read_text())
-            self.assertEqual(manifest["schema"], "3")
+            self.assertEqual(manifest["schema"], "4")
+            self.assertIn("us_observed_at", manifest["columns"])
             self.assertIn("us_producer_revision", manifest["columns"])
 
     def test_energy_eia_daily_fallback_is_visible(self):
@@ -210,7 +267,57 @@ class AggregatorContractTest(unittest.TestCase):
         self.assertTrue(current["fallbackUsed"])
         self.assertEqual(current["fallbackLayer"], "producer")
         self.assertEqual(current["componentDates"]["brent"], "2026-07-13")
+        self.assertEqual(current["observedAt"], "2026-07-13T00:00:00Z")
         self.assertIn("OilPriceAPI HTTP 402", current["warnings"])
+
+    def test_confluence_contract_distinguishes_retrieval_from_edgar_freshness(self):
+        upstream = {
+            "metadata": {
+                "served_from_cache": True,
+                "cache_institutional_enrichment": {"report_date": "2026-06-30"},
+            },
+            "signals": [
+                {
+                    "ticker": "TEST",
+                    "score": 71.2,
+                    "quadrant": "conviction",
+                    "institutional": {"funds_accumulating": 4},
+                    "insider": {"buyers": []},
+                }
+            ],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            output = pathlib.Path(directory) / "confluence.json"
+            with patch.object(RISK, "fetch_json", return_value=upstream):
+                payload = RISK.build_confluence(
+                    {}, attempt_at="2026-08-26T18:00:00Z", output=str(output)
+                )
+            self.assertEqual(payload["version"], "2")
+            self.assertEqual(payload["retrievedAt"], "2026-08-26T18:00:00Z")
+            self.assertEqual(payload["freshness"]["institutionalReportDate"], "2026-06-30")
+            self.assertFalse(payload["freshness"]["edgarRefreshVerified"])
+            self.assertEqual(payload["provenanceStatus"], "partial")
+            self.assertEqual(json.loads(output.read_text())["items"][0]["ticker"], "TEST")
+
+    def test_confluence_failure_preserves_health_but_removes_old_rows(self):
+        previous = {
+            "version": "2",
+            "lastSuccessAt": "2026-08-26T16:00:00Z",
+            "retrievedAt": "2026-08-26T16:00:00Z",
+            "freshness": {"edgarRefreshVerified": False},
+            "items": [{"ticker": "TEST", "score": 70}],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            output = pathlib.Path(directory) / "confluence.json"
+            with patch.object(RISK, "fetch_json", side_effect=RuntimeError("HTTP 503 token=secret")):
+                payload = RISK.build_confluence(
+                    previous, attempt_at="2026-08-26T18:00:00Z", output=str(output)
+                )
+            self.assertEqual(payload["sourceStatus"], "fallback")
+            self.assertEqual(payload["lastSuccessAt"], "2026-08-26T16:00:00Z")
+            self.assertEqual(payload["items"], [])
+            self.assertEqual(payload["lastKnownCount"], 1)
+            self.assertNotIn("secret", payload["fallbackReason"])
 
 
 if __name__ == "__main__":

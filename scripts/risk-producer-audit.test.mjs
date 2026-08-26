@@ -12,6 +12,7 @@ const indices = ['us', 'eu', 'yen', 'energie', 'debt'].map((key) => ({
   fallbackUsed: key === 'energie',
   fallbackLayer: key === 'energie' ? 'producer' : null,
   sourceUpdatedAt: generated[key] || '2026-07-18T08:00:00Z',
+  observedAt: '2026-07-17T00:00:00Z',
   lastAttemptAt: '2026-07-18T10:00:00Z',
   lastSuccessAt: '2026-07-18T10:00:00Z',
   timelinessStatus: 'fresh',
@@ -27,6 +28,22 @@ function fixture() {
     yen: { generated: generated.yen },
     energy: { generated: generated.energie, composite: { score: 42.1 }, series: { brent: { label: 'Brent', date: '2026-07-13', tip_source: 'eia' }, wti: { label: 'WTI', date: '2026-07-13', tip_source: 'eia' } } },
     debt: { generated_at: generated.debt, score: { current_stress: 54.2 } },
+    confluence: {
+      version: '2',
+      updated: '2026-07-18T09:55:00Z',
+      retrievedAt: '2026-07-18T09:55:00Z',
+      lastAttemptAt: '2026-07-18T09:55:00Z',
+      lastSuccessAt: '2026-07-18T09:55:00Z',
+      sourceStatus: 'ok',
+      qualityStatus: 'limited',
+      fallbackUsed: false,
+      freshness: {
+        institutionalReportDate: '2026-06-30',
+        upstreamServedFromCache: true,
+        edgarRefreshVerified: false,
+      },
+      items: [{ ticker: 'TEST', score: 70, quadrant: 'conviction' }],
+    },
     rawLast: { snapshot: '2026-07-18T09:52:00Z', debt: 54 },
     canonicalHistory: { coverage: { observations: 200, instruments: ['us', 'eu', 'yen', 'energie', 'debt'], operationalImport: { status: 'ok' } } },
   };
@@ -44,6 +61,14 @@ test('un ancien score conservé par l’agrégateur fait échouer le moniteur', 
   const report = auditRiskFlow(input, now);
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.includes('repli agrégateur actif')));
+});
+
+test('une date économique absente fait échouer le moniteur', () => {
+  const input = fixture();
+  delete input.aggregate.indices[0].observedAt;
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('us: observedAt absent')));
 });
 
 test('une publication inchangée reste saine après un contrôle producteur récent', () => {
@@ -143,4 +168,23 @@ test('une qualité dégradée reste verte mais sa cause remonte dans GitHub', ()
   const report = auditRiskFlow(input, now);
   assert.equal(report.ok, true);
   assert.ok(report.warnings.some((warning) => warning.includes('WTI EIA quotidien différé')));
+});
+
+test('la provenance EDGAR partielle reste visible sans simuler une panne', () => {
+  const report = auditRiskFlow(fixture(), now);
+  assert.equal(report.ok, true);
+  assert.ok(report.warnings.some((warning) => warning.includes('fraîcheur EDGAR amont non attestée')));
+  assert.ok(report.warnings.some((warning) => warning.includes('servie depuis son cache')));
+});
+
+test('un repli ou une récupération Confluence trop ancienne fait échouer le moniteur', () => {
+  const input = fixture();
+  input.confluence.sourceStatus = 'fallback';
+  input.confluence.fallbackUsed = true;
+  input.confluence.fallbackReason = 'HTTP 503';
+  input.confluence.lastSuccessAt = '2026-07-18T08:30:00Z';
+  const report = auditRiskFlow(input, now);
+  assert.equal(report.ok, false);
+  assert.ok(report.errors.some((error) => error.includes('confluence: repli actif')));
+  assert.ok(report.errors.some((error) => error.includes('dernière récupération trop ancienne')));
 });

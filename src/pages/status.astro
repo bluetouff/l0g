@@ -1,6 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { serializeInlineScriptData } from '../lib/security.ts';
@@ -9,27 +8,12 @@ import TrustBar from '../components/TrustBar.astro';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const buildTime = new Date();
 
-const posts = await getCollection('posts', ({ data }) => !data.draft);
-const guides = await getCollection('guides', ({ data }) => !data.draft);
-
 function readJSON<T>(rel: string, fallback: T): T {
   try {
     return JSON.parse(readFileSync(join(process.cwd(), rel), 'utf-8')) as T;
   } catch {
     return fallback;
   }
-}
-
-function fileStatus(rel: string) {
-  const abs = join(process.cwd(), rel);
-  if (!existsSync(abs)) return { rel, ok: false, size: null, updated: null };
-  const st = statSync(abs);
-  return {
-    rel,
-    ok: true,
-    size: st.size,
-    updated: st.mtime,
-  };
 }
 
 function iso(value?: string | Date | null) {
@@ -53,35 +37,12 @@ function fr(value?: string | Date | null) {
   });
 }
 
-function bytes(n: number | null) {
-  if (n == null) return 'n/a';
-  if (n < 1024) return `${n} o`;
-  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} Ko`;
-  return `${(n / 1024 / 1024).toFixed(1)} Mo`;
-}
-
-const risk = readJSON<{ updated?: string; indices?: Array<{ key: string; value: number; level: string; tone: string }> }>(
-  'public/risk.json',
-  { indices: [] }
-);
-const confluence = readJSON<{ updated?: string; items?: Array<{ ticker: string; score: number; quadrant: string }> }>(
-  'public/confluence.json',
-  { items: [] }
-);
-const events = readJSON<{ updated?: string; events?: unknown[] }>('public/risk-events.json', { events: [] });
 const lock = readJSON<{ packages?: Record<string, { version?: string }> }>('package-lock.json', { packages: {} });
 const astroVersion = lock.packages?.['node_modules/astro']?.version ?? 'n/a';
 
-const artifacts = [
-  fileStatus('public/risk.json'),
-  fileStatus('public/confluence.json'),
-  fileStatus('public/risk-events.json'),
-  fileStatus('public/og-default.png'),
-  fileStatus('public/og-status.png'),
-];
-
 const endpoints = [
-  { href: '/api/v1/risk.json', label: 'risk.json', type: 'JSON', role: 'signaux normalisés par instrument' },
+  { href: '/api/v1/risk.json', label: 'risk.json', type: 'JSON', role: 'agrégat vivant de cinq signaux' },
+  { href: '/api/v1/freshness.json', label: 'freshness.json', type: 'JSON', role: 'fraîcheur et compteurs du build publié' },
   { href: '/api/v1/catalog.json', label: 'catalog.json', type: 'JSON', role: 'catalogue articles, guides, méthodes' },
   { href: '/api/v1/risk.xml', label: 'risk.xml', type: 'Atom', role: 'changements de niveau' },
   { href: '/llms.txt', label: 'llms.txt', type: 'TXT', role: 'carte agents IA' },
@@ -100,10 +61,6 @@ const trustItems = [
 const checks = [
   { label: 'Build', value: 'OK', detail: `généré le ${fr(buildTime)}`, tone: 'ok' },
   { label: 'Astro', value: astroVersion, detail: 'version lockfile', tone: 'ok' },
-  { label: 'Articles', value: String(posts.length), detail: 'analyses publiées', tone: 'ok' },
-  { label: 'Guides', value: String(guides.length), detail: 'références maintenues', tone: 'ok' },
-  { label: 'Risk snapshot', value: risk.updated ? 'présent' : 'absent', detail: fr(risk.updated), tone: risk.updated ? 'ok' : 'warn' },
-  { label: 'Confluence', value: `${confluence.items?.length ?? 0} lignes`, detail: fr(confluence.updated), tone: confluence.items?.length ? 'ok' : 'warn' },
 ];
 
 const jsonLd = {
@@ -157,40 +114,37 @@ const jsonLd = {
       </div>
     </section>
 
-    <section class="status-section split">
-      <div>
-        <p class="mono-label glow">// snapshots publics</p>
-        <div class="artifact-list">
-          {artifacts.map((file) => (
-            <div class="artifact">
-              <span class={`dot ${file.ok ? 'ok' : 'warn'}`} aria-hidden="true"></span>
-              <code>{file.rel.replace('public/', '/')}</code>
-              <span>{file.ok ? bytes(file.size) : 'absent'}</span>
-              <time datetime={file.updated ? iso(file.updated) : undefined}>{file.updated ? fr(file.updated) : 'n/a'}</time>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <p class="mono-label glow">// dernier signal</p>
-        <div class="signal-card">
-          <div>
-            <span>risk.json</span>
-            <strong>{risk.indices?.length ?? 0} indices</strong>
-            <em>{fr(risk.updated)}</em>
-          </div>
-          <div>
-            <span>risk-events</span>
-            <strong>{events.events?.length ?? 0} événement(s)</strong>
-            <em>{fr(events.updated)}</em>
-          </div>
-          <div>
-            <span>confluence</span>
-            <strong>{confluence.items?.[0]?.ticker ?? 'n/a'}</strong>
-            <em>{confluence.items?.[0] ? `top score ${confluence.items[0].score}` : 'aucune ligne'}</em>
-          </div>
-        </div>
+    <section class="status-section" aria-labelledby="live-title">
+      <p class="mono-label glow" id="live-title">// état opérationnel réellement servi</p>
+      <p class="status-live-note" id="status-live-updated">
+        Contrôle direct des artefacts publics réellement servis en cours…
+      </p>
+      <div class="check-grid live-grid" aria-live="polite">
+        <article class="check-card pending" data-live-card="risk">
+          <span class="check-label">Risk API</span>
+          <strong data-live-value>contrôle…</strong>
+          <span data-live-detail>couverture, statut et date du snapshot</span>
+        </article>
+        <article class="check-card pending" data-live-card="eu">
+          <span class="check-label">Signal Euro</span>
+          <strong data-live-value>contrôle…</strong>
+          <span data-live-detail>source, repli et dernier succès</span>
+        </article>
+        <article class="check-card pending" data-live-card="confluence">
+          <span class="check-label">Confluence</span>
+          <strong data-live-value>contrôle…</strong>
+          <span data-live-detail>récupération l0g et fraîcheur EDGAR distinctes</span>
+        </article>
+        <article class="check-card pending" data-live-card="energy">
+          <span class="check-label">Énergie</span>
+          <strong data-live-value>contrôle…</strong>
+          <span data-live-detail>âge des points Brent et WTI</span>
+        </article>
+        <article class="check-card pending" data-live-card="corpus">
+          <span class="check-label">Corpus publié</span>
+          <strong data-live-value>contrôle…</strong>
+          <span data-live-detail>source unique : freshness.json servi</span>
+        </article>
       </div>
     </section>
 
@@ -223,11 +177,14 @@ const jsonLd = {
         <ul>
           <li>Les snapshots reflètent la dernière publication disponible, pas du temps réel strict.</li>
           <li>Les fichiers publics peuvent être mis en cache en aval selon le client ou le proxy.</li>
-          <li>Cette page prouve l'état du site publié, pas l'état des sources externes.</li>
+          <li>Les cartes opérationnelles interrogent les Alias Apache vivants ; le corpus lit le manifeste du build effectivement servi.</li>
+          <li>Une récupération l0g récente ne prouve pas à elle seule une nouvelle publication de la source amont.</li>
         </ul>
       </div>
     </section>
   </article>
+
+  <script src="/status-live.js" defer is:inline></script>
 
   <style>
     .status-page { max-width: 64rem; }
@@ -258,6 +215,13 @@ const jsonLd = {
       color: var(--color-muted);
     }
     .status-section { margin-top: 3rem; }
+    .status-live-note {
+      margin-top: 0.75rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
     .check-grid,
     .endpoint-grid {
       display: grid;
@@ -271,7 +235,6 @@ const jsonLd = {
     }
     .check-card,
     .endpoint,
-    .signal-card,
     .integrity-note {
       border: 1px solid var(--color-line);
       border-radius: 8px;
@@ -286,9 +249,10 @@ const jsonLd = {
       border-top: 2px solid color-mix(in srgb, var(--color-signal) 55%, transparent);
     }
     .check-card.warn { border-top-color: var(--color-amber); }
+    .check-card.fail { border-top-color: var(--color-accent); }
+    .check-card.pending { border-top-color: var(--color-muted); }
     .check-label,
-    .endpoint span,
-    .signal-card span {
+    .endpoint span {
       font-family: var(--font-mono);
       font-size: 0.62rem;
       letter-spacing: 0.1em;
@@ -296,8 +260,7 @@ const jsonLd = {
       color: var(--color-signal);
     }
     .check-card strong,
-    .endpoint strong,
-    .signal-card strong {
+    .endpoint strong {
       display: block;
       margin-top: 0.45rem;
       color: var(--color-bright);
@@ -305,8 +268,7 @@ const jsonLd = {
       line-height: 1.25;
     }
     .check-card span:last-child,
-    .endpoint em,
-    .signal-card em {
+    .endpoint em {
       color: var(--color-muted);
       font-size: 0.82rem;
       line-height: 1.45;
@@ -320,61 +282,6 @@ const jsonLd = {
     @media (min-width: 820px) {
       .split { grid-template-columns: 1fr 1fr; }
     }
-    .artifact-list {
-      margin-top: 1rem;
-      border: 1px solid var(--color-line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .artifact {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
-      gap: 0.65rem;
-      align-items: center;
-      padding: 0.72rem 0.85rem;
-      border-bottom: 1px solid var(--color-line);
-      color: var(--color-muted);
-      font-size: 0.78rem;
-    }
-    .artifact:last-child { border-bottom: 0; }
-    .artifact code {
-      min-width: 0;
-      overflow: hidden;
-      color: var(--color-paper);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .artifact time {
-      grid-column: 2 / -1;
-      color: var(--color-muted);
-      font-size: 0.72rem;
-    }
-    .dot {
-      width: 0.52rem;
-      height: 0.52rem;
-      border-radius: 50%;
-      background: var(--color-muted);
-    }
-    .dot.ok {
-      background: var(--color-signal);
-      box-shadow: 0 0 10px color-mix(in srgb, var(--color-signal) 45%, transparent);
-    }
-    .dot.warn {
-      background: var(--color-amber);
-      box-shadow: 0 0 10px color-mix(in srgb, var(--color-amber) 45%, transparent);
-    }
-    .signal-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
-      margin-top: 1rem;
-      overflow: hidden;
-    }
-    .signal-card > div {
-      padding: 1rem;
-      border-bottom: 1px solid var(--color-line);
-    }
-    .signal-card > div:last-child { border-bottom: 0; }
     .endpoint {
       min-height: 7.2rem;
       padding: 1rem;

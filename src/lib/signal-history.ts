@@ -395,6 +395,10 @@ function normalizeObservation(
   const qualityStatus = ['nominal', 'degraded', 'official-delayed'].includes(String(parsed.qualityStatus))
     ? String(parsed.qualityStatus) as SignalObservation['qualityStatus']
     : 'unknown';
+  const observedAt = isoOrNull(parsed.observedAt);
+  if (!observedAt) {
+    limitations.push('Date économique amont absente : point conservé pour audit mais exclu des backtests sans biais.');
+  }
 
   return {
     recordType: 'observation',
@@ -412,7 +416,7 @@ function normalizeObservation(
     citationName: identity.citationName,
     label: String(parsed.label ?? meta.label),
     seriesDate,
-    observedAt: isoOrNull(parsed.observedAt),
+    observedAt,
     sourcePublishedAt: isoOrNull(parsed.sourcePublishedAt),
     retrievedAt: isoOrNull(parsed.retrievedAt),
     computedAt,
@@ -442,7 +446,7 @@ function normalizeObservation(
     fallbackUsed: parsed.fallbackUsed === true,
     fallbackReason: parsed.fallbackReason ? String(parsed.fallbackReason) : null,
     pointInTime: parsed.pointInTime !== false,
-    backtestUsable: parsed.backtestUsable !== false,
+    backtestUsable: Boolean(observedAt) && parsed.backtestUsable !== false,
     limitations: uniqueStrings(limitations),
   };
 }
@@ -527,6 +531,7 @@ function readOperationalObservations(computedAt: string): SignalObservation[] {
       const meta = riskSignalMeta[key];
       const sourceStatusRaw = row[`${key}_source_status`];
       const qualityStatusRaw = row[`${key}_quality_status`];
+      const observedAt = isoOrNull(row[`${key}_observed_at`]);
       const sourcePublishedAt = isoOrNull(row[`${key}_source_updated_at`]);
       const fallbackUsed = row[`${key}_fallback`] === true;
       const producer = verifiedProducerProvenance(
@@ -540,7 +545,7 @@ function readOperationalObservations(computedAt: string): SignalObservation[] {
         instrument: key,
         label: meta.label,
         seriesDate: snapshot,
-        observedAt: null,
+        observedAt,
         sourcePublishedAt,
         retrievedAt: snapshot,
         computedAt: snapshot,
@@ -572,10 +577,11 @@ function readOperationalObservations(computedAt: string): SignalObservation[] {
         fallbackUsed,
         fallbackReason: null,
         pointInTime: true,
-        backtestUsable: true,
+        backtestUsable: Boolean(observedAt),
         limitations: [
           `Échantillon quotidien : dernier snapshot opérationnel disponible le ${day} UTC.`,
           'Aucune interpolation ; le journal brut reste disponible dans /api/v1/history.ndjson.',
+          ...(observedAt ? [] : ['Date économique amont absente : point exclu des backtests sans biais.']),
         ],
       } as Partial<SignalObservation> & Record<string, unknown>;
       rows.push(normalizeObservation(payload, key, computedAt, { evidenceTier: 'operational-archive' }));
@@ -668,10 +674,12 @@ function currentObservations(computedAt: string): SignalObservation[] {
         calculatorRevision: producer?.calculatorRevision ?? null,
         snapshotHash,
         pointInTime: true,
-        backtestUsable: true,
+        backtestUsable: Boolean(observedAt),
         limitations: [
           'Score normalisé par instrument, pas une probabilité.',
-          'seriesDate date la publication l0g ; observedAt reste nullable si la source amont ne fournit pas sa date.',
+          observedAt
+            ? 'seriesDate date la publication l0g ; observedAt date le composant économique le plus récent du composite.'
+            : 'Date économique amont absente : point exclu des backtests sans biais.',
         ],
       }, key, computedAt, { current: true });
     })
@@ -895,6 +903,9 @@ export function buildSignalHistoryCsv(key?: SignalKey) {
     'qualityStatus',
     'fallbackUsed',
     'fallbackReason',
+    'pointInTime',
+    'backtestUsable',
+    'limitations',
   ];
   const observations = buildSignalHistorySurface().observations.filter((item) => !key || item.instrument === key);
   const rows = observations.map((observation) =>
@@ -946,7 +957,7 @@ export function buildSignalSchemaSurface() {
           qualityStatus: { enum: ['nominal', 'degraded', 'official-delayed', 'unknown'] },
           fallbackUsed: { type: 'boolean' },
           fallbackReason: { type: ['string', 'null'] },
-          backtestUsable: { const: true },
+          backtestUsable: { type: 'boolean' },
         },
         additionalProperties: true,
       },

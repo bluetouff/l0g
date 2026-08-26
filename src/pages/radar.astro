@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import L0gGlyph from '../components/L0gGlyph.astro';
 import RiskProvenance from '../components/RiskProvenance.astro';
 import SectionSignature from '../components/SectionSignature.astro';
-import { riskSignalMeta } from '../config/risk-signals.ts';
+import { isRiskSignalUnavailable, riskSignalMeta } from '../config/risk-signals.ts';
 
 type RiskSignal = {
   key: string;
@@ -235,11 +235,15 @@ const channels = [
             {node.signals.map((key) => {
               const signal = byKey.get(key);
               if (!signal) return null;
+              const unavailable = isRiskSignalUnavailable(signal);
               return (
                 <div class="node-signal">
                   <div>
                     <span>{riskSignalMeta[key].identity.shortName}</span>
-                    <strong>{signal.value ?? '—'}<small>/{signal.scale ?? 100}</small></strong>
+                    <strong>
+                      {unavailable ? 'INDISPONIBLE' : signal.value ?? '—'}
+                      {!unavailable && <small>/{signal.scale ?? 100}</small>}
+                    </strong>
                   </div>
                   <RiskProvenance signal={signal} compact />
                 </div>

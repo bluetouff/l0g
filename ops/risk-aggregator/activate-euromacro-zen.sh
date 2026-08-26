@@ -19,6 +19,7 @@ BACKUP="/var/backups/euromacro-release-${STAMP}"
 WORK="$(mktemp -d)"
 ROLLED_BACK=0
 HAD_DEPLOYED_SHA=0
+HAD_ATTESTED_SHA=0
 TIMER_WAS_ACTIVE=0
 RUNTIME_FILES=(
   build_snapshot.py
@@ -81,6 +82,10 @@ if [ -f /opt/euromacro/DEPLOYED_SHA ]; then
   cp -a /opt/euromacro/DEPLOYED_SHA "$BACKUP/opt/DEPLOYED_SHA"
   HAD_DEPLOYED_SHA=1
 fi
+if [ -f /opt/euromacro/L0G_ATTESTED_SHA ]; then
+  cp -a /opt/euromacro/L0G_ATTESTED_SHA "$BACKUP/opt/L0G_ATTESTED_SHA"
+  HAD_ATTESTED_SHA=1
+fi
 cp -a /opt/euromacro/snapshot.js /opt/euromacro/snapshot.json "$BACKUP/opt/"
 cp -a /var/www/html/euromacro/snapshot.js \
   /var/www/html/euromacro/snapshot.json "$BACKUP/web/"
@@ -101,6 +106,11 @@ rollback() {
     cp -a "$BACKUP/opt/DEPLOYED_SHA" /opt/euromacro/DEPLOYED_SHA
   else
     rm -f /opt/euromacro/DEPLOYED_SHA
+  fi
+  if [ "$HAD_ATTESTED_SHA" -eq 1 ]; then
+    cp -a "$BACKUP/opt/L0G_ATTESTED_SHA" /opt/euromacro/L0G_ATTESTED_SHA
+  else
+    rm -f /opt/euromacro/L0G_ATTESTED_SHA
   fi
   cp -a "$BACKUP/opt/snapshot.js" "$BACKUP/opt/snapshot.json" /opt/euromacro/
   cp -a "$BACKUP/web/snapshot.js" "$BACKUP/web/snapshot.json" /var/www/html/euromacro/
@@ -135,6 +145,8 @@ install -o euromacro -g euromacro -m 0755 \
 printf '%s\n' "$EXPECTED_REVISION" >"$WORK/DEPLOYED_SHA"
 install -o euromacro -g euromacro -m 0644 \
   "$WORK/DEPLOYED_SHA" /opt/euromacro/DEPLOYED_SHA
+install -o root -g root -m 0644 \
+  "$WORK/DEPLOYED_SHA" /opt/euromacro/L0G_ATTESTED_SHA
 systemctl restart euromacro-snapshot.service
 if [ "$(systemctl show euromacro-snapshot.service -p Result --value)" != "success" ]; then
   echo "Échec de la régénération Euro" >&2

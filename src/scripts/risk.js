@@ -67,6 +67,14 @@
     ));
   }
 
+  function isUnavailable(item) {
+    return Boolean(item && (
+      item.sourceStatus === 'fallback'
+      || item.fallbackLayer === 'aggregator'
+      || item.timelinessStatus === 'stale'
+    ));
+  }
+
   function render(data) {
     if (!data || !Array.isArray(data.indices)) return;
     data.indices.forEach(function (it) {
@@ -78,18 +86,19 @@
       var fillEl = tile.querySelector('[data-fill]');
       var statusEl = tile.querySelector('[data-status]');
       var degraded = isDegraded(it);
+      var unavailable = isUnavailable(it);
       tile.dataset.degraded = degraded ? 'true' : 'false';
       if (valEl) {
-        valEl.textContent = it.value != null ? it.value : '—';
-        valEl.style.color = color;
+        valEl.textContent = !unavailable && it.value != null ? it.value : '—';
+        valEl.style.color = unavailable ? '#8b909b' : color;
       }
       if (lvlEl) {
-        lvlEl.textContent = it.level || '';
-        lvlEl.style.color = color;
+        lvlEl.textContent = unavailable ? 'INDISPONIBLE' : it.level || '';
+        lvlEl.style.color = unavailable ? '#8b909b' : color;
       }
       if (fillEl) {
-        fillEl.style.width = clampPct(it.value, it.scale) + '%';
-        fillEl.style.background = color;
+        fillEl.style.width = (unavailable ? 0 : clampPct(it.value, it.scale)) + '%';
+        fillEl.style.background = unavailable ? '#8b909b' : color;
       }
       if (statusEl) statusEl.textContent = statusText(it);
     });

@@ -9,7 +9,7 @@ import SectionSignature from '../components/SectionSignature.astro';
 import WeeklyCta from '../components/WeeklyCta.astro';
 import { sortGuides, sortPosts } from '../lib/agent-surface.ts';
 import { buildRiskDiffSurface } from '../lib/risk-diff.ts';
-import { riskSignalMeta } from '../config/risk-signals.ts';
+import { isRiskSignalUnavailable, riskSignalMeta } from '../config/risk-signals.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 
 type RiskSignal = {
@@ -87,12 +87,14 @@ const guides = sortGuides(await getCollection('guides', ({ data }) => !data.draf
 const risk = readRiskSnapshot();
 const riskForDiff = risk ? {
   ...risk,
-  indices: risk.indices?.map((signal) => ({
-    key: signal.key,
-    value: signal.value ?? undefined,
-    level: signal.level ?? undefined,
-    tone: signal.tone ?? undefined,
-  })),
+  indices: risk.indices
+    ?.filter((signal) => !isRiskSignalUnavailable(signal))
+    .map((signal) => ({
+      key: signal.key,
+      value: signal.value ?? undefined,
+      level: signal.level ?? undefined,
+      tone: signal.tone ?? undefined,
+    })),
 } : null;
 const diff = buildRiskDiffSurface(posts, guides, riskForDiff);
 const day = diff.windows.find((window) => window.window === '1d');
@@ -240,19 +242,25 @@ const jsonLd = {
         linkLabel="Voir leurs transmissions"
       />
       <div class="signal-grid">
-        {signals.map((signal) => (
+        {signals.map((signal) => {
+          const unavailable = isRiskSignalUnavailable(signal);
+          return (
           <article class="signal-card instrument-plate" id={`signal-${signal.key}`}>
             <div class="signal-reading">
               <div>
                 <span>{riskSignalMeta[signal.key].identity.shortName}</span>
                 <small>{formatDate(signal.sourceUpdatedAt ?? signal.sourcePublishedAt, true)}</small>
               </div>
-              <strong>{signal.value ?? '—'}<small>/{signal.scale ?? 100}</small></strong>
+              <strong>
+                {unavailable ? 'INDISPONIBLE' : signal.value ?? '—'}
+                {!unavailable && <small>/{signal.scale ?? 100}</small>}
+              </strong>
             </div>
             <p>{riskSignalMeta[signal.key].identity.description}</p>
             <RiskProvenance signal={signal} compact />
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
 

@@ -32,6 +32,9 @@ CONFLUENCE_URL = os.environ.get(
     "L0G_CONFLUENCE_URL",
     "https://13flow.eu/api/signals/confluence?window=90&min_score=0",
 )
+CONFLUENCE_STALE_SECONDS = int(
+    os.environ.get("L0G_CONFLUENCE_STALE_SECONDS", str(26 * 3600))
+)
 US_VENV = os.environ.get("L0G_US_PYTHON", "/opt/macro_dashboard/venv/bin/python")
 US_PARQUET = os.environ.get(
     "L0G_US_PARQUET",
@@ -178,12 +181,70 @@ def load_previous(path=OUT):
         return {}
 
 
+def load_json(path):
+    try:
+        with open(path, encoding="utf-8") as handle:
+            payload = json.load(handle)
+        return payload if isinstance(payload, dict) else {}
+    except Exception:
+        return {}
+
+
 def source_date(payload):
     for key in ("generated", "generated_at", "generatedAt", "updated", "timestamp"):
         value = iso_z(payload.get(key))
         if value:
             return value
     return None
+
+
+def _observation_value(value):
+    """Normalise une date économique sans la confondre avec une publication."""
+    raw = str(value or "").strip()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw):
+        try:
+            parsed = datetime.datetime.fromisoformat(raw).replace(
+                tzinfo=datetime.timezone.utc
+            )
+        except ValueError:
+            return None
+        return raw + "T00:00:00Z", parsed, "date"
+    normalized = iso_z(raw)
+    parsed = parse_iso(normalized)
+    return (normalized, parsed, "date-time") if normalized and parsed else None
+
+
+def observation_fields(item, component_dates, attempt_at):
+    """Publie la dernière observation d'un composite et sa fenêtre complète.
+
+    ``observedAt`` est la date la plus récente parmi les composants réellement
+    utilisés. La méthode et la fenêtre empêchent de l'interpréter comme si tous
+    les composants partageaient cette date.
+    """
+    attempt = parse_iso(attempt_at)
+    normalized = []
+    published_components = {}
+    for name, value in (component_dates or {}).items():
+        observation = _observation_value(value)
+        if not observation:
+            continue
+        canonical, parsed, precision = observation
+        if attempt and parsed > attempt + datetime.timedelta(days=1):
+            continue
+        normalized.append((parsed, canonical, precision))
+        published_components[str(name)] = value
+    if not normalized:
+        raise ValueError("date économique amont absente")
+    normalized.sort(key=lambda row: row[0])
+    item["observedAt"] = normalized[-1][1]
+    item["observedAtMethod"] = "latest-component-observation"
+    item["observationWindow"] = {
+        "oldest": normalized[0][1],
+        "latest": normalized[-1][1],
+    }
+    item["observationTimePrecision"] = normalized[-1][2]
+    item["componentDates"] = published_components
+    return item
 
 
 def quality_fields(
@@ -245,7 +306,11 @@ def idx_energie(src, attempt_at):
     series = data.get("series") or {}
     oil = [series.get("brent") or {}, series.get("wti") or {}]
     oil_sources = sorted({str(row.get("tip_source")) for row in oil if row.get("tip_source")})
-    oil_dates = {name: (series.get(name) or {}).get("date") for name in ("brent", "wti")}
+    component_dates = {
+        name: row.get("date")
+        for name, row in series.items()
+        if isinstance(row, dict) and row.get("date")
+    }
     notes = [str(note)[:240] for note in (data.get("notes") or []) if note]
     if oil_sources == ["eia"]:
         item.update(
@@ -260,9 +325,8 @@ def idx_energie(src, attempt_at):
     if notes and item["qualityStatus"] == "nominal":
         item["qualityStatus"] = "degraded"
     item["warnings"] = list(dict.fromkeys(notes))[:10]
-    item["componentDates"] = oil_dates
     item["componentSources"] = {"oil": oil_sources}
-    return item
+    return observation_fields(item, component_dates, attempt_at)
 
 
 def _tone_from_hex(value, fallback):
@@ -311,7 +375,13 @@ def idx_euro(src, attempt_at):
         src["url"],
     )
     item["sourceRevision"] = source_revision
-    return item
+    component_dates = {}
+    for family in data.get("families") or []:
+        family_key = family.get("key") or "family"
+        for indicator in family.get("indicators") or []:
+            if indicator.get("as_of"):
+                component_dates[f"{family_key}.{indicator.get('code') or 'indicator'}"] = indicator["as_of"]
+    return observation_fields(item, component_dates, attempt_at)
 
 
 US_WARNING, US_DANGER = 1.5, 2.5
@@ -331,17 +401,21 @@ def _us_zscore_to_100(zscore):
 
 def idx_us(src, attempt_at):
     code = (
-        "import pandas as pd;"
+        "import json,pandas as pd;"
         "df=pd.read_parquet(r'%s');"
         "w=df['weight'];s=df['stress_final'];"
-        "print((s*w).sum()/w.sum() if w.sum()>0 else float('nan'))" % US_PARQUET
+        "score=(s*w).sum()/w.sum() if w.sum()>0 else float('nan');"
+        "dates=pd.to_datetime(df['date'],errors='coerce').dropna();"
+        "print(json.dumps({'score':float(score),'oldest':dates.min().date().isoformat(),'newest':dates.max().date().isoformat()}))"
+        % US_PARQUET
     )
     result = subprocess.run(
         [US_VENV, "-c", code], capture_output=True, text=True, timeout=40
     )
     if result.returncode != 0 or not result.stdout.strip():
         raise RuntimeError("lecture parquet us: " + (result.stderr.strip()[:200] or "vide"))
-    zscore = float(result.stdout.strip())
+    snapshot = json.loads(result.stdout.strip())
+    zscore = float(snapshot["score"])
     if zscore != zscore:
         raise ValueError("global_score us = NaN")
     value = _us_zscore_to_100(zscore)
@@ -349,7 +423,7 @@ def idx_us(src, attempt_at):
     modified = datetime.datetime.fromtimestamp(
         os.path.getmtime(US_PARQUET), tz=datetime.timezone.utc
     ).isoformat(timespec="seconds").replace("+00:00", "Z")
-    return quality_fields(
+    item = quality_fields(
         {
             "key": "us",
             "value": value,
@@ -362,6 +436,11 @@ def idx_us(src, attempt_at):
         attempt_at,
         modified,
         src["url"],
+    )
+    return observation_fields(
+        item,
+        {"source-oldest": snapshot.get("oldest"), "source-newest": snapshot.get("newest")},
+        attempt_at,
     )
 
 
@@ -425,7 +504,7 @@ def idx_yct(src, attempt_at):
     risk = round(crowd * 0.45 + appreciation * 0.35 + compress * 0.20)
     level = "Faible" if risk < 30 else "Modéré" if risk < 55 else "Élevé" if risk < 78 else "Critique"
     tone = "calm" if risk < 30 else "moderate" if risk < 55 else "elevated" if risk < 78 else "crisis"
-    return quality_fields(
+    item = quality_fields(
         {"key": "yen", "value": risk, "scale": 100, "level": level, "tone": tone},
         "yen",
         attempt_at,
@@ -433,6 +512,12 @@ def idx_yct(src, attempt_at):
         src["url"],
         checked_at,
     )
+    component_dates = {}
+    if cot and cot[-1].get("d"):
+        component_dates["cot"] = cot[-1]["d"]
+    if fx and fx[-1].get("d"):
+        component_dates["fx"] = fx[-1]["d"]
+    return observation_fields(item, component_dates, attempt_at)
 
 
 def idx_debt(src, attempt_at):
@@ -454,7 +539,12 @@ def idx_debt(src, attempt_at):
         src["url"],
     )
     item["rawValue"] = score
-    return item
+    component_dates = {
+        str(row.get("source") or f"source-{index}"): row.get("latest_date") or row.get("latestDate")
+        for index, row in enumerate(data.get("sources") or [])
+        if isinstance(row, dict) and (row.get("latest_date") or row.get("latestDate"))
+    }
+    return observation_fields(item, component_dates, attempt_at)
 
 
 BUILDERS = {
@@ -583,9 +673,11 @@ def _average_age(buyers):
     return round(sum(days) / len(days)) if days else None
 
 
-def build_confluence():
-    data = fetch_json(CONFLUENCE_URL)
-    signals = sorted(data.get("signals") or [], key=lambda row: row.get("score") or 0, reverse=True)
+def _confluence_items(data):
+    signals = data.get("signals")
+    if not isinstance(signals, list):
+        raise ValueError("signals 13FLOW absents")
+    signals = sorted(signals, key=lambda row: row.get("score") or 0, reverse=True)
     items = []
     for signal in signals[:15]:
         institutional = signal.get("institutional") or {}
@@ -606,19 +698,133 @@ def build_confluence():
                 "buy_usd": insider.get("buy_value_usd"),
             }
         )
-    write_atomic(CONFLUENCE_OUT, {"updated": now_z(), "items": items})
+    if not items:
+        raise ValueError("aucune confluence 13FLOW")
+    return items
+
+
+def _confluence_freshness(data, retrieved_at):
+    metadata = data.get("metadata") if isinstance(data.get("metadata"), dict) else {}
+    enrichment = metadata.get("cache_institutional_enrichment")
+    enrichment = enrichment if isinstance(enrichment, dict) else {}
+    upstream_generated_at = source_date(data)
+    edgar_refresh_verified = metadata.get("edgar_refresh_verified") is True
+    return {
+        "l0gRetrievedAt": retrieved_at,
+        "upstreamGeneratedAt": upstream_generated_at,
+        "institutionalReportDate": enrichment.get("report_date"),
+        "upstreamServedFromCache": metadata.get("served_from_cache"),
+        "edgarRefreshVerified": edgar_refresh_verified,
+        "validationStatus": metadata.get("validation_status"),
+        "scoreInterpretation": metadata.get("score_interpretation"),
+    }
+
+
+def _confluence_age(last_success_at, attempt_at):
+    last_success = parse_iso(last_success_at)
+    attempt = parse_iso(attempt_at)
+    if not last_success or not attempt:
+        return None
+    return max(0, round((attempt - last_success).total_seconds()))
+
+
+def build_confluence(previous=None, attempt_at=None, output=None):
+    previous = previous if isinstance(previous, dict) else {}
+    attempt_at = iso_z(attempt_at) or now_z()
+    output = output or CONFLUENCE_OUT
+    try:
+        data = fetch_json(CONFLUENCE_URL)
+        items = _confluence_items(data)
+        freshness = _confluence_freshness(data, attempt_at)
+        verified = freshness["edgarRefreshVerified"]
+        payload = {
+            "schema": "https://l0g.fr/schemas/confluence-snapshot.json",
+            "version": "2",
+            "generated": attempt_at,
+            "updated": attempt_at,
+            "retrievedAt": attempt_at,
+            "lastAttemptAt": attempt_at,
+            "lastSuccessAt": attempt_at,
+            "sourceStatus": "ok",
+            "qualityStatus": "nominal" if verified else "limited",
+            "fallbackUsed": False,
+            "fallbackReason": None,
+            "staleAfter": "PT26H",
+            "ageSeconds": 0,
+            "timelinessStatus": "fresh",
+            "provenanceStatus": "verified" if verified else "partial",
+            "source": {
+                "name": "13FLOW",
+                "url": CONFLUENCE_URL,
+            },
+            "freshness": freshness,
+            "items": items,
+            "note": (
+                "updated/retrievedAt datent la récupération 13FLOW par l0g, "
+                "pas une nouvelle publication SEC EDGAR."
+            ),
+        }
+    except Exception as error:
+        last_success_at = iso_z(
+            previous.get("lastSuccessAt")
+            or previous.get("retrievedAt")
+            or previous.get("updated")
+        )
+        age_seconds = _confluence_age(last_success_at, attempt_at)
+        payload = {
+            **previous,
+            "schema": "https://l0g.fr/schemas/confluence-snapshot.json",
+            "version": "2",
+            "generated": attempt_at,
+            "updated": last_success_at,
+            "retrievedAt": last_success_at,
+            "lastAttemptAt": attempt_at,
+            "lastSuccessAt": last_success_at,
+            "sourceStatus": "fallback",
+            "qualityStatus": "degraded",
+            "fallbackUsed": True,
+            "fallbackReason": safe_error(error),
+            "staleAfter": "PT26H",
+            "ageSeconds": age_seconds,
+            "timelinessStatus": (
+                "stale"
+                if age_seconds is not None and age_seconds > CONFLUENCE_STALE_SECONDS
+                else "fresh"
+                if age_seconds is not None
+                else "unknown"
+            ),
+            "provenanceStatus": previous.get("provenanceStatus", "partial"),
+            "source": previous.get("source")
+            or {"name": "13FLOW", "url": CONFLUENCE_URL},
+            "freshness": previous.get("freshness") or {
+                "l0gRetrievedAt": last_success_at,
+                "upstreamGeneratedAt": None,
+                "institutionalReportDate": None,
+                "upstreamServedFromCache": None,
+                "edgarRefreshVerified": False,
+            },
+            "items": [],
+            "lastKnownCount": (
+                len(previous.get("items"))
+                if isinstance(previous.get("items"), list)
+                else 0
+            ),
+            "note": (
+                "Les anciennes lignes sont retirées après échec. updated/retrievedAt "
+                "datent le dernier succès l0g, pas une publication SEC EDGAR."
+            ),
+        }
+    write_atomic(output, payload)
+    return payload
 
 
 def main():
     attempt_at = now_z()
     payload = collect_indices(load_previous(), attempt_at=attempt_at)
     write_atomic(OUT, payload)
-    try:
-        build_confluence()
-    except Exception:
-        # Confluence est un produit distinct. Son échec ne doit ni bloquer ni
-        # modifier le contrat de fraîcheur des cinq signaux de risque.
-        pass
+    # Confluence conserve son propre contrat de repli. Son échec ne modifie pas
+    # les cinq indices, mais il est toujours écrit et devient donc observable.
+    build_confluence(load_json(CONFLUENCE_OUT), attempt_at=attempt_at)
 
 
 if __name__ == "__main__":

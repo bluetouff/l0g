@@ -169,6 +169,7 @@ systemctl enable --now l0g-risk.timer
 echo "5/6 Validation du contrat et du journal"
 python3 "${CURRENT_LINK}/verify-risk-output.py" \
   --risk /var/www/l0g-data/risk.json \
+  --confluence /var/www/l0g-data/confluence.json \
   --history /var/www/l0g-data/history.ndjson \
   --source "${CURRENT_LINK}/l0g-risk.py" \
   --manifest "${CURRENT_LINK}/producer-deployment.json" \

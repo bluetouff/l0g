@@ -1,5 +1,5 @@
 ---
-import { riskSignalMeta } from '../config/risk-signals.ts';
+import { isRiskSignalUnavailable, riskSignalMeta } from '../config/risk-signals.ts';
 
 interface RiskSignal {
   key: string;
@@ -7,6 +7,8 @@ interface RiskSignal {
   scale?: number | null;
   level?: string | null;
   sourceStatus?: string | null;
+  fallbackLayer?: string | null;
+  fallbackReason?: string | null;
   qualityStatus?: string | null;
   timelinessStatus?: string | null;
   sourceUpdatedAt?: string | null;
@@ -24,6 +26,7 @@ interface Props {
 const { signal, compact = false } = Astro.props;
 const meta = riskSignalMeta[signal.key];
 const sourceDate = signal.sourceUpdatedAt ?? signal.sourcePublishedAt ?? null;
+const unavailable = isRiskSignalUnavailable(signal);
 
 function formatDate(value?: string | null) {
   if (!value) return 'non publiée';
@@ -54,8 +57,8 @@ const quality =
 
 const citation = [
   meta?.identity?.citationName ?? meta?.label ?? signal.key,
-  `${signal.value ?? 'valeur indisponible'}/${signal.scale ?? 100}`,
-  signal.level ? `niveau ${signal.level}` : null,
+  unavailable ? 'signal indisponible' : `${signal.value ?? 'valeur indisponible'}/${signal.scale ?? 100}`,
+  !unavailable && signal.level ? `niveau ${signal.level}` : null,
   `donnée source ${formatDate(sourceDate)}`,
   meta?.source ? `source ${meta.source}` : null,
   'via l0g.fr',
@@ -65,14 +68,17 @@ const citation = [
 <details class:list={['risk-provenance', compact && 'is-compact']}>
   <summary>
     <span class="proof-mark" aria-hidden="true">i</span>
-    <span>Vérifier ce chiffre</span>
+    <span>{unavailable ? 'Vérifier ce signal' : 'Vérifier ce chiffre'}</span>
     <b aria-hidden="true">+</b>
   </summary>
   <div class="proof-panel">
     <div class="proof-reading">
       <span>{meta?.identity?.shortName ?? meta?.label ?? signal.key}</span>
-      <strong>{signal.value ?? '—'}<small> / {signal.scale ?? 100}</small></strong>
-      <em>{signal.level ?? 'niveau non publié'}</em>
+      <strong>
+        {unavailable ? '—' : signal.value ?? '—'}
+        {!unavailable && <small> / {signal.scale ?? 100}</small>}
+      </strong>
+      <em>{unavailable ? 'indisponible' : signal.level ?? 'niveau non publié'}</em>
     </div>
 
     <dl>
@@ -88,6 +94,12 @@ const citation = [
         <dt>Qualité</dt>
         <dd>{quality}</dd>
       </div>
+      {unavailable && signal.fallbackReason && (
+        <div>
+          <dt>Cause</dt>
+          <dd>{signal.fallbackReason}</dd>
+        </div>
+      )}
       <div>
         <dt>Unité</dt>
         <dd>score normalisé propre à cet instrument</dd>

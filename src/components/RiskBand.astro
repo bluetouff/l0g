@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import riskScriptUrl from '../scripts/risk.js?url';
+import { isRiskSignalUnavailable } from '../config/risk-signals.ts';
 
 /**
  * Tableau de bord consolidé de signaux : valeurs reprises des dashboards.
@@ -123,7 +124,16 @@ const items = [
   { key: 'yen', label: 'Yen Carry', href: 'https://yct.l0g.fr' },
   { key: 'energie', label: 'Énergie', href: 'https://energie.l0g.fr' },
   { key: 'debt', label: 'Dette US', href: 'https://debt.l0g.fr' },
-].map((item) => ({ ...item, signal: signals.get(item.key) }));
+].map((item) => {
+  const signal = signals.get(item.key);
+  const unavailable = isRiskSignalUnavailable(signal);
+  return {
+    ...item,
+    signal,
+    unavailable,
+    color: unavailable ? '#8b909b' : TONE[signal?.tone ?? ''] || '#8b909b',
+  };
+});
 
 const aggregateDate = formatDate(
   snapshot.aggregateGeneratedAt
@@ -180,23 +190,23 @@ const aggregateStatus = aggregateDate
               <span
                 class="risk-value font-display leading-none glow"
                 data-value
-                style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+                style={`color:${it.color}`}
               >
-                {it.signal?.value ?? '—'}
+                {!it.unavailable ? it.signal?.value ?? '—' : '—'}
               </span>
               <span
                 class="risk-level mono-label"
                 data-level
-                style={`color:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+                style={`color:${it.color}`}
               >
-                {it.signal?.level ?? ''}
+                {it.unavailable ? 'INDISPONIBLE' : it.signal?.level ?? ''}
               </span>
             </div>
             <div class="risk-track mt-3">
               <div
                 class="risk-fill"
                 data-fill
-                style={`width:${clampPct(it.signal?.value, it.signal?.scale)}%;background:${TONE[it.signal?.tone ?? ''] || '#8b909b'}`}
+                style={`width:${it.unavailable ? 0 : clampPct(it.signal?.value, it.signal?.scale)}%;background:${it.color}`}
               ></div>
             </div>
             <div class="risk-status" data-status>

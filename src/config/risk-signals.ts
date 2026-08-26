@@ -11,6 +11,20 @@ export interface RiskSignalCalculation {
 export const SIGNAL_KEYS = ['us', 'eu', 'yen', 'energie', 'debt'] as const;
 export type RiskSignalKey = (typeof SIGNAL_KEYS)[number];
 
+export interface RiskSignalHealth {
+  sourceStatus?: string | null;
+  fallbackLayer?: string | null;
+  timelinessStatus?: string | null;
+}
+
+export function isRiskSignalUnavailable(signal?: RiskSignalHealth | null) {
+  return Boolean(signal && (
+    signal.sourceStatus === 'fallback'
+    || signal.fallbackLayer === 'aggregator'
+    || signal.timelinessStatus === 'stale'
+  ));
+}
+
 export interface RiskSignalIdentity {
   seriesId: string;
   slug: string;

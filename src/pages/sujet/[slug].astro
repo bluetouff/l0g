@@ -8,7 +8,7 @@ import RiskProvenance from '../../components/RiskProvenance.astro';
 import TopicSidebar from '../../components/TopicSidebar.astro';
 import { topics, postMatchesTopic, ACCENT_HEX, topicLabelForTags } from '../../config/topics.ts';
 import { monitoringForTopic } from '../../config/topic-monitoring.ts';
-import { riskSignalMeta } from '../../config/risk-signals.ts';
+import { isRiskSignalUnavailable, riskSignalMeta } from '../../config/risk-signals.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 import { serializeInlineScriptData } from '../../lib/security.ts';
 
@@ -191,16 +191,22 @@ const topicJsonLd = {
         Ces instruments éclairent le sujet, mais aucun ne résume le dossier. Chaque chiffre est inspectable.
       </p>
       <div class="related-signal-grid">
-        {relatedSignals.map((signal) => (
+        {relatedSignals.map((signal) => {
+          const unavailable = isRiskSignalUnavailable(signal);
+          return (
           <article class="related-signal instrument-plate" style={`--plate-accent:${topicAccent}`}>
             <div>
               <span>{riskSignalMeta[signal.key].identity.shortName}</span>
-              <strong>{signal.value ?? '—'}<small>/{signal.scale ?? 100}</small></strong>
+              <strong>
+                {unavailable ? 'INDISPONIBLE' : signal.value ?? '—'}
+                {!unavailable && <small>/{signal.scale ?? 100}</small>}
+              </strong>
             </div>
             <p>{riskSignalMeta[signal.key].identity.description}</p>
             <RiskProvenance signal={signal} compact />
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   )}

@@ -8,6 +8,7 @@ const URLS = {
   yen: process.env.L0G_YEN_URL || 'https://yct.l0g.fr/data.json',
   energy: process.env.L0G_ENERGY_URL || 'https://energie.l0g.fr/snapshot.json',
   debt: process.env.L0G_DEBT_URL || 'https://debt.l0g.fr/latest.json',
+  confluence: process.env.L0G_CONFLUENCE_URL || 'https://l0g.fr/confluence.json',
   rawHistory: process.env.L0G_RAW_HISTORY_URL || 'https://l0g.fr/api/v1/history.ndjson',
   canonicalHistory: process.env.L0G_CANONICAL_HISTORY_URL || 'https://l0g.fr/api/v1/signals/history.json',
 };
@@ -41,13 +42,14 @@ async function publish(report) {
 }
 
 try {
-  const [aggregate, eu, yen, energy, debt, rawText, canonicalHistory] = await Promise.all([
+  const [aggregate, eu, yen, energy, debt, confluence, rawText, canonicalHistory] = await Promise.all([
     get(URLS.aggregate), get(URLS.eu), get(URLS.yen), get(URLS.energy), get(URLS.debt),
+    get(URLS.confluence),
     get(URLS.rawHistory, 'ndjson'), get(URLS.canonicalHistory),
   ]);
   const lines = rawText.split('\n').filter(Boolean);
   const rawLast = lines.length ? JSON.parse(lines.at(-1)) : null;
-  const report = auditRiskFlow({ aggregate, eu, yen, energy, debt, rawLast, canonicalHistory });
+  const report = auditRiskFlow({ aggregate, eu, yen, energy, debt, confluence, rawLast, canonicalHistory });
   await publish(report);
   if (!report.ok) process.exitCode = 1;
 } catch (error) {

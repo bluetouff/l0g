@@ -28,6 +28,7 @@ def last_ndjson(path: str) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--risk", required=True)
+    parser.add_argument("--confluence", required=True)
     parser.add_argument("--history", required=True)
     parser.add_argument("--source", required=True)
     parser.add_argument("--manifest", required=True)
@@ -36,6 +37,8 @@ def main() -> int:
 
     with open(args.risk, encoding="utf-8") as handle:
         risk = json.load(handle)
+    with open(args.confluence, encoding="utf-8") as handle:
+        confluence = json.load(handle)
     with open(args.manifest, encoding="utf-8") as handle:
         manifest = json.load(handle)
     history = last_ndjson(args.history)
@@ -57,11 +60,21 @@ def main() -> int:
             errors.append(f"{key}: révision producteur non publiée")
         if key == "eu" and item.get("sourceRevision") != expected_revision:
             errors.append("eu: révision du snapshot différente du manifeste")
-        for field in ("sourceUpdatedAt", "lastAttemptAt", "lastSuccessAt"):
+        for field in ("sourceUpdatedAt", "observedAt", "lastAttemptAt", "lastSuccessAt"):
             if not item.get(field):
                 errors.append(f"{key}: {field} absent")
+        if item.get("observedAtMethod") != "latest-component-observation":
+            errors.append(f"{key}: méthode observedAt absente ou invalide")
+        if not history.get(f"{key}_observed_at"):
+            errors.append(f"{key}: observedAt absent de la dernière ligne du journal brut")
     if "debt" not in history:
         errors.append("la dernière ligne du journal brut ne contient pas debt")
+    if str(confluence.get("version")) != "2":
+        errors.append("confluence: contrat v2 absent")
+    if not confluence.get("lastAttemptAt"):
+        errors.append("confluence: lastAttemptAt absent")
+    if confluence.get("sourceStatus") == "fallback" and confluence.get("items"):
+        errors.append("confluence: un repli republie encore des lignes anciennes")
 
     report = {
         "ok": not errors,
@@ -70,6 +83,7 @@ def main() -> int:
         "status": risk.get("status"),
         "summary": risk.get("summary"),
         "historyLast": history.get("snapshot"),
+        "confluenceStatus": confluence.get("sourceStatus"),
     }
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["ok"] else 1

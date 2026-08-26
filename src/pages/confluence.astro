@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Confluence 13F x Form 4"
-  description="Les titres où des fonds accumulent pendant que des dirigeants achètent, dans la même fenêtre. Tableau triable, issu de SEC EDGAR, actualisé chaque jour."
+  description="Les titres où fonds et dirigeants achètent dans la même fenêtre, repris de 13FLOW avec dates de récupération, état du cache et limites de fraîcheur EDGAR."
   sidebar={false}
 >
   <section>
@@ -18,10 +18,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       (Form 4). Classement repris de{' '}
       <a href="https://13flow.eu" target="_blank" rel="noopener" class="link-term" style="color: var(--color-signal)">13FLOW</a>,
       code <a href="https://github.com/bluetouff/13flow" target="_blank" rel="noopener" class="link-term" style="color: var(--color-signal)">public</a>,
-      recalculé chaque jour depuis SEC EDGAR. Détail du calcul sur la{' '}
+      interrogé périodiquement par l0g. L'heure affichée date la dernière récupération réussie,
+      pas nécessairement une nouvelle publication SEC EDGAR. Détail du calcul sur la{' '}
       <a href="/methodologie/13flow/" class="link-term" style="color: var(--color-signal)">fiche méthodologique 13FLOW</a>.
     </p>
-    <p class="mono-label mt-3 text-muted" data-conf-updated></p>
+    <p class="mono-label mt-3 text-muted conf-provenance" data-conf-updated>
+      Fraîcheur et provenance en cours de contrôle…
+    </p>
   </section>
 
   <div class="mt-6 overflow-x-auto rounded-xl border border-line" data-pagefind-ignore>

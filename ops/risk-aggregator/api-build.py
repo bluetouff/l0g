@@ -67,11 +67,25 @@ def build_api_json(risk, confluence):
     if isinstance(items, list):
         top = max(items, key=lambda row: row.get("score", -1)) if items else None
         confluence_public = {
+            "generated": confluence.get("generated"),
             "updated": confluence.get("updated"),
+            "retrievedAt": confluence.get("retrievedAt"),
+            "lastAttemptAt": confluence.get("lastAttemptAt"),
+            "lastSuccessAt": confluence.get("lastSuccessAt"),
+            "sourceStatus": confluence.get("sourceStatus"),
+            "qualityStatus": confluence.get("qualityStatus"),
+            "fallbackUsed": confluence.get("fallbackUsed"),
+            "fallbackReason": confluence.get("fallbackReason"),
+            "staleAfter": confluence.get("staleAfter"),
+            "ageSeconds": confluence.get("ageSeconds"),
+            "timelinessStatus": confluence.get("timelinessStatus"),
+            "provenanceStatus": confluence.get("provenanceStatus"),
+            "freshness": confluence.get("freshness"),
             "count": len(items),
             "conviction": sum(1 for row in items if str(row.get("quadrant", "")).lower() == "conviction"),
             "top": {"ticker": top.get("ticker"), "score": top.get("score"), "quadrant": top.get("quadrant")} if top else None,
             "source": "https://l0g.fr/confluence/",
+            "note": confluence.get("note"),
         }
 
     return {
@@ -79,6 +93,7 @@ def build_api_json(risk, confluence):
         "version": "2",
         "generated": now_z(),
         "snapshot": risk.get("generated") or risk.get("updated"),
+        "staleAfter": "PT30M",
         "status": risk.get("status", "unknown"),
         "summary": risk.get("summary"),
         "indices": indices,

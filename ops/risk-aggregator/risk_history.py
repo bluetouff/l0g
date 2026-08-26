@@ -17,7 +17,7 @@ import os
 import tempfile
 
 
-SCHEMA_VERSION = "3"
+SCHEMA_VERSION = "4"
 INDEX_KEYS = ("us", "eu", "yen", "energie", "debt")
 COLUMNS = (
     ["date", "snapshot", "generated", "status"]
@@ -25,6 +25,7 @@ COLUMNS = (
     + [f"{key}_tone" for key in INDEX_KEYS]
     + [f"{key}_source_status" for key in INDEX_KEYS]
     + [f"{key}_quality_status" for key in INDEX_KEYS]
+    + [f"{key}_observed_at" for key in INDEX_KEYS]
     + [f"{key}_source_updated_at" for key in INDEX_KEYS]
     + [f"{key}_fallback" for key in INDEX_KEYS]
     + [f"{key}_producer_repository" for key in INDEX_KEYS]
@@ -59,6 +60,7 @@ def _flatten(risk):
         record[f"{key}_tone"] = item.get("tone")
         record[f"{key}_source_status"] = item.get("sourceStatus")
         record[f"{key}_quality_status"] = item.get("qualityStatus")
+        record[f"{key}_observed_at"] = item.get("observedAt")
         record[f"{key}_source_updated_at"] = item.get("sourceUpdatedAt")
         record[f"{key}_fallback"] = item.get("fallbackUsed")
         record[f"{key}_producer_repository"] = item.get("producerRepository")

@@ -42,6 +42,7 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     if (!iso(item.lastAttemptAt)) errors.push(`${key}: lastAttemptAt absent/invalide`);
     if (!iso(item.lastSuccessAt)) errors.push(`${key}: lastSuccessAt absent/invalide`);
     if (!iso(item.sourceUpdatedAt)) errors.push(`${key}: sourceUpdatedAt absent/invalide`);
+    if (!iso(item.observedAt)) errors.push(`${key}: observedAt absent/invalide`);
     if (!['fresh', 'stale', 'unknown'].includes(item.timelinessStatus)) errors.push(`${key}: timelinessStatus invalide`);
     if (item.producerRevisionStatus !== 'reported' || !item.producerRevision) errors.push(`${key}: révision producteur déployée non déclarée`);
     if (item.sourceStatus === 'fallback') errors.push(`${key}: repli agrégateur actif (${item.fallbackReason || 'cause absente'})`);
@@ -105,6 +106,31 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
     if (!row.date) errors.push(`energie: date absente pour ${row.label || 'pétrole'}`);
     const age = row.date ? ageHours(`${row.date}T23:59:59Z`, now) : null;
     if (age != null && age > 10 * 24) errors.push(`energie: point pétrole âgé de plus de 10 jours (${row.date})`);
+    else if (age != null && age > 5 * 24) warnings.push(`energie: point pétrole âgé de plus de 5 jours (${row.date})`);
+  }
+
+  const confluence = input.confluence || {};
+  const confluenceItems = Array.isArray(confluence.items) ? confluence.items : [];
+  if (String(confluence.version) !== '2') errors.push('confluence: contrat v2 absent');
+  if (!confluenceItems.length) errors.push('confluence: aucune ligne publique');
+  if (!iso(confluence.lastAttemptAt)) errors.push('confluence: lastAttemptAt absent/invalide');
+  if (!iso(confluence.lastSuccessAt)) errors.push('confluence: lastSuccessAt absent/invalide');
+  if (confluence.sourceStatus === 'fallback') {
+    errors.push(`confluence: repli actif (${confluence.fallbackReason || 'cause absente'})`);
+  }
+  const confluenceAge = ageHours(confluence.lastSuccessAt, now);
+  if (confluenceAge == null || confluenceAge > 1) {
+    errors.push(`confluence: dernière récupération trop ancienne (${confluence.lastSuccessAt || 'absente'})`);
+  }
+  const confluenceFreshness = confluence.freshness || {};
+  if (confluenceFreshness.institutionalReportDate && !/^\d{4}-\d{2}-\d{2}$/.test(confluenceFreshness.institutionalReportDate)) {
+    errors.push(`confluence: date 13F invalide (${confluenceFreshness.institutionalReportDate})`);
+  }
+  if (confluenceFreshness.edgarRefreshVerified !== true) {
+    warnings.push('confluence: fraîcheur EDGAR amont non attestée');
+  }
+  if (confluenceFreshness.upstreamServedFromCache === true) {
+    warnings.push('confluence: réponse 13FLOW servie depuis son cache');
   }
 
   const operational = input.canonicalHistory?.coverage?.operationalImport;
@@ -130,6 +156,9 @@ export function auditRiskFlow(input, now = new Date().toISOString()) {
       aggregateGenerated: aggregate.generated || aggregate.updated || null,
       rawHistoryLast: input.rawLast?.snapshot || null,
       canonicalObservations: input.canonicalHistory?.coverage?.observations || 0,
+      confluenceStatus: confluence.sourceStatus || null,
+      confluenceRetrievedAt: confluence.lastSuccessAt || null,
+      confluenceItems: confluenceItems.length,
     },
   };
 }
@@ -153,6 +182,8 @@ export function renderRiskAuditMarkdown(report) {
     ['Génération agrégée', summary.aggregateGenerated || 'n/d'],
     ['Dernière ligne brute', summary.rawHistoryLast || 'n/d'],
     ['Observations fusionnées', summary.canonicalObservations ?? 0],
+    ['Confluence', `${summary.confluenceItems ?? 0} lignes · ${summary.confluenceStatus || 'n/d'}`],
+    ['Dernière récupération Confluence', summary.confluenceRetrievedAt || 'n/d'],
   ];
   const lines = [
     '## Contrôle des producteurs de risque',

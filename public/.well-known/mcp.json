@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1",
+  "status": "public-unauthenticated",
+  "protocolVersion": "2025-11-25",
+  "serverInfo": {
+    "name": "l0g.fr",
+    "title": "l0g finance et risque",
+    "version": "1.24.3"
+  },
+  "description": "Serveur MCP public, en lecture seule, sans compte ni jeton.",
+  "documentationUrl": "https://l0g.fr/mcp/",
+  "transports": [
+    {
+      "type": "streamable-http",
+      "endpoint": "https://l0g.fr/api/mcp/compact",
+      "role": "entree recommandee"
+    },
+    {
+      "type": "streamable-http",
+      "endpoint": "https://l0g.fr/api/mcp",
+      "role": "surface experte complete"
+    }
+  ],
+  "authentication": {
+    "required": false,
+    "oauthDiscovery": null
+  },
+  "note": "Document de decouverte public l0g. Les chemins OAuth well-known repondent 404 car ce serveur n'est pas une ressource OAuth protegee."
+}

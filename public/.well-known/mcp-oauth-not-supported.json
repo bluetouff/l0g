@@ -1,0 +1,9 @@
+{
+  "error": "oauth_not_supported",
+  "status": 404,
+  "authenticationRequired": false,
+  "mcpEndpoint": "https://l0g.fr/api/mcp/compact",
+  "discovery": "https://l0g.fr/.well-known/mcp.json",
+  "documentation": "https://l0g.fr/mcp/",
+  "note": "Le serveur MCP l0g est public et en lecture seule. Aucun issuer, endpoint de jeton ou scope OAuth n'est publie."
+}

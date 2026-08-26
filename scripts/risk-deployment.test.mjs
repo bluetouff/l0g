@@ -34,20 +34,26 @@ test('le manifeste relie cinq producteurs à des révisions et fichiers vérifia
 });
 
 test('la configuration versionnée sert les fichiers vivants et neutralise les anciens scripts', async () => {
-  const [apache, service, installer, humanTrafficInstaller, activator, euroActivator, agentSurface, riskClient, riskBand, home] = await Promise.all([
+  const [apache, service, installer, outputVerifier, humanTrafficInstaller, activator, euroActivator, agentSurface, riskClient, riskBand, riskProvenance, radar, nowPage, topicPage, home] = await Promise.all([
     readFile(new URL('deploy/l0g.fr.apache.conf', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/l0g-risk.service', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/install-server.sh', root), 'utf8'),
+    readFile(new URL('ops/risk-aggregator/verify-risk-output.py', root), 'utf8'),
     readFile(new URL('deploy/install-human-traffic.sh', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/activate-zen.sh', root), 'utf8'),
     readFile(new URL('ops/risk-aggregator/activate-euromacro-zen.sh', root), 'utf8'),
     readFile(new URL('src/lib/agent-surface.ts', root), 'utf8'),
     readFile(new URL('src/scripts/risk.js', root), 'utf8'),
     readFile(new URL('src/components/RiskBand.astro', root), 'utf8'),
+    readFile(new URL('src/components/RiskProvenance.astro', root), 'utf8'),
+    readFile(new URL('src/pages/radar.astro', root), 'utf8'),
+    readFile(new URL('src/pages/maintenant.astro', root), 'utf8'),
+    readFile(new URL('src/pages/sujet/[slug].astro', root), 'utf8'),
     readFile(new URL('src/pages/[...page].astro', root), 'utf8'),
   ]);
   for (const alias of [
     'Alias /risk.json /var/www/l0g-data/risk.json',
+    'Alias /confluence.json /var/www/l0g-data/confluence.json',
     'Alias /api/v1/risk.json /var/www/l0g-data/api-risk.json',
     'Alias /api/v1/risk.xml /var/www/l0g-data/risk-events.xml',
     'Alias /api/v1/history.ndjson /var/www/l0g-data/history.ndjson',
@@ -70,6 +76,9 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
     'le drop-in historique doit être retiré avant le rechargement systemd',
   );
   assert.ok(installer.indexOf('verify-producer-deployment.py') < installer.indexOf('systemctl restart l0g-risk.service'));
+  assert.ok(installer.includes('--confluence /var/www/l0g-data/confluence.json'));
+  assert.ok(outputVerifier.includes('observedAtMethod'));
+  assert.ok(outputVerifier.includes('un repli republie encore des lignes anciennes'));
   assert.ok(
     humanTrafficInstaller.includes('install -d -o l0grisk -g l0grisk -m 0755 "$DATA_DIR"'),
     'le rapport de trafic doit préserver l’écriture de l’agrégateur dans le répertoire partagé',
@@ -85,6 +94,8 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.ok(euroActivator.includes('RUNTIME_FILES=('), 'la release Euro doit être validée comme un lot');
   assert.ok(euroActivator.indexOf('sha256sum "$source"') < euroActivator.indexOf('systemctl restart euromacro-snapshot.service'));
   assert.ok(euroActivator.includes('d.get("source_sha") == sys.argv[1]'));
+  assert.ok(euroActivator.includes('/opt/euromacro/L0G_ATTESTED_SHA'));
+  assert.ok(euroActivator.indexOf('/opt/euromacro/L0G_ATTESTED_SHA') < euroActivator.indexOf('systemctl restart euromacro-snapshot.service'));
   assert.ok(euroActivator.includes('d.get("quality") or {}).get("status") == "ok"'));
   assert.ok(euroActivator.indexOf('systemctl stop euromacro-snapshot.timer') < euroActivator.indexOf('install -o euromacro'));
   assert.ok(euroActivator.indexOf('systemctl restart euromacro-snapshot.service') < euroActivator.indexOf('install-server.sh'));
@@ -103,6 +114,13 @@ test('la configuration versionnée sert les fichiers vivants et neutralise les a
   assert.match(riskBand, /class="risk-proof-link" href=\{`\/maintenant\/#signal-\$\{it\.key\}`\}/);
   assert.match(riskBand, /signal\.fallbackUsed && signal\.qualityStatus !== 'official-delayed'/);
   assert.match(riskClient, /item\.fallbackUsed && item\.qualityStatus !== 'official-delayed'/);
+  assert.match(riskBand, /it\.unavailable \? 'INDISPONIBLE'/);
+  assert.match(riskClient, /unavailable \? 'INDISPONIBLE'/);
+  assert.match(riskProvenance, /unavailable \? 'signal indisponible'/);
+  assert.match(radar, /unavailable \? 'INDISPONIBLE'/);
+  assert.match(nowPage, /filter\(\(signal\) => !isRiskSignalUnavailable\(signal\)\)/);
+  assert.match(nowPage, /unavailable \? 'INDISPONIBLE'/);
+  assert.match(topicPage, /unavailable \? 'INDISPONIBLE'/);
   assert.ok(
     home.indexOf('<section class="home-featured"') < home.indexOf('<section class="home-risk"'),
     'l’analyse vedette doit précéder les signaux',
@@ -114,5 +132,65 @@ test('le push valide le contrat sans sonder une production pas encore activée',
   const probeStep = workflow.slice(workflow.indexOf('- name: Probe deployed producers'));
 
   assert.ok(probeStep.startsWith('- name: Probe deployed producers'));
-  assert.match(probeStep, /if: github\.event_name == 'workflow_dispatch'[\s\S]*?run: node scripts\/check-risk-producers\.mjs/);
+  assert.match(workflow, /schedule:[\s\S]*?cron: '17 \* \* \* \*'/);
+  assert.match(probeStep, /if: github\.event_name == 'workflow_dispatch' \|\| github\.event_name == 'schedule'[\s\S]*?run: node scripts\/check-risk-producers\.mjs/);
+});
+
+test('la découverte MCP publique ne fabrique pas de serveur OAuth', async () => {
+  const [apache, discovery, oauth404, docs] = await Promise.all([
+    readFile(new URL('deploy/l0g.fr.apache.conf', root), 'utf8'),
+    readFile(new URL('public/.well-known/mcp.json', root), 'utf8').then(JSON.parse),
+    readFile(new URL('public/.well-known/mcp-oauth-not-supported.json', root), 'utf8').then(JSON.parse),
+    readFile(new URL('src/pages/mcp.astro', root), 'utf8'),
+  ]);
+  assert.equal(discovery.authentication.required, false);
+  assert.equal(discovery.authentication.oauthDiscovery, null);
+  assert.equal(oauth404.status, 404);
+  assert.ok(apache.includes('ErrorDocument 404 /.well-known/mcp-oauth-not-supported.json'));
+  assert.ok(docs.includes('statut 404 documenté'));
+});
+
+test('la page Statut mesure fraîcheur, corpus et retards depuis les contrats servis', async () => {
+  const [page, client, confluencePage, confluenceClient, updater, staticRiskRoute] = await Promise.all([
+    readFile(new URL('src/pages/status.astro', root), 'utf8'),
+    readFile(new URL('public/status-live.js', root), 'utf8'),
+    readFile(new URL('src/pages/confluence.astro', root), 'utf8'),
+    readFile(new URL('public/confluence-table.js', root), 'utf8'),
+    readFile(new URL('scripts/update-risk-snapshot.mjs', root), 'utf8'),
+    readFile(new URL('src/pages/api/v1/risk.json.ts', root), 'utf8'),
+  ]);
+  assert.ok(!page.includes("getCollection('posts'"));
+  for (const card of ['risk', 'eu', 'confluence', 'energy', 'corpus']) {
+    assert.ok(page.includes(`data-live-card="${card}"`), `carte live absente: ${card}`);
+  }
+  for (const endpoint of ['/api/v1/risk.json', '/api/v1/freshness.json', '/confluence.json']) {
+    assert.ok(client.includes(endpoint), `source live absente: ${endpoint}`);
+  }
+  assert.ok(client.includes('risk.staleAfter'));
+  assert.ok(client.includes('alerte 5 j'));
+  assert.ok(confluencePage.includes('pas nécessairement une nouvelle publication SEC EDGAR'));
+  assert.ok(confluenceClient.includes('fraîcheur EDGAR non attestée'));
+  assert.ok(confluenceClient.includes('Confluence indisponible'));
+  assert.ok(confluenceClient.includes("String(data.version) === '2'"));
+  assert.ok(client.includes('contrat v2 daté absent ou invalide'));
+  assert.ok(updater.includes("atomicJsonWrite(CONFLUENCE_PATH"));
+  assert.ok(updater.includes('items: []'));
+  assert.ok(staticRiskRoute.includes('snapshot statique trop ancien, valeur retirée'));
+  assert.ok(staticRiskRoute.includes('contractValid && !fallback ? conf.items : []'));
+});
+
+test('les icônes demandées par les navigateurs sont générées localement', async () => {
+  const [favicon, apple, precomposed, ico, generator] = await Promise.all([
+    readFile(new URL('public/favicon-32x32.png', root)),
+    readFile(new URL('public/apple-touch-icon.png', root)),
+    readFile(new URL('public/apple-touch-icon-precomposed.png', root)),
+    readFile(new URL('public/favicon.ico', root)),
+    readFile(new URL('scripts/generate-icons.mjs', root), 'utf8'),
+  ]);
+  const pngSignature = '89504e470d0a1a0a';
+  assert.equal(favicon.subarray(0, 8).toString('hex'), pngSignature);
+  assert.equal(apple.subarray(0, 8).toString('hex'), pngSignature);
+  assert.equal(precomposed.subarray(0, 8).toString('hex'), pngSignature);
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.ok(generator.includes("resize(180, 180)"));
 });

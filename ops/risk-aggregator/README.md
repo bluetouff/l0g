@@ -15,6 +15,9 @@ de chaque producteur. Chaque entrée d'`indices` publie séparément :
 - `sourceUpdatedAt`, `sourceCheckedAt`, `retrievedAt`, `lastAttemptAt`,
   `lastSuccessAt` ; `sourceUpdatedAt` date la publication des données tandis
   que `sourceCheckedAt` date le dernier contrôle réussi du producteur ;
+- `observedAt`, `observedAtMethod`, `observationWindow` et `componentDates` ;
+  pour un composite, `observedAt` est le composant économique le plus récent,
+  jamais la date de génération du producteur ;
 - `staleAfter`, `ageSeconds`, `timelinessStatus` ;
 - `qualityStatus`, `fallbackUsed`, `fallbackLayer`, `fallbackReason` et
   `warnings`.
@@ -57,7 +60,8 @@ prise sur confiance : `verify-producer-deployment.py` relit les fichiers sous
 doit donc modifier ensemble sa révision et les empreintes de ses points d'entrée
 et dépendances locales.
 
-Le journal opérationnel de schéma 3 archive aussi, pour chaque signal, le dépôt,
+Le journal opérationnel de schéma 4 archive aussi, pour chaque signal, la date
+économique amont, le dépôt,
 la révision déclarée, la révision publiée par le producteur quand elle existe et
 son statut de déclaration. Pour Euro, l’agrégateur refuse désormais un
 `source_sha` absent ou différent du manifeste : un déploiement indépendant ne
@@ -103,7 +107,8 @@ Le producteur Euro dispose d'un activateur coordonné. Une mise à jour partiell
 de `build_snapshot.py` est interdite : l’activateur atteste ensemble le
 générateur, le catalogue, le moteur de données, le contrat, le validateur, les
 dépendances déclarées et `refresh.sh`. Il sauvegarde le code et les snapshots
-actifs, écrit le SHA producteur déclaré dans `DEPLOYED_SHA`, exige un snapshot
+actifs, écrit le SHA producteur déclaré dans `DEPLOYED_SHA` et dans l'attestation
+root `L0G_ATTESTED_SHA`, exige un snapshot
 UTC de qualité nominale portant ce même SHA, puis active l'agrégateur :
 
 ```sh
@@ -125,11 +130,10 @@ curl -fsS https://l0g.fr/risk.json | jq '{generated,status,summary,indices}'
 curl -fsS https://l0g.fr/api/v1/history.ndjson | tail -n 1 | jq .
 ```
 
-Le workflow `risk producers` sépare volontairement les deux phases : les tests
-de contrat tournent à chaque push concerné, puis le sondage public complet est
-déclenché manuellement après l'activation. Ce sondage post-déploiement doit être
-vert avant de clore la livraison ; l'exécuter avant la bascule ne testerait que
-la révision précédente.
+Le workflow `risk producers` sépare les deux phases : les tests de contrat
+tournent à chaque push concerné ; le sondage public complet tourne chaque heure
+et peut aussi être déclenché manuellement après une activation. Ce sondage
+post-déploiement doit être vert avant de clore la livraison.
 
 Le déploiement ne doit être déclaré réussi que si les cinq signaux sont
 présents, les dates sont distinctes et un test de panne contrôlé publie bien

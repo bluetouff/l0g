@@ -2,6 +2,8 @@ name: risk producers
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
   push:
     branches:
       - main
@@ -35,5 +37,5 @@ jobs:
       - name: Test the monitoring contract
         run: node --test scripts/risk-producer-audit.test.mjs scripts/risk-deployment.test.mjs
       - name: Probe deployed producers, aggregator and both histories
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         run: node scripts/check-risk-producers.mjs

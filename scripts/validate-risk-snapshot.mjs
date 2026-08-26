@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 const requiredSignals = ['us', 'eu', 'yen', 'energie', 'debt'];
 const risk = JSON.parse(readFileSync('public/risk.json', 'utf8'));
 const debtSnapshot = JSON.parse(readFileSync('public/debt-latest.json', 'utf8'));
+const confluenceSnapshot = JSON.parse(readFileSync('public/confluence.json', 'utf8'));
 const riskScript = readFileSync('src/scripts/risk.js', 'utf8');
 
 if (!Array.isArray(risk.indices)) {
@@ -31,6 +32,12 @@ for (const key of requiredSignals) {
   }
   if (typeof item.fallbackUsed !== 'boolean') {
     throw new Error(`Signal ${key}: fallbackUsed doit etre booleen.`);
+  }
+  if (!item.observedAt || Number.isNaN(Date.parse(item.observedAt))) {
+    throw new Error(`Signal ${key}: observedAt doit dater une observation économique amont.`);
+  }
+  if (item.observedAtMethod !== 'latest-component-observation') {
+    throw new Error(`Signal ${key}: observedAtMethod doit documenter le composite.`);
   }
   if (!item.lastAttemptAt || Number.isNaN(Date.parse(item.lastAttemptAt))) {
     throw new Error(`Signal ${key}: lastAttemptAt doit etre une date ISO.`);
@@ -88,6 +95,15 @@ if (debtSnapshot.signal.value !== debtProvenance.scoreRounded) {
 }
 if (debtSnapshot.provenance?.latestJsonUrl !== 'https://debt.l0g.fr/latest.json') {
   throw new Error('public/debt-latest.json: provenance.latestJsonUrl doit pointer vers latest.json.');
+}
+if (String(confluenceSnapshot.version) !== '2') {
+  throw new Error('public/confluence.json doit exposer le contrat v2.');
+}
+if (!confluenceSnapshot.lastAttemptAt || Number.isNaN(Date.parse(confluenceSnapshot.lastAttemptAt))) {
+  throw new Error('public/confluence.json: lastAttemptAt invalide.');
+}
+if (confluenceSnapshot.sourceStatus === 'fallback' && confluenceSnapshot.items?.length) {
+  throw new Error('public/confluence.json: un repli de build ne doit pas republier des lignes anciennes.');
 }
 
 console.log(`Risk snapshot OK: ${requiredSignals.join(', ')}`);

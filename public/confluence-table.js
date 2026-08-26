@@ -25,6 +25,17 @@
 
   function fmt(v) { return v == null ? '\u2014' : v; }
 
+  function fmtDate(value) {
+    if (!value) return 'date absente';
+    var date = new Date(value);
+    if (Number.isNaN(date.getTime())) return 'date invalide';
+    return date.toLocaleString('fr-FR', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+      timeZone: 'Europe/Paris',
+    });
+  }
+
   function cell(tag, txt, cls) {
     var el = document.createElement(tag);
     if (txt != null) el.textContent = txt;
@@ -124,19 +135,35 @@
   fetch('/confluence.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
-      if (!data || !Array.isArray(data.items)) {
+      var contractValid = data && String(data.version) === '2' &&
+        Array.isArray(data.items) && data.lastAttemptAt && !Number.isNaN(Date.parse(data.lastAttemptAt));
+      var fallback = contractValid && (data.sourceStatus === 'fallback' || data.fallbackUsed === true);
+      if (!contractValid || fallback) {
         body.textContent = '';
         body.appendChild(cell('tr', null)).appendChild(
           cell('td', 'Données indisponibles.', 'px-3 py-6 text-center text-muted')
         ).colSpan = 9;
+        if (updEl) {
+          updEl.textContent = fallback
+            ? 'Confluence indisponible : repli actif' +
+              (data.fallbackReason ? ' · ' + data.fallbackReason : '') + '.'
+            : 'Confluence indisponible : contrat v2 daté absent ou invalide.';
+        }
         return;
       }
       rows = data.items;
-      if (updEl && data.updated) {
-        try {
-          updEl.textContent = 'Dernière mise à jour : ' +
-            new Date(data.updated).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
-        } catch (e) {}
+      if (updEl) {
+        var freshness = data.freshness || {};
+        var parts = ['Récupération l0g : ' + fmtDate(data.retrievedAt || data.updated)];
+        if (freshness.institutionalReportDate) {
+          parts.push('positions 13F au ' + freshness.institutionalReportDate);
+        }
+        if (freshness.upstreamServedFromCache === true) parts.push('réponse 13FLOW en cache');
+        if (freshness.edgarRefreshVerified !== true) parts.push('fraîcheur EDGAR non attestée');
+        if (data.sourceStatus === 'fallback') {
+          parts.push('repli actif' + (data.fallbackReason ? ' : ' + data.fallbackReason : ''));
+        }
+        updEl.textContent = parts.join(' · ');
       }
       wireSort();
       paint();
@@ -148,5 +175,6 @@
       td.colSpan = 9;
       tr.appendChild(td);
       body.appendChild(tr);
+      if (updEl) updEl.textContent = 'Confluence indisponible : lecture de /confluence.json impossible.';
     });
 })();

@@ -2,8 +2,10 @@ import { renameSync, readFileSync, writeFileSync } from 'node:fs';
 
 const RISK_PATH = 'public/risk.json';
 const DEBT_SNAPSHOT_PATH = 'public/debt-latest.json';
+const CONFLUENCE_PATH = 'public/confluence.json';
 const DEFAULT_RISK_URL = 'https://l0g.fr/risk.json';
 const DEFAULT_DEBT_URL = 'https://debt.l0g.fr/latest.json';
+const DEFAULT_CONFLUENCE_URL = 'https://l0g.fr/confluence.json';
 const MAX_REMOTE_BYTES = 2_000_000;
 
 function trustedUrl(value, expectedHost, label) {
@@ -16,6 +18,7 @@ function trustedUrl(value, expectedHost, label) {
 
 const riskUrl = trustedUrl(process.env.L0G_RISK_AGGREGATE_URL || DEFAULT_RISK_URL, 'l0g.fr', 'Agrégateur risk.json');
 const debtUrl = trustedUrl(process.env.DEBT_RISK_LATEST_URL || DEFAULT_DEBT_URL, 'debt.l0g.fr', 'Debt Risk Radar latest.json');
+const confluenceUrl = trustedUrl(process.env.L0G_CONFLUENCE_URL || DEFAULT_CONFLUENCE_URL, 'l0g.fr', 'Confluence l0g');
 const attemptedAt = new Date().toISOString();
 
 function assertNumber(value, label) {
@@ -144,6 +147,26 @@ function isoOrNull(value) {
   return new Date(value).toISOString();
 }
 
+function observationContract(sources) {
+  const ceiling = Date.parse(attemptedAt) + 24 * 60 * 60 * 1000;
+  const entries = (Array.isArray(sources) ? sources : [])
+    .map((source, index) => ({
+      key: String(source?.source || `source-${index}`),
+      raw: source?.latest_date || source?.latestDate || null,
+    }))
+    .map((entry) => ({ ...entry, value: isoOrNull(entry.raw && `${entry.raw}T00:00:00Z`) }))
+    .filter((entry) => entry.value && Date.parse(entry.value) <= ceiling)
+    .sort((left, right) => Date.parse(left.value) - Date.parse(right.value));
+  if (!entries.length) throw new Error('sources: date économique amont absente');
+  return {
+    observedAt: entries.at(-1).value,
+    observedAtMethod: 'latest-component-observation',
+    observationWindow: { oldest: entries[0].value, latest: entries.at(-1).value },
+    observationTimePrecision: 'date',
+    componentDates: Object.fromEntries(entries.map((entry) => [entry.key, entry.raw])),
+  };
+}
+
 function freshnessDefaults(item, key) {
   const durations = { us: 'PT36H', eu: 'PT36H', yen: 'PT12H', energie: 'PT6H', debt: 'PT6H' };
   return {
@@ -211,6 +234,50 @@ function aggregateFallback(previous, reason) {
   };
 }
 
+function confluenceContract(value) {
+  if (String(value?.version) !== '2' || !Array.isArray(value?.items)) {
+    throw new Error('confluence: contrat v2 absent ou invalide');
+  }
+  if (!isoOrNull(value.lastAttemptAt) || !isoOrNull(value.lastSuccessAt)) {
+    throw new Error('confluence: dates de santé absentes');
+  }
+  return value;
+}
+
+function confluenceFallback(previous, reason) {
+  const lastSuccessAt = isoOrNull(previous?.lastSuccessAt || previous?.retrievedAt || previous?.updated);
+  const ageSeconds = lastSuccessAt
+    ? Math.max(0, Math.round((Date.parse(attemptedAt) - Date.parse(lastSuccessAt)) / 1000))
+    : null;
+  return {
+    schema: 'https://l0g.fr/schemas/confluence-snapshot.json',
+    version: '2',
+    generated: attemptedAt,
+    updated: lastSuccessAt,
+    retrievedAt: lastSuccessAt,
+    lastAttemptAt: attemptedAt,
+    lastSuccessAt,
+    sourceStatus: 'fallback',
+    qualityStatus: 'degraded',
+    fallbackUsed: true,
+    fallbackReason: reason,
+    staleAfter: 'PT26H',
+    ageSeconds,
+    timelinessStatus: ageSeconds == null ? 'unknown' : ageSeconds > 26 * 3600 ? 'stale' : 'fresh',
+    provenanceStatus: 'partial',
+    source: previous?.source || { name: '13FLOW', url: 'https://13flow.eu/api/signals/confluence?window=90&min_score=0' },
+    freshness: previous?.freshness || {
+      l0gRetrievedAt: lastSuccessAt,
+      upstreamGeneratedAt: null,
+      institutionalReportDate: null,
+      upstreamServedFromCache: null,
+      edgarRefreshVerified: false,
+    },
+    items: [],
+    note: 'Copie statique retirée après échec de synchronisation. Consulter /confluence.json pour le contrat opérationnel vivant.',
+  };
+}
+
 function updateRiskSnapshot(risk, latest) {
   const overall = assertNumber(
     latest?.score?.current_stress ?? latest?.score?.overall,
@@ -226,6 +293,7 @@ function updateRiskSnapshot(risk, latest) {
   if (!Array.isArray(risk.indices)) {
     throw new Error('public/risk.json doit exposer un tableau indices.');
   }
+  const observation = observationContract(latest.sources);
 
   const debtSignal = {
     key: 'debt',
@@ -233,6 +301,7 @@ function updateRiskSnapshot(risk, latest) {
     scale: 100,
     level: levelFromStatus(status),
     tone: toneFromStatus(status),
+    ...observation,
     sourceStatus: 'ok',
     qualityStatus: Array.isArray(latest.issues) && latest.issues.length ? 'degraded' : 'nominal',
     fallbackUsed: false,
@@ -267,6 +336,7 @@ function updateRiskSnapshot(risk, latest) {
       calculator: 'https://github.com/bluetouff/debt-risk-radar',
       calculatorRevision: process.env.DEBT_RISK_CALCULATOR_REVISION || null,
       generatedAt,
+      observedAt: observation.observedAt,
       retrievedAt: attemptedAt,
       sourceStatus: debtSignal.sourceStatus,
       qualityStatus: debtSignal.qualityStatus,
@@ -321,6 +391,7 @@ function updateSummary(risk) {
 }
 
 const previous = JSON.parse(readFileSync(RISK_PATH, 'utf8'));
+const previousConfluence = JSON.parse(readFileSync(CONFLUENCE_PATH, 'utf8'));
 let risk;
 try {
   risk = mergeAggregate(previous, await fetchJson(riskUrl, 'Agrégateur risk.json'));
@@ -351,6 +422,14 @@ try {
 
 const updated = updateSummary(risk);
 atomicJsonWrite(RISK_PATH, updated);
+
+try {
+  atomicJsonWrite(CONFLUENCE_PATH, confluenceContract(await fetchJson(confluenceUrl, 'Confluence l0g')));
+} catch (error) {
+  const reason = `Confluence indisponible au build: ${safeError(error)}`;
+  console.warn(reason);
+  atomicJsonWrite(CONFLUENCE_PATH, confluenceFallback(previousConfluence, reason));
+}
 
 const debt = updated.indices.find((item) => item.key === 'debt');
 const debtProvenance = updated.provenance.debt;
