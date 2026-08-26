@@ -1,0 +1,466 @@
+---
+title: "Quand l’or monte, la dette aussi"
+seoTitle: "Prêts sur or en Inde : le boom caché du crédit | l0g"
+ogTitle: "L’Inde branche l’or des ménages sur le crédit"
+description: "La hausse de l’or permet aux mêmes ménages indiens d’emprunter davantage. Des bijoux aux banques, anatomie d’un boom encore très bien garanti."
+pubDate: 2026-08-26T14:00:00+02:00
+updatedDate: 2026-08-26T14:00:00+02:00
+tags: ["Inde", "or", "crédit", "ménages", "NBFC", "banques", "collatéral", "titrisation", "risque"]
+draft: false
+quickTake:
+  fact: "La Reserve Bank of India mesure une croissance annualisée de 42,4 % des prêts sur or depuis mars 2024. Elle l’attribue principalement à des emprunteurs déjà présents, qui utilisent la hausse du métal pour obtenir des montants plus élevés et renouveler leur dette."
+  importance: "Un actif qui s’apprécie peut fabriquer de la capacité d’emprunt sans améliorer le revenu du ménage. La créance peut ensuite être cédée par une société financière à une banque, ce qui relie le coffre à bijoux au reste du système financier."
+  uncertainty: "Les ratios prêt-valeur observés restent prudents et les pertes historiques très faibles. L’article décrit une mécanique procyclique et ses points de rupture, pas une crise imminente ni une prévision du prix de l’or."
+---
+
+import GoldLoanStress from '../../components/GoldLoanStress.astro';
+
+<style>{`@media(max-width:640px){.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}}`}</style>
+
+*Le 20 août 2026, Aditya Birla Capital a annoncé son entrée sur le marché indien des prêts sur or. Le groupe prévoit 200 à 300 agences spécialisées d’ici mars 2027, puis environ 1 000 en trois ans. Il ne s’agit plus d’une activité périphérique réservée à quelques prêteurs sur gages. Un des plus grands groupes financiers du pays construit désormais un réseau national pour transformer les bijoux des ménages en liquidités.*
+
+Cette annonce donne une forme très concrète à un basculement déjà visible dans les statistiques.
+
+Depuis mars 2024, les prêts garantis par de l’or ont progressé à un rythme annualisé de **42,4 %**, presque deux fois plus vite que l’ensemble des crédits de détail hors logement. La Reserve Bank of India, la RBI, les classe désormais au premier rang de cette catégorie. Elle identifie surtout un moteur inhabituel : la croissance vient principalement de clients déjà présents, qui profitent de la hausse de l’or pour obtenir des prêts plus importants et renouveler leur dette. ([Aditya Birla Group, 20 août 2026](https://www.adityabirla.com/media/press-releases/aditya-birla-capital-enters-gold-loan-business-to-open-1000-gold-loan-branches-in-the-next-three-years/), [RBI, Financial Stability Report, 30 juin 2026](https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?ID=1324&UrlPage=))
+
+Le mécanisme tient en une phrase : **le collatéral s’enrichit sur le papier, l’emprunteur pas nécessairement**.
+
+Une hausse du métal réduit mécaniquement le ratio entre la dette et la valeur du bijou. Elle rend le prêt plus sûr pour le prêteur et libère simultanément de la capacité d’endettement pour le ménage. Le revenu n’a pas augmenté. La capacité de remboursement n’a peut-être pas changé. Pourtant, la même chaîne ou le même bracelet autorise un crédit plus élevé.
+
+L’or ne sert donc plus seulement d’épargne de précaution. Il devient une ligne de crédit rechargeable par le marché.
+
+## Le prix de l’or ouvre une ligne de crédit
+
+Prenons un bijou valorisé 100 et un prêt de 60.
+
+Le ratio prêt-valeur, ou **LTV**, est de 60 %. Si l’or gagne 20 %, le bijou vaut désormais 120 tandis que la dette reste à 60. Le LTV tombe à 50 %. En conservant le même ratio interne de 60 %, le prêteur pourrait porter le principal à 72. Le ménage retire 12 de liquidités supplémentaires sans apporter un gramme d’or et sans hausse de revenu.
+
+Le plafond réglementaire peut ouvrir davantage de marge, mais il ne doit pas être confondu avec le montant réellement distribué. Le prêteur applique sa politique de risque, et pour un prêt remboursé en une fois à l’échéance, les intérêts futurs entrent eux aussi dans le calcul réglementaire.
+
+C’est cette dissociation qui rend le cycle procyclique :
+
+```text
+Hausse de l’or
+      ↓
+Baisse mécanique du LTV
+      ↓
+Plus grande capacité de prêt
+      ↓
+Nouveau crédit ou renouvellement
+      ↓
+Dette du ménage plus élevée
+```
+
+La première étape améliore objectivement la garantie. La dernière augmente l’exposition du ménage. Les deux phénomènes peuvent donc se produire en même temps.
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 560" width="100%" role="img" aria-labelledby="plumbing-fr-title plumbing-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow:hidden">
+<title id="plumbing-fr-title">Du bijou du ménage au bilan bancaire</title>
+<desc id="plumbing-fr-desc">Un ménage remet un bijou à une banque ou une société financière non bancaire. Le prêteur accorde le crédit et conserve le collatéral. La créance peut ensuite être cédée directement ou titrisée auprès d’une banque. Au deuxième trimestre 2026, l’or représentait 31 % des volumes de titrisation recensés par Crisil.</desc>
+<style>{`.plumbing-fr-mobile{display:none}@media(max-width:640px){.plumbing-fr-desktop{display:none}.plumbing-fr-mobile{display:block}}`}</style>
+<g class="plumbing-fr-desktop">
+<rect width="760" height="560" rx="16" fill="#0b0f14"/>
+<text x="34" y="48" fill="#f7f9fc" font-size="24" font-weight="780">UN BIJOU, PLUSIEURS BILANS</text>
+<text x="34" y="76" fill="#99a7bb" font-size="13">Le collatéral reste physique. La créance, elle, peut voyager.</text>
+<rect x="30" y="112" width="190" height="150" rx="14" fill="#16212c" stroke="#f5b13d"/>
+<text x="48" y="145" fill="#f5b13d" font-size="13" font-weight="800">1 · MÉNAGE</text>
+<text x="48" y="180" fill="#ffffff" font-size="20" font-weight="760">Bijou en or</text>
+<text x="48" y="207" fill="#b6c4d1" font-size="12">épargne déjà détenue</text>
+<text x="48" y="229" fill="#7f93a6" font-size="11">mise en gage volontaire</text>
+<path d="M225 187 H273" stroke="#6f8295" stroke-width="3" marker-end="url(#plumbing-arrow-fr)"/>
+<rect x="280" y="112" width="200" height="150" rx="14" fill="#172328" stroke="#5eead4"/>
+<text x="298" y="145" fill="#5eead4" font-size="13" font-weight="800">2 · BANQUE OU NBFC</text>
+<text x="298" y="180" fill="#ffffff" font-size="20" font-weight="760">Prêt en roupies</text>
+<text x="298" y="207" fill="#bdd8d4" font-size="12">le bijou reste au coffre</text>
+<text x="298" y="229" fill="#7fa7a1" font-size="11">la créance entre au bilan</text>
+<path d="M485 187 H533" stroke="#6f8295" stroke-width="3" marker-end="url(#plumbing-arrow-fr)"/>
+<rect x="540" y="112" width="190" height="150" rx="14" fill="#1a1c25" stroke="#7aa2f7"/>
+<text x="558" y="145" fill="#7aa2f7" font-size="13" font-weight="800">3 · INVESTISSEUR</text>
+<text x="558" y="180" fill="#ffffff" font-size="20" font-weight="760">Souvent une banque</text>
+<text x="558" y="207" fill="#c3cceb" font-size="12">achat de créances</text>
+<text x="558" y="229" fill="#8793bd" font-size="11">ou de titres adossés</text>
+<defs><marker id="plumbing-arrow-fr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f8295"/></marker></defs>
+<rect x="30" y="302" width="700" height="72" rx="12" fill="#11161c" stroke="#34404c"/>
+<text x="52" y="330" fill="#dce6ef" font-size="13" font-weight="750">CE QUI NE BOUGE PAS</text>
+<text x="52" y="354" fill="#99a7bb" font-size="12">La RBI interdit au prêteur de remettre en gage l’or de ses clients. Le financement peut porter sur les créances sous-jacentes.</text>
+<rect x="30" y="400" width="214" height="112" rx="12" fill="#15171c" stroke="#ff4d87"/>
+<text x="48" y="430" fill="#ff4d87" font-size="12" font-weight="800">31 %</text>
+<text x="48" y="457" fill="#f3f5f8" font-size="13" font-weight="720">des volumes titrisés</text>
+<text x="48" y="479" fill="#8b929e" font-size="11">étaient des prêts sur or</text>
+<text x="48" y="498" fill="#6f7783" font-size="10">avril-juin 2026</text>
+<rect x="273" y="400" width="214" height="112" rx="12" fill="#15171c" stroke="#f5b13d"/>
+<text x="291" y="430" fill="#f5b13d" font-size="12" font-weight="800">87 %</text>
+<text x="291" y="457" fill="#f3f5f8" font-size="13" font-weight="720">par cession directe</text>
+<text x="291" y="479" fill="#8b929e" font-size="11">des pools de prêts sur or</text>
+<text x="291" y="498" fill="#6f7783" font-size="10">plutôt que via certificat</text>
+<rect x="516" y="400" width="214" height="112" rx="12" fill="#15171c" stroke="#7aa2f7"/>
+<text x="534" y="430" fill="#7aa2f7" font-size="12" font-weight="800">90 %</text>
+<text x="534" y="457" fill="#f3f5f8" font-size="13" font-weight="720">des émissions totales</text>
+<text x="534" y="479" fill="#8b929e" font-size="11">avaient une banque parmi</text>
+<text x="534" y="498" fill="#6f7783" font-size="10">les investisseurs, toutes classes</text>
+<text x="34" y="545" fill="#71869a" font-size="10">Source : Crisil Ratings, marché indien de la titrisation, T1 de l’exercice 2026-2027.</text>
+</g>
+<g class="plumbing-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="258" rx="10" fill="#0b0f14"/>
+<text x="15" y="21" fill="#f7f9fc" font-size="12.5" font-weight="780">DU BIJOU AU BILAN BANCAIRE</text>
+<text x="15" y="35" fill="#8fa3b7" font-size="7.5">Le collatéral reste physique, la créance voyage</text>
+<rect x="13" y="47" width="94" height="61" rx="7" fill="#16212c" stroke="#f5b13d"/>
+<text x="22" y="63" fill="#f5b13d" font-size="7.5" font-weight="800">MÉNAGE</text>
+<text x="22" y="82" fill="#fff" font-size="10.5" font-weight="760">Bijou en or</text>
+<text x="22" y="97" fill="#7f93a6" font-size="6.6">mis en gage</text>
+<path d="M109 77 H126" stroke="#6f8295" stroke-width="2" marker-end="url(#plumbing-arrow-fr-mobile)"/>
+<rect x="130" y="47" width="94" height="61" rx="7" fill="#172328" stroke="#5eead4"/>
+<text x="139" y="63" fill="#5eead4" font-size="7.5" font-weight="800">BANQUE / NBFC</text>
+<text x="139" y="82" fill="#fff" font-size="10.5" font-weight="760">Prêt en ₹</text>
+<text x="139" y="97" fill="#7fa7a1" font-size="6.6">créance au bilan</text>
+<path d="M226 77 H243" stroke="#6f8295" stroke-width="2" marker-end="url(#plumbing-arrow-fr-mobile)"/>
+<rect x="247" y="47" width="90" height="61" rx="7" fill="#1a1c25" stroke="#7aa2f7"/>
+<text x="256" y="63" fill="#7aa2f7" font-size="7.5" font-weight="800">INVESTISSEUR</text>
+<text x="256" y="82" fill="#fff" font-size="9.5" font-weight="760">Souvent banque</text>
+<text x="256" y="97" fill="#8793bd" font-size="6.6">achète la créance</text>
+<defs><marker id="plumbing-arrow-fr-mobile" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#6f8295"/></marker></defs>
+<rect x="13" y="121" width="324" height="36" rx="6" fill="#11161c" stroke="#34404c"/>
+<text x="22" y="137" fill="#dce6ef" font-size="7" font-weight="750">L’OR N’EST PAS REMIS EN GAGE PAR LE PRÊTEUR</text>
+<text x="22" y="149" fill="#8fa3b7" font-size="6.3">Le financement porte sur la créance et ses flux.</text>
+<rect x="13" y="170" width="99" height="59" rx="6" fill="#15171c" stroke="#ff4d87"/>
+<text x="22" y="188" fill="#ff4d87" font-size="10" font-weight="800">31 %</text>
+<text x="22" y="204" fill="#f3f5f8" font-size="6.8">des volumes titrisés</text>
+<text x="22" y="216" fill="#7f8793" font-size="6.2">prêts sur or</text>
+<rect x="125" y="170" width="99" height="59" rx="6" fill="#15171c" stroke="#f5b13d"/>
+<text x="134" y="188" fill="#f5b13d" font-size="10" font-weight="800">87 %</text>
+<text x="134" y="204" fill="#f3f5f8" font-size="6.8">par cession directe</text>
+<text x="134" y="216" fill="#7f8793" font-size="6.2">sur l’or titrisé</text>
+<rect x="237" y="170" width="100" height="59" rx="6" fill="#15171c" stroke="#7aa2f7"/>
+<text x="246" y="188" fill="#7aa2f7" font-size="10" font-weight="800">90 %</text>
+<text x="246" y="204" fill="#f3f5f8" font-size="6.8">émissions totales</text>
+<text x="246" y="216" fill="#7f8793" font-size="6.2">achetées par banques</text>
+<text x="15" y="249" fill="#71869a" font-size="5.8">Crisil Ratings · avril-juin 2026</text>
+</g>
+</svg>
+<figcaption>Le bijou crée une créance chez le prêteur. Cette créance peut ensuite rejoindre le bilan d’une banque par cession directe ou via un titre, sans que le collatéral soit physiquement remis en gage une seconde fois.</figcaption>
+</figure>
+
+## La RBI a trouvé le moteur du boom
+
+La statistique la plus importante n’est pas le rythme de 42,4 %. C’est l’explication donnée par la banque centrale.
+
+La RBI compare les nouveaux prêts distribués aux encours restant dans les bilans. L’écart lui indique que l’expansion est **principalement alimentée par des emprunteurs existants**. Ceux-ci utilisent l’appréciation du métal pour obtenir davantage de crédit et pour renouveler des dettes arrivant à échéance. Le phénomène est particulièrement visible chez les NBFC, les sociétés financières non bancaires régulées par la RBI, dont les volumes de nouveaux prêts dépassent largement ceux des banques publiques et privées. ([RBI, paragraphes 1.71 à 1.75](https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?ID=1324&UrlPage=))
+
+Le renouvellement ne constitue pas en soi un défaut caché. Un prêt peut être soldé correctement puis remplacé par un autre. Le point analytique se trouve ailleurs : le contrat précédent disparaît, tandis que l’endettement économique du ménage peut persister ou augmenter.
+
+La documentation commerciale de Manappuram Finance montre le mécanisme avec une clarté rare. Dans son service de prêt sur or en ligne, un client qui souhaite un montant supérieur peut souscrire un nouveau prêt. Le système utilise une partie du nouveau produit pour fermer l’ancien compte, puis verse la différence sur le compte bancaire du client. Un seul prêt reste officiellement ouvert. Le bijou, lui, n’a pas quitté l’agence. ([Manappuram Finance, FAQ Online Gold Loan](https://www.manappuram.com/gold-loan/help-online-gold-loan))
+
+Depuis l’entrée en vigueur du nouveau cadre de la RBI, le 1er avril 2026, le renouvellement d’un prêt remboursable in fine exige toutefois le paiement préalable des intérêts courus. Cette contrainte évite qu’ils soient simplement empilés sans contrôle. Elle n’empêche pas le principal d’être refinancé, ni le ménage d’extraire une somme supplémentaire si le LTV le permet.
+
+Le moteur du boom ressemble donc moins à une arrivée massive de nouveaux emprunteurs qu’à une **augmentation de la puissance financière du même collatéral**.
+
+## 8 400 milliards de roupies de prêts de détail
+
+Le World Gold Council estime qu’à fin mai 2026, les banques indiennes détenaient **5 100 milliards de roupies** de prêts de détail garantis par de l’or, soit environ 54 milliards de dollars, en hausse de **105 % sur un an**. Les NBFC en détenaient **3 300 milliards**, soit 34,5 milliards de dollars, en hausse de **70 %**. Additionnés, ces deux montants représentent environ **8 400 milliards de roupies**, ou 88,5 milliards de dollars. Cette somme est un calcul à partir des deux séries publiées, pas un agrégat distinct fourni par la RBI. ([World Gold Council, India Focus Q2 2026](https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-india-focus-q2-2026))
+
+Le World Gold Council les décrit comme le deuxième segment du crédit de détail après le logement. La RBI les classe premiers parmi les crédits de détail **hors logement**. Les deux formulations sont compatibles.
+
+Le gisement potentiel est immense. Le World Gold Council estime que les ménages indiens détiennent environ **31 000 tonnes d’or**, valorisées 3 400 milliards de dollars. Ce chiffre est une estimation de stock, pas un inventaire, et tout cet or ne peut évidemment pas entrer dans le circuit formel. Il donne néanmoins l’échelle de l’actif dormant sur lequel les prêteurs cherchent à construire. ([World Gold Council, Swarnim Udaan 2047](https://www.gold.org/news-and-events/press-releases/world-gold-council-launches-swarnim-udaan-2047))
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 540" width="100%" role="img" aria-labelledby="scale-fr-title scale-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow:hidden">
+<title id="scale-fr-title">Croissance et encours des prêts sur or en Inde</title>
+<desc id="scale-fr-desc">Depuis mars 2024, les prêts sur or progressent à un rythme annualisé de 42,4 %, contre 23 % pour l’ensemble des prêts de détail hors logement. À fin mai 2026, les banques détenaient 5 100 milliards de roupies de prêts de détail sur or et les NBFC 3 300 milliards.</desc>
+<style>{`.scale-fr-mobile{display:none}@media(max-width:640px){.scale-fr-desktop{display:none}.scale-fr-mobile{display:block}}`}</style>
+<g class="scale-fr-desktop">
+<rect width="760" height="540" rx="16" fill="#0b0f14"/>
+<text x="34" y="48" fill="#f7f9fc" font-size="24" font-weight="780">LE COLLATÉRAL QUI ACCÉLÈRE LE CRÉDIT</text>
+<text x="34" y="76" fill="#99a7bb" font-size="13">Deux mesures différentes : rythme depuis mars 2024 et encours à fin mai 2026.</text>
+<rect x="30" y="108" width="700" height="168" rx="14" fill="#121820" stroke="#34404c"/>
+<text x="52" y="138" fill="#dce6ef" font-size="13" font-weight="760">CROISSANCE ANNUALISÉE DEPUIS MARS 2024</text>
+<text x="52" y="174" fill="#f5b13d" font-size="12" font-weight="750">PRÊTS SUR OR</text>
+<rect x="172" y="158" width="470" height="24" rx="12" fill="#252d37"/>
+<rect x="172" y="158" width="398" height="24" rx="12" fill="#f5b13d"/>
+<text x="662" y="176" text-anchor="end" fill="#fff" font-size="18" font-weight="800">42,4 %</text>
+<text x="52" y="223" fill="#7aa2f7" font-size="12" font-weight="750">RETAIL HORS LOGEMENT</text>
+<rect x="222" y="207" width="420" height="24" rx="12" fill="#252d37"/>
+<rect x="222" y="207" width="228" height="24" rx="12" fill="#7aa2f7"/>
+<text x="662" y="225" text-anchor="end" fill="#fff" font-size="18" font-weight="800">23,0 %</text>
+<rect x="30" y="304" width="337" height="176" rx="14" fill="#16212c" stroke="#5eead4"/>
+<text x="50" y="336" fill="#5eead4" font-size="13" font-weight="800">BANQUES</text>
+<text x="50" y="386" fill="#fff" font-size="31" font-weight="800">₹5 100 Md</text>
+<text x="50" y="416" fill="#b6c4d1" font-size="13">environ 54 Md$</text>
+<text x="50" y="449" fill="#5eead4" font-size="18" font-weight="800">+105 % sur un an</text>
+<rect x="393" y="304" width="337" height="176" rx="14" fill="#1a1c25" stroke="#7aa2f7"/>
+<text x="413" y="336" fill="#7aa2f7" font-size="13" font-weight="800">NBFC</text>
+<text x="413" y="386" fill="#fff" font-size="31" font-weight="800">₹3 300 Md</text>
+<text x="413" y="416" fill="#c3cceb" font-size="13">environ 34,5 Md$</text>
+<text x="413" y="449" fill="#7aa2f7" font-size="18" font-weight="800">+70 % sur un an</text>
+<text x="34" y="518" fill="#71869a" font-size="10">Sources : RBI, Financial Stability Report, 30.06.2026 ; World Gold Council, données à fin mai 2026.</text>
+</g>
+<g class="scale-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="248.7" rx="10" fill="#0b0f14"/>
+<text x="15" y="21" fill="#f7f9fc" font-size="11.5" font-weight="780">LE COLLATÉRAL ACCÉLÈRE LE CRÉDIT</text>
+<text x="15" y="35" fill="#8fa3b7" font-size="6.7">Croissance depuis mars 2024 · encours fin mai 2026</text>
+<rect x="13" y="47" width="324" height="75" rx="7" fill="#121820" stroke="#34404c"/>
+<text x="22" y="62" fill="#dce6ef" font-size="6.8" font-weight="760">CROISSANCE ANNUALISÉE</text>
+<text x="22" y="82" fill="#f5b13d" font-size="7" font-weight="750">OR</text>
+<rect x="58" y="73" width="216" height="11" rx="5.5" fill="#252d37"/>
+<rect x="58" y="73" width="183" height="11" rx="5.5" fill="#f5b13d"/>
+<text x="327" y="83" text-anchor="end" fill="#fff" font-size="9.5" font-weight="800">42,4 %</text>
+<text x="22" y="105" fill="#7aa2f7" font-size="6.5" font-weight="750">HORS LOGEMENT</text>
+<rect x="91" y="96" width="183" height="11" rx="5.5" fill="#252d37"/>
+<rect x="91" y="96" width="99" height="11" rx="5.5" fill="#7aa2f7"/>
+<text x="327" y="106" text-anchor="end" fill="#fff" font-size="9.5" font-weight="800">23,0 %</text>
+<rect x="13" y="135" width="155" height="82" rx="7" fill="#16212c" stroke="#5eead4"/>
+<text x="23" y="152" fill="#5eead4" font-size="7" font-weight="800">BANQUES</text>
+<text x="23" y="178" fill="#fff" font-size="16" font-weight="800">₹5 100 Md</text>
+<text x="23" y="195" fill="#b6c4d1" font-size="6.7">54 Md$ · +105 %</text>
+<rect x="182" y="135" width="155" height="82" rx="7" fill="#1a1c25" stroke="#7aa2f7"/>
+<text x="192" y="152" fill="#7aa2f7" font-size="7" font-weight="800">NBFC</text>
+<text x="192" y="178" fill="#fff" font-size="16" font-weight="800">₹3 300 Md</text>
+<text x="192" y="195" fill="#c3cceb" font-size="6.7">34,5 Md$ · +70 %</text>
+<text x="15" y="238" fill="#71869a" font-size="5.7">RBI · World Gold Council · 2026</text>
+</g>
+</svg>
+<figcaption>L’encours progresse à la fois chez les banques et les NBFC. La somme de 8 400 milliards de roupies résulte de l’addition des deux montants publiés par le World Gold Council.</figcaption>
+</figure>
+
+Le phénomène s’inscrit dans une hausse plus large de l’endettement des ménages. Celui-ci atteignait **45,5 % du PIB** à fin septembre 2025. Les crédits de détail hors logement représentaient **58,4 %** de leurs emprunts en mars 2026, et les prêts destinés à la consommation comptaient pour près de la moitié du total. Ces ratios ne décrivent pas, à eux seuls, une crise de dette. Ils montrent que le crédit sur or se développe dans une économie où l’endettement des ménages se déplace déjà vers les usages non immobiliers. ([RBI, secteur des ménages](https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?ID=1324&UrlPage=))
+
+## La nouvelle règle protège le prêteur et libère de la capacité
+
+La RBI a harmonisé le régime des prêts garantis par de l’or et de l’argent en juin 2025. Les règles devaient être appliquées au plus tard le **1er avril 2026** par les banques commerciales, les banques coopératives et les NBFC.
+
+Pour les prêts de consommation, le plafond dépend du montant total emprunté par le client :
+
+| Montant total du prêt | LTV réglementaire maximal | Principal maximal à 18 % sur 12 mois* |
+|---:|---:|---:|
+| Jusqu’à ₹2,5 lakh | 85 % | 72,0 % de la valeur du bijou |
+| Plus de ₹2,5 lakh et jusqu’à ₹5 lakh | 80 % | 67,8 % |
+| Plus de ₹5 lakh | 75 % | 63,6 % |
+
+\* Calcul l0g à intérêt simple, prix de l’or inchangé, sans frais ni paiement intermédiaire. Un **lakh** vaut 100 000 roupies.
+
+La troisième colonne révèle une subtilité essentielle. Pour un prêt « bullet », dont principal et intérêts sont réglés à l’échéance, le LTV ne se calcule pas seulement sur l’argent versé le premier jour. La RBI exige d’utiliser **le montant total payable à maturité**.
+
+Avec un taux simple de 18 % sur douze mois, un principal égal à 80 % du bijou produirait une créance de 94,4 % avant même le moindre mouvement de l’or. Pour respecter un plafond de 80 %, le principal initial ne peut mécaniquement dépasser 67,8 %, sauf paiement d’intérêts en cours de route ou autre structure de remboursement.
+
+La réglementation ajoute plusieurs garde-fous :
+
+- le prix de référence retient le plus faible entre la clôture de la veille et la moyenne des trente jours précédents ;
+- seule la valeur intrinsèque du métal compte, sans les pierres, le travail du joaillier ni la valeur sentimentale ;
+- la pureté et le poids net doivent être documentés en présence du client ;
+- le LTV doit rester conforme pendant toute la durée du prêt ;
+- la durée d’un prêt de consommation remboursé in fine est limitée à douze mois ;
+- au-dessus de ₹2,5 lakh, le prêteur doit évaluer la capacité de remboursement ;
+- un renouvellement ou un crédit supplémentaire n’est possible que pour un prêt sain, dans la limite du LTV, et après paiement des intérêts courus pour un prêt bullet. ([RBI, Lending Against Gold and Silver Collateral Directions, 2025](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12859&Mode=0))
+
+Le cadre réduit certains risques de pratique commerciale. Il peut aussi soutenir les volumes, puisque les petits prêts peuvent désormais atteindre 80 % ou 85 % au lieu d’un plafond uniforme de 75 %. Crisil estimait dès juin 2025 que près de 70 % du portefeuille des NBFC se situait sous ₹5 lakh et que le LTV du principal à l’octroi pourrait monter vers 70 % à 75 % sur les petits prêts, même après intégration des intérêts futurs. ([Crisil Ratings, 13 juin 2025](https://www.crisilratings.com/en/home/newsroom/press-releases/2025/06/ltv-breather-in-final-gold-loan-directions-a-growth-prop-for-nbfcs.html))
+
+La règle protège donc le prêteur contre l’accumulation silencieuse d’intérêts. En parallèle, les plafonds relevés sur les petits tickets autorisent davantage de crédit contre la même quantité d’or.
+
+## Pourquoi les bilans paraissent encore très propres
+
+La croissance de 42,4 % ressemble à un signal d’alerte. Les données de risque ne racontent pas, pour l’instant, une crise bancaire.
+
+Le World Gold Council rapporte des LTV de portefeuille autour de **55 % dans les banques** et de **60 % dans les NBFC** en mars 2026. La hausse du métal a fait baisser ces ratios malgré l’expansion des prêts. Le collatéral couvre donc largement l’encours moyen. La RBI observe aussi une amélioration générale de la qualité des crédits à la consommation. Dans l’ensemble du secteur NBFC, et non dans les seuls prêts sur or, le ratio net de créances douteuses est tombé à **0,8 %**. ([World Gold Council, Q2 2026](https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-india-focus-q2-2026), [RBI, secteur NBFC](https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?ID=1324&UrlPage=))
+
+Crisil a étudié les prêts bullet de douze mois de plusieurs NBFC spécialisées. Selon son échantillon, environ **90 %** sont remboursés avant ou à l’échéance, notamment grâce aux remboursements anticipés. Parmi les montants encore impayés à la date contractuelle, plus des trois quarts sont réglés avant l’enchère. Moins de 3 % des prêts distribués finissent typiquement par une vente du bijou. Cette étude ne couvre pas chaque prêteur indien et ne remplace pas une statistique réglementaire exhaustive. Elle explique néanmoins pourquoi les pertes historiques des financeurs restent très faibles. ([Crisil Ratings, 24 juin 2026](https://www.crisilratings.com/en/home/newsroom/press-releases/2026/06/gold-loan-lenders-ringfenced-well-from-price-correction-risk.html))
+
+La structure est robuste pour quatre raisons :
+
+1. le crédit part généralement sous le plafond réglementaire ;
+2. l’or peut être réévalué fréquemment ;
+3. le prêteur peut déclencher une procédure avant que le collatéral ne devienne insuffisant ;
+4. l’actif est liquide et revendable, contrairement à une machine industrielle très spécifique ou à une créance commerciale contestée.
+
+Cette solidité ne contredit pas la thèse de l’article. Elle la rend plus intéressante. **Un mécanisme peut augmenter la dette des ménages tout en améliorant simultanément les ratios de garantie des prêteurs.**
+
+## Le bijou reste au coffre, la créance voyage
+
+Le prêt sur or paraît local : un client, une agence, un bijou conservé dans un coffre. Son financement ne s’arrête pas nécessairement là.
+
+Entre avril et juin 2026, le marché indien de la titrisation a atteint environ **600 milliards de roupies**, en hausse de 22 % sur un an selon Crisil. Les prêts sur or en représentaient **31 %**, devant les prêts automobiles à 26 %. Ils sont ainsi devenus la première classe d’actifs du trimestre dans les opérations recensées par l’agence de notation. ([Crisil Ratings, 6 juillet 2026](https://www.crisilratings.com/en/home/newsroom/press-releases/2026/07/nbfc-originations-drive-securitisation-volume-to-first-quarter-peak.html))
+
+Le mot « titrisation » recouvre ici deux routes.
+
+La première passe par des certificats adossés à un portefeuille de prêts. La seconde, largement dominante pour l’or, est la **cession directe** : le prêteur vend un pool de créances à l’investisseur sans fabriquer nécessairement un titre négociable via un véhicule. Crisil inclut les deux formes dans son périmètre de finance structurée. Au cours du trimestre, **87 %** des prêts sur or transférés l’ont été par cession directe.
+
+Les banques ont investi dans 90 % des émissions, toutes classes d’actifs confondues. Crisil précise que les banques publiques apprécient particulièrement les prêts sur or en raison de leurs pertes historiques négligeables et de leur traitement en risque.
+
+Le collier ne traverse donc pas forcément l’Inde pour finir dans le coffre d’une autre banque. Ce qui voyage est la créance : le droit de recevoir le principal et les intérêts, adossé à un bijou conservé et administré dans le réseau du prêteur.
+
+La RBI interdit d’ailleurs au prêteur de remettre en gage l’or de ses clients pour emprunter à son tour. Elle autorise explicitement le financement d’un autre prêteur contre les **créances sous-jacentes**. La frontière est nette : le même or physique ne doit pas servir de gage matériel à plusieurs étages, mais le crédit qu’il sécurise peut circuler dans le système financier.
+
+Cette plomberie crée une boucle utile aux NBFC :
+
+```text
+Bijoux des ménages
+        ↓
+Prêts distribués par la NBFC
+        ↓
+Créances cédées à une banque
+        ↓
+Liquidités récupérées par la NBFC
+        ↓
+Nouveaux prêts sur or
+```
+
+La boucle ne fabrique pas nécessairement du levier excessif. Elle transforme néanmoins une épargne familiale très ancienne en matière première pour le financement de bilans modernes.
+
+## Le scénario inverse
+
+Lorsque l’or monte, le LTV s’améliore sans remboursement. Lorsque l’or baisse, l’opération se retourne avec la même mécanique.
+
+Pour une dette de 60 contre un bijou initialement valorisé 100, avant intérêts :
+
+| Variation de l’or | Valeur du collatéral | LTV |
+|---:|---:|---:|
+| 0 % | 100 | 60,0 % |
+| -10 % | 90 | 66,7 % |
+| -20 % | 80 | 75,0 % |
+| -30 % | 70 | 85,7 % |
+| -40 % | 60 | 100,0 % |
+
+<figure class="infographic" style="margin:2rem 0 2.25rem">
+<svg viewBox="0 0 760 430" width="100%" role="img" aria-labelledby="stress-fr-title stress-fr-desc" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0b0f14;border:1px solid #3a4654;border-radius:16px;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow:hidden">
+<title id="stress-fr-title">Effet mécanique d’une baisse de l’or sur un prêt à 60 % de LTV</title>
+<desc id="stress-fr-desc">Sans intérêts, une dette de 60 contre un collatéral de 100 passe d’un LTV de 60 % à 66,7 % après une baisse de l’or de 10 %, 75 % après 20 %, 85,7 % après 30 % et 100 % après 40 %.</desc>
+<style>{`.stress-fr-mobile{display:none}@media(max-width:640px){.stress-fr-desktop{display:none}.stress-fr-mobile{display:block}}`}</style>
+<g class="stress-fr-desktop">
+<rect width="760" height="430" rx="16" fill="#0b0f14"/>
+<text x="34" y="48" fill="#f7f9fc" font-size="23" font-weight="780">MÊME DETTE, COLLATÉRAL PLUS PETIT</text>
+<text x="34" y="76" fill="#99a7bb" font-size="13">Dette fixe à 60 · valeur initiale du bijou à 100 · avant intérêts</text>
+<line x1="80" y1="321" x2="690" y2="321" stroke="#34404c" stroke-width="2"/>
+<rect x="72" y="172" width="82" height="149" rx="8" fill="#19302d" stroke="#5eead4"/>
+<text x="113" y="151" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="800">0 %</text>
+<text x="113" y="203" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">100</text>
+<text x="113" y="232" text-anchor="middle" fill="#aeb4be" font-size="11">collatéral</text>
+<text x="113" y="285" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">60,0 %</text>
+<rect x="201" y="187" width="82" height="134" rx="8" fill="#1c2d2c" stroke="#70cbbf"/>
+<text x="242" y="166" text-anchor="middle" fill="#70cbbf" font-size="14" font-weight="800">-10 %</text>
+<text x="242" y="218" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">90</text>
+<text x="242" y="247" text-anchor="middle" fill="#aeb4be" font-size="11">collatéral</text>
+<text x="242" y="285" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">66,7 %</text>
+<rect x="330" y="202" width="82" height="119" rx="8" fill="#302918" stroke="#f5b13d"/>
+<text x="371" y="181" text-anchor="middle" fill="#f5b13d" font-size="14" font-weight="800">-20 %</text>
+<text x="371" y="233" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">80</text>
+<text x="371" y="262" text-anchor="middle" fill="#aeb4be" font-size="11">collatéral</text>
+<text x="371" y="298" text-anchor="middle" fill="#f5b13d" font-size="19" font-weight="800">75,0 %</text>
+<rect x="459" y="217" width="82" height="104" rx="8" fill="#352019" stroke="#f28c48"/>
+<text x="500" y="196" text-anchor="middle" fill="#f28c48" font-size="14" font-weight="800">-30 %</text>
+<text x="500" y="248" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">70</text>
+<text x="500" y="277" text-anchor="middle" fill="#aeb4be" font-size="11">collatéral</text>
+<text x="500" y="308" text-anchor="middle" fill="#f28c48" font-size="19" font-weight="800">85,7 %</text>
+<rect x="588" y="232" width="82" height="89" rx="8" fill="#351923" stroke="#ff4d87"/>
+<text x="629" y="211" text-anchor="middle" fill="#ff4d87" font-size="14" font-weight="800">-40 %</text>
+<text x="629" y="263" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">60</text>
+<text x="629" y="292" text-anchor="middle" fill="#aeb4be" font-size="11">collatéral</text>
+<text x="629" y="313" text-anchor="middle" fill="#ff4d87" font-size="19" font-weight="800">100 %</text>
+<text x="34" y="363" fill="#d7e3ee" font-size="13">L’intérêt fait monter la dette même si l’or ne bouge pas.</text>
+<text x="34" y="388" fill="#8fa3b7" font-size="11">À 18 % sur douze mois, le même principal de 60 devient 70,8 à l’échéance.</text>
+<text x="34" y="414" fill="#71869a" font-size="10">Calcul mécanique l0g. Aucun scénario de prix n’est présenté comme une prévision.</text>
+</g>
+<g class="stress-fr-mobile" transform="scale(2.1714)">
+<rect width="350" height="198" rx="10" fill="#0b0f14"/>
+<text x="15" y="20" fill="#f7f9fc" font-size="11.5" font-weight="780">MÊME DETTE, COLLATÉRAL PLUS PETIT</text>
+<text x="15" y="34" fill="#8fa3b7" font-size="6.6">Dette 60 · bijou 100 au départ · avant intérêts</text>
+<line x1="18" y1="145" x2="332" y2="145" stroke="#34404c"/>
+<rect x="13" y="62" width="56" height="83" rx="6" fill="#19302d" stroke="#5eead4"/>
+<text x="41" y="55" text-anchor="middle" fill="#5eead4" font-size="8" font-weight="800">0 %</text>
+<text x="41" y="87" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">100</text>
+<text x="41" y="104" text-anchor="middle" fill="#8fa3b7" font-size="6.5">valeur</text>
+<text x="41" y="132" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="800">60,0 %</text>
+<rect x="78" y="69" width="56" height="76" rx="6" fill="#1c2d2c" stroke="#70cbbf"/>
+<text x="106" y="62" text-anchor="middle" fill="#70cbbf" font-size="8" font-weight="800">-10 %</text>
+<text x="106" y="94" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">90</text>
+<text x="106" y="111" text-anchor="middle" fill="#8fa3b7" font-size="6.5">valeur</text>
+<text x="106" y="132" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="800">66,7 %</text>
+<rect x="143" y="76" width="56" height="69" rx="6" fill="#302918" stroke="#f5b13d"/>
+<text x="171" y="69" text-anchor="middle" fill="#f5b13d" font-size="8" font-weight="800">-20 %</text>
+<text x="171" y="101" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">80</text>
+<text x="171" y="118" text-anchor="middle" fill="#8fa3b7" font-size="6.5">valeur</text>
+<text x="171" y="136" text-anchor="middle" fill="#f5b13d" font-size="10.5" font-weight="800">75,0 %</text>
+<rect x="208" y="83" width="56" height="62" rx="6" fill="#352019" stroke="#f28c48"/>
+<text x="236" y="76" text-anchor="middle" fill="#f28c48" font-size="8" font-weight="800">-30 %</text>
+<text x="236" y="108" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">70</text>
+<text x="236" y="124" text-anchor="middle" fill="#8fa3b7" font-size="6.5">valeur</text>
+<text x="236" y="139" text-anchor="middle" fill="#f28c48" font-size="10" font-weight="800">85,7 %</text>
+<rect x="273" y="90" width="56" height="55" rx="6" fill="#351923" stroke="#ff4d87"/>
+<text x="301" y="83" text-anchor="middle" fill="#ff4d87" font-size="8" font-weight="800">-40 %</text>
+<text x="301" y="115" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">60</text>
+<text x="301" y="130" text-anchor="middle" fill="#8fa3b7" font-size="6.5">valeur</text>
+<text x="301" y="142" text-anchor="middle" fill="#ff4d87" font-size="9.5" font-weight="800">100 %</text>
+<text x="15" y="164" fill="#d7e3ee" font-size="7">L’intérêt augmente la dette même si l’or ne bouge pas.</text>
+<text x="15" y="178" fill="#8fa3b7" font-size="6.3">À 18 % sur douze mois, le principal de 60 devient 70,8.</text>
+<text x="15" y="190" fill="#71869a" font-size="5.8">Calcul mécanique l0g, pas une prévision.</text>
+</g>
+</svg>
+<figcaption>À principal constant, le LTV est l’inverse du mouvement du collatéral. Les intérêts des prêts bullet réduisent encore le coussin disponible.</figcaption>
+</figure>
+
+Les intérêts rendent ce tableau plus sévère. À 18 % sur douze mois, la dette de 60 devient 70,8 à l’échéance. Sans mouvement de l’or, le LTV atteint déjà 70,8 %. Après une baisse de 20 %, il monte à **88,5 %**.
+
+Crisil a recherché le pire recul sur des fenêtres glissantes de 90 jours dans vingt-cinq ans de prix quotidiens de l’or en roupies. Le maximum observé dans son étude était proche de 20 %, et les baisses supérieures à 10 % apparaissaient dans environ 2 % des fenêtres. Cela ne constitue ni une borne absolue ni une prévision. L’agence utilisait cette histoire pour tester la vitesse à laquelle un prêteur peut appeler, recouvrer ou vendre le collatéral. ([Crisil Ratings, 24 juin 2026](https://www.crisilratings.com/en/home/newsroom/press-releases/2026/06/gold-loan-lenders-ringfenced-well-from-price-correction-risk.html))
+
+### Testez le mécanisme
+
+Le calculateur sépare le principal du montant dû à maturité, applique un choc au collatéral et mesure le remboursement nécessaire pour revenir au plafond choisi. Il ne modélise ni les frais, ni les remises d’intérêt, ni le calendrier réel de recouvrement.
+
+<GoldLoanStress lang="fr" />
+
+## Le ménage encaisse le risque avant la banque
+
+Un LTV prudent et une enchère rapide peuvent protéger efficacement le financeur. Cette protection ne supprime pas le coût économique. Elle le déplace vers le propriétaire du bijou.
+
+Si le prêt n’est pas réglé, le prêteur peut vendre le collatéral après notification. La RBI impose une procédure publique, un prix de réserve d’au moins 90 % de la valeur courante lors des premières tentatives, puis 85 % après deux échecs. Le surplus éventuel doit revenir au client dans les sept jours ouvrés après réception du produit complet de l’enchère. Le prêteur peut réclamer un déficit si le contrat le prévoit. ([RBI, règles d’enchère](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12859&Mode=0))
+
+Du point de vue bancaire, la vente transforme rapidement le bijou en remboursement. Du point de vue du ménage, elle transforme un besoin temporaire de liquidité en perte définitive d’un actif.
+
+Cette différence explique pourquoi le taux de perte du prêteur ne suffit pas à mesurer le risque social du produit. Le bijou vendu peut avoir été accumulé pendant plusieurs années, transmis dans la famille ou conservé précisément pour les périodes difficiles. Sa valeur de marché indemnise le bilan. Elle ne restitue pas nécessairement sa fonction patrimoniale.
+
+Le risque principal à court terme n’est donc pas forcément une vague de pertes bancaires. Il peut prendre une forme moins spectaculaire :
+
+- des ménages qui reconduisent régulièrement le principal ;
+- des intérêts payés pour conserver l’accès au même collatéral ;
+- une capacité d’emprunt qui dépend de plus en plus du prix de l’or ;
+- des ventes de bijoux lorsque le revenu ne suffit plus ;
+- une partie croissante de ces créances transférée vers les banques.
+
+La hausse du métal rend cette chaîne confortable. Elle permet au prêteur de rester surgaranti et au client de renouveler. Le retournement pertinent n’est pas seulement la baisse de l’or. Une stagnation prolongée suffit à interrompre l’augmentation automatique de la capacité d’emprunt, tandis que les intérêts continuent de courir.
+
+## Ce qu’il faut désormais surveiller
+
+Le nombre brut de prêts ne dira pas à lui seul si le marché devient fragile. Les indicateurs les plus utiles sont plus précis.
+
+**Le LTV réellement distribué.** Les plafonds de 75 % à 85 % décrivent une limite, pas la moyenne du portefeuille. Une hausse durable du LTV à l’octroi réduirait le temps disponible en cas de baisse.
+
+**La part des nouveaux clients.** La RBI a déjà identifié un marché dominé par les emprunteurs existants. Une divergence croissante entre nouveaux comptes, nouveaux décaissements et encours indiquerait davantage de renouvellements et de retraits supplémentaires.
+
+**Les intérêts payés avant renouvellement.** Le cadre de 2025 exige leur règlement sur les prêts bullet. La capacité à les payer sur revenu, plutôt qu’avec un nouveau crédit, constitue une frontière économique importante mais difficile à observer publiquement.
+
+**Les enchères et les excédents restitués.** Une hausse du volume de bijoux vendus signalerait une dégradation des ménages avant même l’apparition de pertes importantes chez les prêteurs.
+
+**Le financement des NBFC.** La cession directe recycle rapidement leur bilan. Il faut suivre la part des prêts sur or dans les opérations structurées, les banques acheteuses et les performances des pools après transfert.
+
+**Le remplacement du crédit non garanti.** La RBI observe que, chez les clients possédant à la fois un prêt personnel et un prêt sur or, la croissance du prêt personnel ralentit, surtout dans les catégories les plus risquées. Cette substitution peut réduire le risque du prêteur en transformant une dette sans garantie en dette adossée à un actif. Pour le ménage, elle place son patrimoine directement dans la ligne de tir.
+
+## L’or protège encore, mais il travaille davantage
+
+Le prêt sur or indien n’est pas aujourd’hui une bombe bancaire documentée.
+
+Les LTV moyens sont bas, les créances douteuses restent contenues, les enchères permettent généralement de récupérer le principal et la banque centrale a renforcé la valorisation, la documentation et la protection du client. Les données disponibles invitent à résister au récit facile d’une crise imminente.
+
+Elles montrent autre chose, plus mécanique et peut-être plus durable.
+
+L’Inde transforme une part croissante de son stock d’or domestique en infrastructure de crédit. La hausse du métal améliore les bilans, attire de nouveaux prêteurs, permet aux clients existants de refinancer des montants supérieurs et fournit aux NBFC des créances que les banques souhaitent acheter.
+
+Chaque maillon peut être rationnel. Le ménage obtient des liquidités sans vendre. La NBFC distribue un prêt très bien garanti. La banque achète un actif dont les pertes historiques sont faibles. Le régulateur impose des coussins et une procédure d’enchère.
+
+L’ensemble produit pourtant une dépendance nouvelle : **une partie de la capacité d’endettement des ménages est désormais indexée sur la valeur de leurs bijoux**.
+
+Tant que l’or monte, cette dépendance ressemble à de la solidité. Le collatéral grossit, le LTV baisse et le crédit peut être renouvelé. Le jour où le métal cesse de faire le travail, il reste une variable que le cours de l’or n’a jamais remplacée : le revenu disponible pour rembourser.
+
+## Sources et méthode
+
+Les données centrales proviennent du *Financial Stability Report* de la Reserve Bank of India du 30 juin 2026, des règles harmonisées sur les prêts garantis par de l’or et de l’argent mises à jour le 29 septembre 2025, et du rapport indien du World Gold Council pour le deuxième trimestre 2026.
+
+Les chiffres de titrisation et de performance sont issus de Crisil Ratings. Ils reflètent les périmètres et échantillons décrits par l’agence, notamment des NBFC spécialisées pour l’étude des remboursements. Le calculateur et les stress tests l0g utilisent des formules statiques à intérêt simple. Ils ne prévoient ni le prix de l’or, ni le comportement du prêteur ou de l’emprunteur.
+
+Pour prolonger la lecture : [comprendre le marché de l’or](/guides/lire-le-marche-de-l-or/) et [lire une titrisation de crédit à la consommation](/guides/lire-une-titrisation-de-credit-a-la-consommation/).

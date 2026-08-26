@@ -1,0 +1,306 @@
+---
+import {
+  GOLD_LOAN_STRESS_DATA_DATE,
+  GOLD_LOAN_STRESS_DEFAULTS,
+  GOLD_LOAN_STRESS_MODEL_VERSION,
+  evaluateGoldLoanStress,
+} from '../lib/gold-loan-stress-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `gold-loan-stress-${lang}`;
+const initial = evaluateGoldLoanStress(GOLD_LOAN_STRESS_DEFAULTS);
+const locale = isFr ? 'fr-FR' : 'en-IN';
+const oneDecimal = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
+const twoDecimals = new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+const copy = isFr
+  ? {
+      eyebrow: '// outil l0g',
+      title: 'Stress test d’un prêt sur or',
+      intro: 'Faites varier le prix de l’or, le taux et la durée. Le modèle distingue le principal versé aujourd’hui de la somme due à l’échéance, car la RBI impose d’inclure les intérêts courus dans le LTV des prêts bullet.',
+      collateral: 'Valeur du bijou au départ',
+      principal: 'Principal emprunté',
+      rate: 'Taux annuel simple',
+      months: 'Durée',
+      shock: 'Choc sur le prix de l’or',
+      cap: 'Plafond LTV sélectionné',
+      lakh: 'lakh ₹',
+      pct: '%',
+      monthUnit: 'mois',
+      hero: 'LTV à l’échéance après choc',
+      currentLtv: 'LTV du principal aujourd’hui',
+      maturityDebt: 'Dette à l’échéance',
+      shockedCollateral: 'Collatéral après choc',
+      maturityLtv: 'LTV à l’échéance, or inchangé',
+      maxPrincipal: 'Principal maximal compatible au départ',
+      headroom: 'Marge d’emprunt théorique restante',
+      repayment: 'Remboursement requis pour revenir au plafond',
+      breakEven: 'Baisse de l’or qui porte la dette à 100 % du collatéral',
+      within: 'Sous le plafond sélectionné',
+      breach: 'Au-dessus du plafond sélectionné',
+      underwater: 'La dette dépasse la valeur du collatéral',
+      caveat: 'Scénario mécanique, pas une prévision. Intérêt simple, sans frais, remboursement intermédiaire, remise d’intérêt, décote d’enchère ni action anticipée du prêteur. Un lakh vaut 100 000 roupies. Aucune donnée saisie n’est enregistrée.',
+      method: 'Méthode, formules et sources',
+      methodText: 'Le montant dû à l’échéance est le principal multiplié par 1 + taux annuel × durée/12. Le collatéral choqué est la valeur initiale multipliée par 1 + choc de prix. Le LTV final divise le montant dû par cette nouvelle valeur. Le principal maximal est calculé de façon à ce que principal et intérêts restent sous le plafond choisi si le prix de l’or ne change pas.',
+      formulas: [
+        'Dette à l’échéance = principal × (1 + taux annuel × mois / 12)',
+        'LTV après choc = dette à l’échéance ÷ valeur du bijou après choc',
+        'Principal maximal = collatéral × plafond LTV ÷ facteur d’intérêt',
+        'Remboursement de retour au plafond = dette - collatéral choqué × plafond',
+      ],
+    }
+  : {
+      eyebrow: '// l0g tool',
+      title: 'Stress-test a gold-backed loan',
+      intro: 'Change the gold price, rate and term. The model separates today’s principal from the amount due at maturity because RBI rules include accrued interest in the LTV of bullet-repayment loans.',
+      collateral: 'Initial jewellery value',
+      principal: 'Principal borrowed',
+      rate: 'Simple annual rate',
+      months: 'Term',
+      shock: 'Gold-price shock',
+      cap: 'Selected LTV cap',
+      lakh: '₹ lakh',
+      pct: '%',
+      monthUnit: 'months',
+      hero: 'Maturity LTV after shock',
+      currentLtv: 'Principal LTV today',
+      maturityDebt: 'Debt at maturity',
+      shockedCollateral: 'Collateral after shock',
+      maturityLtv: 'Maturity LTV, gold unchanged',
+      maxPrincipal: 'Maximum compliant initial principal',
+      headroom: 'Theoretical remaining borrowing headroom',
+      repayment: 'Repayment needed to restore the cap',
+      breakEven: 'Gold decline that takes debt to 100% of collateral',
+      within: 'Below the selected cap',
+      breach: 'Above the selected cap',
+      underwater: 'Debt exceeds collateral value',
+      caveat: 'Mechanical scenario, not a forecast. Simple interest; no fees, interim repayments, interest rebates, auction discount or early lender action. One lakh equals 100,000 rupees. No entered data is stored.',
+      method: 'Method, formulas and sources',
+      methodText: 'The amount due at maturity is principal multiplied by 1 + annual rate × term/12. Shocked collateral is the initial value multiplied by 1 + the price shock. Final LTV divides the amount due by that value. Maximum principal is calculated so principal plus interest stays below the selected cap if gold is unchanged.',
+      formulas: [
+        'Maturity debt = principal × (1 + annual rate × months / 12)',
+        'Post-shock LTV = maturity debt ÷ shocked jewellery value',
+        'Maximum principal = collateral × LTV cap ÷ interest factor',
+        'Cap-restoring repayment = debt - shocked collateral × cap',
+      ],
+    };
+---
+
+<section
+  class="gold-stress"
+  id={id}
+  data-gold-stress
+  data-lang={lang}
+  data-label-within={copy.within}
+  data-label-breach={copy.breach}
+  data-label-underwater={copy.underwater}
+>
+  <header class="gold-stress__header">
+    <p class="gold-stress__eyebrow">{copy.eyebrow}</p>
+    <h3>{copy.title}</h3>
+    <p>{copy.intro}</p>
+  </header>
+
+  <div class="gold-stress__grid">
+    <form class="gold-stress__controls" data-gold-stress-form>
+      <label>
+        <span>{copy.collateral}</span>
+        <span class="gold-stress__input-unit">
+          <input type="number" min="0.01" max="100000" step="0.1" value={GOLD_LOAN_STRESS_DEFAULTS.collateralLakh} data-input="collateralLakh" />
+          <small>{copy.lakh}</small>
+        </span>
+      </label>
+      <label>
+        <span>{copy.principal}</span>
+        <span class="gold-stress__input-unit">
+          <input type="number" min="0" max="100000" step="0.1" value={GOLD_LOAN_STRESS_DEFAULTS.principalLakh} data-input="principalLakh" />
+          <small>{copy.lakh}</small>
+        </span>
+      </label>
+      <label>
+        <span>{copy.rate}</span>
+        <span class="gold-stress__input-unit">
+          <input type="number" min="0" max="100" step="0.1" value={GOLD_LOAN_STRESS_DEFAULTS.annualInterestPct} data-input="annualInterestPct" />
+          <small>{copy.pct}</small>
+        </span>
+      </label>
+      <label>
+        <span>{copy.months}</span>
+        <span class="gold-stress__input-unit">
+          <input type="number" min="1" max="120" step="1" value={GOLD_LOAN_STRESS_DEFAULTS.months} data-input="months" />
+          <small>{copy.monthUnit}</small>
+        </span>
+      </label>
+      <label>
+        <span>{copy.shock}</span>
+        <span class="gold-stress__input-unit">
+          <input type="number" min="-95" max="300" step="1" value={GOLD_LOAN_STRESS_DEFAULTS.goldShockPct} data-input="goldShockPct" />
+          <small>{copy.pct}</small>
+        </span>
+      </label>
+      <label>
+        <span>{copy.cap}</span>
+        <span class="gold-stress__input-unit">
+          <select data-input="capPct">
+            <option value="85">85 %</option>
+            <option value="80" selected>80 %</option>
+            <option value="75">75 %</option>
+          </select>
+          <small>{copy.pct}</small>
+        </span>
+      </label>
+    </form>
+
+    <div class="gold-stress__results" aria-live="polite">
+      <div class="gold-stress__hero" data-status={initial.status} data-hero>
+        <span>{copy.hero}</span>
+        <strong data-result="postShockMaturityLtvPct">{oneDecimal.format(initial.postShockMaturityLtvPct)} %</strong>
+        <small data-result="statusLabel">{initial.status === 'within-cap' ? copy.within : initial.status === 'cap-breach' ? copy.breach : copy.underwater}</small>
+      </div>
+
+      <div class="gold-stress__metrics">
+        <div><span>{copy.currentLtv}</span><strong data-result="currentPrincipalLtvPct">{oneDecimal.format(initial.currentPrincipalLtvPct)} %</strong></div>
+        <div><span>{copy.maturityDebt}</span><strong data-result="maturityDebtLakh">₹{twoDecimals.format(initial.maturityDebtLakh)} lakh</strong></div>
+        <div><span>{copy.shockedCollateral}</span><strong data-result="shockedCollateralLakh">₹{twoDecimals.format(initial.shockedCollateralLakh)} lakh</strong></div>
+        <div><span>{copy.maturityLtv}</span><strong data-result="maturityLtvPct">{oneDecimal.format(initial.maturityLtvPct)} %</strong></div>
+        <div><span>{copy.maxPrincipal}</span><strong data-result="maxCompliantPrincipalLakh">₹{twoDecimals.format(initial.maxCompliantPrincipalLakh)} lakh</strong></div>
+        <div><span>{copy.headroom}</span><strong data-result="headroomAtOriginationLakh">₹{twoDecimals.format(initial.headroomAtOriginationLakh)} lakh</strong></div>
+        <div><span>{copy.repayment}</span><strong data-result="repaymentToRestoreCapLakh">₹{twoDecimals.format(initial.repaymentToRestoreCapLakh)} lakh</strong></div>
+        <div><span>{copy.breakEven}</span><strong data-result="breakEvenGoldDeclinePct">{oneDecimal.format(initial.breakEvenGoldDeclinePct)} %</strong></div>
+      </div>
+      <p class="gold-stress__warning">{copy.caveat}</p>
+    </div>
+  </div>
+
+  <details class="gold-stress__details">
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <ul>{copy.formulas.map((formula) => <li>{formula}</li>)}</ul>
+    <ol>
+      <li><a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12859&Mode=0">Reserve Bank of India, Lending Against Gold and Silver Collateral Directions, 2025</a></li>
+      <li><a href="https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?ID=1324&UrlPage=">Reserve Bank of India, Financial Stability Report, 30 June 2026</a></li>
+      <li><a href="https://www.crisilratings.com/en/home/newsroom/press-releases/2026/06/gold-loan-lenders-ringfenced-well-from-price-correction-risk.html">Crisil Ratings, gold-loan price-correction stress test, 24 June 2026</a></li>
+    </ol>
+    <p>Model v{GOLD_LOAN_STRESS_MODEL_VERSION} · {GOLD_LOAN_STRESS_DATA_DATE}</p>
+  </details>
+</section>
+
+<script>
+  import { evaluateGoldLoanStress } from '../lib/gold-loan-stress-model.ts';
+
+  const initialiseGoldStressTools = () => {
+    document.querySelectorAll<HTMLElement>('[data-gold-stress]').forEach((root) => {
+      if (root.dataset.initialised === 'true') return;
+      root.dataset.initialised = 'true';
+
+      const form = root.querySelector<HTMLFormElement>('[data-gold-stress-form]');
+      const hero = root.querySelector<HTMLElement>('[data-hero]');
+      if (!form || !hero) return;
+
+      const locale = root.dataset.lang === 'fr' ? 'fr-FR' : 'en-IN';
+      const oneDecimal = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
+      const twoDecimals = new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      const readNumber = (name: string): number => {
+        const field = form.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-input="${name}"]`);
+        return Number(field?.value ?? 0);
+      };
+
+      const setText = (name: string, value: string) => {
+        const target = root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+        if (target) target.textContent = value;
+      };
+
+      const update = () => {
+        const result = evaluateGoldLoanStress({
+          collateralLakh: readNumber('collateralLakh'),
+          principalLakh: readNumber('principalLakh'),
+          annualInterestPct: readNumber('annualInterestPct'),
+          months: readNumber('months'),
+          goldShockPct: readNumber('goldShockPct'),
+          capPct: readNumber('capPct'),
+        });
+
+        setText('postShockMaturityLtvPct', `${oneDecimal.format(result.postShockMaturityLtvPct)} %`);
+        setText('currentPrincipalLtvPct', `${oneDecimal.format(result.currentPrincipalLtvPct)} %`);
+        setText('maturityDebtLakh', `₹${twoDecimals.format(result.maturityDebtLakh)} lakh`);
+        setText('shockedCollateralLakh', `₹${twoDecimals.format(result.shockedCollateralLakh)} lakh`);
+        setText('maturityLtvPct', `${oneDecimal.format(result.maturityLtvPct)} %`);
+        setText('maxCompliantPrincipalLakh', `₹${twoDecimals.format(result.maxCompliantPrincipalLakh)} lakh`);
+        setText('headroomAtOriginationLakh', `₹${twoDecimals.format(result.headroomAtOriginationLakh)} lakh`);
+        setText('repaymentToRestoreCapLakh', `₹${twoDecimals.format(result.repaymentToRestoreCapLakh)} lakh`);
+        setText('breakEvenGoldDeclinePct', `${oneDecimal.format(result.breakEvenGoldDeclinePct)} %`);
+
+        hero.dataset.status = result.status;
+        const label = result.status === 'within-cap'
+          ? root.dataset.labelWithin
+          : result.status === 'cap-breach'
+            ? root.dataset.labelBreach
+            : root.dataset.labelUnderwater;
+        setText('statusLabel', label ?? '');
+      };
+
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      update();
+    });
+  };
+
+  initialiseGoldStressTools();
+  document.addEventListener('astro:page-load', initialiseGoldStressTools);
+</script>
+
+<style>
+  .gold-stress {
+    margin: 2rem 0 2.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px;
+    background: #0c0d10;
+    color: #f3f5f8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .gold-stress__header { padding: 1.4rem 1.5rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,.09); }
+  .gold-stress__eyebrow { margin: 0 0 .5rem; color: #f5b13d; font-size: .78rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+  .gold-stress__header h3 { margin: 0 0 .65rem; color: #fff; font-size: clamp(1.25rem, 3vw, 1.8rem); }
+  .gold-stress__header p:last-child { margin: 0; max-width: 76ch; color: #aeb4be; font-family: Inter, system-ui, sans-serif; line-height: 1.55; }
+  .gold-stress__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .gold-stress__controls { display: grid; gap: .85rem; padding: 1.3rem; border-right: 1px solid rgba(255,255,255,.09); }
+  .gold-stress__controls label { display: grid; gap: .38rem; color: #c7ccd5; font-size: .78rem; }
+  .gold-stress__input-unit { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; overflow: hidden; border: 1px solid #303844; border-radius: 8px; background: #15171c; }
+  .gold-stress__input-unit input,
+  .gold-stress__input-unit select { width: 100%; min-width: 0; border: 0; outline: 0; padding: .72rem .75rem; background: transparent; color: #fff; font: inherit; }
+  .gold-stress__input-unit select { appearance: auto; }
+  .gold-stress__input-unit small { padding: 0 .7rem; color: #7f8793; white-space: nowrap; }
+  .gold-stress__results { padding: 1.3rem; }
+  .gold-stress__hero { padding: 1.15rem; border: 1px solid #5eead4; border-radius: 12px; background: #11191a; }
+  .gold-stress__hero[data-status='cap-breach'] { border-color: #f5b13d; background: #1a1710; }
+  .gold-stress__hero[data-status='underwater'] { border-color: #ff4d87; background: #1b1116; }
+  .gold-stress__hero span { display: block; color: #aeb4be; font-size: .76rem; text-transform: uppercase; letter-spacing: .035em; }
+  .gold-stress__hero strong { display: block; margin: .35rem 0; color: #fff; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1; }
+  .gold-stress__hero small { color: #5eead4; font-weight: 800; }
+  .gold-stress__hero[data-status='cap-breach'] small { color: #f5b13d; }
+  .gold-stress__hero[data-status='underwater'] small { color: #ff4d87; }
+  .gold-stress__metrics { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; margin-top: .9rem; }
+  .gold-stress__metrics div { min-width: 0; padding: .85rem; border: 1px solid #2b313a; border-radius: 9px; background: #15171c; }
+  .gold-stress__metrics span { display: block; min-height: 2.4em; color: #8b929e; font-size: .68rem; line-height: 1.35; }
+  .gold-stress__metrics strong { display: block; margin-top: .38rem; overflow-wrap: anywhere; color: #f3f5f8; font-size: .92rem; }
+  .gold-stress__warning { margin: 1rem 0 0; color: #777f8c; font-family: Inter, system-ui, sans-serif; font-size: .75rem; line-height: 1.5; }
+  .gold-stress__details { border-top: 1px solid rgba(255,255,255,.09); padding: 1rem 1.4rem 1.25rem; color: #aeb4be; font-family: Inter, system-ui, sans-serif; font-size: .82rem; line-height: 1.55; }
+  .gold-stress__details summary { cursor: pointer; color: #f3f5f8; font-weight: 750; }
+  .gold-stress__details a { color: #5eead4; }
+  @media (max-width: 760px) {
+    .gold-stress__grid { grid-template-columns: 1fr; }
+    .gold-stress__controls { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.09); }
+  }
+  @media (max-width: 520px) {
+    .gold-stress__header, .gold-stress__controls, .gold-stress__results { padding-left: 1rem; padding-right: 1rem; }
+    .gold-stress__metrics { grid-template-columns: 1fr; }
+    .gold-stress__metrics span { min-height: 0; }
+  }
+</style>
