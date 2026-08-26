@@ -25,6 +25,7 @@ concurrency:
 
 jobs:
   end-to-end:
+    if: github.repository == 'bluetouff/l0g'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

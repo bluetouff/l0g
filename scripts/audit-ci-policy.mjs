@@ -42,8 +42,10 @@ const scheduled = [...workflows]
   .filter(([, source]) => /^\s*schedule:\s*$/m.test(source) || /^\s*cron:\s*/m.test(source))
   .map(([name]) => name);
 requireCondition(
-  scheduled.length === 1 && scheduled[0] === 'weekly-edition.yml',
-  `seul weekly-edition.yml peut être récurrent, trouvé dans ${scheduled.join(', ') || 'aucun'}`,
+  scheduled.length === 2
+    && scheduled[0] === 'risk-producers.yml'
+    && scheduled[1] === 'weekly-edition.yml',
+  `seuls risk-producers.yml et weekly-edition.yml peuvent être récurrents, trouvé dans ${scheduled.join(', ') || 'aucun'}`,
 );
 
 const weekly = workflows.get('weekly-edition.yml') || '';
@@ -119,12 +121,16 @@ requireCondition(
 const risk = workflows.get('risk-producers.yml') || '';
 requireCondition(risk.includes('workflow_dispatch:'), 'le contrôle risque manuel doit rester disponible');
 requireCondition(risk.includes('paths:'), 'le contrôle risque doit rester lié à ses fichiers métier');
+requireCondition(risk.includes("cron: '17 * * * *'"), 'le contrôle risque doit rester horaire à la minute 17');
+requireCondition(risk.includes("if: github.repository == 'bluetouff/l0g'"), 'le cron risque doit être borné au dépôt canonique');
+requireCondition(risk.includes('permissions:\n  contents: read'), 'le contrôle risque doit rester strictement en lecture seule');
+requireCondition(risk.includes('timeout-minutes: 5'), 'le contrôle risque doit conserver sa limite de 5 minutes');
 requireCondition(
   risk.includes('cancel-in-progress: true'),
   'les contrôles risque obsolètes doivent être annulés',
 );
 requireCondition(
-  /Probe deployed producers[\s\S]*?if: github\.event_name == 'workflow_dispatch'[\s\S]*?node scripts\/check-risk-producers\.mjs/.test(risk),
+  /Probe deployed producers[\s\S]*?if: github\.event_name == 'workflow_dispatch' \|\| github\.event_name == 'schedule'[\s\S]*?node scripts\/check-risk-producers\.mjs/.test(risk),
   'le push doit valider le contrat sans sonder une production pas encore activée',
 );
 
@@ -135,5 +141,5 @@ requireCondition(
 );
 
 process.stdout.write(
-  `CI policy OK: ${workflowNames.length} workflows, un cron Hebdo borné, contrôles sécurité et métier ciblés.\n`,
+  `CI policy OK: ${workflowNames.length} workflows, crons Hebdo et risque bornés, contrôles sécurité et métier ciblés.\n`,
 );
