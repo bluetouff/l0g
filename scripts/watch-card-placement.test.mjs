@@ -26,7 +26,7 @@ test('Watch card is present on French and English homes and articles', async () 
   ]);
 
   assert.match(homeFr, /<WatchCard \/>/);
-  assert.match(articleFr, /<WatchCard compact \/>[\s\S]*<SupportCard compact \/>/);
+  assert.match(articleFr, /<SupportCard compact \/>[\s\S]*<WatchCard compact \/>/);
   assert.match(homeEn, /class="en-hero-rail"[\s\S]*<WatchCard lang="en" \/>/);
   assert.match(articleEn, /class="en-article-sidebar"[\s\S]*<WatchCard lang="en" compact \/>/);
 });

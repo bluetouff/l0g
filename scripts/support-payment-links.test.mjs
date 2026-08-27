@@ -80,11 +80,11 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(navigation, /location\.assign\('\/recherche\/\?focus=1'\)/);
   assert.match(homeSidebar, /<SupportCard \/>/);
   assert.ok(
-    homeSidebar.indexOf('class="now-card"') < homeSidebar.indexOf('<SupportCard />'),
-    'Maintenant doit précéder le soutien dans la colonne latérale',
+    homeSidebar.indexOf('<SupportCard />') < homeSidebar.indexOf('<WatchCard />'),
+    'Le soutien doit précéder Watch dans la colonne latérale',
   );
   assert.doesNotMatch(homeSidebar, /<SearchForm|\/\/ recherche/);
-  assert.match(articlePage, /<SupportCard compact \/>[\s\S]*<ArticleNavigator/);
+  assert.match(articlePage, /<SupportCard compact \/>[\s\S]*<WatchCard compact \/>[\s\S]*<ArticleNavigator/);
   assert.match(supportCard, /href="\/soutenir\/"/);
   assert.doesNotMatch(footer, /\/soutenir\//);
   assert.doesNotMatch(privacy, /\/soutenir\//);

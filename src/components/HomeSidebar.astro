@@ -1,10 +1,15 @@
 ---
 import L0gGlyph from './L0gGlyph.astro';
+import PaCheckCard from './PaCheckCard.astro';
 import SupportCard from './SupportCard.astro';
 import WatchCard from './WatchCard.astro';
 ---
 
 <div class="home-sidebar">
+  <SupportCard />
+
+  <PaCheckCard />
+
   <WatchCard />
 
   <a href="/maintenant/" class="now-card">
@@ -16,8 +21,6 @@ import WatchCard from './WatchCard.astro';
     <p>Les mouvements récents, leur importance et les prochaines vérifications.</p>
     <span class="now-card-cta">Ouvrir <i aria-hidden="true">›</i></span>
   </a>
-
-  <SupportCard />
 
   <section class="start-card">
     <div class="start-top">

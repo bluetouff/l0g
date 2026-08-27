@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleNavigator from '../../components/ArticleNavigator.astro';
+import PaCheckCard from '../../components/PaCheckCard.astro';
 import SupportCard from '../../components/SupportCard.astro';
 import WatchCard from '../../components/WatchCard.astro';
 import WeeklyCta from '../../components/WeeklyCta.astro';
@@ -292,8 +293,9 @@ const quickUncertainty = post.data.quickTake?.uncertainty
   alternateLinks={alternateLinks}
 >
   <div slot="sidebar" class="article-sidebar">
-    <WatchCard compact />
     <SupportCard compact />
+    <PaCheckCard compact />
+    <WatchCard compact />
     <ArticleNavigator
       headings={articleHeadings}
       terms={articleTerms}
