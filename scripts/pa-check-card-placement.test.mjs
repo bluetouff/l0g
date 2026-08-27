@@ -9,6 +9,7 @@ test('PA Check card is passive, concise and links to the canonical tool', async 
 
   assert.match(component, /href="https:\/\/pa\.l0g\.fr\/"/);
   assert.match(component, /target="_blank"[\s\S]*rel="noopener noreferrer"/);
+  assert.match(component, /class="pa-wordmark"><b>l<span>0<\/span>g<\/b> PA Check<\/span>/);
   assert.match(component, />new</);
   assert.match(component, /Choisir sa plateforme agréée\./);
   assert.match(component, /Vérifiez votre outil actuel ou trouvez une PA adaptée à votre activité\./);

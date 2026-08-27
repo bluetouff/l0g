@@ -15,7 +15,7 @@ const { compact = false } = Astro.props;
   data-pagefind-ignore
 >
   <span class="pa-card-top">
-    <span class="pa-wordmark"><b>PA</b> Check</span>
+    <span class="pa-wordmark"><b>l<span>0</span>g</b> PA Check</span>
     <span class="pa-new">new</span>
   </span>
 
@@ -88,18 +88,24 @@ const { compact = false } = Astro.props;
     gap: 0.75rem;
   }
   .pa-wordmark {
-    color: var(--color-bright);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    color: #9cabff;
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   .pa-wordmark b {
-    color: #9cabff;
-    font-size: 0.82rem;
+    color: var(--color-bright);
+    font-size: 0.78rem;
     letter-spacing: -0.02em;
+    text-transform: none;
   }
+  .pa-wordmark b span { color: var(--color-signal); }
   .pa-new {
     border: 1px solid color-mix(in srgb, #39c6a0 68%, transparent);
     border-radius: 999px;
