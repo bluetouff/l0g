@@ -1,0 +1,222 @@
+---
+title: "EURR : qui porte la dette du stablecoin de Revolut ?"
+seoTitle: "EURR : émetteur, réserves et risques | l0g"
+ogTitle: "EURR : suivre l’euro derrière Revolut"
+ogImage: "/illustrations/news/eurr-revolut-bridge-reserve-chain-v1.jpg"
+description: "Revolut distribue EURR, mais Bridge Building l’émet et doit le rembourser. Enquête sur les réserves, les protections et l’économie de ce stablecoin en euros."
+pubDate: 2026-08-27T07:09:00+02:00
+updatedDate: 2026-08-27T07:09:00+02:00
+tags: ["Revolut", "EURR", "stablecoin", "Bridge", "Stripe", "MiCA", "euro", "paiements", "réserves", "euro numérique"]
+draft: false
+quickTake:
+  fact: "Revolut a lancé un test progressif d’EURR. Le livre blanc désigne Bridge Building S.A., établissement de monnaie électronique luxembourgeois, comme émetteur et débiteur des porteurs. Revolut Digital Assets Europe Ltd distribue le jeton."
+  importance: "Revolut réunit une audience de plus de 75 millions de clients et une infrastructure capable de donner une échelle nouvelle aux stablecoins en euros. La marque, la distribution, la dette et la réserve sont pourtant réparties entre plusieurs sociétés."
+  uncertainty: "Le partage des revenus de réserve entre Revolut, Bridge et Stripe n’est pas public. Le test reste minuscule : le tableau de Bridge affichait 374 EURR le 25 août 2026. Aucun élément public ne démontre une adoption de masse, un défaut de réserve ou une irrégularité."
+---
+
+*Au 25 août 2026, la réserve publique d’EURR contenait **374 euros**. Derrière cette expérience microscopique se trouve une interface revendiquant plus de **75 millions de clients**. Le contraste attire l’attention. La structure juridique est plus instructive encore : l’application et la marque sont celles de Revolut, tandis que la dette envers le porteur est celle de Bridge Building S.A.*
+
+Le 8 août, [Revolut a annoncé](https://www.revolut.com/de-LU/blog/post/revolut-stablecoins-eurr-eea/) un test progressif d’EURR auprès de clients éligibles au Danemark, en Pologne et au Portugal. Le groupe présente le produit comme l’un de ses propres stablecoins et indique un lancement initial sur Ethereum. Le [tableau de réserves de Bridge](https://reserves.bridge.xyz/eurr), mis à jour le 25 août, répertoriait ensuite des contrats sur Ethereum et Polygon.
+
+Ces éléments décrivent un lancement réel. Ils ne disent pas que le produit a trouvé son marché. Avec 374 jetons en circulation, EURR reste un test contrôlé. C’est précisément le moment où l’on peut encore séparer l’infrastructure du récit commercial.
+
+> **État du dossier au 27 août 2026.** Cet article repose sur les documents publics de Revolut, Bridge, Stripe, de la Banque centrale européenne et des régulateurs. Revolut, Bridge et Stripe ne publient pas le contrat commercial qui répartit les frais ou les revenus de réserve. Les scénarios de passage à l’échelle sont donc présentés comme des calculs, jamais comme des prévisions.
+
+## La taille du distributeur change l’enjeu
+
+Le produit est petit. Son distributeur ne l’est plus.
+
+Les [résultats 2025 de Revolut](https://www.revolut.com/news/revolut_reports_record_profit_of_2_3bn_for_2025_as_revenue_surges_to_6bn/) font état de **68,3 millions de clients particuliers**, de **6 milliards de dollars de revenus**, de **2,3 milliards de dollars de bénéfice avant impôt**, de **67,5 milliards de dollars de soldes clients** et de **1 700 milliards de dollars de transactions** sur l’année. Dans son annonce d’EURR, publiée quelques mois plus tard, Revolut revendique plus de **75 millions de clients**.
+
+Ces nombres ne prouvent aucune demande pour EURR. Ils mesurent une capacité de distribution. Une société capable d’afficher un nouveau produit dans des dizaines de millions d’applications peut donner à un stablecoin en euros une exposition qu’un émetteur spécialisé obtient difficilement seul.
+
+Le point de départ reste pourtant modeste. Le [livre blanc EURR](https://reserves.bridge.xyz/white-papers/bridge-mica-white-paper-eurr-july-2026.pdf) a été notifié le 23 juillet et fixe au 20 août le début de l’offre au public. Cinq jours après cette date, Bridge déclarait **374 EURR en circulation**, adossés à **374 euros de dépôts auprès d’établissements de crédit**. Aucun instrument financier très liquide n’apparaissait dans cette photographie.
+
+Une réserve de 374 euros permet de vérifier le raccordement technique. Elle ne permet pas d’observer le comportement du produit en cas de retraits nombreux, de défaillance bancaire ou de forte volatilité. Le lancement fournit une architecture, pas encore un historique de résistance.
+
+## La chaîne juridique derrière le bouton
+
+Le client voit Revolut. Le livre blanc décrit quatre étages distincts.
+
+**Revolut Digital Assets Europe Ltd**, établie à Chypre, offre et distribue EURR dans l’application Revolut et sur Revolut X. L’entité est un prestataire de services sur crypto-actifs agréé par la CySEC.
+
+**Bridge Building S.A.**, au Luxembourg, émet EURR. Elle reçoit ou contrôle les actifs de réserve, crée et détruit les jetons, puis doit rembourser les porteurs éligibles. Elle est agréée par la CSSF comme établissement de monnaie électronique sous le numéro W00000024 et comme prestataire crypto sous le numéro N00000012. Les [deux inscriptions réglementaires](https://reserves.bridge.xyz/eurr) sont reliées depuis la page de réserve.
+
+Le livre blanc nomme **Bridge Ventures LLC** comme société mère de Bridge Building. Il indique aussi que des fonctions juridiques et technologiques sont externalisées auprès d’équipes de Bridge aux États-Unis. Enfin, [Stripe a finalisé l’acquisition de Bridge](https://stripe.com/gb/newsroom/news/stripe-completes-bridge-acquisition) en février 2025. Revolut décrit lui-même Bridge comme une société de Stripe.
+
+<figure class="infographic" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie retraçant les entités qui distribuent, émettent et contrôlent l’infrastructure d’EURR">
+<svg viewBox="0 0 480 770" role="img" aria-labelledby="eurr-chain-fr-title eurr-chain-fr-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden">
+<title id="eurr-chain-fr-title">La chaîne juridique publique d’EURR</title>
+<desc id="eurr-chain-fr-desc">Le client accède à EURR par Revolut Digital Assets Europe à Chypre. Bridge Building au Luxembourg émet le jeton, détient les réserves et porte la dette de remboursement. Bridge Ventures aux États-Unis est sa société mère. Stripe a acquis le groupe Bridge en 2025.</desc>
+<rect width="480" height="770" rx="16" fill="#0c0d10"/>
+<text x="24" y="40" fill="#f5f6f8" font-size="15" font-weight="700">QUI FAIT QUOI DERRIÈRE EURR ?</text>
+<text x="24" y="64" fill="#8b909b" font-size="9">La marque, la distribution et la dette sont séparées.</text>
+<rect x="24" y="92" width="432" height="86" rx="12" fill="#15171c" stroke="#aeb6c2" stroke-width="1.5"/>
+<text x="44" y="121" fill="#f5f6f8" font-size="11" font-weight="700">CLIENT REVOLUT</text>
+<text x="44" y="146" fill="#d6d9df" font-size="9">achète, transfère ou échange EURR dans l’interface</text>
+<path d="M240 178 V216" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-fr)"/>
+<rect x="24" y="224" width="432" height="112" rx="12" fill="#21141b" stroke="#ff4d87" stroke-width="1.5"/>
+<text x="44" y="253" fill="#ff8caf" font-size="11" font-weight="700">REVOLUT DIGITAL ASSETS EUROPE LTD</text>
+<text x="44" y="278" fill="#d6d9df" font-size="9">Chypre · distribution et services crypto</text>
+<text x="44" y="300" fill="#8b909b" font-size="8.5">Application Revolut et Revolut X · supervision CySEC</text>
+<text x="44" y="318" fill="#8b909b" font-size="8.5">Ne porte pas la créance de remboursement publiée.</text>
+<path d="M240 336 V374" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-fr)"/>
+<rect x="24" y="382" width="432" height="130" rx="12" fill="#101c1a" stroke="#5eead4" stroke-width="1.5"/>
+<text x="44" y="411" fill="#5eead4" font-size="11" font-weight="700">BRIDGE BUILDING S.A.</text>
+<text x="44" y="436" fill="#d6d9df" font-size="9">Luxembourg · émetteur et débiteur du porteur</text>
+<text x="44" y="458" fill="#8b909b" font-size="8.5">Réserves · émission · destruction · remboursement</text>
+<text x="44" y="480" fill="#f5b13d" font-size="8.5">EMI W00000024 · CASP N00000012 · CSSF</text>
+<text x="44" y="498" fill="#8b909b" font-size="8.5">La créance juridique du porteur se situe ici.</text>
+<path d="M240 512 V550" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-fr)"/>
+<rect x="24" y="558" width="432" height="82" rx="12" fill="#141922" stroke="#7aa2f7" stroke-width="1.5"/>
+<text x="44" y="587" fill="#7aa2f7" font-size="11" font-weight="700">BRIDGE VENTURES LLC</text>
+<text x="44" y="612" fill="#d6d9df" font-size="9">États-Unis · société mère déclarée de Bridge Building</text>
+<path d="M240 640 V678" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-fr)"/>
+<rect x="24" y="686" width="432" height="58" rx="12" fill="#1f1a12" stroke="#f5b13d" stroke-width="1.5"/>
+<text x="44" y="716" fill="#f5b13d" font-size="11" font-weight="700">STRIPE · acquisition de Bridge finalisée en 2025</text>
+<defs><marker id="eurr-arrow-fr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#69707d"/></marker></defs>
+</svg>
+<figcaption>Le schéma reprend les rôles publiés. Le livre blanc identifie Bridge Ventures comme société mère de Bridge Building ; l’annonce de Stripe documente l’acquisition du groupe Bridge, sans détailler ici chaque maillon intermédiaire de l’actionnariat.</figcaption>
+</figure>
+
+La formulation commerciale de Revolut, « nos propres stablecoins », décrit donc la marque et l’expérience utilisateur. Elle ne décrit pas le débiteur. Le livre blanc est sans ambiguïté : **le porteur dispose d’une créance juridique contre Bridge Building S.A.**
+
+Cette architecture n’a rien de clandestin. Elle apparaît dans la documentation publique. Elle oblige néanmoins à lire au-delà du logo, car les responsabilités se répartissent entre Chypre, Luxembourg et États-Unis.
+
+Une autre précision compte. Comme le rappelle [l’ESMA](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica), l’inscription d’un livre blanc MiCA au registre ne signifie pas que son contenu a été approuvé par une autorité. Le document EURR le dit lui-même : Bridge Building reste seule responsable de son contenu. L’agrément réglementaire est réel ; il ne transforme pas chaque phrase commerciale en validation du régulateur.
+
+## Le compte bancaire et le jeton créent deux créances
+
+Un euro visible dans l’application Revolut peut relever de deux régimes très différents.
+
+Pour un client bancaire français de Revolut Bank UAB, l’argent du compte est un dépôt dû par la banque. Le [document d’assurance des dépôts de Revolut](https://www.revolut.com/en-FR/legal/deposit-insurance-information/) indique une couverture par l’institution publique lituanienne *Deposit and Investment Insurance*, jusqu’à **100 000 euros par déposant** pour l’ensemble des dépôts détenus chez Revolut Bank UAB, sous réserve des conditions et exclusions du dispositif.
+
+EURR est un [jeton de monnaie électronique](/glossaire/emt/) émis par Bridge Building. Le livre blanc promet une réserve d’un euro ou d’actifs libellés en euros de valeur équivalente pour chaque jeton en circulation, dans des comptes séparés des fonds propres de l’émetteur. Il accorde un remboursement au pair, à tout moment, après vérifications d’identité et de conformité. Le porteur doit fournir un IBAN de l’Espace économique européen ; le document annonce un virement sous deux jours ouvrés et aucun frais en fonctionnement normal.
+
+Cette protection est substantielle. Elle n’est pas la garantie des dépôts. Le livre blanc précise qu’EURR n’est couvert ni par le régime européen d’indemnisation des investisseurs ni par un système de garantie des dépôts. Il ajoute que les réserves sont protégées contre les recours des autres créanciers de Bridge Building selon le droit applicable. Le risque repose donc sur la qualité des actifs, leur cantonnement, les banques dépositaires, l’exécution du droit luxembourgeois et la capacité opérationnelle de Bridge Building.
+
+<figure class="infographic" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographie comparant un dépôt chez Revolut Bank UAB et un jeton EURR émis par Bridge Building">
+<svg viewBox="0 0 480 720" role="img" aria-labelledby="eurr-claims-fr-title eurr-claims-fr-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden">
+<title id="eurr-claims-fr-title">Deux euros visibles, deux créances</title>
+<desc id="eurr-claims-fr-desc">Un dépôt dans Revolut Bank UAB est une créance bancaire couverte jusqu’à cent mille euros par la garantie lituanienne sous conditions. EURR est une créance sur Bridge Building, adossée à une réserve séparée et remboursable au pair, mais sans garantie des dépôts.</desc>
+<rect width="480" height="720" rx="16" fill="#0c0d10"/>
+<text x="24" y="40" fill="#f5f6f8" font-size="15" font-weight="700">DEUX SOLDES, DEUX DÉBITEURS</text>
+<text x="24" y="64" fill="#8b909b" font-size="9">Le même symbole monétaire ne crée pas le même droit.</text>
+<rect x="24" y="94" width="204" height="550" rx="12" fill="#141922" stroke="#7aa2f7" stroke-width="1.5"/>
+<text x="44" y="126" fill="#7aa2f7" font-size="12" font-weight="700">DÉPÔT BANCAIRE</text>
+<text x="44" y="151" fill="#f5f6f8" font-size="10" font-weight="700">Revolut Bank UAB</text>
+<line x1="44" y1="172" x2="208" y2="172" stroke="#343a46"/>
+<text x="44" y="202" fill="#8b909b" font-size="8">NATURE</text>
+<text x="44" y="224" fill="#d6d9df" font-size="9">créance sur une banque</text>
+<text x="44" y="260" fill="#8b909b" font-size="8">ACTIFS EN FACE</text>
+<text x="44" y="282" fill="#d6d9df" font-size="9">bilan bancaire complet</text>
+<text x="44" y="318" fill="#8b909b" font-size="8">PROTECTION</text>
+<text x="44" y="340" fill="#d6d9df" font-size="9">garantie lituanienne</text>
+<text x="44" y="358" fill="#d6d9df" font-size="9">jusqu’à 100 000 €</text>
+<text x="44" y="394" fill="#8b909b" font-size="8">REMBOURSEMENT</text>
+<text x="44" y="416" fill="#d6d9df" font-size="9">règles du compte et</text>
+<text x="44" y="434" fill="#d6d9df" font-size="9">du système bancaire</text>
+<text x="44" y="470" fill="#8b909b" font-size="8">RISQUES RÉSIDUELS</text>
+<text x="44" y="492" fill="#d6d9df" font-size="9">fraude · opérationnel</text>
+<text x="44" y="510" fill="#d6d9df" font-size="9">exceptions de garantie</text>
+<rect x="44" y="550" width="164" height="62" rx="8" fill="#101820"/>
+<text x="126" y="578" fill="#7aa2f7" font-size="9" text-anchor="middle">DÉBITEUR</text>
+<text x="126" y="597" fill="#f5f6f8" font-size="9" font-weight="700" text-anchor="middle">LA BANQUE</text>
+<rect x="252" y="94" width="204" height="550" rx="12" fill="#101c1a" stroke="#5eead4" stroke-width="1.5"/>
+<text x="272" y="126" fill="#5eead4" font-size="12" font-weight="700">JETON EURR</text>
+<text x="272" y="151" fill="#f5f6f8" font-size="10" font-weight="700">Bridge Building S.A.</text>
+<line x1="272" y1="172" x2="436" y2="172" stroke="#29413d"/>
+<text x="272" y="202" fill="#8b909b" font-size="8">NATURE</text>
+<text x="272" y="224" fill="#d6d9df" font-size="9">jeton de monnaie</text>
+<text x="272" y="242" fill="#d6d9df" font-size="9">électronique MiCA</text>
+<text x="272" y="278" fill="#8b909b" font-size="8">ACTIFS EN FACE</text>
+<text x="272" y="300" fill="#d6d9df" font-size="9">réserve 1:1 séparée</text>
+<text x="272" y="336" fill="#8b909b" font-size="8">PROTECTION</text>
+<text x="272" y="358" fill="#d6d9df" font-size="9">droit au pair</text>
+<text x="272" y="376" fill="#ff8caf" font-size="8.5">sans garantie des dépôts</text>
+<text x="272" y="412" fill="#8b909b" font-size="8">REMBOURSEMENT</text>
+<text x="272" y="434" fill="#d6d9df" font-size="9">KYC · IBAN EEE</text>
+<text x="272" y="452" fill="#d6d9df" font-size="9">2 jours ouvrés annoncés</text>
+<text x="272" y="488" fill="#8b909b" font-size="8">EN STRESS</text>
+<text x="272" y="510" fill="#d6d9df" font-size="9">frais · plafonds</text>
+<text x="272" y="528" fill="#d6d9df" font-size="9">suspension en dernier recours</text>
+<rect x="272" y="550" width="164" height="62" rx="8" fill="#0d1715"/>
+<text x="354" y="578" fill="#5eead4" font-size="9" text-anchor="middle">DÉBITEUR</text>
+<text x="354" y="597" fill="#f5f6f8" font-size="9" font-weight="700" text-anchor="middle">BRIDGE BUILDING</text>
+<rect x="24" y="666" width="432" height="30" rx="8" fill="#1f1a12"/>
+<text x="240" y="686" fill="#f5b13d" font-size="8.5" text-anchor="middle">Comparer le débiteur, la réserve et le recours juridique.</text>
+</svg>
+<figcaption>La comparaison porte sur le régime publié. Elle ne classe pas automatiquement un instrument comme plus sûr dans toute circonstance : la garantie bancaire et le cantonnement des réserves répondent à des mécanismes différents.</figcaption>
+</figure>
+
+Le plan de crise montre la différence jusque dans le calendrier. Bridge Building indique qu’un plan de rétablissement et un plan de remboursement doivent être remis à la CSSF dans les six mois suivant l’offre. En période de stress, le plan de rétablissement peut prévoir temporairement des frais de liquidité, des limites quotidiennes globales ou par portefeuille et, en dernier recours, une suspension des remboursements. Si la CSSF déclenche le plan de remboursement, les demandes individuelles sont suspendues au profit d’une procédure ordonnée pour l’ensemble des porteurs.
+
+Le contrat permet également à Bridge Building de bloquer certaines adresses, de geler des EURR associés à des activités illégales présumées ou de répondre à une décision d’une autorité compétente. Dans certaines situations décrites par le livre blanc, un porteur peut perdre son droit au remboursement. Ce pouvoir d’administration est cohérent avec un stablecoin réglementé soumis aux sanctions et aux règles de lutte contre le blanchiment. Il mérite d’être visible pour l’utilisateur.
+
+## Les 374 euros ne testent pas encore la réserve
+
+Bridge publie une page indiquant en temps réel l’offre en circulation et l’allocation des actifs. La photographie du 25 août affichait une couverture de 100 %, uniquement sous forme de dépôts bancaires. Le livre blanc autorise plus largement des espèces et des instruments liquides libellés en euros, détenus auprès d’établissements réglementés dans des comptes séparés.
+
+Le document promet un contrôle mensuel par des cabinets comptables indépendants. Il ne nomme pas, dans sa version de juillet, le cabinet chargé de la première confirmation publique. Il ne publie pas non plus la liste des banques dépositaires ni leur concentration. À 374 euros, ces lacunes ont peu d’effet économique immédiat. Elles deviendraient déterminantes avec plusieurs milliards d’encours.
+
+La réserve bancaire n’efface pas le risque bancaire ; elle le déplace. Un dépôt placé chez une banque dépositaire reste exposé à cette contrepartie, même s’il est cantonné au bénéfice des porteurs. La qualité d’un [stablecoin](/glossaire/stablecoin/) se lit donc dans quatre dimensions : montant de la réserve, composition, concentration et droit d’accès en cas de crise.
+
+Le livre blanc mentionne enfin un audit des contrats intelligents par Zelic. Deux constats de faible impact auraient été corrigés avant le lancement. Cette information réduit un risque technique identifié. Elle ne prouve ni l’absence de défaut inconnu ni la capacité du dispositif à absorber une ruée sur les remboursements.
+
+## Le rendement de la réserve reste une question ouverte
+
+EURR ne verse aucun intérêt à son porteur. Le livre blanc précise que Bridge Building peut placer la réserve dans des comptes rémunérés ou des instruments produisant un rendement, mais que ces revenus ne reviennent pas aux détenteurs du jeton.
+
+L’existence d’une économie de réserve est donc documentée. Sa répartition ne l’est pas.
+
+Dans la présentation officielle d’[Open Issuance](https://stripe.com/blog/introducing-open-issuance-from-bridge), Bridge explique que les entreprises peuvent lancer leur stablecoin, contrôler l’expérience utilisateur et percevoir des récompenses liées aux réserves, tandis que Bridge gère l’émission, la conformité, la liquidité et les actifs. Ce modèle général rend plausible un partage de revenus avec le distributeur. Il ne prouve pas les conditions d’EURR.
+
+Les documents publics ne permettent pas de répondre à quatre questions :
+
+- quelle part du rendement éventuel conserve Bridge Building ;
+- quelle part revient à Bridge ou Stripe au titre de l’infrastructure ;
+- quelle part revient à Revolut au titre de la marque et de la distribution ;
+- quels frais fixes, variables ou de liquidité s’ajoutent à ce partage.
+
+L’ordre de grandeur peut être calculé sans inventer un accord. À **1 milliard d’euros** d’EURR, chaque point de pourcentage de rendement annuel brut représente **10 millions d’euros**. À **10 milliards**, il représente **100 millions**. À **50 milliards**, **500 millions**. Ces montants sont de simples multiplications. Ils ne préjugent ni de l’encours futur, ni du rendement obtenu, ni des coûts, ni de la répartition entre les parties.
+
+Cette asymétrie est au cœur du modèle : le porteur reçoit la liquidité et le droit au pair ; les sociétés organisant le produit peuvent capter la valeur du flottant. Pour mesurer l’intérêt économique d’EURR, il faudra suivre les comptes des entités, la composition de la réserve et les éventuelles conventions entre Revolut et Bridge.
+
+## Le marché européen part de très bas
+
+La [BCE estimait](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_05.en.html) à environ **450 millions d’euros** la capitalisation des stablecoins libellés en euros en janvier 2026, contre environ **300 milliards de dollars** pour ceux libellés en dollars. L’écart explique pourquoi une grande plateforme européenne peut changer la structure du marché même avec une conversion limitée de ses clients.
+
+Cela reste une possibilité, pas une trajectoire acquise. Revolut doit convaincre des utilisateurs qui disposent déjà de virements instantanés, de cartes et de dépôts bancaires. L’utilité d’EURR devra apparaître dans des usages concrets : transferts entre chaînes, règlement crypto, paiement marchand, trésorerie d’entreprise ou circulation internationale de l’euro. L’annonce ne fournit encore ni objectif d’encours ni calendrier de généralisation.
+
+Le contexte public ajoute une tension intéressante. L’Eurosystème a [retenu 36 prestataires de paiement](https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html) pour le pilote de l’euro numérique prévu à partir du second semestre 2027. La liste comprend **Revolut Bank UAB** et **Stripe Technology Europe, Limited**. Leur participation ne crée aucun conflit en soi. Elle montre que les mêmes groupes peuvent travailler sur l’infrastructure d’une monnaie publique et développer, par d’autres entités, des rails privés pour un stablecoin en euros.
+
+La différence de débiteur reste fondamentale. Un [euro numérique](/posts/euro-numerique-1-euro-change-de-debiteur/) serait une dette directe de l’Eurosystème, distribuée par des intermédiaires. EURR est une dette privée de Bridge Building, adossée à des actifs de réserve. Les deux objets peuvent partager une interface et des usages de paiement sans partager le même risque juridique.
+
+## Cinq faits établis au lancement
+
+Les faits publics soutiennent cinq conclusions.
+
+1. **Revolut contrôle la marque et la relation utilisateur.** Sa filiale chypriote distribue EURR dans ses interfaces.
+2. **Bridge Building porte l’émission.** Le porteur exerce son droit au remboursement contre cette société luxembourgeoise.
+3. **La réserve est séparée et le remboursement au pair est prévu.** Ces protections relèvent du régime MiCA des jetons de monnaie électronique.
+4. **La garantie des dépôts ne couvre pas EURR.** Le produit possède son propre mécanisme de protection et son propre plan de crise.
+5. **L’économie exacte demeure opaque.** Un rendement de réserve est possible, mais son partage entre Revolut, Bridge et Stripe n’est pas public.
+
+Rien dans les documents examinés ne permet de parler de fraude, de trou dans la réserve ou de montage illégal. Inversement, une couverture de 374 euros ne démontre pas la robustesse d’un système à grande échelle.
+
+Le vrai test commencera si l’encours augmente. Il faudra alors vérifier la concentration bancaire, la publication des contrôles mensuels, les délais réels de remboursement, les incidents de gel, les changements de chaîne et la part du rendement conservée par chaque acteur.
+
+EURR ne se résume donc ni à un bouton crypto ni à une promesse d’euro numérique privé. Il constitue un nouvel assemblage de distribution, de dette et de réserve. Pour savoir ce que l’utilisateur détient, il faut suivre la personne morale qui lui doit l’argent.
+
+## Sources principales et méthode
+
+- [Revolut, annonce du test EURR](https://www.revolut.com/de-LU/blog/post/revolut-stablecoins-eurr-eea/) : pays de lancement, distribution, réseau initial et identité de l’émetteur.
+- [Revolut, résultats 2025](https://www.revolut.com/news/revolut_reports_record_profit_of_2_3bn_for_2025_as_revenue_surges_to_6bn/) : clients, revenus, bénéfice, soldes et volume de transactions.
+- [Bridge Building, livre blanc MiCA d’EURR](https://reserves.bridge.xyz/white-papers/bridge-mica-white-paper-eurr-july-2026.pdf) : entités, licences, créance, réserve, remboursement, plans de crise, gels et audit technique.
+- [Bridge, tableau de réserves EURR](https://reserves.bridge.xyz/eurr) : encours, actifs, contrats et date de mise à jour.
+- [Revolut Bank UAB, assurance des dépôts](https://www.revolut.com/en-FR/legal/deposit-insurance-information/) : débiteur bancaire et plafond de couverture.
+- [Stripe, acquisition de Bridge](https://stripe.com/gb/newsroom/news/stripe-completes-bridge-acquisition) et [modèle Open Issuance](https://stripe.com/blog/introducing-open-issuance-from-bridge) : contrôle du groupe et économie générale des réserves.
+- [BCE, marché des stablecoins en euros](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_05.en.html) et [pilote de l’euro numérique](https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html) : ordre de grandeur du marché et liste des participants.
+- [ESMA, registre et régime MiCA](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica) : statut des livres blancs et responsabilité de l’émetteur.
+
+Les calculs de rendement multiplient un encours hypothétique par un point de pourcentage. Ils servent uniquement à donner une échelle. Cet article ne suppose ni objectif d’encours, ni taux de placement, ni convention de partage non publiée.

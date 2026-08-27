@@ -1,0 +1,220 @@
+---
+title: "EURR: who owes the euro behind Revolut’s stablecoin?"
+seoTitle: "EURR: issuer, reserves and risks | l0g"
+ogTitle: "EURR: tracing the euro behind Revolut"
+ogImage: "/illustrations/news/eurr-revolut-bridge-reserve-chain-v1.jpg"
+description: "Revolut distributes EURR, but Bridge Building issues and redeems it. An investigation into the reserves, protections and economics of the euro stablecoin."
+pubDate: 2026-08-27T07:09:00+02:00
+updatedDate: 2026-08-27T07:09:00+02:00
+sourceArticle: "eurr-qui-porte-dette-stablecoin-revolut"
+sourceUpdatedDate: 2026-08-27T07:09:00+02:00
+tags: ["Revolut", "EURR", "stablecoin", "Bridge", "Stripe", "MiCA", "euro", "payments", "reserves", "digital euro"]
+draft: false
+---
+
+*On 25 August 2026, EURR’s public reserve contained **€374**. Behind this microscopic experiment is an interface claiming more than **75 million customers**. That contrast draws attention. The legal structure is more revealing still: the app and brand belong to Revolut, while the debt owed to the holder belongs to Bridge Building S.A.*
+
+On 8 August, [Revolut announced](https://www.revolut.com/de-LU/blog/post/revolut-stablecoins-eurr-eea/) a phased EURR test for eligible customers in Denmark, Poland and Portugal. The group presents the product as one of its own stablecoins and says it was initially launched on Ethereum. [Bridge’s reserve page](https://reserves.bridge.xyz/eurr), updated on 25 August, subsequently listed contracts on Ethereum and Polygon.
+
+Those facts establish a real launch. They do not establish product-market fit. With 374 tokens circulating, EURR remains a controlled test. This is precisely when the infrastructure can still be separated from the commercial narrative.
+
+> **State of the file on 27 August 2026.** This article relies on public documents from Revolut, Bridge, Stripe, the European Central Bank and regulators. Revolut, Bridge and Stripe do not publish the commercial agreement allocating fees or reserve income. Scaling scenarios are therefore calculations, never forecasts.
+
+## Distribution gives the experiment its significance
+
+The product is small. Its distributor is no longer small.
+
+[Revolut’s 2025 results](https://www.revolut.com/news/revolut_reports_record_profit_of_2_3bn_for_2025_as_revenue_surges_to_6bn/) report **68.3 million retail customers**, **$6 billion in revenue**, **$2.3 billion in pre-tax profit**, **$67.5 billion in customer balances** and **$1.7 trillion in annual transaction volume**. In its EURR announcement a few months later, Revolut claims more than **75 million customers**.
+
+These figures prove no demand for EURR. They measure distribution capacity. A company able to place a new product inside tens of millions of apps can give a euro stablecoin exposure that a specialist issuer would struggle to build alone.
+
+The starting point remains modest. The [EURR white paper](https://reserves.bridge.xyz/white-papers/bridge-mica-white-paper-eurr-july-2026.pdf) was notified on 23 July and sets 20 August as the starting date of the public offer. Five days after that date, Bridge reported **374 EURR in circulation**, backed by **€374 in deposits at credit institutions**. No highly liquid financial instrument appeared in that snapshot.
+
+A €374 reserve can verify that the technical connection works. It cannot show how the product behaves under heavy redemptions, a bank failure or sharp market volatility. The launch provides an architecture, not yet a resilience record.
+
+## The legal chain behind the button
+
+The customer sees Revolut. The white paper describes four separate layers.
+
+**Revolut Digital Assets Europe Ltd**, based in Cyprus, offers and distributes EURR through the Revolut app and Revolut X. The entity is a crypto-asset service provider authorised by CySEC.
+
+**Bridge Building S.A.**, based in Luxembourg, issues EURR. It receives or controls the reserve assets, mints and burns the tokens, and must redeem eligible holders. It is authorised by the CSSF as an electronic money institution under number W00000024 and as a crypto-asset service provider under number N00000012. Both [regulatory entries](https://reserves.bridge.xyz/eurr) are linked from the reserve page.
+
+The white paper names **Bridge Ventures LLC** as Bridge Building’s parent company. It also says that legal and technology functions are outsourced to Bridge teams in the United States. Finally, [Stripe completed its acquisition of Bridge](https://stripe.com/gb/newsroom/news/stripe-completes-bridge-acquisition) in February 2025. Revolut itself describes Bridge as a Stripe company.
+
+<figure class="infographic" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographic tracing the entities that distribute, issue and control the infrastructure behind EURR">
+<svg viewBox="0 0 480 770" role="img" aria-labelledby="eurr-chain-en-title eurr-chain-en-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden">
+<title id="eurr-chain-en-title">EURR’s public legal chain</title>
+<desc id="eurr-chain-en-desc">The customer accesses EURR through Revolut Digital Assets Europe in Cyprus. Bridge Building in Luxembourg issues the token, holds the reserves and owes the redemption debt. Bridge Ventures in the United States is its parent. Stripe acquired the Bridge group in 2025.</desc>
+<rect width="480" height="770" rx="16" fill="#0c0d10"/>
+<text x="24" y="40" fill="#f5f6f8" font-size="15" font-weight="700">WHO DOES WHAT BEHIND EURR?</text>
+<text x="24" y="64" fill="#8b909b" font-size="9">Brand, distribution and debt sit in separate entities.</text>
+<rect x="24" y="92" width="432" height="86" rx="12" fill="#15171c" stroke="#aeb6c2" stroke-width="1.5"/>
+<text x="44" y="121" fill="#f5f6f8" font-size="11" font-weight="700">REVOLUT CUSTOMER</text>
+<text x="44" y="146" fill="#d6d9df" font-size="9">buys, transfers or exchanges EURR in the interface</text>
+<path d="M240 178 V216" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-en)"/>
+<rect x="24" y="224" width="432" height="112" rx="12" fill="#21141b" stroke="#ff4d87" stroke-width="1.5"/>
+<text x="44" y="253" fill="#ff8caf" font-size="11" font-weight="700">REVOLUT DIGITAL ASSETS EUROPE LTD</text>
+<text x="44" y="278" fill="#d6d9df" font-size="9">Cyprus · distribution and crypto services</text>
+<text x="44" y="300" fill="#8b909b" font-size="8.5">Revolut app and Revolut X · CySEC supervision</text>
+<text x="44" y="318" fill="#8b909b" font-size="8.5">Does not owe the published redemption claim.</text>
+<path d="M240 336 V374" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-en)"/>
+<rect x="24" y="382" width="432" height="130" rx="12" fill="#101c1a" stroke="#5eead4" stroke-width="1.5"/>
+<text x="44" y="411" fill="#5eead4" font-size="11" font-weight="700">BRIDGE BUILDING S.A.</text>
+<text x="44" y="436" fill="#d6d9df" font-size="9">Luxembourg · issuer and debtor to the holder</text>
+<text x="44" y="458" fill="#8b909b" font-size="8.5">Reserves · minting · burning · redemption</text>
+<text x="44" y="480" fill="#f5b13d" font-size="8.5">EMI W00000024 · CASP N00000012 · CSSF</text>
+<text x="44" y="498" fill="#8b909b" font-size="8.5">The holder’s legal claim sits here.</text>
+<path d="M240 512 V550" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-en)"/>
+<rect x="24" y="558" width="432" height="82" rx="12" fill="#141922" stroke="#7aa2f7" stroke-width="1.5"/>
+<text x="44" y="587" fill="#7aa2f7" font-size="11" font-weight="700">BRIDGE VENTURES LLC</text>
+<text x="44" y="612" fill="#d6d9df" font-size="9">United States · declared parent of Bridge Building</text>
+<path d="M240 640 V678" stroke="#69707d" stroke-width="2" marker-end="url(#eurr-arrow-en)"/>
+<rect x="24" y="686" width="432" height="58" rx="12" fill="#1f1a12" stroke="#f5b13d" stroke-width="1.5"/>
+<text x="44" y="716" fill="#f5b13d" font-size="11" font-weight="700">STRIPE · Bridge acquisition completed in 2025</text>
+<defs><marker id="eurr-arrow-en" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#69707d"/></marker></defs>
+</svg>
+<figcaption>The diagram reproduces the published roles. The white paper identifies Bridge Ventures as Bridge Building’s parent; Stripe’s announcement documents its acquisition of the Bridge group without detailing every intermediate shareholding layer here.</figcaption>
+</figure>
+
+Revolut’s commercial phrase, “our own stablecoins”, therefore describes the brand and user experience. It does not describe the debtor. The white paper is explicit: **the holder has a legal claim against Bridge Building S.A.**
+
+There is nothing secret about this architecture. It appears in public documentation. It nevertheless requires reading beyond the logo because responsibilities are split across Cyprus, Luxembourg and the United States.
+
+One further distinction matters. As [ESMA explains](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica), inclusion of a MiCA white paper in the register does not mean that a competent authority has approved its content. The EURR document says the same: Bridge Building remains solely responsible for it. Regulatory authorisation is real; it does not turn every commercial statement into a regulator’s endorsement.
+
+## The bank balance and the token create different claims
+
+One euro visible in the Revolut app can fall under two very different regimes.
+
+For a French banking customer of Revolut Bank UAB, money in the account is a deposit owed by the bank. [Revolut’s deposit-insurance document](https://www.revolut.com/en-FR/legal/deposit-insurance-information/) states that the Lithuanian public institution *Deposit and Investment Insurance* covers up to **€100,000 per depositor** across deposits held with Revolut Bank UAB, subject to the scheme’s conditions and exclusions.
+
+EURR is an [electronic money token](/en/glossary/emt/) issued by Bridge Building. The white paper promises one euro, or euro-denominated assets of equivalent value, in reserves for every circulating token, held separately from the issuer’s corporate funds. It grants redemption at par at any time after identity and compliance checks. The holder must provide an EEA bank-account IBAN; the document promises a transfer within two business days and no fee under normal operating conditions.
+
+That protection is meaningful. It is not deposit insurance. The white paper says EURR is covered by neither the EU investor-compensation regime nor a deposit-guarantee scheme. It adds that reserves are protected from claims by Bridge Building’s other creditors under applicable law. Risk therefore rests on asset quality, segregation, custodian banks, enforcement under Luxembourg law and Bridge Building’s operational capacity.
+
+<figure class="infographic" style="padding-bottom:1.75rem" tabindex="0" aria-label="Infographic comparing a deposit at Revolut Bank UAB with an EURR token issued by Bridge Building">
+<svg viewBox="0 0 480 720" role="img" aria-labelledby="eurr-claims-en-title eurr-claims-en-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden">
+<title id="eurr-claims-en-title">Two visible euros, two legal claims</title>
+<desc id="eurr-claims-en-desc">A deposit at Revolut Bank UAB is a bank claim covered up to one hundred thousand euros by the Lithuanian scheme under its conditions. EURR is a claim on Bridge Building, backed by a segregated reserve and redeemable at par, but without deposit insurance.</desc>
+<rect width="480" height="720" rx="16" fill="#0c0d10"/>
+<text x="24" y="40" fill="#f5f6f8" font-size="15" font-weight="700">TWO BALANCES, TWO DEBTORS</text>
+<text x="24" y="64" fill="#8b909b" font-size="9">The same currency symbol does not create the same right.</text>
+<rect x="24" y="94" width="204" height="550" rx="12" fill="#141922" stroke="#7aa2f7" stroke-width="1.5"/>
+<text x="44" y="126" fill="#7aa2f7" font-size="12" font-weight="700">BANK DEPOSIT</text>
+<text x="44" y="151" fill="#f5f6f8" font-size="10" font-weight="700">Revolut Bank UAB</text>
+<line x1="44" y1="172" x2="208" y2="172" stroke="#343a46"/>
+<text x="44" y="202" fill="#8b909b" font-size="8">LEGAL FORM</text>
+<text x="44" y="224" fill="#d6d9df" font-size="9">claim on a bank</text>
+<text x="44" y="260" fill="#8b909b" font-size="8">ASSETS BEHIND IT</text>
+<text x="44" y="282" fill="#d6d9df" font-size="9">whole bank balance sheet</text>
+<text x="44" y="318" fill="#8b909b" font-size="8">PROTECTION</text>
+<text x="44" y="340" fill="#d6d9df" font-size="9">Lithuanian guarantee</text>
+<text x="44" y="358" fill="#d6d9df" font-size="9">up to €100,000</text>
+<text x="44" y="394" fill="#8b909b" font-size="8">REPAYMENT</text>
+<text x="44" y="416" fill="#d6d9df" font-size="9">account and banking</text>
+<text x="44" y="434" fill="#d6d9df" font-size="9">system rules</text>
+<text x="44" y="470" fill="#8b909b" font-size="8">RESIDUAL RISKS</text>
+<text x="44" y="492" fill="#d6d9df" font-size="9">fraud · operations</text>
+<text x="44" y="510" fill="#d6d9df" font-size="9">scheme exclusions</text>
+<rect x="44" y="550" width="164" height="62" rx="8" fill="#101820"/>
+<text x="126" y="578" fill="#7aa2f7" font-size="9" text-anchor="middle">DEBTOR</text>
+<text x="126" y="597" fill="#f5f6f8" font-size="9" font-weight="700" text-anchor="middle">THE BANK</text>
+<rect x="252" y="94" width="204" height="550" rx="12" fill="#101c1a" stroke="#5eead4" stroke-width="1.5"/>
+<text x="272" y="126" fill="#5eead4" font-size="12" font-weight="700">EURR TOKEN</text>
+<text x="272" y="151" fill="#f5f6f8" font-size="10" font-weight="700">Bridge Building S.A.</text>
+<line x1="272" y1="172" x2="436" y2="172" stroke="#29413d"/>
+<text x="272" y="202" fill="#8b909b" font-size="8">LEGAL FORM</text>
+<text x="272" y="224" fill="#d6d9df" font-size="9">MiCA electronic</text>
+<text x="272" y="242" fill="#d6d9df" font-size="9">money token</text>
+<text x="272" y="278" fill="#8b909b" font-size="8">ASSETS BEHIND IT</text>
+<text x="272" y="300" fill="#d6d9df" font-size="9">segregated 1:1 reserve</text>
+<text x="272" y="336" fill="#8b909b" font-size="8">PROTECTION</text>
+<text x="272" y="358" fill="#d6d9df" font-size="9">par-redemption right</text>
+<text x="272" y="376" fill="#ff8caf" font-size="8.5">no deposit insurance</text>
+<text x="272" y="412" fill="#8b909b" font-size="8">REDEMPTION</text>
+<text x="272" y="434" fill="#d6d9df" font-size="9">KYC · EEA IBAN</text>
+<text x="272" y="452" fill="#d6d9df" font-size="9">two business days stated</text>
+<text x="272" y="488" fill="#8b909b" font-size="8">UNDER STRESS</text>
+<text x="272" y="510" fill="#d6d9df" font-size="9">fees · limits</text>
+<text x="272" y="528" fill="#d6d9df" font-size="9">suspension as last resort</text>
+<rect x="272" y="550" width="164" height="62" rx="8" fill="#0d1715"/>
+<text x="354" y="578" fill="#5eead4" font-size="9" text-anchor="middle">DEBTOR</text>
+<text x="354" y="597" fill="#f5f6f8" font-size="9" font-weight="700" text-anchor="middle">BRIDGE BUILDING</text>
+<rect x="24" y="666" width="432" height="30" rx="8" fill="#1f1a12"/>
+<text x="240" y="686" fill="#f5b13d" font-size="8.5" text-anchor="middle">Compare debtor, reserve and legal recourse.</text>
+</svg>
+<figcaption>The comparison describes the published regimes. It does not automatically rank one instrument as safer in every circumstance: bank guarantees and reserve segregation respond through different mechanisms.</figcaption>
+</figure>
+
+The crisis plan shows the difference in timing as well as legal form. Bridge Building says a recovery plan and redemption plan must be filed with the CSSF within six months of the offer. Under stress, the recovery plan may temporarily impose liquidity fees, daily limits at aggregate or wallet level and, as a last resort, suspend redemptions. If the CSSF triggers the redemption plan, individual requests are suspended in favour of an orderly process for all holders.
+
+The contract also allows Bridge Building to block certain addresses, freeze EURR associated with suspected illegal activity and comply with orders from a competent authority. In some circumstances described by the white paper, a holder may lose the right to redeem. That administrative power is consistent with a regulated stablecoin subject to sanctions and anti-money-laundering rules. It still deserves to be visible to the user.
+
+## The first €374 cannot stress-test the reserve
+
+Bridge publishes a page showing circulating supply and asset allocation. The 25 August snapshot displayed 100% backing, entirely in bank deposits. The white paper more broadly permits cash and liquid euro-denominated instruments held with regulated institutions in segregated accounts.
+
+The document promises a monthly review by independent accounting firms. Its July version does not name the firm responsible for the first public confirmation. Nor does it publish the list or concentration of custodian banks. At €374, these gaps have little immediate economic effect. They would become material with billions outstanding.
+
+A bank-deposit reserve does not eliminate bank risk; it relocates it. A deposit at a custodian remains an exposure to that counterparty even when segregated for token holders. Reading a [stablecoin](/en/glossary/stablecoin/) therefore requires four dimensions: reserve size, composition, concentration and the legal route to the assets under stress.
+
+The white paper also mentions a smart-contract audit by Zelic. Two low-impact findings were reportedly addressed before launch. This reduces one identified technical risk. It proves neither the absence of unknown defects nor the system’s capacity to absorb a redemption run.
+
+## Reserve income remains an open question
+
+EURR pays no interest to its holder. The white paper says Bridge Building may hold reserves in interest-bearing accounts or yield-generating instruments, but token holders have no right to that income.
+
+The existence of reserve economics is therefore documented. Its allocation is not.
+
+In its official presentation of [Open Issuance](https://stripe.com/blog/introducing-open-issuance-from-bridge), Bridge says businesses can launch a stablecoin, control the customer experience and earn rewards linked to reserves, while Bridge manages issuance, compliance, liquidity and assets. That general model makes revenue-sharing with a distributor plausible. It does not prove EURR’s terms.
+
+Public documents cannot answer four questions:
+
+- how much of any reserve income Bridge Building keeps;
+- how much Bridge or Stripe receives for infrastructure;
+- how much Revolut receives for brand and distribution;
+- which fixed, variable or liquidity fees apply alongside that allocation.
+
+Scale can be calculated without inventing an agreement. At **€1 billion** of EURR, each percentage point of annual gross yield equals **€10 million**. At **€10 billion**, it equals **€100 million**. At **€50 billion**, **€500 million**. These are simple multiplications. They imply no future supply, achieved yield, costs or distribution among the parties.
+
+The asymmetry lies at the centre of the model: holders receive liquidity and a par-redemption right; the companies organising the product may capture the economic value of the float. Measuring EURR’s economics will require tracking entity accounts, reserve composition and any future disclosure of the Revolut-Bridge agreement.
+
+## Europe’s market starts from a very low base
+
+The [ECB estimated](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_05.en.html) that euro-denominated stablecoins were worth roughly **€450 million** in January 2026, compared with about **$300 billion** for dollar stablecoins. The gap explains why a large European platform could alter the market’s structure even if only a small fraction of its customers converted funds.
+
+That remains a possibility, not an established trajectory. Revolut must persuade users who already have instant transfers, cards and bank deposits. EURR’s utility will need to emerge in concrete uses: cross-chain transfers, crypto settlement, merchant payments, business treasury or international circulation of euros. The launch announcement gives neither a supply target nor a general rollout timetable.
+
+The public-policy context adds a useful tension. The Eurosystem has [selected 36 payment service providers](https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html) for a digital-euro pilot due to begin in the second half of 2027. The list includes **Revolut Bank UAB** and **Stripe Technology Europe, Limited**. Their participation creates no conflict by itself. It shows that the same groups can work on public-money infrastructure and, through different entities, build private rails for a euro stablecoin.
+
+The debtor distinction remains fundamental. A [digital euro](/en/analysis/digital-euro-1-the-euro-that-changes-its-debtor/) would be a direct Eurosystem liability distributed through intermediaries. EURR is a private liability of Bridge Building backed by reserve assets. Both may share an interface and payment uses without sharing the same legal risk.
+
+## Five facts established at launch
+
+The public evidence supports five conclusions.
+
+1. **Revolut controls the brand and user relationship.** Its Cypriot subsidiary distributes EURR through its interfaces.
+2. **Bridge Building carries the issuance.** Holders exercise their redemption right against the Luxembourg company.
+3. **A segregated reserve and par redemption are provided.** These protections belong to MiCA’s electronic-money-token regime.
+4. **Deposit insurance does not cover EURR.** The product has its own protection mechanism and crisis plan.
+5. **The exact economics remain undisclosed.** Reserve income is possible, but its allocation among Revolut, Bridge and Stripe is not public.
+
+Nothing in the documents reviewed supports allegations of fraud, a reserve shortfall or an unlawful structure. Conversely, backing €374 does not prove that the system is robust at scale.
+
+The real test begins if supply grows. It will then be necessary to monitor bank concentration, monthly reserve reviews, actual redemption times, freeze incidents, additional chains and the share of reserve income retained by each party.
+
+EURR is therefore neither just a crypto button nor evidence of a private digital euro already established. It is a new assembly of distribution, debt and reserves. To understand what the user holds, follow the legal person that owes the money.
+
+## Primary sources and method
+
+- [Revolut, EURR test announcement](https://www.revolut.com/de-LU/blog/post/revolut-stablecoins-eurr-eea/): launch countries, distribution, initial network and issuer identity.
+- [Revolut, 2025 results](https://www.revolut.com/news/revolut_reports_record_profit_of_2_3bn_for_2025_as_revenue_surges_to_6bn/): customers, revenue, profit, balances and transaction volume.
+- [Bridge Building, EURR MiCA white paper](https://reserves.bridge.xyz/white-papers/bridge-mica-white-paper-eurr-july-2026.pdf): entities, licences, legal claim, reserves, redemption, crisis plans, freezes and technical audit.
+- [Bridge, EURR reserve page](https://reserves.bridge.xyz/eurr): supply, assets, contracts and update date.
+- [Revolut Bank UAB, deposit-insurance information](https://www.revolut.com/en-FR/legal/deposit-insurance-information/): bank debtor and coverage limit.
+- [Stripe, acquisition of Bridge](https://stripe.com/gb/newsroom/news/stripe-completes-bridge-acquisition) and [Open Issuance model](https://stripe.com/blog/introducing-open-issuance-from-bridge): group control and the general economics of reserves.
+- [ECB, euro stablecoin market](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_05.en.html) and [digital euro pilot](https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html): market scale and participants.
+- [ESMA, MiCA regime and register](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica): status of white papers and issuer responsibility.
+
+The reserve-income calculations multiply hypothetical supply by one percentage point. They provide scale only. This article assumes no future supply target, investment yield or undisclosed revenue-sharing agreement.
