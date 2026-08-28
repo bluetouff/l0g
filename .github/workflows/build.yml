@@ -227,7 +227,7 @@ jobs:
           install -m 0644 release/source.env dist/source.env
           tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner \
             --pax-option=delete=atime,delete=ctime -C dist -cf - . \
-            | gzip -n > release/l0g-site.tar.gz
+            | gzip -n -9 > release/l0g-site.tar.gz
           (cd release && sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256)
 
       - name: Attest the complete static release and Agent Surface manifests

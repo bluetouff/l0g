@@ -137,7 +137,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique · refresh 2 min',
     stack: 'Python · builder stdlib · architecture snapshot',
     repo: 'https://github.com/bluetouff/orbit',
-    preview: { src: '/preview/orbit.png', width: 3338, height: 1818 },
+    preview: { src: '/preview/orbit.png', width: 1669, height: 909 },
   },
 ];
 
