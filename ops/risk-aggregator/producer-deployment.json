@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-26",
+  "verifiedAt": "2026-08-28",
   "producers": {
     "us": {
       "repository": "https://github.com/bluetouff/macro_dashboard",
-      "revision": "69480400cddaf60c6be49bdd742edf8bfc7bc5bd",
+      "revision": "366893d1e1e581811519e61cb60cb9fce4bb2477",
       "files": [
         {
           "path": "/opt/macro_dashboard/app_server.py",
