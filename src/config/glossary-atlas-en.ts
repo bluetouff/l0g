@@ -51,10 +51,10 @@ const usDebtSources: GlossaryGraphLink[] = [
 
 const shared = { datasets: usDebtDatasets, signals: usDebtSignals, sources: usDebtSources };
 
-const privateCreditSection = { sectionTitle: 'Private credit & markets', accent: '#ff4d87' };
+const privateCreditSection = { sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)' };
 const cryptoSection = { sectionTitle: 'Crypto & stablecoins', accent: 'var(--color-amber)' };
-const usRegulationSection = { sectionTitle: 'US regulation & institutions', accent: '#7aa2f7' };
-const clearingSection = { sectionTitle: 'Markets & clearing', accent: '#7aa2f7' };
+const usRegulationSection = { sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)' };
+const clearingSection = { sectionTitle: 'Markets & clearing', accent: 'var(--color-topic-blue)' };
 
 const privateCreditArticles: GlossaryGraphLink[] = [
   { label: 'Private credit: one asset, two prices', href: '/en/analysis/private-credit-one-asset-two-prices/', detail: 'Price discovery, listed BDCs and unlisted funds.', kind: 'article' },
@@ -86,7 +86,7 @@ const privateCreditSources: GlossaryGraphLink[] = [
 
 const privateCreditShared = { datasets: privateCreditDatasets, signals: usDebtSignals, sources: privateCreditSources };
 
-const regulatedUtilitySection = { sectionTitle: 'Regulated utilities & data centres', accent: '#f5b13d' };
+const regulatedUtilitySection = { sectionTitle: 'Regulated utilities & data centres', accent: 'var(--color-amber)' };
 const largeLoadArticles: GlossaryGraphLink[] = [
   { label: 'The ghost kilowatt', href: '/en/analysis/the-ghost-kilowatt/', detail: 'Data-centre tariffs, grid costs and ratepayer risk.', kind: 'article' },
   { label: 'The debt behind AI', href: '/en/analysis/the-debt-behind-ai/', detail: 'Debt, SPVs and financing the compute buildout.', kind: 'article' },

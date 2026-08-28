@@ -99,7 +99,7 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
     name: 'Federal Reserve & FRED',
     shortName: 'Fed / FRED',
     category: 'macro américaine & liquidité',
-    accent: '#7aa2f7',
+    accent: 'var(--color-topic-blue)',
     url: 'https://fred.stlouisfed.org/',
     description:
       'Réserve fédérale, FRED et publications associées : taux, inflation, emploi, bilan, liquidité, conditions financières et séries macro américaines.',
@@ -210,7 +210,7 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
     name: 'International Monetary Fund',
     shortName: 'FMI',
     category: 'macro mondiale & dette',
-    accent: '#7aa2f7',
+    accent: 'var(--color-topic-blue)',
     url: 'https://www.imf.org/en/Data',
     description:
       'FMI : données macro internationales, dette, balance des paiements, réserves, stabilité financière et surveillance pays.',
@@ -320,7 +320,7 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
     name: 'ECB Data Portal & Eurostat',
     shortName: 'BCE / Eurostat',
     category: 'zone euro',
-    accent: '#7aa2f7',
+    accent: 'var(--color-topic-blue)',
     url: 'https://data.ecb.europa.eu/',
     description:
       'BCE et Eurostat : taux, monnaie, crédit, stress financier, inflation, activité, emploi, sentiment et indicateurs européens.',
@@ -581,7 +581,7 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
     name: 'BLS & BEA',
     shortName: 'BLS / BEA',
     category: 'inflation, emploi & PIB US',
-    accent: '#7aa2f7',
+    accent: 'var(--color-topic-blue)',
     url: 'https://www.bls.gov/',
     description:
       'Bureau of Labor Statistics et Bureau of Economic Analysis : inflation, emploi, salaires, productivité, PIB, revenus et comptes nationaux américains.',
@@ -740,7 +740,7 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
     name: 'Congress.gov, GovInfo & CBO',
     shortName: 'Congress / CBO',
     category: 'politique US, lois & budget',
-    accent: '#7aa2f7',
+    accent: 'var(--color-topic-blue)',
     url: 'https://www.congress.gov/',
     description:
       'Sources officielles américaines pour textes de loi, débats, documents fédéraux, scoring budgétaire et analyses du Congressional Budget Office.',

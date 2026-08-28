@@ -315,10 +315,10 @@ export function primaryTopic(postTags: string[]): Topic | undefined {
 
 /** Accents de la charte → valeur CSS (aligné sur sidebar / dashboards). */
 export const ACCENT_HEX: Record<string, string> = {
-  teal: '#5eead4',
-  blue: '#7aa2f7',
-  pink: '#ff4d87',
-  amber: '#f5b13d',
+  teal: 'var(--color-signal)',
+  blue: 'var(--color-topic-blue)',
+  pink: 'var(--color-accent)',
+  amber: 'var(--color-amber)',
 };
 
 /** Couleur CSS du sujet principal d'un article (teal par défaut). */

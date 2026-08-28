@@ -8,7 +8,7 @@ import { topics, postMatchesTopic } from '../config/topics.ts';
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
-  blue: '#7aa2f7',
+  blue: 'var(--color-topic-blue)',
   pink: 'var(--color-accent)',
   amber: 'var(--color-amber)',
 };

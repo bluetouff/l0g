@@ -3,11 +3,11 @@
    Aucun appel tiers : le navigateur ne lit qu'un fichier local de l0g.fr. */
 (function () {
   var TONE = {
-    calm: '#5eead4',     // teal — détendu
-    moderate: '#f5b13d', // ambre — modéré
-    elevated: '#ff8a3d', // orange — tendu
-    stress: '#ff4d87',   // rose — stress
-    crisis: '#ff4d87',   // rose — crise
+    calm: 'var(--color-signal)',       // teal — détendu
+    moderate: 'var(--color-amber)',    // ambre — modéré
+    elevated: 'var(--color-elevated)', // orange — tendu
+    stress: 'var(--color-accent)',     // rose — stress
+    crisis: 'var(--color-accent)',     // rose — crise
   };
 
   function clampPct(value, scale) {
@@ -80,7 +80,7 @@
     data.indices.forEach(function (it) {
       var tile = document.querySelector('[data-risk="' + it.key + '"]');
       if (!tile) return;
-      var color = TONE[it.tone] || '#8b909b';
+      var color = TONE[it.tone] || 'var(--color-muted)';
       var valEl = tile.querySelector('[data-value]');
       var lvlEl = tile.querySelector('[data-level]');
       var fillEl = tile.querySelector('[data-fill]');
@@ -90,15 +90,15 @@
       tile.dataset.degraded = degraded ? 'true' : 'false';
       if (valEl) {
         valEl.textContent = !unavailable && it.value != null ? it.value : '—';
-        valEl.style.color = unavailable ? '#8b909b' : color;
+        valEl.style.color = unavailable ? 'var(--color-muted)' : color;
       }
       if (lvlEl) {
         lvlEl.textContent = unavailable ? 'INDISPONIBLE' : it.level || '';
-        lvlEl.style.color = unavailable ? '#8b909b' : color;
+        lvlEl.style.color = unavailable ? 'var(--color-muted)' : color;
       }
       if (fillEl) {
         fillEl.style.width = (unavailable ? 0 : clampPct(it.value, it.scale)) + '%';
-        fillEl.style.background = unavailable ? '#8b909b' : color;
+        fillEl.style.background = unavailable ? 'var(--color-muted)' : color;
       }
       if (statusEl) statusEl.textContent = statusText(it);
     });

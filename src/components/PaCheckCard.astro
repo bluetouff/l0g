@@ -47,9 +47,9 @@ const { compact = false } = Astro.props;
     background:
       linear-gradient(var(--surface-elevated), var(--surface-elevated)) padding-box,
       linear-gradient(135deg,
-        color-mix(in srgb, #8ea1ff 82%, transparent),
-        color-mix(in srgb, #7557d6 68%, var(--color-line)) 52%,
-        color-mix(in srgb, #39c6a0 72%, transparent)
+        color-mix(in srgb, var(--color-topic-blue) 82%, transparent),
+        color-mix(in srgb, var(--color-topic-blue) 68%, var(--color-line)) 52%,
+        color-mix(in srgb, var(--color-signal) 72%, transparent)
       ) border-box;
     box-shadow:
       inset 0 1px 0 var(--edge-highlight),
@@ -63,9 +63,9 @@ const { compact = false } = Astro.props;
     inset: 0;
     z-index: -2;
     background:
-      radial-gradient(circle at 0 0, color-mix(in srgb, #8ea1ff 19%, transparent), transparent 9rem),
-      radial-gradient(circle at 100% 100%, color-mix(in srgb, #39c6a0 14%, transparent), transparent 10rem),
-      linear-gradient(120deg, transparent 0 54%, color-mix(in srgb, #8ea1ff 4%, transparent) 54% 55%, transparent 55% 100%);
+      radial-gradient(circle at 0 0, color-mix(in srgb, var(--color-topic-blue) 19%, transparent), transparent 9rem),
+      radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--color-signal) 14%, transparent), transparent 10rem),
+      linear-gradient(120deg, transparent 0 54%, color-mix(in srgb, var(--color-topic-blue) 4%, transparent) 54% 55%, transparent 55% 100%);
   }
   .pa-card::after {
     content: 'PA';
@@ -73,7 +73,7 @@ const { compact = false } = Astro.props;
     right: -0.25rem;
     bottom: -1.25rem;
     z-index: -1;
-    color: color-mix(in srgb, #8ea1ff 5%, transparent);
+    color: color-mix(in srgb, var(--color-topic-blue) 5%, transparent);
     font-family: var(--font-display);
     font-size: 6.4rem;
     font-weight: 800;
@@ -91,7 +91,7 @@ const { compact = false } = Astro.props;
     display: inline-flex;
     align-items: baseline;
     gap: 0.5rem;
-    color: #9cabff;
+    color: var(--color-topic-blue);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
@@ -107,12 +107,12 @@ const { compact = false } = Astro.props;
   }
   .pa-wordmark b span { color: var(--color-signal); }
   .pa-new {
-    border: 1px solid color-mix(in srgb, #39c6a0 68%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-signal) 68%, transparent);
     border-radius: 999px;
     padding: 0.17rem 0.44rem 0.14rem;
-    color: #66dbba;
-    background: color-mix(in srgb, #39c6a0 10%, transparent);
-    box-shadow: 0 0 18px color-mix(in srgb, #39c6a0 20%, transparent);
+    color: var(--color-signal);
+    background: color-mix(in srgb, var(--color-signal) 10%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-signal) 20%, transparent);
     font-family: var(--font-mono);
     font-size: 0.52rem;
     font-weight: 750;
@@ -132,18 +132,18 @@ const { compact = false } = Astro.props;
     width: 1.45rem;
     height: 1.45rem;
     place-items: center;
-    border: 1px solid color-mix(in srgb, #8ea1ff 55%, var(--color-line));
+    border: 1px solid color-mix(in srgb, var(--color-topic-blue) 55%, var(--color-line));
     border-radius: 50%;
-    background: color-mix(in srgb, #8ea1ff 8%, var(--surface-elevated));
-    box-shadow: 0 0 14px color-mix(in srgb, #8ea1ff 10%, transparent);
+    background: color-mix(in srgb, var(--color-topic-blue) 8%, var(--surface-elevated));
+    box-shadow: 0 0 14px color-mix(in srgb, var(--color-topic-blue) 10%, transparent);
     font-style: normal;
   }
   .pa-path i:nth-of-type(2) {
-    border-color: color-mix(in srgb, #8d75e8 62%, var(--color-line));
+    border-color: color-mix(in srgb, var(--color-topic-blue) 62%, var(--color-line));
   }
   .pa-path i:nth-of-type(3) {
-    border-color: color-mix(in srgb, #39c6a0 65%, var(--color-line));
-    background: color-mix(in srgb, #39c6a0 9%, var(--surface-elevated));
+    border-color: color-mix(in srgb, var(--color-signal) 65%, var(--color-line));
+    background: color-mix(in srgb, var(--color-signal) 9%, var(--surface-elevated));
   }
   .pa-path b {
     color: var(--color-muted);
@@ -154,13 +154,13 @@ const { compact = false } = Astro.props;
   .pa-path em {
     height: 1px;
     background: linear-gradient(90deg,
-      color-mix(in srgb, #8ea1ff 35%, transparent),
-      color-mix(in srgb, #39c6a0 65%, transparent));
+      color-mix(in srgb, var(--color-topic-blue) 35%, transparent),
+      color-mix(in srgb, var(--color-signal) 65%, transparent));
   }
   .pa-card > small {
     display: block;
     margin-bottom: 0.42rem;
-    color: #66dbba;
+    color: var(--color-signal);
     font-family: var(--font-mono);
     font-size: 0.55rem;
     font-weight: 650;
@@ -186,7 +186,7 @@ const { compact = false } = Astro.props;
   }
   .pa-cta {
     margin-top: 0.82rem;
-    color: #9cabff;
+    color: var(--color-topic-blue);
     font-family: var(--font-mono);
     font-size: 0.64rem;
     font-weight: 680;
@@ -194,7 +194,7 @@ const { compact = false } = Astro.props;
     text-transform: uppercase;
   }
   .pa-cta i {
-    color: #66dbba;
+    color: var(--color-signal);
     font-size: 0.82rem;
     font-style: normal;
     transition: transform 0.18s ease;
@@ -202,14 +202,14 @@ const { compact = false } = Astro.props;
   .pa-card:hover,
   .pa-card:focus-visible {
     background:
-      linear-gradient(color-mix(in srgb, #8ea1ff 4%, var(--surface-elevated)), color-mix(in srgb, #39c6a0 3%, var(--surface-elevated))) padding-box,
-      linear-gradient(135deg, #9cabff, #8067df 52%, #55d2af) border-box;
+      linear-gradient(color-mix(in srgb, var(--color-topic-blue) 4%, var(--surface-elevated)), color-mix(in srgb, var(--color-signal) 3%, var(--surface-elevated))) padding-box,
+      linear-gradient(135deg, var(--color-topic-blue), var(--color-topic-blue) 52%, var(--color-signal)) border-box;
   }
   .pa-card:hover > strong,
-  .pa-card:focus-visible > strong { color: #b8c2ff; }
+  .pa-card:focus-visible > strong { color: var(--color-topic-blue); }
   .pa-card:hover .pa-cta i,
   .pa-card:focus-visible .pa-cta i { transform: translate(2px, -2px); }
-  .pa-card:focus-visible { outline: 2px solid #9cabff; outline-offset: 3px; }
+  .pa-card:focus-visible { outline: 2px solid var(--color-topic-blue); outline-offset: 3px; }
   .pa-card.compact { padding: 0.88rem; }
   .pa-card.compact .pa-path { margin-top: 0.72rem; margin-bottom: 0.62rem; }
   .pa-card.compact > strong { font-size: 1rem; }

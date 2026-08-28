@@ -59,11 +59,11 @@ if (!signals.has('debt') && debtSnapshot.signal?.key === 'debt') {
 }
 
 const TONE: Record<string, string> = {
-  calm: '#5eead4',
-  moderate: '#f5b13d',
-  elevated: '#ff8a3d',
-  stress: '#ff4d87',
-  crisis: '#ff4d87',
+  calm: 'var(--color-signal)',
+  moderate: 'var(--color-amber)',
+  elevated: 'var(--color-elevated)',
+  stress: 'var(--color-accent)',
+  crisis: 'var(--color-accent)',
 };
 
 function clampPct(value?: number | null, scale?: number | null) {
@@ -131,7 +131,7 @@ const items = [
     ...item,
     signal,
     unavailable,
-    color: unavailable ? '#8b909b' : TONE[signal?.tone ?? ''] || '#8b909b',
+    color: unavailable ? 'var(--color-muted)' : TONE[signal?.tone ?? ''] || 'var(--color-muted)',
   };
 });
 
@@ -277,7 +277,7 @@ const aggregateStatus = aggregateDate
   .risk-track {
     height: 6px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-line-strong);
     overflow: hidden;
   }
   .confluence-entry {

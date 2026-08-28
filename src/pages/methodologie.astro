@@ -9,7 +9,7 @@ const updated = methodologyUpdated;
 
 const accentVar: Record<string, string> = {
   teal: 'var(--color-signal)',
-  blue: '#7aa2f7',
+  blue: 'var(--color-topic-blue)',
   pink: 'var(--color-accent)',
   amber: 'var(--color-amber)',
 };
@@ -181,7 +181,7 @@ bandes : &lt;30 Faible · &lt;55 Modéré · &lt;78 Élevé · sinon Critique</c
         </p>
       </article>
 
-      <article class="idx card" style="--c: #7aa2f7">
+      <article class="idx card" style="--c: var(--color-topic-blue)">
         <span class="idx-h">Euro · risque macro zone euro</span>
         <p class="idx-d">
           Score composite issu d'une trentaine d'indicateurs z-scorés (CISS, spreads BTP-Bund
@@ -208,7 +208,7 @@ bandes : &lt;30 Faible · &lt;55 Modéré · &lt;78 Élevé · sinon Critique</c
 interpolation linéaire entre ces points, borné 0-100</code></pre>
       </article>
 
-      <article class="idx card" style="--c: #7aa2f7">
+      <article class="idx card" style="--c: var(--color-topic-blue)">
         <span class="idx-h">Dette US · risque dette souveraine</span>
         <p class="idx-d">
           Le bandeau lit le snapshot machine publié par Debt Risk Radar sur{' '}

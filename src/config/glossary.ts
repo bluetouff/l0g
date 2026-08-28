@@ -197,7 +197,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   },
   {
     titre: 'Crédit privé & marchés',
-    accent: '#ff4d87',
+    accent: 'var(--color-accent)',
     entries: [
       { sigle: 'GMV', nom: 'Gross Merchandise Volume', def: "Valeur totale des transactions passées par une plateforme pendant une période donnée. Le GMV mesure un flux d'achats, pas le chiffre d'affaires, le bénéfice ou l'encours de crédit restant dû. Son périmètre varie selon les entreprises : produits inclus, géographies et traitement des remboursements peuvent différer.", guide: '/posts/golden-age-buy-now-pay-later/' },
       { sigle: 'DPE', nom: 'Diagnostic de performance énergétique', def: "Document français qui classe un logement de A à G selon sa performance énergétique et climatique. Il informe l'acheteur ou le locataire, mais ne mesure ni sa facture réelle ni sa solvabilité. Pour le crédit, il peut éclairer les besoins de travaux, les dépenses théoriques, les règles de location et la valeur de la garantie, sans déterminer seul l'accès au prêt.", guide: '/posts/dpe-entre-bilan-banques/' },
@@ -460,7 +460,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   },
   {
     titre: 'Régulation & institutions US',
-    accent: '#7aa2f7',
+    accent: 'var(--color-topic-blue)',
     entries: [
       { sigle: 'SEC', nom: 'Securities and Exchange Commission', def: "Gendarme boursier américain. Supervise les marchés, les introductions en bourse et les obligations de transparence des sociétés cotées." },
       { sigle: 'Basis trade', nom: 'Arbitrage de base sur Treasuries', def: "Arbitrage à effet de levier qui capte l'écart de prix entre une obligation du Trésor au comptant et son contrat à terme : achat du titre au comptant, vente du futures, financement en repo. Apporte de la liquidité en temps normal, amplifie le stress en cas de débouclage forcé." },

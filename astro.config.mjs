@@ -17,6 +17,16 @@ const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
 export default defineConfig({
   site: 'https://l0g.fr',
 
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      defaultColor: false,
+    },
+  },
+
   // Sortie 100% statique : aucun runtime ne tourne sur zen.
   // (Pas d'adapter = build statique par défaut.)
 
