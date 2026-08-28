@@ -19,6 +19,7 @@ import { topicForTag } from '../../config/topics.ts';
 import { topics, postMatchesTopic } from '../../config/topics.ts';
 import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
 import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evidence.ts';
+import { glossarySearchText, textContainsGlossaryToken } from '../../lib/glossary-matching.mjs';
 import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
@@ -236,23 +237,16 @@ const trustItems = [
   { label: 'aucun tracker', href: '/rgpd/' },
   { label: 'partage sans script tiers' },
 ];
-const normalizedArticleText = `${post.data.title} ${post.data.description} ${post.body ?? ''}`
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .toLocaleLowerCase('fr-FR');
+const glossaryArticleText = glossarySearchText(`${post.data.title} ${post.data.description} ${post.body ?? ''}`);
 const linkedGlossarySlugs = Array.from(
   (post.body ?? '').matchAll(/\/glossaire\/([a-z0-9-]+)\/?/gi),
   (match) => match[1].toLocaleLowerCase('fr-FR')
 );
 const mentionedGlossarySlugs = glossaryEntries
   .filter((entry) => {
-    const token = entry.sigle
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLocaleLowerCase('fr-FR')
-      .trim();
+    const token = entry.sigle.trim();
     if (token.length < 3 || token.length > 32) return false;
-    return normalizedArticleText.includes(token);
+    return textContainsGlossaryToken(glossaryArticleText, token);
   })
   .sort((a, b) => b.sigle.length - a.sigle.length)
   .map((entry) => entry.slug);

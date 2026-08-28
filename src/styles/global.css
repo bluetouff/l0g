@@ -426,6 +426,15 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-signal);
 }
 
+@media (max-width: 640px) {
+  .prose table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+}
+
 /* --- Pagefind, accordé --------------------------------------------- */
 :root {
   --pagefind-ui-scale: 0.85;
