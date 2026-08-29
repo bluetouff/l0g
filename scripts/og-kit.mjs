@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { createRequire } from "node:module";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
+import sharp from "sharp";
 
 const require = createRequire(import.meta.url);
 
@@ -163,5 +164,8 @@ export async function renderOgPng(card) {
     height: OG.height,
     fonts,
   });
-  return new Resvg(svg, { fitTo: { mode: "width", value: OG.width } }).render().asPng();
+  const png = new Resvg(svg, { fitTo: { mode: "width", value: OG.width } }).render().asPng();
+  return sharp(png)
+    .png({ palette: true, colours: 256, quality: 100, effort: 10, dither: 1 })
+    .toBuffer();
 }
