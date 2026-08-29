@@ -185,8 +185,12 @@ async function generate() {
   for (const directory of [MEDIA_ROOT, TEXT_ROOT, join(EPUB_ROOT, 'styles'), join(SOURCE_ROOT, 'META-INF'), PUBLICATION_ROOT]) mkdirSync(directory, { recursive: true });
   for (const file of ['mimetype', 'META-INF/container.xml', 'META-INF/com.apple.ibooks.display-options.xml']) copyFileSync(join(TEMPLATE_ROOT, file), join(SOURCE_ROOT, file));
   copyFileSync(join(TEMPLATE_ROOT, 'EPUB/styles/stylesheet1.css'), join(EPUB_ROOT, 'styles/stylesheet1.css'));
-  const artwork = await sharp(COVER_ART).resize(1600, 2560, { fit: 'cover', position: 'centre' }).png().toBuffer();
-  const cover = await sharp(artwork).composite([{ input: Buffer.from(englishCoverSvg()) }]).png({ compressionLevel: 9, adaptiveFiltering: true }).toBuffer();
+  const canonicalCoverPath = join(PUBLICATION_ROOT, 'digital-euro-cover.png');
+  let cover = readFileSync(canonicalCoverPath);
+  if (process.env.REGENERATE_DIGITAL_EURO_COVER === '1') {
+    const artwork = await sharp(COVER_ART).resize(1600, 2560, { fit: 'cover', position: 'centre' }).png().toBuffer();
+    cover = await sharp(artwork).composite([{ input: Buffer.from(englishCoverSvg()) }]).png({ compressionLevel: 9, adaptiveFiltering: true }).toBuffer();
+  }
   writeFileSync(join(MEDIA_ROOT, 'cover.png'), cover);
   writeFileSync(join(PUBLICATION_ROOT, 'digital-euro-cover.png'), cover);
   writeFileSync(join(TEXT_ROOT, 'cover.xhtml'), `<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en"><head><meta charset="utf-8"/><title>Cover</title></head><body epub:type="frontmatter cover"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1600 2560"><image width="1600" height="2560" xlink:href="../media/cover.png"/></svg></body></html>\n`);
