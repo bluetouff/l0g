@@ -25,22 +25,18 @@ La distinction est essentielle. Un actif étranger peut être couvert par un dé
   <rect width="900" height="520" rx="12" fill="#0c0d10"/>
   <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Le chiffre qui attire l’œil, et celui qui compte</text>
   <text x="42" y="76" fill="#a8adb7" font-size="14">Assureurs-vie taïwanais, fin 2025, en part du total des actifs</text>
-
   <rect x="42" y="108" width="816" height="94" rx="10" fill="#15171c" stroke="#2a2d35"/>
   <text x="66" y="140" fill="#a8adb7" font-size="14">ACTIFS DU SECTEUR</text>
   <text x="66" y="178" fill="#f5f6f8" font-size="30" font-weight="700">37 680 Md TWD</text>
   <text x="442" y="178" fill="#5eead4" font-size="22" font-weight="700">131,22 % du PIB</text>
-
   <text x="42" y="246" fill="#d6d9df" font-size="15">Investissements étrangers</text>
   <rect x="280" y="225" width="530" height="34" rx="6" fill="#20232a"/>
   <rect x="280" y="225" width="320.2" height="34" rx="6" fill="#5eead4"/>
   <text x="615" y="248" fill="#f5f6f8" font-size="18" font-weight="700">60,42 %</text>
-
   <text x="42" y="308" fill="#d6d9df" font-size="15">Passifs de polices en devises</text>
   <rect x="280" y="287" width="530" height="34" rx="6" fill="#20232a"/>
   <rect x="280" y="287" width="103.3" height="34" rx="6" fill="#f5b13d"/>
   <text x="398" y="310" fill="#f5f6f8" font-size="18" font-weight="700">19,49 %</text>
-
   <rect x="42" y="354" width="816" height="112" rx="10" fill="#15171c" stroke="#2a2d35"/>
   <text x="66" y="388" fill="#ff4d87" font-size="24" font-weight="700">env. 724 Md$</text>
   <text x="275" y="387" fill="#d6d9df" font-size="15">d’investissements étrangers, calcul l0g</text>
@@ -123,7 +119,6 @@ La banque centrale ajoute que les assureurs utilisent aussi des couvertures par 
     <tspan x="122" dy="0">Le capital doit couvrir les risques mesurés par le nouveau régime, avec</tspan>
     <tspan x="122" dy="20">des transitions pouvant aller jusqu’en 2040.</tspan>
   </text>
-
   <text x="42" y="590" fill="#777d89" font-size="12">Sources : FSC Taiwan ; Banque centrale de Taïwan ; synthèse l0g.</text>
 </svg>
 <figcaption>Le ratio de couverture publié ne résume pas toutes les protections. Les passifs en devises, les dérivés, les réserves et le capital répondent à des objets différents.</figcaption>

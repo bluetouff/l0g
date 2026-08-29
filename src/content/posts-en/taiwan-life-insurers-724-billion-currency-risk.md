@@ -27,22 +27,18 @@ The distinction matters. A foreign asset may be hedged with a derivative, matche
   <rect width="900" height="520" rx="12" fill="#0c0d10"/>
   <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The eye-catching number, and the one that matters</text>
   <text x="42" y="76" fill="#a8adb7" font-size="14">Taiwan life insurers, end-2025, as a share of total assets</text>
-
   <rect x="42" y="108" width="816" height="94" rx="10" fill="#15171c" stroke="#2a2d35"/>
   <text x="66" y="140" fill="#a8adb7" font-size="14">SECTOR ASSETS</text>
   <text x="66" y="178" fill="#f5f6f8" font-size="30" font-weight="700">NT$37.68tn</text>
   <text x="442" y="178" fill="#5eead4" font-size="22" font-weight="700">131.22% of GDP</text>
-
   <text x="42" y="246" fill="#d6d9df" font-size="15">Foreign investments</text>
   <rect x="280" y="225" width="530" height="34" rx="6" fill="#20232a"/>
   <rect x="280" y="225" width="320.2" height="34" rx="6" fill="#5eead4"/>
   <text x="615" y="248" fill="#f5f6f8" font-size="18" font-weight="700">60.42%</text>
-
   <text x="42" y="308" fill="#d6d9df" font-size="15">FX policy liabilities</text>
   <rect x="280" y="287" width="530" height="34" rx="6" fill="#20232a"/>
   <rect x="280" y="287" width="103.3" height="34" rx="6" fill="#f5b13d"/>
   <text x="398" y="310" fill="#f5f6f8" font-size="18" font-weight="700">19.49%</text>
-
   <rect x="42" y="354" width="816" height="112" rx="10" fill="#15171c" stroke="#2a2d35"/>
   <text x="66" y="388" fill="#ff4d87" font-size="24" font-weight="700">about $724bn</text>
   <text x="275" y="387" fill="#d6d9df" font-size="15">in foreign investments, l0g calculation</text>
@@ -125,7 +121,6 @@ The central bank also says insurers use basket-currency hedges. These can reduce
     <tspan x="122" dy="0">Capital must cover risks measured by the new solvency regime, with</tspan>
     <tspan x="122" dy="20">transitional measures that can run through 2040.</tspan>
   </text>
-
   <text x="42" y="590" fill="#777d89" font-size="12">Sources: Taiwan FSC; Central Bank of Taiwan; l0g synthesis.</text>
 </svg>
 <figcaption>The published hedge ratio does not summarize every protection. Foreign-currency liabilities, derivatives, reserves and capital serve different purposes.</figcaption>
