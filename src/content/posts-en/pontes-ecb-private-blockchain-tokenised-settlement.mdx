@@ -1,0 +1,381 @@
+---
+title: "Pontes: what the ECB’s ‘private blockchain’ will actually do"
+seoTitle: "Pontes: ECB private DLT mechanics and risks | l0g"
+ogTitle: "Pontes: is the ECB really putting its money on-chain?"
+description: "Pontes will link market DLT platforms to T2 through a private Eurosystem ledger. How it works, what is absent at launch, and the liquidity, legal and concentration risks."
+ogImage: "/illustrations/news/pontes-private-ledger-t2-bridge-v1.jpg"
+pubDate: 2026-08-29T09:00:00+02:00
+updatedDate: 2026-08-29T09:00:00+02:00
+sourceArticle: "pontes-bce-blockchain-privee-reglement-tokenise"
+sourceUpdatedDate: 2026-08-29T09:00:00+02:00
+tags: ["ECB", "Pontes", "Appia", "DLT", "tokenisation", "T2", "delivery versus payment", "systemic risk", "stablecoins"]
+draft: false
+---
+
+import PontesArchitectureDecoder from '../../components/PontesArchitectureDecoder.astro';
+
+<style>{`
+  @media(max-width:640px){
+    .prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+  }
+`}</style>
+
+*On [28 August 2026, Isabel Schnabel](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html) called on central banks to go “on-chain”. Read literally, the slogan suggests the ECB is about to release euros onto a blockchain. Pontes is more precise, more cautious and more political: the Eurosystem is building a closed ledger for the cash leg of tokenised markets while retaining T2 as the legal anchor at launch.*
+
+Pontes will not give the public an ECB wallet. It will not put central bank reserves on Ethereum. It will not automatically move bonds, custody, taxation and property law into one infrastructure. Its purpose is to give banks and market infrastructures a way to pay in central bank money when a security or another asset is delivered on a DLT platform.
+
+That distinction changes the analysis. The project is designed to reduce a well-identified risk: receiving a tokenised asset against the promise of a private issuer rather than central bank money. It introduces or concentrates other risks: pre-positioned liquidity, dependency on a bridge between ledgers, governance of code, restricted access, operational continuity and the fit between computer state and legal finality.
+
+To place this wholesale infrastructure in the wider monetary landscape, the [Digital Euro investigation and EPUB](/en/publications/digital-euro/) cover the retail project, our [CBDC reading guide](/en/guides/read-a-cbdc-the-digital-euro-parameter-by-parameter/) provides a comparison framework, and the [EURR investigation follows the debt behind a euro stablecoin](/en/analysis/eurr-who-owes-euro-behind-revolut-stablecoin/).
+
+> **State of the file on 29 August 2026.** The ECB [plans Pontes’ initial launch for September 2026](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html). This analysis separates functions documented for that launch from capabilities announced for 2027 and 2028. The reviewed public documents include the Pontes page, the functional and operational training materials dated 17 July, the pricing guide dated 19 August, the Appia strategy and speeches by Piero Cipollone and Isabel Schnabel. A roadmap is never treated here as a delivered feature.
+
+## The answer in one sentence
+
+**Pontes is a wholesale settlement infrastructure connecting market DLT platforms to central bank money through a private Eurosystem cash ledger and direct access to T2.**
+
+The word “blockchain” already needs care. The [ECB’s own analysis](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html) speaks of **distributed ledger technology**, or DLT. A blockchain is the best-known form of DLT, not a compulsory synonym. The reviewed Pontes documentation describes a distributed ledger, nodes, wallets and tokens, but it does not publish the underlying protocol, the chosen consensus mechanism, source code or a public security-audit report.
+
+The expression “the ECB’s private blockchain” is therefore useful shorthand only if two qualifications remain visible:
+
+1. Pontes’ cash ledger is private and permissioned;
+2. the market DLT carrying the asset can be a different platform and may even rely on a permissionless network, under the responsibility of an eligible operator.
+
+<PontesArchitectureDecoder lang="en" />
+
+## Four distinct layers of the architecture
+
+The architecture becomes misleading as soon as every layer receives the same name.
+
+**T2** is the Eurosystem’s real-time gross settlement system. Banks and other eligible participants hold central bank money in RTGS accounts there. The [Eurosystem’s comprehensive payments strategy published in March 2026](https://www.ecb.europa.eu/press/pubbydate/2026/html/ecb.eurosystemcomprehensivepaymentsstrategy202603.en.html) says T2 will remain the backbone of euro-area payments.
+
+**The market DLT platform** carries the asset leg: a tokenised bond, a tokenised deposit, a fund unit or another eligible asset. It is operated by an entity that meets the relevant regulatory or Eurosystem eligibility conditions. That operator remains responsible for its ledger and for delivery of the asset.
+
+**The Eurosystem DLT platform**, called ESY DLT in the functional training material, carries the cash leg in token mode. The ECB describes it as a **private, permissioned infrastructure** with central-bank nodes, an operator node and an ECB node. Participants use *Dedicated Cash Wallets*.
+
+**Hash-Link** synchronises the two legs. It does not necessarily move the asset and the cash onto one ledger. It uses the payment status to release either an execution key or a cancellation key on the asset ledger.
+
+These four layers answer four different questions: where the asset sits, where liquidity sits, who may write to each ledger and when a transfer becomes legally final.
+
+## How one euro becomes a cash token
+
+The [Pontes functional training material](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes260722_trainingfunctional.en.pdf), in particular slides 9 to 13 and 57 to 65, describes a three-stage cycle.
+
+### 1. The participant funds a wallet from T2
+
+A participant requests funding for a dedicated cash wallet. The T2 interface converts the instruction into ISO 20022 messages. The participant’s RTGS account is debited, funds pass through a technical account and are credited to a **Token Issuance Account** held by the ECB in T2.
+
+Tokens are therefore not issued before central bank money has arrived. The ECB issuer node credits the wallet only after confirmation of settlement in T2.
+
+### 2. Cash tokens move on the private ledger
+
+Once issued, tokens can be transferred between dedicated cash wallets. The functional documentation clearly distinguishes this movement from direct settlement in T2: in a cash-token payment, the payer’s wallet is debited and the beneficiary’s wallet is credited on ESY DLT.
+
+The ECB’s issuance account in T2 acts as an aggregate anchor. The documentation says token balances “mirror” that account. It does not show the payer’s individual RTGS account being debited and the beneficiary’s individual RTGS account being credited for every wallet-to-wallet payment. Those individual account movements do appear in direct-T2 mode.
+
+### 3. The participant moves liquidity back to T2
+
+Defunding reverses the path. Tokens are redeemed on the ledger, the ECB’s issuance account is debited in T2 and the participant’s RTGS account is credited.
+
+This mechanism separates Pontes from a conventional stablecoin. The issuing node belongs to the ECB, the corresponding liquidity is carried in the Token Issuance Account in T2, and the token is restricted to eligible participants. The documentation presents this cash as tokenised central bank money.
+
+It does not, however, settle every legal question. The [official Pontes page](https://www.ecb.europa.eu/paym/target/pontes/html/index.en.html) and the two late-August speeches state that **legal settlement finality for the cash leg remains anchored in T2 at launch**. In direct mode, the path is visible: RTGS accounts are debited and credited. In cash-token mode, the public corpus describes funding, issuance, wallet transfers and defunding without publishing, in those documents, the complete legal reasoning attaching each token transfer to the collective issuance account.
+
+The careful conclusion is therefore this: **at launch, the Pontes ledger produces the operational state of the tokenised payment while T2 remains its announced legal anchor.** It would overstate the initial product to present the ESY DLT entry alone as the autonomous legal finality promised for a later stage.
+
+## Two settlement modes for two cash paths
+
+Pontes offers two paths.
+
+### Cash-token mode
+
+Cash moves between wallets on the Eurosystem’s private DLT. A participant first places liquidity in the T2 issuance account and can then use the resulting tokens for multiple operations without returning to its individual RTGS account for every transfer.
+
+This brings the cash leg closer to the tokenised asset. It can support repeated DLT operations and prepare later programmability. It also creates a separate operational liquidity pocket that must be funded and emptied.
+
+### Direct-T2 mode
+
+The instruction is created in Pontes, sent to the T2 interface, converted into ISO 20022 messages and settled by debiting and crediting the two participants’ RTGS accounts. Confirmation then returns to the ledger.
+
+This path leaves central bank money exactly where it already operates. It adds an orchestration layer between the market DLT platform and T2 without circulating cash between tokenised wallets.
+
+The dual design is pragmatic: it launches a service compatible with T2 while testing a Eurosystem cash ledger. It also provides two operational options according to the use case and participants’ readiness. It is not yet a complete migration to central bank money whose legal finality resides natively on the DLT.
+
+## Hash-Link: a conditional exchange across two ledgers
+
+“Atomicity” is often used as a shortcut. On one ledger, a common consensus can validate delivery of the asset and payment in the same transaction. Pontes connects two ledgers: the asset sits on the market platform, while cash sits on ESY DLT or in T2.
+
+The [functional training material](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes260722_trainingfunctional.en.pdf), slides 72 to 83, describes Hash-Link as follows:
+
+- the asset leg is locked on the market DLT platform;
+- the cash leg can be pending, settled, unsettled or expired;
+- a settled payment releases an execution key that enables delivery of the asset;
+- an unsettled or timed-out payment releases a cancellation key;
+- the launch documentation sets a thirty-minute timeout.
+
+The system seeks an “all or none” outcome. It is designed to reduce principal risk: the buyer should not lose the cash without receiving the asset, and the seller should not deliver the asset without final payment.
+
+It does not turn the two ledgers into one transaction validated by one consensus mechanism. The result still depends on correct implementation of the lock, generation and custody of secrets, interfaces, timeouts, node availability and the legal recognition of each step. Hash-Link is a cryptographic and operational bridge. It does not merge responsibilities or applicable laws.
+
+## Why the ECB chose a private, permissioned ledger
+
+A private DLT restricts who can read the ledger. A permissioned DLT restricts validation and writing to authorised actors. Pontes combines the two.
+
+The choice is visible in the [functional documentation](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes260722_trainingfunctional.en.pdf):
+
+- nodes belong to Eurosystem functions and their service providers;
+- national central banks onboard participants and operators;
+- wallets are tied to a BIC and a T2 RTGS account;
+- national central banks can block and unblock participants;
+- market DLT operators must be whitelisted before instructing on a participant’s behalf;
+- the ECB controls the issuance wallet and the creation or redemption of tokens.
+
+This design does not seek censorship resistance or anonymous access. It seeks known counterparties, controlled issuance, confidentiality for central-bank operations, supervision, incident management and a responsibility chain compatible with a systemically important financial infrastructure.
+
+It also allows a faster launch. T2, its accounts, access law and settlement procedures already exist. Pontes adds a ledger and interfaces rather than immediately replacing the wholesale-payment core.
+
+The trade-off is explicit: technical distribution of data does not create decentralised governance. Participants do not vote on monetary rules through an open consensus. The Eurosystem decides who enters, who writes, who can be blocked, which functions are active and how the system evolves.
+
+### The asset ledger may still be permissionless
+
+Closing the cash leg does not mean every platform connected to Pontes must be private. In a [Pontes Market Contact Group FAQ dated 28 January 2026](https://www.ecb.europa.eu/paym/target/pontes/governance/pdf/pmcg/ecb.pmcg260128_adhoceligibility.en.pdf), the ECB says the Eurosystem does not impose technology criteria on the underlying market DLT network, including whether it is permissionless.
+
+Eligibility attaches to the operator and compliance with the relevant rules. The ECB therefore does not exclude public or private, permissioned or permissionless market architectures in principle, while cash settlement remains inside the Eurosystem perimeter.
+
+That separation explains the bridge’s attraction: the ECB does not have to choose one market blockchain. It also explains the risk: Pontes must interoperate with architectures, governance models and security levels that can differ materially.
+
+## What Pontes will do at launch
+
+| Function | Documented for launch | Outside scope or later |
+|---|---:|---|
+| Settlement of wholesale transactions in central bank money | Yes | No retail payments |
+| Cash tokens on a Eurosystem DLT | Yes | Native legal finality on that DLT comes later |
+| Direct settlement in T2 | Yes | T2 does not disappear |
+| Delivery versus payment and payment versus payment | Yes, through Hash-Link | No single consensus across both ledgers |
+| Wholesale and payment-free-of-delivery transactions | Yes | No public market access |
+| Automated funding and defunding between T2 and wallets | Yes | No liquidity creation without a prior debit in T2 |
+| General smart contracts on the Eurosystem DLT | After launch | Not an initial documented feature |
+| 24/7 operation | Mid-2028 target | Not at launch |
+| Harmonised securities law and taxation | No | Work for Appia and legislators |
+| Secondary-market liquidity for tokenised assets | No | Depends on investors, market makers and pricing |
+
+The final row is the most important. A security can settle in seconds and remain almost impossible to resell. Schnabel makes the point herself: tokenisation does not create the buyers, sellers or transparent prices needed for liquidity.
+
+For scale, an [ECB macroprudential analysis](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html) estimated traditional assets tokenised on public blockchains at **€38 billion in February 2026**, compared with roughly **€241 trillion** of traditional financial assets. That is approximately **0.016%**. The market is growing quickly, but mass settlement is not yet a demonstrated reality.
+
+## Risk 1: speed can consume more liquidity
+
+Instant settlement sounds as though cash will work more efficiently. That intuition can be wrong.
+
+In deferred or netted systems, several payments offset before final settlement. A bank that must pay 100 and receive 90 needs only 10 at the net settlement point. Under immediate gross settlement, it may need the full 100 before the incoming 90 arrives.
+
+The [ECB’s analysis of tokenisation](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html) notes that atomicity often requires pre-positioning both cash and securities. Schnabel adds that more frequent and less nettable payments may increase demand for reserves. If traditional and tokenised systems keep different operating hours, banks may also hold separate liquidity buffers.
+
+Cash-token mode makes the issue concrete. To use a wallet, a participant first moves liquidity from its T2 account to the ECB issuance account. The liquidity remains central bank money, but it sits in a different operational compartment until defunding.
+
+The useful performance measure will therefore not be speed alone. It should include:
+
+- average and peak liquidity held in wallets;
+- turnover of that liquidity;
+- the number of transactions failing for insufficient funds;
+- reserve needs during periods of stress;
+- the ability to move cash immediately between T2 and Pontes.
+
+An infrastructure can lower settlement risk while increasing liquidity cost. Those outcomes are compatible.
+
+## Risk 2: the bridge becomes critical infrastructure
+
+Pontes distributes functions across the market ledger, ESY DLT, the T2 interface, central-bank nodes, the operator node and the ECB issuer node. This avoids placing every function on one blockchain. Their coordination nevertheless creates a new critical chain.
+
+The [operational training material dated 17 July](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes260722_trainingops.en.pdf) states several limitations for the initial phase:
+
+- the pilot follows T2 opening days;
+- the published maintenance window runs from 18:00 to 08:00;
+- ordinary support is available from 08:00 to 18:00, with no night on-call service;
+- the recovery-time objective for a site or availability-zone failure is no more than one hour, with a recovery-point objective of zero;
+- the document states that the pilot has no recovery procedure in a surviving region for a regional disaster;
+- unavailability of a national central-bank node can prevent defunding for its perimeter;
+- unavailability of the ECB node can prevent defunding across central banks and may leave liquidity in the pilot overnight.
+
+These facts do not prove that the final product will be fragile. They describe the controls and blind spots of the launch phase. Above all, they prevent Pontes from being presented today as a 24/7 infrastructure already endowed with the resilience targeted for 2028.
+
+Moving to round-the-clock operation changes the scale of risk. Night maintenance, support deferred to the next business day or unavailable defunding become more consequential when international markets continue to trade.
+
+## Risk 3: code synchronises; law decides
+
+A ledger may show Alice as the owner of a security. Applicable law may require another entry, recognise a different custodian, treat insolvency differently or allow a transaction to be reversed.
+
+Piero Cipollone made the issue explicit on [26 August 2026](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260826~3641116314.en.html): connecting ledgers is not enough. Assets must retain the same legal meaning, rights must remain enforceable and technical finality must coincide with legal finality.
+
+The [BIS Committee on Payments and Market Infrastructures report](https://www.bis.org/cpmi/publ/d225.pdf) reaches the same conclusion. Where an operational transfer on a ledger does not coincide with legal recognition, revocation or litigation can recreate the settlement risk that technology was meant to remove.
+
+Pontes limits that risk on the cash leg by retaining T2 as the launch anchor. By itself, it does not solve:
+
+- ownership law for the tokenised asset;
+- conflicts of law between Member States;
+- recognition of a transfer triggered by a Hash-Link key;
+- treatment of the asset if an operator becomes insolvent;
+- taxation and corporate actions;
+- liability when the two ledgers diverge.
+
+The weak point in tokenised settlement is not necessarily the hash. It can be the contract that gives the hash legal effect.
+
+## Risk 4: regulated access can preserve gatekeepers
+
+The [Pontes page](https://www.ecb.europa.eu/paym/target/pontes/html/index.en.html) reserves direct access to entities with access to T2. Eligible operator categories include central securities depositories, certain infrastructures authorised under the DLT Pilot Regime, payment systems, central counterparties and regulated financial institutions or entities assessed by a national central bank.
+
+The functional training material adds that a participant must have a valid BIC and a linked RTGS account. Indirect T2 participation schemes do not receive the same direct technical access, even though a participant or market DLT operator can submit instructions on their behalf.
+
+This selection is coherent for a systemically important payment infrastructure. It simplifies identification, oversight and incident management. It may also leave new entrants behind a bank or infrastructure that is already connected.
+
+That last consequence is an **inference**, not an announced ECB decision. It needs to be measured through the number of direct participants, the cost of indirect access, whitelisting conditions, operator concentration and the practical ability of a small infrastructure to use Pontes without depending on a large institution.
+
+The [pricing guide dated 19 August](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes.20260819.PontesInitialLaunchPricingGuide.en.pdf.pdf) sets only one-off connection fees during the initial phase: **€2,500 for a market participant** and **€15,000 for a market DLT operator**, with no monthly or settlement fees. Pricing for the enhanced product, potentially including periodic and transaction fees, remains to be determined.
+
+The published entry fee is small for a bank. It does not measure development, compliance, internal-system integration or the cost of acting through an intermediary.
+
+## Risk 5: programmability can automate an error
+
+General smart contracts are not part of the announced initial launch. Schnabel and Cipollone place them among later Pontes enhancements.
+
+The distinction matters. The September product should not be credited with functions it does not yet have. It does not prevent the risk from being examined before deployment.
+
+A programmable rule can release collateral, execute a repo, trigger a conditional payment or automate a margin call. The same rule can propagate bad data, demand cash simultaneously from many institutions or lock positions before a human can intervene.
+
+Schnabel acknowledges that automated margin calls can amplify procyclicality. The [ECB macroprudential article](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html) adds four families of risk: faster liquidity pressure, dependence on poorly governed oracles, contagion between platforms and smart-contract vulnerabilities that are hard to correct in a 24/7 service.
+
+The issue is not only cybersecurity. It is governance:
+
+- who validates a contract before deployment;
+- who can suspend execution;
+- who decides on an upgrade;
+- how an error can be reversed without destroying finality;
+- who bears the loss;
+- which market or collateral data are accepted as an oracle;
+- which monetary-policy operations can be programmed.
+
+Programmable money does not merely programme payments. It programmes powers.
+
+## The ECB’s hierarchy for central-bank money and stablecoins
+
+Schnabel’s speech places central bank money above private instruments for ultimate settlement. The reason is not ideological.
+
+A stablecoin is a liability of its issuer. Its value depends on reserve quality, redemption rights, custodian banks, liquidity and issuer governance. A central bank supplies the asset that settles obligations between banks and can create elastic liquidity against collateral during stress.
+
+Pontes seeks to prevent a European tokenised market from having to choose among several private tokens for its interbank cash leg. The ECB cash token becomes the common point preserving par convertibility between forms of money.
+
+The official position is more nuanced than a war on stablecoins. The [Eurosystem’s comprehensive payments strategy](https://www.ecb.europa.eu/press/pubbydate/2026/html/ecb.eurosystemcomprehensivepaymentsstrategy202603.en.html) envisages a complementary role for tokenised deposits and euro stablecoins if they are EU-governed, soundly designed and regulated. Pontes may itself settle transfers between forms of private money in central bank money.
+
+The doctrine therefore resembles a pyramid:
+
+1. private assets and services innovate across different networks;
+2. tokenised deposits and stablecoins can serve particular uses;
+3. central bank money retains the role of ultimate interbank settlement asset.
+
+The ECB is not joining public crypto. It is extending its operational perimeter so that tokenised finance remains connected to its liability.
+
+## Pontes 2026 and Appia 2028
+
+Pontes and Appia are often presented as adjacent projects. They address different time horizons.
+
+| Horizon | Announced element | What remains to be demonstrated |
+|---|---|---|
+| September 2026 | Initial Pontes launch, private cash DLT, token and direct-T2 modes, Hash-Link, finality anchored in T2 | Actual go-live, participants, volumes, incidents and liquidity use |
+| 2027 | Initial enhancements scheduled in the pricing guide | Final scope, detailed timetable and usage pricing |
+| Before mid-2028 | Gradual extension to 22.5 hours per business day and immediate finality on ESY DLT | Legal basis, resilience and relationship with T2 |
+| Mid-2028 | Targeted 24/7 service, greater programmability, stronger resilience and multi-currency capability | Delivery, security, governance and adoption |
+| 2028 | Appia blueprint for a European tokenised ecosystem | Choice between a shared ledger, multiple networks or a hybrid model |
+
+[Cipollone’s speech](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260826~3641116314.en.html) says the Appia architecture is not predetermined. A shared ledger could pool costs and reduce fragmentation, but it would concentrate risk and might lock the market into one technology. Multiple networks could support competition and isolate failures, at the price of more interfaces and more fragmented liquidity.
+
+Pontes is therefore not the final system. It is both a service and a learning instrument that will give the Eurosystem evidence for the architecture that follows.
+
+## The promised savings remain unproven
+
+Tokenisation can reduce reconciliation, automate some rules and shorten settlement. These functions are not all exclusive to DLT. T2S already performs delivery versus payment and auto-collateralisation, while conventional systems can execute conditional logic.
+
+An [ECB empirical study published in April 2026](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_03.en.html) finds, in a small sample, an issuance yield spread roughly 14 basis points lower for tokenised bonds matched with conventional bonds. It does not find a statistically significant reduction in underwriting fees; the central estimate is slightly higher. Its secondary-liquidity results also rely on a limited number of issues.
+
+Those findings do not invalidate Pontes. They prevent an architectural promise from being booked as a realised saving.
+
+The full cost will include:
+
+- the DLT infrastructure;
+- interfaces with T2 and market platforms;
+- audits and cybersecurity;
+- pre-positioned liquidity;
+- compliance and key management;
+- parallel operation of conventional systems;
+- cross-ledger incident resolution;
+- Pontes fees after the initial phase.
+
+A shared database can remove reconciliations. An ecosystem of many DLTs connected by bridges can recreate them in another form.
+
+## l0g’s reality test
+
+Pontes can be assessed without taking an ideological position on blockchain. Six groups of production data would separate useful innovation from more elaborate plumbing.
+
+### 1. Adoption
+
+Active participants, operator diversity, asset classes, settled volume and the share of transactions that are genuinely commercial rather than tests between related entities.
+
+### 2. Liquidity
+
+Average and maximum amounts held in the issuance account and wallets, speed of reallocation to T2, failed transactions and reserve use at peaks.
+
+### 3. Resilience
+
+Node availability, recovery times, Hash-Link incidents, expired payments, liquidity remaining in the ledger at close and regional-disaster test results.
+
+### 4. Law
+
+Publication of legal terms, exact status of cash tokens, finality point for each mode, remedies for divergence and cross-border recognition of the asset leg.
+
+### 5. Cost
+
+Full cost per transaction, including integration, liquidity and parallel infrastructure, compared with T2S, T2 and conventional alternatives.
+
+### 6. Competition
+
+Access for firms without a direct T2 account, operator concentration, portability between networks and dependency on a technology or a small number of providers.
+
+None of those metrics requires belief or disbelief in blockchain. They require production data.
+
+## The risk has moved
+
+Pontes gives a credible answer to a real question. If securities move onto DLTs, their cash leg must be able to settle in the safest monetary asset. Leaving that layer only to stablecoins or incompatible bank tokens would fragment liquidity and place issuer risk at the heart of the market.
+
+The ECB’s launch answer is deliberately hybrid. Money is prefunded in T2, represented on a closed ledger and synchronised with assets held elsewhere. This allows a quicker launch, preserves existing rules and creates operational experience without moving the financial core in one step.
+
+It moves the risks. Credit risk in the cash settlement asset falls because central bank money is used. In exchange, more importance concentrates in pre-positioned liquidity, interfaces, nodes, cryptographic keys, access rules and the correspondence between code and law.
+
+The most spectacular wording in Schnabel’s speech is “central banks on-chain”. The operating documents tell a more interesting story: **the ECB is first building a closed bridge back to T2, and will then decide how far it wants to move its money, its tools and its authority onto the ledger.**
+
+---
+
+## Primary sources
+
+1. **ECB, Isabel Schnabel**, [“Central banks on-chain”](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html), 28 August 2026. Sections on the three models of tokenised central bank money, Pontes, Appia, liquidity, governance and resilience.
+2. **ECB**, [official Pontes page](https://www.ecb.europa.eu/paym/target/pontes/html/index.en.html), timeline, dual model, T2 finality, Hash-Link and eligibility. Accessed 29 August 2026.
+3. **ECB**, [Pontes Pilot functional training](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes260722_trainingfunctional.en.pdf), 17 July 2026. Slides 5, 9–17, 43–45, 57–68 and 72–83.
+4. **ECB**, [Pontes Pilot operational training](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes260722_trainingops.en.pdf), 17 July 2026. Slides on operating hours, support, continuity, nodes and defunding.
+5. **ECB, Piero Cipollone**, [“From vision to delivery: building Europe’s tokenised financial market”](https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260826~3641116314.en.html), 26 August 2026. Pontes timetable, future DLT finality, 24/7, programmability, law and Appia.
+6. **Eurosystem**, [Appia roadmap](https://www.ecb.europa.eu/press/payments-news/ecb.pubconpm202603.en.html), 11 March 2026.
+7. **Eurosystem**, [comprehensive payments strategy](https://www.ecb.europa.eu/press/pubbydate/2026/html/ecb.eurosystemcomprehensivepaymentsstrategy202603.en.html), 31 March 2026. T2, central bank money, tokenised deposits and stablecoins.
+8. **ECB**, [“Towards an efficient and integrated digital capital market in Europe”](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html), *Macroprudential Bulletin*, April 2026. Market scale, liquidity, pre-positioning, smart-contract risks and legal fragmentation.
+9. **ECB**, [“Tokenised bonds: assessing efficiency and liquidity in a nascent market”](https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_03.en.html), April 2026.
+10. **BIS and CPMI**, [*Tokenisation in the context of money and other assets*](https://www.bis.org/cpmi/publ/d225.pdf), October 2024. Finality, settlement money, governance, concentration and interoperability.
+11. **Financial Stability Board**, [*The Financial Stability Implications of Tokenisation*](https://www.fsb.org/uploads/P221024-2.pdf), October 2024.
+12. **ECB**, [exploratory work on wholesale central bank money settlement](https://www.ecb.europa.eu/press/pubbydate/2025/html/ecb.exploratoryworknewtechnologies202506.en.html), June 2025.
+13. **ECB**, [Pontes Pricing Guide](https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/pontes/shared/pdf/ecb.pontes.20260819.PontesInitialLaunchPricingGuide.en.pdf.pdf), 19 August 2026.
+14. **ECB, Pontes Market Contact Group**, [eligibility and use cases](https://www.ecb.europa.eu/paym/target/pontes/governance/pdf/pmcg/ecb.pmcg260128_adhoceligibility.en.pdf), 28 January 2026.
+
+## Method and limitations
+
+This analysis uses public documents available on 29 August 2026. It distinguishes **documented operating facts**, **roadmap capabilities**, **architectural inferences** and **information absent from the reviewed corpus**.
+
+No Pontes environment, participation contract, live transaction test or independent technical audit was available for this investigation. The absence of a protocol, provider, audit or legal rule from the reviewed documents does not prove that the information is absent from non-public material provided to participants.
+
+The operating hours, recovery procedures and limitations discussed above refer to the pilot or initial launch. They are not projected onto the enhanced 2028 product. Cost savings and liquidity effects cannot be established before production data are published.
+
+*Text, diagrams and decoder: CC BY 4.0.*
