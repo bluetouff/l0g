@@ -122,7 +122,7 @@ export const dashboards: Dashboard[] = [
     cadence: 'Instantané statique · 13F trimestriel, Form 4 sous 2 jours',
     stack: 'Python · ingest EDGAR · architecture snapshot',
     repo: 'https://github.com/bluetouff/13flow',
-    preview: { src: '/preview/13flow.png', width: 2400, height: 1609 },
+    preview: { src: '/preview/13flow.png', width: 1200, height: 804 },
   },
   {
     label: 'Orbit',
