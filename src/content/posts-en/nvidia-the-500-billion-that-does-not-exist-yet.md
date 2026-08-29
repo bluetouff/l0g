@@ -1,7 +1,7 @@
 ---
 title: "Nvidia: the $500 billion that does not exist yet"
-seoTitle: "Nvidia: audit of the $500bn financing plan | l0g"
-description: "Nvidia wants to mobilise more than $500 billion. An audit of its six partners finds targets, debt, co-investors and financing platforms that were already in place."
+seoTitle: "Nvidia $500bn AI financing: what is committed? | l0g"
+description: "The six memorandums left amounts and terms undisclosed. Trace debt, equity, existing vehicles and Nvidia's possible $125bn backstop."
 pubDate: 2026-08-11T14:50:00+02:00
 updatedDate: 2026-08-11T14:50:00+02:00
 sourceArticle: "nvidia-500-milliards-qui-n-existent-pas-encore"

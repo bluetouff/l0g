@@ -51,6 +51,10 @@ const guidesEn = defineCollection({
   // Versions anglaises publiées explicitement, sans internationaliser tout le site.
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/guides-en' }),
   schema: guideSchema.extend({
+    // Exact <title> value, kept separate from the editorial H1.
+    seoTitle: z.string().optional(),
+    // Optional social title. Social cards fall back to the SEO title.
+    ogTitle: z.string().optional(),
     // Slug du guide français source, ex: lire-le-pce-inflation-fed.
     sourceGuide: z.string(),
     // Date de révision du guide français au moment de la traduction.

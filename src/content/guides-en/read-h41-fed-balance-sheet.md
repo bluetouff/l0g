@@ -1,6 +1,7 @@
 ---
 title: "How to Read H.4.1: the Fed Balance Sheet, Line by Line"
-description: "A reference guide to H.4.1, the weekly release detailing the Federal Reserve balance sheet. What the Fed holds, where liquidity goes, why bank reserves are a residual, how to read quantitative tightening in the table, and the traps to know before drawing any conclusion."
+seoTitle: "Fed H.4.1: what bank reserves really show | l0g"
+description: "H.4.1 maps Fed assets, bank reserves, the TGA and reverse repos each Thursday. A weekly snapshot whose securities are not marked to market."
 pubDate: 2026-07-08T16:30:00+02:00
 updatedDate: 2026-07-08T16:30:00+02:00
 sourceGuide: "lire-h41-bilan-fed"
