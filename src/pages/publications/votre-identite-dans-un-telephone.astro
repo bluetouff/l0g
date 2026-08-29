@@ -268,7 +268,7 @@ const bookJsonLd = {
   .book-spine { position: absolute; inset: 0 auto 0 0; display: grid; width: 1.4rem; place-items: center; border: 1px solid #314954; border-right: 0; border-radius: 5px 0 0 5px; background: #071017; color: #8ba1ae; font-family: var(--font-mono); font-size: .55rem; letter-spacing: .13em; writing-mode: vertical-rl; transform: rotate(180deg); }
   .cover-caption { margin-top: 1rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .63rem; letter-spacing: .08em; text-transform: uppercase; }
   .hero-copy > .mono-label, .section-heading .mono-label, .premise-section .mono-label, .closing-section .mono-label { color: var(--book-cyan); }
-  .hero-copy h1 { max-width: 48rem; margin-top: .7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.4rem); line-height: .88; letter-spacing: -.055em; }
+  .hero-copy h1 { max-width: 48rem; margin-top: .7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.35rem, 4.5vw, 4.25rem); line-height: .88; letter-spacing: -.055em; }
   .hero-copy h1 span { display: block; color: var(--book-cyan); }
   .hero-deck { max-width: 46rem; margin-top: 1.4rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1.15rem, 2.5vw, 1.55rem); line-height: 1.35; }
   .hero-lede { max-width: 49rem; margin-top: 1rem; color: var(--color-prose); font-family: var(--font-read); font-size: 1rem; line-height: 1.76; }
@@ -323,7 +323,7 @@ const bookJsonLd = {
   .download-section > a { border: 1px solid var(--book-amber); border-radius: 11px; padding: 1rem 1.2rem; background: color-mix(in srgb, var(--book-amber) 10%, var(--color-surface)); color: var(--color-bright); font-family: var(--font-mono); font-size: .74rem; font-weight: 800; text-decoration: none; text-transform: uppercase; }
   .download-section > a:hover { background: color-mix(in srgb, var(--book-amber) 18%, var(--color-surface)); }
   @media (max-width: 900px) { .book-hero { grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr); gap: 2rem; } .visual-essay figure, .visual-essay figure:nth-child(even) { grid-template-columns: 1fr; } .visual-essay figure:nth-child(even) img { order: 0; } .visual-essay img { min-height: 0; aspect-ratio: 16 / 9; } .layer-map { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 680px) { .book-hero { grid-template-columns: 1fr; } .cover-stage { max-width: 19rem; margin-inline: auto; } .hero-copy h1 { font-size: clamp(3.1rem, 15vw, 5rem); } .premise-section { grid-template-columns: auto minmax(0, 1fr); } .premise-copy { grid-column: 2; } .chapter-grid, .closing-section { grid-template-columns: 1fr; } }
+  @media (max-width: 680px) { .book-hero { grid-template-columns: 1fr; } .cover-stage { max-width: 19rem; margin-inline: auto; } .hero-copy h1 { font-size: clamp(2.25rem, 11vw, 3.35rem); } .premise-section { grid-template-columns: auto minmax(0, 1fr); } .premise-copy { grid-column: 2; } .chapter-grid, .closing-section { grid-template-columns: 1fr; } }
   @media (max-width: 430px) { .layer-map { grid-template-columns: 1fr; } .chapter-grid a { padding: .9rem; } .hero-actions { align-items: stretch; } .download-action { width: 100%; } }
   @media (prefers-reduced-motion: reduce) { .book-shell { transform: none; } }
 </style>
