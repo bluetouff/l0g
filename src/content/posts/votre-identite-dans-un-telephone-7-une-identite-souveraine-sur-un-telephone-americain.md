@@ -76,21 +76,18 @@ Cette décision peut dépendre de l’application, du backend SGIN, du système 
 <text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LA CONFIANCE SOUS</text>
 <text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">L’APPLICATION</text>
 <text x="18" y="82" fill="#8b909b" font-size="8.4">Couches simplifiées, périmètres à ne pas confondre</text>
-
 <rect x="22" y="108" width="316" height="108" rx="12" fill="#10211f" stroke="#5eead4"/>
 <text x="38" y="136" fill="#5eead4" font-size="10.5" font-weight="700">1. ÉTAT ET SGIN</text>
 <text x="38" y="162" fill="#f5f6f8" font-size="10">Identité, serveurs, règles et révocation</text>
 <text x="38" y="184" fill="#aeb4bf" font-size="8.8">Contrôle public documenté</text>
 <path d="M180 216 V242" stroke="#5eead4" stroke-width="2"/>
 <path d="M174 234 L180 244 L186 234" fill="#5eead4"/>
-
 <rect x="22" y="248" width="316" height="108" rx="12" fill="#101824" stroke="#7aa2f7"/>
 <text x="38" y="276" fill="#7aa2f7" font-size="10.5" font-weight="700">2. APPLICATION FRANCE IDENTITÉ</text>
 <text x="38" y="302" fill="#f5f6f8" font-size="10">Code, interface et preuve de légitimité</text>
 <text x="38" y="324" fill="#aeb4bf" font-size="8.8">Versions précises évaluées par l’ANSSI</text>
 <path d="M180 356 V382" stroke="#7aa2f7" stroke-width="2"/>
 <path d="M174 374 L180 384 L186 374" fill="#7aa2f7"/>
-
 <rect x="22" y="388" width="316" height="122" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
 <text x="38" y="416" fill="#f5b13d" font-size="10.5" font-weight="700">3. SYSTÈME ET DISTRIBUTION</text>
 <text x="38" y="442" fill="#f5f6f8" font-size="10">Android ou iOS, Play Store ou App Store</text>
@@ -98,7 +95,6 @@ Cette décision peut dépendre de l’application, du backend SGIN, du système 
 <text x="38" y="486" fill="#6f7580" font-size="8.2">Canal officiel alternatif non identifié</text>
 <path d="M180 510 V536" stroke="#f5b13d" stroke-width="2"/>
 <path d="M174 528 L180 538 L186 528" fill="#f5b13d"/>
-
 <rect x="22" y="542" width="316" height="136" rx="12" fill="#21151c" stroke="#ff4d87"/>
 <text x="38" y="570" fill="#ff85ad" font-size="10.5" font-weight="700">4. MATÉRIEL ET ATTESTATION</text>
 <text x="38" y="596" fill="#f5f6f8" font-size="10">Keystore, TEE, StrongBox ou Secure Enclave</text>
@@ -107,13 +103,11 @@ Cette décision peut dépendre de l’application, du backend SGIN, du système 
 <text x="38" y="657" fill="#6f7580" font-size="8.2">Android et un format fondé sur App Attest</text>
 <path d="M180 678 V704" stroke="#ff4d87" stroke-width="2"/>
 <path d="M174 696 L180 706 L186 696" fill="#ff4d87"/>
-
 <rect x="22" y="710" width="316" height="120" rx="12" fill="#15171b" stroke="#4a505a" stroke-dasharray="5 4"/>
 <text x="38" y="738" fill="#f5f6f8" font-size="10.5" font-weight="700">5. DÉCISION POUR L’USAGER</text>
 <text x="38" y="764" fill="#f5f6f8" font-size="10">Téléphone accepté ou refusé</text>
 <text x="38" y="786" fill="#aeb4bf" font-size="8.8">Motif détaillé, recours et coût : non publiés</text>
 <text x="38" y="808" fill="#6f7580" font-size="8.2">Le citoyen supporte immédiatement le résultat</text>
-
 <text x="18" y="866" fill="#6f7580" font-size="7.7">Sources : France Titres, ANSSI, règlement eIDAS,</text>
 <text x="18" y="883" fill="#6f7580" font-size="7.7">spécifications EUDI. Consultation : 28 août 2026.</text>
 </svg>
@@ -200,28 +194,24 @@ La question de responsabilité reste pourtant entière :
 <text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE COÛT D’UN</text>
 <text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">TÉLÉPHONE REFUSÉ</text>
 <text x="18" y="82" fill="#8b909b" font-size="8.4">Propagation possible, pas dommage automatique</text>
-
 <rect x="22" y="106" width="316" height="108" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
 <text x="38" y="134" fill="#f5b13d" font-size="10.5" font-weight="700">TÉLÉPHONE</text>
 <text x="38" y="160" fill="#f5f6f8" font-size="10">Android 11 ou plus, NFC présent</text>
 <text x="38" y="182" fill="#aeb4bf" font-size="8.8">Mais mécanisme de sécurité jugé absent</text>
 <path d="M180 214 V240" stroke="#f5b13d" stroke-width="2"/>
 <path d="M174 232 L180 242 L186 232" fill="#f5b13d"/>
-
 <rect x="22" y="246" width="316" height="98" rx="12" fill="#21151c" stroke="#ff4d87"/>
 <text x="38" y="274" fill="#ff85ad" font-size="10.5" font-weight="700">FRANCE IDENTITÉ INDISPONIBLE</text>
 <text x="38" y="300" fill="#f5f6f8" font-size="10">Motif détaillé et recours technique inconnus</text>
 <text x="38" y="322" fill="#aeb4bf" font-size="8.8">Identité physique toujours valide</text>
 <path d="M180 344 V370" stroke="#ff4d87" stroke-width="2"/>
 <path d="M174 362 L180 372 L186 362" fill="#ff4d87"/>
-
 <rect x="22" y="376" width="316" height="98" rx="12" fill="#101824" stroke="#7aa2f7"/>
 <text x="38" y="404" fill="#7aa2f7" font-size="10.5" font-weight="700">FRANCECONNECT+ INDISPONIBLE</text>
 <text x="38" y="430" fill="#f5f6f8" font-size="10">Le service final propose un autre chemin</text>
 <text x="38" y="452" fill="#aeb4bf" font-size="8.8">ou l’opération attend le rétablissement</text>
 <path d="M180 474 V500" stroke="#7aa2f7" stroke-width="2"/>
 <path d="M174 492 L180 502 L186 492" fill="#7aa2f7"/>
-
 <rect x="16" y="510" width="328" height="286" rx="14" fill="#101319" stroke="#3a4049"/>
 <text x="32" y="540" fill="#f5f6f8" font-size="10.5" font-weight="700">ALTERNATIVES PUBLIÉES</text>
 <rect x="32" y="560" width="296" height="48" rx="8" fill="#15171b" stroke="#4a505a"/>
@@ -239,14 +229,12 @@ La question de responsabilité reste pourtant entière :
 <rect x="32" y="740" width="296" height="40" rx="8" fill="#15171b" stroke="#4a505a"/>
 <text x="44" y="765" fill="#ff85ad" font-size="9" font-weight="700">VOTE</text>
 <text x="92" y="765" fill="#f5f6f8" font-size="8.8">contrôle en personne et déplacement</text>
-
 <path d="M180 796 V822" stroke="#aeb4bf" stroke-width="2"/>
 <path d="M174 814 L180 824 L186 814" fill="#aeb4bf"/>
 <rect x="22" y="830" width="316" height="106" rx="12" fill="#10211f" stroke="#5eead4"/>
 <text x="38" y="858" fill="#5eead4" font-size="10.5" font-weight="700">COÛT RÉEL À MESURER</text>
 <text x="38" y="884" fill="#f5f6f8" font-size="9.4">Temps, transport, certificat, mandataire</text>
 <text x="38" y="905" fill="#aeb4bf" font-size="8.4">et échéance éventuellement perdue</text>
-
 <text x="18" y="970" fill="#6f7580" font-size="7.5">Sources : parcours officiels CPF, France Rénov’, INPI,</text>
 <text x="18" y="986" fill="#6f7580" font-size="7.5">Service-Public ; France Identité. Consultation : 28 août 2026.</text>
 </svg>
@@ -345,36 +333,29 @@ peut remonter à une racine Google ou à un service Apple
 <text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">DEUX DROITS</text>
 <text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">TROIS LIMITES</text>
 <text x="18" y="82" fill="#8b909b" font-size="8.4">Le texte ouvre des portes, il ne prouve pas la sortie</text>
-
 <rect x="22" y="110" width="316" height="126" rx="12" fill="#10211f" stroke="#5eead4"/>
 <text x="38" y="138" fill="#5eead4" font-size="10.5" font-weight="700">DROIT 1 : CODE OUVERT</text>
 <text x="38" y="164" fill="#f5f6f8" font-size="9.6">Les composants applicatifs du wallet</text>
 <text x="38" y="185" fill="#f5f6f8" font-size="9.6">doivent être sous licence open source.</text>
 <text x="38" y="211" fill="#aeb4bf" font-size="8.4">Article 5 bis, paragraphe 3</text>
-
 <rect x="22" y="256" width="316" height="142" rx="12" fill="#101824" stroke="#7aa2f7"/>
 <text x="38" y="284" fill="#7aa2f7" font-size="10.5" font-weight="700">DROIT 2 : ACCÈS AUX FONCTIONS</text>
 <text x="38" y="310" fill="#f5f6f8" font-size="9.6">Même système, matériel et logiciel</text>
 <text x="38" y="331" fill="#f5f6f8" font-size="9.6">que les services du gatekeeper.</text>
 <text x="38" y="357" fill="#aeb4bf" font-size="8.4">Interopérabilité effective et gratuite</text>
 <text x="38" y="377" fill="#aeb4bf" font-size="8.4">Article 12 ter</text>
-
 <text x="22" y="438" fill="#f5f6f8" font-size="10.5" font-weight="700">CES DROITS NE PROUVENT PAS ENCORE :</text>
-
 <rect x="22" y="462" width="316" height="76" rx="10" fill="#1b1b14" stroke="#f5b13d"/>
 <text x="38" y="488" fill="#f5b13d" font-size="9.8" font-weight="700">1. UN CANAL INDÉPENDANT</text>
 <text x="38" y="513" fill="#aeb4bf" font-size="8.6">Publier et mettre à jour sans store ni notarisation</text>
-
 <rect x="22" y="554" width="316" height="92" rx="10" fill="#21151c" stroke="#ff4d87"/>
 <text x="38" y="580" fill="#ff85ad" font-size="9.8" font-weight="700">2. UNE RACINE PUBLIQUE</text>
 <text x="38" y="605" fill="#aeb4bf" font-size="8.6">Attester le matériel sans dépendre d’une racine</text>
 <text x="38" y="624" fill="#aeb4bf" font-size="8.6">ou d’un service de plateforme</text>
-
 <rect x="22" y="662" width="316" height="92" rx="10" fill="#15171b" stroke="#4a505a"/>
 <text x="38" y="688" fill="#f5f6f8" font-size="9.8" font-weight="700">3. UN RECOURS IMMÉDIAT</text>
 <text x="38" y="713" fill="#aeb4bf" font-size="8.6">Expliquer et corriger un faux refus avant</text>
 <text x="38" y="732" fill="#aeb4bf" font-size="8.6">la perte d’une échéance</text>
-
 <text x="18" y="806" fill="#6f7580" font-size="7.7">Source : règlement (UE) 2024/1183, art. 5 bis et 12 ter.</text>
 <text x="18" y="823" fill="#6f7580" font-size="7.7">Lecture l0g : droits juridiques contre capacités observables.</text>
 </svg>

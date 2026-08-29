@@ -74,21 +74,18 @@ That answer may depend on the app, the SGIN backend, the operating system, the m
 <text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">TRUST BENEATH</text>
 <text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">THE APPLICATION</text>
 <text x="18" y="82" fill="#8b909b" font-size="8.4">Simplified layers, separate scopes</text>
-
 <rect x="22" y="108" width="316" height="108" rx="12" fill="#10211f" stroke="#5eead4"/>
 <text x="38" y="136" fill="#5eead4" font-size="10.5" font-weight="700">1. STATE AND SGIN</text>
 <text x="38" y="162" fill="#f5f6f8" font-size="10">Identity, servers, rules and revocation</text>
 <text x="38" y="184" fill="#aeb4bf" font-size="8.8">Documented public control</text>
 <path d="M180 216 V242" stroke="#5eead4" stroke-width="2"/>
 <path d="M174 234 L180 244 L186 234" fill="#5eead4"/>
-
 <rect x="22" y="248" width="316" height="108" rx="12" fill="#101824" stroke="#7aa2f7"/>
 <text x="38" y="276" fill="#7aa2f7" font-size="10.5" font-weight="700">2. FRANCE IDENTITÉ APP</text>
 <text x="38" y="302" fill="#f5f6f8" font-size="10">Code, interface and legitimacy proof</text>
 <text x="38" y="324" fill="#aeb4bf" font-size="8.8">Specific versions assessed by ANSSI</text>
 <path d="M180 356 V382" stroke="#7aa2f7" stroke-width="2"/>
 <path d="M174 374 L180 384 L186 374" fill="#7aa2f7"/>
-
 <rect x="22" y="388" width="316" height="122" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
 <text x="38" y="416" fill="#f5b13d" font-size="10.5" font-weight="700">3. SYSTEM AND DISTRIBUTION</text>
 <text x="38" y="442" fill="#f5f6f8" font-size="10">Android or iOS, Play Store or App Store</text>
@@ -96,7 +93,6 @@ That answer may depend on the app, the SGIN backend, the operating system, the m
 <text x="38" y="486" fill="#6f7580" font-size="8.2">No official alternative channel identified</text>
 <path d="M180 510 V536" stroke="#f5b13d" stroke-width="2"/>
 <path d="M174 528 L180 538 L186 528" fill="#f5b13d"/>
-
 <rect x="22" y="542" width="316" height="136" rx="12" fill="#21151c" stroke="#ff4d87"/>
 <text x="38" y="570" fill="#ff85ad" font-size="10.5" font-weight="700">4. HARDWARE AND ATTESTATION</text>
 <text x="38" y="596" fill="#f5f6f8" font-size="10">Keystore, TEE, StrongBox or Secure Enclave</text>
@@ -105,13 +101,11 @@ That answer may depend on the app, the SGIN backend, the operating system, the m
 <text x="38" y="657" fill="#6f7580" font-size="8.2">and an App Attest-based iOS format</text>
 <path d="M180 678 V704" stroke="#ff4d87" stroke-width="2"/>
 <path d="M174 696 L180 706 L186 696" fill="#ff4d87"/>
-
 <rect x="22" y="710" width="316" height="120" rx="12" fill="#15171b" stroke="#4a505a" stroke-dasharray="5 4"/>
 <text x="38" y="738" fill="#f5f6f8" font-size="10.5" font-weight="700">5. USER OUTCOME</text>
 <text x="38" y="764" fill="#f5f6f8" font-size="10">Phone accepted or rejected</text>
 <text x="38" y="786" fill="#aeb4bf" font-size="8.8">Detailed reason, appeal and cost: unpublished</text>
 <text x="38" y="808" fill="#6f7580" font-size="8.2">The citizen immediately bears the result</text>
-
 <text x="18" y="866" fill="#6f7580" font-size="7.7">Sources: France Titres, ANSSI, eIDAS regulation,</text>
 <text x="18" y="883" fill="#6f7580" font-size="7.7">EUDI specifications. Reviewed: 28 August 2026.</text>
 </svg>
@@ -198,28 +192,24 @@ The liability question remains:
 <text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">THE COST OF A</text>
 <text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">REJECTED PHONE</text>
 <text x="18" y="82" fill="#8b909b" font-size="8.4">Possible propagation, not automatic damage</text>
-
 <rect x="22" y="106" width="316" height="108" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
 <text x="38" y="134" fill="#f5b13d" font-size="10.5" font-weight="700">PHONE</text>
 <text x="38" y="160" fill="#f5f6f8" font-size="10">Android 11 or later, NFC present</text>
 <text x="38" y="182" fill="#aeb4bf" font-size="8.8">But a security mechanism is judged absent</text>
 <path d="M180 214 V240" stroke="#f5b13d" stroke-width="2"/>
 <path d="M174 232 L180 242 L186 232" fill="#f5b13d"/>
-
 <rect x="22" y="246" width="316" height="98" rx="12" fill="#21151c" stroke="#ff4d87"/>
 <text x="38" y="274" fill="#ff85ad" font-size="10.5" font-weight="700">FRANCE IDENTITÉ UNAVAILABLE</text>
 <text x="38" y="300" fill="#f5f6f8" font-size="10">Detailed reason and technical appeal unknown</text>
 <text x="38" y="322" fill="#aeb4bf" font-size="8.8">Physical identity remains valid</text>
 <path d="M180 344 V370" stroke="#ff4d87" stroke-width="2"/>
 <path d="M174 362 L180 372 L186 362" fill="#ff4d87"/>
-
 <rect x="22" y="376" width="316" height="98" rx="12" fill="#101824" stroke="#7aa2f7"/>
 <text x="38" y="404" fill="#7aa2f7" font-size="10.5" font-weight="700">FRANCECONNECT+ UNAVAILABLE</text>
 <text x="38" y="430" fill="#f5f6f8" font-size="10">The relying service offers another route</text>
 <text x="38" y="452" fill="#aeb4bf" font-size="8.8">or the transaction waits for recovery</text>
 <path d="M180 474 V500" stroke="#7aa2f7" stroke-width="2"/>
 <path d="M174 492 L180 502 L186 492" fill="#7aa2f7"/>
-
 <rect x="16" y="510" width="328" height="286" rx="14" fill="#101319" stroke="#3a4049"/>
 <text x="32" y="540" fill="#f5f6f8" font-size="10.5" font-weight="700">PUBLISHED ALTERNATIVES</text>
 <rect x="32" y="560" width="296" height="48" rx="8" fill="#15171b" stroke="#4a505a"/>
@@ -237,14 +227,12 @@ The liability question remains:
 <rect x="32" y="740" width="296" height="40" rx="8" fill="#15171b" stroke="#4a505a"/>
 <text x="44" y="765" fill="#ff85ad" font-size="9" font-weight="700">VOTE</text>
 <text x="92" y="765" fill="#f5f6f8" font-size="8.8">in-person check and travel</text>
-
 <path d="M180 796 V822" stroke="#aeb4bf" stroke-width="2"/>
 <path d="M174 814 L180 824 L186 814" fill="#aeb4bf"/>
 <rect x="22" y="830" width="316" height="106" rx="12" fill="#10211f" stroke="#5eead4"/>
 <text x="38" y="858" fill="#5eead4" font-size="10.5" font-weight="700">ACTUAL COST TO MEASURE</text>
 <text x="38" y="884" fill="#f5f6f8" font-size="9.4">Time, travel, certificate, agent</text>
 <text x="38" y="905" fill="#aeb4bf" font-size="8.4">and a deadline potentially missed</text>
-
 <text x="18" y="970" fill="#6f7580" font-size="7.5">Sources: official CPF, France Rénov’, INPI and</text>
 <text x="18" y="986" fill="#6f7580" font-size="7.5">Service-Public routes; France Identité. 28 August 2026.</text>
 </svg>
@@ -343,36 +331,29 @@ may chain to a Google root or an Apple service
 <text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">TWO RIGHTS</text>
 <text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">THREE LIMITS</text>
 <text x="18" y="82" fill="#8b909b" font-size="8.4">The law opens doors, it does not prove the exit</text>
-
 <rect x="22" y="110" width="316" height="126" rx="12" fill="#10211f" stroke="#5eead4"/>
 <text x="38" y="138" fill="#5eead4" font-size="10.5" font-weight="700">RIGHT 1: OPEN CODE</text>
 <text x="38" y="164" fill="#f5f6f8" font-size="9.6">Wallet application components</text>
 <text x="38" y="185" fill="#f5f6f8" font-size="9.6">must be open-source licensed.</text>
 <text x="38" y="211" fill="#aeb4bf" font-size="8.4">Article 5a, paragraph 3</text>
-
 <rect x="22" y="256" width="316" height="142" rx="12" fill="#101824" stroke="#7aa2f7"/>
 <text x="38" y="284" fill="#7aa2f7" font-size="10.5" font-weight="700">RIGHT 2: ACCESS TO FEATURES</text>
 <text x="38" y="310" fill="#f5f6f8" font-size="9.6">Same operating system, hardware</text>
 <text x="38" y="331" fill="#f5f6f8" font-size="9.6">and software as gatekeeper services.</text>
 <text x="38" y="357" fill="#aeb4bf" font-size="8.4">Effective, free interoperability</text>
 <text x="38" y="377" fill="#aeb4bf" font-size="8.4">Article 12b</text>
-
 <text x="22" y="438" fill="#f5f6f8" font-size="10.5" font-weight="700">THESE RIGHTS DO NOT YET PROVE:</text>
-
 <rect x="22" y="462" width="316" height="76" rx="10" fill="#1b1b14" stroke="#f5b13d"/>
 <text x="38" y="488" fill="#f5b13d" font-size="9.8" font-weight="700">1. AN INDEPENDENT CHANNEL</text>
 <text x="38" y="513" fill="#aeb4bf" font-size="8.6">Publishing and updating without store control</text>
-
 <rect x="22" y="554" width="316" height="92" rx="10" fill="#21151c" stroke="#ff4d87"/>
 <text x="38" y="580" fill="#ff85ad" font-size="9.8" font-weight="700">2. A PUBLIC TRUST ROOT</text>
 <text x="38" y="605" fill="#aeb4bf" font-size="8.6">Attesting hardware without a platform root</text>
 <text x="38" y="624" fill="#aeb4bf" font-size="8.6">or platform-operated service</text>
-
 <rect x="22" y="662" width="316" height="92" rx="10" fill="#15171b" stroke="#4a505a"/>
 <text x="38" y="688" fill="#f5f6f8" font-size="9.8" font-weight="700">3. AN IMMEDIATE REMEDY</text>
 <text x="38" y="713" fill="#aeb4bf" font-size="8.6">Explaining and correcting a false refusal</text>
 <text x="38" y="732" fill="#aeb4bf" font-size="8.6">before a deadline is lost</text>
-
 <text x="18" y="806" fill="#6f7580" font-size="7.7">Source: Regulation (EU) 2024/1183, Articles 5a and 12b.</text>
 <text x="18" y="823" fill="#6f7580" font-size="7.7">l0g reading: legal rights versus observable capabilities.</text>
 </svg>
