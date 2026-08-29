@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 720" width="100%" role="img" aria-labelledby="control-fr-title control-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="control-fr-title">QUI CONTRÔLE QUOI ?</title>
+<desc id="control-fr-desc">Carte publique, chaîne contractuelle et angles morts documentaires</desc>
+<rect x="1" y="1" width="358" height="718" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="42" fill="#f5f6f8" font-size="15" font-weight="700">QUI CONTRÔLE QUOI ?</text>
+<text x="18" y="64" fill="#8b909b" font-size="8.5">Carte publique, chaîne contractuelle et angles morts documentaires</text>
+<rect x="14" y="88" width="332" height="150" rx="12" fill="#101319" stroke="#5eead4"/>
+<text x="28" y="116" fill="#5eead4" font-size="10.5" font-weight="700">BRIQUES SOUS CONTRÔLE PUBLIC DOCUMENTÉ</text>
+<circle cx="31" cy="138" r="3" fill="#5eead4"/><text x="42" y="142" fill="#f5f6f8" font-size="9.5">Cloud PI du ministère : hébergement</text>
+<circle cx="31" cy="168" r="3" fill="#5eead4"/><text x="42" y="172" fill="#f5f6f8" font-size="9.5">DNUM / SIGNHOR : cachet électronique</text>
+<circle cx="31" cy="198" r="3" fill="#5eead4"/><text x="42" y="202" fill="#f5f6f8" font-size="9.5">HSM qualifiés ANSSI : clés de signature</text>
+<path d="M180 238 V264" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 256 L180 266 L186 256" fill="#5eead4"/>
+<rect x="14" y="266" width="332" height="150" rx="12" fill="#101319" stroke="#7aa2f7"/>
+<text x="28" y="294" fill="#7aa2f7" font-size="10.5" font-weight="700">BRIQUES ATTRIBUÉES PAR MARCHÉS</text>
+<circle cx="31" cy="316" r="3" fill="#7aa2f7"/><text x="42" y="320" fill="#f5f6f8" font-size="9.5">Applications mobiles et serveur</text>
+<circle cx="31" cy="346" r="3" fill="#7aa2f7"/><text x="42" y="350" fill="#f5f6f8" font-size="9.5">Sécurité, expertise, pilotage</text>
+<circle cx="31" cy="376" r="3" fill="#7aa2f7"/><text x="42" y="380" fill="#f5f6f8" font-size="9.5">Tests et interopérabilité multi-acteurs</text>
+<path d="M180 416 V442" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 434 L180 444 L186 434" fill="#7aa2f7"/>
+<rect x="14" y="444" width="332" height="150" rx="12" fill="#101319" stroke="#ff85ad"/>
+<text x="28" y="472" fill="#ff85ad" font-size="10.5" font-weight="700">CAPACITÉS NON CARTOGRAPHIÉES PUBLIQUEMENT</text>
+<circle cx="31" cy="494" r="3" fill="#ff85ad"/><text x="42" y="498" fill="#f5f6f8" font-size="9.5">Dépôts de code et chaîne de compilation</text>
+<circle cx="31" cy="524" r="3" fill="#ff85ad"/><text x="42" y="528" fill="#f5f6f8" font-size="9.5">Comptes Apple / Google et secrets de déploiement</text>
+<circle cx="31" cy="554" r="3" fill="#ff85ad"/><text x="42" y="558" fill="#f5f6f8" font-size="9.5">Test de réversibilité, RTO, RPO et responsabilités</text>
+<rect x="14" y="614" width="332" height="72" rx="10" fill="#15171b" stroke="#3a4049"/>
+<text x="28" y="640" fill="#f5b13d" font-size="9.5" font-weight="700">Propriété juridique : pas encore preuve de reprise.</text>
+<text x="28" y="664" fill="#aeb4bf" font-size="9">Test l0g : savoir, auditer, exploiter, réparer, remplacer.</text>
+<text x="18" y="704" fill="#6f7580" font-size="8">Sources : France Identité, politique de signature, JOUE, DECP.</text>
+</svg>

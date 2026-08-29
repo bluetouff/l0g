@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 920" width="100%" role="img" aria-labelledby="eudi-fr-title eudi-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="eudi-fr-title">LE FUTUR EUDI SE RECONSTRUIT</title>
+<desc id="eudi-fr-desc">L’objet de migration transporte une liste, des attestations non liées à l’appareil et le journal, puis les titres liés à l’appareil sont réémis</desc>
+<rect x="1" y="1" width="358" height="918" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="40" fill="#f5f6f8" font-size="14.5" font-weight="700">LE FUTUR EUDI SE RECONSTRUIT</text>
+<text x="18" y="62" fill="#8b909b" font-size="8.4">Spécification TS10, distincte de France Identité actuelle</text>
+<rect x="18" y="94" width="324" height="130" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="34" y="122" fill="#7aa2f7" font-size="10.5" font-weight="700">1. CRÉER L’OBJET DE MIGRATION</text>
+<text x="34" y="148" fill="#f5f6f8" font-size="9">Fichier chiffré, protégé par mot de passe</text>
+<text x="34" y="170" fill="#aeb4bf" font-size="8.3">Liste de tous les titres et fournisseurs</text>
+<text x="34" y="190" fill="#aeb4bf" font-size="8.3">Titres non liés à l’appareil + journal</text>
+<path d="M180 232 V264" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 256 L180 266 L186 256" fill="#7aa2f7"/>
+<rect x="18" y="270" width="324" height="112" rx="12" fill="#101319" stroke="#5eead4"/>
+<text x="34" y="298" fill="#5eead4" font-size="10.5" font-weight="700">2. EXPORTER</text>
+<text x="34" y="324" fill="#f5f6f8" font-size="9">Emplacement choisi par l’utilisateur</text>
+<text x="34" y="346" fill="#aeb4bf" font-size="8.3">Disque externe ou stockage compatible</text>
+<path d="M180 390 V422" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 414 L180 424 L186 414" fill="#5eead4"/>
+<rect x="18" y="428" width="324" height="112" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="34" y="456" fill="#f5b13d" font-size="10.5" font-weight="700">3. IMPORTER</text>
+<text x="34" y="482" fill="#f5f6f8" font-size="9">Nouveau portefeuille + mot de passe</text>
+<text x="34" y="504" fill="#aeb4bf" font-size="8.3">L’objet décrit ce qu’il faut reconstruire</text>
+<path d="M180 548 V580" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 572 L180 582 L186 572" fill="#f5b13d"/>
+<rect x="18" y="586" width="324" height="190" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="34" y="614" fill="#5eead4" font-size="10.5" font-weight="700">4. RÉÉMETTRE ET RESTAURER</text>
+<text x="34" y="642" fill="#f5f6f8" font-size="9">PID et titres liés à l’appareil</text>
+<text x="34" y="663" fill="#aeb4bf" font-size="8.3">Réémis par leurs fournisseurs</text>
+<text x="34" y="696" fill="#f5f6f8" font-size="9">Titres non liés à l’appareil</text>
+<text x="34" y="717" fill="#aeb4bf" font-size="8.3">Copiés vers le nouveau portefeuille</text>
+<text x="34" y="750" fill="#f5f6f8" font-size="9">Journal de transactions</text>
+<text x="34" y="771" fill="#aeb4bf" font-size="8.3">Restauré depuis l’objet de migration</text>
+<rect x="14" y="816" width="332" height="84" rx="8" fill="#15171b" stroke="#3a4049"/>
+<text x="26" y="838" fill="#aeb4bf" font-size="7.8">La migration dépend encore des émetteurs</text>
+<text x="26" y="854" fill="#aeb4bf" font-size="7.8">pour les titres liés au nouvel appareil.</text>
+<text x="26" y="875" fill="#6f7580" font-size="7.6">Source : Commission européenne, spécification TS10 EUDI.</text>
+<text x="26" y="889" fill="#6f7580" font-size="7.6">Ce schéma n’est pas le parcours France Identité.</text>
+</svg>

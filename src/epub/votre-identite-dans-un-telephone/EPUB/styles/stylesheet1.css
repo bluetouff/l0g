@@ -1,0 +1,338 @@
+@charset "UTF-8";
+
+@page {
+  margin: 5%;
+}
+
+html {
+  color: #17191d;
+  background: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 42em;
+  padding: 0 1.25em 2.5em;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1em;
+  line-height: 1.58;
+  text-rendering: optimizeLegibility;
+  widows: 2;
+  orphans: 2;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #111318;
+  line-height: 1.16;
+  hyphens: none;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+h1 {
+  margin: 1.2em 0 0.75em;
+  font-size: 1.85em;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  margin: 2.2em 0 0.65em;
+  padding-top: 0.45em;
+  border-top: 1px solid #d9dde3;
+  font-size: 1.35em;
+}
+
+h3 {
+  margin: 1.7em 0 0.55em;
+  font-size: 1.08em;
+}
+
+p {
+  margin: 0.7em 0;
+}
+
+a {
+  color: #8b2455;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+strong {
+  color: #0d0f13;
+}
+
+ul,
+ol {
+  margin: 0.8em 0 1em 1.35em;
+  padding: 0;
+}
+
+li {
+  margin: 0.35em 0;
+}
+
+blockquote {
+  margin: 1.25em 0;
+  padding: 0.15em 0 0.15em 1em;
+  border-left: 4px solid #62bfb2;
+  color: #434952;
+}
+
+figure {
+  margin: 1.6em 0 2em;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+img,
+.infographic-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+figcaption {
+  margin: 0.7em auto 0;
+  max-width: 94%;
+  color: #555c66;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.78em;
+  line-height: 1.38;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  margin: 1.4em 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.76em;
+  line-height: 1.35;
+  page-break-inside: avoid;
+}
+
+th,
+td {
+  padding: 0.5em;
+  border: 1px solid #cfd4da;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+th {
+  background: #eef1f4;
+  text-align: left;
+}
+
+.chapter-kicker,
+.part-kicker {
+  margin: 1em 0 0.35em;
+  color: #8b2455;
+  font-family: "Courier New", monospace;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chapter-dek {
+  margin: 0 0 0.85em;
+  color: #3e444c;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.08em;
+  line-height: 1.45;
+}
+
+.chapter-meta {
+  margin: 0 0 2.1em;
+  padding-bottom: 0.9em;
+  border-bottom: 2px solid #e1a63c;
+  color: #626a74;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.78em;
+}
+
+.part-page {
+  padding-top: 12%;
+  text-align: left;
+}
+
+.part-page > .part-title {
+  margin-top: 0.15em;
+  max-width: 14em;
+  font-size: 2.1em;
+}
+
+.part-intro {
+  max-width: 34em;
+  padding-top: 1em;
+  border-top: 5px solid #62bfb2;
+  color: #3b4149;
+  font-size: 1.05em;
+}
+
+.editorial-note {
+  color: #2e333a;
+}
+
+.reading-guide {
+  margin: 2em 0 0;
+  padding: 0.8em 1.1em 0.9em;
+  border: 1px solid #ccd2d9;
+  background: #f4f6f8;
+}
+
+.reading-guide h2 {
+  margin: 0 0 0.5em;
+  padding: 0;
+  border: 0;
+  font-size: 1.05em;
+}
+
+.reading-guide ul {
+  margin-bottom: 0;
+}
+
+.colophon {
+  color: #454b54;
+  font-size: 0.92em;
+}
+
+.original-articles {
+  margin-top: 1.4em;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  font-size: 0.86em;
+  overflow-wrap: anywhere;
+}
+
+nav#toc ol {
+  margin-left: 1em;
+}
+
+.titlepage {
+  min-height: 75vh;
+  padding-top: 16%;
+}
+
+.titlepage .title {
+  max-width: 12em;
+  margin-bottom: 0.25em;
+  font-size: 2.25em;
+}
+
+.titlepage .subtitle {
+  max-width: 28em;
+  padding-top: 0.8em;
+  border-top: 5px solid #62bfb2;
+  color: #3b4149;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.15em;
+}
+
+.titlepage .author,
+.titlepage .publisher,
+.titlepage .date,
+.titlepage .rights {
+  color: #626a74;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.82em;
+}
+
+.titlepage .author {
+  margin-top: 3em;
+  color: #8b2455;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body#cover {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+#cover-image,
+#cover-image svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 30em) {
+  body {
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+
+  h1 {
+    font-size: 1.65em;
+  }
+
+  .part-page > .part-title,
+  .titlepage .title {
+    font-size: 1.9em;
+  }
+
+  table {
+    font-size: 0.68em;
+  }
+}
+
+/* Les boîtes interactives du site deviennent des sections statiques dans l’EPUB. */
+.epub-disclosure {
+  margin: 1.15em 0;
+  padding: 0.8em 0.95em;
+  border: 1px solid #9ca6af;
+  border-radius: 0.45em;
+  color: inherit;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.epub-disclosure-title {
+  margin: 0 0 0.65em;
+  padding: 0 0 0.5em;
+  border: 0;
+  border-bottom: 1px solid #cbd1d7;
+  color: inherit;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.35;
+  hyphens: none;
+}
+
+.epub-disclosure p,
+.epub-disclosure li,
+.epub-disclosure strong,
+.epub-disclosure div {
+  color: inherit;
+  font-size: 1em;
+  line-height: 1.58;
+  hyphens: none;
+}

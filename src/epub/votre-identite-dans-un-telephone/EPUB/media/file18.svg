@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 1000" width="100%" role="img" aria-labelledby="refusal-cost-fr-title refusal-cost-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="refusal-cost-fr-title">LE COÛT D’UN TÉLÉPHONE REFUSÉ</title>
+<desc id="refusal-cost-fr-desc">Un téléphone refusé peut rendre France Identité puis FranceConnect+ indisponibles et renvoyer vers des parcours alternatifs plus lents ou payants.</desc>
+<rect x="1" y="1" width="358" height="998" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE COÛT D’UN</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">TÉLÉPHONE REFUSÉ</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.4">Propagation possible, pas dommage automatique</text>
+<rect x="22" y="106" width="316" height="108" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="38" y="134" fill="#f5b13d" font-size="10.5" font-weight="700">TÉLÉPHONE</text>
+<text x="38" y="160" fill="#f5f6f8" font-size="10">Android 11 ou plus, NFC présent</text>
+<text x="38" y="182" fill="#aeb4bf" font-size="8.8">Mais mécanisme de sécurité jugé absent</text>
+<path d="M180 214 V240" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 232 L180 242 L186 232" fill="#f5b13d"/>
+<rect x="22" y="246" width="316" height="98" rx="12" fill="#21151c" stroke="#ff4d87"/>
+<text x="38" y="274" fill="#ff85ad" font-size="10.5" font-weight="700">FRANCE IDENTITÉ INDISPONIBLE</text>
+<text x="38" y="300" fill="#f5f6f8" font-size="10">Motif détaillé et recours technique inconnus</text>
+<text x="38" y="322" fill="#aeb4bf" font-size="8.8">Identité physique toujours valide</text>
+<path d="M180 344 V370" stroke="#ff4d87" stroke-width="2"/>
+<path d="M174 362 L180 372 L186 362" fill="#ff4d87"/>
+<rect x="22" y="376" width="316" height="98" rx="12" fill="#101824" stroke="#7aa2f7"/>
+<text x="38" y="404" fill="#7aa2f7" font-size="10.5" font-weight="700">FRANCECONNECT+ INDISPONIBLE</text>
+<text x="38" y="430" fill="#f5f6f8" font-size="10">Le service final propose un autre chemin</text>
+<text x="38" y="452" fill="#aeb4bf" font-size="8.8">ou l’opération attend le rétablissement</text>
+<path d="M180 474 V500" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 492 L180 502 L186 492" fill="#7aa2f7"/>
+<rect x="16" y="510" width="328" height="286" rx="14" fill="#101319" stroke="#3a4049"/>
+<text x="32" y="540" fill="#f5f6f8" font-size="10.5" font-weight="700">ALTERNATIVES PUBLIÉES</text>
+<rect x="32" y="560" width="296" height="48" rx="8" fill="#15171b" stroke="#4a505a"/>
+<text x="44" y="581" fill="#5eead4" font-size="9" font-weight="700">CPF</text>
+<text x="92" y="581" fill="#f5f6f8" font-size="8.8">contrôle manuel, environ 4 semaines</text>
+<text x="92" y="598" fill="#8b909b" font-size="7.8">délai officiel annoncé</text>
+<rect x="32" y="620" width="296" height="48" rx="8" fill="#15171b" stroke="#4a505a"/>
+<text x="44" y="641" fill="#7aa2f7" font-size="9" font-weight="700">RÉNOV’</text>
+<text x="92" y="641" fill="#f5f6f8" font-size="8.8">vérification postale, environ 2 semaines</text>
+<text x="92" y="658" fill="#8b909b" font-size="7.8">délai officiel annoncé</text>
+<rect x="32" y="680" width="296" height="48" rx="8" fill="#15171b" stroke="#4a505a"/>
+<text x="44" y="701" fill="#f5b13d" font-size="9" font-weight="700">INPI</text>
+<text x="92" y="701" fill="#f5f6f8" font-size="8.8">certificat qualifié ou mandataire</text>
+<text x="92" y="718" fill="#8b909b" font-size="7.8">coût variable et procédure externe</text>
+<rect x="32" y="740" width="296" height="40" rx="8" fill="#15171b" stroke="#4a505a"/>
+<text x="44" y="765" fill="#ff85ad" font-size="9" font-weight="700">VOTE</text>
+<text x="92" y="765" fill="#f5f6f8" font-size="8.8">contrôle en personne et déplacement</text>
+<path d="M180 796 V822" stroke="#aeb4bf" stroke-width="2"/>
+<path d="M174 814 L180 824 L186 814" fill="#aeb4bf"/>
+<rect x="22" y="830" width="316" height="106" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="858" fill="#5eead4" font-size="10.5" font-weight="700">COÛT RÉEL À MESURER</text>
+<text x="38" y="884" fill="#f5f6f8" font-size="9.4">Temps, transport, certificat, mandataire</text>
+<text x="38" y="905" fill="#aeb4bf" font-size="8.4">et échéance éventuellement perdue</text>
+<text x="18" y="970" fill="#6f7580" font-size="7.5">Sources : parcours officiels CPF, France Rénov’, INPI,</text>
+<text x="18" y="986" fill="#6f7580" font-size="7.5">Service-Public ; France Identité. Consultation : 28 août 2026.</text>
+</svg>

@@ -161,15 +161,15 @@ const editions = {
   },
 };
 
-function escapeXml(value) {
+export function escapeXml(value) {
   return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
 }
 
-function plainText(value) {
+export function plainText(value) {
   return toText(fromHtml(String(value), { fragment: true })).trim();
 }
 
-function frontmatter(source, key) {
+export function frontmatter(source, key) {
   const block = source.match(/^---\n([\s\S]*?)\n---\n/u)?.[1] ?? '';
   const match = block.match(new RegExp(`^${key}:\\s*(.+)$`, 'mu'));
   if (!match) return '';
@@ -177,12 +177,12 @@ function frontmatter(source, key) {
   return value.startsWith('"') && value.endsWith('"') ? value.slice(1, -1).replaceAll('\\"', '"') : value;
 }
 
-function xhtmlDocument(config, { title, body, bodyType = 'bodymatter' }) {
+export function xhtmlDocument(config, { title, body, bodyType = 'bodymatter' }) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="${config.lang}" xml:lang="${config.lang}"><head><meta charset="utf-8" /><meta name="generator" content="l0g" /><title>${escapeXml(title)}</title><link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" /></head><body epub:type="${bodyType}">${body}</body></html>\n`;
 }
 
-function sanitizeSvg(svg, label) {
+export function sanitizeSvg(svg, label) {
   if (/<(?:script|foreignObject|iframe|object|embed)\b/iu.test(svg)) throw new Error(`${label}: active SVG content is forbidden`);
   if (/\son[a-z]+\s*=/iu.test(svg) || /(?:href|src)\s*=\s*["'](?:https?:|data:|javascript:)/iu.test(svg)) throw new Error(`${label}: external or executable SVG payload is forbidden`);
   let clean = svg.replace(/\sstyle="padding-bottom:[^"]+"/gu, '');
@@ -217,7 +217,7 @@ function markdownBody(source, config) {
   return body;
 }
 
-function rewriteLinks(html, chapterByRoute) {
+export function rewriteLinks(html, chapterByRoute) {
   return html.replace(/href="([^"]+)"/gu, (full, href) => {
     if (href.startsWith('#')) return full;
     const [path, fragment = ''] = href.split('#');
@@ -229,14 +229,14 @@ function rewriteLinks(html, chapterByRoute) {
   });
 }
 
-function normalizeVoidElements(html) {
+export function normalizeVoidElements(html) {
   return html.replace(/<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)(\s[^>]*?)?>/giu, (full, tag, attributes = '') => {
     if (/\/>$/u.test(full)) return full;
     return `<${tag}${attributes} />`;
   });
 }
 
-function sectionHeadings(html, articleNumber) {
+export function sectionHeadings(html, articleNumber) {
   const matches = [...html.matchAll(/<h2>([\s\S]*?)<\/h2>/gu)];
   if (!matches.length) return { html, headings: [] };
   const slugger = new GithubSlugger();
@@ -249,7 +249,7 @@ function sectionHeadings(html, articleNumber) {
   return { html: `${html.slice(0, matches[0].index)}${sections.map((section) => section.html).join('\n')}`, headings: sections };
 }
 
-function extractInfographics(html, articleNumber, offset, mediaRoot) {
+export function extractInfographics(html, articleNumber, offset, mediaRoot) {
   let next = offset;
   const rewritten = html.replace(/<svg\b[\s\S]*?<\/svg>/gu, (svg) => {
     const fileName = `file${next}.svg`;

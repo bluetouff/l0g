@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 1040" width="100%" role="img" aria-labelledby="identity-docs-fr-title identity-docs-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="identity-docs-fr-title">Quatre documents publics décrivent différemment les données de France Identité</title>
+<desc id="identity-docs-fr-desc">La communication, la politique de confidentialité, l’AIPD et le décret présentent des périmètres et durées qui doivent être réconciliés.</desc>
+<rect x="1" y="1" width="718" height="1038" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">UNE IDENTITÉ, QUATRE DESCRIPTIONS</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Le plafond juridique ne décrit pas forcément la base réellement exploitée.</text>
+
+<rect x="28" y="104" width="664" height="164" rx="14" fill="#10211f" stroke="#5eead4"/>
+<text x="50" y="137" fill="#5eead4" font-size="13" font-weight="700">1. COMMUNICATION PUBLIQUE</text>
+<text x="50" y="164" fill="#f5f6f8" font-size="12">« Données d’identité non conservées sur des serveurs »</text>
+<text x="50" y="188" fill="#d6d9df" font-size="11">Stockage annoncé uniquement dans l’application.</text>
+<text x="50" y="210" fill="#aeb4bf" font-size="10.5">Promesse simple, mais elle ne décrit ni le transit ni les journaux.</text>
+<text x="50" y="232" fill="#aeb4bf" font-size="10.5">Source : page « Sécurité de l’application ».</text>
+
+<rect x="28" y="288" width="664" height="198" rx="14" fill="#141a28" stroke="#7aa2f7"/>
+<text x="50" y="321" fill="#7aa2f7" font-size="13" font-weight="700">2. AIPD PUBLIQUE</text>
+<text x="50" y="348" fill="#f5f6f8" font-size="12">Attributs : transit pour la transaction, puis suppression.</text>
+<text x="50" y="372" fill="#d6d9df" font-size="11">Numéro du titre : identifiant permettant de corréler les opérations.</text>
+<text x="50" y="394" fill="#d6d9df" font-size="11">Durée « en principe » de cinq ans, avec purge annoncée à trois ans.</text>
+<text x="50" y="416" fill="#d6d9df" font-size="11">Journaux : identifiant, date, heure, type d’opération, trois ans.</text>
+<text x="50" y="446" fill="#aeb4bf" font-size="10.5">Le document emploie aussi « aucune donnée personnelle stockée »,</text>
+<text x="50" y="466" fill="#aeb4bf" font-size="10.5">alors qu’un numéro de titre et des logs restent des données personnelles.</text>
+
+<rect x="28" y="506" width="664" height="210" rx="14" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="50" y="539" fill="#f5b13d" font-size="13" font-weight="700">3. POLITIQUE DE CONFIDENTIALITÉ</text>
+<text x="50" y="566" fill="#f5f6f8" font-size="12">Le serveur « traite » titre, contact et identifiant du téléphone.</text>
+<text x="50" y="590" fill="#d6d9df" font-size="11">Une phrase regroupe identifiants, identité et technique sur trois ans.</text>
+<text x="50" y="612" fill="#d6d9df" font-size="11">Plus loin : attributs supprimés après transaction, numéro du titre</text>
+<text x="50" y="634" fill="#d6d9df" font-size="11">et traces conservés. Politique et AIPD divergent sur la désinstallation.</text>
+<text x="50" y="664" fill="#aeb4bf" font-size="10.5">La distinction entre traitement temporaire et stockage durable existe,</text>
+<text x="50" y="686" fill="#aeb4bf" font-size="10.5">mais elle n’est pas présentée de manière uniforme.</text>
+
+<rect x="28" y="736" width="664" height="198" rx="14" fill="#21151c" stroke="#ff85ad"/>
+<text x="50" y="769" fill="#ff85ad" font-size="13" font-weight="700">4. DÉCRET SGIN</text>
+<text x="50" y="796" fill="#f5f6f8" font-size="12">Autorise un périmètre large de données sur le serveur pendant cinq ans,</text>
+<text x="50" y="820" fill="#d6d9df" font-size="11">sauf l’historique des transactions, conservé sur le téléphone.</text>
+<text x="50" y="842" fill="#d6d9df" font-size="11">Les opérations de création, consultation, utilisation, révocation</text>
+<text x="50" y="864" fill="#d6d9df" font-size="11">et suppression sont journalisées pendant trois ans.</text>
+<text x="50" y="894" fill="#aeb4bf" font-size="10.5">La CNIL avait déjà noté que la minimisation réelle n’apparaissait</text>
+<text x="50" y="916" fill="#aeb4bf" font-size="10.5">pas dans la rédaction très large de l’article 4.</text>
+
+<rect x="28" y="958" width="664" height="56" rx="10" fill="#15171b" stroke="#4a505a"/>
+<text x="360" y="981" text-anchor="middle" fill="#f5f6f8" font-size="11" font-weight="700">CONCLUSION DOCUMENTAIRE</text>
+<text x="360" y="1002" text-anchor="middle" fill="#aeb4bf" font-size="10">Pas de preuve d’une base cachée. Besoin d’un dictionnaire public champ par champ.</text>
+</svg>

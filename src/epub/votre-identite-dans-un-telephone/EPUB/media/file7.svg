@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 790" width="100%" role="img" aria-labelledby="failure-fr-title failure-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="failure-fr-title">QUAND L’IDENTITÉ CASSE, LE RISQUE SE PROPAGE</title>
+<desc id="failure-fr-desc">Un incident technique peut devenir une perte économique</desc>
+<rect x="1" y="1" width="358" height="788" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="42" fill="#f5f6f8" font-size="11.5" font-weight="700">QUAND L’IDENTITÉ CASSE, LE RISQUE SE PROPAGE</text>
+<text x="18" y="64" fill="#8b909b" font-size="8.5">Un incident technique peut devenir une perte économique</text>
+<rect x="24" y="92" width="312" height="78" rx="11" fill="#101319" stroke="#7aa2f7"/>
+<text x="40" y="119" fill="#7aa2f7" font-size="10.5" font-weight="700">COMPOSANT</text>
+<text x="40" y="144" fill="#f5f6f8" font-size="9.5">Application, backend, clé ou certificat</text><path d="M180 170 V192" stroke="#7aa2f7" stroke-width="2"/><path d="M174 184 L180 194 L186 184" fill="#7aa2f7"/>
+<rect x="24" y="196" width="312" height="78" rx="11" fill="#101319" stroke="#a78bfa"/>
+<text x="40" y="223" fill="#a78bfa" font-size="10.5" font-weight="700">PREUVE D’IDENTITÉ</text>
+<text x="40" y="248" fill="#f5f6f8" font-size="9.5">Authentification ou attestation refusée</text><path d="M180 274 V296" stroke="#a78bfa" stroke-width="2"/><path d="M174 288 L180 298 L186 288" fill="#a78bfa"/>
+<rect x="24" y="300" width="312" height="78" rx="11" fill="#101319" stroke="#f5b13d"/>
+<text x="40" y="327" fill="#f5b13d" font-size="10.5" font-weight="700">SERVICE</text>
+<text x="40" y="352" fill="#f5f6f8" font-size="9.5">FranceConnect+, aide ou formalité bloquée</text><path d="M180 378 V400" stroke="#f5b13d" stroke-width="2"/><path d="M174 392 L180 402 L186 392" fill="#f5b13d"/>
+<rect x="24" y="404" width="312" height="78" rx="11" fill="#101319" stroke="#ff85ad"/>
+<text x="40" y="431" fill="#ff85ad" font-size="10.5" font-weight="700">OPÉRATION</text>
+<text x="40" y="456" fill="#f5f6f8" font-size="9.5">Formation, subvention, contrat ou signature</text><path d="M180 482 V504" stroke="#ff85ad" stroke-width="2"/><path d="M174 496 L180 506 L186 496" fill="#ff85ad"/>
+<rect x="24" y="508" width="312" height="78" rx="11" fill="#101319" stroke="#ff4d87"/>
+<text x="40" y="535" fill="#ff4d87" font-size="10.5" font-weight="700">PERTE</text>
+<text x="40" y="560" fill="#f5f6f8" font-size="9.5">Retard, échéance manquée ou coût supplémentaire</text><path d="M180 586 V608" stroke="#ff4d87" stroke-width="2"/><path d="M174 600 L180 610 L186 600" fill="#ff4d87"/>
+<rect x="24" y="612" width="312" height="78" rx="11" fill="#101319" stroke="#5eead4"/>
+<text x="40" y="639" fill="#5eead4" font-size="10.5" font-weight="700">RESPONSABILITÉ</text>
+<text x="40" y="664" fill="#f5f6f8" font-size="9.5">Qui corrige, rembourse et indemnise ?</text>
+<rect x="14" y="718" width="332" height="54" rx="9" fill="#15171b" stroke="#3a4049"/>
+<text x="28" y="741" fill="#aeb4bf" font-size="8.5">Chaîne de risque, pas incident déjà établi.</text>
+<text x="28" y="759" fill="#6f7580" font-size="8">Analyse l0g à partir des usages FranceConnect+ et des CGU.</text>
+</svg>

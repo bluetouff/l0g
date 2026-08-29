@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 1060" width="100%" role="img" aria-labelledby="audit-fr-title audit-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="audit-fr-title">LE BANC DE TEST L0G</title>
+<desc id="audit-fr-desc">Huit garanties du portefeuille européen sont classées entre droit établi, préparation française observable, preuve encore attendue et responsabilité financière non résolue.</desc>
+<rect x="1" y="1" width="358" height="1058" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE BANC DE TEST L0G</text>
+<text x="18" y="62" fill="#8b909b" font-size="8.6">Droit, preuve publique et questions ouvertes</text>
+
+<rect x="18" y="94" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="122" fill="#5eead4" font-size="10" font-weight="700">1. REGISTRE PUBLIC</text>
+<rect x="232" y="106" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="121" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="146" fill="#f5f6f8" font-size="9.3">Site + API commune au 24 décembre 2026</text>
+
+
+<rect x="18" y="190" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="218" fill="#5eead4" font-size="10" font-weight="700">2. ALERTE DE SUR-DEMANDE</text>
+<rect x="232" y="202" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="217" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="242" fill="#f5f6f8" font-size="9.3">Comparaison au certificat et accord explicite</text>
+
+
+<rect x="18" y="286" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="314" fill="#5eead4" font-size="10" font-weight="700">3. JOURNAL DES ÉCHECS</text>
+<rect x="232" y="298" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="313" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="338" fill="#f5f6f8" font-size="9.3">Demandeur, données et motif d’échec</text>
+
+
+<rect x="18" y="382" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="410" fill="#5eead4" font-size="10" font-weight="700">4. EFFACEMENT ET SIGNALEMENT</text>
+<rect x="232" y="394" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="409" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="434" fill="#f5f6f8" font-size="9.3">Fonctions prévues dans le tableau de bord</text>
+
+
+<rect x="18" y="478" width="324" height="96" rx="11" fill="#141a28" stroke="#7aa2f7"/>
+<text x="32" y="506" fill="#7aa2f7" font-size="10" font-weight="700">5. RACCORDEMENT FRANÇAIS</text>
+<rect x="232" y="490" width="96" height="22" rx="6" fill="#0c0d10" stroke="#7aa2f7"/>
+<text x="280" y="505" text-anchor="middle" fill="#7aa2f7" font-size="8.1" font-weight="700">OBSERVÉ</text>
+<text x="32" y="530" fill="#f5f6f8" font-size="9.3">OIDC, OID4VP et Playground publiés</text>
+<text x="32" y="552" fill="#aeb4bf" font-size="8.4">Le Playground reste un environnement de test</text>
+
+
+<rect x="18" y="586" width="324" height="96" rx="11" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="614" fill="#f5b13d" font-size="10" font-weight="700">6. CODE MOBILE OUVERT</text>
+<rect x="232" y="598" width="96" height="22" rx="6" fill="#0c0d10" stroke="#f5b13d"/>
+<text x="280" y="613" text-anchor="middle" fill="#f5b13d" font-size="8.1" font-weight="700">À PROUVER</text>
+<text x="32" y="638" fill="#f5f6f8" font-size="9.3">Obligation EUDI, publication française attendue</text>
+<text x="32" y="660" fill="#aeb4bf" font-size="8.4">Le site indique encore « prochainement »</text>
+
+
+<rect x="18" y="694" width="324" height="112" rx="11" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="722" fill="#f5b13d" font-size="10" font-weight="700">7. ACCESSIBILITÉ ACTUELLE</text>
+<rect x="232" y="706" width="96" height="22" rx="6" fill="#0c0d10" stroke="#f5b13d"/>
+<text x="280" y="721" text-anchor="middle" fill="#f5b13d" font-size="7.2" font-weight="700">À METTRE À JOUR</text>
+<text x="32" y="746" fill="#f5f6f8" font-size="9.3">Dernier audit chiffré publié : préproduction</text>
+<text x="32" y="768" fill="#aeb4bf" font-size="8.4">iOS 35,14 %, Android 36,11 %</text>
+<text x="32" y="788" fill="#aeb4bf" font-size="8.4">Nouvel audit public non retrouvé</text>
+
+
+<rect x="18" y="818" width="324" height="96" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="846" fill="#5eead4" font-size="10" font-weight="700">8. STATISTIQUES OUVERTES</text>
+<rect x="232" y="830" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="845" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="870" fill="#f5f6f8" font-size="9.3">Plaintes, pannes, violations et usagers touchés</text>
+<text x="32" y="892" fill="#aeb4bf" font-size="8.4">Format et première série française à surveiller</text>
+
+
+<rect x="18" y="926" width="324" height="90" rx="11" fill="#21151c" stroke="#ff4d87"/>
+<text x="32" y="954" fill="#ff85ad" font-size="10" font-weight="700">QUESTION FINALE : QUI RÉPARE ?</text>
+<rect x="232" y="938" width="96" height="22" rx="6" fill="#0c0d10" stroke="#ff4d87"/>
+<text x="280" y="953" text-anchor="middle" fill="#ff85ad" font-size="8.1" font-weight="700">INCONNU</text>
+<text x="32" y="978" fill="#f5f6f8" font-size="9.3">Le reçu documente la panne</text>
+<text x="32" y="1000" fill="#aeb4bf" font-size="8.4">L’indemnisation reste à attribuer</text>
+
+
+<text x="180" y="1040" text-anchor="middle" fill="#f5f6f8" font-size="8.7" font-weight="700">NE PAS CROIRE. VÉRIFIER.</text>
+</svg>

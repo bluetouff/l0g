@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 920" width="100%" role="img" aria-labelledby="meter-fr-title meter-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="meter-fr-title">MESURER LE MARCHÉ SANS MONTRER CHAQUE PASSAGE</title>
+<desc id="meter-fr-desc">FranceConnect+ isole le service et le fournisseur d’identité au niveau individuel, tout en permettant des statistiques agrégées.</desc>
+<rect x="1" y="1" width="358" height="918" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="40" fill="#f5f6f8" font-size="13.2" font-weight="700">MESURER LE MARCHÉ</text>
+<text x="18" y="60" fill="#f5f6f8" font-size="13.2" font-weight="700">SANS MONTRER CHAQUE PASSAGE</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.3">Principe documentaire FranceConnect+, à vérifier en production</text>
+<rect x="22" y="108" width="316" height="100" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="136" fill="#5eead4" font-size="10.5" font-weight="700">UTILISATEUR</text>
+<text x="38" y="162" fill="#f5f6f8" font-size="10">Choisit une identité disponible</text>
+<text x="38" y="184" fill="#aeb4bf" font-size="9">Le service ne doit pas imposer son choix</text>
+<path d="M180 208 V238" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 230 L180 240 L186 230" fill="#5eead4"/>
+<rect x="22" y="246" width="316" height="128" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="38" y="274" fill="#7aa2f7" font-size="10.5" font-weight="700">FRANCECONNECT+</text>
+<text x="38" y="300" fill="#f5f6f8" font-size="10">Intermédiaire d’authentification</text>
+<text x="38" y="322" fill="#aeb4bf" font-size="9">Transmet l’identité autorisée</text>
+<text x="38" y="344" fill="#aeb4bf" font-size="9">Produit les volumes nécessaires</text>
+<path d="M180 374 V404" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 396 L180 406 L186 396" fill="#7aa2f7"/>
+<rect x="22" y="412" width="150" height="158" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="36" y="440" fill="#f5b13d" font-size="9.8" font-weight="700">FOURNISSEUR</text>
+<text x="36" y="458" fill="#f5b13d" font-size="9.8" font-weight="700">D’IDENTITÉ</text>
+<text x="36" y="486" fill="#f5f6f8" font-size="8.8">Ne doit pas connaître</text>
+<text x="36" y="504" fill="#f5f6f8" font-size="8.8">le service consulté</text>
+<text x="36" y="534" fill="#6f7580" font-size="8">Garantit le niveau</text>
+<rect x="188" y="412" width="150" height="158" rx="12" fill="#171217" stroke="#ff4d87"/>
+<text x="202" y="440" fill="#ff85ad" font-size="9.8" font-weight="700">SERVICE</text>
+<text x="202" y="458" fill="#ff85ad" font-size="9.8" font-weight="700">EN LIGNE</text>
+<text x="202" y="486" fill="#f5f6f8" font-size="8.8">Ne doit pas connaître</text>
+<text x="202" y="504" fill="#f5f6f8" font-size="8.8">l’identité choisie</text>
+<text x="202" y="528" fill="#6f7580" font-size="8">Reçoit les données</text>
+<text x="202" y="546" fill="#6f7580" font-size="8">habilitées</text>
+<path d="M97 570 V618 H180" stroke="#f5b13d" stroke-width="2" fill="none"/>
+<path d="M263 570 V618 H180" stroke="#ff4d87" stroke-width="2" fill="none"/>
+<path d="M174 610 L180 620 L186 610" fill="#a78bfa"/>
+<rect x="22" y="628" width="316" height="116" rx="12" fill="#181421" stroke="#a78bfa"/>
+<text x="38" y="656" fill="#a78bfa" font-size="10.5" font-weight="700">AGRÉGATS</text>
+<text x="38" y="682" fill="#f5f6f8" font-size="9.5">Répartition des connexions sur une période</text>
+<text x="38" y="704" fill="#aeb4bf" font-size="8.8">Sans rattacher un fournisseur à un usager précis</text>
+<text x="38" y="724" fill="#6f7580" font-size="8.2">Base possible d’une facturation par consommation</text>
+<rect x="16" y="790" width="328" height="94" rx="10" fill="#15171b" stroke="#3a4049"/>
+<text x="32" y="818" fill="#f5f6f8" font-size="9.2" font-weight="700">POINT À AUDITER</text>
+<text x="32" y="844" fill="#aeb4bf" font-size="8.3">Journaux, granularité des périodes, seuils</text>
+<text x="32" y="862" fill="#aeb4bf" font-size="8.3">d’agrégation et accès aux statistiques.</text>
+</svg>

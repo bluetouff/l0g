@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 920" width="100%" role="img" aria-labelledby="trust-stack-fr-title trust-stack-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="trust-stack-fr-title">LA CONFIANCE SOUS L’APPLICATION</title>
+<desc id="trust-stack-fr-desc">France Identité repose sur des couches publiques et privées, depuis l’identité régalienne jusqu’au système, au magasin et au matériel du téléphone.</desc>
+<rect x="1" y="1" width="358" height="918" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LA CONFIANCE SOUS</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">L’APPLICATION</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.4">Couches simplifiées, périmètres à ne pas confondre</text>
+<rect x="22" y="108" width="316" height="108" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="136" fill="#5eead4" font-size="10.5" font-weight="700">1. ÉTAT ET SGIN</text>
+<text x="38" y="162" fill="#f5f6f8" font-size="10">Identité, serveurs, règles et révocation</text>
+<text x="38" y="184" fill="#aeb4bf" font-size="8.8">Contrôle public documenté</text>
+<path d="M180 216 V242" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 234 L180 244 L186 234" fill="#5eead4"/>
+<rect x="22" y="248" width="316" height="108" rx="12" fill="#101824" stroke="#7aa2f7"/>
+<text x="38" y="276" fill="#7aa2f7" font-size="10.5" font-weight="700">2. APPLICATION FRANCE IDENTITÉ</text>
+<text x="38" y="302" fill="#f5f6f8" font-size="10">Code, interface et preuve de légitimité</text>
+<text x="38" y="324" fill="#aeb4bf" font-size="8.8">Versions précises évaluées par l’ANSSI</text>
+<path d="M180 356 V382" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 374 L180 384 L186 374" fill="#7aa2f7"/>
+<rect x="22" y="388" width="316" height="122" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="38" y="416" fill="#f5b13d" font-size="10.5" font-weight="700">3. SYSTÈME ET DISTRIBUTION</text>
+<text x="38" y="442" fill="#f5f6f8" font-size="10">Android ou iOS, Play Store ou App Store</text>
+<text x="38" y="464" fill="#aeb4bf" font-size="8.8">Mise à jour, signature et politique du terminal</text>
+<text x="38" y="486" fill="#6f7580" font-size="8.2">Canal officiel alternatif non identifié</text>
+<path d="M180 510 V536" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 528 L180 538 L186 528" fill="#f5b13d"/>
+<rect x="22" y="542" width="316" height="136" rx="12" fill="#21151c" stroke="#ff4d87"/>
+<text x="38" y="570" fill="#ff85ad" font-size="10.5" font-weight="700">4. MATÉRIEL ET ATTESTATION</text>
+<text x="38" y="596" fill="#f5f6f8" font-size="10">Keystore, TEE, StrongBox ou Secure Enclave</text>
+<text x="38" y="618" fill="#aeb4bf" font-size="8.8">Le mécanisme français actuel reste à publier</text>
+<text x="38" y="640" fill="#6f7580" font-size="8.2">Les références EUDI savent utiliser des racines</text>
+<text x="38" y="657" fill="#6f7580" font-size="8.2">Android et un format fondé sur App Attest</text>
+<path d="M180 678 V704" stroke="#ff4d87" stroke-width="2"/>
+<path d="M174 696 L180 706 L186 696" fill="#ff4d87"/>
+<rect x="22" y="710" width="316" height="120" rx="12" fill="#15171b" stroke="#4a505a" stroke-dasharray="5 4"/>
+<text x="38" y="738" fill="#f5f6f8" font-size="10.5" font-weight="700">5. DÉCISION POUR L’USAGER</text>
+<text x="38" y="764" fill="#f5f6f8" font-size="10">Téléphone accepté ou refusé</text>
+<text x="38" y="786" fill="#aeb4bf" font-size="8.8">Motif détaillé, recours et coût : non publiés</text>
+<text x="38" y="808" fill="#6f7580" font-size="8.2">Le citoyen supporte immédiatement le résultat</text>
+<text x="18" y="866" fill="#6f7580" font-size="7.7">Sources : France Titres, ANSSI, règlement eIDAS,</text>
+<text x="18" y="883" fill="#6f7580" font-size="7.7">spécifications EUDI. Consultation : 28 août 2026.</text>
+</svg>

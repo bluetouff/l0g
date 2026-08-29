@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 1080" width="100%" role="img" aria-labelledby="receipt-fr-title receipt-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="receipt-fr-title">LE REÇU DE VOTRE IDENTITÉ</title>
+<desc id="receipt-fr-desc">Le futur journal EUDI doit enregistrer le service, les données demandées et présentées et le motif d’un échec, puis alimenter un tableau de bord permettant effacement et signalement.</desc>
+<rect x="1" y="1" width="358" height="1078" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE REÇU DE</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">VOTRE IDENTITÉ</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.6">Journal minimal imposé par le cadre EUDI</text>
+
+<rect x="26" y="112" width="308" height="650" rx="14" fill="#f5f6f8" stroke="#5eead4"/>
+<text x="46" y="148" fill="#0c0d10" font-size="11" font-weight="700">TRANSACTION EUDI</text>
+<line x1="46" y1="164" x2="314" y2="164" stroke="#c7cbd3"/>
+
+<text x="46" y="198" fill="#4d5461" font-size="8.7">STATUT</text>
+<text x="46" y="222" fill="#c81e63" font-size="10.2" font-weight="700">NON TERMINÉE</text>
+
+<text x="46" y="260" fill="#4d5461" font-size="8.7">DATE ET HEURE</text>
+<text x="46" y="284" fill="#0c0d10" font-size="9.8">horodatage de la transaction</text>
+
+<text x="46" y="322" fill="#4d5461" font-size="8.7">SERVICE DEMANDEUR</text>
+<text x="46" y="346" fill="#0c0d10" font-size="9.8">nom et coordonnées</text>
+<text x="46" y="368" fill="#0c0d10" font-size="9.8">identifiant unique et État membre</text>
+
+<text x="46" y="406" fill="#4d5461" font-size="8.7">DONNÉES DEMANDÉES</text>
+<text x="46" y="430" fill="#0c0d10" font-size="9.8">types d’attributs sollicités</text>
+
+<text x="46" y="468" fill="#4d5461" font-size="8.7">DONNÉES PRÉSENTÉES</text>
+<text x="46" y="492" fill="#0c0d10" font-size="9.8">types d’attributs transmis</text>
+
+<text x="46" y="530" fill="#4d5461" font-size="8.7">MOTIF D’ÉCHEC</text>
+<rect x="44" y="546" width="272" height="80" rx="9" fill="#fff5f7" stroke="#c81e63"/>
+<text x="58" y="574" fill="#7f123f" font-size="9.2">raison technique ou fonctionnelle</text>
+<text x="58" y="596" fill="#7f123f" font-size="9.2">de la transaction non achevée</text>
+
+<line x1="46" y1="650" x2="314" y2="650" stroke="#c7cbd3"/>
+<text x="46" y="684" fill="#4d5461" font-size="8.7">GARANTIES DU JOURNAL</text>
+<text x="46" y="708" fill="#0f766e" font-size="9.5">intégrité, authenticité, confidentialité</text>
+<text x="46" y="732" fill="#4d5461" font-size="8.5">Accès du fournisseur : consentement préalable</text>
+
+<path d="M180 762 V804" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 796 L180 806 L186 796" fill="#5eead4"/>
+
+<rect x="22" y="812" width="316" height="190" rx="14" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="842" fill="#5eead4" font-size="10.5" font-weight="700">TABLEAU DE BORD</text>
+<text x="38" y="874" fill="#f5f6f8" font-size="9.6">Consulter les services et les échanges</text>
+<text x="38" y="902" fill="#f5f6f8" font-size="9.6">Demander l’effacement des données</text>
+<text x="38" y="930" fill="#f5f6f8" font-size="9.6">Signaler une demande suspecte</text>
+<text x="38" y="958" fill="#aeb4bf" font-size="8.7">Une trace aide à prouver l’incident</text>
+<text x="38" y="980" fill="#aeb4bf" font-size="8.7">Elle ne déclenche pas seule une indemnisation</text>
+
+<text x="180" y="1040" text-anchor="middle" fill="#f5b13d" font-size="9.2" font-weight="700">LA PREUVE PRÉCÈDE LA RÉPARATION</text>
+</svg>

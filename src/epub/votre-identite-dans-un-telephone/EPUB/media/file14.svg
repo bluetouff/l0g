@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 900" width="100%" role="img" aria-labelledby="billing-fr-title billing-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="billing-fr-title">UN CLIC GRATUIT, PLUSIEURS PAYEURS POSSIBLES</title>
+<desc id="billing-fr-desc">Le citoyen ne paie pas nécessairement le portefeuille, mais le service, l’administration ou l’entreprise peuvent supporter des coûts d’identité et les répercuter.</desc>
+<rect x="1" y="1" width="358" height="898" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="40" fill="#f5f6f8" font-size="13.5" font-weight="700">UN CLIC GRATUIT</text>
+<text x="18" y="60" fill="#f5f6f8" font-size="13.5" font-weight="700">PLUSIEURS PAYEURS POSSIBLES</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.4">Architecture économique simplifiée, pas une facture type</text>
+<rect x="22" y="108" width="316" height="104" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="136" fill="#5eead4" font-size="10.5" font-weight="700">1. CITOYEN</text>
+<text x="38" y="162" fill="#f5f6f8" font-size="10">Utilise le wallet ou FranceConnect+</text>
+<text x="38" y="184" fill="#aeb4bf" font-size="9">Aucune facture directe documentée</text>
+<path d="M180 212 V240" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 232 L180 242 L186 232" fill="#5eead4"/>
+<rect x="22" y="246" width="316" height="122" rx="12" fill="#101319" stroke="#7aa2f7"/>
+<text x="38" y="274" fill="#7aa2f7" font-size="10.5" font-weight="700">2. SERVICE EN LIGNE</text>
+<text x="38" y="300" fill="#f5f6f8" font-size="10">Banque, plateforme ou administration</text>
+<text x="38" y="322" fill="#aeb4bf" font-size="9">Intégration, support et contrats éventuels</text>
+<text x="38" y="344" fill="#6f7580" font-size="8.4">Le prix réel n’est pas publié</text>
+<path d="M180 368 V396" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 388 L180 398 L186 388" fill="#7aa2f7"/>
+<rect x="22" y="402" width="316" height="122" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="38" y="430" fill="#f5b13d" font-size="10.5" font-weight="700">3. FOURNISSEUR D’IDENTITÉ</text>
+<text x="38" y="456" fill="#f5f6f8" font-size="10">Garantit un niveau substantiel ou élevé</text>
+<text x="38" y="478" fill="#aeb4bf" font-size="9">Facturation possible selon consommation</text>
+<text x="38" y="500" fill="#6f7580" font-size="8.4">DINUM : volumes agrégés</text>
+<path d="M180 524 V552" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 544 L180 554 L186 544" fill="#f5b13d"/>
+<rect x="22" y="558" width="316" height="122" rx="12" fill="#171217" stroke="#ff4d87"/>
+<text x="38" y="586" fill="#ff85ad" font-size="10.5" font-weight="700">4. PAYEUR FINAL</text>
+<text x="38" y="612" fill="#f5f6f8" font-size="10">Entreprise, budget public ou marge</text>
+<text x="38" y="634" fill="#aeb4bf" font-size="9">Le coût peut revenir dans les prix,</text>
+<text x="38" y="654" fill="#aeb4bf" font-size="9">les impôts ou une baisse de marge</text>
+<rect x="16" y="724" width="328" height="136" rx="12" fill="#15171b" stroke="#3a4049"/>
+<text x="32" y="752" fill="#f5f6f8" font-size="9.5" font-weight="700">CE QUE LE SCHÉMA NE DIT PAS</text>
+<text x="32" y="780" fill="#aeb4bf" font-size="8.5">Il ne prouve ni prix unitaire, ni facture</text>
+<text x="32" y="799" fill="#aeb4bf" font-size="8.5">à chaque connexion, ni commission DINUM.</text>
+<text x="32" y="828" fill="#6f7580" font-size="8">Source : documentation partenaires FranceConnect+.</text>
+<text x="32" y="846" fill="#6f7580" font-size="8">Consultation : 28 août 2026.</text>
+</svg>

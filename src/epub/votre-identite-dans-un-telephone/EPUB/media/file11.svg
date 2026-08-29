@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 880" width="100%" role="img" aria-labelledby="clocks-fr-title clocks-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="clocks-fr-title">UN INCIDENT, QUATRE HORLOGES</title>
+<desc id="clocks-fr-desc">Révocation, effacement, récupération de l’identité et retour de la certification suivent des délais différents</desc>
+<rect x="1" y="1" width="358" height="878" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="42" fill="#f5f6f8" font-size="15" font-weight="700">UN INCIDENT, QUATRE HORLOGES</text>
+<text x="18" y="65" fill="#8b909b" font-size="8.5">Le même clic ne répond pas aux quatre questions</text>
+<line x1="44" y1="112" x2="44" y2="754" stroke="#39414d" stroke-width="3"/>
+<circle cx="44" cy="130" r="9" fill="#ff85ad"/>
+<rect x="72" y="96" width="268" height="128" rx="12" fill="#21151c" stroke="#ff85ad"/>
+<text x="88" y="124" fill="#ff85ad" font-size="10.5" font-weight="700">1. RÉVOQUER</text>
+<text x="88" y="150" fill="#f5f6f8" font-size="9.2">Rendre l’ancien moyen inutilisable</text>
+<text x="88" y="172" fill="#aeb4bf" font-size="8.4">Portail et application sont documentés</text>
+<text x="88" y="193" fill="#f5b13d" font-size="8.4">Délai d’invalidation non publié</text>
+<circle cx="44" cy="294" r="9" fill="#7aa2f7"/>
+<rect x="72" y="252" width="268" height="142" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="88" y="280" fill="#7aa2f7" font-size="10.5" font-weight="700">2. EFFACER</text>
+<text x="88" y="306" fill="#f5f6f8" font-size="9.2">Supprimer les données encore conservées</text>
+<text x="88" y="328" fill="#aeb4bf" font-size="8.4">Jusqu’à 2 mois dans un cas publié</text>
+<text x="88" y="349" fill="#aeb4bf" font-size="8.4">Traces d’opérations : 3 ans</text>
+<text x="88" y="370" fill="#6f7580" font-size="8.2">Ce délai n’est pas celui de la révocation</text>
+<circle cx="44" cy="470" r="9" fill="#5eead4"/>
+<rect x="72" y="424" width="268" height="142" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="88" y="452" fill="#5eead4" font-size="10.5" font-weight="700">3. RÉCUPÉRER</text>
+<text x="88" y="478" fill="#f5f6f8" font-size="9.2">Créer une identité utilisable à nouveau</text>
+<text x="88" y="500" fill="#aeb4bf" font-size="8.4">CNI, appareil et code selon le scénario</text>
+<text x="88" y="521" fill="#f5b13d" font-size="8.4">Aucun délai public de bout en bout</text>
+<text x="88" y="542" fill="#6f7580" font-size="8.2">Les titres dérivés peuvent devoir revenir</text>
+<circle cx="44" cy="648" r="9" fill="#f5b13d"/>
+<rect x="72" y="596" width="268" height="158" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="88" y="624" fill="#f5b13d" font-size="10.5" font-weight="700">4. RECERTIFIER</text>
+<text x="88" y="650" fill="#f5f6f8" font-size="9.2">Retrouver le niveau FranceConnect+</text>
+<text x="88" y="672" fill="#aeb4bf" font-size="8.4">Résultat initial sous 48 h après mairie</text>
+<text x="88" y="693" fill="#f5b13d" font-size="8.4">Après 3 erreurs : nouvelle certification</text>
+<text x="88" y="714" fill="#6f7580" font-size="8.2">La reprise du service final est une 5e étape</text>
+<rect x="14" y="800" width="332" height="60" rx="8" fill="#15171b" stroke="#3a4049"/>
+<text x="26" y="821" fill="#aeb4bf" font-size="7.8">Sources : CGU, politique de confidentialité</text>
+<text x="26" y="837" fill="#aeb4bf" font-size="7.8">et page de certification France Identité.</text>
+<text x="26" y="851" fill="#6f7580" font-size="7.6">Les délais inconnus sont signalés comme tels.</text>
+</svg>

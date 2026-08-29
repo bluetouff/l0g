@@ -1,0 +1,329 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../../config/entities.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const pagePath = '/publications/votre-identite-dans-un-telephone/';
+const epubPath = '/publications/votre-identite-dans-un-telephone-enquete-l0g.epub';
+const coverPath = '/publications/votre-identite-dans-un-telephone-cover.png';
+const ogImagePath = '/illustrations/publications/identite-telephone-og.jpg';
+const epubBytes = readFileSync(new URL('../../../public/publications/votre-identite-dans-un-telephone-enquete-l0g.epub', import.meta.url));
+const epubSize = `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(epubBytes.length / 1024 / 1024)} MB`;
+const epubSha256 = createHash('sha256').update(epubBytes).digest('hex');
+const pageUrl = `${SITE_URL}${pagePath}`;
+const title = 'Votre identité dans un téléphone';
+const description = 'Huit enquêtes illustrées sur les données, les alternatives, les contrats, les coûts, les plateformes et les traces de France Identité et du portefeuille européen.';
+
+const chapters = [
+  { index: '01', title: 'La carte d’identité qui devient un service', summary: 'Suivre les données, les serveurs et les journaux derrière une preuve numérique.', href: '/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service/' },
+  { index: '02', title: 'Le coût des parcours alternatifs', summary: 'Comparer délais, documents, déplacements et équipements lorsque l’application reste facultative.', href: '/posts/votre-identite-dans-un-telephone-2-facultative-mais-a-quel-prix/' },
+  { index: '03', title: 'L’identité souveraine sous contrat', summary: 'Identifier qui tient le code, les clés, les contrats et la capacité de reprise.', href: '/posts/votre-identite-dans-un-telephone-3-l-identite-souveraine-sous-contrat/' },
+  { index: '04', title: 'Votre âge devient une autorisation', summary: 'Comprendre la preuve d’âge, ses journaux, ses erreurs et ses intermédiaires.', href: '/posts/votre-identite-dans-un-telephone-4-votre-age-devient-une-autorisation/' },
+  { index: '05', title: 'Le jour où votre identité ne répond plus', summary: 'Chronométrer la révocation, la récupération et les solutions de secours.', href: '/posts/votre-identite-dans-un-telephone-5-le-jour-ou-votre-identite-ne-repond-plus/' },
+  { index: '06', title: 'Votre identité est gratuite, la preuve peut être facturée', summary: 'Rendre visibles les coûts de la preuve, de la signature et de l’échec.', href: '/posts/votre-identite-dans-un-telephone-6-votre-identite-est-gratuite-la-preuve-peut-etre-facturee/' },
+  { index: '07', title: 'Une identité souveraine sur un téléphone américain', summary: 'Distinguer le contrôle de l’État de la dépendance au téléphone et à sa plateforme.', href: '/posts/votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain/' },
+  { index: '08', title: 'Votre identité doit vous laisser un reçu', summary: 'Vérifier le demandeur, la donnée réclamée et la trace laissée par la transaction.', href: '/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/' },
+];
+
+const visualEssay = [
+  {
+    chapters: 'Volets 1 et 2',
+    title: 'La carte devient une chaîne de services.',
+    description: 'La preuve passe du titre physique au téléphone, au service distant et à ses serveurs. Le courrier, le guichet et les autres parcours restent des éléments mesurables de l’accès au droit.',
+    src: '/illustrations/publications/identite-telephone-chaine.jpg',
+    alt: 'Illustration conceptuelle reliant une carte générique, un téléphone, un terminal, un courrier et une infrastructure distante',
+  },
+  {
+    chapters: 'Volets 3 et 4',
+    title: 'Contrats, clés et attributs organisent l’autorisation.',
+    description: 'La souveraineté dépend des couches techniques, des contrats et de la capacité de reprise. La preuve d’âge ajoute une décision sur les attributs demandés et ceux qui restent privés.',
+    src: '/illustrations/publications/identite-telephone-contrats.jpg',
+    alt: 'Illustration conceptuelle montrant un téléphone, des couches contractuelles, une clé matérielle et des attributs séparés',
+  },
+  {
+    chapters: 'Volets 5 à 7',
+    title: 'Panne, récupération, coûts et dépendance matérielle.',
+    description: 'Le terminal, sa puce, son système et l’application forment des couches distinctes. Une interruption rend visibles le délai de récupération, le coût de la preuve et la dépendance aux plateformes mobiles.',
+    src: '/illustrations/publications/identite-telephone-panne.jpg',
+    alt: 'Illustration conceptuelle d’un téléphone démonté en couches avec une connexion interrompue, une enveloppe et des instruments non chiffrés',
+  },
+  {
+    chapters: 'Volet 8',
+    title: 'La transaction laisse une trace à auditer.',
+    description: 'Le reçu doit permettre de distinguer le demandeur, les attributs sollicités, ceux qui ont été présentés, le résultat et les inconnues restantes. Il documente la transaction, il n’attribue pas seul la responsabilité.',
+    src: '/illustrations/publications/identite-telephone-recu.jpg',
+    alt: 'Illustration conceptuelle d’une transaction qui produit un reçu structuré et une trace archivée',
+  },
+];
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: title,
+  alternateName: 'France Identité, portefeuille européen et preuves de souveraineté',
+  description,
+  author: { '@id': AUTHOR_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  datePublished: '2026-08-29',
+  dateModified: '2026-08-29',
+  inLanguage: 'fr',
+  bookFormat: 'https://schema.org/EBook',
+  isAccessibleForFree: true,
+  url: pageUrl,
+  image: `${SITE_URL}${coverPath}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  hasPart: chapters.map((chapter) => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.href}` })),
+  associatedMedia: {
+    '@type': 'MediaObject',
+    contentUrl: `${SITE_URL}${epubPath}`,
+    encodingFormat: 'application/epub+zip',
+    contentSize: `${epubBytes.length} bytes`,
+    sha256: epubSha256,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  seoTitle="France Identité : les huit enquêtes en EPUB | l0g"
+  ogTitle="Votre identité dans un téléphone : l’enquête complète"
+  description={description}
+  lang="fr"
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: pageUrl },
+    { hreflang: 'x-default', href: pageUrl },
+  ]}
+  ogImage={ogImagePath}
+  ogImageAlt="Carte générique, téléphone, terminal, courrier et infrastructure illustrant la chaîne de l’identité numérique"
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(bookJsonLd)} />
+
+  <article class="identity-book rise" data-pagefind-body>
+    <section class="book-hero">
+      <div class="cover-stage">
+        <div class="cover-glow" aria-hidden="true"></div>
+        <div class="book-shell">
+          <span class="book-spine" aria-hidden="true">l0g · enquête · 2026</span>
+          <img
+            src={coverPath}
+            width="1600"
+            height="2560"
+            alt="Couverture de Votre identité dans un téléphone"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <span class="cover-caption">Édition numérique · août 2026</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="mono-label glow">// publication l0g</p>
+        <h1>Votre identité <span>dans un téléphone</span></h1>
+        <p class="hero-deck">France Identité, portefeuille européen et preuves de souveraineté.</p>
+        <p class="hero-lede">
+          Huit enquêtes pour suivre une identité numérique depuis la carte physique jusqu’au reçu laissé par une transaction, en passant par les serveurs, les alternatives, les contrats, les coûts, les pannes et les plateformes mobiles.
+        </p>
+
+        <div class="hero-actions">
+          <a class="download-action" href={epubPath} download="Votre-identite-dans-un-telephone-l0g.epub">
+            <span>Télécharger l’EPUB</span>
+            <small>Gratuit · {epubSize}</small>
+          </a>
+          <a class="contents-action" href="#sommaire">Parcourir les huit volets <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <ul class="proof-line" aria-label="Caractéristiques de l’édition">
+          <li>8 enquêtes</li>
+          <li>23 infographies</li>
+          <li>6 outils pédagogiques</li>
+          <li>Sources cliquables</li>
+          <li>CC BY 4.0</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="premise-section">
+      <div class="section-index" aria-hidden="true">01</div>
+      <div>
+        <p class="mono-label glow">de la carte au journal</p>
+        <h2>Une identité numérique est une chaîne.</h2>
+      </div>
+      <div class="premise-copy">
+        <p>Une carte d’identité se montre. Une identité numérique s’exécute. Le téléphone, l’application, les serveurs, les certificats, les prestataires, le service demandeur et les journaux participent au résultat.</p>
+        <p>L’EPUB ajoute une introduction et une conclusion aux huit articles. Il conserve leur ordre, leurs sources, leurs limites, leurs liens canoniques et les alternatives textuelles des infographies.</p>
+      </div>
+    </section>
+
+    <section class="visual-section architecture-section" aria-labelledby="visual-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">02</div>
+        <div>
+          <p class="mono-label glow">l’enquête en images</p>
+          <h2 id="visual-title">Quatre tableaux pour suivre les huit volets.</h2>
+          <p>Ces illustrations éditoriales sont conceptuelles. Elles ne reproduisent aucune interface, carte, application ou infrastructure officielle.</p>
+        </div>
+      </header>
+
+      <div class="visual-essay">
+        {visualEssay.map((visual) => (
+          <figure>
+            <img
+              src={visual.src}
+              width="1536"
+              height="864"
+              alt={visual.alt}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span>{visual.chapters}</span>
+              <strong>{visual.title}</strong>
+              <p>{visual.description}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="architecture-title">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">03</div>
+        <div>
+          <p class="mono-label glow">architecture de l’enquête</p>
+          <h2 id="architecture-title">Huit couches à rendre vérifiables.</h2>
+          <p>Chaque couche ajoute une promesse et une preuve attendue. Le livre les relie dans un même ordre de lecture.</p>
+        </div>
+      </header>
+
+      <ol class="layer-map">
+        {chapters.map((chapter) => (
+          <li>
+            <span class="layer-index">{chapter.index}</span>
+            <div><strong>{chapter.title}</strong><small>{chapter.summary}</small></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="contents-section" id="sommaire">
+      <header class="section-heading">
+        <div class="section-index" aria-hidden="true">04</div>
+        <div>
+          <p class="mono-label glow">sommaire</p>
+          <h2>Les huit enquêtes.</h2>
+        </div>
+      </header>
+
+      <ol class="chapter-grid">
+        {chapters.map((chapter) => (
+          <li>
+            <a href={chapter.href}>
+              <span class="chapter-index">{chapter.index}</span>
+              <span class="chapter-copy"><strong>{chapter.title}</strong><small>{chapter.summary}</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="closing-section">
+      <div class="closing-copy">
+        <p class="mono-label glow">ce que l’édition ajoute</p>
+        <h2>Une introduction pour cadrer. Une conclusion pour contrôler.</h2>
+        <p>L’introduction distingue France Identité, l’identité certifiée et le portefeuille européen. La conclusion rassemble les preuves encore nécessaires : données, durées, accessibilité, alternatives, réversibilité, coûts, incidents, registre et reçu.</p>
+        <p>Le droit européen rend une partie de la promesse testable. La qualité de l’exécution française devra être démontrée par des informations publiques, précises et réutilisables.</p>
+      </div>
+      <aside class="integrity-panel" aria-label="Intégrité du fichier EPUB">
+        <span>EPUB 3</span>
+        <strong>{epubSize}</strong>
+        <p>SHA-256</p>
+        <code>{epubSha256}</code>
+      </aside>
+    </section>
+
+    <section class="download-section">
+      <div>
+        <p class="mono-label">// lire hors ligne</p>
+        <h2>Conserver les pièces. Revenir aux sources.</h2>
+        <p>L’édition est gratuite, sans compte, sans tracker et publiée sous licence CC BY 4.0.</p>
+      </div>
+      <a href={epubPath} download="Votre-identite-dans-un-telephone-l0g.epub">Télécharger l’EPUB <span aria-hidden="true">↓</span></a>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .identity-book { --book-cyan: #62dfd1; --book-blue: #7aa2f7; --book-amber: #e8ad49; --book-pink: #ff5c93; }
+  .book-hero { display: grid; grid-template-columns: minmax(15rem, 25rem) minmax(0, 1fr); gap: clamp(2rem, 7vw, 6rem); align-items: center; padding: clamp(2rem, 6vw, 5rem) 0; }
+  .cover-stage { position: relative; display: grid; justify-items: center; }
+  .cover-glow { position: absolute; inset: 12% 3% 8%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--book-cyan) 28%, transparent), transparent 68%); filter: blur(35px); opacity: .75; }
+  .book-shell { position: relative; width: min(100%, 22rem); padding-left: 1.35rem; transform: perspective(1100px) rotateY(5deg) rotateX(1deg); transform-origin: center; }
+  .book-shell::after { content: ''; position: absolute; inset: 1.2% 0 -1.4% 1.35rem; z-index: -1; border-radius: 3px 10px 10px 3px; background: #020609; box-shadow: -18px 24px 55px rgba(0,0,0,.62); }
+  .book-shell img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb, var(--book-cyan) 42%, #24313b); border-radius: 3px 9px 9px 3px; }
+  .book-spine { position: absolute; inset: 0 auto 0 0; display: grid; width: 1.4rem; place-items: center; border: 1px solid #314954; border-right: 0; border-radius: 5px 0 0 5px; background: #071017; color: #8ba1ae; font-family: var(--font-mono); font-size: .55rem; letter-spacing: .13em; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .cover-caption { margin-top: 1rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .63rem; letter-spacing: .08em; text-transform: uppercase; }
+  .hero-copy > .mono-label, .section-heading .mono-label, .premise-section .mono-label, .closing-section .mono-label { color: var(--book-cyan); }
+  .hero-copy h1 { max-width: 48rem; margin-top: .7rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.4rem); line-height: .88; letter-spacing: -.055em; }
+  .hero-copy h1 span { display: block; color: var(--book-cyan); }
+  .hero-deck { max-width: 46rem; margin-top: 1.4rem; color: var(--color-paper); font-family: var(--font-read); font-size: clamp(1.15rem, 2.5vw, 1.55rem); line-height: 1.35; }
+  .hero-lede { max-width: 49rem; margin-top: 1rem; color: var(--color-prose); font-family: var(--font-read); font-size: 1rem; line-height: 1.76; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: 1.6rem; }
+  .download-action { display: grid; gap: .15rem; min-width: 14rem; border: 1px solid var(--book-cyan); border-radius: 10px; padding: .85rem 1rem; background: color-mix(in srgb, var(--book-cyan) 10%, var(--color-surface)); color: var(--color-bright); text-decoration: none; }
+  .download-action span { font-family: var(--font-mono); font-size: .78rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+  .download-action small { color: var(--book-cyan); font-family: var(--font-mono); font-size: .62rem; }
+  .download-action:hover { background: color-mix(in srgb, var(--book-cyan) 18%, var(--color-surface)); }
+  .contents-action { color: var(--color-prose); font-family: var(--font-mono); font-size: .72rem; text-underline-offset: .25em; }
+  .proof-line { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; padding: 0; list-style: none; }
+  .proof-line li { border: 1px solid var(--color-line); border-radius: 999px; padding: .28rem .55rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .58rem; letter-spacing: .04em; }
+  .premise-section { display: grid; grid-template-columns: auto minmax(14rem, .8fr) minmax(18rem, 1.25fr); gap: clamp(1rem, 4vw, 3rem); align-items: start; border-block: 1px solid var(--color-line); padding: clamp(2.4rem, 6vw, 4.5rem) 0; }
+  .section-index { color: color-mix(in srgb, var(--book-cyan) 50%, var(--color-line)); font-family: var(--font-mono); font-size: .7rem; }
+  .premise-section h2, .section-heading h2, .closing-section h2, .download-section h2 { margin-top: .4rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -.035em; }
+  .premise-copy { color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
+  .premise-copy p + p { margin-top: .85rem; }
+  .architecture-section, .contents-section { padding: clamp(3rem, 7vw, 6rem) 0; }
+  .section-heading { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; max-width: 57rem; }
+  .section-heading > div > p:last-child { max-width: 48rem; margin-top: .85rem; color: var(--color-prose); font-family: var(--font-read); line-height: 1.7; }
+  .visual-essay { display: grid; gap: clamp(1.25rem, 3vw, 2.25rem); margin-top: 2rem; }
+  .visual-essay figure { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(16rem, .75fr); overflow: hidden; border: 1px solid var(--color-line); border-radius: 18px; background: var(--color-surface); }
+  .visual-essay figure:nth-child(even) { grid-template-columns: minmax(16rem, .75fr) minmax(0, 1.65fr); }
+  .visual-essay figure:nth-child(even) img { order: 2; }
+  .visual-essay img { display: block; width: 100%; height: 100%; min-height: 18rem; object-fit: cover; }
+  .visual-essay figcaption { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.2rem, 4vw, 2.2rem); }
+  .visual-essay figcaption span { color: var(--book-cyan); font-family: var(--font-mono); font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .visual-essay figcaption strong { display: block; margin-top: .65rem; color: var(--color-bright); font-family: var(--font-display); font-size: clamp(1.45rem, 3vw, 2.15rem); line-height: 1.05; }
+  .visual-essay figcaption p { margin-top: .8rem; color: var(--color-prose); font-family: var(--font-read); font-size: .88rem; line-height: 1.68; }
+  .layer-map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-top: 2rem; padding: 0; list-style: none; }
+  .layer-map li { min-width: 0; border: 1px solid var(--color-line); border-radius: 14px; padding: 1rem; background: linear-gradient(145deg, color-mix(in srgb, var(--book-cyan) 6%, var(--color-surface)), var(--color-surface)); }
+  .layer-index { display: inline-grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--book-cyan); border-radius: 50%; color: var(--book-cyan); font-family: var(--font-mono); font-size: .7rem; font-weight: 800; }
+  .layer-map strong { display: block; margin-top: .75rem; color: var(--color-bright); font-family: var(--font-display); font-size: 1.05rem; line-height: 1.15; }
+  .layer-map small { display: block; margin-top: .55rem; color: var(--color-muted); font-family: var(--font-read); font-size: .78rem; line-height: 1.55; }
+  .contents-section { border-top: 1px solid var(--color-line); }
+  .chapter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 2rem; padding: 0; list-style: none; }
+  .chapter-grid a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .9rem; align-items: start; height: 100%; border: 1px solid var(--color-line); border-radius: 13px; padding: 1rem; background: var(--color-surface); text-decoration: none; }
+  .chapter-grid a:hover { border-color: var(--book-cyan); background: color-mix(in srgb, var(--book-cyan) 7%, var(--color-surface)); }
+  .chapter-index { color: var(--book-cyan); font-family: var(--font-mono); font-size: .75rem; font-weight: 800; }
+  .chapter-copy strong { display: block; color: var(--color-bright); font-family: var(--font-display); font-size: 1.08rem; line-height: 1.2; }
+  .chapter-copy small { display: block; margin-top: .4rem; color: var(--color-muted); font-family: var(--font-read); font-size: .78rem; line-height: 1.5; }
+  .chapter-arrow { color: var(--book-amber); }
+  .closing-section { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(17rem, .6fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; border-block: 1px solid var(--color-line); padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .closing-copy > p:not(.mono-label) { max-width: 48rem; margin-top: .9rem; color: var(--color-prose); font-family: var(--font-read); line-height: 1.75; }
+  .integrity-panel { min-width: 0; border: 1px solid color-mix(in srgb, var(--book-amber) 50%, var(--color-line)); border-radius: 16px; padding: 1.25rem; background: color-mix(in srgb, var(--book-amber) 5%, var(--color-surface)); }
+  .integrity-panel > span { color: var(--book-amber); font-family: var(--font-mono); font-size: .68rem; font-weight: 800; }
+  .integrity-panel > strong { display: block; margin-top: .5rem; color: var(--color-bright); font-family: var(--font-display); font-size: 2.1rem; }
+  .integrity-panel p { margin-top: 1rem; color: var(--color-muted); font-family: var(--font-mono); font-size: .6rem; }
+  .integrity-panel code { display: block; overflow-wrap: anywhere; margin-top: .35rem; color: var(--color-prose); font-family: var(--font-mono); font-size: .56rem; line-height: 1.55; }
+  .download-section { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .download-section .mono-label { color: var(--book-amber); }
+  .download-section p:last-child { margin-top: .65rem; color: var(--color-prose); font-family: var(--font-read); }
+  .download-section > a { border: 1px solid var(--book-amber); border-radius: 11px; padding: 1rem 1.2rem; background: color-mix(in srgb, var(--book-amber) 10%, var(--color-surface)); color: var(--color-bright); font-family: var(--font-mono); font-size: .74rem; font-weight: 800; text-decoration: none; text-transform: uppercase; }
+  .download-section > a:hover { background: color-mix(in srgb, var(--book-amber) 18%, var(--color-surface)); }
+  @media (max-width: 900px) { .book-hero { grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr); gap: 2rem; } .visual-essay figure, .visual-essay figure:nth-child(even) { grid-template-columns: 1fr; } .visual-essay figure:nth-child(even) img { order: 0; } .visual-essay img { min-height: 0; aspect-ratio: 16 / 9; } .layer-map { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 680px) { .book-hero { grid-template-columns: 1fr; } .cover-stage { max-width: 19rem; margin-inline: auto; } .hero-copy h1 { font-size: clamp(3.1rem, 15vw, 5rem); } .premise-section { grid-template-columns: auto minmax(0, 1fr); } .premise-copy { grid-column: 2; } .chapter-grid, .closing-section { grid-template-columns: 1fr; } }
+  @media (max-width: 430px) { .layer-map { grid-template-columns: 1fr; } .chapter-grid a { padding: .9rem; } .hero-actions { align-items: stretch; } .download-action { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .book-shell { transform: none; } }
+</style>

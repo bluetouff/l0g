@@ -7,6 +7,11 @@ const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
   {
+    source: join(ROOT, 'src/epub/votre-identite-dans-un-telephone'),
+    output: join(ROOT, 'public/publications/votre-identite-dans-un-telephone-enquete-l0g.epub'),
+    fixedTime: new Date('2026-08-29T08:53:27Z'),
+  },
+  {
     source: join(ROOT, 'src/epub/grand-peage-facture'),
     output: join(ROOT, 'public/publications/grand-peage-facture-enquete-l0g.epub'),
     fixedTime: new Date('2026-08-22T18:30:00Z'),

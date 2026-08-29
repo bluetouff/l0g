@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 760" width="100%" role="img" aria-labelledby="privacy-fr-title privacy-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="privacy-fr-title">ANONYME POUR QUI ?</title>
+<desc id="privacy-fr-desc">Quatre propriétés distinctes de la preuve d’âge française</desc>
+<rect x="1" y="1" width="358" height="758" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="42" fill="#f5f6f8" font-size="15" font-weight="700">ANONYME POUR QUI ?</text>
+<text x="18" y="64" fill="#8b909b" font-size="8.5">Une donnée minimisée n’est pas automatiquement intraçable</text>
+<rect x="16" y="92" width="328" height="126" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="120" fill="#5eead4" font-size="10.5" font-weight="700">VÉRIFICATEUR</text>
+<text x="32" y="146" fill="#f5f6f8" font-size="9.5">Reçoit uniquement le seuil nécessaire</text>
+<text x="32" y="168" fill="#aeb4bf" font-size="8.8">Nom et date complète non transmis</text>
+<rect x="32" y="184" width="104" height="20" rx="5" fill="#17322d"/>
+<text x="84" y="198" text-anchor="middle" fill="#5eead4" font-size="8" font-weight="700">DOCUMENTÉ</text>
+<rect x="16" y="234" width="328" height="126" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="32" y="262" fill="#7aa2f7" font-size="10.5" font-weight="700">ÉMETTEUR</text>
+<text x="32" y="288" fill="#f5f6f8" font-size="9.5">Sait-il auprès de quel site la preuve sert ?</text>
+<text x="32" y="310" fill="#aeb4bf" font-size="8.8">La réponse publique n’est pas assez précise</text>
+<rect x="32" y="326" width="104" height="20" rx="5" fill="#20263a"/>
+<text x="84" y="340" text-anchor="middle" fill="#7aa2f7" font-size="8" font-weight="700">INCONNU</text>
+<rect x="16" y="376" width="328" height="126" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="404" fill="#f5b13d" font-size="10.5" font-weight="700">CORRÉLATION</text>
+<text x="32" y="430" fill="#f5f6f8" font-size="9.5">Deux preuves viennent-elles du même usager ?</text>
+<text x="32" y="452" fill="#aeb4bf" font-size="8.8">Format et identifiants non publiés ici</text>
+<rect x="32" y="468" width="104" height="20" rx="5" fill="#322a18"/>
+<text x="84" y="482" text-anchor="middle" fill="#f5b13d" font-size="8" font-weight="700">À TESTER</text>
+<rect x="16" y="518" width="328" height="142" rx="12" fill="#21151c" stroke="#ff85ad"/>
+<text x="32" y="546" fill="#ff85ad" font-size="10.5" font-weight="700">JOURNAUX</text>
+<text x="32" y="572" fill="#f5f6f8" font-size="9.5">Traces d’audit horodatées, jusqu’à 3 ans</text>
+<text x="32" y="594" fill="#aeb4bf" font-size="8.8">Champs précis et destinataires non détaillés</text>
+<rect x="32" y="616" width="150" height="20" rx="5" fill="#35202b"/>
+<text x="107" y="630" text-anchor="middle" fill="#ff85ad" font-size="8" font-weight="700">DURÉE DOCUMENTÉE</text>
+<rect x="14" y="690" width="332" height="52" rx="8" fill="#15171b" stroke="#3a4049"/>
+<text x="26" y="711" fill="#aeb4bf" font-size="7.8">La minimisation protège le contenu transmis.</text>
+<text x="26" y="727" fill="#6f7580" font-size="7.8">La non-corrélation exige des garanties supplémentaires.</text>
+</svg>

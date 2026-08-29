@@ -5,17 +5,20 @@ import { join } from 'node:path';
 interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
-  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing';
+  publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity';
 }
 
 const { headingLevel = 'h2', lang = 'fr', publication = 'epstein' } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
+const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isEInvoicing
+const publicationUrl = isDigitalIdentity
+  ? '/publications/votre-identite-dans-un-telephone/'
+  : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
   : isWaterElectricity
   ? isEnglish ? '/en/publications/water-electricity/' : '/publications/eau-electricite/'
@@ -26,7 +29,9 @@ const publicationUrl = isEInvoicing
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isEInvoicing
+const epubFile = isDigitalIdentity
+  ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
+  : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
   : isWaterElectricity
   ? isEnglish ? 'water-electricity-europe-l0g.epub' : 'eau-electricite-europe-l0g.epub'
@@ -38,7 +43,9 @@ const epubFile = isEInvoicing
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isEInvoicing
+const coverUrl = isDigitalIdentity
+  ? '/publications/votre-identite-dans-un-telephone-cover.png'
+  : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
   : isWaterElectricity
   ? isEnglish ? '/publications/water-electricity-cover.png' : '/publications/eau-electricite-cover.png'
@@ -52,7 +59,22 @@ const coverUrl = isEInvoicing
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isEInvoicing
+const copy = isDigitalIdentity
+  ? {
+      coverLabel: 'Découvrir Votre identité dans un téléphone',
+      coverAlt: 'Couverture de Votre identité dans un téléphone',
+      meta: '// enquête illustrée · août 2026',
+      titleLead: 'Votre identité',
+      titleAccent: 'dans un téléphone',
+      deck: 'France Identité, portefeuille européen et preuves de souveraineté.',
+      description: 'Huit enquêtes sur les données, les alternatives, les contrats, les coûts, les plateformes et les traces de l’identité numérique.',
+      factsLabel: 'Contenu de l’édition',
+      facts: [{ value: '8', label: 'enquêtes' }, { value: '23', label: 'infographies' }, { value: '6', label: 'outils' }, { value: formattedSize, label: 'téléchargement' }],
+      discover: 'Découvrir l’enquête',
+      downloadLabel: 'Télécharger l’EPUB',
+      fileName: 'Votre-identite-dans-un-telephone-l0g.epub',
+    }
+  : isEInvoicing
   ? isEnglish
     ? {
         coverLabel: 'Discover The Great E-Invoicing Toll', coverAlt: 'Cover of The Great E-Invoicing Toll', meta: '// illustrated investigation · August 2026',
@@ -161,7 +183,19 @@ const copy = isEInvoicing
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
+  {isDigitalIdentity && (
+    <a class="publication-teaser" href={publicationUrl} aria-label="Découvrir les quatre tableaux visuels de l’enquête">
+      <img
+        src="/illustrations/publications/identite-telephone-chaine.jpg"
+        width="1536"
+        height="864"
+        alt="Carte générique, téléphone, terminal, courrier et infrastructure reliés dans une chaîne de services"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  )}
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
@@ -211,6 +245,18 @@ const copy = isEInvoicing
   .publication-spotlight--digital-euro { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--water { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--invoice { --publication-card-accent: var(--color-accent); }
+  .publication-spotlight--identity { --publication-card-accent: var(--color-signal); }
+  .publication-teaser {
+    display: block;
+    grid-column: 1 / -1;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--publication-card-accent) 34%, var(--color-line));
+    border-radius: 13px;
+    aspect-ratio: 16 / 7;
+    background: #071017;
+  }
+  .publication-teaser img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+  .publication-teaser:hover img { transform: scale(1.015); }
   .publication-cover {
     display: block;
     align-self: center;
@@ -333,6 +379,7 @@ const copy = isEInvoicing
     .publication-facts li:nth-child(even) { border-left: 1px solid var(--color-line); padding-left: 0.65rem; }
     .publication-actions { display: grid; grid-template-columns: 1fr; }
     .publication-actions a { width: 100%; }
+    .publication-teaser { aspect-ratio: 16 / 9; }
   }
   @media (max-width: 430px) {
     .publication-spotlight { align-items: start; padding: 0.85rem; }
@@ -341,4 +388,5 @@ const copy = isEInvoicing
     .publication-copy h3 { font-size: clamp(1.45rem, 8vw, 1.9rem); }
     .publication-meta { align-items: flex-start; }
   }
+  @media (prefers-reduced-motion: reduce) { .publication-teaser img { transition: none; } }
 </style>

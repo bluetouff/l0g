@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 810" width="100%" role="img" aria-labelledby="vol-fr-title vol-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="vol-fr-title">Le test l0g de la facultativité réelle</title>
+<desc id="vol-fr-desc">Six dimensions sont examinées séparément : accès, délai, coût, complexité, assistance et préservation du droit.</desc>
+<rect x="1" y="1" width="358" height="808" rx="14" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="31" fill="#f5f6f8" font-size="16" font-weight="700">LE TEST DE LA FACULTATIVITÉ RÉELLE</text>
+<text x="18" y="53" fill="#8b909b" font-size="9.5">Six dimensions. Aucun score agrégé opaque.</text>
+<line x1="34" y1="92" x2="34" y2="711" stroke="#39414d" stroke-width="3"/>
+
+<circle cx="34" cy="119" r="9" fill="#5eead4"/>
+<rect x="56" y="84" width="286" height="88" rx="10" fill="#10211f" stroke="#5eead4"/>
+<text x="72" y="111" fill="#5eead4" font-size="12" font-weight="700">1. ACCÈS</text>
+<text x="72" y="134" fill="#f5f6f8" font-size="9.5">Un chemin complet existe-t-il sans le bon</text>
+<text x="72" y="151" fill="#f5f6f8" font-size="9.5">téléphone, la bonne carte ou le geste NFC ?</text>
+
+<circle cx="34" cy="223" r="9" fill="#7aa2f7"/>
+<rect x="56" y="188" width="286" height="88" rx="10" fill="#141a28" stroke="#7aa2f7"/>
+<text x="72" y="215" fill="#7aa2f7" font-size="12" font-weight="700">2. DÉLAI</text>
+<text x="72" y="238" fill="#f5f6f8" font-size="9.5">Le temps supplémentaire est-il publié,</text>
+<text x="72" y="255" fill="#f5f6f8" font-size="9.5">mesuré et compatible avec l’échéance ?</text>
+
+<circle cx="34" cy="327" r="9" fill="#f5b13d"/>
+<rect x="56" y="292" width="286" height="88" rx="10" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="72" y="319" fill="#f5b13d" font-size="12" font-weight="700">3. COÛT</text>
+<text x="72" y="342" fill="#f5f6f8" font-size="9.5">Affranchissement, transport, certificat,</text>
+<text x="72" y="359" fill="#f5f6f8" font-size="9.5">prestataire ou équipement supplémentaire ?</text>
+
+<circle cx="34" cy="431" r="9" fill="#a78bfa"/>
+<rect x="56" y="396" width="286" height="88" rx="10" fill="#171426" stroke="#a78bfa"/>
+<text x="72" y="423" fill="#a78bfa" font-size="12" font-weight="700">4. COMPLEXITÉ</text>
+<text x="72" y="446" fill="#f5f6f8" font-size="9.5">Combien d’étapes, de pièces et</text>
+<text x="72" y="463" fill="#f5f6f8" font-size="9.5">d’interfaces sont ajoutées ?</text>
+
+<circle cx="34" cy="535" r="9" fill="#60a5fa"/>
+<rect x="56" y="500" width="286" height="88" rx="10" fill="#111b28" stroke="#60a5fa"/>
+<text x="72" y="527" fill="#60a5fa" font-size="12" font-weight="700">5. ASSISTANCE</text>
+<text x="72" y="550" fill="#f5f6f8" font-size="9.5">Un humain peut-il mener jusqu’au dépôt</text>
+<text x="72" y="567" fill="#f5f6f8" font-size="9.5">sans recevoir les secrets de l’usager ?</text>
+
+<circle cx="34" cy="639" r="9" fill="#ff85ad"/>
+<rect x="56" y="604" width="286" height="104" rx="10" fill="#21151c" stroke="#ff85ad"/>
+<text x="72" y="631" fill="#ff85ad" font-size="12" font-weight="700">6. PRÉSERVATION DU DROIT</text>
+<text x="72" y="654" fill="#f5f6f8" font-size="9.5">La date initiale est-elle protégée ?</text>
+<text x="72" y="671" fill="#f5f6f8" font-size="9.5">Le délai peut-il faire perdre la formation,</text>
+<text x="72" y="688" fill="#f5f6f8" font-size="9.5">l’aide, la formalité ou le scrutin ?</text>
+
+<rect x="16" y="739" width="328" height="42" rx="9" fill="#21151c" stroke="#ff85ad"/>
+<text x="180" y="757" text-anchor="middle" fill="#ff85ad" font-size="9.5" font-weight="700">LIGNE ROUGE</text>
+<text x="180" y="773" text-anchor="middle" fill="#f5f6f8" font-size="9">L’alternative arrive trop tard pour produire son effet.</text>
+</svg>

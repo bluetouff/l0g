@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 850" width="100%" role="img" aria-labelledby="identity-layers-fr-title identity-layers-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="identity-layers-fr-title">Les trois étages de l’identité numérique française et européenne</title>
+<desc id="identity-layers-fr-desc">France Identité actuelle, identité numérique certifiée et futur portefeuille européen EUDI sont trois niveaux distincts.</desc>
+<rect x="1" y="1" width="718" height="848" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="32" y="48" fill="#f5f6f8" font-size="21" font-weight="700">TROIS ÉTAGES, TROIS PÉRIMÈTRES</text>
+<text x="32" y="74" fill="#8b909b" font-size="12">Les pilotes européens ne sont pas encore des usages courants.</text>
+
+<rect x="28" y="104" width="664" height="190" rx="14" fill="#10211f" stroke="#5eead4"/>
+<circle cx="70" cy="146" r="22" fill="#5eead4"/>
+<text x="70" y="152" text-anchor="middle" fill="#07110f" font-size="18" font-weight="800">1</text>
+<text x="108" y="139" fill="#5eead4" font-size="14" font-weight="700">FRANCE IDENTITÉ AUJOURD’HUI</text>
+<text x="108" y="166" fill="#f5f6f8" font-size="12">CNIe + téléphone compatible + application.</text>
+<text x="108" y="190" fill="#d6d9df" font-size="11">CNI, permis, carte grise, justificatifs, FranceConnect,</text>
+<text x="108" y="210" fill="#d6d9df" font-size="11">train, contrôles routiers et certains usages aéroportuaires.</text>
+<text x="108" y="238" fill="#aeb4bf" font-size="10.5">Gratuite et facultative. Les titres physiques restent nécessaires.</text>
+<text x="108" y="260" fill="#aeb4bf" font-size="10.5">Identité stockée localement selon l’architecture déclarée.</text>
+
+<path d="M360 294 V328" stroke="#39414d" stroke-width="4"/>
+<path d="M352 318 L360 332 L368 318" fill="#39414d"/>
+
+<rect x="28" y="334" width="664" height="190" rx="14" fill="#141a28" stroke="#7aa2f7"/>
+<circle cx="70" cy="376" r="22" fill="#7aa2f7"/>
+<text x="70" y="382" text-anchor="middle" fill="#0a0d15" font-size="18" font-weight="800">2</text>
+<text x="108" y="369" fill="#7aa2f7" font-size="14" font-weight="700">IDENTITÉ NUMÉRIQUE CERTIFIÉE</text>
+<text x="108" y="396" fill="#f5f6f8" font-size="12">Vérification physique en mairie ou lors de la remise de la CNI.</text>
+<text x="108" y="420" fill="#d6d9df" font-size="11">Niveau de garantie élevé, FranceConnect+ et procuration</text>
+<text x="108" y="440" fill="#d6d9df" font-size="11">de vote entièrement dématérialisée.</text>
+<text x="108" y="468" fill="#aeb4bf" font-size="10.5">Le résultat de la demande est annoncé sous 48 heures.</text>
+<text x="108" y="490" fill="#aeb4bf" font-size="10.5">Ce niveau ne transforme pas encore l’application en wallet européen.</text>
+
+<path d="M360 524 V558" stroke="#39414d" stroke-width="4"/>
+<path d="M352 548 L360 562 L368 548" fill="#39414d"/>
+
+<rect x="28" y="564" width="664" height="220" rx="14" fill="#1b1b14" stroke="#f5b13d"/>
+<circle cx="70" cy="606" r="22" fill="#f5b13d"/>
+<text x="70" y="612" text-anchor="middle" fill="#151006" font-size="18" font-weight="800">3</text>
+<text x="108" y="599" fill="#f5b13d" font-size="14" font-weight="700">PORTEFEUILLE EUROPÉEN EUDI</text>
+<text x="108" y="626" fill="#f5f6f8" font-size="12">Mise à disposition attendue par les États membres fin 2026.</text>
+<text x="108" y="650" fill="#d6d9df" font-size="11">Identité transfrontalière, attestations, diplômes, permis,</text>
+<text x="108" y="670" fill="#d6d9df" font-size="11">coordonnées bancaires, signatures et autres attributs.</text>
+<text x="108" y="698" fill="#aeb4bf" font-size="10.5">Licence open source, contrôle par l’usager et divulgation sélective.</text>
+<text x="108" y="720" fill="#aeb4bf" font-size="10.5">Banque, SIM, ordonnances, voyage et paiement ont été testés.</text>
+<text x="108" y="742" fill="#ffcf70" font-size="10.5" font-weight="700">TESTÉ NE SIGNIFIE PAS ENCORE DÉPLOYÉ AU QUOTIDIEN.</text>
+
+<rect x="28" y="802" width="664" height="28" rx="7" fill="#15171b" stroke="#343943"/>
+<text x="360" y="821" text-anchor="middle" fill="#8b909b" font-size="10">Sources : France Titres ; règlement eIDAS 2 ; Commission européenne. Consultation : 28 août 2026.</text>
+</svg>

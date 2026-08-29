@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="fr" xml:lang="fr"><head><meta charset="utf-8" /><meta name="generator" content="l0g" /><title>Une identité souveraine sur un téléphone américain</title><link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" /></head><body epub:type="bodymatter"><section id="article-7" class="level1 article-chapter"><p class="chapter-kicker">Volet 7 sur 8</p><h1>Une identité souveraine sur un téléphone américain</h1><p class="chapter-dek">Stores, NFC, clés matérielles et attestation : l’État contrôle France Identité, mais pas toutes les couches qui décident si elle fonctionne.</p><p class="chapter-meta">Publié les 28 et 29 août 2026 · <a href="https://l0g.fr/posts/votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain/">Article canonique sur l0g.fr</a></p><p><em>La carte d’identité est émise par l’État. Les serveurs de France Identité sont annoncés comme hébergés dans le cloud du ministère de l’Intérieur. Les justificatifs portent un cachet électronique public. Pourtant, pour installer l’application, il faut aujourd’hui passer par Google Play ou l’App Store. Pour protéger les clés, le service utilise nécessairement les fonctions de sécurité du téléphone. Pour décider si une instance de l’application mérite confiance, il doit produire une preuve de légitimité.</em></p>
+<p><em>La souveraineté ne disparaît pas à cet instant. Elle change de niveau. L’État reste responsable de l’identité, mais il ne fabrique ni l’iPhone, ni Android, ni les composants cryptographiques, ni les magasins qui distribuent son application. Une décision prise sous France Identité dépend donc de plusieurs couches dont certaines appartiennent à Apple, Google ou aux constructeurs de terminaux.</em></p>
+<p><em>Cette dépendance peut être utile. Les téléphones compatibles apportent un environnement sécurisé, un système de mise à jour et des composants capables de protéger des clés. Le problème commence lorsque le citoyen ne sait pas pourquoi son appareil est refusé, que l’État ne publie pas la matrice de compatibilité et qu’une incompatibilité ferme l’accès rapide à une formation, une aide ou une signature d’entreprise.</em></p>
+<p><em>Septième volet de l’enquête <strong>Votre identité dans un téléphone</strong>. Le premier suivait <a href="ch002.xhtml#article-1">les données et les traces de France Identité</a>. Le deuxième mesurait <a href="ch003.xhtml#article-2">le prix pratique des alternatives</a>. Le troisième examinait <a href="ch004.xhtml#article-3">l’identité souveraine sous contrat</a>. Le quatrième suivait <a href="ch005.xhtml#article-4">la transformation de l’âge en autorisation</a>. Le cinquième testait <a href="ch006.xhtml#article-5">le jour où l’identité ne répond plus</a>. Le sixième suivait <a href="ch007.xhtml#article-6">la facture cachée derrière une preuve gratuite</a>.</em></p>
+<p><em>English version: <a href="https://l0g.fr/en/analysis/your-identity-in-your-phone-7-a-sovereign-identity-on-an-american-phone/">A sovereign identity on an American phone</a>.</em></p>
+<section id="c7-à-retenir" class="level2"><h2>À retenir</h2>
+<ul>
+<li>Le site officiel exige une CNI au format bancaire, la majorité et un téléphone fonctionnant au minimum sous Android 11 avec NFC ou sous iOS 16.6.</li>
+<li>Les deux canaux de téléchargement grand public présentés sont Google Play et l’App Store. L0g n’a pas identifié de canal officiel de production hors de ces magasins au 28 août 2026.</li>
+<li>Des témoignages publiés sur Services Publics+ signalent le message « absence de certains mécanismes de sécurité » sur des appareils sous Android 11, 13, 14 ou 15, parfois après une période de fonctionnement normal.</li>
+<li>Ces témoignages ne mesurent pas un taux d’échec. Ils montrent que les conditions publiques ne suffisent pas toujours à expliquer la décision technique.</li>
+<li>Le site de France Identité présente toujours son identité numérique certifiée comme la voie d’accès à FranceConnect+ pour Mon Compte Formation, MaPrimeRénov’ et l’INPI. Un téléphone refusé peut donc déclencher un délai, un déplacement, l’achat d’un certificat qualifié ou le recours à un mandataire.</li>
+<li>Le règlement européen impose aux grands contrôleurs d’accès une interopérabilité effective et gratuite avec les mêmes fonctions du système d’exploitation, du matériel et du logiciel que celles qu’ils utilisent eux-mêmes.</li>
+<li>Le même cadre exige que le code des composants applicatifs du portefeuille soit publié sous licence open source.</li>
+<li>Ces deux droits ne prouvent ni l’existence d’un canal de distribution indépendant, ni celle d’une racine d’attestation publique, ni la possibilité de corriger immédiatement un faux refus.</li>
+<li>Les rapports CSPN de 2023 ont évalué Android 1.2.4 et iOS 1.2.3, développées alors par Atos. Ils ont couvert la preuve de légitimité de l’application et la revue complète du code de ces versions précises.</li>
+<li>Deux décisions ANSSI du 21 mai 2025 ont ensuite qualifié Android et iOS 1.3.X à partir de 1.3.7 au niveau élémentaire, en s’appuyant notamment sur ces rapports. Leur validité s’arrêtait au 7 février 2026.</li>
+<li>La décision iOS désigne toutefois le rapport CSPN comme portant sur la version 1.2.4, alors que le rapport public ANSSI-CSPN-2023/21 indique 1.2.3. L0g traite ce point comme une incohérence documentaire, sans en déduire un effet sur la sécurité du produit.</li>
+<li>Le catalogue ANSSI consulté le 28 août 2026 ne publie pas de décision de renouvellement et la page dédiée classe France Identité parmi les moyens en cours de certification. Cette situation publique ne permet pas de présenter les versions diffusées après cette échéance comme couvertes par une décision encore valide.</li>
+<li>La documentation publique ne confirme pas si France Identité utilise actuellement Play Integrity, Android Key Attestation, App Attest ou une combinaison propre au SGIN.</li>
+<li>L’architecture technique européenne distingue l’intégrité de l’application et la sécurité des clés. Son implémentation de référence sait exploiter la chaîne d’attestation Android et un format fondé sur App Attest côté iOS, mais elle est publiée pour le test et le développement.</li>
+<li>L’App Store affiche « Données non collectées », selon une déclaration non vérifiée par Apple. Google Play affiche une collecte possible d’informations personnelles et d’identifiants d’appareil, ainsi qu’un partage possible d’informations personnelles. Les taxonomies diffèrent et ne permettent pas, seules, de conclure à une contradiction ou à une collecte abusive.</li>
+<li>La souveraineté utile se mesure par une capacité de sortie : distribuer, signer, mettre à jour, attester, expliquer un refus, corriger une erreur et maintenir un parcours alternatif.</li>
+</ul>
+</section>
+<section id="c7-votre-carte-didentité-se-télécharge-dans-deux-magasins-privés" class="level2"><h2>Votre carte d’identité se télécharge dans deux magasins privés</h2>
+<p>La <a href="https://france-identite.gouv.fr/">page officielle de France Identité</a> présente aujourd’hui deux parcours de téléchargement : Google Play pour Android et l’App Store pour iOS.</p>
+<p>Les conditions visibles sont simples :</p>
+<pre><code class="language-text">Nouvelle carte nationale d’identité
+18 ans ou plus
+Android 11 avec NFC
+ou iOS 16.6 minimum
+</code></pre>
+<p>Cette simplicité est utile pour le public. Elle ne décrit pas toute la chaîne de confiance.</p>
+<p>Le sujet couvre presque tout le marché mobile français. Le <a href="https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html">baromètre 2026 de l’Arcep</a> utilise une répartition de 61 % d’Android et 39 % d’iOS, issue des données collectées début 2025 auprès des quatre principaux opérateurs. L’<a href="https://www.insee.fr/fr/statistiques/8660210">Insee</a> estime que 84,2 % des personnes de 15 ans ou plus possédaient un smartphone en 2025, contre 48,5 % des 75 ans ou plus. Le portefeuille mobile touche donc une infrastructure de masse sans être universel.</p>
+<p>Une application d’identité ne peut pas accepter n’importe quel environnement. Elle doit s’assurer que son code n’a pas été modifié, que les secrets sont protégés, que le téléphone n’est pas dans un état manifestement compromis et que les clés utilisées pour les attestations ne peuvent pas être copiées librement.</p>
+<p>Le service doit donc prendre une décision supplémentaire :</p>
+<blockquote>
+<p><strong>Ce téléphone est-il suffisamment digne de confiance pour porter une identité de niveau élevé ?</strong></p>
+</blockquote>
+<p>Cette décision peut dépendre de l’application, du backend SGIN, du système d’exploitation, du constructeur, de la configuration de démarrage, des correctifs de sécurité, d’une puce cryptographique et, selon le mécanisme retenu, d’un service d’Apple ou de Google.</p>
+<figure class="infographic" aria-label="Les cinq couches de confiance sous France Identité">
+<img src="../media/file17.svg" class="infographic-image" alt="France Identité repose sur des couches publiques et privées, depuis l’identité régalienne jusqu’au système, au magasin et au matériel du téléphone." />
+<figcaption>L’identité reste régalienne, mais l’accès pratique dépend d’une pile technique dont toutes les couches ne sont pas contrôlées par l’État.</figcaption>
+</figure>
+</section>
+<section id="c7-android-11-et-le-nfc-laissent-une-part-de-compatibilité-inexpliquée" class="level2"><h2>Android 11 et le NFC laissent une part de compatibilité inexpliquée</h2>
+<p>La plateforme gouvernementale <a href="https://www.plus.transformation.gouv.fr/">Services Publics+</a> contient plusieurs témoignages d’utilisateurs dont le téléphone semble répondre aux critères affichés mais reçoit le message suivant : l’absence de certains mécanismes de sécurité empêche l’utilisation de France Identité.</p>
+<p>Les récits publics concernent notamment :</p>
+<ul>
+<li><a href="https://www.plus.transformation.gouv.fr/experiences/4917636_lapplication-france-identite-ne-fonctionne-pas">un appareil sous Android 13</a> ;</li>
+<li><a href="https://www.plus.transformation.gouv.fr/experiences/6434356_visiblement-france-identite-est-inutile">un téléphone sous Android 15</a> ;</li>
+<li><a href="https://www.plus.transformation.gouv.fr/experiences/6188801_doogee-v10-pas-compatible">un modèle Android 11 avec NFC</a> ;</li>
+<li><a href="https://www.plus.transformation.gouv.fr/experiences/7390785_franceidentite-inoperant-du-jour-au-lendemain">des appareils ayant fonctionné avant de devenir incompatibles</a>.</li>
+</ul>
+<p>Ces témoignages ne constituent pas un échantillon statistique. Les utilisateurs confrontés à un problème publient davantage que les utilisateurs satisfaits. Le bouton indiquant qu’une expérience est similaire ne permet pas de calculer un taux d’échec. Certaines incompatibilités peuvent être parfaitement justifiées par la sécurité du terminal.</p>
+<p>Ils établissent néanmoins deux faits utiles à l’enquête.</p>
+<h3>Les critères publics sont incomplets</h3>
+<p>Une version d’Android et la présence du NFC ne suffisent pas à expliquer pourquoi un appareil est accepté ou refusé.</p>
+<h3>Le motif est peu actionnable</h3>
+<p>Le message ne précise pas publiquement si la cause tient :</p>
+<pre><code class="language-text">À la puce cryptographique
+Au démarrage vérifié
+À la certification du constructeur
+Aux correctifs de sécurité
+À Google Play Services
+À la signature de l’application
+À une configuration NFC
+À un bootloader déverrouillé
+À un faux positif
+</code></pre>
+<p>La différence est importante. Un utilisateur peut réactiver une fonction NFC, installer une mise à jour ou reverrouiller un appareil. Il ne peut pas ajouter une puce absente, réparer une chaîne d’attestation rejetée ou convaincre seul un constructeur de corriger son firmware.</p>
+<p>L0g n’a pas retrouvé, dans la documentation publique de France Identité consultée au 28 août 2026, de matrice listant les mécanismes requis, les modèles compatibles, les causes de refus ou les codes d’erreur correspondants.</p>
+</section>
+<section id="c7-le-téléphone-refusé-peut-ralentir-une-opération-économique" class="level2"><h2>Le téléphone refusé peut ralentir une opération économique</h2>
+<p>La <a href="https://france-identite.gouv.fr/identite-numerique-certifiee/">version certifiée de France Identité</a> permet aujourd’hui d’accéder par FranceConnect+ à Mon Compte Formation, MaPrimeRénov’ et l’INPI.</p>
+<p>Le refus du téléphone ne détruit pas le droit. Les alternatives existent. Leur coût pratique diffère.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Démarche</th><th>Alternative publiée</th><th>Friction documentée</th></tr></thead><tbody><tr><td>Mon Compte Formation</td><td><a href="https://www.moncompteformation.gouv.fr/espace-public/je-ne-remplis-pas-les-conditions-pour-utiliser-franceconnect">Contrôle manuel d’identité</a></td><td>Environ quatre semaines, procédure papier potentiellement plus longue</td></tr><tr><td>France Rénov’</td><td><a href="https://france-renov.gouv.fr/foire-aux-questions/compte">Création par courriel et vérification postale</a></td><td>Courrier annoncé sous 12 jours</td></tr><tr><td>INPI</td><td><a href="https://www.inpi.fr/faq/890">Signature avancée fondée sur un certificat qualifié</a></td><td>Prestataire externe, procédure plus technique ; mandataire possible</td></tr><tr><td>Procuration de vote</td><td><a href="https://www.service-public.gouv.fr/particuliers/actualites/A18658">Vérification en personne</a></td><td>Déplacement auprès d’une autorité habilitée</td></tr></tbody></table>
+<p>Ces durées ne sont ni des délais garantis, ni des mesures réalisées par l0g. Elles proviennent des parcours officiels, également étudiés dans <a href="ch003.xhtml#article-2">le deuxième volet</a>.</p>
+<p>Le coût financier peut donc prendre plusieurs formes :</p>
+<pre><code class="language-text">Remplacer prématurément un téléphone
+Acheter un certificat qualifié
+Payer un mandataire
+Se déplacer
+Attendre un courrier
+Manquer une date ou une session
+Mobiliser un salarié ou un conseiller
+</code></pre>
+<p>Aucun élément ne permet d’attribuer automatiquement ces coûts à Apple, Google ou France Titres. Le service final, la procédure alternative et la situation de l’utilisateur déterminent la perte réelle.</p>
+<p>La question de responsabilité reste pourtant entière :</p>
+<blockquote>
+<p><strong>Lorsqu’un téléphone conforme aux critères publiés est refusé à tort, qui prend en charge le coût de la solution de remplacement ?</strong></p>
+</blockquote>
+<figure class="infographic" aria-label="Propagation économique du refus d’un téléphone">
+<img src="../media/file18.svg" class="infographic-image" alt="Un téléphone refusé peut rendre France Identité puis FranceConnect+ indisponibles et renvoyer vers des parcours alternatifs plus lents ou payants." />
+<figcaption>Le risque économique ne vient pas de l’identité physique. Il apparaît lorsque l’appareil refusé devient la clé du parcours rapide.</figcaption>
+</figure>
+</section>
+<section id="c7-le-droit-européen-reconnaît-lui-même-la-dépendance" class="level2"><h2>Le droit européen reconnaît lui-même la dépendance</h2>
+<p>Le <a href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">règlement européen 2024/1183</a> contient une disposition rarement mise en avant dans la communication destinée au public.</p>
+<p>Son article 12 ter impose aux contrôleurs d’accès concernés de permettre aux fournisseurs de portefeuilles une interopérabilité effective et un accès gratuit aux mêmes fonctions du système d’exploitation, du matériel ou du logiciel que celles qu’ils utilisent pour leurs propres services.</p>
+<p>Le texte reconnaît ainsi qu’un portefeuille public peut avoir besoin de fonctions contrôlées par un acteur de plateforme :</p>
+<pre><code class="language-text">NFC
+Composant sécurisé
+Biométrie
+Stockage des clés
+Interfaces du système
+Distribution et installation
+</code></pre>
+<p>Ce droit est important. Il limite la capacité d’un gatekeeper à réserver une fonction critique à son propre portefeuille.</p>
+<p>Il ne suffit pas à prouver que toutes les dépendances sont réglées.</p>
+<p>L’accès à une interface ne répond pas automatiquement aux questions suivantes :</p>
+<ul>
+<li>qui contrôle la racine cryptographique ;</li>
+<li>quel service atteste le terminal ;</li>
+<li>quel délai s’applique en cas de panne ;</li>
+<li>comment contester un verdict d’intégrité ;</li>
+<li>comment distribuer un correctif sans magasin ;</li>
+<li>comment garantir la compatibilité d’un téléphone ancien ;</li>
+<li>qui paie après un faux refus.</li>
+</ul>
+<p>Le droit européen crée une obligation d’ouverture. L’enquête doit encore mesurer son application technique et opérationnelle.</p>
+</section>
+<section id="c7-au-delà-du-code-ouvert-la-racine-de-confiance" class="level2"><h2>Au-delà du code ouvert, la racine de confiance</h2>
+<p>Le même règlement impose que le code source des composants applicatifs installés sur le téléphone soit publié sous licence open source. Des exceptions restent possibles pour certains composants non installés sur l’appareil, lorsqu’elles sont dûment justifiées.</p>
+<p>France Titres annonce toujours que le code de l’application mobile sera publié « prochainement » sur sa <a href="https://france-identite.gouv.fr/securite-application/">page consacrée à la sécurité</a>.</p>
+<p>L’ouverture permettra notamment d’examiner :</p>
+<pre><code class="language-text">Les permissions demandées
+Les flux réseau
+Les SDK embarqués
+La gestion locale des titres
+Les contrôles de l’environnement
+Les dépendances externes
+La logique des messages d’erreur
+</code></pre>
+<p>Elle ne donnera pas automatiquement le contrôle des couches situées sous le code.</p>
+<p>Une clé cryptographique peut être générée dans :</p>
+<ul>
+<li>le Keystore Android ;</li>
+<li>un environnement d’exécution de confiance ;</li>
+<li>StrongBox lorsqu’il existe ;</li>
+<li>le Secure Enclave d’un iPhone.</li>
+</ul>
+<p>Le serveur qui délivre une identité doit ensuite vérifier que la clé est réellement protégée dans l’environnement annoncé. C’est le rôle d’une attestation.</p>
+<p>La <a href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md">spécification européenne des Wallet Unit Attestations</a> distingue deux objets :</p>
+<ul>
+<li>une attestation de l’instance du portefeuille, qui garantit l’intégrité de l’application ;</li>
+<li>une attestation de clé, qui décrit la protection cryptographique disponible.</li>
+</ul>
+<p>L’<a href="https://github.com/eu-digital-identity-wallet/eudi-srv-wallet-provider">implémentation de référence du fournisseur de wallet</a> sait recevoir une chaîne issue du Keystore Android et un format iOS fondé sur App Attest. Son propre avertissement précise qu’elle est destinée au test et au développement, et qu’elle ne valide par défaut aucune attestation de plateforme.</p>
+<p>Cette documentation ne décrit pas automatiquement France Identité en production.</p>
+<p>Elle montre le problème de fond :</p>
+<pre><code class="language-text">Code du portefeuille
+peut être public et auditable
+
+Clé du portefeuille
+peut être protégée par le téléphone
+
+Preuve de cette protection
+peut remonter à une racine Google ou à un service Apple
+</code></pre>
+<figure class="infographic" aria-label="Deux droits européens et leurs limites pratiques">
+<img src="../media/file19.svg" class="infographic-image" alt="Le droit européen impose le code ouvert et l’accès aux fonctions des plateformes, sans démontrer à lui seul l’indépendance du canal, de l’attestation ou du recours." />
+<figcaption>L’open source et l’interopérabilité sont des garanties fortes. La souveraineté opérationnelle exige aussi une distribution, une attestation et un recours maîtrisés.</figcaption>
+</figure>
+</section>
+<section id="c7-les-évaluations-anssi-dessinent-un-périmètre-précis" class="level2"><h2>Les évaluations ANSSI dessinent un périmètre précis</h2>
+<p>Les <a href="https://messervices.cyber.gouv.fr/visas/ANSSI-CSPN-2023-22-rapport.pdf">rapports CSPN Android</a> et <a href="https://messervices.cyber.gouv.fr/visas/ANSSI-CSPN-2023-21-rapport.pdf">iOS</a> sont des sources particulièrement utiles parce qu’ils donnent un périmètre exact.</p>
+<p>Ils portent sur :</p>
+<pre><code class="language-text">Android 1.2.4
+et iOS 1.2.3
+
+Développeur : Atos France
+Commanditaire : ministère de l’Intérieur
+Centre d’évaluation : AMOSSYS
+</code></pre>
+<p>Les fonctions évaluées comprennent :</p>
+<ul>
+<li>la gestion sécurisée du code personnel ;</li>
+<li>la communication avec le backend ;</li>
+<li>la communication avec la CNI ;</li>
+<li>la génération d’une preuve de légitimité de l’application ;</li>
+<li>la protection des données d’identité ;</li>
+<li>l’autorisation de l’application par le backend.</li>
+</ul>
+<p>L’évaluateur a relu l’intégralité du code source des produits concernés. Il a testé la version Android sur un Pixel 6a sous Android 13 et un Pixel 4a rooté sous Android 10. La version iOS a été testée sur un iPhone 11 et un iPhone X jailbreaké sous iOS 16.</p>
+<p>Ces rapports sont rassurants pour les versions évaluées. Ils ne suffisent toutefois pas à décrire seuls le statut des versions diffusées en 2026.</p>
+<p>Les décisions de qualification <a href="https://messervices.cyber.gouv.fr/visas/2025_791_np.pdf">Android n° 791</a> et <a href="https://messervices.cyber.gouv.fr/visas/2025_792_np.pdf">iOS n° 792</a>, prises le 21 mai 2025, ont étendu le périmètre à la version 1.3.X à partir de 1.3.7. Elles s’appuyaient sur les CSPN de 2023 et deux évaluations AMOSSYS du backend et du produit. Leur niveau était « élémentaire » et leur validité allait jusqu’au 7 février 2026. La certification distincte du moyen d’identification électronique au niveau « élevé » affichait la même date de fin. La décision iOS qualifie le rapport ANSSI-CSPN-2023/21 de rapport sur la version 1.2.4, tandis que ce rapport public identifie la version 1.2.3. Cette divergence est signalée comme une incohérence du corpus officiel, sans extrapolation.</p>
+<p>Au 28 août 2026, le <a href="https://cyber.gouv.fr/offre-de-service/solutions-certifiees-et-qualifiees/services-de-securite-evalue/decouvrir-les-solutions-certifiees-qualifiees/">catalogue ANSSI</a> ne publiait pas de décision plus récente pour France Identité. La <a href="https://cyber.gouv.fr/offre-de-service/solutions-certifiees-et-qualifiees/services-de-securite-evalue/solutions-en-cours-de-qualification/moyens-didentification-electronique-mie/">page des moyens d’identification électronique</a> plaçait le service parmi les certifications en cours, tandis que la page France Identité continuait de revendiquer le niveau de sécurité le plus élevé. L0g ne déduit pas de ce décalage que le service serait juridiquement invalide. Il constate qu’aucune décision publique renouvelée n’a été trouvée à la date de collecte.</p>
+<p>Six limites restent donc visibles :</p>
+<ol>
+<li>les CSPN portent sur des versions 1.2 précises ;</li>
+<li>les décisions de 2025 ont bien couvert les versions 1.3.X à partir de 1.3.7, contrairement à ce que laisserait croire la seule lecture des rapports de 2023 ;</li>
+<li>la décision iOS et son rapport de référence ne donnent pas le même numéro de version 1.2 ;</li>
+<li>ces décisions affichaient une fin de validité au 7 février 2026 ;</li>
+<li>les rapports de 2023 n’établissent pas qui développe et maintient les versions de production diffusées en août 2026 ;</li>
+<li>les versions évaluées avaient été installées par invitation Firebase, sous forme d’APK ou d’IPA, pas depuis les magasins publics.</li>
+</ol>
+<p>Les évaluations établissent donc qu’une preuve de légitimité existait et a été examinée. Elles ne révèlent pas le mécanisme actuel ni toute la chaîne de distribution de production.</p>
+</section>
+<section id="c7-deux-canaux-une-dépendance-de-plateforme" class="level2"><h2>Deux canaux, une dépendance de plateforme</h2>
+<h3>Android : une distribution extérieure est techniquement possible</h3>
+<p>Android permet de signer et distribuer une application sous forme d’APK hors de Google Play. La <a href="https://developer.android.com/guide/app-bundle/faq">documentation Android</a> précise aussi que le format App Bundle est ouvert et peut être pris en charge par d’autres magasins.</p>
+<p>Le site de France Identité ne propose cependant pas d’APK public ni de magasin alternatif. Aucun canal officiel de production hors Google Play n’a été identifié pendant la collecte.</p>
+<p>Une autre question reste ouverte : <strong>qui détient la clé de signature de l’application Android ?</strong></p>
+<p>Google propose <a href="https://developer.android.com/studio/publish/app-signing">Play App Signing</a>, qui protège et gère la clé de signature utilisée pour les APK distribués par Play. Un développeur souhaitant employer la même clé sur plusieurs magasins peut fournir sa propre clé. La configuration exacte de France Identité n’est pas publiée.</p>
+<p>Il faut donc distinguer :</p>
+<pre><code class="language-text">Possibilité technique d’installer un APK
+Capacité juridique de le distribuer
+Détention de la clé de signature
+Acceptation du binaire par le backend
+Fonctionnement sans Google Play Services
+</code></pre>
+<p>Un APK officiel ne serait une véritable solution de secours que si les cinq conditions étaient maîtrisées.</p>
+<h3>iOS : l’alternative reste notarée par Apple</h3>
+<p>Dans l’Union européenne, Apple permet la <a href="https://developer.apple.com/support/web-distribution-eu/">distribution par une place de marché alternative ou directement depuis un site web</a>, sous conditions.</p>
+<p>Cette distribution continue néanmoins de passer par :</p>
+<ul>
+<li>le programme développeur Apple ;</li>
+<li>App Store Connect ;</li>
+<li>la génération d’un paquet de distribution ;</li>
+<li>la notarisation Apple ;</li>
+<li>les mécanismes d’installation d’iOS.</li>
+</ul>
+<p>Apple précise que les applications distribuées hors App Store doivent respecter les <a href="https://developer.apple.com/help/app-store-connect/managing-alternative-distribution/submit-for-notarization/">exigences de notarisation</a>. Une application identifiée comme contenant un logiciel malveillant peut être empêchée de fonctionner.</p>
+<p>Cette sécurité protège les utilisateurs. Elle confirme aussi que quitter l’App Store ne suffit pas à rendre une application iOS indépendante d’Apple.</p>
+</section>
+<section id="c7-lattestation-protège-le-portefeuille-et-crée-un-pouvoir-de-refus" class="level2"><h2>L’attestation protège le portefeuille et crée un pouvoir de refus</h2>
+<p>Google décrit plusieurs mécanismes qu’un développeur peut utiliser. L’un d’eux, Play Integrity, traite notamment :</p>
+<ul>
+<li>les paramètres de la requête ;</li>
+<li>le nom, la version et le certificat de signature de l’application ;</li>
+<li>le statut de licence Google Play ;</li>
+<li>un certificat d’attestation de clé ;</li>
+<li>un jeton d’attestation de l’appareil ;</li>
+<li>éventuellement, des informations sur l’environnement de sécurité.</li>
+</ul>
+<p>Google indique que ces données sont chiffrées, ne sont pas transmises à des tiers et sont supprimées après une durée fixe. (<a href="https://developer.android.com/google/play/integrity/terms">documentation Play Integrity</a>)</p>
+<p>Nous ne savons pas si France Identité utilise ce service.</p>
+<p>L’attestation matérielle Android peut aussi produire une chaîne de certificats décrivant une clé stockée dans un environnement sécurisé. La documentation Android indique que cette chaîne peut remonter à une racine détenue par Google. (<a href="https://developer.android.com/identity/digital-credentials/credential-issuer/keystore-attestation">documentation Android Keystore</a>)</p>
+<p>Côté Apple, App Attest permet à un serveur de vérifier qu’une clé est associée à une instance légitime de l’application. Apple indique que la clé privée est stockée dans le Secure Enclave et qu’aucun processus ne peut la lire ou la modifier directement. L’attestation initiale contacte un serveur Apple. Après une réinstallation, une migration ou une restauration, une nouvelle clé doit être créée. (<a href="https://developer.apple.com/documentation/DeviceCheck/establishing-your-app-s-integrity">documentation Apple App Attest</a>)</p>
+<p>Nous ne savons pas davantage si France Identité utilise App Attest.</p>
+<p>Ces mécanismes ont un objectif légitime : empêcher une fausse application ou un appareil compromis de recevoir des titres sensibles.</p>
+<p>Ils créent aussi une décision binaire :</p>
+<pre><code class="language-text">Attestation reconnue
+→ le backend peut continuer
+
+Attestation absente ou refusée
+→ l’identité peut devenir inutilisable
+</code></pre>
+<p>Le point critique n’est pas l’existence de ce contrôle. Il est l’absence de procédure publique décrivant :</p>
+<ul>
+<li>le motif exact transmis à l’utilisateur ;</li>
+<li>l’acteur capable de corriger le verdict ;</li>
+<li>le délai de résolution ;</li>
+<li>le mode dégradé ;</li>
+<li>la prise en charge du dommage.</li>
+</ul>
+</section>
+<section id="c7-deux-magasins-deux-déclarations-de-confidentialité" class="level2"><h2>Deux magasins, deux déclarations de confidentialité</h2>
+<p>La <a href="https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959">fiche française de l’App Store</a> indique « Données non collectées ». Apple précise que cette information est déclarée par le développeur et n’a pas été vérifiée par la plateforme.</p>
+<p>La <a href="https://play.google.com/store/apps/details?id=fr.gouv.franceidentite&#x26;hl=fr">fiche Google Play</a> indique que l’application peut :</p>
+<ul>
+<li>recueillir des informations personnelles ;</li>
+<li>recueillir des identifiants d’appareil ou d’autres identifiants ;</li>
+<li>partager des informations personnelles avec des tiers ;</li>
+<li>chiffrer les données pendant leur transfert ;</li>
+<li>permettre une demande de suppression.</li>
+</ul>
+<p>Ces deux fiches ne sont pas directement comparables.</p>
+<p>Apple et Google utilisent des définitions, des catégories et des questionnaires différents. Les versions iOS et Android peuvent elles-mêmes avoir des dépendances différentes. Un partage avec un service public nécessaire à la fonction peut également être classé différemment d’une collecte publicitaire.</p>
+<p>La <a href="https://france-identite.gouv.fr/politique-de-confidentialite/confidentialite-fi/">politique de confidentialité de France Identité</a> confirme que le serveur SGIN traite des données du titre, des coordonnées et un identifiant de l’équipement mobile. Elle affirme également que l’application ne traite pas les données à des fins commerciales ou publicitaires.</p>
+<p>Le sujet n’est donc pas d’accuser l’un des magasins de mensonge à partir d’un tableau.</p>
+<p>Il faut obtenir une matrice commune :</p>
+<pre><code class="language-text">Donnée
+Application iOS
+Application Android
+SGIN
+Apple
+Google
+Constructeur
+Finalité
+Durée
+Destinataire
+</code></pre>
+<p>Cette matrice expliquerait au citoyen pourquoi deux vitrines officielles présentent la même identité avec des libellés aussi différents.</p>
+</section>
+<section id="c7-outil--votre-téléphone-ouvre-t-il-vos-droits-" class="level2"><h2>Outil : votre téléphone ouvre-t-il vos droits ?</h2>
+<p>Les fiches ci-dessous constituent un diagnostic documentaire, pas un test matériel. Elles distinguent les critères publics, les signaux observés et les informations encore inconnues.</p>
+<div class="device-tool" aria-label="Diagnostic documentaire de compatibilité de France Identité">
+<section class="epub-disclosure">
+<h3 class="epub-disclosure-title">Android 11 ou plus, NFC, application fonctionnelle</h3>
+<div>
+<p><strong>Statut :</strong> critères publics satisfaits et fonctionnement observé sur l’appareil.</p>
+<p><strong>Risque résiduel :</strong> une mise à jour du système, du constructeur, de l’application ou de la politique d’intégrité peut modifier le résultat.</p>
+<p><strong>À conserver :</strong> CNI physique, autre fournisseur FranceConnect+ lorsqu’il est disponible, et procédure alternative du service utilisé.</p>
+</div>
+</section>
+<section class="epub-disclosure">
+<h3 class="epub-disclosure-title">Android 11 ou plus et NFC, mais « mécanismes de sécurité absents »</h3>
+<div>
+<p><strong>Statut :</strong> signal public documenté, pas taux d’échec mesuré.</p>
+<p><strong>Vérifications sans contournement :</strong> correctifs du système, certification Play Protect, NFC, redémarrage, éventuel bootloader déverrouillé, modèle exact et message complet.</p>
+<p><strong>Information manquante :</strong> code d’erreur technique et composant réellement refusé.</p>
+<p><strong>Exposition économique :</strong> parcours manuel du CPF, courrier France Rénov’, certificat ou mandataire pour l’INPI selon la démarche.</p>
+</div>
+</section>
+<section class="epub-disclosure">
+<h3 class="epub-disclosure-title">Android sans services Google, ROM alternative ou bootloader déverrouillé</h3>
+<div>
+<p><strong>Statut :</strong> compatibilité France Identité non publiée de manière générale.</p>
+<p><strong>Point de sécurité :</strong> un bootloader déverrouillé ou une chaîne d’attestation inconnue peut légitimement réduire le niveau de confiance.</p>
+<p><strong>Question de souveraineté :</strong> un système Android sécurisé mais non reconnu par Google peut-il atteindre le niveau élevé par une autre racine ?</p>
+<p><strong>À tester :</strong> installation, premier lancement, lecture NFC et reconnaissance par le backend sur un terminal de laboratoire, sans contourner les contrôles.</p>
+</div>
+</section>
+<section class="epub-disclosure">
+<h3 class="epub-disclosure-title">iPhone sous iOS 16.6 ou plus</h3>
+<div>
+<p><strong>Statut :</strong> critère public satisfait, sous réserve de la compatibilité matérielle et de la politique de sécurité.</p>
+<p><strong>Dépendances :</strong> App Store pour le canal public actuel ; mécanismes Apple de signature, installation et environnement sécurisé.</p>
+<p><strong>Inconnu :</strong> usage actuel ou non d’App Attest par France Identité.</p>
+<p><strong>Sortie partielle :</strong> une distribution alternative existe dans l’Union, mais reste soumise à App Store Connect et à la notarisation Apple.</p>
+</div>
+</section>
+<section class="epub-disclosure">
+<h3 class="epub-disclosure-title">Aucun smartphone compatible</h3>
+<div>
+<p><strong>Statut :</strong> France Identité mobile indisponible, identité physique toujours valable.</p>
+<p><strong>Conséquence :</strong> l’accès dépend du parcours alternatif de chaque service.</p>
+<p><strong>Coût possible :</strong> délai, courrier, déplacement, certificat qualifié, mandataire ou remplacement du téléphone.</p>
+<p><strong>Ligne rouge :</strong> l’absence de smartphone ne doit pas provoquer la perte du droit que le service est censé délivrer.</p>
+</div>
+</section>
+</div>
+</section>
+<section id="c7-le-test-l0g-doit-distinguer-sécurité-et-exclusion" class="level2"><h2>Le test l0g doit distinguer sécurité et exclusion</h2>
+<p>Une enquête sérieuse ne cherchera pas à contourner les protections de France Identité. Elle doit au contraire mesurer leur effet sans compromettre une identité réelle.</p>
+<p>La matrice de test prévue comprend :</p>
+<pre><code class="language-text">Android récent certifié Google
+Android 11 ancien mais maintenu
+Android sans services Google
+Android avec bootloader déverrouillé
+Android avec ROM alternative
+Huawei avec ou sans services Google
+IPhone à la version minimale
+IPhone récent
+Téléphone sans compte de store configuré
+</code></pre>
+<p>Pour chaque appareil :</p>
+<pre><code class="language-text">Application visible dans le magasin
+Installation autorisée
+Premier lancement
+Message et code d’erreur
+Lecture NFC
+Création de l’identité
+Reconnaissance FranceConnect
+Reconnaissance FranceConnect+
+Canal de mise à jour
+Mode hors ligne
+Réponse du support
+</code></pre>
+<p>Les appareils modifiés serviront à vérifier que les contrôles détectent effectivement les environnements non conformes, pas à les déjouer.</p>
+<p>L’article final devra publier les modèles, versions, correctifs, états du bootloader et résultats. Un téléphone refusé ne devra jamais être décrit comme « sûr » sur la seule base de son apparence ou de sa version Android.</p>
+</section>
+<section id="c7-la-souveraineté-est-une-capacité-de-sortie" class="level2"><h2>La souveraineté est une capacité de sortie</h2>
+<p>Le mot est trop souvent traité comme une étiquette. Pour France Identité, il peut être transformé en questions vérifiables.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Capacité</th><th>Test concret</th></tr></thead><tbody><tr><td>Distribuer</td><td>L’État peut-il fournir l’application par un canal officiel hors Google Play ou App Store ?</td></tr><tr><td>Signer</td><td>Qui détient les clés de production Android et iOS ?</td></tr><tr><td>Mettre à jour</td><td>Quel délai s’applique à un correctif critique ?</td></tr><tr><td>Attester</td><td>Quelle racine prouve l’intégrité de l’application et du matériel ?</td></tr><tr><td>Expliquer</td><td>Le citoyen obtient-il la cause précise du refus ?</td></tr><tr><td>Corriger</td><td>France Titres peut-il lever un faux positif sans attendre le constructeur ?</td></tr><tr><td>Remplacer</td><td>Un autre mécanisme de sécurité peut-il être utilisé ?</td></tr><tr><td>Continuer</td><td>Le service final conserve-t-il un mode dégradé ?</td></tr><tr><td>Indemniser</td><td>Qui rembourse le coût d’une incompatibilité erronée ?</td></tr></tbody></table>
+<p>Aucune administration moderne ne fabriquera seule le processeur, le modem, l’écran, le système et le magasin de chaque téléphone. L’objectif raisonnable n’est pas l’autarcie.</p>
+<p>Il est de connaître les dépendances, d’obtenir des droits d’accès, de maîtriser les clés, de tester la sortie et de protéger le citoyen lorsqu’une couche extérieure se trompe.</p>
+</section>
+<section id="c7-les-réponses-qui-doivent-être-publiées" class="level2"><h2>Les réponses qui doivent être publiées</h2>
+<p>France Titres peut lever une grande partie de l’incertitude sans dévoiler de secrets exploitables.</p>
+<p>Un document public pourrait préciser :</p>
+<pre><code class="language-text">Mécanismes de sécurité exigés
+Familles de terminaux acceptées
+Niveau minimal de correctifs
+Usage ou non de Play Integrity
+Usage ou non d’Android Key Attestation
+Usage ou non d’App Attest
+Données transmises à Apple ou Google
+Propriétaire des clés de signature
+Canaux officiels de distribution
+Codes d’erreur et recours
+Taux de refus par cause
+Mode dégradé et délais de correction
+</code></pre>
+<p>Il ne serait pas nécessaire de publier les seuils anti-fraude précis ni les détails permettant de contourner un contrôle. Une classification des causes et une procédure de recours suffiraient déjà à rendre le système beaucoup plus intelligible.</p>
+<p>Apple et Google doivent également répondre sur les engagements de disponibilité, la conservation des métadonnées, les délais de correction et la possibilité d’utiliser une racine indépendante pour un portefeuille public.</p>
+</section>
+<section id="c7-méthode-et-limites" class="level2"><h2>Méthode et limites</h2>
+<p>Cet article repose sur les sources publiques disponibles au <strong>28 août 2026</strong> : documentation de France Titres, fiches App Store et Google Play, rapports CSPN de 2023, décisions et catalogue ANSSI, règlement eIDAS révisé, documentation Android et Apple, dépôts officiels de l’implémentation EUDI, statistiques Insee et Arcep, ainsi que des témoignages publiés sur Services Publics+.</p>
+<p>La méthode l0g sépare cinq niveaux de preuve :</p>
+<pre><code class="language-text">ÉTABLI
+Texte, rapport, statistique ou configuration publiée
+
+DÉCLARÉ
+Affirmation de France Titres, d’une plateforme ou d’un utilisateur
+
+DÉDUIT
+Conclusion raisonnable tirée de plusieurs sources
+
+INCONNU
+Information non publiée
+
+À TESTER
+Fonctionnement à vérifier sur un terminal contrôlé
+</code></pre>
+<p>Les témoignages Services Publics+ servent uniquement à sélectionner des scénarios de test. Ils ne permettent pas de mesurer une fréquence, une part de marché ou une responsabilité.</p>
+<p>L0g n’a pas observé le trafic réseau de France Identité, analysé son binaire de production, obtenu son SBOM, consulté les contrats avec Apple ou Google, ni reçu de confirmation sur Play Integrity, App Attest ou la détention des clés de signature.</p>
+<p>Les descriptions de l’attestation Android, d’App Attest et de l’implémentation EUDI documentent les mécanismes disponibles ou proposés. Elles ne prouvent pas que France Identité les emploie actuellement.</p>
+</section>
+<section id="c7-une-identité-publique-doit-survivre-à-son-téléphone" class="level2"><h2>Une identité publique doit survivre à son téléphone</h2>
+<p>Le smartphone apporte à France Identité une sécurité, une distribution et une ergonomie qu’un État aurait beaucoup de mal à reconstruire seul. Apple et Google ne sont pas, par leur seule présence, une anomalie. Ils fournissent une infrastructure industrielle dont le service public tire parti.</p>
+<p>Le risque commence lorsque cette infrastructure devient une condition opaque.</p>
+<p>Un citoyen peut remplir les critères affichés, posséder une CNI valide et disposer d’un téléphone récent, puis recevoir un refus qu’il ne peut ni comprendre, ni corriger, ni contester avant son échéance. L’identité physique reste valable. Le parcours numérique rapide disparaît.</p>
+<p>L’Europe a répondu par deux principes puissants : ouvrir le code et imposer l’accès aux fonctions des plateformes. Il reste à transformer ces principes en capacités de production : un canal de secours, des clés maîtrisées, une attestation explicable, une compatibilité mesurée et un recours rapide.</p>
+<p>La souveraineté utile ne se lit pas sur le drapeau de l’écran d’accueil.</p>
+<blockquote>
+<p><strong>Elle se mesure le jour où l’État doit faire fonctionner, réparer ou remplacer son identité numérique sans demander au citoyen de changer de téléphone pour retrouver ses droits.</strong></p>
+</blockquote></section></section></body></html>

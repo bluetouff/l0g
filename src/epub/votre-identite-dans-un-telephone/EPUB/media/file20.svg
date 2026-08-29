@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 360 1060" width="100%" role="img" aria-labelledby="verifier-fr-title verifier-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="verifier-fr-title">LE WALLET VÉRIFIE LE VÉRIFICATEUR</title>
+<desc id="verifier-fr-desc">Un service s’enregistre, déclare ses usages et les données qu’il demandera, reçoit des certificats, puis le portefeuille compare chaque demande à cette déclaration.</desc>
+<rect x="1" y="1" width="358" height="1058" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE WALLET VÉRIFIE</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">LE VÉRIFICATEUR</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.6">Architecture réglementaire simplifiée</text>
+
+<rect x="22" y="110" width="316" height="126" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="38" y="140" fill="#7aa2f7" font-size="10.5" font-weight="700">1. LE SERVICE S’ENREGISTRE</text>
+<text x="38" y="168" fill="#f5f6f8" font-size="9.8">Nom, activité, support et État</text>
+<text x="38" y="190" fill="#f5f6f8" font-size="9.8">Données prévues pour chaque usage</text>
+<text x="38" y="212" fill="#aeb4bf" font-size="8.7">Déclaration publique, pas approbation générale</text>
+<path d="M180 236 V266" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 258 L180 268 L186 258" fill="#7aa2f7"/>
+
+<rect x="22" y="272" width="316" height="140" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="302" fill="#5eead4" font-size="10.5" font-weight="700">2. LE REGISTRE PUBLIE</text>
+<text x="38" y="330" fill="#f5f6f8" font-size="9.8">Site national lisible par le public</text>
+<text x="38" y="352" fill="#f5f6f8" font-size="9.8">API REST, JSON, OpenAPI 3</text>
+<text x="38" y="374" fill="#aeb4bf" font-size="8.7">Recherche sans authentification</text>
+<text x="38" y="394" fill="#aeb4bf" font-size="8.7">Réponses signées ou scellées</text>
+<path d="M180 412 V442" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 434 L180 444 L186 434" fill="#5eead4"/>
+
+<rect x="22" y="448" width="316" height="126" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="38" y="478" fill="#f5b13d" font-size="10.5" font-weight="700">3. LE SERVICE PRÉSENTE SES PREUVES</text>
+<text x="38" y="506" fill="#f5f6f8" font-size="9.8">Certificat d’accès pour s’authentifier</text>
+<text x="38" y="528" fill="#f5f6f8" font-size="9.8">Certificat d’enregistrement pour l’usage</text>
+<text x="38" y="550" fill="#aeb4bf" font-size="8.7">Attributs et finalité lisibles par le wallet</text>
+<path d="M180 574 V604" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 596 L180 606 L186 596" fill="#f5b13d"/>
+
+<rect x="22" y="610" width="316" height="150" rx="12" fill="#21151c" stroke="#ff4d87"/>
+<text x="38" y="640" fill="#ff85ad" font-size="10.5" font-weight="700">4. LE WALLET COMPARE</text>
+<text x="38" y="668" fill="#f5f6f8" font-size="9.8">Demande reçue</text>
+<text x="38" y="690" fill="#f5f6f8" font-size="9.8">contre déclaration enregistrée</text>
+<text x="38" y="718" fill="#aeb4bf" font-size="8.7">Excès détecté : alerte avant divulgation</text>
+<text x="38" y="740" fill="#aeb4bf" font-size="8.7">Validation explicite requise</text>
+<path d="M180 760 V790" stroke="#ff4d87" stroke-width="2"/>
+<path d="M174 782 L180 792 L186 782" fill="#ff4d87"/>
+
+<rect x="22" y="796" width="316" height="164" rx="12" fill="#15171b" stroke="#4a505a"/>
+<text x="38" y="826" fill="#f5f6f8" font-size="10.5" font-weight="700">5. L’UTILISATEUR DÉCIDE</text>
+<text x="38" y="854" fill="#f5f6f8" font-size="9.8">Partager les données prévues</text>
+<text x="38" y="876" fill="#f5f6f8" font-size="9.8">ou examiner une demande excédentaire</text>
+<text x="38" y="904" fill="#aeb4bf" font-size="8.7">Le wallet peut poursuivre, limiter ou refuser</text>
+<text x="38" y="926" fill="#aeb4bf" font-size="8.7">selon sa politique, le risque et le droit</text>
+
+<rect x="22" y="988" width="316" height="42" rx="9" fill="#10211f" stroke="#5eead4"/>
+<text x="180" y="1015" text-anchor="middle" fill="#5eead4" font-size="9.2" font-weight="700">LA DEMANDE DEVIENT AUDITABLE</text>
+</svg>
