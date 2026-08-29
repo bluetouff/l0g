@@ -1,0 +1,644 @@
+---
+title: "Votre identité dans un téléphone, 8/8 : votre identité doit vous laisser un reçu"
+seoTitle: "EUDI Wallet : qui demande quoi à votre identité ? | l0g"
+ogTitle: "Votre identité doit vous laisser un reçu"
+description: "Registres publics, demandes excessives et journaux d’échec : le futur wallet doit permettre d’auditer ceux qui réclament vos données."
+ogImage: "/illustrations/news/france-identite-recu-identite-v1.jpg"
+pubDate: 2026-08-28T22:20:00+02:00
+updatedDate: 2026-08-28T22:20:00+02:00
+tags: ["France Identité", "EUDI", "eIDAS", "vie privée", "identité numérique", "registre public", "protection des données", "risque financier", "open source", "accessibilité", "enquête"]
+draft: false
+quickTake:
+  fact: "Le régime européen impose des registres publics et lisibles par machine des services utilisant le wallet. Il exige aussi un journal des transactions réussies ou non, avec le demandeur, les données sollicitées et le motif d’un éventuel échec."
+  importance: "Ces mécanismes peuvent transformer le portefeuille en surface d’audit : comparer une demande à ce que le service avait déclaré, documenter un refus et signaler une collecte suspecte."
+  uncertainty: "Au 28 août 2026, le registre français de production, l’interface finale d’alerte, le code ouvert du wallet français, un audit d’accessibilité actualisé et le mécanisme de réparation financière ne sont pas publiquement démontrés."
+---
+
+*Une entreprise vous demande de prouver votre identité. Aujourd’hui, vous voyez rarement la liste exacte des données qu’elle s’est engagée à demander, le motif enregistré de la collecte ou le certificat qui prouve qu’elle est bien le service annoncé. Si la transaction échoue, vous repartez souvent avec un message générique et presque aucune pièce pour comprendre le refus.*
+
+*Le futur portefeuille européen est conçu pour modifier ce rapport de force. Le demandeur devra s’enregistrer. Le registre devra être public et exploitable par une machine. Le portefeuille devra comparer les données réclamées avec celles déclarées. Chaque transaction, y compris celle qui échoue, devra laisser une trace contenant l’identité du service, les catégories de données demandées et la raison de l’échec.*
+
+*Ces règles ne prouvent pas que le système français les exécutera parfaitement. Elles fournissent quelque chose de plus utile qu’une promesse : une liste de propriétés testables.*
+
+*Dernier volet de l’enquête **Votre identité dans un téléphone**. Le premier suivait [les données et les traces de France Identité](/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service/). Le deuxième mesurait [le prix pratique des alternatives](/posts/votre-identite-dans-un-telephone-2-facultative-mais-a-quel-prix/). Le troisième examinait [l’identité souveraine sous contrat](/posts/votre-identite-dans-un-telephone-3-l-identite-souveraine-sous-contrat/). Le quatrième suivait [la transformation de l’âge en autorisation](/posts/votre-identite-dans-un-telephone-4-votre-age-devient-une-autorisation/). Le cinquième testait [le jour où l’identité ne répond plus](/posts/votre-identite-dans-un-telephone-5-le-jour-ou-votre-identite-ne-repond-plus/). Le sixième suivait [la facture cachée derrière une preuve gratuite](/posts/votre-identite-dans-un-telephone-6-votre-identite-est-gratuite-la-preuve-peut-etre-facturee/). Le septième mesurait [la dépendance aux plateformes mobiles](/posts/votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain/).*
+
+*English version: [Your identity should leave you a receipt](/en/analysis/your-identity-in-your-phone-8-your-identity-should-leave-you-a-receipt/).*
+
+## À retenir
+
+- À partir du **24 décembre 2026**, chaque État membre doit disposer d’au moins un registre national des services utilisant le portefeuille. Les informations doivent être disponibles sur un site, en lecture humaine et via une API commune exploitable sans authentification. ([Règlement d’exécution 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+- Le registre doit notamment publier l’identité du service, ses coordonnées, la nature de son activité, les données qu’il prévoit de demander et l’usage déclaré pour chacune d’elles. ([Annexe I du règlement 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+- Cette inscription n’est pas une approbation administrative de la nécessité juridique de chaque donnée. Depuis la modification de juillet 2026, une partie des informations d’usage est collectée automatiquement à des fins de transparence, sans procédure d’autorisation préalable. ([Règlement d’exécution 2026/1730](https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj))
+- Le portefeuille doit comparer la demande reçue avec les attributs enregistrés dans le certificat du service. En cas de demande excédentaire, il doit avertir clairement l’utilisateur avant toute divulgation. ([Règlement d’exécution 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+- L’utilisateur doit approuver explicitement cette demande excédentaire. Le silence ou une case précochée ne suffisent pas. La politique du portefeuille déterminera ensuite si la demande peut continuer, être limitée ou être rejetée. ([Règlement 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+- Le portefeuille doit journaliser toutes les transactions avec les services, qu’elles réussissent ou non. ([Règlement d’exécution 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+- Le journal doit au minimum contenir la date et l’heure, le nom et l’identifiant du service, son État membre, les catégories de données demandées et présentées, ainsi que le motif d’un échec. ([Article 9 du règlement 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+- Le fournisseur du portefeuille ne peut accéder à ces journaux, lorsque cet accès est nécessaire au service, qu’avec le consentement explicite préalable de l’utilisateur. Leur intégrité, leur authenticité et leur confidentialité doivent être protégées. ([Règlement 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+- Le tableau de bord EUDI doit permettre de consulter les services contactés et, le cas échéant, les données échangées, de demander leur effacement et de signaler une demande suspecte à l’autorité de protection des données. ([Règlement 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj))
+- Les États devront publier en format ouvert et lisible par machine des statistiques sur les wallets valides, les services qui les acceptent, les plaintes, les incidents empêchant leur usage, les violations de données et les utilisateurs affectés. ([Article 48 bis du règlement 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj))
+- Ces obligations créent une surface d’audit remarquable. Elles ne créent pas, à elles seules, un droit automatique à indemnisation après une aide perdue, une signature refusée ou une échéance manquée.
+- France Identité prépare déjà trois voies de raccordement : OIDC direct, OID4VP pour le portefeuille EUDI et un Playground d’expérimentation. ([France Titres](https://france-identite.gouv.fr/authentification-france-identite/))
+- France Titres revendique plus de 4,5 millions d’utilisateurs et plus de 80 signataires de son mémorandum public-privé. Ces chiffres décrivent l’écosystème actuel, pas un wallet EUDI de production déjà achevé. ([France Identité](https://france-identite.gouv.fr/actualite/embarquer_avec_france_identite.html), [mémorandum](https://france-identite.gouv.fr/actualite/memorandum_entente.html))
+- Le code mobile est toujours annoncé comme prochainement publié en open source. Le dernier audit d’accessibilité chiffré retrouvé sur le site officiel porte sur une préproduction de mai 2025 et classe les applications iOS et Android non conformes. ([Sécurité](https://france-identite.gouv.fr/securite-application/), [accessibilité](https://france-identite.gouv.fr/accessibilite/))
+
+## Le portefeuille doit vérifier celui qui vous vérifie
+
+Le premier renversement se produit avant même le partage d’une donnée.
+
+Le [règlement d’exécution 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj) impose à chaque État membre d’établir au moins un registre national des parties utilisatrices du portefeuille. Une banque, une administration, un assureur, un opérateur ou toute autre organisation voulant recevoir des preuves EUDI devra s’inscrire dans le registre de son État d’établissement.
+
+Le registre ne doit pas être un simple fichier administratif inaccessible au public. Son contenu doit être disponible en ligne :
+
+```text
+sur un site national lisible par une personne
+et
+par une API commune lisible par une machine
+```
+
+L’API devra utiliser REST et JSON, être documentée en OpenAPI 3, permettre une recherche sans authentification et fournir des réponses signées ou scellées électroniquement. Elle devra pouvoir restituer les informations courantes ainsi que l’historique des certificats d’accès et d’enregistrement. ([Annexe II du règlement 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+
+L’annexe I prévoit notamment la publication de :
+
+- la dénomination officielle et le nom compréhensible du service ;
+- ses identifiants légaux et son État d’établissement ;
+- ses coordonnées de support ;
+- le type de service fourni ;
+- pour chaque usage, la liste des données, attestations ou attributs demandés ;
+- une description de l’usage prévu de ces données ;
+- son statut public ou privé et ses éventuelles habilitations ;
+- l’intervention éventuelle d’un intermédiaire. ([Règlement 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+
+Cette publication ne doit pas être confondue avec un blanc-seing de l’État. Le [règlement 2026/1730](https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj) précise que certaines informations relatives aux contacts, au service, aux données demandées et à leur usage sont collectées automatiquement à des fins de transparence, sans autorisation préalable de leur contenu. Le registre rend la déclaration visible et opposable au fonctionnement du portefeuille. Il ne transforme pas chaque collecte déclarée en collecte nécessaire ou licite.
+
+Le contrôle de nécessité continue de relever du droit applicable, de l’autorité compétente et, en dernier ressort, du juge.
+
+<figure class="infographic" style="padding-bottom:1.5rem" tabindex="0" aria-label="Le portefeuille vérifie le service qui demande les données">
+<svg viewBox="0 0 360 1060" width="100%" role="img" aria-labelledby="verifier-fr-title verifier-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="verifier-fr-title">LE WALLET VÉRIFIE LE VÉRIFICATEUR</title>
+<desc id="verifier-fr-desc">Un service s’enregistre, déclare ses usages et les données qu’il demandera, reçoit des certificats, puis le portefeuille compare chaque demande à cette déclaration.</desc>
+<rect x="1" y="1" width="358" height="1058" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE WALLET VÉRIFIE</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">LE VÉRIFICATEUR</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.6">Architecture réglementaire simplifiée</text>
+
+<rect x="22" y="110" width="316" height="126" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="38" y="140" fill="#7aa2f7" font-size="10.5" font-weight="700">1. LE SERVICE S’ENREGISTRE</text>
+<text x="38" y="168" fill="#f5f6f8" font-size="9.8">Nom, activité, support et État</text>
+<text x="38" y="190" fill="#f5f6f8" font-size="9.8">Données prévues pour chaque usage</text>
+<text x="38" y="212" fill="#aeb4bf" font-size="8.7">Déclaration publique, pas approbation générale</text>
+<path d="M180 236 V266" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 258 L180 268 L186 258" fill="#7aa2f7"/>
+
+<rect x="22" y="272" width="316" height="140" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="302" fill="#5eead4" font-size="10.5" font-weight="700">2. LE REGISTRE PUBLIE</text>
+<text x="38" y="330" fill="#f5f6f8" font-size="9.8">Site national lisible par le public</text>
+<text x="38" y="352" fill="#f5f6f8" font-size="9.8">API REST, JSON, OpenAPI 3</text>
+<text x="38" y="374" fill="#aeb4bf" font-size="8.7">Recherche sans authentification</text>
+<text x="38" y="394" fill="#aeb4bf" font-size="8.7">Réponses signées ou scellées</text>
+<path d="M180 412 V442" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 434 L180 444 L186 434" fill="#5eead4"/>
+
+<rect x="22" y="448" width="316" height="126" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="38" y="478" fill="#f5b13d" font-size="10.5" font-weight="700">3. LE SERVICE PRÉSENTE SES PREUVES</text>
+<text x="38" y="506" fill="#f5f6f8" font-size="9.8">Certificat d’accès pour s’authentifier</text>
+<text x="38" y="528" fill="#f5f6f8" font-size="9.8">Certificat d’enregistrement pour l’usage</text>
+<text x="38" y="550" fill="#aeb4bf" font-size="8.7">Attributs et finalité lisibles par le wallet</text>
+<path d="M180 574 V604" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 596 L180 606 L186 596" fill="#f5b13d"/>
+
+<rect x="22" y="610" width="316" height="150" rx="12" fill="#21151c" stroke="#ff4d87"/>
+<text x="38" y="640" fill="#ff85ad" font-size="10.5" font-weight="700">4. LE WALLET COMPARE</text>
+<text x="38" y="668" fill="#f5f6f8" font-size="9.8">Demande reçue</text>
+<text x="38" y="690" fill="#f5f6f8" font-size="9.8">contre déclaration enregistrée</text>
+<text x="38" y="718" fill="#aeb4bf" font-size="8.7">Excès détecté : alerte avant divulgation</text>
+<text x="38" y="740" fill="#aeb4bf" font-size="8.7">Validation explicite requise</text>
+<path d="M180 760 V790" stroke="#ff4d87" stroke-width="2"/>
+<path d="M174 782 L180 792 L186 782" fill="#ff4d87"/>
+
+<rect x="22" y="796" width="316" height="164" rx="12" fill="#15171b" stroke="#4a505a"/>
+<text x="38" y="826" fill="#f5f6f8" font-size="10.5" font-weight="700">5. L’UTILISATEUR DÉCIDE</text>
+<text x="38" y="854" fill="#f5f6f8" font-size="9.8">Partager les données prévues</text>
+<text x="38" y="876" fill="#f5f6f8" font-size="9.8">ou examiner une demande excédentaire</text>
+<text x="38" y="904" fill="#aeb4bf" font-size="8.7">Le wallet peut poursuivre, limiter ou refuser</text>
+<text x="38" y="926" fill="#aeb4bf" font-size="8.7">selon sa politique, le risque et le droit</text>
+
+<rect x="22" y="988" width="316" height="42" rx="9" fill="#10211f" stroke="#5eead4"/>
+<text x="180" y="1015" text-anchor="middle" fill="#5eead4" font-size="9.2" font-weight="700">LA DEMANDE DEVIENT AUDITABLE</text>
+</svg>
+<figcaption>Le registre rend visible ce que le service avait déclaré. Le portefeuille doit ensuite comparer cette déclaration à la demande réellement reçue. Sources : règlements d’exécution 2025/848, 2026/1730 et 2026/1731.</figcaption>
+</figure>
+
+## La donnée de trop doit déclencher une alerte
+
+Le cadre européen ne se contente pas d’authentifier le service.
+
+Depuis le [règlement d’exécution 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj), le portefeuille doit comparer les attestations, attributs et champs réclamés avec ceux inscrits dans le certificat d’enregistrement du demandeur.
+
+Si le certificat n’est pas valide, a expiré, a été révoqué, est mal formé ou ne peut pas être vérifié cryptographiquement, le portefeuille doit avertir que le service n’a pas pu être validé. La requête ne peut pas être présentée comme correctement authentifiée. L’utilisateur doit alors l’approuver explicitement ; le silence ou une case précochée ne suffisent pas. ([Règlement 2026/1731, règle WRP-VALIDATION-02](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+Si le service demande une donnée qui ne figure pas dans son certificat, la règle `WRP-OVERASKING-02` exige un avertissement clair avant tout partage. Le message doit indiquer que le demandeur réclame davantage d’informations qu’il n’en a enregistré. L’accord doit, là encore, être explicite. ([Règlement 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+Le texte ne fixe pas une réponse unique à tous les excès. Le fournisseur du portefeuille doit décider, selon son analyse de risque, sa politique de sécurité et le droit applicable, si l’utilisateur peut continuer malgré l’alerte, si seule la partie couverte peut être transmise ou si la demande doit être rejetée. ([Règle WRP-OVERASKING-03](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+Cette souplesse possède une raison : toutes les différences ne sont pas nécessairement frauduleuses. Une déclaration peut être obsolète, un nouveau service peut avoir été mal enregistré ou un besoin exceptionnel peut reposer sur une autre base juridique.
+
+Elle crée aussi une question de design décisive :
+
+> **L’alerte permettra-t-elle réellement de comprendre le risque, ou deviendra-t-elle une nouvelle fenêtre que chacun valide pour continuer ?**
+
+L’enquête ne peut pas répondre avant d’avoir vu l’interface française, ses textes, le nombre de demandes excédentaires et le taux de poursuite après avertissement.
+
+### Exemple pédagogique, pas cas observé
+
+```text
+Usage enregistré : ouverture de compte
+Données enregistrées : identité, majorité, adresse
+
+Demande réellement reçue :
+identité, majorité, adresse, diplôme
+
+Résultat attendu :
+alerte avant la transmission du diplôme
+```
+
+Cet exemple illustre uniquement la comparaison prévue par les textes. Il ne prétend pas qu’une banque réelle demande un diplôme pour ouvrir un compte.
+
+## Chaque transaction doit laisser une trace
+
+La seconde protection est moins visible, mais probablement plus importante en cas de litige.
+
+L’[article 9 du règlement d’exécution 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj) impose au portefeuille de journaliser toutes les transactions avec les services et les autres wallets, qu’elles réussissent ou non. La signature et le cachet électroniques entrent également dans ce périmètre.
+
+Le journal doit au minimum indiquer :
+
+```text
+Date et heure
+Nom et coordonnées du service
+Identifiant unique du service
+État membre d’établissement
+Types de données demandées
+Types de données présentées
+Motif d’échec si la transaction n’aboutit pas
+```
+
+Le fournisseur doit garantir l’intégrité, l’authenticité et la confidentialité de ces informations. Les signalements envoyés à une autorité de protection des données depuis le wallet doivent eux aussi être journalisés. Le fournisseur du portefeuille ne peut accéder aux journaux, lorsque cet accès est nécessaire à la fourniture du service, qu’après consentement explicite préalable de l’utilisateur. ([Règlement 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+
+Le [règlement eIDAS modifié](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) impose en parallèle un tableau de bord commun permettant de consulter la liste actualisée des services contactés et, lorsqu’elles existent, les données échangées. Le même tableau de bord doit offrir un moyen simple de demander l’effacement des données et de signaler une demande présumée illicite ou suspecte à l’autorité nationale de protection des données.
+
+Le mot « reçu » utilisé dans cet article est donc une description fonctionnelle. Les textes imposent un journal et un tableau de bord. Ils ne promettent pas nécessairement un PDF signé possédant, à lui seul, une valeur probatoire prédéfinie dans chaque contentieux.
+
+<figure class="infographic" style="padding-bottom:1.5rem" tabindex="0" aria-label="Les informations du journal d’une transaction EUDI">
+<svg viewBox="0 0 360 1080" width="100%" role="img" aria-labelledby="receipt-fr-title receipt-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="receipt-fr-title">LE REÇU DE VOTRE IDENTITÉ</title>
+<desc id="receipt-fr-desc">Le futur journal EUDI doit enregistrer le service, les données demandées et présentées et le motif d’un échec, puis alimenter un tableau de bord permettant effacement et signalement.</desc>
+<rect x="1" y="1" width="358" height="1078" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE REÇU DE</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">VOTRE IDENTITÉ</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.6">Journal minimal imposé par le cadre EUDI</text>
+
+<rect x="26" y="112" width="308" height="650" rx="14" fill="#f5f6f8" stroke="#5eead4"/>
+<text x="46" y="148" fill="#0c0d10" font-size="11" font-weight="700">TRANSACTION EUDI</text>
+<line x1="46" y1="164" x2="314" y2="164" stroke="#c7cbd3"/>
+
+<text x="46" y="198" fill="#4d5461" font-size="8.7">STATUT</text>
+<text x="46" y="222" fill="#c81e63" font-size="10.2" font-weight="700">NON TERMINÉE</text>
+
+<text x="46" y="260" fill="#4d5461" font-size="8.7">DATE ET HEURE</text>
+<text x="46" y="284" fill="#0c0d10" font-size="9.8">horodatage de la transaction</text>
+
+<text x="46" y="322" fill="#4d5461" font-size="8.7">SERVICE DEMANDEUR</text>
+<text x="46" y="346" fill="#0c0d10" font-size="9.8">nom et coordonnées</text>
+<text x="46" y="368" fill="#0c0d10" font-size="9.8">identifiant unique et État membre</text>
+
+<text x="46" y="406" fill="#4d5461" font-size="8.7">DONNÉES DEMANDÉES</text>
+<text x="46" y="430" fill="#0c0d10" font-size="9.8">types d’attributs sollicités</text>
+
+<text x="46" y="468" fill="#4d5461" font-size="8.7">DONNÉES PRÉSENTÉES</text>
+<text x="46" y="492" fill="#0c0d10" font-size="9.8">types d’attributs transmis</text>
+
+<text x="46" y="530" fill="#4d5461" font-size="8.7">MOTIF D’ÉCHEC</text>
+<rect x="44" y="546" width="272" height="80" rx="9" fill="#fff5f7" stroke="#c81e63"/>
+<text x="58" y="574" fill="#7f123f" font-size="9.2">raison technique ou fonctionnelle</text>
+<text x="58" y="596" fill="#7f123f" font-size="9.2">de la transaction non achevée</text>
+
+<line x1="46" y1="650" x2="314" y2="650" stroke="#c7cbd3"/>
+<text x="46" y="684" fill="#4d5461" font-size="8.7">GARANTIES DU JOURNAL</text>
+<text x="46" y="708" fill="#0f766e" font-size="9.5">intégrité, authenticité, confidentialité</text>
+<text x="46" y="732" fill="#4d5461" font-size="8.5">Accès du fournisseur : consentement préalable</text>
+
+<path d="M180 762 V804" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 796 L180 806 L186 796" fill="#5eead4"/>
+
+<rect x="22" y="812" width="316" height="190" rx="14" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="842" fill="#5eead4" font-size="10.5" font-weight="700">TABLEAU DE BORD</text>
+<text x="38" y="874" fill="#f5f6f8" font-size="9.6">Consulter les services et les échanges</text>
+<text x="38" y="902" fill="#f5f6f8" font-size="9.6">Demander l’effacement des données</text>
+<text x="38" y="930" fill="#f5f6f8" font-size="9.6">Signaler une demande suspecte</text>
+<text x="38" y="958" fill="#aeb4bf" font-size="8.7">Une trace aide à prouver l’incident</text>
+<text x="38" y="980" fill="#aeb4bf" font-size="8.7">Elle ne déclenche pas seule une indemnisation</text>
+
+<text x="180" y="1040" text-anchor="middle" fill="#f5b13d" font-size="9.2" font-weight="700">LA PREUVE PRÉCÈDE LA RÉPARATION</text>
+</svg>
+<figcaption>Les champs représentés sont ceux exigés au minimum par l’article 9 du règlement 2024/2979. Le tableau de bord et les fonctions d’effacement et de signalement viennent du règlement eIDAS modifié.</figcaption>
+</figure>
+
+## Le journal qui vous protège peut aussi vous exposer
+
+Une liste regroupant une banque, un hôpital, une université, un employeur, une plateforme et une administration peut révéler une partie importante de la vie de son titulaire, même sans contenir le détail intégral de chaque dossier.
+
+Ce risque découle directement des champs imposés au journal : service, date, heure, données demandées et données présentées. Il s’agit ici d’une analyse de risque l0g, pas de la preuve qu’un tel historique serait centralisé ou déjà exploité. Le règlement impose au contraire la confidentialité des journaux et limite l’accès du fournisseur au consentement explicite préalable lorsqu’il est nécessaire au service. ([Règlement 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+
+La mise en œuvre française devra répondre publiquement à quatre questions :
+
+```text
+Où le journal est-il stocké ?
+Qui peut le déchiffrer ?
+Combien de temps est-il conservé ?
+Que devient-il après perte ou remplacement du téléphone ?
+```
+
+Le droit européen fixe un socle, mais la durée de disponibilité reste liée au droit de l’Union et au droit national. Il faudra donc connaître la politique française exacte, la méthode de chiffrement, la sauvegarde éventuelle, la migration et la procédure après compromission du terminal. ([Article 9, paragraphes 3 à 6 du règlement 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+
+Le meilleur système n’est pas celui qui ne garde aucune trace. Sans trace, le titulaire peut se retrouver incapable de prouver un refus ou une demande excessive. Le bon objectif est plus exigeant : **une trace utile au citoyen, illisible pour les acteurs qui n’en ont pas besoin et supprimable selon une règle publique.**
+
+## L’Europe crée une API publique de contrôle
+
+Le registre prévu pour le 24 décembre 2026 pourrait devenir l’une des surfaces de transparence les plus utiles du projet.
+
+L’API commune devra permettre à n’importe quel demandeur, sans authentification préalable, de rechercher une organisation, d’obtenir une liste complète et de consulter les informations publiques de ses certificats. Les résultats devront être signés ou scellés électroniquement et le schéma devra être publié en OpenAPI 3. ([Annexe II du règlement 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+
+Cela permet de construire un observatoire indépendant sans collecter l’identité des utilisateurs.
+
+Au 28 août 2026, l0g n’a pas identifié, dans les pages officielles françaises consultées, de registre national de production répondant à ce cahier des charges. Cette absence de résultat n’est pas un constat de retard : le règlement 2025/848 s’applique à partir du 24 décembre 2026. Elle définit simplement l’information qui devra être retrouvée à cette échéance.
+
+## Outil l0g : **Qui demande quoi ?**
+
+Le composant ci-dessous n’interroge aucune donnée personnelle et ne prétend pas reproduire un registre encore absent. Il transforme les obligations européennes en grille de contrôle immédiatement réutilisable. Lorsque l’API française sera publiée, la même structure pourra recevoir des données signées du registre.
+
+<section class="eudi-audit-tool" aria-labelledby="eudi-audit-fr-title">
+  <div class="eudi-audit-head">
+    <p class="eudi-audit-kicker">// OUTIL DE CONTRÔLE</p>
+    <h3 id="eudi-audit-fr-title">Qui demande quoi ?</h3>
+    <p>Le wallet ne doit pas seulement montrer vos données. Il doit rendre le demandeur, la demande et le résultat auditables.</p>
+  </div>
+
+  <details open>
+    <summary>1. Identifier le demandeur</summary>
+    <div class="eudi-audit-body">
+      <p><strong>À retrouver dans le registre :</strong> dénomination officielle, nom du service, identifiant légal, État membre, support, nature de l’activité et éventuel intermédiaire.</p>
+      <p><strong>Signal d’alerte :</strong> la marque affichée ne correspond pas à l’entité certifiée ou le certificat ne peut pas être validé.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>2. Lire l’usage déclaré</summary>
+    <div class="eudi-audit-body">
+      <p><strong>À comparer :</strong> la finalité annoncée, les attestations enregistrées et chaque attribut demandé.</p>
+      <p><strong>Signal d’alerte :</strong> une donnée apparaît dans la requête mais pas dans le certificat d’enregistrement.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>3. Vérifier le reçu de transaction</summary>
+    <div class="eudi-audit-body">
+      <p><strong>À conserver :</strong> date, heure, service, identifiant, État, données demandées, données présentées et motif d’un échec.</p>
+      <p><strong>Limite :</strong> le journal documente l’événement ; il ne prouve pas automatiquement une faute ni un montant de préjudice.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>4. Exercer un droit</summary>
+    <div class="eudi-audit-body">
+      <p><strong>Depuis le tableau de bord :</strong> demander l’effacement au service ou signaler une requête présumée illicite ou suspecte à l’autorité de protection des données.</p>
+      <p><strong>À mesurer :</strong> accusé de réception, délai de réponse, résultat obtenu et conservation de la preuve.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>5. Documenter le risque financier</summary>
+    <div class="eudi-audit-body">
+      <p><strong>Chronologie :</strong> heure du refus, échéance de la démarche, alternative disponible, coût direct, interlocuteur et date du retour à la normale.</p>
+      <p><strong>Question finale :</strong> quelle entité peut préserver le droit, corriger l’erreur et indemniser la perte ?</p>
+    </div>
+  </details>
+
+  <p class="eudi-audit-note">Aucune donnée personnelle n’est saisie ni transmise par cet outil éditorial sans JavaScript.</p>
+</section>
+
+<style>{`
+.eudi-audit-tool{margin:1.6rem 0;padding:1rem;border:1px solid var(--color-line);border-radius:15px 4px 15px 15px;background:linear-gradient(145deg,color-mix(in srgb,var(--color-signal) 5%,transparent),transparent 48%),var(--surface-elevated);box-shadow:inset 0 1px 0 var(--edge-highlight),0 16px 48px color-mix(in srgb,#000 15%,transparent)}
+.eudi-audit-head{padding:.2rem .2rem .8rem}.eudi-audit-kicker{margin:0 0 .35rem!important;color:var(--color-signal)!important;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em}.eudi-audit-head h3{margin:.1rem 0 .45rem!important;color:var(--color-bright)!important}.eudi-audit-head p{margin:.25rem 0!important}
+.eudi-audit-tool details{margin:.65rem 0;border:1px solid var(--color-line);border-radius:10px;background:var(--surface-inset);overflow:hidden}.eudi-audit-tool summary{cursor:pointer;padding:.85rem 1rem;color:var(--color-bright);font-family:var(--font-mono);font-weight:650;font-size:.9rem;list-style-position:inside}.eudi-audit-tool details[open] summary{border-bottom:1px solid var(--color-line);color:var(--color-signal)}.eudi-audit-body{padding:.85rem 1rem}.eudi-audit-body p{margin:.35rem 0!important;font-size:.94rem}.eudi-audit-note{margin:.85rem .15rem .1rem!important;color:var(--color-muted)!important;font-family:var(--font-mono);font-size:.72rem}
+@media(max-width:480px){.eudi-audit-tool{padding:.75rem}.eudi-audit-tool summary{padding:.75rem .8rem;font-size:.82rem}.eudi-audit-body{padding:.75rem .8rem}.eudi-audit-body p{font-size:.9rem}}
+`}</style>
+
+## Les incidents devront eux aussi devenir des données publiques
+
+Le [nouvel article 48 bis d’eIDAS](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) impose aux États de collecter des statistiques sur le fonctionnement des wallets et des services de confiance qualifiés.
+
+Le jeu minimal comprend :
+
+- le nombre de personnes physiques et morales disposant d’un wallet valide ;
+- le type et le nombre de services qui acceptent le wallet ;
+- le nombre de plaintes et d’incidents de protection des consommateurs ou des données ;
+- un rapport synthétique sur les incidents empêchant l’utilisation du wallet ;
+- un résumé des incidents de sécurité significatifs, des violations de données et des utilisateurs affectés.
+
+Ces statistiques devront être rendues publiques dans un format ouvert, courant et lisible par machine. Chaque État devra les transmettre à la Commission avant le 31 mars de chaque année. ([Règlement 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj))
+
+Cela ne garantit ni la finesse des catégories, ni la publication rapide de chaque incident individuel, ni l’existence d’une série historique homogène dès la première année. Le format, les définitions et les dénominateurs seront décisifs.
+
+L0g cherchera notamment à séparer :
+
+```text
+incident de wallet
+incident d’un émetteur d’attribut
+incident du service demandeur
+refus de terminal
+refus d’identité
+refus réglementaire légitime
+faux refus technique
+indisponibilité sans perte de droit
+indisponibilité avec conséquence financière
+```
+
+Un nombre brut de plaintes n’a de sens qu’avec le nombre d’utilisateurs, de transactions, de services et d’échecs.
+
+<figure class="infographic" style="padding-bottom:1.5rem" tabindex="0" aria-label="Le banc de test l0g pour le portefeuille EUDI français">
+<svg viewBox="0 0 360 1060" width="100%" role="img" aria-labelledby="audit-fr-title audit-fr-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="audit-fr-title">LE BANC DE TEST L0G</title>
+<desc id="audit-fr-desc">Huit garanties du portefeuille européen sont classées entre droit établi, préparation française observable, preuve encore attendue et responsabilité financière non résolue.</desc>
+<rect x="1" y="1" width="358" height="1058" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">LE BANC DE TEST L0G</text>
+<text x="18" y="62" fill="#8b909b" font-size="8.6">Droit, preuve publique et questions ouvertes</text>
+
+<rect x="18" y="94" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="122" fill="#5eead4" font-size="10" font-weight="700">1. REGISTRE PUBLIC</text>
+<rect x="232" y="106" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="121" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="146" fill="#f5f6f8" font-size="9.3">Site + API commune au 24 décembre 2026</text>
+
+
+<rect x="18" y="190" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="218" fill="#5eead4" font-size="10" font-weight="700">2. ALERTE DE SUR-DEMANDE</text>
+<rect x="232" y="202" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="217" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="242" fill="#f5f6f8" font-size="9.3">Comparaison au certificat et accord explicite</text>
+
+
+<rect x="18" y="286" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="314" fill="#5eead4" font-size="10" font-weight="700">3. JOURNAL DES ÉCHECS</text>
+<rect x="232" y="298" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="313" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="338" fill="#f5f6f8" font-size="9.3">Demandeur, données et motif d’échec</text>
+
+
+<rect x="18" y="382" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="410" fill="#5eead4" font-size="10" font-weight="700">4. EFFACEMENT ET SIGNALEMENT</text>
+<rect x="232" y="394" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="409" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="434" fill="#f5f6f8" font-size="9.3">Fonctions prévues dans le tableau de bord</text>
+
+
+<rect x="18" y="478" width="324" height="96" rx="11" fill="#141a28" stroke="#7aa2f7"/>
+<text x="32" y="506" fill="#7aa2f7" font-size="10" font-weight="700">5. RACCORDEMENT FRANÇAIS</text>
+<rect x="232" y="490" width="96" height="22" rx="6" fill="#0c0d10" stroke="#7aa2f7"/>
+<text x="280" y="505" text-anchor="middle" fill="#7aa2f7" font-size="8.1" font-weight="700">OBSERVÉ</text>
+<text x="32" y="530" fill="#f5f6f8" font-size="9.3">OIDC, OID4VP et Playground publiés</text>
+<text x="32" y="552" fill="#aeb4bf" font-size="8.4">Le Playground reste un environnement de test</text>
+
+
+<rect x="18" y="586" width="324" height="96" rx="11" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="614" fill="#f5b13d" font-size="10" font-weight="700">6. CODE MOBILE OUVERT</text>
+<rect x="232" y="598" width="96" height="22" rx="6" fill="#0c0d10" stroke="#f5b13d"/>
+<text x="280" y="613" text-anchor="middle" fill="#f5b13d" font-size="8.1" font-weight="700">À PROUVER</text>
+<text x="32" y="638" fill="#f5f6f8" font-size="9.3">Obligation EUDI, publication française attendue</text>
+<text x="32" y="660" fill="#aeb4bf" font-size="8.4">Le site indique encore « prochainement »</text>
+
+
+<rect x="18" y="694" width="324" height="112" rx="11" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="722" fill="#f5b13d" font-size="10" font-weight="700">7. ACCESSIBILITÉ ACTUELLE</text>
+<rect x="232" y="706" width="96" height="22" rx="6" fill="#0c0d10" stroke="#f5b13d"/>
+<text x="280" y="721" text-anchor="middle" fill="#f5b13d" font-size="7.2" font-weight="700">À METTRE À JOUR</text>
+<text x="32" y="746" fill="#f5f6f8" font-size="9.3">Dernier audit chiffré publié : préproduction</text>
+<text x="32" y="768" fill="#aeb4bf" font-size="8.4">iOS 35,14 %, Android 36,11 %</text>
+<text x="32" y="788" fill="#aeb4bf" font-size="8.4">Nouvel audit public non retrouvé</text>
+
+
+<rect x="18" y="818" width="324" height="96" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="846" fill="#5eead4" font-size="10" font-weight="700">8. STATISTIQUES OUVERTES</text>
+<rect x="232" y="830" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="845" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">DROIT</text>
+<text x="32" y="870" fill="#f5f6f8" font-size="9.3">Plaintes, pannes, violations et usagers touchés</text>
+<text x="32" y="892" fill="#aeb4bf" font-size="8.4">Format et première série française à surveiller</text>
+
+
+<rect x="18" y="926" width="324" height="90" rx="11" fill="#21151c" stroke="#ff4d87"/>
+<text x="32" y="954" fill="#ff85ad" font-size="10" font-weight="700">QUESTION FINALE : QUI RÉPARE ?</text>
+<rect x="232" y="938" width="96" height="22" rx="6" fill="#0c0d10" stroke="#ff4d87"/>
+<text x="280" y="953" text-anchor="middle" fill="#ff85ad" font-size="8.1" font-weight="700">INCONNU</text>
+<text x="32" y="978" fill="#f5f6f8" font-size="9.3">Le reçu documente la panne</text>
+<text x="32" y="1000" fill="#aeb4bf" font-size="8.4">L’indemnisation reste à attribuer</text>
+
+
+<text x="180" y="1040" text-anchor="middle" fill="#f5f6f8" font-size="8.7" font-weight="700">NE PAS CROIRE. VÉRIFIER.</text>
+</svg>
+<figcaption>La couleur indique le niveau de preuve, pas une note globale de sécurité : droit établi, préparation observable, preuve publique attendue ou responsabilité non résolue.</figcaption>
+</figure>
+
+## Ce que la France prépare déjà
+
+France Titres ne part pas d’une feuille blanche.
+
+La page destinée aux services publics et privés présente déjà trois voies : un raccordement OIDC direct à France Identité, un raccordement OID4VP permettant d’anticiper le portefeuille EUDI, et un Playground destiné aux expérimentations. ([France Identité](https://france-identite.gouv.fr/authentification-france-identite/))
+
+Le [Playground public](https://playground.france-identite.gouv.fr/doc/marketplace/) recense des wallets, des vérificateurs en ligne, des émetteurs et des outils de conformité. Il se présente explicitement comme un répertoire de tests. Sa présence démontre une activité d’interopérabilité ; elle ne prouve pas qu’un service y figurant est agréé, certifié ou utilisé en production.
+
+France Titres revendiquait plus de **4,5 millions d’utilisateurs** en juillet 2026. Son mémorandum d’entente annonçait plus de **80 signataires** en mai, avec l’objectif d’aligner acteurs publics et privés sur les règles et standards européens. ([France Identité](https://france-identite.gouv.fr/actualite/embarquer_avec_france_identite.html), [mémorandum](https://france-identite.gouv.fr/actualite/memorandum_entente.html))
+
+Ces éléments montrent que l’écosystème se prépare. Ils ne permettent pas encore d’établir que la version actuelle de l’application remplit les exigences finales de journal, de registre, d’alerte et de tableau de bord EUDI.
+
+### Une liste européenne des wallets certifiés
+
+Le règlement eIDAS impose également à la Commission de publier et maintenir, sous une forme lisible par machine, la liste des portefeuilles certifiés. Les États doivent transmettre notamment le certificat, le rapport d’évaluation, la description du schéma d’identité, le régime de supervision, des informations sur la responsabilité et les modalités de suspension ou de révocation. ([Article 5 quinquies du règlement 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj), [règlement d’exécution 2025/849](https://eur-lex.europa.eu/eli/reg_impl/2025/849/oj))
+
+Cette liste permettra de vérifier qu’un produit portant le mot « wallet » possède bien le statut européen annoncé. Elle ne remplacera ni le rapport de certification, ni l’examen du périmètre exact, ni le suivi des versions distribuées.
+
+## Là où la preuve publique manque encore
+
+### Le registre français de production
+
+La France devra publier le site, l’API, la politique d’enregistrement, le registrar et les autorités de certification permettant d’émettre les certificats d’accès et d’enregistrement. Le [règlement 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj), modifié par le [règlement 2026/1730](https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj), fixe ce cadre à partir du 24 décembre 2026.
+
+L0g n’a pas identifié ces éléments de production dans le corpus officiel français examiné au 28 août. Cette formulation est bornée dans le temps et aux documents publics retrouvés.
+
+### L’interface de sur-demande
+
+Le texte européen détaille le résultat attendu : comparaison, avertissement et consentement explicite. La mise en page française, la formulation de l’alerte, les choix autorisés et les règles de rejet restent à voir et à tester. ([Règlement 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+### Le code source
+
+Le règlement EUDI impose une licence open source aux composants applicatifs du portefeuille. La page française consacrée à la sécurité indique encore que le code source mobile sera « prochainement » publié. ([Règlement 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj), [France Identité](https://france-identite.gouv.fr/securite-application/))
+
+Pour rendre cette ouverture vérifiable, il faudra publier au minimum :
+
+```text
+le dépôt et son historique
+la licence
+les dépendances
+les instructions de compilation
+la nomenclature des composants logiciels
+la méthode de build reproductible
+la correspondance entre code et binaires des stores
+les exceptions et leur justification
+```
+
+L’ouverture du code ne certifie pas seule la sécurité. Elle rend possible un contrôle qui reste autrement réservé à l’administration, aux prestataires et aux évaluateurs mandatés.
+
+### L’accessibilité
+
+Le dernier audit chiffré publié sur la page officielle a été établi le **23 mai 2025** sur des versions de préproduction. Il conclut à **35,14 %** des critères RAAM applicables respectés sur iOS et **36,11 %** sur Android, avec un état non conforme pour les deux applications. France Titres précise que les conditions de test pouvaient produire des écarts avec la version publique. ([Déclaration d’accessibilité](https://france-identite.gouv.fr/accessibilite/))
+
+Ces chiffres ne décrivent donc pas nécessairement l’application distribuée en août 2026. Dans les pages officielles consultées pour cet article, l0g n’a pas retrouvé de nouvel audit mobile chiffré. La conclusion rigoureuse n’est pas que l’application actuelle respecte encore seulement un tiers des critères. Elle est qu’un nouveau résultat public est nécessaire pour mesurer les progrès.
+
+## Le droit est plus protecteur que le récit simpliste
+
+Au terme de huit volets, plusieurs garanties écrites doivent être reconnues sans ambiguïté.
+
+Le cadre EUDI impose ou prévoit :
+
+- un usage volontaire et le maintien de moyens alternatifs ;
+- la divulgation sélective ;
+- la possibilité de créer des pseudonymes lorsque l’identification complète n’est pas requise ;
+- l’interdiction d’informer les émetteurs de la manière dont leurs attestations sont utilisées ;
+- l’authentification des services demandeurs ;
+- un registre public de leurs déclarations ;
+- la détection des demandes excédentaires ;
+- un journal contrôlable par l’utilisateur ;
+- l’effacement et le signalement depuis un tableau de bord ;
+- l’ouverture du code applicatif ;
+- la certification des wallets ;
+- la publication de statistiques sur les plaintes et incidents. ([Règlement 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj), [règlements 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj), [2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj), [2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj) et [2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+Ces propriétés sont difficiles à concilier avec l’image d’un projet juridique conçu uniquement pour centraliser et suivre les citoyens.
+
+Elles ne suffisent pas non plus à donner un blanc-seing.
+
+Une garantie peut échouer dans :
+
+```text
+le code
+l’interface
+le certificat
+le registre
+le journal
+le contrat
+le téléphone
+la procédure de récupération
+le parcours alternatif
+la gestion du recours
+```
+
+Le bon niveau de critique consiste donc à comparer chaque implémentation à la règle qui la contraint.
+
+## Le reçu ne rembourse personne
+
+Le prisme financier réapparaît au moment du refus.
+
+Le portefeuille pourra servir à ouvrir un compte, accéder à un service financier, signer un document, demander une aide, acheter une formation, modifier une entreprise ou autoriser une opération. Ces usages ne sont pas tous disponibles aujourd’hui dans France Identité ; ils appartiennent au périmètre déjà déployé, testé ou prévu selon les cas étudiés dans les volets précédents.
+
+Imaginons, uniquement pour analyser la mécanique du risque, qu’une transaction de signature échoue avant une échéance contractuelle.
+
+Le journal pourrait établir :
+
+```text
+le service contacté
+l’heure exacte
+les données demandées
+les données présentées
+la raison technique de l’échec
+```
+
+Cette trace peut aider à démontrer que l’utilisateur a tenté d’agir et que la transaction n’a pas abouti. Elle ne décide pas automatiquement :
+
+- si le service, le fournisseur de wallet, l’émetteur ou l’utilisateur est fautif ;
+- si l’échéance doit être prorogée ;
+- si la perte est directe, certaine et indemnisable ;
+- quelle juridiction est compétente ;
+- quel montant doit être réparé.
+
+Le dernier risque de la chaîne n’est donc plus invisible. Il reste juridiquement fragmenté.
+
+```text
+IDENTITÉ
+   ↓
+AUTORISATION
+   ↓
+TRANSACTION
+   ↓
+INCIDENT
+   ↓
+JOURNAL
+   ↓
+RESPONSABILITÉ
+   ↓
+RÉPARATION
+```
+
+L’Europe a beaucoup documenté les cinq premières cases. La France et les services utilisateurs devront rendre les deux dernières compréhensibles.
+
+## Le crash-test final l0g
+
+La série se conclut par huit engagements de suivi.
+
+| Principe | Test l0g | Preuve attendue |
+|---|---|---|
+| Volontariat | Réaliser la même démarche sans wallet | Droit réellement accessible, délai et coût publiés |
+| Minimisation | Demander uniquement un seuil ou un attribut | Aucune donnée supplémentaire transmise |
+| Registre | Rechercher le service avant la transaction | Déclaration publique, certifiée et historisée |
+| Sur-demande | Envoyer un attribut hors certificat dans un environnement autorisé | Alerte claire avant toute divulgation |
+| Traçabilité | Faire échouer une transaction de test | Journal complet avec motif d’échec |
+| Effacement | Utiliser le tableau de bord | Demande traçable et réponse mesurable |
+| Résilience | Révoquer ou remplacer un terminal de test | Ancienne instance bloquée, retour documenté |
+| Risque financier | Simuler une échéance proche | Droit préservé, interlocuteur et recours identifiés |
+
+Les tests destructifs devront être réalisés sur des comptes, appareils et environnements préparés à cet effet. Aucun droit réel, aucune identité d’un tiers et aucune échéance personnelle ne devront être mis en danger pour produire un article.
+
+## Méthode et limites
+
+Cet article repose principalement sur les règlements européens 2024/1183, 2024/2979, 2024/2981, 2025/848, 2025/849, 2026/1730 et 2026/1731, ainsi que sur les pages officielles de France Identité consacrées aux raccordements, au Playground, à la sécurité, au mémorandum et à l’accessibilité. Le corpus a été consulté jusqu’au 28 août 2026.
+
+Les obligations européennes ne sont pas toutes encore observables dans une application française de production. Le régime du registre des parties utilisatrices s’applique à partir du 24 décembre 2026. Les démonstrations du Playground sont des outils de test et ne sont jamais présentées comme des services certifiés ou des preuves de production.
+
+L0g n’a pas accédé à une architecture interne, à un registre français non public, aux contrats de certification, à une AIPD EUDI finale, aux journaux réels d’utilisateurs ni aux réponses contradictoires des institutions. Les absences documentaires sont toujours formulées comme des éléments non retrouvés dans le corpus public, jamais comme la preuve que l’information ou la fonction n’existe pas.
+
+Les exemples de sur-demande et d’échec financier sont explicitement pédagogiques. Ils illustrent le fonctionnement du droit et la propagation d’un risque ; ils ne décrivent aucun incident réel attribué à une entreprise déterminée.
+
+## Huit articles plus tard
+
+France Identité et le portefeuille européen ne peuvent plus être réduits à une carte d’identité rangée dans un téléphone.
+
+Ils forment une infrastructure reliant :
+
+```text
+l’État qui certifie
+le téléphone qui protège les clés
+le prestataire qui construit
+le service qui demande
+le registre qui publie
+le wallet qui compare
+le citoyen qui autorise
+le journal qui conserve la trace
+```
+
+L’enquête a identifié de vrais risques : une documentation parfois contradictoire, des alternatives inégales, une forte chaîne de sous-traitance, une responsabilité fragmentée, des délais de récupération encore mal mesurés, des coûts économiques cachés et une dépendance aux plateformes mobiles.
+
+Elle a aussi identifié de vrais progrès possibles : transmettre moins qu’une photocopie, prouver un âge sans donner son nom, connaître celui qui demande, détecter une collecte excédentaire, conserver la trace d’un refus et produire des statistiques publiques.
+
+La conclusion raisonnable n’est ni la confiance automatique, ni le rejet automatique.
+
+> **Le droit européen a rendu une grande partie de la promesse vérifiable. La responsabilité de la France est maintenant de publier les preuves.**
+
+Le registre devra être public. L’API devra être lisible par une machine. Les demandes devront être déclarées. Les échecs devront être journalisés. Les incidents devront être comptés.
+
+Alors l0g les comptera.

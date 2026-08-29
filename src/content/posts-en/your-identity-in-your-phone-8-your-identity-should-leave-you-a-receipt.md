@@ -1,0 +1,642 @@
+---
+title: "Your identity in your phone, 8/8: your identity should leave you a receipt"
+seoTitle: "EUDI Wallet: who asks for what from your identity? | l0g"
+ogTitle: "Your identity should leave you a receipt"
+description: "Public registries, overasking alerts and failure logs: the future wallet should make those requesting your data auditable."
+ogImage: "/illustrations/news/france-identite-recu-identite-v1.jpg"
+pubDate: 2026-08-28T22:20:00+02:00
+updatedDate: 2026-08-28T22:20:00+02:00
+tags: ["France Identité", "EUDI", "eIDAS", "privacy", "digital identity", "public registry", "data protection", "financial risk", "open source", "accessibility", "investigation"]
+draft: false
+sourceArticle: "votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu"
+sourceUpdatedDate: 2026-08-28T22:20:00+02:00
+---
+
+*A company asks you to prove your identity. Today, you rarely see the exact list of data it registered an intention to request, the recorded purpose of the collection or the certificate proving that it is the service it claims to be. If the transaction fails, you often leave with a generic error and almost no evidence explaining the refusal.*
+
+*The European Digital Identity Wallet is designed to change part of that imbalance. The requester will have to register. The registry will have to be public and machine-readable. The wallet will have to compare the data requested with the data registered. Every transaction, including a failed one, will have to leave a log containing the service identity, the categories of data requested and the reason for failure.*
+
+*Those rules do not prove that the French system will execute them perfectly. They provide something more useful than a promise: a list of properties that can be tested.*
+
+*This is the eighth and final part of l0g’s investigation **Your identity in your phone**. Part one followed [the data and logs behind France Identité](/en/analysis/your-identity-in-your-phone-1-when-an-id-card-becomes-a-service/). Part two measured [the practical cost of alternatives](/en/analysis/your-identity-in-your-phone-2-optional-but-at-what-cost/). Part three examined [sovereignty under contract](/en/analysis/your-identity-in-your-phone-3-sovereignty-under-contract/). Part four followed [age becoming an access credential](/en/analysis/your-identity-in-your-phone-4-age-becomes-an-access-credential/). Part five tested [the day digital identity stops responding](/en/analysis/your-identity-in-your-phone-5-when-your-identity-stops-responding/). Part six followed [the bill behind a free proof](/en/analysis/your-identity-in-your-phone-6-your-identity-is-free-the-proof-may-be-billed/). Part seven measured [dependence on mobile platforms](/en/analysis/your-identity-in-your-phone-7-a-sovereign-identity-on-an-american-phone/).*
+
+*Version française : [Votre identité doit vous laisser un reçu](/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/).*
+
+## Key points
+
+- From **24 December 2026**, every Member State must have at least one national registry of services using the wallet. The information must be available through a human-readable website and a common API that can be queried without authentication. ([Implementing Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+- The registry must publish the service identity, contact details, type of activity, data it intends to request and the declared purpose for each use. ([Annex I to Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+- Registration is not an administrative approval of the legal necessity of each field. Since the July 2026 amendment, some use information is collected automatically for transparency without a prior authorisation procedure. ([Implementing Regulation 2026/1730](https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj))
+- The wallet must compare the request it receives with the attributes registered in the service certificate. If the request goes beyond them, it must clearly warn the user before any disclosure. ([Implementing Regulation 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+- The user must explicitly approve an excessive request. Silence or pre-ticked boxes are not sufficient. The wallet policy then determines whether the request may continue, be limited or be rejected. ([Regulation 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+- The wallet must log every transaction with a relying party, successful or not. ([Implementing Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+- The log must at least contain the date and time, the service name and identifier, its Member State, the categories of data requested and presented and the reason for failure. ([Article 9 of Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+- The wallet provider may access those logs, where access is necessary to provide wallet services, only with the user’s explicit prior consent. Their integrity, authenticity and confidentiality must be protected. ([Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+- The EUDI dashboard must let the user view connected services and, where applicable, exchanged data, request erasure and report a suspicious request to the data protection authority. ([Regulation 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj))
+- Member States must publish open, machine-readable statistics on valid wallets, accepting services, complaints, incidents preventing use, data breaches and affected users. ([Article 48a of Regulation 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj))
+- Those obligations create a remarkable audit surface. They do not by themselves create automatic compensation after a lost grant, rejected signature or missed deadline.
+- France Identité is already preparing three integration routes: direct OIDC, OID4VP for the EUDI Wallet and an interoperability Playground. ([France Titres](https://france-identite.gouv.fr/authentification-france-identite/))
+- France Titres reports more than 4.5 million users and more than 80 signatories to its public-private memorandum. Those figures describe the current ecosystem, not a completed production EUDI wallet. ([France Identité](https://france-identite.gouv.fr/actualite/embarquer_avec_france_identite.html), [memorandum](https://france-identite.gouv.fr/actualite/memorandum_entente.html))
+- The mobile source code is still described as forthcoming open source. The latest quantified accessibility audit found on the official website concerns a May 2025 pre-production build and classifies both iOS and Android apps as non-compliant. ([Security](https://france-identite.gouv.fr/securite-application/), [accessibility](https://france-identite.gouv.fr/accessibilite/))
+
+## The wallet must verify the party verifying you
+
+The first reversal happens before any data is shared.
+
+[Implementing Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj) requires every Member State to establish at least one national registry of wallet-relying parties. A bank, public authority, insurer, operator or any other organisation wishing to receive EUDI proofs must register in the Member State where it is established.
+
+The registry is not meant to be an administrative file hidden from public view. Its content must be available online:
+
+```text
+through a national website readable by a person
+and
+through a common API readable by a machine
+```
+
+The API must use REST and JSON, be documented in OpenAPI 3, allow searches without authentication and return electronically signed or sealed responses. It must be able to return current information and the history of access and registration certificates. ([Annex II to Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+
+Annex I requires, among other things, publication of:
+
+- the official legal name and a user-friendly service name;
+- legal identifiers and Member State of establishment;
+- support contact details;
+- the type of service provided;
+- for each use, the data, attestations or attributes intended to be requested;
+- a description of the intended use of those data;
+- public or private status and any relevant entitlements;
+- any intermediary acting for the service. ([Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+
+Publication must not be confused with a government seal of approval. [Regulation 2026/1730](https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj) specifies that some information concerning contact details, service type, data requested and intended use is collected automatically for transparency without prior authorisation of its substance. The registry makes the declaration visible and usable by the wallet. It does not turn every registered collection into a necessary or lawful collection.
+
+Necessity remains subject to applicable law, the competent authority and, ultimately, the courts.
+
+<figure class="infographic" style="padding-bottom:1.5rem" tabindex="0" aria-label="The wallet verifies the service requesting data">
+<svg viewBox="0 0 360 1060" width="100%" role="img" aria-labelledby="verifier-en-title verifier-en-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="verifier-en-title">THE WALLET VERIFIES THE VERIFIER</title>
+<desc id="verifier-en-desc">A service registers, declares its intended uses and the data it plans to request, receives certificates, and the wallet compares each request with that declaration.</desc>
+<rect x="1" y="1" width="358" height="1058" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">THE WALLET VERIFIES</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">THE VERIFIER</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.6">Simplified regulatory architecture</text>
+
+<rect x="22" y="110" width="316" height="126" rx="12" fill="#141a28" stroke="#7aa2f7"/>
+<text x="38" y="140" fill="#7aa2f7" font-size="10.5" font-weight="700">1. THE SERVICE REGISTERS</text>
+<text x="38" y="168" fill="#f5f6f8" font-size="9.8">Name, activity, support and State</text>
+<text x="38" y="190" fill="#f5f6f8" font-size="9.8">Planned data for each intended use</text>
+<text x="38" y="212" fill="#aeb4bf" font-size="8.7">Public declaration, not general approval</text>
+<path d="M180 236 V266" stroke="#7aa2f7" stroke-width="2"/>
+<path d="M174 258 L180 268 L186 258" fill="#7aa2f7"/>
+
+<rect x="22" y="272" width="316" height="140" rx="12" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="302" fill="#5eead4" font-size="10.5" font-weight="700">2. THE REGISTRY PUBLISHES</text>
+<text x="38" y="330" fill="#f5f6f8" font-size="9.8">National website for the public</text>
+<text x="38" y="352" fill="#f5f6f8" font-size="9.8">REST API, JSON and OpenAPI 3</text>
+<text x="38" y="374" fill="#aeb4bf" font-size="8.7">Search without authentication</text>
+<text x="38" y="394" fill="#aeb4bf" font-size="8.7">Signed or sealed responses</text>
+<path d="M180 412 V442" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 434 L180 444 L186 434" fill="#5eead4"/>
+
+<rect x="22" y="448" width="316" height="126" rx="12" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="38" y="478" fill="#f5b13d" font-size="10.5" font-weight="700">3. THE SERVICE PRESENTS PROOF</text>
+<text x="38" y="506" fill="#f5f6f8" font-size="9.8">Access certificate for authentication</text>
+<text x="38" y="528" fill="#f5f6f8" font-size="9.8">Registration certificate for intended use</text>
+<text x="38" y="550" fill="#aeb4bf" font-size="8.7">Attributes and purpose readable by wallet</text>
+<path d="M180 574 V604" stroke="#f5b13d" stroke-width="2"/>
+<path d="M174 596 L180 606 L186 596" fill="#f5b13d"/>
+
+<rect x="22" y="610" width="316" height="150" rx="12" fill="#21151c" stroke="#ff4d87"/>
+<text x="38" y="640" fill="#ff85ad" font-size="10.5" font-weight="700">4. THE WALLET COMPARES</text>
+<text x="38" y="668" fill="#f5f6f8" font-size="9.8">Request received</text>
+<text x="38" y="690" fill="#f5f6f8" font-size="9.8">against registered declaration</text>
+<text x="38" y="718" fill="#aeb4bf" font-size="8.7">Overasking: warning before disclosure</text>
+<text x="38" y="740" fill="#aeb4bf" font-size="8.7">Explicit user approval required</text>
+<path d="M180 760 V790" stroke="#ff4d87" stroke-width="2"/>
+<path d="M174 782 L180 792 L186 782" fill="#ff4d87"/>
+
+<rect x="22" y="796" width="316" height="164" rx="12" fill="#15171b" stroke="#4a505a"/>
+<text x="38" y="826" fill="#f5f6f8" font-size="10.5" font-weight="700">5. THE USER DECIDES</text>
+<text x="38" y="854" fill="#f5f6f8" font-size="9.8">Share the registered data</text>
+<text x="38" y="876" fill="#f5f6f8" font-size="9.8">or examine an excessive request</text>
+<text x="38" y="904" fill="#aeb4bf" font-size="8.7">The wallet may continue, limit or reject</text>
+<text x="38" y="926" fill="#aeb4bf" font-size="8.7">according to policy, risk and law</text>
+
+<rect x="22" y="988" width="316" height="42" rx="9" fill="#10211f" stroke="#5eead4"/>
+<text x="180" y="1015" text-anchor="middle" fill="#5eead4" font-size="9.2" font-weight="700">THE REQUEST BECOMES AUDITABLE</text>
+</svg>
+<figcaption>The registry makes the service declaration visible. The wallet must then compare that declaration with the request actually received. Sources: Implementing Regulations 2025/848, 2026/1730 and 2026/1731.</figcaption>
+</figure>
+
+## The extra data point must trigger a warning
+
+The European framework does more than authenticate the service.
+
+Since [Implementing Regulation 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj), the wallet must compare the attestations, attributes and claims requested with those in the requester’s registration certificate.
+
+If the certificate cannot be validated because it is expired, revoked, malformed, issued by an untrusted provider or cannot be cryptographically verified, the wallet must warn that the relying party could not be validated. The request cannot be presented as successfully validated. The user must explicitly approve it; silence or a pre-ticked box is not sufficient. ([Rule WRP-VALIDATION-02](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+If the service asks for data not covered by its certificate, rule `WRP-OVERASKING-02` requires a clear warning before any disclosure. The message must identify that the requester is asking for more information than it registered. Approval must again be explicit. ([Regulation 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+The text does not impose one response to every mismatch. Based on risk analysis, security policy and applicable law, the wallet provider must decide whether the user may continue despite the warning, whether only the covered subset may be disclosed or whether the request must be rejected. ([Rule WRP-OVERASKING-03](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+There is a reason for that flexibility. Not every difference is necessarily fraud. A registration may be outdated, a new service may be incorrectly registered or an exceptional need may rely on another legal basis.
+
+It also creates a decisive design question:
+
+> **Will the warning help the user understand the risk, or become another window everyone accepts to continue?**
+
+The investigation cannot answer until the French interface, wording, permitted choices, number of excessive requests and continuation rate after warnings are visible.
+
+### Pedagogical example, not an observed case
+
+```text
+Registered use: opening an account
+Registered data: identity, adulthood, address
+
+Request actually received:
+identity, adulthood, address, diploma
+
+Expected result:
+warning before the diploma is disclosed
+```
+
+This example illustrates only the comparison required by law. It does not claim that a real bank asks for a diploma to open an account.
+
+## Every transaction must leave a trace
+
+The second safeguard is less visible but may matter more in a dispute.
+
+[Article 9 of Implementing Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj) requires the wallet to log every transaction with relying parties and other wallets, successful or not. Electronic signing and sealing are included.
+
+The log must contain at least:
+
+```text
+Date and time
+Service name and contact details
+Unique service identifier
+Member State of establishment
+Types of data requested
+Types of data presented
+Reason if the transaction did not complete
+```
+
+The provider must ensure the integrity, authenticity and confidentiality of that information. Reports sent to data protection authorities from the wallet must also be logged. Where provider access to logs is necessary to provide wallet services, it requires the user’s explicit prior consent. ([Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+
+The [amended eIDAS Regulation](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) also requires a common dashboard where users can see an up-to-date list of connected services and, where applicable, data exchanged. The same dashboard must make it easy to request erasure and report an allegedly unlawful or suspicious data request to the national data protection authority.
+
+The word “receipt” in this article is therefore functional. The law requires a log and dashboard. It does not necessarily promise a signed PDF with a predetermined evidential status in every type of litigation.
+
+<figure class="infographic" style="padding-bottom:1.5rem" tabindex="0" aria-label="Information in an EUDI transaction log">
+<svg viewBox="0 0 360 1080" width="100%" role="img" aria-labelledby="receipt-en-title receipt-en-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="receipt-en-title">THE RECEIPT FOR YOUR IDENTITY</title>
+<desc id="receipt-en-desc">The future EUDI log must record the service, the data requested and presented and the reason for failure, then feed a dashboard for erasure requests and reporting.</desc>
+<rect x="1" y="1" width="358" height="1078" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">THE RECEIPT FOR</text>
+<text x="18" y="58" fill="#f5f6f8" font-size="13.5" font-weight="700">YOUR IDENTITY</text>
+<text x="18" y="82" fill="#8b909b" font-size="8.6">Minimum log required by the EUDI framework</text>
+
+<rect x="26" y="112" width="308" height="650" rx="14" fill="#f5f6f8" stroke="#5eead4"/>
+<text x="46" y="148" fill="#0c0d10" font-size="11" font-weight="700">EUDI TRANSACTION</text>
+<line x1="46" y1="164" x2="314" y2="164" stroke="#c7cbd3"/>
+
+<text x="46" y="198" fill="#4d5461" font-size="8.7">STATUS</text>
+<text x="46" y="222" fill="#c81e63" font-size="10.2" font-weight="700">NOT COMPLETED</text>
+
+<text x="46" y="260" fill="#4d5461" font-size="8.7">DATE AND TIME</text>
+<text x="46" y="284" fill="#0c0d10" font-size="9.8">transaction timestamp</text>
+
+<text x="46" y="322" fill="#4d5461" font-size="8.7">REQUESTING SERVICE</text>
+<text x="46" y="346" fill="#0c0d10" font-size="9.8">name and contact details</text>
+<text x="46" y="368" fill="#0c0d10" font-size="9.8">unique identifier and Member State</text>
+
+<text x="46" y="406" fill="#4d5461" font-size="8.7">DATA REQUESTED</text>
+<text x="46" y="430" fill="#0c0d10" font-size="9.8">types of attributes requested</text>
+
+<text x="46" y="468" fill="#4d5461" font-size="8.7">DATA PRESENTED</text>
+<text x="46" y="492" fill="#0c0d10" font-size="9.8">types of attributes disclosed</text>
+
+<text x="46" y="530" fill="#4d5461" font-size="8.7">REASON FOR FAILURE</text>
+<rect x="44" y="546" width="272" height="80" rx="9" fill="#fff5f7" stroke="#c81e63"/>
+<text x="58" y="574" fill="#7f123f" font-size="9.2">technical or functional reason</text>
+<text x="58" y="596" fill="#7f123f" font-size="9.2">for the incomplete transaction</text>
+
+<line x1="46" y1="650" x2="314" y2="650" stroke="#c7cbd3"/>
+<text x="46" y="684" fill="#4d5461" font-size="8.7">LOG SAFEGUARDS</text>
+<text x="46" y="708" fill="#0f766e" font-size="9.5">integrity, authenticity, confidentiality</text>
+<text x="46" y="732" fill="#4d5461" font-size="8.5">Provider access: prior consent required</text>
+
+<path d="M180 762 V804" stroke="#5eead4" stroke-width="2"/>
+<path d="M174 796 L180 806 L186 796" fill="#5eead4"/>
+
+<rect x="22" y="812" width="316" height="190" rx="14" fill="#10211f" stroke="#5eead4"/>
+<text x="38" y="842" fill="#5eead4" font-size="10.5" font-weight="700">COMMON DASHBOARD</text>
+<text x="38" y="874" fill="#f5f6f8" font-size="9.6">View services and exchanged data</text>
+<text x="38" y="902" fill="#f5f6f8" font-size="9.6">Request erasure of personal data</text>
+<text x="38" y="930" fill="#f5f6f8" font-size="9.6">Report a suspicious request</text>
+<text x="38" y="958" fill="#aeb4bf" font-size="8.7">A trace may help prove the incident</text>
+<text x="38" y="980" fill="#aeb4bf" font-size="8.7">It does not itself trigger compensation</text>
+
+<text x="180" y="1040" text-anchor="middle" fill="#f5b13d" font-size="9.2" font-weight="700">EVIDENCE COMES BEFORE REMEDY</text>
+</svg>
+<figcaption>The fields shown are the minimum required by Article 9 of Regulation 2024/2979. The dashboard, erasure request and reporting functions come from the amended eIDAS Regulation.</figcaption>
+</figure>
+
+## The log that protects you may also expose you
+
+A history containing a bank, hospital, university, employer, platform and public authority could reveal a substantial part of its holder’s life, even without the full detail of each file.
+
+That risk follows directly from the fields required in the log: service, date, time, data requested and data presented. This is an l0g risk analysis, not evidence that such a history will be centralised or already exploited. The Regulation instead requires confidentiality and restricts provider access to cases where it is necessary and the user has explicitly consented beforehand. ([Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+
+The French implementation should publicly answer four questions:
+
+```text
+Where is the log stored?
+Who can decrypt it?
+How long is it retained?
+What happens after a phone is lost or replaced?
+```
+
+EU law sets a baseline, while availability duration remains linked to Union and national law. France will therefore need to publish the exact retention policy, encryption method, any backup mechanism, migration route and process after device compromise. ([Article 9(3) to (6) of Regulation 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj))
+
+The best system is not one that keeps no trace. Without a trace, the holder may be unable to prove a refusal or excessive request. The more demanding objective is **a trace useful to the citizen, unreadable by actors who do not need it and deletable under a public rule.**
+
+## Europe is creating a public audit API
+
+The registry due on 24 December 2026 could become one of the most useful transparency surfaces in the project.
+
+The common API must let any requester, without prior authentication, search for an organisation, retrieve complete lists and consult public certificate information. Results must be electronically signed or sealed and the schema published in OpenAPI 3. ([Annex II to Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj))
+
+That makes it possible to build an independent observatory without collecting user identities.
+
+As of 28 August 2026, l0g did not identify a French production registry meeting those specifications in the official pages reviewed. This is not evidence of delay: Regulation 2025/848 applies from 24 December 2026. It simply defines what must be findable at that deadline.
+
+## l0g tool: **Who asks for what?**
+
+The component below does not query personal data and does not pretend to reproduce a registry that is not yet public. It turns European obligations into a reusable audit checklist. When the French API is published, the same structure could consume signed registry data.
+
+<section class="eudi-audit-tool" aria-labelledby="eudi-audit-en-title">
+  <div class="eudi-audit-head">
+    <p class="eudi-audit-kicker">// AUDIT TOOL</p>
+    <h3 id="eudi-audit-en-title">Who asks for what?</h3>
+    <p>The wallet should not only display your data. It should make the requester, the request and the outcome auditable.</p>
+  </div>
+
+  <details open>
+    <summary>1. Identify the requester</summary>
+    <div class="eudi-audit-body">
+      <p><strong>Find in the registry:</strong> legal name, service name, identifier, Member State, support contact, type of activity and any intermediary.</p>
+      <p><strong>Warning sign:</strong> the brand shown does not match the certified entity or the certificate cannot be validated.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>2. Read the registered purpose</summary>
+    <div class="eudi-audit-body">
+      <p><strong>Compare:</strong> the stated purpose, registered attestations and every requested attribute.</p>
+      <p><strong>Warning sign:</strong> a field appears in the request but not in the registration certificate.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>3. Inspect the transaction receipt</summary>
+    <div class="eudi-audit-body">
+      <p><strong>Keep:</strong> date, time, service, identifier, State, data requested, data presented and reason for failure.</p>
+      <p><strong>Limit:</strong> the log documents the event; it does not automatically prove fault or quantify loss.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>4. Exercise a right</summary>
+    <div class="eudi-audit-body">
+      <p><strong>From the dashboard:</strong> request erasure from the service or report an allegedly unlawful or suspicious request to the data protection authority.</p>
+      <p><strong>Measure:</strong> acknowledgement, response time, outcome and preservation of evidence.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>5. Document financial risk</summary>
+    <div class="eudi-audit-body">
+      <p><strong>Timeline:</strong> time of refusal, transaction deadline, available alternative, direct cost, responsible contact and return-to-service date.</p>
+      <p><strong>Final question:</strong> which entity can preserve the right, correct the error and compensate the loss?</p>
+    </div>
+  </details>
+
+  <p class="eudi-audit-note">This no-JavaScript editorial tool collects and transmits no personal data.</p>
+</section>
+
+<style>{`
+.eudi-audit-tool{margin:1.6rem 0;padding:1rem;border:1px solid var(--color-line);border-radius:15px 4px 15px 15px;background:linear-gradient(145deg,color-mix(in srgb,var(--color-signal) 5%,transparent),transparent 48%),var(--surface-elevated);box-shadow:inset 0 1px 0 var(--edge-highlight),0 16px 48px color-mix(in srgb,#000 15%,transparent)}
+.eudi-audit-head{padding:.2rem .2rem .8rem}.eudi-audit-kicker{margin:0 0 .35rem!important;color:var(--color-signal)!important;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em}.eudi-audit-head h3{margin:.1rem 0 .45rem!important;color:var(--color-bright)!important}.eudi-audit-head p{margin:.25rem 0!important}
+.eudi-audit-tool details{margin:.65rem 0;border:1px solid var(--color-line);border-radius:10px;background:var(--surface-inset);overflow:hidden}.eudi-audit-tool summary{cursor:pointer;padding:.85rem 1rem;color:var(--color-bright);font-family:var(--font-mono);font-weight:650;font-size:.9rem;list-style-position:inside}.eudi-audit-tool details[open] summary{border-bottom:1px solid var(--color-line);color:var(--color-signal)}.eudi-audit-body{padding:.85rem 1rem}.eudi-audit-body p{margin:.35rem 0!important;font-size:.94rem}.eudi-audit-note{margin:.85rem .15rem .1rem!important;color:var(--color-muted)!important;font-family:var(--font-mono);font-size:.72rem}
+@media(max-width:480px){.eudi-audit-tool{padding:.75rem}.eudi-audit-tool summary{padding:.75rem .8rem;font-size:.82rem}.eudi-audit-body{padding:.75rem .8rem}.eudi-audit-body p{font-size:.9rem}}
+`}</style>
+
+## Incidents must become public data too
+
+The new [Article 48a of eIDAS](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) requires Member States to collect statistics on the operation of wallets and qualified trust services.
+
+The minimum dataset includes:
+
+- the number of natural and legal persons with a valid wallet;
+- the type and number of services accepting the wallet;
+- user complaints and consumer-protection or data-protection incidents;
+- a summary report on incidents preventing wallet use;
+- significant security incidents, data breaches and affected users.
+
+Those statistics must be made public in an open, commonly used, machine-readable format. Each Member State must submit them to the Commission by 31 March every year. ([Regulation 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj))
+
+That does not guarantee granular categories, immediate disclosure of every incident or a perfectly comparable historical series from the first year. Definitions, denominators and publication format will matter.
+
+L0g will seek to separate:
+
+```text
+wallet incident
+attribute issuer incident
+relying party incident
+device refusal
+identity refusal
+legitimate regulatory refusal
+false technical refusal
+outage without loss of rights
+outage with financial consequences
+```
+
+A raw complaint count means little without the number of users, transactions, services and failures.
+
+<figure class="infographic" style="padding-bottom:1.5rem" tabindex="0" aria-label="The l0g test bench for the French EUDI Wallet">
+<svg viewBox="0 0 360 1060" width="100%" role="img" aria-labelledby="audit-en-title audit-en-desc" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0c0d10">
+<title id="audit-en-title">THE L0G TEST BENCH</title>
+<desc id="audit-en-desc">Eight European wallet safeguards are classified as established law, visible French preparation, evidence still awaited or unresolved financial responsibility.</desc>
+<rect x="1" y="1" width="358" height="1058" rx="16" fill="#0c0d10" stroke="#2b3038"/>
+<text x="18" y="38" fill="#f5f6f8" font-size="13.5" font-weight="700">THE L0G TEST BENCH</text>
+<text x="18" y="62" fill="#8b909b" font-size="8.6">Law, public evidence and open questions</text>
+
+<rect x="18" y="94" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="122" fill="#5eead4" font-size="10" font-weight="700">1. PUBLIC REGISTRY</text>
+<rect x="232" y="106" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="121" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">LAW</text>
+<text x="32" y="146" fill="#f5f6f8" font-size="9.3">Website + common API from 24 December 2026</text>
+
+
+<rect x="18" y="190" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="218" fill="#5eead4" font-size="10" font-weight="700">2. OVERASKING WARNING</text>
+<rect x="232" y="202" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="217" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">LAW</text>
+<text x="32" y="242" fill="#f5f6f8" font-size="9.3">Certificate comparison and explicit consent</text>
+
+
+<rect x="18" y="286" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="314" fill="#5eead4" font-size="10" font-weight="700">3. FAILURE LOG</text>
+<rect x="232" y="298" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="313" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">LAW</text>
+<text x="32" y="338" fill="#f5f6f8" font-size="9.3">Requester, data and reason for failure</text>
+
+
+<rect x="18" y="382" width="324" height="84" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="410" fill="#5eead4" font-size="10" font-weight="700">4. ERASURE AND REPORTING</text>
+<rect x="232" y="394" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="409" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">LAW</text>
+<text x="32" y="434" fill="#f5f6f8" font-size="9.3">Functions required in the common dashboard</text>
+
+
+<rect x="18" y="478" width="324" height="96" rx="11" fill="#141a28" stroke="#7aa2f7"/>
+<text x="32" y="506" fill="#7aa2f7" font-size="10" font-weight="700">5. FRENCH INTEGRATION</text>
+<rect x="232" y="490" width="96" height="22" rx="6" fill="#0c0d10" stroke="#7aa2f7"/>
+<text x="280" y="505" text-anchor="middle" fill="#7aa2f7" font-size="8.1" font-weight="700">OBSERVED</text>
+<text x="32" y="530" fill="#f5f6f8" font-size="9.3">OIDC, OID4VP and Playground published</text>
+<text x="32" y="552" fill="#aeb4bf" font-size="8.4">The Playground remains a test environment</text>
+
+
+<rect x="18" y="586" width="324" height="96" rx="11" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="614" fill="#f5b13d" font-size="10" font-weight="700">6. OPEN MOBILE CODE</text>
+<rect x="232" y="598" width="96" height="22" rx="6" fill="#0c0d10" stroke="#f5b13d"/>
+<text x="280" y="613" text-anchor="middle" fill="#f5b13d" font-size="8.1" font-weight="700">TO PROVE</text>
+<text x="32" y="638" fill="#f5f6f8" font-size="9.3">EUDI obligation, French publication pending</text>
+<text x="32" y="660" fill="#aeb4bf" font-size="8.4">Official page still says “forthcoming”</text>
+
+
+<rect x="18" y="694" width="324" height="112" rx="11" fill="#1b1b14" stroke="#f5b13d"/>
+<text x="32" y="722" fill="#f5b13d" font-size="10" font-weight="700">7. CURRENT ACCESSIBILITY</text>
+<rect x="232" y="706" width="96" height="22" rx="6" fill="#0c0d10" stroke="#f5b13d"/>
+<text x="280" y="721" text-anchor="middle" fill="#f5b13d" font-size="7.6" font-weight="700">UPDATE NEEDED</text>
+<text x="32" y="746" fill="#f5f6f8" font-size="9.3">Latest quantified audit: pre-production</text>
+<text x="32" y="768" fill="#aeb4bf" font-size="8.4">iOS 35.14%, Android 36.11%</text>
+<text x="32" y="788" fill="#aeb4bf" font-size="8.4">No newer public audit found</text>
+
+
+<rect x="18" y="818" width="324" height="96" rx="11" fill="#10211f" stroke="#5eead4"/>
+<text x="32" y="846" fill="#5eead4" font-size="10" font-weight="700">8. OPEN STATISTICS</text>
+<rect x="232" y="830" width="96" height="22" rx="6" fill="#0c0d10" stroke="#5eead4"/>
+<text x="280" y="845" text-anchor="middle" fill="#5eead4" font-size="8.1" font-weight="700">LAW</text>
+<text x="32" y="870" fill="#f5f6f8" font-size="9.3">Complaints, outages, breaches and users hit</text>
+<text x="32" y="892" fill="#aeb4bf" font-size="8.4">French format and first series to monitor</text>
+
+
+<rect x="18" y="926" width="324" height="90" rx="11" fill="#21151c" stroke="#ff4d87"/>
+<text x="32" y="954" fill="#ff85ad" font-size="10" font-weight="700">FINAL QUESTION: WHO REMEDIES?</text>
+<rect x="232" y="938" width="96" height="22" rx="6" fill="#0c0d10" stroke="#ff4d87"/>
+<text x="280" y="953" text-anchor="middle" fill="#ff85ad" font-size="8.1" font-weight="700">UNKNOWN</text>
+<text x="32" y="978" fill="#f5f6f8" font-size="9.3">The receipt documents the failure</text>
+<text x="32" y="1000" fill="#aeb4bf" font-size="8.4">Compensation remains to be allocated</text>
+
+
+<text x="180" y="1040" text-anchor="middle" fill="#f5f6f8" font-size="8.7" font-weight="700">DO NOT TRUST. VERIFY.</text>
+</svg>
+<figcaption>The colour shows the level of evidence, not an overall security score: established law, visible preparation, public proof still awaited or unresolved responsibility.</figcaption>
+</figure>
+
+## What France is already preparing
+
+France Titres is not starting from a blank page.
+
+Its page for public and private services already presents three routes: direct OIDC integration with France Identité, OID4VP integration to anticipate the EUDI Wallet, and a Playground for experimentation. ([France Identité](https://france-identite.gouv.fr/authentification-france-identite/))
+
+The [public Playground](https://playground.france-identite.gouv.fr/doc/marketplace/) lists wallets, online verifiers, issuers and conformance tools. It explicitly presents itself as a testing directory. Its existence demonstrates interoperability work; it does not prove that a listed service is approved, certified or used in production.
+
+France Titres reported more than **4.5 million users** in July 2026. Its memorandum of understanding reported more than **80 signatories** in May, with the goal of aligning public and private actors with European rules and standards. ([France Identité](https://france-identite.gouv.fr/actualite/embarquer_avec_france_identite.html), [memorandum](https://france-identite.gouv.fr/actualite/memorandum_entente.html))
+
+Those elements show that an ecosystem is preparing. They do not establish that the current app already meets the final EUDI requirements for logs, registries, warnings and dashboards.
+
+### A European list of certified wallets
+
+The eIDAS Regulation also requires the Commission to publish and maintain a machine-readable list of certified wallets. Member States must submit the certificate, assessment report, description of the identity scheme, supervisory regime, information on liability and arrangements for suspension or revocation. ([Article 5d of Regulation 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj), [Implementing Regulation 2025/849](https://eur-lex.europa.eu/eli/reg_impl/2025/849/oj))
+
+That list will make it possible to verify that a product marketed as a “wallet” actually has the European status it claims. It will not replace the certification report, review of the exact scope or monitoring of the versions distributed.
+
+## Where public evidence is still missing
+
+### The French production registry
+
+France will have to publish the website, API, registration policy, registrar and certificate authorities able to issue access and registration certificates. [Regulation 2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj), amended by [Regulation 2026/1730](https://eur-lex.europa.eu/eli/reg_impl/2026/1730/oj), sets that framework from 24 December 2026.
+
+L0g did not identify those production elements in the official French corpus reviewed on 28 August. This negative statement is limited to the public material found at that date.
+
+### The overasking interface
+
+The EU text defines the required outcome: comparison, warning and explicit consent. The French layout, wording, available choices and rejection rules remain to be seen and tested. ([Regulation 2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+### Source code
+
+The EUDI Regulation requires open-source licensing for wallet application components. The French security page still says that the mobile source code will be published “forthcoming”. ([Regulation 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj), [France Identité](https://france-identite.gouv.fr/securite-application/))
+
+For that publication to be verifiable, it should include at least:
+
+```text
+repository and history
+licence
+dependencies
+build instructions
+software bill of materials
+reproducible build method
+mapping between source and store binaries
+excluded components and justification
+```
+
+Open code does not by itself certify security. It enables scrutiny that would otherwise remain limited to the administration, contractors and commissioned evaluators.
+
+### Accessibility
+
+The latest quantified audit published on the official page was established on **23 May 2025** using pre-production builds. It found **35.14%** of applicable RAAM criteria met on iOS and **36.11%** on Android, with both applications classified as non-compliant. France Titres states that the test conditions may have produced differences from the public version. ([Accessibility statement](https://france-identite.gouv.fr/accessibilite/))
+
+Those figures therefore do not necessarily describe the application distributed in August 2026. In the official pages reviewed for this article, l0g found no newer quantified mobile audit. The rigorous conclusion is not that the current app still meets only one third of the criteria. It is that a new public result is needed to measure progress.
+
+## The law is more protective than the simplistic narrative
+
+After eight parts, several written safeguards should be acknowledged without ambiguity.
+
+The EUDI framework requires or provides for:
+
+- voluntary use and alternative means;
+- selective disclosure;
+- pseudonyms where full identification is not required;
+- a ban on telling attestation issuers how attestations are used;
+- authentication of requesting services;
+- a public registry of their declarations;
+- detection of excessive requests;
+- a user-controlled transaction log;
+- erasure and reporting through a dashboard;
+- open application code;
+- wallet certification;
+- public statistics on complaints and incidents. ([Regulation 2024/1183](https://eur-lex.europa.eu/eli/reg/2024/1183/oj), [Regulations 2024/2979](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj), [2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj), [2025/848](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj) and [2026/1731](https://eur-lex.europa.eu/eli/reg_impl/2026/1731/oj))
+
+Those properties are difficult to reconcile with the claim that the legal project was designed solely to centralise and track citizens.
+
+They are not a blank cheque either.
+
+A safeguard can fail in:
+
+```text
+code
+interface
+certificate
+registry
+log
+contract
+phone
+recovery process
+alternative route
+redress process
+```
+
+The useful level of criticism is to compare each implementation with the rule constraining it.
+
+## The receipt compensates nobody
+
+Financial risk returns at the moment of refusal.
+
+The wallet may be used to open an account, access a financial service, sign a document, apply for a grant, buy training, modify a company or authorise a transaction. Depending on the use, those functions are already deployed, tested or planned, as established in the previous parts of this investigation.
+
+Suppose, only to analyse the risk mechanism, that a signing transaction fails before a contractual deadline.
+
+The log could establish:
+
+```text
+the service contacted
+the exact time
+the data requested
+the data presented
+the technical reason for failure
+```
+
+That trace may help demonstrate that the user attempted to act and that the transaction failed. It does not automatically determine:
+
+- whether the service, wallet provider, issuer or user was at fault;
+- whether the deadline should be extended;
+- whether the loss is direct, certain and compensable;
+- which jurisdiction has authority;
+- how much should be paid.
+
+The last risk in the chain is no longer invisible. It remains legally fragmented.
+
+```text
+IDENTITY
+   ↓
+AUTHORISATION
+   ↓
+TRANSACTION
+   ↓
+INCIDENT
+   ↓
+LOG
+   ↓
+LIABILITY
+   ↓
+REMEDY
+```
+
+Europe has documented much of the first five boxes. France and the relying services must make the last two understandable.
+
+## The final l0g crash test
+
+The series ends with eight monitoring commitments.
+
+| Principle | l0g test | Evidence expected |
+|---|---|---|
+| Voluntary use | Complete the same service without a wallet | Same right genuinely accessible, with published time and cost |
+| Minimisation | Request only an age threshold or attribute | No additional data disclosed |
+| Registry | Search for the service before the transaction | Public, certified and historic declaration |
+| Overasking | Request an attribute outside the certificate in an authorised environment | Clear warning before disclosure |
+| Traceability | Deliberately fail a test transaction | Complete log with reason for failure |
+| Erasure | Use the common dashboard | Traceable request and measurable response |
+| Resilience | Revoke or replace a test device | Old instance blocked, recovery documented |
+| Financial risk | Simulate a near deadline | Right preserved, contact and remedy identified |
+
+Destructive tests must use accounts, devices and environments prepared for that purpose. No real right, third-party identity or personal deadline should be endangered to produce an article.
+
+## Method and limits
+
+This article relies primarily on European Regulations 2024/1183, 2024/2979, 2024/2981, 2025/848, 2025/849, 2026/1730 and 2026/1731, together with official France Identité pages on integration, the Playground, security, the memorandum and accessibility. The corpus was reviewed up to 28 August 2026.
+
+Not every European obligation is yet observable in a French production application. The relying-party registry regime applies from 24 December 2026. Playground demonstrations are test tools and are never presented here as certified services or evidence of production deployment.
+
+L0g did not access internal architecture, a non-public French registry, certification contracts, a final EUDI data-protection impact assessment, real user logs or institutional replies to the questionnaires. Documentary absences are always described as material not found in the public corpus, never as proof that the information or function does not exist.
+
+The overasking and financial-failure examples are explicitly pedagogical. They illustrate the operation of the rules and risk propagation; they describe no real incident attributed to a named company.
+
+## Eight parts later
+
+France Identité and the European wallet can no longer be reduced to an identity card stored in a phone.
+
+They form an infrastructure connecting:
+
+```text
+the State certifying identity
+the phone protecting keys
+the contractor building the service
+the relying party requesting data
+the registry publishing the declaration
+the wallet comparing the request
+the citizen authorising disclosure
+the log keeping the trace
+```
+
+The investigation identified real risks: sometimes inconsistent documentation, unequal alternatives, a long outsourcing chain, fragmented responsibility, poorly measured recovery times, hidden economic costs and dependence on mobile platforms.
+
+It also identified real potential improvements: disclosing less than a photocopy, proving age without giving a name, knowing who is asking, detecting excessive collection, keeping evidence of refusal and publishing incident statistics.
+
+The reasonable conclusion is neither automatic trust nor automatic rejection.
+
+> **European law has made much of the promise verifiable. France is now responsible for publishing the evidence.**
+
+The registry must be public. The API must be machine-readable. Requests must be declared. Failures must be logged. Incidents must be counted.
+
+Then l0g will count them.
