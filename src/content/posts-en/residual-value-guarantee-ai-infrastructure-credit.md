@@ -1,6 +1,7 @@
 ---
 title: "The residual value guarantee, the blind spot of the credit that finances AI"
-description: "AI data centers are increasingly financed off balance sheet, through vehicles that lease the hardware and rely on a residual value guarantee. Meta signed one over sixteen years for Hyperion. A breakdown of the structure, the chip-depreciation risk, and the precedent of the 2008 auto-leasing bust."
+seoTitle: "AI debt: Meta's 16-year residual value guarantee | l0g"
+description: "Meta's $27.3bn Hyperion financing relies on a 16-year residual-value guarantee. Off-balance-sheet AI debt can shift depreciation risk back to Meta."
 pubDate: 2026-07-15T23:55:00+02:00
 updatedDate: 2026-07-15T23:55:00+02:00
 tags: ["private credit", "ai", "data centers", "systemic risk", "valuation", "leasing"]

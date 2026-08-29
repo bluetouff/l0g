@@ -5,14 +5,26 @@ export const AUTHOR_ID = `${AUTHOR_PROFILE_URL}#bluetouff`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const organizationEntity = {
-  '@type': 'Organization',
+  '@type': 'NewsMediaOrganization',
   '@id': ORGANIZATION_ID,
   name: 'l0g',
   alternateName: 'l0g.fr',
+  legalName: 'Olivier Laurelli (EI)',
   url: `${SITE_URL}/`,
   logo: `${SITE_URL}/favicon.svg`,
   description:
-    'Risk intelligence : mettre en données la finance opaque, le risque systémique et la géopolitique financière.',
+    "Média d'information économique indépendant et publication de presse en ligne consacrée à la macroéconomie, aux marchés, au risque systémique et à la géopolitique financière.",
+  founder: { '@id': AUTHOR_ID },
+  email: 'mailto:olivier@l0g.fr',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Chartres',
+    postalCode: '28000',
+    addressCountry: 'FR',
+  },
+  masthead: `${SITE_URL}/about/#bluetouff`,
+  publishingPrinciples: `${SITE_URL}/protocole-editorial/`,
+  correctionsPolicy: `${SITE_URL}/changelog-editorial/`,
   sameAs: ['https://github.com/bluetouff/l0g'],
 };
 

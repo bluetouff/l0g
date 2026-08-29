@@ -15,14 +15,14 @@ const profilePageJsonLd = {
   '@type': 'ProfilePage',
   '@id': `${SITE_URL}/about/#profile-page`,
   url: `${SITE_URL}/about/`,
-  dateModified: '2026-07-23T20:56:27+02:00',
+  dateModified: '2026-08-29T17:53:21+02:00',
   mainEntity: authorEntity,
   isPartOf: { '@id': `${SITE_URL}/#website` },
   publisher: { '@id': ORGANIZATION_ID },
 };
 ---
 
-<BaseLayout title="Bluetouff, auteur et analyste de l0g" description="Qui est derrière l0g : Olivier Laurelli, alias Bluetouff, journaliste et analyste. La démarche, l'indépendance et la politique de confidentialité du projet."
+<BaseLayout title="l0g, média d'information économique indépendant" description="l0g est un média d'information économique indépendant, un journal d'analyse et une publication de presse en ligne éditée par Olivier Laurelli."
   alternateLinks={[{ hreflang: 'fr', href: new URL('/about/', Astro.site).toString() }, { hreflang: 'en', href: new URL('/en/about/', Astro.site).toString() }, { hreflang: 'x-default', href: new URL('/about/', Astro.site).toString() }]}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(profilePageJsonLd)} />
   <p class="language-switch mono-label" data-pagefind-ignore style="color: var(--color-signal)">
@@ -33,26 +33,34 @@ const profilePageJsonLd = {
     <p class="mono-label glow" style="color: var(--color-signal)">// à propos</p>
 
     <h1 class="about-lede mt-5 font-display glow">
-      <span class="wm"><span>l</span><span class="wm0">0</span><span>g</span></span> mesure les zones d'<span style="color: var(--color-accent)">opacité</span> où émergent les risques systémiques.
+      <span class="wm"><span>l</span><span class="wm0">0</span><span>g</span></span>, média d'information économique <span style="color: var(--color-accent)">indépendant</span>.
     </h1>
 
     <p class="about-intro mt-6 max-w-2xl text-paper">
-      Le projet est né de l'écriture d'<a class="link-term" href="/auditer-l-opacite/">Auditer l'opacité</a>,
+      l0g est un journal d'information, d'analyse et d'enquête consacré à la macroéconomie,
+      aux marchés, au crédit, aux actifs numériques, à la politique économique et aux zones
+      d'opacité où émergent les risques systémiques. Sa rédaction publie des articles datés,
+      signés et sourcés, ainsi que des guides, des dossiers et des outils de lecture fondés sur
+      des données publiques. Cette publication de presse en ligne est éditée et dirigée par
+      Olivier Laurelli, alias Bluetouff.
+    </p>
+    <p class="about-intro mt-4 max-w-2xl text-paper">
+      Le média est né de l'écriture d'<a class="link-term" href="/auditer-l-opacite/">Auditer l'opacité</a>,
       l'essai consacré aux angles morts des systèmes financiers. Il en prolonge la démarche
-      par l'outil et la donnée, à la croisée de quatre approches :
+      par le travail journalistique, la recherche appliquée, l'outil et la donnée.
     </p>
 
     <TrustBar items={trustItems} />
     <div class="facets">
       <div class="facet card" style="--c: var(--color-signal)">
         <span class="facet-k">01</span>
-        <span class="facet-t">Laboratoire de recherche appliquée</span>
-        <span class="facet-d">Indices, méthodes et backtests construits et documentés sur des données publiques.</span>
+        <span class="facet-t">Journal d'information économique</span>
+        <span class="facet-d">Actualité, analyses et enquêtes sur la macro, les marchés, le crédit et la régulation.</span>
       </div>
       <div class="facet card" style="--c: var(--color-accent)">
         <span class="facet-k">02</span>
-        <span class="facet-t">Plateforme d'intelligence économique</span>
-        <span class="facet-d">Dashboards et signaux pour lire la macro, les marchés et les flux institutionnels.</span>
+        <span class="facet-t">Rédaction indépendante</span>
+        <span class="facet-d">Articles signés, sources reliées aux affirmations, méthodes publiques et corrections visibles.</span>
       </div>
       <div class="facet card" style="--c: var(--color-amber)">
         <span class="facet-k">03</span>
@@ -61,14 +69,27 @@ const profilePageJsonLd = {
       </div>
       <div class="facet card" style="--c: var(--color-topic-blue)">
         <span class="facet-k">04</span>
-        <span class="facet-t">Projet open source</span>
-        <span class="facet-d">Code ouvert, sources citées, serveur auto-hébergé, aucun tracker.</span>
+        <span class="facet-t">Média open source</span>
+        <span class="facet-d">Code ouvert, textes réutilisables sous CC BY 4.0, serveur auto-hébergé, aucun tracker.</span>
       </div>
     </div>
   </section>
 
   <section class="mt-14" data-pagefind-ignore>
-    <p class="mono-label glow" style="color: var(--color-signal)">// ce site en bref</p>
+    <p class="mono-label glow" style="color: var(--color-signal)">// identité éditoriale</p>
+    <div class="specs card mt-4">
+      <div class="spec"><span class="spec-k">Publication</span><span class="spec-v">l0g.fr, média d'information économique indépendant et publication de presse en ligne</span></div>
+      <div class="spec"><span class="spec-k">Éditeur</span><span class="spec-v">l0g : Olivier Laurelli, entrepreneur individuel (EI), SIREN 809 005 010, établi à Chartres (28000)</span></div>
+      <div class="spec"><span class="spec-k">Direction</span><span class="spec-v">Olivier Laurelli, directeur de la publication</span></div>
+      <div class="spec"><span class="spec-k">Rédaction</span><span class="spec-v">Olivier Laurelli / Bluetouff, journaliste, auteur et analyste indépendant</span></div>
+      <div class="spec"><span class="spec-k">Contact</span><span class="spec-v"><a class="link-term" href="mailto:olivier@l0g.fr">olivier@l0g.fr</a></span></div>
+      <div class="spec"><span class="spec-k">Standards</span><span class="spec-v"><a class="link-term" href="/protocole-editorial/">Protocole éditorial</a> · <a class="link-term" href="/changelog-editorial/">journal des corrections</a> · <a class="link-term" href="/ressources-journalistes/">ressources presse</a></span></div>
+      <div class="spec"><span class="spec-k">Indépendance</span><span class="spec-v">Aucune régie publicitaire, aucun contenu sponsorisé et aucun tracker. Les éventuels soutiens n'interviennent pas dans les choix éditoriaux.</span></div>
+    </div>
+  </section>
+
+  <section class="mt-14" data-pagefind-ignore>
+    <p class="mono-label glow" style="color: var(--color-signal)">// infrastructure et licences</p>
     <div class="specs card mt-4">
       <div class="spec"><span class="spec-k">Statut</span><span class="spec-v">Statique, auto-hébergé sur Debian</span></div>
       <div class="spec"><span class="spec-k">Données</span><span class="spec-v">Sources publiques et gratuites (SEC EDGAR, FRED, BCE, Eurostat, CFTC…)</span></div>

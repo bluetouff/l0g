@@ -1,6 +1,23 @@
 ---
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import { ORGANIZATION_ID, WEBSITE_ID } from '../../../config/entities.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
 const site = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pageUrl = `${site}/en/about/`;
+const aboutPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${pageUrl}#about-page`,
+  url: pageUrl,
+  name: 'About l0g, an independent economic news publication',
+  description:
+    'l0g is an independent economic news outlet, online journal and digital newsroom publishing sourced analysis of macroeconomics, markets and systemic risk.',
+  inLanguage: 'en',
+  about: { '@id': ORGANIZATION_ID },
+  mainEntity: { '@id': ORGANIZATION_ID },
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+};
 const principles = [
   ['Primary sources first', 'Official datasets, filings and regulator publications are preferred over summaries and recycled narratives.'],
   ['Risk calibration', 'l0g tracks stress, opacity and market plumbing. It does not pretend to forecast the next tick.'],
@@ -10,28 +27,45 @@ const principles = [
 ---
 
 <EnglishGuidesLayout
-  title="About l0g"
-  description="What l0g.fr is: an independent, public-data risk-intelligence site focused on macro, credit, market plumbing, crypto regulation and systemic opacity."
+  title="l0g, independent economic news publication"
+  description="l0g is an independent economic news outlet, online journal and digital newsroom publishing sourced analysis of macroeconomics, markets and systemic risk."
   alternateLinks={[{ hreflang: 'en', href: `${site}/en/about/` }, { hreflang: 'fr', href: `${site}/about/` }, { hreflang: 'x-default', href: `${site}/about/` }]}
 >
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(aboutPageJsonLd)} />
   <article class="rise about-page" data-pagefind-body>
     <p class="mono-label glow" style="color: var(--color-signal)">// about</p>
     <h1 class="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-tight tracking-wider glow">
-      A public-data notebook for <span style="color: var(--color-accent)">opaque finance</span>
+      l0g, an independent economic <span style="color: var(--color-accent)">news publication</span>
     </h1>
     <p class="lede">
-      l0g.fr is an independent risk-intelligence site by Bluetouff. It maps systemic risk, financial plumbing, macro stress,
-      credit opacity, crypto regulation and geopolitical finance with public data, official sources and reproducible machine surfaces.
+      l0g.fr is an independent economic news outlet, online journal and digital newsroom published by Olivier Laurelli,
+      also known as Bluetouff, in Chartres, France. The newsroom covers macroeconomics, markets, credit, digital assets,
+      economic policy and systemic risk through dated, bylined and sourced reporting, analysis and investigations.
     </p>
 
     <section>
-      <h2>What l0g is for</h2>
+      <h2>Publication and newsroom</h2>
       <p>
-        The site is built for readers who want to understand the mechanisms behind market narratives: Treasury funding, central-bank balance sheets,
+        l0g is edited and published by Olivier Laurelli as a sole proprietor. He serves as publication director, journalist,
+        author and analyst. Each article identifies its author and publication date, links claims to sources and exposes material corrections.
+      </p>
+      <p>
+        Editorial enquiries can be sent to <a href="mailto:olivier@l0g.fr" class="link-term">olivier@l0g.fr</a>.
+        The <a href="/en/editorial-protocol/" class="link-term">editorial protocol</a> explains sourcing, verification and corrections.
+        Legal publisher information is available in the <a href="/rgpd/" class="link-term">legal and privacy notice</a>, and reusable material is listed in{' '}
+        <a href="/en/press-resources/" class="link-term">press resources</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Editorial coverage</h2>
+      <p>
+        The publication is built for readers who want to understand the mechanisms behind market narratives: Treasury funding, central-bank balance sheets,
         repo stress, private credit opacity, sanctions, stablecoins, dollar funding, on-chain data and macro releases.
       </p>
       <p>
-        Articles handle events. Guides define durable concepts. Dashboards expose signals. Machine-readable endpoints make the evidence reusable.
+        News articles cover current events. Guides define durable concepts. Investigations assemble evidence over time. Dashboards expose signals.
+        Machine-readable endpoints make the underlying public evidence reusable.
       </p>
     </section>
 

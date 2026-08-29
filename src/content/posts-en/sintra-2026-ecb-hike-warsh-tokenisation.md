@@ -1,6 +1,7 @@
 ---
 title: "Sintra 2026: ECB hike, Warsh panel, tokenisation session"
-description: "ECB Forum on Central Banking 2026 (29 June to 1 July): the ECB's 11 June rate hike and its projections, Kevin Warsh's first international panel as Fed chair, and the tokenisation session around the Bank of Korea's Project Hangang. Facts and attributed remarks, sourced."
+seoTitle: "Sintra 2026: ECB hike, Warsh and tokenisation | l0g"
+description: "A sourced account of the ECB's first hike since 2023, Kevin Warsh's first international panel as Fed chair and Korea's Project Hangang."
 pubDate: 2026-07-14T10:40:00+02:00
 updatedDate: 2026-07-14T10:40:00+02:00
 tags: ["ecb", "sintra", "warsh", "rates", "inflation", "tokenisation", "cbdc", "stablecoins"]

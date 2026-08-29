@@ -1,6 +1,7 @@
 ---
 title: "Held to maturity"
-description: "US banks carry $325 billion of unrealized losses on their bonds. Two thirds, $214 billion, sit in an accounting category, held-to-maturity, where the rule allows not counting them as long as the bonds are not sold. And for nearly every bank, a filter keeps even the visible losses out of regulatory capital. SVB exposed the flaw: the loss stays invisible until the second a run forces the sale. The fix passed after 2023 is being unwound."
+seoTitle: "Held-to-maturity: $214bn of unrealized bank losses | l0g"
+description: "US banks held $214.5bn of unrealized HTM bond losses in Q1 2026. They stay outside equity until sale; most banks filter AFS losses from regulatory capital."
 pubDate: 2026-07-29T09:00:00+02:00
 updatedDate: 2026-07-29T09:00:00+02:00
 tags: ["international", "banks", "accounting", "risk", "united-states"]

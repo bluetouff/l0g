@@ -1,6 +1,7 @@
 ---
 title: "The basis trade: at its highest per the Fed, moribund per the market"
-description: "On 22 June 2026, a Federal Reserve note sized the hedge funds' bet on US debt: an $830 billion basis trade, nearly double its 2020 peak. At the same time, practitioners call it losing steam. Two readings of the same arbitrage, and why the gap matters."
+seoTitle: "Treasury basis trade: $830bn as returns shrink | l0g"
+description: "The Fed estimates an $830bn basis trade, nearly twice its 2020 peak. Repo costs and mandatory clearing can weaken returns while leverage stays high."
 pubDate: 2026-07-14T11:12:00+02:00
 updatedDate: 2026-07-14T11:12:00+02:00
 tags: ["macro", "markets", "central banks", "regulation", "liquidity"]

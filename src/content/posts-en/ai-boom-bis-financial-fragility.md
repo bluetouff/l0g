@@ -1,6 +1,7 @@
 ---
 title: "The AI boom under the BIS lens: real revolution, opaque financing, possible overcapacity"
-description: "The Bank for International Settlements now files AI investment among the points of financial fragility. Starting from a Finneko thread relaying its chart 13, we go back to the primary report and test the outlook against the literature on technology diffusion and investment bubbles. Circular financing, the shift to debt, the demand bottleneck, and lessons from past booms."
+seoTitle: "AI boom: BIS flags $1tn capex and credit risk | l0g"
+description: "The BIS finds computing investment above its dot-com peak as AI capex shifts toward debt. The open questions are productivity, demand and overcapacity."
 pubDate: 2026-07-13T14:28:00+02:00
 updatedDate: 2026-07-13T14:28:00+02:00
 tags: ["macro", "private credit", "tech", "central banks"]

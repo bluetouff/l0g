@@ -158,7 +158,7 @@ for (const file of htmlFiles) {
       `${name}: image Article absolue absente`
     );
     assert(article?.isAccessibleForFree === true, `${name}: gratuité Article absente`);
-    assert(article?.publisher?.['@type'] === 'Organization', `${name}: publisher doit être une Organization`);
+    assert(article?.publisher?.['@type'] === 'NewsMediaOrganization', `${name}: publisher doit être une NewsMediaOrganization`);
     assert(article?.publisher?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant publisher instable`);
     const authorLink = elements.find((element) =>
       element.name === 'a'
@@ -190,7 +190,7 @@ for (const file of htmlFiles) {
       assert(articleImageUrl === ogImage, `${name}: NewsArticle.image diffère de og:image`);
       assert(articleImageUrl === visibleImageUrl, `${name}: image HTML diffère de NewsArticle.image`);
     } else {
-      assert(article?.author?.['@type'] === 'Organization', `${name}: author du guide doit être une Organization`);
+      assert(article?.author?.['@type'] === 'NewsMediaOrganization', `${name}: author du guide doit être une NewsMediaOrganization`);
       assert(article?.author?.['@id'] === 'https://l0g.fr/#org', `${name}: identifiant auteur du guide instable`);
       assert(
         /<a href="\/(?:en\/)?about\/" rel="author"[^>]*>(?:(?:Par|By) )?l0g<\/a>/.test(html),
@@ -339,7 +339,7 @@ for (const page of pages.values()) {
 const profile = pages.get('https://l0g.fr/about/');
 const profilePage = profile?.jsonLd.find((item) => item['@type'] === 'ProfilePage');
 const profileSameAs = new Set(profilePage?.mainEntity?.sameAs || []);
-assert(profile?.title === 'Bluetouff, auteur et analyste de l0g · l0g.fr', '/about/: title auteur incorrect');
+assert(profile?.title === "l0g, média d'information économique indépendant · l0g.fr", '/about/: title média incorrect');
 assert(profilePage?.mainEntity?.['@type'] === 'Person', '/about/: ProfilePage Person absent');
 assert(profilePage?.mainEntity?.['@id'] === 'https://l0g.fr/about/#bluetouff', '/about/: identifiant Person incorrect');
 assert(

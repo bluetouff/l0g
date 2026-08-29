@@ -1,6 +1,7 @@
 ---
 title: "Private credit, June 2026: a record default, and liquidity closing off"
-description: "Fitch's broad default rate stays stuck at 6% in May, semi-liquid funds cap redemptions for the second quarter running, and regulators shift from observation to vigilance. The state of US private credit at mid-2026, on primary sources."
+seoTitle: "Private credit: 6% default rate, redemptions capped | l0g"
+description: "Fitch's US private-credit default rate held at a record 6% in May 2026 while semi-liquid funds capped redemptions for a second quarter."
 pubDate: 2026-07-14T10:20:00+02:00
 updatedDate: 2026-07-14T10:20:00+02:00
 tags: ["private credit", "gating", "hlend", "blackstone", "bdc", "valuation", "fed"]

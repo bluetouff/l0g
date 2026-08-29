@@ -1,6 +1,7 @@
 ---
 title: "US Productivity: Real Pay Still Lags"
-description: "US labour productivity rose at a 1.4% annual rate in Q2 2026 while real hourly compensation fell at a 3.1% rate. The BLS figures show a distributional risk, but do not establish causation from AI or economic policy."
+seoTitle: "US productivity: +1.4%, real hourly pay -3.1% | l0g"
+description: "BLS Q2 2026 data show productivity rising at a 1.4% annual rate while real hourly compensation falls at 3.1%. Labour's share hit 52.9%."
 pubDate: 2026-08-06T14:54:33+02:00
 updatedDate: 2026-08-06T14:54:33+02:00
 tags: ["United States", "productivity", "wages", "employment", "inflation"]
