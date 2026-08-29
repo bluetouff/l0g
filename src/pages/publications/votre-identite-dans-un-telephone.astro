@@ -7,7 +7,7 @@ import { serializeInlineScriptData } from '../../lib/security.ts';
 
 const pagePath = '/publications/votre-identite-dans-un-telephone/';
 const epubPath = '/publications/votre-identite-dans-un-telephone-enquete-l0g.epub';
-const coverPath = '/publications/votre-identite-dans-un-telephone-cover.png';
+const coverPath = '/publications/votre-identite-dans-un-telephone-cover.jpg';
 const ogImagePath = '/illustrations/publications/identite-telephone-og.jpg';
 const epubBytes = readFileSync(new URL('../../../public/publications/votre-identite-dans-un-telephone-enquete-l0g.epub', import.meta.url));
 const epubSize = `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(epubBytes.length / 1024 / 1024)} MB`;
@@ -32,28 +32,28 @@ const visualEssay = [
     chapters: 'Volets 1 et 2',
     title: 'La carte devient une chaîne de services.',
     description: 'La preuve passe du titre physique au téléphone, au service distant et à ses serveurs. Le courrier, le guichet et les autres parcours restent des éléments mesurables de l’accès au droit.',
-    src: '/illustrations/publications/identite-telephone-chaine.jpg',
+    src: '/illustrations/publications/identite-telephone-chaine.webp',
     alt: 'Illustration conceptuelle reliant une carte générique, un téléphone, un terminal, un courrier et une infrastructure distante',
   },
   {
     chapters: 'Volets 3 et 4',
     title: 'Contrats, clés et attributs organisent l’autorisation.',
     description: 'La souveraineté dépend des couches techniques, des contrats et de la capacité de reprise. La preuve d’âge ajoute une décision sur les attributs demandés et ceux qui restent privés.',
-    src: '/illustrations/publications/identite-telephone-contrats.jpg',
+    src: '/illustrations/publications/identite-telephone-contrats.webp',
     alt: 'Illustration conceptuelle montrant un téléphone, des couches contractuelles, une clé matérielle et des attributs séparés',
   },
   {
     chapters: 'Volets 5 à 7',
     title: 'Panne, récupération, coûts et dépendance matérielle.',
     description: 'Le terminal, sa puce, son système et l’application forment des couches distinctes. Une interruption rend visibles le délai de récupération, le coût de la preuve et la dépendance aux plateformes mobiles.',
-    src: '/illustrations/publications/identite-telephone-panne.jpg',
+    src: '/illustrations/publications/identite-telephone-panne.webp',
     alt: 'Illustration conceptuelle d’un téléphone démonté en couches avec une connexion interrompue, une enveloppe et des instruments non chiffrés',
   },
   {
     chapters: 'Volet 8',
     title: 'La transaction laisse une trace à auditer.',
     description: 'Le reçu doit permettre de distinguer le demandeur, les attributs sollicités, ceux qui ont été présentés, le résultat et les inconnues restantes. Il documente la transaction, il n’attribue pas seul la responsabilité.',
-    src: '/illustrations/publications/identite-telephone-recu.jpg',
+    src: '/illustrations/publications/identite-telephone-recu.webp',
     alt: 'Illustration conceptuelle d’une transaction qui produit un reçu structuré et une trace archivée',
   },
 ];
@@ -110,8 +110,8 @@ const bookJsonLd = {
           <span class="book-spine" aria-hidden="true">l0g · enquête · 2026</span>
           <img
             src={coverPath}
-            width="1600"
-            height="2560"
+            width="1024"
+            height="1638"
             alt="Couverture de Votre identité dans un téléphone"
             loading="lazy"
             decoding="async"
@@ -173,8 +173,8 @@ const bookJsonLd = {
           <figure>
             <img
               src={visual.src}
-              width="1536"
-              height="864"
+              width="1200"
+              height="675"
               alt={visual.alt}
               loading="lazy"
               decoding="async"

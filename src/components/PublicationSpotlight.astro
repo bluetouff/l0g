@@ -44,7 +44,7 @@ const epubFile = isDigitalIdentity
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
 const coverUrl = isDigitalIdentity
-  ? '/publications/votre-identite-dans-un-telephone-cover.png'
+  ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
   : isWaterElectricity
@@ -187,9 +187,9 @@ const copy = isDigitalIdentity
   {isDigitalIdentity && (
     <a class="publication-teaser" href={publicationUrl} aria-label="Découvrir les quatre tableaux visuels de l’enquête">
       <img
-        src="/illustrations/publications/identite-telephone-chaine.jpg"
-        width="1536"
-        height="864"
+        src="/illustrations/publications/identite-telephone-chaine.webp"
+        width="1200"
+        height="675"
         alt="Carte générique, téléphone, terminal, courrier et infrastructure reliés dans une chaîne de services"
         loading="lazy"
         decoding="async"
@@ -199,8 +199,8 @@ const copy = isDigitalIdentity
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
-      width="1600"
-      height="2560"
+      width="1024"
+      height="1638"
       alt={copy.coverAlt}
       loading="lazy"
       decoding="async"

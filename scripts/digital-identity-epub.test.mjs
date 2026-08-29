@@ -9,7 +9,7 @@ import sharp from 'sharp';
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const SOURCE = join(ROOT, 'src/epub/votre-identite-dans-un-telephone');
 const EPUB = join(ROOT, 'public/publications/votre-identite-dans-un-telephone-enquete-l0g.epub');
-const COVER = join(ROOT, 'public/publications/votre-identite-dans-un-telephone-cover.png');
+const COVER = join(ROOT, 'public/publications/votre-identite-dans-un-telephone-cover.jpg');
 const PAGE = join(ROOT, 'src/pages/publications/votre-identite-dans-un-telephone.astro');
 const VISUAL_ROOT = join(ROOT, 'public/illustrations/publications');
 
@@ -90,14 +90,15 @@ test('every internal digital identity EPUB file and fragment link resolves', () 
   }
 });
 
-test('cover, publication page and catalog expose the exact digital identity edition', () => {
-  const cover = readFileSync(COVER);
+test('cover, publication page and catalog expose the exact digital identity edition', async () => {
+  const cover = await sharp(COVER).metadata();
   const page = readFileSync(PAGE, 'utf8');
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
   const catalog = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
-  assert.equal(cover.subarray(1, 4).toString('ascii'), 'PNG');
-  assert.equal(cover.readUInt32BE(16), 1600);
-  assert.equal(cover.readUInt32BE(20), 2560);
+  assert.equal(cover.format, 'jpeg');
+  assert.equal(cover.width, 1024);
+  assert.equal(cover.height, 1638);
+  assert.ok(statSync(COVER).size < 256 * 1024, 'the publication cover must stay below 256 KB');
   assert.match(page, /votre-identite-dans-un-telephone-enquete-l0g\.epub/u);
   assert.match(page, /createHash\('sha256'\)/u);
   assert.match(page, /'@type': 'Book'/u);
@@ -113,18 +114,18 @@ test('the dedicated page and catalog expose five optimized editorial images', as
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
   const catalog = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
   const images = [
-    { file: 'identite-telephone-chaine.jpg', width: 1536, height: 864 },
-    { file: 'identite-telephone-contrats.jpg', width: 1536, height: 864 },
-    { file: 'identite-telephone-panne.jpg', width: 1536, height: 864 },
-    { file: 'identite-telephone-recu.jpg', width: 1536, height: 864 },
-    { file: 'identite-telephone-og.jpg', width: 1200, height: 630 },
+    { file: 'identite-telephone-chaine.webp', format: 'webp', width: 1200, height: 675 },
+    { file: 'identite-telephone-contrats.webp', format: 'webp', width: 1200, height: 675 },
+    { file: 'identite-telephone-panne.webp', format: 'webp', width: 1200, height: 675 },
+    { file: 'identite-telephone-recu.webp', format: 'webp', width: 1200, height: 675 },
+    { file: 'identite-telephone-og.jpg', format: 'jpeg', width: 1200, height: 630 },
   ];
 
   for (const image of images) {
     const path = join(VISUAL_ROOT, image.file);
     assert.ok(existsSync(path), `${image.file} must exist`);
     const metadata = await sharp(path).metadata();
-    assert.equal(metadata.format, 'jpeg');
+    assert.equal(metadata.format, image.format);
     assert.equal(metadata.width, image.width);
     assert.equal(metadata.height, image.height);
     assert.ok(statSync(path).size < 256 * 1024, `${image.file} must stay below 256 KB`);
@@ -133,6 +134,6 @@ test('the dedicated page and catalog expose five optimized editorial images', as
   for (const file of images.slice(0, 4).map((image) => image.file)) assert.match(page, new RegExp(file, 'u'));
   assert.match(page, /Ces illustrations éditoriales sont conceptuelles/u);
   assert.match(page, /identite-telephone-og\.jpg/u);
-  assert.match(spotlight, /identite-telephone-chaine\.jpg/u);
+  assert.match(spotlight, /identite-telephone-chaine\.webp/u);
   assert.match(catalog, /identite-telephone-og\.jpg/u);
 });
