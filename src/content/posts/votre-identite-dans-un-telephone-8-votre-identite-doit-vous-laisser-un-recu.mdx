@@ -5,7 +5,7 @@ ogTitle: "Votre identité doit vous laisser un reçu"
 description: "Registres publics, demandes excessives et journaux d’échec : le futur wallet doit permettre d’auditer ceux qui réclament vos données."
 ogImage: "/illustrations/news/france-identite-recu-identite-v1.jpg"
 pubDate: 2026-08-28T22:20:00+02:00
-updatedDate: 2026-08-28T22:20:00+02:00
+updatedDate: 2026-08-29T09:22:51+02:00
 tags: ["France Identité", "EUDI", "eIDAS", "vie privée", "identité numérique", "registre public", "protection des données", "risque financier", "open source", "accessibilité", "enquête"]
 draft: false
 quickTake:
@@ -13,6 +13,8 @@ quickTake:
   importance: "Ces mécanismes peuvent transformer le portefeuille en surface d’audit : comparer une demande à ce que le service avait déclaré, documenter un refus et signaler une collecte suspecte."
   uncertainty: "Au 28 août 2026, le registre français de production, l’interface finale d’alerte, le code ouvert du wallet français, un audit d’accessibilité actualisé et le mécanisme de réparation financière ne sont pas publiquement démontrés."
 ---
+
+import EudiRequestAudit from '../../components/EudiRequestAudit.astro';
 
 *Une entreprise vous demande de prouver votre identité. Aujourd’hui, vous voyez rarement la liste exacte des données qu’elle s’est engagée à demander, le motif enregistré de la collecte ou le certificat qui prouve qu’elle est bien le service annoncé. Si la transaction échoue, vous repartez souvent avec un message générique et presque aucune pièce pour comprendre le refus.*
 
@@ -273,64 +275,9 @@ Au 28 août 2026, l0g n’a pas identifié, dans les pages officielles français
 
 ## Outil l0g : **Qui demande quoi ?**
 
-Le composant ci-dessous n’interroge aucune donnée personnelle et ne prétend pas reproduire un registre encore absent. Il transforme les obligations européennes en grille de contrôle immédiatement réutilisable. Lorsque l’API française sera publiée, la même structure pourra recevoir des données signées du registre.
+L’outil ci-dessous ne consulte ni le registre français, qui n’est pas encore publié, ni aucune donnée personnelle. Il compare localement les catégories déclarées dans un certificat avec celles demandées par une transaction, vérifie les éléments d’identité du service et contrôle les champs minimaux du reçu. Ne saisissez que des noms de catégories, jamais de valeurs personnelles.
 
-<section class="eudi-audit-tool" aria-labelledby="eudi-audit-fr-title">
-  <div class="eudi-audit-head">
-    <p class="eudi-audit-kicker">// OUTIL DE CONTRÔLE</p>
-    <h3 id="eudi-audit-fr-title">Qui demande quoi ?</h3>
-    <p>Le wallet ne doit pas seulement montrer vos données. Il doit rendre le demandeur, la demande et le résultat auditables.</p>
-  </div>
-
-  <details open>
-    <summary>1. Identifier le demandeur</summary>
-    <div class="eudi-audit-body">
-      <p><strong>À retrouver dans le registre :</strong> dénomination officielle, nom du service, identifiant légal, État membre, support, nature de l’activité et éventuel intermédiaire.</p>
-      <p><strong>Signal d’alerte :</strong> la marque affichée ne correspond pas à l’entité certifiée ou le certificat ne peut pas être validé.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>2. Lire l’usage déclaré</summary>
-    <div class="eudi-audit-body">
-      <p><strong>À comparer :</strong> la finalité annoncée, les attestations enregistrées et chaque attribut demandé.</p>
-      <p><strong>Signal d’alerte :</strong> une donnée apparaît dans la requête mais pas dans le certificat d’enregistrement.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>3. Vérifier le reçu de transaction</summary>
-    <div class="eudi-audit-body">
-      <p><strong>À conserver :</strong> date, heure, service, identifiant, État, données demandées, données présentées et motif d’un échec.</p>
-      <p><strong>Limite :</strong> le journal documente l’événement ; il ne prouve pas automatiquement une faute ni un montant de préjudice.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>4. Exercer un droit</summary>
-    <div class="eudi-audit-body">
-      <p><strong>Depuis le tableau de bord :</strong> demander l’effacement au service ou signaler une requête présumée illicite ou suspecte à l’autorité de protection des données.</p>
-      <p><strong>À mesurer :</strong> accusé de réception, délai de réponse, résultat obtenu et conservation de la preuve.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>5. Documenter le risque financier</summary>
-    <div class="eudi-audit-body">
-      <p><strong>Chronologie :</strong> heure du refus, échéance de la démarche, alternative disponible, coût direct, interlocuteur et date du retour à la normale.</p>
-      <p><strong>Question finale :</strong> quelle entité peut préserver le droit, corriger l’erreur et indemniser la perte ?</p>
-    </div>
-  </details>
-
-  <p class="eudi-audit-note">Aucune donnée personnelle n’est saisie ni transmise par cet outil éditorial sans JavaScript.</p>
-</section>
-
-<style>{`
-.eudi-audit-tool{margin:1.6rem 0;padding:1rem;border:1px solid var(--color-line);border-radius:15px 4px 15px 15px;background:linear-gradient(145deg,color-mix(in srgb,var(--color-signal) 5%,transparent),transparent 48%),var(--surface-elevated);box-shadow:inset 0 1px 0 var(--edge-highlight),0 16px 48px color-mix(in srgb,#000 15%,transparent)}
-.eudi-audit-head{padding:.2rem .2rem .8rem}.eudi-audit-kicker{margin:0 0 .35rem!important;color:var(--color-signal)!important;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em}.eudi-audit-head h3{margin:.1rem 0 .45rem!important;color:var(--color-bright)!important}.eudi-audit-head p{margin:.25rem 0!important}
-.eudi-audit-tool details{margin:.65rem 0;border:1px solid var(--color-line);border-radius:10px;background:var(--surface-inset);overflow:hidden}.eudi-audit-tool summary{cursor:pointer;padding:.85rem 1rem;color:var(--color-bright);font-family:var(--font-mono);font-weight:650;font-size:.9rem;list-style-position:inside}.eudi-audit-tool details[open] summary{border-bottom:1px solid var(--color-line);color:var(--color-signal)}.eudi-audit-body{padding:.85rem 1rem}.eudi-audit-body p{margin:.35rem 0!important;font-size:.94rem}.eudi-audit-note{margin:.85rem .15rem .1rem!important;color:var(--color-muted)!important;font-family:var(--font-mono);font-size:.72rem}
-@media(max-width:480px){.eudi-audit-tool{padding:.75rem}.eudi-audit-tool summary{padding:.75rem .8rem;font-size:.82rem}.eudi-audit-body{padding:.75rem .8rem}.eudi-audit-body p{font-size:.9rem}}
-`}</style>
+<EudiRequestAudit lang="fr" mode="embed" />
 
 ## Les incidents devront eux aussi devenir des données publiques
 

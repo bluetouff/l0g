@@ -1,0 +1,73 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import EudiRequestAudit from '../../../components/EudiRequestAudit.astro';
+import {
+  EUDI_RECEIPT_FIELDS,
+  EUDI_REQUEST_AUDIT_DATA_DATE,
+  EUDI_REQUEST_AUDIT_MODEL_VERSION,
+  EUDI_REQUEST_AUDIT_SOURCES,
+} from '../../../lib/eudi-request-audit-model.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const frPath = '/outils/qui-demande-quoi/';
+const pagePath = '/en/tools/who-asks-for-what/';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${pagePath}#app`,
+  name: 'Who asks for what from your identity?',
+  description: 'Local EUDI request audit covering service identity, declared and requested categories, and transaction-log fields.',
+  url: `${SITE}${pagePath}`,
+  applicationCategory: 'SecurityApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript performs a local comparison. No data are transmitted or retained.',
+  softwareVersion: EUDI_REQUEST_AUDIT_MODEL_VERSION,
+  dateModified: EUDI_REQUEST_AUDIT_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: EUDI_REQUEST_AUDIT_SOURCES.map((source) => source.url),
+};
+---
+
+<EnglishGuidesLayout
+  seoTitle="EUDI Wallet: audit an identity request | l0g"
+  ogTitle="Who asks for what from your identity?"
+  title="Local EUDI request audit"
+  description="Compare declared and requested categories, check the requester and inspect receipt fields. No account, tracker or transmission."
+  alternateLinks={[
+    { hreflang: 'en', href: new URL(pagePath, Astro.site).toString() },
+    { hreflang: 'fr', href: new URL(frPath, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(frPath, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="11"
+    kicker="digital identity"
+    title="Check the request before sharing"
+    description="The registry and certificate should make the requester verifiable. The wallet must warn about categories requested beyond the declaration and retain the transaction’s minimum evidence."
+    secondary={`Reference checked on ${EUDI_REQUEST_AUDIT_DATA_DATE}. Do not enter a name, identifier or personal attribute value.`}
+    glyph="verify"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${EUDI_REQUEST_AUDIT_MODEL_VERSION}`, label: 'public model' },
+      { value: '3', label: 'pre-sharing checks' },
+      { value: String(EUDI_RECEIPT_FIELDS.length), label: 'receipt fields' },
+    ]}
+  />
+
+  <EudiRequestAudit lang="en" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article><p class="mono-label">// what the tool compares</p><h2>Category names</h2><p>The diagnostic literally compares categories declared in the certificate with categories presented by the request. It receives no name, address or attribute value.</p></article>
+    <article><p class="mono-label">// what it cannot decide</p><h2>Lawfulness and necessity</h2><p>A match does not prove that collection is necessary or lawful. A difference may also reflect synonymous labels. The certificate, legal basis and context still need review.</p></article>
+  </section>
+</EnglishGuidesLayout>
+
+<style>
+  .tool-reading{display:grid;gap:.9rem;margin-top:1rem}.tool-reading article{min-width:0;border:1px solid var(--color-line);border-radius:12px;padding:1rem;background:color-mix(in srgb,var(--color-surface) 72%,transparent)}.tool-reading .mono-label{color:var(--color-signal)}.tool-reading h2{margin-top:.45rem;color:var(--color-bright);font-family:var(--font-display);font-size:1.15rem}.tool-reading article>p:last-child{margin-top:.55rem;color:var(--color-muted);font-size:.8rem;line-height:1.62}@media(min-width:760px){.tool-reading{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

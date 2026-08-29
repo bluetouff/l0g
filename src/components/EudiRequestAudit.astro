@@ -1,0 +1,446 @@
+---
+import {
+  EUDI_RECEIPT_FIELDS,
+  EUDI_REQUEST_AUDIT_DATA_DATE,
+  EUDI_REQUEST_AUDIT_MODEL_VERSION,
+  EUDI_REQUEST_AUDIT_PRESETS,
+  EUDI_REQUEST_AUDIT_SOURCES,
+  emptyReceiptFields,
+  evaluateEudiRequestAudit,
+} from '../lib/eudi-request-audit-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const isFull = mode === 'full';
+const id = `eudi-request-audit-${lang}-${mode}`;
+const preset = EUDI_REQUEST_AUDIT_PRESETS.overasking[lang];
+const initialResult = evaluateEudiRequestAudit({
+  ...preset,
+  outcome: 'not-checked',
+  receiptFields: emptyReceiptFields(),
+});
+
+const copy = isFr ? {
+  eyebrow: '// AUDIT LOCAL DE LA DEMANDE',
+  title: 'Qui demande quoi à votre identité ?',
+  intro: 'Comparez les catégories annoncées dans le certificat avec celles réclamées par la transaction, puis vérifiez le reçu laissé par le wallet.',
+  badge: 'local · zéro envoi',
+  demo: 'Exemples pédagogiques',
+  alignedPreset: 'Demande alignée',
+  overaskingPreset: 'Demande excessive',
+  emptyPreset: 'Contrôle vide',
+  demoNote: 'Les exemples ne décrivent aucun service réel. Ils montrent seulement la logique de comparaison.',
+  requester: '1. Identifier le demandeur',
+  registryEntry: 'Entrée retrouvée dans le registre public',
+  certificateValid: 'Certificat d’enregistrement validé',
+  identityMatches: 'L’identité affichée correspond au certificat',
+  yes: 'Oui',
+  no: 'Non',
+  unknown: 'Inconnu',
+  attributes: '2. Comparer les catégories de données',
+  declared: 'Catégories déclarées dans le certificat',
+  requested: 'Catégories demandées par la transaction',
+  listHint: 'Une catégorie par ligne. N’inscrivez aucune valeur personnelle.',
+  declaredPlaceholder: 'preuve d’âge\nnom',
+  requestedPlaceholder: 'preuve d’âge\nnom\nadresse complète',
+  receipt: '3. Auditer le reçu après la transaction',
+  outcome: 'Résultat de la transaction',
+  notChecked: 'Pas encore contrôlé',
+  success: 'Transaction réussie',
+  failed: 'Transaction échouée',
+  receiptHint: 'Cochez uniquement les champs réellement présents dans le journal ou le tableau de bord.',
+  result: 'Diagnostic',
+  requestLabel: 'Demande',
+  receiptLabel: 'Reçu',
+  requestBlocked: 'Arrêt ou vérification renforcée',
+  requestWarning: 'Preuves insuffisantes',
+  requestAligned: 'Demande cohérente avec les éléments saisis',
+  requestBlockedText: 'Un contrôle échoue ou la demande contient au moins une catégorie absente de la déclaration.',
+  requestWarningText: 'Le demandeur ou le périmètre demandé ne peut pas encore être vérifié.',
+  requestAlignedText: 'Aucun dépassement n’est détecté par comparaison exacte. Cela ne prouve pas la licéité de la collecte.',
+  receiptNotChecked: 'Reçu non contrôlé',
+  receiptIncomplete: 'Reçu incomplet',
+  receiptComplete: 'Champs minimaux présents',
+  receiptNotCheckedText: 'Choisissez le résultat de la transaction pour auditer le journal.',
+  receiptIncompleteText: 'Au moins un champ requis manque dans le reçu déclaré.',
+  receiptCompleteText: 'Tous les champs requis pour le résultat choisi sont cochés.',
+  excess: 'Catégories demandées hors déclaration',
+  none: 'aucune',
+  missing: 'Éléments manquants ou inconnus',
+  declaredCount: 'déclarées',
+  requestedCount: 'demandées',
+  copy: 'Copier le diagnostic',
+  copied: 'Diagnostic copié.',
+  copyFailed: 'Copie impossible. Le diagnostic reste visible à l’écran.',
+  method: 'Méthode, sources et limites',
+  limitation: 'La comparaison est littérale après normalisation typographique. Deux synonymes peuvent être signalés à tort comme différents. Le statut « arrêt » est une règle de prudence propre à cet outil, pas une décision imposée à tous les wallets. L’outil ne valide ni la base juridique, ni la nécessité, ni l’identité réelle d’un service. Il ne faut saisir que des noms de catégories, jamais de valeurs personnelles.',
+  source: 'source primaire',
+  snapshot: `Référentiel vérifié au ${EUDI_REQUEST_AUDIT_DATA_DATE} · modèle v${EUDI_REQUEST_AUDIT_MODEL_VERSION}`,
+  openFull: 'Ouvrir l’outil en pleine largeur',
+  backArticle: 'Revenir à l’enquête',
+  model: 'model.json',
+} : {
+  eyebrow: '// LOCAL REQUEST AUDIT',
+  title: 'Who asks for what from your identity?',
+  intro: 'Compare the categories declared in the certificate with those requested by the transaction, then inspect the receipt left by the wallet.',
+  badge: 'local · zero transmission',
+  demo: 'Educational examples',
+  alignedPreset: 'Aligned request',
+  overaskingPreset: 'Excessive request',
+  emptyPreset: 'Blank audit',
+  demoNote: 'The examples describe no real service. They only demonstrate the comparison logic.',
+  requester: '1. Identify the requester',
+  registryEntry: 'Entry found in the public registry',
+  certificateValid: 'Registration certificate validated',
+  identityMatches: 'Displayed identity matches the certificate',
+  yes: 'Yes',
+  no: 'No',
+  unknown: 'Unknown',
+  attributes: '2. Compare data categories',
+  declared: 'Categories declared in the certificate',
+  requested: 'Categories requested by the transaction',
+  listHint: 'One category per line. Do not enter personal values.',
+  declaredPlaceholder: 'proof of age\nname',
+  requestedPlaceholder: 'proof of age\nname\nfull address',
+  receipt: '3. Audit the post-transaction receipt',
+  outcome: 'Transaction outcome',
+  notChecked: 'Not checked yet',
+  success: 'Successful transaction',
+  failed: 'Failed transaction',
+  receiptHint: 'Check only fields actually present in the log or dashboard.',
+  result: 'Diagnostic',
+  requestLabel: 'Request',
+  receiptLabel: 'Receipt',
+  requestBlocked: 'Stop or verify further',
+  requestWarning: 'Insufficient evidence',
+  requestAligned: 'Request aligns with the entered evidence',
+  requestBlockedText: 'A check fails or at least one requested category is absent from the declaration.',
+  requestWarningText: 'The requester or requested scope cannot yet be verified.',
+  requestAlignedText: 'No excess is found by exact comparison. This does not prove that collection is lawful.',
+  receiptNotChecked: 'Receipt not checked',
+  receiptIncomplete: 'Incomplete receipt',
+  receiptComplete: 'Minimum fields present',
+  receiptNotCheckedText: 'Select the transaction outcome to audit the log.',
+  receiptIncompleteText: 'At least one required field is missing from the declared receipt.',
+  receiptCompleteText: 'All fields required for the selected outcome are checked.',
+  excess: 'Requested categories absent from the declaration',
+  none: 'none',
+  missing: 'Missing or unknown evidence',
+  declaredCount: 'declared',
+  requestedCount: 'requested',
+  copy: 'Copy diagnostic',
+  copied: 'Diagnostic copied.',
+  copyFailed: 'Copy failed. The diagnostic remains visible on screen.',
+  method: 'Method, sources and limitations',
+  limitation: 'Comparison is literal after typographic normalisation. Synonyms may be incorrectly flagged as different. The “stop” status is this tool’s precautionary rule, not a decision imposed on every wallet. The tool does not validate legal basis, necessity or a service’s real identity. Enter category names only, never personal values.',
+  source: 'primary source',
+  snapshot: `Reference checked on ${EUDI_REQUEST_AUDIT_DATA_DATE} · model v${EUDI_REQUEST_AUDIT_MODEL_VERSION}`,
+  openFull: 'Open the full-width tool',
+  backArticle: 'Return to the investigation',
+  model: 'model.json',
+};
+
+const answerOptions = [
+  { value: 'unknown', label: copy.unknown },
+  { value: 'yes', label: copy.yes },
+  { value: 'no', label: copy.no },
+];
+---
+
+<section
+  class:list={['era-tool', isFull && 'era-tool--full']}
+  id={id}
+  data-eudi-request-audit
+  data-lang={lang}
+  data-copied={copy.copied}
+  data-copy-failed={copy.copyFailed}
+>
+  <header class="era-head">
+    <div>
+      <p class="era-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="era-badge">{copy.badge}</span>
+  </header>
+
+  <section class="era-presets" aria-labelledby={`${id}-presets`}>
+    <div>
+      <h3 id={`${id}-presets`}>{copy.demo}</h3>
+      <p>{copy.demoNote}</p>
+    </div>
+    <div class="era-preset-buttons">
+      <button type="button" data-preset="aligned">{copy.alignedPreset}</button>
+      <button type="button" data-preset="overasking" aria-pressed="true">{copy.overaskingPreset}</button>
+      <button type="button" data-preset="unverifiable">{copy.emptyPreset}</button>
+    </div>
+  </section>
+
+  <div class="era-workspace">
+    <form class="era-controls" autocomplete="off">
+      <fieldset>
+        <legend>{copy.requester}</legend>
+        <label>
+          <span>{copy.registryEntry}</span>
+          <select name="registryEntry">
+            {answerOptions.map((option) => <option value={option.value} selected={option.value === preset.registryEntry}>{option.label}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>{copy.certificateValid}</span>
+          <select name="certificateValid">
+            {answerOptions.map((option) => <option value={option.value} selected={option.value === preset.certificateValid}>{option.label}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>{copy.identityMatches}</span>
+          <select name="identityMatches">
+            {answerOptions.map((option) => <option value={option.value} selected={option.value === preset.identityMatches}>{option.label}</option>)}
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>{copy.attributes}</legend>
+        <p class="era-field-hint">{copy.listHint}</p>
+        <div class="era-textareas">
+          <label>
+            <span>{copy.declared}</span>
+            <textarea name="declaredAttributes" rows="5" maxlength="1200" spellcheck="false" placeholder={copy.declaredPlaceholder}>{preset.declaredAttributes.join('\n')}</textarea>
+          </label>
+          <label>
+            <span>{copy.requested}</span>
+            <textarea name="requestedAttributes" rows="5" maxlength="1200" spellcheck="false" placeholder={copy.requestedPlaceholder}>{preset.requestedAttributes.join('\n')}</textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>{copy.receipt}</legend>
+        <label>
+          <span>{copy.outcome}</span>
+          <select name="outcome">
+            <option value="not-checked">{copy.notChecked}</option>
+            <option value="success">{copy.success}</option>
+            <option value="failed">{copy.failed}</option>
+          </select>
+        </label>
+        <p class="era-field-hint">{copy.receiptHint}</p>
+        <div class="era-receipt-fields">
+          {EUDI_RECEIPT_FIELDS.map((field) => (
+            <label data-failure-only={field.requiredFor === 'failed' ? '' : undefined}>
+              <input type="checkbox" name={`receipt-${field.id}`} />
+              <span>{isFr ? field.labelFr : field.labelEn}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </form>
+
+    <aside class="era-output" aria-live="polite">
+      <p class="era-output-label">// {copy.result}</p>
+      <div class="era-status era-status--blocked" data-request-status data-state={initialResult.requestStatus}>
+        <small>{copy.requestLabel}</small>
+        <strong data-request-title>{copy.requestBlocked}</strong>
+        <p data-request-text>{copy.requestBlockedText}</p>
+      </div>
+      <div class="era-status" data-receipt-status data-state={initialResult.receiptStatus}>
+        <small>{copy.receiptLabel}</small>
+        <strong data-receipt-title>{copy.receiptNotChecked}</strong>
+        <p data-receipt-text>{copy.receiptNotCheckedText}</p>
+      </div>
+
+      <div class="era-counts">
+        <span><strong data-declared-count>{initialResult.declaredCount}</strong> {copy.declaredCount}</span>
+        <span><strong data-requested-count>{initialResult.requestedCount}</strong> {copy.requestedCount}</span>
+      </div>
+
+      <section class="era-findings" data-excess-section>
+        <h3>{copy.excess}</h3>
+        <ul data-excess-list>{initialResult.excessAttributes.map((attribute) => <li>{attribute}</li>)}</ul>
+        <p data-excess-empty hidden>{copy.none}</p>
+      </section>
+
+      <section class="era-findings" data-missing-section>
+        <h3>{copy.missing}</h3>
+        <ul data-missing-list></ul>
+        <p data-missing-empty>{copy.none}</p>
+      </section>
+
+      <button class="era-copy" type="button" data-copy>{copy.copy}</button>
+      <p class="era-copy-status" data-copy-status></p>
+    </aside>
+  </div>
+
+  <details class="era-method">
+    <summary>{copy.method}</summary>
+    <p>{copy.limitation}</p>
+    <ul>
+      {EUDI_REQUEST_AUDIT_SOURCES.map((source) => (
+        <li><a href={source.url}>{isFr ? source.labelFr : source.labelEn}</a> <span>{copy.source}</span></li>
+      ))}
+    </ul>
+    <p>{copy.snapshot}</p>
+  </details>
+
+  <footer class="era-links">
+    {isFull
+      ? <a href={isFr ? '/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/' : '/en/analysis/your-identity-in-your-phone-8-your-identity-should-leave-you-a-receipt/'}>{copy.backArticle}</a>
+      : <a href={isFr ? '/outils/qui-demande-quoi/' : '/en/tools/who-asks-for-what/'}>{copy.openFull}</a>}
+    <a href="/outils/qui-demande-quoi/model.json">{copy.model}</a>
+  </footer>
+</section>
+
+<script>
+  import {
+    EUDI_RECEIPT_FIELDS,
+    EUDI_REQUEST_AUDIT_PRESETS,
+    emptyReceiptFields,
+    evaluateEudiRequestAudit,
+    parseAttributeList,
+  } from '../lib/eudi-request-audit-model.ts';
+
+  const initialiseEudiRequestAudits = () => {
+    document.querySelectorAll<HTMLElement>('[data-eudi-request-audit]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const labels = lang === 'fr' ? {
+        registryEntry: 'entrée du registre', certificateValid: 'certificat', identityMatches: 'identité du service',
+        request: { blocked: ['Arrêt ou vérification renforcée', 'Un contrôle échoue ou la demande contient au moins une catégorie absente de la déclaration.'], warning: ['Preuves insuffisantes', 'Le demandeur ou le périmètre demandé ne peut pas encore être vérifié.'], aligned: ['Demande cohérente avec les éléments saisis', 'Aucun dépassement n’est détecté par comparaison exacte. Cela ne prouve pas la licéité de la collecte.'] },
+        receipt: { 'not-checked': ['Reçu non contrôlé', 'Choisissez le résultat de la transaction pour auditer le journal.'], incomplete: ['Reçu incomplet', 'Au moins un champ requis manque dans le reçu déclaré.'], complete: ['Champs minimaux présents', 'Tous les champs requis pour le résultat choisi sont cochés.'] },
+        reportTitle: 'AUDIT LOCAL D’UNE DEMANDE EUDI', requestLabel: 'Demande', receiptLabel: 'Reçu', excess: 'Catégories non déclarées', missing: 'Éléments manquants ou inconnus', none: 'aucun', caution: 'Comparaison littérale et pédagogique. Ne pas saisir de valeur personnelle.',
+      } : {
+        registryEntry: 'registry entry', certificateValid: 'certificate', identityMatches: 'service identity',
+        request: { blocked: ['Stop or verify further', 'A check fails or at least one requested category is absent from the declaration.'], warning: ['Insufficient evidence', 'The requester or requested scope cannot yet be verified.'], aligned: ['Request aligns with the entered evidence', 'No excess is found by exact comparison. This does not prove that collection is lawful.'] },
+        receipt: { 'not-checked': ['Receipt not checked', 'Select the transaction outcome to audit the log.'], incomplete: ['Incomplete receipt', 'At least one required field is missing from the declared receipt.'], complete: ['Minimum fields present', 'All fields required for the selected outcome are checked.'] },
+        reportTitle: 'LOCAL EUDI REQUEST AUDIT', requestLabel: 'Request', receiptLabel: 'Receipt', excess: 'Undeclared categories', missing: 'Missing or unknown evidence', none: 'none', caution: 'Literal educational comparison. Do not enter personal values.',
+      };
+      const field = <T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(name: string) => form.elements.namedItem(name) as T | null;
+      const text = (selector: string, value: string) => {
+        const element = root.querySelector<HTMLElement>(selector);
+        if (element) element.textContent = value;
+      };
+      let latestReport = '';
+
+      const renderList = (selector: string, emptySelector: string, values: string[]) => {
+        const list = root.querySelector<HTMLUListElement>(selector);
+        const empty = root.querySelector<HTMLElement>(emptySelector);
+        if (!list || !empty) return;
+        list.replaceChildren(...values.map((value) => {
+          const item = document.createElement('li');
+          item.textContent = value;
+          return item;
+        }));
+        list.hidden = values.length === 0;
+        empty.hidden = values.length > 0;
+      };
+
+      const collect = () => {
+        const receiptFields = emptyReceiptFields();
+        for (const receiptField of EUDI_RECEIPT_FIELDS) {
+          const input = field<HTMLInputElement>(`receipt-${receiptField.id}`);
+          receiptFields[receiptField.id] = Boolean(input?.checked);
+        }
+        return {
+          registryEntry: field<HTMLSelectElement>('registryEntry')?.value as 'yes' | 'no' | 'unknown',
+          certificateValid: field<HTMLSelectElement>('certificateValid')?.value as 'yes' | 'no' | 'unknown',
+          identityMatches: field<HTMLSelectElement>('identityMatches')?.value as 'yes' | 'no' | 'unknown',
+          declaredAttributes: parseAttributeList(field<HTMLTextAreaElement>('declaredAttributes')?.value ?? ''),
+          requestedAttributes: parseAttributeList(field<HTMLTextAreaElement>('requestedAttributes')?.value ?? ''),
+          outcome: field<HTMLSelectElement>('outcome')?.value as 'not-checked' | 'success' | 'failed',
+          receiptFields,
+        };
+      };
+
+      const update = () => {
+        const inputs = collect();
+        const result = evaluateEudiRequestAudit(inputs);
+        const requestCopy = labels.request[result.requestStatus];
+        const receiptCopy = labels.receipt[result.receiptStatus];
+        const requestCard = root.querySelector<HTMLElement>('[data-request-status]');
+        const receiptCard = root.querySelector<HTMLElement>('[data-receipt-status]');
+        if (requestCard) requestCard.dataset.state = result.requestStatus;
+        if (receiptCard) receiptCard.dataset.state = result.receiptStatus;
+        text('[data-request-title]', requestCopy[0]);
+        text('[data-request-text]', requestCopy[1]);
+        text('[data-receipt-title]', receiptCopy[0]);
+        text('[data-receipt-text]', receiptCopy[1]);
+        text('[data-declared-count]', String(result.declaredCount));
+        text('[data-requested-count]', String(result.requestedCount));
+        renderList('[data-excess-list]', '[data-excess-empty]', result.excessAttributes);
+
+        const identityMissing = [...result.missingIdentityChecks, ...result.unknownIdentityChecks].map((key) => labels[key]);
+        const receiptMissing = result.missingReceiptFields.map((id) => {
+          const definition = EUDI_RECEIPT_FIELDS.find((item) => item.id === id);
+          return definition ? (lang === 'fr' ? definition.labelFr : definition.labelEn) : id;
+        });
+        const missing = [...new Set([...identityMissing, ...receiptMissing])];
+        renderList('[data-missing-list]', '[data-missing-empty]', missing);
+
+        const failureOnly = root.querySelector<HTMLElement>('[data-failure-only]');
+        if (failureOnly) failureOnly.hidden = inputs.outcome !== 'failed';
+        latestReport = [
+          labels.reportTitle,
+          '',
+          `${labels.requestLabel}: ${requestCopy[0]}`,
+          `${labels.receiptLabel}: ${receiptCopy[0]}`,
+          `${labels.excess}: ${result.excessAttributes.join(', ') || labels.none}`,
+          `${labels.missing}: ${missing.join(', ') || labels.none}`,
+          '',
+          labels.caution,
+        ].join('\n');
+        text('[data-copy-status]', '');
+      };
+
+      const applyPreset = (name: 'aligned' | 'overasking' | 'unverifiable') => {
+        const preset = EUDI_REQUEST_AUDIT_PRESETS[name][lang];
+        const set = (name: string, value: string) => {
+          const element = field<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(name);
+          if (element) element.value = value;
+        };
+        set('registryEntry', preset.registryEntry);
+        set('certificateValid', preset.certificateValid);
+        set('identityMatches', preset.identityMatches);
+        set('declaredAttributes', preset.declaredAttributes.join('\n'));
+        set('requestedAttributes', preset.requestedAttributes.join('\n'));
+        set('outcome', 'not-checked');
+        for (const receiptField of EUDI_RECEIPT_FIELDS) {
+          const input = field<HTMLInputElement>(`receipt-${receiptField.id}`);
+          if (input) input.checked = false;
+        }
+        root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.preset === name)));
+        update();
+      };
+
+      form.addEventListener('input', update);
+      root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => button.addEventListener('click', () => applyPreset(button.dataset.preset as 'aligned' | 'overasking' | 'unverifiable')));
+      root.querySelector<HTMLButtonElement>('[data-copy]')?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(latestReport);
+          text('[data-copy-status]', root.dataset.copied ?? '');
+        } catch {
+          text('[data-copy-status]', root.dataset.copyFailed ?? '');
+        }
+      });
+      update();
+    });
+  };
+
+  initialiseEudiRequestAudits();
+  document.addEventListener('astro:page-load', initialiseEudiRequestAudits);
+</script>
+
+<style>
+  .era-tool{max-width:100%;min-width:0;margin:1.7rem 0;border:1px solid color-mix(in srgb,var(--color-signal) 35%,var(--color-line));border-radius:20px 6px 20px 20px;padding:clamp(.85rem,2.5vw,1.35rem);overflow:hidden;background:radial-gradient(80% 100% at 0 0,color-mix(in srgb,var(--color-signal) 10%,transparent),transparent 70%),color-mix(in srgb,var(--color-surface) 88%,var(--color-bg));box-shadow:0 18px 55px rgba(0,0,0,.18)}.era-tool *{box-sizing:border-box}.era-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}.era-head>div{min-width:0}.era-eyebrow{margin:0;color:var(--color-signal);font:800 .66rem/1.2 var(--font-mono);letter-spacing:.11em}.era-head h2{margin:.48rem 0 0;color:var(--color-bright);font:750 clamp(1.45rem,4vw,2.25rem)/1.03 var(--font-display);letter-spacing:-.025em}.era-head div>p:last-child{max-width:54rem;margin:.7rem 0 0;color:var(--color-muted);font-size:.82rem;line-height:1.62}.era-badge{flex:0 0 auto;border:1px solid var(--color-signal);border-radius:999px;padding:.42rem .6rem;color:var(--color-signal);font:700 .58rem/1 var(--font-mono);white-space:nowrap}.era-presets{display:grid;gap:.75rem;margin-top:1rem;border:1px solid var(--color-line);border-radius:12px;padding:.85rem;background:color-mix(in srgb,var(--color-bg) 72%,transparent)}.era-presets h3,.era-controls legend,.era-findings h3{margin:0;color:var(--color-bright);font:700 .75rem/1.35 var(--font-mono)}.era-presets p{margin:.3rem 0 0;color:var(--color-muted);font-size:.69rem;line-height:1.48}.era-preset-buttons{display:flex;flex-wrap:wrap;gap:.48rem}.era-preset-buttons button,.era-copy{border:1px solid var(--color-line);border-radius:8px;padding:.58rem .68rem;background:var(--color-bg);color:var(--color-muted);font:700 .61rem/1 var(--font-mono);cursor:pointer}.era-preset-buttons button[aria-pressed="true"],.era-preset-buttons button:hover,.era-copy:hover{border-color:var(--color-signal);color:var(--color-signal);background:color-mix(in srgb,var(--color-signal) 8%,var(--color-bg))}.era-workspace{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(16rem,.82fr);gap:1rem;margin-top:1rem}.era-controls,.era-output{min-width:0}.era-controls fieldset{min-width:0;margin:0 0 .8rem;border:1px solid var(--color-line);border-radius:12px;padding:.85rem;background:color-mix(in srgb,var(--color-bg) 72%,transparent)}.era-controls legend{padding:0 .35rem;color:var(--color-signal)}.era-controls label{display:block;min-width:0;margin:.65rem 0 0}.era-controls label>span{display:block;margin-bottom:.32rem;color:var(--color-bright);font:650 .67rem/1.4 var(--font-mono)}.era-controls select,.era-controls textarea{display:block;width:100%;max-width:100%;border:1px solid var(--color-line);border-radius:8px;padding:.64rem .68rem;background:var(--color-bg);color:var(--color-bright);font:.7rem/1.45 var(--font-mono)}.era-controls textarea{resize:vertical;overflow-wrap:anywhere}.era-field-hint{margin:.35rem 0 .5rem;color:var(--color-muted);font-size:.66rem;line-height:1.45}.era-textareas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}.era-receipt-fields{display:grid;gap:.44rem;margin-top:.65rem}.era-receipt-fields label{display:flex;align-items:flex-start;gap:.55rem;margin:0;border:1px solid color-mix(in srgb,var(--color-line) 72%,transparent);border-radius:8px;padding:.56rem;background:color-mix(in srgb,var(--color-surface) 55%,transparent);cursor:pointer}.era-receipt-fields input{flex:0 0 auto;width:1rem;height:1rem;margin:.04rem 0 0;accent-color:var(--color-signal)}.era-receipt-fields label>span{margin:0;font-size:.65rem}.era-output{position:sticky;top:1rem;align-self:start;border:1px solid var(--color-line);border-radius:14px;padding:.9rem;background:var(--color-bg)}.era-output-label{margin:0;color:var(--color-signal);font:800 .65rem/1 var(--font-mono)}.era-status{margin-top:.7rem;border:1px solid var(--color-line);border-radius:10px;padding:.75rem;background:color-mix(in srgb,var(--color-surface) 70%,transparent)}.era-status[data-state="blocked"],.era-status[data-state="incomplete"]{border-color:color-mix(in srgb,#ff4d87 60%,var(--color-line));background:color-mix(in srgb,#ff4d87 7%,var(--color-bg))}.era-status[data-state="warning"],.era-status[data-state="not-checked"]{border-color:color-mix(in srgb,var(--color-amber) 55%,var(--color-line));background:color-mix(in srgb,var(--color-amber) 7%,var(--color-bg))}.era-status[data-state="aligned"],.era-status[data-state="complete"]{border-color:color-mix(in srgb,var(--color-signal) 55%,var(--color-line));background:color-mix(in srgb,var(--color-signal) 7%,var(--color-bg))}.era-status small{display:block;color:var(--color-muted);font:650 .56rem/1 var(--font-mono);text-transform:uppercase;letter-spacing:.08em}.era-status strong{display:block;margin-top:.38rem;color:var(--color-bright);font:750 .78rem/1.35 var(--font-mono)}.era-status p{margin:.4rem 0 0;color:var(--color-muted);font-size:.69rem;line-height:1.48}.era-counts{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}.era-counts span{border:1px solid var(--color-line);border-radius:999px;padding:.36rem .52rem;color:var(--color-muted);font-size:.6rem}.era-counts strong{color:var(--color-bright)}.era-findings{margin-top:.75rem;border-top:1px solid var(--color-line);padding-top:.7rem}.era-findings ul{display:grid;gap:.3rem;margin:.5rem 0 0;padding-left:1rem;color:var(--color-bright);font-size:.67rem;line-height:1.42}.era-findings>p{margin:.45rem 0 0;color:var(--color-muted);font-size:.67rem}.era-copy{margin-top:.85rem;border-color:var(--color-signal);color:var(--color-signal)}.era-copy-status{min-height:1rem;margin:.4rem 0 0;color:var(--color-signal);font:.58rem/1.4 var(--font-mono)}.era-method{margin-top:.9rem;border:1px solid var(--color-line);border-radius:10px;padding:.72rem .8rem;background:color-mix(in srgb,var(--color-bg) 64%,transparent)}.era-method summary{cursor:pointer;color:var(--color-bright);font:700 .68rem/1.35 var(--font-mono)}.era-method p,.era-method li{color:var(--color-muted);font-size:.67rem;line-height:1.52}.era-method ul{display:grid;gap:.35rem;margin:.7rem 0;padding-left:1rem}.era-method a{color:var(--color-signal)}.era-method li span{margin-left:.35rem;color:var(--color-muted);font-size:.55rem;text-transform:uppercase}.era-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.85rem;border-top:1px solid var(--color-line);padding-top:.75rem}.era-links a{color:var(--color-signal);font:650 .61rem/1.35 var(--font-mono)}
+  @media(min-width:760px){.era-presets{grid-template-columns:minmax(0,1fr) auto;align-items:center}.era-tool--full .era-workspace{grid-template-columns:minmax(0,1.3fr) minmax(20rem,.7fr)}}
+  @media(max-width:760px){.era-head{display:block}.era-badge{display:inline-block;margin-top:.75rem}.era-workspace{grid-template-columns:1fr}.era-output{position:static}.era-textareas{grid-template-columns:1fr}}
+  @media(max-width:420px){.era-tool{padding:.72rem}.era-preset-buttons{display:grid;grid-template-columns:1fr}.era-preset-buttons button{width:100%;text-align:left}.era-controls fieldset,.era-output{padding:.72rem}}
+</style>

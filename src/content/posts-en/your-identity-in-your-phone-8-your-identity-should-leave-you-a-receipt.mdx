@@ -5,12 +5,14 @@ ogTitle: "Your identity should leave you a receipt"
 description: "Public registries, overasking alerts and failure logs: the future wallet should make those requesting your data auditable."
 ogImage: "/illustrations/news/france-identite-recu-identite-v1.jpg"
 pubDate: 2026-08-28T22:20:00+02:00
-updatedDate: 2026-08-28T22:20:00+02:00
+updatedDate: 2026-08-29T09:22:51+02:00
 tags: ["France Identité", "EUDI", "eIDAS", "privacy", "digital identity", "public registry", "data protection", "financial risk", "open source", "accessibility", "investigation"]
 draft: false
 sourceArticle: "votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu"
-sourceUpdatedDate: 2026-08-28T22:20:00+02:00
+sourceUpdatedDate: 2026-08-29T09:22:51+02:00
 ---
+
+import EudiRequestAudit from '../../components/EudiRequestAudit.astro';
 
 *A company asks you to prove your identity. Today, you rarely see the exact list of data it registered an intention to request, the recorded purpose of the collection or the certificate proving that it is the service it claims to be. If the transaction fails, you often leave with a generic error and almost no evidence explaining the refusal.*
 
@@ -271,64 +273,9 @@ As of 28 August 2026, l0g did not identify a French production registry meeting 
 
 ## l0g tool: **Who asks for what?**
 
-The component below does not query personal data and does not pretend to reproduce a registry that is not yet public. It turns European obligations into a reusable audit checklist. When the French API is published, the same structure could consume signed registry data.
+The tool below queries neither the French registry, which has not yet been published, nor any personal data. It locally compares categories declared in a certificate with those requested by a transaction, checks the service-identity evidence and audits the receipt’s minimum fields. Enter category names only, never personal values.
 
-<section class="eudi-audit-tool" aria-labelledby="eudi-audit-en-title">
-  <div class="eudi-audit-head">
-    <p class="eudi-audit-kicker">// AUDIT TOOL</p>
-    <h3 id="eudi-audit-en-title">Who asks for what?</h3>
-    <p>The wallet should not only display your data. It should make the requester, the request and the outcome auditable.</p>
-  </div>
-
-  <details open>
-    <summary>1. Identify the requester</summary>
-    <div class="eudi-audit-body">
-      <p><strong>Find in the registry:</strong> legal name, service name, identifier, Member State, support contact, type of activity and any intermediary.</p>
-      <p><strong>Warning sign:</strong> the brand shown does not match the certified entity or the certificate cannot be validated.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>2. Read the registered purpose</summary>
-    <div class="eudi-audit-body">
-      <p><strong>Compare:</strong> the stated purpose, registered attestations and every requested attribute.</p>
-      <p><strong>Warning sign:</strong> a field appears in the request but not in the registration certificate.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>3. Inspect the transaction receipt</summary>
-    <div class="eudi-audit-body">
-      <p><strong>Keep:</strong> date, time, service, identifier, State, data requested, data presented and reason for failure.</p>
-      <p><strong>Limit:</strong> the log documents the event; it does not automatically prove fault or quantify loss.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>4. Exercise a right</summary>
-    <div class="eudi-audit-body">
-      <p><strong>From the dashboard:</strong> request erasure from the service or report an allegedly unlawful or suspicious request to the data protection authority.</p>
-      <p><strong>Measure:</strong> acknowledgement, response time, outcome and preservation of evidence.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>5. Document financial risk</summary>
-    <div class="eudi-audit-body">
-      <p><strong>Timeline:</strong> time of refusal, transaction deadline, available alternative, direct cost, responsible contact and return-to-service date.</p>
-      <p><strong>Final question:</strong> which entity can preserve the right, correct the error and compensate the loss?</p>
-    </div>
-  </details>
-
-  <p class="eudi-audit-note">This no-JavaScript editorial tool collects and transmits no personal data.</p>
-</section>
-
-<style>{`
-.eudi-audit-tool{margin:1.6rem 0;padding:1rem;border:1px solid var(--color-line);border-radius:15px 4px 15px 15px;background:linear-gradient(145deg,color-mix(in srgb,var(--color-signal) 5%,transparent),transparent 48%),var(--surface-elevated);box-shadow:inset 0 1px 0 var(--edge-highlight),0 16px 48px color-mix(in srgb,#000 15%,transparent)}
-.eudi-audit-head{padding:.2rem .2rem .8rem}.eudi-audit-kicker{margin:0 0 .35rem!important;color:var(--color-signal)!important;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em}.eudi-audit-head h3{margin:.1rem 0 .45rem!important;color:var(--color-bright)!important}.eudi-audit-head p{margin:.25rem 0!important}
-.eudi-audit-tool details{margin:.65rem 0;border:1px solid var(--color-line);border-radius:10px;background:var(--surface-inset);overflow:hidden}.eudi-audit-tool summary{cursor:pointer;padding:.85rem 1rem;color:var(--color-bright);font-family:var(--font-mono);font-weight:650;font-size:.9rem;list-style-position:inside}.eudi-audit-tool details[open] summary{border-bottom:1px solid var(--color-line);color:var(--color-signal)}.eudi-audit-body{padding:.85rem 1rem}.eudi-audit-body p{margin:.35rem 0!important;font-size:.94rem}.eudi-audit-note{margin:.85rem .15rem .1rem!important;color:var(--color-muted)!important;font-family:var(--font-mono);font-size:.72rem}
-@media(max-width:480px){.eudi-audit-tool{padding:.75rem}.eudi-audit-tool summary{padding:.75rem .8rem;font-size:.82rem}.eudi-audit-body{padding:.75rem .8rem}.eudi-audit-body p{font-size:.9rem}}
-`}</style>
+<EudiRequestAudit lang="en" mode="embed" />
 
 ## Incidents must become public data too
 

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import EudiRequestAudit from '../../components/EudiRequestAudit.astro';
+import {
+  EUDI_RECEIPT_FIELDS,
+  EUDI_REQUEST_AUDIT_DATA_DATE,
+  EUDI_REQUEST_AUDIT_MODEL_VERSION,
+  EUDI_REQUEST_AUDIT_SOURCES,
+} from '../../lib/eudi-request-audit-model.ts';
+import { serializeInlineScriptData } from '../../lib/security.ts';
+
+const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
+const pagePath = '/outils/qui-demande-quoi/';
+const enPath = '/en/tools/who-asks-for-what/';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${SITE}${pagePath}#app`,
+  name: 'Qui demande quoi à votre identité ?',
+  description: 'Audit local d’une demande EUDI : identité du service, catégories déclarées et demandées, puis contrôle du reçu de transaction.',
+  url: `${SITE}${pagePath}`,
+  applicationCategory: 'SecurityApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'fr',
+  isAccessibleForFree: true,
+  browserRequirements: 'JavaScript effectue une comparaison locale. Aucune donnée n’est envoyée ou conservée.',
+  softwareVersion: EUDI_REQUEST_AUDIT_MODEL_VERSION,
+  dateModified: EUDI_REQUEST_AUDIT_DATA_DATE,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  isBasedOn: EUDI_REQUEST_AUDIT_SOURCES.map((source) => source.url),
+};
+---
+
+<BaseLayout
+  seoTitle="EUDI Wallet : auditer une demande d’identité | l0g"
+  ogTitle="Qui demande quoi à votre identité ?"
+  title="Audit local d’une demande EUDI"
+  description="Comparez les catégories déclarées et demandées, contrôlez le demandeur et vérifiez les champs du reçu. Aucun compte, aucun tracker, aucun envoi."
+  sidebar={false}
+  alternateLinks={[
+    { hreflang: 'fr', href: new URL(pagePath, Astro.site).toString() },
+    { hreflang: 'en', href: new URL(enPath, Astro.site).toString() },
+    { hreflang: 'x-default', href: new URL(pagePath, Astro.site).toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+
+  <PageHero
+    index="11"
+    kicker="identité numérique"
+    title="Vérifier la demande avant de partager"
+    description="Le registre et le certificat doivent rendre le demandeur vérifiable. Le wallet doit signaler les catégories réclamées au-delà de la déclaration et conserver les éléments minimaux de la transaction."
+    secondary={`Référentiel vérifié au ${EUDI_REQUEST_AUDIT_DATA_DATE}. Aucun nom, identifiant ou attribut personnel ne doit être saisi.`}
+    glyph="verify"
+    accent="var(--color-signal)"
+    stats={[
+      { value: `v${EUDI_REQUEST_AUDIT_MODEL_VERSION}`, label: 'modèle public' },
+      { value: '3', label: 'contrôles avant partage' },
+      { value: String(EUDI_RECEIPT_FIELDS.length), label: 'champs du reçu' },
+    ]}
+  />
+
+  <EudiRequestAudit lang="fr" mode="full" />
+
+  <section class="tool-reading" data-pagefind-body>
+    <article><p class="mono-label">// ce que l’outil compare</p><h2>Des noms de catégories</h2><p>Le diagnostic compare littéralement les catégories déclarées dans le certificat et celles présentées par la requête. Il ne reçoit ni nom, ni adresse, ni valeur d’attribut.</p></article>
+    <article><p class="mono-label">// ce qu’il ne décide pas</p><h2>La licéité et la nécessité</h2><p>Une correspondance ne prouve pas qu’une collecte est nécessaire ou licite. Une différence peut aussi venir de deux libellés synonymes. Le certificat, la base juridique et le contexte restent à examiner.</p></article>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-reading{display:grid;gap:.9rem;margin-top:1rem}.tool-reading article{min-width:0;border:1px solid var(--color-line);border-radius:12px;padding:1rem;background:color-mix(in srgb,var(--color-surface) 72%,transparent)}.tool-reading .mono-label{color:var(--color-signal)}.tool-reading h2{margin-top:.45rem;color:var(--color-bright);font-family:var(--font-display);font-size:1.15rem}.tool-reading article>p:last-child{margin-top:.55rem;color:var(--color-muted);font-size:.8rem;line-height:1.62}@media(min-width:760px){.tool-reading{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

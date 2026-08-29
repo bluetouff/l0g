@@ -21,6 +21,32 @@ export interface AnalysisTool {
 
 export const analysisTools: AnalysisTool[] = [
   {
+    id: 'eudi-request-audit',
+    version: '1.0.0',
+    status: 'active',
+    category: 'economics',
+    updatedAt: '2026-08-29',
+    modelHref: '/outils/qui-demande-quoi/model.json',
+    fr: {
+      title: 'Qui demande quoi ?',
+      eyebrow: 'identité numérique',
+      description: 'Comparez localement les catégories déclarées et demandées, contrôlez le demandeur puis auditez le reçu de transaction.',
+      question: 'La demande reste-t-elle dans le périmètre déclaré par le service ?',
+      href: '/outils/qui-demande-quoi/',
+      articleHref: '/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/',
+      articleLabel: 'Lire la conclusion de l’enquête',
+    },
+    en: {
+      title: 'Who asks for what?',
+      eyebrow: 'digital identity',
+      description: 'Locally compare declared and requested categories, check the requester and audit the transaction receipt.',
+      question: 'Does the request stay within the scope declared by the service?',
+      href: '/en/tools/who-asks-for-what/',
+      articleHref: '/en/analysis/your-identity-in-your-phone-8-your-identity-should-leave-you-a-receipt/',
+      articleLabel: 'Read the investigation conclusion',
+    },
+  },
+  {
     id: 'invoice-incident-log',
     version: '1.0.0',
     status: 'active',
