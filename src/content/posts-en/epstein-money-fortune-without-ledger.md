@@ -1,6 +1,7 @@
 ---
 title: "Epstein’s money, 1/4: the fortune without a ledger"
-description: "From Bear Stearns to Leon Black, the available records reconstruct part of Jeffrey Epstein’s fortune and show exactly what remains missing."
+seoTitle: "Jeffrey Epstein fortune: what public records prove | l0g"
+description: "Trace documented salaries, fees, loans, property transfers and Leon Black payments while preserving the gaps in Jeffrey Epstein's public ledger."
 pubDate: 2026-08-07T13:30:00+02:00
 updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "argent-epstein-fortune-sans-grand-livre"

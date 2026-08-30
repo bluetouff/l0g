@@ -1,6 +1,7 @@
 ---
 title: "Strategic reserves: the state of the buffer before round two"
-description: "The US Strategic Petroleum Reserve has fallen to 316.5 million barrels, its lowest since 1983, after the record 400-million-barrel release coordinated by the IEA in March. The blockade reimposed on 14 July reopens the supply shock with dented shock absorbers. A quantified inventory of the remaining cushions, of the only buffer still full, China's, and of the oil market's real safety margins."
+seoTitle: "US Strategic Petroleum Reserve falls to 316.5m barrels | l0g"
+description: "At 316.5m barrels, the US SPR was 56% empty after a record IEA release. Compare the remaining US, OECD and Chinese oil buffers."
 pubDate: 2026-07-17T09:40:00+02:00
 updatedDate: 2026-07-17T09:40:00+02:00
 tags: ["oil", "energy", "macro", "geopolitics", "commodities", "iran"]

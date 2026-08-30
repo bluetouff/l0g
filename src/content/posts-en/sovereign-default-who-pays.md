@@ -1,8 +1,8 @@
 ---
 title: "What really happens when a country stops paying its debt?"
-seoTitle: "Sovereign default: what really happens? | l0g"
+seoTitle: "Sovereign default: who pays after debt restructuring? | l0g"
 ogTitle: "When a state stops paying, who carries the loss?"
-description: "Ecuador, Germany, Argentina, Greece and Russia: what default, restructuring and cancellation really change, and who absorbs the loss."
+description: "Ecuador, Argentina, Greece, Russia and Germany show how sovereign default reallocates losses across creditors, banks, taxpayers and households."
 pubDate: 2026-08-23T18:10:00+02:00
 updatedDate: 2026-08-24T08:00:00+02:00
 tags: ["sovereign debt", "default", "Ecuador", "ECB", "macro"]

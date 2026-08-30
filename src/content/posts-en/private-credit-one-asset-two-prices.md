@@ -1,6 +1,7 @@
 ---
 title: "Private credit: one asset, two prices"
-description: "Listed BDCs trade below their NAV while non-traded funds redeem at par: two prices for a near-identical credit risk. Valuation mechanics, mark dispersion and paths to convergence, on primary sources."
+seoTitle: "Private credit NAV: why one asset can have two prices | l0g"
+description: "Listed BDCs traded near 0.83x book while non-traded funds marked similar loans near par. See how stale NAVs create first-mover risk."
 pubDate: 2026-07-13T15:00:00+02:00
 updatedDate: 2026-07-13T15:00:00+02:00
 tags: ["private credit", "valuation", "BDC", "NAV", "price discovery", "systemic risk"]

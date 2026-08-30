@@ -1,7 +1,7 @@
 ---
 title: "From GPU to Bond: How a Data Center Recycles AI Capital"
-seoTitle: "Nvidia data center: from GPUs to $525 million of notes | l0g"
-description: "In Columbus, COL4 hosts Nvidia clusters and later backed $525 million of notes. A documented anatomy of how a data center recycles capital."
+seoTitle: "Nvidia data center bonds: how COL4 recycled $525m | l0g"
+description: "COL4 installed Nvidia clusters, then backed $525m of secured notes. Follow how data-center contracts refinance buildings without making GPUs collateral."
 pubDate: 2026-08-11T16:00:00+02:00
 updatedDate: 2026-08-11T16:00:00+02:00
 sourceArticle: "nvidia-du-gpu-a-l-obligation-data-center"

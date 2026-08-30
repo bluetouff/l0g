@@ -1,6 +1,7 @@
 ---
 title: "The CLARITY Act under the scalpel: the new architecture of US crypto"
-description: "The CLARITY Act text as reported in the Senate runs to 594 pages and in fact contains two laws: a full overhaul of digital-asset regulation and a ban on a central bank digital currency. Its keystone is a maturity test that shifts an asset from the SEC to the CFTC. A section-by-section sectoral impact analysis of the official text: issuers, exchanges, DeFi, stablecoins, banks, and the blind spots. Nothing invented, everything sourced to the text."
+seoTitle: "CLARITY Act: SEC, CFTC, DeFi and CBDC rules mapped | l0g"
+description: "A section-by-section reading of the 594-page US crypto bill: maturity test, issuer disclosures, exchange registration, DeFi exclusions and CBDC ban."
 pubDate: 2026-07-23T10:56:00+02:00
 updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "crypto", "regulation", "us politics", "stablecoins"]

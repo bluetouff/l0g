@@ -1,8 +1,8 @@
 ---
 title: "What France's Livret A really finances"
-seoTitle: "France's Livret A: housing, SMEs and government debt | l0g"
+seoTitle: "What does France's Livret A finance? €440bn mapped | l0g"
 ogTitle: "Inside France's Livret A balance sheet"
-description: "How France's Livret A savings fund social housing, SMEs and French government bonds through banks and the Caisse des Dépôts."
+description: "At end-2025, Livret A held €440bn. Trace savings through banks and Caisse des Dépôts into social housing, SMEs and €116bn of French public debt."
 pubDate: 2026-08-25T15:40:00+02:00
 tags: ["Livret A", "Savings Fund", "Caisse des Dépôts", "French government bonds", "regulated savings", "French debt"]
 draft: false

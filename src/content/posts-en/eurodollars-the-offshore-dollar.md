@@ -1,6 +1,7 @@
 ---
 title: "Eurodollars: the offshore dollar, the debt no one sees in full"
-description: "Outside the United States circulates a gigantic dollar system, largely invisible. Dollar credit to non-bank borrowers outside the US reaches $14.3 trillion, and FX swaps hide off-balance-sheet dollar debt estimated at more than $25 trillion for non-banks alone. How the eurodollar works, why the Fed is its lender of last resort in the dark, and the part the BIS manages to measure."
+seoTitle: "Eurodollar system: $25tn in hidden FX swap debt | l0g"
+description: "BIS data show $14.3tn of offshore dollar credit and over $25tn of non-bank FX swap obligations. How hidden dollar funding creates systemic risk."
 pubDate: 2026-07-13T15:10:00+02:00
 updatedDate: 2026-07-13T15:10:00+02:00
 tags: ["macro", "central banks", "liquidity", "markets"]

@@ -1,6 +1,7 @@
 ---
 title: "The end of Bund scarcity"
-description: "For a decade, the German federal bond was a rationed asset: the debt brake on one side, massive ECB purchases on the other. That regime is dead. The Bund yields 3.14%, above the swap rate for the first time in its history, Germany will issue €511 billion this year, and the market must absorb what the central bank used to make unfindable. An X-ray of a regime change that is redrawing the entire European curve."
+seoTitle: "German Bund scarcity ends as issuance reaches €511bn | l0g"
+description: "Germany plans €511.5bn of 2026 issuance as the 10-year Bund traded above swaps. Why supply and ECB tightening erased its scarcity premium."
 pubDate: 2026-07-19T18:57:00+02:00
 updatedDate: 2026-07-19T18:57:00+02:00
 tags: ["europe", "bonds", "rates", "markets", "liquidity"]

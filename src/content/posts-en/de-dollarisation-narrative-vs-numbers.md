@@ -1,6 +1,7 @@
 ---
 title: "De-dollarisation: the narrative versus the numbers"
-description: "The word is everywhere, the thing much less so. The dollar's share in reserves, payments and FX: what the primary data say (IMF, SWIFT, BIS, World Gold Council), and why 'de-dollarisation' badly names what is happening."
+seoTitle: "De-dollarisation data: reserves, payments, FX and gold | l0g"
+description: "IMF, SWIFT and BIS data show slow dollar diversification, no successor currency and a clearer shift into gold. What the numbers support."
 pubDate: 2026-07-13T15:50:00+02:00
 updatedDate: 2026-07-13T15:50:00+02:00
 tags: ["macro", "dollar", "reserves"]

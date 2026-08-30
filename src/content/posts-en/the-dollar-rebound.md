@@ -1,6 +1,7 @@
 ---
 title: "The dollar rebound: how far before the central banks strike back?"
-description: "The DXY gained 2.3% in June 2026 and touched a thirteen-month high after the Fed's hawkish dot plot. The yen sits beyond 160 despite 11.7 trillion yen of intervention, the ECB and the BoJ raise their rates. Anatomy of a rebound, and of the possible responses."
+seoTitle: "Dollar rebound: DXY, yen intervention and rate risk | l0g"
+description: "The DXY rose 2.3% in June to a 13-month high as the yen stayed above 160. Compare Fed, BoJ and ECB forces behind the move and its limits."
 pubDate: 2026-07-13T15:54:00+02:00
 updatedDate: 2026-07-13T15:54:00+02:00
 tags: ["macro", "dollar", "fed", "central banks", "yen", "rates"]

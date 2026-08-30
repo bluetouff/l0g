@@ -1,6 +1,7 @@
 ---
 title: "Agent payments: how an AI settles the bill, and who holds the rails"
-description: "An AI agent now pays on its own, in stablecoins, below the cost of a card transaction. Under this discreet plumbing, the mechanics of the x402 protocol that resurrects the HTTP 402 code, the battle for standards (Coinbase, Google AP2, Visa, Mastercard) that is really a complementary stack, the dependence on USDC, and a still poorly mapped security. A deep dive into the most solid vector of the crypto-AI convergence."
+seoTitle: "AI agent payments: how x402, USDC and AP2 fit together | l0g"
+description: "Trace an autonomous payment from HTTP 402 through x402 and USDC, then map how Coinbase, Google AP2, Visa and Mastercard divide the payment stack."
 pubDate: 2026-07-14T11:28:00+02:00
 updatedDate: 2026-07-14T11:28:00+02:00
 tags: ["crypto", "ai", "stablecoins", "payments", "tech"]

@@ -1,6 +1,7 @@
 ---
 title: "The cushion is gone: RRP drained, the Treasury reloads, reserves in the front line"
-description: "The Fed's reverse repo facility, which absorbed up to $2.5 trillion, has fallen to $1.2 billion: it is empty. Yet the US Treasury must rebuild its cash account and is borrowing $671 billion net this quarter. The cushion that softened every liquidity drain is gone, and the next drain now runs straight through bank reserves. A stealth tightening, unvoted, purely mechanical, that the Fed is watching closely."
+seoTitle: "Fed RRP drained: Treasury rebuild hits bank reserves | l0g"
+description: "The Fed's RRP fell from $2.5tn to $1.2bn as Treasury targets $671bn of quarterly borrowing. The next liquidity drain reaches bank reserves."
 pubDate: 2026-07-22T15:10:00+02:00
 updatedDate: 2026-07-22T15:10:00+02:00
 tags: ["fed", "liquidity", "repo", "us treasury", "systemic risk", "macro"]

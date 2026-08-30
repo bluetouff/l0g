@@ -1,6 +1,7 @@
 ---
 title: "Stablecoins, the marginal buyer of US Treasuries"
-description: "The GENIUS Act turned stablecoin issuers into structural buyers of short-dated US debt. Tether already weighs like a country among the Treasury's creditors. This captive demand compresses short yields, but a BIS study shows an outflow raises yields more than an inflow lowers them. An analysis of the transmission channel, from crypto to sovereign debt."
+seoTitle: "Stablecoins and US Treasuries: a $303bn demand channel | l0g"
+description: "USDT and USDC reserves turn stablecoin growth into Treasury demand. BIS evidence shows redemptions can raise short yields faster than inflows lower them."
 pubDate: 2026-07-15T22:15:00+02:00
 updatedDate: 2026-07-15T22:15:00+02:00
 tags: ["stablecoins", "credit", "treasury", "dollar", "systemic risk", "crypto"]

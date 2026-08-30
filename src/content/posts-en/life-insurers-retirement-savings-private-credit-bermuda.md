@@ -1,6 +1,7 @@
 ---
 title: "Life insurers: retirement savings, the silent fuel of private credit"
-description: "Nearly a third of the $5.6 trillion in US life insurers' assets is invested in private credit. Behind that figure, a model industrialised by Apollo and Athene: gather annuities, cede the reserves to an affiliated Bermuda reinsurer, and turn illiquid loans into privately rated bonds. A breakdown of the triangle, the 777 Re precedent, and the model's defence."
+seoTitle: "Life insurers and private credit: the Bermuda triangle | l0g"
+description: "Nearly a third of US life insurers' $5.6tn asset base sits in private credit. Trace annuities through affiliated reinsurers and private ratings."
 pubDate: 2026-07-16T09:55:00+02:00
 updatedDate: 2026-07-16T09:55:00+02:00
 tags: ["insurance", "private credit", "systemic risk", "bermuda", "regulation", "retirement"]

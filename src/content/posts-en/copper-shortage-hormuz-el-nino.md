@@ -1,6 +1,7 @@
 ---
 title: "Copper: the shortage arriving via Hormuz and El Niño"
-description: "An updated overview of the copper market as of 26 June 2026: LME price, ICSG data, sulphuric acid, the Strait of Hormuz, El Niño and electrification demand."
+seoTitle: "Copper market 2026: mine decline, Hormuz and El Niño | l0g"
+description: "Refined copper showed a 239,000-tonne surplus through April, but mine output fell 1.4%. Acid supply, Hormuz and El Niño expose tighter inputs."
 pubDate: 2026-07-14T14:50:00+02:00
 updatedDate: 2026-07-14T14:50:00+02:00
 tags: ["macro", "markets", "geopolitics", "energy", "copper"]

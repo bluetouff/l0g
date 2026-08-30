@@ -1,7 +1,7 @@
 ---
 title: "The yield threshold Bessent never announced"
-seoTitle: "Treasury buybacks: Bessent's implicit yield threshold | l0g"
-description: "Treasury raises from $2bn to at least $4bn its cap on long-bond buybacks. Too small to be QE, the move poses questions about its reaction to long yields."
+seoTitle: "Treasury buybacks: why $4bn is not a Bessent put | l0g"
+description: "Treasury doubled several long-bond buyback caps to at least $4bn. The move may signal sensitivity to yields, but it is too small to be QE."
 pubDate: 2026-08-20T09:53:00+02:00
 updatedDate: 2026-08-20T13:30:00+02:00
 tags: ["United States", "Treasury", "bonds", "yields", "Bessent", "debt", "liquidity"]

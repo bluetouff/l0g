@@ -1,6 +1,7 @@
 ---
 title: "Record auctions: the weekly referendum on US debt"
-description: "On 9 July 2026, the Treasury placed its 30-year bond at the highest yield since 2007, with a second consecutive tail but solid foreign demand. How to read the auction tape, that permanent referendum on America's ability to finance record deficits while the Fed, foreigners and the basis trade retreat."
+seoTitle: "US Treasury auctions: read demand, tails and yields | l0g"
+description: "The July 30-year auction cleared above 5%, its highest yield since 2007, with a second tail but solid indirect demand. How to read each signal."
 pubDate: 2026-07-14T11:08:00+02:00
 updatedDate: 2026-07-14T11:08:00+02:00
 tags: ["macro", "debt", "rates", "us treasury", "central banks"]

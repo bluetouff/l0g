@@ -1,6 +1,7 @@
 ---
 title: "The yen carry trade: the fuse is now in Japanese bonds"
-description: "The 10-year JGB yield touched 2.88% on 9 July 2026, a near-thirty-year high, against the backdrop of a 370-trillion-yen investment plan. Why a surge in Japanese long rates threatens the yen carry, the hidden funding of global markets, and the lesson of the August 2024 precedent."
+seoTitle: "Yen carry trade risk: 10-year JGB yield hits 2.88% | l0g"
+description: "Japan's 10-year yield reached 2.88% in July 2026. See how higher JGB rates can unwind yen-funded positions across bonds, equities and currencies."
 pubDate: 2026-07-13T15:18:00+02:00
 updatedDate: 2026-07-13T15:18:00+02:00
 tags: ["yen", "boj", "carry trade", "jgb", "rates", "macro", "markets"]

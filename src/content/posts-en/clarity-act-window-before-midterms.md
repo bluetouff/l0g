@@ -1,6 +1,7 @@
 ---
 title: "CLARITY Act: the window before the midterms"
-description: "After 7 August, US crypto market-structure legislation enters a fourteen-session-day Senate window. Process, limits and scenarios."
+seoTitle: "CLARITY Act: Senate timeline before the 2026 midterms | l0g"
+description: "As of 7 August, the US crypto market-structure bill faced four Senate steps and a narrow pre-midterm window. Process, constraints and scenarios."
 pubDate: 2026-08-07T01:30:00+02:00
 updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["clarity act", "crypto", "regulation", "us politics", "us senate"]

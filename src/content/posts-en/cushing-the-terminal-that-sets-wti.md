@@ -1,6 +1,7 @@
 ---
 title: "Cushing: the Oklahoma terminal that sets the US oil price"
-description: "The Cushing tanks, the delivery point of the WTI contract, fell to about 19.7 million barrels in late June 2026, close to their operating floor. An explainer of this pipeline crossroads, a read of the EIA data and scenarios, including one where China starts buying again."
+seoTitle: "Cushing oil stocks at 19.7m barrels: why WTI cares | l0g"
+description: "Cushing inventories fell near their operating floor in June 2026. See how the WTI delivery hub, pipelines and backwardation transmit physical scarcity."
 pubDate: 2026-07-14T15:50:00+02:00
 updatedDate: 2026-07-14T15:50:00+02:00
 tags: ["oil", "commodities", "macro", "wti", "china"]

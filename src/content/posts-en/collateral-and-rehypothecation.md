@@ -1,6 +1,7 @@
 ---
 title: "Collateral and rehypothecation: one security, several owners, and the keystone of the whole plumbing"
-description: "A single Treasury bond can back several loans at once. This reuse of collateral, rehypothecation, is the common mechanism that runs repo, the basis trade, shadow banking and the offshore dollar. Its intensity is measured by collateral velocity. How a security is duplicated, why this lubrication seized up after 2008, and where the risk of chains freezing hides."
+seoTitle: "Rehypothecation: how collateral chains multiply | l0g"
+description: "A Treasury can support several loans as collateral is reused across repo and shadow banking. See how velocity creates liquidity and freeze risk."
 pubDate: 2026-07-13T14:52:00+02:00
 updatedDate: 2026-07-13T14:52:00+02:00
 tags: ["macro", "markets", "liquidity", "central banks"]

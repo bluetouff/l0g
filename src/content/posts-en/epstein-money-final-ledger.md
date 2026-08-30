@@ -1,7 +1,7 @@
 ---
 title: "Epstein’s money, 4/4: the final ledger"
-seoTitle: "Epstein estate: asset sales and survivor payments | l0g"
-description: "In seven years, Jeffrey Epstein’s estate sold his homes, paid survivors, settled with the Virgin Islands and repaid a loan. Published reporting also identifies a $111.6 million tax refund."
+seoTitle: "Jeffrey Epstein estate: where the $577.7m went | l0g"
+description: "Estate accounts trace property sales, over $121m in survivor compensation, a $117.28m Virgin Islands settlement and a reported $111.6m tax refund."
 pubDate: 2026-08-08T10:02:48+02:00
 updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "argent-epstein-dernier-grand-livre"

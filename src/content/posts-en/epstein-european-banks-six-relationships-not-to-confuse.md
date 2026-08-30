@@ -1,7 +1,7 @@
 ---
 title: "Epstein and Europe's banks: six relationships that require separate proof"
-seoTitle: "Epstein and European banks: six standards of proof | l0g"
-description: "Deutsche Bank, Edmond de Rothschild, HSBC, BNP Paribas, UBS and Barclays appear in records of different kinds. An account, a card, an advisory engagement and a governance case do not prove the same thing."
+seoTitle: "Jeffrey Epstein and European banks: what records prove | l0g"
+description: "Records link six European banks to Epstein or Maxwell in different roles. Accounts, cards, advisory work and governance failures require separate proof."
 pubDate: 2026-08-09T17:22:00+02:00
 updatedDate: 2026-08-09T23:46:15+02:00
 sourceArticle: "epstein-banques-europeennes-six-relations-a-ne-pas-confondre"

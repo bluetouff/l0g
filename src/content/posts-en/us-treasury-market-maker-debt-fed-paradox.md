@@ -1,8 +1,8 @@
 ---
 title: "The Fed-Treasury paradox: who makes the market for U.S. debt?"
-seoTitle: "Is Treasury becoming market maker for U.S. debt? | l0g"
+seoTitle: "Treasury buybacks vs Fed: who holds bond duration? | l0g"
 ogTitle: "Treasury buys long while the Fed buys short"
-description: "Treasury long-end buybacks and Fed bill purchases create a duration paradox. A balance-sheet analysis of the emerging political boundary."
+description: "Treasury buys older long bonds while the Fed buys bills. The balance-sheet difference separates market liquidity support from monetary financing."
 pubDate: 2026-08-23T13:45:00+02:00
 tags: ["United States", "Treasury", "Federal Reserve", "bonds", "yields", "debt", "liquidity"]
 draft: false

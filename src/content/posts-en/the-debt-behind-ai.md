@@ -1,6 +1,7 @@
 ---
 title: "The debt behind AI: off-balance-sheet SPVs, bonds, private credit"
-description: "The AI debate has fixated on stock valuations and circular revenue. The deeper question is how the build-out gets paid for. In 2026 hyperscaler capex absorbs almost all of their operating cash flow, and the balance is tipping into debt. Morgan Stanley expects close to $570 billion of AI-related issuance for the year; AI debt was already the single largest slice of the investment-grade market at the end of 2025. The plumbing of a debt-financed boom: off-balance-sheet Meta-Blue Owl vehicles, a bond market that is starting to choke, private credit and insurers at the end of the chain, and the counter-argument."
+seoTitle: "AI debt boom: $570bn issuance, SPVs and private credit | l0g"
+description: "AI capex is moving from hyperscaler cash flow into bonds, off-balance-sheet SPVs, private credit and insurers. Follow the financing chain and its risks."
 pubDate: 2026-07-13T14:20:00+02:00
 updatedDate: 2026-07-13T14:20:00+02:00
 tags: ["ai", "debt", "private credit", "bonds", "risk", "data centers", "shadow banking"]

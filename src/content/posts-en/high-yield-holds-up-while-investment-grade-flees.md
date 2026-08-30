@@ -1,6 +1,7 @@
 ---
 title: "High yield holds up while investment grade flees: what the bond market is really measuring"
-description: "US investment-grade bond funds face record outflows while high yield still attracts money. Duration explains the paradox first, but early credit signals call for a more careful reading."
+seoTitle: "High-yield inflows vs investment-grade outflows: why? | l0g"
+description: "Investment-grade funds lost $7.1bn in one week while high yield gained $534m. Duration explains the paradox before credit risk does."
 pubDate: 2026-07-25T17:06:13+02:00
 updatedDate: 2026-07-25T17:06:13+02:00
 tags: ["markets", "bonds", "credit", "rates", "systemic risk"]

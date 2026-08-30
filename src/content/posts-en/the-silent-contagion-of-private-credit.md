@@ -1,6 +1,7 @@
 ---
 title: "The silent contagion: how private credit weaves an invisible web across banks, insurers, equities, crypto and stablecoins"
-description: "A map of the contagion channels of private credit: bank bridges, PE-owned life insurers, retail BDCs, crypto porosity via yield-bearing stablecoins, and the Japanese bond channel. Three scenarios over 12 to 24 months."
+seoTitle: "Private credit contagion: banks, insurers, crypto | l0g"
+description: "Map five transmission channels from private credit into banks, life insurers, BDCs, stablecoins and Japanese bonds, with three dated scenarios."
 pubDate: 2026-07-13T15:04:00+02:00
 updatedDate: 2026-07-13T15:04:00+02:00
 tags: ["finance", "private credit", "macro", "crypto"]

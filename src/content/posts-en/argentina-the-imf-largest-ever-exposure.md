@@ -1,6 +1,7 @@
 ---
 title: "Argentina, half the lending window: anatomy of the largest exposure in IMF history"
-description: "As of 17 July 2026, Argentina owes SDR 42.55 billion to the IMF, 46% of the outstanding credit of the Fund's general lending window, the largest exposure the institution has ever taken on a single country. While Buenos Aires lines up disinflation, a fiscal surplus and country risk at its lowest since 2018, the creditor has concentrated its portfolio, its income and its credibility on one programme. An X-ray of a dependence that runs both ways, ahead of Kristalina Georgieva's visit on 28-29 July."
+seoTitle: "Argentina held 46% of IMF general credit exposure | l0g"
+description: "As of 17 July 2026, Argentina owed SDR 42.55bn, or 46.1% of IMF non-concessional credit. The borrower and creditor now depend on one programme."
 pubDate: 2026-07-20T23:39:00+02:00
 updatedDate: 2026-07-20T23:39:00+02:00
 tags: ["imf", "argentina", "debt", "macro", "markets"]

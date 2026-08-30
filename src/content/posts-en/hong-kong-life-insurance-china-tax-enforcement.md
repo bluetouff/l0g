@@ -1,6 +1,7 @@
 ---
 title: "Hong Kong Life Insurance: Beijing Taxes a Breach in Its Financial Wall"
-description: "Reported tax notices in Beijing and Hangzhou concern income from certain Hong Kong insurance policies. The 20% rate is not a newly announced national tax. The reported enforcement is the news."
+seoTitle: "Hong Kong life insurance: reported China tax action | l0g"
+description: "Reported tax notices in Beijing and Hangzhou apply existing rules to income from some Hong Kong policies. The change is enforcement, not a new tax."
 pubDate: 2026-08-06T22:00:12+02:00
 updatedDate: 2026-08-06T22:00:12+02:00
 tags: ["china", "hong kong", "life insurance", "capital controls", "tax", "dollar"]

@@ -1,6 +1,7 @@
 ---
 title: "AI circular financing: when the same dollar goes round and comes back as revenue"
-description: "Nvidia invests in OpenAI, which commits to spending hundreds of billions at Oracle, Microsoft or CoreWeave, which buy Nvidia chips. The same dollar loops among a handful of players and comes back out as revenue. With close to $1.4 trillion of compute commitments against roughly $13 billion of revenue, OpenAI crystallises the debate. A quantified map of the loop, and the counter-argument."
+seoTitle: "AI financing loop: $1.4tn commitments, $13bn revenue | l0g"
+description: "OpenAI has roughly $1.4tn of compute commitments against about $13bn in revenue. Map how funding loops through Nvidia and cloud providers."
 pubDate: 2026-07-13T14:24:00+02:00
 updatedDate: 2026-07-13T14:24:00+02:00
 tags: ["markets", "valuations", "tech", "regulation"]

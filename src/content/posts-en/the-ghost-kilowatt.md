@@ -1,6 +1,7 @@
 ---
 title: "The ghost kilowatt: who pays for the grid if the data center never arrives?"
-description: "The White House pledge says data centers will pay for their grid. US tariffs reveal the real mechanism: minimum payments, collateral, stranded assets and the risk of shifting costs to other ratepayers."
+seoTitle: "Data center ghost loads: who pays for grid risk? | l0g"
+description: "Utilities may build for data-center demand that never arrives. Compare Ohio, Virginia and Wisconsin tariffs, minimum payments and collateral."
 pubDate: 2026-07-25T10:39:51+02:00
 updatedDate: 2026-07-25T10:39:51+02:00
 tags: ["ai", "data centers", "electricity", "infrastructure", "risk", "regulation", "us policy"]

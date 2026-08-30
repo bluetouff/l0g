@@ -1,6 +1,7 @@
 ---
 title: "Apollo, the triangular domino"
-description: "An investigation into Apollo Global Management, Wall Street's most ingenious asset manager and the first to cross a trillion dollars under management. Behind the performance sits a closed triangle: Apollo originates private credit, its insurer Athene buys it with the retirement savings of hundreds of thousands of Americans, and offshore reinsurance in Bermuda thins the regulatory capital held against it all. Atop the machine, a founder, Leon Black, brought down by $158m to $170m in payments to Jeffrey Epstein, whose shockwave has not stopped climbing the house. Sources, court records and public documents."
+seoTitle: "Apollo and Athene: the private credit Bermuda triangle | l0g"
+description: "Trace how Apollo originates private credit, Athene funds it with annuities and affiliated Bermuda reinsurance reshapes capital and transparency."
 pubDate: 2026-07-28T23:43:00+02:00
 updatedDate: 2026-07-28T23:43:00+02:00
 tags: ["international", "private credit", "insurance", "risk", "governance"]

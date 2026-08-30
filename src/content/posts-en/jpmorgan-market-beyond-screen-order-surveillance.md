@@ -1,6 +1,7 @@
 ---
 title: "The market beyond the screen: billions of order messages outside JPMorgan surveillance"
-description: "From 2014 to 2021, JPMorgan failed to feed more than 99% of the order messages on one US venue into its surveillance systems. Part one connects the manipulation admitted in 2020, the gap discovered in 2021 and the 2024 sanctions without treating a control failure as proof of new abuse."
+seoTitle: "JPMorgan missed 99% of order messages on one venue | l0g"
+description: "From 2014 to 2021, one US venue sent over 99% of order messages outside JPMorgan's surveillance. The finding proves a control gap, not new abuse."
 pubDate: 2026-07-31T14:20:00+02:00
 updatedDate: 2026-07-31T14:20:00+02:00
 tags: ["JPMorgan", "spoofing", "trade surveillance", "CFTC", "Federal Reserve", "OCC", "regulation", "operational risk"]

@@ -1,6 +1,7 @@
 ---
 title: "The Treasury basis trade: the leveraged arbitrage at the heart of US debt"
-description: "A single arbitrage ties together the repo market, futures and the stability of US debt: the basis trade. Estimated at around $1 trillion, carried by leverage of 15 to 20 times, it supplies liquidity to the Treasury market in normal times, and amplifies it dangerously under stress. Anatomy of a trade that the Fed, the OFR and the FSB watch closely."
+seoTitle: "Treasury basis trade: $1tn arbitrage and leverage risk | l0g"
+description: "The Treasury basis trade uses about 20x leverage across futures and repo. See how forced unwinds can amplify stress in the US debt market."
 pubDate: 2026-07-13T15:30:00+02:00
 updatedDate: 2026-07-13T15:30:00+02:00
 tags: ["macro", "markets", "central banks", "regulation"]

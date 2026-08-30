@@ -1,6 +1,7 @@
 ---
 title: "Gold and central banks: the silent de-dollarisation counted in tonnes"
-description: "Since 2022, central banks have been buying gold at a pace not seen since the end of Bretton Woods. In 2025, despite record prices, they still acquired 863 tonnes. Gold has become the world's second reserve asset, ahead of the euro. Behind this move, a strategic diversification and a shield against sanctions, but also a vast zone of undeclared purchases. The figures, their limits, and where the narrative runs away."
+seoTitle: "Central banks bought 863 tonnes of gold in 2025 | l0g"
+description: "Gold overtook the euro as the second reserve asset after central banks bought 863 tonnes in 2025. The data show diversification, opacity and limits."
 pubDate: 2026-07-13T15:46:00+02:00
 updatedDate: 2026-07-13T15:46:00+02:00
 tags: ["macro", "central banks", "hard commodities", "geopolitics"]

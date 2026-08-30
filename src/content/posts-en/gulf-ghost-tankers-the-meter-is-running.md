@@ -1,6 +1,7 @@
 ---
 title: "Ghost tankers: in the Gulf, the meter runs at $100,000 a day"
-description: "The blockade reimposed on 14 July closes the trap on the Gulf's oil fleet again. One figure is doing the rounds, 230 loaded tankers stuck; satellite tracking tells a different story. An autopsy of the count, then the real accounting of a closed strait: demurrage above $100,000 per ship per day, war risk premiums settled at 5% of hull value, and a 20% toll on top."
+seoTitle: "Hormuz tanker costs: demurrage above $100,000 a day | l0g"
+description: "Satellite tracking challenged claims of 230 trapped loaded tankers. The documented bill comes from demurrage, war-risk premiums and a 20% toll."
 pubDate: 2026-07-17T11:58:00+02:00
 updatedDate: 2026-07-17T11:58:00+02:00
 tags: ["oil", "energy", "geopolitics", "iran", "supply chain", "markets"]

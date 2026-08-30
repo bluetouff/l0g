@@ -1,6 +1,7 @@
 ---
 title: "When $110 billion of collateral isn't enough to borrow $6 billion"
-description: "SoftBank's talks to raise at least $6 billion via a margin loan backed by its stake in OpenAI have stalled."
+seoTitle: "SoftBank OpenAI margin loan: the stalled $6bn talks | l0g"
+description: "June talks for a $6bn loan backed by SoftBank's OpenAI stake stalled. A later $10bn facility is documented, but may not be the same transaction."
 pubDate: 2026-07-14T10:18:00+02:00
 updatedDate: 2026-08-06T16:30:00+02:00
 tags: ["AI", "Private credit", "Finance"]

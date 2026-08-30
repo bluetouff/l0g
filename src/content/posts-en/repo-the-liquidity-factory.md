@@ -1,6 +1,7 @@
 ---
 title: "Repo and collateral: where liquidity is made, and where it breaks"
-description: "The repo market turns collateral into cash overnight, and moves trillions of dollars a day. It is the invisible plumbing that funds leveraged positions in US debt. How it manufactures liquidity, why it seizes up on balance-sheet dates, and the effect of the end of the Fed's tightening since late 2025."
+seoTitle: "Repo: how collateral creates market liquidity | l0g"
+description: "The repo market funds Treasuries and leverage with overnight secured loans. Learn how SOFR, dealer balance sheets and collateral trigger stress."
 pubDate: 2026-07-13T14:56:00+02:00
 updatedDate: 2026-07-13T14:56:00+02:00
 tags: ["macro", "central banks", "liquidity", "markets"]

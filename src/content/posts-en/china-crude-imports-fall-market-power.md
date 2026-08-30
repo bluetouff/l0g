@@ -1,6 +1,7 @@
 ---
 title: "China: behind the fall in crude imports, a new market power"
-description: "Chinese crude purchases collapsed to 7.79m b/d in May 2026. Hormuz, inventories, refining margins and electrification explain a decline less simple than it looks."
+seoTitle: "China crude oil imports fell to an 8-year low: why? | l0g"
+description: "China's crude imports fell to 7.79m b/d in May 2026. Hormuz disruption, refinery margins, inventories and electrification explain the drop."
 pubDate: 2026-07-14T14:40:00+02:00
 updatedDate: 2026-07-14T14:40:00+02:00
 tags: ["china", "oil", "energy", "macro", "geopolitics"]
