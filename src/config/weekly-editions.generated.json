@@ -912,5 +912,355 @@
       "windowStart": "2026-08-16T08:30:00+02:00",
       "windowEnd": "2026-08-23T08:30:00+02:00"
     }
+  },
+  {
+    "issue": 5,
+    "slug": "2026-08-30",
+    "publishedAt": "2026-08-30T08:30:00+02:00",
+    "title": "L’Hebdo du 30 août. Pontes : ce que la « blockchain privée » de la BCE fera vraiment",
+    "description": "Édition automatisée du 30 août : 21 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Pontes : ce que la « blockchain privée » de la BCE fera vraiment",
+      "href": "/posts/pontes-bce-blockchain-privee-reglement-tokenise/",
+      "update": "Pontes reliera des plateformes DLT à T2 grâce à un registre privé de l’Eurosystème. Fonctionnement, limites au lancement et risques de liquidité, de droit et de concentration."
+    },
+    "lead": "Pontes permettra aux participants éligibles de régler la jambe cash de transactions financières de gros soit avec des cash tokens sur une DLT privée et permissionnée de l’Eurosystème, soit directement dans T2. Au lancement, la finalité juridique du cash restera ancrée dans T2.",
+    "number": {
+      "value": "21",
+      "label": "analyses publiées du 23 août à 08 h 30 au 30 août à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Hash-Link synchronise le paiement et la livraison d’un actif entre deux registres distincts. Il réduit le risque qu’une partie livre sans être payée, mais il ne fusionne pas les registres, n’harmonise pas le droit et ne crée pas de liquidité de marché.",
+    "test": "Dans le corpus public examiné, la BCE ne détaille ni le protocole de registre, ni le consensus, ni le code, ni un audit de sécurité public. L’architecture finale d’Appia, les volumes, les participants effectifs et les coûts du service après la phase initiale restent ouverts.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "21 analyses publiées en sept jours",
+      "subtitle": "du 23 août à 08 h 30 au 30 août à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-08-30",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "COMPTER, PAS CLASSER",
+      "points": [
+        {
+          "label": "dim 23/08",
+          "shortLabel": "dim 23/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-23",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 24/08",
+          "shortLabel": "lun 24/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-24",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 25/08",
+          "shortLabel": "mar 25/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-25",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 26/08",
+          "shortLabel": "mer 26/08",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-08-26",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 27/08",
+          "shortLabel": "jeu 27/08",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-08-27",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 28/08",
+          "shortLabel": "ven 28/08",
+          "value": 9,
+          "valueLabel": "9",
+          "nature": "analyses publiées",
+          "scope": "2026-08-28",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 29/08",
+          "shortLabel": "sam 29/08",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-08-29",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 30/08",
+          "shortLabel": "dim 30/08",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-08-30",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Pontes permettra aux participants éligibles de régler la jambe cash de transactions financières de gros soit avec des cash tokens sur une DLT privée et permissionnée de l’Eurosystème, soit directement dans T2. Au lancement, la finalité juridique du cash restera ancrée dans T2.",
+    "linkedin": "21 analyses publiées sur l0g du 23 août à 08 h 30 au 30 août à 08 h 30.\n\nFocus structuré : Pontes : ce que la « blockchain privée » de la BCE fera vraiment.\n\nPontes permettra aux participants éligibles de régler la jambe cash de transactions financières de gros soit avec des cash tokens sur une DLT privée et permissionnée de l’Eurosystème, soit directement dans T2. Au lancement, la finalité juridique du cash restera ancrée dans T2.\n\nPourquoi le lire : Hash-Link synchronise le paiement et la livraison d’un actif entre deux registres distincts. Il réduit le risque qu’une partie livre sans être payée, mais il ne fusionne pas les registres, n’harmonise pas le droit et ne crée pas de liquidité de marché.\n\nLimite à garder : Dans le corpus public examiné, la BCE ne détaille ni le protocole de registre, ni le consensus, ni le code, ni un audit de sécurité public. L’architecture finale d’Appia, les volumes, les participants effectifs et les coûts du service après la phase initiale restent ouverts.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-08-30/",
+    "threadX": [
+      "1/8 L’Hebdo l0g du 30 août compte 21 analyses publiées. Focus : Pontes : ce que la « blockchain privée » de la BCE fera vraiment.",
+      "2/8 Pontes permettra aux participants éligibles de régler la jambe cash de transactions financières de gros soit avec des cash tokens sur une DLT privée et permissionnée de l’Eurosystème, soit directement dans T2.",
+      "3/8 Au lancement, la finalité juridique du cash restera ancrée dans T2.",
+      "4/8 Pourquoi le lire : Hash-Link synchronise le paiement et la livraison d’un actif entre deux registres distincts.",
+      "5/8 Il réduit le risque qu’une partie livre sans être payée, mais il ne fusionne pas les registres, n’harmonise pas le droit et ne crée pas de liquidité de marché.",
+      "6/8 Limite : Dans le corpus public examiné, la BCE ne détaille ni le protocole de registre, ni le consensus, ni le code, ni un audit de sécurité public.",
+      "7/8 L’architecture finale d’Appia, les volumes, les participants effectifs et les coûts du service après la phase initiale restent ouverts.",
+      "8/8 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-08-30/"
+    ],
+    "sources": [
+      {
+        "label": "Taïwan : les 724 milliards de dollars des assureurs-vie",
+        "href": "/posts/taiwan-724-milliards-assureurs-vie-risque-change/",
+        "role": "Analyse publiée le 29 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Pontes : ce que la « blockchain privée » de la BCE fera vraiment",
+        "href": "/posts/pontes-bce-blockchain-privee-reglement-tokenise/",
+        "role": "Analyse publiée le 29 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 8/8 : votre identité doit vous laisser un reçu",
+        "href": "/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 7/8 : une identité souveraine sur un téléphone américain",
+        "href": "/posts/votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 6/8 : votre identité est gratuite, la preuve peut être facturée",
+        "href": "/posts/votre-identite-dans-un-telephone-6-votre-identite-est-gratuite-la-preuve-peut-etre-facturee/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 5/8 : le jour où votre identité ne répond plus",
+        "href": "/posts/votre-identite-dans-un-telephone-5-le-jour-ou-votre-identite-ne-repond-plus/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 4/8 : votre âge devient une autorisation",
+        "href": "/posts/votre-identite-dans-un-telephone-4-votre-age-devient-une-autorisation/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 3/8 : l’identité souveraine sous contrat",
+        "href": "/posts/votre-identite-dans-un-telephone-3-l-identite-souveraine-sous-contrat/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 2/8 : le coût des parcours alternatifs",
+        "href": "/posts/votre-identite-dans-un-telephone-2-facultative-mais-a-quel-prix/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre identité dans un téléphone, 1/8 : la carte d’identité qui devient un service",
+        "href": "/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Votre argent est où, exactement ?",
+        "href": "/posts/votre-argent-ou-cash-fintech-depot-fonds-stablecoin/",
+        "role": "Analyse publiée le 28 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "EURR : qui porte la dette du stablecoin de Revolut ?",
+        "href": "/posts/eurr-qui-porte-dette-stablecoin-revolut/",
+        "role": "Analyse publiée le 27 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qui a acheté 4 milliards d’euros de crédits immobiliers français ?",
+        "href": "/posts/qui-a-achete-4-milliards-credits-immobiliers-francais/",
+        "role": "Analyse publiée le 26 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quand l’or monte, la dette aussi",
+        "href": "/posts/quand-or-monte-dette-aussi/",
+        "role": "Analyse publiée le 26 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "70 803 défaillances : où vont les pertes ?",
+        "href": "/posts/defaillances-entreprises-qui-absorbe-les-pertes/",
+        "role": "Analyse publiée le 26 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Iran : jusqu’où Bessent peut-il fermer le dollar ?",
+        "href": "/posts/iran-jusqu-ou-bessent-peut-fermer-le-dollar/",
+        "role": "Analyse publiée le 25 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Quand le climat transforme l’État en réassureur",
+        "href": "/posts/climat-etat-reassureur-cat-nat/",
+        "role": "Analyse publiée le 25 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Ce que votre Livret A finance vraiment",
+        "href": "/posts/ce-que-votre-livret-a-finance-vraiment/",
+        "role": "Analyse publiée le 25 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Que se passe-t-il vraiment quand un pays ne paie plus sa dette ?",
+        "href": "/posts/defaut-souverain-qui-paie-vraiment/",
+        "role": "Analyse publiée le 23 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "14 milliards de dollars, 450 millions d'assurance : qui porte le risque de Sopaipilla ?",
+        "href": "/posts/data-center-meta-trop-gros-assurance-sopaipilla/",
+        "role": "Analyse publiée le 23 août 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le paradoxe Fed-Trésor : qui fait le marché de la dette américaine ?",
+        "href": "/posts/tresor-americain-market-maker-dette-paradoxe-fed/",
+        "role": "Analyse publiée le 23 août 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Taïwan : les 724 milliards de dollars des assureurs-vie",
+        "href": "/posts/taiwan-724-milliards-assureurs-vie-risque-change/",
+        "publishedAt": "2026-08-29T16:00:00.000Z"
+      },
+      {
+        "title": "Pontes : ce que la « blockchain privée » de la BCE fera vraiment",
+        "href": "/posts/pontes-bce-blockchain-privee-reglement-tokenise/",
+        "publishedAt": "2026-08-29T07:00:00.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 8/8 : votre identité doit vous laisser un reçu",
+        "href": "/posts/votre-identite-dans-un-telephone-8-votre-identite-doit-vous-laisser-un-recu/",
+        "publishedAt": "2026-08-28T20:20:00.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 7/8 : une identité souveraine sur un téléphone américain",
+        "href": "/posts/votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain/",
+        "publishedAt": "2026-08-28T19:00:00.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 6/8 : votre identité est gratuite, la preuve peut être facturée",
+        "href": "/posts/votre-identite-dans-un-telephone-6-votre-identite-est-gratuite-la-preuve-peut-etre-facturee/",
+        "publishedAt": "2026-08-28T18:34:00.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 5/8 : le jour où votre identité ne répond plus",
+        "href": "/posts/votre-identite-dans-un-telephone-5-le-jour-ou-votre-identite-ne-repond-plus/",
+        "publishedAt": "2026-08-28T17:00:58.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 4/8 : votre âge devient une autorisation",
+        "href": "/posts/votre-identite-dans-un-telephone-4-votre-age-devient-une-autorisation/",
+        "publishedAt": "2026-08-28T15:11:15.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 3/8 : l’identité souveraine sous contrat",
+        "href": "/posts/votre-identite-dans-un-telephone-3-l-identite-souveraine-sous-contrat/",
+        "publishedAt": "2026-08-28T12:30:00.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 2/8 : le coût des parcours alternatifs",
+        "href": "/posts/votre-identite-dans-un-telephone-2-facultative-mais-a-quel-prix/",
+        "publishedAt": "2026-08-28T11:36:00.000Z"
+      },
+      {
+        "title": "Votre identité dans un téléphone, 1/8 : la carte d’identité qui devient un service",
+        "href": "/posts/votre-identite-dans-un-telephone-1-la-carte-d-identite-qui-devient-un-service/",
+        "publishedAt": "2026-08-28T09:38:00.000Z"
+      },
+      {
+        "title": "Votre argent est où, exactement ?",
+        "href": "/posts/votre-argent-ou-cash-fintech-depot-fonds-stablecoin/",
+        "publishedAt": "2026-08-28T07:05:00.000Z"
+      },
+      {
+        "title": "EURR : qui porte la dette du stablecoin de Revolut ?",
+        "href": "/posts/eurr-qui-porte-dette-stablecoin-revolut/",
+        "publishedAt": "2026-08-27T05:09:00.000Z"
+      },
+      {
+        "title": "Qui a acheté 4 milliards d’euros de crédits immobiliers français ?",
+        "href": "/posts/qui-a-achete-4-milliards-credits-immobiliers-francais/",
+        "publishedAt": "2026-08-26T16:30:00.000Z"
+      },
+      {
+        "title": "Quand l’or monte, la dette aussi",
+        "href": "/posts/quand-or-monte-dette-aussi/",
+        "publishedAt": "2026-08-26T12:00:00.000Z"
+      },
+      {
+        "title": "70 803 défaillances : où vont les pertes ?",
+        "href": "/posts/defaillances-entreprises-qui-absorbe-les-pertes/",
+        "publishedAt": "2026-08-26T05:34:40.000Z"
+      },
+      {
+        "title": "Iran : jusqu’où Bessent peut-il fermer le dollar ?",
+        "href": "/posts/iran-jusqu-ou-bessent-peut-fermer-le-dollar/",
+        "publishedAt": "2026-08-25T19:15:00.000Z"
+      },
+      {
+        "title": "Quand le climat transforme l’État en réassureur",
+        "href": "/posts/climat-etat-reassureur-cat-nat/",
+        "publishedAt": "2026-08-25T15:00:00.000Z"
+      },
+      {
+        "title": "Ce que votre Livret A finance vraiment",
+        "href": "/posts/ce-que-votre-livret-a-finance-vraiment/",
+        "publishedAt": "2026-08-25T13:40:00.000Z"
+      },
+      {
+        "title": "Que se passe-t-il vraiment quand un pays ne paie plus sa dette ?",
+        "href": "/posts/defaut-souverain-qui-paie-vraiment/",
+        "publishedAt": "2026-08-23T16:10:00.000Z"
+      },
+      {
+        "title": "14 milliards de dollars, 450 millions d'assurance : qui porte le risque de Sopaipilla ?",
+        "href": "/posts/data-center-meta-trop-gros-assurance-sopaipilla/",
+        "publishedAt": "2026-08-23T13:10:00.000Z"
+      },
+      {
+        "title": "Le paradoxe Fed-Trésor : qui fait le marché de la dette américaine ?",
+        "href": "/posts/tresor-americain-market-maker-dette-paradoxe-fed/",
+        "publishedAt": "2026-08-23T11:45:00.000Z"
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-08-30T08:44:42.312Z",
+      "windowStart": "2026-08-23T08:30:00+02:00",
+      "windowEnd": "2026-08-30T08:30:00+02:00"
+    }
   }
 ]
