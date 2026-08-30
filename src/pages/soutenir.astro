@@ -11,6 +11,11 @@ const title = 'Soutenir l0g';
 const description =
   "Contribuer ponctuellement ou chaque mois au financement de l'infrastructure, des données et des analyses publiques de l0g, sans contrepartie ni influence éditoriale.";
 const paymentLinksReady = configuredSupportPaymentLinkCount === 4;
+const alternateLinks = [
+  { hreflang: 'fr', href: 'https://l0g.fr/soutenir/' },
+  { hreflang: 'en', href: 'https://l0g.fr/en/support/' },
+  { hreflang: 'x-default', href: 'https://l0g.fr/soutenir/' },
+];
 
 const monthlyOptions = [
   {
@@ -54,6 +59,7 @@ const jsonLd = {
   title={title}
   description={description}
   ogImageAlt="Soutenir l0g : contributions volontaires ponctuelles ou mensuelles"
+  alternateLinks={alternateLinks}
   sidebar={false}
 >
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />

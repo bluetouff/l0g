@@ -51,18 +51,26 @@ for (const [label, value] of [
 test('la page active est visible dans la navigation, la recherche et les colonnes contextuelles', async () => {
   const [
     page,
+    englishPage,
     navigation,
     homeSidebar,
     articlePage,
+    englishAnalysisPage,
+    englishGuidePage,
+    englishLayout,
     supportCard,
     footer,
     privacy,
     astroConfig,
   ] = await Promise.all([
     readFile(new URL('../src/pages/soutenir.astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/pages/en/support/index.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SiteNavigation.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/HomeSidebar.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/pages/posts/[...slug].astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/pages/en/analysis/[...slug].astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/pages/en/guides/[...slug].astro', import.meta.url), 'utf8'),
+    readFile(new URL('../src/layouts/EnglishGuidesLayout.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SupportCard.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/components/SiteFooter.astro', import.meta.url), 'utf8'),
     readFile(new URL('../src/pages/rgpd.astro', import.meta.url), 'utf8'),
@@ -73,7 +81,15 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(page, /data-pagefind-body/);
   assert.match(page, /paymentLinksReady && supportPaymentLinks\.oneTime/);
   assert.match(page, /paymentLinksReady && option\.href/);
+  assert.match(page, /\{ hreflang: 'en', href: 'https:\/\/l0g\.fr\/en\/support\/'/);
   assert.doesNotMatch(page, /\bCe qu(?:e|i|['’])/);
+  assert.doesNotMatch(englishPage, /robots="noindex,follow"/);
+  assert.match(englishPage, /data-pagefind-body/);
+  assert.match(englishPage, /paymentLinksReady && supportPaymentLinks\.oneTime/);
+  assert.match(englishPage, /paymentLinksReady && option\.href/);
+  assert.match(englishPage, /inLanguage: 'en'/);
+  assert.match(englishPage, /\{ hreflang: 'fr', href: frenchUrl \}/);
+  assert.doesNotMatch(englishPage, /<iframe|<script[^>]+src=|js\.stripe\.com|stripe\.com\/v3/iu);
   assert.match(navigation, /\{ href: '\/soutenir\/', label: 'Soutenir'/);
   assert.match(navigation, /href="\/recherche\/"/);
   assert.match(navigation, /aria-keyshortcuts="\/ Meta\+K Control\+K"/);
@@ -85,7 +101,14 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   );
   assert.doesNotMatch(homeSidebar, /<SearchForm|\/\/ recherche/);
   assert.match(articlePage, /<SupportCard compact \/>[\s\S]*<WatchCard compact \/>[\s\S]*<ArticleNavigator/);
-  assert.match(supportCard, /href="\/soutenir\/"/);
+  assert.match(englishAnalysisPage, /<SupportCard lang="en" compact \/>[\s\S]*<WatchCard lang="en" compact \/>/);
+  assert.match(englishGuidePage, /<SupportCard lang="en" compact \/>/);
+  assert.match(englishGuidePage, /grid-template-columns: minmax\(0, 42rem\) 290px/);
+  assert.match(englishLayout, /\{ href: '\/en\/support\/', label: 'support'/);
+  assert.match(englishLayout, /\{ href: '\/en\/support\/', label: 'support l0g'/);
+  assert.match(supportCard, /href: '\/soutenir\/'/);
+  assert.match(supportCard, /href: '\/en\/support\/'/);
+  assert.match(supportCard, /lang\?: 'fr' \| 'en'/);
   assert.doesNotMatch(footer, /\/soutenir\//);
   assert.doesNotMatch(privacy, /\/soutenir\//);
   assert.match(privacy, /https:\/\/watch\.l0g\.fr\/confidentialite/);

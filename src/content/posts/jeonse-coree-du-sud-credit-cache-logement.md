@@ -29,34 +29,38 @@ Le droit coréen ajoute un horizon de référence. L’[article 4 de la loi sur 
   <rect width="900" height="610" rx="12" fill="#0c0d10"/>
   <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Un bail, deux bilans et parfois une banque</text>
   <text x="42" y="76" fill="#a8adb7" font-size="14">Le prêt du locataire est facultatif. La dette de restitution du bailleur ne l’est pas.</text>
-  <rect x="42" y="116" width="220" height="118" rx="10" fill="#171d2b" stroke="#445f9a"/>
+  <rect x="42" y="116" width="220" height="118" rx="10" fill="#171d2b" stroke="#445f9a" data-jeonse-panel="bank-fr"/>
   <text x="64" y="150" fill="#7aa2f7" font-size="16" font-weight="700">BANQUE</text>
-  <text x="64" y="181" fill="#d6d9df" font-size="14">
+  <text x="64" y="181" fill="#d6d9df" font-size="13" data-jeonse-copy="bank-fr">
     <tspan x="64" dy="0">Peut financer une partie</tspan>
     <tspan x="64" dy="21">du dépôt jeonse.</tspan>
   </text>
   <line x1="262" y1="175" x2="326" y2="175" stroke="#777d89" stroke-width="2"/>
   <polygon points="326,175 315,169 315,181" fill="#777d89"/>
   <text x="294" y="157" text-anchor="middle" fill="#8b909b" font-size="11">prêt</text>
-  <rect x="326" y="104" width="246" height="142" rx="10" fill="#152420" stroke="#27695f"/>
+  <rect x="326" y="104" width="246" height="162" rx="10" fill="#152420" stroke="#27695f" data-jeonse-panel="tenant-fr"/>
   <text x="350" y="139" fill="#5eead4" font-size="17" font-weight="700">LOCATAIRE</text>
-  <text x="350" y="171" fill="#d6d9df" font-size="14">
+  <text x="350" y="169" fill="#d6d9df" font-size="13" data-jeonse-copy="tenant-fr">
     <tspan x="350" dy="0">Actif : créance de dépôt</tspan>
-    <tspan x="350" dy="22">Passif éventuel : prêt bancaire</tspan>
-    <tspan x="350" dy="22">Usage : droit d’occuper le logement</tspan>
+    <tspan x="350" dy="19">Passif éventuel :</tspan>
+    <tspan x="364" dy="19">prêt bancaire</tspan>
+    <tspan x="350" dy="19">Usage : droit d’occuper</tspan>
+    <tspan x="364" dy="19">le logement</tspan>
   </text>
   <line x1="572" y1="152" x2="638" y2="152" stroke="#5eead4" stroke-width="3"/>
   <polygon points="638,152 626,145 626,159" fill="#5eead4"/>
   <text x="605" y="133" text-anchor="middle" fill="#5eead4" font-size="11">dépôt</text>
-  <line x1="638" y1="210" x2="572" y2="210" stroke="#f5b13d" stroke-width="3"/>
-  <polygon points="572,210 584,203 584,217" fill="#f5b13d"/>
-  <text x="605" y="231" text-anchor="middle" fill="#f5b13d" font-size="11">restitution</text>
-  <rect x="638" y="104" width="220" height="142" rx="10" fill="#252115" stroke="#7e6527"/>
+  <line x1="638" y1="226" x2="572" y2="226" stroke="#f5b13d" stroke-width="3"/>
+  <polygon points="572,226 584,219 584,233" fill="#f5b13d"/>
+  <text x="605" y="250" text-anchor="middle" fill="#f5b13d" font-size="11" data-jeonse-flow-label="return-fr">retour</text>
+  <rect x="638" y="104" width="220" height="162" rx="10" fill="#252115" stroke="#7e6527" data-jeonse-panel="landlord-fr"/>
   <text x="660" y="139" fill="#f5b13d" font-size="17" font-weight="700">PROPRIÉTAIRE</text>
-  <text x="660" y="171" fill="#d6d9df" font-size="14">
+  <text x="660" y="169" fill="#d6d9df" font-size="13" data-jeonse-copy="landlord-fr">
     <tspan x="660" dy="0">Actif : logement</tspan>
-    <tspan x="660" dy="22">Trésorerie : dépôt reçu</tspan>
-    <tspan x="660" dy="22">Passif : dépôt à rembourser</tspan>
+    <tspan x="660" dy="19">Trésorerie :</tspan>
+    <tspan x="674" dy="19">dépôt reçu</tspan>
+    <tspan x="660" dy="19">Passif : dépôt</tspan>
+    <tspan x="674" dy="19">à rembourser</tspan>
   </text>
   <rect x="42" y="286" width="816" height="112" rx="10" fill="#15171c" stroke="#3a3d46"/>
   <text x="66" y="322" fill="#f5f6f8" font-size="17" font-weight="700">Ce que le contrat déplace</text>

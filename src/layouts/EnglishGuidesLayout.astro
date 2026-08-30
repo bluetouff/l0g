@@ -59,6 +59,7 @@ const nav = [
   { href: '/en/api/', label: 'api', active: Astro.url.pathname.startsWith('/en/api'), show: hasPage('src/pages/en/api/index.astro') },
   { href: '/en/press-resources/', label: 'press', active: Astro.url.pathname.startsWith('/en/press-resources'), show: hasPage('src/pages/en/press-resources/index.astro') },
   { href: '/en/mcp/', label: 'mcp', active: Astro.url.pathname.startsWith('/en/mcp'), show: hasPage('src/pages/en/mcp/index.astro') },
+  { href: '/en/support/', label: 'support', active: Astro.url.pathname.startsWith('/en/support'), show: hasPage('src/pages/en/support/index.astro') },
   { href: '/', label: 'fr', active: false, show: true },
 ].filter((item) => item.show !== false);
 
@@ -73,6 +74,7 @@ const footerLinks = [
   { href: '/en/press-resources/', label: 'press resources', show: hasPage('src/pages/en/press-resources/index.astro') },
   { href: '/en/mcp/', label: 'mcp', show: hasPage('src/pages/en/mcp/index.astro') },
   { href: '/en/agent-surface/', label: 'agent surface', show: hasPage('src/pages/en/agent-surface/index.astro') },
+  { href: '/en/support/', label: 'support l0g', show: hasPage('src/pages/en/support/index.astro') },
   { href: '/', label: 'french site', show: true },
 ].filter((item) => item.show);
 

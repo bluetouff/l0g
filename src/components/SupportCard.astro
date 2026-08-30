@@ -1,19 +1,33 @@
 ---
 interface Props {
   compact?: boolean;
+  lang?: 'fr' | 'en';
 }
 
-const { compact = false } = Astro.props;
+const { compact = false, lang = 'fr' } = Astro.props;
+const copy = lang === 'en'
+  ? {
+      href: '/en/support/',
+      eyebrow: '// support l0g',
+      title: 'Keep independent analysis public.',
+      cta: 'One-time or monthly support',
+    }
+  : {
+      href: '/soutenir/',
+      eyebrow: '// soutenir l0g',
+      title: 'Préserver son indépendance.',
+      cta: 'Contribution libre ou mensuelle',
+    };
 ---
 
-<a class:list={['support-card', { compact }]} href="/soutenir/" data-pagefind-ignore>
+<a class:list={['support-card', { compact }]} href={copy.href} data-pagefind-ignore>
   <span class="support-card-top">
     <span class="support-pulse" aria-hidden="true"></span>
-    <small>// soutenir l0g</small>
+    <small>{copy.eyebrow}</small>
   </span>
-  <strong>Préserver son indépendance.</strong>
+  <strong>{copy.title}</strong>
   <span class="support-card-cta">
-    Contribution libre ou mensuelle
+    {copy.cta}
     <i aria-hidden="true">›</i>
   </span>
 </a>

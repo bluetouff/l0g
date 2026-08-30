@@ -31,34 +31,38 @@ Korean law supplies a reference horizon. [Article 4 of the Housing Lease Protect
   <rect width="900" height="610" rx="12" fill="#0c0d10"/>
   <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">One lease, two balance sheets, sometimes a bank</text>
   <text x="42" y="76" fill="#a8adb7" font-size="14">The tenant’s loan is optional. The landlord’s refund liability is not.</text>
-  <rect x="42" y="116" width="220" height="118" rx="10" fill="#171d2b" stroke="#445f9a"/>
+  <rect x="42" y="116" width="220" height="118" rx="10" fill="#171d2b" stroke="#445f9a" data-jeonse-panel="bank-en"/>
   <text x="64" y="150" fill="#7aa2f7" font-size="16" font-weight="700">BANK</text>
-  <text x="64" y="181" fill="#d6d9df" font-size="14">
+  <text x="64" y="181" fill="#d6d9df" font-size="13" data-jeonse-copy="bank-en">
     <tspan x="64" dy="0">May finance part of</tspan>
     <tspan x="64" dy="21">the jeonse deposit.</tspan>
   </text>
   <line x1="262" y1="175" x2="326" y2="175" stroke="#777d89" stroke-width="2"/>
   <polygon points="326,175 315,169 315,181" fill="#777d89"/>
   <text x="294" y="157" text-anchor="middle" fill="#8b909b" font-size="11">loan</text>
-  <rect x="326" y="104" width="246" height="142" rx="10" fill="#152420" stroke="#27695f"/>
+  <rect x="326" y="104" width="246" height="162" rx="10" fill="#152420" stroke="#27695f" data-jeonse-panel="tenant-en"/>
   <text x="350" y="139" fill="#5eead4" font-size="17" font-weight="700">TENANT</text>
-  <text x="350" y="171" fill="#d6d9df" font-size="14">
+  <text x="350" y="169" fill="#d6d9df" font-size="13" data-jeonse-copy="tenant-en">
     <tspan x="350" dy="0">Asset: deposit claim</tspan>
-    <tspan x="350" dy="22">Possible liability: bank loan</tspan>
-    <tspan x="350" dy="22">Use: right to occupy the home</tspan>
+    <tspan x="350" dy="19">Possible liability:</tspan>
+    <tspan x="364" dy="19">bank loan</tspan>
+    <tspan x="350" dy="19">Use: right to occupy</tspan>
+    <tspan x="364" dy="19">the home</tspan>
   </text>
   <line x1="572" y1="152" x2="638" y2="152" stroke="#5eead4" stroke-width="3"/>
   <polygon points="638,152 626,145 626,159" fill="#5eead4"/>
   <text x="605" y="133" text-anchor="middle" fill="#5eead4" font-size="11">deposit</text>
-  <line x1="638" y1="210" x2="572" y2="210" stroke="#f5b13d" stroke-width="3"/>
-  <polygon points="572,210 584,203 584,217" fill="#f5b13d"/>
-  <text x="605" y="231" text-anchor="middle" fill="#f5b13d" font-size="11">refund</text>
-  <rect x="638" y="104" width="220" height="142" rx="10" fill="#252115" stroke="#7e6527"/>
+  <line x1="638" y1="226" x2="572" y2="226" stroke="#f5b13d" stroke-width="3"/>
+  <polygon points="572,226 584,219 584,233" fill="#f5b13d"/>
+  <text x="605" y="250" text-anchor="middle" fill="#f5b13d" font-size="11" data-jeonse-flow-label="return-en">return</text>
+  <rect x="638" y="104" width="220" height="162" rx="10" fill="#252115" stroke="#7e6527" data-jeonse-panel="landlord-en"/>
   <text x="660" y="139" fill="#f5b13d" font-size="17" font-weight="700">LANDLORD</text>
-  <text x="660" y="171" fill="#d6d9df" font-size="14">
+  <text x="660" y="169" fill="#d6d9df" font-size="13" data-jeonse-copy="landlord-en">
     <tspan x="660" dy="0">Asset: home</tspan>
-    <tspan x="660" dy="22">Cash: deposit received</tspan>
-    <tspan x="660" dy="22">Liability: deposit refund</tspan>
+    <tspan x="660" dy="19">Cash: deposit</tspan>
+    <tspan x="674" dy="19">received</tspan>
+    <tspan x="660" dy="19">Liability: deposit</tspan>
+    <tspan x="674" dy="19">refund</tspan>
   </text>
   <rect x="42" y="286" width="816" height="112" rx="10" fill="#15171c" stroke="#3a3d46"/>
   <text x="66" y="322" fill="#f5f6f8" font-size="17" font-weight="700">What the contract moves</text>

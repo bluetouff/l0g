@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import AiEditorialDisclosure from '../../../components/AiEditorialDisclosure.astro';
 import ArticleHeroImage from '../../../components/ArticleHeroImage.astro';
+import SupportCard from '../../../components/SupportCard.astro';
 import WatchCard from '../../../components/WatchCard.astro';
 import { authorEntity, organizationEntity } from '../../../config/entities.ts';
 import { readingTime } from '../../../lib/reading-time.ts';
@@ -202,7 +203,8 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     <a href="/en/analysis/" class="mono-label link-term mt-6 inline-block">$ cd ../analysis</a>
   </article>
 
-  <aside class="en-article-sidebar" aria-label="Discover l0g Watch" data-pagefind-ignore>
+  <aside class="en-article-sidebar" aria-label="Support l0g and discover Watch" data-pagefind-ignore>
+    <SupportCard lang="en" compact />
     <WatchCard lang="en" compact />
   </aside>
   </div>
@@ -260,7 +262,11 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
     align-items: start;
   }
   .en-article-shell > article { width: 100%; min-width: 0; }
-  .en-article-sidebar { min-width: 0; }
+  .en-article-sidebar {
+    display: grid;
+    min-width: 0;
+    gap: 0.85rem;
+  }
   .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; background: transparent; }
   .read-progress > span {
     display: block; height: 100%; width: 100%;
