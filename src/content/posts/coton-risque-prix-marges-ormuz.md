@@ -64,7 +64,7 @@ L’effet sur les prix a été rapide. La transmission aux comptes d’une explo
   <text x="38" y="510" fill="#5eead4" font-size="13" font-weight="700">Coton</text>
   <text x="38" y="529" fill="#d6d9df" font-size="11">1,63 $/kg → 2,03 $/kg en mai → 1,96 $/kg en juillet</text>
   <text x="22" y="586" fill="#8b909b" font-size="9.8">Source : Banque mondiale, Pink Sheet, mise à jour du 4 août 2026.</text>
-  <text x="22" y="602" fill="#8b909b" font-size="9.8">Repères mondiaux, sans prétendre mesurer le prix payé dans chaque ferme.</text>
+  <text x="22" y="602" fill="#8b909b" font-size="9.8">Repères mondiaux, pas le prix payé dans chaque ferme.</text>
 </svg>
 <figcaption>La base 100 permet de comparer deux unités différentes. Elle ne constitue pas une marge agricole : elle visualise seulement l’écart de rythme entre un intrant et la fibre vendue.</figcaption>
 </figure>
