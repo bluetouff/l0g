@@ -849,6 +849,41 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
 
 export const primaryInstitutionBySlug = new Map(primaryInstitutions.map((source) => [source.slug, source]));
 
+const configuredPrimaryDomains = primaryInstitutions.flatMap((institution) => [
+  institution.url,
+  ...institution.datasets.map((dataset) => dataset.url),
+]).map((url) => new URL(url).hostname.replace(/^www\./u, ''));
+
+/**
+ * Lightweight publication-check classification. The institution catalogue
+ * remains the source of truth; the extra domains cover official publishers
+ * that are routinely cited before they warrant a full catalogue page.
+ */
+export const editorialSourceDomainTiers = {
+  primary: [...new Set([
+    ...configuredPrimaryDomains,
+    'banque-france.fr',
+    'ec.europa.eu',
+    'federalregister.gov',
+    'fec.gov',
+    'finra.org',
+    'insee.fr',
+    'nationalbank.kz',
+    'pbc.gov.cn',
+  ])].sort(),
+  reference: [
+    'barrons.com',
+    'bloomberg.com',
+    'coindesk.com',
+    'economist.com',
+    'ft.com',
+    'nikkei.com',
+    'politico.com',
+    'reuters.com',
+    'wsj.com',
+  ],
+} as const;
+
 export function primarySourceUrl(slug: string): string {
   return `/sources/${slug}/`;
 }
