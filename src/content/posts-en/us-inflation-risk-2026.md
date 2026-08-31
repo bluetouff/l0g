@@ -1,6 +1,7 @@
 ---
 title: "Persistent inflation risk in 2026: the Iranian energy shock, upward revisions and challenges for central banks"
-description: "An analysis of fresh May-June 2026 data: US CPI at 4.2% YoY (highest since April 2023), core 2.9%; euro-zone HICP 3.2% (highest since September 2023). Impact of the Iran/Israel conflict on energy prices (oil up to ~$120/bbl, US energy +23.5%). ECB June 2026 projections: HICP 3.0% in 2026 (revised +0.4 pp). Scenarios for the second half and macro-financial implications."
+seoTitle: "US inflation in 2026: CPI, oil shock and Fed risk | l0g"
+description: "US CPI reached 4.2% in May 2026 as energy prices surged after the Iran conflict. Examine core inflation, tariffs and the policy bind for the Fed."
 pubDate: 2026-07-14T11:20:00+02:00
 updatedDate: 2026-07-14T11:20:00+02:00
 tags: ["inflation", "macroeconomics", "fed", "ecb", "geopolitics", "energy", "tariffs"]

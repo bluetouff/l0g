@@ -1,6 +1,7 @@
 ---
 title: "Who buys the bill deluge? The US Treasury's new marginal buyer"
-description: "The US Treasury is issuing $671 billion net this quarter, largely short-term bills, just as the cushion that funded those purchases, the reverse repo facility, has fallen to $1.2 billion. Without that shock absorber, the question becomes: who steps in? The giant but fickle money market funds, the stablecoins the law forces to buy, foreign holders whose demand is changing in nature, and capacity-constrained banks. An X-ray of an order book that has changed composition."
+seoTitle: "Who buys Treasury bills after reverse repo drains? | l0g"
+description: "The Treasury plans $671bn of net issuance while reverse repo is nearly empty. Map demand from money funds, stablecoins, foreigners and banks."
 pubDate: 2026-07-23T09:48:00+02:00
 updatedDate: 2026-07-23T09:48:00+02:00
 tags: ["us treasury", "bonds", "stablecoins", "money market funds", "macro", "markets"]

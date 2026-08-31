@@ -1,6 +1,7 @@
 ---
 title: "The cash that is not cash: the hidden liquidity buffer in bond funds"
-description: "Open-end bond funds promise daily redemptions, but their first line of defence relies mostly on money-market vehicles and repo. N-PORT data reveal the size, composition and limits of that buffer."
+seoTitle: "Bond fund liquidity: cash, repo and redemption risk | l0g"
+description: "Open-end bond funds hold a liquidity buffer near 5%, but only 0.4% is cash. N-PORT data reveal reliance on money-market funds and repo during redemptions."
 pubDate: 2026-07-25T19:00:10+02:00
 updatedDate: 2026-07-25T19:00:10+02:00
 tags: ["markets", "funds", "bonds", "liquidity", "systemic risk"]

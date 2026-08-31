@@ -1,6 +1,7 @@
 ---
 title: "From attention to intention: the agentic economy and the resurrection of the 402 code"
-description: "The advertising model that funded the web is not dying, it is mutating. AI agents, micropayments, stablecoins, MCP, A2A and x402 protocols: a sourced, quantified investigation into the internet's native payment layer, its overstated promises and its regulatory constraints."
+seoTitle: "Agentic payments: x402, MCP and the intention economy | l0g"
+description: "AI agents, stablecoins, MCP, A2A and x402 could add a payment layer to the web. Separate working rails from adoption claims and regulatory constraints."
 pubDate: 2026-07-14T11:24:00+02:00
 updatedDate: 2026-07-14T11:24:00+02:00
 tags: ["crypto", "stablecoins", "ai", "agents", "advertising", "macro", "ecb"]

@@ -1,6 +1,7 @@
 ---
 title: "Strategy: Saylor's bitcoin bet"
-description: "Strategy, formerly MicroStrategy, holds 847,363 bitcoins paid around $64 billion and has turned into a leveraged bet on a single asset class. How its bitcoin-buying machine works, financed by share issuance and stacked preferreds, and where the real risks are, as in June 2026 its market value fell below the value of its treasury for the first time."
+seoTitle: "Strategy Bitcoin: leverage, mNAV and cash risk | l0g"
+description: "Strategy holds 847,363 bitcoin bought for about $64bn. Examine its share issuance, preferred-stock funding, mNAV premium and fixed cash obligations."
 pubDate: 2026-07-14T10:30:00+02:00
 updatedDate: 2026-07-14T10:30:00+02:00
 tags: ["crypto", "markets", "bitcoin"]

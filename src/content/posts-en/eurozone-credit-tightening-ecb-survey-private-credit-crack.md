@@ -1,6 +1,7 @@
 ---
 title: "The tightening that didn't happen: the ECB's credit survey, and the private-credit crack"
-description: "On 21 July 2026, the European Central Bank published its quarterly bank lending survey. The easy headline says banks are tightening again; the figures say the opposite for firms, whose access hardens far less than feared and whose demand is picking up. The real strain is elsewhere: on households, and above all in the channel that regulation itself fed, private credit, where the Financial Stability Board sees vulnerabilities building. An X-ray of two credit channels diverging."
+seoTitle: "ECB survey: banks ease as private credit cracks | l0g"
+description: "The July 2026 ECB survey showed less tightening for firms than feared, while household and private-credit stress grew. Compare the two credit channels."
 pubDate: 2026-07-22T10:29:00+02:00
 updatedDate: 2026-07-22T10:29:00+02:00
 tags: ["credit", "banks", "ecb", "systemic risk", "private credit", "macro"]

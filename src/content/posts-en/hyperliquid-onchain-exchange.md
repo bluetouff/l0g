@@ -1,6 +1,7 @@
 ---
 title: "Hyperliquid: the on-chain exchange that buys back its own token and knocks on TradFi's door"
-description: "Hyperliquid has become the leading decentralised derivatives market, with a fully on-chain order book and an unprecedented business model: nearly all its fees buy back its own token. With about $173 billion of monthly volume, ETFs launched by Bitwise and 21Shares, and perpetuals on equities, commodities and indices, it opens doors to traditional finance. Mechanics, model, bridges and risks, put into data."
+seoTitle: "Hyperliquid: on-chain perpetuals, HYPE and ETFs | l0g"
+description: "Hyperliquid runs an on-chain order book with about $173bn in monthly volume and uses most fees for buybacks. Examine HIP markets, ETF links and risks."
 pubDate: 2026-07-14T10:26:00+02:00
 updatedDate: 2026-07-14T10:26:00+02:00
 tags: ["crypto", "markets", "regulation", "tech"]

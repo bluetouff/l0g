@@ -1,6 +1,7 @@
 ---
 title: "The migration of credit risk: out of the banks, out of sight"
-description: "Since 2008, regulation has made banks more solid. But credit risk has not shrunk, it has moved: non-bank finance now exceeds half of global financial assets, around $250 trillion. A synthesis of that shift, from the hiding places of risk to the re-coupling through banks, and of the debate that divides regulators themselves: a safer system, or merely a less legible one?"
+seoTitle: "Credit risk migration: private markets, shadow banks | l0g"
+description: "Non-bank finance now holds more than half of global financial assets. See where credit risk moved after 2008 and how banks reconnect to private markets."
 pubDate: 2026-07-13T14:44:00+02:00
 updatedDate: 2026-07-13T14:44:00+02:00
 tags: ["risk", "credit", "banks", "private credit", "shadow banking", "regulation"]

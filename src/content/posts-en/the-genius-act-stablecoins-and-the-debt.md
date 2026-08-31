@@ -1,6 +1,7 @@
 ---
 title: "The GENIUS Act: the 18 July deadline, between settled rules and a bet on the debt"
-description: "On 18 July 2026, a year after its enactment, the GENIUS Act reaches the deadline for its implementing rules: six federal agencies finalise the stablecoin framework. What is settled (100% reserves, short Treasury bills, ban on paying yield) and what remains a bet (a wave of debt demand, Tether's fate, run risk). A rigorous analysis, from fact to scenario."
+seoTitle: "GENIUS Act rules: reserves, yield and Tether | l0g"
+description: "The GENIUS Act requires full reserves, short Treasury assets and no holder yield. See the implementation deadline, Tether question and run-risk scenarios."
 pubDate: 2026-07-13T16:06:00+02:00
 updatedDate: 2026-07-13T16:06:00+02:00
 tags: ["stablecoins", "crypto", "regulation", "debt", "us treasury"]

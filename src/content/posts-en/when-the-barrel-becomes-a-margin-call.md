@@ -1,6 +1,7 @@
 ---
 title: "When the barrel becomes a margin call: the hidden liquidity bill of the oil shock"
-description: "A producer can be hedged against an oil-price rise and still run short of cash. Futures, margins, banks and the 2022 precedent: a sourced anatomy of the liquidity risk behind the barrel."
+seoTitle: "Oil hedging margin calls: the hidden liquidity risk | l0g"
+description: "An oil producer can be hedged yet face a cash squeeze as futures margins rise. Understand the 2022 precedent, bank exposure and breaking points."
 pubDate: 2026-07-24T16:55:16+02:00
 updatedDate: 2026-07-24
 tags: ["oil", "liquidity", "derivatives", "systemic risk", "banks", "macro"]

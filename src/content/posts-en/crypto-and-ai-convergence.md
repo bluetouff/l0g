@@ -1,6 +1,7 @@
 ---
 title: "Crypto and AI: anatomy of a convergence, between real plumbing and narrative casino"
-description: "The decade's two flagship technologies are converging. Behind the buzzword, a two-faced reality: on one side a plumbing that already works (agents paying in stablecoins, decentralised compute, cryptographic verification), on the other a casino of speculative tokens that collapsed in 2025. A rigorous map, the players, the regulatory framework, and the dividing line between the real and the mirage. With academic references."
+seoTitle: "AI and crypto convergence: payments, compute and zkML | l0g"
+description: "AI agents can pay in stablecoins, rent compute and use cryptographic proofs. Separate working infrastructure from speculation and regulatory risk."
 pubDate: 2026-07-14T10:34:00+02:00
 updatedDate: 2026-07-14T10:34:00+02:00
 tags: ["crypto", "ai", "stablecoins", "regulation", "markets", "tech"]

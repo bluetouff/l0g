@@ -1,6 +1,7 @@
 ---
 title: "Warsh's first FOMC: the easy status quo, the rest much less so"
-description: "The Fed should leave rates unchanged this 17 June, for the first FOMC chaired by Kevin Warsh. The real stake is elsewhere: a dot plot caught between a token cut and inflation at 4.2%, a bond market already pricing a hike, and a chair who wants to shrink the balance sheet. The figures against the statement."
+seoTitle: "Warsh's first FOMC: rates, dots and balance sheet | l0g"
+description: "The Fed enters Warsh's first meeting with inflation at 4.2%, a divided dot plot and bond pressure. Rates may stay unchanged, but guidance matters."
 pubDate: 2026-07-14T11:16:00+02:00
 updatedDate: 2026-07-14T11:16:00+02:00
 tags: ["fed", "warsh", "fomc", "inflation", "rates", "bonds", "qt"]

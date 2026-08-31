@@ -1,6 +1,7 @@
 ---
 title: "NAV loans: the leverage no one sees"
-description: "Starved of exits, private equity and private credit funds borrow against the net asset value of their entire portfolio. The NAV loan market reached about $70 billion deployed in 2025 and could triple by 2030. Mechanics, the controversial use of borrowed distributions, leverage on leverage, the ILPA framework and the model's defence: a breakdown of the most discreet link in the private credit chain."
+seoTitle: "NAV loans explained: hidden leverage in private equity | l0g"
+description: "Funds borrow against portfolio net asset value as exits slow. Explore a roughly $70bn market, borrowed distributions, double leverage and ILPA safeguards."
 pubDate: 2026-07-16T21:40:00+02:00
 updatedDate: 2026-07-16T21:40:00+02:00
 tags: ["private credit", "private equity", "leverage", "systemic risk", "valuation", "liquidity"]

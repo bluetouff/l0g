@@ -1,6 +1,7 @@
 ---
 title: "The Gulf is thirsty: desalinated water, the petromonarchies' financial Achilles heel"
-description: "Two Iranian strikes in two days on Kuwait's desalination plants, and an obvious fact markets have not yet priced: the world's richest creditors, four to six trillion dollars of sovereign wealth funds, depend for their drinking water on a handful of coastal installations sitting exactly where the missiles fall. Oil has strategic reserves measured in months; the Gulf's water is counted in days."
+seoTitle: "Gulf desalination: water security under missile threat | l0g"
+description: "Kuwaiti desalination plants were struck twice as Gulf states relied on coastal systems with days of water storage. Map infrastructure and financial risk."
 pubDate: 2026-07-20T16:19:00+02:00
 updatedDate: 2026-07-20T16:19:00+02:00
 tags: ["geopolitics", "energy", "water", "risk", "iran"]

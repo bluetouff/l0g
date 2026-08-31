@@ -1,6 +1,7 @@
 ---
 title: "The Golden Age of Buy Now, Pay Later"
-description: "BNPL is growing, but the red flag in 2026 lies elsewhere: card debt is concentrating among households already struggling, while some workers tap their 401(k)s. Trump's tariffs and deregulation worsen a vulnerability they did not create."
+seoTitle: "Buy Now, Pay Later: debt, credit cards and 401(k) risk | l0g"
+description: "BNPL is growing while US card debt reached $1.252tn and interest exceeded 21%. See where consumer stress appears, from delinquencies to 401(k) withdrawals."
 pubDate: 2026-08-04T13:42:00+02:00
 updatedDate: 2026-08-04T18:20:00+02:00
 tags: ["united-states", "consumer", "credit", "bnpl", "regulation", "trump"]

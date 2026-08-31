@@ -1,6 +1,7 @@
 ---
 title: "Commercial real estate: the 2026 refinancing wall, and the regional link"
-description: "Close to $1 trillion of commercial real-estate debt matures in 2026, taken out at 3-4% and to be refinanced at 6-7%, against buildings worth 20 to 40% less. The epicentre is the office, and transmission runs through regional banks, over-exposed. Anatomy of a delayed-action risk, between contained and contagious."
+seoTitle: "Commercial real estate: $1tn refinancing wall | l0g"
+description: "Nearly $1tn of commercial property debt matures in 2026 at higher rates and lower values. Offices and regional banks form the main transmission channel."
 pubDate: 2026-07-14T10:10:00+02:00
 updatedDate: 2026-07-14T10:10:00+02:00
 tags: ["real estate", "banks", "credit", "risk", "markets"]

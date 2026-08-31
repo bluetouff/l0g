@@ -1,6 +1,7 @@
 ---
 title: "Oil: the Chinese inventory that caps prices"
-description: "Brent fell back to around $71 in early July 2026, weeks after threatening $100 during the Iran shock. Behind this invisible ceiling, a disciplined buyer: China, which stopped chasing the expensive barrel and drew on its record reserves."
+seoTitle: "China's oil stocks and the ceiling on crude prices | l0g"
+description: "China built a 1.24bn-barrel oil stockpile and drew on reserves when crude rose. How its buying sets a floor, a ceiling and limits on market power."
 pubDate: 2026-07-14T14:30:00+02:00
 updatedDate: 2026-07-14T14:30:00+02:00
 tags: ["oil", "china", "commodities", "macro", "geopolitics"]

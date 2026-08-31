@@ -1,6 +1,7 @@
 ---
 title: "Private credit in 2026: the new king of shadow banking starts to cough (and stammer on withdrawals)"
-description: "$2 trillion of AUM, still-sexy yields, but the cracks are showing: exploding redemptions at BDCs, PIK doubling, shadow defaults. Private credit enters its adult phase."
+seoTitle: "Private credit 2026: redemptions, PIK, hidden defaults | l0g"
+description: "Private credit manages about $2tn, but rising redemptions, payment-in-kind interest and opaque defaults test its liquidity and valuation model."
 pubDate: 2026-07-13T16:02:00+02:00
 updatedDate: 2026-07-13T16:02:00+02:00
 tags: ["macro", "private credit", "finance"]

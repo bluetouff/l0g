@@ -1,6 +1,7 @@
 ---
 title: "The broken clocks of the US-Iran memorandum"
-description: "Signed on 17 June, the US-Iran memorandum was meant to lift the blockade within 30 days and open 60 days of negotiations. Strikes resumed, Washington reimposed the blockade, and the text no longer drives events. What remains of the calendar, the risks around Hormuz, and the indicators to watch."
+seoTitle: "US-Iran memorandum: Hormuz deadlines and blockade risk | l0g"
+description: "The 17 June memorandum set 30-day blockade relief and 60-day talks, but strikes resumed. Track what remains of the timetable and the key Hormuz indicators."
 pubDate: 2026-07-16T14:40:00+02:00
 updatedDate: 2026-07-16T14:40:00+02:00
 tags: ["geopolitics", "oil", "iran", "macro", "markets", "us politics"]

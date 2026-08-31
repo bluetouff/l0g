@@ -1,6 +1,7 @@
 ---
 title: "No, rising French rates do not signal France leaving the euro zone"
-description: "Why markets are absolutely not pricing a Frexit, despite the social-media noise. A fiscal risk premium versus a monetary-rupture pricing: two mechanisms that everything opposes."
+seoTitle: "French bond yields: OAT spreads do not price Frexit | l0g"
+description: "A wider OAT-Bund spread reflects fiscal risk, not euro-exit pricing. See which signals a real Frexit premium would produce and why they are absent."
 pubDate: 2026-07-14T10:02:00+02:00
 updatedDate: 2026-07-14T10:02:00+02:00
 tags: ["bonds", "macro", "france"]

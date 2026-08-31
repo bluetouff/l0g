@@ -1,6 +1,7 @@
 ---
 title: "Europe borrows without debt: the stack of common borrowing that appears in no ratio"
-description: "NGEU, the Ukraine loan, SAFE: the European Union has become one of the continent's largest issuers, with a trillion euros of outstandings expected by the end of 2026, without a single euro showing up in any member state's debt. An X-ray of a de facto federal debt, built one temporary programme at a time, whose repayment starts in 2028 with no payer yet identified."
+seoTitle: "EU common debt: NGEU, SAFE and the 2028 repayment test | l0g"
+description: "NGEU, SAFE and the Ukraine loan could lift EU debt above €1tn by end-2026. See why it sits outside national ratios and who may repay it from 2028."
 pubDate: 2026-07-19T18:14:00+02:00
 updatedDate: 2026-07-19T18:14:00+02:00
 tags: ["europe", "debt", "bonds", "macro"]

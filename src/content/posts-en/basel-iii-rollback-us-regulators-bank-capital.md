@@ -1,6 +1,7 @@
 ---
 title: "Basel III in reverse: US regulators hand capital back to the banks"
-description: "The final stage of Basel III was meant to raise the capital of the largest US banks by 19%. Under the Fed's new leadership, the March 2026 re-proposal instead delivers net relief of about $87.7bn, alongside the reform of the leverage ratio and the softening of stress tests. An analysis of a rollback, its rationale, and the risk it displaces."
+seoTitle: "Basel III rollback: US banks get $87.7bn relief | l0g"
+description: "The March 2026 Basel III proposal replaced a planned 19% capital increase with $87.7bn of net relief. Examine leverage ratios, stress tests and risk."
 pubDate: 2026-07-15T23:40:00+02:00
 updatedDate: 2026-07-15T23:40:00+02:00
 tags: ["banks", "regulation", "systemic risk", "private credit", "fed", "us politics"]

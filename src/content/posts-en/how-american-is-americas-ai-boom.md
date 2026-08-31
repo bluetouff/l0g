@@ -1,6 +1,7 @@
 ---
 title: "How American Is America's AI Boom?"
-description: "The United States concentrates AI demand, software and data centres, but its investment boom relies on a heavily imported hardware chain. A breakdown of the value actually produced at home."
+seoTitle: "How American is the US AI boom? Imports and value | l0g"
+description: "US AI investment depends on imported hardware. Separate domestic software and data-centre spending from foreign-produced chips and equipment."
 pubDate: 2026-08-04T10:40:00+02:00
 updatedDate: 2026-08-04T11:00:00+02:00
 tags: ["ai", "united-states", "trade", "investment"]

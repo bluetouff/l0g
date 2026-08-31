@@ -1,6 +1,7 @@
 ---
 title: "Private credit: redemptions accelerate as mega-IPOs soak up capital"
-description: "Redemption requests at the large private-credit funds reach $12bn in Q2 2026 while fundraising collapses. Mechanics, contagion channel and the effect of mega-IPOs, on primary sources."
+seoTitle: "Private-credit redemptions: $12bn as funding falls | l0g"
+description: "Large private-credit funds faced $12bn of redemption requests in Q2 2026 as fundraising fell. Trace gates, insurer and bank links, and mega-IPO pressure."
 pubDate: 2026-07-14T10:30:00+02:00
 updatedDate: 2026-07-14T10:30:00+02:00
 tags: ["private credit", "systemic risk", "BDC", "liquidity", "IPO", "macro"]

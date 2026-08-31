@@ -1,6 +1,7 @@
 ---
 title: "Q2 bank earnings: reading the risk behind the profit"
-description: "On Tuesday 14 July, five Wall Street giants open earnings season with profits expected sharply higher. But beating the consensus is the least instructive part. The real signal is in the interest margin, the direction of provisions and above all banks' growing exposure to private credit. A reading grid through the risk prism, anchored to the bank-health guide."
+seoTitle: "Q2 2026 US bank earnings: margins, provisions and risk | l0g"
+description: "Read US bank results through net interest margins, provisions, private-credit exposure, commercial real estate and capital, not headline profit."
 pubDate: 2026-07-14T11:00:00+02:00
 updatedDate: 2026-07-14T11:00:00+02:00
 tags: ["banks", "earnings", "risk", "private credit", "fed", "markets"]

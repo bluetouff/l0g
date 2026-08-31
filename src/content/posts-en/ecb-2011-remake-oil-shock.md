@@ -1,6 +1,7 @@
 ---
 title: "The ECB faces a 2011 remake: tightening into an oil shock"
-description: "On Thursday 23 July the ECB decides, one month after its first rate hike since 2023, voted amid a war-driven oil surge in the Middle East. The last time it raised rates into an imported supply shock was 2011: the mistake made it into the textbooks. The resemblances, the differences, and the paradox of the moment, with inflation cooling just as the barrel reheats."
+seoTitle: "ECB oil shock: could 2026 repeat the 2011 mistake? | l0g"
+description: "The ECB faces another imported oil shock after raising rates. Compare 2026 with its 2011 error across inflation, growth and policy conditions."
 pubDate: 2026-07-19T18:15:00+02:00
 updatedDate: 2026-07-19T18:15:00+02:00
 tags: ["europe", "central banks", "macro", "rates", "energy"]

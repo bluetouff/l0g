@@ -1,6 +1,7 @@
 ---
 title: "Gilts: the market the Bank of England wants to deleverage before the next accident"
-description: "The Bank of England is preparing limits on hedge-fund leverage in gilt repo. Behind this margin project hides a broader risk: sovereign-debt markets increasingly depend on short-funded arbitrages, at the very moment states have to issue more."
+seoTitle: "Gilt repo leverage: why the BoE wants limits | l0g"
+description: "The Bank of England is considering limits on hedge-fund leverage in gilt repo. See how haircuts, short funding and sovereign issuance affect liquidity."
 pubDate: 2026-07-14T10:06:00+02:00
 updatedDate: 2026-07-14T10:06:00+02:00
 tags: ["macro", "markets", "liquidity", "central banks", "regulation", "United Kingdom"]

@@ -1,6 +1,7 @@
 ---
 title: "The Treasury toll: who controls access to clearing?"
-description: "Mandatory Treasury clearing reduces bilateral risk but moves margin, liquidity and market access toward a small set of critical intermediaries."
+seoTitle: "US Treasury clearing: margin, access and liquidity | l0g"
+description: "Mandatory Treasury clearing cuts bilateral risk but concentrates margin and market access among client clearers. Examine costs, capacity and dependency."
 pubDate: 2026-07-30T19:20:00+02:00
 updatedDate: 2026-07-30T19:20:00+02:00
 tags: ["treasuries", "clearing", "liquidity"]

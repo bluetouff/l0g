@@ -1,6 +1,7 @@
 ---
 title: "The 2026 Iran war: anatomy of a global economic and political earthquake"
-description: "How a regional conflict is redrawing inflation, alliances, and the domestic politics of every great power. Energy shock, stagflation, food crisis, geopolitical recomposition and three scenarios to 2027."
+seoTitle: "Iran war 2026: inflation, energy and growth scenarios | l0g"
+description: "The Iran conflict reshapes oil supply, inflation, food security and alliances. Compare the channels and three macroeconomic scenarios through 2027."
 pubDate: 2026-07-14T16:10:00+02:00
 updatedDate: 2026-07-14T16:10:00+02:00
 tags: ["geopolitics", "macro", "energy"]

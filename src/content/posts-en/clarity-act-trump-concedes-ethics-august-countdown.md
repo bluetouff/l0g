@@ -1,6 +1,7 @@
 ---
 title: "CLARITY Act: Trump concedes on ethics, the August countdown begins"
-description: "On the evening of 20 July 2026, Donald Trump agreed to an ethics provision in the CLARITY Act, the very obstacle he embodied. Three days earlier, the Senate's merged draft had come out without that clause, drawing the outright opposition of three Democratic senators. The final text is not public, Democrats have not seen it, and about ten session days remain before the 7 August recess. An X-ray of a race against the clock, with dated scenarios."
+seoTitle: "CLARITY Act: Trump ethics dispute and August deadline | l0g"
+description: "Trump accepted an ethics provision on 20 July 2026, but the CLARITY Act text was not public. Track Senate votes and the calendar before the August recess."
 pubDate: 2026-07-21T15:51:00+02:00
 updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["crypto", "regulation", "us politics", "stablecoins"]

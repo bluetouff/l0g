@@ -1,6 +1,7 @@
 ---
 title: "The CLARITY Act: the bill set to redraw crypto regulation in the United States"
-description: "How a 309-page bill is about to end ten years of turf war between the SEC and the CFTC, and what it changes for the industry."
+seoTitle: "CLARITY Act explained: SEC vs CFTC crypto rules | l0g"
+description: "The 309-page CLARITY Act would divide US crypto oversight between the SEC and CFTC. Learn how digital commodities and mature blockchains are defined."
 pubDate: 2026-07-14T10:22:00+02:00
 updatedDate: 2026-08-07T01:30:00+02:00
 tags: ["regulation", "crypto", "us politics"]

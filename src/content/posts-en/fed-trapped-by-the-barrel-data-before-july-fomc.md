@@ -1,6 +1,7 @@
 ---
 title: "The Fed trapped by the barrel: the data before the 29 July FOMC"
-description: "On 23 July 2026, Brent crosses $100 again on the Iranian escalation, six days before a Federal Reserve meeting. Yet the latest hard data, June CPI, shows inflation cooling to 3.5%, core at 2.6%. The Fed is looking at a rearview mirror that is calming while the windshield catches fire. The barrel does not push it to raise rates, it removes its option to cut them. A reading of the data, with no forecast on the decision."
+seoTitle: "Fed July 2026 meeting: oil above $100, CPI at 3.5% | l0g"
+description: "Brent moved above $100 six days before the July Fed meeting while June CPI cooled to 3.5%. See why oil blocks cuts without automatically forcing a hike."
 pubDate: 2026-07-23T18:18:00+02:00
 updatedDate: 2026-07-23T18:18:00+02:00
 tags: ["fed", "inflation", "oil", "rates", "macro", "markets"]

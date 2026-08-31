@@ -1,6 +1,7 @@
 ---
 title: "The cross-currency basis: the hidden price of the dollar, when the law of international finance breaks"
-description: "Covered interest parity is considered the closest thing to a physical law in international finance. Since 2008, it no longer holds: obtaining dollars through an FX swap costs a premium, the cross-currency basis. This small gap in basis points is the most reliable thermometer of dollar funding stress. How it forms, why arbitrage no longer closes it, and what signal it sends."
+seoTitle: "Cross-currency basis: the hidden cost of dollars | l0g"
+description: "FX swaps can price dollars above covered interest parity. Learn why bank balance-sheet constraints sustain the basis and signal dollar funding stress."
 pubDate: 2026-07-13T15:14:00+02:00
 updatedDate: 2026-07-13T15:14:00+02:00
 tags: ["macro", "central banks", "liquidity", "markets"]

@@ -1,6 +1,7 @@
 ---
 title: "When the warehouse does not clear: Atlas risk inside the Apollo-Athene machine"
-description: "Atlas finances pools of receivables before sale or securitisation. Athene held $6.146 billion of securities issued by Atlas or affiliates at 31 March 2026, had another $1.343 billion of commitments and sits in a $2.5 billion guarantee chain to Credit Suisse. An investigation into liquidity, valuation and related-party risk disclosed across separate notes."
+seoTitle: "Apollo, Athene and Atlas: credit warehouse risk | l0g"
+description: "Athene held $6.146bn of Atlas-linked securities plus $1.343bn of commitments in March 2026. Trace liquidity, valuation and related-party exposures."
 pubDate: 2026-07-31T01:35:00+02:00
 updatedDate: 2026-07-31T01:35:00+02:00
 tags: ["apollo", "athene", "atlas", "private credit", "securitisation", "insurance", "liquidity", "risk"]

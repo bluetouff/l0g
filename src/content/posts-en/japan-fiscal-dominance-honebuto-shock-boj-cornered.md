@@ -1,6 +1,7 @@
 ---
 title: "Fiscal dominance made real: Japan subordinates its central bank to its budget"
-description: "On 21 July 2026, the Japanese 30-year yields 3.90%, the 40-year 3.91%, the 10-year has jumped 122 basis points in a year. The trigger was not a jittery market but a text: the Takaichi cabinet wrote into its budget guidelines that monetary policy should serve its growth agenda, omitting the clause guaranteeing the BoJ's independence. On the heaviest sovereign debt stock in the developed world, at 204% of GDP, fiscal dominance stops being a theory. An X-ray of a cornered central bank."
+seoTitle: "Japan fiscal dominance: the BoJ's bond-market trap | l0g"
+description: "Japan's 30-year yield reached 3.90% after budget guidance tied monetary policy to growth. Examine BoJ independence, debt costs and global spillovers."
 pubDate: 2026-07-21T15:05:00+02:00
 updatedDate: 2026-07-21T15:05:00+02:00
 tags: ["japan", "jgb", "boj", "debt", "macro", "markets"]

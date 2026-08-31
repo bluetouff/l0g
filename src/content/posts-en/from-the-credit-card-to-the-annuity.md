@@ -1,6 +1,7 @@
 ---
 title: "From the credit card to the annuity"
-description: "When a subprime borrower stops paying for their car in Ohio, the loss does not land on a bank's balance sheet. It travels. Sliced into tranches, securitised, it ends up months later on an insurer's balance sheet, backing the annuity of a retiree who never bought a car loan. The American consumer's risk did not vanish from the banks, it changed address, and its new address is the least watched of all. Anatomy of a journey."
+seoTitle: "How US consumer credit moves from loans to annuities | l0g"
+description: "Subprime auto-loan losses can move through securitisation and private credit into insurers backing annuities. Follow the chain and concentration risks."
 pubDate: 2026-07-27T21:34:00+02:00
 updatedDate: 2026-07-27T21:34:00+02:00
 tags: ["international", "private credit", "securitisation", "united-states", "risk"]

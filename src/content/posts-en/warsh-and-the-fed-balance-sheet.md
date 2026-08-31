@@ -1,6 +1,7 @@
 ---
 title: "The Fed's balance sheet, Kevin Warsh's first battlefield"
-description: "Warsh wants a smaller, more discreet central bank. But he arrives a few weeks after the committee ended quantitative tightening, and the balance sheet becomes the real ground on which his regime change will play out."
+seoTitle: "Kevin Warsh and the Fed balance sheet after QT | l0g"
+description: "Warsh wants a smaller Fed balance sheet but takes over after QT ended. See the reserve constraint and policy choices shaping his mandate."
 pubDate: 2026-07-13T15:38:00+02:00
 updatedDate: 2026-07-13T15:38:00+02:00
 tags: ["fed", "monetary policy", "macro", "us politics"]

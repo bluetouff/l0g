@@ -1,6 +1,7 @@
 ---
 title: "Lebanon: the forgotten big loser, and Trump's very dangerous Syrian gamble"
-description: "Israel occupies nearly a fifth of Lebanon, the promised gas remains a mirage, and Donald Trump now suggests that al-Sharaa's Syria deal with Hezbollah. A documented analysis of a country that asked for nothing and that no one wants to rebuild, while Iran is promised $300bn."
+seoTitle: "Lebanon after Iran war: occupation, gas, Syria risk | l0g"
+description: "Israel occupies nearly a fifth of Lebanon while offshore gas remains unrealised and US policy leans on Syria. Examine reconstruction and regional risks."
 pubDate: 2026-07-14T15:10:00+02:00
 updatedDate: 2026-07-14T15:10:00+02:00
 tags: ["lebanon", "israel", "hezbollah", "syria", "geopolitics", "trump", "gas"]

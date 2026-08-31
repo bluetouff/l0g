@@ -1,6 +1,7 @@
 ---
 title: "The risk that goes in circles"
-description: "European banks use synthetic risk transfers to reduce the capital attached to loan portfolios that remain on their balance sheets. The market is growing fast. The ECB and BIS are now watching a less visible question: who finances the investors absorbing that risk, and how far does the transfer remain genuine at system level?"
+seoTitle: "Synthetic risk transfers: can bank credit risk return? | l0g"
+description: "European banks use synthetic risk transfers to cut capital on retained loans. Trace investors, financing links and when risk circles back."
 pubDate: 2026-07-28T14:13:00+02:00
 updatedDate: 2026-08-18T18:38:00+02:00
 tags: ["risk", "banks", "securitisation", "private credit", "regulation", "Europe"]

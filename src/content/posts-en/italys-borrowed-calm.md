@@ -1,6 +1,7 @@
 ---
 title: "Italy's borrowed calm"
-description: "The gap between Italian and German debt has fallen to its lowest since 2008, Italy has slipped below France, and the agencies handed out seven rating upgrades in a year. The story of fiscal redemption writes itself. One data point cracks it: in 2025, of the forty basis points of tightening, the BTP moved only six. The rest was the Bund rising. Italy did not so much redeem itself as Germany became ordinary."
+seoTitle: "Italy-Germany bond spread: what really drove the calm | l0g"
+description: "Italy's spread over Germany hit its lowest since 2008, but only 6 of 40 basis points of 2025 tightening came from BTPs. Most came from a weaker Bund."
 pubDate: 2026-07-26T22:57:00+02:00
 updatedDate: 2026-07-26T22:57:00+02:00
 tags: ["europe", "bonds", "italy", "spreads", "sovereign risk"]

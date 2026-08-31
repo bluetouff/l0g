@@ -1,6 +1,7 @@
 ---
 title: "Semi-liquid private-credit funds and gating: the HLEND (BlackRock) case and the lessons for retail investors in 2026"
-description: "A factual analysis of record redemptions on private-credit funds open to wealthy investors. A detailed explanation of tender offer funds, the gating mechanism, and the concrete implications for individuals facing the withdrawals seen in 2026 (HLEND, Blackstone, Apollo)."
+seoTitle: "Private-credit gates: HLEND, Blackstone and Apollo | l0g"
+description: "Record redemptions exposed semi-liquid private-credit funds. Learn how tender offers and gates work through HLEND, Blackstone and Apollo cases."
 pubDate: 2026-07-14T11:04:00+02:00
 updatedDate: 2026-07-14T11:04:00+02:00
 tags: ["finance", "private-credit", "alternative-investment", "gating", "blackrock", "hlend", "semi-liquid"]

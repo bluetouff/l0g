@@ -1,6 +1,7 @@
 ---
 title: "Shadow banking: non-bank intermediation has overtaken the banks"
-description: "The non-bank financial system now weighs $256.8 trillion, or 51 percent of global financial assets, and is growing twice as fast as banks. Hedge funds, money market funds, private credit, securitisation vehicles: where credit has migrated out of the banks, and where the new fragilities sit, per FSB, ECB and BIS data."
+seoTitle: "Shadow banking reaches $256.8tn: risks beyond banks | l0g"
+description: "Non-bank finance holds $256.8tn, or 51% of global assets. Map hedge funds, money markets, private credit and vulnerabilities tracked by the FSB."
 pubDate: 2026-07-13T14:48:00+02:00
 updatedDate: 2026-07-13T14:48:00+02:00
 tags: ["macro", "private credit", "regulation", "markets"]

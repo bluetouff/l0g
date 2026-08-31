@@ -1,6 +1,7 @@
 ---
 title: "Hormuz: the supply chain takes the hit, the bill is already here"
-description: "The mid-June ceasefire took the war premium out of oil prices, but not the ships out of the queues. Five months after the closure of the Strait of Hormuz, the damage to the global supply chain is already measurable: doubled freight, European gas under strain, rationed fertiliser. A quantified, sourced assessment."
+seoTitle: "Hormuz disruption: freight, gas and food costs | l0g"
+description: "Five months after Hormuz closed, freight costs had doubled and pressure reached European gas and fertiliser. Follow the supply-chain bill beyond crude oil."
 pubDate: 2026-07-14T16:00:00+02:00
 updatedDate: 2026-07-14T16:00:00+02:00
 tags: ["geopolitics", "energy", "supply chain", "macro", "commodities"]

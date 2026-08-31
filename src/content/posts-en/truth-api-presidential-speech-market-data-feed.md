@@ -1,6 +1,7 @@
 ---
 title: "Truth API: the presidential word becomes a paid market data feed"
-description: "On 16 July, Trump Media announced Truth API, a paid feed selling algorithmic traders a few milliseconds' head start on the president's posts. The same day, the White House teleprompter operator was suspended for betting on Trump's speeches via Kalshi. Two stories, one underlying: the presidential word has become a tradable asset, and the information rent now comes with a subscription plan."
+seoTitle: "Truth API: Trump posts become a paid market data feed | l0g"
+description: "Trump Media's Truth API sells faster access to presidential posts for algorithmic trading. Examine the information advantage, Kalshi episode and conflicts."
 pubDate: 2026-07-17T14:48:00+02:00
 updatedDate: 2026-07-17T14:48:00+02:00
 tags: ["markets", "us politics", "regulation", "conflicts of interest", "microstructure"]

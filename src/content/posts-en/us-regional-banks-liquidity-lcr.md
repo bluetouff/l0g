@@ -1,6 +1,7 @@
 ---
 title: "US regional banks: from the 2023 panic to liquidity reform"
-description: "In March 2023, three US regional banks vanished in seven weeks, carried off by a deposit run and not by credit losses. Three years later, the system is back in an ample-reserves zone and the regulatory debate has flipped: the Fed no longer seeks to tighten the liquidity ratio, it is thinking about easing it. Timeline, state of liquidity, and the 2026 reform agenda."
+seoTitle: "US regional-bank liquidity after the 2023 failures | l0g"
+description: "Three regional banks failed in seven weeks in 2023 after deposit runs. Review BTFP, reserve conditions and the Fed's 2026 liquidity reform debate."
 pubDate: 2026-07-13T15:34:00+02:00
 updatedDate: 2026-07-13T15:34:00+02:00
 tags: ["macro", "central banks", "liquidity", "regulation", "markets"]
