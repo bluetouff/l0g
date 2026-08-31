@@ -6,9 +6,10 @@ interface Props {
   headingLevel?: 'h2' | 'h3';
   lang?: 'fr' | 'en';
   publication?: 'epstein' | 'auditer-opacite' | 'digital-euro' | 'water-electricity' | 'e-invoicing' | 'digital-identity';
+  showAllPublicationsLink?: boolean;
 }
 
-const { headingLevel = 'h2', lang = 'fr', publication = 'epstein' } = Astro.props;
+const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublicationsLink = false } = Astro.props;
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
 const isAuditer = !isEnglish && publication === 'auditer-opacite';
@@ -225,6 +226,11 @@ const copy = isDigitalIdentity
       <a class="publication-secondary" href={epubUrl} download={copy.fileName}>
         {copy.downloadLabel}
       </a>
+      {showAllPublicationsLink && (
+        <a class="publication-secondary" href={isEnglish ? '/en/publications/' : '/publications/'}>
+          {isEnglish ? 'All publications' : 'Toutes les publications'}
+        </a>
+      )}
     </div>
   </div>
 </article>

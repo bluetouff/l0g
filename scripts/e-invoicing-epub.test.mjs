@@ -96,6 +96,7 @@ test('bilingual pages, cover files and catalog expose the exact editions', () =>
   const spotlight = readFileSync(join(ROOT, 'src/components/PublicationSpotlight.astro'), 'utf8');
   const frIndex = readFileSync(join(ROOT, 'src/pages/publications/index.astro'), 'utf8');
   const enIndex = readFileSync(join(ROOT, 'src/pages/en/publications/index.astro'), 'utf8');
+  const enHome = readFileSync(join(ROOT, 'src/pages/en/index.astro'), 'utf8');
   assert.match(readFileSync(editions[0].page, 'utf8'), /EInvoicingEpubPage lang="fr"/u);
   assert.match(readFileSync(editions[1].page, 'utf8'), /EInvoicingEpubPage lang="en"/u);
   assert.match(component, /grand-peage-facture-enquete-l0g\.epub/u);
@@ -109,6 +110,11 @@ test('bilingual pages, cover files and catalog expose the exact editions', () =>
   assert.match(spotlight, /publication === 'e-invoicing'/u);
   assert.match(frIndex, /PublicationSpotlight publication="e-invoicing"/u);
   assert.match(enIndex, /PublicationSpotlight lang="en" publication="e-invoicing"/u);
+  assert.match(enHome, /The Great E-Invoicing Toll: five investigations in one EPUB\./u);
+  assert.match(enHome, /PublicationSpotlight lang="en" publication="e-invoicing" headingLevel="h3" showAllPublicationsLink/u);
+  assert.match(enHome, /\.publication-highlight\s*\{\s*margin:\s*clamp\([^;]+\)\s+0\s+clamp\([^;]+\);/u);
+  assert.match(spotlight, /href=\{isEnglish \? '\/en\/publications\/' : '\/publications\/'\}/u);
+  assert.match(spotlight, /isEnglish \? 'All publications' : 'Toutes les publications'/u);
   for (const file of ['grand-peage-facture-cover.png', 'great-e-invoicing-toll-cover.png']) {
     const image = readFileSync(join(ROOT, 'public/publications', file));
     assert.equal(image.subarray(1, 4).toString('ascii'), 'PNG');
