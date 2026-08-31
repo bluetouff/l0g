@@ -29,6 +29,16 @@ const targets = [
     pattern: /<svg\b[^>]*aria-labelledby="jeonse-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
     jeonseLocale: 'en',
   },
+  {
+    page: 'dist/posts/renminbi-zone-monetaire-asie/index.html',
+    count: 2,
+    pattern: /<svg\b[^>]*aria-label="[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+  },
+  {
+    page: 'dist/en/analysis/renminbi-monetary-zone-asia/index.html',
+    count: 2,
+    pattern: /<svg\b[^>]*aria-label="[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+  },
 ];
 
 for (const { page, count, pattern, jeonseLocale } of targets) {
