@@ -89,7 +89,7 @@ const siteJsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <CspMeta />
@@ -107,9 +107,7 @@ const siteJsonLd = {
         try {
           var k = 'l0g-theme';
           var s = localStorage.getItem(k);
-          var t = (s === 'light' || s === 'dark')
-            ? s
-            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          var t = (s === 'light' || s === 'dark') ? s : 'dark';
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {
           document.documentElement.setAttribute('data-theme', 'dark');

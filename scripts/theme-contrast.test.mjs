@@ -78,3 +78,17 @@ test('Shiki emits both palettes and the stylesheet selects the active one', () =
   assert.match(css, /var\(--shiki-light-bg\)/u);
   assert.match(css, /var\(--shiki-light\)/u);
 });
+
+test('site layouts default to dark and only use a stored explicit preference', () => {
+  const layouts = [
+    'src/layouts/BaseLayout.astro',
+    'src/layouts/EnglishGuidesLayout.astro',
+  ];
+
+  for (const file of layouts) {
+    const layout = read(file);
+    assert.match(layout, /<html[^>]*data-theme="dark"/u, `${file} must render dark by default`);
+    assert.doesNotMatch(layout, /prefers-color-scheme/u, `${file} must not infer the default from the OS`);
+    assert.match(layout, /=== 'light' \|\| [a-z]+ === 'dark'/u, `${file} must honour an explicit stored theme`);
+  }
+});
