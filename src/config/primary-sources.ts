@@ -27,8 +27,8 @@ export interface PrimarySourceInstitution {
   related: PrimarySourceLink[];
 }
 
-export const primarySourcesUpdated = '22 août 2026';
-export const primarySourcesUpdatedIso = '2026-08-22';
+export const primarySourcesUpdated = '31 août 2026';
+export const primarySourcesUpdatedIso = '2026-08-31';
 
 export const primaryInstitutions: PrimarySourceInstitution[] = [
   {
@@ -870,6 +870,9 @@ export const editorialSourceDomainTiers = {
     'insee.fr',
     'nationalbank.kz',
     'pbc.gov.cn',
+    'pib.gov.in',
+    'ppac.gov.in',
+    'rbi.org.in',
   ])].sort(),
   reference: [
     'barrons.com',
