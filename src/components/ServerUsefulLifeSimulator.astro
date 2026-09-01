@@ -315,7 +315,10 @@ const impactLabel = initial.firstFullYearPretaxProfitDifference > 0
 })();
 </script>
 
-<style>
+<!-- Rows are rebuilt client-side after every input change, so their styles
+     must not depend on Astro's compile-time scope attribute. Every selector
+     remains namespaced under .server-life-tool. -->
+<style is:global>
   .server-life-tool {
     --tool-bg: #0b1118;
     --tool-panel: #111a24;
