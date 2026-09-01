@@ -2,10 +2,9 @@
 interface Props {
   src: string;
   alt: string;
-  caption: string;
 }
 
-const { src, alt, caption } = Astro.props;
+const { src, alt } = Astro.props;
 ---
 
 <figure class="article-primary-image" data-pagefind-ignore>
@@ -18,7 +17,6 @@ const { src, alt, caption } = Astro.props;
     loading="lazy"
     decoding="async"
   />
-  <figcaption>{caption}</figcaption>
 </figure>
 
 <style>
@@ -37,14 +35,5 @@ const { src, alt, caption } = Astro.props;
     height: auto;
     aspect-ratio: 40 / 21;
     object-fit: cover;
-  }
-
-  figcaption {
-    padding: 0.62rem 0.85rem 0.72rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    line-height: 1.45;
-    letter-spacing: 0.035em;
   }
 </style>
