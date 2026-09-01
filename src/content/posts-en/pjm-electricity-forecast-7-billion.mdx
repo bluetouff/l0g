@@ -1,0 +1,361 @@
+---
+title: "PJM: When 7,892 Forecast Megawatts Move $7.3 Billion"
+seoTitle: "PJM Data Centers: The $7.3bn Forecast Effect | l0g"
+ogTitle: "7,892 Forecast MW, a $7.3bn Difference: PJM's Hidden Risk"
+description: "Removing 7,892 MW of forecast data-center load cuts modeled revenue in PJM’s 2026/27 capacity auction by $7.271bn. What that number does, and does not, measure."
+ogImage: "/illustrations/news/pjm-forecast-capacity-cost-v1.jpg"
+pubDate: 2026-09-01T11:23:00+02:00
+updatedDate: 2026-09-01T11:23:00+02:00
+tags: ["AI", "data centers", "electricity", "United States", "PJM", "risk", "regulation"]
+draft: false
+sourceArticle: "pjm-prevision-electrique-7-milliards"
+sourceUpdatedDate: 2026-09-01T11:23:00+02:00
+---
+
+import PjmForecastCostExplainer from '../../components/PjmForecastCostExplainer.astro';
+
+<style>{`
+.pjm-visual{min-width:0;margin:1.8rem 0 2.1rem;padding:0}.pjm-visual svg{display:block;width:100%;height:auto;max-width:100%}.pjm-visual .pjm-mobile{display:none}.pjm-visual figcaption{margin:.7rem .25rem 0;color:var(--color-muted);font-family:var(--font-mono);font-size:.69rem;line-height:1.55}.pjm-scope,.pjm-verdict{margin:1.25rem 0;border:1px solid var(--color-line);border-left:3px solid #5eead4;border-radius:4px 12px 12px 4px;padding:1rem 1.05rem;background:color-mix(in srgb,var(--color-surface) 93%,#080b10)}.pjm-scope strong,.pjm-verdict strong{color:var(--color-bright)}.pjm-scope p,.pjm-verdict p{margin:.35rem 0;color:var(--color-paper);font-size:.9rem;line-height:1.65}.pjm-verdict{border-left-color:#f5b13d}.pjm-source-grid{display:grid;gap:.7rem;margin:1rem 0}.pjm-source-grid article{min-width:0;border:1px solid var(--color-line);border-radius:10px;padding:.85rem;background:color-mix(in srgb,var(--color-surface) 92%,transparent)}.pjm-source-grid h3{margin:0;color:var(--color-bright);font-size:.92rem}.pjm-source-grid p{margin:.45rem 0 0;color:var(--color-muted);font-size:.78rem;line-height:1.55}.pjm-source-grid a{overflow-wrap:anywhere}.prose table{font-size:.82rem}.prose th,.prose td{vertical-align:top}.prose code{overflow-wrap:anywhere}
+@media(min-width:760px){.pjm-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.pjm-desktop{display:none!important}.pjm-mobile{display:block!important}.pjm-visual{margin-inline:calc(var(--space-2, .5rem) * -1)}.pjm-visual figcaption{margin-inline:.65rem}.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}.pjm-scope,.pjm-verdict{padding:.85rem}.pjm-source-grid{grid-template-columns:1fr}}
+`}</style>
+
+*A server does not have to be switched on for a forecast to carry a price. In the largest organized power market in the United States, thousands of megawatts expected from data centers shifted the outcome of a system-wide auction. The number is striking: $7.271 billion. It is also much easier to misuse than to understand.*
+
+On July 22, 2025, **PJM Interconnection** published the result of its capacity auction for the delivery year running from June 2026 through May 2027. The price reached the regulatory cap of **$329.17 per megawatt-day**. The auction procured 134,311 MW of *UCAP* (output adjusted for a resource's expected ability to perform during the riskiest hours), while a further 11,933 MW sat under the Fixed Resource Requirement outside the auction. [PJM said](https://insidelines.pjm.com/pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal/) the total exceeded its reliability requirement by only **139 MW**.
+
+On October 1, 2025, **Monitoring Analytics**, PJM's independent market monitor, published a set of counterfactual simulations. One retained data-center load already embedded in the forecast but removed **7,892 MW** of planned new facilities and expected growth at existing sites. Modelled market revenue fell from **$16.124 billion** to **$8.853 billion**. The difference was **$7.271 billion**, or **82.1%** of the counterfactual result. [The report sets out the assumptions and states that its sensitivities are not forecasts or predictions](https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf).
+
+This does not show that “phantom” data centers extracted $7.3 billion from households. It shows something more consequential for market design: **in a tight capacity market, changing forecast demand can raise the price paid to nearly every cleared resource**. Uncertainty is no longer confined to how much electricity will eventually be consumed. It enters the mechanism that pays generators, storage and demand response today for being available tomorrow.
+
+<div class="pjm-scope">
+<p><strong>Dates and perimeter.</strong> The auction ran from July 9 to July 15, 2025; results were published on July 22; and the delivery year runs from June 1, 2026 to May 31, 2027. Monitoring Analytics published its counterfactual on October 1, 2025. PJM's next load report, with a tighter near-term screen for large loads, was not posted until January 14, 2026. Combining those dates would attribute a later methodology to an earlier auction.</p>
+</div>
+
+## One interconnection request can create three different bills
+
+Three mechanisms are routinely collapsed into one.
+
+**Capacity** pays for future availability. PJM asks how much dependable power the system may need at peak, including a reliability margin, and runs an auction to procure that quantity. This is not payment for the megawatt-hours customers consume. Day-ahead and real-time energy markets remain a separate component of wholesale power costs.
+
+**Transmission** pays for the high-voltage lines and substations required to move power into load centers. A concentrated new load can justify regional upgrades even when sufficient generation exists elsewhere on the system.
+
+**Local interconnection and distribution** cover the dedicated substation, distribution facilities and utility service for the site. This is where special tariffs, minimum bills, parent guarantees and collateral seek to prevent a cancelled campus from leaving a stranded asset in everybody else's rates.
+
+<figure class="pjm-visual">
+<svg class="pjm-svg pjm-desktop" viewBox="0 0 760 430" role="img" aria-labelledby="pjm-three-bills-en-d-title pjm-three-bills-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-three-bills-en-d-title">One request, three bills</title>
+  <desc id="pjm-three-bills-en-d-desc">The same campus can act through three distinct mechanisms.</desc>
+  <rect x="1" y="1" width="758" height="428" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="32" y="42" fill="#f5f6f8" font-size="21" font-weight="750" text-anchor="start" >One request, three bills</text>
+  <text x="32" y="66" fill="#8b909b" font-size="12" font-weight="400" text-anchor="start" >The same campus can act through three distinct mechanisms.</text>
+  <rect x="232" y="88" width="296" height="72" rx="12" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.5"/>
+  <text x="380" y="118" fill="#f5f6f8" font-size="15" font-weight="750" text-anchor="middle" >Large-load project</text>
+  <text x="380" y="142" fill="#8b909b" font-size="11" font-weight="400" text-anchor="middle" >power, location, schedule</text>
+  <path d="M380 160V192 M380 192H140 M380 192H620 M140 192V218 M380 192V218 M620 192V218" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <rect x="32" y="218" width="212" height="150" rx="12" fill="#151820" stroke="#ff4d87" stroke-width="1.4"/>
+  <text x="50" y="246" fill="#ff4d87" font-size="11" font-weight="800" text-anchor="start" >CAPACITY</text>
+  <text x="50" y="276" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >Available generation</text>
+  <text x="50" y="300" fill="#d6d9df" font-size="10.5" font-weight="400" text-anchor="start" >Peak forecast → auction</text>
+  <text x="50" y="325" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >PJM / load-serving entities</text>
+  <rect x="274" y="218" width="212" height="150" rx="12" fill="#151820" stroke="#f5b13d" stroke-width="1.4"/>
+  <text x="292" y="246" fill="#f5b13d" font-size="11" font-weight="800" text-anchor="start" >TRANSMISSION</text>
+  <text x="292" y="276" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >High-voltage lines</text>
+  <text x="292" y="294" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >&amp; substations</text>
+  <text x="292" y="318" fill="#d6d9df" font-size="10.5" font-weight="400" text-anchor="start" >Studies &amp; regional planning</text>
+  <text x="292" y="343" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >FERC / PJM / states</text>
+  <rect x="516" y="218" width="212" height="150" rx="12" fill="#151820" stroke="#5eead4" stroke-width="1.4"/>
+  <text x="534" y="246" fill="#5eead4" font-size="11" font-weight="800" text-anchor="start" >LOCAL CONNECTION</text>
+  <text x="534" y="276" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >Substation, distribution</text>
+  <text x="534" y="300" fill="#d6d9df" font-size="10.5" font-weight="400" text-anchor="start" >Contract, tariff, minimum bill</text>
+  <text x="534" y="325" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >Utility / state regulator</text>
+  <text x="32" y="404" fill="#8b909b" font-size="10.5" font-weight="400" text-anchor="start" >This article isolates capacity. “The Ghost Kilowatt” focuses mainly on the other two.</text>
+</svg>
+<svg class="pjm-svg pjm-mobile" viewBox="0 0 360 690" role="img" aria-labelledby="pjm-three-bills-en-m-title pjm-three-bills-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-three-bills-en-m-title">One request, three bills</title>
+  <desc id="pjm-three-bills-en-m-desc">The same campus can act through three distinct mechanisms.</desc>
+  <rect x="1" y="1" width="358" height="688" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="22" y="38" fill="#f5f6f8" font-size="18" font-weight="750" text-anchor="start" >One request, three bills</text>
+  <text x="22" y="60" fill="#8b909b" font-size="10.5" font-weight="400" text-anchor="start" >One campus, three cost mechanisms.</text>
+  <rect x="22" y="82" width="316" height="66" rx="11" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.4"/>
+  <text x="180" y="110" fill="#f5f6f8" font-size="13" font-weight="750" text-anchor="middle" >Large-load project</text>
+  <text x="180" y="132" fill="#8b909b" font-size="10" font-weight="400" text-anchor="middle" >power, location, schedule</text>
+  <path d="M180 148V166" fill="none" stroke="#343946" stroke-width="1.5"/>
+  <rect x="22" y="174" width="316" height="130" rx="11" fill="#151820" stroke="#ff4d87" stroke-width="1.3"/>
+  <text x="40" y="200" fill="#ff4d87" font-size="10.5" font-weight="800" text-anchor="start" >CAPACITY</text>
+  <text x="40" y="226" fill="#f5f6f8" font-size="11.5" font-weight="650" text-anchor="start" >Available generation</text>
+  <text x="40" y="252" fill="#d6d9df" font-size="10" font-weight="400" text-anchor="start" >Peak forecast → auction</text>
+  <text x="40" y="275" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >PJM / load-serving entities</text>
+  <path d="M180 304V322" fill="none" stroke="#343946" stroke-width="1.5"/>
+  <rect x="22" y="330" width="316" height="130" rx="11" fill="#151820" stroke="#f5b13d" stroke-width="1.3"/>
+  <text x="40" y="356" fill="#f5b13d" font-size="10.5" font-weight="800" text-anchor="start" >TRANSMISSION</text>
+  <text x="40" y="382" fill="#f5f6f8" font-size="11.5" font-weight="650" text-anchor="start" >High-voltage lines &amp; substations</text>
+  <text x="40" y="408" fill="#d6d9df" font-size="10" font-weight="400" text-anchor="start" >Studies &amp; regional planning</text>
+  <text x="40" y="431" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >FERC / PJM / states</text>
+  <path d="M180 460V478" fill="none" stroke="#343946" stroke-width="1.5"/>
+  <rect x="22" y="486" width="316" height="130" rx="11" fill="#151820" stroke="#5eead4" stroke-width="1.3"/>
+  <text x="40" y="512" fill="#5eead4" font-size="10.5" font-weight="800" text-anchor="start" >LOCAL CONNECTION</text>
+  <text x="40" y="538" fill="#f5f6f8" font-size="11.5" font-weight="650" text-anchor="start" >Substation, distribution</text>
+  <text x="40" y="564" fill="#d6d9df" font-size="10" font-weight="400" text-anchor="start" >Contract, tariff, minimum bill</text>
+  <text x="40" y="587" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >Utility / state regulator</text>
+  <text x="22" y="664" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >Three mechanisms, three cost perimeters.</text>
+</svg>
+<figcaption>The $7.271 billion examined here belongs to the first layer: capacity-market revenue. For dedicated infrastructure, tariffs and collateral, see l0g's <a href="/en/analysis/the-ghost-kilowatt/">“The Ghost Kilowatt”</a>.</figcaption>
+</figure>
+
+The same project can trigger all three layers, but their costs cannot simply be added together and they are not allocated by the same institutions. PJM and FERC govern parts of wholesale markets and interstate transmission. State commissions retain decisive authority over retail rates and how many costs are ultimately divided among customer classes. “A data center raises electricity bills” is therefore not a complete claim until the mechanism, location and allocation rule are identified.
+
+## The number is correct. The common reading is not
+
+The cleanest counterfactual for this article is **[Scenario 3 in the monitor's report](https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf)**. It starts with the actual 2026/27 auction result: **$16,124,370,889** in Reliability Pricing Model revenue, calculated from clearing prices, quantities and uplift megawatts. The monitor then reruns the auction after removing **7,892 MW of “above embedded” data-center load**: planned new facilities plus forecast growth beyond load already embedded at existing sites.
+
+Counterfactual revenue is **$8,853,172,918**. The difference is **$7,271,197,971**.
+
+<figure class="pjm-visual">
+<svg class="pjm-svg pjm-desktop" viewBox="0 0 760 430" role="img" aria-labelledby="pjm-revenue-en-d-title pjm-revenue-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-revenue-en-d-title">The $7.271bn counterfactual</title>
+  <desc id="pjm-revenue-en-d-desc">PJM 2026/27 auction · independent monitor, Scenario 3</desc>
+  <rect x="1" y="1" width="758" height="428" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="32" y="42" fill="#f5f6f8" font-size="21" font-weight="750" text-anchor="start" >The $7.271bn counterfactual</text>
+  <text x="32" y="66" fill="#8b909b" font-size="11" font-weight="400" text-anchor="start" >PJM 2026/27 auction · independent monitor, Scenario 3</text>
+  <text x="32" y="120" fill="#d6d9df" font-size="11" font-weight="650" text-anchor="start" >Actual result</text>
+  <text x="728" y="120" fill="#f5f6f8" font-size="12" font-weight="750" text-anchor="end" >$16.124bn</text>
+  <rect x="32" y="136" width="696" height="34" rx="8" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="32" y="136" width="696" height="34" rx="8" fill="#ff4d87" stroke="#ff4d87" stroke-width="1"/>
+  <text x="32" y="211" fill="#d6d9df" font-size="11" font-weight="650" text-anchor="start" >Without 7,892 forecast MW</text>
+  <text x="728" y="211" fill="#f5f6f8" font-size="12" font-weight="750" text-anchor="end" >$8.853bn</text>
+  <rect x="32" y="227" width="696" height="34" rx="8" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="32" y="227" width="382.1" height="34" rx="8" fill="#5eead4" stroke="#5eead4" stroke-width="1"/>
+  <rect x="32" y="292" width="696" height="72" rx="12" fill="#151820" stroke="#f5b13d" stroke-width="1.4"/>
+  <text x="54" y="319" fill="#f5b13d" font-size="10.5" font-weight="800" text-anchor="start" >MODELLED DIFFERENCE</text>
+  <text x="54" y="348" fill="#f5f6f8" font-size="24" font-weight="800" text-anchor="start" >$7.271bn</text>
+  <text x="706" y="323" fill="#d6d9df" font-size="10.5" font-weight="650" text-anchor="end" >+82.1% vs the counterfactual</text>
+  <text x="706" y="347" fill="#8b909b" font-size="10.5" font-weight="650" text-anchor="end" >45.1% of the actual result</text>
+  <text x="32" y="402" fill="#8b909b" font-size="10.5" font-weight="400" text-anchor="start" >It is neither a bill to data centers nor a measure of fictitious projects.</text>
+</svg>
+<svg class="pjm-svg pjm-mobile" viewBox="0 0 360 474" role="img" aria-labelledby="pjm-revenue-en-m-title pjm-revenue-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-revenue-en-m-title">The $7.271bn counterfactual</title>
+  <desc id="pjm-revenue-en-m-desc">PJM 2026/27 auction · independent monitor, Scenario 3</desc>
+  <rect x="1" y="1" width="358" height="472" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="22" y="38" fill="#f5f6f8" font-size="17" font-weight="750" text-anchor="start" >The $7.271bn counterfactual</text>
+  <text x="22" y="60" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >PJM 2026/27 auction · independent monitor, Scenario 3</text>
+  <text x="22" y="105" fill="#d6d9df" font-size="10" font-weight="650" text-anchor="start" >Actual result</text>
+  <text x="338" y="105" fill="#f5f6f8" font-size="10.5" font-weight="750" text-anchor="end" >$16.124bn</text>
+  <rect x="22" y="119" width="316" height="28" rx="7" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="22" y="119" width="316" height="28" rx="7" fill="#ff4d87" stroke="#ff4d87" stroke-width="1"/>
+  <text x="22" y="190" fill="#d6d9df" font-size="9.5" font-weight="650" text-anchor="start" >Without 7,892 forecast MW</text>
+  <text x="338" y="190" fill="#f5f6f8" font-size="10.5" font-weight="750" text-anchor="end" >$8.853bn</text>
+  <rect x="22" y="204" width="316" height="28" rx="7" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="22" y="204" width="173.5" height="28" rx="7" fill="#5eead4" stroke="#5eead4" stroke-width="1"/>
+  <rect x="22" y="264" width="316" height="122" rx="11" fill="#151820" stroke="#f5b13d" stroke-width="1.3"/>
+  <text x="40" y="290" fill="#f5b13d" font-size="9.5" font-weight="800" text-anchor="start" >MODELLED DIFFERENCE</text>
+  <text x="40" y="326" fill="#f5f6f8" font-size="22" font-weight="800" text-anchor="start" >$7.271bn</text>
+  <text x="40" y="354" fill="#d6d9df" font-size="9.5" font-weight="400" text-anchor="start" >+82.1% vs the counterfactual</text>
+  <text x="40" y="375" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >45.1% of the actual result</text>
+  <text x="22" y="427" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >Neither a bill to data centers,</text>
+  <text x="22" y="447" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >nor a measure of fictitious projects.</text>
+</svg>
+<figcaption>Source: Monitoring Analytics, Scenario 3. The two percentages use different denominators: 7.271 / 8.853 = 82.1%; 7.271 / 16.124 = 45.1%.</figcaption>
+</figure>
+
+The denominator is not a footnote. Saying that data centers “account for 82% of the market” would be wrong. **The 82.1% is the increase from the counterfactual revenue level to the actual result.** Measured as a share of actual revenue, the gap is **45.1%**. Both figures are arithmetically correct; they answer different questions.
+
+There is another important complication. The monitor also removed all **11,993 MW** of existing and forecast data-center load, including 4,101 MW already embedded. Under the restricted auction curve, it obtained the same $8.853 billion outcome. This does not mean embedded consumption was economically irrelevant. It reflects the unusual **price floor**: once demand was reduced far enough, the clearing price could not fall further. Two different load removals therefore hit the same floor.
+
+Monitoring Analytics is sharply critical of that floor and also models an unrestricted demand curve. Those cases demonstrate how much market design matters, but they should not be mixed into the headline number. Our reference is the auction as it was actually run, followed by one change: remove the 7,892 forecast megawatts.
+
+## Why 7,892 × 329.17 × 365 is not $7.3 billion
+
+The obvious calculation is:
+
+`7,892 MW × $329.17/MW-day × 365 days = $948.2 million`.
+
+That answers a narrow question: what would 7,892 MW be worth if every megawatt were paid the posted price for one year? It does not reproduce the monitor's counterfactual. Extra demand can move the intersection of an auction demand curve and the entire supply stack. The new clearing price then applies to a volume far larger than the added megawatts. Location matters, as do zonal constraints, reserve requirements, available supply, accreditation rules and the regulatory floor and cap.
+
+The market is **nonlinear**. A small change near a scarcity point can produce a large outcome; the same change in an ample system may do very little.
+
+<PjmForecastCostExplainer lang="en" />
+
+The tool deliberately leaves Monitoring Analytics' scenario fixed. Moving the controls changes only the direct multiplication. A genuine rerun would require unit-level offers, zonal curves, constraints, mitigation rules and PJM's settlement model. A “bill simulator” built from one multiplication would look cleaner. It would also be false.
+
+## The 11,993 MW are not 11,993 phantom megawatts
+
+The monitor separates the 2026 data-center peak forecast into two layers:
+
+- **4,101 MW already embedded** in the forecasting base;
+- **7,892 MW above embedded**, covering new facilities and forecast growth at existing sites.
+
+
+Calling the entire second layer “phantom megawatts” would be too broad. A facility that has not yet taken power may already control its site, hold permits, have an enforceable service agreement, be under construction and have a creditworthy tenant. At the other end, a developer may test several regions before choosing one. **Future does not mean fictional.**
+
+The relevant variable is confidence. Public aggregate data do not allow a project-by-project reconstruction of the 7,892 MW or show how much was delayed, downsized, submitted to multiple utilities or energized on schedule. Monitoring Analytics describes exceptional uncertainty and questions the treatment of large loads; it does not publish a list proving that 7,892 MW were fake.
+
+The distinction also guards against the opposite mistake. Uncertain demand can materialize. Waiting for the last server to arrive before preparing supply would guarantee delay: permitting and building a generator or a major transmission line often takes longer than erecting a data-center shell.
+
+## How a campus becomes a line in the load forecast
+
+A load forecast is not a spreadsheet of press releases. Utilities submit large-load adjustment requests; PJM evaluates timing, the form of commitment, the ramp to full load and potential double counting. The structural problem is that the system must make a decision years before actual consumption is observable.
+
+In the January 2025 report used for the 2026/27 auction, total large-load adjustments reached **8,453 MW** for 2026. Data centers represented **7,892 MW, or 93%**. The balance included a chip plant, an electric-vehicle battery plant, a steel-facility expansion and port electrification. “Large load” cannot be treated as a synonym for AI, even though data centers dominated this vintage.
+
+Following criticism of request quality and duplication, PJM tightened the process. Its [January 14, 2026 load report](https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf) requires **firm** commitments for near-term years, including an electric service obligation or construction commitment. More distant non-firm projects may be derated. The implementation material linked from the report also tests ramp timing and utilisation rather than immediately converting maximum requested capacity into certain peak load.
+
+<figure class="pjm-visual">
+<svg class="pjm-svg pjm-desktop" viewBox="0 0 760 530" role="img" aria-labelledby="pjm-filter-en-d-title pjm-filter-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-filter-en-d-title">From request to forecast</title>
+  <desc id="pjm-filter-en-d-desc">PJM tightened the screen for its January 14, 2026 report.</desc>
+  <rect x="1" y="1" width="758" height="528" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="32" y="42" fill="#f5f6f8" font-size="21" font-weight="750" text-anchor="start" >From request to forecast</text>
+  <text x="32" y="66" fill="#8b909b" font-size="11" font-weight="400" text-anchor="start" >PJM tightened the screen for its January 14, 2026 report.</text>
+  <rect x="32" y="96" width="334" height="126" rx="12" fill="#151820" stroke="#7aa2f7" stroke-width="1.3"/>
+  <text x="50" y="123" fill="#7aa2f7" font-size="10" font-weight="800" text-anchor="start" >1 · REQUEST</text>
+  <text x="50" y="154" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Power, site, schedule</text>
+  <text x="50" y="184" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >The raw number is not yet certainty.</text>
+  <rect x="394" y="96" width="334" height="126" rx="12" fill="#151820" stroke="#5eead4" stroke-width="1.3"/>
+  <text x="412" y="123" fill="#5eead4" font-size="10" font-weight="800" text-anchor="start" >2 · EVIDENCE</text>
+  <text x="412" y="154" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Service / construction commitment</text>
+  <text x="412" y="184" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >Near term requires a “firm” commitment.</text>
+  <rect x="32" y="248" width="334" height="126" rx="12" fill="#151820" stroke="#f5b13d" stroke-width="1.3"/>
+  <text x="50" y="275" fill="#f5b13d" font-size="10" font-weight="800" text-anchor="start" >3 · NORMALISATION</text>
+  <text x="50" y="306" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Ramp and utilisation</text>
+  <text x="50" y="336" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >Avoids treating maximum load as immediate.</text>
+  <rect x="394" y="248" width="334" height="126" rx="12" fill="#151820" stroke="#ff4d87" stroke-width="1.3"/>
+  <text x="412" y="275" fill="#ff4d87" font-size="10" font-weight="800" text-anchor="start" >4 · FORECAST WEIGHT</text>
+  <text x="412" y="306" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Firm near term, non-firm derated</text>
+  <text x="412" y="336" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >Uncertainty rises with the horizon.</text>
+  <path d="M366 159H386" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <path d="M561 222V240H199V248" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <path d="M366 311H386" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <rect x="32" y="398" width="696" height="70" rx="12" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.3"/>
+  <text x="50" y="425" fill="#7aa2f7" font-size="9.5" font-weight="800" text-anchor="start" >VISIBLE EFFECT</text>
+  <text x="50" y="452" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="start" >2028 peak forecast: −4,414 MW versus the 2025 report</text>
+  <text x="32" y="502" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >Revision reflects large loads, economics and EVs, not data centers alone.</text>
+</svg>
+<svg class="pjm-svg pjm-mobile" viewBox="0 0 360 752" role="img" aria-labelledby="pjm-filter-en-m-title pjm-filter-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-filter-en-m-title">From request to forecast</title>
+  <desc id="pjm-filter-en-m-desc">PJM tightened the screen for its January 14, 2026 report.</desc>
+  <rect x="1" y="1" width="358" height="750" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="22" y="38" fill="#f5f6f8" font-size="17" font-weight="750" text-anchor="start" >From request to forecast</text>
+  <text x="22" y="60" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >PJM tightened the screen for its January 14, 2026 report.</text>
+  <rect x="22" y="88" width="316" height="112" rx="11" fill="#151820" stroke="#7aa2f7" stroke-width="1.25"/>
+  <text x="40" y="113" fill="#7aa2f7" font-size="9.5" font-weight="800" text-anchor="start" >1 · REQUEST</text>
+  <text x="40" y="141" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Power, site, schedule</text>
+  <text x="40" y="167" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >The raw number is not yet certainty.</text>
+  <rect x="22" y="222" width="316" height="112" rx="11" fill="#151820" stroke="#5eead4" stroke-width="1.25"/>
+  <text x="40" y="247" fill="#5eead4" font-size="9.5" font-weight="800" text-anchor="start" >2 · EVIDENCE</text>
+  <text x="40" y="275" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Service / construction commitment</text>
+  <text x="40" y="301" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >Near term requires a “firm”</text>
+  <text x="40" y="318" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >commitment.</text>
+  <rect x="22" y="356" width="316" height="112" rx="11" fill="#151820" stroke="#f5b13d" stroke-width="1.25"/>
+  <text x="40" y="381" fill="#f5b13d" font-size="9.5" font-weight="800" text-anchor="start" >3 · NORMALISATION</text>
+  <text x="40" y="409" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Ramp and utilisation</text>
+  <text x="40" y="435" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >Avoids treating maximum load</text>
+  <text x="40" y="452" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >as immediate.</text>
+  <rect x="22" y="490" width="316" height="112" rx="11" fill="#151820" stroke="#ff4d87" stroke-width="1.25"/>
+  <text x="40" y="515" fill="#ff4d87" font-size="9.5" font-weight="800" text-anchor="start" >4 · FORECAST WEIGHT</text>
+  <text x="40" y="543" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Firm near term, non-firm derated</text>
+  <text x="40" y="569" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >Uncertainty rises with the horizon.</text>
+  <rect x="22" y="632" width="316" height="96" rx="11" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.25"/>
+  <text x="40" y="657" fill="#7aa2f7" font-size="9" font-weight="800" text-anchor="start" >VISIBLE EFFECT</text>
+  <text x="40" y="687" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="start" >2028 peak: −4,414 MW</text>
+  <text x="40" y="708" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >vs the 2025 report</text>
+</svg>
+<figcaption>The 2026 report lowered PJM's 2028 peak forecast by 4,414 MW versus the 2025 report. PJM attributes the revision to the combined effects of large-load adjustments, economics and electric vehicles.</figcaption>
+</figure>
+
+Chronology matters again. The tighter method did not govern the July 2025 auction, which relied on the 2025 forecast. It does show that PJM recognised the issue and changed its screen. Near-term demand came down, yet the new report still projects extraordinary longer-run growth: **3.6% a year on average over ten years** for the summer peak, compared with **[0.3% in the forecast published in 2021](https://insidelines.pjm.com/pjm-2021-long-term-load-forecast-predicts-slight-growth/)**. A downward revision is not a rejection of growth. It changes the timing and confidence attached to it.
+
+## Prices exploded, but a single-cause story fails
+
+PJM's RTO capacity price rose from **$28.92/MW-day** for 2024/25 to **$269.92** for 2025/26. It then reached **$329.17** for 2026/27, **$333.44** for 2027/28 and **$325** for 2028/29. The latest decline does not represent a clean easing: the last three auctions all cleared at their authorised cap, and the cap itself changed.
+
+
+Data centers are a major demand driver. PJM said the more than 5,400 MW increase in peak demand for the 2026/27 auction was driven largely by data-center expansion, electrification and economic growth. For 2027/28, it attributed **nearly 5,100 MW of a 5,250 MW increase** to data centers. For 2028/29, forecast peak rose by another roughly 2,000 MW and PJM again pointed to continued large data-center additions.
+
+But the price is not a demand-only statistic.
+
+On the supply side, PJM adopted a new reliability-accreditation method, expanded must-offer rules, dealt with plant retirements, changed demand-curve parameters and modelled zonal constraints. For 2025/26, [PJM cited about 6,600 MW of retirements, higher forecast peak and FERC-approved market reforms](https://insidelines.pjm.com/pjm-capacity-auction-procures-sufficient-resources-to-meet-rto-reliability-requirement/) among the principal drivers. The 2026/27 auction cleared 2,669 MW of new generation and uprates, but PJM also reported more than **46,000 MW of approved projects not yet built**, facing permitting, supply-chain, financing and other hurdles outside its queue process.
+
+The defensible conclusion is narrower than a slogan. **Without the acceleration in large loads, the monitor's scenarios indicate that the system would have had more time and capacity prices would have been lower.** That does not erase declining available supply, rule changes or construction bottlenecks. Data centers accelerated the squeeze; they are not the only moving part.
+
+## The strongest counterargument: the demand is not imaginary
+
+An article about speculative requests can easily select only evidence that supports scepticism.
+
+On June 18, 2026, Lawrence Berkeley National Laboratory released a national bottom-up update using IT-equipment shipments, device power, cooling simulations and facility types. It estimates that U.S. data centers consumed **192 TWh in 2024**, equal to **4.7%** of national electricity. Its reference case reaches **649 TWh in 2030**, or **11.8%** of projected U.S. consumption. A compounded uncertainty range spans **521 to 843 TWh**, or **9.5% to 15.3%**. [The report excludes cryptocurrency mining and treats 2024 as its last fully historical year](https://escholarship.org/content/qt33m6w3x0/qt33m6w3x0.pdf).
+
+Those bounds are not confidence intervals. The authors describe them as a **stress test** that combines assumptions in the same direction. The model does not incorporate major departures such as a technological breakthrough, market reversal, supply-chain rupture, regulatory change or physical inability to obtain grid power. The midpoint is not statistical certainty.
+
+The measured base is nevertheless large. On July 2, 2026, [PJM estimated a preliminary 168,158 MW peak above its previous historic record during extreme heat](https://insidelines.pjm.com/hot-weather-alert-issued-for-july-14-and-15/). The region is not planning growth from zero. It must serve existing load, replace retirements, maintain reserves and prepare campuses that can be developed faster than many generation technologies.
+
+The useful question is therefore not “does demand exist?” but **“how much, when, where, with what flexibility, and backed by what financial commitment?”** A national TWh forecast cannot be inserted directly into a zonal MW peak auction. Berkeley's report itself warns that annual energy, IT nameplate capacity, requested interconnection capacity and actual draw are difficult to translate into one another.
+
+## A forecast request is becoming an option on the power system
+
+A developer seeking hundreds of megawatts acquires something valuable: the grid begins to reserve analytical and planning attention for its future need. When multiple locations can be tested with limited commitment, the developer holds an option. It can choose the fastest or cheapest site; operators may have to study several versions and risk incorporating duplicated load.
+
+The option is not free for the system. It consumes engineering time, affects planning, can raise the capacity requirement and accelerate the case for transmission or a backstop procurement. Shopping around is not inherently abusive. It is rational when speed to power determines the value of an AI project. The imbalance arises when **the cost of reserving the option is far below the collective cost of getting the forecast wrong**.
+
+The capacity market makes that imbalance visible because a changed clearing price applies to a broad volume. Yet the final incidence is diffuse. PJM charges load-serving entities under wholesale rules; bilateral contracts and self-supply alter exposure; states and utilities then translate parts of wholesale cost into retail rates. [PJM cautioned in its 2028/29 release](https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/) that cleared supply multiplied by the $325 price (about $16.4 billion) was not the cost actually paid by all load because hedging arrangements matter.
+
+The Monitoring Analytics report therefore cannot tell us how much of the $7.271 billion will reach households, in which state, or in which monthly bill. That would require supplier exposure, hedges, tariff timing and state commission decisions. Converting the number into “dollars per household” would create false precision.
+
+## FERC and PJM are now trying to price the commitment
+
+On June 18, 2026, the Federal Energy Regulatory Commission opened six proceedings covering every regional grid operator under its jurisdiction. [The PJM case is EL26-67-000](https://www.ferc.gov/media/e-7-el26-67-000). FERC asked operators to justify or reform study processes, cost-shift protection, transparency, services for flexible loads and coordinated treatment of large loads with nearby generation. It also called for cost-recovery agreements designed to prevent infrastructure built for a large customer from falling onto others if the customer never arrives.
+
+The Commission explicitly targeted speculative requests and utility shopping that can produce duplicate studies, double counting and distorted forecasts. That regulatory finding supports the general mechanism. It is not a retrospective audit proving how many of the 7,892 MW in the 2025 forecast were duplicated.
+
+PJM then filed two proposals that shift the debate from forecast inclusion to resource support.
+
+The **Interim Resource Adequacy Service**, filed August 13, 2026, would create a Large Load Registry (PJM uses a 50 MW site threshold) and allow certain new loads without sufficient supporting capacity to be curtailed ahead of traditional customers in emergencies. [PJM also proposes, beginning with the 2029/30 auction, to exclude certain unsupported new large loads from the future needs calculation](https://insidelines.pjm.com/pjm-proposes-framework-to-connect-data-centers-without-compromising-reliability-affordability/).
+
+The **Reliability Backstop Procurement**, filed July 31, seeks resources against the **6,831 MW** shortfall for 2028/29 through contracts of up to fifteen years and a stated maximum volume-weighted willingness to pay of **$555/MW-day**. [Its target would be reduced for qualifying new resources under bilateral contracts to limit double procurement](https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/). The filing also exposes the jurisdictional seam: PJM can allocate wholesale costs to zones and load-serving entities, but targeted recovery from an individual retail data center largely depends on state action.
+
+As of **September 1, 2026**, both measures should be described as **proposals filed with FERC**, not final rules in force. We found no public approval order for either in the official sources reviewed by that date. Political announcements are moving faster than enforceable tariff language.
+
+## What would a credible forecast guarantee look like?
+
+No screen can remove uncertainty. The objective is to make it visible, priced and reversible.
+
+| Mechanism | What it improves | Risk or limit |
+| --- | --- | --- |
+| Escalating readiness evidence | Screens requests lacking site control, contracts or a credible schedule | Can favour hyperscalers able to tie up capital early |
+| Rising deposits and collateral | Charges for the option value of a grid position | May be trivial beside systemic cost or excessive for a useful project |
+| Interregional large-load registry | Detects duplicate requests across utilities and regions | Requires common definitions and sharing sensitive commercial data |
+| Probabilistic ramping | Avoids booking maximum requested load in year one | Probability remains model-dependent and can miss genuine acceleration |
+| Conditional or interruptible service | Connects loads faster without promising firm power in every stress event | Some workloads cannot be interrupted; performance must be enforceable |
+| Associated new supply or bilateral contract | Better aligns new load with new resources | Contracted generation may not be additional, deliverable or available at the right hour |
+| Ex-post reconciliation | Compares promised, connected and actual load over time | Arrives after the auction and does not automatically undo earlier costs |
+| Published high/base/low scenarios | Shows the value of uncertainty instead of hiding it in one number | Complicates decisions and does not itself decide who pays |
+
+A workable architecture is likely to combine instruments. A load may be financially mature but operationally flexible; another may be firm but lack associated supply. A registry addresses duplication, collateral addresses abandonment, interruptibility protects reliability and a long-term contract supports investment. They solve different failures.
+
+Symmetry matters. **A large load should not bear a delay caused by the grid or regulator as though it had abandoned the project itself.** Otherwise, ratepayer protection becomes a one-way transfer of every risk to the customer, including risks it cannot control. Contracts must distinguish voluntary withdrawal, failure to finance, permitting delay and the utility's inability to deliver on schedule.
+
+“Bring your own generation” is likewise a starting phrase, not a complete rule. Is the plant genuinely new? Can it run during the critical hours? Can the grid deliver its output? Who bears outage risk? Would it have been built without the contract? The label cannot substitute for an additionality test.
+
+## What the evidence actually supports
+
+<div class="pjm-verdict">
+<p><strong>Established.</strong> In PJM's independent monitor's published counterfactual, removing 7,892 MW of forecast new data-center load and growth above embedded load reduces modelled 2026/27 auction revenue from $16.124 billion to $8.853 billion. The $7.271 billion difference is the report's figure.</p>
+<p><strong>Consistent with the evidence.</strong> Rapid forecast data-center growth accelerated a squeeze also shaped by retirements, slow construction, regional constraints and market-rule changes. It increased both the value of an accurate forecast and the cost of error.</p>
+<p><strong>Still unknown publicly.</strong> How much of the 7,892 MW will arrive on schedule; how many requests were duplicated; how much was genuinely speculative; and what share of the $7.271 billion reaches each customer class cannot be inferred from the public documents reviewed.</p>
+</div>
+
+The risk is not that PJM forecasts demand. A reliable grid cannot wait for actual consumption before preparing supply. The risk arises when **different degrees of project maturity are treated as equivalent certainty, while the party requesting power guarantees only a small share of the costs its forecast can trigger**.
+
+AI has brought projects capable of moving several gigawatts within a few years into the U.S. power system. Regulators are now being forced to price something that once looked like paperwork: a promise to consume electricity.
+
+## Primary sources and method
+
+<div class="pjm-source-grid">
+<article><h3>Core counterfactual</h3><p><a href="https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf">Monitoring Analytics, <em>Analysis of the 2026/2027 RPM Base Residual Auction: Part A</em>, October 1, 2025</a>. Scenario 3 for 7,892 MW; Scenario 4 for 11,993 MW; Tables 3, 4 and 8–13.</p></article>
+<article><h3>Auction results</h3><p>Official PJM releases for <a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-adequate-resources/">2024/25</a>, <a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-sufficient-resources-to-meet-rto-reliability-requirement/">2025/26</a>, <a href="https://insidelines.pjm.com/pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal/">2026/27</a>, <a href="https://insidelines.pjm.com/pjm-auction-procures-134479-mw-of-generation-resources/">2027/28</a> and <a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/">2028/29</a>.</p></article>
+<article><h3>Forecast and screening</h3><p><a href="https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf">PJM, <em>2026 Load Forecast Report</em>, posted January 14, 2026</a>. The implementation and large-load adjustment summary documents are linked from the report.</p></article>
+<article><h3>National demand</h3><p><a href="https://escholarship.org/content/qt33m6w3x0/qt33m6w3x0.pdf">Lawrence Berkeley National Laboratory, <em>United States Data Center Energy Usage Report: 2025 Update</em>, published June 18, 2026</a>, DOI 10.71468/P1RP4F.</p></article>
+<article><h3>Federal reform</h3><p><a href="https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration">FERC's June 18, 2026 large-load proceedings</a> and <a href="https://www.ferc.gov/media/e-7-el26-67-000">PJM docket EL26-67-000</a>.</p></article>
+<article><h3>Pending PJM proposals</h3><p><a href="https://insidelines.pjm.com/pjm-proposes-framework-to-connect-data-centers-without-compromising-reliability-affordability/">Interim Resource Adequacy Service, August 13, 2026</a> and <a href="https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/">Reliability Backstop Procurement, July 31, 2026</a>. Status checked September 1, 2026.</p></article>
+</div>
+
+**Method.** Counterfactual dollar amounts are calculated at full precision and displayed to three decimal places in billions. The 82.1% ratio uses counterfactual revenue as its denominator; 45.1% uses actual revenue. The 7,892 × 329.17 × 365 calculation is shown only as a linear order of magnitude and never treated as an auction rerun. The auction series carries a warning because market rules, price caps, available supply and resource accreditation changed between delivery years.

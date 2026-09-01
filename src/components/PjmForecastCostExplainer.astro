@@ -1,0 +1,277 @@
+---
+import {
+  PJM_FORECAST_DEFAULTS,
+  calculatePjmForecastMetrics,
+} from '../lib/pjm-forecast-cost.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `pjm-forecast-cost-${lang}`;
+const initial = calculatePjmForecastMetrics(PJM_FORECAST_DEFAULTS);
+const money = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-US', {
+  style: 'currency',
+  currency: 'USD',
+  notation: 'compact',
+  maximumFractionDigits: 3,
+});
+const number = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-US', {
+  maximumFractionDigits: 2,
+});
+const percent = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-US', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
+
+const copy = isFr
+  ? {
+      eyebrow: 'OUTIL · LE PIÈGE DU CALCUL LINÉAIRE',
+      title: 'Un mégawatt annoncé n’a pas un prix unique',
+      intro:
+        'La multiplication MW × prix × jours donne un ordre de grandeur direct. Le contrefactuel du contrôleur de PJM mesure autre chose : la variation du revenu de tout le marché après un nouveau calcul de l’enchère.',
+      badge: 'calcul local · zéro tracker',
+      forecastLoad: 'Charge anticipée',
+      price: 'Prix de capacité',
+      days: 'Durée',
+      mw: 'MW',
+      priceUnit: '$/MW-jour',
+      daysUnit: 'jours',
+      linearTitle: 'Multiplication brute',
+      linearFormula: 'MW × $/MW-jour × jours',
+      fixedTitle: 'Écart modélisé par le contrôleur',
+      fixedBadge: 'scénario fixe · IMM',
+      actual: 'Revenu réel de l’enchère',
+      counterfactual: 'Scénario sans les 7 892 MW prévus',
+      difference: 'Écart',
+      denominatorTitle: 'Pourquoi 82,1 % et 45,1 % sont tous deux exacts',
+      vsCounterfactual: 'Écart ÷ scénario contrefactuel',
+      shareActual: 'Écart ÷ résultat réel',
+      warningTitle: 'Ce que l’outil ne calcule pas',
+      warning:
+        'Modifier les MW ou le prix ne recalcule pas l’enchère de PJM. Le marché est non linéaire : la courbe de demande, les zones, le plancher et le plafond de prix, l’offre et les réserves modifient le résultat. Le chiffre de 7,271 Md$ reste donc celui du scénario publié par Monitoring Analytics.',
+      sourceTitle: 'Source et périmètre',
+      source:
+        'Monitoring Analytics, Analysis of the 2026/2027 RPM Base Residual Auction: Part A, 1er octobre 2025, scénario 3. Prix officiel de l’enchère : PJM, 22 juillet 2025.',
+      reset: 'Rétablir les valeurs source',
+    }
+  : {
+      eyebrow: 'TOOL · THE LINEAR-CALCULATION TRAP',
+      title: 'A forecast megawatt does not have one price',
+      intro:
+        'MW × price × days produces a direct order of magnitude. PJM’s independent monitor measured something else: the change in market-wide revenue after rerunning the auction under a counterfactual load forecast.',
+      badge: 'local calculation · zero tracker',
+      forecastLoad: 'Forecast load',
+      price: 'Capacity price',
+      days: 'Period',
+      mw: 'MW',
+      priceUnit: '$/MW-day',
+      daysUnit: 'days',
+      linearTitle: 'Straight multiplication',
+      linearFormula: 'MW × $/MW-day × days',
+      fixedTitle: 'Monitor’s modelled difference',
+      fixedBadge: 'fixed scenario · IMM',
+      actual: 'Actual auction revenue',
+      counterfactual: 'Scenario without 7,892 forecast MW',
+      difference: 'Difference',
+      denominatorTitle: 'Why 82.1% and 45.1% are both correct',
+      vsCounterfactual: 'Difference ÷ counterfactual',
+      shareActual: 'Difference ÷ actual result',
+      warningTitle: 'What this tool does not calculate',
+      warning:
+        'Changing MW or price does not rerun PJM’s auction. The market is nonlinear: the demand curve, locations, price floor and cap, supply and reserve requirement all affect the result. The $7.271bn figure therefore remains the fixed scenario published by Monitoring Analytics.',
+      sourceTitle: 'Source and scope',
+      source:
+        'Monitoring Analytics, Analysis of the 2026/2027 RPM Base Residual Auction: Part A, October 1, 2025, Scenario 3. Official auction price: PJM, July 22, 2025.',
+      reset: 'Restore source values',
+    };
+---
+
+<section class="pfc-tool" id={id} data-pjm-forecast-cost data-lang={lang}>
+  <header class="pfc-head">
+    <div>
+      <p class="pfc-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="pfc-badge">{copy.badge}</span>
+  </header>
+
+  <div class="pfc-grid">
+    <form class="pfc-controls" aria-label={copy.title}>
+      <label>
+        <span>{copy.forecastLoad}</span>
+        <span class="pfc-number">
+          <input name="forecastLoadMw" type="number" min="0" max="100000" step="1" value={PJM_FORECAST_DEFAULTS.forecastLoadMw} inputmode="numeric" />
+          <b>{copy.mw}</b>
+        </span>
+      </label>
+      <input class="pfc-range" name="forecastLoadRange" type="range" min="0" max="20000" step="100" value={PJM_FORECAST_DEFAULTS.forecastLoadMw} aria-label={copy.forecastLoad} />
+
+      <label>
+        <span>{copy.price}</span>
+        <span class="pfc-number">
+          <input name="priceUsdPerMwDay" type="number" min="0" max="5000" step="0.01" value={PJM_FORECAST_DEFAULTS.priceUsdPerMwDay} inputmode="decimal" />
+          <b>{copy.priceUnit}</b>
+        </span>
+      </label>
+      <input class="pfc-range" name="priceRange" type="range" min="0" max="800" step="1" value={PJM_FORECAST_DEFAULTS.priceUsdPerMwDay} aria-label={copy.price} />
+
+      <label>
+        <span>{copy.days}</span>
+        <span class="pfc-number">
+          <input name="days" type="number" min="1" max="366" step="1" value={PJM_FORECAST_DEFAULTS.days} inputmode="numeric" />
+          <b>{copy.daysUnit}</b>
+        </span>
+      </label>
+      <button class="pfc-reset" type="button" data-reset>{copy.reset}</button>
+    </form>
+
+    <section class="pfc-linear" aria-live="polite">
+      <p>{copy.linearTitle}</p>
+      <strong data-result="linear">{money.format(initial.linearOrderOfMagnitudeUsd)}</strong>
+      <code>{copy.linearFormula}</code>
+      <dl>
+        <div><dt>{copy.forecastLoad}</dt><dd data-result="load">{number.format(initial.forecastLoadMw)} {copy.mw}</dd></div>
+        <div><dt>{copy.price}</dt><dd data-result="price">{number.format(initial.priceUsdPerMwDay)} {copy.priceUnit}</dd></div>
+        <div><dt>{copy.days}</dt><dd data-result="days">{initial.days} {copy.daysUnit}</dd></div>
+      </dl>
+    </section>
+  </div>
+
+  <section class="pfc-fixed">
+    <div class="pfc-fixed-head">
+      <div>
+        <p>{copy.fixedTitle}</p>
+        <strong>{money.format(initial.immModeledDifferenceUsd)}</strong>
+      </div>
+      <span>{copy.fixedBadge}</span>
+    </div>
+    <div class="pfc-bars" aria-label={copy.fixedTitle}>
+      <div>
+        <span><b>{copy.actual}</b><em>{money.format(initial.immActualRevenueUsd)}</em></span>
+        <i style="--pfc-width:100%"></i>
+      </div>
+      <div>
+        <span><b>{copy.counterfactual}</b><em>{money.format(initial.immCounterfactualRevenueUsd)}</em></span>
+        <i style={`--pfc-width:${(initial.immCounterfactualRevenueUsd / initial.immActualRevenueUsd) * 100}%`}></i>
+      </div>
+    </div>
+  </section>
+
+  <section class="pfc-denominators">
+    <h3>{copy.denominatorTitle}</h3>
+    <div>
+      <article>
+        <p>{copy.vsCounterfactual}</p>
+        <strong>{percent.format(initial.increaseVsCounterfactualPct)} %</strong>
+      </article>
+      <article>
+        <p>{copy.shareActual}</p>
+        <strong>{percent.format(initial.differenceAsShareOfActualPct)} %</strong>
+      </article>
+    </div>
+  </section>
+
+  <div class="pfc-details">
+    <details open>
+      <summary>{copy.warningTitle}</summary>
+      <p>{copy.warning}</p>
+    </details>
+    <details>
+      <summary>{copy.sourceTitle}</summary>
+      <p>{copy.source}</p>
+    </details>
+  </div>
+</section>
+
+<script>
+  import {
+    PJM_FORECAST_DEFAULTS,
+    calculatePjmForecastMetrics,
+    normalizePjmForecastInputs,
+  } from '../lib/pjm-forecast-cost.ts';
+
+  const initialisePjmForecastTools = () => {
+    document.querySelectorAll<HTMLElement>('[data-pjm-forecast-cost]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const locale = root.dataset.lang === 'en' ? 'en-US' : 'fr-FR';
+      const currency = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: 'USD',
+        notation: 'compact',
+        maximumFractionDigits: 3,
+      });
+      const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+      const isEn = root.dataset.lang === 'en';
+
+      const load = root.querySelector<HTMLInputElement>('[name="forecastLoadMw"]');
+      const loadRange = root.querySelector<HTMLInputElement>('[name="forecastLoadRange"]');
+      const price = root.querySelector<HTMLInputElement>('[name="priceUsdPerMwDay"]');
+      const priceRange = root.querySelector<HTMLInputElement>('[name="priceRange"]');
+      const days = root.querySelector<HTMLInputElement>('[name="days"]');
+      const reset = root.querySelector<HTMLButtonElement>('[data-reset]');
+      if (!load || !loadRange || !price || !priceRange || !days) return;
+
+      const write = (key: string, value: string) => {
+        const target = root.querySelector<HTMLElement>(`[data-result="${key}"]`);
+        if (target) target.textContent = value;
+      };
+
+      const update = (source?: HTMLInputElement) => {
+        if (source === loadRange) load.value = loadRange.value;
+        if (source === priceRange) price.value = priceRange.value;
+
+        const normalized = normalizePjmForecastInputs({
+          forecastLoadMw: Number(load.value),
+          priceUsdPerMwDay: Number(price.value),
+          days: Number(days.value),
+        });
+        const result = calculatePjmForecastMetrics(normalized);
+
+        load.value = String(result.forecastLoadMw);
+        price.value = String(result.priceUsdPerMwDay);
+        days.value = String(result.days);
+        loadRange.value = String(Math.min(Number(loadRange.max), result.forecastLoadMw));
+        priceRange.value = String(Math.min(Number(priceRange.max), result.priceUsdPerMwDay));
+
+        write('linear', currency.format(result.linearOrderOfMagnitudeUsd));
+        write('load', `${number.format(result.forecastLoadMw)} MW`);
+        write('price', `${number.format(result.priceUsdPerMwDay)} ${isEn ? '$/MW-day' : '$/MW-jour'}`);
+        write('days', `${result.days} ${isEn ? 'days' : 'jours'}`);
+      };
+
+      [load, price, days].forEach((input) => input.addEventListener('input', () => update(input)));
+      [loadRange, priceRange].forEach((input) => input.addEventListener('input', () => update(input)));
+      reset?.addEventListener('click', () => {
+        load.value = String(PJM_FORECAST_DEFAULTS.forecastLoadMw);
+        price.value = String(PJM_FORECAST_DEFAULTS.priceUsdPerMwDay);
+        days.value = String(PJM_FORECAST_DEFAULTS.days);
+        update();
+      });
+      update();
+    });
+  };
+
+  initialisePjmForecastTools();
+  document.addEventListener('astro:page-load', initialisePjmForecastTools);
+</script>
+
+<style>
+  .pfc-tool{--pfc-accent:#5eead4;--pfc-pink:#ff4d87;--pfc-amber:#f5b13d;min-width:0;margin:1.8rem 0 2.25rem;border:1px solid color-mix(in srgb,var(--pfc-accent) 36%,var(--color-line));border-radius:18px 5px 18px 18px;padding:clamp(.9rem,3vw,1.4rem);background:radial-gradient(105% 125% at 0 0,color-mix(in srgb,var(--pfc-accent) 9%,transparent),transparent 62%),color-mix(in srgb,var(--color-surface) 95%,#080b10);box-shadow:var(--shadow-elevated);overflow:hidden}
+  .pfc-tool *{box-sizing:border-box}.pfc-head{display:grid;gap:.85rem}.pfc-eyebrow,.pfc-badge,.pfc-controls,.pfc-linear,.pfc-fixed,.pfc-denominators,.pfc-details{font-family:var(--font-mono)}
+  .pfc-eyebrow{margin:0;color:var(--pfc-accent);font-size:.64rem;font-weight:800;letter-spacing:.11em}.pfc-head h2{max-width:48rem;margin:.35rem 0 0;color:var(--color-bright);font-family:var(--font-display);font-size:clamp(1.35rem,4vw,2rem);line-height:1.08}.pfc-head div>p:last-child{max-width:57rem;margin:.65rem 0 0;color:var(--color-muted);font-size:.82rem;line-height:1.62}.pfc-badge{align-self:start;justify-self:start;border:1px solid color-mix(in srgb,var(--pfc-accent) 48%,transparent);border-radius:999px;padding:.36rem .58rem;color:var(--pfc-accent);font-size:.58rem;white-space:nowrap}
+  .pfc-grid{display:grid;gap:.85rem;margin-top:1.1rem}.pfc-controls,.pfc-linear,.pfc-fixed,.pfc-denominators{min-width:0;border:1px solid var(--color-line);border-radius:12px;background:color-mix(in srgb,var(--color-bg) 62%,transparent)}.pfc-controls{padding:.95rem}.pfc-controls label{display:grid;grid-template-columns:minmax(0,1fr) minmax(9.5rem,12rem);gap:.7rem;align-items:center}.pfc-controls label+input+label{margin-top:1rem}.pfc-controls label>span:first-child{color:var(--color-paper);font-size:.68rem;text-transform:uppercase;letter-spacing:.035em}.pfc-number{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;overflow:hidden;border:1px solid var(--color-line);border-radius:8px;background:var(--color-bg)}.pfc-number input{width:100%;min-width:0;border:0;padding:.55rem;background:transparent;color:var(--color-bright);font:700 .72rem var(--font-mono)}.pfc-number b{padding-right:.55rem;color:var(--color-muted);font-size:.58rem;font-weight:600;white-space:nowrap}.pfc-range{width:100%;margin:.55rem 0 0;accent-color:var(--pfc-accent)}.pfc-reset{width:100%;margin-top:1rem;border:1px solid color-mix(in srgb,var(--pfc-accent) 55%,var(--color-line));border-radius:8px;padding:.6rem;background:transparent;color:var(--pfc-accent);font:700 .65rem var(--font-mono);cursor:pointer}
+  .pfc-linear{padding:1rem}.pfc-linear>p{margin:0;color:var(--color-muted);font-size:.65rem;text-transform:uppercase}.pfc-linear>strong{display:block;margin:.55rem 0 .35rem;color:var(--pfc-accent);font-size:clamp(1.85rem,5vw,2.25rem);line-height:1.05;overflow-wrap:anywhere}.pfc-linear code{display:inline-block;border:1px solid var(--color-line);border-radius:7px;padding:.35rem .5rem;background:var(--color-bg);color:var(--color-paper);font-size:.62rem;white-space:normal}.pfc-linear dl{margin:.9rem 0 0}.pfc-linear dl div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.75rem;border-bottom:1px solid color-mix(in srgb,var(--color-line) 65%,transparent);padding:.48rem 0}.pfc-linear dt{color:var(--color-muted);font-size:.63rem}.pfc-linear dd{margin:0;color:var(--color-bright);font-size:.66rem;text-align:right}
+  .pfc-fixed{margin-top:.85rem;padding:1rem}.pfc-fixed-head{display:grid;gap:.7rem}.pfc-fixed-head p{margin:0;color:var(--color-muted);font-size:.65rem;text-transform:uppercase}.pfc-fixed-head strong{display:block;margin-top:.35rem;color:var(--pfc-pink);font-size:clamp(1.8rem,7vw,2.65rem);line-height:1}.pfc-fixed-head>span{align-self:start;justify-self:start;border:1px solid color-mix(in srgb,var(--pfc-pink) 55%,transparent);border-radius:999px;padding:.34rem .55rem;color:var(--pfc-pink);font-size:.57rem;white-space:nowrap}.pfc-bars{display:grid;gap:.75rem;margin-top:1rem}.pfc-bars div{min-width:0}.pfc-bars span{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.75rem;align-items:end}.pfc-bars b{color:var(--color-paper);font-size:.64rem;font-weight:650}.pfc-bars em{color:var(--color-bright);font-size:.7rem;font-style:normal;font-weight:750}.pfc-bars i{display:block;width:var(--pfc-width);height:14px;max-width:100%;margin-top:.38rem;border-radius:999px;background:linear-gradient(90deg,var(--pfc-accent),var(--pfc-pink));box-shadow:inset 0 0 0 1px color-mix(in srgb,#fff 16%,transparent)}
+  .pfc-denominators{margin-top:.85rem;padding:1rem}.pfc-denominators h3{margin:0;color:var(--color-bright);font-family:var(--font-display);font-size:1rem;line-height:1.25}.pfc-denominators>div{display:grid;gap:.65rem;margin-top:.8rem}.pfc-denominators article{min-width:0;border:1px solid var(--color-line);border-radius:9px;padding:.8rem;background:var(--color-bg)}.pfc-denominators p{margin:0;color:var(--color-muted);font-size:.61rem;line-height:1.45}.pfc-denominators strong{display:block;margin-top:.35rem;color:var(--pfc-amber);font-size:1.45rem}
+  .pfc-details{display:grid;gap:.55rem;margin-top:.85rem}.pfc-details details{min-width:0;border:1px solid var(--color-line);border-radius:9px;padding:.7rem .8rem}.pfc-details summary{color:var(--color-paper);font-size:.65rem;cursor:pointer}.pfc-details p{margin:.55rem 0 0;color:var(--color-muted);font-size:.65rem;line-height:1.6}
+  .pfc-tool input:focus-visible,.pfc-tool button:focus-visible,.pfc-tool summary:focus-visible{outline:2px solid var(--pfc-accent);outline-offset:2px}
+  @media(min-width:760px){.pfc-head{grid-template-columns:minmax(0,1fr) auto}.pfc-grid{grid-template-columns:minmax(0,1.05fr) minmax(18rem,.95fr)}.pfc-fixed-head{grid-template-columns:minmax(0,1fr) auto}.pfc-denominators>div{grid-template-columns:repeat(2,minmax(0,1fr))}.pfc-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:460px){.pfc-controls label{grid-template-columns:1fr}.pfc-number{width:100%}.pfc-bars span{grid-template-columns:1fr}.pfc-bars em{text-align:left}.pfc-linear dl div{grid-template-columns:1fr}.pfc-linear dd{text-align:left}.pfc-badge,.pfc-fixed-head>span{white-space:normal}}
+  @media(prefers-reduced-motion:reduce){.pfc-tool *{scroll-behavior:auto}}
+</style>

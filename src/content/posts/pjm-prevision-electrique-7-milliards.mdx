@@ -1,0 +1,362 @@
+---
+title: "PJM : quand 7 892 MW prévus déplacent 7,3 milliards de dollars"
+seoTitle: "PJM et data centers : le coût d'une prévision | l0g"
+ogTitle: "7 892 MW prévus, 7,3 Md$ d'écart : le risque caché de PJM"
+description: "Dans PJM, retirer 7 892 MW de demande prévue de data centers réduit de 7,271 Md$ les revenus modélisés de l’enchère 2026-2027. Ce que ce chiffre mesure."
+ogImage: "/illustrations/news/pjm-forecast-capacity-cost-v1.jpg"
+pubDate: 2026-09-01T11:23:00+02:00
+updatedDate: 2026-09-01T11:23:00+02:00
+tags: ["IA", "data centers", "électricité", "États-Unis", "PJM", "risque", "régulation"]
+draft: false
+quickTake:
+  fact: "Monitoring Analytics estime que les 7 892 MW de nouvelle charge de data centers et de hausse prévue sur des sites existants inclus dans le forecast 2025 ont porté les revenus modélisés de l'enchère PJM 2026-2027 de 8,853 à 16,124 milliards de dollars, soit 7,271 milliards d'écart."
+  importance: "Le marché de capacité achète de la disponibilité à l'avance. Une prévision de pointe peut donc modifier le prix payé à presque toutes les ressources retenues, bien avant que les serveurs annoncés ne consomment effectivement."
+  uncertainty: "Le résultat est un contrefactuel du contrôleur indépendant, pas une facture adressée aux data centers ni une mesure des projets fictifs. Il dépend de la courbe d'enchère, de l'offre, de la localisation des charges et d'un plancher de prix exceptionnel."
+---
+
+import PjmForecastCostExplainer from '../../components/PjmForecastCostExplainer.astro';
+
+<style>{`
+.pjm-visual{min-width:0;margin:1.8rem 0 2.1rem;padding:0}.pjm-visual svg{display:block;width:100%;height:auto;max-width:100%}.pjm-visual .pjm-mobile{display:none}.pjm-visual figcaption{margin:.7rem .25rem 0;color:var(--color-muted);font-family:var(--font-mono);font-size:.69rem;line-height:1.55}.pjm-scope,.pjm-verdict{margin:1.25rem 0;border:1px solid var(--color-line);border-left:3px solid #5eead4;border-radius:4px 12px 12px 4px;padding:1rem 1.05rem;background:color-mix(in srgb,var(--color-surface) 93%,#080b10)}.pjm-scope strong,.pjm-verdict strong{color:var(--color-bright)}.pjm-scope p,.pjm-verdict p{margin:.35rem 0;color:var(--color-paper);font-size:.9rem;line-height:1.65}.pjm-verdict{border-left-color:#f5b13d}.pjm-source-grid{display:grid;gap:.7rem;margin:1rem 0}.pjm-source-grid article{min-width:0;border:1px solid var(--color-line);border-radius:10px;padding:.85rem;background:color-mix(in srgb,var(--color-surface) 92%,transparent)}.pjm-source-grid h3{margin:0;color:var(--color-bright);font-size:.92rem}.pjm-source-grid p{margin:.45rem 0 0;color:var(--color-muted);font-size:.78rem;line-height:1.55}.pjm-source-grid a{overflow-wrap:anywhere}.prose table{font-size:.82rem}.prose th,.prose td{vertical-align:top}.prose code{overflow-wrap:anywhere}
+@media(min-width:760px){.pjm-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.pjm-desktop{display:none!important}.pjm-mobile{display:block!important}.pjm-visual{margin-inline:calc(var(--space-2, .5rem) * -1)}.pjm-visual figcaption{margin-inline:.65rem}.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}.pjm-scope,.pjm-verdict{padding:.85rem}.pjm-source-grid{grid-template-columns:1fr}}
+`}</style>
+
+*Un serveur n'a pas besoin d'être allumé pour qu'une prévision ait déjà un prix. Dans le plus grand marché électrique organisé des États-Unis, l'anticipation de milliers de mégawatts destinés aux data centers a déplacé le résultat d'une enchère portant sur l'ensemble du système. Le chiffre est spectaculaire : 7,271 milliards de dollars. Il est aussi beaucoup plus délicat qu'il n'en a l'air.*
+
+Le 22 juillet 2025, **PJM Interconnection** a publié le résultat de son enchère de capacité pour la période allant de juin 2026 à mai 2027. Le prix a atteint le plafond réglementaire de **329,17 dollars par mégawatt et par jour**. L'enchère a retenu 134 311 MW de capacité dite *UCAP* (la puissance corrigée de la capacité attendue d'une ressource à répondre pendant les périodes de risque), auxquels s'ajoutaient 11 933 MW couverts hors enchère par le régime *Fixed Resource Requirement*. [PJM précisait alors](https://insidelines.pjm.com/pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal/) que le volume total ne dépassait l'exigence de fiabilité que de **139 MW**.
+
+Le 1er octobre 2025, **Monitoring Analytics**, le contrôleur indépendant du marché de PJM, a publié une série de simulations contrefactuelles. Dans l'une d'elles, il conserve la charge déjà observée des data centers, mais retire de la prévision de pointe **7 892 MW** correspondant aux nouveaux sites annoncés et à la croissance attendue des sites existants. Le revenu total modélisé tombe alors de **16,124 milliards** à **8,853 milliards de dollars**. Écart : **7,271 milliards**, soit **82,1 %** du scénario contrefactuel. [Le rapport détaille les hypothèses et avertit que ses sensibilités ne sont ni des prévisions ni des prédictions](https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf).
+
+Ce résultat ne prouve pas que des data centers « fantômes » ont soutiré 7,3 milliards aux ménages. Il montre quelque chose de plus subtil : **dans un marché de capacité tendu, une variation de la demande prévue peut relever le prix de toute la capacité retenue**. L'incertitude ne porte donc plus seulement sur la quantité d'électricité qui sera un jour consommée. Elle entre dans le mécanisme qui rémunère aujourd'hui les centrales, les batteries et l'effacement disponibles demain.
+
+<div class="pjm-scope">
+<p><strong>Dates et périmètre.</strong> L'enchère s'est tenue du 9 au 15 juillet 2025, son résultat a été publié le 22 juillet, et elle concerne l'année de livraison du 1er juin 2026 au 31 mai 2027. Le contrefactuel de Monitoring Analytics date du 1er octobre 2025. Le rapport de prévision suivant de PJM, plus prudent sur les grandes charges à court terme, n'a été publié que le 14 janvier 2026. Mélanger ces trois dates conduirait à attribuer à l'enchère une méthode qui n'était pas encore en vigueur.</p>
+</div>
+
+## Une demande de raccordement peut produire trois factures
+
+Avant d'entrer dans le chiffre, il faut séparer trois mécanismes souvent confondus.
+
+La **capacité** rémunère la disponibilité future d'une ressource électrique. PJM demande : de combien de puissance fiable le système aura-t-il besoin lors des pointes, avec une marge de sécurité ? Il organise ensuite une enchère pour obtenir ce volume. Ce marché ne paie pas directement les mégawattheures consommés ; les marchés de l'énergie au jour le jour restent une autre composante des coûts de gros.
+
+Le **transport** finance les lignes et postes à haute tension capables d'acheminer l'électricité jusqu'aux zones de consommation. Une nouvelle concentration de charge peut rendre nécessaires des renforcements régionaux, même si une centrale suffisante existe quelque part dans le système.
+
+Le **raccordement local et la distribution** couvrent enfin la sous-station, les ouvrages dédiés et le service de l'utility qui dessert le site. C'est ici que les tarifs spécifiques, les paiements minimaux, les garanties de maison mère et le collatéral cherchent à empêcher qu'un campus abandonné laisse un actif échoué dans les tarifs.
+
+<figure class="pjm-visual">
+<svg class="pjm-svg pjm-desktop" viewBox="0 0 760 430" role="img" aria-labelledby="pjm-three-bills-fr-d-title pjm-three-bills-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-three-bills-fr-d-title">Une demande, trois factures</title>
+  <desc id="pjm-three-bills-fr-d-desc">Un même campus peut agir par trois mécanismes différents.</desc>
+  <rect x="1" y="1" width="758" height="428" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="32" y="42" fill="#f5f6f8" font-size="21" font-weight="750" text-anchor="start" >Une demande, trois factures</text>
+  <text x="32" y="66" fill="#8b909b" font-size="12" font-weight="400" text-anchor="start" >Un même campus peut agir par trois mécanismes différents.</text>
+  <rect x="232" y="88" width="296" height="72" rx="12" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.5"/>
+  <text x="380" y="118" fill="#f5f6f8" font-size="15" font-weight="750" text-anchor="middle" >Projet de grande charge</text>
+  <text x="380" y="142" fill="#8b909b" font-size="11" font-weight="400" text-anchor="middle" >puissance, lieu, calendrier</text>
+  <path d="M380 160V192 M380 192H140 M380 192H620 M140 192V218 M380 192V218 M620 192V218" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <rect x="32" y="218" width="212" height="150" rx="12" fill="#151820" stroke="#ff4d87" stroke-width="1.4"/>
+  <text x="50" y="246" fill="#ff4d87" font-size="11" font-weight="800" text-anchor="start" >CAPACITÉ</text>
+  <text x="50" y="276" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >Disponibilité de production</text>
+  <text x="50" y="300" fill="#d6d9df" font-size="10.5" font-weight="400" text-anchor="start" >Prévision de pointe → enchère</text>
+  <text x="50" y="325" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >PJM / fournisseurs</text>
+  <rect x="274" y="218" width="212" height="150" rx="12" fill="#151820" stroke="#f5b13d" stroke-width="1.4"/>
+  <text x="292" y="246" fill="#f5b13d" font-size="11" font-weight="800" text-anchor="start" >TRANSPORT</text>
+  <text x="292" y="276" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >Lignes et postes haute tension</text>
+  <text x="292" y="300" fill="#d6d9df" font-size="10.5" font-weight="400" text-anchor="start" >Études et planification réseau</text>
+  <text x="292" y="325" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >FERC / PJM / États</text>
+  <rect x="516" y="218" width="212" height="150" rx="12" fill="#151820" stroke="#5eead4" stroke-width="1.4"/>
+  <text x="534" y="246" fill="#5eead4" font-size="11" font-weight="800" text-anchor="start" >RACCORDEMENT LOCAL</text>
+  <text x="534" y="276" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >Sous-station,</text>
+  <text x="534" y="294" fill="#f5f6f8" font-size="12" font-weight="650" text-anchor="start" >distribution</text>
+  <text x="534" y="318" fill="#d6d9df" font-size="10.5" font-weight="400" text-anchor="start" >Contrat, tarif, minimum</text>
+  <text x="534" y="343" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >Utility / régulateur d&#x27;État</text>
+  <text x="32" y="404" fill="#8b909b" font-size="10.5" font-weight="400" text-anchor="start" >Le présent article isole la capacité. Le « kilowatt fantôme » traite surtout les deux autres.</text>
+</svg>
+<svg class="pjm-svg pjm-mobile" viewBox="0 0 360 690" role="img" aria-labelledby="pjm-three-bills-fr-m-title pjm-three-bills-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-three-bills-fr-m-title">Une demande, trois factures</title>
+  <desc id="pjm-three-bills-fr-m-desc">Un même campus peut agir par trois mécanismes différents.</desc>
+  <rect x="1" y="1" width="358" height="688" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="22" y="38" fill="#f5f6f8" font-size="18" font-weight="750" text-anchor="start" >Une demande, trois factures</text>
+  <text x="22" y="60" fill="#8b909b" font-size="10.5" font-weight="400" text-anchor="start" >Un campus, trois mécanismes de coût.</text>
+  <rect x="22" y="82" width="316" height="66" rx="11" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.4"/>
+  <text x="180" y="110" fill="#f5f6f8" font-size="13" font-weight="750" text-anchor="middle" >Projet de grande charge</text>
+  <text x="180" y="132" fill="#8b909b" font-size="10" font-weight="400" text-anchor="middle" >puissance, lieu, calendrier</text>
+  <path d="M180 148V166" fill="none" stroke="#343946" stroke-width="1.5"/>
+  <rect x="22" y="174" width="316" height="130" rx="11" fill="#151820" stroke="#ff4d87" stroke-width="1.3"/>
+  <text x="40" y="200" fill="#ff4d87" font-size="10.5" font-weight="800" text-anchor="start" >CAPACITÉ</text>
+  <text x="40" y="226" fill="#f5f6f8" font-size="11.5" font-weight="650" text-anchor="start" >Disponibilité de production</text>
+  <text x="40" y="252" fill="#d6d9df" font-size="10" font-weight="400" text-anchor="start" >Prévision de pointe → enchère</text>
+  <text x="40" y="275" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >PJM / fournisseurs</text>
+  <path d="M180 304V322" fill="none" stroke="#343946" stroke-width="1.5"/>
+  <rect x="22" y="330" width="316" height="130" rx="11" fill="#151820" stroke="#f5b13d" stroke-width="1.3"/>
+  <text x="40" y="356" fill="#f5b13d" font-size="10.5" font-weight="800" text-anchor="start" >TRANSPORT</text>
+  <text x="40" y="382" fill="#f5f6f8" font-size="11.5" font-weight="650" text-anchor="start" >Lignes et postes haute tension</text>
+  <text x="40" y="408" fill="#d6d9df" font-size="10" font-weight="400" text-anchor="start" >Études et planification réseau</text>
+  <text x="40" y="431" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >FERC / PJM / États</text>
+  <path d="M180 460V478" fill="none" stroke="#343946" stroke-width="1.5"/>
+  <rect x="22" y="486" width="316" height="130" rx="11" fill="#151820" stroke="#5eead4" stroke-width="1.3"/>
+  <text x="40" y="512" fill="#5eead4" font-size="10.5" font-weight="800" text-anchor="start" >RACCORDEMENT LOCAL</text>
+  <text x="40" y="538" fill="#f5f6f8" font-size="11.5" font-weight="650" text-anchor="start" >Sous-station, distribution</text>
+  <text x="40" y="564" fill="#d6d9df" font-size="10" font-weight="400" text-anchor="start" >Contrat, tarif, minimum</text>
+  <text x="40" y="587" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >Utility / régulateur d&#x27;État</text>
+  <text x="22" y="664" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >Trois mécanismes, trois périmètres de coût.</text>
+</svg>
+<figcaption>Le chiffre de 7,271 milliards étudié ici relève du premier étage : le revenu du marché de capacité. Pour les contrats, garanties et ouvrages dédiés, voir l'enquête l0g <a href="/posts/kilowatt-fantome-reseau-data-center/">« Le kilowatt fantôme »</a>.</figcaption>
+</figure>
+
+Les trois étages peuvent être déclenchés par le même projet, mais leurs coûts ne s'additionnent pas mécaniquement et ne sont pas répartis par les mêmes autorités. PJM et la FERC gouvernent une partie du marché de gros et du transport ; les commissions des États conservent un rôle décisif sur les tarifs de détail et la répartition finale entre catégories de clients. Écrire qu'« un data center fait monter la facture » sans identifier l'étage, la zone et la règle de répartition produit une phrase vraie en apparence et souvent inutilisable en pratique.
+
+## Le chiffre est exact. Sa lecture habituelle ne l'est pas
+
+Le contrefactuel le plus propre pour cet article est le **[scénario 3 de Monitoring Analytics](https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf)**. Il part du résultat réel de l'enchère 2026-2027 : **16 124 370 889 dollars** de revenus du Reliability Pricing Model, calculés à partir des prix, des quantités retenues et de certains ajustements. Le contrôleur refait ensuite l'enchère en retirant les **7 892 MW « above embedded »** : la nouvelle charge annoncée et la hausse prévue par rapport à la charge déjà intégrée des data centers existants.
+
+Le résultat contrefactuel est de **8 853 172 918 dollars**. La soustraction donne **7 271 197 971 dollars**.
+
+<figure class="pjm-visual">
+<svg class="pjm-svg pjm-desktop" viewBox="0 0 760 430" role="img" aria-labelledby="pjm-revenue-fr-d-title pjm-revenue-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-revenue-fr-d-title">Le contrefactuel à 7,271 Md$</title>
+  <desc id="pjm-revenue-fr-d-desc">Enchère 2026-2027 de PJM · scénario 3 du contrôleur indépendant</desc>
+  <rect x="1" y="1" width="758" height="428" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="32" y="42" fill="#f5f6f8" font-size="21" font-weight="750" text-anchor="start" >Le contrefactuel à 7,271 Md$</text>
+  <text x="32" y="66" fill="#8b909b" font-size="11" font-weight="400" text-anchor="start" >Enchère 2026-2027 de PJM · scénario 3 du contrôleur indépendant</text>
+  <text x="32" y="120" fill="#d6d9df" font-size="11" font-weight="650" text-anchor="start" >Résultat réel</text>
+  <text x="728" y="120" fill="#f5f6f8" font-size="12" font-weight="750" text-anchor="end" >16,124 Md$</text>
+  <rect x="32" y="136" width="696" height="34" rx="8" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="32" y="136" width="696" height="34" rx="8" fill="#ff4d87" stroke="#ff4d87" stroke-width="1"/>
+  <text x="32" y="211" fill="#d6d9df" font-size="11" font-weight="650" text-anchor="start" >Sans les 7 892 MW prévus</text>
+  <text x="728" y="211" fill="#f5f6f8" font-size="12" font-weight="750" text-anchor="end" >8,853 Md$</text>
+  <rect x="32" y="227" width="696" height="34" rx="8" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="32" y="227" width="382.1" height="34" rx="8" fill="#5eead4" stroke="#5eead4" stroke-width="1"/>
+  <rect x="32" y="292" width="696" height="72" rx="12" fill="#151820" stroke="#f5b13d" stroke-width="1.4"/>
+  <text x="54" y="319" fill="#f5b13d" font-size="10.5" font-weight="800" text-anchor="start" >ÉCART MODÉLISÉ</text>
+  <text x="54" y="348" fill="#f5f6f8" font-size="24" font-weight="800" text-anchor="start" >7,271 Md$</text>
+  <text x="706" y="323" fill="#d6d9df" font-size="10.5" font-weight="650" text-anchor="end" >+82,1 % par rapport au contrefactuel</text>
+  <text x="706" y="347" fill="#8b909b" font-size="10.5" font-weight="650" text-anchor="end" >45,1 % du résultat réel</text>
+  <text x="32" y="402" fill="#8b909b" font-size="10.5" font-weight="400" text-anchor="start" >Ce n&#x27;est ni une facture aux data centers, ni une mesure des projets fictifs.</text>
+</svg>
+<svg class="pjm-svg pjm-mobile" viewBox="0 0 360 474" role="img" aria-labelledby="pjm-revenue-fr-m-title pjm-revenue-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-revenue-fr-m-title">Le contrefactuel à 7,271 Md$</title>
+  <desc id="pjm-revenue-fr-m-desc">Enchère 2026-2027 de PJM · scénario 3 du contrôleur indépendant</desc>
+  <rect x="1" y="1" width="358" height="472" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="22" y="38" fill="#f5f6f8" font-size="17" font-weight="750" text-anchor="start" >Le contrefactuel à 7,271 Md$</text>
+  <text x="22" y="60" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >PJM 2026-2027 · scénario 3 du contrôleur</text>
+  <text x="22" y="105" fill="#d6d9df" font-size="10" font-weight="650" text-anchor="start" >Résultat réel</text>
+  <text x="338" y="105" fill="#f5f6f8" font-size="10.5" font-weight="750" text-anchor="end" >16,124 Md$</text>
+  <rect x="22" y="119" width="316" height="28" rx="7" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="22" y="119" width="316" height="28" rx="7" fill="#ff4d87" stroke="#ff4d87" stroke-width="1"/>
+  <text x="22" y="190" fill="#d6d9df" font-size="9.5" font-weight="650" text-anchor="start" >Sans les 7 892 MW prévus</text>
+  <text x="338" y="190" fill="#f5f6f8" font-size="10.5" font-weight="750" text-anchor="end" >8,853 Md$</text>
+  <rect x="22" y="204" width="316" height="28" rx="7" fill="#1b1f27" stroke="#343946" stroke-width="1"/>
+  <rect x="22" y="204" width="173.5" height="28" rx="7" fill="#5eead4" stroke="#5eead4" stroke-width="1"/>
+  <rect x="22" y="264" width="316" height="122" rx="11" fill="#151820" stroke="#f5b13d" stroke-width="1.3"/>
+  <text x="40" y="290" fill="#f5b13d" font-size="9.5" font-weight="800" text-anchor="start" >ÉCART MODÉLISÉ</text>
+  <text x="40" y="326" fill="#f5f6f8" font-size="22" font-weight="800" text-anchor="start" >7,271 Md$</text>
+  <text x="40" y="354" fill="#d6d9df" font-size="9.5" font-weight="400" text-anchor="start" >+82,1 % par rapport au contrefactuel</text>
+  <text x="40" y="375" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >45,1 % du résultat réel</text>
+  <text x="22" y="427" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >Ni facture adressée aux data centers,</text>
+  <text x="22" y="447" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >ni mesure des projets fictifs.</text>
+</svg>
+<figcaption>Source : Monitoring Analytics, scénario 3. Les deux pourcentages utilisent des dénominateurs différents : 7,271 / 8,853 = 82,1 % ; 7,271 / 16,124 = 45,1 %.</figcaption>
+</figure>
+
+Cette précision sur le dénominateur n'est pas cosmétique. Dire que les data centers « représentent 82 % du marché » serait faux : **82,1 % mesure l'augmentation du revenu réel par rapport au revenu du scénario sans les 7 892 MW prévus**. Rapporté au résultat réel, l'écart représente **45,1 %**. Les deux calculs sont justes ; ils ne répondent pas à la même question.
+
+Une autre précaution est plus importante encore. Le contrôleur a aussi retiré l'ensemble des **11 993 MW** de charge de data centers, y compris la consommation déjà intégrée dans le point de départ. Avec la courbe d'enchère effectivement utilisée, il obtient le même revenu de 8,853 milliards. Cela ne signifie pas que les 4 101 MW déjà présents n'ont aucune valeur économique. Cela vient du **plancher de prix** exceptionnel de la courbe : une fois la demande suffisamment réduite, le prix ne pouvait plus descendre. Deux retraits différents butent donc sur le même sol.
+
+Monitoring Analytics critique vivement ce plancher et calcule également ce qui se serait produit avec une courbe non restreinte. Ces scénarios montrent l'importance du dessin réglementaire, mais ils ne doivent pas être mélangés au chiffre du titre. Notre référence reste le marché tel qu'il a réellement été organisé, puis un seul changement : la suppression des 7 892 MW prévus.
+
+## Pourquoi 7 892 × 329,17 × 365 ne donne pas 7,3 milliards
+
+Le réflexe naturel consiste à multiplier la puissance prévue par le prix de capacité et par 365 jours :
+
+`7 892 MW × 329,17 $/MW-jour × 365 jours = 948,2 millions de dollars`.
+
+Ce calcul répond à une question étroite : que vaudraient 7 892 MW s'ils étaient tous payés au prix affiché pendant un an ? Il ne reproduit pas le contrefactuel. Dans l'enchère, la demande supplémentaire peut déplacer le point d'intersection entre une courbe de demande et toute l'offre. Le prix modifié s'applique alors à un volume beaucoup plus large que les seuls mégawatts ajoutés. La localisation compte, comme les contraintes régionales, la quantité d'offre, la réserve recherchée, les règles d'accréditation et le plafond ou plancher réglementaire.
+
+Autrement dit, le marché est **non linéaire**. Une petite variation près d'un point de tension peut avoir un grand effet ; la même variation dans un système abondant peut en avoir très peu.
+
+<PjmForecastCostExplainer lang="fr" />
+
+L'outil garde volontairement le scénario de Monitoring Analytics fixe. Modifier les curseurs produit seulement une multiplication directe. Recalculer réellement l'enchère exigerait les offres unitaires, les courbes zonales, les contraintes, les règles de mitigation et le modèle de compensation de PJM. Présenter un simple produit comme un « simulateur de facture » aurait été plus spectaculaire. Cela aurait surtout été faux.
+
+## Les 11 993 MW ne sont pas 11 993 MW fantômes
+
+Le rapport du contrôleur distingue deux couches dans la prévision de pointe pour 2026 :
+
+- **4 101 MW de charge intégrée**, c'est-à-dire déjà présente dans la base de prévision ;
+- **7 892 MW au-dessus de cette base**, constitués de nouveaux sites et de croissance attendue sur des sites existants.
+
+
+Il serait tentant de baptiser toute la seconde couche « mégawatts fantômes ». Ce serait trop large. Un projet non encore alimenté peut disposer du terrain, des permis, d'un contrat ferme, de bâtiments en chantier et d'un client solvable. À l'inverse, une demande de raccordement peut encore tester plusieurs régions avant une décision finale. **Le statut futur n'est pas synonyme de fiction.**
+
+Le bon objet d'analyse est le degré de confiance que le système doit accorder à chaque mégawatt. Les données publiques agrégées ne permettent pas de reconstruire projet par projet les 7 892 MW, ni d'identifier combien ont été retardés, redimensionnés, dupliqués entre utilities ou effectivement mis sous tension. Monitoring Analytics décrit une incertitude importante et conteste l'intégration automatique de certaines grandes charges ; il ne publie pas une liste de 7 892 MW démontrés comme fictifs.
+
+Cette nuance protège aussi contre le biais inverse. Une charge future incertaine peut tout de même devenir réelle. Si le réseau attend le branchement du dernier serveur avant de préparer les moyens nécessaires, il sera trop tard : une centrale, une ligne ou une turbine prennent souvent davantage de temps à autoriser et construire qu'un bâtiment informatique.
+
+## Comment un campus devient une ligne dans le forecast
+
+Une prévision de charge n'est pas un inventaire de communiqués de presse. Les utilities transmettent à PJM des demandes d'ajustement pour les grands consommateurs ; PJM les confronte au calendrier, au type d'engagement, au profil de montée en puissance et au risque de double comptage. La difficulté est que le système doit décider plusieurs années avant de connaître la consommation réelle.
+
+Dans le rapport utilisé pour l'enchère 2026-2027, publié en janvier 2025, la somme des ajustements pour grandes charges atteignait **8 453 MW** en 2026. Les data centers en représentaient **7 892 MW, soit 93 %**. Le reste provenait notamment d'une usine de semi-conducteurs, d'une usine de batteries, d'une extension sidérurgique et d'un projet d'électrification portuaire. Cette composition interdit de confondre « grande charge » et « IA », même si les data centers dominaient très largement le millésime étudié.
+
+Après les critiques sur la qualité et le double comptage des demandes, PJM a durci son processus. Son [rapport de prévision publié le 14 janvier 2026](https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf) exige des engagements qualifiés de **firm** pour les années proches, notamment une obligation de service électrique ou un engagement de construction. Les projets plus lointains et non fermes peuvent être décotés. Les documents d'application liés au rapport contrôlent aussi la rampe de montée en charge et le taux d'utilisation, afin de ne pas transformer immédiatement une capacité maximale demandée en pointe certaine.
+
+<figure class="pjm-visual">
+<svg class="pjm-svg pjm-desktop" viewBox="0 0 760 530" role="img" aria-labelledby="pjm-filter-fr-d-title pjm-filter-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-filter-fr-d-title">De la demande au forecast</title>
+  <desc id="pjm-filter-fr-d-desc">PJM a durci le filtre pour son rapport du 14 janvier 2026.</desc>
+  <rect x="1" y="1" width="758" height="528" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="32" y="42" fill="#f5f6f8" font-size="21" font-weight="750" text-anchor="start" >De la demande au forecast</text>
+  <text x="32" y="66" fill="#8b909b" font-size="11" font-weight="400" text-anchor="start" >PJM a durci le filtre pour son rapport du 14 janvier 2026.</text>
+  <rect x="32" y="96" width="334" height="126" rx="12" fill="#151820" stroke="#7aa2f7" stroke-width="1.3"/>
+  <text x="50" y="123" fill="#7aa2f7" font-size="10" font-weight="800" text-anchor="start" >1 · DEMANDE</text>
+  <text x="50" y="154" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Puissance, site, calendrier</text>
+  <text x="50" y="184" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >Le chiffre brut n&#x27;est pas encore une certitude.</text>
+  <rect x="394" y="96" width="334" height="126" rx="12" fill="#151820" stroke="#5eead4" stroke-width="1.3"/>
+  <text x="412" y="123" fill="#5eead4" font-size="10" font-weight="800" text-anchor="start" >2 · PREUVES</text>
+  <text x="412" y="154" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Obligation de service / construction</text>
+  <text x="412" y="184" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >Le court terme exige un engagement « firm ».</text>
+  <rect x="32" y="248" width="334" height="126" rx="12" fill="#151820" stroke="#f5b13d" stroke-width="1.3"/>
+  <text x="50" y="275" fill="#f5b13d" font-size="10" font-weight="800" text-anchor="start" >3 · NORMALISATION</text>
+  <text x="50" y="306" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Rampe et taux d&#x27;utilisation</text>
+  <text x="50" y="336" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >Évite de traiter le maximum comme instantané.</text>
+  <rect x="394" y="248" width="334" height="126" rx="12" fill="#151820" stroke="#ff4d87" stroke-width="1.3"/>
+  <text x="412" y="275" fill="#ff4d87" font-size="10" font-weight="800" text-anchor="start" >4 · POIDS DU FORECAST</text>
+  <text x="412" y="306" fill="#f5f6f8" font-size="12" font-weight="700" text-anchor="start" >Firm proche, non-firm décoté</text>
+  <text x="412" y="336" fill="#8b909b" font-size="9.8" font-weight="400" text-anchor="start" >L&#x27;incertitude augmente avec l&#x27;horizon.</text>
+  <path d="M366 159H386" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <path d="M561 222V240H199V248" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <path d="M366 311H386" fill="none" stroke="#343946" stroke-width="1.6"/>
+  <rect x="32" y="398" width="696" height="70" rx="12" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.3"/>
+  <text x="50" y="425" fill="#7aa2f7" font-size="9.5" font-weight="800" text-anchor="start" >EFFET VISIBLE</text>
+  <text x="50" y="452" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="start" >Forecast de pointe 2028 : −4 414 MW par rapport au rapport 2025</text>
+  <text x="32" y="502" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >Révision due aux grandes charges, à l&#x27;économie et aux véhicules électriques, pas aux seuls data centers.</text>
+</svg>
+<svg class="pjm-svg pjm-mobile" viewBox="0 0 360 752" role="img" aria-labelledby="pjm-filter-fr-m-title pjm-filter-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:ui-monospace, SFMono-Regular, Consolas, monospace">
+  <title id="pjm-filter-fr-m-title">De la demande au forecast</title>
+  <desc id="pjm-filter-fr-m-desc">PJM a durci le filtre pour son rapport du 14 janvier 2026.</desc>
+  <rect x="1" y="1" width="358" height="750" rx="16" fill="#0c0d10" stroke="#343946"/>
+<text x="22" y="38" fill="#f5f6f8" font-size="17" font-weight="750" text-anchor="start" >De la demande au forecast</text>
+  <text x="22" y="60" fill="#8b909b" font-size="9.5" font-weight="400" text-anchor="start" >PJM a durci le filtre pour son rapport du 14 janvier 2026.</text>
+  <rect x="22" y="88" width="316" height="112" rx="11" fill="#151820" stroke="#7aa2f7" stroke-width="1.25"/>
+  <text x="40" y="113" fill="#7aa2f7" font-size="9.5" font-weight="800" text-anchor="start" >1 · DEMANDE</text>
+  <text x="40" y="141" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Puissance, site, calendrier</text>
+  <text x="40" y="167" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >Le chiffre brut n&#x27;est pas encore</text>
+  <text x="40" y="184" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >une certitude.</text>
+  <rect x="22" y="222" width="316" height="112" rx="11" fill="#151820" stroke="#5eead4" stroke-width="1.25"/>
+  <text x="40" y="247" fill="#5eead4" font-size="9.5" font-weight="800" text-anchor="start" >2 · PREUVES</text>
+  <text x="40" y="275" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Obligation de service / construction</text>
+  <text x="40" y="301" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >Le court terme exige un engagement « firm ».</text>
+  <rect x="22" y="356" width="316" height="112" rx="11" fill="#151820" stroke="#f5b13d" stroke-width="1.25"/>
+  <text x="40" y="381" fill="#f5b13d" font-size="9.5" font-weight="800" text-anchor="start" >3 · NORMALISATION</text>
+  <text x="40" y="409" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Rampe et taux d&#x27;utilisation</text>
+  <text x="40" y="435" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >Évite de traiter le maximum comme instantané.</text>
+  <rect x="22" y="490" width="316" height="112" rx="11" fill="#151820" stroke="#ff4d87" stroke-width="1.25"/>
+  <text x="40" y="515" fill="#ff4d87" font-size="9.5" font-weight="800" text-anchor="start" >4 · POIDS DU FORECAST</text>
+  <text x="40" y="543" fill="#f5f6f8" font-size="10.8" font-weight="700" text-anchor="start" >Firm proche, non-firm décoté</text>
+  <text x="40" y="569" fill="#8b909b" font-size="9.2" font-weight="400" text-anchor="start" >L&#x27;incertitude augmente avec l&#x27;horizon.</text>
+  <rect x="22" y="632" width="316" height="96" rx="11" fill="#1b1f27" stroke="#7aa2f7" stroke-width="1.25"/>
+  <text x="40" y="657" fill="#7aa2f7" font-size="9" font-weight="800" text-anchor="start" >EFFET VISIBLE</text>
+  <text x="40" y="687" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="start" >Pointe 2028 : −4 414 MW</text>
+  <text x="40" y="708" fill="#8b909b" font-size="10" font-weight="400" text-anchor="start" >vs rapport 2025</text>
+</svg>
+<figcaption>Le rapport 2026 abaisse la pointe PJM prévue pour 2028 de 4 414 MW par rapport au rapport 2025. PJM attribue la révision à la combinaison des grandes charges, des hypothèses économiques et des véhicules électriques.</figcaption>
+</figure>
+
+La chronologie compte. Cette méthode renforcée n'a pas servi à l'enchère de juillet 2025 : celle-ci reposait sur le forecast 2025. Elle montre néanmoins que l'opérateur a reconnu le problème et ajusté son filtre. Le forecast 2026 réduit la pointe à court terme, mais conserve une croissance très élevée ensuite : **3,6 % par an en moyenne sur dix ans** pour la pointe estivale, contre **[0,3 % dans le forecast publié en 2021](https://insidelines.pjm.com/pjm-2021-long-term-load-forecast-predicts-slight-growth/)**. Une révision à la baisse n'est donc pas un abandon de la thèse de croissance ; c'est une modification de son calendrier et de son degré de certitude.
+
+## Le prix a explosé, mais le récit monocausal ne tient pas
+
+L'enchère PJM est passée de **28,92 dollars par MW-jour** pour 2024-2025 à **269,92 dollars** pour 2025-2026. Elle a ensuite atteint **329,17 dollars** pour 2026-2027, **333,44 dollars** pour 2027-2028, puis **325 dollars** pour 2028-2029. La dernière baisse apparente ne signale pas une détente franche : les trois dernières enchères ont touché le plafond autorisé, et le niveau de ce plafond a changé.
+
+
+Les data centers sont un moteur majeur de la demande. PJM attribuait l'essentiel de la hausse de pointe de plus de 5 400 MW de l'enchère 2026-2027 à leur expansion, à l'électrification et à l'économie. Pour 2027-2028, il attribuait **près de 5 100 MW sur une hausse de 5 250 MW** aux data centers. Pour 2028-2029, la pointe prévue augmentait encore d'environ 2 000 MW et PJM signalait la poursuite de leur intégration au forecast.
+
+Mais le prix ne raconte pas la demande seule.
+
+Du côté de l'offre, PJM a intégré une nouvelle méthode d'accréditation de la fiabilité des ressources, élargi les obligations d'offre, géré des retraits de centrales, changé des paramètres de courbe et traité des contraintes zonales. Pour 2025-2026, [PJM citait environ 6 600 MW de retraits, la hausse de la pointe et les réformes approuvées par la FERC](https://insidelines.pjm.com/pjm-capacity-auction-procures-sufficient-resources-to-meet-rto-reliability-requirement/) parmi les principaux facteurs. Pour 2026-2027, l'enchère a retenu 2 669 MW de nouvelle capacité ou d'augmentations, mais PJM signalait aussi plus de **46 000 MW de projets déjà approuvés et pas encore construits**, confrontés aux permis, aux chaînes d'approvisionnement, au financement et à d'autres obstacles extérieurs à son processus.
+
+La conclusion raisonnable est donc plus précise qu'un slogan. **Sans l'accélération des grandes charges, le système aurait probablement disposé de davantage de temps et les prix auraient été plus bas dans les scénarios du contrôleur.** Cela n'efface ni la contraction de l'offre disponible, ni les changements de règle, ni les difficultés de construction. Le data center est l'accélérateur de la tension, pas l'unique pièce du moteur.
+
+## Le meilleur contre-argument : la demande n'est pas imaginaire
+
+L'article pourrait s'arrêter sur les demandes spéculatives. Ce serait une erreur de sélection.
+
+Le 18 juin 2026, le Lawrence Berkeley National Laboratory a publié une mise à jour nationale construite à partir des expéditions d'équipements informatiques, de la puissance des appareils, des simulations de refroidissement et des types de sites. Il estime la consommation des data centers américains à **192 TWh en 2024**, soit **4,7 %** de l'électricité du pays. Son cas de référence atteint **649 TWh en 2030**, ou **11,8 %** de la consommation américaine projetée. Les scénarios d'incertitude combinée vont de **521 à 843 TWh**, soit **9,5 % à 15,3 %**. [Le rapport exclut le minage de cryptomonnaies et considère 2024 comme la dernière année entièrement historique](https://escholarship.org/content/qt33m6w3x0/qt33m6w3x0.pdf).
+
+Ces bornes ne sont pas des intervalles de confiance. Les auteurs les présentent comme un **stress test** où plusieurs hypothèses défavorables ou favorables sont combinées. Ils ne modélisent pas certaines ruptures majeures : percée technologique, changement de marché, contrainte de chaîne d'approvisionnement, réforme réglementaire ou impossibilité physique d'obtenir la puissance. Le centre de la fourchette n'est donc pas une certitude statistique.
+
+Il reste que le point de départ est massif et mesuré. Le 2 juillet 2026, [PJM a d'ailleurs estimé une pointe préliminaire de 168 158 MW, supérieure à son ancien record historique, pendant une vague de chaleur](https://insidelines.pjm.com/hot-weather-alert-issued-for-july-14-and-15/). La région ne planifie pas une croissance à partir de zéro. Elle doit simultanément servir la charge existante, compenser les retraits, conserver une réserve et préparer des campus qui peuvent être construits beaucoup plus vite que de nouvelles centrales.
+
+Le vrai problème est moins « la demande existe-t-elle ? » que **« quelle part, à quelle date, dans quelle zone, avec quelle flexibilité et quelle garantie financière ? »** Une prévision nationale en TWh ne répond pas directement à une enchère zonale en MW de pointe. Le rapport de Berkeley souligne lui-même qu'il est difficile de convertir consommation annuelle, puissance informatique nominale, capacité de raccordement demandée et puissance réellement utilisée. Comparer ces grandeurs sans transition serait méthodologiquement faux.
+
+## La prévision devient une option sur le système électrique
+
+Un développeur qui demande plusieurs centaines de mégawatts obtient quelque chose de précieux : le réseau commence à considérer son futur besoin. Si cette place peut être testée dans plusieurs zones avec peu d'engagement, le développeur détient une forme d'option. Il conserve la possibilité de choisir le site le plus rapide ou le moins cher ; les opérateurs, eux, doivent étudier plusieurs scénarios et peuvent incorporer des charges redondantes.
+
+Cette option n'est pas gratuite pour le système. Elle mobilise des ingénieurs, influence la planification, peut relever une exigence de capacité et accélérer la justification d'une ligne ou d'un mécanisme de secours. Elle n'est pas nécessairement abusive : comparer des sites est rationnel lorsque les délais de raccordement déterminent la valeur d'un projet d'IA. Le déséquilibre apparaît lorsque **le coût de réserver l'option est très inférieur au coût collectif d'une prévision erronée**.
+
+Le marché de capacité rend ce problème visible, car son prix s'applique à un grand volume. Mais l'allocation finale reste diffuse. PJM facture les entités qui servent la charge selon ses règles ; les contrats bilatéraux et l'auto-approvisionnement modifient l'exposition ; les États et les utilities traduisent ensuite une partie des coûts de gros dans les tarifs. [PJM rappelle, à propos de l'enchère 2028-2029](https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/), que la multiplication de la capacité retenue par le prix (environ 16,4 milliards) ne correspond pas au coût effectivement payé par toute la charge, précisément à cause de ces couvertures.
+
+Il n'est donc pas possible, à partir du seul rapport Monitoring Analytics, de dire combien des 7,271 milliards a été ou sera supporté par les ménages, par État ou par facture mensuelle. Il faudrait connaître l'exposition des fournisseurs, les couvertures, le calendrier de récupération tarifaire et les décisions des régulateurs. Une traduction en « dollars par foyer » serait une fausse précision.
+
+## FERC et PJM cherchent maintenant le montant de la caution
+
+Le 18 juin 2026, la Federal Energy Regulatory Commission a ouvert six procédures visant les grands opérateurs régionaux. [L'ordre adressé à PJM porte le numéro EL26-67-000](https://www.ferc.gov/media/e-7-el26-67-000). La FERC leur demande de justifier ou réformer leurs procédures d'étude, la protection contre les transferts de coûts, la transparence, les services pour charges flexibles et le traitement coordonné d'une grande charge et de la production proche. Elle exige également des accords de recouvrement destinés à empêcher qu'un ouvrage construit pour un grand consommateur ne retombe sur les autres si celui-ci ne vient pas.
+
+La Commission vise explicitement les demandes spéculatives et le *shopping* entre utilities, susceptibles de produire du double comptage et de mauvais signaux. Ce constat réglementaire confirme le mécanisme général. Il ne fournit pas pour autant un audit rétrospectif des 7 892 MW de 2025.
+
+PJM a ensuite déposé deux propositions qui déplacent le débat vers l'obligation de soutien.
+
+La première, l'**Interim Resource Adequacy Service** déposée le 13 août 2026, prévoit un registre des grandes charges (PJM retient un seuil de 50 MW) et un service dans lequel certaines nouvelles charges non soutenues par une capacité suffisante pourraient être réduites avant les consommateurs traditionnels en situation d'urgence. [PJM propose aussi qu'à partir de l'enchère 2029-2030, certaines nouvelles charges non soutenues soient exclues du calcul des besoins futurs](https://insidelines.pjm.com/pjm-proposes-framework-to-connect-data-centers-without-compromising-reliability-affordability/).
+
+La seconde, le **Reliability Backstop Procurement** déposé le 31 juillet, cherche à combler le déficit de **6 831 MW** observé pour 2028-2029 par des contrats pouvant aller jusqu'à quinze ans, avec une volonté maximale de payer annoncée de **555 dollars par MW-jour** en moyenne pondérée. [Le volume serait réduit des nouvelles ressources apportées par des contrats bilatéraux afin d'éviter un double achat](https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/). La proposition reconnaît une limite institutionnelle : PJM peut répartir des coûts entre zones et fournisseurs, mais l'attribution ciblée à un data center de détail dépend largement des États.
+
+Au **1er septembre 2026**, ces deux dispositifs doivent être présentés comme des **propositions soumises à la FERC**, pas comme des règles définitivement entrées en vigueur. Nous n'avons pas trouvé, dans les sources officielles consultées à cette date, d'ordre public approuvant l'un ou l'autre. Cette absence de confirmation compte : le calendrier politique va plus vite que le droit tarifaire.
+
+## À quoi ressemblerait une bonne garantie de prévision ?
+
+Aucun filtre ne peut supprimer l'incertitude. Le but est de la rendre visible, tarifée et réversible.
+
+| Mécanisme | Ce qu'il améliore | Risque ou limite |
+| --- | --- | --- |
+| Preuves de maturité graduelles | Écarte les demandes sans terrain, contrat ou calendrier crédible | Peut privilégier les hyperscalers capables d'immobiliser du capital très tôt |
+| Dépôt et collatéral croissants | Fait payer la valeur de l'option de raccordement | Un dépôt mal calibré peut être faible face au coût systémique ou excessif pour un projet utile |
+| Registre interrégional des grandes charges | Détecte doublons et demandes déposées dans plusieurs zones | Nécessite partage de données commerciales sensibles et définitions communes |
+| Montée en charge probabilisée | Évite d'inscrire le maximum demandé dès la première année | La probabilité reste un modèle et peut sous-estimer une accélération réelle |
+| Service interruptible ou conditionnel | Permet un raccordement plus rapide sans promettre une puissance ferme en toute circonstance | Certains calculs critiques ne peuvent pas être interrompus ; l'exécution doit être testable |
+| Nouvelle production ou contrat bilatéral associé | Aligne davantage la nouvelle demande avec une nouvelle offre | Une centrale contractée n'est pas automatiquement additionnelle, disponible au bon endroit ou à la bonne heure |
+| Réconciliation ex post | Compare chaque année la charge promise, raccordée et réellement appelée | Arrive après l'enchère ; ne rembourse pas spontanément les décisions déjà prises |
+| Publication de scénarios haut / central / bas | Montre le coût de l'incertitude au lieu de cacher un chiffre unique | Complexifie la décision et ne désigne pas à elle seule qui paie |
+
+Le meilleur compromis ne sera probablement pas une règle unique. Une demande peut être mature mais flexible ; une autre peut être ferme mais encore sans production associée. Un registre combat le double comptage, un collatéral combat l'abandon, un service interruptible protège la fiabilité et un contrat de long terme soutient la construction. Ces instruments corrigent des problèmes différents.
+
+Il faut aussi préserver un principe symétrique : **une grande charge ne doit pas porter le coût d'un retard causé par le réseau ou le régulateur** comme s'il s'agissait de son propre abandon. Sinon, la protection des consommateurs devient un transfert unilatéral de tous les risques vers le client, y compris ceux qu'il ne contrôle pas. Les contrats devront distinguer le retrait volontaire, la non-réalisation faute de financement, le retard de permis et l'incapacité de l'utility à livrer à la date promise.
+
+Enfin, exiger que chaque data center « apporte sa centrale » paraît simple mais soulève immédiatement cinq questions : la centrale est-elle réellement nouvelle ? peut-elle produire pendant les heures de tension ? le réseau peut-il l'acheminer ? qui assume son indisponibilité ? et sa construction aurait-elle eu lieu sans le contrat ? Le label ne remplace pas le test d'additionnalité.
+
+## Ce que les données permettent réellement de conclure
+
+<div class="pjm-verdict">
+<p><strong>Établi.</strong> Dans le contrefactuel publié par le contrôleur indépendant de PJM, retirer 7 892 MW de nouvelle charge prévue de data centers et de croissance au-dessus de la base réduit les revenus modélisés de l'enchère 2026-2027 de 16,124 à 8,853 milliards de dollars. L'écart de 7,271 milliards est bien celui du rapport.</p>
+<p><strong>Compatible avec les données.</strong> La forte croissance anticipée des data centers a accéléré une tension déjà alimentée par les retraits de production, la lenteur de construction, les contraintes régionales et les réformes de marché. Elle a augmenté la valeur économique d'une prévision exacte et le coût d'une erreur.</p>
+<p><strong>Inconnu publiquement.</strong> La part exacte des 7 892 MW qui sera mise en service à temps ; le nombre de demandes dupliquées ; la part réellement spéculative ; et la fraction des 7,271 milliards qui atteindra chaque catégorie de consommateurs ne peuvent pas être déduits des documents publics étudiés.</p>
+</div>
+
+Le risque n'est pas que PJM fasse des prévisions. Un réseau fiable ne peut pas attendre la consommation réelle pour préparer l'offre. Le risque apparaît lorsque **le marché traite des degrés de maturité différents comme une même certitude, tandis que la contrepartie qui demande la puissance ne garantit qu'une faible part des coûts qu'elle peut déclencher**.
+
+L'IA a fait entrer dans le système électrique américain des projets capables de déplacer plusieurs gigawatts en quelques années. Elle oblige désormais les régulateurs à concevoir quelque chose qui ressemblait jusque-là à un détail administratif : le prix d'une promesse de consommation.
+
+## Sources primaires et méthode
+
+<div class="pjm-source-grid">
+<article><h3>Contrefactuel central</h3><p><a href="https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf">Monitoring Analytics, <em>Analysis of the 2026/2027 RPM Base Residual Auction: Part A</em>, 1er octobre 2025</a>. Scénario 3 pour les 7 892 MW ; scénario 4 pour les 11 993 MW ; tables 3, 4 et 8 à 13.</p></article>
+<article><h3>Résultats d'enchères</h3><p><a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-adequate-resources/">2024-2025</a>, <a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-sufficient-resources-to-meet-rto-reliability-requirement/">2025-2026</a>, <a href="https://insidelines.pjm.com/pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal/">2026-2027</a>, <a href="https://insidelines.pjm.com/pjm-auction-procures-134479-mw-of-generation-resources/">2027-2028</a> et <a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/">2028-2029</a>, communiqués officiels PJM.</p></article>
+<article><h3>Prévision et filtrage</h3><p><a href="https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf">PJM, <em>2026 Load Forecast Report</em>, publié le 14 janvier 2026</a>. Les documents d'application et le résumé des ajustements de grandes charges sont liés depuis le rapport.</p></article>
+<article><h3>Demande nationale</h3><p><a href="https://escholarship.org/content/qt33m6w3x0/qt33m6w3x0.pdf">Lawrence Berkeley National Laboratory, <em>United States Data Center Energy Usage Report: 2025 Update</em>, publié le 18 juin 2026</a>, DOI 10.71468/P1RP4F.</p></article>
+<article><h3>Réforme fédérale</h3><p><a href="https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration">FERC, procédures du 18 juin 2026 sur l'intégration des grandes charges</a> et <a href="https://www.ferc.gov/media/e-7-el26-67-000">dossier PJM EL26-67-000</a>.</p></article>
+<article><h3>Propositions PJM en cours</h3><p><a href="https://insidelines.pjm.com/pjm-proposes-framework-to-connect-data-centers-without-compromising-reliability-affordability/">Interim Resource Adequacy Service, 13 août 2026</a> ; <a href="https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/">Reliability Backstop Procurement, 31 juillet 2026</a>. Statut vérifié au 1er septembre 2026.</p></article>
+</div>
+
+**Méthode.** Les montants du contrefactuel sont repris sans arrondi pour les calculs, puis présentés à trois décimales en milliards. Le ratio de 82,1 % utilise le scénario contrefactuel comme dénominateur ; 45,1 % utilise le résultat réel. La multiplication 7 892 × 329,17 × 365 est fournie uniquement comme ordre de grandeur linéaire et n'est jamais assimilée au recalcul de l'enchère. Les séries d'enchères sont accompagnées d'un avertissement, car leurs règles, leurs plafonds, l'offre disponible et l'accréditation des ressources changent d'une année à l'autre.
