@@ -1,0 +1,394 @@
+---
+title: "How Long Does an AI Server Really Live?"
+seoTitle: "AI server depreciation: what Big Tech filings show | l0g"
+ogTitle: "How long does an AI server really live?"
+description: "Microsoft, Alphabet, Amazon and Meta changed server useful lives. Here is what moved in profit, cash flow and the balance sheet."
+ogImage: "/illustrations/news/ai-server-useful-life-v1.jpg"
+pubDate: 2026-09-01T16:00:00+02:00
+updatedDate: 2026-09-01T16:00:00+02:00
+tags: ["AI", "accounting", "Big Tech", "United States", "depreciation"]
+draft: false
+sourceArticle: "combien-de-temps-vit-serveur-ia"
+sourceUpdatedDate: 2026-09-01T16:00:00+02:00
+---
+
+import ServerUsefulLifeSimulator from '../../components/ServerUsefulLifeSimulator.astro';
+
+<style>{`
+.l0g-visual{margin:2.5rem 0}.l0g-visual svg{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 55px rgba(0,0,0,.15)}.l0g-svg-mobile{display:none!important}.l0g-visual figcaption{margin:.7rem .2rem 0;color:var(--color-text-muted,#65717c);font-size:.78rem;line-height:1.5}.l0g-caveat{margin:1.5rem 0;padding:1rem 1.1rem;border-left:4px solid #f2ba55;background:rgba(242,186,85,.08);border-radius:0 12px 12px 0}.l0g-method{margin:1.4rem 0;padding:1rem 1.1rem;border:1px solid rgba(69,214,198,.35);background:rgba(69,214,198,.055);border-radius:14px}.prose table{font-size:.88rem}.source-ledger td:first-child{white-space:nowrap}@media(max-width:640px){.l0g-svg-desktop{display:none!important}.l0g-svg-mobile{display:block!important}.l0g-visual{margin:2rem -.15rem}.l0g-visual figcaption{margin-inline:.35rem}.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}.l0g-caveat,.l0g-method{padding:.9rem}}
+`}</style>
+
+*Research cut-off: 1 September 2026. This article examines changes in accounting estimates disclosed in US filings. It does not claim to measure the physical life of a specific GPU: companies generally report much broader categories combining servers and networking equipment.*
+
+The AI spending debate has focused on an obvious number: how much Microsoft, Alphabet, Amazon or Meta are pouring into data centres. A quieter decision comes after the cheque is written. **How many years will those machines remain in the accounts?**
+
+The answer does not change the price paid to the supplier. It changes how quickly that price becomes an expense in the income statement. When the asset base runs into tens of billions of dollars, moving that clock by a year or two can alter reported profit by several billion in a single period.
+
+It is tempting to call this an accounting trick. That is too crude. A longer useful life can reflect better utilisation, software that extends the economic use of hardware, or a sufficiently broad fleet to redeploy older equipment. The opposite can also be true: a new generation of chips, memory or networking can make a machine economically obsolete while it remains physically functional.
+
+The most revealing fact is therefore not that several groups lengthened their estimates. It is that **Amazon went both ways**: it extended server lives in 2024, then shortened the life of a portion of servers and networking equipment in 2025, explicitly citing the faster pace of technology development, particularly in artificial intelligence and machine learning.
+
+## The $10,000 server
+
+Take a server placed in service at a cost of **$10,000**, with no residual value and straight-line depreciation. Over four years, annual depreciation is $2,500. Over six years, had that life been used from day one, it would be $1,666.67.
+
+But the changes disclosed by the companies do not rewrite prior years. They are treated as **changes in accounting estimates**: the remaining carrying amount is allocated prospectively over the revised remaining life. That distinction changes the arithmetic.
+
+Assume the server has already been depreciated for two years under a four-year plan. Accumulated depreciation is $5,000, leaving a $5,000 net book value. At the start of year three, management revises total useful life to six years. Four years remain. The new annual expense is **$1,250**, not $1,666.67.
+
+In years three and four, pretax operating profit is $1,250 higher each year than it would have been under the original plan. In years five and six, the old plan would have recorded no expense while the revised schedule still records $1,250. By the end of year six, the same $10,000 has been depreciated under both schedules.
+
+<figure class="l0g-visual" id="server-10000">
+<svg style="width:100%;height:auto" class="l0g-svg-desktop" viewBox="0 0 1000 560" role="img" aria-labelledby="life-schedule-en-desktop-title life-schedule-en-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="life-schedule-en-desktop-title">One $10,000 server, two schedules</title>
+<desc id="life-schedule-en-desktop-desc">Comparison of a four-year original schedule and a prospective revision to six years after two years.</desc>
+<defs><linearGradient id="life-schedule-en-desktop-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="1000" height="560" rx="22" fill="url(#life-schedule-en-desktop-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="750" text-anchor="start"><tspan x="44" y="52">ONE ASSET, TWO CLOCKS</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start"><tspan x="44" y="87">The cost does not change. The timing of expense does.</tspan></text>
+<rect x="44" y="112" width="912" height="62" rx="12" fill="#0b151e" stroke="#45d6c6" stroke-width="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="650" text-anchor="start"><tspan x="70" y="139">Cash at the start</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" text-anchor="start"><tspan x="70" y="162">− $10,000</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end"><tspan x="930" y="150">identical in both schedules</tspan></text>
+<rect x="44" y="195" width="430" height="272" rx="16" fill="#111a24" stroke="#ff718f" stroke-width="1"/><text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="68" y="229">ORIGINAL PLAN</tspan></text>
+<rect x="526" y="195" width="430" height="272" rx="16" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="550" y="229">REVISION AT START OF YEAR 3</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="21" font-weight="750" text-anchor="start"><tspan x="68" y="260">4 years total</tspan><tspan x="68" y="291">$2,500 per year</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="68" y="333">Annual expense</tspan></text>
+<rect x="68" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="87" y="430">1</tspan></text>
+<rect x="126" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="145" y="430">2</tspan></text>
+<rect x="184" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="203" y="430">3</tspan></text>
+<rect x="242" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="261" y="430">4</tspan></text>
+<rect x="300" y="410" width="38" height="2" rx="5" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="319" y="430">5</tspan></text>
+<rect x="358" y="410" width="38" height="2" rx="5" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="377" y="430">6</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="750" text-anchor="start"><tspan x="550" y="250">After 2 years: $5,000 net book value</tspan><tspan x="550" y="279">4 remaining years → $1,250/year</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="550" y="333">Revised annual expense</tspan></text>
+<rect x="550" y="354" width="38" height="58" rx="5" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="569" y="430">1</tspan></text>
+<rect x="608" y="354" width="38" height="58" rx="5" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="627" y="430">2</tspan></text>
+<rect x="666" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="685" y="430">3</tspan></text>
+<rect x="724" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="743" y="430">4</tspan></text>
+<rect x="782" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="801" y="430">5</tspan></text>
+<rect x="840" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="859" y="430">6</tspan></text>
+<line x1="44" y1="490" x2="956" y2="490" stroke="#21303d" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750" text-anchor="start"><tspan x="44" y="523">Years 3–4: $1,250 more pretax profit per year</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" text-anchor="end"><tspan x="956" y="523">Years 5–6: the expense returns</tspan></text>
+</svg>
+<svg style="width:100%;height:auto" class="l0g-svg-mobile" viewBox="0 0 390 940" role="img" aria-labelledby="life-schedule-en-mobile-title life-schedule-en-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="life-schedule-en-mobile-title">One $10,000 server, two schedules</title>
+<desc id="life-schedule-en-mobile-desc">Mobile comparison of the original and prospectively revised schedules.</desc>
+<defs><linearGradient id="life-schedule-en-mobile-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="390" height="940" rx="22" fill="url(#life-schedule-en-mobile-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" text-anchor="start"><tspan x="22" y="38">ONE ASSET, TWO CLOCKS</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="780" text-anchor="start"><tspan x="22" y="72">The cost does not change.</tspan><tspan x="22" y="103">The timing of expense does.</tspan></text>
+<rect x="22" y="132" width="346" height="78" rx="12" fill="#0b151e" stroke="#45d6c6" stroke-width="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="650" text-anchor="start"><tspan x="42" y="160">Cash at the start</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" text-anchor="start"><tspan x="42" y="190">− $10,000</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="348" y="178">same outflow</tspan></text>
+<rect x="22" y="232" width="346" height="260" rx="16" fill="#111a24" stroke="#ff718f" stroke-width="1"/><text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" text-anchor="start"><tspan x="42" y="266">ORIGINAL PLAN</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="750" text-anchor="start"><tspan x="42" y="308">4 years total</tspan><tspan x="42" y="337">$2,500 per year</tspan></text>
+<rect x="42" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="57.5" y="456">1</tspan></text>
+<rect x="91" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="106.5" y="456">2</tspan></text>
+<rect x="140" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="155.5" y="456">3</tspan></text>
+<rect x="189" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="204.5" y="456">4</tspan></text>
+<rect x="238" y="428" width="31" height="2" rx="4" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="253.5" y="456">5</tspan></text>
+<rect x="287" y="428" width="31" height="2" rx="4" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="302.5" y="456">6</tspan></text>
+<rect x="22" y="518" width="346" height="318" rx="16" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" text-anchor="start"><tspan x="42" y="552">REVISION AT START</tspan><tspan x="42" y="570">OF YEAR 3</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="750" text-anchor="start"><tspan x="42" y="612">Net book value: $5,000</tspan><tspan x="42" y="639">4 years left: $1,250/year</tspan></text>
+<rect x="42" y="704" width="31" height="54" rx="4" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="57.5" y="784">1</tspan></text>
+<rect x="91" y="704" width="31" height="54" rx="4" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="106.5" y="784">2</tspan></text>
+<rect x="140" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="155.5" y="784">3</tspan></text>
+<rect x="189" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="204.5" y="784">4</tspan></text>
+<rect x="238" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="253.5" y="784">5</tspan></text>
+<rect x="287" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="302.5" y="784">6</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="22" y="870">Years 3–4: pretax profit is</tspan><tspan x="22" y="892">$1,250 higher; expense returns in 5–6.</tspan></text>
+</svg>
+<figcaption>Reading note: l0g example using straight-line depreciation, zero residual value and immediate placement in service. A change in estimate is prospective; it does not rewrite the first two years.</figcaption>
+</figure>
+
+This example deliberately isolates one asset. A hyperscaler’s aggregate result depends on the carrying amount of thousands of existing assets, their age, placed-in-service dates, additions made during the reporting year, early retirements, impairments and sometimes residual values. Dividing annual capex by four or six does not reproduce reported depreciation.
+
+<ServerUsefulLifeSimulator lang="en" />
+
+## What the filings actually establish
+
+The four groups do not report identical asset categories, fiscal years or effective dates. The figures below are **company- and period-specific effects**, not components of a valid “Big Tech total.”
+
+| Company | Disclosed change | Stated scope | Reported effect for the period |
+|---|---|---|---|
+| Microsoft | 4 to 6 years, beginning FY2023 | Servers and network equipment | $3.7bn less depreciation; $3.0bn more net income |
+| Alphabet | Servers: 4 to 6 years; certain network equipment: 5 to 6 years, beginning 2023 | Servers and certain network equipment | $3.9bn less depreciation; $3.0bn more net income |
+| Amazon | 5 to 6 years, beginning 2024 | Servers | $3.2bn less depreciation; $2.5bn more net income |
+| Meta | Majority moved to 5.5 years, beginning 2025 | Servers and network assets | $2.92bn less depreciation; $2.59bn more net income |
+| Amazon | 6 to 5 years, beginning 2025 | A portion of servers and networking equipment | $1.4bn more depreciation; $1.0bn less net income |
+
+<figure class="l0g-visual" id="big-tech-changes">
+<svg style="width:100%;height:auto" class="l0g-svg-desktop" viewBox="0 0 1000 625" role="img" aria-labelledby="disclosures-en-desktop-title disclosures-en-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="disclosures-en-desktop-title">Four disclosed changes, four different scopes</title>
+<desc id="disclosures-en-desktop-desc">Timeline of useful-life changes disclosed by Microsoft, Alphabet, Amazon and Meta, with reported accounting effects.</desc>
+<defs><linearGradient id="disclosures-en-desktop-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="1000" height="625" rx="22" fill="url(#disclosures-en-desktop-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="44" y="52">SEC FILINGS</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="780" text-anchor="start"><tspan x="44" y="87">Four disclosed changes, four different scopes</tspan></text>
+<rect x="44" y="116" width="430" height="190" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="66" y="147">Microsoft</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="452" y="147">Jul. 2022</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="850" text-anchor="start"><tspan x="66" y="183">4 → 6 years</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="66" y="216">Servers + network equipment</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="66" y="251">FY2023: $3.7bn less depreciation</tspan></text>
+<rect x="526" y="116" width="430" height="190" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="548" y="147">Alphabet</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="934" y="147">Jan. 2023</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="548" y="183">servers 4 → 6 years</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="548" y="216">certain network assets 5 → 6 years</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="548" y="251">2023: $3.9bn less depreciation</tspan></text>
+<rect x="44" y="332" width="430" height="220" rx="15" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="66" y="363">Amazon</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="452" y="363">Jan. 2024 / Jan. 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="850" text-anchor="start"><tspan x="66" y="399">5 → 6; then 6 → 5</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="66" y="432">Servers; then a portion of servers + network</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="66" y="467">2024: −$3.2bn; 2025: +$1.4bn</tspan></text>
+<rect x="526" y="332" width="430" height="220" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="548" y="363">Meta</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="934" y="363">Jan. 2025</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="850" text-anchor="start"><tspan x="548" y="399">majority → 5.5 years</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="548" y="432">Servers + network assets; not a single GPU</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="548" y="467">2025: $2.92bn less depreciation</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="44" y="592">Do not add these figures: periods, asset categories and tax bases differ.</tspan></text>
+</svg>
+<svg style="width:100%;height:auto" class="l0g-svg-mobile" viewBox="0 0 390 1090" role="img" aria-labelledby="disclosures-en-mobile-title disclosures-en-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="disclosures-en-mobile-title">Four disclosed changes, four different scopes</title>
+<desc id="disclosures-en-mobile-desc">Timeline of useful-life changes disclosed by Microsoft, Alphabet, Amazon and Meta, with reported accounting effects.</desc>
+<defs><linearGradient id="disclosures-en-mobile-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="390" height="1090" rx="22" fill="url(#disclosures-en-mobile-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" text-anchor="start"><tspan x="22" y="38">SEC FILINGS</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="780" text-anchor="start"><tspan x="22" y="70">Four disclosed changes,</tspan><tspan x="22" y="99">four different scopes</tspan></text>
+<rect x="22" y="142" width="346" height="190" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="173">Microsoft</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="173">Jul. 2022</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="42" y="214">4 → 6 years</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="249">Servers + network</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="292">FY2023: −$3.7bn</tspan></text>
+<rect x="22" y="352" width="346" height="205" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="383">Alphabet</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="383">Jan. 2023</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="21" font-weight="850" text-anchor="start"><tspan x="42" y="424">servers 4 → 6 years</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="459">certain network assets 5 → 6 years</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="502">2023: −$3.9bn</tspan></text>
+<rect x="22" y="577" width="346" height="220" rx="15" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="608">Amazon</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="608">2024 / 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="42" y="649">5 → 6; then 6 → 5</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="684">The reversal covers part of the fleet</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="727">−$3.2bn; then +$1.4bn</tspan></text>
+<rect x="22" y="817" width="346" height="205" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="848">Meta</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="848">Jan. 2025</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="42" y="889">majority → 5.5 years</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="924">Servers + network assets</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="967">2025: −$2.92bn</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="750" text-anchor="start"><tspan x="22" y="1050">Do not add: periods and scopes</tspan><tspan x="22" y="1070">are not comparable.</tspan></text>
+</svg>
+<figcaption>Sources: [Microsoft, FY2023](https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm); [Alphabet, 2023](https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm); Amazon [2024](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm) and [2025](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm); [Meta, 2025](https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm). The reported effects cannot be added together.</figcaption>
+</figure>
+
+### Microsoft: software extends infrastructure
+
+Microsoft said it completed an assessment of server and network equipment useful lives in July 2022 and moved the estimate from four years to six. Its stated rationale combined software investments that improved operating efficiency with advances in technology.
+
+For the year ended 30 June 2023, Microsoft reported **$3.7 billion less depreciation expense**, the same increase in operating income, and **$3.0 billion more net income**. The FY2023 effect did not refer only to machines purchased during that year: the filing applies the estimate to the carrying amount at the start of the fiscal year and to assets placed in service afterwards. [Microsoft, Form 10-K, FY2023](https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm).
+
+The rationale is economically plausible. Software can consolidate workloads, improve scheduling and raise fleet productivity. Yet the filing does not disclose a life by processor, accelerator or network generation. It proves a change in estimate for an accounting category; it does not prove that every physical machine can perform the same role for six years.
+
+### Alphabet: the same direction, a slightly different perimeter
+
+Alphabet made its change in January 2023. The estimated life of servers moved from four to six years; **certain** network equipment moved from five to six. For 2023, the company reported **$3.9 billion less depreciation** and **$3.0 billion more net income**. [Alphabet, Form 10-K, 2023](https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm).
+
+“Certain” matters. Even when both companies land on six years, Microsoft and Alphabet are not necessarily describing identical asset pools. Grouping methods, age profiles and placed-in-service dates are not public in enough detail to compare the aggressiveness of the estimates directly.
+
+### Amazon: first, one more year
+
+From 1 January 2024, Amazon increased the estimated useful life of servers from five years to six. For 2024, it disclosed **$3.2 billion less depreciation expense** and **$2.5 billion more net income**. [Amazon, Form 10-K, 2024](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm).
+
+The filing establishes the accounting effect. It does not allow readers to infer the number of machines involved: purchase prices, average age, annual additions and retirements are not reported at that level.
+
+### Meta: 5.5 years for a majority of the relevant fleet
+
+Meta said an assessment completed in January 2025 increased the estimated useful lives of the majority of its servers and network assets to **five and a half years**. The company accounted for the change prospectively from 1 January 2025.
+
+For 2025, Meta reported **$2.92 billion less depreciation** and **$2.59 billion more net income**. [Meta, Form 10-K, 2025](https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm).
+
+The filing does not describe a uniform move from one previous number to 5.5 years for every device. It refers to a “majority” within a category that combines servers and network assets. Calling this “the useful life of Meta’s GPUs” would therefore be inaccurate.
+
+## Amazon turns the clock back
+
+From 1 January 2025, Amazon shortened the useful life of **a portion** of servers and networking equipment from six years to five. Its explanation must be kept precise rather than generalised: the company cited the faster pace of technology development, “particularly in artificial intelligence and machine learning.”
+
+For 2025, the change increased depreciation expense by **$1.4 billion** and reduced net income by **$1.0 billion**. [Amazon, Form 10-K, 2025](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm).
+
+<figure class="l0g-visual" id="amazon-reversal">
+<svg style="width:100%;height:auto" class="l0g-svg-desktop" viewBox="0 0 1000 480" role="img" aria-labelledby="amazon-turn-en-desktop-title amazon-turn-en-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="amazon-turn-en-desktop-title">Amazon: one company, two directions</title>
+<desc id="amazon-turn-en-desktop-desc">Amazon extended server lives in 2024, then shortened the lives of a portion of servers and networking equipment in 2025.</desc>
+<defs><linearGradient id="amazon-turn-en-desktop-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="1000" height="480" rx="22" fill="url(#amazon-turn-en-desktop-grad)"/>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="44" y="52">THE DECISIVE COUNTEREXAMPLE</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="780" text-anchor="start"><tspan x="44" y="87">Amazon: one company, two directions</tspan></text>
+<rect x="44" y="126" width="385" height="246" rx="17" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><rect x="68" y="151" width="112" height="30" rx="15" fill="#45d6c618" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle"><tspan x="124.0" y="171">JAN. 2024</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="850" text-anchor="start"><tspan x="68" y="219">5 → 6 years</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" text-anchor="start"><tspan x="68" y="258">Disclosed scope: servers</tspan><tspan x="68" y="284">2024 depreciation: −$3.2bn</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="68" y="329">An internal study supports</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="68" y="350">a longer useful life.</tspan></text>
+<line x1="452" y1="245" x2="548" y2="245" stroke="#f2ba55" stroke-width="4"/><path d="M540 235 L558 245 L540 255" fill="#f2ba55"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="middle"><tspan x="500" y="219">12 months</tspan></text>
+<rect x="571" y="126" width="385" height="246" rx="17" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><rect x="595" y="151" width="112" height="30" rx="15" fill="#f2ba5518" stroke="#f2ba55" stroke-width="1"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle"><tspan x="651.0" y="171">JAN. 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="850" text-anchor="start"><tspan x="595" y="219">6 → 5 years</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" text-anchor="start"><tspan x="595" y="258">A portion of servers + network</tspan><tspan x="595" y="284">2025 depreciation: +$1.4bn</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="595" y="318">Explicit reason: faster technology pace</tspan><tspan x="595" y="339">especially AI and machine learning.</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="44" y="425">The reversal does not prove that all AI hardware ages faster: the filing covers a portion of the fleet.</tspan></text>
+</svg>
+<svg style="width:100%;height:auto" class="l0g-svg-mobile" viewBox="0 0 390 780" role="img" aria-labelledby="amazon-turn-en-mobile-title amazon-turn-en-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="amazon-turn-en-mobile-title">Amazon: one company, two directions</title>
+<desc id="amazon-turn-en-mobile-desc">Amazon extended server lives in 2024, then shortened the lives of a portion of servers and networking equipment in 2025.</desc>
+<defs><linearGradient id="amazon-turn-en-mobile-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="390" height="780" rx="22" fill="url(#amazon-turn-en-mobile-grad)"/>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" text-anchor="start"><tspan x="22" y="38">THE COUNTEREXAMPLE</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="780" text-anchor="start"><tspan x="22" y="72">Amazon: one company,</tspan><tspan x="22" y="101">two directions</tspan></text>
+<rect x="22" y="137" width="346" height="230" rx="16" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><rect x="42" y="158" width="104" height="28" rx="14" fill="#45d6c618" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle"><tspan x="94.0" y="178">JAN. 2024</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="850" text-anchor="start"><tspan x="42" y="226">5 → 6 years</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="650" text-anchor="start"><tspan x="42" y="270">Servers</tspan><tspan x="42" y="295">2024: $3.2bn less depreciation</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="334">Life extended after an internal study.</tspan></text>
+<line x1="195" y1="380" x2="195" y2="421" stroke="#f2ba55" stroke-width="4"/><path d="M185 413 L195 431 L205 413" fill="#f2ba55"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="start"><tspan x="215" y="407">12 months</tspan></text>
+<rect x="22" y="444" width="346" height="250" rx="16" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><rect x="42" y="465" width="104" height="28" rx="14" fill="#f2ba5518" stroke="#f2ba55" stroke-width="1"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle"><tspan x="94.0" y="485">JAN. 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="850" text-anchor="start"><tspan x="42" y="533">6 → 5 years</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="650" text-anchor="start"><tspan x="42" y="577">A portion of servers + network</tspan><tspan x="42" y="602">2025: $1.4bn more depreciation</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="645">Reason: faster technology pace,</tspan><tspan x="42" y="664">especially AI and machine learning.</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start"><tspan x="22" y="735">The filing does not extend this finding</tspan><tspan x="22" y="755">to all AI hardware.</tspan></text>
+</svg>
+<figcaption>Source: Amazon Forms 10-K for the years ended December 31, [2024](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm) and [2025](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm). The 2025 shortening applies to a portion of servers and networking equipment.</figcaption>
+</figure>
+
+The reversal carries two lessons.
+
+The accounting lesson is that an estimate is not an irreversible commitment. When expected use changes, the remaining carrying amount is spread over a different period. A life can be extended and later shortened without restating years already reported.
+
+The industrial lesson is that “a server” is not a homogeneous object. Fleets contain different generations, functions and bottlenecks. General-purpose hardware may remain useful for storage, internal computing or less demanding workloads while specialised equipment becomes insufficient for a model requiring more memory or bandwidth. Conversely, an accelerator no longer optimal for training may retain economic value elsewhere. The filings examined here do not quantify such redeployment, so a plausible mechanism should not be mistaken for a measured explanation.
+
+<div class="l0g-caveat">
+<strong>Established:</strong> Amazon explicitly linked the shortening of part of its fleet to the pace of technology development and named AI and machine learning. <strong>Not established:</strong> that every AI GPU at every company becomes obsolete faster, or that the affected assets were exclusively accelerators.
+</div>
+
+## Three overlapping lifetimes
+
+Accounting useful life is not the maximum time a device can remain powered on. To understand differences across companies, and even within one company, three clocks must be separated.
+
+### Physical life
+
+The machine still operates. Its components have not reached a failure or degradation level that makes continued use impossible. This matters to engineering teams, but it does not by itself determine depreciation.
+
+### Economic life
+
+The server still delivers the expected benefit at an acceptable cost. Power, cooling, space, performance, memory and networking matter as much as the ability to boot. A machine can be physically healthy but economically obsolete; it can also be reassigned to a less demanding task and retain value.
+
+### Accounting life
+
+This is management’s estimate of the period over which the company expects to consume the asset’s economic benefits. It determines the timing of expense. When the estimate changes, the companies studied account for the change prospectively by reallocating the remaining carrying amount to future periods.
+
+An audit does not turn this estimate into a physical certainty. The Public Company Accounting Oversight Board’s standard on estimates requires auditors to assess reasonableness, methods, data, assumptions and the risk of management bias. It does not prescribe a universal server lifetime. [PCAOB AS 2501, *Auditing Accounting Estimates*](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2501).
+
+The distinction also prevents a false comparison: two companies can choose six years for different operating reasons. One may run general-purpose equipment for longer; another may rely on internal redeployment; a third may have a fleet in which rapidly replaced components represent a different share of the accounting category.
+
+## Where does the profit move?
+
+When equipment is purchased and placed in service, the company generally records an investing cash outflow and an asset on the balance sheet. Depreciation then allocates the depreciable amount through the income statement. It is an expense without a new cash payment at the time it is recognised.
+
+A longer life therefore has several simultaneous effects, all else equal:
+
+- depreciation expense for the period falls;
+- operating income and pretax income rise by the same amount;
+- net income rises after the reported book-tax effect;
+- net property and equipment remains higher on the balance sheet;
+- the original cash outflow is not reversed.
+
+### The cash timeline
+
+Under the indirect cash-flow method, depreciation is added back to net income in operating cash flow because it is not a payment made in the same period. The equipment purchase appears in investing cash flow. Changing useful life therefore does not erase capex already paid.
+
+That does not mean every cash line is forever untouched. Tax depreciation can follow a different schedule, deferred taxes move, and lease classification can complicate comparisons. The narrow, robust conclusion is that **the profit benefit disclosed from these estimate changes is not a refund on the server**.
+
+### Reading EBITDA
+
+EBITDA excludes depreciation and amortisation by construction. A lower depreciation charge does not mechanically improve it. Company-adjusted definitions still vary, however, so the reconciliation must be read rather than assuming that every metric carrying the label is perfectly standardised.
+
+### Reading free cash flow
+
+For free cash flow defined as operating cash flow less purchases of property and equipment, extending accounting life does not directly reduce the capex being subtracted. A company can therefore report, in the same year, operating profit supported by lower depreciation and cash flow compressed by heavy investment. There is no contradiction: the measures answer different questions.
+
+## Does this inflate earnings?
+
+**Yes, mechanically:** when a useful life is extended, profit in the early periods is higher than it would have been under the old estimate. Microsoft, Alphabet, Amazon and Meta disclose that effect directly.
+
+**No, if “inflate” is meant to imply that the profit is necessarily fictitious or fraudulent.** Estimates can change because operating evidence changes. The companies possess failure, performance, utilisation and retirement data that public investors do not see. Accounting rules require estimates to be revised when new information changes the expected consumption period.
+
+The useful question is not “accounting or reality?” An accounting estimate is supposed to represent an uncertain economic reality. The useful question is: **what evidence makes the new estimate more likely than the old one?**
+
+The filings offer only partial answers. Microsoft cites software efficiency and technological advances. Amazon, a year after extending server lives, cites faster technology development to shorten part of its fleet. Meta and Alphabet disclose the quantified effect and an aggregated perimeter. None provides an inventory by GPU generation, utilisation, electricity consumption or second-life value.
+
+Investors should neither ignore the change nor label it manipulation by default. It belongs in a broader reading of cash property purchases, total depreciation, early retirements, impairments, lease commitments and changes in gross and net equipment balances.
+
+## The trap of a “Big Tech total”
+
+Adding $3.7 billion at Microsoft, $3.9 billion at Alphabet, $3.2 billion at Amazon and $2.92 billion at Meta would produce a striking number. It would also be analytically misleading.
+
+The periods do not coincide: Microsoft’s fiscal year ended in June 2023, Alphabet reports calendar 2023, Amazon’s extension affected 2024, and Meta’s affected 2025. The asset categories do not coincide either. Some include all network equipment, some only certain assets; Meta refers to a majority; Amazon separates a general server extension from the later shortening of a portion of servers and networking equipment.
+
+Net-income effects also incorporate company-specific tax positions. Even the depreciation reduction is not “capex saved”: it depends on the carrying amount of the fleet at the date of change.
+
+The honest result is therefore not a sum. It is a conclusion: **at four companies, a useful-life revision was sufficient to move several billion dollars of expense within one reported year.**
+
+## The gaps left by the accounts
+
+Primary documents establish the decisions, accounting perimeters and quantified effects. They leave important questions open:
+
+| Question | What the filings answer |
+|---|---|
+| What is the physical life of a specific GPU? | They do not say; asset categories are aggregated. |
+| What share of the fleet serves AI directly? | No consistent cross-company breakdown. |
+| What is resale or redeployment value after five years? | Generally not disclosed at this level. |
+| How much equipment will retire before estimated life? | Unknown until retirement or impairment decisions occur. |
+| Are useful lives comparable across companies? | Only with strong caveats on scope and fleet age. |
+| Does AI shorten or lengthen average economic life? | Public evidence is compatible with both mechanisms and does not settle the sector-wide result. |
+
+The final question matters most. AI can accelerate obsolescence at the frontier while increasing demand for older machines used in inference, preprocessing or internal tasks. The net outcome depends on electricity prices, maintenance, software, availability of newer components and redeployment capacity. Filings do not yet provide a sector-wide measure capable of weighing those forces.
+
+## A practical reading grid
+
+A useful analysis must read several lines together rather than fixating on one headline number:
+
+| Indicator | Question it answers |
+|---|---|
+| Cash purchases of property and equipment | How much was actually spent during the period? |
+| Gross property and equipment | How large is the historical asset base before depreciation? |
+| Period depreciation | How much cost is recognised in profit for the period? |
+| Net property and equipment | How much unexpensed cost remains on the balance sheet? |
+| Useful lives and estimate changes | What accounting clock is management using? |
+| Impairments and early retirements | Which assets failed to follow the expected path? |
+| Lease and purchase commitments | What future infrastructure is not yet fully visible in paid capex? |
+
+This approach has a limit: several groups do not disclose enough detail to reconstruct age cohorts or a weighted average life. Missing data is not permission to invent it. It simply tells us that markets are valuing assets whose precise economic duration remains partly private.
+
+To place those assets in their financing structure, our analysis of [the debt behind AI](/en/analysis/the-debt-behind-ai/) examines the SPVs, bonds and private credit supporting the data-centre boom.
+
+## A multi-billion-dollar clock
+
+Return to the $10,000 server. Extending its life after two years does not return $2,500 in cash. It lowers expense over the next two years and brings it back later. At the scale of a huge and growing fleet, generations overlap: new purchases enter the balance sheet while older cohorts continue to depreciate. That overlap can obscure the later return of expense without eliminating it.
+
+Amazon offers the best guardrail against easy conclusions. The same company judged in 2024 that servers could live one year longer for accounting purposes, then shortened the life of a subset of servers and networking equipment in 2025, citing faster technology development, particularly in AI. The two decisions can be consistent if they apply to different parts of the fleet. Above all, they show that “server life” is not a constant of nature.
+
+What is established is concise: these estimates have a material effect on reported earnings. What is plausible but not publicly measured is that differences in workloads and generations account for part of the divergence. What remains unknown is the economic value, in 2030 or 2031, of the hardware now being installed.
+
+AI spending is visible when the cheque is written. Its final economic cost will only become clear when we know how long the machines actually produced profitable service, and how many left the balance sheet before the announced clock ran out.
+
+## Primary sources and method
+
+<table class="source-ledger">
+<thead><tr><th>Document</th><th>Reporting period</th><th>Use in this article</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm">Microsoft Form 10-K 2023</a></td><td>Year ended 30 June 2023</td><td>Move from four to six years, rationale and reported effects.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm">Alphabet Form 10-K 2023</a></td><td>Year ended 31 December 2023</td><td>Servers from four to six years, certain network equipment from five to six.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm">Amazon Form 10-K 2024</a></td><td>Year ended 31 December 2024</td><td>Server move from five to six years and 2024 effect.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm">Amazon Form 10-K 2025</a></td><td>Year ended 31 December 2025</td><td>Shortening for part of the fleet, AI/ML rationale and 2025 effect.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm">Meta Form 10-K 2025</a></td><td>Year ended 31 December 2025</td><td>Majority moved to 5.5 years and reported 2025 effects.</td></tr>
+<tr><td><a href="https://pcaobus.org/oversight/standards/auditing-standards/details/AS2501">PCAOB AS 2501</a></td><td>Audit standard in force</td><td>Framework for auditing estimates and potential management bias.</td></tr>
+</tbody>
+</table>
+
+<div class="l0g-method">
+<strong>Method.</strong> Figures retain the currency, definition and period used in each filing. They are not annualised, converted or added together. The simulator uses a fictional $10,000 asset, zero residual value and full years; it explains prospective accounting mechanics and does not reconstruct any company’s fleet.
+</div>

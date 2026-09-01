@@ -1,0 +1,388 @@
+---
+import { calculateUsefulLifeScenario } from '../lib/server-useful-life';
+
+type Props = { lang?: 'fr' | 'en' };
+const { lang = 'fr' } = Astro.props;
+const id = `server-useful-life-${lang}`;
+const initial = calculateUsefulLifeScenario({
+  cost: 10_000,
+  residualValue: 0,
+  originalLifeYears: 4,
+  revisedLifeYears: 6,
+  elapsedYears: 2,
+});
+
+const copy = lang === 'fr' ? {
+  eyebrow: 'SIMULATEUR PÉDAGOGIQUE',
+  title: 'Déplacer l’amortissement d’un serveur de 10 000 $',
+  intro: 'Le modèle applique un amortissement linéaire à un actif mis en service immédiatement. Il compare le plan d’origine à une révision prospective de sa durée totale.',
+  cost: 'Coût mis en service ($)',
+  original: 'Durée d’origine (ans)',
+  revised: 'Durée totale révisée (ans)',
+  elapsed: 'Années déjà amorties',
+  reset: 'Réinitialiser',
+  carrying: 'Valeur comptable à la révision',
+  oldAnnual: 'Charge annuelle, plan d’origine',
+  newAnnual: 'Charge annuelle après révision',
+  firstImpact: 'Écart de résultat avant impôt, première année complète',
+  moved: 'Charge repoussée après la fin du plan d’origine',
+  positive: 'de résultat avant impôt en plus',
+  negative: 'de résultat avant impôt en moins',
+  neutral: 'aucun écart de résultat',
+  tableTitle: 'Calendrier annuel',
+  year: 'Année',
+  oldPlan: 'Plan d’origine',
+  newPlan: 'Plan révisé',
+  book: 'Valeur nette révisée en clôture',
+  note: 'Hypothèses : valeur résiduelle nulle, année pleine, aucune dépréciation, cession, fiscalité ni convention de mise en service. Les groupes publient des effets agrégés sur des parcs d’actifs : cet outil ne reconstitue aucun de leurs comptes.',
+  invalid: 'Vérifiez les paramètres : respectez les plages indiquées et choisissez des durées supérieures au nombre d’années déjà écoulées.',
+  dollars: 'dollars',
+} : {
+  eyebrow: 'TEACHING SIMULATOR',
+  title: 'Moving depreciation on a $10,000 server',
+  intro: 'The model applies straight-line depreciation to an asset placed in service immediately. It compares the original schedule with a prospective revision of total useful life.',
+  cost: 'Placed-in-service cost ($)',
+  original: 'Original life (years)',
+  revised: 'Revised total life (years)',
+  elapsed: 'Years already depreciated',
+  reset: 'Reset',
+  carrying: 'Carrying amount when the estimate changes',
+  oldAnnual: 'Annual expense under original plan',
+  newAnnual: 'Annual expense after revision',
+  firstImpact: 'Pretax profit difference, first full year',
+  moved: 'Expense moved beyond the original end date',
+  positive: 'more pretax profit',
+  negative: 'less pretax profit',
+  neutral: 'no profit difference',
+  tableTitle: 'Annual schedule',
+  year: 'Year',
+  oldPlan: 'Original plan',
+  newPlan: 'Revised plan',
+  book: 'Revised closing net book value',
+  note: 'Assumptions: zero residual value, full years, no impairment, disposal, tax or placed-in-service convention. Companies disclose aggregate effects across asset fleets; this tool does not reconstruct any company’s accounts.',
+  invalid: 'Check the inputs: stay within the stated ranges and choose useful lives longer than the elapsed period.',
+  dollars: 'dollars',
+};
+
+const money = (value: number) => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: value % 1 === 0 ? 0 : 2,
+}).format(value);
+
+const impactLabel = initial.firstFullYearPretaxProfitDifference > 0
+  ? copy.positive
+  : initial.firstFullYearPretaxProfitDifference < 0
+    ? copy.negative
+    : copy.neutral;
+---
+
+<section
+  class="server-life-tool"
+  id={id}
+  data-lang={lang}
+  data-impact-positive={copy.positive}
+  data-impact-negative={copy.negative}
+  data-impact-neutral={copy.neutral}
+  aria-labelledby={`${id}-title`}
+>
+  <header class="server-life-tool__header">
+    <p class="server-life-tool__eyebrow">{copy.eyebrow}</p>
+    <h2 id={`${id}-title`}>{copy.title}</h2>
+    <p>{copy.intro}</p>
+  </header>
+
+  <div class="server-life-tool__controls" aria-label={copy.title}>
+    <label>
+      <span>{copy.cost}</span>
+      <input data-field="cost" type="number" min="1000" max="1000000" step="1000" value="10000" inputmode="decimal" aria-describedby={`${id}-error`} />
+    </label>
+    <label>
+      <span>{copy.original}</span>
+      <input data-field="original" type="number" min="2" max="12" step="1" value="4" inputmode="numeric" aria-describedby={`${id}-error`} />
+    </label>
+    <label>
+      <span>{copy.revised}</span>
+      <input data-field="revised" type="number" min="2" max="15" step="1" value="6" inputmode="numeric" aria-describedby={`${id}-error`} />
+    </label>
+    <label>
+      <span>{copy.elapsed}</span>
+      <input data-field="elapsed" type="number" min="0" max="11" step="1" value="2" inputmode="numeric" aria-describedby={`${id}-error`} />
+    </label>
+    <button type="button" data-reset>{copy.reset}</button>
+  </div>
+
+  <p class="server-life-tool__error" id={`${id}-error`} data-error role="alert" hidden>{copy.invalid}</p>
+
+  <div class="server-life-tool__metrics" data-results aria-live="polite">
+    <article>
+      <span>{copy.carrying}</span>
+      <strong data-metric="carrying">{money(initial.carryingAmountAtChange)}</strong>
+    </article>
+    <article>
+      <span>{copy.oldAnnual}</span>
+      <strong data-metric="oldAnnual">{money(initial.originalAnnualExpense)}</strong>
+    </article>
+    <article>
+      <span>{copy.newAnnual}</span>
+      <strong data-metric="newAnnual">{money(initial.revisedAnnualExpense)}</strong>
+    </article>
+    <article class="server-life-tool__metric--accent">
+      <span>{copy.firstImpact}</span>
+      <strong data-metric="impact">{money(Math.abs(initial.firstFullYearPretaxProfitDifference))}</strong>
+      <small data-metric="impactLabel">{impactLabel}</small>
+    </article>
+    <article>
+      <span>{copy.moved}</span>
+      <strong data-metric="moved">{money(initial.expenseMovedBeyondOriginalLife)}</strong>
+    </article>
+  </div>
+
+  <div class="server-life-tool__schedule">
+    <h3>{copy.tableTitle}</h3>
+    <div class="server-life-tool__bars" data-bars aria-hidden="true">
+      {initial.rows.map((row) => (
+        <div class="server-life-tool__bar-row">
+          <span>{row.year}</span>
+          <i style={`--old:${(row.originalExpense / initial.originalAnnualExpense) * 100}%;--new:${(row.revisedExpense / initial.originalAnnualExpense) * 100}%`}><b></b><em></em></i>
+        </div>
+      ))}
+    </div>
+    <div class="server-life-tool__legend" aria-hidden="true">
+      <span><i class="old"></i>{copy.oldPlan}</span>
+      <span><i class="new"></i>{copy.newPlan}</span>
+    </div>
+    <div class="server-life-tool__table-wrap">
+      <table>
+        <thead>
+          <tr><th>{copy.year}</th><th>{copy.oldPlan}</th><th>{copy.newPlan}</th><th>{copy.book}</th></tr>
+        </thead>
+        <tbody data-table>
+          {initial.rows.map((row) => (
+            <tr>
+              <th scope="row">{row.year}</th>
+              <td>{money(row.originalExpense)}</td>
+              <td>{money(row.revisedExpense)}</td>
+              <td>{money(row.revisedClosingBookValue)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="server-life-tool__note">{copy.note}</p>
+</section>
+
+<script>
+(() => {
+  const roots = document.querySelectorAll<HTMLElement>('.server-life-tool');
+  for (const root of roots) {
+    if (root.dataset.ready === 'true') continue;
+
+    const cost = root.querySelector<HTMLInputElement>('[data-field="cost"]');
+    const original = root.querySelector<HTMLInputElement>('[data-field="original"]');
+    const revised = root.querySelector<HTMLInputElement>('[data-field="revised"]');
+    const elapsed = root.querySelector<HTMLInputElement>('[data-field="elapsed"]');
+    const error = root.querySelector<HTMLElement>('[data-error]');
+    const results = root.querySelector<HTMLElement>('[data-results]');
+    const schedule = root.querySelector<HTMLElement>('.server-life-tool__schedule');
+    const table = root.querySelector<HTMLTableSectionElement>('[data-table]');
+    const bars = root.querySelector<HTMLElement>('[data-bars]');
+    const reset = root.querySelector<HTMLButtonElement>('[data-reset]');
+    if (!cost || !original || !revised || !elapsed || !error || !results || !schedule || !table || !bars || !reset) {
+      continue;
+    }
+    const fields = { cost, original, revised, elapsed };
+    const impactCopy = {
+      positive: root.dataset.impactPositive ?? '',
+      negative: root.dataset.impactNegative ?? '',
+      neutral: root.dataset.impactNeutral ?? '',
+    };
+    const locale = root.dataset.lang === 'fr' ? 'fr-FR' : 'en-US';
+    root.dataset.ready = 'true';
+
+  const format = (value: number) => new Intl.NumberFormat(locale, {
+    style: 'currency', currency: 'USD', maximumFractionDigits: Math.abs(value % 1) < 1e-8 ? 0 : 2,
+  }).format(value);
+
+  const readInteger = (input: HTMLInputElement) => {
+    const value = Number(input.value);
+    return Number.isInteger(value) ? value : NaN;
+  };
+
+  const compute = () => {
+    const cost = Number(fields.cost.value);
+    const originalLife = readInteger(fields.original);
+    const revisedLife = readInteger(fields.revised);
+    const elapsed = readInteger(fields.elapsed);
+    if (
+      !Number.isFinite(cost)
+      || cost < 1_000
+      || cost > 1_000_000
+      || originalLife < 2
+      || originalLife > 12
+      || revisedLife < 2
+      || revisedLife > 15
+      || elapsed < 0
+      || elapsed > 11
+      || elapsed >= originalLife
+      || elapsed >= revisedLife
+    ) {
+      return null;
+    }
+    const originalAnnual = cost / originalLife;
+    const carrying = cost - originalAnnual * elapsed;
+    const revisedAnnual = carrying / (revisedLife - elapsed);
+    const horizon = Math.max(originalLife, revisedLife);
+    let oldBook = cost;
+    let newBook = cost;
+    const rows = [];
+    for (let year = 1; year <= horizon; year += 1) {
+      const oldExpense = year <= originalLife ? Math.min(originalAnnual, oldBook) : 0;
+      let newExpense = 0;
+      if (year <= elapsed) newExpense = Math.min(originalAnnual, newBook);
+      else if (year <= revisedLife) newExpense = Math.min(revisedAnnual, newBook);
+      oldBook = Math.max(0, oldBook - oldExpense);
+      newBook = Math.max(0, newBook - newExpense);
+      rows.push({ year, oldExpense, newExpense, newBook });
+    }
+    const postChange = rows.find((row) => row.year === elapsed + 1);
+    const impact = postChange ? postChange.oldExpense - postChange.newExpense : 0;
+    const moved = rows.filter((row) => row.year > originalLife).reduce((sum, row) => sum + row.newExpense, 0);
+    return { cost, originalAnnual, carrying, revisedAnnual, impact, moved, rows };
+  };
+
+  const setMetric = (name: string, value: string) => {
+    const target = root.querySelector(`[data-metric="${name}"]`);
+    if (target) target.textContent = value;
+  };
+
+  const render = () => {
+    const data = compute();
+    const valid = Boolean(data);
+    error.hidden = valid;
+    results.hidden = !valid;
+    schedule.hidden = !valid;
+    if (!data) return;
+
+    setMetric('carrying', format(data.carrying));
+    setMetric('oldAnnual', format(data.originalAnnual));
+    setMetric('newAnnual', format(data.revisedAnnual));
+    setMetric('impact', format(Math.abs(data.impact)));
+    setMetric('moved', format(data.moved));
+    setMetric('impactLabel', data.impact > 0 ? impactCopy.positive : data.impact < 0 ? impactCopy.negative : impactCopy.neutral);
+
+    table.replaceChildren(...data.rows.map((row) => {
+      const tr = document.createElement('tr');
+      const th = document.createElement('th');
+      th.scope = 'row';
+      th.textContent = String(row.year);
+      const values = [row.oldExpense, row.newExpense, row.newBook];
+      tr.append(th, ...values.map((value) => {
+        const td = document.createElement('td');
+        td.textContent = format(value);
+        return td;
+      }));
+      return tr;
+    }));
+
+    const maxExpense = Math.max(1, ...data.rows.flatMap((row) => [row.oldExpense, row.newExpense]));
+    bars.replaceChildren(...data.rows.map((row) => {
+      const line = document.createElement('div');
+      line.className = 'server-life-tool__bar-row';
+      const year = document.createElement('span');
+      year.textContent = String(row.year);
+      const track = document.createElement('i');
+      track.style.setProperty('--old', `${(row.oldExpense / maxExpense) * 100}%`);
+      track.style.setProperty('--new', `${(row.newExpense / maxExpense) * 100}%`);
+      track.append(document.createElement('b'), document.createElement('em'));
+      line.append(year, track);
+      return line;
+    }));
+  };
+
+  Object.values(fields).forEach((input) => input.addEventListener('input', render));
+  reset.addEventListener('click', () => {
+    fields.cost.value = '10000';
+    fields.original.value = '4';
+    fields.revised.value = '6';
+    fields.elapsed.value = '2';
+    render();
+  });
+  render();
+  }
+})();
+</script>
+
+<style>
+  .server-life-tool {
+    --tool-bg: #0b1118;
+    --tool-panel: #111a24;
+    --tool-border: #2a3948;
+    --tool-text: #edf4fa;
+    --tool-muted: #a9bac9;
+    --tool-teal: #45d6c6;
+    --tool-rose: #ff718f;
+    margin: 2.5rem 0;
+    padding: clamp(1rem, 3vw, 1.8rem);
+    border: 1px solid var(--tool-border);
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0b1118, #101923);
+    color: var(--tool-text);
+    box-shadow: 0 22px 65px rgba(0, 0, 0, .2);
+  }
+  .server-life-tool * { box-sizing: border-box; }
+  .server-life-tool__header { max-width: 760px; }
+  .server-life-tool__eyebrow { margin: 0 0 .45rem; color: var(--tool-teal); font: 700 .72rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .11em; }
+  .server-life-tool h2 { margin: 0; color: var(--tool-text); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.12; }
+  .server-life-tool__header > p:last-child { margin: .75rem 0 0; color: var(--tool-muted); line-height: 1.6; }
+  .server-life-tool__controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; gap: .8rem; align-items: end; margin-top: 1.5rem; }
+  .server-life-tool label { display: grid; gap: .42rem; min-width: 0; color: var(--tool-muted); font-size: .79rem; line-height: 1.3; }
+  .server-life-tool input { width: 100%; min-width: 0; border: 1px solid var(--tool-border); border-radius: 10px; padding: .7rem .72rem; background: #091018; color: var(--tool-text); font: 650 .96rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .server-life-tool input:focus-visible, .server-life-tool button:focus-visible { outline: 3px solid rgba(69, 214, 198, .45); outline-offset: 2px; }
+  .server-life-tool button { min-height: 42px; border: 1px solid var(--tool-teal); border-radius: 10px; padding: .65rem .9rem; background: transparent; color: var(--tool-teal); font-weight: 750; cursor: pointer; }
+  .server-life-tool button:hover { background: rgba(69, 214, 198, .08); }
+  .server-life-tool__error { margin: 1rem 0 0; padding: .75rem .9rem; border: 1px solid rgba(255,113,143,.5); border-radius: 10px; background: rgba(255,113,143,.08); color: #ffd3dc; }
+  .server-life-tool__metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .75rem; margin-top: 1.15rem; }
+  .server-life-tool__metrics article { min-width: 0; min-height: 118px; padding: .9rem; border: 1px solid var(--tool-border); border-radius: 13px; background: var(--tool-panel); }
+  .server-life-tool__metrics span { display: block; min-height: 3.1em; color: var(--tool-muted); font-size: .75rem; line-height: 1.35; }
+  .server-life-tool__metrics strong { display: block; margin-top: .55rem; overflow-wrap: anywhere; color: var(--tool-text); font: 750 clamp(1rem, 2vw, 1.25rem)/1.15 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .server-life-tool__metrics small { display: block; margin-top: .3rem; color: var(--tool-muted); font-size: .68rem; line-height: 1.35; }
+  .server-life-tool__metric--accent { border-color: rgba(69,214,198,.65) !important; background: linear-gradient(145deg, rgba(69,214,198,.10), var(--tool-panel)) !important; }
+  .server-life-tool__schedule { margin-top: 1.4rem; }
+  .server-life-tool__schedule h3 { margin: 0 0 .75rem; color: var(--tool-text); font-size: 1rem; }
+  .server-life-tool__bars { display: grid; gap: .52rem; padding: .9rem; border: 1px solid var(--tool-border); border-radius: 13px; background: #091018; }
+  .server-life-tool__bar-row { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .65rem; align-items: center; }
+  .server-life-tool__bar-row > span { color: var(--tool-muted); text-align: right; font: 650 .72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .server-life-tool__bar-row > i { position: relative; display: block; height: 18px; border-radius: 5px; background: rgba(255,255,255,.035); overflow: hidden; }
+  .server-life-tool__bar-row b, .server-life-tool__bar-row em { position: absolute; left: 0; height: 7px; min-width: 0; border-radius: 4px; }
+  .server-life-tool__bar-row b { top: 1px; width: var(--old); background: var(--tool-rose); }
+  .server-life-tool__bar-row em { bottom: 1px; width: var(--new); background: var(--tool-teal); }
+  .server-life-tool__legend { display: flex; flex-wrap: wrap; gap: .9rem 1.2rem; margin: .65rem 0 0; color: var(--tool-muted); font-size: .72rem; }
+  .server-life-tool__legend span { display: inline-flex; align-items: center; gap: .38rem; }
+  .server-life-tool__legend i { width: 16px; height: 5px; border-radius: 3px; }
+  .server-life-tool__legend .old { background: var(--tool-rose); }
+  .server-life-tool__legend .new { background: var(--tool-teal); }
+  .server-life-tool__table-wrap { margin-top: 1rem; overflow-x: auto; }
+  .server-life-tool table { width: 100%; min-width: 590px; border-collapse: collapse; color: var(--tool-text); font-size: .78rem; }
+  .server-life-tool th, .server-life-tool td { padding: .58rem .65rem; border-bottom: 1px solid var(--tool-border); text-align: right; white-space: nowrap; }
+  .server-life-tool thead th { color: var(--tool-muted); font-weight: 650; }
+  .server-life-tool th:first-child { text-align: left; }
+  .server-life-tool__note { margin: 1rem 0 0; color: var(--tool-muted); font-size: .72rem; line-height: 1.55; }
+  @media (max-width: 900px) {
+    .server-life-tool__controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .server-life-tool__controls button { grid-column: span 2; }
+    .server-life-tool__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .server-life-tool__metric--accent { grid-column: span 2; }
+  }
+  @media (max-width: 520px) {
+    .server-life-tool { margin-inline: -.15rem; padding: 1rem; border-radius: 15px; }
+    .server-life-tool__controls { grid-template-columns: 1fr; }
+    .server-life-tool__controls button { grid-column: auto; }
+    .server-life-tool__metrics { grid-template-columns: 1fr; }
+    .server-life-tool__metric--accent { grid-column: auto; }
+    .server-life-tool__metrics article { min-height: 0; }
+    .server-life-tool__metrics span { min-height: 0; }
+  }
+</style>

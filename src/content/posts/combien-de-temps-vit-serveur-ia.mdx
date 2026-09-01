@@ -1,0 +1,396 @@
+---
+title: "Combien de temps vit un serveur d’IA ?"
+seoTitle: "Amortissement des serveurs d’IA : ce que disent les comptes | l0g"
+ogTitle: "Combien de temps vit vraiment un serveur d’IA ?"
+description: "Microsoft, Alphabet, Amazon et Meta ont modifié la durée d’amortissement de leurs serveurs. Effets sur bénéfices, cash et bilan."
+ogImage: "/illustrations/news/ai-server-useful-life-v1.jpg"
+pubDate: 2026-09-01T16:00:00+02:00
+updatedDate: 2026-09-01T16:00:00+02:00
+tags: ["IA", "comptabilité", "Big Tech", "États-Unis", "amortissement"]
+draft: false
+quickTake:
+  fact: "Microsoft, Alphabet, Amazon et Meta ont publié des changements de durée d’utilité réduisant chacun de plusieurs milliards de dollars leur amortissement sur un exercice ; Amazon a ensuite raccourci une partie de son parc en 2025."
+  importance: "Une estimation plus longue relève le résultat opérationnel courant et maintient davantage d’actifs au bilan, sans annuler le décaissement initial."
+  uncertainty: "Les filings agrègent généralement serveurs et équipements réseau : ils ne permettent ni d’isoler les GPU d’IA ni de mesurer leur durée physique réelle."
+---
+
+import ServerUsefulLifeSimulator from '../../components/ServerUsefulLifeSimulator.astro';
+
+<style>{`
+.l0g-visual{margin:2.5rem 0}.l0g-visual svg{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 55px rgba(0,0,0,.15)}.l0g-svg-mobile{display:none!important}.l0g-visual figcaption{margin:.7rem .2rem 0;color:var(--color-text-muted,#65717c);font-size:.78rem;line-height:1.5}.l0g-caveat{margin:1.5rem 0;padding:1rem 1.1rem;border-left:4px solid #f2ba55;background:rgba(242,186,85,.08);border-radius:0 12px 12px 0}.l0g-method{margin:1.4rem 0;padding:1rem 1.1rem;border:1px solid rgba(69,214,198,.35);background:rgba(69,214,198,.055);border-radius:14px}.prose table{font-size:.88rem}.source-ledger td:first-child{white-space:nowrap}@media(max-width:640px){.l0g-svg-desktop{display:none!important}.l0g-svg-mobile{display:block!important}.l0g-visual{margin:2rem -.15rem}.l0g-visual figcaption{margin-inline:.35rem}.prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}.l0g-caveat,.l0g-method{padding:.9rem}}
+`}</style>
+
+*Lecture arrêtée au 1er septembre 2026. Cet article étudie des changements d’estimations publiés dans les comptes américains. Il ne prétend pas mesurer la durée physique d’un GPU précis : les entreprises regroupent généralement leurs serveurs et leurs équipements réseau dans des catégories beaucoup plus larges.*
+
+Pendant le boom de l’intelligence artificielle, le débat financier s’est concentré sur une question visible : combien Microsoft, Alphabet, Amazon ou Meta dépensent-ils pour leurs data centers ? Une autre décision, beaucoup plus discrète, intervient juste après le passage en caisse. **Combien d’années ces machines resteront-elles dans les comptes ?**
+
+La réponse ne change pas le prix payé au fournisseur. Elle change le rythme auquel ce prix devient une charge dans le compte de résultat. Et lorsque le parc se chiffre en dizaines de milliards de dollars, déplacer cette horloge d’un ou deux ans peut modifier de plusieurs milliards le bénéfice publié d’un exercice.
+
+Il serait tentant d’y voir immédiatement une astuce. Ce serait trop simple. Une durée plus longue peut refléter un meilleur taux d’utilisation, des logiciels capables de prolonger l’usage économique des machines ou une flotte suffisamment vaste pour redéployer du matériel ancien. À l’inverse, une nouvelle génération de puces, de mémoire ou de réseau peut rendre certains équipements économiquement dépassés alors qu’ils fonctionnent encore.
+
+Le fait le plus intéressant n’est donc pas que plusieurs groupes aient allongé leurs estimations. C’est qu’**Amazon a fait les deux** : prolonger la durée de ses serveurs en 2024, puis raccourcir celle d’une partie de ses serveurs et équipements réseau en 2025, en invoquant explicitement l’accélération technologique, particulièrement dans l’IA et le machine learning.
+
+## Le serveur de 10 000 dollars
+
+Prenons un serveur mis en service pour **10 000 dollars**, sans valeur résiduelle, amorti en ligne droite, c’est-à-dire avec la même charge chaque année. Sur quatre ans, la charge annuelle est de 2 500 dollars. Sur six ans, si cette durée avait été retenue dès l’origine, elle serait de 1 666,67 dollars.
+
+Mais les changements publiés par les groupes ne réécrivent pas le passé. Ils sont traités comme des **changements d’estimation** : la valeur comptable restant à amortir est répartie prospectivement sur la durée restante révisée. C’est une nuance décisive.
+
+Supposons donc que notre serveur ait déjà été amorti pendant deux années sur un plan de quatre ans. Il a accumulé 5 000 dollars d’amortissement et conserve une valeur nette de 5 000 dollars. Au début de la troisième année, l’entreprise estime désormais que sa durée totale sera de six ans. Il reste quatre années. La nouvelle charge annuelle devient **1 250 dollars**, et non 1 666,67 dollars.
+
+Pendant les années 3 et 4, le résultat opérationnel avant impôt est supérieur de 1 250 dollars par an à ce qu’il aurait été sous l’ancien plan. Puis, pendant les années 5 et 6, l’ancien plan n’aurait plus enregistré de charge tandis que le nouveau en comptabilise encore 1 250 dollars. Au terme des six ans, les 10 000 dollars ont bien été amortis dans les deux cas.
+
+<figure class="l0g-visual" id="serveur-10000">
+<svg style="width:100%;height:auto" class="l0g-svg-desktop" viewBox="0 0 1000 560" role="img" aria-labelledby="life-schedule-fr-desktop-title life-schedule-fr-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="life-schedule-fr-desktop-title">Un serveur de 10 000 dollars, deux calendriers</title>
+<desc id="life-schedule-fr-desktop-desc">Comparaison du plan initial sur quatre ans et de sa révision prospective à six ans après deux années.</desc>
+<defs><linearGradient id="life-schedule-fr-desktop-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="1000" height="560" rx="22" fill="url(#life-schedule-fr-desktop-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="750" text-anchor="start"><tspan x="44" y="52">UN ACTIF, DEUX HORLOGES</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start"><tspan x="44" y="87">Le coût ne change pas. Le moment de la charge, oui.</tspan></text>
+<rect x="44" y="112" width="912" height="62" rx="12" fill="#0b151e" stroke="#45d6c6" stroke-width="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="650" text-anchor="start"><tspan x="70" y="139">Cash au départ</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" text-anchor="start"><tspan x="70" y="162">− 10 000 $</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end"><tspan x="930" y="150">identique dans les deux plans</tspan></text>
+<rect x="44" y="195" width="430" height="272" rx="16" fill="#111a24" stroke="#ff718f" stroke-width="1"/><text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="68" y="229">PLAN D’ORIGINE</tspan></text>
+<rect x="526" y="195" width="430" height="272" rx="16" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="550" y="229">RÉVISION AU DÉBUT DE L’ANNÉE 3</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="21" font-weight="750" text-anchor="start"><tspan x="68" y="260">4 ans au total</tspan><tspan x="68" y="291">2 500 $ par an</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="68" y="333">Charge annuelle</tspan></text>
+<rect x="68" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="87" y="430">1</tspan></text>
+<rect x="126" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="145" y="430">2</tspan></text>
+<rect x="184" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="203" y="430">3</tspan></text>
+<rect x="242" y="354" width="38" height="58" rx="5" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="261" y="430">4</tspan></text>
+<rect x="300" y="410" width="38" height="2" rx="5" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="319" y="430">5</tspan></text>
+<rect x="358" y="410" width="38" height="2" rx="5" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="377" y="430">6</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="750" text-anchor="start"><tspan x="550" y="250">Après 2 ans : valeur nette 5 000 $</tspan><tspan x="550" y="279">4 années restantes → 1 250 $/an</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="550" y="333">Charge annuelle révisée</tspan></text>
+<rect x="550" y="354" width="38" height="58" rx="5" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="569" y="430">1</tspan></text>
+<rect x="608" y="354" width="38" height="58" rx="5" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="627" y="430">2</tspan></text>
+<rect x="666" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="685" y="430">3</tspan></text>
+<rect x="724" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="743" y="430">4</tspan></text>
+<rect x="782" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="801" y="430">5</tspan></text>
+<rect x="840" y="383" width="38" height="29" rx="5" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" text-anchor="middle"><tspan x="859" y="430">6</tspan></text>
+<line x1="44" y1="490" x2="956" y2="490" stroke="#21303d" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750" text-anchor="start"><tspan x="44" y="523">Années 3–4 : +1 250 $ de résultat avant impôt par an</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" text-anchor="end"><tspan x="956" y="523">Années 5–6 : la charge réapparaît</tspan></text>
+</svg>
+<svg style="width:100%;height:auto" class="l0g-svg-mobile" viewBox="0 0 390 940" role="img" aria-labelledby="life-schedule-fr-mobile-title life-schedule-fr-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="life-schedule-fr-mobile-title">Un serveur de 10 000 dollars, deux calendriers</title>
+<desc id="life-schedule-fr-mobile-desc">Comparaison mobile du plan initial et de sa révision prospective.</desc>
+<defs><linearGradient id="life-schedule-fr-mobile-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="390" height="940" rx="22" fill="url(#life-schedule-fr-mobile-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" text-anchor="start"><tspan x="22" y="38">UN ACTIF, DEUX HORLOGES</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="780" text-anchor="start"><tspan x="22" y="72">Le coût ne change pas.</tspan><tspan x="22" y="103">Le moment de la charge, oui.</tspan></text>
+<rect x="22" y="132" width="346" height="78" rx="12" fill="#0b151e" stroke="#45d6c6" stroke-width="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="650" text-anchor="start"><tspan x="42" y="160">Cash au départ</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" text-anchor="start"><tspan x="42" y="190">− 10 000 $</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="348" y="178">même sortie</tspan></text>
+<rect x="22" y="232" width="346" height="260" rx="16" fill="#111a24" stroke="#ff718f" stroke-width="1"/><text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" text-anchor="start"><tspan x="42" y="266">PLAN D’ORIGINE</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="750" text-anchor="start"><tspan x="42" y="308">4 ans au total</tspan><tspan x="42" y="337">2 500 $ par an</tspan></text>
+<rect x="42" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="57.5" y="456">1</tspan></text>
+<rect x="91" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="106.5" y="456">2</tspan></text>
+<rect x="140" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="155.5" y="456">3</tspan></text>
+<rect x="189" y="376" width="31" height="54" rx="4" fill="#ff718f" opacity="1"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="204.5" y="456">4</tspan></text>
+<rect x="238" y="428" width="31" height="2" rx="4" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="253.5" y="456">5</tspan></text>
+<rect x="287" y="428" width="31" height="2" rx="4" fill="#ff718f" opacity="0.18"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="302.5" y="456">6</tspan></text>
+<rect x="22" y="518" width="346" height="318" rx="16" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" text-anchor="start"><tspan x="42" y="552">RÉVISION AU DÉBUT</tspan><tspan x="42" y="570">DE L’ANNÉE 3</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="750" text-anchor="start"><tspan x="42" y="612">Valeur nette : 5 000 $</tspan><tspan x="42" y="639">4 ans restants : 1 250 $/an</tspan></text>
+<rect x="42" y="704" width="31" height="54" rx="4" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="57.5" y="784">1</tspan></text>
+<rect x="91" y="704" width="31" height="54" rx="4" fill="#ff718f"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="106.5" y="784">2</tspan></text>
+<rect x="140" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="155.5" y="784">3</tspan></text>
+<rect x="189" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="204.5" y="784">4</tspan></text>
+<rect x="238" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="253.5" y="784">5</tspan></text>
+<rect x="287" y="731" width="31" height="27" rx="4" fill="#45d6c6"/><text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="650" text-anchor="middle"><tspan x="302.5" y="784">6</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="22" y="870">Années 3–4 : résultat avant impôt</tspan><tspan x="22" y="892">+1 250 $ par an, puis charge en 5–6.</tspan></text>
+</svg>
+<figcaption>Lecture : exemple l0g, amortissement linéaire, valeur résiduelle nulle, actif mis en service immédiatement. Une modification d’estimation est appliquée aux périodes futures ; elle ne réécrit pas les deux premières années.</figcaption>
+</figure>
+
+La démonstration isole volontairement une seule machine. Dans les comptes d’un hyperscaler, l’effet agrégé dépend de la valeur nette de milliers d’actifs déjà en service, de leur âge, des dates de mise en service, des acquisitions de l’année, des retraits anticipés, des dépréciations et parfois de valeurs résiduelles. Diviser simplement le capex annuel par quatre ou six ne reconstitue donc pas la charge publiée.
+
+<ServerUsefulLifeSimulator lang="fr" />
+
+## Ce que les filings établissent
+
+Les quatre groupes ne publient pas la même catégorie d’actifs, n’ont pas le même exercice et n’ont pas modifié leurs estimations au même moment. Les montants suivants sont donc des **effets propres à chaque entreprise et à chaque période**, pas les morceaux d’un « total Big Tech ».
+
+| Groupe | Changement publié | Périmètre décrit | Effet communiqué pour l’exercice |
+|---|---|---|---|
+| Microsoft | 4 à 6 ans, à compter de l’exercice 2023 | Serveurs et équipements réseau | Amortissement inférieur de 3,7 Md$ ; résultat net supérieur de 3,0 Md$ |
+| Alphabet | Serveurs : 4 à 6 ans ; certains équipements réseau : 5 à 6 ans, à compter de 2023 | Serveurs et certains équipements réseau | Amortissement inférieur de 3,9 Md$ ; résultat net supérieur de 3,0 Md$ |
+| Amazon | 5 à 6 ans, à compter de 2024 | Serveurs | Amortissement inférieur de 3,2 Md$ ; résultat net supérieur de 2,5 Md$ |
+| Meta | Majorité portée à 5,5 ans, à compter de 2025 | Serveurs et actifs réseau | Amortissement inférieur de 2,92 Md$ ; résultat net supérieur de 2,59 Md$ |
+| Amazon | 6 à 5 ans, à compter de 2025 | Une partie des serveurs et équipements réseau | Amortissement supérieur de 1,4 Md$ ; résultat net inférieur de 1,0 Md$ |
+
+<figure class="l0g-visual" id="changements-big-tech">
+<svg style="width:100%;height:auto" class="l0g-svg-desktop" viewBox="0 0 1000 625" role="img" aria-labelledby="disclosures-fr-desktop-title disclosures-fr-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="disclosures-fr-desktop-title">Quatre changements publiés, quatre périmètres différents</title>
+<desc id="disclosures-fr-desktop-desc">Chronologie de changements de durées d’utilité chez Microsoft, Alphabet, Amazon et Meta, avec effets comptables publiés.</desc>
+<defs><linearGradient id="disclosures-fr-desktop-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="1000" height="625" rx="22" fill="url(#disclosures-fr-desktop-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="44" y="52">FILINGS SEC</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="780" text-anchor="start"><tspan x="44" y="87">Quatre changements publiés, quatre périmètres différents</tspan></text>
+<rect x="44" y="116" width="430" height="190" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="66" y="147">Microsoft</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="452" y="147">juil. 2022</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="850" text-anchor="start"><tspan x="66" y="183">4 → 6 ans</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="66" y="216">Serveurs + équipements réseau</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="66" y="251">Ex. 2023 : −3,7 Md$ d’amortissement</tspan></text>
+<rect x="526" y="116" width="430" height="190" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="548" y="147">Alphabet</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="934" y="147">janv. 2023</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="548" y="183">serveurs 4 → 6 ans</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="548" y="216">certains actifs réseau 5 → 6 ans</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="548" y="251">2023 : −3,9 Md$ d’amortissement</tspan></text>
+<rect x="44" y="332" width="430" height="220" rx="15" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="66" y="363">Amazon</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="452" y="363">janv. 2024 / janv. 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="850" text-anchor="start"><tspan x="66" y="399">5 → 6 ; puis 6 → 5</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="66" y="432">Serveurs ; puis une partie serveurs + réseau</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="66" y="467">2024 : −3,2 Md$ ; 2025 : +1,4 Md$</tspan></text>
+<rect x="526" y="332" width="430" height="220" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="548" y="363">Meta</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="end"><tspan x="934" y="363">janv. 2025</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="850" text-anchor="start"><tspan x="548" y="399">majorité → 5,5 ans</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="548" y="432">Serveurs + actifs réseau ; pas un GPU isolé</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="548" y="467">2025 : −2,92 Md$ d’amortissement</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="44" y="592">Ne pas additionner : exercices, catégories d’actifs et bases fiscales diffèrent.</tspan></text>
+</svg>
+<svg style="width:100%;height:auto" class="l0g-svg-mobile" viewBox="0 0 390 1090" role="img" aria-labelledby="disclosures-fr-mobile-title disclosures-fr-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="disclosures-fr-mobile-title">Quatre changements publiés, quatre périmètres différents</title>
+<desc id="disclosures-fr-mobile-desc">Chronologie de changements de durées d’utilité chez Microsoft, Alphabet, Amazon et Meta, avec effets comptables publiés.</desc>
+<defs><linearGradient id="disclosures-fr-mobile-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="390" height="1090" rx="22" fill="url(#disclosures-fr-mobile-grad)"/>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" text-anchor="start"><tspan x="22" y="38">FILINGS SEC</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="780" text-anchor="start"><tspan x="22" y="70">Quatre changements publiés,</tspan><tspan x="22" y="99">quatre périmètres différents</tspan></text>
+<rect x="22" y="142" width="346" height="190" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="173">Microsoft</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="173">juil. 2022</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="42" y="214">4 → 6 ans</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="249">Serveurs + réseau</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="292">Ex. 2023 : −3,7 Md$</tspan></text>
+<rect x="22" y="352" width="346" height="205" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="383">Alphabet</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="383">janv. 2023</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="21" font-weight="850" text-anchor="start"><tspan x="42" y="424">serveurs 4 → 6 ans</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="459">certains actifs réseau 5 → 6 ans</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="502">2023 : −3,9 Md$</tspan></text>
+<rect x="22" y="577" width="346" height="220" rx="15" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="608">Amazon</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="608">2024 / 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="42" y="649">5 → 6 ; puis 6 → 5</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="684">Le retour concerne une partie du parc</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="727">−3,2 Md$ ; puis +1,4 Md$</tspan></text>
+<rect x="22" y="817" width="346" height="205" rx="15" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="start"><tspan x="42" y="848">Meta</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="end"><tspan x="348" y="848">janv. 2025</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="850" text-anchor="start"><tspan x="42" y="889">majorité → 5,5 ans</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="924">Serveurs + actifs réseau</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="start"><tspan x="42" y="967">2025 : −2,92 Md$</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="750" text-anchor="start"><tspan x="22" y="1050">Ne pas additionner : périodes et périmètres</tspan><tspan x="22" y="1070">ne sont pas comparables.</tspan></text>
+</svg>
+<figcaption>Sources : [Microsoft, exercice 2023](https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm) ; [Alphabet, 2023](https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm) ; [Amazon, 2024](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm) et [2025](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm) ; [Meta, 2025](https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm). Les effets publiés ne sont pas additionnables.</figcaption>
+</figure>
+
+### Microsoft : le logiciel prolonge l’infrastructure
+
+Microsoft a indiqué avoir terminé en juillet 2022 une évaluation de la durée d’utilité de ses serveurs et équipements réseau. Le groupe a fait passer l’estimation de quatre à six ans. Sa justification associait les investissements logiciels, qui amélioraient l’efficacité d’exploitation de ces équipements, et les progrès technologiques.
+
+Pour l’exercice clos le 30 juin 2023, Microsoft a déclaré que ce changement avait réduit la charge d’amortissement de **3,7 milliards de dollars**, augmenté le résultat opérationnel du même montant et relevé le résultat net de **3,0 milliards**. L’effet de 2023 ne décrit pas seulement les machines achetées cette année-là : le filing précise que l’estimation s’applique à la valeur comptable des équipements existants au début de l’exercice ainsi qu’aux actifs mis en service ensuite. [Microsoft, Form 10-K, exercice 2023](https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm).
+
+Ce motif est économiquement plausible. Le logiciel peut consolider des charges de travail, améliorer l’ordonnancement et rendre une flotte plus productive. Mais le filing ne fournit pas la durée par modèle de processeur, par accélérateur ou par génération de réseau. Il prouve un changement d’estimation sur une catégorie comptable ; il ne démontre pas que chaque machine physique peut tourner six ans dans le même rôle.
+
+### Alphabet : même direction, périmètre légèrement différent
+
+Alphabet a effectué son changement en janvier 2023. La durée estimée de ses serveurs est passée de quatre à six ans ; celle de **certains** équipements réseau, de cinq à six ans. Sur l’exercice 2023, le groupe a chiffré la baisse d’amortissement à **3,9 milliards de dollars** et l’augmentation du résultat net à **3,0 milliards**. [Alphabet, Form 10-K, exercice 2023](https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm).
+
+Le mot « certains » compte. Même lorsqu’ils aboutissent au même chiffre de six ans, Microsoft et Alphabet ne décrivent pas nécessairement les mêmes ensembles d’actifs. Les méthodes de regroupement, les profils d’âge et les dates de mise en service ne sont pas publics avec assez de détail pour comparer directement l’agressivité de leurs estimations.
+
+### Amazon : d’abord un an de plus
+
+À compter du 1er janvier 2024, Amazon a porté de cinq à six ans la durée estimée de ses serveurs. Pour l’exercice 2024, l’entreprise a communiqué une réduction de **3,2 milliards de dollars** de la charge d’amortissement et une augmentation de **2,5 milliards** du résultat net. [Amazon, Form 10-K, exercice 2024](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm).
+
+Cette publication établit l’effet comptable. Elle ne permet pas de transformer le montant en estimation du nombre de machines concernées : le prix d’acquisition, l’âge moyen, les mises en service et les retraits du parc ne sont pas détaillés à ce niveau.
+
+### Meta : 5,5 ans pour la majorité du parc concerné
+
+Meta a annoncé qu’une évaluation achevée en janvier 2025 avait porté à **cinq ans et demi** la durée estimée de la majorité de ses serveurs et actifs réseau. L’entreprise a comptabilisé le changement prospectivement à partir du 1er janvier 2025.
+
+Pour l’exercice 2025, Meta a chiffré la baisse de l’amortissement à **2,92 milliards de dollars** et l’effet positif sur le résultat net à **2,59 milliards**. [Meta, Form 10-K, exercice 2025](https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm).
+
+Le filing ne présente pas ce changement comme le passage uniforme d’un ancien nombre unique à 5,5 ans pour chaque appareil. Il parle de la « majorité » d’une catégorie regroupant serveurs et actifs réseau. Donner à cette ligne le nom de « durée des GPU de Meta » serait donc faux.
+
+## Amazon retourne l’horloge
+
+À partir du 1er janvier 2025, Amazon a raccourci de six à cinq ans la durée d’utilité d’**une partie** de ses serveurs et équipements réseau. La justification mérite d’être citée avec précision, mais sans la généraliser : l’entreprise relie cette décision à l’accélération du développement technologique, « particulièrement dans l’intelligence artificielle et le machine learning ».
+
+Sur l’exercice 2025, ce raccourcissement a augmenté la charge d’amortissement de **1,4 milliard de dollars** et réduit le résultat net de **1,0 milliard**. [Amazon, Form 10-K, exercice 2025](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm).
+
+<figure class="l0g-visual" id="amazon-retournement">
+<svg style="width:100%;height:auto" class="l0g-svg-desktop" viewBox="0 0 1000 480" role="img" aria-labelledby="amazon-turn-fr-desktop-title amazon-turn-fr-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="amazon-turn-fr-desktop-title">Amazon : la même entreprise, deux directions</title>
+<desc id="amazon-turn-fr-desktop-desc">Amazon a allongé la durée de ses serveurs en 2024 puis raccourci celle d’une partie de ses serveurs et équipements réseau en 2025.</desc>
+<defs><linearGradient id="amazon-turn-fr-desktop-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="1000" height="480" rx="22" fill="url(#amazon-turn-fr-desktop-grad)"/>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="start"><tspan x="44" y="52">LE CONTRE-EXEMPLE DÉCISIF</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="780" text-anchor="start"><tspan x="44" y="87">Amazon : la même entreprise, deux directions</tspan></text>
+<rect x="44" y="126" width="385" height="246" rx="17" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><rect x="68" y="151" width="112" height="30" rx="15" fill="#45d6c618" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle"><tspan x="124.0" y="171">JAN. 2024</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="850" text-anchor="start"><tspan x="68" y="219">5 → 6 ans</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" text-anchor="start"><tspan x="68" y="258">Périmètre publié : serveurs</tspan><tspan x="68" y="284">Amortissement 2024 : −3,2 Md$</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="68" y="329">Une étude interne soutient</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="68" y="350">une durée plus longue.</tspan></text>
+<line x1="452" y1="245" x2="548" y2="245" stroke="#f2ba55" stroke-width="4"/><path d="M540 235 L558 245 L540 255" fill="#f2ba55"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" text-anchor="middle"><tspan x="500" y="219">12 mois</tspan></text>
+<rect x="571" y="126" width="385" height="246" rx="17" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><rect x="595" y="151" width="112" height="30" rx="15" fill="#f2ba5518" stroke="#f2ba55" stroke-width="1"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle"><tspan x="651.0" y="171">JAN. 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="850" text-anchor="start"><tspan x="595" y="219">6 → 5 ans</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" text-anchor="start"><tspan x="595" y="258">Une partie des serveurs + réseau</tspan><tspan x="595" y="284">Amortissement 2025 : +1,4 Md$</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" text-anchor="start"><tspan x="595" y="318">Motif explicite : rythme technologique</tspan><tspan x="595" y="339">accéléré, surtout IA et machine learning.</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start"><tspan x="44" y="425">Ce retournement ne prouve pas que tout le matériel d’IA vieillit plus vite : le filing parle d’une partie du parc.</tspan></text>
+</svg>
+<svg style="width:100%;height:auto" class="l0g-svg-mobile" viewBox="0 0 390 780" role="img" aria-labelledby="amazon-turn-fr-mobile-title amazon-turn-fr-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="amazon-turn-fr-mobile-title">Amazon : la même entreprise, deux directions</title>
+<desc id="amazon-turn-fr-mobile-desc">Amazon a allongé la durée de ses serveurs en 2024 puis raccourci celle d’une partie de ses serveurs et équipements réseau en 2025.</desc>
+<defs><linearGradient id="amazon-turn-fr-mobile-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1017"/><stop offset="1" stop-color="#101a25"/></linearGradient></defs>
+<rect width="390" height="780" rx="22" fill="url(#amazon-turn-fr-mobile-grad)"/>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" text-anchor="start"><tspan x="22" y="38">LE CONTRE-EXEMPLE</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="780" text-anchor="start"><tspan x="22" y="72">Amazon : la même entreprise,</tspan><tspan x="22" y="101">deux directions</tspan></text>
+<rect x="22" y="137" width="346" height="230" rx="16" fill="#111a24" stroke="#45d6c6" stroke-width="1"/><rect x="42" y="158" width="104" height="28" rx="14" fill="#45d6c618" stroke="#45d6c6" stroke-width="1"/><text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle"><tspan x="94.0" y="178">JAN. 2024</tspan></text>
+<text fill="#45d6c6" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="850" text-anchor="start"><tspan x="42" y="226">5 → 6 ans</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="650" text-anchor="start"><tspan x="42" y="270">Serveurs</tspan><tspan x="42" y="295">2024 : −3,2 Md$ d’amortissement</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="334">Durée allongée après étude interne.</tspan></text>
+<line x1="195" y1="380" x2="195" y2="421" stroke="#f2ba55" stroke-width="4"/><path d="M185 413 L195 431 L205 413" fill="#f2ba55"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="750" text-anchor="start"><tspan x="215" y="407">12 mois</tspan></text>
+<rect x="22" y="444" width="346" height="250" rx="16" fill="#111a24" stroke="#f2ba55" stroke-width="1"/><rect x="42" y="465" width="104" height="28" rx="14" fill="#f2ba5518" stroke="#f2ba55" stroke-width="1"/><text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle"><tspan x="94.0" y="485">JAN. 2025</tspan></text>
+<text fill="#f2ba55" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="850" text-anchor="start"><tspan x="42" y="533">6 → 5 ans</tspan></text>
+<text fill="#edf4fa" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="650" text-anchor="start"><tspan x="42" y="577">Une partie des serveurs + réseau</tspan><tspan x="42" y="602">2025 : +1,4 Md$ d’amortissement</tspan></text>
+<text fill="#a9bac9" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="start"><tspan x="42" y="645">Motif : accélération technologique,</tspan><tspan x="42" y="664">surtout IA et machine learning.</tspan></text>
+<text fill="#ff718f" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start"><tspan x="22" y="735">Le filing ne permet pas d’étendre ce constat</tspan><tspan x="22" y="755">à tout le matériel d’IA.</tspan></text>
+</svg>
+<figcaption>Source : Amazon, Forms 10-K pour les exercices clos le 31 décembre [2024](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm) et [2025](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm). Le raccourcissement de 2025 concerne une partie des serveurs et équipements réseau.</figcaption>
+</figure>
+
+Ce retournement produit deux enseignements.
+
+Le premier est comptable : une estimation n’est pas un engagement irréversible. Si l’usage attendu change, la valeur restant au bilan doit être répartie sur une période différente. Une durée peut être allongée puis raccourcie sans retraiter les années déjà publiées.
+
+Le second est industriel : parler d’« un serveur » comme d’un objet homogène masque des générations, des fonctions et des contraintes très différentes. Un matériel généraliste peut rester utile pour du stockage, du calcul interne ou des charges moins exigeantes alors qu’un équipement spécialisé devient insuffisant pour un modèle plus gourmand en mémoire ou en bande passante. Inversement, un accélérateur qui n’est plus optimal pour l’entraînement peut encore avoir une valeur économique ailleurs. Les filings étudiés ne quantifient toutefois pas ces redéploiements. Ils ne permettent donc pas de transformer ce mécanisme plausible en explication mesurée du changement.
+
+<div class="l0g-caveat">
+<strong>Ce qui est établi :</strong> Amazon a explicitement relié le raccourcissement d’une partie de son parc au rythme technologique, en mentionnant l’IA et le machine learning. <strong>Ce qui ne l’est pas :</strong> que tous les GPU d’IA de toutes les entreprises deviennent obsolètes plus vite, ou que le changement concerne exclusivement des accélérateurs.
+</div>
+
+## Trois vies superposées
+
+La durée d’utilité comptable n’est pas la durée maximale pendant laquelle un appareil peut rester allumé. Pour comprendre les divergences entre entreprises, et parfois au sein de la même entreprise, il faut séparer trois horloges.
+
+### La vie physique
+
+La machine fonctionne encore. Ses composants n’ont pas atteint un niveau de panne ou de dégradation rendant l’exploitation impossible. Cette durée intéresse les équipes de maintenance, mais elle ne suffit pas à fixer l’amortissement.
+
+### La vie économique
+
+Le serveur fournit encore les avantages attendus à un coût acceptable. L’électricité, le refroidissement, l’espace, la performance, la mémoire et le réseau comptent autant que la capacité à démarrer. Une machine peut être physiquement saine mais économiquement dépassée ; elle peut aussi être déplacée vers une tâche moins exigeante et conserver une valeur.
+
+### La vie comptable
+
+C’est l’estimation de la période pendant laquelle l’entreprise s’attend à consommer les avantages économiques de l’actif. Cette estimation détermine la répartition de la charge. Lorsqu’elle change, les groupes étudiés la comptabilisent prospectivement : la valeur restante est réallouée aux périodes futures.
+
+L’audit ne transforme pas cette estimation en certitude physique. La norme du Public Company Accounting Oversight Board sur les estimations demande à l’auditeur d’évaluer leur caractère raisonnable, la méthode, les données, les hypothèses et le risque de biais de la direction. Elle ne fournit pas une durée universelle des serveurs. [PCAOB, AS 2501, *Auditing Accounting Estimates*](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2501).
+
+Cette distinction protège aussi contre un autre raccourci : deux entreprises peuvent choisir six ans sans avoir la même stratégie. L’une peut exploiter plus longtemps du matériel généraliste ; l’autre compter sur le redéploiement interne ; une troisième peut avoir une structure de flotte où les composants remplacés rapidement représentent une fraction différente de la catégorie comptable.
+
+## Où passe le bénéfice ?
+
+Lorsqu’une entreprise achète et met en service un équipement, elle enregistre généralement une sortie de trésorerie d’investissement et inscrit un actif au bilan. L’amortissement répartit ensuite le montant amortissable dans le compte de résultat. Il s’agit d’une charge sans nouveau décaissement au moment où elle est comptabilisée.
+
+Une durée plus longue produit donc plusieurs effets simultanés :
+
+- la charge d’amortissement de la période baisse, toutes choses égales par ailleurs ;
+- le résultat opérationnel et le résultat avant impôt augmentent d’autant ;
+- le résultat net augmente après prise en compte de l’effet fiscal comptable publié par l’entreprise ;
+- la valeur nette des immobilisations reste plus élevée au bilan ;
+- le décaissement initial n’est pas annulé.
+
+### Le calendrier du cash
+
+Dans un tableau de flux établi selon la méthode indirecte, l’amortissement est réintégré au résultat net pour calculer les flux opérationnels parce qu’il n’est pas un paiement de la période. L’achat de l’équipement figure, lui, parmi les flux d’investissement. Modifier la durée n’efface donc pas le capex déjà payé.
+
+Cela ne signifie pas que chaque ligne de trésorerie soit éternellement immunisée. Les règles fiscales peuvent suivre un calendrier distinct de l’amortissement comptable, les impôts différés évoluent, et la classification de contrats de location peut compliquer la comparaison. La conclusion robuste est plus étroite : **le gain de résultat communiqué dans ces changements d’estimation n’est pas un remboursement du serveur**.
+
+### La lecture de l’EBITDA
+
+L’EBITDA, résultat avant intérêts, impôts, dépréciations et amortissements, exclut par construction la charge étudiée. Une baisse de l’amortissement ne l’améliore donc pas mécaniquement. Mais les définitions ajustées varient selon les entreprises et les analystes. Il faut vérifier le rapprochement publié plutôt que supposer qu’un indicateur portant ce nom est parfaitement standardisé.
+
+### La lecture du free cash-flow
+
+Pour un free cash-flow défini comme flux opérationnels moins achats d’immobilisations, allonger la durée comptable n’allège pas directement le montant de capex soustrait. C’est précisément pourquoi un groupe peut afficher, la même année, un bénéfice opérationnel soutenu par une charge d’amortissement plus faible et une trésorerie comprimée par des investissements élevés. Il n’y a pas contradiction : les deux mesures répondent à des questions différentes.
+
+## Est-ce une manière de gonfler les bénéfices ?
+
+**Oui, au sens mécanique :** lorsqu’une durée est allongée, le bénéfice comptable des premières périodes est plus élevé qu’il ne l’aurait été avec l’ancienne estimation. Les montants publiés par Microsoft, Alphabet, Amazon et Meta le prouvent directement.
+
+**Non, si cette phrase veut dire que le bénéfice serait nécessairement fictif ou frauduleux.** Une estimation peut changer parce que l’expérience d’exploitation a changé. Les groupes disposent de données sur les pannes, les performances, l’utilisation et les retraits que le public ne voit pas. Les normes exigent justement que l’estimation soit révisée lorsque de nouvelles informations modifient la période d’avantages attendus.
+
+La bonne question n’est donc pas « comptabilité ou réalité ? ». Une estimation comptable est censée traduire une réalité économique incertaine. La question est : **quelles données rendent la nouvelle estimation plus probable que l’ancienne ?**
+
+Les filings donnent une réponse partielle. Microsoft mentionne les gains d’efficacité logiciels et les progrès technologiques. Amazon, un an après avoir prolongé ses serveurs, invoque l’accélération technologique pour raccourcir une partie du parc. Meta et Alphabet publient l’effet chiffré et le périmètre agrégé. Aucun de ces documents ne fournit un inventaire par génération de GPU, taux d’utilisation, consommation électrique ou valeur de seconde vie.
+
+Un investisseur ne devrait donc ni ignorer l’effet, ni le traiter automatiquement comme une manipulation. Il doit le replacer dans un ensemble plus large : croissance des acquisitions d’immobilisations, amortissement total, retraits anticipés, dépréciations, engagements de location et évolution de la valeur brute et nette des équipements.
+
+## Le piège du « total Big Tech »
+
+Additionner 3,7 milliards chez Microsoft, 3,9 milliards chez Alphabet, 3,2 milliards chez Amazon et 2,92 milliards chez Meta donnerait un chiffre impressionnant. Il serait aussi analytiquement trompeur.
+
+Les périodes ne coïncident pas : exercice clos en juin 2023 pour Microsoft, année civile 2023 pour Alphabet, 2024 pour Amazon, 2025 pour Meta. Les catégories ne coïncident pas davantage. Certaines comprennent tout le réseau, d’autres seulement certains équipements ; Meta parle d’une majorité ; Amazon distingue son extension générale des serveurs et le raccourcissement ultérieur d’une partie des serveurs et du réseau.
+
+Les effets sur le résultat net incorporent en outre des taux d’impôt et des positions fiscales propres à chaque groupe. Même la baisse d’amortissement n’est pas une mesure de capex « économisé » : elle dépend de la valeur comptable du parc au moment du changement.
+
+Le chiffre honnête n’est donc pas une somme. C’est une conclusion : **dans quatre groupes, une modification de durée d’utilité a suffi à déplacer plusieurs milliards de dollars de charge sur un seul exercice publié.**
+
+## Les zones d’ombre des comptes
+
+Les documents primaires permettent d’établir les décisions, leurs périmètres comptables et leurs effets chiffrés. Ils laissent ouvertes des questions essentielles :
+
+| Question | Ce que les filings permettent de répondre |
+|---|---|
+| Quelle est la durée physique d’un GPU précis ? | Pas de réponse : les catégories sont agrégées. |
+| Quelle part du parc sert directement à l’IA ? | Pas de ventilation cohérente entre groupes. |
+| Quelle est la valeur de revente ou de redéploiement après cinq ans ? | Généralement non publiée à ce niveau. |
+| Combien d’équipements seront retirés avant leur durée estimée ? | Inconnu avant les décisions de retrait ou de dépréciation. |
+| Les durées sont-elles comparables entre entreprises ? | Seulement avec de fortes réserves sur le périmètre et l’âge du parc. |
+| L’IA raccourcit-elle ou prolonge-t-elle la vie économique moyenne ? | Les données publiques sont compatibles avec les deux mécanismes ; elles ne tranchent pas pour l’ensemble du secteur. |
+
+Ce dernier point est le plus important. L’IA peut accélérer l’obsolescence d’équipements de pointe, mais aussi accroître la demande pour des machines plus anciennes affectées à l’inférence, au prétraitement ou à des tâches internes. Le bilan net dépend du prix de l’électricité, du coût de maintenance, des logiciels, de la disponibilité des composants récents et de la capacité de redéploiement. Les filings ne donnent pas encore une mesure sectorielle permettant de départager ces forces.
+
+## La grille de lecture utile
+
+Pour suivre le sujet sans se laisser hypnotiser par un seul chiffre, il faut lire plusieurs lignes ensemble :
+
+| Indicateur | Question posée |
+|---|---|
+| Achats d’immobilisations payés en cash | Combien a réellement été dépensé pendant la période ? |
+| Valeur brute des immobilisations | Quelle taille historique a atteint le parc avant amortissement ? |
+| Amortissement de la période | Quelle part du coût est comptabilisée dans le résultat de la période ? |
+| Valeur nette des immobilisations | Combien de coût non encore passé en charge reste au bilan ? |
+| Durées d’utilité et changements d’estimation | Quelle horloge la direction applique-t-elle ? |
+| Dépréciations et retraits anticipés | Quels actifs n’ont pas tenu la trajectoire attendue ? |
+| Engagements de location et d’achat | Quelle infrastructure future n’apparaît pas encore entièrement dans le capex payé ? |
+
+Cette lecture a une limite : plusieurs groupes ne ventilent pas suffisamment leurs équipements pour reconstruire la cohorte d’âge ou la durée moyenne pondérée. L’absence de précision n’autorise pas à inventer ce qui manque. Elle signale simplement que le marché valorise des actifs dont la durée économique exacte reste partiellement privée.
+
+Pour replacer ces actifs dans leur structure de financement, notre analyse de [la dette derrière l’IA](/posts/la-dette-derriere-l-ia-spv-obligations-credit-prive/) examine les SPV, les obligations et le crédit privé mobilisés par le boom des data centers.
+
+## Une horloge à plusieurs milliards
+
+Revenons au serveur de 10 000 dollars. Prolonger sa durée après deux ans ne rend pas 2 500 dollars à l’entreprise. Cela réduit la charge des deux années suivantes, puis la réintroduit plus tard. À l’échelle d’un parc géant et en croissance, les générations se superposent : les nouveaux achats alimentent le bilan pendant que les anciennes cohortes continuent d’être amorties. Cette superposition peut masquer le retour futur de la charge, sans le supprimer.
+
+Amazon fournit ici le meilleur garde-fou contre les conclusions faciles. La même entreprise a estimé en 2024 que ses serveurs pouvaient vivre comptablement un an de plus, puis a raccourci en 2025 la durée d’une partie de ses serveurs et équipements réseau, en citant l’accélération technologique, notamment dans l’IA. Les deux décisions peuvent être cohérentes si elles concernent des parties différentes de la flotte. Elles montrent surtout qu’une « durée de serveur » n’est pas une constante de la nature.
+
+Ce qui est établi tient en peu de mots : les estimations ont un effet matériel sur les bénéfices publiés. Ce qui est probable, mais non mesuré publiquement, est que l’hétérogénéité des usages et des générations contribue à une partie des divergences. Ce qui reste inconnu est la valeur économique qu’auront, en 2030 ou 2031, les équipements en cours d’installation.
+
+La dépense d’IA est visible dès le chèque. Son coût économique final ne le sera que lorsque l’on saura combien de temps les machines auront réellement produit un service rentable, et combien auront quitté le bilan avant l’heure annoncée.
+
+## Sources primaires et méthode
+
+<table class="source-ledger">
+<thead><tr><th>Document</th><th>Période statistique</th><th>Usage dans l’article</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm">Microsoft, Form 10-K 2023</a></td><td>Exercice clos le 30 juin 2023</td><td>Passage de 4 à 6 ans, justification, effets sur amortissement et résultat.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm">Alphabet, Form 10-K 2023</a></td><td>Exercice clos le 31 décembre 2023</td><td>Serveurs de 4 à 6 ans, certains équipements réseau de 5 à 6 ans, effets publiés.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm">Amazon, Form 10-K 2024</a></td><td>Exercice clos le 31 décembre 2024</td><td>Passage des serveurs de 5 à 6 ans et effet 2024.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm">Amazon, Form 10-K 2025</a></td><td>Exercice clos le 31 décembre 2025</td><td>Raccourcissement d’une partie du parc, motif IA/ML et effet 2025.</td></tr>
+<tr><td><a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm">Meta, Form 10-K 2025</a></td><td>Exercice clos le 31 décembre 2025</td><td>Majorité portée à 5,5 ans et effets 2025.</td></tr>
+<tr><td><a href="https://pcaobus.org/oversight/standards/auditing-standards/details/AS2501">PCAOB AS 2501</a></td><td>Norme d’audit en vigueur</td><td>Cadre d’évaluation des estimations comptables et du biais potentiel.</td></tr>
+</tbody>
+</table>
+
+<div class="l0g-method">
+<strong>Méthode.</strong> Les montants sont repris dans la devise et la période des filings. Ils ne sont pas annualisés, convertis ni additionnés. Le simulateur utilise un actif fictif de 10 000 dollars, une valeur résiduelle nulle et des années pleines ; il sert à expliquer la mécanique prospective, pas à reconstituer le parc d’une entreprise.
+</div>
