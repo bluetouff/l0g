@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
-import { readFile, readdir, stat } from 'node:fs/promises';
+import { open, readFile, readdir } from 'node:fs/promises';
 import { extname, join, relative, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
@@ -16,6 +16,7 @@ const CONTENT_ROOTS = [
   'src/content/guides-en',
 ];
 const CONTENT_EXTENSIONS = new Set(['.md', '.mdx']);
+const MAX_SECRET_SCAN_BYTES = 5 * 1024 * 1024;
 const TRACKING_PARAMETERS = /^(?:utm_.+|fbclid|gclid|dclid|msclkid|mc_cid|mc_eid|vero_conv|vero_id|ref_src|ref_url)$/iu;
 const CONTEMPORARY = /\b(?:actuellement|aujourd['’]hui|à ce jour|courant|current(?:ly)?|today|latest|at present|as of today)\b/giu;
 const CAUSAL = /\b(?:provoque|entra[iî]ne|explique|conduit à|en raison de|grâce à|à cause de|causes?|drives?|leads? to|results? in|because of|due to)\b/giu;
@@ -579,23 +580,29 @@ async function loadRecord(path) {
 async function auditChangedSecrets(paths) {
   checked('Secrets');
   for (const path of paths) {
-    let metadata;
+    let handle;
     try {
-      metadata = await stat(path);
-    } catch {
-      continue;
+      handle = await open(path, 'r');
+    } catch (error) {
+      if (error?.code === 'ENOENT' || error?.code === 'ENOTDIR') continue;
+      throw error;
     }
-    if (!metadata.isFile() || metadata.size > 5 * 1024 * 1024) continue;
-    const source = await readFile(path);
-    if (source.includes(0)) continue;
-    const text = source.toString('utf8');
-    for (const [name, pattern] of SECRET_RULES) {
-      pattern.lastIndex = 0;
-      if (pattern.test(text)) fail('Secrets', `${displayPath(path)}: potential ${name}; value not displayed`);
-    }
-    const name = displayPath(path);
-    if (/^src\/.*\.(?:astro|[cm]?[jt]sx?)$/u.test(name) && /\bconsole\.(?:debug|log)\s*\(|\bdebugger\s*;/u.test(text)) {
-      warn('Secrets', `${name}: possible debug output found in application code`);
+    try {
+      const metadata = await handle.stat();
+      if (!metadata.isFile() || metadata.size > MAX_SECRET_SCAN_BYTES) continue;
+      const source = await handle.readFile();
+      if (source.length > MAX_SECRET_SCAN_BYTES || source.includes(0)) continue;
+      const text = source.toString('utf8');
+      for (const [name, pattern] of SECRET_RULES) {
+        pattern.lastIndex = 0;
+        if (pattern.test(text)) fail('Secrets', `${displayPath(path)}: potential ${name}; value not displayed`);
+      }
+      const name = displayPath(path);
+      if (/^src\/.*\.(?:astro|[cm]?[jt]sx?)$/u.test(name) && /\bconsole\.(?:debug|log)\s*\(|\bdebugger\s*;/u.test(text)) {
+        warn('Secrets', `${name}: possible debug output found in application code`);
+      }
+    } finally {
+      await handle.close();
     }
   }
 }
@@ -688,6 +695,12 @@ function runSelfTest() {
   const externalSvg = '<svg viewBox="0 0 100 50" style="width:100%;height:auto"><image href="https://example.com/a.png" width="10" height="10"/></svg>';
   assert.ok(analyzeSvg(externalSvg).errors.some((message) => message.includes('external SVG reference')));
   assert.equal(normalizeUrl('https://example.com/a/?utm_source=x&b=2'), 'https://example.com/a?b=2');
+  const secretAuditSource = auditChangedSecrets.toString();
+  assert.match(secretAuditSource, /await open\(path, 'r'\)/u);
+  assert.match(secretAuditSource, /await handle\.stat\(\)/u);
+  assert.match(secretAuditSource, /await handle\.readFile\(\)/u);
+  assert.match(secretAuditSource, /finally\s*\{\s*await handle\.close\(\)/u);
+  assert.doesNotMatch(secretAuditSource, /await (?:stat|readFile)\(path/u);
   console.log('publish:check self-test OK');
 }
 
