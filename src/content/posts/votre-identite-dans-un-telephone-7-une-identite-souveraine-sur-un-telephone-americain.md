@@ -4,7 +4,7 @@ seoTitle: "France Identité dépend-elle d’Apple et Google ? | l0g"
 ogTitle: "Une identité souveraine sur un téléphone américain"
 description: "Stores, NFC, clés matérielles et attestation : l’État contrôle France Identité, mais pas toutes les couches qui décident si elle fonctionne."
 pubDate: 2026-08-28T21:00:00+02:00
-updatedDate: 2026-08-28T21:00:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 ogImage: "/illustrations/news/france-identite-telephone-souverain-v1.jpg"
 tags: ["France Identité", "Apple", "Google", "Android", "iOS", "EUDI", "DMA", "ANSSI", "App Store", "Google Play", "souveraineté numérique", "risque financier", "enquête"]
 draft: false
@@ -301,7 +301,7 @@ Une clé cryptographique peut être générée dans :
 - StrongBox lorsqu’il existe ;
 - le Secure Enclave d’un iPhone.
 
-Le serveur qui délivre une identité doit ensuite vérifier que la clé est réellement protégée dans l’environnement annoncé. C’est le rôle d’une attestation.
+Le serveur qui délivre une identité doit ensuite vérifier que la clé est réellement protégée dans l’environnement annoncé. C’est le rôle d’une [attestation](/glossaire/#attestation).
 
 La [spécification européenne des Wallet Unit Attestations](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md) distingue deux objets :
 

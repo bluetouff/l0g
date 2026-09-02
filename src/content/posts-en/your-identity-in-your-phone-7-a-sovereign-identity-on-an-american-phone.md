@@ -4,12 +4,12 @@ seoTitle: "Does France’s digital ID depend on Apple and Google? | l0g"
 ogTitle: "A sovereign identity on an American phone"
 description: "Stores, NFC, hardware keys and attestation: France controls its ID app, but not every layer deciding whether it runs."
 pubDate: 2026-08-28T21:00:00+02:00
-updatedDate: 2026-08-28T21:00:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 ogImage: "/illustrations/news/france-identite-telephone-souverain-v1.jpg"
 tags: ["France Identité", "Apple", "Google", "Android", "iOS", "EUDI", "DMA", "ANSSI", "App Store", "Google Play", "digital sovereignty", "financial risk", "investigation"]
 draft: false
 sourceArticle: "votre-identite-dans-un-telephone-7-une-identite-souveraine-sur-un-telephone-americain"
-sourceUpdatedDate: 2026-08-28T21:00:00+02:00
+sourceUpdatedDate: 2026-09-02T10:05:00+02:00
 ---
 
 *The identity card is issued by the French State. France Identité says its servers are hosted in the Interior Ministry’s cloud. Its one-time identity credentials carry a public electronic seal. Yet installing the application currently means going through Google Play or Apple’s App Store. Protecting its keys requires security functions supplied by the phone. Deciding whether an app instance deserves trust requires a legitimacy check.*
@@ -299,7 +299,7 @@ A cryptographic key may be generated in:
 - StrongBox where available;
 - an iPhone Secure Enclave.
 
-The server issuing identity then needs evidence that the key is genuinely protected in the claimed environment. That is attestation.
+The server issuing identity then needs evidence that the key is genuinely protected in the claimed environment. That is [attestation](/en/glossary/#attestation).
 
 The EU [Wallet Unit Attestation specification](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md) distinguishes:
 

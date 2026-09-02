@@ -4,7 +4,7 @@ seoTitle: "Jeonse en Corée du Sud : dépôts, dette et risque HUG | l0g"
 ogTitle: "Le locataire devient la banque de son propriétaire"
 description: "Le jeonse transforme le dépôt du locataire en financement du propriétaire. HUG en garantissait 126 789 Md KRW fin 2025. Anatomie du risque."
 pubDate: 2026-08-30T10:30:00+02:00
-updatedDate: 2026-08-30T10:30:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["Corée du Sud", "Asie", "jeonse", "immobilier", "dette des ménages", "HUG", "garantie publique", "stabilité financière"]
 ogImage: "/illustrations/news/south-korea-jeonse-housing-credit-v1.jpg"
 draft: false
@@ -100,7 +100,7 @@ Cette superposition explique pourquoi le jeonse peut augmenter l’effet de levi
 
 C’est le phénomène qualifié de **reverse jeonse**. Les contrats conclus lorsque les dépôts étaient élevés peuvent arriver à échéance après une baisse du marché. Le bailleur doit alors rendre davantage à l’occupant sortant qu’il ne reçoit du suivant.
 
-Le [rapport Article IV du FMI sur la Corée publié en 2023](https://www.elibrary.imf.org/abstract/journals/002/2023/369/article-A001-en.xml) reprenait une estimation de la Banque de Corée réalisée en juin 2023 : le déficit potentiel de dépôts sur les contrats arrivant à échéance en 2023 et 2024 atteignait environ **44 000 milliards de wons**, soit 2 % du PIB de l’époque. Ce montant était une estimation de besoin de financement, pas une perte effectivement constatée.
+Le [rapport Article IV du FMI sur la Corée publié en 2023](https://www.elibrary.imf.org/abstract/journals/002/2023/369/article-A001-en.xml) reprenait une estimation de la Banque de Corée réalisée en juin 2023 : le déficit potentiel de dépôts sur les contrats arrivant à échéance en 2023 et 2024 atteignait environ **44 000 milliards de wons**, soit 2 % du [PIB](/glossaire/#pib) de l’époque. Ce montant était une estimation de besoin de financement, pas une perte effectivement constatée.
 
 Le sens du risque change avec le marché. Une baisse des dépôts allège le coût d’entrée pour un nouveau locataire, mais peut ouvrir un trou de liquidité chez le propriétaire. Une hausse facilite le renouvellement du financement du bailleur, tout en exigeant davantage d’épargne ou de crédit du prochain ménage.
 
@@ -444,7 +444,7 @@ Une garantie fonctionne aisément lorsque les défauts restent dispersés. Une b
 
 Le mécanisme diffère de celui des promoteurs, mais il complète notre analyse de [l’immobilier chinois comme chaîne de créances et de garanties](/posts/immobilier-chinois-anatomie-d-un-risque-qui-s-installe/) : dans les deux cas, la question décisive est de savoir quel bilan absorbe le déficit quand le refinancement ne suffit plus.
 
-## Ce qu’il faut surveiller maintenant
+## Les indicateurs à surveiller maintenant
 
 Le premier indicateur est l’écart entre les dépôts dus sur les contrats arrivant à échéance et ceux proposés sur les nouveaux baux comparables. L’indice jeonse national donne une direction, mais les risques naissent contrat par contrat et quartier par quartier.
 
@@ -456,7 +456,7 @@ Le quatrième est la capacité du garant : fonds propres, capital versé, résul
 
 Le cinquième est la dette des ménages et son effet sur la dépense. Les données globales de la Banque de Corée ne permettent pas d’isoler toute la chaîne jeonse. Elles montrent cependant qu’elle s’insère dans un secteur des ménages déjà fortement endetté.
 
-## Ce que l’on peut conclure
+## Une conclusion bornée par les preuves
 
 Le jeonse n’est ni une anomalie folklorique ni simplement une location généreuse sans mensualité. C’est un contrat hybride qui échange un flux de loyer contre un financement forfaitaire remboursable. Il distribue le risque entre le propriétaire, le locataire, sa banque éventuelle, les autres créanciers et le garant.
 

@@ -2,7 +2,7 @@
 title: "Taïwan : les 724 milliards de dollars des assureurs-vie"
 description: "Fin 2025, les assureurs-vie de Taïwan détenaient 724 Md$ d’investissements étrangers. Analyse du décalage TWD/dollar, des couvertures et des réformes 2026."
 pubDate: 2026-08-29T18:00:00+02:00
-updatedDate: 2026-08-29T18:00:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["Taïwan", "Asie", "assurance-vie", "risque de change", "dollar", "obligations", "IFRS 17", "TW-ICS", "stabilité financière"]
 ogImage: "/illustrations/news/taiwan-life-insurers-fx-risk-v1.jpg"
 draft: false
@@ -53,7 +53,7 @@ La distinction est essentielle. Un actif étranger peut être couvert par un dé
 
 ## Pourquoi l’assurance-vie taïwanaise a autant investi à l’étranger
 
-Le mécanisme s’est construit sur plusieurs décennies. Les assureurs encaissent des primes et promettent des prestations de long terme. Ils doivent trouver des actifs suffisamment longs et rémunérateurs pour faire face à ces engagements. Or le marché obligataire domestique ne fournit pas toujours, à lui seul, la profondeur, la duration et le rendement recherchés. Cette logique actif-passif est aussi au cœur de notre [guide pour lire la solidité d’un assureur-vie](/guides/lire-la-solidite-d-un-assureur-vie/).
+Le mécanisme s’est construit sur plusieurs décennies. Les assureurs encaissent des primes et promettent des prestations de long terme. Ils doivent trouver des actifs suffisamment longs et rémunérateurs pour faire face à ces engagements. Or le marché obligataire domestique ne fournit pas toujours, à lui seul, la profondeur, la [duration](/glossaire/duration/) et le rendement recherchés. Cette logique actif-passif est aussi au cœur de notre [guide pour lire la solidité d’un assureur-vie](/guides/lire-la-solidite-d-un-assureur-vie/).
 
 Le [FMI décrivait déjà ce mouvement en 2019](https://www.elibrary.imf.org/display/book/9781498324021/ch003.xml) pour les assureurs-vie du Japon, de Corée du Sud et de Taïwan : garanties historiques supérieures aux rendements locaux, décalages de duration et marchés domestiques de crédit relativement étroits les ont poussés vers les actifs étrangers. Le FMI estimait alors que les assureurs taïwanais avaient ajouté environ 250 milliards de dollars de crédit libellé en dollars entre 2013 et 2018. Ce chiffre ancien ne décrit pas la composition actuelle du portefeuille, mais il documente l’origine structurelle du phénomène.
 

@@ -2,12 +2,12 @@
 title: "Taiwan Life Insurers: The Currency Risk Behind $724 Billion"
 description: "Taiwan’s life insurers held $724bn in foreign investments at end-2025. An analysis of the TWD mismatch, hedging costs and the 2026 regulatory reforms."
 pubDate: 2026-08-29T18:00:00+02:00
-updatedDate: 2026-08-29T18:00:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["Taiwan", "Asia", "life insurance", "currency risk", "US dollar", "bonds", "IFRS 17", "TW-ICS", "financial stability"]
 ogImage: "/illustrations/news/taiwan-life-insurers-fx-risk-v1.jpg"
 draft: false
 sourceArticle: "taiwan-724-milliards-assureurs-vie-risque-change"
-sourceUpdatedDate: 2026-08-29
+sourceUpdatedDate: 2026-09-02T10:05:00+02:00
 ---
 
 *At the end of 2025, Taiwan’s life insurers held NT$37.68 trillion in assets, equivalent to 131.22% of the island’s GDP. Foreign investments accounted for 60.42% of that balance sheet, or roughly $724 billion at the year-end exchange rate. That number measures a stock of assets, not a possible loss. The risk lies in the gap between assets heavily invested abroad and liabilities that remain predominantly denominated in New Taiwan dollars. In 2025, an appreciation of the TWD turned that mismatch into a live stress test. The reforms that took effect in 2026 build reserves, change solvency measurement and defer the recognition of some foreign-exchange effects. They do not remove the underlying economic exposure.*
@@ -55,7 +55,7 @@ The distinction matters. A foreign asset may be hedged with a derivative, matche
 
 ## Why Taiwan’s life insurance sector invested so heavily abroad
 
-The mechanism was built over decades. Life insurers collect premiums and promise long-term benefits. They need sufficiently long and sufficiently remunerative assets to meet those liabilities. The domestic bond market does not always provide all the depth, duration and yield they seek. The same asset-liability logic is central to our [guide to reading a life insurer’s financial health](/en/guides/read-life-insurer-health/).
+The mechanism was built over decades. Life insurers collect premiums and promise long-term benefits. They need sufficiently long and sufficiently remunerative assets to meet those liabilities. The domestic bond market does not always provide all the depth, [duration](/en/glossary/duration/) and yield they seek. The same asset-liability logic is central to our [guide to reading a life insurer’s financial health](/en/guides/read-life-insurer-health/).
 
 The [IMF described this trend in 2019](https://www.elibrary.imf.org/display/book/9781498324021/ch003.xml) across Japan, South Korea and Taiwan: legacy return guarantees above local yields, duration mismatches and relatively small domestic credit markets encouraged life insurers to search for yield abroad. The IMF estimated that Taiwanese life insurers added roughly $250 billion of US-dollar credit between 2013 and 2018. That historical estimate does not describe today’s portfolio composition, but it documents the structural origins of the model.
 

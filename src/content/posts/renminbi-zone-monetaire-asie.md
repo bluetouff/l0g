@@ -5,7 +5,7 @@ ogTitle: "Le renminbi tisse sa zone monétaire en Asie"
 description: "De l’ASEAN à l’Asie centrale, le renminbi progresse dans les paiements et le crédit. Mais les données BIS, IMF, SWIFT et PBOC racontent une histoire bien plus précise qu’un remplacement du dollar."
 ogImage: "/illustrations/news/renminbi-asia-monetary-network-v1.jpg"
 pubDate: 2026-08-31T09:50:00+02:00
-updatedDate: 2026-08-31T09:50:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["macro", "chine", "asie", "renminbi", "dollar"]
 draft: false
 quickTake:
@@ -239,7 +239,7 @@ Le chiffre peut être exact. Mais il ne bénéficie pas, dans les documents publ
 
 Dans une histoire monétaire aussi politisée, cette distinction entre **donnée officielle chinoise** et **donnée recoupable** n’est pas un détail.
 
-## Ce qui change réellement : trois étages, trois vitesses
+## Trois étages de transformation à des vitesses différentes
 
 Pour comprendre le renminbi en Asie, il faut séparer trois fonctions.
 
@@ -274,7 +274,7 @@ Le troisième est **l’infrastructure**. Un swap de banque centrale, une banque
 
 C’est une stratégie de réseau : moins le renminbi est pénible à utiliser, plus les flux liés à la Chine ont de raisons de rester en renminbi.
 
-## Ce que Pékin a réussi, et ce qu’il n’a pas encore réussi
+## Le bilan de Pékin : acquis et limites
 
 La stratégie chinoise a déjà obtenu quelque chose de significatif : **dans un nombre croissant de transactions impliquant directement la Chine, le dollar n’est plus techniquement indispensable**.
 

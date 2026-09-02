@@ -1,0 +1,415 @@
+---
+title: "Governments Have Shortened the Fuse"
+seoTitle: "Sovereign debt and the short-refinancing risk | l0g"
+ogTitle: "Governments Have Shortened the Fuse"
+description: "$18tn of 2026 borrowing: how shorter maturities speed the transmission of yields into budgets and sovereign-bond markets."
+ogImage: "/illustrations/news/sovereign-refinancing-risk-v1.jpg"
+pubDate: 2026-09-02T08:30:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
+tags: ["sovereign debt", "rates", "refinancing", "risk", "bond markets", "macro"]
+draft: false
+sourceArticle: "etats-raccourci-meche-refinancement"
+sourceUpdatedDate: 2026-09-02T10:05:00+02:00
+---
+import SovereignRefinancingSimulator from '../../components/SovereignRefinancingSimulator.astro';
+
+<style>{`
+.l0g-chart{margin:2.2rem 0 2.5rem}
+.l0g-chart svg{border:1px solid rgba(159,177,189,.22);border-radius:18px;overflow:hidden}
+.l0g-chart figcaption{margin:.7rem .35rem 0;color:var(--color-text-muted,#6b7280);font-size:.86rem;line-height:1.5}
+.l0g-svg-mobile{display:none!important}
+.l0g-method{border-left:3px solid #2dd4bf;padding:.9rem 1rem;margin:1.5rem 0;background:rgba(45,212,191,.07)}
+.l0g-warning{border-left:3px solid #fbbf24;padding:.9rem 1rem;margin:1.5rem 0;background:rgba(251,191,36,.07)}
+.l0g-source-list li{margin:.55rem 0}
+.prose table{font-size:.92rem}
+@media(max-width:640px){
+  .l0g-svg-desktop{display:none!important}
+  .l0g-svg-mobile{display:block!important}
+  .prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+  .l0g-chart{margin:1.8rem 0 2rem}
+  .l0g-chart figcaption{font-size:.8rem}
+}
+`}</style>
+
+
+*The number is large enough to mislead: OECD central governments are projected to borrow about $18 trillion in 2026. Yet close to $14 trillion is tied to securities reaching maturity. This is not a sudden creation of debt. It is old debt returning to market and discovering the price of 2026.*
+
+Rate debates tend to orbit the next central-bank meeting: another 25 basis points, a pause, a cut pushed further out. For public finances, that calendar is only the first clock. The second sits inside maturity tables: how much debt must be refinanced, when, in which currency, with what indexation and for how long?
+
+The distinction matters precisely because monetary paths are diverging. **Not every country is preparing to raise policy rates**, and a policy-rate increase is not the same event as a rise in ten- or thirty-year sovereign yields. Long rates can move because expected inflation changes, because investors reassess the required real return, because bond supply grows, or because the market demands a larger premium for duration and fiscal uncertainty. For a debt manager, the common denominator is the yield at which a maturing obligation can be replaced.
+
+This article does not forecast a global hiking cycle or a sovereign crisis. It asks a narrower question that can be measured today: **how quickly does a higher yield pass through the debt stock, and where can that fiscal transmission become a market-structure risk?**
+
+## The $18 trillion wall that is not a wall
+
+The [OECD estimates](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html) that its members’ central governments will need to raise about **$18 trillion in 2026**. Nearly **$14 trillion** reflects refinancing, replacing securities as they mature. The report puts those refinancing needs at roughly **19% of OECD GDP**.
+
+The scope is specific. These figures refer to **central governments** and primarily to marketable debt. They are not a measure of global public debt, the consolidated deficit of all general government, or a cash bill that taxpayers must extinguish in 2026. A ten-year bond repaid with a new ten-year bond generates gross issuance without, by itself, increasing the nominal debt stock.
+
+The residual between $18 trillion and $14 trillion gives an approximate sense of net financing and other cash-management adjustments. It should not be substituted mechanically for the fiscal deficit: issuance can also finance cash-buffer changes, buybacks, lending, foreign-exchange operations and timing or methodological differences.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 500" role="img" aria-labelledby="wall-en-d-title wall-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="wall-en-d-title">The 2026 sovereign funding wall</title>
+<desc id="wall-en-d-desc">OECD central governments are projected to borrow about 18 trillion dollars in 2026, including nearly 14 trillion to refinance maturing securities.</desc>
+<rect x="0" y="0" width="960" height="500" rx="20" fill="#081018"/>
+<text x="48" y="56" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="start">OECD · 2026 · central governments</text>
+<text x="48" y="105" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="750" text-anchor="start">The 2026 sovereign funding wall</text>
+<text x="48" y="141" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="400" text-anchor="start">Forecast, USD billions, rounded figures</text>
+<rect x="48" y="184" width="864" height="112" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<rect x="48" y="184" width="672" height="112" rx="18" fill="#ff5c7a"/>
+<rect x="702" y="184" width="210" height="112" rx="18" fill="#fbbf24"/>
+<text x="384" y="230" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">≈ 14,000</text>
+<text x="384" y="266" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="650" text-anchor="middle">maturing debt refinanced</text>
+<text x="807" y="230" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="31" font-weight="800" text-anchor="middle">≈ 4,000</text>
+<text x="807" y="259" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">net financing</text>
+<text x="807" y="280" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">and adjustments</text>
+<text x="48" y="355" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="46" font-weight="800" text-anchor="start">≈ $18 trillion</text>
+<text x="48" y="393" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="500" text-anchor="start">of gross borrowing: this is not $18 trillion of new debt.</text>
+<line x1="48" y1="433" x2="912" y2="433" stroke="#294050" stroke-width="1"/>
+<text x="48" y="464" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="400" text-anchor="start">Scope: marketable central-government debt in the OECD.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 760" role="img" aria-labelledby="wall-en-m-title wall-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="wall-en-m-title">The 2026 sovereign funding wall</title>
+<desc id="wall-en-m-desc">OECD central governments are projected to borrow about 18 trillion dollars in 2026, including nearly 14 trillion to refinance maturing securities.</desc>
+<rect x="0" y="0" width="390" height="760" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">OECD · 2026</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">The sovereign</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">funding wall</text>
+<text x="24" y="141" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="400" text-anchor="start">Central governments · USD bn</text>
+<rect x="24" y="180" width="342" height="210" rx="18" fill="#ff5c7a"/>
+<text x="195" y="248" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="850" text-anchor="middle">≈ 14,000</text>
+<text x="195" y="291" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" text-anchor="middle">refinancing</text>
+<text x="195" y="321" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="middle">of maturing securities</text>
+<rect x="24" y="410" width="342" height="132" rx="18" fill="#fbbf24"/>
+<text x="195" y="461" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="850" text-anchor="middle">≈ 4,000</text>
+<text x="195" y="496" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle">net financing and adjustments</text>
+<text x="24" y="592" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="31" font-weight="850" text-anchor="start">Total ≈ $18tn</text>
+<text x="24" y="631" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">Gross borrowing, not</text>
+<text x="24" y="657" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">all-new debt.</text>
+<line x1="24" y1="692" x2="366" y2="692" stroke="#294050" stroke-width="1"/>
+<text x="24" y="721" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="400" text-anchor="start">OECD forecast, rounded figures.</text>
+</svg>
+<figcaption>Reading note: the $18 trillion figure is projected gross issuance, not an equivalent increase in debt. The residual segment is rounded and is not an exact measure of the fiscal deficit. <a href="https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html">Source: OECD, Global Debt Report 2026.</a></figcaption>
+</figure>
+
+The amount rolling over still matters. The OECD reports that roughly **one-third of fixed-rate sovereign bonds outstanding at the end of 2025 will mature between 2026 and 2028**. Every redeemed bond loses its old coupon; its replacement carries the yield required at issuance. If that yield is higher, interest expense rises. If yields fall, the mechanism runs in reverse.
+
+That is the real meaning of the refinancing “wall”: not a single $14 trillion payment, but a sequence of transactions that reset the cost of debt.
+
+## Markets move in seconds; budgets move in years
+
+A fixed-rate bond protects the issuer until maturity. Its secondary-market price can fall sharply without changing the coupon paid by the sovereign. The mark-to-market loss belongs to the holder who sells or reports fair value; it does not immediately change the Treasury’s contractual payment.
+
+Budget transmission begins when new securities are issued to replace maturities, finance a deficit or rebuild cash. The marginal yield on the next bond can therefore sit far above or below the effective rate paid on the debt stock.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 520" role="img" aria-labelledby="clocks-en-d-title clocks-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="clocks-en-d-title">Two clocks for the same yield shock</title>
+<desc id="clocks-en-d-desc">Market yields can move immediately, while the debt stock’s effective rate approaches the new yield only as maturities are refinanced.</desc>
+<rect x="0" y="0" width="960" height="520" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="750" text-anchor="start">TRANSMISSION</text>
+<text x="48" y="98" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800" text-anchor="start">Two clocks for the same yield shock</text>
+<rect x="48" y="142" width="404" height="292" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<rect x="508" y="142" width="404" height="292" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="76" y="184" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="start">Market clock</text>
+<text x="536" y="184" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="start">Budget clock</text>
+<circle cx="250" cy="282" r="78" fill="#142433" stroke="#ff5c7a" stroke-width="5"/>
+<line x1="250" y1="282" x2="250" y2="229" stroke="#f4f7f8" stroke-width="5"/>
+<line x1="250" y1="282" x2="300" y2="282" stroke="#f4f7f8" stroke-width="5"/>
+<circle cx="250" cy="282" r="7" fill="#ff5c7a"/>
+<text x="250" y="391" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="700" text-anchor="middle">seconds</text>
+<line x1="548" y1="355" x2="872" y2="355" stroke="#294050" stroke-width="2"/>
+<line x1="548" y1="222" x2="548" y2="355" stroke="#294050" stroke-width="2"/>
+<polyline points="552,340 616,340 616,316 680,316 680,286 744,286 744,254 808,254 808,225 868,225" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="554" y="382" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">years →</text>
+<text x="548" y="214" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" text-anchor="start">effective rate</text>
+<text x="48" y="477" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="500" text-anchor="start">Markets reprice the next bond. Budgets reprice the stock, maturity by maturity.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 840" role="img" aria-labelledby="clocks-en-m-title clocks-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="clocks-en-m-title">Two clocks for the same yield shock</title>
+<desc id="clocks-en-m-desc">Market yields can move immediately, while the debt stock’s effective rate approaches the new yield only as maturities are refinanced.</desc>
+<rect x="0" y="0" width="390" height="840" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">TRANSMISSION</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">Two clocks</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">for one yield shock</text>
+<rect x="24" y="150" width="342" height="260" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="188" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Market</text>
+<circle cx="195" cy="276" r="66" fill="#142433" stroke="#ff5c7a" stroke-width="5"/>
+<line x1="195" y1="276" x2="195" y2="231" stroke="#f4f7f8" stroke-width="5"/>
+<line x1="195" y1="276" x2="237" y2="276" stroke="#f4f7f8" stroke-width="5"/>
+<circle cx="195" cy="276" r="6" fill="#ff5c7a"/>
+<text x="195" y="375" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="middle">seconds</text>
+<rect x="24" y="430" width="342" height="290" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="469" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Budget</text>
+<line x1="56" y1="650" x2="334" y2="650" stroke="#294050" stroke-width="2"/>
+<line x1="56" y1="513" x2="56" y2="650" stroke="#294050" stroke-width="2"/>
+<polyline points="60,636 114,636 114,611 168,611 168,580 222,580 222,550 276,550 276,521 330,521" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="681" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">years →</text>
+<text x="24" y="766" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">The next bond reprices fast.</text>
+<text x="24" y="794" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">The stock moves by maturities.</text>
+</svg>
+<figcaption>Transmission schematic. The marginal yield can move in a session; the average cost of the stock depends on maturities, indexed or floating instruments, and new issuance.</figcaption>
+</figure>
+
+Take a simplified $3 trillion stock funded at an average 2% rate. Annual interest is $60 billion. If the refinancing yield rises to 4% but only 12.5% of the stock is replaced each year, the effective rate does not jump to 4%. In our even-maturity model, it reaches 2.25% after one year, 3% after four and 4% after eight. Interest expense rises to $67.5 billion, $90 billion and $120 billion respectively.
+
+If 25% of the stock rolls each year, the effective rate reaches 4% after four years. The eventual shock is identical; the speed is not. Maturity buys or sells that time.
+
+Real portfolios are less orderly. Maturities are uneven. Some debt is inflation-linked or floating-rate. Deficits change the stock, buybacks shift the schedule, swaps can alter economic exposure, and accounting systems distinguish accrued expense from cash payments. The tool below is not a country forecast. It isolates one mechanism.
+
+## Simulate the rate passing through the stock
+
+<SovereignRefinancingSimulator lang="en" />
+
+The model holds the stock constant and compares two refinancing profiles. Each year, an equal slice of the old stock is replaced at the new yield until 100% has been repriced. Newly issued debt is not refinanced a second time within the horizon. This deliberately narrow setup excludes growth, the primary balance, inflation, foreign exchange, buybacks, derivatives, taxes and investor reaction.
+
+## Why the fuse has shortened
+
+When long-term yields look expensive, issuing more at the short end can be rational. The Treasury avoids locking in a coupon for twenty or thirty years that it believes may prove temporary. Bills also tap a deep base of money-market funds, banks, corporate treasurers and cash investors.
+
+But the decision exchanges a known cost for future refinancing risk. The security returns to market sooner. If rates stay high, the initial saving disappears at rollover. If rates rise further, the cost passes through more quickly. If market functioning deteriorates, the refinancing need recurs more often.
+
+The [OECD](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html) estimates that bills represented about **15% of its members’ marketable sovereign debt at the end of 2025**, nearly five percentage points above their 2015-19 average. Bill issuance exceeded conventional fixed-rate bond issuance, while average maturity fell in a majority of the countries examined in 2025. The OECD aggregate still sits near eight years: the debt stock has not become uniformly short. Yet a marginal shift matters when applied to tens of trillions of dollars.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 540" role="img" aria-labelledby="fuse-en-d-title fuse-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="fuse-en-d-title">Maturity determines the speed of the shock</title>
+<desc id="fuse-en-d-desc">In a constant-stock illustration, debt refinanced in annual 12.5% slices is only half repriced after four years, versus 100% with 25% slices.</desc>
+<rect x="0" y="0" width="960" height="540" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="750" text-anchor="start">ILLUSTRATIVE EXAMPLE</text>
+<text x="48" y="98" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800" text-anchor="start">Maturity determines the speed of the shock</text>
+<text x="48" y="130" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="500" text-anchor="start">Same stock, same yield shock, different refinancing profiles.</text>
+<rect x="48" y="170" width="864" height="132" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="72" y="208" fill="#60a5fa" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Long profile</text>
+<text x="72" y="237" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">12.5% of the stock repriced each year</text>
+<rect x="370" y="204" width="480" height="46" rx="10" fill="#142433"/>
+<rect x="370" y="204" width="240" height="46" rx="10" fill="#60a5fa"/>
+<text x="860" y="235" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="800" text-anchor="end">50 %</text>
+<text x="370" y="276" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" text-anchor="start">after 4 years</text>
+<rect x="48" y="322" width="864" height="132" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="72" y="360" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Short profile</text>
+<text x="72" y="389" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">25% of the stock repriced each year</text>
+<rect x="370" y="356" width="480" height="46" rx="10" fill="#142433"/>
+<rect x="370" y="356" width="480" height="46" rx="10" fill="#ff5c7a"/>
+<text x="860" y="387" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="800" text-anchor="end">100 %</text>
+<text x="370" y="428" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" text-anchor="start">after 4 years</text>
+<text x="48" y="501" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="550" text-anchor="start">Short maturity does not create the shock; it accelerates its passage through the stock.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 850" role="img" aria-labelledby="fuse-en-m-title fuse-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="fuse-en-m-title">Maturity determines the speed of the shock</title>
+<desc id="fuse-en-m-desc">In a constant-stock illustration, debt refinanced in annual 12.5% slices is only half repriced after four years, versus 100% with 25% slices.</desc>
+<rect x="0" y="0" width="390" height="850" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">EXAMPLE</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">Maturity sets</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">the speed</text>
+<text x="24" y="143" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">Same shock, two profiles.</text>
+<rect x="24" y="180" width="342" height="255" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="220" fill="#60a5fa" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Long profile</text>
+<text x="48" y="251" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">12.5% a year</text>
+<rect x="48" y="288" width="294" height="48" rx="10" fill="#142433"/>
+<rect x="48" y="288" width="147" height="48" rx="10" fill="#60a5fa"/>
+<text x="48" y="375" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">50% repriced after 4 years</text>
+<rect x="24" y="459" width="342" height="255" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="499" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Short profile</text>
+<text x="48" y="530" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">25% a year</text>
+<rect x="48" y="567" width="294" height="48" rx="10" fill="#142433"/>
+<rect x="48" y="567" width="294" height="48" rx="10" fill="#ff5c7a"/>
+<text x="48" y="654" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">100% repriced after 4 years</text>
+<text x="24" y="761" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">Short maturity accelerates</text>
+<text x="24" y="789" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">transmission, not the shock.</text>
+</svg>
+<figcaption>Teaching example with a constant debt stock. A 12.5% annual slice corresponds to an even eight-year schedule; 25% to four years. No real sovereign portfolio is this regular.</figcaption>
+</figure>
+
+Average maturity is not enough. Two eight-year portfolios can have very different walls: one evenly distributed, the other concentrated in a few years. Legal maturity is also not the same as the **time to rate reset**. An inflation-linked bond can have a long final maturity while passing inflation through quickly; a swap can turn fixed-rate exposure into floating-rate exposure.
+
+The useful dashboard combines the annual redemption profile, bill share, indexation, currency, coupons on maturing securities and yields on new ones.
+
+## Three kinds of “rates up”
+
+The phrase hides at least three distinct events.
+
+**The policy rate** is the short-term price steered by the central bank. It reaches floating instruments and very short bills quickly, then influences the rest of the curve through expectations.
+
+**The real-rate and inflation components** of nominal yields can rise because the economy is stronger than expected, an adverse supply shock persists or inflation proves harder to remove, even without a fresh policy decision.
+
+**The [term and fiscal-risk premium](/en/glossary/prime-de-terme/)** compensates investors for duration, inflation uncertainty, liquidity and future supply. A market may demand more to absorb heavy issuance while the policy rate remains unchanged.
+
+The consequences differ. A short-lived policy spike falls most heavily on frequent refinancers. A persistent term-premium increase lifts the cost of long issuance. Higher inflation can raise indexed-debt payments rapidly while also increasing nominal GDP and tax receipts. The fiscal outcome depends on which variable moves first and for how long.
+
+A map of forthcoming central-bank decisions is therefore not a sovereign-risk map. What matters is the yield actually locked in at auction.
+
+## United States: plumbing matters as much as the budget
+
+The Treasury market is backed by the reserve currency, a global investor base and unmatched depth. It is not an ordinary sovereign market. Its scale, however, means a liquidity event can become a global one.
+
+The U.S. Treasury publishes its financing strategy every quarter and follows the principle of “regular and predictable” issuance. Debt management is not simply a choice of the cheapest tenor on a given day; it seeks the lowest expected cost over time while preserving liquidity and a broad investor base. The announcements, calendars and advisory material are available through the [Quarterly Refunding](https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding).
+
+Market-structure risk becomes relevant when absorption depends on leveraged intermediaries. Some relative-value strategies buy a cash Treasury and sell a closely related futures contract, financing the bond in [repo](/en/glossary/repo/). The expected spread is small, so leverage can be large. A volatility jump, higher margins or reduced repo funding can force the position to shrink, potentially requiring bond sales as liquidity is already deteriorating.
+
+The [Federal Reserve](https://www.federalreserve.gov/publications/2026-may-financial-stability-report-overview.htm), the [Office of Financial Research](https://www.financialresearch.gov/the-ofr-blog/2026/03/26/calm-markets-and-underlying-risks/) and the [IMF](https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026) monitor these channels. This does not mean hedge funds must cause the next crisis, or that every yield increase triggers forced selling. It means the marginal holder of a sovereign bond, and the way that position is funded, matters alongside the identity of the issuer.
+
+A weak [auction](/en/glossary/adjudication/) is not a default either. It may show up as a larger “tail,” a greater concession or more inventory left with dealers. It becomes a serious signal when weakness repeats, market depth falls and subsequent issuance is persistently repriced.
+
+## France and the euro area: eight years buys time, not immunity
+
+At 31 July 2026, Agence France Trésor reported an average maturity of **8 years and 163 days** for France’s marketable debt in its [key figures](https://www.aft.gouv.fr/en/node/452). That length slows the pass-through compared with a portfolio dominated by bills. It also explains why average interest expense can keep rising after market yields have peaked: the old low-cost stock disappears gradually.
+
+The buffer does not remove risk. France must refinance maturities and fund deficits; BTF bills transmit short rates; inflation-linked bonds behave differently; and high gross financing needs increase the amount markets must absorb. Average maturity measures time, not solvency.
+
+Within the euro area, national debt also trades inside a common financial system. A yield shock changes the value of bonds held by banks, insurers and funds, while the runoff of Eurosystem portfolios places more [duration](/en/glossary/duration/) with price-sensitive investors. The [ECB Financial Stability Review](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/index.en.html) tracks the interaction among sovereign risk, banks and non-bank intermediaries.
+
+The opposite shortcut is equally misleading: fewer public-sector purchases do not imply an absence of buyers. Households, banks, insurers, funds and foreign investors can absorb supply at the right price. The question is the price and stability of that demand when several sovereigns issue heavily at once.
+
+## Japan: a domestic yield can redirect global capital
+
+Japan adds a distinctive layer. Its government carries a very large debt stock, while the country is also a major net creditor to the rest of the world. At the end of 2025, the Ministry of Finance recorded roughly **¥1,806 trillion of external assets**, **¥1,244 trillion of liabilities** and a net international investment position near **¥562 trillion**. These are whole-economy positions, not a pool the government can mobilise. [Japan Ministry of Finance, 2025 IIP](https://www.mof.go.jp/english/policy/international_policy/reference/iip/e2025.htm).
+
+When domestic yields are very low, banks, insurers, pension funds and households have a stronger incentive to seek returns abroad. As Japanese yields rise, the calculation changes. The currency-hedged return on U.S. or European bonds may become less attractive, and institutions may prefer domestic assets that better match yen liabilities.
+
+This mechanism is not a forecast of mass repatriation. Portfolios differ by liability structure, regulation, hedge and horizon. A net foreign-asset position does not say who will sell, when or which security. It says that even a marginal change in Japanese allocation can apply to a very large asset base.
+
+The Ministry of Finance’s [Debt Management Report](https://www.mof.go.jp/english/policy/jgbs/publication/debt_management_report/index.htm) and the Bank of Japan’s [monetary-policy decisions](https://www.boj.or.jp/en/mopo/mpmdeci/index.htm) are the primary documents for tracking JGB issuance, structure and policy normalisation. The global risk is not that “Japan sells everything.” It is that a credible risk-free return at home competes again with foreign bonds.
+
+## The first accident would probably not be a default
+
+A sovereign with a deep market and debt in its own currency can absorb a gradual increase in interest expense for a long time. Other tensions can surface first.
+
+**The budget.** Interest consumes more revenue. The government responds with taxes, spending restraint, more debt or some combination. The political response can reduce or increase the premium demanded by investors.
+
+**Banks.** Lower bond prices create unrealised or realised losses depending on accounting classification, funding and liquidity needs. Sovereign and banking risk can reinforce each other.
+
+**Repo.** A bond serves as collateral for very short-term borrowing. When volatility rises, haircuts and [margin calls](/en/glossary/appel-de-marge/) can increase. The owner must find cash or reduce the position.
+
+**The currency.** In a country dependent on foreign investors or foreign-currency debt, higher yields may still fail to retain capital. Depreciation raises the local cost of foreign liabilities and imported inflation.
+
+**The auction.** Weak demand increases the concession paid to place a bond. It becomes systemic only if weakness repeats, contaminates funding markets and changes the perceived fiscal path.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 590" role="img" aria-labelledby="loop-en-d-title loop-en-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="loop-en-d-title">When fiscal risk becomes market risk</title>
+<desc id="loop-en-d-desc">A yield rise can lower bond prices, trigger margin calls and forced sales, weaken liquidity or auctions, then push yields higher again. The loop is not automatic.</desc>
+<rect x="0" y="0" width="960" height="590" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="750" text-anchor="start">MARKET PLUMBING</text>
+<text x="48" y="98" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="800" text-anchor="start">When fiscal risk becomes market risk</text>
+<rect x="350" y="142" width="260" height="82" rx="16" fill="#ff5c7a" stroke="#294050" stroke-width="1"/>
+<text x="480.0" y="191" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Yields rise</text>
+<rect x="650" y="245" width="250" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="775.0" y="294" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Bond prices fall</text>
+<rect x="570" y="390" width="300" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="720.0" y="439" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Margins, collateral, sales</text>
+<rect x="90" y="390" width="300" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="240.0" y="439" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Liquidity / auction</text>
+<rect x="60" y="245" width="250" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="185.0" y="294" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Higher risk premium</text>
+<polyline points="610,184 690,184 690,238" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="844,327 844,370 808,385" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="570,432 410,432" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="166,390 122,350 122,328" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="310,286 350,225" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="480" y="300" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="middle">amplification</text>
+<text x="480" y="329" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="middle">conditional</text>
+<text x="48" y="525" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="500" text-anchor="start">Required conditions: leverage, binding margins or collateral, insufficient market depth.</text>
+<text x="48" y="554" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="600" text-anchor="start">This diagram describes a possible channel, not a crisis forecast.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 1010" role="img" aria-labelledby="loop-en-m-title loop-en-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="loop-en-m-title">When fiscal risk becomes market risk</title>
+<desc id="loop-en-m-desc">A yield rise can lower bond prices, trigger margin calls and forced sales, weaken liquidity or auctions, then push yields higher again. The loop is not automatic.</desc>
+<rect x="0" y="0" width="390" height="1010" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">MARKET PLUMBING</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">From budget</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">to market and back</text>
+<rect x="24" y="155" width="342" height="108" rx="17" fill="#ff5c7a" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="209" r="20" fill="#081018"/>
+<text x="57" y="216" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">1</text>
+<text x="90" y="216" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">Yields rise</text>
+<line x1="195" y1="263" x2="195" y2="284" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,277 195,287 203,277" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="289" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="343" r="20" fill="#ff5c7a"/>
+<text x="57" y="350" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">2</text>
+<text x="90" y="350" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">Bond prices fall</text>
+<line x1="195" y1="397" x2="195" y2="418" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,411 195,421 203,411" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="423" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="477" r="20" fill="#ff5c7a"/>
+<text x="57" y="484" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">3</text>
+<text x="90" y="470" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="start">Margins, collateral,</text>
+<text x="90" y="495" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="start">sales</text>
+<line x1="195" y1="531" x2="195" y2="552" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,545 195,555 203,545" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="557" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="611" r="20" fill="#ff5c7a"/>
+<text x="57" y="618" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">4</text>
+<text x="90" y="618" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">Liquidity or auction</text>
+<line x1="195" y1="665" x2="195" y2="686" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,679 195,689 203,679" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="691" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="745" r="20" fill="#ff5c7a"/>
+<text x="57" y="752" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">5</text>
+<text x="90" y="752" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">Higher risk premium</text>
+<text x="24" y="866" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="750" text-anchor="start">Possible loop, not automatic.</text>
+<text x="24" y="902" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">It needs leverage, binding</text>
+<text x="24" y="929" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">margins or shallow market depth.</text>
+<text x="24" y="971" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="650" text-anchor="start">This is not a crisis forecast.</text>
+</svg>
+<figcaption>A possible amplification channel. The IMF, the Federal Reserve and other authorities monitor non-bank leverage, margin calls and sovereign-market liquidity. <a href="https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026">Context source: IMF, Global Financial Stability Report, April 2026.</a></figcaption>
+</figure>
+
+The [IMF’s April 2026 GFSR](https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026) does not present these channels as an inevitable chain. It focuses on interactions: heavy sovereign supply, intermediary balance sheets, non-bank leverage, collateral, liquidity withdrawal and the bank-sovereign nexus. Accidents are less often caused by one ratio than by the meeting of a rigid financing need and a buyer forced to deleverage.
+
+## The strongest counterargument: markets have already absorbed a lot
+
+Any warning must survive the evidence against it. Sovereign markets have absorbed very large issuance since the first hiking cycle without a generalised crisis. Most advanced-economy debt remains fixed-rate. An OECD-wide maturity near eight years provides real inertia. Debt offices use cash buffers, buybacks, exchanges and a range of tenors to smooth financing.
+
+Higher yields also create buyers. Pension funds and insurers can match liabilities more easily; households regain bond income; foreign investors receive better compensation. A higher curve is not only a cost, it rebuilds demand.
+
+Debt-to-GDP dynamics also depend on the denominator. Nominal growth above the effective interest rate can stabilise the ratio despite a moderate primary deficit. Unexpected inflation erodes the real value of fixed nominal debt, even as it can lift rates and the cost of indexed securities.
+
+These buffers invalidate an automatic-crisis story. They do not remove the timing question. The faster debt rolls over, the less time growth, inflation or fiscal adjustment has to offset the new cost.
+
+## The dashboard behind alarming headlines
+
+A useful dashboard can be built from a small number of well-defined series.
+
+| Indicator | Measure | Common mistake |
+|---|---|---|
+| Maturities over 12 and 36 months | Debt returning to market | Calling it all new debt |
+| Bill share | Refinancing frequency | Ignoring cash and buybacks |
+| Coupon on maturing debt | Cost that disappears | Comparing it with a policy rate of another tenor |
+| Average yield on new issuance | Marginal cost actually locked in | Using only a secondary-market closing yield |
+| Maturity and time to reset | Pass-through speed | Confusing legal maturity with economic exposure |
+| Interest / public revenue | Fiscal constraint | Mixing cash and accrual accounting |
+| Auction tail, cover and allocation | Primary-market demand | Overreading one auction |
+| Repo, margins and depth | Fragility of buyers’ funding | Treating volatility as insolvency |
+| Foreign ownership and hedge costs | Sensitivity to global allocation | Treating a stock as a future flow |
+
+The OECD provides the comparable overview; national debt offices publish maturity calendars and auction results; central banks and stability authorities monitor liquidity, leverage and balance sheets. For the United States, the [Quarterly Refunding](https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding) is the primary source for issuance strategy. For France, [AFT](https://www.aft.gouv.fr/en/node/452) publishes the stock, maturity and operations. For Japan, the [MOF](https://www.mof.go.jp/english/policy/jgbs/publication/debt_management_report/index.htm) documents JGB structure and management.
+
+## Debt does not explode on the day rates rise
+
+It reprices in slices.
+
+That is why the risk is easy to underestimate. Early in the shock, the average cost barely moves and appears to confirm that the stock is protected. Maturities then accumulate. The average coupon catches up with the market, sometimes as growth slows or deficits remain large.
+
+It is also why catastrophic narratives are weak. Fourteen trillion dollars of refinancing does not have to be found on one morning. It will be rolled in different currencies, markets and tenors by issuers with very different institutions.
+
+The serious question is not: **“Can governments repay $14 trillion in 2026?”** That is not how sovereign finance works. It is: **which coupon will be replaced, at what yield, by which buyers, and how soon must the debt return to market again?**
+
+Governments have not lit one uniform time bomb. But by increasing the weight of short-term funding just as yields have become uncertain again, some have shortened the fuse.
+
+## Sources and method
+
+The OECD figures are 2026 forecasts published in the *Global Debt Report 2026* and cover central governments; structural data refer mainly to the stock observed at end-2025. Japan’s figures cover the end-2025 international investment position. The AFT maturity figure is dated 31 July 2026. The simulator is a constant-stock teaching identity, not a sustainability model or a default forecast.
+
+- [OECD, Global Debt Report 2026, “Sovereign borrowing outlook”](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html)
+- [OECD, report landing page and associated files](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en.html)
+- [IMF, Global Financial Stability Report, April 2026](https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026)
+- [Agence France Trésor, marketable debt at 31 July 2026](https://www.aft.gouv.fr/en/node/452)
+- [U.S. Treasury, Quarterly Refunding](https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding)
+- [Federal Reserve, Financial Stability Report, May 2026](https://www.federalreserve.gov/publications/2026-may-financial-stability-report-overview.htm)
+- [Office of Financial Research, hedge-fund leverage risks, March 2026](https://www.financialresearch.gov/the-ofr-blog/2026/03/26/calm-markets-and-underlying-risks/)
+- [ECB, Financial Stability Review](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/index.en.html)
+- [Japan Ministry of Finance, 2025 international investment position](https://www.mof.go.jp/english/policy/international_policy/reference/iip/e2025.htm)
+- [Japan Ministry of Finance, Debt Management Report](https://www.mof.go.jp/english/policy/jgbs/publication/debt_management_report/index.htm)

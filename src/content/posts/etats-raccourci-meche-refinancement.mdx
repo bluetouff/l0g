@@ -1,0 +1,417 @@
+---
+title: "Les États ont raccourci la mèche"
+seoTitle: "Dette souveraine : le risque du refinancement court | l0g"
+ogTitle: "Les États ont raccourci la mèche"
+description: "18 000 Md$ à emprunter en 2026 : comment les maturités courtes accélèrent le passage des taux dans les budgets et les marchés."
+ogImage: "/illustrations/news/sovereign-refinancing-risk-v1.jpg"
+pubDate: 2026-09-02T08:30:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
+tags: ["dette souveraine", "taux", "refinancement", "risque", "marchés obligataires", "macro"]
+draft: false
+quickTake:
+  fact: "L’OCDE prévoit environ 18 000 milliards de dollars d’emprunts bruts de ses gouvernements centraux en 2026, dont près de 14 000 milliards pour refinancer des titres arrivant à échéance."
+  importance: "Le risque dépend moins du seul niveau de dette que de la vitesse à laquelle l’ancien stock retrouve les rendements du marché."
+  uncertainty: "Une hausse de taux n’entraîne pas mécaniquement une crise : maturité, croissance nominale, demande des investisseurs, liquidité et structure des instruments changent fortement le résultat."
+---
+import SovereignRefinancingSimulator from '../../components/SovereignRefinancingSimulator.astro';
+
+<style>{`
+.l0g-chart{margin:2.2rem 0 2.5rem}
+.l0g-chart svg{border:1px solid rgba(159,177,189,.22);border-radius:18px;overflow:hidden}
+.l0g-chart figcaption{margin:.7rem .35rem 0;color:var(--color-text-muted,#6b7280);font-size:.86rem;line-height:1.5}
+.l0g-svg-mobile{display:none!important}
+.l0g-method{border-left:3px solid #2dd4bf;padding:.9rem 1rem;margin:1.5rem 0;background:rgba(45,212,191,.07)}
+.l0g-warning{border-left:3px solid #fbbf24;padding:.9rem 1rem;margin:1.5rem 0;background:rgba(251,191,36,.07)}
+.l0g-source-list li{margin:.55rem 0}
+.prose table{font-size:.92rem}
+@media(max-width:640px){
+  .l0g-svg-desktop{display:none!important}
+  .l0g-svg-mobile{display:block!important}
+  .prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+  .l0g-chart{margin:1.8rem 0 2rem}
+  .l0g-chart figcaption{font-size:.8rem}
+}
+`}</style>
+
+
+*Le nombre est suffisamment gros pour induire en erreur : les gouvernements centraux de l’OCDE devraient emprunter environ 18 000 milliards de dollars en 2026. Mais près de 14 000 milliards correspondent à des titres arrivant à échéance. Ce n’est pas une création soudaine de dette. C’est de la dette ancienne qui revient devant le marché et découvre le prix de 2026.*
+
+Le débat sur les taux tourne volontiers autour de la prochaine réunion d’une banque centrale. Vingt-cinq points de base de plus, une pause, une baisse repoussée. Pour les finances publiques, ce calendrier n’est que la première horloge. La seconde est enfouie dans les tableaux d’échéances : quel volume doit être refinancé, quand, dans quelle devise, avec quelle indexation et pour quelle durée ?
+
+Cette distinction est décisive au moment où les scénarios monétaires divergent. **Tous les pays ne préparent pas une hausse de taux**, et un relèvement du taux directeur n’est pas la même chose qu’une hausse du rendement à dix ou trente ans. Le long terme peut monter parce que l’inflation attendue augmente, parce que le taux réel jugé nécessaire est plus élevé, parce que l’offre de titres grossit ou parce que les investisseurs exigent une prime supplémentaire pour immobiliser leur argent. Pour un Trésor, le point commun est plus simple : le coupon auquel il peut remplacer la dette qui arrive à échéance.
+
+Cet article ne prévoit ni hausse générale des taux ni crise souveraine. Il examine une question plus étroite, vérifiable et déjà pertinente : **à quelle vitesse un rendement plus élevé traverse-t-il le stock de dette, et où cette transmission peut-elle devenir un risque de marché ?**
+
+## 18 000 milliards : le mur qui n’en est pas un
+
+L’[OCDE estime](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html) que les gouvernements centraux de ses pays membres devront lever environ **18 000 milliards de dollars en 2026**. Près de **14 000 milliards** relèvent du refinancement, soit le remplacement de titres arrivant à échéance. Le rapport situe ces besoins de refinancement autour de **19 % du PIB de la zone OCDE**.
+
+Ces chiffres ont un périmètre précis. Ils concernent les **gouvernements centraux** et principalement leur dette négociable ; ils ne constituent ni une mesure de la dette publique mondiale, ni le déficit consolidé de toutes les administrations publiques, ni le montant que les contribuables devraient « rembourser » en 2026. Une obligation de dix ans remboursée par une nouvelle obligation de dix ans génère une émission brute sans augmenter, à elle seule, le stock nominal.
+
+Le résidu entre 18 000 et 14 000 milliards donne un ordre de grandeur du financement net et d’autres ajustements de trésorerie. Il ne faut pas le substituer mécaniquement au déficit public : les émissions peuvent aussi financer des variations d’encaisse, des rachats, des prêts, des opérations de change ou des différences de calendrier et de méthode.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 500" role="img" aria-labelledby="wall-fr-d-title wall-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="wall-fr-d-title">Le mur de financement souverain de 2026</title>
+<desc id="wall-fr-d-desc">Les gouvernements centraux de l’OCDE devraient emprunter environ 18 000 milliards de dollars en 2026, dont près de 14 000 milliards pour refinancer des titres arrivant à échéance.</desc>
+<rect x="0" y="0" width="960" height="500" rx="20" fill="#081018"/>
+<text x="48" y="56" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="start">OCDE · 2026 · gouvernements centraux</text>
+<text x="48" y="105" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="750" text-anchor="start">Le mur de financement souverain de 2026</text>
+<text x="48" y="141" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="400" text-anchor="start">Prévision, milliards de dollars, chiffres arrondis</text>
+<rect x="48" y="184" width="864" height="112" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<rect x="48" y="184" width="672" height="112" rx="18" fill="#ff5c7a"/>
+<rect x="702" y="184" width="210" height="112" rx="18" fill="#fbbf24"/>
+<text x="384" y="230" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">≈ 14 000</text>
+<text x="384" y="266" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="650" text-anchor="middle">refinancement d’échéances</text>
+<text x="807" y="230" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="31" font-weight="800" text-anchor="middle">≈ 4 000</text>
+<text x="807" y="259" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">financement net</text>
+<text x="807" y="280" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">et ajustements</text>
+<text x="48" y="355" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="46" font-weight="800" text-anchor="start">≈ 18 000 milliards $</text>
+<text x="48" y="393" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="500" text-anchor="start">d’emprunts bruts : ce n’est pas 18 000 milliards de dette nouvelle.</text>
+<line x1="48" y1="433" x2="912" y2="433" stroke="#294050" stroke-width="1"/>
+<text x="48" y="464" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="400" text-anchor="start">Périmètre : dette négociable des gouvernements centraux de l’OCDE.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 760" role="img" aria-labelledby="wall-fr-m-title wall-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="wall-fr-m-title">Le mur de financement souverain de 2026</title>
+<desc id="wall-fr-m-desc">Les gouvernements centraux de l’OCDE devraient emprunter environ 18 000 milliards de dollars en 2026, dont près de 14 000 milliards pour refinancer des titres arrivant à échéance.</desc>
+<rect x="0" y="0" width="390" height="760" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">OCDE · 2026</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">Le mur de financement</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">souverain</text>
+<text x="24" y="141" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="400" text-anchor="start">Gouvernements centraux · Md$</text>
+<rect x="24" y="180" width="342" height="210" rx="18" fill="#ff5c7a"/>
+<text x="195" y="248" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="850" text-anchor="middle">≈ 14 000</text>
+<text x="195" y="291" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" text-anchor="middle">refinancement</text>
+<text x="195" y="321" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="middle">de titres arrivant à échéance</text>
+<rect x="24" y="410" width="342" height="132" rx="18" fill="#fbbf24"/>
+<text x="195" y="461" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="850" text-anchor="middle">≈ 4 000</text>
+<text x="195" y="496" fill="#081018" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle">financement net et ajustements</text>
+<text x="24" y="592" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="31" font-weight="850" text-anchor="start">Total ≈ 18 000 Md$</text>
+<text x="24" y="631" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">Emprunts bruts, pas dette</text>
+<text x="24" y="657" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">nouvelle intégrale.</text>
+<line x1="24" y1="692" x2="366" y2="692" stroke="#294050" stroke-width="1"/>
+<text x="24" y="721" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="400" text-anchor="start">Prévision OCDE, chiffres arrondis.</text>
+</svg>
+<figcaption>Lecture : les 18 000 milliards de dollars sont un flux brut d’émissions prévu, pas un accroissement équivalent de la dette. Le segment résiduel est arrondi et ne doit pas être lu comme une mesure exacte du déficit public. <a href="https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html">Source : OCDE, Global Debt Report 2026.</a></figcaption>
+</figure>
+
+La masse à refinancer compte néanmoins. L’OCDE indique qu’environ **un tiers des obligations souveraines à taux fixe en circulation à la fin de 2025 arriveront à échéance entre 2026 et 2028**. Chaque titre remboursé perd son ancien coupon ; son remplaçant reçoit le rendement demandé au moment de l’émission. Si ce rendement est supérieur, la charge d’intérêts augmente. Si les taux baissent, le mécanisme fonctionne dans l’autre sens.
+
+Voilà le risque réel du « mur » : non pas un paiement unique de 14 000 milliards, mais une succession d’opérations au cours desquelles le coût de la dette est remis à jour.
+
+## Le prix de marché avance en secondes, le budget en années
+
+Une obligation à taux fixe protège l’émetteur jusqu’à l’échéance. Son prix peut chuter sur le marché secondaire sans modifier le coupon que l’État verse à son détenteur. La moins-value existe pour celui qui vend ou valorise le titre ; elle n’augmente pas immédiatement le paiement contractuel du Trésor.
+
+La transmission budgétaire commence lorsque l’État émet de nouveaux titres : pour remplacer une échéance, financer un déficit ou reconstituer sa trésorerie. Le rendement marginal, celui de la prochaine émission, peut donc s’écarter longtemps du taux effectif moyen payé sur l’ensemble du stock.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 520" role="img" aria-labelledby="clocks-fr-d-title clocks-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="clocks-fr-d-title">Deux horloges pour un même choc de taux</title>
+<desc id="clocks-fr-d-desc">Le rendement de marché peut changer immédiatement, tandis que le taux effectif du stock de dette ne se rapproche du nouveau rendement qu’au fil des refinancements.</desc>
+<rect x="0" y="0" width="960" height="520" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="750" text-anchor="start">TRANSMISSION</text>
+<text x="48" y="98" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800" text-anchor="start">Deux horloges pour un même choc de taux</text>
+<rect x="48" y="142" width="404" height="292" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<rect x="508" y="142" width="404" height="292" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="76" y="184" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="start">Horloge du marché</text>
+<text x="536" y="184" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="start">Horloge budgétaire</text>
+<circle cx="250" cy="282" r="78" fill="#142433" stroke="#ff5c7a" stroke-width="5"/>
+<line x1="250" y1="282" x2="250" y2="229" stroke="#f4f7f8" stroke-width="5"/>
+<line x1="250" y1="282" x2="300" y2="282" stroke="#f4f7f8" stroke-width="5"/>
+<circle cx="250" cy="282" r="7" fill="#ff5c7a"/>
+<text x="250" y="391" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="700" text-anchor="middle">secondes</text>
+<line x1="548" y1="355" x2="872" y2="355" stroke="#294050" stroke-width="2"/>
+<line x1="548" y1="222" x2="548" y2="355" stroke="#294050" stroke-width="2"/>
+<polyline points="552,340 616,340 616,316 680,316 680,286 744,286 744,254 808,254 808,225 868,225" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="554" y="382" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">années →</text>
+<text x="548" y="214" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" text-anchor="start">taux effectif</text>
+<text x="48" y="477" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="500" text-anchor="start">Le marché reprice le prochain emprunt. Le budget reprice le stock, échéance après échéance.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 840" role="img" aria-labelledby="clocks-fr-m-title clocks-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="clocks-fr-m-title">Deux horloges pour un même choc de taux</title>
+<desc id="clocks-fr-m-desc">Le rendement de marché peut changer immédiatement, tandis que le taux effectif du stock de dette ne se rapproche du nouveau rendement qu’au fil des refinancements.</desc>
+<rect x="0" y="0" width="390" height="840" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">TRANSMISSION</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">Deux horloges</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">pour un même choc</text>
+<rect x="24" y="150" width="342" height="260" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="188" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Marché</text>
+<circle cx="195" cy="276" r="66" fill="#142433" stroke="#ff5c7a" stroke-width="5"/>
+<line x1="195" y1="276" x2="195" y2="231" stroke="#f4f7f8" stroke-width="5"/>
+<line x1="195" y1="276" x2="237" y2="276" stroke="#f4f7f8" stroke-width="5"/>
+<circle cx="195" cy="276" r="6" fill="#ff5c7a"/>
+<text x="195" y="375" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="middle">secondes</text>
+<rect x="24" y="430" width="342" height="290" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="469" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Budget</text>
+<line x1="56" y1="650" x2="334" y2="650" stroke="#294050" stroke-width="2"/>
+<line x1="56" y1="513" x2="56" y2="650" stroke="#294050" stroke-width="2"/>
+<polyline points="60,636 114,636 114,611 168,611 168,580 222,580 222,550 276,550 276,521 330,521" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="681" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">années →</text>
+<text x="24" y="766" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">Le prochain emprunt bouge vite.</text>
+<text x="24" y="794" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">Le stock bouge par échéances.</text>
+</svg>
+<figcaption>Schéma de transmission. Le rendement marginal peut bouger en une séance ; le coût moyen du stock dépend des échéances, des instruments indexés ou variables et des nouvelles émissions.</figcaption>
+</figure>
+
+Prenons un stock simplifié de 3 000 milliards, financé en moyenne à 2 %. La charge annuelle est de 60 milliards. Si le rendement de refinancement passe à 4 % mais que 12,5 % seulement du stock est remplacé chaque année, le taux effectif n’atteint pas 4 % immédiatement. Dans notre modèle uniforme, il passe à 2,25 % après un an, 3 % après quatre ans et 4 % après huit ans. La charge atteint alors respectivement 67,5, 90 et 120 milliards.
+
+Avec 25 % du stock remplacé chaque année, le taux effectif atteint 4 % au bout de quatre ans. Le choc final est identique ; sa vitesse ne l’est pas. C’est cette vitesse que la maturité de la dette achète ou vend.
+
+Dans les comptes réels, la mécanique est moins propre. Les échéances ne sont pas uniformes. Une part de la dette est indexée sur l’inflation ou à taux variable. Les déficits modifient le stock, les rachats déplacent les maturités, les swaps peuvent changer l’exposition économique et les conventions comptables distinguent parfois charge courue et paiement de caisse. Le modèle ci-dessous ne prévoit donc aucun pays : il rend visible un seul canal.
+
+## Simuler le passage du taux dans le stock
+
+<SovereignRefinancingSimulator lang="fr" />
+
+La simulation maintient le stock constant et compare deux profils de refinancement. Chaque année, une tranche égale de l’ancien stock est remplacée au nouveau rendement, jusqu’à ce que 100 % ait été repricé. Les titres nouvellement émis ne sont pas refinancés une seconde fois pendant l’horizon. Cette simplification isole l’effet de maturité ; elle exclut croissance, déficit primaire, inflation, change, rachats, dérivés, fiscalité et réaction des investisseurs.
+
+## Pourquoi la mèche s’est raccourcie
+
+Lorsque les rendements longs deviennent coûteux, émettre davantage à court terme peut sembler rationnel. Le Trésor évite de verrouiller pendant vingt ou trente ans un coupon qu’il espère temporaire. Les bons courts disposent souvent d’une base d’acheteurs profonde : fonds monétaires, banques, entreprises et investisseurs gérant leur trésorerie.
+
+Mais cette décision échange un coût certain contre un risque futur. Le titre doit revenir plus vite au marché. Si les taux restent élevés, l’économie initiale disparaît au refinancement. S’ils montent davantage, la charge se transmet plus rapidement. Si le marché se grippe, le besoin de refinancement est plus fréquent.
+
+L’[OCDE](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html) estime que les bons à court terme représentaient environ **15 % de la dette souveraine négociable de ses membres à la fin de 2025**, près de cinq points de pourcentage au-dessus de leur moyenne de 2015-2019. Le volume d’émissions de bons a dépassé celui des obligations conventionnelles à taux fixe, tandis que la maturité moyenne a reculé dans une majorité des pays étudiés en 2025. L’agrégat OCDE reste proche de huit ans : le stock n’est donc pas devenu uniformément court. Le changement est marginal à l’échelle d’une obligation, mais matériel à l’échelle de dizaines de milliers de milliards.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 540" role="img" aria-labelledby="fuse-fr-d-title fuse-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="fuse-fr-d-title">La maturité décide de la vitesse du choc</title>
+<desc id="fuse-fr-d-desc">Dans un exemple illustratif à stock constant, une dette refinancée par tranches annuelles de 12,5 % n’est repricée qu’à moitié après quatre ans, contre 100 % avec des tranches de 25 %.</desc>
+<rect x="0" y="0" width="960" height="540" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="750" text-anchor="start">EXEMPLE ILLUSTRATIF</text>
+<text x="48" y="98" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800" text-anchor="start">La maturité décide de la vitesse du choc</text>
+<text x="48" y="130" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="500" text-anchor="start">Même stock, même choc de rendement, profils de refinancement différents.</text>
+<rect x="48" y="170" width="864" height="132" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="72" y="208" fill="#60a5fa" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Profil long</text>
+<text x="72" y="237" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">12,5 % du stock repricé par an</text>
+<rect x="370" y="204" width="480" height="46" rx="10" fill="#142433"/>
+<rect x="370" y="204" width="240" height="46" rx="10" fill="#60a5fa"/>
+<text x="860" y="235" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="800" text-anchor="end">50 %</text>
+<text x="370" y="276" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" text-anchor="start">après 4 ans</text>
+<rect x="48" y="322" width="864" height="132" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="72" y="360" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Profil court</text>
+<text x="72" y="389" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">25 % du stock repricé par an</text>
+<rect x="370" y="356" width="480" height="46" rx="10" fill="#142433"/>
+<rect x="370" y="356" width="480" height="46" rx="10" fill="#ff5c7a"/>
+<text x="860" y="387" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="800" text-anchor="end">100 %</text>
+<text x="370" y="428" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" text-anchor="start">après 4 ans</text>
+<text x="48" y="501" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="550" text-anchor="start">Une maturité courte ne crée pas le choc : elle accélère son passage dans le stock.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 850" role="img" aria-labelledby="fuse-fr-m-title fuse-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="fuse-fr-m-title">La maturité décide de la vitesse du choc</title>
+<desc id="fuse-fr-m-desc">Dans un exemple illustratif à stock constant, une dette refinancée par tranches annuelles de 12,5 % n’est repricée qu’à moitié après quatre ans, contre 100 % avec des tranches de 25 %.</desc>
+<rect x="0" y="0" width="390" height="850" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">EXEMPLE</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">La maturité décide</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">de la vitesse</text>
+<text x="24" y="143" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="500" text-anchor="start">Même choc, deux profils.</text>
+<rect x="24" y="180" width="342" height="255" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="220" fill="#60a5fa" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Profil long</text>
+<text x="48" y="251" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">12,5 % par an</text>
+<rect x="48" y="288" width="294" height="48" rx="10" fill="#142433"/>
+<rect x="48" y="288" width="147" height="48" rx="10" fill="#60a5fa"/>
+<text x="48" y="375" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">50 % repricé après 4 ans</text>
+<rect x="24" y="459" width="342" height="255" rx="18" fill="#101b26" stroke="#294050" stroke-width="1"/>
+<text x="48" y="499" fill="#ff5c7a" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="750" text-anchor="start">Profil court</text>
+<text x="48" y="530" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">25 % par an</text>
+<rect x="48" y="567" width="294" height="48" rx="10" fill="#142433"/>
+<rect x="48" y="567" width="294" height="48" rx="10" fill="#ff5c7a"/>
+<text x="48" y="654" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">100 % repricé après 4 ans</text>
+<text x="24" y="761" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">La maturité courte accélère</text>
+<text x="24" y="789" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="550" text-anchor="start">la transmission, pas le choc.</text>
+</svg>
+<figcaption>Exemple pédagogique à stock constant. Une part annuelle de 12,5 % correspond à une répartition uniforme sur huit ans ; 25 % à quatre ans. Aucun pays réel n’a un calendrier aussi régulier.</figcaption>
+</figure>
+
+La maturité moyenne ne dit pas tout. Deux portefeuilles affichant huit ans peuvent avoir des murs très différents : l’un régulièrement réparti, l’autre concentré sur quelques années. Elle ne mesure pas non plus exactement la **durée jusqu’à refixation du taux**. Un titre indexé sur l’inflation peut avoir une longue échéance et transmettre rapidement une hausse de l’indice ; un swap peut transformer économiquement du taux fixe en taux variable.
+
+Le bon indicateur n’est donc jamais un chiffre isolé. Il faut lire ensemble le profil annuel des remboursements, la part de dette à court terme, l’indexation, la devise, le coupon des titres sortants et le rendement des titres entrants.
+
+## Trois hausses de taux qui ne racontent pas la même histoire
+
+Le vocabulaire « les taux montent » mélange au moins trois phénomènes.
+
+**Le taux directeur** est le prix de très court terme piloté par la banque centrale. Il affecte rapidement les instruments variables et les bons très courts, puis influence la courbe entière selon les anticipations de marché.
+
+**Le taux réel et l’inflation attendue** composent une partie du rendement nominal. Une économie plus résistante, un choc d’offre ou une inflation durable peuvent faire monter les rendements longs même sans nouvelle décision de la banque centrale.
+
+**La [prime de terme](/glossaire/prime-de-terme/) et de risque budgétaire** rémunère l’incertitude liée à la durée, à l’inflation, à la liquidité et à l’offre future de titres. Un marché peut exiger davantage pour absorber une émission abondante alors que le taux directeur reste inchangé.
+
+Ces canaux ont des conséquences différentes. Une hausse courte mais rapidement inversée pénalise surtout les émetteurs qui se refinancent fréquemment. Une hausse durable de la prime de terme touche le coût des émissions longues. Une inflation plus élevée peut augmenter rapidement la charge des titres indexés, mais aussi relever le PIB nominal et les recettes : le bilan budgétaire dépend alors de la vitesse relative de ces mouvements.
+
+C’est pourquoi une carte des prochaines décisions monétaires ne suffit pas pour mesurer le risque souverain. Il faut suivre le **prix d’émission réel**, pas seulement le taux officiel.
+
+## États-Unis : le risque vient autant de la plomberie que du budget
+
+Le marché des Treasuries dispose de la monnaie de réserve, d’une base mondiale d’investisseurs et d’une profondeur sans équivalent. Il n’est pas un marché souverain ordinaire. Mais son volume transforme un incident de liquidité en problème mondial.
+
+Le Trésor américain publie chaque trimestre sa stratégie de financement et s’appuie sur le principe d’émissions « régulières et prévisibles ». Ses décisions ne consistent pas simplement à choisir l’échéance la moins chère du jour : elles cherchent à satisfaire les besoins de financement au moindre coût attendu dans le temps, sous contrainte de liquidité et de demande. Les annonces, calendriers et documents du **Quarterly Refunding** sont accessibles auprès du [U.S. Treasury](https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding).
+
+Le risque de marché apparaît lorsque l’absorption des titres dépend d’intermédiaires utilisant du levier. Certaines stratégies de valeur relative achètent un Treasury au comptant et vendent un contrat à terme proche, en finançant la position sur le [repo](/glossaire/repo/). L’écart attendu est faible ; le levier peut donc être élevé. Une hausse de volatilité, des marges plus fortes ou un retrait du financement obligent à réduire la position, parfois en vendant le titre au moment où la liquidité est déjà mauvaise.
+
+La [Réserve fédérale](https://www.federalreserve.gov/publications/2026-may-financial-stability-report-overview.htm), l’[Office of Financial Research](https://www.financialresearch.gov/the-ofr-blog/2026/03/26/calm-markets-and-underlying-risks/) et le [FMI](https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026) suivent ces mécanismes. Le point n’est pas que les hedge funds causeraient nécessairement la prochaine crise, ni que toute hausse de rendement déclencherait des ventes forcées. Le point est que le détenteur marginal d’une obligation et son mode de financement comptent autant que l’identité de l’émetteur.
+
+Une [adjudication](/glossaire/adjudication/) faible n’est pas non plus un défaut. Elle peut se traduire par un « tail », soit un rendement d’adjudication supérieur au rendement observé juste avant, une concession plus importante ou une part accrue laissée aux dealers. Le signal devient préoccupant s’il se répète, s’accompagne d’une profondeur réduite et renchérit durablement les émissions suivantes.
+
+## France et zone euro : huit ans achètent du temps, pas l’immunité
+
+Au 31 juillet 2026, l’Agence France Trésor mesurait la maturité moyenne de la dette négociable à **8 ans et 163 jours** dans ses [chiffres clés](https://www.aft.gouv.fr/en/node/452). Cette longueur ralentit la transmission d’un choc de taux par rapport à un portefeuille dominé par les bons à quelques mois. Elle explique pourquoi la charge moyenne peut continuer de monter plusieurs années après le pic des rendements : l’ancien stock bon marché disparaît progressivement.
+
+Ce coussin ne supprime pas le risque. La France doit refinancer ses échéances et financer ses déficits ; les BTF transmettent les conditions courtes ; les obligations indexées sur l’inflation suivent une autre mécanique ; et un besoin brut élevé augmente la quantité que le marché doit absorber. La maturité moyenne mesure un délai, pas une garantie de solvabilité.
+
+Dans la zone euro, la dette nationale s’échange aussi dans un système financier commun. Un choc de taux peut modifier les valorisations détenues par les banques, les assureurs et les fonds, tandis que la réduction des portefeuilles de l’Eurosystème remet davantage de [duration](/glossaire/duration/) entre les mains d’investisseurs sensibles au prix. La [Revue de stabilité financière de la BCE](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/index.en.html) suit ces interactions entre risque souverain, banques et intermédiaires non bancaires.
+
+Il faut toutefois éviter le raccourci inverse : le retrait d’un acheteur public ne signifie pas qu’il n’existe plus de demande. Des ménages, banques, assureurs, fonds et investisseurs étrangers peuvent absorber l’offre si le rendement est suffisant. Le problème n’est pas l’absence mécanique d’acheteurs, mais le prix et la stabilité de cette demande lorsque plusieurs souverains émettent beaucoup en même temps.
+
+## Japon : un rendement intérieur peut déplacer du capital mondial
+
+Le Japon ajoute une couche particulière. Son État porte un stock de dette très élevé, mais le pays est aussi un créancier net majeur du reste du monde. À la fin de 2025, le ministère des Finances recensait environ **1 806 000 milliards de yens d’actifs extérieurs**, **1 244 000 milliards de passifs** et une position extérieure nette proche de **562 000 milliards de yens**. Les chiffres portent sur l’ensemble des secteurs résidents, pas sur une caisse mobilisable par le gouvernement. [Ministère japonais des Finances, position extérieure 2025](https://www.mof.go.jp/english/policy/international_policy/reference/iip/e2025.htm).
+
+Lorsque les rendements domestiques sont très bas, banques, assureurs, fonds de pension et ménages ont davantage de raisons de chercher du rendement à l’étranger. Si les rendements japonais remontent, l’arbitrage change. Le rendement couvert contre le risque de change peut devenir moins attractif aux États-Unis ou en Europe ; certaines institutions peuvent préférer des actifs domestiques correspondant mieux à leurs engagements en yens.
+
+Ce mécanisme ne permet pas de prévoir un rapatriement massif. Les portefeuilles ont des passifs, des contraintes réglementaires, des couvertures et des horizons différents. Une position extérieure nette n’indique ni qui vendra, ni quand, ni quel titre. Elle indique seulement qu’une variation même marginale de l’allocation japonaise peut porter sur une base d’actifs considérable.
+
+Le [Debt Management Report du ministère des Finances](https://www.mof.go.jp/english/policy/jgbs/publication/debt_management_report/index.htm) et les [décisions de politique monétaire de la Banque du Japon](https://www.boj.or.jp/en/mopo/mpmdeci/index.htm) fournissent les éléments primaires pour suivre les émissions, la structure des JGB et la normalisation monétaire. Le risque mondial n’est pas que « le Japon vende tout ». C’est que le rendement sans risque disponible au Japon redevienne une concurrence crédible pour les obligations étrangères.
+
+## Le premier accident ne serait probablement pas un défaut
+
+Un État disposant d’un marché profond et empruntant dans sa propre monnaie peut supporter longtemps une hausse graduelle de sa charge. Avant le défaut, d’autres tensions peuvent apparaître.
+
+**Le budget.** Les intérêts absorbent une part croissante des recettes. Le gouvernement compense par davantage d’impôts, moins de dépenses, plus de dette ou un mélange des trois. La réaction politique peut augmenter ou réduire la prime exigée par le marché.
+
+**Les banques.** La baisse du prix des obligations crée des pertes latentes ou réalisées selon leur classement comptable, leur financement et leur besoin de liquidité. Le risque souverain et le risque bancaire peuvent alors se renforcer mutuellement.
+
+**Le repo.** Une obligation sert de garantie à un financement de très court terme. Si sa volatilité augmente, les décotes et [appels de marge](/glossaire/appel-de-marge/) peuvent monter. Le propriétaire doit apporter du cash ou réduire sa position.
+
+**La devise.** Dans un pays dépendant des investisseurs étrangers ou endetté en monnaie étrangère, une hausse des rendements peut ne pas suffire à retenir le capital. La dépréciation renchérit les passifs en devise et l’inflation importée.
+
+**L’adjudication.** Une émission mal absorbée augmente la concession offerte au marché. Elle devient systémique seulement si la faiblesse se répète, contamine les marchés de financement et modifie la perception de la trajectoire budgétaire.
+
+<figure class="l0g-chart">
+<svg class="l0g-svg-desktop" viewBox="0 0 960 590" role="img" aria-labelledby="loop-fr-d-title loop-fr-d-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="loop-fr-d-title">Quand le risque budgétaire devient risque de marché</title>
+<desc id="loop-fr-d-desc">Une hausse de rendement peut réduire le prix des obligations, déclencher des appels de marge et des ventes forcées, dégrader la liquidité ou les adjudications, puis pousser encore les rendements à la hausse. La boucle n’est pas automatique.</desc>
+<rect x="0" y="0" width="960" height="590" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="750" text-anchor="start">MÉCANIQUE DE MARCHÉ</text>
+<text x="48" y="98" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="800" text-anchor="start">Quand le risque budgétaire devient risque de marché</text>
+<rect x="350" y="142" width="260" height="82" rx="16" fill="#ff5c7a" stroke="#294050" stroke-width="1"/>
+<text x="480.0" y="191" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Rendements en hausse</text>
+<rect x="650" y="245" width="250" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="775.0" y="294" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Prix obligataires en baisse</text>
+<rect x="570" y="390" width="300" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="720.0" y="439" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Marges, collatéral, ventes</text>
+<rect x="90" y="390" width="300" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="240.0" y="439" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Liquidité / adjudication</text>
+<rect x="60" y="245" width="250" height="82" rx="16" fill="#142433" stroke="#294050" stroke-width="1"/>
+<text x="185.0" y="294" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Prime de risque plus forte</text>
+<polyline points="610,184 690,184 690,238" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="844,327 844,370 808,385" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="570,432 410,432" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="166,390 122,350 122,328" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="310,286 350,225" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="480" y="300" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="middle">amplification</text>
+<text x="480" y="329" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="750" text-anchor="middle">conditionnelle</text>
+<text x="48" y="525" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="500" text-anchor="start">Conditions nécessaires : levier, marges ou collatéral contraignants, profondeur insuffisante.</text>
+<text x="48" y="554" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="600" text-anchor="start">Ce schéma décrit un canal possible, pas une prévision de crise.</text>
+</svg>
+<svg class="l0g-svg-mobile" viewBox="0 0 390 1010" role="img" aria-labelledby="loop-fr-m-title loop-fr-m-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<title id="loop-fr-m-title">Quand le risque budgétaire devient risque de marché</title>
+<desc id="loop-fr-m-desc">Une hausse de rendement peut réduire le prix des obligations, déclencher des appels de marge et des ventes forcées, dégrader la liquidité ou les adjudications, puis pousser encore les rendements à la hausse. La boucle n’est pas automatique.</desc>
+<rect x="0" y="0" width="390" height="1010" rx="18" fill="#081018"/>
+<text x="24" y="42" fill="#2dd4bf" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="750" text-anchor="start">MARCHÉ</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">Du budget au marché</text>
+<text x="24" y="110" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="27" font-weight="800" text-anchor="start">et retour</text>
+<rect x="24" y="155" width="342" height="108" rx="17" fill="#ff5c7a" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="209" r="20" fill="#081018"/>
+<text x="57" y="216" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">1</text>
+<text x="90" y="216" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="start">Rendements en hausse</text>
+<line x1="195" y1="263" x2="195" y2="284" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,277 195,287 203,277" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="289" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="343" r="20" fill="#ff5c7a"/>
+<text x="57" y="350" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">2</text>
+<text x="90" y="350" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="start">Prix obligataires en baisse</text>
+<line x1="195" y1="397" x2="195" y2="418" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,411 195,421 203,411" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="423" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="477" r="20" fill="#ff5c7a"/>
+<text x="57" y="484" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">3</text>
+<text x="90" y="470" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="start">Marges, collatéral,</text>
+<text x="90" y="495" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" text-anchor="start">ventes</text>
+<line x1="195" y1="531" x2="195" y2="552" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,545 195,555 203,545" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="557" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="611" r="20" fill="#ff5c7a"/>
+<text x="57" y="618" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">4</text>
+<text x="90" y="618" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="start">Liquidité ou adjudication</text>
+<line x1="195" y1="665" x2="195" y2="686" stroke="#9fb1bd" stroke-width="3"/>
+<polyline points="187,679 195,689 203,679" fill="none" stroke="#9fb1bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="691" width="342" height="108" rx="17" fill="#142433" stroke="#294050" stroke-width="1"/>
+<circle cx="57" cy="745" r="20" fill="#ff5c7a"/>
+<text x="57" y="752" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="800" text-anchor="middle">5</text>
+<text x="90" y="752" fill="#f4f7f8" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="start">Prime de risque plus forte</text>
+<text x="24" y="866" fill="#fbbf24" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="750" text-anchor="start">Boucle possible, pas automatique.</text>
+<text x="24" y="902" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">Il faut du levier, des contraintes</text>
+<text x="24" y="929" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="start">de marge ou une faible profondeur.</text>
+<text x="24" y="971" fill="#9fb1bd" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="650" text-anchor="start">Ce n’est pas une prévision de crise.</text>
+</svg>
+<figcaption>Canal d’amplification possible. Le FMI, la Réserve fédérale et d’autres autorités surveillent notamment le levier des intermédiaires non bancaires, les appels de marge et la liquidité des marchés souverains. <a href="https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026">Source de contexte : FMI, Global Financial Stability Report, avril 2026.</a></figcaption>
+</figure>
+
+Le [FMI, dans son GFSR d’avril 2026](https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026), ne présente pas ces canaux comme une chaîne inévitable. Il insiste sur les interactions : offre souveraine importante, bilan des intermédiaires, levier non bancaire, garanties, retraits de liquidité et lien entre banques et États. L’accident naît moins souvent d’un ratio isolé que de la rencontre entre un besoin de financement rigide et un acheteur obligé de se désendetter.
+
+## Le meilleur contre-argument : les marchés ont déjà absorbé beaucoup
+
+L’alerte doit être mise à l’épreuve des faits. Les marchés souverains ont absorbé des volumes considérables depuis le premier cycle de hausse sans crise généralisée. La majeure partie de la dette des pays avancés reste à taux fixe. Une maturité proche de huit ans au niveau OCDE crée une inertie réelle. Les Trésors disposent de trésorerie, de rachats, d’échanges et d’une gamme d’échéances pour lisser leurs besoins.
+
+La hausse des rendements attire aussi des acheteurs. Les fonds de pension et assureurs peuvent mieux apparier leurs engagements ; les ménages retrouvent un revenu obligataire ; les investisseurs étrangers obtiennent une meilleure rémunération. Une courbe plus haute n’est pas uniquement un coût : elle recrée de la demande.
+
+Enfin, le ratio dette sur PIB dépend du dénominateur. Une croissance nominale supérieure au taux d’intérêt effectif peut stabiliser le poids de la dette malgré un déficit modéré. Une inflation inattendue réduit la valeur réelle d’une dette nominale fixe, même si elle peut simultanément augmenter les taux et le coût des titres indexés.
+
+Ces amortisseurs invalident toute prophétie de crise automatique. Ils n’annulent pas la question du calendrier. Plus la dette est refinancée rapidement, moins l’État dispose de temps pour que croissance, inflation ou ajustement budgétaire compensent le nouveau coût.
+
+## Le tableau de bord derrière les titres alarmistes
+
+Un tableau de bord utile tient en quelques séries bien définies.
+
+| Indicateur | Mesure | Piège à éviter |
+|---|---|---|
+| Échéances à douze et trente-six mois | Montant devant retrouver un prix de marché | Le confondre avec de la dette nouvelle |
+| Part de bons courts | Fréquence de refinancement | Ignorer les rachats et la trésorerie |
+| Coupon des titres arrivant à échéance | Coût qui disparaît | Le comparer à un taux directeur d’une autre maturité |
+| Rendement moyen des nouvelles émissions | Coût marginal réellement verrouillé | Utiliser seulement le rendement secondaire de clôture |
+| Maturité et durée jusqu’à refixation | Vitesse de transmission | Confondre échéance légale et exposition économique |
+| Intérêts / recettes publiques | Contrainte budgétaire | Mélanger comptabilité de caisse et droits constatés |
+| Tail, couverture et allocation des adjudications | Qualité de la demande primaire | Surinterpréter une seule adjudication |
+| Repo, marges et profondeur | Fragilité du financement des acheteurs | Assimiler volatilité et insolvabilité |
+| Détention étrangère et coût de couverture | Sensibilité aux arbitrages internationaux | Prendre un stock pour un flux futur |
+
+L’OCDE publie le panorama comparable ; les agences nationales de dette fournissent les calendriers d’échéances et résultats d’adjudication ; les banques centrales et autorités de stabilité suivent la liquidité, le levier et les bilans. Pour les États-Unis, le [Quarterly Refunding](https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding) est la source primaire de la stratégie d’émission. Pour la France, l’[AFT](https://www.aft.gouv.fr/en/node/452) publie encours, maturité et opérations. Pour le Japon, le [MOF](https://www.mof.go.jp/english/policy/jgbs/publication/debt_management_report/index.htm) documente la structure et la gestion des JGB.
+
+## La dette n’explose pas le jour où le taux monte
+
+Elle change de prix par tranches.
+
+C’est ce qui rend le risque facile à sous-estimer. Au début du choc, la charge moyenne bouge peu et semble confirmer que le stock est protégé. Puis les échéances s’accumulent. Le coupon moyen rattrape le marché, parfois au moment où la croissance ralentit ou où les déficits restent élevés.
+
+C’est aussi ce qui rend les scénarios catastrophistes fragiles. Quatorze mille milliards de dollars de refinancement ne doivent pas être trouvés en une matinée. Ils seront roulés dans des monnaies, des marchés et des échéances différents, par des émetteurs aux institutions très inégales.
+
+La question sérieuse n’est donc pas : **« les États peuvent-ils rembourser 14 000 milliards en 2026 ? »** Ils ne fonctionnent pas ainsi. Elle est : **quel coupon remplaceront-ils, à quel rendement, auprès de quels acheteurs et avec combien de temps avant de revenir à nouveau au marché ?**
+
+Les gouvernements n’ont pas allumé une bombe à retardement uniforme. Mais en augmentant le poids du court terme au moment où les rendements redeviennent incertains, une partie d’entre eux a effectivement raccourci la mèche.
+
+## Sources et méthode
+
+Les chiffres OCDE sont des prévisions 2026 publiées dans le *Global Debt Report 2026* et portent sur les gouvernements centraux ; les données de structure renvoient principalement au stock observé fin 2025. Les chiffres japonais portent sur la position extérieure à fin 2025. La maturité publiée par l’AFT est arrêtée au 31 juillet 2026. Le simulateur est une identité pédagogique à stock constant, pas un modèle de soutenabilité ni une prévision de défaut.
+
+- [OCDE, Global Debt Report 2026, chapitre « Sovereign borrowing outlook »](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html)
+- [OCDE, page du rapport et fichiers associés](https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en.html)
+- [FMI, Global Financial Stability Report, avril 2026](https://www.imf.org/en/Publications/GFSR/Issues/2026/04/14/global-financial-stability-report-april-2026)
+- [Agence France Trésor, dette négociable au 31 juillet 2026](https://www.aft.gouv.fr/en/node/452)
+- [U.S. Treasury, Quarterly Refunding](https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding)
+- [Federal Reserve, Financial Stability Report, mai 2026](https://www.federalreserve.gov/publications/2026-may-financial-stability-report-overview.htm)
+- [Office of Financial Research, risques et levier des hedge funds, mars 2026](https://www.financialresearch.gov/the-ofr-blog/2026/03/26/calm-markets-and-underlying-risks/)
+- [BCE, Financial Stability Review](https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/index.en.html)
+- [Ministère japonais des Finances, position extérieure 2025](https://www.mof.go.jp/english/policy/international_policy/reference/iip/e2025.htm)
+- [Ministère japonais des Finances, Debt Management Report](https://www.mof.go.jp/english/policy/jgbs/publication/debt_management_report/index.htm)

@@ -4,12 +4,12 @@ seoTitle: "Jeonse Explained: South Korea's Hidden Housing Credit | l0g"
 ogTitle: "When the Tenant Becomes the Landlord's Bank"
 description: "Jeonse turns a tenant's lump-sum deposit into landlord financing. HUG guaranteed KRW126.8tn at end-2025. How risk moves through the system."
 pubDate: 2026-08-30T10:30:00+02:00
-updatedDate: 2026-08-30T10:30:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["South Korea", "Asia", "jeonse", "housing", "household debt", "HUG", "public guarantees", "financial stability"]
 ogImage: "/illustrations/news/south-korea-jeonse-housing-credit-v1.jpg"
 draft: false
 sourceArticle: "jeonse-coree-du-sud-credit-cache-logement"
-sourceUpdatedDate: 2026-08-30
+sourceUpdatedDate: 2026-09-02T10:05:00+02:00
 ---
 
 *Jeonse looks like a rental contract without monthly rent. Economically, it is also credit: the tenant transfers a large deposit to the landlord, who must return it when the lease ends. If the tenant borrows to assemble the money, the same transaction creates a bank debt for the tenant and a repayment liability for the landlord. If the landlord fails to pay, a public guarantee can move the risk to HUG, which compensates the tenant and then tries to recover its claim. At the end of 2025, HUG guaranteed KRW126.7887 trillion of jeonse-deposit refunds. That stock is not a forecast loss. It reveals the scale of a system in which a rental agreement also operates as a housing-finance chain.*
@@ -102,7 +102,7 @@ When the lease ends, the landlord can repay from cash, sell or refinance the hom
 
 This is known as **reverse jeonse**. Contracts signed when deposits were high can mature after market deposits have fallen. The landlord then owes the departing tenant more than can be obtained from the incoming tenant.
 
-The [IMF’s 2023 Article IV report on Korea](https://www.elibrary.imf.org/abstract/journals/002/2023/369/article-A001-en.xml) cited a June 2023 Bank of Korea estimate: the potential jeonse-deposit gap on contracts maturing in 2023 and 2024 was about **KRW44 trillion**, or 2% of GDP at the time. It was an estimate of a funding need, not a realized loss.
+The [IMF’s 2023 Article IV report on Korea](https://www.elibrary.imf.org/abstract/journals/002/2023/369/article-A001-en.xml) cited a June 2023 Bank of Korea estimate: the potential jeonse-deposit gap on contracts maturing in 2023 and 2024 was about **KRW44 trillion**, or 2% of [GDP](/en/glossary/#gdp) at the time. It was an estimate of a funding need, not a realized loss.
 
 The direction of risk changes with the market. Falling deposits reduce the entry cost for a new tenant but can open a liquidity hole for the landlord. Rising deposits facilitate the landlord’s rollover while requiring more savings or debt from the next household.
 
@@ -446,7 +446,7 @@ A guarantee works comfortably when defaults remain dispersed. A broad housing de
 
 The mechanism differs from developer finance, but it complements our analysis of [Chinese real estate as a chain of claims and guarantees](/en/analysis/chinese-real-estate-risk/): in both cases, the decisive question is which balance sheet absorbs the gap when refinancing is no longer enough.
 
-## What now deserves monitoring
+## The indicators that now deserve monitoring
 
 The first indicator is the gap between deposits owed on maturing contracts and those available on comparable new leases. A national jeonse index gives direction, but risk emerges contract by contract and district by district.
 
@@ -458,7 +458,7 @@ The fourth is guarantor capacity: equity, paid-in capital, earnings, liquidity a
 
 The fifth is household debt and its effect on spending. Aggregate Bank of Korea data cannot isolate the whole jeonse chain. They do show that it operates inside an already highly leveraged household sector.
 
-## What the evidence supports
+## A conclusion bounded by the evidence
 
 Jeonse is neither a folkloric anomaly nor simply a generous lease without monthly payments. It is a hybrid contract exchanging a rent stream for repayable lump-sum financing. It distributes risk among the landlord, tenant, possible bank, other creditors and guarantor.
 

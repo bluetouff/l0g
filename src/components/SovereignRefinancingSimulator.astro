@@ -1,0 +1,305 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+}
+const { lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+const c = fr ? {
+  eyebrow: 'OUTIL PÉDAGOGIQUE',
+  title: 'À quelle vitesse le taux traverse-t-il la dette ?',
+  intro: 'Comparez deux profils de refinancement pour un même stock et un même choc de rendement. Les montants sont exprimés en milliards de la devise choisie.',
+  stock: 'Stock de dette',
+  oldRate: 'Taux effectif initial',
+  newRate: 'Rendement de refinancement',
+  slow: 'Part repricée par an, profil long',
+  fast: 'Part repricée par an, profil court',
+  years: 'Horizon',
+  currency: 'Devise',
+  reset: 'Réinitialiser',
+  result: 'Résultat',
+  yr: 'Année',
+  slowProfile: 'Profil long',
+  fastProfile: 'Profil court',
+  repriced: 'repricé',
+  effective: 'taux effectif',
+  interest: 'intérêts',
+  extra: 'surcoût annuel',
+  gap: 'Écart de charge entre profils',
+  baseline: 'Charge initiale',
+  method: 'Hypothèses : stock constant ; tranches annuelles uniformes ; nouveau rendement constant ; aucune seconde rotation des nouveaux titres dans l’horizon. Hors déficit, croissance, inflation, change, rachats, swaps et réaction de marché.',
+  error: 'Vérifiez les valeurs : stock positif, parts entre 0 et 100 %, horizon de 1 à 30 ans.',
+  unit: 'Md'
+} : {
+  eyebrow: 'TEACHING TOOL',
+  title: 'How quickly does the yield pass through the debt stock?',
+  intro: 'Compare two refinancing profiles for the same stock and the same yield shock. Amounts are in billions of the selected currency.',
+  stock: 'Debt stock',
+  oldRate: 'Initial effective rate',
+  newRate: 'Refinancing yield',
+  slow: 'Share repriced each year, long profile',
+  fast: 'Share repriced each year, short profile',
+  years: 'Horizon',
+  currency: 'Currency',
+  reset: 'Reset',
+  result: 'Result',
+  yr: 'Year',
+  slowProfile: 'Long profile',
+  fastProfile: 'Short profile',
+  repriced: 'repriced',
+  effective: 'effective rate',
+  interest: 'interest',
+  extra: 'annual increase',
+  gap: 'Interest-expense gap',
+  baseline: 'Initial interest',
+  method: 'Assumptions: constant stock; even annual slices; constant new yield; newly issued debt does not roll again within the horizon. Excludes deficits, growth, inflation, FX, buybacks, swaps and market reaction.',
+  error: 'Check the inputs: positive stock, shares between 0 and 100%, horizon from 1 to 30 years.',
+  unit: 'bn'
+};
+---
+<section class="srf-tool" data-srf-tool data-lang={lang}>
+  <div class="srf-head">
+    <span>{c.eyebrow}</span>
+    <h3>{c.title}</h3>
+    <p>{c.intro}</p>
+  </div>
+
+  <div class="srf-grid">
+    <label>{c.stock}
+      <input data-k="stock" type="number" min="1" step="10" value="3000" inputmode="decimal" />
+    </label>
+    <label>{c.currency}
+      <select data-k="currency">
+        <option value="$">$</option>
+        <option value="€">€</option>
+        <option value="¥">¥</option>
+        <option value="£">£</option>
+      </select>
+    </label>
+    <label>{c.oldRate}
+      <div class="srf-suffix"><input data-k="oldRate" type="number" min="-5" max="100" step="0.1" value="2" inputmode="decimal" /><span>%</span></div>
+    </label>
+    <label>{c.newRate}
+      <div class="srf-suffix"><input data-k="newRate" type="number" min="-5" max="100" step="0.1" value="4" inputmode="decimal" /><span>%</span></div>
+    </label>
+    <label>{c.slow}
+      <div class="srf-suffix"><input data-k="slowShare" type="number" min="0.1" max="100" step="0.1" value="12.5" inputmode="decimal" /><span>%</span></div>
+    </label>
+    <label>{c.fast}
+      <div class="srf-suffix"><input data-k="fastShare" type="number" min="0.1" max="100" step="0.1" value="25" inputmode="decimal" /><span>%</span></div>
+    </label>
+    <label>{c.years}
+      <div class="srf-suffix"><input data-k="years" type="number" min="1" max="30" step="1" value="8" inputmode="numeric" /><span>{fr ? 'ans' : 'yrs'}</span></div>
+    </label>
+  </div>
+
+  <div class="srf-actions">
+    <button type="button" data-reset>{c.reset}</button>
+  </div>
+
+  <p class="srf-error" data-error hidden>{c.error}</p>
+
+  <div data-results>
+    <div class="srf-kpis">
+      <article>
+        <span>{c.baseline}</span>
+        <strong data-baseline>…</strong>
+      </article>
+      <article>
+        <span>{c.gap}</span>
+        <strong data-gap>…</strong>
+        <small data-gap-year>…</small>
+      </article>
+    </div>
+
+    <div class="srf-bars" aria-hidden="true">
+      <div>
+        <span>{c.slowProfile}</span>
+        <div class="srf-track"><i data-slow-bar></i></div>
+        <b data-slow-bar-label>…</b>
+      </div>
+      <div>
+        <span>{c.fastProfile}</span>
+        <div class="srf-track"><i data-fast-bar></i></div>
+        <b data-fast-bar-label>…</b>
+      </div>
+    </div>
+
+    <div class="srf-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>{c.yr}</th>
+            <th>{c.slowProfile}</th>
+            <th>{c.fastProfile}</th>
+          </tr>
+        </thead>
+        <tbody data-body></tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="srf-method">{c.method}</p>
+</section>
+
+<script>
+  import { simulateRefinancing } from '../lib/sovereign-refinancing';
+
+  const defaults = {
+    stock: 3000,
+    oldRate: 2,
+    newRate: 4,
+    slowShare: 12.5,
+    fastShare: 25,
+    years: 8,
+    currency: '$',
+  };
+
+  document.querySelectorAll('[data-srf-tool]').forEach((tool) => {
+    if (!(tool instanceof HTMLElement) || tool.dataset.ready === '1') return;
+    tool.dataset.ready = '1';
+    const lang = tool.dataset.lang === 'en' ? 'en' : 'fr';
+    const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+    function q<T extends HTMLElement = HTMLElement>(selector: string): T {
+      const el = tool.querySelector<T>(selector);
+      if (!el) throw new Error(`Missing simulator element: ${selector}`);
+      return el;
+    }
+    const inputs = Object.fromEntries(
+      Array.from(tool.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-k]')).map((el) => [
+        el.getAttribute('data-k') || '',
+        el,
+      ])
+    ) as Record<string, HTMLInputElement | HTMLSelectElement>;
+
+    const num = (value: number, digits = 1) => new Intl.NumberFormat(locale, {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
+    }).format(value);
+
+    const money = (value: number, symbol: string) =>
+      lang === 'fr'
+        ? `${num(value, 1)} Md ${symbol}`
+        : `${symbol}${num(value, 1)}bn`;
+
+    const update = () => {
+      try {
+        const p = {
+          stock: Number(inputs.stock.value),
+          oldRate: Number(inputs.oldRate.value),
+          newRate: Number(inputs.newRate.value),
+          slowShare: Number(inputs.slowShare.value),
+          fastShare: Number(inputs.fastShare.value),
+          years: Number(inputs.years.value),
+        };
+        const symbol = inputs.currency.value;
+        const rows = simulateRefinancing(p);
+        q('[data-error]').hidden = true;
+        q('[data-results]').hidden = false;
+        q('[data-baseline]').textContent = money(p.stock * p.oldRate / 100, symbol);
+
+        let maxGap = rows[0];
+        for (const row of rows) {
+          if (Math.abs(row.fastInterest - row.slowInterest) > Math.abs(maxGap.fastInterest - maxGap.slowInterest)) {
+            maxGap = row;
+          }
+        }
+        const gap = maxGap.fastInterest - maxGap.slowInterest;
+        q('[data-gap]').textContent = money(gap, symbol);
+        q('[data-gap-year]').textContent = `${lang === 'fr' ? 'année' : 'year'} ${maxGap.year}`;
+
+        const last = rows[rows.length - 1];
+        q('[data-slow-bar]').style.width = `${Math.min(100, last.slowRepricedShare * 100)}%`;
+        q('[data-fast-bar]').style.width = `${Math.min(100, last.fastRepricedShare * 100)}%`;
+        q('[data-slow-bar-label]').textContent = `${num(last.slowRepricedShare * 100, 1)}%`;
+        q('[data-fast-bar-label]').textContent = `${num(last.fastRepricedShare * 100, 1)}%`;
+
+        const tbody = q<HTMLTableSectionElement>('[data-body]');
+        tbody.replaceChildren();
+        for (const row of rows) {
+          const tr = document.createElement('tr');
+          const y = document.createElement('th');
+          y.scope = 'row';
+          y.textContent = String(row.year);
+          tr.appendChild(y);
+          for (const kind of ['slow', 'fast']) {
+            const td = document.createElement('td');
+            const rate = kind === 'slow' ? row.slowEffectiveRate : row.fastEffectiveRate;
+            const interest = kind === 'slow' ? row.slowInterest : row.fastInterest;
+            const extra = kind === 'slow' ? row.slowExtraInterest : row.fastExtraInterest;
+            const repriced = kind === 'slow' ? row.slowRepricedShare : row.fastRepricedShare;
+            const l1 = document.createElement('strong');
+            l1.textContent = `${num(rate, 2)}%`;
+            const l2 = document.createElement('span');
+            l2.textContent = `${money(interest, symbol)} · ${num(repriced * 100, 1)}% ${lang === 'fr' ? 'repricé' : 'repriced'}`;
+            const l3 = document.createElement('small');
+            const sign = extra >= 0 ? '+' : '−';
+            l3.textContent = `${sign}${money(Math.abs(extra), symbol)} ${lang === 'fr' ? 'vs départ' : 'vs start'}`;
+            td.append(l1, l2, l3);
+            tr.appendChild(td);
+          }
+          tbody.appendChild(tr);
+        }
+      } catch (error) {
+        q('[data-error]').hidden = false;
+        q('[data-results]').hidden = true;
+      }
+    };
+
+    tool.addEventListener('input', update);
+    tool.addEventListener('change', update);
+    q<HTMLButtonElement>('[data-reset]').addEventListener('click', () => {
+      for (const [key, value] of Object.entries(defaults)) {
+        inputs[key].value = String(value);
+      }
+      update();
+    });
+    update();
+  });
+</script>
+
+<style is:global>
+  .srf-tool{margin:2.2rem 0;padding:1.25rem;border:1px solid rgba(159,177,189,.28);border-radius:20px;background:#081018;color:#f4f7f8}
+  .srf-tool [hidden]{display:none!important}
+  .srf-head span{font-size:.75rem;letter-spacing:.12em;font-weight:800;color:#2dd4bf}
+  .srf-head h3{margin:.35rem 0 .45rem;font-size:clamp(1.35rem,3vw,2rem);line-height:1.12;color:#f4f7f8}
+  .srf-head p{margin:0;color:#9fb1bd;max-width:72ch}
+  .srf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
+  .srf-grid label{display:flex;flex-direction:column;gap:.35rem;font-size:.82rem;font-weight:650;color:#c8d4da}
+  .srf-grid input,.srf-grid select{width:100%;box-sizing:border-box;border:1px solid #365064;border-radius:10px;background:#101b26;color:#f4f7f8;padding:.72rem .75rem;font:inherit;font-size:1rem}
+  .srf-grid input:focus,.srf-grid select:focus{outline:2px solid #2dd4bf;outline-offset:2px}
+  .srf-suffix{position:relative}
+  .srf-suffix span{position:absolute;right:.72rem;top:50%;transform:translateY(-50%);color:#9fb1bd;pointer-events:none}
+  .srf-suffix input{padding-right:3.2rem}
+  .srf-actions{display:flex;justify-content:flex-end;margin:.9rem 0}
+  .srf-actions button{border:1px solid #365064;border-radius:999px;background:#142433;color:#f4f7f8;padding:.55rem .9rem;font-weight:700;cursor:pointer}
+  .srf-actions button:hover{border-color:#2dd4bf}
+  .srf-error{padding:.8rem;border-radius:10px;background:rgba(255,92,122,.14);color:#ffd3dc;font-weight:650}
+  .srf-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin:1rem 0}
+  .srf-kpis article{padding:1rem;border-radius:14px;background:#101b26;border:1px solid #294050}
+  .srf-kpis span{display:block;color:#9fb1bd;font-size:.78rem}
+  .srf-kpis strong{display:block;margin:.25rem 0;font-size:1.45rem;color:#f4f7f8}
+  .srf-kpis small{color:#fbbf24}
+  .srf-bars{display:grid;gap:.7rem;margin:1rem 0;padding:1rem;border-radius:14px;background:#101b26}
+  .srf-bars>div{display:grid;grid-template-columns:7rem 1fr 4rem;gap:.6rem;align-items:center}
+  .srf-bars span{font-size:.8rem;color:#c8d4da}
+  .srf-track{height:14px;background:#1c2d3a;border-radius:999px;overflow:hidden}
+  .srf-track i{display:block;height:100%;width:0;background:#60a5fa;border-radius:inherit;transition:width .18s ease}
+  .srf-bars>div:nth-child(2) .srf-track i{background:#ff5c7a}
+  .srf-bars b{text-align:right;font-size:.8rem}
+  .srf-table-wrap{overflow-x:auto;max-width:100%;border:1px solid #294050;border-radius:14px}
+  .srf-tool table{width:100%;min-width:650px;border-collapse:collapse;margin:0;background:#101b26}
+  .srf-tool th,.srf-tool td{padding:.7rem .8rem;border-bottom:1px solid #294050;text-align:left;vertical-align:top}
+  .srf-tool thead th{color:#9fb1bd;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
+  .srf-tool tbody th{color:#fbbf24;width:4rem}
+  .srf-tool td strong,.srf-tool td span,.srf-tool td small{display:block}
+  .srf-tool td strong{color:#f4f7f8}
+  .srf-tool td span{color:#c8d4da;font-size:.78rem;margin:.15rem 0}
+  .srf-tool td small{color:#9fb1bd}
+  .srf-method{margin:1rem 0 0;color:#9fb1bd;font-size:.78rem;line-height:1.5}
+  @media(max-width:640px){
+    .srf-tool{padding:1rem;border-radius:16px}
+    .srf-grid{grid-template-columns:1fr}
+    .srf-kpis{grid-template-columns:1fr}
+    .srf-bars>div{grid-template-columns:5.8rem 1fr 3.4rem}
+  }
+</style>

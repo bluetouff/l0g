@@ -5,11 +5,11 @@ ogTitle: "The renminbi is weaving a monetary zone across Asia"
 description: "From ASEAN to Central Asia, the renminbi is gaining ground in payments and credit. BIS, IMF, SWIFT and PBOC data show something more precise than a replacement of the dollar."
 ogImage: "/illustrations/news/renminbi-asia-monetary-network-v1.jpg"
 pubDate: 2026-08-31T09:50:00+02:00
-updatedDate: 2026-08-31T09:50:00+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["macro", "china", "asia", "renminbi", "dollar"]
 draft: false
 sourceArticle: "renminbi-zone-monetaire-asie"
-sourceUpdatedDate: 2026-08-31T09:50:00+02:00
+sourceUpdatedDate: 2026-09-02T10:05:00+02:00
 ---
 
 *The story is tempting: Asia is “de-dollarising” and switching to the yuan. The data tell a subtler story. The renminbi is not replacing the dollar. It is gradually becoming the operating currency of an economic space centred on China: first for payments, increasingly for funding, and much less for savings. That is less spectacular than a change in the world’s dominant currency. It is also much more tangible.*
@@ -237,7 +237,7 @@ The figure may be correct. But in the public record available to us, it does not
 
 In such a politically charged monetary story, distinguishing between an **official Chinese figure** and a **publicly cross-checkable figure** is not pedantry.
 
-## What is actually changing: three layers, three speeds
+## Three layers changing at different speeds
 
 To understand the renminbi in Asia, separate three functions.
 
@@ -272,7 +272,7 @@ The third is **infrastructure**. A central-bank swap, a clearing bank, a CIPS pa
 
 This is a network strategy: the less cumbersome the renminbi is to use, the more reason China-linked flows have to remain in renminbi.
 
-## What Beijing has achieved, and what it has not
+## Beijing’s record: gains and limits
 
 China has already achieved something significant: **in a growing number of transactions directly involving China, the dollar is no longer technically indispensable**.
 

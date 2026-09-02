@@ -5,7 +5,7 @@ ogTitle: "Le code qui finance la facture pétrolière de l’Inde"
 ogImage: "/illustrations/news/india-oil-code-external-accounts-v1.jpg"
 description: "En 2025-2026, services et transferts ont absorbé le déficit de biens avant que le revenu du capital ne le rouvre. Une force exposée au pétrole et à l’IA."
 pubDate: 2026-08-31T14:00:06+02:00
-updatedDate: 2026-08-31T14:00:06+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["Inde", "balance des paiements", "services", "pétrole", "intelligence artificielle", "diaspora"]
 draft: false
 ---
@@ -30,7 +30,7 @@ Pour l’exercice indien **2025-2026**, d’avril 2025 à mars 2026, la [présen
 - revenu secondaire : **+143,641 milliards** ;
 - balance courante : **-25,240 milliards**.
 
-Les services et le revenu secondaire ont donc apporté ensemble **360,256 milliards de dollars nets**. C’est davantage que le déficit des biens. Mais le solde négatif du revenu primaire a rouvert le trou. La [RBI estime le déficit courant final à 0,6 % du PIB](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62890), comme lors de l’exercice précédent.
+Les services et le revenu secondaire ont donc apporté ensemble **360,256 milliards de dollars nets**. C’est davantage que le déficit des biens. Mais le solde négatif du revenu primaire a rouvert le trou. Selon la [RBI](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62890), le déficit courant final atteint 0,6 % du [PIB](/glossaire/#pib), comme lors de l’exercice précédent.
 
 <figure class="infographic" style="padding-bottom:1.75rem">
 <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="india-bop-fr-title india-bop-fr-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,monospace">

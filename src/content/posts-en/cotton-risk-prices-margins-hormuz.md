@@ -5,14 +5,14 @@ ogTitle: "Cotton: Costlier Inputs, Thinner Stocks"
 ogImage: "/illustrations/news/cotton-margins-hormuz-v1.jpg"
 description: "Urea doubled and retreated, but cotton enters 2026-27 with production below mill use and lower stocks. The remaining risk sits in margins and timing."
 pubDate: 2026-08-31T17:06:06+02:00
-updatedDate: 2026-08-31T17:06:06+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["cotton", "fertiliser", "Hormuz", "commodities", "agricultural risk", "textiles"]
 draft: false
 sourceArticle: "coton-risque-prix-marges-ormuz"
-sourceUpdatedDate: 2026-08-31T17:06:06+02:00
+sourceUpdatedDate: 2026-09-02T10:05:00+02:00
 ---
 
-*Between field and spinning mill, cotton passes through markets that move on different clocks. Farmers buy fertiliser, fuel and credit before selling their crop. Mills buy a fibre whose price also depends on inventories, fashion and world growth. The Hormuz shock abruptly raised one of those costs, urea. It did not produce an equivalent and lasting rise in cotton. The risk settled in the gap between the two.*
+*Between field and spinning mill, cotton passes through markets that move on different clocks. Farmers buy fertiliser, fuel and credit before selling their crop. Mills buy a fibre whose price also depends on inventories, fashion and world growth. The [Strait of Hormuz shock](/en/glossary/chokepoint/) abruptly raised one of those costs, urea. It did not produce an equivalent and lasting rise in cotton. The risk settled in the gap between the two.*
 
 In spring 2026, the near-standstill in fertiliser shipments through the Strait of Hormuz lifted the global urea benchmark from **$472 a tonne in February to $856.90 in April**. By July it was back to **$400**, close to its December 2025 level. Over the same period, the global cotton benchmark rose from **$1.63 to $1.96 per kilogram**, peaking at $2.03 in May. These [World Bank series](https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-August-2026.pdf) describe a severe spike followed by a retreat. They do not show a permanent shortage.
 
@@ -133,7 +133,7 @@ What has changed is the market’s capacity to absorb a surprise. With shorter i
 
 **Pakistan** concentrates the other side of the exposure. Cotton output is forecast to fall **4%** to 5.1 million bales while mill use rebounds **5%** to 10.2 million. Imports are projected at 5 million bales. The textile sector must therefore finance more foreign fibre while the country grows less at home. Exchange rates, freight and credit can turn an agricultural gap into industrial and external-account risk even when cotton remains available globally.
 
-## What could still break in 2027
+## Potential breakpoints in 2027
 
 Three paths remain consistent with the evidence.
 

@@ -5,12 +5,12 @@ ogTitle: "Coton : engrais chers, stocks en baisse"
 ogImage: "/illustrations/news/cotton-margins-hormuz-v1.jpg"
 description: "L’urée a doublé puis reflué, mais le coton aborde 2026-2027 avec une production inférieure à la consommation et moins de stocks. Le risque se lit dans les marges."
 pubDate: 2026-08-31T17:06:06+02:00
-updatedDate: 2026-08-31T17:06:06+02:00
+updatedDate: 2026-09-02T10:05:00+02:00
 tags: ["coton", "engrais", "Ormuz", "matières premières", "risque agricole", "textile"]
 draft: false
 ---
 
-*Entre le champ et la filature, le coton traverse plusieurs marchés qui ne bougent ni au même rythme ni pour les mêmes raisons. L’agriculteur achète engrais, carburant et crédit avant de vendre sa récolte. La filature achète une fibre dont le prix dépend aussi des stocks, de la mode et de la croissance mondiale. Le choc d’Ormuz a brutalement renchéri l’un de ces coûts, l’urée. Il n’a pas produit une hausse équivalente et durable du coton. C’est dans cet écart que le risque s’est logé.*
+*Entre le champ et la filature, le coton traverse plusieurs marchés qui ne bougent ni au même rythme ni pour les mêmes raisons. L’agriculteur achète engrais, carburant et crédit avant de vendre sa récolte. La filature achète une fibre dont le prix dépend aussi des stocks, de la mode et de la croissance mondiale. Le choc du [détroit d’Ormuz](/glossaire/chokepoint/) a brutalement renchéri l’un de ces coûts, l’urée. Il n’a pas produit une hausse équivalente et durable du coton. C’est dans cet écart que le risque s’est logé.*
 
 Au printemps 2026, l’arrêt presque complet des expéditions d’engrais par le détroit d’Ormuz a fait passer le repère mondial de l’urée de **472 dollars la tonne en février à 856,9 dollars en avril**. En juillet, il était revenu à **400 dollars**, proche de son niveau de décembre 2025. Sur la même période, le repère mondial du coton est monté de **1,63 à 1,96 dollar le kilogramme**, avec un sommet à 2,03 dollars en mai. Ces séries de la [Banque mondiale](https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-August-2026.pdf) décrivent un choc violent puis un reflux, pas une pénurie permanente.
 
@@ -131,7 +131,7 @@ L’**Inde** est davantage exposée aux flux du Golfe. D’après l’OMC, elle 
 
 Le **Pakistan** concentre l’autre versant du risque. Sa production est attendue en baisse de **4 %**, à 5,1 millions de balles, tandis que l’utilisation par les filatures progresserait de **5 %**, à 10,2 millions. Les importations atteindraient 5 millions de balles. Cette industrie doit donc financer davantage de fibre étrangère alors que le pays produit moins. Le change, le coût du transport et l’accès au crédit peuvent transformer un écart agricole en risque industriel et extérieur, même si le coton mondial reste disponible.
 
-## Ce qui pourrait encore casser en 2027
+## Les points de rupture possibles en 2027
 
 Trois trajectoires restent compatibles avec les données disponibles.
 
