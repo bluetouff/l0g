@@ -1,0 +1,477 @@
+---
+title: "Votre IA va bientôt dépenser votre argent"
+seoTitle: "Paiements par agents IA : qui décide de vos achats ? | l0g"
+ogTitle: "Votre IA va bientôt dépenser votre argent"
+ogImage: "/illustrations/news/agentic-payments-risk-v1.jpg"
+description: "EMVCo, Visa, Mastercard, Google et OpenAI préparent des achats confiés à des agents. Le paiement avance plus vite que les règles du choix."
+pubDate: 2026-09-02T12:30:00+02:00
+updatedDate: 2026-09-02T12:30:00+02:00
+tags: ["intelligence artificielle", "paiements", "commerce", "fintech", "cybersécurité", "données personnelles", "risque"]
+draft: false
+quickTake:
+  fact: "Des réseaux de paiement, des banques et des développeurs de protocoles testent déjà des parcours où un agent recherche une offre, prépare le panier et déclenche un paiement sous mandat humain."
+  importance: "Celui qui contrôle l’agent peut aussi contrôler les marchands consultés, les critères de classement et le moment où l’intention devient une transaction."
+  uncertainty: "Les volumes, les pertes, les contestations et le partage de responsabilité ne sont pas publiés de façon suffisamment détaillée pour mesurer l’adoption ou le risque réel."
+---
+import AgenticSpendingPermit from '../../components/AgenticSpendingPermit.astro';
+
+<style>{`
+.ap-article-chart{margin:2.3rem 0 2.6rem}
+.ap-article-chart svg{display:block;width:100%;height:auto;border:1px solid rgba(159,177,189,.22);border-radius:18px;overflow:hidden}
+.ap-article-chart figcaption{margin:.72rem .35rem 0;color:var(--color-text-muted,#6b7280);font-size:.84rem;line-height:1.55}
+.ap-svg-mobile{display:none!important}
+.ap-verdict{margin:1.6rem 0;padding:1rem 1.05rem;border-left:3px solid #2dd4bf;background:rgba(45,212,191,.07)}
+.ap-warning{margin:1.6rem 0;padding:1rem 1.05rem;border-left:3px solid #fbbf24;background:rgba(251,191,36,.07)}
+.ap-method{margin:1.6rem 0;padding:1rem 1.05rem;border:1px solid rgba(159,177,189,.24);border-radius:14px;background:rgba(159,177,189,.05)}
+.ap-status-table{font-size:.88rem}
+.ap-status-table th:first-child,.ap-status-table td:first-child{white-space:nowrap}
+.ap-source-list li{margin:.58rem 0}
+@media(max-width:640px){
+  .ap-svg-desktop{display:none!important}
+  .ap-svg-mobile{display:block!important}
+  .prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+  .ap-article-chart{margin:1.8rem 0 2.1rem}
+  .ap-article-chart figcaption{font-size:.79rem}
+  .ap-status-table{font-size:.82rem}
+}
+`}</style>
+
+*« Trouve-moi une paire de baskets blanches à moins de 100 euros, livrée avant vendredi. Pas cette marque. Et achète la meilleure affaire. » La phrase paraît assez claire pour un humain. Pour une machine autorisée à payer, c’est déjà un petit contrat mal rédigé.*
+
+Le prix maximal inclut-il les frais de livraison ? « Blanche » tolère-t-il une semelle beige ? Le produit peut-il être reconditionné ? Une marketplace inconnue est-elle acceptable ? Que doit faire l’agent si la bonne pointure n’est disponible qu’auprès d’un vendeur sans historique ? « Meilleure affaire » signifie-t-il prix minimal, livraison la plus rapide, retour gratuit, note moyenne ou probabilité de recevoir réellement le colis ?
+
+Et si une boutique verse une commission à la plateforme qui pilote l’agent, cette rémunération entre-t-elle dans le calcul ?
+
+Toutes ces questions précèdent le paiement. C’est pourtant autour de ce dernier que l’industrie installe aujourd’hui les premières barrières.
+
+Le **1er septembre 2026**, EMVCo, l’organisme qui développe les principales spécifications techniques des paiements par carte, a ouvert à commentaires un projet de cadre pour les paiements effectués par des agents. Le texte est un **draft**, pas une norme achevée. Il propose notamment des *Intent Services* destinés à enregistrer et gérer l’autorisation du consommateur dans le temps, y compris pour des budgets cumulés, des achats récurrents et certaines opérations après l’achat. La consultation annoncée court jusqu’au **30 septembre 2026**. [Source : EMVCo, communiqué du 1er septembre 2026.](https://www.emvco.com/news/emvco-requests-feedback-on-framework-for-secure-interoperable-and-scalable-card-based-agentic-payments/)
+
+Le même jour, Reuters rapportait, sur la base de trois sources, que l’Inde préparait un protocole permettant à des agents d’exécuter de petits paiements sur UPI sans validation humaine à chaque transaction. Le gestionnaire d’UPI, NPCI, n’avait pas confirmé publiquement le dispositif au moment de l’article. C’est donc une information journalistique solide mais encore provisoire, pas l’annonce officielle d’un lancement. [Source : Reuters, 1er septembre 2026.](https://www.reuters.com/world/india/india-preparing-rollout-agentic-payments-upi-sources-say-2026-09-01/)
+
+Entre les deux se dessine le même problème : **comment donner à une machine le droit de dépenser sans lui remettre un pouvoir illimité ?**
+
+La réponse technique progresse vite. La réponse économique, juridique et politique beaucoup moins.
+
+## Plusieurs degrés d’autonomie sous un même terme
+
+Un agent est ici un logiciel capable de poursuivre un objectif, d’appeler des outils et d’enchaîner plusieurs actions. Il ne se contente pas d’afficher une liste de chaussures. Il peut interroger des catalogues, comparer les offres, remplir un panier, demander ou récupérer un moyen de paiement, puis transmettre l’ordre au marchand.
+
+Le vocabulaire n’est pas encore parfaitement stabilisé. Les acteurs parlent de *[commerce agentique](/glossaire/commerce-agentique/)*, de *paiement agentique*, d’achat *Human Not Present* ou d’agent de shopping. Derrière ces expressions, plusieurs degrés d’autonomie sont souvent mélangés :
+
+- une IA recommande un produit, puis l’utilisateur quitte la conversation et achète lui-même ;
+- elle prépare le panier, mais l’utilisateur contrôle le vendeur et paie ;
+- elle choisit l’offre, puis demande un accord explicite avant la transaction ;
+- elle reçoit à l’avance un mandat limité et achète plus tard, en l’absence de l’utilisateur ;
+- elle gère dans le temps un budget, des achats répétés, des retours ou des renouvellements.
+
+Dire qu’un paiement a été réalisé « en production » ne dit donc pas, à lui seul, qui a choisi le produit ni si un humain était présent au moment décisif. Cette analyse prolonge notre décryptage des [paiements machine-à-machine, de x402 et des stablecoins](/posts/paiements-d-agents-comment-une-ia-regle-la-facture/), sans confondre ce rail technique avec les achats de détail étudiés ici.
+
+Le **2 juin 2026**, Worldline, ING et Mastercard ont annoncé un paiement européen de bout en bout sur une infrastructure de production. Dans le scénario décrit, l’agent avait trouvé des billets de concert correspondant au budget de la cliente, mais celle-ci avait ensuite **explicitement approuvé** la transaction. L’événement démontre que les rails bancaires peuvent traiter un parcours impliquant un agent ; il ne démontre pas encore une délégation générale de niveau « achète pendant que je dors ». [Source : communiqué conjoint Worldline–ING–Mastercard, 2 juin 2026.](https://www.mastercard.com/news/europe/en/newsroom/press-releases/en/2026/worldline-ing-and-mastercard-complete-a-live-end-to-end-european-agentic-payment-in-production/)
+
+Worldline présente également plusieurs scénarios européens, dont un parcours où une autorisation initiale pouvait être utilisée pendant une fenêtre limitée. Là encore, il s’agit d’expérimentations précisément encadrées, pas d’une disponibilité universelle pour tous les porteurs de carte et tous les marchands. [Source : Worldline, dossier « Agentic commerce », consulté le 2 septembre 2026.](https://worldline.com/en-gb/home/top-navigation/about-worldline/innovation/agentic-commerce)
+
+Visa a de son côté déclaré avoir réalisé, en juillet 2026, des achats réels auprès de marchands européens au moyen d’agents respectant des paramètres définis par les utilisateurs. Cette affirmation vient de Visa ; elle documente ce que l’entreprise dit avoir exécuté, pas un audit indépendant de la sécurité ou de l’échelle du dispositif. [Source : Visa Europe, juillet 2026.](https://www.visa.co.uk/about-visa/newsroom/press-releases.3457328.html)
+
+<div class="ap-verdict">
+<p><strong>Établi.</strong> Des transactions réelles et des parcours de production ont été documentés. Des protocoles ouverts et des projets de standardisation traitent désormais l’autorisation, l’identité de l’agent et la preuve du panier.</p>
+<p><strong>Non établi.</strong> Aucun corpus public ne permet encore de connaître les volumes, le taux d’erreur, les pertes, les contestations, la fréquence des achats réellement autonomes ou leur adoption par le grand public.</p>
+</div>
+
+## Donner une carte au robot est une mauvaise image
+
+La formule est efficace, mais techniquement trompeuse. Un agent n’a pas nécessairement besoin de connaître le numéro brut de votre carte. Les architectures proposées cherchent au contraire à séparer plusieurs fonctions : comprendre l’ordre, choisir le panier, obtenir une autorisation, accéder à une référence de paiement limitée, puis laisser les infrastructures existantes autoriser ou refuser la transaction.
+
+La **[tokenisation](/glossaire/tokenisation/)** remplace les données de carte par un jeton utilisable dans un contexte défini. Un jeton peut être lié à un marchand, un appareil, un canal ou d’autres restrictions. Cela réduit l’intérêt du vol des données brutes, sans rendre le jeton inoffensif ni supprimer la fraude. [Source : EMVCo, présentation de la payment tokenisation.](https://www.emvco.com/emv-technologies/payment-tokenisation/)
+
+Le projet [AP2](/glossaire/ap2/), *Agentic Payment Protocol*, fournit l’exemple le plus lisible du nouveau mécanisme. Dans sa version 0.2, sa spécification distingue cinq rôles : l’agent d’achat, le fournisseur du moyen de paiement, le marchand, le processeur du marchand et une interface de confiance chargée de recueillir le consentement. Cette dernière doit être non agentique : la validation critique ne repose pas uniquement sur le modèle qui explore le Web et discute avec l’utilisateur. [Source : spécification AP2 v0.2, section « Roles ».](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md)
+
+AP2 sépare ensuite deux preuves :
+
+**Le mandat de checkout** lie l’autorisation à ce qui est acheté. Le marchand produit une description signée du panier ; le mandat fermé est relié à ce panier par une empreinte cryptographique.
+
+**Le mandat de paiement** prouve que l’agent est autorisé à payer ce checkout particulier. Un reçu signé doit ensuite revenir aux parties prévues par le protocole.
+
+Dans le mode direct, l’utilisateur voit le panier final et signe l’autorisation. Dans le mode autonome, il signe d’abord un mandat ouvert, une enveloppe de contraintes, puis l’agent peut signer un panier fermé en son nom, à condition que les vérificateurs déterministes puissent établir que ce panier respecte les limites initiales. La spécification recommande notamment de réduire autant que possible la durée de validité du mandat. [Source : AP2 v0.2, sections « Mandates » et « Autonomous ».](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md)
+
+Le *Trusted Agent Protocol* de Visa poursuit une autre partie du même objectif : permettre à un marchand d’identifier un agent reconnu, de vérifier l’intégrité de certaines informations transmises et de distinguer plus proprement un trafic automatisé légitime d’un bot hostile. Sa documentation décrit des messages signés et des contrôles destinés à empêcher la réutilisation triviale d’une ancienne requête. [Source : Visa Developer, Trusted Agent Protocol Specifications.](https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications)
+
+<figure class="ap-article-chart">
+<svg class="ap-svg-desktop" viewBox="0 0 960 610" style="width:100%;height:auto" role="img" aria-labelledby="decision-fr-d-title decision-fr-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="decision-fr-d-title">Choisir et payer sont deux problèmes différents</title>
+<desc id="decision-fr-d-desc">À gauche, l’agent interprète la demande, cherche et classe les offres. À droite, les systèmes de paiement vérifient le mandat, le panier et l’autorisation. Les preuves de paiement ne mesurent pas la qualité du choix.</desc>
+<rect x="0" y="0" width="960" height="610" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="750">PAIEMENT AGENTIQUE · DEUX COUCHES</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="32" font-weight="800">Choisir et payer ne sont pas le même problème</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">Une transaction peut être techniquement valide après une décision médiocre.</text>
+<rect x="48" y="169" width="386" height="300" rx="18" fill="#121c28" stroke="#ff6b86" stroke-width="2"/>
+<text x="74" y="207" fill="#ff8da1" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="800">1 · COMPRENDRE ET CHOISIR</text>
+<text x="74" y="247" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="750">Décision de l’agent</text>
+<circle cx="86" cy="284" r="6" fill="#ff6b86"/><text x="104" y="290" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Interpréter votre demande</text>
+<circle cx="86" cy="325" r="6" fill="#ff6b86"/><text x="104" y="331" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Choisir les marchands consultés</text>
+<circle cx="86" cy="366" r="6" fill="#ff6b86"/><text x="104" y="372" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Comparer prix, délai et retours</text>
+<circle cx="86" cy="407" r="6" fill="#ff6b86"/><text x="104" y="413" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Classer puis retenir une offre</text>
+<text x="74" y="447" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="14">Modèle, données et contenu non fiable</text>
+<path d="M448 317 H506" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/><path d="M494 305 L508 317 L494 329" fill="none" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="526" y="169" width="386" height="300" rx="18" fill="#121c28" stroke="#2dd4bf" stroke-width="2"/>
+<text x="552" y="207" fill="#49e2cf" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="800">2 · AUTORISER ET PAYER</text>
+<text x="552" y="247" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="750">Preuves et contrôles</text>
+<circle cx="564" cy="284" r="6" fill="#2dd4bf"/><text x="582" y="290" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Vérifier l’identité de l’agent</text>
+<circle cx="564" cy="325" r="6" fill="#2dd4bf"/><text x="582" y="331" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Contrôler les limites du mandat</text>
+<circle cx="564" cy="366" r="6" fill="#2dd4bf"/><text x="582" y="372" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Lier le panier au paiement</text>
+<circle cx="564" cy="407" r="6" fill="#2dd4bf"/><text x="582" y="413" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="16">Produire un reçu vérifiable</text>
+<text x="552" y="447" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="14">Code déterministe et cryptographie</text>
+<rect x="48" y="499" width="864" height="70" rx="14" fill="#241b18" stroke="#fbbf24" stroke-width="1"/>
+<text x="480" y="529" fill="#fbbf24" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800" text-anchor="middle">La preuve répond : « avait-il le droit de payer ? »</text>
+<text x="480" y="553" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="16" text-anchor="middle">Elle ne répond pas automatiquement : « a-t-il choisi la bonne offre ? »</text>
+</svg>
+<svg class="ap-svg-mobile" viewBox="0 0 390 870" style="width:100%;height:auto" role="img" aria-labelledby="decision-fr-m-title decision-fr-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="decision-fr-m-title">Choisir et payer sont deux problèmes différents</title>
+<desc id="decision-fr-m-desc">L’agent choisit une offre, puis les systèmes de paiement vérifient le mandat. Une preuve valide ne mesure pas la qualité du choix.</desc>
+<rect x="0" y="0" width="390" height="870" rx="18" fill="#081018"/>
+<text x="24" y="39" fill="#2dd4bf" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800">PAIEMENT AGENTIQUE</text>
+<text x="24" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="25" font-weight="800">Choisir et payer :</text>
+<text x="24" y="109" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="25" font-weight="800">deux problèmes</text>
+<text x="24" y="137" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="14">Une preuve valide ne note pas le choix.</text>
+<rect x="24" y="171" width="342" height="258" rx="16" fill="#121c28" stroke="#ff6b86" stroke-width="2"/>
+<text x="44" y="205" fill="#ff8da1" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800">1 · COMPRENDRE ET CHOISIR</text>
+<text x="44" y="240" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">Décision de l’agent</text>
+<circle cx="52" cy="275" r="5" fill="#ff6b86"/><text x="68" y="281" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Interpréter la demande</text>
+<circle cx="52" cy="311" r="5" fill="#ff6b86"/><text x="68" y="317" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Sélectionner les marchands</text>
+<circle cx="52" cy="347" r="5" fill="#ff6b86"/><text x="68" y="353" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Comparer et classer</text>
+<circle cx="52" cy="383" r="5" fill="#ff6b86"/><text x="68" y="389" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Retenir une offre</text>
+<path d="M195 443 V473" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/><path d="M184 462 L195 475 L206 462" fill="none" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="491" width="342" height="258" rx="16" fill="#121c28" stroke="#2dd4bf" stroke-width="2"/>
+<text x="44" y="525" fill="#49e2cf" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800">2 · AUTORISER ET PAYER</text>
+<text x="44" y="560" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">Preuves et contrôles</text>
+<circle cx="52" cy="595" r="5" fill="#2dd4bf"/><text x="68" y="601" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Identifier l’agent</text>
+<circle cx="52" cy="631" r="5" fill="#2dd4bf"/><text x="68" y="637" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Contrôler le mandat</text>
+<circle cx="52" cy="667" r="5" fill="#2dd4bf"/><text x="68" y="673" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Lier panier et paiement</text>
+<circle cx="52" cy="703" r="5" fill="#2dd4bf"/><text x="68" y="709" fill="#d9e3e8" font-family="Inter,system-ui,sans-serif" font-size="14">Produire un reçu</text>
+<rect x="24" y="775" width="342" height="67" rx="14" fill="#241b18" stroke="#fbbf24" stroke-width="1"/>
+<text x="195" y="803" fill="#fbbf24" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="800" text-anchor="middle">Droit de payer ≠ qualité du choix</text>
+<text x="195" y="826" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="13" text-anchor="middle">Les deux couches doivent être contrôlées.</text>
+</svg>
+<figcaption>Lecture : AP2 et les protocoles voisins cherchent à rendre l’autorisation, le panier et le paiement vérifiables. La recherche, l’interprétation et le classement restent un problème distinct. Schéma l0g, d’après les spécifications AP2 et Visa consultées le 2 septembre 2026.</figcaption>
+</figure>
+
+## Le premier risque est caché dans votre phrase
+
+Prenons une autorisation simple : « achète du café quand le paquet passe sous 16 euros ». Le mandat doit encore préciser la contenance, le nombre maximal de paquets, le prix avec ou sans livraison, la période d’observation, les vendeurs admis, le droit d’accepter une nouvelle recette, l’état du stock domestique et la possibilité de créer un abonnement.
+
+Sans ces détails, trois résultats très différents peuvent tous sembler conformes :
+
+1. un paquet de 250 grammes à 15,90 euros avec 8 euros de livraison ;
+2. quatre paquets achetés le même jour parce que chacun respecte le plafond unitaire ;
+3. un abonnement mensuel à 15,50 euros dont le prix augmentera plus tard.
+
+La limite par transaction ne suffit pas. Il faut un plafond cumulé. Le plafond cumulé ne suffit pas. Il faut une durée. La durée ne suffit pas. Il faut définir ce qu’est un produit équivalent et ce qui doit revenir devant l’utilisateur.
+
+C’est précisément le type de continuité que le projet EMVCo cherche à traiter avec ses *Intent Services*. L’autorisation ne serait plus seulement un clic ponctuel : elle deviendrait un objet consultable et gérable dans le temps. C’est utile pour empêcher qu’un agent réinvente le consentement à chaque étape. C’est aussi une nouvelle infrastructure de données particulièrement sensible, car elle peut décrire ce qu’une personne accepte d’acheter, à quelles conditions et pendant combien de temps. [Source : EMVCo, projet de cadre v1.0 soumis à consultation.](https://www.emvco.com/resources/emv-agentic-payments-framework-for-specifications-v1-0-draft-comment-period-ends-30-sept-2026/)
+
+L’outil ci-dessous ne simule aucun paiement et n’évalue aucun service. Il fait quelque chose de plus élémentaire : il transforme une phrase vague en règles, puis montre ce qu’elles laissent encore sans réponse.
+
+<AgenticSpendingPermit lang="fr" />
+
+Le résultat est volontairement inconfortable. Dès qu’on autorise un agent à agir en notre absence, une simple consigne devient un ensemble de permissions révocables, de seuils, d’exceptions et de responsabilités. Autrement dit : un mandat.
+
+## La cryptographie sait prouver le mandat, pas la sagesse de l’achat
+
+AP2 formule très clairement sa frontière. Le protocole sécurise ce qui est acheté et le paiement correspondant. Les catalogues, les mises à jour du checkout et la manière exacte dont l’agent comprend la tâche appartiennent au protocole de commerce ou à l’application, pas à AP2 lui-même. Sa spécification indique également que le contenu des mandats est assemblé après que l’agent a déterminé la tâche voulue par l’utilisateur ; cette détermination est hors périmètre. [Source : AP2 v0.2, introduction et section « Mandates ».](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md)
+
+Cette frontière est raisonnable pour un standard de paiement. Aucun protocole ne peut résoudre seul la recherche de produits, la publicité, la qualité des données, la pertinence d’une recommandation, le droit de la consommation et le service après-vente.
+
+Mais elle révèle le cœur du risque.
+
+Supposons que l’agent reçoive un mandat parfaitement signé : chaussures neuves, taille 43, moins de 100 euros tout compris, livraison avant vendredi, aucun abonnement. Il trouve un produit à 92 euros, auprès d’un marchand autorisé, et paie avec un jeton limité à cette transaction. Toutes les preuves peuvent être valides.
+
+Pourtant :
+
+- il n’a peut-être interrogé que trois marchands partenaires ;
+- le produit peut être le premier résultat d’un classement sponsorisé ;
+- une fiche trompeuse peut avoir fait passer la livraison de dix jours pour une livraison immédiate ;
+- un autre vendeur peut proposer exactement le même produit à 74 euros ;
+- le marchand retenu peut avoir une politique de retour médiocre que l’agent n’a pas pondérée ;
+- une instruction cachée dans une page peut avoir influencé le modèle chargé du classement.
+
+Aucune signature ne transforme ces choix en bonne décision. Elle peut seulement aider à établir qui a autorisé quoi, quel panier a été présenté et si les données ont été modifiées.
+
+Le contre-argument est important : aujourd’hui déjà, les humains achètent sous l’influence de classements opaques, d’avis douteux, de comparateurs rémunérés et de promotions artificielles. Un agent bien conçu pourrait au contraire comparer le prix total, lire les conditions de retour, appliquer des exclusions constantes et conserver un journal plus précis qu’un consommateur pressé. La délégation n’est donc pas nécessairement une perte de contrôle. Elle peut devenir une **formalisation** de préférences que le commerce actuel exploite souvent sans les rendre explicites.
+
+La question n’est pas de savoir si l’IA est, par nature, pire que l’acheteur humain. Elle est de savoir **quelles preuves permettront de comprendre son choix lorsqu’il faudra le contester**.
+
+## Celui qui choisit la liste des boutiques tient déjà la caisse
+
+Dans le commerce en ligne classique, plusieurs acteurs se partagent la chaîne. Un moteur de recherche capte la demande. Une marketplace organise l’offre. Un marchand fixe le prix. Une banque et un réseau de paiement autorisent la transaction. Un transporteur livre. Chacun voit une partie du parcours.
+
+L’agent peut condenser ces étapes dans une seule conversation :
+
+**besoin exprimé** → **marchands interrogés** → **offres comparées** → **vendeur choisi** → **paiement déclenché** → **retour géré**.
+
+Le pouvoir économique n’est donc pas seulement dans la commission de paiement. Il se trouve en amont, dans la définition de l’univers visible.
+
+OpenAI fournit un exemple utile, justement parce que sa stratégie a évolué. En septembre 2025, l’entreprise a présenté *Instant Checkout*, construit avec Stripe et son *Agentic Commerce Protocol*. Le parcours exigeait une confirmation explicite avant chaque achat ; OpenAI indiquait alors que les marchands verseraient une commission sur les transactions réalisées. L’entreprise affirmait que les articles compatibles avec Instant Checkout n’étaient pas privilégiés dans les résultats de produits. Sa page précisait toutefois que cette compatibilité comptait parmi les facteurs de classement des marchands proposant un même produit. Ce sont des déclarations de l’entreprise sur son propre système, non une vérification indépendante. [Source : OpenAI, « Buy it in ChatGPT », septembre 2025.](https://openai.com/index/buy-it-in-chatgpt/)
+
+Au 2 septembre 2026, la page d’OpenAI destinée aux marchands met davantage l’accent sur la **découverte de produits** et le renvoi vers le site ou l’application du vendeur. Elle explique que des flux plus riches et mieux structurés peuvent améliorer l’exactitude, la présentation et la visibilité des offres. Son aide continue cependant de documenter un checkout intégré pour certains vendeurs ou articles éligibles. Il faut donc parler d’une coexistence et d’une évolution de parcours, pas d’une disparition démontrée de tout paiement dans ChatGPT. [Sources : OpenAI, page « Product discovery »](https://openai.com/index/powering-product-discovery-in-chatgpt/) [et centre d’aide sur le shopping dans ChatGPT, consultés le 2 septembre 2026.](https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search)
+
+Ce détail est plus important qu’il n’en a l’air. Même lorsque la transaction finale revient chez le marchand, l’assistant peut conserver la position la plus rentable de la chaîne : il reçoit l’intention avant les autres et décide quelles offres méritent d’être vues.
+
+Il faut alors distinguer au moins cinq mécanismes :
+
+- **le classement d’un produit** parmi des produits différents ;
+- **le classement des vendeurs** proposant le même produit ;
+- **la qualité des données** envoyées par chaque marchand ;
+- **la disponibilité technique** d’un checkout compatible ;
+- **la rémunération commerciale**, lorsqu’elle existe.
+
+Ces facteurs peuvent produire le même symptôme, une offre apparaît en premier, sans avoir la même cause. Observer qu’un marchand est surreprésenté ne suffira pas à prouver un favoritisme payé. À l’inverse, l’absence de paiement direct ne garantit pas la neutralité : une plateforme peut privilégier les partenaires les mieux intégrés, les données les plus faciles à exploiter ou les vendeurs qui réduisent son risque opérationnel.
+
+Le protocole de Visa envisage lui-même des parcours adaptés aux agents reconnus. C’est utile : un marchand peut fournir une interface plus structurée, éviter les défenses anti-bot et accélérer le checkout. Mais deux Web peuvent alors coexister : celui que voit l’humain et celui que reçoit l’agent. La comparabilité dépendra de la fidélité entre les deux, prix, stock, frais, disponibilité, conditions de retour, et de la capacité à auditer les différences. [Source : Visa Trusted Agent Protocol, cas d’usage et spécifications.](https://developer.visa.com/capabilities/trusted-agent-protocol)
+
+## La boutique peut parler à votre robot derrière votre dos
+
+Les grands modèles traitent souvent le contenu qu’ils lisent comme du texte à interpréter. C’est leur force et une faiblesse bien connue. Une page peut contenir une instruction conçue non pour l’utilisateur, mais pour le modèle : ignorer les autres offres, transmettre une information, appeler un outil ou reformuler le produit comme étant prioritaire.
+
+On parle d’**injection de prompt indirecte** lorsque l’instruction malveillante se trouve dans une source externe consultée par l’agent plutôt que dans la demande directe de l’utilisateur.
+
+Une prépublication déposée en janvier 2026 puis révisée en mai a testé ce type d’attaque dans un environnement expérimental utilisant un agent d’achat et des mécanismes liés à AP2. Les auteurs rapportent avoir pu modifier le classement de produits et provoquer des comportements non souhaités dans leur prototype. Ce travail ne mesure ni une fréquence d’attaque réelle, ni une fraude observée chez Visa, Mastercard, Google ou OpenAI. Il démontre une possibilité dans une configuration donnée, avec les limites ordinaires d’une prépublication. [Source : arXiv:2601.22569, version consultée le 2 septembre 2026.](https://arxiv.org/abs/2601.22569)
+
+Une seconde prépublication, déposée le 24 août 2026, analyse les frontières de confiance d’AP2 v0.2. Elle distingue l’intégrité du panier et du paiement après signature des interactions et données externes qui façonnent la transaction avant l’autorisation. Faute de déploiement public complet disponible, ses démonstrations reposent sur un banc d’essai. Cette analyse de protocole renforce la séparation défendue ici, sans mesurer la fréquence d’attaques en production. [Source : arXiv:2608.23858, 24 août 2026.](https://arxiv.org/abs/2608.23858)
+
+La spécification AP2 n’ignore pas le problème général de confiance. Elle considère qu’un rôle traité par un grand modèle peut lui-même devenir une source d’attaque et exige que les validations critiques soient exécutées par du code déterministe. [Source : AP2 v0.2, section « Agentic vs Non-Agentic ».](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md)
+
+Cela protège une frontière essentielle : le modèle ne doit pas pouvoir se déclarer lui-même conforme. Un moteur de règles séparé doit vérifier montant, dates, marchand, catégorie, empreinte du panier et autres contraintes.
+
+Mais imaginons une attaque plus subtile. La page ne demande pas de dépasser le budget. Elle convainc l’agent que son produit respecte mieux les critères. Le panier reste sous 100 euros. Le marchand est autorisé. Le paiement est correctement lié. Le système déterministe ne voit aucune violation formelle.
+
+Le mandat a été respecté à la lettre. Le choix a été manipulé en amont.
+
+Une architecture prudente devra donc combiner plusieurs couches :
+
+- traiter les pages, avis et catalogues comme des données non fiables, jamais comme des instructions ;
+- séparer le modèle qui explore du moteur qui autorise la dépense ;
+- limiter les outils et les données accessibles à chaque étape ;
+- vérifier indépendamment prix total, stock, vendeur et conditions au moment du paiement ;
+- demander une validation humaine pour les ambiguïtés ou les changements matériels ;
+- produire un journal compréhensible des offres consultées et des exclusions ;
+- rendre le mandat immédiatement révocable.
+
+Aucune de ces mesures n’est parfaite. Ensemble, elles réduisent la probabilité qu’une seule erreur de raisonnement devienne immédiatement un débit bancaire.
+
+## Le paiement était autorisé. L’achat était mauvais.
+
+Le droit des paiements connaît déjà une question centrale : la transaction a-t-elle été autorisée ? La directive européenne PSD2 prévoit que l’opération n’est considérée comme autorisée que si le payeur a consenti à son exécution. Elle organise aussi l’authentification forte et, pour certains paiements électroniques à distance, le lien entre l’authentification, le montant et le bénéficiaire. [Source : directive (UE) 2015/2366, notamment articles 64 et 97.](https://eur-lex.europa.eu/eli/dir/2015/2366/oj)
+
+Le règlement technique sur l’authentification forte précise le principe de *dynamic linking* : le code d’authentification doit être lié au montant et au bénéficiaire, et tout changement doit l’invalider. [Source : règlement délégué (UE) 2018/389.](https://eur-lex.europa.eu/eli/reg_del/2018/389/oj)
+
+Un mandat agentique ajoute une étape. Au moment où l’utilisateur donne son consentement général, le marchand final ou le montant exact peuvent ne pas être connus. Les protocoles tentent de résoudre cette distance en signant des contraintes ouvertes, puis en prouvant que le panier fermé les respecte.
+
+Cela permet de distinguer au moins trois litiges :
+
+| Situation | Question principale | Réponse publique aujourd’hui |
+|---|---|---|
+| L’utilisateur n’a jamais donné de mandat | Le paiement est-il non autorisé ? | Les règles existantes sur l’autorisation et la fraude offrent un cadre, sous réserve des faits et du moyen de paiement. |
+| L’agent dépasse une limite signée | Qui a mal vérifié ou exécuté le mandat ? | Les reçus et contrôles cryptographiques peuvent aider à localiser la défaillance ; le partage contractuel précis dépendra du système. |
+| L’agent respecte toutes les limites mais choisit mal | S’agit-il d’un défaut du service d’agent, d’une mauvaise information du marchand, d’un classement déloyal ou d’un risque accepté par l’utilisateur ? | Je n’ai trouvé aucune doctrine publique européenne générale tranchant proprement ce cas au 2 septembre 2026. |
+
+Cette dernière ligne est la plus neuve. Le paiement peut être autorisé au sens technique. Le produit peut être livré. Le consommateur peut néanmoins soutenir que l’agent a mal compris son intérêt, omis une meilleure offre ou été influencé.
+
+Plusieurs droits se superposent alors : services de paiement, vente à distance, publicité, protection des données, responsabilité contractuelle et règles propres aux réseaux de cartes. Un *chargeback* peut exister dans certaines situations selon le réseau et le contrat ; ce n’est pas un droit universel qui efface automatiquement toute mauvaise recommandation.
+
+Les protocoles publient des rôles techniques. Ils ne fixent pas à eux seuls la responsabilité légale. AP2 précise d’ailleurs qu’une même entité peut cumuler plusieurs rôles ou déléguer ses responsabilités. Cette souplesse facilite l’intégration, mais complique aussi la lecture externe : l’application visible, le fournisseur du modèle, le portefeuille, le processeur et le marchand peuvent appartenir à des groupes différents. [Source : AP2 v0.2, section « Roles ».](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md)
+
+<div class="ap-warning">
+<p><strong>Limite de l’enquête.</strong> Les sources publiques consultées permettent de décrire les mécanismes proposés, quelques transactions et le droit général de l’autorisation. Elles ne permettent pas d’attribuer de manière universelle la perte lorsqu’un achat est autorisé, techniquement conforme, mais économiquement mauvais. Toute présentation plus affirmative dépasserait les documents disponibles.</p>
+</div>
+
+## Pour bien acheter, l’agent doit beaucoup vous connaître
+
+Un comparateur ordinaire a besoin d’une requête. Un agent personnel réellement utile voudra davantage : votre adresse, vos tailles, les marques rejetées, l’historique des commandes, les cartes de fidélité, les contraintes familiales, les dates de voyage et les retours précédents.
+
+Chaque donnée améliore potentiellement la décision. Elle augmente aussi l’effet d’une erreur, d’un détournement ou d’une utilisation secondaire.
+
+Le RGPD impose notamment limitation des finalités, minimisation des données et protection dès la conception. Il encadre plus strictement certaines catégories de données sensibles et les inférences qui peuvent les révéler. [Source : règlement (UE) 2016/679, notamment articles 5, 9 et 25.](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
+
+Dans son rapport prospectif sur l’IA agentique, l’ICO britannique insiste sur les difficultés de répartition des responsabilités, la tentation de collecter trop de données, le risque d’inférences sensibles et la nécessité de permettre à l’utilisateur de surveiller, limiter et interrompre l’agent. [Source : ICO, « Tech futures: agentic AI », consulté le 2 septembre 2026.](https://ico.org.uk/about-the-ico/research-reports-impact-and-evaluation/research-and-reports/technology-and-innovation/tech-horizons-and-ico-tech-futures/ico-tech-futures-agentic-ai/)
+
+Le mécanisme est simple :
+
+**plus de personnalisation** → **plus de contexte accessible** → **meilleure capacité de choisir** → **plus grande surface de profilage et d’attaque**.
+
+Un agent qui sait que vous partez vendredi peut mieux réserver un train. Cette connaissance permet aussi de déduire votre absence du domicile. Un historique d’achats améliore les recommandations ; il peut révéler un état de santé, une grossesse, une pratique religieuse ou une difficulté financière sans qu’aucune de ces informations ait été déclarée explicitement.
+
+Le bon mandat ne doit donc pas seulement définir combien l’agent peut dépenser. Il doit limiter **ce qu’il peut apprendre, croiser et conserver** pour le faire.
+
+## La bataille n’oppose pas seulement Visa à Mastercard
+
+Chaque catégorie d’acteur cherche à conserver une fonction essentielle.
+
+Les réseaux de paiement veulent rester la couche de confiance qui identifie l’agent, transporte les preuves et applique les règles de transaction. Les banques émettrices gardent la relation avec le compte, l’authentification et le risque de fraude. Les marchands veulent éviter de devenir de simples entrepôts interchangeables derrière une interface qui possède le client. Les plateformes d’IA veulent recevoir l’intention avant qu’elle n’arrive chez le marchand.
+
+La normalisation peut ouvrir le marché : un mandat commun et des identités interopérables évitent que chaque agent négocie une intégration propriétaire avec chaque boutique. Mais elle peut aussi créer de nouveaux gardiens. Qui délivre l’attestation d’un « agent de confiance » ? Qui peut la révoquer ? Quels petits marchands seront capables de produire les données structurées et les preuves demandées ? Un protocole ouvert n’empêche pas la concentration si quelques plateformes contrôlent l’identité, l’accès aux utilisateurs ou les interfaces de consentement.
+
+À l’inverse, les agents pourraient exercer une pression favorable sur le commerce. Ils peuvent comparer le coût livré plutôt que le prix d’appel, détecter un abonnement précoché, tenir compte d’un retour payant et rechercher hors des plus grandes marketplaces. Un petit marchand spécialisé pourrait gagner s’il publie des données exactes, un stock fiable et de bonnes conditions, même sans budget publicitaire massif.
+
+Ces deux trajectoires sont compatibles avec la technologie. Le résultat dépendra du modèle économique et de la transparence :
+
+- l’agent travaille-t-il uniquement pour l’utilisateur ?
+- reçoit-il une commission du vendeur ?
+- le service facture-t-il un abonnement qui réduit le besoin de monétiser le classement ?
+- les offres sponsorisées sont-elles séparées ?
+- l’utilisateur peut-il voir les marchands exclus et la raison de leur exclusion ?
+- peut-il exporter son mandat et changer d’agent sans reconstruire tout son profil ?
+
+L’expression « assistant personnel » ne suffit pas à répondre. Un courtier rémunéré par le vendeur peut être utile ; il n’est simplement pas placé dans la même relation économique qu’un mandataire exclusivement payé par l’acheteur.
+
+## Cinq niveaux qui n’ont pas le même risque
+
+Le secteur utilise des vocabulaires différents. Pour éviter d’appeler « autonome » tout ce qui contient une IA, l0g retient ici une grille éditoriale, **pas une norme industrielle**.
+
+<figure class="ap-article-chart">
+<svg class="ap-svg-desktop" viewBox="0 0 960 690" style="width:100%;height:auto" role="img" aria-labelledby="levels-fr-d-title levels-fr-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="levels-fr-d-title">Cinq niveaux de délégation d’achat</title>
+<desc id="levels-fr-d-desc">Du niveau zéro, où l’agent conseille seulement, au niveau quatre, où il gère un budget dans la durée. L’intervention humaine diminue et la nécessité de garde-fous augmente.</desc>
+<rect x="0" y="0" width="960" height="690" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#2dd4bf" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="800">GRILLE ÉDITORIALE L0G · PAS UNE NORME</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="32" font-weight="800">Cinq niveaux de délégation d’achat</text>
+<text x="48" y="131" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">Plus l’humain s’éloigne de la transaction, plus les limites doivent être précises.</text>
+<rect x="48" y="164" width="864" height="88" rx="14" fill="#101b26" stroke="#365064"/>
+<circle cx="91" cy="208" r="25" fill="#253746"/><text x="91" y="216" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="850" text-anchor="middle">0</text>
+<text x="137" y="198" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="780">Conseille seulement</text>
+<text x="137" y="225" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="15">L’utilisateur recherche encore le vendeur et effectue le paiement.</text>
+<text x="861" y="213" fill="#77a6c2" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="750" text-anchor="end">CONTRÔLE HUMAIN FORT</text>
+<rect x="48" y="266" width="864" height="88" rx="14" fill="#101b26" stroke="#365064"/>
+<circle cx="91" cy="310" r="25" fill="#23464b"/><text x="91" y="318" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="850" text-anchor="middle">1</text>
+<text x="137" y="300" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="780">Prépare le panier</text>
+<text x="137" y="327" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="15">Le produit et le vendeur restent visibles avant le checkout.</text>
+<text x="861" y="315" fill="#65c5bb" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="750" text-anchor="end">PAS DE PAIEMENT</text>
+<rect x="48" y="368" width="864" height="88" rx="14" fill="#101b26" stroke="#365064"/>
+<circle cx="91" cy="412" r="25" fill="#2b5548"/><text x="91" y="420" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="850" text-anchor="middle">2</text>
+<text x="137" y="402" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="780">Attend votre accord</text>
+<text x="137" y="429" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="15">L’agent choisit, mais chaque panier fermé revient devant l’utilisateur.</text>
+<text x="861" y="417" fill="#8bd49c" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="750" text-anchor="end">HUMAIN PRÉSENT</text>
+<rect x="48" y="470" width="864" height="88" rx="14" fill="#101b26" stroke="#5e5030"/>
+<circle cx="91" cy="514" r="25" fill="#6a5521"/><text x="91" y="522" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="850" text-anchor="middle">3</text>
+<text x="137" y="504" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="780">Achète sous limites</text>
+<text x="137" y="531" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="15">Budget, durée, marchands et exceptions sont autorisés à l’avance.</text>
+<text x="861" y="519" fill="#fbbf24" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="750" text-anchor="end">HUMAIN ABSENT</text>
+<rect x="48" y="572" width="864" height="88" rx="14" fill="#101b26" stroke="#69404a"/>
+<circle cx="91" cy="616" r="25" fill="#743044"/><text x="91" y="624" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="850" text-anchor="middle">4</text>
+<text x="137" y="606" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="780">Gère dans la durée</text>
+<text x="137" y="633" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="15">Achats répétés, budget cumulé, retours ou renouvellements.</text>
+<text x="861" y="621" fill="#ff8da1" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="750" text-anchor="end">SUPERVISION PAR EXCEPTION</text>
+</svg>
+<svg class="ap-svg-mobile" viewBox="0 0 390 930" style="width:100%;height:auto" role="img" aria-labelledby="levels-fr-m-title levels-fr-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="levels-fr-m-title">Cinq niveaux de délégation d’achat</title>
+<desc id="levels-fr-m-desc">Du conseil sans paiement à la gestion continue d’un budget.</desc>
+<rect x="0" y="0" width="390" height="930" rx="18" fill="#081018"/>
+<text x="24" y="39" fill="#2dd4bf" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="800">GRILLE L0G · PAS UNE NORME</text>
+<text x="24" y="77" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="25" font-weight="800">Cinq niveaux</text>
+<text x="24" y="107" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="25" font-weight="800">de délégation</text>
+<text x="24" y="134" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">L’absence humaine exige plus de limites.</text>
+<rect x="24" y="164" width="342" height="128" rx="14" fill="#101b26" stroke="#365064"/>
+<circle cx="58" cy="198" r="21" fill="#253746"/><text x="58" y="205" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="850" text-anchor="middle">0</text>
+<text x="92" y="194" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="780">Conseille seulement</text>
+<text x="44" y="236" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">Vous cherchez le vendeur</text>
+<text x="44" y="257" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">et effectuez le paiement.</text>
+<rect x="24" y="306" width="342" height="128" rx="14" fill="#101b26" stroke="#365064"/>
+<circle cx="58" cy="340" r="21" fill="#23464b"/><text x="58" y="347" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="850" text-anchor="middle">1</text>
+<text x="92" y="336" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="780">Prépare le panier</text>
+<text x="44" y="378" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">Produit et vendeur restent</text>
+<text x="44" y="399" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">visibles avant le checkout.</text>
+<rect x="24" y="448" width="342" height="128" rx="14" fill="#101b26" stroke="#365064"/>
+<circle cx="58" cy="482" r="21" fill="#2b5548"/><text x="58" y="489" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="850" text-anchor="middle">2</text>
+<text x="92" y="478" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="780">Attend votre accord</text>
+<text x="44" y="520" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">Chaque panier fermé revient</text>
+<text x="44" y="541" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">devant vous.</text>
+<rect x="24" y="590" width="342" height="128" rx="14" fill="#101b26" stroke="#5e5030"/>
+<circle cx="58" cy="624" r="21" fill="#6a5521"/><text x="58" y="631" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="850" text-anchor="middle">3</text>
+<text x="92" y="620" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="780">Achète sous limites</text>
+<text x="44" y="662" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">Budget, durée et marchands</text>
+<text x="44" y="683" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">sont autorisés à l’avance.</text>
+<rect x="24" y="732" width="342" height="156" rx="14" fill="#101b26" stroke="#69404a"/>
+<circle cx="58" cy="766" r="21" fill="#743044"/><text x="58" y="773" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="850" text-anchor="middle">4</text>
+<text x="92" y="762" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="780">Gère dans la durée</text>
+<text x="44" y="804" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">Achats répétés, budget cumulé,</text>
+<text x="44" y="825" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="13">retours ou renouvellements.</text>
+<text x="44" y="858" fill="#ff8da1" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="750">SUPERVISION PAR EXCEPTION</text>
+</svg>
+<figcaption>Cette échelle sert uniquement à distinguer les parcours analysés dans l’article. Le niveau 2 peut fonctionner sur une infrastructure de production sans être un achat autonome ; les niveaux 3 et 4 exigent un mandat utilisable en l’absence de l’utilisateur.</figcaption>
+</figure>
+
+La progression n’est pas seulement quantitative. Entre les niveaux 2 et 3, le moment du jugement change. Au niveau 2, l’utilisateur peut encore voir que les baskets sont grises, que le vendeur est inconnu ou que la livraison coûte 18 euros. Au niveau 3, ces anomalies doivent être détectées par les règles, le modèle ou une alerte avant que l’argent parte.
+
+Au niveau 4, le risque devient cumulatif. Un agent qui se trompe une fois crée un mauvais achat. Un agent qui gère un budget pendant six mois peut reproduire la même erreur, renouveler un abonnement ou laisser une préférence ancienne continuer à produire des transactions.
+
+## Les usages les plus simples arriveront probablement les premiers
+
+La délégation est plus facile lorsque quatre conditions sont réunies : le produit est standardisé, le prix est faible, l’achat est réversible et le critère de réussite est mesurable.
+
+Racheter exactement la même référence de lessive sous un prix total donné est plus simple que choisir un parfum. Réserver automatiquement le train habituel sous un plafond peut être plus simple que construire des vacances familiales. Renouveler un abonnement existant est techniquement facile, mais économiquement dangereux si l’agent ne réévalue jamais son utilité.
+
+Les cas les plus délicats cumulent au contraire subjectivité, montant élevé, données sensibles ou conséquences difficiles à annuler : assurance, crédit, investissement, santé, voyage complexe, cadeau important, produit sur mesure.
+
+Cette hiérarchie n’est pas une prévision de calendrier. Elle indique où la relation entre mandat et résultat est la plus facile à vérifier.
+
+Un bon déploiement ne devrait pas commencer par demander « jusqu’où l’IA peut-elle aller ? », mais « quelle est la plus petite permission suffisante pour accomplir cette tâche ? ». C’est la logique du moindre privilège appliquée au commerce : accès minimal aux données, durée courte, budget limité, catégories étroites, marchand identifiable, confirmation dès que le contexte change.
+
+## La preuve disponible et ses limites
+
+Au 2 septembre 2026, l’industrie n’en est plus au simple dessin de keynote. Des transactions ont été exécutées, les grands réseaux publient des protocoles et EMVCo travaille à une couche commune autour de l’intention du consommateur. AP2 décrit déjà comment relier des mandats, un checkout et un paiement, y compris lorsque l’humain n’est pas présent au moment de la transaction. [Sources : AP2 v0.2](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md) [et EMVCo, 1er septembre 2026.](https://www.emvco.com/news/emvco-requests-feedback-on-framework-for-secure-interoperable-and-scalable-card-based-agentic-payments/)
+
+Mais les données publiques restent trop pauvres pour affirmer que le commerce autonome est déjà un marché de masse, qu’un protocole a résolu la fraude ou que les consommateurs accepteront durablement cette délégation. Les communiqués donnent des scénarios et des preuves de fonctionnement ; ils publient rarement les taux d’échec, les pertes, les contestations ou les coûts complets.
+
+La plomberie avance donc plus vite que la doctrine.
+
+Nous savons de mieux en mieux répondre à quatre questions : quel agent a agi, quel mandat lui a été donné, quel panier a été fermé et quel paiement a été autorisé.
+
+La cinquième reste ouverte : **pourquoi cette offre-là ?**
+
+Elle contient le futur rapport de force du commerce. Un agent qui possède votre intention peut écarter un vendeur avant même que vous sachiez qu’il existe. Il peut aussi vous protéger d’un prix d’appel trompeur, d’un abonnement caché ou d’un retour impossible. La même automatisation peut renforcer le consommateur ou installer un nouveau péage invisible.
+
+Le risque le plus évident est qu’une machine dépense sans permission. Les standards sont précisément construits pour le réduire.
+
+Le risque plus subtil est qu’elle dépense **avec toutes les permissions nécessaires**, après avoir pris une mauvaise décision à votre place.
+
+---
+
+## Méthodologie et limites
+
+Cette enquête s’appuie sur les documents publics accessibles au **2 septembre 2026**. Les textes techniques décrivent les protocoles ; ils ne prouvent pas leur adoption. Les communiqués d’entreprises établissent qu’elles ont annoncé ou exécuté les opérations décrites, mais ne constituent pas des audits indépendants. L’information sur le projet UPI indien repose sur Reuters et des sources anonymes, faute de confirmation publique du NPCI à la date de publication. La grille des cinq niveaux et l’outil sont des constructions pédagogiques l0g.
+
+Je n’ai trouvé aucune série publique suffisamment détaillée sur les volumes de paiements agentiques, les taux d’erreur, la fraude, les remboursements ou les litiges. Aucun chiffre de cabinet de conseil n’est utilisé pour combler ce manque.
+
+## Sources principales
+
+### Protocoles et standards
+
+<ul class="ap-source-list">
+<li><a href="https://www.emvco.com/news/emvco-requests-feedback-on-framework-for-secure-interoperable-and-scalable-card-based-agentic-payments/">EMVCo, consultation sur le cadre des paiements agentiques, 1er septembre 2026</a></li>
+<li><a href="https://www.emvco.com/resources/emv-agentic-payments-framework-for-specifications-v1-0-draft-comment-period-ends-30-sept-2026/">EMVCo, page du draft v1.0 et période de commentaires</a></li>
+<li><a href="https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md">AP2 v0.2, spécification publique</a></li>
+<li><a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol">Google Cloud, annonce initiale d’AP2</a></li>
+<li><a href="https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications">Visa, Trusted Agent Protocol Specifications</a></li>
+<li><a href="https://www.emvco.com/emv-technologies/payment-tokenisation/">EMVCo, payment tokenisation</a></li>
+</ul>
+
+### Transactions et produits documentés par les entreprises
+
+<ul class="ap-source-list">
+<li><a href="https://www.mastercard.com/news/europe/en/newsroom/press-releases/en/2026/worldline-ing-and-mastercard-complete-a-live-end-to-end-european-agentic-payment-in-production/">Worldline, ING et Mastercard, transaction européenne du 2 juin 2026</a></li>
+<li><a href="https://worldline.com/en-gb/home/top-navigation/about-worldline/innovation/agentic-commerce">Worldline, scénarios d’agentic commerce</a></li>
+<li><a href="https://www.visa.co.uk/about-visa/newsroom/press-releases.3457328.html">Visa Europe, transactions annoncées en juillet 2026</a></li>
+<li><a href="https://openai.com/index/buy-it-in-chatgpt/">OpenAI, lancement d’Instant Checkout</a></li>
+<li><a href="https://openai.com/index/powering-product-discovery-in-chatgpt/">OpenAI, stratégie de découverte de produits, mars 2026</a></li>
+<li><a href="https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search">OpenAI Help, shopping et parcours de checkout éligibles</a></li>
+</ul>
+
+### Droit, données et recherche
+
+<ul class="ap-source-list">
+<li><a href="https://eur-lex.europa.eu/eli/dir/2015/2366/oj">Directive (UE) 2015/2366, PSD2</a></li>
+<li><a href="https://eur-lex.europa.eu/eli/reg_del/2018/389/oj">Règlement délégué (UE) 2018/389 sur l’authentification forte</a></li>
+<li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">Règlement (UE) 2016/679, RGPD</a></li>
+<li><a href="https://ico.org.uk/about-the-ico/research-reports-impact-and-evaluation/research-and-reports/technology-and-innovation/tech-horizons-and-ico-tech-futures/ico-tech-futures-agentic-ai/">ICO, rapport prospectif sur l’IA agentique</a></li>
+<li><a href="https://arxiv.org/abs/2601.22569">Prépublication sur les attaques contre un agent d’achat lié à AP2</a></li>
+<li><a href="https://arxiv.org/abs/2608.23858">Prépublication sur les frontières de confiance d’AP2 v0.2, 24 août 2026</a></li>
+<li><a href="https://www.reuters.com/world/india/india-preparing-rollout-agentic-payments-upi-sources-say-2026-09-01/">Reuters, projet indien de paiements agentiques sur UPI, 1er septembre 2026</a></li>
+</ul>

@@ -1,0 +1,543 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+const c = fr ? {
+  eyebrow: 'OUTIL INTERACTIF · AUCUN PAIEMENT RÉEL',
+  title: 'Rédigez le permis de dépenser de votre IA',
+  intro: 'Transformez « achète à ma place » en règles vérifiables. Tout fonctionne localement dans votre navigateur : aucune donnée n’est envoyée.',
+  mode: 'Pouvoir accordé à l’agent',
+  recommend: 'Recommander seulement',
+  prepare: 'Préparer le panier',
+  approve: 'Payer après chaque accord',
+  autonomous: 'Acheter sous limites',
+  continuous: 'Gérer un budget dans la durée',
+  totalBudget: 'Budget total',
+  perPurchase: 'Plafond par achat',
+  duration: 'Durée du mandat',
+  days: 'jours',
+  confirmation: 'Confirmation humaine',
+  every: 'À chaque achat',
+  threshold: 'Au-dessus d’un seuil',
+  none: 'Jamais dans les limites',
+  confirmationThreshold: 'Seuil de confirmation',
+  merchants: 'Marchands autorisés',
+  whitelist: 'Liste blanche uniquement',
+  known: 'Marchands déjà connus',
+  any: 'Tout marchand trouvé',
+  priority: 'Critère prioritaire',
+  totalPrice: 'Prix total livré',
+  delivery: 'Délai de livraison',
+  returns: 'Conditions de retour',
+  substitutions: 'Produits de substitution',
+  never: 'Interdits',
+  equivalent: 'Équivalents autorisés',
+  cheaper: 'Moins chers autorisés',
+  condition: 'État du produit',
+  newOnly: 'Neuf uniquement',
+  anyCondition: 'Neuf ou reconditionné',
+  guardrails: 'Garde-fous supplémentaires',
+  fees: 'Le budget inclut livraison, taxes et frais',
+  returnRequired: 'Retour possible exigé',
+  subscriptions: 'Abonnements autorisés',
+  recurring: 'Achats récurrents autorisés',
+  data: 'Données accessibles à l’agent',
+  address: 'Adresse de livraison',
+  history: 'Historique d’achats',
+  loyalty: 'Cartes de fidélité',
+  calendar: 'Calendrier et déplacements',
+  reset: 'Réinitialiser',
+  copy: 'Copier le mandat',
+  copied: 'Mandat copié',
+  result: 'Votre mandat',
+  level: 'Niveau d’autonomie',
+  exposure: 'Qualité des garde-fous',
+  strong: 'plutôt forte',
+  medium: 'intermédiaire',
+  weak: 'faible',
+  invalid: 'Paramètres invalides',
+  autoCapacity: 'Capacité automatique théorique',
+  noAuto: 'Aucune dépense automatique',
+  upTo: 'jusqu’à',
+  transactions: 'achats au plafond automatique pour épuiser le budget',
+  warnings: 'Points à trancher',
+  dataNeeded: 'Données ouvertes',
+  noOptionalData: 'Aucune donnée optionnelle sélectionnée',
+  disclaimer: 'Cette grille l0g décrit la délégation choisie ; elle ne mesure ni la sécurité d’un service réel, ni sa conformité juridique. Le nombre d’achats indique le minimum nécessaire pour épuiser le budget au plafond automatique, pas une prévision de dépense.',
+  mandatePrefix: 'Mandat proposé',
+  levels: [
+    '0 · conseil',
+    '1 · panier',
+    '2 · accord humain',
+    '3 · mandat autonome',
+    '4 · délégation continue',
+  ],
+} : {
+  eyebrow: 'INTERACTIVE TOOL · NO REAL PAYMENT',
+  title: 'Write your AI’s licence to spend',
+  intro: 'Turn “buy it for me” into rules that can be checked. Everything runs locally in your browser; no data is sent anywhere.',
+  mode: 'Agent permissions',
+  recommend: 'Recommend only',
+  prepare: 'Prepare the basket',
+  approve: 'Pay after each approval',
+  autonomous: 'Buy within limits',
+  continuous: 'Manage a budget over time',
+  totalBudget: 'Total budget',
+  perPurchase: 'Per-purchase cap',
+  duration: 'Mandate duration',
+  days: 'days',
+  confirmation: 'Human confirmation',
+  every: 'For every purchase',
+  threshold: 'Above a threshold',
+  none: 'Never within the limits',
+  confirmationThreshold: 'Confirmation threshold',
+  merchants: 'Permitted merchants',
+  whitelist: 'Whitelist only',
+  known: 'Previously known merchants',
+  any: 'Any merchant found',
+  priority: 'Primary ranking criterion',
+  totalPrice: 'Delivered total price',
+  delivery: 'Delivery time',
+  returns: 'Return terms',
+  substitutions: 'Product substitutions',
+  never: 'Forbidden',
+  equivalent: 'Equivalent items allowed',
+  cheaper: 'Cheaper items allowed',
+  condition: 'Product condition',
+  newOnly: 'New only',
+  anyCondition: 'New or refurbished',
+  guardrails: 'Additional guardrails',
+  fees: 'Budget includes delivery, taxes and fees',
+  returnRequired: 'Return option required',
+  subscriptions: 'Subscriptions allowed',
+  recurring: 'Recurring purchases allowed',
+  data: 'Data available to the agent',
+  address: 'Delivery address',
+  history: 'Purchase history',
+  loyalty: 'Loyalty cards',
+  calendar: 'Calendar and travel plans',
+  reset: 'Reset',
+  copy: 'Copy mandate',
+  copied: 'Mandate copied',
+  result: 'Your mandate',
+  level: 'Autonomy level',
+  exposure: 'Guardrail quality',
+  strong: 'fairly strong',
+  medium: 'mixed',
+  weak: 'weak',
+  invalid: 'Invalid parameters',
+  autoCapacity: 'Theoretical automatic capacity',
+  noAuto: 'No automatic spending',
+  upTo: 'up to',
+  transactions: 'purchases at the automatic cap to exhaust the budget',
+  warnings: 'Questions still open',
+  dataNeeded: 'Data access',
+  noOptionalData: 'No optional data selected',
+  disclaimer: 'This l0g framework describes the delegation selected. It does not assess the security or legal compliance of a real service. The purchase count is the minimum needed to exhaust the budget at the automatic cap, not a spending forecast.',
+  mandatePrefix: 'Proposed mandate',
+  levels: [
+    '0 · advice',
+    '1 · basket',
+    '2 · human approval',
+    '3 · autonomous mandate',
+    '4 · continuous delegation',
+  ],
+};
+---
+
+<section class="ap-permit" data-ap-permit data-lang={lang}>
+  <header class="ap-head">
+    <span>{c.eyebrow}</span>
+    <h3>{c.title}</h3>
+    <p>{c.intro}</p>
+  </header>
+
+  <div class="ap-layout">
+    <form class="ap-form" data-form>
+      <label class="ap-wide">
+        <span>{c.mode}</span>
+        <select data-k="executionMode">
+          <option value="recommend">{c.recommend}</option>
+          <option value="prepare">{c.prepare}</option>
+          <option value="approve">{c.approve}</option>
+          <option value="autonomous" selected>{c.autonomous}</option>
+          <option value="continuous">{c.continuous}</option>
+        </select>
+      </label>
+
+      <label>
+        <span>{c.totalBudget}</span>
+        <div class="ap-suffix"><input data-k="totalBudget" type="number" min="1" max="1000000" step="1" value="100" inputmode="decimal" /><i>€</i></div>
+      </label>
+      <label>
+        <span>{c.perPurchase}</span>
+        <div class="ap-suffix"><input data-k="perPurchaseCap" type="number" min="1" max="1000000" step="1" value="35" inputmode="decimal" /><i>€</i></div>
+      </label>
+      <label>
+        <span>{c.duration}</span>
+        <div class="ap-suffix"><input data-k="durationDays" type="number" min="1" max="365" step="1" value="7" inputmode="numeric" /><i>{c.days}</i></div>
+      </label>
+      <label>
+        <span>{c.confirmation}</span>
+        <select data-k="confirmationPolicy">
+          <option value="every">{c.every}</option>
+          <option value="threshold" selected>{c.threshold}</option>
+          <option value="none">{c.none}</option>
+        </select>
+      </label>
+      <label data-threshold-row>
+        <span>{c.confirmationThreshold}</span>
+        <div class="ap-suffix"><input data-k="confirmationThreshold" type="number" min="1" max="1000000" step="1" value="30" inputmode="decimal" /><i>€</i></div>
+      </label>
+      <label>
+        <span>{c.merchants}</span>
+        <select data-k="merchantPolicy">
+          <option value="whitelist">{c.whitelist}</option>
+          <option value="known" selected>{c.known}</option>
+          <option value="any">{c.any}</option>
+        </select>
+      </label>
+      <label>
+        <span>{c.priority}</span>
+        <select data-k="rankingPriority">
+          <option value="total-price" selected>{c.totalPrice}</option>
+          <option value="delivery">{c.delivery}</option>
+          <option value="returns">{c.returns}</option>
+        </select>
+      </label>
+      <label>
+        <span>{c.substitutions}</span>
+        <select data-k="substitutionPolicy">
+          <option value="never" selected>{c.never}</option>
+          <option value="equivalent">{c.equivalent}</option>
+          <option value="cheaper">{c.cheaper}</option>
+        </select>
+      </label>
+      <label>
+        <span>{c.condition}</span>
+        <select data-k="productCondition">
+          <option value="new" selected>{c.newOnly}</option>
+          <option value="any">{c.anyCondition}</option>
+        </select>
+      </label>
+
+      <fieldset class="ap-wide">
+        <legend>{c.guardrails}</legend>
+        <label class="ap-check"><input data-k="budgetIncludesFees" type="checkbox" checked /> <span>{c.fees}</span></label>
+        <label class="ap-check"><input data-k="returnRequired" type="checkbox" checked /> <span>{c.returnRequired}</span></label>
+        <label class="ap-check"><input data-k="subscriptionsAllowed" type="checkbox" /> <span>{c.subscriptions}</span></label>
+        <label class="ap-check"><input data-k="recurringAllowed" type="checkbox" /> <span>{c.recurring}</span></label>
+      </fieldset>
+
+      <fieldset class="ap-wide">
+        <legend>{c.data}</legend>
+        <div class="ap-check-grid">
+          <label class="ap-check"><input data-data="address" type="checkbox" checked /> <span>{c.address}</span></label>
+          <label class="ap-check"><input data-data="purchase-history" type="checkbox" /> <span>{c.history}</span></label>
+          <label class="ap-check"><input data-data="loyalty" type="checkbox" /> <span>{c.loyalty}</span></label>
+          <label class="ap-check"><input data-data="calendar" type="checkbox" /> <span>{c.calendar}</span></label>
+        </div>
+      </fieldset>
+
+      <div class="ap-actions ap-wide">
+        <button type="button" class="ap-secondary" data-reset>{c.reset}</button>
+      </div>
+    </form>
+
+    <div class="ap-output" aria-live="polite">
+      <div class="ap-output-title">
+        <span>{c.result}</span>
+        <button type="button" data-copy>{c.copy}</button>
+      </div>
+      <div class="ap-kpis">
+        <article><small>{c.level}</small><strong data-level>…</strong></article>
+        <article><small>{c.exposure}</small><strong data-exposure>…</strong></article>
+      </div>
+      <p class="ap-capacity"><strong>{c.autoCapacity}</strong><br /><span data-capacity>…</span></p>
+      <div class="ap-mandate"><strong>{c.mandatePrefix}</strong><p data-mandate>…</p></div>
+      <div class="ap-list-block"><strong>{c.warnings}</strong><ul data-warnings></ul></div>
+      <div class="ap-list-block"><strong>{c.dataNeeded}</strong><ul data-data-list></ul></div>
+      <p class="ap-error" data-error hidden>{c.invalid}</p>
+    </div>
+  </div>
+
+  <p class="ap-disclaimer">{c.disclaimer}</p>
+</section>
+
+<script>
+  import { assessSpendingPermit, type SpendingPermitInput } from '../lib/agentic-spending-permit';
+
+  const defaults = {
+    executionMode: 'autonomous',
+    totalBudget: '100',
+    perPurchaseCap: '35',
+    durationDays: '7',
+    confirmationPolicy: 'threshold',
+    confirmationThreshold: '30',
+    merchantPolicy: 'known',
+    rankingPriority: 'total-price',
+    substitutionPolicy: 'never',
+    productCondition: 'new',
+    budgetIncludesFees: true,
+    returnRequired: true,
+    subscriptionsAllowed: false,
+    recurringAllowed: false,
+    data: ['address'],
+  };
+
+  document.querySelectorAll('[data-ap-permit]').forEach((node) => {
+    if (!(node instanceof HTMLElement) || node.dataset.ready === '1') return;
+    node.dataset.ready = '1';
+    const lang = node.dataset.lang === 'en' ? 'en' : 'fr';
+    const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+
+    const words: any = lang === 'fr' ? {
+      strong: 'plutôt forte', medium: 'intermédiaire', weak: 'faible', noAuto: 'Aucune dépense automatique',
+      upTo: 'jusqu’à', atLeast: 'au moins', tx: 'achats au plafond automatique pour épuiser le budget', days: 'jours',
+      modes: { recommend: 'recommander seulement', prepare: 'préparer un panier sans payer', approve: 'payer après votre accord explicite', autonomous: 'acheter sans vous attendre dans les limites ci-dessous', continuous: 'gérer des achats dans la durée' },
+      confirmation: { every: 'Chaque transaction exige votre accord.', threshold: (n: string) => `Votre accord est requis au-dessus de ${n}.`, none: 'Aucune confirmation n’est demandée dans les limites du mandat.' },
+      merchant: { whitelist: 'uniquement auprès d’une liste blanche', known: 'auprès de marchands considérés comme déjà connus', any: 'auprès de tout marchand trouvé' },
+      priority: { 'total-price': 'le prix total livré', delivery: 'le délai de livraison', returns: 'les conditions de retour' },
+      substitute: { never: 'Aucune substitution n’est autorisée.', equivalent: 'Une substitution dite équivalente est autorisée.', cheaper: 'Une substitution moins chère est autorisée.' },
+      condition: { new: 'Les produits doivent être neufs.', any: 'Les produits neufs ou reconditionnés sont admis.' },
+      fees: { yes: 'Le budget inclut taxes, livraison et frais.', no: 'Les frais peuvent s’ajouter au budget affiché.' },
+      returns: { yes: 'Une possibilité de retour est exigée.', no: 'Aucune condition minimale de retour n’est imposée.' },
+      extras: { subscriptions: 'Les abonnements sont autorisés.', recurring: 'Les achats récurrents sont autorisés.' },
+      flags: {
+        'broad-merchant-access': '« Tout marchand » élargit fortement la surface de fraude, d’erreur et d’après-vente.',
+        'no-transaction-confirmation': 'Le mandat peut être exécuté sans point d’arrêt humain transaction par transaction.',
+        'subscriptions-with-autonomy': 'Un abonnement peut créer des prélèvements après la première décision.',
+        'recurring-with-autonomy': 'La répétition transforme une erreur ponctuelle en série de paiements.',
+        'long-lived-mandate': 'Une longue durée augmente le risque que le contexte, les prix ou vos préférences changent.',
+        'sensitive-context': 'Historique et calendrier peuvent révéler bien davantage que le produit recherché.',
+        'fees-outside-budget': 'Le plafond ne couvre pas nécessairement le coût total payé.',
+        'returns-not-required': 'Une mauvaise décision peut être plus difficile à renverser.',
+        'substitutions-allowed': '« Équivalent » ou « moins cher » doit être défini produit par produit.',
+        'high-aggregate-capacity': 'De petits plafonds unitaires peuvent tout de même épuiser rapidement le budget cumulé.',
+        'budget-invalid': 'Le budget total doit être positif et raisonnable.',
+        'purchase-cap-invalid': 'Le plafond par achat doit être positif et inférieur ou égal au budget total.',
+        'duration-invalid': 'La durée doit être comprise entre 1 et 365 jours.',
+        'threshold-invalid': 'Le seuil de confirmation doit être positif et inférieur ou égal au plafond par achat.',
+      },
+      ambiguities: {
+        'no-ranking-proof': 'Le mandat fixe un critère prioritaire, mais ne prouve pas quels vendeurs ont été consultés ni comment ils ont été classés.',
+        'equivalence-undefined': 'Les dimensions qui rendent deux produits « équivalents » ne sont pas précisées.',
+        'known-merchant-undefined': '« Marchand connu » peut signifier déjà utilisé, vérifié par la plateforme ou simplement reconnu par son nom.',
+        'delivery-address-missing': 'Un achat physique exigerait une adresse ou un point de retrait.',
+        'after-sale-operator-undefined': 'Le mandat ne dit pas qui gère annulation, retour, remboursement et litige.',
+        'price-volatility-window': 'Le prix peut changer entre la sélection de l’offre et l’autorisation bancaire.',
+      },
+      data: { address: 'Adresse de livraison', 'purchase-history': 'Historique d’achats', loyalty: 'Cartes de fidélité', calendar: 'Calendrier et déplacements' },
+      noData: 'Aucune donnée optionnelle sélectionnée',
+      copied: 'Mandat copié', copy: 'Copier le mandat',
+    } : {
+      strong: 'fairly strong', medium: 'mixed', weak: 'weak', noAuto: 'No automatic spending',
+      upTo: 'up to', atLeast: 'at least', tx: 'purchases at the automatic cap to exhaust the budget', days: 'days',
+      modes: { recommend: 'recommend only', prepare: 'prepare a basket without paying', approve: 'pay after your explicit approval', autonomous: 'buy without waiting for you within the limits below', continuous: 'manage purchases over time' },
+      confirmation: { every: 'Every transaction requires your approval.', threshold: (n: string) => `Your approval is required above ${n}.`, none: 'No transaction-by-transaction confirmation is required within the mandate.' },
+      merchant: { whitelist: 'only from a whitelist', known: 'from merchants considered previously known', any: 'from any merchant it finds' },
+      priority: { 'total-price': 'the delivered total price', delivery: 'delivery time', returns: 'return terms' },
+      substitute: { never: 'No substitution is allowed.', equivalent: 'A supposedly equivalent substitution is allowed.', cheaper: 'A cheaper substitution is allowed.' },
+      condition: { new: 'Products must be new.', any: 'New or refurbished products are allowed.' },
+      fees: { yes: 'The budget includes taxes, delivery and fees.', no: 'Fees may be added to the displayed budget.' },
+      returns: { yes: 'A return option is required.', no: 'No minimum return condition is imposed.' },
+      extras: { subscriptions: 'Subscriptions are allowed.', recurring: 'Recurring purchases are allowed.' },
+      flags: {
+        'broad-merchant-access': '“Any merchant” materially widens the fraud, error and after-sales surface.',
+        'no-transaction-confirmation': 'The mandate can run without a human stop at transaction level.',
+        'subscriptions-with-autonomy': 'A subscription may create charges after the initial decision.',
+        'recurring-with-autonomy': 'Repetition can turn a one-off mistake into a series of payments.',
+        'long-lived-mandate': 'A long window raises the chance that prices, context or preferences will change.',
+        'sensitive-context': 'Purchase history and calendar data can reveal far more than the item being sought.',
+        'fees-outside-budget': 'The cap may not cover the total amount ultimately paid.',
+        'returns-not-required': 'A bad decision may be harder to reverse.',
+        'substitutions-allowed': '“Equivalent” or “cheaper” must be defined for each product class.',
+        'high-aggregate-capacity': 'Small per-purchase caps can still exhaust the aggregate budget quickly.',
+        'budget-invalid': 'The total budget must be positive and reasonable.',
+        'purchase-cap-invalid': 'The per-purchase cap must be positive and no higher than the total budget.',
+        'duration-invalid': 'The duration must be between 1 and 365 days.',
+        'threshold-invalid': 'The confirmation threshold must be positive and no higher than the per-purchase cap.',
+      },
+      ambiguities: {
+        'no-ranking-proof': 'The mandate sets a priority but does not prove which sellers were searched or how they were ranked.',
+        'equivalence-undefined': 'The dimensions that make two products “equivalent” are not specified.',
+        'known-merchant-undefined': '“Known merchant” may mean previously used, platform-verified or merely recognisable by name.',
+        'delivery-address-missing': 'A physical purchase would require an address or collection point.',
+        'after-sale-operator-undefined': 'The mandate does not say who handles cancellation, returns, refunds and disputes.',
+        'price-volatility-window': 'The price may move between offer selection and payment authorisation.',
+      },
+      data: { address: 'Delivery address', 'purchase-history': 'Purchase history', loyalty: 'Loyalty cards', calendar: 'Calendar and travel plans' },
+      noData: 'No optional data selected',
+      copied: 'Mandate copied', copy: 'Copy mandate',
+    };
+
+    const q = (selector: string): HTMLElement => {
+      const element = node.querySelector(selector);
+      if (!(element instanceof HTMLElement)) throw new Error(`Missing permit element: ${selector}`);
+      return element;
+    };
+    const control = (key: string): HTMLInputElement | HTMLSelectElement => {
+      const element = node.querySelector(`[data-k="${key}"]`);
+      if (!(element instanceof HTMLInputElement || element instanceof HTMLSelectElement)) throw new Error(`Missing control: ${key}`);
+      return element;
+    };
+    const checkbox = (key: string): boolean => {
+      const element = control(key);
+      if (!(element instanceof HTMLInputElement)) throw new Error(`Expected checkbox: ${key}`);
+      return element.checked;
+    };
+    const money = (value: number) => new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+    const list = (target: string, items: string[]) => {
+      const ul = q(target);
+      ul.replaceChildren();
+      for (const item of items) {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      }
+    };
+
+    const update = () => {
+      const confirmationPolicy = control('confirmationPolicy').value;
+      const thresholdRow = q('[data-threshold-row]');
+      thresholdRow.hidden = confirmationPolicy !== 'threshold';
+
+      const input = {
+        executionMode: control('executionMode').value,
+        totalBudget: Number(control('totalBudget').value),
+        perPurchaseCap: Number(control('perPurchaseCap').value),
+        durationDays: Number(control('durationDays').value),
+        confirmationPolicy,
+        confirmationThreshold: Number(control('confirmationThreshold').value),
+        merchantPolicy: control('merchantPolicy').value,
+        subscriptionsAllowed: checkbox('subscriptionsAllowed'),
+        recurringAllowed: checkbox('recurringAllowed'),
+        substitutionPolicy: control('substitutionPolicy').value,
+        productCondition: control('productCondition').value,
+        rankingPriority: control('rankingPriority').value,
+        budgetIncludesFees: checkbox('budgetIncludesFees'),
+        returnRequired: checkbox('returnRequired'),
+        dataPermissions: Array.from(node.querySelectorAll('[data-data]:checked')).map((element) => element.getAttribute('data-data')).filter(Boolean),
+      } as SpendingPermitInput;
+
+      const assessment = assessSpendingPermit(input);
+      q('[data-error]').hidden = assessment.valid;
+      q('[data-level]').textContent = (lang === 'fr'
+        ? ['0 · conseil', '1 · panier', '2 · accord humain', '3 · mandat autonome', '4 · délégation continue']
+        : ['0 · advice', '1 · basket', '2 · human approval', '3 · autonomous mandate', '4 · continuous delegation'])[assessment.level];
+
+      const materialFlags = assessment.flags.filter((flag) => !flag.endsWith('-invalid'));
+      const severe = materialFlags.filter((flag) => ['no-transaction-confirmation', 'subscriptions-with-autonomy', 'recurring-with-autonomy', 'broad-merchant-access'].includes(flag)).length;
+      const quality = severe >= 2 || materialFlags.length >= 6 ? words.weak : materialFlags.length >= 3 ? words.medium : words.strong;
+      q('[data-exposure]').textContent = assessment.valid ? quality : (lang === 'fr' ? 'à corriger' : 'needs correction');
+
+      q('[data-capacity]').textContent = assessment.maxAutomaticSpend > 0
+        ? `${words.upTo} ${money(assessment.maxAutomaticSpend)} · ${words.atLeast} ${assessment.minAutomaticTransactionsToExhaustBudget} ${words.tx}`
+        : words.noAuto;
+
+      const confirmText = input.confirmationPolicy === 'threshold'
+        ? words.confirmation.threshold(money(input.confirmationThreshold))
+        : words.confirmation[input.confirmationPolicy];
+      const extras = [];
+      if (input.subscriptionsAllowed) extras.push(words.extras.subscriptions);
+      if (input.recurringAllowed) extras.push(words.extras.recurring);
+      const mandate = `${lang === 'fr' ? 'Pendant' : 'For'} ${input.durationDays} ${words.days}, ${lang === 'fr' ? 'l’agent peut' : 'the agent may'} ${words.modes[input.executionMode]}. ${lang === 'fr' ? 'Budget cumulé' : 'Aggregate budget'}: ${money(input.totalBudget)}; ${lang === 'fr' ? 'plafond par achat' : 'per-purchase cap'}: ${money(input.perPurchaseCap)}. ${confirmText} ${lang === 'fr' ? 'Il achète' : 'It buys'} ${words.merchant[input.merchantPolicy]} ${lang === 'fr' ? 'et privilégie' : 'and prioritises'} ${words.priority[input.rankingPriority]}. ${words.substitute[input.substitutionPolicy]} ${words.condition[input.productCondition]} ${words.fees[input.budgetIncludesFees ? 'yes' : 'no']} ${words.returns[input.returnRequired ? 'yes' : 'no']} ${extras.join(' ')}`.replace(/\s+/g, ' ').trim();
+      q('[data-mandate]').textContent = mandate;
+
+      const warnings = [
+        ...assessment.flags.map((flag) => words.flags[flag]).filter(Boolean),
+        ...assessment.ambiguities.map((code) => words.ambiguities[code]).filter(Boolean),
+      ];
+      list('[data-warnings]', [...new Set(warnings)]);
+      const dataItems = assessment.requiredData.map((code) => words.data[code]).filter(Boolean);
+      list('[data-data-list]', dataItems.length ? dataItems : [words.noData]);
+    };
+
+    node.addEventListener('input', update);
+    node.addEventListener('change', update);
+    q('[data-reset]').addEventListener('click', () => {
+      for (const [key, value] of Object.entries(defaults)) {
+        if (key === 'data') continue;
+        const element = control(key);
+        if (element instanceof HTMLInputElement && element.type === 'checkbox') element.checked = Boolean(value);
+        else element.value = String(value);
+      }
+      node.querySelectorAll('[data-data]').forEach((element) => {
+        if (element instanceof HTMLInputElement) {
+          const key = element.getAttribute('data-data');
+          element.checked = key !== null && defaults.data.includes(key);
+        }
+      });
+      update();
+    });
+    q('[data-copy]').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      if (!(button instanceof HTMLButtonElement)) return;
+      const text = q('[data-mandate]').textContent || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = words.copied;
+        window.setTimeout(() => { button.textContent = words.copy; }, 1600);
+      } catch {
+        button.textContent = words.copy;
+      }
+    });
+    update();
+  });
+</script>
+
+<style is:global>
+  .ap-permit{margin:2.4rem 0;padding:1.25rem;border:1px solid rgba(159,177,189,.28);border-radius:22px;background:#081018;color:#f4f7f8;box-sizing:border-box;overflow:hidden}
+  .ap-permit *{box-sizing:border-box}
+  .ap-permit [hidden]{display:none!important}
+  .ap-head>span{display:block;color:#2dd4bf;font-size:.74rem;font-weight:800;letter-spacing:.12em}
+  .ap-head h3{margin:.4rem 0 .55rem;color:#f4f7f8;font-size:clamp(1.45rem,3.5vw,2.25rem);line-height:1.08}
+  .ap-head p{margin:0;max-width:78ch;color:#9fb1bd;line-height:1.6}
+  .ap-layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:1rem;margin-top:1.25rem;align-items:start}
+  .ap-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;padding:1rem;border:1px solid #294050;border-radius:16px;background:#101b26}
+  .ap-form>label{display:flex;min-width:0;flex-direction:column;gap:.34rem;color:#c8d4da;font-size:.8rem;font-weight:700}
+  .ap-form select,.ap-form input[type="number"]{width:100%;min-width:0;border:1px solid #365064;border-radius:10px;background:#081018;color:#f4f7f8;padding:.72rem .75rem;font:inherit;font-size:.95rem}
+  .ap-form select:focus,.ap-form input:focus,.ap-output button:focus,.ap-actions button:focus{outline:2px solid #2dd4bf;outline-offset:2px}
+  .ap-wide{grid-column:1/-1}
+  .ap-suffix{position:relative;min-width:0}
+  .ap-suffix input{padding-right:3.9rem!important}
+  .ap-suffix i{position:absolute;right:.72rem;top:50%;transform:translateY(-50%);color:#9fb1bd;font-size:.8rem;font-style:normal;pointer-events:none}
+  .ap-form fieldset{min-width:0;margin:0;padding:.8rem;border:1px solid #294050;border-radius:12px}
+  .ap-form legend{padding:0 .35rem;color:#f4f7f8;font-size:.82rem;font-weight:800}
+  .ap-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.48rem .8rem}
+  .ap-check{display:flex!important;min-width:0;flex-direction:row!important;align-items:flex-start;gap:.48rem!important;color:#c8d4da!important;font-size:.79rem!important;font-weight:600!important;line-height:1.35}
+  .ap-check input{flex:0 0 auto;margin:.15rem 0 0;accent-color:#2dd4bf}
+  .ap-actions{display:flex;justify-content:flex-end}
+  .ap-actions button,.ap-output button{border:1px solid #365064;border-radius:999px;background:#142433;color:#f4f7f8;padding:.5rem .8rem;font:inherit;font-size:.78rem;font-weight:750;cursor:pointer}
+  .ap-actions button:hover,.ap-output button:hover{border-color:#2dd4bf}
+  .ap-output{min-width:0;padding:1rem;border:1px solid #294050;border-radius:16px;background:#0d1721}
+  .ap-output-title{display:flex;align-items:center;justify-content:space-between;gap:.75rem;color:#2dd4bf;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .ap-output-title button{flex:0 0 auto;text-transform:none;letter-spacing:0}
+  .ap-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0}
+  .ap-kpis article{min-width:0;padding:.8rem;border:1px solid #294050;border-radius:12px;background:#101b26}
+  .ap-kpis small{display:block;color:#9fb1bd;font-size:.72rem;line-height:1.3}
+  .ap-kpis strong{display:block;margin-top:.28rem;color:#f4f7f8;font-size:1rem;line-height:1.25;overflow-wrap:anywhere}
+  .ap-capacity{margin:.8rem 0;padding:.8rem;border-left:3px solid #fbbf24;background:rgba(251,191,36,.07);color:#dbe5ea;font-size:.84rem;line-height:1.5}
+  .ap-capacity strong{color:#fbbf24}
+  .ap-mandate{padding:.9rem;border:1px solid rgba(45,212,191,.38);border-radius:12px;background:rgba(45,212,191,.06)}
+  .ap-mandate>strong,.ap-list-block>strong{display:block;margin-bottom:.4rem;color:#f4f7f8;font-size:.82rem}
+  .ap-mandate p{margin:0;color:#dbe5ea;font-size:.88rem;line-height:1.58;overflow-wrap:anywhere}
+  .ap-list-block{margin-top:.9rem}
+  .ap-list-block ul{margin:.35rem 0 0;padding-left:1.12rem;color:#b9c8cf;font-size:.8rem;line-height:1.48}
+  .ap-list-block li{margin:.34rem 0}
+  .ap-error{margin:.8rem 0 0;padding:.65rem;border-radius:10px;background:rgba(255,92,122,.14);color:#ffd3dc;font-size:.82rem;font-weight:700}
+  .ap-disclaimer{margin:1rem .15rem 0;color:#8296a2;font-size:.75rem;line-height:1.5}
+  @media(max-width:860px){.ap-layout{grid-template-columns:1fr}.ap-output{order:-1}}
+  @media(max-width:560px){
+    .ap-permit{padding:.9rem;border-radius:16px}
+    .ap-form{grid-template-columns:1fr;padding:.8rem}
+    .ap-form>label,.ap-wide{grid-column:1}
+    .ap-check-grid{grid-template-columns:1fr}
+    .ap-kpis{grid-template-columns:1fr}
+    .ap-output-title{align-items:flex-start}
+    .ap-output-title>span{padding-top:.5rem}
+  }
+</style>
