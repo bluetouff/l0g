@@ -47,7 +47,7 @@ test("publie les conditions Watch validées pour l’ouverture", async () => {
   assert.match(terms, /valable 30 jours/);
   assert.doesNotMatch(terms, /valable 30 minutes/);
   assert.match(terms, /TVA non applicable, article 293 B du CGI/);
-  assert.match(terms, /5 rue de Volaille, 28000 Chartres, France/);
+  assert.match(terms, /5 rue de la Volaille, 28000 Chartres, France/);
   assert.match(terms, /Quatorze jours pour changer d’avis/);
   assert.match(terms, /remboursement intégral/);
   assert.match(terms, /Modèle de formulaire de rétractation/);
