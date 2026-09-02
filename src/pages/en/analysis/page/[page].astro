@@ -3,13 +3,13 @@ import { getCollection } from 'astro:content';
 import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
 import AnalysisList from '../../../../components/AnalysisList.astro';
 import { readingTime } from '../../../../lib/reading-time.ts';
-import { sortPostsByLatestDate } from '../../../../lib/content-order.mjs';
+import { sortPostsByPublicationDate } from '../../../../lib/content-order.mjs';
 
 const PAGE_SIZE = 20;
 
 export async function getStaticPaths() {
   const size = 20;
-  const all = sortPostsByLatestDate(await getCollection('postsEn', ({ data }) => !data.draft));
+  const all = sortPostsByPublicationDate(await getCollection('postsEn', ({ data }) => !data.draft));
   const totalPages = Math.max(1, Math.ceil(all.length / size));
   // Page 1 lives at /en/analysis/ ; generate 2..totalPages here.
   return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const current = Number(Astro.params.page);
 
-const all = sortPostsByLatestDate(await getCollection('postsEn', ({ data }) => !data.draft));
+const all = sortPostsByPublicationDate(await getCollection('postsEn', ({ data }) => !data.draft));
 
 const total = all.length;
 const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -29,7 +29,8 @@ const items = all.slice(start, start + PAGE_SIZE).map((p, i) => ({
   id: p.id,
   title: p.data.title,
   description: p.data.description,
-  date: p.data.updatedDate ?? p.data.pubDate,
+  pubDate: p.data.pubDate,
+  updatedDate: p.data.updatedDate,
   tag: p.data.tags[0],
   rt: readingTime(p.body),
   index: start + i + 1,

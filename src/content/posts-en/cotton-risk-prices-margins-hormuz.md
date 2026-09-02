@@ -5,11 +5,11 @@ ogTitle: "Cotton: Costlier Inputs, Thinner Stocks"
 ogImage: "/illustrations/news/cotton-margins-hormuz-v1.jpg"
 description: "Urea doubled and retreated, but cotton enters 2026-27 with production below mill use and lower stocks. The remaining risk sits in margins and timing."
 pubDate: 2026-08-31T17:06:06+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-31T17:06:06+02:00
 tags: ["cotton", "fertiliser", "Hormuz", "commodities", "agricultural risk", "textiles"]
 draft: false
 sourceArticle: "coton-risque-prix-marges-ormuz"
-sourceUpdatedDate: 2026-09-02T10:05:00+02:00
+sourceUpdatedDate: 2026-08-31T17:06:06+02:00
 ---
 
 *Between field and spinning mill, cotton passes through markets that move on different clocks. Farmers buy fertiliser, fuel and credit before selling their crop. Mills buy a fibre whose price also depends on inventories, fashion and world growth. The [Strait of Hormuz shock](/en/glossary/chokepoint/) abruptly raised one of those costs, urea. It did not produce an equivalent and lasting rise in cotton. The risk settled in the gap between the two.*

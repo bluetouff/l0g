@@ -4,7 +4,7 @@ seoTitle: "Jeonse en Corée du Sud : dépôts, dette et risque HUG | l0g"
 ogTitle: "Le locataire devient la banque de son propriétaire"
 description: "Le jeonse transforme le dépôt du locataire en financement du propriétaire. HUG en garantissait 126 789 Md KRW fin 2025. Anatomie du risque."
 pubDate: 2026-08-30T10:30:00+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-30T10:30:00+02:00
 tags: ["Corée du Sud", "Asie", "jeonse", "immobilier", "dette des ménages", "HUG", "garantie publique", "stabilité financière"]
 ogImage: "/illustrations/news/south-korea-jeonse-housing-credit-v1.jpg"
 draft: false

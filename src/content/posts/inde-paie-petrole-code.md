@@ -5,7 +5,7 @@ ogTitle: "Le code qui finance la facture pétrolière de l’Inde"
 ogImage: "/illustrations/news/india-oil-code-external-accounts-v1.jpg"
 description: "En 2025-2026, services et transferts ont absorbé le déficit de biens avant que le revenu du capital ne le rouvre. Une force exposée au pétrole et à l’IA."
 pubDate: 2026-08-31T14:00:06+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-31T14:00:06+02:00
 tags: ["Inde", "balance des paiements", "services", "pétrole", "intelligence artificielle", "diaspora"]
 draft: false
 ---

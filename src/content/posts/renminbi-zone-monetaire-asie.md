@@ -5,7 +5,7 @@ ogTitle: "Le renminbi tisse sa zone monétaire en Asie"
 description: "De l’ASEAN à l’Asie centrale, le renminbi progresse dans les paiements et le crédit. Mais les données BIS, IMF, SWIFT et PBOC racontent une histoire bien plus précise qu’un remplacement du dollar."
 ogImage: "/illustrations/news/renminbi-asia-monetary-network-v1.jpg"
 pubDate: 2026-08-31T09:50:00+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-31T09:50:00+02:00
 tags: ["macro", "chine", "asie", "renminbi", "dollar"]
 draft: false
 quickTake:

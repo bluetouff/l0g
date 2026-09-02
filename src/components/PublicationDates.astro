@@ -1,0 +1,29 @@
+---
+interface Props {
+  pubDate: Date;
+  updatedDate?: Date;
+  lang?: 'fr' | 'en';
+  month?: 'short' | 'long';
+}
+
+const { pubDate, updatedDate, lang = 'fr', month = 'short' } = Astro.props;
+const format = (date: Date) => date.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
+  day: '2-digit', month, year: 'numeric', timeZone: 'Europe/Paris',
+});
+const hasRevision = updatedDate && updatedDate.getTime() > pubDate.getTime();
+---
+
+<span class="publication-dates mono-label">
+  <time datetime={pubDate.toISOString()} data-article-published>{format(pubDate)}</time>
+  {hasRevision && (
+    <span class="revision">
+      {lang === 'fr' ? 'Mis à jour le' : 'Updated'}{' '}
+      <time datetime={updatedDate!.toISOString()} data-article-updated>{format(updatedDate!)}</time>
+    </span>
+  )}
+</span>
+
+<style>
+  .publication-dates { display: inline-flex; flex-wrap: wrap; gap: 0.35rem 0.75rem; }
+  .revision { color: var(--color-muted); }
+</style>

@@ -4,12 +4,12 @@ seoTitle: "Jeonse Explained: South Korea's Hidden Housing Credit | l0g"
 ogTitle: "When the Tenant Becomes the Landlord's Bank"
 description: "Jeonse turns a tenant's lump-sum deposit into landlord financing. HUG guaranteed KRW126.8tn at end-2025. How risk moves through the system."
 pubDate: 2026-08-30T10:30:00+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-30T10:30:00+02:00
 tags: ["South Korea", "Asia", "jeonse", "housing", "household debt", "HUG", "public guarantees", "financial stability"]
 ogImage: "/illustrations/news/south-korea-jeonse-housing-credit-v1.jpg"
 draft: false
 sourceArticle: "jeonse-coree-du-sud-credit-cache-logement"
-sourceUpdatedDate: 2026-09-02T10:05:00+02:00
+sourceUpdatedDate: 2026-08-30T10:30:00+02:00
 ---
 
 *Jeonse looks like a rental contract without monthly rent. Economically, it is also credit: the tenant transfers a large deposit to the landlord, who must return it when the lease ends. If the tenant borrows to assemble the money, the same transaction creates a bank debt for the tenant and a repayment liability for the landlord. If the landlord fails to pay, a public guarantee can move the risk to HUG, which compensates the tenant and then tries to recover its claim. At the end of 2025, HUG guaranteed KRW126.7887 trillion of jeonse-deposit refunds. That stock is not a forecast loss. It reveals the scale of a system in which a rental agreement also operates as a housing-finance chain.*

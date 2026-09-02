@@ -2,7 +2,7 @@
 title: "Taïwan : les 724 milliards de dollars des assureurs-vie"
 description: "Fin 2025, les assureurs-vie de Taïwan détenaient 724 Md$ d’investissements étrangers. Analyse du décalage TWD/dollar, des couvertures et des réformes 2026."
 pubDate: 2026-08-29T18:00:00+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-29T18:00:00+02:00
 tags: ["Taïwan", "Asie", "assurance-vie", "risque de change", "dollar", "obligations", "IFRS 17", "TW-ICS", "stabilité financière"]
 ogImage: "/illustrations/news/taiwan-life-insurers-fx-risk-v1.jpg"
 draft: false

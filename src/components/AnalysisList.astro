@@ -1,11 +1,13 @@
 ---
 import AnalysisPagination from './AnalysisPagination.astro';
+import PublicationDates from './PublicationDates.astro';
 
 export interface AnalysisItem {
   id: string;
   title: string;
   description: string;
-  date: Date;
+  pubDate: Date;
+  updatedDate?: Date;
   tag?: string;
   rt: number;
   index: number;
@@ -19,7 +21,6 @@ interface Props {
 
 const { items, currentPage, totalPages } = Astro.props;
 
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
 const pageHref = (n: number) => (n <= 1 ? '/en/analysis/' : `/en/analysis/page/${n}/`);
 ---
 
@@ -30,7 +31,7 @@ const pageHref = (n: number) => (n <= 1 ? '/en/analysis/' : `/en/analysis/page/$
       <span class="en-guide-rail" aria-hidden="true"></span>
       <span class="en-guide-body">
         <span class="en-guide-meta mono-label">
-          <time datetime={p.date.toISOString()}>{fmt(p.date)}</time>
+          <PublicationDates pubDate={p.pubDate} updatedDate={p.updatedDate} lang="en" />
           <span aria-hidden="true">·</span>
           <span>{p.rt} min read</span>
           {p.tag && <span class="topic-chip">{p.tag}</span>}

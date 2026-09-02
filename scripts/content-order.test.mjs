@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { sortPostsByLatestDate } from "../src/lib/content-order.mjs";
+import { readFileSync } from "node:fs";
+import { sortPostsByLatestDate, sortPostsByPublicationDate } from "../src/lib/content-order.mjs";
 
 function post(id, pubDate, updatedDate) {
   return {
@@ -11,6 +12,54 @@ function post(id, pubDate, updatedDate) {
     },
   };
 }
+
+test("une révision ne change ni l’ordre de publication ni le tableau source", () => {
+  const posts = [
+    post("older-revised", "2026-08-28T21:00:00+02:00", "2026-09-02T10:05:00+02:00"),
+    post("newer", "2026-09-01T16:00:00+02:00"),
+    post("latest", "2026-09-02T08:30:00+02:00"),
+  ];
+  assert.deepEqual(sortPostsByPublicationDate(posts).map(({ id }) => id), ["latest", "newer", "older-revised"]);
+  assert.deepEqual(posts.map(({ id }) => id), ["older-revised", "newer", "latest"]);
+});
+
+test("le classement de publication compare les instants et départage les égalités", () => {
+  const posts = [
+    post("z-post", "2026-09-02T10:30:00+02:00"),
+    post("a-post", "2026-09-02T08:30:00Z", "2026-09-03T08:30:00Z"),
+    post("earlier", "2026-09-02T10:29:59+02:00"),
+  ];
+  assert.deepEqual(sortPostsByPublicationDate(posts).map(({ id }) => id), ["a-post", "z-post", "earlier"]);
+  assert.deepEqual(sortPostsByPublicationDate([]), []);
+});
+
+const source = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+
+test("les index FR et EN classent par publication et transmettent les deux dates", () => {
+  for (const path of ["src/pages/[...page].astro", "src/pages/en/analysis/index.astro", "src/pages/en/analysis/page/[page].astro"]) {
+    const text = source(path);
+    assert.match(text, /sortPostsByPublicationDate\(await getCollection\(/, path);
+    assert.doesNotMatch(text, /sortPostsByLatestDate|updatedDate\s*\?\?\s*[^\n]*pubDate/, path);
+  }
+  for (const path of ["src/pages/en/analysis/index.astro", "src/pages/en/analysis/page/[page].astro"]) {
+    const text = source(path);
+    assert.match(text, /pubDate: p\.data\.pubDate/, path);
+    assert.match(text, /updatedDate: p\.data\.updatedDate/, path);
+  }
+});
+
+test("les cartes distinguent la publication des révisions strictement postérieures", () => {
+  const dates = source("src/components/PublicationDates.astro");
+  assert.match(dates, /datetime=\{pubDate\.toISOString\(\)\} data-article-published/);
+  assert.match(dates, /updatedDate\.getTime\(\) > pubDate\.getTime\(\)/);
+  assert.match(dates, /Mis à jour le/);
+  assert.match(dates, /Updated/);
+  assert.match(dates, /data-article-updated/);
+  assert.match(dates, /timeZone: 'Europe\/Paris'/);
+  for (const name of ["PostCard", "PostHero", "AnalysisList"]) {
+    assert.match(source(`src/components/${name}.astro`), /<PublicationDates pubDate=\{/);
+  }
+});
 
 test("une mise à jour identique est départagée par la publication la plus récente", () => {
   const sharedUpdate = "2026-08-09T21:46:15.000Z";

@@ -1,5 +1,6 @@
 ---
 import FreshnessBadge from './FreshnessBadge.astro';
+import PublicationDates from './PublicationDates.astro';
 
 interface Props {
   url: string;
@@ -18,8 +19,6 @@ const {
   readingTime, index, accent = 'var(--color-signal)', accentLabel,
 } = Astro.props;
 const refDate = updatedDate ?? pubDate;
-const dateLabel = refDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
-const iso = refDate.toISOString();
 const nn = index != null ? String(index).padStart(2, '0') : null;
 ---
 
@@ -28,7 +27,7 @@ const nn = index != null ? String(index).padStart(2, '0') : null;
   <span class="feed-rail" aria-hidden="true"></span>
   <span class="feed-body">
     <span class="feed-meta">
-      <time datetime={iso} class="mono-label feed-date">{dateLabel}</time>
+      <span class="feed-date"><PublicationDates pubDate={pubDate} updatedDate={updatedDate} /></span>
       {readingTime && <span class="mono-label text-muted">· {readingTime} min</span>}
       <FreshnessBadge date={refDate} compact />
       {accentLabel && <span class="topic-chip">{accentLabel}</span>}

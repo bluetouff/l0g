@@ -4,7 +4,7 @@ seoTitle: "France Identité dépend-elle d’Apple et Google ? | l0g"
 ogTitle: "Une identité souveraine sur un téléphone américain"
 description: "Stores, NFC, clés matérielles et attestation : l’État contrôle France Identité, mais pas toutes les couches qui décident si elle fonctionne."
 pubDate: 2026-08-28T21:00:00+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-28T21:00:00+02:00
 ogImage: "/illustrations/news/france-identite-telephone-souverain-v1.jpg"
 tags: ["France Identité", "Apple", "Google", "Android", "iOS", "EUDI", "DMA", "ANSSI", "App Store", "Google Play", "souveraineté numérique", "risque financier", "enquête"]
 draft: false

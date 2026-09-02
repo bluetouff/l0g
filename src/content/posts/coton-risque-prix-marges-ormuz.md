@@ -5,7 +5,7 @@ ogTitle: "Coton : engrais chers, stocks en baisse"
 ogImage: "/illustrations/news/cotton-margins-hormuz-v1.jpg"
 description: "L’urée a doublé puis reflué, mais le coton aborde 2026-2027 avec une production inférieure à la consommation et moins de stocks. Le risque se lit dans les marges."
 pubDate: 2026-08-31T17:06:06+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-31T17:06:06+02:00
 tags: ["coton", "engrais", "Ormuz", "matières premières", "risque agricole", "textile"]
 draft: false
 ---

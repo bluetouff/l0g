@@ -5,11 +5,11 @@ ogTitle: "How Code Helps Pay India’s Oil Bill"
 ogImage: "/illustrations/news/india-oil-code-external-accounts-v1.jpg"
 description: "In 2025-26, services and transfers offset India’s goods deficit before primary income reopened it. A resilient model exposed to oil, demand and AI."
 pubDate: 2026-08-31T14:00:06+02:00
-updatedDate: 2026-09-02T10:05:00+02:00
+updatedDate: 2026-08-31T14:00:06+02:00
 tags: ["india", "balance of payments", "services", "oil", "artificial intelligence", "remittances"]
 draft: false
 sourceArticle: "inde-paie-petrole-code"
-sourceUpdatedDate: 2026-09-02T10:05:00+02:00
+sourceUpdatedDate: 2026-08-31T14:00:06+02:00
 ---
 
 *In the financial year ended March 2026, India ran a $337.3 billion deficit in goods. Its final [current-account deficit](/en/glossary/#current-account) was only $25.2 billion, or 0.6% of GDP. The distance between those numbers was covered by services, transfers from abroad and a less visible flow in the opposite direction: income paid to foreign owners of capital. It looks like a vanishing act. It is external accounting.*
