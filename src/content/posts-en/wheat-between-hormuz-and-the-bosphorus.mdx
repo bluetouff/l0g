@@ -1,0 +1,509 @@
+---
+title: "Wheat Between Hormuz and the Bosphorus"
+seoTitle: "Wheat prices: Black Sea and Hormuz risks | l0g"
+ogTitle: "Wheat Between Hormuz and the Bosphorus"
+ogImage: "/illustrations/news/wheat-hormuz-black-sea-v2.jpg"
+description: "Black Sea attacks hit today’s cargoes while Hormuz disrupts fertilizer for future harvests. A two-speed risk for global wheat trade."
+pubDate: 2026-09-03T08:39:00+02:00
+updatedDate: 2026-09-03T08:39:00+02:00
+tags: ["wheat", "commodities", "Black Sea", "Hormuz", "fertilizer", "Russia", "Ukraine", "Asia", "food security", "geopolitics"]
+draft: false
+sourceArticle: "ble-entre-ormuz-et-bosphore"
+sourceUpdatedDate: 2026-09-03T08:39:00+02:00
+---
+import WheatImportStress from '../../components/WheatImportStress.astro';
+
+<style>{`
+.wheat-chart{margin:2.35rem 0 2.7rem}
+.wheat-chart svg{display:block;width:100%;height:auto;border:1px solid rgba(159,177,189,.22);border-radius:18px}
+.wheat-chart figcaption{margin:.72rem .35rem 0;color:var(--color-text-muted,#6b7280);font-size:.82rem;line-height:1.55}
+.wheat-svg-mobile{display:none!important}
+.wheat-evidence{margin:1.65rem 0;padding:1rem 1.08rem;border-left:3px solid #2dd4bf;background:rgba(45,212,191,.07)}
+.wheat-caveat{margin:1.65rem 0;padding:1rem 1.08rem;border-left:3px solid #fbbf24;background:rgba(251,191,36,.07)}
+.wheat-method{margin:1.65rem 0;padding:1rem 1.08rem;border:1px solid rgba(159,177,189,.24);border-radius:14px;background:rgba(159,177,189,.05)}
+.wheat-scenario{font-size:.88rem}
+.wheat-scenario{width:100%;table-layout:fixed;overflow-wrap:break-word}
+.wheat-cell-label{display:none}
+.wheat-scenario th,.wheat-scenario td{vertical-align:top}
+.wheat-scenario th[scope="row"]{font-size:inherit;letter-spacing:normal;text-transform:none}
+.wheat-source-list li{margin:.58rem 0}
+.wheat-kicker{font-size:1.08rem;line-height:1.75}
+@media(max-width:640px){
+  .wheat-svg-desktop{display:none!important}
+  .wheat-svg-mobile{display:block!important}
+  .prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+  .wheat-chart{margin:1.85rem 0 2.15rem}
+  .wheat-chart figcaption{font-size:.78rem}
+  .prose .wheat-scenario{display:block;border:0;font-size:.95rem;overflow:visible}
+  .wheat-scenario thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .wheat-scenario tbody{display:grid;gap:1rem}
+  .wheat-scenario tbody tr{display:block;padding:1rem;border:1px solid var(--color-line);border-radius:14px;background:rgba(159,177,189,.04)}
+  .prose .wheat-scenario tbody th,.prose .wheat-scenario td{display:block;width:auto;padding:0;border:0;white-space:normal}
+  .prose .wheat-scenario tbody th{font-size:1.08rem;letter-spacing:normal;text-transform:none}
+  .prose .wheat-scenario td{margin-top:1rem}
+  .wheat-cell-label{display:block;margin-bottom:.2rem;font-size:.78rem;font-weight:700;color:var(--color-text-muted)}
+}
+`}</style>
+
+*Data cut-off: 3 September 2026, 07:15 Paris time. Wheat production and stock figures are USDA projections for the 2026/27 marketing year, released on 12 August. FAO’s latest monthly wheat-price movement covers July and was published on 7 August. The World Bank fertilizer movement published on 2 September covers August.*
+
+<p class="wheat-kicker">Merchant ships are entering the Bosphorus with netting over their superstructures, tyres hanging from their hulls and water tanks positioned around vulnerable machinery. The fixtures look improvised because they are. They also reveal something a global crop balance cannot capture: moving wheat has become a military-risk decision.</p>
+
+Reuters documented the adaptations on 2 September. The abandoned Russian-flagged *Omskiy-107*, its bridge burned out, had drifted towards the Istanbul coast. Ukraine has stepped up attacks on ships and infrastructure that support Russian oil and grain exports since July. Russia, meanwhile, has struck the Ukrainian grain hubs of Odesa, Chornomorsk and Pivdennyi. The Bosphorus is not the centre of the fighting. It is where damaged ships and rerouted trade emerge from the Black Sea system. [Reuters, 2 September 2026.](https://www.reuters.com/world/ships-adopt-makeshift-anti-drone-defences-black-sea-attacks-intensify-2026-09-02/)
+
+A second maritime crisis is working through the wheat market by a different route. Little of the world’s wheat trade depends directly on the Strait of Hormuz. By contrast, Gulf supply chains for natural gas, ammonia, urea, sulphur and phosphate fertilizer are heavily exposed to it. The International Maritime Organization said on 28 August that it had verified at least **70 attacks on international shipping** since the Middle East conflict began on 28 February, with **19 seafarers killed**. Up to 400 ships carrying roughly 6,000 seafarers had been unable to depart safely since the conflict began. The statement does not explain its counting method or give a precise current total of stranded vessels. [IMO, 28 August 2026.](https://www.imo.org/en/mediacentre/pressbriefings/pages/statement-on-the-ongoing-crisis-in-the-strait-of-hormuz.aspx)
+
+The two chokepoints belong in the same analysis, but they should not be collapsed into one story. **Black Sea disruption reaches wheat that already exists. Hormuz reaches the inputs that determine the economics and, under some conditions, the performance of the next crop.**
+
+That difference in timing is the central risk. It is also the reason the evidence does not support a simple shortage narrative.
+
+<figure class="wheat-chart">
+<svg style="width:100%;height:auto" class="wheat-svg-desktop" viewBox="0 0 960 650" role="img" aria-labelledby="wheat-en-clock-d-title wheat-en-clock-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-en-clock-d-title">Two chokepoints operate on two wheat-market clocks</title>
+<desc id="wheat-en-clock-d-desc">Black Sea disruption quickly affects ports, ships, insurance and landed wheat prices. Hormuz disruption can affect gas, ammonia, urea, sulphur, fertilizer decisions, yields and grain protein over a longer horizon.</desc>
+<rect width="960" height="650" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">GLOBAL WHEAT · TWO CLOCKS</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="31" font-weight="800">One market, two transmission speeds</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">One shock hits cargoes. The other can reach the following harvest.</text>
+<rect x="48" y="172" width="408" height="348" rx="18" fill="#111d29" stroke="#67d7c5" stroke-width="2"/>
+<text x="76" y="211" fill="#73e0cf" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">BLACK SEA · DAYS TO WEEKS</text>
+<text x="76" y="249" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="780">Wheat already harvested</text>
+<rect x="76" y="281" width="352" height="54" rx="11" fill="#182838"/>
+<text x="96" y="304" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Ports, terminals and vessels</text>
+<text x="96" y="324" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">loading capacity and ship calls</text>
+<path d="M252 338 L252 365" stroke="#67d7c5" stroke-width="3"/><path d="M245 358 L252 367 L259 358" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="76" y="369" width="352" height="54" rx="11" fill="#182838"/>
+<text x="96" y="392" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Insurance, freight and delays</text>
+<text x="96" y="412" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">willingness to carry the risk</text>
+<path d="M252 426 L252 453" stroke="#67d7c5" stroke-width="3"/><path d="M245 446 L252 455 L259 446" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="76" y="457" width="352" height="42" rx="11" fill="#12362f"/>
+<text x="96" y="483" fill="#8af0df" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="760">Landed price and availability</text>
+<rect x="504" y="172" width="408" height="348" rx="18" fill="#111d29" stroke="#e8b84f" stroke-width="2"/>
+<text x="532" y="211" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">HORMUZ · MONTHS TO NEXT CROP</text>
+<text x="532" y="249" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="780">The production potential</text>
+<rect x="532" y="281" width="352" height="54" rx="11" fill="#182838"/>
+<text x="552" y="304" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Gas, ammonia, urea, sulphur</text>
+<text x="552" y="324" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">input prices and availability</text>
+<path d="M708 338 L708 365" stroke="#e8b84f" stroke-width="3"/><path d="M701 358 L708 367 L715 358" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="532" y="369" width="352" height="54" rx="11" fill="#182838"/>
+<text x="552" y="392" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Rates, timing and crop choice</text>
+<text x="552" y="412" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">farm and policy decisions</text>
+<path d="M708 426 L708 453" stroke="#e8b84f" stroke-width="3"/><path d="M701 446 L708 455 L715 446" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="532" y="457" width="352" height="42" rx="11" fill="#3a2d11"/>
+<text x="552" y="483" fill="#f6d98d" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="760">Yield, protein and crop cost</text>
+<line x1="48" y1="568" x2="912" y2="568" stroke="#334454" stroke-width="2"/>
+<circle cx="112" cy="568" r="7" fill="#67d7c5"/><circle cx="848" cy="568" r="7" fill="#e8b84f"/>
+<text x="48" y="606" fill="#a8b8c1" font-family="Inter,system-ui,sans-serif" font-size="16">Visible in current trade flows</text>
+<text x="678" y="606" fill="#a8b8c1" font-family="Inter,system-ui,sans-serif" font-size="16">Conditional crop effect</text>
+</svg>
+<svg style="width:100%;height:auto" class="wheat-svg-mobile" viewBox="0 0 460 930" role="img" aria-labelledby="wheat-en-clock-m-title wheat-en-clock-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-en-clock-m-title">Two chokepoints and two wheat-market timelines</title>
+<desc id="wheat-en-clock-m-desc">The Black Sea affects current cargoes over days or weeks. Hormuz can affect a future crop through fertilizer and farm decisions over months.</desc>
+<rect width="460" height="930" rx="18" fill="#081018"/>
+<text x="25" y="44" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">GLOBAL WHEAT · TWO CLOCKS</text>
+<text x="25" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="23" font-weight="800">Two transmission speeds</text>
+<text x="25" y="105" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">Current cargoes, then the next crop</text>
+<rect x="25" y="135" width="410" height="335" rx="16" fill="#111d29" stroke="#67d7c5" stroke-width="2"/>
+<text x="48" y="171" fill="#73e0cf" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">BLACK SEA · DAYS TO WEEKS</text>
+<text x="48" y="204" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="780">Wheat already harvested</text>
+<rect x="48" y="229" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="249" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Ports, terminals, vessels</text>
+<text x="66" y="275" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">loading and ship calls</text>
+<path d="M230 287 L230 309" stroke="#67d7c5" stroke-width="3"/><path d="M223 303 L230 312 L237 303" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="48" y="315" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="335" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Insurance, freight, delays</text>
+<text x="66" y="361" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">maritime risk</text>
+<path d="M230 373 L230 395" stroke="#67d7c5" stroke-width="3"/><path d="M223 389 L230 398 L237 389" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="48" y="401" width="364" height="43" rx="10" fill="#12362f"/>
+<text x="66" y="428" fill="#8af0df" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="760">Landed price and availability</text>
+<rect x="25" y="495" width="410" height="360" rx="16" fill="#111d29" stroke="#e8b84f" stroke-width="2"/>
+<text x="48" y="531" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">HORMUZ · MONTHS TO NEXT CROP</text>
+<text x="48" y="564" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="780">The production potential</text>
+<rect x="48" y="589" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="609" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Gas, ammonia, urea, sulphur</text>
+<text x="66" y="635" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">price and availability</text>
+<path d="M230 647 L230 669" stroke="#e8b84f" stroke-width="3"/><path d="M223 663 L230 672 L237 663" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="48" y="675" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="695" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Rates, timing, crop choice</text>
+<text x="66" y="721" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">farm decisions</text>
+<path d="M230 733 L230 755" stroke="#e8b84f" stroke-width="3"/><path d="M223 749 L230 758 L237 749" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="48" y="761" width="364" height="62" rx="10" fill="#3a2d11"/>
+<text x="66" y="784" fill="#f6d98d" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="760">Yield, protein and</text>
+<text x="66" y="810" fill="#f6d98d" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="760">crop cost</text>
+<text x="25" y="892" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">l0g diagram · mechanism, not forecast</text>
+</svg>
+<figcaption>l0g mechanism map. Timelines are indicative. Sources: WTO, FAO, IMO and Reuters, as cited below. Higher input costs do not translate mechanically into lower yields.</figcaption>
+</figure>
+
+## Two chokepoints, two clocks
+
+Wheat is harvested in seasonal bursts and consumed continuously. Stocks bridge the gap. So do forward contracts, state reserves, mill inventories and a vast shipping network. The system can absorb delays, but some dates matter more than others.
+
+A terminal can suspend loading today and immediately change the value of a cargo due next week. Shipowners may demand a higher premium, avoid a port or wait for security conditions to improve. The disruption appears first in freight, insurance, demurrage and the number of tonnes that can be delivered on schedule.
+
+Fertilizer moves through a longer chain. Ammonia combines nitrogen with hydrogen, typically derived from natural gas. It is the building block for urea and several other nitrogen fertilizers. Sulphur is an important input for parts of the phosphate-fertilizer chain. A shipping shock around Hormuz first changes input availability and replacement cost. Its crop effect arrives only after farmers, suppliers and governments make decisions about purchases, application rates, timing and planted area.
+
+That chain contains several shock absorbers. Importers may hold inventory. Governments may subsidise the product. Farms may switch supplier, product or field allocation. Soil nitrogen, rainfall and temperature can offset or amplify the result. **A fertilizer price spike is observable immediately; a global yield loss is not.**
+
+## The world balance sheet still has a cushion
+
+The US Department of Agriculture’s August World Agricultural Supply and Demand Estimates put 2026/27 global wheat production at **819.30 million tonnes** and total use at **826.27 million tonnes**. Total use would exceed production by 6.97 million tonnes, taking projected ending stocks from 280.22 million to **273.25 million tonnes**. [USDA, August 2026 WASDE.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+That is a stock draw, not an exhaustion event. The August estimate for ending stocks was actually 0.41 million tonnes higher than the July projection. The balance sheet does not validate claims of an imminent worldwide wheat shortage.
+
+Prices can rise well before global stocks become scarce. FAO reported that international wheat quotations increased **5.8% in July from June** and **9.9% from a year earlier**. It cited continuing disruption to Black Sea exports, damage to export infrastructure and heatwaves affecting several producing regions. The release was published on 7 August and describes July. It does not incorporate late-August attacks, nor does it measure retail bread inflation. [FAO Food Price Index, 7 August 2026 release.](https://www.fao.org/worldfoodsituation/foodpricesindex/en/)
+
+The coexistence of sizeable stocks and a sharp price move is economically coherent. Traders price deliverability, location, quality and timing. Wheat held inside a national reserve is not equivalent to milling wheat on an insured vessel bound for an import-dependent market.
+
+<div class="wheat-evidence">
+<p><strong>Observed.</strong> The USDA balance still contains a large global buffer. International wheat prices nevertheless rose sharply in July.</p>
+<p><strong>Interpretation.</strong> The immediate stress is concentrated in tradable and deliverable supply rather than the planet’s total physical wheat inventory.</p>
+</div>
+
+## Wheat is widely grown; export supply is concentrated
+
+USDA projects **212.71 million tonnes of global wheat exports** against 819.30 million tonnes of production. Projected exports are equivalent to about **26% of annual production**. This is a comparison of two flows, not a tracing of the current harvest: exports can also draw on carryover stocks or include re-exports.
+
+This smaller pool is the relevant denominator for importers. An extra tonne produced in a country with no export capacity does not replace a delayed cargo. The tonne must meet the buyer’s quality specifications, arrive within the contract window and remain competitive after freight and insurance.
+
+Russia is projected to export **46 million tonnes** in 2026/27 and Ukraine **13.5 million tonnes**. Their combined 59.5 million tonnes equal roughly **28% of projected world exports**. The calculation uses USDA’s marketing-year tables. Country exports and the world-trade line can differ in timing, so the result is a scenario share rather than a customs statistic for calendar 2026. [USDA, August 2026 WASDE.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+USDA cut its Russian export projection by 1.5 million tonnes between July and August and Ukraine’s by 1 million. It simultaneously raised projected Ukrainian production by 1.4 million tonnes. The pattern is consistent with an export bottleneck because output increased while exports fell and ending stocks rose. The table alone cannot attribute every revision to maritime attacks.
+
+<figure class="wheat-chart">
+<svg style="width:100%;height:auto" class="wheat-svg-desktop" viewBox="0 0 960 585" role="img" aria-labelledby="wheat-en-trade-d-title wheat-en-trade-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-en-trade-d-title">The internationally traded wheat pool is much smaller than global production</title>
+<desc id="wheat-en-trade-d-desc">Global wheat production is projected at 819.30 million tonnes in 2026/27. Exports are projected at 212.71 million tonnes, or 26 percent of production. Russia and Ukraine account for 59.5 million tonnes, or 28 percent of projected exports.</desc>
+<rect width="960" height="585" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">USDA · 2026/27 · MILLION TONNES</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="31" font-weight="800">The tradable pool is the narrow part</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">Separate denominators keep production and cross-border trade distinct.</text>
+<rect x="48" y="174" width="410" height="302" rx="18" fill="#111d29"/>
+<text x="76" y="211" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">PRODUCTION: 819.30 MT</text>
+<text x="76" y="257" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="38" font-weight="820">212.71 Mt</text>
+<text x="76" y="284" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">would be exported</text>
+<rect x="76" y="322" width="340" height="30" rx="15" fill="#223342"/>
+<rect x="76" y="322" width="88" height="30" rx="15" fill="#67d7c5"/>
+<text x="76" y="389" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">26%</text>
+<text x="76" y="418" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">of projected global production</text>
+<rect x="502" y="174" width="410" height="302" rx="18" fill="#111d29"/>
+<text x="530" y="211" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">OUT OF 212.71 MT EXPORTED</text>
+<text x="530" y="257" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="38" font-weight="820">59.50 Mt</text>
+<text x="530" y="284" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">would come from Russia and Ukraine</text>
+<rect x="530" y="322" width="340" height="30" rx="15" fill="#223342"/>
+<rect x="530" y="322" width="95" height="30" rx="15" fill="#e8b84f"/>
+<text x="530" y="389" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">28%</text>
+<text x="530" y="418" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">of projected global exports</text>
+<text x="48" y="533" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="16">l0g calculations from the 12 August 2026 WASDE. Shares rounded.</text>
+</svg>
+<svg style="width:100%;height:auto" class="wheat-svg-mobile" viewBox="0 0 460 760" role="img" aria-labelledby="wheat-en-trade-m-title wheat-en-trade-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-en-trade-m-title">Global wheat production, exports and the Russia-Ukraine share</title>
+<desc id="wheat-en-trade-m-desc">Exports equal 26 percent of projected global wheat production. Russia and Ukraine account for 28 percent of projected exports.</desc>
+<rect width="460" height="760" rx="18" fill="#081018"/>
+<text x="25" y="43" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">USDA · 2026/27 · MILLION TONNES</text>
+<text x="25" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">The tradable pool</text>
+<text x="25" y="104" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">is the narrow part</text>
+<rect x="25" y="137" width="410" height="250" rx="16" fill="#111d29"/>
+<text x="48" y="172" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">PRODUCTION: 819.30 MT</text>
+<text x="48" y="218" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">212.71 Mt</text>
+<text x="48" y="244" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">would be exported</text>
+<rect x="48" y="274" width="364" height="27" rx="14" fill="#223342"/>
+<rect x="48" y="274" width="94" height="27" rx="14" fill="#67d7c5"/>
+<text x="48" y="346" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="800">26% of production</text>
+<rect x="25" y="411" width="410" height="260" rx="16" fill="#111d29"/>
+<text x="48" y="446" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">OUT OF 212.71 MT EXPORTED</text>
+<text x="48" y="492" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">59.50 Mt</text>
+<text x="48" y="518" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">Russia and Ukraine</text>
+<rect x="48" y="548" width="364" height="27" rx="14" fill="#223342"/>
+<rect x="48" y="548" width="102" height="27" rx="14" fill="#e8b84f"/>
+<text x="48" y="620" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="800">28% of exports</text>
+<text x="25" y="716" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">WASDE, 12 August 2026 · l0g calculations</text>
+</svg>
+<figcaption>Source: USDA, WASDE released 12 August 2026, 2026/27 marketing year. Unit: million metric tonnes. The 59.5 Mt figure adds Russian and Ukrainian export projections. Marketing-year timing can differ across countries.</figcaption>
+</figure>
+
+## Black Sea risk begins with ship calls and ends in landed cost
+
+A grain balance does not contain a column for crews willing to enter a war-risk zone. The operational chain starts with a functioning berth and loading equipment. It then requires rail or river delivery to the port, a vessel, insurance, security procedures and a route through the Turkish Straits.
+
+Russia’s system is particularly concentrated. Industry data cited by Reuters show **46.3 million tonnes of grain** moving through Russian Black Sea and Sea of Azov ports between July 2025 and June 2026. The number covers all grain, not wheat alone. It represented 90% of Russia’s seaborne grain exports on the same industry measure. Russian Baltic ports handled about 1 million tonnes. [Reuters, 31 August 2026.](https://www.reuters.com/business/russian-grain-exports-shift-baltic-black-sea-trade-disrupted-2026-08-31/)
+
+Alternative routes matter. They prevent a binary reading in which every disrupted Black Sea tonne disappears. Russia can use its own Baltic terminals, neighbouring Baltic ports, rail corridors and overland routes.
+
+Capacity is not instantly interchangeable. Reuters reported that Russian Baltic grain terminals had total annual capacity of up to roughly 7 million tonnes. The Russian Grain Union estimated that other ports and land routes combined might absorb about half the volume normally handled through the Black Sea and Sea of Azov. That estimate comes from an industry lobby, not an independently audited capacity study. [Reuters, 31 August 2026.](https://www.reuters.com/business/russian-grain-exports-shift-baltic-black-sea-trade-disrupted-2026-08-31/)
+
+Rerouting can save the physical cargo while still raising its economic cost. Trains, terminal slots and vessels have competing uses. A longer route ties up working capital and increases handling. The buyer may eventually receive the wheat, but later and at a different landed price.
+
+## Switching origins changes quality and freight costs
+
+Importers do not buy generic calories. Contracts specify origin or acceptable alternatives, protein, moisture, test weight, delivery window and other quality characteristics.
+
+On 20 August, Reuters reported Black Sea wheat offered into Asia at roughly **$260 to $280 per tonne**, compared with about **$305** for the cheapest US wheat and **$315 to $320** for Australian Premium White, including transport. These were market indications on a particular date, not a controlled index. Quality, protein, port, shipment period and contract terms may differ. The comparison still explains why substituting North American or Australian grain for a delayed Black Sea cargo can be expensive even when global supply exists. [Reuters, 20 August 2026.](https://www.reuters.com/world/asia-pacific/global-wheat-buyers-brace-supply-squeeze-amid-black-sea-attacks-2026-08-20/)
+
+Two traders cited in the same report said Asian processors had booked 2 to 2.5 million tonnes of Black Sea wheat for July-to-September arrival. That is informed market testimony rather than a consolidated customs dataset. It should not be presented as the precise exposure of an entire continent.
+
+The mechanism is more robust than any single quote:
+
+**maritime attack or threat → fewer willing ship calls → higher insurance and delay costs → narrower deliverable supply → origin switching → higher mill-gate cost.**
+
+No global tonne needs to vanish for that chain to raise prices.
+
+## Global wheat stocks have an address
+
+The headline ending-stock number is **273.25 million tonnes**. Its location matters.
+
+USDA projects **120.20 million tonnes in China**, equal to **44% of the global total**. The world excluding China would hold 153.05 million tonnes. USDA’s six major exporters, Argentina, Australia, Canada, the European Union, Russia and Ukraine, would finish the marketing year with **42.08 million tonnes**. This group excludes the United States, which is shown separately in WASDE.
+
+The 42.08 million tonnes sit inside the world-ex-China total. They must not be added to it. They are shown separately because exporters are the economies most able to convert a crop surplus into international supply.
+
+A simple ending-stock-to-use ratio is about **33.1% globally** and **22.6% outside China**. Neither figure is a crisis threshold or a literal number of consumption days. Marketing years vary, ending stocks are a balance-sheet concept and some reserves are not commercially available. The comparison only demonstrates how heavily China influences the global aggregate. [USDA, August 2026 WASDE; l0g calculations.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+<figure class="wheat-chart">
+<svg style="width:100%;height:auto" class="wheat-svg-desktop" viewBox="0 0 960 620" role="img" aria-labelledby="wheat-en-stocks-d-title wheat-en-stocks-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-en-stocks-d-title">China holds a large share of projected world wheat stocks</title>
+<desc id="wheat-en-stocks-d-desc">Projected world ending stocks are 273.25 million tonnes. China holds 120.20 million, or 44 percent, and the rest of the world 153.05 million. Major exporters hold 42.08 million tonnes, included within the world excluding China.</desc>
+<rect width="960" height="620" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">ENDING STOCKS · 2026/27</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="31" font-weight="800">The global stock number has a geography</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">A national reserve does not automatically become an export cargo.</text>
+<text x="48" y="188" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="750">273.25 Mt of global ending stocks</text>
+<rect x="48" y="211" width="864" height="62" rx="13" fill="#152430"/>
+<rect x="48" y="211" width="380" height="62" rx="13" fill="#e8b84f"/>
+<text x="70" y="237" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">CHINA</text>
+<text x="70" y="260" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="820">120.20 Mt · 44%</text>
+<text x="458" y="237" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">WORLD EXCLUDING CHINA</text>
+<text x="458" y="260" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="820">153.05 Mt · 56%</text>
+<rect x="48" y="316" width="532" height="178" rx="17" fill="#111d29"/>
+<text x="76" y="353" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">SUBSET OF WORLD EXCLUDING CHINA</text>
+<text x="76" y="399" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="37" font-weight="820">42.08 Mt</text>
+<text x="76" y="428" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">stocks held by six major exporters</text>
+<rect x="76" y="452" width="456" height="18" rx="9" fill="#263847"/>
+<rect x="76" y="452" width="125" height="18" rx="9" fill="#67d7c5"/>
+<text x="608" y="349" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">ENDING STOCKS / USE</text>
+<text x="608" y="399" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">33.1%</text>
+<text x="608" y="424" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">whole world</text>
+<text x="756" y="399" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">22.6%</text>
+<text x="756" y="424" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">excluding China</text>
+<text x="48" y="554" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="16">The 42.08 Mt are included in the 153.05 Mt outside China.</text>
+<text x="48" y="577" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="16">The ratio is neither a crisis threshold nor days of consumption.</text>
+</svg>
+<svg style="width:100%;height:auto" class="wheat-svg-mobile" viewBox="0 0 460 810" role="img" aria-labelledby="wheat-en-stocks-m-title wheat-en-stocks-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-en-stocks-m-title">Geographical distribution of projected global wheat stocks</title>
+<desc id="wheat-en-stocks-m-desc">Of 273.25 million tonnes of projected world stocks, China holds 120.20 and the rest of the world 153.05. Major exporters hold 42.08, included within the rest of the world.</desc>
+<rect width="460" height="810" rx="18" fill="#081018"/>
+<text x="25" y="43" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">STOCKS · 2026/27 · MILLION TONNES</text>
+<text x="25" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">Global stocks</text>
+<text x="25" y="104" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">have a geography</text>
+<text x="25" y="149" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">273.25 Mt in total</text>
+<rect x="25" y="169" width="410" height="102" rx="14" fill="#e8b84f"/>
+<text x="48" y="204" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">CHINA</text>
+<text x="48" y="244" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="820">120.20 Mt · 44%</text>
+<rect x="25" y="288" width="410" height="102" rx="14" fill="#152430"/>
+<text x="48" y="323" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">WORLD EXCLUDING CHINA</text>
+<text x="48" y="363" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="820">153.05 Mt · 56%</text>
+<rect x="25" y="421" width="410" height="160" rx="16" fill="#111d29"/>
+<text x="48" y="456" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">INCLUDED IN WORLD EX CHINA</text>
+<text x="48" y="504" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="32" font-weight="820">42.08 Mt</text>
+<text x="48" y="532" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">six major exporters</text>
+<text x="48" y="558" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">A subset, not an extra reserve</text>
+<rect x="25" y="612" width="410" height="124" rx="16" fill="#111d29"/>
+<text x="48" y="647" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">ENDING STOCKS / USE</text>
+<text x="48" y="688" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="27" font-weight="820">33.1%</text>
+<text x="48" y="714" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">global</text>
+<text x="245" y="688" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="27" font-weight="820">22.6%</text>
+<text x="245" y="714" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">excluding China</text>
+<text x="25" y="777" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">WASDE, 12 August 2026 · l0g calculations</text>
+</svg>
+<figcaption>Source: USDA, August 2026 WASDE. Unit: million metric tonnes. Major exporters are Argentina, Australia, Canada, the European Union, Russia and Ukraine. Limitation: ending stocks do not measure freely available export supply.</figcaption>
+</figure>
+
+China can release reserves domestically, import less or alter trade policy. Each choice could indirectly ease the global market. There is still no automatic mechanism that sends Chinese reserve wheat to a mill in North Africa or Southeast Asia.
+
+## Hormuz is a crop-input chokepoint
+
+The WTO Secretariat’s 10 July analysis used 2024 trade data to estimate the Gulf region’s role in fertilizer. Gulf economies supplied **24.8% of global nitrogenous-fertilizer exports** and **11.4% of phosphatic-fertilizer exports**. Their potash share was negligible. Asia received 40% of the Gulf’s nitrogenous-fertilizer exports and 48% of its phosphatic exports. [WTO, 10 July 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+The figures need careful definition. WTO allocates trade values with nutrient weights rather than counting a simple physical tonnage for every product. Its Gulf group includes Bahrain, Iran, Iraq, Kuwait, Oman, Qatar, Saudi Arabia and the United Arab Emirates. It excludes fertilizer exports produced elsewhere that merely transit Hormuz and can include Gulf-origin exports using alternative routes. The calculation measures regional supplier concentration, not the exact share of every fertilizer molecule crossing the strait.
+
+Nitrogen fertilizer has the clearest energy link because ammonia production uses natural gas as feedstock and fuel. Urea and ammonium nitrate sit downstream. Phosphate fertilizer depends on mined rock, energy and, in several production routes, sulphur. Potash has a different supplier map and little Gulf exposure.
+
+Industry estimates reported by Reuters put roughly one-third of globally traded urea and nearly half of seaborne sulphur through Hormuz under normal pre-war conditions. Those figures answer a different question from the WTO market shares. They refer to specific products and physical maritime routing rather than broad nutrient categories by exporter origin. [Reuters, 26 June 2026.](https://www.reuters.com/world/middle-east/fertiliser-shipments-begin-exiting-through-hormuz-strait-2026-06-26/)
+
+## Fertilizer-flow data are less complete than the headlines suggest
+
+WTO’s vessel-tracking analysis showed fertilizer-related outbound shipments falling close to zero after the conflict began. Ships that disabled their automatic identification systems were outside the dataset. Reuters reported on 26 June that 640,000 tonnes of sulphur and 427,000 tonnes of urea had exited the strait after an interim agreement announced on 15 June, according to Argus and CRU. Much of that volume represented previously contracted cargoes that had been stuck, with few fresh deals. [WTO, 10 July 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm) [Reuters, 26 June 2026.](https://www.reuters.com/world/middle-east/fertiliser-shipments-begin-exiting-through-hormuz-strait-2026-06-26/)
+
+The two observations can coexist. A release of stranded cargoes can be material to buyers while remaining small against normal flows. Coverage also differs by product, date range, vessel visibility and definition.
+
+At this article’s cut-off, the sources cited here do not provide a public consolidated daily series for urea, ammonia and sulphur tonnage through Hormuz with stable methodology and documented vessel coverage. Claims that the fertilizer corridor has fully normalised, or remains completely closed, require more precision than the available public data allow.
+
+## The urea spike has already partly unwound
+
+The strongest evidence against an alarmist reading is already in the price series.
+
+The price series cited by WTO shows urea moving from roughly **$400 per tonne before the conflict** to more than **$850 in April**, before falling to **$453 in June**. Diammonium phosphate rose from around $580 to $770 per tonne. Those peaks were still below several of the levels reached in 2022. [WTO, 10 July 2026, using World Bank data.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+The World Bank’s 2 September update added a further counter-signal: its **aggregate fertilizer price index fell 1.9% in August from July**. The index covers a basket. It does not show that every product fell, that freight normalised or that farmers in every country can buy the right fertilizer at the right time. It does show that the early shock did not continue as an uninterrupted aggregate price surge through August. [World Bank Commodity Markets, 2 September 2026 update.](https://www.worldbank.org/en/research/commodity-markets)
+
+Reuters documented the release of previously stranded cargoes. The price series cannot isolate the respective effects of rerouting, demand, inventories and supply. Price pressure had eased by June compared with April, while logistics normalisation remained unproven.
+
+The remaining uncertainty is distributional and seasonal. A global benchmark can fall while a buyer in a particular country still faces poor availability, expensive credit, adverse currency moves or a missed application window.
+
+## Fertilizer stress reaches crops with a lag
+
+Farmers maximise economic return rather than physical yield at any cost. The relevant comparison is the value of additional grain against the cost of the next unit of nitrogen. As fertilizer becomes more expensive relative to wheat, the economically optimal application rate can fall.
+
+The UK Agriculture and Horticulture Development Board’s nitrogen adjustment tool is built around that break-even logic. It does not produce a universal agronomic prescription. It adjusts a normal rate for fertilizer and grain prices, illustrating the point at which extra crop value no longer pays for extra nitrogen. [AHDB nitrogen fertilizer adjustment calculator.](https://ahdb.org.uk/knowledge-library/nitrogen-fertiliser-adjustment-calculator-for-cereals-and-oilseeds)
+
+There is no fixed global elasticity between fertilizer use and wheat output. A 10% reduction in nitrogen does not imply a 10% yield loss. The response depends on soil supply, previous crop, variety, water, temperature, timing and the starting application rate.
+
+FAO warned on 7 May that crop calendars create a particular vulnerability: fertilizer arriving after the useful agronomic window may not recover the lost opportunity. Its statement anticipated risks to later-2026 and 2027 harvests. That is an institutional scenario grounded in crop timing, not an observed global yield estimate. [FAO, 7 May 2026.](https://www.fao.org/newsroom/detail/strait-of-hormuz-crisis--fertilizer-scarcity-will-affect-next-harvests-and-food-supplies--fao-warns/en)
+
+Several buffers stand between the maritime shock and a harvest loss:
+
+1. importers may have inventories;
+2. governments can subsidise or prioritise supply;
+3. farms can change product or supplier;
+4. reductions may be concentrated on less profitable fields;
+5. favourable weather can soften the impact;
+6. adverse weather can magnify it.
+
+The April 2026 urea price did not predetermine the 2027 wheat crop. It was an early warning variable.
+
+## Milling quality may tighten before aggregate tonnage
+
+Nitrogen affects grain protein as well as yield. That distinction matters because a flour mill cannot treat every tonne as interchangeable.
+
+Ten UK field experiments conducted over the 2019, 2020 and 2021 harvests found that higher total nitrogen supply from soil and applied fertilizer was associated with higher grain protein. Additional nitrogen raised protein on average in the trials, with outcomes depending on timing and uptake conditions. The research also notes that baking performance depends on characteristics beyond protein, including specific weight and Hagberg Falling Number, a test of enzyme activity in grain. These local trials should not be projected mechanically onto global production. [AHDB project on nitrogen, sulphur and milling-wheat quality.](https://ahdb.org.uk/nitrogen-and-sulphur-fertiliser-management-to-achieve-grain-protein-quality-targets-of-high-yielding-winter-milling-wheat)
+
+One plausible early stress pattern would be a normal-looking aggregate crop with a smaller share meeting milling specifications. More wheat would be downgraded into feed channels while higher-protein grades attracted a premium.
+
+That outcome can be missed by a headline futures contract. Protein spreads, quality surveys, test weights and downgrade rates become as important as national tonnage.
+
+## Asia contains several different exposures
+
+A continent-wide label hides the balance-sheet differences between India, Southeast Asian importers and China.
+
+### India has a wheat buffer and a fertilizer exposure
+
+USDA projects Indian wheat production at **121 million tonnes**, imports at only 0.1 million and ending stocks at 29.5 million for 2026/27. Under that balance, India is not primarily exposed through immediate dependence on Black Sea wheat. [USDA, August 2026 WASDE.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+Its input exposure is more significant. WTO estimates that India sourced almost two-thirds of its nitrogenous-fertilizer imports from Gulf economies in 2024. That is a share of imports, not total domestic fertilizer consumption. India also produces fertilizer and uses subsidies, public procurement and gas allocation to cushion farmers. [WTO, 10 July 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+A subsidised farm-gate price can remain stable while the economic cost rises elsewhere. The burden moves to the state budget, public companies, foreign-exchange needs or all three.
+
+### Southeast Asia buys wheat from the export pool
+
+USDA’s Southeast Asia aggregate shows **31.4 million tonnes of wheat imports** and no production in the table for 2026/27. The row covers a group defined by USDA and does not imply identical exposure for every country. [USDA, August 2026 WASDE.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+Mills, noodle manufacturers, bakeries and feed users are directly exposed to landed wheat prices. The same economies can also face higher energy and fertilizer costs for rice, maize and other domestic crops. Black Sea and Hormuz shocks therefore enter through different products and different parts of the food system.
+
+### China owns a large domestic shock absorber
+
+USDA projects China producing 141 million tonnes of wheat, importing 6 million and ending the year with 120.2 million tonnes of stocks. The reserve position sharply reduces the risk of an immediate domestic wheat shortage. [USDA, August 2026 WASDE.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+China also influences fertilizer availability abroad. More generous export quotas can ease the international market; tighter controls protect domestic users and shift scarcity onto foreign buyers. WTO reported that China first tightened controls and later allowed limited urea exports under quotas. [WTO, 10 July 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+## From FOB wheat to the price of bread
+
+International wheat quotations are several balance sheets away from a retail loaf.
+
+The transmission chain is:
+
+**FOB wheat price → freight and insurance → landed dollar price → exchange rate → mill cost → flour → industrial or bakery margin → retail price.**
+
+FOB, or free on board, covers the commodity loaded at the export port under the relevant contract terms. Landed cost adds transport and insurance to the destination. A currency depreciation can compound the shock because the wheat price rises in dollars while each dollar becomes more expensive locally.
+
+Inventories delay pass-through. Hedging can temporarily fix a price. Subsidies can protect consumers while increasing fiscal cost. Mills and food manufacturers may compress margins, change origin, alter recipes or reduce package sizes.
+
+The first macroeconomic evidence may therefore appear outside consumer inflation: weaker mill margins, larger subsidy bills, lower foreign-exchange reserves, delayed deliveries or a change in product quality.
+
+## Stress-test the import bill
+
+The tool below is deliberately narrow. It multiplies import volume by landed cost and decomposes the change into wheat, freight-insurance and currency components. It does not estimate retail inflation or behavioural responses.
+
+<WheatImportStress lang="en" />
+
+With illustrative default inputs, not live market quotes, a country imports 10 million tonnes. FOB wheat rises 10%, from $270 to $297 per tonne. Freight and insurance rise 50%, from $30 to $45. Landed cost moves from $300 to $342, a 14% increase. The annual dollar bill rises by $420 million. A 5% rise in the local-currency cost of one dollar lifts the local-currency bill index to 119.7 from a base of 100. The exchange-rate move contributes 5.7 index points on top of the wheat and transport shock.
+
+The calculation is not a spending forecast. Buyers can reduce volume, draw inventories, hedge, change origin or accept a different grade. It shows why a moderate wheat-price move can become much more consequential when freight and foreign exchange move in the same direction.
+
+## Four paths from here
+
+<table class="wheat-scenario" role="table" aria-label="Four scenarios for the wheat market">
+<thead role="rowgroup">
+<tr role="row"><th scope="col" role="columnheader">Path</th><th scope="col" role="columnheader">Black Sea</th><th scope="col" role="columnheader">Hormuz and fertilizer</th><th scope="col" role="columnheader">Main economic result</th></tr>
+</thead>
+<tbody role="rowgroup">
+<tr role="row"><th scope="row" role="rowheader">Normalisation</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Black Sea</span>Terminals and ship calls recover</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Hormuz and fertilizer</span>Flows stabilise; prices hold or fall</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Main economic result</span>War-risk premiums recede and crop fundamentals dominate</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Logistics shock</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Black Sea</span>Long delays; most volume eventually rerouted</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Hormuz and fertilizer</span>Inputs remain available</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Main economic result</span>Higher 2026 landed cost with limited crop impact</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Lagged crop shock</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Black Sea</span>Trade partly functional</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Hormuz and fertilizer</span>Fertilizer is costly or late during key windows</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Main economic result</span>Pressure on application, area, yield or quality in 2027</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Combined shock</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Black Sea</span>Persistent export-capacity loss</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Hormuz and fertilizer</span>Input constraints, poor weather and trade restrictions</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Main economic result</span>Tighter volumes, quality premiums and importer balance sheets</td></tr>
+</tbody>
+</table>
+
+The combined-shock case requires several conditions at once. Russian and Ukrainian loadings would need to remain materially impaired. Other exporters would fail to compensate. Fertilizer would remain unavailable or uneconomic at the relevant application dates. Farmers would then need to reduce rates or area, while weather prevented offsetting gains elsewhere. Export controls could amplify the result.
+
+The sources available on 3 September do not establish that all those conditions are present.
+
+## Evidence that would move the thesis
+
+A useful monitoring list follows the transmission mechanism rather than the most dramatic headline.
+
+**Black Sea:** vessel calls, terminal utilisation, queue length, war-risk insurance, freight, monthly Russian and Ukrainian exports, and the volume genuinely rerouted to Baltic or land corridors.
+
+**Fertilizer:** separate prices and physical flows for urea, ammonia, DAP and sulphur; shipping coverage methodology; importer inventories; tenders; subsidies; and the price farmers actually pay.
+
+**Crop:** planted area, nitrogen application, water availability, yield, grain protein, quality premiums and downgrade rates.
+
+**Importers:** landed prices, exchange rates, mill inventories, subsidy costs and access to foreign currency.
+
+FAO’s index covering August is scheduled for release on 4 September. It will add a price observation. It will not reveal how much nitrogen farmers will apply to the 2027 crop. [FAO, 2026 monthly release calendar.](https://www.fao.org/worldfoodsituation/foodpricesindex/en/)
+
+## The evidence map
+
+<div class="wheat-evidence">
+<p><strong>Established.</strong> Black Sea attacks have disrupted commercial vessels and export infrastructure. Russia and Ukraine account for about 28% of projected world wheat exports in USDA’s August balance. Hormuz disruption caused a severe fertilizer-trade shock and an early-2026 urea price spike.</p>
+<p><strong>Established counterweight.</strong> Urea had fallen sharply by June, the World Bank aggregate fertilizer index declined in August, and USDA still projected 273.25 Mt of global ending wheat stocks.</p>
+<p><strong>Probable or consistent with the evidence.</strong> Some importers will pay more to replace origins, finance delays and absorb freight or currency moves. Prolonged nitrogen stress can lower the economic optimum application rate and tighten milling-wheat quality.</p>
+<p><strong>Unknown.</strong> The duration of maritime disruption, current daily fertilizer tonnage by product, actual farm application decisions, planted-area responses and 2027 growing weather.</p>
+</div>
+
+<div class="wheat-caveat">
+<p><strong>What would weaken this thesis.</strong> A durable, measured recovery in fertilizer flows; normalised Black Sea insurance; restored Russian and Ukrainian export pace; stable planted area; and no meaningful milling-quality premium would all reduce the risk of a lagged crop shock.</p>
+</div>
+
+## The calendar is the risk
+
+As of 3 September 2026, the projected balance sheets do not establish a global wheat shortage. They show substantial production and inventories, with uneven local availability. The fertilizer retreat since April also rules out a straight-line story from disruption to famine.
+
+The vulnerability lies in a smaller set of facts: only a fraction of global wheat enters trade, export infrastructure is geographically concentrated, reserves belong to states, and the two maritime shocks arrive on different timelines.
+
+Black Sea risk can raise the cost of an available tonne now. Hormuz risk can raise the cost of producing a future tonne, or change its quality, months later. Policy, inventories, shipping, farm decisions and weather stand between the initial shock and the final outcome.
+
+The key question is therefore not tomorrow morning’s bread price. It is whether the maritime disruptions of 2026 remain a logistics premium or become embedded in 2027 crop and food-import balance sheets.
+
+## Further reading
+
+This update complements our [analysis of the Hormuz supply-chain bill](/en/analysis/hormuz-supply-chain-the-bill-is-already-here/) and [the dollar-oil double squeeze on emerging markets](/en/analysis/emerging-markets-double-squeeze-dollar-oil/). See [chokepoint](/en/glossary/chokepoint/) for the core concept, and our [guide to the dollar and cross-currency basis](/en/guides/read-dollar-dxy-cross-currency-basis/) for foreign-currency funding.
+
+## Method and primary sources
+
+<div class="wheat-method">
+<p>l0g calculations from WASDE: Russia-Ukraine export share = (46 + 13.5) / 212.71; China’s stock share = 120.20 / 273.25; global stocks-to-use = 273.25 / 826.27; excluding China = 153.05 / 678.27. Ratios are expressed as percentages. The import-bill model multiplies volume by landed price; its local-currency index multiplies the dollar index by the relative cost of one dollar. USDA values are marketing-year projections, not final customs observations. FAO’s wheat change covers July 2026. The World Bank fertilizer change covers August 2026. WTO Gulf shares use nutrient-weighted trade values. Reuters is used for live attacks, route shifts and commercial price indications where no consolidated primary series was available.</p>
+</div>
+
+<ul class="wheat-source-list">
+<li><a href="https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt">USDA, World Agricultural Supply and Demand Estimates, 12 August 2026</a></li>
+<li><a href="https://www.fao.org/worldfoodsituation/foodpricesindex/en/">FAO Food Price Index, 7 August 2026 release covering July</a></li>
+<li><a href="https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm">WTO Secretariat, fertilizer trade affected by the Strait of Hormuz conflict, 10 July 2026</a></li>
+<li><a href="https://www.worldbank.org/en/research/commodity-markets">World Bank Commodity Markets, 2 September 2026 update</a></li>
+<li><a href="https://www.imo.org/en/mediacentre/pressbriefings/pages/statement-on-the-ongoing-crisis-in-the-strait-of-hormuz.aspx">IMO, six months of uncertainty for seafarers in Hormuz, 28 August 2026</a></li>
+<li><a href="https://www.fao.org/newsroom/detail/strait-of-hormuz-crisis--fertilizer-scarcity-will-affect-next-harvests-and-food-supplies--fao-warns/en">FAO warning on fertilizer timing and future harvests, 7 May 2026</a></li>
+<li><a href="https://ahdb.org.uk/nitrogen-and-sulphur-fertiliser-management-to-achieve-grain-protein-quality-targets-of-high-yielding-winter-milling-wheat">AHDB, nitrogen, sulphur and milling-wheat quality trials</a></li>
+<li><a href="https://ahdb.org.uk/knowledge-library/nitrogen-fertiliser-adjustment-calculator-for-cereals-and-oilseeds">AHDB, nitrogen economic optimum adjustment tool</a></li>
+<li><a href="https://www.reuters.com/world/ships-adopt-makeshift-anti-drone-defences-black-sea-attacks-intensify-2026-09-02/">Reuters, improvised anti-drone defences and rising Black Sea attacks, 2 September 2026</a></li>
+<li><a href="https://www.reuters.com/business/russian-grain-exports-shift-baltic-black-sea-trade-disrupted-2026-08-31/">Reuters, Russian grain rerouting towards the Baltic, 31 August 2026</a></li>
+<li><a href="https://www.reuters.com/world/asia-pacific/global-wheat-buyers-brace-supply-squeeze-amid-black-sea-attacks-2026-08-20/">Reuters, comparative wheat offers and Asian buying, 20 August 2026</a></li>
+<li><a href="https://www.reuters.com/world/middle-east/fertiliser-shipments-begin-exiting-through-hormuz-strait-2026-06-26/">Reuters, partial resumption of fertilizer cargoes through Hormuz, 26 June 2026</a></li>
+</ul>

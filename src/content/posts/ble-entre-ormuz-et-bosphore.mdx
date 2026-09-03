@@ -1,0 +1,515 @@
+---
+title: "Le blé entre Ormuz et le Bosphore"
+seoTitle: "Blé : Ormuz et la mer Noire sous tension | l0g"
+ogTitle: "Le blé entre Ormuz et le Bosphore"
+ogImage: "/illustrations/news/wheat-hormuz-black-sea-v2.jpg"
+description: "La mer Noire perturbe les cargaisons de 2026. Ormuz fragilise les engrais des récoltes suivantes. Anatomie d’un risque à deux vitesses."
+pubDate: 2026-09-03T08:39:00+02:00
+updatedDate: 2026-09-03T08:39:00+02:00
+tags: ["blé", "matières premières", "mer Noire", "Ormuz", "engrais", "Russie", "Ukraine", "Asie", "sécurité alimentaire", "géostratégie"]
+draft: false
+quickTake:
+  fact: "La Russie et l’Ukraine représentent environ 28 % des exportations mondiales de blé projetées par l’USDA en 2026-2027, tandis que le Golfe pesait 24,8 % des exportations mondiales d’engrais azotés en 2024."
+  importance: "La mer Noire agit sur le grain déjà récolté. Ormuz agit sur les intrants, avec des effets possibles sur le coût, le rendement et la qualité des récoltes suivantes."
+  uncertainty: "Les stocks mondiaux restent substantiels et les prix des engrais ont reflué. La durée des perturbations maritimes et les choix réels de fertilisation détermineront si le choc reste logistique ou devient agricole."
+---
+import WheatImportStress from '../../components/WheatImportStress.astro';
+
+<style>{`
+.wheat-chart{margin:2.35rem 0 2.7rem}
+.wheat-chart svg{display:block;width:100%;height:auto;border:1px solid rgba(159,177,189,.22);border-radius:18px}
+.wheat-chart figcaption{margin:.72rem .35rem 0;color:var(--color-text-muted,#6b7280);font-size:.82rem;line-height:1.55}
+.wheat-svg-mobile{display:none!important}
+.wheat-evidence{margin:1.65rem 0;padding:1rem 1.08rem;border-left:3px solid #2dd4bf;background:rgba(45,212,191,.07)}
+.wheat-caveat{margin:1.65rem 0;padding:1rem 1.08rem;border-left:3px solid #fbbf24;background:rgba(251,191,36,.07)}
+.wheat-method{margin:1.65rem 0;padding:1rem 1.08rem;border:1px solid rgba(159,177,189,.24);border-radius:14px;background:rgba(159,177,189,.05)}
+.wheat-scenario{font-size:.88rem}
+.wheat-scenario{width:100%;table-layout:fixed;overflow-wrap:break-word}
+.wheat-cell-label{display:none}
+.wheat-scenario th,.wheat-scenario td{vertical-align:top}
+.wheat-scenario th[scope="row"]{font-size:inherit;letter-spacing:normal;text-transform:none}
+.wheat-source-list li{margin:.58rem 0}
+.wheat-kicker{font-size:1.08rem;line-height:1.75}
+@media(max-width:640px){
+  .wheat-svg-desktop{display:none!important}
+  .wheat-svg-mobile{display:block!important}
+  .prose table{display:block;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+  .wheat-chart{margin:1.85rem 0 2.15rem}
+  .wheat-chart figcaption{font-size:.78rem}
+  .prose .wheat-scenario{display:block;border:0;font-size:.95rem;overflow:visible}
+  .wheat-scenario thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .wheat-scenario tbody{display:grid;gap:1rem}
+  .wheat-scenario tbody tr{display:block;padding:1rem;border:1px solid var(--color-line);border-radius:14px;background:rgba(159,177,189,.04)}
+  .prose .wheat-scenario tbody th,.prose .wheat-scenario td{display:block;width:auto;padding:0;border:0;white-space:normal}
+  .prose .wheat-scenario tbody th{font-size:1.08rem;letter-spacing:normal;text-transform:none}
+  .prose .wheat-scenario td{margin-top:1rem}
+  .wheat-cell-label{display:block;margin-bottom:.2rem;font-size:.78rem;font-weight:700;color:var(--color-text-muted)}
+}
+`}</style>
+
+*Données arrêtées au 3 septembre 2026 à 7 h 15, heure de Paris. Les chiffres de récolte et de stocks sont des projections pour la campagne 2026-2027 publiées par l’USDA le 12 août. La dernière variation mensuelle du blé disponible auprès de la FAO porte sur juillet et a été publiée le 7 août. La variation mensuelle des engrais publiée par la Banque mondiale le 2 septembre porte sur août.*
+
+<p class="wheat-kicker">Des cargos franchissent désormais le Bosphore avec des filets au-dessus de leur superstructure, des pneus suspendus à la coque ou des réservoirs d’eau disposés près des zones sensibles. Ces protections improvisées racontent une évolution du marché du blé qu’aucun bilan agricole ne peut résumer seul.</p>
+
+Le 2 septembre, Reuters a documenté plusieurs de ces dispositifs. Le navire russe *Omskiy-107*, abandonné avec sa passerelle incendiée, avait dérivé jusqu’à une plage au nord-est d’Istanbul. Depuis juillet, l’Ukraine intensifie ses frappes contre des navires et des installations qui soutiennent les exportations russes de pétrole et de céréales. La Russie frappe de son côté les grands pôles céréaliers ukrainiens d’Odessa, de Tchornomorsk et de Pivdenny. Le Bosphore n’est pas le principal théâtre des attaques. Il est le passage où les dégâts deviennent visibles. [Reuters, 2 septembre 2026.](https://www.reuters.com/world/ships-adopt-makeshift-anti-drone-defences-black-sea-attacks-intensify-2026-09-02/)
+
+Plus au sud, le détroit d’Ormuz exerce une pression différente. Il ne transporte pas une part décisive du blé mondial. Il relie en revanche de grands producteurs de gaz, d’ammoniac, d’urée, de soufre et d’engrais phosphatés à leurs clients. Le 28 août, l’Organisation maritime internationale comptabilisait au moins **70 attaques confirmées contre la navigation internationale** depuis le début du conflit, le 28 février, et **19 morts parmi les marins**. L’OMI indiquait aussi que jusqu’à 400 navires transportant environ 6 000 marins avaient été empêchés de quitter la région en sécurité depuis le début de la crise. L’OMI ne précise pas ici le mode de comptage ni le nombre exact de navires encore bloqués à cette date. [OMI, 28 août 2026.](https://www.imo.org/en/mediacentre/pressbriefings/pages/statement-on-the-ongoing-crisis-in-the-strait-of-hormuz.aspx)
+
+Les deux détroits n’agissent donc ni sur le même objet, ni au même rythme. **La mer Noire affecte d’abord le grain déjà produit. Ormuz affecte les intrants qui déterminent le coût et le potentiel de la récolte suivante.**
+
+Cette distinction permet d’éviter deux erreurs. La première consiste à annoncer une pénurie mondiale dès qu’un port ferme. La seconde consiste à conclure que tout risque a disparu parce que les silos mondiaux paraissent bien remplis et que l’urée a quitté son pic d’avril.
+
+<figure class="wheat-chart">
+<svg style="width:100%;height:auto" class="wheat-svg-desktop" viewBox="0 0 960 650" role="img" aria-labelledby="wheat-fr-clock-d-title wheat-fr-clock-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-fr-clock-d-title">Deux détroits règlent deux horloges du marché du blé</title>
+<desc id="wheat-fr-clock-d-desc">La mer Noire agit rapidement sur les ports, les navires, les assurances et le prix livré. Ormuz agit avec retard sur le gaz, l’ammoniac, l’urée, le soufre, les décisions de fertilisation, les rendements et la teneur en protéines.</desc>
+<rect width="960" height="650" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">BLÉ MONDIAL · DEUX HORLOGES</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="31" font-weight="800">Le même marché reçoit deux chocs différents</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">Le premier touche les cargaisons. Le second peut modifier la récolte suivante.</text>
+<rect x="48" y="172" width="408" height="348" rx="18" fill="#111d29" stroke="#67d7c5" stroke-width="2"/>
+<text x="76" y="211" fill="#73e0cf" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">MER NOIRE · JOURS À SEMAINES</text>
+<text x="76" y="249" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="780">Le blé déjà récolté</text>
+<rect x="76" y="281" width="352" height="54" rx="11" fill="#182838"/>
+<text x="96" y="304" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Ports, terminaux, navires</text>
+<text x="96" y="324" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">capacité de chargement et escales</text>
+<path d="M252 338 L252 365" stroke="#67d7c5" stroke-width="3"/><path d="M245 358 L252 367 L259 358" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="76" y="369" width="352" height="54" rx="11" fill="#182838"/>
+<text x="96" y="392" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Assurance, fret, délais</text>
+<text x="96" y="412" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">acceptation du risque maritime</text>
+<path d="M252 426 L252 453" stroke="#67d7c5" stroke-width="3"/><path d="M245 446 L252 455 L259 446" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="76" y="457" width="352" height="42" rx="11" fill="#12362f"/>
+<text x="96" y="483" fill="#8af0df" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="760">Prix et disponibilité rendus au port</text>
+<rect x="504" y="172" width="408" height="348" rx="18" fill="#111d29" stroke="#e8b84f" stroke-width="2"/>
+<text x="532" y="211" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">ORMUZ · MOIS À RÉCOLTE SUIVANTE</text>
+<text x="532" y="249" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="780">Le potentiel de production</text>
+<rect x="532" y="281" width="352" height="54" rx="11" fill="#182838"/>
+<text x="552" y="304" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Gaz, ammoniac, urée, soufre</text>
+<text x="552" y="324" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">prix et disponibilité des intrants</text>
+<path d="M708 338 L708 365" stroke="#e8b84f" stroke-width="3"/><path d="M701 358 L708 367 L715 358" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="532" y="369" width="352" height="54" rx="11" fill="#182838"/>
+<text x="552" y="392" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700">Doses, calendrier, cultures</text>
+<text x="552" y="412" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">arbitrages techniques et financiers</text>
+<path d="M708 426 L708 453" stroke="#e8b84f" stroke-width="3"/><path d="M701 446 L708 455 L715 446" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="532" y="457" width="352" height="42" rx="11" fill="#3a2d11"/>
+<text x="552" y="483" fill="#f6d98d" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="760">Rendement, protéines et coût du grain</text>
+<line x1="48" y1="568" x2="912" y2="568" stroke="#334454" stroke-width="2"/>
+<circle cx="112" cy="568" r="7" fill="#67d7c5"/><circle cx="848" cy="568" r="7" fill="#e8b84f"/>
+<text x="48" y="606" fill="#a8b8c1" font-family="Inter,system-ui,sans-serif" font-size="16">Choc visible dans les flux actuels</text>
+<text x="665" y="606" fill="#a8b8c1" font-family="Inter,system-ui,sans-serif" font-size="16">Effet agricole conditionnel</text>
+</svg>
+<svg style="width:100%;height:auto" class="wheat-svg-mobile" viewBox="0 0 460 930" role="img" aria-labelledby="wheat-fr-clock-m-title wheat-fr-clock-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-fr-clock-m-title">Deux détroits et deux délais pour le marché du blé</title>
+<desc id="wheat-fr-clock-m-desc">La mer Noire agit sur les cargaisons en quelques jours ou semaines. Ormuz peut agir sur la récolte suivante par les engrais et les décisions agricoles.</desc>
+<rect width="460" height="930" rx="18" fill="#081018"/>
+<text x="25" y="44" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">BLÉ MONDIAL · DEUX HORLOGES</text>
+<text x="25" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="23" font-weight="800">Deux chocs, deux délais</text>
+<text x="25" y="105" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">Cargaisons actuelles puis récolte suivante</text>
+<rect x="25" y="135" width="410" height="335" rx="16" fill="#111d29" stroke="#67d7c5" stroke-width="2"/>
+<text x="48" y="171" fill="#73e0cf" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">MER NOIRE · JOURS À SEMAINES</text>
+<text x="48" y="204" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="780">Le blé déjà récolté</text>
+<rect x="48" y="229" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="249" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Ports, terminaux, navires</text>
+<text x="66" y="275" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">chargement et escales</text>
+<path d="M230 287 L230 309" stroke="#67d7c5" stroke-width="3"/><path d="M223 303 L230 312 L237 303" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="48" y="315" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="335" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Assurance, fret, délais</text>
+<text x="66" y="361" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">risque maritime</text>
+<path d="M230 373 L230 395" stroke="#67d7c5" stroke-width="3"/><path d="M223 389 L230 398 L237 389" fill="none" stroke="#67d7c5" stroke-width="3"/>
+<rect x="48" y="401" width="364" height="43" rx="10" fill="#12362f"/>
+<text x="66" y="428" fill="#8af0df" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="760">Prix rendu et disponibilité</text>
+<rect x="25" y="495" width="410" height="360" rx="16" fill="#111d29" stroke="#e8b84f" stroke-width="2"/>
+<text x="48" y="531" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">ORMUZ · MOIS À RÉCOLTE SUIVANTE</text>
+<text x="48" y="564" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="780">Le potentiel de production</text>
+<rect x="48" y="589" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="609" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Gaz, ammoniac, urée, soufre</text>
+<text x="66" y="635" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">prix et disponibilité</text>
+<path d="M230 647 L230 669" stroke="#e8b84f" stroke-width="3"/><path d="M223 663 L230 672 L237 663" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="48" y="675" width="364" height="55" rx="10" fill="#182838"/>
+<text x="66" y="695" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">Doses, calendrier, cultures</text>
+<text x="66" y="721" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18">arbitrages agricoles</text>
+<path d="M230 733 L230 755" stroke="#e8b84f" stroke-width="3"/><path d="M223 749 L230 758 L237 749" fill="none" stroke="#e8b84f" stroke-width="3"/>
+<rect x="48" y="761" width="364" height="62" rx="10" fill="#3a2d11"/>
+<text x="66" y="784" fill="#f6d98d" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="760">Rendement, protéines, coût</text>
+<text x="66" y="810" fill="#f6d98d" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="760">du grain</text>
+<text x="25" y="892" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">Schéma l0g · mécanismes, pas prévision</text>
+</svg>
+<figcaption>Schéma l0g. Les horizons sont indicatifs. Sources de mécanisme : OMC, FAO, OMI et Reuters, publications citées dans l’article. Une hausse du coût des intrants ne se transforme pas mécaniquement en baisse de rendement.</figcaption>
+</figure>
+
+## Deux détroits règlent deux horloges
+
+Le blé est une matière première saisonnière. Sa récolte est concentrée dans le temps, alors que sa consommation et son commerce se poursuivent toute l’année. Cette organisation crée plusieurs stocks tampons : chez les agriculteurs, les négociants, les organismes publics, les meuniers et les importateurs. Elle crée aussi des dates difficiles à déplacer. Un navire peut parfois attendre. Une application d’azote destinée à une phase précise de croissance ne se reporte pas toujours sans perte.
+
+La mer Noire agit sur le premier calendrier. Une attaque contre un terminal peut interrompre les chargements, déplacer les navires, modifier les primes d’assurance et retarder un contrat déjà signé. Le risque se transmet en quelques jours au prix rendu, c’est-à-dire au coût de la marchandise arrivée au port de destination, fret et assurance compris.
+
+Ormuz agit sur le second calendrier. L’ammoniac est produit à partir d’azote de l’air et d’hydrogène, généralement obtenu à partir de gaz naturel. Il sert ensuite à fabriquer l’urée et d’autres engrais azotés. Le soufre intervient dans la chaîne de plusieurs engrais phosphatés. Lorsque ces flux ralentissent, le premier effet touche les stocks et les prix des intrants. L’effet sur le blé dépend ensuite des achats, des subventions, des doses appliquées, des surfaces semées, de la météo et du niveau d’azote déjà présent dans le sol.
+
+La chaîne de causalité contient donc plusieurs embranchements. **Un engrais plus cher constitue un fait de marché. Une baisse de récolte reste un résultat conditionnel tant que les agriculteurs n’ont pas modifié leurs pratiques et que la campagne n’a pas été observée.**
+
+## Le bilan mondial garde un coussin
+
+Le rapport sur l’offre et la demande agricoles mondiales, ou WASDE, publié par le département américain de l’Agriculture le 12 août projette **819,30 millions de tonnes de production mondiale de blé** pour la campagne 2026-2027. L’utilisation atteindrait **826,27 millions de tonnes**. L’utilisation dépasserait donc la production d’environ 6,97 millions de tonnes pendant la campagne, différence absorbée par les stocks. Ceux-ci passeraient de 280,22 à **273,25 millions de tonnes**. [USDA, WASDE d’août 2026, tableau mondial du blé.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+Ce bilan décrit un resserrement. Il ne décrit pas un épuisement. La projection d’août relevait même les stocks de fin de campagne de 0,41 million de tonnes par rapport à juillet. Une phrase annonçant que « le monde va manquer de blé » irait donc au-delà des données disponibles.
+
+Le prix a pourtant déjà réagi. La FAO a mesuré en **juillet 2026** une hausse de **5,8 % des prix internationaux du blé sur un mois** et de **9,9 % sur un an**. Elle reliait ce mouvement aux perturbations persistantes des exportations de mer Noire, aux dégâts subis par les infrastructures et aux vagues de chaleur dans plusieurs régions productrices. La publication date du 7 août. Elle ne mesure ni les événements de la fin août, ni le prix du pain payé par les ménages. [FAO, indice des prix alimentaires, publication du 7 août 2026 portant sur juillet.](https://www.fao.org/worldfoodsituation/foodpricesindex/en/)
+
+Stocks substantiels et hausse des prix peuvent parfaitement coexister. Le marché ne valorise pas seulement la quantité totale inscrite dans les silos. Il valorise la quantité offerte au bon endroit, dans la qualité demandée, pendant la fenêtre prévue et avec une route assurable.
+
+<div class="wheat-evidence">
+<p><strong>Point établi.</strong> Le bilan mondial de l’USDA conserve un coussin important, tandis que les prix internationaux du blé ont nettement augmenté en juillet.</p>
+<p><strong>Lecture.</strong> Le signal actuel ressemble davantage à une tension sur le commerce et la livraison qu’à une disparition physique du grain mondial.</p>
+</div>
+
+## Le commerce international forme le goulot le plus étroit
+
+Sur les 819,30 millions de tonnes produites, l’USDA projette **212,71 millions de tonnes d’exportations**. Le volume exporté équivaudrait donc à près de 26 % de la production annuelle. Ce rapport entre deux flux donne un ordre de grandeur : les exportations d’une campagne peuvent aussi mobiliser des stocks antérieurs ou comprendre des réexportations.
+
+Cette proportion change la bonne unité d’analyse. Une récolte supplémentaire dans un pays peu exportateur ne compense pas instantanément une cargaison absente à Alexandrie, Mombasa ou Jakarta. Elle doit être commercialisable, compétitive, disponible au bon moment et reliée à un port.
+
+La Russie devrait exporter **46 millions de tonnes** et l’Ukraine **13,5 millions** en 2026-2027. Ensemble, **59,5 millions de tonnes**, soit environ **28 % du commerce mondial projeté**. Ce ratio utilise les tableaux du WASDE. Les campagnes commerciales nationales et la mesure mondiale du commerce n’obéissent pas toujours au même calendrier ; le résultat doit être lu comme un ordre de grandeur du scénario USDA, pas comme une part douanière exacte pour l’année civile 2026. [USDA, WASDE d’août 2026.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+Entre juillet et août, l’USDA a réduit de 1,5 million de tonnes sa projection d’exportations russes et de 1 million celle de l’Ukraine. Dans le même temps, il a relevé la récolte ukrainienne de 1,4 million de tonnes. Cette combinaison est compatible avec une contrainte d’écoulement : davantage de grain produit, moins de grain exporté, davantage de stocks de fin de campagne. Le tableau ne permet cependant pas d’attribuer toute la révision à une seule cause.
+
+<figure class="wheat-chart">
+<svg style="width:100%;height:auto" class="wheat-svg-desktop" viewBox="0 0 960 585" role="img" aria-labelledby="wheat-fr-trade-d-title wheat-fr-trade-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-fr-trade-d-title">Le commerce mondial est beaucoup plus étroit que la récolte</title>
+<desc id="wheat-fr-trade-d-desc">Le monde produirait 819,30 millions de tonnes de blé en 2026-2027. Les exportations atteindraient 212,71 millions de tonnes, soit 26 pour cent de la production. La Russie et l’Ukraine en exporteraient 59,5 millions, soit 28 pour cent du commerce mondial projeté.</desc>
+<rect width="960" height="585" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">USDA · CAMPAGNE 2026-2027 · MILLIONS DE TONNES</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="31" font-weight="800">La partie échangeable est la plus étroite</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">Deux dénominateurs distincts évitent de confondre récolte et commerce.</text>
+<rect x="48" y="174" width="410" height="302" rx="18" fill="#111d29"/>
+<text x="76" y="211" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">PRODUCTION : 819,30 MT</text>
+<text x="76" y="257" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="38" font-weight="820">212,71 Mt</text>
+<text x="76" y="284" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">seraient exportées</text>
+<rect x="76" y="322" width="340" height="30" rx="15" fill="#223342"/>
+<rect x="76" y="322" width="88" height="30" rx="15" fill="#67d7c5"/>
+<text x="76" y="389" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">26 %</text>
+<text x="76" y="418" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">de la production mondiale projetée</text>
+<rect x="502" y="174" width="410" height="302" rx="18" fill="#111d29"/>
+<text x="530" y="211" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">SUR 212,71 MT EXPORTÉES</text>
+<text x="530" y="257" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="38" font-weight="820">59,50 Mt</text>
+<text x="530" y="284" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">viendraient de Russie et d’Ukraine</text>
+<rect x="530" y="322" width="340" height="30" rx="15" fill="#223342"/>
+<rect x="530" y="322" width="95" height="30" rx="15" fill="#e8b84f"/>
+<text x="530" y="389" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">28 %</text>
+<text x="530" y="418" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">du commerce mondial projeté</text>
+<text x="48" y="533" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="16">Calculs l0g à partir du WASDE du 12 août 2026. Parts arrondies.</text>
+</svg>
+<svg style="width:100%;height:auto" class="wheat-svg-mobile" viewBox="0 0 460 760" role="img" aria-labelledby="wheat-fr-trade-m-title wheat-fr-trade-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-fr-trade-m-title">Production mondiale, exportations et part russo-ukrainienne</title>
+<desc id="wheat-fr-trade-m-desc">Les exportations représentent 26 pour cent de la production mondiale projetée. La Russie et l’Ukraine représentent 28 pour cent des exportations projetées.</desc>
+<rect width="460" height="760" rx="18" fill="#081018"/>
+<text x="25" y="43" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">USDA · 2026-2027 · MILLIONS DE TONNES</text>
+<text x="25" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">La partie échangeable</text>
+<text x="25" y="104" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">est la plus étroite</text>
+<rect x="25" y="137" width="410" height="250" rx="16" fill="#111d29"/>
+<text x="48" y="172" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">PRODUCTION : 819,30 MT</text>
+<text x="48" y="218" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">212,71 Mt</text>
+<text x="48" y="244" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">seraient exportées</text>
+<rect x="48" y="274" width="364" height="27" rx="14" fill="#223342"/>
+<rect x="48" y="274" width="94" height="27" rx="14" fill="#67d7c5"/>
+<text x="48" y="346" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="800">26 % de la production</text>
+<rect x="25" y="411" width="410" height="260" rx="16" fill="#111d29"/>
+<text x="48" y="446" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">SUR 212,71 MT EXPORTÉES</text>
+<text x="48" y="492" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">59,50 Mt</text>
+<text x="48" y="518" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">Russie et Ukraine</text>
+<rect x="48" y="548" width="364" height="27" rx="14" fill="#223342"/>
+<rect x="48" y="548" width="102" height="27" rx="14" fill="#e8b84f"/>
+<text x="48" y="620" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="800">28 % des exportations</text>
+<text x="25" y="716" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">WASDE, 12 août 2026 · calculs l0g</text>
+</svg>
+<figcaption>Source : USDA, WASDE publié le 12 août 2026, campagne 2026-2027. Unité : millions de tonnes métriques. Les 59,5 Mt additionnent les projections d’exportations russes et ukrainiennes ; les calendriers commerciaux peuvent différer.</figcaption>
+</figure>
+
+## La mer Noire transporte le choc vers l’Asie
+
+Le risque physique commence par l’accès au terminal. Il se prolonge par la volonté d’un armateur d’envoyer son navire dans la zone, la disponibilité d’un équipage, le prix de l’assurance, la vitesse de chargement, le risque de retard et la possibilité de franchir les détroits turcs.
+
+Pour la Russie, la concentration logistique est très élevée. Selon des données sectorielles rapportées par Reuters, **46,3 millions de tonnes de céréales** ont quitté les ports russes de la mer Noire et de la mer d’Azov entre juillet 2025 et juin 2026. Il s’agit de toutes les céréales, pas seulement du blé. Ce volume représentait 90 % des exportations céréalières russes par mer selon la même source. Les ports russes de la Baltique n’en avaient traité qu’environ 1 million de tonnes. [Reuters, 31 août 2026.](https://www.reuters.com/business/russian-grain-exports-shift-baltic-black-sea-trade-disrupted-2026-08-31/)
+
+Le système dispose de voies de repli : ports baltiques russes, terminaux des pays baltes, rail, routes terrestres et autres ports. Elles réduisent le risque d’un arrêt complet. Elles ne reproduisent pas instantanément la capacité, les contrats, le matériel ferroviaire et les coûts du corridor méridional.
+
+Reuters rapportait que les ports russes de la Baltique disposeraient d’une capacité céréalière annuelle totale pouvant atteindre 7 millions de tonnes. L’Union céréalière russe estimait que l’ensemble des itinéraires alternatifs pourrait absorber au mieux environ la moitié des volumes normalement traités par la mer Noire et la mer d’Azov. Cette seconde estimation vient d’une organisation professionnelle russe. Elle est utile pour mesurer l’ordre de grandeur, mais ne constitue pas une capacité auditée par une autorité indépendante. [Reuters, 31 août 2026.](https://www.reuters.com/business/russian-grain-exports-shift-baltic-black-sea-trade-disrupted-2026-08-31/)
+
+Une route alternative peut finir par livrer le grain. Entre-temps, elle mobilise davantage de trains, allonge le parcours, concurrence d’autres marchandises et renchérit le coût rendu. **La résilience physique n’équivaut pas à la neutralité économique.**
+
+## Changer d’origine renchérit la facture
+
+Un importateur ne cherche pas une tonne abstraite. Il achète une origine, une qualité, un taux de protéines, une date de livraison et un coût rendu.
+
+Le 20 août, Reuters indiquait que des cargaisons de blé de mer Noire à destination de l’Asie étaient proposées autour de **260 à 280 dollars la tonne**, contre environ **305 dollars** pour le blé américain le moins cher et **315 à 320 dollars** pour l’Australian Premium White, transport compris. Ces fourchettes sont des indications commerciales à une date précise. Elles ne sont pas parfaitement homogènes : qualité, protéines, origine, port, délai et conditions contractuelles peuvent varier. Elles montrent néanmoins pourquoi le remplacement d’une cargaison russe ou ukrainienne par du blé nord-américain ou australien peut augmenter la facture même lorsque le grain existe ailleurs. [Reuters, 20 août 2026.](https://www.reuters.com/world/asia-pacific/global-wheat-buyers-brace-supply-squeeze-amid-black-sea-attacks-2026-08-20/)
+
+Deux négociants interrogés par l’agence estimaient aussi que des transformateurs asiatiques avaient réservé entre 2 et 2,5 millions de tonnes de blé de mer Noire pour des arrivées entre juillet et septembre. Il ne s’agit pas d’une statistique douanière consolidée. Ce témoignage renseigne sur des positions commerciales observées, pas sur la dépendance exacte de toute l’Asie.
+
+Le mécanisme de transmission reste clair :
+
+**attaque ou menace maritime → escales réduites → retards et primes d’assurance → offre livrable plus étroite → changement d’origine → hausse du coût rendu.**
+
+Il peut produire une forte tension de prix sans qu’une tonne de blé ait physiquement disparu de la planète.
+
+## Les stocks mondiaux ont une adresse
+
+Le stock final mondial projeté, **273,25 millions de tonnes**, paraît confortable. Sa répartition l’est beaucoup moins pour un importateur qui cherche une cargaison disponible.
+
+La Chine en détiendrait **120,20 millions de tonnes**, soit **44 % du total mondial**. Le monde hors Chine conserverait 153,05 millions. Les six grands exportateurs définis par l’USDA, Argentine, Australie, Canada, Union européenne, Russie et Ukraine, termineraient la campagne avec **42,08 millions de tonnes**. Ce groupe exclut les États-Unis, présentés séparément dans le WASDE.
+
+Ces trois chiffres ne s’additionnent pas. Les 42,08 millions des grands exportateurs sont inclus dans le monde hors Chine. Ils représentent un sous-ensemble du stock mondial, pas une réserve supplémentaire.
+
+Le ratio stocks de fin de campagne sur utilisation annuelle atteindrait environ **33,1 % au niveau mondial**. Hors Chine, il tomberait à **22,6 %**. Ce ratio ne doit pas être transformé en « jours de consommation » : les stocks de fin de campagne sont un concept de bilan, la consommation est un flux annuel, les campagnes diffèrent et une partie des stocks n’est pas commercialisable. Le calcul illustre seulement le poids de la Chine dans le chiffre mondial. [USDA, WASDE d’août 2026 ; calculs l0g.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+<figure class="wheat-chart">
+<svg style="width:100%;height:auto" class="wheat-svg-desktop" viewBox="0 0 960 620" role="img" aria-labelledby="wheat-fr-stocks-d-title wheat-fr-stocks-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-fr-stocks-d-title">Les stocks mondiaux de blé sont concentrés en Chine</title>
+<desc id="wheat-fr-stocks-d-desc">Les stocks mondiaux de fin de campagne sont projetés à 273,25 millions de tonnes. La Chine en détiendrait 120,20 millions, soit 44 pour cent. Le monde hors Chine en détiendrait 153,05 millions. Les grands exportateurs en détiendraient 42,08 millions, inclus dans le monde hors Chine.</desc>
+<rect width="960" height="620" rx="20" fill="#081018"/>
+<text x="48" y="54" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">STOCKS DE FIN DE CAMPAGNE · 2026-2027</text>
+<text x="48" y="99" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="31" font-weight="800">Le stock mondial a une géographie</text>
+<text x="48" y="132" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16">Une réserve nationale ne devient pas automatiquement une cargaison exportable.</text>
+<text x="48" y="188" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="750">273,25 Mt de stocks mondiaux</text>
+<rect x="48" y="211" width="864" height="62" rx="13" fill="#152430"/>
+<rect x="48" y="211" width="380" height="62" rx="13" fill="#e8b84f"/>
+<text x="70" y="237" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">CHINE</text>
+<text x="70" y="260" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="820">120,20 Mt · 44 %</text>
+<text x="458" y="237" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">MONDE HORS CHINE</text>
+<text x="458" y="260" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="820">153,05 Mt · 56 %</text>
+<rect x="48" y="316" width="532" height="178" rx="17" fill="#111d29"/>
+<text x="76" y="353" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">SOUS-ENSEMBLE DU MONDE HORS CHINE</text>
+<text x="76" y="399" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="37" font-weight="820">42,08 Mt</text>
+<text x="76" y="428" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">stocks des six grands exportateurs</text>
+<rect x="76" y="452" width="456" height="18" rx="9" fill="#263847"/>
+<rect x="76" y="452" width="125" height="18" rx="9" fill="#67d7c5"/>
+<text x="608" y="349" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800">RATIO STOCKS / UTILISATION</text>
+<text x="608" y="399" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">33,1 %</text>
+<text x="608" y="424" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">monde entier</text>
+<text x="756" y="399" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="34" font-weight="820">22,6 %</text>
+<text x="756" y="424" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="16">hors Chine</text>
+<text x="48" y="554" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="16">Les 42,08 Mt sont incluses dans les 153,05 Mt hors Chine.</text>
+<text x="48" y="577" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="16">Le ratio n’est ni un seuil de crise, ni un nombre de jours de consommation.</text>
+</svg>
+<svg style="width:100%;height:auto" class="wheat-svg-mobile" viewBox="0 0 460 810" role="img" aria-labelledby="wheat-fr-stocks-m-title wheat-fr-stocks-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="wheat-fr-stocks-m-title">Répartition géographique des stocks mondiaux de blé</title>
+<desc id="wheat-fr-stocks-m-desc">Sur 273,25 millions de tonnes de stocks mondiaux projetés, 120,20 seraient en Chine et 153,05 dans le reste du monde. Les grands exportateurs en détiendraient 42,08, inclus dans le reste du monde.</desc>
+<rect width="460" height="810" rx="18" fill="#081018"/>
+<text x="25" y="43" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">STOCKS · 2026-2027 · MILLIONS DE TONNES</text>
+<text x="25" y="78" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">Le stock mondial</text>
+<text x="25" y="104" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800">a une géographie</text>
+<text x="25" y="149" fill="#dce6ea" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">273,25 Mt au total</text>
+<rect x="25" y="169" width="410" height="102" rx="14" fill="#e8b84f"/>
+<text x="48" y="204" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">CHINE</text>
+<text x="48" y="244" fill="#241b08" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="820">120,20 Mt · 44 %</text>
+<rect x="25" y="288" width="410" height="102" rx="14" fill="#152430"/>
+<text x="48" y="323" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">MONDE HORS CHINE</text>
+<text x="48" y="363" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="820">153,05 Mt · 56 %</text>
+<rect x="25" y="421" width="410" height="160" rx="16" fill="#111d29"/>
+<text x="48" y="456" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">INCLUS DANS LE MONDE HORS CHINE</text>
+<text x="48" y="504" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="32" font-weight="820">42,08 Mt</text>
+<text x="48" y="532" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">six grands exportateurs</text>
+<text x="48" y="558" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">Sous-ensemble, pas réserve additive</text>
+<rect x="25" y="612" width="410" height="124" rx="16" fill="#111d29"/>
+<text x="48" y="647" fill="#9fb1bd" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800">RATIO STOCKS / UTILISATION</text>
+<text x="48" y="688" fill="#75e4d2" font-family="Inter,system-ui,sans-serif" font-size="27" font-weight="820">33,1 %</text>
+<text x="48" y="714" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">monde entier</text>
+<text x="245" y="688" fill="#f3cb70" font-family="Inter,system-ui,sans-serif" font-size="27" font-weight="820">22,6 %</text>
+<text x="245" y="714" fill="#c7d4da" font-family="Inter,system-ui,sans-serif" font-size="18">hors Chine</text>
+<text x="25" y="777" fill="#8497a3" font-family="Inter,system-ui,sans-serif" font-size="18">WASDE, 12 août 2026 · calculs l0g</text>
+</svg>
+<figcaption>Source : USDA, WASDE d’août 2026. Unité : millions de tonnes métriques. Les « grands exportateurs » sont l’Argentine, l’Australie, le Canada, l’Union européenne, la Russie et l’Ukraine. Limite : un stock de fin de campagne ne mesure pas directement le volume librement offert à l’exportation.</figcaption>
+</figure>
+
+Un stock national peut stabiliser le marché intérieur sans être proposé à l’étranger. La Chine pourrait réduire ses importations, libérer des réserves domestiques ou modifier ses règles commerciales ; ces décisions soulageraient indirectement le marché. Rien ne transforme cependant automatiquement ses réserves en cargaisons pour les importateurs africains ou asiatiques.
+
+## Ormuz concentre le risque sur les intrants
+
+L’Organisation mondiale du commerce a publié le 10 juillet une analyse des flux d’engrais liés au Golfe. Sur la base des échanges de 2024, les économies de la région représentaient **24,8 % des exportations mondiales d’engrais azotés** et **11,4 % des exportations d’engrais phosphatés**. Leur présence dans la potasse était négligeable. L’Asie absorbait 40 % des exportations azotées du Golfe et 48 % de ses exportations phosphatées. [OMC, 10 juillet 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+Ces parts ne sont pas des tonnes physiques directement comptées. L’OMC répartit les valeurs commerciales à l’aide de coefficients correspondant aux nutriments. Le groupe « Golfe » comprend Bahreïn, l’Iran, l’Irak, le Koweït, Oman, le Qatar, l’Arabie saoudite et les Émirats arabes unis. L’analyse exclut les exportations d’autres économies qui transitent seulement par Ormuz et peut inclure des flux du Golfe empruntant une autre route. Cette méthode mesure le poids commercial des producteurs régionaux, pas la proportion exacte de chaque molécule franchissant le détroit.
+
+La vulnérabilité dépend du produit.
+
+L’azote est très exposé au gaz naturel, utilisé comme matière première et comme énergie pour produire l’ammoniac. L’urée et le nitrate d’ammonium dérivent de cette chaîne. Le phosphate dépend du minerai, de l’énergie et du soufre pour plusieurs procédés. La potasse suit une géographie différente et est peu présente dans le Golfe.
+
+Avant la guerre, environ un tiers de l’urée échangée mondialement et près de la moitié du soufre transporté par mer passaient habituellement par Ormuz, selon des estimations sectorielles rapportées par Reuters. Ces proportions ne recouvrent pas celles de l’OMC : elles portent sur des produits précis et sur leur passage maritime, tandis que l’OMC analyse des catégories d’engrais par origine commerciale. [Reuters, 26 juin 2026.](https://www.reuters.com/world/middle-east/fertiliser-shipments-begin-exiting-through-hormuz-strait-2026-06-26/)
+
+## Mesurer les flux d’engrais reste difficile
+
+Les données maritimes donnent parfois des images différentes du même marché parce qu’elles n’observent pas la même chose.
+
+L’OMC relevait, à partir des signaux AIS analysés pour son article de juillet, un quasi-arrêt des expéditions liées aux engrais à travers Ormuz après le début du conflit. Les navires ayant coupé leur système d’identification automatique n’étaient pas observés. Reuters rapportait de son côté qu’après l’accord intérimaire annoncé le 15 juin, environ **640 000 tonnes de soufre** et **427 000 tonnes d’urée** avaient quitté le détroit, selon Argus et CRU. Une grande partie correspondait à des ventes anciennes jusque-là bloquées ; les nouveaux contrats restaient rares. [OMC, 10 juillet 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm) [Reuters, 26 juin 2026.](https://www.reuters.com/world/middle-east/fertiliser-shipments-begin-exiting-through-hormuz-strait-2026-06-26/)
+
+Il n’y a pas nécessairement contradiction. Un redémarrage ponctuel peut rester minuscule par rapport au régime normal. Les sources diffèrent aussi par période, produit, couverture des navires et définition du flux.
+
+Les sources citées ici ne fournissent pas, au 3 septembre, de série publique consolidée donnant quotidiennement les tonnages d’urée, d’ammoniac et de soufre franchissant Ormuz, avec une méthodologie stable et un taux de couverture documenté. Toute affirmation très précise sur le « retour à la normale » des engrais doit donc être traitée avec prudence.
+
+## La flambée de l’urée a déjà reflué
+
+Le prix apporte une information plus rapide, mais il ne résume pas la disponibilité physique.
+
+D’après la série reprise par l’OMC, l’urée valait environ **400 dollars la tonne avant le conflit**, a dépassé **850 dollars en avril**, puis est retombée à **453 dollars en juin**. Le phosphate diammonique, ou DAP, est passé d’environ 580 à 770 dollars. Ces sommets restaient inférieurs à plusieurs pics de 2022. [OMC, 10 juillet 2026, données Banque mondiale.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+La Banque mondiale a ensuite indiqué le 2 septembre que son **indice agrégé des engrais avait baissé de 1,9 % en août** par rapport à juillet. Cette donnée porte sur un panier de produits. Elle ne signifie pas que chaque engrais a baissé, que les coûts de fret se sont normalisés ou que toutes les régions disposent du produit au moment voulu. Elle constitue néanmoins un contre-signal important face à l’idée d’une flambée continue. [Banque mondiale, prix des matières premières, mise à jour du 2 septembre 2026 portant sur août.](https://www.worldbank.org/en/research/commodity-markets)
+
+Ce reflux est un contrepoids important au scénario alarmiste. Reuters documente notamment la sortie de cargaisons auparavant bloquées. Les séries de prix ne permettent toutefois pas de mesurer séparément l’effet du réacheminement, de la demande, des stocks et de l’offre. Le signal de tension sur les prix s’est atténué depuis avril ; la normalisation logistique reste à établir.
+
+Il reste une limite : le prix moyen mondial ne dit pas si le produit est disponible dans une région donnée, à une date agronomique précise, au prix supporté par l’agriculteur après transport, change, taxes et subventions.
+
+## L’agronomie impose un délai
+
+L’agriculteur cherche un optimum économique, pas le rendement maximal à n’importe quel prix. Il compare la valeur attendue du grain supplémentaire au coût de l’azote supplémentaire. Lorsque l’engrais augmente beaucoup plus vite que le blé, la dose économiquement optimale peut baisser.
+
+L’Agriculture and Horticulture Development Board britannique utilise ce principe dans son calculateur d’ajustement de l’azote. L’outil ne donne pas une recommandation universelle ; il ajuste une dose habituelle en fonction du prix de l’engrais et du grain. Il rappelle surtout le mécanisme : au-delà d’un certain point, le revenu procuré par le grain supplémentaire ne rembourse plus l’azote ajouté. [AHDB, calculateur d’ajustement de l’azote.](https://ahdb.org.uk/knowledge-library/nitrogen-fertiliser-adjustment-calculator-for-cereals-and-oilseeds)
+
+L’effet agronomique ne suit pas une règle proportionnelle. Une baisse de 10 % de l’apport d’azote ne produit pas automatiquement une baisse de 10 % de rendement. La réponse dépend du sol, des reliquats azotés, du précédent cultural, de la variété, de l’eau disponible, du moment d’application, de la température et de la dose initiale.
+
+La FAO a averti le 7 mai que le calendrier d’application rend le risque particulier : un engrais arrivé après la fenêtre utile ne récupère pas toujours la perte. Cette déclaration institutionnelle décrit un mécanisme et un scénario de tension sur les récoltes de la fin 2026 et de 2027. Elle ne constitue pas une mesure déjà observée des rendements mondiaux. [FAO, 7 mai 2026.](https://www.fao.org/newsroom/detail/strait-of-hormuz-crisis--fertilizer-scarcity-will-affect-next-harvests-and-food-supplies--fao-warns/en)
+
+Le choc passe par plusieurs filtres :
+
+1. les importateurs peuvent disposer de stocks ;
+2. les gouvernements peuvent subventionner ou prioriser l’approvisionnement ;
+3. les agriculteurs peuvent changer de fournisseur ou de formulation ;
+4. la dose peut être réduite seulement sur les parcelles les moins rentables ;
+5. une bonne météo peut compenser une partie de la contrainte ;
+6. une mauvaise météo peut au contraire l’amplifier.
+
+La récolte 2027 n’est donc pas écrite dans le prix de l’urée d’avril 2026. Le prix constitue un signal avancé, pas un résultat.
+
+## La qualité peut se tendre avant le volume
+
+L’azote influence aussi la teneur en protéines du blé. Ce point compte pour la meunerie, car toutes les tonnes ne sont pas interchangeables.
+
+Dix essais de terrain conduits au Royaume-Uni sur trois récoltes entre 2019 et 2021 ont trouvé une association entre l’offre totale d’azote, issue du sol et des apports, et la teneur en protéines du grain. Dans ces essais, des apports supplémentaires ont augmenté en moyenne les protéines, avec des résultats dépendant du calendrier et des conditions d’absorption. Les auteurs rappellent que la qualité boulangère dépend aussi du poids spécifique, du temps de chute de Hagberg, un test de l’activité enzymatique du grain, et d’autres caractéristiques. Cette recherche locale n’autorise pas une extrapolation mécanique au monde entier. [AHDB, projet sur l’azote, le soufre et le blé meunier.](https://ahdb.org.uk/nitrogen-and-sulphur-fertiliser-management-to-achieve-grain-protein-quality-targets-of-high-yielding-winter-milling-wheat)
+
+Un scénario plausible pourrait alors apparaître avant une pénurie générale : la récolte reste correcte en volume, mais une fraction plus importante est déclassée vers l’alimentation animale. Les blés satisfaisant les spécifications de la meunerie reçoivent une prime supérieure.
+
+Le contrat à terme le plus suivi peut manquer ce mouvement. Il faut aussi observer les écarts de prix entre qualités, les primes de protéines, les résultats des enquêtes de récolte et les taux de déclassement.
+
+## L’Asie présente trois profils de risque
+
+Parler d’une vulnérabilité « asiatique » unique serait trompeur. Le bilan du blé, la dépendance aux engrais, les capacités budgétaires et les régimes alimentaires varient fortement.
+
+### L’Inde protège le blé, puis absorbe le coût des engrais
+
+L’USDA projette pour l’Inde **121 millions de tonnes de production de blé**, seulement 0,1 million d’importations et 29,5 millions de stocks de fin de campagne en 2026-2027. Le risque immédiat ne vient donc pas d’une forte dépendance au blé de mer Noire dans ce scénario. [USDA, WASDE d’août 2026.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+L’exposition se situe davantage en amont. Selon l’OMC, l’Inde obtenait en 2024 presque les deux tiers de ses importations d’engrais azotés auprès des économies du Golfe. Cette part concerne les importations, pas la consommation totale nationale. L’Inde produit aussi des engrais et utilise subventions, achats publics et allocation de gaz pour amortir le choc. [OMC, 10 juillet 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+Une politique publique peut maintenir le prix payé par l’agriculteur. Elle ne supprime pas le coût : elle le déplace vers le budget de l’État, les entreprises publiques ou la facture extérieure.
+
+### L’Asie du Sud-Est achète le grain sur le marché mondial
+
+L’agrégat « Asie du Sud-Est » du WASDE affiche **31,4 millions de tonnes d’importations de blé** et aucune production recensée dans ce tableau pour 2026-2027. Cette ligne agrège plusieurs pays selon la définition de l’USDA ; elle ne signifie pas que chaque économie présente exactement la même dépendance. [USDA, WASDE d’août 2026.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+La région reçoit directement le choc du prix rendu pour les moulins, les nouilles, la boulangerie et certains aliments pour animaux. Elle reçoit aussi le choc énergétique et celui des engrais pour ses propres cultures. Le même pays peut donc payer plus cher son blé importé et ses intrants agricoles domestiques.
+
+### La Chine dispose d’un amortisseur national
+
+La Chine produirait 141 millions de tonnes de blé, en importerait 6 millions et terminerait la campagne avec 120,2 millions de stocks selon l’USDA. Ce niveau réduit fortement le risque d’un manque immédiat sur son marché intérieur. [USDA, WASDE d’août 2026.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+Pékin reste cependant une variable du marché des engrais. Des quotas d’exportation plus larges peuvent soulager les acheteurs étrangers ; des contrôles renforcés protègent le marché chinois en déplaçant une partie de la rareté. L’OMC indiquait que la Chine avait d’abord durci ses contrôles avant d’autoriser des exportations limitées d’urée sous quota. [OMC, 10 juillet 2026.](https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm)
+
+## Une hausse internationale voyage par plusieurs bilans
+
+Le prix international du blé n’est pas le prix du pain. Entre les deux se trouvent le contrat d’achat, le fret, l’assurance, le dollar, les stocks du meunier, l’énergie, la transformation, l’emballage, les marges, la fiscalité et parfois une subvention.
+
+La transmission suit plusieurs bilans :
+
+**prix FOB du grain → fret et assurance → prix rendu en dollars → taux de change → coût du moulin → prix de la farine → marge industrielle ou artisanale → prix au détail.**
+
+Le prix FOB, *free on board*, couvre la marchandise chargée au port de départ. Le prix rendu ajoute notamment le transport et l’assurance jusqu’à la destination. Un pays dont la monnaie se déprécie face au dollar peut subir un double mouvement : le grain devient plus cher en dollars et chaque dollar coûte davantage en monnaie locale.
+
+Les stocks retardent la transmission. Les couvertures financières peuvent figer temporairement un prix. Les subventions maintiennent le prix payé par le ménage en augmentant le coût budgétaire. Les entreprises peuvent réduire leur marge, changer de recette, diminuer le poids du paquet ou substituer une origine.
+
+La première trace du choc peut donc apparaître ailleurs que dans l’indice des prix à la consommation : réserves de change, déficit public, marges des meuniers, retards de livraison ou qualité du produit.
+
+## Simuler la facture importée
+
+L’outil ci-dessous n’est pas un modèle d’inflation. Il calcule une identité simple : volume importé multiplié par prix rendu. Il permet de séparer le choc du grain, celui du fret-assurance et l’effet de change.
+
+<WheatImportStress lang="fr" />
+
+Dans le scénario initial, fondé sur des hypothèses pédagogiques et non sur des cotations en temps réel, un pays importe 10 millions de tonnes. Le prix FOB passe de 270 à 297 dollars par tonne, soit une hausse de 10 %. Le fret-assurance passe de 30 à 45 dollars, soit une hausse de 50 %. Le prix rendu augmente de 300 à 342 dollars, soit 14 %. La facture annuelle en dollars progresse de 420 millions. Une hausse de 5 % du coût d’un dollar en monnaie locale porte l’indice de facture en monnaie locale à 119,7, base 100 avant le choc. L’effet de change ajoute 5,7 points au niveau déjà relevé par le grain et le transport.
+
+Ce résultat ne prévoit pas la dépense réelle. Un acheteur peut réduire ses volumes, utiliser ses stocks, changer d’origine, accepter une qualité différente ou couvrir son risque. Le calcul montre seulement pourquoi une hausse modérée du blé peut devenir plus lourde lorsque le fret et le change évoluent dans le même sens.
+
+## Quatre scénarios pour les prochains mois
+
+<table class="wheat-scenario" role="table" aria-label="Quatre scénarios pour le marché du blé">
+<thead role="rowgroup">
+<tr role="row"><th scope="col" role="columnheader">Scénario</th><th scope="col" role="columnheader">Mer Noire</th><th scope="col" role="columnheader">Ormuz et engrais</th><th scope="col" role="columnheader">Conséquence dominante</th></tr>
+</thead>
+<tbody role="rowgroup">
+<tr role="row"><th scope="row" role="rowheader">Détente</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Mer Noire</span>Escales et terminaux reprennent</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Ormuz et engrais</span>Flux plus réguliers, prix stables ou en baisse</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Conséquence dominante</span>Réduction des primes de fret ; bilan mondial reprend le dessus</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Choc logistique</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Mer Noire</span>Retards prolongés, volumes finalement réacheminés</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Ormuz et engrais</span>Intrants disponibles</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Conséquence dominante</span>Prix rendu plus élevé en 2026, effet agricole limité</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Choc agricole retardé</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Mer Noire</span>Commerce partiellement fonctionnel</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Ormuz et engrais</span>Engrais chers ou tardifs pendant les fenêtres critiques</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Conséquence dominante</span>Doses, surfaces, rendement ou qualité sous pression en 2027</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Choc combiné</th><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Mer Noire</span>Perte durable de capacité exportatrice</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Ormuz et engrais</span>Intrants contraints, météo défavorable, restrictions commerciales</td><td role="cell"><span class="wheat-cell-label" aria-hidden="true">Conséquence dominante</span>Tension sur volumes, qualités et budgets des importateurs</td></tr>
+</tbody>
+</table>
+
+Le quatrième scénario exige une accumulation de conditions. Les attaques devraient réduire durablement les chargements russes et ukrainiens ; les autres exportateurs ne devraient pas compenser ; les engrais devraient rester indisponibles ou trop chers au moment utile ; les agriculteurs devraient réellement réduire leurs apports ou leurs surfaces ; la météo devrait empêcher le reste du monde d’absorber le choc. Des restrictions à l’exportation pourraient ensuite amplifier le mouvement.
+
+Les sources disponibles au 3 septembre ne permettent pas d’établir que ces conditions sont toutes réunies.
+
+## Les signaux à suivre
+
+Un suivi utile doit regarder des variables reliées au mécanisme, pas seulement un prix spectaculaire.
+
+**Mer Noire :** escales de navires, capacité des terminaux, files d’attente, primes d’assurance, coût du fret, exportations mensuelles russes et ukrainiennes, part effectivement réacheminée vers la Baltique ou par voie terrestre.
+
+**Engrais :** prix et volumes séparés pour l’urée, l’ammoniac, le DAP et le soufre ; transit maritime avec méthodologie documentée ; stocks chez les importateurs ; appels d’offres ; subventions ; prix réellement payé par l’agriculteur.
+
+**Récolte :** surfaces semées, doses d’azote, conditions hydriques, rendements, teneur en protéines, primes de qualité et taux de déclassement.
+
+**Importateurs :** prix rendu, taux de change, stocks des moulins, coût des subventions et disponibilité des devises.
+
+La publication par la FAO de son indice portant sur août est prévue le 4 septembre. Cette nouvelle observation décrira les prix internationaux, pas les futures décisions de fertilisation. Les effets agricoles devront être suivis sur plusieurs mois. [FAO, calendrier mensuel 2026.](https://www.fao.org/worldfoodsituation/foodpricesindex/en/)
+
+## Le niveau de preuve
+
+<div class="wheat-evidence">
+<p><strong>Établi.</strong> Les attaques en mer Noire perturbent navires et infrastructures. La Russie et l’Ukraine pèsent environ 28 % des exportations mondiales de blé projetées par l’USDA. Le conflit autour d’Ormuz a fortement perturbé le commerce des engrais et provoqué une flambée de l’urée au printemps.</p>
+<p><strong>Établi avec un contre-signal.</strong> L’urée avait largement reflué en juin et l’indice agrégé des engrais de la Banque mondiale a baissé en août. Le bilan mondial de blé conserve 273,25 Mt de stocks de fin de campagne dans la projection d’août.</p>
+<p><strong>Probable ou compatible avec les données.</strong> Certains importateurs paieront davantage pour changer d’origine, financer les retards ou absorber fret et change. Une contrainte durable sur l’azote peut réduire l’optimum économique de fertilisation et tendre les blés de qualité.</p>
+<p><strong>Inconnu.</strong> La durée des perturbations, les tonnages quotidiens d’engrais par produit, les doses réellement appliquées, les changements de surfaces et la météo des récoltes de 2027.</p>
+</div>
+
+<div class="wheat-caveat">
+<p><strong>Ce qui invaliderait l’angle.</strong> Une reprise durable et mesurable des flux d’engrais, une normalisation des assurances en mer Noire, le rétablissement des exportations russes et ukrainiennes, des surfaces stables et l’absence de prime sur les blés meuniers réduiraient fortement le risque d’un choc agricole retardé.</p>
+</div>
+
+## Le risque se joue sur le calendrier
+
+Au 3 septembre 2026, les bilans projetés ne démontrent pas de pénurie mondiale de blé. Ils décrivent une production importante et des stocks substantiels, dont la disponibilité locale reste inégale. Le reflux des engrais depuis avril interdit de présenter la crise comme une trajectoire linéaire vers la pénurie.
+
+La vulnérabilité se trouve ailleurs : dans l’étroitesse du marché exportable, la concentration des routes, la répartition politique des stocks et le décalage entre un choc maritime immédiat et une décision agricole dont les conséquences ne deviennent visibles qu’à la récolte.
+
+La mer Noire peut rendre une tonne disponible plus chère aujourd’hui. Ormuz peut rendre une tonne future plus coûteuse à produire, ou modifier sa qualité, plusieurs mois plus tard. Entre les deux, gouvernements, négociants, armateurs, assureurs, agriculteurs et météo peuvent amortir ou amplifier le mouvement.
+
+Le vrai test n’est donc pas le prix du pain demain matin. Il consiste à déterminer si les tensions maritimes de 2026 resteront une prime logistique, ou si elles entreront dans les champs et les bilans alimentaires de 2027.
+
+## Pour prolonger
+
+Ce suivi complète notre [analyse de la facture logistique d’Ormuz](/posts/ormuz-la-chaine-d-approvisionnement-encaisse-la-facture-est-deja-la/) et notre [lecture du double choc dollar-pétrole sur les émergents](/posts/double-peine-emergents-dollar-fort-baril-de-guerre/). Pour le vocabulaire, voir [chokepoint](/glossaire/chokepoint/). Les contraintes de financement en devises sont détaillées dans le [guide du dollar et du cross-currency basis](/guides/lire-le-dollar-dxy-cross-currency-basis/).
+
+## Méthode et sources principales
+
+<div class="wheat-method">
+<p>Calculs l0g à partir du WASDE : part Russie-Ukraine = (46 + 13,5) / 212,71 ; part chinoise des stocks = 120,20 / 273,25 ; stocks/utilisation mondiale = 273,25 / 826,27 ; hors Chine = 153,05 / 678,27. Les ratios sont exprimés en pourcentage. Le modèle de facture multiplie le volume par le prix rendu ; son indice local multiplie l’indice en dollars par le coût relatif d’un dollar. Les valeurs USDA sont des projections de campagne, pas des observations douanières définitives. Les prix FAO portent sur juillet 2026. La variation Banque mondiale porte sur août 2026. Les chiffres OMC sur les parts du Golfe utilisent des valeurs commerciales pondérées par nutriment. Les informations sur les attaques, les itinéraires et les prix commerciaux proviennent de Reuters lorsque aucune série primaire consolidée n’était disponible.</p>
+</div>
+
+<ul class="wheat-source-list">
+<li><a href="https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt">USDA, World Agricultural Supply and Demand Estimates, 12 août 2026</a></li>
+<li><a href="https://www.fao.org/worldfoodsituation/foodpricesindex/en/">FAO, indice des prix alimentaires, publication du 7 août 2026 portant sur juillet</a></li>
+<li><a href="https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_10jul26_451_e.htm">OMC, commerce des engrais affecté par le conflit autour d’Ormuz, 10 juillet 2026</a></li>
+<li><a href="https://www.worldbank.org/en/research/commodity-markets">Banque mondiale, prix des matières premières, mise à jour du 2 septembre 2026</a></li>
+<li><a href="https://www.imo.org/en/mediacentre/pressbriefings/pages/statement-on-the-ongoing-crisis-in-the-strait-of-hormuz.aspx">OMI, six mois d’incertitude pour les marins à Ormuz, 28 août 2026</a></li>
+<li><a href="https://www.fao.org/newsroom/detail/strait-of-hormuz-crisis--fertilizer-scarcity-will-affect-next-harvests-and-food-supplies--fao-warns/en">FAO, avertissement sur les engrais et les récoltes suivantes, 7 mai 2026</a></li>
+<li><a href="https://ahdb.org.uk/nitrogen-and-sulphur-fertiliser-management-to-achieve-grain-protein-quality-targets-of-high-yielding-winter-milling-wheat">AHDB, essais sur azote, soufre et protéines du blé meunier</a></li>
+<li><a href="https://ahdb.org.uk/knowledge-library/nitrogen-fertiliser-adjustment-calculator-for-cereals-and-oilseeds">AHDB, optimum économique et ajustement de l’azote</a></li>
+<li><a href="https://www.reuters.com/world/ships-adopt-makeshift-anti-drone-defences-black-sea-attacks-intensify-2026-09-02/">Reuters, protections anti-drones et intensification des attaques en mer Noire, 2 septembre 2026</a></li>
+<li><a href="https://www.reuters.com/business/russian-grain-exports-shift-baltic-black-sea-trade-disrupted-2026-08-31/">Reuters, réorientation des céréales russes vers la Baltique, 31 août 2026</a></li>
+<li><a href="https://www.reuters.com/world/asia-pacific/global-wheat-buyers-brace-supply-squeeze-amid-black-sea-attacks-2026-08-20/">Reuters, prix comparés et achats asiatiques de blé, 20 août 2026</a></li>
+<li><a href="https://www.reuters.com/world/middle-east/fertiliser-shipments-begin-exiting-through-hormuz-strait-2026-06-26/">Reuters, reprise partielle des cargaisons d’engrais à Ormuz, 26 juin 2026</a></li>
+</ul>

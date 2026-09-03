@@ -1,0 +1,250 @@
+---
+import {
+  DEFAULT_WHEAT_IMPORT_STRESS_INPUT,
+  assessWheatImportStress,
+} from '../lib/wheat-import-stress.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+const initial = assessWheatImportStress(DEFAULT_WHEAT_IMPORT_STRESS_INPUT);
+if (!initial.valid) throw new Error('Invalid default wheat scenario');
+const c = fr ? {
+  eyebrow: 'OUTIL INTERACTIF · CALCUL STATIQUE',
+  title: 'Mesurer le choc sur une facture d’importation',
+  intro: 'Séparez le renchérissement du blé, celui du fret-assurance et l’effet de change. Le calcul reste dans votre navigateur.',
+  imports: 'Importations annuelles',
+  baseFob: 'Prix FOB initial',
+  baseFreight: 'Fret et assurance initiaux',
+  wheatShock: 'Hausse du blé',
+  freightShock: 'Hausse du fret-assurance',
+  fxShock: 'Variation du coût du dollar',
+  fxNote: 'Change coté en unités de monnaie locale pour 1 dollar : +5 % signifie qu’un dollar coûte 5 % de plus. Cela correspond à une baisse d’environ 4,76 % de la valeur de la monnaie locale en dollars.',
+  noScript: 'Exemple statique. Activez JavaScript pour modifier les hypothèses ; aucun calcul ni aucune saisie ne quitte votre navigateur.',
+  baseBill: 'Facture initiale',
+  stressedBill: 'Facture sous stress',
+  increase: 'Variation annuelle en dollars',
+  localIndex: 'Indice en monnaie locale',
+  baseIndex: 'base 100',
+  landed: 'Prix rendu',
+  grainShare: 'dont choc du grain',
+  freightShare: 'dont fret-assurance',
+  fxShare: 'dont effet de change',
+  points: 'points',
+  reset: 'Réinitialiser',
+  invalid: 'Vérifiez les valeurs saisies.',
+  note: 'Ce modèle est une identité comptable, pas une prévision. Il ignore la baisse éventuelle des volumes, les stocks, les couvertures, les changements d’origine ou de qualité, les subventions, les marges et la transmission au détail.',
+  mt: 'Mt',
+  usdT: '$/t',
+  pct: '%',
+  usdBn: 'Md$',
+} : {
+  eyebrow: 'INTERACTIVE TOOL · STATIC ACCOUNTING',
+  title: 'Stress-test a wheat import bill',
+  intro: 'Separate the wheat-price shock, freight and insurance, and the exchange-rate effect. All calculations stay in your browser.',
+  imports: 'Annual imports',
+  baseFob: 'Starting FOB price',
+  baseFreight: 'Starting freight and insurance',
+  wheatShock: 'Wheat price increase',
+  freightShock: 'Freight and insurance increase',
+  fxShock: 'Change in the local cost of USD',
+  fxNote: 'Exchange rate in local-currency units per USD: +5% means one dollar costs 5% more. This corresponds to a fall of about 4.76% in the local currency’s dollar value.',
+  noScript: 'Static example. Enable JavaScript to change the assumptions; inputs and calculations never leave your browser.',
+  baseBill: 'Starting import bill',
+  stressedBill: 'Stressed import bill',
+  increase: 'Annual dollar change',
+  localIndex: 'Local-currency bill index',
+  baseIndex: 'base 100',
+  landed: 'Landed price',
+  grainShare: 'of which wheat',
+  freightShare: 'of which freight and insurance',
+  fxShare: 'of which exchange rate',
+  points: 'points',
+  reset: 'Reset',
+  invalid: 'Check the input values.',
+  note: 'This is an accounting identity, not a forecast. It ignores demand destruction, inventories, hedging, origin or quality switching, subsidies, margins and retail pass-through.',
+  mt: 'Mt',
+  usdT: '$/t',
+  pct: '%',
+  usdBn: '$bn',
+};
+
+const nf = new Intl.NumberFormat(fr ? 'fr-FR' : 'en-US', { maximumFractionDigits: 2 });
+---
+
+<section class="wis-tool" data-wis-tool data-lang={lang}>
+  <header class="wis-head">
+    <span>{c.eyebrow}</span>
+    <h3>{c.title}</h3>
+    <p>{c.intro}</p>
+  </header>
+
+  <div class="wis-layout">
+    <form class="wis-form" data-wis-form>
+      <fieldset data-wis-fields disabled>
+      <label>
+        <span>{c.imports}</span>
+        <span class="wis-input"><input type="number" min="0.01" max="250" step="any" value={DEFAULT_WHEAT_IMPORT_STRESS_INPUT.annualImportsMt} data-key="annualImportsMt" inputmode="decimal" /><i>{c.mt}</i></span>
+      </label>
+      <label>
+        <span>{c.baseFob}</span>
+        <span class="wis-input"><input type="number" min="1" max="5000" step="any" value={DEFAULT_WHEAT_IMPORT_STRESS_INPUT.baseFobUsdPerTonne} data-key="baseFobUsdPerTonne" inputmode="decimal" /><i>{c.usdT}</i></span>
+      </label>
+      <label>
+        <span>{c.baseFreight}</span>
+        <span class="wis-input"><input type="number" min="0" max="1000" step="any" value={DEFAULT_WHEAT_IMPORT_STRESS_INPUT.baseFreightUsdPerTonne} data-key="baseFreightUsdPerTonne" inputmode="decimal" /><i>{c.usdT}</i></span>
+      </label>
+      <label>
+        <span>{c.wheatShock}</span>
+        <span class="wis-input"><input type="number" min="-90" max="500" step="any" value={DEFAULT_WHEAT_IMPORT_STRESS_INPUT.wheatPriceShockPct} data-key="wheatPriceShockPct" inputmode="decimal" /><i>{c.pct}</i></span>
+      </label>
+      <label>
+        <span>{c.freightShock}</span>
+        <span class="wis-input"><input type="number" min="-90" max="1000" step="any" value={DEFAULT_WHEAT_IMPORT_STRESS_INPUT.freightShockPct} data-key="freightShockPct" inputmode="decimal" /><i>{c.pct}</i></span>
+      </label>
+      <label>
+        <span>{c.fxShock}</span>
+        <span class="wis-input"><input type="number" min="-80" max="500" step="any" value={DEFAULT_WHEAT_IMPORT_STRESS_INPUT.exchangeRateShockPct} data-key="exchangeRateShockPct" inputmode="decimal" /><i>{c.pct}</i></span>
+      </label>
+      <button type="button" data-wis-reset>{c.reset}</button>
+      </fieldset>
+    </form>
+
+    <div class="wis-results" aria-live="polite" data-wis-results>
+      <div data-wis-values>
+      <div class="wis-primary">
+        <span>{c.increase}</span>
+        <strong><span data-out="annualBillIncreaseUsdBn">{nf.format(initial.annualBillIncreaseUsdBn)}</span> {c.usdBn}</strong>
+        <small><span data-out="landedPriceChangePct">{nf.format(initial.landedPriceChangePct)}</span>% · {c.landed} <span data-out="stressedLandedUsdPerTonne">{nf.format(initial.stressedLandedUsdPerTonne)}</span> {c.usdT}</small>
+      </div>
+      <div class="wis-grid">
+        <div><span>{c.baseBill}</span><strong><span data-out="baseAnnualBillUsdBn">{nf.format(initial.baseAnnualBillUsdBn)}</span> {c.usdBn}</strong></div>
+        <div><span>{c.stressedBill}</span><strong><span data-out="stressedAnnualBillUsdBn">{nf.format(initial.stressedAnnualBillUsdBn)}</span> {c.usdBn}</strong></div>
+        <div><span>{c.localIndex}</span><strong data-out="localCurrencyBillIndex">{nf.format(initial.localCurrencyBillIndex)}</strong><small>{c.baseIndex}</small></div>
+        <div><span>{c.grainShare}</span><strong><span data-out="grainContributionUsdBn">{nf.format(initial.grainContributionUsdBn)}</span> {c.usdBn}</strong></div>
+        <div><span>{c.freightShare}</span><strong><span data-out="freightContributionUsdBn">{nf.format(initial.freightContributionUsdBn)}</span> {c.usdBn}</strong></div>
+        <div><span>{c.fxShare}</span><strong><span data-out="currencyContributionIndexPoints">{nf.format(initial.currencyContributionIndexPoints)}</span> {c.points}</strong></div>
+      </div>
+      </div>
+      <p class="wis-error" data-wis-error hidden>{c.invalid}</p>
+    </div>
+  </div>
+
+  <p class="wis-note">{c.fxNote}</p>
+  <p class="wis-note">{c.note}</p>
+  <noscript><p class="wis-note">{c.noScript}</p></noscript>
+</section>
+
+<script>
+  import {
+    DEFAULT_WHEAT_IMPORT_STRESS_INPUT,
+    assessWheatImportStress,
+  } from '../lib/wheat-import-stress.ts';
+
+  const numberFor = (lang: string, value: number): string => new Intl.NumberFormat(
+    lang === 'fr' ? 'fr-FR' : 'en-US',
+    { maximumFractionDigits: 2 },
+  ).format(value);
+
+  const initialise = (root: HTMLElement): void => {
+    if (root.dataset.ready === 'true') return;
+
+    const form = root.querySelector<HTMLFormElement>('[data-wis-form]');
+    const error = root.querySelector<HTMLElement>('[data-wis-error]');
+    const reset = root.querySelector<HTMLButtonElement>('[data-wis-reset]');
+    const fields = root.querySelector<HTMLFieldSetElement>('[data-wis-fields]');
+    const values = root.querySelector<HTMLElement>('[data-wis-values]');
+    if (!form || !error || !reset || !fields || !values) return;
+
+    const lang = root.dataset.lang ?? 'fr';
+    const inputs = [...form.querySelectorAll<HTMLInputElement>('input[data-key]')];
+
+    const render = (): void => {
+      const input = Object.fromEntries(inputs.map((field) => [
+        field.dataset.key,
+        field.value.trim() === '' ? Number.NaN : Number(field.value),
+      ]));
+      const result = assessWheatImportStress(input as typeof DEFAULT_WHEAT_IMPORT_STRESS_INPUT);
+      error.hidden = result.valid;
+      root.classList.toggle('is-invalid', !result.valid);
+      values.hidden = !result.valid;
+      for (const field of inputs) {
+        const value = field.value.trim() === '' ? Number.NaN : Number(field.value);
+        const invalid = !Number.isFinite(value) || value < Number(field.min) || value > Number(field.max);
+        field.setAttribute('aria-invalid', String(invalid));
+      }
+      if (!result.valid) return;
+
+      const outputs: Record<string, number> = {
+        annualBillIncreaseUsdBn: result.annualBillIncreaseUsdBn,
+        landedPriceChangePct: result.landedPriceChangePct,
+        stressedLandedUsdPerTonne: result.stressedLandedUsdPerTonne,
+        baseAnnualBillUsdBn: result.baseAnnualBillUsdBn,
+        stressedAnnualBillUsdBn: result.stressedAnnualBillUsdBn,
+        localCurrencyBillIndex: result.localCurrencyBillIndex,
+        grainContributionUsdBn: result.grainContributionUsdBn,
+        freightContributionUsdBn: result.freightContributionUsdBn,
+        currencyContributionIndexPoints: result.currencyContributionIndexPoints,
+      };
+
+      for (const [key, value] of Object.entries(outputs)) {
+        const target = root.querySelector<HTMLElement>(`[data-out="${key}"]`);
+        if (target) target.textContent = numberFor(lang, value);
+      }
+    };
+
+    form.addEventListener('submit', (event) => event.preventDefault());
+    form.addEventListener('input', render);
+    reset.addEventListener('click', () => {
+      for (const input of inputs) {
+        const key = input.dataset.key as keyof typeof DEFAULT_WHEAT_IMPORT_STRESS_INPUT;
+        input.value = String(DEFAULT_WHEAT_IMPORT_STRESS_INPUT[key]);
+      }
+      render();
+    });
+    render();
+    fields.disabled = false;
+    root.dataset.ready = 'true';
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-wis-tool]').forEach(initialise);
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLElement>('[data-wis-tool]').forEach(initialise);
+  });
+</script>
+
+<style>
+  .wis-tool{margin:2.4rem 0;padding:1.2rem;border:1px solid rgba(159,177,189,.24);border-radius:20px;background:linear-gradient(145deg,rgba(9,18,28,.98),rgba(14,27,38,.98));color:#eef4f6;box-shadow:0 20px 55px rgba(0,0,0,.18)}
+  .wis-head{margin-bottom:1.15rem}
+  .wis-head>span{display:block;margin-bottom:.45rem;color:#e8b84f;font-size:.72rem;font-weight:800;letter-spacing:.12em}
+  .wis-head h3{margin:0 0 .45rem;color:#f6f8f9;font-size:clamp(1.3rem,3vw,1.85rem);line-height:1.14}
+  .wis-head p{max-width:68ch;margin:0;color:#aebdc6;font-size:.92rem;line-height:1.55}
+  .wis-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,.88fr);gap:1rem}
+  .wis-form{margin:0}
+  .wis-form fieldset{min-width:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.82rem;padding:1rem;border:1px solid rgba(159,177,189,.16);border-radius:15px;background:rgba(255,255,255,.025)}
+  .wis-form label{display:flex;min-width:0;flex-direction:column;gap:.38rem;color:#cfd9de;font-size:.79rem;font-weight:680}
+  .wis-input{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;border:1px solid rgba(159,177,189,.28);border-radius:10px;background:#0a131d;overflow:hidden}
+  .wis-input:focus-within{border-color:#e8b84f;box-shadow:0 0 0 3px rgba(232,184,79,.11)}
+  .wis-input input{width:100%;min-width:0;padding:.72rem .75rem;border:0;outline:0;background:transparent;color:#f6f8f9;font:700 .96rem/1.2 Inter,system-ui,sans-serif}
+  .wis-input i{padding:0 .7rem;color:#899da9;font-size:.72rem;font-style:normal;font-weight:750}
+  .wis-form button{align-self:end;padding:.72rem .9rem;border:1px solid rgba(232,184,79,.46);border-radius:10px;background:rgba(232,184,79,.09);color:#f5d98f;font-weight:750;cursor:pointer}
+  .wis-form button:hover{background:rgba(232,184,79,.15)}
+  .wis-results [hidden]{display:none}
+  [data-wis-values]{display:grid;gap:.82rem}
+  .wis-results{display:flex;min-width:0;flex-direction:column;gap:.82rem}
+  .wis-primary{padding:1.05rem;border:1px solid rgba(45,212,191,.28);border-radius:15px;background:rgba(45,212,191,.07)}
+  .wis-primary>span,.wis-grid>div>span{display:block;color:#9fb1bd;font-size:.74rem;line-height:1.35}
+  .wis-primary strong{display:block;margin:.18rem 0;color:#6ee7d8;font-size:clamp(1.85rem,4vw,2.65rem);line-height:1.05}
+  .wis-primary small,.wis-grid small{display:block;color:#bac7cd;font-size:.72rem;line-height:1.4}
+  .wis-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.72rem}
+  .wis-grid>div{min-width:0;padding:.84rem;border:1px solid rgba(159,177,189,.16);border-radius:13px;background:rgba(255,255,255,.025)}
+  .wis-grid strong{display:block;margin-top:.2rem;color:#f1f5f7;font-size:1.12rem;line-height:1.2}
+  .wis-error{margin:0;padding:.75rem;border-left:3px solid #fb7185;background:rgba(251,113,133,.08);color:#fecdd3;font-size:.82rem}
+  .wis-note{margin:1rem .2rem 0;color:#8497a3;font-size:.74rem;line-height:1.55}
+  .wis-form button:focus-visible{outline:2px solid #e8b84f;outline-offset:3px}
+  @media(max-width:760px){.wis-layout{grid-template-columns:1fr}.wis-results{order:-1}}
+  @media(max-width:520px){.wis-tool{padding:.9rem}.wis-form fieldset,.wis-grid{grid-template-columns:1fr}.wis-primary strong{font-size:2rem}}
+</style>
