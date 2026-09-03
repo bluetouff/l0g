@@ -6,6 +6,8 @@ import {
   glossaryAtlasEdgeCount,
   glossaryAtlasEntries,
   glossaryEntryBySlug,
+  glossaryReferenceCandidates,
+  glossaryReferenceEntries,
   glossaryUpdatedIso,
   glossarySections as sections,
   totalGlossaryEntries,
@@ -51,7 +53,7 @@ const glossaryLd = {
     'Glossaire et graphe de connaissance l0g : sigles, concepts, sources, guides, signaux et datasets de risque financier.',
   inLanguage: 'fr',
   dateModified: glossaryUpdatedIso,
-  hasDefinedTerm: glossaryAtlasEntries.map((entry) => ({
+  hasDefinedTerm: glossaryReferenceEntries.map((entry) => ({
     '@id': `${GSITE}${entry.url}#term`,
   })),
 };
@@ -73,16 +75,38 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     kicker="atlas du glossaire"
     title="Décoder les mots."
     highlight="Relier les mécanismes."
-    description="Le glossaire devient une carte du risque : définitions courtes, concepts voisins, analyses, guides, sources primaires, datasets et signaux reliés."
-    secondary="L’index reste volontairement compact. Chaque notion dispose d’une page dédiée avec ses références et son graphe documentaire."
+    description="Le glossaire sépare les définitions de repérage des fiches de référence : mécanisme, chiffre daté, source primaire, limite explicite et prolongements l0g."
+    secondary="Soixante-dix notions rares sont sélectionnées. Elles ne deviennent indexables qu’après validation éditoriale complète ; le graphe documentaire reste consultable indépendamment."
     glyph="retrieve"
     accent="var(--color-topic-blue)"
     stats={[
       { value: total, label: 'entrées' },
-      { value: glossaryAtlasEntries.length, label: 'nœuds enrichis' },
+      { value: glossaryReferenceCandidates.length, label: 'candidates rares' },
+      { value: glossaryReferenceEntries.length, label: 'fiches de référence' },
       { value: glossaryAtlasEdgeCount, label: 'relations conceptuelles' },
     ]}
   />
+
+  {glossaryReferenceEntries.length > 0 && (
+    <nav class="atlas-panel reference-panel mt-8" aria-labelledby="reference-list-title">
+      <div class="atlas-panel-head">
+        <div>
+          <p class="mono-label" style="color: var(--color-signal)">mécanismes documentés</p>
+          <h2 id="reference-list-title">Fiches de référence</h2>
+        </div>
+      </div>
+      <div class="atlas-grid">
+        {glossaryReferenceEntries.map((entry) => (
+          <div class="atlas-node" style={`--node:${entry.accent}`}>
+            <a class="atlas-node-title" href={entry.url}>
+              <span>{entry.sigle}</span>
+              <small>{entry.nom}</small>
+            </a>
+          </div>
+        ))}
+      </div>
+    </nav>
+  )}
 
   {atlasPreview.length > 0 && (
     <section class="atlas-panel mt-10" aria-labelledby="atlas-title" data-pagefind-ignore>
@@ -156,6 +180,8 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
                 <a class="gentry-link" href={e.url}>
                   <span class="sigle" style={`color:${s.accent}`}>{e.sigle}</span>
                   <span class="nom">{e.nom}</span>
+                  {e.reference && <span class="atlas-tag reference-tag">référence</span>}
+                  {!e.reference && e.referenceCandidate && <span class="atlas-tag candidate-tag">candidate</span>}
                   {e.atlas && <span class="atlas-tag">atlas</span>}
                 </a>
               </li>
@@ -315,6 +341,10 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
       display: grid;
       gap: 0.2rem;
     }
+    .reference-panel .atlas-node {
+      grid-template-rows: auto;
+      min-height: 0;
+    }
     .atlas-node-title span {
       color: var(--node);
       font-family: var(--font-display);
@@ -388,6 +418,14 @@ const glossaryJsonLd = JSON.stringify(glossaryLd).replace(/</g, '\\u003c');
     .atlas-tag:hover {
       background: color-mix(in srgb, var(--color-signal) 9%, transparent);
       color: var(--color-bright);
+    }
+    .reference-tag {
+      border-color: color-mix(in srgb, var(--color-signal) 55%, transparent);
+      color: var(--color-signal);
+    }
+    .candidate-tag {
+      border-color: color-mix(in srgb, var(--color-amber) 45%, transparent);
+      color: var(--color-amber);
     }
 
     @media (max-width: 640px) {

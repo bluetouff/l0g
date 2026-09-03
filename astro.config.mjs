@@ -5,12 +5,12 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { glossaryRedirects } from './src/config/glossary-redirects.mjs';
 import { legacySurfaceRedirects } from './src/config/legacy-surface-redirects.mjs';
-import { glossaryAtlasEntries } from './src/config/glossary.ts';
+import { glossaryReferenceEntries } from './src/config/glossary.ts';
 import { sitemapLastmod } from './src/config/sitemap-lastmod.mjs';
 import { weeklySitemapLastmods } from './src/config/weekly-editions.ts';
 import inlineHomeStyles from './scripts/inline-home-styles.mjs';
 
-const indexedGlossaryUrls = new Set(glossaryAtlasEntries.map((entry) => `https://l0g.fr${entry.url}`));
+const indexedGlossaryUrls = new Set(glossaryReferenceEntries.map((entry) => `https://l0g.fr${entry.url}`));
 const weeklyLastmods = weeklySitemapLastmods('https://l0g.fr');
 
 // https://astro.build/config

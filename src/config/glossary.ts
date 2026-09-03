@@ -1,3 +1,9 @@
+import type { GlossaryReferencePage } from './glossary-reference-fr.ts';
+import {
+  glossaryReferenceBySlug,
+  glossaryReferenceCandidateSlugs,
+} from './glossary-reference-fr.ts';
+
 export interface GlossarySourceEntry { sigle: string; nom: string; def: string; guide?: string; }
 export interface GlossarySourceSection { titre: string; accent: string; entries: GlossarySourceEntry[]; }
 export type GlossaryGraphLinkKind = 'article' | 'guide' | 'dataset' | 'signal' | 'source' | 'methodology';
@@ -550,6 +556,8 @@ export interface GlossaryEntry extends GlossarySourceEntry {
   sectionSlug: string;
   accent: string;
   atlas?: GlossaryKnowledgeGraph;
+  referenceCandidate: boolean;
+  reference?: GlossaryReferencePage;
 }
 
 export const slugifyGlossary = (s: string) =>
@@ -559,6 +567,7 @@ export const slugifyGlossary = (s: string) =>
 export const glossaryUpdatedIso = '2026-09-02';
 
 const seenSlugs = new Map<string, number>();
+const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
 const uniqueSlug = (value: string) => {
   const base = slugifyGlossary(value) || 'terme';
   const n = (seenSlugs.get(base) ?? 0) + 1;
@@ -1340,6 +1349,8 @@ export const glossarySections = rawGlossarySections.map((section) => {
         ...entry,
         guide,
         atlas: glossaryKnowledgeGraph[slug],
+        referenceCandidate: glossaryReferenceCandidateSet.has(slug),
+        reference: glossaryReferenceBySlug[slug],
         slug,
         url: `/glossaire/${slug}/`,
         sectionTitle: section.titre,
@@ -1355,3 +1366,5 @@ export const totalGlossaryEntries = glossaryEntries.length;
 export const glossaryEntryBySlug = new Map(glossaryEntries.map((entry) => [entry.slug, entry]));
 export const glossaryAtlasEntries = glossaryEntries.filter((entry) => entry.atlas);
 export const glossaryAtlasEdgeCount = glossaryAtlasEntries.reduce((total, entry) => total + (entry.atlas?.related?.length ?? 0), 0);
+export const glossaryReferenceCandidates = glossaryEntries.filter((entry) => entry.referenceCandidate);
+export const glossaryReferenceEntries = glossaryEntries.filter((entry) => entry.reference);

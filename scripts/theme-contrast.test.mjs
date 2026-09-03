@@ -57,6 +57,8 @@ test('editorial and dashboard accents follow theme-aware CSS tokens', () => {
     'src/config/primary-sources.ts',
     'src/config/glossary.ts',
     'src/config/glossary-atlas-en.ts',
+    'src/pages/glossaire.astro',
+    'src/pages/glossaire/[slug].astro',
     'src/components/RiskBand.astro',
     'src/scripts/risk.js',
     'src/components/PublicationSpotlight.astro',
