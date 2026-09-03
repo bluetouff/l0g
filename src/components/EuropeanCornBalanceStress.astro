@@ -1,0 +1,115 @@
+---
+import { CORN_BALANCE, DEFAULT_CORN_STRESS_INPUT, assessCornStress } from '../lib/european-corn-balance-stress.ts';
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+const initial = assessCornStress(DEFAULT_CORN_STRESS_INPUT);
+if (!initial.valid) throw new Error('Invalid default corn scenario');
+const c = fr ? {
+  eyebrow: 'OUTIL INTERACTIF · MILLIONS DE TONNES',
+  title: 'Tester le bilan du maïs européen',
+  intro: 'Appliquez des chocs supplémentaires au bilan USDA d’août pour 2026-2027. Le point de départ est une prévision, pas une récolte constatée. Calcul local, sans collecte de données.',
+  fields: ['Perte supplémentaire de récolte', 'Importations prévues non livrées', 'Baisse supplémentaire de l’usage animal', 'Réduction du stock final visé'],
+  outputs: ['Écart restant à couvrir', 'Importations livrées', 'Usage intérieur', 'Stock final visé', 'Ajustements dépassant le choc'],
+  reset: 'Réinitialiser',
+  invalid: 'Saisissez un nombre dans chaque champ : de 0 à 15 Mt, sauf le stock final, limité à 5,05 Mt.',
+  formula: 'Écart = perte de récolte + livraisons manquantes − baisse d’usage − réduction du stock final. Le besoin non couvert est ramené à zéro lorsque les ajustements dépassent le choc ; cet excédent est affiché séparément.',
+  limit: 'Les stocks d’ouverture (5,95 Mt) et les exportations (1,60 Mt) restent constants. Réduire le stock final prévu de 5,05 Mt n’implique pas que ce volume soit mobilisable : il peut être mal situé, de qualité inadéquate ou nécessaire à l’exploitation. La borne de 15 Mt des autres champs est pédagogique. Aucun prix, délai, effet nutritionnel ou comportement de marché n’est prédit. FEFAC ne fournit pas de bilan complet permettant un second calibrage.',
+  nojs: 'Exemple statique sans choc supplémentaire. JavaScript est nécessaire pour modifier les hypothèses ; aucune saisie ne quitte votre navigateur.',
+} : {
+  eyebrow: 'INTERACTIVE TOOL · MILLION TONNES',
+  title: 'What would need to adjust in the balance?',
+  intro: 'Apply additional shocks to USDA’s August balance for 2026/27. The starting point is a forecast, not a measured harvest. Local calculation, no data collection.',
+  fields: ['Additional harvest loss', 'Planned imports not delivered', 'Additional reduction in feed use', 'Reduction in targeted ending stocks'],
+  outputs: ['Gap still to cover', 'Imports delivered', 'Domestic use', 'Targeted ending stocks', 'Adjustments exceeding the shock'],
+  reset: 'Reset',
+  invalid: 'Enter a number in every field: 0 to 15 Mt, except the ending-stock reduction, capped at 5.05 Mt.',
+  formula: 'Gap = harvest loss + missing deliveries − lower use − reduction in ending stocks. The uncovered gap stops at zero when adjustments exceed the shock; any excess is shown separately.',
+  limit: 'Opening stocks (5.95 Mt) and exports (1.60 Mt) remain fixed. Reducing projected ending stocks of 5.05 Mt does not mean that amount is readily available: location, quality and operating needs matter. The other fields’ 15 Mt limit is illustrative. No prices, delivery times, nutritional effects or market responses are predicted. FEFAC does not supply a complete balance for a second calibration.',
+  nojs: 'Static example without additional shocks. Enable JavaScript to change assumptions; no inputs leave your browser.',
+};
+const keys = ['extraHarvestLoss', 'importDeliveryShortfall', 'feedDemandReduction', 'stockDraw'] as const;
+const outputs = ['unresolvedGap', 'availableImports', 'domesticUse', 'endingStocks', 'excessOffsets'] as const;
+const nf = new Intl.NumberFormat(fr ? 'fr-FR' : 'en-US', { maximumFractionDigits: 2 });
+---
+<section class="corn-tool" data-corn-tool data-lang={lang}>
+  <header><span class="corn-eyebrow">{c.eyebrow}</span><h3>{c.title}</h3><p>{c.intro}</p></header>
+  <div class="corn-layout">
+    <form data-corn-form>
+      <fieldset disabled data-corn-fields>
+        {keys.map((key, i) => <label><span>{c.fields[i]}</span><span class="corn-input"><input type="number" min="0" max={key === 'stockDraw' ? CORN_BALANCE.endingStocks : 15} step="any" value={DEFAULT_CORN_STRESS_INPUT[key]} data-key={key} inputmode="decimal" required /><span>Mt</span></span></label>)}
+        <button type="button" data-corn-reset>{c.reset}</button>
+      </fieldset>
+    </form>
+    <div class="corn-results" aria-live="polite">
+      <div data-corn-values>{outputs.map((key, i) => <div class:list={['corn-result', { 'corn-primary': i === 0 }]}><span>{c.outputs[i]}</span><strong><span data-out={key}>{nf.format(initial[key])}</span> Mt</strong></div>)}</div>
+      <p data-corn-error hidden>{c.invalid}</p>
+    </div>
+  </div>
+  <p class="corn-note">{c.formula}</p><p class="corn-note">{c.limit}</p>
+  <noscript><p class="corn-note">{c.nojs}</p></noscript>
+</section>
+<script>
+  import { DEFAULT_CORN_STRESS_INPUT, assessCornStress } from '../lib/european-corn-balance-stress.ts';
+  const initialise = (root: HTMLElement): void => {
+    if (root.dataset.ready === 'true') return;
+    const form = root.querySelector<HTMLFormElement>('[data-corn-form]');
+    const fields = root.querySelector<HTMLFieldSetElement>('[data-corn-fields]');
+    const values = root.querySelector<HTMLElement>('[data-corn-values]');
+    const error = root.querySelector<HTMLElement>('[data-corn-error]');
+    const reset = root.querySelector<HTMLButtonElement>('[data-corn-reset]');
+    if (!form || !fields || !values || !error || !reset) return;
+    const inputs = [...form.querySelectorAll<HTMLInputElement>('input[data-key]')];
+    const nf = new Intl.NumberFormat(root.dataset.lang === 'fr' ? 'fr-FR' : 'en-US', { maximumFractionDigits: 2 });
+    const render = (): void => {
+      const input = Object.fromEntries(inputs.map(field => [field.dataset.key, field.value.trim() === '' ? NaN : Number(field.value)]));
+      const result = assessCornStress(input as typeof DEFAULT_CORN_STRESS_INPUT);
+      error.hidden = result.valid;
+      values.hidden = !result.valid;
+      for (const field of inputs) {
+        const n = field.value.trim() === '' ? NaN : Number(field.value);
+        field.setAttribute('aria-invalid', String(!Number.isFinite(n) || n < Number(field.min) || n > Number(field.max)));
+      }
+      if (!result.valid) return;
+      for (const output of root.querySelectorAll<HTMLElement>('[data-out]')) {
+        const key = output.dataset.out as keyof typeof result;
+        const value = result[key];
+        if (typeof value === 'number') output.textContent = value > 0 && value < 0.01 ? `<${nf.format(0.01)}` : nf.format(value);
+      }
+    };
+    form.addEventListener('submit', event => event.preventDefault());
+    form.addEventListener('input', render);
+    reset.addEventListener('click', () => {
+      for (const field of inputs) field.value = String(DEFAULT_CORN_STRESS_INPUT[field.dataset.key as keyof typeof DEFAULT_CORN_STRESS_INPUT]);
+      render();
+    });
+    render(); fields.disabled = false; root.dataset.ready = 'true';
+  };
+  document.querySelectorAll<HTMLElement>('[data-corn-tool]').forEach(initialise);
+  document.addEventListener('astro:page-load', () => document.querySelectorAll<HTMLElement>('[data-corn-tool]').forEach(initialise));
+</script>
+<style>
+  .corn-tool{margin:2.4rem 0;padding:1.2rem;border:1px solid #334655;border-radius:20px;background:#0b1520;color:#edf4f7}
+  .corn-eyebrow{color:#f3ca72;font-size:.76rem;font-weight:750;letter-spacing:.06em}
+  .corn-tool h3{margin:.5rem 0;color:#f5f8fa;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.2}
+  .corn-tool header p,.corn-note{color:#b3c3cc;font-size:.9rem;line-height:1.65}
+  .corn-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;margin-top:1.25rem}
+  .corn-tool form{min-width:0;margin:0}
+  .corn-tool fieldset{min-width:0;margin:0;padding:1rem;display:grid;gap:1rem;border:1px solid #334655;border-radius:12px}
+  .corn-tool label{display:grid;gap:.4rem;color:#d8e2e7;font-size:.9rem;line-height:1.4}
+  .corn-input{display:flex;align-items:center;gap:.5rem;padding-right:.8rem;background:#060e16;border:1px solid #506473;border-radius:8px}
+  .corn-input input{min-width:0;width:100%;padding:.7rem;border:0;background:transparent;color:#f5f8fa;font-size:1rem}
+  .corn-input input:focus-visible{outline:2px solid #f3ca72;outline-offset:2px}
+  .corn-tool button{padding:.75rem;border:1px solid #b38d3e;border-radius:8px;background:#302919;color:#ffdb8b;font-size:.9rem;cursor:pointer}
+  .corn-tool button:focus-visible{outline:2px solid #f3ca72;outline-offset:3px}
+  .corn-results{min-width:0}
+  [data-corn-values]{display:grid;gap:.6rem}
+  .corn-result{padding:.8rem 1rem;background:#142332;border:1px solid #334655;border-radius:12px}
+  .corn-result>span{display:block;color:#b3c3cc;font-size:.85rem}
+  .corn-result strong{display:block;margin-top:.2rem;color:#edf4f7;font-size:1.35rem}
+  .corn-primary{background:#12342f;border-color:#357d71}
+  .corn-primary strong{color:#8bead9;font-size:2rem}
+  .corn-results [hidden]{display:none}
+  [data-corn-error]{padding:1rem;border:1px solid #e4ad53;border-radius:12px;color:#ffe0a8}
+  @media(max-width:640px){.corn-layout{grid-template-columns:minmax(0,1fr)}.corn-tool{padding:1rem}.corn-tool fieldset{padding:.8rem}}
+</style>

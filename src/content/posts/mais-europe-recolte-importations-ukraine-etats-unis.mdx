@@ -1,0 +1,282 @@
+---
+title: "Le maïs européen regarde vers l’Atlantique"
+seoTitle: "Maïs européen 2026 : récolte et importations | l0g"
+ogTitle: "Maïs européen : les États-Unis en tête des premiers achats"
+ogImage: "/illustrations/news/europe-corn-imports-v1.jpg"
+description: "Les importations européennes de maïs accélèrent après un été sec. États-Unis, Ukraine, bilan USDA et alerte FEFAC : les chiffres et leurs limites."
+pubDate: 2026-09-03T09:00:00+02:00
+updatedDate: 2026-09-03T09:00:00+02:00
+tags: ["maïs", "Union européenne", "Ukraine", "États-Unis", "agriculture", "matières premières", "alimentation animale", "géopolitique"]
+draft: false
+quickTake:
+  fact: "Du 1er juillet au 30 août 2026, l’UE a importé 3,16 millions de tonnes de maïs, soit 41 % de plus qu’aux mêmes semaines de 2025. Les États-Unis devancent l’Ukraine, dont les volumes progressent aussi."
+  importance: "La baisse attendue de la récolte européenne renforce le rôle des importations dans l’approvisionnement des élevages et des industriels. Le coût et la disponibilité à destination comptent autant que le grain produit dans le monde."
+  uncertainty: "Neuf semaines ne donnent ni un total annuel ni un classement définitif. Le bilan USDA et l’alerte de FEFAC n’ont pas un périmètre temporel suffisamment documenté pour être comparés directement."
+---
+import EuropeanCornBalanceStress from '../../components/EuropeanCornBalanceStress.astro';
+
+<style>{`
+.corn-figure{margin:2.3rem 0 2.7rem}
+.corn-figure svg{display:block;width:100%;height:auto;border:1px solid rgba(159,177,189,.22);border-radius:18px}
+.corn-figure figcaption{margin:.8rem .3rem 0;color:var(--color-text-muted,#6b7280);font-size:.85rem;line-height:1.65}
+.corn-svg-mobile{display:none!important}
+.corn-table-wrap{max-width:100%;overflow-x:auto;margin:1.6rem 0;overscroll-behavior-inline:contain}
+.corn-table-wrap:focus-visible{outline:2px solid #e8b84f;outline-offset:4px}
+.corn-table-wrap table{font-size:.87rem;margin:0}
+.corn-table-wrap th,.corn-table-wrap td{vertical-align:top}
+@media(max-width:640px){.corn-svg-desktop{display:none!important}.corn-svg-mobile{display:block!important}.corn-figure{margin:1.8rem 0 2.2rem}.corn-table-wrap table{min-width:540px}}
+`}</style>
+
+*Situation au 3 septembre 2026. Les flux douaniers sont provisoires ; les récoltes et le bilan annuel cités sont des prévisions. Mt signifie million de tonnes.*
+
+Le maïs qui arrive dans les ports européens raconte déjà une partie de l’été sec. **3 158 733 tonnes** ont été importées dans l’Union européenne du **1er juillet au 30 août 2026**, contre **2 241 991 tonnes** aux mêmes semaines de 2025, jusqu’au 31 août. La progression arrondie atteint **41 %**. Les États-Unis occupent la première place des fournisseurs, devant l’Ukraine. Mais cette dernière livre elle aussi davantage de grain qu’un an plus tôt. [Commission européenne, suivi douanier au 1er septembre, pages 2 et 4.](https://circabc.europa.eu/rest/download/2bfc7190-efee-44e7-9809-87d5ff18729a)
+
+La carte des arrivages change alors que la récolte intérieure attendue se réduit. Le **WASDE**, bilan mensuel mondial du département américain de l’Agriculture, prévoit **50,20 Mt** de maïs européen en 2026-2027 et **23,50 Mt** d’importations. L’organisation professionnelle FEFAC, qui représente les fabricants d’aliments composés pour animaux, alerte pour sa part sur un besoin dépassant **26 Mt**. Ces deux estimations ne forment pas une fourchette homogène : leurs calendriers et leurs hypothèses ne sont pas documentés de la même façon. [USDA, août 2026, pages 22-23.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt) [FEFAC, 2 septembre.](https://fefac.eu/newsroom/news/fefac-initial-assessment-of-drought-impact-on-eu-feed-supply-chains-and-possible-mitigation-measures/)
+
+L’enjeu est concret pour un fabricant d’aliments ou d’éthanol : disposer de grain conforme, au moment voulu, à un coût rendu acceptable. Une production mondiale élevée ne suffit pas à garantir ces trois conditions.
+
+## Ce que montrent les premiers arrivages
+
+Le suivi européen porte sur des déclarations douanières d’importation depuis les pays extérieurs à l’Union. Il exclut les échanges entre États membres et reste révisable. La comparaison retient les semaines 1 à 9 de chaque campagne, avec des dates de fin légèrement différentes. Le niveau de 2025 est bien une valeur publiée, pas une reconstitution à partir du taux arrondi. [Commission européenne, méthodologie et tableau, pages 1-2.](https://circabc.europa.eu/rest/download/2bfc7190-efee-44e7-9809-87d5ff18729a)
+
+<figure class="corn-figure">
+<svg style="width:100%;height:auto" class="corn-svg-desktop" viewBox="0 0 960 590" role="img" aria-labelledby="corn-fr-flows-d-title corn-fr-flows-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="corn-fr-flows-d-title">Le classement change, pas dans un seul sens</title>
+<desc id="corn-fr-flows-d-desc">Importations extra-UE, semaines 1 à 9 : États-Unis 0,31 puis 1,35 Mt ; Ukraine 0,67 puis 1,14 ; Brésil 0,94 puis 0,51. Total toutes origines : 2,24 puis 3,16 Mt.</desc>
+<rect x="0" y="0" width="960" height="590" rx="18" fill="#081018"/>
+<text x="48" y="48" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="750">MAÏS · IMPORTATIONS EXTRA-UE</text>
+<text x="48" y="92" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="32" font-weight="800">Le classement change, pas dans un seul sens</text>
+<text x="48" y="126" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Semaines 1 à 9 · 2025 et 2026 · Mt</text>
+<rect x="48" y="150" width="20" height="12" rx="2" fill="#6f8397"/>
+<text x="78" y="163" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">2025</text>
+<rect x="194" y="150" width="20" height="12" rx="2" fill="#68d5c1"/>
+<text x="224" y="163" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">2026</text>
+<text x="48" y="210" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">États-Unis</text>
+<rect x="236" y="192" width="129.058" height="18" rx="3" fill="#6f8397"/>
+<text x="377.0576" y="208" fill="#c6d2db" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="650">0,31</text>
+<rect x="236" y="222" width="564.992" height="18" rx="3" fill="#68d5c1"/>
+<text x="812.9924000000001" y="238" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">1,35</text>
+<text x="48" y="313" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">Ukraine</text>
+<rect x="236" y="295" width="283.406" height="18" rx="3" fill="#6f8397"/>
+<text x="531.4055000000001" y="311" fill="#c6d2db" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="650">0,67</text>
+<rect x="236" y="325" width="478.611" height="18" rx="3" fill="#68d5c1"/>
+<text x="726.61058" y="341" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">1,14</text>
+<text x="48" y="416" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">Brésil</text>
+<rect x="236" y="398" width="393.921" height="18" rx="3" fill="#6f8397"/>
+<text x="641.92052" y="414" fill="#c6d2db" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="650">0,94</text>
+<rect x="236" y="428" width="214.1" height="18" rx="3" fill="#68d5c1"/>
+<text x="462.09962" y="444" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">0,51</text>
+<text x="48" y="529" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="750">Toutes origines : 2,24 → 3,16 Mt</text>
+<text x="48" y="561" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">+41 % · données provisoires</text>
+</svg>
+<svg style="width:100%;height:auto" class="corn-svg-mobile" viewBox="0 0 420 715" role="img" aria-labelledby="corn-fr-flows-m-title corn-fr-flows-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="corn-fr-flows-m-title">Le classement change, pas dans un seul sens</title>
+<desc id="corn-fr-flows-m-desc">Importations extra-UE, semaines 1 à 9 : États-Unis 0,31 puis 1,35 Mt ; Ukraine 0,67 puis 1,14 ; Brésil 0,94 puis 0,51. Total toutes origines : 2,24 puis 3,16 Mt.</desc>
+<rect x="0" y="0" width="420" height="715" rx="18" fill="#081018"/>
+<text x="24" y="38" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">MAÏS · IMPORTATIONS EXTRA-UE</text>
+<text x="24" y="76" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="27" font-weight="800">États-Unis en tête</text>
+<text x="24" y="108" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Semaines 1 à 9 · 2025 et 2026 · Mt</text>
+<rect x="24" y="132" width="20" height="12" rx="2" fill="#6f8397"/>
+<text x="52" y="145" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">2025</text>
+<rect x="156" y="132" width="20" height="12" rx="2" fill="#68d5c1"/>
+<text x="184" y="145" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">2026</text>
+<text x="24" y="188" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">États-Unis</text>
+<rect x="24" y="202" width="69.138" height="18" rx="3" fill="#6f8397"/>
+<text x="105.138" y="218" fill="#c6d2db" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="650">0,31</text>
+<rect x="24" y="232" width="302.675" height="18" rx="3" fill="#68d5c1"/>
+<text x="338.6745" y="248" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">1,35</text>
+<text x="24" y="323" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Ukraine</text>
+<rect x="24" y="337" width="151.824" height="18" rx="3" fill="#6f8397"/>
+<text x="187.824375" y="353" fill="#c6d2db" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="650">0,67</text>
+<rect x="24" y="367" width="256.399" height="18" rx="3" fill="#68d5c1"/>
+<text x="292.398525" y="383" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">1,14</text>
+<text x="24" y="458" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Brésil</text>
+<rect x="24" y="472" width="211.029" height="18" rx="3" fill="#6f8397"/>
+<text x="247.02885" y="488" fill="#c6d2db" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="650">0,94</text>
+<rect x="24" y="502" width="114.696" height="18" rx="3" fill="#68d5c1"/>
+<text x="150.696225" y="518" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="700">0,51</text>
+<text x="24" y="598" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">Toutes origines : 2,24 → 3,16 Mt</text>
+<text x="24" y="630" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">+41 % · données provisoires</text>
+<text x="24" y="666" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Source : Commission européenne</text>
+<text x="24" y="693" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Situation au 1er septembre 2026</text>
+</svg>
+<figcaption>Source : <a href="https://circabc.europa.eu/rest/download/2bfc7190-efee-44e7-9809-87d5ff18729a">Commission européenne, pages 2 et 4</a>. Cumul du 1er juillet au 30 août 2026, comparé au 1er juillet-31 août 2025. Barres à origine zéro, même échelle ; volumes arrondis. Les autres origines entrent dans le total.</figcaption>
+</figure>
+
+Dans le tableau des origines, les États-Unis fournissent **1 345 220 tonnes**, soit **42,6 %** du total, l’Ukraine **1 139 549 tonnes** (**36,1 %**) et le Brésil **509 761 tonnes** (**16,1 %**). Un an plus tôt, les volumes correspondants étaient de **307 280**, **674 775** et **937 906 tonnes**. La part américaine monte, le volume ukrainien aussi ; le Brésil recule sur cette fenêtre. Ce n’est donc pas le récit d’une éviction de l’Ukraine. [Commission européenne, page 4.](https://circabc.europa.eu/rest/download/2bfc7190-efee-44e7-9809-87d5ff18729a)
+
+Les dates de chargement, de traversée et de déclaration peuvent déplacer des volumes d’une semaine à l’autre. Ces données ne révèlent ni le prix des contrats ni les motifs individuels des acheteurs. Elles ne prouvent pas davantage que l’origine américaine dominera l’ensemble de la campagne. Annualiser ce démarrage donnerait une précision artificielle.
+
+## La chaleur fragilise la récolte, avec des écarts régionaux
+
+Le bulletin du Centre commun de recherche européen publié le **24 août** décrit une chaleur et un déficit hydrique persistants dans l’ouest et une grande partie du centre de l’Europe. Pour les cultures d’été, il signale notamment une fertilité réduite, un remplissage du grain perturbé et une sénescence précoce. La France, la Hongrie, le nord et le centre de l’Italie, l’Autriche et l’ouest de la Roumanie figurent parmi les zones touchées. Certaines régions du nord et de l’est résistent mieux. [JRC, bulletin MARS d’août 2026.](https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/exceptionally-dry-and-hot-weather-threatens-summer-crops-2026-08-24_en)
+
+La disponibilité de l’eau limite aussi l’efficacité de l’irrigation. Selon le JRC, le retour annoncé d’un temps plus frais et humide arrive trop tard pour compenser complètement les dommages dans les régions concernées. Cela ne transforme pas une prévision agronomique en récolte définitive : les rendements devront encore être mesurés.
+
+En Hongrie, des acheteurs du secteur de l’éthanol décrivaient dès le **7 août** des difficultés d’approvisionnement à S&P Global. Le reportage documente des tensions locales et logistiques ; il ne suffit pas à établir que le pays terminera l’année importateur net. Un solde national exige de connaître à la fois les importations et les exportations sur une période complète. [S&P Global, entretiens avec des acteurs du marché.](https://www.spglobal.com/energy/en/news-research/latest-news/agriculture/080726-europe-ethanol-producers-face-corn-shortage-as-heat-ukraine-war-affect-supply)
+
+## Ce que l’USDA a réellement changé en août
+
+Deux comparaisons racontent des choses différentes. **Entre juillet et août**, l’USDA abaisse sa prévision de récolte européenne de **3,58 Mt** et relève celle des importations de **1 Mt**. Les écarts de **−6,60 Mt** et de **+5 Mt** concernent, eux, **2026-2027 par rapport à 2025-2026**, dans l’édition d’août. Confondre révision mensuelle et variation annuelle exagérerait la brutalité de la correction. [USDA, août 2026, pages 22-23 ; différences calculées par l0g.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+<figure class="corn-figure">
+<svg style="width:100%;height:auto" class="corn-svg-desktop" viewBox="0 0 960 523" role="img" aria-labelledby="corn-fr-revisions-d-title corn-fr-revisions-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="corn-fr-revisions-d-title">Ne pas confondre révision et variation annuelle</title>
+<desc id="corn-fr-revisions-d-desc">Révision de juillet à août pour 2026-2027 : production moins 3,58 Mt, importations plus 1 Mt. Variation de 2025-2026 à 2026-2027 dans le bilan d’août : production moins 6,60 Mt, importations plus 5 Mt.</desc>
+<rect x="0" y="0" width="960" height="523" rx="18" fill="#081018"/>
+<text x="48" y="48" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">USDA · DEUX COMPARAISONS</text>
+<text x="48" y="94" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="33" font-weight="800">Mois et années, à distinguer</text>
+<text x="48" y="129" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Maïs de l’UE · millions de tonnes</text>
+<rect x="48" y="168" width="408" height="244" rx="14" fill="#132231"/>
+<text x="68" y="202" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">RÉVISION MENSUELLE</text>
+<text x="68" y="232" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">Juillet → août 2026</text>
+<text x="68" y="280" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Production</text>
+<text x="68" y="316" fill="#ffa998" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">−3,58 Mt</text>
+<text x="68" y="352" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Importations</text>
+<text x="68" y="388" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">+1,00 Mt</text>
+<rect x="504" y="168" width="408" height="244" rx="14" fill="#132231"/>
+<text x="524" y="202" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">VARIATION ANNUELLE</text>
+<text x="524" y="232" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">2025/26 → 2026/27</text>
+<text x="524" y="280" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Production</text>
+<text x="524" y="316" fill="#ffa998" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">−6,60 Mt</text>
+<text x="524" y="352" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Importations</text>
+<text x="524" y="388" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">+5,00 Mt</text>
+<text x="48" y="459" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Source : WASDE, août 2026, p. 22-23</text>
+<text x="48" y="490" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Calculs l0g sur les chiffres publiés.</text>
+</svg>
+<svg style="width:100%;height:auto" class="corn-svg-mobile" viewBox="0 0 420 755" role="img" aria-labelledby="corn-fr-revisions-m-title corn-fr-revisions-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="corn-fr-revisions-m-title">Ne pas confondre révision et variation annuelle</title>
+<desc id="corn-fr-revisions-m-desc">Révision de juillet à août pour 2026-2027 : production moins 3,58 Mt, importations plus 1 Mt. Variation de 2025-2026 à 2026-2027 dans le bilan d’août : production moins 6,60 Mt, importations plus 5 Mt.</desc>
+<rect x="0" y="0" width="420" height="755" rx="18" fill="#081018"/>
+<text x="24" y="38" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">USDA · DEUX COMPARAISONS</text>
+<text x="24" y="80" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="25" font-weight="800">Mois et années, à distinguer</text>
+<text x="24" y="111" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Maïs de l’UE · millions de tonnes</text>
+<rect x="24" y="145" width="372" height="244" rx="14" fill="#132231"/>
+<text x="44" y="179" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">RÉVISION MENSUELLE</text>
+<text x="44" y="209" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Juillet → août 2026</text>
+<text x="44" y="257" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Production</text>
+<text x="44" y="293" fill="#ffa998" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">−3,58 Mt</text>
+<text x="44" y="329" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Importations</text>
+<text x="44" y="365" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">+1,00 Mt</text>
+<rect x="24" y="415" width="372" height="244" rx="14" fill="#132231"/>
+<text x="44" y="449" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">VARIATION ANNUELLE</text>
+<text x="44" y="479" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">2025/26 → 2026/27</text>
+<text x="44" y="527" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Production</text>
+<text x="44" y="563" fill="#ffa998" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">−6,60 Mt</text>
+<text x="44" y="599" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Importations</text>
+<text x="44" y="635" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">+5,00 Mt</text>
+<text x="24" y="700" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Source : WASDE, août 2026, p. 22-23</text>
+<text x="24" y="728" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Calculs l0g sur les chiffres publiés.</text>
+</svg>
+<figcaption>Source : <a href="https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt">USDA, WASDE, août 2026</a>. Les deux colonnes répondent à des questions différentes. La production 2025-2026 est estimée à 56,80 Mt et les importations à 18,50 Mt dans ce rapport.</figcaption>
+</figure>
+
+Voici le bilan complet permettant de retrouver la révision mensuelle. Toutes les lignes sont exprimées en Mt ; l’usage animal et résiduel est inclus dans l’usage intérieur total, pas ajouté à celui-ci.
+
+<div class="corn-table-wrap" role="region" aria-label="Bilan USDA du maïs européen, en millions de tonnes" tabindex="0">
+
+| UE, campagne 2026-2027 | Prévision juillet | Prévision août | Variation |
+| --- | ---: | ---: | ---: |
+| Stocks d’ouverture | 5,08 | 5,95 | +0,87 |
+| Production | 53,78 | 50,20 | −3,58 |
+| Importations | 22,50 | 23,50 | +1,00 |
+| Usage intérieur total | 74,40 | 73,00 | −1,40 |
+| Dont usage animal et résiduel | 54,00 | 53,00 | −1,00 |
+| Exportations | 1,90 | 1,60 | −0,30 |
+| Stocks de fin | 5,06 | 5,05 | −0,01 |
+
+</div>
+
+*Source : [USDA, WASDE d’août, page 23.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt) Les variations sont calculées sur les nombres publiés.*
+
+L’identité est simple : **stocks d’ouverture + production + importations = usage intérieur + exportations + stocks de fin**. Dans le bilan d’août, chaque côté vaut **79,65 Mt**. Le recul de récolte de 3,58 Mt est compensé comptablement par 0,87 Mt de stocks d’ouverture supplémentaires, 1 Mt d’importations, 1,40 Mt d’usage en moins, 0,30 Mt d’exportations en moins et 0,01 Mt de stocks de fin en moins. Il n’existe pas de « solde inexpliqué » à attribuer à des produits transformés.
+
+Cette égalité décrit une prévision révisée. La hausse des stocks d’ouverture ne prouve pas qu’un opérateur a effectivement libéré des réserves. De même, la baisse de l’usage projeté n’est pas encore une réduction de consommation constatée.
+
+## Le bilan mondial prévoit aussi un prélèvement sur les stocks
+
+Le même rapport prévoit **1 298,88 Mt** de maïs dans le monde en 2026-2027, contre **1 329,91 Mt** estimées pour 2025-2026. Ce n’est pas un record. L’utilisation mondiale attendue atteint **1 323,05 Mt** : elle dépasse la production, avec un prélèvement prévu sur les stocks. [USDA, août 2026, pages 22-23.](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt)
+
+<figure class="corn-figure">
+<svg style="width:100%;height:auto" class="corn-svg-desktop" viewBox="0 0 960 600" role="img" aria-labelledby="corn-fr-world-d-title corn-fr-world-d-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="corn-fr-world-d-title">Le bilan mondial prévoit une baisse des stocks</title>
+<desc id="corn-fr-world-d-desc">Monde, campagne 2026-2027 : production de maïs 1298,88 Mt, utilisation 1323,05 Mt. Stocks d’ouverture 298,83 Mt, de fin 274,66 Mt. Prélèvement prévu 24,17 Mt.</desc>
+<rect x="0" y="0" width="960" height="600" rx="18" fill="#081018"/>
+<text x="48" y="48" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">MONDE · MAÏS · 2026-2027</text>
+<text x="48" y="95" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="33" font-weight="800">L’usage dépasse la récolte</text>
+<text x="48" y="130" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Prévisions USDA d’août · Mt</text>
+<text x="48" y="188" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Production</text>
+<text x="755" y="188" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">1 298,88</text>
+<rect x="48" y="208" width="612.3291428571429" height="25" rx="3" fill="#68d5c1"/>
+<text x="48" y="302" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Utilisation</text>
+<text x="755" y="302" fill="#f3ca72" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">1 323,05</text>
+<rect x="48" y="322" width="623.7235714285714" height="25" rx="3" fill="#e8b84f"/>
+<rect x="48" y="433" width="864" height="94" rx="12" fill="#132231"/>
+<text x="70" y="466" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600">Stocks : prélèvement prévu</text>
+<text x="70" y="503" fill="#f3ca72" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">24,17 Mt</text>
+<text x="455" y="490" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="26" font-weight="700">298,83 → 274,66 Mt</text>
+<text x="48" y="568" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Source : WASDE, août 2026</text>
+</svg>
+<svg style="width:100%;height:auto" class="corn-svg-mobile" viewBox="0 0 420 615" role="img" aria-labelledby="corn-fr-world-m-title corn-fr-world-m-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="corn-fr-world-m-title">Le bilan mondial prévoit une baisse des stocks</title>
+<desc id="corn-fr-world-m-desc">Monde, campagne 2026-2027 : production de maïs 1298,88 Mt, utilisation 1323,05 Mt. Stocks d’ouverture 298,83 Mt, de fin 274,66 Mt. Prélèvement prévu 24,17 Mt.</desc>
+<rect x="0" y="0" width="420" height="615" rx="18" fill="#081018"/>
+<text x="24" y="38" fill="#e8b84f" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">MONDE · MAÏS · 2026-2027</text>
+<text x="24" y="80" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="25" font-weight="800">L’usage dépasse la récolte</text>
+<text x="24" y="114" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Prévisions USDA d’août · Mt</text>
+<text x="24" y="164" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Production</text>
+<text x="270" y="164" fill="#86e7d5" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">1 298,88</text>
+<rect x="24" y="184" width="333.99771428571427" height="25" rx="3" fill="#68d5c1"/>
+<text x="24" y="279" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700">Utilisation</text>
+<text x="270" y="279" fill="#f3ca72" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="750">1 323,05</text>
+<rect x="24" y="299" width="340.2128571428571" height="25" rx="3" fill="#e8b84f"/>
+<rect x="24" y="404" width="372" height="140" rx="12" fill="#132231"/>
+<text x="42" y="437" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600">Stocks : prélèvement prévu</text>
+<text x="42" y="474" fill="#f3ca72" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800">24,17 Mt</text>
+<text x="42" y="515" fill="#f4f7f8" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">298,83 → 274,66 Mt</text>
+<text x="24" y="586" fill="#b4c4ce" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500">Source : WASDE, août 2026</text>
+</svg>
+<figcaption>Source : <a href="https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt">USDA, WASDE, août 2026, p. 23</a>. Barres à origine zéro, même échelle. La différence entre utilisation et production est de 24,17 Mt, égale à la baisse prévue des stocks sur les chiffres arrondis publiés.</figcaption>
+</figure>
+
+Il serait donc excessif d’opposer une Europe en difficulté à un monde sans tension. Le bilan global prévoit lui aussi un ajustement. Et même lorsque des stocks existent, leur localisation, leur qualité et la volonté de les vendre déterminent ce qui devient réellement accessible à un acheteur européen.
+
+## Le coût rendu décide de la cargaison utilisable
+
+Un prix **FOB**, c’est-à-dire un prix de marchandise chargée à bord au port de départ, ne représente pas toute la facture à destination. Il faut notamment tenir compte du fret, de l’assurance, des frais portuaires, du transport intérieur et des éventuels droits. La **base** désigne l’écart entre un prix physique local et une référence à terme. Une tension européenne peut se manifester dans cet écart sans mouvement équivalent de la référence mondiale.
+
+Ce sont des mécanismes de coût, pas une estimation chiffrée des primes actuelles. L’article ne dispose pas d’un ensemble de contrats comparables permettant d’affirmer que le maïs américain est systématiquement moins cher que le maïs ukrainien. Pour approfondir le rôle du fret et du change, voir notre analyse du [blé entre Ormuz et le Bosphore](/posts/ble-entre-ormuz-et-bosphore/).
+
+La conformité constitue un autre filtre. Les autorisations européennes relatives aux organismes génétiquement modifiés portent sur des produits et des usages précis ; une autorisation pour l’alimentation ne vaut pas autorisation de culture. Il faut vérifier le statut pertinent, pas attribuer une conformité uniforme à tout le maïs d’un pays. [Commission européenne, registre des OGM.](https://food.ec.europa.eu/plants/genetically-modified-organisms/gmo-register_en)
+
+Les conditions douanières doivent aussi être vérifiées par produit, origine et date dans [TARIC, la base tarifaire européenne](https://taxation-customs.ec.europa.eu/online-services/online-services-and-databases-customs/eu-customs-tariff-taric_en). L’accord commercial UE-Ukraine révisé est entré en vigueur le **29 octobre 2025**. Il comporte un cadre durable de libéralisation et une clause de sauvegarde ; le régime temporaire d’ouverture complète avait pris fin le **5 juin 2025**. Cela ne démontre pas que ces règles expliquent, à elles seules, le classement des arrivages de cet été. [Commission européenne, relations commerciales avec l’Ukraine.](https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/ukraine_en)
+
+Les routes restent déterminantes. S&P Global relève des contraintes de transport fluvial, ferroviaire et routier dans les achats régionaux. Un maïs situé à proximité sur une carte n’est pas nécessairement disponible immédiatement à l’usine. Notre enquête sur [la valeur d’un centimètre de Danube](/posts/combien-vaut-un-centimetre-de-danube/) détaille cette contrainte physique.
+
+## Comment lire l’alerte de FEFAC
+
+Le **2 septembre**, FEFAC estime que les importations de maïs de la nouvelle campagne devraient augmenter de **plus de 7 Mt**, pour dépasser **26 Mt**. Elle cite l’Ukraine, les États-Unis et le Brésil comme origines d’approvisionnement et décrit aussi des pénuries de fourrage. Cette déclaration représente l’appréciation d’un secteur acheteur exposé au choc. Elle accompagne des demandes d’assouplissement de certaines contraintes commerciales et logistiques. Ce statut d’organisation intéressée doit rester visible. [FEFAC, communiqué original.](https://fefac.eu/newsroom/news/fefac-initial-assessment-of-drought-impact-on-eu-feed-supply-chains-and-possible-mitigation-measures/)
+
+Il manque toutefois un bilan détaillé des stocks, de l’usage et des échanges, ainsi qu’un calendrier explicite. Le suivi douanier de la Commission démarre en **juillet** ; le bilan USDA du maïs européen suit une campagne **d’octobre à septembre**. Le rapport annuel du service agricole américain documente cette convention, sans servir ici de source aux prévisions d’août. [USDA FAS, tableau 3, page 15.](https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Grain+and+Feed+Annual_Madrid_European+Union_E42026-0034.pdf)
+
+Soustraire mécaniquement 23,5 de 26 ne mesurerait donc pas un écart de prévision à périmètre constant. Faire la moyenne de ces nombres serait encore moins justifié. Nous conservons l’alerte de FEFAC, mais le simulateur ci-dessous repose uniquement sur le bilan USDA complet.
+
+<EuropeanCornBalanceStress lang="fr" />
+
+## Les ajustements possibles, et ce qu’il faudra observer
+
+L’alimentation animale est le premier usage du maïs dans le bilan européen de l’USDA. Remplacer une partie de ce maïs par d’autres céréales ou coproduits peut réduire le besoin d’importation, mais la formulation d’un aliment doit respecter ses contraintes nutritionnelles et sanitaires. Le dossier annuel du service agricole américain décrit cette concurrence entre matières premières. [USDA FAS, consommation de maïs, page 17.](https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Grain+and+Feed+Annual_Madrid_European+Union_E42026-0034.pdf)
+
+Trois évolutions restent ouvertes, sans probabilité attribuée ici :
+
+- **Des arrivages supplémentaires couvrent le besoin.** Les volumes livrés et la détente éventuelle des primes locales permettraient de l’observer. Le total importé ne dirait pas, à lui seul, si chaque région est correctement desservie.
+- **L’usage s’ajuste davantage.** Des substitutions ou une baisse d’activité limiteraient les besoins de maïs. Il faudrait regarder les volumes réellement consommés, pas seulement un bilan prévisionnel révisé.
+- **De nouveaux dommages agricoles ou logistiques creusent l’écart.** Les prochains rendements, les stocks et les délais de livraison permettraient d’en mesurer l’ampleur. Le coût pour l’élevage ne se transmettrait pas automatiquement ni intégralement au prix de détail.
+
+Le point solide, début septembre, est plus précis qu’un « changement de régime » commercial : **les importations européennes de maïs accélèrent et les États-Unis mènent le classement provisoire, tandis que la récolte intérieure prévue recule**. La place finale de chaque fournisseur, le volume annuel et le coût de cet ajustement restent à établir.
+
+## Sources et méthode
+
+Les chiffres douaniers proviennent du [tableau hebdomadaire de la Commission](https://circabc.europa.eu/rest/download/2bfc7190-efee-44e7-9809-87d5ff18729a), les bilans de l’[édition d’août du WASDE](https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt), l’état agronomique du [JRC](https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/exceptionally-dry-and-hot-weather-threatens-summer-crops-2026-08-24_en), et l’alerte industrielle du [communiqué de FEFAC](https://fefac.eu/newsroom/news/fefac-initial-assessment-of-drought-impact-on-eu-feed-supply-chains-and-possible-mitigation-measures/). Les entretiens de S&P apportent un contexte professionnel attribué, pas une confirmation indépendante de toutes les projections.
+
+Les graphiques arrondissent les volumes ; le tableau conserve la précision publiée par l’USDA. Aucun flux partiel n’est annualisé. Les différences de campagne sont explicites. Le simulateur effectue une identité comptable conditionnelle, sans données de prix ni prévision économique. Les termes techniques sont définis dans le texte et peuvent être complétés par le [glossaire l0g](/glossaire/).
