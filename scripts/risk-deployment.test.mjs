@@ -159,7 +159,12 @@ test('la découverte MCP publique ne fabrique pas de serveur OAuth', async () =>
   assert.equal(discovery.authentication.oauthDiscovery, null);
   assert.equal(oauth404.status, 404);
   assert.ok(apache.includes('ErrorDocument 404 /.well-known/mcp-oauth-not-supported.json'));
-  assert.ok(apache.includes('RedirectMatch 308 "^/(?:api/mcp(?:/compact)?/|compact/)?\\.well-known/mcp/?$" "/.well-known/mcp.json"'));
+  const mcpDiscoveryRewrite = 'RewriteRule "^/?(?:api/mcp(?:/compact)?/|compact/)?\\.well-known/mcp/?$" "/.well-known/mcp.json" [R=308,L,NE]';
+  assert.ok(apache.includes(mcpDiscoveryRewrite));
+  assert.ok(
+    apache.indexOf(mcpDiscoveryRewrite) < apache.indexOf('<Location "/api/mcp">'),
+    'la découverte doit être réécrite avant que ProxyPass capture /api/mcp/*',
+  );
   assert.ok(docs.includes('statut 404 documenté'));
 });
 

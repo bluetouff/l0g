@@ -44,9 +44,9 @@ grep -Fq '<LocationMatch "^/stats(?:/|$)">' \
 grep -Fq 'Header unset Cache-Control' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'Cache-Control "private, no-store, max-age=0"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
-grep -Fq 'https://l0g.fr/stats/)" = 401' \
+grep -Fq 'probe_status "stats" 401 https://l0g.fr/stats/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/api/v1/human-traffic.json)" = 200' \
+grep -Fq 'probe_status "trafic humain" 200 https://l0g.fr/api/v1/human-traffic.json' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'minimum_public_cohort !== 5' \
   "${ROOT}/deploy/install-human-traffic.sh"
@@ -67,7 +67,7 @@ grep -Fq 'RedirectMatch 301 "^/en/contact-us/?$" "/en/contact/"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch 301 "^/sitemap\.xml$" "/sitemap-index.xml"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
-grep -Fq 'RedirectMatch 308 "^/(?:api/mcp(?:/compact)?/|compact/)?\.well-known/mcp/?$" "/.well-known/mcp.json"' \
+grep -Fq 'RewriteRule "^/?(?:api/mcp(?:/compact)?/|compact/)?\.well-known/mcp/?$" "/.well-known/mcp.json" [R=308,L,NE]' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch gone "^/hard-commodities/?$"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
@@ -75,21 +75,23 @@ grep -Fq 'RedirectMatch gone "^/calendrier-eco/?$"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'ErrorDocument 404 /404.html' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'ErrorDocument 410 /404.html' "${ROOT}/deploy/l0g.fr.apache.conf"
-grep -Fq 'https://l0g.fr/btc/)" = 301' \
+grep -Fq 'probe_status "ancienne route BTC" 301 https://l0g.fr/btc/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/contact/)" = 200' \
+grep -Fq 'probe_status "contact FR" 200 https://l0g.fr/contact/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/en/contact/)" = 200' \
+grep -Fq 'probe_status "contact EN" 200 https://l0g.fr/en/contact/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/contact-us/)" = 301' \
+grep -Fq 'probe_status "ancien contact" 301 https://l0g.fr/contact-us/' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/sitemap.xml)" = 301' \
+grep -Fq 'probe_status "alias sitemap" 301 https://l0g.fr/sitemap.xml' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/.well-known/mcp)" = 308' \
+grep -Fq 'probe_status "découverte MCP racine" 308 https://l0g.fr/.well-known/mcp' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/hard-commodities/)" = 410' \
+grep -Fq 'probe_status "découverte MCP API" 308 https://l0g.fr/api/mcp/.well-known/mcp' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
-grep -Fq 'https://l0g.fr/route-inconnue-probe-l0g)" = 404' \
+grep -Fq 'probe_status "ancienne route matières premières" 410 https://l0g.fr/hard-commodities/' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'probe_status "route inconnue" 404 https://l0g.fr/route-inconnue-probe-l0g' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'Cette route ne mène plus nulle part.' \
   "${ROOT}/deploy/activate-apache-vhost.sh"

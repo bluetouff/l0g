@@ -127,6 +127,34 @@ rollback() {
   fi
   exit "$exit_code"
 }
+
+probe_status() {
+  local label="$1"
+  local expected="$2"
+  local url="$3"
+  local actual
+
+  actual="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$url")" || {
+    echo "Sonde HTTP ${label} impossible: ${url}" >&2
+    return 1
+  }
+  if [ "$actual" != "$expected" ]; then
+    echo "Sonde HTTP ${label} invalide: attendu ${expected}, obtenu ${actual} (${url})" >&2
+    return 1
+  fi
+}
+
+probe_header() {
+  local label="$1"
+  local headers="$2"
+  local pattern="$3"
+
+  if ! printf '%s\n' "$headers" | grep -Eiq "$pattern"; then
+    echo "Sonde d'en-tête ${label} invalide" >&2
+    return 1
+  fi
+}
+
 trap 'rollback $?' ERR
 trap 'rollback 130' INT
 trap 'rollback 143' TERM
@@ -151,37 +179,37 @@ HTTP_VERSION="$(curl -fsS --http2 --max-time 20 -o /dev/null -w '%{http_version}
   rollback 1
 }
 BROTLI_HEADERS="$(curl -fsS --max-time 20 -H 'Accept-Encoding: br' -D - -o /dev/null https://l0g.fr/)"
-printf '%s\n' "$BROTLI_HEADERS" | grep -Eiq "^Content-Encoding:[[:space:]]*br[[:space:]]*$"
+probe_header "compression Brotli" "$BROTLI_HEADERS" "^Content-Encoding:[[:space:]]*br[[:space:]]*$"
 GZIP_HEADERS="$(curl -fsS --max-time 20 -H 'Accept-Encoding: gzip' -D - -o /dev/null https://l0g.fr/)"
-printf '%s\n' "$GZIP_HEADERS" | grep -Eiq "^Content-Encoding:[[:space:]]*gzip[[:space:]]*$"
+probe_header "compression gzip" "$GZIP_HEADERS" "^Content-Encoding:[[:space:]]*gzip[[:space:]]*$"
 
 HEADERS="$(curl -fsSI --max-time 20 https://l0g.fr/)"
-printf '%s\n' "$HEADERS" | grep -Fiq "Content-Security-Policy:"
+probe_header "Content-Security-Policy" "$HEADERS" "^Content-Security-Policy:"
 if printf '%s\n' "$HEADERS" | grep -Eiq "^Content-Security-Policy:.*script-src[^;]*'unsafe-inline'"; then
   echo "La CSP principale autorise encore unsafe-inline pour les scripts" >&2
   exit 1
 fi
-printf '%s\n' "$HEADERS" | grep -Fiq "Cross-Origin-Opener-Policy: same-origin"
-printf '%s\n' "$HEADERS" | grep -Fiq "X-XSS-Protection: 0"
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/)" = 401 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats/index.html)" = 401 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/stats)" = 401 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp)" = 405 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/usage)" = 200 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/v1/human-traffic.json)" = 200 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/contact/)" = 200 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/en/contact/)" = 200 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/contact-us/)" = 301 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/sitemap.xml)" = 301 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/.well-known/mcp)" = 308 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/api/mcp/.well-known/mcp)" = 308 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/btc/)" = 301 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/usd/)" = 301 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/marches-us/)" = 301 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/mag7/)" = 301 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/hard-commodities/)" = 410 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/calendrier-eco/)" = 410 ]
-[ "$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://l0g.fr/route-inconnue-probe-l0g)" = 404 ]
+probe_header "Cross-Origin-Opener-Policy" "$HEADERS" "^Cross-Origin-Opener-Policy:[[:space:]]*same-origin[[:space:]]*$"
+probe_header "X-XSS-Protection" "$HEADERS" "^X-XSS-Protection:[[:space:]]*0[[:space:]]*$"
+probe_status "stats" 401 https://l0g.fr/stats/
+probe_status "stats/index.html" 401 https://l0g.fr/stats/index.html
+probe_status "stats sans slash" 401 https://l0g.fr/stats
+probe_status "MCP GET" 405 https://l0g.fr/api/mcp
+probe_status "métriques MCP" 200 https://l0g.fr/api/mcp/usage
+probe_status "trafic humain" 200 https://l0g.fr/api/v1/human-traffic.json
+probe_status "contact FR" 200 https://l0g.fr/contact/
+probe_status "contact EN" 200 https://l0g.fr/en/contact/
+probe_status "ancien contact" 301 https://l0g.fr/contact-us/
+probe_status "alias sitemap" 301 https://l0g.fr/sitemap.xml
+probe_status "découverte MCP racine" 308 https://l0g.fr/.well-known/mcp
+probe_status "découverte MCP API" 308 https://l0g.fr/api/mcp/.well-known/mcp
+probe_status "ancienne route BTC" 301 https://l0g.fr/btc/
+probe_status "ancienne route USD" 301 https://l0g.fr/usd/
+probe_status "ancienne route marchés US" 301 https://l0g.fr/marches-us/
+probe_status "ancienne route Mag7" 301 https://l0g.fr/mag7/
+probe_status "ancienne route matières premières" 410 https://l0g.fr/hard-commodities/
+probe_status "ancienne route calendrier" 410 https://l0g.fr/calendrier-eco/
+probe_status "route inconnue" 404 https://l0g.fr/route-inconnue-probe-l0g
 curl -sS --max-time 20 https://l0g.fr/route-inconnue-probe-l0g \
   | grep -Fq "Cette route ne mène plus nulle part."
 
