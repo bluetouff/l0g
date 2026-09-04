@@ -1,0 +1,581 @@
+---
+title: "Japan’s zero-rate exit is landing on life insurers’ balance sheets"
+seoTitle: "Japan rates: balance-sheet risk in life insurers | l0g"
+description: "Japanese life insurers carry large unrealised JGB losses. The real risk lies in duration, forced sales, liquidity, FX hedges and the BOJ’s retreat."
+ogImage: "/illustrations/news/japan-life-insurer-rate-shock-v1.jpg"
+pubDate: 2026-09-04T12:00:00+02:00
+updatedDate: 2026-09-04T12:00:00+02:00
+tags: ["Japan", "life insurance", "JGBs", "interest rates", "Bank of Japan", "risk", "Asia"]
+draft: false
+sourceArticle: "japon-fin-argent-gratuit-bilans-assureurs-vie"
+sourceUpdatedDate: 2026-09-04T12:00:00+02:00
+---
+
+import JapanLifeDurationShock from '../../components/JapanLifeDurationShock.astro';
+
+*On 31 March 2026, Nippon Life carried **¥5.729tn of net unrealised losses on domestic bonds**. The same disclosure showed **¥8.971tn of net unrealised gains across its securities portfolio**. The group also reported a 195% economic solvency ratio, almost twice the published 100% supervisory intervention threshold. None of those numbers cancels the others. They sit on different floors of the same balance sheet, and the risk lies in the stairwell between them.*
+
+This is the second instalment in **The Asian Dollar Loop**, our investigation into the way Asian savings institutions transmit rate, currency and liquidity risk across borders. [Taiwan offers the cleanest foreign-exchange case](/en/analysis/taiwan-life-insurers-724-billion-currency-risk/). Japan is different. Its life insurers are being pulled back towards a domestic bond market that finally offers yield, just as the very long, low-coupon bonds they bought during the zero-rate era have sunk in market value.
+
+The useful question is not how much the industry would “lose” if every security were liquidated today. It is narrower and more demanding:
+
+> **When does a market-value loss become an accounting loss, a cash requirement, a capital problem or a forced sale?**
+
+The answer depends on both sides of the balance sheet. It also depends on accounting classification, policy surrenders, the yen, hedging costs, collateral and whether an insurer can wait for a bond to mature. Our [guide to reading a life insurer’s financial health](/en/guides/read-life-insurer-health/) sets out the main balance-sheet connections.
+
+## What the ¥5.7tn bond mark measures
+
+Nippon Life’s fair-value table for the financial year ended **31 March 2026** is a useful antidote to a one-number diagnosis.
+
+On a non-consolidated basis, the securities included in that table had a book value of ¥54.378tn and a fair value of ¥63.349tn. Net unrealised gains therefore stood at ¥8.971tn. The components moved in opposite directions:
+
+- domestic bonds: **−¥5.729tn**;
+- domestic equities: **+¥10.766tn**;
+- foreign securities: **+¥3.988tn**;
+- other small categories: roughly **−¥55bn**.
+
+The figures come from [Nippon Life’s detailed financial results](https://www.nissay.co.jp/assets/global/report/financial_results/05262026_2.pdf), published on 26 May 2026. They compare book and fair value at one date. They are not cash flows, realised losses or a measure of group regulatory capital.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-nippon-en-title jp-nippon-en-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-nippon-en-title">Nippon Life: bond losses do not exhaust the cushion</title>
+<desc id="jp-nippon-en-desc">Net unrealised gains and losses on securities, non-consolidated, 31 March 2026.</desc>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// Nippon Life: bond losses do not exhaust the cushion</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Net unrealised gains and losses on securities, non-consolidated, 31 March 2026.</text>
+<rect x="30" y="88" width="760" height="292" rx="8" fill="#11141a" stroke="#2a2e38"/>
+<line x1="350" y1="110" x2="350" y2="365" stroke="#8b909b" stroke-width="1.2"/>
+<text x="342" y="108" text-anchor="end" fill="#8b909b" font-size="8.5">−</text>
+<text x="358" y="108" fill="#8b909b" font-size="8.5">+</text>
+
+        <text x="40" y="148" fill="#d6d9df" font-size="11.2">Domestic bonds</text>
+        <rect x="210" y="126" width="140" height="30" rx="5" fill="#ff4d87" opacity="0.9"/>
+        <text x="220" y="148" text-anchor="start" fill="#f5f6f8" font-size="12" font-weight="700">-5.729</text>
+        <text x="40" y="216" fill="#d6d9df" font-size="11.2">Domestic equities</text>
+        <rect x="350" y="194" width="301.4" height="30" rx="5" fill="#5eead4" opacity="0.9"/>
+        <text x="661.4" y="216" text-anchor="start" fill="#5eead4" font-size="12" font-weight="700">10.766</text>
+        <text x="40" y="284" fill="#d6d9df" font-size="11.2">Foreign securities</text>
+        <rect x="350" y="262" width="111.7" height="30" rx="5" fill="#7aa2f7" opacity="0.9"/>
+        <text x="471.7" y="284" text-anchor="start" fill="#7aa2f7" font-size="12" font-weight="700">3.988</text>
+        <text x="40" y="352" fill="#d6d9df" font-size="11.2">Other items</text>
+        <rect x="348.5" y="330" width="1.5" height="30" rx="5" fill="#f5b13d" opacity="0.9"/>
+        <text x="338.5" y="352" text-anchor="end" fill="#f5b13d" font-size="12" font-weight="700">-0.055</text>
+<rect x="500" y="313" width="250" height="52" rx="7" fill="#151820" stroke="#5eead4" stroke-width="1.3"/>
+<text x="516" y="334" fill="#8b909b" font-size="9.5">Net total on securities</text>
+<text x="734" y="352" text-anchor="end" fill="#5eead4" font-size="22" font-weight="700">+8.971</text>
+<text x="30" y="414" fill="#8b909b" font-size="8.8">Source: Nippon Life, detailed results for the year ended 31 March 2026. Unit: trillion yen.</text>
+<text x="30" y="432" fill="#8b909b" font-size="8.8">Non-consolidated scope. The total includes very small items not visible at scale; rounded.</text>
+<text x="30" y="453" fill="#d6d9df" font-size="9.5">The cushion exists. Its value would move if equities, the yen or credit spreads moved as well.</text>
+</svg>
+<figcaption>Domestic bond losses were more than offset at that date by gains on equities and foreign securities. A positive net total remains exposed to changes in equity prices, currencies and credit spreads.</figcaption>
+</figure>
+
+The cushion is real and large. It is also concentrated. Domestic equity gains account for most of it, with foreign securities adding another layer. That is enough to reject the claim that bond losses have already consumed the insurer. It is not enough to show that the balance sheet is immune to a combined shock.
+
+An equity correction would shrink the largest offset. A stronger yen would change the local-currency value of foreign assets, subject to hedges. Higher surrenders could require cash. Selling an old bond would turn a mark-to-market loss into a realised one.
+
+The essential hierarchy is:
+
+```text
+unrealised loss
+≠ realised loss
+≠ cash outflow
+≠ capital shortfall
+≠ insolvency
+```
+
+## Japan’s yield curve has changed regime
+
+“Free money” is shorthand. Not every Japanese borrower funded at zero and not every point on the curve was pinned there. Still, the monetary regime has changed unmistakably.
+
+On **23 January 2024**, the Bank of Japan was still charging **−0.1%** on policy-rate balances and buying whatever amount of Japanese government bonds was needed to keep the ten-year yield around zero. A 1% upper bound served as a reference for yield-curve-control operations.
+
+On **19 March 2024**, the BOJ ended the negative-rate policy and yield-curve control, steering the overnight rate towards 0–0.1%. It moved to **0.25% on 31 July 2024**, **0.50% on 24 January 2025**, and **0.75% on 19 December 2025**. On **16 June 2026**, it raised the rate to **1%**. It held there on 31 July, although one board member proposed 1.25%.
+
+The sequence is documented in the BOJ’s [2026 monetary-policy decisions](https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm) and its statements from [January 2024](https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240123a.htm), [March 2024](https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240319a.htm), [July 2024](https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240731a.htm), [January 2025](https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k250124a.htm) and [December 2025](https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k251219a.htm).
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-rate-en-title jp-rate-en-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-rate-en-title">Japan: two years out of the negative-rate regime</title>
+<desc id="jp-rate-en-desc">BOJ policy rate; weighted-average yields at Ministry of Finance auctions.</desc>
+<rect width="820" height="500" fill="#0c0d10"/>
+<text x="30" y="37" fill="#5eead4" font-size="16" font-weight="700">// Japan: two years out of the negative-rate regime</text>
+<text x="30" y="59" fill="#8b909b" font-size="10.2">BOJ policy rate; weighted-average yields at Ministry of Finance auctions.</text>
+<rect x="30" y="80" width="760" height="240" rx="8" fill="#11141a" stroke="#2a2e38"/>
+<g stroke="#2a2e38" stroke-width="1">
+<line x1="54" y1="252.0" x2="760" y2="252.0"/>
+<line x1="54" y1="205.9" x2="760" y2="205.9"/>
+<line x1="54" y1="172.9" x2="760" y2="172.9"/>
+<line x1="54" y1="140.0" x2="760" y2="140.0"/>
+<line x1="54" y1="107.0" x2="760" y2="107.0"/>
+</g>
+<path d="M 74.0 252.0 L 175.0 252.0 L 175.0 232.2 L 276.0 232.2 L 276.0 205.9 L 377.0 205.9 L 377.0 172.9 L 478.0 172.9 L 478.0 140.0 L 579.0 140.0 L 579.0 107.0 L 680.0 107.0 L 680.0 107.0" fill="none" stroke="#5eead4" stroke-width="2.4" stroke-linejoin="round"/>
+
+        <circle cx="74" cy="252.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="74" y="239.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">−0.10%</text>
+        <text x="74" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">23.01.24</text>
+        <text x="74" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Negative rate + YCC</text>
+        <circle cx="175" cy="232.2" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="175" y="219.2" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0–0.10%</text>
+        <text x="175" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">19.03.24</text>
+        <text x="175" y="310" text-anchor="middle" fill="#8b909b" font-size="8.4">NIRP and YCC end</text>
+        <circle cx="276" cy="205.9" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="276" y="192.9" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0.25%</text>
+        <text x="276" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">31.07.24</text>
+        <text x="276" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">First hike</text>
+        <circle cx="377" cy="172.9" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="377" y="159.9" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0.50%</text>
+        <text x="377" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">24.01.25</text>
+        <text x="377" y="310" text-anchor="middle" fill="#8b909b" font-size="8.4">Normalisation</text>
+        <circle cx="478" cy="140.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="478" y="127.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0.75%</text>
+        <text x="478" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">19.12.25</text>
+        <text x="478" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Another step</text>
+        <circle cx="579" cy="107.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="579" y="94.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">1.00%</text>
+        <text x="579" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">16.06.26</text>
+        <text x="579" y="310" text-anchor="middle" fill="#8b909b" font-size="8.4">Raised to 1%</text>
+        <circle cx="680" cy="107.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="680" y="94.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">1.00%</text>
+        <text x="680" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">31.07.26</text>
+        <text x="680" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Held</text>
+<text x="30" y="342" fill="#d6d9df" font-size="11.5" font-weight="700">The long end has already moved much further</text>
+
+        <rect x="34" y="354" width="232" height="90" rx="8" fill="#151820" stroke="#7aa2f7" stroke-width="1.2"/>
+        <text x="50" y="378" fill="#7aa2f7" font-size="11" font-weight="700">10-year</text>
+        <text x="50" y="408" fill="#f5f6f8" font-size="23" font-weight="700">2.995%</text>
+        <text x="50" y="425" fill="#8b909b" font-size="8.8">01.09.26</text>
+        <text x="50" y="439" fill="#8b909b" font-size="8.8">weighted-average auction yield</text>
+        <rect x="286" y="354" width="232" height="90" rx="8" fill="#151820" stroke="#f5b13d" stroke-width="1.2"/>
+        <text x="302" y="378" fill="#f5b13d" font-size="11" font-weight="700">20-year</text>
+        <text x="302" y="408" fill="#f5f6f8" font-size="23" font-weight="700">3.698%</text>
+        <text x="302" y="425" fill="#8b909b" font-size="8.8">20.08.26</text>
+        <text x="302" y="439" fill="#8b909b" font-size="8.8">weighted-average auction yield</text>
+        <rect x="538" y="354" width="232" height="90" rx="8" fill="#151820" stroke="#ff4d87" stroke-width="1.2"/>
+        <text x="554" y="378" fill="#ff4d87" font-size="11" font-weight="700">30-year</text>
+        <text x="554" y="408" fill="#f5f6f8" font-size="23" font-weight="700">4.079%</text>
+        <text x="554" y="425" fill="#8b909b" font-size="8.8">03.09.26</text>
+        <text x="554" y="439" fill="#8b909b" font-size="8.8">weighted-average auction yield</text>
+<text x="30" y="478" fill="#8b909b" font-size="8.8">Sources: Bank of Japan; Japan Ministry of Finance. Yields are from specific auctions, not a continuous market curve.</text>
+</svg>
+<figcaption>In less than thirty months, the policy rate moved from the negative-rate regime to 1%. The long end moved much further: the weighted-average yield at the 3 September 2026 thirty-year auction was 4.079%.</figcaption>
+</figure>
+
+The policy rate does not describe the whole curve. Ministry of Finance auctions show what new debt was yielding when investors committed cash.
+
+The weighted-average yield in the ten-year auction on **1 September 2026** was **2.995%**. The twenty-year auction on **20 August** cleared at an average **3.698%**. The thirty-year auction on **3 September** produced an average yield of **4.079%**, up from 3.398% on 5 March 2026 and 3.264% on 4 September 2025. These are results from individual [Ministry of Finance auctions](https://www.mof.go.jp/english/policy/jgbs/auction/calendar/index.htm), not closing yields from a continuous market series.
+
+The central bank is also buying less. Its June 2026 plan sets monthly JGB purchases at about **¥2.5tn in July–September 2026**, **¥2.3tn in October–December**, and **¥2.1tn in January–March 2027**. From April 2027, the indicative amount is ¥2tn a month. The BOJ estimates that, if this pace were maintained, its JGB holdings in March 2030 would be 36–39% below their June 2024 level. The plan retains flexibility to increase purchases if long-term rates rise rapidly.
+
+It would be too strong to say that lower BOJ purchases alone caused long yields to rise. Inflation expectations, fiscal supply, foreign demand and private portfolio decisions all matter. The narrower conclusion is firm: price discovery is returning to the market just as private institutions reconsider how much duration they want to own.
+
+## Why an old bond falls when new bonds pay more
+
+A fixed-rate bond promises coupons that do not change. If an older JGB pays 0.5% while a comparable new security pays 3%, the old bond must trade below par for its total yield to become competitive.
+
+**[Duration](/en/glossary/duration/)** is a first-order measure of price sensitivity to a change in yield. A modified duration of 15 implies a price decline of roughly 15% for a parallel one-percentage-point rise in yields, before accounting for convexity and other effects.
+
+```text
+approximate change in value
+= − modified duration × change in yield × initial value
+```
+
+Long maturities and low coupons generally mean more duration. That is why the super-long bonds bought to match life-insurance contracts can carry large unrealised losses after yields rise.
+
+But a life insurer also owes payments that may be due in twenty, thirty or forty years. Those liabilities have duration too.
+
+<JapanLifeDurationShock lang="en" />
+
+## Both sides of a life insurer’s balance sheet
+
+When bond prices fall in an open-ended bond fund, net asset value falls with them. A life insurer is a different machine.
+
+It receives premiums today and promises future benefits. Those promised payments are liabilities. When the rate used to discount them rises, their present economic value falls. If liability duration is longer than asset duration, liabilities may fall by more than assets after a rate shock. Economic surplus can improve even as the bond portfolio shows a large mark-to-market loss.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-duration-en-title jp-duration-en-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-duration-en-title">When yields rise, both sides of the balance sheet move</title>
+<desc id="jp-duration-en-desc">First-order illustration: assets 100, liabilities 90, durations 12 and 18 years, parallel +100bp shock.</desc>
+<defs><marker id="jp-duration-arrow-en" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b909b"/></marker></defs>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// When yields rise, both sides of the balance sheet move</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">First-order illustration: assets 100, liabilities 90, durations 12 and 18 years, parallel +100bp shock.</text>
+<rect x="34" y="92" width="322" height="280" rx="10" fill="#11141a" stroke="#2a2e38"/>
+<rect x="464" y="92" width="322" height="280" rx="10" fill="#11141a" stroke="#2a2e38"/>
+<text x="195" y="121" text-anchor="middle" fill="#d6d9df" font-size="13" font-weight="700">Before the shock</text>
+<text x="625" y="121" text-anchor="middle" fill="#d6d9df" font-size="13" font-weight="700">After +100bp</text>
+
+<text x="58" y="158" fill="#8b909b" font-size="10">Bond assets</text>
+<rect x="58" y="171" width="260" height="42" rx="6" fill="#7aa2f7" opacity="0.82"/>
+<text x="302" y="197" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">100.0</text>
+<text x="58" y="240" fill="#8b909b" font-size="10">Insurance liabilities</text>
+<rect x="58" y="253" width="234" height="42" rx="6" fill="#f5b13d" opacity="0.9"/>
+<text x="276" y="279" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">90.0</text>
+<rect x="58" y="321" width="260" height="30" rx="5" fill="#151820"/>
+<text x="70" y="341" fill="#5eead4" font-size="10">Economic surplus</text>
+<text x="302" y="342" text-anchor="end" fill="#5eead4" font-size="14" font-weight="700">10.0</text>
+
+<path d="M372 224 H445" stroke="#8b909b" stroke-width="2" marker-end="url(#jp-duration-arrow-en)"/>
+<text x="408" y="205" text-anchor="middle" fill="#ff4d87" font-size="12" font-weight="700">+100 pb</text>
+
+<text x="488" y="158" fill="#8b909b" font-size="10">Bond assets</text>
+<rect x="488" y="171" width="229" height="42" rx="6" fill="#7aa2f7" opacity="0.82"/>
+<text x="701" y="197" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">88.0</text>
+<text x="488" y="224" fill="#7aa2f7" font-size="9.4">duration 12 → −12.0</text>
+<text x="488" y="250" fill="#8b909b" font-size="10">Insurance liabilities</text>
+<rect x="488" y="263" width="192" height="42" rx="6" fill="#f5b13d" opacity="0.9"/>
+<text x="664" y="289" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">73.8</text>
+<text x="488" y="318" fill="#f5b13d" font-size="9.4">duration 18 → −16.2</text>
+<rect x="488" y="330" width="260" height="30" rx="5" fill="#151820"/>
+<text x="500" y="350" fill="#5eead4" font-size="10">Economic surplus</text>
+<text x="732" y="351" text-anchor="end" fill="#5eead4" font-size="14" font-weight="700">14.2</text>
+
+<rect x="34" y="397" width="752" height="46" rx="6" fill="#151820"/>
+<text x="48" y="417" fill="#8b909b" font-size="8.7">Educational example, arbitrary units. Linear approximation: ΔV ≈ −duration × Δyield × V.</text>
+<text x="48" y="433" fill="#8b909b" font-size="8.7">Excludes convexity, options, guarantees, tax, FX and regulatory capital.</text>
+</svg>
+<figcaption>In this purely educational example, liabilities are longer than assets. A rise in yields reduces their value by more and increases economic surplus, even though accounting earnings and liquidity may deteriorate at the same time.</figcaption>
+</figure>
+
+That is a central point in Japan’s [2026 Annual Report on Insurance Monitoring](https://www.fsa.go.jp/news/r8/hoken/20260806/02.pdf). The Financial Services Agency explains that the old prudential framework largely valued liabilities using assumptions locked in at inception. The new economic-value solvency regime aims to value both assets and liabilities more consistently with market conditions.
+
+This does not make accounting or liquidity pressure disappear. It only means that the price loss on an asset cannot describe the full change in economic net worth.
+
+Japanese insurers also hold bonds in different accounting buckets. **Policy-reserve-matching bonds** are assigned to sub-portfolios intended to match groups of insurance liabilities by factors including product, currency and maturity. When the conditions are met, they are carried at amortised cost. Fair value is disclosed, but its movement does not automatically run through earnings as if the bond were held for trading.
+
+That treatment can buy time. It cannot turn a low-coupon asset into a high-coupon one. If the bond is held and repaid at par, the market discount may unwind. If it has to be sold, the gap is crystallised.
+
+## Four diagnostics, four different questions
+
+The word “loss” often compresses several distinct measurements.
+
+| Measure | What it tells us | What it does not establish |
+|---|---|---|
+| Fair-value gap | Market price versus book value on a date | A sale or cash outflow |
+| Realised gain or loss | The earnings effect of a sale, impairment or derivative | The economic change in all insurance liabilities |
+| Liquidity | Cash and usable assets available for benefits, surrenders and margin | Long-run solvency |
+| ESR | Eligible capital relative to required capital under economic shocks | Immediately spendable cash |
+
+Japan’s **economic-value solvency ratio**, or ESR, took effect at the end of March 2026. In broad terms, a 195% ratio means recognised resources are 1.95 times the capital requirement under the framework. It does not mean that 195% of any loss can be paid out in cash, and it can move as markets, business mix and model inputs change.
+
+The old solvency margin ratio and the new ESR should not be plotted as one seamless time series. Their valuation bases, risk coverage and denominators differ.
+
+## The industry earned more while realising more capital losses
+
+The first full-year results in the new rate environment contain another apparent contradiction.
+
+For **21 major life insurers**, aggregated by the FSA on a non-consolidated basis for the year ended 31 March 2026:
+
+- premium and other income reached **¥38.936tn**, up 8.7%;
+- core business profit reached **¥4.674tn**, up 11.9%;
+- net capital losses widened to **¥2.069tn**, from ¥457bn a year earlier;
+- net income rose 10.9% to **¥2.538tn**.
+
+The [FSA’s 19 June 2026 summary](https://www.fsa.go.jp/en/news/2026/20260619/01.pdf) says yen-denominated single-premium products benefited from higher domestic rates. It also says higher interest and dividend income lifted core profits despite deteriorating capital gains, primarily because of larger losses on securities sales.
+
+That is the two-sided nature of the transition.
+
+Old bonds fall in value and can generate a painful realised loss when sold. New investments pay more. New products can be priced on better terms. The recurring investment margin can rebuild.
+
+The relevant risk variable is not simply whether rates rise. It is **how fast the curve moves and how much balance-sheet capacity an insurer has while replacing low-yielding assets with higher-yielding ones**.
+
+## Nippon Life has already taken part of the hit through earnings
+
+Nippon Life reported a **−3.03% yield on domestic bonds** in its general account for the year ended March 2026, under a company measure that deducts investment expenses from investment income and divides by the average balance. That is not the portfolio’s average coupon. Losses on sales contributed heavily to the negative figure.
+
+The company booked **¥1.729tn of losses on securities sales**, up from ¥502bn the year before. Domestic bond sales alone produced ¥1.365tn of losses. At the same time, non-consolidated core operating profit rose to ¥1.066tn from ¥920bn.
+
+Those figures are consistent with a portfolio rotation: sell low-yielding bonds, recognise a loss now and reinvest at a higher rate. The disclosures do not identify the motive and replacement asset for every transaction, so they do not prove that every loss was part of the same strategy.
+
+Surrender-benefit payments also rose from **¥1.403tn to ¥2.204tn**. That deserves monitoring, but it is not evidence by itself of a policyholder run. The change may reflect portfolio growth, product mix, contractual windows, transfers or products with market-value adjustments.
+
+Nippon Life’s consolidated ESR fell from **222% to 195%** between March 2025 and March 2026. The company attributes a 28-point drag to asset allocation and business investment in a year that included the Resolution Life acquisition, another four points to economic variances, and a five-point contribution from new business and subordinated financing. It would therefore be wrong to attribute the decline solely to Japanese yields. The preliminary regulatory ESR remained above the company’s disclosed 100% intervention threshold.
+
+## Meiji Yasuda and Sumitomo show the same bond mark with different offsets
+
+Meiji Yasuda’s general account offers a second example at 31 March 2026:
+
+- domestic bonds: **−¥2.162tn**;
+- domestic equities: **+¥6.142tn**;
+- foreign securities: **+¥709bn**;
+- real estate: **+¥695bn**;
+- total unrealised gains on the relevant general-account assets: **+¥5.603tn**.
+
+Its preliminary group ESR was **208%**, eight points lower than a year earlier. The figures are in [Meiji Yasuda’s FY2025 results presentation](https://www.meijiyasuda.co.jp/english/disclosure/pdf/20260526_02.pdf). Again, equity appreciation more than offsets the domestic bond mark at the reporting date.
+
+Sumitomo Life discloses a different cut of the balance sheet. On a consolidated basis, its policy-reserve-matching bonds had a book value of ¥13.761tn and a fair value of ¥11.534tn, a **−¥2.227tn** gap. Held-to-maturity securities added another ¥194bn negative gap. Yet available-for-sale securities showed a net **¥2.175tn gain**, largely because gains on equities and part of the foreign portfolio outweighed bond losses. The data are in [Sumitomo Life’s financial statements](https://www.sumitomolife.co.jp/english/pdf/newsrelease/fs2026withnotes.pdf).
+
+These companies cannot be ranked from one column. Consolidation scope, capital models, product guarantees, hedges and portfolio composition differ. What they share is narrower: domestic bond marks are already very large, but they coexist with other unrealised gains and reported solvency ratios above supervisory thresholds.
+
+## The risk starts when the insurer needs to sell
+
+The FSA is not describing an industry-wide solvency crisis. Its August 2026 report says Japanese insurers generally remain financially sound. It also states that unrealised bond losses affect traditional supervisory accounting and liquidity.
+
+The cash channel is straightforward:
+
+```text
+long yields rise
+        ↓
+old bonds fall in price
+        ↓
+unrealised loss
+        ↓
+cash need or portfolio rotation
+        ↓
+bond is sold
+        ↓
+loss is realised
+        ↓
+accounting capital or distributable reserves fall
+```
+
+A sale may be voluntary. It can also be accelerated by benefits, surrenders, derivatives margin, collateral requirements, or the need to offer more competitive policies as newly issued products become more attractive.
+
+The insurer accepts a loss today in exchange for higher income tomorrow. That can be economically rational if the new yield compensates for the loss and the company has enough capital and liquidity to bridge the transition. It becomes dangerous when several cash demands arrive together.
+
+## Foreign assets add a second price to every position
+
+Japan’s life insurers built large foreign portfolios while domestic yields were compressed.
+
+At 31 March 2026, Nippon Life held **¥25.003tn of foreign securities** on a non-consolidated basis, 29.5% of the securities allocation shown for its general account. Foreign bonds accounted for ¥12.252tn; foreign equities and other securities for ¥12.751tn.
+
+Each position can carry three separate risks:
+
+1. the market price of the bond or equity;
+2. the exchange rate between the asset currency and the yen;
+3. the cost and liquidity of the hedge.
+
+Nippon Life says it uses currency forwards, options and swaps for hedging. Its breakdown of core operating profit shows **¥174bn of foreign-exchange hedge cost** in the year, down from ¥211bn.
+
+A stronger yen reduces the yen value of an unhedged dollar asset. A hedge can offset that translation loss, but it costs money and may require collateral. Gross foreign assets therefore cannot be converted directly into an FX-loss estimate. The currency mix, natural hedges from foreign-currency policies, hedge ratio, maturity and counterparties all matter.
+
+Japan is not Taiwan. Higher domestic yields are gradually giving Japanese insurers an alternative to foreign bonds. Repatriation is still not automatic. It depends on hedged relative yields, embedded gains or losses, currency levels, regulation and diversification needs.
+
+## The equity cushion matters because it can move
+
+Nippon Life’s domestic equity gains exceeded ¥10.7tn at the reporting date. Meiji Yasuda’s exceeded ¥6.1tn. Those gains provide a major accounting cushion.
+
+They are not a fixed pool of cash.
+
+Selling shares to meet liquidity reduces future market exposure but can trigger tax, change strategic holdings and forgo dividends. Holding them leaves the insurer exposed to a correction. A combined shock, with long yields rising again while domestic equities fall, would lower both the value of the bond portfolio and its largest current offset.
+
+That is a scenario, not a forecast. At the reporting date, disclosed unrealised equity gains still provided a substantial buffer. But a risk investigation has to test what could invalidate the comfortable conclusion drawn from a positive aggregate unrealised gain.
+
+## Who buys the JGBs as the BOJ steps back?
+
+This is no longer only an insurance question.
+
+The [Bank of Japan’s Flow of Funds Accounts](https://www.boj.or.jp/en/statistics/sj/sj.htm) show that the central bank held **47.88%** of the market value of central-government securities and FILP bonds at the end of March 2026. Insurance and pension funds held **18.44%**. Depository corporations accounted for 13.15%, overseas investors 8.09% and public pensions 7.24%.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-holders-en-title jp-holders-en-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-holders-en-title">Insurers have not yet replaced the BOJ’s retreat</title>
+<desc id="jp-holders-en-desc">Share of market value of central government securities and FILP bonds.</desc>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// Insurers have not yet replaced the BOJ’s retreat</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Share of market value of central government securities and FILP bonds.</text>
+<rect x="30" y="86" width="760" height="300" rx="8" fill="#11141a" stroke="#2a2e38"/>
+<rect x="52" y="106" width="12" height="12" rx="2" fill="#7aa2f7"/><text x="72" y="116" fill="#8b909b" font-size="9.3">Bank of Japan</text>
+<rect x="250" y="106" width="12" height="12" rx="2" fill="#5eead4"/><text x="270" y="116" fill="#8b909b" font-size="9.3">Insurance and pension funds</text>
+<rect x="545" y="106" width="12" height="12" rx="2" fill="#2a2e38"/><text x="565" y="116" fill="#8b909b" font-size="9.3">All other sectors</text>
+
+        <text x="40" y="166" fill="#d6d9df" font-size="11.5">Mar 2011</text>
+        <rect x="155" y="142" width="49.26" height="36" rx="4" fill="#7aa2f7"/>
+        <rect x="204.26" y="142" width="150.84" height="36" fill="#5eead4"/>
+        <rect x="355.10" y="142" width="399.90" height="36" rx="4" fill="#2a2e38"/>
+        <text x="179.63" y="165" text-anchor="middle" fill="#7aa2f7" font-size="9.2" font-weight="700">8.21%</text>
+        <text x="279.68" y="165" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">25.14%</text>
+        <text x="555.05" y="165" text-anchor="middle" fill="#d6d9df" font-size="9.2" font-weight="700">66.65%</text>
+        <text x="40" y="251" fill="#d6d9df" font-size="11.5">Mar 2025</text>
+        <rect x="155" y="227" width="310.38" height="36" rx="4" fill="#7aa2f7"/>
+        <rect x="465.38" y="227" width="120.12" height="36" fill="#5eead4"/>
+        <rect x="585.50" y="227" width="169.50" height="36" rx="4" fill="#2a2e38"/>
+        <text x="310.19" y="250" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">51.73%</text>
+        <text x="525.44" y="250" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">20.02%</text>
+        <text x="670.25" y="250" text-anchor="middle" fill="#d6d9df" font-size="9.2" font-weight="700">28.25%</text>
+        <text x="40" y="336" fill="#d6d9df" font-size="11.5">Mar 2026</text>
+        <rect x="155" y="312" width="287.28" height="36" rx="4" fill="#7aa2f7"/>
+        <rect x="442.28" y="312" width="110.64" height="36" fill="#5eead4"/>
+        <rect x="552.92" y="312" width="202.08" height="36" rx="4" fill="#2a2e38"/>
+        <text x="298.64" y="335" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">47.88%</text>
+        <text x="497.60" y="335" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">18.44%</text>
+        <text x="653.96" y="335" text-anchor="middle" fill="#d6d9df" font-size="9.2" font-weight="700">33.68%</text>
+<text x="155" y="373" fill="#8b909b" font-size="8.5">0%</text><text x="455" y="373" text-anchor="middle" fill="#8b909b" font-size="8.5">50%</text><text x="755" y="373" text-anchor="end" fill="#8b909b" font-size="8.5">100%</text>
+<text x="30" y="414" fill="#8b909b" font-size="8.8">Source: Bank of Japan, Flow of Funds Accounts, end-quarter market-value data.</text>
+<text x="30" y="432" fill="#8b909b" font-size="8.8">Data from 2005–2026 were revised on 25 June 2026. “Insurance and pensions” is broader than life insurers.</text>
+<text x="30" y="453" fill="#d6d9df" font-size="9.5">From March 2025 to March 2026, both shares fell. The rest of the market absorbed more.</text>
+</svg>
+<figcaption>The BOJ remains by far the largest holder, but its share is falling. The insurance-and-pension share also fell between March 2025 and March 2026; the sector has not yet replaced the central bank proportionally.</figcaption>
+</figure>
+
+The chart corrects a common assumption. From March 2025 to March 2026, the BOJ share fell from 51.73% to 47.88%. The insurance-and-pension share also fell, from 20.02% to 18.44%. On this measure, insurers and pension funds had not yet replaced the central bank proportionally. Other sectors absorbed more of the stock.
+
+These are market-value shares. Falling bond prices can change them without an equivalent volume of transactions. “Insurance and pension funds” is broader than life insurance. March 2026 data were preliminary and formed part of a retrospective revision released on 25 June.
+
+The pricing question remains. As the BOJ buys less, what yield will draw stable private demand into twenty-, thirty- and forty-year debt? Life insurers need long assets to match long liabilities. They also carry losses on earlier vintages of those same securities.
+
+Higher yields can bring them back. Getting there may first require realised losses, capital and time.
+
+## ESR fixes one blind spot and leaves others intact
+
+Japan’s economic-value solvency framework entered into force at the end of March 2026. It is designed to make prudential supervision more economically coherent by marking liabilities to current conditions and broadening the measurement of risk.
+
+In the field test conducted on March 2025 data, the 41 standalone Japanese life insurers had an average ESR of **215%**, four points lower than the previous test. The date and status matter: this was not the industry’s final ratio at 31 March 2026.
+
+The regime improves the measurement of interest-rate exposure. It also highlights a tension with supervisory accounting used for other purposes, where liability values remain more locked in. The FSA has convened a study group to examine the role of that accounting alongside ESR.
+
+In practical terms:
+
+- ESR can show that higher rates improve economic surplus;
+- the income statement can show losses on JGB sales;
+- cash can become tighter;
+- accounting capital available to absorb or distribute losses can move differently.
+
+A better solvency metric does not collapse those four realities into one.
+
+## Japan’s stress is a sequence
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-risk-en-title jp-risk-en-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-risk-en-title">The real stress comes from the sequence, not one number</title>
+<desc id="jp-risk-en-desc">Transmission scenario, not a forecast or a quantified insurer stress test.</desc>
+<defs><marker id="jp-risk-arrow-en" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b909b"/></marker></defs>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// The real stress comes from the sequence, not one number</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Transmission scenario, not a forecast or a quantified insurer stress test.</text>
+
+        <rect x="30" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#ff4d87" stroke-width="1.2"/>
+        <text x="44" y="126" fill="#ff4d87" font-size="12" font-weight="700">Long yields ↑</text>
+        <text x="44" y="151" fill="#d6d9df" font-size="9.5">old JGB prices ↓</text>
+        <path d="M117.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-en)"/>
+        <rect x="225" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#f5b13d" stroke-width="1.2"/>
+        <text x="239" y="126" fill="#f5b13d" font-size="12" font-weight="700">Equities ↓</text>
+        <text x="239" y="151" fill="#d6d9df" font-size="9.5">unrealised cushion ↓</text>
+        <path d="M312.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-en)"/>
+        <rect x="420" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#7aa2f7" stroke-width="1.2"/>
+        <text x="434" y="126" fill="#7aa2f7" font-size="12" font-weight="700">Yen ↑</text>
+        <text x="434" y="151" fill="#d6d9df" font-size="9.5">foreign assets translate lower</text>
+        <path d="M507.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-en)"/>
+        <rect x="615" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#5eead4" stroke-width="1.2"/>
+        <text x="629" y="126" fill="#5eead4" font-size="12" font-weight="700">Surrenders ↑</text>
+        <text x="629" y="151" fill="#d6d9df" font-size="9.5">cash need ↑</text>
+        <path d="M702.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-en)"/>
+
+        <rect x="30" y="228" width="236" height="72" rx="8" fill="#11141a" stroke="#ff4d87" stroke-width="1.2"/>
+        <text x="46" y="255" fill="#ff4d87" font-size="11.5" font-weight="700">Income statement</text>
+        <text x="46" y="279" fill="#d6d9df" font-size="9.4">realised losses if sold</text>
+        <rect x="292" y="228" width="236" height="72" rx="8" fill="#11141a" stroke="#5eead4" stroke-width="1.2"/>
+        <text x="308" y="255" fill="#5eead4" font-size="11.5" font-weight="700">Liquidity</text>
+        <text x="308" y="279" fill="#d6d9df" font-size="9.4">collateral + claims</text>
+        <rect x="554" y="228" width="236" height="72" rx="8" fill="#11141a" stroke="#7aa2f7" stroke-width="1.2"/>
+        <text x="570" y="255" fill="#7aa2f7" font-size="11.5" font-weight="700">Economic value</text>
+        <text x="570" y="279" fill="#d6d9df" font-size="9.4">assets AND liabilities move</text>
+<path d="M148 301 C148 330 220 330 220 350" stroke="#8b909b" fill="none" marker-end="url(#jp-risk-arrow-en)"/>
+<path d="M410 301 V350" stroke="#8b909b" fill="none" marker-end="url(#jp-risk-arrow-en)"/>
+<path d="M672 301 C672 330 600 330 600 350" stroke="#8b909b" fill="none" marker-end="url(#jp-risk-arrow-en)"/>
+<rect x="90" y="360" width="640" height="55" rx="9" fill="#151820" stroke="#ff4d87" stroke-width="1.3"/>
+<text x="410" y="384" text-anchor="middle" fill="#f5f6f8" font-size="11.5" font-weight="700">The constraint becomes dangerous when it forces a sale</text>
+<text x="410" y="403" text-anchor="middle" fill="#8b909b" font-size="8.8">Long liabilities · ALM · liquidity · hedges · capital · reinvestment at higher yields</text>
+<text x="30" y="449" fill="#8b909b" font-size="8.5">l0g schematic based on mechanisms described by the FSA. Arrows show possible channels, not certain causality.</text>
+</svg>
+<figcaption>A mark-to-market loss becomes critical when it meets a cash constraint. Stable liabilities, functioning hedges and reinvestment at higher yields can make the same transition manageable.</figcaption>
+</figure>
+
+The dangerous case is not necessarily another isolated rise in yields. It is a sequence:
+
+1. **the long end rises again**, reducing the price of old JGBs;
+2. **equities correct**, shrinking the unrealised cushion;
+3. **the yen strengthens**, lowering translated foreign assets that are not hedged and changing derivative values;
+4. **surrenders or collateral calls increase**, creating a cash need;
+5. **sales crystallise losses** just when transition capital is most valuable.
+
+There is an equally plausible benign sequence. Long and stable liabilities buy time. Hedges work. New yields lift recurring income. Better-priced yen products attract premiums. Bonds mature without forced sales. Economic surplus remains strong.
+
+The difference cannot be read from one mark-to-market number.
+
+## The strongest counterargument: higher rates are part of the cure
+
+The bearish story can become lazy very quickly: bonds have lost value, therefore insurers are weak, therefore they will sell, therefore yields will rise again.
+
+The available evidence does not support that chain as a baseline conclusion.
+
+Core business profit at the 21 major life insurers rose 11.9% in the year to March 2026. Premiums increased, partly because yen products became more attractive. Nippon Life and Meiji Yasuda retained large aggregate unrealised gains. Major groups reported ESRs above the intervention threshold. The FSA describes the sector as generally sound.
+
+Life insurance also relies on liabilities that are longer and usually more stable than bank deposits. A company does not owe every policy at par on demand. Market-value adjustments, surrender terms, policyholder behaviour and contractual maturity schedules slow the outflow.
+
+Higher rates gradually repair a business model compressed by years of low reinvestment yields. They increase income on new assets and allow guarantees on new business to be priced more sustainably.
+
+The counterargument has one important limit. The cure arrives over time. A surrender, margin call or bond sale consumes cash now.
+
+## Established, plausible and still unknown
+
+### Established
+
+Major Japanese life insurers reported very large unrealised losses on domestic bonds at the end of March 2026. Those marks coexist with gains on equities and foreign assets, higher aggregate core profits and disclosed ESRs above supervisory thresholds.
+
+The FSA explicitly identifies an impact on accounting and liquidity. It also says super-long JGB purchases aimed at closing duration gaps have slowed, and that insurers have switched out of low-yielding bonds into higher-yielding ones.
+
+The BOJ ended negative rates and yield-curve control in March 2024, raised its policy rate to 1% in June 2026 and is gradually reducing JGB purchases.
+
+### Plausible and consistent with the data
+
+Insurers may continue to realise losses on old bonds in order to improve future portfolio income. Higher domestic yields may also reduce the relative appeal of some foreign bonds over time.
+
+Systemic pressure would be greater if bond losses coincided with an equity correction, a stronger yen and higher liquidity needs.
+
+### Not publicly observable on a comparable basis
+
+Disclosures do not provide a single, homogeneous dataset for:
+
+- the full economic duration of assets and liabilities at each group;
+- surrender behaviour by product and rate sensitivity;
+- collateral schedules on derivatives;
+- net FX exposure after natural and financial hedges;
+- the quantity of JGBs insurers would buy at each yield;
+- the share of bond sales driven by liquidity, ALM, tax or voluntary reinvestment.
+
+Without those inputs, adding together fair-value gaps from different scopes would produce a spurious “industry loss”.
+
+## Six indicators to watch next
+
+**Realised losses on domestic bond sales.** They show how much of the mark has moved from disclosure notes into earnings.
+
+**Surrender benefits and their composition.** An increase matters more when it is concentrated in rate-sensitive products and is not offset by comparable inflows.
+
+**Unrealised equity gains.** They are a large but volatile cushion.
+
+**FX hedge costs and hedge ratios.** They connect the Japanese balance sheet to the wider Asian dollar loop.
+
+**ESR bridges.** A headline ratio is less useful than the contributions from markets, acquisitions, new business and subordinated capital.
+
+**Super-long auction demand.** Yields, bid coverage and auction tails will help show the price at which private balance sheets are willing to take duration from the central bank.
+
+## Risk distributed across the balance sheet
+
+Japan did not present a picture of a life-insurance crisis on 4 September 2026. It offered something more instructive: a transition in which the same rate shock strengthens one part of the model and strains another.
+
+Higher yields lower the market value of old JGBs. They also lower the economic value of very long insurance liabilities. They create losses when an insurer sells and higher income when it reinvests. They make yen products more attractive. They also force the private market to rediscover the price of government debt while the central bank still owns almost half of it.
+
+Timing is the risk.
+
+An insurer that can wait may let bonds pull back towards par and roll its portfolio into better yields. An insurer facing surrenders, an equity drawdown, a stronger yen or collateral calls at the same time may have to sell precisely when the market offers the worst price.
+
+The end of Japan’s zero-rate era is not entering balance sheets as one bill. It is arriving through several doors, at different speeds. The next stage of the investigation is to identify which one opens first.
+
+---
+
+### Primary sources and scope
+
+- [Financial Services Agency, Annual Report on Insurance Monitoring 2026, full Japanese report, 6 August 2026](https://www.fsa.go.jp/news/r8/hoken/20260806/02.pdf)
+- [FSA, English summary, 6 August 2026](https://www.fsa.go.jp/en/news/2026/20260806/01.pdf)
+- [FSA, aggregate results for 21 major life insurers, year ended 31 March 2026](https://www.fsa.go.jp/en/news/2026/20260619/01.pdf)
+- [Nippon Life, detailed results, year ended 31 March 2026](https://www.nissay.co.jp/assets/global/report/financial_results/05262026_2.pdf)
+- [Nippon Life, results and ESR presentation](https://www.nissay.co.jp/sites/default/files/assets/global/news/files/05262026_3.pdf)
+- [Meiji Yasuda, results for the year ended 31 March 2026](https://www.meijiyasuda.co.jp/english/disclosure/pdf/20260526_02.pdf)
+- [Sumitomo Life, consolidated financial statements at 31 March 2026](https://www.sumitomolife.co.jp/english/pdf/newsrelease/fs2026withnotes.pdf)
+- [Bank of Japan, 2026 monetary-policy decisions](https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm)
+- [Bank of Japan, June 2026 JGB purchase plan](https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260616d.pdf)
+- [Bank of Japan, Flow of Funds Accounts, first quarter 2026](https://www.boj.or.jp/en/statistics/sj/sj.htm)
+- [Japan Ministry of Finance, JGB auction results](https://www.mof.go.jp/english/policy/jgbs/auction/calendar/index.htm)
+
+Company disclosures sometimes pair non-consolidated asset data with consolidated ESRs. The article labels the scope and does not add the measures together. Yen figures are rounded from the units reported. No translation into dollars or euros is used, because that would introduce an unrelated exchange-rate date into the diagnosis.

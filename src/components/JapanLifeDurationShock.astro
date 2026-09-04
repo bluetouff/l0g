@@ -1,0 +1,479 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `japan-life-duration-${lang}`;
+
+const copy = isFr
+  ? {
+      eyebrow: 'SIMULATEUR PÉDAGOGIQUE',
+      title: 'Quand un choc de taux touche les deux côtés du bilan',
+      intro: 'Modifiez les actifs, les passifs, leurs durations et le choc de taux. Le calcul montre une variation de valeur économique de premier ordre, pas un ratio ESR réglementaire.',
+      badge: 'calcul local · zéro tracker',
+      assets: 'Valeur des actifs obligataires',
+      liabilities: 'Valeur des passifs d’assurance',
+      assetDuration: 'Duration modifiée des actifs',
+      liabilityDuration: 'Duration modifiée des passifs',
+      shock: 'Choc parallèle de taux',
+      before: 'Surplus avant choc',
+      assetChange: 'Variation des actifs',
+      liabilityChange: 'Variation des passifs',
+      after: 'Surplus après choc',
+      surplusChange: 'Variation du surplus',
+      improves: 'Dans ce scénario, les passifs baissent davantage que les actifs : le surplus économique augmente.',
+      worsens: 'Dans ce scénario, les actifs baissent davantage que les passifs : le surplus économique diminue.',
+      neutral: 'Dans ce scénario, le surplus économique varie peu.',
+      formula: 'Formule visible',
+      limits: 'Ce que ce calcul ne mesure pas',
+      limitsText: 'Il ignore la convexité, les options et garanties des contrats, les rachats, la fiscalité, le change, les couvertures, les spreads de crédit, les chocs non parallèles, les classifications comptables et les exigences de capital. Une valeur négative du surplus n’est pas une conclusion de défaut.',
+      units: 'unités',
+      years: 'ans',
+      bps: 'pb',
+      note: 'La duration mesure approximativement la sensibilité de la valeur à une variation de taux. Une duration de 12 implique environ −12 % pour un choc de +100 points de base, avant convexité.',
+    }
+  : {
+      eyebrow: 'EDUCATIONAL CALCULATOR',
+      title: 'When a yield shock hits both sides of the balance sheet',
+      intro: 'Change assets, liabilities, their durations and the yield shock. The calculation shows a first-order change in economic value, not a regulatory ESR.',
+      badge: 'local calculation · zero tracker',
+      assets: 'Value of bond assets',
+      liabilities: 'Value of insurance liabilities',
+      assetDuration: 'Modified duration of assets',
+      liabilityDuration: 'Modified duration of liabilities',
+      shock: 'Parallel yield shock',
+      before: 'Surplus before shock',
+      assetChange: 'Change in assets',
+      liabilityChange: 'Change in liabilities',
+      after: 'Surplus after shock',
+      surplusChange: 'Change in surplus',
+      improves: 'In this scenario, liabilities fall by more than assets: economic surplus increases.',
+      worsens: 'In this scenario, assets fall by more than liabilities: economic surplus decreases.',
+      neutral: 'In this scenario, economic surplus changes little.',
+      formula: 'Visible formula',
+      limits: 'What this calculation does not measure',
+      limitsText: 'It excludes convexity, policy options and guarantees, surrenders, tax, FX, hedges, credit spreads, non-parallel shocks, accounting classifications and capital requirements. A negative surplus in the tool is not a default conclusion.',
+      units: 'units',
+      years: 'years',
+      bps: 'bp',
+      note: 'Duration approximates a value’s sensitivity to a yield move. A duration of 12 implies roughly −12% for a +100-basis-point shock, before convexity.',
+    };
+
+const defaults = {
+  assets: 100,
+  liabilities: 90,
+  assetDuration: 12,
+  liabilityDuration: 18,
+  shockBps: 100,
+};
+
+const shock = defaults.shockBps / 10_000;
+const deltaAssets = -defaults.assetDuration * shock * defaults.assets;
+const deltaLiabilities = -defaults.liabilityDuration * shock * defaults.liabilities;
+const before = defaults.assets - defaults.liabilities;
+const after = defaults.assets + deltaAssets - (defaults.liabilities + deltaLiabilities);
+const change = after - before;
+const fmt = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2, minimumFractionDigits: 0 });
+const signed = (n: number) => `${n > 0 ? '+' : ''}${fmt.format(n)}`;
+---
+
+<section class="jld-tool" id={id} data-jld data-lang={lang}>
+  <header class="jld-head">
+    <div>
+      <p class="jld-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="jld-badge">{copy.badge}</span>
+  </header>
+
+  <div class="jld-grid">
+    <form class="jld-controls" aria-label={copy.title}>
+      <label>
+        <span>{copy.assets}<b>{copy.units}</b></span>
+        <div>
+          <input type="range" name="assets-range" min="10" max="200" step="1" value={defaults.assets} />
+          <input type="number" name="assets" min="0" max="1000" step="1" value={defaults.assets} inputmode="decimal" />
+        </div>
+      </label>
+
+      <label>
+        <span>{copy.liabilities}<b>{copy.units}</b></span>
+        <div>
+          <input type="range" name="liabilities-range" min="10" max="200" step="1" value={defaults.liabilities} />
+          <input type="number" name="liabilities" min="0" max="1000" step="1" value={defaults.liabilities} inputmode="decimal" />
+        </div>
+      </label>
+
+      <label>
+        <span>{copy.assetDuration}<b>{copy.years}</b></span>
+        <div>
+          <input type="range" name="assetDuration-range" min="1" max="30" step="0.5" value={defaults.assetDuration} />
+          <input type="number" name="assetDuration" min="0" max="60" step="0.5" value={defaults.assetDuration} inputmode="decimal" />
+        </div>
+      </label>
+
+      <label>
+        <span>{copy.liabilityDuration}<b>{copy.years}</b></span>
+        <div>
+          <input type="range" name="liabilityDuration-range" min="1" max="30" step="0.5" value={defaults.liabilityDuration} />
+          <input type="number" name="liabilityDuration" min="0" max="60" step="0.5" value={defaults.liabilityDuration} inputmode="decimal" />
+        </div>
+      </label>
+
+      <label>
+        <span>{copy.shock}<b>{copy.bps}</b></span>
+        <div>
+          <input type="range" name="shockBps-range" min="-300" max="300" step="10" value={defaults.shockBps} />
+          <input type="number" name="shockBps" min="-1000" max="1000" step="10" value={defaults.shockBps} inputmode="decimal" />
+        </div>
+      </label>
+    </form>
+
+    <section class="jld-results" aria-live="polite">
+      <div class="jld-primary">
+        <span>{copy.after}</span>
+        <strong data-result="after">{fmt.format(after)}</strong>
+        <small>{copy.units}</small>
+      </div>
+      <dl>
+        <div><dt>{copy.before}</dt><dd data-result="before">{fmt.format(before)}</dd></div>
+        <div><dt>{copy.assetChange}</dt><dd data-result="assetChange">{signed(deltaAssets)}</dd></div>
+        <div><dt>{copy.liabilityChange}</dt><dd data-result="liabilityChange">{signed(deltaLiabilities)}</dd></div>
+        <div><dt>{copy.surplusChange}</dt><dd data-result="change">{signed(change)}</dd></div>
+      </dl>
+      <p class="jld-status" data-result="status">{change > 0.05 ? copy.improves : change < -0.05 ? copy.worsens : copy.neutral}</p>
+      <p class="jld-note">{copy.note}</p>
+    </section>
+  </div>
+
+  <div class="jld-details">
+    <details>
+      <summary>{copy.formula}</summary>
+      <code>ΔA ≈ −D<sub>A</sub> × Δy × A</code>
+      <code>ΔL ≈ −D<sub>L</sub> × Δy × L</code>
+      <code>ΔSurplus = ΔA − ΔL</code>
+    </details>
+    <details>
+      <summary>{copy.limits}</summary>
+      <p>{copy.limitsText}</p>
+    </details>
+  </div>
+</section>
+
+<script>
+  const initJapanDurationTools = () => {
+    document.querySelectorAll<HTMLElement>('[data-jld]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+      form.addEventListener('submit', (event) => event.preventDefault());
+
+      const copy = lang === 'fr'
+        ? {
+            improves: 'Dans ce scénario, les passifs baissent davantage que les actifs : le surplus économique augmente.',
+            worsens: 'Dans ce scénario, les actifs baissent davantage que les passifs : le surplus économique diminue.',
+            neutral: 'Dans ce scénario, le surplus économique varie peu.',
+          }
+        : {
+            improves: 'In this scenario, liabilities fall by more than assets: economic surplus increases.',
+            worsens: 'In this scenario, assets fall by more than liabilities: economic surplus decreases.',
+            neutral: 'In this scenario, economic surplus changes little.',
+          };
+
+      const formatter = new Intl.NumberFormat(locale, { maximumFractionDigits: 2, minimumFractionDigits: 0 });
+      const fields = ['assets', 'liabilities', 'assetDuration', 'liabilityDuration', 'shockBps'] as const;
+      type Field = typeof fields[number];
+
+      const getInput = (name: string) => form.elements.namedItem(name) as HTMLInputElement | null;
+      const result = (name: string) => root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+      const signed = (value: number) => `${value > 0 ? '+' : ''}${formatter.format(value)}`;
+
+      const syncPair = (name: Field, source: HTMLInputElement) => {
+        const peerName = source.name.endsWith('-range') ? name : `${name}-range`;
+        const peer = getInput(peerName);
+        if (peer) peer.value = source.value;
+      };
+
+      const calculate = () => {
+        const assets = Number(getInput('assets')?.value ?? 0);
+        const liabilities = Number(getInput('liabilities')?.value ?? 0);
+        const assetDuration = Number(getInput('assetDuration')?.value ?? 0);
+        const liabilityDuration = Number(getInput('liabilityDuration')?.value ?? 0);
+        const shockBps = Number(getInput('shockBps')?.value ?? 0);
+        const shock = shockBps / 10_000;
+
+        const deltaAssets = -assetDuration * shock * assets;
+        const deltaLiabilities = -liabilityDuration * shock * liabilities;
+        const before = assets - liabilities;
+        const after = assets + deltaAssets - (liabilities + deltaLiabilities);
+        const change = after - before;
+
+        if (result('before')) result('before')!.textContent = formatter.format(before);
+        if (result('assetChange')) result('assetChange')!.textContent = signed(deltaAssets);
+        if (result('liabilityChange')) result('liabilityChange')!.textContent = signed(deltaLiabilities);
+        if (result('after')) result('after')!.textContent = formatter.format(after);
+        if (result('change')) result('change')!.textContent = signed(change);
+        if (result('status')) result('status')!.textContent = change > 0.05 ? copy.improves : change < -0.05 ? copy.worsens : copy.neutral;
+
+        root.classList.toggle('is-negative', change < -0.05);
+      };
+
+      form.addEventListener('input', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLInputElement)) return;
+        const baseName = target.name.replace(/-range$/, '') as Field;
+        if (fields.includes(baseName)) syncPair(baseName, target);
+        calculate();
+      });
+
+      calculate();
+    });
+  };
+
+  initJapanDurationTools();
+  document.addEventListener('astro:page-load', initJapanDurationTools);
+</script>
+
+<style>
+  .jld-tool {
+    --jld-bg: #0c0d10;
+    --jld-panel: #151820;
+    --jld-panel-2: #11141a;
+    --jld-grid: #2a2e38;
+    --jld-text: #f5f6f8;
+    --jld-muted: #8b909b;
+    --jld-teal: #5eead4;
+    --jld-amber: #f5b13d;
+    --jld-pink: #ff4d87;
+    --jld-blue: #7aa2f7;
+    margin: 2rem 0 2.25rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 12px;
+    background: var(--jld-bg);
+    color: var(--jld-text);
+    box-shadow: 0 18px 45px rgba(0,0,0,.22);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  .jld-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.35rem 1.4rem 1.2rem;
+    border-bottom: 1px solid var(--jld-grid);
+    background: linear-gradient(135deg, rgba(94,234,212,.06), transparent 45%);
+  }
+
+  .jld-head h2 {
+    margin: .25rem 0 .55rem;
+    color: var(--jld-text);
+    font: 700 clamp(1.2rem, 3vw, 1.65rem)/1.2 system-ui, sans-serif;
+  }
+
+  .jld-head p:not(.jld-eyebrow) {
+    max-width: 64ch;
+    margin: 0;
+    color: var(--jld-muted);
+    font: 400 .88rem/1.55 system-ui, sans-serif;
+  }
+
+  .jld-eyebrow {
+    margin: 0;
+    color: var(--jld-teal);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+
+  .jld-badge {
+    align-self: flex-start;
+    flex: 0 0 auto;
+    border: 1px solid rgba(94,234,212,.45);
+    border-radius: 999px;
+    padding: .35rem .58rem;
+    color: var(--jld-teal);
+    font-size: .64rem;
+    white-space: nowrap;
+  }
+
+  .jld-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+    gap: 1px;
+    background: var(--jld-grid);
+  }
+
+  .jld-controls,
+  .jld-results {
+    margin: 0;
+    background: var(--jld-panel-2);
+    padding: 1.25rem 1.35rem;
+  }
+
+  .jld-controls {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .jld-controls label > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: .42rem;
+    color: #d6d9df;
+    font-size: .75rem;
+  }
+
+  .jld-controls label b {
+    color: var(--jld-muted);
+    font-weight: 500;
+  }
+
+  .jld-controls label > div {
+    display: grid;
+    grid-template-columns: 1fr 5.7rem;
+    gap: .7rem;
+    align-items: center;
+  }
+
+  .jld-controls input[type='range'] {
+    width: 100%;
+    accent-color: var(--jld-teal);
+  }
+
+  .jld-controls input[type='number'] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--jld-grid);
+    border-radius: 6px;
+    background: var(--jld-bg);
+    color: var(--jld-text);
+    padding: .45rem .5rem;
+    font: inherit;
+    font-size: .78rem;
+    text-align: right;
+  }
+
+  .jld-primary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: .25rem 1rem;
+    border: 1px solid rgba(94,234,212,.35);
+    border-radius: 9px;
+    background: rgba(94,234,212,.055);
+    padding: 1rem;
+  }
+
+  .jld-primary span {
+    grid-column: 1 / -1;
+    color: var(--jld-muted);
+    font-size: .72rem;
+  }
+
+  .jld-primary strong {
+    color: var(--jld-teal);
+    font: 800 2rem/1 system-ui, sans-serif;
+  }
+
+  .jld-primary small {
+    color: var(--jld-muted);
+    font-size: .65rem;
+  }
+
+  .jld-results dl {
+    display: grid;
+    gap: 0;
+    margin: 1rem 0;
+  }
+
+  .jld-results dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--jld-grid);
+    padding: .62rem 0;
+  }
+
+  .jld-results dt {
+    color: var(--jld-muted);
+    font-size: .72rem;
+  }
+
+  .jld-results dd {
+    margin: 0;
+    color: #d6d9df;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+
+  .jld-status {
+    border-left: 3px solid var(--jld-teal);
+    margin: 1rem 0;
+    padding: .2rem 0 .2rem .75rem;
+    color: #d6d9df;
+    font: 600 .77rem/1.5 system-ui, sans-serif;
+  }
+
+  .jld-tool.is-negative .jld-status {
+    border-left-color: var(--jld-pink);
+  }
+
+  .jld-note {
+    margin: 0;
+    color: var(--jld-muted);
+    font: 400 .7rem/1.5 system-ui, sans-serif;
+  }
+
+  .jld-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--jld-grid);
+    border-top: 1px solid var(--jld-grid);
+  }
+
+  .jld-details details {
+    background: var(--jld-panel);
+    padding: .9rem 1.25rem;
+  }
+
+  .jld-details summary {
+    cursor: pointer;
+    color: #d6d9df;
+    font-size: .75rem;
+    font-weight: 700;
+  }
+
+  .jld-details code {
+    display: block;
+    margin-top: .55rem;
+    color: var(--jld-blue);
+    font-size: .72rem;
+  }
+
+  .jld-details p {
+    margin: .65rem 0 0;
+    color: var(--jld-muted);
+    font: 400 .72rem/1.55 system-ui, sans-serif;
+  }
+
+  @media (max-width: 720px) {
+    .jld-head { display: block; }
+    .jld-badge { display: inline-block; margin-top: .8rem; }
+    .jld-grid, .jld-details { grid-template-columns: 1fr; }
+    .jld-controls label > div { grid-template-columns: 1fr 5.2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jld-tool * { scroll-behavior: auto !important; }
+  }
+</style>

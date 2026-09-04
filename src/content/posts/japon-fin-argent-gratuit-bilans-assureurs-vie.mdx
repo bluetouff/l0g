@@ -1,0 +1,585 @@
+---
+title: "Japon : la fin de l’argent gratuit entre dans le bilan des assureurs-vie"
+seoTitle: "Japon : le choc des taux dans les bilans des assureurs-vie | l0g"
+description: "Les assureurs-vie japonais portent de lourdes moins-values sur les JGB. Le vrai risque combine duration, ventes, liquidité, change et retrait de la BoJ."
+ogImage: "/illustrations/news/japan-life-insurer-rate-shock-v1.jpg"
+pubDate: 2026-09-04T12:00:00+02:00
+updatedDate: 2026-09-04T12:00:00+02:00
+tags: ["Japon", "assurance-vie", "JGB", "taux", "Banque du Japon", "risque", "Asie"]
+draft: false
+quickTake:
+  fact: "Au 31 mars 2026, Nippon Life affichait 5 729 milliards de yens de pertes latentes nettes sur ses obligations domestiques, mais encore 8 971 milliards de gains latents nets sur l’ensemble de ses titres."
+  importance: "La remontée des taux peut améliorer la valeur économique d’un assureur tout en dégradant son résultat comptable et sa liquidité s’il doit vendre des obligations anciennes."
+  uncertainty: "Les expositions publiées ne permettent pas de reconstruire intégralement les durations, les couvertures de change et les besoins de cash de chaque compagnie sous un même choc."
+---
+
+import JapanLifeDurationShock from '../../components/JapanLifeDurationShock.astro';
+
+*Au 31 mars 2026, Nippon Life comptabilisait **5 729 milliards de yens de pertes latentes nettes sur ses obligations domestiques**. Le même tableau faisait pourtant apparaître **8 971 milliards de yens de gains latents nets sur l’ensemble de ses titres**. Et le groupe déclarait un ratio de solvabilité économique de 195 %, près du double du seuil d’intervention prudentielle de 100 %. Ces trois chiffres ne se contredisent pas. Ils décrivent trois étages différents du même bilan. C’est précisément entre eux que se niche le risque japonais.*
+
+Cet article constitue le deuxième volet de notre dossier **La boucle du dollar asiatique**. [Après Taïwan](/posts/taiwan-724-milliards-assureurs-vie-risque-change/), où l’exposition extérieure des assureurs place le change au centre du problème, le Japon offre une autre configuration : une remontée rapide des rendements domestiques après des décennies de taux presque nuls, des portefeuilles d’obligations très longues achetées à de faibles coupons, mais aussi des engagements d’assurance dont la valeur baisse lorsque les taux montent.
+
+Le sujet n’est donc pas de savoir combien les assureurs « perdraient » si chaque obligation était vendue ce matin. La bonne question est plus exigeante :
+
+> **À quel moment une moins-value de marché devient-elle une perte comptable, un besoin de liquidité, une baisse de capital, voire une vente forcée ?**
+
+La réponse dépend de la duration des actifs et des passifs, de la classification comptable des titres, des rachats des assurés, du yen, des couvertures de change et de la capacité à attendre l’échéance. Notre [guide de lecture de la solidité d’un assureur-vie](/guides/lire-la-solidite-d-un-assureur-vie/) détaille les principaux postes à rapprocher.
+
+## Ce que mesure la moins-value de 5 729 milliards
+
+Le tableau de juste valeur publié par Nippon Life pour son exercice clos le **31 mars 2026** est un bon antidote aux titres apocalyptiques.
+
+Sur le périmètre non consolidé, la compagnie détenait 54 378 milliards de yens de titres comptabilisés dans ce tableau. Leur juste valeur atteignait 63 349 milliards. Le gain latent net total était donc de 8 971 milliards de yens. Mais sa composition est tout sauf homogène :
+
+- obligations domestiques : **−5 729 milliards de yens** ;
+- actions domestiques : **+10 766 milliards** ;
+- titres étrangers : **+3 988 milliards** ;
+- autres postes : environ **−55 milliards**.
+
+Ces montants proviennent des [résultats détaillés de Nippon Life](https://www.nissay.co.jp/assets/global/report/financial_results/05262026_2.pdf), publiés le 26 mai 2026. Ils mesurent l’écart entre valeur comptable et juste valeur à une date précise. Ils ne mesurent ni un flux de trésorerie, ni une perte réalisée, ni le capital réglementaire du groupe.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-nippon-fr-title jp-nippon-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-nippon-fr-title">Nippon Life : les pertes obligataires n’épuisent pas le coussin</title>
+<desc id="jp-nippon-fr-desc">Gains et pertes latents nets sur titres, entité non consolidée, au 31 mars 2026.</desc>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// Nippon Life : les pertes obligataires n’épuisent pas le coussin</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Gains et pertes latents nets sur titres, entité non consolidée, au 31 mars 2026.</text>
+<rect x="30" y="88" width="760" height="292" rx="8" fill="#11141a" stroke="#2a2e38"/>
+<line x1="350" y1="110" x2="350" y2="365" stroke="#8b909b" stroke-width="1.2"/>
+<text x="342" y="108" text-anchor="end" fill="#8b909b" font-size="8.5">−</text>
+<text x="358" y="108" fill="#8b909b" font-size="8.5">+</text>
+
+        <text x="40" y="148" fill="#d6d9df" font-size="11.2">Obligations domestiques</text>
+        <rect x="210" y="126" width="140" height="30" rx="5" fill="#ff4d87" opacity="0.9"/>
+        <text x="220" y="148" text-anchor="start" fill="#f5f6f8" font-size="12" font-weight="700">-5,729</text>
+        <text x="40" y="216" fill="#d6d9df" font-size="11.2">Actions domestiques</text>
+        <rect x="350" y="194" width="301.4" height="30" rx="5" fill="#5eead4" opacity="0.9"/>
+        <text x="661.4" y="216" text-anchor="start" fill="#5eead4" font-size="12" font-weight="700">10,766</text>
+        <text x="40" y="284" fill="#d6d9df" font-size="11.2">Titres étrangers</text>
+        <rect x="350" y="262" width="111.7" height="30" rx="5" fill="#7aa2f7" opacity="0.9"/>
+        <text x="471.7" y="284" text-anchor="start" fill="#7aa2f7" font-size="12" font-weight="700">3,988</text>
+        <text x="40" y="352" fill="#d6d9df" font-size="11.2">Autres postes</text>
+        <rect x="348.5" y="330" width="1.5" height="30" rx="5" fill="#f5b13d" opacity="0.9"/>
+        <text x="338.5" y="352" text-anchor="end" fill="#f5b13d" font-size="12" font-weight="700">-0,055</text>
+<rect x="500" y="313" width="250" height="52" rx="7" fill="#151820" stroke="#5eead4" stroke-width="1.3"/>
+<text x="516" y="334" fill="#8b909b" font-size="9.5">Total net sur titres</text>
+<text x="734" y="352" text-anchor="end" fill="#5eead4" font-size="22" font-weight="700">＋8,971</text>
+<text x="30" y="414" fill="#8b909b" font-size="8.8">Source : Nippon Life, résultats détaillés de l’exercice clos le 31 mars 2026. Unité : milliers de milliards de yens.</text>
+<text x="30" y="432" fill="#8b909b" font-size="8.8">Périmètre non consolidé. Le total inclut des postes très faibles non visibles à l’échelle ; arrondis.</text>
+<text x="30" y="453" fill="#d6d9df" font-size="9.5">Le coussin existe. Sa valeur bougerait si les actions, le yen ou les spreads bougeaient à leur tour.</text>
+</svg>
+<figcaption>Les pertes latentes nettes sur obligations domestiques sont plus que compensées, à cette date, par les gains sur actions et titres étrangers. Ce solde positif reste exposé à leurs propres variations de prix et de change.</figcaption>
+</figure>
+
+Le coussin existe donc. Il est même massif. Mais il repose largement sur les actions japonaises et, dans une moindre mesure, sur les actifs étrangers. Sa présence invalide la formule « les obligations ont ruiné l’assureur ». Elle ne garantit pas qu’il résisterait à n’importe quelle combinaison de chocs.
+
+Une baisse des actions réduirait le principal amortisseur. Une appréciation du yen modifierait la valeur en monnaie locale des actifs étrangers, sous réserve des couvertures. Des rachats plus élevés pourraient imposer de dégager du cash. Et la vente d’une obligation ancienne transformerait une moins-value jusque-là latente en perte réalisée.
+
+C’est la première distinction à conserver pendant toute l’enquête :
+
+```text
+moins-value latente
+≠ perte réalisée
+≠ sortie de trésorerie
+≠ insuffisance de capital
+≠ insolvabilité
+```
+
+## La courbe japonaise a changé de régime
+
+L’expression « fin de l’argent gratuit » est un raccourci. Tous les emprunteurs japonais ne se finançaient pas gratuitement et les rendements de toutes les maturités n’étaient pas nuls. Mais le changement de régime monétaire est réel.
+
+Le **23 janvier 2024**, la Banque du Japon appliquait encore **−0,1 %** à une partie des réserves bancaires et achetait les obligations d’État nécessaires pour maintenir le rendement à dix ans autour de zéro. La borne supérieure de 1 % servait alors de référence dans la conduite du contrôle de la courbe des taux.
+
+Le **19 mars 2024**, elle a mis fin au taux négatif et au contrôle de la courbe. Le taux au jour le jour devait évoluer autour de 0 à 0,1 %. Il est passé à **0,25 % le 31 juillet 2024**, à **0,50 % le 24 janvier 2025**, puis à **0,75 % le 19 décembre 2025**. Le **16 juin 2026**, la Banque du Japon l’a porté à **1 %** ; elle l’a maintenu à ce niveau le 31 juillet, même si un membre a proposé 1,25 %.
+
+La chronologie repose sur les [décisions de politique monétaire de la Banque du Japon](https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm), complétées par ses décisions de [janvier 2024](https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240123a.htm), [mars 2024](https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240319a.htm), [juillet 2024](https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240731a.htm), [janvier 2025](https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k250124a.htm) et [décembre 2025](https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k251219a.htm).
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-rate-fr-title jp-rate-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-rate-fr-title">Japon : deux ans pour sortir du régime de taux négatifs</title>
+<desc id="jp-rate-fr-desc">Taux directeur de la BoJ ; rendements moyens aux adjudications du ministère des Finances.</desc>
+<rect width="820" height="500" fill="#0c0d10"/>
+<text x="30" y="37" fill="#5eead4" font-size="16" font-weight="700">// Japon : deux ans pour sortir du régime de taux négatifs</text>
+<text x="30" y="59" fill="#8b909b" font-size="10.2">Taux directeur de la BoJ ; rendements moyens aux adjudications du ministère des Finances.</text>
+<rect x="30" y="80" width="760" height="240" rx="8" fill="#11141a" stroke="#2a2e38"/>
+<g stroke="#2a2e38" stroke-width="1">
+<line x1="54" y1="252.0" x2="760" y2="252.0"/>
+<line x1="54" y1="205.9" x2="760" y2="205.9"/>
+<line x1="54" y1="172.9" x2="760" y2="172.9"/>
+<line x1="54" y1="140.0" x2="760" y2="140.0"/>
+<line x1="54" y1="107.0" x2="760" y2="107.0"/>
+</g>
+<path d="M 74.0 252.0 L 175.0 252.0 L 175.0 232.2 L 276.0 232.2 L 276.0 205.9 L 377.0 205.9 L 377.0 172.9 L 478.0 172.9 L 478.0 140.0 L 579.0 140.0 L 579.0 107.0 L 680.0 107.0 L 680.0 107.0" fill="none" stroke="#5eead4" stroke-width="2.4" stroke-linejoin="round"/>
+
+        <circle cx="74" cy="252.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="74" y="239.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">−0,10 %</text>
+        <text x="74" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">23.01.24</text>
+        <text x="74" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Taux négatif + YCC</text>
+        <circle cx="175" cy="232.2" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="175" y="219.2" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0–0,10 %</text>
+        <text x="175" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">19.03.24</text>
+        <text x="175" y="310" text-anchor="middle" fill="#8b909b" font-size="8.4">Fin du taux négatif et du YCC</text>
+        <circle cx="276" cy="205.9" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="276" y="192.9" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0,25 %</text>
+        <text x="276" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">31.07.24</text>
+        <text x="276" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Premier relèvement</text>
+        <circle cx="377" cy="172.9" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="377" y="159.9" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0,50 %</text>
+        <text x="377" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">24.01.25</text>
+        <text x="377" y="310" text-anchor="middle" fill="#8b909b" font-size="8.4">Normalisation</text>
+        <circle cx="478" cy="140.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="478" y="127.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">0,75 %</text>
+        <text x="478" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">19.12.25</text>
+        <text x="478" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Nouveau palier</text>
+        <circle cx="579" cy="107.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="579" y="94.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">1,00 %</text>
+        <text x="579" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">16.06.26</text>
+        <text x="579" y="310" text-anchor="middle" fill="#8b909b" font-size="8.4">Relèvement à 1 %</text>
+        <circle cx="680" cy="107.0" r="4.5" fill="#0c0d10" stroke="#5eead4" stroke-width="2"/>
+        <text x="680" y="94.0" text-anchor="middle" fill="#5eead4" font-size="11.2" font-weight="700">1,00 %</text>
+        <text x="680" y="279" text-anchor="middle" fill="#d6d9df" font-size="9.5">31.07.26</text>
+        <text x="680" y="296" text-anchor="middle" fill="#8b909b" font-size="8.4">Maintien</text>
+<text x="30" y="342" fill="#d6d9df" font-size="11.5" font-weight="700">La pente longue est déjà ailleurs</text>
+
+        <rect x="34" y="354" width="232" height="90" rx="8" fill="#151820" stroke="#7aa2f7" stroke-width="1.2"/>
+        <text x="50" y="378" fill="#7aa2f7" font-size="11" font-weight="700">10 ans</text>
+        <text x="50" y="408" fill="#f5f6f8" font-size="23" font-weight="700">2,995 %</text>
+        <text x="50" y="425" fill="#8b909b" font-size="8.8">01.09.26</text>
+        <text x="50" y="439" fill="#8b909b" font-size="8.8">rendement moyen d’adjudication</text>
+        <rect x="286" y="354" width="232" height="90" rx="8" fill="#151820" stroke="#f5b13d" stroke-width="1.2"/>
+        <text x="302" y="378" fill="#f5b13d" font-size="11" font-weight="700">20 ans</text>
+        <text x="302" y="408" fill="#f5f6f8" font-size="23" font-weight="700">3,698 %</text>
+        <text x="302" y="425" fill="#8b909b" font-size="8.8">20.08.26</text>
+        <text x="302" y="439" fill="#8b909b" font-size="8.8">rendement moyen d’adjudication</text>
+        <rect x="538" y="354" width="232" height="90" rx="8" fill="#151820" stroke="#ff4d87" stroke-width="1.2"/>
+        <text x="554" y="378" fill="#ff4d87" font-size="11" font-weight="700">30 ans</text>
+        <text x="554" y="408" fill="#f5f6f8" font-size="23" font-weight="700">4,079 %</text>
+        <text x="554" y="425" fill="#8b909b" font-size="8.8">03.09.26</text>
+        <text x="554" y="439" fill="#8b909b" font-size="8.8">rendement moyen d’adjudication</text>
+<text x="30" y="478" fill="#8b909b" font-size="8.8">Sources : Banque du Japon ; ministère japonais des Finances. Les rendements sont ceux d’adjudications précises, pas une courbe de marché en continu.</text>
+</svg>
+<figcaption>En moins de trente mois, le taux directeur est passé du régime négatif à 1 %. La courbe longue s’est déplacée beaucoup plus haut : le rendement moyen de l’adjudication à trente ans du 3 septembre 2026 a atteint 4,079 %.</figcaption>
+</figure>
+
+Le déplacement du taux directeur ne résume pas celui de toute la courbe. Les adjudications du ministère des Finances donnent un instantané plus concret de ce que les nouveaux titres rapportent aux investisseurs.
+
+Le rendement moyen pondéré de l’adjudication à dix ans du **1er septembre 2026** a atteint **2,995 %**. Celui du vingt ans du **20 août** s’est établi à **3,698 %**. Le trente ans adjugé le **3 septembre** est sorti à **4,079 %**, contre 3,398 % lors de l’adjudication du 5 mars 2026 et 3,264 % un an plus tôt, le 4 septembre 2025. Ces valeurs sont des rendements moyens d’adjudications précises, publiés par le [ministère japonais des Finances](https://www.mof.go.jp/english/policy/jgbs/auction/calendar/index.htm). Elles ne doivent pas être confondues avec une courbe de clôture quotidienne.
+
+Dans le même temps, la banque centrale réduit ses achats. Son plan de juin 2026 prévoit environ **2 500 milliards de yens par mois** au troisième trimestre 2026, **2 300 milliards** au quatrième, puis **2 100 milliards** au premier trimestre 2027. À partir d’avril 2027, le montant indicatif serait d’environ 2 000 milliards par mois. La Banque du Japon estime que ses avoirs de JGB pourraient reculer de 36 à 39 % entre juin 2024 et mars 2030 si ce rythme était maintenu. Le plan conserve toutefois une clause de flexibilité en cas de hausse rapide des taux.
+
+Rien de tout cela ne prouve que le retrait de la Banque du Japon ait, à lui seul, provoqué le niveau des rendements longs. Les anticipations d’inflation, la trajectoire budgétaire, l’offre de titres, la demande étrangère et les arbitrages des investisseurs comptent également. Il établit néanmoins un fait : le principal acheteur historique laisse davantage de prix à découvrir au marché au moment où les bilans privés réévaluent leurs besoins.
+
+## Pourquoi le prix d’une vieille obligation baisse
+
+Une obligation à taux fixe promet des coupons déterminés à l’avance. Si un ancien JGB rapporte 0,5 % et qu’un titre neuf comparable rapporte 3 %, l’ancien doit devenir moins cher pour que son rendement total redevienne compétitif.
+
+La **[duration](/glossaire/duration/)** mesure approximativement la sensibilité du prix à un mouvement de taux. Une duration modifiée de 15 signifie qu’une hausse parallèle de 1 point de pourcentage entraîne, au premier ordre, une baisse d’environ 15 % de la valeur. Le calcul réel dépend aussi de la convexité, de la forme de la courbe, des options et du crédit.
+
+```text
+variation approximative de valeur
+= − duration modifiée × variation de taux × valeur initiale
+```
+
+Plus l’échéance est lointaine et le coupon faible, plus la duration tend à être élevée. C’est pourquoi les portefeuilles super-longs constitués pour faire face à des contrats d’assurance-vie peuvent afficher de lourdes moins-values lorsque les rendements remontent.
+
+Mais un assureur n’a pas seulement des actifs obligataires. Il a aussi, de l’autre côté, la valeur présente de prestations qu’il versera parfois dans vingt, trente ou quarante ans.
+
+<JapanLifeDurationShock lang="fr" />
+
+## Les deux côtés du bilan d’un assureur-vie
+
+Pour un fonds obligataire, la baisse du prix de ses titres réduit directement la valeur liquidative. Un assureur-vie est plus compliqué.
+
+Il collecte aujourd’hui des primes en échange de prestations futures. Ces engagements sont ses passifs. Lorsque le taux utilisé pour actualiser les paiements futurs augmente, leur valeur économique actuelle diminue. Si la duration des passifs est supérieure à celle des actifs, les passifs peuvent baisser davantage que les actifs sous un choc de taux. Le surplus économique augmente alors même que le portefeuille obligataire affiche des pertes latentes.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-duration-fr-title jp-duration-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-duration-fr-title">Quand les taux montent, les deux côtés du bilan bougent</title>
+<desc id="jp-duration-fr-desc">Illustration de premier ordre : actifs 100, passifs 90, durations 12 et 18 ans, choc parallèle de +100 points de base.</desc>
+<defs><marker id="jp-duration-arrow-fr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b909b"/></marker></defs>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// Quand les taux montent, les deux côtés du bilan bougent</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Illustration de premier ordre : actifs 100, passifs 90, durations 12 et 18 ans, choc parallèle de +100 points de base.</text>
+<rect x="34" y="92" width="322" height="280" rx="10" fill="#11141a" stroke="#2a2e38"/>
+<rect x="464" y="92" width="322" height="280" rx="10" fill="#11141a" stroke="#2a2e38"/>
+<text x="195" y="121" text-anchor="middle" fill="#d6d9df" font-size="13" font-weight="700">Avant le choc</text>
+<text x="625" y="121" text-anchor="middle" fill="#d6d9df" font-size="13" font-weight="700">Après +100 pb</text>
+
+<text x="58" y="158" fill="#8b909b" font-size="10">Actifs obligataires</text>
+<rect x="58" y="171" width="260" height="42" rx="6" fill="#7aa2f7" opacity="0.82"/>
+<text x="302" y="197" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">100,0</text>
+<text x="58" y="240" fill="#8b909b" font-size="10">Passifs d’assurance</text>
+<rect x="58" y="253" width="234" height="42" rx="6" fill="#f5b13d" opacity="0.9"/>
+<text x="276" y="279" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">90,0</text>
+<rect x="58" y="321" width="260" height="30" rx="5" fill="#151820"/>
+<text x="70" y="341" fill="#5eead4" font-size="10">Surplus économique</text>
+<text x="302" y="342" text-anchor="end" fill="#5eead4" font-size="14" font-weight="700">10,0</text>
+
+<path d="M372 224 H445" stroke="#8b909b" stroke-width="2" marker-end="url(#jp-duration-arrow-fr)"/>
+<text x="408" y="205" text-anchor="middle" fill="#ff4d87" font-size="12" font-weight="700">+100 pb</text>
+
+<text x="488" y="158" fill="#8b909b" font-size="10">Actifs obligataires</text>
+<rect x="488" y="171" width="229" height="42" rx="6" fill="#7aa2f7" opacity="0.82"/>
+<text x="701" y="197" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">88,0</text>
+<text x="488" y="224" fill="#7aa2f7" font-size="9.4">duration 12 → −12,0</text>
+<text x="488" y="250" fill="#8b909b" font-size="10">Passifs d’assurance</text>
+<rect x="488" y="263" width="192" height="42" rx="6" fill="#f5b13d" opacity="0.9"/>
+<text x="664" y="289" text-anchor="end" fill="#0c0d10" font-size="17" font-weight="700">73,8</text>
+<text x="488" y="318" fill="#f5b13d" font-size="9.4">duration 18 → −16,2</text>
+<rect x="488" y="330" width="260" height="30" rx="5" fill="#151820"/>
+<text x="500" y="350" fill="#5eead4" font-size="10">Surplus économique</text>
+<text x="732" y="351" text-anchor="end" fill="#5eead4" font-size="14" font-weight="700">14,2</text>
+
+<rect x="34" y="397" width="752" height="46" rx="6" fill="#151820"/>
+<text x="48" y="417" fill="#8b909b" font-size="8.7">Exemple pédagogique, unités arbitraires. Approximation linéaire : ΔV ≈ −duration × Δtaux × V.</text>
+<text x="48" y="433" fill="#8b909b" font-size="8.7">Hors convexité, options, garanties, fiscalité, change et capital réglementaire.</text>
+</svg>
+<figcaption>Dans cet exemple purement pédagogique, le passif est plus long que l’actif : une hausse des taux fait davantage baisser sa valeur et améliore le surplus économique. La comptabilité et la liquidité peuvent pourtant se dégrader en parallèle.</figcaption>
+</figure>
+
+C’est l’un des messages centraux du [rapport de suivi de l’assurance publié par la FSA le 6 août 2026](https://www.fsa.go.jp/news/r8/hoken/20260806/02.pdf). L’autorité japonaise explique que l’ancien dispositif prudentiel valorisait largement les passifs avec des hypothèses verrouillées à l’origine, tandis que le nouveau ratio de solvabilité économique mesure actifs et passifs de façon plus cohérente avec le marché.
+
+Cette mécanique n’annule pas les problèmes comptables et de liquidité. Elle dit seulement que la perte de prix d’une obligation ne suffit pas à connaître la variation du bilan économique complet.
+
+Les compagnies disposent en outre de catégories comptables différentes. Les **policy-reserve-matching bonds** sont des obligations affectées à des sous-portefeuilles destinés à faire correspondre la duration des actifs à celle de groupes de contrats. Sous certaines conditions, elles sont comptabilisées au coût amorti. Leur prix de marché reste publié, mais sa variation ne traverse pas automatiquement le résultat comme celle d’un titre de transaction.
+
+Ce traitement achète du temps. Il ne transforme pas une obligation à faible coupon en obligation à fort coupon. Si le titre est conservé et remboursé au pair, la moins-value de marché peut se résorber. S’il doit être vendu, l’écart devient réel.
+
+## Quatre diagnostics qui ne racontent pas la même chose
+
+La confusion vient souvent du mot « perte ». Quatre mesures doivent être séparées.
+
+| Mesure | Ce qu’elle décrit | Ce qu’elle ne prouve pas |
+|---|---|---|
+| Écart de juste valeur | Prix de marché contre valeur comptable à une date | Une vente ou une sortie de cash |
+| Gain ou perte réalisé | Effet d’une vente, d’une dépréciation ou d’un dérivé sur le résultat | La variation économique de tous les passifs |
+| Liquidité | Cash et actifs mobilisables pour payer prestations, rachats et marges | La solvabilité à long terme |
+| ESR | Capital disponible rapporté au capital requis sous chocs économiques | Un stock de trésorerie immédiatement utilisable |
+
+Le **ratio de solvabilité économique**, ou ESR, est entré en vigueur au Japon à la fin de mars 2026. Un ratio de 195 % signifie, schématiquement, que les ressources reconnues pour absorber les risques représentent 1,95 fois le capital requis par le cadre. Cela ne signifie pas que 195 % des pertes seraient remboursables en cash, ni que le ratio ne peut pas varier rapidement.
+
+L’ancien ratio de marge de solvabilité et le nouvel ESR ne doivent pas être chaînés comme une même série historique. Les valorisations, les risques couverts et les dénominateurs diffèrent.
+
+## Le secteur gagne davantage tout en vendant davantage à perte
+
+Le premier exercice complet dans ce nouvel environnement produit un résultat qui paraît, là encore, contradictoire.
+
+Pour les **21 grandes compagnies d’assurance-vie** agrégées sur une base non consolidée, la FSA indique que, pendant l’exercice clos le 31 mars 2026 :
+
+- les primes et autres revenus ont atteint **38 936 milliards de yens**, en hausse de 8,7 % ;
+- le bénéfice cœur de métier a atteint **4 674 milliards**, en hausse de 11,9 % ;
+- la perte nette en capital a atteint **2 069 milliards**, contre 457 milliards un an plus tôt ;
+- le résultat net a atteint **2 538 milliards**, en hausse de 10,9 %.
+
+La [synthèse de la FSA publiée le 19 juin 2026](https://www.fsa.go.jp/en/news/2026/20260619/01.pdf) attribue la hausse des primes notamment au succès de contrats à prime unique libellés en yens, redevenus plus attractifs grâce aux taux domestiques. Elle explique également que l’amélioration des intérêts et dividendes a soutenu le bénéfice courant, malgré la détérioration des gains en capital causée surtout par les pertes sur cessions de titres.
+
+La transition possède donc deux faces.
+
+Les anciennes obligations perdent de la valeur et peuvent coûter cher lorsqu’elles sont vendues. Les nouveaux placements rapportent davantage. Les nouveaux produits peuvent être proposés avec de meilleures conditions. La marge d’investissement se reconstitue graduellement.
+
+La question de risque n’est pas « hausse ou baisse des taux ? ». Elle est **à quelle vitesse**, avec quelle courbe et avec quelle capacité de financement pendant le remplacement du vieux portefeuille par le nouveau.
+
+## Nippon Life : le choc est déjà passé dans le compte de résultat
+
+Chez Nippon Life, le rendement présenté dans le calcul du bénéfice cœur de métier pour les obligations domestiques du compte général est devenu négatif à **−3,03 %** sur l’exercice clos en mars 2026. La définition interne retranche les dépenses d’investissement des revenus puis rapporte le solde à l’encours moyen. Ce n’est pas le coupon moyen du portefeuille. Les pertes sur ventes contribuent fortement à ce résultat.
+
+La compagnie a enregistré **1 729 milliards de yens de pertes sur cessions de titres**, contre 502 milliards l’année précédente. Les seules cessions d’obligations domestiques ont généré 1 365 milliards de pertes. Dans le même temps, son bénéfice cœur de métier non consolidé a atteint 1 066 milliards de yens, contre 920 milliards un an plus tôt.
+
+Cette combinaison est compatible avec une stratégie consistant à vendre des titres anciens à faible rendement, à reconnaître la perte immédiatement, puis à réinvestir à des taux supérieurs. Elle n’en démontre pas chaque motif transaction par transaction. Les comptes publiés ne fournissent pas un registre détaillé reliant chaque vente à son réinvestissement.
+
+Les prestations de rachat versées par Nippon Life ont également augmenté, de **1 403 milliards à 2 204 milliards de yens**. Ce mouvement mérite d’être suivi, mais il ne constitue pas, seul, la preuve d’une ruée des assurés. Il peut dépendre de la taille et de la composition du portefeuille, de produits arrivés à une fenêtre de sortie, de transferts et de contrats avec ajustement à la valeur de marché.
+
+Selon sa [présentation des résultats et de l’ESR](https://www.nissay.co.jp/sites/default/files/assets/global/news/files/05262026_3.pdf), le ratio ESR consolidé du groupe est passé de **222 % à 195 %** entre mars 2025 et mars 2026. Nippon Life attribue 28 points de baisse à l’allocation d’actifs et aux investissements d’entreprise, notamment dans un exercice marqué par l’acquisition de Resolution Life, quatre points aux variations économiques, et cinq points positifs aux affaires nouvelles et au financement subordonné. Présenter la baisse comme l’effet pur des taux japonais serait donc faux. Le groupe restait au-dessus de son seuil prudentiel publié de 100 %.
+
+## Meiji Yasuda et Sumitomo : même marque obligataire, coussins différents
+
+Meiji Yasuda fournit un deuxième exemple. Au 31 mars 2026, son compte général affichait :
+
+- **−2 162 milliards de yens** sur les obligations domestiques ;
+- **+6 142 milliards** sur les actions domestiques ;
+- **+709 milliards** sur les titres étrangers ;
+- **+695 milliards** sur l’immobilier ;
+- soit **+5 603 milliards** de gains latents sur l’ensemble des actifs concernés.
+
+Son ratio ESR de groupe préliminaire s’établissait à **208 %**, en baisse de huit points sur un an. Les chiffres sont issus de la [présentation annuelle de Meiji Yasuda](https://www.meijiyasuda.co.jp/english/disclosure/pdf/20260526_02.pdf). Là encore, un important coussin actions masque, au sens agrégé, la perte obligataire.
+
+Sumitomo Life publie une autre coupe comptable. Sur base consolidée au 31 mars 2026, ses obligations destinées à faire correspondre les réserves avaient une valeur comptable de 13 761 milliards de yens et une juste valeur de 11 534 milliards, soit un écart négatif de **2 227 milliards**. Ses titres détenus jusqu’à l’échéance présentaient un écart négatif supplémentaire de 194 milliards. Pourtant, le portefeuille disponible à la vente affichait un gain net de **2 175 milliards**, principalement grâce aux actions et à une partie des titres étrangers. Les données figurent dans les [comptes annuels de Sumitomo Life](https://www.sumitomolife.co.jp/english/pdf/newsrelease/fs2026withnotes.pdf).
+
+Ces trois compagnies ne peuvent pas être classées à partir d’une seule colonne. Les périmètres, les modèles de capital, les types de contrats, les couvertures et la composition des portefeuilles diffèrent. Leur point commun est plus simple : les pertes de prix sur les obligations domestiques sont déjà considérables, mais elles coexistent encore avec d’autres gains et avec des ratios de solvabilité publiés au-dessus du seuil d’intervention.
+
+## Le vrai risque commence lorsqu’il faut vendre
+
+La FSA ne décrit pas une crise de solvabilité. Son rapport 2026 estime que les assureurs japonais maintiennent globalement une solidité financière élevée. Il souligne néanmoins que les pertes latentes sur obligations affectent la comptabilité prudentielle traditionnelle et la liquidité.
+
+Le canal de transmission est concret :
+
+```text
+taux longs en hausse
+        ↓
+prix des anciennes obligations en baisse
+        ↓
+moins-value latente
+        ↓
+besoin de cash ou décision de repositionnement
+        ↓
+vente du titre
+        ↓
+perte réalisée
+        ↓
+réduction du capital comptable ou des réserves disponibles
+```
+
+La vente peut être volontaire. Elle peut aussi être accélérée par des prestations, des rachats, des appels de marge sur dérivés, une exigence de collatéral ou l’envie de proposer des produits plus rémunérateurs pour empêcher les clients de partir vers des contrats récents.
+
+L’assureur réalise alors une perte aujourd’hui pour gagner davantage demain. Le pari est rationnel si le nouveau rendement compense suffisamment la perte et si la compagnie dispose du capital et de la liquidité nécessaires pendant la transition. Il devient dangereux si plusieurs sources de cash se tendent en même temps.
+
+## Le yen ajoute un deuxième prix au portefeuille
+
+Les assureurs japonais ont constitué d’importants portefeuilles étrangers pendant les années de rendements domestiques très faibles.
+
+Au 31 mars 2026, Nippon Life détenait, sur base non consolidée, **25 003 milliards de yens de titres étrangers**, soit 29,5 % de ses investissements en titres selon son tableau de composition du compte général. Les obligations étrangères représentaient 12 252 milliards ; les actions et autres titres étrangers 12 751 milliards.
+
+Ces actifs introduisent trois risques distincts :
+
+1. le prix de l’obligation ou de l’action ;
+2. le taux de change entre la devise de l’actif et le yen ;
+3. le coût et la liquidité de la couverture.
+
+Nippon Life indique utiliser des contrats à terme, options et swaps de change pour couvrir certaines expositions. Dans le détail de son bénéfice cœur de métier, le coût de couverture de change représentait **174 milliards de yens** sur l’exercice, contre 211 milliards un an plus tôt.
+
+Une appréciation du yen réduit la valeur en yens d’un actif en dollars non couvert. Une couverture peut compenser cette baisse, mais elle possède un coût et peut créer des besoins de collatéral. Le montant brut d’actifs étrangers ne permet donc pas de calculer directement une perte de change. Il faut connaître la devise, la couverture naturelle procurée par des contrats libellés en devises, le taux de couverture financière, sa maturité et les contreparties.
+
+Le Japon diffère ici de Taïwan. La remontée des rendements domestiques donne progressivement aux assureurs une alternative aux actifs étrangers. Le rapatriement n’a toutefois rien d’automatique : il dépend du rendement japonais après couverture, des gains ou pertes déjà incorporés, du change et des besoins de diversification.
+
+## Le coussin actions est utile précisément parce qu’il peut bouger
+
+Chez Nippon Life, les gains latents sur actions domestiques dépassaient 10 700 milliards de yens. Chez Meiji Yasuda, ils dépassaient 6 100 milliards. Ces montants protègent le bilan comptable à la date observée.
+
+Ils ne constituent pas une réserve de cash fixe.
+
+Vendre des actions pour couvrir un besoin de liquidité réduit l’exposition future mais peut générer une fiscalité, modifier l’allocation stratégique et sacrifier des dividendes. Conserver les actions expose à une correction. Un choc combinant hausse supplémentaire des taux longs et baisse du marché actions retirerait donc simultanément de la valeur au portefeuille obligataire et à son principal amortisseur latent.
+
+Ce scénario n’est pas une prévision. À la date observée, les gains latents publiés sur les actions constituent encore une marge importante. Mais une enquête sur le risque doit regarder ce qui invaliderait la lecture confortable d’un gain latent net positif.
+
+## Qui achète les JGB quand la Banque du Japon se retire ?
+
+La question dépasse les assureurs.
+
+Selon les [comptes de flux financiers de la Banque du Japon](https://www.boj.or.jp/en/statistics/sj/sj.htm), la banque centrale détenait **47,88 %** de la valeur de marché des titres de l’État central et obligations FILP à fin mars 2026. Les assurances et fonds de pension en détenaient **18,44 %**. Les banques de dépôts représentaient 13,15 %, les investisseurs étrangers 8,09 % et les régimes publics de pension 7,24 %.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-holders-fr-title jp-holders-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-holders-fr-title">Le retrait de la BoJ n’a pas encore été relayé par les assureurs</title>
+<desc id="jp-holders-fr-desc">Part de la valeur de marché des titres de l’État central et obligations FILP.</desc>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// Le retrait de la BoJ n’a pas encore été relayé par les assureurs</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Part de la valeur de marché des titres de l’État central et obligations FILP.</text>
+<rect x="30" y="86" width="760" height="300" rx="8" fill="#11141a" stroke="#2a2e38"/>
+<rect x="52" y="106" width="12" height="12" rx="2" fill="#7aa2f7"/><text x="72" y="116" fill="#8b909b" font-size="9.3">Banque du Japon</text>
+<rect x="250" y="106" width="12" height="12" rx="2" fill="#5eead4"/><text x="270" y="116" fill="#8b909b" font-size="9.3">Assurances et fonds de pension</text>
+<rect x="545" y="106" width="12" height="12" rx="2" fill="#2a2e38"/><text x="565" y="116" fill="#8b909b" font-size="9.3">Tous les autres secteurs</text>
+
+        <text x="40" y="166" fill="#d6d9df" font-size="11.5">Mars 2011</text>
+        <rect x="155" y="142" width="49.26" height="36" rx="4" fill="#7aa2f7"/>
+        <rect x="204.26" y="142" width="150.84" height="36" fill="#5eead4"/>
+        <rect x="355.10" y="142" width="399.90" height="36" rx="4" fill="#2a2e38"/>
+        <text x="179.63" y="165" text-anchor="middle" fill="#7aa2f7" font-size="9.2" font-weight="700">8.21%</text>
+        <text x="279.68" y="165" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">25.14%</text>
+        <text x="555.05" y="165" text-anchor="middle" fill="#d6d9df" font-size="9.2" font-weight="700">66.65%</text>
+        <text x="40" y="251" fill="#d6d9df" font-size="11.5">Mars 2025</text>
+        <rect x="155" y="227" width="310.38" height="36" rx="4" fill="#7aa2f7"/>
+        <rect x="465.38" y="227" width="120.12" height="36" fill="#5eead4"/>
+        <rect x="585.50" y="227" width="169.50" height="36" rx="4" fill="#2a2e38"/>
+        <text x="310.19" y="250" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">51.73%</text>
+        <text x="525.44" y="250" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">20.02%</text>
+        <text x="670.25" y="250" text-anchor="middle" fill="#d6d9df" font-size="9.2" font-weight="700">28.25%</text>
+        <text x="40" y="336" fill="#d6d9df" font-size="11.5">Mars 2026</text>
+        <rect x="155" y="312" width="287.28" height="36" rx="4" fill="#7aa2f7"/>
+        <rect x="442.28" y="312" width="110.64" height="36" fill="#5eead4"/>
+        <rect x="552.92" y="312" width="202.08" height="36" rx="4" fill="#2a2e38"/>
+        <text x="298.64" y="335" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">47.88%</text>
+        <text x="497.60" y="335" text-anchor="middle" fill="#0c0d10" font-size="9.2" font-weight="700">18.44%</text>
+        <text x="653.96" y="335" text-anchor="middle" fill="#d6d9df" font-size="9.2" font-weight="700">33.68%</text>
+<text x="155" y="373" fill="#8b909b" font-size="8.5">0%</text><text x="455" y="373" text-anchor="middle" fill="#8b909b" font-size="8.5">50%</text><text x="755" y="373" text-anchor="end" fill="#8b909b" font-size="8.5">100%</text>
+<text x="30" y="414" fill="#8b909b" font-size="8.8">Source : Banque du Japon, comptes de flux financiers, données de fin de trimestre à valeur de marché.</text>
+<text x="30" y="432" fill="#8b909b" font-size="8.8">Les données 2005–2026 ont été révisées le 25 juin 2026. « Assurances et pensions » inclut plus que les seuls assureurs-vie.</text>
+<text x="30" y="453" fill="#d6d9df" font-size="9.5">Entre mars 2025 et mars 2026, les deux parts ont reculé. Le reste du marché a absorbé davantage.</text>
+</svg>
+<figcaption>La Banque du Japon reste de loin le premier détenteur, mais sa part diminue. Celle des assurances et fonds de pension a également reculé entre mars 2025 et mars 2026 ; ils n’ont pas encore pris le relais en proportion.</figcaption>
+</figure>
+
+Le graphique impose une correction importante à l’histoire habituelle. Entre mars 2025 et mars 2026, la part de la Banque du Japon a reculé de 51,73 % à 47,88 %, mais celle des assurances et fonds de pension a également diminué, de 20,02 % à 18,44 %. À cette date, ils n’avaient donc pas remplacé la banque centrale en proportion. D’autres secteurs avaient absorbé davantage du stock.
+
+Les parts sont calculées à la valeur de marché. Une baisse du prix des obligations peut modifier les pourcentages sans transaction équivalente. La catégorie « assurances et fonds de pension » dépasse les seuls assureurs-vie. Et les données de mars 2026 sont préliminaires, après une révision rétrospective publiée le 25 juin.
+
+Il reste néanmoins un problème de prix : à mesure que la banque centrale réduit ses achats, quel rendement attirera durablement les investisseurs privés sur les maturités de vingt, trente et quarante ans ? Les assureurs ont besoin d’actifs longs pour rapprocher la duration de leurs engagements. Ils ont aussi déjà accumulé des moins-values sur les générations précédentes.
+
+Des rendements plus élevés peuvent les faire revenir. Mais la transition peut réclamer d’abord des pertes réalisées, du capital et du temps.
+
+## Le nouveau ratio ESR corrige un angle mort sans supprimer les autres
+
+Le Japon a introduit son cadre de solvabilité économique à la fin de mars 2026. La réforme rapproche le contrôle prudentiel de la réalité économique : les passifs d’assurance sont actualisés selon les conditions de marché et les risques sont évalués dans un cadre plus large que l’ancien ratio.
+
+Lors du test de terrain portant sur mars 2025, les 41 assureurs-vie japonais affichaient en moyenne un ESR autonome de **215 %**, en baisse de quatre points. Ce chiffre, publié par la FSA, ne doit pas être présenté comme le ratio final du secteur au 31 mars 2026. Il porte sur une date antérieure et sur un exercice de test.
+
+Le nouveau régime améliore la lecture de l’exposition aux taux. Il crée aussi une tension avec la comptabilité prudentielle utilisée pour les distributions et certains mécanismes de contrôle, où les passifs restent davantage verrouillés. La FSA a donc ouvert un travail sur le rôle futur de cette comptabilité.
+
+En clair :
+
+- l’ESR peut montrer qu’une hausse de taux améliore le surplus économique ;
+- le compte de résultat peut montrer des pertes sur ventes de JGB ;
+- la trésorerie peut se tendre ;
+- le capital comptable disponible pour absorber ou distribuer ces pertes peut bouger autrement.
+
+Une meilleure mesure ne fusionne pas ces quatre réalités.
+
+## Le stress japonais est une séquence
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jp-risk-fr-title jp-risk-fr-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:10px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="jp-risk-fr-title">Le vrai stress vient de la séquence, pas d’un seul chiffre</title>
+<desc id="jp-risk-fr-desc">Scénario de transmission, pas une prévision ni un test quantifié d’un assureur.</desc>
+<defs><marker id="jp-risk-arrow-fr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b909b"/></marker></defs>
+<rect width="820" height="470" fill="#0c0d10"/>
+<text x="30" y="38" fill="#5eead4" font-size="16" font-weight="700">// Le vrai stress vient de la séquence, pas d’un seul chiffre</text>
+<text x="30" y="61" fill="#8b909b" font-size="10.2">Scénario de transmission, pas une prévision ni un test quantifié d’un assureur.</text>
+
+        <rect x="30" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#ff4d87" stroke-width="1.2"/>
+        <text x="44" y="126" fill="#ff4d87" font-size="12" font-weight="700">Taux longs ↑</text>
+        <text x="44" y="151" fill="#d6d9df" font-size="9.5">prix des JGB anciens ↓</text>
+        <path d="M117.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-fr)"/>
+        <rect x="225" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#f5b13d" stroke-width="1.2"/>
+        <text x="239" y="126" fill="#f5b13d" font-size="12" font-weight="700">Actions ↓</text>
+        <text x="239" y="151" fill="#d6d9df" font-size="9.5">coussin latent ↓</text>
+        <path d="M312.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-fr)"/>
+        <rect x="420" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#7aa2f7" stroke-width="1.2"/>
+        <text x="434" y="126" fill="#7aa2f7" font-size="12" font-weight="700">Yen ↑</text>
+        <text x="434" y="151" fill="#d6d9df" font-size="9.5">actifs étrangers traduits ↓</text>
+        <path d="M507.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-fr)"/>
+        <rect x="615" y="98" width="175" height="82" rx="8" fill="#151820" stroke="#5eead4" stroke-width="1.2"/>
+        <text x="629" y="126" fill="#5eead4" font-size="12" font-weight="700">Rachats ↑</text>
+        <text x="629" y="151" fill="#d6d9df" font-size="9.5">besoin de cash ↑</text>
+        <path d="M702.5 181 V219" stroke="#8b909b" stroke-width="1.6" marker-end="url(#jp-risk-arrow-fr)"/>
+
+        <rect x="30" y="228" width="236" height="72" rx="8" fill="#11141a" stroke="#ff4d87" stroke-width="1.2"/>
+        <text x="46" y="255" fill="#ff4d87" font-size="11.5" font-weight="700">Compte de résultat</text>
+        <text x="46" y="279" fill="#d6d9df" font-size="9.4">pertes réalisées si vente</text>
+        <rect x="292" y="228" width="236" height="72" rx="8" fill="#11141a" stroke="#5eead4" stroke-width="1.2"/>
+        <text x="308" y="255" fill="#5eead4" font-size="11.5" font-weight="700">Liquidité</text>
+        <text x="308" y="279" fill="#d6d9df" font-size="9.4">collatéral + prestations</text>
+        <rect x="554" y="228" width="236" height="72" rx="8" fill="#11141a" stroke="#7aa2f7" stroke-width="1.2"/>
+        <text x="570" y="255" fill="#7aa2f7" font-size="11.5" font-weight="700">Valeur économique</text>
+        <text x="570" y="279" fill="#d6d9df" font-size="9.4">actifs ET passifs bougent</text>
+<path d="M148 301 C148 330 220 330 220 350" stroke="#8b909b" fill="none" marker-end="url(#jp-risk-arrow-fr)"/>
+<path d="M410 301 V350" stroke="#8b909b" fill="none" marker-end="url(#jp-risk-arrow-fr)"/>
+<path d="M672 301 C672 330 600 330 600 350" stroke="#8b909b" fill="none" marker-end="url(#jp-risk-arrow-fr)"/>
+<rect x="90" y="360" width="640" height="55" rx="9" fill="#151820" stroke="#ff4d87" stroke-width="1.3"/>
+<text x="410" y="384" text-anchor="middle" fill="#f5f6f8" font-size="11.5" font-weight="700">La contrainte devient dangereuse lorsqu’elle force la vente</text>
+<text x="410" y="403" text-anchor="middle" fill="#8b909b" font-size="8.8">Passifs longs · ALM · liquidité · couvertures · capital · réinvestissement à meilleur rendement</text>
+<text x="30" y="449" fill="#8b909b" font-size="8.5">Schéma l0g d’après les mécanismes décrits par la FSA. Les flèches indiquent des canaux possibles, pas une causalité certaine.</text>
+</svg>
+<figcaption>La moins-value devient critique lorsqu’elle rencontre une contrainte de cash. À l’inverse, des passifs stables, des couvertures et le réinvestissement à meilleur rendement peuvent rendre la transition absorbable.</figcaption>
+</figure>
+
+Le scénario le plus dangereux n’est pas nécessairement une nouvelle hausse isolée des taux. Il combine plusieurs événements :
+
+1. **la courbe longue se tend encore**, réduisant la valeur des anciens JGB ;
+2. **les actions corrigent**, diminuant le coussin latent ;
+3. **le yen s’apprécie**, pesant sur les actifs étrangers non couverts et modifiant la valeur des dérivés ;
+4. **les rachats ou besoins de collatéral augmentent**, forçant à trouver du cash ;
+5. **les ventes cristallisent les pertes** au moment où le capital de transition est le plus utile.
+
+La chaîne inverse existe aussi. Des passifs très longs et stables donnent du temps. Les couvertures fonctionnent. Les nouveaux rendements augmentent progressivement les revenus. Les produits en yens attirent de nouvelles primes. Les obligations arrivent à échéance sans vente. Le surplus économique reste solide.
+
+La différence entre ces trajectoires ne se lit pas dans une seule moins-value.
+
+## Le meilleur contre-argument : les taux plus élevés sont aussi le remède
+
+L’hypothèse pessimiste peut facilement devenir paresseuse : des obligations perdent de la valeur, donc les assureurs sont fragilisés, donc ils vendront, donc les taux monteront encore.
+
+Les données disponibles ne permettent pas cette conclusion.
+
+Le bénéfice cœur de métier des 21 grandes compagnies a progressé de 11,9 % sur l’exercice clos en mars 2026. Les primes ont augmenté, notamment grâce aux produits en yens. Nippon Life et Meiji Yasuda conservent d’importants gains latents agrégés. Les ratios ESR publiés pour les grands groupes restent au-dessus du seuil prudentiel. La FSA décrit une solidité financière globalement élevée.
+
+Surtout, l’assurance-vie est financée par des passifs plus longs et généralement plus stables que les dépôts bancaires. Une compagnie n’a pas à rembourser chaque contrat à vue au pair. Les pénalités, ajustements de valeur de marché, comportements des assurés et échéanciers contractuels ralentissent la sortie des fonds.
+
+La hausse des taux répare progressivement un modèle longtemps comprimé par de faibles rendements. Elle accroît le revenu des réinvestissements et permet de mieux tarifer les nouvelles garanties.
+
+Le contre-argument a cependant une limite : le remède agit avec retard, tandis qu’une vente, un rachat ou un appel de marge exige du cash immédiatement.
+
+## Ce qui est établi, probable et encore inconnu
+
+### Établi
+
+Les principales compagnies japonaises affichent des moins-values latentes très élevées sur leurs obligations domestiques à fin mars 2026. Ces pertes coexistent avec des gains sur actions et actifs étrangers, des bénéfices courants en hausse au niveau agrégé et des ratios ESR publiés supérieurs au seuil d’intervention.
+
+La FSA identifie explicitement l’effet des pertes obligataires sur la comptabilité et la liquidité. Elle indique aussi que les achats de JGB super-longs destinés à réduire les écarts de duration se sont calmés et que certaines compagnies ont vendu des obligations peu rémunératrices pour acheter des titres mieux rémunérés.
+
+La Banque du Japon a mis fin au taux négatif et au contrôle de la courbe en mars 2024, porté son taux directeur à 1 % en juin 2026 et engagé une réduction graduelle de ses achats de JGB.
+
+### Compatible avec les données
+
+Les assureurs pourraient continuer à réaliser des pertes sur les anciennes obligations afin d’améliorer le rendement futur de leurs portefeuilles. Des taux domestiques plus élevés pourraient aussi réduire progressivement l’intérêt relatif de certains actifs étrangers.
+
+Le risque systémique augmenterait si les pertes obligataires rencontraient simultanément une correction des actions, une appréciation du yen et une hausse des besoins de liquidité.
+
+### Inconnu publiquement
+
+Les publications ne donnent pas, dans un format homogène :
+
+- la duration économique complète des actifs et des passifs de chaque groupe ;
+- la distribution des rachats par type de contrat et leur sensibilité aux taux ;
+- les échéanciers de collatéral associés aux dérivés ;
+- l’exposition nette au change après couvertures naturelles et financières ;
+- le volume exact de JGB que les assureurs souhaitent acheter à chaque niveau de rendement ;
+- la part des ventes obligataires motivée par la liquidité, l’ALM, la fiscalité ou le simple réinvestissement.
+
+Sans ces données, il serait abusif de publier un « montant de pertes du secteur » obtenu en additionnant des justes valeurs de périmètres différents.
+
+## Les indicateurs à surveiller
+
+La suite du dossier suivra six séries.
+
+**Les pertes réalisées sur cessions d’obligations domestiques.** Elles montrent combien de moins-values quittent les annexes pour entrer dans le résultat.
+
+**Les prestations de rachat et leur composition.** Une hausse est plus inquiétante lorsqu’elle concerne des contrats sensibles au rendement et qu’elle dépasse les entrées de primes comparables.
+
+**Les gains latents sur actions.** Ils constituent aujourd’hui un coussin important, mais variable.
+
+**Les coûts et ratios de couverture de change.** Ils permettent de relier le bilan japonais à la boucle du dollar asiatique.
+
+**Les ESR et leurs ponts de variation.** Un ratio isolé dit moins que la contribution respective des marchés, des acquisitions, des affaires nouvelles et du capital subordonné.
+
+**La demande aux adjudications super-longues.** Le niveau du rendement, le ratio de couverture et l’écart entre prix moyen et prix marginal aideront à voir à quel prix le secteur privé remplace progressivement la banque centrale.
+
+## Un risque distribué dans le bilan
+
+Le Japon n’offre pas, au 4 septembre 2026, la photographie d’une crise d’assurance-vie. Il offre quelque chose de plus utile pour comprendre le risque : une transition où le même choc améliore une partie du modèle et en fragilise une autre.
+
+La hausse des taux réduit la valeur des vieux JGB. Elle réduit aussi la valeur économique d’engagements très longs. Elle provoque des pertes lorsqu’un assureur vend. Elle augmente les revenus lorsqu’il réinvestit. Elle rend les produits en yens plus attractifs. Elle oblige enfin le marché privé à redécouvrir le prix d’une dette dont près de la moitié reste détenue par la banque centrale.
+
+Le danger se situe dans le calendrier.
+
+Un assureur capable d’attendre peut laisser ses obligations converger vers le pair et renouveler son portefeuille à meilleur rendement. Un assureur confronté au même moment à des rachats, à une correction boursière, à un yen plus fort ou à des appels de marge peut devoir vendre précisément lorsque le marché lui offre le moins bon prix.
+
+La fin de l’argent gratuit n’entre donc pas dans les bilans comme une seule facture. Elle entre par plusieurs portes, à des vitesses différentes. L’enquête doit désormais suivre celle qui s’ouvre en premier.
+
+---
+
+### Sources principales et périmètre
+
+- [Financial Services Agency, Annual Report on Insurance Monitoring 2026, rapport complet en japonais, 6 août 2026](https://www.fsa.go.jp/news/r8/hoken/20260806/02.pdf)
+- [FSA, résumé anglais du rapport de suivi, 6 août 2026](https://www.fsa.go.jp/en/news/2026/20260806/01.pdf)
+- [FSA, résultats agrégés de 21 grandes compagnies d’assurance-vie, exercice clos le 31 mars 2026](https://www.fsa.go.jp/en/news/2026/20260619/01.pdf)
+- [Nippon Life, résultats détaillés, exercice clos le 31 mars 2026](https://www.nissay.co.jp/assets/global/report/financial_results/05262026_2.pdf)
+- [Nippon Life, présentation des résultats et du ratio ESR](https://www.nissay.co.jp/sites/default/files/assets/global/news/files/05262026_3.pdf)
+- [Meiji Yasuda, résultats de l’exercice clos le 31 mars 2026](https://www.meijiyasuda.co.jp/english/disclosure/pdf/20260526_02.pdf)
+- [Sumitomo Life, comptes consolidés au 31 mars 2026](https://www.sumitomolife.co.jp/english/pdf/newsrelease/fs2026withnotes.pdf)
+- [Banque du Japon, décisions de politique monétaire 2026](https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm)
+- [Banque du Japon, plan d’achats de JGB de juin 2026](https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260616d.pdf)
+- [Banque du Japon, comptes de flux financiers, premier trimestre 2026](https://www.boj.or.jp/en/statistics/sj/sj.htm)
+- [Ministère japonais des Finances, résultats des adjudications de JGB](https://www.mof.go.jp/english/policy/jgbs/auction/calendar/index.htm)
+
+Les données de compagnies associent parfois un périmètre non consolidé pour les actifs et un périmètre consolidé pour l’ESR. Le texte le signale et ne les additionne pas. Les conversions en milliers de milliards de yens sont arrondies à partir des unités publiées. Aucun taux de change en euros ou en dollars n’est utilisé, afin de ne pas ajouter une date de conversion étrangère au diagnostic.
