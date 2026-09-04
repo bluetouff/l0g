@@ -1,0 +1,454 @@
+---
+title: "L’usine invisible qui protège l’Asie du dollar"
+seoTitle: "Swaps de change en Asie : le risque des couvertures courtes | l0g"
+ogTitle: "Une obligation de vingt ans, quatre-vingts contrats"
+ogImage: "/illustrations/news/asia-dollar-hedge-machine-v1.jpg"
+description: "Assureurs et fonds asiatiques couvrent leurs actifs longs en dollars avec des dérivés souvent courts. Enquête sur les swaps, les banques, les marges et le risque de règlement."
+pubDate: 2026-09-04T20:30:00+02:00
+updatedDate: 2026-09-04T20:30:00+02:00
+tags: ["Asie", "dollar", "swaps de change", "dérivés", "assurance-vie", "fonds de pension", "liquidité", "stabilité financière", "Taïwan", "Japon", "Corée du Sud"]
+draft: false
+quickTake:
+  fact: "La BIS recense 155 000 milliards de dollars de dérivés de change en cours au 30 juin 2025, dont 100 000 milliards de forwards et swaps arrivant à échéance sous un an."
+  importance: "Les actifs asiatiques peuvent rester investis pendant des décennies alors que leur protection doit être repricée, financée et renouvelée bien plus souvent."
+  uncertainty: "Les calendriers de hedge, contreparties, seuils de collatéral et positions nettes des grands investisseurs asiatiques ne sont pas publiés dans une base régionale homogène."
+---
+
+import AsiaDollarHedgeRoller from '../../components/AsiaDollarHedgeRoller.astro';
+
+*Une obligation en dollars peut rester vingt ans dans le portefeuille d’un assureur. Sa couverture de change, elle, peut expirer trois mois après sa signature. Jusqu’au remboursement de l’obligation, cela représente quatre-vingts contrats successifs, soit soixante-dix-neuf renouvellements après le contrat initial. Le calcul est élémentaire. Le système qui rend cette chaîne possible ne l’est pas : banques locales, filiales de groupes mondiaux, marchés de swaps, appels de marge, lignes de dollars, netting et infrastructures de règlement travaillent en permanence derrière le bilan visible.*
+
+Ce quatrième volet de notre dossier **La boucle du dollar asiatique** prolonge [l’enquête sur les assureurs taïwanais](/posts/taiwan-724-milliards-assureurs-vie-risque-change/), [l’analyse du retour des taux japonais](/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/) et [le dossier sur le coût de la couverture en Corée du Sud](/posts/coree-du-sud-prix-couverture-parfaite/). Les trois pays ne portent ni les mêmes actifs, ni les mêmes passifs, ni la même position ouverte. Ils partagent pourtant une infrastructure : le marché qui transforme temporairement un flux futur en dollars en montant connu de yens, de wons ou de dollars taïwanais.
+
+Le mot **couverture** suggère une protection posée une fois pour toutes. Dans la réalité, c’est souvent un service renouvelable. Il protège une variable précise pendant une période précise. Il ne supprime ni le risque de crédit de l’obligation, ni sa sensibilité aux taux, ni le besoin de trésorerie, ni la dépendance à la banque qui accepte l’autre côté du contrat.
+
+## Une machine à 9 500 milliards de dollars par jour
+
+La meilleure mesure globale disponible vient de l’enquête triennale de la Banque des règlements internationaux. Les résultats définitifs publiés en décembre 2025 chiffrent à **9 510 milliards de dollars** le volume quotidien moyen des transactions de change de gré à gré en **avril 2025**. Le chiffre préliminaire de septembre avait été arrondi à 9 600 milliards. Nous retenons ici la valeur finale, généralement présentée comme **9 500 milliards par jour**. Les [tables définitives de la BIS](https://data.bis.org/topics/DER/tables-and-dashboards/BIS%2CDER_D11_4%2C1.0) distinguent 2 952 milliards de spot, 1 747 milliards de forwards simples, 4 015 milliards de swaps de change, 164 milliards de currency swaps et 632 milliards d’options. Le [commentaire final de décembre](https://www.bis.org/publications/global-fx-markets-when-hedging-takes-centre-stage) replace cette poussée dans un mois d’avril marqué par la volatilité et par une demande accrue de couverture après les annonces commerciales américaines.
+
+Le dollar figurait sur un côté de **89,2 %** des transactions. Comme chaque opération met deux devises face à face, les parts par monnaie totalisent 200 %, pas 100 %. La domination du dollar ne signifie donc pas que 89,2 % des investisseurs spéculent sur sa hausse. Elle indique qu’il sert de devise de paiement, de financement, de couverture ou d’intermédiation dans presque neuf opérations sur dix.
+
+Le volume quotidien est un **flux**. Il ne doit pas être confondu avec le montant des contrats qui restent ouverts à une date donnée. Au **30 juin 2025**, la BIS recensait **155 000 milliards de dollars de [notionnel](/glossaire/notionnel/)** dans la catégorie du risque de change, dont **100 000 milliards** de forwards et swaps arrivant à échéance sous un an. Le [communiqué statistique de décembre 2025](https://www.bis.org/publications/202512-commentary-otc-derivatives) précise aussi que les valeurs brutes de marché sont d’un ordre de grandeur très inférieur au notionnel.
+
+Le notionnel sert de référence pour calculer les paiements. Un swap de 100 millions de dollars ne crée pas automatiquement une dette ni une perte de 100 millions. Si le même portefeuille est couvert tous les trois mois, les contrats successifs peuvent additionner plusieurs fois le même risque économique. Les volumes gigantesques mesurent donc à la fois la taille du marché et la vitesse à laquelle il renouvelle ses promesses.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 655" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-fr-scale-title afx-fr-scale-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-fr-scale-title">Trois échelles du marché mondial des dérivés de change</title>
+<desc id="afx-fr-scale-desc">Le volume quotidien d’avril 2025, le notionnel en cours fin juin 2025 et la part à moins d’un an sont trois mesures différentes et non additionnables.</desc>
+<rect width="900" height="655" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Une même machine, trois unités de lecture</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Flux quotidien, stock contractuel et sous-ensemble de maturité</text>
+<rect x="42" y="112" width="816" height="116" rx="12" fill="#152420" stroke="#27695f"/>
+<text x="68" y="146" fill="#5eead4" font-size="13" font-weight="700">FLUX</text>
+<text x="68" y="190" fill="#f5f6f8" font-size="36" font-weight="700">9 500 Md$ / jour</text>
+<text x="430" y="158" fill="#d6d9df" font-size="14" ><tspan x="430" dy="0">Transactions OTC en avril 2025</tspan><tspan x="430" dy="22">BIS, valeur finale</tspan></text>
+<rect x="42" y="250" width="816" height="116" rx="12" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="284" fill="#7aa2f7" font-size="13" font-weight="700">STOCK</text>
+<text x="68" y="328" fill="#f5f6f8" font-size="36" font-weight="700">155 000 Md$</text>
+<text x="430" y="296" fill="#d6d9df" font-size="14" ><tspan x="430" dy="0">Notionnel FX en cours</tspan><tspan x="430" dy="22">au 30 juin 2025</tspan></text>
+<rect x="42" y="388" width="816" height="116" rx="12" fill="#252115" stroke="#7e6527"/>
+<text x="68" y="422" fill="#f5b13d" font-size="13" font-weight="700">SOUS-ENSEMBLE</text>
+<text x="68" y="466" fill="#f5f6f8" font-size="36" font-weight="700">100 000 Md$</text>
+<text x="430" y="434" fill="#d6d9df" font-size="14" ><tspan x="430" dy="0">Forwards et swaps en cours</tspan><tspan x="430" dy="22">arrivant à échéance sous un an</tspan></text>
+<rect x="42" y="532" width="816" height="74" rx="10" fill="#251723" stroke="#793664"/>
+<text x="68" y="562" fill="#d6d9df" font-size="13" ><tspan x="68" dy="0">Le notionnel sert à calculer les paiements. Il ne mesure ni une perte,</tspan><tspan x="68" dy="20">ni une dette du même montant. Ces trois nombres ne s’additionnent pas.</tspan></text>
+<text x="42" y="636" fill="#777d89" font-size="11" >Sources : BIS, Triennial Survey 2025 ; statistiques OTC au 30 juin 2025. Synthèse l0g.</text>
+</svg>
+<figcaption>Le flux quotidien, le stock de contrats et son sous-ensemble court répondent à trois questions différentes. Le chiffre de 100 000 milliards est compris dans les 155 000 milliards. Le volume de 9 500 milliards est une moyenne quotidienne, pas un encours.</figcaption>
+</figure>
+
+Ces chiffres mondiaux ne donnent pas la part détenue par les assureurs asiatiques. La BIS agrège banques, fonds, assureurs, entreprises, États et transactions entre dealers. Ils établissent toutefois le cadre : la protection des portefeuilles asiatiques dépend d’un marché qui brasse des milliers de milliards chaque jour, mais dont une grande partie des contrats est courte.
+
+## Six mécanismes derrière un même mot
+
+Un **forward** fixe aujourd’hui le taux auquel deux devises seront échangées à une date future. Il peut couvrir le remboursement d’une obligation ou un coupon attendu. À l’échéance, les deux monnaies sont normalement livrées.
+
+Un **[swap de change](/glossaire/swap-de-change/)**, ou FX swap, combine deux opérations. Les parties échangent les devises maintenant, puis inversent l’échange à une date et à un taux convenus. L’instrument sert à obtenir temporairement des dollars, à gérer la trésorerie ou à reconduire une couverture. Au niveau mondial, la BIS observe que les FX swaps sont majoritairement très courts, souvent jusqu’à sept jours. Ce constat global ne décrit pas la durée exacte des contrats d’un assureur asiatique.
+
+Un **NDF**, pour non-deliverable forward, règle seulement en cash la différence entre le taux convenu et un taux de référence. La [définition de la BIS](https://data.bis.org/topics/DER) précise que le paiement est très souvent effectué en dollars, sans livraison physique des deux monnaies sous-jacentes. Cet instrument est important lorsque la devise locale n’est pas librement livrable hors de son marché ou lorsque le cadre opérationnel favorise le règlement offshore.
+
+Un **cross-currency swap** échange non seulement les principaux, mais aussi des flux d’intérêts pendant plusieurs années. Il peut mieux suivre la durée d’un actif. Il demande cependant une documentation, un prix, des limites de crédit et une capacité de bilan plus lourds qu’un contrat très court.
+
+Une **option** achète un droit plutôt qu’une obligation. Elle protège contre un mouvement défavorable tout en laissant une partie du gain potentiel, en échange d’une prime. Enfin, une **couverture naturelle** ne passe pas par un dérivé : un assureur qui possède des actifs en dollars face à des contrats dont les prestations sont elles-mêmes en dollars réduit son décalage par construction.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-fr-instruments-title afx-fr-instruments-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-fr-instruments-title">Les instruments utilisés pour gérer le risque de change</title>
+<desc id="afx-fr-instruments-desc">Six cartes distinguent mécanisme, règlement et usage des principales couvertures.</desc>
+<rect width="900" height="760" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Six contrats cachés derrière le mot couverture</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14">La devise, les flux et la maturité ne sont pas protégés de la même façon.</text>
+<rect x="42" y="116" width="390" height="158" rx="10" fill="#15171c" stroke="#5eead4" stroke-opacity="0.62"/>
+<text x="66" y="148" fill="#5eead4" font-size="14" font-weight="700">FORWARD</text>
+<text x="66" y="178" fill="#777d89" font-size="10" font-weight="700">MÉCANISME</text>
+<text x="66" y="200" fill="#d6d9df" font-size="12"><tspan x="66" dy="0">Taux fixé pour une date</tspan><tspan x="66" dy="18">Deux devises livrées</tspan></text>
+<text x="266" y="178" fill="#777d89" font-size="10" font-weight="700">USAGE</text>
+<text x="266" y="200" fill="#d6d9df" font-size="11.5"><tspan x="266" dy="0">Court à moyen terme</tspan></text>
+<rect x="468" y="116" width="390" height="158" rx="10" fill="#15171c" stroke="#7aa2f7" stroke-opacity="0.62"/>
+<text x="492" y="148" fill="#7aa2f7" font-size="14" font-weight="700">FX SWAP</text>
+<text x="492" y="178" fill="#777d89" font-size="10" font-weight="700">MÉCANISME</text>
+<text x="492" y="200" fill="#d6d9df" font-size="12"><tspan x="492" dy="0">Échange maintenant,</tspan><tspan x="492" dy="18">retour convenu plus tard</tspan></text>
+<text x="692" y="178" fill="#777d89" font-size="10" font-weight="700">USAGE</text>
+<text x="692" y="200" fill="#d6d9df" font-size="11.5"><tspan x="692" dy="0">Financement</tspan><tspan x="692" dy="18">et hedge court</tspan></text>
+<rect x="42" y="294" width="390" height="158" rx="10" fill="#15171c" stroke="#f5b13d" stroke-opacity="0.62"/>
+<text x="66" y="326" fill="#f5b13d" font-size="14" font-weight="700">NDF</text>
+<text x="66" y="356" fill="#777d89" font-size="10" font-weight="700">MÉCANISME</text>
+<text x="66" y="378" fill="#d6d9df" font-size="12"><tspan x="66" dy="0">Différence réglée en cash</tspan><tspan x="66" dy="18">Pas de livraison locale</tspan></text>
+<text x="266" y="356" fill="#777d89" font-size="10" font-weight="700">USAGE</text>
+<text x="266" y="378" fill="#d6d9df" font-size="11.5"><tspan x="266" dy="0">Devises non livrables</tspan></text>
+<rect x="468" y="294" width="390" height="158" rx="10" fill="#15171c" stroke="#ff4d87" stroke-opacity="0.62"/>
+<text x="492" y="326" fill="#ff4d87" font-size="14" font-weight="700">CROSS-CURRENCY</text>
+<text x="492" y="356" fill="#777d89" font-size="10" font-weight="700">MÉCANISME</text>
+<text x="492" y="378" fill="#d6d9df" font-size="12"><tspan x="492" dy="0">Principal et intérêts</tspan><tspan x="492" dy="18">échangés sur plusieurs années</tspan></text>
+<text x="692" y="356" fill="#777d89" font-size="10" font-weight="700">USAGE</text>
+<text x="692" y="378" fill="#d6d9df" font-size="11.5"><tspan x="692" dy="0">Appariement plus long</tspan></text>
+<rect x="42" y="472" width="390" height="158" rx="10" fill="#15171c" stroke="#b8a1ff" stroke-opacity="0.62"/>
+<text x="66" y="504" fill="#b8a1ff" font-size="14" font-weight="700">OPTION</text>
+<text x="66" y="534" fill="#777d89" font-size="10" font-weight="700">MÉCANISME</text>
+<text x="66" y="556" fill="#d6d9df" font-size="12"><tspan x="66" dy="0">Droit, sans obligation</tspan><tspan x="66" dy="18">Prime payée au départ</tspan></text>
+<text x="266" y="534" fill="#777d89" font-size="10" font-weight="700">USAGE</text>
+<text x="266" y="556" fill="#d6d9df" font-size="11.5"><tspan x="266" dy="0">Protection asymétrique</tspan></text>
+<rect x="468" y="472" width="390" height="158" rx="10" fill="#15171c" stroke="#89d185" stroke-opacity="0.62"/>
+<text x="492" y="504" fill="#89d185" font-size="14" font-weight="700">HEDGE NATUREL</text>
+<text x="492" y="534" fill="#777d89" font-size="10" font-weight="700">MÉCANISME</text>
+<text x="492" y="556" fill="#d6d9df" font-size="12"><tspan x="492" dy="0">Actif face à un passif</tspan><tspan x="492" dy="18">dans la même devise</tspan></text>
+<text x="692" y="534" fill="#777d89" font-size="10" font-weight="700">USAGE</text>
+<text x="692" y="556" fill="#d6d9df" font-size="11.5"><tspan x="692" dy="0">Appariement économique</tspan></text>
+<text x="42" y="680" fill="#777d89" font-size="12"><tspan x="42" dy="0">Un instrument peut couvrir le change tout en laissant ouverts le crédit, la duration,</tspan><tspan x="42" dy="19">le risque de liquidité ou des flux qui ne coïncident pas exactement.</tspan></text>
+<text x="42" y="738" fill="#777d89" font-size="11">Sources : BIS Data Portal ; BIS sur les investissements asiatiques. Définitions simplifiées.</text>
+</svg>
+<figcaption>Un même objectif de change peut être servi par des contrats dont les paiements, les maturités et les risques résiduels diffèrent fortement. Les descriptions sont simplifiées et ne remplacent pas la documentation juridique d’un instrument.</figcaption>
+</figure>
+
+Ces instruments ne sont pas interchangeables. Un NDF ne livre pas nécessairement les dollars nécessaires pour rembourser une dette physique. Un swap de trois mois ne garantit pas le prix du dollar dans dix ans. Un cross-currency swap long réduit le nombre de renouvellements mais peut être plus coûteux, moins liquide ou plus exigeant en collatéral. Une couverture naturelle évite un dérivé, à condition que les montants et les calendriers des actifs et des passifs coïncident réellement.
+
+## Une obligation longue, une promesse courte
+
+La vulnérabilité centrale porte sur la maturité.
+
+La [BIS a étudié en 2021](https://www.bis.org/publications/outward-portfolio-investment-and-dollar-funding-emerging-asia) les investissements extérieurs et le financement en dollars de plusieurs économies asiatiques. Les données de tenor qu’elle cite proviennent principalement de l’enquête de **2019**. Elles ne doivent donc pas être présentées comme la composition actuelle de chaque portefeuille. Elles fournissent un repère historique précieux : la maturité moyenne des forwards et swaps référencés au won coréen et au dollar taïwanais était alors proche de **trois mois**.
+
+Un actif de vingt ans protégé par blocs de trois mois suppose quatre-vingts contrats successifs, dont soixante-dix-neuf renouvellements après le contrat initial. Ce nombre ne constitue ni une moyenne sectorielle, ni la preuve qu’un assureur conserve la même obligation et le même hedge durant vingt ans. Il montre la différence d’échelle entre l’horizon économique et l’horizon contractuel.
+
+À chaque renouvellement, cinq paramètres peuvent changer : le taux spot, l’écart de taux entre les devises, le [cross-currency basis](/glossaire/cross-currency-basis/), la marge demandée par le dealer et les exigences de collatéral. Le risque de change instantané peut être faible pendant que le coût futur de la protection reste inconnu.
+
+La même étude fournit un autre exercice historique. En 2019, les fonds de pension de Taïwan, de Malaisie et de Corée détenaient environ **264 milliards de dollars d’actions étrangères**. Couvrir seulement 30 % de ce portefeuille avec des swaps d’un mois aurait imposé plus de **80 milliards de dollars de renouvellements mensuels**. Ce n’est pas une statistique 2026. C’est la démonstration arithmétique du volume qu’un taux de couverture apparemment modéré peut faire apparaître lorsque le tenor est très court.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 695" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-fr-rolls-title afx-fr-rolls-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-fr-rolls-title">Une obligation de vingt ans couverte par des contrats de trois mois</title>
+<desc id="afx-fr-rolls-desc">Illustration arithmétique de quatre-vingts contrats successifs, dont soixante-dix-neuf renouvellements après le contrat initial. Le tenor de trois mois est un repère BIS fondé sur des données de 2019 pour le won et le dollar taïwanais.</desc>
+<rect width="900" height="695" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">L’actif reste, le prix de la protection change</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Exercice : actif de 20 ans, hedge de 3 mois, renouvellement continu</text>
+<rect x="42" y="112" width="816" height="86" rx="10" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="148" fill="#7aa2f7" font-size="13" font-weight="700">ACTIF</text>
+<text x="68" y="178" fill="#f5f6f8" font-size="20" font-weight="700">Obligation en dollars, horizon 20 ans</text>
+<line x1="68" y1="246" x2="832" y2="246" stroke="#2d3440" stroke-width="8" stroke-linecap="round"/>
+<line x1="68.0" y1="232" x2="68.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="68.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">0</text>
+<line x1="106.2" y1="232" x2="106.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="144.4" y1="232" x2="144.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="182.6" y1="232" x2="182.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="220.8" y1="232" x2="220.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="259.0" y1="232" x2="259.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="259.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">5</text>
+<line x1="297.2" y1="232" x2="297.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="335.4" y1="232" x2="335.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="373.6" y1="232" x2="373.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="411.8" y1="232" x2="411.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="450.0" y1="232" x2="450.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="450.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">10</text>
+<line x1="488.2" y1="232" x2="488.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="526.4" y1="232" x2="526.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="564.6" y1="232" x2="564.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="602.8" y1="232" x2="602.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="641.0" y1="232" x2="641.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="641.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">15</text>
+<line x1="679.2" y1="232" x2="679.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="717.4" y1="232" x2="717.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="755.6" y1="232" x2="755.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="793.8" y1="232" x2="793.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="832.0" y1="232" x2="832.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="832.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">20</text>
+<text x="450" y="308" fill="#a8adb7" font-size="11" text-anchor="middle">années</text>
+<text x="42" y="354" fill="#5eead4" font-size="13" font-weight="700">COUVERTURES SUCCESSIVES</text>
+<rect x="42" y="374" width="816" height="98" rx="10" fill="#152420" stroke="#27695f"/>
+<rect x="62" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="109" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="156" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="203" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="250" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="297" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="344" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="391" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="438" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="485" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="532" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="579" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="626" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="673" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="720" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="767" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<text x="455" y="426" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="middle">…</text>
+<text x="68" y="510" fill="#ff4d87" font-size="42" font-weight="700">80</text>
+<text x="154" y="493" fill="#d6d9df" font-size="14" ><tspan x="154" dy="0">contrats théoriques</tspan><tspan x="154" dy="22">20 × 12 ÷ 3</tspan></text>
+<rect x="510" y="492" width="348" height="94" rx="10" fill="#252115" stroke="#7e6527"/>
+<text x="534" y="522" fill="#d6d9df" font-size="13" ><tspan x="534" dy="0">Le chiffre 80 est une arithmétique,</tspan><tspan x="534" dy="21">pas une moyenne observée des assureurs.</tspan></text>
+<text x="42" y="623" fill="#777d89" font-size="12" ><tspan x="42" dy="0">Repère historique : la BIS estimait en 2019 une maturité moyenne proche de trois mois</tspan><tspan x="42" dy="19">pour les forwards et swaps référencés au KRW et au TWD.</tspan></text>
+<text x="42" y="675" fill="#777d89" font-size="11" >Source : BIS, Outward portfolio investment and dollar funding in emerging Asia, 2021.</text>
+</svg>
+<figcaption>Quatre-vingts contrats successifs, dont soixante-dix-neuf renouvellements après le contrat initial, résultent d’un calcul de 20 ans divisés par trois mois. La maturité de trois mois est un repère BIS fondé sur 2019 pour le KRW et le TWD, pas une observation complète des portefeuilles 2026.</figcaption>
+</figure>
+
+<AsiaDollarHedgeRoller lang="fr" mode="embed" />
+
+Le simulateur additionne les contrats successifs pour rendre visible l’activité de roll. Son résultat le plus impressionnant, le notionnel brut cumulé, est aussi le plus facile à mal lire. Couvrir 60 milliards de dollars quatre-vingts fois produit 4 800 milliards de notionnel contracté au fil du temps. L’exposition économique initiale reste 60 milliards, sous réserve des changements de portefeuille. Le chiffre cumulé mesure une dépendance au marché, pas une perte potentielle de 4 800 milliards.
+
+## Les banques au centre de la chaîne
+
+Un assureur ne fabrique pas seul ses dollars à terme. Il traite avec une banque, parfois locale, parfois filiale d’un groupe international. Cette banque compense une partie des ordres de ses clients, couvre le reliquat avec d’autres dealers et finance les déséquilibres dans son propre bilan ou auprès de son siège.
+
+La chaîne est plus concentrée que le nombre de transactions pourrait le laisser croire. Une [étude BIS publiée en 2025](https://www.bis.org/publications/international-finance-through-lens-bis-statistics-derivatives-markets), fondée sur les informations financières des banques à fin 2024, estime que les dix premiers groupes représentaient presque **60 %** des dérivés de change mondiaux en cours et les vingt premiers plus de **85 %**. Les banques américaines se trouvaient sur un côté de plus de 30 % du notionnel. Ces pourcentages sont des estimations tirées de disclosures bancaires, pas une mesure exhaustive des contreparties de chaque assureur asiatique.
+
+Le réseau mondial devient visible dans les statistiques nationales.
+
+Au Japon, l’enquête de la [Banque du Japon sur avril 2025](https://www.boj.or.jp/en/statistics/bis/deri/data/deri2504.pdf) mesure **440,2 milliards de dollars de transactions par jour**, dont 244,7 milliards de FX swaps, soit 55,6 %. Les institutions financières représentaient 94,7 % de l’activité. Les dix premiers établissements concentraient 70,7 % du volume et les vingt premiers 94,6 %.
+
+À Taïwan, la [banque centrale](https://www.cbc.gov.tw/en/cp-448-192441-f4d0c-2.html) mesure en **mai 2026** un volume net de 940 milliards de dollars sur le mois, soit 47 milliards par jour. Les FX swaps formaient 51,6 % du total. Les transactions interbancaires avec des banques étrangères représentaient 47,4 % du marché.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-fr-dealers-title afx-fr-dealers-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-fr-dealers-title">La chaîne bancaire des couvertures de change asiatiques</title>
+<desc id="afx-fr-dealers-desc">Le fonds ou l’assureur traite avec une banque locale ou une filiale, qui transfère et finance le risque dans un réseau mondial de dealers concentré.</desc>
+<rect width="900" height="620" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Le hedge local se branche sur un réseau mondial</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Chaîne stylisée de financement, de transfert et de tenue de marché</text>
+<rect x="42" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#5eead4"/>
+<text x="132" y="156" fill="#5eead4" font-size="13" font-weight="700" text-anchor="middle">ASSUREUR / FONDS</text>
+<text x="132" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="132" dy="0">actif en dollars</tspan><tspan x="132" dy="20">passif local</tspan></text>
+<rect x="254" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#f5b13d"/>
+<text x="344" y="156" fill="#f5b13d" font-size="13" font-weight="700" text-anchor="middle">DEALER LOCAL</text>
+<text x="344" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="344" dy="0">banque coréenne,</tspan><tspan x="344" dy="20">taïwanaise ou japonaise</tspan></text>
+<rect x="466" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#7aa2f7"/>
+<text x="556" y="156" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">FILIALE / SIÈGE</text>
+<text x="556" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="556" dy="0">bilan global,</tspan><tspan x="556" dy="20">collatéral, limites</tspan></text>
+<rect x="678" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#ff4d87"/>
+<text x="768" y="156" fill="#ff4d87" font-size="13" font-weight="700" text-anchor="middle">MARCHÉ DEALERS</text>
+<text x="768" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="768" dy="0">autres banques,</tspan><tspan x="768" dy="20">dollars ultimes</tspan></text>
+<line x1="222" y1="189" x2="250" y2="189" stroke="#777d89" stroke-width="2"/>
+<polygon points="250,189 240,183 240,195" fill="#777d89"/>
+<line x1="434" y1="189" x2="462" y2="189" stroke="#777d89" stroke-width="2"/>
+<polygon points="462,189 452,183 452,195" fill="#777d89"/>
+<line x1="646" y1="189" x2="674" y2="189" stroke="#777d89" stroke-width="2"/>
+<polygon points="674,189 664,183 664,195" fill="#777d89"/>
+<rect x="42" y="294" width="394" height="202" rx="12" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="330" fill="#7aa2f7" font-size="13" font-weight="700">CONCENTRATION MONDIALE</text>
+<text x="68" y="370" fill="#d6d9df" font-size="13" >Top 10 banques</text>
+<rect x="68" y="386" width="320" height="24" rx="5" fill="#20232a"/>
+<rect x="68" y="386" width="190" height="24" rx="5" fill="#7aa2f7"/>
+<text x="272" y="404" fill="#f5f6f8" font-size="13" font-weight="700">presque 60 %</text>
+<text x="68" y="444" fill="#d6d9df" font-size="13" >Top 20 banques</text>
+<rect x="68" y="460" width="320" height="24" rx="5" fill="#20232a"/>
+<rect x="68" y="460" width="276" height="24" rx="5" fill="#ff4d87"/>
+<text x="380" y="478" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">plus de 85 %</text>
+<rect x="466" y="294" width="392" height="202" rx="12" fill="#152420" stroke="#27695f"/>
+<text x="492" y="330" fill="#5eead4" font-size="13" font-weight="700">DEUX MARCHÉS NATIONAUX</text>
+<text x="492" y="374" fill="#d6d9df" font-size="13" >Japon, avril 2025</text>
+<text x="492" y="406" fill="#f5f6f8" font-size="24" font-weight="700">440,2 Md$ / jour</text>
+<text x="492" y="448" fill="#d6d9df" font-size="13" >Taïwan, mai 2026</text>
+<text x="492" y="480" fill="#f5f6f8" font-size="24" font-weight="700">47,0 Md$ / jour</text>
+<text x="42" y="542" fill="#777d89" font-size="12" ><tspan x="42" dy="0">Ces volumes couvrent tout le marché local, pas les seuls hedges d’assureurs.</tspan><tspan x="42" dy="19">La concentration mondiale provient d’estimations sur les dérivés en cours fin 2024.</tspan></text>
+<text x="42" y="596" fill="#777d89" font-size="11" >Sources : BIS ; Banque du Japon ; banque centrale de Taïwan. Synthèse l0g.</text>
+</svg>
+<figcaption>Le portefeuille rencontre d’abord un dealer, puis un réseau bancaire mondial. Les chiffres japonais et taïwanais décrivent tout le marché national. La concentration top 10 et top 20 est une estimation globale des dérivés en cours fin 2024.</figcaption>
+</figure>
+
+Ces deux statistiques couvrent tout le marché de change local, pas les seuls assureurs ni les seuls portefeuilles d’investissement. Elles ne permettent pas de dire quelles banques fournissent précisément les couvertures de Cathay Life, Nippon Life, le NPS ou un autre acteur. Elles montrent néanmoins deux traits communs : les swaps dominent l’activité et l’intermédiation repose sur un nombre limité de bilans bancaires.
+
+Cette concentration n’est pas nécessairement une faiblesse. Les grands dealers disposent de systèmes de netting, de collatéral et de financement mondial que de petites institutions ne pourraient pas reproduire. Elle devient un risque lorsque plusieurs grands investisseurs cherchent le même dollar, au même tenor, auprès des mêmes banques et au même moment.
+
+## Le prix se forme au-delà du taux spot
+
+Le coût d’une couverture ne correspond pas à une anticipation simple de la devise.
+
+La **[parité couverte des taux](/glossaire/cip/)** relie le taux de change spot, le taux à terme et les taux d’intérêt des deux monnaies. Dans un monde sans friction, emprunter dans une devise, placer dans l’autre et couvrir le change ne doit pas produire un profit certain. Lorsque les taux courts américains dépassent les taux locaux, un investisseur asiatique qui vend ses dollars à terme abandonne généralement une partie de ce rendement supérieur dans le prix du forward.
+
+Depuis la crise financière mondiale, cette égalité théorique présente des écarts persistants. La [BIS explique la base cross-currency](https://www.bis.org/publications/covered-interest-parity-lost-understanding-cross-currency-basis) par la rencontre entre une demande déséquilibrée de couverture et les limites de bilan des banques capables d’arbitrer. Une base non nulle n’est donc pas seulement une curiosité de marché. Elle donne un prix à la rareté du bilan qui fournit les dollars.
+
+Le cas taïwanais permet de mesurer le poids du carry, avec une précaution importante. Dans une [communication datée du 23 décembre 2025 et mise à jour le 2 janvier 2026](https://www.fsc.gov.tw/en/home.jsp?dataserno=202601020001&dtable=News&id=54&mcustomize=multimessage_view.jsp&parentpath=0,2), la Financial Supervisory Commission indique qu’à fin octobre 2025 les assureurs-vie détenaient 22 300 milliards de TWD d’investissements étrangers. Après exclusion des polices en devises, l’exposition de change était évaluée à 15 200 milliards, couverte à environ 60 %. Le superviseur chiffre à **1 600 milliards de TWD** le coût cumulé de couverture entre 2019 et octobre 2025, contre **1 400 milliards** de bénéfices nets après impôt sur la même période.
+
+Ces chiffres sont officiels, mais leur interprétation est intéressée : le régulateur les utilise pour défendre une modification du traitement comptable des écarts de change. Il qualifie les couvertures courtes de coûteuses et insuffisamment adaptées au risque structurel. L’enquête n’a pas trouvé dans ce communiqué la ventilation par assureur, tenor, type de contrat, contrepartie et année. Il serait donc abusif d’en déduire que chaque dollar de coût était inutile ou que les couvertures n’ont pas évité de pertes plus importantes.
+
+Le fait établi par ce communiqué est plus étroit : le coût cumulé déclaré par la FSC dépasse les profits cumulés du secteur sur la période qu’elle a retenue. Le régulateur attribue le niveau élevé de ces coûts à l’écart de taux depuis 2022 et aux déséquilibres d’offre et de demande sur les currency swaps et les NDF. Le bénéfice de la protection ne se mesure pas en comparant simplement ces deux agrégats. Il faudrait connaître la volatilité, les pertes évitées, le capital économisé et le risque accepté en l’absence de hedge.
+
+## La protection peut réclamer du cash
+
+Un dérivé peut remplir parfaitement sa fonction économique et créer simultanément un problème de liquidité.
+
+Prenons un assureur qui possède une obligation en dollars et a vendu ces dollars à terme. Si le dollar monte fortement, l’obligation vaut davantage en monnaie locale. Le dérivé, lui, perd de la valeur parce que l’assureur s’est engagé à vendre ses dollars à un taux inférieur au marché. Les deux mouvements peuvent se compenser économiquement. Ils ne se règlent pas nécessairement au même moment.
+
+Le dealer peut demander du collatéral sur la position perdante. Le gain sur l’obligation reste latent, ou se matérialisera seulement au remboursement. L’assureur doit alors fournir immédiatement du cash, des titres éligibles ou du financement repo. Le risque n’est plus seulement « combien vaut le portefeuille ? », mais « quel actif peut être mobilisé avant l’heure limite ? ».
+
+Le [Financial Stability Board](https://www.fsb.org/2024/12/liquidity-preparedness-for-margin-and-collateral-calls-final-report/) a publié le **10 décembre 2024** des recommandations destinées aux acteurs non bancaires. Il rappelle que les appels de marge protègent contre le défaut de contrepartie, tout en pouvant amplifier la demande de liquidité lors d’un stress généralisé. Le FSB demande des scénarios extrêmes mais plausibles, des plans de financement, des actifs liquides et des processus opérationnels capables de répondre rapidement.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-fr-liquidity-title afx-fr-liquidity-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-fr-liquidity-title">Comment un hedge peut créer un besoin de liquidité</title>
+<desc id="afx-fr-liquidity-desc">Une séquence en cinq étapes sépare la compensation économique de la trésorerie demandée immédiatement.</desc>
+<rect width="900" height="760" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">La protection peut gagner et demander du cash</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14">Le risque de liquidité ne se confond pas avec la perte économique finale.</text>
+<rect x="42" y="112" width="816" height="68" rx="9" fill="#15171c" stroke="#7aa2f7" stroke-opacity="0.55"/>
+<circle cx="78" cy="146" r="19" fill="#7aa2f7"/>
+<text x="78" y="152" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">1</text>
+<text x="114" y="141" fill="#7aa2f7" font-size="13" font-weight="700">MOUVEMENT DE MARCHÉ</text>
+<text x="390" y="137" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">La devise ou les taux</tspan><tspan x="390" dy="19">bougent rapidement</tspan></text>
+<line x1="78" y1="180" x2="78" y2="194" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,194 72,184 84,184" fill="#777d89"/>
+<rect x="42" y="194" width="816" height="68" rx="9" fill="#111318" stroke="#f5b13d" stroke-opacity="0.55"/>
+<circle cx="78" cy="228" r="19" fill="#f5b13d"/>
+<text x="78" y="234" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">2</text>
+<text x="114" y="223" fill="#f5b13d" font-size="13" font-weight="700">VALEUR DU DÉRIVÉ</text>
+<text x="390" y="219" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Une jambe devient négative</tspan><tspan x="390" dy="19">au mark-to-market</tspan></text>
+<line x1="78" y1="262" x2="78" y2="276" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,276 72,266 84,266" fill="#777d89"/>
+<rect x="42" y="276" width="816" height="68" rx="9" fill="#15171c" stroke="#ff4d87" stroke-opacity="0.55"/>
+<circle cx="78" cy="310" r="19" fill="#ff4d87"/>
+<text x="78" y="316" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">3</text>
+<text x="114" y="305" fill="#ff4d87" font-size="13" font-weight="700">APPEL DE MARGE</text>
+<text x="390" y="301" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Cash ou collatéral</tspan><tspan x="390" dy="19">à fournir vite</tspan></text>
+<line x1="78" y1="344" x2="78" y2="358" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,358 72,348 84,348" fill="#777d89"/>
+<rect x="42" y="358" width="816" height="68" rx="9" fill="#111318" stroke="#5eead4" stroke-opacity="0.55"/>
+<circle cx="78" cy="392" r="19" fill="#5eead4"/>
+<text x="78" y="398" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">4</text>
+<text x="114" y="387" fill="#5eead4" font-size="13" font-weight="700">VENTE D’ACTIFS</text>
+<text x="390" y="383" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Trésorerie, obligations</tspan><tspan x="390" dy="19">ou repo mobilisés</tspan></text>
+<line x1="78" y1="426" x2="78" y2="440" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,440 72,430 84,430" fill="#777d89"/>
+<rect x="42" y="440" width="816" height="68" rx="9" fill="#15171c" stroke="#ff4d87" stroke-opacity="0.55"/>
+<circle cx="78" cy="474" r="19" fill="#ff4d87"/>
+<text x="78" y="480" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">5</text>
+<text x="114" y="469" fill="#ff4d87" font-size="13" font-weight="700">BOUCLE DE MARCHÉ</text>
+<text x="390" y="465" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Prix, spreads et base</tspan><tspan x="390" dy="19">peuvent se tendre</tspan></text>
+<rect x="42" y="532" width="390" height="108" rx="10" fill="#152420" stroke="#27695f"/>
+<text x="68" y="566" fill="#5eead4" font-size="15" font-weight="700">GAIN ÉCONOMIQUE</text>
+<text x="68" y="598" fill="#d6d9df" font-size="12"><tspan x="68" dy="0">L’actif couvert peut gagner en devise locale</tspan><tspan x="68" dy="20">pendant que le dérivé perd.</tspan></text>
+<rect x="468" y="532" width="390" height="108" rx="10" fill="#251723" stroke="#793664"/>
+<text x="494" y="566" fill="#ff4d87" font-size="15" font-weight="700">BESOIN DE TRÉSORERIE</text>
+<text x="494" y="598" fill="#d6d9df" font-size="12"><tspan x="494" dy="0">Le gain sur l’actif n’est pas toujours liquide</tspan><tspan x="494" dy="20">au moment exact de l’appel de marge.</tspan></text>
+<text x="42" y="680" fill="#777d89" font-size="11.5"><tspan x="42" dy="0">Le FSB recommande gouvernance, stress tests, actifs liquides et préparation opérationnelle.</tspan><tspan x="42" dy="19">Le cadre de marge réduit le risque de contrepartie, sans supprimer la demande de cash.</tspan></text>
+<text x="42" y="738" fill="#777d89" font-size="11">Sources : FSB, décembre 2024 ; BCBS et IOSCO, décembre 2025.</text>
+</svg>
+<figcaption>Une couverture peut compenser économiquement le mouvement de l’actif et produire un appel de marge avant que ce gain soit disponible en cash. La marge protège la contrepartie, mais exige une préparation de liquidité.</figcaption>
+</figure>
+
+Le contre-argument est matériel. Le cadre de marge n’est pas décrit par les régulateurs comme un dispositif en échec. Le [BCBS et l’IOSCO](https://www.bis.org/publications/review-implementation-margin-requirements-non-centrally-cleared-derivatives) ont conclu le **12 décembre 2025** que les exigences applicables aux dérivés non compensés étaient effectivement mises en œuvre et ne présentaient pas de problème matériel justifiant une modification. La marge réduit le risque que la perte d’une contrepartie devienne celle de tout le système. Le problème résiduel porte sur la préparation de celui qui doit fournir cette marge.
+
+Les données publiques ne permettent pas de calculer ce risque pour l’ensemble des assureurs asiatiques. Il manque les accords de collatéral, les seuils, les actifs éligibles, le netting par contrepartie et la distribution des échéances. Une estimation qui appliquerait un pourcentage uniforme au notionnel sectoriel créerait une précision fictive.
+
+## Mars 2020, un test grandeur nature
+
+La Corée du Sud a déjà fourni un laboratoire du mécanisme.
+
+Dans son [étude de 2021](https://www.bis.org/publications/outward-portfolio-investment-and-dollar-funding-emerging-asia), la BIS décrit trois demandes de dollars qui se sont superposées en mars 2020. Les assureurs devaient continuer à renouveler leurs couvertures de change. Les sociétés de titres et gestionnaires faisaient face à des appels de marge sur environ **11 milliards de dollars** d’equity-linked securities vendus aux investisseurs coréens. Les non-résidents vendaient des actifs en won et convertissaient environ 4,5 milliards de dollars en dollars sur le marché spot.
+
+Les banques ont continué à fournir des dollars via les dérivés, mais avec une prime. Leurs propres besoins de financement augmentaient : l’emprunt en devises des banques domestiques a progressé de 4,5 milliards de dollars pendant le mois, tandis que celui des succursales de banques étrangères a augmenté de presque 10 milliards, principalement auprès de leurs sièges.
+
+Cette séquence montre le point faible : un assureur peut être prudent individuellement et contribuer malgré lui à une ruée collective vers le même financement. La couverture devient procyclique lorsque chacun refuse de laisser expirer son hedge au moment où le dollar est le plus rare.
+
+Les autorités ont ensuite renforcé la surveillance, les stress tests de liquidité et la coordination macroprudentielle. La réouverture le 19 mars 2020 des lignes de swap de la Réserve fédérale avec la Banque de Corée et l’Autorité monétaire de Singapour a contribué à resserrer la base. La BIS suggère également que des incitations à utiliser des couvertures allant jusqu’à trois ans pourraient réduire la concentration du risque de renouvellement. Elle souligne la contrepartie : une facilité publique non accompagnée de règles peut encourager davantage de prise de risque pendant les périodes calmes.
+
+La Corée dispose aujourd’hui d’un circuit public supplémentaire. Le **15 décembre 2025**, la [Banque de Corée a annoncé](https://www.bok.or.kr/portal/bbs/P0000559/view.do?depth=200690&menuNo=200690&nttId=10095154&programType=newsData&relate=Y) la prolongation jusqu’à fin 2026 de ses swaps avec le National Pension Service, dans une limite de **65 milliards de dollars**. Ce plafond n’est ni le montant effectivement tiré, ni le coût du programme, ni le taux de couverture du NPS. Le [rapport de politique monétaire de mars 2026](https://www.bok.or.kr/eng/bbs/E0000628/view.do?depth=400215&menuNo=400215&nttId=10098067&programType=newsDataEng&relate=Y) présente le mécanisme comme un moyen de réduire la demande de dollars sur le spot et de permettre au fonds de se couvrir sans ajouter de risque de contrepartie privée.
+
+Cela ne signifie pas que le risque de change du NPS disparaît dans le bilan public. Le swap modifie la source des dollars et le canal de transaction. L’effet économique final dépend des montants utilisés, du prix, des échéances et du portefeuille effectivement couvert, données qui ne figurent pas dans le communiqué public.
+
+## Le paiement final conserve son propre risque
+
+Même une couverture correctement valorisée, financée et renouvelée doit encore être réglée.
+
+Le risque de règlement apparaît lorsqu’une partie livre la devise qu’elle doit avant de recevoir celle qui lui est due. La faillite de la banque Herstatt en 1974 a donné son nom historique à ce risque : des contreparties avaient livré des deutsche marks en Europe, puis n’ont pas reçu les dollars attendus à New York.
+
+La [BIS a publié le 15 juin 2026](https://www.bis.org/publications/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey) une nouvelle mesure fondée sur l’enquête d’avril 2025. Plus de **14 000 milliards de dollars** d’obligations financières brutes étaient réglées chaque jour. Environ 5 200 milliards, soit **36 %**, passaient par un système de paiement contre paiement, ou PvP, qui lie les deux jambes et élimine le risque de principal. Quelque 7 600 milliards, soit **54 %**, utilisaient d’autres méthodes qui réduisent le risque sans l’éliminer. Les **10 %** restants, plus de 1 400 milliards par jour, étaient réglés de façon bilatérale brute et restaient exposés à la pleine valeur. Cette mesure couvre les opérations comportant deux paiements ; les instruments à paiement unique, dont les NDF et les primes d’option, en sont exclus.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 672" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-fr-settlement-title afx-fr-settlement-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-fr-settlement-title">Méthodes de règlement des obligations de change en avril 2025</title>
+<desc id="afx-fr-settlement-desc">Sur plus de quatorze mille milliards de dollars d’obligations quotidiennes, 36 pour cent utilisaient le paiement contre paiement, 54 pour cent d’autres atténuations et 10 pour cent un règlement bilatéral brut.</desc>
+<rect width="900" height="672" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Le dernier risque apparaît au moment de payer</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Obligations brutes quotidiennes, enquête BIS d’avril 2025, marché mondial</text>
+<rect x="42" y="122" width="816" height="68" rx="10" fill="#111318" stroke="#2a2d35"/>
+<text x="68" y="164" fill="#f5f6f8" font-size="28" font-weight="700">plus de 14 000 Md$ / jour</text>
+<rect x="42" y="224" width="294" height="182" rx="12" fill="#152420" stroke="#27695f"/>
+<text x="68" y="260" fill="#5eead4" font-size="34" font-weight="700">36 %</text>
+<text x="68" y="294" fill="#f5f6f8" font-size="14" font-weight="700">Paiement contre paiement</text>
+<text x="68" y="330" fill="#d6d9df" font-size="12" ><tspan x="68" dy="0">Les deux jambes sont liées.</tspan><tspan x="68" dy="20">Le risque de principal est éliminé.</tspan></text>
+<rect x="354" y="224" width="294" height="182" rx="12" fill="#252115" stroke="#7e6527"/>
+<text x="380" y="260" fill="#f5b13d" font-size="34" font-weight="700">54 %</text>
+<text x="380" y="294" fill="#f5f6f8" font-size="14" font-weight="700">Autres atténuations</text>
+<text x="380" y="330" fill="#d6d9df" font-size="12" ><tspan x="380" dy="0">Netting, flux intragroupe</tspan><tspan x="380" dy="20">ou contrôles opérationnels</tspan><tspan x="380" dy="20">atténuent le risque sans l’annuler.</tspan></text>
+<rect x="666" y="224" width="192" height="182" rx="12" fill="#251723" stroke="#793664"/>
+<text x="692" y="260" fill="#ff4d87" font-size="34" font-weight="700">10 %</text>
+<text x="692" y="294" fill="#f5f6f8" font-size="14" font-weight="700">Bilatéral brut</text>
+<text x="692" y="330" fill="#d6d9df" font-size="12" ><tspan x="692" dy="0">1 400 Md$ par jour</tspan><tspan x="692" dy="20">pleinement exposés</tspan></text>
+<rect x="42" y="446" width="816" height="110" rx="10" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="482" fill="#7aa2f7" font-size="13" font-weight="700">CLSSETTLEMENT</text>
+<text x="68" y="515" fill="#d6d9df" font-size="13" ><tspan x="68" dy="0">JPY et KRW figurent parmi les 18 devises prises en charge. Le TWD n’y figure pas.</tspan><tspan x="68" dy="21">Cette absence ne signifie pas que toute opération TWD est réglée sans réduction du risque.</tspan></text>
+<text x="42" y="598" fill="#777d89" font-size="12" ><tspan x="42" dy="0">Le PvP élimine le risque de principal lié au règlement. Il ne supprime ni le coût de remplacement,</tspan><tspan x="42" dy="19">ni le risque de liquidité, ni le défaut économique antérieur à la date de paiement.</tspan></text>
+<text x="42" y="650" fill="#777d89" font-size="11" >Sources : BIS, juin 2026 ; CLS, liste des devises consultée le 4 septembre 2026.</text>
+</svg>
+<figcaption>Le paiement contre paiement élimine le risque de principal sur les opérations qui l’utilisent. Les 54 % d’autres méthodes l’atténuent sans l’annuler et 10 % restaient réglés en bilatéral brut en avril 2025.</figcaption>
+</figure>
+
+CLSSettlement prend en charge **18 devises**. La [liste consultée le 4 septembre 2026](https://www.cls-group.com/products/settlement/clssettlement/currencies/) inclut le yen japonais et le won coréen. Le dollar taïwanais n’y figure pas. Cette absence ne signifie pas que toutes les opérations en TWD sont payées en brut sans protection. D’autres formes de netting, de contrôles de calendrier, de correspondance bancaire ou de règlement peuvent réduire l’exposition.
+
+Il faut aussi distinguer trois verbes. **Compenser** réduit ou mutualise le risque de contrepartie d’un dérivé. **Netter** réduit plusieurs paiements bruts à un solde. **Régler en PvP** lie effectivement la livraison des deux monnaies. CLSNet, par exemple, fournit un calcul de netting. Il ne transforme pas à lui seul toutes les transactions en règlement PvP.
+
+Le PvP élimine le risque de principal au moment du paiement. Il ne supprime pas le coût de remplacement si une contrepartie fait défaut avant l’échéance, ni le besoin de liquidité, ni les pertes économiques déjà accumulées.
+
+## La transparence s’arrête devant le portefeuille
+
+La collecte documentaire permet d’établir six faits.
+
+Les [données mondiales de la BIS](https://www.bis.org/publications/global-fx-markets-when-hedging-takes-centre-stage) donnent l’échelle : 9 500 milliards de dollars de transactions par jour en avril 2025 et 155 000 milliards de notionnel FX en cours à fin juin. Dans ce stock, 100 000 milliards de forwards et swaps avaient moins d’un an à courir. Le repère BIS de 2019 place autour de trois mois la maturité moyenne des contrats liés au KRW et au TWD. L’intermédiation est concentrée entre de grandes banques ; mars 2020 a montré que les appels de marge et les rolls pouvaient créer une demande urgente de dollars ; une partie significative du règlement mondial reste en dehors du PvP.
+
+La même collecte ne permet pas de répondre publiquement à plusieurs questions décisives :
+
+- combien de milliards les assureurs japonais, coréens et taïwanais doivent-ils renouveler chaque semaine et chaque mois en 2026 ;
+- quelle part est couverte à trois mois, un an ou plusieurs années ;
+- combien de contreparties bancaires servent chaque grand portefeuille ;
+- quels seuils de marge s’appliquent après netting ;
+- quelle fraction est naturellement couverte par des passifs en devises ;
+- quels actifs liquides peuvent être mobilisés si la base et le dollar se tendent ensemble ;
+- quelle proportion des couvertures en TWD bénéficie d’un règlement réduisant réellement le risque de principal.
+
+Je n’ai pas trouvé de base publique régionale réunissant ces informations avec un périmètre homogène. Les rapports d’entreprise en révèlent parfois une partie, mais avec des catégories comptables et des dates différentes. L’épisode suivant devra donc descendre dans les portefeuilles et les filings, institution par institution.
+
+## Le meilleur argument en faveur des couvertures courtes
+
+Une enquête sur le risque doit aussi reconnaître pourquoi le système existe.
+
+Les contrats courts sont généralement plus liquides. Ils permettent d’ajuster rapidement un hedge lorsque le portefeuille change, lorsqu’une obligation est vendue, lorsqu’un passif est refinancé ou lorsqu’une devise est volontairement laissée partiellement ouverte. Ils évitent de payer pendant dix ans une protection devenue inutile. Le marché interbancaire profond et la standardisation peuvent réduire le spread d’exécution.
+
+Une couverture longue n’est pas automatiquement plus prudente. Elle peut cristalliser un coût défavorable, augmenter les exigences de collatéral, exposer plus longtemps à une contrepartie et devenir difficile à dénouer. Une entreprise dont les flux futurs sont incertains peut même créer un sur-hedge en verrouillant trop tôt un montant qui ne se matérialisera pas.
+
+Surtout, les couvertures courtes fonctionnent la plupart du temps. Elles ont permis à des assureurs et fonds asiatiques d’accumuler des actifs étrangers sans transformer chaque mouvement quotidien du dollar en choc immédiat sur leurs ratios. Le sujet n’est pas de décrire un produit défectueux. Il est de mesurer la dépendance opérationnelle et financière créée par son efficacité.
+
+## Le risque prend la forme d’une chaîne
+
+Le risque du dollar asiatique n’est donc pas une case unique dans un bilan.
+
+Il commence par un actif étranger et un passif local. Le dérivé réduit l’écart de change, puis ajoute un prix de carry. Sa maturité courte impose un roll. Le roll dépend du bilan d’un dealer. Le dealer peut demander du collatéral. Le collatéral crée un besoin de cash. Le cash peut nécessiter une vente d’actifs ou une facilité publique. Le contrat doit enfin être réglé selon une infrastructure qui élimine ou conserve une part du risque de principal.
+
+Aucun de ces maillons ne prouve une crise. Leur empilement explique pourquoi une appréciation du yen, du won ou du dollar taïwanais ne suffit pas à évaluer la solidité du système. Une position peut être couverte contre le change et fragile en liquidité. Une moins-value de dérivé peut compenser un gain sur l’actif et provoquer malgré tout un appel de marge. Un marché peut disposer de milliers de milliards de volume et devenir cher sur un tenor précis.
+
+La couverture parfaite n’existe qu’à l’intérieur du contrat. Le bilan, lui, doit continuer à trouver une banque, un prix, du collatéral et des dollars à chaque échéance.
+
+## Méthode et périmètre
+
+Les [données mondiales de turnover](https://data.bis.org/topics/DER/tables-and-dashboards/BIS%2CDER_D11_4%2C1.0) portent sur **avril 2025**. Les notionnels en cours sont mesurés au **30 juin 2025**. Les maturités moyennes de KRW et TWD proviennent de données **2019** reprises dans une étude BIS publiée en 2021. Les données japonaises décrivent les desks en **avril 2025**. Les données taïwanaises de marché portent sur **mai 2026** ; celles des assureurs sur la période **2019 à octobre 2025**. Les [données de règlement](https://www.bis.org/publications/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey) portent sur **avril 2025** et ont été publiées le **15 juin 2026** ; elles excluent les instruments à paiement unique.
+
+Ces périmètres sont volontairement conservés séparément. Aucun volume de marché n’est traité comme une exposition d’assureur. Aucun notionnel n’est traité comme une dette ou une perte. Le simulateur est un exercice d’arithmétique paramétrique sans cotation en temps réel, sans données propriétaires et sans prévision de change.

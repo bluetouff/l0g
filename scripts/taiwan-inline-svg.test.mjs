@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import test from 'node:test';
 
+import './asia-dollar-hedge-model.test.mjs';
+
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 const targets = [
@@ -49,6 +51,18 @@ const targets = [
     page: 'dist/en/analysis/south-korea-price-perfect-fx-hedge/index.html',
     count: 5,
     pattern: /<svg\b[^>]*aria-labelledby="krfx-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/posts/asie-usine-invisible-couverture-dollar/index.html',
+    count: 6,
+    pattern: /<svg\b[^>]*aria-labelledby="afx-fr-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/asia-invisible-dollar-hedging-machine/index.html',
+    count: 6,
+    pattern: /<svg\b[^>]*aria-labelledby="afx-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
 ];

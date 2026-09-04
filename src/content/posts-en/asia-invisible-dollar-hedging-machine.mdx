@@ -1,0 +1,450 @@
+---
+title: "The invisible machinery hedging Asia’s dollar risk"
+seoTitle: "Asia’s FX swaps: the risk inside short hedges | l0g"
+ogTitle: "One twenty-year bond, eighty contracts"
+ogImage: "/illustrations/news/asia-dollar-hedge-machine-v1.jpg"
+description: "Asian insurers and pension funds often hedge long-dated dollar assets with short derivatives. An investigation into dealers, rolling costs, collateral and settlement risk."
+pubDate: 2026-09-04T20:30:00+02:00
+updatedDate: 2026-09-04T20:30:00+02:00
+tags: ["Asia", "US dollar", "FX swaps", "derivatives", "life insurance", "pension funds", "liquidity", "financial stability", "Taiwan", "Japan", "South Korea"]
+draft: false
+sourceArticle: "asie-usine-invisible-couverture-dollar"
+sourceUpdatedDate: 2026-09-04T20:30:00+02:00
+---
+
+import AsiaDollarHedgeRoller from '../../components/AsiaDollarHedgeRoller.astro';
+
+*A dollar bond may sit on an insurer’s balance sheet for twenty years. Its currency hedge can expire three months after it is booked. Keeping that protection in place until maturity would require eighty successive contracts, or seventy-nine renewals after the initial trade. The arithmetic is simple. The system that makes it possible is not: local banks, global dealer affiliates, swap markets, margin agreements, dollar credit lines, netting arrangements and settlement infrastructure operate continuously behind the visible portfolio.*
+
+This is the fourth part of **Asia’s dollar loop**, following our work on [Taiwanese life insurers](/en/analysis/taiwan-life-insurers-724-billion-currency-risk/), [the return of Japanese interest-rate risk](/en/analysis/japan-end-free-money-life-insurer-balance-sheets/) and [the price of hedging in South Korea](/en/analysis/south-korea-price-perfect-fx-hedge/). The three systems hold different assets, promise different liabilities and leave different shares of their currency books open. They nevertheless depend on the same machinery: a market that temporarily converts future dollar cash flows into known amounts of yen, won or New Taiwan dollars.
+
+A hedge sounds like a shield installed once. In practice, it is often a renewable service. It protects a defined amount against a defined variable for a defined period. It does not erase bond credit risk, interest-rate duration, liquidity needs or dependence on the bank taking the other side.
+
+## A $9.5 trillion-a-day machine
+
+The broadest global measurement comes from the Bank for International Settlements. Final tables released in December 2025 put average over-the-counter foreign exchange turnover in **April 2025** at **$9.510 trillion per day**. The preliminary September release rounded the number to $9.6 trillion. This article uses the final figure, conventionally stated as **$9.5 trillion**. The [BIS final tables](https://data.bis.org/topics/DER/tables-and-dashboards/BIS%2CDER_D11_4%2C1.0) split it into $2.952 trillion of spot, $1.747 trillion of outright forwards, $4.015 trillion of FX swaps, $164 billion of currency swaps and $632 billion of options. The [December analysis](https://www.bis.org/publications/global-fx-markets-when-hedging-takes-centre-stage) links the April surge to volatility and stronger hedging demand after US trade-policy announcements.
+
+The dollar was on one side of **89.2%** of all trades. Currency shares add to 200%, because every transaction contains two currencies. The number does not mean that nearly nine in ten investors were betting on a stronger dollar. It shows how often the currency is used for payment, funding, hedging and intermediation.
+
+Daily turnover is a **flow**. It is not the same as the contracts still outstanding on a reporting date. At **30 June 2025**, the BIS measured **$155 trillion** of [notional](/glossaire/notionnel/) in the foreign exchange risk category, including **$100 trillion** of forwards and swaps due within one year. Its [December 2025 outstanding-derivatives release](https://www.bis.org/publications/202512-commentary-otc-derivatives) also stresses that gross market values are orders of magnitude below notional amounts.
+
+Notional is the reference amount used to calculate payments. A $100 million swap is not automatically $100 million of debt or loss. Replacing the same hedge every quarter can count the same economic exposure many times in turnover and cumulative contract volume. The enormous figures measure both market scale and the speed at which promises are renewed.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 655" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-en-scale-title afx-en-scale-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-en-scale-title">Three scales of the global FX derivatives market</title>
+<desc id="afx-en-scale-desc">April 2025 daily turnover, outstanding notional at end-June 2025 and the under-one-year subset are different and non-additive measures.</desc>
+<rect width="900" height="655" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">One machine, three different measures</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Daily flow, contractual stock and maturity subset</text>
+<rect x="42" y="112" width="816" height="116" rx="12" fill="#152420" stroke="#27695f"/>
+<text x="68" y="146" fill="#5eead4" font-size="13" font-weight="700">FLOW</text>
+<text x="68" y="190" fill="#f5f6f8" font-size="36" font-weight="700">$9.5tn / day</text>
+<text x="430" y="158" fill="#d6d9df" font-size="14" ><tspan x="430" dy="0">OTC trading in April 2025</tspan><tspan x="430" dy="22">BIS final figure</tspan></text>
+<rect x="42" y="250" width="816" height="116" rx="12" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="284" fill="#7aa2f7" font-size="13" font-weight="700">STOCK</text>
+<text x="68" y="328" fill="#f5f6f8" font-size="36" font-weight="700">$155tn</text>
+<text x="430" y="296" fill="#d6d9df" font-size="14" ><tspan x="430" dy="0">Outstanding FX notional</tspan><tspan x="430" dy="22">at 30 June 2025</tspan></text>
+<rect x="42" y="388" width="816" height="116" rx="12" fill="#252115" stroke="#7e6527"/>
+<text x="68" y="422" fill="#f5b13d" font-size="13" font-weight="700">SUBSET</text>
+<text x="68" y="466" fill="#f5f6f8" font-size="36" font-weight="700">$100tn</text>
+<text x="430" y="434" fill="#d6d9df" font-size="14" ><tspan x="430" dy="0">Outstanding forwards and swaps</tspan><tspan x="430" dy="22">maturing within one year</tspan></text>
+<rect x="42" y="532" width="816" height="74" rx="10" fill="#251723" stroke="#793664"/>
+<text x="68" y="562" fill="#d6d9df" font-size="13" ><tspan x="68" dy="0">Notional is a reference amount for payments. It is neither a loss</tspan><tspan x="68" dy="20">nor debt of the same size. These three figures must not be added.</tspan></text>
+<text x="42" y="636" fill="#777d89" font-size="11" >Sources: BIS 2025 Triennial Survey; OTC statistics at 30 June 2025. l0g synthesis.</text>
+</svg>
+<figcaption>Daily flow, the stock of contracts and its short-dated subset answer different questions. The $100 trillion figure sits inside the $155 trillion total. The $9.5 trillion figure is daily turnover, not an outstanding balance.</figcaption>
+</figure>
+
+These global data do not isolate Asian insurers. They combine dealers, funds, companies, governments and interdealer trades. They do establish the environment in which Asian portfolios are protected: a huge market with a very short contractual core.
+
+## Six structures hidden inside one word
+
+An **outright forward** fixes today the exchange rate for a transaction on a future date. It can match a bond redemption or an expected coupon. Both currencies are normally delivered at maturity.
+
+An **[FX swap](/glossaire/swap-de-change/)** combines two legs. The counterparties exchange currencies now and reverse the trade later at a pre-agreed rate. It can supply temporary dollars, manage cash or extend a hedge. Globally, the BIS finds that FX swaps are predominantly very short, often up to seven days. That global result is not a statement about the precise tenor of an individual Asian insurer’s contracts.
+
+A **non-deliverable forward**, or NDF, settles only the cash difference between the agreed rate and a fixing. The [BIS definition](https://data.bis.org/topics/DER) notes that payment is very often in dollars, with no physical delivery of the two underlying currencies. The structure matters where a local currency is not freely deliverable offshore or where market practice favours offshore cash settlement.
+
+A **cross-currency swap** exchanges principal and interest streams, often for years. It can match a long asset more closely, but consumes more documentation, balance-sheet capacity, credit limits and collateral than a short standardised trade.
+
+An **option** buys a right rather than an obligation. It protects the downside while preserving some upside, for an upfront premium. A **natural hedge** uses no derivative at all: dollar assets placed against dollar policy liabilities reduce the mismatch by construction.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-en-instruments-title afx-en-instruments-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-en-instruments-title">Instruments used to manage foreign exchange risk</title>
+<desc id="afx-en-instruments-desc">Six cards distinguish the mechanism, settlement and use of major hedging structures.</desc>
+<rect width="900" height="760" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Six structures hidden behind the word hedge</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14">Currency, cash flows and maturity are not protected in the same way.</text>
+<rect x="42" y="116" width="390" height="158" rx="10" fill="#15171c" stroke="#5eead4" stroke-opacity="0.62"/>
+<text x="66" y="148" fill="#5eead4" font-size="14" font-weight="700">FORWARD</text>
+<text x="66" y="178" fill="#777d89" font-size="10" font-weight="700">MECHANISM</text>
+<text x="66" y="200" fill="#d6d9df" font-size="12"><tspan x="66" dy="0">Rate fixed for one date</tspan><tspan x="66" dy="18">Two currencies delivered</tspan></text>
+<text x="266" y="178" fill="#777d89" font-size="10" font-weight="700">USE</text>
+<text x="266" y="200" fill="#d6d9df" font-size="11.5"><tspan x="266" dy="0">Short to medium term</tspan></text>
+<rect x="468" y="116" width="390" height="158" rx="10" fill="#15171c" stroke="#7aa2f7" stroke-opacity="0.62"/>
+<text x="492" y="148" fill="#7aa2f7" font-size="14" font-weight="700">FX SWAP</text>
+<text x="492" y="178" fill="#777d89" font-size="10" font-weight="700">MECHANISM</text>
+<text x="492" y="200" fill="#d6d9df" font-size="12"><tspan x="492" dy="0">Exchange now, reverse</tspan><tspan x="492" dy="18">at an agreed later date</tspan></text>
+<text x="692" y="178" fill="#777d89" font-size="10" font-weight="700">USE</text>
+<text x="692" y="200" fill="#d6d9df" font-size="11.5"><tspan x="692" dy="0">Funding</tspan><tspan x="692" dy="18">and short hedge</tspan></text>
+<rect x="42" y="294" width="390" height="158" rx="10" fill="#15171c" stroke="#f5b13d" stroke-opacity="0.62"/>
+<text x="66" y="326" fill="#f5b13d" font-size="14" font-weight="700">NDF</text>
+<text x="66" y="356" fill="#777d89" font-size="10" font-weight="700">MECHANISM</text>
+<text x="66" y="378" fill="#d6d9df" font-size="12"><tspan x="66" dy="0">Cash-settled difference</tspan><tspan x="66" dy="18">No local delivery</tspan></text>
+<text x="266" y="356" fill="#777d89" font-size="10" font-weight="700">USE</text>
+<text x="266" y="378" fill="#d6d9df" font-size="11.5"><tspan x="266" dy="0">Non-deliverable</tspan><tspan x="266" dy="18">currencies</tspan></text>
+<rect x="468" y="294" width="390" height="158" rx="10" fill="#15171c" stroke="#ff4d87" stroke-opacity="0.62"/>
+<text x="492" y="326" fill="#ff4d87" font-size="14" font-weight="700">CROSS-CURRENCY</text>
+<text x="492" y="356" fill="#777d89" font-size="10" font-weight="700">MECHANISM</text>
+<text x="492" y="378" fill="#d6d9df" font-size="12"><tspan x="492" dy="0">Principal and interest</tspan><tspan x="492" dy="18">over several years</tspan></text>
+<text x="692" y="356" fill="#777d89" font-size="10" font-weight="700">USE</text>
+<text x="692" y="378" fill="#d6d9df" font-size="11.5"><tspan x="692" dy="0">Longer matching</tspan></text>
+<rect x="42" y="472" width="390" height="158" rx="10" fill="#15171c" stroke="#b8a1ff" stroke-opacity="0.62"/>
+<text x="66" y="504" fill="#b8a1ff" font-size="14" font-weight="700">OPTION</text>
+<text x="66" y="534" fill="#777d89" font-size="10" font-weight="700">MECHANISM</text>
+<text x="66" y="556" fill="#d6d9df" font-size="12"><tspan x="66" dy="0">A right, not an obligation</tspan><tspan x="66" dy="18">Premium paid upfront</tspan></text>
+<text x="266" y="534" fill="#777d89" font-size="10" font-weight="700">USE</text>
+<text x="266" y="556" fill="#d6d9df" font-size="11.5"><tspan x="266" dy="0">Asymmetric protection</tspan></text>
+<rect x="468" y="472" width="390" height="158" rx="10" fill="#15171c" stroke="#89d185" stroke-opacity="0.62"/>
+<text x="492" y="504" fill="#89d185" font-size="14" font-weight="700">NATURAL HEDGE</text>
+<text x="492" y="534" fill="#777d89" font-size="10" font-weight="700">MECHANISM</text>
+<text x="492" y="556" fill="#d6d9df" font-size="12"><tspan x="492" dy="0">Foreign asset matched</tspan><tspan x="492" dy="18">by same-currency liability</tspan></text>
+<text x="692" y="534" fill="#777d89" font-size="10" font-weight="700">USE</text>
+<text x="692" y="556" fill="#d6d9df" font-size="11.5"><tspan x="692" dy="0">Economic matching</tspan></text>
+<text x="42" y="680" fill="#777d89" font-size="12"><tspan x="42" dy="0">An instrument may hedge FX while leaving credit, duration, liquidity</tspan><tspan x="42" dy="19">or imperfectly matched cash flows exposed.</tspan></text>
+<text x="42" y="738" fill="#777d89" font-size="11">Sources: BIS Data Portal; BIS on Asian outward investment. Simplified definitions.</text>
+</svg>
+<figcaption>The same currency objective can be served by contracts with very different settlement, maturity and residual risks. These simplified descriptions do not replace legal documentation.</figcaption>
+</figure>
+
+The instruments are not interchangeable. An NDF may not deliver dollars needed to repay a physical liability. A three-month swap cannot lock the dollar price ten years ahead. A long cross-currency swap reduces renewal frequency but may be less liquid, harder to unwind or more collateral-intensive. A natural hedge works only if asset and liability cash flows genuinely match.
+
+## A long asset, a short promise
+
+Maturity is the central fault line.
+
+A [2021 BIS study](https://www.bis.org/publications/outward-portfolio-investment-and-dollar-funding-emerging-asia) examined outward investment and dollar funding in emerging Asia. Its tenor evidence mainly comes from **2019**, so it must not be treated as a live map of every portfolio. It remains a useful benchmark: the average maturity of forwards and swaps referencing the Korean won and New Taiwan dollar was then around **three months**.
+
+A twenty-year asset covered in three-month blocks requires eighty successive contracts, including seventy-nine renewals after the initial trade. That is arithmetic, not an industry average and not evidence that one insurer holds an unchanged bond and hedge for two decades. It makes the gap between economic horizon and contractual horizon visible.
+
+At every roll, the spot rate, interest-rate differential, [cross-currency basis](/glossaire/cross-currency-basis/), dealer spread and collateral terms can move. The immediate currency sensitivity may be low while the future price of maintaining protection remains unknown.
+
+The BIS study offers another historical illustration. In 2019, pension funds in Taiwan, Malaysia and Korea held about **$264 billion of foreign equities**. Hedging only 30% with one-month swaps would have required more than **$80 billion of monthly rolls**. That is not a 2026 market estimate. It shows how a modest hedge ratio creates large refinancing activity when tenor is short.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 695" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-en-rolls-title afx-en-rolls-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-en-rolls-title">A twenty-year bond hedged with three-month contracts</title>
+<desc id="afx-en-rolls-desc">Arithmetic illustration of eighty successive contracts, including seventy-nine renewals after the initial trade. The three-month tenor is a BIS benchmark based on 2019 data for the won and New Taiwan dollar.</desc>
+<rect width="900" height="695" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The asset remains, the protection is repriced</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Exercise: 20-year asset, 3-month hedge, continuous renewal</text>
+<rect x="42" y="112" width="816" height="86" rx="10" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="148" fill="#7aa2f7" font-size="13" font-weight="700">ASSET</text>
+<text x="68" y="178" fill="#f5f6f8" font-size="20" font-weight="700">Dollar bond, 20-year horizon</text>
+<line x1="68" y1="246" x2="832" y2="246" stroke="#2d3440" stroke-width="8" stroke-linecap="round"/>
+<line x1="68.0" y1="232" x2="68.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="68.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">0</text>
+<line x1="106.2" y1="232" x2="106.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="144.4" y1="232" x2="144.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="182.6" y1="232" x2="182.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="220.8" y1="232" x2="220.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="259.0" y1="232" x2="259.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="259.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">5</text>
+<line x1="297.2" y1="232" x2="297.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="335.4" y1="232" x2="335.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="373.6" y1="232" x2="373.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="411.8" y1="232" x2="411.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="450.0" y1="232" x2="450.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="450.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">10</text>
+<line x1="488.2" y1="232" x2="488.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="526.4" y1="232" x2="526.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="564.6" y1="232" x2="564.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="602.8" y1="232" x2="602.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="641.0" y1="232" x2="641.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="641.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">15</text>
+<line x1="679.2" y1="232" x2="679.2" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="717.4" y1="232" x2="717.4" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="755.6" y1="232" x2="755.6" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="793.8" y1="232" x2="793.8" y2="260" stroke="#7aa2f7" stroke-width="1"/>
+<line x1="832.0" y1="232" x2="832.0" y2="260" stroke="#7aa2f7" stroke-width="2"/>
+<text x="832.0" y="282" fill="#a8adb7" font-size="11" text-anchor="middle">20</text>
+<text x="450" y="308" fill="#a8adb7" font-size="11" text-anchor="middle">years</text>
+<text x="42" y="354" fill="#5eead4" font-size="13" font-weight="700">SUCCESSIVE HEDGES</text>
+<rect x="42" y="374" width="816" height="98" rx="10" fill="#152420" stroke="#27695f"/>
+<rect x="62" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="109" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="156" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="203" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="250" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="297" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="344" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="391" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="438" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="485" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="532" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="579" y="401" width="34" height="34" rx="5" fill="#27695f" opacity="0.48"/>
+<rect x="626" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="673" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="720" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<rect x="767" y="401" width="34" height="34" rx="5" fill="#5eead4" opacity="1"/>
+<text x="455" y="426" fill="#f5f6f8" font-size="28" font-weight="700" text-anchor="middle">…</text>
+<text x="68" y="510" fill="#ff4d87" font-size="42" font-weight="700">80</text>
+<text x="154" y="493" fill="#d6d9df" font-size="14" ><tspan x="154" dy="0">theoretical contracts</tspan><tspan x="154" dy="22">20 × 12 ÷ 3</tspan></text>
+<rect x="510" y="492" width="348" height="94" rx="10" fill="#252115" stroke="#7e6527"/>
+<text x="534" y="522" fill="#d6d9df" font-size="13" ><tspan x="534" dy="0">The figure 80 is arithmetic,</tspan><tspan x="534" dy="21">not an observed insurer average.</tspan></text>
+<text x="42" y="623" fill="#777d89" font-size="12" ><tspan x="42" dy="0">Historical benchmark: the BIS estimated in 2019 an average maturity near three months</tspan><tspan x="42" dy="19">for forwards and swaps referencing KRW and TWD.</tspan></text>
+<text x="42" y="675" fill="#777d89" font-size="11" >Source: BIS, Outward portfolio investment and dollar funding in emerging Asia, 2021.</text>
+</svg>
+<figcaption>Eighty successive contracts, including seventy-nine renewals after the initial trade, are the arithmetic result of dividing twenty years into three-month blocks. The three-month tenor is a BIS 2019 benchmark for KRW and TWD contracts, not a complete observation of 2026 portfolios.</figcaption>
+</figure>
+
+<AsiaDollarHedgeRoller lang="en" mode="embed" />
+
+The simulator deliberately adds successive contracts to reveal the rolling burden. Its largest output, cumulative gross notional, is also the easiest to misread. Hedging $60 billion eighty times produces $4.8 trillion of contracts over the full horizon. The initial economic exposure is still $60 billion, before portfolio changes. The cumulative number measures market dependence, not a $4.8 trillion loss scenario.
+
+## Dealer banks sit at the centre
+
+An insurer cannot manufacture its own forward dollars. It trades with a bank, often a local dealer or an affiliate of a global group. That bank internalises part of client flow, transfers the remainder to other dealers and funds imbalances on its own balance sheet or through its headquarters.
+
+The network is highly concentrated. A [2025 BIS study](https://www.bis.org/publications/international-finance-through-lens-bis-statistics-derivatives-markets), using bank disclosures at end-2024, estimates that the ten largest groups reported almost **60%** of outstanding global FX derivatives and the top twenty more than **85%**. US banks were on one side of more than 30% of notional. These are estimates from bank disclosures, not a complete counterparty map for Asian insurers.
+
+National surveys show how the global network reaches local markets.
+
+The [Bank of Japan’s April 2025 survey](https://www.boj.or.jp/en/statistics/bis/deri/data/deri2504.pdf) recorded **$440.2 billion per day** of FX turnover, including $244.7 billion of FX swaps, or 55.6%. Financial institutions generated 94.7% of activity. The top ten reporting institutions handled 70.7% of turnover and the top twenty 94.6%.
+
+Taiwan’s [central bank](https://www.cbc.gov.tw/en/cp-448-192441-f4d0c-2.html) recorded $940 billion of net turnover in **May 2026**, equal to $47 billion per day. FX swaps accounted for 51.6%. Interbank trades with foreign banks represented 47.4% of the market.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-en-dealers-title afx-en-dealers-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-en-dealers-title">The dealer-bank chain behind Asian FX hedges</title>
+<desc id="afx-en-dealers-desc">The fund or insurer trades with a local bank or affiliate, which transfers and funds the risk through a concentrated global dealer network.</desc>
+<rect width="900" height="620" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The local hedge plugs into a global network</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Stylised funding, risk-transfer and market-making chain</text>
+<rect x="42" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#5eead4"/>
+<text x="132" y="156" fill="#5eead4" font-size="13" font-weight="700" text-anchor="middle">INSURER / FUND</text>
+<text x="132" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="132" dy="0">dollar asset</tspan><tspan x="132" dy="20">local liability</tspan></text>
+<rect x="254" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#f5b13d"/>
+<text x="344" y="156" fill="#f5b13d" font-size="13" font-weight="700" text-anchor="middle">LOCAL DEALER</text>
+<text x="344" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="344" dy="0">Korean, Taiwanese</tspan><tspan x="344" dy="20">or Japanese bank</tspan></text>
+<rect x="466" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#7aa2f7"/>
+<text x="556" y="156" fill="#7aa2f7" font-size="13" font-weight="700" text-anchor="middle">AFFILIATE / HQ</text>
+<text x="556" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="556" dy="0">global balance sheet,</tspan><tspan x="556" dy="20">collateral, limits</tspan></text>
+<rect x="678" y="122" width="180" height="134" rx="10" fill="#15171c" stroke="#ff4d87"/>
+<text x="768" y="156" fill="#ff4d87" font-size="13" font-weight="700" text-anchor="middle">DEALER MARKET</text>
+<text x="768" y="194" fill="#d6d9df" font-size="12" text-anchor="middle"><tspan x="768" dy="0">other banks,</tspan><tspan x="768" dy="20">ultimate dollars</tspan></text>
+<line x1="222" y1="189" x2="250" y2="189" stroke="#777d89" stroke-width="2"/>
+<polygon points="250,189 240,183 240,195" fill="#777d89"/>
+<line x1="434" y1="189" x2="462" y2="189" stroke="#777d89" stroke-width="2"/>
+<polygon points="462,189 452,183 452,195" fill="#777d89"/>
+<line x1="646" y1="189" x2="674" y2="189" stroke="#777d89" stroke-width="2"/>
+<polygon points="674,189 664,183 664,195" fill="#777d89"/>
+<rect x="42" y="294" width="394" height="202" rx="12" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="330" fill="#7aa2f7" font-size="13" font-weight="700">GLOBAL CONCENTRATION</text>
+<text x="68" y="370" fill="#d6d9df" font-size="13" >Top 10 banks</text>
+<rect x="68" y="386" width="320" height="24" rx="5" fill="#20232a"/>
+<rect x="68" y="386" width="190" height="24" rx="5" fill="#7aa2f7"/>
+<text x="272" y="404" fill="#f5f6f8" font-size="13" font-weight="700">almost 60%</text>
+<text x="68" y="444" fill="#d6d9df" font-size="13" >Top 20 banks</text>
+<rect x="68" y="460" width="320" height="24" rx="5" fill="#20232a"/>
+<rect x="68" y="460" width="276" height="24" rx="5" fill="#ff4d87"/>
+<text x="380" y="478" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">more than 85%</text>
+<rect x="466" y="294" width="392" height="202" rx="12" fill="#152420" stroke="#27695f"/>
+<text x="492" y="330" fill="#5eead4" font-size="13" font-weight="700">TWO NATIONAL MARKETS</text>
+<text x="492" y="374" fill="#d6d9df" font-size="13" >Japan, April 2025</text>
+<text x="492" y="406" fill="#f5f6f8" font-size="24" font-weight="700">$440.2bn / day</text>
+<text x="492" y="448" fill="#d6d9df" font-size="13" >Taiwan, May 2026</text>
+<text x="492" y="480" fill="#f5f6f8" font-size="24" font-weight="700">$47.0bn / day</text>
+<text x="42" y="542" fill="#777d89" font-size="12" ><tspan x="42" dy="0">These figures cover the whole local market, not insurer hedges alone.</tspan><tspan x="42" dy="19">Global concentration is estimated from outstanding derivatives at end-2024.</tspan></text>
+<text x="42" y="596" fill="#777d89" font-size="11" >Sources: BIS; Bank of Japan; Central Bank of Taiwan. l0g synthesis.</text>
+</svg>
+<figcaption>The portfolio first meets a dealer and then a global banking network. Japan and Taiwan figures cover their whole national markets. Top-ten and top-twenty concentration are global estimates for outstanding derivatives at end-2024.</figcaption>
+</figure>
+
+Both datasets cover the entire domestic FX market, not insurer hedges alone. They cannot identify the banks serving Cathay Life, Nippon Life, the NPS or any other institution. They do show a common structure: swaps dominate and intermediation rests on a limited number of bank balance sheets.
+
+Concentration is not automatically fragility. Large dealers operate netting, collateral and global funding systems that small institutions could not reproduce. It becomes a systemic concern when many investors demand the same currency, at the same tenor, from the same banks at the same time.
+
+## The price is more than the spot rate
+
+A forward price is not simply a forecast of the future exchange rate.
+
+**Covered interest parity** links spot, forward rates and the interest rates on two currencies. In a frictionless market, borrowing one currency, investing in another and hedging the exchange rate should not generate a riskless profit. When US short rates exceed local Asian rates, an investor selling future dollars generally gives up much of the yield advantage through the forward price.
+
+Since the global financial crisis, observed prices have persistently deviated from this textbook relationship. The [BIS framework for the cross-currency basis](https://www.bis.org/publications/covered-interest-parity-lost-understanding-cross-currency-basis) connects those deviations to imbalanced hedging demand and limits on the dealer balance sheets able to arbitrage them. A non-zero basis therefore puts a price on scarce intermediation capacity.
+
+Taiwan offers a striking measure of carry, with an important source caveat. In a [release dated 23 December 2025 and updated on 2 January 2026](https://www.fsc.gov.tw/en/home.jsp?dataserno=202601020001&dtable=News&id=54&mcustomize=multimessage_view.jsp&parentpath=0,2), the Financial Supervisory Commission said life insurers held NT$22.3 trillion of foreign investments at end-October 2025. After excluding foreign-currency policies, it put FX exposure at NT$15.2 trillion, about 60% hedged. The regulator calculated **NT$1.6 trillion** of cumulative hedging costs from 2019 through October 2025, compared with **NT$1.4 trillion** of after-tax net profit over the same period.
+
+The figures are official, but the interpretation serves a regulatory proposal. The FSC used them to argue for a different accounting treatment of currency gains and losses and described short market hedges as expensive and poorly suited to structural risk. The release does not provide insurer-level, annual, tenor, instrument or dealer breakdowns. It would therefore be wrong to conclude that every dollar of cost was wasted or that hedges failed to prevent larger losses.
+
+The release establishes a narrower point: cumulative hedging costs reported by the FSC exceeded sector profits over the period it selected. The regulator attributes those high costs to the post-2022 interest-rate differential and supply-demand imbalances in currency swaps and NDFs. Assessing the benefit requires information on avoided volatility, capital relief and losses that would have arisen without hedging.
+
+## Protection can demand cash
+
+A derivative can do its economic job and still produce a liquidity problem.
+
+Consider an insurer holding a dollar bond while selling dollars forward. If the dollar rises sharply, the bond is worth more in local currency. The derivative loses value because the insurer agreed to sell dollars below the new market rate. The two moves may offset economically. They need not settle at the same time.
+
+The dealer may call collateral on the losing derivative. The bond gain remains unrealised or will arrive only at redemption. The insurer must provide cash, eligible securities or repo funding before a deadline. The question shifts from portfolio value to the assets that can be mobilised quickly.
+
+On **10 December 2024**, the [Financial Stability Board](https://www.fsb.org/2024/12/liquidity-preparedness-for-margin-and-collateral-calls-final-report/) issued recommendations for non-bank market participants. It stresses that margin protects against counterparty risk while potentially amplifying system-wide liquidity demand in stress. The recommendations cover governance, extreme but plausible scenarios, contingency funding, liquid assets and operational readiness.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-en-liquidity-title afx-en-liquidity-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-en-liquidity-title">How a hedge can create a liquidity requirement</title>
+<desc id="afx-en-liquidity-desc">A five-stage sequence separates economic offset from the cash required immediately.</desc>
+<rect width="900" height="760" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The hedge can work and still demand cash</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14">Liquidity risk is distinct from the final economic loss.</text>
+<rect x="42" y="112" width="816" height="68" rx="9" fill="#15171c" stroke="#7aa2f7" stroke-opacity="0.55"/>
+<circle cx="78" cy="146" r="19" fill="#7aa2f7"/>
+<text x="78" y="152" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">1</text>
+<text x="114" y="141" fill="#7aa2f7" font-size="13" font-weight="700">MARKET MOVE</text>
+<text x="390" y="137" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Currency or rates</tspan><tspan x="390" dy="19">move rapidly</tspan></text>
+<line x1="78" y1="180" x2="78" y2="194" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,194 72,184 84,184" fill="#777d89"/>
+<rect x="42" y="194" width="816" height="68" rx="9" fill="#111318" stroke="#f5b13d" stroke-opacity="0.55"/>
+<circle cx="78" cy="228" r="19" fill="#f5b13d"/>
+<text x="78" y="234" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">2</text>
+<text x="114" y="223" fill="#f5b13d" font-size="13" font-weight="700">DERIVATIVE VALUE</text>
+<text x="390" y="219" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">One leg turns negative</tspan><tspan x="390" dy="19">at mark-to-market</tspan></text>
+<line x1="78" y1="262" x2="78" y2="276" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,276 72,266 84,266" fill="#777d89"/>
+<rect x="42" y="276" width="816" height="68" rx="9" fill="#15171c" stroke="#ff4d87" stroke-opacity="0.55"/>
+<circle cx="78" cy="310" r="19" fill="#ff4d87"/>
+<text x="78" y="316" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">3</text>
+<text x="114" y="305" fill="#ff4d87" font-size="13" font-weight="700">MARGIN CALL</text>
+<text x="390" y="301" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Cash or collateral</tspan><tspan x="390" dy="19">is due quickly</tspan></text>
+<line x1="78" y1="344" x2="78" y2="358" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,358 72,348 84,348" fill="#777d89"/>
+<rect x="42" y="358" width="816" height="68" rx="9" fill="#111318" stroke="#5eead4" stroke-opacity="0.55"/>
+<circle cx="78" cy="392" r="19" fill="#5eead4"/>
+<text x="78" y="398" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">4</text>
+<text x="114" y="387" fill="#5eead4" font-size="13" font-weight="700">ASSET SALE</text>
+<text x="390" y="383" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Cash, bonds or repo</tspan><tspan x="390" dy="19">are mobilised</tspan></text>
+<line x1="78" y1="426" x2="78" y2="440" stroke="#777d89" stroke-width="2"/>
+<polygon points="78,440 72,430 84,430" fill="#777d89"/>
+<rect x="42" y="440" width="816" height="68" rx="9" fill="#15171c" stroke="#ff4d87" stroke-opacity="0.55"/>
+<circle cx="78" cy="474" r="19" fill="#ff4d87"/>
+<text x="78" y="480" text-anchor="middle" fill="#0c0d10" font-size="14" font-weight="700">5</text>
+<text x="114" y="469" fill="#ff4d87" font-size="13" font-weight="700">MARKET FEEDBACK</text>
+<text x="390" y="465" fill="#d6d9df" font-size="12"><tspan x="390" dy="0">Prices, spreads and basis</tspan><tspan x="390" dy="19">may tighten</tspan></text>
+<rect x="42" y="532" width="390" height="108" rx="10" fill="#152420" stroke="#27695f"/>
+<text x="68" y="566" fill="#5eead4" font-size="15" font-weight="700">ECONOMIC GAIN</text>
+<text x="68" y="598" fill="#d6d9df" font-size="12"><tspan x="68" dy="0">The hedged asset may gain in local currency</tspan><tspan x="68" dy="20">while the derivative loses.</tspan></text>
+<rect x="468" y="532" width="390" height="108" rx="10" fill="#251723" stroke="#793664"/>
+<text x="494" y="566" fill="#ff4d87" font-size="15" font-weight="700">CASH REQUIREMENT</text>
+<text x="494" y="598" fill="#d6d9df" font-size="12"><tspan x="494" dy="0">The asset gain is not always liquid</tspan><tspan x="494" dy="20">when the margin call arrives.</tspan></text>
+<text x="42" y="680" fill="#777d89" font-size="11.5"><tspan x="42" dy="0">The FSB recommends governance, stress tests, liquid assets and operational readiness.</tspan><tspan x="42" dy="19">The margin framework reduces counterparty risk without removing the demand for cash.</tspan></text>
+<text x="42" y="738" fill="#777d89" font-size="11">Sources: FSB, December 2024; BCBS and IOSCO, December 2025.</text>
+</svg>
+<figcaption>A hedge can offset the asset’s economic move while creating a margin call before the gain is available as cash. Margin protects the counterparty but requires liquidity preparation.</figcaption>
+</figure>
+
+The strongest counterargument matters. Supervisors do not describe the margin framework itself as broken. On **12 December 2025**, [BCBS and IOSCO](https://www.bis.org/publications/review-implementation-margin-requirements-non-centrally-cleared-derivatives) found no material implementation problem in the framework for non-centrally cleared derivatives and proposed no change. Margin prevents one counterparty’s loss from becoming everyone else’s. Residual risk lies in the payer’s liquidity preparedness.
+
+Public data are not sufficient to calculate this for Asian insurers as a group. Collateral agreements, thresholds, eligible assets, counterparty netting and maturity ladders are missing. Applying a single percentage to sector notional would manufacture precision.
+
+## March 2020 was the live test
+
+South Korea has already shown how the mechanism behaves under pressure.
+
+The [BIS study](https://www.bis.org/publications/outward-portfolio-investment-and-dollar-funding-emerging-asia) identifies three simultaneous sources of dollar demand in March 2020. Insurers had to keep rolling hedges. Securities firms and asset managers faced margin calls on roughly **$11 billion** of equity-linked securities sold to Korean investors. Non-residents sold won assets and converted about $4.5 billion into dollars in the spot market.
+
+Banks kept supplying dollars through derivatives, but at a premium while securing funding for themselves. Korean domestic banks increased FX borrowing by $4.5 billion during the month. Foreign-bank branches raised almost $10 billion, mostly from their headquarters.
+
+Individually prudent hedgers can therefore create a collective scramble. The process turns procyclical when everyone refuses to let protection lapse just as dollars become scarce.
+
+Authorities subsequently strengthened liquidity monitoring, stress testing and macroprudential coordination. The Federal Reserve’s reopening of swap lines with the Bank of Korea and Monetary Authority of Singapore on 19 March 2020 helped narrow Asian swap bases. The BIS also argues that incentives for hedges up to three years could reduce rollover concentration, while warning that public backstops without tighter rules could encourage more risk-taking in calm periods.
+
+South Korea now operates another public channel. On **15 December 2025**, the [Bank of Korea announced](https://www.bok.or.kr/portal/bbs/P0000559/view.do?depth=200690&menuNo=200690&nttId=10095154&programType=newsData&relate=Y) that its FX swap arrangement with the National Pension Service would run through end-2026 with a **$65 billion ceiling**. That ceiling is not usage, programme cost or the NPS hedge ratio. The Bank’s [March 2026 Monetary Policy Report](https://www.bok.or.kr/eng/bbs/E0000628/view.do?depth=400215&menuNo=400215&nttId=10098067&programType=newsDataEng&relate=Y) describes the arrangement as a way to reduce spot dollar demand and let the fund hedge without private counterparty risk.
+
+The arrangement does not simply move the NPS’s full currency risk onto the public balance sheet. It changes the source of dollars and transaction channel. Economic consequences depend on actual drawings, pricing, maturities and the portfolio covered, none of which is disclosed in the headline announcement.
+
+## Settlement is a separate layer of risk
+
+A hedge that has been priced, funded and rolled must still be paid.
+
+Settlement risk arises when one party delivers its currency before receiving the other. The 1974 failure of Bankhaus Herstatt made the problem famous: counterparties delivered Deutsche marks in Europe and then failed to receive their dollars in New York.
+
+A [BIS study published on 15 June 2026](https://www.bis.org/publications/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey), using April 2025 survey data, found more than **$14 trillion** of gross financial obligations settled each day. About $5.2 trillion, or **36%**, used payment versus payment, linking the two legs and eliminating principal settlement risk. Another $7.6 trillion, or **54%**, used methods that mitigate without eliminating it. The remaining **10%**, more than $1.4 trillion per day, settled gross bilaterally and remained exposed to full principal risk. The measure covers trades involving two payments; it excludes single-payment instruments such as NDFs and option premia.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 672" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="afx-en-settlement-title afx-en-settlement-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="afx-en-settlement-title">Settlement methods for FX obligations in April 2025</title>
+<desc id="afx-en-settlement-desc">Of more than fourteen trillion dollars in daily obligations, 36 percent used payment versus payment, 54 percent other mitigants and 10 percent gross bilateral settlement.</desc>
+<rect width="900" height="672" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The last risk appears at settlement</text>
+<text x="42" y="77" fill="#a8adb7" font-size="14" >Daily gross obligations, BIS April 2025 survey, global market</text>
+<rect x="42" y="122" width="816" height="68" rx="10" fill="#111318" stroke="#2a2d35"/>
+<text x="68" y="164" fill="#f5f6f8" font-size="28" font-weight="700">more than $14tn / day</text>
+<rect x="42" y="224" width="294" height="182" rx="12" fill="#152420" stroke="#27695f"/>
+<text x="68" y="260" fill="#5eead4" font-size="34" font-weight="700">36 %</text>
+<text x="68" y="294" fill="#f5f6f8" font-size="14" font-weight="700">Payment versus payment</text>
+<text x="68" y="330" fill="#d6d9df" font-size="12" ><tspan x="68" dy="0">Both legs are linked.</tspan><tspan x="68" dy="20">Principal risk is eliminated.</tspan></text>
+<rect x="354" y="224" width="294" height="182" rx="12" fill="#252115" stroke="#7e6527"/>
+<text x="380" y="260" fill="#f5b13d" font-size="34" font-weight="700">54 %</text>
+<text x="380" y="294" fill="#f5f6f8" font-size="14" font-weight="700">Other mitigants</text>
+<text x="380" y="330" fill="#d6d9df" font-size="12" ><tspan x="380" dy="0">Netting, intragroup flows</tspan><tspan x="380" dy="20">or operational controls</tspan><tspan x="380" dy="20">mitigate without eliminating risk.</tspan></text>
+<rect x="666" y="224" width="192" height="182" rx="12" fill="#251723" stroke="#793664"/>
+<text x="692" y="260" fill="#ff4d87" font-size="34" font-weight="700">10 %</text>
+<text x="692" y="294" fill="#f5f6f8" font-size="14" font-weight="700">Gross bilateral</text>
+<text x="692" y="330" fill="#d6d9df" font-size="12" ><tspan x="692" dy="0">$1.4tn per day</tspan><tspan x="692" dy="20">fully exposed</tspan></text>
+<rect x="42" y="446" width="816" height="110" rx="10" fill="#171d2b" stroke="#445f9a"/>
+<text x="68" y="482" fill="#7aa2f7" font-size="13" font-weight="700">CLSSETTLEMENT</text>
+<text x="68" y="515" fill="#d6d9df" font-size="13" ><tspan x="68" dy="0">JPY and KRW are among the 18 supported currencies. TWD is not listed.</tspan><tspan x="68" dy="21">Its absence does not mean every TWD trade settles without risk mitigation.</tspan></text>
+<text x="42" y="598" fill="#777d89" font-size="12" ><tspan x="42" dy="0">PvP eliminates principal settlement risk. It does not remove replacement cost,</tspan><tspan x="42" dy="19">liquidity risk or economic default before settlement.</tspan></text>
+<text x="42" y="650" fill="#777d89" font-size="11" >Sources: BIS, June 2026; CLS currency list accessed 4 September 2026.</text>
+</svg>
+<figcaption>Payment versus payment removes principal settlement risk for trades using it. Other methods covered 54% and mitigated without eliminating risk, while 10% remained gross bilateral in April 2025.</figcaption>
+</figure>
+
+CLSSettlement supports **18 currencies**. The [list accessed on 4 September 2026](https://www.cls-group.com/products/settlement/clssettlement/currencies/) includes the Japanese yen and Korean won. The New Taiwan dollar is absent. That does not imply that every TWD transaction settles gross without protection. Netting, timing controls, correspondent arrangements and other settlement mechanisms can still reduce risk.
+
+Three verbs must remain separate. **Clearing** manages or mutualises derivative counterparty exposure. **Netting** reduces several gross payments to a balance. **PvP settlement** links final delivery of both currencies. CLSNet, for example, calculates net payment instructions. It does not itself turn every trade into PvP.
+
+PvP eliminates principal risk at settlement. It does not eliminate replacement cost after an earlier default, liquidity risk or economic losses already accrued.
+
+## Public disclosure ends at the portfolio door
+
+The [BIS record](https://www.bis.org/publications/global-fx-markets-when-hedging-takes-centre-stage) establishes the market’s scale and its dependency chain. Global FX activity averaged $9.5 trillion per day in April 2025. Outstanding FX derivatives reached $155 trillion at end-June, with $100 trillion of forwards and swaps due within a year. The 2019 BIS benchmark put average KRW and TWD forward and swap maturity near three months. Large dealer banks dominate intermediation; March 2020 showed how margin and rolling demand can generate urgent dollar needs; a material share of global settlement still occurs outside PvP.
+
+It does not answer the questions that determine institutional resilience in 2026:
+
+- how much must Japanese, Korean and Taiwanese investors roll each week or month;
+- how much sits at three months, one year or several years;
+- how many banks serve each large portfolio;
+- what collateral thresholds apply after netting;
+- how much is naturally offset by foreign-currency liabilities;
+- which liquid assets are available if the dollar and basis tighten together;
+- how much TWD hedging ultimately settles through mechanisms that remove principal risk.
+
+No harmonised public regional database was found. Company filings reveal fragments, but dates and accounting categories differ. The next stage of the investigation therefore has to work institution by institution.
+
+## The case for short hedges
+
+A risk investigation also has to explain why the system persists.
+
+Short contracts are usually more liquid. They adjust quickly when bonds are sold, liabilities change or managers deliberately vary the open currency position. They avoid paying for ten years of protection that becomes unnecessary. Standardisation and deep interdealer markets can keep execution spreads low.
+
+A long hedge is not automatically safer. It can lock in an unattractive cost, increase collateral demands, extend counterparty exposure and become expensive to unwind. Uncertain future cash flows can even create over-hedging if the promised amount never materialises.
+
+Most importantly, short hedges work most of the time. They have allowed Asian insurers and pension funds to own foreign assets without turning every daily dollar move into immediate capital volatility. The instrument is not defective. Its success creates an operational and funding dependency that must be measured.
+
+## Risk becomes a chain
+
+Asia’s dollar risk does not live in a single balance-sheet line.
+
+It begins with a foreign asset and a local liability. A derivative reduces currency mismatch but adds carry. Short maturity creates a roll. The roll depends on a dealer balance sheet. The dealer may require collateral. Collateral creates a cash need. Cash may require asset sales or a public facility. The trade must finally settle through infrastructure that either removes or retains principal risk.
+
+None of those links proves a crisis. Together they explain why a stronger yen, won or New Taiwan dollar is not enough to judge system resilience. A position can be well hedged against FX and vulnerable to liquidity. A derivative loss can offset an asset gain while still triggering a margin call. A market with trillions in daily turnover can become expensive at one particular tenor.
+
+A perfect hedge exists only inside the contract. The balance sheet still needs a bank, a price, collateral and dollars at every expiry.
+
+## Method and perimeter
+
+[Global turnover data](https://data.bis.org/topics/DER/tables-and-dashboards/BIS%2CDER_D11_4%2C1.0) refer to **April 2025**. Outstanding notionals are measured at **30 June 2025**. Average KRW and TWD maturities come from **2019** data cited in a 2021 BIS study. Japan’s national survey covers dealer activity in **April 2025**. Taiwan’s market data refer to **May 2026**, while its insurer cost figures cover **2019 through October 2025**. [Settlement data](https://www.bis.org/publications/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey) refer to **April 2025**, were published on **15 June 2026** and exclude single-payment instruments.
+
+The perimeters remain separate throughout. Market turnover is not treated as insurer exposure. Notional is not treated as debt or loss. The calculator is a parameterised arithmetic exercise with no live pricing, proprietary positions or exchange-rate forecast.

@@ -1,0 +1,298 @@
+---
+import {
+  ASIA_DOLLAR_HEDGE_DEFAULTS,
+  ASIA_DOLLAR_HEDGE_MODEL_VERSION,
+  ASIA_DOLLAR_HEDGE_PRESETS,
+  calculateAsiaDollarHedge,
+} from '../lib/asia-dollar-hedge-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `asia-dollar-hedge-${lang}-${mode}`;
+const initial = calculateAsiaDollarHedge(ASIA_DOLLAR_HEDGE_DEFAULTS);
+const number = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const usd = (value: number) => isFr ? `${number.format(value)} Md$` : `$${number.format(value)}bn`;
+
+const copy = isFr ? {
+  eyebrow: 'SIMULATEUR DE ROULEMENT',
+  title: 'Une couverture ne se renouvelle pas toute seule',
+  intro: 'Séparez la couverture naturelle, les dérivés et la position ouverte. Le modèle chiffre ensuite le nombre de contrats successifs, un coût de carry et un appel de collatéral hypothétique.',
+  badge: 'calcul local · zéro tracker',
+  presets: 'Tenors de démonstration',
+  presetNote: 'Les trois boutons ne décrivent pas un portefeuille réel. Ils montrent comment la fréquence de renouvellement change avec le tenor.',
+  assumptions: 'Hypothèses',
+  portfolio: 'Portefeuille en devises',
+  natural: 'Couverture naturelle',
+  derivative: 'Couverture par dérivés',
+  horizon: 'Horizon des actifs',
+  tenor: 'Tenor du hedge',
+  carry: 'Coût annuel du carry',
+  basis: 'Renchérissement de la base',
+  collateral: 'Appel de collatéral',
+  currency: 'Mouvement du dollar en monnaie locale',
+  results: 'Résultats du scénario',
+  open: 'Notionnel encore ouvert',
+  monthly: 'Roule en moyenne par mois',
+  rolls: 'Contrats successifs par position',
+  cumulative: 'Notionnel brut cumulé roulé',
+  annualCarry: 'Coût annuel du carry',
+  basisCost: 'Surcoût annuel de base',
+  marginCall: 'Besoin de collatéral',
+  translation: 'Effet de change sur la part ouverte',
+  scope: 'Ce que mesure le modèle',
+  scopeText: 'Il s’agit d’une arithmétique de scénario. Le notionnel cumulé additionne des contrats successifs sur la même exposition et ne mesure ni une dette, ni une perte, ni le risque maximal du portefeuille.',
+  limits: 'Limites importantes',
+  limitsText: 'Le roll mensuel moyen suppose des échéances uniformément réparties. Sont exclus : coupons irréguliers, duration obligataire, crédit, convexité, options des contrats d’assurance, seuils de collatéral, compensation, défaut de contrepartie, coûts de transaction détaillés et réactions de la banque centrale.',
+  formulas: 'Formules visibles',
+  years: 'ans',
+  months: 'mois',
+  bps: 'pb',
+  percent: '%',
+  version: 'Modèle',
+} : {
+  eyebrow: 'ROLLING SIMULATOR',
+  title: 'A hedge does not renew itself',
+  intro: 'Separate natural hedges, derivatives and the open position. The model then calculates successive contract counts, an assumed carry cost and an illustrative collateral call.',
+  badge: 'local calculation · zero tracker',
+  presets: 'Illustrative tenors',
+  presetNote: 'The three buttons do not describe an actual portfolio. They show how renewal frequency changes with tenor.',
+  assumptions: 'Assumptions',
+  portfolio: 'Foreign-currency portfolio',
+  natural: 'Natural hedge',
+  derivative: 'Derivative hedge',
+  horizon: 'Asset horizon',
+  tenor: 'Hedge tenor',
+  carry: 'Annual carry cost',
+  basis: 'Basis widening',
+  collateral: 'Collateral call',
+  currency: 'Dollar move in local currency',
+  results: 'Scenario results',
+  open: 'Notional left open',
+  monthly: 'Average monthly roll',
+  rolls: 'Successive contracts per position',
+  cumulative: 'Cumulative gross rolled notional',
+  annualCarry: 'Annual carry cost',
+  basisCost: 'Annual basis surcharge',
+  marginCall: 'Collateral requirement',
+  translation: 'FX effect on the open share',
+  scope: 'What the model measures',
+  scopeText: 'This is scenario arithmetic. Cumulative notional adds successive contracts written on the same exposure. It is not debt, loss or a measure of maximum portfolio risk.',
+  limits: 'Important limitations',
+  limitsText: 'Average monthly roll assumes evenly distributed maturities. Excluded: irregular coupons, bond duration, credit, convexity, insurance-contract options, collateral thresholds, netting, counterparty default, detailed transaction costs and central-bank responses.',
+  formulas: 'Visible formulas',
+  years: 'years',
+  months: 'months',
+  bps: 'bp',
+  percent: '%',
+  version: 'Model',
+};
+---
+
+<section class:list={['ah-tool', mode === 'full' && 'ah-tool--full']} id={id} data-asia-hedge data-lang={lang}>
+  <header class="ah-head">
+    <div>
+      <p class="ah-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="ah-badge">{copy.badge}</span>
+  </header>
+
+  <section class="ah-presets" aria-labelledby={`${id}-presets`}>
+    <div>
+      <h3 id={`${id}-presets`}>{copy.presets}</h3>
+      <p>{copy.presetNote}</p>
+    </div>
+    <div class="ah-preset-row">
+      {ASIA_DOLLAR_HEDGE_PRESETS.map((preset, index) => (
+        <button type="button" data-preset={preset.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+          <strong>{isFr ? preset.labelFr : preset.labelEn}</strong>
+          <small>{isFr ? preset.noteFr : preset.noteEn}</small>
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <div class="ah-layout">
+    <form class="ah-controls" aria-labelledby={`${id}-assumptions`}>
+      <h3 id={`${id}-assumptions`}>{copy.assumptions}</h3>
+
+      <label class="ah-control">
+        <span>{copy.portfolio}<b>Md$</b></span>
+        <div><input type="range" name="portfolioUsdBn-range" min="0" max="1000" step="5" value={ASIA_DOLLAR_HEDGE_DEFAULTS.portfolioUsdBn}/><input type="number" name="portfolioUsdBn" min="0" max="10000" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.portfolioUsdBn} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.natural}<b>{copy.percent}</b></span>
+        <div><input type="range" name="naturalHedgePct-range" min="0" max="100" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.naturalHedgePct}/><input type="number" name="naturalHedgePct" min="0" max="100" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.naturalHedgePct} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.derivative}<b>{copy.percent}</b></span>
+        <div><input type="range" name="derivativeHedgePct-range" min="0" max="100" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.derivativeHedgePct}/><input type="number" name="derivativeHedgePct" min="0" max="100" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.derivativeHedgePct} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.horizon}<b>{copy.years}</b></span>
+        <div><input type="range" name="assetHorizonYears-range" min="0" max="50" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.assetHorizonYears}/><input type="number" name="assetHorizonYears" min="0" max="100" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.assetHorizonYears} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.tenor}<b>{copy.months}</b></span>
+        <div><input type="range" name="hedgeTenorMonths-range" min="1" max="60" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.hedgeTenorMonths}/><input type="number" name="hedgeTenorMonths" min="1" max="120" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.hedgeTenorMonths} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.carry}<b>{copy.bps}</b></span>
+        <div><input type="range" name="annualCarryBp-range" min="-500" max="1000" step="10" value={ASIA_DOLLAR_HEDGE_DEFAULTS.annualCarryBp}/><input type="number" name="annualCarryBp" min="-2000" max="5000" step="10" value={ASIA_DOLLAR_HEDGE_DEFAULTS.annualCarryBp} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.basis}<b>{copy.bps}</b></span>
+        <div><input type="range" name="basisStressBp-range" min="-500" max="1000" step="10" value={ASIA_DOLLAR_HEDGE_DEFAULTS.basisStressBp}/><input type="number" name="basisStressBp" min="-2000" max="5000" step="10" value={ASIA_DOLLAR_HEDGE_DEFAULTS.basisStressBp} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.collateral}<b>{copy.percent}</b></span>
+        <div><input type="range" name="collateralCallPct-range" min="0" max="20" step="0.25" value={ASIA_DOLLAR_HEDGE_DEFAULTS.collateralCallPct}/><input type="number" name="collateralCallPct" min="0" max="100" step="0.25" value={ASIA_DOLLAR_HEDGE_DEFAULTS.collateralCallPct} inputmode="decimal"/></div>
+      </label>
+      <label class="ah-control">
+        <span>{copy.currency}<b>{copy.percent}</b></span>
+        <div><input type="range" name="dollarMoveInLocalCurrencyPct-range" min="-30" max="30" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.dollarMoveInLocalCurrencyPct}/><input type="number" name="dollarMoveInLocalCurrencyPct" min="-100" max="100" step="1" value={ASIA_DOLLAR_HEDGE_DEFAULTS.dollarMoveInLocalCurrencyPct} inputmode="decimal"/></div>
+      </label>
+    </form>
+
+    <section class="ah-results" aria-labelledby={`${id}-results`}>
+      <h3 id={`${id}-results`}>{copy.results}</h3>
+      <div class="ah-primary">
+        <span>{copy.open}</span>
+        <strong data-result="open">{usd(initial.openNotionalUsdBn)}</strong>
+        <small data-result="coverage">{number.format(initial.coveragePct)} %</small>
+      </div>
+      <dl>
+        <div><dt>{copy.monthly}</dt><dd data-result="monthly">{usd(initial.averageMonthlyRollUsdBn)}</dd></div>
+        <div><dt>{copy.rolls}</dt><dd data-result="rolls">{number.format(initial.hedgeContractsPerPosition)}</dd></div>
+        <div><dt>{copy.cumulative}</dt><dd data-result="cumulative">{usd(initial.cumulativeGrossRollNotionalUsdBn)}</dd></div>
+        <div><dt>{copy.annualCarry}</dt><dd data-result="carry">{usd(initial.annualCarryCostUsdBn)}</dd></div>
+        <div><dt>{copy.basisCost}</dt><dd data-result="basis">{usd(initial.incrementalAnnualBasisCostUsdBn)}</dd></div>
+        <div><dt>{copy.marginCall}</dt><dd data-result="collateral">{usd(initial.collateralCallUsdBn)}</dd></div>
+        <div><dt>{copy.translation}</dt><dd data-result="translation" class:list={[initial.openFxTranslationUsdBn < 0 && 'is-negative']}>{usd(initial.openFxTranslationUsdBn)}</dd></div>
+      </dl>
+      <p class="ah-caution">{copy.scopeText}</p>
+    </section>
+  </div>
+
+  <div class="ah-details">
+    <details open>
+      <summary>{copy.formulas}</summary>
+      <code>contracts = ceil(asset years × 12 ÷ hedge months)</code>
+      <code>monthly roll = derivative notional ÷ hedge months</code>
+      <code>annual carry = derivative notional × basis points ÷ 10 000</code>
+      <code>collateral = derivative notional × scenario percentage</code>
+    </details>
+    <details>
+      <summary>{copy.scope}</summary>
+      <p>{copy.scopeText}</p>
+    </details>
+    <details>
+      <summary>{copy.limits}</summary>
+      <p>{copy.limitsText}</p>
+    </details>
+  </div>
+
+  <footer class="ah-footer">
+    <span>{copy.version} v{ASIA_DOLLAR_HEDGE_MODEL_VERSION}</span>
+    <span>{isFr ? 'Repère BIS, hypothèses saisies par le lecteur' : 'BIS benchmark, scenario inputs supplied by the reader'}</span>
+  </footer>
+</section>
+
+<script>
+  import {
+    ASIA_DOLLAR_HEDGE_PRESETS,
+    calculateAsiaDollarHedge,
+    normalizeAsiaDollarHedgeInputs,
+  } from '../lib/asia-dollar-hedge-model.ts';
+
+  const initialiseAsiaHedge = () => {
+    document.querySelectorAll<HTMLElement>('[data-asia-hedge]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const decimal = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+      const fields = [
+        'portfolioUsdBn', 'naturalHedgePct', 'derivativeHedgePct',
+        'assetHorizonYears', 'hedgeTenorMonths', 'annualCarryBp',
+        'basisStressBp', 'collateralCallPct', 'dollarMoveInLocalCurrencyPct',
+      ] as const;
+      type Field = typeof fields[number];
+
+      const element = (name: string) => form.elements.namedItem(name) as HTMLInputElement | null;
+      const formatUsd = (value: number) => lang === 'fr' ? `${decimal.format(value)} Md$` : `$${decimal.format(value)}bn`;
+      const setText = (name: string, value: string) => {
+        const target = root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+        if (target) target.textContent = value;
+      };
+      const setPair = (name: Field, value: number) => {
+        const numeric = element(name);
+        const range = element(`${name}-range`);
+        if (numeric) numeric.value = String(value);
+        if (range) range.value = String(value);
+      };
+      const read = () => Object.fromEntries(fields.map((name) => [name, Number(element(name)?.value)]));
+
+      const render = () => {
+        const normalized = normalizeAsiaDollarHedgeInputs(read());
+        fields.forEach((name) => setPair(name, normalized[name]));
+        const result = calculateAsiaDollarHedge(normalized);
+        setText('open', formatUsd(result.openNotionalUsdBn));
+        setText('coverage', `${decimal.format(result.coveragePct)} %`);
+        setText('monthly', formatUsd(result.averageMonthlyRollUsdBn));
+        setText('rolls', decimal.format(result.hedgeContractsPerPosition));
+        setText('cumulative', formatUsd(result.cumulativeGrossRollNotionalUsdBn));
+        setText('carry', formatUsd(result.annualCarryCostUsdBn));
+        setText('basis', formatUsd(result.incrementalAnnualBasisCostUsdBn));
+        setText('collateral', formatUsd(result.collateralCallUsdBn));
+        setText('translation', formatUsd(result.openFxTranslationUsdBn));
+        const translation = root.querySelector<HTMLElement>('[data-result="translation"]');
+        translation?.classList.toggle('is-negative', result.openFxTranslationUsdBn < 0);
+      };
+
+      form.addEventListener('submit', (event) => event.preventDefault());
+
+      form.addEventListener('input', (event) => {
+        const target = event.target as HTMLInputElement;
+        if (!target.name) return;
+        const base = target.name.endsWith('-range') ? target.name.slice(0, -6) : target.name;
+        if (fields.includes(base as Field)) setPair(base as Field, Number(target.value));
+        root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => button.setAttribute('aria-pressed', 'false'));
+        render();
+      });
+
+      root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const preset = ASIA_DOLLAR_HEDGE_PRESETS.find((item) => item.id === button.dataset.preset);
+          if (!preset) return;
+          fields.forEach((name) => setPair(name, preset.inputs[name]));
+          root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          render();
+        });
+      });
+
+      render();
+    });
+  };
+
+  initialiseAsiaHedge();
+  document.addEventListener('astro:page-load', initialiseAsiaHedge);
+</script>
+
+<style>
+  .ah-tool{--line:rgba(255,255,255,.11);--muted:#a8adb7;--ink:#f5f6f8;--teal:#5eead4;--amber:#f5b13d;--pink:#ff4d87;--blue:#7aa2f7;margin:2.25rem 0;padding:1.2rem;border:1px solid var(--line);border-radius:14px;background:#0c0d10;color:var(--ink);font-family:Inter,system-ui,sans-serif;box-shadow:0 18px 60px rgba(0,0,0,.18)}
+  .ah-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:.25rem .25rem 1rem}.ah-head h2{margin:.15rem 0 .45rem;font-size:clamp(1.35rem,3vw,2rem);line-height:1.12}.ah-head p{margin:0;max-width:68ch;color:var(--muted);font-size:.95rem}.ah-eyebrow{color:var(--teal)!important;font:700 .72rem ui-monospace,monospace;letter-spacing:.12em}.ah-badge{white-space:nowrap;border:1px solid rgba(94,234,212,.35);border-radius:999px;padding:.38rem .65rem;color:var(--teal);font:600 .7rem ui-monospace,monospace}
+  .ah-presets{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1rem .25rem}.ah-presets h3,.ah-controls h3,.ah-results h3{margin:0 0 .35rem;font-size:1rem}.ah-presets p{margin:0;color:var(--muted);font-size:.82rem}.ah-preset-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-top:.8rem}.ah-preset-row button{min-height:74px;text-align:left;color:var(--ink);background:#15171c;border:1px solid var(--line);border-radius:9px;padding:.65rem;cursor:pointer}.ah-preset-row button[aria-pressed="true"]{border-color:var(--teal);box-shadow:inset 0 0 0 1px rgba(94,234,212,.25)}.ah-preset-row strong,.ah-preset-row small{display:block}.ah-preset-row strong{font-size:.82rem}.ah-preset-row small{margin-top:.28rem;color:var(--muted);font-size:.68rem;line-height:1.3}
+  .ah-layout{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(280px,.78fr);gap:1rem;padding-top:1rem}.ah-controls,.ah-results{background:#111318;border:1px solid var(--line);border-radius:10px;padding:1rem}.ah-control{display:block;margin:.9rem 0}.ah-control>span{display:flex;justify-content:space-between;gap:1rem;color:#d6d9df;font-size:.78rem}.ah-control b{color:var(--muted);font:600 .68rem ui-monospace,monospace}.ah-control>div{display:grid;grid-template-columns:1fr 92px;gap:.6rem;align-items:center;margin-top:.38rem}.ah-control input[type="range"]{width:100%;accent-color:var(--teal)}.ah-control input[type="number"]{width:100%;box-sizing:border-box;padding:.42rem .45rem;border:1px solid var(--line);border-radius:6px;background:#0c0d10;color:var(--ink);font:600 .75rem ui-monospace,monospace}
+  .ah-primary{border:1px solid rgba(255,77,135,.34);border-radius:10px;padding:.9rem;background:#1d121a;margin:.8rem 0}.ah-primary span,.ah-primary small{display:block;color:var(--muted);font-size:.72rem}.ah-primary strong{display:block;color:var(--pink);font:750 2rem ui-monospace,monospace;margin:.2rem 0}.ah-results dl{margin:0}.ah-results dl>div{display:flex;justify-content:space-between;gap:.8rem;padding:.62rem 0;border-bottom:1px solid rgba(255,255,255,.07)}.ah-results dt{color:var(--muted);font-size:.75rem}.ah-results dd{margin:0;text-align:right;color:var(--ink);font:700 .78rem ui-monospace,monospace}.ah-results dd.is-negative{color:var(--pink)}.ah-caution{margin:.85rem 0 0;padding:.7rem;border-left:3px solid var(--amber);background:#1c1810;color:#d6d9df;font-size:.72rem;line-height:1.45}
+  .ah-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-top:1rem}.ah-details details{border:1px solid var(--line);border-radius:8px;background:#111318;padding:.65rem}.ah-details summary{cursor:pointer;color:var(--ink);font-size:.78rem;font-weight:700}.ah-details p,.ah-details code{display:block;color:var(--muted);font-size:.68rem;line-height:1.5}.ah-details code{margin-top:.42rem;white-space:normal}.ah-footer{display:flex;justify-content:space-between;gap:1rem;margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--line);color:#777d89;font:500 .64rem ui-monospace,monospace}
+  @media(max-width:780px){.ah-head{display:block}.ah-badge{display:inline-block;margin-top:.75rem}.ah-preset-row,.ah-details{grid-template-columns:1fr}.ah-layout{grid-template-columns:1fr}.ah-control>div{grid-template-columns:1fr 84px}.ah-footer{display:block}.ah-footer span{display:block;margin:.25rem 0}}
+</style>
