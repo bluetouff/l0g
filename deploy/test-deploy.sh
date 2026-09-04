@@ -61,6 +61,14 @@ grep -Fq 'RedirectMatch 301 "^/marches-us/?$" "/sujet/marches-valorisations/"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch 301 "^/mag7/?$" "/sujet/marches-valorisations/"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/contact-us/?$" "/contact/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/en/contact-us/?$" "/en/contact/"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 301 "^/sitemap\.xml$" "/sitemap-index.xml"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
+grep -Fq 'RedirectMatch 308 "^/(?:api/mcp(?:/compact)?/|compact/)?\.well-known/mcp/?$" "/.well-known/mcp.json"' \
+  "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch gone "^/hard-commodities/?$"' \
   "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'RedirectMatch gone "^/calendrier-eco/?$"' \
@@ -68,6 +76,16 @@ grep -Fq 'RedirectMatch gone "^/calendrier-eco/?$"' \
 grep -Fq 'ErrorDocument 404 /404.html' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'ErrorDocument 410 /404.html' "${ROOT}/deploy/l0g.fr.apache.conf"
 grep -Fq 'https://l0g.fr/btc/)" = 301' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/contact/)" = 200' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/en/contact/)" = 200' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/contact-us/)" = 301' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/sitemap.xml)" = 301' \
+  "${ROOT}/deploy/activate-apache-vhost.sh"
+grep -Fq 'https://l0g.fr/.well-known/mcp)" = 308' \
   "${ROOT}/deploy/activate-apache-vhost.sh"
 grep -Fq 'https://l0g.fr/hard-commodities/)" = 410' \
   "${ROOT}/deploy/activate-apache-vhost.sh"

@@ -14,6 +14,13 @@ import { join, relative, extname } from 'node:path';
 import { scanHtmlElements } from '../src/lib/html-utils.ts';
 
 const DIST = 'dist';
+const SITE_ORIGIN = 'https://l0g.fr';
+const SOCIAL_IMAGE_METADATA = new Set([
+  'og:image',
+  'og:image:url',
+  'og:image:secure_url',
+  'twitter:image',
+]);
 
 // Endpoints servis au runtime par le serveur (pas générés dans dist/).
 // À maintenir à la main ; garder au strict minimum.
@@ -77,6 +84,26 @@ function isExternal(href) {
   return false;
 }
 
+function socialImageReference(element) {
+  if (element.name !== 'meta') return null;
+  const key = (element.attributes.get('property') || element.attributes.get('name') || '').toLowerCase();
+  return SOCIAL_IMAGE_METADATA.has(key) ? element.attributes.get('content') : null;
+}
+
+function internalPath(raw, base, allowSameOriginAbsolute = false) {
+  if (!raw) return null;
+  if (!allowSameOriginAbsolute && isExternal(raw)) return null;
+  try {
+    const url = new URL(raw, base);
+    if (allowSameOriginAbsolute && url.origin !== SITE_ORIGIN && url.origin !== 'https://l0g.local') {
+      return null;
+    }
+    return url.pathname;
+  } catch {
+    return null;
+  }
+}
+
 const broken = [];
 let checked = 0;
 
@@ -86,20 +113,19 @@ for (const file of htmlFiles) {
   const seen = new Set();
   for (const element of elements) {
     if (element.name === 'script' || element.name === 'style') continue;
-    for (const attribute of ['href', 'src']) {
-      const raw = element.attributes.get(attribute);
-      if (isExternal(raw)) continue;
-      let path;
-      try {
-        path = new URL(raw, base).pathname; // résout relatif + absolu, retire #/?
-      } catch {
-        continue;
-      }
+    const references = [
+      ['href', element.attributes.get('href'), false],
+      ['src', element.attributes.get('src'), false],
+      ['content', socialImageReference(element), true],
+    ];
+    for (const [attribute, raw, allowSameOriginAbsolute] of references) {
+      const path = internalPath(raw, base, allowSameOriginAbsolute);
+      if (!path) continue;
       if (seen.has(path)) continue;
       seen.add(path);
       if (RUNTIME_ENDPOINTS.has(path)) continue;
       checked += 1;
-      if (!resolves(path)) broken.push({ from: '/' + relative(DIST, file), href: raw, path });
+      if (!resolves(path)) broken.push({ from: '/' + relative(DIST, file), href: `${attribute}=${raw}`, path });
     }
   }
 }

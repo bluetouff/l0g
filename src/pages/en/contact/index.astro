@@ -1,0 +1,226 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import { ORGANIZATION_ID, SITE_URL, WEBSITE_ID, organizationEntity } from '../../../config/entities.ts';
+import { serializeInlineScriptData } from '../../../lib/security.ts';
+
+const pageUrl = `${SITE_URL}/en/contact/`;
+const email = 'olivier@l0g.fr';
+const phoneDisplay = '+33 6 95 32 87 21';
+const phoneInternational = '+33695328721';
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${pageUrl}#contact-page`,
+  url: pageUrl,
+  name: 'Contact l0g',
+  description:
+    'Contact details for l0g editorial corrections, press requests, public data, API and MCP questions, and research collaborations.',
+  inLanguage: 'en',
+  isPartOf: { '@id': WEBSITE_ID },
+  about: { '@id': ORGANIZATION_ID },
+  mainEntity: {
+    ...organizationEntity,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'newsroom',
+        email: `mailto:${email}`,
+        telephone: phoneInternational,
+        availableLanguage: ['fr', 'en'],
+        areaServed: 'Worldwide',
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'technical support',
+        email: `mailto:${email}`,
+        url: `${pageUrl}#api-mcp`,
+        availableLanguage: ['fr', 'en'],
+        areaServed: 'Worldwide',
+      },
+    ],
+  },
+};
+---
+
+<EnglishGuidesLayout
+  title="Contact l0g"
+  description="Contact l0g for editorial corrections, press requests, public data, API and MCP questions, and research collaborations."
+  canonical={pageUrl}
+  alternateLinks={[
+    { hreflang: 'en', href: pageUrl },
+    { hreflang: 'fr', href: `${SITE_URL}/contact/` },
+    { hreflang: 'x-default', href: `${SITE_URL}/contact/` },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(contactPageJsonLd)} />
+
+  <article class="contact-page rise" data-pagefind-body>
+    <p class="language-switch mono-label" data-pagefind-ignore>
+      <a href="/contact/" class="link-term">Version française →</a>
+    </p>
+
+    <PageHero
+      index="C01"
+      kicker="direct contact"
+      title="Contact"
+      highlight="l0g"
+      description="One entry point for the newsroom, press requests, public data, the API, the MCP server and collaborations."
+      secondary="No third-party form, cookie or intermediary: messages go directly to Olivier Laurelli."
+      glyph="retrieve"
+      stats={[
+        { value: 'FR · EN', label: 'languages' },
+        { value: 'Chartres', label: 'newsroom' },
+        { value: 'direct', label: 'channel' },
+      ]}
+    />
+
+    <section class="contact-direct instrument-plate" aria-labelledby="direct-title">
+      <div>
+        <p class="mono-label glow">// contact details</p>
+        <h2 id="direct-title">Write or call.</h2>
+        <p>
+          Include the relevant URL and the purpose of your request. For a correction, attach
+          the source needed to verify the point you are raising.
+        </p>
+      </div>
+      <address>
+        <a class="contact-primary" href={`mailto:${email}`}>{email}</a>
+        <a href={`tel:${phoneInternational}`}>{phoneDisplay}</a>
+        <span>Olivier Laurelli · Chartres (28000) · France</span>
+      </address>
+    </section>
+
+    <div class="contact-grid">
+      <section class="contact-card" id="correction" aria-labelledby="correction-title">
+        <p class="card-index">01</p>
+        <h2 id="correction-title">Correction or source</h2>
+        <p>
+          Report a factual error, broken source or point that needs clarification. Material
+          corrections are recorded in the public editorial changelog.
+        </p>
+        <div class="card-links">
+          <a href={`mailto:${email}?subject=l0g%20correction%20or%20source`}>report an issue</a>
+          <a href="/changelog-editorial/">correction log</a>
+        </div>
+      </section>
+
+      <section class="contact-card" id="press" aria-labelledby="press-title">
+        <p class="card-index">02</p>
+        <h2 id="press-title">Press and reuse</h2>
+        <p>
+          Request context, a methodology check or a reusable format. Public charts, series
+          and attribution rules are already available without registration.
+        </p>
+        <div class="card-links">
+          <a href={`mailto:${email}?subject=l0g%20press%20request`}>press request</a>
+          <a href="/en/press-resources/">press resources</a>
+        </div>
+      </section>
+
+      <section class="contact-card" id="api-mcp" aria-labelledby="api-title">
+        <p class="card-index">03</p>
+        <h2 id="api-title">Data, API and MCP</h2>
+        <p>
+          Document an integration, propose a use case or report a technical defect. Public
+          access remains open without registration, with the limits of each dataset visible.
+        </p>
+        <div class="card-links">
+          <a href={`mailto:${email}?subject=l0g%20API%20or%20MCP`}>integration question</a>
+          <a href="/en/api/">API documentation</a>
+          <a href="/en/mcp/">MCP server</a>
+          <a href="https://github.com/bluetouff/l0g/issues" rel="noopener">public issue</a>
+        </div>
+      </section>
+
+      <section class="contact-card" id="collaboration" aria-labelledby="collaboration-title">
+        <p class="card-index">04</p>
+        <h2 id="collaboration-title">Collaboration and research</h2>
+        <p>
+          Propose a documented study, tool, briefing or applied research project. A
+          collaboration does not grant control over editorial conclusions.
+        </p>
+        <div class="card-links">
+          <a href={`mailto:${email}?subject=Collaboration%20with%20l0g`}>outline the request</a>
+          <a href="/en/editorial-protocol/">editorial rules</a>
+        </div>
+      </section>
+    </div>
+
+    <section class="contact-boundary" aria-labelledby="boundary-title">
+      <p class="mono-label glow">// response and confidentiality</p>
+      <h2 id="boundary-title">What this channel guarantees.</h2>
+      <p>
+        Every message can be read, but no response time or publication schedule is guaranteed.
+        Do not send secrets, sensitive personal data or access credentials by email. For a
+        security report, use the details and public key listed in{' '}
+        <a href="/.well-known/security.txt">security.txt</a>.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .contact-page { max-width: 70rem; }
+    .language-switch { margin-bottom: 1rem; color: var(--color-signal); }
+    .contact-direct {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1.4rem;
+      padding: clamp(1rem, 3vw, 1.4rem);
+      background: color-mix(in srgb, var(--color-surface) 68%, transparent);
+    }
+    .contact-direct h2,
+    .contact-card h2,
+    .contact-boundary h2 {
+      margin-top: .45rem;
+      color: var(--color-bright);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+    }
+    .contact-direct p:not(.mono-label),
+    .contact-card p:not(.card-index),
+    .contact-boundary > p:not(.mono-label) {
+      margin-top: .65rem;
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+    address {
+      display: grid;
+      align-content: center;
+      gap: .45rem;
+      font-style: normal;
+    }
+    address a { width: fit-content; color: var(--color-paper); font-family: var(--font-mono); }
+    address .contact-primary { color: var(--color-signal); font-size: clamp(1rem, 3vw, 1.25rem); }
+    address span { color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; }
+    .contact-grid { display: grid; gap: .9rem; margin-top: .9rem; }
+    .contact-card {
+      min-width: 0;
+      border: 1px solid var(--color-line);
+      border-radius: 10px 3px 10px 10px;
+      padding: 1.1rem;
+      background: color-mix(in srgb, var(--color-surface) 52%, transparent);
+    }
+    .card-index { color: var(--color-signal); font-family: var(--font-mono); font-size: .65rem; letter-spacing: .1em; }
+    .card-links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .card-links a {
+      border: 1px solid color-mix(in srgb, var(--color-signal) 42%, var(--color-line));
+      border-radius: 999px;
+      padding: .36rem .62rem;
+      color: var(--color-signal);
+      font-family: var(--font-mono);
+      font-size: .67rem;
+      text-transform: uppercase;
+    }
+    .contact-boundary {
+      margin-top: 1.8rem;
+      border-left: 2px solid var(--color-amber);
+      padding: .2rem 0 .2rem 1rem;
+    }
+    .contact-boundary a { color: var(--color-signal); }
+    @media (min-width: 760px) {
+      .contact-direct { grid-template-columns: minmax(0, 1.25fr) minmax(16rem, .75fr); }
+      .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</EnglishGuidesLayout>
