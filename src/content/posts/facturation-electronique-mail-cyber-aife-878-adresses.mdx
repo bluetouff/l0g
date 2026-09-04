@@ -1,0 +1,295 @@
+---
+title: "Facturation électronique : l’AIFE a laissé 878 adresses visibles"
+seoTitle: "AIFE : 878 adresses visibles dans un courriel | l0g"
+ogTitle: "878 adresses laissées visibles dans un mail de l’AIFE"
+ogImage: "/illustrations/news/aife-878-adresses-v1.jpg"
+description: "Une invitation de l’AIFE a affiché 878 adresses distinctes dans ses champs de destinataires. Une bourde interne qui appelle une réponse claire."
+pubDate: 2026-09-04T09:00:00+02:00
+updatedDate: 2026-09-04T09:00:00+02:00
+tags: ["facturation électronique", "AIFE", "DGFiP", "plateformes agréées", "protection des données", "RGPD", "risque opérationnel"]
+draft: false
+quickTake:
+  fact: "Le 28 août, l’AIFE a envoyé une invitation avec 895 entrées visibles dans les champs À et Copie. Après suppression des doublons exacts, la copie analysée contient 878 adresses distinctes."
+  importance: "L’erreur a fait circuler une liste de contacts associée à une réunion réelle et à des échanges de suivi. Elle imposait au minimum d’alerter les destinataires et de sécuriser les envois suivants."
+  uncertainty: "878 adresses ne signifient ni 878 personnes ni 878 plateformes. l0g ne connaît pas le nombre de messages effectivement délivrés. Au 4 septembre, l’AIFE n’avait répondu à aucune de nos questions."
+---
+
+<style>{`
+  .aife-stat {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: 1rem;
+    max-width: 100%;
+    margin: 1.75rem 0;
+    padding: 1.1rem;
+    border: 1px solid #2b303a;
+    border-radius: 14px;
+    background: #101217;
+  }
+
+  .aife-stat-number {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 11px;
+    background: #171a21;
+  }
+
+  .aife-stat-number strong {
+    color: #ff8caf;
+    font-size: clamp(3.4rem, 12vw, 6.3rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+  }
+
+  .aife-stat-number span,
+  .aife-stat-copy span {
+    color: #b4bac4;
+    font-size: 0.86rem;
+  }
+
+  .aife-stat-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  .aife-stat-copy p {
+    margin: 0;
+  }
+
+  .aife-mail-viz {
+    max-width: 100%;
+    margin: 2rem 0;
+    padding-bottom: 1rem;
+  }
+
+  .aife-mail-viz svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .aife-mail-viz .aife-viz-desktop {
+    max-width: 760px;
+  }
+
+  .aife-mail-viz .aife-viz-mobile {
+    display: none;
+    max-width: 360px;
+  }
+
+  .aife-mail-viz figcaption {
+    max-width: 660px;
+    margin: 0.9rem auto 0;
+  }
+
+  .aife-questions {
+    margin: 1.75rem 0;
+    border: 1px solid #2b303a;
+    border-radius: 12px;
+    background: #101217;
+  }
+
+  .aife-questions summary {
+    cursor: pointer;
+    padding: 1rem 1.1rem;
+    color: #f5f6f8;
+    font-weight: 800;
+  }
+
+  .aife-questions ol {
+    margin: 0;
+    padding: 0 1.4rem 1.2rem 2.6rem;
+  }
+
+  @media (max-width: 640px) {
+    .aife-stat {
+      grid-template-columns: 1fr;
+    }
+
+    .aife-stat-number {
+      align-items: flex-start;
+    }
+
+    .aife-mail-viz .aife-viz-desktop {
+      display: none;
+    }
+
+    .aife-mail-viz .aife-viz-mobile {
+      display: block;
+    }
+  }
+`}</style>
+
+*Le 28 août 2026, l’Agence pour l’informatique financière de l’État a convié les plateformes agréées de facturation électronique à une réunion consacrée à la sécurité. L’invitation est partie avec la liste des destinataires affichée dans les champs « À » et « Copie ». Dans la copie analysée par l0g, 895 entrées sont visibles, soit 878 adresses distinctes après suppression des doublons. C’est une bourde interne, commise avec un outil de messagerie ordinaire, alors qu’un envoi collectif ou le champ « Copie cachée » aurait gardé la liste confidentielle.*
+
+> **À propos du courriel.** Le message n’est pas public. Une copie a été transmise anonymement à l0g. Nous ne publions ni le fichier brut, ni les adresses, ni les domaines concernés, ni le lien d’inscription. Nos questions ont été envoyées à l’AIFE le 31 août. Au 4 septembre, l’agence n’avait répondu à aucune d’entre elles.
+
+## 895 entrées visibles, 878 adresses distinctes
+
+Le champ « À » contient **881 entrées** et le champ « Copie » en contient **14**. Les 895 occurrences comprennent 17 doublons exacts. Une fois ceux-ci retirés, il reste **878 adresses distinctes**, réparties sur 212 domaines de messagerie.
+
+<div class="aife-stat" role="group" aria-label="878 adresses distinctes visibles dans le courriel analysé">
+  <div class="aife-stat-number">
+    <strong>878</strong>
+    <span>adresses distinctes visibles</span>
+  </div>
+  <div class="aife-stat-copy">
+    <p><strong>Concrètement :</strong> chaque personne ayant reçu cette version du message pouvait parcourir la liste placée dans les champs visibles.</p>
+    <span>895 occurrences au total, dont 17 doublons exacts. Certaines adresses sont nominatives, d’autres correspondent à des boîtes partagées.</span>
+  </div>
+</div>
+
+Ce nombre ne correspond pas à 878 personnes ou à 878 plateformes. Une entreprise peut avoir plusieurs contacts, une personne plusieurs adresses, et certaines boîtes sont génériques. Nous ne savons pas non plus combien de messages ont effectivement été délivrés.
+
+L’erreur reste très concrète. La liste n’avait aucune raison d’être montrée aux autres destinataires pour transmettre une invitation. Au vu de leurs libellés, certaines boîtes sont associées au support, à l’administration, à l’interopérabilité ou aux opérations. l0g n’en reproduit aucune.
+
+<figure class="aife-mail-viz" tabindex="0" aria-label="Comment la liste des destinataires est devenue visible">
+<svg class="aife-viz-desktop" viewBox="0 0 760 360" role="img" style="width:100%;height:auto;margin:0 auto" aria-labelledby="aife-mail-fr-desktop-title aife-mail-fr-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="aife-mail-fr-desktop-title">Une erreur d’envoi très simple</title>
+  <desc id="aife-mail-fr-desktop-desc">Les 895 entrées ont été placées dans les champs À et Copie. Chaque destinataire pouvait alors voir la liste. Un outil d’envoi collectif ou le champ Copie cachée aurait empêché cette divulgation.</desc>
+  <defs>
+    <marker id="aife-mail-arrow-fr-desktop" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#5eead4" />
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="358" rx="20" fill="#0c0d10" stroke="#30343d" />
+  <text x="28" y="45" fill="#f5f6f8" font-size="24" font-weight="800">UNE ERREUR D’ENVOI TRÈS SIMPLE</text>
+  <text x="28" y="74" fill="#b4bac4" font-size="16">Le choix des champs a rendu la liste visible.</text>
+
+  <rect x="28" y="112" width="208" height="178" rx="14" fill="#21141b" stroke="#ff6b98" stroke-width="2" />
+  <text x="48" y="145" fill="#ff9cbb" font-size="15" font-weight="800">AVANT L’ENVOI</text>
+  <text x="48" y="187" fill="#f5f6f8" font-size="20" font-weight="750">895 entrées</text>
+  <text x="48" y="218" fill="#d8dbe1" font-size="17">placées dans « À »</text>
+  <text x="48" y="244" fill="#d8dbe1" font-size="17">et « Copie »</text>
+
+  <line x1="244" y1="201" x2="266" y2="201" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-fr-desktop)" />
+
+  <rect x="276" y="112" width="208" height="178" rx="14" fill="#141922" stroke="#7aa2f7" stroke-width="2" />
+  <text x="296" y="145" fill="#a8bdff" font-size="15" font-weight="800">APRÈS L’ENVOI</text>
+  <text x="296" y="187" fill="#f5f6f8" font-size="20" font-weight="750">Chaque destinataire</text>
+  <text x="296" y="218" fill="#d8dbe1" font-size="17">peut voir toute</text>
+  <text x="296" y="244" fill="#d8dbe1" font-size="17">la liste</text>
+
+  <line x1="492" y1="201" x2="514" y2="201" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-fr-desktop)" />
+
+  <rect x="524" y="112" width="208" height="178" rx="14" fill="#101c1a" stroke="#5eead4" stroke-width="2" />
+  <text x="544" y="145" fill="#6ee7d3" font-size="15" font-weight="800">LE BON RÉGLAGE</text>
+  <text x="544" y="187" fill="#f5f6f8" font-size="20" font-weight="750">Envoi collectif</text>
+  <text x="544" y="218" fill="#d8dbe1" font-size="17">ou « Copie cachée » :</text>
+  <text x="544" y="244" fill="#d8dbe1" font-size="17">liste non divulguée</text>
+
+  <text x="380" y="329" text-anchor="middle" fill="#f5b13d" font-size="16" font-weight="700">Tout part du paramétrage du courriel.</text>
+</svg>
+
+<svg class="aife-viz-mobile" viewBox="0 0 360 620" role="img" style="width:100%;height:auto;margin:0 auto" aria-labelledby="aife-mail-fr-mobile-title aife-mail-fr-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="aife-mail-fr-mobile-title">Une erreur d’envoi très simple</title>
+  <desc id="aife-mail-fr-mobile-desc">Les 895 entrées ont été placées dans les champs À et Copie. Chaque destinataire pouvait alors voir la liste. Un outil d’envoi collectif ou le champ Copie cachée aurait empêché cette divulgation.</desc>
+  <defs>
+    <marker id="aife-mail-arrow-fr-mobile" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#5eead4" />
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="358" height="618" rx="20" fill="#0c0d10" stroke="#30343d" />
+  <text x="20" y="38" fill="#f5f6f8" font-size="19" font-weight="800">UNE ERREUR D’ENVOI</text>
+  <text x="20" y="64" fill="#b4bac4" font-size="15">La liste était dans les champs visibles.</text>
+
+  <rect x="20" y="90" width="320" height="130" rx="14" fill="#21141b" stroke="#ff6b98" stroke-width="2" />
+  <text x="40" y="122" fill="#ff9cbb" font-size="14" font-weight="800">AVANT L’ENVOI</text>
+  <text x="40" y="158" fill="#f5f6f8" font-size="19" font-weight="750">895 entrées dans « À »</text>
+  <text x="40" y="188" fill="#d8dbe1" font-size="17">et « Copie »</text>
+
+  <line x1="180" y1="226" x2="180" y2="248" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-fr-mobile)" />
+
+  <rect x="20" y="258" width="320" height="130" rx="14" fill="#141922" stroke="#7aa2f7" stroke-width="2" />
+  <text x="40" y="290" fill="#a8bdff" font-size="14" font-weight="800">APRÈS L’ENVOI</text>
+  <text x="40" y="326" fill="#f5f6f8" font-size="19" font-weight="750">Chaque destinataire</text>
+  <text x="40" y="356" fill="#d8dbe1" font-size="17">peut voir toute la liste</text>
+
+  <line x1="180" y1="394" x2="180" y2="416" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-fr-mobile)" />
+
+  <rect x="20" y="426" width="320" height="130" rx="14" fill="#101c1a" stroke="#5eead4" stroke-width="2" />
+  <text x="40" y="458" fill="#6ee7d3" font-size="14" font-weight="800">LE BON RÉGLAGE</text>
+  <text x="40" y="494" fill="#f5f6f8" font-size="19" font-weight="750">Envoi collectif ou Cci</text>
+  <text x="40" y="524" fill="#d8dbe1" font-size="17">liste non divulguée</text>
+
+  <text x="180" y="592" text-anchor="middle" fill="#f5b13d" font-size="15" font-weight="700">Une erreur de paramétrage.</text>
+</svg>
+<figcaption>Un envoi collectif correctement configuré sépare le contenu du message de sa liste de diffusion. Ici, les deux sont partis ensemble.</figcaption>
+</figure>
+
+## Les conséquences pour les destinataires
+
+Le courriel ne se contente pas d’afficher des coordonnées. Il les associe à une réunion réelle, une date, un vocabulaire précis, un dossier de suivi et l’annonce d’un second message de confirmation. Un courriel ultérieur reprenant ces éléments pourrait donc sembler familier aux personnes concernées.
+
+Ce risque appelle des gestes assez simples : prévenir les destinataires que la liste a circulé, rappeler les canaux officiels pour les documents et les liens de réunion, puis vérifier les prochains envois. Il ne justifie pas d’imaginer un scénario plus spectaculaire que les faits. L’événement documenté ici est une erreur de diffusion.
+
+Cette erreur se produit dans un écosystème devenu central. Depuis le 1er septembre 2026, les entreprises assujetties doivent pouvoir recevoir leurs factures électroniques par l’intermédiaire d’une plateforme agréée. Pour comprendre l’architecture et ses dépendances, l0g a consacré une [enquête en cinq volets à ce nouveau circuit](/posts/le-grand-peage-de-la-facture-1-le-portail-ampute/).
+
+## Le contrôle des plateformes continue après leur ouverture
+
+L’invitation livre aussi quelques éléments sur le suivi prévu par l’AIFE : une cellule dédiée à la sécurité, un dossier après mise en production, des revues bilatérales et une trajectoire allant jusqu’à l’audit de conformité.
+
+Les plateformes ne démarrent pas sans contrôle. Le dossier d’immatriculation comprend notamment des éléments sur la sécurité des données et une certification ISO/IEC 27001. La DGFiP précise que l’immatriculation définitive n’est accordée qu’après la réussite des [tests d’interopérabilité en conditions réelles](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees). L’AIFE indique pour sa part avoir accompagné les opérateurs dans leurs raccordements et leurs [tests techniques et fonctionnels](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/).
+
+Le rapport complet d’audit suit un autre calendrier. L’[article 242 nonies B de l’annexe II au CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049330326) autorise sa remise jusqu’à un an après la notification de l’immatriculation. L’[article 41 septies A de l’annexe IV](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29) prévoit que ce premier audit porte sur au moins un mois d’activité postérieur à cette notification. Lorsqu’il relève une non-conformité, le délai annoncé pour la correction ne peut pas dépasser trois mois après la remise du rapport.
+
+Le courriel évoque donc un suivi réel, sans en donner le calendrier détaillé ni les critères. C’est précisément ce que nos questions cherchent à clarifier.
+
+## Une réponse opérationnelle et une analyse RGPD
+
+L’AIFE peut corriger l’erreur sans grand discours : informer les personnes concernées, confirmer les canaux de communication, revoir la manière dont les listes sont utilisées et documenter l’analyse menée au titre de la protection des données.
+
+Une adresse professionnelle qui permet d’identifier une personne est une donnée personnelle. La CNIL rappelle qu’une divulgation non autorisée peut résulter d’un acte **accidentel**. Toutes les violations doivent être consignées dans un registre interne. La notification à la CNIL dépend ensuite du risque pour les droits et libertés, et l’information directe des personnes d’un risque élevé. Ces seuils supposent une analyse que l0g ne peut pas effectuer à la place de l’AIFE. ([CNIL, règles applicables aux violations de données](https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre))
+
+Nous avons donc demandé à l’agence si cette analyse avait eu lieu, quelles mesures avaient été prises et si les destinataires avaient été avertis.
+
+## Huit questions restées sans réponse au 4 septembre
+
+Le 31 août, l0g a adressé huit questions à l’AIFE sur l’erreur de diffusion et le suivi des plateformes après leur mise en production.
+
+<details class="aife-questions">
+<summary>Lire les huit questions adressées à l’AIFE</summary>
+<ol>
+  <li>Que contiendra précisément le <strong>dossier de suivi après production</strong> demandé aux plateformes, et à quelle échéance devra-t-il être remis ?</li>
+  <li>Les <strong>revues bilatérales</strong> concerneront-elles l’ensemble des plateformes agréées ? Selon quel calendrier ou ordre de priorité ?</li>
+  <li>Que recouvre la <strong>« trajectoire de sécurisation jusqu’à l’audit »</strong> : amélioration continue, réserves déjà identifiées ou non-conformités restant à traiter ?</li>
+  <li>Au <strong>1er septembre 2026</strong>, combien de plateformes ont déjà transmis leur <strong>rapport complet d’audit de conformité</strong> ?</li>
+  <li>Quels <strong>incidents de sécurité</strong> devront obligatoirement être déclarés à l’AIFE, dans quels délais et selon quelle procédure ?</li>
+  <li>Quels constats ou manquements peuvent conduire l’administration à <strong>limiter ou suspendre l’activité</strong> d’une plateforme ?</li>
+  <li>L’AIFE publiera-t-elle, même sous forme agrégée, les résultats des <strong>audits, tests techniques, tests de restauration</strong> et incidents déclarés ?</li>
+  <li>L’exposition des destinataires du 28 août a-t-elle été inscrite au registre des violations et évaluée au regard du RGPD ? Une notification à la CNIL ou aux personnes concernées a-t-elle été jugée nécessaire ?</li>
+</ol>
+</details>
+
+Au 4 septembre, l’AIFE n’avait apporté aucune réponse. Toute réponse substantielle sera intégrée à l’article.
+
+La bourde tient dans un champ de messagerie. Sa correction devrait être tout aussi concrète : avertir, clarifier les canaux et éviter que la liste ne reparte. Pour une agence qui coordonne un chantier numérique de cette ampleur, c’est aussi une question de méthode quotidienne.
+
+---
+
+### Méthode et limites
+
+- **Source non publique :** copie d’un courriel daté du 28 août 2026, transmise anonymement à l0g.
+- **Contrôle du message :** examen des en-têtes d’authentification et de la chaîne de transport avant publication.
+- **Comptage :** extraction locale des champs `To` et `Cc`, passage en minuscules et suppression des doublons exacts. Aucune adresse n’a été testée pour sa validité ou sa délivrabilité.
+- **Protection :** aucune adresse, aucun domaine de destinataire, aucun lien d’inscription et aucun identifiant technique du message ne sont publiés.
+- **Périmètre :** les chiffres décrivent la copie reçue par l0g. Ils ne permettent pas de connaître le nombre de messages réellement délivrés.
+- **Date de coupe :** 4 septembre 2026, 9 h, heure de Paris.
+
+### Sources publiques principales
+
+- [AIFE, Facturation électronique interentreprises](https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b/), calendrier et architecture du dispositif.
+- [AIFE, Accompagnement et formation](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/), accompagnement et tests des plateformes.
+- [DGFiP, Liste des plateformes agréées](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees), conditions de l’immatriculation définitive.
+- [Légifrance, article 242 nonies B de l’annexe II au CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049330326), dossier, délai du rapport d’audit et corrections.
+- [Légifrance, article 41 septies A de l’annexe IV au CGI](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29), contenu et période de l’audit.
+- [CNIL, Violations de données personnelles : les règles à suivre](https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre), qualification, registre et notifications.

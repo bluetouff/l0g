@@ -1,0 +1,293 @@
+---
+title: "France’s e-invoicing agency left 878 email addresses visible"
+seoTitle: "AIFE left 878 email addresses visible | l0g"
+ogTitle: "AIFE left 878 email addresses visible"
+ogImage: "/illustrations/news/aife-878-adresses-v1.jpg"
+description: "An AIFE invitation displayed 878 distinct addresses in its recipient fields. An internal mailing error that calls for a clear response."
+pubDate: 2026-09-04T09:00:00+02:00
+updatedDate: 2026-09-04T09:00:00+02:00
+tags: ["e-invoicing", "AIFE", "French tax authority", "accredited platforms", "data protection", "GDPR", "operational risk"]
+draft: false
+sourceArticle: "facturation-electronique-mail-cyber-aife-878-adresses"
+sourceUpdatedDate: 2026-09-04
+---
+
+<style>{`
+  .aife-stat {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: 1rem;
+    max-width: 100%;
+    margin: 1.75rem 0;
+    padding: 1.1rem;
+    border: 1px solid #2b303a;
+    border-radius: 14px;
+    background: #101217;
+  }
+
+  .aife-stat-number {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 11px;
+    background: #171a21;
+  }
+
+  .aife-stat-number strong {
+    color: #ff8caf;
+    font-size: clamp(3.4rem, 12vw, 6.3rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+  }
+
+  .aife-stat-number span,
+  .aife-stat-copy span {
+    color: #b4bac4;
+    font-size: 0.86rem;
+  }
+
+  .aife-stat-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  .aife-stat-copy p {
+    margin: 0;
+  }
+
+  .aife-mail-viz {
+    max-width: 100%;
+    margin: 2rem 0;
+    padding-bottom: 1rem;
+  }
+
+  .aife-mail-viz svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .aife-mail-viz .aife-viz-desktop {
+    max-width: 760px;
+  }
+
+  .aife-mail-viz .aife-viz-mobile {
+    display: none;
+    max-width: 360px;
+  }
+
+  .aife-mail-viz figcaption {
+    max-width: 660px;
+    margin: 0.9rem auto 0;
+  }
+
+  .aife-questions {
+    margin: 1.75rem 0;
+    border: 1px solid #2b303a;
+    border-radius: 12px;
+    background: #101217;
+  }
+
+  .aife-questions summary {
+    cursor: pointer;
+    padding: 1rem 1.1rem;
+    color: #f5f6f8;
+    font-weight: 800;
+  }
+
+  .aife-questions ol {
+    margin: 0;
+    padding: 0 1.4rem 1.2rem 2.6rem;
+  }
+
+  @media (max-width: 640px) {
+    .aife-stat {
+      grid-template-columns: 1fr;
+    }
+
+    .aife-stat-number {
+      align-items: flex-start;
+    }
+
+    .aife-mail-viz .aife-viz-desktop {
+      display: none;
+    }
+
+    .aife-mail-viz .aife-viz-mobile {
+      display: block;
+    }
+  }
+`}</style>
+
+*On 28 August 2026, France’s Agency for State Financial IT, AIFE, invited accredited e-invoicing platforms to a meeting about security. The invitation went out with the recipient list displayed in the “To” and “Cc” fields. The copy examined by l0g contains 895 visible entries, or 878 distinct addresses after exact duplicates are removed. This was an internal mailing mistake made with an ordinary email tool. A bulk-mailing service or the “Bcc” field would have kept the list private.*
+
+> **About the email.** The message is not public. A copy was provided anonymously to l0g. We are not publishing the raw file, the addresses, the domains or the registration link. We sent our questions to AIFE on 31 August. As of 4 September, the agency had answered none of them.
+
+## 895 visible entries, 878 distinct addresses
+
+The “To” field contains **881 entries**, while “Cc” contains **14**. The resulting 895 entries include 17 exact duplicates. After those are removed, **878 distinct addresses** remain across 212 email domains.
+
+<div class="aife-stat" role="group" aria-label="878 distinct addresses visible in the email examined by l0g">
+  <div class="aife-stat-number">
+    <strong>878</strong>
+    <span>distinct visible addresses</span>
+  </div>
+  <div class="aife-stat-copy">
+    <p><strong>In practical terms:</strong> anyone who received this version of the message could browse the list placed in its visible recipient fields.</p>
+    <span>895 entries in total, including 17 exact duplicates. Some identify individuals, while others are shared mailboxes.</span>
+  </div>
+</div>
+
+The figure does not mean 878 people or 878 platforms. One company may have several contacts, one person may use more than one address, and some mailboxes are generic. We also do not know how many messages were successfully delivered.
+
+The underlying mistake is straightforward. There was no need to show the full list in order to send the invitation. Judging by their labels, some mailboxes relate to support, administration, interoperability or operations. l0g is publishing none of them.
+
+<figure class="aife-mail-viz" tabindex="0" aria-label="How the recipient list became visible">
+<svg class="aife-viz-desktop" viewBox="0 0 760 360" role="img" style="width:100%;height:auto;margin:0 auto" aria-labelledby="aife-mail-en-desktop-title aife-mail-en-desktop-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="aife-mail-en-desktop-title">A very simple mailing mistake</title>
+  <desc id="aife-mail-en-desktop-desc">The 895 entries were placed in the To and Cc fields, so each recipient could see the list. A bulk-mailing tool or the Bcc field would have prevented the disclosure.</desc>
+  <defs>
+    <marker id="aife-mail-arrow-en-desktop" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#5eead4" />
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="358" rx="20" fill="#0c0d10" stroke="#30343d" />
+  <text x="28" y="45" fill="#f5f6f8" font-size="24" font-weight="800">A VERY SIMPLE MAILING MISTAKE</text>
+  <text x="28" y="74" fill="#b4bac4" font-size="16">The recipient fields made the list visible.</text>
+
+  <rect x="28" y="112" width="208" height="178" rx="14" fill="#21141b" stroke="#ff6b98" stroke-width="2" />
+  <text x="48" y="145" fill="#ff9cbb" font-size="15" font-weight="800">BEFORE SENDING</text>
+  <text x="48" y="187" fill="#f5f6f8" font-size="20" font-weight="750">895 entries</text>
+  <text x="48" y="218" fill="#d8dbe1" font-size="17">placed in “To”</text>
+  <text x="48" y="244" fill="#d8dbe1" font-size="17">and “Cc”</text>
+
+  <line x1="244" y1="201" x2="266" y2="201" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-en-desktop)" />
+
+  <rect x="276" y="112" width="208" height="178" rx="14" fill="#141922" stroke="#7aa2f7" stroke-width="2" />
+  <text x="296" y="145" fill="#a8bdff" font-size="15" font-weight="800">AFTER SENDING</text>
+  <text x="296" y="187" fill="#f5f6f8" font-size="20" font-weight="750">Every recipient</text>
+  <text x="296" y="218" fill="#d8dbe1" font-size="17">can see the</text>
+  <text x="296" y="244" fill="#d8dbe1" font-size="17">entire list</text>
+
+  <line x1="492" y1="201" x2="514" y2="201" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-en-desktop)" />
+
+  <rect x="524" y="112" width="208" height="178" rx="14" fill="#101c1a" stroke="#5eead4" stroke-width="2" />
+  <text x="544" y="145" fill="#6ee7d3" font-size="15" font-weight="800">CORRECT SETUP</text>
+  <text x="544" y="187" fill="#f5f6f8" font-size="20" font-weight="750">Bulk email</text>
+  <text x="544" y="218" fill="#d8dbe1" font-size="17">or “Bcc” keeps</text>
+  <text x="544" y="244" fill="#d8dbe1" font-size="17">the list private</text>
+
+  <text x="380" y="329" text-anchor="middle" fill="#f5b13d" font-size="16" font-weight="700">It starts with the email configuration.</text>
+</svg>
+
+<svg class="aife-viz-mobile" viewBox="0 0 360 620" role="img" style="width:100%;height:auto;margin:0 auto" aria-labelledby="aife-mail-en-mobile-title aife-mail-en-mobile-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="aife-mail-en-mobile-title">A very simple mailing mistake</title>
+  <desc id="aife-mail-en-mobile-desc">The 895 entries were placed in the To and Cc fields, so each recipient could see the list. A bulk-mailing tool or the Bcc field would have prevented the disclosure.</desc>
+  <defs>
+    <marker id="aife-mail-arrow-en-mobile" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#5eead4" />
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="358" height="618" rx="20" fill="#0c0d10" stroke="#30343d" />
+  <text x="20" y="38" fill="#f5f6f8" font-size="19" font-weight="800">A SIMPLE MAILING MISTAKE</text>
+  <text x="20" y="64" fill="#b4bac4" font-size="15">The list was in the visible fields.</text>
+
+  <rect x="20" y="90" width="320" height="130" rx="14" fill="#21141b" stroke="#ff6b98" stroke-width="2" />
+  <text x="40" y="122" fill="#ff9cbb" font-size="14" font-weight="800">BEFORE SENDING</text>
+  <text x="40" y="158" fill="#f5f6f8" font-size="19" font-weight="750">895 entries in “To”</text>
+  <text x="40" y="188" fill="#d8dbe1" font-size="17">and “Cc”</text>
+
+  <line x1="180" y1="226" x2="180" y2="248" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-en-mobile)" />
+
+  <rect x="20" y="258" width="320" height="130" rx="14" fill="#141922" stroke="#7aa2f7" stroke-width="2" />
+  <text x="40" y="290" fill="#a8bdff" font-size="14" font-weight="800">AFTER SENDING</text>
+  <text x="40" y="326" fill="#f5f6f8" font-size="19" font-weight="750">Every recipient</text>
+  <text x="40" y="356" fill="#d8dbe1" font-size="17">can see the full list</text>
+
+  <line x1="180" y1="394" x2="180" y2="416" stroke="#5eead4" stroke-width="3" marker-end="url(#aife-mail-arrow-en-mobile)" />
+
+  <rect x="20" y="426" width="320" height="130" rx="14" fill="#101c1a" stroke="#5eead4" stroke-width="2" />
+  <text x="40" y="458" fill="#6ee7d3" font-size="14" font-weight="800">CORRECT SETUP</text>
+  <text x="40" y="494" fill="#f5f6f8" font-size="19" font-weight="750">Bulk email or “Bcc”</text>
+  <text x="40" y="524" fill="#d8dbe1" font-size="17">keeps the list private</text>
+
+  <text x="180" y="592" text-anchor="middle" fill="#f5b13d" font-size="15" font-weight="700">A configuration error.</text>
+</svg>
+<figcaption>A properly configured bulk mailing separates the message from its distribution list. Here, both went out together.</figcaption>
+</figure>
+
+## Why the list matters to recipients
+
+The email does more than display contact details. It connects them to a real meeting, a specific date, familiar terminology, a follow-up file and an expected confirmation message. A later email reusing those details could therefore look familiar to the people involved.
+
+The sensible response is practical: tell recipients that the list circulated, restate the official channels for documents and meeting links, and check subsequent mailings. The facts do not require a more dramatic story. What happened was a distribution error.
+
+The mistake occurred in an ecosystem that has just become central to French business. Since 1 September 2026, companies subject to VAT must be able to receive electronic invoices through an accredited platform. l0g examined the architecture and its dependencies in a [five-part investigation into France’s new e-invoicing chain](/en/analysis/the-great-e-invoicing-toll-1-the-severed-public-portal/).
+
+## Platform oversight continues after launch
+
+The invitation also gives a glimpse of AIFE’s planned follow-up: a dedicated security unit, a post-production file, bilateral reviews and a process leading to the compliance audit.
+
+Platforms do not start operating without prior checks. Their registration file includes information about data security and an ISO/IEC 27001 certificate. France’s tax authority says final registration is granted only after [real-world interoperability tests](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees) have succeeded. AIFE also says it helped operators connect to the public infrastructure and complete the required [technical and functional tests](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/).
+
+The full compliance audit has a different timetable. [Article 242 nonies B of Annex II to the French Tax Code](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049330326) allows the report to be submitted up to one year after registration is notified. [Article 41 septies A of Annex IV](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29) requires the initial audit to cover at least one month of activity after that notification. If the report identifies non-compliance, the stated deadline for corrective measures cannot exceed three months after the report is submitted.
+
+The email therefore describes a genuine follow-up process without giving its detailed schedule or criteria. Our questions were intended to clarify those points.
+
+## A practical response and a GDPR assessment
+
+AIFE can address the error in plain terms: inform the people affected, confirm the official communication channels, review how mailing lists are handled and document its data-protection assessment.
+
+A work address is personal data when it identifies an individual. France’s data protection authority notes that an unauthorised disclosure can be **accidental**. Every personal-data breach must be recorded internally. Notification to the CNIL then depends on the risk to people’s rights and freedoms, while direct notification to individuals depends on a high risk. l0g cannot make that assessment on AIFE’s behalf. ([CNIL, rules for personal-data breaches](https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre))
+
+We therefore asked whether the assessment had been carried out, what measures had been taken and whether the recipients had been warned.
+
+## Eight questions unanswered as of 4 September
+
+On 31 August, l0g sent AIFE eight questions about the mailing error and its oversight of platforms after they entered production.
+
+<details class="aife-questions">
+<summary>Read the eight questions sent to AIFE</summary>
+<ol>
+  <li>What exactly will the <strong>post-production follow-up file</strong> contain, and when must platforms submit it?</li>
+  <li>Will the announced <strong>bilateral reviews</strong> cover every accredited platform? Under what timetable or priority order?</li>
+  <li>What does the <strong>“security trajectory until the audit”</strong> mean: normal improvement, reservations already identified or outstanding non-compliance?</li>
+  <li>As of <strong>1 September 2026</strong>, how many platforms had already submitted their <strong>full compliance audit report</strong>?</li>
+  <li>Which <strong>security incidents</strong> must be reported to AIFE, within what time and through which procedure?</li>
+  <li>Which findings or failures can lead the administration to <strong>restrict or suspend a platform’s activity</strong>?</li>
+  <li>Will AIFE publish aggregated results from <strong>audits, technical tests, recovery tests</strong> and reported incidents?</li>
+  <li>Was the 28 August recipient disclosure entered in the breach register and assessed under the GDPR? Was notification to the CNIL or the people affected considered necessary?</li>
+</ol>
+</details>
+
+As of 4 September, AIFE had provided no answer. Any substantive response will be added to this article.
+
+The mistake comes down to an email field. The remedy should be equally concrete: warn people, clarify the official channels and make sure the list is not sent again. For an agency coordinating a digital project of this scale, that is part of day-to-day discipline.
+
+---
+
+### Method and limits
+
+- **Non-public source:** a copy of an email dated 28 August 2026, provided anonymously to l0g.
+- **Message check:** review of the authentication headers and delivery chain before publication.
+- **Counting:** local extraction of the `To` and `Cc` fields, lower-case normalisation and exact deduplication. No address was tested for validity or deliverability.
+- **Protection:** no recipient address, domain, registration link or technical message identifier is published.
+- **Scope:** the figures describe the copy received by l0g. They do not establish how many messages were successfully delivered.
+- **Cut-off:** 4 September 2026, 9:00 am Paris time.
+
+### Main public sources
+
+- [AIFE, business-to-business e-invoicing](https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b/), timetable and system architecture.
+- [AIFE, support and training](https://aife.economie.gouv.fr/a-lecoute-de-nos-utilisateurs/laccompagnement-et-la-formation/), support and testing for accredited platforms.
+- [French tax authority, list of accredited platforms](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees), conditions for final registration.
+- [Légifrance, Article 242 nonies B of Annex II to the Tax Code](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049330326), registration file, audit deadline and corrective measures.
+- [Légifrance, Article 41 septies A of Annex IV to the Tax Code](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000054606100/2026-07-29), audit scope and review period.
+- [CNIL, rules for personal-data breaches](https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre), classification, internal records and notification thresholds.
