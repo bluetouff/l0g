@@ -39,6 +39,16 @@ const targets = [
     count: 2,
     pattern: /<svg\b[^>]*aria-label="[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
   },
+  {
+    page: 'dist/posts/coree-du-sud-prix-couverture-parfaite/index.html',
+    count: 5,
+    pattern: /<svg\b[^>]*aria-labelledby="krfx-fr-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+  },
+  {
+    page: 'dist/en/analysis/south-korea-price-perfect-fx-hedge/index.html',
+    count: 5,
+    pattern: /<svg\b[^>]*aria-labelledby="krfx-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+  },
 ];
 
 for (const { page, count, pattern, jeonseLocale } of targets) {

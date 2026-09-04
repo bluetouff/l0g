@@ -1,0 +1,381 @@
+---
+title: "Corée du Sud : le prix de la couverture parfaite"
+seoTitle: "Assureurs coréens : coût et risque du hedge de change | l0g"
+ogTitle: "Assureurs coréens : le prix du hedge parfait"
+ogImage: "/illustrations/news/korea-insurer-fx-hedge-v1.jpg"
+description: "Les assureurs coréens couvrent leurs actifs en devises. Le risque de change recule, mais le carry, les renouvellements et la liquidité restent à gérer."
+pubDate: 2026-09-04T16:30:00+02:00
+updatedDate: 2026-09-04T16:30:00+02:00
+tags: ["Corée du Sud", "Asie", "assurance-vie", "risque de change", "couverture", "swaps", "K-ICS", "liquidité", "stabilité financière"]
+draft: false
+quickTake:
+  fact: "Fin 2025, une note du Korea Institute of Finance recensait 172 500 milliards de wons d’actifs en devises chez les assureurs coréens."
+  importance: "Une couverture élevée réduit le risque de change immédiat, mais transforme une partie du rendement en coût de carry et impose de renouveler les dérivés."
+  uncertainty: "Le calendrier agrégé des hedges, les besoins de collatéral et la concentration des contreparties ne sont pas publiés dans une série sectorielle complète."
+---
+
+import KoreaFxHedgeSimulator from '../../components/KoreaFxHedgeSimulator.astro';
+
+*Une obligation en dollars peut être couverte presque intégralement contre le won. Sur le papier, la variation de change disparaît. Dans le bilan réel, elle est remplacée par autre chose : un coût de portage, une série de contrats à renouveler, des flux de collatéral et une dépendance aux banques qui fournissent les swaps. La Corée du Sud montre pourquoi une protection très efficace contre un risque peut en rendre trois autres moins visibles.*
+
+Ce troisième volet de notre dossier asiatique prolonge [l’enquête sur les assureurs taïwanais](/posts/taiwan-724-milliards-assureurs-vie-risque-change/) et [celle sur le jeonse coréen](/posts/jeonse-coree-du-sud-credit-cache-logement/). À Taïwan, le problème central est un grand bilan étranger dont une fraction reste économiquement exposée au change. En Corée, la logique dominante est différente : la couverture réduit davantage cette sensibilité, au prix d’un engagement qu’il faut continuellement repricer et refinancer.
+
+Le mot **parfaite** décrit ici un objectif technique, pas une réalité absolue. Pour qu’un hedge soit parfait, il faudrait faire correspondre la devise, le montant, tous les coupons, chaque date de paiement, la maturité, les options et le comportement du passif. Un forward ou un swap standard couvre un [notionnel](/glossaire/notionnel/) pendant une durée donnée. Il ne transforme pas une obligation étrangère de dix ans en actif coréen sans risque.
+
+## Deux mesures, deux périmètres
+
+La première difficulté est statistique.
+
+Une [analyse du Korea Institute of Finance](https://www.kif.re.kr/kif4/eng/publication/pub_detail?cno=366371&mid=220&nid=888&sid=887&vid=7775), publiée le **22 août 2026** et portant sur la situation de **fin 2025**, chiffre à **172 500 milliards de wons** les actifs libellés en devises des assureurs coréens. Le total comprend 127 000 milliards de wons pour l’assurance-vie et 46 000 milliards pour l’assurance non-vie, les arrondis expliquant l’écart avec le total. Il donne l’échelle du besoin de gestion du change. Il ne mesure ni la position ouverte, ni le montant des dérivés, ni une perte possible.
+
+La [Banque de Corée](https://www.bok.or.kr/portal/bbs/B0000502/view.do?depth=201265&menuNo=201265&nttId=11064319&programType=newsData&relate=Y) publie un autre chiffre : au **30 juin 2026**, les titres libellés en devises détenus pour compte propre par les compagnies d’assurance s’élevaient, en valeur de marché, à **73,76 milliards de dollars**, soit **840 millions de dollars de moins** qu’à la fin du premier trimestre. Cette statistique vise un ensemble plus étroit : actions et obligations étrangères, auxquelles s’ajoute le « Korean Paper », c’est-à-dire des titres en devises émis à l’étranger par des résidents coréens.
+
+La conversion de 172 500 milliards de wons en dollars ne permet donc pas de réconcilier les deux séries. Elles ne partagent ni l’unité, ni la date, ni le périmètre. Les additionner serait une double comptabilisation potentielle. Les opposer comme deux estimations concurrentes serait tout aussi faux.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-fr-perimeters-title krfx-fr-perimeters-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-fr-perimeters-title">Périmètres statistiques des actifs étrangers des assureurs coréens</title>
+  <desc id="krfx-fr-perimeters-desc">Deux mesures officielles ou institutionnelles ne couvrent pas le même ensemble et ne doivent pas être additionnées.</desc>
+  <rect width="900" height="580" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Deux chiffres, deux périmètres</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Ils décrivent la même industrie, pas le même ensemble d’actifs.</text>
+  <rect x="42" y="112" width="392" height="248" rx="12" fill="#152420" stroke="#27695f"/>
+  <text x="68" y="150" fill="#5eead4" font-size="15" font-weight="700">ACTIFS EN DEVISES</text>
+  <text x="68" y="202" fill="#f5f6f8" font-size="36" font-weight="700">172,5 milliers de Md KRW</text>
+  <text x="68" y="238" fill="#d6d9df" font-size="14">Date statistique : 31 décembre 2025</text>
+  <text x="68" y="274" fill="#a8adb7" font-size="13">
+    <tspan x="68" dy="0">Périmètre fondé sur la devise</tspan>
+    <tspan x="68" dy="21">et plusieurs catégories d’actifs.</tspan>
+  </text>
+  <text x="68" y="335" fill="#777d89" font-size="12">Source : Korea Institute of Finance</text>
+  <rect x="466" y="112" width="392" height="248" rx="12" fill="#171d2b" stroke="#445f9a"/>
+  <text x="492" y="150" fill="#7aa2f7" font-size="15" font-weight="700">TITRES EN DEVISES</text>
+  <text x="492" y="202" fill="#f5f6f8" font-size="36" font-weight="700">73,76 Md$</text>
+  <text x="492" y="238" fill="#d6d9df" font-size="14">Date statistique : 30 juin 2026</text>
+  <text x="492" y="274" fill="#a8adb7" font-size="13">
+    <tspan x="492" dy="0">Titres détenus pour compte propre,</tspan>
+    <tspan x="492" dy="21">mesurés en valeur de marché.</tspan>
+  </text>
+  <text x="492" y="313" fill="#f5b13d" font-size="13" font-weight="700">Variation T2 : -0,84 Md$</text>
+  <text x="492" y="335" fill="#777d89" font-size="12">Source : Banque de Corée</text>
+  <rect x="42" y="397" width="816" height="116" rx="10" fill="#251723" stroke="#793664"/>
+  <text x="68" y="435" fill="#ff4d87" font-size="17" font-weight="700">La conversion ne réconcilie pas les séries</text>
+  <text x="68" y="469" fill="#d6d9df" font-size="14">
+    <tspan x="68" dy="0">L’une couvre plusieurs actifs, l’autre uniquement des titres en devises.</tspan>
+    <tspan x="68" dy="22">Les additionner ou déduire une exposition nette serait une erreur.</tspan>
+  </text>
+  <text x="42" y="552" fill="#777d89" font-size="11">Périodes et définitions conservées dans leur source d’origine. Synthèse l0g.</text>
+</svg>
+<figcaption>Les 172 500 milliards de wons et les 73,76 milliards de dollars ne sont pas deux estimations concurrentes du même stock. La première mesure couvre plusieurs catégories d’actifs libellés en devises. La seconde porte uniquement sur des titres en devises détenus pour compte propre et évalués au prix de marché.</figcaption>
+</figure>
+
+Le recul trimestriel de 840 millions de dollars mérite aussi une lecture mesurée. Il ne prouve pas une fuite générale hors des actifs en devises. La variation d’un encours en valeur de marché peut combiner transactions, remboursements, prix de marché et change. Rapporté au stock publié, le mouvement reste limité. La donnée disponible décrit une variation nette du portefeuille au sens de cette statistique, pas les raisons de chaque transaction.
+
+Au 4 septembre 2026, les sources publiques ne montrent pas une liquidation désordonnée des portefeuilles étrangers des assureurs coréens. Elles décrivent une industrie qui conserve une masse importante d’actifs en devises et doit payer pour en neutraliser une grande partie du risque de change.
+
+## Pourquoi les engagements en wons financent des actifs en dollars
+
+Un assureur-vie encaisse aujourd’hui des primes et promet des paiements parfois plusieurs décennies plus tard. Son problème consiste à trouver des actifs assez longs, assez liquides et assez rémunérateurs pour couvrir ces engagements.
+
+Le marché obligataire coréen fournit une base importante. Il ne reproduit pas pour autant toute la profondeur, la diversité de crédit et la gamme de maturités disponibles sur les marchés en dollars. Les assureurs peuvent donc acheter des obligations souveraines, financières, d’entreprises ou structurées à l’étranger. La logique n’est pas seulement de chercher un taux plus élevé. Elle consiste aussi à diversifier les émetteurs et à allonger la [duration](/glossaire/duration/).
+
+Le [FMI documentait déjà ce déplacement en 2019](https://www.elibrary.imf.org/display/book/9781498324021/ch003.xml) chez les assureurs du Japon, de Corée et de Taïwan. Des garanties historiques, des rendements domestiques faibles et des marchés locaux moins profonds avaient poussé les portefeuilles vers le crédit étranger. Ce diagnostic ancien ne donne pas la composition actuelle du bilan coréen. Il explique l’origine d’une structure qui, elle, est toujours visible dans les données de 2025 et 2026.
+
+Le problème naît de la devise des promesses. Une police payée en won crée un passif en won. Une obligation en dollars crée des coupons et un remboursement en dollars. Sans couverture, l’assureur gagne en valeur comptable lorsque le dollar monte contre le won et perd lorsque le won s’apprécie. Le portefeuille devient alors un pari de change ajouté au risque de taux et au risque de crédit.
+
+La couverture répond à ce décalage. L’assureur vend à terme les dollars qu’il recevra, ou échange des flux en dollars contre des flux en wons au moyen d’un swap. Le montant futur en KRW devient beaucoup plus prévisible. Cette stabilité n’est pas gratuite.
+
+## Le prix inscrit dans le taux à terme
+
+Un taux de change à terme n’est pas une prévision du taux de change futur. Il est d’abord un prix d’arbitrage entre deux monnaies.
+
+Dans une version simplifiée de la **[parité couverte des taux](/glossaire/cip/)**, un investisseur ne doit pas pouvoir emprunter dans une devise, placer dans l’autre, couvrir le change et obtenir un profit certain sans capital. Le taux à terme incorpore donc l’écart entre les taux courts des deux monnaies. Pour un investisseur coréen qui détient un actif en dollars et vend ses dollars à terme, un taux court américain supérieur au taux court coréen tend à produire un coût de couverture proche de cet écart.
+
+La réalité ajoute une **base cross-currency**. Cette base mesure l’écart entre le prix observé du swap et celui qu’impliquerait la parité couverte dans un marché sans friction. Elle reflète notamment l’offre et la demande de dollars, les contraintes de bilan des banques, le collatéral et la réglementation. Selon son signe, elle renchérit ou réduit le coût. Viennent ensuite la marge du teneur de marché, la liquidité du tenor choisi et les coûts opérationnels.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 565" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-fr-carry-title krfx-fr-carry-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-fr-carry-title">Décomposition du coût de couverture</title>
+  <desc id="krfx-fr-carry-desc">Le coût indicatif vient de l’écart de taux, de la base et de l’exécution, tandis que le spot n’est pas une composante autonome.</desc>
+  <rect width="900" height="565" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Le coût du hedge n’est pas le niveau du won</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Décomposition économique simplifiée d’un investissement en devise couvert en KRW.</text>
+  <rect x="42" y="112" width="816" height="46" rx="8" fill="#111318" stroke="#2a2d35"/>
+  <text x="450" y="141" text-anchor="middle" fill="#d6d9df" font-size="14">Coût indicatif ≈ taux étranger − taux KRW + base + exécution</text>
+  <rect x="42" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#5eead4"/>
+  <text x="118" y="213" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">Rendement brut</text>
+  <text x="118" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">actif étranger</text>
+  <line x1="194" y1="235" x2="198" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="198,235 188,229 188,241" fill="#777d89"/>
+  <rect x="208" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#f5b13d"/>
+  <text x="284" y="213" text-anchor="middle" fill="#f5b13d" font-size="14" font-weight="700">Écart de taux</text>
+  <text x="284" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">court terme</text>
+  <line x1="360" y1="235" x2="364" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="364,235 354,229 354,241" fill="#777d89"/>
+  <rect x="374" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#ff4d87"/>
+  <text x="450" y="213" text-anchor="middle" fill="#ff4d87" font-size="14" font-weight="700">Base de change</text>
+  <text x="450" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">marché</text>
+  <line x1="526" y1="235" x2="530" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="530,235 520,229 520,241" fill="#777d89"/>
+  <rect x="540" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="616" y="213" text-anchor="middle" fill="#7aa2f7" font-size="14" font-weight="700">Exécution</text>
+  <text x="616" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">marge</text>
+  <line x1="692" y1="235" x2="696" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="696,235 686,229 686,241" fill="#777d89"/>
+  <rect x="706" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#f5f6f8"/>
+  <text x="782" y="213" text-anchor="middle" fill="#f5f6f8" font-size="14" font-weight="700">Rendement net</text>
+  <text x="782" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">après hedge</text>
+  <rect x="42" y="332" width="816" height="150" rx="10" fill="#171d2b" stroke="#445f9a"/>
+  <text x="68" y="369" fill="#7aa2f7" font-size="17" font-weight="700">Ce que le forward neutralise</text>
+  <text x="68" y="401" fill="#d6d9df" font-size="14">
+    <tspan x="68" dy="0">La valeur future d’un montant de devise, pour une échéance et un notionnel donnés.</tspan>
+  </text>
+  <text x="68" y="438" fill="#ff4d87" font-size="17" font-weight="700">Ce qu’il ne neutralise pas</text>
+  <text x="68" y="468" fill="#d6d9df" font-size="14">Crédit, duration, liquidité, coupons mal appariés, options et risque de roll.</text>
+  <text x="42" y="538" fill="#777d89" font-size="11">Schéma de mécanisme, sans cotation de marché. Sources : BIS ; parité couverte des taux.</text>
+</svg>
+<figcaption>Un hedge de change transforme le rendement. Lorsque les taux courts étrangers dépassent les taux courts coréens, la couverture d’un actif en dollars tend à absorber l’écart. La base cross-currency et les coûts d’exécution peuvent augmenter ou réduire ce prix.</figcaption>
+</figure>
+
+Le niveau du won n’est donc pas, à lui seul, le prix du hedge. Un won faible peut gonfler la valeur en KRW d’un notionnel en dollars et modifier les règlements ou le collatéral. Il peut aussi accompagner une période de stress où la base se déforme. Mais le carry vient surtout de l’écart de taux, de la base et des conditions du dérivé.
+
+Cette distinction est utile parce qu’elle évite une causalité facile. Dire « le won baisse, donc la couverture devient chère » mélange le prix au comptant et le prix intertemporel. Les deux peuvent bouger ensemble pendant une crise, sans être le même objet.
+
+Le [tableau historique du taux directeur de la Banque de Corée](https://www.bok.or.kr/eng/singl/baseRate/progress.do?dataSeCd=01&menuNo=400016) et les [décisions de politique monétaire de la Réserve fédérale](https://www.federalreserve.gov/monetarypolicy/openmarket.htm) permettent de suivre les deux jambes les plus visibles du différentiel. Ils ne suffisent pas à reconstituer une cotation de swap. Pour cela, il faudrait la courbe complète, la maturité exacte, la base du marché, le collatéral et la marge de contrepartie au moment de la transaction.
+
+## Du rendement brut au rendement couvert
+
+Supposons une obligation en dollars rapportant 4,5 %. Ce coupon ou rendement actuariel ne dit pas ce qui restera à l’assureur coréen.
+
+Si le coût indicatif de couverture atteint 1,8 % par an, une couverture intégrale laisse environ 2,7 % avant défaut, variation de prix, impôt, frais de gestion et effets comptables. Une couverture de 50 % en absorbe environ 0,9 point, mais laisse la moitié du notionnel exposée au change. Ces nombres sont un exemple de calcul, pas une observation du marché de septembre 2026.
+
+Le raisonnement explique pourquoi un actif étranger peut rester intéressant malgré le hedge. Le différentiel de taux retire une partie du rendement sans effacer nécessairement le spread de crédit, la prime de terme ou la diversification. Une obligation étrangère couverte peut donc offrir un rendement net supérieur à un actif domestique comparable. Elle peut aussi devenir moins intéressante après un déplacement de la base ou du coût de roll.
+
+Le point décisif est temporel. Le rendement de l’obligation peut être verrouillé pour dix ans. Le coût de couverture ne l’est souvent que pour la durée du dérivé.
+
+## Un actif long, des contrats plus courts
+
+Le marché ne fournit pas toujours, au prix souhaité, un hedge aussi long que l’actif. Un assureur peut détenir une obligation de dix ou vingt ans et utiliser un forward de trois mois, six mois ou un an. À l’échéance du contrat, il le ferme et en ouvre un nouveau.
+
+Cette opération s’appelle le **roll**. Elle crée un risque de refinancement qui ressemble, économiquement, à celui d’un emprunteur finançant un actif long avec une dette courte. L’actif n’a pas changé. Le prix de la protection, lui, est remis à zéro.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 575" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-fr-roll-title krfx-fr-roll-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-fr-roll-title">Calendrier de renouvellement d’un hedge</title>
+  <desc id="krfx-fr-roll-desc">Un actif de dix ans est couvert par dix contrats successifs d’un an, chacun étant repricé.</desc>
+  <rect width="900" height="575" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Dix ans d’actif, dix prix de couverture</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Exemple : obligation de dix ans couverte par des contrats d’un an.</text>
+  <rect x="55" y="120" width="790" height="88" rx="10" fill="#152420" stroke="#27695f"/>
+  <text x="82" y="154" fill="#5eead4" font-size="16" font-weight="700">ACTIF ÉTRANGER</text>
+  <line x1="82" y1="181" x2="814" y2="181" stroke="#5eead4" stroke-width="5"/>
+  <text x="82" y="198" fill="#a8adb7" font-size="11">achat</text>
+  <text x="814" y="198" text-anchor="end" fill="#a8adb7" font-size="11">échéance année 10</text>
+  <text x="55" y="246" fill="#f5f6f8" font-size="15" font-weight="700">COUVERTURES SUCCESSIVES</text>
+  <rect x="55" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="88" y="292" text-anchor="middle" fill="#5eead4" font-size="12" font-weight="700">1</text>
+  <text x="88" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="135" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="168" y="292" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">2</text>
+  <text x="168" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="215" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="248" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">3</text>
+  <text x="248" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="295" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="328" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">4</text>
+  <text x="328" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="375" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="408" y="292" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">5</text>
+  <text x="408" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="455" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="488" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">6</text>
+  <text x="488" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="535" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="568" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">7</text>
+  <text x="568" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="615" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="648" y="292" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">8</text>
+  <text x="648" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="695" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="728" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">9</text>
+  <text x="728" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="775" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="808" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">10</text>
+  <text x="808" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="55" y="370" width="790" height="132" rx="10" fill="#251723" stroke="#793664"/>
+  <text x="82" y="406" fill="#ff4d87" font-size="17" font-weight="700">Chaque renouvellement rouvre trois questions</text>
+  <text x="82" y="439" fill="#d6d9df" font-size="14">Prix disponible · contrepartie disponible · collatéral disponible</text>
+  <text x="82" y="470" fill="#a8adb7" font-size="13">Le premier forward ne verrouille pas le rendement couvert des neuf années suivantes.</text>
+  <text x="42" y="548" fill="#777d89" font-size="11">Exemple pédagogique. La maturité réelle des actifs et dérivés varie selon les assureurs.</text>
+</svg>
+<figcaption>Une couverture courte contre un actif long crée un risque de renouvellement. L’exposition au spot peut rester faible tandis que le coût futur, la contrepartie et le besoin de trésorerie restent inconnus.</figcaption>
+</figure>
+
+Le premier hedge protège la prochaine échéance. Il ne garantit pas le coût des neuf ou dix-neuf années suivantes. Une stratégie de couverture proche de 100 % peut donc afficher une faible sensibilité immédiate au spot tout en restant très sensible au futur différentiel de taux et à la profondeur du marché.
+
+Le [BIS a montré](https://www.bis.org/publications/dollar-debt-fx-swaps-and-forwards-huge-missing-and-growing) pourquoi les swaps et forwards de change méritent une attention particulière. Ils créent des obligations de paiement futures qui n’apparaissent pas comme une dette ordinaire au bilan. Leur montant notionnel ne constitue pas une perte, mais leur renouvellement peut devenir difficile lorsque les intermédiaires réduisent leur capacité ou lorsque la demande de dollars se concentre.
+
+Pour un assureur, trois prix doivent rester disponibles : le prix économique du hedge, la capacité de la contrepartie et le prix de la liquidité nécessaire au collatéral. Une stratégie peut être rentable dans un marché normal et devenir contraignante sans que l’actif sous-jacent ait fait défaut.
+
+<KoreaFxHedgeSimulator lang="fr" />
+
+Le simulateur sépare volontairement ces dimensions. Il ne cherche pas à produire « le » coût sectoriel. Les contrats réels diffèrent par devise, maturité, collatéral, contrepartie, calendrier de coupons et traitement comptable. L’outil montre seulement comment un même rendement brut change lorsque le différentiel de taux, la base, la part couverte ou la durée du hedge sont modifiés.
+
+## Le besoin de trésorerie
+
+Un hedge peut être efficace en valeur finale et exigeant en cash avant l’échéance.
+
+Imaginons que le dollar monte fortement contre le won. L’obligation en dollars vaut davantage en KRW. Le dérivé conçu pour neutraliser ce gain perd de la valeur. Selon le contrat de collatéral, l’assureur peut devoir remettre du cash ou des titres à la banque avant d’encaisser les coupons ou de vendre l’obligation. L’actif et le hedge se compensent économiquement, mais leurs flux n’arrivent pas au même moment.
+
+Lorsque le won s’apprécie, le mouvement s’inverse. La valeur en KRW de l’actif baisse et le dérivé gagne. L’assureur peut recevoir du collatéral ou un règlement positif. Là encore, la compensation dépend du notionnel, de la maturité et de la correspondance exacte des flux.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 585" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-fr-matrix-title krfx-fr-matrix-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-fr-matrix-title">Matrice des chocs couverts et non couverts</title>
+  <desc id="krfx-fr-matrix-desc">Les mouvements du won sont compensés par le dérivé, mais les pertes de crédit et de duration restent.</desc>
+  <rect width="900" height="585" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">La couverture déplace les flux, elle ne les efface pas</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Lecture simplifiée d’un actif en dollars détenu face à des engagements en KRW.</text>
+  <rect x="42" y="112" width="208" height="56" rx="8" fill="#111318"/>
+  <rect x="266" y="112" width="282" height="56" rx="8" fill="#152420" stroke="#27695f"/>
+  <rect x="564" y="112" width="294" height="56" rx="8" fill="#171d2b" stroke="#445f9a"/>
+  <text x="407" y="146" text-anchor="middle" fill="#5eead4" font-size="15" font-weight="700">ACTIF NON COUVERT</text>
+  <text x="711" y="146" text-anchor="middle" fill="#7aa2f7" font-size="15" font-weight="700">ACTIF COUVERT</text>
+  <rect x="42" y="184" width="208" height="100" rx="8" fill="#15171c"/><rect x="266" y="184" width="282" height="100" rx="8" fill="#15171c"/><rect x="564" y="184" width="294" height="100" rx="8" fill="#15171c"/>
+  <text x="64" y="220" fill="#f5b13d" font-size="14" font-weight="700">KRW +10 %</text>
+  <text x="64" y="245" fill="#a8adb7" font-size="12">le dollar baisse en KRW</text>
+  <text x="290" y="220" fill="#ff4d87" font-size="14">Perte de conversion</text>
+  <text x="290" y="247" fill="#a8adb7" font-size="12">dans le bilan en KRW</text>
+  <text x="588" y="220" fill="#5eead4" font-size="14">Gain du dérivé en compensation</text>
+  <text x="588" y="247" fill="#a8adb7" font-size="12">avec timing de cash distinct</text>
+  <rect x="42" y="300" width="208" height="100" rx="8" fill="#15171c"/><rect x="266" y="300" width="282" height="100" rx="8" fill="#15171c"/><rect x="564" y="300" width="294" height="100" rx="8" fill="#15171c"/>
+  <text x="64" y="336" fill="#7aa2f7" font-size="14" font-weight="700">KRW -10 %</text>
+  <text x="64" y="361" fill="#a8adb7" font-size="12">le dollar monte en KRW</text>
+  <text x="290" y="336" fill="#5eead4" font-size="14">Gain de conversion</text>
+  <text x="290" y="363" fill="#a8adb7" font-size="12">mais exposition maintenue</text>
+  <text x="588" y="336" fill="#f5b13d" font-size="14">Perte du dérivé en compensation</text>
+  <text x="588" y="363" fill="#a8adb7" font-size="12">collatéral possible avant l’échéance</text>
+  <rect x="42" y="416" width="208" height="100" rx="8" fill="#15171c"/><rect x="266" y="416" width="282" height="100" rx="8" fill="#15171c"/><rect x="564" y="416" width="294" height="100" rx="8" fill="#15171c"/>
+  <text x="64" y="452" fill="#ff4d87" font-size="14" font-weight="700">SPREAD +100 pb</text>
+  <text x="64" y="477" fill="#a8adb7" font-size="12">prix de l’obligation en baisse</text>
+  <text x="290" y="452" fill="#ff4d87" font-size="14">Perte de crédit ou de duration</text>
+  <text x="588" y="452" fill="#ff4d87" font-size="14">Même perte : le hedge FX n’aide pas</text>
+  <text x="42" y="558" fill="#777d89" font-size="11">Les effets comptables et prudentiels dépendent de la classification et du contrat.</text>
+</svg>
+<figcaption>Un hedge compense une variation de change sur un notionnel et une échéance. Il peut produire un flux de trésorerie opposé à la variation comptable de l’actif. Il ne couvre pas une perte de crédit ou de duration.</figcaption>
+</figure>
+
+Cette asymétrie de calendrier crée un risque de liquidité. Elle devient plus importante si plusieurs positions doivent être roulées au même moment, si les contreparties demandent davantage de marge ou si les assurés rachètent leurs contrats. Un assureur peut alors être solvable en valeur économique et manquer temporairement d’actifs immédiatement mobilisables.
+
+Le hedge ne protège pas non plus contre une baisse du prix de l’obligation provoquée par une hausse des taux longs ou un élargissement du spread de crédit. Si l’émetteur est dégradé ou fait défaut, le forward de change continue d’exister. La perte sur l’actif et l’obligation contractuelle envers la contrepartie peuvent coexister.
+
+## Ce que mesure K-ICS
+
+La Corée du Sud applique depuis 2023 **IFRS 17** pour les contrats d’assurance et le **Korean Insurance Capital Standard**, ou K-ICS, pour la solvabilité. [IFRS 17](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/) mesure les obligations d’assurance selon des flux futurs actualisés et une marge de service. K-ICS évalue les actifs et les passifs sur une base économique et impose du capital face à plusieurs risques, dont le marché, le crédit, l’assurance et l’opérationnel.
+
+Une couverture de change réduit la position nette ouverte et peut donc diminuer la charge de risque de change. [Selon le KIF](https://www.kif.re.kr/kif4/eng/publication/pub_detail?cno=366371&mid=220&nid=888&sid=887&vid=7775), K-ICS intègre aussi dans le capital requis le risque de renouvellement lié aux couvertures courtes. Les dérivés ajoutent toutefois un risque de contrepartie et leurs flux doivent être gérés. Cette reconnaissance prudentielle ne rend pas public le calendrier des contrats et ne transforme pas un hedge court en dix ans de liquidité garantie.
+
+Au **31 mars 2026**, le [Financial Supervisory Service](https://eiec.kdi.re.kr/policy/materialView.do?num=282919) publiait un ratio K-ICS de **216,1 % pour l’ensemble du secteur après mesures transitoires**, contre 202,6 % avant leur application. À cette date, le capital disponible dépassait largement l’exigence calculée selon la métrique publiée. Ce ratio ne constitue pas un certificat général d’invulnérabilité.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-fr-capital-title krfx-fr-capital-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-fr-capital-title">K-ICS et dimensions séparées du risque</title>
+  <desc id="krfx-fr-capital-desc">Le ratio de solvabilité est distingué du carry, du collatéral et du risque de renouvellement.</desc>
+  <rect width="900" height="600" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Un ratio de capital ne mesure pas toute la liquidité</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Assureurs coréens, date statistique : 31 mars 2026.</text>
+  <rect x="42" y="112" width="816" height="122" rx="12" fill="#152420" stroke="#27695f"/>
+  <text x="68" y="151" fill="#5eead4" font-size="15" font-weight="700">K-ICS SECTORIEL APRÈS MESURES TRANSITOIRES</text>
+  <text x="68" y="205" fill="#f5f6f8" font-size="44" font-weight="700">216,1 %</text>
+  <text x="270" y="198" fill="#a8adb7" font-size="13">ratio publié pour l’ensemble du secteur, pas pour chaque assureur</text>
+  <text x="270" y="219" fill="#777d89" font-size="12">Source : Financial Supervisory Service</text>
+  <rect x="42" y="270" width="190" height="180" rx="10" fill="#15171c" stroke="#5eead4"/>
+  <text x="64" y="306" fill="#5eead4" font-size="15" font-weight="700">CAPITAL</text>
+  <text x="64" y="340" fill="#d6d9df" font-size="13"><tspan x="64" dy="0">Absorbe des pertes</tspan><tspan x="64" dy="21">selon K-ICS</tspan></text>
+  <text x="64" y="408" fill="#777d89" font-size="11">stock prudentiel</text>
+  <rect x="250" y="270" width="190" height="180" rx="10" fill="#15171c" stroke="#f5b13d"/>
+  <text x="272" y="306" fill="#f5b13d" font-size="15" font-weight="700">CARRY</text>
+  <text x="272" y="340" fill="#d6d9df" font-size="13"><tspan x="272" dy="0">Réduit le rendement</tspan><tspan x="272" dy="21">des placements</tspan></text>
+  <text x="272" y="408" fill="#777d89" font-size="11">flux récurrent</text>
+  <rect x="458" y="270" width="190" height="180" rx="10" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="480" y="306" fill="#7aa2f7" font-size="15" font-weight="700">COLLATÉRAL</text>
+  <text x="480" y="340" fill="#d6d9df" font-size="13"><tspan x="480" dy="0">Peut être exigé</tspan><tspan x="480" dy="21">avant l’échéance</tspan></text>
+  <text x="480" y="408" fill="#777d89" font-size="11">besoin de cash</text>
+  <rect x="666" y="270" width="192" height="180" rx="10" fill="#15171c" stroke="#ff4d87"/>
+  <text x="688" y="306" fill="#ff4d87" font-size="15" font-weight="700">ROLL</text>
+  <text x="688" y="340" fill="#d6d9df" font-size="13"><tspan x="688" dy="0">Reprixe le contrat</tspan><tspan x="688" dy="21">à chaque échéance</tspan></text>
+  <text x="688" y="408" fill="#777d89" font-size="11">risque de marché</text>
+  <rect x="42" y="482" width="816" height="58" rx="8" fill="#251723" stroke="#793664"/>
+  <text x="450" y="518" text-anchor="middle" fill="#ff9abc" font-size="14">Solvabilité solide et risque de liquidité peuvent coexister.</text>
+  <text x="42" y="574" fill="#777d89" font-size="11">Le ratio publié inclut les mesures transitoires. Il ne constitue pas une prévision.</text>
+</svg>
+<figcaption>Le K-ICS sectoriel de 216,1 % au 31 mars 2026 signale un coussin prudentiel supérieur au minimum publié, après mesures transitoires. Il ne renseigne pas à lui seul sur la concentration des contreparties, les appels de marge ou le calendrier des rolls.</figcaption>
+</figure>
+
+Le ratio publié porte sur l’ensemble du secteur. La dispersion entre assureurs peut être importante. Il est calculé après mesures transitoires, qui étalent certains effets de la nouvelle architecture prudentielle. Il mesure un stock de capital face à des risques calibrés. Il ne publie pas le mur exact des échéances de swaps, la concentration des contreparties ni les appels de collatéral qu’un choc intrajournalier pourrait produire.
+
+Les publications examinées ne fournissent pas, dans une série publique consolidée, tous les détails nécessaires à un test sectoriel complet de liquidité des hedges.
+
+## La fonction protectrice de la couverture
+
+La couverture traite d’abord un risque réel : le décalage entre des actifs en dollars et des engagements en wons.
+
+Une position ouverte en dollars rendrait les fonds propres des assureurs beaucoup plus sensibles au won. Une appréciation rapide de la monnaie coréenne réduirait la valeur des actifs étrangers face à des engagements domestiques. Une couverture élevée stabilise cette relation. Elle facilite aussi la gestion du capital sous K-ICS et rend les flux futurs plus prévisibles.
+
+Les données examinées ne montrent pas une crise déjà déclenchée. Le ratio K-ICS reste élevé au 31 mars 2026. Les titres en devises détenus pour compte propre au sens de la Banque de Corée n’ont reculé que de 840 millions de dollars au deuxième trimestre. La capacité exacte des assureurs à absorber un choc de collatéral ou un mur de renouvellements n’est cependant pas visible dans ces séries sectorielles.
+
+La couverture peut enfin préserver un avantage économique. Si une obligation étrangère offre un spread de crédit ou une prime de terme suffisante, son rendement après hedge peut rester supérieur à celui d’une alternative domestique. Réduire la stratégie à « acheter à 4,5 % pour perdre 2 % en couverture » ignore la qualité, la duration, le capital et la diversification des actifs comparés.
+
+Cette protection conserve donc son utilité, avec une condition : le modèle dépend de marchés de dérivés profonds, de contreparties disponibles et d’une trésorerie capable d’absorber les décalages de flux.
+
+## Trois scénarios de stress
+
+### Le carry reste élevé plus longtemps
+
+Les hedges sont renouvelés sans rupture, mais l’écart de taux demeure défavorable et la base reste coûteuse. Le secteur ne subit pas forcément de perte brutale. Il voit plutôt le rendement net de ses actifs étrangers se comprimer. La transmission passe par le revenu financier, la capacité à créditer les contrats et la rentabilité des nouveaux produits.
+
+### La base se disloque pendant un roll
+
+Les banques réduisent leur bilan ou la demande de dollars augmente. Le prix du nouveau swap s’écarte de la relation habituelle. L’assureur doit accepter un coût supérieur, réduire sa couverture ou vendre une partie de l’actif. Le risque de change, jusque-là contenu, peut réapparaître au moment où le marché est le moins liquide.
+
+### Le choc vient de l’actif ou du passif
+
+Un spread de crédit s’élargit, un émetteur est dégradé ou les rachats de contrats augmentent. Le hedge FX ne compense pas cette perte. Il peut même exiger du collatéral dans le sens opposé. La chaîne devient alors : baisse de l’actif, besoin de cash, vente ou fermeture de dérivés, puis éventuelle pression sur le capital.
+
+Aucun de ces scénarios n’est une prévision. Ils décrivent les mécanismes que les données publiques permettent de tester partiellement.
+
+## L’angle mort du calendrier
+
+Les trois chiffres les plus solides du dossier sont connus : **172 500 milliards de wons** d’actifs libellés en devises à fin 2025 selon le KIF, **73,76 milliards de dollars** de titres en devises détenus pour compte propre au 30 juin 2026 selon la Banque de Corée, et **216,1 %** de K-ICS au 31 mars 2026 après mesures transitoires selon le FSS.
+
+Ils décrivent la taille, un sous-ensemble du portefeuille et le capital prudentiel. Ils ne révèlent pas le calendrier des hedges.
+
+Pour mesurer le risque résiduel, il faudrait disposer, assureur par assureur puis au niveau agrégé, de la maturité des actifs, de la maturité des forwards et swaps, des notionnels par devise, des conventions de collatéral, des seuils de marge, des concentrations de contreparties et des lignes de liquidité non tirées. Il faudrait aussi distinguer les couvertures économiques des relations de hedge accounting.
+
+Je n’ai pas trouvé de publication publique réunissant ces éléments dans un tableau sectoriel complet et récent. Cette absence ne prouve pas que les superviseurs ne les possèdent pas. Elle limite ce qu’un observateur extérieur peut conclure.
+
+## Conclusion
+
+**Établi.** Les assureurs coréens détiennent une masse importante d’actifs en devises. La couverture réduit la sensibilité directe au change, mais son coût dépend de l’écart de taux, de la base et des conditions de marché. Un dérivé court contre un actif long doit être renouvelé. Le secteur affichait encore un ratio K-ICS de 216,1 % au 31 mars 2026 après mesures transitoires.
+
+**Compatible avec les données.** Un carry durablement élevé peut éroder la rentabilité sans produire de crise immédiate. Une dislocation de la base ou un choc de collatéral pourrait transformer une protection économiquement efficace en besoin urgent de liquidité.
+
+**Inconnu publiquement.** La distribution exacte des maturités de hedge, la concentration des banques contreparties et le besoin de cash dans un scénario combinant won, spreads, taux et rachats.
+
+La Corée du Sud n’a pas supprimé le risque de change. Elle l’a contractualisé. La protection tient tant que chaque contrat peut être renouvelé à un prix absorbable et réglé avec une liquidité disponible. Le risque le plus important n’est donc pas toujours celui qui reste ouvert. C’est parfois celui qui revient à échéance.
+
+## Sources principales
+
+- [Korea Institute of Finance, « The Impact of Dollar Strength on the Insurance Industry and Policy Responses », 22 août 2026](https://www.kif.re.kr/kif4/eng/publication/pub_detail?cno=366371&mid=220&nid=888&sid=887&vid=7775). Données de fin 2025.
+- [Banque de Corée, investissements en titres libellés en devises des principaux investisseurs institutionnels au deuxième trimestre 2026, 1er septembre 2026](https://www.bok.or.kr/portal/bbs/B0000502/view.do?depth=201265&menuNo=201265&nttId=11064319&programType=newsData&relate=Y). Données au 30 juin 2026.
+- [Financial Supervisory Service, ratios K-ICS des assureurs au premier trimestre 2026, 19 juin 2026](https://eiec.kdi.re.kr/policy/materialView.do?num=282919). Archive KDI ; données au 31 mars 2026.
+- [FMI, Global Financial Stability Report, chapitre sur les investisseurs institutionnels asiatiques](https://www.elibrary.imf.org/display/book/9781498324021/ch003.xml), 2019.
+- [Banque des règlements internationaux, Dollar debt in FX swaps and forwards](https://www.bis.org/publications/dollar-debt-fx-swaps-and-forwards-huge-missing-and-growing), 2022.
+- [IFRS Foundation, IFRS 17 Insurance Contracts](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/).
+- [Banque de Corée, historique du taux directeur](https://www.bok.or.kr/eng/singl/baseRate/progress.do?dataSeCd=01&menuNo=400016).
+- [Réserve fédérale, politique monétaire et taux directeurs](https://www.federalreserve.gov/monetarypolicy/openmarket.htm).

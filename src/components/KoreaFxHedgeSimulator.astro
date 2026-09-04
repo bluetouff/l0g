@@ -1,0 +1,191 @@
+---
+import {
+  KOREA_FX_HEDGE_DEFAULTS,
+  KOREA_FX_HEDGE_MODEL_VERSION,
+  calculateKoreaFxHedge,
+} from '../lib/korea-fx-hedge-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+}
+
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `korea-fx-hedge-${lang}`;
+const initial = calculateKoreaFxHedge(KOREA_FX_HEDGE_DEFAULTS);
+const copy = isFr ? {
+  eyebrow: 'SIMULATEUR PÉDAGOGIQUE',
+  title: 'Le rendement étranger après couverture',
+  intro: 'Décomposez un rendement brut en différentiel de taux, base de change et coûts d’exécution. Le résultat est un scénario, jamais une cotation de swap.',
+  badge: 'calcul local · zéro tracker',
+  inputs: 'Hypothèses',
+  assets: 'Actifs étrangers',
+  gross: 'Rendement brut',
+  foreignRate: 'Taux court étranger',
+  krwRate: 'Taux court en KRW',
+  basis: 'Base et prime (+ = coût)',
+  execution: 'Exécution et marge',
+  hedgeRatio: 'Part couverte',
+  assetMaturity: 'Maturité de l’actif',
+  hedgeTenor: 'Durée du hedge',
+  fxMove: 'Variation de la devise étrangère',
+  results: 'Résultats indicatifs',
+  carry: 'Coût annuel de couverture',
+  netYield: 'Rendement après carry',
+  covered: 'Notionnel couvert',
+  open: 'Notionnel ouvert',
+  translation: 'Effet de change sur la part ouverte',
+  rolls: 'Contrats à renouveler',
+  reprice: 'Surcoût annuel si le hedge renchérit de 100 pb',
+  method: 'Formule et limites',
+  methodText: 'Coût indicatif = taux court étranger moins taux court KRW, plus la base saisie et les coûts d’exécution. Une base positive augmente le coût dans ce modèle ; une base négative le réduit. Cette approximation n’intègre pas la courbe des taux, la forme exacte du dérivé, les coupons, le collatéral, les appels de marge, le risque de contrepartie, la fiscalité, la comptabilité, le crédit ni les options des contrats d’assurance.',
+  warning: 'Un hedge de principal ne protège pas contre une baisse du prix de l’obligation, un défaut, une hausse des rachats ou un manque de liquidité au moment du renouvellement.',
+  years: 'ans', months: 'mois', contracts: 'contrats',
+} : {
+  eyebrow: 'EDUCATIONAL SIMULATOR',
+  title: 'Foreign yield after currency hedging',
+  intro: 'Break a gross yield into the short-rate gap, cross-currency basis and execution costs. The output is a scenario, not a swap quote.',
+  badge: 'local calculation · zero tracker',
+  inputs: 'Assumptions',
+  assets: 'Foreign assets',
+  gross: 'Gross asset yield',
+  foreignRate: 'Foreign short rate',
+  krwRate: 'KRW short rate',
+  basis: 'Basis/premium (+ = cost)',
+  execution: 'Execution and dealer margin',
+  hedgeRatio: 'Hedged share',
+  assetMaturity: 'Asset maturity',
+  hedgeTenor: 'Hedge tenor',
+  fxMove: 'Foreign-currency move',
+  results: 'Indicative results',
+  carry: 'Annual hedge carry',
+  netYield: 'Yield after carry',
+  covered: 'Covered notional',
+  open: 'Open notional',
+  translation: 'FX effect on the open share',
+  rolls: 'Contracts to renew',
+  reprice: 'Annual cost of a 100bp hedge repricing',
+  method: 'Formula and limits',
+  methodText: 'Indicative cost equals the foreign short rate minus the KRW short rate, plus the entered basis and execution costs. A positive basis raises cost in this model; a negative basis lowers it. The approximation excludes the full yield curves, exact derivative structure, coupons, collateral, margin calls, counterparty risk, tax, accounting, credit and insurance-policy options.',
+  warning: 'A principal hedge does not protect against a bond-price loss, default, higher surrenders or a shortage of liquidity when the contract rolls.',
+  years: 'years', months: 'months', contracts: 'contracts',
+};
+const number = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const pct = (v: number) => `${number.format(v)} %`;
+const trn = (v: number) => isFr ? `${number.format(v)} milliers de Md KRW` : `KRW ${number.format(v)}tn`;
+---
+
+<section class="kfx-tool" id={id} data-kfx data-lang={lang}>
+  <header class="kfx-head">
+    <div>
+      <p class="kfx-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span>{copy.badge}</span>
+  </header>
+
+  <div class="kfx-grid">
+    <form class="kfx-controls" aria-labelledby={`${id}-inputs`}>
+      <h3 id={`${id}-inputs`}>{copy.inputs}</h3>
+      <label><span>{copy.assets}<b>{isFr ? 'milliers de Md KRW' : 'KRW tn'}</b></span><input name="foreignAssetsKrwTrn" type="number" min="0" max="1000" step="0.5" value={KOREA_FX_HEDGE_DEFAULTS.foreignAssetsKrwTrn} /></label>
+      <label><span>{copy.gross}<b>%</b></span><input name="grossAssetYieldPct" type="number" min="-10" max="30" step="0.05" value={KOREA_FX_HEDGE_DEFAULTS.grossAssetYieldPct} /></label>
+      <label><span>{copy.foreignRate}<b>%</b></span><input name="foreignShortRatePct" type="number" min="-5" max="30" step="0.05" value={KOREA_FX_HEDGE_DEFAULTS.foreignShortRatePct} /></label>
+      <label><span>{copy.krwRate}<b>%</b></span><input name="krwShortRatePct" type="number" min="-5" max="30" step="0.05" value={KOREA_FX_HEDGE_DEFAULTS.krwShortRatePct} /></label>
+      <label><span>{copy.basis}<b>bp</b></span><input name="basisBp" type="number" min="-500" max="500" step="5" value={KOREA_FX_HEDGE_DEFAULTS.basisBp} /></label>
+      <label><span>{copy.execution}<b>bp</b></span><input name="executionBp" type="number" min="0" max="500" step="5" value={KOREA_FX_HEDGE_DEFAULTS.executionBp} /></label>
+      <label><span>{copy.hedgeRatio}<b>%</b></span><input name="hedgeRatioPct" type="number" min="0" max="100" step="1" value={KOREA_FX_HEDGE_DEFAULTS.hedgeRatioPct} /></label>
+      <label><span>{copy.assetMaturity}<b>{copy.years}</b></span><input name="assetMaturityYears" type="number" min="0.25" max="50" step="0.25" value={KOREA_FX_HEDGE_DEFAULTS.assetMaturityYears} /></label>
+      <label><span>{copy.hedgeTenor}<b>{copy.months}</b></span><input name="hedgeTenorMonths" type="number" min="1" max="120" step="1" value={KOREA_FX_HEDGE_DEFAULTS.hedgeTenorMonths} /></label>
+      <label><span>{copy.fxMove}<b>%</b></span><input name="foreignCurrencyMovePct" type="number" min="-50" max="50" step="1" value={KOREA_FX_HEDGE_DEFAULTS.foreignCurrencyMovePct} /></label>
+    </form>
+
+    <section class="kfx-results" aria-labelledby={`${id}-results`}>
+      <h3 id={`${id}-results`}>{copy.results}</h3>
+      <div class="kfx-primary" aria-live="polite"><span>{copy.netYield}</span><strong data-result="netYield">{pct(initial.indicativeNetYieldPct)}</strong></div>
+      <dl>
+        <div><dt>{copy.carry}</dt><dd data-result="carry">{pct(initial.indicativeHedgeCarryPct)}</dd></div>
+        <div><dt>{copy.covered}</dt><dd data-result="covered">{trn(initial.coveredNotionalKrwTrn)}</dd></div>
+        <div><dt>{copy.open}</dt><dd data-result="open">{trn(initial.openNotionalKrwTrn)}</dd></div>
+        <div><dt>{copy.translation}</dt><dd data-result="translation">{trn(initial.openFxTranslationKrwTrn)}</dd></div>
+        <div><dt>{copy.rolls}</dt><dd data-result="rolls">{initial.rollsOverAssetLife} {copy.contracts}</dd></div>
+        <div><dt>{copy.reprice}</dt><dd data-result="reprice">{trn(initial.repricingCostFor100bpKrwTrn)}</dd></div>
+      </dl>
+      <p class="kfx-warning">{copy.warning}</p>
+    </section>
+  </div>
+
+  <details>
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <code>{isFr ? 'carry ≈ taux étranger − taux KRW + base + exécution' : 'carry ≈ foreign rate − KRW rate + basis + execution'}</code>
+    <code>{isFr ? 'effet FX ouvert = actifs × part non couverte × variation de devise' : 'open FX effect = assets × unhedged share × currency move'}</code>
+    <small>Model v{KOREA_FX_HEDGE_MODEL_VERSION}</small>
+  </details>
+</section>
+
+<script>
+  import { calculateKoreaFxHedge } from '../lib/korea-fx-hedge-model.ts';
+
+  const initialise = () => {
+    document.querySelectorAll<HTMLElement>('[data-kfx]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const nf = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+      const fields = ['foreignAssetsKrwTrn','grossAssetYieldPct','foreignShortRatePct','krwShortRatePct','basisBp','executionBp','hedgeRatioPct','assetMaturityYears','hedgeTenorMonths','foreignCurrencyMovePct'] as const;
+      const read = () => Object.fromEntries(fields.map((name) => {
+        const node = form.elements.namedItem(name) as HTMLInputElement | null;
+        return [name, Number(node?.value)];
+      }));
+      const put = (name: string, value: string) => {
+        const node = root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+        if (node) node.textContent = value;
+      };
+      const trn = (value: number) => lang === 'fr' ? `${nf.format(value)} milliers de Md KRW` : `KRW ${nf.format(value)}tn`;
+      const update = () => {
+        const r = calculateKoreaFxHedge(read());
+        put('netYield', `${nf.format(r.indicativeNetYieldPct)} %`);
+        put('carry', `${nf.format(r.indicativeHedgeCarryPct)} %`);
+        put('covered', trn(r.coveredNotionalKrwTrn));
+        put('open', trn(r.openNotionalKrwTrn));
+        put('translation', trn(r.openFxTranslationKrwTrn));
+        put('rolls', `${r.rollsOverAssetLife} ${lang === 'fr' ? 'contrats' : 'contracts'}`);
+        put('reprice', trn(r.repricingCostFor100bpKrwTrn));
+      };
+      form.addEventListener('submit', (event) => event.preventDefault());
+      form.addEventListener('input', update);
+      update();
+    });
+  };
+  initialise();
+  document.addEventListener('astro:page-load', initialise);
+</script>
+
+<style>
+  .kfx-tool{margin:2.25rem 0;padding:1.15rem;border:1px solid rgba(255,255,255,.11);border-radius:14px;background:#0c0d10;color:#f5f6f8;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .kfx-head{display:flex;gap:1.2rem;justify-content:space-between;align-items:flex-start;padding:.5rem .45rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.09)}
+  .kfx-head h2{margin:.18rem 0 .45rem;font-size:clamp(1.35rem,3vw,1.9rem)}
+  .kfx-head p{margin:0;max-width:68ch;color:#a8adb7;line-height:1.55}
+  .kfx-head>span{white-space:nowrap;padding:.35rem .55rem;border:1px solid #27695f;border-radius:999px;color:#5eead4;font-size:.72rem}
+  .kfx-eyebrow{color:#5eead4!important;font-size:.74rem;letter-spacing:.1em}
+  .kfx-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr);gap:1rem;margin-top:1rem}
+  .kfx-controls,.kfx-results{padding:1rem;border-radius:10px;background:#15171c;border:1px solid #2a2d35}
+  .kfx-controls h3,.kfx-results h3{margin:0 0 1rem;font-size:1rem;color:#d6d9df}
+  .kfx-controls label{display:grid;grid-template-columns:minmax(0,1fr) 8.8rem;gap:.8rem;align-items:center;padding:.48rem 0;border-bottom:1px solid rgba(255,255,255,.055)}
+  .kfx-controls label span{display:flex;justify-content:space-between;gap:.5rem;color:#d6d9df;font-size:.82rem}
+  .kfx-controls label b{font-weight:400;color:#777d89;font-size:.72rem}
+  .kfx-controls input{width:100%;box-sizing:border-box;padding:.5rem .55rem;border:1px solid #3a3d46;border-radius:6px;background:#0c0d10;color:#f5f6f8;font:inherit;text-align:right}
+  .kfx-primary{padding:1rem;border-radius:9px;background:#152420;border:1px solid #27695f;margin-bottom:.8rem}
+  .kfx-primary span{display:block;color:#a8adb7;font-size:.78rem;margin-bottom:.35rem}.kfx-primary strong{font-size:1.85rem;color:#5eead4}
+  .kfx-results dl{margin:0}.kfx-results dl div{display:flex;justify-content:space-between;gap:1rem;padding:.62rem 0;border-bottom:1px solid rgba(255,255,255,.065)}
+  .kfx-results dt{color:#a8adb7;font-size:.77rem;max-width:62%}.kfx-results dd{margin:0;color:#f5f6f8;text-align:right;font-weight:700;font-size:.8rem}
+  .kfx-warning{margin:1rem 0 0;padding:.75rem;border-left:3px solid #f5b13d;color:#d6d9df;background:#252115;font-size:.78rem;line-height:1.55}
+  details{margin-top:1rem;padding:.85rem 1rem;border:1px solid #2a2d35;border-radius:9px;background:#111318;color:#a8adb7;font-size:.8rem;line-height:1.55}
+  summary{cursor:pointer;color:#f5f6f8;font-weight:700}details code{display:block;margin:.55rem 0;padding:.55rem;background:#0c0d10;border-radius:5px;white-space:normal;color:#7aa2f7}details small{color:#777d89}
+  @media(max-width:780px){.kfx-head{display:block}.kfx-head>span{display:inline-block;margin-top:.8rem}.kfx-grid{grid-template-columns:1fr}.kfx-controls label{grid-template-columns:1fr 7rem}.kfx-results dt{max-width:58%}}
+  @media(max-width:420px){.kfx-tool{padding:.8rem}.kfx-controls label{grid-template-columns:1fr}.kfx-controls input{text-align:left}.kfx-results dl div{display:grid;grid-template-columns:1fr}.kfx-results dt{max-width:none}.kfx-results dd{text-align:left;overflow-wrap:anywhere}}
+</style>

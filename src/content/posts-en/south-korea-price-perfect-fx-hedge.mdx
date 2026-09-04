@@ -1,0 +1,383 @@
+---
+title: "South Korea: the price of a perfect currency hedge"
+seoTitle: "Korean insurers: cost and risk of FX hedging | l0g"
+ogTitle: "Korean insurers and the price of a perfect hedge"
+ogImage: "/illustrations/news/korea-insurer-fx-hedge-v1.jpg"
+description: "Korean insurers hedge much of their foreign-currency assets. FX risk falls, but carry, derivative rolls and liquidity still have to be managed."
+pubDate: 2026-09-04T16:30:00+02:00
+updatedDate: 2026-09-04T16:30:00+02:00
+tags: ["South Korea", "Asia", "life insurance", "currency risk", "FX hedging", "swaps", "K-ICS", "liquidity", "financial stability"]
+draft: false
+sourceArticle: "coree-du-sud-prix-couverture-parfaite"
+sourceUpdatedDate: 2026-09-04
+quickTake:
+  fact: "A Korea Institute of Finance note put insurers’ foreign-currency assets at KRW 172.5tn at end-2025."
+  importance: "A high hedge ratio suppresses immediate FX volatility, but converts part of the yield into carry and creates a recurring need to roll derivatives."
+  uncertainty: "No complete public sector series discloses the hedge maturity wall, collateral needs and counterparty concentration."
+---
+
+import KoreaFxHedgeSimulator from '../../components/KoreaFxHedgeSimulator.astro';
+
+*A dollar bond can be almost fully hedged back into won. The exchange-rate line then appears to vanish. What replaces it is less visible: a recurring carry cost, a chain of contracts that must be renewed, collateral flows and dependence on the banks willing to make the swaps. South Korea is a useful case study in how an effective hedge can turn one risk into several balance-sheet obligations.*
+
+This is the third instalment in l0g’s Asian risk series, following our investigations into [Taiwan’s life insurers](/en/analysis/taiwan-life-insurers-724-billion-currency-risk/) and [South Korea’s jeonse system](/en/analysis/south-korea-jeonse-hidden-housing-credit/). Taiwan’s central problem is a vast foreign portfolio with a material residual currency mismatch. Korean insurers have tended to suppress more of the spot exposure. Their vulnerability therefore sits less in today’s exchange-rate move than in the price and liquidity of tomorrow’s roll.
+
+The word **perfect** is an analytical provocation, not a description of any standard product. A truly perfect hedge would match currency, notional, every coupon, every payment date, maturity, embedded options and liability behaviour. A forward or swap covers a defined amount for a defined period. It does not turn a ten-year foreign bond into a risk-free Korean asset.
+
+## Two measures, two perimeters
+
+The statistical problem comes first.
+
+A [Korea Institute of Finance analysis](https://www.kif.re.kr/kif4/eng/publication/pub_detail?cno=366371&mid=220&nid=888&sid=887&vid=7775), published on **22 August 2026** and using **end-2025** data, put Korean insurers’ foreign-currency-denominated assets at **KRW 172.5tn**. The total comprised KRW 127tn for life insurers and KRW 46tn for non-life insurers, with rounding accounting for the difference. It shows the scale of the FX-management task. It is not the open position, derivative notional or an estimate of possible losses.
+
+The [Bank of Korea](https://www.bok.or.kr/portal/bbs/B0000502/view.do?depth=201265&menuNo=201265&nttId=11064319&programType=newsData&relate=Y) reports another figure. At **30 June 2026**, insurance companies held **USD 73.76bn of foreign-currency securities in their proprietary accounts**, measured at market value and down **USD 0.84bn** during the second quarter. This narrower total comprises foreign equities and bonds plus Korean Paper, securities issued abroad in foreign currency by Korean residents.
+
+Converting KRW 172.5tn into dollars does not reconcile the two. The unit, date and perimeter differ. Adding them could double count. Treating them as competing estimates of the same stock would be equally wrong.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-en-perimeters-title krfx-en-perimeters-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-en-perimeters-title">Statistical perimeters for Korean insurers foreign assets</title>
+  <desc id="krfx-en-perimeters-desc">Two institutional measures cover different sets and must not be added.</desc>
+  <rect width="900" height="580" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Two figures, two statistical perimeters</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">They describe the same industry, not the same asset set.</text>
+  <rect x="42" y="112" width="392" height="248" rx="12" fill="#152420" stroke="#27695f"/>
+  <text x="68" y="150" fill="#5eead4" font-size="15" font-weight="700">FOREIGN-CURRENCY ASSETS</text>
+  <text x="68" y="202" fill="#f5f6f8" font-size="36" font-weight="700">KRW 172.5tn</text>
+  <text x="68" y="238" fill="#d6d9df" font-size="14">Statistical date: 31 December 2025</text>
+  <text x="68" y="274" fill="#a8adb7" font-size="13">
+    <tspan x="68" dy="0">Currency-based perimeter</tspan>
+    <tspan x="68" dy="21">covering several asset categories.</tspan>
+  </text>
+  <text x="68" y="335" fill="#777d89" font-size="12">Source: Korea Institute of Finance</text>
+  <rect x="466" y="112" width="392" height="248" rx="12" fill="#171d2b" stroke="#445f9a"/>
+  <text x="492" y="150" fill="#7aa2f7" font-size="15" font-weight="700">FOREIGN-CURRENCY SECURITIES</text>
+  <text x="492" y="202" fill="#f5f6f8" font-size="36" font-weight="700">USD 73.76bn</text>
+  <text x="492" y="238" fill="#d6d9df" font-size="14">Statistical date: 30 June 2026</text>
+  <text x="492" y="274" fill="#a8adb7" font-size="13">
+    <tspan x="492" dy="0">Proprietary-account securities</tspan>
+    <tspan x="492" dy="21">measured at market value.</tspan>
+  </text>
+  <text x="492" y="313" fill="#f5b13d" font-size="13" font-weight="700">Q2 change: -USD 0.84bn</text>
+  <text x="492" y="335" fill="#777d89" font-size="12">Source: Bank of Korea</text>
+  <rect x="42" y="397" width="816" height="116" rx="10" fill="#251723" stroke="#793664"/>
+  <text x="68" y="435" fill="#ff4d87" font-size="17" font-weight="700">Currency conversion does not reconcile the series</text>
+  <text x="68" y="469" fill="#d6d9df" font-size="14">
+    <tspan x="68" dy="0">One spans several assets; the other covers foreign-currency securities.</tspan>
+    <tspan x="68" dy="22">Adding them or inferring a net exposure would be an error.</tspan>
+  </text>
+  <text x="42" y="552" fill="#777d89" font-size="11">Periods and definitions retained from the original sources. l0g synthesis.</text>
+</svg>
+<figcaption>KRW 172.5tn and USD 73.76bn are not competing estimates of the same stock. The first spans several categories of foreign-currency assets. The second covers foreign-currency securities in insurers’ proprietary accounts, measured at market value.</figcaption>
+</figure>
+
+The USD 0.84bn quarterly decline also needs restraint. It does not establish a broad retreat from foreign-currency assets. A market-value stock can move through transactions, redemptions, market prices and exchange rates. Relative to the published stock, the change is limited. The series shows a net portfolio movement under its own definition, not the reason for each transaction.
+
+As of 4 September 2026, public data do not show a disorderly liquidation of Korean insurers’ foreign books. They show a large foreign-currency asset base whose currency risk has to be managed at a recurring price.
+
+## Why won liabilities lead to dollar assets
+
+Life insurers collect premiums now and promise payments that may lie decades ahead. They need assets with sufficient maturity, liquidity and income to support those promises.
+
+Korea has a substantial domestic bond market, but it cannot replicate every maturity, credit sector and spread available in dollars. Foreign sovereign, bank, corporate and structured bonds can extend [duration](/en/glossary/duration/) and diversify issuers. The decision is not simply a hunt for the highest headline coupon.
+
+The [IMF documented this migration in 2019](https://www.elibrary.imf.org/display/book/9781498324021/ch003.xml) across Japanese, Korean and Taiwanese insurers. Legacy guarantees, low domestic yields and limited local market depth had encouraged portfolios to reach into foreign credit. That historical study is not a map of today’s Korean holdings. It explains how the current structure emerged.
+
+The currency of the promise creates the mismatch. A policy payable in won is a won liability. A dollar bond produces dollar coupons and principal. Left unhedged, it rises in KRW value when the dollar strengthens and falls when the won appreciates. Currency becomes an additional risk layered on top of duration and credit.
+
+A forward or cross-currency swap can exchange those future dollars for won. The KRW value becomes more predictable. The insurer has not eliminated the economics of the two currencies. It has paid the market to transfer them.
+
+## The price embedded in the forward
+
+A forward exchange rate is not primarily a forecast of the future spot rate. It is an arbitrage price between two money markets.
+
+Under simplified **[covered interest parity](/en/guides/read-dollar-dxy-cross-currency-basis/)**, an investor should not be able to borrow in one currency, invest in another, hedge the exchange rate and earn a riskless profit. The forward therefore reflects the short-rate difference. When US short rates exceed Korean short rates, a KRW investor selling future dollars generally gives up roughly that gap through the forward points.
+
+Actual markets add a **cross-currency basis**. The basis is the wedge between the observed swap price and frictionless covered parity. It reflects dollar demand, bank balance-sheet constraints, collateral, regulation and market depth. Depending on its sign, it can increase or reduce the carry. Dealer margin, tenor liquidity and operational costs come on top.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 565" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-en-carry-title krfx-en-carry-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-en-carry-title">Decomposition of FX hedge carry</title>
+  <desc id="krfx-en-carry-desc">Indicative carry comes from the rate gap, basis and execution rather than the spot level alone.</desc>
+  <rect width="900" height="565" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The hedge cost is not the won’s spot level</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Simplified economics of a foreign-currency asset hedged back into KRW.</text>
+  <rect x="42" y="112" width="816" height="46" rx="8" fill="#111318" stroke="#2a2d35"/>
+  <text x="450" y="141" text-anchor="middle" fill="#d6d9df" font-size="14">Indicative cost ≈ foreign rate − KRW rate + basis + execution</text>
+  <rect x="42" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#5eead4"/>
+  <text x="118" y="213" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">Gross yield</text>
+  <text x="118" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">foreign asset</text>
+  <line x1="194" y1="235" x2="198" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="198,235 188,229 188,241" fill="#777d89"/>
+  <rect x="208" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#f5b13d"/>
+  <text x="284" y="213" text-anchor="middle" fill="#f5b13d" font-size="14" font-weight="700">Rate gap</text>
+  <text x="284" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">short rates</text>
+  <line x1="360" y1="235" x2="364" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="364,235 354,229 354,241" fill="#777d89"/>
+  <rect x="374" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#ff4d87"/>
+  <text x="450" y="213" text-anchor="middle" fill="#ff4d87" font-size="14" font-weight="700">FX basis</text>
+  <text x="450" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">market</text>
+  <line x1="526" y1="235" x2="530" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="530,235 520,229 520,241" fill="#777d89"/>
+  <rect x="540" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="616" y="213" text-anchor="middle" fill="#7aa2f7" font-size="14" font-weight="700">Execution</text>
+  <text x="616" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">dealer cost</text>
+  <line x1="692" y1="235" x2="696" y2="235" stroke="#777d89" stroke-width="2"/>
+  <polygon points="696,235 686,229 686,241" fill="#777d89"/>
+  <rect x="706" y="176" width="152" height="118" rx="10" fill="#15171c" stroke="#f5f6f8"/>
+  <text x="782" y="213" text-anchor="middle" fill="#f5f6f8" font-size="14" font-weight="700">Net yield</text>
+  <text x="782" y="248" text-anchor="middle" fill="#d6d9df" font-size="12">after hedge</text>
+  <rect x="42" y="332" width="816" height="150" rx="10" fill="#171d2b" stroke="#445f9a"/>
+  <text x="68" y="369" fill="#7aa2f7" font-size="17" font-weight="700">What the forward neutralises</text>
+  <text x="68" y="401" fill="#d6d9df" font-size="14">
+    <tspan x="68" dy="0">The future KRW value of a given currency amount, at one maturity.</tspan>
+  </text>
+  <text x="68" y="438" fill="#ff4d87" font-size="17" font-weight="700">What it does not neutralise</text>
+  <text x="68" y="468" fill="#d6d9df" font-size="14">Credit, duration, liquidity, mismatched cash flows, options and roll risk.</text>
+  <text x="42" y="538" fill="#777d89" font-size="11">Mechanism diagram, not a market quote. Sources: BIS; covered interest parity.</text>
+</svg>
+<figcaption>Currency hedging transforms the yield. When foreign short rates exceed Korean short rates, hedging a dollar asset tends to give up that gap. The cross-currency basis and execution costs can raise or reduce the price.</figcaption>
+</figure>
+
+The won’s spot level is therefore not, by itself, the hedge price. A weak won increases the KRW value of a dollar notional and may alter settlements or collateral. It can also coincide with stress that moves the basis. But carry is driven mainly by the rate gap, basis and contract terms.
+
+This matters because “the won fell, so hedging became expensive” mixes a spot price with an intertemporal price. They may move together in a crisis without being the same variable.
+
+The [Bank of Korea’s policy-rate history](https://www.bok.or.kr/eng/singl/baseRate/progress.do?dataSeCd=01&menuNo=400016) and the [Federal Reserve’s policy record](https://www.federalreserve.gov/monetarypolicy/openmarket.htm) show the two most visible legs of the rate differential. They cannot reproduce a live swap quote. That requires both yield curves, the precise maturity, market basis, collateral convention and dealer pricing at the time of execution.
+
+## From gross yield to hedged yield
+
+Take a dollar bond yielding 4.5%. That figure does not tell a Korean insurer what it will retain.
+
+At an illustrative 1.8% annual hedge cost, a full hedge leaves about 2.7% before defaults, mark-to-market changes, tax, management fees and accounting effects. A 50% hedge absorbs roughly 0.9 percentage point but leaves half the notional exposed to FX. These numbers are a transparent scenario, not a September 2026 market observation.
+
+This also explains why foreign bonds can remain attractive after hedging. The rate differential strips out part of the yield, but it does not necessarily remove credit spread, term premium or diversification value. A hedged foreign bond may still beat a comparable domestic asset. A shift in basis or roll cost can reverse that advantage.
+
+The temporal mismatch is the crucial point. A bond yield can be locked for ten years. The hedge price is often locked for a much shorter period.
+
+## A long asset, shorter contracts
+
+The market may not offer a hedge as long as the asset at an acceptable price. An insurer can own a ten- or twenty-year bond while using a three-month, six-month or one-year forward. When the contract expires, it closes the position and opens another.
+
+That **roll** creates a refinancing risk. Economically, it resembles funding a long asset with short debt. The bond is unchanged. The price of protection resets.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 575" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-en-roll-title krfx-en-roll-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-en-roll-title">Hedge roll calendar</title>
+  <desc id="krfx-en-roll-desc">A ten-year asset is covered by ten successive one-year contracts, each repriced.</desc>
+  <rect width="900" height="575" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">A ten-year asset, ten hedge prices</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Example: a ten-year bond hedged with one-year contracts.</text>
+  <rect x="55" y="120" width="790" height="88" rx="10" fill="#152420" stroke="#27695f"/>
+  <text x="82" y="154" fill="#5eead4" font-size="16" font-weight="700">FOREIGN ASSET</text>
+  <line x1="82" y1="181" x2="814" y2="181" stroke="#5eead4" stroke-width="5"/>
+  <text x="82" y="198" fill="#a8adb7" font-size="11">purchase</text>
+  <text x="814" y="198" text-anchor="end" fill="#a8adb7" font-size="11">maturity in year 10</text>
+  <text x="55" y="246" fill="#f5f6f8" font-size="15" font-weight="700">SUCCESSIVE HEDGES</text>
+  <rect x="55" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#5eead4"/>
+  <text x="88" y="292" text-anchor="middle" fill="#5eead4" font-size="12" font-weight="700">1</text>
+  <text x="88" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="135" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="168" y="292" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">2</text>
+  <text x="168" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="215" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="248" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">3</text>
+  <text x="248" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="295" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="328" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">4</text>
+  <text x="328" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="375" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="408" y="292" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">5</text>
+  <text x="408" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="455" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="488" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">6</text>
+  <text x="488" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="535" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="568" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">7</text>
+  <text x="568" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="615" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#f5b13d"/>
+  <text x="648" y="292" text-anchor="middle" fill="#f5b13d" font-size="12" font-weight="700">8</text>
+  <text x="648" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="695" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="728" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">9</text>
+  <text x="728" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="775" y="266" width="66" height="64" rx="6" fill="#15171c" stroke="#445f9a"/>
+  <text x="808" y="292" text-anchor="middle" fill="#445f9a" font-size="12" font-weight="700">10</text>
+  <text x="808" y="314" text-anchor="middle" fill="#a8adb7" font-size="10">roll</text>
+  <rect x="55" y="370" width="790" height="132" rx="10" fill="#251723" stroke="#793664"/>
+  <text x="82" y="406" fill="#ff4d87" font-size="17" font-weight="700">Every roll reopens three questions</text>
+  <text x="82" y="439" fill="#d6d9df" font-size="14">Available price · available counterparty · available collateral</text>
+  <text x="82" y="470" fill="#a8adb7" font-size="13">The first forward does not lock the hedged return for the following nine years.</text>
+  <text x="42" y="548" fill="#777d89" font-size="11">Educational example. Actual asset and derivative tenors vary by insurer.</text>
+</svg>
+<figcaption>A short hedge against a long asset creates roll risk. Spot exposure can remain small while future carry, counterparty capacity and liquidity needs remain unknown.</figcaption>
+</figure>
+
+The first hedge covers the next maturity. It does not lock the covered return for the following nine or nineteen years. A strategy hedged close to 100% can show very little immediate spot sensitivity while remaining exposed to the future rate differential and to market-making capacity.
+
+The [BIS has highlighted](https://www.bis.org/publications/dollar-debt-fx-swaps-and-forwards-huge-missing-and-growing) the hidden funding obligations embedded in FX swaps and forwards. Their notionals are not losses, but they represent future payment commitments that do not look like ordinary balance-sheet debt. Rolling them can become difficult when intermediaries conserve balance sheet or dollar demand becomes one-sided.
+
+An insurer therefore needs three things to remain available: an affordable hedge price, counterparty capacity and liquidity for collateral. A position can be economically sound in normal markets and become constraining even though the underlying bond never defaults.
+
+<KoreaFxHedgeSimulator lang="en" />
+
+The simulator deliberately avoids producing a sector-wide “true cost”. Real contracts differ by currency, maturity, collateral, counterparty, coupon schedule and accounting treatment. It shows only how the same gross yield changes when the rate gap, basis, hedge ratio or tenor changes.
+
+## The liquidity bill
+
+A hedge can work at final maturity and still demand cash along the way.
+
+Suppose the dollar rises sharply against the won. The dollar bond is worth more in KRW. The derivative designed to offset that gain loses value. Depending on the collateral agreement, the insurer may have to post cash or securities before receiving coupons or selling the bond. Asset and hedge offset economically, but their cash flows arrive at different times.
+
+When the won appreciates, the direction reverses. The KRW value of the asset falls while the derivative gains. The insurer may receive collateral or a positive settlement. Again, the match depends on notional, maturity and cash-flow alignment.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 585" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-en-matrix-title krfx-en-matrix-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-en-matrix-title">Matrix of hedged and unhedged shocks</title>
+  <desc id="krfx-en-matrix-desc">Won moves can be offset by the derivative, while credit and duration losses remain.</desc>
+  <rect width="900" height="585" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Hedging moves cash flows rather than erasing them</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Simplified reading of a dollar asset held against KRW liabilities.</text>
+  <rect x="42" y="112" width="208" height="56" rx="8" fill="#111318"/>
+  <rect x="266" y="112" width="282" height="56" rx="8" fill="#152420" stroke="#27695f"/>
+  <rect x="564" y="112" width="294" height="56" rx="8" fill="#171d2b" stroke="#445f9a"/>
+  <text x="407" y="146" text-anchor="middle" fill="#5eead4" font-size="15" font-weight="700">UNHEDGED ASSET</text>
+  <text x="711" y="146" text-anchor="middle" fill="#7aa2f7" font-size="15" font-weight="700">HEDGED ASSET</text>
+  <rect x="42" y="184" width="208" height="100" rx="8" fill="#15171c"/><rect x="266" y="184" width="282" height="100" rx="8" fill="#15171c"/><rect x="564" y="184" width="294" height="100" rx="8" fill="#15171c"/>
+  <text x="64" y="220" fill="#f5b13d" font-size="14" font-weight="700">KRW +10%</text>
+  <text x="64" y="245" fill="#a8adb7" font-size="12">USD falls in KRW</text>
+  <text x="290" y="220" fill="#ff4d87" font-size="14">Translation loss</text>
+  <text x="290" y="247" fill="#a8adb7" font-size="12">in the KRW balance sheet</text>
+  <text x="588" y="220" fill="#5eead4" font-size="14">Derivative gain offsets FX move</text>
+  <text x="588" y="247" fill="#a8adb7" font-size="12">with different cash-flow timing</text>
+  <rect x="42" y="300" width="208" height="100" rx="8" fill="#15171c"/><rect x="266" y="300" width="282" height="100" rx="8" fill="#15171c"/><rect x="564" y="300" width="294" height="100" rx="8" fill="#15171c"/>
+  <text x="64" y="336" fill="#7aa2f7" font-size="14" font-weight="700">KRW -10%</text>
+  <text x="64" y="361" fill="#a8adb7" font-size="12">USD rises in KRW</text>
+  <text x="290" y="336" fill="#5eead4" font-size="14">Translation gain</text>
+  <text x="290" y="363" fill="#a8adb7" font-size="12">but exposure remains open</text>
+  <text x="588" y="336" fill="#f5b13d" font-size="14">Derivative loss offsets FX move</text>
+  <text x="588" y="363" fill="#a8adb7" font-size="12">collateral may be due before maturity</text>
+  <rect x="42" y="416" width="208" height="100" rx="8" fill="#15171c"/><rect x="266" y="416" width="282" height="100" rx="8" fill="#15171c"/><rect x="564" y="416" width="294" height="100" rx="8" fill="#15171c"/>
+  <text x="64" y="452" fill="#ff4d87" font-size="14" font-weight="700">SPREAD +100bp</text>
+  <text x="64" y="477" fill="#a8adb7" font-size="12">bond price falls</text>
+  <text x="290" y="452" fill="#ff4d87" font-size="14">Credit or duration loss</text>
+  <text x="588" y="452" fill="#ff4d87" font-size="14">Same loss: FX hedge does not help</text>
+  <text x="42" y="558" fill="#777d89" font-size="11">Accounting and prudential effects depend on classification and contract terms.</text>
+</svg>
+<figcaption>A hedge offsets an FX move for a specified notional and maturity. It can create a cash flow opposite to the accounting move on the asset. It does not cover credit or duration losses.</figcaption>
+</figure>
+
+This timing gap is a liquidity risk. It matters more when many contracts roll together, counterparties demand more margin or policy surrenders rise. An insurer can be solvent on an economic-value basis and still be short of assets that can be mobilised immediately.
+
+The currency hedge does not protect against a bond-price decline caused by higher long rates or wider credit spreads. If the issuer is downgraded or defaults, the forward remains a separate contract. An asset loss and a payment obligation to the swap counterparty can coexist.
+
+## What K-ICS measures
+
+South Korea has applied **IFRS 17** and the **Korean Insurance Capital Standard**, or K-ICS, since 2023. [IFRS 17](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/) values insurance obligations using discounted future cash flows and a contractual service margin. K-ICS values assets and liabilities on an economic basis and requires capital for market, credit, insurance and operational risks.
+
+A currency hedge reduces the net open position and can lower the currency-risk charge. [According to the KIF](https://www.kif.re.kr/kif4/eng/publication/pub_detail?cno=366371&mid=220&nid=888&sid=887&vid=7775), K-ICS also incorporates the rollover risk from short-term hedges into required capital. Derivatives still create counterparty exposure and cash flows that must be managed. That prudential recognition does not publish the contract calendar or turn a short hedge into ten years of guaranteed liquidity.
+
+At **31 March 2026**, the [Financial Supervisory Service](https://eiec.kdi.re.kr/policy/materialView.do?num=282919) reported a **216.1% K-ICS ratio for the sector after transitional measures**, compared with 202.6% before them. Available capital was well above the requirement calculated under the published metric at that date. The ratio is not a general certificate of invulnerability.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="krfx-en-capital-title krfx-en-capital-desc" style="width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="krfx-en-capital-title">K-ICS and separate risk dimensions</title>
+  <desc id="krfx-en-capital-desc">The solvency ratio is separated from carry, collateral and roll risk.</desc>
+  <rect width="900" height="600" rx="12" fill="#0c0d10"/>
+
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">A capital ratio does not measure all liquidity risk</text>
+  <text x="42" y="77" fill="#a8adb7" font-size="14">Korean insurers, statistical date: 31 March 2026.</text>
+  <rect x="42" y="112" width="816" height="122" rx="12" fill="#152420" stroke="#27695f"/>
+  <text x="68" y="151" fill="#5eead4" font-size="15" font-weight="700">SECTOR K-ICS AFTER TRANSITIONAL MEASURES</text>
+  <text x="68" y="205" fill="#f5f6f8" font-size="44" font-weight="700">216.1%</text>
+  <text x="270" y="198" fill="#a8adb7" font-size="13">sector aggregate, not every insurer’s individual position</text>
+  <text x="270" y="219" fill="#777d89" font-size="12">Source: Financial Supervisory Service</text>
+  <rect x="42" y="270" width="190" height="180" rx="10" fill="#15171c" stroke="#5eead4"/>
+  <text x="64" y="306" fill="#5eead4" font-size="15" font-weight="700">CAPITAL</text>
+  <text x="64" y="340" fill="#d6d9df" font-size="13"><tspan x="64" dy="0">Absorbs losses</tspan><tspan x="64" dy="21">under K-ICS</tspan></text>
+  <text x="64" y="408" fill="#777d89" font-size="11">prudential stock</text>
+  <rect x="250" y="270" width="190" height="180" rx="10" fill="#15171c" stroke="#f5b13d"/>
+  <text x="272" y="306" fill="#f5b13d" font-size="15" font-weight="700">CARRY</text>
+  <text x="272" y="340" fill="#d6d9df" font-size="13"><tspan x="272" dy="0">Reduces investment</tspan><tspan x="272" dy="21">income</tspan></text>
+  <text x="272" y="408" fill="#777d89" font-size="11">recurring flow</text>
+  <rect x="458" y="270" width="190" height="180" rx="10" fill="#15171c" stroke="#7aa2f7"/>
+  <text x="480" y="306" fill="#7aa2f7" font-size="15" font-weight="700">COLLATERAL</text>
+  <text x="480" y="340" fill="#d6d9df" font-size="13"><tspan x="480" dy="0">May be required</tspan><tspan x="480" dy="21">before maturity</tspan></text>
+  <text x="480" y="408" fill="#777d89" font-size="11">cash need</text>
+  <rect x="666" y="270" width="192" height="180" rx="10" fill="#15171c" stroke="#ff4d87"/>
+  <text x="688" y="306" fill="#ff4d87" font-size="15" font-weight="700">ROLL</text>
+  <text x="688" y="340" fill="#d6d9df" font-size="13"><tspan x="688" dy="0">Reprices the contract</tspan><tspan x="688" dy="21">at every maturity</tspan></text>
+  <text x="688" y="408" fill="#777d89" font-size="11">market-access risk</text>
+  <rect x="42" y="482" width="816" height="58" rx="8" fill="#251723" stroke="#793664"/>
+  <text x="450" y="518" text-anchor="middle" fill="#ff9abc" font-size="14">Strong solvency and liquidity risk can coexist.</text>
+  <text x="42" y="574" fill="#777d89" font-size="11">The published ratio includes transitional measures. It is not a forecast.</text>
+</svg>
+<figcaption>The sector K-ICS ratio of 216.1% at 31 March 2026 indicates a prudential buffer above the published minimum after transitional measures. It does not by itself reveal counterparty concentration, margin calls or the roll calendar.</figcaption>
+</figure>
+
+The ratio is a sector aggregate. Individual firms can differ materially. Transitional measures phase in parts of the new prudential architecture. The metric compares a capital stock with calibrated risks. It does not publish the exact swap maturity wall, counterparty concentration or cash margin that an intraday shock might create.
+
+The publications reviewed here do not provide, in one consolidated public series, every input needed for a full sector liquidity stress test of the hedge book.
+
+## What hedging does well
+
+Hedging first addresses a real mismatch between dollar assets and won liabilities.
+
+An open dollar position would make insurers’ capital much more sensitive to the won. A rapid Korean appreciation would cut the KRW value of foreign assets against domestic liabilities. A high hedge ratio stabilises that relationship, supports K-ICS management and makes future cash flows more predictable.
+
+The public data examined here do not show a crisis already under way. The K-ICS ratio remained high at 31 March 2026. Foreign-currency securities in insurers’ proprietary accounts declined by only USD 0.84bn in the Bank of Korea series during the second quarter. The sector data do not, however, reveal each insurer’s capacity to absorb a collateral shock or a concentration of contract renewals.
+
+Hedging can preserve an economic advantage too. If a foreign bond offers sufficient credit spread or term premium, the return after hedging can exceed that of a domestic alternative. Saying “buy at 4.5%, lose 2% on the hedge” ignores differences in quality, duration, capital treatment and diversification.
+
+That protection remains useful, but it depends on deep derivative markets, willing counterparties and liquidity able to bridge timing gaps.
+
+## Three stress paths
+
+### Carry stays high for longer
+
+Hedges roll without disruption, but the rate gap remains unfavourable and basis stays costly. The sector need not suffer a sudden loss. Net investment income is gradually compressed, affecting profitability, credited rates and the pricing of new business.
+
+### Basis dislocates at the roll
+
+Banks conserve balance sheet or dollar demand surges. The next swap clears far from its usual relationship. The insurer must accept a higher cost, reduce the hedge or sell part of the asset. Currency risk can reappear precisely when the market is least liquid.
+
+### The shock comes from the asset or liability side
+
+Credit spreads widen, an issuer is downgraded or policy surrenders rise. The FX hedge does not offset the loss. It may require collateral in the opposite direction. The chain becomes: asset loss, cash need, asset sale or derivative close-out, then possible pressure on capital.
+
+These are scenarios, not forecasts. They describe mechanisms that public data allow outsiders to test only partially.
+
+## The missing calendar
+
+The three strongest figures are known: **KRW 172.5tn** of foreign-currency-denominated assets at end-2025 in the KIF analysis, **USD 73.76bn** of foreign-currency securities in proprietary accounts at 30 June 2026 in the Bank of Korea series, and a **216.1%** K-ICS ratio at 31 March 2026 after transitional measures in the FSS release.
+
+They measure scale, one narrower portfolio and prudential capital. They do not reveal the hedge calendar.
+
+A robust sector stress test would need, by insurer and in aggregate, asset maturities, forward and swap maturities, notionals by currency, collateral agreements, margin thresholds, counterparty concentrations and undrawn liquidity. It would also need to separate economic hedges from hedge-accounting relationships.
+
+I found no public release that assembles all those elements into a complete and current sector table. That does not imply supervisors lack the data. It limits what an external observer can prove.
+
+## Conclusion
+
+**Established.** Korean insurers own a large foreign-currency asset base. Hedging reduces direct exchange-rate sensitivity, while its carry depends on the rate gap, basis and market terms. A short derivative against a long asset has to be rolled. The sector K-ICS ratio stood at 216.1% at 31 March 2026 after transitional measures.
+
+**Consistent with the evidence.** Persistently high carry can erode profitability without triggering an immediate crisis. A basis dislocation or collateral shock could turn an economically effective hedge into an urgent liquidity need.
+
+**Not publicly known.** The exact distribution of hedge maturities, bank counterparty concentration and cash demand under a combined won, spread, rate and surrender shock.
+
+South Korea has not abolished currency risk. It has put it into contracts. The protection lasts as long as each contract can be renewed at an absorbable price and settled with available liquidity. The most important risk is not always the one left open. Sometimes it is the one coming due.
+
+## Main sources
+
+- [Korea Institute of Finance, “The Impact of Dollar Strength on the Insurance Industry and Policy Responses”, 22 August 2026](https://www.kif.re.kr/kif4/eng/publication/pub_detail?cno=366371&mid=220&nid=888&sid=887&vid=7775). End-2025 data.
+- [Bank of Korea, foreign-currency securities investments by major institutional investors in the second quarter of 2026, 1 September 2026](https://www.bok.or.kr/portal/bbs/B0000502/view.do?depth=201265&menuNo=201265&nttId=11064319&programType=newsData&relate=Y). Data at 30 June 2026.
+- [Financial Supervisory Service, insurers’ K-ICS ratios for the first quarter of 2026, 19 June 2026](https://eiec.kdi.re.kr/policy/materialView.do?num=282919). KDI archive; data at 31 March 2026.
+- [IMF, Global Financial Stability Report chapter on Asian institutional investors](https://www.elibrary.imf.org/display/book/9781498324021/ch003.xml), 2019.
+- [Bank for International Settlements, Dollar debt in FX swaps and forwards](https://www.bis.org/publications/dollar-debt-fx-swaps-and-forwards-huge-missing-and-growing), 2022.
+- [IFRS Foundation, IFRS 17 Insurance Contracts](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/).
+- [Bank of Korea, policy-rate history](https://www.bok.or.kr/eng/singl/baseRate/progress.do?dataSeCd=01&menuNo=400016).
+- [Federal Reserve, monetary policy and target rates](https://www.federalreserve.gov/monetarypolicy/openmarket.htm).
