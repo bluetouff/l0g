@@ -27,8 +27,8 @@ export interface PrimarySourceInstitution {
   related: PrimarySourceLink[];
 }
 
-export const primarySourcesUpdated = '31 août 2026';
-export const primarySourcesUpdatedIso = '2026-08-31';
+export const primarySourcesUpdated = '5 septembre 2026';
+export const primarySourcesUpdatedIso = '2026-09-05';
 
 export const primaryInstitutions: PrimarySourceInstitution[] = [
   {
@@ -788,6 +788,61 @@ export const primaryInstitutions: PrimarySourceInstitution[] = [
       { label: 'Politique US', href: '/sujet/politique-us/' },
       { label: 'CLARITY Act', href: '/posts/clarity-act-regulation-crypto-etats-unis/' },
       { label: 'GENIUS Act', href: '/guides/stablecoins-genius-act/' },
+    ],
+  },
+  {
+    slug: 'usgs-blm-gsa',
+    name: 'USGS, BLM & GSA',
+    shortName: 'USGS / BLM',
+    category: 'ressources minérales & actifs fédéraux',
+    accent: 'var(--color-topic-blue)',
+    url: 'https://www.usgs.gov/centers/national-minerals-information-center',
+    description:
+      "Sources fédérales américaines sur les minerais, la production d'hélium et les actifs de l'ancien Federal Helium System.",
+    why:
+      "L'USGS fournit les conventions et estimations de production. Le BLM et la GSA documentent séparément les actifs, le stockage et la cession du système fédéral d'hélium.",
+    readFor: [
+      "Vérifier les volumes annuels d'hélium par pays et le total mondial estimé.",
+      "Distinguer production gazeuse, réserves géologiques, stocks et capacité réellement livrable.",
+      "Retrouver les actifs et la chronologie officielle de la cession du Federal Helium System.",
+    ],
+    datasets: [
+      {
+        name: 'Mineral Commodity Summaries, Helium',
+        role: "Estimations annuelles de production, réserves et contexte du marché de l'hélium.",
+        cadence: 'Annuelle',
+        delay: "Publication l'année suivant la période estimée",
+        url: 'https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-helium.pdf',
+      },
+      {
+        name: 'Federal Helium System sale',
+        role: 'Annonce officielle du BLM sur la cession du système fédéral à Messer.',
+        cadence: 'Événementielle',
+        delay: 'Publication officielle',
+        url: 'https://www.blm.gov/press-release/blm-completes-sale-federal-helium-system',
+      },
+      {
+        name: 'Federal Helium System assets',
+        role: 'Description GSA du réservoir souterrain, de l’usine, du pipeline et des autres actifs proposés à la vente.',
+        cadence: 'Événementielle',
+        delay: 'Publication officielle',
+        url: 'https://www.gsa.gov/about-gsa/newsroom/former-gsa-regional-news-archive/region-7-newsroom/greater-southwest-feature-stories-and-news-release/gsa-announces-sale-of-federal-helium-system-assets-06222023',
+      },
+    ],
+    limits: [
+      "Les estimations USGS sont arrondies et peuvent être révisées ; un résidu calculé sur le total mondial n'est pas une somme exacte de pays.",
+      "Les documents de cession décrivent des actifs et une transaction, pas l'inventaire commercial disponible à une date ultérieure.",
+      "Une ressource géologique, un stock en réservoir et un volume livrable au client ne sont pas interchangeables.",
+    ],
+    verification: [
+      "Conserver l'année estimée, l'année de publication, l'unité et l'état physique utilisés par l'USGS.",
+      "Séparer production, capacité, exportations, réserves et stocks dans toute comparaison.",
+      "Citer le document BLM ou GSA exact pour la transaction ou l'actif concerné.",
+    ],
+    related: [
+      { label: 'Enquête hélium', href: '/posts/helium-geopolitique-ballon-anniversaire/' },
+      { label: 'Géopolitique et énergie', href: '/sujet/geopolitique-energie/' },
+      { label: 'Sources primaires', href: '/sources/' },
     ],
   },
   {

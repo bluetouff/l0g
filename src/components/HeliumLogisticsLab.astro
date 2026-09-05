@@ -1,0 +1,67 @@
+---
+import {defaults, simulateHelium} from '../lib/helium-logistics.mjs';
+interface Props {lang?:'fr'|'en'}
+type ParamKey=keyof typeof defaults;
+type ResultKey='delivered'|'stockout'|'unserved';
+type Control=readonly [ParamKey,string,string,number,number,number];
+const {lang='fr'}=Astro.props,fr=lang==='fr',id='helium-lab-'+lang;
+const t=fr?{
+ title:'Les conteneurs reviennent trop tard',dek:'Une flotte fictive couvre toute la demande avec un aller-retour de 30 jours. Que se passe-t-il si le cycle ralentit ? Horizon : 90 jours. Aucun chiffre ne décrit les stocks réels d’un pays ou d’un client.',
+ presets:['Cycle normal','15 jours de plus','Ajouter des cuves','La source manque'],
+ controls:[['delay','Délai ajouté à chaque aller-retour','jours',0,90,5],['extraFleet','Conteneurs supplémentaires','% de la flotte initiale',0,100,5],['origin','Capacité disponible à la source','% de la demande',0,100,5],['buffer','Stock utilisable au départ','jours de demande',0,60,1]],
+ metrics:['Livraison quotidienne','Épuisement théorique du stock','Besoin non servi sur 90 jours'],units:['% de la demande','jours après le début','jours de demande cumulés'],
+ none:'Jamais',reset:'Réinitialiser',day:'Jour',stock:'Stock restant',unserved:'Besoin non servi cumulé',
+ equation:'Débit de transport = (1 + cuves supplémentaires / 100) × 30 / (30 + délai). Livraison = minimum entre ce débit, la source et la demande.',
+ note:'Calcul en flux moyen constant dès le jour 0. Demande et chargement utile constants ; cuves ajoutées disponibles immédiatement. Pas de livraisons par lots, pertes thermiques, stocks en transit, rationnement par client ou rétablissement progressif. Le délai porte sur le cycle complet, pas sur la durée de conservation du liquide.',
+ nojs:'JavaScript désactivé : le scénario initial reste lisible. Les réglages nécessitent JavaScript.',
+ unitnote:'Une unité du tableau représente la quantité consommée en une journée normale. Le besoin non servi est un cumul théorique, pas un nombre de jours d’arrêt.'
+}:{
+ title:'The containers come back too late',dek:'An illustrative fleet meets all demand with a 30-day round trip. What happens when the cycle slows? Horizon: 90 days. These are not actual stocks held by a country or customer.',
+ presets:['Normal cycle','15 extra days','Add containers','The source runs short'],
+ controls:[['delay','Delay added to every round trip','days',0,90,5],['extraFleet','Additional containers','% of the original fleet',0,100,5],['origin','Available capacity at the source','% of demand',0,100,5],['buffer','Usable opening stock','days of demand',0,60,1]],
+ metrics:['Daily deliveries','Theoretical stock exhaustion','Unserved demand over 90 days'],units:['% of demand','days after the start','cumulative demand-days'],
+ none:'Never',reset:'Reset',day:'Day',stock:'Stock remaining',unserved:'Cumulative unserved demand',
+ equation:'Transport flow = (1 + extra containers / 100) × 30 / (30 + delay). Deliveries = minimum of transport flow, source capacity and demand.',
+ note:'Constant average flows apply from day 0. Demand and useful payload stay fixed; additional containers are available immediately. No batch arrivals, thermal losses, in-transit inventory, customer allocation or gradual recovery. The delay affects the full round trip, not the liquid holding time.',
+ nojs:'JavaScript is disabled: the initial case remains readable. Enable JavaScript to change the assumptions.',
+ unitnote:'One table unit equals the amount consumed on a normal day. Unserved demand is a theoretical cumulative quantity, not a count of shutdown days.'
+};
+const controls=t.controls as unknown as Control[],metricKeys:ResultKey[]=['delivered','stockout','unserved'];
+const r=simulateHelium(),fmt=(v:number)=>new Intl.NumberFormat(fr?'fr-FR':'en-GB',{maximumFractionDigits:1}).format(v);
+---
+<section class="hl" data-helium-lab data-lang={lang} aria-labelledby={id}>
+ <p class="hl-eye">l0g / {fr?'LABORATOIRE LOGISTIQUE':'LOGISTICS LAB'}</p><h3 id={id}>{t.title}</h3><p class="hl-dek">{t.dek}</p>
+ <div class="hl-presets" aria-label={fr?'Scénarios fictifs':'Illustrative scenarios'}>{t.presets.map((label,i)=><button type="button" data-preset={i} aria-pressed={i===1?'true':'false'} disabled>{label}</button>)}</div>
+ <form><fieldset disabled><legend class="hl-sr">{fr?'Hypothèses':'Assumptions'}</legend><div class="hl-controls">{controls.map(([name,label,unit,min,max,step])=><label><span>{label}</span><span class="hl-value"><output data-input-output={name}>{fmt(defaults[name])}</output> <small>{unit}</small></span><input name={name} type="range" min={min} max={max} step={step} value={defaults[name]}/></label>)}</div><button type="reset" class="hl-reset">{t.reset}</button></fieldset></form>
+ <noscript><p class="hl-note">{t.nojs}</p></noscript>
+ <div class="hl-metrics" aria-live="polite" aria-atomic="true">{metricKeys.map((key,i)=><div><p>{t.metrics[i]}</p><strong data-result={key}>{r[key]===null?t.none:fmt(r[key])}</strong><span>{t.units[i]}</span></div>)}</div>
+ <p class="hl-unit">{t.unitnote}</p>
+ <table><caption class="hl-sr">{fr?'Trajectoire du stock et du besoin non servi, en jours de demande':'Stock and unserved demand, measured in demand-days'}</caption><thead><tr><th scope="col">{t.day}</th><th scope="col">{t.stock}</th><th scope="col">{t.unserved}</th></tr></thead><tbody>{r.schedule.map(row=><tr><th scope="row">{row.day}</th><td>{fmt(row.stock)}</td><td>{fmt(row.unserved)}</td></tr>)}</tbody></table>
+ <details><summary>{fr?'Calcul et limites':'Calculation and limits'}</summary><p class="hl-equation">{t.equation}</p><p class="hl-note">{t.note}</p></details>
+</section>
+<script>
+import {defaults,cases,simulateHelium} from '../lib/helium-logistics.mjs';
+type ParamKey=keyof typeof defaults;
+type ResultKey='delivered'|'stockout'|'unserved';
+const resultKeys:ResultKey[]=['delivered','stockout','unserved'];
+const isResultKey=(value:string|undefined):value is ResultKey=>resultKeys.includes(value as ResultKey);
+function initHeliumLabs(){document.querySelectorAll<HTMLElement>('[data-helium-lab]:not([data-ready])').forEach(root=>{
+ const fr=root.dataset.lang==='fr',nf=new Intl.NumberFormat(fr?'fr-FR':'en-GB',{maximumFractionDigits:1});
+ const fmt=(v:number|null)=>v===null?(fr?'Jamais':'Never'):nf.format(Math.abs(v)<1e-10?0:v);
+ const form=root.querySelector('form')!,inputs=[...form.querySelectorAll<HTMLInputElement>('input')],buttons=[...root.querySelectorAll<HTMLButtonElement>('[data-preset]')];
+ function update(){const params=Object.fromEntries(inputs.map(i=>[i.name,Number(i.value)])) as Record<ParamKey,number>,r=simulateHelium(params);
+  inputs.forEach(i=>{root.querySelector(`[data-input-output="${i.name}"]`)!.textContent=fmt(Number(i.value));});
+  root.querySelectorAll<HTMLElement>('[data-result]').forEach(el=>{const key=el.dataset.result;if(isResultKey(key))el.textContent=fmt(r[key]);});
+  root.querySelector('tbody')!.replaceChildren(...r.schedule.map(row=>{const tr=document.createElement('tr');[row.day,row.stock,row.unserved].forEach((v,i)=>{const el=document.createElement(i===0?'th':'td');if(i===0)el.setAttribute('scope','row');el.textContent=fmt(v);tr.append(el)});return tr}));
+  buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(inputs.every(x=>{const key=x.name as ParamKey;return params[key]===cases[i][key]}))));
+ }
+ function set(p:Record<string,number>){inputs.forEach(i=>{i.value=String(p[i.name]);});update();}
+ form.addEventListener('input',update);form.addEventListener('reset',e=>{e.preventDefault();set(defaults)});
+ buttons.forEach((b,i)=>{b.disabled=false;b.addEventListener('click',()=>set(cases[i]));});
+ form.querySelector('fieldset')!.disabled=false;update();root.dataset.ready='true';
+});}
+initHeliumLabs();document.addEventListener('astro:page-load',initHeliumLabs);
+</script>
+<style>
+.hl{margin:3rem 0;padding:28px;border:1px solid #3b4658;border-radius:16px;background:#14171d;color:#f5f6f8;font:16px/1.6 system-ui,sans-serif;box-sizing:border-box}.hl *{box-sizing:border-box}.hl-eye{font:11px/1.6 ui-monospace,monospace;letter-spacing:.13em;color:#5eead4;margin:0 0 12px}.hl h3{font-size:30px;line-height:1.2;letter-spacing:-.035em;margin:0 0 16px}.hl-dek{color:#b4bbc7;font-size:15px;margin:0 0 24px}.hl-presets{display:flex;gap:8px;flex-wrap:wrap}.hl button{font:inherit;line-height:1.3;font-size:13px;background:#202734;border:1px solid #465164;color:#f5f6f8;border-radius:8px;padding:11px 13px;cursor:pointer}.hl button:hover{border-color:#5eead4}.hl button[aria-pressed=true]{border-color:#5eead4;background:#143d39;color:#bdf9ef}.hl button:disabled{opacity:.6;cursor:default}.hl :focus-visible{outline:3px solid #9dbbff;outline-offset:4px}.hl fieldset{border:0;margin:25px 0;padding:0}.hl-controls{display:grid;grid-template-columns:1fr 1fr;gap:25px 24px}.hl label{display:flex;flex-direction:column;font-size:14px;gap:6px}.hl-value{font:600 25px/1.5 ui-monospace,monospace;color:#5eead4}.hl-value small{font:12px/1.5 system-ui,sans-serif;color:#b4bbc7}.hl input{min-height:32px;accent-color:#5eead4;width:100%;margin:0;cursor:pointer}.hl-reset{margin-top:18px;background:transparent!important;padding:8px 10px!important}.hl-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.hl-metrics>div{min-width:0;border:1px solid #343b49;background:#0c0d10;border-radius:10px;padding:16px 12px}.hl-metrics p{margin:0 0 10px;color:#b4bbc7;font-size:12px;line-height:1.45;min-height:36px}.hl-metrics strong{display:block;color:#f5f6f8;font:600 32px/1.5 ui-monospace,monospace;overflow-wrap:anywhere}.hl-metrics>div:last-child strong{color:#f5b13d}.hl-metrics span{font-size:11px;line-height:1.4;display:block;color:#b4bbc7}.hl-unit,.hl-note{font-size:12px;color:#b4bbc7;line-height:1.65}.hl table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px;line-height:1.5;margin:20px 0}.hl td,.hl th{padding:9px 6px;text-align:right;border-bottom:1px solid #343b49;overflow-wrap:anywhere;width:40%!important}.hl th:first-child{width:20%!important;text-align:left}.hl thead th{background:transparent;color:#b4bbc7;font-weight:500}.hl td{font-family:ui-monospace,monospace}.hl details{border-top:1px solid #343b49;padding-top:15px}.hl summary{font-size:13px;color:#c7cfdb;cursor:pointer}.hl-equation{font-size:13px;color:#5eead4}.hl-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;clip:rect(0,0,0,0);overflow:hidden;white-space:nowrap;border:0}@media(max-width:600px){.hl{padding:20px 14px}.hl h3{font-size:25px}.hl-controls{grid-template-columns:1fr;gap:18px}.hl-metrics{grid-template-columns:1fr}.hl-metrics>div{display:grid;grid-template-columns:1fr auto;column-gap:12px;align-items:center}.hl-metrics p{min-height:0;margin:0}.hl-metrics span{grid-column:1/-1}.hl-metrics strong{font-size:30px}.hl table{font-size:12px}}
+</style>

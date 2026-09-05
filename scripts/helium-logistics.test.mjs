@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {simulateHelium as sim,cases} from '../src/lib/helium-logistics.mjs';
+const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
+test('A steady balanced network preserves the entire buffer',()=>{const r=sim(cases[0]);near(r.delivered,100);assert.equal(r.stockout,null);near(r.remaining,10);near(r.unserved,0)});
+test('A half-longer round trip reduces flow by one third, not half',()=>{const r=sim();near(r.delivered,200/3);near(r.stockout,30);near(r.unserved,20)});
+test('More equipment restores transport but cannot restore missing production',()=>{near(sim(cases[2]).delivered,100);near(sim(cases[3]).delivered,70);near(sim(cases[3]).stockout,100/3)});
+test('Serial capacity constraints bind at the minimum, not their product',()=>{near(sim({origin:80}).delivered,200/3)});
+test('Every point conserves stock plus deliveries versus served demand',()=>{for(let delay=0;delay<=90;delay+=10)for(let origin=0;origin<=100;origin+=10)for(const buffer of [0,10,60]){const r=sim({delay,origin,buffer});for(const row of r.schedule){near(buffer+row.day*r.delivered/100-(row.day-row.unserved),row.stock);assert.ok(row.stock>=0&&row.unserved>=0)}}});
+test('Full upstream outage consumes buffer exactly; zero buffer exhausts immediately',()=>{near(sim({origin:0}).stockout,10);near(sim({origin:0}).unserved,80);near(sim({buffer:0}).stockout,0)});
+test('Inputs reject nonfinite, negative and out-of-domain values',()=>{for(const v of [-1,101,NaN,Infinity,'70'])assert.throws(()=>sim({origin:v}),RangeError);assert.throws(()=>sim({delay:91}),RangeError)});
