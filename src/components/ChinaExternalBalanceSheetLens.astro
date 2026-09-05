@@ -1,0 +1,232 @@
+---
+import {
+  CHINA_EXTERNAL_BALANCE_SHEET_LENS_MODEL_VERSION,
+  CHINA_EXTERNAL_COMPARISON_PRESETS,
+  CHINA_EXTERNAL_LAYERS,
+  compareChinaExternalLayers,
+} from '../lib/china-external-balance-sheet-lens-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `china-external-lens-${lang}-${mode}`;
+const initial = compareChinaExternalLayers('iip-assets-2026q1', 'iip-reserves-2026q1');
+const format = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 1 });
+const copy = isFr ? {
+  eyebrow: 'LENTILLE DE PÉRIMÈTRE',
+  title: 'Peut-on additionner ces deux chiffres ?',
+  intro: 'Choisissez deux statistiques. L’outil vérifie leur unité, leur date, leur famille et les chevauchements connus avant d’autoriser une somme.',
+  badge: 'calcul local · zéro tracker',
+  presets: 'Cas fréquents',
+  left: 'Premier montant',
+  right: 'Second montant',
+  result: 'Verdict',
+  date: 'Date',
+  perimeter: 'Périmètre',
+  source: 'Source',
+  calculation: 'Calcul autorisé',
+  noCalculation: 'Aucun total calculé',
+  sum: 'Somme partielle',
+  net: 'Solde calculé',
+  official: 'Solde officiel',
+  rounding: 'Écart d’arrondi',
+  method: 'Méthode et limites',
+  methodText: 'Le moteur applique des relations documentées entre les séries de ce dossier. Il ne convertit pas les devises, n’estime pas les doubles comptes inconnus et ne remplace pas une table de consolidation institutionnelle.',
+  unit: 'Unité',
+} : {
+  eyebrow: 'PERIMETER LENS',
+  title: 'Can these two figures be added?',
+  intro: 'Select two statistics. The tool checks unit, date, family and known overlap before allowing any sum.',
+  badge: 'local calculation · zero tracker',
+  presets: 'Common cases',
+  left: 'First figure',
+  right: 'Second figure',
+  result: 'Verdict',
+  date: 'Date',
+  perimeter: 'Scope',
+  source: 'Source',
+  calculation: 'Permitted calculation',
+  noCalculation: 'No total calculated',
+  sum: 'Partial sum',
+  net: 'Calculated balance',
+  official: 'Official balance',
+  rounding: 'Rounding gap',
+  method: 'Method and limits',
+  methodText: 'The engine applies documented relationships between the series in this investigation. It does not convert currencies, estimate unknown overlap or replace an institutional consolidation table.',
+  unit: 'Unit',
+};
+const valueLabel = (value: number, unit: string) => `${format.format(value)} ${unit === 'USD bn' ? (isFr ? 'Md$' : '$bn') : (isFr ? 'billions de RMB' : 'RMB tn')}`;
+---
+
+<section class:list={['cn-lens', mode === 'full' && 'cn-lens--full']} id={id} data-china-external-lens data-lang={lang}>
+  <header class="cn-head">
+    <div>
+      <p class="cn-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="cn-badge">{copy.badge}</span>
+  </header>
+
+  <div class="cn-presets" aria-label={copy.presets}>
+    {CHINA_EXTERNAL_COMPARISON_PRESETS.map((preset) => (
+      <button type="button" data-left={preset.left} data-right={preset.right}>
+        {isFr ? preset.labelFr : preset.labelEn}
+      </button>
+    ))}
+  </div>
+
+  <form class="cn-controls">
+    <label>
+      <span>{copy.left}</span>
+      <select name="left">
+        {CHINA_EXTERNAL_LAYERS.map((layer) => (
+          <option value={layer.id} selected={layer.id === initial.left.id}>{isFr ? layer.labelFr : layer.labelEn}</option>
+        ))}
+      </select>
+    </label>
+    <label>
+      <span>{copy.right}</span>
+      <select name="right">
+        {CHINA_EXTERNAL_LAYERS.map((layer) => (
+          <option value={layer.id} selected={layer.id === initial.right.id}>{isFr ? layer.labelFr : layer.labelEn}</option>
+        ))}
+      </select>
+    </label>
+  </form>
+
+  <div class="cn-grid">
+    <article class="cn-card" data-card="left">
+      <p class="cn-card-label">{copy.left}</p>
+      <h3 data-field="left-label">{isFr ? initial.left.labelFr : initial.left.labelEn}</h3>
+      <strong data-field="left-value">{valueLabel(initial.left.value, initial.left.unit)}</strong>
+      <dl>
+        <div><dt>{copy.date}</dt><dd data-field="left-date">{initial.left.date}</dd></div>
+        <div><dt>{copy.unit}</dt><dd data-field="left-unit">{initial.left.unit}</dd></div>
+        <div><dt>{copy.source}</dt><dd data-field="left-source">{isFr ? initial.left.sourceFr : initial.left.sourceEn}</dd></div>
+      </dl>
+      <p data-field="left-perimeter">{isFr ? initial.left.perimeterFr : initial.left.perimeterEn}</p>
+    </article>
+
+    <article class="cn-card" data-card="right">
+      <p class="cn-card-label">{copy.right}</p>
+      <h3 data-field="right-label">{isFr ? initial.right.labelFr : initial.right.labelEn}</h3>
+      <strong data-field="right-value">{valueLabel(initial.right.value, initial.right.unit)}</strong>
+      <dl>
+        <div><dt>{copy.date}</dt><dd data-field="right-date">{initial.right.date}</dd></div>
+        <div><dt>{copy.unit}</dt><dd data-field="right-unit">{initial.right.unit}</dd></div>
+        <div><dt>{copy.source}</dt><dd data-field="right-source">{isFr ? initial.right.sourceFr : initial.right.sourceEn}</dd></div>
+      </dl>
+      <p data-field="right-perimeter">{isFr ? initial.right.perimeterFr : initial.right.perimeterEn}</p>
+    </article>
+  </div>
+
+  <section class="cn-verdict" data-relation={initial.relation} aria-live="polite">
+    <p class="cn-card-label">{copy.result}</p>
+    <h3 data-field="verdict-title">{isFr ? initial.titleFr : initial.titleEn}</h3>
+    <p data-field="verdict-explanation">{isFr ? initial.explanationFr : initial.explanationEn}</p>
+    <div class="cn-calculation" data-field="calculation" hidden={!initial.canAdd && !initial.canNet}>
+      <span data-field="calculation-label">{initial.canAdd ? copy.sum : copy.net}</span>
+      <strong data-field="calculation-value">{initial.calculatedValue == null ? '' : valueLabel(initial.calculatedValue, initial.left.unit)}</strong>
+      <small data-field="official-row" hidden={initial.officialReference == null}>
+        {copy.official}: <b data-field="official-value">{initial.officialReference == null ? '' : valueLabel(initial.officialReference, initial.left.unit)}</b>
+        · {copy.rounding}: <b data-field="rounding-value">{initial.roundingGap == null ? '' : valueLabel(initial.roundingGap, initial.left.unit)}</b>
+      </small>
+    </div>
+    <p class="cn-no-calculation" data-field="no-calculation" hidden={initial.canAdd || initial.canNet}>{copy.noCalculation}</p>
+  </section>
+
+  <details>
+    <summary>{copy.method}</summary>
+    <p>{copy.methodText}</p>
+    <code>v{CHINA_EXTERNAL_BALANCE_SHEET_LENS_MODEL_VERSION}</code>
+  </details>
+</section>
+
+<script>
+  import {
+    CHINA_EXTERNAL_LAYERS,
+    compareChinaExternalLayers,
+  } from '../lib/china-external-balance-sheet-lens-model.ts';
+
+  const initialiseChinaExternalLens = () => {
+    document.querySelectorAll<HTMLElement>('[data-china-external-lens]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const form = root.querySelector<HTMLFormElement>('form');
+      const leftSelect = form?.elements.namedItem('left') as HTMLSelectElement | null;
+      const rightSelect = form?.elements.namedItem('right') as HTMLSelectElement | null;
+      if (!form || !leftSelect || !rightSelect) return;
+      const formatter = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
+      const valueLabel = (value: number, unit: string) => `${formatter.format(value)} ${unit === 'USD bn' ? (lang === 'fr' ? 'Md$' : '$bn') : (lang === 'fr' ? 'billions de RMB' : 'RMB tn')}`;
+      const text = (name: string, value: string) => {
+        const node = root.querySelector<HTMLElement>(`[data-field="${name}"]`);
+        if (node) node.textContent = value;
+      };
+      const copy = lang === 'fr'
+        ? { sum: 'Somme partielle', net: 'Solde calculé', official: 'Solde officiel', rounding: 'Écart d’arrondi' }
+        : { sum: 'Partial sum', net: 'Calculated balance', official: 'Official balance', rounding: 'Rounding gap' };
+      const renderLayer = (side: 'left' | 'right', layer: typeof CHINA_EXTERNAL_LAYERS[number]) => {
+        text(`${side}-label`, lang === 'fr' ? layer.labelFr : layer.labelEn);
+        text(`${side}-value`, valueLabel(layer.value, layer.unit));
+        text(`${side}-date`, layer.date);
+        text(`${side}-unit`, layer.unit);
+        text(`${side}-source`, lang === 'fr' ? layer.sourceFr : layer.sourceEn);
+        text(`${side}-perimeter`, lang === 'fr' ? layer.perimeterFr : layer.perimeterEn);
+      };
+      const render = () => {
+        const result = compareChinaExternalLayers(leftSelect.value, rightSelect.value);
+        renderLayer('left', result.left);
+        renderLayer('right', result.right);
+        text('verdict-title', lang === 'fr' ? result.titleFr : result.titleEn);
+        text('verdict-explanation', lang === 'fr' ? result.explanationFr : result.explanationEn);
+        const verdict = root.querySelector<HTMLElement>('.cn-verdict');
+        if (verdict) verdict.dataset.relation = result.relation;
+        const calculation = root.querySelector<HTMLElement>('[data-field="calculation"]');
+        const noCalculation = root.querySelector<HTMLElement>('[data-field="no-calculation"]');
+        const showCalculation = result.canAdd || result.canNet;
+        if (calculation) calculation.hidden = !showCalculation;
+        if (noCalculation) noCalculation.hidden = showCalculation;
+        if (showCalculation && result.calculatedValue != null) {
+          text('calculation-label', result.canAdd ? copy.sum : copy.net);
+          text('calculation-value', valueLabel(result.calculatedValue, result.left.unit));
+        }
+        const officialRow = root.querySelector<HTMLElement>('[data-field="official-row"]');
+        if (officialRow) officialRow.hidden = result.officialReference == null;
+        if (result.officialReference != null) {
+          officialRow?.setAttribute('aria-label', `${copy.official} ${valueLabel(result.officialReference, result.left.unit)}, ${copy.rounding} ${valueLabel(result.roundingGap ?? 0, result.left.unit)}`);
+          text('official-value', valueLabel(result.officialReference, result.left.unit));
+          text('rounding-value', valueLabel(result.roundingGap ?? 0, result.left.unit));
+        }
+      };
+      form.addEventListener('change', render);
+      root.querySelectorAll<HTMLButtonElement>('[data-left][data-right]').forEach((button) => {
+        button.addEventListener('click', () => {
+          leftSelect.value = button.dataset.left ?? leftSelect.value;
+          rightSelect.value = button.dataset.right ?? rightSelect.value;
+          render();
+        });
+      });
+    });
+  };
+  document.addEventListener('astro:page-load', initialiseChinaExternalLens);
+  initialiseChinaExternalLens();
+</script>
+
+<style>
+  .cn-lens{--bg:#0c0d10;--panel:#15171c;--line:#2a2d35;--text:#f5f6f8;--muted:#a8adb7;--teal:#5eead4;--amber:#f5b13d;--pink:#ff4d87;background:var(--bg);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:clamp(18px,3vw,30px);margin:2rem 0;color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-shadow:0 22px 60px rgba(0,0,0,.18)}
+  .cn-head{display:flex;gap:24px;align-items:flex-start;justify-content:space-between;margin-bottom:20px}.cn-head h2{font-size:clamp(1.35rem,3vw,2rem);line-height:1.15;margin:.25rem 0 .6rem}.cn-head p{max-width:62ch;color:var(--muted);margin:0}.cn-eyebrow,.cn-card-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:800}.cn-badge{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:.42rem .65rem;color:var(--muted);font-size:.68rem}
+  .cn-presets{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}.cn-presets button{appearance:none;border:1px solid var(--line);background:#111319;color:var(--muted);border-radius:999px;padding:.5rem .72rem;font:inherit;font-size:.72rem;cursor:pointer}.cn-presets button:hover,.cn-presets button:focus-visible{color:var(--text);border-color:var(--teal);outline:none}
+  .cn-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}.cn-controls label{display:grid;min-width:0;gap:7px;color:var(--muted);font-size:.76rem}.cn-controls select{width:100%;max-width:100%;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:.72rem;font:inherit;font-size:.78rem}
+  .cn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.cn-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;min-width:0}.cn-card h3{font-size:1rem;line-height:1.35;margin:.4rem 0 .9rem}.cn-card>strong{display:block;font-size:clamp(1.35rem,3vw,2rem);color:var(--teal);margin-bottom:1rem}.cn-card dl{display:grid;gap:7px;margin:0 0 12px}.cn-card dl div{display:grid;grid-template-columns:82px 1fr;gap:8px;font-size:.72rem}.cn-card dt{color:var(--muted)}.cn-card dd{margin:0;color:var(--text);overflow-wrap:anywhere}.cn-card>p:last-child{color:var(--muted);font-size:.74rem;line-height:1.55;margin:.75rem 0 0}
+  .cn-verdict{margin-top:14px;border:1px solid var(--amber);background:#211d13;border-radius:10px;padding:18px}.cn-verdict[data-relation="disjoint_additive"],.cn-verdict[data-relation="nettable"]{border-color:var(--teal);background:#10201d}.cn-verdict[data-relation="component_overlap"],.cn-verdict[data-relation="subset_overlap"]{border-color:var(--pink);background:#21131c}.cn-verdict h3{margin:.35rem 0 .55rem;font-size:1.05rem}.cn-verdict>p{color:#d6d9df;line-height:1.55}.cn-calculation{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:4px}.cn-calculation span{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}.cn-calculation strong{font-size:1.6rem;color:var(--teal)}.cn-calculation small{color:var(--muted)}.cn-no-calculation{font-weight:800;color:var(--amber)!important}
+  .cn-lens details{margin-top:14px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.75rem}.cn-lens summary{cursor:pointer;color:var(--text);font-weight:700}.cn-lens code{display:inline-block;margin-top:8px;color:var(--teal)}
+  [hidden]{display:none!important}
+  @media(max-width:720px){.cn-head{display:block}.cn-badge{display:inline-block;margin-top:12px}.cn-controls,.cn-grid{grid-template-columns:1fr}.cn-card dl div{grid-template-columns:72px 1fr}}
+</style>

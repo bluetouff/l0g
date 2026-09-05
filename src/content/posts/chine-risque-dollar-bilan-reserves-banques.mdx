@@ -1,0 +1,482 @@
+---
+title: "Chine : le risque dollar se répartit entre plusieurs bilans"
+seoTitle: "Chine : réserves, banques et risque dollar | l0g"
+ogTitle: "Où se loge vraiment le risque dollar chinois"
+ogImage: "/illustrations/news/china-dollar-balance-sheets-v1.jpg"
+description: "La Chine affiche près de 12 000 Md$ d’actifs extérieurs. Réserves, banques, fonds souverain, assureurs et entreprises n’en portent ni les mêmes parts ni les mêmes risques."
+pubDate: 2026-09-05T10:30:00+02:00
+updatedDate: 2026-09-05T10:30:00+02:00
+tags: ["Chine", "Asie", "dollar", "réserves de change", "banques", "CIC", "assurance", "risque financier", "stabilité financière"]
+draft: false
+quickTake:
+  fact: "À fin mars 2026, la Chine affichait 11 975,7 Md$ d’actifs extérieurs, 7 969,6 Md$ de passifs et 4 006,0 Md$ d’actifs nets."
+  importance: "Ces actifs passent par des réserves, des banques, des entreprises et des véhicules publics distincts dont les engagements, la liquidité et les risques ne sont pas interchangeables."
+  uncertainty: "La composition monétaire et la duration des réserves, les positions dérivées et l’exposition étrangère propre aux assureurs ne sont pas publiées avec assez de détail pour un stress test consolidé."
+---
+
+import ChinaExternalBalanceSheetLens from '../../components/ChinaExternalBalanceSheetLens.astro';
+
+*À [fin mars 2026](https://www.safe.gov.cn/ningbo/2026/0701/2598.html), les résidents chinois possédaient **11 975,7 milliards de dollars d’actifs financiers extérieurs**. Ils devaient 7 969,6 milliards au reste du monde. Le solde officiel atteignait 4 006,0 milliards. Ces chiffres placent la Chine parmi les plus grands créanciers nets de la planète. Ils ne disent pourtant pas où se trouve le risque dollar. Pour le trouver, il faut ouvrir plusieurs bilans : celui des réserves, des banques, du fonds souverain, des assureurs, des entreprises et des investisseurs enregistrés dans les places offshore.*
+
+Ce nouveau volet de **La boucle du dollar asiatique** change donc d’échelle. [Taïwan](/posts/taiwan-724-milliards-assureurs-vie-risque-change/) permettait de suivre un décalage relativement lisible entre les actifs étrangers d’un secteur et les polices qu’il doit honorer. [Le Japon](/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/) ajoutait le choc des taux domestiques. [La Corée du Sud](/posts/coree-du-sud-prix-couverture-parfaite/) révélait le prix des couvertures. Nous avons ensuite décrit [l’infrastructure mondiale des swaps](/posts/asie-usine-invisible-couverture-dollar/) et [la composition des titres américains détenus en Asie](/posts/asie-actifs-americains-treasuries-mbs-credit/).
+
+La Chine oblige à abandonner la métaphore du grand assureur. Son exposition extérieure ne correspond pas à un portefeuille unique adossé à une catégorie homogène de passifs. Elle forme un système de bilans imbriqués, reliés par le contrôle public, la réglementation des capitaux, les banques d’État et les flux commerciaux. L’État peut déplacer une partie des pertes et de la liquidité entre institutions. Il ne transforme pas pour autant chaque actif en réserve mobilisable à vue.
+
+## Près de 12 000 milliards de dollars, répartis dans cinq catégories
+
+La donnée la plus récente de position extérieure disponible au moment de cette enquête porte sur le **31 mars 2026**. La [State Administration of Foreign Exchange, SAFE](https://www.safe.gov.cn/ningbo/2026/0701/2598.html), la régie chinoise des changes, ventile les 11 975,7 milliards d’actifs entre cinq catégories :
+
+- 3 605,2 milliards d’investissement direct ;
+- 2 046,6 milliards d’investissements de portefeuille ;
+- 29,5 milliards de valeur positive de dérivés financiers hors réserves ;
+- 2 543,2 milliards d’autres investissements, notamment dépôts, prêts et crédits commerciaux ;
+- 3 751,1 milliards d’actifs de réserve.
+
+Les dérivés méritent une précision immédiate. Le montant de 29,5 milliards mesure une valeur de marché positive dans la position extérieure. Il ne donne ni le notionnel des contrats, ni les paiements futurs bruts en devises. [La BIS a montré](https://www.bis.org/publications/dollar-debt-fx-swaps-and-forwards-huge-missing-and-growing) que les swaps et forwards de change créent des obligations de paiement qui ne figurent pas dans les statistiques de dette classiques. Son estimation est mondiale, pas chinoise. Elle interdit simplement de conclure que la petite ligne de dérivés publiée par SAFE décrit toute l’infrastructure de couverture du pays.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 610" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-fr-01-title cn-fr-01-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-fr-01-title">La position extérieure chinoise au 31 mars 2026</title>
+<desc id="cn-fr-01-desc">Les actifs extérieurs sont décomposés entre investissement direct, portefeuille, dérivés, autres investissements et réserves. Les passifs sont présentés séparément et le solde net officiel tient compte des arrondis.</desc>
+<rect width="900" height="610" rx="12" fill="#0c0d10"/>
+<text x="42" y="38" fill="#f5f6f8" font-size="20" font-weight="700">
+<tspan x="42" dy="0">La Chine extérieure tient dans cinq tiroirs,</tspan>
+<tspan x="42" dy="23">pas dans un portefeuille</tspan>
+</text>
+<text x="42" y="92" fill="#a8adb7" font-size="14">Milliards de dollars · stocks au 31 mars 2026 · données SAFE</text>
+<text x="42" y="112" fill="#a8adb7" font-size="12" font-weight="700">ACTIFS EXTÉRIEURS</text>
+<rect x="42.0" y="126" width="245.7" height="54" fill="#5eead4"/>
+<text x="164.82552168140484" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">3 605.2</text>
+<rect x="287.7" y="126" width="139.5" height="54" fill="#f5b13d"/>
+<text x="357.3766376913249" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">2 046.6</text>
+<rect x="427.1" y="126" width="2.0" height="54" fill="#ff4d87"/>
+<rect x="429.1" y="126" width="173.3" height="54" fill="#7aa2f7"/>
+<text x="515.7565570279816" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">2 543.2</text>
+<rect x="602.4" y="126" width="255.6" height="54" fill="#b69cff"/>
+<text x="730.1969989228187" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">3 751.1</text>
+<text x="858" y="112" fill="#5eead4" font-size="22" font-weight="800" text-anchor="end">11 975,7</text>
+<rect x="42" y="199" width="14" height="14" rx="3" fill="#5eead4"/>
+<text x="66" y="211" fill="#f5f6f8" font-size="13" font-weight="700">Investissement direct</text>
+<text x="432" y="211" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">3 605.2</text>
+<rect x="450" y="199" width="14" height="14" rx="3" fill="#f5b13d"/>
+<text x="474" y="211" fill="#f5f6f8" font-size="13" font-weight="700">Portefeuille</text>
+<text x="840" y="211" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">2 046.6</text>
+<rect x="42" y="241" width="14" height="14" rx="3" fill="#ff4d87"/>
+<text x="66" y="253" fill="#f5f6f8" font-size="13" font-weight="700">Dérivés</text>
+<text x="432" y="253" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">29.5</text>
+<rect x="450" y="241" width="14" height="14" rx="3" fill="#7aa2f7"/>
+<text x="474" y="253" fill="#f5f6f8" font-size="13" font-weight="700">Autres investissements</text>
+<text x="840" y="253" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">2 543.2</text>
+<rect x="42" y="283" width="14" height="14" rx="3" fill="#b69cff"/>
+<text x="66" y="295" fill="#f5f6f8" font-size="13" font-weight="700">Réserves</text>
+<text x="432" y="295" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">3 751.1</text>
+<rect x="42" y="350" width="816" height="84" rx="10" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="381" fill="#a8adb7" font-size="12" font-weight="700">PASSIFS EXTÉRIEURS</text>
+<text x="66" y="414" fill="#ff4d87" font-size="30" font-weight="800">7 969,6 Md$</text>
+<text x="454" y="381" fill="#a8adb7" font-size="12" font-weight="700">ACTIFS NETS OFFICIELS</text>
+<text x="454" y="414" fill="#5eead4" font-size="30" font-weight="800">4 006,0 Md$</text>
+<rect x="42" y="462" width="816" height="96" rx="10" fill="#111319" stroke="#2a2d35"/>
+<text x="66" y="496" fill="#f5f6f8" font-size="14" font-weight="700">Les cinq composantes publiées totalisent 11 975,6 Md$.</text>
+<text x="66" y="523" fill="#a8adb7" font-size="13">L’écart de 0,1 Md$ avec le total et le solde vient des arrondis.</text>
+<text x="42" y="590" fill="#a8adb7" font-size="11">Source : SAFE, position extérieure au 31 mars 2026. Les catégories sont des composantes, pas des institutions.</text>
+</svg>
+<figcaption>La position extérieure additionne des catégories d’actifs, pas des caisses institutionnelles. Les cinq composantes arrondies expliquent un écart de 0,1 milliard de dollars avec le total publié. Source : SAFE.</figcaption>
+</figure>
+
+Il serait tentant d’affecter chaque catégorie à une institution. Les réserves appartiendraient à la banque centrale, le portefeuille aux assureurs et aux fonds, les prêts aux banques. La réalité est moins propre. Les banques détiennent aussi des obligations. Les entreprises réalisent des investissements directs et accordent du crédit commercial. Des institutions financières non bancaires achètent des actions et des fonds. Les réserves officielles contiennent plusieurs types d’actifs. La position extérieure organise les instruments, pas les organigrammes.
+
+Cette différence commande toute l’enquête : **un agrégat national ne possède pas une seule échéance, une seule devise de passif ou un seul besoin de liquidité**.
+
+## Les réserves sont un bilan de politique monétaire
+
+À fin 2025, les actifs de réserve de la position extérieure s’élevaient à 3 744,3 milliards de dollars. La [ventilation détaillée de SAFE](https://www.safe.gov.cn/en/2026/0327/2405.html) comprenait 3 357,9 milliards de réserves de change, 319,5 milliards d’or monétaire, 55,8 milliards de droits de tirage spéciaux et 11,2 milliards de position de réserve au FMI. Le total des réserves de change publié chaque mois suit un autre calendrier. À fin juillet 2026, il atteignait [3 418,8 milliards de dollars](https://www.safe.gov.cn/en/2026/0807/2449.html).
+
+Comparer 3 751,1 milliards d’actifs de réserve en mars à 3 418,8 milliards de réserves de change en juillet ne mesure donc pas une sortie de 332,3 milliards. Les dates diffèrent. Le premier agrégat inclut l’or et les créances sur le FMI. Le second se limite aux réserves de change. Les valorisations des devises et des titres déplacent aussi la valeur en dollars sans transaction.
+
+Une réserve officielle n’a pas le même passif qu’une police d’assurance. Elle soutient la capacité d’intervention sur le marché des changes, la confiance dans la monnaie et le paiement des obligations extérieures du pays. Sa gestion doit combiner sécurité, liquidité et rendement. Une baisse de prix obligataire peut y être absorbée très différemment d’une perte subie par un assureur soumis à des rachats ou par une banque confrontée au retrait de dépôts.
+
+Sa composition exacte reste toutefois un angle mort. Les publications disponibles ne donnent pas, avec une fréquence exploitable, la ventilation détaillée par devise, maturité, duration et émetteur. Le chiffre mensuel indique la taille du coussin. Il ne permet pas de calculer sa sensibilité à une hausse parallèle des taux américains, à une baisse du dollar contre un panier de monnaies ou à une restriction d’accès aux dépositaires occidentaux.
+
+Ce dernier risque a cessé d’être purement théorique depuis l’immobilisation d’actifs de la banque centrale russe. En décembre 2025, le [Conseil de l’Union européenne](https://www.consilium.europa.eu/en/press/press-releases/2025/12/12/council-decides-to-prohibit-transfers-of-immobilised-central-bank-of-russia-assets-back-to-russia/) a interdit les transferts de ces actifs vers la Russie. Ce précédent prouve qu’un actif de réserve peut conserver une valeur de marché tout en devenant inaccessible à son propriétaire. Il ne démontre ni qu’une mesure comparable sera appliquée à la Chine, ni quels actifs seraient exposés. Il ajoute une catégorie de risque : l’accès juridique et opérationnel.
+
+## CIC ajoute un portefeuille public, sans devenir une seconde ligne de réserves
+
+China Investment Corporation, CIC, constitue un autre étage. Son dernier rapport annuel complet que nous avons pu identifier publiquement porte sur **2023**, ce qui impose de ne pas le traiter comme une photographie de 2026. À fin 2023, CIC déclarait [1 330 milliards de dollars d’actifs et 1 240 milliards d’actifs nets](https://recruitment.china-inv.cn/china_inv/Media/2024-09/1002741.shtml). Son portefeuille mondial comprenait 33,13 % d’actions cotées, 16,46 % de revenu fixe, 48,31 % d’actifs alternatifs et 2,10 % de trésorerie et autres actifs.
+
+Ce profil ressemble davantage à celui d’un investisseur de long terme qu’à une réserve de change. Les actifs alternatifs peuvent accepter une liquidité réduite en échange d’un rendement attendu supérieur. CIC indiquait une performance annualisée nette en dollars de 6,57 % sur dix ans à fin 2023, soit 31 points de base au-dessus de son objectif. Le chiffre vient de l’institution elle-même et ne renseigne pas sur les risques ou les valorisations en 2026.
+
+La structure ajoute une difficulté de périmètre. Selon la [présentation officielle de CIC](https://www.china-inv.cn/chinainven/AboutCIC/Overview.shtml), CIC International et CIC Capital gèrent les investissements extérieurs, tandis que Central Huijin détient des participations dans de grandes institutions financières chinoises. Fin 2023, Central Huijin administrait 6 410 milliards de renminbis de capital financier public. Additionner les 1 330 milliards d’actifs de CIC aux réserves ou au bilan extérieur bancaire créerait probablement des chevauchements conceptuels et institutionnels. La documentation publique ne fournit pas la table de consolidation nécessaire pour les éliminer.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-fr-02-title cn-fr-02-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-fr-02-title">Six porteurs possibles du risque dollar chinois</title>
+<desc id="cn-fr-02-desc">Les réserves, les banques, CIC, les assureurs, les entreprises et les chaînes de conservation ont des passifs et des contraintes différentes.</desc>
+<rect width="900" height="660" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Six bilans, six façons de perdre ou de gagner</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">La propriété publique ne transforme pas ces actifs en caisse unique.</text>
+<rect x="42" y="112" width="400" height="124" rx="10" fill="#15171c" stroke="#5eead4" stroke-width="1.5"/>
+<circle cx="76" cy="146" r="17" fill="#5eead4"/>
+<text x="76" y="152" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">1</text>
+<text x="106" y="151" fill="#5eead4" font-size="16" font-weight="800">RÉSERVES</text>
+<text x="66" y="188" fill="#f5f6f8" font-size="13">Passif : monnaie et crédibilité</text>
+<text x="66" y="213" fill="#a8adb7" font-size="13">Risques : taux, change, accès</text>
+<rect x="458" y="112" width="400" height="124" rx="10" fill="#15171c" stroke="#7aa2f7" stroke-width="1.5"/>
+<circle cx="492" cy="146" r="17" fill="#7aa2f7"/>
+<text x="492" y="152" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">2</text>
+<text x="522" y="151" fill="#7aa2f7" font-size="16" font-weight="800">BANQUES</text>
+<text x="482" y="188" fill="#f5f6f8" font-size="13">Passif : dépôts et financement</text>
+<text x="482" y="213" fill="#a8adb7" font-size="13">Risques : liquidité, contrepartie</text>
+<rect x="42" y="262" width="400" height="124" rx="10" fill="#15171c" stroke="#b69cff" stroke-width="1.5"/>
+<circle cx="76" cy="296" r="17" fill="#b69cff"/>
+<text x="76" y="302" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">3</text>
+<text x="106" y="301" fill="#b69cff" font-size="16" font-weight="800">CIC</text>
+<text x="66" y="338" fill="#f5f6f8" font-size="13">Passif : capital public long</text>
+<text x="66" y="363" fill="#a8adb7" font-size="13">Risques : marché, illiquidité</text>
+<rect x="458" y="262" width="400" height="124" rx="10" fill="#15171c" stroke="#f5b13d" stroke-width="1.5"/>
+<circle cx="492" cy="296" r="17" fill="#f5b13d"/>
+<text x="492" y="302" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">4</text>
+<text x="522" y="301" fill="#f5b13d" font-size="16" font-weight="800">ASSUREURS</text>
+<text x="482" y="338" fill="#f5f6f8" font-size="13">Passif : polices de long terme</text>
+<text x="482" y="363" fill="#a8adb7" font-size="13">Risques : ALM, solvabilité</text>
+<rect x="42" y="412" width="400" height="124" rx="10" fill="#15171c" stroke="#84cc9a" stroke-width="1.5"/>
+<circle cx="76" cy="446" r="17" fill="#84cc9a"/>
+<text x="76" y="452" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">5</text>
+<text x="106" y="451" fill="#84cc9a" font-size="16" font-weight="800">ENTREPRISES</text>
+<text x="66" y="488" fill="#f5f6f8" font-size="13">Passif : commerce et dette</text>
+<text x="66" y="513" fill="#a8adb7" font-size="13">Risques : cash, change, demande</text>
+<rect x="458" y="412" width="400" height="124" rx="10" fill="#15171c" stroke="#ff4d87" stroke-width="1.5"/>
+<circle cx="492" cy="446" r="17" fill="#ff4d87"/>
+<text x="492" y="452" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">6</text>
+<text x="522" y="451" fill="#ff4d87" font-size="16" font-weight="800">DÉPOSITAIRES</text>
+<text x="482" y="488" fill="#f5f6f8" font-size="13">Rôle : enregistrer les titres</text>
+<text x="482" y="513" fill="#a8adb7" font-size="13">Risque statistique : attribution</text>
+<rect x="42" y="574" width="816" height="52" rx="8" fill="#21131c" stroke="#ff4d87"/>
+<text x="450" y="606" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="middle">L’État peut déplacer un coût entre bilans. Il ne peut pas annuler la perte économique.</text>
+<text x="42" y="648" fill="#a8adb7" font-size="11">Synthèse l0g à partir des périmètres SAFE, CIC, NFRA et TIC.</text>
+</svg>
+<figcaption>Les mêmes dollars n’ont pas le même rôle selon qu’ils soutiennent la monnaie, un dépôt bancaire, une police d’assurance, un portefeuille souverain ou le commerce d’une entreprise. Synthèse l0g.</figcaption>
+</figure>
+
+La présence de l’État constitue une capacité d’action, pas une propriété comptable magique. Recapitaliser une banque avec un actif public peut protéger ses créanciers. Cela déplace le coût vers l’entité qui apporte le capital. Vendre un actif illiquide de CIC pour fournir des dollars n’est pas équivalent à mobiliser un Treasury court détenu en réserve. Le propriétaire ultime peut être public dans les deux cas, mais la durée, la liquidité, la gouvernance et les pertes réalisées diffèrent.
+
+## Les banques sont devenues un second grand intermédiaire extérieur
+
+Le bilan bancaire est mieux documenté. Au 31 mars 2026, les banques chinoises détenaient [2 108,6 milliards de dollars d’actifs extérieurs](https://www.safe.gov.cn/en/2026/0625/2425.html) et 1 485,1 milliards de passifs extérieurs. Leur position nette atteignait 623,6 milliards.
+
+Du côté des actifs, SAFE recense 1 182,1 milliards de dépôts et prêts, 632,9 milliards d’obligations et 293,6 milliards d’autres actifs, actions comprises. Par devise, les banques détenaient 662,7 milliards d’équivalent dollar en renminbis, 977,2 milliards en dollars et 468,7 milliards dans d’autres monnaies.
+
+Les passifs racontent une autre histoire : 766,6 milliards en renminbis, 286,0 milliards en dollars et 432,5 milliards dans les autres devises. SAFE en déduit 727,4 milliards d’actifs nets en devises et 103,9 milliards de passifs nets en renminbis. Soustraire simplement les actifs et passifs libellés en dollars donne 691,2 milliards. Ce calcul ne remplace pas le net en devises officiel, qui inclut les autres monnaies et repose sur les données exactes avant arrondi.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-fr-03-title cn-fr-03-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-fr-03-title">Bilan extérieur du secteur bancaire chinois au 31 mars 2026</title>
+<desc id="cn-fr-03-desc">Les actifs extérieurs des banques dépassent leurs passifs. Les ventilations par devise montrent une position nette en devises et une position nette négative en renminbi.</desc>
+<rect width="900" height="650" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Les banques portent un bilan extérieur à deux côtés</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">Milliards de dollars · 31 mars 2026 · le net n’est pas un portefeuille brut</text>
+<rect x="42" y="108" width="390" height="102" rx="10" fill="#15171c" stroke="#5eead4"/>
+<text x="66" y="140" fill="#a8adb7" font-size="12" font-weight="700">ACTIFS EXTÉRIEURS</text>
+<text x="66" y="181" fill="#5eead4" font-size="32" font-weight="800">2 108,6</text>
+<rect x="468" y="108" width="390" height="102" rx="10" fill="#15171c" stroke="#ff4d87"/>
+<text x="492" y="140" fill="#a8adb7" font-size="12" font-weight="700">PASSIFS EXTÉRIEURS</text>
+<text x="492" y="181" fill="#ff4d87" font-size="32" font-weight="800">1 485,1</text>
+<text x="42" y="254" fill="#a8adb7" font-size="12" font-weight="700">ACTIFS PAR DEVISE</text>
+<rect x="42.0" y="270" width="256.5" height="42" fill="#f5b13d"/>
+<text x="170.22801859053402" y="297" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">RMB</text>
+<rect x="298.5" y="270" width="378.2" height="42" fill="#5eead4"/>
+<text x="487.53770274115533" y="297" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">USD</text>
+<rect x="676.6" y="270" width="181.4" height="42" fill="#7aa2f7"/>
+<text x="767.3096841506214" y="297" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">Autres</text>
+<text x="42" y="345" fill="#a8adb7" font-size="12" font-weight="700">PASSIFS PAR DEVISE</text>
+<rect x="42.0" y="361" width="421.2" height="42" fill="#f5b13d"/>
+<text x="252.60723183623998" y="388" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">RMB</text>
+<rect x="463.2" y="361" width="157.1" height="42" fill="#5eead4"/>
+<text x="541.7869503737122" y="388" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">USD</text>
+<rect x="620.4" y="361" width="237.6" height="42" fill="#7aa2f7"/>
+<text x="739.1797185374722" y="388" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">Autres</text>
+<rect x="42" y="449" width="252" height="112" rx="10" fill="#10201d" stroke="#5eead4"/>
+<text x="62" y="478" fill="#a8adb7" font-size="11" font-weight="700">ACTIFS NETS</text>
+<text x="62" y="520" fill="#5eead4" font-size="26" font-weight="800">623,6 Md$</text>
+<rect x="324" y="449" width="252" height="112" rx="10" fill="#10201d" stroke="#7aa2f7"/>
+<text x="344" y="478" fill="#a8adb7" font-size="11" font-weight="700">NET EN DEVISES</text>
+<text x="344" y="520" fill="#7aa2f7" font-size="26" font-weight="800">727,4 Md$</text>
+<rect x="606" y="449" width="252" height="112" rx="10" fill="#211d13" stroke="#f5b13d"/>
+<text x="626" y="478" fill="#a8adb7" font-size="11" font-weight="700">NET EN RMB</text>
+<text x="626" y="520" fill="#f5b13d" font-size="26" font-weight="800">-103,9 Md$</text>
+<text x="42" y="588" fill="#a8adb7" font-size="11">
+<tspan x="42" dy="0">977,2 - 286,0 = 691,2 Md$.</tspan>
+<tspan x="42" dy="20">Ce calcul ne remplace pas le net en devises officiel, qui inclut aussi les autres monnaies.</tspan>
+</text>
+<text x="42" y="632" fill="#a8adb7" font-size="11">Source : SAFE. Les chiffres publiés sont arrondis.</text>
+</svg>
+<figcaption>Le bilan bancaire extérieur est positif en net, mais les actifs et les passifs restent importants. Le net en devises publié par SAFE inclut le dollar et les autres monnaies. Source : SAFE.</figcaption>
+</figure>
+
+Cette position nette positive réduit un risque classique : celui d’un secteur bancaire dépendant d’un énorme refinancement extérieur en dollars. Elle ne supprime pas les risques de maturité, de contrepartie ou de liquidité. Un prêt extérieur à cinq ans et un dépôt exigible rapidement peuvent porter la même devise tout en réagissant très différemment à un stress. La publication de SAFE ne fournit pas une matrice complète croisant devise, échéance, instrument, collatéral et type de banque.
+
+Elle ne révèle pas non plus tout ce qui se passe hors bilan. Les swaps peuvent fournir ou absorber des dollars sans apparaître comme une dette classique. Les banques d’État peuvent agir à la fois comme établissements commerciaux et comme relais de politique de change. Ces fonctions se rejoignent dans une controverse statistique particulièrement instructive.
+
+## Deux thermomètres donnent des signes opposés pour 2025
+
+Le [rapport de juillet 2026 du Trésor américain sur les politiques de change](https://home.treasury.gov/system/files/206/July-2026-FX-Report.pdf) utilise deux indicateurs indirects pour estimer l’intervention chinoise, faute de publication officielle complète.
+
+Le premier suit les variations des actifs en devises de la Banque populaire de Chine comptabilisés au coût historique. Il indique, selon le Trésor, **105 milliards de dollars de ventes de devises en 2025**.
+
+Le second s’appuie sur les règlements nets de change des banques, corrigés de la variation des forwards en cours. Il inclut les activités des banques publiques et de la banque centrale. Il indique **323 milliards d’achats nets de devises** sur la même année.
+
+Un même pays ne peut être résumé simultanément par 105 milliards de ventes et 323 milliards d’achats sans expliquer les périmètres. Le Trésor interprète l’écart comme un signe possible du rôle croissant des banques d’État dans l’absorption puis le recyclage des flux de dollars. Il relève que les actifs extérieurs nets des banques de dépôts ont augmenté de 367 milliards en 2025, entièrement par hausse des actifs bruts, et que le stock de prêts de devises par reverse repo interbancaire a progressé de 25 à 54 milliards.
+
+Il faut conserver l’attribution. Il s’agit d’une **estimation du gouvernement américain**, fondée sur des proxys et complétée par des inférences. Le rapport reconnaît ne pas pouvoir évaluer avec confiance toutes les composantes de la hausse des actifs bancaires, faute de détail. Une partie peut refléter des opérations commerciales, des dépôts en dollars des entreprises, des actifs en renminbis sur des non-résidents ou l’activité des banques de politique publique.
+
+Le désaccord entre les deux thermomètres n’est donc pas une preuve de falsification. Il montre que le lieu de l’intermédiation compte. Une opération qui aurait autrefois gonflé directement les réserves peut désormais apparaître dans le bilan ou les swaps d’une banque publique. La frontière entre politique de change et gestion bancaire devient alors plus difficile à observer de l’extérieur.
+
+## Trois chiffres américains mesurent trois objets différents
+
+La confusion atteint son maximum avec les titres américains.
+
+L’enquête annuelle du Trésor américain attribuait à la Chine continentale **1 279 milliards de dollars de titres américains au 30 juin 2025** : 344 milliards d’actions, 657 milliards de Treasuries à long terme, 186 milliards de dette d’agence, 17 milliards d’obligations d’entreprise et 75 milliards de dette à court terme. [Hong Kong et Macao sont reportés séparément](https://home.treasury.gov/news/press-releases/sb0482). Le total réunit détenteurs officiels et privés.
+
+La série mensuelle TIC indique pour sa part **633,4 milliards de Treasuries attribués à la Chine continentale au 30 juin 2026**, contre 731,4 milliards un an auparavant. [Le Trésor avertit](https://ticdata.treasury.gov/Publish/slt_table5.html) que les titres placés chez des dépositaires étrangers peuvent être attribués au pays de conservation plutôt qu’au propriétaire économique. Le recul de 98 milliards n’est donc pas, à lui seul, la preuve de ventes nettes du même montant. Les transactions, les variations de prix et les changements de chaîne de conservation peuvent modifier le stock.
+
+Enfin, SAFE comptabilisait **364,0 milliards de dollars d’investissements de portefeuille chinois vers les États-Unis à fin 2025**, dans une série qui exclut explicitement les actifs de réserve. Elle suit les actifs des résidents chinois par destination et secteur détenteur.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-fr-04-title cn-fr-04-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-fr-04-title">Quatre mesures différentes des actifs chinois liés aux États-Unis</title>
+<desc id="cn-fr-04-desc">Les montants de 1 279, 657, 633,4 et 364 milliards de dollars diffèrent par date, actif, détenteur et méthode d’attribution.</desc>
+<rect width="900" height="650" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Quatre chiffres américains, aucune soustraction magique</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">Chaque carte change au moins une dimension : date, actifs, détenteurs ou conservation.</text>
+<rect x="42" y="112" width="400" height="164" rx="10" fill="#15171c" stroke="#5eead4" stroke-width="1.5"/>
+<text x="64" y="154" fill="#5eead4" font-size="30" font-weight="800">1 279 Md$</text>
+<text x="420" y="150" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">30 juin 2025</text>
+<text x="64" y="195" fill="#f5f6f8" font-size="15" font-weight="700">Tous titres US</text>
+<text x="64" y="224" fill="#a8adb7" font-size="12">Officiel + privé, attribution TIC</text>
+<text x="64" y="254" fill="#5eead4" font-size="10" font-weight="800">STOCK, PAS FLUX</text>
+<rect x="458" y="112" width="400" height="164" rx="10" fill="#15171c" stroke="#7aa2f7" stroke-width="1.5"/>
+<text x="480" y="154" fill="#7aa2f7" font-size="30" font-weight="800">657 Md$</text>
+<text x="836" y="150" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">30 juin 2025</text>
+<text x="480" y="195" fill="#f5f6f8" font-size="15" font-weight="700">Treasuries longs</text>
+<text x="480" y="224" fill="#a8adb7" font-size="12">Sous-ensemble de l’enquête annuelle</text>
+<text x="480" y="254" fill="#7aa2f7" font-size="10" font-weight="800">STOCK, PAS FLUX</text>
+<rect x="42" y="302" width="400" height="164" rx="10" fill="#15171c" stroke="#f5b13d" stroke-width="1.5"/>
+<text x="64" y="344" fill="#f5b13d" font-size="30" font-weight="800">633,4 Md$</text>
+<text x="420" y="340" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">30 juin 2026</text>
+<text x="64" y="385" fill="#f5f6f8" font-size="15" font-weight="700">Tous Treasuries</text>
+<text x="64" y="414" fill="#a8adb7" font-size="12">TIC mensuel, conservation imparfaite</text>
+<text x="64" y="444" fill="#f5b13d" font-size="10" font-weight="800">STOCK, PAS FLUX</text>
+<rect x="458" y="302" width="400" height="164" rx="10" fill="#15171c" stroke="#ff4d87" stroke-width="1.5"/>
+<text x="480" y="344" fill="#ff4d87" font-size="30" font-weight="800">364 Md$</text>
+<text x="836" y="340" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">31 déc. 2025</text>
+<text x="480" y="385" fill="#f5f6f8" font-size="15" font-weight="700">Portefeuille vers les US</text>
+<text x="480" y="414" fill="#a8adb7" font-size="12">SAFE, réserves exclues</text>
+<text x="480" y="444" fill="#ff4d87" font-size="10" font-weight="800">STOCK, PAS FLUX</text>
+<line x1="42" y1="516" x2="858" y2="516" stroke="#2a2d35"/>
+<text x="42" y="550" fill="#f5f6f8" font-size="13">
+<tspan x="42" dy="0">La baisse de 731,4 à 633,4 Md$ dans le TIC mensuel n’est pas automatiquement une vente nette.</tspan>
+<tspan x="42" dy="24">Transactions, valorisation et déplacement de conservation peuvent tous modifier le stock.</tspan>
+</text>
+<text x="42" y="630" fill="#a8adb7" font-size="11">Sources : U.S. Treasury TIC ; SAFE. Hong Kong et Macao sont séparés dans l’enquête américaine.</text>
+</svg>
+<figcaption>Ces quatre chiffres sont exacts dans leur propre cadre. Aucun ne mesure à lui seul les réserves américaines de la Chine, et leurs différences ne sont pas des flux de vente. Sources : U.S. Treasury TIC, SAFE.</figcaption>
+</figure>
+
+Ces trois chiffres ne permettent pas de reconstituer la part américaine des réserves. Le chiffre TIC de 1 279 milliards inclut le public et le privé mais attribue selon la conservation. Les 364 milliards de SAFE excluent les réserves. Les 633,4 milliards ne couvrent que les Treasuries et datent de juin 2026. Même les deux données américaines ne portent pas sur le même ensemble : l’enquête annuelle de juin 2025 comptait 657 milliards de Treasuries à long terme, tandis que la série mensuelle inclut aussi les bills et utilise une estimation plus fréquente.
+
+Cette impossibilité est un résultat de l’enquête, pas une lacune à combler par une soustraction improvisée.
+
+## Hong Kong est une destination et un miroir
+
+La ventilation hors réserves de SAFE offre une autre vue. À fin 2025, les actifs de portefeuille extérieurs hors réserves atteignaient **1 987,5 milliards de dollars**, dont 1 262,8 milliards d’actions et parts de fonds et 724,7 milliards d’obligations. Les cinq premières destinations étaient [Hong Kong, les États-Unis, les îles Caïmans, les îles Vierges britanniques et le Royaume-Uni](https://www.safe.gov.cn/en/2026/0529/2419.html).
+
+Hong Kong dominait avec 978,9 milliards, presque la moitié du total. Cela ne signifie pas que chaque actif final est hongkongais. Une part peut être investie dans des fonds, véhicules ou intermédiaires domiciliés dans la place, puis exposée à d’autres marchés. La géographie juridique et la géographie économique peuvent diverger.
+
+Par secteur détenteur, SAFE attribuait 1 108,7 milliards aux autres sociétés financières, 566,7 milliards aux banques et 312,1 milliards au secteur non financier. Les parts publiées sont 56 %, 29 % et 16 %, soit 101 % du fait des arrondis. Surtout, la première catégorie ne signifie pas « assureurs ». Elle regroupe les institutions financières non bancaires, un périmètre plus large pouvant inclure fonds, courtiers, véhicules et autres intermédiaires.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-fr-05-title cn-fr-05-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-fr-05-title">Destination et détenteurs du portefeuille extérieur chinois hors réserves à fin 2025</title>
+<desc id="cn-fr-05-desc">Le portefeuille hors réserves totalise 1 987,5 milliards de dollars. Hong Kong est la première destination déclarée et les institutions financières non bancaires le premier secteur détenteur.</desc>
+<rect width="900" height="720" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Le portefeuille hors réserves passe d’abord par Hong Kong</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">1 987,5 Md$ au 31 décembre 2025 · destination déclarée et secteur du détenteur</text>
+<text x="42" y="118" fill="#5eead4" font-size="12" font-weight="800">DESTINATIONS</text>
+<text x="42" y="166" fill="#f5f6f8" font-size="13">Hong Kong</text>
+<rect x="210" y="148" width="520.0" height="24" rx="4" fill="#5eead4"/>
+<text x="750" y="166" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">978.9</text>
+<text x="42" y="214" fill="#f5f6f8" font-size="13">États-Unis</text>
+<rect x="210" y="196" width="193.4" height="24" rx="4" fill="#7aa2f7"/>
+<text x="750" y="214" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">364.0</text>
+<text x="42" y="262" fill="#f5f6f8" font-size="13">Caïmans</text>
+<rect x="210" y="244" width="77.1" height="24" rx="4" fill="#f5b13d"/>
+<text x="750" y="262" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">145.1</text>
+<text x="42" y="310" fill="#f5f6f8" font-size="13">Îles Vierges brit.</text>
+<rect x="210" y="292" width="34.6" height="24" rx="4" fill="#ff4d87"/>
+<text x="750" y="310" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">65.2</text>
+<text x="42" y="358" fill="#f5f6f8" font-size="13">Royaume-Uni</text>
+<rect x="210" y="340" width="25.8" height="24" rx="4" fill="#b69cff"/>
+<text x="750" y="358" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">48.5</text>
+<text x="42" y="406" fill="#f5f6f8" font-size="13">Autres</text>
+<rect x="210" y="388" width="204.9" height="24" rx="4" fill="#a8adb7"/>
+<text x="750" y="406" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">385.8</text>
+<line x1="42" y1="454" x2="858" y2="454" stroke="#2a2d35"/>
+<text x="42" y="490" fill="#f5b13d" font-size="12" font-weight="800">SECTEURS DÉTENTEURS</text>
+<text x="42" y="538" fill="#f5f6f8" font-size="13">Autres sociétés financières</text>
+<rect x="260" y="520" width="520.0" height="25" rx="4" fill="#f5b13d"/>
+<text x="800" y="538" fill="#f5f6f8" font-size="13" font-weight="800" text-anchor="end">56 %</text>
+<text x="42" y="588" fill="#f5f6f8" font-size="13">Banques</text>
+<rect x="260" y="570" width="265.8" height="25" rx="4" fill="#7aa2f7"/>
+<text x="800" y="588" fill="#f5f6f8" font-size="13" font-weight="800" text-anchor="end">29 %</text>
+<text x="42" y="638" fill="#f5f6f8" font-size="13">Secteur non financier</text>
+<rect x="260" y="620" width="146.4" height="25" rx="4" fill="#84cc9a"/>
+<text x="800" y="638" fill="#f5f6f8" font-size="13" font-weight="800" text-anchor="end">16 %</text>
+<text x="42" y="686" fill="#a8adb7" font-size="11">« Autres sociétés financières » est plus large que les assureurs. Les parts publiées totalisent 101 % du fait des arrondis.</text>
+<text x="42" y="708" fill="#a8adb7" font-size="11">Source : SAFE, publication du 29 mai 2026 sur les stocks à fin 2025.</text>
+</svg>
+<figcaption>Hong Kong est à la fois une destination d’investissement et un centre d’intermédiation. La catégorie des autres sociétés financières regroupe plus que les seuls assureurs. Source : SAFE.</figcaption>
+</figure>
+
+Le biais de conservation fonctionne dans les deux sens. Le TIC américain peut attribuer à Hong Kong un titre dont le bénéficiaire économique est ailleurs. SAFE peut enregistrer Hong Kong comme destination immédiate d’un investissement qui sera ensuite réalloué. Les deux systèmes répondent à des questions légitimes, mais pas identiques.
+
+Pour mesurer un risque consolidé, il faudrait connaître le bénéficiaire ultime, la devise du passif qui finance l’actif, les dérivés associés et la capacité à rapatrier le produit d’une vente. Ces quatre informations ne sont pas disponibles dans une base publique unique.
+
+## Les assureurs chinois sont immenses, leur portefeuille extérieur reste opaque
+
+À fin juin 2026, les compagnies d’assurance et sociétés de gestion d’actifs d’assurance détenaient **43 900 milliards de renminbis d’actifs**, dont 38 700 milliards pour les assureurs de personnes, selon les [principaux indicateurs prudentiels du deuxième trimestre](https://jrj.wuhan.gov.cn/ynzx_57/xwzx/202608/t20260817_2834727.shtml) diffusés à partir des données de la National Financial Regulatory Administration. Ce total mesure la taille domestique du secteur. Il ne révèle pas sa position en dollars.
+
+La réglementation autorise les placements extérieurs sous conditions. Le [règlement sur les investissements offshore des fonds d’assurance](https://www.safe.gov.cn/safe/2022/0818/21331.html), publié en 2007 et révisé en décembre 2021, fixe un plafond total de 15 % des actifs de fin d’année précédente. Il exige une gestion actif-passif, encadre les dépositaires et autorise les forwards, swaps, options et futures uniquement pour couvrir le risque, sans spéculation ni amplification du levier.
+
+Un plafond juridique n’est pas une exposition constatée. Appliquer mécaniquement 15 % aux 43 900 milliards de renminbis produirait une capacité théorique, pas un portefeuille réel. Les données publiques consultées ne donnent pas une ventilation sectorielle suffisamment détaillée par pays, devise, duration, couverture et type de police pour reproduire l’analyse menée à Taïwan.
+
+Ce silence change l’interprétation. On peut établir que les assureurs chinois ont la taille nécessaire pour compter et le droit réglementaire d’investir hors du pays. On ne peut pas affirmer qu’ils portent un décalage de change comparable à celui des assureurs taïwanais. L’analogie s’arrête précisément là où commencerait le chiffre décisif.
+
+## La position créditrice protège contre la crise externe classique
+
+Le meilleur contre-argument au récit d’une vulnérabilité dollar chinoise est puissant. La Chine possède environ 4 000 milliards de dollars d’actifs extérieurs nets. Ses réserves de change dépassent 3 400 milliards. Elle contrôle une partie des mouvements de capitaux et dispose de banques publiques capables d’absorber des flux. Sa dette extérieure reste modérée au regard de la taille de son économie.
+
+À fin mars 2026, SAFE recensait [2 412,1 milliards de dollars de dette extérieure](https://www.safe.gov.cn/safe/2026/0626/27623.html), en monnaies nationale et étrangères. La dette à long terme représentait 1 000,3 milliards, soit 41 %, et la dette à court terme 1 411,8 milliards, soit 59 %. Quarante pour cent de la dette courte était liée au commerce. Les banques portaient 988,7 milliards, les autres secteurs 959,8 milliards, le gouvernement 360,2 milliards et la banque centrale 103,4 milliards.
+
+La part élevée de court terme paraît inquiétante sans son dénominateur. À fin 2025, les indicateurs officiels de SAFE plaçaient la dette extérieure à 11,9 % du PIB et la dette courte à [39,2 % des réserves de change](https://www.safe.gov.cn/en/2026/0327/2410.html). Ces ratios sont publiés par l’administration chinoise elle-même. Le [FMI](https://www.elibrary.imf.org/view/journals/002/2026/044/article-A001-en.xml) confirme un endettement extérieur relativement bas, tout en montrant que l’évaluation de l’adéquation des réserves varie fortement selon les hypothèses sur le régime de change et les contrôles de capitaux.
+
+Le risque d’une crise de financement externe semblable à celle d’un pays très endetté en dollars apparaît donc limité dans les données actuelles. Ce constat n’évacue pas les pertes de marché, les problèmes de liquidité locale ou la difficulté d’accès à certains actifs. Il les replace dans un système disposant d’un coussin considérable et de leviers administratifs.
+
+## Le surplus courant migre vers des bilans privés et publics
+
+La mécanique continue en 2026. SAFE indique qu’au premier semestre, les encaissements et paiements transfrontaliers des secteurs non bancaires ont atteint [9 200 milliards de dollars](https://www.safe.gov.cn/en/2026/0717/2441.html), en hausse de 21 % sur un an. Le renminbi représentait 52,9 % des règlements transfrontaliers. Les achats et ventes de devises auprès des banques ont atteint 2 900 milliards, tandis que les dérivés représentaient 62 % des 22 100 milliards de volume de transactions sur le marché domestique des changes.
+
+La même administration souligne que les excédents courants sont de plus en plus déployés à l’étranger par les banques, les entreprises et d’autres acteurs. Le [compte courant provisoire du premier semestre](https://www.safe.gov.cn/safe/2026/0814/27779.html) affichait un excédent de 379,4 milliards de dollars, face à un déficit de 383,2 milliards du compte de capital et financier, erreurs et omissions incluses.
+
+Ces deux montants ne prouvent pas qu’un dollar d’exportation est transféré à une institution déterminée. Ils décrivent la contrepartie macroéconomique : lorsqu’un pays accumule un excédent courant, il acquiert en principe des créances nettes sur le reste du monde, sauf variation de réserves et ajustements statistiques. La question n’est plus seulement combien la banque centrale achète. Elle devient : **quel bilan recycle le surplus et sous quelle forme ?**
+
+Le déplacement vers les banques et les investisseurs non officiels peut diversifier la prise de décision et réduire la concentration dans les réserves. Il peut aussi rendre la politique de change moins transparente, surtout lorsque les banques publiques agissent à la frontière entre objectif commercial et instruction de politique économique.
+
+## L’État peut transférer une perte, jamais la supprimer
+
+La consolidation complète produit une illusion séduisante. Puisque la Chine est créancière nette et contrôle ses grandes banques, elle pourrait traiter tous les actifs extérieurs comme une réserve collective. Le raisonnement néglige quatre frictions.
+
+La première est la **liquidité**. Une participation directe, un fonds de capital-investissement et un Treasury court ne peuvent pas être mobilisés au même coût ni au même délai.
+
+La deuxième est le **passif local**. Une banque doit protéger ses dépôts. Un assureur doit servir ses polices. Une entreprise doit payer ses fournisseurs et sa dette. Retirer un actif de leur bilan pour soutenir la monnaie peut créer un trou ailleurs.
+
+La troisième est la **juridiction**. Un actif domicilié ou conservé hors de Chine dépend de contrats, de dépositaires et de règles étrangères. Le contrôle de l’institution propriétaire ne garantit pas l’accès à l’actif dans tous les scénarios géopolitiques.
+
+La quatrième est l’**information**. Sans ventilation des dérivés, des échéances et des doubles comptes, la somme nationale peut masquer une pénurie de dollars dans une institution précise, même lorsque le pays reste largement créditeur.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-fr-06-title cn-fr-06-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-fr-06-title">Carte des risques par porteur du bilan dollar chinois</title>
+<desc id="cn-fr-06-desc">Une matrice distingue valorisation, liquidité, contrepartie, accès et capital selon les réserves, banques, CIC, assureurs et entreprises.</desc>
+<rect width="900" height="700" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Le risque dollar change de forme selon le bilan</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">Intensité analytique, pas score prudentiel · fort, moyen, secondaire</text>
+<text x="318.0" y="112" fill="#5eead4" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="318.0" dy="0">Valorisation</tspan>
+</text>
+<text x="434.0" y="112" fill="#7aa2f7" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="434.0" dy="0">Liquidité</tspan>
+</text>
+<text x="550.0" y="112" fill="#f5b13d" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="550.0" dy="0">Contrepartie</tspan>
+</text>
+<text x="666.0" y="112" fill="#ff4d87" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="666.0" dy="0">Accès</tspan>
+</text>
+<text x="782.0" y="112" fill="#b69cff" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="782.0" dy="0">Capital</tspan>
+<tspan x="782.0" dy="16">ALM</tspan>
+</text>
+<rect x="42" y="142" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="182" fill="#f5f6f8" font-size="15" font-weight="800">Réserves</text>
+<circle cx="318.0" cy="176" r="17" fill="#5eead4" opacity="0.95"/>
+<circle cx="434.0" cy="176" r="12" fill="#7aa2f7" opacity="0.75"/>
+<circle cx="550.0" cy="176" r="7" fill="#f5b13d" opacity="0.55"/>
+<circle cx="666.0" cy="176" r="17" fill="#ff4d87" opacity="0.95"/>
+<circle cx="782.0" cy="176" r="7" fill="#b69cff" opacity="0.55"/>
+<rect x="42" y="218" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="258" fill="#f5f6f8" font-size="15" font-weight="800">Banques</text>
+<circle cx="318.0" cy="252" r="12" fill="#5eead4" opacity="0.75"/>
+<circle cx="434.0" cy="252" r="17" fill="#7aa2f7" opacity="0.95"/>
+<circle cx="550.0" cy="252" r="17" fill="#f5b13d" opacity="0.95"/>
+<circle cx="666.0" cy="252" r="12" fill="#ff4d87" opacity="0.75"/>
+<circle cx="782.0" cy="252" r="17" fill="#b69cff" opacity="0.95"/>
+<rect x="42" y="294" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="334" fill="#f5f6f8" font-size="15" font-weight="800">CIC</text>
+<circle cx="318.0" cy="328" r="17" fill="#5eead4" opacity="0.95"/>
+<circle cx="434.0" cy="328" r="12" fill="#7aa2f7" opacity="0.75"/>
+<circle cx="550.0" cy="328" r="12" fill="#f5b13d" opacity="0.75"/>
+<circle cx="666.0" cy="328" r="17" fill="#ff4d87" opacity="0.95"/>
+<circle cx="782.0" cy="328" r="7" fill="#b69cff" opacity="0.55"/>
+<rect x="42" y="370" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="410" fill="#f5f6f8" font-size="15" font-weight="800">Assureurs</text>
+<circle cx="318.0" cy="404" r="12" fill="#5eead4" opacity="0.75"/>
+<circle cx="434.0" cy="404" r="17" fill="#7aa2f7" opacity="0.95"/>
+<circle cx="550.0" cy="404" r="12" fill="#f5b13d" opacity="0.75"/>
+<circle cx="666.0" cy="404" r="12" fill="#ff4d87" opacity="0.75"/>
+<circle cx="782.0" cy="404" r="17" fill="#b69cff" opacity="0.95"/>
+<rect x="42" y="446" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="486" fill="#f5f6f8" font-size="15" font-weight="800">Entreprises</text>
+<circle cx="318.0" cy="480" r="12" fill="#5eead4" opacity="0.75"/>
+<circle cx="434.0" cy="480" r="17" fill="#7aa2f7" opacity="0.95"/>
+<circle cx="550.0" cy="480" r="12" fill="#f5b13d" opacity="0.75"/>
+<circle cx="666.0" cy="480" r="12" fill="#ff4d87" opacity="0.75"/>
+<circle cx="782.0" cy="480" r="12" fill="#b69cff" opacity="0.75"/>
+<rect x="42" y="548" width="816" height="96" rx="10" fill="#111319" stroke="#2a2d35"/>
+<text x="66" y="580" fill="#5eead4" font-size="14" font-weight="800">Le coussin chinois</text>
+<text x="66" y="600" fill="#f5f6f8" font-size="12">
+<tspan x="66" dy="0">Actifs nets élevés, réserves et contrôles de capitaux</tspan>
+<tspan x="66" dy="18">réduisent le risque de crise externe classique.</tspan>
+<tspan x="66" dy="18">Tous les actifs ne sont pas liquides ou accessibles dans chaque scénario.</tspan>
+</text>
+<text x="42" y="682" fill="#a8adb7" font-size="11">Synthèse l0g. Les niveaux indiquent où chercher le mécanisme, pas une probabilité de défaut.</text>
+</svg>
+<figcaption>La matrice localise les mécanismes à examiner. Elle ne constitue ni une notation du souverain, ni un calcul de probabilité de crise. Synthèse l0g.</figcaption>
+</figure>
+
+Le système public chinois possède davantage de leviers qu’un assureur privé. Il peut imposer des contrôles, fournir du renminbi, organiser un transfert d’actifs, recapitaliser ou orienter les banques. Chaque action a cependant une contrepartie : création monétaire, transfert budgétaire, perte pour une autre entité, compression du crédit ou restriction des sorties. La capacité à distribuer le choc dans le temps et entre bilans constitue une force réelle. Elle ne change pas la valeur économique consolidée des actifs perdus.
+
+## Une lentille pour éviter les doubles comptes
+
+Le principal piège documentaire de ce dossier consiste à additionner des nombres exacts qui se recouvrent. L’outil suivant vérifie les relations connues entre les séries utilisées dans l’enquête. Il autorise la somme de deux composantes disjointes du même agrégat et la soustraction d’actifs et de passifs comparables. Il bloque les opérations entre un total et sa composante, entre un agrégat national et un secteur déjà inclus, ou entre deux statistiques américaines construites selon des méthodes différentes.
+
+<ChinaExternalBalanceSheetLens lang="fr" mode="embed" />
+
+Une sortie « non comparable » ne signifie pas que l’une des sources est fausse. Elle signifie que la question posée par l’une n’est pas celle de l’autre.
+
+## Les données manquantes définissent le prochain risque à surveiller
+
+Six informations permettraient de transformer cette cartographie en stress test :
+
+1. la composition par devise, émetteur et maturité des réserves officielles ;
+2. les actifs extérieurs de CIC et de Central Huijin réconciliés avec la position extérieure ;
+3. la matrice devise-échéance des actifs et passifs bancaires, dérivés inclus ;
+4. le portefeuille étranger réel des assureurs et ses couvertures ;
+5. le bénéficiaire ultime des titres détenus via Hong Kong, les Caïmans et d’autres dépositaires ;
+6. les règles opérationnelles de soutien mutuel entre banque centrale, banques publiques et véhicules souverains.
+
+Je n’ai trouvé aucune publication publique réunissant ces six couches. Cette absence interdit un montant crédible de « dollars à risque » pour la Chine consolidée.
+
+Le point établi est plus sobre. La Chine possède un immense patrimoine extérieur et une position nette positive. Le risque ne se concentre pas dans un décalage unique entre dollars à l’actif et renminbis au passif. Il circule entre plusieurs institutions, plusieurs horizons et plusieurs juridictions.
+
+Le scénario dangereux ne ressemble donc pas nécessairement à une ruée soudaine contre la monnaie. Il pourrait combiner une baisse de valeur des titres, une demande locale de liquidité, un accès restreint à certains actifs et une intervention transférée vers les banques publiques. Le coussin national resterait large, tandis qu’une partie du système absorberait silencieusement le coût.
+
+C’est la différence essentielle avec Taïwan. Là-bas, le risque dollar se lit d’abord dans le bilan des assureurs. En Chine, il faut suivre **qui reçoit le surplus, qui porte l’actif, qui promet le passif et qui peut réellement déplacer les dollars le jour où ils deviennent nécessaires**.

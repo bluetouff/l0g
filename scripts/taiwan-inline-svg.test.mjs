@@ -77,6 +77,18 @@ const targets = [
     pattern: /<svg\b[^>]*aria-labelledby="asia-us-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
+  {
+    page: 'dist/posts/chine-risque-dollar-bilan-reserves-banques/index.html',
+    count: 6,
+    pattern: /<svg\b[^>]*aria-labelledby="cn-fr-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/china-dollar-risk-reserves-banks-balance-sheets/index.html',
+    count: 6,
+    pattern: /<svg\b[^>]*aria-labelledby="cn-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
 ];
 
 function numberAttribute(tag, name, fallback = 0) {

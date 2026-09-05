@@ -1,0 +1,480 @@
+---
+title: "China's dollar risk is spread across multiple balance sheets"
+seoTitle: "China dollar risk: reserves, banks and hidden overlap | l0g"
+ogTitle: "Where China's dollar risk really sits"
+ogImage: "/illustrations/news/china-dollar-balance-sheets-v1.jpg"
+description: "China holds almost $12tn in external assets. Reserves, banks, its sovereign fund, insurers and companies carry different pieces and different risks."
+pubDate: 2026-09-05T10:30:00+02:00
+updatedDate: 2026-09-05T10:30:00+02:00
+tags: ["China", "Asia", "dollar", "foreign-exchange reserves", "banks", "CIC", "insurance", "financial risk", "financial stability"]
+draft: false
+sourceArticle: "chine-risque-dollar-bilan-reserves-banques"
+sourceUpdatedDate: 2026-09-05T10:30:00+02:00
+---
+
+import ChinaExternalBalanceSheetLens from '../../components/ChinaExternalBalanceSheetLens.astro';
+
+*At the [end of March 2026](https://www.safe.gov.cn/ningbo/2026/0701/2598.html), Chinese residents held **$11.976 trillion in external financial assets** and owed $7.970 trillion to the rest of the world. The official net position was $4.006 trillion. That makes China one of the world's largest net creditors. It still tells us surprisingly little about where its dollar risk sits. Answering that question requires opening several balance sheets: official reserves, banks, the sovereign wealth fund, insurers, companies and investors routed through offshore financial centres.*
+
+This new instalment of **The Asian dollar loop** changes the unit of analysis. [Taiwan](/en/analysis/taiwan-life-insurers-724-billion-currency-risk/) offered a relatively visible mismatch between a sector's foreign assets and the policies it must honour. [Japan](/en/analysis/japan-end-free-money-life-insurer-balance-sheets/) added a domestic rate shock. [South Korea](/en/analysis/south-korea-price-perfect-fx-hedge/) exposed the price of extensive hedging. We then mapped [the global swap infrastructure](/en/analysis/asia-invisible-dollar-hedging-machine/) and [the U.S. securities actually held across Asia](/en/analysis/what-asia-really-buys-in-america/).
+
+China breaks the giant-insurer analogy. Its external exposure is not one portfolio funded by one homogeneous set of liabilities. It is a system of connected balance sheets linked by public ownership, capital controls, state banks and trade flows. The state can move liquidity and some losses between institutions. It cannot make every asset instantly fungible.
+
+## Almost $12 trillion, divided into five statistical drawers
+
+The latest international investment position available for this investigation is dated **31 March 2026**. The [State Administration of Foreign Exchange, SAFE](https://www.safe.gov.cn/ningbo/2026/0701/2598.html), splits the $11.976 trillion asset total into five categories:
+
+- $3.605 trillion of direct investment;
+- $2.047 trillion of portfolio investment;
+- $29.5 billion of positive derivative value outside reserves;
+- $2.543 trillion of other investment, including deposits, loans and trade credit;
+- $3.751 trillion of reserve assets.
+
+The derivative line needs an immediate boundary. The $29.5 billion is positive market value in the IIP. It is neither contract notional nor gross future currency payments. [BIS research](https://www.bis.org/publications/dollar-debt-fx-swaps-and-forwards-huge-missing-and-growing) shows that FX swaps and forwards create payment obligations that standard debt statistics do not capture. Its estimate is global, not China-specific. The lesson is narrower: SAFE's small derivative asset line cannot describe the entire Chinese hedging infrastructure.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 610" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-en-01-title cn-en-01-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-en-01-title">China&#x27;s international investment position at 31 March 2026</title>
+<desc id="cn-en-01-desc">External assets are split into direct investment, portfolio, derivatives, other investment and reserves. Liabilities are shown separately and the official net position reflects rounding.</desc>
+<rect width="900" height="610" rx="12" fill="#0c0d10"/>
+<text x="42" y="38" fill="#f5f6f8" font-size="20" font-weight="700">
+<tspan x="42" dy="0">China’s external position sits in five drawers,</tspan>
+<tspan x="42" dy="23">not one portfolio</tspan>
+</text>
+<text x="42" y="92" fill="#a8adb7" font-size="14">USD billions · stocks at 31 March 2026 · SAFE data</text>
+<text x="42" y="112" fill="#a8adb7" font-size="12" font-weight="700">EXTERNAL ASSETS</text>
+<rect x="42.0" y="126" width="245.7" height="54" fill="#5eead4"/>
+<text x="164.82552168140484" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">3,605.2</text>
+<rect x="287.7" y="126" width="139.5" height="54" fill="#f5b13d"/>
+<text x="357.3766376913249" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">2,046.6</text>
+<rect x="427.1" y="126" width="2.0" height="54" fill="#ff4d87"/>
+<rect x="429.1" y="126" width="173.3" height="54" fill="#7aa2f7"/>
+<text x="515.7565570279816" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">2,543.2</text>
+<rect x="602.4" y="126" width="255.6" height="54" fill="#b69cff"/>
+<text x="730.1969989228187" y="159" fill="#0c0d10" font-size="14" font-weight="800" text-anchor="middle">3,751.1</text>
+<text x="858" y="112" fill="#5eead4" font-size="22" font-weight="800" text-anchor="end">11,975.7</text>
+<rect x="42" y="199" width="14" height="14" rx="3" fill="#5eead4"/>
+<text x="66" y="211" fill="#f5f6f8" font-size="13" font-weight="700">Direct investment</text>
+<text x="432" y="211" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">3,605.2</text>
+<rect x="450" y="199" width="14" height="14" rx="3" fill="#f5b13d"/>
+<text x="474" y="211" fill="#f5f6f8" font-size="13" font-weight="700">Portfolio</text>
+<text x="840" y="211" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">2,046.6</text>
+<rect x="42" y="241" width="14" height="14" rx="3" fill="#ff4d87"/>
+<text x="66" y="253" fill="#f5f6f8" font-size="13" font-weight="700">Derivatives</text>
+<text x="432" y="253" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">29.5</text>
+<rect x="450" y="241" width="14" height="14" rx="3" fill="#7aa2f7"/>
+<text x="474" y="253" fill="#f5f6f8" font-size="13" font-weight="700">Other investment</text>
+<text x="840" y="253" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">2,543.2</text>
+<rect x="42" y="283" width="14" height="14" rx="3" fill="#b69cff"/>
+<text x="66" y="295" fill="#f5f6f8" font-size="13" font-weight="700">Reserves</text>
+<text x="432" y="295" fill="#a8adb7" font-size="13" font-weight="700" text-anchor="end">3,751.1</text>
+<rect x="42" y="350" width="816" height="84" rx="10" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="381" fill="#a8adb7" font-size="12" font-weight="700">EXTERNAL LIABILITIES</text>
+<text x="66" y="414" fill="#ff4d87" font-size="30" font-weight="800">$7,969.6bn</text>
+<text x="454" y="381" fill="#a8adb7" font-size="12" font-weight="700">OFFICIAL NET EXTERNAL ASSETS</text>
+<text x="454" y="414" fill="#5eead4" font-size="30" font-weight="800">$4,006.0bn</text>
+<rect x="42" y="462" width="816" height="96" rx="10" fill="#111319" stroke="#2a2d35"/>
+<text x="66" y="496" fill="#f5f6f8" font-size="14" font-weight="700">The five published components add to $11,975.6bn.</text>
+<text x="66" y="523" fill="#a8adb7" font-size="13">The $0.1bn gap against the total and net balance comes from rounding.</text>
+<text x="42" y="590" fill="#a8adb7" font-size="11">Source: SAFE, international investment position at 31 March 2026. Categories are components, not institutions.</text>
+</svg>
+<figcaption>The international investment position adds asset categories, not institutional cash accounts. Rounded components explain the $0.1 billion gap against the published total. Source: SAFE.</figcaption>
+</figure>
+
+These categories cannot be mapped cleanly onto institutions. Banks hold bonds as well as loans. Companies make direct investments and extend trade credit. Non-bank financial institutions own equities and fund shares. Reserves themselves contain several asset types. The IIP organises instruments, not reporting lines.
+
+That distinction drives the investigation: **a national aggregate has no single maturity, liability currency or liquidity deadline**.
+
+## Reserves serve monetary policy, not insurance liabilities
+
+At end-2025, reserve assets in China's IIP stood at $3.744 trillion. SAFE's [detailed release](https://www.safe.gov.cn/en/2026/0327/2405.html) split them into $3.358 trillion of foreign-exchange reserves, $319.5 billion of monetary gold, $55.8 billion of special drawing rights and an $11.2 billion IMF reserve position. The monthly foreign-exchange reserve series follows a different timetable. At end-July 2026 it stood at [$3.419 trillion](https://www.safe.gov.cn/en/2026/0807/2449.html).
+
+Subtracting July FX reserves from March reserve assets would be meaningless. The dates differ. The March category includes gold and IMF-related assets. Exchange-rate and bond-price changes can alter the dollar value without any transaction.
+
+Official reserves back intervention capacity, confidence in the currency and the country's ability to meet external obligations. Their liability side is fundamentally different from an insurance policy. A bond-price loss inside a reserve portfolio may therefore be absorbed differently from the same mark-to-market move at an insurer facing surrenders or a bank facing deposit outflows.
+
+The public data do not provide a sufficiently frequent breakdown by currency, maturity, duration and issuer. The monthly reserve total reveals the size of the buffer, not its sensitivity to a parallel rise in U.S. rates, a broad dollar decline or a restriction on access to Western custodians.
+
+The last category is no longer purely hypothetical. In December 2025, the [Council of the European Union](https://www.consilium.europa.eu/en/press/press-releases/2025/12/12/council-decides-to-prohibit-transfers-of-immobilised-central-bank-of-russia-assets-back-to-russia/) prohibited transfers of immobilised Russian central-bank assets back to Russia. That establishes a general point: a reserve asset can retain market value while becoming unavailable to its owner. It does not establish that China will face the same action or identify which Chinese assets would be exposed.
+
+## CIC is public money, but not a second reserve line
+
+China Investment Corporation adds another layer. The latest full annual report we could locate publicly covers **2023**, so it should not be treated as a 2026 snapshot. At end-2023, CIC reported [$1.33 trillion in total assets and $1.24 trillion in net assets](https://recruitment.china-inv.cn/china_inv/Media/2024-09/1002741.shtml). Its global portfolio comprised 33.13% public equities, 16.46% fixed income, 48.31% alternative assets and 2.10% cash and other assets.
+
+That allocation resembles a long-horizon investor more than a foreign-exchange reserve manager. Alternative assets can tolerate lower liquidity in pursuit of higher expected returns. CIC reported a ten-year annualised net overseas return of 6.57% in dollars at end-2023, 31 basis points above target. It is a corporate disclosure and says nothing about 2026 valuations.
+
+The perimeter is complicated. CIC's [official overview](https://www.china-inv.cn/chinainven/AboutCIC/Overview.shtml) says CIC International and CIC Capital run overseas portfolios, while Central Huijin holds stakes in major domestic financial institutions. Central Huijin managed RMB 6.41 trillion of state financial capital at end-2023. Adding CIC's $1.33 trillion to reserves or bank external assets would risk institutional and conceptual double counting. Public documentation does not offer a consolidation table that removes the overlap.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-en-02-title cn-en-02-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-en-02-title">Six possible carriers of China dollar risk</title>
+<desc id="cn-en-02-desc">Reserves, banks, CIC, insurers, companies and custody chains have different liabilities and constraints.</desc>
+<rect width="900" height="660" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Six balance sheets, six ways to gain or lose</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">Public ownership does not turn these assets into one cash account.</text>
+<rect x="42" y="112" width="400" height="124" rx="10" fill="#15171c" stroke="#5eead4" stroke-width="1.5"/>
+<circle cx="76" cy="146" r="17" fill="#5eead4"/>
+<text x="76" y="152" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">1</text>
+<text x="106" y="151" fill="#5eead4" font-size="16" font-weight="800">RESERVES</text>
+<text x="66" y="188" fill="#f5f6f8" font-size="13">Liability: money and credibility</text>
+<text x="66" y="213" fill="#a8adb7" font-size="13">Risks: rates, FX, access</text>
+<rect x="458" y="112" width="400" height="124" rx="10" fill="#15171c" stroke="#7aa2f7" stroke-width="1.5"/>
+<circle cx="492" cy="146" r="17" fill="#7aa2f7"/>
+<text x="492" y="152" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">2</text>
+<text x="522" y="151" fill="#7aa2f7" font-size="16" font-weight="800">BANKS</text>
+<text x="482" y="188" fill="#f5f6f8" font-size="13">Liability: deposits and funding</text>
+<text x="482" y="213" fill="#a8adb7" font-size="13">Risks: liquidity, counterparty</text>
+<rect x="42" y="262" width="400" height="124" rx="10" fill="#15171c" stroke="#b69cff" stroke-width="1.5"/>
+<circle cx="76" cy="296" r="17" fill="#b69cff"/>
+<text x="76" y="302" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">3</text>
+<text x="106" y="301" fill="#b69cff" font-size="16" font-weight="800">CIC</text>
+<text x="66" y="338" fill="#f5f6f8" font-size="13">Liability: long public capital</text>
+<text x="66" y="363" fill="#a8adb7" font-size="13">Risks: market, illiquidity</text>
+<rect x="458" y="262" width="400" height="124" rx="10" fill="#15171c" stroke="#f5b13d" stroke-width="1.5"/>
+<circle cx="492" cy="296" r="17" fill="#f5b13d"/>
+<text x="492" y="302" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">4</text>
+<text x="522" y="301" fill="#f5b13d" font-size="16" font-weight="800">INSURERS</text>
+<text x="482" y="338" fill="#f5f6f8" font-size="13">Liability: long-term policies</text>
+<text x="482" y="363" fill="#a8adb7" font-size="13">Risks: ALM, solvency</text>
+<rect x="42" y="412" width="400" height="124" rx="10" fill="#15171c" stroke="#84cc9a" stroke-width="1.5"/>
+<circle cx="76" cy="446" r="17" fill="#84cc9a"/>
+<text x="76" y="452" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">5</text>
+<text x="106" y="451" fill="#84cc9a" font-size="16" font-weight="800">COMPANIES</text>
+<text x="66" y="488" fill="#f5f6f8" font-size="13">Liability: trade and debt</text>
+<text x="66" y="513" fill="#a8adb7" font-size="13">Risks: cash, FX, demand</text>
+<rect x="458" y="412" width="400" height="124" rx="10" fill="#15171c" stroke="#ff4d87" stroke-width="1.5"/>
+<circle cx="492" cy="446" r="17" fill="#ff4d87"/>
+<text x="492" y="452" fill="#0c0d10" font-size="15" font-weight="800" text-anchor="middle">6</text>
+<text x="522" y="451" fill="#ff4d87" font-size="16" font-weight="800">CUSTODIANS</text>
+<text x="482" y="488" fill="#f5f6f8" font-size="13">Role: record securities</text>
+<text x="482" y="513" fill="#a8adb7" font-size="13">Statistical risk: attribution</text>
+<rect x="42" y="574" width="816" height="52" rx="8" fill="#21131c" stroke="#ff4d87"/>
+<text x="450" y="606" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="middle">The state can move a cost between balance sheets. It cannot erase the economic loss.</text>
+<text x="42" y="648" fill="#a8adb7" font-size="11">l0g synthesis from SAFE, CIC, NFRA and TIC reporting scopes.</text>
+</svg>
+<figcaption>The same dollars perform different jobs when they back a currency, a bank deposit, an insurance policy, a sovereign portfolio or corporate trade. l0g synthesis.</figcaption>
+</figure>
+
+Public ownership creates policy capacity, not accounting alchemy. A state recapitalisation may protect a bank's creditors by moving the cost to the entity supplying capital. Selling an illiquid CIC asset to obtain dollars is not equivalent to mobilising a short Treasury held in reserves. The ultimate owner may be public in both cases, but duration, liquidity, governance and realised losses differ.
+
+## Banks have become a second major external intermediary
+
+The banking balance sheet is more transparent. At 31 March 2026, Chinese banks held [$2.109 trillion in external assets](https://www.safe.gov.cn/en/2026/0625/2425.html) against $1.485 trillion in external liabilities. Net external assets were $623.6 billion.
+
+Assets included $1.182 trillion of deposits and loans, $632.9 billion of bonds and $293.6 billion of other claims, including equities. By currency, banks held $662.7 billion equivalent in renminbi, $977.2 billion in U.S. dollars and $468.7 billion in other currencies.
+
+Liabilities included $766.6 billion equivalent in renminbi, $286.0 billion in dollars and $432.5 billion in other currencies. SAFE reports $727.4 billion in net foreign-currency assets and $103.9 billion in net renminbi liabilities. Subtracting dollar liabilities from dollar assets produces $691.2 billion, but that is not SAFE's foreign-currency net. The official figure also includes other currencies and exact, unrounded observations.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-en-03-title cn-en-03-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-en-03-title">External balance sheet of Chinese banks at 31 March 2026</title>
+<desc id="cn-en-03-desc">Banks external assets exceed liabilities. Currency breakdowns show net foreign-currency assets and net renminbi liabilities.</desc>
+<rect width="900" height="650" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Banks carry a two-sided external balance sheet</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">USD billions · 31 March 2026 · a net position is not a gross portfolio</text>
+<rect x="42" y="108" width="390" height="102" rx="10" fill="#15171c" stroke="#5eead4"/>
+<text x="66" y="140" fill="#a8adb7" font-size="12" font-weight="700">EXTERNAL ASSETS</text>
+<text x="66" y="181" fill="#5eead4" font-size="32" font-weight="800">2,108.6</text>
+<rect x="468" y="108" width="390" height="102" rx="10" fill="#15171c" stroke="#ff4d87"/>
+<text x="492" y="140" fill="#a8adb7" font-size="12" font-weight="700">EXTERNAL LIABILITIES</text>
+<text x="492" y="181" fill="#ff4d87" font-size="32" font-weight="800">1,485.1</text>
+<text x="42" y="254" fill="#a8adb7" font-size="12" font-weight="700">ASSETS BY CURRENCY</text>
+<rect x="42.0" y="270" width="256.5" height="42" fill="#f5b13d"/>
+<text x="170.22801859053402" y="297" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">RMB</text>
+<rect x="298.5" y="270" width="378.2" height="42" fill="#5eead4"/>
+<text x="487.53770274115533" y="297" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">USD</text>
+<rect x="676.6" y="270" width="181.4" height="42" fill="#7aa2f7"/>
+<text x="767.3096841506214" y="297" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">Other</text>
+<text x="42" y="345" fill="#a8adb7" font-size="12" font-weight="700">LIABILITIES BY CURRENCY</text>
+<rect x="42.0" y="361" width="421.2" height="42" fill="#f5b13d"/>
+<text x="252.60723183623998" y="388" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">RMB</text>
+<rect x="463.2" y="361" width="157.1" height="42" fill="#5eead4"/>
+<text x="541.7869503737122" y="388" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">USD</text>
+<rect x="620.4" y="361" width="237.6" height="42" fill="#7aa2f7"/>
+<text x="739.1797185374722" y="388" fill="#0c0d10" font-size="12" font-weight="800" text-anchor="middle">Other</text>
+<rect x="42" y="449" width="252" height="112" rx="10" fill="#10201d" stroke="#5eead4"/>
+<text x="62" y="478" fill="#a8adb7" font-size="11" font-weight="700">NET EXTERNAL ASSETS</text>
+<text x="62" y="520" fill="#5eead4" font-size="26" font-weight="800">$623.6bn</text>
+<rect x="324" y="449" width="252" height="112" rx="10" fill="#10201d" stroke="#7aa2f7"/>
+<text x="344" y="478" fill="#a8adb7" font-size="11" font-weight="700">NET FOREIGN CURRENCY</text>
+<text x="344" y="520" fill="#7aa2f7" font-size="26" font-weight="800">$727.4bn</text>
+<rect x="606" y="449" width="252" height="112" rx="10" fill="#211d13" stroke="#f5b13d"/>
+<text x="626" y="478" fill="#a8adb7" font-size="11" font-weight="700">NET RMB POSITION</text>
+<text x="626" y="520" fill="#f5b13d" font-size="26" font-weight="800">-$103.9bn</text>
+<text x="42" y="588" fill="#a8adb7" font-size="11">
+<tspan x="42" dy="0">$977.2bn - $286.0bn = $691.2bn.</tspan>
+<tspan x="42" dy="20">This does not replace the official FX net, which includes other currencies.</tspan>
+</text>
+<text x="42" y="632" fill="#a8adb7" font-size="11">Source: SAFE. Published figures are rounded.</text>
+</svg>
+<figcaption>The banking sector has a positive net external position, but both gross assets and gross liabilities remain large. SAFE's foreign-currency net includes the dollar and other currencies. Source: SAFE.</figcaption>
+</figure>
+
+A positive net position reduces one classic vulnerability: reliance on very large external dollar refinancing. It does not remove maturity, counterparty or liquidity risk. A five-year foreign loan and a deposit withdrawable on short notice can share a currency and still behave very differently in stress. SAFE does not publish a complete cross-matrix of currency, maturity, instrument, collateral and bank type.
+
+Nor does the balance sheet show every off-balance-sheet obligation. Swaps can deliver or absorb dollars without appearing as conventional debt. State banks can act both as commercial institutions and as exchange-rate policy conduits. Those functions meet in a revealing statistical dispute.
+
+## Two intervention thermometers point in opposite directions
+
+The [U.S. Treasury's July 2026 foreign-exchange report](https://home.treasury.gov/system/files/206/July-2026-FX-Report.pdf) relies on two proxies because China does not publish a complete intervention series.
+
+The first tracks changes in PBOC foreign-exchange assets booked at historical cost. Treasury says it indicates **$105 billion in FX sales during 2025**.
+
+The second uses banks' net FX settlement, adjusted for changes in outstanding forwards. It includes state-owned banks as well as the central bank. It indicates **$323 billion in net FX purchases** during the same year.
+
+Those signs can coexist only because the perimeters differ. Treasury interprets the divergence as possible evidence that state banks increasingly absorb and recycle dollar flows. It notes that deposit-taking banks' net foreign assets rose by $367 billion in 2025, entirely through higher gross assets, while the stock of interbank FX lending through reverse repos increased from $25 billion to $54 billion.
+
+Attribution matters. This is a **U.S. government estimate**, built from proxies and inference. The report explicitly says the available detail does not permit a confident assessment of every component. Commercial activity, corporate dollar deposits, renminbi claims on non-residents and policy-bank operations may all contribute.
+
+The disagreement between the thermometers is therefore not proof of falsification. It shows why the location of intermediation matters. A transaction that once expanded official reserves directly may now appear on a state bank's balance sheet or through its swaps, making the boundary between currency policy and commercial management harder to observe.
+
+## Three U.S. data sets answer three different questions
+
+U.S. securities produce the greatest confusion.
+
+The Treasury's annual survey attributed **$1.279 trillion of U.S. securities to mainland China at 30 June 2025**: $344 billion in equities, $657 billion in long-term Treasuries, $186 billion in agency debt, $17 billion in corporate bonds and $75 billion in short-term debt. [Hong Kong and Macau are reported separately](https://home.treasury.gov/news/press-releases/sb0482). The total combines official and private holders.
+
+Monthly TIC data put Treasuries attributed to mainland China at **$633.4 billion on 30 June 2026**, down from $731.4 billion a year earlier. The [Treasury warns](https://ticdata.treasury.gov/Publish/slt_table5.html) that securities held through overseas custodians may be assigned to the custody jurisdiction rather than the economic owner. The $98 billion decline is therefore not evidence of equal net sales. Transactions, valuations and custody relocation can all change the stock.
+
+SAFE, meanwhile, recorded **$364.0 billion of Chinese non-reserve portfolio assets in the United States at end-2025**. That series excludes reserve assets and classifies resident holdings by destination and holder sector.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-en-04-title cn-en-04-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-en-04-title">Four different measures of Chinese assets linked to the United States</title>
+<desc id="cn-en-04-desc">The $1,279bn, $657bn, $633.4bn and $364bn figures differ by date, asset, holder and attribution method.</desc>
+<rect width="900" height="650" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Four U.S. figures, no magic subtraction</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">Each card changes at least one dimension: date, assets, holders or custody.</text>
+<rect x="42" y="112" width="400" height="164" rx="10" fill="#15171c" stroke="#5eead4" stroke-width="1.5"/>
+<text x="64" y="154" fill="#5eead4" font-size="30" font-weight="800">$1,279bn</text>
+<text x="420" y="150" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">30 June 2025</text>
+<text x="64" y="195" fill="#f5f6f8" font-size="15" font-weight="700">All U.S. securities</text>
+<text x="64" y="224" fill="#a8adb7" font-size="12">Official + private, TIC attribution</text>
+<text x="64" y="254" fill="#5eead4" font-size="10" font-weight="800">STOCK, NOT FLOW</text>
+<rect x="458" y="112" width="400" height="164" rx="10" fill="#15171c" stroke="#7aa2f7" stroke-width="1.5"/>
+<text x="480" y="154" fill="#7aa2f7" font-size="30" font-weight="800">$657bn</text>
+<text x="836" y="150" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">30 June 2025</text>
+<text x="480" y="195" fill="#f5f6f8" font-size="15" font-weight="700">Long-term Treasuries</text>
+<text x="480" y="224" fill="#a8adb7" font-size="12">Subset of annual survey</text>
+<text x="480" y="254" fill="#7aa2f7" font-size="10" font-weight="800">STOCK, NOT FLOW</text>
+<rect x="42" y="302" width="400" height="164" rx="10" fill="#15171c" stroke="#f5b13d" stroke-width="1.5"/>
+<text x="64" y="344" fill="#f5b13d" font-size="30" font-weight="800">$633.4bn</text>
+<text x="420" y="340" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">30 June 2026</text>
+<text x="64" y="385" fill="#f5f6f8" font-size="15" font-weight="700">All Treasuries</text>
+<text x="64" y="414" fill="#a8adb7" font-size="12">Monthly TIC, custody imperfect</text>
+<text x="64" y="444" fill="#f5b13d" font-size="10" font-weight="800">STOCK, NOT FLOW</text>
+<rect x="458" y="302" width="400" height="164" rx="10" fill="#15171c" stroke="#ff4d87" stroke-width="1.5"/>
+<text x="480" y="344" fill="#ff4d87" font-size="30" font-weight="800">$364bn</text>
+<text x="836" y="340" fill="#a8adb7" font-size="12" font-weight="700" text-anchor="end">31 Dec. 2025</text>
+<text x="480" y="385" fill="#f5f6f8" font-size="15" font-weight="700">Portfolio assets in U.S.</text>
+<text x="480" y="414" fill="#a8adb7" font-size="12">SAFE, reserves excluded</text>
+<text x="480" y="444" fill="#ff4d87" font-size="10" font-weight="800">STOCK, NOT FLOW</text>
+<line x1="42" y1="516" x2="858" y2="516" stroke="#2a2d35"/>
+<text x="42" y="550" fill="#f5f6f8" font-size="13">
+<tspan x="42" dy="0">The fall from $731.4bn to $633.4bn in monthly TIC is not automatically net selling.</tspan>
+<tspan x="42" dy="24">Transactions, valuation and custody relocation can all change the stock.</tspan>
+</text>
+<text x="42" y="630" fill="#a8adb7" font-size="11">Sources: U.S. Treasury TIC; SAFE. Hong Kong and Macau are separate in the U.S. survey.</text>
+</svg>
+<figcaption>Each figure is correct within its own frame. None measures China's U.S. reserve portfolio on its own, and the gaps are not sales flows. Sources: U.S. Treasury TIC, SAFE.</figcaption>
+</figure>
+
+None of these numbers reveals the U.S. share of China's official reserves. The $1.279 trillion TIC figure combines public and private holdings but uses custody attribution. SAFE's $364 billion excludes reserves. The $633.4 billion figure covers Treasuries only and is dated June 2026. Even the two U.S. measures differ: the June 2025 annual survey counted long-term Treasuries, while the monthly series also captures bills through a higher-frequency estimation framework.
+
+The inability to reconcile them by subtraction is a finding, not an invitation to invent a residual.
+
+## Hong Kong is both destination and mirror
+
+SAFE offers a different view through non-reserve portfolio assets. At end-2025, they totalled **$1.988 trillion**, with $1.263 trillion in equities and fund shares and $724.7 billion in bonds. The five leading reported destinations were [Hong Kong, the United States, the Cayman Islands, the British Virgin Islands and the United Kingdom](https://www.safe.gov.cn/en/2026/0529/2419.html).
+
+Hong Kong alone accounted for $978.9 billion, nearly half the total. That does not mean every underlying exposure is economically Hong Kong risk. Assets can sit in funds, vehicles and intermediaries domiciled there while ultimately financing other markets. Legal geography and economic geography diverge.
+
+By holder sector, SAFE assigns $1.109 trillion to other financial corporations, $566.7 billion to banks and $312.1 billion to the non-financial sector. The reported shares are 56%, 29% and 16%, which add to 101% because of rounding. More importantly, other financial corporations does not mean insurers. It is a broader non-bank category that can include funds, brokers, vehicles and other intermediaries.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-en-05-title cn-en-05-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-en-05-title">Destination and holders of China non-reserve external portfolio at end-2025</title>
+<desc id="cn-en-05-desc">The non-reserve portfolio totals $1,987.5bn. Hong Kong is the leading reported destination and non-bank financial institutions the largest holder sector.</desc>
+<rect width="900" height="720" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">The non-reserve portfolio first runs through Hong Kong</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">$1,987.5bn at 31 December 2025 · reported destination and holder sector</text>
+<text x="42" y="118" fill="#5eead4" font-size="12" font-weight="800">DESTINATIONS</text>
+<text x="42" y="166" fill="#f5f6f8" font-size="13">Hong Kong</text>
+<rect x="210" y="148" width="520.0" height="24" rx="4" fill="#5eead4"/>
+<text x="750" y="166" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">978.9</text>
+<text x="42" y="214" fill="#f5f6f8" font-size="13">United States</text>
+<rect x="210" y="196" width="193.4" height="24" rx="4" fill="#7aa2f7"/>
+<text x="750" y="214" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">364.0</text>
+<text x="42" y="262" fill="#f5f6f8" font-size="13">Cayman Islands</text>
+<rect x="210" y="244" width="77.1" height="24" rx="4" fill="#f5b13d"/>
+<text x="750" y="262" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">145.1</text>
+<text x="42" y="310" fill="#f5f6f8" font-size="13">British Virgin Is.</text>
+<rect x="210" y="292" width="34.6" height="24" rx="4" fill="#ff4d87"/>
+<text x="750" y="310" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">65.2</text>
+<text x="42" y="358" fill="#f5f6f8" font-size="13">United Kingdom</text>
+<rect x="210" y="340" width="25.8" height="24" rx="4" fill="#b69cff"/>
+<text x="750" y="358" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">48.5</text>
+<text x="42" y="406" fill="#f5f6f8" font-size="13">Other</text>
+<rect x="210" y="388" width="204.9" height="24" rx="4" fill="#a8adb7"/>
+<text x="750" y="406" fill="#f5f6f8" font-size="13" font-weight="700" text-anchor="end">385.8</text>
+<line x1="42" y1="454" x2="858" y2="454" stroke="#2a2d35"/>
+<text x="42" y="490" fill="#f5b13d" font-size="12" font-weight="800">HOLDER SECTORS</text>
+<text x="42" y="538" fill="#f5f6f8" font-size="13">Other financial corporations</text>
+<rect x="260" y="520" width="520.0" height="25" rx="4" fill="#f5b13d"/>
+<text x="800" y="538" fill="#f5f6f8" font-size="13" font-weight="800" text-anchor="end">56 %</text>
+<text x="42" y="588" fill="#f5f6f8" font-size="13">Banks</text>
+<rect x="260" y="570" width="265.8" height="25" rx="4" fill="#7aa2f7"/>
+<text x="800" y="588" fill="#f5f6f8" font-size="13" font-weight="800" text-anchor="end">29 %</text>
+<text x="42" y="638" fill="#f5f6f8" font-size="13">Non-financial sector</text>
+<rect x="260" y="620" width="146.4" height="25" rx="4" fill="#84cc9a"/>
+<text x="800" y="638" fill="#f5f6f8" font-size="13" font-weight="800" text-anchor="end">16 %</text>
+<text x="42" y="686" fill="#a8adb7" font-size="11">“Other financial corporations” is broader than insurers. Published shares add to 101% because of rounding.</text>
+<text x="42" y="708" fill="#a8adb7" font-size="11">Source: SAFE release dated 29 May 2026 on end-2025 stocks.</text>
+</svg>
+<figcaption>Hong Kong is both an investment destination and an intermediation centre. Other financial corporations are a broader category than insurers alone. Source: SAFE.</figcaption>
+</figure>
+
+Custody bias runs both ways. TIC may assign a security to Hong Kong even when its economic beneficiary sits elsewhere. SAFE may record Hong Kong as the immediate destination before an investment is reallocated. Both systems answer legitimate but different questions.
+
+A consolidated risk measure would require ultimate beneficial ownership, the liability currency funding the asset, attached derivatives and the ability to repatriate sale proceeds. No single public database contains all four.
+
+## China's insurers are huge, while their foreign portfolio remains opaque
+
+At end-June 2026, insurance companies and insurance asset managers held **RMB 43.9 trillion in assets**, including RMB 38.7 trillion at life insurers, according to [second-quarter regulatory indicators](https://jrj.wuhan.gov.cn/ynzx_57/xwzx/202608/t20260817_2834727.shtml) based on National Financial Regulatory Administration data. This measures the domestic scale of the sector, not its dollar position.
+
+Offshore investing is permitted under constraints. The [regulation on overseas investment by insurance funds](https://www.safe.gov.cn/safe/2022/0818/21331.html), first issued in 2007 and revised in December 2021, caps total investment at 15% of prior year-end assets. It requires asset-liability management, regulates custodians and permits forwards, swaps, options and futures only for hedging, not speculation or leverage expansion.
+
+A legal ceiling is not an observed exposure. Applying 15% to RMB 43.9 trillion would produce theoretical capacity, not an actual portfolio. The public data reviewed for this investigation do not provide an aggregate breakdown by country, currency, duration, hedge and policy type comparable with Taiwan's disclosures.
+
+The silence changes the conclusion. Chinese insurers are large enough to matter and legally able to invest abroad. There is no public basis for saying they carry the same currency mismatch as Taiwanese life companies. The analogy ends exactly where the decisive data would begin.
+
+## Net-creditor status is a powerful external buffer
+
+The strongest counterargument to a China dollar-vulnerability story is straightforward. The country owns roughly $4 trillion more external financial assets than liabilities. FX reserves exceed $3.4 trillion. Capital controls remain in place, and public banks can absorb flows. External debt is modest relative to the size of the economy.
+
+At end-March 2026, SAFE reported [$2.412 trillion of external debt](https://www.safe.gov.cn/safe/2026/0626/27623.html), in domestic and foreign currencies. Long-term debt was $1.000 trillion, or 41%, and short-term debt $1.412 trillion, or 59%. Trade-related credit accounted for 40% of the short-term total. Banks owed $988.7 billion, other sectors $959.8 billion, the general government $360.2 billion and the central bank $103.4 billion.
+
+The large short-term share looks more alarming without its denominator. SAFE's end-2025 indicators put external debt at 11.9% of GDP and short-term external debt at [39.2% of FX reserves](https://www.safe.gov.cn/en/2026/0327/2410.html). These ratios come from the Chinese authority itself. The [IMF](https://www.elibrary.imf.org/view/journals/002/2026/044/article-A001-en.xml) also describes external debt as relatively low, while showing that reserve adequacy depends heavily on assumptions about the exchange-rate regime and capital controls.
+
+A classic external-funding crisis of the kind experienced by highly dollar-indebted economies therefore looks limited in current data. That does not remove market losses, local liquidity stress or asset-access risk. It places them inside a system with a very large buffer and strong administrative tools.
+
+## The current-account surplus is migrating across balance sheets
+
+The mechanism continued in 2026. SAFE says non-bank sectors made [$9.2 trillion of cross-border receipts and payments](https://www.safe.gov.cn/en/2026/0717/2441.html) in the first half, up 21% year on year. Renminbi accounted for 52.9% of cross-border settlements. Bank FX purchases and sales totalled $2.9 trillion, while derivatives represented 62% of the $22.1 trillion turnover in China's domestic FX market.
+
+SAFE also says current-account surpluses are increasingly deployed abroad by banks, companies and other actors. The [preliminary first-half balance of payments](https://www.safe.gov.cn/safe/2026/0814/27779.html) showed a $379.4 billion current-account surplus and a $383.2 billion capital-and-financial-account deficit including errors and omissions.
+
+Those numbers do not trace an export dollar to a particular institution. They describe the macro counterpart: a current-account surplus generally produces net claims on the rest of the world, subject to reserve changes and statistical adjustments. The relevant question is no longer just how much the central bank buys. It is **which balance sheet recycles the surplus, and in what instrument**.
+
+Moving intermediation toward banks and non-official investors may diversify decisions and reduce concentration in reserves. It may also make exchange-rate policy less transparent when state banks operate at the border between commercial incentives and public objectives.
+
+## The state can transfer a loss, not eliminate it
+
+Full consolidation creates a seductive illusion. Because China is a net creditor and controls major banks, all external assets can appear to form one collective reserve. Four frictions break that logic.
+
+First is **liquidity**. A direct investment, a private-equity fund and a short Treasury cannot be mobilised on the same timetable or at the same cost.
+
+Second is the **local liability**. Banks protect deposits. Insurers serve policies. Companies pay suppliers and debt. Removing an asset to support the currency can open a hole elsewhere.
+
+Third is **jurisdiction**. An asset domiciled or held abroad depends on contracts, custodians and foreign law. Control of the owner does not guarantee access in every geopolitical scenario.
+
+Fourth is **information**. Without derivative, maturity and overlap detail, a large national net asset position can coexist with a local dollar shortage at one institution.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cn-en-06-title cn-en-06-desc" style="display:block;width:100%;height:auto;overflow:hidden;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+<title id="cn-en-06-title">Risk map by carrier of China dollar balance sheet</title>
+<desc id="cn-en-06-desc">A matrix separates valuation, liquidity, counterparty, access and capital risks across reserves, banks, CIC, insurers and companies.</desc>
+<rect width="900" height="700" rx="12" fill="#0c0d10"/>
+<text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Dollar risk changes shape with the balance sheet</text>
+<text x="42" y="76" fill="#a8adb7" font-size="14">Analytical intensity, not a prudential score · high, medium, secondary</text>
+<text x="318.0" y="112" fill="#5eead4" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="318.0" dy="0">Valuation</tspan>
+</text>
+<text x="434.0" y="112" fill="#7aa2f7" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="434.0" dy="0">Liquidity</tspan>
+</text>
+<text x="550.0" y="112" fill="#f5b13d" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="550.0" dy="0">Counterparty</tspan>
+</text>
+<text x="666.0" y="112" fill="#ff4d87" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="666.0" dy="0">Access</tspan>
+</text>
+<text x="782.0" y="112" fill="#b69cff" font-size="11" font-weight="700" text-anchor="middle">
+<tspan x="782.0" dy="0">Capital</tspan>
+<tspan x="782.0" dy="16">ALM</tspan>
+</text>
+<rect x="42" y="142" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="182" fill="#f5f6f8" font-size="15" font-weight="800">Reserves</text>
+<circle cx="318.0" cy="176" r="17" fill="#5eead4" opacity="0.95"/>
+<circle cx="434.0" cy="176" r="12" fill="#7aa2f7" opacity="0.75"/>
+<circle cx="550.0" cy="176" r="7" fill="#f5b13d" opacity="0.55"/>
+<circle cx="666.0" cy="176" r="17" fill="#ff4d87" opacity="0.95"/>
+<circle cx="782.0" cy="176" r="7" fill="#b69cff" opacity="0.55"/>
+<rect x="42" y="218" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="258" fill="#f5f6f8" font-size="15" font-weight="800">Banks</text>
+<circle cx="318.0" cy="252" r="12" fill="#5eead4" opacity="0.75"/>
+<circle cx="434.0" cy="252" r="17" fill="#7aa2f7" opacity="0.95"/>
+<circle cx="550.0" cy="252" r="17" fill="#f5b13d" opacity="0.95"/>
+<circle cx="666.0" cy="252" r="12" fill="#ff4d87" opacity="0.75"/>
+<circle cx="782.0" cy="252" r="17" fill="#b69cff" opacity="0.95"/>
+<rect x="42" y="294" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="334" fill="#f5f6f8" font-size="15" font-weight="800">CIC</text>
+<circle cx="318.0" cy="328" r="17" fill="#5eead4" opacity="0.95"/>
+<circle cx="434.0" cy="328" r="12" fill="#7aa2f7" opacity="0.75"/>
+<circle cx="550.0" cy="328" r="12" fill="#f5b13d" opacity="0.75"/>
+<circle cx="666.0" cy="328" r="17" fill="#ff4d87" opacity="0.95"/>
+<circle cx="782.0" cy="328" r="7" fill="#b69cff" opacity="0.55"/>
+<rect x="42" y="370" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="410" fill="#f5f6f8" font-size="15" font-weight="800">Insurers</text>
+<circle cx="318.0" cy="404" r="12" fill="#5eead4" opacity="0.75"/>
+<circle cx="434.0" cy="404" r="17" fill="#7aa2f7" opacity="0.95"/>
+<circle cx="550.0" cy="404" r="12" fill="#f5b13d" opacity="0.75"/>
+<circle cx="666.0" cy="404" r="12" fill="#ff4d87" opacity="0.75"/>
+<circle cx="782.0" cy="404" r="17" fill="#b69cff" opacity="0.95"/>
+<rect x="42" y="446" width="816" height="68" rx="8" fill="#15171c" stroke="#2a2d35"/>
+<text x="66" y="486" fill="#f5f6f8" font-size="15" font-weight="800">Companies</text>
+<circle cx="318.0" cy="480" r="12" fill="#5eead4" opacity="0.75"/>
+<circle cx="434.0" cy="480" r="17" fill="#7aa2f7" opacity="0.95"/>
+<circle cx="550.0" cy="480" r="12" fill="#f5b13d" opacity="0.75"/>
+<circle cx="666.0" cy="480" r="12" fill="#ff4d87" opacity="0.75"/>
+<circle cx="782.0" cy="480" r="12" fill="#b69cff" opacity="0.75"/>
+<rect x="42" y="548" width="816" height="96" rx="10" fill="#111319" stroke="#2a2d35"/>
+<text x="66" y="580" fill="#5eead4" font-size="14" font-weight="800">China’s buffer</text>
+<text x="66" y="600" fill="#f5f6f8" font-size="12">
+<tspan x="66" dy="0">Large net assets, reserves and capital controls</tspan>
+<tspan x="66" dy="18">reduce classic external-crisis risk.</tspan>
+<tspan x="66" dy="18">Not every asset is liquid or accessible in every scenario.</tspan>
+</text>
+<text x="42" y="682" fill="#a8adb7" font-size="11">l0g synthesis. Levels show where to look for the mechanism, not a default probability.</text>
+</svg>
+<figcaption>The matrix identifies mechanisms to investigate. It is neither a sovereign rating nor a crisis-probability estimate. l0g synthesis.</figcaption>
+</figure>
+
+China's public system has more tools than a private insurer. Authorities can tighten controls, supply renminbi, organise asset transfers, recapitalise banks or direct credit. Each action has a counterpart: money creation, a fiscal transfer, a loss moved elsewhere, tighter domestic lending or more restricted capital movement. The capacity to distribute a shock through time and across balance sheets is real. It does not change the consolidated economic value of an asset that has been lost.
+
+## A perimeter lens against double counting
+
+The main documentary trap in this investigation is adding correct numbers that overlap. The tool below checks known relationships between the series used here. It permits sums between disjoint components of the same aggregate and netting between comparable assets and liabilities. It blocks a total plus one of its components, a national aggregate plus a sector already included, or two U.S. statistics built with different methods.
+
+<ChinaExternalBalanceSheetLens lang="en" mode="embed" />
+
+A non-comparable result does not mean either source is wrong. It means they answer different questions.
+
+## Missing data define the next risk watchlist
+
+Six disclosures would turn this map into a usable stress test:
+
+1. reserve composition by currency, issuer and maturity;
+2. a reconciliation of CIC and Central Huijin external assets with the national IIP;
+3. a currency-maturity matrix for bank assets, liabilities and derivatives;
+4. insurers' actual foreign portfolios and hedge structures;
+5. ultimate ownership of securities routed through Hong Kong, Cayman and other custodians;
+6. operational rules for support between the central bank, state banks and sovereign vehicles.
+
+We found no public release that joins all six layers. That absence rules out a credible single number for China's consolidated dollars at risk.
+
+The established conclusion is more restrained. China owns an immense external asset stock and remains a large net creditor. Its risk is not concentrated in one mismatch between dollar assets and renminbi liabilities. It travels across institutions, horizons and jurisdictions.
+
+The difficult scenario may therefore look less like an overnight run on the currency and more like a combination of falling asset prices, domestic liquidity demand, restricted access to some holdings and intervention shifted onto state-bank balance sheets. The national buffer could remain large while one part of the system quietly absorbs the cost.
+
+That is the decisive difference from Taiwan. There, dollar risk can first be read through life-insurer balance sheets. In China, the investigation must follow **who receives the surplus, who owns the asset, who has promised the liability and who can actually move the dollars when they are needed**.
