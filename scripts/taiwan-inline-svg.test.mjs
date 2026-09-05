@@ -65,6 +65,18 @@ const targets = [
     pattern: /<svg\b[^>]*aria-labelledby="afx-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
     checkInternalBounds: true,
   },
+  {
+    page: 'dist/posts/asie-actifs-americains-treasuries-mbs-credit/index.html',
+    count: 6,
+    pattern: /<svg\b[^>]*aria-labelledby="asia-us-fr-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
+  {
+    page: 'dist/en/analysis/what-asia-really-buys-in-america/index.html',
+    count: 6,
+    pattern: /<svg\b[^>]*aria-labelledby="asia-us-en-[^"]+"[^>]*>[\s\S]*?<\/svg>/gu,
+    checkInternalBounds: true,
+  },
 ];
 
 function numberAttribute(tag, name, fallback = 0) {

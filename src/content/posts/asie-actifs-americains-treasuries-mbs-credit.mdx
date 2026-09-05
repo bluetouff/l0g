@@ -1,0 +1,394 @@
+---
+title: "Ce que l’Asie achète réellement en Amérique"
+seoTitle: "Actifs américains détenus par l’Asie : Treasuries, MBS, actions | l0g"
+ogTitle: "Les 9 834 milliards de dollars de l’Asie aux États-Unis"
+ogImage: "/illustrations/news/asia-us-securities-portfolio-v1.jpg"
+description: "Au 30 juin 2025, les résidents asiatiques détenaient 9 834 Md$ de titres américains. Actions, Treasuries, MBS et crédit portent des risques distincts."
+pubDate: 2026-09-05T08:00:00+02:00
+updatedDate: 2026-09-05T08:00:00+02:00
+tags: ["Asie", "États-Unis", "Treasuries", "MBS", "actions", "fonds de pension", "assurance-vie", "TIC", "risque"]
+draft: false
+quickTake:
+  fact: "Au 30 juin 2025, la table A5 de TIC attribuait aux résidents asiatiques 9 834 milliards de dollars de titres américains, dont 4 504 milliards classés en actions, parts de fonds et autres instruments de capital."
+  importance: "La catégorie la plus importante du relevé est celle des actions et parts de fonds ; Treasuries, MBS d’agence et crédit transmettent ensuite des chocs différents."
+  uncertainty: "TIC classe par résidence juridique et ne révèle ni tous les bénéficiaires ultimes, ni les couvertures, ni le contenu des fonds, ni l’ensemble des prêts et dérivés."
+---
+
+import AsiaUSPortfolioStress from '../../components/AsiaUSPortfolioStress.astro';
+
+*Au 30 juin 2025, les résidents asiatiques détenaient **9 834 milliards de dollars de titres américains** selon la table A5 du [rapport Treasury International Capital](https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf). Le chiffre contient 4 504 milliards d’actions et de parts de fonds, 3 284 milliards de Treasuries à long terme, 741 milliards de dette d’agence, 848 milliards de dette d’entreprise et 458 milliards de dette à court terme. Les composantes arrondies totalisent 9 835 milliards. Le total publié reste 9 834. Cette différence d’un milliard n’est pas un mystère financier, seulement l’effet de l’arrondi. L’anomalie intéressante est ailleurs : dans ce relevé, la catégorie statistique des actions et parts de fonds dépasse la dette fédérale.*
+
+Ce cinquième volet de **La boucle du dollar asiatique** descend dans les actifs eux-mêmes. [Taïwan](/posts/taiwan-724-milliards-assureurs-vie-risque-change/) a montré l’écart entre actifs étrangers et passifs locaux. [Le Japon](/posts/japon-fin-argent-gratuit-bilans-assureurs-vie/) a montré le choc de duration dans les bilans. [La Corée du Sud](/posts/coree-du-sud-prix-couverture-parfaite/) a suivi le coût d’une protection de change très élevée. [Le volet précédent](/posts/asie-usine-invisible-couverture-dollar/) a ouvert l’usine des swaps et des forwards. Il reste maintenant à répondre à une question plus élémentaire : **qu’y a-t-il réellement derrière l’expression “actifs en dollars” ?**
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 615" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="asia-us-fr-scale-title asia-us-fr-scale-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="asia-us-fr-scale-title">Les titres américains détenus par les résidents asiatiques</title>
+  <desc id="asia-us-fr-scale-desc">Table A5, au 30 juin 2025, milliards de dollars. Les catégories sont arrondies.</desc>
+  <rect width="900" height="615" rx="12" fill="#0c0d10"/>
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Les titres américains détenus par les résidents asiatiques</text>
+  <text x="42" y="76" fill="#969ca7" font-size="13">Table A5, au 30 juin 2025, milliards de dollars. Les catégories sont arrondies.</text>
+  <rect x="42" y="124" width="816" height="62" rx="9" fill="#20242c"/>
+  <rect x="42.0" y="124" width="373.7" height="62" rx="9" fill="#5eead4"/>
+  <rect x="415.7" y="124" width="272.5" height="62" rx="0" fill="#7aa2f7"/>
+  <rect x="688.2" y="124" width="61.5" height="62" rx="0" fill="#f5b13d"/>
+  <rect x="749.6" y="124" width="70.4" height="62" rx="0" fill="#ff4d87"/>
+  <rect x="820.0" y="124" width="38.0" height="62" rx="9" fill="#777d89"/>
+  <text x="42" y="225" fill="#f5f6f8" font-size="34" font-weight="700">9 834 Md$</text>
+  <text x="290" y="221" fill="#969ca7" font-size="12">total publié, contre 9 835 Md$ après addition des catégories arrondies</text>
+  <rect x="42" y="272" width="268" height="104" rx="9" fill="#151820" stroke="#343945"/>
+  <circle cx="65" cy="298" r="7" fill="#5eead4"/>
+  <text x="82" y="303" fill="#d6d9df" font-size="13" font-weight="700">Actions et parts de fonds</text>
+  <text x="62" y="346" fill="#5eead4" font-size="24" font-weight="700">4 504 Md$</text>
+  <text x="232" y="346" fill="#969ca7" font-size="12">45,8 %</text>
+  <rect x="316" y="272" width="268" height="104" rx="9" fill="#151820" stroke="#343945"/>
+  <circle cx="339" cy="298" r="7" fill="#7aa2f7"/>
+  <text x="356" y="303" fill="#d6d9df" font-size="13" font-weight="700">Treasuries à long terme</text>
+  <text x="336" y="346" fill="#7aa2f7" font-size="24" font-weight="700">3 284 Md$</text>
+  <text x="506" y="346" fill="#969ca7" font-size="12">33,4 %</text>
+  <rect x="590" y="272" width="268" height="104" rx="9" fill="#151820" stroke="#343945"/>
+  <circle cx="613" cy="298" r="7" fill="#f5b13d"/>
+  <text x="630" y="303" fill="#d6d9df" font-size="13" font-weight="700">Dette d’agence</text>
+  <text x="610" y="346" fill="#f5b13d" font-size="24" font-weight="700">741 Md$</text>
+  <text x="780" y="346" fill="#969ca7" font-size="12">7,5 %</text>
+  <rect x="179" y="398" width="268" height="104" rx="9" fill="#151820" stroke="#343945"/>
+  <circle cx="202" cy="424" r="7" fill="#ff4d87"/>
+  <text x="219" y="429" fill="#d6d9df" font-size="13" font-weight="700">Dette d’entreprise</text>
+  <text x="199" y="472" fill="#ff4d87" font-size="24" font-weight="700">848 Md$</text>
+  <text x="369" y="472" fill="#969ca7" font-size="12">8,6 %</text>
+  <rect x="453" y="398" width="268" height="104" rx="9" fill="#151820" stroke="#343945"/>
+  <circle cx="476" cy="424" r="7" fill="#777d89"/>
+  <text x="493" y="429" fill="#d6d9df" font-size="13" font-weight="700">Dette à court terme</text>
+  <text x="473" y="472" fill="#777d89" font-size="24" font-weight="700">458 Md$</text>
+  <text x="643" y="472" fill="#969ca7" font-size="12">4,7 %</text>
+  <rect x="42" y="526" width="816" height="48" rx="8" fill="#12161d"/>
+  <text x="62" y="545" fill="#969ca7" font-size="12"><tspan x="62" dy="0">Actions et parts de fonds arrivent en tête du relevé.</tspan><tspan x="62" dy="18">Le contenu économique et le risque diffèrent selon les détenteurs.</tspan></text>
+  <text x="42" y="596" fill="#777d89" font-size="10">Source : U.S. Treasury, enquête SHL 2025, table A5. Total et composantes peuvent différer par arrondi.</text>
+</svg>
+<figcaption>Le total A5 distingue les titres de long terme et la dette de court terme. L’Exhibit 4 du même rapport reclassifie les titres courts selon leur émetteur et affiche 3 724 Md$ de dette du Treasury, 742 Md$ d’agence, 865 Md$ d’entreprise et 4 504 Md$ d’actions. Les deux présentations sont compatibles à l’arrondi près.</figcaption>
+</figure>
+
+## L’Asie ne finance pas seulement le Trésor américain
+
+Le récit habituel tient en une phrase : l’Asie épargne, puis recycle ses excédents dans les Treasuries. Il décrit une partie essentielle de l’histoire, surtout celle des réserves officielles chinoises et japonaises. Il devient trompeur lorsqu’il est appliqué au portefeuille régional actuel sans distinction entre banques centrales, assureurs, fonds de pension, banques, véhicules d’investissement et ménages.
+
+Dans l’[enquête SHL finale publiée le 30 avril 2026](https://home.treasury.gov/news/press-releases/sb0482), la catégorie des actions, parts de fonds et autres instruments de capital représente 45,8 % de la somme des catégories asiatiques arrondies. Les Treasuries à long terme pèsent 33,4 %. Si l’on regroupe aussi les bons du Trésor à court terme comme le fait l’Exhibit 4, la dette fédérale atteint environ 3 724 milliards, toujours derrière les 4 504 milliards d’actions.
+
+Cette comparaison n’annonce pas que les banques centrales asiatiques auraient remplacé leurs réserves par le Nasdaq. Le total régional agrège des détenteurs privés et officiels. Il additionne aussi des pays où les institutions publiques dominent, d’autres où les assureurs ont accumulé des obligations étrangères, et des centres financiers qui hébergent des fonds ou des dépositaires.
+
+Le détail pays par pays fait éclater le portefeuille unique.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 725" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="asia-us-fr-countries-title asia-us-fr-countries-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="asia-us-fr-countries-title">Six pays, six profils de risque</title>
+  <desc id="asia-us-fr-countries-desc">Parts de chaque classe dans le portefeuille déclaré. Le total affiché reste en milliards de dollars.</desc>
+  <rect width="900" height="725" rx="12" fill="#0c0d10"/>
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Six pays, six profils de risque</text>
+  <text x="42" y="76" fill="#969ca7" font-size="13">Parts de chaque classe dans le portefeuille déclaré. Le total affiché reste en milliards de dollars.</text>
+  <text x="42" y="146" fill="#d6d9df" font-size="13" font-weight="700">Japon</text>
+  <rect x="228" y="126" width="520" height="30" rx="5" fill="#20242c"/>
+  <rect x="228.0" y="126" width="210.8" height="30" fill="#5eead4"/>
+  <rect x="438.8" y="126" width="184.7" height="30" fill="#7aa2f7"/>
+  <rect x="623.5" y="126" width="45.1" height="30" fill="#f5b13d"/>
+  <rect x="668.6" y="126" width="56.8" height="30" fill="#ff4d87"/>
+  <rect x="725.5" y="126" width="22.5" height="30" fill="#777d89"/>
+  <text x="770" y="146" fill="#f5f6f8" font-size="13" font-weight="700">2 883 Md$</text>
+  <text x="42" y="222" fill="#d6d9df" font-size="13" font-weight="700">Chine continentale</text>
+  <rect x="228" y="202" width="520" height="30" rx="5" fill="#20242c"/>
+  <rect x="228.0" y="202" width="139.9" height="30" fill="#5eead4"/>
+  <rect x="367.9" y="202" width="267.1" height="30" fill="#7aa2f7"/>
+  <rect x="635.0" y="202" width="75.6" height="30" fill="#f5b13d"/>
+  <rect x="710.6" y="202" width="6.9" height="30" fill="#ff4d87"/>
+  <rect x="717.5" y="202" width="30.5" height="30" fill="#777d89"/>
+  <text x="770" y="222" fill="#f5f6f8" font-size="13" font-weight="700">1 279 Md$</text>
+  <text x="42" y="298" fill="#d6d9df" font-size="13" font-weight="700">Singapour</text>
+  <rect x="228" y="278" width="520" height="30" rx="5" fill="#20242c"/>
+  <rect x="228.0" y="278" width="352.7" height="30" fill="#5eead4"/>
+  <rect x="580.7" y="278" width="111.1" height="30" fill="#7aa2f7"/>
+  <rect x="691.8" y="278" width="7.9" height="30" fill="#f5b13d"/>
+  <rect x="699.7" y="278" width="41.8" height="30" fill="#ff4d87"/>
+  <rect x="741.5" y="278" width="6.5" height="30" fill="#777d89"/>
+  <text x="770" y="298" fill="#f5f6f8" font-size="13" font-weight="700">1 118 Md$</text>
+  <text x="42" y="374" fill="#d6d9df" font-size="13" font-weight="700">Taïwan</text>
+  <rect x="228" y="354" width="520" height="30" rx="5" fill="#20242c"/>
+  <rect x="228.0" y="354" width="104.7" height="30" fill="#5eead4"/>
+  <rect x="332.7" y="354" width="185.1" height="30" fill="#7aa2f7"/>
+  <rect x="517.8" y="354" width="112.6" height="30" fill="#f5b13d"/>
+  <rect x="630.5" y="354" width="114.5" height="30" fill="#ff4d87"/>
+  <rect x="745.0" y="354" width="3.0" height="30" fill="#777d89"/>
+  <text x="770" y="374" fill="#f5f6f8" font-size="13" font-weight="700">854 Md$</text>
+  <text x="42" y="450" fill="#d6d9df" font-size="13" font-weight="700">Corée du Sud</text>
+  <rect x="228" y="430" width="520" height="30" rx="5" fill="#20242c"/>
+  <rect x="228.0" y="430" width="382.9" height="30" fill="#5eead4"/>
+  <rect x="610.9" y="430" width="77.6" height="30" fill="#7aa2f7"/>
+  <rect x="688.5" y="430" width="22.0" height="30" fill="#f5b13d"/>
+  <rect x="710.5" y="430" width="32.3" height="30" fill="#ff4d87"/>
+  <rect x="742.8" y="430" width="5.2" height="30" fill="#777d89"/>
+  <text x="770" y="450" fill="#f5f6f8" font-size="13" font-weight="700">804 Md$</text>
+  <text x="42" y="526" fill="#d6d9df" font-size="13" font-weight="700">Hong Kong</text>
+  <rect x="228" y="506" width="520" height="30" rx="5" fill="#20242c"/>
+  <rect x="228.0" y="506" width="224.9" height="30" fill="#5eead4"/>
+  <rect x="452.9" y="506" width="162.5" height="30" fill="#7aa2f7"/>
+  <rect x="615.4" y="506" width="10.3" height="30" fill="#f5b13d"/>
+  <rect x="625.7" y="506" width="77.8" height="30" fill="#ff4d87"/>
+  <rect x="703.5" y="506" width="44.5" height="30" fill="#777d89"/>
+  <text x="770" y="526" fill="#f5f6f8" font-size="13" font-weight="700">608 Md$</text>
+  <rect x="42" y="590" width="12" height="12" rx="2" fill="#5eead4"/><text x="61" y="601" fill="#969ca7" font-size="10">actions/fonds</text>
+  <rect x="187" y="590" width="12" height="12" rx="2" fill="#7aa2f7"/><text x="206" y="601" fill="#969ca7" font-size="10">Treasuries LT</text>
+  <rect x="347" y="590" width="12" height="12" rx="2" fill="#f5b13d"/><text x="366" y="601" fill="#969ca7" font-size="10">agence</text>
+  <rect x="465" y="590" width="12" height="12" rx="2" fill="#ff4d87"/><text x="484" y="601" fill="#969ca7" font-size="10">entreprise</text>
+  <rect x="595" y="590" width="12" height="12" rx="2" fill="#777d89"/><text x="614" y="601" fill="#969ca7" font-size="10">court terme</text>
+  <rect x="42" y="626" width="816" height="54" rx="8" fill="#12161d"/><text x="62" y="644" fill="#969ca7" font-size="11" text-anchor="start"><tspan x="62" dy="0">Ces six juridictions représentent 7 546 Md$, soit 76,7 % du total asiatique publié.</tspan><tspan x="62" dy="17">Elles ne résument pas toute l’Asie.</tspan></text>
+  <text x="42" y="706" fill="#777d89" font-size="10">Source : U.S. Treasury, enquête SHL 2025, table A5. Calculs l0g.</text>
+</svg>
+<figcaption>Les barres utilisent les composantes de la table A5. Pour Singapour, la somme des catégories arrondies atteint 1 119 Md$, contre un total publié de 1 118 Md$. Le graphique conserve les composantes pour montrer la structure et affiche le total officiel à droite.</figcaption>
+</figure>
+
+Dans la [table A5 du rapport](https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf), les 2 883 milliards attribués au Japon se répartissent entre 1 169 milliards d’actions, 1 024 milliards de Treasuries à long terme, 250 milliards de dette d’agence, 315 milliards de dette d’entreprise et 125 milliards de dette courte. La Chine continentale reste bien davantage orientée vers les Treasuries : 657 milliards à long terme, contre 344 milliards d’actions.
+
+La Corée du Sud présente presque l’image inverse. Sur 804 milliards, 592 milliards sont classés en actions, soit 73,6 %. Singapour atteint 759 milliards d’actions sur un total publié de 1 118 milliards. Taïwan se distingue par la densité de son portefeuille obligataire : 304 milliards de Treasuries à long terme, 185 milliards de dette d’agence et 188 milliards de dette d’entreprise, pour seulement 172 milliards d’actions. Hong Kong combine 263 milliards d’actions, 190 milliards de Treasuries, 91 milliards de dette d’entreprise et 52 milliards de dette courte.
+
+Ces six juridictions totalisent 7 546 milliards, soit 76,7 % du total asiatique publié. Elles donnent une carte utile, pas une définition exhaustive de l’Asie. L’Inde, la Thaïlande, les Philippines, la Malaisie, l’Indonésie et d’autres détenteurs restent dans l’agrégat régional.
+
+## Une action peut cacher un fonds
+
+Le mot “actions” suggère des titres cotés détenus directement. La définition TIC est plus large. Elle comprend les actions ordinaires, les titres préférentiels, d’autres instruments de capital et les parts de fonds. Tous les fonds sont classés en equity dans cette table, quel que soit leur portefeuille sous-jacent.
+
+À l’échelle asiatique, les 4 504 milliards se répartissent en **3 156 milliards d’actions ordinaires**, **832 milliards de parts de fonds** et **516 milliards de préférentielles et autres titres de capital**. La catégorie “fonds” vaut à elle seule davantage que toute la dette d’agence asiatique. Elle ne dit pourtant pas si le fonds détient des actions technologiques, des obligations, du cash, du crédit structuré ou un mélange de ces actifs.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 715" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="asia-us-fr-equity-title asia-us-fr-equity-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="asia-us-fr-equity-title">Dans TIC, une « action » peut être une part de fonds</title>
+  <desc id="asia-us-fr-equity-desc">Actions ordinaires, fonds, préférentielles et autres titres de capital, au 30 juin 2025.</desc>
+  <rect width="900" height="715" rx="12" fill="#0c0d10"/>
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Dans TIC, une « action » peut être une part de fonds</text>
+  <text x="42" y="76" fill="#969ca7" font-size="13">Actions ordinaires, fonds, préférentielles et autres titres de capital, au 30 juin 2025.</text>
+  <text x="42" y="147" fill="#d6d9df" font-size="13" font-weight="700">Asie</text>
+  <text x="42" y="169" fill="#969ca7" font-size="11">4 504 Md$</text>
+  <rect x="220" y="128" width="560" height="34" rx="5" fill="#20242c"/>
+  <rect x="220.0" y="128" width="392.4" height="34" fill="#5eead4"/>
+  <rect x="612.4" y="128" width="103.4" height="34" fill="#f5b13d"/>
+  <rect x="715.8" y="128" width="64.2" height="34" fill="#ff4d87"/>
+  <text x="800" y="150" fill="#969ca7" font-size="10">832 Md$ fonds</text>
+  <text x="42" y="229" fill="#d6d9df" font-size="13" font-weight="700">Japon</text>
+  <text x="42" y="251" fill="#969ca7" font-size="11">1 169 Md$</text>
+  <rect x="220" y="210" width="560" height="34" rx="5" fill="#20242c"/>
+  <rect x="220.0" y="210" width="461.7" height="34" fill="#5eead4"/>
+  <rect x="681.7" y="210" width="93.5" height="34" fill="#f5b13d"/>
+  <rect x="775.2" y="210" width="4.8" height="34" fill="#ff4d87"/>
+  <text x="800" y="232" fill="#969ca7" font-size="10">195 Md$ fonds</text>
+  <text x="42" y="311" fill="#d6d9df" font-size="13" font-weight="700">Corée du Sud</text>
+  <text x="42" y="333" fill="#969ca7" font-size="11">592 Md$</text>
+  <rect x="220" y="292" width="560" height="34" rx="5" fill="#20242c"/>
+  <rect x="220.0" y="292" width="352.5" height="34" fill="#5eead4"/>
+  <rect x="572.5" y="292" width="115.6" height="34" fill="#f5b13d"/>
+  <rect x="688.1" y="292" width="91.9" height="34" fill="#ff4d87"/>
+  <text x="800" y="314" fill="#969ca7" font-size="10">122 Md$ fonds</text>
+  <text x="42" y="393" fill="#d6d9df" font-size="13" font-weight="700">Singapour</text>
+  <text x="42" y="415" fill="#969ca7" font-size="11">759 Md$</text>
+  <rect x="220" y="374" width="560" height="34" rx="5" fill="#20242c"/>
+  <rect x="220.0" y="374" width="298.8" height="34" fill="#5eead4"/>
+  <rect x="518.8" y="374" width="76.7" height="34" fill="#f5b13d"/>
+  <rect x="595.5" y="374" width="184.5" height="34" fill="#ff4d87"/>
+  <text x="800" y="396" fill="#969ca7" font-size="10">104 Md$ fonds</text>
+  <text x="42" y="475" fill="#d6d9df" font-size="13" font-weight="700">Taïwan</text>
+  <text x="42" y="497" fill="#969ca7" font-size="11">172 Md$</text>
+  <rect x="220" y="456" width="560" height="34" rx="5" fill="#20242c"/>
+  <rect x="220.0" y="456" width="319.1" height="34" fill="#5eead4"/>
+  <rect x="539.1" y="456" width="224.7" height="34" fill="#f5b13d"/>
+  <rect x="763.7" y="456" width="16.3" height="34" fill="#ff4d87"/>
+  <text x="800" y="478" fill="#969ca7" font-size="10">69 Md$ fonds</text>
+  <rect x="42" y="552" width="14" height="14" rx="2" fill="#5eead4"/><text x="64" y="564" fill="#969ca7" font-size="11">actions ordinaires</text>
+  <rect x="232" y="552" width="14" height="14" rx="2" fill="#f5b13d"/><text x="254" y="564" fill="#969ca7" font-size="11">parts de fonds</text>
+  <rect x="392" y="552" width="14" height="14" rx="2" fill="#ff4d87"/><text x="414" y="564" fill="#969ca7" font-size="11">préférentielles et autres</text>
+  <rect x="42" y="592" width="816" height="78" rx="9" fill="#12161d" stroke="#343945"/><text x="62" y="620" fill="#d6d9df" font-size="12" text-anchor="start"><tspan x="62" dy="0">Une part de fonds reste classée en capital, même si le fonds détient ensuite des obligations, du</tspan><tspan x="62" dy="20">cash ou d’autres actifs. Le tableau ne fournit pas ce contenu sous-jacent.</tspan></text>
+  <text x="42" y="696" fill="#777d89" font-size="10">Source : U.S. Treasury, enquête SHL 2025, table A8.</text>
+</svg>
+<figcaption>La catégorie equity de TIC décrit la forme juridique du titre détenu, pas nécessairement l’actif économique final. Une part de fonds obligataire reste une part de fonds et apparaît donc dans la colonne equity.</figcaption>
+</figure>
+
+Le problème est particulièrement visible à Singapour. Sur 759 milliards de titres classés en capital, 405 milliards sont des actions ordinaires, 104 milliards des parts de fonds et 250 milliards des préférentielles ou autres instruments. En Corée du Sud, la ligne atteint 372 milliards d’actions ordinaires, 122 milliards de fonds et 97 milliards d’autres titres.
+
+Cette distinction corrige aussi une mauvaise lecture des variations annuelles. Entre juin 2024 et juin 2025, les avoirs étrangers mondiaux en actions américaines ont augmenté de 2 980 milliards de dollars. Selon la table 1 du [rapport complet](https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf), 2 240 milliards proviennent d’ajustements de valorisation et 640 milliards d’achats nets. Le solde correspond aux échanges d’actions liés à certaines opérations et à un résiduel statistique. La hausse du stock reflète donc principalement l’appréciation des marchés, pas un achat étranger de près de 3 000 milliards. Cette décomposition est mondiale, pas propre à l’Asie.
+
+Un stock en valeur de marché contient toujours deux histoires : ce que l’investisseur a acheté, et ce que le prix a fait depuis. Les confondre transforme un rallye américain en vote géopolitique imaginaire.
+
+## La ligne “agence” conduit au marché hypothécaire
+
+La dette d’agence paraît proche d’une obligation publique classique. Dans les chiffres TIC, elle conduit surtout aux prêts immobiliers américains. Un **ABS**, ou titre adossé à des actifs, transforme des flux de prêts en titres négociables. Sur 1 344 milliards de dette d’agence à long terme détenue par l’ensemble des étrangers, **1 311 milliards sont des ABS d’agence**, soit 97,5 %. Pour l’Asie, 735 milliards sur 741 sont classés en ABS d’agence, environ 99,2 %. Le rapport précise que ces titres sont principalement des mortgage-backed securities résidentiels, ou MBS.
+
+Au Japon, les 250 milliards de dette d’agence à long terme sont intégralement classés en ABS après arrondi. Taïwan en détient 184 milliards sur 185, la Chine continentale 186 sur 186, la Corée du Sud 33 sur 34. La ligne ne décrit donc pas principalement une créance simple sur Fannie Mae ou Freddie Mac. Elle décrit un droit sur les flux d’un pool de prêts immobiliers, assorti d’une garantie dont la forme dépend de l’émetteur.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 590" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="asia-us-fr-agency-mbs-title asia-us-fr-agency-mbs-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="asia-us-fr-agency-mbs-title">La dette d’agence est presque entièrement hypothécaire</title>
+  <desc id="asia-us-fr-agency-mbs-desc">Dette d’agence à long terme détenue par les étrangers et les résidents asiatiques, milliards de dollars.</desc>
+  <rect width="900" height="590" rx="12" fill="#0c0d10"/>
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">La dette d’agence est presque entièrement hypothécaire</text>
+  <text x="42" y="76" fill="#969ca7" font-size="13">Dette d’agence à long terme détenue par les étrangers et les résidents asiatiques, milliards de dollars.</text>
+  <text x="42" y="150" fill="#d6d9df" font-size="14" font-weight="700">Monde</text>
+  <rect x="150" y="132" width="650" height="38" rx="6" fill="#20242c"/>
+  <rect x="150" y="132" width="634.0" height="38" rx="6" fill="#f5b13d"/>
+  <text x="165" y="157" fill="#0c0d10" font-size="14" font-weight="700">1 311 Md$ ABS</text>
+  <text x="812" y="157" fill="#f5f6f8" font-size="13" font-weight="700">97,5 %</text>
+  <text x="42" y="255" fill="#d6d9df" font-size="14" font-weight="700">Asie</text>
+  <rect x="150" y="237" width="650" height="38" rx="6" fill="#20242c"/>
+  <rect x="150" y="237" width="644.7" height="38" rx="6" fill="#f5b13d"/>
+  <text x="165" y="262" fill="#0c0d10" font-size="14" font-weight="700">735 Md$ ABS</text>
+  <text x="812" y="262" fill="#f5f6f8" font-size="13" font-weight="700">99,2 %</text>
+  <text x="150" y="294" fill="#969ca7" font-size="11">ABS d’agence : principalement des MBS résidentiels garantis par les agences.</text>
+  <rect x="42" y="336" width="380" height="190" rx="10" fill="#14201e" stroke="#27695f"/>
+  <text x="66" y="370" fill="#5eead4" font-size="16" font-weight="700">Quand les taux baissent</text><text x="66" y="407" fill="#d6d9df" font-size="12" text-anchor="start"><tspan x="66" dy="0">les emprunteurs refinancent davantage</tspan><tspan x="66" dy="25">le principal revient plus vite</tspan><tspan x="66" dy="25">le réinvestissement se fait à taux plus bas</tspan></text>
+  <text x="66" y="500" fill="#5eead4" font-size="13" font-weight="700">risque de remboursement anticipé</text>
+  <rect x="478" y="336" width="380" height="190" rx="10" fill="#251d14" stroke="#7e6527"/>
+  <text x="502" y="370" fill="#f5b13d" font-size="16" font-weight="700">Quand les taux montent</text><text x="502" y="407" fill="#d6d9df" font-size="12" text-anchor="start"><tspan x="502" dy="0">les refinancements ralentissent</tspan><tspan x="502" dy="25">le principal revient plus tard</tspan><tspan x="502" dy="25">la duration effective s’allonge</tspan></text>
+  <text x="502" y="500" fill="#f5b13d" font-size="13" font-weight="700">risque d’extension</text>
+  <text x="42" y="566" fill="#777d89" font-size="10">Sources : U.S. Treasury, tables A5 et A9 ; Federal Reserve Bank of New York ; SEC.</text>
+</svg>
+<figcaption>Le risque de remboursement anticipé modifie le calendrier des flux. Il ne doit pas être confondu avec le risque de défaut du propriétaire du logement. Les garanties d’agence réduisent certaines pertes de crédit, mais elles ne figent pas la duration.</figcaption>
+</figure>
+
+Un MBS possède une particularité absente d’un Treasury classique : l’emprunteur américain décide en partie du calendrier. Lorsque les taux baissent, il peut refinancer son prêt. Le principal revient plus tôt, au moment où les rendements disponibles ont justement baissé. Lorsque les taux montent, les refinancements ralentissent. Le principal revient plus tard et la **duration effective**, c’est-à-dire la sensibilité du prix et du calendrier des flux aux taux, s’allonge. La [New York Fed](https://libertystreeteconomics.newyorkfed.org/2014/03/convexity-event-risks-in-a-rising-interest-rate-environment/) décrit cette convexité négative, tandis que la [SEC](https://www.sec.gov/reports/staff-report-enhancing-disclosure-mortgage-backed-securities-markets) distingue clairement le risque de remboursement anticipé du risque de crédit.
+
+Le canal asiatique devient alors concret. Un assureur qui a acheté des MBS pour obtenir du rendement et de la duration peut découvrir que cette duration se raccourcit lorsque les taux baissent et s’allonge lorsque les taux montent. Il peut couvrir une partie du risque de taux, mais la couverture doit évoluer avec les prépaiements. La valeur ne dépend plus seulement du niveau des rendements. Elle dépend aussi du comportement de millions d’emprunteurs.
+
+## La dette d’entreprise reste une boîte trop large
+
+Les résidents asiatiques détenaient 848 milliards de dette d’entreprise américaine à long terme dans la table A5. L’Exhibit 4, qui y rattache la dette courte selon l’émetteur, porte le total à 865 milliards. Cette catégorie réunit des obligations classiques, des titres structurés et d’autres instruments de dette émis par des sociétés américaines.
+
+Le détail ABS améliore un peu la visibilité. À l’échelle mondiale, la dette d’entreprise à long terme atteint 4 831 milliards, dont 315 milliards d’ABS. Pour l’Asie, la table A9 identifie 50 milliards de corporate ABS : 30 milliards de MBS privés et 20 milliards d’ABS non hypothécaires. La très grande majorité du corporate visible reste donc classée non-ABS.
+
+Ce résultat ne permet pas d’affirmer que l’Asie ne détient presque pas de CLO. Un **CLO** est un véhicule qui finance un portefeuille de prêts à effet de levier, accordés à des entreprises déjà fortement endettées, en émettant plusieurs tranches de titres. Beaucoup de CLO exposés à des prêts américains sont émis par des véhicules domiciliés aux îles Caïmans. Pour TIC, le pays de l’émetteur compte. Une note de CLO émise aux Caïmans n’est pas un titre américain dans l’enquête des engagements américains, même si le véhicule détient des leveraged loans à des entreprises américaines. La note historique de la Fed [Who Owns U.S. CLO Securities?](https://www.federalreserve.gov/econres/notes/feds-notes/who-owns-us-clo-securities-20190719.html) détaille cette rupture de périmètre.
+
+Il faut donc résister à deux excès symétriques. Le premier consiste à appeler “CLO” tout corporate ABS. Le second consiste à conclure qu’un faible chiffre corporate ABS mesure l’exposition totale de l’Asie aux prêts à effet de levier américains. Les données publiques actuelles ne permettent pas cette reconstitution pays par pays.
+
+Le [Financial Stability Report de mai 2026 de la Fed](https://www.federalreserve.gov/publications/2026-may-financial-stability-report-borrowing.htm) et l’[OFR](https://www.financialresearch.gov/the-ofr-blog/2026/03/26/calm-markets-and-underlying-risks/) documentent les fragilités du marché des leveraged loans. Ils ne fournissent pas pour autant une matrice actuelle des détenteurs asiatiques par tranche. C’est une inconnue, pas une invitation à inventer un montant.
+
+## Les Treasuries restent le socle, avec trois risques distincts
+
+La dette fédérale conserve une place centrale : 3 284 milliards de Treasuries à long terme dans la table A5, auxquels s’ajoutent environ 440 milliards de dette du Treasury à court terme dans la table A7. Le crédit souverain américain, le risque de taux et le risque de change sont trois choses différentes.
+
+Un Treasury peut être remboursé intégralement à l’échéance tout en affichant une lourde moins-value de marché si les taux montent. Un investisseur japonais ou coréen peut gagner en dollars et perdre en monnaie locale si le yen ou le won s’apprécie. Une banque centrale peut conserver le titre jusqu’à maturité, tandis qu’un fonds soumis à des rachats doit parfois vendre. Le même titre, identifié par le même code **CUSIP**, l’identifiant standard utilisé sur les marchés nord-américains, change de danger selon le bilan qui le détient.
+
+La [table mensuelle du Treasury](https://ticdata.treasury.gov/Publish/slt_table5.html) indique qu’en juin 2026 le Japon était encore crédité de 1 116,7 milliards de Treasuries et la Chine continentale de 633,4 milliards. Ces chiffres sont plus récents, mais plus étroits et construits avec une attribution de conservation imparfaite. Ils ne remplacent pas le rapport annuel détaillé. Ils servent seulement à vérifier que l’ordre de grandeur n’a pas disparu un an plus tard.
+
+## Les institutions publient des cartes incompatibles entre elles
+
+Le passage du pays à l’institution améliore la compréhension, mais rend les additions dangereuses. Le [bilan FY2025 du GPIF](https://www.gpif.go.jp/en/performance/73509681gpif/annual_report_summary_2025_en.pdf) donne deux totaux qui ne doivent pas être fusionnés. Sa série de taille d’actifs affiche **293 643,7 milliards de yens** au 31 mars 2026. Sa table d’allocation, qui inclut aussi les réserves gérées dans le Pension Special Account avant l’ajustement final, totalise **299 825,4 milliards de yens**. C’est dans ce second périmètre qu’apparaissent **73 399 milliards** d’obligations étrangères et **74 356,9 milliards** d’actions étrangères. Ces montants couvrent le monde entier, pas seulement les États-Unis. Le GPIF précise en outre que les obligations étrangères couvertes en yen sont classées parmi les obligations domestiques. La nationalité de l’émetteur, la devise de l’actif et la catégorie comptable ne coïncident déjà plus dans un seul fonds.
+
+En Corée, le [National Pension Service](https://fund.nps.or.kr/eng/orinsm/ovvw/getOHFD0013M0.do) affichait 1 865 600 milliards de wons d’actifs à fin juin 2026. Ses [actions mondiales](https://fund.nps.or.kr/eng/orinsm/ptflobrkdwn/getOHFD0005M0.do) représentaient 661 100 milliards de wons ; l’Amérique du Nord comptait pour 68 % de cette poche à fin 2025. Les [obligations mondiales](https://fund.nps.or.kr/eng/orinsm/ptflobrkdwn/getOHFD0006M0.do?menuId=MN24000590) atteignaient 110 200 milliards à fin juin 2026, avec 13,7 % de titres titrisés dans la ventilation de fin 2025. Le benchmark du NPS laisse le dollar contre won non couvert dans sa poche obligataire mondiale, tout en couvrant partiellement d’autres devises vers le dollar.
+
+Ces données rendent le portefeuille plus concret. Elles ne se recollent pas ligne à ligne à TIC : les dates diffèrent, “Amérique du Nord” dépasse les États-Unis, les actifs alternatifs peuvent contenir des expositions américaines et les règles de classement ne sont pas identiques.
+
+À Taïwan, [le premier volet de cette série](/posts/taiwan-724-milliards-assureurs-vie-risque-change/) a estimé à environ 724 milliards de dollars les investissements étrangers des assureurs-vie à fin 2025 à partir des données de la [banque centrale](https://www.cbc.gov.tw/tw/cp-899-191320-e001b-1.html). Ce total englobe tous les pays, devises et catégories autorisées. Le rapprocher des 854 milliards attribués à l’ensemble des résidents taïwanais dans TIC donne un ordre de grandeur, jamais une identité comptable.
+
+## Le pays visible peut être celui du dépositaire
+
+TIC suit des titres individuels avec un niveau de détail considérable. La géographie reste plus fragile. Un investisseur japonais peut conserver un titre chez un intermédiaire situé ailleurs. Un fonds singapourien peut investir pour des clients d’autres pays. Un véhicule domicilié aux Caïmans peut financer des actifs américains. Dans la table, la résidence juridique affichée n’est pas toujours celle de l’épargnant final.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 598" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="asia-us-fr-residence-title asia-us-fr-residence-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="asia-us-fr-residence-title">TIC enregistre une résidence, pas toujours le propriétaire final</title>
+  <desc id="asia-us-fr-residence-desc">Schéma de déclaration simplifié. Chaque intermédiaire peut modifier le pays visible.</desc>
+  <rect width="900" height="598" rx="12" fill="#0c0d10"/>
+  <text x="42" y="42" fill="#f5f6f8" font-size="20" font-weight="700"><tspan x="42" dy="0">TIC enregistre une résidence,</tspan><tspan x="42" dy="25">pas toujours le propriétaire final</tspan></text>
+  <text x="42" y="96" fill="#969ca7" font-size="12">Schéma simplifié : chaque intermédiaire peut modifier le pays visible.</text>
+  <rect x="42" y="132" width="130" height="126" rx="9" fill="#151820" stroke="#5eead4"/><text x="107" y="164" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="700"><tspan x="107" dy="0">Épargnant final</tspan></text><text x="107" y="208" fill="#969ca7" font-size="10" text-anchor="middle"><tspan x="107" dy="0">ménage, assuré,</tspan><tspan x="107" dy="16">retraité</tspan></text>
+  <line x1="172" y1="195" x2="205" y2="195" stroke="#969ca7" stroke-width="2"/><polygon points="205,195 195,189 195,201" fill="#969ca7"/>
+  <rect x="214" y="132" width="130" height="126" rx="9" fill="#151820" stroke="#7aa2f7"/><text x="279" y="164" fill="#7aa2f7" font-size="12" text-anchor="middle" font-weight="700"><tspan x="279" dy="0">Institution</tspan></text><text x="279" y="208" fill="#969ca7" font-size="10" text-anchor="middle"><tspan x="279" dy="0">assureur, fonds,</tspan><tspan x="279" dy="16">banque</tspan></text>
+  <line x1="344" y1="195" x2="377" y2="195" stroke="#969ca7" stroke-width="2"/><polygon points="377,195 367,189 367,201" fill="#969ca7"/>
+  <rect x="386" y="132" width="130" height="126" rx="9" fill="#151820" stroke="#f5b13d"/><text x="451" y="164" fill="#f5b13d" font-size="12" text-anchor="middle" font-weight="700"><tspan x="451" dy="0">Fonds ou</tspan><tspan x="451" dy="17">dépositaire</tspan></text><text x="451" y="208" fill="#969ca7" font-size="10" text-anchor="middle"><tspan x="451" dy="0">résidence juridique</tspan><tspan x="451" dy="16">visible</tspan></text>
+  <line x1="516" y1="195" x2="549" y2="195" stroke="#969ca7" stroke-width="2"/><polygon points="549,195 539,189 539,201" fill="#969ca7"/>
+  <rect x="558" y="132" width="130" height="126" rx="9" fill="#151820" stroke="#ff4d87"/><text x="623" y="164" fill="#ff4d87" font-size="12" text-anchor="middle" font-weight="700"><tspan x="623" dy="0">Déclarant</tspan><tspan x="623" dy="17">américain</tspan></text><text x="623" y="208" fill="#969ca7" font-size="10" text-anchor="middle"><tspan x="623" dy="0">custodian ou</tspan><tspan x="623" dy="16">émetteur</tspan></text>
+  <line x1="688" y1="195" x2="721" y2="195" stroke="#969ca7" stroke-width="2"/><polygon points="721,195 711,189 711,201" fill="#969ca7"/>
+  <rect x="730" y="132" width="130" height="126" rx="9" fill="#151820" stroke="#777d89"/><text x="795" y="164" fill="#777d89" font-size="12" text-anchor="middle" font-weight="700"><tspan x="795" dy="0">Table TIC par</tspan><tspan x="795" dy="17">pays</tspan></text><text x="795" y="208" fill="#969ca7" font-size="10" text-anchor="middle"><tspan x="795" dy="0">position de</tspan><tspan x="795" dy="16">portefeuille</tspan></text>
+  <rect x="42" y="302" width="816" height="96" rx="10" fill="#171d2b" stroke="#445f9a"/>
+  <text x="66" y="336" fill="#7aa2f7" font-size="15" font-weight="700">Biais de conservation</text><text x="66" y="366" fill="#d6d9df" font-size="12" text-anchor="start"><tspan x="66" dy="0">Un titre acheté par un résident d’un pays mais conservé chez un dépositaire d’un autre peut être attribué</tspan><tspan x="66" dy="20">au pays du dépositaire.</tspan></text>
+  <rect x="42" y="418" width="816" height="116" rx="10" fill="#251723" stroke="#793664"/>
+  <text x="66" y="452" fill="#ff4d87" font-size="15" font-weight="700">Ce qui reste hors du tableau principal</text>
+  <circle cx="66" cy="482" r="4" fill="#ff4d87"/><text x="79" y="486" fill="#d6d9df" font-size="11">dérivés et couvertures de change</text>
+  <circle cx="456" cy="482" r="4" fill="#ff4d87"/><text x="469" y="486" fill="#d6d9df" font-size="11">prêts directs et dépôts non négociables</text>
+  <circle cx="66" cy="509" r="4" fill="#ff4d87"/><text x="79" y="513" fill="#d6d9df" font-size="11">investissement direct et participations de contrôle</text>
+  <circle cx="456" cy="509" r="4" fill="#ff4d87"/><text x="469" y="513" fill="#d6d9df" font-size="11">contenu sous-jacent les fonds et bénéficiaire ultime</text>
+  <text x="42" y="574" fill="#777d89" font-size="10">Sources : U.S. Treasury, notes méthodologiques SHL et avertissement sur l’attribution géographique.</text>
+</svg>
+<figcaption>Le schéma ne signifie pas que chaque chaîne comporte tous ces intermédiaires. Il montre pourquoi un tableau par pays est une statistique de résidence et de conservation, pas un registre mondial des bénéficiaires effectifs.</figcaption>
+</figure>
+
+Le Treasury qualifie ce problème de **custodial bias**, ou biais de conservation. Il cite explicitement les grands centres de garde et de finance. Singapour et Hong Kong doivent donc être lus à la fois comme des économies locales et comme des plateformes régionales. Cela n’annule pas leurs chiffres. Cela interdit de les attribuer automatiquement aux seuls ménages ou institutions domestiques.
+
+Le périmètre crée d’autres angles morts :
+
+- l’investissement direct, généralement lié à une participation influente ou de contrôle, relève des statistiques du BEA ;
+- les prêts directs ne sont pas des titres négociables et ne figurent pas nécessairement dans SHL ;
+- les dérivés de taux et de change sont suivis dans d’autres systèmes ;
+- les dépôts non négociables ne sont pas des obligations ;
+- les parts de fonds ne livrent pas le détail de leurs actifs ;
+- un titre émis offshore par une filiale ou un véhicule peut être classé hors des États-Unis malgré un risque économique américain.
+
+La statistique est donc précise à l’intérieur de son contrat. Elle devient dangereuse lorsque le lecteur lui demande de répondre à une autre question.
+
+## Une baisse de prix n’est pas encore une vente forcée
+
+La carte des actifs permet enfin de reconstruire les transmissions sans annoncer une crise mécanique. Une correction des actions frappe d’abord les lignes particulièrement importantes dans les totaux coréen et singapourien, ainsi que le gros portefeuille déclaré au Japon. Une hausse des taux touche les Treasuries par la duration et les MBS par la duration plus la convexité. Un élargissement des spreads pèse sur la dette d’entreprise. Un stress immobilier modifie les prépaiements des MBS. Un choc de financement agit sur les titres courts et les dérivés.
+
+<figure class="infographic" style="padding-bottom:1.75rem">
+<svg viewBox="0 0 900 744" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="asia-us-fr-risk-map-title asia-us-fr-risk-map-desc" style="display:block;width:100%;height:auto;background:#0c0d10;border:1px solid rgba(255,255,255,0.10);border-radius:12px;overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <title id="asia-us-fr-risk-map-title">Chaque ligne transmet un choc différent</title>
+  <desc id="asia-us-fr-risk-map-desc">Matrice qualitative. Elle décrit des mécanismes, pas la probabilité ni la perte attendue.</desc>
+  <rect width="900" height="744" rx="12" fill="#0c0d10"/>
+  <text x="42" y="48" fill="#f5f6f8" font-size="22" font-weight="700">Chaque ligne transmet un choc différent</text>
+  <text x="42" y="76" fill="#969ca7" font-size="13">Matrice qualitative. Elle décrit des mécanismes, pas la probabilité ni la perte attendue.</text>
+  <rect x="42" y="112" width="188" height="44" rx="7" fill="#1b2028"/><text x="56" y="139" fill="#f5f6f8" font-size="12" font-weight="700">Classe visible</text>
+  <rect x="250" y="112" width="300" height="44" rx="7" fill="#1b2028"/><text x="264" y="139" fill="#f5f6f8" font-size="12" font-weight="700">Premier canal de risque</text>
+  <rect x="570" y="112" width="288" height="44" rx="7" fill="#1b2028"/><text x="584" y="139" fill="#f5f6f8" font-size="12" font-weight="700">Point de rupture possible</text>
+  <rect x="42" y="174" width="188" height="76" rx="7" fill="#151820" stroke="#343945"/>
+  <rect x="42" y="174" width="7" height="76" rx="3" fill="#7aa2f7"/><text x="62" y="205" fill="#7aa2f7" font-size="12" text-anchor="start" font-weight="700"><tspan x="62" dy="0">Treasuries</tspan></text>
+  <rect x="250" y="174" width="300" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="264" y="203" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="264" dy="0">taux, duration, change</tspan></text>
+  <rect x="570" y="174" width="288" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="584" y="203" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="584" dy="0">vente si besoin de cash</tspan></text>
+  <rect x="42" y="262" width="188" height="76" rx="7" fill="#151820" stroke="#343945"/>
+  <rect x="42" y="262" width="7" height="76" rx="3" fill="#f5b13d"/><text x="62" y="293" fill="#f5b13d" font-size="12" text-anchor="start" font-weight="700"><tspan x="62" dy="0">MBS d’agence</tspan></text>
+  <rect x="250" y="262" width="300" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="264" y="291" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="264" dy="0">prépaiement, extension, base</tspan></text>
+  <rect x="570" y="262" width="288" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="584" y="291" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="584" dy="0">duration mobile</tspan></text>
+  <rect x="42" y="350" width="188" height="76" rx="7" fill="#151820" stroke="#343945"/>
+  <rect x="42" y="350" width="7" height="76" rx="3" fill="#ff4d87"/><text x="62" y="381" fill="#ff4d87" font-size="12" text-anchor="start" font-weight="700"><tspan x="62" dy="0">Dette d’entreprise</tspan></text>
+  <rect x="250" y="350" width="300" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="264" y="379" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="264" dy="0">spread, défaut, liquidité</tspan></text>
+  <rect x="570" y="350" width="288" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="584" y="379" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="584" dy="0">perte de crédit</tspan></text>
+  <rect x="42" y="438" width="188" height="76" rx="7" fill="#151820" stroke="#343945"/>
+  <rect x="42" y="438" width="7" height="76" rx="3" fill="#5eead4"/><text x="62" y="469" fill="#5eead4" font-size="12" text-anchor="start" font-weight="700"><tspan x="62" dy="0">Actions et fonds</tspan></text>
+  <rect x="250" y="438" width="300" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="264" y="467" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="264" dy="0">prix, concentration, regard à</tspan><tspan x="264" dy="18">travers</tspan></text>
+  <rect x="570" y="438" width="288" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="584" y="467" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="584" dy="0">coussin volatil</tspan></text>
+  <rect x="42" y="526" width="188" height="76" rx="7" fill="#151820" stroke="#343945"/>
+  <rect x="42" y="526" width="7" height="76" rx="3" fill="#777d89"/><text x="62" y="557" fill="#777d89" font-size="12" text-anchor="start" font-weight="700"><tspan x="62" dy="0">Court terme</tspan></text>
+  <rect x="250" y="526" width="300" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="264" y="555" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="264" dy="0">roll, liquidité, émetteur</tspan></text>
+  <rect x="570" y="526" width="288" height="76" rx="7" fill="#151820" stroke="#343945"/><text x="584" y="555" fill="#d6d9df" font-size="11" text-anchor="start"><tspan x="584" dy="0">faible duration, autre risque</tspan></text>
+  <rect x="42" y="626" width="816" height="70" rx="9" fill="#12161d"/><text x="62" y="654" fill="#d6d9df" font-size="12" text-anchor="start"><tspan x="62" dy="0">Une baisse de prix devient un problème systémique lorsqu’elle rencontre une contrainte de liquidité, de</tspan><tspan x="62" dy="20">collatéral, de capital ou de paiement. La détention seule ne suffit pas.</tspan></text>
+  <text x="42" y="724" fill="#777d89" font-size="10">Synthèse l0g à partir de Treasury, NY Fed, SEC, Federal Reserve et OFR.</text>
+</svg>
+<figcaption>Le canal de marché n’est qu’un premier étage. Pour produire des ventes, il faut généralement une contrainte : rachats, appels de marge, collatéral, capital prudentiel, prestations d’assurance ou besoin de liquidité.</figcaption>
+</figure>
+
+Cette exposition peut aussi être un choix rationnel. Les marchés américains offrent une profondeur difficile à reproduire localement. Les Treasuries fournissent liquidité et collatéral. Les MBS d’agence ajoutent du rendement et réduisent une partie du risque de crédit, sans neutraliser la duration ni les prépaiements. Les obligations d’entreprise diversifient les revenus. Pour un fonds de pension de long terme, une baisse temporaire peut rester une variation de marché supportable.
+
+La taille du portefeuille ne suffit donc pas à mesurer le risque. Tout dépend de l’intersection entre l’actif et le passif : quelle devise l’institution doit-elle payer, quand les assurés ou retraités réclament-ils du cash, quel collatéral les dérivés exigent-ils, quel ratio prudentiel doit être respecté, et quelle fraction du portefeuille peut être vendue sans déplacer le marché ?
+
+<AsiaUSPortfolioStress lang="fr" mode="embed" />
+
+Le simulateur applique des chocs distincts aux cinq catégories A5. Il ne prétend pas produire une perte économique sectorielle. Il montre seulement pourquoi une hypothèse unique, par exemple “les taux américains montent”, ne suffit pas : les actions, les Treasuries, les MBS et le crédit réagissent par des canaux différents.
+
+## Ce que l’on sait, et ce qui échappe encore aux statistiques
+
+Le relevé permet de fixer trois points. La relation financière entre l’Asie et les États-Unis dépasse largement l’achat de dette fédérale : à la date de l’enquête, la catégorie réunissant actions, parts de fonds et autres instruments de capital était la plus importante.
+
+Sous ces agrégats se cachent des mécanismes différents. La dette d’agence est presque entièrement hypothécaire. La catégorie equity comprend des fonds dont les actifs sous-jacents ne sont pas visibles. La dette d’entreprise américaine ne révèle pas les CLO domiciliés offshore.
+
+Enfin, la géographie ne dit pas toujours qui porte le risque. TIC mesure remarquablement les titres américains détenus à l’étranger, mais la chaîne des dépositaires, des fonds et des véhicules empêche d’attribuer chaque dollar à un assuré, une banque centrale ou un fonds de pension précis.
+
+Le reste demeure inconnu : l’exposition nette après couvertures, le calendrier du collatéral, les tranches de crédit détenues, les seuils de vente et le bénéficiaire final derrière certains centres financiers. Cette limite n’affaiblit pas l’enquête. Elle en fixe le prochain terrain. Suivre le risque exige maintenant de passer des pays aux bilans, puis des bilans aux titres individuels.
+
+## Corpus principal
+
+Les données centrales viennent du [rapport final SHL au 30 juin 2025](https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf), publié le [30 avril 2026](https://home.treasury.gov/news/press-releases/sb0482). Les séries et archives sont réunies sur la [page TIC consacrée aux engagements américains envers les détenteurs étrangers](https://home.treasury.gov/data/treasury-international-capital-tic-system/us-liabilities-to-foreigners-from-holdings-of-us-securities). Pour la mise à jour plus récente mais beaucoup moins détaillée des Treasuries, l’enquête utilise la [table mensuelle des grands détenteurs](https://ticdata.treasury.gov/Publish/slt_table5.html) et le [communiqué de juin 2026](https://home.treasury.gov/news/press-releases/sb0606).
+
+Les exemples institutionnels proviennent du [bilan FY2025 du GPIF](https://www.gpif.go.jp/en/performance/73509681gpif/annual_report_summary_2025_en.pdf), de l’[aperçu du NPS](https://fund.nps.or.kr/eng/orinsm/ovvw/getOHFD0013M0.do), de ses pages [actions mondiales](https://fund.nps.or.kr/eng/orinsm/ptflobrkdwn/getOHFD0005M0.do), [obligations mondiales](https://fund.nps.or.kr/eng/orinsm/ptflobrkdwn/getOHFD0006M0.do?menuId=MN24000590) et [benchmarks](https://fund.nps.or.kr/eng/orinsm/orprfmnc/getOHFD0011M0.do), ainsi que du [rapport de stabilité financière de la banque centrale taïwanaise](https://www.cbc.gov.tw/tw/cp-899-191320-e001b-1.html).
+
+Les mécanismes de risque reposent sur les travaux de la [Federal Reserve Bank of New York sur la convexité des MBS](https://libertystreeteconomics.newyorkfed.org/2014/03/convexity-event-risks-in-a-rising-interest-rate-environment/), le [rapport de la SEC sur les MBS](https://www.sec.gov/reports/staff-report-enhancing-disclosure-mortgage-backed-securities-markets), le [Financial Stability Report de mai 2026 de la Réserve fédérale](https://www.federalreserve.gov/publications/2026-may-financial-stability-report-borrowing.htm), l’[analyse 2025 de l’OFR](https://www.financialresearch.gov/the-ofr-blog/2026/03/26/calm-markets-and-underlying-risks/) et la note historique de la Fed [Who Owns U.S. CLO Securities?](https://www.federalreserve.gov/econres/notes/feds-notes/who-owns-us-clo-securities-20190719.html). L’avertissement du Treasury sur le [biais de conservation](https://home.treasury.gov/data/treasury-international-capital-tic-system-home-page/help-files/estimating-holdings-of-treasury-securities) borne l’interprétation pays par pays.

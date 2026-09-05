@@ -1,0 +1,285 @@
+---
+import {
+  ASIA_US_PORTFOLIO_DEFAULTS,
+  ASIA_US_PORTFOLIO_MODEL_VERSION,
+  ASIA_US_PORTFOLIO_PRESETS,
+  calculateAsiaUSPortfolioStress,
+} from '../lib/asia-us-portfolio-stress-model.ts';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  mode?: 'embed' | 'full';
+}
+
+const { lang = 'fr', mode = 'embed' } = Astro.props;
+const isFr = lang === 'fr';
+const id = `asia-us-portfolio-${lang}-${mode}`;
+const initial = calculateAsiaUSPortfolioStress(ASIA_US_PORTFOLIO_DEFAULTS);
+const number = new Intl.NumberFormat(isFr ? 'fr-FR' : 'en-GB', { maximumFractionDigits: 2 });
+const signedUsd = (value: number) => {
+  const sign = value > 0 ? '+' : '';
+  return isFr ? `${sign}${number.format(value)} Md$` : `${sign}$${number.format(value)}bn`;
+};
+const usd = (value: number) => isFr ? `${number.format(value)} Md$` : `$${number.format(value)}bn`;
+const assetLabel = (key: string) => ({
+  equities: isFr ? 'actions et parts de fonds' : 'equities and fund shares',
+  treasury: isFr ? 'Treasuries' : 'Treasuries',
+  agency: isFr ? 'dette d’agence' : 'agency debt',
+  corporate: isFr ? 'dette d’entreprise' : 'corporate debt',
+  shortTerm: isFr ? 'dette à court terme' : 'short-term debt',
+  none: isFr ? 'aucune' : 'none',
+}[key] ?? key);
+
+const copy = isFr ? {
+  eyebrow: 'STRESS TEST DE PORTEFEUILLE',
+  title: 'Même montant, risques très différents',
+  intro: 'Choisissez un périmètre TIC puis appliquez un choc de prix distinct à chaque classe d’actifs. Le calcul mesure une variation brute de valeur de marché, pas une perte de capital réglementaire.',
+  badge: 'calcul local · zéro tracker',
+  presets: 'Périmètres publiés',
+  presetNote: 'Les montants viennent de la table A5 de l’enquête TIC au 30 juin 2025. Les catégories arrondies peuvent différer du total publié de 1 Md$.',
+  holdings: 'Montants observés',
+  shocks: 'Chocs de prix saisis',
+  equities: 'Actions et parts de fonds',
+  treasury: 'Treasuries à long terme',
+  agency: 'Dette d’agence',
+  corporate: 'Dette d’entreprise',
+  shortTerm: 'Dette à court terme',
+  results: 'Résultats du scénario',
+  change: 'Variation brute de valeur',
+  base: 'Somme des catégories',
+  stressed: 'Valeur après choc',
+  changePct: 'Variation du portefeuille',
+  largest: 'Premier contributeur',
+  reconciliation: 'Écart d’arrondi avec le total publié',
+  contributions: 'Contributions par classe',
+  formulas: 'Formules visibles',
+  formulaText: 'Variation de classe = montant observé × choc de prix. Variation totale = somme des cinq contributions.',
+  limits: 'Périmètre et limites',
+  limitsText: 'Le modèle ignore les passifs, couvertures de change, dérivés, convexité, coupons, défauts, ventes forcées, fiscalité, capital réglementaire et détentions indirectes dans les fonds. Un choc saisi n’est ni une prévision ni un scénario de crise calibré.',
+  source: 'Source des montants',
+  sourceText: 'U.S. Treasury, Federal Reserve Bank of New York et Federal Reserve Board, enquête SHL au 30 juin 2025, table A5.',
+  version: 'Modèle',
+  reported: 'Total publié',
+} : {
+  eyebrow: 'PORTFOLIO STRESS TEST',
+  title: 'Same amount, very different risks',
+  intro: 'Choose a TIC reporting perimeter and apply a separate price shock to each asset class. The calculation measures a gross market-value move, not a regulatory-capital loss.',
+  badge: 'local calculation · zero tracker',
+  presets: 'Published perimeters',
+  presetNote: 'Amounts come from Table A5 of the TIC survey at 30 June 2025. Rounded categories can differ from the reported total by $1bn.',
+  holdings: 'Observed holdings',
+  shocks: 'Entered price shocks',
+  equities: 'Equities and fund shares',
+  treasury: 'Long-term Treasuries',
+  agency: 'Agency debt',
+  corporate: 'Corporate debt',
+  shortTerm: 'Short-term debt',
+  results: 'Scenario results',
+  change: 'Gross change in value',
+  base: 'Sum of categories',
+  stressed: 'Value after shock',
+  changePct: 'Portfolio change',
+  largest: 'Largest contributor',
+  reconciliation: 'Rounding gap versus reported total',
+  contributions: 'Contributions by class',
+  formulas: 'Visible formulas',
+  formulaText: 'Class change = observed amount × price shock. Total change = sum of the five contributions.',
+  limits: 'Scope and limitations',
+  limitsText: 'The model excludes liabilities, FX hedges, derivatives, convexity, coupons, defaults, forced sales, tax, regulatory capital and indirect holdings inside funds. An entered shock is neither a forecast nor a calibrated crisis scenario.',
+  source: 'Source for holdings',
+  sourceText: 'U.S. Treasury, Federal Reserve Bank of New York and Federal Reserve Board, SHL survey at 30 June 2025, Table A5.',
+  version: 'Model',
+  reported: 'Reported total',
+};
+---
+
+<section class:list={['aus-tool', mode === 'full' && 'aus-tool--full']} id={id} data-asia-us-stress data-lang={lang}>
+  <header class="aus-head">
+    <div>
+      <p class="aus-eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </div>
+    <span class="aus-badge">{copy.badge}</span>
+  </header>
+
+  <section class="aus-presets" aria-labelledby={`${id}-presets`}>
+    <div>
+      <h3 id={`${id}-presets`}>{copy.presets}</h3>
+      <p>{copy.presetNote}</p>
+    </div>
+    <div class="aus-preset-row">
+      {ASIA_US_PORTFOLIO_PRESETS.map((preset, index) => (
+        <button type="button" data-preset={preset.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+          <strong>{isFr ? preset.labelFr : preset.labelEn}</strong>
+          <small>{isFr ? preset.noteFr : preset.noteEn}</small>
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <div class="aus-layout">
+    <form class="aus-controls" aria-labelledby={`${id}-controls`}>
+      <h3 id={`${id}-controls`}>{copy.holdings}</h3>
+      {[
+        ['equitiesUsdBn', copy.equities, 6000],
+        ['treasuryUsdBn', copy.treasury, 5000],
+        ['agencyUsdBn', copy.agency, 2000],
+        ['corporateUsdBn', copy.corporate, 2000],
+        ['shortTermUsdBn', copy.shortTerm, 1500],
+      ].map(([name, label, max]) => (
+        <label class="aus-control">
+          <span>{label}<b>{isFr ? 'Md$' : '$bn'}</b></span>
+          <div>
+            <input type="range" name={`${name}-range`} min="0" max={max} step="1" value={ASIA_US_PORTFOLIO_DEFAULTS[name as keyof typeof ASIA_US_PORTFOLIO_DEFAULTS]} />
+            <input type="number" name={String(name)} min="0" max="50000" step="1" value={ASIA_US_PORTFOLIO_DEFAULTS[name as keyof typeof ASIA_US_PORTFOLIO_DEFAULTS]} inputmode="decimal" />
+          </div>
+        </label>
+      ))}
+
+      <h3 class="aus-subhead">{copy.shocks}</h3>
+      {[
+        ['equityShockPct', copy.equities],
+        ['treasuryShockPct', copy.treasury],
+        ['agencyShockPct', copy.agency],
+        ['corporateShockPct', copy.corporate],
+        ['shortTermShockPct', copy.shortTerm],
+      ].map(([name, label]) => (
+        <label class="aus-control aus-control--shock">
+          <span>{label}<b>%</b></span>
+          <div>
+            <input type="range" name={`${name}-range`} min="-50" max="20" step="0.5" value={ASIA_US_PORTFOLIO_DEFAULTS[name as keyof typeof ASIA_US_PORTFOLIO_DEFAULTS]} />
+            <input type="number" name={name} min="-100" max="100" step="0.5" value={ASIA_US_PORTFOLIO_DEFAULTS[name as keyof typeof ASIA_US_PORTFOLIO_DEFAULTS]} inputmode="decimal" />
+          </div>
+        </label>
+      ))}
+    </form>
+
+    <section class="aus-results" aria-labelledby={`${id}-results`}>
+      <h3 id={`${id}-results`}>{copy.results}</h3>
+      <div class="aus-primary" aria-live="polite">
+        <span>{copy.change}</span>
+        <strong data-result="change" class:list={[initial.totalChangeUsdBn < 0 && 'is-negative']}>{signedUsd(initial.totalChangeUsdBn)}</strong>
+        <small data-result="changePct">{number.format(initial.totalChangePct)} %</small>
+      </div>
+      <dl class="aus-summary">
+        <div><dt>{copy.base}</dt><dd data-result="base">{usd(initial.baseValueUsdBn)}</dd></div>
+        <div><dt>{copy.stressed}</dt><dd data-result="stressed">{usd(initial.stressedValueUsdBn)}</dd></div>
+        <div><dt>{copy.largest}</dt><dd data-result="largest">{assetLabel(initial.largestContributor)}</dd></div>
+        <div><dt>{copy.reported}</dt><dd data-result="reported">{usd(ASIA_US_PORTFOLIO_PRESETS[0].reportedTotalUsdBn)}</dd></div>
+        <div><dt>{copy.reconciliation}</dt><dd data-result="reconciliation">{signedUsd(initial.baseValueUsdBn - ASIA_US_PORTFOLIO_PRESETS[0].reportedTotalUsdBn)}</dd></div>
+      </dl>
+      <h4>{copy.contributions}</h4>
+      <dl class="aus-contributions">
+        <div><dt>{copy.equities}</dt><dd data-result="equityChange">{signedUsd(initial.equityChangeUsdBn)}</dd></div>
+        <div><dt>{copy.treasury}</dt><dd data-result="treasuryChange">{signedUsd(initial.treasuryChangeUsdBn)}</dd></div>
+        <div><dt>{copy.agency}</dt><dd data-result="agencyChange">{signedUsd(initial.agencyChangeUsdBn)}</dd></div>
+        <div><dt>{copy.corporate}</dt><dd data-result="corporateChange">{signedUsd(initial.corporateChangeUsdBn)}</dd></div>
+        <div><dt>{copy.shortTerm}</dt><dd data-result="shortTermChange">{signedUsd(initial.shortTermChangeUsdBn)}</dd></div>
+      </dl>
+    </section>
+  </div>
+
+  <div class="aus-details">
+    <details><summary>{copy.formulas}</summary><p>{copy.formulaText}</p><code>ΔV = Σ(encours × choc / 100)</code></details>
+    <details><summary>{copy.limits}</summary><p>{copy.limitsText}</p></details>
+    <details><summary>{copy.source}</summary><p>{copy.sourceText}</p><p>{copy.version} v{ASIA_US_PORTFOLIO_MODEL_VERSION}</p></details>
+  </div>
+</section>
+
+<script>
+  import {
+    ASIA_US_PORTFOLIO_PRESETS,
+    calculateAsiaUSPortfolioStress,
+    normalizeAsiaUSPortfolioInputs,
+  } from '../lib/asia-us-portfolio-stress-model.ts';
+
+  const initialiseAsiaUSStress = () => {
+    document.querySelectorAll<HTMLElement>('[data-asia-us-stress]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+      const lang = root.dataset.lang === 'en' ? 'en' : 'fr';
+      const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+      const form = root.querySelector<HTMLFormElement>('form');
+      if (!form) return;
+      const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+      const fields = ['equitiesUsdBn','treasuryUsdBn','agencyUsdBn','corporateUsdBn','shortTermUsdBn','equityShockPct','treasuryShockPct','agencyShockPct','corporateShockPct','shortTermShockPct'] as const;
+      type Field = typeof fields[number];
+      let reportedTotal: number = ASIA_US_PORTFOLIO_PRESETS[0].reportedTotalUsdBn;
+      const labels = lang === 'fr'
+        ? { equities: 'actions et parts de fonds', treasury: 'Treasuries', agency: 'dette d’agence', corporate: 'dette d’entreprise', shortTerm: 'dette à court terme', none: 'aucune' }
+        : { equities: 'equities and fund shares', treasury: 'Treasuries', agency: 'agency debt', corporate: 'corporate debt', shortTerm: 'short-term debt', none: 'none' };
+      const input = (name: string) => form.elements.namedItem(name) as HTMLInputElement | null;
+      const setPair = (name: Field, value: number) => {
+        const n = input(name);
+        const r = input(`${name}-range`);
+        if (n) n.value = String(value);
+        if (r) r.value = String(Math.min(Number(r.max), Math.max(Number(r.min), value)));
+      };
+      const read = () => Object.fromEntries(fields.map((name) => [name, Number(input(name)?.value)]));
+      const usd = (value: number) => lang === 'fr' ? `${number.format(value)} Md$` : `$${number.format(value)}bn`;
+      const signed = (value: number) => {
+        const sign = value > 0 ? '+' : '';
+        return lang === 'fr' ? `${sign}${number.format(value)} Md$` : `${sign}$${number.format(value)}bn`;
+      };
+      const output = (name: string) => root.querySelector<HTMLElement>(`[data-result="${name}"]`);
+      const render = () => {
+        const normalized = normalizeAsiaUSPortfolioInputs(read());
+        fields.forEach((name) => setPair(name, normalized[name]));
+        const result = calculateAsiaUSPortfolioStress(normalized);
+        const values: Record<string, string> = {
+          change: signed(result.totalChangeUsdBn),
+          changePct: `${number.format(result.totalChangePct)} %`,
+          base: usd(result.baseValueUsdBn),
+          stressed: usd(result.stressedValueUsdBn),
+          largest: labels[result.largestContributor],
+          reported: usd(reportedTotal),
+          reconciliation: signed(result.baseValueUsdBn - reportedTotal),
+          equityChange: signed(result.equityChangeUsdBn),
+          treasuryChange: signed(result.treasuryChangeUsdBn),
+          agencyChange: signed(result.agencyChangeUsdBn),
+          corporateChange: signed(result.corporateChangeUsdBn),
+          shortTermChange: signed(result.shortTermChangeUsdBn),
+        };
+        Object.entries(values).forEach(([name, value]) => { const el = output(name); if (el) el.textContent = value; });
+        output('change')?.classList.toggle('is-negative', result.totalChangeUsdBn < 0);
+      };
+      form.addEventListener('input', (event) => {
+        const target = event.target as HTMLInputElement;
+        if (!target.name) return;
+        if (target.name.endsWith('-range')) {
+          const name = target.name.replace(/-range$/, '') as Field;
+          setPair(name, Number(target.value));
+        } else if (fields.includes(target.name as Field)) {
+          setPair(target.name as Field, Number(target.value));
+        }
+        render();
+      });
+      form.addEventListener('submit', (event) => event.preventDefault());
+      root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const preset = ASIA_US_PORTFOLIO_PRESETS.find((item) => item.id === button.dataset.preset);
+          if (!preset) return;
+          reportedTotal = preset.reportedTotalUsdBn;
+          fields.forEach((name) => setPair(name, preset.inputs[name]));
+          root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          render();
+        });
+      });
+      render();
+    });
+  };
+  initialiseAsiaUSStress();
+  document.addEventListener('astro:page-load', initialiseAsiaUSStress);
+</script>
+
+<style>
+  .aus-tool{--panel:#11141a;--line:rgba(255,255,255,.11);--muted:#9aa0aa;--ink:#f5f6f8;--teal:#5eead4;--amber:#f5b13d;--pink:#ff4d87;--blue:#7aa2f7;margin:2.2rem 0;padding:1.1rem;border:1px solid var(--line);border-radius:14px;background:#0c0d10;color:var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-shadow:0 20px 55px rgba(0,0,0,.22)}
+  .aus-head{display:flex;gap:1.25rem;justify-content:space-between;align-items:flex-start;padding:1rem 1rem 1.2rem;border-bottom:1px solid var(--line)}
+  .aus-head h2{margin:.2rem 0 .5rem;font-size:clamp(1.35rem,3vw,2rem);line-height:1.08}.aus-head p{margin:0;max-width:65ch;color:#c2c6ce;line-height:1.55}.aus-eyebrow{color:var(--teal)!important;font-size:.72rem;letter-spacing:.11em}.aus-badge{white-space:nowrap;border:1px solid rgba(94,234,212,.45);border-radius:999px;padding:.38rem .6rem;color:var(--teal);font-size:.68rem}
+  .aus-presets{padding:1rem;border-bottom:1px solid var(--line)}.aus-presets h3,.aus-controls h3,.aus-results h3{margin:0 0 .35rem;font-size:.95rem}.aus-presets p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.5}.aus-preset-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.55rem;margin-top:.85rem}.aus-preset-row button{min-height:62px;text-align:left;padding:.62rem .7rem;border:1px solid var(--line);border-radius:9px;background:#151820;color:var(--ink);cursor:pointer}.aus-preset-row button[aria-pressed="true"]{border-color:var(--teal);box-shadow:inset 0 0 0 1px rgba(94,234,212,.25)}.aus-preset-row strong{display:block;font-size:.78rem}.aus-preset-row small{display:block;margin-top:.22rem;color:var(--muted);font-size:.62rem;line-height:1.35}
+  .aus-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(290px,.85fr);gap:1rem;padding:1rem}.aus-controls,.aus-results{padding:1rem;border:1px solid var(--line);border-radius:11px;background:var(--panel)}.aus-subhead{margin-top:1.2rem!important;padding-top:1rem;border-top:1px solid var(--line)}.aus-control{display:block;margin:.8rem 0}.aus-control>span{display:flex;justify-content:space-between;gap:.8rem;margin-bottom:.35rem;color:#d8dbe1;font-size:.72rem}.aus-control b{color:var(--muted);font-weight:500}.aus-control>div{display:grid;grid-template-columns:minmax(90px,1fr) 88px;gap:.55rem;align-items:center}.aus-control input[type="range"]{width:100%;accent-color:var(--teal)}.aus-control--shock input[type="range"]{accent-color:var(--pink)}.aus-control input[type="number"]{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:7px;background:#090b0f;color:var(--ink);padding:.4rem .45rem;font:inherit;font-size:.72rem}
+  .aus-primary{margin:.7rem 0 1rem;padding:1rem;border:1px solid rgba(255,77,135,.35);border-radius:10px;background:rgba(255,77,135,.07)}.aus-primary span{display:block;color:#c8cbd2;font-size:.72rem}.aus-primary strong{display:block;margin:.2rem 0;font-size:clamp(1.55rem,4vw,2.45rem);color:var(--teal)}.aus-primary strong.is-negative{color:var(--pink)}.aus-primary small{color:var(--muted)}.aus-summary,.aus-contributions{margin:0}.aus-summary div,.aus-contributions div{display:flex;justify-content:space-between;gap:1rem;padding:.58rem 0;border-bottom:1px solid var(--line)}.aus-summary dt,.aus-contributions dt{color:#b9bdc5;font-size:.68rem}.aus-summary dd,.aus-contributions dd{margin:0;text-align:right;font-size:.73rem;font-weight:700}.aus-results h4{margin:1.15rem 0 .25rem;font-size:.78rem;color:var(--amber)}
+  .aus-details{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;padding:0 1rem 1rem}.aus-details details{border:1px solid var(--line);border-radius:9px;background:#101319;padding:.7rem}.aus-details summary{cursor:pointer;color:#dadde3;font-size:.73rem;font-weight:700}.aus-details p{color:var(--muted);font-size:.68rem;line-height:1.55}.aus-details code{display:block;white-space:normal;color:var(--teal);font-size:.67rem}.aus-tool--full{max-width:1120px;margin-inline:auto}
+  @media(max-width:780px){.aus-head{display:block}.aus-badge{display:inline-block;margin-top:.8rem}.aus-layout{grid-template-columns:1fr}.aus-details{grid-template-columns:1fr}.aus-control>div{grid-template-columns:1fr 82px}}
+</style>
