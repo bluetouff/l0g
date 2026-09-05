@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import test from 'node:test';
+import { fromHtml } from 'hast-util-from-html';
+import { toText } from 'hast-util-to-text';
 
 import './asia-dollar-hedge-model.test.mjs';
 import './asia-dollar-stress.test.mjs';
@@ -126,20 +128,21 @@ function stringAttribute(tag, name, fallback = '') {
   return tag.match(new RegExp(`\\b${name}="([^"]+)"`, 'u'))?.[1] ?? fallback;
 }
 
-function decodeEntities(value) {
-  return value
-    .replaceAll('&amp;', '&')
-    .replaceAll('&lt;', '<')
-    .replaceAll('&gt;', '>')
-    .replaceAll('&quot;', '"')
-    .replaceAll('&#39;', "'")
-    .replace(/&#(\d+);/gu, (_, code) => String.fromCodePoint(Number(code)))
-    .replace(/&#x([\da-f]+);/giu, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)));
+function visibleText(value) {
+  return toText(fromHtml(value.trim(), { fragment: true }));
 }
 
-function visibleText(value) {
-  return decodeEntities(value.replace(/<[^>]+>/gu, '').trim());
-}
+test('visibleText parses markup and character references exactly once', () => {
+  assert.equal(visibleText(' Revenue &amp; costs '), 'Revenue & costs');
+  assert.equal(visibleText('&#65;&#x42;'), 'AB');
+  assert.equal(visibleText('&#160;A&#xA0;'), '\u00a0A\u00a0');
+  assert.equal(visibleText('&amp;lt;script&amp;gt;'), '&lt;script&gt;');
+  assert.equal(visibleText('&amp;#60;script&amp;#x3e;'), '&#60;script&#x3e;');
+  assert.equal(
+    visibleText('<tspan data-note="1 > 0">safe &amp; sound</tspan>'),
+    'safe & sound',
+  );
+});
 
 function assertApproximateInternalBounds(svg, page, svgIndex) {
   const rects = [...svg.matchAll(/<rect\b[^>]*>/gu)].map((match) => {
